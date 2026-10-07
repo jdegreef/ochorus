@@ -94,7 +94,7 @@
 <!-- Resume first: the one thing a returning reader most likely came back to do.
      The current book is already the hero's resume point, so the strip carries
      the rest of what's in progress (and hides when that is nothing). -->
-<ContinueReading exclude={currentBook.item?.key} />
+<ContinueReading exclude={currentBook.key} />
 
 <!-- Streak, weekly goal, reading calendar and totals — self-hides until there's
      activity to show (replaces the compact ReadingNudge on the dashboard). On a

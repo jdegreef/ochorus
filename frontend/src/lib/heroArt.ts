@@ -1,4 +1,5 @@
 import type { Season } from './liturgical';
+import { artSlug } from './groundBars';
 
 /**
  * The home hero's painting when the reader has none of their own (no book in
@@ -27,10 +28,8 @@ export interface ArtCredit {
 	credit: string;
 }
 
-/** The book slug a `/covers/art/` painting was cut for, or null for anything else. */
-export function artSlug(url: string): string | null {
-	return url.match(/^\/covers\/art\/([a-z0-9-]+?)(?:-(?:320|640))?\.(?:webp|jpe?g|png)$/)?.[1] ?? null;
-}
+// The book slug a `/covers/art/` painting was cut for (see groundBars).
+export { artSlug };
 
 let credits: Promise<Record<string, ArtCredit>> | null = null;
 

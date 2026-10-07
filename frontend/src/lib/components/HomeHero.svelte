@@ -2,7 +2,8 @@
 	import { onMount } from 'svelte';
 	import { isArtCover } from '$lib/coverArt';
 	import { isPaleGround } from '$lib/groundBars';
-	import { chapterMeter, type ResumeBook } from '$lib/resumeItems';
+	import type { ResumeBook } from '$lib/resumeItems';
+	import { offerFinish } from '$lib/progress';
 	import { localizeHref } from '$lib/href';
 	import { getLang } from '$lib/lang.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
@@ -15,6 +16,7 @@
 	import Fleuron from '$lib/components/Fleuron.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import { chapterMeter } from '$lib/components/WorkCard.svelte';
 
 	/**
 	 * The signed-in home's painted hero: the greeting set over a painting —
@@ -70,12 +72,14 @@
 	const meter = $derived(current ? chapterMeter(current.order, current.chapterCount, current.pct) : '');
 
 	// The museum's label for the season's painting, lettered on the mat like
-	// a gallery print. The frame (and so the label) is hidden on a phone; a
-	// painting with no curated entry hangs unlabelled.
+	// a gallery print — only while the frame hangs (no book in progress). The
+	// frame (and so the label) is hidden on a phone; a painting with no
+	// curated entry hangs unlabelled.
 	let label = $state<ArtCredit | null>(null);
 	$effect(() => {
 		const url = seasonArt;
 		label = null;
+		if (current) return;
 		artCredit(url).then((c) => {
 			if (seasonArt === url) label = c;
 		});
@@ -167,7 +171,17 @@
 					<div class="mt-3 flex items-center gap-4">
 						<a {href} class="btn btn-sm home-hero-cta">{t('book.continue')}</a>
 						<div class="min-w-0 flex-1">
-							<p class="home-hero-sub text-micro">{meter}</p>
+							<!-- Done with it, or done with it elsewhere: finish it from here,
+							     as its card in "Continue reading" offered (with an Undo). -->
+							<div class="flex items-baseline justify-between gap-3">
+								<p class="home-hero-sub text-micro">{meter}</p>
+								<button
+									type="button"
+									class="home-hero-sub home-hero-finish text-micro"
+									aria-label="{t('continue.markFinished')}: {current.title}"
+									onclick={() => current && offerFinish(current.slug)}>{t('continue.markFinished')}</button
+								>
+							</div>
 							<div class="home-hero-meter mt-1">
 								<ProgressBar percent={current.pct} label="{current.title}: {meter}" />
 							</div>
@@ -328,6 +342,11 @@
 	.home-hero-cta:hover {
 		text-decoration: none;
 		border-color: var(--hero-gilt-deep);
+	}
+	.home-hero-finish:hover,
+	.home-hero-finish:focus-visible {
+		color: var(--hero-ink);
+		text-decoration: underline;
 	}
 	/* The meter on the dark band: an ink track, a gilt fill. */
 	.home-hero-meter :global(.track) {

@@ -28,8 +28,10 @@
  * The home hero (HomeHero.svelte) blurs the current painting across its band
  * under a dark scrim; a pale one — misty whites, a flower border on cream —
  * comes out as grey-brown mud, so the hero paints the reader's tint instead.
- * The library divides cleanly: the paintings sit at or under ~0.75, the
- * pale grounds at ~0.82 and up.
+ * The library divides cleanly: the paintings sit at or under ~0.73, the
+ * pale grounds at ~0.81 and up. (Measured from the decoded greyscale pixels:
+ * sharp's \`stats()\` reads the INPUT, ignoring \`greyscale()\`, and so
+ * averages the red channel.)
  */
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
@@ -55,6 +57,9 @@ const PALE = 0.78;
 async function measure(file) {
 	const { data, info } = await sharp(file).greyscale().raw().toBuffer({ resolveWithObject: true });
 	const { width: w, height: h } = info;
+	let total = 0;
+	for (const v of data) total += v;
+	const mean = total / data.length / 255;
 	const flatDark = (n, at) => {
 		let sum = 0;
 		let sq = 0;
@@ -73,12 +78,13 @@ async function measure(file) {
 	};
 	const row = (y) => flatDark(w, (x) => data[y * w + x]);
 	const col = (x) => flatDark(h, (y) => data[y * w + x]);
-	return Math.max(
+	const bar = Math.max(
 		depth(h, (k) => row(k)),
 		depth(h, (k) => row(h - 1 - k)),
 		depth(w, (k) => col(k)),
 		depth(w, (k) => col(w - 1 - k))
 	);
+	return { bar, mean };
 }
 
 async function table() {
@@ -87,11 +93,8 @@ async function table() {
 	for (const file of readdirSync(ART)
 		.filter((f) => f.endsWith('.jpg'))
 		.sort()) {
-		const path = resolve(ART, file);
-		if ((await sharp(path).greyscale().stats()).channels[0].mean / 255 > PALE) {
-			pale.push(file.replace(/\.jpg$/, ''));
-		}
-		const bar = await measure(path);
+		const { bar, mean } = await measure(resolve(ART, file));
+		if (mean > PALE) pale.push(file.replace(/\.jpg$/, ''));
 		// Rounded UP to the half-percent, so the crop always clears the bar.
 		if (bar >= FLOOR) {
 			rows.push([file.replace(/\.jpg$/, ''), Math.ceil((bar + SLACK) * 200) / 200]);
@@ -126,11 +129,16 @@ export const PALE_GROUNDS: ReadonlySet<string> = new Set([
 ${pale.map((slug) => `\t'${slug}'`).join(',\n')}
 ]);
 
-/** Whether a painted ground's url (full or a -320/-640 variant) is pale. The
- *  slug is read as \`heroArt.artSlug\` reads it — inlined, not imported: build
- *  scripts load this file under bare Node (nodeLoadable.test.ts). */
+/** The book slug a \`/covers/art/\` painting was cut for (any width), or null
+ *  for anything else. Here rather than in heroArt, which re-exports it, so this
+ *  file stays loadable under bare Node (nodeLoadable.test.ts). */
+export function artSlug(url: string): string | null {
+	return url.match(/^\\/covers\\/art\\/([a-z0-9-]+?)(?:-(?:320|640))?\\.(?:webp|jpe?g|png)$/)?.[1] ?? null;
+}
+
+/** Whether a painted ground's url (full or a -320/-640 variant) is pale. */
 export function isPaleGround(url: string | null | undefined): boolean {
-	const slug = (url ?? '').match(/^\\/covers\\/art\\/([a-z0-9-]+?)(?:-(?:320|640))?\\.(?:webp|jpe?g|png)$/)?.[1];
+	const slug = url ? artSlug(url) : null;
 	return !!slug && PALE_GROUNDS.has(slug);
 }
 `;

@@ -5,7 +5,7 @@
 	import { readingTime } from '$lib/reading';
 	import { splitEdition } from '$lib/edition';
 	import { shelfHref, type ShelfBook } from '$lib/bookshelf';
-	import { chapterMeter } from '$lib/resumeItems';
+	import { chapterMeter } from './WorkCard.svelte';
 	import BookCover from './BookCover.svelte';
 	import Icon from './Icon.svelte';
 	import ProgressBar from './ProgressBar.svelte';

@@ -60,6 +60,16 @@ describe('currentBook', { timeout: 30_000 }, () => {
 		expect(current.item).toMatchObject({ kind: 'book', key: 'newest', order: 4, chapterCount: 10 });
 	});
 
+	it('names the book at once, so the strip never reserves a card it then drops', async () => {
+		const current = await fresh();
+		progress({ cold: { at: 1 } });
+		listBooks.mockReturnValue(new Promise(() => {}));
+		current.refresh();
+		// Nothing cached to draw yet, but WHICH book is already known.
+		expect(current.item).toBeNull();
+		expect(current.key).toBe('cold');
+	});
+
 	it('passes over a book the language lacks, and asks for no list with nothing open', async () => {
 		const current = await fresh();
 		progress({ old: { at: 1 }, missing: { at: 2 } });

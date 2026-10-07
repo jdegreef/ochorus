@@ -2,6 +2,7 @@ import { allProgress } from './progress';
 import { buildResumeItems, type ResumeBook } from './resumeItems';
 import { cachedResumeBooks, currentBookSlug, knownAbsent, libraryBooks } from './resumeBooks';
 import type { CoverBook } from './library-public';
+import { workSlugKey } from './reading-schema';
 import { getLang } from './lang.svelte';
 
 /**
@@ -11,20 +12,23 @@ import { getLang } from './lang.svelte';
  * working it out from storage on their own clocks could pick different books
  * mid-load and show one twice or drop it from both.
  *
- * Resolved from this build's cache of the reader's in-progress books at once
- * (so a returning reader's first paint is theirs), then from the full list
- * when it lands, and again on `ochorus:sync`. Only the one book is kept, not
- * the list: `libraryBooks` already shares the request with the strip.
+ * Two answers, on two clocks. `key` — WHICH book — is known at once from
+ * progress, so the strip never reserves a card it would then drop. `item` —
+ * the book itself, for the hero to draw — comes from this build's cache of
+ * the reader's in-progress books when it has it (so a returning reader's
+ * first paint is theirs), else from the full list when it lands. Followed on
+ * `ochorus:sync`. Only the one book is kept, not the list: `libraryBooks`
+ * already shares the request with the strip.
  */
 class CurrentBook {
 	item = $state.raw<ResumeBook | null>(null);
+	key = $state<string | undefined>(undefined);
 	#generation = 0;
+	#lang = '';
 
-	/** The current book as `books` resolves it; null when they lack it. */
-	#resolve(books: CoverBook[]): ResumeBook | null {
-		const progress = allProgress();
-		const slug = currentBookSlug(knownAbsent(getLang()), progress);
-		const book = slug ? books.find((b) => b.slug === slug) : undefined;
+	/** `slug` resolved against `books`; null when they lack it. */
+	#resolve(books: CoverBook[], slug: string, progress = allProgress()): ResumeBook | null {
+		const book = books.find((b) => b.slug === slug);
 		if (!book) return null;
 		const [item] = buildResumeItems(
 			[book],
@@ -38,15 +42,25 @@ class CurrentBook {
 	refresh() {
 		const lang = getLang();
 		const generation = ++this.#generation;
-		if (!currentBookSlug(knownAbsent(lang))) {
+		const progress = allProgress();
+		const slug = currentBookSlug(knownAbsent(lang), progress);
+		this.key = slug ? workSlugKey('book', slug) : undefined;
+		// What is shown stays only while it is still the current book, in this
+		// language: a cache that lacks the book then leaves it to the list.
+		const kept = this.#lang === lang && this.item?.slug === slug ? this.item : null;
+		this.#lang = lang;
+		if (!slug) {
 			this.item = null;
 			return;
 		}
-		// A cache that lacks the book keeps what is shown until the list says.
-		this.item = this.#resolve(cachedResumeBooks(lang)) ?? this.item;
+		this.item = this.#resolve(cachedResumeBooks(lang), slug, progress) ?? kept;
 		libraryBooks(lang)
 			.then((books) => {
-				if (generation === this.#generation) this.item = this.#resolve(books);
+				if (generation !== this.#generation) return;
+				// The list has marked what this language lacks: ask again.
+				const now = currentBookSlug(knownAbsent(lang));
+				this.key = now ? workSlugKey('book', now) : undefined;
+				this.item = now ? this.#resolve(books, now) : null;
 			})
 			.catch(() => {});
 	}

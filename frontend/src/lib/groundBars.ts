@@ -48,19 +48,22 @@ export const PALE_GROUNDS: ReadonlySet<string> = new Set([
 	'daughters-of-the-king-1',
 	'daughters-of-the-king-2',
 	'daughters-of-the-king-3',
-	'soar-like-the-eagle-3',
 	'sons-of-the-king-1',
 	'sons-of-the-king-2',
 	'sons-of-the-king-3',
 	'the-god-of-all-comfort',
-	'the-key-in-my-hand',
 	'the-person-and-work-of-the-holy-spirit'
 ]);
 
-/** Whether a painted ground's url (full or a -320/-640 variant) is pale. The
- *  slug is read as `heroArt.artSlug` reads it — inlined, not imported: build
- *  scripts load this file under bare Node (nodeLoadable.test.ts). */
+/** The book slug a `/covers/art/` painting was cut for (any width), or null
+ *  for anything else. Here rather than in heroArt, which re-exports it, so this
+ *  file stays loadable under bare Node (nodeLoadable.test.ts). */
+export function artSlug(url: string): string | null {
+	return url.match(/^\/covers\/art\/([a-z0-9-]+?)(?:-(?:320|640))?\.(?:webp|jpe?g|png)$/)?.[1] ?? null;
+}
+
+/** Whether a painted ground's url (full or a -320/-640 variant) is pale. */
 export function isPaleGround(url: string | null | undefined): boolean {
-	const slug = (url ?? '').match(/^\/covers\/art\/([a-z0-9-]+?)(?:-(?:320|640))?\.(?:webp|jpe?g|png)$/)?.[1];
+	const slug = url ? artSlug(url) : null;
 	return !!slug && PALE_GROUNDS.has(slug);
 }

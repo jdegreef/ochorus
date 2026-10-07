@@ -2,7 +2,6 @@ import { allProgress } from './progress';
 import { chapterPath } from './editionHref';
 import { resumeOrderOf, workSlugKey } from './reading-schema';
 import { workPercent } from './reading';
-import { i18n } from './i18n.svelte';
 import type { CoverBook, SermonSummary } from './library-public';
 
 /**
@@ -58,14 +57,6 @@ export type ResumeSermon = ResumeBase & {
 	/** A sermon is one document: no meter. */
 	pct: null;
 };
-
-/**
- * A book's chapter meter as a caption — "Chapter 3 / 12 · 25%" — worded here
- * once for every resume surface (the cards, the shelf, the home hero).
- */
-export function chapterMeter(order: number, chapterCount: number, pct: number): string {
-	return `${i18n.t('continue.chapter')} ${order} / ${chapterCount} · ${pct}%`;
-}
 
 /**
  * Resolve device-local reading progress into resume cards, newest first.
