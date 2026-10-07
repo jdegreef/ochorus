@@ -4214,6 +4214,16 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"es/pilgrims-progress-teens": {
+			"ground": "c9b0cc8d21ed4228c16c9ffbce7ddaf840ee6140219375c38c485c36621ded46",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"es/possibilities-of-prayer": {
 			"ground": "8fe3b2647d6276f4fa3e94b217c2fc2f11df805a6a72b1510041949240019d9d",
 			"style": "devotional",
