@@ -1330,6 +1330,114 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "sandbar: the Curaray country where her husband died and where she "
         "went to live among the people who had killed him.",
     ),
+    # The young-reader shelf (2026-10-08), chosen by the founder from twenty
+    # concepts in three families. Children: one warm poster scene from the
+    # story, Brave for God's family. Teens and retold classics: one symbolic
+    # object on a saturated field with a halftone grain. Originals: a series
+    # mark. Drawn as inline SVG, rendered in headless Chromium at 2x and
+    # downscaled; every subject sits below the title band and clear of the mark.
+    "mary-slessor-a-life-children": Original(
+        "c64a5bc9109370591e05041d5c3956a8850d40d12843f51596b161767cba164d",
+        "A red-haired woman upright in a dugout canoe at sundown on the Cross "
+        "River, palms black against an orange sky.",
+    ),
+    "corrie-ten-boom-a-life-children": Original(
+        "caeed354107eab025f230f8ab8d3a0dac761ae3aad2b2e62c7e1fe95d4978cff",
+        "The narrow stepped-gable house on the Barteljorisstraat at night, its "
+        "clock sign out front and one window lit at the top, where the hiding "
+        "place was.",
+    ),
+    "c-s-lewis-a-life-children": Original(
+        "ac4a8f83a0becab1f91274d1a539d143c5100bdc672f7178b2a07d8e42a20767",
+        "The little end room at Little Lea: a round attic window full of "
+        "Belfast rain, a candle and a stack of books, a boy reading on the "
+        "floor.",
+    ),
+    "elisabeth-elliot-a-life-children": Original(
+        "09fe1e73813f72ccba707e378554ea8bc5b4f067972edd362d23935105ebecfa",
+        "A small yellow plane over green jungle hills and a winding river at "
+        "first light: hopeful, with nothing of 1956 staged.",
+    ),
+    "john-hyde-a-life-children": Original(
+        "f66b05386b0052941fceb65215fbd8fd4b8ef5acfdef0541485f9c29dff949f0",
+        "A Punjabi village under a sky full of stars, every window dark but "
+        "one, where a man kneels by a lamp: the man who never sleeps.",
+    ),
+    "pandita-ramabai-a-life-children": Original(
+        "7498a6e871c4950ad2cd9931eb12b69b7b6d113e35537b47bb28bcdcc1366f4a",
+        "Layered hills at dawn, two tiny figures carrying a cane box on a pole "
+        "down a zigzag path: the book's opening image.",
+    ),
+    "samuel-ajayi-crowther-a-life-children": Original(
+        "bb59168e2859cc752753fb76c64f963b4a365cfc5b553de884919203d46b3a85",
+        "A sailing ship heading into a golden dawn with a boy at the bow: the "
+        "ship that freed Ajayi in 1822.",
+    ),
+    "the-practice-of-the-presence-of-god-children": Original(
+        "c6fe226bfbb1791ceab0ff3b24edf9fed555fc2393c807ba7d945d1dbba85af8",
+        "A monastery kitchen, light through an arched window, a little cake "
+        "flipping over the frying pan: turned for the love of God.",
+    ),
+    "corrie-ten-boom-a-life-teens": Original(
+        "6fd7f533c708b877c106985d9197dbd7eb597e907e6aacefe36af8a8a62e89b4",
+        "One watch face on deep plum; where the hands should be, a narrow "
+        "doorway glows gold. The watchmaker and the secret room.",
+    ),
+    "elisabeth-elliot-a-life-teens": Original(
+        "428d4015f335e38f45dbf493ebc735a1feefc7acfd05d302abdb960175d67143",
+        "Palm Beach from the air: dense forest, one river, a pale sandbar and a "
+        "tiny yellow plane parked on it.",
+    ),
+    "watchman-nee-a-life-teens": Original(
+        "e62a1ca5b42054e6935cc3b1a7db589a92c87848f830ed4d7078ab19d034a2c3",
+        "A night-watchman's wooden clapper in black on vermilion, sound rings "
+        "spreading over the rooftops: the name he chose.",
+    ),
+    "john-hyde-a-life-teens": Original(
+        "8f87089c91468ac0610801c600a93b227cbc9dedd749aed29401b870039717b5",
+        "A clock ring reading 3:00 on midnight blue with one oil-lamp flame at "
+        "its centre: the hour most of us never see.",
+    ),
+    "mary-slessor-a-life-teens": Original(
+        "f7c46453e3cb2ab75a480ae6c77764f97f0face5d153c4abce36b2f304da6c90",
+        "Dundee loom threads run down from the beam and bend into the river "
+        "that carries her canoe.",
+    ),
+    "samuel-ajayi-crowther-a-life-teens": Original(
+        "444ec986325b90654e1720ed3268221c9f003e4599987c0c7eadbdc031ff744e",
+        "A captive's rope, knotted once, turns into the red ribbon marker of an "
+        "open Bible: the boy led away who translated it into Yoruba.",
+    ),
+    "pandita-ramabai-a-life-teens": Original(
+        "0a77ccbec5327f6da3d0ab7939492f003cfc4513c5f89c00114eecc912731acd",
+        "Bare footprints winding up an ochre field crossed by faint contours, "
+        "toward a pale sun: the years of walking.",
+    ),
+    "c-s-lewis-a-life-teens": Original(
+        "de1606a60da639a825e4e79f169a545908b33fb0a8d24edba65baf76528d059b",
+        "A moonlit avenue of trees, three small figures on the path, leaves "
+        "blowing past: Addison's Walk, 19 September 1931.",
+    ),
+    "grace-abounding-teens": Original(
+        "115effd22715f7d553d2af2a8c09393a65a94c7fc0ca75ca88f26a0dcfbdb9fd",
+        "A great bronze bell over slate grey, a small figure in the steeple "
+        "doorway below: the bell Bunyan feared would fall on him.",
+    ),
+    "confessions-teens": Original(
+        "4f72bdf850b9a0f4f03f8b06b475e5f76b618a7e27e9e70dceb9416b2b732c30",
+        "A night garden, one tree heavy with golden pears, a single bitten pear "
+        "on the ground: the theft the book turns on.",
+    ),
+    "all-of-grace-teens": Original(
+        "2dc24b64acaaa70a953bb9270452fba2f634c89429b00cbf34d0e0e2278dd62b",
+        "A thread of light pouring into an empty bowl until it brims: grace "
+        "given to people sure they had nothing to bring.",
+    ),
+    "real-questions-1": Original(
+        "9b40cc0771a60e30714f71e4e9686c8365f5b12092ebbb282ce193f63fe68e8f",
+        "A great dim question mark under stars, with a small figure standing in "
+        "its glowing dot: the series mark for Real Questions.",
+    ),
 }
 
 

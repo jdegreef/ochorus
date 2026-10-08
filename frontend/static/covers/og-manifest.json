@@ -162,14 +162,30 @@
 			"bar": 0
 		},
 		"all-of-grace-teens": {
-			"ground": "e8245d598ecd7ee69c0139babf6d0c2581f13e1ec37dcc06fb73ff420669cf19",
-			"style": "revival",
+			"ground": "8e94a24e954a36203f19cf4d2a88251051b8f18d27184f0ea2b1e00ef4fcd09f",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.5,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[125, 308, 475, 384],
+					[131, 374, 469, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"all-things-for-good": {
 			"ground": "686001548fde792b7a761361e43c0d25758f067eb5db6964e7ceb742d7103e8f",
@@ -1685,24 +1701,56 @@
 			]
 		},
 		"am/samuel-ajayi-crowther-a-life-children": {
-			"ground": "6444a82a6373323b408219c431778d6949190293efeb80c6a0b129a9d3dac0d6",
+			"ground": "e63d6d6904f933448dfd0baad83894a5d0bee09502011734e13f3e8ffa06a6ef",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.85,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[72, 102, 528, 131]
+				],
+				"title": [
+					[152, 310, 448, 385],
+					[109, 371, 491, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"am/samuel-ajayi-crowther-a-life-teens": {
-			"ground": "5481b027dd979880cf2670352f793ef9dab11df70b458a940fe56ac7bc3e5592",
+			"ground": "304f744cecff84fa1843d210dc97308858b4d3005804b0b47d1624e48fafd911",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[72, 102, 528, 131]
+				],
+				"title": [
+					[144, 308, 456, 384],
+					[66, 374, 534, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"am/school-of-prayer": {
 			"ground": "ead7a3d913963925a5cd99f179f14f5127de20711406c28d34c67404b264cb48",
@@ -3394,24 +3442,56 @@
 			]
 		},
 		"c-s-lewis-a-life-children": {
-			"ground": "e3c9080216cc6d1eb420d9b95c467aa445a34278985220bd37791e47b3d32c90",
+			"ground": "1d8173c6e92ee1ee62135501ce2b53fda61bbe42e379b050ea0fdce3231aac42",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[166, 310, 434, 385],
+					[125, 371, 475, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"c-s-lewis-a-life-teens": {
-			"ground": "b0ecfb1cad4393ca53925debb8c1eb02f483b6f81fa2e519f899bc882175165e",
+			"ground": "101b637c207ad466933f39e515c8d6f54196dfd7be59d24de28ed1f8ee473482",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[143, 308, 457, 384],
+					[131, 374, 469, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"cheque-book": {
 			"ground": "01421c300d0debed099d1d2e3966137ece5b7487ed2361aca7828df570abf0bb",
@@ -3462,14 +3542,30 @@
 			"bar": 0
 		},
 		"confessions-teens": {
-			"ground": "46177b251e1338b5612569dec6a4df9ccaae2be90a414ac4e6a1cefb2da17227",
-			"style": "inscriptional",
+			"ground": "b00b60e7d8206c527642666a951cc095ffe917cedbc478456f92d3e1c3bf2a40",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.55,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[110, 102, 490, 131]
+				],
+				"title": [
+					[117, 308, 483, 384],
+					[131, 374, 469, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"corrie-ten-boom-a-life": {
 			"ground": "c1e02879863a1488f4e32c44279e90a6c4886a8262d287710515164e391ea4a0",
@@ -3502,24 +3598,56 @@
 			]
 		},
 		"corrie-ten-boom-a-life-children": {
-			"ground": "06a330f67b0a6fa9879bc76ce31f57a33168931f553cd7d64a1f000d55f061b1",
+			"ground": "f31a5f1c7819224f7394b7646a296fa6f08a141dd1664a7d4f5accba7063894b",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.9,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[89, 310, 511, 385],
+					[125, 371, 475, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"corrie-ten-boom-a-life-teens": {
-			"ground": "1cd7e7ff6e1bd2e33dab4c5b99b45d1121c10418cd4f7f0e7746dc778e1966ae",
+			"ground": "e92b7f946968ce553046064e23ef90e38e4342a5b997c4e758b9d0f4206e1f5b",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.45,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[54, 308, 546, 384],
+					[131, 374, 469, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"daughters-of-the-king-1": {
 			"ground": "cdeca93949c57d78aa7f907c095b29da214f40735e73802ccb2ef4ac40acceed",
@@ -3642,24 +3770,56 @@
 			]
 		},
 		"elisabeth-elliot-a-life-children": {
-			"ground": "2a08e4e779580d63dd7844e3eec08784176ee24d9b35bdc8d2b02b4b093f376a",
+			"ground": "fb437dbc4d9efb4e9e757d74102f4bfd927fa07e800cad7ac3b1b6592b8c5f28",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[134, 102, 466, 131]
+				],
+				"title": [
+					[112, 310, 488, 385],
+					[125, 371, 475, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"elisabeth-elliot-a-life-teens": {
-			"ground": "6ac6c2e7eb76a59ab05f5a3c6c2e43e9fe7ac6bb4a7620dd5531ddf03e83decc",
+			"ground": "01dcb471148ef67912ecf166f409419a7cbf17fe1ed96be90c3ec387d9d219a9",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[134, 102, 466, 131]
+				],
+				"title": [
+					[72, 308, 528, 384],
+					[131, 374, 469, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"enchiridion": {
 			"ground": "e2019e027f55ad618f84ec4ad8e7ae060f22a347d03a6f7914243c5d2180c7c8",
@@ -3818,14 +3978,31 @@
 			"bar": 0
 		},
 		"es/all-of-grace-teens": {
-			"ground": "1bcdf8646b55b8742754a2832e9b93867be4bfc872afbf0ce64a36c11c82f718",
-			"style": "revival",
+			"ground": "af5f54223575397257cf2a233d362ba55a11a1550d8bdbbdc45fe58be0342d79",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.5,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[165, 275, 435, 351],
+					[111, 341, 489, 417],
+					[90, 407, 510, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
 		},
 		"es/all-things-for-good": {
 			"ground": "4266c4dd9d8a808664530a89a1d323400af3ae26e11380753c67b62a1aabd658",
@@ -3941,14 +4118,30 @@
 			]
 		},
 		"es/c-s-lewis-a-life-children": {
-			"ground": "5ffea429ad91a7b46232ea6d0d72cc2f8bbe33080b5920ada539d42fddf6b344",
+			"ground": "7312da55e3c7aa0c4671a019169aad10051c2034219026ad387d533a07242a88",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[166, 310, 434, 385],
+					[151, 371, 449, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"es/cheque-book": {
 			"ground": "08eb4ae5ced77e25d0ceafe8a898c3f227080904bf35e965c9fbd0f3cee89700",
@@ -3988,14 +4181,30 @@
 			]
 		},
 		"es/corrie-ten-boom-a-life-children": {
-			"ground": "e804990ee390d7a75d7f730d9c5199e5d2c715afd0142368be419b8422fc77fc",
+			"ground": "fbc895d12bb98738a3752b83d4094516a89b986f5465dfb55e65ed71fed479f8",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.9,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[89, 310, 511, 385],
+					[151, 371, 449, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"es/days-of-heaven-upon-earth": {
 			"ground": "b7761b5167880578c3cc63cbbaaa3661996fdf8336c45b3ddbd5213dc0de7864",
@@ -4018,14 +4227,30 @@
 			"bar": 0.05
 		},
 		"es/elisabeth-elliot-a-life-children": {
-			"ground": "ecd9286714ee919c60298de1c3c375e8d3a803f97fe0c18e4cda5db6c85dbb69",
+			"ground": "855fe58f501b201c655fddf44bd9cab6783ff9f0a9384d219dbc4c832de42951",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[134, 102, 466, 131]
+				],
+				"title": [
+					[112, 310, 488, 385],
+					[151, 371, 449, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"es/enchiridion": {
 			"ground": "df59230d258f73037f971ae5dfc34730d68177dce50b66576d572227ecd26a62",
@@ -4162,14 +4387,30 @@
 			"bar": 0
 		},
 		"es/john-hyde-a-life-children": {
-			"ground": "241d7406e991c2c6887b37c1c3a7090d3a7f398bfe30bbbd5e16f25db5be98e2",
+			"ground": "d41a2c3b05514d34377b2688ba8d3349a7026851599ab6e3be4c2c1a2ebfd3ed",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[144, 310, 456, 385],
+					[100, 371, 500, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"es/life-experience-gospel-labours": {
 			"ground": "1705cd87178e053c6e4ebd45fa51e33d2d8aba36c8f4edceb52c2d16d274dd6f",
@@ -4203,14 +4444,30 @@
 			]
 		},
 		"es/mary-slessor-a-life-children": {
-			"ground": "f7e3c1342b0efba929d7e0d217ea7cff56d2e5e391acc9548942772ba1ec688b",
+			"ground": "cde58c3afbeeddfd19e061014e88116ad61b866c38164b0009352e5e005c2a21",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[170, 102, 430, 131]
+				],
+				"title": [
+					[133, 310, 467, 385],
+					[151, 371, 449, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"es/men-and-women-who-gave-everything-2": {
 			"ground": "bdca16830133d8a7f8a68aae6ddd2719abc02f95a071ef208168daa2e54d7be8",
@@ -4342,14 +4599,30 @@
 			]
 		},
 		"es/pandita-ramabai-a-life-children": {
-			"ground": "3d32db6e8fd5880b34dbbd2ff8866c1929807f0685ac5ced55122e00cba1937f",
+			"ground": "abe4ff7ffffeb6664644328cbd5e132bada8923066366029e19ef029c1be7692",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.7,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[87, 310, 513, 385],
+					[147, 371, 453, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"es/pilgrims-progress": {
 			"ground": "3bc426aabc4fe55ad7e13551bb0f3e69fe020e5623a79d38219bd4b92a14f39c",
@@ -4722,14 +4995,31 @@
 			"bar": 0
 		},
 		"es/the-practice-of-the-presence-of-god-children": {
-			"ground": "e3dede1d3e7e935b326e71cfc1a8ef4eab9935e1bc9d843e18ac80165c6aaf42",
+			"ground": "8b55809a8f50e10925e58c090d22841d8ac46a538bb9be5baa8b305412128e93",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.8,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[120, 280, 480, 355],
+					[108, 341, 492, 416],
+					[89, 402, 511, 477]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
+			]
 		},
 		"es/the-secret-of-guidance": {
 			"ground": "ede183597e4b2fbf740ec87df22eb60429f8838022ea4146af06a9b2a6b8f01f",
@@ -5084,14 +5374,31 @@
 			"bar": 0
 		},
 		"fr/all-of-grace-teens": {
-			"ground": "c1cfdaa9c3f07405e29aa0c38c96a3bbb25588d22b52b4fd2480291a88ded850",
-			"style": "revival",
+			"ground": "e64913b5721d405b7dc7220fed652c4995c64057828d48681ab28498f805509b",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.5,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[171, 275, 429, 351],
+					[125, 341, 475, 417],
+					[112, 407, 488, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
 		},
 		"fr/amanda-smith-autobiography-children": {
 			"ground": "ffff2a806865952f721cbedbaae55cd25cf7f1e8b019a13a83e163f3ab66b998",
@@ -5230,14 +5537,30 @@
 			]
 		},
 		"fr/c-s-lewis-a-life-children": {
-			"ground": "ed48933806b1f3c2e377e86a438e8d351b9f355e45d599f96a1646917d1dcafc",
+			"ground": "17b9a8668b4b630d4a49a43d9d316aebc4dc8d1a83527fffe052e6e70e7ff84b",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[92, 310, 508, 385],
+					[153, 371, 447, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"fr/cheque-book": {
 			"ground": "a21978dfd6cf84cc3bba17e06faec15d3d71688b2371ba093fc9aad0a215d101",
@@ -5286,14 +5609,30 @@
 			"bar": 0
 		},
 		"fr/corrie-ten-boom-a-life-children": {
-			"ground": "a67f51f3334aa3bdc1c6e8d000344abba0800b5430d44dd8b346386b8a88c562",
+			"ground": "17f04d9f903158380192031bc6f28e5c183caaee49a6002a51d1546265f1687c",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.9,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[89, 310, 511, 385],
+					[78, 371, 522, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"fr/days-of-heaven-upon-earth": {
 			"ground": "0b873fc50e60b5815bed6bb557c833a71d28bd67eb8ee8f104c0f709149679d7",
@@ -5316,14 +5655,30 @@
 			"bar": 0.05
 		},
 		"fr/elisabeth-elliot-a-life-children": {
-			"ground": "98c2b7d13182115c6915473e015ed033848ab457efda0780dbb049cf74c3f7b7",
+			"ground": "76bed2f5d79803307a7ee3db66ff271d2ffe84a17aef332ca741f3fa28a8e7fb",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[134, 102, 466, 131]
+				],
+				"title": [
+					[112, 310, 488, 385],
+					[79, 371, 521, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"fr/feasting-at-the-table": {
 			"ground": "6e0eeb78b81466700d36d3c4bd910186a8ac00efbe55b57b93792ce7912394ad",
@@ -5488,14 +5843,31 @@
 			"bar": 0
 		},
 		"fr/john-hyde-a-life-children": {
-			"ground": "b384ad7b1edc7e2e98ef14e031fc2889cff8b16ba7c98b47ff95340f49e14d34",
+			"ground": "373dd14fe3a562c2df9a14861d9dc195daecd1a1b8332969ba63f0efda33e9da",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[118, 280, 482, 355],
+					[185, 341, 415, 416],
+					[122, 402, 478, 477]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
+			]
 		},
 		"fr/life-of-pascal": {
 			"ground": "84bc72d5d16e144ddd91aa7a7780ef435b5701552787fb9739d915c2a3eb68c4",
@@ -5536,14 +5908,30 @@
 			"bar": 0.11
 		},
 		"fr/mary-slessor-a-life-children": {
-			"ground": "361fe9e1ff572cfa4d07de91a902709d275704e1447cb97748409bfe000a2e90",
+			"ground": "71a1cb25630bf357ec5904d146578672310e3774ef677827f980ba3bf581836c",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[170, 102, 430, 131]
+				],
+				"title": [
+					[133, 310, 467, 385],
+					[79, 371, 521, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"fr/men-and-women-who-gave-everything-2": {
 			"ground": "37d20d2cce16372fa2f81a04a1bae2174eaebd10eb84c19602c67d7bf718b711",
@@ -5614,14 +6002,30 @@
 			"bar": 0
 		},
 		"fr/pandita-ramabai-a-life-children": {
-			"ground": "31c4ba2afaeffa6dc144b73aa0c96518eff50e89dea8d16508993f83b1f8881b",
+			"ground": "578b9b129d985b4c985ebfa5a1a3ee85f98bc9c2b5765d106832360a0930a968",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.7,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[87, 310, 513, 385],
+					[122, 371, 478, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"fr/pensees": {
 			"ground": "54e6f8e465e4cd96c664b866a1c258f03ee710c5a9d86a3de85c7b4ef6044647",
@@ -6126,14 +6530,31 @@
 			"bar": 0
 		},
 		"fr/the-practice-of-the-presence-of-god-children": {
-			"ground": "558a670e92cdc016af67f58374e1c048e86ed81a2dd7227f910d62e098db23c9",
+			"ground": "3054ae61c1dc370b881658418e8972b0fabd7ee7567a3a095bf5aedcf0191437",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.8,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[123, 295, 477, 358],
+					[118, 346, 482, 409],
+					[152, 397, 448, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				302,
+				493
+			]
 		},
 		"fr/the-secret-of-guidance": {
 			"ground": "33fd3482db54613b285864550cb2c83d65bd10d3c89507ea5d4e91c7bf811008",
@@ -6337,14 +6758,31 @@
 			"bar": 0
 		},
 		"grace-abounding-teens": {
-			"ground": "90e333e1cb8c434e7354ee8784eaad8b43398454185ae638f39fc7b0e6880f2d",
-			"style": "press",
+			"ground": "2e3e0cfaddd6d6594f883862b4a64ba8f76c6cc7b8a56e7b4df367a5f1f1e41f",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.5,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[177, 102, 423, 131]
+				],
+				"title": [
+					[211, 275, 389, 351],
+					[133, 341, 467, 417],
+					[131, 407, 469, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
 		},
 		"grace-for-grace-2": {
 			"ground": "bdbb5ca5e1e0e64dde3d1accd097a32e70de1ecff3019b424741a2a82d6162a4",
@@ -7343,24 +7781,56 @@
 			]
 		},
 		"john-hyde-a-life-children": {
-			"ground": "a585a74433dc23f38332aa70fc3a974a2ecc766df17afee9e0ebb25655199bf4",
+			"ground": "48ca140f105374dbc86514fa5926957c0a4867f8305ab1dadcd131488dbda6d4",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[132, 310, 468, 385],
+					[125, 371, 475, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"john-hyde-a-life-teens": {
-			"ground": "ccf7e06a9c7916c467406f6364dfebe0bbe420799b5ce6ad3190a2b8ae5d024c",
+			"ground": "9577250431efa7f3d74144a7be536201c730008ea054e4b1967fc27953891895",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.65,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[94, 308, 506, 384],
+					[131, 374, 469, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"journal-of-an-expedition-up-the-niger": {
 			"ground": "37494b21a674597e513108409f2bfd2dfeca857a53d78b9bbb7e51ffe34492d3",
@@ -9264,24 +9734,56 @@
 			]
 		},
 		"mary-slessor-a-life-children": {
-			"ground": "6512bb95393f664ee05c7bf28d4d6dd6d8416bed32752b8c66265ea61b438d27",
+			"ground": "cb4808c3a0b3b48184d8f8a2093e9064df20b3b57243d29b2241318e8c4174e2",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[170, 102, 430, 131]
+				],
+				"title": [
+					[133, 310, 467, 385],
+					[125, 371, 475, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"mary-slessor-a-life-teens": {
-			"ground": "12b20bcfc9ea94b11700b2652d44ae89f186518f2553598bf66ac8386f5af017",
+			"ground": "78726bc8735502355b7e8177dd01f0682df106ce13785294c7b47411844b4951",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.8,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[170, 102, 430, 131]
+				],
+				"title": [
+					[105, 308, 495, 384],
+					[131, 374, 469, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"ministry-of-intercession": {
 			"ground": "c29b4e95738f0b032d0f2181c4a32596814abd3bee59c86d7d3f189401531b4f",
@@ -9478,24 +9980,57 @@
 			]
 		},
 		"pandita-ramabai-a-life-children": {
-			"ground": "d8f4cbdc29f35b484c008fb48360796d1be2630d83af431a491a963b8e53bc79",
+			"ground": "9bda02436d9b08abebb2e4d16897515777eca75fb672cdaae00f5168fc40bfee",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.7,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[87, 310, 513, 385],
+					[125, 371, 475, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"pandita-ramabai-a-life-teens": {
-			"ground": "88dcd829b5339008360c166c7951540c2d83fe17990f73d75eb1efe9f42a3c7a",
+			"ground": "f04db418a7c5c787a808f4b7a653e3d950565f2bbe87082d2e0ef8b0427b6891",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.35,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[182, 275, 418, 351],
+					[165, 341, 435, 417],
+					[131, 407, 469, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
 		},
 		"paradise-lost": {
 			"ground": "1376e1ad2ef24885e058a912da76a841b3d991190a0454afdf01674c1f690416",
@@ -9715,14 +10250,31 @@
 			"bar": 0
 		},
 		"pt/all-of-grace-teens": {
-			"ground": "c3bbd44f7bfd068afc51d109d2c74e57d2ec8fd4d2e106d3fe04fc3c6e67f6f4",
-			"style": "revival",
+			"ground": "f9059a10987d7e0b423e8f24e2e783a9591cf62d2f69dab712c1bf062cc7bcb4",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.5,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[152, 275, 448, 351],
+					[121, 341, 479, 417],
+					[90, 407, 510, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
 		},
 		"pt/all-things-for-good": {
 			"ground": "767a664b42a31f560158f39b7714037e7f125852b2b30893774334ce5df37c4b",
@@ -9838,14 +10390,30 @@
 			]
 		},
 		"pt/c-s-lewis-a-life-children": {
-			"ground": "c0062bc4650e82545807655d5e3af83eaae72aa284366848d4e435958b8ce97c",
+			"ground": "bd564f6c4c15a1ed6fbb725bead149e6414e40f602bd9c5a86d755a5dbb23197",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[166, 310, 434, 385],
+					[105, 371, 495, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"pt/cheque-book": {
 			"ground": "d5b24d6d237dc26380030d5597707659508f5b8ed69c8be8969fb3ebbd82bfce",
@@ -9884,14 +10452,30 @@
 			]
 		},
 		"pt/corrie-ten-boom-a-life-children": {
-			"ground": "10897eae8f3edce9e81e738089978e8c333e90338db9fbc606ac5ef2965d7dd8",
+			"ground": "271bc831651b08bd2a2a1a8632b932f3b6719c1462c591ce9e5818da30344972",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.9,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[89, 310, 511, 385],
+					[105, 371, 495, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"pt/days-of-heaven-upon-earth": {
 			"ground": "95d7464227be056bd368c48c94511d8aa30b9f30465bfd728feb33da0c176b3b",
@@ -9914,14 +10498,30 @@
 			"bar": 0.05
 		},
 		"pt/elisabeth-elliot-a-life-children": {
-			"ground": "f03d3bf3a5e2d07f7558c7cb164acdb0658778dcb6afba594b7a029fdae4940c",
+			"ground": "72cadffce4c13b6a3f866e317d26beaf495d48e80479ccb953fb20b89335899c",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[134, 102, 466, 131]
+				],
+				"title": [
+					[112, 310, 488, 385],
+					[105, 371, 495, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"pt/gleanings-among-the-sheaves": {
 			"ground": "faff5c2c2ea1a2855af9a50f49b2cbfb760524820994711194fcdb57252c6b45",
@@ -10058,14 +10658,31 @@
 			"bar": 0
 		},
 		"pt/john-hyde-a-life-children": {
-			"ground": "ba8fc6e1a0a327b9f348d44bc3e58b1e34826cc7285bf6ca822d6f9e1fd16943",
+			"ground": "61b9c913e7ce657c96c12b72e234b49f9a3f0cd0d415808f5ba2cc26f1a1eca1",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[99, 280, 501, 355],
+					[168, 341, 432, 416],
+					[105, 402, 495, 477]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
+			]
 		},
 		"pt/lord-teach-us-to-pray-2": {
 			"ground": "397def9b8982b38f14df95f10721f80ed89838a9baf5187deea2abd21ff5c0b2",
@@ -10078,14 +10695,30 @@
 			"bar": 0.11
 		},
 		"pt/mary-slessor-a-life-children": {
-			"ground": "4c6a3efd612d6835a4419ed12a62f43af46555c70759bbfe995fc66c18a9cf94",
+			"ground": "5e99cf2c2900f3ba1213faf7b28c0d509f3df4c252c817f22191681e171e151c",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[170, 102, 430, 131]
+				],
+				"title": [
+					[133, 310, 467, 385],
+					[105, 371, 495, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"pt/men-of-prayer-2": {
 			"ground": "4ccfa79e0cf284fe44c0dbea3faf6ed4eff3f259334e6e7386da1ebd3feaacc6",
@@ -10124,14 +10757,30 @@
 			"bar": 0
 		},
 		"pt/pandita-ramabai-a-life-children": {
-			"ground": "16b9831d9eec130784e8bdef4ba96ef14dda456c11d2b6066d2dd52ba3e5483d",
+			"ground": "d52cd99a2a84c20704589dd87da7d7f4ad2b215725ec0e0398529dc6e971c00b",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.7,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[87, 310, 513, 385],
+					[105, 371, 495, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"pt/pilgrims-progress": {
 			"ground": "e51826a893bc398df857ac4c8ab4bca31cb623a1bd0c7171854592c0a31f0439",
@@ -10522,14 +11171,31 @@
 			"bar": 0
 		},
 		"pt/the-practice-of-the-presence-of-god-children": {
-			"ground": "2c6bee7d03dd3111023d39e39e29c3496941b75a59d554a8f550e62626ab006f",
+			"ground": "755e4fc46d876d8354b00cf18f816e2b1d034bc72ebf28dad4d8944fe03a3209",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.8,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[145, 280, 455, 355],
+					[75, 341, 525, 416],
+					[105, 402, 495, 477]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
+			]
 		},
 		"pt/the-secret-of-guidance": {
 			"ground": "f3af40eb8611ef08eb13f1698ec3e7523a33f6155067304e85ab824f10b935fa",
@@ -10714,14 +11380,34 @@
 			"bar": 0
 		},
 		"real-questions-1": {
-			"ground": "9802769816ef6be75919d194afc791abe778006379ef01cc1f9d1383e1e9732e",
+			"ground": "565902d293fe4bb30e57291f4d557c06b83f4dd9cdec950fa6b0d65de7557bb7",
 			"style": "originals",
 			"volume": "1",
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.8,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 269, 308, 313],
+					[75, 347, 525, 423]
+				],
+				"subtitle": [
+					[185, 481, 415, 509],
+					[155, 509, 445, 537]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				537
+			]
 		},
 		"reality-of-prayer": {
 			"ground": "3ff7e009de2d59ab5a76e18ec46a5100eaaf0141c4d00598d254897c97e0cca9",
@@ -11025,24 +11711,58 @@
 			]
 		},
 		"samuel-ajayi-crowther-a-life-children": {
-			"ground": "e1c749a2b90c50a6581fd1dd7454d59e2b495a674bd287aa98fca819ce154b32",
+			"ground": "a9dec1538a0dc3687dc1ce6f1ac53ec59046bfaa0e53599abc060563f06cc7c3",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.85,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[72, 102, 528, 131]
+				],
+				"title": [
+					[136, 280, 464, 355],
+					[178, 341, 422, 416],
+					[125, 402, 475, 477]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
+			]
 		},
 		"samuel-ajayi-crowther-a-life-teens": {
-			"ground": "21e4e19a6a4199d1ff52e80b125a578fdc1cb90545997d18f1c92deb6b4695d9",
+			"ground": "d38e5d96ca831403dd12fcc17debeb16882939995bd209e6c825fadb367e1a08",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[72, 102, 528, 131]
+				],
+				"title": [
+					[104, 275, 496, 351],
+					[155, 341, 445, 417],
+					[131, 407, 469, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
 		},
 		"school-of-prayer": {
 			"ground": "e9955f64f362dc3296da1cb3b3229f6aeab7813174b351455a9d29a00f569eb2",
@@ -11269,14 +11989,30 @@
 			"bar": 0
 		},
 		"sw/all-of-grace-teens": {
-			"ground": "e6c5d76ec85972d20d6d09f7f3468784fabc100b81f29dfdb96aa333468dbe3f",
-			"style": "revival",
+			"ground": "7c729a81fab30f4367b3e00019f817507dcdff911fbe260345d78512034f68a2",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.5,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[56, 308, 544, 384],
+					[108, 374, 492, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"sw/amanda-smith-autobiography-children": {
 			"ground": "05d364b0f318f4bc3f0db811825f62d89ee34ab5e54312d415eafb61479c4716",
@@ -11489,14 +12225,30 @@
 			]
 		},
 		"sw/c-s-lewis-a-life-children": {
-			"ground": "b24db527cc108b0262c15cbc917c91f2a317c62386b4959419dbf59f12223d0a",
+			"ground": "a66e520b658e50e6486880937d2c16cf704c7df106d19d30b08e0ffb1027254f",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[166, 310, 434, 385],
+					[129, 371, 471, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"sw/cheque-book": {
 			"ground": "0833bf4d3686764b58c07d24a0456e8b730a2e50746e64a5d24424e95da739fe",
@@ -11545,14 +12297,30 @@
 			"bar": 0
 		},
 		"sw/corrie-ten-boom-a-life-children": {
-			"ground": "ea17e3cfcc9f6e360c4dd55b12f7fe15b85cb124b27a3edab73b3469877d7659",
+			"ground": "5306011c27cf4958f956d186192238229527644d4094baf20f0dbedeb58b6e7d",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.9,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[89, 310, 511, 385],
+					[129, 371, 471, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"sw/days-of-heaven-upon-earth": {
 			"ground": "ce0c94b9e37f6cd7dc116c1e640202290b71f0033cd5a175a7711cd964749611",
@@ -11605,14 +12373,30 @@
 			]
 		},
 		"sw/elisabeth-elliot-a-life-children": {
-			"ground": "72c2daa3727b3be4bbeb7dcb7d3465185e85c952512cd57e8316af80b8ae4b1a",
+			"ground": "99cf87e6c78fa41e403178577e95fe7826529622508294b9fbd7a0ac422b1703",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[134, 102, 466, 131]
+				],
+				"title": [
+					[112, 310, 488, 385],
+					[129, 371, 471, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"sw/feasting-at-the-table": {
 			"ground": "0a9538b84989b2136d659baeb822f7b87cdaa94c95d542f020400bd6c94abb70",
@@ -11768,14 +12552,30 @@
 			"bar": 0
 		},
 		"sw/john-hyde-a-life-children": {
-			"ground": "606b9d07797da5f8f5ffe940bfb5a9d2d6e040c2e53cca2ab0e840578afb68df",
+			"ground": "824982919da0ac8625927d483ccf863dba5e28a6bd7992726d54b44766934b9d",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[97, 310, 503, 385],
+					[129, 371, 471, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"sw/life-and-diary-of-david-brainerd": {
 			"ground": "29c596e666e325cc4a1eaeba34dd185570bf828c97c4d0078c31308ec20386e4",
@@ -11817,14 +12617,30 @@
 			"bar": 0.11
 		},
 		"sw/mary-slessor-a-life-children": {
-			"ground": "463ff025cdb13ccffab80ad161ddde65a4fefbff1c8851d9a2269a39136d8de5",
+			"ground": "b3a2bacbc219cb5e89b7a846043e9c7050ecd48b51644d3a27234f66a0bba460",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[170, 102, 430, 131]
+				],
+				"title": [
+					[133, 310, 467, 385],
+					[129, 371, 471, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"sw/men-and-women-who-gave-everything-2": {
 			"ground": "f750a654defcb6fc6fb00b709dc878442c9cbb31346960958f7abe4edc40374e",
@@ -11920,14 +12736,30 @@
 			]
 		},
 		"sw/pandita-ramabai-a-life-children": {
-			"ground": "131dfbd73bbbb97f4ab15095d4f4db9fcb42051c32ccb8086d95f2acd3ea8fd8",
+			"ground": "082a0ae07be505929fd1a78b8c106405d703880cf2dbcade8ceacc7b33ba9928",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.7,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[87, 310, 513, 385],
+					[129, 371, 471, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"sw/pilgrims-progress": {
 			"ground": "223802626063a563598e1460af2e3e6fcc71c4cc9434b420bfeafc338dc62867",
@@ -12127,24 +12959,58 @@
 			]
 		},
 		"sw/samuel-ajayi-crowther-a-life-children": {
-			"ground": "e43596450b72b5afe8db7ad14dd7b99d0084f6913f8256ff6309a31076632c21",
+			"ground": "159430fa139ffb97373d01dae46532bdacce4deaa5ca8b5ea4b9155a375133a0",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.85,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[72, 102, 528, 131]
+				],
+				"title": [
+					[136, 280, 464, 355],
+					[178, 341, 422, 416],
+					[129, 402, 471, 477]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
+			]
 		},
 		"sw/samuel-ajayi-crowther-a-life-teens": {
-			"ground": "e12a62776ebb9e2e5e8c6bfe1e6406e88e5c2ce15db901b0eda26d84da0c1813",
+			"ground": "48578851414f8e7c2544c16f15d24a3636b364bc1551cb749dfc4b3750d4ea8f",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[72, 102, 528, 131]
+				],
+				"title": [
+					[104, 275, 496, 351],
+					[155, 341, 445, 417],
+					[108, 407, 492, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
 		},
 		"sw/school-of-prayer": {
 			"ground": "ba1d7796dd35ae8f92d3e873d37ff74d0adde6857d725cb75a7261a02f665ac1",
@@ -12442,14 +13308,31 @@
 			"bar": 0
 		},
 		"sw/the-practice-of-the-presence-of-god-children": {
-			"ground": "a5c2df16c7b3cb203d14cebdf60d171ac3732e9e1e467660a494f00bbd865d3a",
+			"ground": "324ba20a9dafa2e09877041ab2f6035c8762c3fb30eba544392e429713979d55",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.8,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[95, 280, 505, 355],
+					[153, 341, 447, 416],
+					[129, 402, 471, 477]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
+			]
 		},
 		"sw/the-secret-of-guidance": {
 			"ground": "09361a66fd1589c9f38319df13c095ca1b66e66425fa7893f8b044e6cc50fdbf",
@@ -12856,14 +13739,31 @@
 			"bar": 0
 		},
 		"the-practice-of-the-presence-of-god-children": {
-			"ground": "50ee444ad36f03a1f553c281fda8be17ab2794a7de51677a57abc03b3c40d87a",
+			"ground": "828c72142cea6284a4bb73a8ba14d883d90ebf881bf983996e2904ea1f624f15",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.8,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[140, 295, 460, 358],
+					[135, 346, 465, 409],
+					[104, 397, 496, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				302,
+				493
+			]
 		},
 		"the-princess-and-the-goblin": {
 			"ground": "3854b45419aceda3308db4ac758ccb413248ab37ebae1acf17e1f086b1468a70",
@@ -13675,14 +14575,30 @@
 			]
 		},
 		"watchman-nee-a-life-teens": {
-			"ground": "9e45fec0289e28d91b682c69dd92b01ba616d1e14821862193e98dd71dbe28b7",
+			"ground": "ca9c62fb47f6b4a94d6da661ed7f0313931090c5cad7d0ddaf973491e52b01e1",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[161, 102, 439, 131]
+				],
+				"title": [
+					[73, 308, 527, 384],
+					[131, 374, 469, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"way-into-holiest": {
 			"ground": "4eb25026c8e1354506a7d9c7f63eb4d6eae92a26393667d351898928b3e38636",
