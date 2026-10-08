@@ -1,0 +1,115 @@
+{
+ "kind": "book",
+ "slug": "john-hyde-a-life-children",
+ "language": "sw",
+ "job_issue": 5553,
+ "pull_request": null,
+ "note": [
+  "Each chapter's opening verse (“from Matthew 9”, cited by chapter only, as in the English) is in the Swahili Union Version (SUV) tradition the shipped sw corpus quotes. Where a shipped *.sw.json already carries those exact SUV words they were pasted verbatim and the row is `mined` with that file; partial verses carry an a/b suffix for the half quoted.",
+  "Self-rendered, needs a native check: Isaiah 6:8 and Philippians 4:8 follow the English in eliding a middle clause (“and who will go for us?”; the middle of Phil 4:8), so the SUV words are kept but the sentence is no longer a verbatim run; chapter 2's closing prayer splits Isaiah 6:8b at a full stop (“Mimi hapa. Nitume mimi.”) as the English does. Zechariah 2:8 in chapter 10 is God speaking in the first person (“mboni ya jicho langu”), against SUV's “awagusaye ninyi … jicho lake”, following the English's “apple of mine eye”. Revelation 12:10 (“mshtaki wa ndugu”) is an allusion in Hyde's own confession and matches the shipped sw John Hyde bio's wording.",
+  "Nickname: “Praying Hyde” is rendered “Hyde Mwombaji” (title, description, Q&A, chapters 1 and 12), with the English given once in chapter 1. The sw author bio keeps the English “Praying Hyde” as the title of McGaw's 1923 book, which this edition does not cite. “The man who never sleeps” is “mtu asiyelala kamwe”.",
+  "Clock times in chapter 8 are CONVERTED to Swahili reckoning (8 a.m. → “saa mbili asubuhi”, 3.30 p.m. → “saa tisa na nusu alasiri”), matching the a-retrospect-children.sw convention."
+ ],
+ "references": [
+  {
+   "reference": "Matthew 9:38",
+   "chapter_order": 1,
+   "block_index": 0,
+   "status": "mined",
+   "source_file": "a-retrospect-teens.sw.json"
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "chapter_order": 2,
+   "block_index": 0,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 6:8b",
+   "chapter_order": 2,
+   "block_index": 8,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 11:13b",
+   "chapter_order": 3,
+   "block_index": 0,
+   "status": "mined",
+   "source_file": "god-glorified-in-mans-dependence.sw.json"
+  },
+  {
+   "reference": "Psalm 51:10a",
+   "chapter_order": 4,
+   "block_index": 0,
+   "status": "mined",
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Exodus 4:12b",
+   "chapter_order": 5,
+   "block_index": 0,
+   "status": "mined",
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Mark 1:35",
+   "chapter_order": 6,
+   "block_index": 0,
+   "status": "mined",
+   "source_file": "power-through-prayer.sw.json"
+  },
+  {
+   "reference": "Zechariah 4:6b",
+   "chapter_order": 7,
+   "block_index": 0,
+   "status": "mined",
+   "source_file": "the-life-of-trust-teens.sw.json"
+  },
+  {
+   "reference": "Psalm 81:10b",
+   "chapter_order": 8,
+   "block_index": 0,
+   "status": "mined",
+   "source_file": "answers-to-prayer.sw.json"
+  },
+  {
+   "reference": "Luke 19:10",
+   "chapter_order": 9,
+   "block_index": 0,
+   "status": "mined",
+   "source_file": "life-and-diary-of-david-brainerd.sw.json"
+  },
+  {
+   "reference": "Philippians 4:8",
+   "chapter_order": 10,
+   "block_index": 0,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Zechariah 2:8",
+   "chapter_order": 10,
+   "block_index": 2,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 12:10",
+   "chapter_order": 10,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 15:20b",
+   "chapter_order": 11,
+   "block_index": 0,
+   "status": "mined",
+   "source_file": "the-life-of-trust-teens.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 15:57",
+   "chapter_order": 12,
+   "block_index": 0,
+   "status": "mined",
+   "source_file": "a-living-hope-of-the-hereafter.sw.json"
+  }
+ ]
+}
