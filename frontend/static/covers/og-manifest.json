@@ -11374,6 +11374,16 @@
 				517
 			]
 		},
+		"sw/elisabeth-elliot-a-life-children": {
+			"ground": "72c2daa3727b3be4bbeb7dcb7d3465185e85c952512cd57e8316af80b8ae4b1a",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"sw/feasting-at-the-table": {
 			"ground": "0a9538b84989b2136d659baeb822f7b87cdaa94c95d542f020400bd6c94abb70",
 			"style": "lettered",
