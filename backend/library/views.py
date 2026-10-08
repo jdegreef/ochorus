@@ -864,7 +864,8 @@ AUDIENCE_STARTS = {
 #: Hubs where a series holding a single book in the page's language shows that
 #: book as a card, not as a one-cover series tile: the teens hub sells its books
 #: one by one (each card leads with its hook), and a lone volume in a tile is a
-#: book hidden behind a click (Real Questions, while it is Book 1 alone). Not
+#: book hidden behind a click (Real Questions, while it is Book 1 alone). The
+#: book heads More to read rather than taking its place in the topic's order. Not
 #: the young readers' hub, whose path cards point at its series by name (Brave
 #: for God has one translated volume in several languages).
 SOLO_SERIES_AS_BOOKS = {Series.Audience.TEENS}
@@ -1012,7 +1013,7 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
 
     - ``series`` — the series whose ``audience`` is this one (the /series rows),
       less one holding a single book here on a ``SOLO_SERIES_AS_BOOKS`` hub,
-      whose book joins ``more`` (or ``editions``) as a card instead;
+      whose book leads ``more`` (or joins ``editions``) as a card instead;
     - ``editions`` — the retold editions (``-children`` / ``-teens``) that no
       such series already holds;
     - ``more`` — the rest of the audience's curated topic shelf, when that
@@ -1062,10 +1063,11 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
         # The topic's own order — its curator's — not the shelf's. An original
         # whose slug merely ends in the suffix (Divine Songs) reaches the hub here.
         by_slug = {b.slug: b for b in books}
-        # A lone series volume the topic doesn't list joins at the end.
+        # A lone series volume leads — the newest series' first book, which a
+        # topic-ordered shelf would otherwise bury at its end.
         more = [
             by_slug[s]
-            for s in dict.fromkeys([*topic_slugs, *solo])
+            for s in dict.fromkeys([*solo, *topic_slugs])
             if s in by_slug and s not in claimed
         ]
         claimed |= {b.slug for b in more}

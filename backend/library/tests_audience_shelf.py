@@ -86,9 +86,14 @@ class AudienceShelfTests(TestCase):
         self._book("real-questions-1", series=solo)
         self._book("anchored-1", series=pair)
         self._book("anchored-2", series=pair)
+        self._book("all-of-grace")
+        teens = Topic.objects.create(slug="for-teens", title="For Teens")
+        for slug in ("all-of-grace", "real-questions-1"):
+            TopicBook.objects.create(topic=teens, book_slug=slug)
         data = self._get("teens")
         self.assertEqual(self._slugs(data["series"]), ["anchored"])
-        self.assertEqual(self._slugs(data["more"]), ["real-questions-1"])
+        # It leads More to read, ahead of the topic's own order.
+        self.assertEqual(self._slugs(data["more"]), ["real-questions-1", "all-of-grace"])
 
     def test_a_young_readers_series_of_one_stays_a_series(self):
         self._book("bfg-1", series=self.series)
