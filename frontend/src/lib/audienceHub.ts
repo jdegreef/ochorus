@@ -68,6 +68,9 @@ export interface AudienceHubConfig {
 	/** The note for the adults, folded shut: on a page the reader chose for
 	 *  themselves, a note about them shouldn't sit open at the end. */
 	foldParents: boolean;
+	/** Each book card carries its one-line hook (`$lib/bookHooks`), where the
+	 *  catalogue has one: the teenager picks by the story, not the cover. */
+	hooks: boolean;
 }
 
 export const YOUNG_READERS_HUB: AudienceHubConfig = {
@@ -93,7 +96,8 @@ export const YOUNG_READERS_HUB: AudienceHubConfig = {
 	],
 	peopleHeadingKey: 'audience.peopleHeadingYoung',
 	peopleNoteKey: 'audience.peopleNoteYoung',
-	foldParents: false
+	foldParents: false,
+	hooks: false
 };
 
 export const TEENS_HUB: AudienceHubConfig = {
@@ -119,7 +123,8 @@ export const TEENS_HUB: AudienceHubConfig = {
 	],
 	peopleHeadingKey: 'audience.peopleHeadingTeens',
 	peopleNoteKey: 'audience.peopleNoteTeens',
-	foldParents: true
+	foldParents: true,
+	hooks: true
 };
 
 export const AUDIENCE_HUBS: AudienceHubConfig[] = [YOUNG_READERS_HUB, TEENS_HUB];

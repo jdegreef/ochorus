@@ -27,6 +27,8 @@ class I18n {
 		const fn = dict[toSnake(key)];
 		return fn ? fn() : key;
 	};
+	/** Whether the catalogue has this key — for keys built from data. */
+	has = (key: string): boolean => toSnake(key) in dict;
 }
 
 export const i18n = new I18n();
