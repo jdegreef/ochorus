@@ -98,6 +98,12 @@ EXPORT_PILOT = frozenset({
     # parent author is the imprint, so, like the Portraits themselves, these have
     # no About the Author page. The Teens edition quotes only the public-domain ASV.
     ("samuel-ajayi-crowther-a-life-children", "en"),
+    ("mary-slessor-a-life-children", "en"),
+    ("pandita-ramabai-a-life-children", "en"),
+    ("john-hyde-a-life-children", "en"),
+    ("corrie-ten-boom-a-life-children", "en"),
+    ("c-s-lewis-a-life-children", "en"),
+    ("elisabeth-elliot-a-life-children", "en"),
     ("samuel-ajayi-crowther-a-life-teens", "en"),
     # The other Ochorus Originals in English: Key Teachings, Portraits of Courage
     # and the stand-alone books. Each attribution opens "© Ochorus" (Growing in

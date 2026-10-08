@@ -3383,6 +3383,16 @@
 				532
 			]
 		},
+		"c-s-lewis-a-life-children": {
+			"ground": "e3c9080216cc6d1eb420d9b95c467aa445a34278985220bd37791e47b3d32c90",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"c-s-lewis-a-life-teens": {
 			"ground": "b0ecfb1cad4393ca53925debb8c1eb02f483b6f81fa2e519f899bc882175165e",
 			"style": "originals",
@@ -3470,6 +3480,16 @@
 				263,
 				532
 			]
+		},
+		"corrie-ten-boom-a-life-children": {
+			"ground": "06a330f67b0a6fa9879bc76ce31f57a33168931f553cd7d64a1f000d55f061b1",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"corrie-ten-boom-a-life-teens": {
 			"ground": "1cd7e7ff6e1bd2e33dab4c5b99b45d1121c10418cd4f7f0e7746dc778e1966ae",
@@ -3600,6 +3620,16 @@
 				263,
 				532
 			]
+		},
+		"elisabeth-elliot-a-life-children": {
+			"ground": "2a08e4e779580d63dd7844e3eec08784176ee24d9b35bdc8d2b02b4b093f376a",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"elisabeth-elliot-a-life-teens": {
 			"ground": "6ac6c2e7eb76a59ab05f5a3c6c2e43e9fe7ac6bb4a7620dd5531ddf03e83decc",
@@ -7162,6 +7192,16 @@
 				532
 			]
 		},
+		"john-hyde-a-life-children": {
+			"ground": "a585a74433dc23f38332aa70fc3a974a2ecc766df17afee9e0ebb25655199bf4",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"john-hyde-a-life-teens": {
 			"ground": "ccf7e06a9c7916c467406f6364dfebe0bbe420799b5ce6ad3190a2b8ae5d024c",
 			"style": "originals",
@@ -9063,6 +9103,16 @@
 				532
 			]
 		},
+		"mary-slessor-a-life-children": {
+			"ground": "6512bb95393f664ee05c7bf28d4d6dd6d8416bed32752b8c66265ea61b438d27",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"mary-slessor-a-life-teens": {
 			"ground": "12b20bcfc9ea94b11700b2652d44ae89f186518f2553598bf66ac8386f5af017",
 			"style": "originals",
@@ -9266,6 +9316,16 @@
 				263,
 				532
 			]
+		},
+		"pandita-ramabai-a-life-children": {
+			"ground": "d8f4cbdc29f35b484c008fb48360796d1be2630d83af431a491a963b8e53bc79",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"pandita-ramabai-a-life-teens": {
 			"ground": "88dcd829b5339008360c166c7951540c2d83fe17990f73d75eb1efe9f42a3c7a",
