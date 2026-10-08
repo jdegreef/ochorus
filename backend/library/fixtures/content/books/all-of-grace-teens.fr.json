@@ -48,7 +48,9 @@
   "cover_url": "/covers/fr/all-of-grace-teens.svg",
   "pdf_url": "",
   "cover_color": "",
-  "series": null,
+  "series": [
+   "straight-talk"
+  ],
   "series_position": null,
   "sort_order": 137,
   "is_published": true,

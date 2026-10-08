@@ -48,7 +48,9 @@
   "cover_url": "/covers/art/the-life-of-trust-teens.jpg",
   "pdf_url": "",
   "cover_color": "",
-  "series": null,
+  "series": [
+   "straight-talk"
+  ],
   "series_position": null,
   "sort_order": 27,
   "is_published": true,
