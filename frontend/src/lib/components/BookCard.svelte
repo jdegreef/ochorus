@@ -32,8 +32,8 @@
 		showSeries = true,
 		/**
 		 * The time as a sitting ("~12 min a chapter", the series card's words)
-		 * rather than the whole book's: on the young-reader hubs, where "3 hr read" is what puts a
-		 * reader off and one chapter is the real commitment.
+		 * rather than the whole book's: on the young-reader hubs, where "3 hr
+		 * read" is what puts a reader off and one chapter is the real commitment.
 		 */
 		perChapter = false
 	}: {

@@ -938,6 +938,13 @@ AUDIENCE_PEOPLE_MAX = 16
 _STORY_TITLE_SEP = re.compile(r"\s*[:：፦]\s*")
 
 
+def split_story_title(title: str) -> tuple[str, str] | None:
+    """``(name, hook)`` from a story chapter's "Name: The Boy Who Looked"
+    title, or None when it isn't in that shape."""
+    parts = _STORY_TITLE_SEP.split(title, maxsplit=1)
+    return (parts[0], parts[1]) if len(parts) == 2 and all(parts) else None
+
+
 def _audience_people(series_rows: list[dict], language: str) -> list[dict]:
     """The hub's people strip: one face per story chapter of its series'
     anthologies (``BookPerson.chapter``), in reading order — series, volume,
@@ -956,7 +963,8 @@ def _audience_people(series_rows: list[dict], language: str) -> list[dict]:
     )
     if not members:
         return []
-    # Only the story chapters, not every chapter of every hub series book.
+    # The member books' member chapter numbers — a superset of the stories
+    # (dropped below), not every chapter of every hub series book.
     chapters = {
         (slug, n): (title, words)
         for slug, n, title, words in Chapter.objects.filter(
@@ -972,8 +980,7 @@ def _audience_people(series_rows: list[dict], language: str) -> list[dict]:
         if key in people or key not in chapters:
             continue
         title, words = chapters[key]
-        parts = _STORY_TITLE_SEP.split(title, maxsplit=1)
-        name, hook = parts if len(parts) == 2 and all(parts) else (m.person.name, title)
+        name, hook = split_story_title(title) or (m.person.name, title)
         people[key] = {
             "slug": m.person.slug,
             "name": name,
@@ -983,7 +990,7 @@ def _audience_people(series_rows: list[dict], language: str) -> list[dict]:
             "chapter": m.chapter,
             "words": words or None,
         }
-        if len(people) == AUDIENCE_PEOPLE_MAX:
+        if len(people) >= AUDIENCE_PEOPLE_MAX:
             break
     return list(people.values())
 

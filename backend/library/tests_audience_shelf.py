@@ -32,7 +32,7 @@ from .models import (
     TopicTranslation,
 )
 from .serializers import AUDIENCE_EDITION_SUFFIX, EDITION_SUFFIXES
-from .views import _STORY_TITLE_SEP, AUDIENCE_STARTS, AUDIENCE_TOPICS
+from .views import AUDIENCE_STARTS, AUDIENCE_TOPICS, split_story_title
 
 
 class AudienceShelfTests(TestCase):
@@ -288,11 +288,12 @@ class AudienceShelfTests(TestCase):
         unsplit = []
         for slug, members in BOOK_PEOPLE:
             chapters = {m[2] for m in members if len(m) == 3}
-            for path in sorted(books.glob(f"{slug}.*.json")) if chapters else ():
+            if not chapters:
+                continue
+            for path in sorted(books.glob(f"{slug}.*.json")):
                 for row in json.loads(path.read_text())[1:]:
                     f = row["fields"]
-                    parts = _STORY_TITLE_SEP.split(f["title"], maxsplit=1)
-                    if f["order"] in chapters and not (len(parts) == 2 and all(parts)):
+                    if f["order"] in chapters and split_story_title(f["title"]) is None:
                         unsplit.append((path.name, f["order"], f["title"]))
         self.assertEqual(unsplit, [])
 

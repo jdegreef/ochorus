@@ -172,8 +172,7 @@ export function hubPaths(hub: AudienceHubConfig, shelf: AudienceShelf): HubPath[
 			return start && { href: `/books/${start.slug}`, covers: [toBookTile(start)] };
 		}
 		if ('section' in to) {
-			// The card's strip shows three at most.
-			const covers = shelf.editions.slice(0, 3).map(toBookTile);
+			const covers = shelf.editions.map(toBookTile);
 			return covers.length ? { href: `#${to.section}`, covers } : null;
 		}
 		const series = shelf.series.find((s) => s.slug === to.series);
