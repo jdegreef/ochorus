@@ -345,8 +345,9 @@ BOOK_META_SCHEMA = {
         "title": {"type": "string"},
         "subtitle": {"type": "string"},
         "description": {"type": "string"},
+        "hook": {"type": "string"},
     },
-    "required": ["title", "subtitle", "description"],
+    "required": ["title", "subtitle", "description", "hook"],
     "additionalProperties": False,
 }
 
@@ -396,9 +397,9 @@ def translate_topic_meta(client, language: str, title: str, description: str) ->
 
 
 def translate_book_meta(
-    client, language: str, title: str, subtitle: str, description: str
+    client, language: str, title: str, subtitle: str, description: str, hook: str = ""
 ) -> dict:
-    """Translate the book's title/subtitle/description (single structured call)."""
+    """Translate the book's title/subtitle/description/hook (single structured call)."""
     response = client.messages.create(
         model=MODEL,
         max_tokens=2000,
@@ -410,8 +411,10 @@ def translate_book_meta(
                 "role": "user",
                 "content": (
                     "Translate this book's metadata. Return JSON with keys title, subtitle, "
-                    "description (keep empty strings empty).\n\n"
-                    f"title: {title}\nsubtitle: {subtitle}\ndescription: {description}"
+                    "description, hook (keep empty strings empty). The hook is a one-line "
+                    "pitch that sells the story: keep it punchy and informal.\n\n"
+                    f"title: {title}\nsubtitle: {subtitle}\ndescription: {description}\n"
+                    f"hook: {hook}"
                 ),
             }
         ],

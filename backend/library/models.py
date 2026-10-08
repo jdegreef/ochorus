@@ -594,6 +594,11 @@ class Book(models.Model):
     cover_byline = models.CharField(max_length=120, blank=True)
     # Short summary (a few sentences) — used on cards, lists and SEO meta.
     description = models.TextField(blank=True)
+    # One line that sells the story rather than the cover ("Amy Carmichael
+    # refused to make missions sound nice. This is what she actually saw in
+    # India.") — an editor's line, on the teens hub's book cards. Per-language
+    # like `description`, so a translation carries its own or none at all.
+    hook = models.CharField(max_length=200, blank=True)
     # Long-form "About this work" as cleaned HTML, the twin of Author.bio_html
     # and cleaned by the same sanitizer: what the work is, the situation it was
     # written into, and who it still repays. Rendered on the book page.

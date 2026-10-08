@@ -70,7 +70,7 @@ class Command(TranslateCommand):
         if target is None or force:
             self.stdout.write("→ translating book metadata…")
             meta = translate_book_meta(
-                client, language, source.title, source.subtitle, source.description
+                client, language, source.title, source.subtitle, source.description, source.hook
             )
             target, _ = Book.objects.update_or_create(
                 slug=slug,
@@ -80,6 +80,7 @@ class Command(TranslateCommand):
                     "title": meta["title"][:300] or source.title,
                     "subtitle": meta["subtitle"][:300],
                     "description": meta["description"],
+                    "hook": meta.get("hook", "")[:200],
                     "source_type": Book.SourceType.AI_UNREVIEWED,
                     # NOT source.cover_url: that is the English plate, and it
                     # carries the English title over a translated card. Point at

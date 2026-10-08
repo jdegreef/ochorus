@@ -488,6 +488,8 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
             "subtitle",
             "cover_title",
             "cover_byline",
+            # An editor's one-line pitch for the card; "" for most books.
+            "hook",
             "author",
             "source_type",
             "cover_color",
