@@ -3,6 +3,7 @@
  "slug": "holy-in-christ",
  "language": "lg",
  "job_issue": 1337,
+ "pull_request": 5593,
  "note": [
   "Scripture follows the Open Luganda Contemporary Bible (OLCB 2017, lug_bib — the lug text language_seed.py names). Every `mined` row was checked mechanically: its wording is a verbatim substring of the OLCB verse. `self_rendered` rows are Murray’s loose quotations, re-personed verses, merges, and places where the OLCB wording loses the word his argument turns on (each carries a `why`).",
   "Murray’s archaic citations (1 Pet. i. 15, 16) are given as modern OLCB references (1 Peetero 1:15-16); citations Murray got wrong are kept as he wrote them in the body (see the PR’s “Found, not fixed” list) while the row here names the verse actually quoted.",
