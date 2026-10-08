@@ -3,7 +3,7 @@
  "slug": "mary-slessor-a-life-children",
  "language": "fr",
  "job_issue": 5544,
- "pull_request": null,
+ "pull_request": 5582,
  "note": [
   "Scripture register is Louis Segond (1910), the register the shipped French corpus uses, checked verse by verse against the fra_lsg USFM on the ebible GitHub mirror. The English epigraphs (KJV-style or loose paraphrase, introduced “— from <Book> <chapter>”) are rendered “— d’après <Livre> <chapitre>” with Segond’s own wording and numbering (the English’s Psalm 30:5 is Segond 30:6); they carry no verse number, so the verse-consistency audit's (Book C:V) pairs never see them.",
   "A `mined` row is an exact substring of the cited shipped French file (Segond wording, Segond punctuation kept inside the quotation). The self_rendered rows are Segond wording copied from the fra_lsg mirror that no shipped French file carries verbatim (Psalm 27:10, Proverbs 17:17a, Psalm 82:4), and the chapter 3 lesson echo “Me voici. Envoie-moi.” (block 7), a child-register echo of Isaiah 6:8. Chapter 11 block 5 quotes Psalm 103:4 (« qui délivre ta vie de la fosse ») where the English quotes the KJV “redeemeth thy life from destruction”. AI-translated in-session; awaiting native review."
