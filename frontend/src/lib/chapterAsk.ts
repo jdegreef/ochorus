@@ -2,15 +2,19 @@ import { readJSON, writeJSON } from './persisted';
 
 /**
  * When the end-of-chapter "Keep your place" card may show to a signed-out
- * reader (ChapterEndAsk): once they have reached the end of a second chapter
- * on this device — a search visitor landing on chapter 7 has still only read
- * one. "Not now" hides it for a week; after three of those it stays away.
+ * reader (ChapterEndAsk): from the end of the first chapter they finish on
+ * this device, wherever they started. A search visitor landing on chapter 7
+ * who reads to its end has just shown the most intent they will, and about
+ * half of search visitors land mid-book, so waiting for a second chapter end
+ * lost most of them. Only an end actually reached counts (the card's
+ * IntersectionObserver), not a page opened. "Not now" hides it for a week;
+ * after three of those it stays away.
  */
 const KEY = 'ochorus:chapter_ask';
 const ENDS_KEY = 'ochorus:chapter_ends';
 /** Chapter ends needed before the card shows. */
-export const ENDS_BEFORE_ASK = 2;
-/** Only "at least two" matters, so a short list is plenty. */
+export const ENDS_BEFORE_ASK = 1;
+/** Only "at least one" matters, so a short list is plenty. */
 const ENDS_KEPT = 5;
 export const SNOOZE_MS = 7 * 24 * 60 * 60 * 1000;
 export const MAX_DISMISSALS = 3;
