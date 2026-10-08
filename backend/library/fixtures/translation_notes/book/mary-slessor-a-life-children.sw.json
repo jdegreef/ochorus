@@ -1,0 +1,106 @@
+{
+ "kind": "book",
+ "slug": "mary-slessor-a-life-children",
+ "language": "sw",
+ "job_issue": 5545,
+ "pull_request": null,
+ "note": [
+  "The English epigraphs are loose modern/KJV-style renderings cited by chapter only (“from Psalm 103”). Each was rendered in the Swahili Union Version (SUV) tradition the shipped sw corpus quotes, not in swhonen (a different, revised edition — see the translation-worker skill). Where a shipped *.sw.json already carries the SUV words they were pasted verbatim and the row is `mined` with that file; otherwise the row is `self_rendered` in the SUV register and needs a native check.",
+  "Self-rendered choices worth a reviewer's eye: Psalm 73:26 follows the English's shortened form (no “na fungu langu”) and its softer “may fail” (“vinaweza kushindwa”), so it is not the SUV wording; Joshua 1:9 keeps SUV's “wala usifadhaike”, which the English epigraph drops; Isaiah 6:8b is echoed in chapter 3's application paragraph as “Mimi hapa. Nitume mimi.” Psalm 103:13 is mined with the corpus's future “atakavyowahurumia” (SUV reads “anavyowahurumia”). Psalm 103:4 in chapter 11 uses SUV “na kaburi” (from the pit) where the English quotes the KJV “from destruction”; the gloss that follows (he saves our lives) fits both.",
+  "Clock times in chapter 2 (“from six in the morning until six at night”, “up at five”) are CONVERTED to Swahili reckoning (saa kumi na mbili asubuhi / jioni, saa kumi na moja alfajiri) so a Swahili-reading child hears the right hour; flag if the house convention should keep the printed number. Durations (“eight hours’ walk”) are not converted.",
+  "Kept in the original: the Scots phrase “a wild lassie” (glossed in the next words, as the English does), the Efik words “Ifehe!” and “Eka kpukpru owo” (glossed), and names of people and places. Mary’s Scots “Na, na” is rendered “Hapana, hapana” because Swahili “na” means “and”.",
+  "The last Q&A answer says the teen edition and the full biography exist in English: neither has a sw edition yet."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 103:13",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "marks-of-a-true-conversion.sw.json"
+  },
+  {
+   "reference": "Psalm 119:105",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "rooted-1.sw.json"
+  },
+  {
+   "reference": "Isaiah 6:8b",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Isaiah 6:8b",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Psalm 27:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Psalm 73:26",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Joshua 1:9",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Proverbs 17:17a",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalm 82:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Isaiah 40:11",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Matthew 5:9",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Psalm 30:5b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Psalm 103:4a",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 11,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "from-strength-to-strength.sw.json"
+  }
+ ]
+}
