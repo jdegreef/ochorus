@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "elisabeth-elliot-a-life-children",
+  "language": "sw",
+  "title": "Elisabeth Elliot (Kwa Watoto)",
+  "subtitle": "",
+  "cover_byline": "Elisabeth Elliot",
+  "description": "Hadithi ya kweli ya Betty Howard, msichana mwenye haya aliyejifunza Kigiriki ili awape watu Biblia, aliyempoteza mume wake Jim katika msitu wa mvua wa Ekuado, kisha akambeba binti yake mdogo kuingia msituni kuishi kati ya watu wale wale waliokuwa wamemuua. Toleo hili la watoto linasimulia maisha yake upya katika sura fupi zilizoandaliwa kusomwa kwa sauti: mstari wa Biblia, sehemu moja ya hadithi yake, jambo moja linalokuhusu wewe, na sala fupi, pamoja na maswali ya kuzungumza pamoja.",
+  "qa": [
+   {
+    "question": "Kitabu Elisabeth Elliot (Kwa Watoto) kinahusu nini?",
+    "answer": "Ni toleo la watoto la wasifu kamili wa Elisabeth Elliot. Kinasimulia jinsi msichana mwenye haya aitwaye Betty alivyokua akawa mmisionari huko Ekuado, jinsi mume wake Jim na marafiki zake wanne walivyokufa wakijaribu kuwafikia Waorani, na jinsi alivyokwenda kuishi kati ya Waorani pamoja na binti yake mdogo ili kuwaeleza habari za Mungu."
+   },
+   {
+    "question": "Elisabeth Elliot alikuwa nani?",
+    "answer": "Alikuwa mmisionari na mwandishi Mmarekani aliyeishi tangu mwaka 1926 hadi 2015. Alijifunza Kigiriki ili kutafsiri Biblia, aliandika lugha ambazo hazikuwahi kuandikwa huko Ekuado, na mwaka 1958 alikwenda kuishi kati ya Waorani. Baadaye aliandika vitabu vingi na kuzungumza na mamilioni ya watu kwenye redio kuhusu kumtumaini Mungu."
+   },
+   {
+    "question": "Kila sura imepangwaje?",
+    "answer": "Kila sura ni fupi na imeandaliwa kusomwa kwa sauti. Inaanza na mstari wa Biblia, inasimulia sehemu moja ya hadithi ya Betty, inaonyesha jambo moja rahisi linalokuhusu wewe, na inamalizika kwa sala fupi. Maswali matatu yanafuata, ya kuzungumza pamoja."
+   },
+   {
+    "question": "Je, kitabu hiki kina huzuni mno kwa watoto?",
+    "answer": "Sehemu yake ina huzuni, kwa sababu Jim, mume wa Betty, na marafiki zake wanne waliuawa, na kitabu hakijifanyi kwamba haikuwa hivyo. Lakini kimesimuliwa kwa upole, bila maelezo ya kutisha, na zaidi ya yote ni hadithi ya jinsi Mungu alivyokuwa pamoja na Betty katika huzuni yake, akamsaidia kusamehe na kuwapenda watu waliokuwa wamemuumiza."
+   },
+   {
+    "question": "Je, hadithi hizi ni za kweli?",
+    "answer": "Ndiyo. Zinatoka katika vitabu vya Elisabeth Elliot mwenyewe, katika barua na shajara za familia yake, na kwa watu waliomfahamu na walioandika kuhusu maisha yake. Pale ambapo watu wanakumbuka mambo kwa namna tofauti, kitabu kinafuata kile kinachojulikana zaidi."
+   },
+   {
+    "question": "Kitabu hiki ni cha nani?",
+    "answer": "Ni cha watoto — kisomwe kwa sauti na mtu mzima, au kisomwe na mtoto mkubwa peke yake. Kuna pia toleo la vijana, na wasifu kamili kwa ajili ya wasomaji wakubwa."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Usimulizi mpya wa Ochorus kwa ajili ya wasomaji wadogo wa wasifu wa Ochorus Elisabeth Elliot, kutoka mfululizo wa Taswira za Ujasiri. Usimulizi huu ni wetu wenyewe, huru kusomwa na kushirikishwa. Nukuu za Maandiko katika toleo hili la Kiswahili zinafuata Biblia ya Union Version ya Kiswahili (SUV).",
+  "cover_url": "/covers/sw/elisabeth-elliot-a-life-children.svg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 154,
+  "is_published": true,
+  "created_at": "2026-10-08T00:00:00Z",
+  "updated_at": "2026-10-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "sw"
+  ],
+  "order": 1,
+  "title": "Msichana Aitwaye Betty",
+  "body_html": "<blockquote>“Na maneno haya ninayokuamuru leo, yatakuwa katika moyo wako; nawe uwafundishe watoto wako kwa bidii, na kuyanena uketipo katika nyumba yako, na utembeapo njiani.” — kutoka Kumbukumbu la Torati 6</blockquote> <p>Tarehe 21 Desemba 1926, mtoto wa kike alizaliwa huko Brussels, mji mkuu wa Ubelgiji. Jina lake lilikuwa Elisabeth Howard, lakini familia yake ilimwita Betty. Mama na baba yake walikuwa Wamarekani. Walikuwa wamekwenda Ubelgiji kama wamisionari, ili kuwaeleza watu wa huko habari za Yesu.</p> <p>Betty alipokuwa bado mtoto mchanga sana, familia ilirudi nyumbani Amerika. Baba yake alianza kufanya kazi katika gazeti la Kikristo huko Philadelphia lililoitwa <em>Sunday School Times</em>, na baada ya muda akawa mhariri wake. Familia iliishi Germantown, sehemu ya zamani ya mji ule. Betty alipokuwa na umri wa miaka tisa, walihamia nyumba kubwa zaidi huko Moorestown, New Jersey.</p> <p>Familia ilikuwa na watoto sita: wavulana wanne na wasichana wawili. Betty alikuwa wa pili. Pesa hazikuwa nyingi kamwe, kwa hiyo hakuna kitu kilichopotezwa bure, na kila mmoja alikuwa na kazi zake za kufanya.</p> <p>Kila siku, mara mbili kwa siku, familia ya Howard iliketi pamoja kumwabudu Mungu. Asubuhi baada ya kifungua kinywa, na tena jioni, waliimba wimbo mmoja wa kumsifu Mungu, beti zake zote. Baba yao alisoma Biblia na kumwombea kila mtoto kwa jina lake, na kuwaombea wamisionari duniani kote. Wamisionari wengi kati yao walikuja kukaa katika nyumba ya akina Howard, wakasimulia hadithi za nchi za mbali. Watoto walijifunza kwa moyo mistari mingi ya Biblia na nyimbo nyingi.</p> <p>Betty alikuwa msichana mrefu, mtulivu na mwenye haya, aliyependa kusoma. Kila majira ya joto familia ilikwenda milimani huko New Hampshire, katika kijiji kiitwacho Franconia. Huko Betty alipanda vilima, alichuma matunda madogo ya porini, aliogelea katika maji baridi na kujifunza majina ya miti, maua na ndege. Alipapenda mahali pale kuliko mahali pengine popote duniani.</p> <p>Mama na baba yake Betty hawakuweza kumlazimisha kumpenda Mungu. Lakini walimpa maneno ya Mungu kila siku, na maneno hayo yalibaki moyoni mwake maisha yake yote. Mistari ya Biblia unayojifunza sasa inaweza kubaki nawe pia.</p> <p><em>Mungu mpendwa, asante kwa ajili ya watu wanaonifundisha habari zako. Tafadhali weka maneno yako ndani kabisa ya moyo wangu, ili niyakumbuke maisha yangu yote. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Betty alizaliwa wapi, na kwa nini familia yake ilikuwa huko?",
+    "answer": "Huko Brussels, nchini Ubelgiji, mwaka 1926. Wazazi wake walikuwa wamisionari Wamarekani waliokwenda huko kuwaeleza watu habari za Yesu."
+   },
+   {
+    "question": "Familia ya Howard ilifanya nini pamoja mara mbili kila siku?",
+    "answer": "Walimwabudu Mungu pamoja. Waliimba wimbo wa kumsifu Mungu, baba yao alisoma Biblia, naye akamwombea kila mtoto kwa jina lake na kuwaombea wamisionari duniani kote."
+   },
+   {
+    "question": "Je, kuna mstari wa Biblia au wimbo kuhusu Mungu unaoujua kwa moyo?",
+    "answer": "Jibu lolote la kweli ni zuri. Betty alijifunza maneno ya Mungu alipokuwa mdogo, nayo yalibaki moyoni mwake maisha yake yote. Yako yanaweza kubaki pia."
+   }
+  ],
+  "body_text": "“Na maneno haya ninayokuamuru leo, yatakuwa katika moyo wako; nawe uwafundishe watoto wako kwa bidii, na kuyanena uketipo katika nyumba yako, na utembeapo njiani.” — kutoka Kumbukumbu la Torati 6 Tarehe 21 Desemba 1926, mtoto wa kike alizaliwa huko Brussels, mji mkuu wa Ubelgiji. Jina lake lilikuwa Elisabeth Howard, lakini familia yake ilimwita Betty. Mama na baba yake walikuwa Wamarekani. Walikuwa wamekwenda Ubelgiji kama wamisionari, ili kuwaeleza watu wa huko habari za Yesu. Betty alipokuwa bado mtoto mchanga sana, familia ilirudi nyumbani Amerika. Baba yake alianza kufanya kazi katika gazeti la Kikristo huko Philadelphia lililoitwa Sunday School Times, na baada ya muda akawa mhariri wake. Familia iliishi Germantown, sehemu ya zamani ya mji ule. Betty alipokuwa na umri wa miaka tisa, walihamia nyumba kubwa zaidi huko Moorestown, New Jersey. Familia ilikuwa na watoto sita: wavulana wanne na wasichana wawili. Betty alikuwa wa pili. Pesa hazikuwa nyingi kamwe, kwa hiyo hakuna kitu kilichopotezwa bure, na kila mmoja alikuwa na kazi zake za kufanya. Kila siku, mara mbili kwa siku, familia ya Howard iliketi pamoja kumwabudu Mungu. Asubuhi baada ya kifungua kinywa, na tena jioni, waliimba wimbo mmoja wa kumsifu Mungu, beti zake zote. Baba yao alisoma Biblia na kumwombea kila mtoto kwa jina lake, na kuwaombea wamisionari duniani kote. Wamisionari wengi kati yao walikuja kukaa katika nyumba ya akina Howard, wakasimulia hadithi za nchi za mbali. Watoto walijifunza kwa moyo mistari mingi ya Biblia na nyimbo nyingi. Betty alikuwa msichana mrefu, mtulivu na mwenye haya, aliyependa kusoma. Kila majira ya joto familia ilikwenda milimani huko New Hampshire, katika kijiji kiitwacho Franconia. Huko Betty alipanda vilima, alichuma matunda madogo ya porini, aliogelea katika maji baridi na kujifunza majina ya miti, maua na ndege. Alipapenda mahali pale kuliko mahali pengine popote duniani. Mama na baba yake Betty hawakuweza kumlazimisha kumpenda Mungu. Lakini walimpa maneno ya Mungu kila siku, na maneno hayo yalibaki moyoni mwake maisha yake yote. Mistari ya Biblia unayojifunza sasa inaweza kubaki nawe pia. Mungu mpendwa, asante kwa ajili ya watu wanaonifundisha habari zako. Tafadhali weka maneno yako ndani kabisa ya moyo wangu, ili niyakumbuke maisha yangu yote. Amina.",
+  "word_count": 349
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "sw"
+  ],
+  "order": 2,
+  "title": "Kujifunza Kuwa Jasiri",
+  "body_html": "<blockquote>“Kila adhabu wakati wake haionekani kuwa kitu cha furaha, bali cha huzuni; lakini baadaye huwaletea wao waliozoezwa nayo matunda ya haki yenye amani.” — kutoka Waebrania 12</blockquote> <p>Mwaka 1941, Betty alipokuwa na umri wa miaka kumi na minne, alikwenda mbali na nyumbani, katika shule ya bweni ya Kikristo huko Florida. Iliitwa Hampden DuBose Academy. Kila sehemu ya siku ilikuwa na wakati wake: ibada, masomo, milo, kazi, michezo, na sala za jioni.</p> <p>Mwalimu mkuu alikuwa Bi. DuBose, naye alikuwa mkali sana. Alipokutana na Betty, aliona msichana mrefu, asiye na madaha, mwenye haya kiasi kwamba hakuweza kuzungumza na mtu yeyote asiyemjua. Betty alikumbuka kwamba aliambiwa waziwazi kwamba haya si kitu cha kujivunia. Ilimpasa ajifunze kutazama nje, na kuwafikiria watu wengine badala ya kujifikiria mwenyewe.</p> <p>Betty alimwogopa Bi. DuBose! Lakini alilichukua funzo lile kwa uzito. Kidogo kidogo, alijifunza kusimama wima, kuwatazama watu machoni, kuzungumza na wageni na kusema mbele ya umati wa watu. Haikuwa rahisi, wala haikuja yenyewe. Lakini aliendelea kujizoeza.</p> <p>Jioni, mara nyingi Bi. DuBose aliwasomea kwa sauti vitabu vya Amy Carmichael, mmisionari huko India aliyewaokoa watoto wengi na kuwapa makao. Betty alivipenda vitabu hivyo. Amy Carmichael aliandika kwa uaminifu kuhusu jinsi maisha ya mmisionari yanavyoweza kuwa magumu, na kuhusu kumpenda Yesu kwa moyo wote. Baadaye Betty alimtaja kuwa mama yake wa kwanza wa kiroho, na miaka mingi baadaye Betty aliandika kitabu kizima kuhusu maisha yake.</p> <p>Betty alipomaliza shule mwaka 1944, alijua alichotaka kufanya. Alitaka kutafsiri Biblia katika lugha ambazo hazikuwahi kuwa nayo, ili watu waweze kusoma maneno ya Mungu kwa mara ya kwanza kabisa.</p> <p>Wakati mwingine Mungu hutusaidia kukua kupitia mambo yanayoonekana magumu, kama mwalimu mkali au mahali papya panapotisha. Kuwa jasiri haimaanishi kwamba huogopi kamwe. Inamaanisha kufanya jambo la wema hata unapojisikia mwenye haya.</p> <p><em>Mungu mpendwa, ninapojisikia mwenye haya au ninapoogopa, tafadhali nisaidie kuwa jasiri. Nisaidie kuwaona watu wengine na kuwatendea wema. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Bi. DuBose alimfundisha Betty nini kuhusu kuwa na haya?",
+    "answer": "Kwamba asibaki amejifungia ndani ya haya yake, bali ajifunze kutazama nje, kuwaona watu wengine na kuwasaidia wajisikie huru."
+   },
+   {
+    "question": "Betty alisikia vitabu vya nani vikisomwa kwa sauti shuleni?",
+    "answer": "Vitabu vya Amy Carmichael, mmisionari huko India. Baadaye Betty alimtaja kuwa mama yake wa kwanza wa kiroho, na akaandika kitabu kuhusu maisha yake."
+   },
+   {
+    "question": "Ni jambo gani linaloonekana gumu kwako sasa hivi?",
+    "answer": "Jibu lolote la kweli ni zuri. Betty aliiona shule yake kuwa ngumu, lakini Mungu aliitumia kumsaidia kukua. Anaweza kutumia mambo magumu katika maisha yako pia."
+   }
+  ],
+  "body_text": "“Kila adhabu wakati wake haionekani kuwa kitu cha furaha, bali cha huzuni; lakini baadaye huwaletea wao waliozoezwa nayo matunda ya haki yenye amani.” — kutoka Waebrania 12 Mwaka 1941, Betty alipokuwa na umri wa miaka kumi na minne, alikwenda mbali na nyumbani, katika shule ya bweni ya Kikristo huko Florida. Iliitwa Hampden DuBose Academy. Kila sehemu ya siku ilikuwa na wakati wake: ibada, masomo, milo, kazi, michezo, na sala za jioni. Mwalimu mkuu alikuwa Bi. DuBose, naye alikuwa mkali sana. Alipokutana na Betty, aliona msichana mrefu, asiye na madaha, mwenye haya kiasi kwamba hakuweza kuzungumza na mtu yeyote asiyemjua. Betty alikumbuka kwamba aliambiwa waziwazi kwamba haya si kitu cha kujivunia. Ilimpasa ajifunze kutazama nje, na kuwafikiria watu wengine badala ya kujifikiria mwenyewe. Betty alimwogopa Bi. DuBose! Lakini alilichukua funzo lile kwa uzito. Kidogo kidogo, alijifunza kusimama wima, kuwatazama watu machoni, kuzungumza na wageni na kusema mbele ya umati wa watu. Haikuwa rahisi, wala haikuja yenyewe. Lakini aliendelea kujizoeza. Jioni, mara nyingi Bi. DuBose aliwasomea kwa sauti vitabu vya Amy Carmichael, mmisionari huko India aliyewaokoa watoto wengi na kuwapa makao. Betty alivipenda vitabu hivyo. Amy Carmichael aliandika kwa uaminifu kuhusu jinsi maisha ya mmisionari yanavyoweza kuwa magumu, na kuhusu kumpenda Yesu kwa moyo wote. Baadaye Betty alimtaja kuwa mama yake wa kwanza wa kiroho, na miaka mingi baadaye Betty aliandika kitabu kizima kuhusu maisha yake. Betty alipomaliza shule mwaka 1944, alijua alichotaka kufanya. Alitaka kutafsiri Biblia katika lugha ambazo hazikuwahi kuwa nayo, ili watu waweze kusoma maneno ya Mungu kwa mara ya kwanza kabisa. Wakati mwingine Mungu hutusaidia kukua kupitia mambo yanayoonekana magumu, kama mwalimu mkali au mahali papya panapotisha. Kuwa jasiri haimaanishi kwamba huogopi kamwe. Inamaanisha kufanya jambo la wema hata unapojisikia mwenye haya. Mungu mpendwa, ninapojisikia mwenye haya au ninapoogopa, tafadhali nisaidie kuwa jasiri. Nisaidie kuwaona watu wengine na kuwatendea wema. Amina.",
+  "word_count": 303
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "sw"
+  ],
+  "order": 3,
+  "title": "Kigiriki na Kijana Aitwaye Jim",
+  "body_html": "<blockquote>“Jitahidi kujionyesha kuwa umekubaliwa na Mungu, mtenda kazi asiye na sababu ya kutahayari, ukitumia kwa halali neno la kweli.” — kutoka 2 Timotheo 2</blockquote> <p>Katika majira ya kupukutika kwa majani mwaka 1944, Betty alikwenda Chuo cha Wheaton, karibu na Chicago. Alichagua kujifunza Kigiriki. Hilo halikuwa jambo la kawaida kwa msichana katika siku zile, lakini Betty alikuwa na sababu nzuri. Agano Jipya liliandikwa kwanza kwa Kigiriki. Kama angetafsiri Biblia siku moja, alitaka kuisoma katika lugha yake ya kwanza kabisa.</p> <p>Kigiriki kilikuwa kazi ngumu. Betty alijifunza orodha ndefu za maneno na sarufi, tena na tena. Lakini alikuwa na akili makini na sikio zuri, akaja kukipenda. Maisha yake yote aliliweka karibu naye Agano Jipya lake la Kigiriki.</p> <p>Mwaka mmoja baadaye, mwanafunzi mpya alikuja Wheaton kutoka Portland, Oregon. Jina lake lilikuwa Jim Elliot. Jim alikuwa na nguvu, hakuogopa kusema mawazo yake, naye alipenda sana kuchekesha. Alikuwa katika timu ya mieleka, naye alimpenda Yesu kwa moyo wake wote. Yeye pia alijifunza Kigiriki! Rafiki mkubwa wa Jim chuoni alikuwa mdogo wake Betty, Dave.</p> <p>Wakati wa Krismasi mwaka 1947, Dave alimkaribisha Jim waende pamoja nyumbani Moorestown. Jim aliungana na familia ya Howard katika nyimbo na sala zao, akajisikia yuko nyumbani kabisa. Baada ya hapo, alianza kumwona dada yake Dave, msichana mtulivu na makini, kwa namna mpya.</p> <p>Chuo kilipofunguliwa tena Januari 1948, Betty na Jim walijikuta katika madarasa yale yale ya Kigiriki, kwa hiyo wakajifunza pamoja. Walizungumza kuhusu Kigiriki, kuhusu Biblia, kuhusu kazi ya umisionari na kuhusu kile ambacho Mungu alitaka wafanye. Wote wawili walitaka kumtii Mungu kuliko kitu kingine chochote.</p> <p>Betty alifanya kazi kwa bidii katika Kigiriki kwa sababu alitaka kuwapa watu wengine neno la Mungu. Kazi yako ya shule inaweza kuwa njia ya kumtumikia Mungu pia, unapoifanya kwa uangalifu na vizuri.</p> <p><em>Mungu mpendwa, nisaidie kufanya kazi kwa bidii katika mambo ninayojifunza, na kuyafanya vizuri kwa ajili yako. Asante kwa ajili ya marafiki wema wanaokupenda. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini Betty alichagua kujifunza Kigiriki?",
+    "answer": "Kwa sababu Agano Jipya liliandikwa kwanza kwa Kigiriki, naye alitaka kulisoma katika lugha yake ya kwanza ili siku moja aweze kutafsiri Biblia."
+   },
+   {
+    "question": "Betty alimfahamuje Jim Elliot?",
+    "answer": "Jim alikuwa rafiki mkubwa wa mdogo wake Betty, Dave. Alikuja nyumbani kwa akina Howard wakati wa Krismasi mwaka 1947, kisha yeye na Betty wakajifunza Kigiriki pamoja."
+   },
+   {
+    "question": "Ni jambo gani moja unaloweza kulifanya kwa uangalifu na vizuri kwa ajili ya Mungu wiki hii?",
+    "answer": "Jibu lolote ni zuri. Bidii ya Betty katika Kigiriki ilikuwa njia ya kumtumikia Mungu, na kazi yetu inaweza kuwa hivyo pia, hata kazi za shule tunazofanya nyumbani."
+   }
+  ],
+  "body_text": "“Jitahidi kujionyesha kuwa umekubaliwa na Mungu, mtenda kazi asiye na sababu ya kutahayari, ukitumia kwa halali neno la kweli.” — kutoka 2 Timotheo 2 Katika majira ya kupukutika kwa majani mwaka 1944, Betty alikwenda Chuo cha Wheaton, karibu na Chicago. Alichagua kujifunza Kigiriki. Hilo halikuwa jambo la kawaida kwa msichana katika siku zile, lakini Betty alikuwa na sababu nzuri. Agano Jipya liliandikwa kwanza kwa Kigiriki. Kama angetafsiri Biblia siku moja, alitaka kuisoma katika lugha yake ya kwanza kabisa. Kigiriki kilikuwa kazi ngumu. Betty alijifunza orodha ndefu za maneno na sarufi, tena na tena. Lakini alikuwa na akili makini na sikio zuri, akaja kukipenda. Maisha yake yote aliliweka karibu naye Agano Jipya lake la Kigiriki. Mwaka mmoja baadaye, mwanafunzi mpya alikuja Wheaton kutoka Portland, Oregon. Jina lake lilikuwa Jim Elliot. Jim alikuwa na nguvu, hakuogopa kusema mawazo yake, naye alipenda sana kuchekesha. Alikuwa katika timu ya mieleka, naye alimpenda Yesu kwa moyo wake wote. Yeye pia alijifunza Kigiriki! Rafiki mkubwa wa Jim chuoni alikuwa mdogo wake Betty, Dave. Wakati wa Krismasi mwaka 1947, Dave alimkaribisha Jim waende pamoja nyumbani Moorestown. Jim aliungana na familia ya Howard katika nyimbo na sala zao, akajisikia yuko nyumbani kabisa. Baada ya hapo, alianza kumwona dada yake Dave, msichana mtulivu na makini, kwa namna mpya. Chuo kilipofunguliwa tena Januari 1948, Betty na Jim walijikuta katika madarasa yale yale ya Kigiriki, kwa hiyo wakajifunza pamoja. Walizungumza kuhusu Kigiriki, kuhusu Biblia, kuhusu kazi ya umisionari na kuhusu kile ambacho Mungu alitaka wafanye. Wote wawili walitaka kumtii Mungu kuliko kitu kingine chochote. Betty alifanya kazi kwa bidii katika Kigiriki kwa sababu alitaka kuwapa watu wengine neno la Mungu. Kazi yako ya shule inaweza kuwa njia ya kumtumikia Mungu pia, unapoifanya kwa uangalifu na vizuri. Mungu mpendwa, nisaidie kufanya kazi kwa bidii katika mambo ninayojifunza, na kuyafanya vizuri kwa ajili yako. Asante kwa ajili ya marafiki wema wanaokupenda. Amina.",
+  "word_count": 309
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "sw"
+  ],
+  "order": 4,
+  "title": "Kivuli Kama Msalaba",
+  "body_html": "<blockquote>“Itoeni miili yenu iwe dhabihu iliyo hai, takatifu, ya kumpendeza Mungu.” — kutoka Warumi 12</blockquote> <p>Majira ya kuchipua yalipofika mwaka 1948, Betty na Jim walianza kupendana. Lakini hawakujua la kufanya kuhusu jambo hilo. Jim alifikiri huenda Mungu alitaka asioe, ili aweze kwenda mahali pagumu na pa hatari kuwaeleza watu habari za Yesu. Hakuwa na uhakika, naye hakutaka kutoa ahadi yoyote mpaka atakapokuwa na uhakika.</p> <p>Tarehe 9 Juni 1948, muda mfupi kabla Betty hajamaliza chuo, walikwenda matembezi jioni. Kwa mara ya kwanza, waliambiana jinsi walivyojisikia. Na Jim alimwambia Betty kwamba hangeweza kumwomba kitu chochote, wala kumwahidi kitu chochote.</p> <p>Kwa hiyo waliamua kumrudishia Mungu upendo wao. Walikumbuka hadithi ya Biblia ambapo Abrahamu alikuwa tayari kumtoa mwanawe Isaka juu ya madhabahu, naye Mungu akatoa kondoo dume badala yake. Upendo wao ulikuwa zawadi ya thamani, kwa hiyo wangemtolea Mungu tena. Kama Mungu angewarudishia, hilo lingekuwa jambo la ajabu. Kama sivyo, wangemtumaini kwamba alikuwa na kitu bora zaidi.</p> <p>Walipokuwa wameketi wakizungumza, mwezi ulichomoza nyuma yao. Ukatupa kivuli cha msalaba mkubwa wa jiwe juu ya ardhi katikati yao. Wote wawili walikikumbuka daima. Kilionekana kama picha ya kile walichokuwa wameamua sasa hivi: lolote lingetokea kwa upendo wao lingetokea chini ya msalaba wa Yesu.</p> <p>Kisha ikaja miaka ya kusubiri. Betty alikwenda katika shule ya Biblia katika nyanda za baridi, zenye theluji, huko Kanada. Jim alimaliza chuo akarudi nyumbani Oregon. Waliandikiana barua, lakini hapakuwa na ahadi. Mara nyingi Betty alijisikia mpweke, na kusubiri kulikuwa kugumu sana. Lakini aliendelea kuomba, akaendelea kufanya kazi iliyokuwa mbele yake kila siku.</p> <p>Wakati mwingine tunataka kitu sana, na inatulazimu kusubiri. Kumpa Mungu kitu hicho haimaanishi kwamba tunaacha kukijali. Inamaanisha kwamba tunamtumaini yeye ajue kilicho bora, na akitunze kwa ajili yetu.</p> <p><em>Mungu mpendwa, ninapolazimika kusubiri kitu ninachokitaka, nisaidie kukutumaini. Nakupa mambo ninayoyajali kuliko yote. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Betty na Jim waliamua kufanya nini na upendo wao kwa kila mmoja?",
+    "answer": "Waliamua kumrudishia Mungu upendo huo, kama Abrahamu alivyomtoa Isaka, na kumtumaini Mungu kwa kile ambacho kingefuata."
+   },
+   {
+    "question": "Waliona nini juu ya ardhi katikati yao walipokuwa matembezini?",
+    "answer": "Kivuli cha msalaba mkubwa wa jiwe, kilichotokana na mwezi uliochomoza nyuma yao. Kiliwakumbusha kwamba upendo wao ulikuwa chini ya msalaba wa Yesu."
+   },
+   {
+    "question": "Je, kuna kitu unachokisubiri sasa hivi?",
+    "answer": "Jibu lolote la kweli ni zuri. Betty alilazimika kusubiri muda mrefu. Kumpa Mungu kile tunachokitaka ni kumtumaini kwamba yeye anajua kilicho bora."
+   }
+  ],
+  "body_text": "“Itoeni miili yenu iwe dhabihu iliyo hai, takatifu, ya kumpendeza Mungu.” — kutoka Warumi 12 Majira ya kuchipua yalipofika mwaka 1948, Betty na Jim walianza kupendana. Lakini hawakujua la kufanya kuhusu jambo hilo. Jim alifikiri huenda Mungu alitaka asioe, ili aweze kwenda mahali pagumu na pa hatari kuwaeleza watu habari za Yesu. Hakuwa na uhakika, naye hakutaka kutoa ahadi yoyote mpaka atakapokuwa na uhakika. Tarehe 9 Juni 1948, muda mfupi kabla Betty hajamaliza chuo, walikwenda matembezi jioni. Kwa mara ya kwanza, waliambiana jinsi walivyojisikia. Na Jim alimwambia Betty kwamba hangeweza kumwomba kitu chochote, wala kumwahidi kitu chochote. Kwa hiyo waliamua kumrudishia Mungu upendo wao. Walikumbuka hadithi ya Biblia ambapo Abrahamu alikuwa tayari kumtoa mwanawe Isaka juu ya madhabahu, naye Mungu akatoa kondoo dume badala yake. Upendo wao ulikuwa zawadi ya thamani, kwa hiyo wangemtolea Mungu tena. Kama Mungu angewarudishia, hilo lingekuwa jambo la ajabu. Kama sivyo, wangemtumaini kwamba alikuwa na kitu bora zaidi. Walipokuwa wameketi wakizungumza, mwezi ulichomoza nyuma yao. Ukatupa kivuli cha msalaba mkubwa wa jiwe juu ya ardhi katikati yao. Wote wawili walikikumbuka daima. Kilionekana kama picha ya kile walichokuwa wameamua sasa hivi: lolote lingetokea kwa upendo wao lingetokea chini ya msalaba wa Yesu. Kisha ikaja miaka ya kusubiri. Betty alikwenda katika shule ya Biblia katika nyanda za baridi, zenye theluji, huko Kanada. Jim alimaliza chuo akarudi nyumbani Oregon. Waliandikiana barua, lakini hapakuwa na ahadi. Mara nyingi Betty alijisikia mpweke, na kusubiri kulikuwa kugumu sana. Lakini aliendelea kuomba, akaendelea kufanya kazi iliyokuwa mbele yake kila siku. Wakati mwingine tunataka kitu sana, na inatulazimu kusubiri. Kumpa Mungu kitu hicho haimaanishi kwamba tunaacha kukijali. Inamaanisha kwamba tunamtumaini yeye ajue kilicho bora, na akitunze kwa ajili yetu. Mungu mpendwa, ninapolazimika kusubiri kitu ninachokitaka, nisaidie kukutumaini. Nakupa mambo ninayoyajali kuliko yote. Amina.",
+  "word_count": 290
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "sw"
+  ],
+  "order": 5,
+  "title": "Sanduku Lililopotea",
+  "body_html": "<blockquote>“Mawazo yangu si mawazo yenu, wala njia zenu si njia zangu, asema Bwana.” — kutoka Isaya 55</blockquote> <p>Jim aliamua kwamba Mungu alikuwa akimtuma Ekuado, nchi iliyoko Amerika Kusini, na Februari 1952 alisafiri kwa meli kwenda huko pamoja na rafiki yake aitwaye Pete Fleming. Mwezi Aprili, Betty naye alisafiri kwa meli kwenda Ekuado. Alikwenda kama mmisionari kwa haki yake mwenyewe, bila ahadi yoyote kutoka kwa Jim. Alikuwa amefunzwa kuandika lugha ambazo hazikuwahi kuandikwa.</p> <p>Kwanza alijifunza Kihispania huko Quito, mji ulioko juu kabisa milimani. Kisha alishuka kwenda katika msitu wenye joto na unyevu upande wa magharibi wa milima. Watu wa huko waliitwa Wakolorado, kwa sababu wanaume walipaka nywele zao rangi nyekundu angavu kwa rojo lililotengenezwa kwa mbegu fulani. Lugha yao haikuwahi kuandikwa. Kazi ya Betty ilikuwa kujifunza lugha hiyo tangu mwanzo kabisa.</p> <p>Alihitaji msaidizi aliyeweza kuzungumza Kikolorado na Kihispania. Mungu alimpa msaidizi mzuri ajabu: mtu mmoja aitwaye Macario, aliyempenda Yesu. Siku baada ya siku waliketi pamoja. Yeye alitamka maneno, naye Betty akayaandika kwenye kadi. Polepole, umbo la lugha likaanza kuonekana.</p> <p>Kisha jambo baya sana likatokea. Macario aliuawa na watu fulani katika ugomvi juu ya kipande cha ardhi. Betty alihuzunika moyoni sana. Alikuwa amempoteza rafiki na ndugu katika Kristo, wala hapakuwa na mtu mwingine aliyeweza kumsaidia kwa namna ile ile.</p> <p>Muda mfupi baadaye, Betty alifunga maandishi yake yote ya lugha ndani ya sanduku, ili yapelekwe kwa wamisionari ambao wangeendeleza kazi. Sanduku liliibwa kutoka nyuma ya lori, wala halikupatikana kamwe. Hapakuwa na nakala. Karibu kazi yake yote ilikuwa imepotea. Betty alimwuliza Mungu kwa nini. Hakumwambia. Kwa hiyo aliamua kwamba ataendelea kumtumaini, hata bila jibu.</p> <p>Wakati mwingine tunaomba na kufanya kazi kwa bidii, lakini bado mambo yanaharibika. Mungu hatuambii kila mara kwa nini. Lakini tunaweza kumwambia kwa uaminifu jinsi tunavyojisikia, na kuendelea kumtumaini, kwa sababu yeye ni mwema hata tusipoelewa.</p> <p><em>Mungu mpendwa, mambo yanapoharibika na sielewi kwa nini, nisaidie kuendelea kukutumaini. Asante kwa kuwa njia zako ziko juu kuliko njia zangu. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Macario alikuwa nani?",
+    "answer": "Mtu aliyempenda Yesu na aliyezungumza Kikolorado na Kihispania. Alimsaidia Betty kujifunza na kuiandika lugha ya Kikolorado."
+   },
+   {
+    "question": "Nini kililipata sanduku la Betty?",
+    "answer": "Lilikuwa na karibu maandishi yake yote ya lugha, nalo liliibwa kutoka nyuma ya lori. Halikupatikana kamwe, wala hapakuwa na nakala."
+   },
+   {
+    "question": "Unaweza kufanya nini usipoelewa kwa nini jambo la kusikitisha limetokea?",
+    "answer": "Jibu lolote la kweli ni zuri. Betty alimwambia Mungu jinsi alivyojisikia, akaamua kuendelea kumtumaini, hata bila jibu."
+   }
+  ],
+  "body_text": "“Mawazo yangu si mawazo yenu, wala njia zenu si njia zangu, asema Bwana.” — kutoka Isaya 55 Jim aliamua kwamba Mungu alikuwa akimtuma Ekuado, nchi iliyoko Amerika Kusini, na Februari 1952 alisafiri kwa meli kwenda huko pamoja na rafiki yake aitwaye Pete Fleming. Mwezi Aprili, Betty naye alisafiri kwa meli kwenda Ekuado. Alikwenda kama mmisionari kwa haki yake mwenyewe, bila ahadi yoyote kutoka kwa Jim. Alikuwa amefunzwa kuandika lugha ambazo hazikuwahi kuandikwa. Kwanza alijifunza Kihispania huko Quito, mji ulioko juu kabisa milimani. Kisha alishuka kwenda katika msitu wenye joto na unyevu upande wa magharibi wa milima. Watu wa huko waliitwa Wakolorado, kwa sababu wanaume walipaka nywele zao rangi nyekundu angavu kwa rojo lililotengenezwa kwa mbegu fulani. Lugha yao haikuwahi kuandikwa. Kazi ya Betty ilikuwa kujifunza lugha hiyo tangu mwanzo kabisa. Alihitaji msaidizi aliyeweza kuzungumza Kikolorado na Kihispania. Mungu alimpa msaidizi mzuri ajabu: mtu mmoja aitwaye Macario, aliyempenda Yesu. Siku baada ya siku waliketi pamoja. Yeye alitamka maneno, naye Betty akayaandika kwenye kadi. Polepole, umbo la lugha likaanza kuonekana. Kisha jambo baya sana likatokea. Macario aliuawa na watu fulani katika ugomvi juu ya kipande cha ardhi. Betty alihuzunika moyoni sana. Alikuwa amempoteza rafiki na ndugu katika Kristo, wala hapakuwa na mtu mwingine aliyeweza kumsaidia kwa namna ile ile. Muda mfupi baadaye, Betty alifunga maandishi yake yote ya lugha ndani ya sanduku, ili yapelekwe kwa wamisionari ambao wangeendeleza kazi. Sanduku liliibwa kutoka nyuma ya lori, wala halikupatikana kamwe. Hapakuwa na nakala. Karibu kazi yake yote ilikuwa imepotea. Betty alimwuliza Mungu kwa nini. Hakumwambia. Kwa hiyo aliamua kwamba ataendelea kumtumaini, hata bila jibu. Wakati mwingine tunaomba na kufanya kazi kwa bidii, lakini bado mambo yanaharibika. Mungu hatuambii kila mara kwa nini. Lakini tunaweza kumwambia kwa uaminifu jinsi tunavyojisikia, na kuendelea kumtumaini, kwa sababu yeye ni mwema hata tusipoelewa. Mungu mpendwa, mambo yanapoharibika na sielewi kwa nini, nisaidie kuendelea kukutumaini. Asante kwa kuwa njia zako ziko juu kuliko njia zangu. Amina.",
+  "word_count": 317
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "sw"
+  ],
+  "order": 6,
+  "title": "Harusi na Hema",
+  "body_html": "<blockquote>“Afadhali kuwa wawili kuliko mmoja; kwa sababu wapata ijara njema kwa kazi yao.” — kutoka Mhubiri 4</blockquote> <p>Januari 1953, Jim na Betty walikutana huko Quito. Mwishowe, baada ya miaka mitano ya kusubiri, Jim alimwomba Betty akubali kuolewa naye, naye akakubali! Lakini Jim aliomba jambo moja zaidi. Alifanya kazi kati ya Wakichua wa msitu wa mashariki. Alitaka Betty ajifunze lugha yao, Kikichua, kabla hawajaoana, ili aweze kuzungumza nao na kushiriki katika kazi.</p> <p>Kwa hiyo Betty alianza kazi tena, akijifunza lugha mpya kabisa. Alisikiliza, akaandika alichosikia, akajizoeza tena na tena. Kufikia majira ya kupukutika kwa majani, alikuwa amejifunza vya kutosha.</p> <p>Betty na Jim walioana huko Quito tarehe 8 Oktoba 1953. Ilikuwa siku ya kuzaliwa ya Jim, alipotimiza miaka ishirini na sita! Ilikuwa harusi fupi, rahisi, katika ofisi ya serikali, pamoja na marafiki wachache tu. Hapakuwa na muziki wala maua, lakini hawakujali. Baada ya safari fupi kwenda Panama, walirudi msituni.</p> <p>Nyumba yao ya kwanza ilikuwa hema! Kiongozi mmoja wa Wakichua aitwaye Atanasio, mahali paitwapo Puyupungu, alikuwa ameomba mmisionari aje kuwafundisha watu wake na kuanzisha shule. Kwa hiyo Jim na Betty waliishi katika hema wakati jengo rahisi likijengwa. Mvua ilinyesha, wadudu hawakuacha kuuma, nao walipika chakula motoni. Lakini inaonekana walifurahia maisha yale.</p> <p>Mwaka 1954 walihamia kituo cha misheni kiitwacho Shandia, katika nyumba aliyoijenga Jim. Jim alihubiri na kuwafundisha wavulana shuleni. Betty aliitunza nyumba, aliwahudumia wagonjwa waliokuja mlangoni, na alifanya kazi juu ya lugha ya Kikichua. Jim alikuwa mhubiri, naye Betty alikuwa yule mwenye daftari. Tarehe 27 Februari 1955, binti yao mchanga Valerie alizaliwa.</p> <p>Mungu aliwaumba Jim na Betty wakiwa tofauti, na ndiyo sababu walifanya kazi vizuri sana pamoja. Mungu humpa kila mmoja wetu vipawa tofauti, ili tuweze kusaidiana.</p> <p><em>Mungu mpendwa, asante kwa ajili ya familia yangu na marafiki zangu. Asante kwa vipawa ulivyompa kila mmoja wetu. Tusaidie kuvitumia kusaidiana. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Jim alimwomba Betty afanye nini kabla hawajaoana?",
+    "answer": "Ajifunze Kikichua, lugha ya watu aliofanya kazi kati yao, ili aweze kuzungumza nao na kushiriki katika kazi."
+   },
+   {
+    "question": "Nyumba ya kwanza ya Jim na Betty ilikuwaje?",
+    "answer": "Ilikuwa hema huko Puyupungu, katika msitu wenye mvua nyingi, lililojaa wadudu, ambapo walipika chakula motoni wakati jengo likijengwa."
+   },
+   {
+    "question": "Ni kipawa gani ambacho Mungu amekupa ambacho ungeweza kukitumia kumsaidia mtu?",
+    "answer": "Jibu lolote ni zuri. Jim alikuwa mhubiri na Betty alikuwa mwandishi makini. Mungu humpa kila mmoja wetu vipawa tofauti ili tuweze kusaidiana."
+   }
+  ],
+  "body_text": "“Afadhali kuwa wawili kuliko mmoja; kwa sababu wapata ijara njema kwa kazi yao.” — kutoka Mhubiri 4 Januari 1953, Jim na Betty walikutana huko Quito. Mwishowe, baada ya miaka mitano ya kusubiri, Jim alimwomba Betty akubali kuolewa naye, naye akakubali! Lakini Jim aliomba jambo moja zaidi. Alifanya kazi kati ya Wakichua wa msitu wa mashariki. Alitaka Betty ajifunze lugha yao, Kikichua, kabla hawajaoana, ili aweze kuzungumza nao na kushiriki katika kazi. Kwa hiyo Betty alianza kazi tena, akijifunza lugha mpya kabisa. Alisikiliza, akaandika alichosikia, akajizoeza tena na tena. Kufikia majira ya kupukutika kwa majani, alikuwa amejifunza vya kutosha. Betty na Jim walioana huko Quito tarehe 8 Oktoba 1953. Ilikuwa siku ya kuzaliwa ya Jim, alipotimiza miaka ishirini na sita! Ilikuwa harusi fupi, rahisi, katika ofisi ya serikali, pamoja na marafiki wachache tu. Hapakuwa na muziki wala maua, lakini hawakujali. Baada ya safari fupi kwenda Panama, walirudi msituni. Nyumba yao ya kwanza ilikuwa hema! Kiongozi mmoja wa Wakichua aitwaye Atanasio, mahali paitwapo Puyupungu, alikuwa ameomba mmisionari aje kuwafundisha watu wake na kuanzisha shule. Kwa hiyo Jim na Betty waliishi katika hema wakati jengo rahisi likijengwa. Mvua ilinyesha, wadudu hawakuacha kuuma, nao walipika chakula motoni. Lakini inaonekana walifurahia maisha yale. Mwaka 1954 walihamia kituo cha misheni kiitwacho Shandia, katika nyumba aliyoijenga Jim. Jim alihubiri na kuwafundisha wavulana shuleni. Betty aliitunza nyumba, aliwahudumia wagonjwa waliokuja mlangoni, na alifanya kazi juu ya lugha ya Kikichua. Jim alikuwa mhubiri, naye Betty alikuwa yule mwenye daftari. Tarehe 27 Februari 1955, binti yao mchanga Valerie alizaliwa. Mungu aliwaumba Jim na Betty wakiwa tofauti, na ndiyo sababu walifanya kazi vizuri sana pamoja. Mungu humpa kila mmoja wetu vipawa tofauti, ili tuweze kusaidiana. Mungu mpendwa, asante kwa ajili ya familia yangu na marafiki zangu. Asante kwa vipawa ulivyompa kila mmoja wetu. Tusaidie kuvitumia kusaidiana. Amina.",
+  "word_count": 296
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "sw"
+  ],
+  "order": 7,
+  "title": "Zawadi Kutoka Angani",
+  "body_html": "<blockquote>“Wamwaminije yeye wasiyemsikia? Tena wamsikieje pasipo mhubiri?” — kutoka Warumi 10</blockquote> <p>Ndani kabisa ya msitu, ng'ambo ya vijiji vya Wakichua, waliishi watu walioitwa Waorani. Jina lao linamaanisha “watu.” Siku zote walikuwa wameishi peke yao, nao waliwaogopa sana watu wa nje. Kwa miaka mingi, mtu yeyote aliyeingia katika nchi yao alikuwa hatarini, na majirani zao waliwaogopa. Hakuna mtu aliyewahi kuweza kuwatembelea kama rafiki.</p> <p>Jim alitamani sana Waorani wasikie habari za Yesu. Marafiki wanne walijisikia vivyo hivyo: Pete Fleming, Ed McCully, Roger Youderian, na Nate Saint, rubani mmisionari mwenye ndege ndogo ya rangi ya njano. Septemba 1955, Nate na Ed waliruka juu ya msitu wakaona nyumba kadhaa za Waorani.</p> <p>Nate alikuwa na wazo la busara. Alishusha ndoo kwa kamba ndefu sana huku ndege yake ikizunguka tena na tena katika duara dogo, hivi kwamba ndoo ilining'inia karibu bila kusogea juu ya mahali pamoja. Wiki baada ya wiki, wanaume wale walishusha zawadi: vyungu vya kupikia, vitambaa, shanga na mapanga makubwa, na wakaita maneno ya kirafiki kupitia kipaza sauti. Baada ya muda, Waorani walianza kufunga zawadi zao wenyewe kwenye kamba, kama kitambaa cha kichwani kilichotengenezwa kwa manyoya! Ilionekana kama urafiki.</p> <p>Tarehe 3 Januari 1956, Nate aliitua ndege yake kwenye ukingo wa mchanga kando ya Mto Curaray, si mbali na nyumba za Waorani. Wanaume wale walijenga nyumba ndogo juu ya mti, wakapaita mahali pale Palm Beach. Walisubiri, na kuita salamu kuelekea msituni.</p> <p>Ijumaa, tarehe 6 Januari, Waorani watatu walitoka kati ya miti: kijana mmoja wa kiume, msichana mmoja, na mwanamke mmoja mzee. Walikaa sehemu kubwa ya siku, wakala chakula cha wamisionari, na yule kijana hata alipanda ndege akazunguka angani! Wanaume wale watano walijaa furaha na matumaini.</p> <p>Jim na marafiki zake walitaka Waorani wasikie habari za Yesu, kwa sababu hakuna mtu aliyewahi kuwaeleza. Bado kuna watu ambao hawajawahi kusikia. Tunaweza kuwaombea, na tunaweza kuwaeleza wengine pia.</p> <p><em>Yesu mpendwa, asante kwa ajili ya watu wanaokwenda mbali kuwaeleza wengine habari zako. Tafadhali wasaidie watu wote duniani kusikia habari za upendo wako. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Nate Saint aliwapelekeaje Waorani zawadi?",
+    "answer": "Alishusha ndoo kwa kamba ndefu huku ndege yake ikizunguka katika duara dogo, hivi kwamba ndoo ilining'inia karibu bila kusogea juu ya nyumba za Waorani."
+   },
+   {
+    "question": "Ni nani walitoka msituni Ijumaa, tarehe 6 Januari 1956?",
+    "answer": "Waorani watatu: kijana mmoja wa kiume, msichana mmoja na mwanamke mmoja mzee. Walikaa na wamisionari sehemu kubwa ya siku, na yule kijana alipanda ndege."
+   },
+   {
+    "question": "Ni nani ambaye hajasikia habari za Yesu ambaye ungeweza kumwombea?",
+    "answer": "Jibu lolote ni zuri. Jim na marafiki zake walitaka watu ambao hawajawahi kusikia wamjue Yesu, nasi tunaweza kuwaombea pia."
+   }
+  ],
+  "body_text": "“Wamwaminije yeye wasiyemsikia? Tena wamsikieje pasipo mhubiri?” — kutoka Warumi 10 Ndani kabisa ya msitu, ng'ambo ya vijiji vya Wakichua, waliishi watu walioitwa Waorani. Jina lao linamaanisha “watu.” Siku zote walikuwa wameishi peke yao, nao waliwaogopa sana watu wa nje. Kwa miaka mingi, mtu yeyote aliyeingia katika nchi yao alikuwa hatarini, na majirani zao waliwaogopa. Hakuna mtu aliyewahi kuweza kuwatembelea kama rafiki. Jim alitamani sana Waorani wasikie habari za Yesu. Marafiki wanne walijisikia vivyo hivyo: Pete Fleming, Ed McCully, Roger Youderian, na Nate Saint, rubani mmisionari mwenye ndege ndogo ya rangi ya njano. Septemba 1955, Nate na Ed waliruka juu ya msitu wakaona nyumba kadhaa za Waorani. Nate alikuwa na wazo la busara. Alishusha ndoo kwa kamba ndefu sana huku ndege yake ikizunguka tena na tena katika duara dogo, hivi kwamba ndoo ilining'inia karibu bila kusogea juu ya mahali pamoja. Wiki baada ya wiki, wanaume wale walishusha zawadi: vyungu vya kupikia, vitambaa, shanga na mapanga makubwa, na wakaita maneno ya kirafiki kupitia kipaza sauti. Baada ya muda, Waorani walianza kufunga zawadi zao wenyewe kwenye kamba, kama kitambaa cha kichwani kilichotengenezwa kwa manyoya! Ilionekana kama urafiki. Tarehe 3 Januari 1956, Nate aliitua ndege yake kwenye ukingo wa mchanga kando ya Mto Curaray, si mbali na nyumba za Waorani. Wanaume wale walijenga nyumba ndogo juu ya mti, wakapaita mahali pale Palm Beach. Walisubiri, na kuita salamu kuelekea msituni. Ijumaa, tarehe 6 Januari, Waorani watatu walitoka kati ya miti: kijana mmoja wa kiume, msichana mmoja, na mwanamke mmoja mzee. Walikaa sehemu kubwa ya siku, wakala chakula cha wamisionari, na yule kijana hata alipanda ndege akazunguka angani! Wanaume wale watano walijaa furaha na matumaini. Jim na marafiki zake walitaka Waorani wasikie habari za Yesu, kwa sababu hakuna mtu aliyewahi kuwaeleza. Bado kuna watu ambao hawajawahi kusikia. Tunaweza kuwaombea, na tunaweza kuwaeleza wengine pia. Yesu mpendwa, asante kwa ajili ya watu wanaokwenda mbali kuwaeleza wengine habari zako. Tafadhali wasaidie watu wote duniani kusikia habari za upendo wako. Amina.",
+  "word_count": 323
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "sw"
+  ],
+  "order": 8,
+  "title": "Siku Redio Ilipokaa Kimya",
+  "body_html": "<blockquote>“Upitapo katika maji, nitakuwa pamoja nawe; na katika mito, haitakugharikisha.” — kutoka Isaya 43</blockquote> <p>Jumapili, tarehe 8 Januari 1956, Nate alizungumza kwa redio na mke wake, Marj. Alisema walitumaini kupata wageni mchana ule, naye aliahidi kuwasiliana tena saa kumi na nusu jioni. Lakini saa kumi na nusu ilipofika, redio ilikuwa kimya. Haikusema tena kamwe.</p> <p>Siku iliyofuata, rubani mwingine aliiona ndege ya Nate kwenye ukingo wa mchanga, lakini hakuona dalili yoyote ya wanaume wale. Baada ya siku kadhaa za kutafuta, habari ya huzuni ikawa ya hakika. Wanaume wa Kiwaorani walikuwa wamekuja ufuoni, na wamisionari wote watano walikuwa wameuawa. Waorani walikuwa wameambiwa hadithi kwamba wageni wale walikuwa wamewashambulia watu wao wenyewe, nao waliogopa sana. Jim na marafiki zake walikuwa wamekubaliana kabla kwamba hawangetumia bunduki zao dhidi ya Waorani.</p> <p>Betty alikuwa na umri wa miaka ishirini na tisa. Valerie alikuwa na miezi kumi tu. Betty alihuzunika sana, naye alimkumbuka Jim kwa muda mrefu. Lakini hakuacha kumtumaini Mungu. Aliishikilia ahadi yake kwamba atakuwa pamoja naye, hata katika maji yenye kina kirefu kabisa.</p> <p>Miaka kadhaa kabla, Jim alikuwa ameandika katika shajara yake kwamba mtu si mjinga anapotoa kile asichoweza kukitunza milele, ili apate kile ambacho hawezi kukipoteza kamwe. Sasa maneno hayo yalisomwa duniani kote.</p> <p>Watu wengi walidhani Betty angerudi nyumbani Amerika. Badala yake, alimchukua Valerie akarudi kwenye nyumba ya Shandia, akaendeleza kazi ya Jim kati ya Wakichua. Hilo lilikuwa tu jambo lililofuata kufanywa. Maisha yake yote alipenda shairi moja la zamani lenye maneno manne, kwa Kiingereza cha zamani: “Doe the nexte thynge,” yaani, “Fanya jambo linalofuata.” Aliandika kitabu kuhusu wanaume wale watano, na maelfu ya watu waliokisoma waliamua kumtumikia Mungu kama wamisionari.</p> <p>Jambo la huzuni sana linapotokea, si lazima tulielewe lote mara moja. Tunaweza kuushika mkono wa Mungu na kufanya jambo linalofuata, siku moja baada ya nyingine. Yeye yuko pamoja nasi katika siku za huzuni.</p> <p><em>Mungu mpendwa, asante kwa kuwa uko pamoja nami hata ninapohuzunika sana. Nisipojua la kufanya, nisaidie kukutumaini na kufanya jambo linalofuata. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Betty alifanya nini baada ya Jim kufa, badala ya kurudi nyumbani?",
+    "answer": "Alimchukua mtoto mchanga Valerie akarudi Shandia, akaendeleza kazi ya Jim kati ya Wakichua."
+   },
+   {
+    "question": "Maneno manne ya shairi la zamani alilolipenda Betty yalikuwa yapi?",
+    "answer": "“Doe the nexte thynge,” kwa Kiingereza cha zamani. Maana yake ni: fanya jambo linalofuata lililo mbele yako, na umwachie Mungu mengine yote."
+   },
+   {
+    "question": "Ni “jambo gani linalofuata” unaloweza kulifanya unapojisikia mwenye huzuni au wasiwasi?",
+    "answer": "Jibu lolote la kweli ni zuri. Betty hakuhitaji kuelewa kila kitu. Alimtumaini Mungu na kufanya jambo linalofuata, siku moja baada ya nyingine."
+   }
+  ],
+  "body_text": "“Upitapo katika maji, nitakuwa pamoja nawe; na katika mito, haitakugharikisha.” — kutoka Isaya 43 Jumapili, tarehe 8 Januari 1956, Nate alizungumza kwa redio na mke wake, Marj. Alisema walitumaini kupata wageni mchana ule, naye aliahidi kuwasiliana tena saa kumi na nusu jioni. Lakini saa kumi na nusu ilipofika, redio ilikuwa kimya. Haikusema tena kamwe. Siku iliyofuata, rubani mwingine aliiona ndege ya Nate kwenye ukingo wa mchanga, lakini hakuona dalili yoyote ya wanaume wale. Baada ya siku kadhaa za kutafuta, habari ya huzuni ikawa ya hakika. Wanaume wa Kiwaorani walikuwa wamekuja ufuoni, na wamisionari wote watano walikuwa wameuawa. Waorani walikuwa wameambiwa hadithi kwamba wageni wale walikuwa wamewashambulia watu wao wenyewe, nao waliogopa sana. Jim na marafiki zake walikuwa wamekubaliana kabla kwamba hawangetumia bunduki zao dhidi ya Waorani. Betty alikuwa na umri wa miaka ishirini na tisa. Valerie alikuwa na miezi kumi tu. Betty alihuzunika sana, naye alimkumbuka Jim kwa muda mrefu. Lakini hakuacha kumtumaini Mungu. Aliishikilia ahadi yake kwamba atakuwa pamoja naye, hata katika maji yenye kina kirefu kabisa. Miaka kadhaa kabla, Jim alikuwa ameandika katika shajara yake kwamba mtu si mjinga anapotoa kile asichoweza kukitunza milele, ili apate kile ambacho hawezi kukipoteza kamwe. Sasa maneno hayo yalisomwa duniani kote. Watu wengi walidhani Betty angerudi nyumbani Amerika. Badala yake, alimchukua Valerie akarudi kwenye nyumba ya Shandia, akaendeleza kazi ya Jim kati ya Wakichua. Hilo lilikuwa tu jambo lililofuata kufanywa. Maisha yake yote alipenda shairi moja la zamani lenye maneno manne, kwa Kiingereza cha zamani: “Doe the nexte thynge,” yaani, “Fanya jambo linalofuata.” Aliandika kitabu kuhusu wanaume wale watano, na maelfu ya watu waliokisoma waliamua kumtumikia Mungu kama wamisionari. Jambo la huzuni sana linapotokea, si lazima tulielewe lote mara moja. Tunaweza kuushika mkono wa Mungu na kufanya jambo linalofuata, siku moja baada ya nyingine. Yeye yuko pamoja nasi katika siku za huzuni. Mungu mpendwa, asante kwa kuwa uko pamoja nami hata ninapohuzunika sana. Nisipojua la kufanya, nisaidie kukutumaini na kufanya jambo linalofuata. Amina.",
+  "word_count": 321
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "sw"
+  ],
+  "order": 9,
+  "title": "Wanawake Wawili Kutoka Msituni",
+  "body_html": "<blockquote>“Nami nitawaleta vipofu kwa njia wasiyoijua; nitafanya giza kuwa nuru mbele yao.” — kutoka Isaya 42</blockquote> <p>Karibu miaka miwili baadaye, Novemba 1957, Betty alikuwa katika kituo cha misheni kiitwacho Arajuno. Wanaume wawili wa Kikichua walikuja na habari za kushangaza. Wanawake wawili wa Kiwaorani walikuwa wametoka msituni na walikuwa wakikaa nyumbani kwao! Betty alikwenda mara moja.</p> <p>Wanawake wale waliitwa Mankamu na Mintaka. Mintaka ndiye yule mwanamke mzee aliyewatembelea wamisionari watano ufuoni, siku chache tu kabla hawajafa.</p> <p>Betty aliwachukua wanawake wote wawili nyumbani Shandia. Kwa miezi kumi waliishi nyumbani mwake pamoja naye na Valerie mdogo. Betty aliwapa chakula, mahali pa kulala na kila kitu walichohitaji. Na siku baada ya siku aliwasikiliza wakizungumza, akayaandika maneno yao. Lugha ya Kiwaorani haifanani na lugha nyingine yoyote duniani. Hapakuwa na kitabu cha kumsaidia. Ilikuwa lugha ngumu kuliko zote alizowahi kujifunza.</p> <p>Kulikuwa na mwanamke mwingine wa Kiwaorani aitwaye Dayuma. Miaka mingi kabla, alikuwa amewakimbia watu wake akaenda kuishi kati ya Wakichua. Dada yake Nate Saint, Rachel Saint, alikuwa akijifunza lugha ya Kiwaorani kutoka kwake. Mwaka 1958, Rachel na Dayuma walirudi Ekuado. Dayuma alikutana na Mintaka na Mankamu, na wanawake wale watatu wakaamua kurudi nyumbani kwa watu wao pamoja.</p> <p>Tarehe 3 Septemba 1958, wanawake wale watatu waliingia msituni wakitembea. Hakuna aliyejua kama wangerudi. Lakini karibu wiki tatu baadaye, walirudi, pamoja na kikundi cha wanaume na wanawake wa Kiwaorani! Walileta mwaliko. Betty na Rachel waliombwa waje kuishi kati ya Waorani.</p> <p>Hakuna mtu ambaye angeweza kupanga jambo hili. Njia ya kuwafikia Waorani ilifunguliwa na wanawake watatu waliotoka msituni na kurudi tena. Mungu anaweza kufungua milango ambayo sisi wenyewe hatuwezi kuifungua.</p> <p><em>Mungu mpendwa, asante kwa kuwa unaweza kufungua milango ambayo hakuna mwingine anayeweza kuifungua. Nisaidie kuwatendea wema wageni, kama Betty alivyofanya. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mintaka alikuwa nani?",
+    "answer": "Mmoja wa wanawake wawili wa Kiwaorani waliotoka msituni. Ndiye yule mwanamke mzee aliyewatembelea wamisionari watano ufuoni."
+   },
+   {
+    "question": "Waorani walirudi na mwaliko gani?",
+    "answer": "Waliwaomba Betty na Rachel Saint waje kuishi kati yao."
+   },
+   {
+    "question": "Ungewezaje kumtendea wema mtu aliye mgeni au mpya?",
+    "answer": "Jibu lolote ni zuri. Betty aliwafungulia nyumba yake wanawake wawili kutoka msituni, naye Mungu akautumia wema wake kufungua mlango."
+   }
+  ],
+  "body_text": "“Nami nitawaleta vipofu kwa njia wasiyoijua; nitafanya giza kuwa nuru mbele yao.” — kutoka Isaya 42 Karibu miaka miwili baadaye, Novemba 1957, Betty alikuwa katika kituo cha misheni kiitwacho Arajuno. Wanaume wawili wa Kikichua walikuja na habari za kushangaza. Wanawake wawili wa Kiwaorani walikuwa wametoka msituni na walikuwa wakikaa nyumbani kwao! Betty alikwenda mara moja. Wanawake wale waliitwa Mankamu na Mintaka. Mintaka ndiye yule mwanamke mzee aliyewatembelea wamisionari watano ufuoni, siku chache tu kabla hawajafa. Betty aliwachukua wanawake wote wawili nyumbani Shandia. Kwa miezi kumi waliishi nyumbani mwake pamoja naye na Valerie mdogo. Betty aliwapa chakula, mahali pa kulala na kila kitu walichohitaji. Na siku baada ya siku aliwasikiliza wakizungumza, akayaandika maneno yao. Lugha ya Kiwaorani haifanani na lugha nyingine yoyote duniani. Hapakuwa na kitabu cha kumsaidia. Ilikuwa lugha ngumu kuliko zote alizowahi kujifunza. Kulikuwa na mwanamke mwingine wa Kiwaorani aitwaye Dayuma. Miaka mingi kabla, alikuwa amewakimbia watu wake akaenda kuishi kati ya Wakichua. Dada yake Nate Saint, Rachel Saint, alikuwa akijifunza lugha ya Kiwaorani kutoka kwake. Mwaka 1958, Rachel na Dayuma walirudi Ekuado. Dayuma alikutana na Mintaka na Mankamu, na wanawake wale watatu wakaamua kurudi nyumbani kwa watu wao pamoja. Tarehe 3 Septemba 1958, wanawake wale watatu waliingia msituni wakitembea. Hakuna aliyejua kama wangerudi. Lakini karibu wiki tatu baadaye, walirudi, pamoja na kikundi cha wanaume na wanawake wa Kiwaorani! Walileta mwaliko. Betty na Rachel waliombwa waje kuishi kati ya Waorani. Hakuna mtu ambaye angeweza kupanga jambo hili. Njia ya kuwafikia Waorani ilifunguliwa na wanawake watatu waliotoka msituni na kurudi tena. Mungu anaweza kufungua milango ambayo sisi wenyewe hatuwezi kuifungua. Mungu mpendwa, asante kwa kuwa unaweza kufungua milango ambayo hakuna mwingine anayeweza kuifungua. Nisaidie kuwatendea wema wageni, kama Betty alivyofanya. Amina.",
+  "word_count": 281
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "sw"
+  ],
+  "order": 10,
+  "title": "Kuingia Msituni Pamoja na Valerie",
+  "body_html": "<blockquote>“Usishindwe na ubaya, bali uushinde ubaya kwa wema.” — kutoka Warumi 12</blockquote> <p>Baadhi ya marafiki wa Betty walifikiri hapaswi kwenda. Ilionekana ni hatari mno kwa mama kijana kumpeleka binti yake mdogo kuishi kati ya watu waliomuua mume wake. Betty aliijua hatari ile. Lakini Waorani walikuwa wamemwomba aje, naye aliamini kwamba Mungu alitaka wasikie habari zake. Kwa hiyo alikwenda.</p> <p>Oktoba 1958, Betty, Valerie na Rachel Saint walitembea msituni pamoja na Dayuma na Waorani waliokuwa wamekuja kuwachukua. Valerie, mwenye umri wa miaka mitatu, ilibidi abebwe. Tarehe 8 Oktoba walifika kwenye uwazi wa Waorani kando ya mto mdogo uitwao Tiwaeno. Siku ile ingekuwa siku ya kuzaliwa ya Jim, ya kutimiza miaka thelathini na mmoja.</p> <p>Waorani waliishi katika nyumba kubwa zilizoezekwa kwa majani ya mitende, walilala katika machela, na waliwinda kwa mirija ya kupulizia mishale. Betty na Valerie waliishi katika kibanda rahisi chenye paa la majani. Waorani walimpa Betty jina jipya: Gikari, maana yake “kigogota.” Valerie alicheza na watoto wa Kiwaorani, alikimbia bila viatu, na punde akaongea lugha yao kwa urahisi.</p> <p>Baadhi ya wanaume waliokuwa ufuoni siku ile waliishi pale pale katika uwazi ule. Betty alikutana nao. Aliona kwamba hawakuwa mazimwi. Walicheka, waliwatunza watoto wao na walikwenda kuwinda. Walikuwa wametenda kwa sababu ya hofu. Betty hakujifanya kwamba walichokifanya hakikuwa na maana. Lakini alikuwa ameamua kuwasamehe kabla hajaja, naye hakuwachukia.</p> <p>Betty aliishi kati ya Waorani kwa karibu miaka mitatu. Aliwapa wagonjwa dawa na alifanya kazi kwa bidii juu ya lugha, huku Dayuma akiwaeleza watu wake habari za Mungu. Kadiri miaka ilivyopita, baadhi ya wanaume wale wale waliokuwa ufuoni walianza kumfuata Yesu. Baadaye, wawili wao waliwabatiza mwana na binti wa Nate Saint katika mto karibu na ufuo ambapo baba yao alikufa.</p> <p>Yesu anatuambia tuwapende hata watu waliotuumiza. Hilo ni gumu sana. Lakini Mungu anaweza kutusaidia kusamehe, na wema wetu unaweza kuwaonyesha wengine upendo wake.</p> <p><em>Yesu mpendwa, ni vigumu kuwapenda watu walioniumiza. Tafadhali nisaidie kusamehe, na kuwatendea mema, kama Betty alivyofanya. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Waorani walimpa Betty jina gani?",
+    "answer": "Gikari, maana yake “kigogota.”"
+   },
+   {
+    "question": "Nini kiliwapata baadhi ya wanaume waliokuwa ufuoni?",
+    "answer": "Kadiri miaka ilivyopita, baadhi yao walianza kumfuata Yesu. Baadaye wawili wao waliwabatiza mwana na binti wa Nate Saint katika mto karibu na ufuo ule."
+   },
+   {
+    "question": "Je, kuna mtu ambaye unahitaji msaada wa Mungu ili umsamehe?",
+    "answer": "Jibu lolote la kweli ni zuri. Kusamehe ni kugumu, lakini Mungu anaweza kutusaidia, na kuwatendea wengine mema huwaonyesha upendo wake."
+   }
+  ],
+  "body_text": "“Usishindwe na ubaya, bali uushinde ubaya kwa wema.” — kutoka Warumi 12 Baadhi ya marafiki wa Betty walifikiri hapaswi kwenda. Ilionekana ni hatari mno kwa mama kijana kumpeleka binti yake mdogo kuishi kati ya watu waliomuua mume wake. Betty aliijua hatari ile. Lakini Waorani walikuwa wamemwomba aje, naye aliamini kwamba Mungu alitaka wasikie habari zake. Kwa hiyo alikwenda. Oktoba 1958, Betty, Valerie na Rachel Saint walitembea msituni pamoja na Dayuma na Waorani waliokuwa wamekuja kuwachukua. Valerie, mwenye umri wa miaka mitatu, ilibidi abebwe. Tarehe 8 Oktoba walifika kwenye uwazi wa Waorani kando ya mto mdogo uitwao Tiwaeno. Siku ile ingekuwa siku ya kuzaliwa ya Jim, ya kutimiza miaka thelathini na mmoja. Waorani waliishi katika nyumba kubwa zilizoezekwa kwa majani ya mitende, walilala katika machela, na waliwinda kwa mirija ya kupulizia mishale. Betty na Valerie waliishi katika kibanda rahisi chenye paa la majani. Waorani walimpa Betty jina jipya: Gikari, maana yake “kigogota.” Valerie alicheza na watoto wa Kiwaorani, alikimbia bila viatu, na punde akaongea lugha yao kwa urahisi. Baadhi ya wanaume waliokuwa ufuoni siku ile waliishi pale pale katika uwazi ule. Betty alikutana nao. Aliona kwamba hawakuwa mazimwi. Walicheka, waliwatunza watoto wao na walikwenda kuwinda. Walikuwa wametenda kwa sababu ya hofu. Betty hakujifanya kwamba walichokifanya hakikuwa na maana. Lakini alikuwa ameamua kuwasamehe kabla hajaja, naye hakuwachukia. Betty aliishi kati ya Waorani kwa karibu miaka mitatu. Aliwapa wagonjwa dawa na alifanya kazi kwa bidii juu ya lugha, huku Dayuma akiwaeleza watu wake habari za Mungu. Kadiri miaka ilivyopita, baadhi ya wanaume wale wale waliokuwa ufuoni walianza kumfuata Yesu. Baadaye, wawili wao waliwabatiza mwana na binti wa Nate Saint katika mto karibu na ufuo ambapo baba yao alikufa. Yesu anatuambia tuwapende hata watu waliotuumiza. Hilo ni gumu sana. Lakini Mungu anaweza kutusaidia kusamehe, na wema wetu unaweza kuwaonyesha wengine upendo wake. Yesu mpendwa, ni vigumu kuwapenda watu walioniumiza. Tafadhali nisaidie kusamehe, na kuwatendea mema, kama Betty alivyofanya. Amina.",
+  "word_count": 315
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "sw"
+  ],
+  "order": 11,
+  "title": "Maswali ya Kweli, Kuagana Kugumu",
+  "body_html": "<blockquote>“Enyi watu, mtumainini sikuzote; mimineni mioyo yenu mbele zake; Mungu ni kimbilio letu.” — kutoka Zaburi 62</blockquote> <p>Mwishoni mwa mwaka 1961, Betty aliwaacha Waorani. Yeye na Rachel Saint waliona ni vigumu sana kufanya kazi pamoja, na Valerie alikuwa karibu kufikia umri wa kwenda shule. Rachel alibaki kati ya Waorani kwa sehemu kubwa ya maisha yake. Betty alifanya kazi kati ya Wakichua kwa karibu miaka miwili zaidi. Kisha mwaka 1963, Valerie alipokuwa na miaka minane, wote wawili walirudi nyumbani Amerika. Walikaa Franconia, New Hampshire, katikati ya milima ambayo Betty aliipenda alipokuwa msichana.</p> <p>Kufikia wakati huo Betty alikuwa maarufu. Kila mtu alitaka kusikia hadithi ya Jim na Waorani. Watu walitaka hadithi ya furaha ambapo kila kitu kiliisha vizuri kabisa. Lakini Betty alikuwa amejifunza huko Ekuado kwamba maisha pamoja na Mungu si nadhifu na yenye mpangilio kila mara. Hakukubali kujifanya. Katika vitabu vyake aliandika kwa uaminifu kuhusu maswali yake, na kuhusu mambo ambayo hakuyaelewa. Baadhi ya wasomaji walikasirika. Lakini watu wengi waliokuwa na hadithi zao wenyewe za huzuni walisaidiwa na uaminifu wake.</p> <p>Mwaka 1969, Betty aliolewa tena. Mume wake mpya, Addison Leitch, alikuwa mwalimu wa theolojia, mtu mchangamfu na mcheshi aliyependa vitabu. Betty na Valerie walihamia pamoja naye Hamilton, Massachusetts. Ile ilikuwa miaka ya furaha.</p> <p>Lakini Addison aliugua sana ugonjwa wa saratani. Betty alimtunza nyumbani, katika miezi ile mirefu na migumu. Alikufa tarehe 17 Septemba 1973. Kwa mara ya pili, Betty alikuwa mjane. Safari hii hapakuwa na magazeti wala picha. Alihuzunika, naye alikuwa mpweke. Lakini alimletea Mungu huzuni yake, naye Mungu akamshikilia tena.</p> <p>Mungu hataki tuyafiche maswali yetu au tujifanye kuwa tuna furaha wakati hatuna. Tunaweza kumwambia kila kitu kilicho mioyoni mwetu. Yeye ni kimbilio letu.</p> <p><em>Mungu mpendwa, asante kwa kuwa ninaweza kukuambia kila kitu, hata maswali yangu na huzuni yangu. Asante kwa kuwa wewe ni kimbilio langu. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Betty na Valerie waliishi wapi waliporudi Amerika?",
+    "answer": "Huko Franconia, New Hampshire, katikati ya milima ambako Betty alikaa wakati wa majira ya joto alipokuwa msichana."
+   },
+   {
+    "question": "Kwa nini baadhi ya wasomaji walikasirishwa na vitabu vya baadaye vya Betty?",
+    "answer": "Kwa sababu aliandika kwa uaminifu kuhusu maswali yake na mambo ambayo hakuyaelewa, badala ya kusimulia hadithi ambayo kila kitu kiliisha vizuri kabisa."
+   },
+   {
+    "question": "Ni jambo gani ambalo ungependa kumwambia Mungu kwa uaminifu leo?",
+    "answer": "Jibu lolote la kweli ni zuri. Mungu anataka tumiminie mioyo yetu mbele zake, pamoja na maswali yetu yote, kwa sababu yeye ni kimbilio letu."
+   }
+  ],
+  "body_text": "“Enyi watu, mtumainini sikuzote; mimineni mioyo yenu mbele zake; Mungu ni kimbilio letu.” — kutoka Zaburi 62 Mwishoni mwa mwaka 1961, Betty aliwaacha Waorani. Yeye na Rachel Saint waliona ni vigumu sana kufanya kazi pamoja, na Valerie alikuwa karibu kufikia umri wa kwenda shule. Rachel alibaki kati ya Waorani kwa sehemu kubwa ya maisha yake. Betty alifanya kazi kati ya Wakichua kwa karibu miaka miwili zaidi. Kisha mwaka 1963, Valerie alipokuwa na miaka minane, wote wawili walirudi nyumbani Amerika. Walikaa Franconia, New Hampshire, katikati ya milima ambayo Betty aliipenda alipokuwa msichana. Kufikia wakati huo Betty alikuwa maarufu. Kila mtu alitaka kusikia hadithi ya Jim na Waorani. Watu walitaka hadithi ya furaha ambapo kila kitu kiliisha vizuri kabisa. Lakini Betty alikuwa amejifunza huko Ekuado kwamba maisha pamoja na Mungu si nadhifu na yenye mpangilio kila mara. Hakukubali kujifanya. Katika vitabu vyake aliandika kwa uaminifu kuhusu maswali yake, na kuhusu mambo ambayo hakuyaelewa. Baadhi ya wasomaji walikasirika. Lakini watu wengi waliokuwa na hadithi zao wenyewe za huzuni walisaidiwa na uaminifu wake. Mwaka 1969, Betty aliolewa tena. Mume wake mpya, Addison Leitch, alikuwa mwalimu wa theolojia, mtu mchangamfu na mcheshi aliyependa vitabu. Betty na Valerie walihamia pamoja naye Hamilton, Massachusetts. Ile ilikuwa miaka ya furaha. Lakini Addison aliugua sana ugonjwa wa saratani. Betty alimtunza nyumbani, katika miezi ile mirefu na migumu. Alikufa tarehe 17 Septemba 1973. Kwa mara ya pili, Betty alikuwa mjane. Safari hii hapakuwa na magazeti wala picha. Alihuzunika, naye alikuwa mpweke. Lakini alimletea Mungu huzuni yake, naye Mungu akamshikilia tena. Mungu hataki tuyafiche maswali yetu au tujifanye kuwa tuna furaha wakati hatuna. Tunaweza kumwambia kila kitu kilicho mioyoni mwetu. Yeye ni kimbilio letu. Mungu mpendwa, asante kwa kuwa ninaweza kukuambia kila kitu, hata maswali yangu na huzuni yangu. Asante kwa kuwa wewe ni kimbilio langu. Amina.",
+  "word_count": 296
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "sw"
+  ],
+  "order": 12,
+  "title": "Mikono ya Milele",
+  "body_html": "<blockquote>“Na hata wakati wa uzee wenu mimi ndiye, na hata wakati wa kuwa na mvi nitawachukueni.” — kutoka Isaya 46</blockquote> <p>Mwaka 1977 Betty aliolewa mara ya tatu. Mume wake aliitwa Lars Gren. Walifanya makao yao huko Magnolia, kijiji kando ya bahari huko Massachusetts. Valerie alikua akaolewa na mchungaji aitwaye Walter Shepard, nao walipata watoto wanane. Yule mjane kijana wa msituni sasa alikuwa bibi wa familia kubwa!</p> <p>Betty aliendelea kuandika vitabu. Na kuanzia mwaka 1988 alikuwa na kipindi cha redio kwa ajili ya wanawake kilichoitwa <em>Gateway to Joy</em>, kilichosikika Amerika kote na katika nchi nyingine. Kila kipindi kilianza kwa namna ile ile. Aliwakumbusha wasikilizaji wake ahadi mbili za Biblia: kwamba Mungu aliwapenda kwa upendo wa milele, na kwamba mikono yake ya milele ilikuwa chini yao.</p> <p>Kwenye redio alizungumza kuhusu maombi na huzuni na kumtumaini Mungu. Lakini pia alizungumza kuhusu mambo ya kawaida, kama kuosha vyombo, kufika kwa wakati, kujibu barua na kuamka asubuhi. Aliamini kwamba kufanya kazi ndogo vizuri, kwa ajili ya Mungu, ni njia ya kumpenda.</p> <p>Betty alipozeeka, aliugua ugonjwa wa kusahau uitwao dementia. Kidogo kidogo, hakuweza kukumbuka mambo, na baadaye aliweza kuzungumza kwa shida sana tu. Yeye aliyeyapenda maneno sana hakuweza kuyatumia tena. Lars alimtunza nyumbani kwa miaka mingi. Sasa ilibidi mtu mwingine ambebe yeye, kama vile yeye alivyombeba Valerie mchanga msituni zamani.</p> <p>Betty alikufa nyumbani kwake huko Magnolia tarehe 15 Juni 2015. Alikuwa na umri wa miaka themanini na minane. Alikuwa amemtumaini Mungu katika siku za furaha na katika siku za huzuni nyingi, na mwishoni alipumzika katika mikono yake ya milele.</p> <p>Mwishoni mwa maisha yake Betty hakuweza kumfanyia Mungu kitu chochote, lakini Mungu bado alimpenda vile vile. Wewe pia una thamani kubwa kwa Mungu, si kwa sababu ya mambo unayoweza kufanya, bali kwa sababu wewe ni wake.</p> <p><em>Mungu mpendwa, asante kwa ajili ya Betty Elliot na yote uliyoyafanya kupitia maisha yake. Asante kwa kuwa unanipenda kwa upendo wa milele, na kwa kuwa mikono yako iko chini yangu daima. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kila kipindi cha redio cha Gateway to Joy kilianzaje?",
+    "answer": "Betty aliwakumbusha wasikilizaji wake kwamba Mungu aliwapenda kwa upendo wa milele, na kwamba mikono yake ya milele ilikuwa chini yao."
+   },
+   {
+    "question": "Betty alizungumza kuhusu mambo gani ya kawaida kwenye redio?",
+    "answer": "Mambo kama kuosha vyombo, kufika kwa wakati, kujibu barua na kuamka asubuhi. Aliamini kwamba kazi ndogo zinazofanywa vizuri kwa ajili ya Mungu ni njia ya kumpenda."
+   },
+   {
+    "question": "Kwa nini wewe una thamani kwa Mungu?",
+    "answer": "Jibu lolote la kweli ni zuri. Mungu anakupenda si kwa sababu ya mambo unayoweza kufanya, bali kwa sababu wewe ni wake, na mikono yake ya milele inakushika."
+   }
+  ],
+  "body_text": "“Na hata wakati wa uzee wenu mimi ndiye, na hata wakati wa kuwa na mvi nitawachukueni.” — kutoka Isaya 46 Mwaka 1977 Betty aliolewa mara ya tatu. Mume wake aliitwa Lars Gren. Walifanya makao yao huko Magnolia, kijiji kando ya bahari huko Massachusetts. Valerie alikua akaolewa na mchungaji aitwaye Walter Shepard, nao walipata watoto wanane. Yule mjane kijana wa msituni sasa alikuwa bibi wa familia kubwa! Betty aliendelea kuandika vitabu. Na kuanzia mwaka 1988 alikuwa na kipindi cha redio kwa ajili ya wanawake kilichoitwa Gateway to Joy, kilichosikika Amerika kote na katika nchi nyingine. Kila kipindi kilianza kwa namna ile ile. Aliwakumbusha wasikilizaji wake ahadi mbili za Biblia: kwamba Mungu aliwapenda kwa upendo wa milele, na kwamba mikono yake ya milele ilikuwa chini yao. Kwenye redio alizungumza kuhusu maombi na huzuni na kumtumaini Mungu. Lakini pia alizungumza kuhusu mambo ya kawaida, kama kuosha vyombo, kufika kwa wakati, kujibu barua na kuamka asubuhi. Aliamini kwamba kufanya kazi ndogo vizuri, kwa ajili ya Mungu, ni njia ya kumpenda. Betty alipozeeka, aliugua ugonjwa wa kusahau uitwao dementia. Kidogo kidogo, hakuweza kukumbuka mambo, na baadaye aliweza kuzungumza kwa shida sana tu. Yeye aliyeyapenda maneno sana hakuweza kuyatumia tena. Lars alimtunza nyumbani kwa miaka mingi. Sasa ilibidi mtu mwingine ambebe yeye, kama vile yeye alivyombeba Valerie mchanga msituni zamani. Betty alikufa nyumbani kwake huko Magnolia tarehe 15 Juni 2015. Alikuwa na umri wa miaka themanini na minane. Alikuwa amemtumaini Mungu katika siku za furaha na katika siku za huzuni nyingi, na mwishoni alipumzika katika mikono yake ya milele. Mwishoni mwa maisha yake Betty hakuweza kumfanyia Mungu kitu chochote, lakini Mungu bado alimpenda vile vile. Wewe pia una thamani kubwa kwa Mungu, si kwa sababu ya mambo unayoweza kufanya, bali kwa sababu wewe ni wake. Mungu mpendwa, asante kwa ajili ya Betty Elliot na yote uliyoyafanya kupitia maisha yake. Asante kwa kuwa unanipenda kwa upendo wa milele, na kwa kuwa mikono yako iko chini yangu daima. Amina.",
+  "word_count": 322
+ }
+}
+]
