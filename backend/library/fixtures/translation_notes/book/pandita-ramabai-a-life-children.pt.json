@@ -1,0 +1,115 @@
+{
+ "kind": "book",
+ "slug": "pandita-ramabai-a-life-children",
+ "language": "pt",
+ "job_issue": 5547,
+ "note": [
+  "The English retelling does not quote a Bible: each chapter's opening blockquote is a simplified paraphrase for 8–12 year olds, cited loosely (“— from Deuteronomy 6”), and the body echoes verses in the same retold register. The Portuguese renders those paraphrases in the same simple, child-friendly wording (as the shipped pt children's editions do) rather than pasting a Portuguese Bible text, so they are self_rendered; api.takeroot.bible was egress-blocked from this session in any case.",
+  "Ramabai's own words on Manorama's death quote Job 1:21; that line is pasted verbatim from talks-to-the-farmer.pt.json. Hebrews 11:8 is Ramabai's allusion (“as Abraham, not knowing whither I went”), rendered plainly. Distances are given in kilometres (four thousand miles → more than six thousand kilometres, also in chapter 4's title). AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Deuteronomy 6:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "John 8:32",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "John 8:32",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Psalm 27:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Ezekiel 36:26",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Psalm 68:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 68:5",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Proverbs 31:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Hebrews 11:8",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 6
+  },
+  {
+   "reference": "John 4:14",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Isaiah 1:17",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Matthew 4:16",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Romans 5:8",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Romans 5:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Malachi 3:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 10:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Job 1:21",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 12,
+   "source_file": "talks-to-the-farmer.pt.json"
+  }
+ ]
+}

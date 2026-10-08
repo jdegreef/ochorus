@@ -9933,6 +9933,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"pt/pandita-ramabai-a-life-children": {
+			"ground": "16b9831d9eec130784e8bdef4ba96ef14dda456c11d2b6066d2dd52ba3e5483d",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"pt/pilgrims-progress": {
 			"ground": "e51826a893bc398df857ac4c8ab4bca31cb623a1bd0c7171854592c0a31f0439",
 			"style": "press",
