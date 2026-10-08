@@ -5084,7 +5084,7 @@
 			"bar": 0
 		},
 		"fr/all-of-grace-teens": {
-			"ground": "c1cfdaa9c3f07405e29aa0c38c96a3bbb25588d22b52b4fd2480291a88ded850",
+			"ground": "4a5fc9fc60bbf6c1bf2876b0deabc4ec318735eb7527f8c6ca6cfe24c014bb93",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
@@ -5121,7 +5121,7 @@
 			]
 		},
 		"fr/amanda-smith-autobiography-teens": {
-			"ground": "8b8e1e4eb2f00bbf3e16380faf9ba90159743a25cf7053601b45fdbf88628c4a",
+			"ground": "c9b1ecd1ddcf17f14e0ef9b56c4657137e626a3e00005b86fbb46aeb50f5a939",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
@@ -5134,17 +5134,17 @@
 					[103, 102, 497, 131]
 				],
 				"title": [
-					[126, 310, 474, 374],
-					[86, 365, 514, 429],
-					[64, 420, 536, 484]
+					[93, 293, 507, 369],
+					[45, 359, 555, 435],
+					[152, 424, 448, 500]
 				],
 				"mark": [
 					[232, 664, 368, 746]
 				]
 			},
 			"middle": [
-				258,
-				537
+				243,
+				552
 			]
 		},
 		"fr/around-the-wicket-gate": {
@@ -5672,7 +5672,7 @@
 			"bar": 0
 		},
 		"fr/pilgrims-progress-teens": {
-			"ground": "e5622af1408ce65fad675b35529b0b6d443d21ec4a4f4a3f33fd35e7f559a0da",
+			"ground": "ba6a6327f7a03a3fa0a93580fe6a992cb22947d36160c55311770f6b12bc6fe2",
 			"style": "press",
 			"volume": null,
 			"script": "latin",
@@ -5975,7 +5975,7 @@
 			"bar": 0
 		},
 		"fr/talks-to-the-farmer-teens": {
-			"ground": "dbc6ccc9cb9988856c2c5fe1824133136ca6d9d83d5d4e9c14c5b71672c6faa4",
+			"ground": "6d04e0737f0cc29178702b5c26255dfc65c693b0a8266a485bb2ccbe4ffb0b79",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
@@ -6106,7 +6106,7 @@
 			"bar": 0
 		},
 		"fr/the-life-of-trust-teens": {
-			"ground": "5ffb4374d9be77d331fe9f96f0fe31406d80924cf8c9716afd6860b81f0e34a8",
+			"ground": "028eb0bf6c55af59dc39daa031405e05aff0f062fd7076279d68b88b511ec826",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
