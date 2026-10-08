@@ -1,0 +1,93 @@
+{
+ "kind": "book",
+ "slug": "corrie-ten-boom-a-life-children",
+ "language": "fr",
+ "job_issue": 5556,
+ "pull_request": null,
+ "note": [
+  "Scripture register follows Louis Segond (1910), the register the shipped French corpus uses. The English edition's epigraphs are loose children's paraphrases introduced with “— from <Book> <chapter>”, rendered here “— d’après <Livre> <chapitre>” (with “le Psaume” for psalms); they carry no verse number, so the verse-consistency audit's (Book C:V) pairs never see them.",
+  "The verse numbers above are English numbering (Psalm 68:6 is Segond 68:7). Only 1 Thessalonians 5:18 (“Rendez grâces en toutes choses.”) is a verbatim substring of a shipped French file. Every other epigraph is a plain, child-register rendering of the English paraphrase, kept close to Segond's vocabulary (e.g. “l’abri du Très-Haut”, “fidèle dans les moindres choses” simplified to “les toutes petites choses”), so it is self_rendered. Genesis 5:24 is the inline “marchait avec Dieu” (Segond: “marcha”), tense adapted to the sentence. api.takeroot.bible was not used.",
+  "Translated in-session. No quotations from Corrie ten Boom's published writings were added; the English paraphrases her accounts and so does this edition."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 122:6",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Psalm 68:6",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Luke 16:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Esther 4:14",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Psalm 32:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 91:1-2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalm 27:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Genesis 5:24",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "1 Thessalonians 5:18",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "days-of-heaven-upon-earth.fr.json"
+  },
+  {
+   "reference": "Psalm 139:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalm 124:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 5:44",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}
