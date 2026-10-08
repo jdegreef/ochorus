@@ -1,5 +1,4 @@
 import type { IconName } from '$lib/components/Icon.svelte';
-import { i18n } from './i18n.svelte';
 import {
 	toBookTile,
 	type AudienceShelf,
@@ -69,7 +68,7 @@ export interface AudienceHubConfig {
 	/** The note for the adults, folded shut: on a page the reader chose for
 	 *  themselves, a note about them shouldn't sit open at the end. */
 	foldParents: boolean;
-	/** Each book card leads with its one-line hook (`hookFor`), where the
+	/** Each book card carries its one-line hook (`$lib/bookHooks`), where the
 	 *  catalogue has one: the teenager picks by the story, not the cover. */
 	hooks: boolean;
 }
@@ -134,17 +133,6 @@ export const AUDIENCE_HUBS: AudienceHubConfig[] = [YOUNG_READERS_HUB, TEENS_HUB]
  *  face is opened, or it is shared — props `{ hub, action }` (`start`, `path`,
  *  `person`, `share`); its visits are the pageviews themselves. */
 export const HUB_EVENT = 'Hub';
-
-/** The catalogue key of a book's hook: `audience.hook_<slug>`. */
-export const hookKey = (slug: string): string => `audience.hook_${slug.replace(/-/g, '_')}`;
-
-/** A book's one-line hook in the page's language, or '' where it has none —
- *  an editor's line per book, so the book cards on a hub with `hooks` sell the
- *  story rather than the cover. Message parity keeps every catalogue level. */
-export function hookFor(slug: string): string {
-	const key = hookKey(slug);
-	return i18n.has(key) ? i18n.t(key) : '';
-}
 
 /** The hub for a series audience, if it has one (adults don't). */
 export const hubFor = (audience: string | null | undefined): AudienceHubConfig | undefined =>

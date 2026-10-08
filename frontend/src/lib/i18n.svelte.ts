@@ -13,8 +13,7 @@ import * as messages from '$lib/paraglide/messages.js';
  * switching lives in lang.svelte.ts (`lang.set`).
  */
 
-/** A dotted key's Paraglide message name: `nav.books` → `nav_books`. */
-export const toSnake = (key: string): string =>
+const toSnake = (key: string): string =>
 	key
 		.replace(/([a-z0-9])([A-Z])/g, '$1_$2')
 		.replace(/\./g, '_')

@@ -13,7 +13,6 @@
 		hubCounts,
 		hubIsEmpty,
 		hubPaths,
-		hookFor,
 		printableLinks,
 		startPick,
 		HUB_EVENT,
@@ -34,6 +33,7 @@
 	import ParentsNote from '$lib/components/ParentsNote.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
 	import { track } from '$lib/analytics';
+	import { hookFor } from '$lib/bookHooks';
 
 	/**
 	 * A young-reader hub — /young-readers/ or /teens/ — on the /series index's
