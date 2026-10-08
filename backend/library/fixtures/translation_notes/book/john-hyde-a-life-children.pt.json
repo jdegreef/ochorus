@@ -3,7 +3,7 @@
  "slug": "john-hyde-a-life-children",
  "language": "pt",
  "job_issue": 5551,
- "pull_request": null,
+ "pull_request": 5569,
  "note": [
   "Every scripture line in this edition is self_rendered. The English retelling quotes each chapter's opening verse loosely (“— from Matthew 9”) and echoes a few verses in the body in a retold register. The Portuguese renders the opening verses in a plain, reverent wording close to the familiar Almeida phrasing (e.g. “Eis-me aqui, envia-me a mim”, “Não por força, nem por poder, mas pelo meu Espírito”, “Graças a Deus, que nos dá a vitória”) and the body echoes in the same child-friendly register, as the sibling young-reader pt editions do; none was pasted from a shipped corpus file, so none is mined.",
   "Zechariah 2:8 (“a menina do meu olho”) and Revelation 12:10 (“acusador dos irmãos”) are John Hyde's own scriptural phrases inside his remembered prayer, not cited by the English; recorded so the reviewer can check them. AI-translated in-session; awaiting native review."
