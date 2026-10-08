@@ -24,9 +24,9 @@
 	let { data } = $props();
 
 	const page = $derived(data.page);
-	// Six fill one row of the desktop grid; the list runs longer so an
-	// unpublished pick leaves a backup in its place rather than a gap.
-	const books = $derived(data.books.slice(0, 6));
+	const books = $derived(data.books);
+	// forPages.test.ts pins one link per page, so the lookup cannot miss.
+	const label = $derived(FOR_LINKS.find((l) => l.slug === page.slug)!.label);
 	const path = $derived(forPath(page.slug));
 	const canonical = $derived(`${SITE_URL}${path}`);
 	const others = $derived(FOR_LINKS.filter((l) => l.slug !== page.slug));
@@ -56,7 +56,7 @@
 <div class="page-col px-5 py-10" lang="en">
 	<section class="hero">
 		<div>
-			<p class="eyebrow text-gold">{page.eyebrow}</p>
+			<p class="eyebrow text-gold">Ochorus for {label.toLowerCase()}</p>
 			<h1 class="mt-2 text-balance font-display text-h1 font-semibold leading-tight">{page.title}</h1>
 			<p class="lede mt-4 text-muted">{page.lead}</p>
 			<div class="mt-6 flex flex-wrap gap-3">
@@ -76,7 +76,7 @@
 		<ul class="points mt-6">
 			{#each page.points as p (p.title)}
 				<li class="point rounded-card border border-border bg-surface p-5">
-					<span class="point-icon rounded-full text-accent"><Icon name={p.icon} size={22} /></span>
+					<span class="flex h-10 w-10 items-center justify-center rounded-full bg-accent-soft text-accent"><Icon name={p.icon} size={22} /></span>
 					<h3 class="mt-3 text-h3">{p.title}</h3>
 					<p class="mt-2 text-body text-muted">{p.body}</p>
 					{#if p.link}
@@ -108,7 +108,7 @@
 
 	{#if books.length}
 		<section class="mt-14" aria-labelledby="picks-heading">
-			<h2 id="picks-heading" class="section-label">{page.picksHeading}</h2>
+			<h2 id="picks-heading" class="section-label">Good places to start</h2>
 			<p class="-mt-2 mb-5 max-w-2xl text-small text-muted">{page.picksNote}</p>
 			<div class="book-grid">
 				{#each books as book (book.slug)}
@@ -120,23 +120,24 @@
 
 	<QandA items={qa.items} title="Questions" headingClass="text-h2" />
 
-	<section class="close mt-14 rounded-card border border-border bg-surface-2 px-6 py-10 text-center sm:px-10">
-		<h2 class="mx-auto max-w-[22ch] text-h2">{page.closeHeading}</h2>
-		<p class="mx-auto mt-3 max-w-xl text-body text-muted">{page.closeBody}</p>
+	<section class="mt-14 flex flex-col items-center rounded-card border border-border bg-surface-2 px-6 py-10 text-center sm:px-10">
+		<h2 class="max-w-[22ch] text-h2">{page.closeHeading}</h2>
+		<p class="mt-3 max-w-xl text-body text-muted">{page.closeBody}</p>
 		<div class="mt-6 flex flex-wrap justify-center gap-3">
 			<a class="btn btn-primary" href={localizeHref(page.primary.href)}>{page.primary.label}</a>
 			<a class="btn btn-ghost" href={localizeHref('/contact')}>Contact us</a>
 		</div>
 	</section>
 
-	<nav class="mt-10 text-small text-muted" aria-label="Ochorus for">
+	<!-- A line, not a <nav>: the footer's "Ochorus for" row is the landmark. -->
+	<p class="mt-10 text-small text-muted">
 		Ochorus is also for:
 		{#each others as o, i (o.slug)}
 			{#if i}{' '}<span aria-hidden="true">·</span>{' '}{/if}<a
 				class="text-accent hover:underline"
 				href={forPath(o.slug)}>{o.label.toLowerCase()}</a
 			>{/each}
-	</nav>
+	</p>
 </div>
 
 <style>
@@ -156,13 +157,6 @@
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 1rem;
-	}
-	.point-icon {
-		display: inline-grid;
-		place-items: center;
-		width: 2.5rem;
-		height: 2.5rem;
-		background: var(--accent-soft);
 	}
 	.ideas {
 		display: grid;

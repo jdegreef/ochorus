@@ -1,12 +1,13 @@
 import type { IconName } from '$lib/components/Icon.svelte';
 import { toCoverBook, type BookSummary, type CoverBook } from './library-public';
+import { LIVE_LOCALES } from './live-locales.generated';
 
 /**
  * The "Ochorus for …" pages — one page per group we want to reach (churches,
  * homeschool families, parents), each saying what Ochorus is worth to THAT
  * reader and pointing into the library. Linked from the footer's bottom row.
  *
- * One route (`/for/[audience]/`) renders every entry here, so a new group is a
+ * One route (`/for/[group]/`) renders every entry here, so a new group is a
  * new entry, not a new page. ENGLISH-ONLY for now, like the footer's Discover
  * hubs: this is pitch copy the founder is still shaping, and putting it into
  * ten catalogues before it settles would mean every edit lands ten times. So
@@ -33,7 +34,6 @@ export interface ForPoint {
 export interface ForPage {
 	/** The URL segment: /for/<slug>/ — one of `FOR_LINKS` ($lib/forLinks). */
 	slug: string;
-	eyebrow: string;
 	title: string;
 	lead: string;
 	/** The search result: <title> (" — Ochorus" is added) and meta description. */
@@ -45,16 +45,26 @@ export interface ForPage {
 	points: ForPoint[];
 	ideasHeading: string;
 	ideas: { title: string; body: string }[];
-	picksHeading: string;
 	picksNote: string;
-	/** Book slugs, in shelf order. Only the ones published in English show —
-	 *  the page picks them out of the live list, so an unpublished slug drops
-	 *  rather than breaking the page. */
+	/** Book slugs, in shelf order. The build picks the first `SHELF_SIZE`
+	 *  published in English out of the live list (routes/for-shelves), so an
+	 *  unpublished slug drops and the next one takes its place. */
 	picks: string[];
 	questions: { q: string; a: string }[];
 	closeHeading: string;
 	closeBody: string;
 }
+
+/** The live languages besides English, by their English names, from the
+ *  registry's "Go live" list — so the copy names exactly what the site
+ *  serves, and a language taken live reaches it on the next build. ICU calls
+ *  Luganda "Ganda"; Ochorus uses the name its readers use. */
+const inEnglish = new Intl.DisplayNames(['en'], { type: 'language' });
+const OTHER_LANGUAGES = LIVE_LOCALES.filter((l) => l !== 'en').map((l) =>
+	l === 'lg' ? 'Luganda' : (inEnglish.of(l) ?? l)
+);
+/** "a, b and c". */
+const series = (xs: string[]) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} and ${xs.at(-1)}`);
 
 const FREE_ANSWER =
 	'Yes. Every book and sermon on Ochorus is free to read, with no paywall, no subscription and no ads. The classics themselves are in the public domain, and Ochorus is a ministry, not a business.';
@@ -62,12 +72,11 @@ const FREE_ANSWER =
 export const FOR_PAGES: ForPage[] = [
 	{
 		slug: 'churches',
-		eyebrow: 'Ochorus for churches',
 		title: 'A free Christian library for your whole congregation',
 		lead: 'Ochorus puts the great classics of the faith in every member’s pocket. Murray, Spurgeon, Bunyan, Augustine, Müller and hundreds of other books and sermons, free to read on any phone or computer. No subscriptions, no licences, no budget line.',
 		seoTitle: 'Free Christian Books for Churches',
 		seoDescription:
-			'Classic Christian books, sermons and reading plans for your whole congregation, free in English, Swahili, Luganda, Spanish and Portuguese. No account needed.',
+			`Classic Christian books, sermons and reading plans for your whole congregation, free to read in ${LIVE_LOCALES.length} languages. No subscriptions and no account needed.`,
 		primary: { href: '/plans', label: 'Browse reading plans' },
 		secondary: { href: '/books', label: 'Explore the library' },
 		pointsHeading: 'Why churches use Ochorus',
@@ -93,7 +102,7 @@ export const FOR_PAGES: ForPage[] = [
 			{
 				icon: 'globe',
 				title: 'In the languages your people speak',
-				body: 'Books are published as full editions in Swahili, Luganda, Spanish and Portuguese as well as English, with more languages on the way, so members can read in their own language.'
+				body: `Books are published as full editions in ${series(OTHER_LANGUAGES)} as well as English, with more languages on the way, so members can read in their own language.`
 			}
 		],
 		ideasHeading: 'Ways to use it in your church',
@@ -115,7 +124,6 @@ export const FOR_PAGES: ForPage[] = [
 				body: 'Young-reader editions retell the great classics for children and teens, so Sunday school and youth group can read the same stories at their own level.'
 			}
 		],
-		picksHeading: 'Good places to start',
 		picksNote: 'Classics that have fed congregations for generations.',
 		picks: [
 			'school-of-prayer',
@@ -152,7 +160,6 @@ export const FOR_PAGES: ForPage[] = [
 	},
 	{
 		slug: 'homeschool',
-		eyebrow: 'Ochorus for homeschool families',
 		title: 'A free library of Christian classics for your homeschool',
 		lead: 'Living books from twenty centuries of the church, free to read on any device. Bunyan, Augustine, Müller, Hudson Taylor and George MacDonald, with many classics retold in editions for children and for teens.',
 		seoTitle: 'Free Christian Classics for Homeschool',
@@ -205,7 +212,6 @@ export const FOR_PAGES: ForPage[] = [
 				body: 'Open the day with a family devotions plan or a reading from Spurgeon’s Morning by Morning.'
 			}
 		],
-		picksHeading: 'Good places to start',
 		picksNote: 'Books that work well across ages.',
 		picks: [
 			'pilgrims-progress-children',
@@ -243,7 +249,6 @@ export const FOR_PAGES: ForPage[] = [
 	},
 	{
 		slug: 'parents',
-		eyebrow: 'Ochorus for parents',
 		title: 'Great Christian books for your children, free',
 		lead: 'True stories of faith and courage, classic tales and short family devotions, written for children and teens. Free to read on any device, with no ads and no account needed.',
 		seoTitle: 'Free Christian Books for Your Children',
@@ -296,7 +301,6 @@ export const FOR_PAGES: ForPage[] = [
 				body: 'No ads, no feeds and nothing to buy. Just good books, ready whenever they want to read.'
 			}
 		],
-		picksHeading: 'Good places to start',
 		picksNote: 'Favourites for reading together.',
 		picks: [
 			'pilgrims-progress-children',
@@ -332,13 +336,20 @@ export const FOR_PAGES: ForPage[] = [
 /** The page for a URL segment, or undefined. */
 export const forPage = (slug: string): ForPage | undefined => FOR_PAGES.find((p) => p.slug === slug);
 
-/** The page's picks out of the live English list, in the page's order, trimmed
- *  to what a cover card draws (the list is inlined into the prerendered page).
- *  A slug that isn't published, or isn't English, is simply left out. */
-export function pickBooks(all: BookSummary[], slugs: string[]): CoverBook[] {
-	const bySlug = new Map(all.filter((b) => b.language === 'en').map((b) => [b.slug, b]));
-	return slugs.flatMap((s) => {
-		const b = bySlug.get(s);
-		return b ? [toCoverBook(b)] : [];
-	});
+/** How many books a page's starter shelf shows: one row of the desktop grid.
+ *  `picks` runs longer, so an unpublished pick leaves a backup in its place. */
+export const SHELF_SIZE = 6;
+
+/** A page's starter shelf: its picks out of the live English list (pass
+ *  `listBooks('en')`), in the
+ *  page's order, the first `SHELF_SIZE` that are published, trimmed to what a
+ *  cover card draws. Built once at build time (routes/for-shelves). */
+export function forShelf(english: BookSummary[], slugs: string[]): CoverBook[] {
+	const bySlug = new Map(english.map((b) => [b.slug, b]));
+	return slugs
+		.flatMap((s) => {
+			const b = bySlug.get(s);
+			return b ? [toCoverBook(b)] : [];
+		})
+		.slice(0, SHELF_SIZE);
 }
