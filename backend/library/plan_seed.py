@@ -429,6 +429,31 @@ CURATED_PLANS = [
             "sons-of-the-king-3",
         ],
     ),
+    (
+        "anchored-two-months",
+        "Anchored: Two Months with God for Teens",
+        "Two months with God for readers aged 13 to 17: both books of Anchored "
+        "— Is It True? Who Am I? and Real Life — one devotion a day on the "
+        "honest questions of faith, who you are in Christ, and following Jesus "
+        "through worry, screens, friendships, home and grief. Each day ends with "
+        "a pointer to one chapter of a classic.",
+        [
+            "anchored-1",
+            "anchored-2",
+        ],
+    ),
+    (
+        "they-were-young-two-weeks",
+        "They Were Young: Two Weeks of True Stories",
+        "Two weeks of true stories for readers aged 13 to 17: both books of They "
+        "Were Young — Called and Tested — one life a day, from Spurgeon in a "
+        "snowstorm and Richard Allen in Delaware to Patrick, Perpetua and the "
+        "Uganda Martyrs, each ending with questions to think through.",
+        [
+            "they-were-young-1",
+            "they-were-young-2",
+        ],
+    ),
     # Family devotions: the young-reader editions read aloud, one short chapter
     # a night — each carries its own verse and prayer, and ends with three
     # questions to talk about (`Chapter.study_questions`), so a night's reading
