@@ -107,6 +107,72 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
         ],
     },
+    2: {
+        "sort_order": 152,
+        "publication_year": 2026,
+        "title": "Real Questions – Book 2",
+        "subtitle": "More honest answers to the questions teens actually ask",
+        "cover_url": "/covers/real-questions-2.svg",
+        "cover_color": covers.ink_safe("#2e5e7a"),  # a deep-water blue
+        "description": (
+            "Thirty more honest answers for readers aged 13 to 17: Who made God? "
+            "How can God be three and one? Do I really have free will? Why are "
+            "Christians such hypocrites? Can a computer have a soul? Is porn really "
+            "that bad? What if my parents are splitting up? What if I've done "
+            "something I can't undo? Each answer starts short, then goes deeper, "
+            "is clear where Christians agree and fair where they differ, and points "
+            "to a classic in the library. The second book of Real Questions."
+        ),
+        "about_html": (
+            "<p>Real Questions is an original Ochorus series for readers aged 13 to "
+            "17. Book 2 takes thirty more of the questions teenagers really ask and "
+            "answers them honestly, in plain words, without slogans. You don’t "
+            "need to have read Book 1.</p>"
+            "<p>“God and the Big Picture” asks who made God, how God can be three "
+            "and one, why Jesus had to die, why the world is so full of evil, "
+            "about free will, the devil, the Holy Spirit, whether God still speaks "
+            "today, anger with God and why the Bible is so hard to read. “Faith in "
+            "the Real World” asks about hypocrites, Christians who hurt people, "
+            "slavery, women, baptism, communion, horoscopes and Ouija boards, "
+            "artificial intelligence, the planet and politics. “Life, Body and Me” "
+            "asks about porn, living together, body image, self-harm, divorce, "
+            "forgiveness, guilt, swearing, tattoos and obeying your parents.</p>"
+            "<p>Every chapter opens with a short answer and then goes deeper. On "
+            "the core of the faith it answers plainly, as most evangelical "
+            "churches do, and always with compassion. Where faithful Christians "
+            "genuinely disagree, it sets out the main views fairly and says so. "
+            "Chapters on painful subjects point the reader to a parent or trusted "
+            "adult. Each chapter ends with a question to think about and a chapter "
+            "of a classic to read next. Scripture is quoted from the Berean "
+            "Standard Bible.</p>"
+        ),
+        "qa": [
+            {
+                "question": "What is Real Questions – Book 2?",
+                "answer": "The second book of honest, short answers for readers aged 13 to 17 to the questions teenagers ask about God, the Bible, Christians and everyday life. Each chapter starts with a short answer, then goes deeper, and ends with a question to think about and a classic to read next.",
+            },
+            {
+                "question": "Do I need to read Book 1 first?",
+                "answer": "No. Each book and each chapter stands on its own, so you can start with whichever question matters most to you.",
+            },
+            {
+                "question": "What questions does Book 2 answer?",
+                "answer": "Thirty, in three parts: God and the Big Picture (who made God, the Trinity, the cross, evil, free will, the devil, the Holy Spirit), Faith in the Real World (hypocrisy, abuse in churches, slavery, women, baptism, communion, the occult, artificial intelligence, the planet, politics), and Life, Body and Me (porn, living together, body image, self-harm, divorce, forgiveness, guilt, swearing, tattoos and parents).",
+            },
+            {
+                "question": "Does it take sides where Christians disagree?",
+                "answer": "No. On questions where faithful Christians genuinely differ, such as predestination and free will, whether God still gives prophecy today, infant or believer’s baptism, what happens at communion, and politics, it sets out the main views fairly and says what they all agree on.",
+            },
+            {
+                "question": "How does it handle painful subjects like self-harm and abuse?",
+                "answer": "With compassion and without graphic detail. Those chapters say plainly that abuse is never the victim’s fault, that God’s love does not change, and that the reader should tell a parent or trusted adult straight away, especially if they are being hurt or thinking about hurting themselves.",
+            },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Every Scripture is quoted from the Berean Standard Bible (BSB), a modern and readable translation that is in the public domain.",
+            },
+        ],
+    },
 }
 
 

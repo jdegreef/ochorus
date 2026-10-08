@@ -60,3 +60,50 @@ Where **faithful Christians genuinely differ**, the main views are set out fairl
 | If I'm Depressed, Is My Faith Weak? | *The Key Teachings of Charles H. Spurgeon*, ch. 18 |
 | How Do I Know God's Will for My Life? | *The Key Teachings of F. B. Meyer*, ch. 4 |
 | How Do I Talk About My Faith Without Being Weird? | *How to Bring Men to Christ*, ch. 2 |
+
+## Book 2
+
+**Part 1 · God and the Big Picture**
+
+| Question | Go deeper |
+|---|---|
+| Who Made God? | *The Key Teachings of A. W. Tozer*, ch. 6 |
+| How Can God Be Three and One? | *The Key Teachings of Athanasius of Alexandria*, ch. 9 |
+| Why Did Jesus Have to Die? | *The Key Teachings of Charles H. Spurgeon*, ch. 5 |
+| If God Is Good, Why Is the World So Full of Evil? | *The Key Teachings of C. S. Lewis*, ch. 10 |
+| If God Knows Everything, Do I Really Have Free Will? | *The Key Teachings of John Wesley*, ch. 7 |
+| Is the Devil Real? | *The Key Teachings of Martin Luther*, ch. 20 |
+| Who Is the Holy Spirit? | *The Key Teachings of R. A. Torrey*, ch. 3 |
+| Does God Still Speak Today? | *The Key Teachings of Hannah Whitall Smith*, ch. 9 |
+| Is It Okay to Be Angry with God? | *The Key Teachings of George MacDonald*, ch. 12 |
+| Why Is the Bible So Hard to Read? | *How to Succeed in the Christian Life*, ch. 7 |
+
+**Part 2 · Faith in the Real World**
+
+| Question | Go deeper |
+|---|---|
+| Why Are Christians Such Hypocrites? | *The Key Teachings of C. S. Lewis*, ch. 8 |
+| What About Christians Who Hurt People? | *The Bruised Reed*, ch. 8 |
+| Wasn't Christianity Used to Defend Slavery? | *The Key Teachings of John Wesley*, ch. 21 |
+| Isn't Christianity Bad for Women? | *Pandita Ramabai (For Teens)*, ch. 6 |
+| Should I Be Baptised? | *The Key Teachings of Martin Luther*, ch. 12 |
+| What Is Communion For? | *Till He Come*, ch. 19 |
+| What's Wrong with Horoscopes, Tarot and Ouija Boards? | *On the Incarnation*, ch. 47 |
+| Can a Computer Ever Have a Soul? | *The Key Teachings of G. K. Chesterton*, ch. 13 |
+| Should Christians Care About the Planet? | *St. Francis of Assisi*, ch. 6 |
+| How Should a Christian Think About Politics? | *The Key Teachings of Augustine of Hippo*, ch. 15 |
+
+**Part 3 · Life, Body and Me**
+
+| Question | Go deeper |
+|---|---|
+| Is Porn Really That Bad? | *The Key Teachings of John Owen*, ch. 13 |
+| Is It Wrong to Live Together Before Marriage? | *The Key Teachings of C. S. Lewis*, ch. 13 |
+| What Does God Think of My Body? | *The Key Teachings of George MacDonald*, ch. 10 |
+| What If I Hurt Myself? | *The Bruised Reed*, ch. 3 |
+| What If My Parents Are Splitting Up? | *The God of All Comfort*, ch. 5 |
+| How Do I Forgive Someone Who Really Hurt Me? | *Corrie ten Boom (For Teens)*, ch. 13 |
+| What If I've Done Something I Can't Undo? | *All of Grace (For Teens)*, ch. 3 |
+| Is It Wrong to Swear? | *The Ten Commandments*, ch. 7 |
+| Can a Christian Get a Tattoo? | *The Key Teachings of Martin Luther*, ch. 7 |
+| Do I Have to Obey My Parents? | *The Ten Commandments*, ch. 9 |
