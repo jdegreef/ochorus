@@ -602,6 +602,7 @@ TOPICS = [
             "watchman-nee-a-life-teens",
             "grace-abounding-teens",
             "confessions-teens",
+            "the-practice-of-the-presence-of-god-teens",
             "real-questions-1",
         ],
     ),

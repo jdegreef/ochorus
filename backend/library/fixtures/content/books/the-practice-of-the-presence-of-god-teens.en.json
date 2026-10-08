@@ -1,0 +1,423 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "brother-lawrence"
+  ],
+  "slug": "the-practice-of-the-presence-of-god-teens",
+  "language": "en",
+  "title": "The Practice of the Presence of God (For Teens)",
+  "subtitle": "",
+  "cover_title": "",
+  "description": "Brother Lawrence called himself “a great awkward fellow who broke everything.” He was a lamed ex-soldier who ended up as the cook in a busy Paris monastery, a job he couldn’t stand. Yet people came to ask him how he lived so close to God, and his answer fits in a pocket: talk to God all day long, in the middle of whatever you are doing. This teen edition retells his conversations and letters in plain words, with his own sentences kept where they say it best: four years of fear, a kitchen full of noise, a boat full of barrels, wandering thoughts, failures, sickness, and a practice anyone can start this week.",
+  "hook": "A clumsy kitchen worker who learned to pray in the middle of the noise, and never stopped.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Who was Brother Lawrence?",
+    "answer": "He was born Nicolas Herman around 1614 in Lorraine, in what is now eastern France. He was a soldier, was wounded in the leg and lamed for life, and worked as a footman before joining the Discalced Carmelites in Paris in 1640 as a lay brother. He spent about fifteen years as the community’s cook. He died in Paris on 12 February 1691."
+   },
+   {
+    "question": "What is The Practice of the Presence of God?",
+    "answer": "It is a small book made of four conversations with Brother Lawrence, written down by a visitor, Joseph de Beaufort, and fifteen of Lawrence’s own letters. Together they describe one simple habit: remembering that God is with you and talking to him all through the day, in ordinary work as much as in set times of prayer."
+   },
+   {
+    "question": "Do I need special methods or long prayers to do this?",
+    "answer": "No. Lawrence tried many methods from books and found they puzzled him. He said there was no need of “art nor science” for going to God, only a heart set on him. His advice was short prayers, often: a little lifting up of the heart, even in the middle of work or with friends."
+   },
+   {
+    "question": "What if my mind keeps wandering when I pray?",
+    "answer": "Lawrence said that was nothing new. His own mind wandered for years. His advice was not to get upset with yourself, because worry only scatters the mind more, but to bring it gently back to God every time, and to practise thinking of God at other times of day too."
+   },
+   {
+    "question": "Is this the full text?",
+    "answer": "No. It is a retelling for teenagers in plain modern words, keeping Brother Lawrence’s own sentences where they say it best. The full Practice of the Presence of God is also available, and there is a children’s edition for younger readers."
+   },
+   {
+    "question": "Did Brother Lawrence tell sick people to stop taking medicine?",
+    "answer": "In one letter he told a friend whose treatments were not working to trust God rather than the doctors of his day. Medicine in the 1600s often did more harm than good. Lawrence’s main point was to trust God and keep company with him in pain. That is not a reason to stop taking medicine or to avoid a doctor today."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of Brother Lawrence’s The Practice of the Presence of God, in the anonymous English translation published by the Fleming H. Revell Company, which is in the public domain. The telling is our own, free to read and share. Scripture quotations are from the King James Version, which is in the public domain.",
+  "cover_url": "/covers/the-practice-of-the-presence-of-god-teens.svg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/the-practice-of-the-presence-of-god-teens.pdf?download=the-practice-of-the-presence-of-god-teens.pdf",
+  "cover_color": "",
+  "series": [
+   "straight-talk"
+  ],
+  "series_position": null,
+  "sort_order": 155,
+  "is_published": true,
+  "created_at": "2026-10-08T23:00:00Z",
+  "updated_at": "2026-10-08T23:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-teens",
+   "en"
+  ],
+  "order": 1,
+  "title": "The Guy Who Broke Everything",
+  "body_html": "<blockquote>“For man looketh on the outward appearance, but the LORD looketh on the heart.” — 1 Samuel 16:7 (KJV)</blockquote> <p>Some people are naturally graceful. They can carry three drinks across a crowded room and never spill a drop. Nicolas Herman was not one of those people.</p> <p>He was born around 1614 in Lorraine, a region in what is now eastern France, to a poor family who loved God. As a young man he went off to be a soldier. In 1635 he was wounded in the leg, and he limped for the rest of his life. After the army he got a job as a footman, a servant to a rich treasurer named Monsieur Fieubert. A footman’s whole job was to fetch, carry and keep things looking smart.</p> <p>It didn’t go well. Years later, when a visitor asked him about his life, he described his younger self in one unforgettable line:</p> <blockquote>“A great awkward fellow who broke everything.”</blockquote> <p>We know about Nicolas because that visitor, a priest named Joseph de Beaufort, wrote down their conversations. The first one took place on 3 August 1666. By then Nicolas was an old man with a different name: Brother Lawrence, a lay brother in a monastery in Paris. Beaufort had come because people said this limping, ordinary man lived closer to God than anyone they knew.</p> <p>That is worth stopping on. Brother Lawrence never became a famous preacher or a scholar. He never wrote a long book. He spent his working life in a kitchen and a sandal workshop. And yet people have been reading his few conversations and letters for more than three hundred years, Catholics and Protestants alike. John Wesley read him. So have countless ordinary people who were trying to work out how to actually live with God on a normal Tuesday.</p> <p>So if you sometimes feel clumsy, unimpressive, or like the person who always drops the ball, you are in good company. God was not waiting for Nicolas Herman to get more coordinated. He was after his heart.</p> <p>This book is about what happened to that heart, and about a habit that Lawrence spent his whole life learning. He called it the practice of the presence of God. In plain words: remembering that God is with you, and talking to him, all day long, in the middle of whatever you are doing.</p> <p><strong>One thing to do this week:</strong> write down the three things you are worst at, the stuff that makes you feel clumsy or behind. Then pray over the list: tell God honestly how you feel about each one, and thank him that he looks at your heart, not your coordination.</p>",
+  "study_questions": [
+   {
+    "question": "How did Brother Lawrence describe himself as a young footman?",
+    "answer": "As “a great awkward fellow who broke everything.” He was clumsy and not good at the job."
+   },
+   {
+    "question": "Who wrote down Brother Lawrence’s conversations, and when did the first one happen?",
+    "answer": "A visitor named Joseph de Beaufort, a priest. The first conversation was on 3 August 1666, when Lawrence was already an old man."
+   },
+   {
+    "question": "What does “the practice of the presence of God” mean?",
+    "answer": "Remembering that God is with you and talking to him all day long, in the middle of ordinary things, not only at special prayer times."
+   }
+  ],
+  "body_text": "“For man looketh on the outward appearance, but the LORD looketh on the heart.” — 1 Samuel 16:7 (KJV) Some people are naturally graceful. They can carry three drinks across a crowded room and never spill a drop. Nicolas Herman was not one of those people. He was born around 1614 in Lorraine, a region in what is now eastern France, to a poor family who loved God. As a young man he went off to be a soldier. In 1635 he was wounded in the leg, and he limped for the rest of his life. After the army he got a job as a footman, a servant to a rich treasurer named Monsieur Fieubert. A footman’s whole job was to fetch, carry and keep things looking smart. It didn’t go well. Years later, when a visitor asked him about his life, he described his younger self in one unforgettable line: “A great awkward fellow who broke everything.” We know about Nicolas because that visitor, a priest named Joseph de Beaufort, wrote down their conversations. The first one took place on 3 August 1666. By then Nicolas was an old man with a different name: Brother Lawrence, a lay brother in a monastery in Paris. Beaufort had come because people said this limping, ordinary man lived closer to God than anyone they knew. That is worth stopping on. Brother Lawrence never became a famous preacher or a scholar. He never wrote a long book. He spent his working life in a kitchen and a sandal workshop. And yet people have been reading his few conversations and letters for more than three hundred years, Catholics and Protestants alike. John Wesley read him. So have countless ordinary people who were trying to work out how to actually live with God on a normal Tuesday. So if you sometimes feel clumsy, unimpressive, or like the person who always drops the ball, you are in good company. God was not waiting for Nicolas Herman to get more coordinated. He was after his heart. This book is about what happened to that heart, and about a habit that Lawrence spent his whole life learning. He called it the practice of the presence of God. In plain words: remembering that God is with you, and talking to him, all day long, in the middle of whatever you are doing. One thing to do this week: write down the three things you are worst at, the stuff that makes you feel clumsy or behind. Then pray over the list: tell God honestly how you feel about each one, and thank him that he looks at your heart, not your coordination.",
+  "word_count": 443
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-teens",
+   "en"
+  ],
+  "order": 2,
+  "title": "A Tree in Winter",
+  "body_html": "<blockquote>“The heavens declare the glory of God; and the firmament sheweth his handywork.” — Psalm 19:1 (KJV)</blockquote> <p>When Nicolas was eighteen, he was walking past a tree in the middle of winter. Every leaf was gone. The branches were bare and grey, and the tree looked as dead as a tree can look.</p> <p>Most of us have walked past a thousand trees like that without a second thought. But Nicolas stopped. He knew what was coming. In a few months the leaves would be back, and after the leaves would come the flowers, and after the flowers, the fruit. Nobody would have to glue them on. Life was hidden in that tree, waiting.</p> <p>Standing there, he suddenly saw something about God. Beaufort wrote it down like this: he “received a high view of the Providence and Power of God, which has never since been effaced from his soul.” Providence means God’s care: the way he looks after everything he has made, quietly and faithfully, season after season. Effaced means rubbed out. Over forty years later, it still hadn’t been rubbed out.</p> <p>It changed everything for him. Beaufort says that view of God “perfectly set him loose from the world” and lit such a love for God in him that, more than forty years on, he could not tell whether it had grown since, because it had been so big from the start.</p> <p>It is striking how ordinary the moment was. No vision, no voice, no crowd. Just a bare tree and a young man paying attention. God had been showing that tree to people for years. Nicolas was the one who looked.</p> <p>You are surrounded by things like that tree. The sun comes up every morning whether you notice or not. Your heart beats about a hundred thousand times a day without you asking it to. Rain falls, seeds split open, and bodies heal from cuts. The Bible says the whole world is preaching a sermon about God’s power and care, all day long. The question is not whether God is speaking, but whether we ever slow down long enough to notice.</p> <p>That is the first lesson of Brother Lawrence, and maybe the simplest. Practising the presence of God starts with paying attention. Before it is a technique, it is a way of looking.</p> <p><strong>One thing to do this week:</strong> go outside once this week without your phone for ten minutes. Find one ordinary thing, a tree, the sky, a plant pushing through concrete, and look at it properly. Then tell God what it shows you about him.</p>",
+  "study_questions": [
+   {
+    "question": "What did Nicolas see when he was eighteen?",
+    "answer": "A tree in winter with no leaves, and he knew that soon the leaves, flowers and fruit would come back."
+   },
+   {
+    "question": "What did that tree show him about God?",
+    "answer": "It gave him “a high view of the Providence and Power of God”: how strong God is and how faithfully he cares for what he has made."
+   },
+   {
+    "question": "How long did that view of God last?",
+    "answer": "For the rest of his life. More than forty years later it had never been rubbed out, and he could not tell whether his love for God had even grown since, because it was so great from the start."
+   }
+  ],
+  "body_text": "“The heavens declare the glory of God; and the firmament sheweth his handywork.” — Psalm 19:1 (KJV) When Nicolas was eighteen, he was walking past a tree in the middle of winter. Every leaf was gone. The branches were bare and grey, and the tree looked as dead as a tree can look. Most of us have walked past a thousand trees like that without a second thought. But Nicolas stopped. He knew what was coming. In a few months the leaves would be back, and after the leaves would come the flowers, and after the flowers, the fruit. Nobody would have to glue them on. Life was hidden in that tree, waiting. Standing there, he suddenly saw something about God. Beaufort wrote it down like this: he “received a high view of the Providence and Power of God, which has never since been effaced from his soul.” Providence means God’s care: the way he looks after everything he has made, quietly and faithfully, season after season. Effaced means rubbed out. Over forty years later, it still hadn’t been rubbed out. It changed everything for him. Beaufort says that view of God “perfectly set him loose from the world” and lit such a love for God in him that, more than forty years on, he could not tell whether it had grown since, because it had been so big from the start. It is striking how ordinary the moment was. No vision, no voice, no crowd. Just a bare tree and a young man paying attention. God had been showing that tree to people for years. Nicolas was the one who looked. You are surrounded by things like that tree. The sun comes up every morning whether you notice or not. Your heart beats about a hundred thousand times a day without you asking it to. Rain falls, seeds split open, and bodies heal from cuts. The Bible says the whole world is preaching a sermon about God’s power and care, all day long. The question is not whether God is speaking, but whether we ever slow down long enough to notice. That is the first lesson of Brother Lawrence, and maybe the simplest. Practising the presence of God starts with paying attention. Before it is a technique, it is a way of looking. One thing to do this week: go outside once this week without your phone for ten minutes. Find one ordinary thing, a tree, the sky, a plant pushing through concrete, and look at it properly. Then tell God what it shows you about him.",
+  "word_count": 428
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-teens",
+   "en"
+  ],
+  "order": 3,
+  "title": "Disappointed in the Best Way",
+  "body_html": "<blockquote>“In thy presence is fulness of joy; at thy right hand there are pleasures for evermore.” — Psalm 16:11 (KJV)</blockquote> <p>After the tree, Nicolas wanted to give his whole life to God. In 1640 he joined the Discalced Carmelites in Paris, a community of monks, as a lay brother: one of the men who did the practical work of the house. That is when he took the name Brother Lawrence.</p> <p>His reason for joining is almost funny. He expected to be miserable. Beaufort records that he went into the monastery “thinking that he would there be made to smart for his awkwardness and the faults he should commit.” To smart means to hurt. He assumed that a clumsy man in a strict religious house would be told off constantly, and he was ready for it. He was going to give God his life and all its pleasures, and pay for his mistakes along the way.</p> <p>Then this happened, in Beaufort’s words:</p> <blockquote>“God had disappointed him, he having met with nothing but satisfaction in that state.”</blockquote> <p>God disappointed him. Lawrence had braced himself for a hard, gloomy life, and instead he found joy. Not because the work was easy or the rules were loose, but because he found God there.</p> <p>A lot of people, maybe including you, carry around a quiet suspicion that following God properly would make life smaller and sadder. Fewer laughs, more rules, the fun switched off. Brother Lawrence went into the monastery believing exactly that, and found he was wrong. Later he would say that his life was spent “in perfect liberty and continual joy.”</p> <p>That doesn’t mean everything was easy. The next chapter is about years of fear and inner pain, and the kitchen job he hated is coming too. But underneath it all, Lawrence discovered that being close to God is not a punishment you put up with. It is the place your heart was made for. The psalm at the top of this chapter says the same: in God’s presence is fullness of joy.</p> <p>If you have been holding back from God because you think he will take the good things away, Brother Lawrence would want you to know: he expected that too, and God disappointed him.</p> <p><strong>One thing to do this week:</strong> be honest with God about one thing you are afraid you would have to give up if you followed him completely. Say it out loud to him. Then ask him to show you what joy with him actually looks like.</p>",
+  "study_questions": [
+   {
+    "question": "Why did Brother Lawrence expect to be unhappy in the monastery?",
+    "answer": "He thought he would be punished, or “made to smart,” for being clumsy and for his mistakes, and he was ready to give up life’s pleasures for God."
+   },
+   {
+    "question": "In what way did God “disappoint” him?",
+    "answer": "Instead of the hard, unhappy life he expected, he met “with nothing but satisfaction” there. He found joy."
+   },
+   {
+    "question": "What false idea about following God does this chapter challenge?",
+    "answer": "The idea that following God fully makes life smaller and sadder. Lawrence found that being near God was the place of real joy."
+   }
+  ],
+  "body_text": "“In thy presence is fulness of joy; at thy right hand there are pleasures for evermore.” — Psalm 16:11 (KJV) After the tree, Nicolas wanted to give his whole life to God. In 1640 he joined the Discalced Carmelites in Paris, a community of monks, as a lay brother: one of the men who did the practical work of the house. That is when he took the name Brother Lawrence. His reason for joining is almost funny. He expected to be miserable. Beaufort records that he went into the monastery “thinking that he would there be made to smart for his awkwardness and the faults he should commit.” To smart means to hurt. He assumed that a clumsy man in a strict religious house would be told off constantly, and he was ready for it. He was going to give God his life and all its pleasures, and pay for his mistakes along the way. Then this happened, in Beaufort’s words: “God had disappointed him, he having met with nothing but satisfaction in that state.” God disappointed him. Lawrence had braced himself for a hard, gloomy life, and instead he found joy. Not because the work was easy or the rules were loose, but because he found God there. A lot of people, maybe including you, carry around a quiet suspicion that following God properly would make life smaller and sadder. Fewer laughs, more rules, the fun switched off. Brother Lawrence went into the monastery believing exactly that, and found he was wrong. Later he would say that his life was spent “in perfect liberty and continual joy.” That doesn’t mean everything was easy. The next chapter is about years of fear and inner pain, and the kitchen job he hated is coming too. But underneath it all, Lawrence discovered that being close to God is not a punishment you put up with. It is the place your heart was made for. The psalm at the top of this chapter says the same: in God’s presence is fullness of joy. If you have been holding back from God because you think he will take the good things away, Brother Lawrence would want you to know: he expected that too, and God disappointed him. One thing to do this week: be honest with God about one thing you are afraid you would have to give up if you followed him completely. Say it out loud to him. Then ask him to show you what joy with him actually looks like.",
+  "word_count": 419
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-teens",
+   "en"
+  ],
+  "order": 4,
+  "title": "Four Years of Fear",
+  "body_html": "<blockquote>“There is no fear in love; but perfect love casteth out fear.” — 1 John 4:18 (KJV)</blockquote> <p>Here is something you might not expect from a man people called a saint. For years, Brother Lawrence was convinced he was going to hell.</p> <p>Beaufort says Lawrence had been “long troubled in mind from a certain belief that he should be damned; that all the men in the world could not have persuaded him to the contrary.” No argument helped. No reassurance stuck. In one of his own letters, Lawrence describes the struggle as even longer: “for the first ten years I suffered much.” He felt that he was not as devoted to God as he wanted to be, his past sins were always in front of his eyes, and he even worried that believing God loved him was just pride. He wrote:</p> <blockquote>“It seemed to me that all creatures, reason, and God Himself were against me; and faith alone for me.”</blockquote> <p>What did he do? Not something dramatic. He made a decision, and he talked it through with himself like this:</p> <blockquote>“I engaged in a religious life only for the love of God, and I have endeavored to act only for Him; whatever becomes of me, whether I be lost or saved, I will always continue to act purely for the love of God.”</blockquote> <p>And then: “I shall have this good at least, that till death I shall have done all that is in me to love Him.” In other words: even if my fears are right, I will keep loving God anyway.</p> <p>Eventually he came to see that the fear “arose from want of faith,” from not trusting God’s goodness enough. And then, in his letter, comes one of the most hopeful sentences in the book. He says he “found myself changed all at once,” and his soul “felt a profound inward peace, as if she were in her centre and place of rest.” From then on, Beaufort says, he lived “in perfect liberty and continual joy.”</p> <p>If you have ever been stuck in a loop of fear about whether God really accepts you, Brother Lawrence has been there, for years. Notice what helped him: not feeling better first, but holding on to God while the feelings were still bad. And notice that the fear was not the truth. God had not rejected him. Perfect love casts out fear, eventually, even if it takes longer than you would like.</p> <p>One more thing. If fearful thoughts like these keep coming back and will not leave you alone, tell someone: a parent, a pastor, a youth leader, a doctor. Lawrence suffered alone and said he “consulted nobody.” You don’t have to.</p> <p><strong>One thing to do this week:</strong> if there is a fear about God that you keep carrying, write it down, then write underneath it Lawrence’s answer in your own words: “Whatever happens, I will keep loving God.” Show it to one person you trust and ask them to pray with you.</p>",
+  "study_questions": [
+   {
+    "question": "What fear troubled Brother Lawrence for years?",
+    "answer": "He was convinced he would be damned, and nobody could talk him out of it. In his letter he says he suffered much for the first ten years."
+   },
+   {
+    "question": "What did he decide to do while he was still afraid?",
+    "answer": "To keep acting purely for the love of God, whether he was lost or saved, so that at least he would have loved God with all he had until death."
+   },
+   {
+    "question": "How did the fear end?",
+    "answer": "He came to see that it came from a lack of faith, and then he was “changed all at once” into a deep inward peace, and lived after that in liberty and joy."
+   }
+  ],
+  "body_text": "“There is no fear in love; but perfect love casteth out fear.” — 1 John 4:18 (KJV) Here is something you might not expect from a man people called a saint. For years, Brother Lawrence was convinced he was going to hell. Beaufort says Lawrence had been “long troubled in mind from a certain belief that he should be damned; that all the men in the world could not have persuaded him to the contrary.” No argument helped. No reassurance stuck. In one of his own letters, Lawrence describes the struggle as even longer: “for the first ten years I suffered much.” He felt that he was not as devoted to God as he wanted to be, his past sins were always in front of his eyes, and he even worried that believing God loved him was just pride. He wrote: “It seemed to me that all creatures, reason, and God Himself were against me; and faith alone for me.” What did he do? Not something dramatic. He made a decision, and he talked it through with himself like this: “I engaged in a religious life only for the love of God, and I have endeavored to act only for Him; whatever becomes of me, whether I be lost or saved, I will always continue to act purely for the love of God.” And then: “I shall have this good at least, that till death I shall have done all that is in me to love Him.” In other words: even if my fears are right, I will keep loving God anyway. Eventually he came to see that the fear “arose from want of faith,” from not trusting God’s goodness enough. And then, in his letter, comes one of the most hopeful sentences in the book. He says he “found myself changed all at once,” and his soul “felt a profound inward peace, as if she were in her centre and place of rest.” From then on, Beaufort says, he lived “in perfect liberty and continual joy.” If you have ever been stuck in a loop of fear about whether God really accepts you, Brother Lawrence has been there, for years. Notice what helped him: not feeling better first, but holding on to God while the feelings were still bad. And notice that the fear was not the truth. God had not rejected him. Perfect love casts out fear, eventually, even if it takes longer than you would like. One more thing. If fearful thoughts like these keep coming back and will not leave you alone, tell someone: a parent, a pastor, a youth leader, a doctor. Lawrence suffered alone and said he “consulted nobody.” You don’t have to. One thing to do this week: if there is a fear about God that you keep carrying, write it down, then write underneath it Lawrence’s answer in your own words: “Whatever happens, I will keep loving God.” Show it to one person you trust and ask them to pray with you.",
+  "word_count": 500
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-teens",
+   "en"
+  ],
+  "order": 5,
+  "title": "Too Many Methods",
+  "body_html": "<blockquote>“Martha, Martha, thou art careful and troubled about many things: But one thing is needful.” — Luke 10:41–42 (KJV)</blockquote> <p>When Brother Lawrence started out, he did what keen people often do. He read everything. Books on prayer, books on the spiritual life, books with steps and stages and systems. Then he got confused. Years later a friend begged him to explain how he had come to live so close to God, and he finally agreed to write it down, on condition that the friend show the letter to nobody. (Happily for us, it did not stay secret.) Here is how the letter begins:</p> <blockquote>“Having found in many books different methods of going to God, and divers practices of the spiritual life, I thought this would serve rather to puzzle me than facilitate what I sought after, which was nothing but how to become wholly God’s.”</blockquote> <p>You may know that feeling. There are endless plans, apps, journals, challenges and techniques for growing as a Christian. Some of them are really helpful. But it is possible to spend so much energy comparing methods that you never actually get round to God.</p> <p>So Lawrence cut through it. He says it made him “resolve to give the all for the all.” He gave himself completely to God, let go of everything that was not God, and then did something beautifully simple:</p> <blockquote>“I began to live as if there was none but He and I in the world.”</blockquote> <p>That doesn’t mean he ignored other people. He was kind and calm and helpful to everyone in the house. It means that in his own heart, God was the one he was always facing. Sometimes he pictured himself as a guilty prisoner before a judge; other times as a son with his Father. Either way, he kept turning towards God, “recalling it,” he says of his mind, “as often as I found it wandered from Him.”</p> <p>Was it easy? No. He says he “found no small pain in this exercise,” and kept going anyway, without beating himself up when his mind drifted. He did it at set prayer times and all day long, “every hour, every minute, even in the height of my business.” Over time, he says, these repeated acts “become habitual, and the presence of God rendered as it were natural to us.”</p> <p>Jesus once told a busy, stressed friend named Martha that she was worried about many things, but only one thing was needed. Lawrence would agree. Methods can help. But the one thing is God himself.</p> <p><strong>One thing to do this week:</strong> pick one simple prayer you can say anywhere, like “Lord, I’m here with you,” and use it every time you notice you have been away from God in your thoughts. Keep it that simple all week.</p>",
+  "study_questions": [
+   {
+    "question": "Why did all the books about prayer not help Brother Lawrence?",
+    "answer": "The many different methods puzzled him more than they helped, when all he wanted was to belong wholly to God."
+   },
+   {
+    "question": "What did he decide to do instead?",
+    "answer": "To “give the all for the all”: to give himself wholly to God, let go of everything that was not God, and live as if there was no one but God and him in the world."
+   },
+   {
+    "question": "Was it easy for him at first?",
+    "answer": "No. He says it caused him “no small pain,” but he kept going, gently bringing his mind back each time it wandered, until it became a habit."
+   }
+  ],
+  "body_text": "“Martha, Martha, thou art careful and troubled about many things: But one thing is needful.” — Luke 10:41–42 (KJV) When Brother Lawrence started out, he did what keen people often do. He read everything. Books on prayer, books on the spiritual life, books with steps and stages and systems. Then he got confused. Years later a friend begged him to explain how he had come to live so close to God, and he finally agreed to write it down, on condition that the friend show the letter to nobody. (Happily for us, it did not stay secret.) Here is how the letter begins: “Having found in many books different methods of going to God, and divers practices of the spiritual life, I thought this would serve rather to puzzle me than facilitate what I sought after, which was nothing but how to become wholly God’s.” You may know that feeling. There are endless plans, apps, journals, challenges and techniques for growing as a Christian. Some of them are really helpful. But it is possible to spend so much energy comparing methods that you never actually get round to God. So Lawrence cut through it. He says it made him “resolve to give the all for the all.” He gave himself completely to God, let go of everything that was not God, and then did something beautifully simple: “I began to live as if there was none but He and I in the world.” That doesn’t mean he ignored other people. He was kind and calm and helpful to everyone in the house. It means that in his own heart, God was the one he was always facing. Sometimes he pictured himself as a guilty prisoner before a judge; other times as a son with his Father. Either way, he kept turning towards God, “recalling it,” he says of his mind, “as often as I found it wandered from Him.” Was it easy? No. He says he “found no small pain in this exercise,” and kept going anyway, without beating himself up when his mind drifted. He did it at set prayer times and all day long, “every hour, every minute, even in the height of my business.” Over time, he says, these repeated acts “become habitual, and the presence of God rendered as it were natural to us.” Jesus once told a busy, stressed friend named Martha that she was worried about many things, but only one thing was needed. Lawrence would agree. Methods can help. But the one thing is God himself. One thing to do this week: pick one simple prayer you can say anywhere, like “Lord, I’m here with you,” and use it every time you notice you have been away from God in your thoughts. Keep it that simple all week.",
+  "word_count": 465
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-teens",
+   "en"
+  ],
+  "order": 6,
+  "title": "The Kitchen He Couldn’t Stand",
+  "body_html": "<blockquote>“And whatsoever ye do, do it heartily, as to the Lord, and not unto men.” — Colossians 3:23 (KJV)</blockquote> <p>The monastery needed a cook, so Brother Lawrence became the cook. He did it for about fifteen years. There is one small detail in Beaufort’s notes that makes this story so honest: Lawrence did not like the kitchen. In fact, Beaufort says it was a job “to which he had naturally a great aversion.” An aversion is a strong dislike. He was not a natural chef who found his dream job. He was a man stuck doing something he found hard and unpleasant, every single day.</p> <p>So what did he do? Before starting work, he would think through what needed doing and when. Then he prayed something like this:</p> <blockquote>“O my God, since Thou art with me, and I must now, in obedience to Thy commands, apply my mind to these outward things, I beseech Thee to grant me the grace to continue in Thy Presence; and to this end do Thou prosper me with Thy assistance, receive all my works, and possess all my affections.”</blockquote> <p>Then he got on with it, talking to God as he worked, asking for help, and offering him each task. When he finished, he looked back honestly. If it had gone well, he thanked God. If it hadn’t, he asked forgiveness, and then, without getting discouraged, he started again.</p> <p>People noticed. Those who knew him said that even in “the greatest hurry of business in the kitchen” he stayed calm. “He was never hasty nor loitering, but did each thing in its season.” Picture it: pots boiling over, several brothers shouting for different things at once, and one limping cook moving through it all with a quiet face. Lawrence himself said:</p> <blockquote>“In the noise and clatter of my kitchen, while several persons are at the same time calling for different things, I possess God in as great tranquility as if I were upon my knees at the blessed sacrament.”</blockquote> <p>That is the heart of his whole message. You don’t have to escape the noise to be with God. The time of work and the time of prayer, he said, were not different for him. He even said he felt more united to God in his ordinary work than when he left it for quiet prayer.</p> <p>Think about the things in your life you have no choice about and don’t enjoy: a subject at school, chores, a part-time job, looking after a younger sibling. Lawrence would not tell you to pretend you love them. He would tell you to bring God into them. Work done with God, for God, is never wasted.</p> <p><strong>One thing to do this week:</strong> choose the one task you dislike most this week. Before you start it, pray your own short version of Lawrence’s kitchen prayer: “God, you’re here with me. Help me do this well, and take it as a gift.” Afterwards, thank God or say sorry, then move on.</p>",
+  "study_questions": [
+   {
+    "question": "How did Brother Lawrence feel about working in the kitchen?",
+    "answer": "He naturally had “a great aversion” to it. He really disliked it, yet he did it for about fifteen years."
+   },
+   {
+    "question": "What did he do before, during and after his work?",
+    "answer": "Before, he asked God for grace to stay in his presence and to accept his work. During, he kept talking with God. After, he thanked God if it went well or asked forgiveness if not, and started again without discouragement."
+   },
+   {
+    "question": "What did he say about God’s presence in the noisy kitchen?",
+    "answer": "That in the noise and clatter, with several people calling for different things, he had God in as great peace as if he were on his knees at the sacrament."
+   }
+  ],
+  "body_text": "“And whatsoever ye do, do it heartily, as to the Lord, and not unto men.” — Colossians 3:23 (KJV) The monastery needed a cook, so Brother Lawrence became the cook. He did it for about fifteen years. There is one small detail in Beaufort’s notes that makes this story so honest: Lawrence did not like the kitchen. In fact, Beaufort says it was a job “to which he had naturally a great aversion.” An aversion is a strong dislike. He was not a natural chef who found his dream job. He was a man stuck doing something he found hard and unpleasant, every single day. So what did he do? Before starting work, he would think through what needed doing and when. Then he prayed something like this: “O my God, since Thou art with me, and I must now, in obedience to Thy commands, apply my mind to these outward things, I beseech Thee to grant me the grace to continue in Thy Presence; and to this end do Thou prosper me with Thy assistance, receive all my works, and possess all my affections.” Then he got on with it, talking to God as he worked, asking for help, and offering him each task. When he finished, he looked back honestly. If it had gone well, he thanked God. If it hadn’t, he asked forgiveness, and then, without getting discouraged, he started again. People noticed. Those who knew him said that even in “the greatest hurry of business in the kitchen” he stayed calm. “He was never hasty nor loitering, but did each thing in its season.” Picture it: pots boiling over, several brothers shouting for different things at once, and one limping cook moving through it all with a quiet face. Lawrence himself said: “In the noise and clatter of my kitchen, while several persons are at the same time calling for different things, I possess God in as great tranquility as if I were upon my knees at the blessed sacrament.” That is the heart of his whole message. You don’t have to escape the noise to be with God. The time of work and the time of prayer, he said, were not different for him. He even said he felt more united to God in his ordinary work than when he left it for quiet prayer. Think about the things in your life you have no choice about and don’t enjoy: a subject at school, chores, a part-time job, looking after a younger sibling. Lawrence would not tell you to pretend you love them. He would tell you to bring God into them. Work done with God, for God, is never wasted. One thing to do this week: choose the one task you dislike most this week. Before you start it, pray your own short version of Lawrence’s kitchen prayer: “God, you’re here with me. Help me do this well, and take it as a gift.” Afterwards, thank God or say sorry, then move on.",
+  "word_count": 499
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-teens",
+   "en"
+  ],
+  "order": 7,
+  "title": "A Straw from the Ground",
+  "body_html": "<blockquote>“He that is faithful in that which is least is faithful also in much.” — Luke 16:10 (KJV)</blockquote> <p>Most of us secretly think that serving God properly means doing something big. Leading worship. Going overseas. Giving a talk that changes lives. Brother Lawrence was happy with something much smaller. Beaufort says he was pleased when he could “take up a straw from the ground for the love of God, seeking Him only, and nothing else, not even His gifts.”</p> <p>A straw from the ground. In a monastery yard, that is about the smallest job there is. But if it was done for love, Lawrence counted it as worship. He said God “regards not the greatness of the work, but the love with which it is performed.”</p> <p>He went further. Some people, he said, think that getting holier means changing what they do: new activities, new disciplines, more religious busyness. Lawrence disagreed. He said our holiness “did not depend upon changing our works, but in doing that for God’s sake, which we commonly do for our own.”</p> <p>Read that again slowly, because it might be the most practical sentence in the book. You don’t necessarily need to add a lot of new things to your life to grow closer to God. You need to take the things you already do, getting up, studying, eating, walking to the bus, playing sport, helping at home, and start doing them with God and for God.</p> <p>Later in his life Lawrence’s job changed, and he ended up mending the community’s sandals. He told Beaufort he was very well pleased with the post he had, but just as ready to leave it as the one before, because he was “always pleasing himself in every condition, by doing little things for the love of God.”</p> <p>He also warned against getting tired of small things. We ought not, he said, “to be weary of doing little things for the love of God.” It is easy to be faithful when something feels important and someone is watching. It is harder when it is the hundredth time you have stacked the dishwasher. But Jesus said that whoever is faithful in very little is faithful also in much. Little things are where faithfulness is learned.</p> <p>So next time you pick up a stray sock, hold a door, or finish homework nobody will ever praise, you can do it the Lawrence way. Small job. Big love. God sees both.</p> <p><strong>One thing to do this week:</strong> each day, do one small, unnoticed job for someone else, and do it deliberately for God. Don’t tell anyone. At the end of the week, tell God about them.</p>",
+  "study_questions": [
+   {
+    "question": "Why was Brother Lawrence happy to pick up a straw from the ground?",
+    "answer": "Because he did it for the love of God. He believed God looks not at how big the work is but at the love with which it is done."
+   },
+   {
+    "question": "According to Lawrence, does becoming holy mean changing what we do?",
+    "answer": "Not mainly. He said it depends on doing for God’s sake the things we normally do for our own."
+   },
+   {
+    "question": "What job did he have later, and how did he feel about changing jobs?",
+    "answer": "He mended the community’s sandals. He was happy there, but just as ready to leave it, because he found joy anywhere by doing little things for the love of God."
+   }
+  ],
+  "body_text": "“He that is faithful in that which is least is faithful also in much.” — Luke 16:10 (KJV) Most of us secretly think that serving God properly means doing something big. Leading worship. Going overseas. Giving a talk that changes lives. Brother Lawrence was happy with something much smaller. Beaufort says he was pleased when he could “take up a straw from the ground for the love of God, seeking Him only, and nothing else, not even His gifts.” A straw from the ground. In a monastery yard, that is about the smallest job there is. But if it was done for love, Lawrence counted it as worship. He said God “regards not the greatness of the work, but the love with which it is performed.” He went further. Some people, he said, think that getting holier means changing what they do: new activities, new disciplines, more religious busyness. Lawrence disagreed. He said our holiness “did not depend upon changing our works, but in doing that for God’s sake, which we commonly do for our own.” Read that again slowly, because it might be the most practical sentence in the book. You don’t necessarily need to add a lot of new things to your life to grow closer to God. You need to take the things you already do, getting up, studying, eating, walking to the bus, playing sport, helping at home, and start doing them with God and for God. Later in his life Lawrence’s job changed, and he ended up mending the community’s sandals. He told Beaufort he was very well pleased with the post he had, but just as ready to leave it as the one before, because he was “always pleasing himself in every condition, by doing little things for the love of God.” He also warned against getting tired of small things. We ought not, he said, “to be weary of doing little things for the love of God.” It is easy to be faithful when something feels important and someone is watching. It is harder when it is the hundredth time you have stacked the dishwasher. But Jesus said that whoever is faithful in very little is faithful also in much. Little things are where faithfulness is learned. So next time you pick up a stray sock, hold a door, or finish homework nobody will ever praise, you can do it the Lawrence way. Small job. Big love. God sees both. One thing to do this week: each day, do one small, unnoticed job for someone else, and do it deliberately for God. Don’t tell anyone. At the end of the week, tell God about them.",
+  "word_count": 442
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-teens",
+   "en"
+  ],
+  "order": 8,
+  "title": "A Boat Full of Barrels",
+  "body_html": "<blockquote>“Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.” — Philippians 4:6 (KJV)</blockquote> <p>One year the monastery sent Brother Lawrence on a business trip. He had to travel to Burgundy, a region famous for wine, to buy the community’s supply for the year. It was, Beaufort says, “a very unwelcome task for him.” Lawrence had no head for business. Worse, his leg was so bad that on the boat he “could not go about the boat but by rolling himself over the casks.”</p> <p>Imagine that scene. A limping monk who hates bargaining, sent to negotiate a big purchase, getting around a cargo boat by rolling over wine barrels. If anyone had a reason to panic, it was him.</p> <p>He didn’t. Beaufort says he gave himself no uneasiness about it. He simply told God that “It was His business he was about,” and left it with him. And he “afterwards found it very well performed.” The year before, he had been sent on the same errand to another region, Auvergne, and he said he could not even tell how it all came together, but it turned out very well.</p> <p>This was his normal way of handling hard things. When he faced something he knew he couldn’t do, he would say to God, “Lord, I cannot do this unless Thou enablest me.” And Beaufort says he then “received strength more than sufficient.”</p> <p>Later, Lawrence went further. He found that when he had a task coming up, he no longer worried over it in advance. Instead, “when it was time to do it, he found in God, as in a clear mirror, all that was fit for him to do.”</p> <p>To be fair to the planners among us, this doesn’t mean never preparing. Remember, in the kitchen he thought through each job before he started. It means not carrying the weight of tomorrow’s task all through today. There is a difference between planning and worrying. Planning is doing what you can. Worrying is trying to carry what only God can.</p> <p>You will have your own wine barrels: exams, interviews, a hard conversation, a match, moving to a new school. Do the work you are supposed to do. Then do what Lawrence did. Tell God it is his business too. Ask for strength. And trust that when the moment comes, he will be there with what you need.</p> <p><strong>One thing to do this week:</strong> think of something coming up that you are dreading. Each time the worry comes this week, pray Lawrence’s prayer: “Lord, I can’t do this unless you help me.” Then do one practical thing to prepare, and leave the rest with God.</p>",
+  "study_questions": [
+   {
+    "question": "Why was the wine-buying trip hard for Brother Lawrence?",
+    "answer": "He had no gift for business, and his leg was so bad that he could only get around the boat by rolling himself over the barrels."
+   },
+   {
+    "question": "What did he say to God about the task?",
+    "answer": "That it was God’s business he was doing. He also used to pray, “Lord, I cannot do this unless Thou enablest me,” and found he received more than enough strength."
+   },
+   {
+    "question": "What is the difference between planning and worrying, from this chapter?",
+    "answer": "Planning is doing what you can to prepare, as Lawrence did in the kitchen. Worrying is trying to carry in advance what only God can carry."
+   }
+  ],
+  "body_text": "“Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.” — Philippians 4:6 (KJV) One year the monastery sent Brother Lawrence on a business trip. He had to travel to Burgundy, a region famous for wine, to buy the community’s supply for the year. It was, Beaufort says, “a very unwelcome task for him.” Lawrence had no head for business. Worse, his leg was so bad that on the boat he “could not go about the boat but by rolling himself over the casks.” Imagine that scene. A limping monk who hates bargaining, sent to negotiate a big purchase, getting around a cargo boat by rolling over wine barrels. If anyone had a reason to panic, it was him. He didn’t. Beaufort says he gave himself no uneasiness about it. He simply told God that “It was His business he was about,” and left it with him. And he “afterwards found it very well performed.” The year before, he had been sent on the same errand to another region, Auvergne, and he said he could not even tell how it all came together, but it turned out very well. This was his normal way of handling hard things. When he faced something he knew he couldn’t do, he would say to God, “Lord, I cannot do this unless Thou enablest me.” And Beaufort says he then “received strength more than sufficient.” Later, Lawrence went further. He found that when he had a task coming up, he no longer worried over it in advance. Instead, “when it was time to do it, he found in God, as in a clear mirror, all that was fit for him to do.” To be fair to the planners among us, this doesn’t mean never preparing. Remember, in the kitchen he thought through each job before he started. It means not carrying the weight of tomorrow’s task all through today. There is a difference between planning and worrying. Planning is doing what you can. Worrying is trying to carry what only God can. You will have your own wine barrels: exams, interviews, a hard conversation, a match, moving to a new school. Do the work you are supposed to do. Then do what Lawrence did. Tell God it is his business too. Ask for strength. And trust that when the moment comes, he will be there with what you need. One thing to do this week: think of something coming up that you are dreading. Each time the worry comes this week, pray Lawrence’s prayer: “Lord, I can’t do this unless you help me.” Then do one practical thing to prepare, and leave the rest with God.",
+  "word_count": 454
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-teens",
+   "en"
+  ],
+  "order": 9,
+  "title": "When Your Mind Wanders",
+  "body_html": "<blockquote>“Thou wilt keep him in perfect peace, whose mind is stayed on thee: because he trusteth in thee.” — Isaiah 26:3 (KJV)</blockquote> <p>You close your eyes to pray. Ten seconds later you are thinking about lunch, then a conversation from yesterday, then a song, then whether you replied to that message. Then you remember you were praying, and feel guilty. Sound familiar?</p> <p>Someone wrote to Brother Lawrence with exactly that problem. His reply begins with a sentence that should make you breathe out:</p> <blockquote>“You tell me nothing new; you are not the only one that is troubled with wandering thoughts.”</blockquote> <p>It was not new to Lawrence either. Beaufort says that at the beginning Lawrence often spent his whole prayer time “rejecting wandering thoughts, and falling back into them.” He admitted that “useless thoughts spoil all.” The saint in the kitchen had the same jumpy mind as you.</p> <p>So what did he advise? First, keep your prayers simple. “Many words and long discourses,” he wrote, are “often the occasions of wandering.” Instead, he gave a picture: “Hold yourself in prayer before God, like a dumb or paralytic beggar at a rich man’s gate.” A beggar like that can’t make speeches. He just stays there, in front of the one who can help.</p> <p>Second, don’t panic when your mind drifts. This is the key piece of advice:</p> <blockquote>“Trouble and disquiet serve rather to distract the mind than to re-collect it: the will must bring it back in tranquility.”</blockquote> <p>In other words, getting angry with yourself just adds another distraction. When you notice you have wandered, don’t scold. Calmly turn back. Then do it again. And again. That turning back is the prayer.</p> <p>Third, and this is clever, practise during the rest of the day. He wrote: “One way to re-collect the mind easily in the time of prayer, and preserve it more in tranquility, is not to let it wander too far at other times.” If you only think of God for five minutes a day, those five minutes will be hard. If you are turning to him often through the day, your prayer time will feel more like continuing a conversation than starting a cold one.</p> <p>Your mind will wander. Everyone’s does. The question is not whether you drift, but whether you come back. God is not annoyed by your hundredth return. He is glad you came back.</p> <p><strong>One thing to do this week:</strong> in your prayer time, don’t try to fill it with lots of words. When your mind wanders, simply say “back to you, Lord” and carry on. Count how many times you come back, and thank God for each one, not against yourself.</p>",
+  "study_questions": [
+   {
+    "question": "What did Brother Lawrence tell his friend who struggled with wandering thoughts?",
+    "answer": "That it was nothing new and they were not the only one. Lawrence himself had spent many prayer times rejecting wandering thoughts and falling back into them."
+   },
+   {
+    "question": "What picture did he use for how to hold ourselves in prayer?",
+    "answer": "Like a beggar who cannot speak or move, waiting at a rich man’s gate: staying before God simply, without many words."
+   },
+   {
+    "question": "What should you do when you notice your mind has wandered, and how can the rest of your day help?",
+    "answer": "Calmly bring it back, because worry only distracts more. Thinking of God often through the day keeps the mind from wandering too far, which makes prayer easier."
+   }
+  ],
+  "body_text": "“Thou wilt keep him in perfect peace, whose mind is stayed on thee: because he trusteth in thee.” — Isaiah 26:3 (KJV) You close your eyes to pray. Ten seconds later you are thinking about lunch, then a conversation from yesterday, then a song, then whether you replied to that message. Then you remember you were praying, and feel guilty. Sound familiar? Someone wrote to Brother Lawrence with exactly that problem. His reply begins with a sentence that should make you breathe out: “You tell me nothing new; you are not the only one that is troubled with wandering thoughts.” It was not new to Lawrence either. Beaufort says that at the beginning Lawrence often spent his whole prayer time “rejecting wandering thoughts, and falling back into them.” He admitted that “useless thoughts spoil all.” The saint in the kitchen had the same jumpy mind as you. So what did he advise? First, keep your prayers simple. “Many words and long discourses,” he wrote, are “often the occasions of wandering.” Instead, he gave a picture: “Hold yourself in prayer before God, like a dumb or paralytic beggar at a rich man’s gate.” A beggar like that can’t make speeches. He just stays there, in front of the one who can help. Second, don’t panic when your mind drifts. This is the key piece of advice: “Trouble and disquiet serve rather to distract the mind than to re-collect it: the will must bring it back in tranquility.” In other words, getting angry with yourself just adds another distraction. When you notice you have wandered, don’t scold. Calmly turn back. Then do it again. And again. That turning back is the prayer. Third, and this is clever, practise during the rest of the day. He wrote: “One way to re-collect the mind easily in the time of prayer, and preserve it more in tranquility, is not to let it wander too far at other times.” If you only think of God for five minutes a day, those five minutes will be hard. If you are turning to him often through the day, your prayer time will feel more like continuing a conversation than starting a cold one. Your mind will wander. Everyone’s does. The question is not whether you drift, but whether you come back. God is not annoyed by your hundredth return. He is glad you came back. One thing to do this week: in your prayer time, don’t try to fill it with lots of words. When your mind wanders, simply say “back to you, Lord” and carry on. Count how many times you come back, and thank God for each one, not against yourself.",
+  "word_count": 445
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-teens",
+   "en"
+  ],
+  "order": 10,
+  "title": "When You Blow It",
+  "body_html": "<blockquote>“If we confess our sins, he is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness.” — 1 John 1:9 (KJV)</blockquote> <p>Brother Lawrence was not perfect, and he never pretended to be. What is unusual is how he handled his failures.</p> <p>Many of us do one of two things when we mess up. Either we make excuses, or we spiral: replaying it, feeling terrible, avoiding God until we feel we have done enough penance. Lawrence did neither. When he failed, Beaufort says, “he only confessed his fault, saying to God, I shall never do otherwise, if You leave me to myself; it is You who must hinder my falling, and mend what is amiss.” And “after this, he gave himself no further uneasiness about it.”</p> <p>That is not taking sin lightly. It is taking God’s grace seriously. Lawrence was “very sensible of his faults, but not discouraged by them.” He admitted them honestly to God, did not argue or make excuses, and then went straight back to loving and worshipping him. He said we ought, “without anxiety, to expect the pardon of our sins from the Blood of Jesus Christ.”</p> <p>He even had a habit of placing his sins between himself and God, as if to say: I don’t deserve your kindness. And he noticed that God kept on being kind anyway. He said he did not deserve God’s favours, “but that God still continued to bestow them in abundance.”</p> <p>What about the times he forgot God for a long stretch? He didn’t panic about those either. He would admit his weakness to God and come back to him “with so much the greater trust in Him, as he had found himself wretched through forgetting Him.” Every failure became a reason to lean on God harder, not to hide.</p> <p>That is how the habit grew. Not by never falling, but by getting back up, again and again. He said:</p> <blockquote>“By rising after my falls, and by frequently renewed acts of faith and love, I am come to a state wherein it would be as difficult for me not to think of God as it was at first to accustom myself to it.”</blockquote> <p>So when you blow it, and you will, try the Lawrence way. Own it. Don’t excuse it. Tell God plainly: without you I will keep doing this. Receive his forgiveness through Jesus. Then get up and keep walking with him. The goal is not a perfect record. It is a quick return.</p> <p><strong>One thing to do this week:</strong> the next time you do something wrong this week, don’t wait until tonight or Sunday. Straight away, tell God what you did, ask him to forgive you and help you, and then carry on with him. If you hurt someone, put it right with them too.</p>",
+  "study_questions": [
+   {
+    "question": "What did Brother Lawrence say to God when he failed?",
+    "answer": "“I shall never do otherwise, if You leave me to myself; it is You who must hinder my falling, and mend what is amiss.” Then he did not keep worrying about it."
+   },
+   {
+    "question": "How did he avoid both making excuses and spiralling into guilt?",
+    "answer": "He confessed his faults honestly without excusing them, expected forgiveness through the blood of Jesus without anxiety, and went straight back to loving God."
+   },
+   {
+    "question": "How did his habit of thinking about God grow, according to him?",
+    "answer": "By “rising after my falls” and renewing his faith and love again and again, until it became harder not to think of God than it had once been to start."
+   }
+  ],
+  "body_text": "“If we confess our sins, he is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness.” — 1 John 1:9 (KJV) Brother Lawrence was not perfect, and he never pretended to be. What is unusual is how he handled his failures. Many of us do one of two things when we mess up. Either we make excuses, or we spiral: replaying it, feeling terrible, avoiding God until we feel we have done enough penance. Lawrence did neither. When he failed, Beaufort says, “he only confessed his fault, saying to God, I shall never do otherwise, if You leave me to myself; it is You who must hinder my falling, and mend what is amiss.” And “after this, he gave himself no further uneasiness about it.” That is not taking sin lightly. It is taking God’s grace seriously. Lawrence was “very sensible of his faults, but not discouraged by them.” He admitted them honestly to God, did not argue or make excuses, and then went straight back to loving and worshipping him. He said we ought, “without anxiety, to expect the pardon of our sins from the Blood of Jesus Christ.” He even had a habit of placing his sins between himself and God, as if to say: I don’t deserve your kindness. And he noticed that God kept on being kind anyway. He said he did not deserve God’s favours, “but that God still continued to bestow them in abundance.” What about the times he forgot God for a long stretch? He didn’t panic about those either. He would admit his weakness to God and come back to him “with so much the greater trust in Him, as he had found himself wretched through forgetting Him.” Every failure became a reason to lean on God harder, not to hide. That is how the habit grew. Not by never falling, but by getting back up, again and again. He said: “By rising after my falls, and by frequently renewed acts of faith and love, I am come to a state wherein it would be as difficult for me not to think of God as it was at first to accustom myself to it.” So when you blow it, and you will, try the Lawrence way. Own it. Don’t excuse it. Tell God plainly: without you I will keep doing this. Receive his forgiveness through Jesus. Then get up and keep walking with him. The goal is not a perfect record. It is a quick return. One thing to do this week: the next time you do something wrong this week, don’t wait until tonight or Sunday. Straight away, tell God what you did, ask him to forgive you and help you, and then carry on with him. If you hurt someone, put it right with them too.",
+  "word_count": 472
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-teens",
+   "en"
+  ],
+  "order": 11,
+  "title": "A Prayer with a Sword in Hand",
+  "body_html": "<blockquote>“Pray without ceasing.” — 1 Thessalonians 5:17 (KJV)</blockquote> <p>Brother Lawrence wrote letters to friends, and some of them were about ordinary people in hard places. One was about a young soldier the friend knew. Lawrence’s description of him might fit plenty of teenagers: he had a good heart, “but there is in him still a little of the world, and a great deal of youth.”</p> <p>The young man had been through something painful, and Lawrence hoped it would draw him to God. But a soldier on campaign has no time for long prayers in a quiet chapel. So what should he do? Lawrence’s answer is one of the best things he ever wrote:</p> <blockquote>“A little lifting up of the heart suffices. A little remembrance of God, one act of inward worship, though upon a march, and a sword in hand, are prayers, which, however short, are nevertheless very acceptable to God.”</blockquote> <p>Far from making a soldier weaker, Lawrence said, these quick prayers “best serve to fortify” his courage. And then, practically: “No one will notice it, and nothing is easier than to repeat often in the day these little internal adorations.”</p> <p>This is the practice of the presence of God at its simplest. You don’t need a candle and an hour. You can pray in the corridor between lessons, on the pitch, on the bus, in a tense moment at home. A two-second “Thank you, Lord” or “Help me” counts.</p> <p>In another letter Lawrence told an older friend the same thing. God, he said, “requires no great matters of us; a little remembrance of Him from time to time.” He added: “Lift up your heart to Him, sometimes even at your meals, and when you are in company.” And: “You need not cry very loud; He is nearer to us than we are aware of.” We do not need to be in church to be with God. We can “make an oratory of our heart,” a private prayer room inside, where we step in for a moment to talk with him.</p> <p>To another friend he gave a picture that is hard to forget. If a friend came to visit you and you just walked off and left them sitting alone, that would be rude. Lawrence wrote: “You would think it rude to leave a friend alone who came to visit you: why then must God be neglected?” God, he said, “is always near you and with you: leave Him not alone.”</p> <p>The Bible says to pray without ceasing. That sounds impossible until you see what Lawrence meant: not nonstop words, but a friendship that never really goes quiet.</p> <p><strong>One thing to do this week:</strong> set yourself a few everyday triggers: walking through a doorway, sitting down to eat, picking up your phone. Each time, lift your heart to God for a second: “Thank you,” “Help me,” or just “I’m here.” Nobody will notice.</p>",
+  "study_questions": [
+   {
+    "question": "What did Brother Lawrence advise for the young soldier who had no time for long prayers?",
+    "answer": "That “a little lifting up of the heart suffices”: a quick remembrance of God or an act of inward worship, even on the march with a sword in hand, is a prayer God gladly accepts."
+   },
+   {
+    "question": "What does it mean to “make an oratory of our heart”?",
+    "answer": "To have a private place of prayer inside yourself, where you can turn to talk with God for a moment anywhere, without needing to be in church."
+   },
+   {
+    "question": "What picture did Lawrence use about leaving God alone?",
+    "answer": "He said it would be rude to leave a friend alone who came to visit you, so why neglect God, who is always near and with us?"
+   }
+  ],
+  "body_text": "“Pray without ceasing.” — 1 Thessalonians 5:17 (KJV) Brother Lawrence wrote letters to friends, and some of them were about ordinary people in hard places. One was about a young soldier the friend knew. Lawrence’s description of him might fit plenty of teenagers: he had a good heart, “but there is in him still a little of the world, and a great deal of youth.” The young man had been through something painful, and Lawrence hoped it would draw him to God. But a soldier on campaign has no time for long prayers in a quiet chapel. So what should he do? Lawrence’s answer is one of the best things he ever wrote: “A little lifting up of the heart suffices. A little remembrance of God, one act of inward worship, though upon a march, and a sword in hand, are prayers, which, however short, are nevertheless very acceptable to God.” Far from making a soldier weaker, Lawrence said, these quick prayers “best serve to fortify” his courage. And then, practically: “No one will notice it, and nothing is easier than to repeat often in the day these little internal adorations.” This is the practice of the presence of God at its simplest. You don’t need a candle and an hour. You can pray in the corridor between lessons, on the pitch, on the bus, in a tense moment at home. A two-second “Thank you, Lord” or “Help me” counts. In another letter Lawrence told an older friend the same thing. God, he said, “requires no great matters of us; a little remembrance of Him from time to time.” He added: “Lift up your heart to Him, sometimes even at your meals, and when you are in company.” And: “You need not cry very loud; He is nearer to us than we are aware of.” We do not need to be in church to be with God. We can “make an oratory of our heart,” a private prayer room inside, where we step in for a moment to talk with him. To another friend he gave a picture that is hard to forget. If a friend came to visit you and you just walked off and left them sitting alone, that would be rude. Lawrence wrote: “You would think it rude to leave a friend alone who came to visit you: why then must God be neglected?” God, he said, “is always near you and with you: leave Him not alone.” The Bible says to pray without ceasing. That sounds impossible until you see what Lawrence meant: not nonstop words, but a friendship that never really goes quiet. One thing to do this week: set yourself a few everyday triggers: walking through a doorway, sitting down to eat, picking up your phone. Each time, lift your heart to God for a second: “Thank you,” “Help me,” or just “I’m here.” Nobody will notice.",
+  "word_count": 483
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-teens",
+   "en"
+  ],
+  "order": 12,
+  "title": "Strength, Not Escape",
+  "body_html": "<blockquote>“My grace is sufficient for thee: for my strength is made perfect in weakness.” — 2 Corinthians 12:9 (KJV)</blockquote> <p>Brother Lawrence’s last letters were written to a friend who was seriously ill, and to be honest, they contain some of his hardest words.</p> <p>Most of us, when someone we love is in pain, pray one thing: make it stop. Lawrence wrote something different: “I do not pray that you may be delivered from your pains, but I pray God earnestly that He would give you strength and patience to bear them as long as He pleases.”</p> <p>That may sound cold. It wasn’t. He wrote, “I am in pain to see you suffer so long.” But he believed that God was at work even in suffering, and he wanted his friend to find God there instead of only waiting for it to be over. He wrote:</p> <blockquote>“I wish you could convince yourself that God is often (in some sense) nearer to us, and more effectually present with us, in sickness than in health.”</blockquote> <p>He wasn’t giving advice from a comfortable chair. He was old, often ill, and in pain himself. He told his friend, “I have been often near expiring, but I never was so much satisfied as then. Accordingly, I did not pray for any relief, but I prayed for strength to suffer with courage, humility and love.”</p> <p>Some of his advice needs a word of care. In one letter he told his friend that since the medicines were not working, they should stop relying on them and trust God for healing. Remember that this was the 1600s, when medicine was often more harmful than helpful. Lawrence’s real point was where to put your trust, not a rule against doctors. If you are ill, take your medicine and see a doctor, and trust God while you do it. Both are gifts from him.</p> <p>Lawrence was also honest that God sometimes feels far away in hard times. “He sometimes hides Himself from us,” he wrote, “but faith alone, which will not fail us in time of need, ought to be our support.”</p> <p>In the last of these letters, his friend had begun to recover a little. Lawrence thanked God for it, and then wrote, “I hope from His mercy the favor to see Him within a few days.” A note in the old edition records what happened next: “He took to his bed two days after, and died within the week.” It was February 1691.</p> <p>You are probably not near the end of your life. But you will face pain: illness, loss, anxiety, things that don’t get fixed quickly. Lawrence’s letters give you a prayer for those times. Not only “take it away,” though you can always ask that. Also: “God, give me strength to go through this with you.”</p> <p><strong>One thing to do this week:</strong> think of someone you know who is suffering right now. Pray for them every day this week, both for relief and for strength and God’s closeness in it. Then send them a message to let them know you are thinking of them.</p>",
+  "study_questions": [
+   {
+    "question": "What did Brother Lawrence pray for his sick friend, instead of just asking for the pain to stop?",
+    "answer": "He prayed that God would give his friend strength and patience to bear the pain as long as God pleased."
+   },
+   {
+    "question": "What did he say about God’s presence in sickness?",
+    "answer": "That God is often in some sense nearer to us, and more present with us, in sickness than in health."
+   },
+   {
+    "question": "How did Brother Lawrence die?",
+    "answer": "He wrote that he hoped to see God within a few days. Two days later he took to his bed, and he died within the week, in February 1691."
+   }
+  ],
+  "body_text": "“My grace is sufficient for thee: for my strength is made perfect in weakness.” — 2 Corinthians 12:9 (KJV) Brother Lawrence’s last letters were written to a friend who was seriously ill, and to be honest, they contain some of his hardest words. Most of us, when someone we love is in pain, pray one thing: make it stop. Lawrence wrote something different: “I do not pray that you may be delivered from your pains, but I pray God earnestly that He would give you strength and patience to bear them as long as He pleases.” That may sound cold. It wasn’t. He wrote, “I am in pain to see you suffer so long.” But he believed that God was at work even in suffering, and he wanted his friend to find God there instead of only waiting for it to be over. He wrote: “I wish you could convince yourself that God is often (in some sense) nearer to us, and more effectually present with us, in sickness than in health.” He wasn’t giving advice from a comfortable chair. He was old, often ill, and in pain himself. He told his friend, “I have been often near expiring, but I never was so much satisfied as then. Accordingly, I did not pray for any relief, but I prayed for strength to suffer with courage, humility and love.” Some of his advice needs a word of care. In one letter he told his friend that since the medicines were not working, they should stop relying on them and trust God for healing. Remember that this was the 1600s, when medicine was often more harmful than helpful. Lawrence’s real point was where to put your trust, not a rule against doctors. If you are ill, take your medicine and see a doctor, and trust God while you do it. Both are gifts from him. Lawrence was also honest that God sometimes feels far away in hard times. “He sometimes hides Himself from us,” he wrote, “but faith alone, which will not fail us in time of need, ought to be our support.” In the last of these letters, his friend had begun to recover a little. Lawrence thanked God for it, and then wrote, “I hope from His mercy the favor to see Him within a few days.” A note in the old edition records what happened next: “He took to his bed two days after, and died within the week.” It was February 1691. You are probably not near the end of your life. But you will face pain: illness, loss, anxiety, things that don’t get fixed quickly. Lawrence’s letters give you a prayer for those times. Not only “take it away,” though you can always ask that. Also: “God, give me strength to go through this with you.” One thing to do this week: think of someone you know who is suffering right now. Pray for them every day this week, both for relief and for strength and God’s closeness in it. Then send them a message to let them know you are thinking of them.",
+  "word_count": 517
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-teens",
+   "en"
+  ],
+  "order": 13,
+  "title": "Let Us Begin",
+  "body_html": "<blockquote>“Draw nigh to God, and he will draw nigh to you.” — James 4:8 (KJV)</blockquote> <p>By now you might have noticed that Brother Lawrence repeats himself. Every letter, every conversation, comes back to the same thing: think of God often, talk to him, trust him. He knew it. In one letter he wrote:</p> <blockquote>“You will tell me that I am always saying the same thing. It is true, for this is the best and easiest method I know; and as I use no other, I advise all the world to do it.”</blockquote> <p>He was serious about how much this mattered. “Were I a preacher,” he wrote, “I should, above all other things, preach the practice of the presence of God.” He thought it was “so necessary” and also “so easy too.” Easy, not in the sense that it takes no effort, but in the sense that it needs no special talent. Beaufort records him saying that “there needed neither art nor science for going to God, but only a heart resolutely determined to apply itself to nothing but Him.” You don’t have to be clever, or gifted, or old, or calm by nature. A clumsy footman managed it.</p> <p>He laid out the logic in a chain of questions, and it is worth reading slowly:</p> <blockquote>“How can we pray to Him without being with Him? How can we be with Him but in thinking of Him often? And how can we often think of Him, but by a holy habit which we should form of it?”</blockquote> <p>That is the whole thing. Prayer needs his company. His company comes by thinking of him often. Thinking of him often comes by habit. And habits are built one small repetition at a time.</p> <p>He was realistic about how long it takes. Writing about a keen beginner he was helping, he said: “She seems to me full of good will, but she would go faster than grace. One does not become holy all at once.” Don’t be discouraged if this week feels clumsy. So did his first years. He said at the beginning it can feel like lost time, but to keep going.</p> <p>And it does grow. Lawrence noticed that the more we know God, the more we love him, and the more we love him, the more we think of him, because, as Jesus said, our heart is where our treasure is. He wrote that “our heart will be with our treasure.”</p> <p>So here is his invitation, in his own words from a letter to an old friend: “Let us begin, then. Perhaps He expects but one generous resolution on our part. Have courage.” You don’t have to wait until you are older, or holier, or less busy. You can begin today, in the middle of your ordinary life, with a quick turn of the heart: “My God, here I am.” Brother Lawrence would say that is exactly where God has been waiting for you.</p> <p><strong>One thing to do this week:</strong> make Lawrence’s “one generous resolution.” Pick a time each morning to say, “God, I want to be with you today,” and then keep turning back to him all day using the habits from this book. At the end of each day, thank him for the moments you remembered, and don’t worry about the rest.</p>",
+  "study_questions": [
+   {
+    "question": "Why did Brother Lawrence keep saying the same thing?",
+    "answer": "Because practising the presence of God was the best and easiest method he knew, so he used no other and advised everyone to do it."
+   },
+   {
+    "question": "What chain of questions did he use to explain why this habit matters?",
+    "answer": "We cannot pray without being with God; we cannot be with him without thinking of him often; and we cannot think of him often without forming a holy habit of it."
+   },
+   {
+    "question": "What did he say about an eager beginner who wanted to grow fast?",
+    "answer": "That she would “go faster than grace,” and that “one does not become holy all at once.” Growth with God takes time and patience."
+   }
+  ],
+  "body_text": "“Draw nigh to God, and he will draw nigh to you.” — James 4:8 (KJV) By now you might have noticed that Brother Lawrence repeats himself. Every letter, every conversation, comes back to the same thing: think of God often, talk to him, trust him. He knew it. In one letter he wrote: “You will tell me that I am always saying the same thing. It is true, for this is the best and easiest method I know; and as I use no other, I advise all the world to do it.” He was serious about how much this mattered. “Were I a preacher,” he wrote, “I should, above all other things, preach the practice of the presence of God.” He thought it was “so necessary” and also “so easy too.” Easy, not in the sense that it takes no effort, but in the sense that it needs no special talent. Beaufort records him saying that “there needed neither art nor science for going to God, but only a heart resolutely determined to apply itself to nothing but Him.” You don’t have to be clever, or gifted, or old, or calm by nature. A clumsy footman managed it. He laid out the logic in a chain of questions, and it is worth reading slowly: “How can we pray to Him without being with Him? How can we be with Him but in thinking of Him often? And how can we often think of Him, but by a holy habit which we should form of it?” That is the whole thing. Prayer needs his company. His company comes by thinking of him often. Thinking of him often comes by habit. And habits are built one small repetition at a time. He was realistic about how long it takes. Writing about a keen beginner he was helping, he said: “She seems to me full of good will, but she would go faster than grace. One does not become holy all at once.” Don’t be discouraged if this week feels clumsy. So did his first years. He said at the beginning it can feel like lost time, but to keep going. And it does grow. Lawrence noticed that the more we know God, the more we love him, and the more we love him, the more we think of him, because, as Jesus said, our heart is where our treasure is. He wrote that “our heart will be with our treasure.” So here is his invitation, in his own words from a letter to an old friend: “Let us begin, then. Perhaps He expects but one generous resolution on our part. Have courage.” You don’t have to wait until you are older, or holier, or less busy. You can begin today, in the middle of your ordinary life, with a quick turn of the heart: “My God, here I am.” Brother Lawrence would say that is exactly where God has been waiting for you. One thing to do this week: make Lawrence’s “one generous resolution.” Pick a time each morning to say, “God, I want to be with you today,” and then keep turning back to him all day using the habits from this book. At the end of each day, thank him for the moments you remembered, and don’t worry about the rest.",
+  "word_count": 551
+ }
+}
+]
