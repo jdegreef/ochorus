@@ -9733,6 +9733,16 @@
 				482
 			]
 		},
+		"pt/corrie-ten-boom-a-life-children": {
+			"ground": "10897eae8f3edce9e81e738089978e8c333e90338db9fbc606ac5ef2965d7dd8",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"pt/days-of-heaven-upon-earth": {
 			"ground": "95d7464227be056bd368c48c94511d8aa30b9f30465bfd728feb33da0c176b3b",
 			"style": "revival",
