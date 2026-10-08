@@ -140,6 +140,20 @@
  }
 },
 {
+ "model": "library.series",
+ "fields": {
+  "slug": "real-questions",
+  "title": "Real Questions",
+  "description": "Honest, short answers for readers aged 13 to 17 to the questions teenagers actually ask about God, the Bible, Jesus, and life — clear where Christians agree, fair where they differ, and pointing on to the classics.",
+  "sort_order": 110,
+  "audience": "teens",
+  "min_age": 13,
+  "max_age": 17,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
  "model": "library.seriestranslation",
  "fields": {
   "series": [

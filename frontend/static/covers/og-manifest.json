@@ -10523,6 +10523,16 @@
 			"layout": "split/navy",
 			"bar": 0
 		},
+		"real-questions-1": {
+			"ground": "9802769816ef6be75919d194afc791abe778006379ef01cc1f9d1383e1e9732e",
+			"style": "originals",
+			"volume": "1",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"reality-of-prayer": {
 			"ground": "3ff7e009de2d59ab5a76e18ec46a5100eaaf0141c4d00598d254897c97e0cca9",
 			"style": "devotional",
