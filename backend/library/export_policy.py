@@ -87,6 +87,7 @@ EXPORT_PILOT = frozenset({
     ("a-retrospect-children", "en"),
     ("a-retrospect-teens", "en"),
     ("amanda-smith-autobiography-children", "en"),
+    ("all-of-grace-teens", "en"),
     ("amanda-smith-autobiography-teens", "en"),
     ("pilgrims-progress-children", "en"),
     ("confessions-teens", "en"),
@@ -96,6 +97,7 @@ EXPORT_PILOT = frozenset({
     ("talks-to-the-farmer-teens", "en"),
     ("the-life-of-trust-children", "en"),
     ("the-life-of-trust-teens", "en"),
+    ("the-practice-of-the-presence-of-god-children", "en"),
     # Retellings of an Ochorus Original (the Portraits of Courage life): the
     # parent author is the imprint, so, like the Portraits themselves, these have
     # no About the Author page. The Teens edition quotes only the public-domain ASV.
