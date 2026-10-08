@@ -5159,6 +5159,16 @@
 				564
 			]
 		},
+		"fr/c-s-lewis-a-life-children": {
+			"ground": "ed48933806b1f3c2e377e86a438e8d351b9f355e45d599f96a1646917d1dcafc",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"fr/cheque-book": {
 			"ground": "a21978dfd6cf84cc3bba17e06faec15d3d71688b2371ba093fc9aad0a215d101",
 			"style": "revival",
