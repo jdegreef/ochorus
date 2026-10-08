@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "john-hyde-a-life-children",
+  "language": "en",
+  "title": "Praying Hyde (For Children)",
+  "subtitle": "",
+  "cover_byline": "John Hyde",
+  "description": "The true story of John Hyde, a shy, slow-speaking, partly deaf young American who went to the villages of India’s Punjab and spent so much of his life praying for others that the people there called him “the man who never sleeps,” and Christians everywhere came to call him “Praying Hyde.” This children’s edition retells his life in short chapters made to be read aloud: a Bible verse, one part of his story, one thing it means for you, and a short prayer, with questions to talk about together.",
+  "qa": [
+   {
+    "question": "What is Praying Hyde (For Children) about?",
+    "answer": "It is a children’s version of the full-length biography of John Hyde. It tells how a minister’s son from Illinois went to the villages of the Punjab in India, learned to pray with all his heart, loved the poorest people there, and helped many of them to follow Jesus."
+   },
+   {
+    "question": "Who was John Hyde?",
+    "answer": "An American missionary who lived from 1865 to 1912. He was shy, slow of speech and partly deaf, but he gave himself to prayer so much that the people of the Punjab called him “the man who never sleeps,” and Christians around the world came to call him “Praying Hyde.”"
+   },
+   {
+    "question": "How is each chapter set out?",
+    "answer": "Every chapter is short and made to be read aloud. It begins with a Bible verse, tells one part of John’s story, shows one simple thing it means for you, and ends with a short prayer. Three questions follow, to talk about together."
+   },
+   {
+    "question": "Is this book too sad for children?",
+    "answer": "A few parts are sad: John’s brother dies young, and at the end John becomes very ill and dies. The book tells these parts honestly but gently, without frightening detail. Above all it is a happy story of God’s love, of answered prayer, and of a man who died saying, “It’s just victory, victory, victory.”"
+   },
+   {
+    "question": "Are the stories true?",
+    "answer": "Yes. They come from church records and from the friends who knew John Hyde and wrote down what they remembered. A few stories were told in slightly different ways, and some numbers in the old books cannot be checked, and the book says so gently when it matters."
+   },
+   {
+    "question": "Who is this book for?",
+    "answer": "It is for children, to be read aloud by a grown-up or read by an older child alone. There is also a teen edition, and the full-length biography for older readers."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of the Ochorus biography John Hyde, from the Portraits of Courage series. The telling is our own, free to read and share.",
+  "cover_url": "/covers/john-hyde-a-life-children.svg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/john-hyde-a-life-children.pdf?download=john-hyde-a-life-children.pdf",
+  "cover_color": "",
+  "sort_order": 151,
+  "is_published": true,
+  "created_at": "2026-10-08T00:00:00Z",
+  "updated_at": "2026-10-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "en"
+  ],
+  "order": 1,
+  "title": "A Father’s Prayer",
+  "body_html": "<blockquote>“Pray to the Lord of the harvest, that he will send out workers into his harvest.” — from Matthew 9</blockquote> <p>A long time ago, on 9 November 1865, a baby boy was born in the state of Illinois, in America. His name was John Nelson Hyde. Many years later, Christians all over the world would call him by a special name: “Praying Hyde.” This is his story.</p> <p>John grew up in a little prairie town called Carthage. His father, Smith Harris Hyde, was the minister of the Presbyterian church there. John had two brothers and three sisters. His big brother Edmund was two years older than he was.</p> <p>John’s mother loved music. Years later John told a friend that she was the best singer he had ever heard, and “such a holy woman.” She taught him carefully about Jesus.</p> <p>The family prayed together at home, and again and again John heard his father pray the same prayer. It was the prayer Jesus told his friends to pray: that God would send workers into his harvest. Jesus meant that the world is like a great field full of people who need to hear about him, and there are not enough workers to tell them. John’s father prayed that prayer gladly, even though it might mean God sending his own children far away.</p> <p>John grew up and went to Carthage College. He decided that he wanted to be a missionary. But, to be honest, he wanted to be a famous one. Later he said, “I wanted to shine as a great missionary.” He really did love God. But he also wanted people to think he was wonderful, and God would gently have to change that.</p> <p>God hears every prayer, even small ones, even ones we pray over and over again. John’s father did not know how God would answer his prayer. But God was listening, and God listens to you, too.</p> <p><em>Dear God, thank you for the people who pray for me. Please send workers to tell everyone about Jesus, and help me to be one of them. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What prayer did John’s father pray again and again?",
+    "answer": "He prayed the prayer Jesus taught, asking the Lord of the harvest to send workers into his harvest, so that more people would hear about Jesus."
+   },
+   {
+    "question": "What did young John want when he decided to be a missionary?",
+    "answer": "He loved God, but he also wanted to be a famous missionary. He said, “I wanted to shine as a great missionary.”"
+   },
+   {
+    "question": "Who prays for you? Who could you pray for?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God hears every prayer, even small ones prayed over and over, and he is listening to you."
+   }
+  ],
+  "body_text": "“Pray to the Lord of the harvest, that he will send out workers into his harvest.” — from Matthew 9 A long time ago, on 9 November 1865, a baby boy was born in the state of Illinois, in America. His name was John Nelson Hyde. Many years later, Christians all over the world would call him by a special name: “Praying Hyde.” This is his story. John grew up in a little prairie town called Carthage. His father, Smith Harris Hyde, was the minister of the Presbyterian church there. John had two brothers and three sisters. His big brother Edmund was two years older than he was. John’s mother loved music. Years later John told a friend that she was the best singer he had ever heard, and “such a holy woman.” She taught him carefully about Jesus. The family prayed together at home, and again and again John heard his father pray the same prayer. It was the prayer Jesus told his friends to pray: that God would send workers into his harvest. Jesus meant that the world is like a great field full of people who need to hear about him, and there are not enough workers to tell them. John’s father prayed that prayer gladly, even though it might mean God sending his own children far away. John grew up and went to Carthage College. He decided that he wanted to be a missionary. But, to be honest, he wanted to be a famous one. Later he said, “I wanted to shine as a great missionary.” He really did love God. But he also wanted people to think he was wonderful, and God would gently have to change that. God hears every prayer, even small ones, even ones we pray over and over again. John’s father did not know how God would answer his prayer. But God was listening, and God listens to you, too. Dear God, thank you for the people who pray for me. Please send workers to tell everyone about Jesus, and help me to be one of them. Amen.",
+  "word_count": 347
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "en"
+  ],
+  "order": 2,
+  "title": "“It Is Settled”",
+  "body_html": "<blockquote>“Then I heard the voice of the Lord, saying, Whom shall I send? Then said I, Here am I; send me.” — from Isaiah 6</blockquote> <p>When John was a young man, he went to the big city of Chicago to study to be a minister. A year later his brother Edmund came to study there too. Edmund had promised God that he would go to a faraway country as a missionary, if God allowed it.</p> <p>One summer Edmund went out west to Montana to help with Sunday school work. There he caught a bad fever. He was so ill that people pinned his train ticket to his coat so that he could get home. He reached home, but a few days later, in August 1891, he died. John was very sad.</p> <p>Now John began to wonder. Edmund had wanted to be a missionary, and now he could not go. Did God want John to go instead? John did not rush to decide. He thought about it for most of a year.</p> <p>Late one Saturday night, John went to a friend’s room. He asked his friend to give him all the reasons for going and for staying. But his friend would not argue. He told John to go to his own room, get on his knees before God, and stay there until the question was settled.</p> <p>So John did. Nobody knows how long he prayed that night. But the next morning at chapel he found his friend and said, “It is settled.” His face was shining. He would go.</p> <p>In 1892 John became a minister, and his church sent him to the Punjab, in the north of India. On 15 October 1892 he sailed from New York. He was twenty-six years old.</p> <p>Sometimes we have a big question and we don’t know what to do. It is good to ask wise people for help. But some questions are best taken to God. You can tell him all about it, wait quietly, and trust him to show you the way.</p> <p><em>Dear God, when I don’t know what to do, help me to come and talk to you. I want to say, like John, “Here I am. Send me.” Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What happened to John’s brother Edmund?",
+    "answer": "He caught a bad fever while doing Sunday school work in Montana, came home very ill, and died in August 1891."
+   },
+   {
+    "question": "What did John’s friend tell him to do instead of arguing?",
+    "answer": "To go to his own room, kneel before God, and stay there until the question was settled. The next morning John said, “It is settled.”"
+   },
+   {
+    "question": "Is there a question you would like to bring to God?",
+    "answer": "Any honest answer is good here. The chapter’s point is that we can take our big questions to God, wait, and trust him to show us the way."
+   }
+  ],
+  "body_text": "“Then I heard the voice of the Lord, saying, Whom shall I send? Then said I, Here am I; send me.” — from Isaiah 6 When John was a young man, he went to the big city of Chicago to study to be a minister. A year later his brother Edmund came to study there too. Edmund had promised God that he would go to a faraway country as a missionary, if God allowed it. One summer Edmund went out west to Montana to help with Sunday school work. There he caught a bad fever. He was so ill that people pinned his train ticket to his coat so that he could get home. He reached home, but a few days later, in August 1891, he died. John was very sad. Now John began to wonder. Edmund had wanted to be a missionary, and now he could not go. Did God want John to go instead? John did not rush to decide. He thought about it for most of a year. Late one Saturday night, John went to a friend’s room. He asked his friend to give him all the reasons for going and for staying. But his friend would not argue. He told John to go to his own room, get on his knees before God, and stay there until the question was settled. So John did. Nobody knows how long he prayed that night. But the next morning at chapel he found his friend and said, “It is settled.” His face was shining. He would go. In 1892 John became a minister, and his church sent him to the Punjab, in the north of India. On 15 October 1892 he sailed from New York. He was twenty-six years old. Sometimes we have a big question and we don’t know what to do. It is good to ask wise people for help. But some questions are best taken to God. You can tell him all about it, wait quietly, and trust him to show you the way. Dear God, when I don’t know what to do, help me to come and talk to you. I want to say, like John, “Here I am. Send me.” Amen.",
+  "word_count": 367
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "en"
+  ],
+  "order": 3,
+  "title": "The Crumpled Letter",
+  "body_html": "<blockquote>“How much more shall your heavenly Father give the Holy Spirit to them that ask him?” — from Luke 11</blockquote> <p>When John went on board his ship in New York, a letter was waiting for him. It was from a friend of his father, an older Christian who had once wanted to be a missionary himself but had not been able to go.</p> <p>The letter was short. It said something like this: “I shall not cease praying for you, dear John, until you are filled with the Holy Spirit.”</p> <p>John was angry! Did this man think he was not ready? He was going to be a great missionary! He crumpled up the letter, threw it away, and went up on deck feeling very cross.</p> <p>But as he walked up and down, deep in his heart he knew the man was right. John’s father’s friend was a good and holy man. So John went back, got down on his knees, found the crumpled letter, smoothed it out, and read it again. And again.</p> <p>For two or three days John felt miserable. At last he asked God to fill him with the Holy Spirit. Then he began to see that he had wanted to be a missionary mostly so that people would admire him. He told God he was willing to fail his exams in India, and to work “quietly out of sight,” if only God would fill him with his Spirit.</p> <p>John told this story to his friends more than once, and some of the little details are not quite the same each time. But the important part is always the same: John stopped being proud, and asked God for help.</p> <p>Sometimes a person who loves you says something you don’t want to hear. It is easy to get cross. But it is wise to stop, think, and ask God whether they might be right.</p> <p><em>Dear God, when someone who loves me tells me something hard, help me to listen and not to be proud. Please fill me with your Holy Spirit. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did the letter on the ship say?",
+    "answer": "It said that John’s father’s friend would not stop praying for him until John was filled with the Holy Spirit."
+   },
+   {
+    "question": "What did John do after he threw the letter away?",
+    "answer": "He went back, found it, smoothed it out and read it again. After a few miserable days he asked God to fill him with the Holy Spirit and told God he was willing to work quietly out of sight."
+   },
+   {
+    "question": "Has anyone ever told you something hard that turned out to be true?",
+    "answer": "Any honest answer is good here. The chapter’s point is that when someone who loves us says something hard, it is wise to listen and ask God whether they are right."
+   }
+  ],
+  "body_text": "“How much more shall your heavenly Father give the Holy Spirit to them that ask him?” — from Luke 11 When John went on board his ship in New York, a letter was waiting for him. It was from a friend of his father, an older Christian who had once wanted to be a missionary himself but had not been able to go. The letter was short. It said something like this: “I shall not cease praying for you, dear John, until you are filled with the Holy Spirit.” John was angry! Did this man think he was not ready? He was going to be a great missionary! He crumpled up the letter, threw it away, and went up on deck feeling very cross. But as he walked up and down, deep in his heart he knew the man was right. John’s father’s friend was a good and holy man. So John went back, got down on his knees, found the crumpled letter, smoothed it out, and read it again. And again. For two or three days John felt miserable. At last he asked God to fill him with the Holy Spirit. Then he began to see that he had wanted to be a missionary mostly so that people would admire him. He told God he was willing to fail his exams in India, and to work “quietly out of sight,” if only God would fill him with his Spirit. John told this story to his friends more than once, and some of the little details are not quite the same each time. But the important part is always the same: John stopped being proud, and asked God for help. Sometimes a person who loves you says something you don’t want to hear. It is easy to get cross. But it is wise to stop, think, and ask God whether they might be right. Dear God, when someone who loves me tells me something hard, help me to listen and not to be proud. Please fill me with your Holy Spirit. Amen.",
+  "word_count": 342
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "en"
+  ],
+  "order": 4,
+  "title": "A Question in the Street",
+  "body_html": "<blockquote>“Create in me a clean heart, O God.” — from Psalm 51</blockquote> <p>At the end of 1892 John arrived in India. He travelled by train to the Punjab, the land of five rivers. It was a land of wheat fields and mud-walled villages, of camels and bullock carts. The people spoke Urdu and Punjabi, and John could not speak a word of either one yet.</p> <p>In his first few days, an older missionary took him to a meeting out in the street. The missionary told the crowd that Jesus can truly save people from their sin. John could not understand the words, but someone told him what they were about.</p> <p>When the talk was over, a well-dressed man stepped forward. He spoke good English. He asked the missionary whether Jesus had saved him from sin in the way he had just described.</p> <p>That question went straight into John’s heart. He knew there was one sin in his own life that kept tripping him up, again and again. He never told anyone what it was. But he knew that if the man had asked him, he could not honestly have said yes.</p> <p>John went back to his room and shut the door. He told God that he could not tell other people about Jesus’ power until he had let Jesus help him first. He stayed there praying for a long time, and God assured him that he was able and willing to set him free. Years later John said, “He did deliver me.” His friend never forgot John’s sad face when he spoke of his sin, and his wonderful smile when he spoke of how faithful Jesus had been.</p> <p>Everybody has sins that trip them up. Maybe it is losing your temper, or telling fibs, or being unkind. You don’t have to hide them from God. You can tell him, and he is faithful to forgive you, to make your heart clean, and to help you.</p> <p><em>Dear God, you know the things I keep getting wrong. Please forgive me, make my heart clean, and help me to do what is right. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did the man in the street ask the missionary?",
+    "answer": "He asked whether Jesus had really saved him from sin, the way he had been telling the crowd."
+   },
+   {
+    "question": "What did John do when the question went into his heart?",
+    "answer": "He went to his room, shut the door and prayed for a long time, until God assured him that he could set him free. John said, “He did deliver me.”"
+   },
+   {
+    "question": "Is there something you keep getting wrong that you could tell God about?",
+    "answer": "Any honest answer is good here, and you don’t have to say it out loud. The chapter’s point is that we never need to hide our sins from God: he forgives us and helps us."
+   }
+  ],
+  "body_text": "“Create in me a clean heart, O God.” — from Psalm 51 At the end of 1892 John arrived in India. He travelled by train to the Punjab, the land of five rivers. It was a land of wheat fields and mud-walled villages, of camels and bullock carts. The people spoke Urdu and Punjabi, and John could not speak a word of either one yet. In his first few days, an older missionary took him to a meeting out in the street. The missionary told the crowd that Jesus can truly save people from their sin. John could not understand the words, but someone told him what they were about. When the talk was over, a well-dressed man stepped forward. He spoke good English. He asked the missionary whether Jesus had saved him from sin in the way he had just described. That question went straight into John’s heart. He knew there was one sin in his own life that kept tripping him up, again and again. He never told anyone what it was. But he knew that if the man had asked him, he could not honestly have said yes. John went back to his room and shut the door. He told God that he could not tell other people about Jesus’ power until he had let Jesus help him first. He stayed there praying for a long time, and God assured him that he was able and willing to set him free. Years later John said, “He did deliver me.” His friend never forgot John’s sad face when he spoke of his sin, and his wonderful smile when he spoke of how faithful Jesus had been. Everybody has sins that trip them up. Maybe it is losing your temper, or telling fibs, or being unkind. You don’t have to hide them from God. You can tell him, and he is faithful to forgive you, to make your heart clean, and to help you. Dear God, you know the things I keep getting wrong. Please forgive me, make my heart clean, and help me to do what is right. Amen.",
+  "word_count": 351
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "en"
+  ],
+  "order": 5,
+  "title": "Slow of Speech",
+  "body_html": "<blockquote>“I will be with thy mouth, and teach thee what thou shalt say.” — from Exodus 4</blockquote> <p>John was not an easy person to get to know. He was shy and quiet. He was also a little deaf, and as the years went by he grew more deaf. When people spoke to him, he often seemed not to hear, or he took a long time to answer.</p> <p>But everyone noticed his eyes. A friend said he had “a wonderful pair of blue eyes” that seemed to look right into your heart.</p> <p>New missionaries were supposed to spend most of their time learning the language. John did study it. But he also spent many hours studying the Bible, and the mission leaders scolded him. John answered, “First things first.” He had come to India to teach the Bible, so he needed to know it well.</p> <p>For a long time people thought John would never speak Urdu or Punjabi very well. His first ten years in India were slow, and not many people came to Jesus. Some of the other missionaries thought he was odd, because he spent so much time praying. Years later a friend asked John whether he had known that they did not approve of him. John smiled and said, “Oh, yes, I knew it, but they did not understand me, that was all, they never intended to be unkind.” He was not bitter at all.</p> <p>Slowly, God loosened John’s tongue. In the end he could preach in Urdu, Punjabi and English, and crowds listened to him. People who spoke Urdu said he spoke it well, even if he sounded a little like a book!</p> <p>Maybe there is something you find hard. Maybe you are shy, or you find it hard to read, or to hear, or to speak. God made you, and he knows all about it. He can use you just as you are.</p> <p><em>Dear God, thank you that you made me. When I feel shy or slow, help me to remember that you are with me and that you can use me. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Why did the mission leaders scold John?",
+    "answer": "Because he spent so many hours studying the Bible instead of only learning the language. He answered, “First things first.”"
+   },
+   {
+    "question": "What did John say when he knew some missionaries did not approve of him?",
+    "answer": "He smiled and said they did not understand him, and that they never meant to be unkind. He was not bitter."
+   },
+   {
+    "question": "What is something you find hard? How might God help you with it?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God made you, knows what you find hard, and can use you just as you are."
+   }
+  ],
+  "body_text": "“I will be with thy mouth, and teach thee what thou shalt say.” — from Exodus 4 John was not an easy person to get to know. He was shy and quiet. He was also a little deaf, and as the years went by he grew more deaf. When people spoke to him, he often seemed not to hear, or he took a long time to answer. But everyone noticed his eyes. A friend said he had “a wonderful pair of blue eyes” that seemed to look right into your heart. New missionaries were supposed to spend most of their time learning the language. John did study it. But he also spent many hours studying the Bible, and the mission leaders scolded him. John answered, “First things first.” He had come to India to teach the Bible, so he needed to know it well. For a long time people thought John would never speak Urdu or Punjabi very well. His first ten years in India were slow, and not many people came to Jesus. Some of the other missionaries thought he was odd, because he spent so much time praying. Years later a friend asked John whether he had known that they did not approve of him. John smiled and said, “Oh, yes, I knew it, but they did not understand me, that was all, they never intended to be unkind.” He was not bitter at all. Slowly, God loosened John’s tongue. In the end he could preach in Urdu, Punjabi and English, and crowds listened to him. People who spoke Urdu said he spoke it well, even if he sounded a little like a book! Maybe there is something you find hard. Maybe you are shy, or you find it hard to read, or to hear, or to speak. God made you, and he knows all about it. He can use you just as you are. Dear God, thank you that you made me. When I feel shy or slow, help me to remember that you are with me and that you can use me. Amen.",
+  "word_count": 347
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "en"
+  ],
+  "order": 6,
+  "title": "The Man Who Never Sleeps",
+  "body_html": "<blockquote>“In the morning, rising up a great while before day, he went out into a solitary place, and there prayed.” — from Mark 1</blockquote> <p>John’s work was in the villages of the Punjab. He travelled by train, on horseback and in little carts, and his luggage went by ox cart. Many of the people who came to Jesus there were very poor. Other people looked down on them and would not even touch them.</p> <p>But John loved them. He would greet them with a hug, laying his hand first on one shoulder and then on the other. He lived with the Indian preachers he worked with, and ate and slept with them. One man said, “Love won him victories.”</p> <p>One night John had to stay up all night getting a Bible talk ready. The talk went well. But afterwards a thought came to him. He had spent a whole night getting his message ready. Shouldn’t he spend a night getting himself ready too, by praying? So he did. He enjoyed it so much that he did it again the next night, and other people came and joined him.</p> <p>John still prepared his talks carefully. But he often said that getting the messenger ready was just as important as getting the message ready.</p> <p>John rose very early to pray and read his Bible. When he knelt, his Bible lay open in front of him with his hands resting on it. In the night he would light his lamp to read a verse and talk with God. So the people of the Punjab gave him a name: “the man who never sleeps.” It wasn’t really true. He did sleep! But not very much.</p> <p>You need your sleep! But you can begin each day like John, by saying good morning to God and asking him to get you ready for the day.</p> <p><em>Dear God, good morning! Please get me ready for today, and help me to love everyone I meet, just as you love them. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "How did John treat the poor people in the villages?",
+    "answer": "He loved them. He greeted them with a hug, and he lived, ate and slept with the Indian preachers he worked with."
+   },
+   {
+    "question": "Why did the people call John “the man who never sleeps”?",
+    "answer": "Because he spent so much of the night praying and reading his Bible. He did sleep, but not very much."
+   },
+   {
+    "question": "What could you say to God at the start of your day?",
+    "answer": "Any honest answer is good here. The chapter’s point is that, like John, we can begin each day with God and ask him to get us ready."
+   }
+  ],
+  "body_text": "“In the morning, rising up a great while before day, he went out into a solitary place, and there prayed.” — from Mark 1 John’s work was in the villages of the Punjab. He travelled by train, on horseback and in little carts, and his luggage went by ox cart. Many of the people who came to Jesus there were very poor. Other people looked down on them and would not even touch them. But John loved them. He would greet them with a hug, laying his hand first on one shoulder and then on the other. He lived with the Indian preachers he worked with, and ate and slept with them. One man said, “Love won him victories.” One night John had to stay up all night getting a Bible talk ready. The talk went well. But afterwards a thought came to him. He had spent a whole night getting his message ready. Shouldn’t he spend a night getting himself ready too, by praying? So he did. He enjoyed it so much that he did it again the next night, and other people came and joined him. John still prepared his talks carefully. But he often said that getting the messenger ready was just as important as getting the message ready. John rose very early to pray and read his Bible. When he knelt, his Bible lay open in front of him with his hands resting on it. In the night he would light his lamp to read a verse and talk with God. So the people of the Punjab gave him a name: “the man who never sleeps.” It wasn’t really true. He did sleep! But not very much. You need your sleep! But you can begin each day like John, by saying good morning to God and asking him to get you ready for the day. Dear God, good morning! Please get me ready for today, and help me to love everyone I meet, just as you love them. Amen.",
+  "word_count": 333
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "en"
+  ],
+  "order": 7,
+  "title": "“He Has Given Me No Message”",
+  "body_html": "<blockquote>“Not by might, nor by power, but by my spirit, saith the Lord.” — from Zechariah 4</blockquote> <p>In 1904 John and a few friends began to long for God to wake up the churches of the Punjab. They made a promise together. Every day, soon after noon, they would pray for half an hour, and they would keep on praying “till the awakening comes.” They called themselves the Punjab Prayer Union.</p> <p>That same year, Christians began to gather for a big meeting each year at a town called Sialkot. They came to study the Bible, to pray, and to ask God to make them more like Jesus. John went every year.</p> <p>In 1905 nearly three hundred people came, and John was asked to give the morning talks about the Holy Spirit. He asked the pastors a hard question: “Is the Holy Spirit first?” When you preach, he asked, do you put God’s Spirit in front, and keep yourselves behind him?</p> <p>The next morning everyone waited for the next talk. The speaker came in and said quietly, “I thank God, He has given me no message for you to-day.” People were surprised! Then the leader of the meeting stepped aside and said, “The Holy Ghost is leader of this meeting.” The mission’s report does not give the speaker’s name, but John’s friends were sure it was John. He had taught people to put God first, and now he did it himself.</p> <p>What happened next was wonderful. People began to tell God they were sorry for wrong things they had done. Then great joy came, and they sang psalms of praise again and again. A room was set aside for prayer, and after the first day or two it was never empty, day or night.</p> <p>It is good to work hard and get ready. But the most important thing is to let God lead. You can ask him every day, “What do you want me to do?”</p> <p><em>Dear God, please be first in my life. Help me to listen to you and to follow where you lead. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What promise did the Punjab Prayer Union make?",
+    "answer": "To pray for half an hour every day, soon after noon, and to keep on praying until God woke up the churches."
+   },
+   {
+    "question": "What did the speaker say on the second morning at Sialkot in 1905?",
+    "answer": "He said, “I thank God, He has given me no message for you to-day,” and the leader said the Holy Spirit was leader of the meeting."
+   },
+   {
+    "question": "How can you let God be first in your day?",
+    "answer": "Any honest answer is good here. The chapter’s point is that the most important thing is to let God lead, and we can ask him what he wants us to do."
+   }
+  ],
+  "body_text": "“Not by might, nor by power, but by my spirit, saith the Lord.” — from Zechariah 4 In 1904 John and a few friends began to long for God to wake up the churches of the Punjab. They made a promise together. Every day, soon after noon, they would pray for half an hour, and they would keep on praying “till the awakening comes.” They called themselves the Punjab Prayer Union. That same year, Christians began to gather for a big meeting each year at a town called Sialkot. They came to study the Bible, to pray, and to ask God to make them more like Jesus. John went every year. In 1905 nearly three hundred people came, and John was asked to give the morning talks about the Holy Spirit. He asked the pastors a hard question: “Is the Holy Spirit first?” When you preach, he asked, do you put God’s Spirit in front, and keep yourselves behind him? The next morning everyone waited for the next talk. The speaker came in and said quietly, “I thank God, He has given me no message for you to-day.” People were surprised! Then the leader of the meeting stepped aside and said, “The Holy Ghost is leader of this meeting.” The mission’s report does not give the speaker’s name, but John’s friends were sure it was John. He had taught people to put God first, and now he did it himself. What happened next was wonderful. People began to tell God they were sorry for wrong things they had done. Then great joy came, and they sang psalms of praise again and again. A room was set aside for prayer, and after the first day or two it was never empty, day or night. It is good to work hard and get ready. But the most important thing is to let God lead. You can ask him every day, “What do you want me to do?” Dear God, please be first in my life. Help me to listen to you and to follow where you lead. Amen.",
+  "word_count": 346
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "en"
+  ],
+  "order": 8,
+  "title": "The Prayer Room",
+  "body_html": "<blockquote>“Open thy mouth wide, and I will fill it.” — from Psalm 81</blockquote> <p>One day a missionary from Wales named Pengwern Jones came to speak at a meeting in a town called Ludhiana. He had travelled all night on the train. He was tired, and worried about the talk he had to give that afternoon.</p> <p>Over a morning cup of tea, a quiet American said to him, “I want to see you, I shall wait for you at the door.” It was John. At the door he said, “Come with me to the Prayer Room.” They went in at about eight o’clock in the morning, and they prayed until half past three in the afternoon! Mr. Jones forgot that he was tired, and forgot to be worried.</p> <p>Then John walked him to the meeting hall, took his hand and said, “Go in and speak, that is your work. I shall go back to the Prayer Room to pray for you, that is my work.” And God spoke to many people that day.</p> <p>At the Sialkot meetings John loved to lie on his face on the prayer room carpet and pray. Once he prayed the Bible verse at the top of this chapter, saying the word “wide” over and over: “Wide, Lord. Wide.” He was asking God to make his people hope for great things.</p> <p>The prayer room was not a gloomy place. When someone found peace with God, John was sometimes so full of joy that he clapped his hands and even danced, and others joined in, praising God!</p> <p>John often forgot to eat or sleep, and his teenage helper used to cry about it. But once, when the lunch bell rang, a friend heard him whisper, “Father, is it thy will that I go?” Then he said, “Thank you, Father,” and went to lunch with a smile.</p> <p>Some people speak, and some people pray for them. Both are God’s work. When you pray for your teacher, your church or your friends, you are doing God’s work too.</p> <p><em>Dear God, thank you that I can help other people by praying for them. Please bless everyone who teaches me about you. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did John say to Mr. Jones at the door of the meeting hall?",
+    "answer": "“Go in and speak, that is your work. I shall go back to the Prayer Room to pray for you, that is my work.”"
+   },
+   {
+    "question": "What did John sometimes do when someone found peace with God?",
+    "answer": "He was so full of joy that he clapped his hands and even danced, and others joined him in praising God."
+   },
+   {
+    "question": "Who is someone you could pray for this week?",
+    "answer": "Any honest answer is good here. The chapter’s point is that praying for other people is real work for God, and anyone can do it."
+   }
+  ],
+  "body_text": "“Open thy mouth wide, and I will fill it.” — from Psalm 81 One day a missionary from Wales named Pengwern Jones came to speak at a meeting in a town called Ludhiana. He had travelled all night on the train. He was tired, and worried about the talk he had to give that afternoon. Over a morning cup of tea, a quiet American said to him, “I want to see you, I shall wait for you at the door.” It was John. At the door he said, “Come with me to the Prayer Room.” They went in at about eight o’clock in the morning, and they prayed until half past three in the afternoon! Mr. Jones forgot that he was tired, and forgot to be worried. Then John walked him to the meeting hall, took his hand and said, “Go in and speak, that is your work. I shall go back to the Prayer Room to pray for you, that is my work.” And God spoke to many people that day. At the Sialkot meetings John loved to lie on his face on the prayer room carpet and pray. Once he prayed the Bible verse at the top of this chapter, saying the word “wide” over and over: “Wide, Lord. Wide.” He was asking God to make his people hope for great things. The prayer room was not a gloomy place. When someone found peace with God, John was sometimes so full of joy that he clapped his hands and even danced, and others joined in, praising God! John often forgot to eat or sleep, and his teenage helper used to cry about it. But once, when the lunch bell rang, a friend heard him whisper, “Father, is it thy will that I go?” Then he said, “Thank you, Father,” and went to lunch with a smile. Some people speak, and some people pray for them. Both are God’s work. When you pray for your teacher, your church or your friends, you are doing God’s work too. Dear God, thank you that I can help other people by praying for them. Please bless everyone who teaches me about you. Amen.",
+  "word_count": 361
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "en"
+  ],
+  "order": 9,
+  "title": "“What About That One?”",
+  "body_html": "<blockquote>“For the Son of man is come to seek and to save that which was lost.” — from Luke 19</blockquote> <p>In 1908 John felt a deep sadness for the people in the villages who did not know Jesus. His friends heard him praying, “Father, give me these souls or I die!” He asked God for one person every day who would believe in Jesus and be baptized.</p> <p>Some of the big numbers in the old books about John cannot be checked today. But the mission’s records show that hundreds and hundreds of people were baptized in his district in those years. John said it was the work of “us”: himself and his Indian helpers together.</p> <p>One morning John and two Indian preachers prayed, and they felt sure that God would give them ten people that day. They rode in a cart to a faraway village. They sang and preached all day long, but nobody was interested. The preachers grew hungry and thirsty and wanted to go home. John would not leave.</p> <p>At last they stopped at a little house to ask for a drink. The man gave them milk as well as water, and invited them in. He already knew a lot about Jesus! He called his wife and children, and the whole family decided to follow Jesus. John baptized them all. That made nine.</p> <p>By now it was getting dark, and the road home ran along a dangerous river bank. The preachers tried to get John into the cart, but he kept asking, “What about that one?”</p> <p>Then the father came out. “Why, there he is!” he said. His nephew, a boy who lived with the family, had been out playing! The boy clearly believed in Jesus, so he was baptized too. “That is the ten,” said John, and climbed into the cart. They got home safely in the dark.</p> <p>Jesus is like a shepherd who goes looking for one lost sheep. Every single person matters to him. That means you matter to him, too.</p> <p><em>Dear Jesus, thank you that you came looking for me. Please help my friends who don’t know you to come to you too. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "How many people did John and his helpers pray for that day?",
+    "answer": "Ten. By the evening a family of nine had been baptized, and John would not leave until the tenth was found."
+   },
+   {
+    "question": "Who was the tenth person?",
+    "answer": "The father’s nephew, a boy who lived with the family and had been out playing. He believed in Jesus and was baptized too."
+   },
+   {
+    "question": "Why do you think John cared so much about one more person?",
+    "answer": "Any honest answer is good here. The chapter’s point is that every single person matters to Jesus, the Good Shepherd, and that includes you."
+   }
+  ],
+  "body_text": "“For the Son of man is come to seek and to save that which was lost.” — from Luke 19 In 1908 John felt a deep sadness for the people in the villages who did not know Jesus. His friends heard him praying, “Father, give me these souls or I die!” He asked God for one person every day who would believe in Jesus and be baptized. Some of the big numbers in the old books about John cannot be checked today. But the mission’s records show that hundreds and hundreds of people were baptized in his district in those years. John said it was the work of “us”: himself and his Indian helpers together. One morning John and two Indian preachers prayed, and they felt sure that God would give them ten people that day. They rode in a cart to a faraway village. They sang and preached all day long, but nobody was interested. The preachers grew hungry and thirsty and wanted to go home. John would not leave. At last they stopped at a little house to ask for a drink. The man gave them milk as well as water, and invited them in. He already knew a lot about Jesus! He called his wife and children, and the whole family decided to follow Jesus. John baptized them all. That made nine. By now it was getting dark, and the road home ran along a dangerous river bank. The preachers tried to get John into the cart, but he kept asking, “What about that one?” Then the father came out. “Why, there he is!” he said. His nephew, a boy who lived with the family, had been out playing! The boy clearly believed in Jesus, so he was baptized too. “That is the ten,” said John, and climbed into the cart. They got home safely in the dark. Jesus is like a shepherd who goes looking for one lost sheep. Every single person matters to him. That means you matter to him, too. Dear Jesus, thank you that you came looking for me. Please help my friends who don’t know you to come to you too. Amen.",
+  "word_count": 360
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "en"
+  ],
+  "order": 10,
+  "title": "Show Me What Is Lovely",
+  "body_html": "<blockquote>“Whatsoever things are lovely, whatsoever things are of good report, think on these things.” — from Philippians 4</blockquote> <p>One day John was worried about an Indian pastor. The pastor seemed to have grown cold toward God, and his church had grown cold too. So John went into his room to pray for him.</p> <p>He knelt down and began, “O Father, thou knowest how cold —” But he never finished. He felt as if a finger was laid on his lips. And in his heart he heard God say, “He that toucheth him, toucheth the apple of mine eye.” The apple of the eye is the middle of the eye, the part we protect most carefully. God was saying, “This man is very precious to me.”</p> <p>John was shocked. He had come to pray for the pastor, but he had started complaining about him to God instead. He cried out, “Forgive me, Father, in that I have been an accuser of the brethren before thee!”</p> <p>Then he remembered the Bible verse at the top of this chapter, and he prayed a new prayer: “Father, show me what things are lovely and of good report in my brother’s life.”</p> <p>Right away, John began to remember good things. The pastor had given up everything to follow Jesus, and his own family had treated him badly because of it. He had worked hard for years. He had helped people in his church to stop quarrelling. He was a good husband. John spent his whole prayer time thanking God for him.</p> <p>Not long afterwards, John heard that God had greatly blessed the pastor, and that he was preaching again “with fire.” John’s friend believed it happened while John was thanking God for him.</p> <p>When someone annoys us, it is easy to grumble about them, even to God. Next time, try asking God to show you something good about them, and then thank him for it.</p> <p><em>Dear God, help me not to grumble about other people. Show me the good things in them, and help me to thank you for them. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What stopped John in the middle of his prayer?",
+    "answer": "He felt as if a finger was laid on his lips, and he heard God say that the pastor was as precious to him as the apple of his eye."
+   },
+   {
+    "question": "What new prayer did John pray?",
+    "answer": "“Father, show me what things are lovely and of good report in my brother’s life.” Then he spent his prayer time thanking God for the pastor."
+   },
+   {
+    "question": "Can you think of something good about someone who sometimes annoys you?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God loves that person too, and we can thank him for the good he has put in them."
+   }
+  ],
+  "body_text": "“Whatsoever things are lovely, whatsoever things are of good report, think on these things.” — from Philippians 4 One day John was worried about an Indian pastor. The pastor seemed to have grown cold toward God, and his church had grown cold too. So John went into his room to pray for him. He knelt down and began, “O Father, thou knowest how cold —” But he never finished. He felt as if a finger was laid on his lips. And in his heart he heard God say, “He that toucheth him, toucheth the apple of mine eye.” The apple of the eye is the middle of the eye, the part we protect most carefully. God was saying, “This man is very precious to me.” John was shocked. He had come to pray for the pastor, but he had started complaining about him to God instead. He cried out, “Forgive me, Father, in that I have been an accuser of the brethren before thee!” Then he remembered the Bible verse at the top of this chapter, and he prayed a new prayer: “Father, show me what things are lovely and of good report in my brother’s life.” Right away, John began to remember good things. The pastor had given up everything to follow Jesus, and his own family had treated him badly because of it. He had worked hard for years. He had helped people in his church to stop quarrelling. He was a good husband. John spent his whole prayer time thanking God for him. Not long afterwards, John heard that God had greatly blessed the pastor, and that he was preaching again “with fire.” John’s friend believed it happened while John was thanking God for him. When someone annoys us, it is easy to grumble about them, even to God. Next time, try asking God to show you something good about them, and then thank him for it. Dear God, help me not to grumble about other people. Show me the good things in them, and help me to thank you for them. Amen.",
+  "word_count": 346
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "en"
+  ],
+  "order": 11,
+  "title": "Tears at a Train Window",
+  "body_html": "<blockquote>“When he was yet a great way off, his father saw him, and had compassion, and ran, and fell on his neck, and kissed him.” — from Luke 15</blockquote> <p>There was a young man whose friends later called him “J. N.” He came from a high-caste Hindu family, went to a mission school, and believed in Jesus. At first his family were angry. Then they were very kind to him, and he went back home. There he made friends who led him into drinking too much, and he turned away from Jesus.</p> <p>But he was unhappy, so he came to John. John welcomed him like the father in Jesus’ story of the lost son, and J. N. came to live with him. But again and again he went back to drinking. More than once he even stole John’s clothes and sold them! John just smiled, and told a friend he would have to stay in the hot plains that summer, because he had no warm clothes left.</p> <p>One day J. N. sat in a train going to the city of Lahore. He said rudely that he was going back to his old friends. John leaned in at the carriage window, begging him not to go. A lady who worked at the station saw tears running down John’s face. But the young man would not listen, and the train pulled away.</p> <p>The very next day, the lady saw J. N. coming back. He looked pale. “I am going back to him,” he said. “I could not forget his tears.” When he found John, John was praying. John hugged him and said, “I have just been praying that God would send you back to me, and see, He has answered me!”</p> <p>J. N.’s story does not have a neat ending. Years later he was still struggling. But he never forgot how much John had loved him.</p> <p>Jesus keeps on loving people even when they get things wrong again and again. He loves you like that, too. And he can help you to love other people that way.</p> <p><em>Dear Jesus, thank you that you never stop loving me, even when I get things wrong. Help me to love people who are hard to love. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did J. N. do to John’s clothes?",
+    "answer": "More than once he stole them and sold them. John did not get angry; he just smiled and kept loving him."
+   },
+   {
+    "question": "Why did J. N. come back the day after he left on the train?",
+    "answer": "He said, “I could not forget his tears.” He had seen how much John loved him."
+   },
+   {
+    "question": "Is there someone who is hard to love that you could pray for?",
+    "answer": "Any honest answer is good here. The chapter’s point is that Jesus never stops loving us, and he can help us love others the same way."
+   }
+  ],
+  "body_text": "“When he was yet a great way off, his father saw him, and had compassion, and ran, and fell on his neck, and kissed him.” — from Luke 15 There was a young man whose friends later called him “J. N.” He came from a high-caste Hindu family, went to a mission school, and believed in Jesus. At first his family were angry. Then they were very kind to him, and he went back home. There he made friends who led him into drinking too much, and he turned away from Jesus. But he was unhappy, so he came to John. John welcomed him like the father in Jesus’ story of the lost son, and J. N. came to live with him. But again and again he went back to drinking. More than once he even stole John’s clothes and sold them! John just smiled, and told a friend he would have to stay in the hot plains that summer, because he had no warm clothes left. One day J. N. sat in a train going to the city of Lahore. He said rudely that he was going back to his old friends. John leaned in at the carriage window, begging him not to go. A lady who worked at the station saw tears running down John’s face. But the young man would not listen, and the train pulled away. The very next day, the lady saw J. N. coming back. He looked pale. “I am going back to him,” he said. “I could not forget his tears.” When he found John, John was praying. John hugged him and said, “I have just been praying that God would send you back to me, and see, He has answered me!” J. N.’s story does not have a neat ending. Years later he was still struggling. But he never forgot how much John had loved him. Jesus keeps on loving people even when they get things wrong again and again. He loves you like that, too. And he can help you to love other people that way. Dear Jesus, thank you that you never stop loving me, even when I get things wrong. Help me to love people who are hard to love. Amen.",
+  "word_count": 372
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "en"
+  ],
+  "order": 12,
+  "title": "Victory, Victory, Victory",
+  "body_html": "<blockquote>“Thanks be to God, which giveth us the victory through our Lord Jesus Christ.” — from 1 Corinthians 15</blockquote> <p>All those years of hard work and very little sleep had worn John out. In 1910 a doctor in Calcutta told him that his heart was in a very bad way, and that he needed months and months of quiet rest. John just smiled. In March 1911 he left India for the last time, very ill.</p> <p>On the way home he stayed in Wales with his friend Mr. Jones. There he met an old lady who was very deaf. She was sad because she could not hear anything in church. “You ought to praise God for that,” said John! He could hardly hear in church either, he told her. So he looked at the preacher and prayed for him, and then looked at each person and prayed for them, one by one. The old lady laughed and said she would try it. Later she wrote that it had made a wonderful difference to her life.</p> <p>Back in America, the doctors found that John had an illness they could not cure. He went to stay at his sister’s home in Northampton, Massachusetts. He was often in great pain, but he did not complain. After the worst pain he would say, “Praise the Lord.” Shortly before he died, he told his sister, “It’s just victory, victory, victory.”</p> <p>John died on 17 February 1912. He was forty-six years old. His last words were in Punjabi, the language of the villages he loved. His friends remembered them as “Bol, Yisu Masih, ki jai!” That means, “Shout the victory of Jesus Christ!” He was buried in Carthage, beside his father, his mother and his brother Edmund.</p> <p>Today people all over the world remember him as “Praying Hyde.” But John never wanted people to look at him. He wanted them to look at Jesus, and to pray.</p> <p>When you belong to Jesus, even dying is not the end. Jesus has already won the victory, and everyone who trusts him will be with him for ever.</p> <p><em>Dear Jesus, thank you that you have won the victory. Teach me to pray, and help me to trust you all my life. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did John tell the deaf old lady in Wales to do in church?",
+    "answer": "To praise God, and to use the time to pray: first for the preacher, and then for each person she could see."
+   },
+   {
+    "question": "What were John’s last words, and what do they mean?",
+    "answer": "They were in Punjabi: “Bol, Yisu Masih, ki jai!” It means, “Shout the victory of Jesus Christ!”"
+   },
+   {
+    "question": "What would you like to ask God to teach you about prayer?",
+    "answer": "Any honest answer is good here. The chapter’s point is that John wanted people to look at Jesus and pray, and that Jesus has won the victory for everyone who trusts him."
+   }
+  ],
+  "body_text": "“Thanks be to God, which giveth us the victory through our Lord Jesus Christ.” — from 1 Corinthians 15 All those years of hard work and very little sleep had worn John out. In 1910 a doctor in Calcutta told him that his heart was in a very bad way, and that he needed months and months of quiet rest. John just smiled. In March 1911 he left India for the last time, very ill. On the way home he stayed in Wales with his friend Mr. Jones. There he met an old lady who was very deaf. She was sad because she could not hear anything in church. “You ought to praise God for that,” said John! He could hardly hear in church either, he told her. So he looked at the preacher and prayed for him, and then looked at each person and prayed for them, one by one. The old lady laughed and said she would try it. Later she wrote that it had made a wonderful difference to her life. Back in America, the doctors found that John had an illness they could not cure. He went to stay at his sister’s home in Northampton, Massachusetts. He was often in great pain, but he did not complain. After the worst pain he would say, “Praise the Lord.” Shortly before he died, he told his sister, “It’s just victory, victory, victory.” John died on 17 February 1912. He was forty-six years old. His last words were in Punjabi, the language of the villages he loved. His friends remembered them as “Bol, Yisu Masih, ki jai!” That means, “Shout the victory of Jesus Christ!” He was buried in Carthage, beside his father, his mother and his brother Edmund. Today people all over the world remember him as “Praying Hyde.” But John never wanted people to look at him. He wanted them to look at Jesus, and to pray. When you belong to Jesus, even dying is not the end. Jesus has already won the victory, and everyone who trusts him will be with him for ever. Dear Jesus, thank you that you have won the victory. Teach me to pray, and help me to trust you all my life. Amen.",
+  "word_count": 372
+ }
+}
+]
