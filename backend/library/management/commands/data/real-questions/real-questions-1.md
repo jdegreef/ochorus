@@ -1,0 +1,1311 @@
+# Real Questions – Book 1
+
+*Honest answers to the questions teens actually ask*
+
+Scripture quotations are from the Berean Standard Bible (BSB), public domain.
+
+---
+
+## Introduction: Ask Anything
+
+Somebody in your class says it out loud: "Science has disproved all that." Or a video tells you the Bible was rewritten by people in power. Or something happens at home that makes every easy answer you learned as a child sound thin. And a question lodges in your head that won't leave.
+
+Good. This book is for that question.
+
+Some people think Christians aren't supposed to ask hard questions, as if faith means switching your brain off at the church door. The Bible doesn't think so. When the risen Jesus appeared to His disciples, Thomas wasn't there, and when the others told him, he flatly refused to believe them: "Unless I see the nail marks in His hands, and put my finger where the nails have been, and put my hand into His side, I will never believe" (John 20:25). A week later Jesus came back. He didn't scold Thomas. He gave him exactly what he had asked for: "Put your finger here and look at My hands" (John 20:27). And Thomas, the doubter, said the clearest thing anyone says about Jesus in the whole of John's Gospel: "My Lord and my God!" (John 20:28).
+
+Jesus can handle your questions. He would much rather you brought them to Him than buried them.
+
+The Bible actually tells Christians to be ready to answer questions. "Always be prepared to give a defense to everyone who asks you the reason for the hope that is in you." And straight after that comes the way to do it: "But respond with gentleness and respect" (1 Peter 3:15). Christianity has reasons, and you're allowed to test them.
+
+### How each chapter works
+
+Every chapter is one question, sometimes the kind thrown at you as a challenge, sometimes the kind you ask quietly at two in the morning. Each has four parts:
+
+- **The short answer.** Two or three sentences. If you only have a minute, read this.
+- **The longer answer.** A few pages with what the Bible says and real reasons, not slogans.
+- **Think about it.** One question to chew on by yourself, with a friend or in a group.
+- **Go deeper.** A classic from the Ochorus library, with the chapter to start with. Some of the best answers were written long ago by people who wrestled with exactly what you're wrestling with.
+
+### Two kinds of questions
+
+Not every question has the same kind of answer.
+
+Some questions have one clear Christian answer. Did Jesus really rise from the dead? Is the Bible trustworthy? Is God good? Christians across the world and through history have given the same answer, and this book gives it plainly, with the reasons.
+
+Other questions are ones where faithful Christians, people who love Jesus and trust the Bible, have come to different conclusions. How old is the earth? How exactly does God answer prayer, and how often does He still do miracles today? Here the book sets out the main views fairly, shows what they all agree on, and leaves you to think it through with your church and family. It won't pretend a debated question is settled, or a settled one is up for grabs.
+
+Whenever a question is one where Christians differ, the chapter says so plainly. Knowing the difference is half of thinking well about faith.
+
+### Read it your way
+
+You don't have to read this book in order. Start with the question that's bothering you most. If an answer here doesn't convince you, don't pretend it does. Take it to God and to a Christian you trust. An honest "I'm not sure yet" beats a fake "Yes."
+
+Answers matter, but this book isn't really about winning arguments. Thomas didn't end up with a better argument. He ended up face to face with a Person. That's where good questions are meant to lead.
+
+### For parents, teachers and youth leaders
+
+*Real Questions* is written for readers aged 13 to 17 and answers the objections teenagers meet at school, online and in their own heads. It takes a mainstream evangelical view, and where faithful Christians genuinely differ it sets out the main views without taking sides.
+
+Part 3 speaks about sex, sexuality and gender. It holds the historic Christian teaching that God made us male and female and that sex belongs within marriage between a man and a woman, and it speaks with compassion, especially to a reader who may be struggling personally. It never mocks anyone. Wherever a chapter touches on despair, grief or abuse, it points the reader to a parent or trusted adult. You may want to read those chapters first.
+
+The questions also work well for group discussion: read a chapter aloud, then talk through the "Think about it" question together. All Scripture is quoted from the Berean Standard Bible.
+
+---
+
+# Part 1 · God and the Bible
+
+---
+
+## Isn't Believing in God Just Wishful Thinking?
+
+**The short answer:** Wanting something to be true doesn't make it false, any more than wanting it makes it true. The real question is whether there are good reasons to believe, and there are. And the God of the Bible is not the God anyone would invent just to feel better.
+
+The argument goes like this. Life is frightening. People die. The universe is huge and doesn't seem to care. So humans invented a big Father in the sky to make themselves feel safe, the way a small child clings to a teddy bear in the dark. Believing in God, on this view, is just a comfort blanket for people who can't face reality.
+
+It sounds clever. But look at it closely and it has some serious holes.
+
+### Wanting doesn't decide anything
+
+First, the argument proves too much. Yes, some people might believe in God because they want to. But some people might *disbelieve* in God because they want to, because a world without God means nobody to answer to and nobody telling them how to live. If wanting God means God isn't real, then wanting there to be no God would mean there is one. That's obviously silly. Motives don't settle whether something is true. Imagine a man lost in the desert who is desperate for water. His thirst doesn't prove there's no oasis over the next dune. You still have to go and look.
+
+So the honest question isn't "Do people want God?" It's "Is there good evidence that God is real?" And that question has real answers: a universe that had a beginning, laws of nature finely tuned for life, a sense of right and wrong that seems to bind everyone, and, most of all, a man called Jesus who lived in a real place and time and who rose from the dead. Christianity has never asked people to believe in something "done in a corner" (Acts 26:26). Peter put it bluntly: "we did not follow cleverly devised fables" (2 Peter 1:16). He and the other apostles "were eyewitnesses of His majesty."
+
+### Some desires point to something real
+
+Second, think about what our desires usually tell us. We get hungry, and there is such a thing as food. We get thirsty, and there's water. We get lonely, and there are friends. Desires generally fit something real. So what about the deep longing many people feel for something more, something nothing in this world quite satisfies? The Bible says God "has also set eternity in the hearts of men" (Ecclesiastes 3:11). It's at least as likely that this longing is a clue as that it's a trick.
+
+### Not the God you'd invent
+
+Third, and this is the big one, the God of the Bible is not a comfortable invention. If people were making up a God just to feel better, they would make one who approves of everything they already do. That isn't what we find.
+
+The God of the Bible is holy. He tells us we're sinners who need rescuing, which nobody enjoys hearing. Jesus said, "If anyone wants to come after Me, he must deny himself and take up his cross daily and follow Me" (Luke 9:23). That isn't the kind of thing you'd say to win a popularity contest. Christianity teaches that there will be a judgment, that we must forgive people who've hurt us, love our enemies, give away our money and tell the truth when it costs us. Plenty of people have found faith hard, not cosy.
+
+And Christianity stakes everything on something that either happened or didn't. Paul wrote, "if Christ has not been raised, our preaching is worthless, and so is your faith" (1 Corinthians 15:14). A wish-fulfilment religion wouldn't make itself so easy to disprove. Paul was practically inviting people to check.
+
+### What to do with this
+
+None of this means a Christian never believes for bad reasons. Some people do believe just because it's comforting, or because their family does. That's why it's worth asking for yourself whether it's true. But the "wishful thinking" argument doesn't get anyone off the hook. It's a way of explaining away belief without ever looking at the evidence.
+
+Christianity *is* comforting, in the end. But it's comforting the way a rescue is comforting, not the way a daydream is. A daydream makes you feel better and changes nothing. A rescue is good news because it's real.
+
+**Think about it:** Is there anything about Christianity you'd honestly rather *weren't* true? What does that tell you about whether it's just wishful thinking?
+
+**Go deeper:** *The Key Teachings of C. S. Lewis* — Lewis noticed a longing in himself that nothing in the world could satisfy, and argued that, just as hunger points to food, a desire nothing on earth can meet points to something beyond it. Start with chapter 3, "The Longing Called Joy".
+
+---
+
+## Hasn't Science Disproved God?
+
+**The short answer:** No. Science studies how the natural world works, and it's brilliant at that, but whether there is a God behind the world is a different kind of question. Many of the great scientists of history were Christians, and many are today.
+
+You may have heard it put like this: "Once people needed God to explain lightning and disease. Now we have science, and God has nowhere left to hide." Science and faith, on this view, are enemies, and science has won.
+
+It's worth taking that seriously, because science really is amazing. It has cured diseases, put people on the moon and put a computer in your pocket. Christians should love science. But the idea that it has disproved God rests on a misunderstanding of what science is.
+
+### What science can and can't do
+
+Science asks *how* things work. It measures, tests and predicts. Why does water boil at a certain temperature? How do cells divide? How old is that star? Those are great questions, and science answers them well.
+
+But some questions aren't the kind you can put in a test tube. Why is there anything at all, rather than nothing? Why does the universe follow orderly laws in the first place? Is human life valuable? Is cruelty actually wrong? Science can't answer those, not because it's weak, but because they aren't scientific questions. A science that tried to answer them would have stopped being science.
+
+Think of a car. An engineer can explain how the engine works without ever mentioning who designed it. Her explanation is true and complete on its own level. But it doesn't prove there was no designer. "How it works" and "who made it and why" are different questions, and both can have true answers.
+
+### Science grew out of faith
+
+Here's something that surprises many people: modern science was born largely among Christians. Scientists such as Johannes Kepler, Robert Boyle, Isaac Newton, Michael Faraday and James Clerk Maxwell believed in God, and many of them said their faith was a reason to study nature. If the universe was made by a rational God, then it would make sense, and it would be worth investigating. As the Psalm says, "Great are the works of the LORD; they are pondered by all who delight in them" (Psalm 111:2). Or Proverbs: "It is the glory of God to conceal a matter and the glory of kings to search it out" (Proverbs 25:2).
+
+That's still true today. There are Christian physicists, biologists, doctors and astronomers all over the world. If science had disproved God, you'd expect them all to have quit believing. They haven't.
+
+### The "God of the gaps" mistake
+
+There *is* a mistake some Christians have made: using God only to explain what science hasn't explained yet. "We don't understand thunder, so God must do it." Then, when science explains thunder, God seems to shrink. That's sometimes called the "God of the gaps".
+
+But the Bible never puts God only in the gaps. It says God is behind *everything*, the parts we understand as well as the parts we don't. "He is before all things, and in Him all things hold together" (Colossians 1:17). When a scientist explains how rain forms, she isn't pushing God out. She's describing how God waters the earth. Finding out how something works doesn't remove the One who made it work.
+
+### Where the evidence points
+
+In fact, some of the discoveries of modern science fit very naturally with belief in God. The universe appears to have had a beginning. Its basic laws and constants seem balanced on a knife-edge, so that if they were even slightly different there could be no stars, no planets and no life. Many scientists, not all of them religious, have found that striking. It doesn't prove God the way you prove a maths problem, but it's exactly what you might expect if Paul was right that God's "eternal power and divine nature, have been clearly seen, being understood from His workmanship" (Romans 1:20).
+
+So you don't have to choose between your science lessons and your faith. Study hard. Ask questions. Follow the evidence. You'll be thinking God's thoughts after Him.
+
+**Think about it:** Can you think of a question that's really important to you but that science, by itself, couldn't answer?
+
+**Go deeper:** *Orthodoxy* by G. K. Chesterton — Chesterton argues that the regular patterns science describes are a wonder rather than a final explanation, and wonders whether God, like a child who shouts "Do it again", says "Do it again" to the sun every morning. Start with chapter 5, "The Ethics of Elfland".
+
+---
+
+## What About Dinosaurs and the Age of the Earth?
+
+**The short answer:** All Christians agree that God created everything and that the world is His good work. How old the earth is, and how to read the "days" of Genesis 1, is a question on which faithful, Bible-believing Christians genuinely differ. This chapter sets out the main views without picking one.
+
+You've seen the skeletons in museums: huge bones of creatures that no longer walk the earth. Your science textbook probably says dinosaurs lived millions of years ago, long before humans. Then you read Genesis 1, which describes God making the world in six days. Somebody tells you that you have to pick one: the Bible or the dinosaurs.
+
+You don't. But you do need to know that this is a question where Christians disagree, and that's all right.
+
+### Where Christians agree
+
+Before we look at the differences, look at how much is shared. Every view below believes:
+
+- God created everything out of nothing. "In the beginning God created the heavens and the earth" (Genesis 1:1).
+- Creation is not an accident. It's the work of a wise, personal God with a purpose.
+- Creation was good: "God looked upon all that He had made, and indeed, it was very good" (Genesis 1:31).
+- Human beings are made in God's image, are precious and are different from the animals.
+- Sin is real, it has spoiled God's world, and Jesus came to rescue it.
+
+Those are the things Genesis 1 most wants you to know. The disagreements below are about *how* and *when*, not about *who* or *why*.
+
+### Where Christians differ
+
+**Young-earth creation.** Many Christians read the days of Genesis 1 as six ordinary days, and add up the family trees in Genesis to reach an earth that is thousands of years old rather than billions. On this view, dinosaurs were created along with the other land animals, lived at the same time as early humans, and most of their fossils were laid down in the great Flood of Noah's day. Young-earth Christians believe this is the most natural reading of the text, and that scientific dating methods rest on assumptions that may be wrong.
+
+**Old-earth creation.** Other Christians accept the scientific evidence that the universe is around fourteen billion years old and the earth around four and a half billion. They point out that the Hebrew word for "day" can mean a longer period, and that Peter wrote, "With the Lord a day is like a thousand years, and a thousand years are like a day" (2 Peter 3:8). Some think each "day" stands for a long age; others think the days are a framework for describing God's work rather than a timetable. On this view, dinosaurs lived and died out long before humans, but God created different kinds of life directly over that long history, and Adam and Eve were specially created.
+
+**Evolutionary creation.** Still other Christians believe God used the process of evolution over long ages to bring about life, including the bodies of human beings, in the same way He uses the water cycle to bring rain. They see Genesis 1 as true teaching about who made the world and why, written in a form its first readers would understand, rather than a scientific description. They still believe God is the Creator, that humans bear His image and that the Fall was real, though they explain Adam and Eve in different ways.
+
+People have wondered about the days of Genesis for a very long time. Augustine, writing about 1,600 years ago, long before anyone had studied fossils, suggested the days might not be ordinary days at all. Many careful Christians before and since have read them as ordinary days. This isn't a new fight caused by modern science. It's an old question about how to read an ancient text.
+
+### How to hold this question
+
+Some Christians feel very strongly about this, and you'll meet people who think their view is the only faithful one. But people who love Jesus, believe the Bible and take science seriously hold all three. Your salvation doesn't depend on the age of the earth. It depends on Jesus. Paul's words fit here: "Accept him whose faith is weak, without passing judgment on his opinions" (Romans 14:1).
+
+So read Genesis carefully. Learn the science properly. Ask your church what it teaches and why. And whichever view you come to, hold it humbly, and keep the main thing as the main thing: "Before the mountains were born or You brought forth the earth and the world, from everlasting to everlasting You are God" (Psalm 90:2).
+
+**Think about it:** Why do you think God chose to tell us *who* made the world and *why* so clearly, while leaving the *how* and *when* open to debate?
+
+**Go deeper:** *The Key Teachings of Augustine of Hippo* — Augustine takes the first verse of the Bible and asks what God was doing before He made the world; his answer is that time itself is something God created, which is a good reminder to hold our theories about beginnings humbly. Start with chapter 12, "What Then Is Time?".
+
+---
+
+## Isn't the Bible Full of Contradictions?
+
+**The short answer:** The Bible has hard passages and places where accounts differ in detail, and it's honest to admit that. But when you look closely, most supposed contradictions turn out to be different angles on the same events, and none of them touch the heart of the message. Christians believe the Bible is God's trustworthy Word.
+
+Someone shows you a list online: "100 contradictions in the Bible." It looks devastating. How many angels were at Jesus' tomb, one or two? Who was the father of Joseph? What did the sign on the cross actually say? If the Bible can't keep its own story straight, why trust it about anything?
+
+That's a fair question, and it deserves a careful answer rather than a panicked one.
+
+### Differences aren't the same as contradictions
+
+Imagine four friends describing the same football match. One says, "We won 2–1 and Sam scored the winner." Another says, "It was a great game, Jordan's first goal was amazing." A third mentions the rain. They don't contradict each other. They chose different details.
+
+Now take the angels at the tomb. Matthew and Mark mention one angel; Luke and John mention two. A contradiction? Not really. If there were two, there was certainly one. Matthew and Mark simply mention the one who spoke. Differences like this are what you'd expect from honest, independent witnesses. In fact, if all four Gospels matched word for word, people would say the writers had copied each other or got their story straight in advance.
+
+Many items on those online lists work like this. Others come from misreading the text, ignoring which kind of writing it is (poetry, history, proverb, prophecy), forgetting that ancient writers often rounded numbers or arranged events by theme rather than strict time order, or not knowing that a person in the Bible sometimes had two names. Others are simply copying slips in a few manuscripts, like a number written wrongly, and those are well known and noted in Bible footnotes.
+
+### Being honest about the hard ones
+
+That said, there are a few places where it's genuinely hard to see how two passages fit together, and serious Christian scholars have offered different explanations. It's not faithful to pretend those don't exist. Even Peter said about Paul's letters, "Some parts of his letters are hard to understand" (2 Peter 3:16).
+
+But "I can't solve this yet" is different from "this can't be solved." Over the centuries, many alleged errors have been cleared up as archaeologists dug up places and names critics said were made up, and as scholars understood ancient languages and customs better. When you meet a difficulty, the wise thing is neither to panic nor to force an answer, but to be patient. As Proverbs says, "The first to state his case seems right until another comes and cross-examines him" (Proverbs 18:17). Hear the other side before you decide.
+
+### Why Christians trust the Bible
+
+Christians don't trust the Bible because they've personally solved every puzzle in it. They trust it chiefly because of Jesus. Jesus treated the Scriptures as the word of God. He quoted them to resist temptation, built His teaching on them and said, "Heaven and earth will pass away, but My words will never pass away" (Matthew 24:35). If Jesus really rose from the dead, His view of the Bible carries a lot of weight.
+
+And when you step back from the small puzzles and look at the whole, the Bible's unity is astonishing. Around forty writers, over more than a thousand years, in three languages and very different situations, tell one connected story: God creating, humans rebelling, God promising a rescuer, and that rescuer arriving in Jesus. That's not what you'd expect from a random pile of contradictory documents.
+
+So if a list of contradictions shakes you, do what Luke did. He "carefully investigated everything from the beginning" (Luke 1:3). Look the passages up. Read the verses around them. Ask a pastor or youth leader. You'll usually find the "contradiction" is a lot less dramatic than it looked online.
+
+**Think about it:** Why might four slightly different accounts of the same event actually be *more* believable than four identical ones?
+
+**Go deeper:** *The Key Teachings of R. A. Torrey* — Torrey had once been a clever critic of the Bible himself, and he gives wonderfully practical advice for facing its difficulties: honestly, humbly, patiently and prayerfully, and never forcing an answer you don't have. Start with chapter 11, "The Scripture Cannot Be Broken".
+
+---
+
+## Wasn't the Bible Changed Over Time?
+
+**The short answer:** We don't have the original pages the Bible's writers wrote, but we have thousands of very early copies, far more than for any other ancient book, and comparing them lets scholars work out the original wording with great accuracy. The Bible you read today says what was first written.
+
+You've probably played the game where a message is whispered round a circle. By the time it reaches the last person, "Grandma is coming for tea" has become "Grab a bra and come for free." Some people imagine the Bible was like that: copied by hand for centuries, with each copyist changing things, until nobody knows what it originally said. Others say powerful church leaders rewrote it to suit themselves.
+
+It's a reasonable worry. But it doesn't match the evidence.
+
+### Not a whisper game
+
+The whisper game has one person passing a message to one other person, in secret, once. The Bible was nothing like that. Copies were made in many places at once, from Egypt to Rome to Syria, and spread across the ancient world. Nobody controlled them all. If someone in one city changed a verse, the copies in other cities would still say the original, and the change would stick out.
+
+Today scholars have more than five thousand ancient handwritten copies of the New Testament in Greek, plus thousands more in early translations, and the early Christian writers quote it so often that you could rebuild much of it from their quotations alone. Some fragments date from within roughly a century of when the books were written. Compare that with other ancient writers: for many famous Greek and Roman authors, we have only a handful of copies, often made many centuries after they wrote, and nobody doubts we know roughly what they said.
+
+### What about the differences?
+
+It's true that the copies have differences. Scribes were human. They misspelled words, skipped a line, swapped word order. Scholars have counted a very large number of these variations. That sounds alarming until you understand two things.
+
+First, the vast majority are tiny: spelling, word order, small slips that make no difference to the meaning at all. Second, *because* we have so many copies, we can compare them and see where a slip crept in. It's like having a thousand photocopies of a letter where some copies have a smudge in different places. Put them side by side and you can easily read the original.
+
+There are a small number of passages where scholars aren't sure of the original wording. Good Bible translations don't hide these. They put a note at the bottom of the page. And here's the reassuring part: no Christian belief depends on any of them. Everything the church teaches about God, Jesus and salvation is taught clearly in passages whose wording is secure.
+
+### The Old Testament too
+
+For a long time the oldest complete Hebrew copies of the Old Testament came from around a thousand years after Jesus. Then, in 1947, the Dead Sea Scrolls were found in caves near the Dead Sea. They included copies of Old Testament books, among them a complete scroll of Isaiah, roughly a thousand years older than the copies we'd had. When scholars compared them, the text was remarkably close. Over a thousand years of copying, the message had been carefully kept.
+
+### Kept on purpose
+
+Christians see God's hand in this. Isaiah wrote, "The grass withers and the flowers fall, but the word of our God stands forever" (Isaiah 40:8). That doesn't mean no scribe ever made a mistake. It means God has made sure His Word has not been lost. Peter quotes the same promise and applies it to the gospel message itself: "the word of the Lord stands forever" (1 Peter 1:25).
+
+What about the claim that church leaders rewrote the Bible to suit themselves? The copies we have from before Christianity had any political power say the same things as the later ones. And if powerful people had edited the Bible, you'd expect them to remove the embarrassing bits: Peter denying Jesus, the disciples running away, women being the first witnesses of the resurrection when women's testimony was often not trusted, and Jesus crying out on the cross. They're all still there.
+
+So when you open your Bible, you can read it with confidence. It's not a garbled whisper. It's the message as it was given.
+
+**Think about it:** If someone told you the Bible has been changed, what would you want to ask them before you believed it?
+
+**Go deeper:** *The Fundamental Doctrines of the Christian Faith* by R. A. Torrey — Torrey explains why Christians believe the Bible is inspired by God, and admits openly that the manuscripts contain thousands of small variations, showing how comparing them lets us recover the original. Start with chapter 2, "Inspiration, or to What Extent Is the Bible Inspired of God?".
+
+---
+
+## Why Is the Old Testament So Violent?
+
+**The short answer:** It's right to be troubled by the wars in the Old Testament, and you shouldn't pretend otherwise. But these passages describe God's judgment on particular nations for terrible evil, after centuries of patience, at one point in history. They are never a command for anyone to follow today, and they point forward to Jesus, who took judgment on Himself.
+
+Read through Joshua or Judges and you'll hit passages that make you wince. Cities destroyed. Whole peoples driven out. God commanding Israel to go to war. Atheist writers point to these chapters and say, "How can you call that God loving?" And honestly, plenty of Christians have felt the same unease.
+
+This is one of the hardest questions in this book, and you shouldn't expect a neat answer that makes it all feel comfortable. But there's a lot more to the story than the critics usually tell.
+
+### Look at what was going on
+
+The nations in Canaan weren't innocent people minding their own business. Their religion included burning their own children alive as offerings to their gods. God told Israel, "They even burn their sons and daughters in the fire as sacrifices to their gods" (Deuteronomy 12:31). When God judged them, He was judging a culture that had sacrificed children for generations.
+
+And He waited. Hundreds of years earlier, God told Abraham his descendants would not receive the land yet, "for the iniquity of the Amorites is not yet complete" (Genesis 15:16). God gave those nations about four hundred years to turn around. That's not the behaviour of a God who loves violence. It's the behaviour of a patient Judge who finally acts.
+
+### Israel wasn't the hero
+
+This wasn't about Israel being better than everyone else. God told them bluntly: "It is not because of your righteousness or uprightness of heart that you are going in to possess their land, but it is because of their wickedness" (Deuteronomy 9:5). And when Israel later did the same evil things, God judged Israel too, sending them into exile. God wasn't playing favourites. He was judging evil wherever He found it.
+
+### Mercy in the middle of judgment
+
+Even in Jericho, the first city to fall, there's a surprise. Rahab, a Canaanite woman, turned to Israel's God: "the LORD your God is God in the heavens above and on the earth below" (Joshua 2:11). She and her whole family were spared (Joshua 6:25). More than that, she became an ancestor of King David, and of Jesus Himself. Anyone who turned to God could be saved. God says through Ezekiel, "I take no pleasure in the death of the wicked, but rather that the wicked should turn from their ways and live" (Ezekiel 33:11).
+
+### Reading carefully
+
+Two more things help. First, these battles were specific events at one moment in history, tied to God's plan to bring a Saviour through Israel. They are never given as a pattern for anyone today. No Christian has any warrant to use them to justify violence. Jesus' command to His followers is the opposite: "love your enemies and pray for those who persecute you" (Matthew 5:44).
+
+Second, many Bible scholars point out that ancient war reports often used sweeping language, a bit like a football fan saying "We totally destroyed them." Joshua says some peoples were wiped out, yet a few chapters later the same peoples are still living in the land (Joshua 23:13). Christians differ on how much weight to put on this, but it's a reminder to read these accounts as the ancient writing they are.
+
+### The cross changes the picture
+
+Still, the hardest part of the question remains: God does judge. The Bible doesn't hide that. Paul speaks of "the kindness and severity of God" (Romans 11:22). We don't like the idea of judgment, until we see real evil, like children being sacrificed or people being trafficked or bombed, and then we desperately want someone to put things right. A God who never judged evil wouldn't be good.
+
+And here's the heart of it. The whole Bible is heading towards a hill outside Jerusalem where God's judgment on sin fell, not on a guilty nation, but on His own innocent Son. "God proves His love for us in this: While we were still sinners, Christ died for us" (Romans 5:8). The God of the Old Testament and the God of the cross are the same God, holy and merciful at once.
+
+**Think about it:** Why do you think we want God to be loving but also want Him to do something about evil? Can He be both?
+
+**Go deeper:** *He Holds My Tomorrows* by Gareth Evans — Evans tells the story of the fall of Jericho through the eyes of Rahab, and shows how God's mercy reached a Canaanite woman in the middle of judgment and wrote her into the family tree of Jesus. Start with chapter 17, "Rahab".
+
+---
+
+## If God Is Good, Why Did Someone I Love Die?
+
+**The short answer:** There's no answer that makes losing someone stop hurting, and God doesn't ask you to pretend it doesn't. But the Bible shows a God who grieves alongside us, who has defeated death in Jesus and who promises a day when He will wipe away every tear.
+
+This might not be an argument for you. It might be a person. A grandparent. A parent. A friend. A brother or sister. Maybe you prayed for them to get better and they didn't. And now the question isn't something you're debating in class. It's sitting in your chest: *If God is good and He could have stopped this, why didn't He?*
+
+If that's you, please read slowly. This chapter isn't going to try to argue you out of your grief.
+
+### It's all right to ask
+
+The first thing to know is that you're allowed to ask God "Why?" The Bible is full of people who did. Whole Psalms are complaints. Job lost his children and argued with God for chapter after chapter, and at the end God said Job had spoken more rightly than his friends who had neat answers. Jesus Himself, on the cross, cried out, "My God, My God, why have You forsaken Me?" (Matthew 27:46).
+
+You don't have to tidy up your feelings before you bring them to God. Be honest with Him. He can take it.
+
+### Jesus wept
+
+Here's a story worth holding on to. Jesus' friend Lazarus died. When Jesus arrived, Lazarus's sister Mary fell at His feet and said what you might be thinking: if You'd been here, he wouldn't have died. And Jesus, who knew He was about to raise Lazarus from the dead, did something surprising. "Jesus wept" (John 11:35).
+
+He didn't give a lecture. He didn't say, "Cheer up, it's part of the plan." He cried. That tells us something about God. He doesn't watch our pain from far away, unmoved. "The LORD is near to the brokenhearted" (Psalm 34:18). Your grief matters to Him.
+
+### Why does God allow it?
+
+The Bible does give some answers to the big question, though none of them make a death hurt less. Death came into the world because the world went wrong. It's not how God made things to be. The Bible calls death an enemy. God hasn't promised that Christians will escape it in this life. And sometimes He has reasons we simply can't see from where we stand, the way a small child can't understand why a parent lets a doctor give a painful injection.
+
+But honestly, there will be times when you don't know why. The Bible doesn't give a reason for every death. What it gives instead is a Person to trust when you don't know why.
+
+### Death doesn't get the last word
+
+Right before He raised Lazarus, Jesus said, "I am the resurrection and the life. Whoever believes in Me will live, even though he dies" (John 11:25). Then He walked into His own death and came out the other side. Because He did, death is not the end for those who trust Him.
+
+That's why Paul wrote that Christians grieve, but not "like the rest, who are without hope" (1 Thessalonians 4:13). Notice that Paul doesn't say Christians don't grieve. They do. But underneath the grief is hope. If the person you lost trusted Jesus, you will see them again. And the Bible ends with a promise: "'He will wipe away every tear from their eyes,' and there will be no more death or mourning or crying or pain" (Revelation 21:4).
+
+What if you're not sure your loved one trusted Jesus? That's a very hard place to be. You can rest in this: God knew them completely, and He is more just and more merciful than any of us.
+
+### You don't have to carry it alone
+
+Grief has no timetable. It can come back in waves, months or years later, set off by a song or a smell. That's normal. It's not a sign you lack faith. And it isn't your fault.
+
+Talk to someone: a parent, a youth leader, a school counsellor, a friend. If sadness won't lift, or you find you can't eat, sleep or face school, tell a trusted adult, and know that seeing a doctor or counsellor is a good and wise thing to do. **And if you ever think about hurting yourself or not wanting to be alive, tell a parent or trusted adult right away.**
+
+God collects your tears. "Put my tears in Your bottle— are they not in Your book?" (Psalm 56:8). Not one of them is wasted, and not one of them is unseen.
+
+**Think about it:** If you could say one honest sentence to God about a loss in your life, what would it be? Could you say it to Him today?
+
+**Go deeper:** *The Key Teachings of C. S. Lewis* — after his wife died, Lewis wrote down his grief raw and unedited, including his fear that God might not be good, and found his way, slowly, to a peace that didn't explain the pain away but found God on the other side of it. Start with chapter 11, "A Grief Observed".
+
+---
+
+## Is It Wrong to Doubt?
+
+**The short answer:** No. Having questions isn't a sin, and some of the Bible's heroes doubted. What matters is what you do with your doubts: whether you bring them to God and look for answers, or use them as an excuse to walk away.
+
+Some people grow up thinking that a good Christian never has doubts, so the first time a question creeps in, they panic. *If I'm doubting, I must not really believe.* Others treat doubt as the cool, smart position, as if being unsure were more honest than believing anything. Both get doubt wrong.
+
+### Doubt is not the opposite of faith
+
+The opposite of faith isn't doubt. It's unbelief, a settled decision not to trust God. Doubt is more like being caught between two thoughts. You believe, but questions keep tugging at you.
+
+The Bible is full of people like that. Even when the disciples met the risen Jesus, "they worshiped Him, but some doubted" (Matthew 28:17). John the Baptist, who had pointed to Jesus and announced Him to the crowds, later sat in prison and sent friends to ask Jesus, "Are You the One who was to come, or should we look for someone else?" (Matthew 11:3). Jesus didn't reject John. He sent back evidence ("Go back and report to John what you hear and see") and then told the crowd that no one born of women was greater than John (Matthew 11:4, 11).
+
+Jude even tells Christians how to treat people who are struggling: "have mercy on those who doubt" (Jude 1:22). Not "kick them out." Mercy.
+
+### Different kinds of doubt
+
+It helps to know what kind of doubt you're having, because different doubts need different help.
+
+- **Questions of the mind.** "Did Jesus really rise? Can the Bible be trusted?" These need information. Read, ask, investigate. That's what most of this book is for.
+- **Doubts of the heart.** "Does God really love *me*? Why does He feel so far away?" These often come with sadness, stress or loneliness, and the answer isn't usually more arguments. It's remembering what's true when your feelings say otherwise.
+- **Doubts that are really something else.** Sometimes "I'm not sure Christianity is true" actually means "I don't want to stop doing something." Be honest with yourself about that one.
+
+### What to do with your doubts
+
+**Bring them to God.** The psalm-writer talked to his own feelings: "Why are you downcast, O my soul? Why the unease within me? Put your hope in God" (Psalm 42:5). Talk to God about your questions. He already knows them.
+
+**Bring them to someone you trust.** Doubts grow in secret. Say them out loud to a parent, youth leader or older Christian. You'll often find they've had the same question.
+
+**Look for answers.** The Bereans were praised because they "examined the Scriptures every day to see if these teachings were true" (Acts 17:11). Faith isn't afraid of checking.
+
+**Keep going while you wait.** You don't have to settle every question before you can follow Jesus. Keep praying, reading and meeting with other Christians. Many people find their questions get answered along the way rather than all at once.
+
+### What about James?
+
+You might know James 1:6, which says someone who asks God for wisdom "must ask in faith, without doubting, because he who doubts is like a wave of the sea, blown and tossed by the wind." Doesn't that make doubt wrong? Look at the verse just before it: God "gives generously to all without finding fault" (James 1:5). James is warning against being double-minded, trusting God one minute and turning to something else the next. He isn't saying God rejects people with honest questions. The cure for a tossed-about heart is to keep coming back to the God who doesn't find fault with you for asking.
+
+Your doubts don't scare God. Bring them into the light, and let them lead you deeper rather than further away.
+
+**Think about it:** Which kind of doubt do you struggle with most: questions of the mind, doubts of the heart, or the other kind? What's one step you could take with it this week?
+
+**Go deeper:** *The Key Teachings of Martyn Lloyd-Jones* — from Psalm 42, Lloyd-Jones gives one of the most practical pieces of advice you'll ever read: stop just listening to your own gloomy thoughts, and start talking back to yourself with what is true about God. Start with chapter 14, "Talking to Yourself".
+
+---
+
+## Why Doesn't God Answer My Prayers?
+
+**The short answer:** God hears every prayer His children pray, but hearing isn't the same as giving us exactly what we asked for, exactly when we asked. Sometimes His answer is "yes", sometimes "wait", sometimes "no", and sometimes "I have something better." Even Jesus prayed a prayer that wasn't answered the way He asked.
+
+You prayed. Really prayed. For your parents to stop fighting. For your friend to get better. For the exam. For God to just *show up*. And nothing seemed to happen. It's one of the most discouraging things a Christian can feel, and it can make you wonder whether anyone is listening at all.
+
+### God does hear
+
+Start here. The Bible is clear that God hears His children. "If we ask anything according to His will, He hears us" (1 John 5:14). Jesus said, "if you who are evil know how to give good gifts to your children, how much more will your Father in heaven give good things to those who ask Him!" (Matthew 7:11).
+
+Notice the picture. God isn't a vending machine, where you put in a prayer and a result drops out. He's a Father. And a good father doesn't give his children everything they ask for. If a five-year-old asks for a chainsaw, a loving parent says no. If a teenager asks for something today that would be better next year, a wise parent says wait.
+
+### Different answers
+
+**Sometimes the answer is "no."** Paul had what he called a "thorn in the flesh", some painful problem. "Three times I pleaded with the Lord to take it away from me" (2 Corinthians 12:8). God said no. But He didn't stay silent: "My grace is sufficient for you, for My power is perfected in weakness" (2 Corinthians 12:9). God didn't give Paul what he asked for. He gave him Himself.
+
+**Sometimes the answer is "wait."** Jesus told a story about a widow who kept going back to a judge, because He wanted His followers "to pray at all times and not lose heart" (Luke 18:1). Some prayers are answered after weeks or years. Some people have prayed for a family member for decades and seen them come to faith at last.
+
+**Sometimes we ask for the wrong thing.** James says, "when you do ask, you do not receive, because you ask with wrong motives" (James 4:3). That isn't always the reason, so don't assume it is, but it's worth asking yourself honestly what you're really after.
+
+**Sometimes we can't see the whole picture.** God says, "as the heavens are higher than the earth, so My ways are higher than your ways" (Isaiah 55:9). We see one frame of the film. He sees the whole thing.
+
+### Even Jesus
+
+Here's the most remarkable example. The night before He died, Jesus prayed in a garden: "Father, if You are willing, take this cup from Me. Yet not My will, but Yours be done" (Luke 22:42). He was asking not to have to go to the cross. And the Father's answer was no.
+
+Was that because God didn't love Him? No. It was because something far greater was at stake: the rescue of the whole world. The "no" to Jesus that night was a "yes" to you.
+
+So when it seems God hasn't answered, it doesn't mean He doesn't care. It may mean He's doing something you can't see yet.
+
+### What to do when heaven seems silent
+
+Keep praying, even when it feels like talking to the ceiling. Be honest: tell God you're disappointed. When you don't know what to say, the Bible promises that "the Spirit Himself intercedes for us with groans too deep for words" (Romans 8:26). And keep a record. Write down what you pray for. Months later, you may be surprised how many answers you missed.
+
+One last thing. If you're praying about something serious, such as trouble at home, someone hurting you or feeling very low, keep praying, and also tell a trusted adult. Often God's answer comes through people He has put near you.
+
+**Think about it:** Can you think of something you once prayed for that you're now glad God didn't give you?
+
+**Go deeper:** *The Key Teachings of C. S. Lewis* — Lewis was honest about the puzzles of prayer and even admitted one he couldn't solve, but he was sure that prayer isn't magic or a trick to control God: it's one of the real ways God has chosen to work in the world. Start with chapter 12, "Letters on Prayer".
+
+---
+
+## Are Miracles Real?
+
+**The short answer:** Yes. If God made the universe, He can act in it, and the Bible records real miracles done by God, above all the resurrection of Jesus. Christians all agree God can still do miracles today, though they differ on how often and in what ways He does.
+
+"Miracles can't happen. Science has shown that nature follows fixed laws. People in Bible times just didn't know any better." You'll hear that a lot. But it's not as watertight as it sounds.
+
+### People in Bible times knew how the world worked
+
+First, the idea that ancient people would believe anything is a myth. When Joseph found out Mary was pregnant, he didn't think, "Oh well, these things happen." He knew perfectly well how babies are made, which is exactly why he planned to call off the wedding. When the women told the disciples Jesus was alive, "their words seemed like nonsense to them, and they did not believe the women" (Luke 24:11). People in Bible times knew that virgins don't conceive and dead people stay dead. That's precisely why miracles amazed them.
+
+### Can God act in His own world?
+
+Second, the real question isn't scientific. It's this: is there a God? If there's no God, then nature is all there is, and miracles are impossible. But if there is a God who made the universe, then of course He can act in it. A novelist can write a surprise into her own story. A miracle isn't God breaking His laws so much as God, who made the regular patterns of nature, doing something unusual for a special reason.
+
+Science studies what normally happens. It's brilliant at that. But by itself, it can't tell you that something unusual *never* happens. That's a belief people bring to science, not a discovery science has made. G. K. Chesterton pointed out that people who believe in miracles usually do so because of evidence, while people who refuse to believe often do so because of a theory that says they can't happen.
+
+### Evidence, not fairy tales
+
+The Bible doesn't present miracles as vague legends from long ago and far away. Peter, preaching in Jerusalem only weeks after the crucifixion, said Jesus was "certified by God to you by miracles, wonders, and signs, which God did among you through Him, as you yourselves know" (Acts 2:22). He was speaking to people who had been there. If he'd been making it up, they could have shouted him down.
+
+And the greatest miracle of all, the resurrection, was witnessed by many people. Paul says Jesus "appeared to more than five hundred brothers at once, most of whom are still living" (1 Corinthians 15:6). In other words: go and ask them.
+
+### What miracles are for
+
+Miracles in the Bible aren't magic tricks or entertainment. They're signs, pointers to who Jesus is. John wrote about Jesus' miracles, "these are written so that you may believe that Jesus is the Christ, the Son of God, and that by believing you may have life in His name" (John 20:31). When Jesus healed the blind and raised the dead, He was showing what God's kingdom is like: a world where everything broken is put right.
+
+### Miracles today
+
+Do miracles still happen? All Christians agree that God *can* do miracles today and that He answers prayer. Beyond that, faithful Christians differ. Some believe God regularly does dramatic miracles of healing and the like today, just as in the book of Acts. Others believe the most dramatic miracles were mainly given to confirm the message of Jesus and the apostles, and that God now usually works in quieter ways, though He is still free to do anything He chooses. Many Christians sit somewhere in between. This is an area where Christians who love the Bible disagree, so listen carefully to your own church's teaching and test every claim you hear.
+
+One caution: be wary of anyone who uses miracles to get money or attention, or who tells sick people they weren't healed because they lacked faith. That's not how Jesus treated people.
+
+The heart of it is simple. A world with God in it is a world where the resurrection is possible. And if the resurrection happened, everything changes.
+
+**Think about it:** If you were sure there was a God, would miracles still seem impossible to you? Why or why not?
+
+**Go deeper:** *Orthodoxy* by G. K. Chesterton — Chesterton argues that he believes in miracles on the same kind of evidence that convinces him America was discovered, and that it's usually the unbeliever, not the believer, who has decided the question in advance. Start with chapter 10, "Authority and the Adventurer".
+
+
+---
+
+# Part 2 · Jesus and Other Beliefs
+
+---
+
+## Wasn't Jesus Just a Good Teacher?
+
+**The short answer:** Jesus was the greatest teacher who ever lived, but He didn't leave "just a good teacher" open to us. He said things no merely good teacher could say: that He could forgive sins, that He existed before Abraham, that He and the Father are one. If those claims were false, He wasn't a good teacher at all; if they were true, He is far more than one.
+
+A friend at school puts it like this: "I like Jesus. Love your neighbour, help the poor, don't judge people. That's great. But the Son of God stuff? People added that later." It sounds generous. It even sounds respectful. And plenty of people who would never go to church say something similar.
+
+They're right that Jesus was an extraordinary teacher. "In everything, then, do to others as you would have them do to you" (Matthew 7:12). The Sermon on the Mount has shaped laws, movements and whole lives. When He finished it, "the crowds were astonished at His teaching, because He taught as one who had authority, and not as their scribes" (Matthew 7:28–29).
+
+But listen to what else He said, not about how to live, but about who He was.
+
+### What He said about Himself
+
+Some men lowered a paralysed friend through a roof, and Jesus said to him, "Son, your sins are forgiven" (Mark 2:5). The religious teachers in the room were horrified: "He is blaspheming! Who can forgive sins but God alone?" (Mark 2:7). They understood exactly what He meant. You can forgive someone who wrongs *you*. But if a stranger announces that he forgives everyone who wronged you, he is either talking nonsense or he is the one every sin is ultimately against.
+
+In an argument about Abraham, who lived nearly two thousand years earlier, Jesus said, "before Abraham was born, I am!" (John 8:58). "I am" was the name God gave Himself at the burning bush. The crowd picked up stones to kill Him. Elsewhere He said, "I and the Father are one" (John 10:30), and, "Anyone who has seen Me has seen the Father" (John 14:9). At His trial the high priest asked Him directly, "Are You the Christ, the Son of the Blessed One?" Jesus answered, "I am" (Mark 14:61–62). That answer got Him crucified. Nobody is crucified for saying "Be kind to each other."
+
+### Why "just a good teacher" doesn't work
+
+C. S. Lewis put the problem memorably. A man who said these things and was wrong would not be a great moral teacher. Either he would be badly deluded about himself, or he would be deliberately deceiving people about the most important question there is. Neither is what we mean by "good." The only other possibility is that He was telling the truth.
+
+And the rest of His life doesn't look like delusion or deception. Deluded people are rarely wise; His teaching is some of the sanest ever spoken. Deceivers don't usually spend their lives serving the poor and then die for the lie. Jesus was humble, clear-headed, kind and fearless all at once.
+
+### "But maybe He never said those things"
+
+This is the move your friend made: the claims were added later, the way legends grow around heroes. But the claims are not in some late, strange source. They are in all four Gospels, including Mark, which most historians think is the earliest. They're also in Paul's letters, written within about twenty to thirty years of Jesus' death. Legends need generations to grow, and these claims were circulating while eyewitnesses were still alive.
+
+There's another problem. The first followers of Jesus were Jews who said every day, "The LORD our God, the LORD is One" (Deuteronomy 6:4). They were the last people on earth likely to invent a man who was God. Something forced them to believe it.
+
+### So who is He?
+
+Jesus didn't leave the question to experts. He asked His friends, "Who do you say I am?" (Matthew 16:15), and He asks you the same thing. You can call Him deluded. You can call Him a liar. Or you can say, with the doubter Thomas when he finally saw Him risen, "My Lord and my God!" (John 20:28). What you can't honestly do is pat Him on the head and call Him a nice teacher. He never gave us that option.
+
+**Think about it:** If Jesus really is who He said He is, what would change about how you treat Him, beyond admiring Him?
+
+**Go deeper:** *The Key Teachings of C. S. Lewis* — sets out Lewis's famous argument that Jesus' claim to forgive sins leaves no middle ground: He was deluded, a deceiver, or exactly who He said He was. Start with chapter 5, "Who Is This Man?"
+
+---
+
+## Did Jesus Really Rise from the Dead?
+
+**The short answer:** Yes: nearly all historians accept that Jesus died by crucifixion and that His followers sincerely believed they had seen Him alive again. The alternative explanations (that He didn't really die, that the body was stolen, or that the disciples were hallucinating) each break down when you test them against the facts. The explanation that fits everything is the one the witnesses gave.
+
+You may already know the basic case: an early report, an empty tomb, women as the first witnesses, and frightened followers who became fearless. But sceptics have offered other explanations for two thousand years, and it's worth taking them seriously. A belief that can't survive its best objections isn't worth much. So let's test the main ones.
+
+Start with what almost every scholar who studies this period agrees on, believer or not: Jesus died on a Roman cross. His followers soon claimed, at great cost to themselves, that they had seen Him alive. And at least two men who had not followed Him, His brother James and a persecutor named Paul, came to believe the same thing. Any theory has to explain all of that.
+
+### Theory 1: He didn't really die
+
+This is sometimes called the "swoon theory": Jesus only fainted on the cross, revived in the cool tomb and slipped out. But Roman soldiers were professional executioners. John records that when they reached Jesus they "saw that He was already dead, they did not break His legs. Instead, one of the soldiers pierced His side with a spear, and immediately blood and water flowed out" (John 19:33–34). Pilate even checked with the officer in charge before he released the body (Mark 15:44).
+
+And suppose, against all that, He had survived. A man who had been flogged, nailed up and speared, then left without care for a day and a half, would have staggered out needing a doctor. He would have looked like a survivor, not like someone who had beaten death. Nobody worships a half-dead man as the Lord of life.
+
+### Theory 2: Someone stole the body
+
+Who would have done it? Not the authorities. They wanted the movement dead, and producing the body would have ended it in a morning. In fact they had asked for the tomb to be guarded precisely because they feared "His disciples may come and steal Him away" (Matthew 27:64). When the tomb was found empty, they paid the guards to say, "His disciples came by night and stole Him away while we were asleep" (Matthew 28:13). Notice that the story admits the tomb was empty.
+
+So was it the disciples? Then they spent the rest of their lives preaching something they knew they had made up, and many were imprisoned or killed for it, without one of them ever cracking. People die for things they believe. They don't die for things they invented. Grave robbers don't leave the grave cloths neatly behind either, yet John noticed that the cloth "around Jesus' head was rolled up, lying separate from the linen cloths" (John 20:7).
+
+### Theory 3: They were hallucinating
+
+Grief can produce vivid experiences, but hallucinations happen inside one person's mind. They aren't shared. The risen Jesus appeared to individuals and to groups, indoors and outdoors, over weeks, and once to "more than five hundred brothers at once" (1 Corinthians 15:6). He invited them to touch Him: "Look at My hands and My feet. It is I Myself. Touch Me and see—for a spirit does not have flesh and bones, as you see I have" (Luke 24:39). Then He ate "a piece of broiled fish" in front of them (Luke 24:42–43). And a hallucination, however vivid, leaves the body in the tomb. Somebody would have pointed that out.
+
+The hallucination theory also can't explain James and Paul. They weren't grieving followers longing to see Jesus again. One was a doubtful brother and the other an enemy. Both changed their whole lives.
+
+### What it means
+
+Each theory explains one fact and breaks on the others. The resurrection explains them all. That's not proof the way a maths problem has proof, but it is the kind of evidence we trust every day in history and in court.
+
+And it matters more than any other fact in history. "if Christ has not been raised, your faith is futile; you are still in your sins" (1 Corinthians 15:17). But Paul goes on: "Christ has indeed been raised from the dead" (1 Corinthians 15:20). If that is true, Jesus is not a memory to study. He is alive, and He can be known. Evidence can lead you to the door. Trusting Him is walking through it.
+
+**Think about it:** Which explanation of the empty tomb have you heard most often, and how well does it fit *all* the facts?
+
+**Go deeper:** *Hurlbut's Life of Christ for Young and Old* by Jesse Lyman Hurlbut — retells Easter morning straight from the Gospels and pauses on a detail that convinced John: grave cloths lying in an orderly pile and a folded face cloth, signs that the body had not been snatched away in a hurry. Start with chapter 99, "The Risen Christ and the Empty Tomb".
+
+---
+
+## What About People Who Never Hear About Jesus?
+
+**The short answer:** The Bible doesn't answer every detail of this question, but it tells us what we most need to know. God is perfectly fair, everyone has some light from Him, and Jesus is the only Saviour there is. That's why Christians have always gone to the ends of the earth to make sure people hear.
+
+It's one of the first objections people raise, and it usually comes from a good place. "What about a girl born in a remote village five hundred years ago? She never had a Bible or met a Christian. Is it fair for God to judge her?" If you've asked that, you're asking because you care about justice. So does God.
+
+### What the Bible makes clear
+
+**God is completely just.** When Abraham pleaded for the city of Sodom, he asked God, "Will not the Judge of all the earth do what is right?" (Genesis 18:25). The answer the whole Bible gives is yes. "God does not show favoritism" (Romans 2:11). Nobody will be treated unfairly by God, ever. Jesus even taught that people will be judged by what they knew: the one who "unknowingly does things worthy of punishment will be beaten with few blows" (Luke 12:48).
+
+**Nobody is in complete darkness.** Every human being can see creation. "since the creation of the world God's invisible qualities, His eternal power and divine nature, have been clearly seen, being understood from His workmanship, so that men are without excuse" (Romans 1:20). Every human being has a conscience, too. Paul says that even people without the Bible show "that the work of the law is written on their hearts" (Romans 2:15). God placed people where they are so that "they would seek Him and perhaps reach out for Him and find Him, though He is not far from each one of us" (Acts 17:27).
+
+**But nobody has lived up to the light they have.** This is the hard part. The problem isn't only that some people lack information. It's that all of us, with whatever light we've had, have turned away from what we knew was right. "all have sinned and fall short of the glory of God" (Romans 3:23). Nobody will stand before God and be judged for not knowing what they never heard. They'll be judged for what they did with what they knew.
+
+**Jesus is the only Saviour.** "Salvation exists in no one else, for there is no other name under heaven given to men by which we must be saved" (Acts 4:12). Anyone who is saved, in any age, is saved because of what Jesus did on the cross. Abraham trusted God's promise centuries before Jesus was born, and he was saved through the Saviour he never saw by name.
+
+### What we aren't told
+
+Christians have thought hard about what this means for people who never hear. Most evangelical churches have taught that people need to hear the gospel and believe it to be saved, and that conviction sent missionaries across oceans: "how can they believe in the One of whom they have not heard? And how can they hear without someone to preach?" (Romans 10:14). Some Christians have hoped that God may, through Christ, save some who sought Him with the little light they had. Scripture doesn't spell out the details, so it's wise not to claim more than it says. "The secret things belong to the LORD our God, but the things revealed belong to us" (Deuteronomy 29:29). What is revealed is enough: God is fair, Christ alone saves, and the gospel must be told.
+
+### The question turns around
+
+Here's something worth noticing. The person asking this question has heard about Jesus. You don't have to wonder what God will do with you, because you know what He has offered you. The most important response to "What about people who never hear?" is to make sure you have trusted Christ yourself.
+
+The second is to care about the people who still haven't heard. Millions of people today have never met a Christian who could explain the gospel to them. God's plan is not to leave them out. The Bible's final picture is of "a multitude too large to count, from every nation and tribe and people and tongue, standing before the throne and before the Lamb" (Revelation 7:9). He plans to fill that crowd through people like you, who pray, give, and one day perhaps go.
+
+**Think about it:** If God has given you the chance to hear about Jesus, what is He asking you to do with it, both for yourself and for others?
+
+**Go deeper:** *The Evangelization of the World in This Generation* by John R. Mott — a student leader's urgent case that, because all people everywhere need Christ and God has chosen to make Him known through human messengers, Christians must not let a generation pass without hearing. Start with chapter 2, "The Obligation to Evangelize the World".
+
+---
+
+## Aren't All Religions Basically the Same?
+
+**The short answer:** Many religions share good moral teaching, but on the biggest questions (who God is, what's wrong with us, what happens when we die, and who Jesus is) they give answers that can't all be true. Saying they're all the same can sound kind, but it actually ignores what each one teaches. Christianity's real difference is grace: God coming to rescue people who couldn't reach Him.
+
+You've probably heard the story of the blind men and the elephant. One touches the trunk and says, "It's a snake." Another feels a leg and says, "It's a tree." A third feels the side and says, "It's a wall." Each one has part of the truth, and none has the whole. "Religions are like that," people say. "They're all touching the same God."
+
+It's a lovely story. But notice who is telling it: someone who can see the whole elephant. The person who says "all religions only see part of the truth" is claiming to see the whole truth himself, which is exactly what he says nobody can do.
+
+### Where religions agree
+
+It's true that many religions overlap. Most teach that honesty, generosity and kindness are good, and that cruelty is evil. Versions of the Golden Rule appear in many traditions. Christians aren't surprised by that. The Bible says God wrote His moral law on every human conscience. Your Muslim, Hindu, Sikh or Jewish friends may be more honest, more generous or more disciplined in prayer than some Christians, and it's right to admire that.
+
+### Where they don't
+
+But on the deepest questions, religions say different things. They don't just use different words for the same idea.
+
+- **Who is God?** Christians, Jews and Muslims believe in one personal God who created everything. Many Hindus believe in many gods, or in one ultimate reality behind everything. Traditional Buddhism doesn't teach a creator God at all.
+- **What happens when we die?** Many Hindus and Buddhists believe in rebirth into another life. Christians believe we live once, and that God will raise the dead.
+- **Who is Jesus?** Judaism teaches that He was not the Messiah. Islam honours Him as a great prophet born of a virgin, but teaches that He was not the Son of God and, as most Muslims believe, was not crucified. Christianity says He is God the Son, who died on a cross and rose again.
+
+These answers can't all be true at once. Jesus either died on a cross or He didn't. We either live once or many times. Taking religions seriously means admitting that they disagree. It's actually more respectful to say "I think you're mistaken" than to say "you all really believe the same thing," which usually means you haven't listened to anyone carefully.
+
+### The biggest difference
+
+There's one difference that runs deeper than all the others. Most religious paths, at heart, ask what we must do to reach God, or enlightenment, or paradise: rules to keep, practices to master, merit to build up. The gospel says that's the very thing we can't manage. "it is by grace you have been saved through faith, and this not from yourselves; it is the gift of God, not by works, so that no one can boast" (Ephesians 2:8–9).
+
+Paul saw what was at stake. "if righteousness comes through the law, Christ died for nothing" (Galatians 2:21). If any good, sincere path would do, the cross was the most pointless event in history. If Jesus' death was necessary, then something is different about Him. He is not one more teacher pointing the way. He said, "I am the way and the truth and the life. No one comes to the Father except through Me" (John 14:6).
+
+### How to talk about it
+
+None of this gives Christians permission to be arrogant. We didn't earn grace. That's the whole point. Be the kind of friend who asks people of other faiths what they really believe and listens to the answer. Then be ready, when they ask, to explain what you believe, "with gentleness and respect" (1 Peter 3:15). Disagreeing kindly is a better way to love someone than pretending you agree.
+
+**Think about it:** Do you know what your friends of other faiths actually believe about God and about Jesus? What would it look like to ask them, and really listen?
+
+**Go deeper:** *The Key Teachings of G. K. Chesterton* — on Chesterton's picture of Bethlehem as the place where the world's myths, which dreamed of a god coming near, and its philosophers, who reasoned towards a God of truth, found what they were looking for in the same child. Start with chapter 14, "The God in the Cave".
+
+---
+
+## Is Hell Real, and Is It Fair?
+
+**The short answer:** Yes, hell is real. Jesus spoke about it more than anyone else in the Bible, and He spoke as someone who wanted no one to go there. It is fair because God is perfectly just, and it is not the last word about God, because He went to the cross so that no one has to go.
+
+It's the doctrine most people would like to quietly delete. Even many Christians would rather not think about it. If you find it disturbing, that's not a sign of weak faith. It *should* disturb us. But it isn't something the church made up to frighten people. It comes from Jesus Himself.
+
+### What Jesus said
+
+"Do not be afraid of those who kill the body but cannot kill the soul. Instead, fear the One who can destroy both soul and body in hell" (Matthew 10:28). Speaking of the final judgement, He said that some "will go away into eternal punishment, but the righteous into eternal life" (Matthew 25:46). The same Jesus who welcomed children and ate with outcasts gave the most serious warnings in the Bible. He warned people because He loved them.
+
+### What hell is
+
+Forget the cartoons with horns and pitchforks. The Bible uses pictures such as fire, darkness and an outer place, and the pictures point to something real and terrible. At its heart, hell is being "separated from the presence of the Lord and the glory of His might" (2 Thessalonians 1:9). Every good thing, whether love, light, beauty, friendship or joy, comes from God. Hell is what is left when all of that is gone.
+
+### Is it fair?
+
+**Justice matters.** Think of the worst things you've seen in the news: genocide, abuse, people who destroyed others and never faced consequences. We don't want a God who shrugs at that. A judge who let every crime go wouldn't be kind. He would be corrupt. God's judgement is part of His goodness.
+
+**God is exact.** Hell isn't one-size-fits-all. "God 'will repay each one according to his deeds'" (Romans 2:6). Nobody will receive a gram more than is just.
+
+**People are not dragged there against their will.** C. S. Lewis said the doors of hell are locked from the inside. To the very end, God offers Himself, and those who finally refuse Him receive what they chose: life without Him. Jesus wept over a city that rejected Him: "how often I have longed to gather your children together, as a hen gathers her chicks under her wings, but you were unwilling!" (Matthew 23:37).
+
+**God doesn't want it.** "I take no pleasure in the death of the wicked, but rather that the wicked should turn from their ways and live" (Ezekiel 33:11). The Bible says that God "did not send His Son into the world to condemn the world, but to save the world through Him" (John 3:17).
+
+That last point is the heart of it. On the cross, Jesus took the judgement that our sin deserved. That's why the Bible can say, "there is now no condemnation for those who are in Christ Jesus" (Romans 8:1). The God who warns about hell is the same God who went through darkness Himself to rescue us from it.
+
+### A difference among Christians
+
+The view held by most of the church through history, and by most evangelical churches today, is that hell is conscious and never ends. Some evangelicals believe instead that the lost will finally be destroyed and cease to exist, and they point to phrases like "eternal destruction" (2 Thessalonians 1:9). Both views take hell seriously as real, final and terrible, and both say the only rescue is Christ. The traditional view is the one this book holds, as the church's long-standing teaching.
+
+### Two cautions
+
+Hell isn't something to threaten people with or to joke about, and it isn't for us to decide who is going there. That belongs to God. If you're worried about someone you love who has died, remember that God knew them completely, and He is more just and more merciful than any of us.
+
+And if fear of hell keeps you awake at night, talk to a Christian adult you trust. Jesus didn't speak about hell to make His people anxious. He spoke so that we would run to Him, and He promises that "the one who comes to Me I will never drive away" (John 6:37).
+
+**Think about it:** Why do you think the most loving person who ever lived spoke so seriously about hell?
+
+**Go deeper:** *The Key Teachings of C. S. Lewis* — explains Lewis's conviction, from *The Great Divorce*, that hell is real, terrible and permanent, and is the final state of those who refuse God to the end, while heaven is not thinner than this world but more real. Start with chapter 17, "Heaven, Hell and the Great Choice".
+
+---
+
+## Why Do Christians Disagree So Much?
+
+**The short answer:** Because the Bible is clear on the central things and less clear on some others, because Christians come from different histories and cultures, and sometimes simply because of pride. Faithful Christians agree on the essentials of the faith and differ on secondary questions. Learning to tell the two apart, and to love each other across the difference, is part of following Jesus.
+
+Your friend goes to a Pentecostal church with loud music and hands in the air. Your cousin is Anglican, with robes and written prayers. Your neighbours are Baptist, or Presbyterian, or Catholic, or Orthodox. Online, Christians seem to spend half their time arguing with each other. It's fair to ask: if they all follow the same Jesus and read the same Bible, why can't they agree?
+
+### Why it happens
+
+**We see dimly.** "Now we see but a dim reflection as in a mirror; then we shall see face to face" (1 Corinthians 13:12). The Bible is clear about the gospel, but it doesn't settle every question we'd like it to. Where it says less, sincere people read it differently.
+
+**History and culture.** Many church traditions grew up in particular places and times, and some divisions began over real arguments centuries ago. People usually belong to the church their family belonged to.
+
+**Pride.** Some division is plain sin. The church in Corinth split into fan clubs: "'I follow Paul,' 'I follow Apollos,' 'I follow Cephas,' or 'I follow Christ.'" Paul's reply was sharp: "Is Christ divided?" (1 Corinthians 1:12–13). Being right can matter more to us than being loving.
+
+### Essentials and secondary matters
+
+Not every disagreement is the same size. Paul speaks of what is "of first importance: that Christ died for our sins according to the Scriptures" (1 Corinthians 15:3), was buried and rose again. An old saying, repeated by Christians since the 1600s, puts the principle well: *in essentials, unity; in non-essentials, liberty; in all things, love.*
+
+The **essentials** are the things the gospel itself depends on. There is one God, Father, Son and Holy Spirit. Jesus is fully God and fully man. He died for our sins and rose bodily from the dead. He will come again. The Bible is God's Word. These are confessed by churches all over the world, and they are worth standing firm on.
+
+Some differences sit close to the centre. The Reformation, for instance, was a serious argument about how a person is made right with God, and evangelical churches hold firmly that it is by grace, through faith in Christ alone. Not every difference is small.
+
+But many disagreements are **secondary**. Faithful, Bible-loving Christians differ on them:
+
+- whether to baptise babies or only believers
+- styles of worship and music
+- how churches should be led and organised
+- some questions about spiritual gifts
+- the order of events when Jesus returns
+
+These questions are worth thinking about, and every church has to decide how to practise them. But they are not reasons to doubt that someone is a fellow Christian.
+
+### How to disagree like a Christian
+
+Jesus prayed for His followers "that all of them may be one," and He gave the reason: "so that the world may believe that You sent Me" (John 17:21). Our unity is part of our witness. Paul says to work "with diligence to preserve the unity of the Spirit through the bond of peace" (Ephesians 4:3), because there is "one Lord, one faith, one baptism" (Ephesians 4:5).
+
+In practice:
+
+- **Before you criticise another church, understand it.** Describe what they believe the way *they* would describe it.
+- **Hold your opinions humbly.** You're probably wrong about something; you just don't know what.
+- **Don't fight online for sport.** "Accept him whose faith is weak, without passing judgment on his opinions" (Romans 14:1).
+- **Love first.** "By this everyone will know that you are My disciples, if you love one another" (John 13:35).
+
+The fact that Christians disagree doesn't mean Christianity is false. It means its followers are human. What's remarkable is how much Christians across every century and continent hold in common.
+
+**Think about it:** Is there a Christian from a different church whose faith you could learn from, rather than argue with?
+
+**Go deeper:** *The Key Teachings of John Wesley* — on Wesley's sermon "Catholic Spirit," in which a man with strong convictions asks Christians who cannot all think alike, "may we not love alike?" and sets out what really matters: a heart right with God. Start with chapter 19, "The Catholic Spirit".
+
+---
+
+## Do I Have to Go to Church?
+
+**The short answer:** Going to church doesn't save you; only Jesus does. But Christianity was never meant to be lived alone: God saves people into a family, and the Bible tells believers not to give up meeting together. Church is less a building you visit than a people you belong to.
+
+It's Sunday morning. Your bed is warm, the week was exhausting, and the service feels long, the music isn't your style, and you could just watch a sermon online later. Besides, you can pray anywhere. Does God really care whether you're sitting in a building?
+
+Let's be clear about one thing first. Church attendance doesn't earn God's love. Nobody gets into heaven by collecting Sundays. But that's not really the question. The question is whether you can follow Jesus the way He intends while staying away from His people.
+
+### What the church is
+
+The word "church" in the New Testament never means a building. It means people: those Jesus has called together. "you are the body of Christ, and each of you is a member of it" (1 Corinthians 12:27). A body part on its own isn't free. It's lost. "The eye cannot say to the hand, 'I do not need you'" (1 Corinthians 12:21).
+
+From the very beginning, the first Christians "devoted themselves to the apostles' teaching and to the fellowship, to the breaking of bread and to prayer" (Acts 2:42). And the Bible gives a direct instruction: "Let us not neglect meeting together, as some have made a habit, but let us encourage one another" (Hebrews 10:25). Notice the reason. It's not "go so God will tick a box." It's that you need encouragement, and other people need yours. The verse before says, "let us consider how to spur one another on to love and good deeds" (Hebrews 10:24).
+
+Jesus Himself "loved the church and gave Himself up for her" (Ephesians 5:25). It's hard to love Jesus while avoiding what He loves.
+
+### Honest objections
+
+**"I can worship God on my own."** You can, and you should, every day. But some of what Jesus asks can't be done alone: loving one another, forgiving one another, carrying each other's burdens. You can't practise patience with people you never see.
+
+**"It's boring."** Sometimes it will be. But church isn't a show and you aren't the audience. Find a way to take part. Help with the children, run the sound desk, welcome newcomers, serve coffee. Belonging changes when you contribute.
+
+**"It's full of hypocrites."** Every church is full of people who don't live up to what they believe, including the one in your mirror. A church isn't a museum for good people. It's more like a hospital, and everyone there is being treated.
+
+**"I'll watch online."** Online services are a real gift when you're ill or travelling. But a screen can't shake your hand, notice when you're missing or sit with you when you're sad. Bodies matter.
+
+### If it's complicated
+
+Your situation may not be simple. Maybe your family doesn't go, or goes to a church you find hard, or has rules about where you can go. Honour your parents, and talk with them respectfully about what you'd like. A youth group, a Christian friend's family or a Bible study at school can be a real part of the church too.
+
+And one important thing: a church is never a place where you have to put up with being hurt. **If anyone at church hurts you, pressures you sexually or makes you feel unsafe, it is not your fault. Tell a trusted adult right away.**
+
+### Finding your place
+
+You don't have to love everything about your church to belong to it. Sit near some older Christians and learn their names. Ask a youth leader how you can help. Pray for the people around you. Most people who love their church didn't find a perfect one. They decided to love the imperfect one God gave them.
+
+**Think about it:** Is there one person at church who might need *your* encouragement this week?
+
+**Go deeper:** *The Key Teachings of Dietrich Bonhoeffer* — on Bonhoeffer's conviction that the person who follows Jesus is never left alone but received into a visible people who worship, share life and make room for one another across every line the world draws. Start with chapter 8, "The Visible Church".
+
+---
+
+## What Happens When We Die?
+
+**The short answer:** Everyone will die and face God. For those who trust Jesus, death is not the end but a doorway: the moment we die, we go to be with the Lord, and one day Jesus will raise our bodies to live forever in a renewed creation. Because He rose, death doesn't get the last word.
+
+Most of us try not to think about it. Then someone dies, a grandparent, a classmate, a celebrity we grew up watching, and suddenly the question is unavoidable. Where are they now? What will happen to me?
+
+People have many ideas: that we become ghosts, or angels, or stars; that we're reborn as someone else; or that we simply stop, like a screen going black. The Bible gives a different answer, and it's both more serious and more hopeful than any of them.
+
+### Everyone faces God
+
+"man is appointed to die once, and after that to face judgment" (Hebrews 9:27). We get one life, not a series of attempts. Death isn't the end of us. Every person will stand before God. That's why what we do with Jesus in this life matters so much.
+
+### For Christians: with the Lord
+
+For those who belong to Jesus, death means going to be with Him straight away. To the criminal dying next to Him who asked to be remembered, Jesus said, "today you will be with Me in Paradise" (Luke 23:43). Paul wrote that he "would prefer to be away from the body and at home with the Lord" (2 Corinthians 5:8). He even called it "far better" (Philippians 1:23).
+
+The Bible sometimes calls the death of believers "sleep" (1 Thessalonians 4:13). That's a gentle picture, not a description of being unconscious. You go to sleep expecting to wake up.
+
+### Then: resurrection
+
+Being with the Lord is wonderful, but it isn't the final chapter. The Christian hope is not that we float forever as spirits on clouds. It's that Jesus will come back and raise our bodies, the way His own body was raised. "What is sown is perishable; it is raised imperishable. It is sown in dishonor; it is raised in glory. It is sown in weakness; it is raised in power" (1 Corinthians 15:42–43). He "will transform our lowly bodies to be like His glorious body" (Philippians 3:21).
+
+And we won't live somewhere vague. God promises "a new heaven and a new earth" (Revelation 21:1), a real world, made new, where "the dwelling place of God is with man" (Revelation 21:3). He "will wipe away every tear from their eyes," and "there will be no more death or mourning or crying or pain" (Revelation 21:4).
+
+### What this means for you now
+
+**You can grieve with hope.** Christians still cry at funerals. Jesus wept at His friend's grave. Paul doesn't say "don't grieve." He says don't "grieve like the rest, who are without hope" (1 Thessalonians 4:13). If you're grieving now, there's no timetable. Talk to people who love you. If someone you love died and you're not sure what they believed, remember that God knew them completely, and He is more just and more merciful than any of us.
+
+**You don't have to be terrified.** It's normal to feel afraid of dying. Even strong Christians have. But Jesus said, "I am the resurrection and the life. Whoever believes in Me will live, even though he dies" (John 11:25). The one who walks with you through life will walk with you through death.
+
+**This life matters.** Heaven being "far better" is never a reason to want to leave early. Paul longed to be with Christ, but he chose to stay because "it is more necessary for you that I remain in the body" (Philippians 1:24). Your life here has purpose, and the people around you need you. **If you ever think about hurting yourself or not wanting to be alive, tell a parent or trusted adult right away.**
+
+**Think about it:** If you knew for certain that death isn't the end, how would it change the way you live today?
+
+**Go deeper:** *The Key Teachings of John Bunyan* — on the river at the end of *The Pilgrim's Progress*, where Christian, the hero, crosses death in fear and darkness while his friend Hopeful holds him up, telling him that such troubles are no sign that God has forsaken him. Start with chapter 18, "The River and the Celestial City".
+
+---
+
+## Can I Lose My Salvation?
+
+**The short answer:** Faithful Christians answer this differently. Some believe a true believer can never be lost; others believe a person can, by persistent unbelief, turn away from Christ. But all agree on this: you are saved by grace, not by being good enough, and if you are trusting Jesus, you are safe in His hands and can know you have eternal life.
+
+You did something you're ashamed of. Or you went through months where you barely prayed. Or doubts hit hard. And now a frightening thought: *What if I've lost it? What if I'm out?*
+
+This is one of the questions on which Christians who love the Bible genuinely disagree, so this chapter won't pick a side. But before the differences, look at how much they share.
+
+### Where Christians agree
+
+- **Salvation is a gift, not a wage.** You didn't earn it by being good, so you don't keep it by being perfect.
+- **One sin doesn't throw you out.** "If we confess our sins, He is faithful and just to forgive us our sins and to cleanse us from all unrighteousness" (1 John 1:9). That promise was written to Christians.
+- **God keeps His people.** Jesus said of His sheep, "I give them eternal life, and they will never perish. No one can snatch them out of My hand" (John 10:28).
+- **You can be sure.** "I have written these things to you who believe in the name of the Son of God, so that you may know that you have eternal life" (1 John 5:13).
+- **Real faith keeps going.** Neither side says it doesn't matter how you live, and both take the Bible's warnings seriously.
+
+### Where Christians differ
+
+**One view: those God saves, He keeps forever.** Reformed Christians, many Baptists and others hold that a true believer will never finally be lost, sometimes called "the perseverance of the saints." They point to promises like "He who began a good work in you will carry it on to completion" (Philippians 1:6), and that nothing "will be able to separate us from the love of God that is in Christ Jesus our Lord" (Romans 8:39). When someone who seemed to be a Christian walks away for good, they say, it shows their faith was never real: "They went out from us, but they did not belong to us" (1 John 2:19). The Bible's warnings are among the ways God keeps His people going.
+
+**Another view: a believer can turn away.** Wesleyan, Methodist and many Pentecostal and Arminian Christians hold that no one can snatch you from Christ's hand, but that a believer can, by persistent, deliberate unbelief, walk away from Him. They point to warnings like "We have come to share in Christ if we hold firmly to the end the assurance we had at first" (Hebrews 3:14), and "if indeed you continue in your faith, established and firm" (Colossians 1:23). They don't mean you lose salvation by a bad day, a single sin or a season of doubt. They mean a settled turning away from Christ. And most who hold this view also teach that someone who has drifted can come back.
+
+Notice that both views say Christians should keep trusting and obeying, and both say a struggling believer should run to God, not away. Paul holds both sides together: "continue to work out your salvation with fear and trembling. For it is God who works in you" (Philippians 2:12–13).
+
+### If you're worried right now
+
+Here's something both sides would tell you. If you are worried about whether you've lost your salvation, that worry is itself a sign of life. People who have truly turned their backs on God don't usually lie awake grieving about it.
+
+Don't try to settle the question by examining your feelings. Look at Jesus. He promised, "the one who comes to Me I will never drive away" (John 6:37). So come. Confess what needs confessing. Trust Him again today. Talk to a Christian adult you trust about what's weighing on you.
+
+And rest in this: your hope isn't how tightly you can hold on to God. It's how tightly He holds on to you. He is "able to keep you from stumbling and to present you unblemished in His glorious presence, with great joy" (Jude 1:24).
+
+**Think about it:** Is your confidence before God resting on how well you're doing, or on what Jesus has done?
+
+**Go deeper:** *The Way to God* by Dwight L. Moody — Moody insists that while not every Christian has assurance, it is the privilege of every child of God to know beyond doubt that they are saved, building his case on 1 John 5:13. Start with chapter 7, "Assurance of Salvation".
+
+---
+
+## When Will Jesus Come Back?
+
+**The short answer:** Nobody knows the date, and Jesus said so Himself. Christians disagree about the order of events at the end of history, but they all agree on the main thing: Jesus will return in person, visibly and gloriously, to raise the dead, judge the world and make all things new. The right response isn't to calculate the date but to be ready.
+
+Maybe you've seen the videos: a war, an earthquake or a strange sign in the sky, with a voice explaining that it all fits a prophecy and the end is just weeks away. Maybe they scared you. Maybe they made you roll your eyes. Over the centuries, many people have announced the date of Jesus' return. Every one of them has been wrong.
+
+### What Jesus said
+
+He was strikingly clear: "No one knows about that day or hour, not even the angels in heaven, nor the Son, but only the Father" (Matthew 24:36). When His disciples pressed Him, He said, "It is not for you to know times or seasons that the Father has fixed by His own authority" (Acts 1:7). Anyone who claims to know the date is claiming to know more than Jesus said He knew while on earth.
+
+### Where Christians agree
+
+The fact of His return is not in question. When Jesus ascended, angels told His watching friends, "This same Jesus, who has been taken from you into heaven, will come back in the same way you have seen Him go into heaven" (Acts 1:11). It won't be secret or symbolic: "every eye will see Him" (Revelation 1:7). "the Lord Himself will descend from heaven with a loud command, with the voice of an archangel, and with the trumpet of God, and the dead in Christ will be the first to rise" (1 Thessalonians 4:16). Every major Christian tradition confesses this in its creeds: He will come again to judge the living and the dead.
+
+### Where Christians differ
+
+Much of the debate centres on Revelation 20, which speaks of believers who "reigned with Christ for a thousand years" (Revelation 20:4). Faithful, Bible-believing Christians read it in different ways:
+
+- **Premillennial.** Jesus will return *before* a literal thousand-year reign on earth. Many who hold this view also believe in a "rapture," when believers are "caught up together with them in the clouds to meet the Lord in the air" (1 Thessalonians 4:17) before a time of great trouble. Others in this view think the church will go through that time.
+- **Amillennial.** The "thousand years" is a picture of the present age, in which Christ already reigns from heaven. One day He will return once, the dead will be raised and the final judgement will take place.
+- **Postmillennial.** The gospel will spread so widely that the world will see a long age of flourishing, and *after* that Christ will return.
+
+Each view has thoughtful defenders who love Jesus and take the Bible seriously. You can hold your view with conviction and still have warm fellowship with Christians who hold another. This is one of those secondary questions.
+
+### Why the delay?
+
+People sometimes mock: "He said He'd come soon, and it's been two thousand years." Peter answered that long ago: "With the Lord a day is like a thousand years, and a thousand years are like a day" (2 Peter 3:8). And then: "The Lord is not slow in keeping His promise as some understand slowness, but is patient with you, not wanting anyone to perish but everyone to come to repentance" (2 Peter 3:9). The waiting is mercy. Every day He hasn't returned is another day for someone to come home.
+
+### How to live while you wait
+
+Jesus never told His followers to work out the timetable. He told them to be ready: "you also must be ready, because the Son of Man will come at an hour you do not expect" (Matthew 24:44). Being ready doesn't mean nervously watching the news. It means living today as someone who belongs to Him: trusting Him, obeying Him, loving people and telling them about Him.
+
+The return of Jesus isn't meant to frighten His people. Paul calls it "the blessed hope" (Titus 2:13). John says, "when Christ appears, we will be like Him, for we will see Him as He is" (1 John 3:2). If end-times videos make you anxious, switch them off and talk to a Christian adult you trust. Then make the Bible's last prayer your own: "Come, Lord Jesus!" (Revelation 22:20).
+
+**Think about it:** If you knew Jesus would come back tomorrow, what's one thing you would want to put right today?
+
+**Go deeper:** *The Key Teachings of Charles H. Spurgeon* — shows how Spurgeon, a man in constant pain, looked forward to Christ's personal return and the resurrection of the body, and notes that he refused to set dates: the fact of the return mattered more to him than the timetable. Start with chapter 23, "For Ever with the Lord".
+
+
+---
+
+# Part 3 · Life, Sex and Me
+
+---
+
+## What Does the Bible Actually Say About Sex?
+
+**The short answer:** The Bible says sex is a good gift from God, not something dirty or embarrassing. It also says that gift belongs within marriage between a man and a woman, where two people have promised their whole lives to each other. And no one ever has the right to pressure you into anything.
+
+A lot of teenagers think the Bible's message about sex can be summed up in one word: *don't*. Some grew up in churches where nobody mentioned it at all, so the silence felt like shame. Others hear the world's message, that sex is just a normal part of growing up and anyone who waits is strange. Both of those miss what the Bible actually says.
+
+### It starts with "very good"
+
+The Bible's first word on sex isn't a warning. It's a celebration. God made human beings male and female, and when He looked at everything He had made, "it was very good" (Genesis 1:31). Then comes the first marriage: "For this reason a man will leave his father and mother and be united to his wife, and they will become one flesh. And the man and his wife were both naked, and they were not ashamed" (Genesis 2:24–25).
+
+Not ashamed. That's God's design. Sex was His idea, and He isn't embarrassed by it. There's a whole book of the Bible, the Song of Songs, full of love poetry. Your body, your growing feelings and your attraction to other people aren't signs that something is wrong with you. They're part of being human.
+
+### Why marriage?
+
+So why does the Bible keep sex inside marriage? Because of what sex *is*. "One flesh" means more than bodies. It's a joining of two whole lives, and God meant it to happen inside the safest place there is: a lifelong promise. When Jesus was asked about marriage, He went straight back to Genesis: "from the beginning the Creator 'made them male and female,' and said, 'For this reason a man will leave his father and mother and be united to his wife, and the two will become one flesh'" (Matthew 19:4–5). That's the pattern: one man and one woman, a public promise, for life.
+
+That's why the New Testament says, "Marriage should be honored by all and the marriage bed kept undefiled" (Hebrews 13:4), and why Paul is so direct: "Flee from sexual immorality" (1 Corinthians 6:18). He doesn't say "debate it" or "see how close you can get." He says *run*, the way Joseph ran from Potiphar's wife. Paul gives the reason too: "You are not your own; you were bought at a price. Therefore glorify God with your body" (1 Corinthians 6:19–20).
+
+The rule isn't there because sex is small. It's there because sex is powerful. Fire in a fireplace warms the whole house. Fire on the carpet burns it down.
+
+The Song of Songs repeats one line three times: "Do not arouse or awaken love until the time is right" (Song of Solomon 2:7). Waiting isn't a punishment. It's protecting something precious until it can be given safely.
+
+### Consent, pressure and safety
+
+God's design means sex is always a gift freely given, never something taken. That's why the Bible's way and pressure can't go together. "If you loved me, you would" is never love talking. Love "is not self-seeking" (1 Corinthians 13:5). You never owe anyone anything with your body: not a boyfriend or girlfriend, not someone older, not someone who has been kind to you.
+
+And hear this clearly: **if anyone pressures you, sends you things you don't want, asks you for pictures, or touches you in a way that's wrong, it is not your fault.** Tell a parent or trusted adult right away, even if you've been told to keep it secret. Something done *to* you is never your sin.
+
+### If you've already crossed a line
+
+Maybe you're reading this with a knot in your stomach because you've already gone further than you know you should, in real life or on a screen. Listen: shame is not God's voice. "Therefore, there is now no condemnation for those who are in Christ Jesus" (Romans 8:1). Bring it into the light: "If we confess our sins, He is faithful and just to forgive us our sins and to cleanse us from all unrighteousness" (1 John 1:9). Then talk to an older Christian you trust. You aren't "damaged goods." Nobody is beyond Jesus' cleaning.
+
+God's plan for sex isn't a cage. It's a promise that the best version of this gift is worth waiting for.
+
+**Think about it:** Where have you picked up most of what you believe about sex: friends, the internet, church, home? How does it compare with what God says?
+
+**Go deeper:** *The Key Teachings of Elisabeth Elliot* — this chapter tells the story behind her book *Passion and Purity*, of her long and uncertain courtship with Jim Elliot, and her conviction that romantic love is God's gift to be placed under Christ's lordship, with sex kept for marriage because God's design is good, not out of fear. Start with chapter 9, "Passion and Purity".
+
+---
+
+## What If I'm Attracted to People of the Same Sex?
+
+**The short answer:** Being attracted to people of the same sex is not itself a sin, and it doesn't make you less loved by God or less welcome in His church. Like most evangelical churches, this book believes God's design for sex is the marriage of a man and a woman, a calling that asks something hard of every Christian, not just you. Many faithful Christians live with these feelings, and you don't have to carry them alone.
+
+If you picked this chapter because it's about *you*, maybe you've never told anyone. Maybe you've prayed for the feelings to go away and they haven't. Maybe you've heard Christians say cruel things and wondered whether God feels the same way about you. So let's start with what matters most.
+
+### God has not turned away from you
+
+Jesus said, "Come to Me, all you who are weary and burdened, and I will give you rest... for I am gentle and humble in heart" (Matthew 11:28–29). He didn't add "except you." You are made in God's image, known completely and loved completely. Nothing about your feelings changes that.
+
+And feelings aren't the same as sin. Every one of us is drawn towards things that aren't God's best, and the Bible doesn't treat being tempted as guilt. Jesus Himself "was tempted in every way that we are, yet was without sin" (Hebrews 4:15). What we choose to do, and what we feed in our minds, is where right and wrong come in. Attraction you didn't ask for is not something to confess as though you'd done wrong.
+
+### What the Bible asks
+
+Here's the honest part. Throughout its history, the church has read the Bible as teaching that sex belongs only within marriage between a man and a woman (Matthew 19:4–6). That rules out a lot: sex before marriage, affairs, pornography, and same-sex sexual relationships. It's the same standard for everyone. A Christian who is attracted to the opposite sex and isn't married is called to the same faithfulness as you are.
+
+You'll meet people, including some Christians, who read these passages differently, and you deserve to know that rather than be surprised by it. This book holds the view most churches around the world hold. But nobody should ever use it as a weapon against you.
+
+That calling can feel heavy, and it's fine to say so. Some Christians who experience same-sex attraction marry someone of the opposite sex. Many stay single, and the Bible treats singleness as a real gift and a full life, not second best. Paul was single and wished others could be too: "each man has his own gift from God; one has this gift, another has that" (1 Corinthians 7:7). Jesus was single, and no one has lived a fuller life. What every single person needs is deep friendship and a church that acts like family. That's part of the church's job, not an optional extra.
+
+You may also notice Christians use different words for this. You don't have to settle on a label today. What matters most is that you belong to Jesus.
+
+### What nobody should do to you
+
+Nobody, inside or outside church, has the right to bully you, mock you, shame you or pressure you. And no one should push you into any kind of "therapy" or program that promises to change your attractions by force, fear or pressure. That is not what following Jesus looks like, and if it happens, tell a trusted adult.
+
+The church is called to "Accept one another, then, just as Christ accepted you" (Romans 15:7). If you hear jokes or cruelty about gay people, even from Christians, that's wrong, and you're allowed to say so.
+
+### Don't carry it alone
+
+Secrets get heavier the longer you carry them. Find a Christian adult you trust, such as a parent, a youth leader or a pastor, and tell them. "Carry one another's burdens, and in this way you will fulfill the law of Christ" (Galatians 6:2). A good one will listen before they speak.
+
+And if the weight ever gets so heavy that you think about hurting yourself or not wanting to be alive, **tell a parent or trusted adult right away.** You matter far too much to carry that alone.
+
+**Think about it:** If a friend told you they were attracted to people of the same sex, what would you want your first words to them to be?
+
+**Go deeper:** *The Key Teachings of Dietrich Bonhoeffer* — this chapter, drawn from his book *Life Together*, explains that Christians belong to one another not because we're alike or chose each other, but because Christ has made us His own, and that every believer needs other Christians to speak God's word to them. Start with chapter 9, "A Gift, Not an Ideal".
+
+---
+
+## What Does the Bible Say About Gender?
+
+**The short answer:** The Bible teaches that God made humanity male and female, both equally in His image, and that our bodies are a good part of who we are. Some people feel deep distress about their gender, and that distress is real suffering, never something to mock. If that's you, you're not a freak or a failure, and you shouldn't face it alone.
+
+This is one of the most talked-about subjects in many schools right now, and it can feel like a minefield. Some people say your gender is whatever you feel inside. Others make jokes that are cruel. You may have a classmate who has come out as trans. Or you may be quietly wondering about yourself. Let's go slowly.
+
+### What God made
+
+The Bible's first chapter says: "So God created man in His own image; in the image of God He created him; male and female He created them" (Genesis 1:27). Notice two things. First, male and female *together* show what God is like; neither is better than the other. Second, our bodies are not just containers. God made them, called them good, and Jesus Himself took a human body and rose in it. The Christian hope isn't escaping our bodies but having them made new.
+
+So the Christian view is that being male or female is a gift given with your body, not something we decide. That doesn't mean we all have to fit narrow stereotypes. A boy who loves art and hates football is not less of a boy. A girl who's loud, strong and good at maths is not less of a girl. Many "rules" about gender are culture, not Scripture.
+
+### When it hurts
+
+But some people feel a deep, painful mismatch between their body and their sense of who they are. Doctors call it gender dysphoria. It isn't something people choose for attention, and it can be agonising. The Bible is honest that everything in this world, our bodies and minds included, has been affected by the fall. Paul says "the whole creation has been groaning," and that we "groan inwardly as we wait eagerly for our adoption as sons, the redemption of our bodies" (Romans 8:22–23). All of us live with some kind of brokenness we didn't choose. Struggling with your gender is not a sin, and it doesn't put you beyond God's love.
+
+If this is you, here's what you need to hear. You were knit together on purpose: "You knit me together in my mother's womb. I praise You, for I am fearfully and wonderfully made" (Psalm 139:13–14). Jesus is gentle with people who are hurting: "A bruised reed He will not break, and a smoldering wick He will not extinguish" (Matthew 12:20). Please talk to a trusted Christian adult, and ask to see a doctor or counsellor who can help you with the distress. Feelings like these can change over time, and big decisions are best made slowly, with people who love you.
+
+If the distress ever turns into thoughts of hurting yourself or not wanting to be alive, **tell a parent or trusted adult right away.** That's the bravest and most important thing you can do.
+
+### How to treat trans classmates
+
+Whatever you believe, the call to love is not up for debate. "In everything, then, do to others as you would have them do to you" (Matthew 7:12). That means no jokes, no mockery, no joining in when others pile on, and no treating someone as a "debate topic" instead of a person. Someone who identifies as trans is someone made in God's image, and often someone who has already been hurt a lot.
+
+There are practical questions, about names, pronouns, sports or school policies, where thoughtful Christians land in different places. Talk those through with your parents or a trusted adult rather than with a comment section. But you can always sit with someone at lunch, stand up for them when they're bullied, and be a friend. Kindness doesn't mean pretending you agree about everything. It means treating every person as someone Jesus loves.
+
+**Think about it:** Is there someone at your school who gets mocked or left out? What's one way you could treat them as Jesus would?
+
+**Go deeper:** *The Key Teachings of C. S. Lewis* — Lewis's famous sermon "The Weight of Glory" ends by saying that no human being is unimportant, because every person we meet will exist forever, and that we must treat one another with a respect and love that recognises what they are and may become. Start with chapter 16, "The Weight of Glory".
+
+---
+
+## Can Women Be Pastors?
+
+**The short answer:** This is a question faithful, Bible-believing Christians genuinely disagree about. Some believe the role of pastor or elder is for men; others believe it's open to both women and men. All of them agree that women are equal to men in worth and that God gives women gifts to serve His church.
+
+This is one of those questions where you'll find godly, Bible-loving Christians on both sides, and churches you respect may answer it differently. So this chapter won't pick a side. It will show you what each side sees in Scripture, and what they all agree on, so you can understand your own church and respect others.
+
+### Where Christians agree
+
+Start with the common ground, because it's bigger than the disagreement.
+
+- **Equal worth.** "God created man in His own image... male and female He created them" (Genesis 1:27). Women and men are equally made in God's image, and equally saved by grace: "There is neither Jew nor Greek, slave nor free, male nor female, for you are all one in Christ Jesus" (Galatians 3:28).
+- **Real gifts.** When the Holy Spirit came at Pentecost, Peter quoted the prophet Joel: "Your sons and daughters will prophesy" (Acts 2:17). The Spirit gives gifts to women as well as men.
+- **Real ministry.** Women supported Jesus' ministry out of their own means (Luke 8:3). Women were the first witnesses of the resurrection: "Mary Magdalene went and announced to the disciples, 'I have seen the Lord!'" (John 20:18). Paul greets women who worked hard for the gospel.
+
+No Christian view says women matter less, or that their gifts don't count.
+
+### Where Christians differ
+
+**The complementarian view.** Many Christians believe God made men and women equal but with some different roles, and that the role of pastor or elder (the leaders who teach and oversee a church) is given to qualified men. They point to passages like "I do not permit a woman to teach or to exercise authority over a man" (1 Timothy 2:12), and note that Paul bases his reasoning on creation, not just local custom. They also point to the qualifications for elders, which describe men. Most churches holding this view gladly have women teaching, leading ministries, serving as missionaries and much more. The difference is mainly about the office of pastor or elder.
+
+**The egalitarian view.** Other Christians believe all roles in the church, including pastor, are open to women and men alike, depending on gifting and calling. They point to Deborah, "a prophetess... judging Israel" (Judges 4:4); to Priscilla, who with her husband "explained to him the way of God more accurately" to the preacher Apollos (Acts 18:26); to "our sister Phoebe, a servant of the church" (Romans 16:1); and to Junia, whom Paul calls "outstanding among the apostles" (Romans 16:7). They read 1 Timothy 2 as addressing a particular problem in the church at Ephesus rather than a rule for every church.
+
+Both sides wrestle with the hard verses, and both have to explain passages that seem to point the other way. Some Christians land in between, too. These are serious Christians reading the same Bible carefully and reaching different conclusions.
+
+### What does that mean for you?
+
+First, don't let this become a reason to look down on any church or Christian. Neither view denies the gospel.
+
+Second, respect the leaders of your own church, and if you have questions, ask them. A good pastor will be glad to show you why your church holds its view.
+
+Third, if you're a girl and you love God's Word, love people and want to serve, God has work for you, whichever view your church holds. The history of the church is full of women who prayed, taught, wrote and carried the gospel to places no one else would go.
+
+**Think about it:** What does your church believe about this, and do you know why? Who could you ask?
+
+**Go deeper:** *Women Who Moved Heaven* — Lottie Moon, a brilliant young woman from a wealthy Virginia family, spent forty years in China teaching and evangelising, gave away her own food in a famine, and kept asking the churches at home, above all, to pray. Start with chapter 8, "Lottie Moon — The Woman Who Gave Everything to China".
+
+---
+
+## Is It Wrong to Drink, Smoke or Vape?
+
+**The short answer:** The Bible never mentions vaping or cigarettes, but it gives clear principles: obey the law, look after the body God gave you, and don't let anything master you. On alcohol, Christians differ: some drink moderately as adults, others choose not to drink at all. All agree that drunkenness is wrong.
+
+Maybe vapes get passed around at break time. Maybe there's alcohol at parties and you're wondering what the big deal is. Maybe adults in your family drink, smoke or vape. The Bible doesn't have a verse that says "Thou shalt not vape," but that doesn't mean it has nothing to say.
+
+### Start with the law
+
+For most teenagers, the first answer is simple. In most countries, buying or using alcohol, cigarettes or vapes is illegal at your age. The Bible says, "Everyone must submit himself to the governing authorities" (Romans 13:1). Christians are to obey the law unless it commands us to sin, and age limits on drinking or smoking don't. And if your parents say no, that settles it too: "Children, obey your parents in the Lord, for this is right" (Ephesians 6:1).
+
+### Your body matters
+
+Paul wrote, "Do you not know that your body is a temple of the Holy Spirit who is in you, whom you have received from God?" (1 Corinthians 6:19). In context he's talking about sex, but the principle reaches further. Your body isn't something to trash. It's on loan from God, and He lives in it.
+
+We know smoking damages lungs and hearts. Nicotine, whether from a cigarette or a sweet-smelling vape, is highly addictive, and young brains get hooked faster than older ones. Alcohol affects a developing brain, impairs judgement and is involved in a lot of the worst things that happen at parties.
+
+### Who's in charge?
+
+Here's a verse many people miss: "'Everything is permissible for me,' but not everything is beneficial. 'Everything is permissible for me,' but I will not be mastered by anything" (1 Corinthians 6:12). Paul's question isn't only "Is this allowed?" but "Will this end up controlling me?"
+
+That's exactly how addiction works. Nobody plans to need a vape every hour. It starts as "just trying it." Christian freedom is real, but "do not use your freedom as an opportunity for the flesh" (Galatians 5:13). Freedom that ends in slavery isn't freedom. The same goes for drugs, which are both illegal and dangerous.
+
+### Where Christians differ: alcohol
+
+When it comes to adults and alcohol, faithful Christians hold two main views.
+
+**Moderation.** Many Christians believe adults may drink alcohol in moderation. They point out that Jesus turned water into wine at a wedding, that wine was part of the Last Supper, and that the Psalms thank God for "wine that gladdens the heart of man" (Psalm 104:15).
+
+**Abstinence.** Many other Christians choose not to drink at all. Some do it because they've seen the damage alcohol does to families. Some do it for the sake of others: "It is better not to eat meat or drink wine or to do anything to cause your brother to stumble" (Romans 14:21). Whole movements of Christians have chosen this path.
+
+Both views agree on what matters most: "Do not get drunk on wine, which leads to reckless indiscretion. Instead, be filled with the Spirit" (Ephesians 5:18). Drunkenness is wrong, and Christians shouldn't look down on each other over this choice.
+
+### If you're already hooked
+
+If you're vaping or smoking and finding it hard to stop, you're not a bad Christian. You're someone who needs help, and that's fine. Tell a parent or trusted adult, and see a doctor, who can help you quit. And if you're ever pressured to drink or use something, you can always say no, leave, or call someone to collect you.
+
+**Think about it:** Is there anything in your life, good or bad, that's starting to feel as if it's in charge of you instead of the other way round?
+
+**Go deeper:** *Holy in Christ* by Andrew Murray — in this chapter Murray takes Paul's words that the body is the temple of the Holy Spirit and shows that holiness reaches the body too, urging readers to hand their bodies, with all their needs and appetites, into Christ's keeping. Start with chapter 24, "Holiness and the Body".
+
+---
+
+## Is It Wrong to Be Rich?
+
+**The short answer:** No. The Bible never says having money is a sin, and some of God's faithful people were wealthy. But it warns about money more often than almost anything else, because it so easily takes God's place in our hearts. The question isn't how much you have, but who's in charge of it.
+
+Some teenagers grow up with plenty; others go to bed hungry. Wherever you are, you've probably noticed that money shapes a lot of life. Some people say Christians should be poor. Others say that if you have enough faith, God will make you rich. The Bible says neither.
+
+### Money isn't the problem
+
+People often misquote the Bible as saying "money is the root of all evil." It actually says, "For the love of money is the root of all kinds of evil. By craving it, some have wandered away from the faith and pierced themselves with many sorrows" (1 Timothy 6:10). Money itself is a tool. Abraham, Job, Joseph of Arimathea and Lydia were all wealthy and all served God. Rich women funded Jesus' own ministry.
+
+And the Bible doesn't treat poverty as a sign of holiness, or wealth as proof of God's favour. Some of the most faithful Christians who have ever lived were very poor. God doesn't promise riches to anyone who prays the right way.
+
+### But it's dangerous
+
+Jesus spoke about money a lot, and He was blunt. "Watch out! Guard yourselves against every form of greed, for one's life does not consist in the abundance of his possessions" (Luke 12:15). "No one can serve two masters... You cannot serve both God and money" (Matthew 6:24).
+
+When a rich young man asked how to have eternal life, Jesus "looked at him, loved him," and told him to sell everything, give to the poor and follow Him. The man "went away in sorrow, because he had great wealth" (Mark 10:21–22). His money had become his god, and he couldn't let it go. Then Jesus said, "It is easier for a camel to pass through the eye of a needle than for a rich man to enter the kingdom of God." The disciples were stunned. Jesus answered: "With man this is impossible, but not with God" (Mark 10:25, 27).
+
+Money is dangerous because it promises things only God can give: security, significance, freedom from worry. "For where your treasure is, there your heart will be also" (Matthew 6:21).
+
+### Rich by whose standard?
+
+Here's an uncomfortable thought. If you have a phone, regular meals and a place in school, you may be richer than a large part of the world, even if you feel ordinary where you live. Paul's instructions to "those who are rich" might be talking to more of us than we'd like.
+
+Here they are: "Instruct those who are rich in the present age not to be conceited and not to put their hope in the uncertainty of wealth, but in God, who richly provides all things for us to enjoy. Instruct them to do good, to be rich in good works, and to be generous and ready to share" (1 Timothy 6:17–18).
+
+Notice what's there. God "richly provides all things for us to enjoy," so enjoying good things isn't wrong. But don't be proud, don't trust money, and be generous.
+
+### The secret of being free
+
+The best prayer about money in the Bible might be this one: "Give me neither poverty nor riches; feed me with the bread that is my portion. Otherwise, I may have too much and deny You... Or I may become poor and steal" (Proverbs 30:8–9).
+
+And the motive for generosity is the gospel itself: "though He was rich, yet for your sakes He became poor, so that you through His poverty might become rich" (2 Corinthians 8:9). Jesus gave up everything for us. People who know that can hold money loosely.
+
+You can start now, whatever you have. Give some of your pocket money or earnings away. Notice when you want something just because others have it. Practise gratitude. Habits you form at fifteen tend to last.
+
+**Think about it:** If someone looked at how you spend your money and time, what would they say you treasure most?
+
+**Go deeper:** *The Key Teachings of John Wesley* — this chapter unpacks Wesley's famous sermon "The Use of Money," with its three rules, "gain all you can, save all you can, give all you can," each fenced with conditions, insisting that money is not evil in itself but must be used for God and others. Start with chapter 18, "The Use of Money".
+
+---
+
+## Can a Christian Date Someone Who Isn't?
+
+**The short answer:** The Bible teaches that Christians should marry other Christians, and since dating is usually the road towards marriage, it's wise not to date someone who doesn't share your faith. That isn't because non-Christians are worse people. It's because a relationship pulls two lives in one direction, and your faith is meant to be the centre of yours.
+
+Maybe there's someone you really like. They're kind, funny, respectful, maybe kinder than some Christians you know. They just don't believe in Jesus. Does it really matter?
+
+### What the verse actually says
+
+The verse people usually quote is "Do not be unequally yoked with unbelievers" (2 Corinthians 6:14). A yoke was a wooden frame that joined two oxen to pull a plough together. If the two animals were unequal, or wanted to go different ways, the plough went crooked and both got hurt.
+
+Read in context, Paul isn't mainly talking about dating. He's warning the Corinthian Christians not to be bound into partnerships that pull them away from Christ. He's not telling them to avoid unbelievers either. Elsewhere he says they'd have to leave the world to do that, and Jesus Himself was known as a friend of sinners. You can and should have friends who aren't Christians.
+
+But the principle applies very directly to the closest partnership there is. When Paul talks about marriage, he's specific: a widow "is free to marry anyone she wishes, as long as he belongs to the Lord" (1 Corinthians 7:39). Marriage is the deepest yoke of all, and Christians are told to share it with a fellow believer.
+
+### Why does it matter so much?
+
+"Can two walk together without agreeing where to go?" (Amos 3:3). If Jesus is truly Lord of your life, He shapes everything: how you spend Sunday, what you do with money, how you'd raise children, what you do when life falls apart, what you think life is *for*. Someone who doesn't share that can be a lovely person and still be heading somewhere different.
+
+And dating isn't neutral. Feelings are strong, and the person you're closest to will shape you. Many Christians have started dating someone hoping to bring them to faith, and found that it worked the other way. "Guard your heart with all diligence, for from it flow springs of life" (Proverbs 4:23).
+
+"But we're only fifteen, we're not getting married!" Fair enough. But that's a reason to ask what dating is for. If it's not heading anywhere, why give away so much of your heart? And if it is, then where it's heading matters now.
+
+### Respect your parents
+
+Families and cultures differ a lot here. Some parents don't allow dating at all until you're older; some have other rules. Whatever yours are, honour them: "Children, obey your parents in the Lord, for this is right" (Ephesians 6:1). If you're hiding a relationship from your parents, that's a warning sign in itself.
+
+### What if it's already happened?
+
+If you're already dating someone who isn't a Christian, don't panic and don't be harsh with yourself. Talk honestly with God, and with a parent or Christian adult you trust. Pray for the person, because they matter to God. And remember that being kind to someone and being yoked to them are different things.
+
+The Bible does speak to Christians who are already *married* to unbelievers: they're told to stay and love faithfully, and God can work through that. So nobody in that situation is second class. But that's very different from choosing it at the start.
+
+And whatever happens, the same lines apply to every relationship: **no one has the right to pressure you into anything physical, to ask you for pictures, or to make you keep secrets. If that happens, it is not your fault. Tell a parent or trusted adult.**
+
+**Think about it:** What would you want to share with the person you one day marry? Which of those things depend on them loving Jesus too?
+
+**Go deeper:** *Elisabeth Elliot (For Teens)* — this chapter follows Elisabeth through the hard years when she loved Jim Elliot but had no promise and no engagement, kept her heart in God's hands and got on with her own calling, learning to wait quietly and in hope. Start with chapter 3, "Waiting Well".
+
+---
+
+## If I'm Depressed, Is My Faith Weak?
+
+**The short answer:** No. Depression is an illness, not a sign of weak faith, and some of the strongest believers in the Bible and in history went through deep darkness. God is close to people who are struggling, and getting help, including from a doctor or counsellor, is one of the ways He cares for you.
+
+Depression is more than a bad day. It's a heaviness that won't lift: losing interest in things you used to enjoy, feeling numb or worthless, sleeping too much or too little, struggling to get out of bed, finding it hard to pray. And sometimes, on top of all that, comes a second weight: *If I really trusted God, I wouldn't feel like this.*
+
+That second weight isn't from God.
+
+### The Bible isn't shocked by this
+
+Look at Elijah. He'd just seen God answer by fire on Mount Carmel, one of the greatest victories in the Old Testament. Then, threatened and exhausted, he ran into the desert. "He sat down under a broom tree and prayed that he might die. 'I have had enough, LORD,' he said" (1 Kings 19:4).
+
+What did God do? There was no lecture or telling-off. "Then he lay down under the broom tree and fell asleep. Suddenly an angel touched him and said, 'Get up and eat'" (1 Kings 19:5). And when Elijah slept again, the angel came back: "Get up and eat, or the journey will be too much for you" (1 Kings 19:7). God cared for his body before He spoke to his soul: sleep, food and gentle care.
+
+The Psalms are full of people in the dark. "Why are you downcast, O my soul? Why the unease within me?" (Psalm 42:5). Psalm 88 ends with no happy turn at all: "darkness is my closest companion" (Psalm 88:18). God put that prayer in His Book, which tells you something: you're allowed to bring Him your darkness without tidying it up.
+
+The apostle Paul once wrote, "We were under a burden far beyond our ability to endure, so that we despaired even of life" (2 Corinthians 1:8). And on the night before He died, Jesus said, "My soul is consumed with sorrow to the point of death" (Matthew 26:38). Deep sorrow is not sin. Jesus has felt it.
+
+### Illness, not failure
+
+Depression often involves your brain and body, not just your thoughts. It can run in families, follow loss or stress, or come for no clear reason. We don't tell someone with a broken leg or asthma that they lack faith. Depression is no different. Taking medicine from a doctor or seeing a counsellor isn't a failure to trust God, any more than wearing glasses is.
+
+Faith is not a feeling. Sometimes faith looks like holding on with nothing left but a whisper: *God, I can't feel You, but I'm still here.* That counts. God "knows our frame; He is mindful that we are dust" (Psalm 103:14). And "The LORD is near to the brokenhearted" (Psalm 34:18).
+
+### What to do
+
+- **Tell someone.** A parent, a trusted adult, a youth leader, a school counsellor. Depression lies to you and says you're a burden. You're not.
+- **See a doctor.** Depression is treatable, and many people get much better.
+- **Look after your body**, as God did for Elijah: sleep, food, daylight and some movement, even small amounts.
+- **Keep praying honestly**, even if your prayer is just a psalm read out loud.
+- **Stay connected** to friends and church, even when you want to hide.
+
+And please hear this: **if you ever think about hurting yourself or not wanting to be alive, tell a parent or trusted adult right away.** That isn't weakness, and it isn't a lack of faith. It's exactly what God wants you to do.
+
+**Think about it:** If a friend told you they were depressed, would you think their faith was weak? Why might you judge yourself more harshly than you'd judge them?
+
+**Go deeper:** *The Key Teachings of Charles H. Spurgeon* — the most famous preacher of his day suffered repeated bouts of depression, and this chapter shows how he spoke about it openly, treating it not as a sin or as evidence of weak faith but as part of being a weak "earthen vessel" that God uses. Start with chapter 18, "Songs in the Night".
+
+---
+
+## How Do I Know God's Will for My Life?
+
+**The short answer:** Most of God's will is already written down in the Bible: love Him, love others, live a holy life. For the big decisions the Bible doesn't name, like which subjects or job or college, God usually guides through His Word, prayer, wisdom and the advice of people who love you. You don't have to find a hidden dot or be afraid of missing it.
+
+Choosing subjects. Thinking about university or work. Wondering who your friends should be or where you'll live one day. When people say "God has a plan for your life," it can sound exciting, but it can also feel like pressure. *What if I get it wrong? What if I miss it?*
+
+### What we already know
+
+Here's some good news: a lot of God's will isn't hidden at all.
+
+- "Give thanks in every circumstance, for this is God's will for you in Christ Jesus" (1 Thessalonians 5:18).
+- "For it is God's will that you should be holy" (1 Thessalonians 4:3).
+- "And what does the LORD require of you but to act justly, to love mercy, and to walk humbly with your God?" (Micah 6:8).
+
+Most of God's will for you today is clear: trust Jesus, be honest, be kind, forgive, work hard, honour your parents, pray, help people in need. If you're doing those things, you're already in the middle of God's will. Often the question "What should I do with my life?" is best answered by "What does God want me to do *today*?"
+
+### For decisions the Bible doesn't name
+
+The Bible won't tell you whether to study biology or history, but it does tell you how to decide.
+
+**Ask God.** "Now if any of you lacks wisdom, he should ask God, who gives generously to all without finding fault, and it will be given to him" (James 1:5). God doesn't get impatient with your questions.
+
+**Let His Word shape your mind.** "Do not be conformed to this world, but be transformed by the renewing of your mind. Then you will be able to test and approve what is the good, pleasing, and perfect will of God" (Romans 12:2). The more your thinking is shaped by Scripture, the more your instincts line up with God's. The Bible is "a lamp to my feet" (Psalm 119:105). A lamp usually shows the next step, not the whole road.
+
+**Ask people who love you.** "Plans fail for lack of counsel, but with many advisers they succeed" (Proverbs 15:22). Parents, teachers, youth leaders and older Christians often see your gifts more clearly than you do.
+
+**Look at how God made you.** Your abilities, interests and the things that move you are clues. If you love helping people, enjoy solving problems or light up around children, that matters.
+
+**Then trust Him and step out.** "Trust in the LORD with all your heart, and lean not on your own understanding; in all your ways acknowledge Him, and He will make your paths straight" (Proverbs 3:5–6). Notice who straightens the path. Not you.
+
+### You can't wreck God's plan by accident
+
+Some Christians picture God's will as a tightrope: one wrong step and you've fallen off forever. But if you're sincerely seeking Him, God is far more able to guide you than you are able to miss Him. He can redirect a closed door, use a wrong turn and bring good out of mistakes. Joseph ended up in Egypt through his brothers' cruelty, and God still used it.
+
+Often there are several good options, and any of them could honour God. In that case, choose wisely, choose in faith, and get on with it. God's biggest plan for your life isn't a job title. It's that you become more like Jesus, and that can happen in any classroom, office, kitchen or country.
+
+**Think about it:** What's one thing you already know is God's will for you this week, and are you doing it?
+
+**Go deeper:** *The Key Teachings of F. B. Meyer* — taking the picture of Israel following the cloud through the wilderness, this chapter explains Meyer's counsel on guidance: "If you do not know what you ought to do, stand still until you do," trusting that "God's delays are not denials." Start with chapter 4, "Where the Cloud Rests".
+
+---
+
+## How Do I Talk About My Faith Without Being Weird?
+
+**The short answer:** Be a real friend, live honestly, and when the subject comes up, tell the truth about what Jesus means to you with gentleness and respect. You don't need to be a debater or a preacher. You just need to be ready, and be yourself.
+
+Maybe you've seen Christians share their faith in ways that made you cringe: shouting on a street corner, cornering people with leaflets, turning every conversation into a sermon. And so you've gone the other way and said nothing at all. Your friends might not even know you go to church.
+
+Somewhere between those two is a better way.
+
+### The key verse
+
+Peter wrote to Christians who were a minority, sometimes mocked and sometimes worse: "But in your hearts sanctify Christ as Lord. Always be prepared to give a defense to everyone who asks you the reason for the hope that is in you. But respond with gentleness and respect" (1 Peter 3:15).
+
+Notice the order. First, Jesus is Lord in your heart. Faith starts on the inside. Second, people *ask*. Something about your life makes them curious. Third, you're ready with a reason. And fourth, you answer with gentleness and respect. Not with arrogance, pressure or a lecture.
+
+### Start with your life
+
+Jesus said, "let your light shine before men, that they may see your good deeds and glorify your Father in heaven" (Matthew 5:16). The most convincing thing about your faith will often be how you live: being kind to the kid nobody talks to, refusing to join in gossip, being honest when it costs you, staying calm when things go wrong, saying sorry when you mess up.
+
+That doesn't mean being fake or perfect. Your friends will see your failures too. When they do, they'll also see how you handle them, and that grace is for people who need it.
+
+### Then use words
+
+Living well matters, but at some point people need to hear about Jesus. Here are some simple ways in.
+
+**Tell your story.** When a man Jesus healed was questioned by experts, he said, "There is one thing I do know: I was blind, but now I see!" (John 9:25). You don't need to answer every argument. You can say what you've found: how God helped you through something, why you pray, what Jesus means to you.
+
+**Invite.** When Nathanael was sceptical about Jesus, his friend didn't argue. He said, "Come and see" (John 1:46). Invite friends to youth group, a church event or to read one of the Gospels with you.
+
+**Ask questions and listen.** "What do you think happens when we die?" "Have you ever wondered whether God is real?" Then actually listen. People feel respected when you're interested in what they think.
+
+**Be honest when you don't know.** "That's a good question. I don't know, but I'll find out" is a great answer. Then go and find out.
+
+### What makes it weird
+
+Usually it isn't talking about Jesus that's weird. It's talking *at* people instead of *with* them. It's acting superior, using church words nobody understands, or treating friends like projects instead of people. If you only spend time with someone so you can convert them, they'll notice.
+
+Love people for who they are, whether or not they ever believe. Respect their beliefs, even when you disagree. And trust that it isn't your job to change anyone's heart. That's God's work. Your job is to be faithful and leave the results to Him.
+
+Paul said, "I am not ashamed of the gospel, because it is the power of God for salvation to everyone who believes" (Romans 1:16). The power is in the message, not in your skill at delivering it.
+
+**Think about it:** Which of your friends would you most love to know Jesus? What's one natural, unforced way you could show them His love this week?
+
+**Go deeper:** *How to Bring Men to Christ* by R. A. Torrey — in this practical chapter Torrey suggests many ways to begin a conversation about Jesus, from a simple direct question asked courteously to winning someone's confidence first through acts of kindness, great and small, before raising "the great question." Start with chapter 2, "How to Begin".
+
+---
+
+## Conclusion: Keep Asking
+
+You've reached the end of this book, but I hope not the end of your questions. Some may feel answered for now, others unfinished, and you probably have new ones this book never touched.
+
+That's fine. Questions aren't a wall between you and God. They can be a road towards Him.
+
+Think about the people in the Bible who asked hard questions: Job, who asked why he was suffering; the psalmists, who asked God how long He would stay silent; Thomas, who wanted to see the nail marks; the father who cried, "I do believe; help my unbelief!" (Mark 9:24). God didn't send any of them away. Jesus said, "Ask, and it will be given to you; seek, and you will find; knock, and the door will be opened to you" (Matthew 7:7). And God promised through Jeremiah: "You will seek Me and find Me when you search for Me with all your heart" (Jeremiah 29:13).
+
+So keep asking. Just make sure you keep asking *Him*, and not only the internet.
+
+### The question underneath all the others
+
+Underneath every question in this book is a bigger one: *Who is Jesus, and what will I do about Him?*
+
+Here's the heart of what Christians believe. God made you, knows you and loves you. But all of us have turned away from Him: "for all have sinned and fall short of the glory of God" (Romans 3:23). That means hearts that want to run our lives without Him, not just bad things we do. And sin has a cost: "For the wages of sin is death, but the gift of God is eternal life in Christ Jesus our Lord" (Romans 6:23).
+
+But God didn't leave us there. "But God proves His love for us in this: While we were still sinners, Christ died for us" (Romans 5:8). Jesus, fully God and fully man, lived the life we couldn't live, died on the cross in our place, and rose bodily from the dead on the third day. Because of that, forgiveness and new life are offered as a gift, not a reward: "For it is by grace you have been saved through faith, and this not from yourselves; it is the gift of God, not by works, so that no one can boast" (Ephesians 2:8–9).
+
+You don't receive a gift by earning it. You receive it by taking it. The Bible puts it simply: "if you confess with your mouth, 'Jesus is Lord,' and believe in your heart that God raised Him from the dead, you will be saved" (Romans 10:9).
+
+If you've never trusted Jesus for yourself, you can do that today. You don't need perfect words or to have every question answered. You just need to come to Him honestly, turn from going your own way, and trust Him. And if you do, please tell a Christian you trust, so they can help you take the next steps.
+
+If you already follow Jesus, keep going. Your questions don't disqualify you. They can deepen your roots.
+
+### Where to go next
+
+The Ochorus library is full of Christians who asked your questions before you. If you haven't yet, read the *Anchored* books, thirty days at a time. If you want to think hard about whether Christianity is true, try *Orthodoxy* or *The Everlasting Man* by G. K. Chesterton, or Pascal's *Pensées*. If you want a story, read *The Pilgrim's Progress (For Teens)*. If you want to see faith lived out under pressure, read the lives of Corrie ten Boom, Mary Slessor or Samuel Ajayi Crowther. And keep reading the Bible itself, especially the Gospels. Peter once said to Jesus, "Lord, to whom would we go? You have the words of eternal life" (John 6:68). Keep going back to those words.
+
+And don't do this alone. Find a church, a Christian adult you can ask anything, and friends who will keep asking with you.
+
+Keep asking. He's not tired of your questions.
+
+*Lord Jesus, thank You that I can bring You every question I have. Thank You for loving me before I understood anything, and for dying and rising again for me. Where I believe, make my faith stronger. Where I doubt, help my unbelief. Where I'm hurting, come close. Lead me into the truth, keep me close to You, and give me people to walk with. I want to follow You for real. In Your name, Amen.*
