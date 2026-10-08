@@ -43,7 +43,7 @@ def unapply(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("library", "0195_brother_lawrence_portrait"),
+        ("library", "0196_merge_0195_book_hook_0195_brother_lawrence_portrait"),
     ]
 
     operations = [
