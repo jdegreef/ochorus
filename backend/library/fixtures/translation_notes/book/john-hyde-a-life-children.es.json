@@ -3,7 +3,7 @@
  "slug": "john-hyde-a-life-children",
  "language": "es",
  "job_issue": 5550,
- "pull_request": null,
+ "pull_request": 5576,
  "note": [
   "The English retelling quotes KJV-register wording in each chapter's opening blockquote, cited loosely (“— from Matthew 9”). Where the shipped es corpus already quotes that verse in modern Reina-Valera, the Spanish pastes it verbatim (mined, with the file). Isaiah 6:8 and Philippians 4:8 are elided in the English, so their Spanish elisions are self_rendered; in-body echoes (Zechariah 2:8 re-personed to God's first person, Revelation 12:10, John's “Wide, Lord” prayer on Psalm 81:10) are self_rendered. api.takeroot.bible was egress-blocked from this session.",
   "AI-translated in-session; awaiting native review."
