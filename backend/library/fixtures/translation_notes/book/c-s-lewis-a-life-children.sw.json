@@ -1,0 +1,94 @@
+{
+ "kind": "book",
+ "slug": "c-s-lewis-a-life-children",
+ "language": "sw",
+ "job_issue": 5561,
+ "pull_request": null,
+ "note": [
+  "Each chapter opens with one loose modern paraphrase cited by chapter only (“from Psalm 27”). Each was rendered in the Swahili Union Version (SUV) tradition the shipped sw corpus quotes, not swhonen. Where a shipped *.sw.json already carries the SUV words they were pasted verbatim and the row is `mined` with that file; otherwise `self_rendered` and needs a native check.",
+  "Self-rendered choices worth a reviewer's eye: Psalm 27:10 follows SUV but as a conditional (“wakiniacha”) to match the English “even if”; Ecclesiastes 5:4 uses plain “Ukimwahidi Mungu jambo, usikawie kulitimiza” (promise/ahadi, the chapter's word) rather than SUV “nadhiri … kuiondoa”, which children would not follow; Psalm 15 and Malachi 3:16 are loose paraphrases in the English and are rendered plainly (Malachi follows the English “loved the LORD”, not SUV “waliomcha”); John 1:14 and 1 Peter 3:15 are SUV wording shortened as the English is (1 Peter adds “lakini kwa upole” from the SUV half-verse, attested in is-the-bible-reliable.sw.json). Matthew 18:3 is pasted from the corpus with its first letter capitalised.",
+  "Book titles: Lewis's and Tolkien's titles are kept in English (no established published Swahili edition was found) with a plain Swahili gloss on first mention for the ones a child needs to follow: The Lion, the Witch and the Wardrobe (Simba, Mchawi na Kabati), The Chronicles of Narnia (Hadithi za Narnia), The Screwtape Letters (Barua za Screwtape), Mere Christianity (Ukristo Halisi), The Lord of the Rings (Bwana wa Pete). Phantastes and A Grief Observed are left unglossed. No quotations from Lewis's works were added; the one short saying the English carries (“the most dejected and reluctant convert in all England”) is translated.",
+  "Clock time is CONVERTED to Swahili reckoning, as in the sibling a-retrospect-children.sw: chapter 7 “about three in the morning” = saa tisa usiku, “nearly four” = saa kumi alfajiri; chapter 8 “eight o'clock” service = saa mbili asubuhi. The nickname “the Great Knock” and the house name “the Kilns” are kept in English; chapter 8's study answer explains that kilns are brick ovens (tanuri).",
+  "The last book-QA answer says the teen edition and full-length biography exist “in English” (Kwa Kiingereza), because neither has a Swahili edition yet; update it if they ship."
+ ],
+ "references": [
+  {
+   "reference": "Proverbs 22:6",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "women-who-moved-heaven-2.sw.json"
+  },
+  {
+   "reference": "Psalm 27:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Proverbs 27:17",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "rise-up-men-of-god-2.sw.json"
+  },
+  {
+   "reference": "Ecclesiastes 5:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Psalm 15:1-4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 139:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "John 1:14",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Malachi 3:16",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "1 Peter 3:15",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "James 5:15",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "2 Timothy 4:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "baptism-with-the-holy-spirit.sw.json"
+  }
+ ]
+}
