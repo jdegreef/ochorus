@@ -1,10 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import {
 	AUDIENCE_HUBS,
 	TEENS_HUB,
 	hubFor,
+	hookFor,
+	hookKey,
 	YOUNG_READERS_HUB,
 	heroCovers,
 	hubCounts,
@@ -14,6 +16,7 @@ import {
 	startPick
 } from './audienceHub';
 import type { AudienceShelf, BookSummary, BookTile, SeriesSummary } from './library-public';
+import { toSnake } from './i18n.svelte';
 
 const book = (slug: string): BookSummary =>
 	({ slug, title: `${slug} title`, author: { slug: 'a', name: 'A' } }) as BookSummary;
@@ -146,5 +149,31 @@ describe('each hub', () => {
 		for (const h of AUDIENCE_HUBS) {
 			expect(existsSync(resolve(import.meta.dirname, `../../static/og${h.href}.png`)), h.href).toBe(true);
 		}
+	});
+});
+
+describe('hooks', () => {
+	const en: Record<string, string> = JSON.parse(
+		readFileSync(resolve(import.meta.dirname, '../../messages/en.json'), 'utf8')
+	);
+	const hooked = Object.keys(en).filter((k) => k.startsWith('audience_hook_'));
+	const fixtures = resolve(import.meta.dirname, '../../../backend/library/fixtures/content/books');
+
+	it('are on the teens hub only', () => {
+		expect(AUDIENCE_HUBS.filter((h) => h.hooks)).toEqual([TEENS_HUB]);
+	});
+
+	it("each name a real book, so a renamed slug can't leave its hook behind", () => {
+		expect(hooked.length).toBeGreaterThan(0);
+		for (const key of hooked) {
+			const slug = key.slice('audience_hook_'.length).replace(/_/g, '-');
+			expect(toSnake(hookKey(slug)), slug).toBe(key);
+			expect(existsSync(resolve(fixtures, `${slug}.en.json`)), slug).toBe(true);
+		}
+	});
+
+	it("is '' for a book without one", () => {
+		expect(hookFor('no-such-book')).toBe('');
+		expect(hookFor('all-of-grace')).toBe(en.audience_hook_all_of_grace);
 	});
 });

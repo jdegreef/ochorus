@@ -34,7 +34,12 @@
 		 * book's: on the young-reader hubs, where "3 hr read" is what puts a
 		 * reader off and one chapter is the real commitment.
 		 */
-		perChapter = false
+		perChapter = false,
+		/**
+		 * A line that sells the book ("A teenager who doubted… decided to
+		 * actually test God"), under the byline — the teens hub's cards.
+		 */
+		hook = ''
 	}: {
 		book: CoverBook;
 		showAuthor?: boolean;
@@ -42,6 +47,7 @@
 		anchor?: string;
 		showSeries?: boolean;
 		perChapter?: boolean;
+		hook?: string;
 	} = $props();
 	const t = i18n.t;
 
@@ -111,6 +117,9 @@
 			<!-- Text, not a link: the whole card is already one. The series page is
 			     a tap away on the book page's own series line. -->
 			<div class="truncate text-eyebrow font-medium text-accent" title={seriesLine}>{seriesLine}</div>
+		{/if}
+		{#if hook}
+			<p class="mt-1 line-clamp-4 pb-1 text-small leading-snug text-text">{hook}</p>
 		{/if}
 		<!-- mt-auto pins the meta to the card's bottom, so a one-line title and a
 		     two-line title still bottom out level across a grid row. -->

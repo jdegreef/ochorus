@@ -13,7 +13,8 @@ import * as messages from '$lib/paraglide/messages.js';
  * switching lives in lang.svelte.ts (`lang.set`).
  */
 
-const toSnake = (key: string): string =>
+/** A dotted key's Paraglide message name: `nav.books` → `nav_books`. */
+export const toSnake = (key: string): string =>
 	key
 		.replace(/([a-z0-9])([A-Z])/g, '$1_$2')
 		.replace(/\./g, '_')
@@ -27,6 +28,8 @@ class I18n {
 		const fn = dict[toSnake(key)];
 		return fn ? fn() : key;
 	};
+	/** Whether the catalogue has this key — for keys built from data. */
+	has = (key: string): boolean => toSnake(key) in dict;
 }
 
 export const i18n = new I18n();
