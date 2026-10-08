@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "corrie-ten-boom-a-life-children",
+  "language": "pt",
+  "title": "Corrie ten Boom (Para Crianças)",
+  "subtitle": "",
+  "cover_byline": "Corrie ten Boom",
+  "description": "A história verdadeira de Corrie ten Boom, uma relojoeira holandesa cuja família escondeu judeus dos nazistas num quarto secreto atrás da parede do quarto dela, que perdeu o pai e a irmã Betsie depois que eles foram presos, e que passou o resto da vida contando ao mundo sobre o amor e o perdão de Deus. Esta edição para crianças reconta a vida dela em capítulos curtos, feitos para ler em voz alta: um versículo da Bíblia, uma parte da história dela, uma coisa que isso quer dizer para você e uma oração curtinha, com perguntas para conversar juntos.",
+  "qa": [
+   {
+    "question": "Sobre o que é Corrie ten Boom (Para Crianças)?",
+    "answer": "É uma versão para crianças da biografia completa de Corrie ten Boom. Conta como a família de um relojoeiro em Haarlem escondeu judeus dos nazistas num quarto secreto, como eles foram descobertos e mandados para a prisão, como Corrie e a irmã dela, Betsie, continuaram confiando em Deus num campo de prisioneiros, e como Corrie passou o resto da vida falando às pessoas sobre o amor e o perdão de Deus."
+   },
+   {
+    "question": "Quem foi Corrie ten Boom?",
+    "answer": "Uma cristã holandesa que viveu de 1892 a 1983. Ela foi a primeira mulher da Holanda a se formar como relojoeira. Durante a Segunda Guerra Mundial, ela e a família esconderam judeus na sua casa. Depois da guerra, ela viajou a mais de sessenta países para contar a sua história, e Israel a homenageou como uma dos Justos entre as Nações."
+   },
+   {
+    "question": "Como cada capítulo é organizado?",
+    "answer": "Cada capítulo é curto e feito para ser lido em voz alta. Começa com um versículo da Bíblia, conta uma parte da história de Corrie, mostra uma coisa simples que isso quer dizer para você e termina com uma oração curtinha. Depois vêm três perguntas, para conversar juntos."
+   },
+   {
+    "question": "Este livro é triste ou assustador demais para crianças?",
+    "answer": "Algumas partes são tristes, porque a guerra, os campos de prisioneiros e a morte do pai e da irmã de Corrie foram coisas terríveis, e o livro não finge que não foram. Mas ele conta tudo com delicadeza, sem detalhes assustadores, e acima de tudo é a história de como Deus ficou perto de Corrie e de Betsie e ajudou Corrie a perdoar."
+   },
+   {
+    "question": "As histórias são verdadeiras?",
+    "answer": "Sim. Elas vêm de registros históricos e dos relatos que a própria Corrie fez da sua vida. Algumas histórias foram contadas só pela própria Corrie, muitos anos depois, ou foram lembradas pela família dela, e o livro diz isso quando as conta."
+   },
+   {
+    "question": "Para quem é este livro?",
+    "answer": "É para crianças, para um adulto ler em voz alta ou para uma criança maior ler sozinha. Existe também uma edição para adolescentes, e a biografia completa para leitores mais velhos."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Uma recontagem da Ochorus, para jovens leitores, da biografia Corrie ten Boom, da série Retratos de Coragem, também da Ochorus. A forma de contar é nossa, livre para ler e compartilhar.",
+  "cover_url": "/covers/pt/corrie-ten-boom-a-life-children.svg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 152,
+  "is_published": true,
+  "created_at": "2026-10-08T00:00:00Z",
+  "updated_at": "2026-10-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "pt"
+  ],
+  "order": 1,
+  "title": "Uma Casa Cheia de Relógios",
+  "body_html": "<blockquote>“Orem pela paz de Jerusalém. Os que a amam serão abençoados.” — de Salmo 122</blockquote> <p>Na velha cidade holandesa de Haarlem, numa ruazinha de lojas cheia de movimento, há uma casa alta e estreita. Lá dentro, as escadas são íngremes e cheias de curvas, e os cômodos ficam em níveis engraçados, todos diferentes. A família que morou ali por mais de cem anos chamava a casa de Beje. (Pronuncia-se “bêi-iêi”.)</p> <p>No andar de baixo havia uma relojoaria. O avô de Corrie, Willem ten Boom, abriu a loja em 1837. Durante cem anos, a família ten Boom consertou relógios naquela salinha da frente. As pessoas confiavam a eles os seus relógios preciosos, e os ten Boom sempre os devolviam consertados com honestidade.</p> <p>A família se lembrava de mais uma coisa sobre o vovô Willem. Em 1844, diziam eles, ele ouviu um sermão sobre orar por Jerusalém. Depois disso, ele reunia alguns amigos uma vez por semana para orar pelo povo judeu. Os filhos e os netos dele cresceram com essa oração.</p> <p>Corrie nasceu no dia 15 de abril de 1892, na cidade de Amsterdã, onde o pai dela tinha uma loja naquela época. A família se lembrava de que ela nasceu um mês antes do tempo e era tão pequenininha que ninguém achava que ela fosse viver muito. Mas ela viveu até os noventa e um anos! Pouco depois, a família se mudou para Haarlem, para o Beje, e aquela foi a casa de Corrie por mais de cinquenta anos.</p> <p>Corrie era a caçula. Ela tinha um irmão mais velho, Willem, e duas irmãs mais velhas, Betsie e Nollie. (Outro irmãozinho tinha morrido quando era bem pequeno.) Três irmãs da mãe dela, as tias de Corrie, também vieram morar no Beje. A casa estreita estava sempre cheia, mas sempre havia lugar à mesa para mais um.</p> <p>Os ten Boom ainda não sabiam, mas todos aqueles anos de oração e de abrir espaço para os outros estavam preparando a família para uma coisa muito grande. Deus também usa as coisas pequenas que fazemos todos os dias: as nossas orações, a nossa bondade e o espaço que abrimos para outras pessoas.</p> <p><em>Querido Deus, obrigado pela minha casa e pela minha família. Ajuda-me a orar pelas outras pessoas e a sempre abrir espaço para mais um. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que era o Beje?",
+    "answer": "A casa alta e estreita em Haarlem onde a família ten Boom morava, com a relojoaria no andar de baixo."
+   },
+   {
+    "question": "O que o vovô Willem começou a fazer toda semana?",
+    "answer": "A família se lembrava de que ele reunia amigos uma vez por semana para orar pelo povo judeu e pela paz de Jerusalém."
+   },
+   {
+    "question": "Para quem você poderia abrir espaço, à sua mesa ou nas suas brincadeiras?",
+    "answer": "Qualquer resposta sincera serve aqui. A ideia do capítulo é que a bondade e a oração pequenas, de todos os dias, são importantes para Deus, e ele pode usá-las de maneiras grandes."
+   }
+  ],
+  "body_text": "“Orem pela paz de Jerusalém. Os que a amam serão abençoados.” — de Salmo 122 Na velha cidade holandesa de Haarlem, numa ruazinha de lojas cheia de movimento, há uma casa alta e estreita. Lá dentro, as escadas são íngremes e cheias de curvas, e os cômodos ficam em níveis engraçados, todos diferentes. A família que morou ali por mais de cem anos chamava a casa de Beje. (Pronuncia-se “bêi-iêi”.) No andar de baixo havia uma relojoaria. O avô de Corrie, Willem ten Boom, abriu a loja em 1837. Durante cem anos, a família ten Boom consertou relógios naquela salinha da frente. As pessoas confiavam a eles os seus relógios preciosos, e os ten Boom sempre os devolviam consertados com honestidade. A família se lembrava de mais uma coisa sobre o vovô Willem. Em 1844, diziam eles, ele ouviu um sermão sobre orar por Jerusalém. Depois disso, ele reunia alguns amigos uma vez por semana para orar pelo povo judeu. Os filhos e os netos dele cresceram com essa oração. Corrie nasceu no dia 15 de abril de 1892, na cidade de Amsterdã, onde o pai dela tinha uma loja naquela época. A família se lembrava de que ela nasceu um mês antes do tempo e era tão pequenininha que ninguém achava que ela fosse viver muito. Mas ela viveu até os noventa e um anos! Pouco depois, a família se mudou para Haarlem, para o Beje, e aquela foi a casa de Corrie por mais de cinquenta anos. Corrie era a caçula. Ela tinha um irmão mais velho, Willem, e duas irmãs mais velhas, Betsie e Nollie. (Outro irmãozinho tinha morrido quando era bem pequeno.) Três irmãs da mãe dela, as tias de Corrie, também vieram morar no Beje. A casa estreita estava sempre cheia, mas sempre havia lugar à mesa para mais um. Os ten Boom ainda não sabiam, mas todos aqueles anos de oração e de abrir espaço para os outros estavam preparando a família para uma coisa muito grande. Deus também usa as coisas pequenas que fazemos todos os dias: as nossas orações, a nossa bondade e o espaço que abrimos para outras pessoas. Querido Deus, obrigado pela minha casa e pela minha família. Ajuda-me a orar pelas outras pessoas e a sempre abrir espaço para mais um. Amém.",
+  "word_count": 383
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "pt"
+  ],
+  "order": 2,
+  "title": "A Bíblia Grande do Papai",
+  "body_html": "<blockquote>“Deus dá uma família aos que estão sozinhos.” — de Salmo 68</blockquote> <p>O pai de Corrie se chamava Casper. Ele era relojoeiro, como o pai dele tinha sido. Era gentil e engraçado, e orava muito. Todos os dias a família inteira se reunia para ler a Bíblia e orar, e nas refeições o papai lia em voz alta a grande Bíblia da família.</p> <p>O papai era bondoso com todo mundo. Ele tratava as crianças que entravam na loja, e os pobres que batiam à porta dos fundos, com a mesma educação com que tratava as pessoas mais ricas da cidade. Às vezes ele passava mais tempo falando de Deus com um cliente do que consertando o relógio do cliente! Ele também amava o povo judeu. Ele acreditava que os judeus eram o povo escolhido de Deus, amados por Deus desde os dias de Abraão. Uma das frases preferidas dele era: “O melhor ainda está por vir.”</p> <p>A mãe de Corrie, Cor, tinha sido professora. Ela era carinhosa e generosa. Preparava cestas de comida para os vizinhos pobres e se lembrava do aniversário de todo mundo. Mas ela não tinha muita saúde. Quando Corrie tinha vinte e nove anos, a mãe dela ficou muito doente e morreu.</p> <p>Quando Corrie era moça, ela esperava se casar com um rapaz chamado Karel, amigo do irmão dela, Willem. Mas a família de Karel queria que ele se casasse com alguém rico, e no fim ele se casou com outra moça. Corrie ficou de coração partido. Ela subiu para o quarto, muito triste.</p> <p>Corrie se lembrava de que o papai subiu a escada até ela. Ele não disse a ela que parasse de amar. Em vez disso, disse que ela podia entregar o seu amor a Deus, e deixar que Deus lhe mostrasse para onde esse amor devia ir.</p> <p>Foi exatamente isso que aconteceu. Corrie nunca se casou, mas Deus lhe deu uma família maior do que ela jamais poderia imaginar: crianças, amigos e pessoas do mundo inteiro. Quando o nosso coração está triste, nós também podemos entregar o nosso amor a Deus, e ele vai nos mostrar a quem amar.</p> <p><em>Querido Deus, quando eu estiver triste ou decepcionado, ajuda-me a trazer o meu coração até ti. Mostra-me a quem eu posso amar hoje. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que a família de Corrie fazia todos os dias?",
+    "answer": "Eles se reuniam para ler a Bíblia e orar, e nas refeições o papai lia em voz alta a grande Bíblia da família."
+   },
+   {
+    "question": "O que o papai disse a Corrie quando ela estava de coração partido?",
+    "answer": "Que não parasse de amar, mas entregasse o seu amor a Deus e deixasse Deus lhe mostrar para onde ele devia ir."
+   },
+   {
+    "question": "Você se lembra de uma vez em que ficou decepcionado? O que você poderia contar a Deus sobre isso?",
+    "answer": "Qualquer resposta sincera serve aqui. A ideia do capítulo é que podemos levar o nosso coração triste a Deus, e ele pode virar o nosso amor para outras pessoas."
+   }
+  ],
+  "body_text": "“Deus dá uma família aos que estão sozinhos.” — de Salmo 68 O pai de Corrie se chamava Casper. Ele era relojoeiro, como o pai dele tinha sido. Era gentil e engraçado, e orava muito. Todos os dias a família inteira se reunia para ler a Bíblia e orar, e nas refeições o papai lia em voz alta a grande Bíblia da família. O papai era bondoso com todo mundo. Ele tratava as crianças que entravam na loja, e os pobres que batiam à porta dos fundos, com a mesma educação com que tratava as pessoas mais ricas da cidade. Às vezes ele passava mais tempo falando de Deus com um cliente do que consertando o relógio do cliente! Ele também amava o povo judeu. Ele acreditava que os judeus eram o povo escolhido de Deus, amados por Deus desde os dias de Abraão. Uma das frases preferidas dele era: “O melhor ainda está por vir.” A mãe de Corrie, Cor, tinha sido professora. Ela era carinhosa e generosa. Preparava cestas de comida para os vizinhos pobres e se lembrava do aniversário de todo mundo. Mas ela não tinha muita saúde. Quando Corrie tinha vinte e nove anos, a mãe dela ficou muito doente e morreu. Quando Corrie era moça, ela esperava se casar com um rapaz chamado Karel, amigo do irmão dela, Willem. Mas a família de Karel queria que ele se casasse com alguém rico, e no fim ele se casou com outra moça. Corrie ficou de coração partido. Ela subiu para o quarto, muito triste. Corrie se lembrava de que o papai subiu a escada até ela. Ele não disse a ela que parasse de amar. Em vez disso, disse que ela podia entregar o seu amor a Deus, e deixar que Deus lhe mostrasse para onde esse amor devia ir. Foi exatamente isso que aconteceu. Corrie nunca se casou, mas Deus lhe deu uma família maior do que ela jamais poderia imaginar: crianças, amigos e pessoas do mundo inteiro. Quando o nosso coração está triste, nós também podemos entregar o nosso amor a Deus, e ele vai nos mostrar a quem amar. Querido Deus, quando eu estiver triste ou decepcionado, ajuda-me a trazer o meu coração até ti. Mostra-me a quem eu posso amar hoje. Amém.",
+  "word_count": 380
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "pt"
+  ],
+  "order": 3,
+  "title": "Rodinhas Minúsculas e Portas Abertas",
+  "body_html": "<blockquote>“Quem é fiel nas coisas bem pequenas também é fiel nas grandes.” — de Lucas 16</blockquote> <p>Durante muitos anos, Betsie ajudou o papai na loja, e Corrie cozinhava e limpava a casa. Então, por volta de 1920, Betsie ficou doente por um tempo, e as irmãs trocaram de trabalho. Betsie descobriu que adorava deixar a casa aconchegante e bonita. Corrie descobriu que adorava a loja, e mais do que tudo a bancada de trabalho.</p> <p>O papai ensinou Corrie a consertar relógios, e ela foi até a Suíça, a terra dos relojoeiros, para aprender mais. Um relógio é cheio de pecinhas minúsculas: molas finas como um fio de cabelo e parafusos tão pequenos que é preciso uma pinça e uma lupa para segurá-los. Um só grãozinho de poeira pode parar o relógio inteiro! Corrie aprendeu a trabalhar devagar, com cuidado e com paciência. Em 1924, segundo o museu de Haarlem, ela se tornou a primeira mulher da Holanda a se formar como relojoeira.</p> <p>Corrie tinha muita energia, e a usava para ajudar os outros. Ela criou clubes para meninas, com esporte, música, trabalhos manuais, acampamentos e estudo da Bíblia. O distintivo dos clubes era um triângulo. Os seus três lados queriam dizer corpo, alma e espírito, porque Deus se importa com cada parte de nós.</p> <p>Ela também dava aulas especiais sobre Jesus para pessoas com deficiência intelectual. Naquele tempo, muita gente achava que essas pessoas não conseguiam entender as boas-novas, e as escondia de todos. Corrie não concordava. Ela as ensinava com paciência e as ajudava a se preparar para fazer parte da igreja.</p> <p>Os ten Boom também recebiam crianças que precisavam de um lar. Algumas eram filhos de missionários que trabalhavam bem longe. A casa estreita dava um jeito de caber todo mundo, e as crianças passavam a fazer parte da família.</p> <p>Nada disso era famoso. Mas Jesus diz que quem é fiel nas coisas pequenas também será fiel nas grandes. Os pequenos trabalhos que você faz com cuidado, e a bondade que você mostra às pessoas que os outros esquecem, são muito importantes para Deus.</p> <p><em>Querido Deus, ajuda-me a fazer até os trabalhos pequenos com cuidado e bem-feitos. Ajuda-me a reparar nas pessoas que os outros esquecem, e a ser bondoso com elas. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Por que Corrie precisava de uma pinça e de uma lupa?",
+    "answer": "Porque as peças de dentro de um relógio são minúsculas: molas finas como um fio de cabelo e parafusos bem pequenininhos."
+   },
+   {
+    "question": "Quem Corrie ensinava nas suas aulas especiais?",
+    "answer": "Pessoas com deficiência intelectual, que muita gente naquele tempo escondia de todos. Ela as ajudava a se preparar para fazer parte da igreja."
+   },
+   {
+    "question": "Que trabalho pequeno você poderia fazer com cuidado esta semana?",
+    "answer": "Qualquer resposta sincera serve aqui. A ideia do capítulo é que Deus vê a nossa fidelidade nas coisas pequenas e a usa para nos preparar para coisas maiores."
+   }
+  ],
+  "body_text": "“Quem é fiel nas coisas bem pequenas também é fiel nas grandes.” — de Lucas 16 Durante muitos anos, Betsie ajudou o papai na loja, e Corrie cozinhava e limpava a casa. Então, por volta de 1920, Betsie ficou doente por um tempo, e as irmãs trocaram de trabalho. Betsie descobriu que adorava deixar a casa aconchegante e bonita. Corrie descobriu que adorava a loja, e mais do que tudo a bancada de trabalho. O papai ensinou Corrie a consertar relógios, e ela foi até a Suíça, a terra dos relojoeiros, para aprender mais. Um relógio é cheio de pecinhas minúsculas: molas finas como um fio de cabelo e parafusos tão pequenos que é preciso uma pinça e uma lupa para segurá-los. Um só grãozinho de poeira pode parar o relógio inteiro! Corrie aprendeu a trabalhar devagar, com cuidado e com paciência. Em 1924, segundo o museu de Haarlem, ela se tornou a primeira mulher da Holanda a se formar como relojoeira. Corrie tinha muita energia, e a usava para ajudar os outros. Ela criou clubes para meninas, com esporte, música, trabalhos manuais, acampamentos e estudo da Bíblia. O distintivo dos clubes era um triângulo. Os seus três lados queriam dizer corpo, alma e espírito, porque Deus se importa com cada parte de nós. Ela também dava aulas especiais sobre Jesus para pessoas com deficiência intelectual. Naquele tempo, muita gente achava que essas pessoas não conseguiam entender as boas-novas, e as escondia de todos. Corrie não concordava. Ela as ensinava com paciência e as ajudava a se preparar para fazer parte da igreja. Os ten Boom também recebiam crianças que precisavam de um lar. Algumas eram filhos de missionários que trabalhavam bem longe. A casa estreita dava um jeito de caber todo mundo, e as crianças passavam a fazer parte da família. Nada disso era famoso. Mas Jesus diz que quem é fiel nas coisas pequenas também será fiel nas grandes. Os pequenos trabalhos que você faz com cuidado, e a bondade que você mostra às pessoas que os outros esquecem, são muito importantes para Deus. Querido Deus, ajuda-me a fazer até os trabalhos pequenos com cuidado e bem-feitos. Ajuda-me a reparar nas pessoas que os outros esquecem, e a ser bondoso com elas. Amém.",
+  "word_count": 375
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "pt"
+  ],
+  "order": 4,
+  "title": "Uma Criança na Hora de Dormir",
+  "body_html": "<blockquote>“Quem sabe? Talvez você tenha sido colocada neste lugar para um momento como este.” — de Ester 4</blockquote> <p>No dia 10 de maio de 1940, quando Corrie tinha quarenta e oito anos, o exército alemão entrou marchando na Holanda. Depois de cinco dias de luta, o exército holandês teve de se render, e soldados alemães passaram a andar pelas ruas de Haarlem.</p> <p>A Alemanha era governada pelos nazistas, que odiavam o povo judeu. Passo a passo, eles criaram novas regras cruéis. Os judeus não podiam entrar nos parques, nem nos cinemas, nem nas escolas comuns. Em 1942, eles tiveram de usar uma estrela amarela na roupa. O papai, que já tinha mais de oitenta anos, quis ir buscar uma estrela e usá-la ele mesmo, para ficar ao lado dos seus vizinhos judeus. A família teve de convencê-lo a desistir! Depois, os nazistas começaram a levar famílias judias embora em trens, e elas não voltavam mais.</p> <p>Uma noite, Corrie estava visitando um médico judeu na casa dele. Enquanto eles conversavam, a filhinha dele chamou lá de cima da escada. O papai tinha esquecido de ir cobri-la na cama! O médico subiu correndo, e Corrie o ouviu brincando com os filhos antes de eles dormirem.</p> <p>Enquanto esperava sentada, Corrie pensou: a polícia secreta podia vir buscar essa família em qualquer noite. E ela tomou uma decisão. Ela ia ajudar o povo judeu de todas as maneiras que pudesse.</p> <p>Logo, pessoas assustadas começaram a bater à porta do Beje. Elas tinham ouvido dizer que a família do relojoeiro ajudava. Os ten Boom as recebiam por uma ou duas noites e lhes davam de comer, enquanto procuravam lugares mais seguros onde elas pudessem ficar. O papai era muito bom em consolar pessoas assustadas.</p> <p>Deus não precisava dos ten Boom para salvar o seu povo. Mas ele os tinha colocado naquela casa, naquela cidade, naquele tempo. Deus também colocou você no seu lugar, e ele pode usar você para ajudar alguém que precisa.</p> <p><em>Querido Deus, obrigado por me colocar onde eu estou. Abre os meus olhos para ver quem precisa de ajuda, e dá-me coragem para ajudar. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que o papai quis fazer quando os judeus tiveram de usar uma estrela amarela?",
+    "answer": "Ele quis usar uma estrela ele mesmo, para ficar ao lado dos seus vizinhos judeus, mas a família o convenceu a desistir."
+   },
+   {
+    "question": "O que fez Corrie decidir ajudar o povo judeu?",
+    "answer": "Ouvir um médico judeu colocando a filhinha na cama, e perceber que a polícia secreta podia vir buscar aquela família em qualquer noite."
+   },
+   {
+    "question": "Quem perto de você pode estar precisando de ajuda?",
+    "answer": "Qualquer resposta sincera serve aqui. A ideia do capítulo é que Deus colocou cada um de nós no nosso lugar, no nosso tempo, para ajudar as pessoas ao nosso redor."
+   }
+  ],
+  "body_text": "“Quem sabe? Talvez você tenha sido colocada neste lugar para um momento como este.” — de Ester 4 No dia 10 de maio de 1940, quando Corrie tinha quarenta e oito anos, o exército alemão entrou marchando na Holanda. Depois de cinco dias de luta, o exército holandês teve de se render, e soldados alemães passaram a andar pelas ruas de Haarlem. A Alemanha era governada pelos nazistas, que odiavam o povo judeu. Passo a passo, eles criaram novas regras cruéis. Os judeus não podiam entrar nos parques, nem nos cinemas, nem nas escolas comuns. Em 1942, eles tiveram de usar uma estrela amarela na roupa. O papai, que já tinha mais de oitenta anos, quis ir buscar uma estrela e usá-la ele mesmo, para ficar ao lado dos seus vizinhos judeus. A família teve de convencê-lo a desistir! Depois, os nazistas começaram a levar famílias judias embora em trens, e elas não voltavam mais. Uma noite, Corrie estava visitando um médico judeu na casa dele. Enquanto eles conversavam, a filhinha dele chamou lá de cima da escada. O papai tinha esquecido de ir cobri-la na cama! O médico subiu correndo, e Corrie o ouviu brincando com os filhos antes de eles dormirem. Enquanto esperava sentada, Corrie pensou: a polícia secreta podia vir buscar essa família em qualquer noite. E ela tomou uma decisão. Ela ia ajudar o povo judeu de todas as maneiras que pudesse. Logo, pessoas assustadas começaram a bater à porta do Beje. Elas tinham ouvido dizer que a família do relojoeiro ajudava. Os ten Boom as recebiam por uma ou duas noites e lhes davam de comer, enquanto procuravam lugares mais seguros onde elas pudessem ficar. O papai era muito bom em consolar pessoas assustadas. Deus não precisava dos ten Boom para salvar o seu povo. Mas ele os tinha colocado naquela casa, naquela cidade, naquele tempo. Deus também colocou você no seu lugar, e ele pode usar você para ajudar alguém que precisa. Querido Deus, obrigado por me colocar onde eu estou. Abre os meus olhos para ver quem precisa de ajuda, e dá-me coragem para ajudar. Amém.",
+  "word_count": 353
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "pt"
+  ],
+  "order": 5,
+  "title": "O Berço dos Anjos",
+  "body_html": "<blockquote>“Tu és o meu esconderijo. Tu me guardas do perigo e me cercas de cânticos.” — de Salmo 32</blockquote> <p>Em 1943, já havia sempre pessoas morando escondidas no Beje. O primeiro a ficar foi um estudante chamado Hans. Entre os outros estavam um cantor judeu, um homem que cantava na sinagoga, a quem todos chamavam de Eusie, e uma senhora chamada Mary. Ao longo dos meses, mais de oitenta pessoas ficaram ali, por pouco ou por muito tempo.</p> <p>Todos os que estavam escondidos precisavam de comida, e durante a guerra a comida só podia ser comprada com cartões de racionamento especiais. Corrie encontrou maneiras de conseguir cartões para pessoas escondidas por toda a cidade. Ela os guardava num armário secreto dentro do último degrau da escada!</p> <p>A família também precisava de um lugar para esconder os seus hóspedes se a polícia viesse. Um arquiteto que trabalhava com a resistência secreta veio ajudar. Nós só o conhecemos por um nome inventado, o Sr. Smit. No quarto de Corrie, bem no alto da casa, ele construiu uma segunda parede de tijolos, feita para parecer velha, com um espaço estreito atrás dela. Para entrar, era preciso engatinhar por uma portinha de correr debaixo da prateleira de baixo de um armário. A família chamava o lugar de Berço dos Anjos.</p> <p>Depois, eles treinaram. Corrie tocava a campainha de alarme sem avisar, muitas vezes à noite, e marcava no cronômetro o tempo de todos enquanto eles subiam correndo e engatinhavam pela portinha. O tempo mais rápido deles foi setenta segundos. Depois havia bombinhas de creme para todo mundo!</p> <p>O Beje não era uma casa triste. Havia música, e Eusie cantava tão alto que Corrie tinha de avisá-lo de que a rua inteira ia ouvir. À noite, Mary ensinava italiano, Eusie ensinava hebraico e Hans ensinava sobre as estrelas, e o velho papai vinha aprender também. Até o gato da família tinha um nome bíblico bem comprido: Maer-Salal-Has-Baz!</p> <p>O quarto secreto era um bom esconderijo. Mas os ten Boom sabiam que o verdadeiro esconderijo deles era o próprio Deus. Como Deus estava cuidando deles, eles podiam rir e cantar, mesmo em tempos perigosos. Deus também pode ser o seu esconderijo.</p> <p><em>Querido Deus, obrigado porque tu és o meu esconderijo. Quando eu tiver medo, ajuda-me a lembrar que tu estás cuidando de mim. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Onde ficava o quarto secreto, e como se entrava nele?",
+    "answer": "Atrás de uma parede falsa de tijolos no quarto de Corrie, no alto da casa. Era preciso engatinhar por uma portinha de correr debaixo da prateleira de baixo de um armário."
+   },
+   {
+    "question": "O que acontecia depois do treino para se esconder?",
+    "answer": "Corrie dava bombinhas de creme para todo mundo. O tempo mais rápido deles foi setenta segundos."
+   },
+   {
+    "question": "O que ajuda você a se sentir seguro quando está com medo?",
+    "answer": "Qualquer resposta sincera serve aqui. A ideia do capítulo é que o próprio Deus é o nosso esconderijo mais seguro, por isso podemos confiar nele mesmo em tempos assustadores."
+   }
+  ],
+  "body_text": "“Tu és o meu esconderijo. Tu me guardas do perigo e me cercas de cânticos.” — de Salmo 32 Em 1943, já havia sempre pessoas morando escondidas no Beje. O primeiro a ficar foi um estudante chamado Hans. Entre os outros estavam um cantor judeu, um homem que cantava na sinagoga, a quem todos chamavam de Eusie, e uma senhora chamada Mary. Ao longo dos meses, mais de oitenta pessoas ficaram ali, por pouco ou por muito tempo. Todos os que estavam escondidos precisavam de comida, e durante a guerra a comida só podia ser comprada com cartões de racionamento especiais. Corrie encontrou maneiras de conseguir cartões para pessoas escondidas por toda a cidade. Ela os guardava num armário secreto dentro do último degrau da escada! A família também precisava de um lugar para esconder os seus hóspedes se a polícia viesse. Um arquiteto que trabalhava com a resistência secreta veio ajudar. Nós só o conhecemos por um nome inventado, o Sr. Smit. No quarto de Corrie, bem no alto da casa, ele construiu uma segunda parede de tijolos, feita para parecer velha, com um espaço estreito atrás dela. Para entrar, era preciso engatinhar por uma portinha de correr debaixo da prateleira de baixo de um armário. A família chamava o lugar de Berço dos Anjos. Depois, eles treinaram. Corrie tocava a campainha de alarme sem avisar, muitas vezes à noite, e marcava no cronômetro o tempo de todos enquanto eles subiam correndo e engatinhavam pela portinha. O tempo mais rápido deles foi setenta segundos. Depois havia bombinhas de creme para todo mundo! O Beje não era uma casa triste. Havia música, e Eusie cantava tão alto que Corrie tinha de avisá-lo de que a rua inteira ia ouvir. À noite, Mary ensinava italiano, Eusie ensinava hebraico e Hans ensinava sobre as estrelas, e o velho papai vinha aprender também. Até o gato da família tinha um nome bíblico bem comprido: Maer-Salal-Has-Baz! O quarto secreto era um bom esconderijo. Mas os ten Boom sabiam que o verdadeiro esconderijo deles era o próprio Deus. Como Deus estava cuidando deles, eles podiam rir e cantar, mesmo em tempos perigosos. Deus também pode ser o seu esconderijo. Querido Deus, obrigado porque tu és o meu esconderijo. Quando eu tiver medo, ajuda-me a lembrar que tu estás cuidando de mim. Amém.",
+  "word_count": 387
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "pt"
+  ],
+  "order": 6,
+  "title": "O Dia em que a Polícia Chegou",
+  "body_html": "<blockquote>“Quem vive no abrigo do Altíssimo descansará à sua sombra. Direi do Senhor: ele é o meu lugar seguro.” — de Salmo 91</blockquote> <p>Na segunda-feira, 28 de fevereiro de 1944, Corrie estava de cama, com gripe. No andar de baixo, o irmão dela, Willem, estava dirigindo um estudo bíblico. De repente, a campainha de alarme tocou. Seis pessoas passaram correndo pela cama de Corrie e entraram no quarto secreto: quatro hóspedes judeus e dois jovens ajudantes. Corrie escondeu a portinha e voltou para a cama.</p> <p>Instantes depois, a polícia subiu a escada. Eles prenderam Corrie e revistaram a casa, mas nunca encontraram o quarto secreto. O oficial, furioso, bateu em Corrie e em Betsie. Depois, Betsie disse que tinha sentido pena dele.</p> <p>Perto da lareira havia uma plaquinha de madeira que dizia “Jesus é Vencedor”. Betsie apontou para ela, e o papai disse que aquilo era verdade. Parecia que a polícia tinha vencido. Mas Jesus continuava no controle.</p> <p>Naquela noite, na delegacia, a família se deitou junta num colchão no chão: o papai, com Betsie, Corrie, Nollie, Willem e Peter, o filho de Nollie, todos em volta dele. Willem leu o Salmo 91, e o papai orou por todos eles. Foi a última vez que Corrie ouviu o pai orar. No dia seguinte, quando os prisioneiros foram levados embora, o povo de Haarlem ficou parado em silêncio na rua, e muitos estavam chorando.</p> <p>Lá no Beje, as seis pessoas ficaram de pé no escuro atrás da parede durante dois dias e meio, enquanto guardas esperavam dentro da casa. Então alguns policiais bondosos, que estavam secretamente do lado deles, entraram de serviço e as deixaram sair. Eusie ficou tão feliz que levantou os braços na rua e cantou uma oração judaica. Infelizmente, Mary foi presa de novo poucos dias depois, e morreu antes de a guerra acabar. Mas Eusie sobreviveu e se tornou um cantor muito conhecido.</p> <p>O quarto secreto cumpriu a sua tarefa, mas não podia manter todo mundo a salvo. Só Deus podia ir com os ten Boom para onde quer que eles fossem levados. Deus também está com você, mesmo quando coisas ruins acontecem.</p> <p><em>Querido Deus, obrigado porque tu estás sempre comigo, até nos dias de medo. Por favor, fica perto das pessoas que estão em perigo hoje. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "A polícia encontrou as seis pessoas no quarto secreto?",
+    "answer": "Não. Eles revistaram a casa, mas o quarto secreto nunca foi encontrado. Depois de dois dias e meio, policiais bondosos deixaram as seis pessoas sair."
+   },
+   {
+    "question": "O que a família fez naquela noite, na delegacia?",
+    "answer": "Eles se deitaram juntos num colchão, Willem leu o Salmo 91, e o papai orou por todos eles."
+   },
+   {
+    "question": "Por que você acha que a placa “Jesus é Vencedor” ajudou a família?",
+    "answer": "Qualquer resposta sincera serve aqui. A ideia do capítulo é que, mesmo quando parece que o mal venceu, Jesus continua no controle, e Deus fica conosco."
+   }
+  ],
+  "body_text": "“Quem vive no abrigo do Altíssimo descansará à sua sombra. Direi do Senhor: ele é o meu lugar seguro.” — de Salmo 91 Na segunda-feira, 28 de fevereiro de 1944, Corrie estava de cama, com gripe. No andar de baixo, o irmão dela, Willem, estava dirigindo um estudo bíblico. De repente, a campainha de alarme tocou. Seis pessoas passaram correndo pela cama de Corrie e entraram no quarto secreto: quatro hóspedes judeus e dois jovens ajudantes. Corrie escondeu a portinha e voltou para a cama. Instantes depois, a polícia subiu a escada. Eles prenderam Corrie e revistaram a casa, mas nunca encontraram o quarto secreto. O oficial, furioso, bateu em Corrie e em Betsie. Depois, Betsie disse que tinha sentido pena dele. Perto da lareira havia uma plaquinha de madeira que dizia “Jesus é Vencedor”. Betsie apontou para ela, e o papai disse que aquilo era verdade. Parecia que a polícia tinha vencido. Mas Jesus continuava no controle. Naquela noite, na delegacia, a família se deitou junta num colchão no chão: o papai, com Betsie, Corrie, Nollie, Willem e Peter, o filho de Nollie, todos em volta dele. Willem leu o Salmo 91, e o papai orou por todos eles. Foi a última vez que Corrie ouviu o pai orar. No dia seguinte, quando os prisioneiros foram levados embora, o povo de Haarlem ficou parado em silêncio na rua, e muitos estavam chorando. Lá no Beje, as seis pessoas ficaram de pé no escuro atrás da parede durante dois dias e meio, enquanto guardas esperavam dentro da casa. Então alguns policiais bondosos, que estavam secretamente do lado deles, entraram de serviço e as deixaram sair. Eusie ficou tão feliz que levantou os braços na rua e cantou uma oração judaica. Infelizmente, Mary foi presa de novo poucos dias depois, e morreu antes de a guerra acabar. Mas Eusie sobreviveu e se tornou um cantor muito conhecido. O quarto secreto cumpriu a sua tarefa, mas não podia manter todo mundo a salvo. Só Deus podia ir com os ten Boom para onde quer que eles fossem levados. Deus também está com você, mesmo quando coisas ruins acontecem. Querido Deus, obrigado porque tu estás sempre comigo, até nos dias de medo. Por favor, fica perto das pessoas que estão em perigo hoje. Amém.",
+  "word_count": 381
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "pt"
+  ],
+  "order": 7,
+  "title": "Sozinha, mas Não Sozinha",
+  "body_html": "<blockquote>“Ainda que meu pai e minha mãe sejam tirados de mim, o Senhor me segurará bem perto.” — de Salmo 27</blockquote> <p>Os prisioneiros foram levados para uma grande prisão em Scheveningen, perto do mar. O papai estava tão fraco que teve de ser carregado. No portão, ele e Corrie abençoaram um ao outro, e ela olhou para trás uma vez para vê-lo. Ela nunca mais o viu.</p> <p>Corrie ainda estava doente. Uma enfermeira bondosa lhe deu, em segredo, uns livrinhos dos Evangelhos. Depois, Corrie foi colocada numa cela sozinha, e ficou ali sozinha durante semanas. A cela era fria e cinzenta, e ela se sentia muito só. Os guardas brigavam com ela por cantar, mas ela cantava assim mesmo. Uma fila de formigas atravessou o chão, e ela fez amizade com elas e lhes deu migalhas. Ela se lembrou de que Enoque “andou com Deus”, e sabia que ela também não estava andando sozinha.</p> <p>Finalmente chegou uma carta de Nollie, que tinha sido solta da prisão. Com delicadeza, a carta contava a Corrie que o papai tinha morrido. Ele tinha vivido só nove dias depois de ser preso. Corrie chorou e chorou. O papai tinha dito uma vez que seria uma honra dar a vida pelo povo judeu, e agora ele tinha dado. O melhor tinha chegado para ele: ele estava com Jesus.</p> <p>Um dia, um oficial interrogou Corrie. Ele perguntou se ensinar pessoas com deficiência intelectual não era uma perda de tempo. Corrie lhe disse que Deus ama os fracos, e que uma pessoa assim talvez valesse mais para Deus do que qualquer um dos dois.</p> <p>Então, no dia 6 de junho de 1944, os prisioneiros foram transferidos. Numa estaçãozinha, no meio de uma grande multidão, Corrie viu Betsie pela primeira vez em mais de três meses! Elas se espremeram no mesmo vagão do trem, sentaram-se lado a lado e deram as mãos. Outra mulher brincou com elas, dizendo que pareciam dois pombinhos.</p> <p>Corrie disse mais tarde que Deus tinha estado mais perto dela naquela cela solitária do que nunca. Quando você se sentir completamente sozinho, você não está sozinho de verdade. Deus está bem ali com você.</p> <p><em>Querido Deus, obrigado porque tu nunca me deixas. Por favor, fica perto de quem está se sentindo sozinho ou triste hoje. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quem eram as amiguinhas de Corrie na cela da prisão?",
+    "answer": "Uma fila de formigas, a quem ela dava migalhas."
+   },
+   {
+    "question": "O que Corrie disse ao oficial sobre as pessoas com deficiência intelectual?",
+    "answer": "Que Deus ama os fracos, e que uma pessoa assim talvez valesse mais para Deus do que qualquer um dos dois."
+   },
+   {
+    "question": "Quando você já se sentiu sozinho? Como você poderia conversar com Deus sobre isso?",
+    "answer": "Qualquer resposta sincera serve aqui. A ideia do capítulo é que Deus chega perto de nós quando estamos sozinhos, assim como fez com Corrie."
+   }
+  ],
+  "body_text": "“Ainda que meu pai e minha mãe sejam tirados de mim, o Senhor me segurará bem perto.” — de Salmo 27 Os prisioneiros foram levados para uma grande prisão em Scheveningen, perto do mar. O papai estava tão fraco que teve de ser carregado. No portão, ele e Corrie abençoaram um ao outro, e ela olhou para trás uma vez para vê-lo. Ela nunca mais o viu. Corrie ainda estava doente. Uma enfermeira bondosa lhe deu, em segredo, uns livrinhos dos Evangelhos. Depois, Corrie foi colocada numa cela sozinha, e ficou ali sozinha durante semanas. A cela era fria e cinzenta, e ela se sentia muito só. Os guardas brigavam com ela por cantar, mas ela cantava assim mesmo. Uma fila de formigas atravessou o chão, e ela fez amizade com elas e lhes deu migalhas. Ela se lembrou de que Enoque “andou com Deus”, e sabia que ela também não estava andando sozinha. Finalmente chegou uma carta de Nollie, que tinha sido solta da prisão. Com delicadeza, a carta contava a Corrie que o papai tinha morrido. Ele tinha vivido só nove dias depois de ser preso. Corrie chorou e chorou. O papai tinha dito uma vez que seria uma honra dar a vida pelo povo judeu, e agora ele tinha dado. O melhor tinha chegado para ele: ele estava com Jesus. Um dia, um oficial interrogou Corrie. Ele perguntou se ensinar pessoas com deficiência intelectual não era uma perda de tempo. Corrie lhe disse que Deus ama os fracos, e que uma pessoa assim talvez valesse mais para Deus do que qualquer um dos dois. Então, no dia 6 de junho de 1944, os prisioneiros foram transferidos. Numa estaçãozinha, no meio de uma grande multidão, Corrie viu Betsie pela primeira vez em mais de três meses! Elas se espremeram no mesmo vagão do trem, sentaram-se lado a lado e deram as mãos. Outra mulher brincou com elas, dizendo que pareciam dois pombinhos. Corrie disse mais tarde que Deus tinha estado mais perto dela naquela cela solitária do que nunca. Quando você se sentir completamente sozinho, você não está sozinho de verdade. Deus está bem ali com você. Querido Deus, obrigado porque tu nunca me deixas. Por favor, fica perto de quem está se sentindo sozinho ou triste hoje. Amém.",
+  "word_count": 381
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "pt"
+  ],
+  "order": 8,
+  "title": "O Avesso do Bordado",
+  "body_html": "<blockquote>“Quando você atravessar as águas profundas, eu estarei com você.” — de Isaías 43</blockquote> <p>Corrie e Betsie foram levadas para um campo de prisioneiros chamado Vught, no sul da Holanda. As mulheres de lá passavam o dia inteiro sentadas sem nada para fazer, e logo começaram a reclamar e a brigar. Então Betsie criou um clube! Os membros prometiam tentar não reclamar, não falar coisas maldosas sobre ninguém e dizer palavras de ânimo aos outros.</p> <p>Mais tarde, Corrie foi mandada trabalhar numa bancada, testando pequenos interruptores para rádios, onze horas por dia. Não era tão interessante quanto consertar relógios, mas ela fazia aquilo muito bem. Betsie trabalhava na sala de costura. Nas tardes de domingo, as mulheres se reuniam num pedacinho de grama entre os barracões para adorar a Deus, e logo Corrie estava dirigindo os cultos.</p> <p>Mesmo assim, Vught era um lugar difícil e assustador. Um dia, enquanto os exércitos que lutavam contra os nazistas chegavam mais perto, os guardas levaram embora muitos dos prisioneiros homens e os mataram. Corrie encostou a cabeça no ombro de Betsie e perguntou a Deus por que ele deixava aquilo acontecer.</p> <p>Então Corrie sentiu Deus mostrando a ela que ela não precisava carregar sozinha toda a tristeza do mundo. Ela podia levá-la a ele e deixá-la ali. E ela pensou num bordado. Do lado do avesso, ele parece um emaranhado bagunçado de linhas. Mas, quando você o vira, aparece uma figura linda! Um dia, ela acreditava, nós vamos ver o lado certo da nossa vida, e vamos entender.</p> <p>Em setembro, as irmãs foram amontoadas num vagão de carga com umas oitenta outras mulheres. Durante três dias e três noites, o trem foi sacolejando para dentro da Alemanha. Por fim, ele parou perto de um lago, e as mulheres caminharam até os portões de um grande campo chamado Ravensbrück.</p> <p>Agora, muitas vezes só vemos o avesso embaraçado do bordado. Mas Deus vê a figura inteira, e ele está tecendo uma coisa boa. Você pode levar os seus sentimentos de tristeza e de preocupação a ele e deixá-los nas mãos dele.</p> <p><em>Querido Deus, quando eu não entender o que está acontecendo, ajuda-me a confiar em ti. Eu te entrego agora as minhas preocupações, e as deixo contigo. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Que clube Betsie criou em Vught?",
+    "answer": "Um clube cujos membros prometiam tentar não reclamar, não falar coisas maldosas sobre ninguém e animar uns aos outros."
+   },
+   {
+    "question": "Como é o avesso de um bordado?",
+    "answer": "Um emaranhado bagunçado de linhas. Mas do lado certo há uma figura linda."
+   },
+   {
+    "question": "Que preocupação você gostaria de entregar a Deus hoje?",
+    "answer": "Qualquer resposta sincera serve aqui. A ideia do capítulo é que não precisamos carregar sozinhos toda tristeza, porque Deus vê a figura inteira."
+   }
+  ],
+  "body_text": "“Quando você atravessar as águas profundas, eu estarei com você.” — de Isaías 43 Corrie e Betsie foram levadas para um campo de prisioneiros chamado Vught, no sul da Holanda. As mulheres de lá passavam o dia inteiro sentadas sem nada para fazer, e logo começaram a reclamar e a brigar. Então Betsie criou um clube! Os membros prometiam tentar não reclamar, não falar coisas maldosas sobre ninguém e dizer palavras de ânimo aos outros. Mais tarde, Corrie foi mandada trabalhar numa bancada, testando pequenos interruptores para rádios, onze horas por dia. Não era tão interessante quanto consertar relógios, mas ela fazia aquilo muito bem. Betsie trabalhava na sala de costura. Nas tardes de domingo, as mulheres se reuniam num pedacinho de grama entre os barracões para adorar a Deus, e logo Corrie estava dirigindo os cultos. Mesmo assim, Vught era um lugar difícil e assustador. Um dia, enquanto os exércitos que lutavam contra os nazistas chegavam mais perto, os guardas levaram embora muitos dos prisioneiros homens e os mataram. Corrie encostou a cabeça no ombro de Betsie e perguntou a Deus por que ele deixava aquilo acontecer. Então Corrie sentiu Deus mostrando a ela que ela não precisava carregar sozinha toda a tristeza do mundo. Ela podia levá-la a ele e deixá-la ali. E ela pensou num bordado. Do lado do avesso, ele parece um emaranhado bagunçado de linhas. Mas, quando você o vira, aparece uma figura linda! Um dia, ela acreditava, nós vamos ver o lado certo da nossa vida, e vamos entender. Em setembro, as irmãs foram amontoadas num vagão de carga com umas oitenta outras mulheres. Durante três dias e três noites, o trem foi sacolejando para dentro da Alemanha. Por fim, ele parou perto de um lago, e as mulheres caminharam até os portões de um grande campo chamado Ravensbrück. Agora, muitas vezes só vemos o avesso embaraçado do bordado. Mas Deus vê a figura inteira, e ele está tecendo uma coisa boa. Você pode levar os seus sentimentos de tristeza e de preocupação a ele e deixá-los nas mãos dele. Querido Deus, quando eu não entender o que está acontecendo, ajuda-me a confiar em ti. Eu te entrego agora as minhas preocupações, e as deixo contigo. Amém.",
+  "word_count": 373
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "pt"
+  ],
+  "order": 9,
+  "title": "Uma Bíblia no Barracão 28",
+  "body_html": "<blockquote>“Em tudo deem graças.” — de 1 Tessalonicenses 5</blockquote> <p>Ravensbrück era um campo enorme para mulheres. Era lotado, frio e sujo, e nunca havia comida suficiente. Quando as novas prisioneiras chegavam, quase tudo o que elas tinham era tirado delas, e elas recebiam um vestido fino para usar. Mas Corrie escondeu a sua Bíblia pequena debaixo do vestido. Os guardas estavam revistando todo mundo, mas não revistaram Corrie. Ela acreditava que Deus a tinha escondido.</p> <p>As irmãs foram mandadas morar no Barracão 28, um galpão comprido com beliches de três andares. Corrie escreveu mais tarde que, no fim, umas mil e quatrocentas mulheres estavam espremidas ali. Duas ou mais mulheres tinham de dividir cada cama estreita.</p> <p>Todos os dias, Corrie e Betsie liam a Bíblia para as mulheres ao redor delas, às vezes duas vezes por dia. Mulheres da Holanda, da França, da Polônia, da Rússia e de muitos outros lugares escutavam. Quando elas não falavam a mesma língua, as irmãs simplesmente diziam o nome de Jesus, e o rosto das mulheres se iluminava.</p> <p>Muitos anos depois, Corrie contou uma história sobre isso. O barracão estava cheio de pulgas, e Corrie as detestava. Mas Betsie disse que elas deviam dar graças a Deus em tudo, até pelas pulgas! Mais tarde, elas descobriram que os guardas não chegavam perto da parte delas do barracão, e por isso as leituras da Bíblia podiam continuar. O motivo, disse Corrie, eram as pulgas.</p> <p>Corrie também tinha um frasquinho de gotas de vitamina. Todos os dias, ela dava algumas gotas às mulheres ao seu redor. Corrie escreveu que o frasco continuou dando gotas durante semanas, muito mais tempo do que deveria, até que uma amiga trouxe mais vitaminas do hospital do campo. Então ele secou.</p> <p>Mesmo no pior lugar, Corrie e Betsie repartiam o que tinham e davam graças a Deus. Quando as coisas estiverem difíceis para você, você ainda pode procurar alguma coisa pela qual agradecer a Deus, e alguma coisa para repartir.</p> <p><em>Querido Deus, obrigado pela tua Palavra, a Bíblia. Ajuda-me a te agradecer até nos dias difíceis, e a repartir o que eu tenho com os outros. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Como Corrie ficou com a sua Bíblia em Ravensbrück?",
+    "answer": "Ela a escondeu debaixo do vestido. Os guardas estavam revistando todo mundo, mas não revistaram Corrie."
+   },
+   {
+    "question": "Por que Betsie queria agradecer a Deus pelas pulgas?",
+    "answer": "Porque a Bíblia diz para dar graças em tudo. Mais tarde, as irmãs descobriram que os guardas não chegavam perto, e por isso as leituras da Bíblia podiam continuar."
+   },
+   {
+    "question": "Pelo que você pode agradecer a Deus hoje, mesmo que o dia esteja difícil?",
+    "answer": "Qualquer resposta sincera serve aqui. A ideia do capítulo é que podemos procurar a bondade de Deus e dar graças em qualquer situação."
+   }
+  ],
+  "body_text": "“Em tudo deem graças.” — de 1 Tessalonicenses 5 Ravensbrück era um campo enorme para mulheres. Era lotado, frio e sujo, e nunca havia comida suficiente. Quando as novas prisioneiras chegavam, quase tudo o que elas tinham era tirado delas, e elas recebiam um vestido fino para usar. Mas Corrie escondeu a sua Bíblia pequena debaixo do vestido. Os guardas estavam revistando todo mundo, mas não revistaram Corrie. Ela acreditava que Deus a tinha escondido. As irmãs foram mandadas morar no Barracão 28, um galpão comprido com beliches de três andares. Corrie escreveu mais tarde que, no fim, umas mil e quatrocentas mulheres estavam espremidas ali. Duas ou mais mulheres tinham de dividir cada cama estreita. Todos os dias, Corrie e Betsie liam a Bíblia para as mulheres ao redor delas, às vezes duas vezes por dia. Mulheres da Holanda, da França, da Polônia, da Rússia e de muitos outros lugares escutavam. Quando elas não falavam a mesma língua, as irmãs simplesmente diziam o nome de Jesus, e o rosto das mulheres se iluminava. Muitos anos depois, Corrie contou uma história sobre isso. O barracão estava cheio de pulgas, e Corrie as detestava. Mas Betsie disse que elas deviam dar graças a Deus em tudo, até pelas pulgas! Mais tarde, elas descobriram que os guardas não chegavam perto da parte delas do barracão, e por isso as leituras da Bíblia podiam continuar. O motivo, disse Corrie, eram as pulgas. Corrie também tinha um frasquinho de gotas de vitamina. Todos os dias, ela dava algumas gotas às mulheres ao seu redor. Corrie escreveu que o frasco continuou dando gotas durante semanas, muito mais tempo do que deveria, até que uma amiga trouxe mais vitaminas do hospital do campo. Então ele secou. Mesmo no pior lugar, Corrie e Betsie repartiam o que tinham e davam graças a Deus. Quando as coisas estiverem difíceis para você, você ainda pode procurar alguma coisa pela qual agradecer a Deus, e alguma coisa para repartir. Querido Deus, obrigado pela tua Palavra, a Bíblia. Ajuda-me a te agradecer até nos dias difíceis, e a repartir o que eu tenho com os outros. Amém.",
+  "word_count": 356
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "pt"
+  ],
+  "order": 10,
+  "title": "Betsie Vai para Casa",
+  "body_html": "<blockquote>“Se eu subir ao céu, tu estás lá. Se eu descer ao lugar mais profundo, tu também estás lá.” — de Salmo 139</blockquote> <p>Betsie era a pessoa mais meiga do Barracão 28. Ela era mais fraca do que Corrie, mas de certa forma era a mais forte das duas, porque a sua fé era muito profunda e tranquila. Ela sentia pena até das pessoas que eram cruéis com elas.</p> <p>À noite, as irmãs faziam planos juntas. Quando voltassem para casa, iam abrir uma casa para as pessoas que saíssem dos campos e não tivessem para onde ir. E iam aos Estados Unidos contar a todo mundo o que Deus tinha feito por elas.</p> <p>Mas Betsie estava ficando cada vez mais fraca. Ela ficou muito doente, com febre alta, e por fim já não conseguia andar. Ela foi levada numa maca até o hospital do campo. Enquanto ela passava, uma mulher polonesa se ajoelhou ao lado dela e orou. Naquela tarde, Corrie a visitou mais uma vez.</p> <p>Na manhã seguinte, 16 de dezembro de 1944, Corrie olhou pela janela do hospital. Betsie tinha morrido. Ela tinha cinquenta e nove anos. Quando Corrie foi vê-la, descobriu que o rosto de Betsie parecia tranquilo e jovem de novo, como se Deus tivesse lhe dado uma espiadinha do céu.</p> <p>Num livro escrito muitos anos depois, Corrie se lembrou de Betsie dizendo que elas precisavam contar às pessoas que o amor de Deus é mais profundo do que até o poço mais fundo. Naquela noite, uma mulher russa não tinha onde dormir. Corrie abriu espaço para ela no lugar onde Betsie costumava se deitar, e as duas mulheres se abraçaram.</p> <p>É muito triste quando alguém que amamos morre. Mas, para todos os que pertencem a Jesus, a morte não é o fim. Não existe lugar tão fundo nem tão escuro que Deus já não esteja lá, e ele nunca deixa de nos amar.</p> <p><em>Querido Deus, obrigado porque o teu amor é mais profundo do que o lugar mais fundo. Por favor, consola todos os que estão com saudade de alguém que amam. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Que planos Corrie e Betsie fizeram juntas?",
+    "answer": "Abrir uma casa para as pessoas que saíssem dos campos sem ter para onde ir, e viajar aos Estados Unidos para contar o que Deus tinha feito por elas."
+   },
+   {
+    "question": "O que Corrie fez pela mulher russa que não tinha onde dormir?",
+    "answer": "Ela abriu espaço para ela no lugar onde Betsie costumava se deitar."
+   },
+   {
+    "question": "Como ajuda você saber que o amor de Deus é mais profundo do que qualquer lugar escuro?",
+    "answer": "Qualquer resposta sincera serve aqui. A ideia do capítulo é que nada, nem mesmo a morte, pode nos afastar do amor de Deus."
+   }
+  ],
+  "body_text": "“Se eu subir ao céu, tu estás lá. Se eu descer ao lugar mais profundo, tu também estás lá.” — de Salmo 139 Betsie era a pessoa mais meiga do Barracão 28. Ela era mais fraca do que Corrie, mas de certa forma era a mais forte das duas, porque a sua fé era muito profunda e tranquila. Ela sentia pena até das pessoas que eram cruéis com elas. À noite, as irmãs faziam planos juntas. Quando voltassem para casa, iam abrir uma casa para as pessoas que saíssem dos campos e não tivessem para onde ir. E iam aos Estados Unidos contar a todo mundo o que Deus tinha feito por elas. Mas Betsie estava ficando cada vez mais fraca. Ela ficou muito doente, com febre alta, e por fim já não conseguia andar. Ela foi levada numa maca até o hospital do campo. Enquanto ela passava, uma mulher polonesa se ajoelhou ao lado dela e orou. Naquela tarde, Corrie a visitou mais uma vez. Na manhã seguinte, 16 de dezembro de 1944, Corrie olhou pela janela do hospital. Betsie tinha morrido. Ela tinha cinquenta e nove anos. Quando Corrie foi vê-la, descobriu que o rosto de Betsie parecia tranquilo e jovem de novo, como se Deus tivesse lhe dado uma espiadinha do céu. Num livro escrito muitos anos depois, Corrie se lembrou de Betsie dizendo que elas precisavam contar às pessoas que o amor de Deus é mais profundo do que até o poço mais fundo. Naquela noite, uma mulher russa não tinha onde dormir. Corrie abriu espaço para ela no lugar onde Betsie costumava se deitar, e as duas mulheres se abraçaram. É muito triste quando alguém que amamos morre. Mas, para todos os que pertencem a Jesus, a morte não é o fim. Não existe lugar tão fundo nem tão escuro que Deus já não esteja lá, e ele nunca deixa de nos amar. Querido Deus, obrigado porque o teu amor é mais profundo do que o lugar mais fundo. Por favor, consola todos os que estão com saudade de alguém que amam. Amém.",
+  "word_count": 348
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "pt"
+  ],
+  "order": 11,
+  "title": "Livre!",
+  "body_html": "<blockquote>“Escapamos como um passarinho da armadilha. A armadilha se quebrou, e estamos livres!” — de Salmo 124</blockquote> <p>Três dias depois de Betsie morrer, Corrie ouviu o seu nome sendo chamado quando as prisioneiras estavam enfileiradas para a contagem. Ela ia ser solta! Mas antes ela teve de esperar no hospital do campo até que as suas pernas inchadas melhorassem.</p> <p>No hospital estava deitada uma menina chamada Oelie, que tinha deficiência intelectual. Ela estava muito doente e chorava chamando pela mãe. Noite após noite, Corrie lhe falava de Jesus. Na última noite, Oelie conseguiu dizer, com as suas próprias palavras, que Jesus a amava e estava preparando um lugar para ela. Corrie entendeu então por que tinha precisado esperar. Todos aqueles anos dando as suas aulas especiais em Haarlem tinham levado a isto.</p> <p>Finalmente, Corrie saiu caminhando pelo portão. A viagem de volta para casa, atravessando a Alemanha, levou vários dias. Ela quase não tinha comida, e algumas pessoas foram maldosas com ela, mas outras a ajudaram e lhe deram de comer.</p> <p>Na cidade holandesa de Groningen, ela foi a um hospital. Uma das enfermeiras tinha sido líder nos clubes de meninas de Corrie! Elas lhe deram comida, um banho e roupas limpas, e ela dormiu numa cama de verdade. Quando ouviu música de novo, ela chorou. A sua vida, ela sentia, tinha sido devolvida a ela como um presente.</p> <p>Anos mais tarde, disseram a Corrie que ela tinha sido solta por engano. Ninguém sabe com certeza. Mas Corrie nunca duvidou de quem a tinha libertado. Foi Deus.</p> <p>Como um passarinho solto de uma armadilha, Corrie estava livre. Às vezes não sabemos exatamente como Deus nos ajuda, mas sempre podemos dizer obrigado a ele por isso.</p> <p><em>Querido Deus, obrigado por todas as vezes que tu me ajudaste, mesmo quando eu não sabia como. Ajuda-me a usar a minha vida para ajudar os outros. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quem era Oelie, e o que Corrie fez por ela?",
+    "answer": "Uma menina muito doente, com deficiência intelectual. Corrie lhe falava de Jesus todas as noites, até que Oelie conseguiu dizer que Jesus a amava."
+   },
+   {
+    "question": "Quem Corrie encontrou no hospital de Groningen?",
+    "answer": "Uma enfermeira que tinha sido líder nos clubes de meninas de Corrie."
+   },
+   {
+    "question": "Em que Deus já ajudou você, e pelo que você pode agradecer a ele?",
+    "answer": "Qualquer resposta sincera serve aqui. A ideia do capítulo é que Deus nos liberta e nos ajuda, mesmo quando não entendemos como."
+   }
+  ],
+  "body_text": "“Escapamos como um passarinho da armadilha. A armadilha se quebrou, e estamos livres!” — de Salmo 124 Três dias depois de Betsie morrer, Corrie ouviu o seu nome sendo chamado quando as prisioneiras estavam enfileiradas para a contagem. Ela ia ser solta! Mas antes ela teve de esperar no hospital do campo até que as suas pernas inchadas melhorassem. No hospital estava deitada uma menina chamada Oelie, que tinha deficiência intelectual. Ela estava muito doente e chorava chamando pela mãe. Noite após noite, Corrie lhe falava de Jesus. Na última noite, Oelie conseguiu dizer, com as suas próprias palavras, que Jesus a amava e estava preparando um lugar para ela. Corrie entendeu então por que tinha precisado esperar. Todos aqueles anos dando as suas aulas especiais em Haarlem tinham levado a isto. Finalmente, Corrie saiu caminhando pelo portão. A viagem de volta para casa, atravessando a Alemanha, levou vários dias. Ela quase não tinha comida, e algumas pessoas foram maldosas com ela, mas outras a ajudaram e lhe deram de comer. Na cidade holandesa de Groningen, ela foi a um hospital. Uma das enfermeiras tinha sido líder nos clubes de meninas de Corrie! Elas lhe deram comida, um banho e roupas limpas, e ela dormiu numa cama de verdade. Quando ouviu música de novo, ela chorou. A sua vida, ela sentia, tinha sido devolvida a ela como um presente. Anos mais tarde, disseram a Corrie que ela tinha sido solta por engano. Ninguém sabe com certeza. Mas Corrie nunca duvidou de quem a tinha libertado. Foi Deus. Como um passarinho solto de uma armadilha, Corrie estava livre. Às vezes não sabemos exatamente como Deus nos ajuda, mas sempre podemos dizer obrigado a ele por isso. Querido Deus, obrigado por todas as vezes que tu me ajudaste, mesmo quando eu não sabia como. Ajuda-me a usar a minha vida para ajudar os outros. Amém.",
+  "word_count": 313
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "pt"
+  ],
+  "order": 12,
+  "title": "Uma Mão Estendida",
+  "body_html": "<blockquote>“Amem os seus inimigos e orem por aqueles que fazem mal a vocês.” — de Mateus 5</blockquote> <p>Quando a guerra terminou, em maio de 1945, a Holanda finalmente estava livre. Poucas semanas depois, Corrie fez uma coisa muito corajosa. Ela escreveu uma carta ao homem que, segundo lhe tinham dito, havia traído a sua família, entregando-a à polícia. Ela lhe disse que o perdoava, que estava orando por ele e que Jesus podia fazer dele um homem novo.</p> <p>Corrie se lembrou dos planos que tinha feito com Betsie. Ela abriu um lar para as pessoas que voltavam da guerra feridas e sem ter para onde ir. Alguns anos depois, ela até abriu um lar na Alemanha, para as pessoas de lá que tinham perdido a casa.</p> <p>Corrie contou uma história sobre um dia de 1947 em Munique, na Alemanha. Depois que ela falou sobre o perdão de Deus, um homem se aproximou dela. Ela o conhecia: ele tinha sido guarda em Ravensbrück. Ele disse que tinha se tornado cristão, e estendeu a mão para ela. Corrie percebeu que não conseguia apertá-la. Então ela orou em silêncio e pediu a Jesus que a ajudasse. Aí ela estendeu a mão, e, enquanto eles se cumprimentavam, ela sentiu o amor de Deus encher o seu coração. Ela conseguiu perdoá-lo.</p> <p>Durante mais de trinta anos, Corrie viajou pelo mundo, falando em mais de sessenta países. A história dela virou um livro famoso e um filme, e uma árvore foi plantada em sua homenagem em Jerusalém. Por onde ela passava, dizia às pessoas que o amor de Deus é mais forte do que o lugar mais escuro.</p> <p>Quando estava bem velhinha, Corrie morou na Califórnia. Ela teve derrames e quase não conseguia falar nos seus últimos cinco anos, e amigos bondosos cuidaram dela. Ela morreu no dia 15 de abril de 1983. Era o dia do seu aniversário de noventa e um anos.</p> <p>Perdoar as pessoas que nos machucam pode ser muito difícil. Corrie descobriu que não conseguia fazer isso sozinha, mas Deus lhe deu o amor de que ela precisava. Ele também vai ajudar você a perdoar, se você pedir a ele.</p> <p><em>Querido Deus, obrigado por Corrie e Betsie ten Boom, e por tudo o que tu fizeste por meio delas. Quando for difícil para mim perdoar, por favor, dá-me o teu amor. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que Corrie escreveu na carta ao homem que traiu a sua família?",
+    "answer": "Que o perdoava, que estava orando por ele e que Jesus podia fazer dele um homem novo."
+   },
+   {
+    "question": "O que aconteceu quando Corrie pediu a Jesus que a ajudasse a apertar a mão do guarda?",
+    "answer": "Quando ela estendeu a mão, sentiu o amor de Deus encher o seu coração, e conseguiu perdoá-lo."
+   },
+   {
+    "question": "Existe alguém que você precisa da ajuda de Deus para perdoar?",
+    "answer": "Qualquer resposta sincera serve aqui. A ideia do capítulo é que perdoar pode ser muito difícil, mas Deus nos dá o seu amor para que possamos perdoar."
+   }
+  ],
+  "body_text": "“Amem os seus inimigos e orem por aqueles que fazem mal a vocês.” — de Mateus 5 Quando a guerra terminou, em maio de 1945, a Holanda finalmente estava livre. Poucas semanas depois, Corrie fez uma coisa muito corajosa. Ela escreveu uma carta ao homem que, segundo lhe tinham dito, havia traído a sua família, entregando-a à polícia. Ela lhe disse que o perdoava, que estava orando por ele e que Jesus podia fazer dele um homem novo. Corrie se lembrou dos planos que tinha feito com Betsie. Ela abriu um lar para as pessoas que voltavam da guerra feridas e sem ter para onde ir. Alguns anos depois, ela até abriu um lar na Alemanha, para as pessoas de lá que tinham perdido a casa. Corrie contou uma história sobre um dia de 1947 em Munique, na Alemanha. Depois que ela falou sobre o perdão de Deus, um homem se aproximou dela. Ela o conhecia: ele tinha sido guarda em Ravensbrück. Ele disse que tinha se tornado cristão, e estendeu a mão para ela. Corrie percebeu que não conseguia apertá-la. Então ela orou em silêncio e pediu a Jesus que a ajudasse. Aí ela estendeu a mão, e, enquanto eles se cumprimentavam, ela sentiu o amor de Deus encher o seu coração. Ela conseguiu perdoá-lo. Durante mais de trinta anos, Corrie viajou pelo mundo, falando em mais de sessenta países. A história dela virou um livro famoso e um filme, e uma árvore foi plantada em sua homenagem em Jerusalém. Por onde ela passava, dizia às pessoas que o amor de Deus é mais forte do que o lugar mais escuro. Quando estava bem velhinha, Corrie morou na Califórnia. Ela teve derrames e quase não conseguia falar nos seus últimos cinco anos, e amigos bondosos cuidaram dela. Ela morreu no dia 15 de abril de 1983. Era o dia do seu aniversário de noventa e um anos. Perdoar as pessoas que nos machucam pode ser muito difícil. Corrie descobriu que não conseguia fazer isso sozinha, mas Deus lhe deu o amor de que ela precisava. Ele também vai ajudar você a perdoar, se você pedir a ele. Querido Deus, obrigado por Corrie e Betsie ten Boom, e por tudo o que tu fizeste por meio delas. Quando for difícil para mim perdoar, por favor, dá-me o teu amor. Amém.",
+  "word_count": 390
+ }
+}
+]
