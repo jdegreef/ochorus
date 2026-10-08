@@ -715,6 +715,7 @@ SIGNUP_VARIANT_LABELS = {
     "header": "Header sign-in",
     "menu": "Phone menu",
     "feedback": "Feedback link",
+    "one_tap": "Google One Tap",
 }
 
 

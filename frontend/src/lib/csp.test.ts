@@ -214,6 +214,18 @@ describe('kit.csp Content-Security-Policy (svelte.config.js)', () => {
 		).toContain(hash);
 	});
 
+	it("scopes Google One Tap to Google's /gsi/ paths, not the whole host", () => {
+		// accounts.google.com also serves sign-in pages for any Google account,
+		// so a bare host in frame-src or script-src would admit far more than the
+		// One Tap prompt ($lib/oneTap) needs.
+		for (const dir of ['script-src', 'style-src', 'connect-src', 'frame-src']) {
+			const google = csp[dir].filter((s) => s.includes('accounts.google.com'));
+			expect(google.length, dir).toBe(1);
+			expect(google[0], dir).toMatch(/^https:\/\/accounts\.google\.com\/gsi\//);
+		}
+		expect(csp['frame-src']).toEqual(['https://accounts.google.com/gsi/']);
+	});
+
 	it('never allows a wildcard or plain-http connect-src', () => {
 		// connect-src is the control that stops an injected script posting the
 		// localStorage access token off-origin, so "*" would give the whole
