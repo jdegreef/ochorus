@@ -1,0 +1,97 @@
+{
+ "kind": "book",
+ "slug": "elisabeth-elliot-a-life-children",
+ "language": "sw",
+ "job_issue": 5565,
+ "pull_request": null,
+ "note": [
+  "The English epigraphs are loose modern paraphrases cited by chapter only (“from Isaiah 43”). Each was rendered in the Swahili Union Version (SUV) tradition the shipped sw corpus quotes, not in swhonen (a different, revised edition — see the translation-worker skill). Where a shipped *.sw.json already carries the SUV words, they were pasted verbatim and the row is `mined` with that file; otherwise the row is `self_rendered` in the SUV register and needs a native check.",
+  "Self-rendered: Isaiah 55:8 (SUV order “wala njia zenu si njia zangu”, though the English paraphrase reads “my ways are not your ways”), Ecclesiastes 4:9 (only the first clause is in the corpus; the SUV “wapata ijara njema kwa kazi yao” is kept although the English paraphrase reads “help each other in their work” — a reviewer may prefer a plainer word than “ijara” for children), Isaiah 42:16 (two clauses of the verse, joined as the English does) and Isaiah 46:4. Romans 10:14 quotes only its middle two questions, matching the English.",
+  "Chapter 12's “everlasting love” / “everlasting arms” (Jeremiah 31:3, Deuteronomy 33:27) are allusions, not quotations, in the English; they are rendered with the wording of the shipped sw Elisabeth Elliot bio (“upendo wa milele”, “mikono ya milele”).",
+  "Clock time: chapter 8's radio call at “half past four” is CONVERTED to Swahili reckoning (“saa kumi na nusu jioni”), as a-retrospect-children.sw did; flag if the house convention should keep the printed number.",
+  "Names follow the shipped sw Elliot bio: Ekuado, Wakichua/Kikichua (Quichua), Waorani, “kigogota” for Gikari (woodpecker). “Doe the nexte thynge” is kept in English with a gloss. “Monsters” (ch. 10) is “mazimwi”, the folk-tale ogre a Swahili-reading child knows.",
+  "English fixed in the same PR: chapter 8 said the poem had “three words” (“Doe the nexte thynge” is four) in the body and in study question 2; both now say four, and this edition follows."
+ ],
+ "references": [
+  {
+   "reference": "Deuteronomy 6:6-7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:11",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "2 Timothy 2:15",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "wholly-sanctified.sw.json"
+  },
+  {
+   "reference": "Isaiah 55:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Ecclesiastes 4:9",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Romans 10:14",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "faith.sw.json"
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "women-who-moved-heaven-2.sw.json"
+  },
+  {
+   "reference": "Isaiah 42:16",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Romans 12:21",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "a-retrospect-teens.sw.json"
+  },
+  {
+   "reference": "Psalm 62:8",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Isaiah 46:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}

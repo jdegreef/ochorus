@@ -1,0 +1,4858 @@
+{
+ "kind": "book",
+ "slug": "holy-in-christ",
+ "language": "lg",
+ "job_issue": 1337,
+ "pull_request": 5593,
+ "note": [
+  "Scripture follows the Open Luganda Contemporary Bible (OLCB 2017, lug_bib — the lug text language_seed.py names). Every `mined` row was checked mechanically: its wording is a verbatim substring of the OLCB verse. `self_rendered` rows are Murray’s loose quotations, re-personed verses, merges, and places where the OLCB wording loses the word his argument turns on (each carries a `why`).",
+  "Murray’s archaic citations (1 Pet. i. 15, 16) are given as modern OLCB references (1 Peetero 1:15-16); citations Murray got wrong are kept as he wrote them in the body (see the PR’s “Found, not fixed” list) while the row here names the verse actually quoted.",
+  "Translated by per-chapter AI translators in one session; tag sequence identical to the English chapter by chapter. AI-translated; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Leviticus 19:2",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 1,
+   "chapter_order": 1
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 1,
+   "why": "Murray's 'vessel ... meet for the Master's use' keeps the vessel image, which OLCB drops; agreement adapted to ekibya"
+  },
+  {
+   "reference": "1 Peter 1:15",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 7,
+   "chapter_order": 2
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 7,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:30a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 8,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:28b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 8,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 1:7",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 9,
+   "chapter_order": 2
+  },
+  {
+   "reference": "1 Corinthians 1:2",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 2,
+   "why": "one quotation cited for Rom 1:7 and 1 Cor 1:2; wording taken from OLCB Rom 1:7 (1 Cor 1:2 reads ‘abayitibwa abatukuvu’)"
+  },
+  {
+   "reference": "1 Thessalonians 4:7",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 9,
+   "chapter_order": 2
+  },
+  {
+   "reference": "1 Thessalonians 5:23a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 9,
+   "chapter_order": 2
+  },
+  {
+   "reference": "1 Thessalonians 5:24",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 9,
+   "chapter_order": 2
+  },
+  {
+   "reference": "2 Timothy 1:9",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 9,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Ephesians 1:4",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 2,
+   "why": "Murray omits 'before the foundation of the world', which sits inside the OLCB span"
+  },
+  {
+   "reference": "2 Thessalonians 2:13",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 2,
+   "why": "Murray's loose 'salvation in sanctification'; OLCB splits it into a different clause structure (source cites ii. 12, see english_errors)"
+  },
+  {
+   "reference": "2 Thessalonians 2:13",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 2,
+   "why": "Murray's re-quote of the same loose phrase, kept consistent with the rendering above"
+  },
+  {
+   "reference": "1 Peter 1:2",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 9,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Ephesians 1:4",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 2,
+   "why": "Murray's paraphrase 'chosen to be holy', recast as a noun phrase"
+  },
+  {
+   "reference": "Ephesians 1:18",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 2,
+   "why": "re-personed by Murray (their calling); OLCB has kwammwe (your)"
+  },
+  {
+   "reference": "1 Peter 1:15",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 7,
+   "chapter_order": 2
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 7,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Ephesians 1:4",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 2,
+   "why": "Murray's condensed paraphrase of the verse"
+  },
+  {
+   "reference": "1 Samuel 2:2",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 14,
+   "chapter_order": 2
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 7,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Leviticus 20:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 14,
+   "chapter_order": 2
+  },
+  {
+   "reference": "1 Peter 1:15",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 2,
+   "why": "Murray's elliptical fragment of the verse"
+  },
+  {
+   "reference": "1 Peter 1:15",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 2,
+   "why": "R.V. margin reading, not the OLCB text"
+  },
+  {
+   "reference": "Matthew 5:48",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 15,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 4:17",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 2,
+   "why": "Murray follows KJV 'calleth'; OLCB reads 'alaba' (sees)"
+  },
+  {
+   "reference": "Genesis 22:1",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 17,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Exodus 3:4",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 17,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Exodus 3:6",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 17,
+   "chapter_order": 2
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 2,
+   "why": "Murray's 'as I am holy' variant of the verse"
+  },
+  {
+   "reference": "1 Thessalonians 5:23-24",
+   "status": "self_rendered",
+   "block_index": 25,
+   "chapter_order": 2,
+   "why": "Murray joins two verses into one quotation"
+  },
+  {
+   "reference": "1 Corinthians 1:2",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 28,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Philippians 1:1",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 29,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Philippians 4:21",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 29,
+   "chapter_order": 3
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 33,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Leviticus 11:44",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 33,
+   "chapter_order": 3
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "block_index": 42,
+   "chapter_order": 3,
+   "why": "Murray truncates to 'Be ye holy, as I am'; OLCB 'kubanga nze ndi mutukuvu' recast to end on 'as I am'"
+  },
+  {
+   "reference": "Proverbs 4:18",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 34,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Hebrews 12:29",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 46,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Proverbs 3:5b",
+   "status": "self_rendered",
+   "block_index": 49,
+   "chapter_order": 3,
+   "why": "OLCB wording with first letter capitalised to open the quotation (OLCB has 'teweesigamanga' mid-verse)"
+  },
+  {
+   "reference": "Philippians 1:1",
+   "status": "self_rendered",
+   "block_index": 38,
+   "chapter_order": 3,
+   "why": "Murray's title-phrase drawn from Phil 1:1, omitting 'bonna' and the place; capitalised"
+  },
+  {
+   "reference": "Philippians 3:3",
+   "status": "self_rendered",
+   "block_index": 41,
+   "chapter_order": 3,
+   "why": "allusion re-personed from 'we' to 'the soul' (OLCB 'tetwesiga mubiri')"
+  },
+  {
+   "reference": "John 17:19",
+   "status": "self_rendered",
+   "block_index": 42,
+   "chapter_order": 3,
+   "why": "allusion re-personed (OLCB 'neetukuza ku lwabwe')"
+  },
+  {
+   "reference": "Genesis 2:3",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 54,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 2:3",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 54,
+   "chapter_order": 4
+  },
+  {
+   "reference": "1 Corinthians 1:2",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 55,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Exodus 31:13",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 57,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Hebrews 4:3",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 59,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Hebrews 4:10",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 59,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 1:28",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 60,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 1:22",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 60,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 1:31b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 60,
+   "chapter_order": 4
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 62,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Exodus 31:17b",
+   "status": "self_rendered",
+   "block_index": 58,
+   "chapter_order": 4,
+   "why": "OLCB renders only 'n’awummula' (rested); Murray quotes the 'is refreshed' clause, which the OLCB wording lacks"
+  },
+  {
+   "reference": "Genesis 2:3",
+   "status": "self_rendered",
+   "block_index": 59,
+   "chapter_order": 4,
+   "why": "Murray's own condensed paraphrase ('He sanctified because he rested'), not the verse wording"
+  },
+  {
+   "reference": "1 Thessalonians 4:3a",
+   "status": "self_rendered",
+   "block_index": 64,
+   "chapter_order": 4,
+   "why": "re-personed into prayer addressed to God ('Thy will is our sanctification'); OLCB has 'Katonda ayagala mutukuzibwe'"
+  },
+  {
+   "reference": "Exodus 3:4",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 72,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Exodus 3:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 72,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Exodus 3:6b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 72,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Romans 4:17",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 75,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Isaiah 10:17",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 76,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Exodus 3:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 72,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Exodus 3:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 72,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Ephesians 4:22",
+   "status": "self_rendered",
+   "block_index": 79,
+   "chapter_order": 5,
+   "why": "Murray merges Eph 4:22 / Col 3:9 with Rom 13:14 into one saying; OLCB 4:22 reads 'mwambulemu obulamu obw’omuntu ow’edda'"
+  },
+  {
+   "reference": "Romans 13:14",
+   "status": "self_rendered",
+   "block_index": 79,
+   "chapter_order": 5,
+   "why": "Murray's shortened 'put on the Lord Jesus' in 2nd person; OLCB is 1st person plural 'twambale Mukama waffe Yesu Kristo'"
+  },
+  {
+   "reference": "Colossians 2:11",
+   "status": "self_rendered",
+   "block_index": 79,
+   "chapter_order": 5,
+   "why": "Murray quotes the RV 'putting off of the body of the flesh'; OLCB renders 'desires of the flesh' (okwegomba kw’omubiri)"
+  },
+  {
+   "reference": "Isaiah 57:15",
+   "status": "self_rendered",
+   "block_index": 80,
+   "chapter_order": 5,
+   "why": "OLCB wording, but Murray omits 'For' and 'that inhabiteth eternity' and stops mid-verse; inner quote mark dropped"
+  },
+  {
+   "reference": "Leviticus 11:44",
+   "status": "self_rendered",
+   "block_index": 81,
+   "chapter_order": 5,
+   "why": "Murray's own threefold summary formula (Lev 11:44; 20:8), not a verbatim quotation"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 82,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Exodus 3:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 72,
+   "chapter_order": 5
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 82,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Exodus 3:2",
+   "status": "self_rendered",
+   "block_index": 87,
+   "chapter_order": 5,
+   "why": "a motto drawn from Ex 3:2, recast as a short saying from OLCB's 'nga kyaka naye nga tekisiriira'"
+  },
+  {
+   "reference": "Hebrews 12:29",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 88,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Hebrews 12:28",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 88,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Isaiah 11:2",
+   "status": "self_rendered",
+   "block_index": 89,
+   "chapter_order": 5,
+   "why": "OLCB spreads the phrase over a list ('Mwoyo w’okumanya era n’okutya Mukama Katonda'); no contiguous span fits"
+  },
+  {
+   "reference": "Acts 9:31",
+   "status": "self_rendered",
+   "block_index": 89,
+   "chapter_order": 5,
+   "why": "OLCB paraphrases ('ne bayiga okutya Mukama, era Mwoyo Mutukuvu n’abasanyusanga'), losing 'walking' and 'comfort'"
+  },
+  {
+   "reference": "Exodus 15:11",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 92,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 5:7b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 92,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 34:9a",
+   "status": "self_rendered",
+   "block_index": 92,
+   "chapter_order": 5,
+   "why": "OLCB renders 'fear' as 'give honour' (Musseemu ekitiibwa), losing the fear–holiness link the note illustrates"
+  },
+  {
+   "reference": "Psalm 96:9",
+   "status": "self_rendered",
+   "block_index": 92,
+   "chapter_order": 5,
+   "why": "OLCB has 'righteousness' (obutuukirivu) for 'holiness', which is the word Murray is illustrating"
+  },
+  {
+   "reference": "Psalm 99:3",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 92,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Proverbs 9:10",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 92,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Isaiah 8:13",
+   "status": "self_rendered",
+   "block_index": 92,
+   "chapter_order": 5,
+   "why": "OLCB is first person ('nze Mutukuvu') and drops 'sanctify', the word Murray emphasizes"
+  },
+  {
+   "reference": "2 Corinthians 7:1b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 92,
+   "chapter_order": 5
+  },
+  {
+   "reference": "1 Peter 1:15",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 92,
+   "chapter_order": 5
+  },
+  {
+   "reference": "1 Peter 1:17",
+   "status": "self_rendered",
+   "block_index": 92,
+   "chapter_order": 5,
+   "why": "OLCB 1:17 has no 'fear' ('mumusseemu ekitiibwa'), the word Murray emphasizes"
+  },
+  {
+   "reference": "Revelation 15:4",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 92,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Exodus 13:2",
+   "status": "self_rendered",
+   "block_index": 94,
+   "chapter_order": 6,
+   "why": "emphatic 'nze' added to carry Murray's italic 'me' (OLCB: Ebibereberye byonna binjawulireko)"
+  },
+  {
+   "reference": "Numbers 3:13",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 95,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Leviticus 11:45",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 96,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Isaiah 43:1",
+   "status": "self_rendered",
+   "block_index": 97,
+   "chapter_order": 6,
+   "why": "Murray elides the middle clause; OLCB words kept but not contiguous"
+  },
+  {
+   "reference": "Exodus 12:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 98,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Exodus 13:2",
+   "status": "self_rendered",
+   "block_index": 98,
+   "chapter_order": 6,
+   "why": "Murray's expanded paraphrase ('make holy... it is mine')"
+  },
+  {
+   "reference": "Exodus 19:6",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 98,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Numbers 8:16-17",
+   "status": "self_rendered",
+   "block_index": 98,
+   "chapter_order": 6,
+   "why": "Murray's composite of Num 3:12-13 and 8:16-17; built from OLCB phrases"
+  },
+  {
+   "reference": "Leviticus 11:45",
+   "status": "self_rendered",
+   "block_index": 103,
+   "chapter_order": 6,
+   "why": "Murray's loose re-quote, reworded as first-person 'I brought you up'"
+  },
+  {
+   "reference": "Exodus 13:2",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 94,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Numbers 3:13",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 95,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Isaiah 49:7",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 106,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Isaiah 35:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 106,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Isaiah 35:9",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 106,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "block_index": 106,
+   "chapter_order": 6,
+   "why": "Murray inverts the clauses"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 107,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Ephesians 1:7",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 111,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Hebrews 13:12",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 111,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Isaiah 43:1",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 97,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Exodus 15:11",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 132,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Exodus 15:13",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 127,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Exodus 15:17b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 123,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Exodus 29:43b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 126,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Leviticus 10:3b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 126,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Isaiah 6:3b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 126,
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 Timothy 6:16a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 126,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Corinthians 4:6b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 126,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Exodus 15:11",
+   "status": "self_rendered",
+   "block_index": 127,
+   "chapter_order": 7,
+   "why": "Murray abridges the verse (drops 'among the gods' and the last clauses); OLCB words with the gap closed"
+  },
+  {
+   "reference": "Exodus 15:12",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 127,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Exodus 14:24b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 127,
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 Samuel 2:2a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 128,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Isaiah 12:2b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 128,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Isaiah 12:5a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 128,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Isaiah 12:6",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 128,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Luke 1:49",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 128,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Revelation 4:8b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 128,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Revelation 4:8c",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 128,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Revelation 15:4a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 128,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalm 97:12",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 128,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalm 99:3",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 129,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalm 99:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 129,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalm 99:9",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 129,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Exodus 3:5b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 130,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Exodus 15:11",
+   "status": "self_rendered",
+   "block_index": 130,
+   "chapter_order": 7,
+   "why": "Murray conflates the two halves of the verse (omits 'among the gods? Who is like unto Thee'); used in paras 13, 17 and 20"
+  },
+  {
+   "reference": "Exodus 15:11b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 130,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Romans 8:3b",
+   "status": "self_rendered",
+   "block_index": 132,
+   "chapter_order": 7,
+   "why": "unmarked allusion; OLCB active 'n’asalira ekibi omusango mu mubiri' recast as passive to fit Murray's sentence"
+  },
+  {
+   "reference": "1 Peter 1:16b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 133,
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 Peter 1:8b",
+   "status": "self_rendered",
+   "block_index": 136,
+   "chapter_order": 7,
+   "why": "unmarked allusion; OLCB has 'essanyu eritayogerekeka' but renders 'full of glory' as 'ne mumugulumiza', so the second half is mine"
+  },
+  {
+   "reference": "Psalm 22:3",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 139,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalm 22:23a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 141,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Exodus 19:4",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 143,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Exodus 19:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 143,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Exodus 19:6b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 143,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Exodus 19:4",
+   "status": "self_rendered",
+   "block_index": 144,
+   "chapter_order": 8,
+   "why": "Murray paraphrases 19:4 ('how I brought you unto myself'); OLCB wording condensed"
+  },
+  {
+   "reference": "Exodus 19:6",
+   "status": "self_rendered",
+   "block_index": 144,
+   "chapter_order": 8,
+   "why": "Murray's KJV 'ye shall be unto me an holy nation' with the 'kingdom of priests' clause omitted; built from OLCB 'Munaabeeranga ... eggwanga ettukuvu' plus 'gye ndi'"
+  },
+  {
+   "reference": "Exodus 19:5-6",
+   "status": "self_rendered",
+   "block_index": 144,
+   "chapter_order": 8,
+   "why": "Murray merges 19:5a and 19:6b into one conditional; OLCB pieces joined"
+  },
+  {
+   "reference": "Numbers 15:40",
+   "status": "self_rendered",
+   "block_index": 146,
+   "chapter_order": 8,
+   "why": "OLCB lacks 'and do', which Murray italicises; added 'gonna ne mugakola'"
+  },
+  {
+   "reference": "Leviticus 20:7a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 146,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Leviticus 20:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 146,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Leviticus 22:31",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 146,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Leviticus 22:32",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 146,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Leviticus 22:33a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 146,
+   "chapter_order": 8
+  },
+  {
+   "reference": "1 Thessalonians 5:23a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 148,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Mark 3:35",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 148,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Exodus 19:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 150,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Exodus 24:7",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 150,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Romans 8:3a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 150,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Exodus 19:4-6",
+   "status": "self_rendered",
+   "block_index": 151,
+   "chapter_order": 8,
+   "why": "Murray's own condensation of 19:4-6 ('I have brought you unto myself; if ye obey...')"
+  },
+  {
+   "reference": "Exodus 19:5a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 143,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Exodus 29:43",
+   "status": "self_rendered",
+   "block_index": 153,
+   "chapter_order": 8,
+   "why": "Murray recasts the passive ('shall be sanctified by my glory') as God's first-person 'I will sanctify it'; OLCB passive wording does not fit"
+  },
+  {
+   "reference": "Exodus 19:4-6",
+   "status": "self_rendered",
+   "block_index": 154,
+   "chapter_order": 8,
+   "why": "Murray condenses 19:4-6 and puns 'in deed'; rendered 'mu bikolwa'"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 155,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "self_rendered",
+   "block_index": 158,
+   "chapter_order": 8,
+   "why": "OLCB 'n’aba muwulize' is a mid-sentence consecutive form; recast as a standalone sentence"
+  },
+  {
+   "reference": "Hebrews 5:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 158,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Hebrews 10:7",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 158,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Hebrews 10:10a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 158,
+   "chapter_order": 8
+  },
+  {
+   "reference": "John 4:34",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 159,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Exodus 25:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 165,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Exodus 29:43b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 166,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Exodus 29:45",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 166,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Exodus 29:43",
+   "status": "self_rendered",
+   "block_index": 175,
+   "chapter_order": 9,
+   "why": "Murray's closing adaptation inserts 'the heart' and merges Ex 29:43 with 25:8/29:45; rendered freely"
+  },
+  {
+   "reference": "Psalm 46:4b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 167,
+   "chapter_order": 9
+  },
+  {
+   "reference": "1 Samuel 2:2a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 170,
+   "chapter_order": 9
+  },
+  {
+   "reference": "John 10:36",
+   "status": "self_rendered",
+   "block_index": 173,
+   "chapter_order": 9,
+   "why": "unquoted allusion re-personed from first to third person"
+  },
+  {
+   "reference": "John 14:11a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 173,
+   "chapter_order": 9
+  },
+  {
+   "reference": "John 14:10b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 173,
+   "chapter_order": 9
+  },
+  {
+   "reference": "1 Corinthians 3:17b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 173,
+   "chapter_order": 9
+  },
+  {
+   "reference": "1 Corinthians 6:19a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 173,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Ephesians 2:21",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 173,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Isaiah 57:15a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 175,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Isaiah 57:15b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 175,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Ephesians 3:16",
+   "status": "self_rendered",
+   "block_index": 178,
+   "chapter_order": 9,
+   "why": "Murray's prayer re-persons the verse (us/Thy Spirit); OLCB wording does not fit"
+  },
+  {
+   "reference": "Ephesians 3:17a",
+   "status": "self_rendered",
+   "block_index": 177,
+   "chapter_order": 9,
+   "why": "re-personed your -> our (OLCB: gyammwe ... kwammwe)"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 179,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalm 96:9a",
+   "status": "self_rendered",
+   "block_index": 175,
+   "chapter_order": 9,
+   "why": "OLCB reads 'ekitiibwa eky’obutuukirivu' (righteousness); Murray's 'beauty of holiness' rendered directly"
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 175,
+   "chapter_order": 9
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 176,
+   "chapter_order": 9
+  },
+  {
+   "reference": "John 14:21",
+   "status": "self_rendered",
+   "block_index": 177,
+   "chapter_order": 9,
+   "why": "Murray prefixes 'I will come' to the verse's 'manifest myself to him'; only the last word is OLCB"
+  },
+  {
+   "reference": "John 14:23",
+   "status": "self_rendered",
+   "block_index": 177,
+   "chapter_order": 9,
+   "why": "OLCB wording, but 'Nze ne Kitange' dropped as Murray does and first word capitalised"
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 182,
+   "chapter_order": 9
+  },
+  {
+   "reference": "1 Thessalonians 5:24",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 182,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Exodus 28:36",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 185,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Exodus 28:38",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 185,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Exodus 28:38",
+   "status": "self_rendered",
+   "block_index": 188,
+   "chapter_order": 10,
+   "why": "Murray quotes the verse with an elision; two non-contiguous OLCB spans joined"
+  },
+  {
+   "reference": "Psalm 51:6a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 188,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Exodus 28:38b",
+   "status": "self_rendered",
+   "block_index": 190,
+   "chapter_order": 10,
+   "why": "Murray re-words the verse (plate -> holy crown, His forehead, 'they' accepted); OLCB subject agreement does not fit"
+  },
+  {
+   "reference": "Hebrews 2:11",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 191,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Zechariah 14:20a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 192,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 193,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 197,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Leviticus 20:24b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 203,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Leviticus 20:26",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 203,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Numbers 6:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 204,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Numbers 6:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 204,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Hebrews 13:12",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 205,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Hebrews 13:13",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 205,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Leviticus 11:45b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 207,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Leviticus 20:26",
+   "status": "self_rendered",
+   "block_index": 208,
+   "chapter_order": 11,
+   "why": "Murray reverses the clause order of 20:26; OLCB words reordered to follow him"
+  },
+  {
+   "reference": "1 Corinthians 11:14",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 210,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Leviticus 20:26b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 203,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Leviticus 20:26b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 203,
+   "chapter_order": 11
+  },
+  {
+   "reference": "2 Corinthians 6:17",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 214,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Leviticus 26:12",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 214,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Hebrews 7:26",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 214,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Exodus 33:16a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 214,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Exodus 33:16b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 214,
+   "chapter_order": 11
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 215,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Joshua 24:19",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 220,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 221,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Leviticus 11:45",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 227,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Leviticus 21:8b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 227,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Isaiah 43:3a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 228,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Isaiah 43:14a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 228,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Isaiah 43:15",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 228,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Isaiah 12:6",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 230,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Isaiah 29:19b",
+   "status": "self_rendered",
+   "block_index": 230,
+   "chapter_order": 12,
+   "why": "OLCB half-verse opens with the conjunction n’abeetaaga; dropped n’ and capitalised to start the quotation as Murray does"
+  },
+  {
+   "reference": "Isaiah 41:16b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 230,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Isaiah 43:15a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 228,
+   "chapter_order": 12
+  },
+  {
+   "reference": "1 Samuel 2:2a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 233,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Isaiah 40:25",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 233,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Isaiah 57:15a",
+   "status": "self_rendered",
+   "block_index": 234,
+   "chapter_order": 12,
+   "why": "Murray omits 'that inhabiteth eternity' (OLCB 'omulamu emirembe n’emirembe'); clause dropped and opening capitalised"
+  },
+  {
+   "reference": "Isaiah 2:17",
+   "status": "self_rendered",
+   "block_index": 234,
+   "chapter_order": 12,
+   "why": "Murray recasts the verse in the present tense; OLCB's future-tense wording does not fit his sentence"
+  },
+  {
+   "reference": "Isaiah 5:16b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 235,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Leviticus 21:8",
+   "status": "self_rendered",
+   "block_index": 236,
+   "chapter_order": 12,
+   "why": "Murray's own condensation of 'I am holy … I the Lord make you holy' into a first-person maxim"
+  },
+  {
+   "reference": "1 John 1:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 237,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Leviticus 11:44",
+   "status": "self_rendered",
+   "block_index": 238,
+   "chapter_order": 12,
+   "why": "composite of Lev 11:44 and 20:8/21:8 in Murray's own condensed form"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 239,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Leviticus 11:45b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 227,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Leviticus 20:8",
+   "status": "self_rendered",
+   "block_index": 240,
+   "chapter_order": 12,
+   "why": "OLCB 'Nze Mukama abatukuza' recast in plain first person as Murray quotes it ('I make you holy'), without 'the Lord'"
+  },
+  {
+   "reference": "Isaiah 43:14a",
+   "status": "self_rendered",
+   "block_index": 241,
+   "chapter_order": 12,
+   "why": "Murray reverses the order of OLCB 'Omununuzi wammwe, Omutukuvu wa Isirayiri' and drops 'of Israel'"
+  },
+  {
+   "reference": "Romans 4:17",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 243,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "block_index": 243,
+   "chapter_order": 12,
+   "why": "merges the doxology of 3:21 ('Glory to Him') with 3:20; OLCB 3:20 wording kept for 'exceeding abundantly above all we ask or think'"
+  },
+  {
+   "reference": "Romans 6:13b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 244,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 245,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Isaiah 6:1",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 248,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Isaiah 6:2a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 248,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Isaiah 6:3a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 248,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Isaiah 6:3b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 248,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Revelation 4:8a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 249,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Revelation 4:8b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 249,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Exodus 15:11",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 251,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Isaiah 6:5a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 251,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Isaiah 6:5b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 255,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Isaiah 6:8a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 268,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Isaiah 6:8b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 255,
+   "chapter_order": 13
+  },
+  {
+   "reference": "1 Timothy 6:16a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 254,
+   "chapter_order": 13
+  },
+  {
+   "reference": "1 Timothy 6:16b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 256,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Galatians 4:6",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 257,
+   "chapter_order": 13
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 260,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Revelation 4:8",
+   "status": "self_rendered",
+   "block_index": 261,
+   "chapter_order": 13,
+   "why": "Murray turns the doxology into direct address to God (which wast, and art); re-personed and repunctuated, used in both prayer paragraphs."
+  },
+  {
+   "reference": "Isaiah 57:15",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 271,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Isaiah 57:15",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 271,
+   "chapter_order": 14
+  },
+  {
+   "reference": "2 Corinthians 6:9b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 277,
+   "chapter_order": 14
+  },
+  {
+   "reference": "2 Corinthians 6:10a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 277,
+   "chapter_order": 14
+  },
+  {
+   "reference": "2 Corinthians 6:10c",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 277,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Luke 14:11b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 277,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "self_rendered",
+   "block_index": 279,
+   "chapter_order": 14,
+   "why": "Murray truncates the verse to 'theirs is the Kingdom'; OLCB 'abo Obwakabaka obw’omu ggulu' shortened to match"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 279,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Ephesians 3:19",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 282,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Philippians 2:7-8",
+   "status": "self_rendered",
+   "block_index": 283,
+   "chapter_order": 14,
+   "why": "Allusion woven into a prayer; merges two verses and re-persons them (relative clause about Christ)"
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 285,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Romans 14:17",
+   "status": "self_rendered",
+   "block_index": 285,
+   "chapter_order": 14,
+   "why": "Murray's compression of Rom 14:17 ('the kingdom ... is in the Holy Ghost'); not OLCB wording"
+  },
+  {
+   "reference": "Luke 1:35",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 290,
+   "chapter_order": 15
+  },
+  {
+   "reference": "John 6:69",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 291,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalm 106:16",
+   "status": "self_rendered",
+   "block_index": 292,
+   "chapter_order": 15,
+   "why": "OLCB renders the phrase as 'abalonde ba Mukama' (chosen ones); Murray's point rests on the word 'holy', so the phrase is rendered directly"
+  },
+  {
+   "reference": "Hebrews 1:9",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 293,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Isaiah 65:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 294,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Isaiah 57:15",
+   "status": "self_rendered",
+   "block_index": 294,
+   "chapter_order": 15,
+   "why": "Murray abridges the verse (omits 'that inhabiteth eternity' and the closing clauses); OLCB words kept but elided, inner quote mark dropped"
+  },
+  {
+   "reference": "John 17:19",
+   "status": "self_rendered",
+   "block_index": 297,
+   "chapter_order": 15,
+   "why": "unquoted paraphrase in third person (OLCB first person 'neetukuza ku lwabwe')"
+  },
+  {
+   "reference": "Hebrews 1:3",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 299,
+   "chapter_order": 15
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 302,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Colossians 1:19",
+   "status": "self_rendered",
+   "block_index": 308,
+   "chapter_order": 15,
+   "why": "re-personed into prayer address (Thou / Thy Son)"
+  },
+  {
+   "reference": "Colossians 2:3",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 308,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Hebrews 7:16",
+   "status": "self_rendered",
+   "block_index": 308,
+   "chapter_order": 15,
+   "why": "short allusion; OLCB phrase is split ('amaanyi bwe gali ag’obulamu obutaggwaawo')"
+  },
+  {
+   "reference": "1 John 3:10b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 309,
+   "chapter_order": 15
+  },
+  {
+   "reference": "John 7:39",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 316,
+   "chapter_order": 16
+  },
+  {
+   "reference": "John 14:26a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 317,
+   "chapter_order": 16
+  },
+  {
+   "reference": "2 Thessalonians 2:13b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 318,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Leviticus 20:8b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 319,
+   "chapter_order": 16
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 323,
+   "chapter_order": 16,
+   "why": "unquoted paraphrase; Murray keeps only 'made unto us sanctification'"
+  },
+  {
+   "reference": "John 17:19",
+   "status": "self_rendered",
+   "block_index": 323,
+   "chapter_order": 16,
+   "why": "paraphrase re-personed to third person / 'us'"
+  },
+  {
+   "reference": "Hebrews 10:10",
+   "status": "self_rendered",
+   "block_index": 323,
+   "chapter_order": 16,
+   "why": "OLCB wording with 'olw’okwagala kwe' dropped, as in Murray's paraphrase"
+  },
+  {
+   "reference": "1 Corinthians 1:2",
+   "status": "self_rendered",
+   "block_index": 323,
+   "chapter_order": 16,
+   "why": "paraphrase re-personed from 'abaatukuzibwa mu Kristo Yesu' to first person plural"
+  },
+  {
+   "reference": "Romans 7:22",
+   "status": "self_rendered",
+   "block_index": 324,
+   "chapter_order": 16,
+   "why": "unquoted allusion woven into Murray's sentence"
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "self_rendered",
+   "block_index": 324,
+   "chapter_order": 16,
+   "why": "unquoted allusion; Murray's own syntax"
+  },
+  {
+   "reference": "Romans 8:21",
+   "status": "self_rendered",
+   "block_index": 324,
+   "chapter_order": 16,
+   "why": "unquoted allusion; Murray's phrasing 'glorious liberty of the sons of God'"
+  },
+  {
+   "reference": "Revelation 22:1",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 325,
+   "chapter_order": 16
+  },
+  {
+   "reference": "John 14:26a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 317,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Ephesians 3:14",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 325,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Ephesians 3:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 325,
+   "chapter_order": 16
+  },
+  {
+   "reference": "John 7:38",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 325,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Leviticus 11:44",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 325,
+   "chapter_order": 16
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 325,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Leviticus 20:8",
+   "status": "self_rendered",
+   "block_index": 325,
+   "chapter_order": 16,
+   "why": "Murray's shortened formula 'I make holy'"
+  },
+  {
+   "reference": "Isaiah 6:3",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 325,
+   "chapter_order": 16
+  },
+  {
+   "reference": "1 Peter 3:15",
+   "status": "self_rendered",
+   "block_index": 326,
+   "chapter_order": 16,
+   "why": "KJV-based 'sanctify the Lord God'; OLCB reads 'Mutyenga Mukama waffe Kristo', singular imperative"
+  },
+  {
+   "reference": "Isaiah 8:13",
+   "status": "self_rendered",
+   "block_index": 326,
+   "chapter_order": 16,
+   "why": "re-personed to second person singular"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 327,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Isaiah 6:3",
+   "status": "self_rendered",
+   "block_index": 328,
+   "chapter_order": 16,
+   "why": "prayer address: 'ekitiibwa kye' re-personed to 'kyo' (Thy glory)"
+  },
+  {
+   "reference": "Revelation 22:1",
+   "status": "self_rendered",
+   "block_index": 328,
+   "chapter_order": 16,
+   "why": "allusion in prayer; 'from under the throne' and first-person framing"
+  },
+  {
+   "reference": "1 Corinthians 2:9",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 328,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Ephesians 3:16",
+   "status": "self_rendered",
+   "block_index": 329,
+   "chapter_order": 16,
+   "why": "prayer re-persons 'you' to 'me' and 'His Spirit' to 'Thy Spirit'"
+  },
+  {
+   "reference": "Philippians 3:3",
+   "status": "self_rendered",
+   "block_index": 329,
+   "chapter_order": 16,
+   "why": "allusion in prayer, re-personed"
+  },
+  {
+   "reference": "Leviticus 11:44",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 325,
+   "chapter_order": 16
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 325,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Leviticus 20:8",
+   "status": "self_rendered",
+   "block_index": 330,
+   "chapter_order": 16,
+   "why": "Murray's shortened formula 'I make you holy'"
+  },
+  {
+   "reference": "1 John 2:27",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 334,
+   "chapter_order": 16
+  },
+  {
+   "reference": "John 17:17",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 337,
+   "chapter_order": 17
+  },
+  {
+   "reference": "2 Thessalonians 2:13",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 338,
+   "chapter_order": 17
+  },
+  {
+   "reference": "John 17:8",
+   "status": "self_rendered",
+   "block_index": 340,
+   "chapter_order": 17,
+   "why": "Murray quotes the KJV 'The words which thou gavest me I have given unto them'; OLCB paraphrases the verse differently ('buli kye wandagira nkibayigirizza'), so its wording does not carry Murray's point"
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 342,
+   "chapter_order": 17
+  },
+  {
+   "reference": "John 8:31-32",
+   "status": "self_rendered",
+   "block_index": 344,
+   "chapter_order": 17,
+   "why": "Murray joins 8:31a to 8:32a, eliding the middle; built from OLCB phrases"
+  },
+  {
+   "reference": "Psalm 51:6a",
+   "status": "self_rendered",
+   "block_index": 345,
+   "chapter_order": 17,
+   "why": "unquoted allusion re-personed from 'Oyagala' (you) to God in third person; 'gwange' dropped"
+  },
+  {
+   "reference": "John 18:37",
+   "status": "self_rendered",
+   "block_index": 345,
+   "chapter_order": 17,
+   "why": "Murray's loose paraphrase ('If ye were of the truth', 'he that is of the truth knoweth me') matches no verse exactly; nearest is John 18:37 / 8:46-47"
+  },
+  {
+   "reference": "John 17:11b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 346,
+   "chapter_order": 17
+  },
+  {
+   "reference": "John 17:17a",
+   "status": "self_rendered",
+   "block_index": 346,
+   "chapter_order": 17,
+   "why": "Murray re-persons Christ's prayer to 'make me holy' / 'make us holy' / 'sanctify them in Thy truth'; also used as 'Kitaffe Omutukuvu! tutukuze mu mazima' and 'Kitange, obatukuze mu mazima go'"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 346,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "self_rendered",
+   "block_index": 346,
+   "chapter_order": 17,
+   "why": "allusion ('ever liveth to pray') woven into the sentence; OLCB has 'abeera mulamu ennaku zonna okubawolereza'"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 348,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Leviticus 21:8",
+   "status": "self_rendered",
+   "block_index": 349,
+   "chapter_order": 17,
+   "why": "Murray's summary 'I the Lord am holy and make holy'; OLCB 21:8 orders it 'Nze Mukama atukuza mmwe, ndi mutukuvu'"
+  },
+  {
+   "reference": "Acts 4:30",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 351,
+   "chapter_order": 17
+  },
+  {
+   "reference": "John 17:19",
+   "status": "self_rendered",
+   "block_index": 351,
+   "chapter_order": 17,
+   "why": "re-personed from 'them' to 'us' as Murray does"
+  },
+  {
+   "reference": "John 14:6",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 351,
+   "chapter_order": 17
+  },
+  {
+   "reference": "John 17:19",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 358,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Hebrews 10:9",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 359,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Hebrews 10:10",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 359,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Hebrews 10:14",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 359,
+   "chapter_order": 18
+  },
+  {
+   "reference": "John 10:36",
+   "status": "self_rendered",
+   "block_index": 360,
+   "chapter_order": 18,
+   "why": "OLCB verse is first person ('Kitange gwe yatukuza n’antuma'); Murray reports it in the third person"
+  },
+  {
+   "reference": "Hebrews 5:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 362,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Matthew 26:42",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 362,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Exodus 3:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 364,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Exodus 15:11",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 364,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Exodus 19:12-13",
+   "status": "self_rendered",
+   "block_index": 364,
+   "chapter_order": 18,
+   "why": "Murray merges 'touch it' (19:12) with 'man or beast, it shall not live' (19:13); OLCB splits these across two verses with different wording"
+  },
+  {
+   "reference": "Exodus 33:20",
+   "status": "self_rendered",
+   "block_index": 364,
+   "chapter_order": 18,
+   "why": "Murray's unquoted third-person paraphrase; OLCB is first person ('tewali muntu antunulako n’aba mulamu')"
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 365,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Hebrews 9:26",
+   "status": "self_rendered",
+   "block_index": 365,
+   "chapter_order": 18,
+   "why": "OLCB 9:26 lacks 'put away sin' wording; rendered Murray's KJV clause, borrowing OLCB 'yeewaayo yennyini'"
+  },
+  {
+   "reference": "Galatians 2:19a",
+   "status": "self_rendered",
+   "block_index": 365,
+   "chapter_order": 18,
+   "why": "Murray's condensed 'I died that I might live'; OLCB adds 'olw’amateeka ... eri mateeka' and 'mu Katonda'"
+  },
+  {
+   "reference": "Galatians 2:19b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 365,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Galatians 2:20a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 365,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Hebrews 10:7",
+   "status": "self_rendered",
+   "block_index": 366,
+   "chapter_order": 18,
+   "why": "Murray adds 'O God' (KJV Heb 10:7), absent from OLCB wording"
+  },
+  {
+   "reference": "Hebrews 10:10",
+   "status": "self_rendered",
+   "block_index": 366,
+   "chapter_order": 18,
+   "why": "Murray splits the verse around an interpolated gloss and reshapes it ('the one offering of the body of Christ')"
+  },
+  {
+   "reference": "2 Corinthians 4:10a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 367,
+   "chapter_order": 18
+  },
+  {
+   "reference": "2 Corinthians 4:10b",
+   "status": "self_rendered",
+   "block_index": 367,
+   "chapter_order": 18,
+   "why": "OLCB 4:10b reads 'okufa kwa Yesu' (death), contradicting the verse's 'life'; used the parallel OLCB wording of 4:11b"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 369,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 373,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Acts 3:14-15",
+   "status": "self_rendered",
+   "block_index": 373,
+   "chapter_order": 18,
+   "why": "Re-personed from 'mmwe ... mwegaana / mutta' to 'they', and 'omutuukirivu era' dropped as in Murray"
+  },
+  {
+   "reference": "Romans 6:6a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 374,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Acts 26:18",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 378,
+   "chapter_order": 19
+  },
+  {
+   "reference": "Acts 26:18",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 378,
+   "chapter_order": 19
+  },
+  {
+   "reference": "Acts 26:18",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 378,
+   "chapter_order": 19
+  },
+  {
+   "reference": "Acts 26:18",
+   "status": "self_rendered",
+   "block_index": 378,
+   "chapter_order": 19,
+   "why": "OLCB wording verbatim, only the first letter capitalized because the phrase opens a quotation/sentence"
+  },
+  {
+   "reference": "1 Peter 1:15",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 382,
+   "chapter_order": 19
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 382,
+   "chapter_order": 19,
+   "why": "Murray quotes only the 'sanctification' member of the verse; OLCB's list (wisdom, righteousness, sanctification, redemption) is elided and the clause reordered"
+  },
+  {
+   "reference": "Galatians 5:6",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 384,
+   "chapter_order": 19
+  },
+  {
+   "reference": "John 11:40",
+   "status": "self_rendered",
+   "block_index": 385,
+   "chapter_order": 19,
+   "why": "OLCB wording verbatim but capitalized at the start of the quotation; Murray stops before 'the glory of God'"
+  },
+  {
+   "reference": "Deuteronomy 3:22",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 385,
+   "chapter_order": 19
+  },
+  {
+   "reference": "Psalm 106:12",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 386,
+   "chapter_order": 19
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "self_rendered",
+   "block_index": 387,
+   "chapter_order": 19,
+   "why": "Murray re-persons 'your most holy faith' to 'our'; OLCB has 'okukkiriza kwammwe okutukuvu'"
+  },
+  {
+   "reference": "Jude 1:3",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 387,
+   "chapter_order": 19
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 388,
+   "chapter_order": 19
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "self_rendered",
+   "block_index": 390,
+   "chapter_order": 19,
+   "why": "woven into the prayer with 'in Thee' added; OLCB renders 'help my unbelief' as asking faith to grow, which loses Murray's wording"
+  },
+  {
+   "reference": "2 Corinthians 4:13",
+   "status": "self_rendered",
+   "block_index": 392,
+   "chapter_order": 19,
+   "why": "Murray capitalizes Spirit and drops 'same'; OLCB has 'omwoyo omu ow’okukkiriza'"
+  },
+  {
+   "reference": "Romans 1:3-4",
+   "status": "self_rendered",
+   "block_index": 401,
+   "chapter_order": 20,
+   "why": "Murray quotes vv.3-4 merged, and OLCB renders 'Spirit of holiness' as 'Mwoyo Mutukuvu', erasing the distinction the chapter expounds"
+  },
+  {
+   "reference": "1 Peter 1:3",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 405,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Colossians 3:1",
+   "status": "self_rendered",
+   "block_index": 405,
+   "chapter_order": 20,
+   "why": "re-personed to singular 'you' (OLCB: mwazuukirira awamu ne Kristo)"
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "self_rendered",
+   "block_index": 405,
+   "chapter_order": 20,
+   "why": "re-personed to singular and Murray's 'reckon yourself' form"
+  },
+  {
+   "reference": "Hebrews 10:9",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 406,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Hebrews 10:10a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 406,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Hebrews 10:10b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 406,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Colossians 4:12",
+   "status": "self_rendered",
+   "block_index": 407,
+   "chapter_order": 20,
+   "why": "Murray's 'stand perfect and complete' as an infinitive phrase; OLCB wording differs"
+  },
+  {
+   "reference": "John 7:17",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 407,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Romans 7:22",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 407,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 407,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Romans 7:18",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 407,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 407,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Ephesians 4:24",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 409,
+   "chapter_order": 20
+  },
+  {
+   "reference": "John 14:17",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 410,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Romans 8:4",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 410,
+   "chapter_order": 20
+  },
+  {
+   "reference": "2 Corinthians 3:5",
+   "status": "self_rendered",
+   "block_index": 411,
+   "chapter_order": 20,
+   "why": "OLCB phrases the verse in terms of 'confidence' (obwesige) and does not fit Murray's 'not sufficient to think anything'"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 412,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Romans 6:18",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 422,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Romans 6:19",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 422,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Romans 6:22",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 422,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Galatians 2:4",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 423,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Galatians 5:1",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 424,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Galatians 5:1",
+   "status": "self_rendered",
+   "block_index": 426,
+   "chapter_order": 21,
+   "why": "Murray's loose blend of Gal 5:1 'stand fast' with Gal 2:4 'liberty in Christ Jesus', recast in the first person"
+  },
+  {
+   "reference": "Romans 6:14a",
+   "status": "self_rendered",
+   "block_index": 428,
+   "chapter_order": 21,
+   "why": "OLCB renders this as a command ('Temukkiriza kibi kwongera kubafuga'); Murray's argument rests on it as a promise/fact, so the future indicative is kept"
+  },
+  {
+   "reference": "Romans 6:18",
+   "status": "self_rendered",
+   "block_index": 427,
+   "chapter_order": 21,
+   "why": "re-personed to 'we' in Murray's sentence"
+  },
+  {
+   "reference": "1 Corinthians 15:56b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 429,
+   "chapter_order": 21
+  },
+  {
+   "reference": "2 Corinthians 3:17b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 429,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 430,
+   "chapter_order": 21
+  },
+  {
+   "reference": "1 Corinthians 7:22",
+   "status": "self_rendered",
+   "block_index": 430,
+   "chapter_order": 21,
+   "why": "Murray's phrase 'the Lord's freedman' compresses the verse; OLCB wording ('Mukama yamufuula wa ddembe') does not fit the noun phrase"
+  },
+  {
+   "reference": "Galatians 2:4",
+   "status": "self_rendered",
+   "block_index": 431,
+   "chapter_order": 21,
+   "why": "Murray recasts the phrase as a full first-person sentence"
+  },
+  {
+   "reference": "Romans 7:24a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 431,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Romans 7:25a",
+   "status": "self_rendered",
+   "block_index": 431,
+   "chapter_order": 21,
+   "why": "Murray merges Rom 7:25a with Rom 8:2 into one cry; OLCB words reused but shortened and joined"
+  },
+  {
+   "reference": "Romans 6:18-19",
+   "status": "self_rendered",
+   "block_index": 432,
+   "chapter_order": 21,
+   "why": "Murray joins 6:18 and 6:19 and drops part of 6:19; OLCB wording with the middle clause omitted"
+  },
+  {
+   "reference": "Romans 6:22",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 422,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Luke 1:74-75",
+   "status": "self_rendered",
+   "block_index": 433,
+   "chapter_order": 21,
+   "why": "Murray re-persons the verse and orders 'righteousness and holiness' (OLCB has the reverse); OLCB phrasing kept where possible"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 435,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Galatians 5:18",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 442,
+   "chapter_order": 21
+  },
+  {
+   "reference": "2 Corinthians 3:17b",
+   "status": "self_rendered",
+   "block_index": 442,
+   "chapter_order": 21,
+   "why": "Murray shortens 'the Spirit of the Lord' to 'the Spirit'"
+  },
+  {
+   "reference": "Galatians 5:13",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 443,
+   "chapter_order": 21
+  },
+  {
+   "reference": "1 Corinthians 9:19",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 443,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Romans 6:18",
+   "status": "self_rendered",
+   "block_index": 444,
+   "chapter_order": 21,
+   "why": "Murray appends 'unto sanctification' (from 6:19/22) to 6:18"
+  },
+  {
+   "reference": "Exodus 8:1",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 444,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Romans 14:17",
+   "status": "self_rendered",
+   "block_index": 448,
+   "chapter_order": 22,
+   "why": "Murray abridges the verse to its last clause; OLCB words joined"
+  },
+  {
+   "reference": "Acts 13:52",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 449,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Nehemiah 8:10a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 450,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Nehemiah 8:10b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 450,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Nehemiah 8:11a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 450,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Nehemiah 8:11b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 450,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Nehemiah 8:12",
+   "status": "self_rendered",
+   "block_index": 450,
+   "chapter_order": 22,
+   "why": "Murray omits the eating/sharing clause; two OLCB spans joined"
+  },
+  {
+   "reference": "John 16:22a",
+   "status": "self_rendered",
+   "block_index": 452,
+   "chapter_order": 22,
+   "why": "OLCB 'ndiddamu okubalaba' capitalised as the quote opens before 'Jesus said'"
+  },
+  {
+   "reference": "John 16:22b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 452,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Psalm 29:2b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 453,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Psalm 30:4",
+   "status": "self_rendered",
+   "block_index": 453,
+   "chapter_order": 22,
+   "why": "Murray's infinitival paraphrase ('to sing praise at the remembrance of His holiness'); recast from OLCB"
+  },
+  {
+   "reference": "2 Corinthians 6:9b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 455,
+   "chapter_order": 22
+  },
+  {
+   "reference": "2 Corinthians 6:10",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 455,
+   "chapter_order": 22
+  },
+  {
+   "reference": "2 Corinthians 6:10a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 455,
+   "chapter_order": 22
+  },
+  {
+   "reference": "2 Corinthians 12:10b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 455,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Galatians 6:14",
+   "status": "self_rendered",
+   "block_index": 455,
+   "chapter_order": 22,
+   "why": "Murray's loose paraphrase of the verse"
+  },
+  {
+   "reference": "Romans 7:24b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 455,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Romans 7:25a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 455,
+   "chapter_order": 22
+  },
+  {
+   "reference": "2 Corinthians 2:14a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 455,
+   "chapter_order": 22
+  },
+  {
+   "reference": "1 Peter 1:8b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 456,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Psalm 45:7b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 457,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Isaiah 61:3",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 457,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Isaiah 35:8-10",
+   "status": "self_rendered",
+   "block_index": 457,
+   "chapter_order": 22,
+   "why": "Murray merges Isa 35:8, 9b and 10; built from OLCB phrases (35:8, 35:9, 35:10, 51:11)"
+  },
+  {
+   "reference": "Isaiah 41:16b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 458,
+   "chapter_order": 22
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 459,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Isaiah 29:19",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 463,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Acts 13:52b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 449,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Romans 14:17",
+   "status": "self_rendered",
+   "block_index": 466,
+   "chapter_order": 22,
+   "why": "Murray's further abridgement in study note 3"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 469,
+   "chapter_order": 23
+  },
+  {
+   "reference": "1 Corinthians 1:31",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 469,
+   "chapter_order": 23
+  },
+  {
+   "reference": "1 Corinthians 1:30a",
+   "status": "self_rendered",
+   "block_index": 471,
+   "chapter_order": 23,
+   "why": "Murray's refrain stresses 'Of God'; OLCB has the pronoun 'ku bw’oyo', so God is named (also 'Ku bwa Katonda muli mu ye' variant)"
+  },
+  {
+   "reference": "Romans 10:6",
+   "status": "self_rendered",
+   "block_index": 471,
+   "chapter_order": 23,
+   "why": "OLCB wording, but its parenthesis is folded into Murray's single question"
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 472,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Ephesians 4:10",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 472,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Ephesians 1:23",
+   "status": "self_rendered",
+   "block_index": 472,
+   "chapter_order": 23,
+   "why": "OLCB words verbatim but sentence-initial capital (verse starts 'era ekkanisa…')"
+  },
+  {
+   "reference": "Romans 8:9",
+   "status": "self_rendered",
+   "block_index": 472,
+   "chapter_order": 23,
+   "why": "Murray's third-person paraphrase; OLCB is second-person 'temufugibwa mubiri wabula mufugibwa Mwoyo'"
+  },
+  {
+   "reference": "1 Corinthians 2:12",
+   "status": "self_rendered",
+   "block_index": 474,
+   "chapter_order": 23,
+   "why": "OLCB wording with 'Twafuna' supplied for Murray's shortened 'We have received' and <em> kept on 'know'"
+  },
+  {
+   "reference": "1 Corinthians 1:24",
+   "status": "self_rendered",
+   "block_index": 477,
+   "chapter_order": 23,
+   "why": "Murray orders wisdom then power (OLCB reverses) and uses it as a title in apposition"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 479,
+   "chapter_order": 23
+  },
+  {
+   "reference": "1 Corinthians 3:17",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 490,
+   "chapter_order": 24
+  },
+  {
+   "reference": "1 Corinthians 6:13b",
+   "status": "self_rendered",
+   "block_index": 490,
+   "chapter_order": 24,
+   "why": "OLCB 6:13 reads 'Omubiri si gwa bwenzi, naye gwa Mukama' and lacks 'and the Lord for the body', which Murray quotes"
+  },
+  {
+   "reference": "1 Corinthians 6:19-20",
+   "status": "self_rendered",
+   "block_index": 490,
+   "chapter_order": 24,
+   "why": "Murray condenses 6:19-20 (drops 'bought with a price'); OLCB wording reorganised to fit the condensed quote"
+  },
+  {
+   "reference": "1 Corinthians 7:34",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 491,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 492,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Hebrews 10:5, 9",
+   "status": "self_rendered",
+   "block_index": 493,
+   "chapter_order": 24,
+   "why": "Murray merges 10:5 and 10:7/9 into one saying and keeps 'O God', which OLCB omits"
+  },
+  {
+   "reference": "Hebrews 10:10",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 493,
+   "chapter_order": 24
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 494,
+   "chapter_order": 24
+  },
+  {
+   "reference": "2 Corinthians 4:10",
+   "status": "self_rendered",
+   "block_index": 494,
+   "chapter_order": 24,
+   "why": "OLCB 4:10 says the DYING of Jesus is manifested, losing Murray's point that the LIFE of Jesus is manifested in the body; also re-cast to Murray's participial 'always bearing about'"
+  },
+  {
+   "reference": "2 Corinthians 4:11",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 494,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Philippians 1:20",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 494,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Genesis 3:6a",
+   "status": "self_rendered",
+   "block_index": 496,
+   "chapter_order": 24,
+   "why": "OLCB has only 'omuti mulungi' with no 'for food', which Murray's threefold argument (body/soul/spirit) depends on"
+  },
+  {
+   "reference": "Genesis 3:6b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 496,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Genesis 3:6c",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 496,
+   "chapter_order": 24
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 496,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Romans 8:13b",
+   "status": "self_rendered",
+   "block_index": 497,
+   "chapter_order": 24,
+   "why": "OLCB 8:13 omits 'through the Spirit', which Murray's argument turns on; added"
+  },
+  {
+   "reference": "1 Corinthians 6:19-20 (expanded)",
+   "status": "self_rendered",
+   "block_index": 498,
+   "chapter_order": 24,
+   "why": "Murray deliberately interpolates 'in the power of the Holy Spirit' into the verse"
+  },
+  {
+   "reference": "1 Timothy 4:4",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 499,
+   "chapter_order": 24
+  },
+  {
+   "reference": "1 Timothy 4:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 499,
+   "chapter_order": 24
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 500,
+   "chapter_order": 24
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 501,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Romans 6:18-19",
+   "status": "self_rendered",
+   "block_index": 504,
+   "chapter_order": 24,
+   "why": "Murray merges 6:18 and 6:19 and re-persons it to 'we/our' inside a prayer"
+  },
+  {
+   "reference": "Exodus 39:1",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 505,
+   "chapter_order": 24
+  },
+  {
+   "reference": "1 Peter 3:3",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 506,
+   "chapter_order": 24
+  },
+  {
+   "reference": "1 Peter 3:4",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 506,
+   "chapter_order": 24
+  },
+  {
+   "reference": "1 Peter 3:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 506,
+   "chapter_order": 24
+  },
+  {
+   "reference": "1 Corinthians 9:27",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 507,
+   "chapter_order": 24
+  },
+  {
+   "reference": "2 Corinthians 7:1",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 512,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Ephesians 5:25",
+   "status": "self_rendered",
+   "block_index": 513,
+   "chapter_order": 25,
+   "why": "OLCB clause 'nga Kristo bwe yayagala Ekkanisa ne yeewaayo ku lwayo' recast as a main clause (dropped 'nga…bwe') to stand alone"
+  },
+  {
+   "reference": "Ephesians 5:26",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 513,
+   "chapter_order": 25
+  },
+  {
+   "reference": "2 Timothy 2:21a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 513,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Exodus 29:36b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 513,
+   "chapter_order": 25
+  },
+  {
+   "reference": "2 Corinthians 7:1a",
+   "status": "self_rendered",
+   "block_index": 515,
+   "chapter_order": 25,
+   "why": "OLCB fragment, capitalised to open the quotation (OLCB has lower-case 'twetukuze')"
+  },
+  {
+   "reference": "2 Corinthians 7:1a",
+   "status": "self_rendered",
+   "block_index": 516,
+   "chapter_order": 25,
+   "why": "OLCB fragment 'n’omwoyo', capitalised to open the quotation"
+  },
+  {
+   "reference": "2 Corinthians 7:1a",
+   "status": "self_rendered",
+   "block_index": 518,
+   "chapter_order": 25,
+   "why": "Murray joins 'Beloved' and 'let us cleanse ourselves', which are not contiguous in OLCB"
+  },
+  {
+   "reference": "2 Corinthians 6:17",
+   "status": "self_rendered",
+   "block_index": 518,
+   "chapter_order": 25,
+   "why": "Murray omits 'saith the Lord'; OLCB words with 'bw’ayogera Mukama' dropped and recapitalised"
+  },
+  {
+   "reference": "Romans 7:24a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 518,
+   "chapter_order": 25
+  },
+  {
+   "reference": "2 Chronicles 29:16a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 519,
+   "chapter_order": 25
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "block_index": 519,
+   "chapter_order": 25,
+   "why": "Murray omits the fellowship clause; OLCB words joined without it"
+  },
+  {
+   "reference": "2 Corinthians 7:1b",
+   "status": "self_rendered",
+   "block_index": 520,
+   "chapter_order": 25,
+   "why": "Murray writes 'fear of the Lord' where the verse has 'God'; rendered as he wrote it (Mukama)"
+  },
+  {
+   "reference": "Hebrews 10:14",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 520,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Matthew 5:48",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 520,
+   "chapter_order": 25
+  },
+  {
+   "reference": "James 1:4",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 520,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Hebrews 13:20-21",
+   "status": "self_rendered",
+   "block_index": 520,
+   "chapter_order": 25,
+   "why": "joins 'Katonda ow’emirembe' from 13:20 to the OLCB wording of 13:21"
+  },
+  {
+   "reference": "1 John 5:4b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 521,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Romans 4:21",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 522,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "block_index": 522,
+   "chapter_order": 25,
+   "why": "Murray re-persons the doxology to 'you'; OLCB wording ('bye tusaba, ne bye tulowooza') adapted"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 523,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Ephesians 5:27",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 524,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Ephesians 5:27",
+   "status": "self_rendered",
+   "block_index": 525,
+   "chapter_order": 25,
+   "why": "first-person adaptation of the OLCB wording inside the prayer"
+  },
+  {
+   "reference": "2 Corinthians 7:1a",
+   "status": "self_rendered",
+   "block_index": 527,
+   "chapter_order": 25,
+   "why": "OLCB fragment, capitalised to open the quotation"
+  },
+  {
+   "reference": "2 Corinthians 7:1b",
+   "status": "self_rendered",
+   "block_index": 512,
+   "chapter_order": 25,
+   "why": "OLCB fragment, capitalised to open the quotation"
+  },
+  {
+   "reference": "Psalm 2:11b",
+   "status": "self_rendered",
+   "block_index": 530,
+   "chapter_order": 25,
+   "why": "OLCB fragment 'musanyuke n’okukankana', capitalised to start the sentence"
+  },
+  {
+   "reference": "Philippians 2:12b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 530,
+   "chapter_order": 25
+  },
+  {
+   "reference": "2 Corinthians 7:1a",
+   "status": "self_rendered",
+   "block_index": 512,
+   "chapter_order": 25,
+   "why": "OLCB fragment, capitalised to open the quotation"
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "block_index": 532,
+   "chapter_order": 25,
+   "why": "Murray's abridgement ('If we walk in the light, the blood cleanseth') built from OLCB words"
+  },
+  {
+   "reference": "1 Thessalonians 2:10",
+   "status": "self_rendered",
+   "block_index": 534,
+   "chapter_order": 26,
+   "why": "OLCB has no word for 'holily', which Murray emphasizes and the chapter expounds"
+  },
+  {
+   "reference": "1 Thessalonians 3:12",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 534,
+   "chapter_order": 26
+  },
+  {
+   "reference": "1 Thessalonians 3:13",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 534,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Ephesians 1:4",
+   "status": "self_rendered",
+   "block_index": 535,
+   "chapter_order": 26,
+   "why": "OLCB 'olw’okwagala kwe' makes the love God's, but Murray's argument rests on 'in love' as the believer's love; 'without blemish' kept distinct (kamogo) from 'without blame' as the chapter requires"
+  },
+  {
+   "reference": "1 Peter 1:19",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 536,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Ephesians 1:4b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 535,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Ephesians 5:27",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 536,
+   "chapter_order": 26
+  },
+  {
+   "reference": "1 Thessalonians 3:13a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 534,
+   "chapter_order": 26
+  },
+  {
+   "reference": "1 Thessalonians 3:13a",
+   "status": "self_rendered",
+   "block_index": 538,
+   "chapter_order": 26,
+   "why": "re-personed to singular believer (OLCB: nga temuliiko kya kunenyezebwa mu butukuvu)"
+  },
+  {
+   "reference": "Ephesians 1:4",
+   "status": "self_rendered",
+   "block_index": 535,
+   "chapter_order": 26,
+   "why": "same rendering as the epigraph: OLCB ties love to God, Murray's point needs the believer's love"
+  },
+  {
+   "reference": "1 Thessalonians 3:12a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 534,
+   "chapter_order": 26
+  },
+  {
+   "reference": "1 Thessalonians 3:13a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 534,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Isaiah 65:5",
+   "status": "self_rendered",
+   "block_index": 540,
+   "chapter_order": 26,
+   "why": "OLCB says 'mutuukirivu' (righteous) in a different construction; Murray's point is about sanctity"
+  },
+  {
+   "reference": "1 Thessalonians 3:12b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 534,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Colossians 3:12",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 541,
+   "chapter_order": 26
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 544,
+   "chapter_order": 26
+  },
+  {
+   "reference": "1 Thessalonians 3:12a",
+   "status": "self_rendered",
+   "block_index": 546,
+   "chapter_order": 26,
+   "why": "Murray's nominal phrase 'Abounding in love' from the verse's verb"
+  },
+  {
+   "reference": "1 Thessalonians 3:13a",
+   "status": "self_rendered",
+   "block_index": 548,
+   "chapter_order": 26,
+   "why": "Murray's nominal phrase 'unblameable in holiness'; OLCB is a 2nd-plural clause"
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 549,
+   "chapter_order": 26
+  },
+  {
+   "reference": "1 Corinthians 13:5",
+   "status": "self_rendered",
+   "block_index": 550,
+   "chapter_order": 26,
+   "why": "joins subject 'Okwagala' to the clause 'tekunoonya byakwo', skipping the intervening clause"
+  },
+  {
+   "reference": "1 Corinthians 13:8a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 550,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Romans 13:10b",
+   "status": "self_rendered",
+   "block_index": 550,
+   "chapter_order": 26,
+   "why": "OLCB 'okwagala kyekuva kutuukiriza amateeka' carries 'therefore' and cannot stand alone"
+  },
+  {
+   "reference": "1 Corinthians 13:13b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 550,
+   "chapter_order": 26
+  },
+  {
+   "reference": "1 Timothy 1:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 550,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Romans 5:5b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 552,
+   "chapter_order": 26
+  },
+  {
+   "reference": "1 Thessalonians 4:3",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 554,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Hebrews 10:9",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 555,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Hebrews 10:10",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 555,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Daniel 4:35",
+   "status": "self_rendered",
+   "block_index": 556,
+   "chapter_order": 27,
+   "why": "Murray quotes only 'He doeth according to His will'; OLCB phrases it as an object clause (abayisa nga bw’asiima) that cannot stand alone"
+  },
+  {
+   "reference": "1 Peter 1:2",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 557,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Ephesians 1:4",
+   "status": "self_rendered",
+   "block_index": 557,
+   "chapter_order": 27,
+   "why": "Murray's paraphrase 'chosen to be holy' condenses the verse; OLCB 'Yatulonda ... ffe tube batukuvu' is split by other clauses"
+  },
+  {
+   "reference": "Colossians 4:12",
+   "status": "self_rendered",
+   "block_index": 558,
+   "chapter_order": 27,
+   "why": "re-personed to third singular and Murray's shortened 'stand in all the will of God'; OLCB: muyimirirenga nga munywedde ... mu byonna Katonda by’ayagala"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 562,
+   "chapter_order": 27
+  },
+  {
+   "reference": "2 Corinthians 5:18",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 563,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Ephesians 6:6-7",
+   "status": "self_rendered",
+   "block_index": 563,
+   "chapter_order": 27,
+   "why": "Murray merges vv.6-7 and re-persons to third singular; OLCB uses the plural imperative"
+  },
+  {
+   "reference": "Colossians 4:12",
+   "status": "self_rendered",
+   "block_index": 563,
+   "chapter_order": 27,
+   "why": "re-personed from Epaphras praying for 'you' to the believer himself, following Murray's 'complete and fully assured'"
+  },
+  {
+   "reference": "Psalm 40:8a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 564,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Hebrews 10:10a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 555,
+   "chapter_order": 27
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 566,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Ephesians 1:11",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 573,
+   "chapter_order": 27
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "self_rendered",
+   "block_index": 577,
+   "chapter_order": 28,
+   "why": "OLCB drops the 'vessel' and 'prepared' imagery that the chapter expounds word by word; rendered close to Murray, reusing OLCB vocabulary"
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "self_rendered",
+   "block_index": 583,
+   "chapter_order": 28,
+   "why": "second, shortened citation in para 7; kept consistent with the opening rendering"
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "self_rendered",
+   "block_index": 595,
+   "chapter_order": 28,
+   "why": "note 4 echoes the same rendering"
+  },
+  {
+   "reference": "1 Peter 2:5",
+   "status": "self_rendered",
+   "block_index": 578,
+   "chapter_order": 28,
+   "why": "OLCB lacks 'holy' before priesthood, which Murray emphasises"
+  },
+  {
+   "reference": "1 Peter 2:9a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 578,
+   "chapter_order": 28
+  },
+  {
+   "reference": "1 Peter 2:9b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 578,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Leviticus 20:26",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 579,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Leviticus 20:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 579,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Exodus 8:1",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 580,
+   "chapter_order": 28
+  },
+  {
+   "reference": "John 10:36",
+   "status": "self_rendered",
+   "block_index": 580,
+   "chapter_order": 28,
+   "why": "OLCB is first person (Kitange ... antuma); Murray gives it in third person"
+  },
+  {
+   "reference": "John 17:19a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 580,
+   "chapter_order": 28
+  },
+  {
+   "reference": "John 17:19b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 580,
+   "chapter_order": 28
+  },
+  {
+   "reference": "1 Corinthians 1:2",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 580,
+   "chapter_order": 28
+  },
+  {
+   "reference": "John 10:36",
+   "status": "self_rendered",
+   "block_index": 586,
+   "chapter_order": 28,
+   "why": "Murray's third-person paraphrase of the verse"
+  },
+  {
+   "reference": "1 Corinthians 1:2",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 586,
+   "chapter_order": 28
+  },
+  {
+   "reference": "2 Thessalonians 2:13",
+   "status": "self_rendered",
+   "block_index": 586,
+   "chapter_order": 28,
+   "why": "Murray's phrase 'the spirit of sanctification' (inverting 'sanctification of the Spirit'); not OLCB wording"
+  },
+  {
+   "reference": "1 Peter 1:15a",
+   "status": "self_rendered",
+   "block_index": 586,
+   "chapter_order": 28,
+   "why": "unmarked allusion, re-personed to 'us' (OLCB: Katonda eyabayita bw’ali omutukuvu)"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 587,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Titus 2:14",
+   "status": "self_rendered",
+   "block_index": 588,
+   "chapter_order": 28,
+   "why": "prayer re-persons the verse to 'Thou'"
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "block_index": 590,
+   "chapter_order": 28,
+   "why": "unmarked allusion, re-personed to 'we shall'"
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 593,
+   "chapter_order": 28
+  },
+  {
+   "reference": "John 17:19a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 596,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Hebrews 10:19",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 598,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Hebrews 10:20",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 598,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Hebrews 10:21",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 598,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Hebrews 10:22a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 598,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Hebrews 9:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 599,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Hebrews 10:19, 22",
+   "status": "self_rendered",
+   "block_index": 599,
+   "chapter_order": 29,
+   "why": "Murray joins 10:19 to 'let us draw near' from 10:22, skipping 10:20-21"
+  },
+  {
+   "reference": "Hebrews 10:19a",
+   "status": "self_rendered",
+   "block_index": 600,
+   "chapter_order": 29,
+   "why": "short fragment opening a sentence; capitalised 'Nga' and Murray's truncation"
+  },
+  {
+   "reference": "Hebrews 10:19, 22",
+   "status": "self_rendered",
+   "block_index": 601,
+   "chapter_order": 29,
+   "why": "Murray merges 10:19 with 'let us draw near' (10:22)"
+  },
+  {
+   "reference": "Hebrews 10:2",
+   "status": "self_rendered",
+   "block_index": 601,
+   "chapter_order": 29,
+   "why": "OLCB renders the verse as a contrary-to-fact conditional about the sacrifices; Murray quotes it as a plain statement about worshippers"
+  },
+  {
+   "reference": "Hebrews 10:19-20, 22",
+   "status": "self_rendered",
+   "block_index": 602,
+   "chapter_order": 29,
+   "why": "Murray's own condensation of 10:19-22 into one sentence"
+  },
+  {
+   "reference": "Hebrews 10:20",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 598,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Galatians 6:14",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 602,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Hebrews 10:21-22",
+   "status": "self_rendered",
+   "block_index": 604,
+   "chapter_order": 29,
+   "why": "merges 10:21 (OLCB wording) with 'let us draw near' from 10:22"
+  },
+  {
+   "reference": "Exodus 28:36",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 604,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Revelation 7:14a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 605,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Revelation 7:14b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 605,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Revelation 7:15a",
+   "status": "self_rendered",
+   "block_index": 605,
+   "chapter_order": 29,
+   "why": "OLCB verse has an opening quotation mark between 'Kyebavudde' and 'babeera'; dropped it and lower-cased"
+  },
+  {
+   "reference": "Revelation 7:17a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 605,
+   "chapter_order": 29
+  },
+  {
+   "reference": "1 Timothy 3:15",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 606,
+   "chapter_order": 29
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 607,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Revelation 21:22",
+   "status": "self_rendered",
+   "block_index": 611,
+   "chapter_order": 29,
+   "why": "Murray's condensation; OLCB names the Lord God and the Lamb together as the city's temple"
+  },
+  {
+   "reference": "Ephesians 5:25-26",
+   "status": "self_rendered",
+   "block_index": 612,
+   "chapter_order": 29,
+   "why": "merges 5:25b with 'that He might sanctify it' from 5:26; OLCB 5:26 phrases it as a separate clause"
+  },
+  {
+   "reference": "Luke 2:37",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 616,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Psalm 91:1",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 600,
+   "chapter_order": 29
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 600,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Hebrews 12:10b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 618,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Hebrews 12:14b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 618,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "self_rendered",
+   "block_index": 619,
+   "chapter_order": 30,
+   "why": "OLCB 2:10 paraphrases the verse and drops 'perfect through sufferings', the very words Murray expounds"
+  },
+  {
+   "reference": "Hebrews 5:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 619,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Hebrews 5:9",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 619,
+   "chapter_order": 30
+  },
+  {
+   "reference": "John 17:19a",
+   "status": "self_rendered",
+   "block_index": 619,
+   "chapter_order": 30,
+   "why": "Murray quotes only 'I sanctify myself'; OLCB word, capitalized to open the quotation"
+  },
+  {
+   "reference": "2 Corinthians 4:17",
+   "status": "self_rendered",
+   "block_index": 620,
+   "chapter_order": 30,
+   "why": "unmarked allusion woven into Murray's sentence with his own emphasis on 'works out'"
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "self_rendered",
+   "block_index": 620,
+   "chapter_order": 30,
+   "why": "Murray's shortened re-quote ('It became Him'); OLCB lacks 'perfect'"
+  },
+  {
+   "reference": "Hebrews 2:11a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 621,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Hebrews 10:10",
+   "status": "self_rendered",
+   "block_index": 621,
+   "chapter_order": 30,
+   "why": "Murray's loose summary blending 10:10 and 10:14 ('the one offering of Christ')"
+  },
+  {
+   "reference": "Psalm 40:8a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 622,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Luke 22:42b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 622,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Romans 12:2b",
+   "status": "self_rendered",
+   "block_index": 622,
+   "chapter_order": 30,
+   "why": "unmarked allusion; OLCB renders 'good, acceptable, perfect will' differently ('okusiimibwa kwa Katonda, okusanyusa era okw’amazima')"
+  },
+  {
+   "reference": "Deuteronomy 8:2b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 623,
+   "chapter_order": 30
+  },
+  {
+   "reference": "1 John 4:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 628,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Hebrews 10:20",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 633,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Hebrews 10:19",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 628,
+   "chapter_order": 30
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 630,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Leviticus 11:44",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 630,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Leviticus 20:8",
+   "status": "self_rendered",
+   "block_index": 631,
+   "chapter_order": 30,
+   "why": "Murray's shortened formula 'I make holy'"
+  },
+  {
+   "reference": "Hebrews 5:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 619,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Hebrews 2:10-11",
+   "status": "self_rendered",
+   "block_index": 633,
+   "chapter_order": 30,
+   "why": "Murray merges 2:10 and 2:11; OLCB 2:10 lacks 'perfect'"
+  },
+  {
+   "reference": "Hebrews 2:18",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 633,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Hebrews 2:9",
+   "status": "self_rendered",
+   "block_index": 633,
+   "chapter_order": 30,
+   "why": "Murray's excerpt; OLCB restructures the verse around it"
+  },
+  {
+   "reference": "Hebrews 2:10-11",
+   "status": "self_rendered",
+   "block_index": 635,
+   "chapter_order": 30,
+   "why": "Murray's second, shorter merge of 2:10-11 ('to make Him perfect')"
+  },
+  {
+   "reference": "1 Peter 4:13",
+   "status": "self_rendered",
+   "block_index": 636,
+   "chapter_order": 30,
+   "why": "OLCB words, capitalized to open the quotation and joined to 4:14"
+  },
+  {
+   "reference": "1 Peter 4:14b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 636,
+   "chapter_order": 30
+  },
+  {
+   "reference": "1 John 2:20",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 638,
+   "chapter_order": 31
+  },
+  {
+   "reference": "1 John 2:27",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 638,
+   "chapter_order": 31
+  },
+  {
+   "reference": "Exodus 29:21",
+   "status": "self_rendered",
+   "block_index": 639,
+   "chapter_order": 31,
+   "why": "Murray quotes only the oil clause of the verse (omits the blood and garments), so the OLCB sentence could not be used as is"
+  },
+  {
+   "reference": "Exodus 30:31",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 639,
+   "chapter_order": 31
+  },
+  {
+   "reference": "Exodus 30:32",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 639,
+   "chapter_order": 31
+  },
+  {
+   "reference": "Leviticus 21:10",
+   "status": "self_rendered",
+   "block_index": 639,
+   "chapter_order": 31,
+   "why": "Murray abridges and merges vv.10 and 12 into one sentence"
+  },
+  {
+   "reference": "Leviticus 21:12",
+   "status": "self_rendered",
+   "block_index": 639,
+   "chapter_order": 31,
+   "why": "Murray's KJV wording ('crown of the anointing oil', which he emphasizes) differs from OLCB's paraphrase"
+  },
+  {
+   "reference": "Psalm 89:18b",
+   "status": "self_rendered",
+   "block_index": 639,
+   "chapter_order": 31,
+   "why": "Murray's KJV sense is 'our king belongs to the Holy One'; OLCB reads 'the Holy One of Israel is our king'"
+  },
+  {
+   "reference": "Psalm 89:20",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 639,
+   "chapter_order": 31
+  },
+  {
+   "reference": "Psalm 89:20",
+   "status": "self_rendered",
+   "block_index": 640,
+   "chapter_order": 31,
+   "why": "Murray's literal Hebrew gloss ('messiahed')"
+  },
+  {
+   "reference": "Acts 10:38",
+   "status": "self_rendered",
+   "block_index": 640,
+   "chapter_order": 31,
+   "why": "Murray's 'christed' gloss of the verse"
+  },
+  {
+   "reference": "Psalm 45:7",
+   "status": "self_rendered",
+   "block_index": 640,
+   "chapter_order": 31,
+   "why": "Murray's 'messiahed' gloss of the verse"
+  },
+  {
+   "reference": "Hebrews 1:9",
+   "status": "self_rendered",
+   "block_index": 640,
+   "chapter_order": 31,
+   "why": "Murray's 'christed' gloss of the verse"
+  },
+  {
+   "reference": "1 John 2:20a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 638,
+   "chapter_order": 31
+  },
+  {
+   "reference": "1 John 2:27b",
+   "status": "self_rendered",
+   "block_index": 643,
+   "chapter_order": 31,
+   "why": "OLCB renders 'His anointing teacheth' as 'Mwoyo Mutukuvu y'abayigiriza'; Murray expounds the anointing itself, so kept as 'the anointing'"
+  },
+  {
+   "reference": "1 John 2:27a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 638,
+   "chapter_order": 31
+  },
+  {
+   "reference": "1 John 2:27a",
+   "status": "self_rendered",
+   "block_index": 645,
+   "chapter_order": 31,
+   "why": "Murray's present 'abideth'; OLCB has past 'kwali mu mmwe'"
+  },
+  {
+   "reference": "1 John 2:27c",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 638,
+   "chapter_order": 31
+  },
+  {
+   "reference": "Isaiah 11:3a",
+   "status": "self_rendered",
+   "block_index": 643,
+   "chapter_order": 31,
+   "why": "Murray's 'quick of scent' (KJV margin) reading; OLCB reads 'his delight shall be in the fear of the Lord'"
+  },
+  {
+   "reference": "Song of Solomon 1:3",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 643,
+   "chapter_order": 31
+  },
+  {
+   "reference": "John 14:10",
+   "status": "self_rendered",
+   "block_index": 644,
+   "chapter_order": 31,
+   "why": "Murray's loose composite of John 14:10 / 8:28 / 5:30"
+  },
+  {
+   "reference": "John 16:13",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 644,
+   "chapter_order": 31
+  },
+  {
+   "reference": "John 6:45",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 644,
+   "chapter_order": 31
+  },
+  {
+   "reference": "Psalm 92:10",
+   "status": "self_rendered",
+   "block_index": 645,
+   "chapter_order": 31,
+   "why": "Murray's 'fresh oil' (KJV); OLCB reads 'fine oil' in 2nd person"
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 648,
+   "chapter_order": 31
+  },
+  {
+   "reference": "Psalm 23:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 649,
+   "chapter_order": 31
+  },
+  {
+   "reference": "Psalm 133:2",
+   "status": "self_rendered",
+   "block_index": 655,
+   "chapter_order": 31,
+   "why": "Murray omits the beard clauses; OLCB wording kept for the parts he quotes"
+  },
+  {
+   "reference": "2 Peter 3:11",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 659,
+   "chapter_order": 32
+  },
+  {
+   "reference": "Hebrews 12:14b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 660,
+   "chapter_order": 32
+  },
+  {
+   "reference": "Revelation 22:11b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 661,
+   "chapter_order": 32
+  },
+  {
+   "reference": "Revelation 22:21",
+   "status": "self_rendered",
+   "block_index": 661,
+   "chapter_order": 32,
+   "why": "Murray follows the reading \"with the holy ones\" (OLCB has \"ne bonna\") and omits \"Kristo\""
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 663,
+   "chapter_order": 32
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 672,
+   "chapter_order": 32
+  },
+  {
+   "reference": "2 Peter 3:11",
+   "status": "self_rendered",
+   "block_index": 664,
+   "chapter_order": 32,
+   "why": "Murray recasts the verse as a direct question; OLCB is a statement"
+  },
+  {
+   "reference": "2 Peter 3:11",
+   "status": "self_rendered",
+   "block_index": 664,
+   "chapter_order": 32,
+   "why": "question form re-personed to \"we\""
+  },
+  {
+   "reference": "2 Peter 3:11",
+   "status": "self_rendered",
+   "block_index": 664,
+   "chapter_order": 32,
+   "why": "fragment of Murray's question-form rendering (\"in all holy living and godliness\")"
+  },
+  {
+   "reference": "Romans 16:2",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 665,
+   "chapter_order": 32
+  },
+  {
+   "reference": "Ephesians 5:3",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 665,
+   "chapter_order": 32
+  },
+  {
+   "reference": "2 Peter 3:14a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 666,
+   "chapter_order": 32
+  },
+  {
+   "reference": "2 Thessalonians 1:10",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 667,
+   "chapter_order": 32
+  },
+  {
+   "reference": "Revelation 4:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 667,
+   "chapter_order": 32
+  },
+  {
+   "reference": "2 Peter 3:11",
+   "status": "self_rendered",
+   "block_index": 668,
+   "chapter_order": 32,
+   "why": "Murray merges the 3:14 opening with 3:11 recast as a question"
+  },
+  {
+   "reference": "2 Peter 3:11",
+   "status": "self_rendered",
+   "block_index": 669,
+   "chapter_order": 32,
+   "why": "shortened question form"
+  },
+  {
+   "reference": "2 Peter 3:11",
+   "status": "self_rendered",
+   "block_index": 669,
+   "chapter_order": 32,
+   "why": "fragment of the question-form rendering"
+  },
+  {
+   "reference": "2 Peter 3:11",
+   "status": "self_rendered",
+   "block_index": 670,
+   "chapter_order": 32,
+   "why": "re-personed to \"we\" and recast as a question"
+  },
+  {
+   "reference": "2 Peter 3:11",
+   "status": "self_rendered",
+   "block_index": 670,
+   "chapter_order": 32,
+   "why": "re-personed to \"shall we be\", exclamation"
+  },
+  {
+   "reference": "1 Peter 1:15",
+   "status": "self_rendered",
+   "block_index": 666,
+   "chapter_order": 32,
+   "why": "re-personed to third person (\"as He is holy\")"
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 671,
+   "chapter_order": 32
+  },
+  {
+   "reference": "2 Peter 3:14a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 666,
+   "chapter_order": 32
+  },
+  {
+   "reference": "2 Corinthians 4:18a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 677,
+   "chapter_order": 32
+  },
+  {
+   "reference": "Mark 1:24",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 682,
+   "chapter_order": 33
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 690,
+   "chapter_order": 33
+  },
+  {
+   "reference": "Leviticus 20:8b",
+   "status": "self_rendered",
+   "block_index": 690,
+   "chapter_order": 33,
+   "why": "Murray's compressed 'I make holy'; OLCB reads 'Nze Mukama abatukuza'"
+  },
+  {
+   "reference": "1 Samuel 2:2",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 701,
+   "chapter_order": 33
+  },
+  {
+   "reference": "Exodus 15:11",
+   "status": "self_rendered",
+   "block_index": 703,
+   "chapter_order": 33,
+   "why": "Howe's third-person 'He is glorious in holiness'; OLCB has the vocative 'ggwe, Omutukuvu Oweekitiibwa'"
+  },
+  {
+   "reference": "Psalm 29:2",
+   "status": "self_rendered",
+   "block_index": 703,
+   "chapter_order": 33,
+   "why": "Edwards' argument turns on 'beauty'; OLCB renders 'ekitiibwa eky’obutukuvu bwe' (glory)"
+  },
+  {
+   "reference": "1 John 1:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 710,
+   "chapter_order": 33
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 714,
+   "chapter_order": 33
+  },
+  {
+   "reference": "1 Peter 1:16b",
+   "status": "self_rendered",
+   "block_index": 690,
+   "chapter_order": 33,
+   "why": "stand-alone quotation of half the verse, capitalised; OLCB 'nze ndi mutukuvu'"
+  },
+  {
+   "reference": "1 Peter 1:15b",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 714,
+   "chapter_order": 33
+  },
+  {
+   "reference": "Isaiah 6:3",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 720,
+   "chapter_order": 33
+  },
+  {
+   "reference": "Romans 6:6",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 727,
+   "chapter_order": 33
+  },
+  {
+   "reference": "John 6:57",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 728,
+   "chapter_order": 33
+  },
+  {
+   "reference": "Romans 1:4",
+   "status": "self_rendered",
+   "block_index": 735,
+   "chapter_order": 33,
+   "why": "Bengel expounds 'Spirit of holiness' as distinct from 'Holy Spirit'; OLCB 'Mwoyo Mutukuvu' erases the distinction (consistent with Day 20)"
+  },
+  {
+   "reference": "Hebrews 9:14",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 737,
+   "chapter_order": 33
+  },
+  {
+   "reference": "Titus 2:14",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 740,
+   "chapter_order": 33
+  },
+  {
+   "reference": "Titus 2:14",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 740,
+   "chapter_order": 33
+  },
+  {
+   "reference": "Exodus 8:1",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 742,
+   "chapter_order": 33
+  },
+  {
+   "reference": "Exodus 8:1a",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 742,
+   "chapter_order": 33
+  }
+ ]
+}

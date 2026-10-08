@@ -1,0 +1,91 @@
+{
+ "kind": "book",
+ "slug": "corrie-ten-boom-a-life-children",
+ "language": "es",
+ "job_issue": 5554,
+ "pull_request": 5571,
+ "note": [
+  "Every scripture line in this edition is self_rendered. The English retelling does not quote a Bible: each chapter's opening blockquote is a simplified paraphrase for 8–12 year olds, cited loosely (“— from Psalm 122”), and the body echoes a verse once (Enoch “walked with God”, Genesis 5:24, ch. 7). The Spanish renders those paraphrases in the same simple, child-friendly wording (ustedes plural, tú reader address, “ ” quotation marks and “— del Salmo N” / “— de Libro N” citations, as in the shipped es children's editions) rather than pasting the Reina-Valera text, which would break the edition's register; api.takeroot.bible was not used from this session.",
+  "Copyright care carried over from the English: no quotations from Corrie ten Boom's published writings were added; the few sayings the English reports indirectly stay indirect, and “Lo mejor está por venir” / “Jesús es Vencedor” render the English's short family sayings. Translated in-session by the worker (12 chapters of ~360 words, not per-chapter subagents); tag sequence identical to English chapter by chapter, 3 study questions per chapter in the same order. AI-translated; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 122:6",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Psalm 68:6",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Luke 16:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Esther 4:14",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Psalm 32:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 91:1-2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalm 27:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Genesis 5:24",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "1 Thessalonians 5:18",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalm 139:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalm 124:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 5:44",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}

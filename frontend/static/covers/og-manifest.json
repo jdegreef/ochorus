@@ -3930,6 +3930,16 @@
 				520
 			]
 		},
+		"es/c-s-lewis-a-life-children": {
+			"ground": "5ffea429ad91a7b46232ea6d0d72cc2f8bbe33080b5920ada539d42fddf6b344",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"es/cheque-book": {
 			"ground": "08eb4ae5ced77e25d0ceafe8a898c3f227080904bf35e965c9fbd0f3cee89700",
 			"style": "revival",
@@ -3967,6 +3977,16 @@
 				515
 			]
 		},
+		"es/corrie-ten-boom-a-life-children": {
+			"ground": "e804990ee390d7a75d7f730d9c5199e5d2c715afd0142368be419b8422fc77fc",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"es/days-of-heaven-upon-earth": {
 			"ground": "b7761b5167880578c3cc63cbbaaa3661996fdf8336c45b3ddbd5213dc0de7864",
 			"style": "revival",
@@ -3986,6 +4006,16 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0.05
+		},
+		"es/elisabeth-elliot-a-life-children": {
+			"ground": "ecd9286714ee919c60298de1c3c375e8d3a803f97fe0c18e4cda5db6c85dbb69",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"es/enchiridion": {
 			"ground": "df59230d258f73037f971ae5dfc34730d68177dce50b66576d572227ecd26a62",
@@ -4121,6 +4151,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"es/john-hyde-a-life-children": {
+			"ground": "241d7406e991c2c6887b37c1c3a7090d3a7f398bfe30bbbd5e16f25db5be98e2",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"es/life-experience-gospel-labours": {
 			"ground": "1705cd87178e053c6e4ebd45fa51e33d2d8aba36c8f4edceb52c2d16d274dd6f",
 			"style": "enlightenment",
@@ -4151,6 +4191,16 @@
 				227,
 				567
 			]
+		},
+		"es/mary-slessor-a-life-children": {
+			"ground": "f7e3c1342b0efba929d7e0d217ea7cff56d2e5e391acc9548942772ba1ec688b",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"es/men-and-women-who-gave-everything-2": {
 			"ground": "bdca16830133d8a7f8a68aae6ddd2719abc02f95a071ef208168daa2e54d7be8",
@@ -4280,6 +4330,16 @@
 				323,
 				472
 			]
+		},
+		"es/pandita-ramabai-a-life-children": {
+			"ground": "3d32db6e8fd5880b34dbbd2ff8866c1929807f0685ac5ced55122e00cba1937f",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"es/pilgrims-progress": {
 			"ground": "3bc426aabc4fe55ad7e13551bb0f3e69fe020e5623a79d38219bd4b92a14f39c",
@@ -5159,6 +5219,16 @@
 				564
 			]
 		},
+		"fr/c-s-lewis-a-life-children": {
+			"ground": "ed48933806b1f3c2e377e86a438e8d351b9f355e45d599f96a1646917d1dcafc",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"fr/cheque-book": {
 			"ground": "a21978dfd6cf84cc3bba17e06faec15d3d71688b2371ba093fc9aad0a215d101",
 			"style": "revival",
@@ -5205,6 +5275,16 @@
 			"layout": "rail/rust",
 			"bar": 0
 		},
+		"fr/corrie-ten-boom-a-life-children": {
+			"ground": "a67f51f3334aa3bdc1c6e8d000344abba0800b5430d44dd8b346386b8a88c562",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"fr/days-of-heaven-upon-earth": {
 			"ground": "0b873fc50e60b5815bed6bb557c833a71d28bd67eb8ee8f104c0f709149679d7",
 			"style": "revival",
@@ -5224,6 +5304,16 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0.05
+		},
+		"fr/elisabeth-elliot-a-life-children": {
+			"ground": "98c2b7d13182115c6915473e015ed033848ab457efda0780dbb049cf74c3f7b7",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"fr/feasting-at-the-table": {
 			"ground": "6e0eeb78b81466700d36d3c4bd910186a8ac00efbe55b57b93792ce7912394ad",
@@ -5387,6 +5477,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"fr/john-hyde-a-life-children": {
+			"ground": "b384ad7b1edc7e2e98ef14e031fc2889cff8b16ba7c98b47ff95340f49e14d34",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"fr/life-of-pascal": {
 			"ground": "84bc72d5d16e144ddd91aa7a7780ef435b5701552787fb9739d915c2a3eb68c4",
 			"style": "press",
@@ -5424,6 +5524,16 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0.11
+		},
+		"fr/mary-slessor-a-life-children": {
+			"ground": "361fe9e1ff572cfa4d07de91a902709d275704e1447cb97748409bfe000a2e90",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"fr/men-and-women-who-gave-everything-2": {
 			"ground": "37d20d2cce16372fa2f81a04a1bae2174eaebd10eb84c19602c67d7bf718b711",
@@ -5491,6 +5601,16 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "wash/sage",
+			"bar": 0
+		},
+		"fr/pandita-ramabai-a-life-children": {
+			"ground": "31c4ba2afaeffa6dc144b73aa0c96518eff50e89dea8d16508993f83b1f8881b",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0
 		},
 		"fr/pensees": {
@@ -8694,6 +8814,16 @@
 				545
 			]
 		},
+		"lg/holy-in-christ": {
+			"ground": "a7053bde832951c943cb4340cefd74a00c2366f786e38901be4141b4e2f33998",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"lg/humility-2": {
 			"ground": "1a1c2e056e560e73fedf4b24232917e415c2de63e0817bb155249654ca1cff5f",
 			"style": "devotional",
@@ -9697,6 +9827,16 @@
 				520
 			]
 		},
+		"pt/c-s-lewis-a-life-children": {
+			"ground": "c0062bc4650e82545807655d5e3af83eaae72aa284366848d4e435958b8ce97c",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"pt/cheque-book": {
 			"ground": "d5b24d6d237dc26380030d5597707659508f5b8ed69c8be8969fb3ebbd82bfce",
 			"style": "revival",
@@ -9733,6 +9873,16 @@
 				482
 			]
 		},
+		"pt/corrie-ten-boom-a-life-children": {
+			"ground": "10897eae8f3edce9e81e738089978e8c333e90338db9fbc606ac5ef2965d7dd8",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"pt/days-of-heaven-upon-earth": {
 			"ground": "95d7464227be056bd368c48c94511d8aa30b9f30465bfd728feb33da0c176b3b",
 			"style": "revival",
@@ -9752,6 +9902,16 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0.05
+		},
+		"pt/elisabeth-elliot-a-life-children": {
+			"ground": "f03d3bf3a5e2d07f7558c7cb164acdb0658778dcb6afba594b7a029fdae4940c",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"pt/gleanings-among-the-sheaves": {
 			"ground": "faff5c2c2ea1a2855af9a50f49b2cbfb760524820994711194fcdb57252c6b45",
@@ -9887,6 +10047,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"pt/john-hyde-a-life-children": {
+			"ground": "ba8fc6e1a0a327b9f348d44bc3e58b1e34826cc7285bf6ca822d6f9e1fd16943",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"pt/lord-teach-us-to-pray-2": {
 			"ground": "397def9b8982b38f14df95f10721f80ed89838a9baf5187deea2abd21ff5c0b2",
 			"style": "devotional",
@@ -9896,6 +10066,16 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0.11
+		},
+		"pt/mary-slessor-a-life-children": {
+			"ground": "4c6a3efd612d6835a4419ed12a62f43af46555c70759bbfe995fc66c18a9cf94",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"pt/men-of-prayer-2": {
 			"ground": "4ccfa79e0cf284fe44c0dbea3faf6ed4eff3f259334e6e7386da1ebd3feaacc6",
@@ -9931,6 +10111,16 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "wash/sage",
+			"bar": 0
+		},
+		"pt/pandita-ramabai-a-life-children": {
+			"ground": "16b9831d9eec130784e8bdef4ba96ef14dda456c11d2b6066d2dd52ba3e5483d",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0
 		},
 		"pt/pilgrims-progress": {
@@ -11278,6 +11468,16 @@
 				595
 			]
 		},
+		"sw/c-s-lewis-a-life-children": {
+			"ground": "b24db527cc108b0262c15cbc917c91f2a317c62386b4959419dbf59f12223d0a",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"sw/cheque-book": {
 			"ground": "0833bf4d3686764b58c07d24a0456e8b730a2e50746e64a5d24424e95da739fe",
 			"style": "revival",
@@ -11322,6 +11522,16 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "rail/rust",
+			"bar": 0
+		},
+		"sw/corrie-ten-boom-a-life-children": {
+			"ground": "ea17e3cfcc9f6e360c4dd55b12f7fe15b85cb124b27a3edab73b3469877d7659",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0
 		},
 		"sw/days-of-heaven-upon-earth": {
@@ -11373,6 +11583,16 @@
 				278,
 				517
 			]
+		},
+		"sw/elisabeth-elliot-a-life-children": {
+			"ground": "72c2daa3727b3be4bbeb7dcb7d3465185e85c952512cd57e8316af80b8ae4b1a",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"sw/feasting-at-the-table": {
 			"ground": "0a9538b84989b2136d659baeb822f7b87cdaa94c95d542f020400bd6c94abb70",
@@ -11527,6 +11747,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"sw/john-hyde-a-life-children": {
+			"ground": "606b9d07797da5f8f5ffe940bfb5a9d2d6e040c2e53cca2ab0e840578afb68df",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"sw/life-and-diary-of-david-brainerd": {
 			"ground": "29c596e666e325cc4a1eaeba34dd185570bf828c97c4d0078c31308ec20386e4",
 			"style": "enlightenment",
@@ -11565,6 +11795,16 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0.11
+		},
+		"sw/mary-slessor-a-life-children": {
+			"ground": "463ff025cdb13ccffab80ad161ddde65a4fefbff1c8851d9a2269a39136d8de5",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"sw/men-and-women-who-gave-everything-2": {
 			"ground": "f750a654defcb6fc6fb00b709dc878442c9cbb31346960958f7abe4edc40374e",
@@ -11658,6 +11898,16 @@
 				323,
 				472
 			]
+		},
+		"sw/pandita-ramabai-a-life-children": {
+			"ground": "131dfbd73bbbb97f4ab15095d4f4db9fcb42051c32ccb8086d95f2acd3ea8fd8",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"sw/pilgrims-progress": {
 			"ground": "223802626063a563598e1460af2e3e6fcc71c4cc9434b420bfeafc338dc62867",

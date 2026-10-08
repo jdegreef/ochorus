@@ -1,0 +1,97 @@
+{
+ "kind": "book",
+ "slug": "elisabeth-elliot-a-life-children",
+ "language": "fr",
+ "job_issue": 5564,
+ "pull_request": 5580,
+ "note": [
+  "Every scripture line in this edition is self_rendered. The English retelling does not quote a Bible: each chapter's opening blockquote is a simplified paraphrase for 8–12 year olds, cited loosely (“— from Deuteronomy 6”), and the French renders it in the same plain register with the house convention “— d’après Deutéronome 6” (as in a-retrospect-children.fr and the other fr young-reader editions), rather than pasting Louis Segond 1910 wording whose archaic register would break the edition's voice. References use English verse numbering (Psalm 62:8 is Psaume 62:9 in Segond). api.takeroot.bible was not used from this session.",
+  "Chapter 12's second paragraph echoes Jeremiah 31:3 (everlasting love) and Deuteronomy 33:27 (everlasting arms) in prose, self_rendered. Block indices mirror the English (tag sequence identical chapter by chapter). No quotations from Elisabeth Elliot's published writings were added; Jim Elliot's journal line stays an indirect paraphrase as in the English, and the poem line “Doe the nexte thynge” is kept in its English old spelling with a French gloss. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Deuteronomy 6:6-7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Hebrews 12:11",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "2 Timothy 2:15",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Isaiah 55:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Ecclesiastes 4:9",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Romans 10:14",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Isaiah 42:16",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Romans 12:21",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalm 62:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 46:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Deuteronomy 33:27",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 12
+  }
+ ]
+}

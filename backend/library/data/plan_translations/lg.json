@@ -58,5 +58,13 @@
     "note": [
       "AI-drafted; awaiting native review. All four Luganda volumes now use the series name in series.json (\"Abavumu ku lwa Katonda\"), and this plan follows it so the plan agrees with the book pages' series line. If a native reviewer changes the series name, change the books, series.json and this plan together."
     ]
+  },
+  "pursuit-of-holiness": {
+    "title": "Okunoonya Obutukuvu",
+    "description": "Wiiki mwenda ez’okubeera aba Mukama mu bujjuvu. Andrew Murray alaga nti obutukuvu bwaffe busibuka mu kwegatta kwaffe n’Omutukuvu, William Law atuyita mu bulamu obwewaddeyo eri Katonda mu buli ssaawa ey’abulijjo, ne John Wesley annyonnyola mu lwatu okutuukirira okw’Ekikristaayo kye kuli — ne kye kutali.",
+    "note": [
+      "Job #1337: ships with holy-in-christ.lg («Omutukuvu mu Kristo»), the plan's first source book, so the card never appears English-titled. «obutukuvu» / «Omutukuvu» follow that edition and the OLCB (1 Peter 1:15-16). Names follow the lg corpus: John Wesley (27×), William Law (4×).",
+      "The row cannot appear yet: a-serious-call and plain-account-christian-perfection have no lg edition, and seed_plans creates a plan only where every source book is published. AI-drafted; awaiting native review."
+    ]
   }
 }
