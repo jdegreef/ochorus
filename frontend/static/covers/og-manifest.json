@@ -4152,6 +4152,16 @@
 				567
 			]
 		},
+		"es/mary-slessor-a-life-children": {
+			"ground": "f7e3c1342b0efba929d7e0d217ea7cff56d2e5e391acc9548942772ba1ec688b",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"es/men-and-women-who-gave-everything-2": {
 			"ground": "bdca16830133d8a7f8a68aae6ddd2719abc02f95a071ef208168daa2e54d7be8",
 			"style": "originals",
