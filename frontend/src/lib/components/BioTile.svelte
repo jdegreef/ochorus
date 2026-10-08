@@ -21,7 +21,7 @@
 	href={localizeHref(`/authors/${author.slug}`)}
 	data-sveltekit-preload-data="hover"
 	style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
-	class="card-tint group flex flex-col items-center gap-2 rounded-card border border-border px-3 pb-4 pt-5 text-center text-text hover:no-underline"
+	class="bio-tile card-tint group flex flex-col items-center gap-2 rounded-card border border-border px-3 pb-4 pt-5 text-center text-text hover:no-underline"
 >
 	<Portrait
 		slug={author.slug}
