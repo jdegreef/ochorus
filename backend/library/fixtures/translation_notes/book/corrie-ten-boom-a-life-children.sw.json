@@ -3,7 +3,7 @@
  "slug": "corrie-ten-boom-a-life-children",
  "language": "sw",
  "job_issue": 5557,
- "pull_request": null,
+ "pull_request": 5591,
  "note": [
   "The English epigraphs are loose modern paraphrases cited by chapter only (“from Psalm 122”); the Swahili keeps that shape (“— kutoka Zaburi 122”). Each is rendered in the Swahili Union Version (SUV) tradition the shipped sw corpus quotes. Where a shipped *.sw.json already carries the SUV words they were pasted verbatim and the row is `mined` with that file; otherwise the row is `self_rendered` in SUV register (from memory of the SUV, no reachable PD text) and needs a native check.",
   "Self-rendered choices worth a reviewer's eye: Psalm 91:2 uses SUV “Nitasema, Bwana ndiye kimbilio langu” (the-god-of-all-comfort.sw has a freer “Nitamwambia Bwana, ‘Ndiwe kimbilio langu…’”); Psalm 32:7 keeps SUV “sitara yangu” in the epigraph while the chapter body says the plainer “mahali pa kujificha” (hiding place) a child will follow; Enoch in chapter 7 is “Henoko … alikwenda pamoja na Mungu” (Genesis 5:24).",
