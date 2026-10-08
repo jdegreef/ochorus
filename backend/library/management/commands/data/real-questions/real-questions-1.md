@@ -213,7 +213,7 @@ So if a list of contradictions shakes you, do what Luke did. He "carefully inves
 
 ---
 
-## Wasn't the Bible Changed Over Time?
+## Wasn't the Bible Changed over Time?
 
 **The short answer:** We don't have the original pages the Bible's writers wrote, but we have thousands of very early copies, far more than for any other ancient book, and comparing them lets scholars work out the original wording with great accuracy. The Bible you read today says what was first written.
 

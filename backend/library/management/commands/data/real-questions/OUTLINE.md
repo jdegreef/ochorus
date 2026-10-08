@@ -24,7 +24,7 @@ Where **faithful Christians genuinely differ**, the main views are set out fairl
 | Hasn't Science Disproved God? | *Orthodoxy*, ch. 5 |
 | What About Dinosaurs and the Age of the Earth? | *The Key Teachings of Augustine of Hippo*, ch. 12 |
 | Isn't the Bible Full of Contradictions? | *The Key Teachings of R. A. Torrey*, ch. 11 |
-| Wasn't the Bible Changed Over Time? | *The Fundamental Doctrines of the Christian Faith*, ch. 2 |
+| Wasn't the Bible Changed over Time? | *The Fundamental Doctrines of the Christian Faith*, ch. 2 |
 | Why Is the Old Testament So Violent? | *He Holds My Tomorrows*, ch. 17 |
 | If God Is Good, Why Did Someone I Love Die? | *The Key Teachings of C. S. Lewis*, ch. 11 |
 | Is It Wrong to Doubt? | *The Key Teachings of Martyn Lloyd-Jones*, ch. 14 |
