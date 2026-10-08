@@ -10,6 +10,7 @@ DNS is at GoDaddy (`ns21/ns22.domaincontrol.com`). The `server: cloudflare`
 response header comes from Render's own CDN, which we can't configure. So rule 1
 below can't be applied. It is kept, and `edgeRules.test.ts` keeps it matched to
 `isSlashedPath`, for the day the domain moves onto a Cloudflare zone of our own.
+Section 0 is how to make that move.
 
 **What ships instead (decided 2026-09-30):** `render.yaml` has no
 `/* -> /200.html` catch-all, so after a Blueprint Sync a no-slash detail URL
@@ -24,6 +25,43 @@ doesn't delete it from the live service. The old `/* -> /200.html` catch-all
 survived the 2026-10-01 sync, so unknown and no-slash paths still answered 200.
 Delete it by hand: **Dashboard → ochorus-web → Redirect/Rewrite Rules → delete `/*`**.
 Check: `curl -s -o /dev/null -w '%{http_code}' https://ochorus.com/books/no-such-book/` → `404`.
+
+## 0. Moving `ochorus.com` onto a Cloudflare zone (founder action, ~30 min + DNS wait)
+
+Why not do it in Render instead (re-checked 2026-10-08): its matcher treats
+`/x` and `/x/` as the same path. A `/books/:slug → /books/:slug/` redirect
+therefore 301s a MISSING slug's slashed URL to itself (a loop). A
+`/books/:slug → /books/:slug/index.html` rewrite serves a blank 200 for a
+missing slug instead (deploy skill, gotcha #8). Only an edge in front of Render
+can tell the two forms apart, so the move is the fix.
+
+1. **Cloudflare → Add a site → `ochorus.com` → Free plan.** Cloudflare scans
+   the GoDaddy records and imports them. Before going on, compare its list
+   with GoDaddy's DNS page record by record. Every email record must be
+   there and set to **DNS only (grey cloud)**: MX, the SPF `TXT`, Resend's
+   DKIM `TXT`/`CNAME` and its `send.` records, and any `_dmarc`. Proxying
+   or dropping one breaks sign-up, reset and lifecycle email. Supabase's
+   auth email depends on them too.
+2. **Set the site records (`ochorus.com` and `www`, pointing at Render) to
+   DNS only (grey) for now.** Render has to see its own target to verify the
+   domain and issue its certificate.
+3. **GoDaddy → Domain → Nameservers → "I'll use my own"** → paste Cloudflare's
+   two nameservers. Wait until Cloudflare says the zone is **Active** (usually
+   under an hour, at most 24 h). The site keeps serving throughout, because
+   the records are the same.
+4. **Render → ochorus-web → Settings → Custom Domains:** confirm both domains
+   still read **Verified** with a certificate issued.
+5. **Turn the proxy on (orange cloud) for the `ochorus.com` and `www`
+   records only.** Then **SSL/TLS → Overview → Full**. Render serves a valid
+   certificate, so **Full (strict)** should also work. Try it once Full
+   loads cleanly, and fall back to Full if the site errors. Never pick
+   **Flexible**: Render redirects HTTP to HTTPS, so Flexible loops.
+6. **Paste rule 1 below** (Rules → Redirect Rules), then run its **Check**
+   curls and section 3.
+
+Undo, if anything goes wrong: switch the site records back to grey (DNS only)
+and the site is back to plain Render within a minute. Switching nameservers
+back at GoDaddy undoes the whole move.
 
 ## 1. No-slash → slash 301 (Cloudflare — NOT APPLIED: needs an `ochorus.com` zone we don't have)
 
