@@ -8694,6 +8694,16 @@
 				545
 			]
 		},
+		"lg/holy-in-christ": {
+			"ground": "a7053bde832951c943cb4340cefd74a00c2366f786e38901be4141b4e2f33998",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"lg/humility-2": {
 			"ground": "1a1c2e056e560e73fedf4b24232917e415c2de63e0817bb155249654ca1cff5f",
 			"style": "devotional",
