@@ -460,7 +460,7 @@ A modern reader may find these chapters heavy, and may worry that so much dwelli
 
 In the middle of a practical manual on fighting sin, Owen does something unexpected. He stops giving tactics and asks his reader to think about God. Not about God’s law, or God’s judgement, though he has spoken of those; about God Himself, His majesty, His greatness, and how little even the best of us know of Him. The chapter is one of the finest in the book, and it is easy to wonder at first why it is there at all.
 
-The reason is simple and profound. Sin thrives on a small God. A heart that thinks of God as manageable, familiar and near to its own size will find its temptations large by comparison. A heart that is filled with the greatness of God will find them shrinking. Owen puts his direction in six words: “Think greatly of the greatness of God.”
+The reason is simple and profound. Sin thrives on a small God. A heart that thinks of God as manageable, familiar and near to its own size will find its temptations large by comparison. A heart that is filled with the greatness of God will find them shrinking. Owen puts his direction in seven words: “Think greatly of the greatness of God.”
 
 ## The distance between
 
