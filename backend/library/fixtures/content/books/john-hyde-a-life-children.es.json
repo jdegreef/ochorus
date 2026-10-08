@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "john-hyde-a-life-children",
+  "language": "es",
+  "title": "Hyde, el que ora (Para niños)",
+  "subtitle": "",
+  "cover_byline": "John Hyde",
+  "description": "La historia verdadera de John Hyde, un joven estadounidense tímido, lento para hablar y algo sordo, que fue a las aldeas del Panyab, en la India, y pasó tanto tiempo de su vida orando por los demás que la gente de allí lo llamaba “el hombre que nunca duerme”, y los cristianos de todas partes llegaron a llamarlo “Praying Hyde”, es decir, “Hyde, el que ora”. Esta edición para niños vuelve a contar su vida en capítulos cortos, hechos para leer en voz alta: un versículo de la Biblia, una parte de su historia, una cosa que eso quiere decir para ti y una oración corta, con preguntas para conversar juntos.",
+  "qa": [
+   {
+    "question": "¿De qué trata Hyde, el que ora (Para niños)?",
+    "answer": "Es una versión para niños de la biografía completa de John Hyde. Cuenta cómo el hijo de un pastor de Illinois fue a las aldeas del Panyab, en la India, aprendió a orar con todo su corazón, amó a la gente más pobre de allí y ayudó a muchos de ellos a seguir a Jesús."
+   },
+   {
+    "question": "¿Quién fue John Hyde?",
+    "answer": "Un misionero estadounidense que vivió de 1865 a 1912. Era tímido, lento para hablar y algo sordo, pero se entregó tanto a la oración que la gente del Panyab lo llamaba “el hombre que nunca duerme”, y los cristianos de todo el mundo llegaron a llamarlo “Praying Hyde”, “Hyde, el que ora”."
+   },
+   {
+    "question": "¿Cómo está organizado cada capítulo?",
+    "answer": "Cada capítulo es corto y está hecho para leerse en voz alta. Empieza con un versículo de la Biblia, cuenta una parte de la historia de John, muestra una cosa sencilla que eso quiere decir para ti y termina con una oración corta. Después vienen tres preguntas para conversar juntos."
+   },
+   {
+    "question": "¿Es este libro demasiado triste para los niños?",
+    "answer": "Algunas partes son tristes: el hermano de John muere joven, y al final John se enferma gravemente y muere. El libro cuenta esas partes con sinceridad pero con ternura, sin detalles que asusten. Sobre todo, es una historia feliz del amor de Dios, de oraciones contestadas y de un hombre que murió diciendo: “Es solo victoria, victoria, victoria”."
+   },
+   {
+    "question": "¿Son verdaderas las historias?",
+    "answer": "Sí. Vienen de los registros de la iglesia y de los amigos que conocieron a John Hyde y escribieron lo que recordaban. Algunas historias se contaron de maneras un poco diferentes, y algunos números de los libros antiguos no se pueden comprobar, y el libro lo dice con suavidad cuando importa."
+   },
+   {
+    "question": "¿Para quién es este libro?",
+    "answer": "Es para niños, para que un adulto se lo lea en voz alta o para que un niño mayor lo lea solo. También hay una edición para adolescentes y la biografía completa para lectores mayores."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Una adaptación de Ochorus, para lectores jóvenes, de la biografía de Ochorus John Hyde, de la serie Retratos de coraje. La forma de contarla es nuestra, libre para leer y compartir.",
+  "cover_url": "/covers/es/john-hyde-a-life-children.svg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 151,
+  "is_published": true,
+  "created_at": "2026-10-08T00:00:00Z",
+  "updated_at": "2026-10-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "es"
+  ],
+  "order": 1,
+  "title": "La oración de un padre",
+  "body_html": "<blockquote>“Rogad al Señor de la mies, que envíe obreros a su mies.” — de Mateo 9</blockquote> <p>Hace mucho tiempo, el 9 de noviembre de 1865, nació un niño en el estado de Illinois, en Estados Unidos. Se llamaba John Nelson Hyde. Muchos años después, cristianos de todo el mundo lo llamarían con un nombre especial: “Praying Hyde”, que quiere decir “Hyde, el que ora”. Esta es su historia.</p> <p>John creció en un pueblito de la pradera llamado Carthage. Su padre, Smith Harris Hyde, era el pastor de la iglesia presbiteriana de allí. John tenía dos hermanos y tres hermanas. Su hermano mayor, Edmund, tenía dos años más que él.</p> <p>A la madre de John le encantaba la música. Años después, John le contó a un amigo que ella era la mejor cantante que había oído en su vida, y “una mujer tan santa”. Ella le enseñó con cuidado acerca de Jesús.</p> <p>La familia oraba junta en casa, y una y otra vez John oía a su padre hacer la misma oración. Era la oración que Jesús les dijo a sus amigos que hicieran: que Dios enviara obreros a su cosecha. Jesús quería decir que el mundo es como un gran campo lleno de personas que necesitan oír hablar de él, y que no hay suficientes obreros para contárselo. El padre de John hacía esa oración con alegría, aunque eso pudiera significar que Dios mandara lejos a sus propios hijos.</p> <p>John creció y fue a estudiar a Carthage College. Decidió que quería ser misionero. Pero, a decir verdad, quería ser un misionero famoso. Más tarde dijo: “Quería brillar como un gran misionero”. De verdad amaba a Dios. Pero también quería que la gente pensara que él era maravilloso, y Dios tendría que cambiar eso con mucha suavidad.</p> <p>Dios oye cada oración, aun las pequeñitas, aun las que repetimos una y otra vez. El padre de John no sabía cómo iba a contestar Dios su oración. Pero Dios estaba escuchando, y Dios también te escucha a ti.</p> <p><em>Querido Dios, gracias por las personas que oran por mí. Por favor, envía obreros para que les cuenten a todos acerca de Jesús, y ayúdame a ser uno de ellos. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué oración hacía el padre de John una y otra vez?",
+    "answer": "Hacía la oración que Jesús enseñó: le pedía al Señor de la mies que enviara obreros a su cosecha, para que más personas oyeran hablar de Jesús."
+   },
+   {
+    "question": "¿Qué quería el joven John cuando decidió ser misionero?",
+    "answer": "Amaba a Dios, pero también quería ser un misionero famoso. Dijo: “Quería brillar como un gran misionero”."
+   },
+   {
+    "question": "¿Quién ora por ti? ¿Por quién podrías orar tú?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo es que Dios oye cada oración, aun las pequeñitas que repetimos una y otra vez, y que te está escuchando a ti."
+   }
+  ],
+  "body_text": "“Rogad al Señor de la mies, que envíe obreros a su mies.” — de Mateo 9 Hace mucho tiempo, el 9 de noviembre de 1865, nació un niño en el estado de Illinois, en Estados Unidos. Se llamaba John Nelson Hyde. Muchos años después, cristianos de todo el mundo lo llamarían con un nombre especial: “Praying Hyde”, que quiere decir “Hyde, el que ora”. Esta es su historia. John creció en un pueblito de la pradera llamado Carthage. Su padre, Smith Harris Hyde, era el pastor de la iglesia presbiteriana de allí. John tenía dos hermanos y tres hermanas. Su hermano mayor, Edmund, tenía dos años más que él. A la madre de John le encantaba la música. Años después, John le contó a un amigo que ella era la mejor cantante que había oído en su vida, y “una mujer tan santa”. Ella le enseñó con cuidado acerca de Jesús. La familia oraba junta en casa, y una y otra vez John oía a su padre hacer la misma oración. Era la oración que Jesús les dijo a sus amigos que hicieran: que Dios enviara obreros a su cosecha. Jesús quería decir que el mundo es como un gran campo lleno de personas que necesitan oír hablar de él, y que no hay suficientes obreros para contárselo. El padre de John hacía esa oración con alegría, aunque eso pudiera significar que Dios mandara lejos a sus propios hijos. John creció y fue a estudiar a Carthage College. Decidió que quería ser misionero. Pero, a decir verdad, quería ser un misionero famoso. Más tarde dijo: “Quería brillar como un gran misionero”. De verdad amaba a Dios. Pero también quería que la gente pensara que él era maravilloso, y Dios tendría que cambiar eso con mucha suavidad. Dios oye cada oración, aun las pequeñitas, aun las que repetimos una y otra vez. El padre de John no sabía cómo iba a contestar Dios su oración. Pero Dios estaba escuchando, y Dios también te escucha a ti. Querido Dios, gracias por las personas que oran por mí. Por favor, envía obreros para que les cuenten a todos acerca de Jesús, y ayúdame a ser uno de ellos. Amén.",
+  "word_count": 366
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "es"
+  ],
+  "order": 2,
+  "title": "“Ya está decidido”",
+  "body_html": "<blockquote>“Después oí la voz del Señor, que decía: ¿A quién enviaré? Entonces respondí yo: Heme aquí, envíame a mí.” — de Isaías 6</blockquote> <p>Cuando John era joven, fue a la gran ciudad de Chicago a estudiar para ser pastor. Un año después, su hermano Edmund también fue a estudiar allí. Edmund le había prometido a Dios que iría como misionero a un país lejano, si Dios se lo permitía.</p> <p>Un verano, Edmund viajó al oeste, a Montana, para ayudar en el trabajo de la escuela dominical. Allí le dio una fiebre muy fuerte. Estaba tan enfermo que le prendieron el boleto del tren en el abrigo para que pudiera llegar a casa. Llegó a casa, pero unos días después, en agosto de 1891, murió. John estaba muy triste.</p> <p>Entonces John empezó a preguntarse algo. Edmund había querido ser misionero, y ahora ya no podía ir. ¿Quería Dios que John fuera en su lugar? John no se apresuró a decidir. Lo pensó durante casi un año.</p> <p>Un sábado, ya tarde por la noche, John fue al cuarto de un amigo. Le pidió que le diera todas las razones para ir y todas las razones para quedarse. Pero su amigo no quiso discutir. Le dijo a John que fuera a su propio cuarto, se pusiera de rodillas delante de Dios y se quedara allí hasta que la pregunta estuviera decidida.</p> <p>Y así lo hizo John. Nadie sabe cuánto tiempo oró esa noche. Pero a la mañana siguiente, en la capilla, buscó a su amigo y le dijo: “Ya está decidido”. Su cara brillaba. Iría.</p> <p>En 1892 John llegó a ser pastor, y su iglesia lo envió al Panyab, en el norte de la India. El 15 de octubre de 1892 salió en barco desde Nueva York. Tenía veintiséis años.</p> <p>A veces tenemos una pregunta grande y no sabemos qué hacer. Es bueno pedir ayuda a personas sabias. Pero algunas preguntas es mejor llevárselas a Dios. Puedes contárselo todo, esperar en silencio y confiar en que él te mostrará el camino.</p> <p><em>Querido Dios, cuando no sepa qué hacer, ayúdame a venir a hablar contigo. Quiero decir, como John: “Aquí estoy. Envíame a mí”. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué le pasó a Edmund, el hermano de John?",
+    "answer": "Le dio una fiebre muy fuerte mientras ayudaba en la escuela dominical en Montana, volvió a casa muy enfermo y murió en agosto de 1891."
+   },
+   {
+    "question": "¿Qué le dijo a John su amigo, en vez de discutir con él?",
+    "answer": "Que fuera a su propio cuarto, se arrodillara delante de Dios y se quedara allí hasta que la pregunta estuviera decidida. A la mañana siguiente John dijo: “Ya está decidido”."
+   },
+   {
+    "question": "¿Hay alguna pregunta que te gustaría llevarle a Dios?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo es que podemos llevarle a Dios nuestras preguntas grandes, esperar y confiar en que él nos mostrará el camino."
+   }
+  ],
+  "body_text": "“Después oí la voz del Señor, que decía: ¿A quién enviaré? Entonces respondí yo: Heme aquí, envíame a mí.” — de Isaías 6 Cuando John era joven, fue a la gran ciudad de Chicago a estudiar para ser pastor. Un año después, su hermano Edmund también fue a estudiar allí. Edmund le había prometido a Dios que iría como misionero a un país lejano, si Dios se lo permitía. Un verano, Edmund viajó al oeste, a Montana, para ayudar en el trabajo de la escuela dominical. Allí le dio una fiebre muy fuerte. Estaba tan enfermo que le prendieron el boleto del tren en el abrigo para que pudiera llegar a casa. Llegó a casa, pero unos días después, en agosto de 1891, murió. John estaba muy triste. Entonces John empezó a preguntarse algo. Edmund había querido ser misionero, y ahora ya no podía ir. ¿Quería Dios que John fuera en su lugar? John no se apresuró a decidir. Lo pensó durante casi un año. Un sábado, ya tarde por la noche, John fue al cuarto de un amigo. Le pidió que le diera todas las razones para ir y todas las razones para quedarse. Pero su amigo no quiso discutir. Le dijo a John que fuera a su propio cuarto, se pusiera de rodillas delante de Dios y se quedara allí hasta que la pregunta estuviera decidida. Y así lo hizo John. Nadie sabe cuánto tiempo oró esa noche. Pero a la mañana siguiente, en la capilla, buscó a su amigo y le dijo: “Ya está decidido”. Su cara brillaba. Iría. En 1892 John llegó a ser pastor, y su iglesia lo envió al Panyab, en el norte de la India. El 15 de octubre de 1892 salió en barco desde Nueva York. Tenía veintiséis años. A veces tenemos una pregunta grande y no sabemos qué hacer. Es bueno pedir ayuda a personas sabias. Pero algunas preguntas es mejor llevárselas a Dios. Puedes contárselo todo, esperar en silencio y confiar en que él te mostrará el camino. Querido Dios, cuando no sepa qué hacer, ayúdame a venir a hablar contigo. Quiero decir, como John: “Aquí estoy. Envíame a mí”. Amén.",
+  "word_count": 361
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "es"
+  ],
+  "order": 3,
+  "title": "La carta arrugada",
+  "body_html": "<blockquote>“¿Cuánto más vuestro Padre celestial dará el Espíritu Santo a los que se lo pidan?” — de Lucas 11</blockquote> <p>Cuando John subió a su barco en Nueva York, lo estaba esperando una carta. Era de un amigo de su padre, un cristiano mayor que una vez había querido ser misionero pero no había podido ir.</p> <p>La carta era corta. Decía más o menos esto: “No dejaré de orar por ti, querido John, hasta que seas lleno del Espíritu Santo”.</p> <p>¡John se enojó! ¿Acaso ese hombre pensaba que él no estaba preparado? ¡Él iba a ser un gran misionero! Arrugó la carta, la tiró y subió a la cubierta muy enfadado.</p> <p>Pero mientras caminaba de un lado a otro, en lo profundo de su corazón sabía que aquel hombre tenía razón. El amigo de su padre era un hombre bueno y santo. Así que John volvió, se puso de rodillas, encontró la carta arrugada, la alisó y la leyó otra vez. Y otra vez más.</p> <p>Durante dos o tres días John se sintió muy mal. Por fin le pidió a Dios que lo llenara del Espíritu Santo. Entonces empezó a darse cuenta de que había querido ser misionero sobre todo para que la gente lo admirara. Le dijo a Dios que estaba dispuesto a fracasar en sus exámenes en la India, y a trabajar “en silencio, donde nadie lo viera”, con tal de que Dios lo llenara de su Espíritu.</p> <p>John contó esta historia a sus amigos más de una vez, y algunos detallitos no son exactamente iguales cada vez. Pero lo importante siempre es lo mismo: John dejó de ser orgulloso y le pidió ayuda a Dios.</p> <p>A veces una persona que te ama te dice algo que no quieres oír. Es fácil enfadarse. Pero lo sabio es detenerse, pensar y preguntarle a Dios si esa persona podría tener razón.</p> <p><em>Querido Dios, cuando alguien que me ama me diga algo difícil, ayúdame a escuchar y a no ser orgulloso. Por favor, lléname de tu Espíritu Santo. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué decía la carta que John recibió en el barco?",
+    "answer": "Decía que el amigo de su padre no dejaría de orar por él hasta que John fuera lleno del Espíritu Santo."
+   },
+   {
+    "question": "¿Qué hizo John después de tirar la carta?",
+    "answer": "Volvió, la encontró, la alisó y la leyó otra vez. Después de unos días en que se sintió muy mal, le pidió a Dios que lo llenara del Espíritu Santo y le dijo que estaba dispuesto a trabajar en silencio, donde nadie lo viera."
+   },
+   {
+    "question": "¿Alguna vez alguien te dijo algo difícil que resultó ser verdad?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo es que, cuando alguien que nos ama nos dice algo difícil, lo sabio es escuchar y preguntarle a Dios si tiene razón."
+   }
+  ],
+  "body_text": "“¿Cuánto más vuestro Padre celestial dará el Espíritu Santo a los que se lo pidan?” — de Lucas 11 Cuando John subió a su barco en Nueva York, lo estaba esperando una carta. Era de un amigo de su padre, un cristiano mayor que una vez había querido ser misionero pero no había podido ir. La carta era corta. Decía más o menos esto: “No dejaré de orar por ti, querido John, hasta que seas lleno del Espíritu Santo”. ¡John se enojó! ¿Acaso ese hombre pensaba que él no estaba preparado? ¡Él iba a ser un gran misionero! Arrugó la carta, la tiró y subió a la cubierta muy enfadado. Pero mientras caminaba de un lado a otro, en lo profundo de su corazón sabía que aquel hombre tenía razón. El amigo de su padre era un hombre bueno y santo. Así que John volvió, se puso de rodillas, encontró la carta arrugada, la alisó y la leyó otra vez. Y otra vez más. Durante dos o tres días John se sintió muy mal. Por fin le pidió a Dios que lo llenara del Espíritu Santo. Entonces empezó a darse cuenta de que había querido ser misionero sobre todo para que la gente lo admirara. Le dijo a Dios que estaba dispuesto a fracasar en sus exámenes en la India, y a trabajar “en silencio, donde nadie lo viera”, con tal de que Dios lo llenara de su Espíritu. John contó esta historia a sus amigos más de una vez, y algunos detallitos no son exactamente iguales cada vez. Pero lo importante siempre es lo mismo: John dejó de ser orgulloso y le pidió ayuda a Dios. A veces una persona que te ama te dice algo que no quieres oír. Es fácil enfadarse. Pero lo sabio es detenerse, pensar y preguntarle a Dios si esa persona podría tener razón. Querido Dios, cuando alguien que me ama me diga algo difícil, ayúdame a escuchar y a no ser orgulloso. Por favor, lléname de tu Espíritu Santo. Amén.",
+  "word_count": 337
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "es"
+  ],
+  "order": 4,
+  "title": "Una pregunta en la calle",
+  "body_html": "<blockquote>“Crea en mí, oh Dios, un corazón limpio.” — del Salmo 51</blockquote> <p>A fines de 1892 John llegó a la India. Viajó en tren hasta el Panyab, la tierra de los cinco ríos. Era una tierra de campos de trigo y aldeas con paredes de barro, de camellos y carretas tiradas por bueyes. La gente hablaba urdu y panyabí, y John todavía no sabía decir ni una palabra en ninguno de los dos idiomas.</p> <p>En sus primeros días, un misionero mayor lo llevó a una reunión al aire libre, en la calle. El misionero le dijo a la multitud que Jesús de verdad puede salvar a las personas de su pecado. John no entendía las palabras, pero alguien le explicó de qué se trataban.</p> <p>Cuando terminó la charla, un hombre bien vestido se adelantó. Hablaba bien el inglés. Le preguntó al misionero si Jesús lo había salvado a él del pecado de la manera que acababa de describir.</p> <p>Esa pregunta se le metió a John directo en el corazón. Él sabía que en su propia vida había un pecado que lo hacía tropezar una y otra vez. Nunca le dijo a nadie cuál era. Pero sabía que, si aquel hombre se lo hubiera preguntado a él, no habría podido decir que sí con sinceridad.</p> <p>John volvió a su cuarto y cerró la puerta. Le dijo a Dios que no podía hablarles a otros del poder de Jesús hasta que primero dejara que Jesús lo ayudara a él. Se quedó allí orando mucho tiempo, y Dios le aseguró que él podía y quería hacerlo libre. Años después John dijo: “Él sí me libró”. Su amigo nunca olvidó la cara triste de John cuando hablaba de su pecado, ni su sonrisa maravillosa cuando hablaba de lo fiel que había sido Jesús.</p> <p>Todo el mundo tiene pecados que lo hacen tropezar. Tal vez sea enojarte, o decir mentiritas, o ser poco amable. No tienes que esconderlos de Dios. Puedes contárselos, y él es fiel para perdonarte, para limpiar tu corazón y para ayudarte.</p> <p><em>Querido Dios, tú conoces las cosas que sigo haciendo mal. Por favor, perdóname, limpia mi corazón y ayúdame a hacer lo que es correcto. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué le preguntó al misionero el hombre de la calle?",
+    "answer": "Le preguntó si Jesús de verdad lo había salvado del pecado, como él le había estado diciendo a la multitud."
+   },
+   {
+    "question": "¿Qué hizo John cuando esa pregunta se le metió en el corazón?",
+    "answer": "Fue a su cuarto, cerró la puerta y oró mucho tiempo, hasta que Dios le aseguró que podía hacerlo libre. John dijo: “Él sí me libró”."
+   },
+   {
+    "question": "¿Hay algo que sigues haciendo mal y que podrías contarle a Dios?",
+    "answer": "Cualquier respuesta sincera está bien, y no tienes que decirla en voz alta. La idea del capítulo es que nunca necesitamos esconder de Dios nuestros pecados: él nos perdona y nos ayuda."
+   }
+  ],
+  "body_text": "“Crea en mí, oh Dios, un corazón limpio.” — del Salmo 51 A fines de 1892 John llegó a la India. Viajó en tren hasta el Panyab, la tierra de los cinco ríos. Era una tierra de campos de trigo y aldeas con paredes de barro, de camellos y carretas tiradas por bueyes. La gente hablaba urdu y panyabí, y John todavía no sabía decir ni una palabra en ninguno de los dos idiomas. En sus primeros días, un misionero mayor lo llevó a una reunión al aire libre, en la calle. El misionero le dijo a la multitud que Jesús de verdad puede salvar a las personas de su pecado. John no entendía las palabras, pero alguien le explicó de qué se trataban. Cuando terminó la charla, un hombre bien vestido se adelantó. Hablaba bien el inglés. Le preguntó al misionero si Jesús lo había salvado a él del pecado de la manera que acababa de describir. Esa pregunta se le metió a John directo en el corazón. Él sabía que en su propia vida había un pecado que lo hacía tropezar una y otra vez. Nunca le dijo a nadie cuál era. Pero sabía que, si aquel hombre se lo hubiera preguntado a él, no habría podido decir que sí con sinceridad. John volvió a su cuarto y cerró la puerta. Le dijo a Dios que no podía hablarles a otros del poder de Jesús hasta que primero dejara que Jesús lo ayudara a él. Se quedó allí orando mucho tiempo, y Dios le aseguró que él podía y quería hacerlo libre. Años después John dijo: “Él sí me libró”. Su amigo nunca olvidó la cara triste de John cuando hablaba de su pecado, ni su sonrisa maravillosa cuando hablaba de lo fiel que había sido Jesús. Todo el mundo tiene pecados que lo hacen tropezar. Tal vez sea enojarte, o decir mentiritas, o ser poco amable. No tienes que esconderlos de Dios. Puedes contárselos, y él es fiel para perdonarte, para limpiar tu corazón y para ayudarte. Querido Dios, tú conoces las cosas que sigo haciendo mal. Por favor, perdóname, limpia mi corazón y ayúdame a hacer lo que es correcto. Amén.",
+  "word_count": 365
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "es"
+  ],
+  "order": 5,
+  "title": "Lento para hablar",
+  "body_html": "<blockquote>“Yo estaré con tu boca, y te enseñaré lo que hayas de hablar.” — de Éxodo 4</blockquote> <p>No era fácil llegar a conocer a John. Era tímido y callado. También era un poco sordo, y con los años se fue quedando más sordo. Cuando la gente le hablaba, muchas veces parecía que no oía, o tardaba mucho en contestar.</p> <p>Pero todos se fijaban en sus ojos. Un amigo dijo que tenía “unos ojos azules maravillosos” que parecían mirarte hasta el fondo del corazón.</p> <p>Se suponía que los misioneros nuevos debían pasar la mayor parte del tiempo aprendiendo el idioma. John sí lo estudiaba. Pero también pasaba muchas horas estudiando la Biblia, y los líderes de la misión lo regañaron. John contestó: “Lo primero es lo primero”. Había venido a la India a enseñar la Biblia, así que necesitaba conocerla bien.</p> <p>Durante mucho tiempo la gente pensó que John nunca llegaría a hablar muy bien el urdu ni el panyabí. Sus primeros diez años en la India fueron lentos, y no muchas personas vinieron a Jesús. Algunos de los otros misioneros pensaban que era raro, porque pasaba muchísimo tiempo orando. Años después, un amigo le preguntó a John si había sabido que ellos no lo aprobaban. John sonrió y dijo: “Oh, sí, lo sabía, pero no me entendían, eso era todo; nunca quisieron ser poco amables”. No estaba nada amargado.</p> <p>Poco a poco, Dios le soltó la lengua a John. Al final podía predicar en urdu, en panyabí y en inglés, y las multitudes lo escuchaban. ¡Los que hablaban urdu decían que lo hablaba bien, aunque sonara un poquito como un libro!</p> <p>Tal vez haya algo que a ti te cuesta. Tal vez eres tímido, o te cuesta leer, u oír, o hablar. Dios te hizo, y él lo sabe todo. Él puede usarte tal como eres.</p> <p><em>Querido Dios, gracias porque tú me hiciste. Cuando me sienta tímido o lento, ayúdame a recordar que tú estás conmigo y que puedes usarme. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Por qué los líderes de la misión regañaron a John?",
+    "answer": "Porque pasaba muchas horas estudiando la Biblia en vez de solo aprender el idioma. Él contestó: “Lo primero es lo primero”."
+   },
+   {
+    "question": "¿Qué dijo John cuando supo que algunos misioneros no lo aprobaban?",
+    "answer": "Sonrió y dijo que no lo entendían, y que nunca quisieron ser poco amables. No estaba amargado."
+   },
+   {
+    "question": "¿Qué es algo que a ti te cuesta? ¿Cómo podría Dios ayudarte con eso?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo es que Dios te hizo, sabe lo que te cuesta y puede usarte tal como eres."
+   }
+  ],
+  "body_text": "“Yo estaré con tu boca, y te enseñaré lo que hayas de hablar.” — de Éxodo 4 No era fácil llegar a conocer a John. Era tímido y callado. También era un poco sordo, y con los años se fue quedando más sordo. Cuando la gente le hablaba, muchas veces parecía que no oía, o tardaba mucho en contestar. Pero todos se fijaban en sus ojos. Un amigo dijo que tenía “unos ojos azules maravillosos” que parecían mirarte hasta el fondo del corazón. Se suponía que los misioneros nuevos debían pasar la mayor parte del tiempo aprendiendo el idioma. John sí lo estudiaba. Pero también pasaba muchas horas estudiando la Biblia, y los líderes de la misión lo regañaron. John contestó: “Lo primero es lo primero”. Había venido a la India a enseñar la Biblia, así que necesitaba conocerla bien. Durante mucho tiempo la gente pensó que John nunca llegaría a hablar muy bien el urdu ni el panyabí. Sus primeros diez años en la India fueron lentos, y no muchas personas vinieron a Jesús. Algunos de los otros misioneros pensaban que era raro, porque pasaba muchísimo tiempo orando. Años después, un amigo le preguntó a John si había sabido que ellos no lo aprobaban. John sonrió y dijo: “Oh, sí, lo sabía, pero no me entendían, eso era todo; nunca quisieron ser poco amables”. No estaba nada amargado. Poco a poco, Dios le soltó la lengua a John. Al final podía predicar en urdu, en panyabí y en inglés, y las multitudes lo escuchaban. ¡Los que hablaban urdu decían que lo hablaba bien, aunque sonara un poquito como un libro! Tal vez haya algo que a ti te cuesta. Tal vez eres tímido, o te cuesta leer, u oír, o hablar. Dios te hizo, y él lo sabe todo. Él puede usarte tal como eres. Querido Dios, gracias porque tú me hiciste. Cuando me sienta tímido o lento, ayúdame a recordar que tú estás conmigo y que puedes usarme. Amén.",
+  "word_count": 331
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "es"
+  ],
+  "order": 6,
+  "title": "El hombre que nunca duerme",
+  "body_html": "<blockquote>“Y levantándose muy de mañana, siendo aún muy oscuro, salió y se fue a un lugar desierto, y allí oraba.” — de Marcos 1</blockquote> <p>El trabajo de John estaba en las aldeas del Panyab. Viajaba en tren, a caballo y en carritos, y su equipaje iba en carreta de bueyes. Muchas de las personas que vinieron a Jesús allí eran muy pobres. Otras personas las despreciaban y ni siquiera querían tocarlas.</p> <p>Pero John las amaba. Las saludaba con un abrazo, poniéndoles la mano primero sobre un hombro y después sobre el otro. Vivía con los predicadores indios con los que trabajaba, y comía y dormía con ellos. Un hombre dijo: “El amor le ganó victorias”.</p> <p>Una noche John tuvo que quedarse despierto toda la noche preparando una charla sobre la Biblia. La charla salió bien. Pero después se le ocurrió una idea. Había pasado una noche entera preparando su mensaje. ¿No debería pasar también una noche preparándose a sí mismo, orando? Y así lo hizo. Le gustó tanto que lo volvió a hacer la noche siguiente, y otras personas vinieron a acompañarlo.</p> <p>John seguía preparando sus charlas con cuidado. Pero muchas veces decía que preparar al mensajero era tan importante como preparar el mensaje.</p> <p>John se levantaba muy temprano para orar y leer la Biblia. Cuando se arrodillaba, tenía la Biblia abierta delante de él, con las manos apoyadas encima. Por la noche encendía su lámpara para leer un versículo y hablar con Dios. Por eso la gente del Panyab le puso un nombre: “el hombre que nunca duerme”. En realidad no era cierto. ¡Sí dormía! Pero no mucho.</p> <p>¡Tú necesitas dormir! Pero puedes empezar cada día como John, dándole los buenos días a Dios y pidiéndole que te prepare para el día.</p> <p><em>Querido Dios, ¡buenos días! Por favor, prepárame para hoy, y ayúdame a amar a todas las personas que encuentre, así como tú las amas. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Cómo trataba John a la gente pobre de las aldeas?",
+    "answer": "La amaba. Los saludaba con un abrazo, y vivía, comía y dormía con los predicadores indios con los que trabajaba."
+   },
+   {
+    "question": "¿Por qué la gente llamaba a John “el hombre que nunca duerme”?",
+    "answer": "Porque pasaba gran parte de la noche orando y leyendo la Biblia. Sí dormía, pero no mucho."
+   },
+   {
+    "question": "¿Qué podrías decirle a Dios al empezar tu día?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo es que, como John, podemos empezar cada día con Dios y pedirle que nos prepare."
+   }
+  ],
+  "body_text": "“Y levantándose muy de mañana, siendo aún muy oscuro, salió y se fue a un lugar desierto, y allí oraba.” — de Marcos 1 El trabajo de John estaba en las aldeas del Panyab. Viajaba en tren, a caballo y en carritos, y su equipaje iba en carreta de bueyes. Muchas de las personas que vinieron a Jesús allí eran muy pobres. Otras personas las despreciaban y ni siquiera querían tocarlas. Pero John las amaba. Las saludaba con un abrazo, poniéndoles la mano primero sobre un hombro y después sobre el otro. Vivía con los predicadores indios con los que trabajaba, y comía y dormía con ellos. Un hombre dijo: “El amor le ganó victorias”. Una noche John tuvo que quedarse despierto toda la noche preparando una charla sobre la Biblia. La charla salió bien. Pero después se le ocurrió una idea. Había pasado una noche entera preparando su mensaje. ¿No debería pasar también una noche preparándose a sí mismo, orando? Y así lo hizo. Le gustó tanto que lo volvió a hacer la noche siguiente, y otras personas vinieron a acompañarlo. John seguía preparando sus charlas con cuidado. Pero muchas veces decía que preparar al mensajero era tan importante como preparar el mensaje. John se levantaba muy temprano para orar y leer la Biblia. Cuando se arrodillaba, tenía la Biblia abierta delante de él, con las manos apoyadas encima. Por la noche encendía su lámpara para leer un versículo y hablar con Dios. Por eso la gente del Panyab le puso un nombre: “el hombre que nunca duerme”. En realidad no era cierto. ¡Sí dormía! Pero no mucho. ¡Tú necesitas dormir! Pero puedes empezar cada día como John, dándole los buenos días a Dios y pidiéndole que te prepare para el día. Querido Dios, ¡buenos días! Por favor, prepárame para hoy, y ayúdame a amar a todas las personas que encuentre, así como tú las amas. Amén.",
+  "word_count": 318
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "es"
+  ],
+  "order": 7,
+  "title": "“No me ha dado ningún mensaje”",
+  "body_html": "<blockquote>“No con ejército, ni con fuerza, sino con mi Espíritu, ha dicho Jehová de los ejércitos.” — de Zacarías 4</blockquote> <p>En 1904, John y unos cuantos amigos empezaron a desear con todo el corazón que Dios despertara a las iglesias del Panyab. Hicieron juntos una promesa. Cada día, poco después del mediodía, orarían durante media hora, y seguirían orando “hasta que llegue el despertar”. Se llamaron a sí mismos la Unión de Oración del Panyab.</p> <p>Ese mismo año, los cristianos empezaron a reunirse cada año para una gran reunión en un pueblo llamado Sialkot. Venían a estudiar la Biblia, a orar y a pedirle a Dios que los hiciera más parecidos a Jesús. John iba todos los años.</p> <p>En 1905 vinieron casi trescientas personas, y le pidieron a John que diera las charlas de la mañana sobre el Espíritu Santo. Él les hizo a los pastores una pregunta difícil: “¿Está primero el Espíritu Santo?”. Cuando predican, les preguntó, ¿ponen delante al Espíritu de Dios y se quedan ustedes detrás de él?</p> <p>A la mañana siguiente todos esperaban la siguiente charla. El que tenía que hablar entró y dijo en voz baja: “Doy gracias a Dios, no me ha dado ningún mensaje para ustedes hoy”. ¡La gente se sorprendió! Entonces el que dirigía la reunión se hizo a un lado y dijo: “El Espíritu Santo es el que dirige esta reunión”. El informe de la misión no dice el nombre del que iba a hablar, pero los amigos de John estaban seguros de que era John. Él había enseñado a la gente a poner a Dios primero, y ahora lo hizo él mismo.</p> <p>Lo que pasó después fue maravilloso. La gente empezó a decirle a Dios que estaba arrepentida de las cosas malas que había hecho. Luego llegó una gran alegría, y cantaron salmos de alabanza una y otra vez. Se apartó un cuarto para orar, y después del primer día o los dos primeros días nunca estuvo vacío, ni de día ni de noche.</p> <p>Es bueno trabajar duro y prepararse. Pero lo más importante es dejar que Dios dirija. Puedes preguntarle cada día: “¿Qué quieres que haga?”.</p> <p><em>Querido Dios, por favor, sé el primero en mi vida. Ayúdame a escucharte y a seguirte a donde tú me lleves. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué promesa hizo la Unión de Oración del Panyab?",
+    "answer": "Orar media hora cada día, poco después del mediodía, y seguir orando hasta que Dios despertara a las iglesias."
+   },
+   {
+    "question": "¿Qué dijo el que iba a hablar la segunda mañana en Sialkot, en 1905?",
+    "answer": "Dijo: “Doy gracias a Dios, no me ha dado ningún mensaje para ustedes hoy”, y el que dirigía dijo que el Espíritu Santo era el que dirigía la reunión."
+   },
+   {
+    "question": "¿Cómo puedes dejar que Dios esté primero en tu día?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo es que lo más importante es dejar que Dios dirija, y que podemos preguntarle qué quiere que hagamos."
+   }
+  ],
+  "body_text": "“No con ejército, ni con fuerza, sino con mi Espíritu, ha dicho Jehová de los ejércitos.” — de Zacarías 4 En 1904, John y unos cuantos amigos empezaron a desear con todo el corazón que Dios despertara a las iglesias del Panyab. Hicieron juntos una promesa. Cada día, poco después del mediodía, orarían durante media hora, y seguirían orando “hasta que llegue el despertar”. Se llamaron a sí mismos la Unión de Oración del Panyab. Ese mismo año, los cristianos empezaron a reunirse cada año para una gran reunión en un pueblo llamado Sialkot. Venían a estudiar la Biblia, a orar y a pedirle a Dios que los hiciera más parecidos a Jesús. John iba todos los años. En 1905 vinieron casi trescientas personas, y le pidieron a John que diera las charlas de la mañana sobre el Espíritu Santo. Él les hizo a los pastores una pregunta difícil: “¿Está primero el Espíritu Santo?”. Cuando predican, les preguntó, ¿ponen delante al Espíritu de Dios y se quedan ustedes detrás de él? A la mañana siguiente todos esperaban la siguiente charla. El que tenía que hablar entró y dijo en voz baja: “Doy gracias a Dios, no me ha dado ningún mensaje para ustedes hoy”. ¡La gente se sorprendió! Entonces el que dirigía la reunión se hizo a un lado y dijo: “El Espíritu Santo es el que dirige esta reunión”. El informe de la misión no dice el nombre del que iba a hablar, pero los amigos de John estaban seguros de que era John. Él había enseñado a la gente a poner a Dios primero, y ahora lo hizo él mismo. Lo que pasó después fue maravilloso. La gente empezó a decirle a Dios que estaba arrepentida de las cosas malas que había hecho. Luego llegó una gran alegría, y cantaron salmos de alabanza una y otra vez. Se apartó un cuarto para orar, y después del primer día o los dos primeros días nunca estuvo vacío, ni de día ni de noche. Es bueno trabajar duro y prepararse. Pero lo más importante es dejar que Dios dirija. Puedes preguntarle cada día: “¿Qué quieres que haga?”. Querido Dios, por favor, sé el primero en mi vida. Ayúdame a escucharte y a seguirte a donde tú me lleves. Amén.",
+  "word_count": 379
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "es"
+  ],
+  "order": 8,
+  "title": "El Cuarto de Oración",
+  "body_html": "<blockquote>“Abre bien tu boca, y yo la llenaré.” — del Salmo 81</blockquote> <p>Un día, un misionero de Gales llamado Pengwern Jones vino a hablar en una reunión en un pueblo llamado Ludhiana. Había viajado toda la noche en tren. Estaba cansado y preocupado por la charla que tenía que dar esa tarde.</p> <p>Mientras tomaban una taza de té por la mañana, un estadounidense callado le dijo: “Quiero verlo; lo esperaré en la puerta”. Era John. En la puerta le dijo: “Venga conmigo al Cuarto de Oración”. Entraron a eso de las ocho de la mañana, ¡y oraron hasta las tres y media de la tarde! El señor Jones se olvidó de que estaba cansado, y se olvidó de estar preocupado.</p> <p>Entonces John lo acompañó hasta el salón de reuniones, le tomó la mano y le dijo: “Entre y hable; ese es su trabajo. Yo volveré al Cuarto de Oración a orar por usted; ese es mi trabajo”. Y aquel día Dios les habló a muchas personas.</p> <p>En las reuniones de Sialkot, a John le encantaba echarse boca abajo sobre la alfombra del cuarto de oración y orar. Una vez oró con el versículo de la Biblia que está al principio de este capítulo, repitiendo una y otra vez las palabras “bien abierta”: “Bien abierta, Señor. Bien abierta”. Le estaba pidiendo a Dios que hiciera que su pueblo esperara cosas grandes.</p> <p>El cuarto de oración no era un lugar triste. Cuando alguien encontraba la paz con Dios, a veces John se llenaba tanto de alegría que aplaudía y hasta bailaba, ¡y otros se unían a él, alabando a Dios!</p> <p>Muchas veces John se olvidaba de comer o de dormir, y el muchacho que lo ayudaba lloraba por eso. Pero una vez, cuando sonó la campana del almuerzo, un amigo lo oyó susurrar: “Padre, ¿es tu voluntad que vaya?”. Luego dijo: “Gracias, Padre”, y se fue a almorzar con una sonrisa.</p> <p>Algunas personas hablan, y otras oran por ellas. Las dos cosas son trabajo de Dios. Cuando oras por tu maestra o tu maestro, por tu iglesia o por tus amigos, tú también estás haciendo el trabajo de Dios.</p> <p><em>Querido Dios, gracias porque puedo ayudar a otras personas orando por ellas. Por favor, bendice a todos los que me enseñan acerca de ti. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué le dijo John al señor Jones en la puerta del salón de reuniones?",
+    "answer": "“Entre y hable; ese es su trabajo. Yo volveré al Cuarto de Oración a orar por usted; ese es mi trabajo”."
+   },
+   {
+    "question": "¿Qué hacía John a veces cuando alguien encontraba la paz con Dios?",
+    "answer": "Se llenaba tanto de alegría que aplaudía y hasta bailaba, y otros se unían a él para alabar a Dios."
+   },
+   {
+    "question": "¿Por quién podrías orar esta semana?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo es que orar por otras personas es un trabajo de verdad para Dios, y que cualquiera puede hacerlo."
+   }
+  ],
+  "body_text": "“Abre bien tu boca, y yo la llenaré.” — del Salmo 81 Un día, un misionero de Gales llamado Pengwern Jones vino a hablar en una reunión en un pueblo llamado Ludhiana. Había viajado toda la noche en tren. Estaba cansado y preocupado por la charla que tenía que dar esa tarde. Mientras tomaban una taza de té por la mañana, un estadounidense callado le dijo: “Quiero verlo; lo esperaré en la puerta”. Era John. En la puerta le dijo: “Venga conmigo al Cuarto de Oración”. Entraron a eso de las ocho de la mañana, ¡y oraron hasta las tres y media de la tarde! El señor Jones se olvidó de que estaba cansado, y se olvidó de estar preocupado. Entonces John lo acompañó hasta el salón de reuniones, le tomó la mano y le dijo: “Entre y hable; ese es su trabajo. Yo volveré al Cuarto de Oración a orar por usted; ese es mi trabajo”. Y aquel día Dios les habló a muchas personas. En las reuniones de Sialkot, a John le encantaba echarse boca abajo sobre la alfombra del cuarto de oración y orar. Una vez oró con el versículo de la Biblia que está al principio de este capítulo, repitiendo una y otra vez las palabras “bien abierta”: “Bien abierta, Señor. Bien abierta”. Le estaba pidiendo a Dios que hiciera que su pueblo esperara cosas grandes. El cuarto de oración no era un lugar triste. Cuando alguien encontraba la paz con Dios, a veces John se llenaba tanto de alegría que aplaudía y hasta bailaba, ¡y otros se unían a él, alabando a Dios! Muchas veces John se olvidaba de comer o de dormir, y el muchacho que lo ayudaba lloraba por eso. Pero una vez, cuando sonó la campana del almuerzo, un amigo lo oyó susurrar: “Padre, ¿es tu voluntad que vaya?”. Luego dijo: “Gracias, Padre”, y se fue a almorzar con una sonrisa. Algunas personas hablan, y otras oran por ellas. Las dos cosas son trabajo de Dios. Cuando oras por tu maestra o tu maestro, por tu iglesia o por tus amigos, tú también estás haciendo el trabajo de Dios. Querido Dios, gracias porque puedo ayudar a otras personas orando por ellas. Por favor, bendice a todos los que me enseñan acerca de ti. Amén.",
+  "word_count": 382
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "es"
+  ],
+  "order": 9,
+  "title": "“¿Y qué hay de aquel?”",
+  "body_html": "<blockquote>“El Hijo del hombre vino a buscar y a salvar lo que se había perdido.” — de Lucas 19</blockquote> <p>En 1908 John sintió una tristeza muy profunda por la gente de las aldeas que no conocía a Jesús. Sus amigos lo oían orar: “¡Padre, dame estas almas o me muero!”. Le pidió a Dios una persona cada día que creyera en Jesús y fuera bautizada.</p> <p>Algunos de los números grandes que aparecen en los libros antiguos sobre John no se pueden comprobar hoy. Pero los registros de la misión muestran que cientos y cientos de personas fueron bautizadas en su distrito en esos años. John decía que era el trabajo de “nosotros”: él y sus ayudantes indios juntos.</p> <p>Una mañana, John y dos predicadores indios oraron, y se sintieron seguros de que Dios les daría diez personas ese día. Fueron en una carreta hasta una aldea lejana. Cantaron y predicaron todo el día, pero a nadie le interesó. Los predicadores tenían hambre y sed y querían volver a casa. John no quería irse.</p> <p>Por fin se detuvieron en una casita para pedir algo de beber. El hombre les dio leche además de agua, y los invitó a pasar. ¡Ya sabía mucho acerca de Jesús! Llamó a su esposa y a sus hijos, y toda la familia decidió seguir a Jesús. John los bautizó a todos. Con eso eran nueve.</p> <p>Para entonces ya estaba oscureciendo, y el camino de vuelta a casa pasaba por la orilla peligrosa de un río. Los predicadores trataban de subir a John a la carreta, pero él seguía preguntando: “¿Y qué hay de aquel?”.</p> <p>Entonces salió el padre. “¡Pues ahí está!”, dijo. ¡Su sobrino, un niño que vivía con la familia, había estado afuera jugando! Se veía claramente que el niño creía en Jesús, así que también lo bautizaron. “Ya son los diez”, dijo John, y se subió a la carreta. Llegaron a casa sanos y salvos en la oscuridad.</p> <p>Jesús es como un pastor que sale a buscar una sola oveja perdida. Cada persona le importa. Eso quiere decir que tú también le importas.</p> <p><em>Querido Jesús, gracias porque viniste a buscarme. Por favor, ayuda a mis amigos que no te conocen a venir a ti también. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Por cuántas personas oraron John y sus ayudantes aquel día?",
+    "answer": "Por diez. Al llegar la tarde, una familia de nueve había sido bautizada, y John no quería irse hasta encontrar a la décima."
+   },
+   {
+    "question": "¿Quién fue la décima persona?",
+    "answer": "El sobrino del padre, un niño que vivía con la familia y había estado afuera jugando. Creyó en Jesús y también fue bautizado."
+   },
+   {
+    "question": "¿Por qué crees que a John le importaba tanto una persona más?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo es que cada persona le importa a Jesús, el Buen Pastor, y eso te incluye a ti."
+   }
+  ],
+  "body_text": "“El Hijo del hombre vino a buscar y a salvar lo que se había perdido.” — de Lucas 19 En 1908 John sintió una tristeza muy profunda por la gente de las aldeas que no conocía a Jesús. Sus amigos lo oían orar: “¡Padre, dame estas almas o me muero!”. Le pidió a Dios una persona cada día que creyera en Jesús y fuera bautizada. Algunos de los números grandes que aparecen en los libros antiguos sobre John no se pueden comprobar hoy. Pero los registros de la misión muestran que cientos y cientos de personas fueron bautizadas en su distrito en esos años. John decía que era el trabajo de “nosotros”: él y sus ayudantes indios juntos. Una mañana, John y dos predicadores indios oraron, y se sintieron seguros de que Dios les daría diez personas ese día. Fueron en una carreta hasta una aldea lejana. Cantaron y predicaron todo el día, pero a nadie le interesó. Los predicadores tenían hambre y sed y querían volver a casa. John no quería irse. Por fin se detuvieron en una casita para pedir algo de beber. El hombre les dio leche además de agua, y los invitó a pasar. ¡Ya sabía mucho acerca de Jesús! Llamó a su esposa y a sus hijos, y toda la familia decidió seguir a Jesús. John los bautizó a todos. Con eso eran nueve. Para entonces ya estaba oscureciendo, y el camino de vuelta a casa pasaba por la orilla peligrosa de un río. Los predicadores trataban de subir a John a la carreta, pero él seguía preguntando: “¿Y qué hay de aquel?”. Entonces salió el padre. “¡Pues ahí está!”, dijo. ¡Su sobrino, un niño que vivía con la familia, había estado afuera jugando! Se veía claramente que el niño creía en Jesús, así que también lo bautizaron. “Ya son los diez”, dijo John, y se subió a la carreta. Llegaron a casa sanos y salvos en la oscuridad. Jesús es como un pastor que sale a buscar una sola oveja perdida. Cada persona le importa. Eso quiere decir que tú también le importas. Querido Jesús, gracias porque viniste a buscarme. Por favor, ayuda a mis amigos que no te conocen a venir a ti también. Amén.",
+  "word_count": 372
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "es"
+  ],
+  "order": 10,
+  "title": "Muéstrame lo que es amable",
+  "body_html": "<blockquote>“Todo lo amable, todo lo que es de buen nombre… en esto pensad.” — de Filipenses 4</blockquote> <p>Un día John estaba preocupado por un pastor indio. Parecía que el pastor se había enfriado con Dios, y su iglesia también se había enfriado. Así que John entró en su cuarto para orar por él.</p> <p>Se arrodilló y empezó: “Oh Padre, tú sabes lo frío que está…”. Pero nunca terminó. Sintió como si le pusieran un dedo sobre los labios. Y en su corazón oyó que Dios decía: “El que lo toca a él, toca a la niña de mi ojo”. La niña del ojo es el centro del ojo, la parte que protegemos con más cuidado. Dios estaba diciendo: “Este hombre es muy valioso para mí”.</p> <p>John se quedó impresionado. Había venido a orar por el pastor, pero en vez de eso había empezado a quejarse de él delante de Dios. Exclamó: “¡Perdóname, Padre, porque he sido un acusador de los hermanos delante de ti!”.</p> <p>Entonces recordó el versículo de la Biblia que está al principio de este capítulo, e hizo una oración nueva: “Padre, muéstrame qué cosas son amables y de buen nombre en la vida de mi hermano”.</p> <p>Enseguida John empezó a recordar cosas buenas. El pastor lo había dejado todo para seguir a Jesús, y su propia familia lo había tratado mal por eso. Había trabajado duro durante años. Había ayudado a personas de su iglesia a dejar de pelearse. Era un buen esposo. John pasó todo su tiempo de oración dándole gracias a Dios por él.</p> <p>Poco tiempo después, John supo que Dios había bendecido muchísimo al pastor, y que estaba predicando otra vez “con fuego”. El amigo de John creía que eso pasó mientras John le daba gracias a Dios por él.</p> <p>Cuando alguien nos molesta, es fácil quejarnos de esa persona, incluso delante de Dios. La próxima vez, intenta pedirle a Dios que te muestre algo bueno de esa persona, y luego dale gracias por eso.</p> <p><em>Querido Dios, ayúdame a no quejarme de otras personas. Muéstrame las cosas buenas que hay en ellas, y ayúdame a darte gracias por ellas. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué detuvo a John en medio de su oración?",
+    "answer": "Sintió como si le pusieran un dedo sobre los labios, y oyó que Dios le decía que el pastor era tan valioso para él como la niña de su ojo."
+   },
+   {
+    "question": "¿Qué oración nueva hizo John?",
+    "answer": "“Padre, muéstrame qué cosas son amables y de buen nombre en la vida de mi hermano”. Después pasó su tiempo de oración dándole gracias a Dios por el pastor."
+   },
+   {
+    "question": "¿Se te ocurre algo bueno de alguien que a veces te molesta?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo es que Dios también ama a esa persona, y que podemos darle gracias por lo bueno que él ha puesto en ella."
+   }
+  ],
+  "body_text": "“Todo lo amable, todo lo que es de buen nombre… en esto pensad.” — de Filipenses 4 Un día John estaba preocupado por un pastor indio. Parecía que el pastor se había enfriado con Dios, y su iglesia también se había enfriado. Así que John entró en su cuarto para orar por él. Se arrodilló y empezó: “Oh Padre, tú sabes lo frío que está…”. Pero nunca terminó. Sintió como si le pusieran un dedo sobre los labios. Y en su corazón oyó que Dios decía: “El que lo toca a él, toca a la niña de mi ojo”. La niña del ojo es el centro del ojo, la parte que protegemos con más cuidado. Dios estaba diciendo: “Este hombre es muy valioso para mí”. John se quedó impresionado. Había venido a orar por el pastor, pero en vez de eso había empezado a quejarse de él delante de Dios. Exclamó: “¡Perdóname, Padre, porque he sido un acusador de los hermanos delante de ti!”. Entonces recordó el versículo de la Biblia que está al principio de este capítulo, e hizo una oración nueva: “Padre, muéstrame qué cosas son amables y de buen nombre en la vida de mi hermano”. Enseguida John empezó a recordar cosas buenas. El pastor lo había dejado todo para seguir a Jesús, y su propia familia lo había tratado mal por eso. Había trabajado duro durante años. Había ayudado a personas de su iglesia a dejar de pelearse. Era un buen esposo. John pasó todo su tiempo de oración dándole gracias a Dios por él. Poco tiempo después, John supo que Dios había bendecido muchísimo al pastor, y que estaba predicando otra vez “con fuego”. El amigo de John creía que eso pasó mientras John le daba gracias a Dios por él. Cuando alguien nos molesta, es fácil quejarnos de esa persona, incluso delante de Dios. La próxima vez, intenta pedirle a Dios que te muestre algo bueno de esa persona, y luego dale gracias por eso. Querido Dios, ayúdame a no quejarme de otras personas. Muéstrame las cosas buenas que hay en ellas, y ayúdame a darte gracias por ellas. Amén.",
+  "word_count": 356
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "es"
+  ],
+  "order": 11,
+  "title": "Lágrimas en la ventanilla del tren",
+  "body_html": "<blockquote>“Y cuando aún estaba lejos, lo vio su padre, y fue movido a misericordia, y corrió, y se echó sobre su cuello, y le besó.” — de Lucas 15</blockquote> <p>Había un joven al que sus amigos llamaron más tarde “J. N.”. Venía de una familia hindú de casta alta, fue a una escuela de la misión y creyó en Jesús. Al principio su familia se enojó. Después fueron muy amables con él, y él volvió a su casa. Allí se hizo amigo de unos muchachos que lo llevaron a beber demasiado, y se alejó de Jesús.</p> <p>Pero no era feliz, así que vino a ver a John. John lo recibió como el padre de la historia de Jesús sobre el hijo perdido, y J. N. se fue a vivir con él. Pero una y otra vez volvía a beber. ¡Más de una vez hasta le robó la ropa a John y la vendió! John solo sonreía, y le dijo a un amigo que ese verano tendría que quedarse en las llanuras calurosas, porque ya no le quedaba ropa de abrigo.</p> <p>Un día J. N. estaba sentado en un tren que iba a la ciudad de Lahore. Dijo de mala manera que volvía con sus viejos amigos. John se asomó a la ventanilla del vagón, rogándole que no se fuera. Una señora que trabajaba en la estación vio que a John le corrían lágrimas por la cara. Pero el joven no quiso escuchar, y el tren se fue.</p> <p>Al día siguiente, la señora vio que J. N. volvía. Estaba pálido. “Vuelvo con él”, dijo. “No podía olvidar sus lágrimas”. Cuando encontró a John, John estaba orando. John lo abrazó y le dijo: “Justo estaba orando para que Dios te trajera de vuelta conmigo, y mira, ¡me ha contestado!”.</p> <p>La historia de J. N. no tiene un final perfecto. Años después todavía le costaba. Pero nunca olvidó cuánto lo había amado John.</p> <p>Jesús sigue amando a las personas aunque se equivoquen una y otra vez. Así te ama a ti también. Y él puede ayudarte a amar a otras personas de esa manera.</p> <p><em>Querido Jesús, gracias porque nunca dejas de amarme, aun cuando me equivoco. Ayúdame a amar a las personas a las que cuesta amar. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué hizo J. N. con la ropa de John?",
+    "answer": "Más de una vez la robó y la vendió. John no se enojó; solo sonrió y siguió amándolo."
+   },
+   {
+    "question": "¿Por qué volvió J. N. al día siguiente de irse en el tren?",
+    "answer": "Dijo: “No podía olvidar sus lágrimas”. Había visto cuánto lo amaba John."
+   },
+   {
+    "question": "¿Hay alguien a quien te cuesta amar y por quien podrías orar?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo es que Jesús nunca deja de amarnos, y que él puede ayudarnos a amar a los demás de la misma manera."
+   }
+  ],
+  "body_text": "“Y cuando aún estaba lejos, lo vio su padre, y fue movido a misericordia, y corrió, y se echó sobre su cuello, y le besó.” — de Lucas 15 Había un joven al que sus amigos llamaron más tarde “J. N.”. Venía de una familia hindú de casta alta, fue a una escuela de la misión y creyó en Jesús. Al principio su familia se enojó. Después fueron muy amables con él, y él volvió a su casa. Allí se hizo amigo de unos muchachos que lo llevaron a beber demasiado, y se alejó de Jesús. Pero no era feliz, así que vino a ver a John. John lo recibió como el padre de la historia de Jesús sobre el hijo perdido, y J. N. se fue a vivir con él. Pero una y otra vez volvía a beber. ¡Más de una vez hasta le robó la ropa a John y la vendió! John solo sonreía, y le dijo a un amigo que ese verano tendría que quedarse en las llanuras calurosas, porque ya no le quedaba ropa de abrigo. Un día J. N. estaba sentado en un tren que iba a la ciudad de Lahore. Dijo de mala manera que volvía con sus viejos amigos. John se asomó a la ventanilla del vagón, rogándole que no se fuera. Una señora que trabajaba en la estación vio que a John le corrían lágrimas por la cara. Pero el joven no quiso escuchar, y el tren se fue. Al día siguiente, la señora vio que J. N. volvía. Estaba pálido. “Vuelvo con él”, dijo. “No podía olvidar sus lágrimas”. Cuando encontró a John, John estaba orando. John lo abrazó y le dijo: “Justo estaba orando para que Dios te trajera de vuelta conmigo, y mira, ¡me ha contestado!”. La historia de J. N. no tiene un final perfecto. Años después todavía le costaba. Pero nunca olvidó cuánto lo había amado John. Jesús sigue amando a las personas aunque se equivoquen una y otra vez. Así te ama a ti también. Y él puede ayudarte a amar a otras personas de esa manera. Querido Jesús, gracias porque nunca dejas de amarme, aun cuando me equivoco. Ayúdame a amar a las personas a las que cuesta amar. Amén.",
+  "word_count": 375
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "es"
+  ],
+  "order": 12,
+  "title": "Victoria, victoria, victoria",
+  "body_html": "<blockquote>“Gracias a Dios, que nos da la victoria por medio de nuestro Señor Jesucristo.” — de 1 Corintios 15</blockquote> <p>Todos esos años de trabajo duro y de dormir muy poco habían dejado a John agotado. En 1910 un médico de Calcuta le dijo que su corazón estaba muy mal, y que necesitaba descansar tranquilo durante muchísimos meses. John solo sonrió. En marzo de 1911 salió de la India por última vez, muy enfermo.</p> <p>De camino a casa se quedó en Gales con su amigo, el señor Jones. Allí conoció a una señora anciana que era muy sorda. Estaba triste porque no podía oír nada en la iglesia. “¡Usted debería alabar a Dios por eso!”, le dijo John. Le contó que él tampoco podía oír casi nada en la iglesia. Así que miraba al predicador y oraba por él, y luego miraba a cada persona y oraba por ella, una por una. La señora se rió y dijo que lo intentaría. Más tarde escribió que eso había hecho una diferencia maravillosa en su vida.</p> <p>De vuelta en Estados Unidos, los médicos descubrieron que John tenía una enfermedad que no podían curar. Se fue a vivir a la casa de su hermana en Northampton, Massachusetts. Muchas veces tenía muchísimo dolor, pero no se quejaba. Después de los peores dolores decía: “Alabado sea el Señor”. Poco antes de morir, le dijo a su hermana: “Es solo victoria, victoria, victoria”.</p> <p>John murió el 17 de febrero de 1912. Tenía cuarenta y seis años. Sus últimas palabras fueron en panyabí, el idioma de las aldeas que tanto amaba. Sus amigos las recordaban así: “Bol, Yisu Masih, ki jai!”. Eso quiere decir: “¡Proclamen la victoria de Jesucristo!”. Lo enterraron en Carthage, junto a su padre, su madre y su hermano Edmund.</p> <p>Hoy la gente de todo el mundo lo recuerda como “Praying Hyde”, “Hyde, el que ora”. Pero John nunca quiso que la gente lo mirara a él. Quería que miraran a Jesús, y que oraran.</p> <p>Cuando perteneces a Jesús, ni siquiera morir es el final. Jesús ya ganó la victoria, y todos los que confían en él estarán con él para siempre.</p> <p><em>Querido Jesús, gracias porque tú has ganado la victoria. Enséñame a orar, y ayúdame a confiar en ti toda mi vida. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué le dijo John a la señora anciana y sorda de Gales que hiciera en la iglesia?",
+    "answer": "Que alabara a Dios y que usara ese tiempo para orar: primero por el predicador y después por cada persona que pudiera ver."
+   },
+   {
+    "question": "¿Cuáles fueron las últimas palabras de John, y qué quieren decir?",
+    "answer": "Fueron en panyabí: “Bol, Yisu Masih, ki jai!”. Quieren decir: “¡Proclamen la victoria de Jesucristo!”."
+   },
+   {
+    "question": "¿Qué te gustaría pedirle a Dios que te enseñe sobre la oración?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo es que John quería que la gente mirara a Jesús y orara, y que Jesús ganó la victoria para todos los que confían en él."
+   }
+  ],
+  "body_text": "“Gracias a Dios, que nos da la victoria por medio de nuestro Señor Jesucristo.” — de 1 Corintios 15 Todos esos años de trabajo duro y de dormir muy poco habían dejado a John agotado. En 1910 un médico de Calcuta le dijo que su corazón estaba muy mal, y que necesitaba descansar tranquilo durante muchísimos meses. John solo sonrió. En marzo de 1911 salió de la India por última vez, muy enfermo. De camino a casa se quedó en Gales con su amigo, el señor Jones. Allí conoció a una señora anciana que era muy sorda. Estaba triste porque no podía oír nada en la iglesia. “¡Usted debería alabar a Dios por eso!”, le dijo John. Le contó que él tampoco podía oír casi nada en la iglesia. Así que miraba al predicador y oraba por él, y luego miraba a cada persona y oraba por ella, una por una. La señora se rió y dijo que lo intentaría. Más tarde escribió que eso había hecho una diferencia maravillosa en su vida. De vuelta en Estados Unidos, los médicos descubrieron que John tenía una enfermedad que no podían curar. Se fue a vivir a la casa de su hermana en Northampton, Massachusetts. Muchas veces tenía muchísimo dolor, pero no se quejaba. Después de los peores dolores decía: “Alabado sea el Señor”. Poco antes de morir, le dijo a su hermana: “Es solo victoria, victoria, victoria”. John murió el 17 de febrero de 1912. Tenía cuarenta y seis años. Sus últimas palabras fueron en panyabí, el idioma de las aldeas que tanto amaba. Sus amigos las recordaban así: “Bol, Yisu Masih, ki jai!”. Eso quiere decir: “¡Proclamen la victoria de Jesucristo!”. Lo enterraron en Carthage, junto a su padre, su madre y su hermano Edmund. Hoy la gente de todo el mundo lo recuerda como “Praying Hyde”, “Hyde, el que ora”. Pero John nunca quiso que la gente lo mirara a él. Quería que miraran a Jesús, y que oraran. Cuando perteneces a Jesús, ni siquiera morir es el final. Jesús ya ganó la victoria, y todos los que confían en él estarán con él para siempre. Querido Jesús, gracias porque tú has ganado la victoria. Enséñame a orar, y ayúdame a confiar en ti toda mi vida. Amén.",
+  "word_count": 379
+ }
+}
+]

@@ -4121,6 +4121,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"es/john-hyde-a-life-children": {
+			"ground": "241d7406e991c2c6887b37c1c3a7090d3a7f398bfe30bbbd5e16f25db5be98e2",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"es/life-experience-gospel-labours": {
 			"ground": "1705cd87178e053c6e4ebd45fa51e33d2d8aba36c8f4edceb52c2d16d274dd6f",
 			"style": "enlightenment",
