@@ -462,6 +462,21 @@ CURATED_PLANS = [
         ],
     ),
     (
+        "family-devotions-brave-and-faithful",
+        "Family Devotions: Brave and Faithful",
+        "Five weeks of five-minute family devotions: the true stories of three "
+        "brave women, read aloud one short chapter a night — Mary Slessor, the "
+        "Scottish mill girl who rescued twin babies in Nigeria; Pandita Ramabai, "
+        "who built a home for India’s widows and girls; and Corrie ten Boom, "
+        "who hid Jewish neighbours in the war and learned to forgive. Each ends "
+        "with a prayer and three questions to talk about together.",
+        [
+            "mary-slessor-a-life-children",
+            "pandita-ramabai-a-life-children",
+            "corrie-ten-boom-a-life-children",
+        ],
+    ),
+    (
         "family-devotions-talking-with-god",
         "Family Devotions: Talking with God All Day",
         "Twelve nights of five-minute family devotions with Brother Lawrence, "
