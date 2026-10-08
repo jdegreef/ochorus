@@ -37,6 +37,8 @@
 	import UnsyncedSignOutDialog from '$lib/components/UnsyncedSignOutDialog.svelte';
 	import PwaToasts from '$lib/components/PwaToasts.svelte';
 	import SignInSheet from '$lib/components/SignInSheet.svelte';
+	import OneTap from '$lib/components/OneTap.svelte';
+	import { ONE_TAP_ENABLED } from '$lib/oneTap';
 	import { openFrom } from '$lib/signInSheet.svelte';
 	import TabBar from '$lib/components/TabBar.svelte';
 	import { ACCOUNT_NAV, accountHref } from '$lib/accountNav';
@@ -694,6 +696,7 @@
 <CommandPalette />
 <PwaToasts />
 {#if auth.enabled}<SignInSheet />{/if}
+{#if auth.enabled && ONE_TAP_ENABLED}<OneTap />{/if}
 
 <!-- The floating feedback button — signed-in only, hidden in focus mode and over
      the admin console (it self-gates). Opens its own FeedbackDialog. -->

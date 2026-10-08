@@ -38,6 +38,7 @@ SIGNUP_VARIANTS = (
     "header",
     "menu",
     "feedback",
+    "one_tap",
 )
 
 

@@ -926,6 +926,14 @@ services:
       # that host swapped into the CSP. Cloud (the default) needs neither.
       - key: PUBLIC_PLAUSIBLE_DOMAIN
         sync: false
+      # Optional: Google One Tap sign-in for signed-out readers ($lib/oneTap).
+      # The OAuth **Web client ID** (…apps.googleusercontent.com) that Supabase's
+      # Google provider already uses. It is public by design. Unset = off: no
+      # Google script, no prompt. Also needs https://ochorus.com under that
+      # client's "Authorized JavaScript origins" in Google Cloud, and the ID
+      # listed in Supabase → Auth → Providers → Google → Client IDs.
+      - key: PUBLIC_GOOGLE_CLIENT_ID
+        sync: false
       # How long the prebuild waits for ochorus-api to serve THIS commit's
       # content before prerendering (scripts/await-api-release.mjs). A content
       # commit deploys both services at once, and the static build reaches this
