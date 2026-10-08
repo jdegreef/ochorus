@@ -293,11 +293,12 @@
 	const shownLens = $derived(lenses.find((l) => l.k === lens) ?? lenses[0]);
 
 	// --- View: rows or a portrait grid ----------------------------------------
-	// Not remembered across visits, like the Browse-by lens: the page is
-	// prerendered as rows, and restoring the grid after hydration swapped one
-	// for the other under the reader (a visible jump on every load).
+	// Opens on the portrait grid (founder steer, 2026-10-08) — the faces are the
+	// shelf. Not remembered across visits, like the Browse-by lens: the page is
+	// prerendered in this default, and restoring a stored view after hydration
+	// swapped one for the other under the reader (a visible jump on every load).
 	type View = 'grid' | 'list';
-	let view = $state<View>('list');
+	let view = $state<View>('grid');
 	const setView = (v: View) => (view = v);
 
 	// The pinned bar was 177px on a 375px screen — 22% of the viewport, kept

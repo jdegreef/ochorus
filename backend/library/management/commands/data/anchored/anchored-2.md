@@ -130,7 +130,7 @@ Your future is real, and it matters. But it's not in your hands alone. It's in H
 
 **Try this:** Write "My times are in Your hands" on a card or as your lock screen for a week. Every time a worry about the future comes, read it, and then ask: *What's the next small thing I can do today?*
 
-**Go deeper:** *The Key Teachings of Elisabeth Elliot* — Elisabeth Elliot, widowed young on the mission field, lived by three words from an old poem, "Do the next thing", and taught that God gives what we need for the present hour, not next year's guidance this morning. Start with chapter 4, "Do the Next Thing".
+**Go deeper:** *The Key Teachings of Elisabeth Elliot* — Elisabeth Elliot, widowed young on the mission field, lived by four words from an old poem, "Do the next thing", and taught that God gives what we need for the present hour, not next year's guidance this morning. Start with chapter 4, "Do the Next Thing".
 
 *Father, You know what's ahead of me, and I don't. I trust in You; You are my God. My times are in Your hands: my studies, my family, my future, all of it. When I start to carry tomorrow, help me put it down and do the next thing in front of me today. In Jesus' name, Amen.*
 

@@ -197,7 +197,7 @@ The third is simply that this is a doctrine to be lived before it is argued. She
 
 > Whatsoever thy hand findeth to do, do it with thy might; for there is no work, nor device, nor knowledge, nor wisdom, in the grave, whither thou goest. ECCLESIASTES 9:10
 
-If Elisabeth Elliot had a motto, it was three words long. She did not invent it. She found it in an anonymous old poem, written in imitation of antique English spelling, which tells of a message carried from an old parsonage by the sea, said to have been carved there as an ancient inscription. The refrain of the poem is a single counsel: “Doe the nexte thynge.” She quoted it for decades, in her writing, in her talks and on the radio, and it became so closely tied to her name that many people assume she wrote it. She did not, and she never claimed to. But she made it her own.
+If Elisabeth Elliot had a motto, it was four words long. She did not invent it. She found it in an anonymous old poem, written in imitation of antique English spelling, which tells of a message carried from an old parsonage by the sea, said to have been carved there as an ancient inscription. The refrain of the poem is a single counsel: “Doe the nexte thynge.” She quoted it for decades, in her writing, in her talks and on the radio, and it became so closely tied to her name that many people assume she wrote it. She did not, and she never claimed to. But she made it her own.
 
 ## The poem and the counsel
 

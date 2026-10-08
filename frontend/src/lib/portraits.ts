@@ -99,12 +99,14 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'jonathan-edwards': '50% 0%',
 	'josephine-bakhita': '50% 21%', // studio photo cropped to a bust; face at ~39% of a 0.75 plate
 	'julia-foote': '50% 0%', // studio photo: standing figure, face at ~22% of a 0.62 plate
+	'julian-of-norwich': '50% 8%', // Ochorus firelight illustration (imagined likeness); face at ~35% of a 0.75 plate
 	'kanzo-uchimura': '50% 15%', // c.1912 photo; face at ~37% of a 0.75 plate
 	'kateri-tekakwitha': '50% 0%', // Chauchetière's c.1690s painting cropped to the upper figure; face high at ~28%
 	'lawrence-barham': '50% 0%', // cropped from a photo with his wife Julia; head at the top edge
 	'lemuel-haynes': '50% 0%',
 	'loren-cunningham': '50% 0%', // cropped from a group photo; face at ~22% of a 0.61 plate
 	'lottie-moon': '50% 30%', // oval studio photo; face at ~40% of a 0.66 plate
+	'maria-w-stewart': '50% 8%', // Ochorus firelight illustration (imagined likeness); face at ~35% of a 0.75 plate
 	'martin-luther': '50% 0%', // Cranach 1517 half-length; face at ~23% of a 0.64 plate
 	'martyn-lloyd-jones': '50% 50%', // square source — the crop takes the whole photo
 	'mary-slessor': '50% 3%', // seated photo; head high at ~22% of a 0.67 plate
@@ -134,6 +136,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'william-law': '50% 16%', // cropped oval engraving; face at ~33% of a 0.58 plate
 	'william-nagenda': '50% 20%', // cropped from a photo with his wife Sala; near-square
 	'yosiya-kinuka': '50% 30%', // cropped from a photo of him riding a motorcycle; near-square
+	'zilpha-elaw': '50% 8%', // Ochorus firelight illustration (imagined likeness); face at ~35% of a 0.75 plate
 };
 
 /**
