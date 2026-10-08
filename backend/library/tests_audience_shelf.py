@@ -80,6 +80,22 @@ class AudienceShelfTests(TestCase):
         TopicBook.objects.create(topic=self.topic, book_slug="north-wind")
         self.assertEqual(self._get()["more"][0]["hook"], "A boy, a wind, and the way home.")
 
+    def test_a_teens_series_of_one_shows_its_book_as_a_card(self):
+        solo = Series.objects.create(slug="real-questions", title="Real Questions", audience="teens")
+        pair = Series.objects.create(slug="anchored", title="Anchored", audience="teens")
+        self._book("real-questions-1", series=solo)
+        self._book("anchored-1", series=pair)
+        self._book("anchored-2", series=pair)
+        data = self._get("teens")
+        self.assertEqual(self._slugs(data["series"]), ["anchored"])
+        self.assertEqual(self._slugs(data["more"]), ["real-questions-1"])
+
+    def test_a_young_readers_series_of_one_stays_a_series(self):
+        self._book("bfg-1", series=self.series)
+        data = self._get()
+        self.assertEqual(self._slugs(data["series"]), ["brave-for-god"])
+        self.assertEqual(data["more"], [])
+
     def test_a_suffix_alone_is_not_a_retelling(self):
         # Watts's Divine Songs for Children is an original: no "divine-songs-for".
         self._book("divine-songs-for-children")
