@@ -54,6 +54,10 @@ export interface BookSummary {
 	/** The name a cover sets as its byline when it is not the author's — the
 	 *  person a house-written life or companion is about. Blank = the author. */
 	cover_byline?: string;
+	/** An editor's one-line pitch ("Amy Carmichael refused to make missions
+	 *  sound nice…"), in this edition's language; "" for most books. Optional:
+	 *  an API behind this build omits it, and the card shows no line. */
+	hook?: string;
 	author: Author;
 	source_type: SourceType;
 	cover_color: string;
@@ -118,7 +122,8 @@ export const COVER_BOOK_KEYS = [
 	'word_count',
 	'has_modern_edition'
 ] as const;
-export const COVER_BOOK_DROPS = ['topics', 'created_at', 'updated_at'] as const;
+// `hook`: only the teens hub's cards show it, and they read the full summary.
+export const COVER_BOOK_DROPS = ['topics', 'created_at', 'updated_at', 'hook'] as const;
 export const COVER_AUTHOR_KEYS = ['slug', 'name', 'birth_year'] as const;
 export type CoverBook = Pick<BookSummary, (typeof COVER_BOOK_KEYS)[number]> & {
 	author: Pick<Author, (typeof COVER_AUTHOR_KEYS)[number]>;

@@ -73,6 +73,34 @@ class AudienceShelfTests(TestCase):
         self.assertEqual(self._slugs(data["more"]), ["north-wind"])
         self.assertEqual(data["topic"], {"slug": "for-young-readers", "title": "For Young Readers"})
 
+    def test_cards_carry_the_books_hook(self):
+        book = self._book("north-wind")
+        book.hook = "A boy, a wind, and the way home."
+        book.save()
+        TopicBook.objects.create(topic=self.topic, book_slug="north-wind")
+        self.assertEqual(self._get()["more"][0]["hook"], "A boy, a wind, and the way home.")
+
+    def test_a_teens_series_of_one_shows_its_book_as_a_card(self):
+        solo = Series.objects.create(slug="real-questions", title="Real Questions", audience="teens")
+        pair = Series.objects.create(slug="anchored", title="Anchored", audience="teens")
+        self._book("real-questions-1", series=solo)
+        self._book("anchored-1", series=pair)
+        self._book("anchored-2", series=pair)
+        self._book("all-of-grace")
+        teens = Topic.objects.create(slug="for-teens", title="For Teens")
+        for slug in ("all-of-grace", "real-questions-1"):
+            TopicBook.objects.create(topic=teens, book_slug=slug)
+        data = self._get("teens")
+        self.assertEqual(self._slugs(data["series"]), ["anchored"])
+        # It leads More to read, ahead of the topic's own order.
+        self.assertEqual(self._slugs(data["more"]), ["real-questions-1", "all-of-grace"])
+
+    def test_a_young_readers_series_of_one_stays_a_series(self):
+        self._book("bfg-1", series=self.series)
+        data = self._get()
+        self.assertEqual(self._slugs(data["series"]), ["brave-for-god"])
+        self.assertEqual(data["more"], [])
+
     def test_a_suffix_alone_is_not_a_retelling(self):
         # Watts's Divine Songs for Children is an original: no "divine-songs-for".
         self._book("divine-songs-for-children")
@@ -332,3 +360,25 @@ class BookAgesTests(TestCase):
         self.assertIsNone(self._ages("all-of-grace"))
         adults = Series.objects.create(slug="key-teachings", title="KT", audience="adults")
         self.assertIsNone(self._ages("kt-1", series=adults))
+
+
+class TeensShelfHookTests(TestCase):
+    """Every stand-alone book on the For Teens shelf carries a hook in English —
+    the teens hub's cards lead with it, and a card without one reads as an
+    oversight beside the rest. Series volumes show as their series' tile, so
+    they are not held to it."""
+
+    def test_every_standalone_for_teens_book_has_an_english_hook(self):
+        from .content_fixtures import BOOKS_DIR
+        from .topic_seed import TOPICS
+
+        slugs = next(books for slug, _, _, books in TOPICS if slug == "for-teens")
+        missing = []
+        for slug in slugs:
+            path = BOOKS_DIR / f"{slug}.en.json"
+            if not path.exists():
+                continue
+            fields = json.loads(path.read_text(encoding="utf-8"))[0]["fields"]
+            if not fields.get("series") and not fields.get("hook"):
+                missing.append(slug)
+        self.assertEqual(missing, [], "write a hook (Book.hook) for these")

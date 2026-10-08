@@ -12,9 +12,9 @@ describe('noteChapterEnd', () => {
 });
 
 describe('shouldAsk — the end-of-chapter card', () => {
-	it('waits for a second chapter end, wherever the reader started', () => {
-		expect(shouldAsk(1)).toBe(false);
-		expect(shouldAsk(2)).toBe(true);
+	it('asks from the first chapter end, wherever the reader started', () => {
+		expect(shouldAsk(0)).toBe(false);
+		expect(shouldAsk(1)).toBe(true);
 	});
 
 	it('hides for a week after "Not now"', () => {

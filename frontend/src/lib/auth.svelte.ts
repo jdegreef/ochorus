@@ -287,6 +287,22 @@ class Auth {
 		return error ? error.code || 'unexpected_failure' : null;
 	}
 
+	/**
+	 * Google One Tap ($lib/oneTap): trade the ID token Google handed this page
+	 * for a session. No redirect — the auth listener raises SIGNED_IN as for any
+	 * sign-in, merges this device's reading, and credits a brand-new account
+	 * to the prompt it came from. `nonce` is the RAW nonce; Google was given its
+	 * SHA-256, and Supabase checks the two match, so a token lifted from another
+	 * site can't be replayed here.
+	 */
+	async signInWithGoogleIdToken(token: string, nonce: string): Promise<string | null> {
+		const sb = await supabase();
+		if (!sb) return NOT_CONFIGURED;
+		const { error } = await sb.auth.signInWithIdToken({ provider: 'google', token, nonce });
+		// `||`, not `??`: see signIn.
+		return error ? error.code || 'unexpected_failure' : null;
+	}
+
 	/** Email a password-reset link that lands on /reset-password. */
 	async sendPasswordReset(email: string): Promise<string | null> {
 		const sb = await supabase();

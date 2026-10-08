@@ -250,7 +250,7 @@ The second follows from the first. Because MacDonald believed that all of God’
 
 > If ye love me, keep my commandments. JOHN 14:15
 
-If MacDonald had a single practical message, it was this: do what Jesus says. He said it in many ways and in almost every sermon, and he said it with an urgency that can be startling. In his sermon The Way, on the rich young man who asked what good thing he should do to have eternal life, he summed it up in five words that have become one of his best-known sayings: “Obedience is the opener of eyes.”
+If MacDonald had a single practical message, it was this: do what Jesus says. He said it in many ways and in almost every sermon, and he said it with an urgency that can be startling. In his sermon The Way, on the rich young man who asked what good thing he should do to have eternal life, he summed it up in six words that have become one of his best-known sayings: “Obedience is the opener of eyes.”
 
 ## Doing before understanding
 

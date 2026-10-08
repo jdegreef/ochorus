@@ -10,6 +10,7 @@
   "title": "All of Grace (For Teens)",
   "subtitle": "",
   "description": "Charles Spurgeon wrote this short book for ordinary people who were sure God was only for the good — and told them plainly that salvation is “all of grace”: free, undeserved, for nothing. This teen retelling keeps his unforgettable pictures — the woman hiding from the rent man, the rope above Niagara, the limpet on the rock — and asks what grace actually changes in your life.",
+  "hook": "Think God is only for good people? Spurgeon says it’s free, and you don’t have to earn it.",
   "qa": [
    {
     "question": "Isn’t this just an old sermon telling me to try harder and be good?",
@@ -45,7 +46,7 @@
   "source_url": "",
   "attribution": "© Ochorus. An Ochorus retelling for young readers of Charles H. Spurgeon’s All of Grace, which is in the public domain. The telling is our own, free to read and share.",
   "cover_url": "/covers/all-of-grace-teens.svg",
-  "pdf_url": "",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/all-of-grace-teens.pdf?download=all-of-grace-teens.pdf",
   "cover_color": "",
   "series": [
    "straight-talk"

@@ -1684,6 +1684,16 @@
 				534
 			]
 		},
+		"am/samuel-ajayi-crowther-a-life-children": {
+			"ground": "6444a82a6373323b408219c431778d6949190293efeb80c6a0b129a9d3dac0d6",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"am/samuel-ajayi-crowther-a-life-teens": {
 			"ground": "5481b027dd979880cf2670352f793ef9dab11df70b458a940fe56ac7bc3e5592",
 			"style": "originals",
@@ -11182,6 +11192,16 @@
 				484
 			]
 		},
+		"sw/a-retrospect": {
+			"ground": "43e5f6630703a436be821c55bc98cd0f07750c6e7501d6ff97c755f5199d1d04",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0
+		},
 		"sw/a-retrospect-children": {
 			"ground": "ff7018b7f304e78db2b7be55a1a140d1007cb3e5d78c12cf963dedeee11770f0",
 			"style": "revival",
@@ -12105,6 +12125,16 @@
 				261,
 				534
 			]
+		},
+		"sw/samuel-ajayi-crowther-a-life-children": {
+			"ground": "e43596450b72b5afe8db7ad14dd7b99d0084f6913f8256ff6309a31076632c21",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"sw/samuel-ajayi-crowther-a-life-teens": {
 			"ground": "e12a62776ebb9e2e5e8c6bfe1e6406e88e5c2ce15db901b0eda26d84da0c1813",
