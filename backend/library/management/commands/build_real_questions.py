@@ -36,7 +36,8 @@ QUESTIONS = 30
 REQUIRED = ("The short answer:", "Think about it:", "Go deeper:")
 
 ATTRIBUTION = (
-    "An Ochorus Original, written for teenage readers. Scripture quotations are "
+    "© Ochorus. An Ochorus Original, written for teenage readers, free to read and "
+    "share. Scripture quotations are "
     "from the Berean Standard Bible (BSB), which is in the public domain."
 )
 

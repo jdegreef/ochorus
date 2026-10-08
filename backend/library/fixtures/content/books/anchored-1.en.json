@@ -41,9 +41,9 @@
   "publication_year": 2026,
   "source_type": "public_domain",
   "source_url": "",
-  "attribution": "An Ochorus Original, written for teenage readers. Scripture quotations are from the Berean Standard Bible (BSB), which is in the public domain.",
+  "attribution": "© Ochorus. An Ochorus Original, written for teenage readers, free to read and share. Scripture quotations are from the Berean Standard Bible (BSB), which is in the public domain.",
   "cover_url": "/covers/anchored-1.svg",
-  "pdf_url": "",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/anchored-1.pdf?download=anchored-1.pdf",
   "cover_color": "#1d5c63",
   "series": [
    "anchored"

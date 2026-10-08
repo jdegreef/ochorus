@@ -670,7 +670,7 @@ body { margin: 0; }
 .subtitle { font-style: italic; font-size: 13pt; margin: 0; }
 .author { font-size: 14pt; margin: 14mm 0 0; }
 .year { font-size: 10pt; margin: 4mm 0 0; color: #555; }
-.imprint { margin-top: 55mm; letter-spacing: 0.2em; text-transform: uppercase; font-size: 8.5pt; color: #555; }
+.imprint { margin-top: 40mm; letter-spacing: 0.2em; text-transform: uppercase; font-size: 8.5pt; color: #555; }
 .ochorus { page: front; break-after: page; font-size: 10.5pt; }
 .ochorus h1 { font-size: 17pt; font-weight: 600; text-align: center; margin: 8mm 0 6mm; }
 .ochorus h2 { font-size: 11.5pt; margin: 5mm 0 2mm; }
