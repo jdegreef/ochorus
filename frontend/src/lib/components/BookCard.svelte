@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from '$lib/paraglide/messages.js';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { type CoverBook } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
@@ -30,9 +31,9 @@
 		 */
 		showSeries = true,
 		/**
-		 * The time as a sitting ("~12 min a chapter") rather than the whole
-		 * book's: on the young-reader hubs, where "3 hr read" is what puts a
-		 * reader off and one chapter is the real commitment.
+		 * The time as a sitting ("~12 min a chapter", the series card's words)
+		 * rather than the whole book's: on the young-reader hubs, where "3 hr
+		 * read" is what puts a reader off and one chapter is the real commitment.
 		 */
 		perChapter = false,
 		/**
@@ -67,10 +68,9 @@
 		!book.word_count
 			? ''
 			: perChapter && book.chapter_count > 1
-				? t('audience.minPerChapter').replace(
-						'%n%',
-						String(readingMinutes(book.word_count / book.chapter_count))
-					)
+				? m.series_chapter_minutes({
+						minutes: readingMinutes(book.word_count / book.chapter_count)
+					})
 				: readingTime(book.word_count)
 	);
 	// The card's tint (app.css, .book-card), from the book's own cover colour.

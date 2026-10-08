@@ -52,7 +52,7 @@
   "source_url": "",
   "attribution": "© Ochorus. An Ochorus retelling for young readers of Augustine of Hippo's Confessions, in Edward B. Pusey's translation (1838), which is in the public domain. The telling is our own, free to read and share. Scripture quotations in the chapter headings are from the King James Version, which is in the public domain.",
   "cover_url": "/covers/confessions-teens.svg",
-  "pdf_url": "",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/confessions-teens.pdf?download=confessions-teens.pdf",
   "cover_color": "",
   "series": [
    "straight-talk"

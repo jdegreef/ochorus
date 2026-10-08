@@ -41,6 +41,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'billy-graham': '50% 0%', // 1966 press photo; face high at ~23% of a 0.80 plate
 	'billy-sunday': '50% 0%', // 1921 LoC studio bust; face at ~33% of a 0.70 plate — 0% is the highest the crop goes
 	'blaise-pascal': '50% 10%', // c. 1690 Versailles oil, cropped to a bust; face at ~35% of a 0.84 plate
+	'brother-lawrence': '50% 8%', // Ochorus firelight illustration (imagined likeness); face at ~35% of a 0.75 plate
 	'c-s-lewis': '50% 0%', // 1957 dust-jacket photo (John S. Murray); head high — anything lower clips the crown
 	'c-t-studd': '50% 0%', // full-length cricket photo; head high at ~10% of a 0.54 plate
 	'catherine-booth': '50% 0%',

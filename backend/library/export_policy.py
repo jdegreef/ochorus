@@ -89,6 +89,7 @@ EXPORT_PILOT = frozenset({
     ("amanda-smith-autobiography-children", "en"),
     ("amanda-smith-autobiography-teens", "en"),
     ("pilgrims-progress-children", "en"),
+    ("confessions-teens", "en"),
     ("grace-abounding-teens", "en"),
     ("pilgrims-progress-teens", "en"),
     ("talks-to-the-farmer-children", "en"),

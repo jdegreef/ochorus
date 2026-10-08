@@ -172,21 +172,20 @@ export interface HubPath {
  *  link and the covers behind it. */
 export function hubPaths(hub: AudienceHubConfig, shelf: AudienceShelf): HubPath[] {
 	const start = startPick(shelf);
-	return hub.paths.flatMap(({ titleKey, lineKey, to }): HubPath[] => {
+	const place = (to: HubPathConfig['to']): Pick<HubPath, 'href' | 'covers'> | null => {
 		if (to === 'start') {
-			return start
-				? [{ titleKey, lineKey, href: `/books/${start.slug}`, covers: [toBookTile(start)] }]
-				: [];
+			return start && { href: `/books/${start.slug}`, covers: [toBookTile(start)] };
 		}
 		if ('section' in to) {
-			return shelf.editions.length
-				? [{ titleKey, lineKey, href: `#${to.section}`, covers: shelf.editions.map(toBookTile) }]
-				: [];
+			const covers = shelf.editions.map(toBookTile);
+			return covers.length ? { href: `#${to.section}`, covers } : null;
 		}
 		const series = shelf.series.find((s) => s.slug === to.series);
-		return series
-			? [{ titleKey, lineKey, href: `/series/${series.slug}/`, covers: series.covers }]
-			: [];
+		return series ? { href: `/series/${series.slug}/`, covers: series.covers } : null;
+	};
+	return hub.paths.flatMap(({ titleKey, lineKey, to }) => {
+		const at = place(to);
+		return at ? [{ titleKey, lineKey, ...at }] : [];
 	});
 }
 
@@ -195,9 +194,9 @@ export function hubPaths(hub: AudienceHubConfig, shelf: AudienceShelf): HubPath[
 export function heroCovers(shelf: AudienceShelf): BookTile[] {
 	const start = startPick(shelf);
 	const firsts = shelf.series.flatMap((s) => s.covers.slice(0, 1));
-	const [a, b] = firsts.filter((c) => c.slug !== start?.slug);
-	const tiles = start ? [a, toBookTile(start), b] : [a, b, firsts[2]];
-	return tiles.filter((t): t is BookTile => !!t);
+	if (!start) return firsts.slice(0, 3);
+	const [a, b] = firsts.filter((c) => c.slug !== start.slug);
+	return [a, toBookTile(start), b].filter((t): t is BookTile => !!t);
 }
 
 export interface PrintableLink {
