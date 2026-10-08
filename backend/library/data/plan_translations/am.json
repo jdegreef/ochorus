@@ -149,5 +149,12 @@
   "note": [
    "AI-drafted; awaiting native review. All three source books ship in am, so seed_plans creates the am row. Book titles quoted verbatim from the am editions; «ጆርጅ ሙለር» and «ቻይና» as in their text («ሃድሰን» is the am edition's own name for Taylor; the surname is transliterated here). Promises no talk-about-it questions: those ship on the English chapters only."
   ]
+ },
+ "family-devotions-boy-from-osogun": {
+  "title": "የቤተሰብ አምልኮ፦ ከኦሶጉን የመጣው ልጅ",
+  "description": "ለአሥራ ሁለት ምሽቶች የአምስት ደቂቃ የቤተሰብ አምልኮ ከሳሙኤል አጃዪ ክራውዘር ጋር («ሳሙኤል አጃዪ ክራውዘር (ለልጆች)»)፤ በባሪያነት ተሸጦ የነበረውና አድጎ ለሕዝቡ መጽሐፍ ቅዱስን በገዛ ቋንቋቸው የሰጠው የዮሩባ ልጅ። በየምሽቱ አንድ አጭር ምዕራፍ ጮክ ብላችሁ አንብቡ፦ በባሕር ላይ እንድትቆም የተደረገችው የባሪያ መርከብ፣ እናቱን ዳግመኛ ያገኘበት ቀን፣ ለንግሥት ቪክቶሪያ በዮሩባ የተጸለየው የጌታ ጸሎት፣ እንዲሁም እስረኛ በነበረ ጊዜ ምግብ ያካፈሉት ደጋግ ባሪያዎች። እያንዳንዱ ምዕራፍ በጸሎትና አብራችሁ በምትነጋገሩባቸው ሦስት ጥያቄዎች ይፈጸማል።",
+  "note": [
+   "AI-drafted; awaiting native review (job #5423). Its one source book, samuel-ajayi-crowther-a-life-children, ships in am in the same PR, so seed_plans creates the am row and PlanTranslationCoverageTests demands this prose. The title quotes the am edition's chapter 1 title «ከኦሶጉን የመጣው ልጅ» and the book title verbatim; names (አጃዪ, ክራውዘር, ዮሩባ, ኦሶጉን) as in the am Crowther editions. Addresses the family in the plural (አንብቡ), like the other am family-devotions cards. Unlike those two cards it DOES promise the three talk-about-it questions, because this am edition ships Chapter.study_questions."
+  ]
  }
 }

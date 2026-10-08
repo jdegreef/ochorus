@@ -1684,6 +1684,16 @@
 				534
 			]
 		},
+		"am/samuel-ajayi-crowther-a-life-children": {
+			"ground": "6444a82a6373323b408219c431778d6949190293efeb80c6a0b129a9d3dac0d6",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"am/samuel-ajayi-crowther-a-life-teens": {
 			"ground": "5481b027dd979880cf2670352f793ef9dab11df70b458a940fe56ac7bc3e5592",
 			"style": "originals",
