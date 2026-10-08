@@ -3,7 +3,7 @@
  "slug": "pandita-ramabai-a-life-children",
  "language": "fr",
  "job_issue": 5548,
- "pull_request": null,
+ "pull_request": 5573,
  "note": [
   "The English retelling does not quote a Bible: each chapter's opening blockquote is a simplified paraphrase for 8–12 year olds, cited loosely (“— from John 8”), and the body echoes verses in the same retold register. The French renders those paraphrases in the same simple, child-friendly wording (« — d’après Jean 8 »), following a-retrospect-children.fr, rather than pasting the Louis Segond 1910 text, whose archaic register would break the edition's voice. One opening line coincides verbatim with the Segond wording already shipped in days-of-heaven-upon-earth.fr (Matt 10:8b « Vous avez reçu gratuitement, donnez gratuitement. ») and is marked mined; the chapter-12 body echo of it is reworded and stays self_rendered.",
   "Quoted sayings of Ramabai that themselves quote scripture (Heb 11:8 « comme Abraham, sans savoir où j’allais », Job 1:21 « Le Seigneur a donné et le Seigneur a repris ») are rendered from the English wording, not from Segond. Distances are converted for French children: “four thousand miles” → « plus de six mille kilomètres » (chapter 4 title « Six mille kilomètres à pied »). AI-translated in-session; awaiting native review."
