@@ -5533,6 +5533,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"fr/pandita-ramabai-a-life-children": {
+			"ground": "31c4ba2afaeffa6dc144b73aa0c96518eff50e89dea8d16508993f83b1f8881b",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"fr/pensees": {
 			"ground": "54e6f8e465e4cd96c664b866a1c258f03ee710c5a9d86a3de85c7b4ef6044647",
 			"style": "press",
