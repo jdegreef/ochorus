@@ -1,0 +1,86 @@
+{
+ "kind": "book",
+ "slug": "c-s-lewis-a-life-children",
+ "language": "pt",
+ "job_issue": 5559,
+ "pull_request": null,
+ "note": [
+  "Each chapter opens with a simplified verse paraphrase for 8–12 year olds, cited loosely (“— from Proverbs 22”). The Portuguese renders those paraphrases in the same simple, child-friendly wording rather than pasting the Bíblia Livre text, as the sibling young-reader pt editions do (a-retrospect-children.pt, talks-to-the-farmer-children.pt); they are self_rendered. The one exception is 2 Timothy 4:7, whose English is the full verse and whose Portuguese is verbatim the wording already shipped in baptism-with-the-holy-spirit.pt.json.",
+  "Published titles follow the Brazilian editions: As Crônicas de Nárnia, O Leão, a Feiticeira e o Guarda-Roupa, Aslam, Cartas de um Diabo a seu Aprendiz, Cristianismo Puro e Simples, A Anatomia de uma Dor, O Senhor dos Anéis; Phantastes keeps its original title. No quotations from Lewis's works were added. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Proverbs 22:6",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Psalm 27:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Proverbs 27:17",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Ecclesiastes 5:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Psalm 15:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 139:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "John 1:14",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Malachi 3:16",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "1 Peter 3:15",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "James 5:15",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "2 Timothy 4:7",
+   "status": "mined",
+   "source_file": "baptism-with-the-holy-spirit.pt.json",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}
