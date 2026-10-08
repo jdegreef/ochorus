@@ -3,7 +3,7 @@
  "slug": "corrie-ten-boom-a-life-children",
  "language": "pt",
  "job_issue": 5555,
- "pull_request": null,
+ "pull_request": 5570,
  "note": [
   "Every scripture line in this edition is self_rendered. The English retelling does not quote a Bible: each chapter's opening blockquote is a simplified paraphrase for 8–12 year olds, cited loosely (“— from Psalm 122”), and the body echoes verses in the same retold register. The Portuguese renders those paraphrases in the same simple, child-friendly wording (Brazilian, você) rather than pasting a Portuguese Bible text, which would break the edition's register — the same choice as the shipped pt children's editions (e.g. the-life-of-trust-children.pt).",
   "Tag sequence identical to the English chapter by chapter; 3 study questions per chapter, same order. No quotations from Corrie ten Boom's published writings were added. AI-translated in-session; awaiting native review."
