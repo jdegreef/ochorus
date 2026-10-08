@@ -11182,6 +11182,16 @@
 				484
 			]
 		},
+		"sw/a-retrospect": {
+			"ground": "43e5f6630703a436be821c55bc98cd0f07750c6e7501d6ff97c755f5199d1d04",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0
+		},
 		"sw/a-retrospect-children": {
 			"ground": "ff7018b7f304e78db2b7be55a1a140d1007cb3e5d78c12cf963dedeee11770f0",
 			"style": "revival",
