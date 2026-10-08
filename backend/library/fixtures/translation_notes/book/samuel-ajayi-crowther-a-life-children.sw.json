@@ -1,0 +1,115 @@
+{
+ "kind": "book",
+ "slug": "samuel-ajayi-crowther-a-life-children",
+ "language": "sw",
+ "job_issue": 5421,
+ "pull_request": null,
+ "note": [
+  "The English epigraphs are loose modern paraphrases cited by chapter only (“from Psalm 139”). Each was rendered in the Swahili Union Version (SUV) tradition the shipped sw corpus quotes (not swhonen, a different revised edition), keeping the children's-edition citation form “— kutoka Zaburi 139”. Where a shipped *.sw.json already carries the SUV words they were pasted verbatim (`mined`, with the file, checked character for character); otherwise the row is `self_rendered` in the SUV register and needs a native check.",
+  "Self-rendered, and why: Psalm 124:7 (only the second half, «mtego umevunjika, na sisi tumeokoka», is in the corpus, till-he-come.sw; the bird clause is SUV-register self-rendering, so the whole line is marked self_rendered). Psalm 10:14c, 1 Samuel 2:8 and Psalm 4:8 use the SAME wording as the teen edition (samuel-ajayi-crowther-a-life-teens.sw), which itself self-rendered them — so the two editions agree, but neither is verified. Chapter 7's diary line «Wewe ndiwe Msaidizi wa yatima» is the teen edition's second-person adaptation of Psalm 10:14c, kept identical. 1 Kings 17:6 (the ravens) is new here.",
+  "Prose echoes rendered plainly, not quoted: Crowther's Lord's-Prayer echo in ch3 («aliniokoa na yule mwovu», re-personed from SUV Matthew 6:13), «Si kwetu sisi, bali kwa Mungu, tunatoa sifa» (Psalm 115:1 echo, ch9, wording identical to the teen edition), the ravens that fed Elijah (ch11 body and study answer).",
+  "Names and quotations follow the teen edition (#5444) throughout: Osogun, Wayoruba/Kiyoruba, manowari Myrmidon and Iphigenia, Bathurst, Bwana/Bi. Davey, Bi. Weeks, Asano, Fourah Bay, Mto Niger, Abeokuta, Hana, Kasri la Windsor, Mwana wa Mfalme Albert, Malkia Victoria, Pleiad, Dayspring, Jebba, Onitsha, Kinupe, Kanisa Kuu la Canterbury, Abokko, Dandeson, Bwana Fell, Abigail; «siku ya huzuni, lakini iliyobarikiwa», «Sistahili», «laini na yenye mahadhi matamu», «Mimi si mpiga bunduki», «Lilikuwa kosa», «Usiku mwema».",
+  "Clock time: ch12's “at midnight” is «saa sita usiku» (Swahili reckoning), as in the teen edition. Title: the children's suffix «(Kwa Watoto)» matches all thirteen shipped sw children's editions."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 139:16",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "Genesis 50:20a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Matthew 6:13a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "lord-teach-us-to-pray-2.sw.json"
+  },
+  {
+   "reference": "Psalm 124:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Luke 4:18",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 4,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "a-short-and-easy-method-of-prayer.sw.json"
+  },
+  {
+   "reference": "Acts 1:8b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Psalm 10:14c",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalm 10:14c",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Acts 2:8",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 4:8-9",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "men-and-women-who-gave-everything-2.sw.json"
+  },
+  {
+   "reference": "1 Samuel 2:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Samuel 3:18",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 10,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "1 Kings 17:6",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalm 4:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}
