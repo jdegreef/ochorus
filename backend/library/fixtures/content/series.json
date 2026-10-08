@@ -425,5 +425,18 @@
   "created_at": "2026-10-04T00:00:00Z",
   "updated_at": "2026-10-04T00:00:00Z"
  }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "straight-talk"
+  ],
+  "language": "pt",
+  "title": "Papo Reto",
+  "description": "Clássicos cristãos e vidas verdadeiras recontados para leitores adolescentes, com sinceridade e em palavras simples: o peregrino de Bunyan a caminho da Cidade Celestial, a conversa franca de Spurgeon vinda do campo, e os homens e mulheres que apostaram tudo em Deus.",
+  "created_at": "2026-10-08T00:00:00Z",
+  "updated_at": "2026-10-08T00:00:00Z"
+ }
 }
 ]
