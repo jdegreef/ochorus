@@ -1,9 +1,10 @@
-"""Brother Lawrence's portrait: an illustrative pencil sketch.
+"""Brother Lawrence's portrait: a black-and-white firelight illustration.
 
-No usable likeness of Nicolas Herman could be sourced, so Ochorus drew one —
-a Discalced Carmelite lay brother, bald with a short grey beard, eyes lowered,
-the friary kitchen hearth behind him. It is credited as an imagined likeness so
-the page never passes it off as a portrait from life.
+No usable likeness of Nicolas Herman could be sourced, so Ochorus made one — a
+Discalced Carmelite lay brother, bald with a short grey beard, eyes lowered, lit
+from the side by the friary kitchen fire (chosen by the founder from fifteen
+styles). It is credited as an imagined likeness so the page never passes it
+off as a portrait from life.
 
 Same mechanism as 0187: ``author_sync`` fill-syncs ``photo_url`` but NOT the
 credit fields, so the credit must be set here to reach the already-seeded prod
@@ -15,7 +16,7 @@ from django.db import migrations
 
 SLUG = "brother-lawrence"
 PHOTO_URL = f"/portraits/{SLUG}.jpg"
-ATTRIBUTION = "Illustrative sketch by Ochorus (an imagined likeness)"
+ATTRIBUTION = "Illustration by Ochorus (an imagined likeness)"
 
 
 def apply(apps, schema_editor):
