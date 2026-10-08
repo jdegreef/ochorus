@@ -6,22 +6,32 @@
 	import { localizeHref } from '$lib/href';
 	import { loginHref, withSignup } from '$lib/loginHref';
 	import { seenOnView, withSource } from '$lib/signupSource';
-	import { openFrom } from '$lib/signInSheet.svelte';
+	import { openFrom, plainClick } from '$lib/signInSheet.svelte';
+	import { planSchedules } from '$lib/planSchedules.svelte';
+	import { askForPlanEmail } from '$lib/planEmail';
 
 	/**
 	 * Under the Next button at the end of a chapter, for a signed-out reader:
 	 * their progress and streak live only on this device, and an account keeps
 	 * them. Below Next, so going on reading stays the first thing. Timing and
 	 * "Not now" live in $lib/chapterAsk.
+	 *
+	 * On a plan day with a tomorrow (`planSlug`), the same card offers the
+	 * plan's daily email instead, which is the account's most concrete use:
+	 * the choice is held and the sign-up panel opens (source `plan_day`); the
+	 * email is turned on once the account exists ($lib/planEmail).
 	 */
 	let {
 		title,
-		chapterKey
+		chapterKey,
+		planSlug
 	}: {
 		/** The book's (or plan's) title, for "Keep your place in …". */
 		title: string;
 		/** This chapter, e.g. "book:humility:3", to count chapter ends reached. */
 		chapterKey: string;
+		/** A plan day before the last: offer that plan's daily email. */
+		planSlug?: string;
 	} = $props();
 
 	const t = i18n.t;
@@ -53,6 +63,24 @@
 		localizeHref(withSource(withSignup(loginHref($page.url.pathname, $page.url.search)), 'chapter_end'))
 	);
 
+	/** The plan whose email this card offers, or null for the account ask. */
+	const planOffer = $derived(planSlug && !planSchedules.get(planSlug).email ? planSlug : null);
+	// Read only inside {#if show}, like `href`.
+	const planHref = $derived(
+		localizeHref(withSource(withSignup(loginHref($page.url.pathname, $page.url.search)), 'plan_day'))
+	);
+
+	/**
+	 * A plain click holds the plan's email and opens the panel; a modified one
+	 * (new tab) or no JS follows the real /login link instead, as every
+	 * sign-up prompt does (signInSheet.openFrom).
+	 */
+	function askPlan(e: MouseEvent, slug: string) {
+		if (!plainClick(e)) return;
+		e.preventDefault();
+		askForPlanEmail(slug, 'plan_day');
+	}
+
 	function later() {
 		snoozeAsk();
 		dismissed = true;
@@ -62,12 +90,24 @@
 <span bind:this={anchor} aria-hidden="true"></span>
 {#if show}
 	<aside class="ask" aria-labelledby="ask-title" data-nosnippet>
-		<p id="ask-title" class="font-semibold text-text">{t('reader.askTitle').replace('%title%', title)}</p>
-		<p class="text-small text-muted">{t('reader.askBody')}</p>
+		{#if planOffer}
+			<p id="ask-title" class="font-semibold text-text">{t('plans.emailSignin')}</p>
+			<p class="text-small text-muted">{t('plans.remindEmailHint')}</p>
+		{:else}
+			<p id="ask-title" class="font-semibold text-text">{t('reader.askTitle').replace('%title%', title)}</p>
+			<p class="text-small text-muted">{t('reader.askBody')}</p>
+		{/if}
 		<div class="ask-row">
-			<a class="btn btn-primary btn-sm" {href} use:seenOnView={'chapter_end'} onclick={(e) => openFrom(e, 'chapter_end')}
-				>{t('reader.askCta')}</a
-			>
+			{#if planOffer}
+				{@const slug = planOffer}
+				<a class="btn btn-primary btn-sm" href={planHref} use:seenOnView={'plan_day'} onclick={(e) => askPlan(e, slug)}
+					>{t('plans.remindEmail')}</a
+				>
+			{:else}
+				<a class="btn btn-primary btn-sm" {href} use:seenOnView={'chapter_end'} onclick={(e) => openFrom(e, 'chapter_end')}
+					>{t('reader.askCta')}</a
+				>
+			{/if}
 			<button type="button" class="btn btn-ghost btn-sm" onclick={later}>{t('reader.askLater')}</button>
 		</div>
 	</aside>

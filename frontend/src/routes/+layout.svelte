@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import { onMount } from 'svelte';
+	import { onMount, untrack } from 'svelte';
 	import { page } from '$app/stores';
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
 	import { midBook } from '$lib/midBook.svelte';
@@ -39,6 +39,7 @@
 	import SignInSheet from '$lib/components/SignInSheet.svelte';
 	import OneTap from '$lib/components/OneTap.svelte';
 	import { ONE_TAP_ENABLED } from '$lib/oneTap';
+	import { applyHeldPlanEmail } from '$lib/planEmail';
 	import { openFrom } from '$lib/signInSheet.svelte';
 	import TabBar from '$lib/components/TabBar.svelte';
 	import { ACCOUNT_NAV, accountHref } from '$lib/accountNav';
@@ -83,6 +84,13 @@
 		// set. The script self-tracks SPA route changes from here on.
 		initAnalytics();
 		install.init();
+	});
+
+	// A plan's daily email asked for while signed out is turned on here, the
+	// moment an account exists, however it arrived ($lib/planEmail).
+	$effect(() => {
+		// untrack: applying writes the plan schedules, which this shouldn't depend on.
+		if (auth.user) untrack(applyHeldPlanEmail);
 	});
 
 	// A navigation into another locale must be a full document load: the
