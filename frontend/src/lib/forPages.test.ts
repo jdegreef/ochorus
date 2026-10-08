@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { FOR_LINKS, forPath } from './forLinks';
@@ -6,6 +6,7 @@ import { FOR_PAGES, SHELF_SIZE, forPage, forShelf } from './forPages';
 import type { BookSummary } from './library-public';
 
 const ROUTES = join(import.meta.dirname, '..', 'routes');
+const STATIC = join(import.meta.dirname, '..', '..', 'static');
 const BOOKS = join(import.meta.dirname, '..', '..', '..', 'backend', 'library', 'fixtures', 'content', 'books');
 
 /** Is this slug a published English book in the content fixture? */
@@ -42,6 +43,13 @@ describe('the "Ochorus for …" pages', () => {
 				expect(href, `${p.slug}: ${href}`).toMatch(/^\/[a-z-]+$/);
 				expect(routeExists(href), `${p.slug}: ${href}`).toBe(true);
 			}
+		}
+	});
+
+	it('shows a hero photo that exists, at every size it offers', () => {
+		for (const p of FOR_PAGES) {
+			const files = [p.photo.src, ...(p.photo.srcset?.split(',').map((c) => c.trim().split(' ')[0]) ?? [])];
+			for (const f of files) expect(existsSync(join(STATIC, f)), `${p.slug}: ${f}`).toBe(true);
 		}
 	});
 
