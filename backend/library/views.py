@@ -938,6 +938,13 @@ AUDIENCE_PEOPLE_MAX = 16
 _STORY_TITLE_SEP = re.compile(r"\s*[:：፦]\s*")
 
 
+def split_story_title(title: str) -> tuple[str, str] | None:
+    """``(name, hook)`` from a story chapter's "Name: The Boy Who Looked"
+    title, or None when it isn't in that shape."""
+    parts = _STORY_TITLE_SEP.split(title, maxsplit=1)
+    return (parts[0], parts[1]) if len(parts) == 2 and all(parts) else None
+
+
 def _audience_people(series_rows: list[dict], language: str) -> list[dict]:
     """The hub's people strip: one face per story chapter of its series'
     anthologies (``BookPerson.chapter``), in reading order — series, volume,
@@ -947,28 +954,33 @@ def _audience_people(series_rows: list[dict], language: str) -> list[dict]:
     and a chapter told about two people (Jim and Elisabeth Elliot) is one face,
     the first person's."""
     order = {slug: i for i, slug in enumerate(s for row in series_rows for s in row["books"])}
-    if not order:
-        return []
-    members = (
+    members = sorted(
         BookPerson.objects.filter(book_slug__in=order, chapter__isnull=False)
         .select_related("person")
         .only("book_slug", "chapter", "sort_order", "person__slug", "person__name",
-              "person__photo_url")
+              "person__photo_url"),
+        key=lambda m: (order[m.book_slug], m.chapter, m.sort_order),
     )
+    if not members:
+        return []
+    # The member books' member chapter numbers — a superset of the stories
+    # (dropped below), not every chapter of every hub series book.
     chapters = {
         (slug, n): (title, words)
         for slug, n, title, words in Chapter.objects.filter(
-            book__language=language, book__is_published=True, book__slug__in=order
+            book__language=language,
+            book__is_published=True,
+            book__slug__in={m.book_slug for m in members},
+            order__in={m.chapter for m in members},
         ).values_list("book__slug", "order", "title", "word_count")
     }
     people: dict[tuple[str, int], dict] = {}
-    for m in sorted(members, key=lambda m: (order[m.book_slug], m.chapter, m.sort_order)):
+    for m in members:
         key = (m.book_slug, m.chapter)
         if key in people or key not in chapters:
             continue
         title, words = chapters[key]
-        parts = _STORY_TITLE_SEP.split(title, maxsplit=1)
-        name, hook = parts if len(parts) == 2 and all(parts) else (m.person.name, title)
+        name, hook = split_story_title(title) or (m.person.name, title)
         people[key] = {
             "slug": m.person.slug,
             "name": name,
@@ -978,7 +990,9 @@ def _audience_people(series_rows: list[dict], language: str) -> list[dict]:
             "chapter": m.chapter,
             "words": words or None,
         }
-    return list(people.values())[:AUDIENCE_PEOPLE_MAX]
+        if len(people) >= AUDIENCE_PEOPLE_MAX:
+            break
+    return list(people.values())
 
 
 class AudienceShelfView(PublicContentCacheMixin, APIView):

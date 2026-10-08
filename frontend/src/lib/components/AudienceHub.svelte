@@ -61,6 +61,7 @@
 
 	const empty = $derived(hubIsEmpty(shelf));
 	const articles = $derived(shelf.articles ?? []);
+	const ready = $derived(!empty && !loadError);
 	const counts = $derived(hubCounts(shelf));
 	const start = $derived(startPick(shelf));
 	const printable = $derived(printableLinks(shelf));
@@ -135,8 +136,8 @@
 	     teens, ochre for children) and, from sm, a fan of what is inside. -->
 	<section class="hub-hero" data-audience={hub.audience}>
 		<div class="min-w-0">
-			<PageHeader {title} {tagline} meta={empty || loadError ? undefined : meta} />
-			{#if !empty && !loadError}
+			<PageHeader {title} {tagline} meta={ready ? meta : undefined} />
+			{#if ready}
 				<!-- How a hub like this travels: one parent to another, one friend to the next. -->
 				<div class="-mt-4">
 					<ShareButton
@@ -149,7 +150,7 @@
 				</div>
 			{/if}
 		</div>
-		{#if fan.length && !empty && !loadError}
+		{#if ready && fan.length}
 			<div class="hub-fan">
 				<CoverStrip covers={fan} size="fan" priority />
 			</div>
