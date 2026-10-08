@@ -4007,6 +4007,16 @@
 			"layout": "wash/sage",
 			"bar": 0.05
 		},
+		"es/elisabeth-elliot-a-life-children": {
+			"ground": "ecd9286714ee919c60298de1c3c375e8d3a803f97fe0c18e4cda5db6c85dbb69",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"es/enchiridion": {
 			"ground": "df59230d258f73037f971ae5dfc34730d68177dce50b66576d572227ecd26a62",
 			"style": "inscriptional",
