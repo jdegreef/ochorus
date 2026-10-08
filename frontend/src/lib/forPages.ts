@@ -31,19 +31,6 @@ export interface ForPoint {
 	link?: ForLink;
 }
 
-export interface ForPhoto {
-	src: string;
-	/** Width-described candidates, where About has a smaller cut of the photo. */
-	srcset?: string;
-	width: number;
-	height: number;
-	caption: string;
-	/** The frame's aspect ratio; 4 / 3 unless the photo needs another crop. */
-	aspect?: string;
-	/** object-position for the crop, when the subject sits off-centre. */
-	position?: string;
-}
-
 export interface ForPage {
 	/** The URL segment: /for/<slug>/ — one of `FOR_LINKS` ($lib/forLinks). */
 	slug: string;
@@ -52,9 +39,6 @@ export interface ForPage {
 	/** The search result: <title> (" — Ochorus" is added) and meta description. */
 	seoTitle: string;
 	seoDescription: string;
-	/** The hero photograph — one of About's ministry photos (static/about),
-	 *  with About's own caption, which is also its alt text. */
-	photo: ForPhoto;
 	primary: ForLink;
 	secondary: ForLink;
 	pointsHeading: string;
@@ -93,17 +77,6 @@ export const FOR_PAGES: ForPage[] = [
 		seoTitle: 'Free Christian Books for Churches',
 		seoDescription:
 			`Classic Christian books, sermons and reading plans for your whole congregation, free to read in ${LIVE_LOCALES.length} languages. No subscriptions and no account needed.`,
-		photo: {
-			src: '/about/hero-tall.jpg',
-			srcset: '/about/hero-tall-800.jpg 800w, /about/hero-tall.jpg 1600w',
-			width: 1600,
-			height: 1105,
-			caption: 'Believers hold up newly received Ochorus books at a church gathering in Uganda.',
-			// The file ends in a white strip (About's bands crop it away): a
-			// wider frame anchored above centre trims it from the bottom.
-			aspect: '3 / 2',
-			position: 'center 30%'
-		},
 		primary: { href: '/plans', label: 'Browse reading plans' },
 		secondary: { href: '/books', label: 'Explore the library' },
 		pointsHeading: 'Why churches use Ochorus',
@@ -192,13 +165,6 @@ export const FOR_PAGES: ForPage[] = [
 		seoTitle: 'Free Christian Classics for Homeschool',
 		seoDescription:
 			'Free Christian living books for homeschool families and co-ops: classics, missionary biographies and editions for children and teens, with reading plans.',
-		photo: {
-			src: '/about/teacher-standing.jpg',
-			width: 750,
-			height: 1000,
-			caption: 'A teacher receives the Ochorus titles for her school.',
-			position: 'center 30%'
-		},
 		primary: { href: '/young-readers', label: 'Books for young readers' },
 		secondary: { href: '/plans', label: 'Reading plans' },
 		pointsHeading: 'Why homeschool families use Ochorus',
@@ -288,12 +254,6 @@ export const FOR_PAGES: ForPage[] = [
 		seoTitle: 'Free Christian Books for Your Children',
 		seoDescription:
 			'Free Christian books for children and teens: true stories of faith, the classics retold and five-minute family devotions. No ads and no account needed.',
-		photo: {
-			src: '/about/school.jpg',
-			width: 1500,
-			height: 1000,
-			caption: 'Pupils gather at a school we were invited to serve.'
-		},
 		primary: { href: '/young-readers', label: 'Books for children' },
 		secondary: { href: '/teens', label: 'Books for teens' },
 		pointsHeading: 'Why parents use Ochorus',

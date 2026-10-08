@@ -1,13 +1,14 @@
 <script lang="ts">
 	import Arrow from '$lib/components/Arrow.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
+	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import QandA from '$lib/components/QandA.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import { SITE_URL } from '$lib/config';
 	import { FOR_LINKS, forPath } from '$lib/forLinks';
 	import { localizeHref } from '$lib/href';
-	import { hydrateSrc } from '$lib/hydrateSrc';
+	import { toBookTile } from '$lib/library-public';
 	import { hreflangFor, jsonLd, pickQa } from '$lib/seo';
 
 	/**
@@ -17,18 +18,13 @@
 	 * footer row that links here, so the copy is content from the data module
 	 * rather than catalogue keys.
 	 *
-	 * The head is the /originals hero shape, with one of About's ministry
-	 * photographs where /originals has its fan of covers (the books follow in
-	 * the shelf below); the bands
+	 * The head is the /originals hero (text beside a fan of covers); the bands
 	 * below borrow About's eyebrow-and-heading rhythm, inside the page column.
 	 */
 	let { data } = $props();
 
 	const page = $derived(data.page);
 	const books = $derived(data.books);
-	const photo = $derived(page.photo);
-	// One source for the attributes and the action, so they cannot drift.
-	const source = $derived({ src: photo.src, srcset: photo.srcset });
 	// forPages.test.ts pins one link per page, so the lookup cannot miss.
 	const label = $derived(FOR_LINKS.find((l) => l.slug === page.slug)!.label);
 	const path = $derived(forPath(page.slug));
@@ -68,24 +64,11 @@
 				<a class="btn btn-ghost" href={localizeHref(page.secondary.href)}>{page.secondary.label}</a>
 			</div>
 		</div>
-		<figure class="photo">
-			<div class="overflow-hidden rounded-card border border-border bg-surface-2">
-				<img
-					src={source.src}
-					srcset={source.srcset}
-					sizes="(min-width: 640px) 34rem, 100vw"
-					use:hydrateSrc={source}
-					alt={photo.caption}
-					width={photo.width}
-					height={photo.height}
-					fetchpriority="high"
-					class="h-auto w-full object-cover"
-					style:aspect-ratio={photo.aspect ?? '4 / 3'}
-					style:object-position={photo.position}
-				/>
+		{#if books.length}
+			<div class="fan">
+				<CoverStrip covers={books.map(toBookTile)} size="fan" priority />
 			</div>
-			<figcaption class="mt-2 text-small text-muted">{photo.caption}</figcaption>
-		</figure>
+		{/if}
 	</section>
 
 	<section class="mt-12" aria-labelledby="why-heading">
@@ -195,8 +178,8 @@
 			gap: 0.5rem;
 			padding-block: 0;
 		}
-		/* On a phone the photograph leads, as the fan does on /originals. */
-		.photo {
+		/* The fan sizes off its own width; on a phone it leads, as on /originals. */
+		.fan {
 			order: -1;
 			margin-bottom: 0.75rem;
 		}
