@@ -90,6 +90,8 @@ DEFAULTED_OK = {
     # Blank for every book whose full title fits its cover.
     ("library.book", "cover_title"),
     ("library.book", "cover_byline"),
+    # Blank for every book without an editor's one-line hook (most of them).
+    ("library.book", "hook"),
     ("library.chapter", "body_text"),
     # Empty on every chapter outside the young-reader editions.
     ("library.chapter", "study_questions"),

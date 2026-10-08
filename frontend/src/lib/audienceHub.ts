@@ -68,8 +68,8 @@ export interface AudienceHubConfig {
 	/** The note for the adults, folded shut: on a page the reader chose for
 	 *  themselves, a note about them shouldn't sit open at the end. */
 	foldParents: boolean;
-	/** Each book card carries its one-line hook (`$lib/bookHooks`), where the
-	 *  catalogue has one: the teenager picks by the story, not the cover. */
+	/** Each book card carries the book's one-line hook (`BookSummary.hook`),
+	 *  where it has one: the teenager picks by the story, not the cover. */
 	hooks: boolean;
 }
 

@@ -88,6 +88,7 @@ class Command(BaseCommand):
                     "cover_title": source.cover_title,
                     "cover_byline": source.cover_byline,
                     "description": source.description,
+                    "hook": source.hook,
                     "source_type": Book.SourceType.AI_UNREVIEWED,
                     "source_url": source.source_url,
                     "attribution": source.attribution,

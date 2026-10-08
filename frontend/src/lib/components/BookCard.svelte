@@ -36,9 +36,9 @@
 		 */
 		perChapter = false,
 		/**
-		 * A line that sells the book, under the byline — the teens hub's cards
-		 * (`$lib/bookHooks`). The link's label names title and author only, so
-		 * the hook rides along as its description.
+		 * A line that sells the book (`BookSummary.hook`), under the byline —
+		 * the teens hub's cards. The link's label names title and author only,
+		 * so the hook rides along as its description.
 		 */
 		hook = ''
 	}: {
