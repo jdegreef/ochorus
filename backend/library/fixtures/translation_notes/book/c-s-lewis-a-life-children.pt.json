@@ -3,7 +3,7 @@
  "slug": "c-s-lewis-a-life-children",
  "language": "pt",
  "job_issue": 5559,
- "pull_request": null,
+ "pull_request": 5574,
  "note": [
   "Each chapter opens with a simplified verse paraphrase for 8–12 year olds, cited loosely (“— from Proverbs 22”). The Portuguese renders those paraphrases in the same simple, child-friendly wording rather than pasting the Bíblia Livre text, as the sibling young-reader pt editions do (a-retrospect-children.pt, talks-to-the-farmer-children.pt); they are self_rendered. The one exception is 2 Timothy 4:7, whose English is the full verse and whose Portuguese is verbatim the wording already shipped in baptism-with-the-holy-spirit.pt.json.",
   "Published titles follow the Brazilian editions: As Crônicas de Nárnia, O Leão, a Feiticeira e o Guarda-Roupa, Aslam, Cartas de um Diabo a seu Aprendiz, Cristianismo Puro e Simples, A Anatomia de uma Dor, O Senhor dos Anéis; Phantastes keeps its original title. No quotations from Lewis's works were added. AI-translated in-session; awaiting native review."
