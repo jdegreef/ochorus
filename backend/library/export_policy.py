@@ -98,6 +98,7 @@ EXPORT_PILOT = frozenset({
     ("the-life-of-trust-children", "en"),
     ("the-life-of-trust-teens", "en"),
     ("the-practice-of-the-presence-of-god-children", "en"),
+    ("the-practice-of-the-presence-of-god-teens", "en"),
     # Retellings of an Ochorus Original (the Portraits of Courage life): the
     # parent author is the imprint, so, like the Portraits themselves, these have
     # no About the Author page. The Teens edition quotes only the public-domain ASV.
