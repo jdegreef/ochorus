@@ -3,6 +3,7 @@
  "slug": "c-s-lewis-a-life-children",
  "language": "fr",
  "job_issue": 5560,
+ "pull_request": 5572,
  "note": [
   "Each chapter opens with a verse blockquote that the English cites only by chapter (“— from Proverbs 22”) and words as a simplified, child-register paraphrase. The French keeps that shape (“— d’après Proverbes 22”) and renders the same simplified sense in plain French, so those epigraphs are self_rendered; the references record the verse each one paraphrases. Matthew 18:3 (ch10) and 2 Timothy 4:7 (ch12), quoted near-verbatim from the KJV in the English, use the Louis Segond (1910) wording, mined verbatim from the cited shipped French files. api.takeroot.bible was not used (egress-blocked).",
   "Published book titles use the established French titles: Le Monde de Narnia, Le Lion, la Sorcière blanche et l’Armoire magique, Tactique du diable (The Screwtape Letters), Les Fondements du christianisme (Mere Christianity), Apprendre la mort (A Grief Observed), Le Seigneur des anneaux. Lewis’s one short self-description (“the most dejected and reluctant convert in all England”) is a plain rendering, not quoted from a French edition. AI-translated in-session; awaiting native review."
