@@ -5225,6 +5225,16 @@
 			"layout": "wash/sage",
 			"bar": 0.05
 		},
+		"fr/elisabeth-elliot-a-life-children": {
+			"ground": "98c2b7d13182115c6915473e015ed033848ab457efda0780dbb049cf74c3f7b7",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"fr/feasting-at-the-table": {
 			"ground": "6e0eeb78b81466700d36d3c4bd910186a8ac00efbe55b57b93792ce7912394ad",
 			"style": "lettered",

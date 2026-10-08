@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "elisabeth-elliot-a-life-children",
+  "language": "fr",
+  "title": "Elisabeth Elliot (Pour les enfants)",
+  "subtitle": "",
+  "cover_byline": "Elisabeth Elliot",
+  "description": "La vraie histoire de Betty Howard, une petite fille timide qui a appris le grec pour pouvoir donner la Bible aux gens, qui a perdu son mari Jim dans la forêt tropicale de l’Équateur, puis qui a emmené sa petite fille dans la forêt pour vivre parmi ceux-là mêmes qui l’avaient tué. Cette édition pour enfants raconte sa vie en courts chapitres faits pour être lus à voix haute : un verset de la Bible, une partie de son histoire, une chose que cela veut dire pour toi, et une courte prière, avec des questions pour en parler ensemble.",
+  "qa": [
+   {
+    "question": "De quoi parle Elisabeth Elliot (Pour les enfants) ?",
+    "answer": "C’est une version pour enfants de la biographie complète d’Elisabeth Elliot. Elle raconte comment une petite fille timide appelée Betty est devenue missionnaire en Équateur, comment son mari Jim et ses quatre amis sont morts en essayant d’aller vers le peuple waorani, et comment elle est partie vivre chez les Waorani avec sa petite fille pour leur parler de Dieu."
+   },
+   {
+    "question": "Qui était Elisabeth Elliot ?",
+    "answer": "Une missionnaire et écrivaine américaine qui a vécu de 1926 à 2015. Elle a appris le grec pour traduire la Bible, elle a mis par écrit des langues qui ne s’écrivaient pas encore en Équateur et, en 1958, elle est partie vivre chez les Waorani. Plus tard, elle a écrit de nombreux livres et a parlé à des millions de personnes à la radio de la confiance en Dieu."
+   },
+   {
+    "question": "Comment chaque chapitre est-il organisé ?",
+    "answer": "Chaque chapitre est court et fait pour être lu à voix haute. Il commence par un verset de la Bible, raconte une partie de l’histoire de Betty, montre une chose simple que cela veut dire pour toi, et se termine par une courte prière. Ensuite viennent trois questions, pour en parler ensemble."
+   },
+   {
+    "question": "Ce livre est-il trop triste pour les enfants ?",
+    "answer": "Une partie est triste, parce que Jim, le mari de Betty, et ses quatre amis ont été tués, et le livre ne fait pas semblant du contraire. Mais c’est raconté avec douceur, sans détails effrayants, et c’est surtout l’histoire de Dieu qui était avec Betty dans sa tristesse et qui l’a aidée à pardonner et à aimer les gens qui lui avaient fait du mal."
+   },
+   {
+    "question": "Ces histoires sont-elles vraies ?",
+    "answer": "Oui. Elles viennent des livres d’Elisabeth Elliot elle-même, des lettres et des journaux de sa famille, et des personnes qui l’ont connue et qui ont écrit sur sa vie. Quand les gens ne se souviennent pas des choses de la même façon, le livre s’en tient à ce qui est le mieux connu."
+   },
+   {
+    "question": "À qui s’adresse ce livre ?",
+    "answer": "Aux enfants, pour qu’un adulte le leur lise à voix haute, ou pour qu’un enfant plus grand le lise tout seul. Il existe aussi une édition pour les adolescents, et la biographie complète pour les lecteurs plus âgés."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Un récit d’Ochorus pour jeunes lecteurs, d’après la biographie Ochorus Elisabeth Elliot, de la série Portraits de courage. La façon de raconter est la nôtre, libre à lire et à partager.",
+  "cover_url": "/covers/fr/elisabeth-elliot-a-life-children.svg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 154,
+  "is_published": true,
+  "created_at": "2026-10-08T00:00:00Z",
+  "updated_at": "2026-10-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "fr"
+  ],
+  "order": 1,
+  "title": "Une petite fille appelée Betty",
+  "body_html": "<blockquote>« Ces paroles seront dans ton cœur. Tu les enseigneras à tes enfants, quand tu seras assis dans ta maison et quand tu marcheras en chemin. » — d’après Deutéronome 6</blockquote> <p>Le 21 décembre 1926, une petite fille est née à Bruxelles, la capitale de la Belgique. Elle s’appelait Elisabeth Howard, mais sa famille l’appelait Betty. Sa maman et son papa étaient américains. Ils étaient venus en Belgique comme missionnaires, pour parler de Jésus aux gens de là-bas.</p> <p>Quand Betty n’était encore qu’un tout petit bébé, la famille est rentrée en Amérique. Son père est allé travailler pour un journal chrétien de Philadelphie qui s’appelait le <em>Sunday School Times</em>, et avec le temps il en est devenu le rédacteur en chef. La famille habitait Germantown, un vieux quartier de la ville. Quand Betty avait neuf ans, ils ont déménagé dans une maison plus grande, à Moorestown, dans le New Jersey.</p> <p>Il y avait six enfants dans la famille : quatre garçons et deux filles. Betty était la deuxième. L’argent ne coulait jamais à flots, alors on ne gaspillait rien, et chacun avait ses tâches à faire.</p> <p>Chaque jour, deux fois par jour, les Howard se réunissaient pour adorer Dieu. Le matin après le petit-déjeuner, et encore le soir, ils chantaient un cantique, avec tous les couplets. Leur père lisait la Bible et priait pour chaque enfant en l’appelant par son nom, et pour des missionnaires du monde entier. Beaucoup de ces missionnaires venaient loger chez les Howard et racontaient des histoires de pays lointains. Les enfants apprenaient par cœur beaucoup de versets de la Bible et de cantiques.</p> <p>Betty était une grande fille calme et timide qui adorait lire. Chaque été, la famille partait dans les montagnes du New Hampshire, dans un village appelé Franconia. Là, Betty grimpait sur les collines, cueillait des baies, nageait dans l’eau froide et apprenait le nom des arbres, des fleurs et des oiseaux. Elle aimait cet endroit plus que tout autre au monde.</p> <p>La maman et le papa de Betty ne pouvaient pas l’obliger à aimer Dieu. Mais ils lui donnaient les paroles de Dieu chaque jour, et ces paroles sont restées dans son cœur toute sa vie. Les versets de la Bible que tu apprends maintenant peuvent rester avec toi, toi aussi.</p> <p><em>Cher Dieu, merci pour les personnes qui m’apprennent à te connaître. S’il te plaît, mets tes paroles tout au fond de mon cœur, pour que je m’en souvienne toute ma vie. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Où Betty est-elle née, et pourquoi sa famille était-elle là-bas ?",
+    "answer": "À Bruxelles, en Belgique, en 1926. Ses parents étaient des missionnaires américains venus là-bas pour parler de Jésus aux gens."
+   },
+   {
+    "question": "Que faisait la famille Howard ensemble deux fois par jour ?",
+    "answer": "Ils adoraient Dieu ensemble. Ils chantaient un cantique, leur père lisait la Bible, et il priait pour chaque enfant en l’appelant par son nom et pour des missionnaires du monde entier."
+   },
+   {
+    "question": "Connais-tu par cœur un verset de la Bible ou un chant sur Dieu ?",
+    "answer": "Toute réponse sincère est bonne. Betty a appris les paroles de Dieu quand elle était petite, et elles sont restées dans son cœur toute sa vie. Les tiennes le peuvent aussi."
+   }
+  ],
+  "body_text": "« Ces paroles seront dans ton cœur. Tu les enseigneras à tes enfants, quand tu seras assis dans ta maison et quand tu marcheras en chemin. » — d’après Deutéronome 6 Le 21 décembre 1926, une petite fille est née à Bruxelles, la capitale de la Belgique. Elle s’appelait Elisabeth Howard, mais sa famille l’appelait Betty. Sa maman et son papa étaient américains. Ils étaient venus en Belgique comme missionnaires, pour parler de Jésus aux gens de là-bas. Quand Betty n’était encore qu’un tout petit bébé, la famille est rentrée en Amérique. Son père est allé travailler pour un journal chrétien de Philadelphie qui s’appelait le Sunday School Times, et avec le temps il en est devenu le rédacteur en chef. La famille habitait Germantown, un vieux quartier de la ville. Quand Betty avait neuf ans, ils ont déménagé dans une maison plus grande, à Moorestown, dans le New Jersey. Il y avait six enfants dans la famille : quatre garçons et deux filles. Betty était la deuxième. L’argent ne coulait jamais à flots, alors on ne gaspillait rien, et chacun avait ses tâches à faire. Chaque jour, deux fois par jour, les Howard se réunissaient pour adorer Dieu. Le matin après le petit-déjeuner, et encore le soir, ils chantaient un cantique, avec tous les couplets. Leur père lisait la Bible et priait pour chaque enfant en l’appelant par son nom, et pour des missionnaires du monde entier. Beaucoup de ces missionnaires venaient loger chez les Howard et racontaient des histoires de pays lointains. Les enfants apprenaient par cœur beaucoup de versets de la Bible et de cantiques. Betty était une grande fille calme et timide qui adorait lire. Chaque été, la famille partait dans les montagnes du New Hampshire, dans un village appelé Franconia. Là, Betty grimpait sur les collines, cueillait des baies, nageait dans l’eau froide et apprenait le nom des arbres, des fleurs et des oiseaux. Elle aimait cet endroit plus que tout autre au monde. La maman et le papa de Betty ne pouvaient pas l’obliger à aimer Dieu. Mais ils lui donnaient les paroles de Dieu chaque jour, et ces paroles sont restées dans son cœur toute sa vie. Les versets de la Bible que tu apprends maintenant peuvent rester avec toi, toi aussi. Cher Dieu, merci pour les personnes qui m’apprennent à te connaître. S’il te plaît, mets tes paroles tout au fond de mon cœur, pour que je m’en souvienne toute ma vie. Amen.",
+  "word_count": 412
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "fr"
+  ],
+  "order": 2,
+  "title": "Apprendre à être courageuse",
+  "body_html": "<blockquote>« Sur le moment, aucune correction ne semble agréable ; elle semble dure. Mais plus tard, elle donne une bonne récolte. » — d’après Hébreux 12</blockquote> <p>En 1941, quand Betty avait quatorze ans, elle est partie loin de chez elle, dans un internat chrétien en Floride. Il s’appelait la Hampden DuBose Academy. Chaque moment de la journée avait son heure : la chapelle, les cours, les repas, le travail, les jeux et la prière du soir.</p> <p>La directrice était Mme DuBose, et elle était très sévère. Quand elle a rencontré Betty, elle a vu une grande fille maladroite, si timide qu’elle osait à peine parler à quelqu’un qu’elle ne connaissait pas. Betty se souvenait qu’on lui avait dit franchement que la timidité n’avait rien dont on puisse être fier. Elle devait apprendre à regarder autour d’elle, et à penser aux autres plutôt qu’à elle-même.</p> <p>Betty avait peur de Mme DuBose ! Mais elle a pris la leçon au sérieux. Petit à petit, elle a appris à se tenir droite, à regarder les gens dans les yeux, à parler avec des inconnus et à prendre la parole devant une foule. Ce n’était pas facile, et cela ne lui venait pas naturellement. Mais elle continuait à s’exercer.</p> <p>Le soir, Mme DuBose lisait souvent à voix haute les livres d’Amy Carmichael, une missionnaire en Inde qui avait sauvé beaucoup d’enfants et leur avait donné un foyer. Betty adorait ces livres. Amy Carmichael écrivait avec franchise sur la vie difficile d’une missionnaire, et sur le fait d’aimer Jésus de tout son être. Plus tard, Betty a dit d’elle qu’elle était sa première mère spirituelle, et bien des années après, Betty a écrit tout un livre sur sa vie.</p> <p>Quand Betty a terminé l’école en 1944, elle savait ce qu’elle voulait faire. Elle voulait traduire la Bible dans des langues qui ne l’avaient jamais eue, pour que des gens puissent lire les paroles de Dieu pour la toute première fois.</p> <p>Parfois, Dieu nous aide à grandir à travers des choses qui nous paraissent dures, comme une maîtresse sévère ou un nouvel endroit qui fait peur. Être courageux ne veut pas dire ne jamais avoir peur. Cela veut dire faire ce qui est gentil, même quand on se sent timide.</p> <p><em>Cher Dieu, quand je me sens timide ou que j’ai peur, aide-moi à être courageux. Aide-moi à faire attention aux autres et à être gentil avec eux. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-ce que Mme DuBose a appris à Betty sur la timidité ?",
+    "answer": "Qu’elle ne devait pas rester enfermée dans sa timidité, mais apprendre à regarder autour d’elle, à faire attention aux autres et à les mettre à l’aise."
+   },
+   {
+    "question": "De qui étaient les livres que Betty entendait lire à voix haute à l’école ?",
+    "answer": "Les livres d’Amy Carmichael, une missionnaire en Inde. Plus tard, Betty a dit d’elle qu’elle était sa première mère spirituelle, et elle a écrit un livre sur sa vie."
+   },
+   {
+    "question": "Qu’est-ce qui te semble difficile en ce moment ?",
+    "answer": "Toute réponse sincère est bonne. Betty trouvait son école difficile, mais Dieu s’en est servi pour l’aider à grandir. Il peut aussi se servir des choses difficiles dans ta vie."
+   }
+  ],
+  "body_text": "« Sur le moment, aucune correction ne semble agréable ; elle semble dure. Mais plus tard, elle donne une bonne récolte. » — d’après Hébreux 12 En 1941, quand Betty avait quatorze ans, elle est partie loin de chez elle, dans un internat chrétien en Floride. Il s’appelait la Hampden DuBose Academy. Chaque moment de la journée avait son heure : la chapelle, les cours, les repas, le travail, les jeux et la prière du soir. La directrice était Mme DuBose, et elle était très sévère. Quand elle a rencontré Betty, elle a vu une grande fille maladroite, si timide qu’elle osait à peine parler à quelqu’un qu’elle ne connaissait pas. Betty se souvenait qu’on lui avait dit franchement que la timidité n’avait rien dont on puisse être fier. Elle devait apprendre à regarder autour d’elle, et à penser aux autres plutôt qu’à elle-même. Betty avait peur de Mme DuBose ! Mais elle a pris la leçon au sérieux. Petit à petit, elle a appris à se tenir droite, à regarder les gens dans les yeux, à parler avec des inconnus et à prendre la parole devant une foule. Ce n’était pas facile, et cela ne lui venait pas naturellement. Mais elle continuait à s’exercer. Le soir, Mme DuBose lisait souvent à voix haute les livres d’Amy Carmichael, une missionnaire en Inde qui avait sauvé beaucoup d’enfants et leur avait donné un foyer. Betty adorait ces livres. Amy Carmichael écrivait avec franchise sur la vie difficile d’une missionnaire, et sur le fait d’aimer Jésus de tout son être. Plus tard, Betty a dit d’elle qu’elle était sa première mère spirituelle, et bien des années après, Betty a écrit tout un livre sur sa vie. Quand Betty a terminé l’école en 1944, elle savait ce qu’elle voulait faire. Elle voulait traduire la Bible dans des langues qui ne l’avaient jamais eue, pour que des gens puissent lire les paroles de Dieu pour la toute première fois. Parfois, Dieu nous aide à grandir à travers des choses qui nous paraissent dures, comme une maîtresse sévère ou un nouvel endroit qui fait peur. Être courageux ne veut pas dire ne jamais avoir peur. Cela veut dire faire ce qui est gentil, même quand on se sent timide. Cher Dieu, quand je me sens timide ou que j’ai peur, aide-moi à être courageux. Aide-moi à faire attention aux autres et à être gentil avec eux. Amen.",
+  "word_count": 402
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "fr"
+  ],
+  "order": 3,
+  "title": "Le grec et un garçon nommé Jim",
+  "body_html": "<blockquote>« Efforce-toi d’être quelqu’un dont Dieu est content, qui explique bien la parole de vérité. » — d’après 2 Timothée 2</blockquote> <p>À l’automne 1944, Betty est entrée au Wheaton College, près de Chicago. Elle a choisi d’étudier le grec. C’était rare pour une jeune femme à cette époque, mais Betty avait une bonne raison. Le Nouveau Testament a d’abord été écrit en grec. Si elle devait un jour traduire la Bible, elle voulait la lire dans sa toute première langue.</p> <p>Le grec demandait beaucoup de travail. Betty apprenait de longues listes de mots et de règles de grammaire, encore et encore. Mais elle avait un esprit soigneux et une bonne oreille, et elle a fini par l’adorer. Toute sa vie, elle a gardé son Nouveau Testament grec tout près d’elle.</p> <p>Un an plus tard, un nouvel étudiant est arrivé à Wheaton, venu de Portland, dans l’Oregon. Il s’appelait Jim Elliot. Jim était fort et franc, avec beaucoup d’humour. Il faisait partie de l’équipe de lutte, et il aimait Jésus de tout son cœur. Lui aussi étudiait le grec ! Au collège, le meilleur ami de Jim était le petit frère de Betty, Dave.</p> <p>À Noël 1947, Dave a invité Jim à venir chez lui, à Moorestown. Jim s’est joint aux cantiques et aux prières de la famille Howard, et il s’est senti tout de suite chez lui. Après cela, il a commencé à regarder d’une nouvelle façon la sœur calme et sérieuse de Dave.</p> <p>Quand les cours ont repris en janvier 1948, Betty et Jim se sont retrouvés dans les mêmes cours de grec, alors ils ont étudié ensemble. Ils parlaient du grec, de la Bible, des missions et de ce que Dieu voulait qu’ils fassent. Tous les deux voulaient obéir à Dieu plus que tout.</p> <p>Betty travaillait dur en grec parce qu’elle voulait donner la parole de Dieu à d’autres personnes. Ton travail d’école peut, lui aussi, être une façon de servir Dieu, quand tu le fais avec soin et que tu le fais bien.</p> <p><em>Cher Dieu, aide-moi à bien travailler pour apprendre, et à bien faire les choses pour toi. Merci pour les bons amis qui t’aiment. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi Betty a-t-elle choisi d’étudier le grec ?",
+    "answer": "Parce que le Nouveau Testament a d’abord été écrit en grec, et qu’elle voulait le lire dans sa première langue pour pouvoir traduire la Bible un jour."
+   },
+   {
+    "question": "Comment Betty a-t-elle fait la connaissance de Jim Elliot ?",
+    "answer": "Jim était le meilleur ami de son frère Dave. Il est venu chez les Howard pour Noël 1947, puis Betty et lui ont étudié le grec ensemble."
+   },
+   {
+    "question": "Quelle chose pourrais-tu faire avec soin et bien faire pour Dieu cette semaine ?",
+    "answer": "Toute réponse est bonne. Le travail de Betty en grec était une façon de servir Dieu, et notre travail peut l’être aussi, même nos devoirs."
+   }
+  ],
+  "body_text": "« Efforce-toi d’être quelqu’un dont Dieu est content, qui explique bien la parole de vérité. » — d’après 2 Timothée 2 À l’automne 1944, Betty est entrée au Wheaton College, près de Chicago. Elle a choisi d’étudier le grec. C’était rare pour une jeune femme à cette époque, mais Betty avait une bonne raison. Le Nouveau Testament a d’abord été écrit en grec. Si elle devait un jour traduire la Bible, elle voulait la lire dans sa toute première langue. Le grec demandait beaucoup de travail. Betty apprenait de longues listes de mots et de règles de grammaire, encore et encore. Mais elle avait un esprit soigneux et une bonne oreille, et elle a fini par l’adorer. Toute sa vie, elle a gardé son Nouveau Testament grec tout près d’elle. Un an plus tard, un nouvel étudiant est arrivé à Wheaton, venu de Portland, dans l’Oregon. Il s’appelait Jim Elliot. Jim était fort et franc, avec beaucoup d’humour. Il faisait partie de l’équipe de lutte, et il aimait Jésus de tout son cœur. Lui aussi étudiait le grec ! Au collège, le meilleur ami de Jim était le petit frère de Betty, Dave. À Noël 1947, Dave a invité Jim à venir chez lui, à Moorestown. Jim s’est joint aux cantiques et aux prières de la famille Howard, et il s’est senti tout de suite chez lui. Après cela, il a commencé à regarder d’une nouvelle façon la sœur calme et sérieuse de Dave. Quand les cours ont repris en janvier 1948, Betty et Jim se sont retrouvés dans les mêmes cours de grec, alors ils ont étudié ensemble. Ils parlaient du grec, de la Bible, des missions et de ce que Dieu voulait qu’ils fassent. Tous les deux voulaient obéir à Dieu plus que tout. Betty travaillait dur en grec parce qu’elle voulait donner la parole de Dieu à d’autres personnes. Ton travail d’école peut, lui aussi, être une façon de servir Dieu, quand tu le fais avec soin et que tu le fais bien. Cher Dieu, aide-moi à bien travailler pour apprendre, et à bien faire les choses pour toi. Merci pour les bons amis qui t’aiment. Amen.",
+  "word_count": 360
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "fr"
+  ],
+  "order": 4,
+  "title": "Une ombre en forme de croix",
+  "body_html": "<blockquote>« Donnez-vous tout entiers à Dieu, comme un cadeau vivant, saint et qui lui plaît. » — d’après Romains 12</blockquote> <p>Quand le printemps est arrivé en 1948, Betty et Jim ont commencé à s’aimer. Mais ils ne savaient pas quoi faire. Jim pensait que Dieu voulait peut-être qu’il reste célibataire, pour qu’il puisse aller dans des endroits durs et dangereux parler de Jésus aux gens. Il n’en était pas sûr, et il ne voulait rien promettre avant de l’être.</p> <p>Le 9 juin 1948, juste avant la fin des études de Betty, ils sont allés se promener un soir. Pour la première fois, ils se sont dit ce qu’ils ressentaient. Et Jim a dit à Betty qu’il ne pouvait rien lui demander, ni rien lui promettre.</p> <p>Alors ils ont décidé de redonner leur amour à Dieu. Ils ont pensé à l’histoire de la Bible où Abraham était prêt à offrir son fils Isaac sur un autel, et où Dieu a donné un bélier à la place. Leur amour était un cadeau précieux, et ils allaient donc l’offrir à Dieu. Si Dieu le leur rendait, ce serait merveilleux. Sinon, ils lui feraient confiance : il avait quelque chose de meilleur.</p> <p>Pendant qu’ils étaient assis à parler, la lune s’est levée derrière eux. Elle a projeté sur le sol, entre eux deux, l’ombre d’une grande croix de pierre. Tous les deux s’en sont toujours souvenus. C’était comme une image de ce qu’ils venaient de décider : tout ce qui arriverait à leur amour arriverait sous la croix de Jésus.</p> <p>Puis sont venues des années d’attente. Betty est allée dans une école biblique, dans les grandes plaines froides et enneigées du Canada. Jim a fini ses études et il est rentré chez lui dans l’Oregon. Ils s’écrivaient des lettres, mais il n’y avait aucune promesse. Betty se sentait souvent seule, et l’attente était très dure. Mais elle continuait à prier, et elle continuait à faire chaque jour le travail qui était devant elle.</p> <p>Parfois, nous voulons très fort quelque chose, et nous devons attendre. Le donner à Dieu ne veut pas dire que cela ne compte plus pour nous. Cela veut dire que nous lui faisons confiance pour savoir ce qui est le mieux, et pour s’en occuper à notre place.</p> <p><em>Cher Dieu, quand je dois attendre quelque chose que je veux, aide-moi à te faire confiance. Je te donne les choses qui comptent le plus pour moi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-ce que Betty et Jim ont décidé de faire de leur amour l’un pour l’autre ?",
+    "answer": "Ils ont décidé de le redonner à Dieu, comme Abraham offrant Isaac, et de faire confiance à Dieu pour la suite."
+   },
+   {
+    "question": "Qu’ont-ils vu sur le sol entre eux pendant leur promenade ?",
+    "answer": "L’ombre d’une grande croix de pierre, faite par la lune qui se levait derrière eux. Elle leur a rappelé que leur amour était sous la croix de Jésus."
+   },
+   {
+    "question": "Y a-t-il quelque chose que tu attends en ce moment ?",
+    "answer": "Toute réponse sincère est bonne. Betty a dû attendre longtemps. Donner à Dieu ce que nous voulons, c’est lui faire confiance pour savoir ce qui est le mieux."
+   }
+  ],
+  "body_text": "« Donnez-vous tout entiers à Dieu, comme un cadeau vivant, saint et qui lui plaît. » — d’après Romains 12 Quand le printemps est arrivé en 1948, Betty et Jim ont commencé à s’aimer. Mais ils ne savaient pas quoi faire. Jim pensait que Dieu voulait peut-être qu’il reste célibataire, pour qu’il puisse aller dans des endroits durs et dangereux parler de Jésus aux gens. Il n’en était pas sûr, et il ne voulait rien promettre avant de l’être. Le 9 juin 1948, juste avant la fin des études de Betty, ils sont allés se promener un soir. Pour la première fois, ils se sont dit ce qu’ils ressentaient. Et Jim a dit à Betty qu’il ne pouvait rien lui demander, ni rien lui promettre. Alors ils ont décidé de redonner leur amour à Dieu. Ils ont pensé à l’histoire de la Bible où Abraham était prêt à offrir son fils Isaac sur un autel, et où Dieu a donné un bélier à la place. Leur amour était un cadeau précieux, et ils allaient donc l’offrir à Dieu. Si Dieu le leur rendait, ce serait merveilleux. Sinon, ils lui feraient confiance : il avait quelque chose de meilleur. Pendant qu’ils étaient assis à parler, la lune s’est levée derrière eux. Elle a projeté sur le sol, entre eux deux, l’ombre d’une grande croix de pierre. Tous les deux s’en sont toujours souvenus. C’était comme une image de ce qu’ils venaient de décider : tout ce qui arriverait à leur amour arriverait sous la croix de Jésus. Puis sont venues des années d’attente. Betty est allée dans une école biblique, dans les grandes plaines froides et enneigées du Canada. Jim a fini ses études et il est rentré chez lui dans l’Oregon. Ils s’écrivaient des lettres, mais il n’y avait aucune promesse. Betty se sentait souvent seule, et l’attente était très dure. Mais elle continuait à prier, et elle continuait à faire chaque jour le travail qui était devant elle. Parfois, nous voulons très fort quelque chose, et nous devons attendre. Le donner à Dieu ne veut pas dire que cela ne compte plus pour nous. Cela veut dire que nous lui faisons confiance pour savoir ce qui est le mieux, et pour s’en occuper à notre place. Cher Dieu, quand je dois attendre quelque chose que je veux, aide-moi à te faire confiance. Je te donne les choses qui comptent le plus pour moi. Amen.",
+  "word_count": 405
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "fr"
+  ],
+  "order": 5,
+  "title": "La valise perdue",
+  "body_html": "<blockquote>« Mes pensées ne sont pas vos pensées, et mes chemins ne sont pas vos chemins, dit le Seigneur. » — d’après Ésaïe 55</blockquote> <p>Jim a compris que Dieu l’envoyait en Équateur, un pays d’Amérique du Sud, et en février 1952 il y est parti en bateau avec un ami nommé Pete Fleming. En avril, Betty est partie en Équateur, elle aussi. Elle y allait comme missionnaire de son côté, sans aucune promesse de Jim. Elle avait appris à mettre par écrit des langues qui n’avaient jamais été écrites.</p> <p>D’abord, elle a appris l’espagnol à Quito, une ville située tout en haut dans les montagnes. Puis elle est descendue dans la forêt chaude et humide, de l’autre côté des montagnes, à l’ouest. Les gens de là-bas s’appelaient les Colorados, parce que les hommes coloraient leurs cheveux en rouge vif avec une pâte faite d’une graine. Leur langue n’avait jamais été écrite. Le travail de Betty, c’était de l’apprendre depuis le tout début.</p> <p>Elle avait besoin de quelqu’un pour l’aider, qui parle à la fois le colorado et l’espagnol. Dieu lui a donné une aide merveilleuse : un homme appelé Macario, qui aimait Jésus. Jour après jour, ils s’asseyaient ensemble. Il disait des mots, et elle les écrivait sur des fiches. Lentement, la forme de la langue a commencé à apparaître.</p> <p>Puis une chose terrible est arrivée. Macario a été tué par des hommes, au cours d’une dispute pour un morceau de terrain. Betty avait le cœur brisé. Elle avait perdu un ami et un frère en Christ, et personne d’autre ne pouvait l’aider de la même façon.</p> <p>Peu après, Betty a rangé toutes ses notes sur la langue dans une valise, pour qu’elles aillent aux missionnaires qui continueraient le travail. La valise a été volée à l’arrière d’un camion, et on ne l’a jamais retrouvée. Il n’y avait aucune copie. Presque tout son travail avait disparu. Betty a demandé à Dieu pourquoi. Il ne le lui a pas dit. Alors elle a décidé qu’elle continuerait à lui faire confiance, même sans réponse.</p> <p>Parfois, nous prions et nous travaillons dur, et pourtant les choses tournent mal. Dieu ne nous dit pas toujours pourquoi. Mais nous pouvons lui dire honnêtement ce que nous ressentons, et continuer à lui faire confiance, parce qu’il est bon même quand nous ne comprenons pas.</p> <p><em>Cher Dieu, quand les choses tournent mal et que je ne comprends pas pourquoi, aide-moi à continuer à te faire confiance. Merci parce que tes chemins sont plus hauts que les miens. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qui était Macario ?",
+    "answer": "Un homme qui aimait Jésus et qui parlait à la fois le colorado et l’espagnol. Il a aidé Betty à apprendre la langue colorado et à la mettre par écrit."
+   },
+   {
+    "question": "Qu’est-il arrivé à la valise de Betty ?",
+    "answer": "Elle contenait presque toutes ses notes sur la langue, et elle a été volée à l’arrière d’un camion. On ne l’a jamais retrouvée, et il n’y avait aucune copie."
+   },
+   {
+    "question": "Que peux-tu faire quand tu ne comprends pas pourquoi une chose triste est arrivée ?",
+    "answer": "Toute réponse sincère est bonne. Betty a dit à Dieu ce qu’elle ressentait et elle a décidé de continuer à lui faire confiance, même sans réponse."
+   }
+  ],
+  "body_text": "« Mes pensées ne sont pas vos pensées, et mes chemins ne sont pas vos chemins, dit le Seigneur. » — d’après Ésaïe 55 Jim a compris que Dieu l’envoyait en Équateur, un pays d’Amérique du Sud, et en février 1952 il y est parti en bateau avec un ami nommé Pete Fleming. En avril, Betty est partie en Équateur, elle aussi. Elle y allait comme missionnaire de son côté, sans aucune promesse de Jim. Elle avait appris à mettre par écrit des langues qui n’avaient jamais été écrites. D’abord, elle a appris l’espagnol à Quito, une ville située tout en haut dans les montagnes. Puis elle est descendue dans la forêt chaude et humide, de l’autre côté des montagnes, à l’ouest. Les gens de là-bas s’appelaient les Colorados, parce que les hommes coloraient leurs cheveux en rouge vif avec une pâte faite d’une graine. Leur langue n’avait jamais été écrite. Le travail de Betty, c’était de l’apprendre depuis le tout début. Elle avait besoin de quelqu’un pour l’aider, qui parle à la fois le colorado et l’espagnol. Dieu lui a donné une aide merveilleuse : un homme appelé Macario, qui aimait Jésus. Jour après jour, ils s’asseyaient ensemble. Il disait des mots, et elle les écrivait sur des fiches. Lentement, la forme de la langue a commencé à apparaître. Puis une chose terrible est arrivée. Macario a été tué par des hommes, au cours d’une dispute pour un morceau de terrain. Betty avait le cœur brisé. Elle avait perdu un ami et un frère en Christ, et personne d’autre ne pouvait l’aider de la même façon. Peu après, Betty a rangé toutes ses notes sur la langue dans une valise, pour qu’elles aillent aux missionnaires qui continueraient le travail. La valise a été volée à l’arrière d’un camion, et on ne l’a jamais retrouvée. Il n’y avait aucune copie. Presque tout son travail avait disparu. Betty a demandé à Dieu pourquoi. Il ne le lui a pas dit. Alors elle a décidé qu’elle continuerait à lui faire confiance, même sans réponse. Parfois, nous prions et nous travaillons dur, et pourtant les choses tournent mal. Dieu ne nous dit pas toujours pourquoi. Mais nous pouvons lui dire honnêtement ce que nous ressentons, et continuer à lui faire confiance, parce qu’il est bon même quand nous ne comprenons pas. Cher Dieu, quand les choses tournent mal et que je ne comprends pas pourquoi, aide-moi à continuer à te faire confiance. Merci parce que tes chemins sont plus hauts que les miens. Amen.",
+  "word_count": 421
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "fr"
+  ],
+  "order": 6,
+  "title": "Un mariage et une tente",
+  "body_html": "<blockquote>« Deux valent mieux qu’un, car ils peuvent s’aider l’un l’autre dans leur travail. » — d’après Ecclésiaste 4</blockquote> <p>En janvier 1953, Jim et Betty se sont retrouvés à Quito. Enfin, après cinq ans d’attente, Jim a demandé à Betty de l’épouser, et elle a dit oui ! Mais Jim a demandé encore une chose. Il travaillait parmi les Quichuas de la forêt de l’est. Il voulait que Betty apprenne leur langue, le quichua, avant leur mariage, pour qu’elle puisse parler avec eux et partager le travail.</p> <p>Alors Betty s’est remise au travail, pour apprendre une toute nouvelle langue. Elle écoutait, écrivait ce qu’elle entendait et s’exerçait encore et encore. À l’automne, elle en savait assez.</p> <p>Betty et Jim se sont mariés à Quito le 8 octobre 1953. C’était le jour des vingt-six ans de Jim ! Ce fut un mariage court et simple, dans un bureau du gouvernement, avec seulement quelques amis. Il n’y avait ni musique ni fleurs, mais cela leur était égal. Après un petit voyage au Panama, ils sont retournés dans la forêt.</p> <p>Leur première maison était une tente ! Un chef quichua nommé Atanasio, dans un endroit appelé Puyupungu, avait demandé un missionnaire pour enseigner son peuple et ouvrir une école. Alors Jim et Betty ont vécu sous une tente pendant qu’on construisait un bâtiment simple. Il pleuvait, les insectes n’arrêtaient pas de piquer, et ils faisaient la cuisine sur un feu. Mais il semble que cela leur ait plu.</p> <p>En 1954, ils ont déménagé dans une station missionnaire appelée Shandia, dans une maison que Jim avait construite. Jim prêchait et faisait la classe aux garçons de l’école. Betty s’occupait de la maison, soignait les malades qui venaient frapper à la porte et travaillait sur la langue quichua. Jim était le prédicateur, et Betty était celle qui avait le carnet. Le 27 février 1955, leur petite fille Valerie est née.</p> <p>Dieu a fait Jim et Betty différents, et c’est pour cela qu’ils travaillaient si bien ensemble. Dieu donne à chacun de nous des dons différents, pour que nous puissions nous aider les uns les autres.</p> <p><em>Cher Dieu, merci pour ma famille et pour mes amis. Merci pour les dons que tu as donnés à chacun de nous. Aide-nous à nous en servir pour nous aider les uns les autres. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-ce que Jim a demandé à Betty de faire avant leur mariage ?",
+    "answer": "D’apprendre le quichua, la langue du peuple parmi lequel il travaillait, pour qu’elle puisse parler avec eux et partager le travail."
+   },
+   {
+    "question": "Comment était la première maison de Jim et Betty ?",
+    "answer": "C’était une tente à Puyupungu, dans la forêt pluvieuse, pleine d’insectes, où ils faisaient la cuisine sur un feu pendant qu’on construisait un bâtiment."
+   },
+   {
+    "question": "Quel don Dieu t’a-t-il donné, dont tu pourrais te servir pour aider quelqu’un ?",
+    "answer": "Toute réponse est bonne. Jim était prédicateur et Betty écrivait avec soin. Dieu donne à chacun de nous des dons différents pour que nous puissions nous aider les uns les autres."
+   }
+  ],
+  "body_text": "« Deux valent mieux qu’un, car ils peuvent s’aider l’un l’autre dans leur travail. » — d’après Ecclésiaste 4 En janvier 1953, Jim et Betty se sont retrouvés à Quito. Enfin, après cinq ans d’attente, Jim a demandé à Betty de l’épouser, et elle a dit oui ! Mais Jim a demandé encore une chose. Il travaillait parmi les Quichuas de la forêt de l’est. Il voulait que Betty apprenne leur langue, le quichua, avant leur mariage, pour qu’elle puisse parler avec eux et partager le travail. Alors Betty s’est remise au travail, pour apprendre une toute nouvelle langue. Elle écoutait, écrivait ce qu’elle entendait et s’exerçait encore et encore. À l’automne, elle en savait assez. Betty et Jim se sont mariés à Quito le 8 octobre 1953. C’était le jour des vingt-six ans de Jim ! Ce fut un mariage court et simple, dans un bureau du gouvernement, avec seulement quelques amis. Il n’y avait ni musique ni fleurs, mais cela leur était égal. Après un petit voyage au Panama, ils sont retournés dans la forêt. Leur première maison était une tente ! Un chef quichua nommé Atanasio, dans un endroit appelé Puyupungu, avait demandé un missionnaire pour enseigner son peuple et ouvrir une école. Alors Jim et Betty ont vécu sous une tente pendant qu’on construisait un bâtiment simple. Il pleuvait, les insectes n’arrêtaient pas de piquer, et ils faisaient la cuisine sur un feu. Mais il semble que cela leur ait plu. En 1954, ils ont déménagé dans une station missionnaire appelée Shandia, dans une maison que Jim avait construite. Jim prêchait et faisait la classe aux garçons de l’école. Betty s’occupait de la maison, soignait les malades qui venaient frapper à la porte et travaillait sur la langue quichua. Jim était le prédicateur, et Betty était celle qui avait le carnet. Le 27 février 1955, leur petite fille Valerie est née. Dieu a fait Jim et Betty différents, et c’est pour cela qu’ils travaillaient si bien ensemble. Dieu donne à chacun de nous des dons différents, pour que nous puissions nous aider les uns les autres. Cher Dieu, merci pour ma famille et pour mes amis. Merci pour les dons que tu as donnés à chacun de nous. Aide-nous à nous en servir pour nous aider les uns les autres. Amen.",
+  "word_count": 385
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "fr"
+  ],
+  "order": 7,
+  "title": "Des cadeaux tombés du ciel",
+  "body_html": "<blockquote>« Comment croiront-ils en lui s’ils n’ont pas entendu parler de lui ? Et comment entendront-ils si personne ne le leur dit ? » — d’après Romains 10</blockquote> <p>Tout au fond de la forêt, au-delà des villages quichuas, vivait un peuple appelé les Waorani. Leur nom veut dire « les gens ». Ils avaient toujours vécu à l’écart, et ils avaient très peur des étrangers. Pendant de nombreuses années, quiconque entrait sur leur territoire était en danger, et leurs voisins avaient peur d’eux. Personne n’avait jamais pu leur rendre visite en ami.</p> <p>Jim désirait de tout son cœur que les Waorani entendent parler de Jésus. Quatre amis ressentaient la même chose : Pete Fleming, Ed McCully, Roger Youderian, et Nate Saint, un pilote missionnaire qui avait un petit avion jaune. En septembre 1955, Nate et Ed ont survolé la forêt et ont repéré quelques maisons waorani.</p> <p>Nate a eu une idée astucieuse. Il faisait descendre un seau au bout d’une très longue corde pendant que son avion tournait en rond en faisant des cercles serrés, si bien que le seau restait presque immobile au-dessus d’un même endroit. Semaine après semaine, les hommes ont envoyé des cadeaux : des marmites, du tissu, des perles et de grands couteaux, et ils criaient des mots amicaux dans un haut-parleur. Au bout d’un moment, les Waorani ont commencé à attacher leurs propres cadeaux à la corde, comme un bandeau fait de plumes ! Cela ressemblait à de l’amitié.</p> <p>Le 3 janvier 1956, Nate a posé son avion sur un banc de sable au bord de la rivière Curaray, pas très loin des maisons waorani. Les hommes ont construit une petite cabane en haut d’un arbre et ont appelé l’endroit Palm Beach. Ils attendaient, et ils lançaient des salutations vers la forêt.</p> <p>Le vendredi 6 janvier, trois Waorani sont sortis d’entre les arbres : un jeune homme, une jeune femme et une femme plus âgée. Ils sont restés presque toute la journée, ils ont mangé la nourriture des missionnaires, et le jeune homme a même fait un tour en avion ! Les cinq hommes étaient pleins de joie et d’espoir.</p> <p>Jim et ses amis voulaient que les Waorani entendent parler de Jésus, parce que personne ne leur en avait jamais parlé. Il y a encore des gens qui n’ont jamais entendu parler de lui. Nous pouvons prier pour eux, et nous pouvons, nous aussi, parler de lui aux autres.</p> <p><em>Cher Jésus, merci pour les personnes qui partent loin pour parler de toi aux autres. S’il te plaît, aide tout le monde sur la terre à entendre parler de ton amour. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Comment Nate Saint envoyait-il des cadeaux aux Waorani ?",
+    "answer": "Il faisait descendre un seau au bout d’une longue corde pendant que son avion faisait des cercles serrés, si bien que le seau restait presque immobile au-dessus des maisons waorani."
+   },
+   {
+    "question": "Qui est sorti de la forêt le vendredi 6 janvier 1956 ?",
+    "answer": "Trois Waorani : un jeune homme, une jeune femme et une femme plus âgée. Ils ont passé presque toute la journée avec les missionnaires, et le jeune homme a fait un tour en avion."
+   },
+   {
+    "question": "Pour qui pourrais-tu prier, quelqu’un qui n’a pas entendu parler de Jésus ?",
+    "answer": "Toute réponse est bonne. Jim et ses amis voulaient que des gens qui n’avaient jamais entendu parler de Jésus le connaissent, et nous pouvons prier pour eux, nous aussi."
+   }
+  ],
+  "body_text": "« Comment croiront-ils en lui s’ils n’ont pas entendu parler de lui ? Et comment entendront-ils si personne ne le leur dit ? » — d’après Romains 10 Tout au fond de la forêt, au-delà des villages quichuas, vivait un peuple appelé les Waorani. Leur nom veut dire « les gens ». Ils avaient toujours vécu à l’écart, et ils avaient très peur des étrangers. Pendant de nombreuses années, quiconque entrait sur leur territoire était en danger, et leurs voisins avaient peur d’eux. Personne n’avait jamais pu leur rendre visite en ami. Jim désirait de tout son cœur que les Waorani entendent parler de Jésus. Quatre amis ressentaient la même chose : Pete Fleming, Ed McCully, Roger Youderian, et Nate Saint, un pilote missionnaire qui avait un petit avion jaune. En septembre 1955, Nate et Ed ont survolé la forêt et ont repéré quelques maisons waorani. Nate a eu une idée astucieuse. Il faisait descendre un seau au bout d’une très longue corde pendant que son avion tournait en rond en faisant des cercles serrés, si bien que le seau restait presque immobile au-dessus d’un même endroit. Semaine après semaine, les hommes ont envoyé des cadeaux : des marmites, du tissu, des perles et de grands couteaux, et ils criaient des mots amicaux dans un haut-parleur. Au bout d’un moment, les Waorani ont commencé à attacher leurs propres cadeaux à la corde, comme un bandeau fait de plumes ! Cela ressemblait à de l’amitié. Le 3 janvier 1956, Nate a posé son avion sur un banc de sable au bord de la rivière Curaray, pas très loin des maisons waorani. Les hommes ont construit une petite cabane en haut d’un arbre et ont appelé l’endroit Palm Beach. Ils attendaient, et ils lançaient des salutations vers la forêt. Le vendredi 6 janvier, trois Waorani sont sortis d’entre les arbres : un jeune homme, une jeune femme et une femme plus âgée. Ils sont restés presque toute la journée, ils ont mangé la nourriture des missionnaires, et le jeune homme a même fait un tour en avion ! Les cinq hommes étaient pleins de joie et d’espoir. Jim et ses amis voulaient que les Waorani entendent parler de Jésus, parce que personne ne leur en avait jamais parlé. Il y a encore des gens qui n’ont jamais entendu parler de lui. Nous pouvons prier pour eux, et nous pouvons, nous aussi, parler de lui aux autres. Cher Jésus, merci pour les personnes qui partent loin pour parler de toi aux autres. S’il te plaît, aide tout le monde sur la terre à entendre parler de ton amour. Amen.",
+  "word_count": 436
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "fr"
+  ],
+  "order": 8,
+  "title": "Le jour où la radio s’est tue",
+  "body_html": "<blockquote>« Quand tu traverseras les eaux, je serai avec toi. Les fleuves ne t’emporteront pas. » — d’après Ésaïe 43</blockquote> <p>Le dimanche 8 janvier 1956, Nate a parlé à la radio avec sa femme, Marj. Il lui a dit qu’ils espéraient avoir des visiteurs cet après-midi-là, et il a promis de rappeler à quatre heures et demie. Mais quand quatre heures et demie est arrivée, la radio est restée silencieuse. Elle n’a plus jamais parlé.</p> <p>Le lendemain, un autre pilote a vu l’avion de Nate sur le banc de sable, mais aucune trace des hommes. Après quelques jours de recherches, la triste nouvelle était certaine. Des hommes waorani étaient venus sur la plage, et les cinq missionnaires avaient tous été tués. On avait raconté aux Waorani que les étrangers avaient attaqué des gens de leur peuple, et ils avaient très peur. Jim et ses amis s’étaient mis d’accord à l’avance pour ne pas se servir de leurs fusils contre les Waorani.</p> <p>Betty avait vingt-neuf ans. Valerie n’avait que dix mois. Betty était très triste, et Jim lui a manqué pendant longtemps. Mais elle n’a pas cessé de faire confiance à Dieu. Elle s’est accrochée à sa promesse qu’il serait avec elle, même dans les eaux les plus profondes.</p> <p>Des années plus tôt, Jim avait écrit dans son journal que ce n’est pas une folie de donner ce que l’on ne peut pas garder pour toujours, afin de gagner ce que l’on ne pourra jamais perdre. Maintenant, ces mots étaient lus dans le monde entier.</p> <p>La plupart des gens pensaient que Betty allait rentrer en Amérique. Au lieu de cela, elle a ramené Valerie dans la maison de Shandia et elle a continué le travail de Jim parmi les Quichuas. C’était tout simplement la chose suivante à faire. Toute sa vie, elle a aimé un vieux poème anglais où se trouvaient ces quelques mots, écrits à l’ancienne : « Doe the nexte thynge », c’est-à-dire « Fais la chose suivante ». Elle a écrit un livre sur les cinq hommes, et des milliers de personnes qui l’ont lu ont décidé de servir Dieu comme missionnaires.</p> <p>Quand une chose très triste arrive, nous n’avons pas besoin de tout comprendre d’un seul coup. Nous pouvons tenir la main de Dieu et faire la chose suivante, un jour à la fois. Il est avec nous dans les jours tristes.</p> <p><em>Cher Dieu, merci parce que tu es avec moi même quand je suis très triste. Quand je ne sais pas quoi faire, aide-moi à te faire confiance et à faire la chose suivante. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’a fait Betty après la mort de Jim, au lieu de rentrer chez elle ?",
+    "answer": "Elle a ramené la petite Valerie à Shandia et elle a continué le travail de Jim parmi les Quichuas."
+   },
+   {
+    "question": "Quels étaient les mots du vieux poème que Betty aimait ?",
+    "answer": "« Doe the nexte thynge », en anglais écrit à l’ancienne. Cela veut dire : fais la chose suivante qui est devant toi, et laisse le reste à Dieu."
+   },
+   {
+    "question": "Quelle « chose suivante » peux-tu faire quand tu te sens triste ou inquiet ?",
+    "answer": "Toute réponse sincère est bonne. Betty n’avait pas besoin de tout comprendre. Elle a fait confiance à Dieu et elle a fait la chose suivante, un jour à la fois."
+   }
+  ],
+  "body_text": "« Quand tu traverseras les eaux, je serai avec toi. Les fleuves ne t’emporteront pas. » — d’après Ésaïe 43 Le dimanche 8 janvier 1956, Nate a parlé à la radio avec sa femme, Marj. Il lui a dit qu’ils espéraient avoir des visiteurs cet après-midi-là, et il a promis de rappeler à quatre heures et demie. Mais quand quatre heures et demie est arrivée, la radio est restée silencieuse. Elle n’a plus jamais parlé. Le lendemain, un autre pilote a vu l’avion de Nate sur le banc de sable, mais aucune trace des hommes. Après quelques jours de recherches, la triste nouvelle était certaine. Des hommes waorani étaient venus sur la plage, et les cinq missionnaires avaient tous été tués. On avait raconté aux Waorani que les étrangers avaient attaqué des gens de leur peuple, et ils avaient très peur. Jim et ses amis s’étaient mis d’accord à l’avance pour ne pas se servir de leurs fusils contre les Waorani. Betty avait vingt-neuf ans. Valerie n’avait que dix mois. Betty était très triste, et Jim lui a manqué pendant longtemps. Mais elle n’a pas cessé de faire confiance à Dieu. Elle s’est accrochée à sa promesse qu’il serait avec elle, même dans les eaux les plus profondes. Des années plus tôt, Jim avait écrit dans son journal que ce n’est pas une folie de donner ce que l’on ne peut pas garder pour toujours, afin de gagner ce que l’on ne pourra jamais perdre. Maintenant, ces mots étaient lus dans le monde entier. La plupart des gens pensaient que Betty allait rentrer en Amérique. Au lieu de cela, elle a ramené Valerie dans la maison de Shandia et elle a continué le travail de Jim parmi les Quichuas. C’était tout simplement la chose suivante à faire. Toute sa vie, elle a aimé un vieux poème anglais où se trouvaient ces quelques mots, écrits à l’ancienne : « Doe the nexte thynge », c’est-à-dire « Fais la chose suivante ». Elle a écrit un livre sur les cinq hommes, et des milliers de personnes qui l’ont lu ont décidé de servir Dieu comme missionnaires. Quand une chose très triste arrive, nous n’avons pas besoin de tout comprendre d’un seul coup. Nous pouvons tenir la main de Dieu et faire la chose suivante, un jour à la fois. Il est avec nous dans les jours tristes. Cher Dieu, merci parce que tu es avec moi même quand je suis très triste. Quand je ne sais pas quoi faire, aide-moi à te faire confiance et à faire la chose suivante. Amen.",
+  "word_count": 429
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "fr"
+  ],
+  "order": 9,
+  "title": "Deux femmes venues de la forêt",
+  "body_html": "<blockquote>« Je conduirai les aveugles par un chemin qu’ils ne connaissent pas. Je changerai devant eux les ténèbres en lumière. » — d’après Ésaïe 42</blockquote> <p>Presque deux ans plus tard, en novembre 1957, Betty se trouvait dans une station missionnaire appelée Arajuno. Deux hommes quichuas sont arrivés avec une nouvelle étonnante. Deux femmes waorani étaient sorties de la forêt à pied et logeaient chez eux ! Betty y est allée tout de suite.</p> <p>Ces femmes s’appelaient Mankamu et Mintaka. Mintaka était la femme plus âgée qui avait rendu visite aux cinq missionnaires sur la plage, quelques jours seulement avant leur mort.</p> <p>Betty a emmené les deux femmes chez elle, à Shandia. Pendant dix mois, elles ont vécu dans sa maison, avec elle et la petite Valerie. Betty leur donnait à manger, un endroit pour dormir et tout ce dont elles avaient besoin. Et jour après jour, elle les écoutait parler et écrivait leurs mots. La langue waorani ne ressemble à aucune autre langue au monde. Il n’y avait aucun livre pour l’aider. C’est la langue la plus difficile qu’elle ait jamais apprise.</p> <p>Il y avait une autre femme waorani, nommée Dayuma. Des années plus tôt, elle s’était enfuie de chez les siens et était allée vivre chez les Quichuas. La sœur de Nate Saint, Rachel Saint, apprenait la langue waorani avec elle. En 1958, Rachel et Dayuma sont revenues en Équateur. Dayuma a rencontré Mintaka et Mankamu, et les trois femmes ont décidé de rentrer ensemble chez leur peuple.</p> <p>Le 3 septembre 1958, les trois femmes sont parties à pied dans la forêt. Personne ne savait si elles reviendraient. Mais environ trois semaines plus tard, elles sont revenues, avec un groupe d’hommes et de femmes waorani ! Elles apportaient une invitation. Betty et Rachel étaient invitées à venir vivre chez les Waorani.</p> <p>Personne n’aurait pu prévoir cela. Le chemin vers les Waorani a été ouvert par trois femmes qui sont sorties de la forêt et qui y sont retournées. Dieu peut ouvrir des portes que nous ne pouvons pas ouvrir nous-mêmes.</p> <p><em>Cher Dieu, merci parce que tu peux ouvrir des portes que personne d’autre ne peut ouvrir. Aide-moi à être gentil avec les étrangers, comme Betty. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qui était Mintaka ?",
+    "answer": "L’une des deux femmes waorani sorties de la forêt. C’était la femme plus âgée qui avait rendu visite aux cinq missionnaires sur la plage."
+   },
+   {
+    "question": "Quelle invitation les Waorani ont-ils rapportée ?",
+    "answer": "Ils ont demandé à Betty et à Rachel Saint de venir vivre chez eux."
+   },
+   {
+    "question": "Comment pourrais-tu être gentil avec quelqu’un de nouveau ou avec un étranger ?",
+    "answer": "Toute réponse est bonne. Betty a ouvert sa maison à deux femmes venues de la forêt, et Dieu s’est servi de sa gentillesse pour ouvrir une porte."
+   }
+  ],
+  "body_text": "« Je conduirai les aveugles par un chemin qu’ils ne connaissent pas. Je changerai devant eux les ténèbres en lumière. » — d’après Ésaïe 42 Presque deux ans plus tard, en novembre 1957, Betty se trouvait dans une station missionnaire appelée Arajuno. Deux hommes quichuas sont arrivés avec une nouvelle étonnante. Deux femmes waorani étaient sorties de la forêt à pied et logeaient chez eux ! Betty y est allée tout de suite. Ces femmes s’appelaient Mankamu et Mintaka. Mintaka était la femme plus âgée qui avait rendu visite aux cinq missionnaires sur la plage, quelques jours seulement avant leur mort. Betty a emmené les deux femmes chez elle, à Shandia. Pendant dix mois, elles ont vécu dans sa maison, avec elle et la petite Valerie. Betty leur donnait à manger, un endroit pour dormir et tout ce dont elles avaient besoin. Et jour après jour, elle les écoutait parler et écrivait leurs mots. La langue waorani ne ressemble à aucune autre langue au monde. Il n’y avait aucun livre pour l’aider. C’est la langue la plus difficile qu’elle ait jamais apprise. Il y avait une autre femme waorani, nommée Dayuma. Des années plus tôt, elle s’était enfuie de chez les siens et était allée vivre chez les Quichuas. La sœur de Nate Saint, Rachel Saint, apprenait la langue waorani avec elle. En 1958, Rachel et Dayuma sont revenues en Équateur. Dayuma a rencontré Mintaka et Mankamu, et les trois femmes ont décidé de rentrer ensemble chez leur peuple. Le 3 septembre 1958, les trois femmes sont parties à pied dans la forêt. Personne ne savait si elles reviendraient. Mais environ trois semaines plus tard, elles sont revenues, avec un groupe d’hommes et de femmes waorani ! Elles apportaient une invitation. Betty et Rachel étaient invitées à venir vivre chez les Waorani. Personne n’aurait pu prévoir cela. Le chemin vers les Waorani a été ouvert par trois femmes qui sont sorties de la forêt et qui y sont retournées. Dieu peut ouvrir des portes que nous ne pouvons pas ouvrir nous-mêmes. Cher Dieu, merci parce que tu peux ouvrir des portes que personne d’autre ne peut ouvrir. Aide-moi à être gentil avec les étrangers, comme Betty. Amen.",
+  "word_count": 367
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "fr"
+  ],
+  "order": 10,
+  "title": "Dans la forêt avec Valerie",
+  "body_html": "<blockquote>« Ne te laisse pas vaincre par le mal. Sois vainqueur du mal en faisant le bien. » — d’après Romains 12</blockquote> <p>Certains amis de Betty pensaient qu’elle ne devait pas y aller. Cela semblait bien trop dangereux pour une jeune maman d’emmener sa petite fille vivre parmi ceux qui avaient tué son mari. Betty connaissait le danger. Mais les Waorani lui avaient demandé de venir, et elle croyait que Dieu voulait qu’ils entendent parler de lui. Alors elle y est allée.</p> <p>En octobre 1958, Betty, Valerie et Rachel Saint ont traversé la forêt à pied avec Dayuma et les Waorani qui étaient venus les chercher. Il fallait porter Valerie, qui avait trois ans. Le 8 octobre, ils sont arrivés dans une clairière waorani, au bord d’une petite rivière appelée la Tiwaeno. Ce jour-là, Jim aurait eu trente et un ans.</p> <p>Les Waorani vivaient dans de grandes maisons au toit de feuilles de palmier, dormaient dans des hamacs et chassaient avec des sarbacanes. Betty et Valerie habitaient un abri tout simple, avec un toit de feuilles. Les Waorani ont donné à Betty un nouveau nom : Gikari, qui veut dire « pic-vert ». Valerie jouait avec les enfants waorani, courait pieds nus et a vite parlé leur langue sans peine.</p> <p>Certains des hommes qui étaient sur la plage ce jour-là vivaient justement dans cette clairière. Betty les a rencontrés. Elle a vu que ce n’étaient pas des monstres. Ils riaient, s’occupaient de leurs enfants et partaient à la chasse. Ils avaient agi par peur. Betty ne faisait pas semblant que ce qu’ils avaient fait n’avait pas d’importance. Mais elle avait décidé de leur pardonner avant de venir, et elle ne les haïssait pas.</p> <p>Betty a vécu parmi les Waorani pendant environ trois ans. Elle donnait des médicaments aux malades et travaillait dur sur la langue, pendant que Dayuma parlait de Dieu à son peuple. Au fil des années, certains des hommes mêmes qui avaient été sur la plage se sont mis à suivre Jésus. Plus tard, deux d’entre eux ont baptisé le fils et la fille de Nate Saint dans la rivière, près de la plage où leur père était mort.</p> <p>Jésus nous dit d’aimer même les gens qui nous ont fait du mal. C’est très difficile. Mais Dieu peut nous aider à pardonner, et notre gentillesse peut montrer son amour aux autres.</p> <p><em>Cher Jésus, c’est difficile d’aimer les gens qui m’ont fait du mal. S’il te plaît, aide-moi à pardonner et à leur faire du bien, comme Betty. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quel nom les Waorani ont-ils donné à Betty ?",
+    "answer": "Gikari, qui veut dire « pic-vert »."
+   },
+   {
+    "question": "Qu’est-il arrivé à certains des hommes qui avaient été sur la plage ?",
+    "answer": "Au fil des années, certains d’entre eux se sont mis à suivre Jésus. Plus tard, deux d’entre eux ont baptisé le fils et la fille de Nate Saint dans la rivière, près de la plage."
+   },
+   {
+    "question": "Y a-t-il quelqu’un que tu as besoin de l’aide de Dieu pour pardonner ?",
+    "answer": "Toute réponse sincère est bonne. Pardonner est difficile, mais Dieu peut nous aider, et faire du bien aux autres leur montre son amour."
+   }
+  ],
+  "body_text": "« Ne te laisse pas vaincre par le mal. Sois vainqueur du mal en faisant le bien. » — d’après Romains 12 Certains amis de Betty pensaient qu’elle ne devait pas y aller. Cela semblait bien trop dangereux pour une jeune maman d’emmener sa petite fille vivre parmi ceux qui avaient tué son mari. Betty connaissait le danger. Mais les Waorani lui avaient demandé de venir, et elle croyait que Dieu voulait qu’ils entendent parler de lui. Alors elle y est allée. En octobre 1958, Betty, Valerie et Rachel Saint ont traversé la forêt à pied avec Dayuma et les Waorani qui étaient venus les chercher. Il fallait porter Valerie, qui avait trois ans. Le 8 octobre, ils sont arrivés dans une clairière waorani, au bord d’une petite rivière appelée la Tiwaeno. Ce jour-là, Jim aurait eu trente et un ans. Les Waorani vivaient dans de grandes maisons au toit de feuilles de palmier, dormaient dans des hamacs et chassaient avec des sarbacanes. Betty et Valerie habitaient un abri tout simple, avec un toit de feuilles. Les Waorani ont donné à Betty un nouveau nom : Gikari, qui veut dire « pic-vert ». Valerie jouait avec les enfants waorani, courait pieds nus et a vite parlé leur langue sans peine. Certains des hommes qui étaient sur la plage ce jour-là vivaient justement dans cette clairière. Betty les a rencontrés. Elle a vu que ce n’étaient pas des monstres. Ils riaient, s’occupaient de leurs enfants et partaient à la chasse. Ils avaient agi par peur. Betty ne faisait pas semblant que ce qu’ils avaient fait n’avait pas d’importance. Mais elle avait décidé de leur pardonner avant de venir, et elle ne les haïssait pas. Betty a vécu parmi les Waorani pendant environ trois ans. Elle donnait des médicaments aux malades et travaillait dur sur la langue, pendant que Dayuma parlait de Dieu à son peuple. Au fil des années, certains des hommes mêmes qui avaient été sur la plage se sont mis à suivre Jésus. Plus tard, deux d’entre eux ont baptisé le fils et la fille de Nate Saint dans la rivière, près de la plage où leur père était mort. Jésus nous dit d’aimer même les gens qui nous ont fait du mal. C’est très difficile. Mais Dieu peut nous aider à pardonner, et notre gentillesse peut montrer son amour aux autres. Cher Jésus, c’est difficile d’aimer les gens qui m’ont fait du mal. S’il te plaît, aide-moi à pardonner et à leur faire du bien, comme Betty. Amen.",
+  "word_count": 420
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "fr"
+  ],
+  "order": 11,
+  "title": "Des questions sincères, des adieux difficiles",
+  "body_html": "<blockquote>« Confiez-vous en Dieu en tout temps. Répandez votre cœur devant lui, car Dieu est notre abri. » — d’après Psaume 62</blockquote> <p>À la fin de 1961, Betty a quitté les Waorani. Rachel Saint et elle avaient beaucoup de mal à travailler ensemble, et Valerie était presque en âge d’aller à l’école. Rachel est restée chez les Waorani presque toute sa vie. Betty a travaillé parmi les Quichuas pendant environ deux ans encore. Puis en 1963, quand Valerie avait huit ans, elles sont rentrées toutes les deux en Amérique. Elles se sont installées à Franconia, dans le New Hampshire, au milieu des montagnes que Betty avait tant aimées quand elle était petite.</p> <p>Maintenant, Betty était célèbre. Tout le monde voulait entendre l’histoire de Jim et des Waorani. Les gens voulaient une belle histoire où tout finissait parfaitement. Mais Betty avait appris en Équateur que la vie avec Dieu n’est pas toujours bien rangée et bien nette. Elle ne voulait pas faire semblant. Dans ses livres, elle a écrit franchement sur ses questions, et sur les choses qu’elle ne comprenait pas. Certains lecteurs étaient fâchés. Mais beaucoup de gens qui avaient eux-mêmes des histoires tristes ont été aidés par sa franchise.</p> <p>En 1969, Betty s’est remariée. Son nouveau mari, Addison Leitch, était professeur de théologie, un homme plein de vie et drôle qui aimait les livres. Betty et Valerie ont déménagé avec lui à Hamilton, dans le Massachusetts. Ce furent des années heureuses.</p> <p>Mais Addison est tombé très malade d’un cancer. Betty l’a soigné à la maison, pendant de longs mois difficiles. Il est mort le 17 septembre 1973. Pour la deuxième fois, Betty était veuve. Cette fois, il n’y avait ni journaux ni photos. Elle était triste, et elle se sentait seule. Mais elle a apporté sa tristesse à Dieu, et Dieu l’a de nouveau soutenue.</p> <p>Dieu ne veut pas que nous cachions nos questions, ni que nous fassions semblant d’être heureux quand nous ne le sommes pas. Nous pouvons lui dire tout ce qu’il y a dans notre cœur. Il est notre abri.</p> <p><em>Cher Dieu, merci parce que je peux tout te dire, même mes questions et mes sentiments tristes. Merci parce que tu es mon abri. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Où Betty et Valerie ont-elles vécu quand elles sont rentrées en Amérique ?",
+    "answer": "À Franconia, dans le New Hampshire, au milieu des montagnes où Betty passait ses étés quand elle était petite."
+   },
+   {
+    "question": "Pourquoi certains lecteurs ont-ils été fâchés par les livres que Betty a écrits plus tard ?",
+    "answer": "Parce qu’elle écrivait franchement sur ses questions et sur les choses qu’elle ne comprenait pas, au lieu de raconter une histoire où tout finissait parfaitement."
+   },
+   {
+    "question": "Qu’aimerais-tu dire sincèrement à Dieu aujourd’hui ?",
+    "answer": "Toute réponse sincère est bonne. Dieu veut que nous répandions notre cœur devant lui, avec toutes nos questions, parce qu’il est notre abri."
+   }
+  ],
+  "body_text": "« Confiez-vous en Dieu en tout temps. Répandez votre cœur devant lui, car Dieu est notre abri. » — d’après Psaume 62 À la fin de 1961, Betty a quitté les Waorani. Rachel Saint et elle avaient beaucoup de mal à travailler ensemble, et Valerie était presque en âge d’aller à l’école. Rachel est restée chez les Waorani presque toute sa vie. Betty a travaillé parmi les Quichuas pendant environ deux ans encore. Puis en 1963, quand Valerie avait huit ans, elles sont rentrées toutes les deux en Amérique. Elles se sont installées à Franconia, dans le New Hampshire, au milieu des montagnes que Betty avait tant aimées quand elle était petite. Maintenant, Betty était célèbre. Tout le monde voulait entendre l’histoire de Jim et des Waorani. Les gens voulaient une belle histoire où tout finissait parfaitement. Mais Betty avait appris en Équateur que la vie avec Dieu n’est pas toujours bien rangée et bien nette. Elle ne voulait pas faire semblant. Dans ses livres, elle a écrit franchement sur ses questions, et sur les choses qu’elle ne comprenait pas. Certains lecteurs étaient fâchés. Mais beaucoup de gens qui avaient eux-mêmes des histoires tristes ont été aidés par sa franchise. En 1969, Betty s’est remariée. Son nouveau mari, Addison Leitch, était professeur de théologie, un homme plein de vie et drôle qui aimait les livres. Betty et Valerie ont déménagé avec lui à Hamilton, dans le Massachusetts. Ce furent des années heureuses. Mais Addison est tombé très malade d’un cancer. Betty l’a soigné à la maison, pendant de longs mois difficiles. Il est mort le 17 septembre 1973. Pour la deuxième fois, Betty était veuve. Cette fois, il n’y avait ni journaux ni photos. Elle était triste, et elle se sentait seule. Mais elle a apporté sa tristesse à Dieu, et Dieu l’a de nouveau soutenue. Dieu ne veut pas que nous cachions nos questions, ni que nous fassions semblant d’être heureux quand nous ne le sommes pas. Nous pouvons lui dire tout ce qu’il y a dans notre cœur. Il est notre abri. Cher Dieu, merci parce que je peux tout te dire, même mes questions et mes sentiments tristes. Merci parce que tu es mon abri. Amen.",
+  "word_count": 369
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "elisabeth-elliot-a-life-children",
+   "fr"
+  ],
+  "order": 12,
+  "title": "Les bras éternels",
+  "body_html": "<blockquote>« Même quand tu seras vieux et que tes cheveux seront gris, je te porterai. » — d’après Ésaïe 46</blockquote> <p>En 1977, Betty s’est mariée une troisième fois. Son mari s’appelait Lars Gren. Ils se sont installés à Magnolia, un village au bord de la mer, dans le Massachusetts. Valerie a grandi et s’est mariée avec un pasteur nommé Walter Shepard, et ils ont eu huit enfants. La jeune veuve de la forêt était maintenant la grand-mère d’une grande famille !</p> <p>Betty a continué à écrire des livres. Et à partir de 1988, elle a eu une émission de radio pour les femmes, appelée <em>Gateway to Joy</em>, qu’on écoutait partout en Amérique et dans d’autres pays. Chaque émission commençait de la même façon. Elle rappelait à ceux qui l’écoutaient deux promesses de la Bible : que Dieu les aimait d’un amour éternel, et que ses bras éternels étaient sous eux.</p> <p>À la radio, elle parlait de la prière, de la tristesse et de la confiance en Dieu. Mais elle parlait aussi de choses de tous les jours, comme faire la vaisselle, être à l’heure, répondre aux lettres et se lever le matin. Elle croyait que bien faire les petites tâches, pour Dieu, est une façon de l’aimer.</p> <p>Quand Betty est devenue vieille, elle a eu une maladie qu’on appelle la démence. Petit à petit, elle n’arrivait plus à se souvenir des choses, puis elle pouvait à peine parler. Elle qui avait tant aimé les mots ne pouvait plus s’en servir. Lars s’est occupé d’elle à la maison pendant de nombreuses années. Maintenant, c’était quelqu’un d’autre qui devait la porter, comme elle avait autrefois porté la petite Valerie à travers la forêt.</p> <p>Betty est morte chez elle, à Magnolia, le 15 juin 2015. Elle avait quatre-vingt-huit ans. Elle avait fait confiance à Dieu dans les jours heureux comme dans les jours très tristes, et à la fin, elle s’est reposée dans ses bras éternels.</p> <p>À la fin de sa vie, Betty ne pouvait plus rien faire pour Dieu, mais Dieu l’aimait toujours autant. Toi aussi, tu es précieux pour Dieu, pas à cause de ce que tu peux faire, mais parce que tu es à lui.</p> <p><em>Cher Dieu, merci pour Betty Elliot et pour tout ce que tu as fait à travers sa vie. Merci parce que tu m’aimes d’un amour éternel, et que tes bras sont toujours sous moi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Comment commençait chaque émission de radio Gateway to Joy ?",
+    "answer": "Betty rappelait à ceux qui l’écoutaient que Dieu les aimait d’un amour éternel, et que ses bras éternels étaient sous eux."
+   },
+   {
+    "question": "De quelles choses de tous les jours Betty parlait-elle à la radio ?",
+    "answer": "De choses comme faire la vaisselle, être à l’heure, répondre aux lettres et se lever le matin. Elle croyait que les petites tâches bien faites pour Dieu sont une façon de l’aimer."
+   },
+   {
+    "question": "Pourquoi es-tu précieux pour Dieu ?",
+    "answer": "Toute réponse sincère est bonne. Dieu t’aime, non pas à cause de ce que tu peux faire, mais parce que tu es à lui, et ses bras éternels te portent."
+   }
+  ],
+  "body_text": "« Même quand tu seras vieux et que tes cheveux seront gris, je te porterai. » — d’après Ésaïe 46 En 1977, Betty s’est mariée une troisième fois. Son mari s’appelait Lars Gren. Ils se sont installés à Magnolia, un village au bord de la mer, dans le Massachusetts. Valerie a grandi et s’est mariée avec un pasteur nommé Walter Shepard, et ils ont eu huit enfants. La jeune veuve de la forêt était maintenant la grand-mère d’une grande famille ! Betty a continué à écrire des livres. Et à partir de 1988, elle a eu une émission de radio pour les femmes, appelée Gateway to Joy, qu’on écoutait partout en Amérique et dans d’autres pays. Chaque émission commençait de la même façon. Elle rappelait à ceux qui l’écoutaient deux promesses de la Bible : que Dieu les aimait d’un amour éternel, et que ses bras éternels étaient sous eux. À la radio, elle parlait de la prière, de la tristesse et de la confiance en Dieu. Mais elle parlait aussi de choses de tous les jours, comme faire la vaisselle, être à l’heure, répondre aux lettres et se lever le matin. Elle croyait que bien faire les petites tâches, pour Dieu, est une façon de l’aimer. Quand Betty est devenue vieille, elle a eu une maladie qu’on appelle la démence. Petit à petit, elle n’arrivait plus à se souvenir des choses, puis elle pouvait à peine parler. Elle qui avait tant aimé les mots ne pouvait plus s’en servir. Lars s’est occupé d’elle à la maison pendant de nombreuses années. Maintenant, c’était quelqu’un d’autre qui devait la porter, comme elle avait autrefois porté la petite Valerie à travers la forêt. Betty est morte chez elle, à Magnolia, le 15 juin 2015. Elle avait quatre-vingt-huit ans. Elle avait fait confiance à Dieu dans les jours heureux comme dans les jours très tristes, et à la fin, elle s’est reposée dans ses bras éternels. À la fin de sa vie, Betty ne pouvait plus rien faire pour Dieu, mais Dieu l’aimait toujours autant. Toi aussi, tu es précieux pour Dieu, pas à cause de ce que tu peux faire, mais parce que tu es à lui. Cher Dieu, merci pour Betty Elliot et pour tout ce que tu as fait à travers sa vie. Merci parce que tu m’aimes d’un amour éternel, et que tes bras sont toujours sous moi. Amen.",
+  "word_count": 401
+ }
+}
+]
