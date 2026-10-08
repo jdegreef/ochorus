@@ -9887,6 +9887,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"pt/john-hyde-a-life-children": {
+			"ground": "ba8fc6e1a0a327b9f348d44bc3e58b1e34826cc7285bf6ca822d6f9e1fd16943",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"pt/lord-teach-us-to-pray-2": {
 			"ground": "397def9b8982b38f14df95f10721f80ed89838a9baf5187deea2abd21ff5c0b2",
 			"style": "devotional",
