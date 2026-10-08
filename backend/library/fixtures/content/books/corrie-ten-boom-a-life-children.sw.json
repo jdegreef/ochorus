@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "corrie-ten-boom-a-life-children",
+  "language": "sw",
+  "title": "Corrie ten Boom (Kwa Watoto)",
+  "subtitle": "",
+  "cover_byline": "Corrie ten Boom",
+  "description": "Hadithi ya kweli ya Corrie ten Boom, fundi saa wa Uholanzi ambaye familia yake iliwaficha Wayahudi wasikamatwe na Wanazi katika chumba cha siri nyuma ya ukuta wa chumba chake cha kulala, aliyempoteza baba yake na dada yake Betsie baada ya kukamatwa, na aliyetumia maisha yake yote yaliyobaki kuuambia ulimwengu habari za upendo na msamaha wa Mungu. Toleo hili la watoto linasimulia upya maisha yake katika sura fupi zilizoandaliwa kusomwa kwa sauti: mstari wa Biblia, sehemu moja ya hadithi yake, jambo moja inalomaanisha kwako, na sala fupi, pamoja na maswali ya kuzungumza pamoja.",
+  "qa": [
+   {
+    "question": "Kitabu Corrie ten Boom (Kwa Watoto) kinahusu nini?",
+    "answer": "Ni toleo la watoto la wasifu kamili wa Corrie ten Boom. Kinasimulia jinsi familia ya fundi saa huko Haarlem ilivyowaficha Wayahudi wasikamatwe na Wanazi katika chumba cha siri, jinsi walivyokamatwa na kupelekwa gerezani, jinsi Corrie na dada yake Betsie walivyoendelea kumtumaini Mungu katika kambi ya wafungwa, na jinsi Corrie alivyotumia maisha yake yote yaliyobaki kuwaambia watu habari za upendo na msamaha wa Mungu."
+   },
+   {
+    "question": "Corrie ten Boom alikuwa nani?",
+    "answer": "Alikuwa Mkristo wa Uholanzi aliyeishi kuanzia mwaka 1892 hadi 1983. Alikuwa mwanamke wa kwanza nchini Uholanzi kuhitimu kuwa fundi saa. Wakati wa Vita Kuu ya Pili ya Dunia yeye na familia yake waliwaficha Wayahudi nyumbani kwao. Baada ya vita alisafiri katika nchi zaidi ya sitini kusimulia hadithi yake, na Israeli ilimheshimu kama mmoja wa Wenye Haki Miongoni mwa Mataifa."
+   },
+   {
+    "question": "Kila sura imepangwaje?",
+    "answer": "Kila sura ni fupi na imeandaliwa kusomwa kwa sauti. Inaanza na mstari wa Biblia, inasimulia sehemu moja ya hadithi ya Corrie, inaonyesha jambo moja rahisi inalomaanisha kwako, na inamalizika kwa sala fupi. Kisha yanafuata maswali matatu, ya kuzungumza pamoja."
+   },
+   {
+    "question": "Je, kitabu hiki kina huzuni sana au kinatisha mno kwa watoto?",
+    "answer": "Sehemu yake ina huzuni, kwa sababu vita, kambi za wafungwa na vifo vya baba yake Corrie na dada yake vilikuwa mambo mabaya sana, na kitabu hakijifanyi kana kwamba havikuwa hivyo. Lakini kinayasimulia kwa upole, bila maelezo ya kutisha, na zaidi ya yote ni hadithi ya jinsi Mungu alivyokaa karibu na Corrie na Betsie na kumsaidia Corrie kusamehe."
+   },
+   {
+    "question": "Je, hadithi hizi ni za kweli?",
+    "answer": "Ndiyo. Zinatoka katika kumbukumbu za kihistoria na katika masimulizi ya Corrie mwenyewe kuhusu maisha yake. Hadithi chache zilisimuliwa na Corrie peke yake miaka mingi baadaye, au zilikumbukwa na familia yake, na kitabu kinasema hivyo kinapozisimulia."
+   },
+   {
+    "question": "Kitabu hiki ni cha nani?",
+    "answer": "Ni cha watoto, kisomwe kwa sauti na mtu mzima au kisomwe na mtoto mkubwa peke yake. Kuna pia toleo la vijana, na wasifu kamili kwa wasomaji wakubwa."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Usimuliaji upya wa Ochorus kwa ajili ya wasomaji wachanga wa wasifu wa Ochorus, Corrie ten Boom, kutoka katika mfululizo wa Taswira za Ujasiri. Usimuliaji huu ni wetu wenyewe; uko huru kusomwa na kushirikiwa.",
+  "cover_url": "/covers/sw/corrie-ten-boom-a-life-children.svg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 152,
+  "is_published": true,
+  "created_at": "2026-10-08T00:00:00Z",
+  "updated_at": "2026-10-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "sw"
+  ],
+  "order": 1,
+  "title": "Nyumba Iliyojaa Saa",
+  "body_html": "<blockquote>“Utakieni Yerusalemu amani; wafanikiwe wakupendao.” — kutoka Zaburi 122</blockquote> <p>Katika mji wa zamani wa Haarlem, nchini Uholanzi, kwenye barabara ndogo yenye maduka mengi na watu wengi, imesimama nyumba ndefu na nyembamba. Ndani yake ngazi ni za mwinuko na zinapindapinda, na vyumba viko katika vimo tofauti vya kuchekesha. Familia iliyoishi humo kwa zaidi ya miaka mia moja iliiita Beje. (Unatamka “bei-yei.”)</p> <p>Chini kulikuwa na duka la saa. Babu yake Corrie, Willem ten Boom, alilifungua mwaka 1837. Kwa miaka mia moja familia ya ten Boom ilitengeneza saa za ukutani na saa za mkononi katika chumba kile kidogo cha mbele. Watu waliwaamini na saa zao za thamani, na sikuzote akina ten Boom waliwarudishia zikiwa zimetengenezwa kwa uaminifu.</p> <p>Familia ilikumbuka jambo lingine kuhusu Babu Willem. Mwaka 1844, walisema, alisikia mahubiri kuhusu kuuombea Yerusalemu. Tangu hapo aliwakusanya marafiki wachache mara moja kila wiki ili kuwaombea Wayahudi. Watoto wake na wajukuu wake walikua wakiisikia sala hiyo.</p> <p>Corrie alizaliwa tarehe 15 Aprili 1892, katika jiji la Amsterdam, ambako baba yake alikuwa na duka wakati huo. Familia yake ilikumbuka kwamba alizaliwa mwezi mmoja kabla ya wakati, naye alikuwa mdogo mno hata hakuna aliyedhani angeishi muda mrefu. Lakini aliishi hadi miaka tisini na mmoja! Muda mfupi baadaye familia ilihamia Haarlem, kwenye Beje, nayo ikawa nyumbani kwa Corrie kwa zaidi ya miaka hamsini.</p> <p>Corrie alikuwa mtoto wa mwisho. Alikuwa na kaka mkubwa, Willem, na dada wakubwa wawili, Betsie na Nollie. (Kaka mwingine mchanga alikuwa amefariki alipokuwa mdogo sana.) Dada watatu wa mama yake, yaani shangazi zake Corrie, nao walikuja kuishi katika Beje. Nyumba ile nyembamba ilikuwa imejaa watu sikuzote, lakini sikuzote kulikuwa na nafasi mezani kwa mtu mmoja zaidi.</p> <p>Akina ten Boom hawakujua bado, lakini miaka ile yote ya kuomba na ya kuwapa watu nafasi ilikuwa ikiwaandaa kwa jambo kubwa sana. Mungu hutumia hata mambo madogo tunayofanya kila siku: sala zetu, wema wetu, na nafasi tunayowapa watu wengine.</p> <p><em>Mungu mpendwa, asante kwa ajili ya nyumba yangu na familia yangu. Nisaidie kuwaombea watu wengine, na sikuzote kumpa nafasi mtu mmoja zaidi. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Beje ilikuwa nini?",
+    "answer": "Ilikuwa nyumba ndefu na nyembamba huko Haarlem ambamo familia ya ten Boom iliishi, na duka lao la saa lilikuwa chini."
+   },
+   {
+    "question": "Babu Willem alianza kufanya nini kila wiki?",
+    "answer": "Familia ilikumbuka kwamba aliwakusanya marafiki mara moja kila wiki ili kuwaombea Wayahudi na kuombea amani ya Yerusalemu."
+   },
+   {
+    "question": "Unaweza kumpa nani nafasi, mezani kwako au katika michezo yako?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba wema na sala ndogo za kila siku ni muhimu kwa Mungu, naye anaweza kuzitumia kwa njia kubwa."
+   }
+  ],
+  "body_text": "“Utakieni Yerusalemu amani; wafanikiwe wakupendao.” — kutoka Zaburi 122 Katika mji wa zamani wa Haarlem, nchini Uholanzi, kwenye barabara ndogo yenye maduka mengi na watu wengi, imesimama nyumba ndefu na nyembamba. Ndani yake ngazi ni za mwinuko na zinapindapinda, na vyumba viko katika vimo tofauti vya kuchekesha. Familia iliyoishi humo kwa zaidi ya miaka mia moja iliiita Beje. (Unatamka “bei-yei.”) Chini kulikuwa na duka la saa. Babu yake Corrie, Willem ten Boom, alilifungua mwaka 1837. Kwa miaka mia moja familia ya ten Boom ilitengeneza saa za ukutani na saa za mkononi katika chumba kile kidogo cha mbele. Watu waliwaamini na saa zao za thamani, na sikuzote akina ten Boom waliwarudishia zikiwa zimetengenezwa kwa uaminifu. Familia ilikumbuka jambo lingine kuhusu Babu Willem. Mwaka 1844, walisema, alisikia mahubiri kuhusu kuuombea Yerusalemu. Tangu hapo aliwakusanya marafiki wachache mara moja kila wiki ili kuwaombea Wayahudi. Watoto wake na wajukuu wake walikua wakiisikia sala hiyo. Corrie alizaliwa tarehe 15 Aprili 1892, katika jiji la Amsterdam, ambako baba yake alikuwa na duka wakati huo. Familia yake ilikumbuka kwamba alizaliwa mwezi mmoja kabla ya wakati, naye alikuwa mdogo mno hata hakuna aliyedhani angeishi muda mrefu. Lakini aliishi hadi miaka tisini na mmoja! Muda mfupi baadaye familia ilihamia Haarlem, kwenye Beje, nayo ikawa nyumbani kwa Corrie kwa zaidi ya miaka hamsini. Corrie alikuwa mtoto wa mwisho. Alikuwa na kaka mkubwa, Willem, na dada wakubwa wawili, Betsie na Nollie. (Kaka mwingine mchanga alikuwa amefariki alipokuwa mdogo sana.) Dada watatu wa mama yake, yaani shangazi zake Corrie, nao walikuja kuishi katika Beje. Nyumba ile nyembamba ilikuwa imejaa watu sikuzote, lakini sikuzote kulikuwa na nafasi mezani kwa mtu mmoja zaidi. Akina ten Boom hawakujua bado, lakini miaka ile yote ya kuomba na ya kuwapa watu nafasi ilikuwa ikiwaandaa kwa jambo kubwa sana. Mungu hutumia hata mambo madogo tunayofanya kila siku: sala zetu, wema wetu, na nafasi tunayowapa watu wengine. Mungu mpendwa, asante kwa ajili ya nyumba yangu na familia yangu. Nisaidie kuwaombea watu wengine, na sikuzote kumpa nafasi mtu mmoja zaidi. Amina.",
+  "word_count": 331
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "sw"
+  ],
+  "order": 2,
+  "title": "Biblia Kubwa ya Papa",
+  "body_html": "<blockquote>“Mungu huwakalisha wapweke katika jamaa.” — kutoka Zaburi 68</blockquote> <p>Baba yake Corrie aliitwa Casper. Alikuwa fundi saa, kama baba yake kabla yake. Alikuwa mpole na mcheshi, na aliomba sana. Kila siku familia yote ilikusanyika ili kusoma Biblia na kuomba, na wakati wa chakula Papa alisoma kwa sauti kutoka katika Biblia kubwa ya familia.</p> <p>Papa alikuwa mwema kwa kila mtu. Aliwaheshimu watoto waliokuja dukani, na maskini waliobisha hodi mlango wa nyuma, sawasawa kama alivyowaheshimu matajiri wakubwa wa mji. Wakati mwingine alitumia muda mrefu zaidi kuzungumza na mteja kuhusu Mungu kuliko kutengeneza saa yake! Aliwapenda Wayahudi pia. Aliamini kwamba wao ni watu wateule wa Mungu, wanaopendwa na Mungu tangu siku za Ibrahimu. Mojawapo ya maneno aliyoyapenda sana lilikuwa: “Lililo bora bado linakuja.”</p> <p>Mama yake Corrie, Cor, alikuwa mwalimu zamani. Alikuwa mchangamfu na mkarimu. Aliandaa vikapu vya chakula kwa ajili ya majirani maskini, na alikumbuka siku ya kuzaliwa ya kila mtu. Lakini hakuwa na nguvu nyingi mwilini. Corrie alipokuwa na miaka ishirini na tisa, mama yake aliugua sana akafariki.</p> <p>Corrie alipokuwa msichana mkubwa, alitumaini kuolewa na kijana mmoja aitwaye Karel, rafiki wa kaka yake Willem. Lakini familia ya Karel ilitaka amwoe msichana tajiri, na mwishowe akamwoa msichana mwingine. Moyo wa Corrie ulivunjika. Alipanda juu chumbani mwake, akiwa na huzuni nyingi.</p> <p>Corrie alikumbuka kwamba Papa alipanda ngazi akamjia. Hakumwambia aache kupenda. Badala yake, alimwambia kwamba angeweza kumpa Mungu upendo wake, na kumwacha Mungu amwonyeshe mahali upendo huo unapopaswa kwenda.</p> <p>Ndivyo ilivyotokea hasa. Corrie hakuolewa kamwe, lakini Mungu alimpa familia kubwa kuliko alivyoweza kuwazia: watoto, marafiki, na watu duniani kote. Mioyo yetu inapokuwa na huzuni, nasi tunaweza kumpa Mungu upendo wetu, naye atatuonyesha tumpende nani.</p> <p><em>Mungu mpendwa, ninapokuwa na huzuni au nimevunjika moyo, nisaidie kukuletea moyo wangu. Nionyeshe ni nani ninayeweza kumpenda leo. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Familia ya Corrie ilifanya nini kila siku?",
+    "answer": "Ilikusanyika ili kusoma Biblia na kuomba, na Papa alisoma kwa sauti kutoka katika Biblia kubwa ya familia wakati wa chakula."
+   },
+   {
+    "question": "Papa alimwambia Corrie nini moyo wake ulipovunjika?",
+    "answer": "Asiache kupenda, bali ampe Mungu upendo wake na kumwacha Mungu amwonyeshe mahali unapopaswa kwenda."
+   },
+   {
+    "question": "Unakumbuka wakati fulani ulipovunjika moyo? Ungeweza kumwambia Mungu nini kuhusu jambo hilo?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba tunaweza kumletea Mungu mioyo yetu yenye huzuni, naye anaweza kuuelekeza upendo wetu kwa watu wengine."
+   }
+  ],
+  "body_text": "“Mungu huwakalisha wapweke katika jamaa.” — kutoka Zaburi 68 Baba yake Corrie aliitwa Casper. Alikuwa fundi saa, kama baba yake kabla yake. Alikuwa mpole na mcheshi, na aliomba sana. Kila siku familia yote ilikusanyika ili kusoma Biblia na kuomba, na wakati wa chakula Papa alisoma kwa sauti kutoka katika Biblia kubwa ya familia. Papa alikuwa mwema kwa kila mtu. Aliwaheshimu watoto waliokuja dukani, na maskini waliobisha hodi mlango wa nyuma, sawasawa kama alivyowaheshimu matajiri wakubwa wa mji. Wakati mwingine alitumia muda mrefu zaidi kuzungumza na mteja kuhusu Mungu kuliko kutengeneza saa yake! Aliwapenda Wayahudi pia. Aliamini kwamba wao ni watu wateule wa Mungu, wanaopendwa na Mungu tangu siku za Ibrahimu. Mojawapo ya maneno aliyoyapenda sana lilikuwa: “Lililo bora bado linakuja.” Mama yake Corrie, Cor, alikuwa mwalimu zamani. Alikuwa mchangamfu na mkarimu. Aliandaa vikapu vya chakula kwa ajili ya majirani maskini, na alikumbuka siku ya kuzaliwa ya kila mtu. Lakini hakuwa na nguvu nyingi mwilini. Corrie alipokuwa na miaka ishirini na tisa, mama yake aliugua sana akafariki. Corrie alipokuwa msichana mkubwa, alitumaini kuolewa na kijana mmoja aitwaye Karel, rafiki wa kaka yake Willem. Lakini familia ya Karel ilitaka amwoe msichana tajiri, na mwishowe akamwoa msichana mwingine. Moyo wa Corrie ulivunjika. Alipanda juu chumbani mwake, akiwa na huzuni nyingi. Corrie alikumbuka kwamba Papa alipanda ngazi akamjia. Hakumwambia aache kupenda. Badala yake, alimwambia kwamba angeweza kumpa Mungu upendo wake, na kumwacha Mungu amwonyeshe mahali upendo huo unapopaswa kwenda. Ndivyo ilivyotokea hasa. Corrie hakuolewa kamwe, lakini Mungu alimpa familia kubwa kuliko alivyoweza kuwazia: watoto, marafiki, na watu duniani kote. Mioyo yetu inapokuwa na huzuni, nasi tunaweza kumpa Mungu upendo wetu, naye atatuonyesha tumpende nani. Mungu mpendwa, ninapokuwa na huzuni au nimevunjika moyo, nisaidie kukuletea moyo wangu. Nionyeshe ni nani ninayeweza kumpenda leo. Amina.",
+  "word_count": 289
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "sw"
+  ],
+  "order": 3,
+  "title": "Magurudumu Madogo na Milango Iliyo Wazi",
+  "body_html": "<blockquote>“Aliye mwaminifu katika lililo dogo sana, huwa mwaminifu katika lililo kubwa pia.” — kutoka Luka 16</blockquote> <p>Kwa miaka mingi Betsie alimsaidia Papa dukani, na Corrie alipika na kusafisha nyumba. Kisha, karibu mwaka 1920, Betsie aliugua kwa muda, na dada hao wawili wakabadilishana kazi. Betsie aligundua kwamba alipenda kuifanya nyumba iwe ya starehe na nzuri. Corrie aligundua kwamba alipenda duka, na zaidi ya yote meza ya kazi ya fundi.</p> <p>Papa alimfundisha Corrie kutengeneza saa, naye alisafiri mpaka Uswisi, nchi ya mafundi saa, ili ajifunze zaidi. Saa imejaa vipande vidogo sana: springi nyembamba kama unywele, na skrubu ndogo mno hata unahitaji koleo ndogo na kioo cha kukuza ili kuzishika. Chembe moja tu ya vumbi inaweza kuisimamisha saa yote! Corrie alijifunza kufanya kazi polepole, kwa uangalifu na kwa uvumilivu. Mwaka 1924, kama jumba la makumbusho la Haarlem linavyosema, alikuwa mwanamke wa kwanza nchini Uholanzi kuhitimu kuwa fundi saa.</p> <p>Corrie alikuwa na nguvu nyingi, naye alizitumia kwa ajili ya wengine. Alianzisha vikundi vya wasichana, vyenye michezo, muziki, kazi za mikono, kambi na mafunzo ya Biblia. Vikundi hivyo vilikuwa na pembetatu kama nembo yao. Pande zake tatu zilimaanisha mwili, nafsi na roho, kwa sababu Mungu anajali kila sehemu yetu.</p> <p>Pia alifundisha madarasa maalum kuhusu Yesu kwa watu wenye ulemavu wa akili. Siku zile watu wengi walidhani kwamba watu hao hawawezi kuielewa habari njema, wakawaficha wasionekane. Corrie hakukubali. Aliwafundisha kwa uvumilivu, na kuwasaidia kujiandaa kujiunga na kanisa.</p> <p>Akina ten Boom waliwapokea pia watoto waliohitaji nyumba ya kuishi. Baadhi yao walikuwa watoto wa wamisionari waliokuwa wakifanya kazi mbali sana. Nyumba ile nyembamba iliwabana ndani, nao wakawa sehemu ya familia.</p> <p>Hakuna lolote kati ya haya lililomfanya mtu kuwa maarufu. Lakini Yesu anasema kwamba aliye mwaminifu katika mambo madogo atakuwa mwaminifu katika mambo makubwa pia. Kazi ndogo unazofanya kwa uangalifu, na wema unaowaonyesha watu ambao wengine huwasahau, ni muhimu sana kwa Mungu.</p> <p><em>Mungu mpendwa, nisaidie kufanya hata kazi ndogo kwa uangalifu na vizuri. Nisaidie kuwaona watu ambao wengine huwasahau, na kuwa mwema kwao. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini Corrie alihitaji koleo ndogo na kioo cha kukuza?",
+    "answer": "Kwa sababu vipande vilivyo ndani ya saa ni vidogo mno: springi nyembamba kama unywele, na skrubu ndogo sana."
+   },
+   {
+    "question": "Corrie aliwafundisha nani katika madarasa yake maalum?",
+    "answer": "Watu wenye ulemavu wa akili, ambao watu wengi siku zile waliwaficha wasionekane. Aliwasaidia kujiandaa kujiunga na kanisa."
+   },
+   {
+    "question": "Ni kazi gani ndogo unayoweza kuifanya kwa uangalifu wiki hii?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu huuona uaminifu wetu katika mambo madogo, naye huutumia kutuandaa kwa mambo makubwa zaidi."
+   }
+  ],
+  "body_text": "“Aliye mwaminifu katika lililo dogo sana, huwa mwaminifu katika lililo kubwa pia.” — kutoka Luka 16 Kwa miaka mingi Betsie alimsaidia Papa dukani, na Corrie alipika na kusafisha nyumba. Kisha, karibu mwaka 1920, Betsie aliugua kwa muda, na dada hao wawili wakabadilishana kazi. Betsie aligundua kwamba alipenda kuifanya nyumba iwe ya starehe na nzuri. Corrie aligundua kwamba alipenda duka, na zaidi ya yote meza ya kazi ya fundi. Papa alimfundisha Corrie kutengeneza saa, naye alisafiri mpaka Uswisi, nchi ya mafundi saa, ili ajifunze zaidi. Saa imejaa vipande vidogo sana: springi nyembamba kama unywele, na skrubu ndogo mno hata unahitaji koleo ndogo na kioo cha kukuza ili kuzishika. Chembe moja tu ya vumbi inaweza kuisimamisha saa yote! Corrie alijifunza kufanya kazi polepole, kwa uangalifu na kwa uvumilivu. Mwaka 1924, kama jumba la makumbusho la Haarlem linavyosema, alikuwa mwanamke wa kwanza nchini Uholanzi kuhitimu kuwa fundi saa. Corrie alikuwa na nguvu nyingi, naye alizitumia kwa ajili ya wengine. Alianzisha vikundi vya wasichana, vyenye michezo, muziki, kazi za mikono, kambi na mafunzo ya Biblia. Vikundi hivyo vilikuwa na pembetatu kama nembo yao. Pande zake tatu zilimaanisha mwili, nafsi na roho, kwa sababu Mungu anajali kila sehemu yetu. Pia alifundisha madarasa maalum kuhusu Yesu kwa watu wenye ulemavu wa akili. Siku zile watu wengi walidhani kwamba watu hao hawawezi kuielewa habari njema, wakawaficha wasionekane. Corrie hakukubali. Aliwafundisha kwa uvumilivu, na kuwasaidia kujiandaa kujiunga na kanisa. Akina ten Boom waliwapokea pia watoto waliohitaji nyumba ya kuishi. Baadhi yao walikuwa watoto wa wamisionari waliokuwa wakifanya kazi mbali sana. Nyumba ile nyembamba iliwabana ndani, nao wakawa sehemu ya familia. Hakuna lolote kati ya haya lililomfanya mtu kuwa maarufu. Lakini Yesu anasema kwamba aliye mwaminifu katika mambo madogo atakuwa mwaminifu katika mambo makubwa pia. Kazi ndogo unazofanya kwa uangalifu, na wema unaowaonyesha watu ambao wengine huwasahau, ni muhimu sana kwa Mungu. Mungu mpendwa, nisaidie kufanya hata kazi ndogo kwa uangalifu na vizuri. Nisaidie kuwaona watu ambao wengine huwasahau, na kuwa mwema kwao. Amina.",
+  "word_count": 325
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "sw"
+  ],
+  "order": 4,
+  "title": "Mtoto Wakati wa Kulala",
+  "body_html": "<blockquote>“Nani ajuaye kama umeufikia ufalme kwa ajili ya wakati kama huu?” — kutoka Esta 4</blockquote> <p>Tarehe 10 Mei 1940, Corrie alipokuwa na miaka arobaini na minane, jeshi la Ujerumani liliingia Uholanzi. Baada ya siku tano za mapigano, jeshi la Uholanzi lililazimika kujisalimisha, na askari wa Kijerumani wakatembea katika barabara za Haarlem.</p> <p>Ujerumani ilitawaliwa na Wanazi, waliowachukia Wayahudi. Hatua kwa hatua walitunga sheria mpya za ukatili. Wayahudi hawakuruhusiwa kuingia katika bustani za umma, wala sinema, wala shule za kawaida. Mwaka 1942 walilazimishwa kuvaa nyota ya manjano kwenye nguo zao. Papa, aliyekuwa na zaidi ya miaka themanini, alitaka kwenda kuchukua nyota naye mwenyewe aivae, ili asimame pamoja na majirani zake Wayahudi. Familia yake ililazimika kumshawishi asifanye hivyo! Kisha Wanazi walianza kuzichukua familia za Wayahudi kwa treni, nao hawakurudi tena.</p> <p>Jioni moja Corrie alikuwa amemtembelea daktari mmoja Myahudi nyumbani kwake. Walipokuwa wakizungumza, binti yake mdogo aliita kutoka juu ya ngazi. Baba alikuwa amesahau kuja kumfunika kitandani! Daktari aliharakisha kupanda juu, na Corrie akamsikia akicheza na watoto wake kabla hawajalala.</p> <p>Alipokuwa ameketi akingoja, Corrie aliwaza: polisi wa siri wangeweza kuja kuichukua familia hii usiku wowote. Naye akaamua moyoni. Angewasaidia Wayahudi kwa kila njia aliyoweza.</p> <p>Punde watu wenye hofu walianza kubisha hodi mlangoni pa Beje. Walikuwa wamesikia kwamba familia ya fundi saa ingewasaidia. Akina ten Boom waliwakaribisha kwa usiku mmoja au miwili na kuwapa chakula, huku wakiwatafutia mahali salama zaidi pa kukaa. Papa alikuwa hodari sana wa kuwafariji watu waliokuwa na hofu.</p> <p>Mungu hakuwahitaji akina ten Boom ili awaokoe watu wake. Lakini alikuwa amewaweka katika nyumba ile, katika mji ule, wakati ule. Mungu amekuweka nawe mahali pako, naye anaweza kukutumia kumsaidia mtu anayehitaji msaada.</p> <p><em>Mungu mpendwa, asante kwa kuniweka mahali nilipo. Fungua macho yangu nione ni nani anayehitaji msaada, na unipe ujasiri wa kumsaidia. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Papa alitaka kufanya nini Wayahudi walipolazimishwa kuvaa nyota ya manjano?",
+    "answer": "Alitaka kuvaa nyota naye mwenyewe, ili asimame pamoja na majirani zake Wayahudi, lakini familia yake ilimshawishi asifanye hivyo."
+   },
+   {
+    "question": "Ni nini kilichomfanya Corrie aamue kuwasaidia Wayahudi?",
+    "answer": "Kumsikia daktari Myahudi akimfunika binti yake mdogo kitandani, na kutambua kwamba polisi wa siri wangeweza kuja kuichukua familia ile usiku wowote."
+   },
+   {
+    "question": "Ni nani aliye karibu nawe ambaye huenda anahitaji msaada?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu amemweka kila mmoja wetu mahali pake na wakati wake, ili tuwasaidie watu walio karibu nasi."
+   }
+  ],
+  "body_text": "“Nani ajuaye kama umeufikia ufalme kwa ajili ya wakati kama huu?” — kutoka Esta 4 Tarehe 10 Mei 1940, Corrie alipokuwa na miaka arobaini na minane, jeshi la Ujerumani liliingia Uholanzi. Baada ya siku tano za mapigano, jeshi la Uholanzi lililazimika kujisalimisha, na askari wa Kijerumani wakatembea katika barabara za Haarlem. Ujerumani ilitawaliwa na Wanazi, waliowachukia Wayahudi. Hatua kwa hatua walitunga sheria mpya za ukatili. Wayahudi hawakuruhusiwa kuingia katika bustani za umma, wala sinema, wala shule za kawaida. Mwaka 1942 walilazimishwa kuvaa nyota ya manjano kwenye nguo zao. Papa, aliyekuwa na zaidi ya miaka themanini, alitaka kwenda kuchukua nyota naye mwenyewe aivae, ili asimame pamoja na majirani zake Wayahudi. Familia yake ililazimika kumshawishi asifanye hivyo! Kisha Wanazi walianza kuzichukua familia za Wayahudi kwa treni, nao hawakurudi tena. Jioni moja Corrie alikuwa amemtembelea daktari mmoja Myahudi nyumbani kwake. Walipokuwa wakizungumza, binti yake mdogo aliita kutoka juu ya ngazi. Baba alikuwa amesahau kuja kumfunika kitandani! Daktari aliharakisha kupanda juu, na Corrie akamsikia akicheza na watoto wake kabla hawajalala. Alipokuwa ameketi akingoja, Corrie aliwaza: polisi wa siri wangeweza kuja kuichukua familia hii usiku wowote. Naye akaamua moyoni. Angewasaidia Wayahudi kwa kila njia aliyoweza. Punde watu wenye hofu walianza kubisha hodi mlangoni pa Beje. Walikuwa wamesikia kwamba familia ya fundi saa ingewasaidia. Akina ten Boom waliwakaribisha kwa usiku mmoja au miwili na kuwapa chakula, huku wakiwatafutia mahali salama zaidi pa kukaa. Papa alikuwa hodari sana wa kuwafariji watu waliokuwa na hofu. Mungu hakuwahitaji akina ten Boom ili awaokoe watu wake. Lakini alikuwa amewaweka katika nyumba ile, katika mji ule, wakati ule. Mungu amekuweka nawe mahali pako, naye anaweza kukutumia kumsaidia mtu anayehitaji msaada. Mungu mpendwa, asante kwa kuniweka mahali nilipo. Fungua macho yangu nione ni nani anayehitaji msaada, na unipe ujasiri wa kumsaidia. Amina.",
+  "word_count": 290
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "sw"
+  ],
+  "order": 5,
+  "title": "Kitanda cha Malaika",
+  "body_html": "<blockquote>“Wewe ndiwe sitara yangu, utanihifadhi na mateso, utanizungusha nyimbo za wokovu.” — kutoka Zaburi 32</blockquote> <p>Kufikia mwaka 1943 kulikuwa na watu waliojificha katika Beje wakati wote. Wa kwanza kukaa alikuwa mwanafunzi aitwaye Hans. Wengine walikuwa mwimbaji mmoja Myahudi, aliyeimba katika sinagogi, ambaye kila mtu alimwita Eusie, na mama mmoja aitwaye Mary. Katika miezi ile, watu zaidi ya themanini walikaa humo kwa muda mfupi au mrefu.</p> <p>Kila aliyejificha alihitaji chakula, na wakati wa vita chakula kingeweza kununuliwa tu kwa kadi maalum za mgao. Corrie alipata njia za kupata kadi kwa ajili ya watu waliojificha kila mahali mjini. Alizificha katika kabati la siri lililokuwa ndani ya ngazi ya juu kabisa!</p> <p>Familia ilihitaji pia mahali pa kuwaficha wageni wao kama polisi wangekuja. Mchoraji ramani za majengo aliyefanya kazi na kikundi cha siri cha upinzani alikuja kusaidia. Tunamjua kwa jina la kubuni tu, Bwana Smit. Katika chumba cha kulala cha Corrie, juu kabisa ya nyumba, alijenga ukuta wa pili wa matofali, uliofanywa uonekane wa zamani, wenye nafasi nyembamba nyuma yake. Uliingia kwa kutambaa kupitia kimlango kidogo cha kusogeza, chini ya rafu ya chini kabisa ya kabati. Familia iliita mahali pale Kitanda cha Malaika.</p> <p>Kisha wakafanya mazoezi. Corrie alipiga kengele bila kuonya, mara nyingi usiku, na kupima muda wa kila mtu kwa saa ya kupimia muda walipokimbia juu na kutambaa kupitia kimlango kile kidogo. Muda wao wa haraka zaidi ulikuwa sekunde sabini. Baadaye kila mtu alipewa keki tamu za krimu!</p> <p>Beje haikuwa nyumba ya huzuni. Kulikuwa na muziki, na Eusie aliimba kwa sauti kubwa mno hata Corrie alilazimika kumwonya kwamba barabara yote ingesikia. Jioni Mary alifundisha Kiitaliano, Eusie alifundisha Kiebrania na Hans alifundisha kuhusu nyota, naye Papa mzee alikuja kujifunza pia. Hata paka wa familia alikuwa na jina refu sana kutoka katika Biblia: Maher-shalal-hash-bazi!</p> <p>Chumba cha siri kilikuwa mahali pazuri pa kujificha. Lakini akina ten Boom walijua kwamba mahali pao halisi pa kujificha ni Mungu mwenyewe. Kwa sababu Mungu alikuwa akiwatunza, waliweza kucheka na kuimba, hata katika nyakati za hatari. Mungu anaweza kuwa mahali pako pa kujificha pia.</p> <p><em>Mungu mpendwa, asante kwamba wewe ndiwe mahali pangu pa kujificha. Ninapoogopa, nisaidie kukumbuka kwamba unanitunza. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Chumba cha siri kilikuwa wapi, na mtu aliingiaje?",
+    "answer": "Nyuma ya ukuta wa matofali wa uongo katika chumba cha kulala cha Corrie, juu kabisa ya nyumba. Uliingia kwa kutambaa kupitia kimlango kidogo cha kusogeza chini ya rafu ya chini kabisa ya kabati."
+   },
+   {
+    "question": "Nini kilitokea baada ya mazoezi ya kujificha?",
+    "answer": "Corrie aliwapa wote keki tamu za krimu. Muda wao wa haraka zaidi ulikuwa sekunde sabini."
+   },
+   {
+    "question": "Ni nini kinachokusaidia kujisikia salama unapoogopa?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu mwenyewe ndiye mahali petu salama zaidi pa kujificha, kwa hiyo tunaweza kumtumaini hata katika nyakati za kutisha."
+   }
+  ],
+  "body_text": "“Wewe ndiwe sitara yangu, utanihifadhi na mateso, utanizungusha nyimbo za wokovu.” — kutoka Zaburi 32 Kufikia mwaka 1943 kulikuwa na watu waliojificha katika Beje wakati wote. Wa kwanza kukaa alikuwa mwanafunzi aitwaye Hans. Wengine walikuwa mwimbaji mmoja Myahudi, aliyeimba katika sinagogi, ambaye kila mtu alimwita Eusie, na mama mmoja aitwaye Mary. Katika miezi ile, watu zaidi ya themanini walikaa humo kwa muda mfupi au mrefu. Kila aliyejificha alihitaji chakula, na wakati wa vita chakula kingeweza kununuliwa tu kwa kadi maalum za mgao. Corrie alipata njia za kupata kadi kwa ajili ya watu waliojificha kila mahali mjini. Alizificha katika kabati la siri lililokuwa ndani ya ngazi ya juu kabisa! Familia ilihitaji pia mahali pa kuwaficha wageni wao kama polisi wangekuja. Mchoraji ramani za majengo aliyefanya kazi na kikundi cha siri cha upinzani alikuja kusaidia. Tunamjua kwa jina la kubuni tu, Bwana Smit. Katika chumba cha kulala cha Corrie, juu kabisa ya nyumba, alijenga ukuta wa pili wa matofali, uliofanywa uonekane wa zamani, wenye nafasi nyembamba nyuma yake. Uliingia kwa kutambaa kupitia kimlango kidogo cha kusogeza, chini ya rafu ya chini kabisa ya kabati. Familia iliita mahali pale Kitanda cha Malaika. Kisha wakafanya mazoezi. Corrie alipiga kengele bila kuonya, mara nyingi usiku, na kupima muda wa kila mtu kwa saa ya kupimia muda walipokimbia juu na kutambaa kupitia kimlango kile kidogo. Muda wao wa haraka zaidi ulikuwa sekunde sabini. Baadaye kila mtu alipewa keki tamu za krimu! Beje haikuwa nyumba ya huzuni. Kulikuwa na muziki, na Eusie aliimba kwa sauti kubwa mno hata Corrie alilazimika kumwonya kwamba barabara yote ingesikia. Jioni Mary alifundisha Kiitaliano, Eusie alifundisha Kiebrania na Hans alifundisha kuhusu nyota, naye Papa mzee alikuja kujifunza pia. Hata paka wa familia alikuwa na jina refu sana kutoka katika Biblia: Maher-shalal-hash-bazi! Chumba cha siri kilikuwa mahali pazuri pa kujificha. Lakini akina ten Boom walijua kwamba mahali pao halisi pa kujificha ni Mungu mwenyewe. Kwa sababu Mungu alikuwa akiwatunza, waliweza kucheka na kuimba, hata katika nyakati za hatari. Mungu anaweza kuwa mahali pako pa kujificha pia. Mungu mpendwa, asante kwamba wewe ndiwe mahali pangu pa kujificha. Ninapoogopa, nisaidie kukumbuka kwamba unanitunza. Amina.",
+  "word_count": 349
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "sw"
+  ],
+  "order": 6,
+  "title": "Siku Polisi Walipokuja",
+  "body_html": "<blockquote>“Aketiye mahali pa siri pake Aliye juu atakaa katika uvuli wake Mwenyezi. Nitasema, Bwana ndiye kimbilio langu.” — kutoka Zaburi 91</blockquote> <p>Jumatatu, tarehe 28 Februari 1944, Corrie alikuwa kitandani akiugua mafua. Chini, kaka yake Willem alikuwa akiongoza mafunzo ya Biblia. Ghafla kengele ililia. Watu sita walikimbia wakipita kando ya kitanda cha Corrie na kuingia katika chumba cha siri: wageni wanne Wayahudi na wasaidizi wawili vijana. Corrie alikificha kimlango kile kidogo, akarudi kitandani.</p> <p>Muda mfupi baadaye polisi walipanda ngazi. Walimkamata Corrie na kuipekua nyumba, lakini hawakukiona kamwe chumba cha siri. Afisa mmoja mwenye hasira aliwapiga Corrie na Betsie. Baadaye, Betsie alisema kwamba alimwonea huruma.</p> <p>Karibu na meko kulikuwa na kibao kidogo cha mbao kilichoandikwa “Yesu ni Mshindi.” Betsie alikionyesha kwa kidole, na Papa akasema kwamba ni kweli. Ilionekana kana kwamba polisi wameshinda. Lakini Yesu bado ndiye aliyetawala.</p> <p>Usiku ule, katika kituo cha polisi, familia ililala pamoja juu ya godoro sakafuni: Papa, akiwa amezungukwa na Betsie, Corrie, Nollie, Willem na Peter mwana wa Nollie. Willem alisoma Zaburi 91, na Papa akawaombea wote. Hiyo ilikuwa mara ya mwisho Corrie kumsikia baba yake akiomba. Siku iliyofuata, wafungwa walipokuwa wakipelekwa mbali kwa gari, watu wa Haarlem walisimama kimya barabarani, wengi wao wakilia.</p> <p>Huko Beje, wale watu sita walisimama gizani nyuma ya ukuta kwa siku mbili na nusu, huku walinzi wakingoja ndani ya nyumba. Kisha baadhi ya polisi wema, waliokuwa upande wao kwa siri, waliingia zamu wakawatoa. Eusie alifurahi sana hata akainua mikono yake barabarani akaimba sala ya Kiyahudi. Kwa huzuni, Mary alikamatwa tena siku chache baadaye, naye alifariki kabla vita havijaisha. Lakini Eusie aliishi, akawa mwimbaji wa sinagogi aliyejulikana sana.</p> <p>Chumba cha siri kilifanya kazi yake, lakini hakikuweza kumlinda kila mtu. Mungu peke yake ndiye aliyeweza kwenda pamoja na akina ten Boom popote walipopelekwa. Mungu yuko pamoja nawe pia, hata mambo mabaya yanapotokea.</p> <p><em>Mungu mpendwa, asante kwamba uko pamoja nami sikuzote, hata katika siku za kutisha. Tafadhali uwe karibu na watu walio hatarini leo. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Je, polisi waliwapata wale watu sita katika chumba cha siri?",
+    "answer": "Hapana. Waliipekua nyumba, lakini chumba cha siri hakikuonekana kamwe. Baada ya siku mbili na nusu, polisi wema waliwatoa wale watu sita."
+   },
+   {
+    "question": "Familia ilifanya nini katika kituo cha polisi usiku ule?",
+    "answer": "Walilala pamoja juu ya godoro, Willem alisoma Zaburi 91, na Papa akawaombea wote."
+   },
+   {
+    "question": "Unadhani kwa nini kibao cha “Yesu ni Mshindi” kiliisaidia familia?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba hata inapoonekana kana kwamba uovu umeshinda, Yesu bado ndiye anayetawala, na Mungu hukaa pamoja nasi."
+   }
+  ],
+  "body_text": "“Aketiye mahali pa siri pake Aliye juu atakaa katika uvuli wake Mwenyezi. Nitasema, Bwana ndiye kimbilio langu.” — kutoka Zaburi 91 Jumatatu, tarehe 28 Februari 1944, Corrie alikuwa kitandani akiugua mafua. Chini, kaka yake Willem alikuwa akiongoza mafunzo ya Biblia. Ghafla kengele ililia. Watu sita walikimbia wakipita kando ya kitanda cha Corrie na kuingia katika chumba cha siri: wageni wanne Wayahudi na wasaidizi wawili vijana. Corrie alikificha kimlango kile kidogo, akarudi kitandani. Muda mfupi baadaye polisi walipanda ngazi. Walimkamata Corrie na kuipekua nyumba, lakini hawakukiona kamwe chumba cha siri. Afisa mmoja mwenye hasira aliwapiga Corrie na Betsie. Baadaye, Betsie alisema kwamba alimwonea huruma. Karibu na meko kulikuwa na kibao kidogo cha mbao kilichoandikwa “Yesu ni Mshindi.” Betsie alikionyesha kwa kidole, na Papa akasema kwamba ni kweli. Ilionekana kana kwamba polisi wameshinda. Lakini Yesu bado ndiye aliyetawala. Usiku ule, katika kituo cha polisi, familia ililala pamoja juu ya godoro sakafuni: Papa, akiwa amezungukwa na Betsie, Corrie, Nollie, Willem na Peter mwana wa Nollie. Willem alisoma Zaburi 91, na Papa akawaombea wote. Hiyo ilikuwa mara ya mwisho Corrie kumsikia baba yake akiomba. Siku iliyofuata, wafungwa walipokuwa wakipelekwa mbali kwa gari, watu wa Haarlem walisimama kimya barabarani, wengi wao wakilia. Huko Beje, wale watu sita walisimama gizani nyuma ya ukuta kwa siku mbili na nusu, huku walinzi wakingoja ndani ya nyumba. Kisha baadhi ya polisi wema, waliokuwa upande wao kwa siri, waliingia zamu wakawatoa. Eusie alifurahi sana hata akainua mikono yake barabarani akaimba sala ya Kiyahudi. Kwa huzuni, Mary alikamatwa tena siku chache baadaye, naye alifariki kabla vita havijaisha. Lakini Eusie aliishi, akawa mwimbaji wa sinagogi aliyejulikana sana. Chumba cha siri kilifanya kazi yake, lakini hakikuweza kumlinda kila mtu. Mungu peke yake ndiye aliyeweza kwenda pamoja na akina ten Boom popote walipopelekwa. Mungu yuko pamoja nawe pia, hata mambo mabaya yanapotokea. Mungu mpendwa, asante kwamba uko pamoja nami sikuzote, hata katika siku za kutisha. Tafadhali uwe karibu na watu walio hatarini leo. Amina.",
+  "word_count": 320
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "sw"
+  ],
+  "order": 7,
+  "title": "Peke Yake, Lakini Si Peke Yake",
+  "body_html": "<blockquote>“Baba yangu na mama yangu wameniacha, bali Bwana atanikaribisha kwake.” — kutoka Zaburi 27</blockquote> <p>Wafungwa walipelekwa katika gereza kubwa huko Scheveningen, kando ya bahari. Papa alikuwa dhaifu mno hata ilibidi abebwe. Langoni yeye na Corrie walibarikiana, naye Corrie akageuka kumtazama mara moja. Hakumwona tena kamwe.</p> <p>Corrie alikuwa bado mgonjwa. Muuguzi mmoja mwema alimpa kwa siri vitabu vidogo vya Injili. Kisha Corrie aliwekwa katika chumba cha gereza peke yake, akakaa humo peke yake kwa wiki nyingi. Kulikuwa na baridi na rangi ya kijivu, naye alikuwa mpweke sana. Walinzi walimkemea kwa sababu ya kuimba, lakini aliimba hata hivyo. Mstari wa sisimizi ulipita sakafuni, naye akafanya urafiki nao na kuwalisha makombo. Alikumbuka kwamba Henoko “alikwenda pamoja na Mungu,” naye alijua kwamba yeye pia hakuwa akitembea peke yake.</p> <p>Mwishowe barua ilikuja kutoka kwa Nollie, aliyekuwa ameachiliwa kutoka gerezani. Kwa upole, ilimwambia Corrie kwamba Papa amefariki. Aliishi siku tisa tu baada ya kukamatwa. Corrie alilia na kulia. Papa aliwahi kusema kwamba itakuwa heshima kutoa maisha yake kwa ajili ya Wayahudi, na sasa alikuwa ameyatoa. Lililo bora lilikuwa limemjia: alikuwa pamoja na Yesu.</p> <p>Siku moja afisa mmoja alimhoji Corrie. Alimwuliza kama kuwafundisha watu wenye ulemavu wa akili si kupoteza muda. Corrie alimwambia kwamba Mungu huwapenda walio dhaifu, na kwamba mtu kama huyo huenda ana thamani zaidi mbele za Mungu kuliko yeyote kati yao wawili.</p> <p>Kisha, tarehe 6 Juni 1944, wafungwa walihamishwa. Katika stesheni ndogo, katikati ya umati mkubwa, Corrie alimwona Betsie kwa mara ya kwanza baada ya zaidi ya miezi mitatu! Walijibana ndani ya behewa moja la treni, wakaketi bega kwa bega na kushikana mikono. Mwanamke mwingine aliwatania kwamba walikuwa kama ndege wawili wapenzi.</p> <p>Baadaye Corrie alisema kwamba katika chumba kile cha upweke Mungu alikuwa karibu naye kuliko wakati mwingine wowote. Unapojisikia uko peke yako kabisa, kwa kweli hauko peke yako. Mungu yuko hapo hapo pamoja nawe.</p> <p><em>Mungu mpendwa, asante kwamba hutaniacha kamwe. Tafadhali uwe karibu na yeyote anayejisikia mpweke au mwenye huzuni leo. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Marafiki wadogo wa Corrie katika chumba chake cha gereza walikuwa akina nani?",
+    "answer": "Mstari wa sisimizi, aliowalisha makombo."
+   },
+   {
+    "question": "Corrie alimwambia afisa nini kuhusu watu wenye ulemavu wa akili?",
+    "answer": "Kwamba Mungu huwapenda walio dhaifu, na kwamba mtu kama huyo huenda ana thamani zaidi mbele za Mungu kuliko yeyote kati yao wawili."
+   },
+   {
+    "question": "Ni lini umewahi kujisikia mpweke? Ungewezaje kuzungumza na Mungu kuhusu jambo hilo?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu hukaribia karibu nasi tunapokuwa wapweke, kama alivyomfanyia Corrie."
+   }
+  ],
+  "body_text": "“Baba yangu na mama yangu wameniacha, bali Bwana atanikaribisha kwake.” — kutoka Zaburi 27 Wafungwa walipelekwa katika gereza kubwa huko Scheveningen, kando ya bahari. Papa alikuwa dhaifu mno hata ilibidi abebwe. Langoni yeye na Corrie walibarikiana, naye Corrie akageuka kumtazama mara moja. Hakumwona tena kamwe. Corrie alikuwa bado mgonjwa. Muuguzi mmoja mwema alimpa kwa siri vitabu vidogo vya Injili. Kisha Corrie aliwekwa katika chumba cha gereza peke yake, akakaa humo peke yake kwa wiki nyingi. Kulikuwa na baridi na rangi ya kijivu, naye alikuwa mpweke sana. Walinzi walimkemea kwa sababu ya kuimba, lakini aliimba hata hivyo. Mstari wa sisimizi ulipita sakafuni, naye akafanya urafiki nao na kuwalisha makombo. Alikumbuka kwamba Henoko “alikwenda pamoja na Mungu,” naye alijua kwamba yeye pia hakuwa akitembea peke yake. Mwishowe barua ilikuja kutoka kwa Nollie, aliyekuwa ameachiliwa kutoka gerezani. Kwa upole, ilimwambia Corrie kwamba Papa amefariki. Aliishi siku tisa tu baada ya kukamatwa. Corrie alilia na kulia. Papa aliwahi kusema kwamba itakuwa heshima kutoa maisha yake kwa ajili ya Wayahudi, na sasa alikuwa ameyatoa. Lililo bora lilikuwa limemjia: alikuwa pamoja na Yesu. Siku moja afisa mmoja alimhoji Corrie. Alimwuliza kama kuwafundisha watu wenye ulemavu wa akili si kupoteza muda. Corrie alimwambia kwamba Mungu huwapenda walio dhaifu, na kwamba mtu kama huyo huenda ana thamani zaidi mbele za Mungu kuliko yeyote kati yao wawili. Kisha, tarehe 6 Juni 1944, wafungwa walihamishwa. Katika stesheni ndogo, katikati ya umati mkubwa, Corrie alimwona Betsie kwa mara ya kwanza baada ya zaidi ya miezi mitatu! Walijibana ndani ya behewa moja la treni, wakaketi bega kwa bega na kushikana mikono. Mwanamke mwingine aliwatania kwamba walikuwa kama ndege wawili wapenzi. Baadaye Corrie alisema kwamba katika chumba kile cha upweke Mungu alikuwa karibu naye kuliko wakati mwingine wowote. Unapojisikia uko peke yako kabisa, kwa kweli hauko peke yako. Mungu yuko hapo hapo pamoja nawe. Mungu mpendwa, asante kwamba hutaniacha kamwe. Tafadhali uwe karibu na yeyote anayejisikia mpweke au mwenye huzuni leo. Amina.",
+  "word_count": 319
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "sw"
+  ],
+  "order": 8,
+  "title": "Upande wa Nyuma wa Darizi",
+  "body_html": "<blockquote>“Upitapo katika maji, nitakuwa pamoja nawe.” — kutoka Isaya 43</blockquote> <p>Corrie na Betsie walipelekwa katika kambi ya wafungwa iitwayo Vught, kusini mwa Uholanzi. Wanawake waliokuwa huko waliketi mchana kutwa bila kazi yoyote, na punde wakaanza kunung'unika na kugombana. Basi Betsie alianzisha kikundi! Wanachama wake waliahidi kujitahidi wasinung'unike, wasiseme maneno mabaya kuhusu mtu yeyote, na kuwaambia wengine maneno ya kuwatia moyo.</p> <p>Baadaye Corrie alipelekwa kufanya kazi mezani, akipima swichi ndogo za redio, kwa saa kumi na moja kila siku. Haikuwa ya kuvutia kama kutengeneza saa, lakini aliiweza vizuri. Betsie alifanya kazi katika chumba cha kushona. Jumapili alasiri wanawake walikutana kwenye kipande cha nyasi kati ya vibanda ili kumwabudu Mungu, na punde Corrie akawa anaziongoza ibada hizo.</p> <p>Hata hivyo Vught ilikuwa bado mahali pagumu na pa kutisha. Siku moja, majeshi yaliyokuwa yakipigana na Wanazi yalipokaribia, walinzi waliwachukua wafungwa wanaume wengi wakawaua. Corrie aliweka kichwa chake begani mwa Betsie, akamwuliza Mungu kwa nini aliruhusu jambo hilo litokee.</p> <p>Kisha Corrie alihisi Mungu akimwonyesha kwamba hakuhitaji kubeba huzuni yote ya dunia peke yake. Angeweza kumletea yeye na kuiacha hapo. Naye akafikiria kitambaa cha darizi. Upande wa nyuma kinaonekana kama nyuzi zilizochanganyika ovyo. Lakini kigeuze, nawe utaona picha nzuri! Siku moja, aliamini, tutaona upande wa mbele wa maisha yetu, na kuelewa.</p> <p>Mwezi Septemba dada hao walisongamanishwa ndani ya behewa la mizigo pamoja na wanawake wengine wapatao themanini. Kwa siku tatu, mchana na usiku, treni iliunguruma ikielekea Ujerumani. Mwishowe ilisimama karibu na ziwa, na wanawake wakatembea hadi kwenye malango ya kambi kubwa iitwayo Ravensbrück.</p> <p>Sasa hivi mara nyingi tunaona tu upande wa nyuma wa darizi, wenye nyuzi zilizochanganyika. Lakini Mungu anaiona picha yote, naye anafuma kitu kizuri. Unaweza kumletea hisia zako za huzuni na wasiwasi na kuziacha mikononi mwake.</p> <p><em>Mungu mpendwa, nisipoelewa kinachotokea, nisaidie kukutumaini. Nakupa wasiwasi wangu sasa, nami nauacha kwako. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Betsie alianzisha kikundi gani huko Vught?",
+    "answer": "Kikundi ambacho wanachama wake waliahidi kujitahidi wasinung'unike, wasiseme maneno mabaya kuhusu mtu yeyote, na kutiana moyo."
+   },
+   {
+    "question": "Upande wa nyuma wa kitambaa cha darizi unaonekanaje?",
+    "answer": "Kama nyuzi zilizochanganyika ovyo. Lakini upande wa mbele kuna picha nzuri."
+   },
+   {
+    "question": "Ni wasiwasi gani ungependa kumpa Mungu leo?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba hatuhitaji kubeba kila huzuni peke yetu, kwa sababu Mungu anaiona picha yote."
+   }
+  ],
+  "body_text": "“Upitapo katika maji, nitakuwa pamoja nawe.” — kutoka Isaya 43 Corrie na Betsie walipelekwa katika kambi ya wafungwa iitwayo Vught, kusini mwa Uholanzi. Wanawake waliokuwa huko waliketi mchana kutwa bila kazi yoyote, na punde wakaanza kunung'unika na kugombana. Basi Betsie alianzisha kikundi! Wanachama wake waliahidi kujitahidi wasinung'unike, wasiseme maneno mabaya kuhusu mtu yeyote, na kuwaambia wengine maneno ya kuwatia moyo. Baadaye Corrie alipelekwa kufanya kazi mezani, akipima swichi ndogo za redio, kwa saa kumi na moja kila siku. Haikuwa ya kuvutia kama kutengeneza saa, lakini aliiweza vizuri. Betsie alifanya kazi katika chumba cha kushona. Jumapili alasiri wanawake walikutana kwenye kipande cha nyasi kati ya vibanda ili kumwabudu Mungu, na punde Corrie akawa anaziongoza ibada hizo. Hata hivyo Vught ilikuwa bado mahali pagumu na pa kutisha. Siku moja, majeshi yaliyokuwa yakipigana na Wanazi yalipokaribia, walinzi waliwachukua wafungwa wanaume wengi wakawaua. Corrie aliweka kichwa chake begani mwa Betsie, akamwuliza Mungu kwa nini aliruhusu jambo hilo litokee. Kisha Corrie alihisi Mungu akimwonyesha kwamba hakuhitaji kubeba huzuni yote ya dunia peke yake. Angeweza kumletea yeye na kuiacha hapo. Naye akafikiria kitambaa cha darizi. Upande wa nyuma kinaonekana kama nyuzi zilizochanganyika ovyo. Lakini kigeuze, nawe utaona picha nzuri! Siku moja, aliamini, tutaona upande wa mbele wa maisha yetu, na kuelewa. Mwezi Septemba dada hao walisongamanishwa ndani ya behewa la mizigo pamoja na wanawake wengine wapatao themanini. Kwa siku tatu, mchana na usiku, treni iliunguruma ikielekea Ujerumani. Mwishowe ilisimama karibu na ziwa, na wanawake wakatembea hadi kwenye malango ya kambi kubwa iitwayo Ravensbrück. Sasa hivi mara nyingi tunaona tu upande wa nyuma wa darizi, wenye nyuzi zilizochanganyika. Lakini Mungu anaiona picha yote, naye anafuma kitu kizuri. Unaweza kumletea hisia zako za huzuni na wasiwasi na kuziacha mikononi mwake. Mungu mpendwa, nisipoelewa kinachotokea, nisaidie kukutumaini. Nakupa wasiwasi wangu sasa, nami nauacha kwako. Amina.",
+  "word_count": 296
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "sw"
+  ],
+  "order": 9,
+  "title": "Biblia Katika Banda Namba 28",
+  "body_html": "<blockquote>“Shukuruni kwa kila jambo.” — kutoka 1 Wathesalonike 5</blockquote> <p>Ravensbrück ilikuwa kambi kubwa mno ya wanawake. Ilikuwa imejaa watu, ilikuwa na baridi na uchafu, na chakula hakikutosha kamwe. Wafungwa wapya walipofika, karibu kila kitu walichokuwa nacho kilichukuliwa, nao wakapewa gauni jembamba la kuvaa. Lakini Corrie aliificha Biblia yake ndogo chini ya gauni lake. Walinzi walikuwa wakimpekua kila mtu, lakini hawakumpekua yeye. Corrie aliamini kwamba Mungu alikuwa amemficha.</p> <p>Dada hao walipelekwa kuishi katika Banda Namba 28, kibanda kirefu chenye vitanda vya ghorofa tatu. Baadaye Corrie aliandika kwamba mwishoni wanawake wapatao elfu moja na mia nne walibanwa humo. Wanawake wawili au zaidi walilazimika kushiriki kila kitanda chembamba.</p> <p>Kila siku, Corrie na Betsie waliwasomea Biblia wanawake waliokuwa karibu nao, wakati mwingine mara mbili kwa siku. Wanawake kutoka Uholanzi, Ufaransa, Poland, Urusi na sehemu nyingine nyingi walisikiliza. Walipokosa kuzungumza lugha moja, dada hao walitaja tu jina la Yesu, na nyuso za wanawake hao zikang'aa.</p> <p>Miaka mingi baadaye, Corrie alisimulia hadithi kuhusu jambo hili. Banda lile lilikuwa limejaa viroboto, naye Corrie aliwachukia. Lakini Betsie alisema kwamba wanapaswa kumshukuru Mungu kwa kila jambo, hata kwa viroboto! Baadaye waligundua kwamba walinzi walikaa mbali na sehemu yao ya banda, kwa hiyo masomo ya Biblia yaliweza kuendelea. Sababu yake, Corrie alisema, ilikuwa wale viroboto.</p> <p>Corrie pia alikuwa na chupa ndogo ya matone ya vitamini. Kila siku aliwapa wanawake waliokuwa karibu naye matone machache. Corrie aliandika kwamba chupa ile iliendelea kutoa matone kwa wiki nyingi, muda mrefu zaidi kuliko ilivyopaswa, mpaka rafiki mmoja alipoleta vitamini zaidi kutoka hospitali ya kambi. Ndipo ikakauka.</p> <p>Hata katika mahali pabaya kuliko pote, Corrie na Betsie waligawana walichokuwa nacho na kumshukuru Mungu. Mambo yanapokuwa magumu kwako, bado unaweza kutafuta kitu cha kumshukuru Mungu kwacho, na kitu cha kuwagawia wengine.</p> <p><em>Mungu mpendwa, asante kwa ajili ya Neno lako, Biblia. Nisaidie kukushukuru hata katika siku ngumu, na kuwagawia wengine nilicho nacho. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Corrie aliitunzaje Biblia yake huko Ravensbrück?",
+    "answer": "Aliificha chini ya gauni lake. Walinzi walikuwa wakimpekua kila mtu, lakini hawakumpekua yeye."
+   },
+   {
+    "question": "Kwa nini Betsie alitaka kumshukuru Mungu kwa ajili ya viroboto?",
+    "answer": "Kwa sababu Biblia inasema tushukuru kwa kila jambo. Baadaye dada hao waligundua kwamba walinzi walikaa mbali, kwa hiyo masomo ya Biblia yaliweza kuendelea."
+   },
+   {
+    "question": "Ni kitu gani unachoweza kumshukuru Mungu kwacho leo, hata kama siku ni ngumu?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba tunaweza kuutafuta wema wa Mungu na kushukuru katika kila hali."
+   }
+  ],
+  "body_text": "“Shukuruni kwa kila jambo.” — kutoka 1 Wathesalonike 5 Ravensbrück ilikuwa kambi kubwa mno ya wanawake. Ilikuwa imejaa watu, ilikuwa na baridi na uchafu, na chakula hakikutosha kamwe. Wafungwa wapya walipofika, karibu kila kitu walichokuwa nacho kilichukuliwa, nao wakapewa gauni jembamba la kuvaa. Lakini Corrie aliificha Biblia yake ndogo chini ya gauni lake. Walinzi walikuwa wakimpekua kila mtu, lakini hawakumpekua yeye. Corrie aliamini kwamba Mungu alikuwa amemficha. Dada hao walipelekwa kuishi katika Banda Namba 28, kibanda kirefu chenye vitanda vya ghorofa tatu. Baadaye Corrie aliandika kwamba mwishoni wanawake wapatao elfu moja na mia nne walibanwa humo. Wanawake wawili au zaidi walilazimika kushiriki kila kitanda chembamba. Kila siku, Corrie na Betsie waliwasomea Biblia wanawake waliokuwa karibu nao, wakati mwingine mara mbili kwa siku. Wanawake kutoka Uholanzi, Ufaransa, Poland, Urusi na sehemu nyingine nyingi walisikiliza. Walipokosa kuzungumza lugha moja, dada hao walitaja tu jina la Yesu, na nyuso za wanawake hao zikang'aa. Miaka mingi baadaye, Corrie alisimulia hadithi kuhusu jambo hili. Banda lile lilikuwa limejaa viroboto, naye Corrie aliwachukia. Lakini Betsie alisema kwamba wanapaswa kumshukuru Mungu kwa kila jambo, hata kwa viroboto! Baadaye waligundua kwamba walinzi walikaa mbali na sehemu yao ya banda, kwa hiyo masomo ya Biblia yaliweza kuendelea. Sababu yake, Corrie alisema, ilikuwa wale viroboto. Corrie pia alikuwa na chupa ndogo ya matone ya vitamini. Kila siku aliwapa wanawake waliokuwa karibu naye matone machache. Corrie aliandika kwamba chupa ile iliendelea kutoa matone kwa wiki nyingi, muda mrefu zaidi kuliko ilivyopaswa, mpaka rafiki mmoja alipoleta vitamini zaidi kutoka hospitali ya kambi. Ndipo ikakauka. Hata katika mahali pabaya kuliko pote, Corrie na Betsie waligawana walichokuwa nacho na kumshukuru Mungu. Mambo yanapokuwa magumu kwako, bado unaweza kutafuta kitu cha kumshukuru Mungu kwacho, na kitu cha kuwagawia wengine. Mungu mpendwa, asante kwa ajili ya Neno lako, Biblia. Nisaidie kukushukuru hata katika siku ngumu, na kuwagawia wengine nilicho nacho. Amina.",
+  "word_count": 305
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "sw"
+  ],
+  "order": 10,
+  "title": "Betsie Aenda Nyumbani",
+  "body_html": "<blockquote>“Nikipanda mbinguni, wewe uko huko; nikifanya kitanda changu kuzimuni, wewe uko huko.” — kutoka Zaburi 139</blockquote> <p>Betsie alikuwa mtu mpole kuliko wote katika Banda Namba 28. Alikuwa dhaifu kuliko Corrie, lakini kwa namna fulani ndiye aliyekuwa na nguvu zaidi kati yao wawili, kwa sababu imani yake ilikuwa ya kina sana na tulivu. Aliwaonea huruma hata watu waliowatendea ukatili.</p> <p>Jioni dada hao walipanga mipango pamoja. Wakishafika nyumbani, wangefungua nyumba kwa ajili ya watu wanaotoka kambini wasio na mahali pa kwenda. Na wangekwenda Amerika kumwambia kila mtu mambo ambayo Mungu aliwatendea.</p> <p>Lakini Betsie alizidi kudhoofika. Aliugua sana kwa homa kali, na mwishowe hakuweza kutembea tena. Alibebwa kwa machela hadi hospitali ya kambi. Alipokuwa akibebwa, mwanamke mmoja wa Poland alipiga magoti kando yake akaomba. Alasiri ile Corrie alimtembelea mara moja zaidi.</p> <p>Asubuhi iliyofuata, tarehe 16 Desemba 1944, Corrie alichungulia kupitia dirisha la hospitali. Betsie alikuwa amefariki. Alikuwa na miaka hamsini na tisa. Corrie alipokwenda kumwona, aligundua kwamba uso wa Betsie ulionekana wenye amani na wa ujana tena, kana kwamba Mungu alikuwa amempa kuona mbingu kidogo.</p> <p>Katika kitabu kilichoandikwa miaka mingi baadaye, Corrie alikumbuka Betsie akisema kwamba lazima wawaambie watu kwamba upendo wa Mungu ni wa kina kuliko hata shimo lenye kina kirefu kuliko yote. Usiku ule mwanamke mmoja wa Urusi hakuwa na mahali pa kulala. Corrie alimpa nafasi pale Betsie alipokuwa akilala, na wanawake hao wawili wakakumbatiana.</p> <p>Inahuzunisha sana mtu tunayempenda anapofariki. Lakini kwa kila aliye wa Yesu, kifo si mwisho. Hakuna mahali penye kina kirefu au giza kiasi kwamba Mungu hayupo tayari, na yeye haachi kamwe kutupenda.</p> <p><em>Mungu mpendwa, asante kwamba upendo wako una kina kuliko mahali penye kina kirefu kuliko pote. Tafadhali wafariji wote wanaommisi mtu wanayempenda. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Corrie na Betsie walipanga mipango gani pamoja?",
+    "answer": "Kufungua nyumba kwa ajili ya watu wanaotoka kambini wasio na mahali pa kwenda, na kusafiri hadi Amerika kuwaambia watu mambo ambayo Mungu aliwatendea."
+   },
+   {
+    "question": "Corrie alimfanyia nini yule mwanamke wa Urusi aliyekosa mahali pa kulala?",
+    "answer": "Alimpa nafasi pale Betsie alipokuwa akilala."
+   },
+   {
+    "question": "Inakusaidiaje kujua kwamba upendo wa Mungu una kina kuliko mahali popote penye giza?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba hakuna kitu, hata kifo, kinachoweza kututenga na upendo wa Mungu."
+   }
+  ],
+  "body_text": "“Nikipanda mbinguni, wewe uko huko; nikifanya kitanda changu kuzimuni, wewe uko huko.” — kutoka Zaburi 139 Betsie alikuwa mtu mpole kuliko wote katika Banda Namba 28. Alikuwa dhaifu kuliko Corrie, lakini kwa namna fulani ndiye aliyekuwa na nguvu zaidi kati yao wawili, kwa sababu imani yake ilikuwa ya kina sana na tulivu. Aliwaonea huruma hata watu waliowatendea ukatili. Jioni dada hao walipanga mipango pamoja. Wakishafika nyumbani, wangefungua nyumba kwa ajili ya watu wanaotoka kambini wasio na mahali pa kwenda. Na wangekwenda Amerika kumwambia kila mtu mambo ambayo Mungu aliwatendea. Lakini Betsie alizidi kudhoofika. Aliugua sana kwa homa kali, na mwishowe hakuweza kutembea tena. Alibebwa kwa machela hadi hospitali ya kambi. Alipokuwa akibebwa, mwanamke mmoja wa Poland alipiga magoti kando yake akaomba. Alasiri ile Corrie alimtembelea mara moja zaidi. Asubuhi iliyofuata, tarehe 16 Desemba 1944, Corrie alichungulia kupitia dirisha la hospitali. Betsie alikuwa amefariki. Alikuwa na miaka hamsini na tisa. Corrie alipokwenda kumwona, aligundua kwamba uso wa Betsie ulionekana wenye amani na wa ujana tena, kana kwamba Mungu alikuwa amempa kuona mbingu kidogo. Katika kitabu kilichoandikwa miaka mingi baadaye, Corrie alikumbuka Betsie akisema kwamba lazima wawaambie watu kwamba upendo wa Mungu ni wa kina kuliko hata shimo lenye kina kirefu kuliko yote. Usiku ule mwanamke mmoja wa Urusi hakuwa na mahali pa kulala. Corrie alimpa nafasi pale Betsie alipokuwa akilala, na wanawake hao wawili wakakumbatiana. Inahuzunisha sana mtu tunayempenda anapofariki. Lakini kwa kila aliye wa Yesu, kifo si mwisho. Hakuna mahali penye kina kirefu au giza kiasi kwamba Mungu hayupo tayari, na yeye haachi kamwe kutupenda. Mungu mpendwa, asante kwamba upendo wako una kina kuliko mahali penye kina kirefu kuliko pote. Tafadhali wafariji wote wanaommisi mtu wanayempenda. Amina.",
+  "word_count": 277
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "sw"
+  ],
+  "order": 11,
+  "title": "Huru!",
+  "body_html": "<blockquote>“Nafsi yetu imeokoka kama ndege katika mtego wa wawindaji; mtego umevunjika, nasi tukaokoka.” — kutoka Zaburi 124</blockquote> <p>Siku tatu baada ya Betsie kufariki, Corrie alisikia jina lake likiitwa wafungwa walipopangwa mstari ili wahesabiwe. Alikuwa akiachiliwa! Lakini kwanza ilimbidi angoje katika hospitali ya kambi mpaka miguu yake iliyovimba ipone.</p> <p>Hospitalini alilala msichana mdogo aitwaye Oelie, aliyekuwa na ulemavu wa akili. Alikuwa mgonjwa sana na alikuwa akimlilia mama yake. Usiku baada ya usiku Corrie alimweleza habari za Yesu. Usiku wa mwisho Oelie aliweza kusema, kwa maneno yake mwenyewe, kwamba Yesu alimpenda na alikuwa akimwandalia mahali. Ndipo Corrie alipoelewa kwa nini alikuwa amelazimika kungoja. Miaka ile yote ya kufundisha madarasa yake maalum huko Haarlem ilikuwa imeleta jambo hili.</p> <p>Mwishowe Corrie alitoka nje kupitia lango. Safari ya kurudi nyumbani kupitia Ujerumani ilichukua siku kadhaa. Hakuwa na chakula karibu kabisa, na baadhi ya watu hawakumtendea wema, lakini wengine walimsaidia na kumpa chakula.</p> <p>Katika mji wa Groningen nchini Uholanzi, alikwenda hospitalini. Mmoja wa wauguzi aliwahi kuwa kiongozi katika vikundi vya wasichana vya Corrie! Walimpa chakula, wakamwogesha na kumpa nguo safi, naye akalala katika kitanda halisi. Aliposikia muziki tena, alilia. Alihisi kwamba maisha yake yamerudishwa kwake kama zawadi.</p> <p>Miaka mingi baadaye Corrie aliambiwa kwamba aliachiliwa kwa makosa. Hakuna anayejua kwa hakika. Lakini Corrie hakuwahi kutilia shaka ni nani aliyemweka huru. Alikuwa Mungu.</p> <p>Kama ndege aliyetolewa mtegoni, Corrie alikuwa huru. Wakati mwingine hatujui hasa jinsi Mungu anavyotusaidia, lakini sikuzote tunaweza kumwambia asante kwa ajili ya msaada huo.</p> <p><em>Mungu mpendwa, asante kwa kila mara uliponisaidia, hata nisipojua jinsi ulivyonisaidia. Nisaidie kuyatumia maisha yangu kuwasaidia wengine. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Oelie alikuwa nani, na Corrie alimfanyia nini?",
+    "answer": "Msichana mdogo aliyekuwa mgonjwa sana mwenye ulemavu wa akili. Corrie alimweleza habari za Yesu kila usiku, mpaka Oelie akaweza kusema kwamba Yesu alimpenda."
+   },
+   {
+    "question": "Corrie alikutana na nani katika hospitali huko Groningen?",
+    "answer": "Muuguzi mmoja aliyewahi kuwa kiongozi katika vikundi vya wasichana vya Corrie."
+   },
+   {
+    "question": "Ni jambo gani Mungu amekusaidia ambalo unaweza kumshukuru kwalo?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu hutuweka huru na kutusaidia, hata tusipoelewa jinsi gani."
+   }
+  ],
+  "body_text": "“Nafsi yetu imeokoka kama ndege katika mtego wa wawindaji; mtego umevunjika, nasi tukaokoka.” — kutoka Zaburi 124 Siku tatu baada ya Betsie kufariki, Corrie alisikia jina lake likiitwa wafungwa walipopangwa mstari ili wahesabiwe. Alikuwa akiachiliwa! Lakini kwanza ilimbidi angoje katika hospitali ya kambi mpaka miguu yake iliyovimba ipone. Hospitalini alilala msichana mdogo aitwaye Oelie, aliyekuwa na ulemavu wa akili. Alikuwa mgonjwa sana na alikuwa akimlilia mama yake. Usiku baada ya usiku Corrie alimweleza habari za Yesu. Usiku wa mwisho Oelie aliweza kusema, kwa maneno yake mwenyewe, kwamba Yesu alimpenda na alikuwa akimwandalia mahali. Ndipo Corrie alipoelewa kwa nini alikuwa amelazimika kungoja. Miaka ile yote ya kufundisha madarasa yake maalum huko Haarlem ilikuwa imeleta jambo hili. Mwishowe Corrie alitoka nje kupitia lango. Safari ya kurudi nyumbani kupitia Ujerumani ilichukua siku kadhaa. Hakuwa na chakula karibu kabisa, na baadhi ya watu hawakumtendea wema, lakini wengine walimsaidia na kumpa chakula. Katika mji wa Groningen nchini Uholanzi, alikwenda hospitalini. Mmoja wa wauguzi aliwahi kuwa kiongozi katika vikundi vya wasichana vya Corrie! Walimpa chakula, wakamwogesha na kumpa nguo safi, naye akalala katika kitanda halisi. Aliposikia muziki tena, alilia. Alihisi kwamba maisha yake yamerudishwa kwake kama zawadi. Miaka mingi baadaye Corrie aliambiwa kwamba aliachiliwa kwa makosa. Hakuna anayejua kwa hakika. Lakini Corrie hakuwahi kutilia shaka ni nani aliyemweka huru. Alikuwa Mungu. Kama ndege aliyetolewa mtegoni, Corrie alikuwa huru. Wakati mwingine hatujui hasa jinsi Mungu anavyotusaidia, lakini sikuzote tunaweza kumwambia asante kwa ajili ya msaada huo. Mungu mpendwa, asante kwa kila mara uliponisaidia, hata nisipojua jinsi ulivyonisaidia. Nisaidie kuyatumia maisha yangu kuwasaidia wengine. Amina.",
+  "word_count": 257
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "corrie-ten-boom-a-life-children",
+   "sw"
+  ],
+  "order": 12,
+  "title": "Mkono Ulionyooshwa",
+  "body_html": "<blockquote>“Wapendeni adui zenu, waombeeni wanaowaudhi.” — kutoka Mathayo 5</blockquote> <p>Vita vilipoisha mwezi Mei 1945, Uholanzi ilikuwa huru hatimaye. Wiki chache tu baadaye, Corrie alifanya jambo la ujasiri mkubwa. Alimwandikia barua mtu ambaye, kama alivyoambiwa, aliisaliti familia yake kwa polisi. Alimwambia kwamba amemsamehe, kwamba alikuwa akimwombea, na kwamba Yesu angeweza kumfanya kuwa mtu mpya.</p> <p>Corrie aliikumbuka mipango aliyokuwa amepanga pamoja na Betsie. Alifungua nyumba kwa ajili ya watu waliorudi kutoka vitani wakiwa wameumizwa na wasio na mahali pa kwenda. Miaka michache baadaye alifungua hata nyumba nyingine huko Ujerumani, kwa ajili ya watu wa huko waliopoteza nyumba zao.</p> <p>Corrie alisimulia hadithi kuhusu siku moja mwaka 1947 huko Munich, Ujerumani. Baada ya kuzungumza kuhusu msamaha wa Mungu, mwanamume mmoja alimjia. Alimtambua: alikuwa mlinzi huko Ravensbrück. Alisema kwamba amekuwa Mkristo, akanyoosha mkono wake. Corrie aligundua kwamba hawezi kuushika. Basi aliomba kimyakimya akamwomba Yesu amsaidie. Kisha akanyoosha mkono wake, na walipopeana mikono, alihisi upendo wa Mungu ukijaza moyo wake. Aliweza kumsamehe.</p> <p>Kwa zaidi ya miaka thelathini Corrie alisafiri duniani kote, akizungumza katika nchi zaidi ya sitini. Hadithi yake ikawa kitabu maarufu na filamu, na mti ulipandwa huko Yerusalemu kwa heshima yake. Kila mahali alipokwenda, aliwaambia watu kwamba upendo wa Mungu una nguvu kuliko mahali penye giza kuliko pote.</p> <p>Alipokuwa mzee sana, Corrie aliishi California. Alipatwa na kiharusi mara kadhaa na hakuweza kuongea karibu kabisa katika miaka yake mitano ya mwisho, na marafiki wema walimtunza. Alifariki tarehe 15 Aprili 1983. Ilikuwa siku yake ya kuzaliwa ya tisini na moja.</p> <p>Kuwasamehe watu wanaotuumiza kunaweza kuwa kugumu sana. Corrie aligundua kwamba hawezi kufanya hivyo kwa nguvu zake mwenyewe, lakini Mungu alimpa upendo aliouhitaji. Atakusaidia nawe kusamehe, ukimwomba.</p> <p><em>Mungu mpendwa, asante kwa ajili ya Corrie na Betsie ten Boom, na kwa yote uliyoyatenda kupitia kwao. Ninapoona ni vigumu kusamehe, tafadhali nipe upendo wako. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Corrie aliandika nini katika barua yake kwa mtu aliyeisaliti familia yake?",
+    "answer": "Kwamba amemsamehe, kwamba alikuwa akimwombea, na kwamba Yesu angeweza kumfanya kuwa mtu mpya."
+   },
+   {
+    "question": "Nini kilitokea Corrie alipomwomba Yesu amsaidie kupeana mkono na yule mlinzi?",
+    "answer": "Alipounyoosha mkono wake, alihisi upendo wa Mungu ukijaza moyo wake, naye akaweza kumsamehe."
+   },
+   {
+    "question": "Je, kuna mtu unayehitaji msaada wa Mungu ili umsamehe?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba kusamehe kunaweza kuwa kugumu sana, lakini Mungu hutupa upendo wake ili tuweze kusamehe."
+   }
+  ],
+  "body_text": "“Wapendeni adui zenu, waombeeni wanaowaudhi.” — kutoka Mathayo 5 Vita vilipoisha mwezi Mei 1945, Uholanzi ilikuwa huru hatimaye. Wiki chache tu baadaye, Corrie alifanya jambo la ujasiri mkubwa. Alimwandikia barua mtu ambaye, kama alivyoambiwa, aliisaliti familia yake kwa polisi. Alimwambia kwamba amemsamehe, kwamba alikuwa akimwombea, na kwamba Yesu angeweza kumfanya kuwa mtu mpya. Corrie aliikumbuka mipango aliyokuwa amepanga pamoja na Betsie. Alifungua nyumba kwa ajili ya watu waliorudi kutoka vitani wakiwa wameumizwa na wasio na mahali pa kwenda. Miaka michache baadaye alifungua hata nyumba nyingine huko Ujerumani, kwa ajili ya watu wa huko waliopoteza nyumba zao. Corrie alisimulia hadithi kuhusu siku moja mwaka 1947 huko Munich, Ujerumani. Baada ya kuzungumza kuhusu msamaha wa Mungu, mwanamume mmoja alimjia. Alimtambua: alikuwa mlinzi huko Ravensbrück. Alisema kwamba amekuwa Mkristo, akanyoosha mkono wake. Corrie aligundua kwamba hawezi kuushika. Basi aliomba kimyakimya akamwomba Yesu amsaidie. Kisha akanyoosha mkono wake, na walipopeana mikono, alihisi upendo wa Mungu ukijaza moyo wake. Aliweza kumsamehe. Kwa zaidi ya miaka thelathini Corrie alisafiri duniani kote, akizungumza katika nchi zaidi ya sitini. Hadithi yake ikawa kitabu maarufu na filamu, na mti ulipandwa huko Yerusalemu kwa heshima yake. Kila mahali alipokwenda, aliwaambia watu kwamba upendo wa Mungu una nguvu kuliko mahali penye giza kuliko pote. Alipokuwa mzee sana, Corrie aliishi California. Alipatwa na kiharusi mara kadhaa na hakuweza kuongea karibu kabisa katika miaka yake mitano ya mwisho, na marafiki wema walimtunza. Alifariki tarehe 15 Aprili 1983. Ilikuwa siku yake ya kuzaliwa ya tisini na moja. Kuwasamehe watu wanaotuumiza kunaweza kuwa kugumu sana. Corrie aligundua kwamba hawezi kufanya hivyo kwa nguvu zake mwenyewe, lakini Mungu alimpa upendo aliouhitaji. Atakusaidia nawe kusamehe, ukimwomba. Mungu mpendwa, asante kwa ajili ya Corrie na Betsie ten Boom, na kwa yote uliyoyatenda kupitia kwao. Ninapoona ni vigumu kusamehe, tafadhali nipe upendo wako. Amina.",
+  "word_count": 295
+ }
+}
+]
