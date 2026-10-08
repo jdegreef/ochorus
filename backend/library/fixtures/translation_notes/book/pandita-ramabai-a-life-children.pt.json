@@ -3,6 +3,7 @@
  "slug": "pandita-ramabai-a-life-children",
  "language": "pt",
  "job_issue": 5547,
+ "pull_request": 5579,
  "note": [
   "The English retelling does not quote a Bible: each chapter's opening blockquote is a simplified paraphrase for 8–12 year olds, cited loosely (“— from Deuteronomy 6”), and the body echoes verses in the same retold register. The Portuguese renders those paraphrases in the same simple, child-friendly wording (as the shipped pt children's editions do) rather than pasting a Portuguese Bible text, so they are self_rendered; api.takeroot.bible was egress-blocked from this session in any case.",
   "Ramabai's own words on Manorama's death quote Job 1:21; that line is pasted verbatim from talks-to-the-farmer.pt.json. Hebrews 11:8 is Ramabai's allusion (“as Abraham, not knowing whither I went”), rendered plainly. Distances are given in kilometres (four thousand miles → more than six thousand kilometres, also in chapter 4's title). AI-translated in-session; awaiting native review."
