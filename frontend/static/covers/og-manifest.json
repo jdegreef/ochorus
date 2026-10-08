@@ -3441,6 +3441,16 @@
 			"layout": "rail/rust",
 			"bar": 0
 		},
+		"confessions-teens": {
+			"ground": "46177b251e1338b5612569dec6a4df9ccaae2be90a414ac4e6a1cefb2da17227",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"corrie-ten-boom-a-life": {
 			"ground": "c1e02879863a1488f4e32c44279e90a6c4886a8262d287710515164e391ea4a0",
 			"style": "house",
@@ -6164,6 +6174,16 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "band/teal",
+			"bar": 0
+		},
+		"grace-abounding-teens": {
+			"ground": "90e333e1cb8c434e7354ee8784eaad8b43398454185ae638f39fc7b0e6880f2d",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0
 		},
 		"grace-for-grace-2": {

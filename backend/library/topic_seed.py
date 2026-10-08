@@ -600,6 +600,8 @@ TOPICS = [
             "mary-slessor-a-life-teens",
             "pandita-ramabai-a-life-teens",
             "watchman-nee-a-life-teens",
+            "grace-abounding-teens",
+            "confessions-teens",
         ],
     ),
     (
