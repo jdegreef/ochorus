@@ -33,6 +33,7 @@ from .http_cache import (
 )
 from .hubs import Hubs
 from .languages import entry as language_entry
+from .leader_guides import chapter_extras, guide_editions, guide_for
 from .localization import language_from_request
 from .models import (
     SERMON_CARD_DEFER,
@@ -1004,6 +1005,56 @@ def _audience_people(series_rows: list[dict], language: str) -> list[dict]:
     return list(people.values())
 
 
+class BookGuideView(PublicContentCacheMixin, APIView):
+    """A young-reader edition's printable leader's guide (/books/<slug>/guide).
+
+    The guide's own file (``library/leader_guides``) holds the leader's intro
+    and, per week, a summary, a memory verse and an activity; each week is
+    joined here to its chapter's title, study questions, opening verse and
+    closing prayer, which the book already carries. 404 when the edition is
+    unpublished or has no guide — never an English fallback.
+    """
+
+    def get(self, request, slug):
+        language = _language(request)
+        guide = guide_for(slug, language)
+        if guide is None:
+            raise Http404("No leader's guide for this edition")
+        book = get_object_or_404(_book_shelf(language), slug=slug)
+        chapters = {
+            order: (title, questions, body)
+            for order, title, questions, body in book.chapters.values_list(
+                "order", "title", "study_questions", "body_html"
+            )
+        }
+        weeks = []
+        for week in guide["weeks"]:
+            title, questions, body = chapters.get(week["chapter"], ("", [], ""))
+            weeks.append(
+                {
+                    "chapter": week["chapter"],
+                    "title": title,
+                    "summary": week["summary"],
+                    "memory_verse": week["memory_verse"],
+                    "activity": week["activity"],
+                    "questions": questions or [],
+                    **chapter_extras(body),
+                }
+            )
+        ctx = {"request": request, "language": language, "book_topics": {}}
+        return Response(
+            {
+                "book": BookListSerializer(book, context=ctx).data,
+                # The page's hreflang: every language this work has a guide in.
+                "available_languages": sorted(
+                    lang for s, lang in guide_editions() if s == slug
+                ),
+                "intro": guide["intro"],
+                "weeks": weeks,
+            }
+        )
+
+
 class AudienceShelfView(PublicContentCacheMixin, APIView):
     """Everything written for one young audience in the requested language —
     the /young-readers/ and /teens/ hubs, which gather what /series, /originals,
@@ -1027,8 +1078,9 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
     chapter (``_audience_people``). ``start`` is the one book a newcomer should
     open first (``AUDIENCE_STARTS``);
     ``printable`` lists the slugs among them with a free PDF / EPUB
-    (``export_policy``), for the page's "print it" line; ``languages``, every
-    language the hub has something in (its hreflang). Nothing here falls back
+    (``export_policy``), for the page's "print it" line; ``guides``, the book
+    cards among them with a printable leader's guide (``leader_guides``);
+    ``languages``, every language the hub has something in (its hreflang). Nothing here falls back
     to English: a language with no rows gets empty lists, and the page hides.
     """
 
@@ -1092,6 +1144,23 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
 
         printable = sorted(slug for slug in claimed if (slug, language) in EXPORT_EDITIONS)
 
+        # The hub's books that have a printable leader's guide, in shelf order:
+        # the series' volumes, then the retold editions, then the rest.
+        guided = {s for s, lang in guide_editions() if lang == language}
+        guide_slugs = [
+            s
+            for s in dict.fromkeys(
+                [*(s for row in series for s in row["books"]), *(b.slug for b in editions + more)]
+            )
+            if s in guided
+        ]
+        guide_books = (
+            {b.slug: b for b in _book_shelf(language).filter(slug__in=guide_slugs)}
+            if guide_slugs
+            else {}
+        )
+        guides = [guide_books[s] for s in guide_slugs if s in guide_books]
+
         # The topic's articles here, in its curator's order — the teens' Big
         # Questions (doubt, suffering, the resurrection…) that meet a reader at
         # the question and point on to the books. Same rows the topic page shows.
@@ -1119,6 +1188,7 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
                 "more": BookListSerializer(more, many=True, context=ctx).data,
                 "plans": PlanListSerializer(plans, many=True, context=plan_ctx).data,
                 "articles": ArticleListSerializer(articles, many=True, context=article_ctx).data,
+                "guides": BookListSerializer(guides, many=True, context=ctx).data,
                 "topic": {"slug": topic.slug, "title": topic.title_for(language)} if topic else None,
                 "start": start,
                 "printable": printable,

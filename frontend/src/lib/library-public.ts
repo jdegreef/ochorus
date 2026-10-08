@@ -342,6 +342,11 @@ export interface BookDetail extends BookSummary {
 	 * build omits it cleanly.
 	 */
 	guides?: ArticleLink[];
+	/**
+	 * A printable leader's guide exists for this edition (/books/<slug>/guide —
+	 * `getBookGuide`). Optional so an API running behind this build omits it.
+	 */
+	has_guide?: boolean;
 }
 
 /** An article surfaced on another page that links to it — a reader's guide on
@@ -1464,6 +1469,9 @@ export interface AudienceShelf {
 	/** The audience topic's articles here, in its curator's order — the teens'
 	 *  Big Questions. Optional: an API behind this build omits it. */
 	articles?: ArticleSummary[];
+	/** The hub's books with a printable leader's guide in this language, in
+	 *  shelf order. Optional: an API behind this build omits it. */
+	guides?: BookSummary[];
 }
 
 /** A reading age — a series' own fields, which a book's reuse, so
@@ -1475,6 +1483,45 @@ export interface Ages {
 
 export const getAudienceShelf = (audience: HubAudience, language = 'en', f?: Fetch) =>
 	apiFetch<AudienceShelf>(`/api/library/audiences/${audience}/?language=${language}`, {}, f);
+
+/** One week of a leader's guide: the guide file's own summary, memory verse
+ *  and activity, joined to its chapter's title, answered questions, opening
+ *  verse and closing prayer (`BookGuideView`). `verse` / `prayer` are "" when
+ *  the chapter has none. All plain text. */
+export interface GuideWeek {
+	chapter: number;
+	title: string;
+	summary: string;
+	memory_verse: { text: string; reference: string };
+	activity: { title: string; materials: string; steps: string[] };
+	questions: { question: string; answer: string }[];
+	verse: string;
+	prayer: string;
+}
+
+/** A young-reader edition's printable leader's guide. */
+export interface BookGuide {
+	book: BookSummary;
+	/** Every language this work has a guide in — the page's hreflang. */
+	available_languages: string[];
+	intro: string[];
+	weeks: GuideWeek[];
+}
+
+/** A leader's guide in exactly `language` — no English fallback: a language
+ *  with no guide is a 404, as the API answers. */
+export const getBookGuide = (slug: string, language = 'en', f?: Fetch) =>
+	apiFetch<BookGuide>(
+		`/api/library/books/${slug}/guide/?language=${encodeURIComponent(language)}`,
+		{},
+		f
+	);
+
+/** The slugs the hubs list with a leader's guide, each once, in hub order —
+ *  the guide route's prerender entries. */
+export const guideSlugs = (shelves: Pick<AudienceShelf, 'guides'>[]): string[] => [
+	...new Set(shelves.flatMap((s) => (s.guides ?? []).map((b) => b.slug)))
+];
 
 /** Each hub's `languages` without building either shelf (`AudienceLanguagesView`). */
 export const listAudienceLanguages = (f?: Fetch) =>

@@ -41,7 +41,13 @@
 		 * the teens hub's cards. The link's label names title and author only,
 		 * so the hook rides along as its description.
 		 */
-		hook = ''
+		hook = '',
+		/**
+		 * Where the card goes instead of the book's page, and the verb its hover
+		 * overlay says — the hubs' leader's-guide cards open `/books/<slug>/guide`.
+		 */
+		href = '',
+		cta = ''
 	}: {
 		book: CoverBook;
 		showAuthor?: boolean;
@@ -50,6 +56,8 @@
 		showSeries?: boolean;
 		perChapter?: boolean;
 		hook?: string;
+		href?: string;
+		cta?: string;
 	} = $props();
 	const t = i18n.t;
 	const hookId = $props.id();
@@ -78,7 +86,7 @@
 </script>
 
 <a
-	href={localizeHref(`/books/${book.slug}`)}
+	href={localizeHref(href || `/books/${book.slug}`)}
 	id={anchor ? `author-${anchor}` : undefined}
 	class="book-card card-lift group"
 	style:scroll-margin-top={anchor ? 'calc(var(--pinned-offset, 5rem) + 0.5rem)' : undefined}
@@ -102,7 +110,7 @@
 		<span
 			class="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-end gap-1 rounded-b-card bg-gradient-to-t from-black/60 to-transparent px-3 pb-2 pt-6 text-small font-semibold text-white opacity-0 transition-opacity group-hover:opacity-100"
 		>
-			{t('book.beginReading')} <Arrow />
+			{cta || t('book.beginReading')} <Arrow />
 		</span>
 	</div>
 

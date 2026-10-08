@@ -52,6 +52,7 @@ const BROWSE_PAGES: { label: string; file: string }[] = [
  */
 const LEAF_PAGES: { label: string; file: string }[] = [
 	{ label: 'book', file: 'routes/books/[slug]/+page.svelte' },
+	{ label: 'leader guide', file: 'routes/books/[slug]/guide/+page.svelte' },
 	{ label: 'author', file: 'routes/authors/[slug]/+page.svelte' },
 	{ label: 'era', file: 'routes/biographies/era/[era]/+page.svelte' },
 	// Both hub routes are thin wrappers; the shell lives in the component.
