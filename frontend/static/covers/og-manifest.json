@@ -5010,6 +5010,33 @@
 				552
 			]
 		},
+		"fr/amanda-smith-autobiography-teens": {
+			"ground": "8b8e1e4eb2f00bbf3e16380faf9ba90159743a25cf7053601b45fdbf88628c4a",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[126, 310, 474, 374],
+					[86, 365, 514, 429],
+					[64, 420, 536, 484]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				258,
+				537
+			]
+		},
 		"fr/around-the-wicket-gate": {
 			"ground": "8ee1c35a9c120b72ab5ff4fd435f081168a71c7ec6274758ade9b1356e4a02d8",
 			"style": "revival",
