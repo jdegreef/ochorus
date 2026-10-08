@@ -1,0 +1,106 @@
+{
+ "kind": "book",
+ "slug": "corrie-ten-boom-a-life-children",
+ "language": "sw",
+ "job_issue": 5557,
+ "pull_request": null,
+ "note": [
+  "The English epigraphs are loose modern paraphrases cited by chapter only (“from Psalm 122”); the Swahili keeps that shape (“— kutoka Zaburi 122”). Each is rendered in the Swahili Union Version (SUV) tradition the shipped sw corpus quotes. Where a shipped *.sw.json already carries the SUV words they were pasted verbatim and the row is `mined` with that file; otherwise the row is `self_rendered` in SUV register (from memory of the SUV, no reachable PD text) and needs a native check.",
+  "Self-rendered choices worth a reviewer's eye: Psalm 91:2 uses SUV “Nitasema, Bwana ndiye kimbilio langu” (the-god-of-all-comfort.sw has a freer “Nitamwambia Bwana, ‘Ndiwe kimbilio langu…’”); Psalm 32:7 keeps SUV “sitara yangu” in the epigraph while the chapter body says the plainer “mahali pa kujificha” (hiding place) a child will follow; Enoch in chapter 7 is “Henoko … alikwenda pamoja na Mungu” (Genesis 5:24).",
+  "Terms: Jewish people = Wayahudi; Nazis = Wanazi; the hiding place “the Angels’ Crib” = “Kitanda cha Malaika”; the wall sign “Jesus is Victor” = “Yesu ni Mshindi”; the cat is SUV “Maher-shalal-hash-bazi” (Isaiah 8:1); “people with learning disabilities” = “watu wenye ulemavu wa akili”; series name follows series.json (“Taswira za Ujasiri”). No clock times needed conversion. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 122:6",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "library/fixtures/content/sermons/our-duty-to-israel.sw.json"
+  },
+  {
+   "reference": "Psalm 68:6a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Luke 16:10a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "amanda-smith-autobiography-children.sw.json"
+  },
+  {
+   "reference": "Esther 4:14b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Psalm 32:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 91:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Psalm 91:2a",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalm 27:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Genesis 5:24a",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Isaiah 43:2a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "amanda-smith-autobiography-children.sw.json"
+  },
+  {
+   "reference": "1 Thessalonians 5:18a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "Psalm 139:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalm 124:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 5:44a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "godliness.sw.json"
+  }
+ ]
+}

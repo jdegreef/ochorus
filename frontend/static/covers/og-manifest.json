@@ -11324,6 +11324,16 @@
 			"layout": "rail/rust",
 			"bar": 0
 		},
+		"sw/corrie-ten-boom-a-life-children": {
+			"ground": "ea17e3cfcc9f6e360c4dd55b12f7fe15b85cb124b27a3edab73b3469877d7659",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"sw/days-of-heaven-upon-earth": {
 			"ground": "ce0c94b9e37f6cd7dc116c1e640202290b71f0033cd5a175a7711cd964749611",
 			"style": "revival",
