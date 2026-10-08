@@ -1,0 +1,107 @@
+{
+ "kind": "book",
+ "slug": "mary-slessor-a-life-children",
+ "language": "fr",
+ "job_issue": 5544,
+ "pull_request": null,
+ "note": [
+  "Scripture register is Louis Segond (1910), the register the shipped French corpus uses, checked verse by verse against the fra_lsg USFM on the ebible GitHub mirror. The English epigraphs (KJV-style or loose paraphrase, introduced “— from <Book> <chapter>”) are rendered “— d’après <Livre> <chapitre>” with Segond’s own wording and numbering (the English’s Psalm 30:5 is Segond 30:6); they carry no verse number, so the verse-consistency audit's (Book C:V) pairs never see them.",
+  "A `mined` row is an exact substring of the cited shipped French file (Segond wording, Segond punctuation kept inside the quotation). The self_rendered rows are Segond wording copied from the fra_lsg mirror that no shipped French file carries verbatim (Psalm 27:10, Proverbs 17:17a, Psalm 82:4), and the chapter 3 lesson echo “Me voici. Envoie-moi.” (block 7), a child-register echo of Isaiah 6:8. Chapter 11 block 5 quotes Psalm 103:4 (« qui délivre ta vie de la fosse ») where the English quotes the KJV “redeemeth thy life from destruction”. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 103:13",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "the-god-of-all-comfort.fr.json"
+  },
+  {
+   "reference": "Psalm 119:105",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "growing-in-wisdom.fr.json"
+  },
+  {
+   "reference": "Isaiah 6:8b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "holy-in-christ.fr.json"
+  },
+  {
+   "reference": "Isaiah 6:8b",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Psalm 27:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Psalm 73:26",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "days-of-heaven-upon-earth.fr.json"
+  },
+  {
+   "reference": "Joshua 1:9",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "the-christians-secret-of-a-happy-life-4.fr.json"
+  },
+  {
+   "reference": "Proverbs 17:17a",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalm 82:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Isaiah 40:11",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "the-god-of-all-comfort.fr.json"
+  },
+  {
+   "reference": "Matthew 5:9",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "days-of-heaven-upon-earth.fr.json"
+  },
+  {
+   "reference": "Psalm 30:6b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "cheque-book.fr.json"
+  },
+  {
+   "reference": "Psalm 103:4a",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 11,
+   "source_file": "days-of-heaven-upon-earth.fr.json"
+  },
+  {
+   "reference": "2 Corinthians 12:9a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "cheque-book.fr.json"
+  }
+ ]
+}
