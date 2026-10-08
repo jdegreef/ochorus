@@ -186,7 +186,7 @@ CORRECTIONS: dict[str, dict] = {
             7: 'Holiness and Glory',
             8: 'Holiness and Obedience',
             9: 'Holiness and Indwelling',
-            10: 'Holiness and Meditation',
+            10: 'Holiness and Mediation',  # 'Meditation' was a typo: the day is about the high priest as Mediator
             11: 'Holiness and Separation',
             12: 'The Holy One of Israel',
             13: 'The Thrice Holy One',
