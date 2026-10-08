@@ -32,7 +32,8 @@ class Command(BaseCommand):
 
         added = updated = missing = 0
         for book_slug, members in BOOK_PEOPLE:
-            for i, (author_slug, role, *chapter) in enumerate(members):
+            for i, member in enumerate(members):
+                author_slug, role, chapter = (*member, None)[:3]
                 person = authors.get(author_slug)
                 if person is None:
                     # A bio that hasn't landed yet — seed can run ahead of it.
@@ -49,7 +50,7 @@ class Command(BaseCommand):
                     defaults={
                         "role": role,
                         "sort_order": i,
-                        "chapter": chapter[0] if chapter else None,
+                        "chapter": chapter,
                     },
                 )
                 added += created

@@ -32,7 +32,7 @@ from .models import (
     TopicTranslation,
 )
 from .serializers import AUDIENCE_EDITION_SUFFIX, EDITION_SUFFIXES
-from .views import AUDIENCE_STARTS, AUDIENCE_TOPICS
+from .views import _STORY_TITLE_SEP, AUDIENCE_STARTS, AUDIENCE_TOPICS
 
 
 class AudienceShelfTests(TestCase):
@@ -278,6 +278,23 @@ class AudienceShelfTests(TestCase):
                 if surname[person] not in titles.get(chapter, ""):
                     wrong.append((slug, person, chapter))
         self.assertEqual(wrong, [])
+
+    def test_every_story_chapter_splits_into_name_and_hook_in_every_language(self):
+        # The strip's name and hook are the chapter title split at its colon
+        # ("Name: The Boy Who Looked"). A translation that drops or swaps the
+        # separator would show its whole title as the hook — caught here, per
+        # edition, rather than on the page.
+        books = Path(__file__).parent / "fixtures" / "content" / "books"
+        unsplit = []
+        for slug, members in BOOK_PEOPLE:
+            chapters = {m[2] for m in members if len(m) == 3}
+            for path in sorted(books.glob(f"{slug}.*.json")) if chapters else ():
+                for row in json.loads(path.read_text())[1:]:
+                    f = row["fields"]
+                    parts = _STORY_TITLE_SEP.split(f["title"], maxsplit=1)
+                    if f["order"] in chapters and not (len(parts) == 2 and all(parts)):
+                        unsplit.append((path.name, f["order"], f["title"]))
+        self.assertEqual(unsplit, [])
 
 
 class BookAgesTests(TestCase):

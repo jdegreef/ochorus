@@ -947,22 +947,27 @@ def _audience_people(series_rows: list[dict], language: str) -> list[dict]:
     and a chapter told about two people (Jim and Elisabeth Elliot) is one face,
     the first person's."""
     order = {slug: i for i, slug in enumerate(s for row in series_rows for s in row["books"])}
-    if not order:
-        return []
-    members = (
+    members = sorted(
         BookPerson.objects.filter(book_slug__in=order, chapter__isnull=False)
         .select_related("person")
         .only("book_slug", "chapter", "sort_order", "person__slug", "person__name",
-              "person__photo_url")
+              "person__photo_url"),
+        key=lambda m: (order[m.book_slug], m.chapter, m.sort_order),
     )
+    if not members:
+        return []
+    # Only the story chapters, not every chapter of every hub series book.
     chapters = {
         (slug, n): (title, words)
         for slug, n, title, words in Chapter.objects.filter(
-            book__language=language, book__is_published=True, book__slug__in=order
+            book__language=language,
+            book__is_published=True,
+            book__slug__in={m.book_slug for m in members},
+            order__in={m.chapter for m in members},
         ).values_list("book__slug", "order", "title", "word_count")
     }
     people: dict[tuple[str, int], dict] = {}
-    for m in sorted(members, key=lambda m: (order[m.book_slug], m.chapter, m.sort_order)):
+    for m in members:
         key = (m.book_slug, m.chapter)
         if key in people or key not in chapters:
             continue
@@ -978,7 +983,9 @@ def _audience_people(series_rows: list[dict], language: str) -> list[dict]:
             "chapter": m.chapter,
             "words": words or None,
         }
-    return list(people.values())[:AUDIENCE_PEOPLE_MAX]
+        if len(people) == AUDIENCE_PEOPLE_MAX:
+            break
+    return list(people.values())
 
 
 class AudienceShelfView(PublicContentCacheMixin, APIView):
