@@ -107,6 +107,23 @@ EXPORT_PILOT = frozenset({
     ("c-s-lewis-a-life-children", "en"),
     ("elisabeth-elliot-a-life-children", "en"),
     ("samuel-ajayi-crowther-a-life-teens", "en"),
+    # The 2026-10 teen shelf. Seven more Portraits of Courage retellings for
+    # teens (ASV, or KJV for Elliot and Lewis) and the Ochorus Originals
+    # Anchored 1–2, Real Questions 1 and They Were Young 1–2 (BSB). All
+    # imprint-authored, so no About the Author page; every attribution opens
+    # "© Ochorus" and none quotes a version that needs a publisher's notice.
+    ("anchored-1", "en"),
+    ("anchored-2", "en"),
+    ("they-were-young-1", "en"),
+    ("they-were-young-2", "en"),
+    ("real-questions-1", "en"),
+    ("corrie-ten-boom-a-life-teens", "en"),
+    ("elisabeth-elliot-a-life-teens", "en"),
+    ("c-s-lewis-a-life-teens", "en"),
+    ("mary-slessor-a-life-teens", "en"),
+    ("pandita-ramabai-a-life-teens", "en"),
+    ("john-hyde-a-life-teens", "en"),
+    ("watchman-nee-a-life-teens", "en"),
     # The other Ochorus Originals in English: Key Teachings, Portraits of Courage
     # and the stand-alone books. Each attribution opens "© Ochorus" (Growing in
     # Wisdom, "© James DeGreef") and carries the NIV / NLT publishers' notices

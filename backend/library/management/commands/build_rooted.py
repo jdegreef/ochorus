@@ -888,8 +888,8 @@ ANCHORED: dict[int, dict[str, object]] = {
         "cover_url": "/covers/anchored-1.svg",
         "cover_color": covers.ink_safe("#1d5c63"),  # a deep-sea teal
         "attribution": (
-            "An Ochorus Original, written for teenage readers. Scripture quotations "
-            "are from the Berean Standard Bible (BSB), which is in the public domain."
+            "© Ochorus. An Ochorus Original, written for teenage readers, free to read "
+            "and share. Scripture quotations are from the Berean Standard Bible (BSB), which is in the public domain."
         ),
         "description": (
             "Thirty daily devotions for readers aged 13 to 17 that take the big "
@@ -957,8 +957,8 @@ ANCHORED: dict[int, dict[str, object]] = {
         "cover_url": "/covers/anchored-2.svg",
         "cover_color": covers.ink_safe("#2a4f7a"),  # a storm-sea blue
         "attribution": (
-            "An Ochorus Original, written for teenage readers. Scripture quotations "
-            "are from the Berean Standard Bible (BSB), which is in the public domain."
+            "© Ochorus. An Ochorus Original, written for teenage readers, free to read "
+            "and share. Scripture quotations are from the Berean Standard Bible (BSB), which is in the public domain."
         ),
         "description": (
             "Thirty daily devotions for readers aged 13 to 17 about real life: "

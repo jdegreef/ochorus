@@ -38,7 +38,8 @@ STORIES = 6
 MIN_STORY_WORDS = 2000
 
 ATTRIBUTION = (
-    "An Ochorus Original, written for teenage readers. The stories are true; the "
+    "© Ochorus. An Ochorus Original, written for teenage readers, free to read and "
+    "share. The stories are true; the "
     "telling is our own. Scripture quotations are from the Berean Standard Bible "
     "(BSB), which is in the public domain, except where a story gives the words a "
     "person heard or read in their own day."
