@@ -33,6 +33,7 @@
 	import ParentsNote from '$lib/components/ParentsNote.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
 	import { track } from '$lib/analytics';
+	import { hookFor } from '$lib/bookHooks';
 
 	/**
 	 * A young-reader hub — /young-readers/ or /teens/ — on the /series index's
@@ -304,7 +305,7 @@
 				</p>
 				<div class="book-grid">
 					{#each shelf.editions as book (book.slug)}
-						<BookCard {book} showAuthor perChapter />
+						<BookCard {book} showAuthor perChapter hook={hub.hooks ? hookFor(book.slug) : ''} />
 					{/each}
 				</div>
 			</section>
@@ -315,7 +316,13 @@
 				<GroupHeading name={t('audience.moreHeading')} count={shelf.more.length} />
 				<div class="book-grid">
 					{#each shelf.more as book (book.slug)}
-						<BookCard {book} showAuthor showSeries perChapter />
+						<BookCard
+							{book}
+							showAuthor
+							showSeries
+							perChapter
+							hook={hub.hooks ? hookFor(book.slug) : ''}
+						/>
 					{/each}
 				</div>
 				{#if shelf.topic}

@@ -1,0 +1,395 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "john-hyde-a-life-children",
+  "language": "sw",
+  "title": "Hyde Mwombaji (Kwa Watoto)",
+  "subtitle": "",
+  "cover_title": "",
+  "cover_byline": "John Hyde",
+  "description": "Hadithi ya kweli ya John Hyde, kijana Mmarekani mwenye haya, mzito wa kusema na kiziwi kwa sehemu, aliyekwenda katika vijiji vya Punjab nchini India na kutumia sehemu kubwa sana ya maisha yake akiwaombea wengine, hata watu wa huko wakamwita “mtu asiyelala kamwe,” na Wakristo kila mahali wakaja kumwita “Hyde Mwombaji.” Toleo hili la watoto linasimulia upya maisha yake katika sura fupi zilizoandaliwa kusomwa kwa sauti: mstari wa Biblia, sehemu moja ya hadithi yake, jambo moja linalomaanisha kwako, na sala fupi, pamoja na maswali ya kuzungumza pamoja.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Kitabu Hyde Mwombaji (Kwa Watoto) kinahusu nini?",
+    "answer": "Ni toleo la watoto la wasifu kamili wa John Hyde. Kinasimulia jinsi mwana wa mchungaji kutoka Illinois alivyokwenda katika vijiji vya Punjab nchini India, akajifunza kuomba kwa moyo wake wote, akawapenda watu maskini kabisa wa huko, na kuwasaidia wengi wao kumfuata Yesu."
+   },
+   {
+    "question": "John Hyde alikuwa nani?",
+    "answer": "Alikuwa mmisionari Mmarekani aliyeishi kuanzia mwaka 1865 hadi 1912. Alikuwa na haya, mzito wa kusema na kiziwi kwa sehemu, lakini alijitoa kwa maombi kiasi kwamba watu wa Punjab walimwita “mtu asiyelala kamwe,” na Wakristo duniani kote wakaja kumwita “Hyde Mwombaji.”"
+   },
+   {
+    "question": "Kila sura imepangwaje?",
+    "answer": "Kila sura ni fupi na imeandaliwa kusomwa kwa sauti. Inaanza na mstari wa Biblia, inasimulia sehemu moja ya hadithi ya John, inaonyesha jambo moja rahisi linalomaanisha kwako, na inamalizika kwa sala fupi. Kisha yanafuata maswali matatu ya kuzungumza pamoja."
+   },
+   {
+    "question": "Je, kitabu hiki kina huzuni mno kwa watoto?",
+    "answer": "Sehemu chache zina huzuni: kaka yake John anakufa akiwa bado kijana, na mwishoni John anaugua sana na kufa. Kitabu kinasimulia sehemu hizi kwa ukweli lakini kwa upole, bila maelezo ya kutisha. Zaidi ya yote ni hadithi ya furaha kuhusu upendo wa Mungu, maombi yaliyojibiwa, na mtu aliyekufa akisema, “Ni ushindi tu, ushindi, ushindi.”"
+   },
+   {
+    "question": "Je, hadithi hizi ni za kweli?",
+    "answer": "Ndiyo. Zinatoka katika kumbukumbu za kanisa na kwa marafiki waliomfahamu John Hyde na kuandika yale waliyoyakumbuka. Hadithi chache zilisimuliwa kwa njia zinazotofautiana kidogo, na baadhi ya hesabu katika vitabu vya zamani haziwezi kuthibitishwa, na kitabu kinasema hivyo kwa upole pale inapohitajika."
+   },
+   {
+    "question": "Kitabu hiki ni cha nani?",
+    "answer": "Ni cha watoto, kisomwe kwa sauti na mtu mzima au kisomwe na mtoto mkubwa peke yake. Kuna pia toleo la vijana, na wasifu kamili kwa wasomaji wakubwa."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Usimuliaji upya wa Ochorus kwa ajili ya wasomaji wachanga wa wasifu wa Ochorus wa John Hyde, kutoka mfululizo wa Portraits of Courage. Usimuliaji huu ni wetu wenyewe; uko huru kusomwa na kushirikiwa.",
+  "cover_url": "/covers/sw/john-hyde-a-life-children.svg",
+  "pdf_url": "",
+  "cover_color": "",
+  "series": null,
+  "series_position": null,
+  "sort_order": 151,
+  "is_published": true,
+  "created_at": "2026-10-08T00:00:00Z",
+  "content_digest": "",
+  "english_digest": "",
+  "updated_at": "2026-10-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "sw"
+  ],
+  "order": 1,
+  "title": "Maombi ya Baba",
+  "body_html": "<blockquote>“Basi mwombeni Bwana wa mavuno, apeleke watenda kazi katika mavuno yake.” — kutoka Mathayo 9</blockquote> <p>Zamani sana, tarehe 9 Novemba 1865, mtoto mvulana alizaliwa katika jimbo la Illinois, huko Amerika. Jina lake lilikuwa John Nelson Hyde. Miaka mingi baadaye, Wakristo duniani kote wangemwita kwa jina la pekee: “Hyde Mwombaji” (kwa Kiingereza, “Praying Hyde”). Hii ndiyo hadithi yake.</p> <p>John alikulia katika mji mdogo wa mbugani uitwao Carthage. Baba yake, Smith Harris Hyde, alikuwa mchungaji wa kanisa la Kipresbiteri la huko. John alikuwa na kaka wawili na dada watatu. Kaka yake mkubwa, Edmund, alimzidi kwa miaka miwili.</p> <p>Mama yake John alipenda sana muziki. Miaka mingi baadaye John alimwambia rafiki yake kwamba mama yake ndiye aliyekuwa mwimbaji bora kuliko wote aliowahi kuwasikia, na “mwanamke mtakatifu kweli kweli.” Alimfundisha kwa uangalifu habari za Yesu.</p> <p>Familia yao iliomba pamoja nyumbani, na mara nyingi sana John alimsikia baba yake akiomba sala ileile. Ilikuwa sala ambayo Yesu aliwaambia rafiki zake waombe: kwamba Mungu apeleke watenda kazi katika mavuno yake. Yesu alimaanisha kwamba dunia ni kama shamba kubwa lililojaa watu wanaohitaji kusikia habari zake, na hakuna watenda kazi wa kutosha kuwaambia. Baba yake John aliomba sala hiyo kwa furaha, ingawa huenda ingemaanisha kwamba Mungu angewapeleka watoto wake mwenyewe mbali sana.</p> <p>John alikua, akaenda kusoma katika Chuo cha Carthage. Aliamua kwamba anataka kuwa mmisionari. Lakini, tuseme ukweli, alitaka kuwa mmisionari maarufu. Baadaye alisema, “Nilitaka kung’aa kama mmisionari mkuu.” Kweli alimpenda Mungu. Lakini pia alitaka watu wamwone kuwa mtu wa ajabu, na Mungu angehitaji kubadilisha jambo hilo taratibu, kwa upole.</p> <p>Mungu husikia kila ombi, hata madogo, hata yale tunayoyaomba tena na tena. Baba yake John hakujua jinsi Mungu angejibu sala yake. Lakini Mungu alikuwa akisikiliza, na Mungu anakusikiliza wewe pia.</p> <p><em>Mungu mpendwa, asante kwa watu wanaoniombea. Tafadhali tuma watenda kazi wawaambie watu wote habari za Yesu, na unisaidie niwe mmoja wao. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Baba yake John aliomba sala gani tena na tena?",
+    "answer": "Aliomba sala ambayo Yesu alifundisha, akimwomba Bwana wa mavuno apeleke watenda kazi katika mavuno yake, ili watu wengi zaidi wasikie habari za Yesu."
+   },
+   {
+    "question": "John alitaka nini alipoamua kuwa mmisionari akiwa kijana?",
+    "answer": "Alimpenda Mungu, lakini pia alitaka kuwa mmisionari maarufu. Alisema, “Nilitaka kung’aa kama mmisionari mkuu.”"
+   },
+   {
+    "question": "Ni nani anayekuombea wewe? Wewe unaweza kumwombea nani?",
+    "answer": "Jibu lolote la kweli linafaa hapa. Somo kuu la sura hii ni kwamba Mungu husikia kila ombi, hata madogo yanayoombwa tena na tena, naye anakusikiliza wewe."
+   }
+  ],
+  "body_text": "“Basi mwombeni Bwana wa mavuno, apeleke watenda kazi katika mavuno yake.” — kutoka Mathayo 9 Zamani sana, tarehe 9 Novemba 1865, mtoto mvulana alizaliwa katika jimbo la Illinois, huko Amerika. Jina lake lilikuwa John Nelson Hyde. Miaka mingi baadaye, Wakristo duniani kote wangemwita kwa jina la pekee: “Hyde Mwombaji” (kwa Kiingereza, “Praying Hyde”). Hii ndiyo hadithi yake. John alikulia katika mji mdogo wa mbugani uitwao Carthage. Baba yake, Smith Harris Hyde, alikuwa mchungaji wa kanisa la Kipresbiteri la huko. John alikuwa na kaka wawili na dada watatu. Kaka yake mkubwa, Edmund, alimzidi kwa miaka miwili. Mama yake John alipenda sana muziki. Miaka mingi baadaye John alimwambia rafiki yake kwamba mama yake ndiye aliyekuwa mwimbaji bora kuliko wote aliowahi kuwasikia, na “mwanamke mtakatifu kweli kweli.” Alimfundisha kwa uangalifu habari za Yesu. Familia yao iliomba pamoja nyumbani, na mara nyingi sana John alimsikia baba yake akiomba sala ileile. Ilikuwa sala ambayo Yesu aliwaambia rafiki zake waombe: kwamba Mungu apeleke watenda kazi katika mavuno yake. Yesu alimaanisha kwamba dunia ni kama shamba kubwa lililojaa watu wanaohitaji kusikia habari zake, na hakuna watenda kazi wa kutosha kuwaambia. Baba yake John aliomba sala hiyo kwa furaha, ingawa huenda ingemaanisha kwamba Mungu angewapeleka watoto wake mwenyewe mbali sana. John alikua, akaenda kusoma katika Chuo cha Carthage. Aliamua kwamba anataka kuwa mmisionari. Lakini, tuseme ukweli, alitaka kuwa mmisionari maarufu. Baadaye alisema, “Nilitaka kung’aa kama mmisionari mkuu.” Kweli alimpenda Mungu. Lakini pia alitaka watu wamwone kuwa mtu wa ajabu, na Mungu angehitaji kubadilisha jambo hilo taratibu, kwa upole. Mungu husikia kila ombi, hata madogo, hata yale tunayoyaomba tena na tena. Baba yake John hakujua jinsi Mungu angejibu sala yake. Lakini Mungu alikuwa akisikiliza, na Mungu anakusikiliza wewe pia. Mungu mpendwa, asante kwa watu wanaoniombea. Tafadhali tuma watenda kazi wawaambie watu wote habari za Yesu, na unisaidie niwe mmoja wao. Amina.",
+  "word_count": 302
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "sw"
+  ],
+  "order": 2,
+  "title": "“Jambo Limeamuliwa”",
+  "body_html": "<blockquote>“Kisha nikaisikia sauti ya Bwana, akisema, Nimtume nani? Ndipo niliposema, Mimi hapa, nitume mimi.” — kutoka Isaya 6</blockquote> <p>John alipokuwa kijana, alikwenda katika jiji kubwa la Chicago kusomea uchungaji. Mwaka mmoja baadaye kaka yake Edmund naye alikuja kusoma huko. Edmund alikuwa amemwahidi Mungu kwamba angekwenda nchi ya mbali kama mmisionari, Mungu akimruhusu.</p> <p>Wakati mmoja wa kiangazi Edmund alikwenda upande wa magharibi, huko Montana, kusaidia kazi ya shule ya Jumapili. Huko alipatwa na homa kali. Alikuwa mgonjwa sana hata watu wakaibana tiketi yake ya treni kwenye koti lake kwa pini, ili aweze kufika nyumbani. Alifika nyumbani, lakini siku chache baadaye, mwezi Agosti 1891, alifariki. John alihuzunika sana.</p> <p>Sasa John akaanza kujiuliza. Edmund alikuwa ametaka kuwa mmisionari, na sasa hangeweza kwenda. Je, Mungu alitaka John aende badala yake? John hakuharakisha kuamua. Alilitafakari jambo hilo kwa karibu mwaka mzima.</p> <p>Usiku mmoja wa Jumamosi, saa za usiku sana, John alikwenda chumbani kwa rafiki yake. Alimwomba rafiki yake amweleze sababu zote za kwenda na sababu zote za kubaki. Lakini rafiki yake hakukubali kubishana naye. Alimwambia John aende chumbani kwake mwenyewe, apige magoti mbele za Mungu, na abaki hapo mpaka jambo hilo liamuliwe.</p> <p>Basi John akafanya hivyo. Hakuna anayejua aliomba kwa muda gani usiku ule. Lakini asubuhi iliyofuata, katika ibada ya chuoni, alimkuta rafiki yake na kumwambia, “Jambo limeamuliwa.” Uso wake ulikuwa ukiangaza. Angekwenda.</p> <p>Mwaka 1892 John akawa mchungaji, na kanisa lake likamtuma Punjab, kaskazini mwa India. Tarehe 15 Oktoba 1892 alisafiri kwa meli kutoka New York. Alikuwa na umri wa miaka ishirini na sita.</p> <p>Wakati mwingine tunakuwa na swali kubwa na hatujui la kufanya. Ni vizuri kuwaomba watu wenye hekima watusaidie. Lakini maswali mengine ni bora kumpelekea Mungu. Unaweza kumweleza kila kitu, kungoja kimya, na kumwamini kwamba atakuonyesha njia.</p> <p><em>Mungu mpendwa, nisipojua la kufanya, unisaidie nije kuzungumza nawe. Nataka kusema, kama John, “Mimi hapa. Nitume mimi.” Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Nini kilimpata Edmund, kaka yake John?",
+    "answer": "Alipatwa na homa kali alipokuwa akifanya kazi ya shule ya Jumapili huko Montana, akarudi nyumbani akiwa mgonjwa sana, na akafariki mwezi Agosti 1891."
+   },
+   {
+    "question": "Rafiki yake John alimwambia afanye nini badala ya kubishana naye?",
+    "answer": "Aende chumbani kwake mwenyewe, apige magoti mbele za Mungu, na abaki hapo mpaka jambo hilo liamuliwe. Asubuhi iliyofuata John alisema, “Jambo limeamuliwa.”"
+   },
+   {
+    "question": "Je, kuna swali ambalo ungependa kumpelekea Mungu?",
+    "answer": "Jibu lolote la kweli linafaa hapa. Somo kuu la sura hii ni kwamba tunaweza kumpelekea Mungu maswali yetu makubwa, tukangoja, na kumwamini kwamba atatuonyesha njia."
+   }
+  ],
+  "body_text": "“Kisha nikaisikia sauti ya Bwana, akisema, Nimtume nani? Ndipo niliposema, Mimi hapa, nitume mimi.” — kutoka Isaya 6 John alipokuwa kijana, alikwenda katika jiji kubwa la Chicago kusomea uchungaji. Mwaka mmoja baadaye kaka yake Edmund naye alikuja kusoma huko. Edmund alikuwa amemwahidi Mungu kwamba angekwenda nchi ya mbali kama mmisionari, Mungu akimruhusu. Wakati mmoja wa kiangazi Edmund alikwenda upande wa magharibi, huko Montana, kusaidia kazi ya shule ya Jumapili. Huko alipatwa na homa kali. Alikuwa mgonjwa sana hata watu wakaibana tiketi yake ya treni kwenye koti lake kwa pini, ili aweze kufika nyumbani. Alifika nyumbani, lakini siku chache baadaye, mwezi Agosti 1891, alifariki. John alihuzunika sana. Sasa John akaanza kujiuliza. Edmund alikuwa ametaka kuwa mmisionari, na sasa hangeweza kwenda. Je, Mungu alitaka John aende badala yake? John hakuharakisha kuamua. Alilitafakari jambo hilo kwa karibu mwaka mzima. Usiku mmoja wa Jumamosi, saa za usiku sana, John alikwenda chumbani kwa rafiki yake. Alimwomba rafiki yake amweleze sababu zote za kwenda na sababu zote za kubaki. Lakini rafiki yake hakukubali kubishana naye. Alimwambia John aende chumbani kwake mwenyewe, apige magoti mbele za Mungu, na abaki hapo mpaka jambo hilo liamuliwe. Basi John akafanya hivyo. Hakuna anayejua aliomba kwa muda gani usiku ule. Lakini asubuhi iliyofuata, katika ibada ya chuoni, alimkuta rafiki yake na kumwambia, “Jambo limeamuliwa.” Uso wake ulikuwa ukiangaza. Angekwenda. Mwaka 1892 John akawa mchungaji, na kanisa lake likamtuma Punjab, kaskazini mwa India. Tarehe 15 Oktoba 1892 alisafiri kwa meli kutoka New York. Alikuwa na umri wa miaka ishirini na sita. Wakati mwingine tunakuwa na swali kubwa na hatujui la kufanya. Ni vizuri kuwaomba watu wenye hekima watusaidie. Lakini maswali mengine ni bora kumpelekea Mungu. Unaweza kumweleza kila kitu, kungoja kimya, na kumwamini kwamba atakuonyesha njia. Mungu mpendwa, nisipojua la kufanya, unisaidie nije kuzungumza nawe. Nataka kusema, kama John, “Mimi hapa. Nitume mimi.” Amina.",
+  "word_count": 302
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "sw"
+  ],
+  "order": 3,
+  "title": "Barua Iliyokunjamana",
+  "body_html": "<blockquote>“Je! si zaidi sana Baba yenu aliye mbinguni atawapa Roho Mtakatifu wale wamwombao?” — kutoka Luka 11</blockquote> <p>John alipopanda meli yake huko New York, barua ilikuwa ikimsubiri. Ilitoka kwa rafiki wa baba yake, Mkristo mzee ambaye zamani yeye mwenyewe alitamani kuwa mmisionari, lakini hakuweza kwenda.</p> <p>Barua ilikuwa fupi. Ilisema kitu kama hiki: “Sitaacha kukuombea, John mpendwa, mpaka utakapojazwa Roho Mtakatifu.”</p> <p>John alikasirika! Je, mtu huyu alidhani kwamba hayuko tayari? Yeye angekuwa mmisionari mkuu! Aliikunjakunja barua ile, akaitupa, akapanda juu kwenye sitaha ya meli akiwa amekasirika sana.</p> <p>Lakini alipokuwa akitembea huku na huku, ndani kabisa ya moyo wake alijua kwamba mtu yule alikuwa sahihi. Rafiki huyo wa baba yake John alikuwa mtu mwema na mtakatifu. Basi John akarudi, akapiga magoti, akaiokota ile barua iliyokunjamana, akainyoosha, akaisoma tena. Na tena.</p> <p>Kwa siku mbili au tatu John alijisikia vibaya sana moyoni. Mwishowe alimwomba Mungu amjaze Roho Mtakatifu. Ndipo akaanza kuona kwamba alikuwa ametaka kuwa mmisionari hasa ili watu wamsifu. Alimwambia Mungu kwamba yuko tayari hata kushindwa mitihani yake huko India, na kufanya kazi “kimya kimya bila kuonekana,” ilimradi tu Mungu amjaze kwa Roho wake.</p> <p>John aliwasimulia rafiki zake hadithi hii zaidi ya mara moja, na baadhi ya mambo madogo madogo hayafanani kabisa kila mara. Lakini sehemu muhimu ni ileile siku zote: John aliacha kiburi, akamwomba Mungu msaada.</p> <p>Wakati mwingine mtu anayekupenda anakuambia jambo ambalo hutaki kulisikia. Ni rahisi kukasirika. Lakini ni busara kutulia, kufikiri, na kumwuliza Mungu kama huenda mtu huyo yuko sahihi.</p> <p><em>Mungu mpendwa, mtu anayenipenda akiniambia jambo gumu, unisaidie kusikiliza na nisiwe na kiburi. Tafadhali unijaze Roho wako Mtakatifu. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Barua iliyokuwa melini ilisema nini?",
+    "answer": "Ilisema kwamba rafiki wa baba yake John hataacha kumwombea mpaka John ajazwe Roho Mtakatifu."
+   },
+   {
+    "question": "John alifanya nini baada ya kuitupa barua ile?",
+    "answer": "Alirudi, akaiokota, akainyoosha na kuisoma tena. Baada ya siku chache za huzuni nyingi alimwomba Mungu amjaze Roho Mtakatifu, na akamwambia Mungu kwamba yuko tayari kufanya kazi kimya kimya bila kuonekana."
+   },
+   {
+    "question": "Je, umewahi kuambiwa jambo gumu na mtu, kisha ukagundua kwamba lilikuwa kweli?",
+    "answer": "Jibu lolote la kweli linafaa hapa. Somo kuu la sura hii ni kwamba mtu anayetupenda akituambia jambo gumu, ni busara kusikiliza na kumwuliza Mungu kama yuko sahihi."
+   }
+  ],
+  "body_text": "“Je! si zaidi sana Baba yenu aliye mbinguni atawapa Roho Mtakatifu wale wamwombao?” — kutoka Luka 11 John alipopanda meli yake huko New York, barua ilikuwa ikimsubiri. Ilitoka kwa rafiki wa baba yake, Mkristo mzee ambaye zamani yeye mwenyewe alitamani kuwa mmisionari, lakini hakuweza kwenda. Barua ilikuwa fupi. Ilisema kitu kama hiki: “Sitaacha kukuombea, John mpendwa, mpaka utakapojazwa Roho Mtakatifu.” John alikasirika! Je, mtu huyu alidhani kwamba hayuko tayari? Yeye angekuwa mmisionari mkuu! Aliikunjakunja barua ile, akaitupa, akapanda juu kwenye sitaha ya meli akiwa amekasirika sana. Lakini alipokuwa akitembea huku na huku, ndani kabisa ya moyo wake alijua kwamba mtu yule alikuwa sahihi. Rafiki huyo wa baba yake John alikuwa mtu mwema na mtakatifu. Basi John akarudi, akapiga magoti, akaiokota ile barua iliyokunjamana, akainyoosha, akaisoma tena. Na tena. Kwa siku mbili au tatu John alijisikia vibaya sana moyoni. Mwishowe alimwomba Mungu amjaze Roho Mtakatifu. Ndipo akaanza kuona kwamba alikuwa ametaka kuwa mmisionari hasa ili watu wamsifu. Alimwambia Mungu kwamba yuko tayari hata kushindwa mitihani yake huko India, na kufanya kazi “kimya kimya bila kuonekana,” ilimradi tu Mungu amjaze kwa Roho wake. John aliwasimulia rafiki zake hadithi hii zaidi ya mara moja, na baadhi ya mambo madogo madogo hayafanani kabisa kila mara. Lakini sehemu muhimu ni ileile siku zote: John aliacha kiburi, akamwomba Mungu msaada. Wakati mwingine mtu anayekupenda anakuambia jambo ambalo hutaki kulisikia. Ni rahisi kukasirika. Lakini ni busara kutulia, kufikiri, na kumwuliza Mungu kama huenda mtu huyo yuko sahihi. Mungu mpendwa, mtu anayenipenda akiniambia jambo gumu, unisaidie kusikiliza na nisiwe na kiburi. Tafadhali unijaze Roho wako Mtakatifu. Amina.",
+  "word_count": 259
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "sw"
+  ],
+  "order": 4,
+  "title": "Swali Barabarani",
+  "body_html": "<blockquote>“Ee Mungu, uniumbie moyo safi.” — kutoka Zaburi 51</blockquote> <p>Mwishoni mwa mwaka 1892 John alifika India. Alisafiri kwa treni hadi Punjab, nchi ya mito mitano. Ilikuwa nchi ya mashamba ya ngano na vijiji vya nyumba za kuta za udongo, nchi ya ngamia na mikokoteni ya ng’ombe. Watu walizungumza Kiurdu na Kipunjabi, na John alikuwa bado hajui hata neno moja la lugha yoyote kati ya hizo mbili.</p> <p>Katika siku zake za kwanza, mmisionari mmoja mwenye umri mkubwa zaidi alimpeleka kwenye mkutano uliofanyika barabarani. Mmisionari huyo aliuambia umati kwamba Yesu anaweza kweli kuwaokoa watu kutoka katika dhambi zao. John hakuelewa maneno yale, lakini mtu mmoja alimweleza yalihusu nini.</p> <p>Mazungumzo yalipokwisha, mtu mmoja aliyevaa nguo nzuri alisogea mbele. Alizungumza Kiingereza vizuri. Alimwuliza yule mmisionari kama Yesu alikuwa amemwokoa yeye mwenyewe kutoka katika dhambi, kwa namna ile aliyokuwa ameieleza sasa hivi.</p> <p>Swali hilo liliingia moja kwa moja moyoni mwa John. Alijua kwamba katika maisha yake mwenyewe kulikuwa na dhambi moja iliyokuwa ikimkwaza tena na tena. Hakumwambia mtu yeyote ilikuwa dhambi gani. Lakini alijua kwamba kama yule mtu angemwuliza yeye, asingeweza kusema ndiyo kwa uaminifu.</p> <p>John alirudi chumbani kwake na kufunga mlango. Alimwambia Mungu kwamba hangeweza kuwaeleza watu wengine juu ya uweza wa Yesu mpaka kwanza amemruhusu Yesu amsaidie yeye mwenyewe. Alikaa pale akiomba kwa muda mrefu, na Mungu akamhakikishia kwamba anaweza, tena yuko tayari, kumweka huru. Miaka mingi baadaye John alisema, “Naye kweli aliniokoa.” Rafiki yake hakusahau kamwe uso wa huzuni wa John alipozungumza juu ya dhambi yake, wala tabasamu lake zuri ajabu alipozungumza juu ya jinsi Yesu alivyokuwa mwaminifu.</p> <p>Kila mtu ana dhambi zinazomkwaza. Labda ni kukasirika upesi, au kusema uongo mdogo mdogo, au kutokuwa mwema kwa wengine. Huhitaji kumficha Mungu dhambi hizo. Unaweza kumwambia, naye ni mwaminifu kukusamehe, kuufanya moyo wako kuwa safi, na kukusaidia.</p> <p><em>Mungu mpendwa, wewe unajua mambo ninayoendelea kuyakosea. Tafadhali nisamehe, uufanye moyo wangu kuwa safi, na unisaidie kutenda yaliyo mema. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Yule mtu wa barabarani alimwuliza mmisionari nini?",
+    "answer": "Alimwuliza kama kweli Yesu alikuwa amemwokoa kutoka katika dhambi, kama alivyokuwa akiuambia umati."
+   },
+   {
+    "question": "John alifanya nini swali lile lilipoingia moyoni mwake?",
+    "answer": "Alikwenda chumbani kwake, akafunga mlango na kuomba kwa muda mrefu, mpaka Mungu alipomhakikishia kwamba anaweza kumweka huru. John alisema, “Naye kweli aliniokoa.”"
+   },
+   {
+    "question": "Je, kuna jambo unaloendelea kulikosea ambalo ungeweza kumwambia Mungu?",
+    "answer": "Jibu lolote la kweli ni zuri hapa, na si lazima ulitamke kwa sauti. Somo la sura hii ni kwamba hatuhitaji kamwe kumficha Mungu dhambi zetu: yeye hutusamehe na kutusaidia."
+   }
+  ],
+  "body_text": "“Ee Mungu, uniumbie moyo safi.” — kutoka Zaburi 51 Mwishoni mwa mwaka 1892 John alifika India. Alisafiri kwa treni hadi Punjab, nchi ya mito mitano. Ilikuwa nchi ya mashamba ya ngano na vijiji vya nyumba za kuta za udongo, nchi ya ngamia na mikokoteni ya ng’ombe. Watu walizungumza Kiurdu na Kipunjabi, na John alikuwa bado hajui hata neno moja la lugha yoyote kati ya hizo mbili. Katika siku zake za kwanza, mmisionari mmoja mwenye umri mkubwa zaidi alimpeleka kwenye mkutano uliofanyika barabarani. Mmisionari huyo aliuambia umati kwamba Yesu anaweza kweli kuwaokoa watu kutoka katika dhambi zao. John hakuelewa maneno yale, lakini mtu mmoja alimweleza yalihusu nini. Mazungumzo yalipokwisha, mtu mmoja aliyevaa nguo nzuri alisogea mbele. Alizungumza Kiingereza vizuri. Alimwuliza yule mmisionari kama Yesu alikuwa amemwokoa yeye mwenyewe kutoka katika dhambi, kwa namna ile aliyokuwa ameieleza sasa hivi. Swali hilo liliingia moja kwa moja moyoni mwa John. Alijua kwamba katika maisha yake mwenyewe kulikuwa na dhambi moja iliyokuwa ikimkwaza tena na tena. Hakumwambia mtu yeyote ilikuwa dhambi gani. Lakini alijua kwamba kama yule mtu angemwuliza yeye, asingeweza kusema ndiyo kwa uaminifu. John alirudi chumbani kwake na kufunga mlango. Alimwambia Mungu kwamba hangeweza kuwaeleza watu wengine juu ya uweza wa Yesu mpaka kwanza amemruhusu Yesu amsaidie yeye mwenyewe. Alikaa pale akiomba kwa muda mrefu, na Mungu akamhakikishia kwamba anaweza, tena yuko tayari, kumweka huru. Miaka mingi baadaye John alisema, “Naye kweli aliniokoa.” Rafiki yake hakusahau kamwe uso wa huzuni wa John alipozungumza juu ya dhambi yake, wala tabasamu lake zuri ajabu alipozungumza juu ya jinsi Yesu alivyokuwa mwaminifu. Kila mtu ana dhambi zinazomkwaza. Labda ni kukasirika upesi, au kusema uongo mdogo mdogo, au kutokuwa mwema kwa wengine. Huhitaji kumficha Mungu dhambi hizo. Unaweza kumwambia, naye ni mwaminifu kukusamehe, kuufanya moyo wako kuwa safi, na kukusaidia. Mungu mpendwa, wewe unajua mambo ninayoendelea kuyakosea. Tafadhali nisamehe, uufanye moyo wangu kuwa safi, na unisaidie kutenda yaliyo mema. Amina.",
+  "word_count": 313
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "sw"
+  ],
+  "order": 5,
+  "title": "Mzito wa Kusema",
+  "body_html": "<blockquote>“Nitakuwa pamoja na kinywa chako, na kukufundisha utakayoyanena.” — kutoka Kutoka 4</blockquote> <p>John hakuwa mtu rahisi kumfahamu. Alikuwa na haya na alikuwa mkimya. Pia hakusikia vizuri, na kadiri miaka ilivyopita, usikivu wake ulizidi kupungua. Watu walipozungumza naye, mara nyingi alionekana kana kwamba hakusikia, au alichukua muda mrefu kujibu.</p> <p>Lakini kila mtu aliyaona macho yake. Rafiki mmoja alisema alikuwa na “macho mazuri ajabu ya rangi ya bluu” ambayo yalionekana kutazama ndani kabisa ya moyo wako.</p> <p>Wamisionari wapya walitakiwa kutumia muda wao mwingi kujifunza lugha. John aliisoma kweli. Lakini pia alitumia saa nyingi kujifunza Biblia, na viongozi wa misheni wakamkaripia. John alijibu, “La kwanza liwe la kwanza.” Alikuwa amekuja India kufundisha Biblia, kwa hiyo alihitaji kuijua vizuri.</p> <p>Kwa muda mrefu watu walidhani John hangeweza kamwe kuzungumza Kiurdu wala Kipunjabi vizuri. Miaka yake kumi ya kwanza huko India ilikwenda polepole, na si watu wengi waliomjia Yesu. Baadhi ya wamisionari wenzake walimwona kuwa mtu wa ajabu, kwa sababu alitumia muda mwingi sana katika maombi. Miaka mingi baadaye rafiki mmoja alimwuliza John kama alikuwa amejua kwamba hawakuridhika naye. John alitabasamu akasema, “Naam, nilijua, lakini hawakunielewa, basi, ni hayo tu; hawakukusudia kamwe kunitendea vibaya.” Hakuwa na uchungu hata kidogo.</p> <p>Polepole, Mungu aliufungua ulimi wa John. Mwishowe aliweza kuhubiri kwa Kiurdu, Kipunjabi na Kiingereza, na umati wa watu ulimsikiliza. Watu waliozungumza Kiurdu walisema aliizungumza vizuri, ingawa alisikika kidogo kama kitabu!</p> <p>Labda kuna jambo unaloliona kuwa gumu. Labda una haya, au unaona ugumu kusoma, au kusikia, au kuzungumza. Mungu ndiye aliyekuumba, naye anajua yote kuhusu jambo hilo. Anaweza kukutumia jinsi ulivyo.</p> <p><em>Mungu mpendwa, asante kwa kuniumba. Ninapojisikia mwenye haya au mzito, nisaidie kukumbuka kwamba uko pamoja nami na kwamba unaweza kunitumia. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini viongozi wa misheni walimkaripia John?",
+    "answer": "Kwa sababu alitumia saa nyingi sana kujifunza Biblia badala ya kujifunza lugha peke yake. Yeye alijibu, “La kwanza liwe la kwanza.”"
+   },
+   {
+    "question": "John alisema nini alipojua kwamba baadhi ya wamisionari hawakuridhika naye?",
+    "answer": "Alitabasamu akasema kwamba hawakumwelewa, na kwamba hawakukusudia kamwe kumtendea vibaya. Hakuwa na uchungu."
+   },
+   {
+    "question": "Ni jambo gani unaloliona kuwa gumu? Mungu angewezaje kukusaidia katika jambo hilo?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Somo la sura hii ni kwamba Mungu ndiye aliyekuumba, anajua yale unayoyaona kuwa magumu, na anaweza kukutumia jinsi ulivyo."
+   }
+  ],
+  "body_text": "“Nitakuwa pamoja na kinywa chako, na kukufundisha utakayoyanena.” — kutoka Kutoka 4 John hakuwa mtu rahisi kumfahamu. Alikuwa na haya na alikuwa mkimya. Pia hakusikia vizuri, na kadiri miaka ilivyopita, usikivu wake ulizidi kupungua. Watu walipozungumza naye, mara nyingi alionekana kana kwamba hakusikia, au alichukua muda mrefu kujibu. Lakini kila mtu aliyaona macho yake. Rafiki mmoja alisema alikuwa na “macho mazuri ajabu ya rangi ya bluu” ambayo yalionekana kutazama ndani kabisa ya moyo wako. Wamisionari wapya walitakiwa kutumia muda wao mwingi kujifunza lugha. John aliisoma kweli. Lakini pia alitumia saa nyingi kujifunza Biblia, na viongozi wa misheni wakamkaripia. John alijibu, “La kwanza liwe la kwanza.” Alikuwa amekuja India kufundisha Biblia, kwa hiyo alihitaji kuijua vizuri. Kwa muda mrefu watu walidhani John hangeweza kamwe kuzungumza Kiurdu wala Kipunjabi vizuri. Miaka yake kumi ya kwanza huko India ilikwenda polepole, na si watu wengi waliomjia Yesu. Baadhi ya wamisionari wenzake walimwona kuwa mtu wa ajabu, kwa sababu alitumia muda mwingi sana katika maombi. Miaka mingi baadaye rafiki mmoja alimwuliza John kama alikuwa amejua kwamba hawakuridhika naye. John alitabasamu akasema, “Naam, nilijua, lakini hawakunielewa, basi, ni hayo tu; hawakukusudia kamwe kunitendea vibaya.” Hakuwa na uchungu hata kidogo. Polepole, Mungu aliufungua ulimi wa John. Mwishowe aliweza kuhubiri kwa Kiurdu, Kipunjabi na Kiingereza, na umati wa watu ulimsikiliza. Watu waliozungumza Kiurdu walisema aliizungumza vizuri, ingawa alisikika kidogo kama kitabu! Labda kuna jambo unaloliona kuwa gumu. Labda una haya, au unaona ugumu kusoma, au kusikia, au kuzungumza. Mungu ndiye aliyekuumba, naye anajua yote kuhusu jambo hilo. Anaweza kukutumia jinsi ulivyo. Mungu mpendwa, asante kwa kuniumba. Ninapojisikia mwenye haya au mzito, nisaidie kukumbuka kwamba uko pamoja nami na kwamba unaweza kunitumia. Amina.",
+  "word_count": 274
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "sw"
+  ],
+  "order": 6,
+  "title": "Mtu Asiyelala Kamwe",
+  "body_html": "<blockquote>“Alfajiri na mapema sana akaondoka, akatoka akaenda zake mahali pasipokuwa na watu, akaomba huko.” — kutoka Marko 1</blockquote> <p>Kazi ya John ilikuwa katika vijiji vya Punjab. Alisafiri kwa treni, kwa farasi na kwa mikokoteni midogo, na mizigo yake ilibebwa kwa mkokoteni wa ng’ombe. Wengi wa watu waliomjia Yesu huko walikuwa maskini sana. Watu wengine waliwadharau, na hawakutaka hata kuwagusa.</p> <p>Lakini John aliwapenda. Aliwasalimu kwa kuwakumbatia, akiweka mkono wake kwanza juu ya bega moja na kisha juu ya bega jingine. Aliishi pamoja na wahubiri Wahindi aliofanya kazi nao, akala na kulala pamoja nao. Mtu mmoja alisema, “Upendo ulimpatia ushindi.”</p> <p>Usiku mmoja John alilazimika kukesha usiku mzima akiandaa somo la Biblia. Somo hilo lilikwenda vizuri. Lakini baadaye wazo moja likamjia. Alikuwa ametumia usiku mzima kuuandaa ujumbe wake. Je, hakupaswa pia kutumia usiku mmoja kujiandaa yeye mwenyewe, kwa kuomba? Basi akafanya hivyo. Alifurahia sana hata akafanya tena usiku uliofuata, na watu wengine wakaja kuungana naye.</p> <p>John aliendelea kuandaa masomo yake kwa uangalifu. Lakini mara nyingi alisema kwamba kumwandaa mjumbe ni muhimu sawasawa na kuuandaa ujumbe.</p> <p>John aliamka mapema sana ili kuomba na kusoma Biblia yake. Alipopiga magoti, Biblia yake ilikuwa wazi mbele yake na mikono yake ikiwa juu yake. Usiku aliwasha taa yake ili asome mstari mmoja na kuzungumza na Mungu. Ndiyo maana watu wa Punjab walimpa jina: “mtu asiyelala kamwe.” Kwa kweli hilo halikuwa kweli kabisa. Alilala! Lakini si sana.</p> <p>Wewe unahitaji usingizi wako! Lakini unaweza kuanza kila siku kama John, kwa kumsalimu Mungu asubuhi na kumwomba akuandae kwa ajili ya siku hiyo.</p> <p><em>Mungu mpendwa, habari za asubuhi! Tafadhali niandae kwa ajili ya leo, na unisaidie kumpenda kila mtu nitakayekutana naye, kama wewe unavyowapenda. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "John aliwatendeaje watu maskini wa vijijini?",
+    "answer": "Aliwapenda. Aliwasalimu kwa kuwakumbatia, na aliishi, akala na kulala pamoja na wahubiri Wahindi aliofanya kazi nao."
+   },
+   {
+    "question": "Kwa nini watu walimwita John “mtu asiyelala kamwe”?",
+    "answer": "Kwa sababu alitumia sehemu kubwa ya usiku akiomba na kusoma Biblia yake. Alilala, lakini si sana."
+   },
+   {
+    "question": "Ungeweza kumwambia Mungu nini mwanzoni mwa siku yako?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Somo la sura hii ni kwamba, kama John, tunaweza kuanza kila siku pamoja na Mungu na kumwomba atuandae."
+   }
+  ],
+  "body_text": "“Alfajiri na mapema sana akaondoka, akatoka akaenda zake mahali pasipokuwa na watu, akaomba huko.” — kutoka Marko 1 Kazi ya John ilikuwa katika vijiji vya Punjab. Alisafiri kwa treni, kwa farasi na kwa mikokoteni midogo, na mizigo yake ilibebwa kwa mkokoteni wa ng’ombe. Wengi wa watu waliomjia Yesu huko walikuwa maskini sana. Watu wengine waliwadharau, na hawakutaka hata kuwagusa. Lakini John aliwapenda. Aliwasalimu kwa kuwakumbatia, akiweka mkono wake kwanza juu ya bega moja na kisha juu ya bega jingine. Aliishi pamoja na wahubiri Wahindi aliofanya kazi nao, akala na kulala pamoja nao. Mtu mmoja alisema, “Upendo ulimpatia ushindi.” Usiku mmoja John alilazimika kukesha usiku mzima akiandaa somo la Biblia. Somo hilo lilikwenda vizuri. Lakini baadaye wazo moja likamjia. Alikuwa ametumia usiku mzima kuuandaa ujumbe wake. Je, hakupaswa pia kutumia usiku mmoja kujiandaa yeye mwenyewe, kwa kuomba? Basi akafanya hivyo. Alifurahia sana hata akafanya tena usiku uliofuata, na watu wengine wakaja kuungana naye. John aliendelea kuandaa masomo yake kwa uangalifu. Lakini mara nyingi alisema kwamba kumwandaa mjumbe ni muhimu sawasawa na kuuandaa ujumbe. John aliamka mapema sana ili kuomba na kusoma Biblia yake. Alipopiga magoti, Biblia yake ilikuwa wazi mbele yake na mikono yake ikiwa juu yake. Usiku aliwasha taa yake ili asome mstari mmoja na kuzungumza na Mungu. Ndiyo maana watu wa Punjab walimpa jina: “mtu asiyelala kamwe.” Kwa kweli hilo halikuwa kweli kabisa. Alilala! Lakini si sana. Wewe unahitaji usingizi wako! Lakini unaweza kuanza kila siku kama John, kwa kumsalimu Mungu asubuhi na kumwomba akuandae kwa ajili ya siku hiyo. Mungu mpendwa, habari za asubuhi! Tafadhali niandae kwa ajili ya leo, na unisaidie kumpenda kila mtu nitakayekutana naye, kama wewe unavyowapenda. Amina.",
+  "word_count": 273
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "sw"
+  ],
+  "order": 7,
+  "title": "“Hajanipa Ujumbe Wowote”",
+  "body_html": "<blockquote>“Si kwa uwezo, wala si kwa nguvu, bali kwa roho yangu, asema Bwana.” — kutoka Zekaria 4</blockquote> <p>Mwaka 1904 John na marafiki wachache walianza kutamani sana Mungu ayaamshe makanisa ya Punjab. Waliahidiana jambo moja. Kila siku, muda mfupi baada ya saa sita mchana, wangeomba kwa nusu saa, na wangeendelea kuomba “mpaka uamsho utakapokuja.” Walijiita Umoja wa Maombi wa Punjab.</p> <p>Mwaka huo huo, Wakristo walianza kukusanyika kila mwaka kwa mkutano mkubwa katika mji uitwao Sialkot. Walikuja kujifunza Biblia, kuomba, na kumwomba Mungu awafanye wafanane zaidi na Yesu. John alikwenda kila mwaka.</p> <p>Mwaka 1905 watu karibu mia tatu walikuja, na John aliombwa kutoa mafundisho ya asubuhi kuhusu Roho Mtakatifu. Aliwauliza wachungaji swali gumu: “Je, Roho Mtakatifu ni wa kwanza?” Mnapohubiri, aliuliza, je, mnamweka Roho wa Mungu mbele, na ninyi wenyewe mnakaa nyuma yake?</p> <p>Asubuhi iliyofuata kila mtu alisubiri fundisho lililofuata. Mzungumzaji aliingia akasema kwa sauti ya chini, “Namshukuru Mungu, hajanipa ujumbe wowote kwa ajili yenu leo.” Watu walishangaa! Kisha kiongozi wa mkutano alisimama kando akasema, “Roho Mtakatifu ndiye kiongozi wa mkutano huu.” Taarifa ya misheni haitaji jina la mzungumzaji huyo, lakini marafiki wa John walikuwa na uhakika kwamba alikuwa John. Alikuwa amewafundisha watu kumweka Mungu kwanza, na sasa yeye mwenyewe alifanya hivyo.</p> <p>Kilichofuata kilikuwa cha ajabu. Watu walianza kumwambia Mungu kwamba wanasikitika kwa mabaya waliyoyafanya. Kisha furaha kubwa ikaja, nao wakaimba zaburi za sifa tena na tena. Chumba kimoja kilitengwa kwa ajili ya maombi, na baada ya siku ya kwanza au ya pili hakikuwahi kukaa tupu, mchana wala usiku.</p> <p>Ni vizuri kufanya kazi kwa bidii na kujiandaa. Lakini jambo la muhimu kuliko yote ni kumwacha Mungu aongoze. Wewe unaweza kumwuliza kila siku, “Unataka nifanye nini?”</p> <p><em>Mungu mpendwa, tafadhali uwe wa kwanza maishani mwangu. Unisaidie kukusikiliza na kufuata pale unaponiongoza. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Umoja wa Maombi wa Punjab uliahidi nini?",
+    "answer": "Kuomba kwa nusu saa kila siku, muda mfupi baada ya saa sita mchana, na kuendelea kuomba mpaka Mungu ayaamshe makanisa."
+   },
+   {
+    "question": "Mzungumzaji alisema nini asubuhi ya pili huko Sialkot mwaka 1905?",
+    "answer": "Alisema, “Namshukuru Mungu, hajanipa ujumbe wowote kwa ajili yenu leo,” na kiongozi akasema kwamba Roho Mtakatifu ndiye kiongozi wa mkutano."
+   },
+   {
+    "question": "Unawezaje kumwacha Mungu awe wa kwanza katika siku yako?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Somo kuu la sura hii ni kwamba jambo la muhimu kuliko yote ni kumwacha Mungu aongoze, na tunaweza kumwuliza anataka tufanye nini."
+   }
+  ],
+  "body_text": "“Si kwa uwezo, wala si kwa nguvu, bali kwa roho yangu, asema Bwana.” — kutoka Zekaria 4 Mwaka 1904 John na marafiki wachache walianza kutamani sana Mungu ayaamshe makanisa ya Punjab. Waliahidiana jambo moja. Kila siku, muda mfupi baada ya saa sita mchana, wangeomba kwa nusu saa, na wangeendelea kuomba “mpaka uamsho utakapokuja.” Walijiita Umoja wa Maombi wa Punjab. Mwaka huo huo, Wakristo walianza kukusanyika kila mwaka kwa mkutano mkubwa katika mji uitwao Sialkot. Walikuja kujifunza Biblia, kuomba, na kumwomba Mungu awafanye wafanane zaidi na Yesu. John alikwenda kila mwaka. Mwaka 1905 watu karibu mia tatu walikuja, na John aliombwa kutoa mafundisho ya asubuhi kuhusu Roho Mtakatifu. Aliwauliza wachungaji swali gumu: “Je, Roho Mtakatifu ni wa kwanza?” Mnapohubiri, aliuliza, je, mnamweka Roho wa Mungu mbele, na ninyi wenyewe mnakaa nyuma yake? Asubuhi iliyofuata kila mtu alisubiri fundisho lililofuata. Mzungumzaji aliingia akasema kwa sauti ya chini, “Namshukuru Mungu, hajanipa ujumbe wowote kwa ajili yenu leo.” Watu walishangaa! Kisha kiongozi wa mkutano alisimama kando akasema, “Roho Mtakatifu ndiye kiongozi wa mkutano huu.” Taarifa ya misheni haitaji jina la mzungumzaji huyo, lakini marafiki wa John walikuwa na uhakika kwamba alikuwa John. Alikuwa amewafundisha watu kumweka Mungu kwanza, na sasa yeye mwenyewe alifanya hivyo. Kilichofuata kilikuwa cha ajabu. Watu walianza kumwambia Mungu kwamba wanasikitika kwa mabaya waliyoyafanya. Kisha furaha kubwa ikaja, nao wakaimba zaburi za sifa tena na tena. Chumba kimoja kilitengwa kwa ajili ya maombi, na baada ya siku ya kwanza au ya pili hakikuwahi kukaa tupu, mchana wala usiku. Ni vizuri kufanya kazi kwa bidii na kujiandaa. Lakini jambo la muhimu kuliko yote ni kumwacha Mungu aongoze. Wewe unaweza kumwuliza kila siku, “Unataka nifanye nini?” Mungu mpendwa, tafadhali uwe wa kwanza maishani mwangu. Unisaidie kukusikiliza na kufuata pale unaponiongoza. Amina.",
+  "word_count": 288
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "sw"
+  ],
+  "order": 8,
+  "title": "Chumba cha Maombi",
+  "body_html": "<blockquote>“Fumbua kinywa chako sana, nami nitakijaza.” — kutoka Zaburi 81</blockquote> <p>Siku moja mmisionari kutoka Wales aitwaye Pengwern Jones alikuja kuhubiri kwenye mkutano katika mji uitwao Ludhiana. Alikuwa amesafiri kwa treni usiku kucha. Alikuwa amechoka, na alikuwa na wasiwasi kuhusu hotuba aliyopaswa kutoa mchana ule.</p> <p>Walipokuwa wakinywa chai asubuhi, Mmarekani mmoja mkimya alimwambia, “Nataka kukuona, nitakusubiri mlangoni.” Alikuwa John. Mlangoni alisema, “Njoo pamoja nami kwenye Chumba cha Maombi.” Waliingia karibu saa mbili asubuhi, nao wakaomba mpaka saa tisa na nusu alasiri! Bwana Jones alisahau kwamba amechoka, na akasahau kuwa na wasiwasi.</p> <p>Kisha John alimsindikiza mpaka ukumbi wa mkutano, akamshika mkono akasema, “Ingia ukahubiri, hiyo ndiyo kazi yako. Mimi nitarudi kwenye Chumba cha Maombi kukuombea, hiyo ndiyo kazi yangu.” Na siku ile Mungu alisema na watu wengi.</p> <p>Kwenye mikutano ya Sialkot, John alipenda kulala kifudifudi juu ya zulia la chumba cha maombi na kuomba. Wakati mmoja aliomba kwa mstari wa Biblia ulio juu ya sura hii, akilirudia neno “sana” tena na tena: “Sana, Bwana. Sana.” Alikuwa akimwomba Mungu awafanye watu wake watarajie mambo makubwa.</p> <p>Chumba cha maombi hakikuwa mahali pa huzuni. Mtu alipopata amani na Mungu, wakati mwingine John alijawa na furaha kiasi kwamba alipiga makofi na hata kucheza, na wengine wakajiunga naye, wakimsifu Mungu!</p> <p>Mara nyingi John alisahau kula au kulala, na kijana wake msaidizi alikuwa akilia kwa sababu hiyo. Lakini wakati mmoja, kengele ya chakula cha mchana ilipolia, rafiki yake alimsikia akinong’ona, “Baba, je, ni mapenzi yako niende?” Kisha akasema, “Asante, Baba,” akaenda kula chakula cha mchana akitabasamu.</p> <p>Watu wengine huhubiri, na wengine huwaombea. Kazi zote mbili ni kazi ya Mungu. Unapomwombea mwalimu wako, kanisa lako au rafiki zako, wewe pia unafanya kazi ya Mungu.</p> <p><em>Mungu mpendwa, asante kwa sababu ninaweza kuwasaidia watu wengine kwa kuwaombea. Tafadhali wabariki wote wanaonifundisha habari zako. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "John alimwambia nini Bwana Jones mlangoni mwa ukumbi wa mkutano?",
+    "answer": "“Ingia ukahubiri, hiyo ndiyo kazi yako. Mimi nitarudi kwenye Chumba cha Maombi kukuombea, hiyo ndiyo kazi yangu.”"
+   },
+   {
+    "question": "Wakati mwingine John alifanya nini mtu alipopata amani na Mungu?",
+    "answer": "Alijawa na furaha kiasi kwamba alipiga makofi na hata kucheza, na wengine wakajiunga naye kumsifu Mungu."
+   },
+   {
+    "question": "Ni nani unayeweza kumwombea wiki hii?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Somo kuu la sura hii ni kwamba kuwaombea watu wengine ni kazi halisi ya Mungu, na mtu yeyote anaweza kuifanya."
+   }
+  ],
+  "body_text": "“Fumbua kinywa chako sana, nami nitakijaza.” — kutoka Zaburi 81 Siku moja mmisionari kutoka Wales aitwaye Pengwern Jones alikuja kuhubiri kwenye mkutano katika mji uitwao Ludhiana. Alikuwa amesafiri kwa treni usiku kucha. Alikuwa amechoka, na alikuwa na wasiwasi kuhusu hotuba aliyopaswa kutoa mchana ule. Walipokuwa wakinywa chai asubuhi, Mmarekani mmoja mkimya alimwambia, “Nataka kukuona, nitakusubiri mlangoni.” Alikuwa John. Mlangoni alisema, “Njoo pamoja nami kwenye Chumba cha Maombi.” Waliingia karibu saa mbili asubuhi, nao wakaomba mpaka saa tisa na nusu alasiri! Bwana Jones alisahau kwamba amechoka, na akasahau kuwa na wasiwasi. Kisha John alimsindikiza mpaka ukumbi wa mkutano, akamshika mkono akasema, “Ingia ukahubiri, hiyo ndiyo kazi yako. Mimi nitarudi kwenye Chumba cha Maombi kukuombea, hiyo ndiyo kazi yangu.” Na siku ile Mungu alisema na watu wengi. Kwenye mikutano ya Sialkot, John alipenda kulala kifudifudi juu ya zulia la chumba cha maombi na kuomba. Wakati mmoja aliomba kwa mstari wa Biblia ulio juu ya sura hii, akilirudia neno “sana” tena na tena: “Sana, Bwana. Sana.” Alikuwa akimwomba Mungu awafanye watu wake watarajie mambo makubwa. Chumba cha maombi hakikuwa mahali pa huzuni. Mtu alipopata amani na Mungu, wakati mwingine John alijawa na furaha kiasi kwamba alipiga makofi na hata kucheza, na wengine wakajiunga naye, wakimsifu Mungu! Mara nyingi John alisahau kula au kulala, na kijana wake msaidizi alikuwa akilia kwa sababu hiyo. Lakini wakati mmoja, kengele ya chakula cha mchana ilipolia, rafiki yake alimsikia akinong’ona, “Baba, je, ni mapenzi yako niende?” Kisha akasema, “Asante, Baba,” akaenda kula chakula cha mchana akitabasamu. Watu wengine huhubiri, na wengine huwaombea. Kazi zote mbili ni kazi ya Mungu. Unapomwombea mwalimu wako, kanisa lako au rafiki zako, wewe pia unafanya kazi ya Mungu. Mungu mpendwa, asante kwa sababu ninaweza kuwasaidia watu wengine kwa kuwaombea. Tafadhali wabariki wote wanaonifundisha habari zako. Amina.",
+  "word_count": 293
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "sw"
+  ],
+  "order": 9,
+  "title": "“Na Yule Je?”",
+  "body_html": "<blockquote>“Kwa kuwa Mwana wa Adamu alikuja kutafuta na kuokoa kilichopotea.” — kutoka Luka 19</blockquote> <p>Mwaka 1908 John alihisi huzuni kubwa kwa ajili ya watu wa vijijini ambao hawakumjua Yesu. Marafiki zake walimsikia akiomba, “Baba, nipe roho hizi, la sivyo nitakufa!” Alimwomba Mungu mtu mmoja kila siku ambaye angemwamini Yesu na kubatizwa.</p> <p>Baadhi ya hesabu kubwa zilizo katika vitabu vya zamani kuhusu John haziwezi kuthibitishwa leo. Lakini kumbukumbu za misheni zinaonyesha kwamba mamia na mamia ya watu walibatizwa katika wilaya yake katika miaka ile. John alisema kwamba ilikuwa kazi ya “sisi”: yeye mwenyewe pamoja na wasaidizi wake Wahindi.</p> <p>Asubuhi moja John na wahubiri wawili Wahindi waliomba, nao wakawa na uhakika kwamba Mungu angewapa watu kumi siku ile. Walipanda mkokoteni wakaenda kijiji kimoja cha mbali. Waliimba na kuhubiri mchana kutwa, lakini hakuna aliyejali. Wale wahubiri waliona njaa na kiu, wakataka kurudi nyumbani. John hakukubali kuondoka.</p> <p>Mwishowe walisimama kwenye nyumba ndogo kuomba maji ya kunywa. Mwenye nyumba aliwapa maziwa pamoja na maji, akawakaribisha ndani. Tayari alijua mengi kuhusu Yesu! Aliwaita mkewe na watoto wake, na familia nzima ikaamua kumfuata Yesu. John aliwabatiza wote. Hao wakawa tisa.</p> <p>Kufikia sasa giza lilikuwa linaingia, na njia ya kurudi nyumbani ilipita kando ya ukingo hatari wa mto. Wale wahubiri walijaribu kumpandisha John kwenye mkokoteni, lakini yeye aliendelea kuuliza, “Na yule je?”</p> <p>Kisha yule baba akatoka nje. “Kumbe, yule pale!” akasema. Mpwa wake, mvulana aliyeishi pamoja na familia ile, alikuwa ametoka kwenda kucheza! Ilikuwa wazi kwamba mvulana huyo alimwamini Yesu, kwa hiyo naye akabatizwa. “Hao ndio kumi,” John akasema, akapanda mkokoteni. Walifika nyumbani salama gizani.</p> <p>Yesu ni kama mchungaji anayekwenda kumtafuta kondoo mmoja aliyepotea. Kila mtu ni wa thamani kwake. Hiyo inamaanisha kwamba wewe pia ni wa thamani kwake.</p> <p><em>Yesu mpendwa, asante kwa sababu ulikuja kunitafuta. Tafadhali wasaidie rafiki zangu wasiokujua waje kwako pia. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "John na wasaidizi wake waliomba kupata watu wangapi siku ile?",
+    "answer": "Kumi. Kufikia jioni familia ya watu tisa ilikuwa imebatizwa, na John hakukubali kuondoka mpaka yule wa kumi apatikane."
+   },
+   {
+    "question": "Mtu wa kumi alikuwa nani?",
+    "answer": "Mpwa wa yule baba, mvulana aliyeishi pamoja na familia ile na alikuwa ametoka kwenda kucheza. Alimwamini Yesu na kubatizwa pia."
+   },
+   {
+    "question": "Unadhani kwa nini John alijali sana kuhusu mtu mmoja zaidi?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Somo kuu la sura hii ni kwamba kila mtu ni wa thamani kwa Yesu, Mchungaji Mwema, na hiyo inakuhusu wewe pia."
+   }
+  ],
+  "body_text": "“Kwa kuwa Mwana wa Adamu alikuja kutafuta na kuokoa kilichopotea.” — kutoka Luka 19 Mwaka 1908 John alihisi huzuni kubwa kwa ajili ya watu wa vijijini ambao hawakumjua Yesu. Marafiki zake walimsikia akiomba, “Baba, nipe roho hizi, la sivyo nitakufa!” Alimwomba Mungu mtu mmoja kila siku ambaye angemwamini Yesu na kubatizwa. Baadhi ya hesabu kubwa zilizo katika vitabu vya zamani kuhusu John haziwezi kuthibitishwa leo. Lakini kumbukumbu za misheni zinaonyesha kwamba mamia na mamia ya watu walibatizwa katika wilaya yake katika miaka ile. John alisema kwamba ilikuwa kazi ya “sisi”: yeye mwenyewe pamoja na wasaidizi wake Wahindi. Asubuhi moja John na wahubiri wawili Wahindi waliomba, nao wakawa na uhakika kwamba Mungu angewapa watu kumi siku ile. Walipanda mkokoteni wakaenda kijiji kimoja cha mbali. Waliimba na kuhubiri mchana kutwa, lakini hakuna aliyejali. Wale wahubiri waliona njaa na kiu, wakataka kurudi nyumbani. John hakukubali kuondoka. Mwishowe walisimama kwenye nyumba ndogo kuomba maji ya kunywa. Mwenye nyumba aliwapa maziwa pamoja na maji, akawakaribisha ndani. Tayari alijua mengi kuhusu Yesu! Aliwaita mkewe na watoto wake, na familia nzima ikaamua kumfuata Yesu. John aliwabatiza wote. Hao wakawa tisa. Kufikia sasa giza lilikuwa linaingia, na njia ya kurudi nyumbani ilipita kando ya ukingo hatari wa mto. Wale wahubiri walijaribu kumpandisha John kwenye mkokoteni, lakini yeye aliendelea kuuliza, “Na yule je?” Kisha yule baba akatoka nje. “Kumbe, yule pale!” akasema. Mpwa wake, mvulana aliyeishi pamoja na familia ile, alikuwa ametoka kwenda kucheza! Ilikuwa wazi kwamba mvulana huyo alimwamini Yesu, kwa hiyo naye akabatizwa. “Hao ndio kumi,” John akasema, akapanda mkokoteni. Walifika nyumbani salama gizani. Yesu ni kama mchungaji anayekwenda kumtafuta kondoo mmoja aliyepotea. Kila mtu ni wa thamani kwake. Hiyo inamaanisha kwamba wewe pia ni wa thamani kwake. Yesu mpendwa, asante kwa sababu ulikuja kunitafuta. Tafadhali wasaidie rafiki zangu wasiokujua waje kwako pia. Amina.",
+  "word_count": 297
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "sw"
+  ],
+  "order": 10,
+  "title": "Nionyeshe Yaliyo Mazuri",
+  "body_html": "<blockquote>“Yo yote yenye kupendeza, yo yote yenye sifa njema, yatafakarini hayo.” — kutoka Wafilipi 4</blockquote> <p>Siku moja John alikuwa na wasiwasi kuhusu mchungaji mmoja Mhindi. Mchungaji huyo alionekana kuwa amepoa katika upendo wake kwa Mungu, na kanisa lake nalo lilikuwa limepoa. Basi John aliingia chumbani mwake ili amwombee.</p> <p>Alipiga magoti akaanza, “Ee Baba, wewe wajua jinsi alivyopoa —” Lakini hakumaliza kamwe. Alihisi kana kwamba kidole kimewekwa juu ya midomo yake. Na moyoni mwake akamsikia Mungu akisema, “Yeye amgusaye, aigusa mboni ya jicho langu.” Mboni ya jicho ni katikati ya jicho, sehemu tunayoilinda kwa uangalifu kuliko zote. Mungu alikuwa akisema, “Mtu huyu ni wa thamani kubwa sana kwangu.”</p> <p>John alishtuka sana. Alikuwa amekuja kumwombea mchungaji, lakini badala yake alikuwa ameanza kumlalamikia mbele za Mungu. Akalia, “Unisamehe, Baba, kwa kuwa nimekuwa mshtaki wa ndugu mbele zako!”</p> <p>Kisha akakumbuka mstari wa Biblia ulio mwanzoni mwa sura hii, akaomba ombi jipya: “Baba, nionyeshe mambo yaliyo ya kupendeza na yenye sifa njema katika maisha ya ndugu yangu.”</p> <p>Mara moja John alianza kukumbuka mambo mazuri. Mchungaji huyo alikuwa ameacha kila kitu ili amfuate Yesu, na familia yake mwenyewe ilimtendea vibaya kwa sababu hiyo. Alikuwa amefanya kazi kwa bidii kwa miaka mingi. Alikuwa amewasaidia watu wa kanisa lake kuacha kugombana. Alikuwa mume mwema. John alitumia muda wake wote wa maombi akimshukuru Mungu kwa ajili yake.</p> <p>Muda mfupi baadaye, John alisikia kwamba Mungu alikuwa amembariki sana mchungaji huyo, na kwamba alikuwa akihubiri tena “kwa moto.” Rafiki yake John aliamini kwamba jambo hilo lilitokea wakati ule ule John alipokuwa akimshukuru Mungu kwa ajili yake.</p> <p>Mtu anapotuudhi, ni rahisi kumnung’unikia, hata mbele za Mungu. Wakati ujao, jaribu kumwomba Mungu akuonyeshe jambo zuri kuhusu mtu huyo, kisha umshukuru kwa ajili ya jambo hilo.</p> <p><em>Mungu mpendwa, nisaidie nisiwanung’unikie watu wengine. Nionyeshe mambo mazuri yaliyo ndani yao, na unisaidie kukushukuru kwa ajili yao. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ni nini kilichomsimamisha John katikati ya maombi yake?",
+    "answer": "Alihisi kana kwamba kidole kimewekwa juu ya midomo yake, na akamsikia Mungu akisema kwamba mchungaji huyo ni wa thamani kwake kama mboni ya jicho lake."
+   },
+   {
+    "question": "John aliomba ombi gani jipya?",
+    "answer": "“Baba, nionyeshe mambo yaliyo ya kupendeza na yenye sifa njema katika maisha ya ndugu yangu.” Kisha akatumia muda wake wa maombi akimshukuru Mungu kwa ajili ya mchungaji huyo."
+   },
+   {
+    "question": "Je, unaweza kufikiria jambo zuri kuhusu mtu anayekuudhi wakati mwingine?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu anampenda mtu huyo pia, na tunaweza kumshukuru kwa mema aliyoyaweka ndani yake."
+   }
+  ],
+  "body_text": "“Yo yote yenye kupendeza, yo yote yenye sifa njema, yatafakarini hayo.” — kutoka Wafilipi 4 Siku moja John alikuwa na wasiwasi kuhusu mchungaji mmoja Mhindi. Mchungaji huyo alionekana kuwa amepoa katika upendo wake kwa Mungu, na kanisa lake nalo lilikuwa limepoa. Basi John aliingia chumbani mwake ili amwombee. Alipiga magoti akaanza, “Ee Baba, wewe wajua jinsi alivyopoa —” Lakini hakumaliza kamwe. Alihisi kana kwamba kidole kimewekwa juu ya midomo yake. Na moyoni mwake akamsikia Mungu akisema, “Yeye amgusaye, aigusa mboni ya jicho langu.” Mboni ya jicho ni katikati ya jicho, sehemu tunayoilinda kwa uangalifu kuliko zote. Mungu alikuwa akisema, “Mtu huyu ni wa thamani kubwa sana kwangu.” John alishtuka sana. Alikuwa amekuja kumwombea mchungaji, lakini badala yake alikuwa ameanza kumlalamikia mbele za Mungu. Akalia, “Unisamehe, Baba, kwa kuwa nimekuwa mshtaki wa ndugu mbele zako!” Kisha akakumbuka mstari wa Biblia ulio mwanzoni mwa sura hii, akaomba ombi jipya: “Baba, nionyeshe mambo yaliyo ya kupendeza na yenye sifa njema katika maisha ya ndugu yangu.” Mara moja John alianza kukumbuka mambo mazuri. Mchungaji huyo alikuwa ameacha kila kitu ili amfuate Yesu, na familia yake mwenyewe ilimtendea vibaya kwa sababu hiyo. Alikuwa amefanya kazi kwa bidii kwa miaka mingi. Alikuwa amewasaidia watu wa kanisa lake kuacha kugombana. Alikuwa mume mwema. John alitumia muda wake wote wa maombi akimshukuru Mungu kwa ajili yake. Muda mfupi baadaye, John alisikia kwamba Mungu alikuwa amembariki sana mchungaji huyo, na kwamba alikuwa akihubiri tena “kwa moto.” Rafiki yake John aliamini kwamba jambo hilo lilitokea wakati ule ule John alipokuwa akimshukuru Mungu kwa ajili yake. Mtu anapotuudhi, ni rahisi kumnung’unikia, hata mbele za Mungu. Wakati ujao, jaribu kumwomba Mungu akuonyeshe jambo zuri kuhusu mtu huyo, kisha umshukuru kwa ajili ya jambo hilo. Mungu mpendwa, nisaidie nisiwanung’unikie watu wengine. Nionyeshe mambo mazuri yaliyo ndani yao, na unisaidie kukushukuru kwa ajili yao. Amina.",
+  "word_count": 301
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "sw"
+  ],
+  "order": 11,
+  "title": "Machozi Dirishani mwa Treni",
+  "body_html": "<blockquote>“Alipokuwa angali mbali, baba yake alimwona, akamwonea huruma, akaenda mbio, akamwangukia shingoni, akambusu sana.” — kutoka Luka 15</blockquote> <p>Palikuwa na kijana mmoja ambaye baadaye rafiki zake walimwita “J. N.” Alitoka katika familia ya Kihindu ya tabaka la juu, akasoma katika shule ya misheni, na akamwamini Yesu. Mwanzoni familia yake ilikasirika. Kisha wakawa wema sana kwake, naye akarudi nyumbani. Huko alipata marafiki waliomshawishi kunywa pombe kupita kiasi, naye akamwacha Yesu.</p> <p>Lakini hakuwa na furaha, basi akaja kwa John. John alimkaribisha kama yule baba katika hadithi ya Yesu kuhusu mwana aliyepotea, na J. N. akaja kuishi naye. Lakini mara kwa mara alirudi kwenye pombe. Zaidi ya mara moja aliiba hata nguo za John akaziuza! John alitabasamu tu, akamwambia rafiki yake kwamba ingembidi abaki katika nchi tambarare zenye joto kiangazi kile, kwa sababu hakuwa amebakiwa na nguo za kumpa joto.</p> <p>Siku moja J. N. alikuwa ameketi ndani ya treni iliyokuwa ikienda katika mji wa Lahore. Alisema kwa jeuri kwamba alikuwa akirudi kwa marafiki zake wa zamani. John aliinama dirishani mwa behewa, akimsihi asiende. Mama mmoja aliyefanya kazi kituoni aliona machozi yakitiririka mashavuni mwa John. Lakini kijana yule hakutaka kusikiliza, na treni ikaondoka.</p> <p>Kesho yake tu, yule mama alimwona J. N. akirudi. Uso wake ulikuwa umepauka. “Ninarudi kwake,” alisema. “Sikuweza kusahau machozi yake.” Alipomkuta John, John alikuwa akiomba. John alimkumbatia akasema, “Nilikuwa nikiomba sasa hivi kwamba Mungu akurudishe kwangu, na tazama, amenijibu!”</p> <p>Hadithi ya J. N. haina mwisho mzuri na rahisi. Miaka mingi baadaye bado alikuwa akihangaika. Lakini hakusahau kamwe jinsi John alivyompenda sana.</p> <p>Yesu huendelea kuwapenda watu hata wanapokosea tena na tena. Anakupenda wewe hivyo pia. Naye anaweza kukusaidia kuwapenda watu wengine kwa namna hiyo.</p> <p><em>Yesu mpendwa, asante kwa kuwa hukomi kunipenda, hata ninapokosea. Nisaidie kuwapenda watu walio vigumu kupendwa. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "J. N. alifanya nini na nguo za John?",
+    "answer": "Zaidi ya mara moja aliziiba akaziuza. John hakukasirika; alitabasamu tu na kuendelea kumpenda."
+   },
+   {
+    "question": "Kwa nini J. N. alirudi siku moja baada ya kuondoka kwa treni?",
+    "answer": "Alisema, “Sikuweza kusahau machozi yake.” Alikuwa ameona jinsi John alivyompenda sana."
+   },
+   {
+    "question": "Je, kuna mtu aliye vigumu kumpenda ambaye unaweza kumwombea?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Yesu hakomi kamwe kutupenda, naye anaweza kutusaidia kuwapenda wengine vivyo hivyo."
+   }
+  ],
+  "body_text": "“Alipokuwa angali mbali, baba yake alimwona, akamwonea huruma, akaenda mbio, akamwangukia shingoni, akambusu sana.” — kutoka Luka 15 Palikuwa na kijana mmoja ambaye baadaye rafiki zake walimwita “J. N.” Alitoka katika familia ya Kihindu ya tabaka la juu, akasoma katika shule ya misheni, na akamwamini Yesu. Mwanzoni familia yake ilikasirika. Kisha wakawa wema sana kwake, naye akarudi nyumbani. Huko alipata marafiki waliomshawishi kunywa pombe kupita kiasi, naye akamwacha Yesu. Lakini hakuwa na furaha, basi akaja kwa John. John alimkaribisha kama yule baba katika hadithi ya Yesu kuhusu mwana aliyepotea, na J. N. akaja kuishi naye. Lakini mara kwa mara alirudi kwenye pombe. Zaidi ya mara moja aliiba hata nguo za John akaziuza! John alitabasamu tu, akamwambia rafiki yake kwamba ingembidi abaki katika nchi tambarare zenye joto kiangazi kile, kwa sababu hakuwa amebakiwa na nguo za kumpa joto. Siku moja J. N. alikuwa ameketi ndani ya treni iliyokuwa ikienda katika mji wa Lahore. Alisema kwa jeuri kwamba alikuwa akirudi kwa marafiki zake wa zamani. John aliinama dirishani mwa behewa, akimsihi asiende. Mama mmoja aliyefanya kazi kituoni aliona machozi yakitiririka mashavuni mwa John. Lakini kijana yule hakutaka kusikiliza, na treni ikaondoka. Kesho yake tu, yule mama alimwona J. N. akirudi. Uso wake ulikuwa umepauka. “Ninarudi kwake,” alisema. “Sikuweza kusahau machozi yake.” Alipomkuta John, John alikuwa akiomba. John alimkumbatia akasema, “Nilikuwa nikiomba sasa hivi kwamba Mungu akurudishe kwangu, na tazama, amenijibu!” Hadithi ya J. N. haina mwisho mzuri na rahisi. Miaka mingi baadaye bado alikuwa akihangaika. Lakini hakusahau kamwe jinsi John alivyompenda sana. Yesu huendelea kuwapenda watu hata wanapokosea tena na tena. Anakupenda wewe hivyo pia. Naye anaweza kukusaidia kuwapenda watu wengine kwa namna hiyo. Yesu mpendwa, asante kwa kuwa hukomi kunipenda, hata ninapokosea. Nisaidie kuwapenda watu walio vigumu kupendwa. Amina.",
+  "word_count": 288
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "sw"
+  ],
+  "order": 12,
+  "title": "Ushindi, Ushindi, Ushindi",
+  "body_html": "<blockquote>“Mungu na ashukuriwe atupaye kushinda kwa Bwana wetu Yesu Kristo.” — kutoka 1 Wakorintho 15</blockquote> <p>Miaka yote ile ya kazi ngumu na usingizi kidogo sana ilikuwa imemchosha John kabisa. Mwaka 1910 daktari mmoja huko Calcutta alimwambia kwamba moyo wake ulikuwa katika hali mbaya sana, na kwamba alihitaji kupumzika kwa utulivu kwa miezi mingi sana. John alitabasamu tu. Mwezi Machi 1911 aliondoka India kwa mara ya mwisho, akiwa mgonjwa sana.</p> <p>Akiwa njiani kurudi nyumbani, alikaa Wales kwa rafiki yake Bw. Jones. Huko alikutana na bibi mzee mmoja aliyekuwa kiziwi sana. Bibi huyo alikuwa na huzuni kwa sababu hakuweza kusikia chochote kanisani. “Unapaswa kumsifu Mungu kwa ajili ya hilo,” John alisema! Alimwambia kwamba yeye pia hakuweza kusikia vizuri kanisani. Basi alikuwa akimtazama mhubiri na kumwombea, kisha akimtazama kila mtu na kumwombea, mmoja mmoja. Yule bibi mzee alicheka akasema atajaribu. Baadaye aliandika kwamba jambo hilo lilibadilisha maisha yake kwa namna ya ajabu.</p> <p>Aliporudi Amerika, madaktari waligundua kwamba John alikuwa na ugonjwa ambao hawakuweza kuuponya. Alikwenda kukaa nyumbani kwa dada yake huko Northampton, Massachusetts. Mara nyingi alikuwa na maumivu makali, lakini hakulalamika. Baada ya maumivu makali kuliko yote alikuwa akisema, “Bwana asifiwe.” Muda mfupi kabla ya kufa, alimwambia dada yake, “Ni ushindi tu, ushindi, ushindi.”</p> <p>John alikufa tarehe 17 Februari 1912. Alikuwa na umri wa miaka arobaini na sita. Maneno yake ya mwisho yalikuwa kwa Kipunjabi, lugha ya vijiji alivyovipenda. Rafiki zake waliyakumbuka kama “Bol, Yisu Masih, ki jai!” Maana yake ni, “Tangaza kwa sauti ushindi wa Yesu Kristo!” Alizikwa huko Carthage, kando ya baba yake, mama yake na kaka yake Edmund.</p> <p>Leo watu ulimwenguni kote wanamkumbuka kama “Hyde Mwombaji.” Lakini John hakutaka kamwe watu wamtazame yeye. Alitaka wamtazame Yesu, na waombe.</p> <p>Unapokuwa wa Yesu, hata kufa si mwisho. Yesu amekwisha kupata ushindi, na kila mtu anayemtumaini atakuwa pamoja naye milele.</p> <p><em>Yesu mpendwa, asante kwa kuwa umepata ushindi. Nifundishe kuomba, na unisaidie kukutumaini maisha yangu yote. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "John alimwambia yule bibi mzee kiziwi wa Wales afanye nini kanisani?",
+    "answer": "Amsifu Mungu, na autumie muda huo kuomba: kwanza kwa ajili ya mhubiri, kisha kwa ajili ya kila mtu aliyeweza kumwona."
+   },
+   {
+    "question": "Maneno ya mwisho ya John yalikuwa yapi, na yana maana gani?",
+    "answer": "Yalikuwa kwa Kipunjabi: “Bol, Yisu Masih, ki jai!” Maana yake ni, “Tangaza kwa sauti ushindi wa Yesu Kristo!”"
+   },
+   {
+    "question": "Ungependa kumwomba Mungu akufundishe nini kuhusu maombi?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba John alitaka watu wamtazame Yesu na waombe, na kwamba Yesu amepata ushindi kwa ajili ya kila mtu anayemtumaini."
+   }
+  ],
+  "body_text": "“Mungu na ashukuriwe atupaye kushinda kwa Bwana wetu Yesu Kristo.” — kutoka 1 Wakorintho 15 Miaka yote ile ya kazi ngumu na usingizi kidogo sana ilikuwa imemchosha John kabisa. Mwaka 1910 daktari mmoja huko Calcutta alimwambia kwamba moyo wake ulikuwa katika hali mbaya sana, na kwamba alihitaji kupumzika kwa utulivu kwa miezi mingi sana. John alitabasamu tu. Mwezi Machi 1911 aliondoka India kwa mara ya mwisho, akiwa mgonjwa sana. Akiwa njiani kurudi nyumbani, alikaa Wales kwa rafiki yake Bw. Jones. Huko alikutana na bibi mzee mmoja aliyekuwa kiziwi sana. Bibi huyo alikuwa na huzuni kwa sababu hakuweza kusikia chochote kanisani. “Unapaswa kumsifu Mungu kwa ajili ya hilo,” John alisema! Alimwambia kwamba yeye pia hakuweza kusikia vizuri kanisani. Basi alikuwa akimtazama mhubiri na kumwombea, kisha akimtazama kila mtu na kumwombea, mmoja mmoja. Yule bibi mzee alicheka akasema atajaribu. Baadaye aliandika kwamba jambo hilo lilibadilisha maisha yake kwa namna ya ajabu. Aliporudi Amerika, madaktari waligundua kwamba John alikuwa na ugonjwa ambao hawakuweza kuuponya. Alikwenda kukaa nyumbani kwa dada yake huko Northampton, Massachusetts. Mara nyingi alikuwa na maumivu makali, lakini hakulalamika. Baada ya maumivu makali kuliko yote alikuwa akisema, “Bwana asifiwe.” Muda mfupi kabla ya kufa, alimwambia dada yake, “Ni ushindi tu, ushindi, ushindi.” John alikufa tarehe 17 Februari 1912. Alikuwa na umri wa miaka arobaini na sita. Maneno yake ya mwisho yalikuwa kwa Kipunjabi, lugha ya vijiji alivyovipenda. Rafiki zake waliyakumbuka kama “Bol, Yisu Masih, ki jai!” Maana yake ni, “Tangaza kwa sauti ushindi wa Yesu Kristo!” Alizikwa huko Carthage, kando ya baba yake, mama yake na kaka yake Edmund. Leo watu ulimwenguni kote wanamkumbuka kama “Hyde Mwombaji.” Lakini John hakutaka kamwe watu wamtazame yeye. Alitaka wamtazame Yesu, na waombe. Unapokuwa wa Yesu, hata kufa si mwisho. Yesu amekwisha kupata ushindi, na kila mtu anayemtumaini atakuwa pamoja naye milele. Yesu mpendwa, asante kwa kuwa umepata ushindi. Nifundishe kuomba, na unisaidie kukutumaini maisha yangu yote. Amina.",
+  "word_count": 313
+ }
+}
+]

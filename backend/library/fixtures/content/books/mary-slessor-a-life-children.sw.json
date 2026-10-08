@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "mary-slessor-a-life-children",
+  "language": "sw",
+  "title": "Mary Slessor (Kwa Watoto)",
+  "subtitle": "",
+  "cover_byline": "Mary Slessor",
+  "description": "Hadithi ya kweli ya Mary Slessor, msichana wa kiwandani kutoka Uskoti aliyesafiri kwa meli hadi Calabar huko Afrika Magharibi, akajifunza kuzungumza Kiefik kama watu wenyewe, akaingia katika msitu wa Okoyong ambako hakuna mmisionari aliyewahi kuishi, na kuwaokoa watoto mapacha na mama zao wakati kila mtu mwingine aliwakimbia. Toleo hili la watoto linasimulia upya maisha yake katika sura fupi zilizoandaliwa kusomwa kwa sauti: mstari wa Biblia, sehemu moja ya hadithi yake, jambo moja linalokuhusu wewe, na sala fupi, pamoja na maswali ya kuzungumza pamoja.",
+  "qa": [
+   {
+    "question": "Kitabu Mary Slessor (Kwa Watoto) kinahusu nini?",
+    "answer": "Ni toleo la watoto la wasifu kamili wa Mary Slessor. Kinasimulia jinsi msichana maskini aliyefanya kazi katika kiwanda huko Dundee alivyokwenda Calabar, katika nchi ambayo leo ni Nigeria, akaishi kati ya watu wa Okoyong, akawalinda watoto mapacha na mama zao, na hatimaye akaitwa “Mama wa Kila Mtu.”"
+   },
+   {
+    "question": "Mary Slessor alikuwa nani?",
+    "answer": "Alikuwa mmisionari kutoka Uskoti aliyeishi kuanzia mwaka 1848 hadi 1915. Alianza kufanya kazi kiwandani alipokuwa na umri wa miaka kumi na mmoja, akasafiri kwa meli hadi Calabar mwaka 1876, akakaa karibu miaka arobaini katika eneo ambalo leo ni kusini-mashariki mwa Nigeria. Alijifunza lugha ya Kiefik, aliishi Okoyong kuanzia mwaka 1888, alisaidia kuleta amani kati ya maadui, aliwaokoa mapacha, na alianzisha shule na makanisa kando ya kijito cha Enyong. Watu walimwita Ma."
+   },
+   {
+    "question": "Kila sura imepangwaje?",
+    "answer": "Kila sura ni fupi na imeandaliwa kusomwa kwa sauti. Inaanza na mstari wa Biblia, inasimulia sehemu moja ya hadithi ya Mary, inaonyesha jambo moja rahisi linalokuhusu wewe, na inamalizika kwa sala fupi. Kisha yanafuata maswali matatu ya kuzungumza pamoja."
+   },
+   {
+    "question": "Je, kitabu hiki kina huzuni mno kwa watoto?",
+    "answer": "Sehemu zake zina huzuni. Baba yake Mary alikunywa pombe kupita kiasi, watoto wengi wachanga aliowatunza walikufa, na baadhi ya desturi za zamani ziligharimu maisha ya watu. Kitabu hakijifanyi kwamba mambo hayo hayakutokea, lakini kinayasimulia kwa upole, bila maelezo ya kutisha. Zaidi ya yote ni hadithi ya jinsi Mungu alivyomtunza mwanamke aliyekuwa na hofu, akamfanya jasiri, na akamtumia kuokoa maisha mengi."
+   },
+   {
+    "question": "Je, hadithi hizi ni za kweli?",
+    "answer": "Ndiyo. Zinatoka katika barua za Mary Slessor mwenyewe na kwa watu waliomfahamu, kama zilivyokusanywa na mwandishi wake wa kwanza wa wasifu. Hadithi chache, kama ile ya kiongozi wa genge na kipande kizito cha risasi, zilikumbukwa kutokana na simulizi lake mwenyewe miaka mingi baadaye, na kitabu kinasema hivyo. Kinasema pia waziwazi kwamba Mary hakuwa mtu wa kwanza kupinga mauaji ya mapacha, na kwamba watu wengine wengi, Waafrika na Waskoti, walimsaidia."
+   },
+   {
+    "question": "Kitabu hiki ni cha nani?",
+    "answer": "Ni cha watoto, kisomwe kwa sauti na mtu mzima au kisomwe na mtoto mkubwa peke yake. Kwa Kiingereza kuna pia toleo la vijana, na wasifu kamili kwa wasomaji wakubwa."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Usimuliaji upya wa Ochorus kwa ajili ya wasomaji wachanga wa wasifu wa Ochorus, Mary Slessor, kutoka katika mfululizo wa Portraits of Courage. Usimuliaji huu ni wetu wenyewe; uko huru kusomwa na kushirikiwa.",
+  "cover_url": "/covers/sw/mary-slessor-a-life-children.svg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 149,
+  "is_published": true,
+  "created_at": "2026-10-08T00:00:00Z",
+  "updated_at": "2026-10-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "sw"
+  ],
+  "order": 1,
+  "title": "Msichana Mtukutu",
+  "body_html": "<blockquote>“Kama vile baba awahurumiavyo watoto wake, ndivyo Bwana atakavyowahurumia wamchao.” — kutoka Zaburi 103</blockquote> <p>Tarehe 2 Desemba 1848, mtoto wa kike alizaliwa huko Aberdeen, mji mmoja wa Uskoti. Jina lake lilikuwa Mary Mitchell Slessor.</p> <p>Mama yake Mary alikuwa mwanamke mpole mwenye imani ya kina na ya utulivu. Kanisa lake lilikuwa na misheni mbali sana huko Afrika Magharibi, mahali panapoitwa Calabar, na habari zake zilisomwa kwa sauti nyumbani. Miaka mingi baadaye Mary alisema, “Shauku yangu ya kazi ya umisionari, hasa kwa ajili ya Calabar, niliipata kwake.” Familia yake ilikumbuka kwamba Mary mdogo alipocheza mchezo wa kufundisha shule, wanafunzi wake wa kuigiza walikuwa Waafrika kila mara!</p> <p>Lakini nyumbani kwa Mary hapakuwa na furaha siku zote. Baba yake, Robert, alikuwa fundi viatu, naye alikunywa pombe kupita kiasi. Mwaka 1859 familia ilihamia Dundee, mji uliojaa viwanda, wakitumaini kuanza upya, lakini bado alitumia kila senti kununua pombe. Kwa hiyo mama yake Mary alikwenda kufanya kazi kiwandani. Jumamosi usiku yeye na Mary walikaa macho wakishona nguo, wakimngoja arudi nyumbani, na wakiomba kimya kimya ili mioyo yao itulie.</p> <p>Hata hivyo, Mary hakuwa mtoto mwenye huzuni. Alijiita “a wild lassie,” maneno ya Kiskoti yanayomaanisha msichana mtukutu. Alasiri moja ya majira ya baridi, mjane mmoja mzee aliwaingiza wasichana kadhaa ndani kutoka kwenye baridi ili waketi karibu na moto wake. Akaonyesha miali ya moto, akawaonya jinsi ilivyo hatari kumgeuzia Yesu mgongo. Mary hakuweza kuacha kulifikiria jambo hilo. Kwa maneno yake mwenyewe, “alitubu na kuamini.” Moyoni mwake aliupata upendo wa Mungu, naye hakujaribu kamwe kumtisha mtu yeyote ili naye aupokee.</p> <p>Mary alimwombea baba yake kwa miaka mingi, naye hakubadilika kamwe. Baadaye sana aliandika, “Najua maana ya kuomba miaka mingi bila kupata jibu kamwe.” Lakini alikuwa amempata Baba wa mbinguni ambaye hakumwangusha kamwe.</p> <p>Huenda kuna jambo nyumbani linalokuhuzunisha au kukutia wasiwasi. Mungu anaona, naye anajali, nawe unaweza kumweleza kila kitu. Ikiwa wakati wowote hujisikii salama nyumbani, mweleze mtu mzima unayemwamini.</p> <p><em>Mungu mpendwa, asante kwa kuwa wewe ni Baba yangu wa mbinguni na kwa kuwa unanihurumia siku zote. Tafadhali itunze familia yangu, unisaidie kukueleza kila kitu. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Upendo wa Mary kwa Calabar ulitoka wapi mwanzoni?",
+    "answer": "Kwa mama yake, aliyefuatilia kila habari kutoka misheni ya Calabar. Habari hizo zilisomwa kwa sauti nyumbani na kuzungumziwa."
+   },
+   {
+    "question": "Mary aliomba nini kwa miaka mingi?",
+    "answer": "Alimwombea baba yake, aliyekunywa pombe kupita kiasi. Baba yake hakubadilika kamwe, lakini Mary alijifunza kumtumaini Baba yake wa mbinguni."
+   },
+   {
+    "question": "Ungependa kumweleza nini Baba yako wa mbinguni leo?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu ni Baba mwenye huruma anayejali kila kitu kinachotupata, hata mambo magumu ya nyumbani."
+   }
+  ],
+  "body_text": "“Kama vile baba awahurumiavyo watoto wake, ndivyo Bwana atakavyowahurumia wamchao.” — kutoka Zaburi 103 Tarehe 2 Desemba 1848, mtoto wa kike alizaliwa huko Aberdeen, mji mmoja wa Uskoti. Jina lake lilikuwa Mary Mitchell Slessor. Mama yake Mary alikuwa mwanamke mpole mwenye imani ya kina na ya utulivu. Kanisa lake lilikuwa na misheni mbali sana huko Afrika Magharibi, mahali panapoitwa Calabar, na habari zake zilisomwa kwa sauti nyumbani. Miaka mingi baadaye Mary alisema, “Shauku yangu ya kazi ya umisionari, hasa kwa ajili ya Calabar, niliipata kwake.” Familia yake ilikumbuka kwamba Mary mdogo alipocheza mchezo wa kufundisha shule, wanafunzi wake wa kuigiza walikuwa Waafrika kila mara! Lakini nyumbani kwa Mary hapakuwa na furaha siku zote. Baba yake, Robert, alikuwa fundi viatu, naye alikunywa pombe kupita kiasi. Mwaka 1859 familia ilihamia Dundee, mji uliojaa viwanda, wakitumaini kuanza upya, lakini bado alitumia kila senti kununua pombe. Kwa hiyo mama yake Mary alikwenda kufanya kazi kiwandani. Jumamosi usiku yeye na Mary walikaa macho wakishona nguo, wakimngoja arudi nyumbani, na wakiomba kimya kimya ili mioyo yao itulie. Hata hivyo, Mary hakuwa mtoto mwenye huzuni. Alijiita “a wild lassie,” maneno ya Kiskoti yanayomaanisha msichana mtukutu. Alasiri moja ya majira ya baridi, mjane mmoja mzee aliwaingiza wasichana kadhaa ndani kutoka kwenye baridi ili waketi karibu na moto wake. Akaonyesha miali ya moto, akawaonya jinsi ilivyo hatari kumgeuzia Yesu mgongo. Mary hakuweza kuacha kulifikiria jambo hilo. Kwa maneno yake mwenyewe, “alitubu na kuamini.” Moyoni mwake aliupata upendo wa Mungu, naye hakujaribu kamwe kumtisha mtu yeyote ili naye aupokee. Mary alimwombea baba yake kwa miaka mingi, naye hakubadilika kamwe. Baadaye sana aliandika, “Najua maana ya kuomba miaka mingi bila kupata jibu kamwe.” Lakini alikuwa amempata Baba wa mbinguni ambaye hakumwangusha kamwe. Huenda kuna jambo nyumbani linalokuhuzunisha au kukutia wasiwasi. Mungu anaona, naye anajali, nawe unaweza kumweleza kila kitu. Ikiwa wakati wowote hujisikii salama nyumbani, mweleze mtu mzima unayemwamini. Mungu mpendwa, asante kwa kuwa wewe ni Baba yangu wa mbinguni na kwa kuwa unanihurumia siku zote. Tafadhali itunze familia yangu, unisaidie kukueleza kila kitu. Amina.",
+  "word_count": 334
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "sw"
+  ],
+  "order": 2,
+  "title": "Kitabu Juu ya Mashine ya Kufuma",
+  "body_html": "<blockquote>“Neno lako ni taa ya miguu yangu na mwanga katika njia yangu.” — kutoka Zaburi 119</blockquote> <p>Mary alipokuwa na umri wa miaka kumi na mmoja, alianza kufanya kazi katika kiwanda kikubwa kilichoitwa Baxter Brothers. Mwanzoni alifanya kazi nusu ya siku, na nusu nyingine alikwenda kwenye shule ya kiwanda. Muda si mrefu alifanya kazi kuanzia saa kumi na mbili asubuhi hadi saa kumi na mbili jioni, kisha akaenda shule nyakati za jioni. Aliamka saa kumi na moja alfajiri ili asaidie kazi za nyumbani kabla ya kuondoka!</p> <p>Banda la kufumia lilikuwa na kelele nyingi mno hata watu hawakuweza kuongea. Mary akawa mfumaji stadi, akisimamia mashine mbili za kufuma kwa wakati mmoja. Alipoleta nyumbani mshahara wake wa kwanza, mama yake aliulilia, akasema ni wa thamani mno kutumiwa. Kaka zake Mary wawili walikufa, na mwaka 1870 baba yake naye alikufa. Mshahara wa Mary ndio uliotunza familia.</p> <p>Mary alipenda sana kujifunza. Aliweka kitabu wazi juu ya mashine yake ya kufuma na kukisoma huku akifanya kazi, tena alisoma akitembea kwenda kazini. Zaidi ya yote alisoma Biblia. Wakati mmoja msichana fulani alimwomba Mary kitu cha kusoma, naye Mary akampa Biblia yake mwenyewe, akisema, “Ichukue hii; imenifanya kuwa msichana aliyebadilika.”</p> <p>Kanisa la Mary lilikuwa katika sehemu maskini ya mji, ambako magenge ya wavulana wakorofi walizurura ovyo. Mary alianza kuwafundisha, ingawa wavulana wengine walikuja kuharibu mikutano na kumrushia matope. Miaka mingi baadaye, inaonekana Mary alisimulia habari ya usiku mmoja ambapo genge moja lilimzunguka. Kiongozi wao alizungusha kipande kizito cha risasi kilichofungwa kwenye kamba kuzunguka kichwa chake, karibu zaidi na zaidi, mpaka kikagusa paji la uso wake. Mary hakutikisika. Mwishowe alikiachilia kianguke. “Huyu ni jasiri, jamani,” akasema, na genge zima likamfuata kuingia mkutanoni.</p> <p>Maisha yake yote Mary aliogopa makundi makubwa ya watu, aliogopa kusema mbele ya watu, na hata ng’ombe walio mashambani! Lakini alijifunza kubaki pale pale alipotamani kukimbia.</p> <p>Kuwa jasiri hakumaanishi kutoogopa kamwe. Mungu anaweza kukusaidia kufanya lililo sawa hata unapojisikia hofu.</p> <p><em>Mungu mpendwa, asante kwa Biblia, inayonionyesha njia ya kwenda. Ninapoogopa, nisaidie kuwa jasiri na kufanya lililo sawa. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mary alipataje muda wa kusoma wakati alifanya kazi siku ndefu namna hiyo?",
+    "answer": "Aliweka kitabu wazi juu ya mashine yake ya kufuma na kukisoma huku akifanya kazi, tena alisoma akitembea kwenda kazini."
+   },
+   {
+    "question": "Nini kilitokea kiongozi wa genge alipozungusha kipande kizito cha risasi kuzunguka kichwa cha Mary?",
+    "answer": "Hakutikisika, hata kilipogusa paji la uso wake. Mwishowe alikiachilia kianguke, akasema “Huyu ni jasiri, jamani,” na genge likamfuata kuingia mkutanoni."
+   },
+   {
+    "question": "Ni jambo gani linalokufanya uogope?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba kuwa jasiri hakumaanishi kutoogopa kamwe. Mungu anaweza kutusaidia kufanya lililo sawa hata tunapoogopa."
+   }
+  ],
+  "body_text": "“Neno lako ni taa ya miguu yangu na mwanga katika njia yangu.” — kutoka Zaburi 119 Mary alipokuwa na umri wa miaka kumi na mmoja, alianza kufanya kazi katika kiwanda kikubwa kilichoitwa Baxter Brothers. Mwanzoni alifanya kazi nusu ya siku, na nusu nyingine alikwenda kwenye shule ya kiwanda. Muda si mrefu alifanya kazi kuanzia saa kumi na mbili asubuhi hadi saa kumi na mbili jioni, kisha akaenda shule nyakati za jioni. Aliamka saa kumi na moja alfajiri ili asaidie kazi za nyumbani kabla ya kuondoka! Banda la kufumia lilikuwa na kelele nyingi mno hata watu hawakuweza kuongea. Mary akawa mfumaji stadi, akisimamia mashine mbili za kufuma kwa wakati mmoja. Alipoleta nyumbani mshahara wake wa kwanza, mama yake aliulilia, akasema ni wa thamani mno kutumiwa. Kaka zake Mary wawili walikufa, na mwaka 1870 baba yake naye alikufa. Mshahara wa Mary ndio uliotunza familia. Mary alipenda sana kujifunza. Aliweka kitabu wazi juu ya mashine yake ya kufuma na kukisoma huku akifanya kazi, tena alisoma akitembea kwenda kazini. Zaidi ya yote alisoma Biblia. Wakati mmoja msichana fulani alimwomba Mary kitu cha kusoma, naye Mary akampa Biblia yake mwenyewe, akisema, “Ichukue hii; imenifanya kuwa msichana aliyebadilika.” Kanisa la Mary lilikuwa katika sehemu maskini ya mji, ambako magenge ya wavulana wakorofi walizurura ovyo. Mary alianza kuwafundisha, ingawa wavulana wengine walikuja kuharibu mikutano na kumrushia matope. Miaka mingi baadaye, inaonekana Mary alisimulia habari ya usiku mmoja ambapo genge moja lilimzunguka. Kiongozi wao alizungusha kipande kizito cha risasi kilichofungwa kwenye kamba kuzunguka kichwa chake, karibu zaidi na zaidi, mpaka kikagusa paji la uso wake. Mary hakutikisika. Mwishowe alikiachilia kianguke. “Huyu ni jasiri, jamani,” akasema, na genge zima likamfuata kuingia mkutanoni. Maisha yake yote Mary aliogopa makundi makubwa ya watu, aliogopa kusema mbele ya watu, na hata ng’ombe walio mashambani! Lakini alijifunza kubaki pale pale alipotamani kukimbia. Kuwa jasiri hakumaanishi kutoogopa kamwe. Mungu anaweza kukusaidia kufanya lililo sawa hata unapojisikia hofu. Mungu mpendwa, asante kwa Biblia, inayonionyesha njia ya kwenda. Ninapoogopa, nisaidie kuwa jasiri na kufanya lililo sawa. Amina.",
+  "word_count": 331
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "sw"
+  ],
+  "order": 3,
+  "title": "“Niombee!”",
+  "body_html": "<blockquote>“Ndipo niliposema, Mimi hapa, nitume mimi.” — kutoka Isaya 6</blockquote> <p>Mary alikuwa na mdogo wake wa kiume aitwaye John. Mama yao alitumaini kwamba siku moja angekuwa mmisionari. Lakini John aliugua. Alisafiri kwa meli kwenda New Zealand, akitumaini kwamba hali ya hewa yenye joto zaidi ingemponya, naye alikufa muda mfupi baada ya kufika huko.</p> <p>Mary alihuzunika sana. Wazo moja la kimya likaanza kukua moyoni mwake: je, angeweza kwenda Afrika mahali pa John? Kwa muda mrefu hakumwambia mtu yeyote.</p> <p>Siku zile Afrika Magharibi iliitwa “kaburi la mzungu,” kwa sababu watu wengi kutoka Ulaya walipatwa na homa huko wakafa. Lakini rafiki mmoja alikumbuka Mary akisema kwamba kwa kuwa Calabar palikuwa mahali pa hatari, ilikuwa heshima kwenda huko. Watu wachache wangejitolea, kwa hiyo yeye angejitolea.</p> <p>Mwaka 1874 habari zilifika kwamba mvumbuzi maarufu David Livingstone alikuwa amefariki huko Afrika. Uskoti yote iliguswa sana, naye Mary akaamua kwamba wakati ulikuwa umefika. Dada zake sasa walikuwa wakifanya kazi, naye alipanga kutuma fedha nyumbani kutoka Afrika ili kumtunza mama yake. Mama yake alikubali kwa furaha. Mwezi Mei 1875 Mary alijitolea kwa kanisa lake, naye akakubaliwa kuwa mwalimu wa Calabar. Alikuwa na umri wa miaka ishirini na sita, msichana wa kiwandani ambaye karibu hakuwahi kwenda shule.</p> <p>Usiku kabla hajaondoka Dundee kwenda kujifunza huko Edinburgh, rafiki mmoja alimkuta akilia mlangoni pa jengo alimoishi. “Kwaheri,” Mary alisema. Kisha, kwa moyo wake wote, “Niombee!”</p> <p>Tarehe 5 Agosti 1876 alisafiri kutoka Liverpool kwa meli iliyoitwa Ethiopia. Rafiki wawili walikuja kumuaga. Waliangalia mapipa ya pombe kali yakipakiwa melini, ili yakauzwe Afrika Magharibi. Mary alijua pombe ilivyoiharibu familia yake mwenyewe. “Mapipa makumi kwa makumi!” alisema. “Na mmisionari mmoja tu!”</p> <p>Mary hakujisikia jasiri wala mwerevu. Lakini alijua jinsi Mungu alivyompenda, naye alitaka kusema, “Mimi hapa. Nitume mimi.” Wewe pia unaweza kumwambia Mungu hivyo, popote ulipo.</p> <p><em>Mungu mpendwa, asante kwa kunipenda sana hivi. Mimi hapa. Tafadhali unitumie kuwasaidia watu wengine wakujue. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini Mary alianza kufikiria kwenda Afrika?",
+    "answer": "Mdogo wake John, ambaye mama yao alitumaini angekuwa mmisionari, alikufa. Mary akajiuliza kama angeweza kwenda mahali pake."
+   },
+   {
+    "question": "Mary alisema nini alipoona mapipa ya pombe yakipakiwa katika meli yake?",
+    "answer": "“Mapipa makumi kwa makumi! Na mmisionari mmoja tu!” Alijua jinsi pombe inavyoweza kuleta madhara makubwa."
+   },
+   {
+    "question": "Unafikiri Mungu angependa kukutuma wapi, hata mahali padogo?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba hatuhitaji kujisikia jasiri au werevu ili tumwambie Mungu “Mimi hapa.” Tunahitaji tu kujua kwamba anatupenda."
+   }
+  ],
+  "body_text": "“Ndipo niliposema, Mimi hapa, nitume mimi.” — kutoka Isaya 6 Mary alikuwa na mdogo wake wa kiume aitwaye John. Mama yao alitumaini kwamba siku moja angekuwa mmisionari. Lakini John aliugua. Alisafiri kwa meli kwenda New Zealand, akitumaini kwamba hali ya hewa yenye joto zaidi ingemponya, naye alikufa muda mfupi baada ya kufika huko. Mary alihuzunika sana. Wazo moja la kimya likaanza kukua moyoni mwake: je, angeweza kwenda Afrika mahali pa John? Kwa muda mrefu hakumwambia mtu yeyote. Siku zile Afrika Magharibi iliitwa “kaburi la mzungu,” kwa sababu watu wengi kutoka Ulaya walipatwa na homa huko wakafa. Lakini rafiki mmoja alikumbuka Mary akisema kwamba kwa kuwa Calabar palikuwa mahali pa hatari, ilikuwa heshima kwenda huko. Watu wachache wangejitolea, kwa hiyo yeye angejitolea. Mwaka 1874 habari zilifika kwamba mvumbuzi maarufu David Livingstone alikuwa amefariki huko Afrika. Uskoti yote iliguswa sana, naye Mary akaamua kwamba wakati ulikuwa umefika. Dada zake sasa walikuwa wakifanya kazi, naye alipanga kutuma fedha nyumbani kutoka Afrika ili kumtunza mama yake. Mama yake alikubali kwa furaha. Mwezi Mei 1875 Mary alijitolea kwa kanisa lake, naye akakubaliwa kuwa mwalimu wa Calabar. Alikuwa na umri wa miaka ishirini na sita, msichana wa kiwandani ambaye karibu hakuwahi kwenda shule. Usiku kabla hajaondoka Dundee kwenda kujifunza huko Edinburgh, rafiki mmoja alimkuta akilia mlangoni pa jengo alimoishi. “Kwaheri,” Mary alisema. Kisha, kwa moyo wake wote, “Niombee!” Tarehe 5 Agosti 1876 alisafiri kutoka Liverpool kwa meli iliyoitwa Ethiopia. Rafiki wawili walikuja kumuaga. Waliangalia mapipa ya pombe kali yakipakiwa melini, ili yakauzwe Afrika Magharibi. Mary alijua pombe ilivyoiharibu familia yake mwenyewe. “Mapipa makumi kwa makumi!” alisema. “Na mmisionari mmoja tu!” Mary hakujisikia jasiri wala mwerevu. Lakini alijua jinsi Mungu alivyompenda, naye alitaka kusema, “Mimi hapa. Nitume mimi.” Wewe pia unaweza kumwambia Mungu hivyo, popote ulipo. Mungu mpendwa, asante kwa kunipenda sana hivi. Mimi hapa. Tafadhali unitumie kuwasaidia watu wengine wakujue. Amina.",
+  "word_count": 305
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "sw"
+  ],
+  "order": 4,
+  "title": "Nchi Iitwayo Calabar",
+  "body_html": "<blockquote>“Baba yangu na mama yangu wameniacha, bali Bwana atanikaribisha kwake.” — kutoka Zaburi 27</blockquote> <p>Mwezi Septemba 1876 meli ya Ethiopia ilipanda mto mpana wenye maji ya matope, uliopakana na miti ya mikoko, naye Mary akafika Calabar. Miji ya huko ilitawaliwa na watu wake wenyewe, Waefik.</p> <p>Mary alijifunza lugha ya Kiefik kwa kusikiliza, kutoka kwa watu wenyewe, zaidi kuliko kutoka vitabuni. Baada ya muda, wageni walisema alizungumza Kiefik vizuri kuliko Waefik wengi!</p> <p>Mwanzoni aliishi pamoja na mume na mke wamisionari wazee ambao kila mtu aliwaita Daddy na Mammy Anderson. Mojawapo ya kazi za Mary ilikuwa kupiga kengele ya sala ya asubuhi kabla ya mapambazuko. Wakati mmoja aliamka akakuta chumba kimejaa mwanga, akatoka mbio na kupiga kengele, kisha akagundua kwamba ulikuwa mwanga wa mwezi tu! Alipochelewa kufika mezani na kupelekwa kulala bila chakula cha jioni, Daddy Anderson alimletea kwa siri biskuti na ndizi.</p> <p>Baada ya kutembelea nyumbani, Mary alipewa jukumu la kusimamia mahali paitwapo Old Town. Huko alikutana na desturi ambayo ingekuwa jambo kuu alilolipigania maishani mwake. Watu waliamini kwamba mapacha walileta jambo baya sana. Watoto mapacha waliuawa na kutupwa porini, na mama yao alifukuzwa akaishi peke yake. Watawala wa Kiefik walikuwa wamekwisha kukubali kuikataza desturi hii kabla Mary hajafika, na wamisionari wengine walikuwa wakiwaokoa mapacha kwa miaka mingi. Lakini hofu ile ya zamani ilikuwa na nguvu, nayo iliendelea kwa siri.</p> <p>Mary aliwaokoa mapacha wawili, mvulana na msichana. Alipokuwa ametoka, ndugu fulani walikuja wakamchukua mvulana kwa hila, naye akauawa. Mary aliumia moyo sana, akaazimia kwamba msichana angeishi. Mwaka 1883, Mary alipokuwa mgonjwa sana hata ikabidi abebwe kupandishwa melini kurudi nyumbani, alimchukua mtoto yule pamoja naye hadi Uskoti. Jina la msichana mdogo lilikuwa Atim Eso. Huko Uskoti alibatizwa akaitwa Janie.</p> <p>Watu wengi walifikiri Janie hakustahili kuishi. Lakini Mungu alimtuma Mary amkaribishe na kumpenda. Mungu hamsahau mtoto yeyote kamwe, hata yule ambaye kila mtu mwingine anamkataa.</p> <p><em>Mungu mpendwa, asante kwa kuwa hunisahau kamwe. Tafadhali uwatunze watoto wasio na mtu wa kuwapenda, unisaidie kuwa mwema kwao. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mary alifanya kosa gani la kuchekesha na kengele ya asubuhi?",
+    "answer": "Aliamka akakuta chumba kimejaa mwanga, akapiga kengele ya sala ya asubuhi, kumbe ulikuwa mwanga wa mwezi tu!"
+   },
+   {
+    "question": "Kwa nini watoto mapacha walikuwa hatarini huko Calabar?",
+    "answer": "Watu waliamini kwamba kuzaliwa kwa mapacha kulimaanisha jambo baya sana limetokea, kwa hiyo watoto waliuawa na mama yao akafukuzwa, ingawa watawala walikuwa wamekubali kuikataza desturi hiyo."
+   },
+   {
+    "question": "Unawezaje kuwa mwema kwa mtu anayeachwa nje?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu hamsahau mtoto yeyote kamwe, naye anataka tuwatunze watu ambao wengine wanawakataa, kama Mary alivyomkaribisha mtoto Janie."
+   }
+  ],
+  "body_text": "“Baba yangu na mama yangu wameniacha, bali Bwana atanikaribisha kwake.” — kutoka Zaburi 27 Mwezi Septemba 1876 meli ya Ethiopia ilipanda mto mpana wenye maji ya matope, uliopakana na miti ya mikoko, naye Mary akafika Calabar. Miji ya huko ilitawaliwa na watu wake wenyewe, Waefik. Mary alijifunza lugha ya Kiefik kwa kusikiliza, kutoka kwa watu wenyewe, zaidi kuliko kutoka vitabuni. Baada ya muda, wageni walisema alizungumza Kiefik vizuri kuliko Waefik wengi! Mwanzoni aliishi pamoja na mume na mke wamisionari wazee ambao kila mtu aliwaita Daddy na Mammy Anderson. Mojawapo ya kazi za Mary ilikuwa kupiga kengele ya sala ya asubuhi kabla ya mapambazuko. Wakati mmoja aliamka akakuta chumba kimejaa mwanga, akatoka mbio na kupiga kengele, kisha akagundua kwamba ulikuwa mwanga wa mwezi tu! Alipochelewa kufika mezani na kupelekwa kulala bila chakula cha jioni, Daddy Anderson alimletea kwa siri biskuti na ndizi. Baada ya kutembelea nyumbani, Mary alipewa jukumu la kusimamia mahali paitwapo Old Town. Huko alikutana na desturi ambayo ingekuwa jambo kuu alilolipigania maishani mwake. Watu waliamini kwamba mapacha walileta jambo baya sana. Watoto mapacha waliuawa na kutupwa porini, na mama yao alifukuzwa akaishi peke yake. Watawala wa Kiefik walikuwa wamekwisha kukubali kuikataza desturi hii kabla Mary hajafika, na wamisionari wengine walikuwa wakiwaokoa mapacha kwa miaka mingi. Lakini hofu ile ya zamani ilikuwa na nguvu, nayo iliendelea kwa siri. Mary aliwaokoa mapacha wawili, mvulana na msichana. Alipokuwa ametoka, ndugu fulani walikuja wakamchukua mvulana kwa hila, naye akauawa. Mary aliumia moyo sana, akaazimia kwamba msichana angeishi. Mwaka 1883, Mary alipokuwa mgonjwa sana hata ikabidi abebwe kupandishwa melini kurudi nyumbani, alimchukua mtoto yule pamoja naye hadi Uskoti. Jina la msichana mdogo lilikuwa Atim Eso. Huko Uskoti alibatizwa akaitwa Janie. Watu wengi walifikiri Janie hakustahili kuishi. Lakini Mungu alimtuma Mary amkaribishe na kumpenda. Mungu hamsahau mtoto yeyote kamwe, hata yule ambaye kila mtu mwingine anamkataa. Mungu mpendwa, asante kwa kuwa hunisahau kamwe. Tafadhali uwatunze watoto wasio na mtu wa kuwapenda, unisaidie kuwa mwema kwao. Amina.",
+  "word_count": 322
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "sw"
+  ],
+  "order": 5,
+  "title": "Amebaki Peke Yake",
+  "body_html": "<blockquote>“Mwili wangu na moyo wangu vinaweza kushindwa, bali Mungu ndiye nguvu za moyo wangu milele.” — kutoka Zaburi 73</blockquote> <p>Huko Uskoti, Mary alimtunza mtoto Janie na kukaa pamoja na mama yake na dada zake. Mtoto Janie alikuwa amepewa jina la dada mdogo kabisa wa Mary, ambaye pia aliitwa Janie.</p> <p>Kisha Janie, dada yake Mary, aliugua sana, na madaktari wakasema ni mahali penye joto zaidi tu ambapo pangeweza kumsaidia. Kwa hiyo Mary aliwahamisha dada yake na mama yake hadi Topsham, kusini mwa Uingereza. Kisha dada yake mwingine, Susan, alikufa ghafla. Ikambidi Mary kuwatunza wote.</p> <p>Mary alitamani kurudi Afrika. Alimwuliza mama yake kama angemruhusu kwenda mbali zaidi, hadi mahali ambapo hakuna mmisionari aliyewahi kufika. Mama yake akasema, “Wewe ni mtoto wangu, uliyepewa na Mungu, nami nimekurudisha kwake. Atakapokuhitaji, na popote atakapokutuma, hapo ndipo ningependa uwe.”</p> <p>Mary alisafiri kwa meli kurudi Calabar mwezi Novemba 1885. Siku ya Mwaka Mpya alianza kuandika barua ndefu yenye furaha kwenda nyumbani. Iliishia hivi: “Nielezeni shida zenu zote, na hakikisheni mnajitunza.” Lakini jibu halikuja kamwe. Mama yake alikuwa amekufa mwezi Desemba, majuma machache tu baada ya Mary kuondoka. Miezi mitatu baadaye, dada yake Janie naye alikufa.</p> <p>Mary alihuzunika sana sana. Usiku ule aliposikia habari za mama yake, bado aliongoza mkutano wa maombi, wala hakumwambia mtu yeyote. Baadaye aliandika, “Sasa mbingu iko karibu nami kuliko Uingereza, na hakuna mtu atakayekuwa na wasiwasi juu yangu nikienda ndani kabisa ya nchi.”</p> <p>Muda si mrefu nyumba ya Mary huko Creek Town ilijaa watoto tena: Janie mdogo, mapacha waliookolewa, na wavulana na wasichana wengine. Wakati mmoja mtoto mchanga aliletwa ambaye mama yake alikuwa amekufa. Mary alimwomba bwana aliyemmiliki mtoto yule amwazime mwanamke wa kumnyonyesha. Jibu likarudi: “Mwache afe.” Lakini Mary hakumwacha. Alimwezesha kuishi.</p> <p>Tunapohuzunika sana, Mungu hatuambii tuache kulia. Yeye hukaa karibu nasi, naye ndiye nguvu zetu tunapokuwa tumeishiwa nguvu kabisa.</p> <p><em>Mungu mpendwa, asante kwa kuwa uko pamoja nami ninapohuzunika. Tafadhali mfariji kila mtu anayemkumbuka kwa huzuni mtu anayempenda. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mama yake Mary alisema nini Mary alipomwuliza kama angeweza kwenda mahali pa mbali?",
+    "answer": "Alisema Mary alikuwa mtoto wake, aliyepewa na Mungu, naye alikuwa amemrudisha kwa Mungu. Popote Mungu atakapomtuma, hapo ndipo mama yake alipotaka awe."
+   },
+   {
+    "question": "Ni habari gani za huzuni zilizokuja baada ya Mary kurudi Calabar?",
+    "answer": "Mama yake alikuwa amekufa majuma machache baada ya Mary kuondoka, na miezi mitatu baadaye dada yake Janie naye alikufa."
+   },
+   {
+    "question": "Ni nani unayemkumbuka kwa huzuni, au ni nani unayemjua mwenye huzuni?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu hukaa karibu nasi tunapohuzunika, naye ndiye nguvu zetu tunapokuwa tumeishiwa nguvu kabisa."
+   }
+  ],
+  "body_text": "“Mwili wangu na moyo wangu vinaweza kushindwa, bali Mungu ndiye nguvu za moyo wangu milele.” — kutoka Zaburi 73 Huko Uskoti, Mary alimtunza mtoto Janie na kukaa pamoja na mama yake na dada zake. Mtoto Janie alikuwa amepewa jina la dada mdogo kabisa wa Mary, ambaye pia aliitwa Janie. Kisha Janie, dada yake Mary, aliugua sana, na madaktari wakasema ni mahali penye joto zaidi tu ambapo pangeweza kumsaidia. Kwa hiyo Mary aliwahamisha dada yake na mama yake hadi Topsham, kusini mwa Uingereza. Kisha dada yake mwingine, Susan, alikufa ghafla. Ikambidi Mary kuwatunza wote. Mary alitamani kurudi Afrika. Alimwuliza mama yake kama angemruhusu kwenda mbali zaidi, hadi mahali ambapo hakuna mmisionari aliyewahi kufika. Mama yake akasema, “Wewe ni mtoto wangu, uliyepewa na Mungu, nami nimekurudisha kwake. Atakapokuhitaji, na popote atakapokutuma, hapo ndipo ningependa uwe.” Mary alisafiri kwa meli kurudi Calabar mwezi Novemba 1885. Siku ya Mwaka Mpya alianza kuandika barua ndefu yenye furaha kwenda nyumbani. Iliishia hivi: “Nielezeni shida zenu zote, na hakikisheni mnajitunza.” Lakini jibu halikuja kamwe. Mama yake alikuwa amekufa mwezi Desemba, majuma machache tu baada ya Mary kuondoka. Miezi mitatu baadaye, dada yake Janie naye alikufa. Mary alihuzunika sana sana. Usiku ule aliposikia habari za mama yake, bado aliongoza mkutano wa maombi, wala hakumwambia mtu yeyote. Baadaye aliandika, “Sasa mbingu iko karibu nami kuliko Uingereza, na hakuna mtu atakayekuwa na wasiwasi juu yangu nikienda ndani kabisa ya nchi.” Muda si mrefu nyumba ya Mary huko Creek Town ilijaa watoto tena: Janie mdogo, mapacha waliookolewa, na wavulana na wasichana wengine. Wakati mmoja mtoto mchanga aliletwa ambaye mama yake alikuwa amekufa. Mary alimwomba bwana aliyemmiliki mtoto yule amwazime mwanamke wa kumnyonyesha. Jibu likarudi: “Mwache afe.” Lakini Mary hakumwacha. Alimwezesha kuishi. Tunapohuzunika sana, Mungu hatuambii tuache kulia. Yeye hukaa karibu nasi, naye ndiye nguvu zetu tunapokuwa tumeishiwa nguvu kabisa. Mungu mpendwa, asante kwa kuwa uko pamoja nami ninapohuzunika. Tafadhali mfariji kila mtu anayemkumbuka kwa huzuni mtu anayempenda. Amina.",
+  "word_count": 317
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "sw"
+  ],
+  "order": 6,
+  "title": "Neno Moja Gizani",
+  "body_html": "<blockquote>“Uwe hodari na moyo wa ushujaa; usiogope, wala usifadhaike; kwa kuwa Bwana, Mungu wako, yu pamoja nawe kila uendako.” — kutoka Yoshua 1</blockquote> <p>Mwendo wa siku moja kuelekea bara kulikuwa na nchi ya msitu iitwayo Okoyong. Hakuna mmisionari aliyeishi huko, na majirani zake waliwaogopa watu wake. Kulikuwa pia na desturi za kutisha: mtu mkubwa alipokufa, mara nyingi watu wengine waliuawa ili waende pamoja naye.</p> <p>Mwaka 1886 misheni ilikubali kumtuma Mary huko, lakini ilichukua safari nyingi za kutembelea ili kujiandaa. “Mara nyingi nilihisi donge kooni,” aliandika, “na ujasiri wangu ulitaka tena na tena kupata mabawa na kuruka mbali, ingawa hakuna aliyekisia!”</p> <p>Tarehe 4 Agosti 1888 aliondoka kwa mtumbwi katika mvua kubwa, pamoja na watoto watano wa nyumbani kwake. Kijana mmoja alimwambia, “Nitakuombea bila kukoma, lakini unaitafuta mauti.” Kulikuwa karibu giza walipofika ufuoni, na bado walikuwa na maili nne za msitu za kutembea. Msitu ulikuwa mweusi na umejaa sauti za usiku, naye Mary alitamani kugeuka na kukimbia. Alijaribu kuomba, lakini hakuweza hata kutikisa midomo yake. Aliweza tu kutazama juu na kusema moyoni neno moja: “Baba!” Lilitosha.</p> <p>Basi kikundi kidogo kikaendelea kutembea: mvulana wa umri wa miaka kumi na mmoja hivi akiwa na sanduku kichwani, mvulana wa miaka minane akilia, mvulana wa miaka mitatu akilia kwa sauti kubwa zaidi, msichana wa miaka mitano akitokwa na kwikwi, na mwisho kabisa Mary, akiwa amembeba mtoto mchanga mabegani, akiimba nyimbo za kuchekesha ili kuwachangamsha.</p> <p>Kijiji cha Ekenge kilikuwa kimya, kwa sababu kila mtu alikuwa amekwenda mazishini. Wapagazi hawakukubali kuleta mizigo usiku ule, kwa hiyo Mary alirudi mwenyewe kupitia msitu wenye giza, bila viatu, akianguka tena na tena. Mvulana mmoja alimkimbilia nyuma ili asiwe peke yake. Kufikia usiku wa manane mizigo ilikuwa imefika. Miguu yake ilikuwa imekatwakatwa sana hata hakuweza kuvaa viatu kwa majuma sita. Jumapili yake ya kwanza huko ilikuwa mojawapo ya siku za huzuni kubwa zaidi maishani mwake. Lakini alibaki.</p> <p>Unapoogopa mno hata huwezi kuomba, neno moja linatosha. Unaweza kusema tu, “Baba!” naye Mungu anakusikia.</p> <p><em>Mungu mpendwa, ninapoogopa, nisaidie kukumbuka kwamba uko pamoja nami kila niendako. Asante kwa kuwa unanisikia siku zote. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ni ombi gani la neno moja ambalo Mary aliomba katika msitu wenye giza?",
+    "answer": "“Baba!” Alikuwa ameogopa mno hata asiweze kusema kitu kingine, nalo lilitosha."
+   },
+   {
+    "question": "Kwa nini Mary alirudi kupitia msitu usiku ule?",
+    "answer": "Wapagazi hawakukubali kuleta mizigo, na watoto hawakuwa na chakula wala nguo kavu, kwa hiyo alirudi mwenyewe kuchukua mizigo."
+   },
+   {
+    "question": "Ni lini ungeweza kuomba ombi la Mary la neno moja?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba tunapoogopa mno hata tusiweze kusema mengi, neno moja kama “Baba!” ni ombi la kweli, naye Mungu analisikia."
+   }
+  ],
+  "body_text": "“Uwe hodari na moyo wa ushujaa; usiogope, wala usifadhaike; kwa kuwa Bwana, Mungu wako, yu pamoja nawe kila uendako.” — kutoka Yoshua 1 Mwendo wa siku moja kuelekea bara kulikuwa na nchi ya msitu iitwayo Okoyong. Hakuna mmisionari aliyeishi huko, na majirani zake waliwaogopa watu wake. Kulikuwa pia na desturi za kutisha: mtu mkubwa alipokufa, mara nyingi watu wengine waliuawa ili waende pamoja naye. Mwaka 1886 misheni ilikubali kumtuma Mary huko, lakini ilichukua safari nyingi za kutembelea ili kujiandaa. “Mara nyingi nilihisi donge kooni,” aliandika, “na ujasiri wangu ulitaka tena na tena kupata mabawa na kuruka mbali, ingawa hakuna aliyekisia!” Tarehe 4 Agosti 1888 aliondoka kwa mtumbwi katika mvua kubwa, pamoja na watoto watano wa nyumbani kwake. Kijana mmoja alimwambia, “Nitakuombea bila kukoma, lakini unaitafuta mauti.” Kulikuwa karibu giza walipofika ufuoni, na bado walikuwa na maili nne za msitu za kutembea. Msitu ulikuwa mweusi na umejaa sauti za usiku, naye Mary alitamani kugeuka na kukimbia. Alijaribu kuomba, lakini hakuweza hata kutikisa midomo yake. Aliweza tu kutazama juu na kusema moyoni neno moja: “Baba!” Lilitosha. Basi kikundi kidogo kikaendelea kutembea: mvulana wa umri wa miaka kumi na mmoja hivi akiwa na sanduku kichwani, mvulana wa miaka minane akilia, mvulana wa miaka mitatu akilia kwa sauti kubwa zaidi, msichana wa miaka mitano akitokwa na kwikwi, na mwisho kabisa Mary, akiwa amembeba mtoto mchanga mabegani, akiimba nyimbo za kuchekesha ili kuwachangamsha. Kijiji cha Ekenge kilikuwa kimya, kwa sababu kila mtu alikuwa amekwenda mazishini. Wapagazi hawakukubali kuleta mizigo usiku ule, kwa hiyo Mary alirudi mwenyewe kupitia msitu wenye giza, bila viatu, akianguka tena na tena. Mvulana mmoja alimkimbilia nyuma ili asiwe peke yake. Kufikia usiku wa manane mizigo ilikuwa imefika. Miguu yake ilikuwa imekatwakatwa sana hata hakuweza kuvaa viatu kwa majuma sita. Jumapili yake ya kwanza huko ilikuwa mojawapo ya siku za huzuni kubwa zaidi maishani mwake. Lakini alibaki. Unapoogopa mno hata huwezi kuomba, neno moja linatosha. Unaweza kusema tu, “Baba!” naye Mungu anakusikia. Mungu mpendwa, ninapoogopa, nisaidie kukumbuka kwamba uko pamoja nami kila niendako. Asante kwa kuwa unanisikia siku zote. Amina.",
+  "word_count": 338
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "sw"
+  ],
+  "order": 7,
+  "title": "Rafiki wa Siri",
+  "body_html": "<blockquote>“Rafiki hupenda siku zote.” — kutoka Mithali 17</blockquote> <p>Mwanzoni Mary aliishi katika chumba kimoja kidogo uani mwa Edem, chifu wa Ekenge. Alikaa humo pamoja na wale watoto watano. Upande wa pili wa ukuta kulikuwa na ng’ombe wawili, na kila mahali kulikuwa na mbuzi, panya na mende!</p> <p>Huko Okoyong ilionekana kuwa ukosefu mkubwa wa adabu kumwacha mgeni peke yake. Kwa hiyo wake za chifu na wageni wao walikaa na Mary mchana kutwa. Mary alitamani sana mahali pa utulivu pa kuomba kwa sauti. Kwa hiyo alichukua kisu kikubwa kiitwacho panga akaingia vichakani, akakatakata mimea, akiomba kwa sauti kubwa kabisa huku kelele za kukata zikiifunika sauti yake!</p> <p>Mtu aliyeifanya miezi ile ivumilike alikuwa dada yake chifu, Eme Ete. Kila mtu alimwita Ma Eme. Alikuwa mwanamke mkubwa aliyesema kwa ukali uani, lakini sauti yake ililainika alipozungumza na Mary na watoto. Alimletea Mary chakula na kumtunza.</p> <p>Ma Eme alikuwa na siri. Hakuna aliyejua kwamba alikuwa msaidizi wa Mary. Aliposikia kwamba mtu fulani amesingiziwa uchawi, au alikuwa karibu kuumizwa au kuuawa, alitafuta njia ya kumwonya Mary, ingawa kufanya hivyo kuliyaweka maisha yake mwenyewe hatarini. Baadaye walibuni ishara. Ikiwa Ma Eme alimtumia Mary chupa fulani, akiomba dawa, ilimaanisha: “Uwe tayari! Kuna mtu anayehitaji msaada.” Machifu wakaanza kufikiri kwamba Mary aliweza kusoma mawazo yao. Kumbe, mengi yalitoka kwa Ma Eme!</p> <p>Urafiki wao ulidumu miaka ishirini na mitano. Ma Eme hakuwahi kuwa Mkristo, na jambo hilo lilimhuzunisha Mary sana. Lakini Mary hakusahau kamwe wema wake. Alimwita “rafiki yangu mpendwa wa zamani, karibu dada yangu,” na akasema kwamba “mara nyingi yeye ndiye aliyewezesha kuokoa maisha katika siku zile za mwanzo.”</p> <p>Mara nyingi Mungu hutuletea marafiki wa kutusaidia, wakati mwingine watu ambao hatungewatarajia kamwe. Naye anataka wewe pia uwe rafiki jasiri na mwema kwa wengine.</p> <p><em>Mungu mpendwa, asante kwa marafiki zangu. Nisaidie kuwa rafiki mwema na mwaminifu, na kuwatetea watu walio katika matatizo. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mary alipataje njia ya kuomba kwa sauti wakati hakuachwa peke yake kamwe?",
+    "answer": "Aliingia vichakani na panga akakatakata mimea, akiomba kwa sauti kubwa huku kelele za kukata zikiifunika sauti yake."
+   },
+   {
+    "question": "Ishara ya siri kati ya Mary na Ma Eme ilikuwa ipi?",
+    "answer": "Ma Eme alimtumia chupa fulani akiomba dawa. Ilimaanisha kwamba kuna mtu aliyekuwa hatarini, na Mary alipaswa kuwa tayari kusaidia."
+   },
+   {
+    "question": "Ni nani aliye rafiki mwema kwako, nawe unawezaje kuwa rafiki mwema kwa mtu mwingine?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu hutupa marafiki, wakati mwingine wale ambao hatukuwatarajia, naye anataka sisi pia tuwe marafiki wema na waaminifu."
+   }
+  ],
+  "body_text": "“Rafiki hupenda siku zote.” — kutoka Mithali 17 Mwanzoni Mary aliishi katika chumba kimoja kidogo uani mwa Edem, chifu wa Ekenge. Alikaa humo pamoja na wale watoto watano. Upande wa pili wa ukuta kulikuwa na ng’ombe wawili, na kila mahali kulikuwa na mbuzi, panya na mende! Huko Okoyong ilionekana kuwa ukosefu mkubwa wa adabu kumwacha mgeni peke yake. Kwa hiyo wake za chifu na wageni wao walikaa na Mary mchana kutwa. Mary alitamani sana mahali pa utulivu pa kuomba kwa sauti. Kwa hiyo alichukua kisu kikubwa kiitwacho panga akaingia vichakani, akakatakata mimea, akiomba kwa sauti kubwa kabisa huku kelele za kukata zikiifunika sauti yake! Mtu aliyeifanya miezi ile ivumilike alikuwa dada yake chifu, Eme Ete. Kila mtu alimwita Ma Eme. Alikuwa mwanamke mkubwa aliyesema kwa ukali uani, lakini sauti yake ililainika alipozungumza na Mary na watoto. Alimletea Mary chakula na kumtunza. Ma Eme alikuwa na siri. Hakuna aliyejua kwamba alikuwa msaidizi wa Mary. Aliposikia kwamba mtu fulani amesingiziwa uchawi, au alikuwa karibu kuumizwa au kuuawa, alitafuta njia ya kumwonya Mary, ingawa kufanya hivyo kuliyaweka maisha yake mwenyewe hatarini. Baadaye walibuni ishara. Ikiwa Ma Eme alimtumia Mary chupa fulani, akiomba dawa, ilimaanisha: “Uwe tayari! Kuna mtu anayehitaji msaada.” Machifu wakaanza kufikiri kwamba Mary aliweza kusoma mawazo yao. Kumbe, mengi yalitoka kwa Ma Eme! Urafiki wao ulidumu miaka ishirini na mitano. Ma Eme hakuwahi kuwa Mkristo, na jambo hilo lilimhuzunisha Mary sana. Lakini Mary hakusahau kamwe wema wake. Alimwita “rafiki yangu mpendwa wa zamani, karibu dada yangu,” na akasema kwamba “mara nyingi yeye ndiye aliyewezesha kuokoa maisha katika siku zile za mwanzo.” Mara nyingi Mungu hutuletea marafiki wa kutusaidia, wakati mwingine watu ambao hatungewatarajia kamwe. Naye anataka wewe pia uwe rafiki jasiri na mwema kwa wengine. Mungu mpendwa, asante kwa marafiki zangu. Nisaidie kuwa rafiki mwema na mwaminifu, na kuwatetea watu walio katika matatizo. Amina.",
+  "word_count": 303
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "sw"
+  ],
+  "order": 8,
+  "title": "“Kimbia!”",
+  "body_html": "<blockquote>“Mwokoeni maskini na mhitaji; mwopoeni mikononi mwa wasio haki.” — kutoka Zaburi 82</blockquote> <p>Karibu mwaka 1889, seremala mchangamfu wa Kiskoti aitwaye Charles Ovens alikuja kumjengea Mary nyumba. Alipokuwa huko, jambo baya sana lilitokea. Etim, mwana mkubwa wa Chifu Edem, aligongwa shingoni na gogo zito. Mary alimuuguza kwa majuma mawili, lakini alikufa.</p> <p>Watu wa Okoyong waliamini kwamba kifo cha namna hiyo lazima kilisababishwa na uchawi. Mganga mmoja wa kienyeji alikilaumu kijiji kimoja jirani, na watu wenye silaha wakaleta zaidi ya wanaume na wanawake kumi na wawili wakiwa wamefungwa minyororo. Walikuwa wanakwenda kulazimishwa kunywa sumu.</p> <p>Ili kuifariji familia iliyokuwa ikiomboleza, Mary alimvika Etim nguo za hariri kwa ajili ya mazishi yake, kama ilivyomstahili mwana wa chifu. Kisha yeye na Bwana Ovens wakapokezana kukaa karibu na wafungwa, mchana na usiku, ili wasiachwe peke yao kamwe. Wakati mmoja Bwana Ovens alitaka kuwafungua yeye mwenyewe, lakini Mary akasema, “Hapana, hapana. Tuvumilie kidogo zaidi.”</p> <p>Kisha Mary aliona maharagwe ya sumu yakiwa juu ya jiwe. Alikwenda kibandani mwake akaomba. Aliposimama, hofu yake ilikuwa imetoweka. Aliwaambia machifu kwamba pasiwe na mauaji yoyote, kisha akaketi kwenye lango la uani wala hakuondoka.</p> <p>Usiku ule watu fulani walimtoa nje mmoja wa wale wanawake ili anywe sumu. Alipokuwa tu akiinua glasi, Mary aligusa bega lake akanong’ona, “Ifehe!” Maana yake ni “Kimbia!” Wawili hao walikimbia vichakani pamoja, mpaka nyumbani kwa Mary.</p> <p>Kidogo kidogo, machifu waliwaachilia wafungwa. Ma Eme alipiga magoti mbele ya kaka yake akamsihi amruhusu mmoja wa wanawake wa mwisho abaki, akiwa bado amefungwa minyororo, kwenye kibanda cha Mary. Etim alipozikwa, hakuna mtu aliyeuawa ili aende pamoja naye. Baadaye Chifu Edem alipiga magoti akamshukuru Mary. “Sote tumezichoka desturi za zamani,” alimwambia. Lakini hakuna aliyeweza kuzivunja peke yake.</p> <p>Wakati mwingine kuwa jasiri maana yake ni kubaki pale pale na kusema hapana. Mungu anaweza kukupa ujasiri wa kumtetea mtu aliye hatarini.</p> <p><em>Mungu mpendwa, tafadhali nipe ujasiri wa kuwatetea watu wanaoumizwa, unisaidie kukutumaini ninapoogopa. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mary alifanya nini alipoona maharagwe ya sumu?",
+    "answer": "Alikwenda kibandani mwake akaomba, na hofu yake ikatoweka. Kisha aliwaambia machifu kwamba pasiwe na mauaji yoyote, akaketi kwenye lango la uani wala hakuondoka."
+   },
+   {
+    "question": "“Ifehe!” maana yake nini, na kwa nini Mary alilinong’ona?",
+    "answer": "Maana yake ni “Kimbia!” Mary alilinong’ona kwa mwanamke aliyekuwa karibu kunywa sumu, na wawili hao wakakimbia pamoja hadi nyumbani kwa Mary."
+   },
+   {
+    "question": "Je, unaweza kukumbuka wakati ambapo mtu fulani alihitaji umtetee?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu anaweza kutupa ujasiri wa kukataa lililo baya na kusimama pamoja na watu walio hatarini."
+   }
+  ],
+  "body_text": "“Mwokoeni maskini na mhitaji; mwopoeni mikononi mwa wasio haki.” — kutoka Zaburi 82 Karibu mwaka 1889, seremala mchangamfu wa Kiskoti aitwaye Charles Ovens alikuja kumjengea Mary nyumba. Alipokuwa huko, jambo baya sana lilitokea. Etim, mwana mkubwa wa Chifu Edem, aligongwa shingoni na gogo zito. Mary alimuuguza kwa majuma mawili, lakini alikufa. Watu wa Okoyong waliamini kwamba kifo cha namna hiyo lazima kilisababishwa na uchawi. Mganga mmoja wa kienyeji alikilaumu kijiji kimoja jirani, na watu wenye silaha wakaleta zaidi ya wanaume na wanawake kumi na wawili wakiwa wamefungwa minyororo. Walikuwa wanakwenda kulazimishwa kunywa sumu. Ili kuifariji familia iliyokuwa ikiomboleza, Mary alimvika Etim nguo za hariri kwa ajili ya mazishi yake, kama ilivyomstahili mwana wa chifu. Kisha yeye na Bwana Ovens wakapokezana kukaa karibu na wafungwa, mchana na usiku, ili wasiachwe peke yao kamwe. Wakati mmoja Bwana Ovens alitaka kuwafungua yeye mwenyewe, lakini Mary akasema, “Hapana, hapana. Tuvumilie kidogo zaidi.” Kisha Mary aliona maharagwe ya sumu yakiwa juu ya jiwe. Alikwenda kibandani mwake akaomba. Aliposimama, hofu yake ilikuwa imetoweka. Aliwaambia machifu kwamba pasiwe na mauaji yoyote, kisha akaketi kwenye lango la uani wala hakuondoka. Usiku ule watu fulani walimtoa nje mmoja wa wale wanawake ili anywe sumu. Alipokuwa tu akiinua glasi, Mary aligusa bega lake akanong’ona, “Ifehe!” Maana yake ni “Kimbia!” Wawili hao walikimbia vichakani pamoja, mpaka nyumbani kwa Mary. Kidogo kidogo, machifu waliwaachilia wafungwa. Ma Eme alipiga magoti mbele ya kaka yake akamsihi amruhusu mmoja wa wanawake wa mwisho abaki, akiwa bado amefungwa minyororo, kwenye kibanda cha Mary. Etim alipozikwa, hakuna mtu aliyeuawa ili aende pamoja naye. Baadaye Chifu Edem alipiga magoti akamshukuru Mary. “Sote tumezichoka desturi za zamani,” alimwambia. Lakini hakuna aliyeweza kuzivunja peke yake. Wakati mwingine kuwa jasiri maana yake ni kubaki pale pale na kusema hapana. Mungu anaweza kukupa ujasiri wa kumtetea mtu aliye hatarini. Mungu mpendwa, tafadhali nipe ujasiri wa kuwatetea watu wanaoumizwa, unisaidie kukutumaini ninapoogopa. Amina.",
+  "word_count": 310
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "sw"
+  ],
+  "order": 9,
+  "title": "Susie",
+  "body_html": "<blockquote>“Atawakusanya wana-kondoo mikononi mwake, na kuwachukua kifuani mwake.” — kutoka Isaya 40</blockquote> <p>Nyumba ya Mary ikawa mahali salama kwa watoto wachanga. Wengine walikuwa wagonjwa, wengine hawakutakiwa, na wengine walikutwa peke yao msituni. Kwa huzuni, wengi walikuwa dhaifu mno, wakafa. Mary alimlaza kila mmoja katika sanduku dogo katikati ya maua akamzika kwa sala. Alimlilia kila mmoja wao.</p> <p>Siku moja mwanamke mtumwa aitwaye Iye alizaa mapacha. Kwa sababu ya ile hofu ya zamani, watu walirarua nguo zake, wakavunja mabakuli yake aliyoyathamini, wakamfukuza kijijini. Wakawasokomeza watoto katika sanduku tupu wakaliweka kichwani pake. Mary aliposikia, alikimbia bila viatu kwenye njia ya msituni ili kumlaki, akalibeba sanduku yeye mwenyewe, kwa sababu hakuna mtu mwingine aliyekubali kuligusa. Kisha alisimama katika jua kali huku watu wakikata njia mpya kabisa moja kwa moja hadi nyumbani kwake, ili Iye asilazimike kupita kwenye njia ya kijiji.</p> <p>Mvulana mdogo alikuwa ameumizwa vibaya mno, naye alikuwa amekwisha kufa. Lakini mtoto wa kike aliishi. Mary alimpa jina Susie, kwa jina la dada yake mwenyewe. Susie akawa kipenzi cha nyumba nzima. Alipokuwa na umri wa miezi kumi na minne alipata ajali mbaya ya maji yanayochemka. Kwa siku kumi na tatu, mchana na usiku, Mary hakumweka chini isipokuwa mara chache sana. Gizani Mary alisikia sauti ndogo ikisema, “Mem, Mem, Mem,” na kimkono kidogo kikinyooshwa juu ili apewe busu. Asubuhi na mapema Jumapili moja, Susie alikufa mikononi mwa Mary. “Ee Susie, Susie!” Mary aliandika.</p> <p>Lakini jambo la ajabu lilitokea. Kijiji kilikusanyika kuzunguka kaburi la pacha, jambo lile lile walilokuwa wakilikimbia zamani, na mwanamke mmoja wa dini ya zamani akasimama akamsifu Mungu wa Mary kwa ajili ya mtoto yule. Siku zote Mary alikuwa amekataa kununua watumwa, lakini alilipa pauni kumi ili Iye apate uhuru. Miaka mingi baadaye, Iye alibatizwa.</p> <p>Yesu ni kama mchungaji anayewabeba wana-kondoo wake wadogo mikononi mwake. Wewe si mdogo mno hata asikupende na kukubeba.</p> <p><em>Yesu mpendwa, asante kwa kunibeba karibu na moyo wako. Tafadhali uwatunze watoto wachanga na watoto walio wagonjwa au walio peke yao. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini Mary alilibeba yeye mwenyewe sanduku lenye watoto mapacha?",
+    "answer": "Kwa sababu kila mtu aliwaogopa mapacha, na hakuna mtu mwingine aliyekubali kuligusa."
+   },
+   {
+    "question": "Mary alimfanyia Iye nini baada ya Susie kufa?",
+    "answer": "Siku zote Mary alikuwa amekataa kununua watumwa, lakini alilipa pauni kumi ili Iye apate uhuru. Miaka mingi baadaye Iye alibatizwa."
+   },
+   {
+    "question": "Unajisikiaje kujua kwamba Yesu anakubeba kama mwana-kondoo mdogo?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Yesu ni kama mchungaji anayewabeba wana-kondoo wake karibu na moyo wake, na hakuna aliye mdogo mno kwa upendo wake."
+   }
+  ],
+  "body_text": "“Atawakusanya wana-kondoo mikononi mwake, na kuwachukua kifuani mwake.” — kutoka Isaya 40 Nyumba ya Mary ikawa mahali salama kwa watoto wachanga. Wengine walikuwa wagonjwa, wengine hawakutakiwa, na wengine walikutwa peke yao msituni. Kwa huzuni, wengi walikuwa dhaifu mno, wakafa. Mary alimlaza kila mmoja katika sanduku dogo katikati ya maua akamzika kwa sala. Alimlilia kila mmoja wao. Siku moja mwanamke mtumwa aitwaye Iye alizaa mapacha. Kwa sababu ya ile hofu ya zamani, watu walirarua nguo zake, wakavunja mabakuli yake aliyoyathamini, wakamfukuza kijijini. Wakawasokomeza watoto katika sanduku tupu wakaliweka kichwani pake. Mary aliposikia, alikimbia bila viatu kwenye njia ya msituni ili kumlaki, akalibeba sanduku yeye mwenyewe, kwa sababu hakuna mtu mwingine aliyekubali kuligusa. Kisha alisimama katika jua kali huku watu wakikata njia mpya kabisa moja kwa moja hadi nyumbani kwake, ili Iye asilazimike kupita kwenye njia ya kijiji. Mvulana mdogo alikuwa ameumizwa vibaya mno, naye alikuwa amekwisha kufa. Lakini mtoto wa kike aliishi. Mary alimpa jina Susie, kwa jina la dada yake mwenyewe. Susie akawa kipenzi cha nyumba nzima. Alipokuwa na umri wa miezi kumi na minne alipata ajali mbaya ya maji yanayochemka. Kwa siku kumi na tatu, mchana na usiku, Mary hakumweka chini isipokuwa mara chache sana. Gizani Mary alisikia sauti ndogo ikisema, “Mem, Mem, Mem,” na kimkono kidogo kikinyooshwa juu ili apewe busu. Asubuhi na mapema Jumapili moja, Susie alikufa mikononi mwa Mary. “Ee Susie, Susie!” Mary aliandika. Lakini jambo la ajabu lilitokea. Kijiji kilikusanyika kuzunguka kaburi la pacha, jambo lile lile walilokuwa wakilikimbia zamani, na mwanamke mmoja wa dini ya zamani akasimama akamsifu Mungu wa Mary kwa ajili ya mtoto yule. Siku zote Mary alikuwa amekataa kununua watumwa, lakini alilipa pauni kumi ili Iye apate uhuru. Miaka mingi baadaye, Iye alibatizwa. Yesu ni kama mchungaji anayewabeba wana-kondoo wake wadogo mikononi mwake. Wewe si mdogo mno hata asikupende na kukubeba. Yesu mpendwa, asante kwa kunibeba karibu na moyo wako. Tafadhali uwatunze watoto wachanga na watoto walio wagonjwa au walio peke yao. Amina.",
+  "word_count": 322
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "sw"
+  ],
+  "order": 10,
+  "title": "Mungu wa Mwanamke",
+  "body_html": "<blockquote>“Heri wapatanishi, kwa kuwa hao wataitwa wana wa Mungu.” — kutoka Mathayo 5</blockquote> <p>Mapema katika muda wake huko Ekenge, ujumbe ulifika kutoka kijiji kimoja kilichokuwa mwendo wa saa nane kwa miguu. Chifu wao alikuwa mgonjwa sana, na kama angekufa, baadhi ya watu wa nyumbani mwake wangeuawa. Walimsihi Ma, yule mzungu, aje.</p> <p>Chifu Edem na Ma Eme walisema ni mbali mno, lakini Mary aliondoka pamoja na kikundi cha wanawake. Mvua ilinyesha kwa nguvu. Kwanza alipoteza viatu vyake, kisha soksi zake, kisha mwavuli wake uliovunjika! Akiwa amelowa chepechepe, alivua pia nguo zake nyingi, na wanawake wakazibeba vichwani mwao katika mabakuli makubwa. Mary aliona aibu sana. Lakini baadaye alitambua kwamba hakuna kitu chochote alichowahi kufanya kilichoshinda mioyo ya watu wa Okoyong kama safari ile ya mvuani. Na chifu akapona, kwa hiyo hakuna mtu aliyeuawa.</p> <p>Muda fulani baadaye, Mary alisikia kwamba vita vilikuwa karibu kuanza alfajiri. Alikuwa mgonjwa, lakini aliondoka. Alimwomba chifu mmoja ampe mpiga ngoma wa kutangulia mbele yake. Chifu akarudisha ujumbe kwamba mwanamke anayeingia vitani anaonyesha tu jinsi asivyojua mambo. Mary akatuma jibu hili: “Ulipokuwa ukiupima uwezo wa mwanamke, ni wazi umesahau kumhesabu Mungu wa mwanamke.”</p> <p>Katika kijiji cha adui, ukuta wa kimya wa watu wenye silaha ulisimama ukingoja. Kisha mzee mmoja akatoka mbele akapiga magoti miguuni pa Mary, akimwomba awasaidie kufanya amani. Alikuwa ni yule chifu ambaye Mary alitembea katika mvua kwenda kumsaidia! Ilichukua siku nzima, lakini mwishowe walikubaliana kulipa faini badala ya kupigana vita.</p> <p>Baada ya hapo, mara nyingi watu walimwomba Ma awasuluhishe katika ugomvi wao. Alikuwa akiketi katikati ya kelele zote na kufuma kwa sindano kimya kimya. Alisema jambo hilo lilimzuia asionyeshe kwamba alikuwa anaogopa, na milio ya sindano za kufumia iliwatuliza wote.</p> <p>Kuleta amani ni kazi ya Mungu. Unapowasaidia watu kuacha kupigana na kuwa marafiki tena, unakuwa mmoja wa watoto wa Mungu, kama vile Yesu alivyosema.</p> <p><em>Mungu mpendwa, tafadhali nifanye kuwa mpatanishi. Watu wanaonizunguka wanapokasirika, nisaidie kuwa mtulivu na mwema, na kuwasaidia wawe marafiki tena. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Nini kilitokea kwa nguo za Mary katika safari yake ya mvuani?",
+    "answer": "Alipoteza viatu vyake, soksi zake na mwavuli wake uliovunjika, na wanawake wakabeba nguo zake nyingi vichwani mwao katika mabakuli makubwa."
+   },
+   {
+    "question": "Ni nani aliyetoka katika safu ya watu wenye silaha akapiga magoti miguuni pa Mary?",
+    "answer": "Yule chifu mzee ambaye Mary alitembea katika mvua kwenda kumsaidia alipokuwa mgonjwa. Alimwomba awasaidie kufanya amani."
+   },
+   {
+    "question": "Unawezaje kuwa mpatanishi nyumbani au shuleni?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Yesu anawaita wapatanishi kuwa wana wa Mungu, nasi tunaweza kuwasaidia watu kuacha kupigana na kuwa marafiki tena."
+   }
+  ],
+  "body_text": "“Heri wapatanishi, kwa kuwa hao wataitwa wana wa Mungu.” — kutoka Mathayo 5 Mapema katika muda wake huko Ekenge, ujumbe ulifika kutoka kijiji kimoja kilichokuwa mwendo wa saa nane kwa miguu. Chifu wao alikuwa mgonjwa sana, na kama angekufa, baadhi ya watu wa nyumbani mwake wangeuawa. Walimsihi Ma, yule mzungu, aje. Chifu Edem na Ma Eme walisema ni mbali mno, lakini Mary aliondoka pamoja na kikundi cha wanawake. Mvua ilinyesha kwa nguvu. Kwanza alipoteza viatu vyake, kisha soksi zake, kisha mwavuli wake uliovunjika! Akiwa amelowa chepechepe, alivua pia nguo zake nyingi, na wanawake wakazibeba vichwani mwao katika mabakuli makubwa. Mary aliona aibu sana. Lakini baadaye alitambua kwamba hakuna kitu chochote alichowahi kufanya kilichoshinda mioyo ya watu wa Okoyong kama safari ile ya mvuani. Na chifu akapona, kwa hiyo hakuna mtu aliyeuawa. Muda fulani baadaye, Mary alisikia kwamba vita vilikuwa karibu kuanza alfajiri. Alikuwa mgonjwa, lakini aliondoka. Alimwomba chifu mmoja ampe mpiga ngoma wa kutangulia mbele yake. Chifu akarudisha ujumbe kwamba mwanamke anayeingia vitani anaonyesha tu jinsi asivyojua mambo. Mary akatuma jibu hili: “Ulipokuwa ukiupima uwezo wa mwanamke, ni wazi umesahau kumhesabu Mungu wa mwanamke.” Katika kijiji cha adui, ukuta wa kimya wa watu wenye silaha ulisimama ukingoja. Kisha mzee mmoja akatoka mbele akapiga magoti miguuni pa Mary, akimwomba awasaidie kufanya amani. Alikuwa ni yule chifu ambaye Mary alitembea katika mvua kwenda kumsaidia! Ilichukua siku nzima, lakini mwishowe walikubaliana kulipa faini badala ya kupigana vita. Baada ya hapo, mara nyingi watu walimwomba Ma awasuluhishe katika ugomvi wao. Alikuwa akiketi katikati ya kelele zote na kufuma kwa sindano kimya kimya. Alisema jambo hilo lilimzuia asionyeshe kwamba alikuwa anaogopa, na milio ya sindano za kufumia iliwatuliza wote. Kuleta amani ni kazi ya Mungu. Unapowasaidia watu kuacha kupigana na kuwa marafiki tena, unakuwa mmoja wa watoto wa Mungu, kama vile Yesu alivyosema. Mungu mpendwa, tafadhali nifanye kuwa mpatanishi. Watu wanaonizunguka wanapokasirika, nisaidie kuwa mtulivu na mwema, na kuwasaidia wawe marafiki tena. Amina.",
+  "word_count": 318
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "sw"
+  ],
+  "order": 11,
+  "title": "Furaha Asubuhi",
+  "body_html": "<blockquote>“Huja kilio kukaa usiku kucha, lakini asubuhi huwa furaha.” — kutoka Zaburi 30</blockquote> <p>Mwaka 1896 watu wa Okoyong walihamia nchi mpya, naye Mary akahamia pamoja nao mahali paitwapo Akpap. Wakati nyumba mpya ikijengwa, aliishi katika banda lenye vyumba viwili lisilo na sakafu.</p> <p>Kisha ugonjwa ulienea nyumbani mwake, na watoto wake wanne wakafa. Muda mfupi baadaye ugonjwa mbaya sana uitwao ndui ulienea katika nchi yote. Mary alitumia saa nyingi kila siku akiwapa watu chanjo ili kuwakinga, akaigeuza nyumba yake ya zamani huko Ekenge kuwa hospitali. Karibu kila mtu mwingine alikimbia.</p> <p>Kisha Chifu Edem, aliyekuwa amemkaribisha miaka minane kabla, akapatwa na ndui. Mary alimuuguza mchana na usiku, lakini alikufa katikati ya usiku. Hapakuwa na mtu wa kumsaidia. Kwa hiyo Mary alitengeneza jeneza kwa mikono yake mwenyewe, akachimba kaburi, akamzika rafiki yake wa zamani. Kisha akarudi kwa miguu kupitia msitu wenye giza na unyevu hadi Akpap jua lilipokuwa likichomoza.</p> <p>Kwa muda fulani Mary hakuwa na moyo wa kufanya chochote. Kwa miaka mitatu alifanya kazi peke yake, mara nyingi akiwa mgonjwa na bila kuweza kulala. “Kila kitu ni giza,” aliandika, “isipokuwa juu. Kalvari inasimama salama na imara.” Kalvari ni mahali ambapo Yesu alitufia. Mwaka baada ya mwaka, hakuna mtu aliyebatizwa. Lakini Mary alisema, “Kristo alinituma kuhubiri Injili, naye atashughulikia matokeo.”</p> <p>Na mwishowe, asubuhi ikafika. Mwezi Agosti 1903, miaka kumi na mitano baada ya Mary kuingia Okoyong kwa mara ya kwanza, vijana saba walibatizwa huko. Mary pia aliwaleta watoto kumi na mmoja wabatizwe, na sita kati yao walikuwa watoto aliowaokoa. Kisha wote waliimba Zaburi 103 kwa lugha ya Kiefik. Zaburi hiyo inamsifu Mungu ambaye “aukomboa uhai wako na kaburi,” maana yake ni kwamba yeye huyaokoa maisha yetu. Mary alikuwa ameona maisha mengi yakiondolewa huko Okoyong. Sasa watu wake walikuwa wakiimba juu ya Mungu anayeokoa, na macho yake yakajaa machozi.</p> <p>Wakati mwingine tunapaswa kungoja muda mrefu ili tuone mambo mema yakitokea. Lakini Mungu anafanya kazi hata gizani, na asubuhi huwa furaha.</p> <p><em>Mungu mpendwa, ninapokuwa na siku za huzuni, nisaidie kukumbuka kwamba bado uko pamoja nami. Asante kwa kuwa asubuhi huwa furaha. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mary alifanya nini Chifu Edem alipokufa kwa ndui?",
+    "answer": "Hapakuwa na mtu wa kumsaidia, kwa hiyo alitengeneza jeneza kwa mikono yake mwenyewe, akachimba kaburi akamzika, kisha akarudi kupitia msitu jua lilipokuwa likichomoza."
+   },
+   {
+    "question": "Nini kilitokea huko Okoyong mwezi Agosti 1903?",
+    "answer": "Vijana saba na watoto kumi na mmoja walibatizwa, sita kati yao wakiwa watoto ambao Mary aliwaokoa, na wote wakaimba Zaburi 103 kwa Kiefik."
+   },
+   {
+    "question": "Ni jambo gani jema unalolingoja na kuliombea?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu anafanya kazi hata tusipoweza kuona, na asubuhi huwa furaha."
+   }
+  ],
+  "body_text": "“Huja kilio kukaa usiku kucha, lakini asubuhi huwa furaha.” — kutoka Zaburi 30 Mwaka 1896 watu wa Okoyong walihamia nchi mpya, naye Mary akahamia pamoja nao mahali paitwapo Akpap. Wakati nyumba mpya ikijengwa, aliishi katika banda lenye vyumba viwili lisilo na sakafu. Kisha ugonjwa ulienea nyumbani mwake, na watoto wake wanne wakafa. Muda mfupi baadaye ugonjwa mbaya sana uitwao ndui ulienea katika nchi yote. Mary alitumia saa nyingi kila siku akiwapa watu chanjo ili kuwakinga, akaigeuza nyumba yake ya zamani huko Ekenge kuwa hospitali. Karibu kila mtu mwingine alikimbia. Kisha Chifu Edem, aliyekuwa amemkaribisha miaka minane kabla, akapatwa na ndui. Mary alimuuguza mchana na usiku, lakini alikufa katikati ya usiku. Hapakuwa na mtu wa kumsaidia. Kwa hiyo Mary alitengeneza jeneza kwa mikono yake mwenyewe, akachimba kaburi, akamzika rafiki yake wa zamani. Kisha akarudi kwa miguu kupitia msitu wenye giza na unyevu hadi Akpap jua lilipokuwa likichomoza. Kwa muda fulani Mary hakuwa na moyo wa kufanya chochote. Kwa miaka mitatu alifanya kazi peke yake, mara nyingi akiwa mgonjwa na bila kuweza kulala. “Kila kitu ni giza,” aliandika, “isipokuwa juu. Kalvari inasimama salama na imara.” Kalvari ni mahali ambapo Yesu alitufia. Mwaka baada ya mwaka, hakuna mtu aliyebatizwa. Lakini Mary alisema, “Kristo alinituma kuhubiri Injili, naye atashughulikia matokeo.” Na mwishowe, asubuhi ikafika. Mwezi Agosti 1903, miaka kumi na mitano baada ya Mary kuingia Okoyong kwa mara ya kwanza, vijana saba walibatizwa huko. Mary pia aliwaleta watoto kumi na mmoja wabatizwe, na sita kati yao walikuwa watoto aliowaokoa. Kisha wote waliimba Zaburi 103 kwa lugha ya Kiefik. Zaburi hiyo inamsifu Mungu ambaye “aukomboa uhai wako na kaburi,” maana yake ni kwamba yeye huyaokoa maisha yetu. Mary alikuwa ameona maisha mengi yakiondolewa huko Okoyong. Sasa watu wake walikuwa wakiimba juu ya Mungu anayeokoa, na macho yake yakajaa machozi. Wakati mwingine tunapaswa kungoja muda mrefu ili tuone mambo mema yakitokea. Lakini Mungu anafanya kazi hata gizani, na asubuhi huwa furaha. Mungu mpendwa, ninapokuwa na siku za huzuni, nisaidie kukumbuka kwamba bado uko pamoja nami. Asante kwa kuwa asubuhi huwa furaha. Amina.",
+  "word_count": 336
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "sw"
+  ],
+  "order": 12,
+  "title": "Salama",
+  "body_html": "<blockquote>“Neema yangu yakutosha; kwa maana uweza wangu hutimilika katika udhaifu.” — kutoka 2 Wakorintho 12</blockquote> <p>Mwaka 1903 Mary aliwachukua wavulana wawili, Esien na Effiom, na msichana aitwaye Mana hadi Itu, soko la zamani la watumwa kando ya mto. Mana mwenyewe aliwahi kutekwa nyara na kuuzwa kama mtumwa. Mary aliwaacha watatu hao huko ili wafundishe. Ndani ya miezi michache zaidi ya watu mia tatu walikuwa wakihudhuria kanisa walilolijenga wenyewe, na Mana alikuwa amewafundisha wanawake wa Itu kama mama.</p> <p>Mary mwenyewe alimimina sakafu za saruji pia. “Ninaikoroga tu kama uji,” alisema, “ninaimimina, ninaisawazisha kwa fimbo, na muda wote ninaendelea kuomba, ‘Bwana, saruji hii hapa; ikiwa ni kwa utukufu wako, ifanye igande,’ nayo haijawahi kuharibika hata mara moja.”</p> <p>Kufikia wakati huu Mary alikuwa na umri wa zaidi ya miaka sitini, na wavulana wake walimsukuma porini katika kiti cha matete chenye magurudumu. Kanisa lake lilipokosa kumtuma mtu yeyote kwenye mji uitwao Ikpe, alisema, “Lazima niende,” naye akaenda. Baadaye alisema, “Ninaanza kila siku, karibu kila safari, nikiwa na maumivu, na nikiwa nimechoka sana hata nina uhakika siwezi kuendelea, lakini kila ninapoanza, nguvu huja, nazo huongezeka.”</p> <p>Mwezi Januari 1915 Mary aliugua sana. Asubuhi na mapema tarehe 13 Januari, mahali paitwapo Use, akiwa na wasichana aliowalea kando yake, alifariki. Watu walikuja kutoka kila upande kumwombolezea Eka kpukpru owo, maana yake “Mama wa Kila Mtu.” Alizikwa kilimani juu ya Duke Town, mahali alipotua ufuoni kwa mara ya kwanza miaka thelathini na tisa kabla.</p> <p>Karibu na kaburi lake aliketi Mammy Fuller, rafiki Mjamaika wa Mary tangu siku zake za kwanza huko Calabar. Wanawake fulani walipoanza kuomboleza kwa sauti, Mammy Fuller alisimama. “Msilie, msilie,” alisema. “Msifuni Mungu ambaye baraka zote hutoka kwake. Ma alikuwa baraka kubwa.” Jeneza lilipokuwa likishushwa, alisema neno moja: “Salama.”</p> <p>Mary hakuwa na nguvu kamwe. Lakini Mungu alimpa nguvu kwa kila siku, naye atakufanyia vivyo hivyo.</p> <p><em>Mungu mpendwa, asante kwa ajili ya Mary Slessor na watoto wote aliowapenda. Ninapojisikia dhaifu, tafadhali nipe nguvu kwa kila siku, unilinde salama pamoja nawe milele. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ni nani walioanzisha kanisa huko Itu?",
+    "answer": "Mary aliwaacha huko wavulana wawili, Esien na Effiom, na msichana aitwaye Mana. Mana aliwahi kuuzwa kama mtumwa, naye aliwafundisha wanawake wa Itu kama mama."
+   },
+   {
+    "question": "Ni neno gani moja ambalo Mammy Fuller alisema kwenye kaburi la Mary?",
+    "answer": "“Salama.” Mary, ambaye watu walimwita “Mama wa Kila Mtu,” hatimaye alikuwa salama pamoja na Mungu."
+   },
+   {
+    "question": "Ni lini unajisikia dhaifu au umechoka, nawe ungewezaje kumwomba Mungu akupe nguvu?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mary hakuwa na nguvu kamwe, lakini Mungu alimpa nguvu kwa kila siku kila alipoanza, naye atakufanyia vivyo hivyo."
+   }
+  ],
+  "body_text": "“Neema yangu yakutosha; kwa maana uweza wangu hutimilika katika udhaifu.” — kutoka 2 Wakorintho 12 Mwaka 1903 Mary aliwachukua wavulana wawili, Esien na Effiom, na msichana aitwaye Mana hadi Itu, soko la zamani la watumwa kando ya mto. Mana mwenyewe aliwahi kutekwa nyara na kuuzwa kama mtumwa. Mary aliwaacha watatu hao huko ili wafundishe. Ndani ya miezi michache zaidi ya watu mia tatu walikuwa wakihudhuria kanisa walilolijenga wenyewe, na Mana alikuwa amewafundisha wanawake wa Itu kama mama. Mary mwenyewe alimimina sakafu za saruji pia. “Ninaikoroga tu kama uji,” alisema, “ninaimimina, ninaisawazisha kwa fimbo, na muda wote ninaendelea kuomba, ‘Bwana, saruji hii hapa; ikiwa ni kwa utukufu wako, ifanye igande,’ nayo haijawahi kuharibika hata mara moja.” Kufikia wakati huu Mary alikuwa na umri wa zaidi ya miaka sitini, na wavulana wake walimsukuma porini katika kiti cha matete chenye magurudumu. Kanisa lake lilipokosa kumtuma mtu yeyote kwenye mji uitwao Ikpe, alisema, “Lazima niende,” naye akaenda. Baadaye alisema, “Ninaanza kila siku, karibu kila safari, nikiwa na maumivu, na nikiwa nimechoka sana hata nina uhakika siwezi kuendelea, lakini kila ninapoanza, nguvu huja, nazo huongezeka.” Mwezi Januari 1915 Mary aliugua sana. Asubuhi na mapema tarehe 13 Januari, mahali paitwapo Use, akiwa na wasichana aliowalea kando yake, alifariki. Watu walikuja kutoka kila upande kumwombolezea Eka kpukpru owo, maana yake “Mama wa Kila Mtu.” Alizikwa kilimani juu ya Duke Town, mahali alipotua ufuoni kwa mara ya kwanza miaka thelathini na tisa kabla. Karibu na kaburi lake aliketi Mammy Fuller, rafiki Mjamaika wa Mary tangu siku zake za kwanza huko Calabar. Wanawake fulani walipoanza kuomboleza kwa sauti, Mammy Fuller alisimama. “Msilie, msilie,” alisema. “Msifuni Mungu ambaye baraka zote hutoka kwake. Ma alikuwa baraka kubwa.” Jeneza lilipokuwa likishushwa, alisema neno moja: “Salama.” Mary hakuwa na nguvu kamwe. Lakini Mungu alimpa nguvu kwa kila siku, naye atakufanyia vivyo hivyo. Mungu mpendwa, asante kwa ajili ya Mary Slessor na watoto wote aliowapenda. Ninapojisikia dhaifu, tafadhali nipe nguvu kwa kila siku, unilinde salama pamoja nawe milele. Amina.",
+  "word_count": 325
+ }
+}
+]

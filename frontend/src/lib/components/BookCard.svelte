@@ -34,7 +34,13 @@
 		 * book's: on the young-reader hubs, where "3 hr read" is what puts a
 		 * reader off and one chapter is the real commitment.
 		 */
-		perChapter = false
+		perChapter = false,
+		/**
+		 * A line that sells the book, under the byline — the teens hub's cards
+		 * (`$lib/bookHooks`). The link's label names title and author only, so
+		 * the hook rides along as its description.
+		 */
+		hook = ''
 	}: {
 		book: CoverBook;
 		showAuthor?: boolean;
@@ -42,8 +48,10 @@
 		anchor?: string;
 		showSeries?: boolean;
 		perChapter?: boolean;
+		hook?: string;
 	} = $props();
 	const t = i18n.t;
+	const hookId = $props.id();
 
 	const chapters = $derived(
 		`${book.chapter_count} ${book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}`
@@ -77,6 +85,7 @@
 	style:--cover-tint={tint || undefined}
 	data-testid="book-card"
 	aria-label={showAuthor ? `${book.title} — ${book.author.name}` : book.title}
+	aria-describedby={hook ? hookId : undefined}
 >
 	<!-- The whole cover block (the cover, its hover overlay and the ribbon)
 	     tips together on hover, so the overlay stays on the cover. -->
@@ -111,6 +120,11 @@
 			<!-- Text, not a link: the whole card is already one. The series page is
 			     a tap away on the book page's own series line. -->
 			<div class="truncate text-eyebrow font-medium text-accent" title={seriesLine}>{seriesLine}</div>
+		{/if}
+		{#if hook}
+			<p id={hookId} class="mt-1 line-clamp-4 pb-1 text-small leading-snug text-text" title={hook}>
+				{hook}
+			</p>
 		{/if}
 		<!-- mt-auto pins the meta to the card's bottom, so a one-line title and a
 		     two-line title still bottom out level across a grid row. -->

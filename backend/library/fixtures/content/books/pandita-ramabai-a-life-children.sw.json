@@ -1,0 +1,393 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "pandita-ramabai-a-life-children",
+  "language": "sw",
+  "title": "Pandita Ramabai (Kwa Watoto)",
+  "subtitle": "",
+  "cover_title": "",
+  "cover_byline": "Pandita Ramabai",
+  "description": "Hadithi ya kweli ya Ramabai, msichana kutoka India aliyebebwa kushuka mlimani ndani ya sanduku la mianzi, akapoteza familia yake wakati wa njaa kuu, akatembea maili elfu nne, kisha akakua akajenga nyumba kwa ajili ya maelfu ya wajane na wasichana yatima, na kuwapa watu wake Biblia kwa maneno yao ya kila siku. Toleo hili la watoto linasimulia upya maisha yake katika sura fupi zilizoandaliwa kusomwa kwa sauti: mstari wa Biblia, sehemu moja ya hadithi yake, jambo moja linalokuhusu wewe, na sala fupi, pamoja na maswali ya kuzungumza pamoja.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Kitabu Pandita Ramabai (Kwa Watoto) kinahusu nini?",
+    "answer": "Ni toleo la watoto la wasifu kamili wa Pandita Ramabai. Kinasimulia jinsi msichana aliyefundishwa kusoma vitabu vya zamani vya Kisanskrit alivyopoteza familia yake wakati wa njaa kuu, akamjua Yesu, na kutumia maisha yake yote kuwaokoa wajane na wasichana wenye njaa na kuwapa wanawake wa India Biblia waliyoweza kuielewa."
+   },
+   {
+    "question": "Pandita Ramabai alikuwa nani?",
+    "answer": "Alikuwa mwanamke Mhindi aliyeishi kuanzia mwaka 1858 hadi 1922. Alikuwa msomi mkubwa mno hata walimu wenye hekima wa Calcutta wakampa jina la heshima, naye akawa mmoja wa wanawake wa kwanza wa India kuwatetea wasichana na wajane hadharani. Alikuwa Mkristo, akafungua shule ya wajane vijana, akaanzisha Mukti, nyumba ya maelfu ya wasichana na wanawake, na akaitafsiri Biblia katika Kimarathi cha kila siku."
+   },
+   {
+    "question": "Kila sura imepangwaje?",
+    "answer": "Kila sura ni fupi na imeandaliwa kusomwa kwa sauti. Inaanza na mstari wa Biblia, inasimulia sehemu moja ya hadithi ya Ramabai, inaonyesha jambo moja rahisi linalokuhusu wewe, na inamalizika kwa sala fupi. Kisha yanafuata maswali matatu ya kuzungumza pamoja."
+   },
+   {
+    "question": "Je, kitabu hiki kina huzuni mno kwa watoto?",
+    "answer": "Sehemu zake zina huzuni. Familia ya Ramabai ilikufa wakati wa njaa kuu, mume wake alifariki akiwa kijana, naye alifanya kazi kati ya wajane watoto na wasichana wenye njaa. Kitabu hakijifanyi kwamba mambo hayo hayakutokea, lakini kinazisimulia sehemu hizo kwa upole, kwa ajili ya watoto, na zaidi ya yote ni hadithi ya jinsi Mungu alivyomtunza Ramabai na kumtumia kuwatunza maelfu ya wengine."
+   },
+   {
+    "question": "Je, hadithi hizi ni za kweli?",
+    "answer": "Ndiyo. Kwa sehemu kubwa zinatoka katika maandishi na barua za Ramabai mwenyewe, na kwa watu waliomfahamu. Maneno yaliyo ndani ya alama za kunukuu ni maneno yake mwenyewe, au maneno ya watu waliokuwepo."
+   },
+   {
+    "question": "Kitabu hiki ni cha nani?",
+    "answer": "Ni cha watoto — kisomwe kwa sauti na mtu mzima, au kisomwe na mtoto mkubwa peke yake. Kuna pia toleo la vijana, na wasifu kamili kwa ajili ya wasomaji wakubwa."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Usimulizi mpya wa Ochorus kwa wasomaji wadogo wa wasifu wa Ochorus wa Pandita Ramabai, kutoka mfululizo wa Picha za Ujasiri. Usimulizi huu ni wetu, huru kusomwa na kushirikishwa.",
+  "cover_url": "/covers/sw/pandita-ramabai-a-life-children.svg",
+  "pdf_url": "",
+  "cover_color": "",
+  "series": null,
+  "series_position": null,
+  "sort_order": 150,
+  "is_published": true,
+  "created_at": "2026-10-08T00:00:00Z",
+  "updated_at": "2026-10-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "sw"
+  ],
+  "order": 1,
+  "title": "Mtoto Mchanga Ndani ya Sanduku la Mianzi",
+  "body_html": "<blockquote>“Nawe uwafundishe watoto wako kwa bidii, na kuyanena uketipo katika nyumba yako, na utembeapo njiani.” — kutoka Kumbukumbu la Torati 6</blockquote> <p>Zamani sana, huko India, kijana mmoja aitwaye Anant Shastri alikwenda katika mji wa Poona kujifunza Kisanskrit. Kisanskrit kilikuwa lugha ya zamani, takatifu, ya vitabu vya Kihindu, na watu walisema wasichana hawapaswi kujifunza lugha hiyo. Lakini siku moja, katika jumba la kifalme, Anant alimsikia malkia mmoja akighani mashairi ya Kisanskrit. Aliyajua vizuri sana! Anant alishangaa, akaamua moyoni mwake: siku moja yeye pia angemfundisha mke wake mwenyewe.</p> <p>Miaka mingi baadaye alimwoa msichana mdogo aitwaye Lakshmibai, naye akaanza kumfundisha. Familia yake haikupenda jambo hilo hata kidogo. Basi akamchukua mbali sana, juu ya mlima mrefu uliofunikwa na msitu mnene, akajenga nyumba huko. Lakshmibai aliikumbuka sana usiku wao wa kwanza kabisa mlimani. Hawakuwa na kibanda chochote cha kujikinga, na simba milia mmoja alinguruma ng’ambo ya bonde mpaka asubuhi!</p> <p>Lakshmibai alikuwa mwanafunzi hodari ajabu. Mchana alifanya kazi zote za nyumbani, na usiku alijifunza vitabu vitakatifu.</p> <p>Mnamo Aprili 1858, mtoto msichana alizaliwa katika nyumba ile ya msituni. Wazazi wake walimpa jina Rama. Watu walimwita Ramabai, yaani namna ya adabu na heshima ya kulitaja jina lake.</p> <p>Anant aliwalisha wasafiri wote wa hija waliopanda mlima ule, na baada ya miaka mingi pesa zake zote zikaisha. Ramabai alipokuwa na umri wa miezi sita tu hivi, familia ililazimika kuondoka. Mama yake alimlaza ndani ya sanduku kubwa lililosukwa kwa mianzi, na mtu mmoja akalibeba kichwani mwake njia yote mpaka chini ya mlima. “Hivyo ndivyo maisha yangu ya kusafiri kama msafiri wa hija yalivyoanza,” Ramabai alisema baadaye, “nilipokuwa mtoto mchanga.”</p> <p>Alipokuwa na umri wa miaka minane hivi, mama yake alianza kumfundisha. Ramabai alikariri mashairi marefu ya Kisanskrit moyoni. Katika safari zao alijifunza pia lugha kadhaa, kwa kuwasikiliza tu watu njiani!</p> <p>Wazazi wa Ramabai walimfundisha nyumbani na njiani. Mungu hutupa wazazi na walimu ili watusaidie kujifunza mambo ya dunia na mambo yake yeye. Kujifunza ni zawadi njema, kwa wasichana na kwa wavulana.</p> <p><em>Mungu mpendwa, asante kwa watu wanaonifundisha. Nisaidie kupenda kujifunza, na zaidi ya yote kujifunza habari zako. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini baba yake Ramabai alimpeleka mke wake milimani?",
+    "answer": "Kwa sababu familia yake haikutaka amfundishe Kisanskrit, naye alitaka kumfundisha hata hivyo, mahali penye utulivu."
+   },
+   {
+    "question": "Ramabai alipokuwa mtoto mchanga, alishukaje mlimani?",
+    "answer": "Mama yake alimlaza ndani ya sanduku kubwa la mianzi, na mtu mmoja akalibeba kichwani mpaka bondeni."
+   },
+   {
+    "question": "Ni watu gani wanaokufundisha wewe?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu hutupa wazazi na walimu, na kwamba kujifunza ni zawadi njema kwa kila mtoto."
+   }
+  ],
+  "body_text": "“Nawe uwafundishe watoto wako kwa bidii, na kuyanena uketipo katika nyumba yako, na utembeapo njiani.” — kutoka Kumbukumbu la Torati 6 Zamani sana, huko India, kijana mmoja aitwaye Anant Shastri alikwenda katika mji wa Poona kujifunza Kisanskrit. Kisanskrit kilikuwa lugha ya zamani, takatifu, ya vitabu vya Kihindu, na watu walisema wasichana hawapaswi kujifunza lugha hiyo. Lakini siku moja, katika jumba la kifalme, Anant alimsikia malkia mmoja akighani mashairi ya Kisanskrit. Aliyajua vizuri sana! Anant alishangaa, akaamua moyoni mwake: siku moja yeye pia angemfundisha mke wake mwenyewe. Miaka mingi baadaye alimwoa msichana mdogo aitwaye Lakshmibai, naye akaanza kumfundisha. Familia yake haikupenda jambo hilo hata kidogo. Basi akamchukua mbali sana, juu ya mlima mrefu uliofunikwa na msitu mnene, akajenga nyumba huko. Lakshmibai aliikumbuka sana usiku wao wa kwanza kabisa mlimani. Hawakuwa na kibanda chochote cha kujikinga, na simba milia mmoja alinguruma ng’ambo ya bonde mpaka asubuhi! Lakshmibai alikuwa mwanafunzi hodari ajabu. Mchana alifanya kazi zote za nyumbani, na usiku alijifunza vitabu vitakatifu. Mnamo Aprili 1858, mtoto msichana alizaliwa katika nyumba ile ya msituni. Wazazi wake walimpa jina Rama. Watu walimwita Ramabai, yaani namna ya adabu na heshima ya kulitaja jina lake. Anant aliwalisha wasafiri wote wa hija waliopanda mlima ule, na baada ya miaka mingi pesa zake zote zikaisha. Ramabai alipokuwa na umri wa miezi sita tu hivi, familia ililazimika kuondoka. Mama yake alimlaza ndani ya sanduku kubwa lililosukwa kwa mianzi, na mtu mmoja akalibeba kichwani mwake njia yote mpaka chini ya mlima. “Hivyo ndivyo maisha yangu ya kusafiri kama msafiri wa hija yalivyoanza,” Ramabai alisema baadaye, “nilipokuwa mtoto mchanga.” Alipokuwa na umri wa miaka minane hivi, mama yake alianza kumfundisha. Ramabai alikariri mashairi marefu ya Kisanskrit moyoni. Katika safari zao alijifunza pia lugha kadhaa, kwa kuwasikiliza tu watu njiani! Wazazi wa Ramabai walimfundisha nyumbani na njiani. Mungu hutupa wazazi na walimu ili watusaidie kujifunza mambo ya dunia na mambo yake yeye. Kujifunza ni zawadi njema, kwa wasichana na kwa wavulana. Mungu mpendwa, asante kwa watu wanaonifundisha. Nisaidie kupenda kujifunza, na zaidi ya yote kujifunza habari zako. Amina.",
+  "word_count": 336
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "sw"
+  ],
+  "order": 2,
+  "title": "Hakuna Mji wa Dhahabu",
+  "body_html": "<blockquote>“Tena mtaifahamu kweli, nayo hiyo kweli itawaweka huru.” — kutoka Yohana 8</blockquote> <p>Familia ya Ramabai haikupata tena nyumba yao wenyewe. Kwa miaka kumi na mitano hivi walisafiri kutoka mahali patakatifu pamoja hadi pengine. Walisoma vitabu vya zamani vya Kisanskrit kwa sauti katika mahekalu na chini ya miti, na watu waliosikiliza waliwapa mchele, sarafu au maua. Hivyo Ramabai alikua akisoma mbele ya umati wa watu angali mtoto.</p> <p>Alipokuwa na umri wa miaka kumi na mitatu hivi, familia ilikaa mwaka mmoja katika mji mmoja uitwao Dwarka, kando ya bahari. Watu wa huko walisimulia hadithi ya zamani. Zamani sana, walisema, mji mmoja wa dhahabu ulizama chini ya mawimbi. Mara moja tu katika miaka sitini, katika siku moja maalum, mungu angewaonyesha mji ule watu wasio na dhambi.</p> <p>Siku ile maalum ilifika Ramabai alipokuwa huko. Maelfu ya watu walisubiri ufuoni mchana kutwa. Jua lilipokuwa likizama, mawingu juu ya bahari yaling’aa kama dhahabu. Watu wengi hawakuthubutu kusema kwamba hawakuona mji wowote, kwa sababu hapo kila mtu angejua kwamba wao ni wenye dhambi. Ramabai na familia yake nao walinyamaza. Lakini mioyoni mwao walijua kwamba walikuwa wameona mawingu ya kawaida tu.</p> <p>Ramabai aliona mambo ya kuhuzunisha katika safari zake. Alipokuwa na umri wa miaka tisa hivi, alimsikia mke mmoja kijana akilia alipokuwa akipigwa. Miaka mingi baadaye aliandika, “Vilio vyake viliingia moja kwa moja moyoni mwangu.” Alisema hiyo ndiyo mara ya kwanza alipohisi kuitwa kuwasaidia wasichana na wanawake wengine.</p> <p>Wazazi wake walimpa zawadi moja zaidi. Siku zile wasichana wengi waliozwa wakiwa bado watoto wadogo. Baba na mama yake Ramabai walikataa. Walitaka aendelee kujifunza. Watu wengine waliigeuka familia yao kwa sababu hiyo, lakini baba yake, alisema Ramabai, “alifanya kile alichoona kuwa sawa.”</p> <p>Ramabai hakukubali kujifanya kuona kitu ambacho hakikuwepo. Yesu anasema kweli hutuweka huru. Mungu anataka wewe nawe uwe mkweli, hata wakati kila mtu aliye karibu nawe ananyamaza.</p> <p><em>Mungu mpendwa, nisaidie kupenda yaliyo kweli. Nipe ujasiri wa kusema kweli, hata wakati ni vigumu. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Watu walitumaini kuona nini huko Dwarka?",
+    "answer": "Mji wa dhahabu ambao, kwa mujibu wa hadithi ile, ulizama chini ya bahari na ungeonyeshwa mara moja katika miaka sitini kwa watu wasio na dhambi."
+   },
+   {
+    "question": "Wazazi wa Ramabai walimpa zawadi gani kuhusu kuolewa?",
+    "answer": "Hawakumwoza akiwa mtoto mdogo, kama familia nyingi zilivyofanya, ili aweze kuendelea kujifunza."
+   },
+   {
+    "question": "Je, unaweza kukumbuka wakati ambapo ilikuwa vigumu kusema kweli?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba kweli hutuweka huru, na Mungu hutupa ujasiri wa kusema kweli."
+   }
+  ],
+  "body_text": "“Tena mtaifahamu kweli, nayo hiyo kweli itawaweka huru.” — kutoka Yohana 8 Familia ya Ramabai haikupata tena nyumba yao wenyewe. Kwa miaka kumi na mitano hivi walisafiri kutoka mahali patakatifu pamoja hadi pengine. Walisoma vitabu vya zamani vya Kisanskrit kwa sauti katika mahekalu na chini ya miti, na watu waliosikiliza waliwapa mchele, sarafu au maua. Hivyo Ramabai alikua akisoma mbele ya umati wa watu angali mtoto. Alipokuwa na umri wa miaka kumi na mitatu hivi, familia ilikaa mwaka mmoja katika mji mmoja uitwao Dwarka, kando ya bahari. Watu wa huko walisimulia hadithi ya zamani. Zamani sana, walisema, mji mmoja wa dhahabu ulizama chini ya mawimbi. Mara moja tu katika miaka sitini, katika siku moja maalum, mungu angewaonyesha mji ule watu wasio na dhambi. Siku ile maalum ilifika Ramabai alipokuwa huko. Maelfu ya watu walisubiri ufuoni mchana kutwa. Jua lilipokuwa likizama, mawingu juu ya bahari yaling’aa kama dhahabu. Watu wengi hawakuthubutu kusema kwamba hawakuona mji wowote, kwa sababu hapo kila mtu angejua kwamba wao ni wenye dhambi. Ramabai na familia yake nao walinyamaza. Lakini mioyoni mwao walijua kwamba walikuwa wameona mawingu ya kawaida tu. Ramabai aliona mambo ya kuhuzunisha katika safari zake. Alipokuwa na umri wa miaka tisa hivi, alimsikia mke mmoja kijana akilia alipokuwa akipigwa. Miaka mingi baadaye aliandika, “Vilio vyake viliingia moja kwa moja moyoni mwangu.” Alisema hiyo ndiyo mara ya kwanza alipohisi kuitwa kuwasaidia wasichana na wanawake wengine. Wazazi wake walimpa zawadi moja zaidi. Siku zile wasichana wengi waliozwa wakiwa bado watoto wadogo. Baba na mama yake Ramabai walikataa. Walitaka aendelee kujifunza. Watu wengine waliigeuka familia yao kwa sababu hiyo, lakini baba yake, alisema Ramabai, “alifanya kile alichoona kuwa sawa.” Ramabai hakukubali kujifanya kuona kitu ambacho hakikuwepo. Yesu anasema kweli hutuweka huru. Mungu anataka wewe nawe uwe mkweli, hata wakati kila mtu aliye karibu nawe ananyamaza. Mungu mpendwa, nisaidie kupenda yaliyo kweli. Nipe ujasiri wa kusema kweli, hata wakati ni vigumu. Amina.",
+  "word_count": 314
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "sw"
+  ],
+  "order": 3,
+  "title": "Sukari na Maji",
+  "body_html": "<blockquote>“Hata baba yangu na mama yangu wakiniacha, Bwana atanitunza.” — kutoka Zaburi 27</blockquote> <p>Ramabai alipokuwa na umri wa miaka kumi na sita hivi, njaa kuu ya kutisha ilikuja kusini mwa India. Njaa kuu ni wakati ambapo hakuna chakula cha kutosha. Kufikia wakati huo baba yake Ramabai alikuwa mzee, tena kipofu. Familia ilitumia pesa zao zote kuwapa makuhani zawadi, wakitumaini kwamba miungu ingewasaidia. Lakini msaada haukuja. Punde hawakubaki na kitu chochote kabisa, hata vyungu vyao vya kupikia.</p> <p>Kwa siku kumi na moja waliishi msituni, wakila majani na tende chache za porini. Baba yake Ramabai alidhani kwamba angekufa. Alimkumbatia Ramabai kwa nguvu na kumpapasa uso wake. “Kumbuka, mwanangu,” alisema, “wewe ni mtoto wangu wa mwisho, mtoto wangu ninayekupenda kuliko wote. Nimekuweka mikononi mwa Mungu wetu.”</p> <p>Kaka yake, Srinivas, aliwasaidia wote kushuka hadi kijijini. Huko baba yake aliugua. Aliomba sukari kidogo na maji. Walimpa maji, lakini hawakuwa na sukari ya kumpa. Siku chache baadaye alifariki.</p> <p>Kisha mama yake naye akaugua. Siku moja alikuwa na njaa sana hata akamtuma Ramabai kwa jirani kuomba kipande cha mkate. Ramabai aliona haya sana na huzuni nyingi hata hakuweza kusema neno lolote. Alijitahidi sana asilie, lakini badala yake machozi yakatoka puani! Yule mama mwema alielewa, akampa mkate. Ramabai alikimbia nao nyumbani, lakini mama yake alikuwa dhaifu mno hata asiweze kula. Punde mama yake alifariki, na baada ya muda mfupi dada yake mkubwa naye akafariki.</p> <p>Baba yake Ramabai hakumjua Yesu. Lakini miaka mingi baadaye, Ramabai alipokuwa amemjua Mungu kupitia Yesu, aliamini kwamba Mungu alikuwa amesikia ombi la baba yake kwa ajili yake siku ile msituni.</p> <p>Hii ni sehemu ya kusikitisha sana ya hadithi. Mungu hasemi kwamba mambo ya huzuni ni mazuri. Lakini hata wale tunaowapenda wanapoondoka, Mungu hatuachi. Alimshika Ramabai mikononi mwake, na anakushika wewe pia.</p> <p><em>Mungu mpendwa, asante kwa kuwa hutaniacha kamwe. Tafadhali uwe karibu na watoto walio na njaa au walio peke yao leo, na uwatunze. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Baba yake Ramabai aliomba nini alipougua?",
+    "answer": "Sukari kidogo na maji. Walimpa maji, lakini hawakuwa na sukari."
+   },
+   {
+    "question": "Nini kilitokea Ramabai alipokwenda kuomba mkate?",
+    "answer": "Aliona haya na huzuni mno hata hakuweza kusema, na machozi yake yakatoka puani, lakini yule jirani mwema alielewa akampa mkate."
+   },
+   {
+    "question": "Ni nani anayekutunza unapokuwa na huzuni au hofu?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu hatuachi kamwe, hata wale tunaowapenda wanapoondoka."
+   }
+  ],
+  "body_text": "“Hata baba yangu na mama yangu wakiniacha, Bwana atanitunza.” — kutoka Zaburi 27 Ramabai alipokuwa na umri wa miaka kumi na sita hivi, njaa kuu ya kutisha ilikuja kusini mwa India. Njaa kuu ni wakati ambapo hakuna chakula cha kutosha. Kufikia wakati huo baba yake Ramabai alikuwa mzee, tena kipofu. Familia ilitumia pesa zao zote kuwapa makuhani zawadi, wakitumaini kwamba miungu ingewasaidia. Lakini msaada haukuja. Punde hawakubaki na kitu chochote kabisa, hata vyungu vyao vya kupikia. Kwa siku kumi na moja waliishi msituni, wakila majani na tende chache za porini. Baba yake Ramabai alidhani kwamba angekufa. Alimkumbatia Ramabai kwa nguvu na kumpapasa uso wake. “Kumbuka, mwanangu,” alisema, “wewe ni mtoto wangu wa mwisho, mtoto wangu ninayekupenda kuliko wote. Nimekuweka mikononi mwa Mungu wetu.” Kaka yake, Srinivas, aliwasaidia wote kushuka hadi kijijini. Huko baba yake aliugua. Aliomba sukari kidogo na maji. Walimpa maji, lakini hawakuwa na sukari ya kumpa. Siku chache baadaye alifariki. Kisha mama yake naye akaugua. Siku moja alikuwa na njaa sana hata akamtuma Ramabai kwa jirani kuomba kipande cha mkate. Ramabai aliona haya sana na huzuni nyingi hata hakuweza kusema neno lolote. Alijitahidi sana asilie, lakini badala yake machozi yakatoka puani! Yule mama mwema alielewa, akampa mkate. Ramabai alikimbia nao nyumbani, lakini mama yake alikuwa dhaifu mno hata asiweze kula. Punde mama yake alifariki, na baada ya muda mfupi dada yake mkubwa naye akafariki. Baba yake Ramabai hakumjua Yesu. Lakini miaka mingi baadaye, Ramabai alipokuwa amemjua Mungu kupitia Yesu, aliamini kwamba Mungu alikuwa amesikia ombi la baba yake kwa ajili yake siku ile msituni. Hii ni sehemu ya kusikitisha sana ya hadithi. Mungu hasemi kwamba mambo ya huzuni ni mazuri. Lakini hata wale tunaowapenda wanapoondoka, Mungu hatuachi. Alimshika Ramabai mikononi mwake, na anakushika wewe pia. Mungu mpendwa, asante kwa kuwa hutaniacha kamwe. Tafadhali uwe karibu na watoto walio na njaa au walio peke yao leo, na uwatunze. Amina.",
+  "word_count": 310
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "sw"
+  ],
+  "order": 4,
+  "title": "Maili Elfu Nne",
+  "body_html": "<blockquote>“Nami nitauondoa moyo wa jiwe katika mwili wenu, nami nitawapa moyo wa nyama.” — kutoka Ezekieli 36</blockquote> <p>Sasa walibaki Ramabai na kaka yake Srinivas peke yao. Hawakuwa na nyumba wala pesa. Kwa zaidi ya miaka mitatu walitembea kwa miguu katika India, kutoka kusini mpaka kaskazini kabisa huko Kashmir, kisha mashariki hadi mji mkubwa wa Calcutta. Baadaye Ramabai alihesabu: walikuwa wametembea zaidi ya maili elfu nne!</p> <p>Hawakuwa na viatu, wala blanketi, wala miavuli. Wakati mwingine Srinivas alipata kazi, lakini alilipwa kiasi kidogo mno. Mara nyingi hawakuwa na chakula chochote isipokuwa konzi ya nafaka iliyolowekwa majini. Usiku mmoja wa baridi kali, kando ya mto huko kaskazini ya mbali, walichimba mashimo mawili marefu mchangani, wakalala ndani yake, wakajifunika mchanga mpaka shingoni ili wapate joto.</p> <p>Baadaye Ramabai alisema jambo la kushangaza. Kuwa na njaa na huzuni, alisema, hakukumfanya awe mpole zaidi. Kulifanya moyo wake uwe mgumu, kama jiwe. Aliamini kwamba ni Mungu peke yake angeweza kumpa tena moyo laini wenye upendo.</p> <p>Mwaka 1878 walifika Calcutta. Walimu wenye hekima wa huko walishangazwa na msichana huyu aliyejua mashairi mengi hivyo ya Kisanskrit kwa moyo. Walimpa jina kuu la heshima. Tangu hapo, watu walimwita Pandita Ramabai, maana yake “Ramabai, mwanamke mwenye elimu.”</p> <p>Huko Calcutta, kwa mara ya kwanza, alikutana na Wakristo. Walimpa Biblia ya Kisanskrit. Alijaribu kuisoma, lakini hakuielewa, basi akaiweka kando. Lakini aliitunza maisha yake yote.</p> <p>Pia alisoma kwa uangalifu sana vitabu vya zamani vya sheria vya watu wake. Alishtuka. Vitabu vile vilisema kwamba wanawake ni wabaya, na kwamba hakuna mwanamke ambaye angeweza kuokolewa jinsi alivyo. Ramabai aliona kwamba hakuna tumaini kwake. Alitamani kitu zaidi, lakini hakujua ni kitu gani.</p> <p>Nyakati ngumu zinaweza kuifanya mioyo yetu kuwa migumu. Lakini Mungu anapenda kutupa mioyo laini inayowajali watu wengine. Unaweza kumwomba akupe moyo kama huo leo.</p> <p><em>Mungu mpendwa, tafadhali ondoa ugumu wowote ulio moyoni mwangu. Nipe moyo wa wema unaowapenda watu wengine. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ramabai na kaka yake walipataje joto kando ya mto wenye baridi?",
+    "answer": "Walichimba mashimo mawili mchangani, wakalala ndani yake, wakajifunika mchanga mpaka shingoni."
+   },
+   {
+    "question": "Wakristo wa Calcutta walimpa zawadi gani?",
+    "answer": "Biblia ya Kisanskrit. Hakuielewa wakati ule, lakini aliitunza maisha yake yote."
+   },
+   {
+    "question": "Unafikiri kwa nini tunahitaji Mungu atupe mioyo ya wema?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba nyakati ngumu zinaweza kuifanya mioyo yetu kuwa migumu, lakini Mungu anaweza kutupa mioyo laini yenye upendo."
+   }
+  ],
+  "body_text": "“Nami nitauondoa moyo wa jiwe katika mwili wenu, nami nitawapa moyo wa nyama.” — kutoka Ezekieli 36 Sasa walibaki Ramabai na kaka yake Srinivas peke yao. Hawakuwa na nyumba wala pesa. Kwa zaidi ya miaka mitatu walitembea kwa miguu katika India, kutoka kusini mpaka kaskazini kabisa huko Kashmir, kisha mashariki hadi mji mkubwa wa Calcutta. Baadaye Ramabai alihesabu: walikuwa wametembea zaidi ya maili elfu nne! Hawakuwa na viatu, wala blanketi, wala miavuli. Wakati mwingine Srinivas alipata kazi, lakini alilipwa kiasi kidogo mno. Mara nyingi hawakuwa na chakula chochote isipokuwa konzi ya nafaka iliyolowekwa majini. Usiku mmoja wa baridi kali, kando ya mto huko kaskazini ya mbali, walichimba mashimo mawili marefu mchangani, wakalala ndani yake, wakajifunika mchanga mpaka shingoni ili wapate joto. Baadaye Ramabai alisema jambo la kushangaza. Kuwa na njaa na huzuni, alisema, hakukumfanya awe mpole zaidi. Kulifanya moyo wake uwe mgumu, kama jiwe. Aliamini kwamba ni Mungu peke yake angeweza kumpa tena moyo laini wenye upendo. Mwaka 1878 walifika Calcutta. Walimu wenye hekima wa huko walishangazwa na msichana huyu aliyejua mashairi mengi hivyo ya Kisanskrit kwa moyo. Walimpa jina kuu la heshima. Tangu hapo, watu walimwita Pandita Ramabai, maana yake “Ramabai, mwanamke mwenye elimu.” Huko Calcutta, kwa mara ya kwanza, alikutana na Wakristo. Walimpa Biblia ya Kisanskrit. Alijaribu kuisoma, lakini hakuielewa, basi akaiweka kando. Lakini aliitunza maisha yake yote. Pia alisoma kwa uangalifu sana vitabu vya zamani vya sheria vya watu wake. Alishtuka. Vitabu vile vilisema kwamba wanawake ni wabaya, na kwamba hakuna mwanamke ambaye angeweza kuokolewa jinsi alivyo. Ramabai aliona kwamba hakuna tumaini kwake. Alitamani kitu zaidi, lakini hakujua ni kitu gani. Nyakati ngumu zinaweza kuifanya mioyo yetu kuwa migumu. Lakini Mungu anapenda kutupa mioyo laini inayowajali watu wengine. Unaweza kumwomba akupe moyo kama huo leo. Mungu mpendwa, tafadhali ondoa ugumu wowote ulio moyoni mwangu. Nipe moyo wa wema unaowapenda watu wengine. Amina.",
+  "word_count": 305
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "sw"
+  ],
+  "order": 5,
+  "title": "Furaha ya Moyo",
+  "body_html": "<blockquote>“Baba wa yatima na mwamuzi wa wajane, ndiye Mungu katika makao yake matakatifu.” — kutoka Zaburi 68</blockquote> <p>Mwaka 1880 kaka yake Ramabai, Srinivas, aliugua sana. Alikuwa na wasiwasi juu ya dada yake. Ni nani angemtunza yeye akishaondoka? Ramabai alimwambia, “Hakuna mwingine ila Mungu wa kukutunza wewe na mimi.” Kaka yake akajibu, “Basi ikiwa Mungu anatutunza, siogopi kitu chochote.” Muda mfupi baadaye alifariki. Ramabai alikuwa na umri wa miaka ishirini na miwili, na sasa familia yake yote ilikuwa imeondoka.</p> <p>Miezi michache baadaye aliolewa na mwanasheria mmoja aitwaye Bipin, aliyekuwa rafiki wa kaka yake. Bipin alitoka katika tabaka tofauti, yaani kundi tofauti la familia. Watu wengi walikasirika, kwa sababu walidhani kwamba watu wa matabaka tofauti hawapaswi kamwe kuoana. Lakini Ramabai na Bipin walikuwa na furaha pamoja. Waliishi katika mji mdogo uitwao Silchar, na mwaka 1881 Mungu aliwapa mtoto msichana. Walimpa jina Manorama, maana yake “furaha ya moyo.”</p> <p>Siku moja, katika rafu yake mwenyewe ya vitabu, Ramabai aliona kijitabu kidogo. Hakuna mtu aliyejua kilifikaje pale. Kilikuwa Injili ya Luka, hadithi ya Yesu! Alianza kukisoma kwa hamu kubwa. Mmisionari mmoja wa mji ule alikuja kumweleza Biblia.</p> <p>Kisha jambo la huzuni sana likatokea. Mwanzoni mwa mwaka 1882, Bipin alipata ugonjwa uitwao kipindupindu, akafariki. Manorama hakuwa amefikisha hata mwaka mmoja. Sasa Ramabai alikuwa mjane, yaani mwanamke ambaye mume wake amefariki, naye alikuwa peke yake na mtoto wake mchanga.</p> <p>Lakini Ramabai hakukata tamaa. Alisema huzuni yake kubwa ilimvuta karibu zaidi na Mungu. Hakuwa amemjua Mungu vizuri bado, lakini alihisi kwamba Mungu alikuwa akimfundisha. Ikiwa angemjia Mungu, alisema, “Ni lazima Yeye Mwenyewe anivute.”</p> <p>Ramabai alipokuwa peke yake kuliko wakati wowote, Mungu alikuwa akimvuta karibu. Biblia inasema Mungu ni baba kwa watu wasio na baba. Unapojisikia upweke, Mungu yuko karibu nawe pia.</p> <p><em>Mungu mpendwa, asante kwa kuwa uko karibu na watu walio wapweke na wenye huzuni. Tafadhali univute karibu nawe. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kaka yake Ramabai alisema nini Ramabai alipomwambia kwamba Mungu angewatunza?",
+    "answer": "Alisema, “Basi ikiwa Mungu anatutunza, siogopi kitu chochote.”"
+   },
+   {
+    "question": "Ramabai aliona nini katika rafu yake ya vitabu huko Silchar?",
+    "answer": "Kijitabu kidogo cha Injili ya Luka, hadithi ya Yesu, katika lugha ya Kibengali."
+   },
+   {
+    "question": "Ni wakati gani unajisikia upweke, na Mungu anawezaje kukusaidia wakati huo?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu yuko karibu na watu walio wapweke na huwavuta kwake."
+   }
+  ],
+  "body_text": "“Baba wa yatima na mwamuzi wa wajane, ndiye Mungu katika makao yake matakatifu.” — kutoka Zaburi 68 Mwaka 1880 kaka yake Ramabai, Srinivas, aliugua sana. Alikuwa na wasiwasi juu ya dada yake. Ni nani angemtunza yeye akishaondoka? Ramabai alimwambia, “Hakuna mwingine ila Mungu wa kukutunza wewe na mimi.” Kaka yake akajibu, “Basi ikiwa Mungu anatutunza, siogopi kitu chochote.” Muda mfupi baadaye alifariki. Ramabai alikuwa na umri wa miaka ishirini na miwili, na sasa familia yake yote ilikuwa imeondoka. Miezi michache baadaye aliolewa na mwanasheria mmoja aitwaye Bipin, aliyekuwa rafiki wa kaka yake. Bipin alitoka katika tabaka tofauti, yaani kundi tofauti la familia. Watu wengi walikasirika, kwa sababu walidhani kwamba watu wa matabaka tofauti hawapaswi kamwe kuoana. Lakini Ramabai na Bipin walikuwa na furaha pamoja. Waliishi katika mji mdogo uitwao Silchar, na mwaka 1881 Mungu aliwapa mtoto msichana. Walimpa jina Manorama, maana yake “furaha ya moyo.” Siku moja, katika rafu yake mwenyewe ya vitabu, Ramabai aliona kijitabu kidogo. Hakuna mtu aliyejua kilifikaje pale. Kilikuwa Injili ya Luka, hadithi ya Yesu! Alianza kukisoma kwa hamu kubwa. Mmisionari mmoja wa mji ule alikuja kumweleza Biblia. Kisha jambo la huzuni sana likatokea. Mwanzoni mwa mwaka 1882, Bipin alipata ugonjwa uitwao kipindupindu, akafariki. Manorama hakuwa amefikisha hata mwaka mmoja. Sasa Ramabai alikuwa mjane, yaani mwanamke ambaye mume wake amefariki, naye alikuwa peke yake na mtoto wake mchanga. Lakini Ramabai hakukata tamaa. Alisema huzuni yake kubwa ilimvuta karibu zaidi na Mungu. Hakuwa amemjua Mungu vizuri bado, lakini alihisi kwamba Mungu alikuwa akimfundisha. Ikiwa angemjia Mungu, alisema, “Ni lazima Yeye Mwenyewe anivute.” Ramabai alipokuwa peke yake kuliko wakati wowote, Mungu alikuwa akimvuta karibu. Biblia inasema Mungu ni baba kwa watu wasio na baba. Unapojisikia upweke, Mungu yuko karibu nawe pia. Mungu mpendwa, asante kwa kuwa uko karibu na watu walio wapweke na wenye huzuni. Tafadhali univute karibu nawe. Amina.",
+  "word_count": 302
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "sw"
+  ],
+  "order": 6,
+  "title": "Sauti kwa Ajili ya Wasichana",
+  "body_html": "<blockquote>“Fumbua kinywa chako kwa ajili ya bubu.” — kutoka Mithali 31</blockquote> <p>Ramabai alimchukua Manorama mchanga hadi mji wa Poona, ambako baba yake alikuwa amesomea zamani. Watu wengine wema na wenye hekima wa huko walimsaidia. Punde Ramabai alianzisha chama cha wanawake. Kilikutana kila Jumamosi, nacho kilifanya kazi ya kuwasaidia wasichana waende shuleni na kuwasaidia wajane.</p> <p>Siku zile wasichana wengi huko India waliozwa wakiwa wadogo sana, na wengine wakawa wajane wakiwa bado watoto. Mjane mtoto alikuwa na maisha magumu. Nywele zake zilinyolewa, alipewa nguo za kawaida tu, na mara nyingi watu walimtendea vibaya, kana kwamba ni kosa lake kwamba mume wake alikufa.</p> <p>Mwaka 1882, watu fulani muhimu kutoka serikali ya Uingereza walikuja Poona kuchunguza habari za shule huko India. Ramabai alisimama mbele yao akazungumza kwa ajili ya wanawake wa India. Aliomba walimu wanawake wafundishwe, na madaktari wanawake pia, kwa sababu wanawake wengi waliona haya sana kwenda kwa daktari mwanamume, na hivyo hawakupata msaada kamwe. Karibu hakuna mwanamke Mhindi aliyewahi kuzungumza namna hiyo hapo kabla!</p> <p>Mwaka ule ule, mjane mdogo mwenye umri wa miaka kumi na miwili hivi aliletwa kwa Ramabai. Alikuwa ameozwa akiwa na miaka mitano, na mume wake alifariki siku chache baada ya harusi. Mama mkwe wake alimlaumu msichana yule mdogo, wala hakutaka hata kumtazama. Ramabai alimchukua akaishi naye nyumbani kwake.</p> <p>Ramabai alipomtazama msichana yule mdogo, mpango ulianza kukua moyoni mwake. Angejenga nyumba kwa ajili ya wajane! Lakini kwanza alitaka kujifunza kuwa daktari. Basi mwaka 1883 alisafiri kwa meli kwenda Uingereza pamoja na Manorama, aliyekuwa na miaka miwili, na rafiki mmoja. Baadaye alisema alikwenda “kama Ibrahimu, nisijue niendako.”</p> <p>Ramabai alikuwa na ujasiri wa kuwasemea wasichana wasio na sauti. Mungu anataka tuwasemee watu wanaoumizwa au wanaoachwa nje. Wewe pia unaweza kufanya hivyo, hata shuleni au mtaani kwenu.</p> <p><em>Mungu mpendwa, nisaidie kuwaona watu wanaoachwa nje. Nipe ujasiri wa kuwasemea, na kuwa rafiki yao. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ramabai aliwaomba wale watu wa serikali nini?",
+    "answer": "Aliomba walimu wanawake wafundishwe, na madaktari wanawake, kwa sababu wanawake wengi hawangekwenda kwa daktari mwanamume."
+   },
+   {
+    "question": "Ramabai alimfanyia nini yule mjane mdogo aliyeletwa kwake?",
+    "answer": "Alimchukua akaishi naye nyumbani kwake, na jambo hilo likampa wazo la kujenga nyumba kwa ajili ya wajane."
+   },
+   {
+    "question": "Je, kuna mtu unayemjua ambaye huenda anahitaji rafiki wa kumsemea?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu anataka tuwasemee watu wanaoumizwa au wanaoachwa nje."
+   }
+  ],
+  "body_text": "“Fumbua kinywa chako kwa ajili ya bubu.” — kutoka Mithali 31 Ramabai alimchukua Manorama mchanga hadi mji wa Poona, ambako baba yake alikuwa amesomea zamani. Watu wengine wema na wenye hekima wa huko walimsaidia. Punde Ramabai alianzisha chama cha wanawake. Kilikutana kila Jumamosi, nacho kilifanya kazi ya kuwasaidia wasichana waende shuleni na kuwasaidia wajane. Siku zile wasichana wengi huko India waliozwa wakiwa wadogo sana, na wengine wakawa wajane wakiwa bado watoto. Mjane mtoto alikuwa na maisha magumu. Nywele zake zilinyolewa, alipewa nguo za kawaida tu, na mara nyingi watu walimtendea vibaya, kana kwamba ni kosa lake kwamba mume wake alikufa. Mwaka 1882, watu fulani muhimu kutoka serikali ya Uingereza walikuja Poona kuchunguza habari za shule huko India. Ramabai alisimama mbele yao akazungumza kwa ajili ya wanawake wa India. Aliomba walimu wanawake wafundishwe, na madaktari wanawake pia, kwa sababu wanawake wengi waliona haya sana kwenda kwa daktari mwanamume, na hivyo hawakupata msaada kamwe. Karibu hakuna mwanamke Mhindi aliyewahi kuzungumza namna hiyo hapo kabla! Mwaka ule ule, mjane mdogo mwenye umri wa miaka kumi na miwili hivi aliletwa kwa Ramabai. Alikuwa ameozwa akiwa na miaka mitano, na mume wake alifariki siku chache baada ya harusi. Mama mkwe wake alimlaumu msichana yule mdogo, wala hakutaka hata kumtazama. Ramabai alimchukua akaishi naye nyumbani kwake. Ramabai alipomtazama msichana yule mdogo, mpango ulianza kukua moyoni mwake. Angejenga nyumba kwa ajili ya wajane! Lakini kwanza alitaka kujifunza kuwa daktari. Basi mwaka 1883 alisafiri kwa meli kwenda Uingereza pamoja na Manorama, aliyekuwa na miaka miwili, na rafiki mmoja. Baadaye alisema alikwenda “kama Ibrahimu, nisijue niendako.” Ramabai alikuwa na ujasiri wa kuwasemea wasichana wasio na sauti. Mungu anataka tuwasemee watu wanaoumizwa au wanaoachwa nje. Wewe pia unaweza kufanya hivyo, hata shuleni au mtaani kwenu. Mungu mpendwa, nisaidie kuwaona watu wanaoachwa nje. Nipe ujasiri wa kuwasemea, na kuwa rafiki yao. Amina.",
+  "word_count": 301
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "sw"
+  ],
+  "order": 7,
+  "title": "Mwanamke Kisimani",
+  "body_html": "<blockquote>“Yeye atakayekunywa maji yale nitakayompa mimi hataona kiu milele.” — kutoka Yohana 4</blockquote> <p>Huko Uingereza, kikundi cha wanawake Wakristo walioitwa Masista kiliwatunza Ramabai na Manorama. Walimfundisha Ramabai Kiingereza. Lakini kulikuwa na habari ya kuhuzunisha. Ramabai hakuwa akisikia vizuri, na madaktari walisema hangeweza kusomea udaktari. Lilikuwa pigo zito.</p> <p>Kisha Masista walimpeleka kutembelea nyumba moja ya pekee huko London. Ilikuwa kwa ajili ya wanawake ambao maisha yao yalikuwa yameharibika vibaya, wanawake ambao watu wengi waliwadharau. Ramabai aliona kwamba Wakristo wa pale walikuwa wema kwao. Baadhi ya wanawake hao walikuwa wamempenda Yesu sana hata sasa walitumia maisha yao kuwahudumia wagonjwa.</p> <p>Ramabai alishangaa. Huko India hakuwa amewahi kuona mtu yeyote akijaribu kuwasaidia wanawake kama hao. Alimwuliza Sista ni nini kiliwafanya Wakristo wawajali.</p> <p>Sista aliyekuwa akimfundisha aliifungua Biblia kwenye Yohana sura ya 4. Inasimulia jinsi Yesu alivyokutana na mwanamke mmoja kando ya kisima. Watu wengine walijitenga naye. Lakini Yesu alizungumza naye kwa upole, akampa “maji yaliyo hai” ambayo hayangekwisha kamwe.</p> <p>Ramabai alikuwa amesoma vitabu vya zamani vya sheria vilivyosema kwamba wanawake ni wabaya na hawana tumaini. Sasa alisikia habari za Yesu, ambaye hakuwadharau wanawake bali alikuja kuwaokoa. Alikuwa na hakika kwamba kweli Yeye ndiye Mwokozi. “Hivyo moyo wangu ulivutwa kwenye dini ya Kristo,” aliandika. Kitabu kimoja cha Mkristo Mhindi mwenye hekima aitwaye Padri Goreh kilimsaidia pia kuona kwamba jambo hilo ni la kweli.</p> <p>Tarehe 29 Septemba 1883, Ramabai na Manorama mdogo walibatizwa. Alichukua jina Mariamu. Alijua kwamba watu wengi wa kwao wangesikitika, lakini alisema hakuwahi kujuta.</p> <p>Yesu hakumdharau mtu yeyote. Alijitahidi kwa makusudi kuwa mwema kwa watu ambao wengine waliwaacha nje. Yesu anakupenda wewe vivyo hivyo, naye anataka kukupa maji yake yaliyo hai pia.</p> <p><em>Yesu mpendwa, asante kwa kuwa hukumdharau mtu yeyote kamwe. Asante kwa kunipenda. Nisaidie kuwa mwema kama wewe. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ramabai aliona nini katika ile nyumba ya London kilichomshangaza?",
+    "answer": "Wakristo wakiwa wema kwa wanawake ambao kila mtu mwingine aliwadharau, na baadhi ya wanawake hao sasa wakiwahudumia wagonjwa."
+   },
+   {
+    "question": "Sista alimsomea hadithi gani ya Biblia?",
+    "answer": "Hadithi ya Yohana sura ya 4, ya Yesu akizungumza kwa upole na mwanamke kando ya kisima na kumpa maji yaliyo hai."
+   },
+   {
+    "question": "Unawezaje kuwa mwema kwa mtu ambaye wengine wanamwacha nje?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Yesu hamdharau mtu yeyote, naye hutusaidia kuwa wema kama yeye."
+   }
+  ],
+  "body_text": "“Yeye atakayekunywa maji yale nitakayompa mimi hataona kiu milele.” — kutoka Yohana 4 Huko Uingereza, kikundi cha wanawake Wakristo walioitwa Masista kiliwatunza Ramabai na Manorama. Walimfundisha Ramabai Kiingereza. Lakini kulikuwa na habari ya kuhuzunisha. Ramabai hakuwa akisikia vizuri, na madaktari walisema hangeweza kusomea udaktari. Lilikuwa pigo zito. Kisha Masista walimpeleka kutembelea nyumba moja ya pekee huko London. Ilikuwa kwa ajili ya wanawake ambao maisha yao yalikuwa yameharibika vibaya, wanawake ambao watu wengi waliwadharau. Ramabai aliona kwamba Wakristo wa pale walikuwa wema kwao. Baadhi ya wanawake hao walikuwa wamempenda Yesu sana hata sasa walitumia maisha yao kuwahudumia wagonjwa. Ramabai alishangaa. Huko India hakuwa amewahi kuona mtu yeyote akijaribu kuwasaidia wanawake kama hao. Alimwuliza Sista ni nini kiliwafanya Wakristo wawajali. Sista aliyekuwa akimfundisha aliifungua Biblia kwenye Yohana sura ya 4. Inasimulia jinsi Yesu alivyokutana na mwanamke mmoja kando ya kisima. Watu wengine walijitenga naye. Lakini Yesu alizungumza naye kwa upole, akampa “maji yaliyo hai” ambayo hayangekwisha kamwe. Ramabai alikuwa amesoma vitabu vya zamani vya sheria vilivyosema kwamba wanawake ni wabaya na hawana tumaini. Sasa alisikia habari za Yesu, ambaye hakuwadharau wanawake bali alikuja kuwaokoa. Alikuwa na hakika kwamba kweli Yeye ndiye Mwokozi. “Hivyo moyo wangu ulivutwa kwenye dini ya Kristo,” aliandika. Kitabu kimoja cha Mkristo Mhindi mwenye hekima aitwaye Padri Goreh kilimsaidia pia kuona kwamba jambo hilo ni la kweli. Tarehe 29 Septemba 1883, Ramabai na Manorama mdogo walibatizwa. Alichukua jina Mariamu. Alijua kwamba watu wengi wa kwao wangesikitika, lakini alisema hakuwahi kujuta. Yesu hakumdharau mtu yeyote. Alijitahidi kwa makusudi kuwa mwema kwa watu ambao wengine waliwaacha nje. Yesu anakupenda wewe vivyo hivyo, naye anataka kukupa maji yake yaliyo hai pia. Yesu mpendwa, asante kwa kuwa hukumdharau mtu yeyote kamwe. Asante kwa kunipenda. Nisaidie kuwa mwema kama wewe. Amina.",
+  "word_count": 287
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "sw"
+  ],
+  "order": 8,
+  "title": "Nyumba ya Hekima",
+  "body_html": "<blockquote>“Jifunzeni kutenda mema; takeni hukumu ya haki; wafarijini walioonewa; mpatieni yatima haki yake; mteteeni mjane.” — kutoka Isaya 1</blockquote> <p>Mwaka 1886 Ramabai alisafiri kwa meli kwenda Amerika. Alikaa huko karibu miaka mitatu. Aliandika kitabu kuhusu wanawake wa India, nacho kilisimulia hadithi ya kusikitisha ya wajane watoto. Aliwaomba Wamarekani wamsaidie kuanzisha shule ya wajane huko India. Watu wengi wema huko Boston waliahidi kumsaidia. Usiku ule, Ramabai alisema, alikuwa “akilia kwa furaha.”</p> <p>Tarehe 11 Machi 1889, akiwa amerudi India, Ramabai alifungua shule yake. Aliiita Sharada Sadan, maana yake “Nyumba ya Hekima.” Siku ya kwanza kabisa walikuwepo wanafunzi wawili tu! Lakini punde wakaongezeka. Wajane wale vijana walijifunza kusoma na kuandika, na wengi wao walisomea ualimu, ili waweze kujipatia riziki yao wenyewe.</p> <p>Jioni, wasichana wote walikuja chumbani mwa Ramabai kuimba. Watu wengi walidhani wasichana hawapaswi kuimba hata kidogo. Lakini Ramabai na wasichana wake waliimba pamoja kwa furaha, naye alisema walikuwa wanakwenda “kuligeuza wimbi.”</p> <p>Ramabai alikuwa ameahidi kwamba shule isingejaribu kuwafanya wasichana wawe Wakristo. Wasichana wangeweza kuendelea na dini yao wenyewe. Lakini kila asubuhi Ramabai alisoma Biblia na kuomba pamoja na Manorama chumbani mwake mwenyewe, naye aliuacha mlango wazi.</p> <p>Mwanzoni wasichana wengine walichungulia tu. Kisha mmoja mmoja wakasogea karibu kidogo. Punde wengi wao walikuwa wameketi kimya, wakisikiliza Biblia, na kupiga magoti kuomba pamoja naye. “Hakuna msichana anayelazimishwa kuingia,” Ramabai alisema. Walikuja kwa sababu walitaka kuja.</p> <p>Baadhi ya wanaume Wahindu waliokuwa washauri wa shule hawakufurahishwa hata kidogo na ule mlango ulio wazi. Lakini Ramabai hakukubali kuficha kile alichoamini, wala hakukubali kumlazimisha mtu yeyote.</p> <p>Ramabai hakumlazimisha mtu yeyote kuamini kama yeye, lakini pia hakuificha imani yake. Huhitaji kuwalazimisha watu kuhusu Yesu. Unaweza kuuacha mlango wako wazi tu, kwa kuwa mwema na mkweli kuhusu kile unachoamini.</p> <p><em>Mungu mpendwa, nisaidie kuwa rafiki mwema kwa kila mtu. Nisaidie nisifiche kwamba ninakupenda, na kushiriki upendo wako kwa wema. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Sharada Sadan maana yake nini, nayo ilikuwa kwa ajili ya nani?",
+    "answer": "Maana yake ni “Nyumba ya Hekima,” nayo ilikuwa shule ya wajane vijana."
+   },
+   {
+    "question": "Nini kilitokea Ramabai alipouacha mlango wake wazi asubuhi?",
+    "answer": "Wasichana walichungulia, kisha wakasogea karibu, na wengi wakaanza kusikiliza Biblia na kuomba pamoja naye, kwa sababu walitaka wenyewe."
+   },
+   {
+    "question": "Unawezaje kuwaonyesha wengine kwamba unampenda Yesu, bila kuwalazimisha?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba tunaweza kushiriki imani yetu kwa wema na kwa ukweli, kama mlango ulio wazi."
+   }
+  ],
+  "body_text": "“Jifunzeni kutenda mema; takeni hukumu ya haki; wafarijini walioonewa; mpatieni yatima haki yake; mteteeni mjane.” — kutoka Isaya 1 Mwaka 1886 Ramabai alisafiri kwa meli kwenda Amerika. Alikaa huko karibu miaka mitatu. Aliandika kitabu kuhusu wanawake wa India, nacho kilisimulia hadithi ya kusikitisha ya wajane watoto. Aliwaomba Wamarekani wamsaidie kuanzisha shule ya wajane huko India. Watu wengi wema huko Boston waliahidi kumsaidia. Usiku ule, Ramabai alisema, alikuwa “akilia kwa furaha.” Tarehe 11 Machi 1889, akiwa amerudi India, Ramabai alifungua shule yake. Aliiita Sharada Sadan, maana yake “Nyumba ya Hekima.” Siku ya kwanza kabisa walikuwepo wanafunzi wawili tu! Lakini punde wakaongezeka. Wajane wale vijana walijifunza kusoma na kuandika, na wengi wao walisomea ualimu, ili waweze kujipatia riziki yao wenyewe. Jioni, wasichana wote walikuja chumbani mwa Ramabai kuimba. Watu wengi walidhani wasichana hawapaswi kuimba hata kidogo. Lakini Ramabai na wasichana wake waliimba pamoja kwa furaha, naye alisema walikuwa wanakwenda “kuligeuza wimbi.” Ramabai alikuwa ameahidi kwamba shule isingejaribu kuwafanya wasichana wawe Wakristo. Wasichana wangeweza kuendelea na dini yao wenyewe. Lakini kila asubuhi Ramabai alisoma Biblia na kuomba pamoja na Manorama chumbani mwake mwenyewe, naye aliuacha mlango wazi. Mwanzoni wasichana wengine walichungulia tu. Kisha mmoja mmoja wakasogea karibu kidogo. Punde wengi wao walikuwa wameketi kimya, wakisikiliza Biblia, na kupiga magoti kuomba pamoja naye. “Hakuna msichana anayelazimishwa kuingia,” Ramabai alisema. Walikuja kwa sababu walitaka kuja. Baadhi ya wanaume Wahindu waliokuwa washauri wa shule hawakufurahishwa hata kidogo na ule mlango ulio wazi. Lakini Ramabai hakukubali kuficha kile alichoamini, wala hakukubali kumlazimisha mtu yeyote. Ramabai hakumlazimisha mtu yeyote kuamini kama yeye, lakini pia hakuificha imani yake. Huhitaji kuwalazimisha watu kuhusu Yesu. Unaweza kuuacha mlango wako wazi tu, kwa kuwa mwema na mkweli kuhusu kile unachoamini. Mungu mpendwa, nisaidie kuwa rafiki mwema kwa kila mtu. Nisaidie nisifiche kwamba ninakupenda, na kushiriki upendo wako kwa wema. Amina.",
+  "word_count": 298
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "sw"
+  ],
+  "order": 9,
+  "title": "Mzigo Mzito Unaondoka",
+  "body_html": "<blockquote>“Watu wale waliokaa katika giza wameona nuru kuu.” — kutoka Mathayo 4</blockquote> <p>Ramabai alikuwa amebatizwa. Alifundisha habari za Yesu na kuendesha shule. Lakini ndani kabisa ya moyo wake, alihisi kwamba kuna kitu kilichokosekana. Alikuwa amesoma vitabu vingi kuhusu Biblia, lakini hakuwa ameisoma Biblia yenyewe sana. Basi akaanza kuisoma kila siku.</p> <p>Mwanzoni haikumfurahisha. Ilimfanya aone kwamba hakuwa tayari kukutana na Mungu. Alijua kwamba alikuwa na dhambi asizoweza kuziondoa peke yake. Aliandika kwamba alimhitaji “Kristo, wala si dini yake tu.” Hakuhitaji kujua habari za Yesu tu. Alimhitaji Yesu mwenyewe.</p> <p>Basi, karibu mwaka 1891, alijitoa kabisa kwa Yesu. Alimwomba aiondoe dhambi yake yote. Alisema ilikuwa kana kwamba mzigo mkubwa na mzito umevingirishwa kutoka moyoni mwake. Ilikuwa kama kuwa katika chumba chenye giza na ghafla kuona nuru kuu.</p> <p>Kilichomfurahisha kuliko yote ni kwamba upendo wa Mungu ni zawadi ya bure. Alipokuwa msichana alikuwa amefundishwa kwamba ni lazima ujitahidi kustahili kibali cha Mungu, na kwamba wanawake hawangeweza kuokolewa wakiwa wanawake. Sasa alisoma kwamba Yesu alikufa kwa ajili yetu tulipokuwa tungali wenye dhambi. “Ni habari njema kama nini,” aliandika, “kwangu mimi, mwanamke!”</p> <p>Miaka miwili baadaye, mwaka 1893, dhoruba kubwa iliikumba shule yake. Baadhi ya wanaume muhimu waliokuwa wamemsaidia walikasirika kwamba wasichana walikuwa wakiomba pamoja naye. Waliondoka, na familia nyingi zikawachukua binti zao. Watu waliandika maneno ya ukatili magazetini, na wengine hata walituma barua za kutishia maisha yake. Ramabai aliogopa. Lakini alimtumaini Mungu, naye akapita katika hayo akiwa jasiri kuliko hapo awali. Mungu, alisema, alikuwa amemweka huru kutoka katika hofu ya watu wangefikiri nini.</p> <p>Kujua habari za Yesu ni jambo zuri. Lakini Yesu anataka umjue yeye mwenyewe, na kumtumaini wewe mwenyewe. Upendo wake ni zawadi ya bure, kwa wasichana na wavulana kila mahali.</p> <p><em>Yesu mpendwa, sitaki kujua habari zako tu. Nataka kukujua wewe. Tafadhali uiondoe dhambi yangu na unijaze nuru yako. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ramabai alisema alihitaji nini?",
+    "answer": "Alisema alimhitaji Kristo mwenyewe, wala si dini yake tu."
+   },
+   {
+    "question": "Nini kilitokea katika shule yake mwaka 1893?",
+    "answer": "Baadhi ya wanaume muhimu waliokuwa wamemsaidia waliondoka kwa hasira, wasichana wengi wakachukuliwa, na watu wakaandika maneno ya ukatili, lakini yeye alimtumaini Mungu."
+   },
+   {
+    "question": "Kuna tofauti gani kati ya kujua habari za Yesu na kumjua Yesu?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Yesu anataka tumtumaini sisi wenyewe, na kwamba upendo wake ni zawadi ya bure."
+   }
+  ],
+  "body_text": "“Watu wale waliokaa katika giza wameona nuru kuu.” — kutoka Mathayo 4 Ramabai alikuwa amebatizwa. Alifundisha habari za Yesu na kuendesha shule. Lakini ndani kabisa ya moyo wake, alihisi kwamba kuna kitu kilichokosekana. Alikuwa amesoma vitabu vingi kuhusu Biblia, lakini hakuwa ameisoma Biblia yenyewe sana. Basi akaanza kuisoma kila siku. Mwanzoni haikumfurahisha. Ilimfanya aone kwamba hakuwa tayari kukutana na Mungu. Alijua kwamba alikuwa na dhambi asizoweza kuziondoa peke yake. Aliandika kwamba alimhitaji “Kristo, wala si dini yake tu.” Hakuhitaji kujua habari za Yesu tu. Alimhitaji Yesu mwenyewe. Basi, karibu mwaka 1891, alijitoa kabisa kwa Yesu. Alimwomba aiondoe dhambi yake yote. Alisema ilikuwa kana kwamba mzigo mkubwa na mzito umevingirishwa kutoka moyoni mwake. Ilikuwa kama kuwa katika chumba chenye giza na ghafla kuona nuru kuu. Kilichomfurahisha kuliko yote ni kwamba upendo wa Mungu ni zawadi ya bure. Alipokuwa msichana alikuwa amefundishwa kwamba ni lazima ujitahidi kustahili kibali cha Mungu, na kwamba wanawake hawangeweza kuokolewa wakiwa wanawake. Sasa alisoma kwamba Yesu alikufa kwa ajili yetu tulipokuwa tungali wenye dhambi. “Ni habari njema kama nini,” aliandika, “kwangu mimi, mwanamke!” Miaka miwili baadaye, mwaka 1893, dhoruba kubwa iliikumba shule yake. Baadhi ya wanaume muhimu waliokuwa wamemsaidia walikasirika kwamba wasichana walikuwa wakiomba pamoja naye. Waliondoka, na familia nyingi zikawachukua binti zao. Watu waliandika maneno ya ukatili magazetini, na wengine hata walituma barua za kutishia maisha yake. Ramabai aliogopa. Lakini alimtumaini Mungu, naye akapita katika hayo akiwa jasiri kuliko hapo awali. Mungu, alisema, alikuwa amemweka huru kutoka katika hofu ya watu wangefikiri nini. Kujua habari za Yesu ni jambo zuri. Lakini Yesu anataka umjue yeye mwenyewe, na kumtumaini wewe mwenyewe. Upendo wake ni zawadi ya bure, kwa wasichana na wavulana kila mahali. Yesu mpendwa, sitaki kujua habari zako tu. Nataka kukujua wewe. Tafadhali uiondoe dhambi yangu na unijaze nuru yako. Amina.",
+  "word_count": 295
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "sw"
+  ],
+  "order": 10,
+  "title": "Msichana Kando ya Mto",
+  "body_html": "<blockquote>“Bali Mungu aonyesha pendo lake yeye mwenyewe kwetu sisi, kwa kuwa Kristo alikufa kwa ajili yetu, tulipokuwa tungali wenye dhambi.” — kutoka Warumi 5</blockquote> <p>Mwaka 1896 njaa kuu nyingine ya kutisha ilikuja India. Ramabai hakutaka kwenda. Alikuwa amechoka, naye alikuwa na pesa kidogo sana. Lakini alisikia Mungu akisema moyoni mwake: “Kumbuka siku za kale.” Aliwakumbuka baba yake na mama yake. Yeye mwenyewe aliwahi kuwa mtoto mwenye njaa. Hakuweza kubaki nyumbani.</p> <p>Basi Ramabai alisafiri hadi mahali ambapo watu walikuwa wakifa njaa. Aliwakuta wasichana wengi wasio na chakula wala familia, na watu wengine waovu waliotaka kuwaiba wasichana na kuwadhuru. Aliwachukua wasichana wengi kadiri alivyoweza akarudi nao. Punde aliamua kuwaokoa wasichana mia tatu! Pesa zingetoka wapi? “Sijui,” aliandika, “lakini Bwana anajua ninachohitaji.”</p> <p>Katika safari moja ya kurudi nyumbani, wasichana walikuwa wakisafiri katika msururu wa mikokoteni ya ng’ombe. Walisimama kando ya mto. Msichana mmoja mwenye njaa alichuma maharagwe katika shamba la mkulima, na Ramabai akamfanya ayarudishe. Baadaye msichana yule alitoroka. Aliporudishwa, Ramabai alikasirika. Alisema msichana yule angeweza kwenda zake, akaamuru mikokoteni iondoke bila yeye.</p> <p>Msichana alisema anajuta, akaomba sana aruhusiwe kuja, lakini Ramabai hakumwamini. Mikokoteni ilianza kuondoka. Msichana aliketi chini, peke yake kabisa, giza lilipokuwa likiingia.</p> <p>Ramabai hakuweza kuvumilia. Alimwambia dereva asimame. Alipokuwa ameketi pale, alikumbuka ni mara ngapi yeye mwenyewe alikuwa amemkimbia Mungu, na jinsi Mungu alivyokuwa amempenda na kumwita arudi, hata alipokuwa angali mwenye dhambi. Alimpungia msichana yule mkono. Msichana aliruka juu akakimbia kwake upesi kadiri alivyoweza! Jina lake lilikuwa Girija.</p> <p>Mungu hakusubiri Ramabai awe mwema ndipo ampende, naye hakusubiri wewe pia. Anakupenda kwanza. Naye hutusaidia kuwapenda wengine, hata wanapokuwa wamekosea.</p> <p><em>Mungu mpendwa, asante kwa kunipenda kabla sijawa mwema. Nisaidie kuwasamehe wengine na kuwakaribisha warudi, kama unavyonikaribisha mimi. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini Ramabai aliamua kwenda kuwasaidia watoto wa njaa kuu?",
+    "answer": "Mungu alimkumbusha “kumbuka siku za kale,” naye akakumbuka kwamba yeye mwenyewe aliwahi kuwa mtoto mwenye njaa."
+   },
+   {
+    "question": "Nini kilimfanya Ramabai asimamishe mkokoteni na kumwita Girija arudi?",
+    "answer": "Alikumbuka ni mara ngapi alikuwa amemkimbia Mungu, na jinsi Mungu alivyompenda na kumwita arudi alipokuwa angali mwenye dhambi."
+   },
+   {
+    "question": "Je, kuna mtu ambaye unaona vigumu kumsamehe?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu anatupenda kwanza, kabla hatujawa wema, naye hutusaidia kuwapenda na kuwasamehe wengine."
+   }
+  ],
+  "body_text": "“Bali Mungu aonyesha pendo lake yeye mwenyewe kwetu sisi, kwa kuwa Kristo alikufa kwa ajili yetu, tulipokuwa tungali wenye dhambi.” — kutoka Warumi 5 Mwaka 1896 njaa kuu nyingine ya kutisha ilikuja India. Ramabai hakutaka kwenda. Alikuwa amechoka, naye alikuwa na pesa kidogo sana. Lakini alisikia Mungu akisema moyoni mwake: “Kumbuka siku za kale.” Aliwakumbuka baba yake na mama yake. Yeye mwenyewe aliwahi kuwa mtoto mwenye njaa. Hakuweza kubaki nyumbani. Basi Ramabai alisafiri hadi mahali ambapo watu walikuwa wakifa njaa. Aliwakuta wasichana wengi wasio na chakula wala familia, na watu wengine waovu waliotaka kuwaiba wasichana na kuwadhuru. Aliwachukua wasichana wengi kadiri alivyoweza akarudi nao. Punde aliamua kuwaokoa wasichana mia tatu! Pesa zingetoka wapi? “Sijui,” aliandika, “lakini Bwana anajua ninachohitaji.” Katika safari moja ya kurudi nyumbani, wasichana walikuwa wakisafiri katika msururu wa mikokoteni ya ng’ombe. Walisimama kando ya mto. Msichana mmoja mwenye njaa alichuma maharagwe katika shamba la mkulima, na Ramabai akamfanya ayarudishe. Baadaye msichana yule alitoroka. Aliporudishwa, Ramabai alikasirika. Alisema msichana yule angeweza kwenda zake, akaamuru mikokoteni iondoke bila yeye. Msichana alisema anajuta, akaomba sana aruhusiwe kuja, lakini Ramabai hakumwamini. Mikokoteni ilianza kuondoka. Msichana aliketi chini, peke yake kabisa, giza lilipokuwa likiingia. Ramabai hakuweza kuvumilia. Alimwambia dereva asimame. Alipokuwa ameketi pale, alikumbuka ni mara ngapi yeye mwenyewe alikuwa amemkimbia Mungu, na jinsi Mungu alivyokuwa amempenda na kumwita arudi, hata alipokuwa angali mwenye dhambi. Alimpungia msichana yule mkono. Msichana aliruka juu akakimbia kwake upesi kadiri alivyoweza! Jina lake lilikuwa Girija. Mungu hakusubiri Ramabai awe mwema ndipo ampende, naye hakusubiri wewe pia. Anakupenda kwanza. Naye hutusaidia kuwapenda wengine, hata wanapokuwa wamekosea. Mungu mpendwa, asante kwa kunipenda kabla sijawa mwema. Nisaidie kuwasamehe wengine na kuwakaribisha warudi, kama unavyonikaribisha mimi. Amina.",
+  "word_count": 277
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "sw"
+  ],
+  "order": 11,
+  "title": "Mfagiaji",
+  "body_html": "<blockquote>“Mkanijaribu kwa njia hiyo, asema Bwana wa majeshi; mtaona kama sitawafungulia madirisha ya mbinguni, na kuwamwagieni baraka.” — kutoka Malaki 3</blockquote> <p>Mwaka 1897 ugonjwa hatari uitwao tauni ulikuja Poona, na Ramabai aliambiwa awaondoe wasichana wake wa njaa kuu mjini. Basi aliwapeleka kwenye shamba moja mashambani, mahali paitwapo Kedgaon. Mwanzoni waliishi katika vibanda vilivyozungukwa na vichaka vya miiba, chini ya jua kali sana.</p> <p>Lakini Ramabai alipapa mahali pale jina zuri: Mukti. Maana yake ni “wokovu,” au “kuwekwa huru.” Alipokuwa msichana alikuwa ameambiwa kwamba wanawake hawangeweza kamwe kuwekwa huru. Sasa mamia ya wasichana wangepata uhuru ndani ya Yesu pale. Siku moja mwaka ule, mikokoteni kumi na saba ya ng’ombe iliyojaa wasichana ilishuka hadi mtoni, wakiimba njia nzima, na wengi wao wakabatizwa.</p> <p>Ramabai alikuwa amesoma habari za George Müller, aliyewatunza maelfu ya yatima huko Uingereza kwa kumtumaini Mungu kwa kila kitu. Alitamani mtu fulani afanye hivyo huko India. Kisha alihisi Mungu akimwuliza, “Kwa nini usianze kufanya hivyo wewe mwenyewe?” Basi akafanya hivyo. Mukti haikuwa na akaunti ya benki wala akiba kubwa. Aliwaeleza watu kile Mungu alichokuwa akifanya, akaomba, na kumtumaini. “Bwana ni hazina yetu isiyokwisha,” alisema. Maana yake ni hazina ambayo haiishi kamwe.</p> <p>Mukti ilikua na kukua. Kufikia mwaka 1901, wanawake na wasichana wapatao elfu mbili waliishi pale. Mgeni mmoja aliandika kwamba miaka mitano kabla, mahali pale palikuwa shamba tupu! Wasichana walijifunza kusoma, kulima, kufuma nguo na hata kuchapa vitabu.</p> <p>Ramabai alikuwa ameheshimiwa kama mwanamke mwenye elimu. Lakini alijiita mfagiaji, kazi ambayo huko India ilikuwa mojawapo ya kazi za hali ya chini kabisa. “Ninafagia na kuingiza katika uwanja huu wengi kadiri ninavyoweza kuwapata,” alisema. Aliwakusanya wasichana ambao hakuna mtu mwingine aliyewataka, akawapa nyumba.</p> <p>Ramabai alimtumaini Mungu kwa kila mlo, na Mungu aliwatunza wote. Wewe pia unaweza kumtumaini Mungu kwa mahitaji yako. Nawe unaweza kuwa “mfagiaji” kwa kuwakaribisha watu ambao wengine wanawaacha nje.</p> <p><em>Mungu mpendwa, asante kwa kuwa unanitunza kila siku. Nisaidie kukutumaini, na kuwakaribisha watu wanaohitaji rafiki. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Jina Mukti maana yake nini?",
+    "answer": "Maana yake ni wokovu, au kuwekwa huru."
+   },
+   {
+    "question": "Kwa nini Ramabai alijiita mfagiaji?",
+    "answer": "Kwa sababu aliwakusanya, yaani “aliwafagia na kuwaingiza,” wasichana na wanawake ambao hakuna mtu mwingine aliyewataka, akawapa nyumba."
+   },
+   {
+    "question": "Ni jambo gani unaloweza kumtumaini Mungu akusaidie?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu hututunza, na kwamba tunaweza kumtumaini kwa mahitaji yetu."
+   }
+  ],
+  "body_text": "“Mkanijaribu kwa njia hiyo, asema Bwana wa majeshi; mtaona kama sitawafungulia madirisha ya mbinguni, na kuwamwagieni baraka.” — kutoka Malaki 3 Mwaka 1897 ugonjwa hatari uitwao tauni ulikuja Poona, na Ramabai aliambiwa awaondoe wasichana wake wa njaa kuu mjini. Basi aliwapeleka kwenye shamba moja mashambani, mahali paitwapo Kedgaon. Mwanzoni waliishi katika vibanda vilivyozungukwa na vichaka vya miiba, chini ya jua kali sana. Lakini Ramabai alipapa mahali pale jina zuri: Mukti. Maana yake ni “wokovu,” au “kuwekwa huru.” Alipokuwa msichana alikuwa ameambiwa kwamba wanawake hawangeweza kamwe kuwekwa huru. Sasa mamia ya wasichana wangepata uhuru ndani ya Yesu pale. Siku moja mwaka ule, mikokoteni kumi na saba ya ng’ombe iliyojaa wasichana ilishuka hadi mtoni, wakiimba njia nzima, na wengi wao wakabatizwa. Ramabai alikuwa amesoma habari za George Müller, aliyewatunza maelfu ya yatima huko Uingereza kwa kumtumaini Mungu kwa kila kitu. Alitamani mtu fulani afanye hivyo huko India. Kisha alihisi Mungu akimwuliza, “Kwa nini usianze kufanya hivyo wewe mwenyewe?” Basi akafanya hivyo. Mukti haikuwa na akaunti ya benki wala akiba kubwa. Aliwaeleza watu kile Mungu alichokuwa akifanya, akaomba, na kumtumaini. “Bwana ni hazina yetu isiyokwisha,” alisema. Maana yake ni hazina ambayo haiishi kamwe. Mukti ilikua na kukua. Kufikia mwaka 1901, wanawake na wasichana wapatao elfu mbili waliishi pale. Mgeni mmoja aliandika kwamba miaka mitano kabla, mahali pale palikuwa shamba tupu! Wasichana walijifunza kusoma, kulima, kufuma nguo na hata kuchapa vitabu. Ramabai alikuwa ameheshimiwa kama mwanamke mwenye elimu. Lakini alijiita mfagiaji, kazi ambayo huko India ilikuwa mojawapo ya kazi za hali ya chini kabisa. “Ninafagia na kuingiza katika uwanja huu wengi kadiri ninavyoweza kuwapata,” alisema. Aliwakusanya wasichana ambao hakuna mtu mwingine aliyewataka, akawapa nyumba. Ramabai alimtumaini Mungu kwa kila mlo, na Mungu aliwatunza wote. Wewe pia unaweza kumtumaini Mungu kwa mahitaji yako. Nawe unaweza kuwa “mfagiaji” kwa kuwakaribisha watu ambao wengine wanawaacha nje. Mungu mpendwa, asante kwa kuwa unanitunza kila siku. Nisaidie kukutumaini, na kuwakaribisha watu wanaohitaji rafiki. Amina.",
+  "word_count": 315
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "sw"
+  ],
+  "order": 12,
+  "title": "Biblia kwa Kila Mtu",
+  "body_html": "<blockquote>“Mlipata bure, toeni bure.” — kutoka Mathayo 10</blockquote> <p>Mwaka 1905 Ramabai aliwaomba wasichana wa Mukti waombe kila asubuhi kwamba Mungu awalete watu wengi wa India karibu naye, “pamoja na sisi wenyewe.” Wasichana wapatao sabini walikuja. Punde mamia walikuwa wakiomba! Siku moja mwezi Juni, Mungu alijibu kwa njia ya ajabu. Wasichana walianza kulia na kuomba na kuomba msamaha kwa mabaya waliyokuwa wamefanya. Wengine walirudisha vitu walivyokuwa wamechukua. Walijawa na furaha. Vikundi vya wasichana vilikwenda kuwaombea watu kila mahali India. Ramabai aliwafundisha kwamba ishara muhimu kuliko zote ya Roho wa Mungu ni upendo.</p> <p>Ramabai alikuwa na kazi moja kubwa zaidi. Biblia ya lugha yake, Kimarathi, ilitumia maneno marefu na magumu. Wanawake wengi vijijini hawakuweza kuielewa. Basi Ramabai alianza kutengeneza Biblia mpya, kwa maneno rahisi ambayo watu wa kawaida waliyazungumza. Alijifunza Kiebrania na Kigiriki, lugha ambazo Biblia iliandikwa kwazo mara ya kwanza. Wasichana wa Mukti walipanga herufi kwenye mashine yao wenyewe ya kuchapa. Hakukubali kamwe Biblia yake iuzwe. Ni lazima itolewe bure, alisema, kama vile yeye alivyopewa bure.</p> <p>Mwaka 1921 jambo la huzuni sana lilitokea. Manorama, binti yake, aliyefanya kazi kando yake kwa miaka mingi, aliugua akafariki. Ramabai alisema, “Bwana alitoa, na Bwana ametwaa; jina la Bwana na libarikiwe.”</p> <p>Ramabai aliimaliza Biblia yake muda mfupi kabla ya kufariki. Alfajiri ya tarehe 5 Aprili 1922, alifariki kwa amani usingizini. Alikuwa na umri wa miaka sitini na mitatu. Wasichana elfu moja walifuata wanawake vijana wa Mukti walipolibeba jeneza lake. Watu wa kila tabaka walisimama bega kwa bega, na mjane mmoja mzee akalia, “Ee, Mama Mkuu, Mama Mkuu!” Mukti ingalipo hata leo, ikiwatunza wanawake na watoto.</p> <p>Ramabai alipewa upendo wa Mungu bure, basi naye akautoa bure kwa kila mtu. Wewe pia umepewa zawadi njema. Ni nani ambaye ungeweza kumshirikisha upendo wa Mungu leo?</p> <p><em>Mungu mpendwa, asante kwa Biblia, na kwa watu kama Ramabai walioishirikisha kwa wengine. Nisaidie kuwashirikisha wengine upendo wako bure. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini Ramabai alitengeneza Biblia mpya ya Kimarathi?",
+    "answer": "Kwa sababu ile ya zamani ilitumia maneno marefu na magumu, naye alitaka wanawake wa vijijini waielewe kwa lugha rahisi ya kila siku."
+   },
+   {
+    "question": "Ramabai alifundisha kwamba ishara muhimu kuliko zote ya Roho wa Mungu ni ipi?",
+    "answer": "Upendo."
+   },
+   {
+    "question": "Ni njia moja gani unayoweza kumshirikisha mtu upendo wa Mungu wiki hii?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu hutupa bure, nasi tunaweza kuwapa wengine upendo wake bure."
+   }
+  ],
+  "body_text": "“Mlipata bure, toeni bure.” — kutoka Mathayo 10 Mwaka 1905 Ramabai aliwaomba wasichana wa Mukti waombe kila asubuhi kwamba Mungu awalete watu wengi wa India karibu naye, “pamoja na sisi wenyewe.” Wasichana wapatao sabini walikuja. Punde mamia walikuwa wakiomba! Siku moja mwezi Juni, Mungu alijibu kwa njia ya ajabu. Wasichana walianza kulia na kuomba na kuomba msamaha kwa mabaya waliyokuwa wamefanya. Wengine walirudisha vitu walivyokuwa wamechukua. Walijawa na furaha. Vikundi vya wasichana vilikwenda kuwaombea watu kila mahali India. Ramabai aliwafundisha kwamba ishara muhimu kuliko zote ya Roho wa Mungu ni upendo. Ramabai alikuwa na kazi moja kubwa zaidi. Biblia ya lugha yake, Kimarathi, ilitumia maneno marefu na magumu. Wanawake wengi vijijini hawakuweza kuielewa. Basi Ramabai alianza kutengeneza Biblia mpya, kwa maneno rahisi ambayo watu wa kawaida waliyazungumza. Alijifunza Kiebrania na Kigiriki, lugha ambazo Biblia iliandikwa kwazo mara ya kwanza. Wasichana wa Mukti walipanga herufi kwenye mashine yao wenyewe ya kuchapa. Hakukubali kamwe Biblia yake iuzwe. Ni lazima itolewe bure, alisema, kama vile yeye alivyopewa bure. Mwaka 1921 jambo la huzuni sana lilitokea. Manorama, binti yake, aliyefanya kazi kando yake kwa miaka mingi, aliugua akafariki. Ramabai alisema, “Bwana alitoa, na Bwana ametwaa; jina la Bwana na libarikiwe.” Ramabai aliimaliza Biblia yake muda mfupi kabla ya kufariki. Alfajiri ya tarehe 5 Aprili 1922, alifariki kwa amani usingizini. Alikuwa na umri wa miaka sitini na mitatu. Wasichana elfu moja walifuata wanawake vijana wa Mukti walipolibeba jeneza lake. Watu wa kila tabaka walisimama bega kwa bega, na mjane mmoja mzee akalia, “Ee, Mama Mkuu, Mama Mkuu!” Mukti ingalipo hata leo, ikiwatunza wanawake na watoto. Ramabai alipewa upendo wa Mungu bure, basi naye akautoa bure kwa kila mtu. Wewe pia umepewa zawadi njema. Ni nani ambaye ungeweza kumshirikisha upendo wa Mungu leo? Mungu mpendwa, asante kwa Biblia, na kwa watu kama Ramabai walioishirikisha kwa wengine. Nisaidie kuwashirikisha wengine upendo wako bure. Amina.",
+  "word_count": 307
+ }
+}
+]

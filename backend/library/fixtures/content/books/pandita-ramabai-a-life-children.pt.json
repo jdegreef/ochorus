@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "pandita-ramabai-a-life-children",
+  "language": "pt",
+  "title": "Pandita Ramabai (Para Crianças)",
+  "subtitle": "",
+  "cover_byline": "Pandita Ramabai",
+  "description": "A história verdadeira de Ramabai, uma menina da Índia que desceu uma montanha dentro de uma caixa de vime, perdeu a família numa grande fome, caminhou mais de seis mil quilômetros e cresceu para fazer um lar para milhares de viúvas e meninas órfãs e para dar ao seu povo a Bíblia nas palavras simples do dia a dia. Esta edição para crianças reconta a vida dela em capítulos curtos, feitos para ler em voz alta: um versículo da Bíblia, uma parte da história dela, uma coisa que isso quer dizer para você e uma pequena oração, com perguntas para conversar juntos.",
+  "qa": [
+   {
+    "question": "Sobre o que é Pandita Ramabai (Para Crianças)?",
+    "answer": "É uma versão para crianças da biografia completa de Pandita Ramabai. Conta como uma menina que aprendeu a ler os antigos livros em sânscrito perdeu a família numa grande fome, conheceu Jesus e passou a vida resgatando viúvas e meninas famintas e dando às mulheres da Índia uma Bíblia que elas conseguiam entender."
+   },
+   {
+    "question": "Quem foi Pandita Ramabai?",
+    "answer": "Uma mulher indiana que viveu de 1858 a 1922. Ela era tão sábia que os grandes mestres de Calcutá a honraram com um título, e ela foi uma das primeiras mulheres indianas a falar em público em favor das meninas e das viúvas. Ela se tornou cristã, abriu uma escola para jovens viúvas, fundou Mukti, um lar para milhares de meninas e mulheres, e traduziu a Bíblia para o marata do dia a dia."
+   },
+   {
+    "question": "Como cada capítulo é organizado?",
+    "answer": "Cada capítulo é curto e feito para ler em voz alta. Começa com um versículo da Bíblia, conta uma parte da história de Ramabai, mostra uma coisa simples que isso quer dizer para você e termina com uma pequena oração. Depois vêm três perguntas, para conversar juntos."
+   },
+   {
+    "question": "Este livro é triste demais para crianças?",
+    "answer": "Algumas partes são tristes. A família de Ramabai morreu numa grande fome, o marido dela morreu jovem, e ela trabalhou no meio de viúvas ainda crianças e de meninas famintas. O livro não finge que não foi assim, mas conta essas partes com delicadeza, para crianças, e acima de tudo é a história de como Deus cuidou de Ramabai e a usou para cuidar de milhares de outras pessoas."
+   },
+   {
+    "question": "As histórias são verdadeiras?",
+    "answer": "Sim. Elas vêm principalmente dos escritos e das cartas da própria Ramabai e de pessoas que a conheceram. As palavras entre aspas são palavras dela mesma, ou de pessoas que estavam lá."
+   },
+   {
+    "question": "Para quem é este livro?",
+    "answer": "É para crianças, para um adulto ler em voz alta ou para uma criança maior ler sozinha. Existe também uma edição para adolescentes e a biografia completa para leitores mais velhos."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Uma recontagem da Ochorus, para jovens leitores, da biografia Pandita Ramabai, da Ochorus, da série Retratos de Coragem. A forma de contar é nossa, livre para ler e compartilhar.",
+  "cover_url": "/covers/pt/pandita-ramabai-a-life-children.svg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 150,
+  "is_published": true,
+  "created_at": "2026-10-08T00:00:00Z",
+  "updated_at": "2026-10-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "pt"
+  ],
+  "order": 1,
+  "title": "O Bebê na Caixa de Vime",
+  "body_html": "<blockquote>“Ensine as minhas palavras aos seus filhos. Fale delas quando estiver sentado em casa e quando estiver andando pelo caminho.” — de Deuteronômio 6</blockquote> <p>Há muito tempo, na Índia, um rapaz chamado Anant Shastri foi para a cidade de Puna estudar sânscrito. O sânscrito era a língua antiga e sagrada dos livros hindus, e o povo dizia que as meninas não podiam aprendê-la. Mas um dia, num palácio, Anant ouviu uma rainha recitando poemas em sânscrito. Ela sabia todos muito bem! Ele ficou admirado e tomou uma decisão: um dia ele também ensinaria a sua própria esposa.</p> <p>Anos depois, ele se casou com uma moça bem jovem chamada Lakshmibai e começou a ensiná-la. A família dele não gostou nem um pouco. Então ele a levou para bem longe, para o alto de uma montanha coberta de floresta fechada, e construiu uma casa lá. Lakshmibai se lembrava da primeira noite deles na montanha. Eles não tinham abrigo nenhum, e um tigre ficou rugindo do outro lado do vale até de manhã!</p> <p>Lakshmibai era uma aluna maravilhosa. De dia, ela fazia todo o trabalho da casa, e à noite estudava os livros sagrados.</p> <p>Em abril de 1858, uma menininha nasceu naquela casa na floresta. Os pais lhe deram o nome de Rama. As pessoas a chamavam de Ramabai, que é um jeito educado e respeitoso de dizer o nome dela.</p> <p>Anant dava comida a todos os peregrinos que subiam a montanha, e depois de muitos anos o dinheiro dele acabou. Quando Ramabai tinha só uns seis meses, a família precisou ir embora. A mãe a deitou numa grande caixa feita de vime, e um homem a carregou na cabeça montanha abaixo, até lá embaixo. “Assim começou a minha vida de peregrina”, disse Ramabai mais tarde, “quando eu era um bebezinho.”</p> <p>Quando ela tinha uns oito anos, a mãe começou a ensiná-la. Ramabai decorou longos poemas em sânscrito. Nas viagens, ela também aprendeu várias línguas, só de ouvir as pessoas pelo caminho!</p> <p>Os pais de Ramabai a ensinaram em casa e pelo caminho. Deus nos dá pais e professores para nos ajudar a aprender sobre o mundo e sobre ele. Aprender é um bom presente, para meninas e para meninos.</p> <p><em>Querido Deus, obrigado pelas pessoas que me ensinam. Ajuda-me a amar aprender e, mais do que tudo, a aprender sobre ti. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Por que o pai de Ramabai levou a esposa para as montanhas?",
+    "answer": "Porque a família dele não queria que ele a ensinasse sânscrito, e ele queria ensiná-la mesmo assim, num lugar tranquilo."
+   },
+   {
+    "question": "Como a bebê Ramabai desceu a montanha?",
+    "answer": "A mãe a deitou numa grande caixa de vime, e um homem a carregou na cabeça até o vale."
+   },
+   {
+    "question": "Quem são algumas das pessoas que ensinam você?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que Deus nos dá pais e professores, e que aprender é um bom presente para toda criança."
+   }
+  ],
+  "body_text": "“Ensine as minhas palavras aos seus filhos. Fale delas quando estiver sentado em casa e quando estiver andando pelo caminho.” — de Deuteronômio 6 Há muito tempo, na Índia, um rapaz chamado Anant Shastri foi para a cidade de Puna estudar sânscrito. O sânscrito era a língua antiga e sagrada dos livros hindus, e o povo dizia que as meninas não podiam aprendê-la. Mas um dia, num palácio, Anant ouviu uma rainha recitando poemas em sânscrito. Ela sabia todos muito bem! Ele ficou admirado e tomou uma decisão: um dia ele também ensinaria a sua própria esposa. Anos depois, ele se casou com uma moça bem jovem chamada Lakshmibai e começou a ensiná-la. A família dele não gostou nem um pouco. Então ele a levou para bem longe, para o alto de uma montanha coberta de floresta fechada, e construiu uma casa lá. Lakshmibai se lembrava da primeira noite deles na montanha. Eles não tinham abrigo nenhum, e um tigre ficou rugindo do outro lado do vale até de manhã! Lakshmibai era uma aluna maravilhosa. De dia, ela fazia todo o trabalho da casa, e à noite estudava os livros sagrados. Em abril de 1858, uma menininha nasceu naquela casa na floresta. Os pais lhe deram o nome de Rama. As pessoas a chamavam de Ramabai, que é um jeito educado e respeitoso de dizer o nome dela. Anant dava comida a todos os peregrinos que subiam a montanha, e depois de muitos anos o dinheiro dele acabou. Quando Ramabai tinha só uns seis meses, a família precisou ir embora. A mãe a deitou numa grande caixa feita de vime, e um homem a carregou na cabeça montanha abaixo, até lá embaixo. “Assim começou a minha vida de peregrina”, disse Ramabai mais tarde, “quando eu era um bebezinho.” Quando ela tinha uns oito anos, a mãe começou a ensiná-la. Ramabai decorou longos poemas em sânscrito. Nas viagens, ela também aprendeu várias línguas, só de ouvir as pessoas pelo caminho! Os pais de Ramabai a ensinaram em casa e pelo caminho. Deus nos dá pais e professores para nos ajudar a aprender sobre o mundo e sobre ele. Aprender é um bom presente, para meninas e para meninos. Querido Deus, obrigado pelas pessoas que me ensinam. Ajuda-me a amar aprender e, mais do que tudo, a aprender sobre ti. Amém.",
+  "word_count": 389
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "pt"
+  ],
+  "order": 2,
+  "title": "Nenhuma Cidade de Ouro",
+  "body_html": "<blockquote>“Vocês conhecerão a verdade, e a verdade os libertará.” — de João 8</blockquote> <p>A família de Ramabai nunca mais teve uma casa só deles. Durante uns quinze anos, eles viajaram de um lugar sagrado para outro. Liam em voz alta os antigos livros em sânscrito nos templos e debaixo das árvores, e as pessoas que ouviam lhes davam arroz, moedas ou flores. Assim, Ramabai cresceu lendo diante de multidões quando ainda era criança.</p> <p>Quando ela tinha uns treze anos, a família passou um ano numa cidade chamada Dwarka, perto do mar. O povo de lá contava uma história antiga. Muito tempo atrás, diziam, uma cidade de ouro tinha afundado debaixo das ondas. Uma vez a cada sessenta anos, num dia especial, o deus mostraria aquela cidade às pessoas que não tinham pecado.</p> <p>O dia especial chegou enquanto Ramabai estava lá. Milhares de pessoas esperaram na praia o dia inteiro. Ao pôr do sol, as nuvens sobre o mar brilharam douradas. Muita gente não teve coragem de dizer que não tinha visto cidade nenhuma, porque aí todo mundo saberia que eram pecadores. Ramabai e a família também ficaram calados. Mas, no coração, eles sabiam que tinham visto só nuvens comuns.</p> <p>Ramabai viu coisas tristes nas suas viagens. Quando ela tinha uns nove anos, ouviu uma jovem esposa chorando enquanto apanhava. Muitos anos depois, ela escreveu: “Os gritos dela foram direto ao meu coração.” Ela disse que foi a primeira vez que sentiu o chamado para ajudar outras meninas e mulheres.</p> <p>Os pais dela lhe deram mais um presente. Naquele tempo, a maioria das meninas se casava quando ainda eram crianças pequenas. O pai e a mãe de Ramabai disseram que não. Eles queriam que ela continuasse aprendendo. Algumas pessoas se voltaram contra a família por causa disso, mas o pai dela, contou ela, “fez o que achava que era certo”.</p> <p>Ramabai não fingiu ver uma coisa que não estava lá. Jesus diz que a verdade nos liberta. Deus quer que você também seja sincero, mesmo quando todo mundo à sua volta fica calado.</p> <p><em>Querido Deus, ajuda-me a amar o que é verdadeiro. Dá-me coragem para ser sincero, mesmo quando é difícil. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que as pessoas esperavam ver em Dwarka?",
+    "answer": "Uma cidade de ouro que, segundo a história, tinha afundado no mar e seria mostrada uma vez a cada sessenta anos às pessoas sem pecado."
+   },
+   {
+    "question": "Que presente os pais de Ramabai lhe deram sobre o casamento?",
+    "answer": "Eles não a casaram quando ela era pequena, como a maioria das famílias fazia, para que ela pudesse continuar aprendendo."
+   },
+   {
+    "question": "Você consegue lembrar de uma vez em que foi difícil dizer a verdade?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que a verdade nos liberta, e que Deus nos dá coragem para ser sinceros."
+   }
+  ],
+  "body_text": "“Vocês conhecerão a verdade, e a verdade os libertará.” — de João 8 A família de Ramabai nunca mais teve uma casa só deles. Durante uns quinze anos, eles viajaram de um lugar sagrado para outro. Liam em voz alta os antigos livros em sânscrito nos templos e debaixo das árvores, e as pessoas que ouviam lhes davam arroz, moedas ou flores. Assim, Ramabai cresceu lendo diante de multidões quando ainda era criança. Quando ela tinha uns treze anos, a família passou um ano numa cidade chamada Dwarka, perto do mar. O povo de lá contava uma história antiga. Muito tempo atrás, diziam, uma cidade de ouro tinha afundado debaixo das ondas. Uma vez a cada sessenta anos, num dia especial, o deus mostraria aquela cidade às pessoas que não tinham pecado. O dia especial chegou enquanto Ramabai estava lá. Milhares de pessoas esperaram na praia o dia inteiro. Ao pôr do sol, as nuvens sobre o mar brilharam douradas. Muita gente não teve coragem de dizer que não tinha visto cidade nenhuma, porque aí todo mundo saberia que eram pecadores. Ramabai e a família também ficaram calados. Mas, no coração, eles sabiam que tinham visto só nuvens comuns. Ramabai viu coisas tristes nas suas viagens. Quando ela tinha uns nove anos, ouviu uma jovem esposa chorando enquanto apanhava. Muitos anos depois, ela escreveu: “Os gritos dela foram direto ao meu coração.” Ela disse que foi a primeira vez que sentiu o chamado para ajudar outras meninas e mulheres. Os pais dela lhe deram mais um presente. Naquele tempo, a maioria das meninas se casava quando ainda eram crianças pequenas. O pai e a mãe de Ramabai disseram que não. Eles queriam que ela continuasse aprendendo. Algumas pessoas se voltaram contra a família por causa disso, mas o pai dela, contou ela, “fez o que achava que era certo”. Ramabai não fingiu ver uma coisa que não estava lá. Jesus diz que a verdade nos liberta. Deus quer que você também seja sincero, mesmo quando todo mundo à sua volta fica calado. Querido Deus, ajuda-me a amar o que é verdadeiro. Dá-me coragem para ser sincero, mesmo quando é difícil. Amém.",
+  "word_count": 361
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "pt"
+  ],
+  "order": 3,
+  "title": "Açúcar e Água",
+  "body_html": "<blockquote>“Mesmo que meu pai e minha mãe me deixem, o Senhor cuidará de mim.” — do Salmo 27</blockquote> <p>Quando Ramabai tinha uns dezesseis anos, uma fome terrível chegou ao sul da Índia. Uma grande fome é um tempo em que não há comida suficiente. O pai de Ramabai já estava velho e cego. A família gastou todo o dinheiro em presentes para os sacerdotes, esperando que os deuses os ajudassem. Mas a ajuda não veio. Logo eles não tinham mais nada, nem mesmo as panelas.</p> <p>Durante onze dias, eles viveram numa floresta, comendo folhas e algumas tâmaras silvestres. O pai de Ramabai achou que ia morrer. Ele abraçou Ramabai bem forte e acariciou o rosto dela. “Lembre-se, minha filha”, disse ele, “você é a minha caçula, a minha filha mais amada. Eu entreguei você nas mãos do nosso Deus.”</p> <p>O irmão dela, Srinivas, ajudou todos a descer até uma aldeia. Lá o pai ficou doente. Ele pediu um pouco de açúcar com água. Deram-lhe água, mas não tinham açúcar para dar. Alguns dias depois, ele morreu.</p> <p>Então a mãe também ficou doente. Um dia ela estava com tanta fome que mandou Ramabai à casa de uma vizinha para pedir um pedaço de pão. Ramabai estava tão envergonhada e tão triste que não conseguiu dizer uma palavra. Ela se esforçou muito para não chorar, mas as lágrimas acabaram saindo pelo nariz! A senhora bondosa entendeu e lhe deu o pão. Ramabai correu para casa com ele, mas a mãe estava fraca demais para comer. Logo a mãe morreu, e pouco tempo depois a irmã mais velha também morreu.</p> <p>O pai de Ramabai não conhecia Jesus. Mas, anos depois, quando Ramabai já conhecia Deus por meio de Jesus, ela acreditou que Deus tinha ouvido a oração do pai por ela naquele dia na floresta.</p> <p>Esta é uma parte muito triste da história. Deus não diz que as coisas tristes são boas. Mas, mesmo quando as pessoas que amamos se vão, Deus não nos deixa. Ele segurou Ramabai nas suas mãos, e ele segura você também.</p> <p><em>Querido Deus, obrigado porque nunca me deixas. Por favor, fica perto das crianças que estão com fome ou sozinhas hoje, e cuida delas. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que o pai de Ramabai pediu quando ficou doente?",
+    "answer": "Um pouco de açúcar com água. Deram-lhe água, mas não tinham açúcar."
+   },
+   {
+    "question": "O que aconteceu quando Ramabai foi pedir pão?",
+    "answer": "Ela estava envergonhada e triste demais para falar, e as lágrimas saíram pelo nariz, mas a vizinha bondosa entendeu e lhe deu o pão."
+   },
+   {
+    "question": "Quem cuida de você quando você está triste ou com medo?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que Deus nunca nos deixa, mesmo quando as pessoas que amamos se vão."
+   }
+  ],
+  "body_text": "“Mesmo que meu pai e minha mãe me deixem, o Senhor cuidará de mim.” — do Salmo 27 Quando Ramabai tinha uns dezesseis anos, uma fome terrível chegou ao sul da Índia. Uma grande fome é um tempo em que não há comida suficiente. O pai de Ramabai já estava velho e cego. A família gastou todo o dinheiro em presentes para os sacerdotes, esperando que os deuses os ajudassem. Mas a ajuda não veio. Logo eles não tinham mais nada, nem mesmo as panelas. Durante onze dias, eles viveram numa floresta, comendo folhas e algumas tâmaras silvestres. O pai de Ramabai achou que ia morrer. Ele abraçou Ramabai bem forte e acariciou o rosto dela. “Lembre-se, minha filha”, disse ele, “você é a minha caçula, a minha filha mais amada. Eu entreguei você nas mãos do nosso Deus.” O irmão dela, Srinivas, ajudou todos a descer até uma aldeia. Lá o pai ficou doente. Ele pediu um pouco de açúcar com água. Deram-lhe água, mas não tinham açúcar para dar. Alguns dias depois, ele morreu. Então a mãe também ficou doente. Um dia ela estava com tanta fome que mandou Ramabai à casa de uma vizinha para pedir um pedaço de pão. Ramabai estava tão envergonhada e tão triste que não conseguiu dizer uma palavra. Ela se esforçou muito para não chorar, mas as lágrimas acabaram saindo pelo nariz! A senhora bondosa entendeu e lhe deu o pão. Ramabai correu para casa com ele, mas a mãe estava fraca demais para comer. Logo a mãe morreu, e pouco tempo depois a irmã mais velha também morreu. O pai de Ramabai não conhecia Jesus. Mas, anos depois, quando Ramabai já conhecia Deus por meio de Jesus, ela acreditou que Deus tinha ouvido a oração do pai por ela naquele dia na floresta. Esta é uma parte muito triste da história. Deus não diz que as coisas tristes são boas. Mas, mesmo quando as pessoas que amamos se vão, Deus não nos deixa. Ele segurou Ramabai nas suas mãos, e ele segura você também. Querido Deus, obrigado porque nunca me deixas. Por favor, fica perto das crianças que estão com fome ou sozinhas hoje, e cuida delas. Amém.",
+  "word_count": 367
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "pt"
+  ],
+  "order": 4,
+  "title": "Seis Mil Quilômetros a Pé",
+  "body_html": "<blockquote>“Tirarei de vocês o coração de pedra e lhes darei um coração que sente.” — de Ezequiel 36</blockquote> <p>Agora só restavam Ramabai e o irmão, Srinivas. Eles não tinham casa nem dinheiro. Durante mais de três anos, atravessaram a Índia a pé, do sul até lá no norte, na Caxemira, e depois para o leste, até a grande cidade de Calcutá. Mais tarde, Ramabai fez as contas: eles tinham andado mais de seis mil quilômetros!</p> <p>Eles não tinham sapatos, nem cobertores, nem guarda-chuvas. Às vezes Srinivas arranjava trabalho, mas recebia só um pouquinho. Muitas vezes eles não tinham nada para comer além de um punhado de grãos deixados de molho na água. Numa noite gelada, à beira de um rio no extremo norte, eles cavaram dois buracos compridos na areia, deitaram-se neles e se cobriram de areia até o pescoço para se manter aquecidos.</p> <p>Mais tarde, Ramabai disse uma coisa surpreendente. Passar fome e tristeza, disse ela, não a tinha deixado mais bondosa. Tinha deixado o coração dela duro, como uma pedra. Só Deus, ela acreditava, podia lhe dar de novo um coração mole e cheio de amor.</p> <p>Em 1878, eles chegaram a Calcutá. Os grandes mestres de lá ficaram admirados com aquela jovem que sabia de cor tantos poemas em sânscrito. Eles lhe deram um grande título de honra. Daí em diante, as pessoas a chamaram de Pandita Ramabai, que quer dizer “Ramabai, a senhora sábia”.</p> <p>Em Calcutá, pela primeira vez, ela conheceu cristãos. Eles lhe deram uma Bíblia em sânscrito. Ela tentou ler, mas não entendeu, então a guardou. Mas ela a conservou a vida inteira.</p> <p>Ela também leu com muito cuidado os antigos livros de leis do seu povo. Ficou chocada. Os livros diziam que as mulheres eram más e que nenhuma mulher jamais poderia ser salva do jeito que era. Ramabai sentiu que não havia esperança para ela. Ela queria alguma coisa a mais, mas não sabia o quê.</p> <p>Os tempos difíceis podem endurecer o nosso coração. Mas Deus adora nos dar corações moles, que se importam com os outros. Você pode pedir um a ele hoje.</p> <p><em>Querido Deus, por favor, tira toda a dureza do meu coração. Dá-me um coração bondoso, que ama as outras pessoas. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Como Ramabai e o irmão se aqueceram perto do rio gelado?",
+    "answer": "Eles cavaram dois buracos na areia, deitaram-se neles e se cobriram de areia até o pescoço."
+   },
+   {
+    "question": "Que presente os cristãos de Calcutá lhe deram?",
+    "answer": "Uma Bíblia em sânscrito. Naquele tempo ela não a entendeu, mas a guardou a vida inteira."
+   },
+   {
+    "question": "Por que você acha que precisamos que Deus nos dê um coração bondoso?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que os tempos difíceis podem endurecer o nosso coração, mas Deus pode nos dar corações moles e cheios de amor."
+   }
+  ],
+  "body_text": "“Tirarei de vocês o coração de pedra e lhes darei um coração que sente.” — de Ezequiel 36 Agora só restavam Ramabai e o irmão, Srinivas. Eles não tinham casa nem dinheiro. Durante mais de três anos, atravessaram a Índia a pé, do sul até lá no norte, na Caxemira, e depois para o leste, até a grande cidade de Calcutá. Mais tarde, Ramabai fez as contas: eles tinham andado mais de seis mil quilômetros! Eles não tinham sapatos, nem cobertores, nem guarda-chuvas. Às vezes Srinivas arranjava trabalho, mas recebia só um pouquinho. Muitas vezes eles não tinham nada para comer além de um punhado de grãos deixados de molho na água. Numa noite gelada, à beira de um rio no extremo norte, eles cavaram dois buracos compridos na areia, deitaram-se neles e se cobriram de areia até o pescoço para se manter aquecidos. Mais tarde, Ramabai disse uma coisa surpreendente. Passar fome e tristeza, disse ela, não a tinha deixado mais bondosa. Tinha deixado o coração dela duro, como uma pedra. Só Deus, ela acreditava, podia lhe dar de novo um coração mole e cheio de amor. Em 1878, eles chegaram a Calcutá. Os grandes mestres de lá ficaram admirados com aquela jovem que sabia de cor tantos poemas em sânscrito. Eles lhe deram um grande título de honra. Daí em diante, as pessoas a chamaram de Pandita Ramabai, que quer dizer “Ramabai, a senhora sábia”. Em Calcutá, pela primeira vez, ela conheceu cristãos. Eles lhe deram uma Bíblia em sânscrito. Ela tentou ler, mas não entendeu, então a guardou. Mas ela a conservou a vida inteira. Ela também leu com muito cuidado os antigos livros de leis do seu povo. Ficou chocada. Os livros diziam que as mulheres eram más e que nenhuma mulher jamais poderia ser salva do jeito que era. Ramabai sentiu que não havia esperança para ela. Ela queria alguma coisa a mais, mas não sabia o quê. Os tempos difíceis podem endurecer o nosso coração. Mas Deus adora nos dar corações moles, que se importam com os outros. Você pode pedir um a ele hoje. Querido Deus, por favor, tira toda a dureza do meu coração. Dá-me um coração bondoso, que ama as outras pessoas. Amém.",
+  "word_count": 372
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "pt"
+  ],
+  "order": 5,
+  "title": "Alegria do Coração",
+  "body_html": "<blockquote>“Deus é pai para quem não tem pai, e cuida das viúvas.” — do Salmo 68</blockquote> <p>Em 1880, Srinivas, o irmão de Ramabai, ficou muito doente. Ele estava preocupado com a irmã. Quem cuidaria dela quando ele se fosse? Ramabai lhe disse: “Não há ninguém além de Deus para cuidar de você e de mim.” O irmão respondeu: “Então, se Deus cuida de nós, eu não tenho medo de nada.” Pouco depois, ele morreu. Ramabai tinha vinte e dois anos, e agora toda a família dela se fora.</p> <p>Alguns meses depois, ela se casou com um advogado chamado Bipin, que tinha sido amigo do irmão dela. Ele vinha de uma casta diferente, ou seja, de outro grupo de famílias. Muita gente ficou zangada, porque achava que pessoas de castas diferentes nunca deviam se casar. Mas Ramabai e Bipin eram felizes juntos. Eles foram morar numa cidadezinha chamada Silchar e, em 1881, Deus lhes deu uma menininha. Eles a chamaram de Manorama, que quer dizer “alegria do coração”.</p> <p>Um dia, na sua própria estante, Ramabai encontrou um livrinho. Ninguém sabia como ele tinha ido parar lá. Era o Evangelho de Lucas, a história de Jesus! Ela começou a lê-lo com muito interesse. Um missionário da cidade veio lhe explicar a Bíblia.</p> <p>Então aconteceu uma coisa muito triste. No começo de 1882, Bipin pegou uma doença chamada cólera e morreu. Manorama ainda nem tinha um ano. Ramabai agora era viúva, uma mulher cujo marido tinha morrido, e estava sozinha com a sua bebê.</p> <p>Mas Ramabai não desistiu. Ela disse que a sua grande tristeza a aproximou de Deus. Ela ainda não o conhecia bem, mas sentia que ele a estava ensinando. Se ela fosse chegar a Deus, disse ela, “Ele mesmo tem de me atrair”.</p> <p>Quando Ramabai estava mais sozinha, Deus a estava atraindo para perto. A Bíblia diz que Deus é pai para as pessoas que não têm pai. Quando você se sente sozinho, Deus também está perto de você.</p> <p><em>Querido Deus, obrigado porque estás perto das pessoas que estão sozinhas e tristes. Por favor, atrai-me para perto de ti. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que o irmão de Ramabai disse quando ela lhe falou que Deus cuidaria deles?",
+    "answer": "Ele disse: “Então, se Deus cuida de nós, eu não tenho medo de nada.”"
+   },
+   {
+    "question": "O que Ramabai encontrou na sua estante em Silchar?",
+    "answer": "Um livrinho com o Evangelho de Lucas, a história de Jesus, na língua bengali."
+   },
+   {
+    "question": "Quando você se sente sozinho, e como Deus pode ajudar você nessa hora?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que Deus está perto das pessoas que se sentem sozinhas e as atrai para si."
+   }
+  ],
+  "body_text": "“Deus é pai para quem não tem pai, e cuida das viúvas.” — do Salmo 68 Em 1880, Srinivas, o irmão de Ramabai, ficou muito doente. Ele estava preocupado com a irmã. Quem cuidaria dela quando ele se fosse? Ramabai lhe disse: “Não há ninguém além de Deus para cuidar de você e de mim.” O irmão respondeu: “Então, se Deus cuida de nós, eu não tenho medo de nada.” Pouco depois, ele morreu. Ramabai tinha vinte e dois anos, e agora toda a família dela se fora. Alguns meses depois, ela se casou com um advogado chamado Bipin, que tinha sido amigo do irmão dela. Ele vinha de uma casta diferente, ou seja, de outro grupo de famílias. Muita gente ficou zangada, porque achava que pessoas de castas diferentes nunca deviam se casar. Mas Ramabai e Bipin eram felizes juntos. Eles foram morar numa cidadezinha chamada Silchar e, em 1881, Deus lhes deu uma menininha. Eles a chamaram de Manorama, que quer dizer “alegria do coração”. Um dia, na sua própria estante, Ramabai encontrou um livrinho. Ninguém sabia como ele tinha ido parar lá. Era o Evangelho de Lucas, a história de Jesus! Ela começou a lê-lo com muito interesse. Um missionário da cidade veio lhe explicar a Bíblia. Então aconteceu uma coisa muito triste. No começo de 1882, Bipin pegou uma doença chamada cólera e morreu. Manorama ainda nem tinha um ano. Ramabai agora era viúva, uma mulher cujo marido tinha morrido, e estava sozinha com a sua bebê. Mas Ramabai não desistiu. Ela disse que a sua grande tristeza a aproximou de Deus. Ela ainda não o conhecia bem, mas sentia que ele a estava ensinando. Se ela fosse chegar a Deus, disse ela, “Ele mesmo tem de me atrair”. Quando Ramabai estava mais sozinha, Deus a estava atraindo para perto. A Bíblia diz que Deus é pai para as pessoas que não têm pai. Quando você se sente sozinho, Deus também está perto de você. Querido Deus, obrigado porque estás perto das pessoas que estão sozinhas e tristes. Por favor, atrai-me para perto de ti. Amém.",
+  "word_count": 350
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "pt"
+  ],
+  "order": 6,
+  "title": "Uma Voz para as Meninas",
+  "body_html": "<blockquote>“Fale em favor daqueles que não podem falar por si mesmos.” — de Provérbios 31</blockquote> <p>Ramabai levou a pequena Manorama para a cidade de Puna, onde o pai dela tinha estudado muito tempo antes. Alguns homens bondosos e sábios de lá a ajudaram. Logo Ramabai começou um clube para mulheres. Ele se reunia aos sábados e trabalhava para ajudar as meninas a ir à escola e para ajudar as viúvas.</p> <p>Naquele tempo, muitas meninas na Índia se casavam muito novinhas, e algumas ficavam viúvas quando ainda eram crianças. Uma viúva criança tinha uma vida dura. Cortavam o cabelo dela, davam-lhe roupas simples, e muitas vezes as pessoas a tratavam mal, como se ela fosse culpada pela morte do marido.</p> <p>Em 1882, alguns homens importantes do governo britânico vieram a Puna para conhecer as escolas da Índia. Ramabai se levantou diante deles e falou em nome das mulheres da Índia. Ela pediu que professoras fossem formadas, e médicas também, porque muitas mulheres tinham vergonha de se consultar com um médico homem e por isso nunca recebiam ajuda. Quase nenhuma mulher indiana tinha falado assim antes!</p> <p>Naquele mesmo ano, trouxeram a Ramabai uma pequena viúva de uns doze anos. Ela tinha sido casada aos cinco, e o marido tinha morrido poucos dias depois do casamento. A sogra culpava a menininha e nem olhava para ela. Ramabai a levou para casa para morar com ela.</p> <p>Enquanto Ramabai olhava para aquela menininha, um plano começou a crescer. Ela faria um lar para viúvas! Mas primeiro ela queria aprender a ser médica. Então, em 1883, ela partiu de navio para a Inglaterra com Manorama, que tinha dois anos, e uma amiga. Mais tarde ela disse que foi “como Abraão, sem saber para onde ia”.</p> <p>Ramabai teve coragem de falar em favor das meninas que não tinham voz. Deus quer que a gente fale em favor das pessoas que estão sendo machucadas ou deixadas de lado. Você também pode fazer isso, até na escola ou no seu bairro.</p> <p><em>Querido Deus, ajuda-me a enxergar as pessoas que são deixadas de lado. Dá-me coragem para falar em favor delas e para ser amigo delas. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que Ramabai pediu aos homens do governo?",
+    "answer": "Ela pediu que professoras fossem formadas, e médicas também, porque muitas mulheres não queriam se consultar com um médico homem."
+   },
+   {
+    "question": "O que Ramabai fez pela pequena viúva que lhe trouxeram?",
+    "answer": "Ela a levou para casa para morar com ela, e isso lhe deu a ideia de fazer um lar para viúvas."
+   },
+   {
+    "question": "Existe alguém que você conhece que talvez precise de um amigo que fale em favor dele?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que Deus quer que a gente fale em favor das pessoas que são machucadas ou deixadas de lado."
+   }
+  ],
+  "body_text": "“Fale em favor daqueles que não podem falar por si mesmos.” — de Provérbios 31 Ramabai levou a pequena Manorama para a cidade de Puna, onde o pai dela tinha estudado muito tempo antes. Alguns homens bondosos e sábios de lá a ajudaram. Logo Ramabai começou um clube para mulheres. Ele se reunia aos sábados e trabalhava para ajudar as meninas a ir à escola e para ajudar as viúvas. Naquele tempo, muitas meninas na Índia se casavam muito novinhas, e algumas ficavam viúvas quando ainda eram crianças. Uma viúva criança tinha uma vida dura. Cortavam o cabelo dela, davam-lhe roupas simples, e muitas vezes as pessoas a tratavam mal, como se ela fosse culpada pela morte do marido. Em 1882, alguns homens importantes do governo britânico vieram a Puna para conhecer as escolas da Índia. Ramabai se levantou diante deles e falou em nome das mulheres da Índia. Ela pediu que professoras fossem formadas, e médicas também, porque muitas mulheres tinham vergonha de se consultar com um médico homem e por isso nunca recebiam ajuda. Quase nenhuma mulher indiana tinha falado assim antes! Naquele mesmo ano, trouxeram a Ramabai uma pequena viúva de uns doze anos. Ela tinha sido casada aos cinco, e o marido tinha morrido poucos dias depois do casamento. A sogra culpava a menininha e nem olhava para ela. Ramabai a levou para casa para morar com ela. Enquanto Ramabai olhava para aquela menininha, um plano começou a crescer. Ela faria um lar para viúvas! Mas primeiro ela queria aprender a ser médica. Então, em 1883, ela partiu de navio para a Inglaterra com Manorama, que tinha dois anos, e uma amiga. Mais tarde ela disse que foi “como Abraão, sem saber para onde ia”. Ramabai teve coragem de falar em favor das meninas que não tinham voz. Deus quer que a gente fale em favor das pessoas que estão sendo machucadas ou deixadas de lado. Você também pode fazer isso, até na escola ou no seu bairro. Querido Deus, ajuda-me a enxergar as pessoas que são deixadas de lado. Dá-me coragem para falar em favor delas e para ser amigo delas. Amém.",
+  "word_count": 357
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "pt"
+  ],
+  "order": 7,
+  "title": "A Mulher Junto ao Poço",
+  "body_html": "<blockquote>“Quem beber da água que eu dou nunca mais terá sede.” — de João 4</blockquote> <p>Na Inglaterra, um grupo de mulheres cristãs chamadas Irmãs cuidou de Ramabai e de Manorama. Elas ensinaram inglês a Ramabai. Mas veio uma notícia triste. Ramabai era um pouco surda, e os médicos disseram que ela não poderia estudar para ser médica. Foi um golpe duro.</p> <p>Então as Irmãs a levaram para visitar uma casa especial em Londres. Era para mulheres cuja vida tinha dado muito errado, mulheres que quase todo mundo desprezava. Ramabai viu que os cristãos de lá eram bondosos com elas. Algumas dessas mulheres tinham passado a amar tanto a Jesus que agora dedicavam a vida a cuidar de pessoas doentes.</p> <p>Ramabai ficou admirada. Na Índia, ela nunca tinha visto ninguém tentar ajudar mulheres assim. Ela perguntou à Irmã o que fazia os cristãos cuidarem delas.</p> <p>A Irmã que a ensinava abriu a Bíblia no capítulo 4 de João. Ele conta como Jesus encontrou uma mulher junto a um poço. As outras pessoas ficavam longe dela. Mas Jesus conversou com ela com bondade e lhe ofereceu “água viva”, que nunca acabaria.</p> <p>Ramabai tinha lido os antigos livros de leis que diziam que as mulheres eram más e não tinham esperança. Agora ela ouvia falar de Jesus, que não desprezava as mulheres, mas veio para salvá-las. Ela teve certeza de que ele era de verdade o Salvador. “Assim o meu coração foi atraído para a religião de Cristo”, escreveu ela. Um livro de um sábio cristão indiano chamado Padre Goreh também a ajudou a ver que aquilo era verdade.</p> <p>No dia 29 de setembro de 1883, Ramabai e a pequena Manorama foram batizadas. Ela recebeu o nome de Maria. Ela sabia que muita gente do seu próprio povo ficaria aborrecida, mas disse que nunca se arrependeu.</p> <p>Jesus não desprezava ninguém. Ele fazia questão de ser bondoso com as pessoas que os outros deixavam de lado. Jesus ama você do mesmo jeito, e quer dar a você também a sua água viva.</p> <p><em>Querido Jesus, obrigado porque nunca desprezas ninguém. Obrigado por me amares. Ajuda-me a ser bondoso como tu. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que Ramabai viu na casa em Londres que a surpreendeu?",
+    "answer": "Cristãos sendo bondosos com mulheres que todo mundo desprezava, e algumas dessas mulheres agora cuidando de pessoas doentes."
+   },
+   {
+    "question": "Que história da Bíblia a Irmã leu para ela?",
+    "answer": "A história do capítulo 4 de João, em que Jesus conversa com bondade com uma mulher junto a um poço e lhe oferece água viva."
+   },
+   {
+    "question": "Como você pode ser bondoso com alguém que os outros deixam de lado?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que Jesus nunca despreza ninguém, e ele nos ajuda a ser bondosos como ele."
+   }
+  ],
+  "body_text": "“Quem beber da água que eu dou nunca mais terá sede.” — de João 4 Na Inglaterra, um grupo de mulheres cristãs chamadas Irmãs cuidou de Ramabai e de Manorama. Elas ensinaram inglês a Ramabai. Mas veio uma notícia triste. Ramabai era um pouco surda, e os médicos disseram que ela não poderia estudar para ser médica. Foi um golpe duro. Então as Irmãs a levaram para visitar uma casa especial em Londres. Era para mulheres cuja vida tinha dado muito errado, mulheres que quase todo mundo desprezava. Ramabai viu que os cristãos de lá eram bondosos com elas. Algumas dessas mulheres tinham passado a amar tanto a Jesus que agora dedicavam a vida a cuidar de pessoas doentes. Ramabai ficou admirada. Na Índia, ela nunca tinha visto ninguém tentar ajudar mulheres assim. Ela perguntou à Irmã o que fazia os cristãos cuidarem delas. A Irmã que a ensinava abriu a Bíblia no capítulo 4 de João. Ele conta como Jesus encontrou uma mulher junto a um poço. As outras pessoas ficavam longe dela. Mas Jesus conversou com ela com bondade e lhe ofereceu “água viva”, que nunca acabaria. Ramabai tinha lido os antigos livros de leis que diziam que as mulheres eram más e não tinham esperança. Agora ela ouvia falar de Jesus, que não desprezava as mulheres, mas veio para salvá-las. Ela teve certeza de que ele era de verdade o Salvador. “Assim o meu coração foi atraído para a religião de Cristo”, escreveu ela. Um livro de um sábio cristão indiano chamado Padre Goreh também a ajudou a ver que aquilo era verdade. No dia 29 de setembro de 1883, Ramabai e a pequena Manorama foram batizadas. Ela recebeu o nome de Maria. Ela sabia que muita gente do seu próprio povo ficaria aborrecida, mas disse que nunca se arrependeu. Jesus não desprezava ninguém. Ele fazia questão de ser bondoso com as pessoas que os outros deixavam de lado. Jesus ama você do mesmo jeito, e quer dar a você também a sua água viva. Querido Jesus, obrigado porque nunca desprezas ninguém. Obrigado por me amares. Ajuda-me a ser bondoso como tu. Amém.",
+  "word_count": 356
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "pt"
+  ],
+  "order": 8,
+  "title": "A Casa da Sabedoria",
+  "body_html": "<blockquote>“Aprendam a fazer o bem. Ajudem os que são maltratados e defendam as viúvas.” — de Isaías 1</blockquote> <p>Em 1886, Ramabai partiu de navio para os Estados Unidos. Ficou lá quase três anos. Ela escreveu um livro sobre as mulheres da Índia, que contava a triste história das viúvas crianças. Ela pediu aos americanos que a ajudassem a abrir uma escola para viúvas na Índia. Muitas pessoas bondosas de Boston prometeram ajudar. Naquela noite, contou Ramabai, ela estava “chorando de alegria”.</p> <p>No dia 11 de março de 1889, já de volta à Índia, Ramabai abriu a sua escola. Ela a chamou de Sharada Sadan, que quer dizer “a Casa da Sabedoria”. No primeiro dia havia só duas alunas! Mas logo vieram mais. As jovens viúvas aprenderam a ler e a escrever, e muitas se formaram professoras, para poderem ganhar o próprio sustento.</p> <p>À noite, todas as meninas vinham ao quarto de Ramabai para cantar. Muita gente achava que as meninas não deviam cantar de jeito nenhum. Mas Ramabai e as suas meninas cantavam juntas, felizes, e ela dizia que elas iam “virar a maré”.</p> <p>Ramabai tinha prometido que a escola não tentaria tornar as meninas cristãs. As meninas podiam continuar na sua própria religião. Mas toda manhã Ramabai lia a Bíblia e orava com Manorama no seu próprio quarto, e deixava a porta aberta.</p> <p>No começo, algumas meninas só espiavam. Depois, uma por uma, foram chegando um pouco mais perto. Logo muitas delas estavam sentadas em silêncio, ouvindo a Bíblia, e se ajoelhando para orar com ela. “Nenhuma menina é obrigada a entrar”, disse Ramabai. Elas entravam porque queriam.</p> <p>Alguns dos homens hindus que aconselhavam a escola ficaram muito descontentes com a porta aberta. Mas Ramabai não escondia aquilo em que acreditava, e também não forçava ninguém.</p> <p>Ramabai não impôs a sua fé a ninguém, mas também não a escondeu. Você não precisa forçar ninguém a ouvir sobre Jesus. Você pode simplesmente deixar a sua porta aberta, sendo bondoso e sincero sobre aquilo em que acredita.</p> <p><em>Querido Deus, ajuda-me a ser um bom amigo de todos. Ajuda-me a não esconder que eu te amo e a repartir o teu amor com bondade. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que quer dizer Sharada Sadan, e para quem era?",
+    "answer": "Quer dizer “a Casa da Sabedoria”, e era uma escola para jovens viúvas."
+   },
+   {
+    "question": "O que aconteceu quando Ramabai deixava a porta aberta de manhã?",
+    "answer": "As meninas espiavam, depois chegavam mais perto, e muitas começaram a ouvir a Bíblia e a orar com ela, porque queriam."
+   },
+   {
+    "question": "Como você pode mostrar aos outros que ama Jesus, sem forçar ninguém?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que podemos repartir a nossa fé com bondade e sinceridade, como uma porta aberta."
+   }
+  ],
+  "body_text": "“Aprendam a fazer o bem. Ajudem os que são maltratados e defendam as viúvas.” — de Isaías 1 Em 1886, Ramabai partiu de navio para os Estados Unidos. Ficou lá quase três anos. Ela escreveu um livro sobre as mulheres da Índia, que contava a triste história das viúvas crianças. Ela pediu aos americanos que a ajudassem a abrir uma escola para viúvas na Índia. Muitas pessoas bondosas de Boston prometeram ajudar. Naquela noite, contou Ramabai, ela estava “chorando de alegria”. No dia 11 de março de 1889, já de volta à Índia, Ramabai abriu a sua escola. Ela a chamou de Sharada Sadan, que quer dizer “a Casa da Sabedoria”. No primeiro dia havia só duas alunas! Mas logo vieram mais. As jovens viúvas aprenderam a ler e a escrever, e muitas se formaram professoras, para poderem ganhar o próprio sustento. À noite, todas as meninas vinham ao quarto de Ramabai para cantar. Muita gente achava que as meninas não deviam cantar de jeito nenhum. Mas Ramabai e as suas meninas cantavam juntas, felizes, e ela dizia que elas iam “virar a maré”. Ramabai tinha prometido que a escola não tentaria tornar as meninas cristãs. As meninas podiam continuar na sua própria religião. Mas toda manhã Ramabai lia a Bíblia e orava com Manorama no seu próprio quarto, e deixava a porta aberta. No começo, algumas meninas só espiavam. Depois, uma por uma, foram chegando um pouco mais perto. Logo muitas delas estavam sentadas em silêncio, ouvindo a Bíblia, e se ajoelhando para orar com ela. “Nenhuma menina é obrigada a entrar”, disse Ramabai. Elas entravam porque queriam. Alguns dos homens hindus que aconselhavam a escola ficaram muito descontentes com a porta aberta. Mas Ramabai não escondia aquilo em que acreditava, e também não forçava ninguém. Ramabai não impôs a sua fé a ninguém, mas também não a escondeu. Você não precisa forçar ninguém a ouvir sobre Jesus. Você pode simplesmente deixar a sua porta aberta, sendo bondoso e sincero sobre aquilo em que acredita. Querido Deus, ajuda-me a ser um bom amigo de todos. Ajuda-me a não esconder que eu te amo e a repartir o teu amor com bondade. Amém.",
+  "word_count": 363
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "pt"
+  ],
+  "order": 9,
+  "title": "O Fardo Pesado Rola para Longe",
+  "body_html": "<blockquote>“O povo que estava sentado na escuridão viu uma grande luz.” — de Mateus 4</blockquote> <p>Ramabai tinha sido batizada. Ela ensinava sobre Jesus e dirigia uma escola. Mas, lá no fundo, sentia que faltava alguma coisa. Ela tinha lido muitos livros sobre a Bíblia, mas não tinha lido muito a própria Bíblia. Então começou a lê-la todos os dias.</p> <p>No começo, isso não a deixou feliz. Fez com que ela visse que não estava pronta para se encontrar com Deus. Ela sabia que tinha pecados dos quais não conseguia se livrar sozinha. Ela escreveu que precisava “de Cristo, e não apenas da religião dele”. Ela não precisava só saber sobre Jesus. Ela precisava do próprio Jesus.</p> <p>Então, por volta do ano de 1891, ela se entregou completamente a Jesus. Pediu que ele tirasse todo o seu pecado. Ela disse que foi como se um fardo enorme e pesado rolasse para longe do seu coração. Foi como estar num quarto escuro e de repente ver uma grande luz.</p> <p>O que mais a deixou feliz foi que o amor de Deus é um presente de graça. Quando menina, tinham lhe ensinado que era preciso ganhar o favor de Deus, e que as mulheres não podiam ser salvas sendo mulheres. Agora ela lia que Jesus morreu por nós quando ainda éramos pecadores. “Que boa notícia”, escreveu ela, “para mim, uma mulher!”</p> <p>Dois anos depois, em 1893, uma grande tempestade caiu sobre a escola dela. Alguns dos homens importantes que a tinham ajudado ficaram zangados porque as meninas estavam orando com ela. Eles foram embora, e muitas famílias tiraram as filhas da escola. As pessoas escreveram coisas cruéis nos jornais, e algumas até mandaram cartas ameaçando a vida dela. Ramabai teve medo. Mas ela confiou em Deus, e saiu daquilo mais corajosa do que antes. Deus, disse ela, a tinha libertado do medo do que as pessoas pensavam.</p> <p>Saber sobre Jesus é bom. Mas Jesus quer que você o conheça e confie nele você mesmo. O amor dele é um presente de graça, para meninas e meninos do mundo inteiro.</p> <p><em>Querido Jesus, eu não quero só saber sobre ti. Eu quero te conhecer. Por favor, tira o meu pecado e enche-me da tua luz. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Do que Ramabai disse que precisava?",
+    "answer": "Ela disse que precisava do próprio Cristo, e não apenas da religião dele."
+   },
+   {
+    "question": "O que aconteceu na escola dela em 1893?",
+    "answer": "Alguns dos homens importantes que a tinham ajudado foram embora zangados, muitas meninas foram tiradas da escola e as pessoas escreveram coisas cruéis, mas ela confiou em Deus."
+   },
+   {
+    "question": "Qual é a diferença entre saber sobre Jesus e conhecer Jesus?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que Jesus quer que a gente confie nele de verdade, e que o amor dele é um presente de graça."
+   }
+  ],
+  "body_text": "“O povo que estava sentado na escuridão viu uma grande luz.” — de Mateus 4 Ramabai tinha sido batizada. Ela ensinava sobre Jesus e dirigia uma escola. Mas, lá no fundo, sentia que faltava alguma coisa. Ela tinha lido muitos livros sobre a Bíblia, mas não tinha lido muito a própria Bíblia. Então começou a lê-la todos os dias. No começo, isso não a deixou feliz. Fez com que ela visse que não estava pronta para se encontrar com Deus. Ela sabia que tinha pecados dos quais não conseguia se livrar sozinha. Ela escreveu que precisava “de Cristo, e não apenas da religião dele”. Ela não precisava só saber sobre Jesus. Ela precisava do próprio Jesus. Então, por volta do ano de 1891, ela se entregou completamente a Jesus. Pediu que ele tirasse todo o seu pecado. Ela disse que foi como se um fardo enorme e pesado rolasse para longe do seu coração. Foi como estar num quarto escuro e de repente ver uma grande luz. O que mais a deixou feliz foi que o amor de Deus é um presente de graça. Quando menina, tinham lhe ensinado que era preciso ganhar o favor de Deus, e que as mulheres não podiam ser salvas sendo mulheres. Agora ela lia que Jesus morreu por nós quando ainda éramos pecadores. “Que boa notícia”, escreveu ela, “para mim, uma mulher!” Dois anos depois, em 1893, uma grande tempestade caiu sobre a escola dela. Alguns dos homens importantes que a tinham ajudado ficaram zangados porque as meninas estavam orando com ela. Eles foram embora, e muitas famílias tiraram as filhas da escola. As pessoas escreveram coisas cruéis nos jornais, e algumas até mandaram cartas ameaçando a vida dela. Ramabai teve medo. Mas ela confiou em Deus, e saiu daquilo mais corajosa do que antes. Deus, disse ela, a tinha libertado do medo do que as pessoas pensavam. Saber sobre Jesus é bom. Mas Jesus quer que você o conheça e confie nele você mesmo. O amor dele é um presente de graça, para meninas e meninos do mundo inteiro. Querido Jesus, eu não quero só saber sobre ti. Eu quero te conhecer. Por favor, tira o meu pecado e enche-me da tua luz. Amém.",
+  "word_count": 371
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "pt"
+  ],
+  "order": 10,
+  "title": "A Menina à Beira do Rio",
+  "body_html": "<blockquote>“Quando ainda éramos pecadores, Cristo morreu por nós. Foi assim que Deus mostrou o seu amor.” — de Romanos 5</blockquote> <p>Em 1896, outra fome terrível chegou à Índia. Ramabai não queria ir. Ela estava cansada e tinha muito pouco dinheiro. Mas ouviu Deus falando no seu coração: “Lembre-se dos dias antigos.” Ela se lembrou do seu próprio pai e da sua mãe. Ela mesma tinha sido uma criança com fome. Não conseguia ficar em casa.</p> <p>Então Ramabai viajou até os lugares onde o povo estava morrendo de fome. Encontrou muitas meninas sem comida e sem família, e algumas pessoas más que queriam roubar meninas e fazer mal a elas. Ela levou consigo tantas meninas quantas conseguiu. Logo ela decidiu resgatar trezentas! De onde viria o dinheiro? “Eu não sei”, escreveu ela, “mas o Senhor sabe do que eu preciso.”</p> <p>Numa das viagens de volta, as meninas iam numa fila de carros de boi. Eles pararam à beira de um rio. Uma menina com fome colheu feijões da plantação de um lavrador, e Ramabai a fez devolvê-los. Mais tarde a menina fugiu. Quando a trouxeram de volta, Ramabai ficou zangada. Disse que a menina podia seguir o seu próprio caminho, e mandou os carros partirem sem ela.</p> <p>A menina disse que estava arrependida e implorou para ir junto, mas Ramabai não acreditou nela. Os carros começaram a andar. A menina se sentou no chão, sozinha, enquanto escurecia.</p> <p>Ramabai não aguentou. Mandou o condutor parar. Sentada ali, ela se lembrou de quantas vezes tinha fugido de Deus, e de como Deus a tinha amado e chamado de volta, mesmo quando ela ainda era pecadora. Ela acenou para a menina. A menina deu um pulo e correu até ela o mais rápido que pôde! O nome dela era Girija.</p> <p>Deus não esperou Ramabai ser boa para amá-la, e ele também não espera por você. Ele ama você primeiro. E ele nos ajuda a amar os outros, mesmo quando eles fizeram alguma coisa errada.</p> <p><em>Querido Deus, obrigado porque me amaste antes de eu ser bom. Ajuda-me a perdoar os outros e a recebê-los de volta, do jeito que tu me recebes. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Por que Ramabai decidiu ir ajudar as crianças da fome?",
+    "answer": "Deus lhe lembrou de “lembrar-se dos dias antigos”, e ela se lembrou de que um dia ela mesma tinha sido uma criança com fome."
+   },
+   {
+    "question": "O que fez Ramabai parar o carro e chamar Girija de volta?",
+    "answer": "Ela se lembrou de quantas vezes tinha fugido de Deus, e de como Deus a tinha amado e chamado de volta quando ela ainda era pecadora."
+   },
+   {
+    "question": "Existe alguém que você acha difícil perdoar?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que Deus nos ama primeiro, antes de sermos bons, e nos ajuda a amar e a perdoar os outros."
+   }
+  ],
+  "body_text": "“Quando ainda éramos pecadores, Cristo morreu por nós. Foi assim que Deus mostrou o seu amor.” — de Romanos 5 Em 1896, outra fome terrível chegou à Índia. Ramabai não queria ir. Ela estava cansada e tinha muito pouco dinheiro. Mas ouviu Deus falando no seu coração: “Lembre-se dos dias antigos.” Ela se lembrou do seu próprio pai e da sua mãe. Ela mesma tinha sido uma criança com fome. Não conseguia ficar em casa. Então Ramabai viajou até os lugares onde o povo estava morrendo de fome. Encontrou muitas meninas sem comida e sem família, e algumas pessoas más que queriam roubar meninas e fazer mal a elas. Ela levou consigo tantas meninas quantas conseguiu. Logo ela decidiu resgatar trezentas! De onde viria o dinheiro? “Eu não sei”, escreveu ela, “mas o Senhor sabe do que eu preciso.” Numa das viagens de volta, as meninas iam numa fila de carros de boi. Eles pararam à beira de um rio. Uma menina com fome colheu feijões da plantação de um lavrador, e Ramabai a fez devolvê-los. Mais tarde a menina fugiu. Quando a trouxeram de volta, Ramabai ficou zangada. Disse que a menina podia seguir o seu próprio caminho, e mandou os carros partirem sem ela. A menina disse que estava arrependida e implorou para ir junto, mas Ramabai não acreditou nela. Os carros começaram a andar. A menina se sentou no chão, sozinha, enquanto escurecia. Ramabai não aguentou. Mandou o condutor parar. Sentada ali, ela se lembrou de quantas vezes tinha fugido de Deus, e de como Deus a tinha amado e chamado de volta, mesmo quando ela ainda era pecadora. Ela acenou para a menina. A menina deu um pulo e correu até ela o mais rápido que pôde! O nome dela era Girija. Deus não esperou Ramabai ser boa para amá-la, e ele também não espera por você. Ele ama você primeiro. E ele nos ajuda a amar os outros, mesmo quando eles fizeram alguma coisa errada. Querido Deus, obrigado porque me amaste antes de eu ser bom. Ajuda-me a perdoar os outros e a recebê-los de volta, do jeito que tu me recebes. Amém.",
+  "word_count": 358
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "pt"
+  ],
+  "order": 11,
+  "title": "A Varredora",
+  "body_html": "<blockquote>“Ponham-me à prova, diz o Senhor, e vejam se eu não abro as janelas do céu e derramo uma bênção sobre vocês.” — de Malaquias 3</blockquote> <p>Em 1897, uma doença perigosa chamada peste chegou a Puna, e mandaram Ramabai levar as suas meninas da fome para longe da cidade. Então ela as levou para uma fazenda no campo, num lugar chamado Kedgaon. No começo, elas moravam em galpões cercados de arbustos de espinhos, debaixo de um sol muito quente.</p> <p>Mas Ramabai deu ao lugar um nome lindo: Mukti. Quer dizer “salvação”, ou “ser libertado”. Quando menina, tinham lhe dito que as mulheres nunca poderiam ser libertadas. Agora centenas de meninas encontrariam liberdade em Jesus ali. Um dia, naquele ano, dezessete carros de boi cheios de meninas desceram até um rio, cantando o caminho todo, e muitas delas foram batizadas.</p> <p>Ramabai tinha lido sobre George Müller, que cuidou de milhares de órfãos na Inglaterra confiando em Deus para tudo. Ela desejava que alguém fizesse isso na Índia. Então sentiu Deus lhe perguntar: “Por que você mesma não começa a fazer isso?” E ela começou. Mukti não tinha conta no banco nem grandes economias. Ela contava às pessoas o que Deus estava fazendo, orava e confiava nele. “O Senhor é o nosso tesouro inesgotável”, dizia ela. Isso quer dizer um tesouro que nunca acaba.</p> <p>Mukti cresceu e cresceu. Em 1901, umas duas mil mulheres e meninas moravam lá. Um visitante escreveu que, cinco anos antes, aquilo era um campo aberto! As meninas aprendiam a ler, a cultivar a terra, a tecer pano e até a imprimir livros.</p> <p>Ramabai tinha sido honrada como uma senhora sábia. Mas ela chamava a si mesma de varredora, que na Índia era um dos trabalhos mais humildes. “Eu varro para dentro deste terreno todas as que consigo”, dizia ela. Ela juntava as meninas que ninguém mais queria e lhes dava um lar.</p> <p>Ramabai confiava em Deus para cada refeição, e Deus cuidava de todas elas. Você também pode confiar a Deus aquilo de que precisa. E você pode ser um “varredor”, acolhendo as pessoas que os outros deixam de lado.</p> <p><em>Querido Deus, obrigado porque cuidas de mim todos os dias. Ajuda-me a confiar em ti e a acolher as pessoas que precisam de um amigo. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que quer dizer o nome Mukti?",
+    "answer": "Quer dizer salvação, ou ser libertado."
+   },
+   {
+    "question": "Por que Ramabai chamava a si mesma de varredora?",
+    "answer": "Porque ela juntava, ou “varria para dentro”, as meninas e mulheres que ninguém mais queria, e lhes dava um lar."
+   },
+   {
+    "question": "Em que coisa você pode confiar que Deus vai ajudar você?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que Deus cuida de nós, e que podemos confiar a ele aquilo de que precisamos."
+   }
+  ],
+  "body_text": "“Ponham-me à prova, diz o Senhor, e vejam se eu não abro as janelas do céu e derramo uma bênção sobre vocês.” — de Malaquias 3 Em 1897, uma doença perigosa chamada peste chegou a Puna, e mandaram Ramabai levar as suas meninas da fome para longe da cidade. Então ela as levou para uma fazenda no campo, num lugar chamado Kedgaon. No começo, elas moravam em galpões cercados de arbustos de espinhos, debaixo de um sol muito quente. Mas Ramabai deu ao lugar um nome lindo: Mukti. Quer dizer “salvação”, ou “ser libertado”. Quando menina, tinham lhe dito que as mulheres nunca poderiam ser libertadas. Agora centenas de meninas encontrariam liberdade em Jesus ali. Um dia, naquele ano, dezessete carros de boi cheios de meninas desceram até um rio, cantando o caminho todo, e muitas delas foram batizadas. Ramabai tinha lido sobre George Müller, que cuidou de milhares de órfãos na Inglaterra confiando em Deus para tudo. Ela desejava que alguém fizesse isso na Índia. Então sentiu Deus lhe perguntar: “Por que você mesma não começa a fazer isso?” E ela começou. Mukti não tinha conta no banco nem grandes economias. Ela contava às pessoas o que Deus estava fazendo, orava e confiava nele. “O Senhor é o nosso tesouro inesgotável”, dizia ela. Isso quer dizer um tesouro que nunca acaba. Mukti cresceu e cresceu. Em 1901, umas duas mil mulheres e meninas moravam lá. Um visitante escreveu que, cinco anos antes, aquilo era um campo aberto! As meninas aprendiam a ler, a cultivar a terra, a tecer pano e até a imprimir livros. Ramabai tinha sido honrada como uma senhora sábia. Mas ela chamava a si mesma de varredora, que na Índia era um dos trabalhos mais humildes. “Eu varro para dentro deste terreno todas as que consigo”, dizia ela. Ela juntava as meninas que ninguém mais queria e lhes dava um lar. Ramabai confiava em Deus para cada refeição, e Deus cuidava de todas elas. Você também pode confiar a Deus aquilo de que precisa. E você pode ser um “varredor”, acolhendo as pessoas que os outros deixam de lado. Querido Deus, obrigado porque cuidas de mim todos os dias. Ajuda-me a confiar em ti e a acolher as pessoas que precisam de um amigo. Amém.",
+  "word_count": 379
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pandita-ramabai-a-life-children",
+   "pt"
+  ],
+  "order": 12,
+  "title": "Uma Bíblia para Todos",
+  "body_html": "<blockquote>“De graça vocês receberam, de graça deem.” — de Mateus 10</blockquote> <p>Em 1905, Ramabai pediu às meninas de Mukti que orassem toda manhã para que Deus trouxesse muitas pessoas da Índia para perto dele, “inclusive nós mesmas”. Umas setenta meninas vieram. Logo eram centenas orando! Um dia, em junho, Deus respondeu de um jeito maravilhoso. As meninas começaram a chorar, a orar e a pedir perdão pelas coisas erradas que tinham feito. Algumas devolveram coisas que tinham pegado. Elas ficaram cheias de alegria. Grupos de meninas saíram para orar pelas pessoas por toda a Índia. Ramabai lhes ensinou que o sinal mais importante do Espírito de Deus é o amor.</p> <p>Ramabai tinha mais um grande trabalho. A Bíblia na língua dela, o marata, usava palavras compridas e difíceis. Muitas mulheres das aldeias não conseguiam entendê-la. Então Ramabai começou a fazer uma Bíblia nova, nas palavras simples que as pessoas comuns falavam. Ela aprendeu hebraico e grego, as línguas em que a Bíblia foi escrita primeiro. As meninas de Mukti montavam as letras na sua própria prensa de impressão. Ela nunca deixou que a sua Bíblia fosse vendida. Tinha de ser dada de graça, dizia ela, assim como tinha sido dada a ela.</p> <p>Em 1921, aconteceu uma coisa muito triste. Manorama, a filha dela, que tinha trabalhado ao seu lado durante muitos anos, ficou doente e morreu. Ramabai disse: “O Senhor o deu, e o Senhor o tomou; bendito seja o nome do Senhor.”</p> <p>Ramabai terminou a sua Bíblia pouco antes de morrer. Bem cedo, na manhã de 5 de abril de 1922, ela morreu tranquilamente enquanto dormia. Tinha sessenta e três anos. Mil meninas seguiram atrás enquanto as moças de Mukti carregavam o caixão dela. Pessoas de todas as castas ficaram lado a lado, e uma velha viúva gritou: “Ó Grande Mãe, Grande Mãe!” Mukti ainda existe hoje, cuidando de mulheres e crianças.</p> <p>Ramabai recebeu de graça o amor de Deus, e por isso o deu de graça a todos. Você também recebeu bons presentes. Com quem você poderia repartir o amor de Deus hoje?</p> <p><em>Querido Deus, obrigado pela Bíblia e por pessoas como Ramabai, que a repartiram. Ajuda-me a repartir o teu amor de graça com os outros. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Por que Ramabai fez uma Bíblia nova em marata?",
+    "answer": "Porque a antiga usava palavras compridas e difíceis, e ela queria que as mulheres das aldeias a entendessem numa linguagem simples do dia a dia."
+   },
+   {
+    "question": "Qual Ramabai ensinava que era o sinal mais importante do Espírito de Deus?",
+    "answer": "O amor."
+   },
+   {
+    "question": "Qual é um jeito de você repartir o amor de Deus com alguém nesta semana?",
+    "answer": "Qualquer resposta sincera é boa aqui. A ideia do capítulo é que Deus nos dá de graça, para que também possamos dar o amor dele de graça aos outros."
+   }
+  ],
+  "body_text": "“De graça vocês receberam, de graça deem.” — de Mateus 10 Em 1905, Ramabai pediu às meninas de Mukti que orassem toda manhã para que Deus trouxesse muitas pessoas da Índia para perto dele, “inclusive nós mesmas”. Umas setenta meninas vieram. Logo eram centenas orando! Um dia, em junho, Deus respondeu de um jeito maravilhoso. As meninas começaram a chorar, a orar e a pedir perdão pelas coisas erradas que tinham feito. Algumas devolveram coisas que tinham pegado. Elas ficaram cheias de alegria. Grupos de meninas saíram para orar pelas pessoas por toda a Índia. Ramabai lhes ensinou que o sinal mais importante do Espírito de Deus é o amor. Ramabai tinha mais um grande trabalho. A Bíblia na língua dela, o marata, usava palavras compridas e difíceis. Muitas mulheres das aldeias não conseguiam entendê-la. Então Ramabai começou a fazer uma Bíblia nova, nas palavras simples que as pessoas comuns falavam. Ela aprendeu hebraico e grego, as línguas em que a Bíblia foi escrita primeiro. As meninas de Mukti montavam as letras na sua própria prensa de impressão. Ela nunca deixou que a sua Bíblia fosse vendida. Tinha de ser dada de graça, dizia ela, assim como tinha sido dada a ela. Em 1921, aconteceu uma coisa muito triste. Manorama, a filha dela, que tinha trabalhado ao seu lado durante muitos anos, ficou doente e morreu. Ramabai disse: “O Senhor o deu, e o Senhor o tomou; bendito seja o nome do Senhor.” Ramabai terminou a sua Bíblia pouco antes de morrer. Bem cedo, na manhã de 5 de abril de 1922, ela morreu tranquilamente enquanto dormia. Tinha sessenta e três anos. Mil meninas seguiram atrás enquanto as moças de Mukti carregavam o caixão dela. Pessoas de todas as castas ficaram lado a lado, e uma velha viúva gritou: “Ó Grande Mãe, Grande Mãe!” Mukti ainda existe hoje, cuidando de mulheres e crianças. Ramabai recebeu de graça o amor de Deus, e por isso o deu de graça a todos. Você também recebeu bons presentes. Com quem você poderia repartir o amor de Deus hoje? Querido Deus, obrigado pela Bíblia e por pessoas como Ramabai, que a repartiram. Ajuda-me a repartir o teu amor de graça com os outros. Amém.",
+  "word_count": 370
+ }
+}
+]
