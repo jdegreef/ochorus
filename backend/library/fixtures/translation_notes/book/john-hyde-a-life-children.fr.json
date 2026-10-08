@@ -3,7 +3,7 @@
  "slug": "john-hyde-a-life-children",
  "language": "fr",
  "job_issue": 5552,
- "pull_request": 0,
+ "pull_request": 5577,
  "note": [
   "Each chapter's opening blockquote quotes a King James verse in the English, so the French uses the Louis Segond 1910 wording, fetched from the fra_lsg USFM on the ebible mirror (raw.githubusercontent.com/gracious-tech/fetch_collection). Rows marked mined are contiguous Segond excerpts, changed only by French spacing before ? ! : and the capital Ô (Psaume 51:12 and 81:11 in Segond's numbering are 51:10 and 81:10 in English). The same wording is also used verbatim across the shipped fr corpus.",
   "Self-rendered: Isaiah 6:8, Zechariah 4:6 and Philippians 4:8 drop a clause the English also drops (« et qui marchera pour nous ? », « des armées », the start of the list). The body echoes (Matthew 9:38 in ch. 1, Psalm 81:10 « Toute grande, Seigneur » in ch. 8 because Segond has no word for KJV “wide”, Zechariah 2:8 and Philippians 4:8 in ch. 10) are retold for children. AI-translated in-session; awaiting native review."
