@@ -1,0 +1,1387 @@
+{
+ "kind": "book",
+ "slug": "amanda-smith-autobiography",
+ "language": "sw",
+ "job_issue": 5419,
+ "pull_request": null,
+ "note": [
+  "Amanda Smith quotes scripture constantly but rarely cites it, so the references were identified by the chapter translators. Every quotation follows the Swahili Union Version (SUV) tradition the shipped sw corpus quotes — not swhonen, a different revised edition. Where a shipped *.sw.json carries the SUV words they were pasted verbatim and the row is `mined` with that file (each claim re-checked as a verbatim substring of the cited file); otherwise the row is `self_rendered` in the SUV register and needs a native check.",
+  "Many `self_rendered` rows are Amanda's own re-personed or partial quotations (her `us` for the verse's `you`, a clause woven into her sentence) — the SUV wording was adapted, so it is not claimed as mined.",
+  "Hymns and choruses she quotes (\"The Lord will provide\", \"He Leadeth Me\", \"Jesus, Lover of my Soul\", …) were translated freshly, not taken from a Swahili hymnal; they are not scripture and are not listed here, but deserve a native reviewer's ear.",
+  "Clock times are CONVERTED to Swahili reckoning (ten at night → saa nne usiku), matching the corpus and the teens/children editions."
+ ],
+ "references": [
+  {
+   "reference": "2 Corinthians 8:11",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Isaiah 41:13",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 1,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Psalm 46:1b",
+   "status": "mined",
+   "block_index": 18,
+   "chapter_order": 3,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Isaiah 61:1b",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Acts 8:8",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 3
+  },
+  {
+   "reference": "John 8:36",
+   "status": "mined",
+   "block_index": 31,
+   "chapter_order": 5,
+   "source_file": "full-salvation.sw.json"
+  },
+  {
+   "reference": "John 12:32",
+   "status": "mined",
+   "block_index": 15,
+   "chapter_order": 6,
+   "source_file": "lord-remember-me.sw.json"
+  },
+  {
+   "reference": "Revelation 19:6",
+   "status": "mined",
+   "block_index": 64,
+   "chapter_order": 6,
+   "source_file": "grace-abounding.sw.json"
+  },
+  {
+   "reference": "Hosea 6:3",
+   "status": "self_rendered",
+   "block_index": 64,
+   "chapter_order": 6
+  },
+  {
+   "reference": "James 2:26",
+   "status": "mined",
+   "block_index": 33,
+   "chapter_order": 8,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Psalm 73:1",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Matthew 6:10a",
+   "status": "self_rendered",
+   "block_index": 43,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Ephesians 4:24",
+   "status": "mined",
+   "block_index": 16,
+   "chapter_order": 9,
+   "source_file": "the-inner-chamber.sw.json"
+  },
+  {
+   "reference": "Zechariah 3:4",
+   "status": "mined",
+   "block_index": 43,
+   "chapter_order": 9,
+   "source_file": "the-good-way-of-coming-before-the-lord.sw.json"
+  },
+  {
+   "reference": "Galatians 3:28",
+   "status": "mined",
+   "block_index": 56,
+   "chapter_order": 9,
+   "source_file": "men-who-tended-the-flock-2.sw.json"
+  },
+  {
+   "reference": "John 8:36",
+   "status": "mined",
+   "block_index": 56,
+   "chapter_order": 9,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Romans 1:16",
+   "status": "self_rendered",
+   "block_index": 72,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Romans 1:16",
+   "status": "self_rendered",
+   "block_index": 73,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "block_index": 87,
+   "chapter_order": 9,
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "Psalms 130:6",
+   "status": "self_rendered",
+   "block_index": 97,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalms 42:1",
+   "status": "self_rendered",
+   "block_index": 105,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "mined",
+   "block_index": 106,
+   "chapter_order": 9,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Matthew 5:8b",
+   "status": "mined",
+   "block_index": 107,
+   "chapter_order": 9,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "1 Thessalonians 4:3",
+   "status": "mined",
+   "block_index": 114,
+   "chapter_order": 9,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "Matthew 5:11",
+   "status": "mined",
+   "block_index": 119,
+   "chapter_order": 9,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Matthew 5:12a",
+   "status": "self_rendered",
+   "block_index": 119,
+   "chapter_order": 9
+  },
+  {
+   "reference": "2 Timothy 3:12",
+   "status": "self_rendered",
+   "block_index": 120,
+   "chapter_order": 9
+  },
+  {
+   "reference": "John 13:14",
+   "status": "mined",
+   "block_index": 129,
+   "chapter_order": 9,
+   "source_file": "growing-in-wisdom.sw.json"
+  },
+  {
+   "reference": "Job 13:15a",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 8:36",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Acts 13:10",
+   "status": "mined",
+   "block_index": 16,
+   "chapter_order": 10,
+   "source_file": "songs-in-the-night.sw.json"
+  },
+  {
+   "reference": "Acts 13:11",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "mined",
+   "block_index": 21,
+   "chapter_order": 10,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Hebrews 8:5b",
+   "status": "self_rendered",
+   "block_index": 25,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Ezekiel 3:18b",
+   "status": "self_rendered",
+   "block_index": 30,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Hebrews 11:34",
+   "status": "self_rendered",
+   "block_index": 32,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalm 139:14",
+   "status": "self_rendered",
+   "block_index": 37,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "a-retrospect-teens.sw.json"
+  },
+  {
+   "reference": "Mark 8:24",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 11
+  },
+  {
+   "reference": "1 Corinthians 3:22-23",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 11
+  },
+  {
+   "reference": "John 14:14",
+   "status": "mined",
+   "block_index": 31,
+   "chapter_order": 11,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Ezekiel 2:5",
+   "status": "self_rendered",
+   "block_index": 43,
+   "chapter_order": 11
+  },
+  {
+   "reference": "1 John 4:18a",
+   "status": "mined",
+   "block_index": 48,
+   "chapter_order": 11,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "1 John 4:18b",
+   "status": "self_rendered",
+   "block_index": 48,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Hosea 6:3",
+   "status": "mined",
+   "block_index": 52,
+   "chapter_order": 11,
+   "source_file": "i-know-that-my-redeemer-liveth.sw.json"
+  },
+  {
+   "reference": "Exodus 20:4",
+   "status": "self_rendered",
+   "block_index": 64,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Exodus 14:13",
+   "status": "self_rendered",
+   "block_index": 71,
+   "chapter_order": 11
+  },
+  {
+   "reference": "2 Corinthians 8:12",
+   "status": "self_rendered",
+   "block_index": 76,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Hebrews 10:36",
+   "status": "mined",
+   "block_index": 88,
+   "chapter_order": 11,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 12,
+   "source_file": "rooted-1.sw.json"
+  },
+  {
+   "reference": "Matthew 6:10b",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 12,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "Matthew 6:10b",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 12,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "Matthew 6:10b",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 12,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "Matthew 6:10b",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 12,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "Acts 21:14b",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 12
+  },
+  {
+   "reference": "1 Corinthians 15:57",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 12,
+   "source_file": "john-hyde-a-life-children.sw.json"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Job 3:17",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 12
+  },
+  {
+   "reference": "1 Thessalonians 4:3",
+   "status": "mined",
+   "block_index": 41,
+   "chapter_order": 12,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "Mark 5:36b",
+   "status": "mined",
+   "block_index": 41,
+   "chapter_order": 12,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "John 11:40b",
+   "status": "self_rendered",
+   "block_index": 41,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Matthew 8:25",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Exodus 3:12",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 13,
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 13,
+   "source_file": "baptism-with-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Exodus 3:12",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Psalms 126:1",
+   "status": "self_rendered",
+   "block_index": 43,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Psalms 126:2a",
+   "status": "self_rendered",
+   "block_index": 43,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Song of Songs 2:9",
+   "status": "self_rendered",
+   "block_index": 65,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Song of Songs 2:5b",
+   "status": "self_rendered",
+   "block_index": 65,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Psalms 107:9",
+   "status": "self_rendered",
+   "block_index": 66,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Hebrews 12:14b",
+   "status": "self_rendered",
+   "block_index": 72,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "block_index": 75,
+   "chapter_order": 13,
+   "source_file": "humility-2.sw.json"
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 14,
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "Romans 11:33b",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 14
+  },
+  {
+   "reference": "2 Corinthians 12:9a",
+   "status": "mined",
+   "block_index": 19,
+   "chapter_order": 14,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "1 Peter 2:6b",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Matthew 10:19b",
+   "status": "self_rendered",
+   "block_index": 77,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Acts 19:2",
+   "status": "mined",
+   "block_index": 78,
+   "chapter_order": 14,
+   "source_file": "baptism-with-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "1 Samuel 15:22b",
+   "status": "self_rendered",
+   "block_index": 86,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Isaiah 65:24",
+   "status": "mined",
+   "block_index": 26,
+   "chapter_order": 15,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "block_index": 30,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Revelation 19:16",
+   "status": "mined",
+   "block_index": 38,
+   "chapter_order": 15,
+   "source_file": "the-excellency-of-christ.sw.json"
+  },
+  {
+   "reference": "Revelation 19:6",
+   "status": "mined",
+   "block_index": 38,
+   "chapter_order": 15,
+   "source_file": "grace-abounding.sw.json"
+  },
+  {
+   "reference": "1 Timothy 5:8",
+   "status": "self_rendered",
+   "block_index": 65,
+   "chapter_order": 15
+  },
+  {
+   "reference": "1 Corinthians 15:57a",
+   "status": "mined",
+   "block_index": 70,
+   "chapter_order": 15,
+   "source_file": "john-hyde-a-life-children.sw.json"
+  },
+  {
+   "reference": "Psalms 137:5",
+   "status": "self_rendered",
+   "block_index": 110,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalms 107:8",
+   "status": "self_rendered",
+   "block_index": 70,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Job 26:14",
+   "status": "self_rendered",
+   "block_index": 70,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Hebrews 10:33",
+   "status": "self_rendered",
+   "block_index": 80,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Psalms 91:7",
+   "status": "self_rendered",
+   "block_index": 109,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "block_index": 111,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Matthew 7:8",
+   "status": "mined",
+   "block_index": 111,
+   "chapter_order": 16,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "block_index": 132,
+   "chapter_order": 16,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "block_index": 133,
+   "chapter_order": 16,
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "Matthew 12:39",
+   "status": "self_rendered",
+   "block_index": 136,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Isaiah 59:19",
+   "status": "self_rendered",
+   "block_index": 146,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Joshua 1:9",
+   "status": "mined",
+   "block_index": 146,
+   "chapter_order": 16,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "John 11:40",
+   "status": "self_rendered",
+   "block_index": 146,
+   "chapter_order": 16
+  },
+  {
+   "reference": "John 15:16a",
+   "status": "mined",
+   "block_index": 51,
+   "chapter_order": 17,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "John 7:5",
+   "status": "self_rendered",
+   "block_index": 58,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Matthew 10:24b",
+   "status": "self_rendered",
+   "block_index": 58,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Psalm 118:23",
+   "status": "self_rendered",
+   "block_index": 38,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Mark 9:23b",
+   "status": "mined",
+   "block_index": 15,
+   "chapter_order": 18,
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 12:9a",
+   "status": "mined",
+   "block_index": 19,
+   "chapter_order": 18,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Isaiah 35:8a",
+   "status": "self_rendered",
+   "block_index": 59,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Isaiah 55:8-9",
+   "status": "self_rendered",
+   "block_index": 53,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Psalms 124:1",
+   "status": "self_rendered",
+   "block_index": 37,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Daniel 12:10a",
+   "status": "self_rendered",
+   "block_index": 76,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Malachi 4:1a",
+   "status": "self_rendered",
+   "block_index": 67,
+   "chapter_order": 19
+  },
+  {
+   "reference": "Matthew 8:2",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 20,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Matthew 8:3",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 20,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Psalms 46:1b",
+   "status": "mined",
+   "block_index": 83,
+   "chapter_order": 20,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "2 Chronicles 16:9a",
+   "status": "mined",
+   "block_index": 85,
+   "chapter_order": 20,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 10:13b",
+   "status": "self_rendered",
+   "block_index": 90,
+   "chapter_order": 20
+  },
+  {
+   "reference": "Isaiah 55:9",
+   "status": "self_rendered",
+   "block_index": 29,
+   "chapter_order": 21
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "block_index": 90,
+   "chapter_order": 21,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Philippians 4:19a",
+   "status": "mined",
+   "block_index": 90,
+   "chapter_order": 21,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "John 14:14",
+   "status": "mined",
+   "block_index": 114,
+   "chapter_order": 21,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Proverbs 16:18",
+   "status": "self_rendered",
+   "block_index": 47,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Psalm 146:1b",
+   "status": "self_rendered",
+   "block_index": 75,
+   "chapter_order": 22
+  },
+  {
+   "reference": "Revelation 14:13",
+   "status": "self_rendered",
+   "block_index": 29,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Psalm 125:1",
+   "status": "self_rendered",
+   "block_index": 52,
+   "chapter_order": 23
+  },
+  {
+   "reference": "1 Corinthians 14:34a",
+   "status": "mined",
+   "block_index": 121,
+   "chapter_order": 23,
+   "source_file": "amanda-smith-autobiography-teens.sw.json"
+  },
+  {
+   "reference": "John 6:63",
+   "status": "mined",
+   "block_index": 106,
+   "chapter_order": 23,
+   "source_file": "the-gospel-of-healing.sw.json"
+  },
+  {
+   "reference": "1 Timothy 4:8a",
+   "status": "self_rendered",
+   "block_index": 121,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Psalm 118:23",
+   "status": "self_rendered",
+   "block_index": 131,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Matthew 21:22",
+   "status": "self_rendered",
+   "block_index": 149,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Matthew 21:22",
+   "status": "self_rendered",
+   "block_index": 153,
+   "chapter_order": 23
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 24
+  },
+  {
+   "reference": "2 Corinthians 7:1",
+   "status": "mined",
+   "block_index": 18,
+   "chapter_order": 24,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Psalm 62:5a",
+   "status": "mined",
+   "block_index": 51,
+   "chapter_order": 24,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Psalm 62:5b",
+   "status": "mined",
+   "block_index": 51,
+   "chapter_order": 24,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Psalm 68:31a",
+   "status": "mined",
+   "block_index": 53,
+   "chapter_order": 24,
+   "source_file": "amanda-smith-autobiography-teens.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "self_rendered",
+   "block_index": 59,
+   "chapter_order": 24
+  },
+  {
+   "reference": "Matthew 6:23b",
+   "status": "mined",
+   "block_index": 80,
+   "chapter_order": 24,
+   "source_file": "god-or-mammon.sw.json"
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 25,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Matthew 21:22",
+   "status": "self_rendered",
+   "block_index": 73,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Acts 9:36",
+   "status": "self_rendered",
+   "block_index": 42,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Genesis 18:14",
+   "status": "self_rendered",
+   "block_index": 78,
+   "chapter_order": 25
+  },
+  {
+   "reference": "Galatians 3:28b",
+   "status": "self_rendered",
+   "block_index": 31,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Habakkuk 3:2a",
+   "status": "mined",
+   "block_index": 34,
+   "chapter_order": 26,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 14:34a",
+   "status": "mined",
+   "block_index": 35,
+   "chapter_order": 26,
+   "source_file": "amanda-smith-autobiography-teens.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 14:34a",
+   "status": "self_rendered",
+   "block_index": 35,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Revelation 3:8a",
+   "status": "self_rendered",
+   "block_index": 40,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Numbers 23:10b",
+   "status": "self_rendered",
+   "block_index": 47,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Revelation 14:13b",
+   "status": "self_rendered",
+   "block_index": 49,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Isaiah 55:7a",
+   "status": "mined",
+   "block_index": 78,
+   "chapter_order": 26,
+   "source_file": "the-greatest-sentence-ever-written.sw.json"
+  },
+  {
+   "reference": "Psalm 126:6",
+   "status": "self_rendered",
+   "block_index": 95,
+   "chapter_order": 26
+  },
+  {
+   "reference": "1 Corinthians 15:14",
+   "status": "self_rendered",
+   "block_index": 100,
+   "chapter_order": 26
+  },
+  {
+   "reference": "Psalms 137:5-6",
+   "status": "self_rendered",
+   "block_index": 43,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Ephesians 5:14",
+   "status": "mined",
+   "block_index": 79,
+   "chapter_order": 27,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Acts 17:27",
+   "status": "self_rendered",
+   "block_index": 82,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Luke 5:10b",
+   "status": "self_rendered",
+   "block_index": 90,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Luke 4:10",
+   "status": "mined",
+   "block_index": 90,
+   "chapter_order": 27,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Mark 11:22",
+   "status": "mined",
+   "block_index": 100,
+   "chapter_order": 27,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Genesis 5:24b",
+   "status": "self_rendered",
+   "block_index": 128,
+   "chapter_order": 27
+  },
+  {
+   "reference": "Isaiah 37:3b",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 28
+  },
+  {
+   "reference": "John 5:35",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Zechariah 4:7",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Ezekiel 29:4",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Matthew 15:14",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Nehemiah 8:10",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Numbers 23:10b",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Psalms 116:13",
+   "status": "self_rendered",
+   "block_index": 24,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Psalms 19:13a",
+   "status": "self_rendered",
+   "block_index": 39,
+   "chapter_order": 28
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "block_index": 45,
+   "chapter_order": 28,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Habakkuk 3:2",
+   "status": "mined",
+   "block_index": 51,
+   "chapter_order": 28,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Psalms 103:14",
+   "status": "self_rendered",
+   "block_index": 61,
+   "chapter_order": 28
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 117,
+   "chapter_order": 28
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "block_index": 118,
+   "chapter_order": 28
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "block_index": 121,
+   "chapter_order": 28
+  },
+  {
+   "reference": "Psalm 35:18",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "block_index": 25,
+   "chapter_order": 29,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "1 Peter 1:7a",
+   "status": "self_rendered",
+   "block_index": 34,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Isaiah 49:5",
+   "status": "self_rendered",
+   "block_index": 41,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Psalm 90:1",
+   "status": "self_rendered",
+   "block_index": 53,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Acts 2:8",
+   "status": "mined",
+   "block_index": 56,
+   "chapter_order": 29,
+   "source_file": "samuel-ajayi-crowther-a-life-teens.sw.json"
+  },
+  {
+   "reference": "Deuteronomy 33:12a",
+   "status": "self_rendered",
+   "block_index": 57,
+   "chapter_order": 29
+  },
+  {
+   "reference": "John 14:6a",
+   "status": "mined",
+   "block_index": 71,
+   "chapter_order": 29,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Psalm 27:1a",
+   "status": "self_rendered",
+   "block_index": 72,
+   "chapter_order": 29
+  },
+  {
+   "reference": "Nahum 1:7a",
+   "status": "mined",
+   "block_index": 77,
+   "chapter_order": 29,
+   "source_file": "under-the-shepherds-care.sw.json"
+  },
+  {
+   "reference": "Psalm 118:17",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Psalm 118:17",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 30
+  },
+  {
+   "reference": "Isaiah 26:4",
+   "status": "mined",
+   "block_index": 20,
+   "chapter_order": 30,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "Psalm 68:31",
+   "status": "self_rendered",
+   "block_index": 57,
+   "chapter_order": 31
+  },
+  {
+   "reference": "1 Corinthians 14:34a",
+   "status": "mined",
+   "block_index": 61,
+   "chapter_order": 32,
+   "source_file": "amanda-smith-autobiography-teens.sw.json"
+  },
+  {
+   "reference": "Philippians 4:19a",
+   "status": "mined",
+   "block_index": 106,
+   "chapter_order": 33,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Luke 10:42",
+   "status": "self_rendered",
+   "block_index": 27,
+   "chapter_order": 33
+  },
+  {
+   "reference": "1 Corinthians 14:34",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 34
+  },
+  {
+   "reference": "John 15:16",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 34,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "John 15:16",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 34,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Romans 10:10b",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Revelation 3:8",
+   "status": "self_rendered",
+   "block_index": 83,
+   "chapter_order": 34
+  },
+  {
+   "reference": "John 14:14",
+   "status": "mined",
+   "block_index": 90,
+   "chapter_order": 34,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Psalm 51:13",
+   "status": "self_rendered",
+   "block_index": 133,
+   "chapter_order": 34
+  },
+  {
+   "reference": "Psalm 46:7",
+   "status": "self_rendered",
+   "block_index": 198,
+   "chapter_order": 34
+  },
+  {
+   "reference": "1 Kings 10:7b",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 37
+  },
+  {
+   "reference": "Acts 2:17",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 37
+  },
+  {
+   "reference": "Proverbs 8:17b",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 38
+  },
+  {
+   "reference": "1 John 1:7b",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 38,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Matthew 5:18",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 38
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 38,
+   "source_file": "a-retrospect-children.sw.json"
+  },
+  {
+   "reference": "John 14:16",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 38
+  },
+  {
+   "reference": "Matthew 16:23a",
+   "status": "mined",
+   "block_index": 14,
+   "chapter_order": 39,
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "Mark 2:11",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 40
+  },
+  {
+   "reference": "Exodus 20:17",
+   "status": "mined",
+   "block_index": 65,
+   "chapter_order": 40,
+   "source_file": "the-life-of-trust.sw.json"
+  },
+  {
+   "reference": "Matthew 22:37a",
+   "status": "mined",
+   "block_index": 65,
+   "chapter_order": 40,
+   "source_file": "excuses.sw.json"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "block_index": 119,
+   "chapter_order": 40,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "John 14:14",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 41,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Acts 8:29",
+   "status": "self_rendered",
+   "block_index": 30,
+   "chapter_order": 41
+  },
+  {
+   "reference": "Matt 7:6",
+   "status": "self_rendered",
+   "block_index": 49,
+   "chapter_order": 41
+  },
+  {
+   "reference": "Heb 12:14b",
+   "status": "self_rendered",
+   "block_index": 56,
+   "chapter_order": 41
+  }
+ ]
+}

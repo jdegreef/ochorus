@@ -11288,6 +11288,35 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"sw/amanda-smith-autobiography": {
+			"ground": "5c9a24bdddc4b58a9ae042bf31e12eff71b1cd63c40b6166a102676a1bb0f3b3",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[183, 327, 417, 403]
+				],
+				"subtitle": [
+					[159, 476, 441, 497],
+					[52, 497, 548, 518]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				276,
+				518
+			]
+		},
 		"sw/amanda-smith-autobiography-children": {
 			"ground": "05d364b0f318f4bc3f0db811825f62d89ee34ab5e54312d415eafb61479c4716",
 			"style": "revival",
