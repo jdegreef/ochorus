@@ -3,7 +3,7 @@
  "slug": "corrie-ten-boom-a-life-children",
  "language": "es",
  "job_issue": 5554,
- "pull_request": null,
+ "pull_request": 5571,
  "note": [
   "Every scripture line in this edition is self_rendered. The English retelling does not quote a Bible: each chapter's opening blockquote is a simplified paraphrase for 8–12 year olds, cited loosely (“— from Psalm 122”), and the body echoes a verse once (Enoch “walked with God”, Genesis 5:24, ch. 7). The Spanish renders those paraphrases in the same simple, child-friendly wording (ustedes plural, tú reader address, “ ” quotation marks and “— del Salmo N” / “— de Libro N” citations, as in the shipped es children's editions) rather than pasting the Reina-Valera text, which would break the edition's register; api.takeroot.bible was not used from this session.",
   "Copyright care carried over from the English: no quotations from Corrie ten Boom's published writings were added; the few sayings the English reports indirectly stay indirect, and “Lo mejor está por venir” / “Jesús es Vencedor” render the English's short family sayings. Translated in-session by the worker (12 chapters of ~360 words, not per-chapter subagents); tag sequence identical to English chapter by chapter, 3 study questions per chapter in the same order. AI-translated; awaiting native review."
