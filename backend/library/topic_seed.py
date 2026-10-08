@@ -651,6 +651,12 @@ TOPICS = [
             "at-the-back-of-the-north-wind",
             "the-practice-of-the-presence-of-god-children",
             "samuel-ajayi-crowther-a-life-children",
+            "mary-slessor-a-life-children",
+            "pandita-ramabai-a-life-children",
+            "john-hyde-a-life-children",
+            "corrie-ten-boom-a-life-children",
+            "c-s-lewis-a-life-children",
+            "elisabeth-elliot-a-life-children",
         ],
     ),
 ]
