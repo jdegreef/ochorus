@@ -1,0 +1,388 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "brother-lawrence"
+  ],
+  "slug": "the-practice-of-the-presence-of-god-children",
+  "language": "fr",
+  "title": "La Pratique de la présence de Dieu (Pour enfants)",
+  "subtitle": "",
+  "description": "La vraie histoire de Frère Laurent, un jeune serviteur maladroit devenu cuisinier dans une cuisine très animée, qui a appris à parler avec Dieu toute la journée, même au milieu des marmites et des casseroles. Cette édition pour enfants raconte sa vie et son enseignement tout simple en courts chapitres faits pour être lus à voix haute : un verset de la Bible, un moment de son histoire, une chose que cela veut dire pour toi, et une courte prière, avec des questions pour en parler ensemble.",
+  "qa": [
+   {
+    "question": "De quoi parle La Pratique de la présence de Dieu (Pour enfants) ?",
+    "answer": "C’est une version pour enfants d’un petit livre très aimé sur Frère Laurent. Elle raconte comment un jeune homme maladroit en est venu à aimer Dieu, a travaillé pendant des années dans une cuisine qu’il n’aimait pas, et a appris à parler avec Dieu tout au long de la journée : en cuisinant, en voyageant, en étant malade et en vieillissant."
+   },
+   {
+    "question": "Qui était Frère Laurent ?",
+    "answer": "Un Français qui a vécu il y a plus de trois cents ans. Il avait été valet de pied, un serviteur, et il se disait maladroit. Après que Dieu a touché son cœur à dix-huit ans, il est entré dans une communauté de Frères et il est devenu leur cuisinier. Des gens venaient le voir et lui écrivaient pour apprendre comment il restait si près de Dieu."
+   },
+   {
+    "question": "Comment chaque chapitre est-il construit ?",
+    "answer": "Chaque chapitre est court et fait pour être lu à voix haute. Il commence par un verset de la Bible, raconte un moment de l’histoire ou de l’enseignement de Frère Laurent, montre une chose simple que cela veut dire pour toi, et se termine par une courte prière. Trois questions suivent pour en parler ensemble."
+   },
+   {
+    "question": "À qui ce livre s’adresse-t-il ?",
+    "answer": "Aux enfants d’environ huit à douze ans, pour qu’un adulte le leur lise à voix haute ou qu’un enfant plus grand le lise tout seul. Le texte complet de La Pratique de la présence de Dieu, avec les entretiens et les lettres, existe aussi pour les lecteurs plus âgés."
+   },
+   {
+    "question": "Que veut dire « pratiquer la présence de Dieu » ?",
+    "answer": "Cela veut dire se souvenir que Dieu est toujours avec nous, et parler avec lui toute la journée, pas seulement pendant des moments de prière spéciaux. Frère Laurent le faisait avec de petites prières toutes simples dans son cœur pendant qu’il travaillait."
+   },
+   {
+    "question": "Faut-il vivre dans un monastère pour prier comme Frère Laurent ?",
+    "answer": "Non. Frère Laurent lui-même disait qu’on n’a pas besoin d’être à l’église pour être avec Dieu, et que tout le monde peut parler avec lui : à l’école, à la maison, pendant les repas ou au milieu d’une journée bien remplie."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Un récit d’Ochorus pour jeunes lecteurs, d’après La Pratique de la présence de Dieu de Frère Laurent, une œuvre du domaine public. La façon de raconter est la nôtre, libre à lire et à partager.",
+  "cover_url": "/covers/fr/the-practice-of-the-presence-of-god-children.svg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 136,
+  "is_published": true,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "fr"
+  ],
+  "order": 1,
+  "title": "Le jeune homme qui cassait tout",
+  "body_html": "<blockquote>« L’homme regarde ce qui frappe les yeux, mais le Seigneur regarde au cœur. » — d’après 1 Samuel 16</blockquote> <p>Il y a très longtemps, plus de trois cents ans avant ta naissance, vivait un homme que nous appelons aujourd’hui Frère Laurent. Avant que quelqu’un l’appelle « Frère », c’était un jeune serviteur.</p> <p>Il travaillait comme valet de pied pour un homme important, un trésorier qui s’appelait M. Fieubert. Le travail d’un valet de pied, c’était de servir son maître, de porter des choses, d’aller chercher des choses et de garder tout bien propre et bien rangé.</p> <p>Mais il y avait un problème. Laurent était grand, et il était maladroit. Il le disait lui-même. Il se décrivait comme « un gros lourdaud qui cassait tout ». Imagine-le en train de porter un plateau de belles tasses et de se cogner contre une porte. Patatras ! Imagine-le tendre la main vers un plat et renverser une cruche. Splash !</p> <p>La plupart des gens n’auraient jamais deviné que ce jeune homme maladroit serait un jour connu dans le monde entier. Ils n’auraient jamais deviné qu’on lirait encore son histoire des centaines d’années plus tard. Mais Dieu ne regardait pas ses mains maladroites. Dieu regardait son cœur.</p> <p>Et quelque chose allait bientôt arriver à ce cœur.</p> <p>Est-ce qu’il t’arrive de te sentir maladroit, ou pas très doué ? Peut-être que tu renverses ton verre, que tu laisses tomber le ballon ou que tu te trompes de réponse. Cela n’empêche pas Dieu de t’aimer ni de se servir de toi. Il regarde ton cœur.</p> <p><em>Mon Dieu, merci de ne pas m’aimer parce que je suis intelligent ou soigneux, mais parce que je suis à toi. S’il te plaît, prends soin de mon cœur. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quel travail Laurent faisait-il quand il était jeune ?",
+    "answer": "Il était valet de pied, un serviteur, chez un homme important qui s’appelait M. Fieubert, le trésorier."
+   },
+   {
+    "question": "Qu’est-ce que Laurent disait de lui-même ?",
+    "answer": "Il disait qu’il était « un gros lourdaud qui cassait tout », c’est-à-dire très maladroit."
+   },
+   {
+    "question": "T’es-tu déjà senti maladroit ou pas assez bien ? Qu’est-ce que Dieu regarde ?",
+    "answer": "L’idée du chapitre : Dieu ne regarde pas notre habileté à l’extérieur. Il regarde le cœur, et il peut se servir de n’importe qui."
+   }
+  ],
+  "body_text": "« L’homme regarde ce qui frappe les yeux, mais le Seigneur regarde au cœur. » — d’après 1 Samuel 16 Il y a très longtemps, plus de trois cents ans avant ta naissance, vivait un homme que nous appelons aujourd’hui Frère Laurent. Avant que quelqu’un l’appelle « Frère », c’était un jeune serviteur. Il travaillait comme valet de pied pour un homme important, un trésorier qui s’appelait M. Fieubert. Le travail d’un valet de pied, c’était de servir son maître, de porter des choses, d’aller chercher des choses et de garder tout bien propre et bien rangé. Mais il y avait un problème. Laurent était grand, et il était maladroit. Il le disait lui-même. Il se décrivait comme « un gros lourdaud qui cassait tout ». Imagine-le en train de porter un plateau de belles tasses et de se cogner contre une porte. Patatras ! Imagine-le tendre la main vers un plat et renverser une cruche. Splash ! La plupart des gens n’auraient jamais deviné que ce jeune homme maladroit serait un jour connu dans le monde entier. Ils n’auraient jamais deviné qu’on lirait encore son histoire des centaines d’années plus tard. Mais Dieu ne regardait pas ses mains maladroites. Dieu regardait son cœur. Et quelque chose allait bientôt arriver à ce cœur. Est-ce qu’il t’arrive de te sentir maladroit, ou pas très doué ? Peut-être que tu renverses ton verre, que tu laisses tomber le ballon ou que tu te trompes de réponse. Cela n’empêche pas Dieu de t’aimer ni de se servir de toi. Il regarde ton cœur. Mon Dieu, merci de ne pas m’aimer parce que je suis intelligent ou soigneux, mais parce que je suis à toi. S’il te plaît, prends soin de mon cœur. Amen.",
+  "word_count": 290
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "fr"
+  ],
+  "order": 2,
+  "title": "L’arbre en hiver",
+  "body_html": "<blockquote>« Depuis que Dieu a créé le monde, sa grande puissance se voit clairement dans les choses qu’il a faites. » — d’après Romains 1</blockquote> <p>Quand Laurent avait dix-huit ans, c’était l’hiver. Tout était froid et gris.</p> <p>Un jour, il s’est arrêté pour regarder un arbre. L’arbre avait perdu toutes ses feuilles. Ses branches étaient nues et brunes, comme des doigts tout maigres contre le ciel. Il avait l’air mort.</p> <p>Mais Laurent savait quelque chose sur les arbres. Il savait que bientôt, quand le printemps viendrait, de nouvelles feuilles vertes repousseraient sur ces branches nues. Ensuite, il y aurait des fleurs. Et après les fleurs, il y aurait des fruits.</p> <p>Pendant qu’il était là à réfléchir, une grande pensée a rempli son esprit. Qui fait revenir les feuilles ? Qui donne les fleurs et les fruits, année après année ? C’est Dieu ! Tout à coup, Laurent a vu combien Dieu est fort, et avec quel soin il veille sur tout ce qu’il a créé.</p> <p>Cet arbre nu a changé toute sa vie. Il disait que cette pensée ne l’avait jamais quitté. Elle lui a fait tant aimer Dieu que, plus de quarante ans plus tard, il n’arrivait toujours pas à savoir si son amour avait grandi, parce qu’il avait été si grand dès le début.</p> <p>Dieu a créé tout ce qui t’entoure : les arbres, les oiseaux, la pluie et les étoiles. La prochaine fois que tu regarderas un arbre, souviens-toi de Laurent. Le même Dieu qui fait revenir les feuilles prend soin de toi.</p> <p><em>Mon Dieu, merci pour les arbres et pour tout ce que tu as créé. Aide-moi à voir combien tu es grand et bon. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-ce que Laurent a vu quand il avait dix-huit ans ?",
+    "answer": "En hiver, il a vu un arbre sans feuilles, et il a pensé que ses feuilles, ses fleurs et ses fruits allaient revenir."
+   },
+   {
+    "question": "Qu’est-ce que l’arbre nu lui a appris sur Dieu ?",
+    "answer": "Il lui a montré la grande puissance de Dieu et avec quelle fidélité Dieu veille sur tout ce qu’il a créé. Cela lui a fait aimer Dieu pour le reste de sa vie."
+   },
+   {
+    "question": "Qu’est-ce que tu pourrais regarder dehors cette semaine qui te fait penser à Dieu ?",
+    "answer": "L’idée du chapitre : tout ce que Dieu a créé peut nous rappeler combien il est fort et plein de soin, comme un seul arbre nu l’a fait pour Laurent."
+   }
+  ],
+  "body_text": "« Depuis que Dieu a créé le monde, sa grande puissance se voit clairement dans les choses qu’il a faites. » — d’après Romains 1 Quand Laurent avait dix-huit ans, c’était l’hiver. Tout était froid et gris. Un jour, il s’est arrêté pour regarder un arbre. L’arbre avait perdu toutes ses feuilles. Ses branches étaient nues et brunes, comme des doigts tout maigres contre le ciel. Il avait l’air mort. Mais Laurent savait quelque chose sur les arbres. Il savait que bientôt, quand le printemps viendrait, de nouvelles feuilles vertes repousseraient sur ces branches nues. Ensuite, il y aurait des fleurs. Et après les fleurs, il y aurait des fruits. Pendant qu’il était là à réfléchir, une grande pensée a rempli son esprit. Qui fait revenir les feuilles ? Qui donne les fleurs et les fruits, année après année ? C’est Dieu ! Tout à coup, Laurent a vu combien Dieu est fort, et avec quel soin il veille sur tout ce qu’il a créé. Cet arbre nu a changé toute sa vie. Il disait que cette pensée ne l’avait jamais quitté. Elle lui a fait tant aimer Dieu que, plus de quarante ans plus tard, il n’arrivait toujours pas à savoir si son amour avait grandi, parce qu’il avait été si grand dès le début. Dieu a créé tout ce qui t’entoure : les arbres, les oiseaux, la pluie et les étoiles. La prochaine fois que tu regarderas un arbre, souviens-toi de Laurent. Le même Dieu qui fait revenir les feuilles prend soin de toi. Mon Dieu, merci pour les arbres et pour tout ce que tu as créé. Aide-moi à voir combien tu es grand et bon. Amen.",
+  "word_count": 280
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "fr"
+  ],
+  "order": 3,
+  "title": "Une heureuse surprise",
+  "body_html": "<blockquote>« Tu me remplis de joie quand je suis avec toi. » — d’après Psaume 16</blockquote> <p>Après avoir vu l’arbre, Laurent a voulu donner toute sa vie à Dieu. Alors il a demandé à entrer dans un monastère. Un monastère, c’était une grande maison où des hommes vivaient ensemble pour prier et travailler. Les hommes qui vivaient là s’appelaient des « Frères », et c’est comme cela qu’il est devenu Frère Laurent.</p> <p>Mais Laurent avait une drôle de raison pour y aller. Il pensait qu’au monastère, il se ferait gronder parce qu’il était maladroit. Il s’attendait à être réprimandé pour chaque erreur qu’il ferait. Il était prêt à abandonner toutes les bonnes choses de la vie pour Dieu, même si cela le rendait malheureux.</p> <p>Et puis Dieu l’a surpris.</p> <p>Frère Laurent disait que Dieu l’avait « trompé », mais de la plus belle des façons ! Au lieu d’être malheureux, il n’a trouvé là que du bonheur. Il s’était préparé à une vie dure et triste. Au lieu de cela, Dieu l’a rempli de joie.</p> <p>Frère Laurent a appris que suivre Dieu, ce n’est pas être malheureux. Être près de Dieu, c’est le plus heureux de tous les endroits.</p> <p>Certaines personnes pensent qu’aimer Dieu veut dire renoncer à tout ce qui est amusant. Mais Dieu n’est pas un roi grincheux. Il est bon, et plus nous nous approchons de lui, plus il nous donne de joie.</p> <p><em>Mon Dieu, merci parce qu’être près de toi, c’est le meilleur et le plus heureux des endroits. Remplis-moi de ta joie. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi Frère Laurent pensait-il qu’il serait malheureux au monastère ?",
+    "answer": "Il pensait qu’il serait puni pour sa maladresse et ses erreurs, et qu’il allait renoncer à tous les plaisirs de la vie."
+   },
+   {
+    "question": "Comment Dieu l’a-t-il surpris ?",
+    "answer": "Au lieu d’être malheureux, Frère Laurent n’a trouvé là que du bonheur. Il disait en plaisantant que Dieu l’avait « trompé »."
+   },
+   {
+    "question": "Penses-tu que suivre Dieu rend les gens heureux ou tristes ? Pourquoi ?",
+    "answer": "L’idée du chapitre : Dieu est bon, pas grincheux. S’approcher de lui apporte une vraie joie, comme Frère Laurent l’a découvert."
+   }
+  ],
+  "body_text": "« Tu me remplis de joie quand je suis avec toi. » — d’après Psaume 16 Après avoir vu l’arbre, Laurent a voulu donner toute sa vie à Dieu. Alors il a demandé à entrer dans un monastère. Un monastère, c’était une grande maison où des hommes vivaient ensemble pour prier et travailler. Les hommes qui vivaient là s’appelaient des « Frères », et c’est comme cela qu’il est devenu Frère Laurent. Mais Laurent avait une drôle de raison pour y aller. Il pensait qu’au monastère, il se ferait gronder parce qu’il était maladroit. Il s’attendait à être réprimandé pour chaque erreur qu’il ferait. Il était prêt à abandonner toutes les bonnes choses de la vie pour Dieu, même si cela le rendait malheureux. Et puis Dieu l’a surpris. Frère Laurent disait que Dieu l’avait « trompé », mais de la plus belle des façons ! Au lieu d’être malheureux, il n’a trouvé là que du bonheur. Il s’était préparé à une vie dure et triste. Au lieu de cela, Dieu l’a rempli de joie. Frère Laurent a appris que suivre Dieu, ce n’est pas être malheureux. Être près de Dieu, c’est le plus heureux de tous les endroits. Certaines personnes pensent qu’aimer Dieu veut dire renoncer à tout ce qui est amusant. Mais Dieu n’est pas un roi grincheux. Il est bon, et plus nous nous approchons de lui, plus il nous donne de joie. Mon Dieu, merci parce qu’être près de toi, c’est le meilleur et le plus heureux des endroits. Remplis-moi de ta joie. Amen.",
+  "word_count": 258
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "fr"
+  ],
+  "order": 4,
+  "title": "Trop de livres",
+  "body_html": "<blockquote>« Tu aimeras le Seigneur ton Dieu de tout ton cœur, de toute ton âme et de toute ta pensée. » — d’après Matthieu 22</blockquote> <p>Frère Laurent voulait savoir comment être près de Dieu. Alors il a lu beaucoup de livres sur ce sujet. Mais chaque livre disait quelque chose de différent. Fais ceci ! Non, fais cela ! Prie de cette façon ! Non, de cette façon-là ! Au lieu de l’aider, toutes ces idées différentes l’embrouillaient.</p> <p>Alors il a décidé de faire simple. Il s’est donné tout entier à Dieu, et il a demandé à Dieu d’enlever son péché. Ensuite, il s’est mis à vivre comme s’il n’y avait que deux personnes dans le monde entier : Dieu et lui.</p> <p>Il essayait de penser à Dieu autant qu’il le pouvait, toute la journée. Certains jours, il pensait à Dieu comme à un juge, et il regrettait le mal qu’il avait fait. D’autres jours, il pensait à Dieu comme à son Père plein d’amour, qui habitait tout au fond de son cœur.</p> <p>Ce n’était pas facile. Ses pensées partaient sans arrêt ailleurs. Et pendant des années, il s’est inquiété de ne pas aimer Dieu autant qu’il le devrait, et il repensait sans cesse au mal qu’il avait fait. Il tombait souvent, et il se relevait. Mais il continuait à faire confiance à Dieu.</p> <p>Puis un jour, tout d’un coup, une paix profonde et tranquille a rempli son cœur, et elle y est restée. À partir de ce moment-là, il a marché avec Dieu tout simplement, avec confiance et avec amour.</p> <p>Aimer Dieu n’a pas besoin d’être compliqué. Tu n’as pas besoin de connaître plein de règles savantes. Tu peux commencer aujourd’hui, simplement en te souvenant que Dieu est avec toi et en lui disant que tu l’aimes.</p> <p><em>Mon Dieu, je veux t’aimer de tout mon cœur. Aide-moi à me souvenir que tu es avec moi, aujourd’hui et tous les jours. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi tous ces livres ont-ils embrouillé Frère Laurent ?",
+    "answer": "Chaque livre donnait une méthode différente pour s’approcher de Dieu, et toutes ces idées différentes le mélangeaient au lieu de l’aider."
+   },
+   {
+    "question": "Quelle chose simple a-t-il décidé de faire à la place ?",
+    "answer": "Il s’est donné tout entier à Dieu et il a vécu comme s’il n’y avait que Dieu et lui dans le monde, en pensant à Dieu aussi souvent qu’il le pouvait."
+   },
+   {
+    "question": "À quel moment pourrais-tu te souvenir aujourd’hui que Dieu est avec toi ?",
+    "answer": "L’idée du chapitre : aimer Dieu n’a pas besoin d’être compliqué. Nous pouvons simplement nous souvenir qu’il est avec nous et lui dire que nous l’aimons."
+   }
+  ],
+  "body_text": "« Tu aimeras le Seigneur ton Dieu de tout ton cœur, de toute ton âme et de toute ta pensée. » — d’après Matthieu 22 Frère Laurent voulait savoir comment être près de Dieu. Alors il a lu beaucoup de livres sur ce sujet. Mais chaque livre disait quelque chose de différent. Fais ceci ! Non, fais cela ! Prie de cette façon ! Non, de cette façon-là ! Au lieu de l’aider, toutes ces idées différentes l’embrouillaient. Alors il a décidé de faire simple. Il s’est donné tout entier à Dieu, et il a demandé à Dieu d’enlever son péché. Ensuite, il s’est mis à vivre comme s’il n’y avait que deux personnes dans le monde entier : Dieu et lui. Il essayait de penser à Dieu autant qu’il le pouvait, toute la journée. Certains jours, il pensait à Dieu comme à un juge, et il regrettait le mal qu’il avait fait. D’autres jours, il pensait à Dieu comme à son Père plein d’amour, qui habitait tout au fond de son cœur. Ce n’était pas facile. Ses pensées partaient sans arrêt ailleurs. Et pendant des années, il s’est inquiété de ne pas aimer Dieu autant qu’il le devrait, et il repensait sans cesse au mal qu’il avait fait. Il tombait souvent, et il se relevait. Mais il continuait à faire confiance à Dieu. Puis un jour, tout d’un coup, une paix profonde et tranquille a rempli son cœur, et elle y est restée. À partir de ce moment-là, il a marché avec Dieu tout simplement, avec confiance et avec amour. Aimer Dieu n’a pas besoin d’être compliqué. Tu n’as pas besoin de connaître plein de règles savantes. Tu peux commencer aujourd’hui, simplement en te souvenant que Dieu est avec toi et en lui disant que tu l’aimes. Mon Dieu, je veux t’aimer de tout mon cœur. Aide-moi à me souvenir que tu es avec moi, aujourd’hui et tous les jours. Amen.",
+  "word_count": 322
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "fr"
+  ],
+  "order": 5,
+  "title": "La cuisine qu’il n’aimait pas",
+  "body_html": "<blockquote>« Tout ce que vous faites, faites-le de tout votre cœur, comme pour le Seigneur. » — d’après Colossiens 3</blockquote> <p>Au monastère, chacun avait un travail. Et sais-tu quel travail on a donné au maladroit Frère Laurent ? On l’a nommé cuisinier !</p> <p>Frère Laurent n’aimait pas le travail de la cuisine. Il disait que cela allait contre tout ce qu’il aimait naturellement. Imagine la grande cuisine : des feux brûlants, de lourdes marmites en fer, de la vapeur partout, et beaucoup de Frères affamés qui attendent leur dîner.</p> <p>Mais Frère Laurent a trouvé un secret. Avant de commencer son travail, il réfléchissait à ce qu’il fallait faire, et quand, et comment. Puis il parlait à Dieu. Il disait à peu près ceci : « Mon Dieu, tu es ici avec moi. Maintenant, je dois penser à tout ce travail. S’il te plaît, aide-moi à rester près de toi pendant que je le fais. Aide-moi, et reçois tout mon travail comme un cadeau pour toi. »</p> <p>Ensuite, pendant qu’il cuisinait, il continuait à parler à Dieu tout doucement dans son cœur. Il demandait à Dieu de l’aider à bien faire son travail, et il faisait tout pour l’amour de Dieu.</p> <p>Et voici la surprise. Le travail de cuisine qu’il n’aimait pas est devenu facile ! Il y a travaillé pendant quinze ans, et il a découvert que le faire pour Dieu changeait tout.</p> <p>Y a-t-il un travail que tu n’aimes pas, comme ranger ta chambre, faire tes devoirs ou faire la vaisselle ? Essaie de le faire pour Dieu. Demande-lui de t’aider, et fais-le comme un cadeau d’amour pour lui.</p> <p><em>Mon Dieu, quand j’ai un travail que je n’aime pas, aide-moi à le faire pour toi, et à me souvenir que tu es juste à côté de moi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi était-ce surprenant que Frère Laurent devienne cuisinier ?",
+    "answer": "Il n’aimait pas du tout le travail de la cuisine. Cela allait contre ce qu’il aimait naturellement."
+   },
+   {
+    "question": "Quel était son secret pour faire ce travail ?",
+    "answer": "Il demandait à Dieu de l’aider et il faisait tout pour l’amour de Dieu, en parlant à Dieu pendant qu’il travaillait. Alors le travail est devenu facile."
+   },
+   {
+    "question": "Quel travail trouves-tu difficile à faire ? Comment pourrais-tu le faire pour Dieu ?",
+    "answer": "L’idée du chapitre : n’importe quel travail, même un travail que nous n’aimons pas, peut devenir un cadeau d’amour pour Dieu quand nous lui demandons son aide et que nous le faisons pour lui."
+   }
+  ],
+  "body_text": "« Tout ce que vous faites, faites-le de tout votre cœur, comme pour le Seigneur. » — d’après Colossiens 3 Au monastère, chacun avait un travail. Et sais-tu quel travail on a donné au maladroit Frère Laurent ? On l’a nommé cuisinier ! Frère Laurent n’aimait pas le travail de la cuisine. Il disait que cela allait contre tout ce qu’il aimait naturellement. Imagine la grande cuisine : des feux brûlants, de lourdes marmites en fer, de la vapeur partout, et beaucoup de Frères affamés qui attendent leur dîner. Mais Frère Laurent a trouvé un secret. Avant de commencer son travail, il réfléchissait à ce qu’il fallait faire, et quand, et comment. Puis il parlait à Dieu. Il disait à peu près ceci : « Mon Dieu, tu es ici avec moi. Maintenant, je dois penser à tout ce travail. S’il te plaît, aide-moi à rester près de toi pendant que je le fais. Aide-moi, et reçois tout mon travail comme un cadeau pour toi. » Ensuite, pendant qu’il cuisinait, il continuait à parler à Dieu tout doucement dans son cœur. Il demandait à Dieu de l’aider à bien faire son travail, et il faisait tout pour l’amour de Dieu. Et voici la surprise. Le travail de cuisine qu’il n’aimait pas est devenu facile ! Il y a travaillé pendant quinze ans, et il a découvert que le faire pour Dieu changeait tout. Y a-t-il un travail que tu n’aimes pas, comme ranger ta chambre, faire tes devoirs ou faire la vaisselle ? Essaie de le faire pour Dieu. Demande-lui de t’aider, et fais-le comme un cadeau d’amour pour lui. Mon Dieu, quand j’ai un travail que je n’aime pas, aide-moi à le faire pour toi, et à me souvenir que tu es juste à côté de moi. Amen.",
+  "word_count": 299
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "fr"
+  ],
+  "order": 6,
+  "title": "Un brin de paille par terre",
+  "body_html": "<blockquote>« Soit que vous mangiez, soit que vous buviez, quoi que vous fassiez, faites tout pour la gloire de Dieu. » — d’après 1 Corinthiens 10</blockquote> <p>Certaines personnes pensent que seules les choses grandes et importantes comptent pour Dieu, comme prêcher devant des foules ou construire de grandes églises. Frère Laurent ne le pensait pas.</p> <p>Il disait qu’il était content quand il pouvait ramasser un seul brin de paille par terre pour l’amour de Dieu. Un seul petit brin de paille ! Ce n’est presque rien du tout. Mais s’il le faisait parce qu’il aimait Dieu, c’était un cadeau pour Dieu.</p> <p>Frère Laurent disait que Dieu ne regarde pas la grandeur du travail. Il regarde avec combien d’amour on le fait. Un tout petit travail fait avec amour est précieux pour Dieu.</p> <p>Alors il disait aux gens de ne jamais se lasser de faire de petites choses pour l’amour de Dieu. Il disait que devenir plus semblable à Dieu, ce n’est pas faire des travaux différents. C’est faire les mêmes travaux de tous les jours que nous faisons déjà, mais les faire pour Dieu au lieu de les faire seulement pour nous-mêmes.</p> <p>Cela voulait dire qu’on pouvait remuer une marmite pour Dieu. On pouvait balayer le sol pour Dieu. On pouvait même ramasser un brin de paille pour Dieu.</p> <p>Tu n’as pas besoin d’attendre d’être grand pour faire quelque chose pour Dieu. Tu peux le faire aujourd’hui : quand tu prêtes un jouet, quand tu aides à mettre la table ou quand tu ramasses quelque chose que quelqu’un a fait tomber, fais-le pour lui.</p> <p><em>Mon Dieu, aide-moi aujourd’hui à faire de petites choses parce que je t’aime. Merci parce que même les petites choses comptent pour toi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quelle toute petite chose Frère Laurent était-il content de faire pour Dieu ?",
+    "answer": "Il était content de ramasser un seul brin de paille par terre pour l’amour de Dieu."
+   },
+   {
+    "question": "Qu’est-ce que Dieu regarde, d’après Frère Laurent ?",
+    "answer": "Pas la grandeur du travail, mais avec combien d’amour on le fait."
+   },
+   {
+    "question": "Quelle petite chose pourrais-tu faire pour Dieu aujourd’hui ?",
+    "answer": "L’idée du chapitre : les petites choses de tous les jours faites par amour pour Dieu sont précieuses pour lui. Nous n’avons pas besoin d’attendre pour faire quelque chose de grand."
+   }
+  ],
+  "body_text": "« Soit que vous mangiez, soit que vous buviez, quoi que vous fassiez, faites tout pour la gloire de Dieu. » — d’après 1 Corinthiens 10 Certaines personnes pensent que seules les choses grandes et importantes comptent pour Dieu, comme prêcher devant des foules ou construire de grandes églises. Frère Laurent ne le pensait pas. Il disait qu’il était content quand il pouvait ramasser un seul brin de paille par terre pour l’amour de Dieu. Un seul petit brin de paille ! Ce n’est presque rien du tout. Mais s’il le faisait parce qu’il aimait Dieu, c’était un cadeau pour Dieu. Frère Laurent disait que Dieu ne regarde pas la grandeur du travail. Il regarde avec combien d’amour on le fait. Un tout petit travail fait avec amour est précieux pour Dieu. Alors il disait aux gens de ne jamais se lasser de faire de petites choses pour l’amour de Dieu. Il disait que devenir plus semblable à Dieu, ce n’est pas faire des travaux différents. C’est faire les mêmes travaux de tous les jours que nous faisons déjà, mais les faire pour Dieu au lieu de les faire seulement pour nous-mêmes. Cela voulait dire qu’on pouvait remuer une marmite pour Dieu. On pouvait balayer le sol pour Dieu. On pouvait même ramasser un brin de paille pour Dieu. Tu n’as pas besoin d’attendre d’être grand pour faire quelque chose pour Dieu. Tu peux le faire aujourd’hui : quand tu prêtes un jouet, quand tu aides à mettre la table ou quand tu ramasses quelque chose que quelqu’un a fait tomber, fais-le pour lui. Mon Dieu, aide-moi aujourd’hui à faire de petites choses parce que je t’aime. Merci parce que même les petites choses comptent pour toi. Amen.",
+  "word_count": 288
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "fr"
+  ],
+  "order": 7,
+  "title": "Des casseroles et des prières",
+  "body_html": "<blockquote>« Soyez toujours joyeux. Priez sans cesse. Rendez grâces en toutes choses. » — d’après 1 Thessaloniciens 5</blockquote> <p>Peux-tu imaginer la cuisine du monastère à l’heure du dîner ? Les marmites qui bouillonnent. Les casseroles qui s’entrechoquent. Les cuillères qui tapent. Plein de gens qui courent dans tous les sens, et plusieurs qui réclament des choses différentes en même temps.</p> <p>La plupart des gens seraient tout affolés dans une cuisine pareille. Mais les gens remarquaient quelque chose chez Frère Laurent. Même dans les moments les plus chargés et les plus bruyants, il restait calme. Il n’était jamais pressé, et il n’était jamais paresseux. Il faisait chaque chose au bon moment, paisiblement et tranquillement.</p> <p>Comment faisait-il ? Il priait tout le temps, pas avec de grands mots à voix haute, mais dans son cœur. Il disait que le temps où il travaillait n’était pas différent du temps où il priait.</p> <p>Avec ses propres mots, dits simplement : « Dans le bruit et le tintamarre de ma cuisine, pendant que plusieurs personnes me demandent des choses différentes en même temps, je possède Dieu aussi paisiblement que si j’étais à genoux en prière. »</p> <p>Pour Frère Laurent, la prière n’était pas seulement pour des moments spéciaux. Il pouvait être près de Dieu n’importe où, même les mains dans la vaisselle.</p> <p>Tu peux parler à Dieu à l’école, en voiture, dans la cour de récréation ou pendant que tu te brosses les dents. Tu n’as pas besoin d’attendre d’être dans un endroit calme. Il est avec toi dans les moments chargés et bruyants aussi.</p> <p><em>Mon Dieu, merci parce que je peux te parler n’importe où. Aide-moi à rester près de toi quand tout est agité et bruyant. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Comment était la cuisine aux moments les plus chargés ?",
+    "answer": "Elle était bruyante, avec les marmites et les casseroles qui s’entrechoquaient et plusieurs personnes qui réclamaient des choses différentes en même temps."
+   },
+   {
+    "question": "Comment Frère Laurent restait-il calme ?",
+    "answer": "Il continuait à prier dans son cœur pendant qu’il travaillait. Il disait que son temps de travail n’était pas différent de son temps de prière."
+   },
+   {
+    "question": "Quel est le moment le plus chargé et le plus bruyant de ta journée ? Pourrais-tu parler à Dieu à ce moment-là ?",
+    "answer": "L’idée du chapitre : la prière n’est pas seulement pour les moments calmes et spéciaux. Nous pouvons rester près de Dieu au milieu des journées chargées et bruyantes."
+   }
+  ],
+  "body_text": "« Soyez toujours joyeux. Priez sans cesse. Rendez grâces en toutes choses. » — d’après 1 Thessaloniciens 5 Peux-tu imaginer la cuisine du monastère à l’heure du dîner ? Les marmites qui bouillonnent. Les casseroles qui s’entrechoquent. Les cuillères qui tapent. Plein de gens qui courent dans tous les sens, et plusieurs qui réclament des choses différentes en même temps. La plupart des gens seraient tout affolés dans une cuisine pareille. Mais les gens remarquaient quelque chose chez Frère Laurent. Même dans les moments les plus chargés et les plus bruyants, il restait calme. Il n’était jamais pressé, et il n’était jamais paresseux. Il faisait chaque chose au bon moment, paisiblement et tranquillement. Comment faisait-il ? Il priait tout le temps, pas avec de grands mots à voix haute, mais dans son cœur. Il disait que le temps où il travaillait n’était pas différent du temps où il priait. Avec ses propres mots, dits simplement : « Dans le bruit et le tintamarre de ma cuisine, pendant que plusieurs personnes me demandent des choses différentes en même temps, je possède Dieu aussi paisiblement que si j’étais à genoux en prière. » Pour Frère Laurent, la prière n’était pas seulement pour des moments spéciaux. Il pouvait être près de Dieu n’importe où, même les mains dans la vaisselle. Tu peux parler à Dieu à l’école, en voiture, dans la cour de récréation ou pendant que tu te brosses les dents. Tu n’as pas besoin d’attendre d’être dans un endroit calme. Il est avec toi dans les moments chargés et bruyants aussi. Mon Dieu, merci parce que je peux te parler n’importe où. Aide-moi à rester près de toi quand tout est agité et bruyant. Amen.",
+  "word_count": 284
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "fr"
+  ],
+  "order": 8,
+  "title": "Parler avec Dieu comme avec un ami",
+  "body_html": "<blockquote>« Approchez-vous de Dieu, et il s’approchera de vous. » — d’après Jacques 4</blockquote> <p>Frère Laurent écrivait des lettres à ses amis, et dans ces lettres, il leur expliquait souvent comment parler avec Dieu. Il disait que c’était beaucoup plus simple que ce que les gens pensent.</p> <p>« Tu n’as pas besoin de crier, écrivait-il. Dieu est plus près de nous que nous ne le pensons. » Tu n’as pas besoin non plus d’être à l’église pour lui parler. Il disait que tu peux faire de ton cœur une petite chambre de prière, et t’y glisser pour parler avec Dieu à n’importe quel moment.</p> <p>Ses prières étaient souvent très courtes. Parfois, il disait simplement : « Mon Dieu, me voici tout à toi. Seigneur, rends mon cœur semblable au tien. » Parfois, il pensait seulement à Dieu avec amour, sans aucun mot. Il a dit à un ami d’élever son cœur vers Dieu même pendant les repas, ou quand il était avec d’autres personnes. Il disait que même la plus petite pensée pour Dieu lui fait plaisir.</p> <p>Il a aussi donné à ses amis une image à retenir. Si un ami venait te rendre visite, tu ne partirais pas en le laissant assis tout seul. Ce serait impoli ! Eh bien, Dieu est toujours avec nous. Alors ne le laisse pas tout seul. Pense souvent à lui.</p> <p>C’est tout ce que veut dire pratiquer la présence de Dieu : se souvenir qu’il est là, et parler avec lui.</p> <p>Tu peux parler à Dieu comme tu parles à un ami. Dis-lui merci. Dis-lui que tu es inquiet. Demande-lui de l’aide. Ta prière peut être aussi courte qu’une seule phrase, et il aime l’entendre.</p> <p><em>Mon Dieu, merci parce que tu es toujours avec moi. Aide-moi à ne pas te laisser tout seul, mais à parler avec toi tout au long de la journée. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Où Frère Laurent disait-il qu’on pouvait aller pour parler avec Dieu ?",
+    "answer": "N’importe où. Il disait que tu peux faire de ton cœur une petite chambre de prière et y parler avec Dieu, et que tu n’as pas besoin de crier, parce que Dieu est tout près."
+   },
+   {
+    "question": "Quelle image a-t-il utilisée à propos d’un ami qui vient en visite ?",
+    "answer": "Ce serait impoli de laisser tout seul un ami venu te rendre visite, alors nous ne devrions pas laisser Dieu tout seul non plus. Nous devrions penser souvent à lui."
+   },
+   {
+    "question": "Quelle courte prière pourrais-tu dire à Dieu aujourd’hui ?",
+    "answer": "L’idée du chapitre : parler avec Dieu peut être simple et court, comme parler à un ami qui est toujours avec nous."
+   }
+  ],
+  "body_text": "« Approchez-vous de Dieu, et il s’approchera de vous. » — d’après Jacques 4 Frère Laurent écrivait des lettres à ses amis, et dans ces lettres, il leur expliquait souvent comment parler avec Dieu. Il disait que c’était beaucoup plus simple que ce que les gens pensent. « Tu n’as pas besoin de crier, écrivait-il. Dieu est plus près de nous que nous ne le pensons. » Tu n’as pas besoin non plus d’être à l’église pour lui parler. Il disait que tu peux faire de ton cœur une petite chambre de prière, et t’y glisser pour parler avec Dieu à n’importe quel moment. Ses prières étaient souvent très courtes. Parfois, il disait simplement : « Mon Dieu, me voici tout à toi. Seigneur, rends mon cœur semblable au tien. » Parfois, il pensait seulement à Dieu avec amour, sans aucun mot. Il a dit à un ami d’élever son cœur vers Dieu même pendant les repas, ou quand il était avec d’autres personnes. Il disait que même la plus petite pensée pour Dieu lui fait plaisir. Il a aussi donné à ses amis une image à retenir. Si un ami venait te rendre visite, tu ne partirais pas en le laissant assis tout seul. Ce serait impoli ! Eh bien, Dieu est toujours avec nous. Alors ne le laisse pas tout seul. Pense souvent à lui. C’est tout ce que veut dire pratiquer la présence de Dieu : se souvenir qu’il est là, et parler avec lui. Tu peux parler à Dieu comme tu parles à un ami. Dis-lui merci. Dis-lui que tu es inquiet. Demande-lui de l’aide. Ta prière peut être aussi courte qu’une seule phrase, et il aime l’entendre. Mon Dieu, merci parce que tu es toujours avec moi. Aide-moi à ne pas te laisser tout seul, mais à parler avec toi tout au long de la journée. Amen.",
+  "word_count": 312
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "fr"
+  ],
+  "order": 9,
+  "title": "Le bateau plein de tonneaux",
+  "body_html": "<blockquote>« Donnez-lui tous vos soucis, car il prend soin de vous. » — d’après 1 Pierre 5</blockquote> <p>Un jour, les responsables du monastère ont donné à Frère Laurent un travail dont il ne voulait vraiment pas. Ils l’ont envoyé faire un long voyage dans une région appelée la Bourgogne, pour acheter le vin dont les Frères auraient besoin.</p> <p>Frère Laurent ne se trouvait pas du tout doué pour acheter et vendre. Et il y avait un autre problème. Il boitait d’une jambe, alors il avait du mal à marcher. Sur le bateau, il pouvait à peine marcher. La seule façon de se déplacer, c’était de se rouler par-dessus les tonneaux de vin !</p> <p>Peux-tu l’imaginer ? Un grand homme avec une mauvaise jambe, qui passe en roulant par-dessus un tonneau après l’autre, boum, boum, boum.</p> <p>Mais Frère Laurent ne s’est pas inquiété. Il a dit à Dieu que c’étaient ses affaires à lui, Dieu, qu’il était en train de faire. Il a fait confiance à Dieu pour s’en occuper. Et après, il a vu que tout le travail s’était très bien passé.</p> <p>L’année d’avant, on l’avait envoyé faire le même genre de voyage dans une autre région, appelée l’Auvergne. Il n’arrivait même pas à expliquer comment, mais cette fois-là aussi, tout s’était bien passé.</p> <p>Parfois, nous devons faire des choses qui nous semblent trop difficiles, comme un contrôle, une nouvelle école ou quelque chose qui fait peur. Tu peux faire comme Frère Laurent : en parler à Dieu, et lui faire confiance pour t’aider.</p> <p><em>Mon Dieu, quand je dois faire quelque chose de difficile, aide-moi à te donner mes soucis et à te faire confiance pour prendre soin de moi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi le voyage en Bourgogne était-il difficile pour Frère Laurent ?",
+    "answer": "Il n’était pas doué pour les affaires, et il boitait, alors sur le bateau il ne pouvait se déplacer qu’en se roulant par-dessus les tonneaux de vin."
+   },
+   {
+    "question": "Qu’a-t-il fait au lieu de s’inquiéter ?",
+    "answer": "Il a dit à Dieu que c’étaient les affaires de Dieu qu’il faisait, et il les lui a confiées. Et le travail s’est très bien passé."
+   },
+   {
+    "question": "Quelle chose difficile dois-tu bientôt faire ? Comment pourrais-tu la donner à Dieu ?",
+    "answer": "L’idée du chapitre : quand un travail nous semble trop difficile, nous pouvons donner nos soucis à Dieu et lui faire confiance pour nous aider."
+   }
+  ],
+  "body_text": "« Donnez-lui tous vos soucis, car il prend soin de vous. » — d’après 1 Pierre 5 Un jour, les responsables du monastère ont donné à Frère Laurent un travail dont il ne voulait vraiment pas. Ils l’ont envoyé faire un long voyage dans une région appelée la Bourgogne, pour acheter le vin dont les Frères auraient besoin. Frère Laurent ne se trouvait pas du tout doué pour acheter et vendre. Et il y avait un autre problème. Il boitait d’une jambe, alors il avait du mal à marcher. Sur le bateau, il pouvait à peine marcher. La seule façon de se déplacer, c’était de se rouler par-dessus les tonneaux de vin ! Peux-tu l’imaginer ? Un grand homme avec une mauvaise jambe, qui passe en roulant par-dessus un tonneau après l’autre, boum, boum, boum. Mais Frère Laurent ne s’est pas inquiété. Il a dit à Dieu que c’étaient ses affaires à lui, Dieu, qu’il était en train de faire. Il a fait confiance à Dieu pour s’en occuper. Et après, il a vu que tout le travail s’était très bien passé. L’année d’avant, on l’avait envoyé faire le même genre de voyage dans une autre région, appelée l’Auvergne. Il n’arrivait même pas à expliquer comment, mais cette fois-là aussi, tout s’était bien passé. Parfois, nous devons faire des choses qui nous semblent trop difficiles, comme un contrôle, une nouvelle école ou quelque chose qui fait peur. Tu peux faire comme Frère Laurent : en parler à Dieu, et lui faire confiance pour t’aider. Mon Dieu, quand je dois faire quelque chose de difficile, aide-moi à te donner mes soucis et à te faire confiance pour prendre soin de moi. Amen.",
+  "word_count": 281
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "fr"
+  ],
+  "order": 10,
+  "title": "Quand il se trompait",
+  "body_html": "<blockquote>« Si nous confessons nos péchés, il est fidèle et juste pour nous les pardonner. » — d’après 1 Jean 1</blockquote> <p>Frère Laurent aimait beaucoup Dieu. Mais il n’était pas parfait. Il faisait encore des erreurs. Parfois, il oubliait Dieu pendant assez longtemps. Parfois, il faisait des choses dont il savait qu’elles étaient mal.</p> <p>Alors, qu’est-ce qu’il faisait quand il se trompait ? Il ne boudait pas. Il n’abandonnait pas. Et il ne cherchait pas d’excuses.</p> <p>Il le disait simplement à Dieu. Il disait à peu près ceci : « Seigneur, voilà comment je suis. Si tu me laisses tout seul, je ferai toujours cela. C’est toi qui dois m’empêcher de tomber, et réparer ce que j’ai mal fait. » Ensuite, il arrêtait de s’en inquiéter, et il recommençait à aimer Dieu, exactement comme avant.</p> <p>Frère Laurent savait que nos péchés sont pardonnés grâce à Jésus, qui est mort pour nous, et pas parce que nous sommes assez bons. Alors il faisait confiance à Jésus, et il ne traînait pas ses erreurs partout avec lui comme un sac lourd.</p> <p>Et quand il faisait quelque chose de bien, il remerciait Dieu, parce qu’il savait que la force venait de Dieu. Il disait qu’en se relevant après chaque chute, petit à petit, il avait appris à penser à Dieu tout le temps.</p> <p>Tout le monde se trompe, même les grandes personnes, et même les gens qui aiment beaucoup Dieu. Quand cela t’arrive, ne le cache pas et ne t’inquiète pas pendant des jours. Dis à Dieu que tu regrettes, fais confiance à Jésus pour te pardonner, et recommence.</p> <p><em>Mon Dieu, je regrette le mal que j’ai fait. Merci parce que Jésus me pardonne. Aide-moi à me relever et à continuer avec toi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Que faisait Frère Laurent quand il faisait une erreur ?",
+    "answer": "Il en parlait honnêtement à Dieu, il demandait à Dieu de l’aider, puis il arrêtait de s’inquiéter et recommençait à aimer Dieu."
+   },
+   {
+    "question": "Pourquoi n’avait-il pas besoin de continuer à s’inquiéter de ses péchés ?",
+    "answer": "Parce qu’il avait confiance que ses péchés étaient pardonnés grâce à Jésus, et pas parce qu’il était assez bon."
+   },
+   {
+    "question": "Que peux-tu faire la prochaine fois que tu te trompes ?",
+    "answer": "L’idée du chapitre : quand nous faisons une bêtise, nous pouvons le dire à Dieu, faire confiance à Jésus pour nous pardonner, et recommencer sans traîner nos erreurs avec nous."
+   }
+  ],
+  "body_text": "« Si nous confessons nos péchés, il est fidèle et juste pour nous les pardonner. » — d’après 1 Jean 1 Frère Laurent aimait beaucoup Dieu. Mais il n’était pas parfait. Il faisait encore des erreurs. Parfois, il oubliait Dieu pendant assez longtemps. Parfois, il faisait des choses dont il savait qu’elles étaient mal. Alors, qu’est-ce qu’il faisait quand il se trompait ? Il ne boudait pas. Il n’abandonnait pas. Et il ne cherchait pas d’excuses. Il le disait simplement à Dieu. Il disait à peu près ceci : « Seigneur, voilà comment je suis. Si tu me laisses tout seul, je ferai toujours cela. C’est toi qui dois m’empêcher de tomber, et réparer ce que j’ai mal fait. » Ensuite, il arrêtait de s’en inquiéter, et il recommençait à aimer Dieu, exactement comme avant. Frère Laurent savait que nos péchés sont pardonnés grâce à Jésus, qui est mort pour nous, et pas parce que nous sommes assez bons. Alors il faisait confiance à Jésus, et il ne traînait pas ses erreurs partout avec lui comme un sac lourd. Et quand il faisait quelque chose de bien, il remerciait Dieu, parce qu’il savait que la force venait de Dieu. Il disait qu’en se relevant après chaque chute, petit à petit, il avait appris à penser à Dieu tout le temps. Tout le monde se trompe, même les grandes personnes, et même les gens qui aiment beaucoup Dieu. Quand cela t’arrive, ne le cache pas et ne t’inquiète pas pendant des jours. Dis à Dieu que tu regrettes, fais confiance à Jésus pour te pardonner, et recommence. Mon Dieu, je regrette le mal que j’ai fait. Merci parce que Jésus me pardonne. Aide-moi à me relever et à continuer avec toi. Amen.",
+  "word_count": 291
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "fr"
+  ],
+  "order": 11,
+  "title": "Des lettres à des amis en difficulté",
+  "body_html": "<blockquote>« Même quand je marche dans la vallée la plus sombre, je n’ai peur de rien, car tu es avec moi. » — d’après Psaume 23</blockquote> <p>Quand Frère Laurent est devenu plus âgé, beaucoup de gens lui ont écrit, et il leur répondait par des lettres. Certains de ses amis traversaient des moments très difficiles.</p> <p>Un ami lui a parlé d’un jeune soldat qui était en danger. Frère Laurent a répondu que le soldat n’avait pas besoin de longues prières. Même en marchant avec l’armée, l’épée à la main, il pouvait élever son cœur vers Dieu un instant. Il disait qu’un petit souvenir de Dieu suffit, et que ces courtes prières rendraient le soldat plus courageux, pas plus faible.</p> <p>Un autre ami était très malade, depuis longtemps, et les remèdes ne marchaient pas. Frère Laurent avait de la peine pour cet ami. Il lui a dit que Dieu est souvent encore plus près de nous quand nous sommes malades que quand nous sommes en bonne santé. Il lui a dit de continuer à parler avec Dieu, de lui faire confiance, et de lui offrir sa douleur.</p> <p>Frère Laurent a aussi écrit quelque chose de courageux. Il a dit qu’il ne priait pas seulement pour que la douleur s’arrête, mais pour que Dieu donne à son ami la force et la patience de la supporter. Il savait que Dieu est notre Père plein d’amour, et qu’on peut lui faire confiance même quand on a mal.</p> <p>Ses amis étaient tristes et souffraient, mais ses lettres les tournaient vers le Dieu qui était là, tout près d’eux.</p> <p>Quand tu es malade, triste ou que tu as peur, Dieu n’est pas parti. Il est tout près. Tu peux dire une courte prière, même simplement « Aide-moi, mon Dieu », et lui faire confiance pour être avec toi.</p> <p><em>Mon Dieu, quand je suis malade ou que j’ai peur, merci parce que tu es près de moi. S’il te plaît, donne-moi de la force et aide-moi à te faire confiance. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Que disait Frère Laurent qu’un soldat pouvait faire, même en marchant avec son épée ?",
+    "answer": "Il pouvait élever son cœur vers Dieu un instant. Des prières courtes comme celles-là font plaisir à Dieu et rendent un soldat plus courageux."
+   },
+   {
+    "question": "Qu’a-t-il dit à son ami qui était très malade ?",
+    "answer": "Que Dieu est souvent plus près de nous dans la maladie que dans la santé, et qu’il devait continuer à parler avec Dieu, lui faire confiance et lui demander la force de supporter la douleur."
+   },
+   {
+    "question": "As-tu déjà été malade, triste ou effrayé ? Que pourrais-tu dire à Dieu à ce moment-là ?",
+    "answer": "L’idée du chapitre : Dieu reste près de nous dans les moments difficiles. Même une prière très courte, comme « Aide-moi, mon Dieu », il l’entend."
+   }
+  ],
+  "body_text": "« Même quand je marche dans la vallée la plus sombre, je n’ai peur de rien, car tu es avec moi. » — d’après Psaume 23 Quand Frère Laurent est devenu plus âgé, beaucoup de gens lui ont écrit, et il leur répondait par des lettres. Certains de ses amis traversaient des moments très difficiles. Un ami lui a parlé d’un jeune soldat qui était en danger. Frère Laurent a répondu que le soldat n’avait pas besoin de longues prières. Même en marchant avec l’armée, l’épée à la main, il pouvait élever son cœur vers Dieu un instant. Il disait qu’un petit souvenir de Dieu suffit, et que ces courtes prières rendraient le soldat plus courageux, pas plus faible. Un autre ami était très malade, depuis longtemps, et les remèdes ne marchaient pas. Frère Laurent avait de la peine pour cet ami. Il lui a dit que Dieu est souvent encore plus près de nous quand nous sommes malades que quand nous sommes en bonne santé. Il lui a dit de continuer à parler avec Dieu, de lui faire confiance, et de lui offrir sa douleur. Frère Laurent a aussi écrit quelque chose de courageux. Il a dit qu’il ne priait pas seulement pour que la douleur s’arrête, mais pour que Dieu donne à son ami la force et la patience de la supporter. Il savait que Dieu est notre Père plein d’amour, et qu’on peut lui faire confiance même quand on a mal. Ses amis étaient tristes et souffraient, mais ses lettres les tournaient vers le Dieu qui était là, tout près d’eux. Quand tu es malade, triste ou que tu as peur, Dieu n’est pas parti. Il est tout près. Tu peux dire une courte prière, même simplement « Aide-moi, mon Dieu », et lui faire confiance pour être avec toi. Mon Dieu, quand je suis malade ou que j’ai peur, merci parce que tu es près de moi. S’il te plaît, donne-moi de la force et aide-moi à te faire confiance. Amen.",
+  "word_count": 335
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "fr"
+  ],
+  "order": 12,
+  "title": "Rentrer à la maison auprès de Dieu",
+  "body_html": "<blockquote>« Je vais vous préparer une place. » — d’après Jean 14</blockquote> <p>Frère Laurent est devenu un vieil homme. Dans une de ses lettres, il a écrit : « J’ai bientôt quatre-vingts ans. » À ce moment-là, il marchait avec Dieu depuis plus de quarante ans, depuis ce jour d’hiver où il avait vu l’arbre nu.</p> <p>Dans sa vieillesse, il était souvent très malade. Mais il ne demandait pas à Dieu d’enlever la douleur. Il demandait plutôt la force de la supporter avec courage et avec amour. Il disait qu’il était toujours heureux, parce que Dieu était avec lui.</p> <p>Dans ses toutes dernières lettres, il a écrit qu’il espérait voir Dieu bientôt. Deux jours seulement après une de ces lettres, il s’est couché malade, et avant la fin de la semaine, il est mort, et il est rentré à la maison pour être avec le Dieu qu’il aimait.</p> <p>Mais ses lettres et ses paroles ont été gardées, pour que nous puissions les lire. Et dans ces lettres, il faisait toujours la même invitation. Pense souvent à Dieu. Parle avec lui. Fais-lui confiance. « Commençons », écrivait-il. Quand quelqu’un lui a dit qu’il répétait toujours la même chose, il était d’accord ! C’était le meilleur et le plus facile des chemins qu’il connaissait, alors il le disait à tout le monde.</p> <p>Le jeune valet de pied maladroit avait appris à vivre chaque jour avec Dieu, et il voulait que tout le monde sache comment faire.</p> <p>L’invitation de Frère Laurent est pour toi aussi. Tu n’as pas besoin d’être grand, ni intelligent, ni soigneux. Tu peux commencer aujourd’hui : souviens-toi que Dieu est avec toi, et parle avec lui tout au long de la journée.</p> <p><em>Mon Dieu, merci parce que tu es toujours avec moi. Aide-moi à commencer aujourd’hui à parler avec toi et à te faire confiance, toute ma vie. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quel âge avait Frère Laurent vers la fin de sa vie, et qu’espérait-il ?",
+    "answer": "Il a écrit qu’il avait bientôt quatre-vingts ans, et dans ses dernières lettres il a dit qu’il espérait voir Dieu bientôt."
+   },
+   {
+    "question": "Quelle invitation Frère Laurent faisait-il toujours dans ses lettres ?",
+    "answer": "Penser souvent à Dieu, parler avec lui et lui faire confiance. « Commençons », écrivait-il, et il disait que c’était le meilleur et le plus facile des chemins qu’il connaissait."
+   },
+   {
+    "question": "Comment pourrais-tu commencer cette semaine à vivre avec Dieu ?",
+    "answer": "L’idée du chapitre : l’invitation de Frère Laurent est aussi pour les enfants. Tout le monde peut commencer aujourd’hui, en se souvenant que Dieu est tout près et en parlant avec lui."
+   }
+  ],
+  "body_text": "« Je vais vous préparer une place. » — d’après Jean 14 Frère Laurent est devenu un vieil homme. Dans une de ses lettres, il a écrit : « J’ai bientôt quatre-vingts ans. » À ce moment-là, il marchait avec Dieu depuis plus de quarante ans, depuis ce jour d’hiver où il avait vu l’arbre nu. Dans sa vieillesse, il était souvent très malade. Mais il ne demandait pas à Dieu d’enlever la douleur. Il demandait plutôt la force de la supporter avec courage et avec amour. Il disait qu’il était toujours heureux, parce que Dieu était avec lui. Dans ses toutes dernières lettres, il a écrit qu’il espérait voir Dieu bientôt. Deux jours seulement après une de ces lettres, il s’est couché malade, et avant la fin de la semaine, il est mort, et il est rentré à la maison pour être avec le Dieu qu’il aimait. Mais ses lettres et ses paroles ont été gardées, pour que nous puissions les lire. Et dans ces lettres, il faisait toujours la même invitation. Pense souvent à Dieu. Parle avec lui. Fais-lui confiance. « Commençons », écrivait-il. Quand quelqu’un lui a dit qu’il répétait toujours la même chose, il était d’accord ! C’était le meilleur et le plus facile des chemins qu’il connaissait, alors il le disait à tout le monde. Le jeune valet de pied maladroit avait appris à vivre chaque jour avec Dieu, et il voulait que tout le monde sache comment faire. L’invitation de Frère Laurent est pour toi aussi. Tu n’as pas besoin d’être grand, ni intelligent, ni soigneux. Tu peux commencer aujourd’hui : souviens-toi que Dieu est avec toi, et parle avec lui tout au long de la journée. Mon Dieu, merci parce que tu es toujours avec moi. Aide-moi à commencer aujourd’hui à parler avec toi et à te faire confiance, toute ma vie. Amen.",
+  "word_count": 310
+ }
+}
+]

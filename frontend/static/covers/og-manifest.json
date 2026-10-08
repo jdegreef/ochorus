@@ -5955,6 +5955,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"fr/the-practice-of-the-presence-of-god-children": {
+			"ground": "558a670e92cdc016af67f58374e1c048e86ed81a2dd7227f910d62e098db23c9",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"fr/the-secret-of-guidance": {
 			"ground": "33fd3482db54613b285864550cb2c83d65bd10d3c89507ea5d4e91c7bf811008",
 			"style": "devotional",
