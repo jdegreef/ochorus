@@ -3,7 +3,7 @@
  "slug": "amanda-smith-autobiography",
  "language": "sw",
  "job_issue": 5419,
- "pull_request": null,
+ "pull_request": 5630,
  "note": [
   "Amanda Smith quotes scripture constantly but rarely cites it, so the references were identified by the chapter translators. Every quotation follows the Swahili Union Version (SUV) tradition the shipped sw corpus quotes — not swhonen, a different revised edition. Where a shipped *.sw.json carries the SUV words they were pasted verbatim and the row is `mined` with that file (each claim re-checked as a verbatim substring of the cited file); otherwise the row is `self_rendered` in the SUV register and needs a native check.",
   "Many `self_rendered` rows are Amanda's own re-personed or partial quotations (her `us` for the verse's `you`, a clause woven into her sentence) — the SUV wording was adapted, so it is not claimed as mined.",
