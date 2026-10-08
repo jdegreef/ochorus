@@ -3,7 +3,7 @@
  "slug": "amanda-smith-autobiography-teens",
  "language": "fr",
  "job_issue": 5460,
- "pull_request": null,
+ "pull_request": 5530,
  "note": [
   "The English retelling quotes the ESV (and the WEB at Psalm 68:31) in each chapter's opening blockquote; the French pastes the Louis Segond (1910) wording verbatim from the ebible mirror (bibles/fra_lsg/usfm), with no version label, using Segond's numbering (Psalm 68:31 in the English is Psaume 68:32 in Segond). Where a shipped French file already carries the same wording, source_file names it (checkable); otherwise it names the Segond edition. Segond's own punctuation is kept inside those quotations (e.g. « sauve-les! »).",
   "Body echoes of a verse inside the retelling's own prose (the lesson paragraphs, Amanda's ironic « Que vos hommes se taisent dans l’Église », the reported « L’Éthiopie ne tend-elle pas les mains vers Dieu ? ») are self_rendered: re-personed or adapted to the sentence. « Que les femmes se taisent dans les assemblées » (1 Cor 14:34, block 1) is Segond's wording with the first letter capitalised. Block indices mirror the English (tag sequence identical chapter by chapter). Translated in-session; awaiting native review."
