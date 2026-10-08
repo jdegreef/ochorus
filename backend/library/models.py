@@ -1601,6 +1601,12 @@ class BookPerson(models.Model):
         max_length=20, choices=PersonRole.choices, default=PersonRole.FEATURED
     )
     sort_order = models.PositiveIntegerField(default=0)
+    # In an anthology that gives each figure a chapter (Brave for God, They Were
+    # Young), the ``Chapter.order`` that tells this person's story — so the
+    # young-reader hubs can open a face straight onto its story, in whatever
+    # language the book is in. Null for a person the work only mentions, or a
+    # single biography (the whole book is theirs).
+    chapter = models.PositiveSmallIntegerField(null=True, blank=True)
 
     class Meta:
         ordering = ["sort_order", "id"]

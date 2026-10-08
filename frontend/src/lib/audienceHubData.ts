@@ -11,6 +11,7 @@ import { getLang } from './lang.svelte';
 /** An empty shelf — what a failed load renders behind its Try again. */
 export const emptyShelf = (): AudienceShelf => ({
 	series: [],
+	people: [],
 	editions: [],
 	more: [],
 	plans: [],

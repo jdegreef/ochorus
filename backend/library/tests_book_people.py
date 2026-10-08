@@ -184,3 +184,10 @@ class SeedBookPeopleTests(TestCase):
             call_command("seed_book_people", stdout=StringIO())
         self.assertEqual(BookPerson.objects.count(), 1)
         self.assertEqual(BookPerson.objects.get().role, "featured")
+        self.assertIsNone(BookPerson.objects.get().chapter)
+
+    def test_a_story_member_carries_its_chapter(self):
+        Author.objects.create(slug="mary-slessor", name="Mary Slessor")
+        with mock.patch(self.CMD, [("brave-for-god", [("mary-slessor", "subject", 2)])]):
+            call_command("seed_book_people", stdout=StringIO())
+        self.assertEqual(BookPerson.objects.get().chapter, 2)

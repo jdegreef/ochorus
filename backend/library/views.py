@@ -6,6 +6,7 @@ Books are addressed by their canonical ``slug`` plus a ``language`` query param
 
 import hashlib
 import logging
+import re
 
 from django.conf import settings
 from django.core.cache import cache
@@ -38,6 +39,7 @@ from .models import (
     Article,
     Author,
     Book,
+    BookPerson,
     Chapter,
     ContentRevision,
     Plan,
@@ -928,6 +930,57 @@ class AudienceLanguagesView(PublicContentCacheMixin, APIView):
         )
 
 
+#: How many faces a hub's people strip carries at most — a strip, not a roll.
+AUDIENCE_PEOPLE_MAX = 16
+
+#: What parts a story chapter's "Name: The Boy Who Looked" title, in every
+#: script the anthologies are translated into (Amharic writes ፦).
+_STORY_TITLE_SEP = re.compile(r"\s*[:：፦]\s*")
+
+
+def _audience_people(series_rows: list[dict], language: str) -> list[dict]:
+    """The hub's people strip: one face per story chapter of its series'
+    anthologies (``BookPerson.chapter``), in reading order — series, volume,
+    chapter. Name and hook come from the chapter's own title in ``language``
+    ("Charles Spurgeon: The Boy Who Looked"), so a translated anthology brings
+    its names and hooks with it; a chapter missing in the language drops out,
+    and a chapter told about two people (Jim and Elisabeth Elliot) is one face,
+    the first person's."""
+    order = {slug: i for i, slug in enumerate(s for row in series_rows for s in row["books"])}
+    if not order:
+        return []
+    members = (
+        BookPerson.objects.filter(book_slug__in=order, chapter__isnull=False)
+        .select_related("person")
+        .only("book_slug", "chapter", "sort_order", "person__slug", "person__name",
+              "person__photo_url")
+    )
+    chapters = {
+        (slug, n): (title, words)
+        for slug, n, title, words in Chapter.objects.filter(
+            book__language=language, book__is_published=True, book__slug__in=order
+        ).values_list("book__slug", "order", "title", "word_count")
+    }
+    people: dict[tuple[str, int], dict] = {}
+    for m in sorted(members, key=lambda m: (order[m.book_slug], m.chapter, m.sort_order)):
+        key = (m.book_slug, m.chapter)
+        if key in people or key not in chapters:
+            continue
+        title, words = chapters[key]
+        parts = _STORY_TITLE_SEP.split(title, maxsplit=1)
+        name, hook = parts if len(parts) == 2 and all(parts) else (m.person.name, title)
+        people[key] = {
+            "slug": m.person.slug,
+            "name": name,
+            "hook": hook,
+            "photo_url": m.person.photo_url,
+            "book": m.book_slug,
+            "chapter": m.chapter,
+            "words": words or None,
+        }
+    return list(people.values())[:AUDIENCE_PEOPLE_MAX]
+
+
 class AudienceShelfView(PublicContentCacheMixin, APIView):
     """Everything written for one young audience in the requested language —
     the /young-readers/ and /teens/ hubs, which gather what /series, /originals,
@@ -945,7 +998,9 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
     - ``articles`` — the topic's articles in this language (the teens' Big
       Questions), in its curator's order; companions, so they claim no book.
 
-    ``start`` is the one book a newcomer should open first (``AUDIENCE_STARTS``);
+    ``people`` is the series' anthologies told as faces, each opening its
+    chapter (``_audience_people``). ``start`` is the one book a newcomer should
+    open first (``AUDIENCE_STARTS``);
     ``printable`` lists the slugs among them with a free PDF / EPUB
     (``export_policy``), for the page's "print it" line; ``languages``, every
     language the hub has something in (its hreflang). Nothing here falls back
@@ -1024,6 +1079,7 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
         return Response(
             {
                 "series": series,
+                "people": _audience_people(series, language),
                 "editions": BookListSerializer(editions, many=True, context=ctx).data,
                 "more": BookListSerializer(more, many=True, context=ctx).data,
                 "plans": PlanListSerializer(plans, many=True, context=plan_ctx).data,
