@@ -9897,6 +9897,16 @@
 			"layout": "wash/sage",
 			"bar": 0.11
 		},
+		"pt/mary-slessor-a-life-children": {
+			"ground": "4c6a3efd612d6835a4419ed12a62f43af46555c70759bbfe995fc66c18a9cf94",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"pt/men-of-prayer-2": {
 			"ground": "4ccfa79e0cf284fe44c0dbea3faf6ed4eff3f259334e6e7386da1ebd3feaacc6",
 			"style": "originals",
