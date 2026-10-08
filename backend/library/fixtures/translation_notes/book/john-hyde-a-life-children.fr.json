@@ -1,0 +1,118 @@
+{
+ "kind": "book",
+ "slug": "john-hyde-a-life-children",
+ "language": "fr",
+ "job_issue": 5552,
+ "pull_request": 5577,
+ "note": [
+  "Each chapter's opening blockquote quotes a King James verse in the English, so the French uses the Louis Segond 1910 wording, fetched from the fra_lsg USFM on the ebible mirror (raw.githubusercontent.com/gracious-tech/fetch_collection). Rows marked mined are contiguous Segond excerpts, changed only by French spacing before ? ! : and the capital Ô (Psaume 51:12 and 81:11 in Segond's numbering are 51:10 and 81:10 in English). The same wording is also used verbatim across the shipped fr corpus.",
+  "Self-rendered: Isaiah 6:8, Zechariah 4:6 and Philippians 4:8 drop a clause the English also drops (« et qui marchera pour nous ? », « des armées », the start of the list). The body echoes (Matthew 9:38 in ch. 1, Psalm 81:10 « Toute grande, Seigneur » in ch. 8 because Segond has no word for KJV “wide”, Zechariah 2:8 and Philippians 4:8 in ch. 10) are retold for children. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Matthew 9:38",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) — fra_lsg, ebible mirror",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Luke 11:13b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) — fra_lsg, ebible mirror",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Psalm 51:10a",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) — fra_lsg, ebible mirror",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Exodus 4:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) — fra_lsg, ebible mirror",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Mark 1:35",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) — fra_lsg, ebible mirror",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Zechariah 4:6",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalm 81:10b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) — fra_lsg, ebible mirror",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalm 81:10b",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) — fra_lsg, ebible mirror",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Zechariah 2:8",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Luke 15:20b",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) — fra_lsg, ebible mirror",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "1 Corinthians 15:57",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) — fra_lsg, ebible mirror",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}
