@@ -77,6 +77,7 @@ back at GoDaddy undoes the whole move.
    or http.request.uri.path wildcard "/articles/*" or http.request.uri.path wildcard "/*/articles/*"
    or http.request.uri.path wildcard "/authors/*" or http.request.uri.path wildcard "/*/authors/*"
    or http.request.uri.path wildcard "/books/*" or http.request.uri.path wildcard "/*/books/*"
+   or http.request.uri.path wildcard "/for/*" or http.request.uri.path wildcard "/*/for/*"
    or http.request.uri.path wildcard "/plans/*" or http.request.uri.path wildcard "/*/plans/*"
    or http.request.uri.path wildcard "/quotes/*" or http.request.uri.path wildcard "/*/quotes/*"
    or http.request.uri.path wildcard "/scripture/*" or http.request.uri.path wildcard "/*/scripture/*"

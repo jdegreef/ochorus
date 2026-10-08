@@ -66,7 +66,9 @@ const LEAF_PAGES: { label: string; file: string }[] = [
 	{ label: 'scripture book', file: 'routes/scripture/[book]/+page.svelte' },
 	{ label: 'scripture chapter', file: 'routes/scripture/[book]/[chapter]/+page.svelte' },
 	{ label: 'scripture verse', file: 'routes/scripture/[book]/[chapter]/[verse]/+page.svelte' },
-	{ label: 'error', file: 'routes/+error.svelte' }
+	{ label: 'error', file: 'routes/+error.svelte' },
+	// The "Ochorus for …" landing pages — a pitch, not a leaf, but on the shell.
+	{ label: 'ochorus for', file: 'routes/for/[group]/+page.svelte' }
 ];
 
 /**

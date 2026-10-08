@@ -16,6 +16,7 @@
 	import { API_BASE_URL } from '$lib/config';
 	import { lang } from '$lib/lang.svelte';
 	import { footerLocales } from '$lib/footerLocales';
+	import { FOR_LINKS, forPath } from '$lib/forLinks';
 	import { loginHref, withSignup } from '$lib/loginHref';
 	import { seenOnView, withSource } from '$lib/signupSource';
 	import { bibleCredit, creditParts } from '$lib/bibleCredit';
@@ -664,6 +665,25 @@
 					<p class="text-muted">© {copyrightYear} Ochorus</p>
 				</div>
 			</div>
+			<!-- "Ochorus for …" — the landing pages for churches, homeschool
+			     families, parents ($lib/forLinks), as the footer's last row, read
+			     left to right like the language strip above. English-only like
+			     Discover: the pages are English copy for now, so a localized
+			     reader is not sent to them, and the label is a plain literal. -->
+			{#if lang.current === 'en'}
+				<nav class="border-t border-border" aria-label="Ochorus for">
+					<div
+						class="chrome-col flex flex-wrap items-baseline gap-x-5 gap-y-1 px-5 py-4 text-small"
+					>
+						<span class="eyebrow py-1 text-text">Ochorus for</span>
+						{#each FOR_LINKS as l (l.slug)}
+							<a class="whitespace-nowrap py-1 text-muted hover:text-text" href={forPath(l.slug)}
+								>{l.label}</a
+							>
+						{/each}
+					</div>
+				</nav>
+			{/if}
 		</footer>
 	{/if}
 </div>
