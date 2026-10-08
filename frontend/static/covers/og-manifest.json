@@ -12809,6 +12809,16 @@
 				524
 			]
 		},
+		"the-imitation-of-christ-teens": {
+			"ground": "75c086223099e66a44c309a05dd4a08c2c5c3edb96dcee8547a4c83fd8b01516",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-life-of-trust": {
 			"ground": "89b1f3246a70f85e0a65425b7f842156ca97ed3ab1257e1dadc9ec7c710205b6",
 			"style": "revival",
