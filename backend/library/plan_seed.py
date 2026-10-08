@@ -474,6 +474,20 @@ CURATED_PLANS = [
             "the-practice-of-the-presence-of-god-children",
         ],
     ),
+    (
+        "family-devotions-boy-from-osogun",
+        "Family Devotions: The Boy from Osogun",
+        "Twelve nights of five-minute family devotions with Samuel Ajayi "
+        "Crowther, the Yoruba boy sold as a slave who grew up to give his "
+        "people the Bible in their own language. Read one short chapter aloud: "
+        "the slave ship stopped at sea, the day he found his mother again, the "
+        "Lord’s Prayer in Yoruba for the Queen, and the kind slaves who fed "
+        "him when he was a prisoner. Each ends with a prayer and three "
+        "questions to talk about together.",
+        [
+            "samuel-ajayi-crowther-a-life-children",
+        ],
+    ),
 ]
 
 # Plans that have been withdrawn from the shelf, each with the plan(s) that
