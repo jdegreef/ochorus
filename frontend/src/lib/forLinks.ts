@@ -14,6 +14,8 @@ export interface ForLinkDest {
 /** Left to right, as the footer row shows them. */
 export const FOR_LINKS: ForLinkDest[] = [
 	{ slug: 'churches', label: 'Churches' },
+	{ slug: 'small-groups', label: 'Small groups' },
+	{ slug: 'schools', label: 'Schools' },
 	{ slug: 'homeschool', label: 'Homeschool families' },
 	{ slug: 'parents', label: 'Parents' }
 ];
