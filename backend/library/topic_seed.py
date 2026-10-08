@@ -589,6 +589,7 @@ TOPICS = [
             "women-who-moved-heaven-2",
             "all-of-grace-teens",
             "samuel-ajayi-crowther-a-life-teens",
+            "grace-abounding-teens",
             "anchored-1",
             "they-were-young-1",
             "anchored-2",

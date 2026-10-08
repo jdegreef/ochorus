@@ -6166,6 +6166,16 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"grace-abounding-teens": {
+			"ground": "ed81f4c4016435c15aa7723bc1f3b2c1e286605c09e62fcfc63e324284883a2b",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"grace-for-grace-2": {
 			"ground": "bdbb5ca5e1e0e64dde3d1accd097a32e70de1ecff3019b424741a2a82d6162a4",
 			"style": "house",
