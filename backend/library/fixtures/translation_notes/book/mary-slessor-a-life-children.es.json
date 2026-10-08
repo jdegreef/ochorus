@@ -1,0 +1,96 @@
+{
+ "kind": "book",
+ "slug": "mary-slessor-a-life-children",
+ "language": "es",
+ "job_issue": 5542,
+ "pull_request": null,
+ "note": [
+  "Each chapter opens with a verse cited loosely (“— from Psalm 103”). Where the English quotes the King James wording and the shipped es corpus carries the same verse in Reina-Valera (Isa 6:8, Matt 5:9, Ps 30:5, 2 Cor 12:9, and the Ps 103:4 fragment sung in chapter 11), the Reina-Valera text is pasted verbatim (mined). Ps 119:105 is the Reina-Valera wording too, but it appears only in an es article (how-to-read-the-bible-for-beginners), which audit_mined_notes cannot check, so it ships self_rendered. Where the English is a simplified modern paraphrase (Ps 103:13, Ps 73:26, Josh 1:9, Ps 82:4) or the verse is not in the shipped corpus (Ps 27:10, Prov 17:17, Isa 40:11), it is rendered in plain, child-friendly Spanish (self_rendered); Ps 27:10 and Isa 40:11 follow the Reina-Valera wording from memory and need checking. api.takeroot.bible was not used (egress-blocked).",
+  "Translated in-session by the worker (12 chapters of ~400 words); tag sequence and paragraph counts identical to the English chapter by chapter, 3 study questions per chapter. Tú reader address, ustedes plural, as in the shipped es children's editions. “a wild lassie” is kept in Scots with a gloss; “four miles” rendered “seis kilómetros”. AI-translated; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 103:13",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Psalm 119:105",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Isaiah 6:8b",
+   "status": "mined",
+   "source_file": "the-person-and-work-of-the-holy-spirit.es.json",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Psalm 27:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Psalm 73:26",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Joshua 1:9",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Proverbs 17:17a",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalm 82:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Isaiah 40:11",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Matthew 5:9",
+   "status": "mined",
+   "source_file": "days-of-heaven-upon-earth.es.json",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalm 30:5b",
+   "status": "mined",
+   "source_file": "cheque-book.es.json",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalm 103:4a",
+   "status": "mined",
+   "source_file": "the-gospel-of-healing.es.json",
+   "block_index": 5,
+   "chapter_order": 11
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "amanda-smith-autobiography-teens.es.json",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}
