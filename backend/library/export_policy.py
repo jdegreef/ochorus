@@ -103,6 +103,7 @@ EXPORT_PILOT = frozenset({
     ("the-imitation-of-christ-teens", "en"),
     ("life-and-diary-of-david-brainerd-teens", "en"),
     ("absolute-surrender-teens", "en"),
+    ("foxes-book-of-martyrs-teens", "en"),
     # Retellings of an Ochorus Original (the Portraits of Courage life): the
     # parent author is the imprint, so, like the Portraits themselves, these have
     # no About the Author page. The Teens edition quotes only the public-domain ASV.
