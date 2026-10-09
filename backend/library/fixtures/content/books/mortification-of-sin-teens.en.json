@@ -1,0 +1,399 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "john-owen"
+  ],
+  "slug": "mortification-of-sin-teens",
+  "language": "en",
+  "title": "The Mortification of Sin (For Teens)",
+  "subtitle": "",
+  "cover_title": "",
+  "description": "“Be killing sin or it will be killing you.” John Owen wrote that line in 1656 for students at Oxford, and it is still one of the most honest books ever written about fighting temptation. This teen edition retells it in plain words: why sin never stays small, why willpower alone always loses, what real change looks like, the warning signs that a habit is getting dangerous, how to stop temptation early, how not to fake peace with God, and why the fight is finally won by looking at Jesus. Owen’s own sentences are kept where they say it best.",
+  "hook": "How to fight the sin you keep falling into, not with willpower, but with the Spirit and with Jesus.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Who was John Owen?",
+    "answer": "An English Puritan pastor and theologian, born in 1616. He went to Oxford University at about twelve, later became Dean of Christ Church and Vice-Chancellor of the university, and was a chaplain to Oliver Cromwell. In 1662 he was put out of the Church of England with some two thousand other ministers, and he went on leading and writing until his death in 1683. He is remembered as one of the greatest English theologians."
+   },
+   {
+    "question": "What does “mortification” mean?",
+    "answer": "It comes from a Latin word meaning “to put to death”. Owen takes it from Romans 8:13: “if ye through the Spirit do mortify the deeds of the body, ye shall live.” It means steadily weakening and fighting the sin in your heart, with the help of the Holy Spirit, so that it loses its grip on you."
+   },
+   {
+    "question": "Does killing sin mean punishing or hurting myself?",
+    "answer": "No, never. Owen was against harsh practices that punish the body, and said real change is the Spirit’s work in the heart, not something you can beat into yourself. Killing sin never means harming your body. If you are hurting yourself, or feel you deserve to be hurt, please tell a trusted adult or a doctor today."
+   },
+   {
+    "question": "What if a habit feels too strong for me to stop?",
+    "answer": "Owen says you cannot kill any sin in your own strength; it is the Spirit’s work, and Christ has enough to help you. God also uses people. If a habit feels out of control, such as pornography, alcohol, vaping or drugs, telling a trusted adult, a youth leader or a doctor is a wise and brave step, not a failure of faith."
+   },
+   {
+    "question": "Will I ever be completely free from temptation in this life?",
+    "answer": "Owen says no: sin is not completely destroyed in this life, even in the best Christians. But you can see real, steady victory, with a sin growing weaker and you growing stronger, and one day Christ will finish the work completely."
+   },
+   {
+    "question": "Is this book only for people with a big, obvious sin?",
+    "answer": "No. Owen wrote for ordinary believers, and he says it is the duty of the best Christians too. Pride, envy, anger, lying, gossip and laziness need fighting just as much as the sins that everyone notices."
+   },
+   {
+    "question": "Is this the full text?",
+    "answer": "No. It is a retelling for teenagers in plain modern words, drawn from across Owen’s book and keeping his own sentences where they say it best. The full Mortification of Sin is also available."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of John Owen’s The Mortification of Sin (1656), which is in the public domain. The telling is our own, free to read and share. Scripture quotations are from the King James Version, which is in the public domain.",
+  "cover_url": "/covers/mortification-of-sin-teens.svg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/mortification-of-sin-teens.pdf?download=mortification-of-sin-teens.pdf",
+  "cover_color": "",
+  "series": [
+   "straight-talk"
+  ],
+  "series_position": null,
+  "sort_order": 162,
+  "is_published": true,
+  "created_at": "2026-10-09T04:00:00Z",
+  "updated_at": "2026-10-09T04:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "en"
+  ],
+  "order": 1,
+  "title": "The Man Who Wrote “Kill Sin”",
+  "body_html": "<blockquote>“For if ye live after the flesh, ye shall die: but if ye through the Spirit do mortify the deeds of the body, ye shall live.” — Romans 8:13 (KJV)</blockquote> <p>John Owen was born in 1616 in Stadhampton, a village in Oxfordshire, England. His father was a minister. John was clever, very clever: he went to Oxford University when he was only about twelve years old.</p> <p>But being clever and going to church did not give him peace with God. In 1637 he left Oxford rather than obey rules about worship that went against his conscience, and for several years he lived in spiritual darkness. He knew a lot about God, but he wasn’t sure God was his.</p> <p>Then, around 1642, he went to a church in London hoping to hear a famous preacher. The famous preacher didn’t turn up. An unknown man stood in for him instead and preached on Jesus’ words to his frightened disciples: “Why are ye fearful, O ye of little faith?” Through that ordinary sermon, the assurance Owen had begged God for finally came.</p> <p>Owen went on to become one of the most important people of his time. Oliver Cromwell, the general who later ruled England, made him an army chaplain. In 1651 he became Dean of Christ Church, one of Oxford’s biggest colleges, and the next year Vice-Chancellor of the whole university.</p> <p>While he was there, he preached to the students, many of them young men, about something they all struggled with: sin that wouldn’t go away. Those sermons became a book in 1656. Its title sounds strange today: The Mortification of Sin. “Mortify” means “put to death”.</p> <p>Owen’s life was not easy. After 1660 the government changed, and in 1662 he was thrown out of the Church of England along with about two thousand other ministers. Of his eleven or so children, all but one died young. But he kept preaching and writing, and he is credibly said to have helped get John Bunyan, the author of The Pilgrim’s Progress, released from prison.</p> <p>Owen’s book is famous for one sentence: “be killing sin or it will be killing you.” It sounds fierce. But as you will see, Owen’s answer to sin is not trying harder. It is the Holy Spirit, and it is Jesus.</p> <p>This book is for you if there is a sin you keep falling into, a habit you hate, or a temper, a jealousy or a secret you can’t seem to beat.</p> <p><strong>One thing to do this week:</strong> think of one sin or habit you would really like to be free from. Write it down somewhere private, and pray each day this week: “Lord, by your Spirit, help me put this to death.”</p>",
+  "study_questions": [
+   {
+    "question": "What happened to Owen around 1642?",
+    "answer": "He heard an unknown preacher, standing in for a famous one, preach on “Why are ye fearful, O ye of little faith?”, and through it he received assurance of God’s love."
+   },
+   {
+    "question": "Who first heard the sermons that became The Mortification of Sin?",
+    "answer": "Students at Oxford University, where Owen was Vice-Chancellor."
+   },
+   {
+    "question": "What does “mortify” mean?",
+    "answer": "To put to death."
+   }
+  ],
+  "body_text": "“For if ye live after the flesh, ye shall die: but if ye through the Spirit do mortify the deeds of the body, ye shall live.” — Romans 8:13 (KJV) John Owen was born in 1616 in Stadhampton, a village in Oxfordshire, England. His father was a minister. John was clever, very clever: he went to Oxford University when he was only about twelve years old. But being clever and going to church did not give him peace with God. In 1637 he left Oxford rather than obey rules about worship that went against his conscience, and for several years he lived in spiritual darkness. He knew a lot about God, but he wasn’t sure God was his. Then, around 1642, he went to a church in London hoping to hear a famous preacher. The famous preacher didn’t turn up. An unknown man stood in for him instead and preached on Jesus’ words to his frightened disciples: “Why are ye fearful, O ye of little faith?” Through that ordinary sermon, the assurance Owen had begged God for finally came. Owen went on to become one of the most important people of his time. Oliver Cromwell, the general who later ruled England, made him an army chaplain. In 1651 he became Dean of Christ Church, one of Oxford’s biggest colleges, and the next year Vice-Chancellor of the whole university. While he was there, he preached to the students, many of them young men, about something they all struggled with: sin that wouldn’t go away. Those sermons became a book in 1656. Its title sounds strange today: The Mortification of Sin. “Mortify” means “put to death”. Owen’s life was not easy. After 1660 the government changed, and in 1662 he was thrown out of the Church of England along with about two thousand other ministers. Of his eleven or so children, all but one died young. But he kept preaching and writing, and he is credibly said to have helped get John Bunyan, the author of The Pilgrim’s Progress, released from prison. Owen’s book is famous for one sentence: “be killing sin or it will be killing you.” It sounds fierce. But as you will see, Owen’s answer to sin is not trying harder. It is the Holy Spirit, and it is Jesus. This book is for you if there is a sin you keep falling into, a habit you hate, or a temper, a jealousy or a secret you can’t seem to beat. One thing to do this week: think of one sin or habit you would really like to be free from. Write it down somewhere private, and pray each day this week: “Lord, by your Spirit, help me put this to death.”",
+  "word_count": 453
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "en"
+  ],
+  "order": 2,
+  "title": "Be Killing Sin",
+  "body_html": "<blockquote>“Mortify therefore your members which are upon the earth.” — Colossians 3:5 (KJV)</blockquote> <p>Owen’s book starts from one Bible verse, Romans 8:13: “if ye through the Spirit do mortify the deeds of the body, ye shall live.” Notice two things. Killing sin is linked to life. And it is done “through the Spirit”.</p> <p>Owen says this is a job for every Christian, including the very best ones. Some people think that once they become a Christian, they can relax. Owen says no. Paul wrote “Mortify therefore” to people who had already been raised with Christ. Then comes the famous passage:</p> <blockquote>“Do you mortify; do you make it your daily work; be always at it whilst you live; cease not a day from this work; be killing sin or it will be killing you.”</blockquote> <p>Why every day? Because sin is still in us, even after we trust Jesus, and it doesn’t take days off. Owen says: “When sin lets us alone we may let sin alone.” But sin never really lets us alone. In fact, he says, it is never less quiet than when it seems most quiet, like deep water that looks still on the surface.</p> <p>He uses a picture from Jesus too. Jesus said his Father prunes every fruitful branch so that it will bear more fruit. A gardener doesn’t prune a plant once and then stop. He keeps at it, season after season, because healthy growth depends on it.</p> <p>Owen also says this: “He that is appointed to kill an enemy, if he leave striking before the other ceases living, doth but half his work.” If you only fight sin until it stops bothering you, you have only done half the job.</p> <p>This can sound exhausting. But Owen is not saying you need to be anxious and grim all the time. He is saying that sin is serious, because it can wreck your life and your friendship with God, and that it is worth fighting steadily, every day, the way an athlete trains every day.</p> <p>And remember the second part of the verse: “ye shall live”. Killing sin is not about losing life. It is about finding it.</p> <p><strong>One thing to do this week:</strong> each evening this week, take two minutes to look back over your day with God. Where did sin show up? Thank God for any victories, confess any failures, and ask for his help tomorrow.</p>",
+  "study_questions": [
+   {
+    "question": "Which Bible verse is Owen’s whole book built on?",
+    "answer": "Romans 8:13: “if ye through the Spirit do mortify the deeds of the body, ye shall live.”"
+   },
+   {
+    "question": "Why does Owen say we must fight sin every day?",
+    "answer": "Because sin is still in us and never takes a day off; it is most dangerous when it seems quiet."
+   },
+   {
+    "question": "What does Owen say about someone who stops striking an enemy too soon?",
+    "answer": "They have only done half their work."
+   }
+  ],
+  "body_text": "“Mortify therefore your members which are upon the earth.” — Colossians 3:5 (KJV) Owen’s book starts from one Bible verse, Romans 8:13: “if ye through the Spirit do mortify the deeds of the body, ye shall live.” Notice two things. Killing sin is linked to life. And it is done “through the Spirit”. Owen says this is a job for every Christian, including the very best ones. Some people think that once they become a Christian, they can relax. Owen says no. Paul wrote “Mortify therefore” to people who had already been raised with Christ. Then comes the famous passage: “Do you mortify; do you make it your daily work; be always at it whilst you live; cease not a day from this work; be killing sin or it will be killing you.” Why every day? Because sin is still in us, even after we trust Jesus, and it doesn’t take days off. Owen says: “When sin lets us alone we may let sin alone.” But sin never really lets us alone. In fact, he says, it is never less quiet than when it seems most quiet, like deep water that looks still on the surface. He uses a picture from Jesus too. Jesus said his Father prunes every fruitful branch so that it will bear more fruit. A gardener doesn’t prune a plant once and then stop. He keeps at it, season after season, because healthy growth depends on it. Owen also says this: “He that is appointed to kill an enemy, if he leave striking before the other ceases living, doth but half his work.” If you only fight sin until it stops bothering you, you have only done half the job. This can sound exhausting. But Owen is not saying you need to be anxious and grim all the time. He is saying that sin is serious, because it can wreck your life and your friendship with God, and that it is worth fighting steadily, every day, the way an athlete trains every day. And remember the second part of the verse: “ye shall live”. Killing sin is not about losing life. It is about finding it. One thing to do this week: each evening this week, take two minutes to look back over your day with God. Where did sin show up? Thank God for any victories, confess any failures, and ask for his help tomorrow.",
+  "word_count": 400
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "en"
+  ],
+  "order": 3,
+  "title": "Sin Never Stays Small",
+  "body_html": "<blockquote>“But every man is tempted, when he is drawn away of his own lust, and enticed. Then when lust hath conceived, it bringeth forth sin: and sin, when it is finished, bringeth forth death.” — James 1:14–15 (KJV)</blockquote> <p>One of Owen’s most important insights is that sin never wants to stay small. He puts it like this:</p> <blockquote>“Sin aims always at the utmost; every time it rises up to tempt or entice, might it have its own course, it would go out to the utmost sin in that kind.”</blockquote> <p>Then he gives examples. Every unclean thought or glance would become adultery if it could. Every greedy desire would become stealing and oppression. Every little doubt about God would grow into total unbelief, if it were allowed to grow.</p> <p>That doesn’t mean every small sin is as bad as the biggest one. It means that small sins are seeds. A bit of jealousy, if you feed it, grows into bitterness and hatred. A small lie grows into a habit of lying. A look grows into a secret. A flash of irritation, fed every day, grows into a temper that hurts people.</p> <p>Owen also explains how sin tricks us. It starts off looking modest. In its “first motions and proposals”, it doesn’t ask for much. It just wants a little bit of room. But once it has a foothold in the heart, it keeps the ground it has gained and pushes for more.</p> <p>And here is the sneaky part. Each time sin goes a bit further, we compare ourselves only with where we were last week, not with where we started. So we think, “I’m not that bad.” Meanwhile, Owen says, the heart is slowly getting harder.</p> <p>James describes the same process in the verse at the top of this chapter: desire, then sin, then death. It is like a snowball rolling downhill, small at the top and huge at the bottom.</p> <p>This is why Owen takes small sins seriously. Not to make you paranoid, but because the best time to stop a snowball is before it starts rolling.</p> <p><strong>One thing to do this week:</strong> think about one “small” sin in your life: a habit of exaggerating, a bit of envy, a type of joke, an app or game you know isn’t good for you. Ask God to show you where it could lead if it grew, and decide on one step to stop feeding it.</p>",
+  "study_questions": [
+   {
+    "question": "What does Owen mean by “Sin aims always at the utmost”?",
+    "answer": "Every temptation, if allowed to grow, would go all the way to the worst sin of its kind."
+   },
+   {
+    "question": "How does sin trick us when it first appears?",
+    "answer": "It looks modest and asks for little, but once it gets a foothold it keeps its ground and pushes further."
+   },
+   {
+    "question": "Why do we often not notice sin growing?",
+    "answer": "Because we compare ourselves with last week instead of where we started, and think we are not that bad."
+   }
+  ],
+  "body_text": "“But every man is tempted, when he is drawn away of his own lust, and enticed. Then when lust hath conceived, it bringeth forth sin: and sin, when it is finished, bringeth forth death.” — James 1:14–15 (KJV) One of Owen’s most important insights is that sin never wants to stay small. He puts it like this: “Sin aims always at the utmost; every time it rises up to tempt or entice, might it have its own course, it would go out to the utmost sin in that kind.” Then he gives examples. Every unclean thought or glance would become adultery if it could. Every greedy desire would become stealing and oppression. Every little doubt about God would grow into total unbelief, if it were allowed to grow. That doesn’t mean every small sin is as bad as the biggest one. It means that small sins are seeds. A bit of jealousy, if you feed it, grows into bitterness and hatred. A small lie grows into a habit of lying. A look grows into a secret. A flash of irritation, fed every day, grows into a temper that hurts people. Owen also explains how sin tricks us. It starts off looking modest. In its “first motions and proposals”, it doesn’t ask for much. It just wants a little bit of room. But once it has a foothold in the heart, it keeps the ground it has gained and pushes for more. And here is the sneaky part. Each time sin goes a bit further, we compare ourselves only with where we were last week, not with where we started. So we think, “I’m not that bad.” Meanwhile, Owen says, the heart is slowly getting harder. James describes the same process in the verse at the top of this chapter: desire, then sin, then death. It is like a snowball rolling downhill, small at the top and huge at the bottom. This is why Owen takes small sins seriously. Not to make you paranoid, but because the best time to stop a snowball is before it starts rolling. One thing to do this week: think about one “small” sin in your life: a habit of exaggerating, a bit of envy, a type of joke, an app or game you know isn’t good for you. Ask God to show you where it could lead if it grew, and decide on one step to stop feeding it.",
+  "word_count": 404
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "en"
+  ],
+  "order": 4,
+  "title": "Not in Your Own Strength",
+  "body_html": "<blockquote>“Not by might, nor by power, but by my spirit, saith the LORD of hosts.” — Zechariah 4:6 (KJV)</blockquote> <p>So how do we kill sin? Most people’s first answer is: try harder. Make a resolution. Grit your teeth. Owen says that will never work on its own.</p> <blockquote>“A man may easier see without eyes, speak without a tongue, than truly mortify one sin without the Spirit.”</blockquote> <p>Remember the verse: “if ye through the Spirit do mortify”. Owen says killing sin is the Holy Spirit’s work. He uses our effort, but the power is his. Without him, all our attempts are empty.</p> <p>Owen goes even further. He says trying to beat sin in your own strength, by your own invented methods, so that you can feel good about yourself, is the heart of all false religion:</p> <blockquote>“Mortification from a self-strength, carried on by ways of self-invention, unto the end of a self-righteousness, is the soul and substance of all false religion in the world.”</blockquote> <p>In Owen’s day some people tried to defeat sin with harsh rules and painful practices: special vows, endless fasting, punishing their bodies. Owen thought these missed the point completely, because they tried to change the outside without the Spirit changing the heart.</p> <p>This needs saying very clearly: killing sin never means hurting yourself. Not starving yourself, not cutting, not punishing your body. That is not what Owen meant and it is not what God wants. If you are hurting yourself, or feel you deserve to be hurt, please tell a trusted adult or a doctor today. God wants to heal you, not harm you.</p> <p>Owen also says that killing sin is only for believers. No amount of pruning will make a thorn bush grow figs. First a person needs to be joined to Christ by faith and receive his Spirit. Then the fight against sin begins, with real power.</p> <p>So if you have been trying to beat a sin on your own and failing, don’t just try harder. Ask for help: from the Holy Spirit first, and often from wise people too.</p> <p><strong>One thing to do this week:</strong> before you face your usual temptation this week, stop and pray a short prayer: “Holy Spirit, I can’t do this on my own. Give me your strength right now.” Notice what happens when you depend on him.</p>",
+  "study_questions": [
+   {
+    "question": "What does Owen say is easier than killing one sin without the Spirit?",
+    "answer": "Seeing without eyes or speaking without a tongue."
+   },
+   {
+    "question": "What does Owen call the “soul and substance of all false religion”?",
+    "answer": "Trying to kill sin by your own strength and methods in order to make yourself righteous."
+   },
+   {
+    "question": "Does killing sin mean punishing or hurting your body?",
+    "answer": "No. Owen rejected harsh bodily practices; it is the Spirit’s work in the heart, and anyone hurting themselves should tell a trusted adult or doctor."
+   }
+  ],
+  "body_text": "“Not by might, nor by power, but by my spirit, saith the LORD of hosts.” — Zechariah 4:6 (KJV) So how do we kill sin? Most people’s first answer is: try harder. Make a resolution. Grit your teeth. Owen says that will never work on its own. “A man may easier see without eyes, speak without a tongue, than truly mortify one sin without the Spirit.” Remember the verse: “if ye through the Spirit do mortify”. Owen says killing sin is the Holy Spirit’s work. He uses our effort, but the power is his. Without him, all our attempts are empty. Owen goes even further. He says trying to beat sin in your own strength, by your own invented methods, so that you can feel good about yourself, is the heart of all false religion: “Mortification from a self-strength, carried on by ways of self-invention, unto the end of a self-righteousness, is the soul and substance of all false religion in the world.” In Owen’s day some people tried to defeat sin with harsh rules and painful practices: special vows, endless fasting, punishing their bodies. Owen thought these missed the point completely, because they tried to change the outside without the Spirit changing the heart. This needs saying very clearly: killing sin never means hurting yourself. Not starving yourself, not cutting, not punishing your body. That is not what Owen meant and it is not what God wants. If you are hurting yourself, or feel you deserve to be hurt, please tell a trusted adult or a doctor today. God wants to heal you, not harm you. Owen also says that killing sin is only for believers. No amount of pruning will make a thorn bush grow figs. First a person needs to be joined to Christ by faith and receive his Spirit. Then the fight against sin begins, with real power. So if you have been trying to beat a sin on your own and failing, don’t just try harder. Ask for help: from the Holy Spirit first, and often from wise people too. One thing to do this week: before you face your usual temptation this week, stop and pray a short prayer: “Holy Spirit, I can’t do this on my own. Give me your strength right now.” Notice what happens when you depend on him.",
+  "word_count": 388
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "en"
+  ],
+  "order": 5,
+  "title": "Fighting for Life",
+  "body_html": "<blockquote>“The thief cometh not, but for to steal, and to kill, and to destroy: I am come that they might have life, and that they might have it more abundantly.” — John 10:10 (KJV)</blockquote> <p>Why bother with all this? Owen gives a simple answer:</p> <blockquote>“The vigour, and power, and comfort of our spiritual life depends on the mortification of the deeds of the flesh.”</blockquote> <p>Think of a plant being strangled by weeds. The weeds take the water and light, and the plant can’t grow. Pull the weeds and the plant flourishes. Sin is like those weeds. When it is left alone, it drains the life out of your friendship with God. You find it hard to pray, hard to read the Bible, hard to feel God is near, hard to have joy.</p> <p>Owen says unmortified sin weakens the soul and darkens it. It takes away our peace, and it makes us less useful to God and to other people.</p> <p>But when sin is being put to death, the opposite happens. Prayer comes alive. Joy grows. You become more able to love people. Owen’s whole point is that killing sin is not about becoming less alive. It is about becoming more alive.</p> <p>This is very different from how sin presents itself. Sin promises life, fun and freedom. But Jesus said the thief comes only to steal, kill and destroy. Sin always takes more than it gives. Jesus came so that we might have life to the full.</p> <p>Owen also warns about what happens when people stop fighting. He had seen Christians who were once humble, tender and eager for God become cold, angry and worldly over time, not usually because of one big fall, but because they stopped watching and let sin grow.</p> <p>So the fight is worth it. Every time you say no to sin and yes to God, you are not losing something. You are clearing space for life.</p> <p><strong>One thing to do this week:</strong> think of one area where sin has been draining life from you: your joy, your prayer, a friendship. This week, take one practical step against that sin, and then notice whether you have more life and freedom in that area.</p>",
+  "study_questions": [
+   {
+    "question": "What does Owen say depends on killing sin?",
+    "answer": "The vigour, power and comfort of our spiritual life."
+   },
+   {
+    "question": "What does unmortified sin do to the soul, according to Owen?",
+    "answer": "It weakens and darkens it, takes away peace, and makes us less useful."
+   },
+   {
+    "question": "What did Jesus say about the thief and about himself in John 10:10?",
+    "answer": "The thief comes to steal, kill and destroy; Jesus came so that we might have life more abundantly."
+   }
+  ],
+  "body_text": "“The thief cometh not, but for to steal, and to kill, and to destroy: I am come that they might have life, and that they might have it more abundantly.” — John 10:10 (KJV) Why bother with all this? Owen gives a simple answer: “The vigour, and power, and comfort of our spiritual life depends on the mortification of the deeds of the flesh.” Think of a plant being strangled by weeds. The weeds take the water and light, and the plant can’t grow. Pull the weeds and the plant flourishes. Sin is like those weeds. When it is left alone, it drains the life out of your friendship with God. You find it hard to pray, hard to read the Bible, hard to feel God is near, hard to have joy. Owen says unmortified sin weakens the soul and darkens it. It takes away our peace, and it makes us less useful to God and to other people. But when sin is being put to death, the opposite happens. Prayer comes alive. Joy grows. You become more able to love people. Owen’s whole point is that killing sin is not about becoming less alive. It is about becoming more alive. This is very different from how sin presents itself. Sin promises life, fun and freedom. But Jesus said the thief comes only to steal, kill and destroy. Sin always takes more than it gives. Jesus came so that we might have life to the full. Owen also warns about what happens when people stop fighting. He had seen Christians who were once humble, tender and eager for God become cold, angry and worldly over time, not usually because of one big fall, but because they stopped watching and let sin grow. So the fight is worth it. Every time you say no to sin and yes to God, you are not losing something. You are clearing space for life. One thing to do this week: think of one area where sin has been draining life from you: your joy, your prayer, a friendship. This week, take one practical step against that sin, and then notice whether you have more life and freedom in that area.",
+  "word_count": 366
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "en"
+  ],
+  "order": 6,
+  "title": "What Killing Sin Is Not",
+  "body_html": "<blockquote>“Not as though I had already attained, either were already perfect: but I follow after, if that I may apprehend that for which also I am apprehended of Christ Jesus.” — Philippians 3:12 (KJV)</blockquote> <p>Before explaining what killing sin is, Owen clears up some mistakes about what it is not. These are really helpful.</p> <p>First, it is not getting rid of sin completely in this life. That is the goal, and Owen says real, wonderful victory is possible. But even Paul said he had not yet “attained”. Sin will not be totally gone until Christ makes us new. So don’t despair if you still feel temptation. That is normal.</p> <p>Second, it is not just hiding sin. If you stop doing something in public but keep it going in your heart, you haven’t killed it. You’ve just learned to cover it up.</p> <p>Third, it is not just having a calm personality. Some people are naturally less angry than others. That doesn’t mean they have defeated anger. Owen says such people should test themselves on sins their temperament doesn’t protect them from, like envy, pride or unbelief.</p> <p>Fourth, it is not swapping one sin for another. Owen tells the story of Simon the magician in the book of Acts, who gave up his sorcery but was still full of greed and ambition. Owen says of someone like that:</p> <blockquote>“He hath changed his master, but is a servant still.”</blockquote> <p>For example, someone might stop shoplifting but start cheating at school. The outward sin changed. The heart didn’t.</p> <p>Fifth, it is not a burst of effort after a crisis. When sin causes a disaster, when you get caught, or you hurt someone badly, or you feel terrible, you may throw yourself against it, and for a while it seems dead. Owen compares it to soldiers who kill an enemy leader in a night raid: the enemy pulls back for a bit, then regroups. Sin often goes quiet after a crisis, then comes back.</p> <p>Owen is not saying these moments are worthless. A crisis can wake you up. But real change is something steadier and deeper.</p> <p><strong>One thing to do this week:</strong> look at Owen’s five “nots” again. Is one of them true of you, for example, hiding a sin, or swapping one sin for another? Talk to God honestly about it this week.</p>",
+  "study_questions": [
+   {
+    "question": "Why should we not despair if temptation is still there?",
+    "answer": "Because sin is not completely destroyed in this life; even Paul said he had not yet attained."
+   },
+   {
+    "question": "What does Owen mean by “He hath changed his master, but is a servant still”?",
+    "answer": "Giving up one sin while another takes its place is not real freedom; the heart is still serving sin."
+   },
+   {
+    "question": "Why isn’t a burst of effort after a crisis enough?",
+    "answer": "Because sin often goes quiet after a crisis and then comes back; real change is steadier and deeper."
+   }
+  ],
+  "body_text": "“Not as though I had already attained, either were already perfect: but I follow after, if that I may apprehend that for which also I am apprehended of Christ Jesus.” — Philippians 3:12 (KJV) Before explaining what killing sin is, Owen clears up some mistakes about what it is not. These are really helpful. First, it is not getting rid of sin completely in this life. That is the goal, and Owen says real, wonderful victory is possible. But even Paul said he had not yet “attained”. Sin will not be totally gone until Christ makes us new. So don’t despair if you still feel temptation. That is normal. Second, it is not just hiding sin. If you stop doing something in public but keep it going in your heart, you haven’t killed it. You’ve just learned to cover it up. Third, it is not just having a calm personality. Some people are naturally less angry than others. That doesn’t mean they have defeated anger. Owen says such people should test themselves on sins their temperament doesn’t protect them from, like envy, pride or unbelief. Fourth, it is not swapping one sin for another. Owen tells the story of Simon the magician in the book of Acts, who gave up his sorcery but was still full of greed and ambition. Owen says of someone like that: “He hath changed his master, but is a servant still.” For example, someone might stop shoplifting but start cheating at school. The outward sin changed. The heart didn’t. Fifth, it is not a burst of effort after a crisis. When sin causes a disaster, when you get caught, or you hurt someone badly, or you feel terrible, you may throw yourself against it, and for a while it seems dead. Owen compares it to soldiers who kill an enemy leader in a night raid: the enemy pulls back for a bit, then regroups. Sin often goes quiet after a crisis, then comes back. Owen is not saying these moments are worthless. A crisis can wake you up. But real change is something steadier and deeper. One thing to do this week: look at Owen’s five “nots” again. Is one of them true of you, for example, hiding a sin, or swapping one sin for another? Talk to God honestly about it this week.",
+  "word_count": 389
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "en"
+  ],
+  "order": 7,
+  "title": "What Killing Sin Is",
+  "body_html": "<blockquote>“This I say then, Walk in the Spirit, and ye shall not fulfil the lust of the flesh.” — Galatians 5:16 (KJV)</blockquote> <p>So what does it actually look like to kill a sin? Owen says it has three parts.</p> <p>The first is weakening it. Every sinful habit is like a strong pull in a certain direction. Owen describes sinful habits as impelling the heart “with violence”. Killing sin means that pull gets weaker over time, so that the sin doesn’t rise up as often, as strongly or as suddenly as it used to.</p> <p>Owen also notices that some sins are stronger in some people than others. A sin can grow especially powerful when it fits our natural temperament, our way of life, or the situations we are often in. That is why your hardest battles may be different from your friend’s. That’s normal.</p> <p>The second part is constant fighting. Owen says this includes knowing your enemy: understanding how a particular sin works in you, what triggers it, what excuses it uses. It also includes really wanting it gone, and loading it with the guilt it deserves instead of making excuses for it.</p> <p>The third part is success. Owen says that with the Spirit’s help we can have frequent victories. Each time sin rises up and is stopped, it is weakened a bit more. Over time, he says, you can see real change, a sin that once controlled you losing its grip.</p> <p>Notice that this is a process, not a single moment. It’s more like getting fit than flicking a switch. Some days you win, some days you lose, but over months and years, if you keep walking with the Spirit, you change.</p> <p>And remember who is doing the work. Paul says: walk in the Spirit, and you will not fulfil the desires of the flesh. The more you are filled with the Spirit, praying, reading Scripture, worshipping, spending time with other Christians, the less room there is for sin.</p> <p><strong>One thing to do this week:</strong> pick the sin you want to fight. This week, write down three things: what usually triggers it, what excuse it usually gives you, and one way you can “walk in the Spirit” at that moment instead.</p>",
+  "study_questions": [
+   {
+    "question": "What are Owen’s three parts of killing sin?",
+    "answer": "Weakening the sinful habit, constant fighting against it, and success over it."
+   },
+   {
+    "question": "Why might your hardest battles be different from a friend’s?",
+    "answer": "Because sins grow stronger when they fit a person’s temperament, way of life or usual situations."
+   },
+   {
+    "question": "Is killing sin a single moment or a process?",
+    "answer": "A process, more like getting fit than flicking a switch."
+   }
+  ],
+  "body_text": "“This I say then, Walk in the Spirit, and ye shall not fulfil the lust of the flesh.” — Galatians 5:16 (KJV) So what does it actually look like to kill a sin? Owen says it has three parts. The first is weakening it. Every sinful habit is like a strong pull in a certain direction. Owen describes sinful habits as impelling the heart “with violence”. Killing sin means that pull gets weaker over time, so that the sin doesn’t rise up as often, as strongly or as suddenly as it used to. Owen also notices that some sins are stronger in some people than others. A sin can grow especially powerful when it fits our natural temperament, our way of life, or the situations we are often in. That is why your hardest battles may be different from your friend’s. That’s normal. The second part is constant fighting. Owen says this includes knowing your enemy: understanding how a particular sin works in you, what triggers it, what excuses it uses. It also includes really wanting it gone, and loading it with the guilt it deserves instead of making excuses for it. The third part is success. Owen says that with the Spirit’s help we can have frequent victories. Each time sin rises up and is stopped, it is weakened a bit more. Over time, he says, you can see real change, a sin that once controlled you losing its grip. Notice that this is a process, not a single moment. It’s more like getting fit than flicking a switch. Some days you win, some days you lose, but over months and years, if you keep walking with the Spirit, you change. And remember who is doing the work. Paul says: walk in the Spirit, and you will not fulfil the desires of the flesh. The more you are filled with the Spirit, praying, reading Scripture, worshipping, spending time with other Christians, the less room there is for sin. One thing to do this week: pick the sin you want to fight. This week, write down three things: what usually triggers it, what excuse it usually gives you, and one way you can “walk in the Spirit” at that moment instead.",
+  "word_count": 371
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "en"
+  ],
+  "order": 8,
+  "title": "All of It, Not Just One",
+  "body_html": "<blockquote>“Search me, O God, and know my heart: try me, and know my thoughts: and see if there be any wicked way in me, and lead me in the way everlasting.” — Psalm 139:23–24 (KJV)</blockquote> <p>Owen now gives an important rule, and it might surprise you. If you only fight the one sin that is bothering you, and ignore the rest of your life, you won’t beat it.</p> <p>He describes someone who is really troubled by one sin. They pray against it, groan over it, beg to be free. But in other areas, like prayer, reading the Bible, and how they treat people, they are careless. Owen says: that person will never defeat the sin they are worried about.</p> <p>Why? Because of the reason they are fighting it. Owen says the real reason is often self-love. The sin is making them feel bad, so they want it gone. But other sins that don’t make them feel bad, they are happy to keep. Owen speaks to such a person directly:</p> <blockquote>“These are no less sins and evils than those under which thou groanest. Jesus Christ bled for them also. Why dost thou not set thyself against them also?”</blockquote> <p>Then he says what should really be underneath our fight against sin:</p> <blockquote>“Hatred of sin as sin, not only as galling or disquieting, a sense of the love of Christ in the cross, lie at the bottom of all true spiritual mortification.”</blockquote> <p>In other words, we should fight sin not just because it makes us feel guilty or might get us into trouble, but because it is wrong, because it grieves God, and because Jesus died for it.</p> <p>Owen uses a medical picture. If someone has a sore caused by an unhealthy body, putting cream on the sore won’t cure it. They need to look after their whole health. In the same way, if you want to beat one sin, look after your whole walk with God.</p> <p>That is why the prayer in Psalm 139 is so good. Instead of only asking God to fix one problem, you invite him to search your whole heart.</p> <p><strong>One thing to do this week:</strong> pray Psalm 139:23–24 every day this week. Ask God to show you any sin you have been ignoring because it doesn’t bother you. Write down what comes to mind and bring it to him too.</p>",
+  "study_questions": [
+   {
+    "question": "Why won’t fighting only one troubling sin work, according to Owen?",
+    "answer": "Because if we are careless in the rest of our walk with God, our fight is driven by self-love, and the sin will not be truly mortified."
+   },
+   {
+    "question": "What should lie underneath our fight against sin?",
+    "answer": "Hatred of sin as sin, not just because it troubles us, and a sense of Christ’s love on the cross."
+   },
+   {
+    "question": "What picture does Owen use about a sore and an unhealthy body?",
+    "answer": "Treating only the sore won’t cure it if the whole body is unhealthy; we must care for our whole walk with God."
+   }
+  ],
+  "body_text": "“Search me, O God, and know my heart: try me, and know my thoughts: and see if there be any wicked way in me, and lead me in the way everlasting.” — Psalm 139:23–24 (KJV) Owen now gives an important rule, and it might surprise you. If you only fight the one sin that is bothering you, and ignore the rest of your life, you won’t beat it. He describes someone who is really troubled by one sin. They pray against it, groan over it, beg to be free. But in other areas, like prayer, reading the Bible, and how they treat people, they are careless. Owen says: that person will never defeat the sin they are worried about. Why? Because of the reason they are fighting it. Owen says the real reason is often self-love. The sin is making them feel bad, so they want it gone. But other sins that don’t make them feel bad, they are happy to keep. Owen speaks to such a person directly: “These are no less sins and evils than those under which thou groanest. Jesus Christ bled for them also. Why dost thou not set thyself against them also?” Then he says what should really be underneath our fight against sin: “Hatred of sin as sin, not only as galling or disquieting, a sense of the love of Christ in the cross, lie at the bottom of all true spiritual mortification.” In other words, we should fight sin not just because it makes us feel guilty or might get us into trouble, but because it is wrong, because it grieves God, and because Jesus died for it. Owen uses a medical picture. If someone has a sore caused by an unhealthy body, putting cream on the sore won’t cure it. They need to look after their whole health. In the same way, if you want to beat one sin, look after your whole walk with God. That is why the prayer in Psalm 139 is so good. Instead of only asking God to fix one problem, you invite him to search your whole heart. One thing to do this week: pray Psalm 139:23–24 every day this week. Ask God to show you any sin you have been ignoring because it doesn’t bother you. Write down what comes to mind and bring it to him too.",
+  "word_count": 393
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "en"
+  ],
+  "order": 9,
+  "title": "Warning Lights",
+  "body_html": "<blockquote>“But exhort one another daily, while it is called To day; lest any of you be hardened through the deceitfulness of sin.” — Hebrews 3:13 (KJV)</blockquote> <p>Owen says some sins have “dangerous symptoms”, warning lights that show a habit has become especially serious. These are worth knowing, because if you see them, you need to act quickly and seriously, and probably get help.</p> <p>The first warning light is that it has been going on a long time. If you have let a sin stay strong in your heart for a long season without really fighting it, Owen says the situation is dangerous.</p> <p>The second is that you have made peace with it. You have found ways to stop feeling bad about it. Maybe you tell yourself, “Everyone does it,” or “God will forgive me anyway,” or “It’s not that bad.” Owen says using grace as an excuse to keep sinning is a very bad sign.</p> <p>The third is that it keeps winning. If temptation comes and you give in most of the time, that sin has a lot of power.</p> <p>The fourth is that you only fight it because of consequences. If the only reason you resist is fear of getting caught or punished, and not love for God, Owen says your heart is in a worrying place.</p> <p>The fifth is that God has already dealt with you about it, through warnings, hard times, or your conscience, and you have kept going anyway.</p> <p>If you see these warning lights, don’t panic, but don’t ignore them either. Owen says “extraordinary remedies” are needed. One of those remedies is not to fight alone. The verse at the top of this chapter says we should “exhort one another daily” so that we are not hardened by sin. God gives us other Christians for exactly this.</p> <p>If a habit has got to the point where it feels out of control, for example pornography, alcohol, vaping, drugs or anything else, please talk to a trusted adult, a youth leader or a doctor. That is not weakness. It is wisdom, and it is one of the ways God helps people get free.</p> <p><strong>One thing to do this week:</strong> honestly check the sin you are fighting against Owen’s five warning lights. If one or more is flashing, choose one trusted, mature Christian or adult and tell them about it this week.</p>",
+  "study_questions": [
+   {
+    "question": "Name two of Owen’s warning signs that a sin has become dangerous.",
+    "answer": "Any two of: it has gone on a long time; you have made peace with it; it keeps winning; you only fight it out of fear of consequences; it has continued despite God dealing with you about it."
+   },
+   {
+    "question": "Why is making peace with a sin so dangerous?",
+    "answer": "Because it stops us feeling the need to fight it, and can turn grace into an excuse to keep sinning."
+   },
+   {
+    "question": "According to Hebrews 3:13, how does God help us not to be hardened by sin?",
+    "answer": "Through other believers exhorting and encouraging us daily."
+   }
+  ],
+  "body_text": "“But exhort one another daily, while it is called To day; lest any of you be hardened through the deceitfulness of sin.” — Hebrews 3:13 (KJV) Owen says some sins have “dangerous symptoms”, warning lights that show a habit has become especially serious. These are worth knowing, because if you see them, you need to act quickly and seriously, and probably get help. The first warning light is that it has been going on a long time. If you have let a sin stay strong in your heart for a long season without really fighting it, Owen says the situation is dangerous. The second is that you have made peace with it. You have found ways to stop feeling bad about it. Maybe you tell yourself, “Everyone does it,” or “God will forgive me anyway,” or “It’s not that bad.” Owen says using grace as an excuse to keep sinning is a very bad sign. The third is that it keeps winning. If temptation comes and you give in most of the time, that sin has a lot of power. The fourth is that you only fight it because of consequences. If the only reason you resist is fear of getting caught or punished, and not love for God, Owen says your heart is in a worrying place. The fifth is that God has already dealt with you about it, through warnings, hard times, or your conscience, and you have kept going anyway. If you see these warning lights, don’t panic, but don’t ignore them either. Owen says “extraordinary remedies” are needed. One of those remedies is not to fight alone. The verse at the top of this chapter says we should “exhort one another daily” so that we are not hardened by sin. God gives us other Christians for exactly this. If a habit has got to the point where it feels out of control, for example pornography, alcohol, vaping, drugs or anything else, please talk to a trusted adult, a youth leader or a doctor. That is not weakness. It is wisdom, and it is one of the ways God helps people get free. One thing to do this week: honestly check the sin you are fighting against Owen’s five warning lights. If one or more is flashing, choose one trusted, mature Christian or adult and tell them about it this week.",
+  "word_count": 394
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "en"
+  ],
+  "order": 10,
+  "title": "Stop It Early",
+  "body_html": "<blockquote>“Watch ye and pray, lest ye enter into temptation. The spirit truly is ready, but the flesh is weak.” — Mark 14:38 (KJV)</blockquote> <p>Now Owen gets very practical. Two of his best pieces of advice are about watching and stopping sin early.</p> <p>First, he says, think about what occasions and opportunities your sin usually uses, and watch against them all. When does your temptation usually come? When you’re alone? Late at night? With certain people? When you’re bored, tired, stressed or lonely? On certain apps? Jesus told his disciples to watch and pray so that they would not enter into temptation.</p> <p>This is common sense, but we often ignore it. If you know you always give in to a certain temptation when your phone is in your room at night, the wise thing is not to keep it there and hope for the best. Change the situation.</p> <p>Second, Owen says:</p> <blockquote>“Rise mightily against the first actings of thy distemper, its first conceptions; suffer it not to get the least ground.”</blockquote> <p>“Distemper” was Owen’s word for a sinful habit, like a sickness of the soul. He is saying: fight the temptation at the very first moment. Don’t let it get any ground at all.</p> <p>He warns against a particular trick we play on ourselves: “Do not say, ‘Thus far it shall go, and no farther.’ If it have allowance for one step, it will take another.” We think we can let a temptation in a little way and stop it before it goes too far. But Owen says that almost never works.</p> <p>He compares sin to water in a channel. Once it breaks out, it will run its course. It is much easier to stop it starting than to stop it once it has started.</p> <p>So when a tempting thought first comes, don’t play with it. Don’t open the door “just a crack”. Turn away straight away, pray, and do something different. The first few seconds are where most battles are won.</p> <p><strong>One thing to do this week:</strong> this week, identify your top two danger situations for temptation. Make one practical change to each, such as moving your phone, changing your route, or avoiding a certain group chat, and practise saying no in the first few seconds.</p>",
+  "study_questions": [
+   {
+    "question": "What does Owen tell us to watch against?",
+    "answer": "The occasions and opportunities our particular sin usually uses."
+   },
+   {
+    "question": "What does “Rise mightily against the first actings” mean?",
+    "answer": "Fight temptation at its very first moment, before it gets any ground."
+   },
+   {
+    "question": "Why is “Thus far it shall go, and no farther” a dangerous idea?",
+    "answer": "Because once sin is allowed one step it will take another; like water in a channel, once it breaks out it runs its course."
+   }
+  ],
+  "body_text": "“Watch ye and pray, lest ye enter into temptation. The spirit truly is ready, but the flesh is weak.” — Mark 14:38 (KJV) Now Owen gets very practical. Two of his best pieces of advice are about watching and stopping sin early. First, he says, think about what occasions and opportunities your sin usually uses, and watch against them all. When does your temptation usually come? When you’re alone? Late at night? With certain people? When you’re bored, tired, stressed or lonely? On certain apps? Jesus told his disciples to watch and pray so that they would not enter into temptation. This is common sense, but we often ignore it. If you know you always give in to a certain temptation when your phone is in your room at night, the wise thing is not to keep it there and hope for the best. Change the situation. Second, Owen says: “Rise mightily against the first actings of thy distemper, its first conceptions; suffer it not to get the least ground.” “Distemper” was Owen’s word for a sinful habit, like a sickness of the soul. He is saying: fight the temptation at the very first moment. Don’t let it get any ground at all. He warns against a particular trick we play on ourselves: “Do not say, ‘Thus far it shall go, and no farther.’ If it have allowance for one step, it will take another.” We think we can let a temptation in a little way and stop it before it goes too far. But Owen says that almost never works. He compares sin to water in a channel. Once it breaks out, it will run its course. It is much easier to stop it starting than to stop it once it has started. So when a tempting thought first comes, don’t play with it. Don’t open the door “just a crack”. Turn away straight away, pray, and do something different. The first few seconds are where most battles are won. One thing to do this week: this week, identify your top two danger situations for temptation. Make one practical change to each, such as moving your phone, changing your route, or avoiding a certain group chat, and practise saying no in the first few seconds.",
+  "word_count": 376
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "en"
+  ],
+  "order": 11,
+  "title": "Don’t Fake Peace",
+  "body_html": "<blockquote>“I will hear what God the LORD will speak: for he will speak peace unto his people, and to his saints: but let them not turn again to folly.” — Psalm 85:8 (KJV)</blockquote> <p>Owen gives some advice about our consciences that is worth thinking about carefully.</p> <p>He says we should take our sin seriously by talking honestly to ourselves about it. He imagines someone asking themselves questions like these:</p> <blockquote>“What can I say to the dear Lord Jesus? How shall I hold up my head with any boldness before him?”</blockquote> <p>And then: “Shall I daily grieve that Spirit whereby I am sealed to the day of redemption?” The point is not to wallow in shame. It is to let the love of Jesus make sin look as ugly as it really is. When you remember how much Jesus loves you, choosing sin over him starts to look absurd.</p> <p>Then Owen warns against a different danger: speaking peace to yourself too quickly. When you feel guilty, it can be tempting to grab a quick comfort, “God forgives everything, so it doesn’t matter,” and move on without really turning away from the sin.</p> <p>Owen says: take heed that you do not speak peace to yourself before God speaks it, but listen to what he says to your soul. Real peace comes from God, when we honestly turn from sin and trust Christ. Fake peace is a shortcut we give ourselves to stop feeling uncomfortable.</p> <p>He puts it like this: “The use of means for the obtaining of peace is ours; the bestowing of it is God’s prerogative.” Our part is to confess, turn and trust. Giving peace is God’s part.</p> <p>This is not meant to make you anxious or keep you feeling guilty for ever. God loves to speak peace to his people, as the psalm says. Jesus died so that you could be forgiven. When you truly come back to him, he does forgive, and you can rest in that.</p> <p>But notice the end of the psalm: “let them not turn again to folly.” God’s peace comes with a call to change. Real peace and real change go together.</p> <p>If you find you can never feel forgiven, however many times you confess, please talk to a pastor or a trusted adult. Sometimes guilt gets stuck, and we need help to hear God’s forgiveness.</p> <p><strong>One thing to do this week:</strong> next time you sin this week, don’t rush to a quick “it doesn’t matter”, and don’t sink into shame either. Stop, confess it honestly to Jesus, turn from it, and then read 1 John 1:9 and receive his forgiveness.</p>",
+  "study_questions": [
+   {
+    "question": "What questions does Owen suggest we ask ourselves about sin?",
+    "answer": "Questions like “What can I say to the dear Lord Jesus?” and “Shall I daily grieve that Spirit whereby I am sealed?”"
+   },
+   {
+    "question": "What does it mean to speak peace to yourself too quickly?",
+    "answer": "Grabbing a quick comfort that sin doesn’t matter, without truly turning from it or listening to God."
+   },
+   {
+    "question": "According to Owen, whose job is it to give peace?",
+    "answer": "God’s; our part is to use the means of seeking peace, such as confessing, turning and trusting."
+   }
+  ],
+  "body_text": "“I will hear what God the LORD will speak: for he will speak peace unto his people, and to his saints: but let them not turn again to folly.” — Psalm 85:8 (KJV) Owen gives some advice about our consciences that is worth thinking about carefully. He says we should take our sin seriously by talking honestly to ourselves about it. He imagines someone asking themselves questions like these: “What can I say to the dear Lord Jesus? How shall I hold up my head with any boldness before him?” And then: “Shall I daily grieve that Spirit whereby I am sealed to the day of redemption?” The point is not to wallow in shame. It is to let the love of Jesus make sin look as ugly as it really is. When you remember how much Jesus loves you, choosing sin over him starts to look absurd. Then Owen warns against a different danger: speaking peace to yourself too quickly. When you feel guilty, it can be tempting to grab a quick comfort, “God forgives everything, so it doesn’t matter,” and move on without really turning away from the sin. Owen says: take heed that you do not speak peace to yourself before God speaks it, but listen to what he says to your soul. Real peace comes from God, when we honestly turn from sin and trust Christ. Fake peace is a shortcut we give ourselves to stop feeling uncomfortable. He puts it like this: “The use of means for the obtaining of peace is ours; the bestowing of it is God’s prerogative.” Our part is to confess, turn and trust. Giving peace is God’s part. This is not meant to make you anxious or keep you feeling guilty for ever. God loves to speak peace to his people, as the psalm says. Jesus died so that you could be forgiven. When you truly come back to him, he does forgive, and you can rest in that. But notice the end of the psalm: “let them not turn again to folly.” God’s peace comes with a call to change. Real peace and real change go together. If you find you can never feel forgiven, however many times you confess, please talk to a pastor or a trusted adult. Sometimes guilt gets stuck, and we need help to hear God’s forgiveness. One thing to do this week: next time you sin this week, don’t rush to a quick “it doesn’t matter”, and don’t sink into shame either. Stop, confess it honestly to Jesus, turn from it, and then read 1 John 1:9 and receive his forgiveness.",
+  "word_count": 437
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "en"
+  ],
+  "order": 12,
+  "title": "Look at Jesus",
+  "body_html": "<blockquote>“Looking unto Jesus the author and finisher of our faith; who for the joy that was set before him endured the cross, despising the shame, and is set down at the right hand of the throne of God.” — Hebrews 12:2 (KJV)</blockquote> <p>Owen saves his most important direction for last. After all the advice about watching, fighting and examining yourself, he says the main thing is this:</p> <blockquote>“Set faith at work on Christ for the killing of thy sin. His blood is the great sovereign remedy for sin-sick souls.”</blockquote> <p>Then comes a wonderful promise: “Live in this, and thou wilt die a conqueror; yea, thou wilt, through the good providence of God, live to see thy lust dead at thy feet.”</p> <p>How do we do this? First, Owen says, fill your mind with what Jesus has for you. Even if you feel you have no strength left, even if you are “weary of contending” and ready to give up, there is enough in Jesus Christ to help you.</p> <p>He compares it to the prodigal son in Jesus’ story. Far from home and starving, what kept him going was remembering that there was bread enough in his father’s house. In the same way, when you feel weak, remember: there is enough in Christ.</p> <p>Second, Owen says, look at Jesus on the cross: “Look on him under the weight of our sins, praying, bleeding, dying; bring him in that condition into thy heart by faith; apply his blood so shed to thy corruptions: do this daily.” Nothing makes sin look uglier, or makes you want to be free of it more, than seeing what it cost Jesus.</p> <p>And all of this, Owen reminds us, is the work of the Holy Spirit, who shows us our sin, shows us Christ, and gives us strength.</p> <p>Owen lived until 1683. Two days before he died, he wrote to a friend: “I am going to Him whom my soul hath loved, or rather who hath loved me with an everlasting love.” Notice how he corrected himself. In the end, it was not about how much Owen had loved Jesus, but how much Jesus had loved him.</p> <p>That is where the fight against sin ends: not with your willpower, but with his love. Keep looking at Jesus. One day, by his grace, you will see your sin dead at your feet.</p> <p><strong>One thing to do this week:</strong> each day this week, read a short passage about the cross, for example Luke 23:33–46. Spend a few minutes looking at Jesus there, and then pray about the sin you are fighting: “Lord Jesus, you died for this. By your Spirit, kill it in me.”</p>",
+  "study_questions": [
+   {
+    "question": "What is Owen’s most important direction for killing sin?",
+    "answer": "Set faith at work on Christ; his blood is the great sovereign remedy for sin-sick souls."
+   },
+   {
+    "question": "What does the prodigal son’s “bread enough” teach us?",
+    "answer": "When we feel weak and ready to give up, there is enough in Christ to help us."
+   },
+   {
+    "question": "What did Owen write two days before he died?",
+    "answer": "“I am going to Him whom my soul hath loved, or rather who hath loved me with an everlasting love.”"
+   }
+  ],
+  "body_text": "“Looking unto Jesus the author and finisher of our faith; who for the joy that was set before him endured the cross, despising the shame, and is set down at the right hand of the throne of God.” — Hebrews 12:2 (KJV) Owen saves his most important direction for last. After all the advice about watching, fighting and examining yourself, he says the main thing is this: “Set faith at work on Christ for the killing of thy sin. His blood is the great sovereign remedy for sin-sick souls.” Then comes a wonderful promise: “Live in this, and thou wilt die a conqueror; yea, thou wilt, through the good providence of God, live to see thy lust dead at thy feet.” How do we do this? First, Owen says, fill your mind with what Jesus has for you. Even if you feel you have no strength left, even if you are “weary of contending” and ready to give up, there is enough in Jesus Christ to help you. He compares it to the prodigal son in Jesus’ story. Far from home and starving, what kept him going was remembering that there was bread enough in his father’s house. In the same way, when you feel weak, remember: there is enough in Christ. Second, Owen says, look at Jesus on the cross: “Look on him under the weight of our sins, praying, bleeding, dying; bring him in that condition into thy heart by faith; apply his blood so shed to thy corruptions: do this daily.” Nothing makes sin look uglier, or makes you want to be free of it more, than seeing what it cost Jesus. And all of this, Owen reminds us, is the work of the Holy Spirit, who shows us our sin, shows us Christ, and gives us strength. Owen lived until 1683. Two days before he died, he wrote to a friend: “I am going to Him whom my soul hath loved, or rather who hath loved me with an everlasting love.” Notice how he corrected himself. In the end, it was not about how much Owen had loved Jesus, but how much Jesus had loved him. That is where the fight against sin ends: not with your willpower, but with his love. Keep looking at Jesus. One day, by his grace, you will see your sin dead at your feet. One thing to do this week: each day this week, read a short passage about the cross, for example Luke 23:33–46. Spend a few minutes looking at Jesus there, and then pray about the sin you are fighting: “Lord Jesus, you died for this. By your Spirit, kill it in me.”",
+  "word_count": 445
+ }
+}
+]

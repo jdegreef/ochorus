@@ -10466,6 +10466,16 @@
 				513
 			]
 		},
+		"mortification-of-sin-teens": {
+			"ground": "6704097db221677a9e6049939c32efa4265746969e144da9e7c2728a2d4a36aa",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"necessity-of-prayer": {
 			"ground": "4453c77330141789ef73c7211ec8bf6011cceacf05b45f5b8bafe0af09f10e23",
 			"style": "devotional",
