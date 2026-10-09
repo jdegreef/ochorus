@@ -43,7 +43,7 @@
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import { CONTENTS_COLLAPSE_AT, contentsWindow } from '$lib/contentsWindow';
 	import BookCard from '$lib/components/BookCard.svelte';
-	import { editionFamily, RUNG_LABEL, rungOf } from '$lib/audienceHub';
+	import { editionFamily, RUNG_LABEL } from '$lib/audienceHub';
 	import SeriesSegments from '$lib/components/SeriesSegments.svelte';
 	import type { BookSummary } from '$lib/library-public';
 	import PersonCard from '$lib/components/PersonCard.svelte';
@@ -229,7 +229,7 @@
 			.replace('%name%', book.author.name);
 		const facts = [
 			book.chapter_count
-				? `${book.chapter_count} ${book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}`
+				? chapterCount(book.chapter_count)
 				: '',
 			totalWords ? readingTime(totalWords) : ''
 		].filter(Boolean);
@@ -474,8 +474,12 @@
 	const showSubnav = $derived(navItems.length >= 2);
 
 	// One reading of the reader's place for the contents' bar and its rows.
-	const isRead = (order: number) => finishedAt != null || (furthestHere != null && order < furthestHere);
-	const isCurrent = (order: number) => finishedAt == null && order === resumeHere;
+	// The chapter they're in wins over "read" (a reader who went back to
+	// reread is IN that chapter), and only a reader with a place (`resuming`,
+	// the read verb's own test) has one.
+	const isCurrent = (order: number) => resuming && order === resumeHere;
+	const isRead = (order: number) =>
+		!isCurrent(order) && (finishedAt != null || (furthestHere != null && order < furthestHere));
 	/** The place in words — the read card's line, said again over the contents. */
 	const placeLine = $derived(
 		finishedAt != null ? t('fav.shelfFinished') : `${onChapter}${minutesLeft ? ` · ${bookTimeLeft(minutesLeft)}` : ''}`
@@ -818,14 +822,15 @@
 	     they start reading, and a child on the retelling needs the way back to
 	     the original. Derived and published-gated server-side (see the API's
 	     `editions`), so it renders only for the handful of works that have one.
-	     The whole family is offered, this edition ringed, the original first;
+	     The whole family is offered, this edition ringed, youngest first (the
+	     ladder's order, as the hubs draw it);
 	     each card is its rung's name and length — the titles differ only by the
 	     "(For …)" suffix the rung already says. -->
 	{#if book.editions?.length}
 		<section id="editions" class="jump-anchor mt-8">
 			<h2 class="section-heading">{t('audience.spotlightLadder')}</h2>
 			<ul class="edition-picker">
-				{#each family as ed (ed.slug)}
+				{#each family as { book: ed, rung } (ed.slug)}
 					{@const here = ed.slug === book.slug}
 					{@const words = here ? totalWords : ed.word_count}
 					<li>
@@ -837,7 +842,7 @@
 						>
 							<span class="edition-cover" aria-hidden="true"><BookCover book={ed} /></span>
 							<span class="min-w-0">
-								<span class="edition-rung">{t(RUNG_LABEL[rungOf(ed.slug)])}</span>
+								<span class="edition-rung">{t(RUNG_LABEL[rung])}</span>
 								<span class="block text-small text-muted"
 									><span class="whitespace-nowrap">{chapterCount(ed.chapter_count)}</span
 									>{#if words}{' '}<span class="whitespace-nowrap">· {readingTime(words)}</span>{/if}</span
@@ -970,9 +975,7 @@
 		<h2 class="section-heading">
 			{t('reader.contents')}
 			<span class="meta"
-				>· <span class="whitespace-nowrap"
-					>{book.chapter_count}
-					{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}</span
+				>· <span class="whitespace-nowrap">{chapterCount(book.chapter_count)}</span
 				> · <span class="whitespace-nowrap">{readingTime(totalWords)}</span></span
 			>
 		</h2>
@@ -981,11 +984,17 @@
 		     place the read card names, in the same words. -->
 		{#if finishedAt != null || resuming}
 			<div class="mb-2 mt-1">
-				<SeriesSegments
-					stages={book.chapters.map((c) => (isRead(c.order) ? 'done' : isCurrent(c.order) ? 'reading' : 'unread'))}
-					weights={book.chapters.map((c) => c.word_count)}
-					label={placeLine}
-				/>
+				<!-- A part per chapter while the parts stay legible; a long book
+				     (past the length the list itself collapses at) is one bar. -->
+				{#if book.chapters.length <= CONTENTS_COLLAPSE_AT * 2}
+					<SeriesSegments
+						stages={book.chapters.map((c) => (isCurrent(c.order) ? 'reading' : isRead(c.order) ? 'done' : 'unread'))}
+						weights={book.chapters.map((c) => c.word_count)}
+						label={placeLine}
+					/>
+				{:else}
+					<ProgressBar percent={finishedAt != null ? 100 : percentRead} label={placeLine} />
+				{/if}
 				<p class="mt-1.5 text-small text-muted">{placeLine}</p>
 			</div>
 		{/if}
@@ -1006,7 +1015,7 @@
 							aria-expanded="false"
 							onclick={() => (showAllChapters = true)}
 						>
-							⋯ {gap} {gap === 1 ? t('book.chapterOne') : t('book.chaptersMany')}
+							⋯ {chapterCount(gap)}
 						</button>
 					</li>
 				{/if}
@@ -1018,7 +1027,7 @@
 						aria-current={current ? 'step' : undefined}
 					>
 						<span class="contents-mark" class:read class:current
-							>{#if read}<Icon name="check" size={13} label={t('settings.heatmapRead')} />{:else}{ch.order}{/if}</span
+							>{ch.order}{#if read}<span class="sr-only">{`, ${t('settings.heatmapRead')}`}</span>{/if}</span
 						>
 						<span class="flex-1 text-body" dir="auto">{chapterName(ch.order, ch.title)}</span>
 						{#if current}

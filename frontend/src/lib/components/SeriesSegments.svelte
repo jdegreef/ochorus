@@ -32,6 +32,8 @@
 	}
 	.segment {
 		flex: 1 1 0;
+		/* Weighted, a short part (a preface) still shows. */
+		min-width: 0.375rem;
 		height: 0.3rem;
 		border-radius: 9999px;
 	}

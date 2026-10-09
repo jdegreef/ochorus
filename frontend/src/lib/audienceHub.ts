@@ -256,20 +256,26 @@ export const RUNG_LABEL = {
 	full: 'audience.rungFull'
 } as const satisfies Record<EditionRung['rung'], string>;
 
-/** Which rung an edition is, read off its slug (`editionKind`). Only for a
- *  book the API has already placed in a family (`editions`): a full text whose
- *  own slug ends so is never offered one. */
-export function rungOf(slug: string): EditionRung['rung'] {
-	return editionKind(slug) ?? 'full';
-}
+/** The ladder's order, youngest first — as `EditionLadder` and the API's
+ *  `_edition_ladders` give it. */
+const RUNG_ORDER = { children: 0, teens: 1, full: 2 } as const satisfies Record<EditionRung['rung'], number>;
 
-/** A book page's order: the original first, where a reader most often arrives. */
-const RUNG_ORDER = { full: 0, teens: 1, children: 2 } as const satisfies Record<EditionRung['rung'], number>;
-
-/** A work's editions with `current` placed among the others (which the API
- *  sends already in this order). */
-export function editionFamily<T extends { slug: string }>(current: T, others: readonly T[]): T[] {
-	return [current, ...others].sort((a, b) => RUNG_ORDER[rungOf(a.slug)] - RUNG_ORDER[rungOf(b.slug)]);
+/**
+ * A work's editions — `current` and the API's `editions` of it — each with its
+ * rung, youngest first. The full text is the family's base, the slug the
+ * others extend (the shortest), so an ORIGINAL whose own slug ends in a suffix
+ * (Watts's `divine-songs-for-children`) is still "The original" among its
+ * retellings; the rest are named by their suffix (`editionKind`).
+ */
+export function editionFamily<T extends { slug: string }>(
+	current: T,
+	others: readonly T[]
+): { book: T; rung: EditionRung['rung'] }[] {
+	const all = [current, ...others];
+	const base = all.reduce((a, b) => (b.slug.length < a.slug.length ? b : a)).slug;
+	return all
+		.map((book) => ({ book, rung: book.slug === base ? 'full' : (editionKind(book.slug) ?? 'full') }) as const)
+		.sort((a, b) => RUNG_ORDER[a.rung] - RUNG_ORDER[b.rung]);
 }
 
 /** The step after `slug` on its edition ladder — what "Ready for more"

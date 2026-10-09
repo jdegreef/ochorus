@@ -7,7 +7,6 @@ import {
 	challengeState,
 	editionFamily,
 	nextRung,
-	rungOf,
 	hubFor,
 	YOUNG_READERS_HUB,
 	heroCovers,
@@ -215,15 +214,20 @@ describe('each hub', () => {
 	});
 });
 
-describe('rungOf / editionFamily', () => {
-	it('reads the rung off the slug', () => {
-		expect(rungOf('pilgrims-progress-children')).toBe('children');
-		expect(rungOf('pilgrims-progress-teens')).toBe('teens');
-		expect(rungOf('pilgrims-progress')).toBe('full');
+describe('editionFamily', () => {
+	const rungs = (fam: ReturnType<typeof editionFamily>) => fam.map((e) => `${e.book.slug}:${e.rung}`);
+
+	it('names each edition and orders them youngest first, as the ladder does', () => {
+		expect(rungs(editionFamily({ slug: 'pp' }, [{ slug: 'pp-teens' }, { slug: 'pp-children' }]))).toEqual([
+			'pp-children:children',
+			'pp-teens:teens',
+			'pp:full'
+		]);
 	});
 
-	it('puts the original first, then teens, then children', () => {
-		const fam = editionFamily({ slug: 'pp-teens' }, [{ slug: 'pp-children' }, { slug: 'pp' }]);
-		expect(fam.map((e) => e.slug)).toEqual(['pp', 'pp-teens', 'pp-children']);
+	it('keeps an original whose own slug ends in a suffix the original', () => {
+		expect(
+			rungs(editionFamily({ slug: 'divine-songs-for-children-teens' }, [{ slug: 'divine-songs-for-children' }]))
+		).toEqual(['divine-songs-for-children-teens:teens', 'divine-songs-for-children:full']);
 	});
 });
