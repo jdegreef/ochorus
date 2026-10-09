@@ -1398,8 +1398,40 @@ class KoreanQueryTests(SimpleTestCase):
         from .fts import prefix_tsquery
 
         # Operators, quotes and colons are not word characters, so they vanish.
-        self.assertEqual(prefix_tsquery("은혜 & !기도 | ('x':*)"), "'은혜':* & '기도':* & 'x':*")
+        self.assertEqual(prefix_tsquery("은혜 & !기도 | ('x':*)"), "'은혜':* & '기도':* & 'x'")
         self.assertEqual(prefix_tsquery("&|!:'()"), "")
+
+    def test_websearch_operators_keep_their_meaning(self):
+        from .fts import prefix_tsquery
+
+        # Exclusion still excludes, rather than becoming a required word.
+        self.assertEqual(prefix_tsquery("은혜 -율법"), "'은혜':* & !'율법':*")
+        # OR joins its neighbours, rather than becoming a required 'or':* term.
+        self.assertEqual(prefix_tsquery("은혜 OR 사랑"), "'은혜':* | '사랑':*")
+        # An exclusion alone has nothing to match: hand back to websearch.
+        self.assertEqual(prefix_tsquery("-은혜"), "")
+        # A hyphen inside a word is not an exclusion.
+        self.assertEqual(prefix_tsquery("Spurgeon-like"), "'Spurgeon':* & 'like':*")
+
+    def test_one_syllable_words_match_exactly(self):
+        from .fts import prefix_tsquery
+
+        # '주':* would scan 주님, 주제, 주장 … in nearly every chapter.
+        self.assertEqual(prefix_tsquery("주 예수"), "'주' & '예수':*")
+
+    def test_compound_particles_strip_whole(self):
+        from .fts import strip_particle
+
+        self.assertEqual(strip_particle("하나님께서는"), "하나님")
+        self.assertEqual(strip_particle("마음에는"), "마음")
+        self.assertEqual(strip_particle("하나님께"), "하나님")
+        self.assertEqual(strip_particle("그리스도로서"), "그리스도")
+
+    def test_particles_are_tried_longest_first(self):
+        from .fts import KO_PARTICLES
+
+        lengths = [len(p) for p in KO_PARTICLES]
+        self.assertEqual(lengths, sorted(lengths, reverse=True))
 
 
 @skipUnless(connection.vendor == "postgresql", "Korean prefix search is Postgres-only")
@@ -1436,6 +1468,12 @@ class KoreanSearchTests(TestCase):
         self.assertIn("chapter", types)
         self.assertIn("sermon", types)
 
+    def test_exclusion_excludes(self):
+        # The chapter mentions 겸손; the sermon does not.
+        types = self._types("은혜 -겸손")
+        self.assertNotIn("chapter", types)
+        self.assertIn("sermon", types)
+
     def test_every_word_must_match(self):
         self.assertIn("chapter", self._types("은혜 겸손"))
         self.assertNotIn("chapter", self._types("은혜 사랑"))
@@ -1457,3 +1495,24 @@ class KoreanSearchTests(TestCase):
         # Stems and phrase syntax still apply outside Korean.
         self.assertEqual(search_query('"grace" -law', "en").function, "websearch_to_tsquery")
         self.assertEqual(search_query("은혜", "ko").function, "to_tsquery")
+
+
+class KoreanParticleParityTests(SimpleTestCase):
+    """The reader's arrival highlight strips the same particles the server does."""
+
+    def test_frontend_list_matches(self):
+        import re
+        from pathlib import Path
+
+        from .fts import KO_PARTICLES
+
+        ts = (
+            Path(__file__).resolve().parents[2] / "frontend" / "src" / "lib" / "koParticles.ts"
+        ).read_text(encoding="utf-8")
+        body = ts[ts.index("KO_PARTICLES") : ts.index("].sort")]
+        self.assertEqual(
+            set(re.findall(r"'([^']+)'", body)),
+            set(KO_PARTICLES),
+            "frontend/src/lib/koParticles.ts and fts.KO_PARTICLES have drifted: a "
+            "search would match words the reader's highlight then fails to find",
+        )

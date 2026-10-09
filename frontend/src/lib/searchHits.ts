@@ -1,3 +1,4 @@
+import { stripParticle } from './koParticles';
 import type { Segment } from './marks.svelte';
 
 /**
@@ -42,7 +43,9 @@ export function queryWords(query: string): string[] {
 		.split(/\s+/)
 		.map((w) => w.replace(/^-+/, '').trim())
 		.filter((w) => w.length >= MIN_WORD && w.toUpperCase() !== 'OR')
-		.map((w) => w.toLowerCase());
+		// A Korean word loses its particle, as on the server (koParticles.ts):
+		// a search for 은혜는 matched a chapter saying 은혜를, so look for 은혜.
+		.map((w) => stripParticle(w).toLowerCase());
 }
 
 /**

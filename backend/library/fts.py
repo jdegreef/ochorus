@@ -27,6 +27,8 @@ icontains and never reads these columns.
 
 from __future__ import annotations
 
+import re
+
 from django.db import connection
 
 # Postgres text-search configs by language (fall back to "simple", which
@@ -55,23 +57,39 @@ def config_for(language: str) -> str:
 # reach 은혜는, so a trailing particle is stripped from each typed word first —
 # only when at least two syllables remain, which keeps 기도, 정의 and 자는 whole.
 # Over-reach is the safe direction here: a word ending in a particle-shaped
-# syllable (어린이 → 어린) still prefix-matches itself.
+# syllable (어린이 → 어린) still prefix-matches itself. The known gap is the
+# one-syllable noun (죄를, 빛을): its particle stays on, because a one-syllable
+# prefix (`'죄':*`) would also scan every word that merely starts with it.
 #
-# What this gives up: websearch syntax ("quoted phrase", OR, -exclude). Readers
-# rarely type it, and a search that finds nothing is the worse failure.
+# A one-syllable word is matched EXACTLY, never as a prefix, for the same
+# reason: `'주':*` reaches 주님, 주제, 주장 … in nearly every chapter.
+#
+# The websearch syntax readers do use keeps its meaning: `-word` excludes,
+# `OR` joins its neighbours. Quotes are ignored (each quoted word is ANDed),
+# since a prefix match has no phrase form.
 PREFIX_LANGUAGES = {"ko"}
 
-# Longest first, so 에서 is tried before 서-less 에. 도 and 만 are left out:
-# too many ordinary words end in them (그리스도, 기도, 사도).
-KO_PARTICLES = (
-    "에서는", "에게서", "으로써", "으로서",
-    "께서", "에서", "에게", "으로", "까지", "부터", "처럼", "보다",
-    "은", "는", "이", "가", "을", "를", "의", "에", "로", "와", "과",
+# Matched longest first (sorted below, not by hand), so 에서는 is tried before
+# the 는 it ends with. 도 and 만 are left out: too many ordinary words end in
+# them (그리스도, 기도, 사도). Shared with the reader's arrival highlight —
+# frontend/src/lib/koParticles.ts must carry the same set (a test pins it).
+KO_PARTICLES = tuple(
+    sorted(
+        {
+            "께서는", "에게는", "에서는", "에서도", "에게서", "으로는", "으로써", "으로서",
+            "께서", "에서", "에게", "에는", "에도", "으로", "로써", "로서",
+            "까지", "부터", "처럼", "보다", "마다",
+            "께", "은", "는", "이", "가", "을", "를", "의", "에", "로", "와", "과",
+        },
+        key=lambda p: (-len(p), p),
+    )
 )
+
+_WORD = re.compile(r"\w+")
 
 
 def _is_hangul(word: str) -> bool:
-    return all("가" <= ch <= "힣" for ch in word)
+    return all("\uac00" <= ch <= "\ud7a3" for ch in word)
 
 
 def strip_particle(word: str) -> str:
@@ -85,15 +103,35 @@ def strip_particle(word: str) -> str:
 
 
 def prefix_tsquery(q: str) -> str:
-    """A raw tsquery matching every word of ``q`` as a prefix ('' if none).
+    """A raw tsquery for ``q``: each word a prefix, ANDed ('' if no words).
 
-    Words are ``\\w`` runs only, so nothing a reader types can inject tsquery
-    syntax (& | ! : ' ( )) into the raw query.
+    Tokens are ``\\w`` runs only, so nothing a reader types can inject tsquery
+    syntax (& | ! : ' ( )) into the raw query; the operators below are ours.
     """
-    import re
-
-    words = [strip_particle(w) for w in re.findall(r"\w+", q)]
-    return " & ".join(f"'{w}':*" for w in words if w)
+    terms: list[str] = []
+    joins: list[str] = []
+    pending_or = False
+    # A minus excludes only at the start of a whitespace-separated chunk, as in
+    # websearch: "Spurgeon-like" is two words to match, not "Spurgeon -like".
+    tokens = [
+        (chunk.startswith("-") and i == 0, word)
+        for chunk in q.split()
+        for i, word in enumerate(_WORD.findall(chunk))
+    ]
+    for negate, word in tokens:
+        if word.upper() == "OR" and not negate:
+            pending_or = bool(terms)
+            continue
+        word = strip_particle(word)
+        term = f"'{word}'" if len(word) == 1 else f"'{word}':*"
+        if terms:
+            joins.append(" | " if pending_or and not negate else " & ")
+        terms.append(f"!{term}" if negate else term)
+        pending_or = False
+    if not terms or all(t.startswith("!") for t in terms):
+        # Nothing to match positively: an exclusion alone matches everything.
+        return ""
+    return terms[0] + "".join(j + t for j, t in zip(joins, terms[1:], strict=True))
 
 
 def search_query(q: str, language: str):
