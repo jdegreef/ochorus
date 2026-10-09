@@ -1,0 +1,158 @@
+{
+ "kind": "sermon",
+ "slug": "gods-love-for-a-sinning-world",
+ "language": "uk",
+ "job_issue": 1671,
+ "pull_request": null,
+ "note": [
+  "Scripture follows Kulish (1905), the uk Bible language_seed.py names, spliced byte-for-byte from the whole parsed text (ebible mirror ukr_pan). Every `mined` row was checked mechanically: a verbatim substring of the Kulish verse and present in the body. Finney’s many unmarked allusions are rendered in modern prose and are not listed (they are not quotations).",
+  "Kulish wording differs from Finney’s in two quoted places, kept as Kulish: 2 Corinthians 8:9 (“you” for Finney’s “we”) and Jeremiah 44:4b (“these things” for “that thing”).",
+  "AI-translated by one translator in one session; tag sequence identical to the English. Awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Jude 1:6",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Hebrews 2:11",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Romans 2:11",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 John 4:14",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Romans 10:10a",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Mark 12:7",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "John 19:15",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Job 21:14",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 8:9",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Revelation 3:8",
+   "status": "mined",
+   "block_index": 45,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Hebrews 1:14",
+   "status": "mined",
+   "block_index": 47,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "block_index": 47,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Jeremiah 44:4b",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Colossians 1:24",
+   "status": "mined",
+   "block_index": 56,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 26:15",
+   "status": "mined",
+   "block_index": 60,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 26:15",
+   "status": "mined",
+   "block_index": 61,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Galatians 6:17",
+   "status": "mined",
+   "block_index": 62,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "mined",
+   "block_index": 62,
+   "source_file": "Kulish (1905) Bible text"
+  }
+ ]
+}
