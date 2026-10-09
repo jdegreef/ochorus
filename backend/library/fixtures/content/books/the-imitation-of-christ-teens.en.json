@@ -1,0 +1,423 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "thomas-a-kempis"
+  ],
+  "slug": "the-imitation-of-christ-teens",
+  "language": "en",
+  "title": "The Imitation of Christ (For Teens)",
+  "subtitle": "",
+  "cover_title": "",
+  "description": "Around six hundred years ago, a monk named Thomas à Kempis was put in charge of the young men training at his monastery, and he wrote them short, blunt notes on how to follow Jesus. Those notes became The Imitation of Christ, probably the most widely read Christian book after the Bible. This teen edition retells its best counsel in plain words, with Thomas’s own sentences kept where they say it best: being smart versus being wise, gossip, temptation, other people’s faults, what people say about you, Jesus as a friend who stays, carrying your cross, and the four things that bring peace.",
+  "hook": "Written six hundred years ago for teenagers in training, and still the most-read book after the Bible.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Who was Thomas à Kempis?",
+    "answer": "He was born Thomas Hemerken around 1380 in Kempen, a town in what is now Germany. At about twelve he went to school at Deventer in the Netherlands, then joined a small monastery called Mount St Agnes, where he lived for about seventy years. He copied books by hand, including the whole Bible, and was put in charge of training the young men who joined. He died in 1471."
+   },
+   {
+    "question": "What is The Imitation of Christ?",
+    "answer": "It is four small books of advice on following Jesus, written in the 1420s for the young men Thomas was training. Book I and Book II are short counsels on the inner life. Book III is written as a conversation in which Christ speaks and the disciple answers. Book IV is about preparing for Communion. After the Bible, it has probably been read more than any other Christian book."
+   },
+   {
+    "question": "Is Book III really Jesus speaking?",
+    "answer": "No. It is Thomas’s way of writing: he imagines what Christ would say to a disciple, drawing on the Bible, and the disciple answers in prayer. It is a devotional conversation, not new Scripture. Many of its best lines echo things Jesus actually says in the Gospels."
+   },
+   {
+    "question": "Thomas talks a lot about thinking little of yourself. Is that healthy?",
+    "answer": "He wrote in the strong language of a monastery, and some of it can sound harsh today. What he means by humility is seeing yourself truthfully, not hating yourself: admitting what you don’t know, not needing to look better than others, and depending on God. If you already struggle with feeling worthless, hear the other half of his message too: you are loved by God and invited to be Jesus’ friend."
+   },
+   {
+    "question": "Is this the full text?",
+    "answer": "No. It is a retelling for teenagers in plain modern words, choosing some of the most important chapters from all four books and keeping Thomas’s own sentences where they say it best. The full Imitation of Christ is also available."
+   },
+   {
+    "question": "Why does Thomas write about Communion in Book IV?",
+    "answer": "Thomas was a Catholic priest, and he believed Christ is truly present in the bread and wine of Communion. Christians from different traditions understand Communion in different ways. But they share the heart of what he says there: that we need both the word of God and Christ himself, as surely as we need light and food."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of Thomas à Kempis’s The Imitation of Christ, in the translation of Aloysius Croft and Harold Bolton, which is in the public domain. The telling is our own, free to read and share. Scripture quotations are from the King James Version, which is in the public domain.",
+  "cover_url": "/covers/the-imitation-of-christ-teens.svg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/the-imitation-of-christ-teens.pdf?download=the-imitation-of-christ-teens.pdf",
+  "cover_color": "",
+  "series": [
+   "straight-talk"
+  ],
+  "series_position": null,
+  "sort_order": 156,
+  "is_published": true,
+  "created_at": "2026-10-08T23:00:00Z",
+  "updated_at": "2026-10-08T23:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-imitation-of-christ-teens",
+   "en"
+  ],
+  "order": 1,
+  "title": "Written for Young People",
+  "body_html": "<blockquote>“Vanity of vanities, saith the Preacher, vanity of vanities; all is vanity.” — Ecclesiastes 1:2 (KJV)</blockquote> <p>Here is something most people don’t know about one of the most famous Christian books ever written: it was written for young people.</p> <p>Its author, Thomas Hemerken, was born around 1380 in Kempen, a town in what is now Germany. That is why we know him as Thomas à Kempis: Thomas from Kempen. His parents were working people. At about twelve or thirteen he followed his older brother to a famous school in Deventer, in the Netherlands, where a group called the Brethren of the Common Life taught a plain, practical faith: less arguing about theology, more actually obeying Jesus.</p> <p>At about nineteen he joined a poor little monastery called Mount St Agnes, and he stayed there for about seventy years. He copied books by hand, including the entire Bible. And at some point he was put in charge of the novices, the young men who had just joined and were learning how to live for God. For them, in the 1420s, he wrote short booklets of advice. Those booklets became The Imitation of Christ. After the Bible, it has probably been read more than any other Christian book in history.</p> <p>So when you read Thomas, picture a wise older mentor talking to a room of young guys who had left home, were full of energy, and were sometimes full of themselves. He is blunt with them. He is also kind.</p> <p>The book opens with a promise of Jesus: “He who follows Me, walks not in darkness.” Thomas’s whole idea is in that line. If you want to see clearly, imitate Jesus. Study his life. Copy him. That is what imitation means.</p> <p>Then he says the sentence the whole book is famous for, borrowed from the book of Ecclesiastes:</p> <blockquote>“Vanity of vanities and all is vanity, except to love God and serve Him alone.”</blockquote> <p>Vanity here means emptiness, like a breath or a bubble. Thomas lists the bubbles people chase: money that won’t last, being admired, giving in to every craving, wanting a long life but not caring whether it is a good one. He quotes another line from Ecclesiastes: “The eye is not satisfied with seeing nor the ear filled with hearing.”</p> <p>You live in a world built to keep your eyes and ears busy. Thomas would not be surprised by that. He knew six hundred years ago that more seeing and hearing would never fill you up. Only God can.</p> <p><strong>One thing to do this week:</strong> notice the things you reach for when you are bored. Pick one and give it a rest for a few days. Each time you miss it, tell God: “Only you can fill me up.”</p>",
+  "study_questions": [
+   {
+    "question": "Who did Thomas à Kempis first write The Imitation of Christ for?",
+    "answer": "For the novices, the young men who had just joined his monastery and were learning to live for God. He was in charge of training them."
+   },
+   {
+    "question": "What does the title “The Imitation of Christ” mean?",
+    "answer": "Following Jesus by copying his life: studying how he lived and patterning your own life on his, so you do not walk in darkness."
+   },
+   {
+    "question": "What does Thomas mean by “vanity of vanities”?",
+    "answer": "That everything is empty, like a bubble, except loving God and serving him. Money, fame and pleasure do not last or satisfy."
+   }
+  ],
+  "body_text": "“Vanity of vanities, saith the Preacher, vanity of vanities; all is vanity.” — Ecclesiastes 1:2 (KJV) Here is something most people don’t know about one of the most famous Christian books ever written: it was written for young people. Its author, Thomas Hemerken, was born around 1380 in Kempen, a town in what is now Germany. That is why we know him as Thomas à Kempis: Thomas from Kempen. His parents were working people. At about twelve or thirteen he followed his older brother to a famous school in Deventer, in the Netherlands, where a group called the Brethren of the Common Life taught a plain, practical faith: less arguing about theology, more actually obeying Jesus. At about nineteen he joined a poor little monastery called Mount St Agnes, and he stayed there for about seventy years. He copied books by hand, including the entire Bible. And at some point he was put in charge of the novices, the young men who had just joined and were learning how to live for God. For them, in the 1420s, he wrote short booklets of advice. Those booklets became The Imitation of Christ. After the Bible, it has probably been read more than any other Christian book in history. So when you read Thomas, picture a wise older mentor talking to a room of young guys who had left home, were full of energy, and were sometimes full of themselves. He is blunt with them. He is also kind. The book opens with a promise of Jesus: “He who follows Me, walks not in darkness.” Thomas’s whole idea is in that line. If you want to see clearly, imitate Jesus. Study his life. Copy him. That is what imitation means. Then he says the sentence the whole book is famous for, borrowed from the book of Ecclesiastes: “Vanity of vanities and all is vanity, except to love God and serve Him alone.” Vanity here means emptiness, like a breath or a bubble. Thomas lists the bubbles people chase: money that won’t last, being admired, giving in to every craving, wanting a long life but not caring whether it is a good one. He quotes another line from Ecclesiastes: “The eye is not satisfied with seeing nor the ear filled with hearing.” You live in a world built to keep your eyes and ears busy. Thomas would not be surprised by that. He knew six hundred years ago that more seeing and hearing would never fill you up. Only God can. One thing to do this week: notice the things you reach for when you are bored. Pick one and give it a rest for a few days. Each time you miss it, tell God: “Only you can fill me up.”",
+  "word_count": 458
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-imitation-of-christ-teens",
+   "en"
+  ],
+  "order": 2,
+  "title": "Smart Isn’t the Same as Wise",
+  "body_html": "<blockquote>“Knowledge puffeth up, but charity edifieth.” — 1 Corinthians 8:1 (KJV)</blockquote> <p>Thomas spent his life with books. He copied them, taught from them and wrote them. So it is surprising how much he warns about knowledge.</p> <p>He isn’t against learning. He says so clearly: “Not that learning is to be considered evil, or knowledge, which is good in itself and so ordained by God.” Study hard. Use your brain. It is a gift. His warning is about what knowledge can do to you when it is not joined to love and humility. He asks:</p> <blockquote>“What good does it do to speak learnedly about the Trinity if, lacking humility, you displease the Trinity?”</blockquote> <p>In other words, you can win every argument about God and still not know him. Thomas adds a line that is worth remembering: “I would rather feel contrition than know how to define it.” Contrition means being truly sorry for sin. He would rather actually be sorry than be good at explaining what sorry means.</p> <p>He also gives a picture that still stings: “a humble rustic who serves God is better than a proud intellectual who neglects his soul to study the course of the stars.” A simple farmer who loves God is better off than a genius who ignores him.</p> <p>Then comes the line that might change how you think about school, and church, and everything:</p> <blockquote>“On the day of judgment, surely, we shall not be asked what we have read but what we have done; not how well we have spoken but how well we have lived.”</blockquote> <p>This applies to the Bible too. Thomas says to read it for truth, not for impressive language, and not to show off. “We ought not to ask who is speaking, but mark what is said.” Don’t only listen to clever or famous people. Truth can come through simple ones as well. And read “with humility, simplicity, and faith, and never seek a reputation for being learned.”</p> <p>Humility, for Thomas, starts with honesty about your limits: “If you think you know many things and understand them well enough, realize at the same time that there is much you do not know.” That is not putting yourself down. It is just true, for everyone. And the people who know it are the ones who keep learning.</p> <p><strong>One thing to do this week:</strong> when you read the Bible this week, read a short passage slowly and ask just one question: “What does this ask me to do?” Then do it, before you read the next one.</p>",
+  "study_questions": [
+   {
+    "question": "Was Thomas against studying and learning?",
+    "answer": "No. He said learning and knowledge are good in themselves and given by God. He warned against knowledge without humility and love, and against learning just to look clever."
+   },
+   {
+    "question": "What does Thomas say we will be asked on the day of judgment?",
+    "answer": "Not what we have read but what we have done; not how well we have spoken but how well we have lived."
+   },
+   {
+    "question": "How does he say we should read the Bible?",
+    "answer": "For truth rather than fine words, paying attention to what is said rather than who says it, and with humility, simplicity and faith, without trying to look learned."
+   }
+  ],
+  "body_text": "“Knowledge puffeth up, but charity edifieth.” — 1 Corinthians 8:1 (KJV) Thomas spent his life with books. He copied them, taught from them and wrote them. So it is surprising how much he warns about knowledge. He isn’t against learning. He says so clearly: “Not that learning is to be considered evil, or knowledge, which is good in itself and so ordained by God.” Study hard. Use your brain. It is a gift. His warning is about what knowledge can do to you when it is not joined to love and humility. He asks: “What good does it do to speak learnedly about the Trinity if, lacking humility, you displease the Trinity?” In other words, you can win every argument about God and still not know him. Thomas adds a line that is worth remembering: “I would rather feel contrition than know how to define it.” Contrition means being truly sorry for sin. He would rather actually be sorry than be good at explaining what sorry means. He also gives a picture that still stings: “a humble rustic who serves God is better than a proud intellectual who neglects his soul to study the course of the stars.” A simple farmer who loves God is better off than a genius who ignores him. Then comes the line that might change how you think about school, and church, and everything: “On the day of judgment, surely, we shall not be asked what we have read but what we have done; not how well we have spoken but how well we have lived.” This applies to the Bible too. Thomas says to read it for truth, not for impressive language, and not to show off. “We ought not to ask who is speaking, but mark what is said.” Don’t only listen to clever or famous people. Truth can come through simple ones as well. And read “with humility, simplicity, and faith, and never seek a reputation for being learned.” Humility, for Thomas, starts with honesty about your limits: “If you think you know many things and understand them well enough, realize at the same time that there is much you do not know.” That is not putting yourself down. It is just true, for everyone. And the people who know it are the ones who keep learning. One thing to do this week: when you read the Bible this week, read a short passage slowly and ask just one question: “What does this ask me to do?” Then do it, before you read the next one.",
+  "word_count": 424
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-imitation-of-christ-teens",
+   "en"
+  ],
+  "order": 3,
+  "title": "Talk Less",
+  "body_html": "<blockquote>“Let every man be swift to hear, slow to speak, slow to wrath.” — James 1:19 (KJV)</blockquote> <p>Thomas lived in a community of men who saw each other every day, and he knew exactly what happens when people spend a lot of time together. Talk. Lots of it. And not all of it good.</p> <p>He was honest about his own record: “Many a time I wish that I had held my peace.” Then he asks a question that is uncomfortable for anyone who has been part of a group chat:</p> <blockquote>“Why, indeed, do we converse and gossip among ourselves when we so seldom part without a troubled conscience?”</blockquote> <p>His answer is perceptive. We talk so much, he says, because we want comfort from each other and want to rest our tired minds. So we keep circling back to the things we love and the things we can’t stand. But a lot of it is empty, and it crowds out the deeper comfort that comes from God.</p> <p>Thomas is not saying never talk to anyone. He actually says that good conversation about God, with friends who share your faith, “is a great aid to spiritual progress.” And he gives a simple rule for when to open your mouth: “When the right and opportune moment comes for speaking, say something that will edify.” Edify means build up.</p> <p>He also has strong words about curiosity: wanting to know everyone else’s business. In Book III, written as Christ speaking to the reader, he puts it like this:</p> <blockquote>“What is it to you if a man is such and such, if another does or says this or that? You will not have to answer for others, but you will have to give an account of yourself.”</blockquote> <p>That echoes something Jesus really said. When Peter asked what would happen to another disciple, Jesus answered, “What is that to thee? follow thou me.”</p> <p>So much drama runs on other people’s business: who said what, who is with whom, who messed up. Thomas’s advice cuts through it. Most of that is not yours to carry. You are responsible for your own life before God. Look after that, and you will be surprised how much peace comes back.</p> <p><strong>One thing to do this week:</strong> for one week, before you join in talk about someone who isn’t there, ask yourself: “Does this build anyone up?” If not, change the subject or stay quiet. Notice how you feel at the end of the week.</p>",
+  "study_questions": [
+   {
+    "question": "What question does Thomas ask about gossip?",
+    "answer": "Why we talk and gossip so much when we so seldom come away without a troubled conscience."
+   },
+   {
+    "question": "Does Thomas think all conversation is bad?",
+    "answer": "No. He says devout conversation with like-minded friends greatly helps spiritual growth, and that when it is the right time to speak, we should say something that builds others up."
+   },
+   {
+    "question": "What does he say about being curious about other people’s lives?",
+    "answer": "That we will not have to answer for others, but we will have to give an account of ourselves, so we should not meddle in their affairs."
+   }
+  ],
+  "body_text": "“Let every man be swift to hear, slow to speak, slow to wrath.” — James 1:19 (KJV) Thomas lived in a community of men who saw each other every day, and he knew exactly what happens when people spend a lot of time together. Talk. Lots of it. And not all of it good. He was honest about his own record: “Many a time I wish that I had held my peace.” Then he asks a question that is uncomfortable for anyone who has been part of a group chat: “Why, indeed, do we converse and gossip among ourselves when we so seldom part without a troubled conscience?” His answer is perceptive. We talk so much, he says, because we want comfort from each other and want to rest our tired minds. So we keep circling back to the things we love and the things we can’t stand. But a lot of it is empty, and it crowds out the deeper comfort that comes from God. Thomas is not saying never talk to anyone. He actually says that good conversation about God, with friends who share your faith, “is a great aid to spiritual progress.” And he gives a simple rule for when to open your mouth: “When the right and opportune moment comes for speaking, say something that will edify.” Edify means build up. He also has strong words about curiosity: wanting to know everyone else’s business. In Book III, written as Christ speaking to the reader, he puts it like this: “What is it to you if a man is such and such, if another does or says this or that? You will not have to answer for others, but you will have to give an account of yourself.” That echoes something Jesus really said. When Peter asked what would happen to another disciple, Jesus answered, “What is that to thee? follow thou me.” So much drama runs on other people’s business: who said what, who is with whom, who messed up. Thomas’s advice cuts through it. Most of that is not yours to carry. You are responsible for your own life before God. Look after that, and you will be surprised how much peace comes back. One thing to do this week: for one week, before you join in talk about someone who isn’t there, ask yourself: “Does this build anyone up?” If not, change the subject or stay quiet. Notice how you feel at the end of the week.",
+  "word_count": 413
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-imitation-of-christ-teens",
+   "en"
+  ],
+  "order": 4,
+  "title": "Close the Door",
+  "body_html": "<blockquote>“But thou, when thou prayest, enter into thy closet, and when thou hast shut thy door, pray to thy Father which is in secret.” — Matthew 6:6 (KJV)</blockquote> <p>Each monk at Mount St Agnes had a cell: a small, plain room of his own. Thomas talks about it a lot. For you, it might be your bedroom, a corner of the house, a bench outside, or a walk on your own. The point is the same: a place to be quiet with God.</p> <p>Thomas knew how hard that is. Even then, people preferred noise. He quotes an earlier writer who said, “As often as I have been among men, I have returned less a man.” You have probably felt it: after a long time scrolling or chatting, you feel thinner inside, not fuller.</p> <p>He points out something true about words: “It is easier to be silent altogether than not to speak too much.” And he links silence and strength: “No man is safe in speaking unless he loves to be silent.” People who can be quiet are usually the ones worth listening to.</p> <p>So he gives practical advice. Cut down on “unnecessary talking and idle running about,” and “listening to gossip and rumors,” and “you will find enough time that is suitable for holy meditation.” Most of us say we don’t have time to pray. Thomas would say we have plenty; we are just spending it elsewhere.</p> <p>Then comes a lovely invitation:</p> <blockquote>“Close the door upon yourself and call to you Jesus, your Beloved. Remain with Him in your cell, for nowhere else will you find such peace.”</blockquote> <p>He also says that this gets easier with practice. At first, being alone and quiet can feel boring or even uncomfortable. But, he says, “Your cell will become dear to you if you remain in it, but if you do not, it will become wearisome.” Stick with it and your quiet place will become “a special friend and a very great comfort.”</p> <p>He is honest about the alternative too. Rushing from one fun thing to the next often leaves you flat afterwards: “A happy going often leads to a sad return, a merry evening to a mournful dawn.”</p> <p>You don’t have to become a monk. But you could use a door. Jesus himself said to go into your room, shut the door and pray to your Father in secret. Thomas just took him at his word.</p> <p><strong>One thing to do this week:</strong> pick a time and place for ten minutes of quiet with God every day this week, with your phone in another room. Read a few verses, talk to God, and spend part of the time simply being silent.</p>",
+  "study_questions": [
+   {
+    "question": "What was a monk’s “cell,” and what might it be for you?",
+    "answer": "A small private room in the monastery. For a teenager it might be a bedroom, a quiet corner or a walk alone: a place to be quiet with God."
+   },
+   {
+    "question": "Where does Thomas say we can find time to pray?",
+    "answer": "By cutting back on unnecessary talking, idle running about, and listening to gossip and rumours. Then we will find enough time."
+   },
+   {
+    "question": "What does Thomas say happens if you keep going back to your quiet place?",
+    "answer": "It becomes dear to you, “a special friend and a very great comfort,” whereas if you avoid it, it becomes wearisome."
+   }
+  ],
+  "body_text": "“But thou, when thou prayest, enter into thy closet, and when thou hast shut thy door, pray to thy Father which is in secret.” — Matthew 6:6 (KJV) Each monk at Mount St Agnes had a cell: a small, plain room of his own. Thomas talks about it a lot. For you, it might be your bedroom, a corner of the house, a bench outside, or a walk on your own. The point is the same: a place to be quiet with God. Thomas knew how hard that is. Even then, people preferred noise. He quotes an earlier writer who said, “As often as I have been among men, I have returned less a man.” You have probably felt it: after a long time scrolling or chatting, you feel thinner inside, not fuller. He points out something true about words: “It is easier to be silent altogether than not to speak too much.” And he links silence and strength: “No man is safe in speaking unless he loves to be silent.” People who can be quiet are usually the ones worth listening to. So he gives practical advice. Cut down on “unnecessary talking and idle running about,” and “listening to gossip and rumors,” and “you will find enough time that is suitable for holy meditation.” Most of us say we don’t have time to pray. Thomas would say we have plenty; we are just spending it elsewhere. Then comes a lovely invitation: “Close the door upon yourself and call to you Jesus, your Beloved. Remain with Him in your cell, for nowhere else will you find such peace.” He also says that this gets easier with practice. At first, being alone and quiet can feel boring or even uncomfortable. But, he says, “Your cell will become dear to you if you remain in it, but if you do not, it will become wearisome.” Stick with it and your quiet place will become “a special friend and a very great comfort.” He is honest about the alternative too. Rushing from one fun thing to the next often leaves you flat afterwards: “A happy going often leads to a sad return, a merry evening to a mournful dawn.” You don’t have to become a monk. But you could use a door. Jesus himself said to go into your room, shut the door and pray to your Father in secret. Thomas just took him at his word. One thing to do this week: pick a time and place for ten minutes of quiet with God every day this week, with your phone in another room. Read a few verses, talk to God, and spend part of the time simply being silent.",
+  "word_count": 448
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-imitation-of-christ-teens",
+   "en"
+  ],
+  "order": 5,
+  "title": "Shut the Door Early",
+  "body_html": "<blockquote>“There hath no temptation taken you but such as is common to man: but God is faithful, who will not suffer you to be tempted above that ye are able.” — 1 Corinthians 10:13 (KJV)</blockquote> <p>If you think that really good Christians don’t get tempted, Thomas would like a word. “No one is so perfect or so holy but he is sometimes tempted,” he writes. “There is no state so holy, no place so secret that temptations and trials will not come.” Temptation is not proof that something is wrong with you. It is part of being human.</p> <p>He even says temptations can be useful, because in them we are “humbled, purified, and instructed.” He has two short lines on this that are worth memorising:</p> <blockquote>“Fire tempers iron and temptation steels the just. Often we do not know what we can stand, but temptation shows us what we are.”</blockquote> <p>Then he gives the most practical advice in the chapter. Fight temptation early. He describes how it grows, step by step: “First, a mere thought comes to mind, then strong imagination, followed by pleasure, evil delight, and consent.” A thought becomes a picture, the picture becomes a pleasure, and before you know it you have said yes.</p> <p>So, he says, the time to act is at the very first step. The enemy “is more easily conquered if he is refused admittance to the mind and is met beyond the threshold when he knocks.” Don’t invite the thought in to sit down and chat. Shut the door while it is still knocking. He quotes an old saying: “Resist the beginnings; remedies come too late, when by long delay the evil has gained strength.”</p> <p>He also warns that running away from situations is not enough on its own: “We cannot conquer simply by fleeing, but by patience and true humility we become stronger than all our enemies.” Changing where you are helps, but God also wants to change what is inside you.</p> <p>Two more pieces of advice. First: don’t fight alone. “Often take counsel when tempted.” Talk to someone you trust. Second: be kind to others who are struggling. “Do not be harsh with others who are tempted, but console them as you yourself would wish to be consoled.”</p> <p>And don’t despair. God, he says, quoting Paul, will make a way out “that we may be able to bear it.” When you are tempted, pray harder, not less.</p> <p><strong>One thing to do this week:</strong> think of one temptation you face often. Work out what its “first knock” usually is: a thought, a place, a time of night, a particular app. Plan one simple way to shut the door at that first step, and tell one trusted person your plan.</p>",
+  "study_questions": [
+   {
+    "question": "Does Thomas think holy people are free from temptation?",
+    "answer": "No. He says no one is so perfect or holy that they are never tempted, and no place is so holy that temptation cannot come."
+   },
+   {
+    "question": "What steps does temptation grow through, according to Thomas?",
+    "answer": "First a thought, then a strong imagination, then pleasure, evil delight, and finally consent."
+   },
+   {
+    "question": "What is his main advice for fighting temptation?",
+    "answer": "Resist it at the very beginning, before it gets into your mind; seek advice from others; and pray to God more fervently, trusting him to give a way to bear it."
+   }
+  ],
+  "body_text": "“There hath no temptation taken you but such as is common to man: but God is faithful, who will not suffer you to be tempted above that ye are able.” — 1 Corinthians 10:13 (KJV) If you think that really good Christians don’t get tempted, Thomas would like a word. “No one is so perfect or so holy but he is sometimes tempted,” he writes. “There is no state so holy, no place so secret that temptations and trials will not come.” Temptation is not proof that something is wrong with you. It is part of being human. He even says temptations can be useful, because in them we are “humbled, purified, and instructed.” He has two short lines on this that are worth memorising: “Fire tempers iron and temptation steels the just. Often we do not know what we can stand, but temptation shows us what we are.” Then he gives the most practical advice in the chapter. Fight temptation early. He describes how it grows, step by step: “First, a mere thought comes to mind, then strong imagination, followed by pleasure, evil delight, and consent.” A thought becomes a picture, the picture becomes a pleasure, and before you know it you have said yes. So, he says, the time to act is at the very first step. The enemy “is more easily conquered if he is refused admittance to the mind and is met beyond the threshold when he knocks.” Don’t invite the thought in to sit down and chat. Shut the door while it is still knocking. He quotes an old saying: “Resist the beginnings; remedies come too late, when by long delay the evil has gained strength.” He also warns that running away from situations is not enough on its own: “We cannot conquer simply by fleeing, but by patience and true humility we become stronger than all our enemies.” Changing where you are helps, but God also wants to change what is inside you. Two more pieces of advice. First: don’t fight alone. “Often take counsel when tempted.” Talk to someone you trust. Second: be kind to others who are struggling. “Do not be harsh with others who are tempted, but console them as you yourself would wish to be consoled.” And don’t despair. God, he says, quoting Paul, will make a way out “that we may be able to bear it.” When you are tempted, pray harder, not less. One thing to do this week: think of one temptation you face often. Work out what its “first knock” usually is: a thought, a place, a time of night, a particular app. Plan one simple way to shut the door at that first step, and tell one trusted person your plan.",
+  "word_count": 456
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-imitation-of-christ-teens",
+   "en"
+  ],
+  "order": 6,
+  "title": "Other People’s Faults",
+  "body_html": "<blockquote>“Bear ye one another’s burdens, and so fulfil the law of Christ.” — Galatians 6:2 (KJV)</blockquote> <p>Living closely with other people means living with their annoying habits, and Thomas lived with the same group of men for seventy years. He had thought hard about how to handle other people’s faults.</p> <p>His first piece of advice is to look at yourself before you judge others. “Turn your attention upon yourself and beware of judging the deeds of other men,” he says, because when we judge others we often get it wrong and easily sin, whereas examining ourselves “is always profitable.” He notices how often our feelings twist the picture: “We frequently judge that things are as we wish them to be.”</p> <p>Then he points out how unfair we can be without realising it:</p> <blockquote>“We want them to be perfect, yet we do not correct our own faults. We wish them to be severely corrected, yet we will not correct ourselves.”</blockquote> <p>Rules for them, freedom for us. He sums it up with a question that is hard to answer: “If you cannot make yourself what you would wish to be, how can you bend others to your will?” You cannot even fix yourself. Why expect to fix everyone else?</p> <p>So his advice is patience:</p> <blockquote>“Try to bear patiently with the defects and infirmities of others, whatever they may be, because you also have many a fault which others must endure.”</blockquote> <p>That last part is humbling. You are somebody else’s annoying person. Your family, your friends, your teammates are putting up with things about you too.</p> <p>This doesn’t mean never speaking up. Thomas says that if you have spoken to someone once or twice about a problem and they don’t change, don’t keep arguing; hand it over to God, “for God knows well how to turn evil to good.” And of course, if someone is hurting you or others, that is different. Tell an adult who can help.</p> <p>Finally, he explains why God made us all so imperfect together: so “that we may learn to bear with one another’s burdens, for there is no man without fault, no man without burden, no man sufficient to himself nor wise enough. Hence we must support one another, console one another, mutually help, counsel, and advise.”</p> <p><strong>One thing to do this week:</strong> think of one person whose habits really get to you. This week, pray for them by name each day, and ask God to show you one thing about yourself that other people have to put up with.</p>",
+  "study_questions": [
+   {
+    "question": "Why does Thomas say we should be careful about judging others?",
+    "answer": "Because when we judge others we work in vain, often make mistakes and easily sin, and our own feelings bend how we see things; examining ourselves is always more useful."
+   },
+   {
+    "question": "What unfairness does he point out in how we treat other people’s faults?",
+    "answer": "We want others to be perfect and strictly corrected, but we don’t correct our own faults; we want rules for them but freedom for ourselves."
+   },
+   {
+    "question": "Why should we be patient with other people’s faults?",
+    "answer": "Because we also have many faults that others have to put up with, and God wants us to learn to carry one another’s burdens and support each other."
+   }
+  ],
+  "body_text": "“Bear ye one another’s burdens, and so fulfil the law of Christ.” — Galatians 6:2 (KJV) Living closely with other people means living with their annoying habits, and Thomas lived with the same group of men for seventy years. He had thought hard about how to handle other people’s faults. His first piece of advice is to look at yourself before you judge others. “Turn your attention upon yourself and beware of judging the deeds of other men,” he says, because when we judge others we often get it wrong and easily sin, whereas examining ourselves “is always profitable.” He notices how often our feelings twist the picture: “We frequently judge that things are as we wish them to be.” Then he points out how unfair we can be without realising it: “We want them to be perfect, yet we do not correct our own faults. We wish them to be severely corrected, yet we will not correct ourselves.” Rules for them, freedom for us. He sums it up with a question that is hard to answer: “If you cannot make yourself what you would wish to be, how can you bend others to your will?” You cannot even fix yourself. Why expect to fix everyone else? So his advice is patience: “Try to bear patiently with the defects and infirmities of others, whatever they may be, because you also have many a fault which others must endure.” That last part is humbling. You are somebody else’s annoying person. Your family, your friends, your teammates are putting up with things about you too. This doesn’t mean never speaking up. Thomas says that if you have spoken to someone once or twice about a problem and they don’t change, don’t keep arguing; hand it over to God, “for God knows well how to turn evil to good.” And of course, if someone is hurting you or others, that is different. Tell an adult who can help. Finally, he explains why God made us all so imperfect together: so “that we may learn to bear with one another’s burdens, for there is no man without fault, no man without burden, no man sufficient to himself nor wise enough. Hence we must support one another, console one another, mutually help, counsel, and advise.” One thing to do this week: think of one person whose habits really get to you. This week, pray for them by name each day, and ask God to show you one thing about yourself that other people have to put up with.",
+  "word_count": 423
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-imitation-of-christ-teens",
+   "en"
+  ],
+  "order": 7,
+  "title": "Words Are Just Words",
+  "body_html": "<blockquote>“The fear of man bringeth a snare: but whoso putteth his trust in the LORD shall be safe.” — Proverbs 29:25 (KJV)</blockquote> <p>What people say about you can feel like the most important thing in the world. A rumour, a comment, a group laughing at you, or just the sense that people don’t think much of you. Thomas has a lot to say about this, and much of it is in Book III, which is written as Christ speaking to a disciple.</p> <p>His main point is short and freeing:</p> <blockquote>“Do not let your peace depend on the words of men. Their thinking well or badly of you does not make you different from what you are.”</blockquote> <p>Read that twice. Someone else’s opinion of you does not change who you are. Their praise doesn’t make you better and their criticism doesn’t make you worse. You are who you are before God.</p> <p>Thomas also says it is impossible to please everyone. “Many men say many things, and therefore little faith is to be put in them. Likewise, it is impossible to satisfy all men.” Even the apostle Paul, who tried hard to serve everyone, was sometimes “judged and despised by others.” So he “committed all to God Who knows all things.”</p> <p>Then comes a line that is almost funny:</p> <blockquote>“For what are words but words? They fly through the air but hurt not a stone.”</blockquote> <p>Of course words can hurt. Thomas knows that; his point is that they don’t have to have the final say. He asks: if every nasty thing imaginable were said about you, “Could it so much as pluck one hair from your head?” He who “neither cares to please men nor fears to displease them will enjoy great peace.”</p> <p>There is an honest side too. If what people are saying is true, Thomas says, use it: “If you are guilty, consider how you would gladly amend.” Sometimes criticism stings because it is right. If it is false, bear it for God’s sake and leave the judging to him.</p> <p>One important note: if someone is bullying you, threatening you, or spreading things that are hurting you badly, that is not something to carry quietly. Tell a parent, a teacher or another adult you trust. Thomas’s advice is about your inner peace, not about letting people treat you badly.</p> <p><strong>One thing to do this week:</strong> write down one thing someone has said about you that keeps going round your head. Ask honestly: is any of it true? If so, ask God to help you change. If not, pray, “God, you know the truth about me,” and let it go.</p>",
+  "study_questions": [
+   {
+    "question": "What does Thomas say about other people’s opinions of us?",
+    "answer": "That we should not let our peace depend on what people say, because their thinking well or badly of us does not change who we really are."
+   },
+   {
+    "question": "What does he mean by “words are but words”?",
+    "answer": "That words fly through the air but do not have to harm us; even if every bad thing were said about us, it could not pluck a hair from our head. We do not have to let them have the last word."
+   },
+   {
+    "question": "What should we do if criticism of us is true?",
+    "answer": "Consider how we can gladly change and put it right. If it is not true, bear it for God’s sake and trust him as the judge."
+   }
+  ],
+  "body_text": "“The fear of man bringeth a snare: but whoso putteth his trust in the LORD shall be safe.” — Proverbs 29:25 (KJV) What people say about you can feel like the most important thing in the world. A rumour, a comment, a group laughing at you, or just the sense that people don’t think much of you. Thomas has a lot to say about this, and much of it is in Book III, which is written as Christ speaking to a disciple. His main point is short and freeing: “Do not let your peace depend on the words of men. Their thinking well or badly of you does not make you different from what you are.” Read that twice. Someone else’s opinion of you does not change who you are. Their praise doesn’t make you better and their criticism doesn’t make you worse. You are who you are before God. Thomas also says it is impossible to please everyone. “Many men say many things, and therefore little faith is to be put in them. Likewise, it is impossible to satisfy all men.” Even the apostle Paul, who tried hard to serve everyone, was sometimes “judged and despised by others.” So he “committed all to God Who knows all things.” Then comes a line that is almost funny: “For what are words but words? They fly through the air but hurt not a stone.” Of course words can hurt. Thomas knows that; his point is that they don’t have to have the final say. He asks: if every nasty thing imaginable were said about you, “Could it so much as pluck one hair from your head?” He who “neither cares to please men nor fears to displease them will enjoy great peace.” There is an honest side too. If what people are saying is true, Thomas says, use it: “If you are guilty, consider how you would gladly amend.” Sometimes criticism stings because it is right. If it is false, bear it for God’s sake and leave the judging to him. One important note: if someone is bullying you, threatening you, or spreading things that are hurting you badly, that is not something to carry quietly. Tell a parent, a teacher or another adult you trust. Thomas’s advice is about your inner peace, not about letting people treat you badly. One thing to do this week: write down one thing someone has said about you that keeps going round your head. Ask honestly: is any of it true? If so, ask God to help you change. If not, pray, “God, you know the truth about me,” and let it go.",
+  "word_count": 439
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-imitation-of-christ-teens",
+   "en"
+  ],
+  "order": 8,
+  "title": "A Friend Who Stays",
+  "body_html": "<blockquote>“Henceforth I call you not servants; for the servant knoweth not what his lord doeth: but I have called you friends.” — John 15:15 (KJV)</blockquote> <p>Friendships matter enormously when you are a teenager. They also change, and sometimes they end, in ways that really hurt. Thomas knew that every human friendship, however good, can let you down. So he points to a friend who won’t.</p> <p>“Love Him, then; keep Him as a friend,” he writes of Jesus. “He will not leave you as others do.” And then:</p> <blockquote>“When Jesus is near, all is well and nothing seems difficult. When He is absent, all is hard.”</blockquote> <p>Thomas calls finding Jesus finding “a rare treasure, indeed, a good above every good.” He says something that sounds strange at first: the person who lives without Jesus “is the poorest of the poor,” and no one is so rich as the one who lives in his grace.</p> <p>How do you keep that friendship? Thomas says: “It is a great art to know how to converse with Jesus, and great wisdom to know how to keep Him. Be humble and peaceful, and Jesus will be with you.” Like any friendship, it grows by spending time together and talking.</p> <p>He also says something every lonely person needs to hear:</p> <blockquote>“You cannot live well without a friend, and if Jesus be not your friend above all else, you will be very sad and desolate.”</blockquote> <p>Does that mean other friends don’t matter? No. Thomas wrote in strong monastery language and sometimes sounds as if he wants you to have no close friends at all. But his main point is about order, not about loneliness. “Let all things be loved for the sake of Jesus, but Jesus for His own sake.” And in Book III: “Without Me friendship has no strength and cannot endure.” Friendships last best when they are not carrying the weight that only God can carry. When Jesus is your first friend, you can love your other friends better, and survive it if they let you down.</p> <p>And when Jesus feels far away? Thomas doesn’t pretend that never happens. He says to wait calmly and trust, “for after winter comes summer, after night, the day, and after the storm, a great calm.”</p> <p><strong>One thing to do this week:</strong> talk to Jesus this week the way you would talk to a close friend: about your day, what worried you, what made you laugh. Do it out loud on a walk if that helps. Thank him for one friend in your life, and pray for them.</p>",
+  "study_questions": [
+   {
+    "question": "Why does Thomas say Jesus is a better friend than any other?",
+    "answer": "Because other friends can leave or let us down, but Jesus will not leave us as others do. With him near, all is well."
+   },
+   {
+    "question": "Does Thomas mean we should not have other friends?",
+    "answer": "His main point is that Jesus should come first: love everything for Jesus’ sake and Jesus for his own sake. Friendships grounded in him are stronger and can last."
+   },
+   {
+    "question": "What does Thomas say when Jesus seems far away?",
+    "answer": "To wait calmly and trust, because after winter comes summer, after night the day, and after the storm a great calm."
+   }
+  ],
+  "body_text": "“Henceforth I call you not servants; for the servant knoweth not what his lord doeth: but I have called you friends.” — John 15:15 (KJV) Friendships matter enormously when you are a teenager. They also change, and sometimes they end, in ways that really hurt. Thomas knew that every human friendship, however good, can let you down. So he points to a friend who won’t. “Love Him, then; keep Him as a friend,” he writes of Jesus. “He will not leave you as others do.” And then: “When Jesus is near, all is well and nothing seems difficult. When He is absent, all is hard.” Thomas calls finding Jesus finding “a rare treasure, indeed, a good above every good.” He says something that sounds strange at first: the person who lives without Jesus “is the poorest of the poor,” and no one is so rich as the one who lives in his grace. How do you keep that friendship? Thomas says: “It is a great art to know how to converse with Jesus, and great wisdom to know how to keep Him. Be humble and peaceful, and Jesus will be with you.” Like any friendship, it grows by spending time together and talking. He also says something every lonely person needs to hear: “You cannot live well without a friend, and if Jesus be not your friend above all else, you will be very sad and desolate.” Does that mean other friends don’t matter? No. Thomas wrote in strong monastery language and sometimes sounds as if he wants you to have no close friends at all. But his main point is about order, not about loneliness. “Let all things be loved for the sake of Jesus, but Jesus for His own sake.” And in Book III: “Without Me friendship has no strength and cannot endure.” Friendships last best when they are not carrying the weight that only God can carry. When Jesus is your first friend, you can love your other friends better, and survive it if they let you down. And when Jesus feels far away? Thomas doesn’t pretend that never happens. He says to wait calmly and trust, “for after winter comes summer, after night, the day, and after the storm, a great calm.” One thing to do this week: talk to Jesus this week the way you would talk to a close friend: about your day, what worried you, what made you laugh. Do it out loud on a walk if that helps. Thank him for one friend in your life, and pray for them.",
+  "word_count": 428
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-imitation-of-christ-teens",
+   "en"
+  ],
+  "order": 9,
+  "title": "The Cross Is Everywhere",
+  "body_html": "<blockquote>“If any man will come after me, let him deny himself, and take up his cross daily, and follow me.” — Luke 9:23 (KJV)</blockquote> <p>Some people think following Jesus should make life easy. Thomas thought the opposite, and he was honest about it in a chapter called “The Royal Road of the Holy Cross.”</p> <p>Jesus told his followers to take up their cross daily. Thomas says some kind of suffering is unavoidable for everyone, Christian or not: “Arrange and order everything to suit your will and judgment, and still you will find that some suffering must always be borne, willingly or unwillingly.” Sometimes it is pain in your body, sometimes trouble inside. People will let you down. And, he adds with a wry honesty, “what is worse, you will often grow weary of yourself.”</p> <p>He makes a sharp point about running away from problems:</p> <blockquote>“No matter where you may go, you cannot escape it, for wherever you go you take yourself with you and shall always find yourself.”</blockquote> <p>New school, new friends, new city: you still bring yourself along. So the question is not how to escape every cross, but how to carry it. And here Thomas says something wonderful:</p> <blockquote>“If you carry the cross willingly, it will carry and lead you to the desired goal.”</blockquote> <p>Fight it every step and it gets heavier: “If you carry it unwillingly, you create a burden for yourself and increase the load, though still you have to bear it.” Throw one away and “you will find another and perhaps a heavier one.” Carry it with Jesus and, somehow, it starts carrying you.</p> <p>Thomas also says hard times have a hidden gift. In Book I he writes, “It is good for us to have trials and troubles at times, for they often remind us” that this world is not our final home. And when people don’t think well of us, “then we are more inclined to seek God Who sees our hearts.”</p> <p>A word of care. Thomas was a monk, and sometimes he writes as if we should go looking for suffering. That is not what Jesus asks. You don’t need to make your life harder on purpose, and you should always get help for pain, illness or anything that is hurting you. Thomas’s best point is simpler: when hard things come, and they will, you don’t carry them alone. Jesus walked this road first, carrying his own cross, for you.</p> <p><strong>One thing to do this week:</strong> name one hard thing in your life right now that you can’t change. Instead of only asking God to take it away, ask him this week to help you carry it with him, and notice whether anything changes in how it feels.</p>",
+  "study_questions": [
+   {
+    "question": "What does Thomas say about running away from problems?",
+    "answer": "That wherever you go you take yourself with you, so you cannot escape every cross just by changing where you are."
+   },
+   {
+    "question": "What happens, according to Thomas, if you carry your cross willingly or unwillingly?",
+    "answer": "If you carry it willingly, it will carry and lead you to the goal. If unwillingly, you make the load heavier, and if you throw one away you will find another, perhaps heavier."
+   },
+   {
+    "question": "What good can come from hard times, according to Book I?",
+    "answer": "They remind us that this world is not our final home, and when people don’t think well of us, we are more inclined to seek God, who sees our hearts."
+   }
+  ],
+  "body_text": "“If any man will come after me, let him deny himself, and take up his cross daily, and follow me.” — Luke 9:23 (KJV) Some people think following Jesus should make life easy. Thomas thought the opposite, and he was honest about it in a chapter called “The Royal Road of the Holy Cross.” Jesus told his followers to take up their cross daily. Thomas says some kind of suffering is unavoidable for everyone, Christian or not: “Arrange and order everything to suit your will and judgment, and still you will find that some suffering must always be borne, willingly or unwillingly.” Sometimes it is pain in your body, sometimes trouble inside. People will let you down. And, he adds with a wry honesty, “what is worse, you will often grow weary of yourself.” He makes a sharp point about running away from problems: “No matter where you may go, you cannot escape it, for wherever you go you take yourself with you and shall always find yourself.” New school, new friends, new city: you still bring yourself along. So the question is not how to escape every cross, but how to carry it. And here Thomas says something wonderful: “If you carry the cross willingly, it will carry and lead you to the desired goal.” Fight it every step and it gets heavier: “If you carry it unwillingly, you create a burden for yourself and increase the load, though still you have to bear it.” Throw one away and “you will find another and perhaps a heavier one.” Carry it with Jesus and, somehow, it starts carrying you. Thomas also says hard times have a hidden gift. In Book I he writes, “It is good for us to have trials and troubles at times, for they often remind us” that this world is not our final home. And when people don’t think well of us, “then we are more inclined to seek God Who sees our hearts.” A word of care. Thomas was a monk, and sometimes he writes as if we should go looking for suffering. That is not what Jesus asks. You don’t need to make your life harder on purpose, and you should always get help for pain, illness or anything that is hurting you. Thomas’s best point is simpler: when hard things come, and they will, you don’t carry them alone. Jesus walked this road first, carrying his own cross, for you. One thing to do this week: name one hard thing in your life right now that you can’t change. Instead of only asking God to take it away, ask him this week to help you carry it with him, and notice whether anything changes in how it feels.",
+  "word_count": 455
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-imitation-of-christ-teens",
+   "en"
+  ],
+  "order": 10,
+  "title": "Love Is an Excellent Thing",
+  "body_html": "<blockquote>“We love him, because he first loved us.” — 1 John 4:19 (KJV)</blockquote> <p>If you read only one chapter of The Imitation of Christ, many people would tell you to read this one. In Book III, the disciple suddenly breaks into a kind of song about love, and it is one of the most beautiful passages in the whole book.</p> <p>It starts simply:</p> <blockquote>“Love is an excellent thing, a very great blessing, indeed. It makes every difficulty easy, and bears all wrongs with equanimity.”</blockquote> <p>Equanimity means calm, steady balance. Love, Thomas says, “bears a burden without being weighted and renders sweet all that is bitter.” You know this from ordinary life. A long drive to see someone you love doesn’t feel long. A hard job done for someone you care about feels lighter. Love changes the weight of things.</p> <p>Thomas means, above all, the love of God, the love that comes from God and goes back to him. He says love “is born of God and cannot rest except in God.” And he describes what it does to a person:</p> <blockquote>“Love feels no burden, thinks nothing of troubles, attempts more than it is able, and does not plead impossibility, because it believes that it may and can do all things.”</blockquote> <p>Then he piles up short, punchy lines, almost like poetry: “Love is watchful. Sleeping, it does not slumber. Wearied, it is not tired. Pressed, it is not straitened.” Love is like “a living flame, a burning torch” that keeps finding its way upward.</p> <p>He describes love in a way that sounds a lot like Paul’s famous chapter, 1 Corinthians 13: “Love is swift, sincere, kind, pleasant, and delightful. Love is strong, patient and faithful.” And then the key line: “Love is never self-seeking, for in whatever a person seeks himself there he falls from love.” The moment love becomes all about me, it stops being love.</p> <p>In the middle of the chapter, the disciple prays a prayer you could pray too: “My God, my love, You are all mine and I am all Yours.”</p> <p>Here is the most important thing to know about this love: it doesn’t start with you. The Bible says we love God because he first loved us. Thomas’s song is not a list of things you have to work up. It is a description of what happens to a heart that has been loved by God and begins to love him back.</p> <p><strong>One thing to do this week:</strong> read 1 Corinthians 13 this week, then read it again putting Jesus’ name wherever it says “charity” or love. Then pray Thomas’s short prayer each morning: “My God, my love, you are all mine and I am all yours.”</p>",
+  "study_questions": [
+   {
+    "question": "What does Thomas say love does to difficult things?",
+    "answer": "It makes every difficulty easy, bears burdens without being weighed down, and makes what is bitter sweet."
+   },
+   {
+    "question": "Where does Thomas say love comes from and where it rests?",
+    "answer": "Love is born of God and cannot rest except in God."
+   },
+   {
+    "question": "What is the one thing love never is, according to Thomas?",
+    "answer": "Self-seeking. Whenever a person seeks himself, he falls from love."
+   }
+  ],
+  "body_text": "“We love him, because he first loved us.” — 1 John 4:19 (KJV) If you read only one chapter of The Imitation of Christ, many people would tell you to read this one. In Book III, the disciple suddenly breaks into a kind of song about love, and it is one of the most beautiful passages in the whole book. It starts simply: “Love is an excellent thing, a very great blessing, indeed. It makes every difficulty easy, and bears all wrongs with equanimity.” Equanimity means calm, steady balance. Love, Thomas says, “bears a burden without being weighted and renders sweet all that is bitter.” You know this from ordinary life. A long drive to see someone you love doesn’t feel long. A hard job done for someone you care about feels lighter. Love changes the weight of things. Thomas means, above all, the love of God, the love that comes from God and goes back to him. He says love “is born of God and cannot rest except in God.” And he describes what it does to a person: “Love feels no burden, thinks nothing of troubles, attempts more than it is able, and does not plead impossibility, because it believes that it may and can do all things.” Then he piles up short, punchy lines, almost like poetry: “Love is watchful. Sleeping, it does not slumber. Wearied, it is not tired. Pressed, it is not straitened.” Love is like “a living flame, a burning torch” that keeps finding its way upward. He describes love in a way that sounds a lot like Paul’s famous chapter, 1 Corinthians 13: “Love is swift, sincere, kind, pleasant, and delightful. Love is strong, patient and faithful.” And then the key line: “Love is never self-seeking, for in whatever a person seeks himself there he falls from love.” The moment love becomes all about me, it stops being love. In the middle of the chapter, the disciple prays a prayer you could pray too: “My God, my love, You are all mine and I am all Yours.” Here is the most important thing to know about this love: it doesn’t start with you. The Bible says we love God because he first loved us. Thomas’s song is not a list of things you have to work up. It is a description of what happens to a heart that has been loved by God and begins to love him back. One thing to do this week: read 1 Corinthians 13 this week, then read it again putting Jesus’ name wherever it says “charity” or love. Then pray Thomas’s short prayer each morning: “My God, my love, you are all mine and I am all yours.”",
+  "word_count": 451
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-imitation-of-christ-teens",
+   "en"
+  ],
+  "order": 11,
+  "title": "You Are Not an Angel",
+  "body_html": "<blockquote>“For a just man falleth seven times, and riseth up again.” — Proverbs 24:16 (KJV)</blockquote> <p>Thomas held his young novices to a high standard, but he also knew they would fail, often. So in Book III he writes a chapter for people who are feeling low because they keep messing up. In it, Christ speaks to the discouraged disciple:</p> <blockquote>“All is not lost even though you be troubled oftener or tempted more grievously. You are a man, not God. You are flesh, not an angel.”</blockquote> <p>That is both humbling and comforting. Of course you fall. You are human. Even the angels and the first people in paradise fell, Thomas points out, so “how can you possibly expect to remain always in the same state of virtue?” The point is not to never fall, but not to stay down. Bad moments pass: “The storm that is now aroused will soon be quieted.”</p> <p>In Book I, Thomas tells a story about a man who was eaten up with anxiety. He kept wondering whether he would really keep going as a Christian to the end of his life. One day, praying in a church, he cried out, “Oh if I but knew whether I should persevere to the end!” And he sensed God answering him inside:</p> <blockquote>“If you knew this, what would you do? Do now what you would do then and you will be quite secure.”</blockquote> <p>The man stopped trying to see the future and started simply doing God’s will today. His anxiety lifted. That is good advice if your mind gets stuck on questions like “Will I still believe in ten years?” or “What if I fall away?” Thomas’s answer: do today what you would do if you knew. Follow Jesus today. Tomorrow will take care of itself.</p> <p>He is practical about growth, too. You don’t have to fix everything at once: “If we were to uproot only one vice each year, we should soon become perfect.” One bad habit a year. That is a pace anyone can manage.</p> <p>And he gives a simple test for a good day: “If you have spent the day profitably, you will always be happy at eventide.” Eventide means evening. Small, faithful days add up.</p> <p><strong>One thing to do this week:</strong> pick one bad habit to work on this year, just one. Write it down, tell God about it, and choose one small step for this week. When you slip, say, “I’m not an angel, Lord. Help me up,” and keep going.</p>",
+  "study_questions": [
+   {
+    "question": "What does Christ say to the discouraged disciple in Book III?",
+    "answer": "That all is not lost even if he is troubled or tempted more often: “You are a man, not God. You are flesh, not an angel.”"
+   },
+   {
+    "question": "What answer did the anxious man in the church receive?",
+    "answer": "“If you knew this, what would you do? Do now what you would do then and you will be quite secure.” He stopped worrying about the future and simply did God’s will each day."
+   },
+   {
+    "question": "How quickly does Thomas suggest working on bad habits?",
+    "answer": "One at a time: if we uprooted just one vice each year, we would soon become perfect."
+   }
+  ],
+  "body_text": "“For a just man falleth seven times, and riseth up again.” — Proverbs 24:16 (KJV) Thomas held his young novices to a high standard, but he also knew they would fail, often. So in Book III he writes a chapter for people who are feeling low because they keep messing up. In it, Christ speaks to the discouraged disciple: “All is not lost even though you be troubled oftener or tempted more grievously. You are a man, not God. You are flesh, not an angel.” That is both humbling and comforting. Of course you fall. You are human. Even the angels and the first people in paradise fell, Thomas points out, so “how can you possibly expect to remain always in the same state of virtue?” The point is not to never fall, but not to stay down. Bad moments pass: “The storm that is now aroused will soon be quieted.” In Book I, Thomas tells a story about a man who was eaten up with anxiety. He kept wondering whether he would really keep going as a Christian to the end of his life. One day, praying in a church, he cried out, “Oh if I but knew whether I should persevere to the end!” And he sensed God answering him inside: “If you knew this, what would you do? Do now what you would do then and you will be quite secure.” The man stopped trying to see the future and started simply doing God’s will today. His anxiety lifted. That is good advice if your mind gets stuck on questions like “Will I still believe in ten years?” or “What if I fall away?” Thomas’s answer: do today what you would do if you knew. Follow Jesus today. Tomorrow will take care of itself. He is practical about growth, too. You don’t have to fix everything at once: “If we were to uproot only one vice each year, we should soon become perfect.” One bad habit a year. That is a pace anyone can manage. And he gives a simple test for a good day: “If you have spent the day profitably, you will always be happy at eventide.” Eventide means evening. Small, faithful days add up. One thing to do this week: pick one bad habit to work on this year, just one. Write it down, tell God about it, and choose one small step for this week. When you slip, say, “I’m not an angel, Lord. Help me up,” and keep going.",
+  "word_count": 417
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-imitation-of-christ-teens",
+   "en"
+  ],
+  "order": 12,
+  "title": "Four Things That Bring Peace",
+  "body_html": "<blockquote>“Thou wilt keep him in perfect peace, whose mind is stayed on thee: because he trusteth in thee.” — Isaiah 26:3 (KJV)</blockquote> <p>Everyone wants peace: peace inside, peace at home, peace with friends. Thomas thought a lot about where it comes from and why we lose it.</p> <p>In Book I he gives a diagnosis that might surprise you: “We should enjoy much peace if we did not concern ourselves with what others say and do, for these are no concern of ours.” A lot of our stress comes from things that aren’t ours to manage.</p> <p>Then, in Book III, Christ gives the disciple a short recipe for peace. It is only four lines long:</p> <blockquote>“Seek, child, to do the will of others rather than your own. Always choose to have less rather than more. Look always for the last place and seek to be beneath all others. Always wish and pray that the will of God be fully carried out in you.”</blockquote> <p>Let’s put those into everyday words. One: be willing to go along with what others want, rather than always needing your own way. Two: don’t always grab for more, the bigger piece, the extra, the latest thing. Three: don’t fight for the front, the spotlight, the top spot. Four: want God’s will more than anything else.</p> <p>This isn’t about being a doormat or never having an opinion. It is about letting go of the constant pushing that wears us out: pushing to win, to have, to be first. Jesus said the last will be first, and that he came not to be served but to serve. Thomas is just turning that into four habits.</p> <p>The disciple’s reply is honest: “This brief discourse of Yours contains much perfection. It is short in words but full of meaning.” And then: “For as often as I find myself troubled and dejected, I find that I have departed from this teaching.”</p> <p>That is a useful test. Next time you feel stressed and unsettled, check the four. Are you insisting on your own way? Grabbing for more? Fighting for first place? Wanting your will over God’s? Very often, Thomas found, that is where the peace went.</p> <p>He adds a prayer for when your head is full of bad thoughts that you can pray word for word: “O Lord my God, be not far from me. O my God, hasten to help me.”</p> <p><strong>One thing to do this week:</strong> each evening this week, look back over the day with the four things in mind. Where did you insist on your own way, grab for more, or push to be first? Tell God about it, and ask for his peace.</p>",
+  "study_questions": [
+   {
+    "question": "What does Thomas say would give us much peace, in Book I?",
+    "answer": "Not concerning ourselves with what others say and do, because those things are not our concern."
+   },
+   {
+    "question": "What are the four things that bring peace?",
+    "answer": "Doing the will of others rather than your own, choosing to have less rather than more, seeking the last place, and always wishing and praying for God’s will to be done in you."
+   },
+   {
+    "question": "What did the disciple notice about times when he felt troubled?",
+    "answer": "That whenever he was troubled and dejected, he had moved away from this teaching."
+   }
+  ],
+  "body_text": "“Thou wilt keep him in perfect peace, whose mind is stayed on thee: because he trusteth in thee.” — Isaiah 26:3 (KJV) Everyone wants peace: peace inside, peace at home, peace with friends. Thomas thought a lot about where it comes from and why we lose it. In Book I he gives a diagnosis that might surprise you: “We should enjoy much peace if we did not concern ourselves with what others say and do, for these are no concern of ours.” A lot of our stress comes from things that aren’t ours to manage. Then, in Book III, Christ gives the disciple a short recipe for peace. It is only four lines long: “Seek, child, to do the will of others rather than your own. Always choose to have less rather than more. Look always for the last place and seek to be beneath all others. Always wish and pray that the will of God be fully carried out in you.” Let’s put those into everyday words. One: be willing to go along with what others want, rather than always needing your own way. Two: don’t always grab for more, the bigger piece, the extra, the latest thing. Three: don’t fight for the front, the spotlight, the top spot. Four: want God’s will more than anything else. This isn’t about being a doormat or never having an opinion. It is about letting go of the constant pushing that wears us out: pushing to win, to have, to be first. Jesus said the last will be first, and that he came not to be served but to serve. Thomas is just turning that into four habits. The disciple’s reply is honest: “This brief discourse of Yours contains much perfection. It is short in words but full of meaning.” And then: “For as often as I find myself troubled and dejected, I find that I have departed from this teaching.” That is a useful test. Next time you feel stressed and unsettled, check the four. Are you insisting on your own way? Grabbing for more? Fighting for first place? Wanting your will over God’s? Very often, Thomas found, that is where the peace went. He adds a prayer for when your head is full of bad thoughts that you can pray word for word: “O Lord my God, be not far from me. O my God, hasten to help me.” One thing to do this week: each evening this week, look back over the day with the four things in mind. Where did you insist on your own way, grab for more, or push to be first? Tell God about it, and ask for his peace.",
+  "word_count": 445
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-imitation-of-christ-teens",
+   "en"
+  ],
+  "order": 13,
+  "title": "Live Ready",
+  "body_html": "<blockquote>“Teach us to number our days, that we may apply our hearts unto wisdom.” — Psalm 90:12 (KJV)</blockquote> <p>Thomas wrote a lot about death. It may seem a strange subject for teenagers, but he was writing for young people, and he thought the best time to learn how to live well was while you were young.</p> <p>He is direct: “Today we live; tomorrow we die and are quickly forgotten.” And: “Tomorrow is an uncertain day; how do you know you will have a tomorrow?” That isn’t meant to frighten you. It is meant to wake you up. Most of us live as though there will always be time later to get serious about God. Thomas says: don’t count on later.</p> <p>His best line on the subject is this:</p> <blockquote>“How happy and prudent is he who tries now in life to be what he wants to be found in death.”</blockquote> <p>In other words, become now the person you want to be at the end. Don’t plan to sort out your life with God someday. Start today. “If you had a good conscience you would not fear death very much.”</p> <p>Thomas didn’t only want people to be ready to die. He wanted them to be really alive, and he believed real life comes from Christ. In Book IV, which is about Communion, he writes that in this life we need two things above all, “food and light.” He saw them in the bread of Communion and in the Bible: “the word of God is the light of my soul and Your Sacrament is the Bread of Life.”</p> <p>Thomas was a Catholic priest, and he believed Christ is truly present in the bread and wine. Christians from different churches understand Communion differently. But every Christian can hear the heart of what he is saying. You need the word of God to see where you are going, and you need Christ himself to keep you alive. Jesus called himself “the bread of life” and said his word is a light for our path.</p> <p>So here is where Thomas leaves us. Follow Jesus. Copy him. Read his word. Come to his table. Keep short accounts with God, and live today the way you would want to be found at the end. Thomas lived like that for over ninety years. He died at Mount St Agnes in July 1471, after the night prayers. Six hundred years later, the advice he wrote for his young novices is still helping young people find their way, and it can help you too.</p> <p><strong>One thing to do this week:</strong> write a short letter to your future self: the kind of person you want to be when you are old, as a follower of Jesus. Then pick one way to start being that person this week, and do it.</p>",
+  "study_questions": [
+   {
+    "question": "What does Thomas mean by trying “now in life to be what he wants to be found in death”?",
+    "answer": "Becoming now the person you want to be at the end of your life, instead of putting off following God until later."
+   },
+   {
+    "question": "What two things did Thomas say we need most in this life?",
+    "answer": "Food and light: the bread of Communion as the Bread of Life, and the word of God as the light of the soul."
+   },
+   {
+    "question": "How do Christians differ about Communion, and what do they share?",
+    "answer": "Thomas, a Catholic priest, believed Christ is truly present in the bread and wine; other Christians understand it differently. But all can agree that we need God’s word to light our way and Christ himself to give us life."
+   }
+  ],
+  "body_text": "“Teach us to number our days, that we may apply our hearts unto wisdom.” — Psalm 90:12 (KJV) Thomas wrote a lot about death. It may seem a strange subject for teenagers, but he was writing for young people, and he thought the best time to learn how to live well was while you were young. He is direct: “Today we live; tomorrow we die and are quickly forgotten.” And: “Tomorrow is an uncertain day; how do you know you will have a tomorrow?” That isn’t meant to frighten you. It is meant to wake you up. Most of us live as though there will always be time later to get serious about God. Thomas says: don’t count on later. His best line on the subject is this: “How happy and prudent is he who tries now in life to be what he wants to be found in death.” In other words, become now the person you want to be at the end. Don’t plan to sort out your life with God someday. Start today. “If you had a good conscience you would not fear death very much.” Thomas didn’t only want people to be ready to die. He wanted them to be really alive, and he believed real life comes from Christ. In Book IV, which is about Communion, he writes that in this life we need two things above all, “food and light.” He saw them in the bread of Communion and in the Bible: “the word of God is the light of my soul and Your Sacrament is the Bread of Life.” Thomas was a Catholic priest, and he believed Christ is truly present in the bread and wine. Christians from different churches understand Communion differently. But every Christian can hear the heart of what he is saying. You need the word of God to see where you are going, and you need Christ himself to keep you alive. Jesus called himself “the bread of life” and said his word is a light for our path. So here is where Thomas leaves us. Follow Jesus. Copy him. Read his word. Come to his table. Keep short accounts with God, and live today the way you would want to be found at the end. Thomas lived like that for over ninety years. He died at Mount St Agnes in July 1471, after the night prayers. Six hundred years later, the advice he wrote for his young novices is still helping young people find their way, and it can help you too. One thing to do this week: write a short letter to your future self: the kind of person you want to be when you are old, as a follower of Jesus. Then pick one way to start being that person this week, and do it.",
+  "word_count": 468
+ }
+}
+]
