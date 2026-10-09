@@ -3,7 +3,7 @@
  "slug": "absolute-surrender-teens",
  "language": "am",
  "job_issue": 5735,
- "pull_request": null,
+ "pull_request": 5758,
  "note": [
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh; re-verified for this job: rom/1co/php/mrk/1pe/gal/luk/act/jhn/mat return 200, 1ki/gen 404). All twelve epigraphs are New Testament. The mirror's 1 Corinthians 6:19 and 1 Peter 1:5 sit inside bridged entries (1co 6:18-20, 1pe 1:1-10) holding another verse's text, so those two reuse the wording of shipped Amharic works (source_file names them). The one Old Testament quotation, Ahab's answer at 1 Kings 20:4, reuses the full edition's wording (absolute-surrender.am.json), so the teen and full editions quote it identically.",
   "A `mined` row was re-measured against the finished text: an exact substring of at least 20 characters of the 1962 verse (or of the cited corpus file) inside that block, or, for Mark 9:24 and Matthew 26:72, the whole of the speech the verse reports, quoted exactly. Fragments that adapt the verse (Galatians 5:22a as the full edition's chapter title «የመንፈስ ፍሬ ፍቅር ነው», the chapter 9 closing prayer from Romans 7:24-25, the two-word «መፈለግንም ማድረግንም» of Philippians 2:13) are self_rendered.",
