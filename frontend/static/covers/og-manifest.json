@@ -14104,6 +14104,16 @@
 				487
 			]
 		},
+		"the-pursuit-of-god-teens": {
+			"ground": "8b7c2239881ebeffb37c40d9a956af1c0052c582fa0bce499db1ecfbb1dc7da5",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-reformed-pastor": {
 			"ground": "dc2edf59ee8bc58c50ee8181b46c82f50aa02da5601156c5f730f04f1b433de0",
 			"style": "press",
