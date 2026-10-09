@@ -1230,11 +1230,13 @@ export const tileFace = (t: BookTile): CoverFace | null =>
 
 /** A book as a strip tile, for the fans built in the browser from books the
  *  page already has — the same shape the API's `_book_cover` sends. */
-export const toBookTile = (b: CoverFace): BookTile => ({
-	kind: 'book',
+/** Any book trimmed to what a cover draws. */
+export const toCoverFace = (b: CoverFace): CoverFace => ({
 	...pick(b, COVER_FACE_KEYS),
 	author: pick(b.author, COVER_AUTHOR_KEYS)
 });
+
+export const toBookTile = (b: CoverFace): BookTile => ({ kind: 'book', ...toCoverFace(b) });
 
 /**
  * A sermon in a topic's strip. It carries no cover fields because it is not
@@ -1448,6 +1450,22 @@ export interface HubPerson {
 	words: number | null;
 }
 
+/** One step of a work's edition ladder — children, teens, the full text —
+ *  as a cover tile (`_edition_ladders`). */
+export type EditionRung = BookTile & { rung: 'children' | 'teens' | 'full' };
+
+/**
+ * A "30 Days with God" series framed as a challenge (`AUDIENCE_CHALLENGES`):
+ * Anchored for teens, Rooted for young readers. Each volume is an
+ * introduction (chapter 1), then one chapter a day (chapter n + 1 is day n) —
+ * the convention `tests_audience_shelf` holds the fixture to — so a reader's
+ * furthest chapter is the day they've reached, with no new data.
+ */
+export interface HubChallenge {
+	series: string;
+	days: number;
+}
+
 export interface AudienceShelf {
 	series: SeriesSummary[];
 	/** The series' anthologies as faces, each opening its chapter. Optional: an
@@ -1465,6 +1483,14 @@ export interface AudienceShelf {
 	topic: { slug: string; title: string } | null;
 	/** The "Start here" book's slug (one of `editions` / `more`), or null. */
 	start: string | null;
+	/** The story the hub sells hardest (`AUDIENCE_SPOTLIGHTS`), or null.
+	 *  Optional: an API behind this build omits it. */
+	spotlight?: BookSummary | null;
+	/** The hub's challenge, when its series is here. Optional, as above. */
+	challenge?: HubChallenge | null;
+	/** Each retold edition's (and the spotlight's) family here, youngest first,
+	 *  itself included — keyed by that edition's slug. Optional, as above. */
+	ladders?: Record<string, EditionRung[]>;
 	/** Slugs among all the above with a free PDF / EPUB download. */
 	printable: string[];
 	/** Every language the hub has something in — its hreflang and sitemap. */
@@ -1520,11 +1546,25 @@ export const getBookGuide = (slug: string, language = 'en', f?: Fetch) =>
 		f
 	);
 
-/** The slugs the hubs list with a leader's guide, each once, in hub order —
- *  the guide route's prerender entries. */
-export const guideSlugs = (shelves: Pick<AudienceShelf, 'leader_guides'>[]): string[] => [
-	...new Set(shelves.flatMap((s) => (s.leader_guides ?? []).map((b) => b.slug)))
+/** The books the hubs list with a leader's guide, each once, in hub order (a
+ *  Map keeps a key's first position). */
+export const guideBooks = (shelves: Pick<AudienceShelf, 'leader_guides'>[]): BookSummary[] => [
+	...new Map(shelves.flatMap((s) => s.leader_guides ?? []).map((b) => [b.slug, b])).values()
 ];
+
+/** The slugs the hubs list with a leader's guide — the guide route's prerender
+ *  entries. */
+export const guideSlugs = (shelves: Pick<AudienceShelf, 'leader_guides'>[]): string[] =>
+	guideBooks(shelves).map((b) => b.slug);
+
+/** A `BookCard` link that opens a book's printable leader's guide instead of
+ *  the book. `t` is the caller's i18n lookup. */
+export const guideCardLink = (book: Pick<BookSummary, 'slug' | 'title'> & { author: { name: string } }, t: (key: string) => string) => ({
+	href: `/books/${book.slug}/guide`,
+	cta: t('guide.open'),
+	label: t('guide.label'),
+	ariaLabel: `${t('guide.title').replace('%t%', book.title)} — ${book.author.name}`
+});
 
 /** Each hub's `languages` without building either shelf (`AudienceLanguagesView`). */
 export const listAudienceLanguages = (f?: Fetch) =>

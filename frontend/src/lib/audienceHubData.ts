@@ -18,6 +18,9 @@ export const emptyShelf = (): AudienceShelf => ({
 	plans: [],
 	topic: null,
 	start: null,
+	spotlight: null,
+	challenge: null,
+	ladders: {},
 	printable: [],
 	languages: []
 });

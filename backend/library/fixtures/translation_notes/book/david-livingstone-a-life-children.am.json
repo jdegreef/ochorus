@@ -1,0 +1,106 @@
+{
+ "kind": "book",
+ "slug": "david-livingstone-a-life-children",
+ "language": "am",
+ "job_issue": 5745,
+ "pull_request": 5766,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh, branch master, lowercase usfm/ codes; re-verified for this job 2026-10-09: mat/heb/2ti/act/luk return 200, gen/psa/ecc/isa/pro 404). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
+  "The mirror bridges Matthew 28:18-20 into one entry holding only verse 18, so Matthew 28:20 could not be taken from it; it is pasted verbatim from rooted-2.am.json (the wording men-and-women-who-gave-everything-2.am.json also cites as mined from rooted-2).",
+  "A `mined` row was re-measured against the finished text: an exact substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Wording reused from a shipped work whose own notes mark it self_rendered stays self_rendered here (the samuel-ajayi-crowther-a-life-children.am rule): Ecclesiastes 9:10 (key-teachings-of-richard-baxter.am), Psalm 19:1 (key-teachings-of-jonathan-edwards.am), Isaiah 35:1 (the-god-of-all-comfort.am), Isaiah 61:1 (samuel-ajayi-crowther-a-life-teens.am, one clause with … for omitted words) and Psalm 116:15 (on-loving-god.am) are verbatim from those files but self_rendered. Psalm 15:4 and Proverbs 25:25 have no shipped Amharic rendering and are self_rendered.",
+  "The English epigraphs are simplified child paraphrases (\"— from Psalm 19\"); per the shipped am children's editions each quotes the 1962 Bible's own wording for the part the English means, with … for words left out, and cites `— ከ<Book> <chapter>`. Chapter 3's Psalm 121:2 is reported speech re-personed to \"our help\" (ረድኤታችን), so self_rendered. Chapter 9 block 6 alludes to Psalm 34:18 in prose and is not a quotation.",
+  "No Amharic full or teen edition of this life exists yet; names follow the shipped am Livingstone chapters (men-and-women-who-gave-everything-2, brave-for-god-2): ዴቪድ ሊቪንግስተን, ብላንታየር, ግላስጎው, ዌስትሚኒስተር አቢ, ሄንሪ ሞርተን ስታንሊ, ኡጂጂ, ቺታምቦ, ዛምቢያ. The Nile is ዓባይ. Clock times use Ethiopian hour reckoning as the am corpus does (6 a.m. → ከጠዋቱ 12 ሰዓት)."
+ ],
+ "references": [
+  {
+   "reference": "Ecclesiastes 9:10a",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Psalm 19:1",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "2 Timothy 4:17",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Psalm 121:2",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Acts 8:31a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Isaiah 35:1",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 15:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "rooted-2.am.json"
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 7,
+   "source_file": "rooted-2.am.json"
+  },
+  {
+   "reference": "Isaiah 61:1",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalm 34:18",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "growing-in-wisdom.am.json"
+  },
+  {
+   "reference": "Hebrews 11:8",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Proverbs 25:25",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalm 116:15",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}

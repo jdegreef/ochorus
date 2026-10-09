@@ -1,9 +1,11 @@
+import { editionKind } from './edition';
 import type { IconName } from '$lib/components/Icon.svelte';
 import {
 	toBookTile,
 	type AudienceShelf,
 	type BookSummary,
 	type BookTile,
+	type EditionRung,
 	type HubAudience
 } from './library-public';
 import { furthestOf, resumeOrderOf, type ProgressRecord } from './reading-schema';
@@ -72,20 +74,6 @@ export interface AudienceHubConfig {
 	/** Each book card carries the book's one-line hook (`BookSummary.hook`),
 	 *  where it has one: the teenager picks by the story, not the cover. */
 	hooks: boolean;
-	/** The hub's daily devotional series, framed as a challenge. */
-	challenge: HubChallenge;
-}
-
-/**
- * A "30 Days with God" series as a challenge: Anchored for teens, Rooted for
- * young readers. Each volume is an introduction (chapter 1), then one chapter
- * a day (chapter n + 1 is day n) — the convention `tests_audience_shelf`
- * holds the fixture to — so a reader's furthest chapter is the day they've
- * reached, with no new data.
- */
-export interface HubChallenge {
-	series: string;
-	days: number;
 }
 
 export const YOUNG_READERS_HUB: AudienceHubConfig = {
@@ -112,8 +100,7 @@ export const YOUNG_READERS_HUB: AudienceHubConfig = {
 	peopleHeadingKey: 'audience.peopleHeadingYoung',
 	peopleNoteKey: 'audience.peopleNoteYoung',
 	foldParents: false,
-	hooks: false,
-	challenge: { series: 'rooted', days: 30 }
+	hooks: false
 };
 
 export const TEENS_HUB: AudienceHubConfig = {
@@ -140,15 +127,16 @@ export const TEENS_HUB: AudienceHubConfig = {
 	peopleHeadingKey: 'audience.peopleHeadingTeens',
 	peopleNoteKey: 'audience.peopleNoteTeens',
 	foldParents: true,
-	hooks: true,
-	challenge: { series: 'anchored', days: 30 }
+	hooks: true
 };
 
 export const AUDIENCE_HUBS: AudienceHubConfig[] = [YOUNG_READERS_HUB, TEENS_HUB];
 
 /** The Plausible event a hub sends when its "Start here", a path card, a
- *  face or its challenge is opened, or it is shared — props `{ hub, action }` (`start`, `path`,
- *  `person`, `challenge`, `share`); its visits are the pageviews themselves. */
+ *  face, its challenge, spotlight or a ladder step is opened, or it is shared —
+ *  props `{ hub, action }` (`start`, `path`, `person`, `challenge`,
+ *  `spotlight`, `ladder`, `spotlight-share`, `challenge-share`, `share`); its
+ *  visits are the pageviews themselves. */
 export const HUB_EVENT = 'Hub';
 
 /** The hub for a series audience, if it has one (adults don't). */
@@ -216,7 +204,7 @@ export function heroCovers(shelf: AudienceShelf): BookTile[] {
 	return [a, toBookTile(start), b].filter((t): t is BookTile => !!t);
 }
 
-/** Where a reader stands in a challenge series (`HubChallenge`). */
+/** Where a reader stands in a challenge series (`AudienceShelf.challenge`). */
 export interface ChallengeState {
 	/** The volume to read: the first one not finished (the last, when all are). */
 	slug: string;
@@ -244,6 +232,42 @@ export function challengeState(
 	// furthestOf is at least 1 (the introduction), so day is never negative.
 	const day = done ? days : rec ? Math.min(furthestOf(rec) - 1, days) : 0;
 	return { slug, day, order: rec ? resumeOrderOf(rec) : 1, started: !!rec, done };
+}
+
+/** A ladder rung's words: "For children", "For teens", "The original". */
+export const RUNG_LABEL = {
+	children: 'audience.rungChildren',
+	teens: 'audience.rungTeens',
+	full: 'audience.rungFull'
+} as const satisfies Record<EditionRung['rung'], string>;
+
+/** The ladder's order, youngest first — as `EditionLadder` and the API's
+ *  `_edition_ladders` give it. */
+const RUNG_ORDER = { children: 0, teens: 1, full: 2 } as const satisfies Record<EditionRung['rung'], number>;
+
+/**
+ * A work's editions — `current` and the API's `editions` of it — each with its
+ * rung, youngest first. The full text is the family's base, the slug the
+ * others extend (the shortest), so an ORIGINAL whose own slug ends in a suffix
+ * (Watts's `divine-songs-for-children`) is still "The original" among its
+ * retellings; the rest are named by their suffix (`editionKind`).
+ */
+export function editionFamily<T extends { slug: string }>(
+	current: T,
+	others: readonly T[]
+): { book: T; rung: EditionRung['rung'] }[] {
+	const all = [current, ...others];
+	const base = all.reduce((a, b) => (b.slug.length < a.slug.length ? b : a)).slug;
+	return all
+		.map((book) => ({ book, rung: book.slug === base ? 'full' : (editionKind(book.slug) ?? 'full') }) as const)
+		.sort((a, b) => RUNG_ORDER[a.rung] - RUNG_ORDER[b.rung]);
+}
+
+/** The step after `slug` on its edition ladder — what "Ready for more"
+ *  offers a reader who has a retelling in hand — or null at the top. */
+export function nextRung(ladder: EditionRung[] | undefined, slug: string): EditionRung | null {
+	const at = ladder?.findIndex((r) => r.slug === slug) ?? -1;
+	return at >= 0 ? (ladder![at + 1] ?? null) : null;
 }
 
 export interface PrintableLink {

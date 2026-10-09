@@ -6,14 +6,14 @@ The manuscripts in this folder (`they-were-young-<n>.md`) are the source of trut
 
 ## The series at a glance
 
-Four books of six stories, each themed by the kind of crisis the person met young. Books 1–3 are published; 4 is planned.
+Four books of six stories, each themed by the kind of crisis the person met young. All four are published.
 
 | Book | Theme | People |
 |---|---|---|
 | 1 · Called | meeting God young | Spurgeon, Samson Occom, Robert Murray M'Cheyne, Billy Graham, Kanzo Uchimura, Richard Allen |
 | 2 · Tested | faith under pressure | Patrick, Josephine Bakhita, Perpetua, the Uganda Martyrs, John Newton, Sundar Singh |
 | 3 · Questions | doubt and the mind | Augustine, Pascal, Isaac Watts, Jonathan Edwards, C. S. Lewis, Bonhoeffer |
-| 4 · Sent (planned) | doing something young | Mary Jones, Amy Carmichael, William Carey, David Brainerd, Jim Elliot, Eric Liddell |
+| 4 · Sent | doing something young | David Brainerd, William Carey, Mary Jones, Amy Carmichael, Eric Liddell, Jim Elliot |
 
 Some *Brave for God* people return (Sundar Singh, Mary Jones, Carey, Elliot, Liddell), told for their teenage years, not retold.
 
@@ -89,6 +89,25 @@ Some *Brave for God* people return (Sundar Singh, Mary Jones, Carey, Elliot, Lid
 - **Traditions, not documents:** Watts being told to write better hymns; Pascal and the charcoal geometry (may have grown in the telling); the Bonhoeffer "then I shall reform it" story (family memory via Bethge).
 - **Dates hedged in the text:** Augustine's ages (his own "sixteenth year" counting); Pascal's machine (18 or 19); Edwards's 1 Timothy moment (undated in the *Personal Narrative*); Lewis's theism (1929 by his account, 1930 by McGrath).
 - **Library text slips found and fixed with this book:** `confessions` Book III read "unworthy to he compared" (now "be"); Bonhoeffer's author bio, its translations and *The Key Teachings of Dietrich Bonhoeffer* said he died "six days" or "a few days" before Flossenbürg was liberated (now "two weeks": 9 April and 23 April 1945).
+
+## Book 4 — Sent
+
+| Ch | Story | The sending |
+|---|---|---|
+| 1 | Introduction: Too Young to Be Sent? | |
+| 2 | David Brainerd: Light in a Dark Thick Grove | converted July 1739 at 21; expelled from Yale; Kaunaumeek, the Forks, Crossweeksung 1743–46; died 1747 |
+| 3 | William Carey: The Apprentice Who Lost an Argument | shoemaker's apprentice at 14; converted 1779 at 17; the *Enquiry* and Nottingham sermon, 1792; India, 1793 |
+| 4 | Mary Jones: The Long Road to Bala | the walk to Thomas Charles, 1800, at about 15; the Bible Society, 1804 |
+| 5 | Amy Carmichael: What Will Last | the rainy Sunday, about 1885, at about 17; the shawlies; India, 1895 |
+| 6 | Eric Liddell: The Race He Would Not Run | Paris, July 1924, at 22; China from 1925; Weihsien, 1945 |
+| 7 | Jim Elliot: The Man Who Would Not Keep His Life | the journal, 28 October 1949, at 22; Ecuador; January 1956 |
+
+### Book 4 notes for checking
+
+- **Quotations checked word for word** against the library: *The Life and Diary of David Brainerd* (including Edwards's narration), Amy Carmichael's *Things as They Are*, and Carey's epitaph as given in *Morning by Morning* (29 August). Carmichael's *If* is copyright-blocked and is neither quoted nor named. Liddell and Elliot (20th century) get one line each: Liddell's last words as remembered by the camp nurse, and Elliot's journal line in its original "that which" form.
+- **From memory, worth checking against a copy:** the opening sentence of Carey's *Enquiry* (1792); Carey's "I can plod" (Eustace Carey's *Memoir*, 1836); Mary Jones's inscription (transcriptions differ); Joseph Hughes's "If for Wales…" (Bible Society wording).
+- **Traditions named as traditions:** Carey's leather globe and map, "sit down, young man" and "hold the ropes"; "Expect great things… from God / for God" (the from/for wording added later); Mary Jones's barefoot walk and other details first printed in 1878–82; *Chariots of Fire*'s changes (Liddell knew of the Sunday heats months ahead; "I feel His pleasure" was written for the film).
+- **Library slips found and fixed with this book:** *Brave for God: Book Two* gave the film's "I feel His pleasure" as Liddell's own words and called his 400 m time a world record (now a plain statement of his belief, and an Olympic record, in English and all six translations). Jim Elliot's author bio placed the journal line "at Wheaton" (now "a few months after he graduated", in English and Spanish) and quoted it as "gain what he cannot lose" (now the journal's "that which").
 
 ## Building a volume
 

@@ -30,11 +30,14 @@
 		/** The button's words, where a page asks for something warmer than
 		 *  "Share" ("Share with a family"). */
 		label?: string;
+		/** `md`: the full-size labelled button, beside a full-size primary in a
+		 *  banner's call-to-action row (the young-reader hubs). */
+		size?: 'sm' | 'md';
 		/** Called when the page is passed on: the OS sheet completes, the link
 		 *  is copied, or a share target is chosen — not on a dismissed sheet. */
 		onshare?: () => void;
 	}
-	let { url, title, showLabel = false, label, onshare }: Props = $props();
+	let { url, title, showLabel = false, label, size = 'sm', onshare }: Props = $props();
 	const t = i18n.t;
 	const name = $derived(label ?? t('reader.share'));
 	const menuId = $props.id();
@@ -79,7 +82,7 @@
 <div class="share-wrap" bind:this={root} use:dismissable={{ open, onDismiss: () => (open = false) }}>
 	<button
 		type="button"
-		class="btn btn-ghost {showLabel ? 'btn-sm' : 'btn-icon'}"
+		class="btn btn-ghost {!showLabel ? 'btn-icon' : size === 'sm' ? 'btn-sm' : ''}"
 		onclick={onClick}
 		aria-controls={open ? menuId : undefined}
 		aria-expanded={open}

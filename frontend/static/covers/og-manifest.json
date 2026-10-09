@@ -342,6 +342,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"am/absolute-surrender-teens": {
+			"ground": "607852ca60174ddc03eb564dc7f6de90e5f4f5d4d4bdae0e2ecf037697155799",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"am/all-of-grace": {
 			"ground": "ec39b51a2f1a809ace85ede328399c971d1501015f5da0beb73fc5876978ed32",
 			"style": "revival",
@@ -351,6 +361,32 @@
 			"scrim": 1,
 			"layout": "band/oxblood",
 			"bar": 0
+		},
+		"am/all-of-grace-teens": {
+			"ground": "a6aeb27ea26cc625af7762762f7a43fa3884f56d93f5e85029b0ed8340e0ab82",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.5,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[168, 308, 432, 384],
+					[172, 374, 428, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"am/all-things-for-good": {
 			"ground": "377f95295ffd0d798f8b8bf02cd96734df8b56894499cd8d4f736d228e403c1e",
@@ -413,6 +449,32 @@
 			"middle": [
 				243,
 				552
+			]
+		},
+		"am/amy-carmichael-a-life-children": {
+			"ground": "934da9eda755f87d7b739cece47ca967e5dbb440e3c90b419d7d2be761755440",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[144, 102, 456, 131]
+				],
+				"title": [
+					[133, 310, 467, 385],
+					[209, 371, 391, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
 			]
 		},
 		"am/answers-to-prayer": {
@@ -571,6 +633,56 @@
 				595
 			]
 		},
+		"am/c-s-lewis-a-life-children": {
+			"ground": "061eb8aecf3f5a9ab2337a09539afbc37c1b4fd19cc6466480ecfef1a167bbda",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[59, 341, 541, 416]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				348,
+				447
+			]
+		},
+		"am/c-t-studd-a-life-children": {
+			"ground": "4b252c9e83bdb8e3b9d0c8ae71a7303ca4f6b5af43a0d9cc418b670ec9681a7c",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[87, 341, 513, 416]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				348,
+				447
+			]
+		},
 		"am/clothed-with-strength-and-dignity": {
 			"ground": "ba57bc4214b38431a6d0642260be42978131896da79dc47ac35a9f09d59d8e47",
 			"style": "originals",
@@ -595,6 +707,31 @@
 			"middle": [
 				313,
 				482
+			]
+		},
+		"am/corrie-ten-boom-a-life-children": {
+			"ground": "8877bce0a06021fcab9e0b7e2238b010f8f3e49815f1e4abce45b515e8526af7",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[74, 341, 526, 416]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				348,
+				447
 			]
 		},
 		"am/daughters-of-the-king-1": {
@@ -626,6 +763,32 @@
 			"scrim": 1,
 			"layout": "framed-light",
 			"bar": 0
+		},
+		"am/david-livingstone-a-life-children": {
+			"ground": "ead031259ffd7ef40ccb72b44cb71e0912dac640c6b5e64f1315ce3d50cc5f3c",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[120, 102, 480, 131]
+				],
+				"title": [
+					[107, 310, 493, 385],
+					[209, 371, 391, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"am/divine-healing": {
 			"ground": "5c117325c62ea13f955c4db4507bb804fc5f6d06dc4821d6954edf4eda772658",
@@ -664,6 +827,32 @@
 			"middle": [
 				292,
 				503
+			]
+		},
+		"am/elisabeth-elliot-a-life-children": {
+			"ground": "a633ff91d05530906f31b2482d140baafc191a577c562935a3d0d81b91a0deb8",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[134, 102, 466, 131]
+				],
+				"title": [
+					[206, 310, 394, 385],
+					[126, 371, 474, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
 			]
 		},
 		"am/enchiridion": {
@@ -818,6 +1007,32 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"am/grace-abounding-teens": {
+			"ground": "33f173c6b12385632a47830314847b77b66ebe5e83309a92c025847e2dcf9fe3",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.5,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[177, 102, 423, 131]
+				],
+				"title": [
+					[90, 308, 510, 384],
+					[76, 374, 524, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"am/growing-in-wisdom": {
 			"ground": "8ef595657257815f9b131f0cbe319b4e1b224cbdb4a46b40651a0b9f6151735d",
 			"style": "originals",
@@ -911,6 +1126,32 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0
+		},
+		"am/john-hyde-a-life-children": {
+			"ground": "b28f0d7362700ebcf93140caeb1a3eda19305e6710f9862fb7eb09aa0f8e1607",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[194, 310, 406, 385],
+					[150, 371, 450, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"am/journal-of-an-expedition-up-the-niger": {
 			"ground": "6b114c79613cc352097ac9678711950bd9ebcfdc59328ae417d50be148f3e59a",
@@ -1105,6 +1346,31 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0.11
+		},
+		"am/mary-slessor-a-life-children": {
+			"ground": "1c31c90c36eb855fb6b533a453d89156fe0a7b415f4725ed18fd4ea4bdf6d5b4",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[170, 102, 430, 131]
+				],
+				"title": [
+					[81, 341, 519, 416]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				348,
+				447
+			]
 		},
 		"am/men-and-women-who-gave-everything-2": {
 			"ground": "3bd09e03cba32562f430632c86e44e326a5a83cb78af780739be41bc7fc4f6ea",
@@ -1322,6 +1588,32 @@
 			"middle": [
 				346,
 				449
+			]
+		},
+		"am/pandita-ramabai-a-life-children": {
+			"ground": "a3316cb4acab065341d6452f7096f1965791866eea24a12e27958c0f93c2a224",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[133, 310, 467, 385],
+					[209, 371, 391, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
 			]
 		},
 		"am/pilgrims-progress-children": {
@@ -1920,6 +2212,16 @@
 				484
 			]
 		},
+		"am/the-bruised-reed-teens": {
+			"ground": "ddba6797bdefd4addea61a3084ad14ba515f6203a5f76366c507b8e19e4925e9",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"am/the-fourfold-gospel": {
 			"ground": "d0da509adb8cbc721a95106cf94c77302afceed851358b4ae44a5c465003daff",
 			"style": "revival",
@@ -1993,6 +2295,16 @@
 				307,
 				488
 			]
+		},
+		"am/the-imitation-of-christ-teens": {
+			"ground": "34af35f686c614d7da6004796d49d69ac655628ebff2765d1edb449424b1a8ca",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"am/the-inner-chamber": {
 			"ground": "df4f1775ddb1ebf270d95fdcfa8f01bf2c23f7f241f47c2e095085533218008b",
@@ -2069,6 +2381,32 @@
 			"scrim": 1,
 			"layout": "diagonal/ochre",
 			"bar": 0
+		},
+		"am/the-practice-of-the-presence-of-god-children": {
+			"ground": "4811fb42301c4aa749abec46628e1894de9a32f50d2fab291b8d45ed9445ae88",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[54, 310, 546, 385],
+					[89, 371, 511, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"am/the-secret-of-guidance": {
 			"ground": "078f5ac17594fbfa0486c73ccbf1473db2b087743666b5d8a2e9ed7f3d12b3aa",
@@ -2227,6 +2565,31 @@
 			"middle": [
 				278,
 				517
+			]
+		},
+		"am/watchman-nee-a-life-teens": {
+			"ground": "2a9438d3c574412566fe801019f9f12e80affe723adeef8fb9d7fe2e4d2a842a",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[161, 102, 439, 131]
+				],
+				"title": [
+					[60, 341, 540, 417]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				346,
+				449
 			]
 		},
 		"am/women-who-moved-heaven-2": {
@@ -4591,6 +4954,16 @@
 				515
 			]
 		},
+		"es/confessions": {
+			"ground": "403fc81e0bf5be043fad733aafa5757e9366ac74cf32a911a52170395acffdee",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/rust",
+			"bar": 0
+		},
 		"es/corrie-ten-boom-a-life-children": {
 			"ground": "fbc895d12bb98738a3752b83d4094516a89b986f5465dfb55e65ed71fed479f8",
 			"style": "young",
@@ -6154,6 +6527,36 @@
 				461
 			]
 		},
+		"fr/first-epistle-of-clement": {
+			"ground": "af4e7dd1c55b639f42a98b6cd5f6d52336209b59408d61991723882fc9a15492",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[136, 102, 464, 131]
+				],
+				"title": [
+					[69, 292, 531, 354],
+					[129, 337, 471, 399],
+					[50, 383, 551, 445]
+				],
+				"subtitle": [
+					[46, 473, 554, 494]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				301,
+				494
+			]
+		},
 		"fr/gleanings-among-the-sheaves": {
 			"ground": "34c21b0a45cba1af757a7731e0666f42b312f15d4efd47f174626f1bb6b8b996",
 			"style": "revival",
@@ -6434,6 +6837,33 @@
 			"middle": [
 				313,
 				482
+			]
+		},
+		"fr/men-who-moved-heaven": {
+			"ground": "0cc8d905498281fc25955155e64fab13d5bc16dec7fcac51e01b094801697875",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[108, 275, 492, 351],
+					[195, 341, 405, 417],
+					[95, 407, 505, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
 			]
 		},
 		"fr/men-who-tended-the-flock-2": {
@@ -10239,6 +10669,16 @@
 			"layout": "rail/indigo",
 			"bar": 0
 		},
+		"life-of-antony-teens": {
+			"ground": "71e480e163f4a139653a063c55393864bd95eda9948b58fb729f4b544588b384",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"life-of-pascal": {
 			"ground": "a7c80aa068e841b291e11a02feed83b384f400758b7a9b70b4b6b28d110d082b",
 			"style": "press",
@@ -10399,6 +10839,16 @@
 				513
 			]
 		},
+		"mortification-of-sin-teens": {
+			"ground": "6704097db221677a9e6049939c32efa4265746969e144da9e7c2728a2d4a36aa",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"necessity-of-prayer": {
 			"ground": "4453c77330141789ef73c7211ec8bf6011cceacf05b45f5b8bafe0af09f10e23",
 			"style": "devotional",
@@ -10500,6 +10950,16 @@
 				308,
 				487
 			]
+		},
+		"orthodoxy-teens": {
+			"ground": "1608a79355cd7497a183253d0de65eaf7a9d61feee9b6921e224d624330eab90",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"our-daily-walk": {
 			"ground": "8aa8e59e6f24962428661d08f47f3a4ac4ffbcfb2a94619e444f41d3e5ef0315",
@@ -14305,6 +14765,16 @@
 			"layout": "fade/oxblood",
 			"bar": 0
 		},
+		"the-big-story": {
+			"ground": "f7a9f0622e19827749d38e399126f64c093cbc314ba21395af3a9332e143cc82",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-body-of-christ-a-reality": {
 			"ground": "0fdd83b40849fce8da366d2bee1a697dc5b5082ff59a6b708f875c5249d6aefe",
 			"style": "house",
@@ -14352,6 +14822,16 @@
 				311,
 				484
 			]
+		},
+		"the-bruised-reed-teens": {
+			"ground": "94a7f0e66ec52bb6f92ad906b526b229d6ccdea8d7b4794e71bdd4c12d7aee5d",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"the-everlasting-man": {
 			"ground": "7cd08728ce0c3411240e7980ae0c2a467bcf8b5776f9c54a9a8e914df0196893",
@@ -14631,6 +15111,16 @@
 			"layout": "wash/ochre",
 			"bar": 0
 		},
+		"the-way-to-god-teens": {
+			"ground": "c9651ad195f1c598748a8d1e122682afda78b3c223bb7409a6fc23eeebd2b073",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"they-were-young-1": {
 			"ground": "4e4617ad54c0af3905c9159d881cf567fd77b8264050bb3606208e4ee72c32eb",
 			"style": "originals",
@@ -14695,6 +15185,16 @@
 			"ground": "c31c4a70e635aa1e25e4db9adfbb93540af66f1ef401dc6408592250f3e2f622",
 			"style": "originals",
 			"volume": "3",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"they-were-young-4": {
+			"ground": "4d0f41cf5e3eac0e1926e3504e3f8345df344670c926d0575a5b2aad99b2071e",
+			"style": "originals",
+			"volume": "4",
 			"script": "latin",
 			"art": false,
 			"scrim": 1,

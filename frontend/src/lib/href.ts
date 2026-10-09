@@ -54,5 +54,8 @@ export function localizeHref(
 	href: string,
 	options?: Parameters<typeof paraglideLocalizeHref>[1]
 ): string {
+	// A fragment ("#plans") is a place on THIS page: no locale, no slash — and
+	// Paraglide would otherwise resolve it against the current path.
+	if (href.startsWith('#')) return href;
 	return withTrailingSlash(paraglideLocalizeHref(href, options));
 }

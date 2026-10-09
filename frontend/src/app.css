@@ -1239,6 +1239,14 @@
    palettes.test.ts composites it against white and measures. */
 :root {
 	--hero-ink: #f8f1e4;
+	/* The book page's band (books/[slug]): the cover's painting, blurred, under
+	   this much of the page's own ground. A painting may be black or white, so
+	   palettes.test.ts composites both at this strength in every theme and
+	   palette and holds the hero's inks to 4.5:1 — body text, the accent, and
+	   --muted-on-wash, the band's secondary ink: muted taken half-way to the
+	   text, the margin a veiled painting needs. */
+	--wash-veil: 88%;
+	--muted-mix-on-wash: 50%;
 	--hero-ground: #1d2a1f;
 	--hero-tint: #1b1526;
 	/* At least 75% through the lower 85%, where the date and greeting sit —
@@ -1303,6 +1311,13 @@
 	--section-biographies-soft: var(--hue-slate-soft);
 	--section-originals: var(--hue-plum);
 	--section-originals-soft: var(--hue-plum-soft);
+	/* Each young-reader audience's colour — the edition ribbons on its covers,
+	   its hub's hero band and spotlight — so a teens book and the teens page
+	   are the same cypress, a children's book and its page the same ochre. */
+	--audience-teens: var(--hue-cypress);
+	--audience-teens-soft: var(--hue-cypress-soft);
+	--audience-children: var(--hue-ochre);
+	--audience-children-soft: var(--hue-ochre-soft);
 }
 
 /* `data-section="books"` on any element puts that section's hue in scope as
@@ -2945,6 +2960,21 @@ nav.appnav .navsearch:hover {
 .emblem-chip > svg {
 	width: 66%;
 	height: 66%;
+}
+/* The "Ochorus for …" pages (routes/for): a group's accent, set as `--group`
+   on a container (FOR_META), reaches the page only as these tints — the topic
+   hero's recipe — never as a fill behind body text. */
+.group-wash {
+	border: 1px solid color-mix(in srgb, var(--group) 22%, var(--color-border));
+	background:
+		radial-gradient(90% 130% at 0% 0%, color-mix(in srgb, var(--group) 16%, transparent), transparent 55%),
+		color-mix(in srgb, var(--group) 7%, var(--color-surface));
+}
+.group-ink {
+	color: color-mix(in srgb, var(--group) 80%, var(--color-text));
+}
+.group-chip {
+	--chip-hue: var(--group);
 }
 /* A finished book's cover in the year shelves (HomeYear, YearInBooks) wears a
    wax seal at its foot — every cover there is a book finished, and a seal is
