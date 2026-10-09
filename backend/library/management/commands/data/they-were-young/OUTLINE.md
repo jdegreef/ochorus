@@ -88,7 +88,7 @@ Some *Brave for God* people return (Sundar Singh, Mary Jones, Carey, Elliot, Lid
 - **Quotations checked word for word** against the library: Augustine's *Confessions* (Pusey), Pascal's *Pensées* and Gilberte Périer's *Life of Blaise Pascal* (still `ai_unreviewed`), Watts's *Divine Songs for Children*, and Edwards's sermon "A Divine and Supernatural Light". Works not in the library (Pascal's Memorial, Edwards's *Personal Narrative* and *Resolutions*, "When I Survey", Lewis's *Surprised by Joy*, Bonhoeffer's *The Cost of Discipleship*) are quoted only in short, famous lines; Lewis and Bonhoeffer, in copyright, a sentence each at most.
 - **Traditions, not documents:** Watts being told to write better hymns; Pascal and the charcoal geometry (may have grown in the telling); the Bonhoeffer "then I shall reform it" story (family memory via Bethge).
 - **Dates hedged in the text:** Augustine's ages (his own "sixteenth year" counting); Pascal's machine (18 or 19); Edwards's 1 Timothy moment (undated in the *Personal Narrative*); Lewis's theism (1929 by his account, 1930 by McGrath).
-- **Library text slips noticed:** `confessions` Book III reads "unworthy to he compared" for "be compared" (worth an english-qa fix). Bonhoeffer's short author summary says Flossenbürg was liberated "six days" after his death; it was about two weeks (23 April 1945).
+- **Library text slips found and fixed with this book:** `confessions` Book III read "unworthy to he compared" (now "be"); Bonhoeffer's author bio, its translations and *The Key Teachings of Dietrich Bonhoeffer* said he died "six days" or "a few days" before Flossenbürg was liberated (now "two weeks": 9 April and 23 April 1945).
 
 ## Building a volume
 

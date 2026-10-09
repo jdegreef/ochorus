@@ -14,7 +14,7 @@ about: |
 
 Few Christians of the twentieth century are quoted more often than Dietrich Bonhoeffer, and few are quoted less carefully. His name turns up in sermons of every kind, on posters and in speeches, pressed into service by conservatives and radicals, by pacifists and by men who wanted a theology for war. Lines he wrote are trimmed into slogans; at least one saying that circulates widely under his name, about silence in the face of evil, is found nowhere in his writings at all. He has become a kind of mirror in which every generation sees what it hoped to see. The aim of this book is to set the mirror down and look through the window instead — at what the man actually taught, and at the Lord he taught about.
 
-He was a German Lutheran pastor and theologian, a doctor of theology at twenty-one, and the head of an illegal seminary of the Confessing Church at Finkenwalde. He opposed Hitler from the first days of the regime, was drawn through his family into the conspiracy against the dictator, and was hanged at Flossenbürg on 9 April 1945, a few days before the camp was liberated. He was thirty-nine.
+He was a German Lutheran pastor and theologian, a doctor of theology at twenty-one, and the head of an illegal seminary of the Confessing Church at Finkenwalde. He opposed Hitler from the first days of the regime, was drawn through his family into the conspiracy against the dictator, and was hanged at Flossenbürg on 9 April 1945, two weeks before the camp was liberated. He was thirty-nine.
 
 ## Why he still matters
 
