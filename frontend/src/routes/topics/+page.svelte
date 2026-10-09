@@ -81,7 +81,7 @@
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if topics.length === 0}
-		<EmptyState message={t('topics.none')} />
+		<EmptyState art="language" message={t('topics.none')} />
 	{:else}
 		{#if showSearch}
 			<div class="filter-row mb-6">
@@ -106,7 +106,7 @@
 			/>
 		{/if}
 		{#if shown.length === 0}
-			<EmptyState message={t('topics.noResults')} action={clearFiltersAction} />
+			<EmptyState art="search" message={t('topics.noResults')} action={clearFiltersAction} />
 		{/if}
 		<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
 			{#each shown as topic (topic.slug)}

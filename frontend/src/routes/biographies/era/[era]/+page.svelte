@@ -128,7 +128,7 @@
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if inEra.length === 0}
-		<EmptyState message={t('bios.noResults')} />
+		<EmptyState art="search" message={t('bios.noResults')} />
 	{:else}
 		<div class="grid items-start gap-5 md:grid-cols-2">
 			{#each inEra as author (author.slug)}

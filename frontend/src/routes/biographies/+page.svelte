@@ -707,7 +707,7 @@
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if sorted.length === 0}
-		<EmptyState message={t('bios.noResults')} action={isFiltered ? clearFiltersAction : undefined} />
+		<EmptyState art="search" message={t('bios.noResults')} action={isFiltered ? clearFiltersAction : undefined} />
 	{:else if filters.values.sort === 'era'}
 		{#each eraGroups as g (g.era.id)}
 			<section

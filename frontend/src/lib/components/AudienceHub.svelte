@@ -181,7 +181,7 @@
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if empty}
-		<EmptyState message={t('audience.none')} />
+		<EmptyState art="language" message={t('audience.none')} />
 	{:else}
 		<HubContinue {shelf} exclude={challengeSeries?.slug} />
 

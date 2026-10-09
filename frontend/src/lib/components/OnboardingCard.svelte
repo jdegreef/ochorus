@@ -34,7 +34,7 @@
 
 {#if isNew}
 	<section class="page-col px-5 pt-8">
-		<EmptyState message={t('settings.activityEmpty')}>
+		<EmptyState art="shelf" message={t('settings.activityEmpty')}>
 			{#snippet action()}
 				<div class="flex flex-wrap justify-center gap-3">
 					<a href={localizeHref('/welcome')} class="btn btn-primary hover:no-underline">

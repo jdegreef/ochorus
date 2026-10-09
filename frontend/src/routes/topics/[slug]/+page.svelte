@@ -285,7 +285,7 @@
 	</header>
 
 	{#if topic.books.length === 0 && topic.sermons.length === 0 && articles.length === 0}
-		<EmptyState message={t('topics.empty')} />
+		<EmptyState art="language" message={t('topics.empty')} />
 	{/if}
 
 	<!-- Filtered the shelf down to nothing: offer to clear the query (mirrors the
@@ -369,7 +369,7 @@
 			{/if}
 
 			{#if noResults}
-				<EmptyState message={t('books.noResults')} action={clearFiltersAction} />
+				<EmptyState art="search" message={t('books.noResults')} action={clearFiltersAction} />
 			{:else if bookGroups && group === 'author'}
 				<!-- Grouped by author. The heading names the author, so the cards below
 				     it don't repeat it (list rows drop their author for the same reason). -->

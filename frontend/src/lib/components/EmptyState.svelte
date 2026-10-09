@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 	import { invalidateAll } from '$app/navigation';
 	import { i18n } from '$lib/i18n.svelte';
+	import EmptyArt, { type EmptyArtName } from '$lib/components/EmptyArt.svelte';
 
 	/**
 	 * The one "nothing here" panel for a browse surface.
@@ -19,7 +20,8 @@
 	let {
 		message,
 		onRetry,
-		action
+		action,
+		art
 	}: {
 		/** What is (not) here, in the reader's language. */
 		message: string;
@@ -31,12 +33,20 @@
 		 * panel keeps the space the action would have taken.
 		 */
 		action?: Snippet;
+		/**
+		 * The engraving above the message (EmptyArt). A failed load always draws
+		 * the snuffed candle; otherwise the lamp and open book unless the caller
+		 * names the moment ("search" for no matches, "language" for not yet in
+		 * this language, …).
+		 */
+		art?: EmptyArtName;
 	} = $props();
 
 	const t = i18n.t;
 </script>
 
 <div class="rounded-card border border-border bg-surface p-8 text-center">
+	<EmptyArt name={onRetry ? 'failed' : (art ?? 'book')} class="mb-4" />
 	<p class="text-body text-text">{message}</p>
 	{#if onRetry}
 		<button class="btn btn-primary mt-4" onclick={() => invalidateAll()}>{t('error.tryAgain')}</button>
