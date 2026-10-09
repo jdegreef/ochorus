@@ -149,5 +149,20 @@
   "note": [
    "AI-drafted; awaiting native review. All three source books ship in am, so seed_plans creates the am row. Book titles quoted verbatim from the am editions; «ጆርጅ ሙለር» and «ቻይና» as in their text («ሃድሰን» is the am edition's own name for Taylor; the surname is transliterated here). Promises no talk-about-it questions: those ship on the English chapters only."
   ]
+ },
+ "family-devotions-boy-from-osogun": {
+  "title": "የቤተሰብ አምልኮ፦ ከኦሶጉን የመጣው ልጅ",
+  "description": "ለአሥራ ሁለት ምሽቶች የአምስት ደቂቃ የቤተሰብ አምልኮ ከሳሙኤል አጃዪ ክራውዘር ጋር («ሳሙኤል አጃዪ ክራውዘር (ለልጆች)»)፤ በባሪያነት ተሸጦ የነበረውና አድጎ ለሕዝቡ መጽሐፍ ቅዱስን በገዛ ቋንቋቸው የሰጠው የዮሩባ ልጅ። በየምሽቱ አንድ አጭር ምዕራፍ ጮክ ብላችሁ አንብቡ፦ በባሕር ላይ እንድትቆም የተደረገችው የባሪያ መርከብ፣ እናቱን ዳግመኛ ያገኘበት ቀን፣ ለንግሥት ቪክቶሪያ በዮሩባ የተጸለየው የጌታ ጸሎት፣ እንዲሁም እስረኛ በነበረ ጊዜ ምግብ ያካፈሉት ደጋግ ባሪያዎች። እያንዳንዱ ምዕራፍ በጸሎትና አብራችሁ በምትነጋገሩባቸው ሦስት ጥያቄዎች ይፈጸማል።",
+  "note": [
+   "AI-drafted; awaiting native review (job #5423). Its one source book, samuel-ajayi-crowther-a-life-children, ships in am in the same PR, so seed_plans creates the am row and PlanTranslationCoverageTests demands this prose. The title quotes the am edition's chapter 1 title «ከኦሶጉን የመጣው ልጅ» and the book title verbatim; names (አጃዪ, ክራውዘር, ዮሩባ, ኦሶጉን) as in the am Crowther editions. Addresses the family in the plural (አንብቡ), like the other am family-devotions cards. Unlike those two cards it DOES promise the three talk-about-it questions, because this am edition ships Chapter.study_questions."
+  ]
+ },
+ "new-to-the-faith": {
+  "title": "በእምነት አዲስ",
+  "description": "ከክርስቶስ ጋር ገና ለጀመረ ሰው ሁሉ አምስት ሳምንት ተኩል። ቻርልስ ስፐርጀን «በጠባቧ በር አጠገብ» በተሰኘው መጽሐፉ ኢየሱስን ለመታመን ከሁሉ የቀለለውን እርዳታ ይዞ በበሩ ላይ ይቀበልሃል፤ ከዚያም ለአዲስ አማኞች የጻፈው አር. ኤ. ቶሪ «በክርስትና ሕይወት እንዴት ስኬታማ መሆን እንደሚቻል» በተሰኘው መጽሐፉ በትክክል እንዴት መጀመር እንደሚገባ ያሳያል — የመዳን ዋስትና፣ መንፈስ ቅዱስ፣ ቤተ ክርስቲያን፣ መጽሐፍ ቅዱስ፣ ጸሎትና ምስክርነት። በመንገዱም አጫጭር ጽሑፎች እያንዳንዱ አዲስ ክርስቲያን የሚጠይቃቸውን ጥያቄዎች ይመልሳሉ፦ ወንጌል ምንድን ነው፣ ኢየሱስ ለምን ሞተ፣ ጥምቀትና የጌታ እራት ምን ማለት ናቸው፣ በእምነትህስ እንዴት ማደግ ትችላለህ።",
+  "note": [
+   "Queue job #5437. AI-drafted; awaiting native review. All 13 source articles and both books were already published in am when this shipped, so seed_plans creates the am row with it (39 days).",
+   "Books named by their shipped am titles verbatim: around-the-wicket-gate.am «በጠባቧ በር አጠገብ», how-to-succeed-in-the-christian-life.am «በክርስትና ሕይወት እንዴት ስኬታማ መሆን እንደሚቻል». The four questions echo the shipped am article h1s the day list shows: «ወንጌል ምንድን ነው?…» (what-is-the-gospel), «ኢየሱስ ለምን ሞተ?…» (why-did-jesus-die), «ጥምቀት ምንድን ነው?» / «የጌታ እራት (ቅዱስ ቁርባን) ምንድን ነው?» (what-is-baptism, what-is-the-lords-supper), «በእምነትህ እንዴት ማደግ ትችላለህ?» (how-to-grow-in-your-faith). «አዲስ አማኝ» follows Torrey's am book description; names as on the am book pages (ቻርልስ ስፐርጀን, አር. ኤ. ቶሪ). Reader addressed in the generic singular (አንተ), the am house style and the register of the am articles."
+  ]
  }
 }

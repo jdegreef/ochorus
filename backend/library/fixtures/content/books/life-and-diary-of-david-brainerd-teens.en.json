@@ -1,0 +1,423 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "david-brainerd"
+  ],
+  "slug": "life-and-diary-of-david-brainerd-teens",
+  "language": "en",
+  "title": "The Life and Diary of David Brainerd (For Teens)",
+  "subtitle": "",
+  "cover_title": "",
+  "description": "David Brainerd was orphaned as a boy, thrown out of Yale for one careless sentence, and sent to live alone in the woods as a missionary to Native American villages. He battled long seasons of darkness and doubt, prayed until he could barely stand, and for years saw almost nothing come of it. Then, in a small New Jersey settlement in August 1745, everything changed. He died of tuberculosis at twenty-nine, and the diary he kept has inspired missionaries ever since. This teen edition tells his story straight, with his own words, his struggles named honestly, and what his short life can teach you.",
+  "hook": "Kicked out of Yale at twenty-three, dead at twenty-nine, and still one of the most influential diaries ever written.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Who was David Brainerd?",
+    "answer": "A young American missionary, born in Haddam, Connecticut, in 1718. He was expelled from Yale in 1742, became a missionary to Native American peoples in New York, Pennsylvania and New Jersey, saw a remarkable awakening among the Delaware at Crossweeksung in 1745, and died of tuberculosis in 1747 at the home of Jonathan Edwards, aged twenty-nine."
+   },
+   {
+    "question": "What is The Life and Diary of David Brainerd?",
+    "answer": "After Brainerd died, the pastor and theologian Jonathan Edwards published an account of his life built around Brainerd’s private diary and his public journal of his missionary work. It became one of the most influential missionary books ever written."
+   },
+   {
+    "question": "Was Brainerd depressed?",
+    "answer": "His diary records long seasons of deep sadness, discouragement and wishing to die, and Edwards himself wrote that Brainerd was naturally “prone to melancholy and dejection of Spirit.” Today we might call some of it depression. This book does not hide that. If you feel that way, please talk to someone you trust, and get help straight away if you are thinking of harming yourself."
+   },
+   {
+    "question": "Why does the old text say “Indians”?",
+    "answer": "That was the word English colonists used in the 1700s for the Native American peoples. Brainerd worked among several of them, especially the Delaware, also called the Lenape. This retelling uses today’s names except inside his own quotations."
+   },
+   {
+    "question": "Should I copy Brainerd’s fasting and hard living?",
+    "answer": "No. He often went without food and sleep and pushed his sick body hard, and he was already ill with tuberculosis. Admire his love for God and for people, but look after your body: eat, rest, and see a doctor when you are ill. Even Edwards did not think everything in the diary was a pattern to copy."
+   },
+   {
+    "question": "Is this the full text?",
+    "answer": "No. It is a retelling for teenagers in plain modern words, following the main events of the diary and keeping Brainerd’s own words where they say it best. The full Life and Diary of David Brainerd is also available."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of The Life and Diary of David Brainerd, his diary and journal as published by Jonathan Edwards, which is in the public domain. The telling is our own, free to read and share. Scripture quotations are from the King James Version, which is in the public domain.",
+  "cover_url": "/covers/life-and-diary-of-david-brainerd-teens.svg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/life-and-diary-of-david-brainerd-teens.pdf?download=life-and-diary-of-david-brainerd-teens.pdf",
+  "cover_color": "",
+  "series": [
+   "straight-talk"
+  ],
+  "series_position": null,
+  "sort_order": 157,
+  "is_published": true,
+  "created_at": "2026-10-08T23:00:00Z",
+  "updated_at": "2026-10-08T23:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-and-diary-of-david-brainerd-teens",
+   "en"
+  ],
+  "order": 1,
+  "title": "A Short Life",
+  "body_html": "<blockquote>“For what is your life? It is even a vapour, that appeareth for a little time, and then vanisheth away.” — James 4:14 (KJV)</blockquote> <p>David Brainerd lived for twenty-nine years. He spent barely four of them as a missionary. He never led a big church, never wrote a famous book while he was alive, and died of tuberculosis in someone else’s house. By most measures, it was a small life.</p> <p>And yet the diary he kept has sent more people around the world to serve God than almost any other book outside the Bible. William Carey took it to India. Henry Martyn read it at Cambridge and gave his life to missions in the East. Two hundred years later, Jim Elliot filled his own journals in the same spirit before he was killed in Ecuador. Brainerd’s short life turned out to be anything but small.</p> <p>He was born on a Sunday, 20 April 1718, in Haddam, Connecticut, one of nine children. By the time he was fourteen, both his parents had died. He grew up serious, thoughtful and often sad, and very interested in God, though for a long time God felt more like a problem than a friend.</p> <p>This book follows his story: how he tried to earn God’s approval and failed; the evening God met him in a dark grove; how one careless sentence got him thrown out of Yale; years alone in the woods with almost nothing to show for them; and then, in August 1745, a day he said was unlike any he had ever seen.</p> <p>It is also an honest story. Brainerd struggled with what Jonathan Edwards, the pastor who published his diary, called a natural tendency to “melancholy and dejection of Spirit.” He had long seasons of darkness. He pushed his body too hard. He was not a smiling, untroubled saint, and this book won’t pretend he was.</p> <p>But that is part of why his diary has helped so many people. It shows a young man, often sick, often sad, often doubting himself, holding on to God through it all, and being held. If your faith feels like a struggle sometimes, Brainerd is good company.</p> <p>Edwards put it this way: what the diary shows is “a remarkable instance of true and eminent piety.” Piety means real devotion to God. Not a perfect life, but a real one.</p> <p><strong>One thing to do this week:</strong> ask yourself honestly: if your life were measured by how much you loved God and other people, not by how big or impressive it looked, how would it measure up? Talk to God about what you want your life to count for.</p>",
+  "study_questions": [
+   {
+    "question": "How long did David Brainerd live, and how long was he a missionary?",
+    "answer": "He lived twenty-nine years and spent barely four of them as a missionary."
+   },
+   {
+    "question": "Name some people who were inspired by Brainerd’s diary.",
+    "answer": "William Carey, who took it to India; Henry Martyn, who gave his life to missions in the East; and, two centuries later, Jim Elliot."
+   },
+   {
+    "question": "What struggle did Jonathan Edwards say Brainerd had by nature?",
+    "answer": "A tendency to “melancholy and dejection of Spirit”: long seasons of sadness and discouragement."
+   }
+  ],
+  "body_text": "“For what is your life? It is even a vapour, that appeareth for a little time, and then vanisheth away.” — James 4:14 (KJV) David Brainerd lived for twenty-nine years. He spent barely four of them as a missionary. He never led a big church, never wrote a famous book while he was alive, and died of tuberculosis in someone else’s house. By most measures, it was a small life. And yet the diary he kept has sent more people around the world to serve God than almost any other book outside the Bible. William Carey took it to India. Henry Martyn read it at Cambridge and gave his life to missions in the East. Two hundred years later, Jim Elliot filled his own journals in the same spirit before he was killed in Ecuador. Brainerd’s short life turned out to be anything but small. He was born on a Sunday, 20 April 1718, in Haddam, Connecticut, one of nine children. By the time he was fourteen, both his parents had died. He grew up serious, thoughtful and often sad, and very interested in God, though for a long time God felt more like a problem than a friend. This book follows his story: how he tried to earn God’s approval and failed; the evening God met him in a dark grove; how one careless sentence got him thrown out of Yale; years alone in the woods with almost nothing to show for them; and then, in August 1745, a day he said was unlike any he had ever seen. It is also an honest story. Brainerd struggled with what Jonathan Edwards, the pastor who published his diary, called a natural tendency to “melancholy and dejection of Spirit.” He had long seasons of darkness. He pushed his body too hard. He was not a smiling, untroubled saint, and this book won’t pretend he was. But that is part of why his diary has helped so many people. It shows a young man, often sick, often sad, often doubting himself, holding on to God through it all, and being held. If your faith feels like a struggle sometimes, Brainerd is good company. Edwards put it this way: what the diary shows is “a remarkable instance of true and eminent piety.” Piety means real devotion to God. Not a perfect life, but a real one. One thing to do this week: ask yourself honestly: if your life were measured by how much you loved God and other people, not by how big or impressive it looked, how would it measure up? Talk to God about what you want your life to count for.",
+  "word_count": 441
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-and-diary-of-david-brainerd-teens",
+   "en"
+  ],
+  "order": 2,
+  "title": "Trying Too Hard",
+  "body_html": "<blockquote>“For by grace are ye saved through faith; and that not of yourselves: it is the gift of God: Not of works, lest any man should boast.” — Ephesians 2:8–9 (KJV)</blockquote> <p>As a teenager, David Brainerd was very religious. He prayed, read the Bible, kept fasts and worked hard at being good. He was the kind of young person adults point to as an example. And inside, he was miserable.</p> <p>The problem was that he was trying to earn God’s approval. He kept thinking that if he felt sorry enough, prayed hard enough, or was humble enough, God would have to accept him. He describes how many times he thought he had finally got there: “Thus, scores of times I vainly imagined myself humbled and prepared for saving mercy.” Each time, it fell apart.</p> <p>Worse, when God didn’t seem to respond, he got angry. He writes that his “heart rose against God, as dealing hardly with me.” Then he felt guilty about being angry, which made him feel worse, which made him try harder. Round and round.</p> <p>Some of this may sound familiar. Maybe you have felt that God is pleased with you on good days and disappointed on bad ones. Maybe you have tried to make up for things by being extra good. Maybe you have wondered whether you have ever really been sorry enough, or believed enough.</p> <p>Eventually Brainerd saw what was wrong. Looking back at all his religious effort, he said something shocking: “the whole was nothing but self-worship.” All his praying and fasting had really been about him: his goodness, his performance, his feelings. He had been trying to give God a reason to accept him.</p> <p>He also came to see that he could not do it. He described being brought “to see myself lost and helpless.” That sounds bleak, but it was actually the turning point. As long as he thought he could save himself, he kept trying. When he finally saw he couldn’t, he was ready to receive what God gives freely.</p> <p>The Bible says we are saved by grace, through faith, and not by our own efforts, so that no one can boast. Grace means a gift you don’t earn. Brainerd was about to find out what that felt like.</p> <p><strong>One thing to do this week:</strong> notice this week when you catch yourself trying to earn God’s love, being extra good to make up for something, or feeling far from him because of a bad day. Each time, stop and tell him: “I can’t earn this. Thank you that it’s a gift.”</p>",
+  "study_questions": [
+   {
+    "question": "Why was young Brainerd miserable even though he was very religious?",
+    "answer": "Because he was trying to earn God’s approval by being sorry enough, praying enough and being good enough, and it never worked."
+   },
+   {
+    "question": "What did he later say about all his religious effort?",
+    "answer": "That “the whole was nothing but self-worship”: it had really been about himself and his own goodness."
+   },
+   {
+    "question": "Why was seeing himself “lost and helpless” actually a turning point?",
+    "answer": "Because once he saw he could not save himself, he stopped trying to earn God’s favour and was ready to receive grace as a free gift."
+   }
+  ],
+  "body_text": "“For by grace are ye saved through faith; and that not of yourselves: it is the gift of God: Not of works, lest any man should boast.” — Ephesians 2:8–9 (KJV) As a teenager, David Brainerd was very religious. He prayed, read the Bible, kept fasts and worked hard at being good. He was the kind of young person adults point to as an example. And inside, he was miserable. The problem was that he was trying to earn God’s approval. He kept thinking that if he felt sorry enough, prayed hard enough, or was humble enough, God would have to accept him. He describes how many times he thought he had finally got there: “Thus, scores of times I vainly imagined myself humbled and prepared for saving mercy.” Each time, it fell apart. Worse, when God didn’t seem to respond, he got angry. He writes that his “heart rose against God, as dealing hardly with me.” Then he felt guilty about being angry, which made him feel worse, which made him try harder. Round and round. Some of this may sound familiar. Maybe you have felt that God is pleased with you on good days and disappointed on bad ones. Maybe you have tried to make up for things by being extra good. Maybe you have wondered whether you have ever really been sorry enough, or believed enough. Eventually Brainerd saw what was wrong. Looking back at all his religious effort, he said something shocking: “the whole was nothing but self-worship.” All his praying and fasting had really been about him: his goodness, his performance, his feelings. He had been trying to give God a reason to accept him. He also came to see that he could not do it. He described being brought “to see myself lost and helpless.” That sounds bleak, but it was actually the turning point. As long as he thought he could save himself, he kept trying. When he finally saw he couldn’t, he was ready to receive what God gives freely. The Bible says we are saved by grace, through faith, and not by our own efforts, so that no one can boast. Grace means a gift you don’t earn. Brainerd was about to find out what that felt like. One thing to do this week: notice this week when you catch yourself trying to earn God’s love, being extra good to make up for something, or feeling far from him because of a bad day. Each time, stop and tell him: “I can’t earn this. Thank you that it’s a gift.”",
+  "word_count": 429
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-and-diary-of-david-brainerd-teens",
+   "en"
+  ],
+  "order": 3,
+  "title": "The Dark Thick Grove",
+  "body_html": "<blockquote>“For God, who commanded the light to shine out of darkness, hath shined in our hearts.” — 2 Corinthians 4:6 (KJV)</blockquote> <p>On Sunday evening, 12 July 1739, David Brainerd, aged twenty-one, went for a walk alone in the same quiet place where he had been praying for days. He felt flat and empty. All his religious feelings had gone. He was trying to pray but felt, in his words, “very stupid and senseless.” He thought God had left him for good.</p> <p>Then something happened that he spent the rest of his life trying to describe:</p> <blockquote>“As I was walking in a dark thick grove, unspeakable glory seemed to open to the view and apprehension of my soul.”</blockquote> <p>He is careful to say it wasn’t a vision or a bright light in the sky: “I do not mean any external brightness, for I saw no such thing.” It was something inside: “a new inward apprehension or view that I had of God, such as I never had before.” He suddenly saw how beautiful and good God is, so differently from anything he had imagined that he could only stand there. “I stood still, wondered, and admired!”</p> <p>Notice when this happened. Not at his most religious moment, but at his emptiest. Not when he had finally felt sorry enough, but when he had given up trying. He wasn’t performing. He was just there, flat and honest, and God showed up.</p> <p>What changed afterwards was not that he became perfect. Brainerd would struggle for the rest of his life. But the centre had shifted. Before, religion had been about him and his efforts. Now it was about God, whose glory he had glimpsed. He wrote that his soul “rejoiced with joy unspeakable, to see such a God, such a glorious divine Being.” He wanted God to be honoured, whatever happened to him.</p> <p>Not everyone has a moment like Brainerd’s, and you don’t need one. Many Christians come to trust Jesus gradually, without a single dramatic evening. But his story shows something true for everyone: God is not won by effort. He makes himself known, often when we have run out of our own ideas. The Bible says that the God who first said “Let there be light” is the one who shines in our hearts.</p> <p>If God feels far away right now, and you feel empty and flat, don’t give up. Keep turning up, honestly. That was exactly where Brainerd was standing when the light came.</p> <p><strong>One thing to do this week:</strong> find a quiet place outside this week, a park, a garden, a walk. Spend fifteen minutes there without your phone. Don’t try to make anything happen. Just tell God honestly how you feel, and ask him to show you what he is really like.</p>",
+  "study_questions": [
+   {
+    "question": "What was Brainerd feeling just before his experience in the grove?",
+    "answer": "Flat, empty and “very stupid and senseless.” His religious feelings had gone and he thought the Spirit of God had left him."
+   },
+   {
+    "question": "Did Brainerd see a vision or a bright light?",
+    "answer": "No. He said it was not any external brightness but “a new inward apprehension or view” of God, a new understanding of how glorious God is."
+   },
+   {
+    "question": "What changed in Brainerd after that evening?",
+    "answer": "The centre of his faith moved from himself and his own efforts to God; he rejoiced to see “such a God” and wanted God to be honoured."
+   }
+  ],
+  "body_text": "“For God, who commanded the light to shine out of darkness, hath shined in our hearts.” — 2 Corinthians 4:6 (KJV) On Sunday evening, 12 July 1739, David Brainerd, aged twenty-one, went for a walk alone in the same quiet place where he had been praying for days. He felt flat and empty. All his religious feelings had gone. He was trying to pray but felt, in his words, “very stupid and senseless.” He thought God had left him for good. Then something happened that he spent the rest of his life trying to describe: “As I was walking in a dark thick grove, unspeakable glory seemed to open to the view and apprehension of my soul.” He is careful to say it wasn’t a vision or a bright light in the sky: “I do not mean any external brightness, for I saw no such thing.” It was something inside: “a new inward apprehension or view that I had of God, such as I never had before.” He suddenly saw how beautiful and good God is, so differently from anything he had imagined that he could only stand there. “I stood still, wondered, and admired!” Notice when this happened. Not at his most religious moment, but at his emptiest. Not when he had finally felt sorry enough, but when he had given up trying. He wasn’t performing. He was just there, flat and honest, and God showed up. What changed afterwards was not that he became perfect. Brainerd would struggle for the rest of his life. But the centre had shifted. Before, religion had been about him and his efforts. Now it was about God, whose glory he had glimpsed. He wrote that his soul “rejoiced with joy unspeakable, to see such a God, such a glorious divine Being.” He wanted God to be honoured, whatever happened to him. Not everyone has a moment like Brainerd’s, and you don’t need one. Many Christians come to trust Jesus gradually, without a single dramatic evening. But his story shows something true for everyone: God is not won by effort. He makes himself known, often when we have run out of our own ideas. The Bible says that the God who first said “Let there be light” is the one who shines in our hearts. If God feels far away right now, and you feel empty and flat, don’t give up. Keep turning up, honestly. That was exactly where Brainerd was standing when the light came. One thing to do this week: find a quiet place outside this week, a park, a garden, a walk. Spend fifteen minutes there without your phone. Don’t try to make anything happen. Just tell God honestly how you feel, and ask him to show you what he is really like.",
+  "word_count": 463
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-and-diary-of-david-brainerd-teens",
+   "en"
+  ],
+  "order": 4,
+  "title": "One Careless Sentence",
+  "body_html": "<blockquote>“Even so the tongue is a little member, and boasteth great things. Behold, how great a matter a little fire kindleth!” — James 3:5 (KJV)</blockquote> <p>That autumn Brainerd went to Yale College to train as a minister. It was an exciting time. A wave of revival called the Great Awakening was sweeping through New England, and many students were fired up about God. Some of them also became very critical of the teachers they thought weren’t really converted.</p> <p>Brainerd was one of them, and one day his mouth got ahead of his heart. A tutor named Mr. Whittelsey had just prayed with the students. Afterwards, sitting with a few friends in the hall, Brainerd was asked what he thought of him. His answer:</p> <blockquote>“He has no more grace than this chair.”</blockquote> <p>It was meant privately, among friends. But a younger student happened to be nearby and overheard. He passed it on to a woman in the town, who told the head of the college. The friends were questioned and, reluctantly, said what they had heard.</p> <p>The college demanded that Brainerd make a public confession in front of everyone. He refused, because he thought it was unfair to be humiliated in public for something said in a private conversation. He had also gone to a meeting the college had forbidden. In early 1742, in his third year, he was expelled. He never got his degree.</p> <p>It devastated him. Being thrown out of Yale meant the normal route to being a minister in New England was closed. One careless sentence had cost him his future, or so it seemed.</p> <p>You probably already see the lesson. Words said “privately” have a way of travelling. A comment in a group chat, a joke about a teacher, a harsh opinion about someone at church: these can spread far beyond where you meant them to go, and do real harm. James says the tongue is small but can start a huge fire.</p> <p>There is a deeper lesson too. Brainerd’s problem was not just that he got caught. It was that he had made himself the judge of another person’s heart. That is a temptation for keen young Christians in every generation: to decide who is “really” serious about God and who isn’t. Only God sees the heart.</p> <p>But this is not the end of the story. In the next chapter, Brainerd does something harder than being right.</p> <p><strong>One thing to do this week:</strong> before you post, send or say something about someone who isn’t there this week, ask: would I be happy for them to hear this? If the answer is no, don’t.</p>",
+  "study_questions": [
+   {
+    "question": "What did Brainerd say about the tutor, Mr. Whittelsey?",
+    "answer": "“He has no more grace than this chair,” meaning he thought the tutor was not truly a Christian."
+   },
+   {
+    "question": "How did the comment reach the college authorities?",
+    "answer": "A younger student overheard it, told a woman in the town, and she told the head of the college, who questioned Brainerd’s friends."
+   },
+   {
+    "question": "What was the deeper problem behind Brainerd’s comment?",
+    "answer": "He had made himself the judge of another person’s heart, which only God can see."
+   }
+  ],
+  "body_text": "“Even so the tongue is a little member, and boasteth great things. Behold, how great a matter a little fire kindleth!” — James 3:5 (KJV) That autumn Brainerd went to Yale College to train as a minister. It was an exciting time. A wave of revival called the Great Awakening was sweeping through New England, and many students were fired up about God. Some of them also became very critical of the teachers they thought weren’t really converted. Brainerd was one of them, and one day his mouth got ahead of his heart. A tutor named Mr. Whittelsey had just prayed with the students. Afterwards, sitting with a few friends in the hall, Brainerd was asked what he thought of him. His answer: “He has no more grace than this chair.” It was meant privately, among friends. But a younger student happened to be nearby and overheard. He passed it on to a woman in the town, who told the head of the college. The friends were questioned and, reluctantly, said what they had heard. The college demanded that Brainerd make a public confession in front of everyone. He refused, because he thought it was unfair to be humiliated in public for something said in a private conversation. He had also gone to a meeting the college had forbidden. In early 1742, in his third year, he was expelled. He never got his degree. It devastated him. Being thrown out of Yale meant the normal route to being a minister in New England was closed. One careless sentence had cost him his future, or so it seemed. You probably already see the lesson. Words said “privately” have a way of travelling. A comment in a group chat, a joke about a teacher, a harsh opinion about someone at church: these can spread far beyond where you meant them to go, and do real harm. James says the tongue is small but can start a huge fire. There is a deeper lesson too. Brainerd’s problem was not just that he got caught. It was that he had made himself the judge of another person’s heart. That is a temptation for keen young Christians in every generation: to decide who is “really” serious about God and who isn’t. Only God sees the heart. But this is not the end of the story. In the next chapter, Brainerd does something harder than being right. One thing to do this week: before you post, send or say something about someone who isn’t there this week, ask: would I be happy for them to hear this? If the answer is no, don’t.",
+  "word_count": 437
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-and-diary-of-david-brainerd-teens",
+   "en"
+  ],
+  "order": 5,
+  "title": "Saying Sorry",
+  "body_html": "<blockquote>“He that covereth his sins shall not prosper: but whoso confesseth and forsaketh them shall have mercy.” — Proverbs 28:13 (KJV)</blockquote> <p>For a while, Brainerd felt badly treated by Yale, and in some ways he had been. Many people at the time thought the college had been too harsh. But as he grew closer to God, he started to see his own part more clearly.</p> <p>In 1743, more than a year after his expulsion, he went back to New Haven and offered the college a written confession. It is worth reading slowly, because it is a model of a real apology:</p> <blockquote>“I humbly confess, that herein I have sinned against God, and acted contrary to the rules of his word, and have injured Mr. Whittelsey. I had no right to make thus free with his character; and had no just reason to say as I did concerning him.”</blockquote> <p>Look at what he does. He names exactly what he did wrong. He calls it sin against God, not just a mistake. He admits he hurt a real person. He doesn’t make excuses or say “but they were unfair too.” He says he had often thought back on it “with grief.” And then: “I humbly ask the forgiveness of the governors of the college and of the whole society; but of Mr. Whittelsey in particular.”</p> <p>He was honest, too, about what he didn’t remember. He had also been accused of saying something rude about the head of the college. He said, “I seriously profess that I do not remember my saying any thing to this purpose,” but that if he had, he condemned it. A real apology doesn’t mean confessing to things you didn’t do. It means owning what you did.</p> <p>Did it work? Not the way he hoped. The college still did not give him his degree. Sometimes when you put things right, the consequences don’t disappear. But Brainerd had done what was his to do. His conscience was clear, and the bitterness that could have poisoned his heart was gone.</p> <p>Most of us are better at feeling wronged than at saying sorry. We wait for the other person to apologise first. We add “but” to our apologies. We say “sorry if you were offended” instead of “I was wrong.” Brainerd, a proud and gifted young man who really had been treated harshly, chose humility instead.</p> <p>Proverbs says the person who covers up their sins won’t prosper, but whoever confesses them and turns from them will find mercy. That mercy comes first from God. Often, though not always, it comes from people too.</p> <p><strong>One thing to do this week:</strong> think of someone you owe an apology to. This week, apologise properly: name what you did, don’t add a “but,” say how it might have hurt them, and ask their forgiveness. Do it in person if you can.</p>",
+  "study_questions": [
+   {
+    "question": "What did Brainerd do in 1743 about his comment at Yale?",
+    "answer": "He offered the college a written confession, admitting he had sinned against God and wronged Mr. Whittelsey, and humbly asking for forgiveness."
+   },
+   {
+    "question": "What makes his apology a good model?",
+    "answer": "He named exactly what he did, called it sin, admitted he hurt someone, made no excuses, and asked forgiveness, while being honest about what he did not remember doing."
+   },
+   {
+    "question": "Did his apology get him his degree back?",
+    "answer": "No. Sometimes putting things right doesn’t remove the consequences, but he had done what was his to do and his conscience was clear."
+   }
+  ],
+  "body_text": "“He that covereth his sins shall not prosper: but whoso confesseth and forsaketh them shall have mercy.” — Proverbs 28:13 (KJV) For a while, Brainerd felt badly treated by Yale, and in some ways he had been. Many people at the time thought the college had been too harsh. But as he grew closer to God, he started to see his own part more clearly. In 1743, more than a year after his expulsion, he went back to New Haven and offered the college a written confession. It is worth reading slowly, because it is a model of a real apology: “I humbly confess, that herein I have sinned against God, and acted contrary to the rules of his word, and have injured Mr. Whittelsey. I had no right to make thus free with his character; and had no just reason to say as I did concerning him.” Look at what he does. He names exactly what he did wrong. He calls it sin against God, not just a mistake. He admits he hurt a real person. He doesn’t make excuses or say “but they were unfair too.” He says he had often thought back on it “with grief.” And then: “I humbly ask the forgiveness of the governors of the college and of the whole society; but of Mr. Whittelsey in particular.” He was honest, too, about what he didn’t remember. He had also been accused of saying something rude about the head of the college. He said, “I seriously profess that I do not remember my saying any thing to this purpose,” but that if he had, he condemned it. A real apology doesn’t mean confessing to things you didn’t do. It means owning what you did. Did it work? Not the way he hoped. The college still did not give him his degree. Sometimes when you put things right, the consequences don’t disappear. But Brainerd had done what was his to do. His conscience was clear, and the bitterness that could have poisoned his heart was gone. Most of us are better at feeling wronged than at saying sorry. We wait for the other person to apologise first. We add “but” to our apologies. We say “sorry if you were offended” instead of “I was wrong.” Brainerd, a proud and gifted young man who really had been treated harshly, chose humility instead. Proverbs says the person who covers up their sins won’t prosper, but whoever confesses them and turns from them will find mercy. That mercy comes first from God. Often, though not always, it comes from people too. One thing to do this week: think of someone you owe an apology to. This week, apologise properly: name what you did, don’t add a “but,” say how it might have hurt them, and ask their forgiveness. Do it in person if you can.",
+  "word_count": 476
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-and-diary-of-david-brainerd-teens",
+   "en"
+  ],
+  "order": 6,
+  "title": "A Heap of Straw",
+  "body_html": "<blockquote>“We are troubled on every side, yet not distressed; we are perplexed, but not in despair.” — 2 Corinthians 4:8 (KJV)</blockquote> <p>With the door to a normal ministry closed, another opened. A Scottish society that supported missions asked Brainerd to work among the Native American peoples. In April 1743, aged twenty-four, he arrived at a small village called Kaunaumeek, in the woods of what is now New York, about twenty miles from the nearest town.</p> <p>His diary entry for that first day is not exactly a travel brochure. He “lodged with a poor Scotchman, about a mile and a half distant from them, on a little heap of straw, in a log room without any floor.” A heap of straw, on a dirt floor. That was home.</p> <p>He couldn’t speak the language, so he worked through an interpreter, a gifted young man from Stockbridge named John Wauwaumpequunnaunt, who spoke and wrote both English and his own language well. Brainerd soon arranged for John to become the village schoolmaster too. Later Brainerd built himself a little hut and lived alone. He was often cold, often hungry, often ill, and almost always lonely. He rode huge distances through forests, and once got lost and spent a whole night out in the open.</p> <p>Some of the local settlers didn’t want him there. He wrote that they hated him “because I come to preach to them.” But the hardest part wasn’t the cold or the opposition. He wrote that what made all his difficulties “grievous to be borne, is, that God hides his face from me.” When God felt far away, everything else felt heavier.</p> <p>Why did he stay? Because he loved the people he had come to serve and wanted them to know Jesus. On one of his better days he wrote: “I cared not where or how I lived, or what hardships I went through, so that I could but gain souls to Christ.”</p> <p>You will probably never sleep on a heap of straw on a dirt floor. But you will have seasons when following Jesus costs you something: a friendship, a reputation, comfort, or plans you had for yourself. Brainerd’s life says that this is normal, and that God is still there, even when it doesn’t feel like it.</p> <p>Paul wrote that we are troubled on every side, yet not crushed; puzzled, but not in despair. That was Brainerd at Kaunaumeek: troubled, puzzled, often low, but still there, still serving, still praying.</p> <p><strong>One thing to do this week:</strong> do one thing this week that costs you some comfort for the sake of someone else: give up your seat, give time you’d rather spend on yourself, help someone nobody else is helping. Do it quietly, for Jesus.</p>",
+  "study_questions": [
+   {
+    "question": "Where did Brainerd sleep on his first night at Kaunaumeek?",
+    "answer": "On “a little heap of straw, in a log room without any floor,” at the home of a poor Scotsman."
+   },
+   {
+    "question": "Who helped Brainerd communicate with the people of Kaunaumeek?",
+    "answer": "His interpreter, John Wauwaumpequunnaunt, a gifted young man from Stockbridge who also became the village schoolmaster."
+   },
+   {
+    "question": "What did Brainerd say was the hardest part of his difficulties?",
+    "answer": "That God seemed to hide his face from him; when God felt far away, everything else felt heavier."
+   }
+  ],
+  "body_text": "“We are troubled on every side, yet not distressed; we are perplexed, but not in despair.” — 2 Corinthians 4:8 (KJV) With the door to a normal ministry closed, another opened. A Scottish society that supported missions asked Brainerd to work among the Native American peoples. In April 1743, aged twenty-four, he arrived at a small village called Kaunaumeek, in the woods of what is now New York, about twenty miles from the nearest town. His diary entry for that first day is not exactly a travel brochure. He “lodged with a poor Scotchman, about a mile and a half distant from them, on a little heap of straw, in a log room without any floor.” A heap of straw, on a dirt floor. That was home. He couldn’t speak the language, so he worked through an interpreter, a gifted young man from Stockbridge named John Wauwaumpequunnaunt, who spoke and wrote both English and his own language well. Brainerd soon arranged for John to become the village schoolmaster too. Later Brainerd built himself a little hut and lived alone. He was often cold, often hungry, often ill, and almost always lonely. He rode huge distances through forests, and once got lost and spent a whole night out in the open. Some of the local settlers didn’t want him there. He wrote that they hated him “because I come to preach to them.” But the hardest part wasn’t the cold or the opposition. He wrote that what made all his difficulties “grievous to be borne, is, that God hides his face from me.” When God felt far away, everything else felt heavier. Why did he stay? Because he loved the people he had come to serve and wanted them to know Jesus. On one of his better days he wrote: “I cared not where or how I lived, or what hardships I went through, so that I could but gain souls to Christ.” You will probably never sleep on a heap of straw on a dirt floor. But you will have seasons when following Jesus costs you something: a friendship, a reputation, comfort, or plans you had for yourself. Brainerd’s life says that this is normal, and that God is still there, even when it doesn’t feel like it. Paul wrote that we are troubled on every side, yet not crushed; puzzled, but not in despair. That was Brainerd at Kaunaumeek: troubled, puzzled, often low, but still there, still serving, still praying. One thing to do this week: do one thing this week that costs you some comfort for the sake of someone else: give up your seat, give time you’d rather spend on yourself, help someone nobody else is helping. Do it quietly, for Jesus.",
+  "word_count": 455
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-and-diary-of-david-brainerd-teens",
+   "en"
+  ],
+  "order": 7,
+  "title": "When the Dark Comes Back",
+  "body_html": "<blockquote>“Why art thou cast down, O my soul? and why art thou disquieted within me? hope thou in God: for I shall yet praise him.” — Psalm 42:11 (KJV)</blockquote> <p>This chapter is about something many people don’t talk about, and it matters, so please read it carefully.</p> <p>Brainerd struggled with deep sadness for most of his life. Jonathan Edwards, who knew him at the end and published his diary, wrote that he was “by his constitution and natural temper, so prone to melancholy and dejection of Spirit.” In other words, it was part of how he was made. Today we might call some of what he went through depression.</p> <p>His diary is painfully honest about it. A week after arriving at Kaunaumeek he wrote that he felt “exceedingly ignorant, weak, helpless, unworthy, and altogether unequal to my work.” And then: “My soul was weary of my life; I longed for death, beyond measure.” Elsewhere he called himself “the vilest creature on earth.”</p> <p>Those are hard words to read. If they sound like your own thoughts, you are not alone, and you are not a bad Christian. Brainerd loved God deeply and was used by him powerfully, and he still had these dark seasons. Sadness like this is not a sign that God has rejected you.</p> <p>Notice two things Brainerd himself did. First, he didn’t hide it. He wrote it down honestly before God, like the psalms do. Second, he kept turning back. On that same dark day he wrote: “Toward night I had the exercise of faith in prayer.” Some days he could barely manage that, but he kept bringing his darkness to God.</p> <p>Notice something else, too. Brainerd mostly carried his darkness alone, in the woods, with no one to talk to. That made it worse. You don’t have to do that. God often helps us through other people: parents, friends, pastors, counsellors and doctors. Getting help for depression or anxiety is not a lack of faith. It is wisdom.</p> <p>So here is the most important thing in this book. If you often feel the way Brainerd did, so low that life feels like too much, please tell someone you trust this week. And if you ever have thoughts of harming yourself or ending your life, tell an adult right away, or contact your local emergency number or a crisis helpline. You matter to God and to the people around you, more than you can feel right now.</p> <p>The psalmist argued with his own sad soul: Why are you so downcast? Hope in God, for I will yet praise him. Brainerd lived in that tension for years. And God carried him through it.</p> <p><strong>One thing to do this week:</strong> if you have been carrying a heavy sadness on your own, tell one trusted adult about it this week. If you are doing okay, think of a friend who seems to be struggling and check in on them: ask how they really are, and listen.</p>",
+  "study_questions": [
+   {
+    "question": "How did Jonathan Edwards describe Brainerd’s natural temperament?",
+    "answer": "He said Brainerd was by nature “prone to melancholy and dejection of Spirit”: inclined to deep sadness and discouragement."
+   },
+   {
+    "question": "What two things did Brainerd do with his dark feelings?",
+    "answer": "He was honest about them before God, writing them down, and he kept turning back to God in prayer even on hard days."
+   },
+   {
+    "question": "What should you do if you feel the way Brainerd sometimes did?",
+    "answer": "Tell someone you trust, and get help from people such as parents, pastors, counsellors or doctors. If you ever have thoughts of harming yourself, tell an adult or contact emergency help straight away."
+   }
+  ],
+  "body_text": "“Why art thou cast down, O my soul? and why art thou disquieted within me? hope thou in God: for I shall yet praise him.” — Psalm 42:11 (KJV) This chapter is about something many people don’t talk about, and it matters, so please read it carefully. Brainerd struggled with deep sadness for most of his life. Jonathan Edwards, who knew him at the end and published his diary, wrote that he was “by his constitution and natural temper, so prone to melancholy and dejection of Spirit.” In other words, it was part of how he was made. Today we might call some of what he went through depression. His diary is painfully honest about it. A week after arriving at Kaunaumeek he wrote that he felt “exceedingly ignorant, weak, helpless, unworthy, and altogether unequal to my work.” And then: “My soul was weary of my life; I longed for death, beyond measure.” Elsewhere he called himself “the vilest creature on earth.” Those are hard words to read. If they sound like your own thoughts, you are not alone, and you are not a bad Christian. Brainerd loved God deeply and was used by him powerfully, and he still had these dark seasons. Sadness like this is not a sign that God has rejected you. Notice two things Brainerd himself did. First, he didn’t hide it. He wrote it down honestly before God, like the psalms do. Second, he kept turning back. On that same dark day he wrote: “Toward night I had the exercise of faith in prayer.” Some days he could barely manage that, but he kept bringing his darkness to God. Notice something else, too. Brainerd mostly carried his darkness alone, in the woods, with no one to talk to. That made it worse. You don’t have to do that. God often helps us through other people: parents, friends, pastors, counsellors and doctors. Getting help for depression or anxiety is not a lack of faith. It is wisdom. So here is the most important thing in this book. If you often feel the way Brainerd did, so low that life feels like too much, please tell someone you trust this week. And if you ever have thoughts of harming yourself or ending your life, tell an adult right away, or contact your local emergency number or a crisis helpline. You matter to God and to the people around you, more than you can feel right now. The psalmist argued with his own sad soul: Why are you so downcast? Hope in God, for I will yet praise him. Brainerd lived in that tension for years. And God carried him through it. One thing to do this week: if you have been carrying a heavy sadness on your own, tell one trusted adult about it this week. If you are doing okay, think of a friend who seems to be struggling and check in on them: ask how they really are, and listen.",
+  "word_count": 495
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-and-diary-of-david-brainerd-teens",
+   "en"
+  ],
+  "order": 8,
+  "title": "Praying in the Woods",
+  "body_html": "<blockquote>“The effectual fervent prayer of a righteous man availeth much.” — James 5:16 (KJV)</blockquote> <p>If Brainerd is famous for one thing, it is prayer. He prayed the way other people work. He would go off into the woods for hours, sometimes whole days, to pray for the people he served.</p> <p>In 1744 he moved to the Forks of the Delaware, in Pennsylvania, to work among the Delaware people, also called the Lenape. One evening he heard that people were about to gather for a large religious feast, one he believed would keep them away from the gospel. He went into the woods and prayed with everything he had. Afterwards he wrote:</p> <blockquote>“I was in such anguish, and pleaded with such earnestness and importunity, that when I rose from my knees I felt extremely weak and overcome; I could scarcely walk straight; my joints were loosed; the sweat ran down my face and body, and nature seemed as if it would dissolve.”</blockquote> <p>Importunity means persistent, not-giving-up asking, like the widow in Jesus’ parable who kept coming back to the judge. Brainerd prayed like that.</p> <p>The next morning he woke and his first thought was the same: “When I waked my soul was burdened with what seemed to be before me. I cried to God, before I could get out of my bed; and as soon as I was dressed I withdrew into the woods.”</p> <p>There is something challenging here for all of us. Most of our prayers are short and a bit distracted. Brainerd’s show what it looks like when someone really believes that God hears, and that prayer changes things. He prayed for people by name, for whole villages, for things that looked impossible.</p> <p>But a word of balance. Brainerd often went without food and sleep, and he was already sick with tuberculosis. He pushed his body far harder than was wise, and it shortened his life. That is not something to copy. God gave you a body to look after. You can pray with passion and still eat your meals, go to bed and see a doctor.</p> <p>The lesson to take is not “pray until you collapse.” It is “pray like it matters.” James says the earnest prayer of a person who walks with God is powerful and effective. In the next chapters you will see what came of Brainerd’s.</p> <p><strong>One thing to do this week:</strong> choose one person or situation that feels impossible. Pray for it every day this week, not just a quick mention but a few honest minutes, as if it really matters. Write down what you are asking for, and keep the list.</p>",
+  "study_questions": [
+   {
+    "question": "How did Brainerd describe himself after praying in the woods before the feast?",
+    "answer": "So weak and overcome he could barely walk straight; his joints felt loose, sweat ran down his face and body, and he felt as if he would dissolve."
+   },
+   {
+    "question": "What was the first thing Brainerd did on waking the next morning?",
+    "answer": "He cried to God before he even got out of bed, and as soon as he was dressed he went into the woods to pray."
+   },
+   {
+    "question": "Why should readers not copy all of Brainerd’s habits?",
+    "answer": "Because he often went without food and sleep while already ill with tuberculosis, which harmed his health. We should pray earnestly but look after the body God gave us."
+   }
+  ],
+  "body_text": "“The effectual fervent prayer of a righteous man availeth much.” — James 5:16 (KJV) If Brainerd is famous for one thing, it is prayer. He prayed the way other people work. He would go off into the woods for hours, sometimes whole days, to pray for the people he served. In 1744 he moved to the Forks of the Delaware, in Pennsylvania, to work among the Delaware people, also called the Lenape. One evening he heard that people were about to gather for a large religious feast, one he believed would keep them away from the gospel. He went into the woods and prayed with everything he had. Afterwards he wrote: “I was in such anguish, and pleaded with such earnestness and importunity, that when I rose from my knees I felt extremely weak and overcome; I could scarcely walk straight; my joints were loosed; the sweat ran down my face and body, and nature seemed as if it would dissolve.” Importunity means persistent, not-giving-up asking, like the widow in Jesus’ parable who kept coming back to the judge. Brainerd prayed like that. The next morning he woke and his first thought was the same: “When I waked my soul was burdened with what seemed to be before me. I cried to God, before I could get out of my bed; and as soon as I was dressed I withdrew into the woods.” There is something challenging here for all of us. Most of our prayers are short and a bit distracted. Brainerd’s show what it looks like when someone really believes that God hears, and that prayer changes things. He prayed for people by name, for whole villages, for things that looked impossible. But a word of balance. Brainerd often went without food and sleep, and he was already sick with tuberculosis. He pushed his body far harder than was wise, and it shortened his life. That is not something to copy. God gave you a body to look after. You can pray with passion and still eat your meals, go to bed and see a doctor. The lesson to take is not “pray until you collapse.” It is “pray like it matters.” James says the earnest prayer of a person who walks with God is powerful and effective. In the next chapters you will see what came of Brainerd’s. One thing to do this week: choose one person or situation that feels impossible. Pray for it every day this week, not just a quick mention but a few honest minutes, as if it really matters. Write down what you are asking for, and keep the list.",
+  "word_count": 438
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-and-diary-of-david-brainerd-teens",
+   "en"
+  ],
+  "order": 9,
+  "title": "Nothing to Show for It",
+  "body_html": "<blockquote>“And let us not be weary in well doing: for in due season we shall reap, if we faint not.” — Galatians 6:9 (KJV)</blockquote> <p>Imagine giving two years of your life to something: leaving home, living rough, praying for hours, travelling hundreds of miles through forests and over rivers. And imagine seeing almost nothing happen.</p> <p>That was Brainerd’s experience. At Kaunaumeek, and then at the Forks of the Delaware, a few people were interested. Some came to listen. But there was no great turning to God. He made two long, hard journeys to the Susquehanna River to speak to the people there, and those seemed fruitless too.</p> <p>In June 1745, looking back over the previous year, he wrote honestly: “not having had any considerable appearance of special success in either of those places, my spirits were depressed.”</p> <p>It would have been easy to quit. He was ill. He was lonely. He had no degree and no prospects. Everything seemed to have failed. Plenty of people would have decided that God hadn’t really called them, or that they had got it wrong.</p> <p>But Brainerd kept going. Not because he felt successful, but because he believed God had sent him and that the results belonged to God. He kept preaching, kept travelling, kept praying for people who didn’t seem to be listening.</p> <p>This is one of the most important lessons in his story, and one of the least exciting. A lot of faithfulness looks like nothing much is happening. Praying for a friend for years. Being kind to someone who is never kind back. Turning up to serve when nobody notices. Studying hard when results seem far away. Waiting.</p> <p>We live in a world that loves instant results: quick likes, fast replies, overnight success. God usually works more slowly, like a farmer’s field. Paul wrote: don’t grow weary of doing good, because at the right time you will reap a harvest, if you don’t give up.</p> <p>Brainerd didn’t know it in June 1745, but he was standing right on the edge of the harvest. He had just arrived at a small, scattered Delaware settlement in New Jersey called Crossweeksung. Within weeks, everything would change.</p> <p><strong>One thing to do this week:</strong> think of something good you have been doing that seems to be getting nowhere: praying for someone, trying to make peace, working at something hard. Write down why you started it. Then ask God for strength to keep going, and don’t give up this week.</p>",
+  "study_questions": [
+   {
+    "question": "What happened during Brainerd’s first two years as a missionary?",
+    "answer": "Very little seemed to come of it: a few people listened, but there was no great turning to God, and his journeys to the Susquehanna seemed fruitless."
+   },
+   {
+    "question": "How did Brainerd describe his feelings in June 1745?",
+    "answer": "He said that since he had seen no considerable success, his spirits were depressed."
+   },
+   {
+    "question": "Why did Brainerd keep going despite seeing so little?",
+    "answer": "Because he believed God had sent him and that the results belonged to God, so he kept preaching, travelling and praying."
+   }
+  ],
+  "body_text": "“And let us not be weary in well doing: for in due season we shall reap, if we faint not.” — Galatians 6:9 (KJV) Imagine giving two years of your life to something: leaving home, living rough, praying for hours, travelling hundreds of miles through forests and over rivers. And imagine seeing almost nothing happen. That was Brainerd’s experience. At Kaunaumeek, and then at the Forks of the Delaware, a few people were interested. Some came to listen. But there was no great turning to God. He made two long, hard journeys to the Susquehanna River to speak to the people there, and those seemed fruitless too. In June 1745, looking back over the previous year, he wrote honestly: “not having had any considerable appearance of special success in either of those places, my spirits were depressed.” It would have been easy to quit. He was ill. He was lonely. He had no degree and no prospects. Everything seemed to have failed. Plenty of people would have decided that God hadn’t really called them, or that they had got it wrong. But Brainerd kept going. Not because he felt successful, but because he believed God had sent him and that the results belonged to God. He kept preaching, kept travelling, kept praying for people who didn’t seem to be listening. This is one of the most important lessons in his story, and one of the least exciting. A lot of faithfulness looks like nothing much is happening. Praying for a friend for years. Being kind to someone who is never kind back. Turning up to serve when nobody notices. Studying hard when results seem far away. Waiting. We live in a world that loves instant results: quick likes, fast replies, overnight success. God usually works more slowly, like a farmer’s field. Paul wrote: don’t grow weary of doing good, because at the right time you will reap a harvest, if you don’t give up. Brainerd didn’t know it in June 1745, but he was standing right on the edge of the harvest. He had just arrived at a small, scattered Delaware settlement in New Jersey called Crossweeksung. Within weeks, everything would change. One thing to do this week: think of something good you have been doing that seems to be getting nowhere: praying for someone, trying to make peace, working at something hard. Write down why you started it. Then ask God for strength to keep going, and don’t give up this week.",
+  "word_count": 413
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-and-diary-of-david-brainerd-teens",
+   "en"
+  ],
+  "order": 10,
+  "title": "A Mighty Rushing Wind",
+  "body_html": "<blockquote>“And suddenly there came a sound from heaven as of a rushing mighty wind, and it filled all the house where they were sitting.” — Acts 2:2 (KJV)</blockquote> <p>Crossweeksung was a small, scattered settlement of Delaware people in New Jersey. When Brainerd first came, only a few women and children gathered to listen. He preached simply about Jesus, and they asked him to come back. Each time, more people came, some walking many miles. By early August there was a crowd.</p> <p>On 8 August 1745, he preached to about sixty-five people. Afterwards he started speaking to individuals who looked troubled. And then, he wrote:</p> <blockquote>“The power of God seemed to descend upon the assembly ‘like a mighty rushing wind,’ and with an astonishing energy bore down all before it.”</blockquote> <p>He was amazed. “Almost all persons of all ages were bowed down with concern together, and scarcely one was able to withstand the shock of this surprising operation.” Old men and women who had been drunk for years, and children of six or seven, were all crying out to God for mercy. People were praying all over the house and outside it. Brainerd summed it up: “I never saw any day like it, in all respects.”</p> <p>What had he been preaching? Not frightening sermons full of threats. The day before, he wrote, people’s hearts had been “pierced with the tender and melting invitations of the Gospel, when there was not a word of terror spoken to them.” It was the kindness of God, the invitation to come to Jesus, that broke their hearts open.</p> <p>And it wasn’t just emotion. When Brainerd asked two people who had found peace what more they wanted God to do for them, they replied that “they wanted Christ should wipe their hearts quite clean.” Over the following months, real lives changed. People gave up drinking, settled quarrels and paid what they owed, and many were baptised and became a church.</p> <p>Brainerd was very clear that he hadn’t made this happen. He was a sick, discouraged young man in a place he hadn’t even planned to be. It had come, he said, “at a time, in a place, and upon subjects, that scarce ever entered his heart” (those are Edwards’s words about it). It was God’s gift, in answer to years of prayer.</p> <p>That is worth holding on to. You can’t manufacture what God does. But you can do what Brainerd did: keep praying, keep telling people about Jesus kindly, and keep going when nothing seems to happen. God decides the timing.</p> <p><strong>One thing to do this week:</strong> think of one person you would love to know Jesus. This week, pray for them by name every day, and look for one chance to show them the kindness of Jesus, with no pressure and no lecture.</p>",
+  "study_questions": [
+   {
+    "question": "What happened at Crossweeksung on 8 August 1745?",
+    "answer": "As Brainerd spoke with people after preaching, the power of God seemed to come on the gathering “like a mighty rushing wind,” and almost everyone, old and young, began crying out to God for mercy."
+   },
+   {
+    "question": "What kind of preaching moved the people at Crossweeksung?",
+    "answer": "Not threats or terror but “the tender and melting invitations of the Gospel”: the kindness and invitation of Jesus."
+   },
+   {
+    "question": "What did two people who found peace say they wanted next?",
+    "answer": "They “wanted Christ should wipe their hearts quite clean.”"
+   }
+  ],
+  "body_text": "“And suddenly there came a sound from heaven as of a rushing mighty wind, and it filled all the house where they were sitting.” — Acts 2:2 (KJV) Crossweeksung was a small, scattered settlement of Delaware people in New Jersey. When Brainerd first came, only a few women and children gathered to listen. He preached simply about Jesus, and they asked him to come back. Each time, more people came, some walking many miles. By early August there was a crowd. On 8 August 1745, he preached to about sixty-five people. Afterwards he started speaking to individuals who looked troubled. And then, he wrote: “The power of God seemed to descend upon the assembly ‘like a mighty rushing wind,’ and with an astonishing energy bore down all before it.” He was amazed. “Almost all persons of all ages were bowed down with concern together, and scarcely one was able to withstand the shock of this surprising operation.” Old men and women who had been drunk for years, and children of six or seven, were all crying out to God for mercy. People were praying all over the house and outside it. Brainerd summed it up: “I never saw any day like it, in all respects.” What had he been preaching? Not frightening sermons full of threats. The day before, he wrote, people’s hearts had been “pierced with the tender and melting invitations of the Gospel, when there was not a word of terror spoken to them.” It was the kindness of God, the invitation to come to Jesus, that broke their hearts open. And it wasn’t just emotion. When Brainerd asked two people who had found peace what more they wanted God to do for them, they replied that “they wanted Christ should wipe their hearts quite clean.” Over the following months, real lives changed. People gave up drinking, settled quarrels and paid what they owed, and many were baptised and became a church. Brainerd was very clear that he hadn’t made this happen. He was a sick, discouraged young man in a place he hadn’t even planned to be. It had come, he said, “at a time, in a place, and upon subjects, that scarce ever entered his heart” (those are Edwards’s words about it). It was God’s gift, in answer to years of prayer. That is worth holding on to. You can’t manufacture what God does. But you can do what Brainerd did: keep praying, keep telling people about Jesus kindly, and keep going when nothing seems to happen. God decides the timing. One thing to do this week: think of one person you would love to know Jesus. This week, pray for them by name every day, and look for one chance to show them the kindness of Jesus, with no pressure and no lecture.",
+  "word_count": 468
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-and-diary-of-david-brainerd-teens",
+   "en"
+  ],
+  "order": 11,
+  "title": "The Man Nobody Expected",
+  "body_html": "<blockquote>“For my thoughts are not your thoughts, neither are your ways my ways, saith the LORD.” — Isaiah 55:8 (KJV)</blockquote> <p>There was one man at the Forks of the Delaware whom Brainerd had completely given up on.</p> <p>He was a powwow, or conjurer: a man the people looked to for spiritual power, charms and healing. He was also a heavy drinker, and he had killed a young man. For more than a year he came to listen to Brainerd sometimes, but nothing changed. Worse, Brainerd felt he was keeping others away from Jesus, because people trusted his power.</p> <p>Brainerd is brutally honest about how he felt. He wrote that he had often thought it would be a great help to his work “if God would take that wretch out of the world; for I had scarcely any hope of his ever becoming good.”</p> <p>That is not a nice thing to think about someone. But it is honest, and you have probably felt something like it about a person who seemed to be the problem. Then Brainerd adds:</p> <blockquote>“But God, whose thoughts are not as man’s thoughts, has been pleased to take a much more desirable method with him.”</blockquote> <p>What happened? In July 1745 the man watched Brainerd’s interpreter and his wife publicly declare their faith in Christ. It moved him. He followed Brainerd to Crossweeksung in August and was there during the great awakening. Over the following months he came under deep conviction of his sin, and eventually found peace in Christ. He told Brainerd that after he felt “the word of God in his heart,” his spirit of conjuring left him completely.</p> <p>The man Brainerd had wished would disappear became a brother in Christ. Brainerd ended that part of his journal simply: “To God be the glory of it.”</p> <p>Who is the person you have written off? The one you think will never change, or the one you secretly wish would just go away? Brainerd’s story says: don’t be so sure. God has a habit of saving exactly the people we have stopped praying for.</p> <p>And notice how it started. Not with a sermon, but with watching two ordinary believers, the interpreter and his wife, take their stand for Jesus. Your faithfulness may be the thing someone else is watching.</p> <p><strong>One thing to do this week:</strong> think of someone you have quietly given up on. Ask God to forgive you for writing them off, and start praying for them again, by name, every day this week.</p>",
+  "study_questions": [
+   {
+    "question": "Why had Brainerd given up hope for the conjurer?",
+    "answer": "Because he was a heavy drinker who had killed a young man, he kept using his charms despite hearing the gospel for over a year, and he seemed to be keeping others from Christ."
+   },
+   {
+    "question": "What first moved the conjurer to take the gospel seriously?",
+    "answer": "Watching Brainerd’s interpreter and his wife publicly declare their faith in Christ in July 1745."
+   },
+   {
+    "question": "What does this story teach about people we have written off?",
+    "answer": "That God’s thoughts are not ours: he can change people we think will never change, so we should keep praying for them."
+   }
+  ],
+  "body_text": "“For my thoughts are not your thoughts, neither are your ways my ways, saith the LORD.” — Isaiah 55:8 (KJV) There was one man at the Forks of the Delaware whom Brainerd had completely given up on. He was a powwow, or conjurer: a man the people looked to for spiritual power, charms and healing. He was also a heavy drinker, and he had killed a young man. For more than a year he came to listen to Brainerd sometimes, but nothing changed. Worse, Brainerd felt he was keeping others away from Jesus, because people trusted his power. Brainerd is brutally honest about how he felt. He wrote that he had often thought it would be a great help to his work “if God would take that wretch out of the world; for I had scarcely any hope of his ever becoming good.” That is not a nice thing to think about someone. But it is honest, and you have probably felt something like it about a person who seemed to be the problem. Then Brainerd adds: “But God, whose thoughts are not as man’s thoughts, has been pleased to take a much more desirable method with him.” What happened? In July 1745 the man watched Brainerd’s interpreter and his wife publicly declare their faith in Christ. It moved him. He followed Brainerd to Crossweeksung in August and was there during the great awakening. Over the following months he came under deep conviction of his sin, and eventually found peace in Christ. He told Brainerd that after he felt “the word of God in his heart,” his spirit of conjuring left him completely. The man Brainerd had wished would disappear became a brother in Christ. Brainerd ended that part of his journal simply: “To God be the glory of it.” Who is the person you have written off? The one you think will never change, or the one you secretly wish would just go away? Brainerd’s story says: don’t be so sure. God has a habit of saving exactly the people we have stopped praying for. And notice how it started. Not with a sermon, but with watching two ordinary believers, the interpreter and his wife, take their stand for Jesus. Your faithfulness may be the thing someone else is watching. One thing to do this week: think of someone you have quietly given up on. Ask God to forgive you for writing them off, and start praying for them again, by name, every day this week.",
+  "word_count": 417
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-and-diary-of-david-brainerd-teens",
+   "en"
+  ],
+  "order": 12,
+  "title": "Christ at the Centre",
+  "body_html": "<blockquote>“For I determined not to know any thing among you, save Jesus Christ, and him crucified.” — 1 Corinthians 2:2 (KJV)</blockquote> <p>After the awakening at Crossweeksung, Brainerd looked back and tried to work out what God had used. His answer is simple, and it is still the most important thing in any church, youth group or friendship today.</p> <p>He wrote that ever since coming to Crossweeksung he had been helped “in preaching Christ crucified, and making him the centre and mark to which all my discourses among them were directed.”</p> <p>Christ crucified. Jesus dying on the cross for us. That was the centre of everything he said. He started with the basics: who God is, how he made us, how we have turned away from him and can’t save ourselves. Then he kept pointing to Jesus, who came to save us, and invited people to come to him.</p> <p>Brainerd noticed something important: people were not changed by being told off. They were changed by being shown Jesus. When he spoke about Christ’s love and invited them to come, hearts that had been hard for years began to open.</p> <p>This is a helpful check for your own faith. It is easy for Christianity to become about other things: rules, being good, church activities, arguments, how you look to others. All of those have a place. But if Jesus himself, and what he did on the cross, isn’t at the centre, something has gone wrong. Brainerd had learned that the hard way, back when his religion had been all about his own efforts.</p> <p>It is also a help when you talk to friends about faith. You don’t need clever arguments or perfect answers. You can tell them about Jesus: who he is, what he has done, and how he has changed you. That is what God used at Crossweeksung.</p> <p>In his last weeks, dying, Brainerd said that he had seen “nothing else in the world that can yield any satisfaction besides living to God, pleasing him, and doing his whole will.” Jesus had become the centre of his life, not just his preaching.</p> <p>Paul told the Corinthians that when he came to them, he decided to know nothing among them except Jesus Christ and him crucified. Brainerd made the same decision in the woods of New Jersey. It is a good one to make wherever you are.</p> <p><strong>One thing to do this week:</strong> read the account of Jesus’ death in Luke 23 this week. Then write down, in a few sentences, what Jesus has done for you, in your own words, as if you were explaining it to a friend.</p>",
+  "study_questions": [
+   {
+    "question": "What did Brainerd say was at the centre of all his preaching at Crossweeksung?",
+    "answer": "“Christ crucified”: Jesus dying on the cross, whom he made “the centre and mark” of everything he said."
+   },
+   {
+    "question": "What did Brainerd notice actually changed people?",
+    "answer": "Not being told off, but being shown Jesus and his love and being invited to come to him."
+   },
+   {
+    "question": "How can this help when you talk to friends about faith?",
+    "answer": "You don’t need clever arguments; you can tell them about Jesus, who he is, what he has done, and how he has changed you."
+   }
+  ],
+  "body_text": "“For I determined not to know any thing among you, save Jesus Christ, and him crucified.” — 1 Corinthians 2:2 (KJV) After the awakening at Crossweeksung, Brainerd looked back and tried to work out what God had used. His answer is simple, and it is still the most important thing in any church, youth group or friendship today. He wrote that ever since coming to Crossweeksung he had been helped “in preaching Christ crucified, and making him the centre and mark to which all my discourses among them were directed.” Christ crucified. Jesus dying on the cross for us. That was the centre of everything he said. He started with the basics: who God is, how he made us, how we have turned away from him and can’t save ourselves. Then he kept pointing to Jesus, who came to save us, and invited people to come to him. Brainerd noticed something important: people were not changed by being told off. They were changed by being shown Jesus. When he spoke about Christ’s love and invited them to come, hearts that had been hard for years began to open. This is a helpful check for your own faith. It is easy for Christianity to become about other things: rules, being good, church activities, arguments, how you look to others. All of those have a place. But if Jesus himself, and what he did on the cross, isn’t at the centre, something has gone wrong. Brainerd had learned that the hard way, back when his religion had been all about his own efforts. It is also a help when you talk to friends about faith. You don’t need clever arguments or perfect answers. You can tell them about Jesus: who he is, what he has done, and how he has changed you. That is what God used at Crossweeksung. In his last weeks, dying, Brainerd said that he had seen “nothing else in the world that can yield any satisfaction besides living to God, pleasing him, and doing his whole will.” Jesus had become the centre of his life, not just his preaching. Paul told the Corinthians that when he came to them, he decided to know nothing among them except Jesus Christ and him crucified. Brainerd made the same decision in the woods of New Jersey. It is a good one to make wherever you are. One thing to do this week: read the account of Jesus’ death in Luke 23 this week. Then write down, in a few sentences, what Jesus has done for you, in your own words, as if you were explaining it to a friend.",
+  "word_count": 438
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-and-diary-of-david-brainerd-teens",
+   "en"
+  ],
+  "order": 13,
+  "title": "My Work Is Done",
+  "body_html": "<blockquote>“I have fought a good fight, I have finished my course, I have kept the faith.” — 2 Timothy 4:7 (KJV)</blockquote> <p>Brainerd had very little time to enjoy what God had done. The tuberculosis that had shadowed him for years grew worse. He was coughing blood and could no longer ride the long distances his work needed. In the spring of 1747 he left the people at Crossweeksung and travelled to Northampton, Massachusetts, to the home of the pastor Jonathan Edwards.</p> <p>There, for his last months, he was looked after mainly by Edwards’s daughter, Jerusha. As he grew weaker, his peace grew stronger. A few days before he died, he said to her: “Dear Jerusha, are you willing to part with me?” He told her that he had committed everyone he loved to God, including his brother John, “although I love him the best of any creature living.” And he added: “We shall spend an happy eternity together!”</p> <p>When someone came in carrying a Bible, he said, “O that dear book—that lovely book! I shall soon see it opened!”</p> <p>And when someone asked how he was, he answered:</p> <blockquote>“I am almost in eternity; I long to be there. My work is done; I have done with all my friends: all the world is nothing to me. I long to be in heaven, praising and glorifying God with the holy angels. All my desire is to glorify God.”</blockquote> <p>He died early on the morning of Friday, 9 October 1747. He was twenty-nine.</p> <p>It would be easy to end there, with a sad story of a young life cut short. But it didn’t end there. His younger brother John took over the work at Crossweeksung and cared for the Christian community there for years. And Edwards published Brainerd’s diary, which has been read by millions and has sent people to serve God across the world ever since.</p> <p>Brainerd once said: “There is nothing in the world worth living for, but doing good, and finishing God’s work, doing the work that Christ did.” His life was short, often painful, and far from perfect. But he gave it to God, and God used it far beyond anything he could have imagined.</p> <p>You don’t know how long your life will be, or how big or small it will look. That is not yours to decide. What you can decide is whom you live it for. Paul, near the end of his life, said he had fought the good fight, finished the race and kept the faith. Brainerd could say the same. By God’s grace, so can you.</p> <p><strong>One thing to do this week:</strong> write one sentence about what you want your life to be about, the way Brainerd’s was about glorifying God and doing good. Put it somewhere you will see it every day this week, and ask God to help you live it.</p>",
+  "study_questions": [
+   {
+    "question": "Where did Brainerd spend his last months, and who looked after him?",
+    "answer": "At Jonathan Edwards’s home in Northampton, Massachusetts, cared for mainly by Edwards’s daughter Jerusha."
+   },
+   {
+    "question": "What did Brainerd say when someone asked how he was near the end?",
+    "answer": "“I am almost in eternity; I long to be there. My work is done… All my desire is to glorify God.”"
+   },
+   {
+    "question": "How did Brainerd’s work continue after his death?",
+    "answer": "His brother John took over the work at Crossweeksung, and Edwards published his diary, which has inspired people to serve God ever since."
+   }
+  ],
+  "body_text": "“I have fought a good fight, I have finished my course, I have kept the faith.” — 2 Timothy 4:7 (KJV) Brainerd had very little time to enjoy what God had done. The tuberculosis that had shadowed him for years grew worse. He was coughing blood and could no longer ride the long distances his work needed. In the spring of 1747 he left the people at Crossweeksung and travelled to Northampton, Massachusetts, to the home of the pastor Jonathan Edwards. There, for his last months, he was looked after mainly by Edwards’s daughter, Jerusha. As he grew weaker, his peace grew stronger. A few days before he died, he said to her: “Dear Jerusha, are you willing to part with me?” He told her that he had committed everyone he loved to God, including his brother John, “although I love him the best of any creature living.” And he added: “We shall spend an happy eternity together!” When someone came in carrying a Bible, he said, “O that dear book—that lovely book! I shall soon see it opened!” And when someone asked how he was, he answered: “I am almost in eternity; I long to be there. My work is done; I have done with all my friends: all the world is nothing to me. I long to be in heaven, praising and glorifying God with the holy angels. All my desire is to glorify God.” He died early on the morning of Friday, 9 October 1747. He was twenty-nine. It would be easy to end there, with a sad story of a young life cut short. But it didn’t end there. His younger brother John took over the work at Crossweeksung and cared for the Christian community there for years. And Edwards published Brainerd’s diary, which has been read by millions and has sent people to serve God across the world ever since. Brainerd once said: “There is nothing in the world worth living for, but doing good, and finishing God’s work, doing the work that Christ did.” His life was short, often painful, and far from perfect. But he gave it to God, and God used it far beyond anything he could have imagined. You don’t know how long your life will be, or how big or small it will look. That is not yours to decide. What you can decide is whom you live it for. Paul, near the end of his life, said he had fought the good fight, finished the race and kept the faith. Brainerd could say the same. By God’s grace, so can you. One thing to do this week: write one sentence about what you want your life to be about, the way Brainerd’s was about glorifying God and doing good. Put it somewhere you will see it every day this week, and ask God to help you live it.",
+  "word_count": 479
+ }
+}
+]

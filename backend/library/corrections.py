@@ -1025,7 +1025,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
              "<h3> NOTE E.</h3>"),
             ("<p>\u2018According to the Spirit of Holiness. The word <i>hagios",
              "<h3> NOTE F.</h3> <h4>Note from Bengel on Rom. i. 4.</h4>"),
-            ("(<i>From an address by Pastor Stockmaiev.</i>) <p>\u2018Who gave ",
+            ("(<i>From an address by Pastor Stockmayer.</i>) <p>\u2018Who gave ",
              "<h3> NOTE G.</h3> <h4>\u2018Freed\u2019 and \u2018Possessed\u2019\u2014The Twofold Result of "
              "Redemption.</h4>"),
         ],
@@ -1040,6 +1040,16 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # ch33's own cross-reference back to NOTE A, lost the same way.
             ("made in the note to ‘Sixth Day,’ on .</p>",
              "made in the note to ‘Sixth Day,’ on Holiness as Proprietorship.</p>"),
+            # Transcription slips found by the lg translators (#1337 / #5593).
+            # Each changes no meaning: a doubled word, a digit for the vocative
+            # O, a mark for an apostrophe, a lower-case Spirit, and Otto
+            # Stockmayer's misspelt name — the last also copied, as a name,
+            # into the es/fr/lg/pt/sw editions, which this one pair repairs.
+            ("1. It it universally admitted", "1. It is universally admitted"),
+            ("0 ye chastened saints!", "O ye chastened saints!"),
+            ("the master‘s likeness", "the master’s likeness"),
+            ("made ours by the Holy spirit,", "made ours by the Holy Spirit,"),
+            ("Stockmaiev", "Stockmayer"),
         ],
     },
     "selected-sermons-edwards": {

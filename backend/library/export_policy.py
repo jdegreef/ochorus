@@ -98,6 +98,9 @@ EXPORT_PILOT = frozenset({
     ("the-life-of-trust-children", "en"),
     ("the-life-of-trust-teens", "en"),
     ("the-practice-of-the-presence-of-god-children", "en"),
+    ("the-practice-of-the-presence-of-god-teens", "en"),
+    ("the-imitation-of-christ-teens", "en"),
+    ("life-and-diary-of-david-brainerd-teens", "en"),
     # Retellings of an Ochorus Original (the Portraits of Courage life): the
     # parent author is the imprint, so, like the Portraits themselves, these have
     # no About the Author page. The Teens edition quotes only the public-domain ASV.
@@ -109,9 +112,38 @@ EXPORT_PILOT = frozenset({
     ("c-s-lewis-a-life-children", "en"),
     ("elisabeth-elliot-a-life-children", "en"),
     ("samuel-ajayi-crowther-a-life-teens", "en"),
+    # Their translations. Still imprint-authored (the parent author is kept), so
+    # still no About the Author page and no export bio in any language; each
+    # attribution opens "© Ochorus" in its own language, and each is
+    # ai_unreviewed, so its colophon carries the awaiting-review notice.
+    ("c-s-lewis-a-life-children", "es"),
+    ("c-s-lewis-a-life-children", "fr"),
+    ("c-s-lewis-a-life-children", "pt"),
+    ("c-s-lewis-a-life-children", "sw"),
+    ("corrie-ten-boom-a-life-children", "es"),
+    ("corrie-ten-boom-a-life-children", "fr"),
+    ("corrie-ten-boom-a-life-children", "pt"),
+    ("corrie-ten-boom-a-life-children", "sw"),
+    ("elisabeth-elliot-a-life-children", "es"),
+    ("elisabeth-elliot-a-life-children", "fr"),
+    ("elisabeth-elliot-a-life-children", "pt"),
+    ("elisabeth-elliot-a-life-children", "sw"),
+    ("john-hyde-a-life-children", "es"),
+    ("john-hyde-a-life-children", "fr"),
+    ("john-hyde-a-life-children", "pt"),
+    ("john-hyde-a-life-children", "sw"),
+    ("mary-slessor-a-life-children", "es"),
+    ("mary-slessor-a-life-children", "fr"),
+    ("mary-slessor-a-life-children", "pt"),
+    ("mary-slessor-a-life-children", "sw"),
+    ("pandita-ramabai-a-life-children", "es"),
+    ("pandita-ramabai-a-life-children", "fr"),
+    ("pandita-ramabai-a-life-children", "pt"),
+    ("pandita-ramabai-a-life-children", "sw"),
+    ("samuel-ajayi-crowther-a-life-children", "sw"),
     # The 2026-10 teen shelf. Seven more Portraits of Courage retellings for
     # teens (ASV, or KJV for Elliot and Lewis) and the Ochorus Originals
-    # Anchored 1–2, Real Questions 1 and They Were Young 1–2 (BSB). All
+    # Anchored 1–2, Real Questions 1–2 and They Were Young 1–2 (BSB). All
     # imprint-authored, so no About the Author page; every attribution opens
     # "© Ochorus" and none quotes a version that needs a publisher's notice.
     ("anchored-1", "en"),
@@ -126,6 +158,7 @@ EXPORT_PILOT = frozenset({
     ("pandita-ramabai-a-life-teens", "en"),
     ("john-hyde-a-life-teens", "en"),
     ("watchman-nee-a-life-teens", "en"),
+    ("real-questions-2", "en"),
     # The other Ochorus Originals in English: Key Teachings, Portraits of Courage
     # and the stand-alone books. Each attribution opens "© Ochorus" (Growing in
     # Wisdom, "© James DeGreef") and carries the NIV / NLT publishers' notices

@@ -222,6 +222,41 @@ class FixtureIntegrityTests(SimpleTestCase):
             "destination) when you add it to EXPECTED_MODELS.",
         )
 
+    def test_regen_knows_every_serialized_field(self):
+        # regen_fixture.py aborts on a field dumpdata writes that no fixture row
+        # carries, unless DEFAULTED_OK / DROPPED_IF_ABSENT names it — the right
+        # call for an inert default. A DB-only column (a deploy-time digest)
+        # wants `serialize=False` instead, so no dump or hand-serialized work
+        # file ever carries it. Nothing runs the regen in CI, so a new field
+        # broke it silently until the next person needed it (content_digest /
+        # english_digest, 2026-10); this is the same check, made the adding
+        # PR's failure.
+        from django.apps import apps
+
+        path = settings.BASE_DIR / "scripts" / "regen_fixture.py"
+        allowed = set()
+        for node in ast.parse(path.read_text()).body:
+            if isinstance(node, ast.Assign) and any(
+                getattr(t, "id", None) in ("DEFAULTED_OK", "DROPPED_IF_ABSENT")
+                for t in node.targets
+            ):
+                allowed |= ast.literal_eval(node.value)
+        present = {
+            (model, k) for model, rows in self.by_model.items() for r in rows for k in r["fields"]
+        }
+        unknown = sorted(
+            (model, f.name)
+            for model in EXPECTED_MODELS
+            for f in apps.get_model(model)._meta.local_fields
+            if f.serialize and not f.primary_key
+            and (model, f.name) not in present | allowed
+        )
+        self.assertEqual(
+            unknown, [],
+            "regen_fixture.py would abort on these — mark a DB-only column "
+            "`serialize=False`, or add an inert default to its DEFAULTED_OK.",
+        )
+
     def test_no_integer_pk_rows(self):
         # The fixture is natural-key format. A stale old-format row is the one
         # remaining silent-corruption path: its integer FK resolves against

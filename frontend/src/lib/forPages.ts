@@ -159,6 +159,344 @@ export const FOR_PAGES: ForPage[] = [
 			'Start with a reading plan everyone can follow, or browse the library and choose a book to read together.'
 	},
 	{
+		slug: 'small-groups',
+		title: 'Free books for your small group or Bible study',
+		lead: 'Choose a classic for the term and everyone in the group can read it, free, on their own phone. Prayer, holiness, grace and the life of faith, from Murray, Tozer, Brother Lawrence, Hannah Whitall Smith and many more.',
+		seoTitle: 'Free Books for Small Groups and Bible Studies',
+		seoDescription:
+			'Free Christian classics, sermons and reading plans for small groups and Bible studies. Everyone reads the same book on their own phone, no account needed.',
+		primary: { href: '/plans', label: 'Find a reading plan' },
+		secondary: { href: '/books', label: 'Browse the books' },
+		pointsHeading: 'Why small groups use Ochorus',
+		points: [
+			{
+				icon: 'users',
+				title: 'Everyone can have the book',
+				body: 'Every book is free, so nobody is left out for the price of a copy. Send one link to the group and everyone can start reading that evening.',
+				link: { href: '/books', label: 'Browse the books' }
+			},
+			{
+				icon: 'calendar',
+				title: 'A pace the whole group can keep',
+				body: 'Reading plans set out one short reading a day, so the group arrives at the meeting having read the same chapters.',
+				link: { href: '/plans', label: 'See the reading plans' }
+			},
+			{
+				icon: 'mic',
+				title: 'Sermons that fit one evening',
+				body: 'A sermon by Spurgeon, Moody or Wesley is short enough to read in the week and talk through in an hour, and many come with study questions.',
+				link: { href: '/sermons', label: 'Read the sermons' }
+			},
+			{
+				icon: 'tag',
+				title: 'Find a book by its theme',
+				body: 'Topics gather books and sermons on prayer, suffering, holiness, the Holy Spirit and more, so you can choose a study that meets the group where it is.',
+				link: { href: '/topics', label: 'Browse the topics' }
+			}
+		],
+		ideasHeading: 'Ways to use it in your group',
+		ideas: [
+			{
+				title: 'A book a term',
+				body: 'Pick one classic, read a chapter or two a week, and spend the meeting on what struck each person.'
+			},
+			{
+				title: 'A sermon a week',
+				body: 'Read one sermon before you meet and use its study questions to open the conversation.'
+			},
+			{
+				title: 'Read together on a plan',
+				body: 'Start a reading plan on the same day and talk through each week’s readings when you meet.'
+			},
+			{
+				title: 'Meet the writers',
+				body: 'Many writers have a full biography, so the group can hear the story behind a book before reading it.'
+			}
+		],
+		picksNote: 'Short classics that open good conversations.',
+		picks: [
+			'the-pursuit-of-god',
+			'absolute-surrender',
+			'the-practice-of-the-presence-of-god',
+			'the-christians-secret-of-a-happy-life-4',
+			'humility-2',
+			'school-of-prayer',
+			'the-god-of-all-comfort',
+			'power-through-prayer'
+		],
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Does everyone in the group need an account?',
+				a: 'No. Anyone can read without signing up. A free account is optional: it keeps a reader’s progress, notes and saved books in step across their devices.'
+			},
+			{
+				q: 'Are there discussion questions?',
+				a: 'Many sermons come with study questions and answers, drawn from the sermon itself. For books, a reading plan gives the group a shared pace, and the chapters are short enough to talk through.'
+			},
+			{
+				q: 'Can we read it without a phone?',
+				a: 'Yes. Ochorus works on any computer or tablet as well, and some books can be downloaded as free PDF and EPUB files from the book’s page.'
+			}
+		],
+		closeHeading: 'Choose your group’s next book',
+		closeBody: 'Start with a reading plan, or browse the library and pick a classic to read together.'
+	},
+	{
+		slug: 'youth',
+		title: 'Free books your teenagers will actually read',
+		lead: 'The great classics retold for teens, true stories of people who met God before they were grown, and thirty-day devotionals written for young people. Free on their own phone, with no ads and no account needed.',
+		seoTitle: 'Free Christian Books for Youth Ministries',
+		seoDescription:
+			'Free Christian books for youth groups and teens: classics retold, true stories of faith and thirty-day devotionals. On any phone, no ads, no account needed.',
+		primary: { href: '/teens', label: 'Books for teens' },
+		secondary: { href: '/plans', label: 'Reading plans' },
+		pointsHeading: 'Why youth ministries use Ochorus',
+		points: [
+			{
+				icon: 'layers',
+				title: 'Classics in words teens read',
+				body: 'The Pilgrim’s Progress, All of Grace and others, retold for teenagers without losing what they say. Each one links to the full original for when they want more.',
+				link: { href: '/teens', label: 'See the teens editions' }
+			},
+			{
+				icon: 'heart',
+				title: 'True stories worth telling',
+				body: 'C. S. Lewis, Corrie ten Boom, Elisabeth Elliot, Watchman Nee and others, told for teens: real people who trusted God when it cost them.',
+				link: { href: '/teens', label: 'Meet them' }
+			},
+			{
+				icon: 'calendar',
+				title: 'Thirty days with God',
+				body: 'Devotionals like Anchored and Rooted give a teenager a few minutes a day for a month, and reading plans keep a whole group on the same page.',
+				link: { href: '/plans', label: 'See the reading plans' }
+			},
+			{
+				icon: 'headphones',
+				title: 'On their phone, ready to listen',
+				body: 'Everything works on a phone with no sign-up, and any chapter can be read aloud with Listen, for the bus, the walk or the drive home from camp.'
+			}
+		],
+		ideasHeading: 'Ways to use it in your youth ministry',
+		ideas: [
+			{
+				title: 'A thirty-day challenge',
+				body: 'Start the group on the same devotional after a retreat or camp, and check in each week on how it is going.'
+			},
+			{
+				title: 'A book for the term',
+				body: 'Read a teens edition together, a chapter or two a week, and spend youth group on the questions it raises.'
+			},
+			{
+				title: 'Heroes night',
+				body: 'Tell one true story of faith each week, then point the group to the full biography to read at home.'
+			},
+			{
+				title: 'Something to hand a new believer',
+				body: 'Send a young person who has just come to faith a link to All of Grace for teens and a short reading plan.'
+			}
+		],
+		picksNote: 'Teens editions and devotionals to start with.',
+		picks: [
+			'pilgrims-progress-teens',
+			'all-of-grace-teens',
+			'anchored-1',
+			'rooted-1',
+			'c-s-lewis-a-life-teens',
+			'corrie-ten-boom-a-life-teens',
+			'elisabeth-elliot-a-life-teens',
+			'they-were-young-1'
+		],
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Do teens need to sign up?',
+				a: 'No. Anyone can read without an account. A free account is optional: it keeps reading progress, notes and saved books in step across devices.'
+			},
+			{
+				q: 'What ages are the teens books for?',
+				a: 'The teens editions are written for older children and teenagers. For younger members, the books for young readers retell the same classics more simply.'
+			},
+			{
+				q: 'Is it safe to send teenagers to?',
+				a: 'Ochorus has no ads and nothing to buy. It is a library of Christian books, and nothing else competes for their attention.'
+			}
+		],
+		closeHeading: 'Give your group something good to read',
+		closeBody: 'Start with the books for teens, or pick a reading plan to go through together.'
+	},
+	{
+		slug: 'missionaries',
+		title: 'Christian classics to share, free, in the languages you serve',
+		lead: 'A free library you can hand to anyone with a link: no payment, no sign-up. The great classics, sermons and missionary biographies, many published as full editions in other languages.',
+		seoTitle: 'Free Christian Books for Missionaries',
+		seoDescription:
+			'Free Christian classics, sermons and missionary biographies to share with the people you serve, with full editions in several languages. No payment or sign-up.',
+		primary: { href: '/books', label: 'Browse the library' },
+		secondary: { href: '/biographies', label: 'Missionary lives' },
+		pointsHeading: 'Why missionaries use Ochorus',
+		points: [
+			{
+				icon: 'share',
+				title: 'Free to share with anyone',
+				body: 'Every book and sermon is free, with no account needed, so a new believer can be sent a link and start reading straight away.',
+				link: { href: '/books', label: 'Browse the books' }
+			},
+			{
+				icon: 'globe',
+				title: 'Full editions in other languages',
+				body: `Books are published as full editions in ${series(OTHER_LANGUAGES)} as well as English, with more languages on the way, so people can read in their own language.`
+			},
+			{
+				icon: 'compass',
+				title: 'The lives of those who went before',
+				body: 'Hudson Taylor, David Brainerd, Amy Carmichael, George Müller, Samuel Ajayi Crowther and others, in their own words and in biographies.',
+				link: { href: '/biographies', label: 'Read the biographies' }
+			},
+			{
+				icon: 'calendar',
+				title: 'A path for new believers',
+				body: 'Reading plans take a new Christian through a book one short reading a day, and clear books like The Way to God make a good first step.',
+				link: { href: '/plans', label: 'See the reading plans' }
+			}
+		],
+		ideasHeading: 'Ways to use it in your mission',
+		ideas: [
+			{
+				title: 'Discipleship by link',
+				body: 'Send each new believer the same short reading plan, and talk through what they read when you meet.'
+			},
+			{
+				title: 'Training local leaders',
+				body: 'Read Baxter’s The Reformed Pastor or Torrey’s How to Bring Men to Christ with the people you are training.'
+			},
+			{
+				title: 'Strength for the long haul',
+				body: 'When the work is hard, read the journals and letters of those who served before you.'
+			},
+			{
+				title: 'Supporters at home',
+				body: 'Point your praying friends to the same missionary biographies that shaped your own calling.'
+			}
+		],
+		picksNote: 'Lives and books that have sent people out.',
+		picks: [
+			'a-retrospect',
+			'life-and-diary-of-david-brainerd',
+			'things-as-they-are',
+			'george-muller-of-bristol',
+			'journal-of-an-expedition-up-the-niger',
+			'evangelization-of-the-world',
+			'how-to-bring-men-to-christ',
+			'separation-and-service'
+		],
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Do the people I serve need an account?',
+				a: 'No. Anyone with the link can read, with nothing to pay and no sign-up. A free account is optional and only keeps a reader’s progress and notes in step across devices.'
+			},
+			{
+				q: 'Which languages are available?',
+				a: `Besides English, books are published in ${series(OTHER_LANGUAGES)}. Each language has its own editions, so the shelf in each language shows only what has been published in it.`
+			},
+			{
+				q: 'Can we read without an internet connection?',
+				a: 'Yes. Use Download on a book’s page to save it for reading offline, and some books can also be downloaded as free PDF and EPUB files.'
+			},
+			{
+				q: 'Can we request a book in a language we serve?',
+				a: 'Please contact us. We would be glad to hear which books and languages would help your work most.'
+			}
+		],
+		closeHeading: 'Share the classics with the people you serve',
+		closeBody: 'Browse the library, or start with the lives of the missionaries who went before you.'
+	},
+	{
+		slug: 'schools',
+		title: 'Free Christian classics for your classroom',
+		lead: 'Primary sources from twenty centuries of the church, free for every student on any device. Augustine, Athanasius, Bunyan and Chesterton, true lives of faith, and many classics retold for children and teens.',
+		seoTitle: 'Free Christian Classics for Schools',
+		seoDescription:
+			'Free Christian classics for schools: primary sources for Bible, history and literature, missionary biographies, and editions for children and teens.',
+		primary: { href: '/books', label: 'Browse the library' },
+		secondary: { href: '/teens', label: 'Books for teens' },
+		pointsHeading: 'Why schools use Ochorus',
+		points: [
+			{
+				icon: 'book',
+				title: 'Assigned reading at no cost',
+				body: 'Every book is free to read, so a whole class can read the same text with no textbook budget and no licences to manage.',
+				link: { href: '/books', label: 'Browse the books' }
+			},
+			{
+				icon: 'layers',
+				title: 'One text, several reading levels',
+				body: 'Many classics come in a children’s edition, a teens edition and the full original, so a mixed class can read the same story at different levels.',
+				link: { href: '/young-readers', label: 'See the young-reader editions' }
+			},
+			{
+				icon: 'users',
+				title: 'Biographies for every era',
+				body: 'Long-form lives of the writers, from the early church to the twentieth century, give students the history behind each book.',
+				link: { href: '/biographies', label: 'Read the biographies' }
+			},
+			{
+				icon: 'quote',
+				title: 'Quotations with their sources',
+				body: 'Each quotation links to the chapter it comes from, so students can check a quote in context and cite it properly.',
+				link: { href: '/quotes', label: 'Browse the quotes' }
+			}
+		],
+		ideasHeading: 'Ways to use it in your school',
+		ideas: [
+			{
+				title: 'Church history from the sources',
+				body: 'Read Athanasius’ On the Incarnation, Augustine’s Confessions and Foxe’s Book of Martyrs alongside the history they lived through.'
+			},
+			{
+				title: 'Literature with a Christian heritage',
+				body: 'Teach The Pilgrim’s Progress, George MacDonald and G. K. Chesterton, with editions for younger readers where they exist.'
+			},
+			{
+				title: 'Biography projects',
+				body: 'Let each student pick a writer, read the biography, and present what that person believed and why it mattered.'
+			},
+			{
+				title: 'Chapel and devotions',
+				body: 'Use a reading plan or a short sermon for a school chapel or a class devotion.'
+			}
+		],
+		picksNote: 'Classics that work in the classroom.',
+		picks: [
+			'pilgrims-progress-teens',
+			'on-the-incarnation',
+			'confessions',
+			'foxes-book-of-martyrs',
+			'orthodoxy',
+			'samuel-ajayi-crowther-a-life-teens',
+			'hurlbuts-life-of-christ',
+			'c-s-lewis-a-life-teens'
+		],
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Do students need accounts?',
+				a: 'No. Students can read without signing up. A free account is optional: it keeps a reader’s progress, notes and saved books in step across their devices.'
+			},
+			{
+				q: 'What ages is it suitable for?',
+				a: 'The children’s editions suit younger pupils and reading aloud, the teens editions suit older children and teenagers, and the full originals suit senior students.'
+			},
+			{
+				q: 'Can we print or download the books?',
+				a: 'Some books can be downloaded as free PDF and EPUB files from the book’s page. If you would like to print books for your school, please contact us first.'
+			}
+		],
+		closeHeading: 'Bring the classics into your classroom',
+		closeBody: 'Browse the library, or start with the books written for teens.'
+	},
+	{
 		slug: 'homeschool',
 		title: 'A free library of Christian classics for your homeschool',
 		lead: 'Living books from twenty centuries of the church, free to read on any device. Bunyan, Augustine, Müller, Hudson Taylor and George MacDonald, with many classics retold in editions for children and for teens.',

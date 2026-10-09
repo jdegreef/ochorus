@@ -661,9 +661,10 @@ class Book(models.Model):
     # deploy; ``english_digest`` — on a translation only — is the English
     # edition's content_digest when this translation was last (re)made. They
     # differ once the English changes and the translation doesn't. DB-only: not
-    # in the fixture, so the seeds never touch them.
-    content_digest = models.CharField(max_length=64, blank=True, default="")
-    english_digest = models.CharField(max_length=64, blank=True, default="")
+    # in the fixture, so the seeds never touch them — and `serialize=False`, so
+    # no dump or hand-serialized work file carries them either.
+    content_digest = models.CharField(max_length=64, blank=True, default="", serialize=False)
+    english_digest = models.CharField(max_length=64, blank=True, default="", serialize=False)
     # md5 of the text content_digest was computed from (hashed in SQL), so
     # refresh_translation_digests re-reads only rows whose text moved.
     digest_source = models.CharField(
@@ -953,9 +954,10 @@ class Sermon(models.Model):
     # deploy; ``english_digest`` — on a translation only — is the English
     # edition's content_digest when this translation was last (re)made. They
     # differ once the English changes and the translation doesn't. DB-only: not
-    # in the fixture, so the seeds never touch them.
-    content_digest = models.CharField(max_length=64, blank=True, default="")
-    english_digest = models.CharField(max_length=64, blank=True, default="")
+    # in the fixture, so the seeds never touch them — and `serialize=False`, so
+    # no dump or hand-serialized work file carries them either.
+    content_digest = models.CharField(max_length=64, blank=True, default="", serialize=False)
+    english_digest = models.CharField(max_length=64, blank=True, default="", serialize=False)
     # md5 of the text content_digest was computed from (hashed in SQL), so
     # refresh_translation_digests re-reads only rows whose text moved.
     digest_source = models.CharField(
@@ -1091,9 +1093,10 @@ class Article(models.Model):
     # deploy; ``english_digest`` — on a translation only — is the English
     # edition's content_digest when this translation was last (re)made. They
     # differ once the English changes and the translation doesn't. DB-only: not
-    # in the fixture, so the seeds never touch them.
-    content_digest = models.CharField(max_length=64, blank=True, default="")
-    english_digest = models.CharField(max_length=64, blank=True, default="")
+    # in the fixture, so the seeds never touch them — and `serialize=False`, so
+    # no dump or hand-serialized work file carries them either.
+    content_digest = models.CharField(max_length=64, blank=True, default="", serialize=False)
+    english_digest = models.CharField(max_length=64, blank=True, default="", serialize=False)
     # md5 of the text content_digest was computed from (hashed in SQL), so
     # refresh_translation_digests re-reads only rows whose text moved.
     digest_source = models.CharField(
