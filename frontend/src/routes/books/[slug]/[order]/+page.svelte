@@ -792,8 +792,6 @@
 		const endWas = measured && endStart ? pageOfNode(endStart) : -1;
 		const inEnd = endWas >= 0 && pageIndex >= endWas;
 		const at = measured ? firstIndexOnPage(pageIndex) : -1;
-		const hold = measured && heldEl?.isConnected ? heldEl : null;
-		heldEl = null;
 		applyInsets();
 		const w = articleEl.clientWidth;
 		pageW = w;
@@ -824,12 +822,16 @@
 		if (w > 0) pagesMeasured = true;
 		if (!measured) return;
 		const el = body!.children[at] as HTMLElement | undefined;
-		const target = hold
-			? pageOfNode(hold)
-			: wasLast
-				? pageTotal - 1
-				: inEnd && endStart
-					? pageOfNode(endStart) + (pageIndex - endWas)
+		// A reader already in the ending stays where they are: a re-flow there is
+		// usually their own doing (an answer opened, the composer grown), and the
+		// last-page rule turned the page under the click. Only `?pg=last`, until
+		// the reader acts, still pins the last page.
+		const target = stickToLast
+			? pageTotal - 1
+			: inEnd && endStart
+				? pageOfNode(endStart) + (pageIndex - endWas)
+				: wasLast
+					? pageTotal - 1
 					: el
 						? pageOf(el)
 						: pageIndex;
@@ -1238,21 +1240,6 @@
 		});
 	});
 
-	/**
-	 * The question the reader just opened or closed. Folding an answer in the
-	 * chapter's ending re-flows it, and the re-measure that follows would place
-	 * the reader by the rules meant for content arriving late — on the last page
-	 * if they were on it, on a clamped page if the count shrank — so the page
-	 * turned under the click. Keep the question they touched on screen instead.
-	 * `toggle` does not bubble, hence a capture listener on the pager.
-	 */
-	let heldEl: Element | null = null;
-	function onPagerToggle(e: Event) {
-		if (!paged || !(e.target instanceof HTMLDetailsElement)) return;
-		heldEl = e.target.querySelector(':scope > summary') ?? e.target;
-		scheduleMeasure();
-	}
-
 	// One re-measure per frame, however many triggers fire in it.
 	let measureQueued = false;
 	function scheduleMeasure() {
@@ -1438,6 +1425,9 @@
 	 * changing which chapter you're in off a stray tap is not.
 	 */
 	function onArticleClick(e: MouseEvent) {
+		// The reader is acting on the page in front of them: it is no longer
+		// "the last page, wherever that lands" (see measurePages).
+		stickToLast = false;
 		// A click right on the heels of a swipe is that swipe's synthetic tap.
 		if (performance.now() - lastSwipeEnd < 400) return;
 		if (reader.onScriptureClick(e)) return;
@@ -2077,7 +2067,7 @@
 	     effect); in page mode it becomes the translated CSS-column content and
 	     anything outside it — only the breadcrumb — is hidden. Keep it that way:
 	     readerPagedEnding.test.ts. -->
-	<div class="pager" class:dragging bind:this={pager} ontogglecapture={onPagerToggle} style="--page-w:{pageW}px; --page-idx:{pageIndex}; --cols:{cols};">
+	<div class="pager" class:dragging bind:this={pager} style="--page-w:{pageW}px; --page-idx:{pageIndex}; --cols:{cols};">
 		<div bind:this={leadEl}>
 			<LanguageFallbackNotice {fallback} alternates={seo.hreflang.alternates} browsePath="/books" class="mb-6" />
 			{#if plan && planDay}
