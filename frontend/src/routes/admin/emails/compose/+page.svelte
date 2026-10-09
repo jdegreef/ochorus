@@ -36,7 +36,8 @@
 		{ code: 'ar', label: 'العربية' },
 		{ code: 'hi', label: 'हिन्दी' },
 		{ code: 'uk', label: 'Українська' },
-		{ code: 'am', label: 'አማርኛ' }
+		{ code: 'am', label: 'አማርኛ' },
+		{ code: 'vi', label: 'Tiếng Việt' }
 	];
 	const localeLabel = (code: string) =>
 		LOCALES.find((l) => l.code === code)?.label ?? code;

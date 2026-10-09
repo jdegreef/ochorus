@@ -2610,6 +2610,17 @@ archaic spelling and period punctuation are the text, not defects in it.
   **The prerender touch in step 5 is RETIRED** (deploy skill, #3433): the web
   `buildFilter` rebuilds every content root and waits for the API release, so a content PR
   needs no `+page.ts` touch and no follow-up PR.
+- **Vietnamese (vi) Bible is `vie_kt` — Cadman's *Kinh Thánh* (1925), PD — in the
+  ebible mirror, and vi is PROTESTANT register throughout** (locale added 2026-10-09,
+  no content yet). URL: `bibles/vie_kt/usfm/<code>.usfm`; plain `\v N text` lines
+  (no `\w` Strong's markup in the verses checked). Its Take Root code `vie1934` is
+  UNVERIFIED (see `language_seed.py`), so mine the mirror. Pin in every brief:
+  Đức Chúa Trời (never Thiên Chúa), Đức Thánh Linh (never Chúa Thánh Thần), Chúa
+  Giê-xu, Đấng Christ, Hội Thánh, ân điển, thuộc linh (never tâm linh); reader
+  address **bạn**. Cadman reads archaic (ngươi, chẳng, luống nhưng): quoted verses
+  keep it, prose stays modern. Vietnamese writes every syllable as a separate word,
+  so word ratios will run well ABOVE 100% of the English. There is no band yet:
+  gate on the tag sequence and record the first batch's spread here.
 - **es BOOKS are no longer all « » — measure the same AUTHOR's shipped es books
   before briefing** (job #4800, 2026-10-05). The #515 entry above says all 13
   shipped es books convert to « »; at 59 es books that no longer holds. Simpson's

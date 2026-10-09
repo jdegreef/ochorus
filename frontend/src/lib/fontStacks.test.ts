@@ -70,7 +70,11 @@ describe('font stacks', () => {
 		cyrillic: 0x0411, // Б — base block, not the extension
 		arabic: 0x0627, // ا
 		devanagari: 0x0915, // क
-		ethiopic: 0x1200 // ሀ
+		ethiopic: 0x1200, // ሀ
+		// ế — Latin Extended Additional, the block Vietnamese's stacked tones live
+		// in. A face with `latin-ext` alone draws ơ and đ but not ế or ộ, so a
+		// Vietnamese word would switch faces mid-syllable without this probe.
+		vietnamese: 0x1ebf
 	};
 	const SUBSETS = Object.keys(PROBE);
 
@@ -117,7 +121,7 @@ describe('font stacks', () => {
 		// from the files each package ships, so a family covering only an extension
 		// block cannot satisfy this by name.
 		const stack = stackOf('font-sans');
-		for (const script of ['arabic', 'devanagari', 'cyrillic', 'ethiopic']) {
+		for (const script of ['arabic', 'devanagari', 'cyrillic', 'ethiopic', 'vietnamese']) {
 			const face = stack.find((f) => subsetsOf(f).has(script));
 			expect(
 				face,
@@ -139,7 +143,7 @@ describe('font stacks', () => {
 		// something reasonable — it degrades to Georgia, which has no Arabic
 		// either, and then to whatever the device picked.
 		const stack = stackOf('font-display');
-		for (const script of ['arabic', 'devanagari', 'cyrillic', 'ethiopic']) {
+		for (const script of ['arabic', 'devanagari', 'cyrillic', 'ethiopic', 'vietnamese']) {
 			const face = stack.find((f) => subsetsOf(f).has(script));
 			expect(
 				face,

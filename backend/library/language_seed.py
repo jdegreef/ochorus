@@ -177,7 +177,7 @@ SEED_LANGUAGES: dict[str, dict] = {
         # NOTE: John 15 renders correctly under this code in the Take Root
         # reader. Verify end-to-end before the first job with
         #   CHECK_BIBLE_CODES=1 uv run python manage.py test \
-        #     library.tests.LanguageSeedTableTests
+        #     library.tests_languages.LanguageSeedTableTests
         # from a network that can reach api.takeroot.bible.
         "bible": "ukr-kul",
         "bible_label": "Kulish (1905)",
@@ -282,7 +282,7 @@ SEED_LANGUAGES: dict[str, dict] = {
         # (seeds/tests never hit the API) but WILL garble a networked translation
         # run's scripture, so VERIFY before the first API-backed French job:
         #   CHECK_BIBLE_CODES=1 uv run python manage.py test \
-        #     library.tests.LanguageSeedTableTests
+        #     library.tests_languages.LanguageSeedTableTests
         # from a network that can reach api.takeroot.bible. Worker sessions mine
         # Segond verbatim from the ebible mirror instead (raw.githubusercontent
         # .com/gracious-tech/fetch_collection, bibles/fra_lsg/usfm), which needs
@@ -305,6 +305,52 @@ SEED_LANGUAGES: dict[str, dict] = {
             "godliness": "la piété",
             "intercession": "intercession",
             "surrender": "abandon / consécration",
+        },
+    },
+    "vi": {
+        "name": "Vietnamese",
+        "native": "Tiếng Việt",
+        # Kinh Thánh (1925/1934), the Cadman translation: the standard Protestant
+        # Vietnamese Bible, still the text most Vietnamese Protestant churches
+        # read, and PUBLIC DOMAIN (ebible mirror: bibles/vie_kt/meta.json →
+        # license "public", ebible id vie1934). No credit line is owed, so no
+        # bibleCredit.ts entry. The alternative on the mirror, the Open
+        # Vietnamese Contemporary Bible (vie_bib), is Biblica's CC BY-SA.
+        #
+        # Like Kulish for Ukrainian, Cadman reads old (ngươi, chẳng, luống
+        # nhưng) — a fair match for the 19th-century authors this library
+        # carries. Prose is modern Vietnamese; quoted verses keep Cadman.
+        #
+        # NOTE: `bible` is the Take Root code, which the session that added
+        # this could not verify (api.takeroot.bible is egress-blocked there).
+        # `vie1934` follows the ebible id, as `fralsg` does for French. VERIFY
+        # before the first API-backed Vietnamese job:
+        #   CHECK_BIBLE_CODES=1 uv run python manage.py test \
+        #     library.tests_languages.LanguageSeedTableTests
+        # Worker sessions can mine Cadman verbatim from the ebible mirror
+        # (raw.githubusercontent.com/gracious-tech/fetch_collection, bibles/
+        # vie_kt/usfm), which needs no Take Root code.
+        "bible": "vie1934",
+        "bible_label": "Kinh Thánh (Cadman, 1925)",
+        # PROTESTANT register throughout, pinned because Vietnamese splits by
+        # tradition: Đức Chúa Trời / Đức Thánh Linh (Protestant, and Cadman's
+        # own) against Thiên Chúa / Chúa Thánh Thần (Catholic). "abide" is
+        # Cadman's John 15:4 (Hãy cứ ở trong ta). "God" is not a glossary term
+        # (GLOSSARY_TERMS is fixed and the admin rejects others), so the
+        # Protestant Đức Chúa Trời is carried by "the Holy Spirit" / "the Lord"
+        # here and by the translation-worker brief. A draft for native review.
+        "glossary": {
+            "justification": "sự xưng công bình",
+            "sanctification": "sự nên thánh",
+            "atonement": "sự chuộc tội",
+            "grace": "ân điển",
+            "the flesh": "xác thịt",
+            "abide": "ở trong",
+            "the Holy Spirit": "Đức Thánh Linh",
+            "the Lord": "Chúa",
+            "godliness": "sự tin kính",
+            "intercession": "sự cầu thay",
+            "surrender": "sự dâng mình / đầu phục",
         },
     },
 }

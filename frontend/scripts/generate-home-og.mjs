@@ -52,9 +52,16 @@ const STATIC = resolve(HERE, '../static');
 const MESSAGES = resolve(HERE, '../messages');
 const CONTENT = resolve(HERE, '../../backend/library/fixtures/content');
 const MODULES = resolve(HERE, '../node_modules');
-const LOCALES = JSON.parse(
+const ALL_LOCALES = JSON.parse(
 	readFileSync(resolve(HERE, '../project.inlang/settings.json'), 'utf8')
 ).locales;
+/** `npm run og:home -- vi` redraws just the named cards; no arguments, all. */
+const LOCALES = process.argv.length > 2 ? process.argv.slice(2) : ALL_LOCALES;
+for (const l of LOCALES) if (!ALL_LOCALES.includes(l)) throw new Error(`${l}: not a UI locale`);
+/** Fewer of a language's own covers than this and its card borrows the English
+ *  shelf: a language joins the interface before its first book ships (vi did,
+ *  with none), and the home page names a card for every UI locale. */
+const MIN_SHELF = 3;
 
 /** The covers to lead with, best first; the first one found stands in the
  *  middle of the shelf. Slugs, so each language takes its own edition. */
@@ -220,9 +227,13 @@ function fontCss(script) {
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-function page(locale, msg, covers) {
+function page(locale, msg, covers, ownShelf) {
 	const script = scriptOf(locale);
-	const counts = msg.home_share_counts
+	// A borrowed shelf says nothing about this language's library, and "0 books
+	// · 0 sermons" says the wrong thing about it, so that card carries no counts.
+	const counts = !ownShelf
+		? ''
+		: msg.home_share_counts
 		.replace('{books}', atLeast(BOOKS.filter((b) => b.language === locale).length))
 		.replace('{sermons}', atLeast(SERMONS.filter((s) => s.language === locale).length))
 		.replace('{languages}', isolate(String(LIVE_LOCALES.length)));
@@ -262,9 +273,11 @@ const tab = await browser.newPage({
 });
 for (const locale of LOCALES) {
 	const msg = JSON.parse(readFileSync(resolve(MESSAGES, `${locale}.json`), 'utf8'));
-	const covers = await shelf(locale);
-	if (covers.length < 3) throw new Error(`${locale}: only ${covers.length} shareable covers`);
-	await tab.setContent(page(locale, msg, covers), { waitUntil: 'load' });
+	const own = await shelf(locale);
+	const ownShelf = own.length >= MIN_SHELF;
+	const covers = ownShelf ? own : await shelf('en');
+	if (covers.length < MIN_SHELF) throw new Error(`${locale}: only ${covers.length} shareable covers`);
+	await tab.setContent(page(locale, msg, covers, ownShelf), { waitUntil: 'load' });
 	await tab.evaluate(() => document.fonts.ready);
 	// One line, always: shrink a long headline until it fits the measure rather
 	// than let it wrap into the covers.
@@ -281,7 +294,7 @@ for (const locale of LOCALES) {
 	mkdirSync(dirname(file), { recursive: true });
 	if (!existsSync(file) || !readFileSync(file).equals(jpg)) writeFileSync(file, jpg);
 	console.log(
-		`  ✓ ${homeShareCardUrl(locale)}  (${covers.length} covers, ${(jpg.length / 1024).toFixed(0)} KB)`
+		`  ✓ ${homeShareCardUrl(locale)}  (${covers.length} covers${ownShelf ? '' : ', English shelf'}, ${(jpg.length / 1024).toFixed(0)} KB)`
 	);
 }
 await browser.close();
