@@ -61,5 +61,14 @@
       "AI-drafted, awaiting native review.",
       "The row appears only once both source books exist in uk — the-person-and-work-of-the-holy-spirit has no uk edition yet."
     ]
+  },
+  "faith-in-the-fire": {
+    "title": "Бог усякої втіхи: віра у вогні",
+    "description": "Для днів, коли важко молитися. Ганна Віталл Сміт — про Бога всякої втіхи, а Гарет Еванс — про довіру до Того, Хто тримає наше завтра: п’ятитижнева дорога до твердого спокою, коли життя непевне.",
+    "note": [
+      "Job #1677. «Бог усякої втіхи» is 2 Cor 1:3 as Kulish words it («Бог всякої утїхи»), in modern spelling — the verse that titles Smith's book. the-god-of-all-comfort has no uk edition yet: whoever translates it should title it to match this card, or adjust this entry in the same PR.",
+      "«Того, Хто тримає наше завтра» echoes the shipped uk title of the second source book, «Він тримає моє завтра» (he-holds-my-tomorrows.uk). Names follow the uk corpus: Ганна Віталл Сміт (her uk bio), Гарет Еванс (15× against Ґарет Еванс 2×).",
+      "AI-drafted, awaiting native review. The row appears only once both source books exist in uk — the-god-of-all-comfort has none yet."
+    ]
   }
 }
