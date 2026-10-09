@@ -6384,6 +6384,32 @@
 				556
 			]
 		},
+		"fr/men-of-prayer-2": {
+			"ground": "f12f2bd97032de30cd671c06560d2e33780009e3e707f6c38ba7eb9676311a13",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[108, 308, 492, 384],
+					[166, 374, 434, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"fr/men-who-tended-the-flock-2": {
 			"ground": "06979d4b4751b07fb21ca8d23defe218c8a7677c4eb778eabb69e15fe96e4f43",
 			"style": "originals",
