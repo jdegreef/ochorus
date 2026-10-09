@@ -12,6 +12,7 @@ export const RENDER_HOST = 'ochorus-web.onrender.com';
 const SLASHED_INDEXES = new Set([
 	'articles',
 	'authors',
+	'for',
 	'originals',
 	'quotes',
 	'rss',

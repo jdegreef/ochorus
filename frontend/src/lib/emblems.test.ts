@@ -3,6 +3,7 @@ import { EMBLEM_ART, emblemHue, MIN_ACCENT_SATURATION, type EmblemName } from '.
 import {
 	TOPIC_META,
 	PLAN_META,
+	FOR_META,
 	SERMON_EMBLEMS,
 	FALLBACK_POOL,
 	fallbackEmblem,
@@ -34,10 +35,11 @@ describe('curated assignments', () => {
 	const curated: Array<[string, EmblemName]> = [
 		...Object.entries(TOPIC_META).map(([slug, m]) => [slug, m.emblem] as [string, EmblemName]),
 		...Object.entries(PLAN_META).map(([slug, m]) => [slug, m.emblem] as [string, EmblemName]),
+		...Object.entries(FOR_META).map(([slug, m]) => [slug, m.emblem] as [string, EmblemName]),
 		...Object.entries(SERMON_EMBLEMS)
 	];
 
-	it('gives every topic, plan and sermon its own unique emblem', () => {
+	it('gives every topic, plan, group and sermon its own unique emblem', () => {
 		const used = curated.map(([, emblem]) => emblem);
 		expect(new Set(used).size, 'two catalogue entries share an emblem').toBe(used.length);
 	});

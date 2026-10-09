@@ -125,6 +125,24 @@ export const SERIES_META: Record<string, { accent: string; emblem: EmblemName }>
 	'real-questions': { accent: '#6a52b0', emblem: 'raised-lantern' } // a lamp for the questions in the dark
 };
 
+/**
+ * Per-group visual identity for the "Ochorus for …" pages ($lib/forLinks):
+ * the hero's wash, its emblem chip, the /for/ index card and the share card
+ * (scripts/generate-for-og.mjs). Same shape again; one key per FOR_LINKS slug
+ * (forPages.test.ts holds the two in step).
+ */
+export const FOR_META: Record<string, { accent: string; emblem: EmblemName }> = {
+	churches: { accent: '#b0603a', emblem: 'village-church' }, // the church on the hill
+	'small-groups': { accent: '#2a8a7a', emblem: 'kindred-flames' }, // where two or three are gathered
+	youth: { accent: '#d4682a', emblem: 'summit-flag' }, // the climb ahead of them
+	missionaries: { accent: '#2f6fa8', emblem: 'globe-and-book' }, // the Word carried to the nations
+	chaplains: { accent: '#4a5a95', emblem: 'lamp-in-window' }, // a light kept in the night
+	'bible-colleges': { accent: '#6a4a8f', emblem: 'scroll-and-quill' }, // the sources themselves
+	schools: { accent: '#3f8f4f', emblem: 'slate-and-apple' }, // the classroom
+	homeschool: { accent: '#b8862e', emblem: 'lit-cottage' }, // the lamp in the kitchen window
+	parents: { accent: '#c25a7a', emblem: 'sheltered-nest' } // as a hen gathers her chicks
+};
+
 // ── Fallbacks ───────────────────────────────────────────────────────────────
 // New content lands before anyone curates art for it; a stable hash-pick from
 // a small generic pool keeps it looking finished until someone does.

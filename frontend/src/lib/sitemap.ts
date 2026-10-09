@@ -53,7 +53,7 @@ import { shareImage } from '$lib/coverArt';
 import { absUrl } from '$lib/seo';
 import { xmlEscape } from '$lib/xml';
 import { ORIGINALS_PATH, ORIGINALS_SLUG } from '$lib/originals';
-import { FOR_LINKS, forPath } from '$lib/forLinks';
+import { FOR_INDEX, FOR_LINKS, forPath } from '$lib/forLinks';
 import { AUDIENCE_HUBS } from '$lib/audienceHub';
 import { hubLanguages } from '$lib/audienceHubData';
 import { APP_ONLY } from '$lib/robots';
@@ -508,6 +508,7 @@ async function build(): Promise<SitemapData> {
 	// The "Ochorus for …" pages ($lib/forLinks): English-only, like the quotes
 	// index — their copy is English content, so each has one URL. Undated: the
 	// copy lives in the frontend, and no API row says when it last changed.
+	pages.push({ byLocale: new Map([['en', FOR_INDEX]]) });
 	for (const l of FOR_LINKS) pages.push({ byLocale: new Map([['en', forPath(l.slug)]]) });
 
 	// The house imprint's shelf, in each advertised locale that has one of its
