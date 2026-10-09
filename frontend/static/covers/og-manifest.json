@@ -4728,6 +4728,36 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"es/growing-in-wisdom": {
+			"ground": "ca9f1b871b66b4ac22e31729fc393b90215dca47648850a4944cce6cedd5f59f",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[157, 267, 443, 343],
+					[157, 333, 443, 409]
+				],
+				"subtitle": [
+					[168, 467, 432, 495],
+					[174, 495, 426, 523]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				272,
+				523
+			]
+		},
 		"es/he-holds-my-tomorrows": {
 			"ground": "24edaf7af3dbc0d5fe0c66fc1d2bb664ba517d2bdbe338079d8698ff230b1090",
 			"style": "lettered",
