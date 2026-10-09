@@ -311,6 +311,9 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'corrie-ten-boom-a-life-children': 'young',
 	'c-s-lewis-a-life-children': 'young',
 	'elisabeth-elliot-a-life-children': 'young',
+	'amy-carmichael-a-life-children': 'young',
+	'david-livingstone-a-life-children': 'young',
+	'c-t-studd-a-life-children': 'young',
 	// A series, not an audience: the Key Teachings are Ochorus' own companions,
 	// so every volume wears the imprint's face rather than its writer's century
 	// (see coverLayouts.BOOK_LAYOUT for the other half of the series look).
@@ -359,6 +362,9 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'john-hyde-a-life': 'house',
 	'corrie-ten-boom-a-life': 'house',
 	'mary-slessor-a-life': 'house',
+	'amy-carmichael-a-life': 'house',
+	'david-livingstone-a-life': 'house',
+	'c-t-studd-a-life': 'house',
 	'samuel-ajayi-crowther-a-life': 'house',
 	'pandita-ramabai-a-life': 'house',
 	'c-s-lewis-a-life': 'house',

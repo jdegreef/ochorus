@@ -114,6 +114,9 @@ EXPORT_PILOT = frozenset({
     ("corrie-ten-boom-a-life-children", "en"),
     ("c-s-lewis-a-life-children", "en"),
     ("elisabeth-elliot-a-life-children", "en"),
+    ("amy-carmichael-a-life-children", "en"),
+    ("david-livingstone-a-life-children", "en"),
+    ("c-t-studd-a-life-children", "en"),
     ("samuel-ajayi-crowther-a-life-teens", "en"),
     # Their translations. Still imprint-authored (the parent author is kept), so
     # still no About the Author page and no export bio in any language; each
@@ -160,6 +163,9 @@ EXPORT_PILOT = frozenset({
     ("mary-slessor-a-life-teens", "en"),
     ("pandita-ramabai-a-life-teens", "en"),
     ("john-hyde-a-life-teens", "en"),
+    ("amy-carmichael-a-life-teens", "en"),
+    ("david-livingstone-a-life-teens", "en"),
+    ("c-t-studd-a-life-teens", "en"),
     ("watchman-nee-a-life-teens", "en"),
     ("real-questions-2", "en"),
     # The other Ochorus Originals in English: Key Teachings, Portraits of Courage
@@ -210,6 +216,9 @@ EXPORT_PILOT = frozenset({
     ("key-teachings-of-r-a-torrey", "en"),
     ("key-teachings-of-richard-baxter", "en"),
     ("key-teachings-of-watchman-nee", "en"),
+    ("amy-carmichael-a-life", "en"),
+    ("c-t-studd-a-life", "en"),
+    ("david-livingstone-a-life", "en"),
     ("mary-slessor-a-life", "en"),
     ("men-and-women-who-gave-everything-2", "en"),
     ("men-of-prayer-2", "en"),

@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "c-t-studd-a-life-children",
+  "language": "en",
+  "title": "C. T. Studd (For Children)",
+  "subtitle": "",
+  "cover_byline": "C. T. Studd",
+  "description": "The true story of Charlie Studd, a rich boy who played cricket for England in the match that gave the world “the Ashes,” then gave away his fortune and went to China, India and, at fifty-two, the heart of Africa, where Congolese Christians carried the good news through the forest. This children’s edition retells his life in short chapters made to be read aloud: a Bible verse, one part of his story, one thing it means for you, and a short prayer, with questions to talk about together.",
+  "qa": [
+   {
+    "question": "What is C. T. Studd (For Children) about?",
+    "answer": "It is a children’s version of the full-length biography of C. T. Studd. It tells how a rich boy who loved cricket played for England, gave away his fortune to follow Jesus, worked in China and India, and at fifty-two went to the Congo, in the middle of Africa, where a great church grew in the forest."
+   },
+   {
+    "question": "Who was C. T. Studd?",
+    "answer": "Charles Thomas Studd, called Charlie, was an English missionary who lived from 1860 to 1931. He played cricket for England in 1882 and 1883, sailed for China in 1885 as one of the Cambridge Seven, gave away almost all of his inheritance, was a pastor in India, and in 1913 went to the north-east of the Congo. The mission he started there became WEC International, and the church that grew from it is led today by Congolese Christians."
+   },
+   {
+    "question": "How is each chapter set out?",
+    "answer": "Every chapter is short and made to be read aloud. It begins with a Bible verse, tells one part of Charlie’s story, shows one simple thing it means for you, and ends with a short prayer. Three questions follow, to talk about together."
+   },
+   {
+    "question": "Is this book too sad for children?",
+    "answer": "Some parts are sad. Charlie and Priscilla lost two baby sons, they lived apart for many years, and Charlie was often ill. The book tells these things gently, without frightening detail. Above all it is a happy story of a man who gave everything to Jesus with joy, and of the Congolese and Chinese Christians who carried the good news to their own people."
+   },
+   {
+    "question": "Are the stories true?",
+    "answer": "Yes. They come from the full-length biography, which is built on records such as the cricket scores and the reports of the Cambridge Seven, and on what his family and friends remembered. When a story comes only from family memory, like his last word, “Hallelujah,” the book says so. It also says plainly that the famous lines “Only one life” were lines he loved, not lines he wrote."
+   },
+   {
+    "question": "Who is this book for?",
+    "answer": "It is for children, to be read aloud by a grown-up or read by an older child alone. There is also a teen edition, and the full-length biography for older readers."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of the Ochorus biography C. T. Studd, from the Portraits of Courage series. The telling is our own, free to read and share.",
+  "cover_url": "/covers/art/c-t-studd-a-life-children.jpg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/c-t-studd-a-life-children.pdf?download=c-t-studd-a-life-children.pdf",
+  "cover_color": "",
+  "sort_order": 167,
+  "is_published": true,
+  "created_at": "2026-10-09T00:00:00Z",
+  "updated_at": "2026-10-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "en"
+  ],
+  "order": 1,
+  "title": "A Boy Called Charlie",
+  "body_html": "<blockquote>“Every good gift and every perfect gift is from above.” — from James 1</blockquote> <p>On 2 December 1860 a baby boy was born in Spratton, a village in the middle of England. His name was Charles Thomas Studd. His family called him Charlie. When he grew up, people all over the world would know him by his first two letters: C. T.</p> <p>Charlie’s family was very rich. His father, Edward, had made a fortune in India by growing a plant called indigo, which makes a deep blue dye. The hard work in the fields was done by Indian farmers, who were often treated unfairly. Charlie did not think about that when he was small. But one day he would give his share of that money away, and some of it would go back to India.</p> <p>When Charlie was ten, the family moved into a huge house called Tedworth House. His father loved horses. One of his racehorses, Salamander, had won the Grand National, the most famous horse race in England. At Tedworth he made a racecourse for his horses and a cricket ground for his boys.</p> <p>Charlie had five brothers, one sister and a big half-brother too. The boys played cricket whenever they could. Charlie and his older brothers, Kynaston and George, all went to a famous school called Eton, and all three played in the school’s cricket team. The people who wrote about Charlie’s life say that in his last year there he was the team’s captain. He was tall, cheerful and well liked, and he was already one of the best young cricketers in England.</p> <p>Charlie had so many good things: a father who loved him, brothers to play with, and a wonderful gift for games. The Bible says that every good gift comes from God. Your gifts come from God too, whether you are good at running, drawing, singing or being kind. God gives them because he loves you, and he is glad when you use them for him.</p> <p><em>Dear God, thank you for all the good gifts you have given me. Help me to remember that they come from you, and to use them for you. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Where did the Studd family’s money come from?",
+    "answer": "From India, where Charlie’s father grew indigo, a plant that makes blue dye. Indian farmers did the hard work in the fields, and they were often treated unfairly."
+   },
+   {
+    "question": "What did Charlie’s father make for his boys at Tedworth House?",
+    "answer": "A cricket ground. He also made a racecourse for his horses."
+   },
+   {
+    "question": "What is one good gift God has given you?",
+    "answer": "Any honest answer is good here. The chapter’s point is that every good gift comes from God, and he is glad when we use our gifts for him."
+   }
+  ],
+  "body_text": "“Every good gift and every perfect gift is from above.” — from James 1 On 2 December 1860 a baby boy was born in Spratton, a village in the middle of England. His name was Charles Thomas Studd. His family called him Charlie. When he grew up, people all over the world would know him by his first two letters: C. T. Charlie’s family was very rich. His father, Edward, had made a fortune in India by growing a plant called indigo, which makes a deep blue dye. The hard work in the fields was done by Indian farmers, who were often treated unfairly. Charlie did not think about that when he was small. But one day he would give his share of that money away, and some of it would go back to India. When Charlie was ten, the family moved into a huge house called Tedworth House. His father loved horses. One of his racehorses, Salamander, had won the Grand National, the most famous horse race in England. At Tedworth he made a racecourse for his horses and a cricket ground for his boys. Charlie had five brothers, one sister and a big half-brother too. The boys played cricket whenever they could. Charlie and his older brothers, Kynaston and George, all went to a famous school called Eton, and all three played in the school’s cricket team. The people who wrote about Charlie’s life say that in his last year there he was the team’s captain. He was tall, cheerful and well liked, and he was already one of the best young cricketers in England. Charlie had so many good things: a father who loved him, brothers to play with, and a wonderful gift for games. The Bible says that every good gift comes from God. Your gifts come from God too, whether you are good at running, drawing, singing or being kind. God gives them because he loves you, and he is glad when you use them for him. Dear God, thank you for all the good gifts you have given me. Help me to remember that they come from you, and to use them for you. Amen.",
+  "word_count": 361
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "en"
+  ],
+  "order": 2,
+  "title": "The Father Who Sold His Horses",
+  "body_html": "<blockquote>“Believe on the Lord Jesus Christ, and thou shalt be saved, and thy house.” — from Acts 16</blockquote> <p>When Charlie was a schoolboy, a famous American preacher named D. L. Moody came to London. Thousands of people went to hear him. A friend talked Charlie’s father into going to one of the meetings. He did not expect much, but he came home a changed man. He had given his life to Jesus. It was probably in 1875, though people remember different years.</p> <p>Everything changed at Tedworth. Edward Studd sold his racehorses, keeping just one each for his older sons to ride. He cleared out the great hall, filled it with chairs, and invited preachers to come and tell the neighbours about Jesus.</p> <p>Charlie and his brothers were embarrassed! When they came home from school, their father kept asking whether they were saved. The boys tried hard never to be alone with him. But Edward did not give up. He kept praying for his sons. In 1877, after only two or three years as a Christian, he died.</p> <p>The next summer, in 1878, a Christian friend of their father’s came to stay. Nobody is sure what his name was. He found Charlie on his own and asked if he was a Christian. Charlie said he believed in Jesus as much as anybody. Then the visitor showed him God’s promise that whoever believes in Jesus has eternal life. If Charlie believed it, he should thank God for it.</p> <p>Charlie saw that if God had promised it, it must be true. He knelt down and thanked God, and joy and peace came into his heart. The family remembered that Kynaston and George decided to follow Jesus that same day, each one without telling the others!</p> <p>Edward did not live to see it, but God answered his prayers. When you pray for your family, God hears you, even if you have to wait a long time for the answer.</p> <p><em>Dear God, thank you for the people who pray for me. Help me to pray for my family and friends, and to trust you to answer. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did Charlie’s father do after he became a Christian?",
+    "answer": "He sold his racehorses, kept only one each for his older sons to ride, and filled the great hall at Tedworth with chairs so that preachers could tell the neighbours about Jesus."
+   },
+   {
+    "question": "What promise did the visitor show Charlie in 1878?",
+    "answer": "That whoever believes in Jesus has eternal life. Charlie believed it, knelt down and thanked God."
+   },
+   {
+    "question": "Who is someone you could pray for this week?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God hears our prayers for our families and friends, even when the answer takes a long time."
+   }
+  ],
+  "body_text": "“Believe on the Lord Jesus Christ, and thou shalt be saved, and thy house.” — from Acts 16 When Charlie was a schoolboy, a famous American preacher named D. L. Moody came to London. Thousands of people went to hear him. A friend talked Charlie’s father into going to one of the meetings. He did not expect much, but he came home a changed man. He had given his life to Jesus. It was probably in 1875, though people remember different years. Everything changed at Tedworth. Edward Studd sold his racehorses, keeping just one each for his older sons to ride. He cleared out the great hall, filled it with chairs, and invited preachers to come and tell the neighbours about Jesus. Charlie and his brothers were embarrassed! When they came home from school, their father kept asking whether they were saved. The boys tried hard never to be alone with him. But Edward did not give up. He kept praying for his sons. In 1877, after only two or three years as a Christian, he died. The next summer, in 1878, a Christian friend of their father’s came to stay. Nobody is sure what his name was. He found Charlie on his own and asked if he was a Christian. Charlie said he believed in Jesus as much as anybody. Then the visitor showed him God’s promise that whoever believes in Jesus has eternal life. If Charlie believed it, he should thank God for it. Charlie saw that if God had promised it, it must be true. He knelt down and thanked God, and joy and peace came into his heart. The family remembered that Kynaston and George decided to follow Jesus that same day, each one without telling the others! Edward did not live to see it, but God answered his prayers. When you pray for your family, God hears you, even if you have to wait a long time for the answer. Dear God, thank you for the people who pray for me. Help me to pray for my family and friends, and to trust you to answer. Amen.",
+  "word_count": 352
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "en"
+  ],
+  "order": 3,
+  "title": "Playing for England",
+  "body_html": "<blockquote>“But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.” — from Matthew 6</blockquote> <p>In 1879 Charlie went to Cambridge University. He studied a little and played cricket a lot! In 1883 he became captain of the Cambridge team, just as Kynaston and George had been before him.</p> <p>The summer of 1882 was his best ever. A team from Australia came to England. Its fast bowler, Fred Spofforth, was so frightening that the newspapers nicknamed him the Demon. But Cambridge beat the Australians, and Charlie scored 118 runs. That August he scored a thousand runs and took a hundred wickets in one season. Only one man had done that before: W. G. Grace, the most famous cricketer in the world. And the records say Charlie’s hundredth wicket was Grace himself!</p> <p>At twenty-one, Charlie was chosen to play for England against Australia at the Oval in London. It was a nail-biting game. England needed only 85 runs to win, but Spofforth kept taking wickets. Charlie was sent in near the end. He stood ready at his end of the pitch, but before he had faced a single ball, the last English batsman was out. Australia had won by seven runs.</p> <p>A few days later a newspaper made a joke. It said that English cricket had died, and that its ashes would be taken to Australia. That winter Charlie and George sailed to Australia with an English team that set out to win the ashes back, and they did. Matches between England and Australia are still called the Ashes today.</p> <p>But something was wrong. Charlie was a Christian, and he kept it to himself. He said later that cricket had taken first place in his life, and that he had given God almost nothing. For about six years his faith stayed in a quiet corner.</p> <p>Jesus said, Seek God’s kingdom first. Games are good, and God is glad when we play and enjoy them. But nothing, not even the thing we love most, should take God’s place in our hearts.</p> <p><em>Dear God, thank you for games and fun. Please help me to put you first in my life, before everything else. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What happened to Charlie in the famous match at the Oval?",
+    "answer": "He was sent in near the end, but the last English batsman was out before Charlie faced a single ball, and Australia won by seven runs."
+   },
+   {
+    "question": "How did the Ashes get their name?",
+    "answer": "A newspaper joked that English cricket had died and that its ashes would be taken to Australia. Charlie’s team went to Australia that winter to win them back."
+   },
+   {
+    "question": "Is there something you love that could take God’s place?",
+    "answer": "Any honest answer is good here. The chapter’s point is that the things we enjoy are good gifts, but God should always come first."
+   }
+  ],
+  "body_text": "“But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you.” — from Matthew 6 In 1879 Charlie went to Cambridge University. He studied a little and played cricket a lot! In 1883 he became captain of the Cambridge team, just as Kynaston and George had been before him. The summer of 1882 was his best ever. A team from Australia came to England. Its fast bowler, Fred Spofforth, was so frightening that the newspapers nicknamed him the Demon. But Cambridge beat the Australians, and Charlie scored 118 runs. That August he scored a thousand runs and took a hundred wickets in one season. Only one man had done that before: W. G. Grace, the most famous cricketer in the world. And the records say Charlie’s hundredth wicket was Grace himself! At twenty-one, Charlie was chosen to play for England against Australia at the Oval in London. It was a nail-biting game. England needed only 85 runs to win, but Spofforth kept taking wickets. Charlie was sent in near the end. He stood ready at his end of the pitch, but before he had faced a single ball, the last English batsman was out. Australia had won by seven runs. A few days later a newspaper made a joke. It said that English cricket had died, and that its ashes would be taken to Australia. That winter Charlie and George sailed to Australia with an English team that set out to win the ashes back, and they did. Matches between England and Australia are still called the Ashes today. But something was wrong. Charlie was a Christian, and he kept it to himself. He said later that cricket had taken first place in his life, and that he had given God almost nothing. For about six years his faith stayed in a quiet corner. Jesus said, Seek God’s kingdom first. Games are good, and God is glad when we play and enjoy them. But nothing, not even the thing we love most, should take God’s place in our hearts. Dear God, thank you for games and fun. Please help me to put you first in my life, before everything else. Amen.",
+  "word_count": 370
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "en"
+  ],
+  "order": 4,
+  "title": "At George’s Bedside",
+  "body_html": "<blockquote>“This sickness is not unto death, but for the glory of God.” — from John 11</blockquote> <p>In November 1883 Charlie’s brother George became terribly ill. For some days the doctors did not think he would live. Charlie sat beside his bed, and he began to think hard.</p> <p>George was famous. Thousands of people had cheered him. But now none of his runs and none of his fame could help him at all. Only one thing mattered: was he ready to meet God? And Charlie felt ashamed. He had known Jesus for five years, but he had lived as if cricket mattered most.</p> <p>George got better. The family believed God had answered their prayers. But Charlie never forgot what he had thought about at that bedside.</p> <p>That winter Mr Moody, the preacher who had helped his father, was back in London. Charlie went to hear him, and the joy he had felt at Tedworth came back. This time he did not keep it to himself. He told his cricket friends about Jesus and invited them to the meetings. And he asked God what to do with his life.</p> <p>In 1884 he met Hudson Taylor, the leader of the China Inland Mission. Its missionaries went deep into China, to places where hardly anyone had heard of Jesus. Charlie offered to go. His family was very upset. His mother begged him to stay, and Kynaston thought he was getting carried away. It was hard for Charlie to make the people he loved so sad. But he believed God was calling him, and he told them he must go. In time, most of them came round.</p> <p>Sometimes God uses a hard time to wake us up and show us what really matters. If you are going through a hard time, God has not forgotten you. He is with you, and he can use even this for good.</p> <p><em>Dear God, when hard things happen, help me to remember what really matters. Thank you that you are always with me. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did Charlie think about while George was so ill?",
+    "answer": "That fame could not help George at all, and that the only thing that mattered was being ready to meet God. He felt ashamed that he had lived as if cricket mattered most."
+   },
+   {
+    "question": "Why was Charlie’s family upset in 1884?",
+    "answer": "Because he had offered to go to China with the China Inland Mission. His mother begged him to stay."
+   },
+   {
+    "question": "Has a hard time ever helped you see what really matters?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God is with us in hard times and can use them to show us what is most important."
+   }
+  ],
+  "body_text": "“This sickness is not unto death, but for the glory of God.” — from John 11 In November 1883 Charlie’s brother George became terribly ill. For some days the doctors did not think he would live. Charlie sat beside his bed, and he began to think hard. George was famous. Thousands of people had cheered him. But now none of his runs and none of his fame could help him at all. Only one thing mattered: was he ready to meet God? And Charlie felt ashamed. He had known Jesus for five years, but he had lived as if cricket mattered most. George got better. The family believed God had answered their prayers. But Charlie never forgot what he had thought about at that bedside. That winter Mr Moody, the preacher who had helped his father, was back in London. Charlie went to hear him, and the joy he had felt at Tedworth came back. This time he did not keep it to himself. He told his cricket friends about Jesus and invited them to the meetings. And he asked God what to do with his life. In 1884 he met Hudson Taylor, the leader of the China Inland Mission. Its missionaries went deep into China, to places where hardly anyone had heard of Jesus. Charlie offered to go. His family was very upset. His mother begged him to stay, and Kynaston thought he was getting carried away. It was hard for Charlie to make the people he loved so sad. But he believed God was calling him, and he told them he must go. In time, most of them came round. Sometimes God uses a hard time to wake us up and show us what really matters. If you are going through a hard time, God has not forgotten you. He is with you, and he can use even this for good. Dear God, when hard things happen, help me to remember what really matters. Thank you that you are always with me. Amen.",
+  "word_count": 335
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "en"
+  ],
+  "order": 5,
+  "title": "Seven Young Men",
+  "body_html": "<blockquote>“Whom shall I send, and who will go for us? Then said I, Here am I; send me.” — from Isaiah 6</blockquote> <p>Charlie was not the only one. By the end of 1884 seven young men had offered to go to China with the China Inland Mission. Most of them had studied at Cambridge. Some had rowed for Cambridge, some were army officers, one was a young minister, and one was Charlie, the England cricketer. People called them the Cambridge Seven.</p> <p>Everybody was amazed. Why would rich, famous young men give up so much to go to a faraway land? Before they left, the Seven spoke at meetings in universities in England and Scotland. Charlie was not a great speaker, but he told the students simply that he had loved cricket and had found something far better in Jesus. Cricket would not last, he said, but living for Jesus would. Many students went home asking whether God was calling them too.</p> <p>On 4 February 1885 a crowd of about three thousand people packed a great hall in London to say goodbye. The next morning the Seven set off for China. Their story crossed the sea to America too, and helped many students there decide to become missionaries.</p> <p>On 18 March they reached Shanghai. Within days they had put on Chinese clothes: long gowns and cloth shoes. They shaved the front of their heads and wore their hair in a long plait at the back, the way Chinese men did then. Hudson Taylor taught that missionaries should come as guests and learners, not as bosses.</p> <p>So for the first time in his life, Charlie was a beginner. The Chinese language was very hard for him. He could not even ask for a cup of tea without help, and every child in the street knew more than he did!</p> <p>God still asks, Who will go for me? You do not have to be famous to answer. Wherever you are, you can say, Here I am, God. And you can be a good learner, like Charlie, who listens to others and is not too proud to start at the beginning.</p> <p><em>Dear God, here I am. Please use me, and help me to be humble and ready to learn. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Who were the Cambridge Seven?",
+    "answer": "Seven young men, most of them from Cambridge, who offered to go to China with the China Inland Mission in 1885. Charlie was one of them."
+   },
+   {
+    "question": "Why did the Seven wear Chinese clothes?",
+    "answer": "Hudson Taylor taught that missionaries should come as guests and learners, not as bosses, so they dressed the way Chinese people did."
+   },
+   {
+    "question": "What could you say to God, like Isaiah did?",
+    "answer": "Any honest answer is good here. The chapter’s point is that anyone, famous or not, can say, Here I am, God, and be ready to learn and to serve."
+   }
+  ],
+  "body_text": "“Whom shall I send, and who will go for us? Then said I, Here am I; send me.” — from Isaiah 6 Charlie was not the only one. By the end of 1884 seven young men had offered to go to China with the China Inland Mission. Most of them had studied at Cambridge. Some had rowed for Cambridge, some were army officers, one was a young minister, and one was Charlie, the England cricketer. People called them the Cambridge Seven. Everybody was amazed. Why would rich, famous young men give up so much to go to a faraway land? Before they left, the Seven spoke at meetings in universities in England and Scotland. Charlie was not a great speaker, but he told the students simply that he had loved cricket and had found something far better in Jesus. Cricket would not last, he said, but living for Jesus would. Many students went home asking whether God was calling them too. On 4 February 1885 a crowd of about three thousand people packed a great hall in London to say goodbye. The next morning the Seven set off for China. Their story crossed the sea to America too, and helped many students there decide to become missionaries. On 18 March they reached Shanghai. Within days they had put on Chinese clothes: long gowns and cloth shoes. They shaved the front of their heads and wore their hair in a long plait at the back, the way Chinese men did then. Hudson Taylor taught that missionaries should come as guests and learners, not as bosses. So for the first time in his life, Charlie was a beginner. The Chinese language was very hard for him. He could not even ask for a cup of tea without help, and every child in the street knew more than he did! God still asks, Who will go for me? You do not have to be famous to answer. Wherever you are, you can say, Here I am, God. And you can be a good learner, like Charlie, who listens to others and is not too proud to start at the beginning. Dear God, here I am. Please use me, and help me to be humble and ready to learn. Amen.",
+  "word_count": 376
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "en"
+  ],
+  "order": 6,
+  "title": "Treasure in a Field",
+  "body_html": "<blockquote>“It is more blessed to give than to receive.” — from Acts 20</blockquote> <p>Charlie’s father had left each of his sons a large share of his fortune. Charlie would receive his when he turned twenty-five. That birthday came in China, on 2 December 1885.</p> <p>Charlie had been reading what Jesus said to a rich young man: go and sell what you have, give to the poor, and come and follow me. Most people thought Jesus did not mean that for them. Charlie believed Jesus meant it for him.</p> <p>On 13 January 1887, the day most often remembered, Charlie began writing cheques, before he even knew exactly how much money he had! In the end he gave away almost all of it, about twenty-five or twenty-nine thousand pounds. In those days that was a huge fortune, worth millions today.</p> <p>He chose carefully. Five thousand pounds went to Mr Moody, who had helped his father and himself. Five thousand went to George Müller in Bristol, who cared for thousands of orphans and asked nobody but God for money. Five thousand went to George Holland, who helped very poor families in London. And five thousand went to Frederick Booth-Tucker, who led the Salvation Army in India and lived simply among the poor there. Charlie kept back a smaller sum, about three thousand four hundred pounds, which was meant for a wife one day.</p> <p>Jesus once told a story about a man who found treasure hidden in a field. He was so full of joy that he sold everything he had to buy that field. Charlie felt just like that man. Giving his money away did not feel like losing something. It made him free and glad, and he never wished he had it back.</p> <p>You may not have a fortune, but you can still give: your toys, your time, your help, your kindness. Jesus said that giving makes us even happier than getting. Try it and see!</p> <p><em>Dear Jesus, you are better than any treasure. Help me to give gladly to others, the way you gave yourself for me. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did Charlie do with his fortune?",
+    "answer": "He gave almost all of it away, to Mr Moody, George Müller, George Holland, Frederick Booth-Tucker and other Christian work."
+   },
+   {
+    "question": "Why was Charlie like the man in Jesus’ story about the treasure?",
+    "answer": "Because he gave everything up with joy. He did not feel he had lost anything, because Jesus was worth more than all of it."
+   },
+   {
+    "question": "What is something you could give to someone this week?",
+    "answer": "Any honest answer is good here. The chapter’s point is that giving gladly makes us happy, because it is more blessed to give than to receive."
+   }
+  ],
+  "body_text": "“It is more blessed to give than to receive.” — from Acts 20 Charlie’s father had left each of his sons a large share of his fortune. Charlie would receive his when he turned twenty-five. That birthday came in China, on 2 December 1885. Charlie had been reading what Jesus said to a rich young man: go and sell what you have, give to the poor, and come and follow me. Most people thought Jesus did not mean that for them. Charlie believed Jesus meant it for him. On 13 January 1887, the day most often remembered, Charlie began writing cheques, before he even knew exactly how much money he had! In the end he gave away almost all of it, about twenty-five or twenty-nine thousand pounds. In those days that was a huge fortune, worth millions today. He chose carefully. Five thousand pounds went to Mr Moody, who had helped his father and himself. Five thousand went to George Müller in Bristol, who cared for thousands of orphans and asked nobody but God for money. Five thousand went to George Holland, who helped very poor families in London. And five thousand went to Frederick Booth-Tucker, who led the Salvation Army in India and lived simply among the poor there. Charlie kept back a smaller sum, about three thousand four hundred pounds, which was meant for a wife one day. Jesus once told a story about a man who found treasure hidden in a field. He was so full of joy that he sold everything he had to buy that field. Charlie felt just like that man. Giving his money away did not feel like losing something. It made him free and glad, and he never wished he had it back. You may not have a fortune, but you can still give: your toys, your time, your help, your kindness. Jesus said that giving makes us even happier than getting. Try it and see! Dear Jesus, you are better than any treasure. Help me to give gladly to others, the way you gave yourself for me. Amen.",
+  "word_count": 347
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "en"
+  ],
+  "order": 7,
+  "title": "Scilla",
+  "body_html": "<blockquote>“Two are better than one; because they have a good reward for their labour.” — from Ecclesiastes 4</blockquote> <p>In 1864 a baby girl named Priscilla Livingstone Stewart was born near the city of Belfast, in Ireland. Her friends called her Scilla. She grew up warm, quick and full of fun.</p> <p>As a young woman she gave her life to Jesus and offered to go to China. Hudson Taylor and his friends had prayed for a hundred new missionaries to be sent out in the year 1887. By the end of that year, a hundred and two had sailed! Priscilla was one of them. She went to live with three other young women in a town beside a great lake, to tell Chinese women about Jesus.</p> <p>Charlie fell deeply in love with her. Later on, they both laughed about who had asked whom to get married. Charlie always said that she had asked him. Priscilla always said that he had asked her!</p> <p>Early in 1888 they were engaged. Then Priscilla became very ill, and Charlie travelled to be with her, even though he was getting over an illness himself. That spring they were married. Most accounts say the wedding was in the city of Tianjin. A Chinese pastor married them, and it is said that they wore their ordinary Chinese clothes.</p> <p>Before the wedding, Charlie gave Priscilla the money he had kept for her. But Priscilla wanted to start married life the way he had, trusting only God. So she gave all of it to the Salvation Army! The two of them began their marriage with nothing in the bank, and they never said they were sorry.</p> <p>The Bible says two are better than one, because they can help each other. Charlie and Priscilla helped each other for forty years. God gives us families and friends so that we do not have to be brave alone.</p> <p><em>Dear God, thank you for my family and my friends. Help us to help each other and to trust you together. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "How did Priscilla come to China?",
+    "answer": "She was one of the hundred and two new missionaries sent out by the China Inland Mission in 1887, after Hudson Taylor and his friends prayed for a hundred."
+   },
+   {
+    "question": "What did Priscilla do with the money Charlie gave her?",
+    "answer": "She gave all of it to the Salvation Army, because she wanted to start married life trusting only God, as Charlie had done."
+   },
+   {
+    "question": "Who helps you, and whom do you help?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God gives us families and friends so that we can help each other."
+   }
+  ],
+  "body_text": "“Two are better than one; because they have a good reward for their labour.” — from Ecclesiastes 4 In 1864 a baby girl named Priscilla Livingstone Stewart was born near the city of Belfast, in Ireland. Her friends called her Scilla. She grew up warm, quick and full of fun. As a young woman she gave her life to Jesus and offered to go to China. Hudson Taylor and his friends had prayed for a hundred new missionaries to be sent out in the year 1887. By the end of that year, a hundred and two had sailed! Priscilla was one of them. She went to live with three other young women in a town beside a great lake, to tell Chinese women about Jesus. Charlie fell deeply in love with her. Later on, they both laughed about who had asked whom to get married. Charlie always said that she had asked him. Priscilla always said that he had asked her! Early in 1888 they were engaged. Then Priscilla became very ill, and Charlie travelled to be with her, even though he was getting over an illness himself. That spring they were married. Most accounts say the wedding was in the city of Tianjin. A Chinese pastor married them, and it is said that they wore their ordinary Chinese clothes. Before the wedding, Charlie gave Priscilla the money he had kept for her. But Priscilla wanted to start married life the way he had, trusting only God. So she gave all of it to the Salvation Army! The two of them began their marriage with nothing in the bank, and they never said they were sorry. The Bible says two are better than one, because they can help each other. Charlie and Priscilla helped each other for forty years. God gives us families and friends so that we do not have to be brave alone. Dear God, thank you for my family and my friends. Help us to help each other and to trust you together. Amen.",
+  "word_count": 337
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "en"
+  ],
+  "order": 8,
+  "title": "Sowing in Tears",
+  "body_html": "<blockquote>“They that sow in tears shall reap in joy.” — from Psalm 126</blockquote> <p>After their wedding, Charlie and Priscilla went to live in a city called Lungan, in the province of Shanxi. The people there did not want foreigners. Some shouted insults, and sometimes there were threats. Many Chinese people had good reason to be suspicious, because foreign countries had won wars against China and forced it to let in their traders and opium, a harmful drug.</p> <p>Charlie and Priscilla stayed. They lived as simply as their neighbours. Priscilla made friends with the women of the city, whom Charlie could hardly meet at all. Little by little, the anger turned into patience, and then, with some people, into friendship.</p> <p>In that part of China, Chinese Christians ran special homes where people trapped by opium could come to get better, with medicine, care and prayer. The best known of these Christians was Pastor Xi, who had once been trapped by opium himself. The church there was being built by Chinese believers, and some people in Lungan came to know Jesus too. Nobody wrote down the names of the Chinese Christians who worked beside the Studds, but God knows every one of them.</p> <p>Four daughters were born to Charlie and Priscilla in China: Grace, Dorothy, Edith and Pauline. Two baby boys were born too, but they lived only a very short time. It was a deep sorrow for their parents.</p> <p>Charlie had asthma, which made it hard for him to breathe, and both he and Priscilla were often ill. In 1894 they had to go home to England. Before they left, they gave their house in Lungan to the mission so that the work could go on.</p> <p>Sometimes we work hard for God and see only a little happen. The Bible promises that seeds planted with tears will one day bring a harvest of joy. That church lived on through hard times, because Chinese Christians kept going. God is close to us when we are sad, and nothing we do for him is wasted.</p> <p><em>Dear God, when I am sad or tired, please stay close to me. Help me to keep doing what is right, even when I cannot see what will come of it. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "How did the people of Lungan feel about Charlie and Priscilla at first?",
+    "answer": "They did not want foreigners there. Some shouted insults and made threats, but slowly some of them became friends."
+   },
+   {
+    "question": "Who ran the homes where people trapped by opium could get better?",
+    "answer": "Chinese Christians, like Pastor Xi, who had once been trapped by opium himself."
+   },
+   {
+    "question": "Have you ever kept going when something was hard and slow?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God is close to us when we are sad, and what we do for him is never wasted."
+   }
+  ],
+  "body_text": "“They that sow in tears shall reap in joy.” — from Psalm 126 After their wedding, Charlie and Priscilla went to live in a city called Lungan, in the province of Shanxi. The people there did not want foreigners. Some shouted insults, and sometimes there were threats. Many Chinese people had good reason to be suspicious, because foreign countries had won wars against China and forced it to let in their traders and opium, a harmful drug. Charlie and Priscilla stayed. They lived as simply as their neighbours. Priscilla made friends with the women of the city, whom Charlie could hardly meet at all. Little by little, the anger turned into patience, and then, with some people, into friendship. In that part of China, Chinese Christians ran special homes where people trapped by opium could come to get better, with medicine, care and prayer. The best known of these Christians was Pastor Xi, who had once been trapped by opium himself. The church there was being built by Chinese believers, and some people in Lungan came to know Jesus too. Nobody wrote down the names of the Chinese Christians who worked beside the Studds, but God knows every one of them. Four daughters were born to Charlie and Priscilla in China: Grace, Dorothy, Edith and Pauline. Two baby boys were born too, but they lived only a very short time. It was a deep sorrow for their parents. Charlie had asthma, which made it hard for him to breathe, and both he and Priscilla were often ill. In 1894 they had to go home to England. Before they left, they gave their house in Lungan to the mission so that the work could go on. Sometimes we work hard for God and see only a little happen. The Bible promises that seeds planted with tears will one day bring a harvest of joy. That church lived on through hard times, because Chinese Christians kept going. God is close to us when we are sad, and nothing we do for him is wasted. Dear God, when I am sad or tired, please stay close to me. Help me to keep doing what is right, even when I cannot see what will come of it. Amen.",
+  "word_count": 374
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "en"
+  ],
+  "order": 9,
+  "title": "A Notice in Liverpool",
+  "body_html": "<blockquote>“How shall they hear without a preacher?” — from Romans 10</blockquote> <p>Back in England, the Studds had very little money, but family and friends helped them. Charlie spoke at meetings when he was well enough. In 1896 he went to America and spent about eighteen months visiting universities, telling students about Jesus and about the millions who had never heard of him.</p> <p>In 1900 the family moved to Ootacamund, a town high in the cool hills of southern India, and Charlie became the pastor of a church there for about six years. The family was together, and the girls were growing up. Many people would have been glad to stay. But Charlie kept thinking about people who had never heard of Jesus at all. In 1906, ill again, he brought the family home.</p> <p>One day in 1908, walking in the city of Liverpool, Charlie saw a notice outside a hall. Inside, a German missionary named Karl Kumm was talking about Africa. He told of peoples in the middle of Africa who had never heard about Jesus. Traders, hunters and slave-catchers had reached them, but no one had come to tell them the good news.</p> <p>Charlie came out with a question he could not forget. Why had no Christians gone to these people? Because nobody had been sent. And then a second question: why should he not go himself?</p> <p>Most people thought it was a crazy idea. Charlie was forty-seven. He had asthma, he had been ill many times, and he had no money of his own. Priscilla was unwell, and she did not want him to go. But at the end of 1910 he sailed to Africa to see for himself. In the far south of Sudan he learned that in the north-east corner of the Congo lived many people who had hardly heard of Jesus.</p> <p>The Bible asks, How will people hear about Jesus if nobody tells them? You can be someone who tells. You can tell a friend what Jesus means to you, and you can pray for people far away who have never heard of him.</p> <p><em>Dear God, please send people to tell everyone about Jesus. Help me to tell my friends about you too. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Where did the Studd family live from 1900 to 1906?",
+    "answer": "In Ootacamund, a town in the cool hills of southern India, where Charlie was the pastor of a church."
+   },
+   {
+    "question": "What question did Charlie ask himself after hearing Karl Kumm?",
+    "answer": "Why had no Christians gone to the peoples in the middle of Africa? And then, why should he not go himself?"
+   },
+   {
+    "question": "Who could you tell about Jesus?",
+    "answer": "Any honest answer is good here. The chapter’s point is that people can only hear about Jesus if someone tells them, and we can all tell and pray."
+   }
+  ],
+  "body_text": "“How shall they hear without a preacher?” — from Romans 10 Back in England, the Studds had very little money, but family and friends helped them. Charlie spoke at meetings when he was well enough. In 1896 he went to America and spent about eighteen months visiting universities, telling students about Jesus and about the millions who had never heard of him. In 1900 the family moved to Ootacamund, a town high in the cool hills of southern India, and Charlie became the pastor of a church there for about six years. The family was together, and the girls were growing up. Many people would have been glad to stay. But Charlie kept thinking about people who had never heard of Jesus at all. In 1906, ill again, he brought the family home. One day in 1908, walking in the city of Liverpool, Charlie saw a notice outside a hall. Inside, a German missionary named Karl Kumm was talking about Africa. He told of peoples in the middle of Africa who had never heard about Jesus. Traders, hunters and slave-catchers had reached them, but no one had come to tell them the good news. Charlie came out with a question he could not forget. Why had no Christians gone to these people? Because nobody had been sent. And then a second question: why should he not go himself? Most people thought it was a crazy idea. Charlie was forty-seven. He had asthma, he had been ill many times, and he had no money of his own. Priscilla was unwell, and she did not want him to go. But at the end of 1910 he sailed to Africa to see for himself. In the far south of Sudan he learned that in the north-east corner of the Congo lived many people who had hardly heard of Jesus. The Bible asks, How will people hear about Jesus if nobody tells them? You can be someone who tells. You can tell a friend what Jesus means to you, and you can pray for people far away who have never heard of him. Dear God, please send people to tell everyone about Jesus. Help me to tell my friends about you too. Amen.",
+  "word_count": 369
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "en"
+  ],
+  "order": 10,
+  "title": "To the Heart of Africa",
+  "body_html": "<blockquote>“By faith Abraham, when he was called… obeyed; and he went out, not knowing whither he went.” — from Hebrews 11</blockquote> <p>At the end of 1912, Charlie and a few friends started a new mission. They called it the Heart of Africa Mission. Its missionaries would get no pay. They would live simply and trust God for what they needed.</p> <p>Priscilla had not wanted Charlie to go, and it was very hard for her. But soon she did something amazing. Even though she had a weak heart, she ran the whole mission from their home in London. She wrote the letters, looked after the money, found new missionaries and spoke at meetings all over the country. Without her, the mission could not have kept going.</p> <p>Early in 1913 Charlie sailed for Africa. He was fifty-two, and his doctors had advised him not to go. With him went Alfred Buxton, a young man of about twenty-one who gave up training to be a doctor so that he could come. They travelled by ship, train, steamer and on foot, through the lands now called Kenya and Uganda and into the Congo. The journey took about nine months.</p> <p>On 16 October 1913 they reached Niangara, a town on the Uele River. Many peoples lived there, speaking many languages. They had already suffered a great deal. For years the rulers of the Congo had forced people to gather rubber and ivory and had treated them cruelly. The people had good reason to be careful with strangers.</p> <p>Alfred learned the local language quickly and preached in it. Charlie was slower, but he travelled everywhere. Soon they had started four mission stations. At the end of 1914 Priscilla became very ill, and Charlie hurried home. In 1916 he went back to the Congo with his daughter Edith and some new missionaries. As far as anyone knows, he never saw England again.</p> <p>Abraham obeyed God even when he did not know where he was going. Charlie did too. You do not need to know everything that will happen. You can trust God one step at a time.</p> <p><em>Dear God, I do not know everything that will happen to me, but you do. Help me to trust you one step at a time. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Who went with Charlie to Africa in 1913?",
+    "answer": "Alfred Buxton, a young man of about twenty-one who gave up training to be a doctor so that he could go."
+   },
+   {
+    "question": "What did Priscilla do while Charlie was in Africa?",
+    "answer": "She ran the whole mission from their home in London. She wrote letters, looked after the money, found new missionaries and spoke at meetings, even though she had a weak heart."
+   },
+   {
+    "question": "What is something you can trust God with, even if you do not know how it will turn out?",
+    "answer": "Any honest answer is good here. The chapter’s point is that, like Abraham and Charlie, we can trust God one step at a time."
+   }
+  ],
+  "body_text": "“By faith Abraham, when he was called… obeyed; and he went out, not knowing whither he went.” — from Hebrews 11 At the end of 1912, Charlie and a few friends started a new mission. They called it the Heart of Africa Mission. Its missionaries would get no pay. They would live simply and trust God for what they needed. Priscilla had not wanted Charlie to go, and it was very hard for her. But soon she did something amazing. Even though she had a weak heart, she ran the whole mission from their home in London. She wrote the letters, looked after the money, found new missionaries and spoke at meetings all over the country. Without her, the mission could not have kept going. Early in 1913 Charlie sailed for Africa. He was fifty-two, and his doctors had advised him not to go. With him went Alfred Buxton, a young man of about twenty-one who gave up training to be a doctor so that he could come. They travelled by ship, train, steamer and on foot, through the lands now called Kenya and Uganda and into the Congo. The journey took about nine months. On 16 October 1913 they reached Niangara, a town on the Uele River. Many peoples lived there, speaking many languages. They had already suffered a great deal. For years the rulers of the Congo had forced people to gather rubber and ivory and had treated them cruelly. The people had good reason to be careful with strangers. Alfred learned the local language quickly and preached in it. Charlie was slower, but he travelled everywhere. Soon they had started four mission stations. At the end of 1914 Priscilla became very ill, and Charlie hurried home. In 1916 he went back to the Congo with his daughter Edith and some new missionaries. As far as anyone knows, he never saw England again. Abraham obeyed God even when he did not know where he was going. Charlie did too. You do not need to know everything that will happen. You can trust God one step at a time. Dear God, I do not know everything that will happen to me, but you do. Help me to trust you one step at a time. Amen.",
+  "word_count": 376
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "en"
+  ],
+  "order": 11,
+  "title": "The Church in the Forest",
+  "body_html": "<blockquote>“How beautiful are the feet of them that preach the gospel of peace, and bring glad tidings of good things!” — from Romans 10</blockquote> <p>Charlie made his home at a place called Ibambi, in the great Ituri forest, among the Budu people. The mission’s first buildings were put up by Congolese builders, with poles, mud and grass roofs, and Charlie lived in a simple house built in the same local way. He ate local food and worked from early morning until late at night. He loved to preach, and people walked a long way through the forest to hear him.</p> <p>Now comes the most important part of the story. Most of the people who came to know Jesus did not hear about him from Charlie or the other missionaries. They heard from Congolese Christians. These evangelists walked narrow paths through the forest to villages where nobody knew about Jesus. They lived with the people, taught them to read, explained the Bible and gathered little churches.</p> <p>Charlie believed that the Congolese churches should send out their own evangelists and look after them themselves, just as the first churches in the Bible did. And they did! Christians who had very little gave what they could, so that their own messengers could carry the good news to people further away. Most of their names were never written down, but they were the real heroes of the church in the forest.</p> <p>Congolese believers also helped to put the Bible into their own languages. Missionaries could not do it alone. Congolese men and women explained their words and corrected mistakes. Charlie and two other missionaries worked on a translation into Kingwana, a kind of Swahili that many people understood, and in 1930 the books of Luke and Acts were printed in it.</p> <p>His daughters Edith and Pauline came to help too, with their husbands.</p> <p>The Bible says that the feet of people who bring good news are beautiful. The Congolese evangelists had tired, dusty feet, but to God they were beautiful. Your feet can be beautiful too, whenever you go to share God’s love.</p> <p><em>Dear God, thank you for the Congolese Christians who carried the good news through the forest. Make my feet beautiful too, ready to go and share your love. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Who did most of the telling about Jesus in the forest?",
+    "answer": "Congolese Christians. They walked to villages where nobody knew about Jesus, lived with the people, taught them to read and gathered little churches."
+   },
+   {
+    "question": "What part of the Bible was printed in Kingwana in 1930?",
+    "answer": "The books of Luke and Acts. Charlie worked on them with two other missionaries, helped by Congolese speakers."
+   },
+   {
+    "question": "How could your feet be beautiful, like the evangelists’ feet?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God thinks the feet of everyone who carries his good news are beautiful."
+   }
+  ],
+  "body_text": "“How beautiful are the feet of them that preach the gospel of peace, and bring glad tidings of good things!” — from Romans 10 Charlie made his home at a place called Ibambi, in the great Ituri forest, among the Budu people. The mission’s first buildings were put up by Congolese builders, with poles, mud and grass roofs, and Charlie lived in a simple house built in the same local way. He ate local food and worked from early morning until late at night. He loved to preach, and people walked a long way through the forest to hear him. Now comes the most important part of the story. Most of the people who came to know Jesus did not hear about him from Charlie or the other missionaries. They heard from Congolese Christians. These evangelists walked narrow paths through the forest to villages where nobody knew about Jesus. They lived with the people, taught them to read, explained the Bible and gathered little churches. Charlie believed that the Congolese churches should send out their own evangelists and look after them themselves, just as the first churches in the Bible did. And they did! Christians who had very little gave what they could, so that their own messengers could carry the good news to people further away. Most of their names were never written down, but they were the real heroes of the church in the forest. Congolese believers also helped to put the Bible into their own languages. Missionaries could not do it alone. Congolese men and women explained their words and corrected mistakes. Charlie and two other missionaries worked on a translation into Kingwana, a kind of Swahili that many people understood, and in 1930 the books of Luke and Acts were printed in it. His daughters Edith and Pauline came to help too, with their husbands. The Bible says that the feet of people who bring good news are beautiful. The Congolese evangelists had tired, dusty feet, but to God they were beautiful. Your feet can be beautiful too, whenever you go to share God’s love. Dear God, thank you for the Congolese Christians who carried the good news through the forest. Make my feet beautiful too, ready to go and share your love. Amen.",
+  "word_count": 378
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "en"
+  ],
+  "order": 12,
+  "title": "Hallelujah",
+  "body_html": "<blockquote>“I have fought a good fight, I have finished my course, I have kept the faith.” — from 2 Timothy 4</blockquote> <p>For twelve years Charlie and Priscilla lived far apart, he in the Congo and she in England. They wrote to each other all the time, and they loved each other to the end. In 1928 Priscilla made the long, hard journey to Ibambi. She could stay only a short time, and it was the last time they saw each other. In January 1929 Priscilla died in Spain. Charlie had lost his dearest partner.</p> <p>Charlie was old now, and often ill and in pain. He could be stern and hard to work with, and the grown-ups at the mission sometimes disagreed with him. He was not a perfect man. But he never stopped loving Jesus or the people of the Congo.</p> <p>In his last year he wrote a goodbye letter to his grandchildren. In it he put two lines that he loved. He had not written them himself, but they said what he believed: “Only one life, ’twill soon be past, Only what’s done for Christ will last.”</p> <p>In July 1931 Charlie became very ill, and there was no hospital near enough to help. He died at Ibambi on 16 July 1931, at the age of seventy. His family and friends remembered that his last word was “Hallelujah,” which means “Praise the Lord.”</p> <p>A very large crowd of Congolese Christians came to his funeral, many from far away. He was buried at Ibambi, among the people he had come to serve. The mission he started still sends workers all over the world, and today it is called WEC International. And the church in the forest has grown and grown. It is led by Congolese Christians, and its members are counted in the hundreds of thousands.</p> <p>Charlie gave his whole life to Jesus. You have only one life too. Whatever you do for Jesus, even small things, will last for ever.</p> <p><em>Dear God, thank you for Charlie Studd and for the Congolese Christians who carried your good news through the forest. Help me to live my one life for you. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What two lines did Charlie put in his letter to his grandchildren?",
+    "answer": "“Only one life, ’twill soon be past, Only what’s done for Christ will last.” He loved them, though he had not written them himself."
+   },
+   {
+    "question": "What did Charlie’s family remember as his last word?",
+    "answer": "“Hallelujah,” which means “Praise the Lord.”"
+   },
+   {
+    "question": "What is one small thing you could do for Jesus this week?",
+    "answer": "Any honest answer is good here. The chapter’s point is that we each have one life, and whatever we do for Jesus will last."
+   }
+  ],
+  "body_text": "“I have fought a good fight, I have finished my course, I have kept the faith.” — from 2 Timothy 4 For twelve years Charlie and Priscilla lived far apart, he in the Congo and she in England. They wrote to each other all the time, and they loved each other to the end. In 1928 Priscilla made the long, hard journey to Ibambi. She could stay only a short time, and it was the last time they saw each other. In January 1929 Priscilla died in Spain. Charlie had lost his dearest partner. Charlie was old now, and often ill and in pain. He could be stern and hard to work with, and the grown-ups at the mission sometimes disagreed with him. He was not a perfect man. But he never stopped loving Jesus or the people of the Congo. In his last year he wrote a goodbye letter to his grandchildren. In it he put two lines that he loved. He had not written them himself, but they said what he believed: “Only one life, ’twill soon be past, Only what’s done for Christ will last.” In July 1931 Charlie became very ill, and there was no hospital near enough to help. He died at Ibambi on 16 July 1931, at the age of seventy. His family and friends remembered that his last word was “Hallelujah,” which means “Praise the Lord.” A very large crowd of Congolese Christians came to his funeral, many from far away. He was buried at Ibambi, among the people he had come to serve. The mission he started still sends workers all over the world, and today it is called WEC International. And the church in the forest has grown and grown. It is led by Congolese Christians, and its members are counted in the hundreds of thousands. Charlie gave his whole life to Jesus. You have only one life too. Whatever you do for Jesus, even small things, will last for ever. Dear God, thank you for Charlie Studd and for the Congolese Christians who carried your good news through the forest. Help me to live my one life for you. Amen.",
+  "word_count": 360
+ }
+}
+]
