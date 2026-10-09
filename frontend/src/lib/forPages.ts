@@ -1,11 +1,11 @@
 import type { IconName } from '$lib/components/Icon.svelte';
 import { withTrailingSlash } from './href';
 import {
-	quoteHref,
 	toCoverBook,
 	toCoverFace,
 	type AuthorBio,
 	type QuotePage,
+	type SavedQuote,
 	type CoverFace,
 	type BookDetail,
 	type BookSummary,
@@ -1453,19 +1453,13 @@ export function toOfflineBook(b: BookDetail): ForOfflineBook | null {
 	return { book: toCoverFace(b), pdf_url: b.pdf_url, epub_url: epub };
 }
 
-/** A page's quotation, resolved: the line, who said it, and the paragraph it
- *  comes from. */
-export interface ForQuote {
-	text: string;
-	author: { slug: string; name: string };
-	work: string;
-	href: string;
-}
 
 /** A writer card's fields (`PersonCard`). */
 export type ForPerson = Pick<AuthorBio, 'slug' | 'name' | 'photo_url' | 'birth_year' | 'death_year'>;
 
-/** The library's size in English, for the page's numbers strip. */
+/** The library's size in English, for the page's numbers strip. `books`
+ *  counts works, not editions: a young-reader retelling is its own row
+ *  (`<slug>-children` / `<slug>-teens`) but not another work. */
 export interface ForCounts {
 	books: number;
 	sermons: number;
@@ -1480,7 +1474,8 @@ export interface ForShelfData {
 	guides: CoverBook[];
 	offline: ForOfflineBook[];
 	authors: ForPerson[];
-	quote: ForQuote | null;
+	/** The quotation, as the favorites shelf carries one: the quote and its author. */
+	quote: SavedQuote | null;
 	counts: ForCounts | null;
 }
 
@@ -1519,21 +1514,18 @@ export const quoteAuthor = (slug: string): string => slug.replace(/-[0-9a-f]{8}$
 
 /** A page's quotation out of its author's quote page, or null when that page
  *  doesn't list it (the author not approved yet, the line retired). */
-export function forQuote(page: QuotePage, slug: string): ForQuote | null {
+export function forQuote(page: QuotePage, slug: string): SavedQuote | null {
 	const q = page.quotes.find((x) => x.slug === slug);
-	if (!q) return null;
-	return { text: q.text, author: { slug: page.author.slug, name: page.author.name }, work: q.source.work, href: quoteHref(q) };
+	return q ? { ...q, author: { slug: page.author.slug, name: page.author.name } } : null;
 }
+
+/** How many works a book list holds: its young-reader editions are the same
+ *  works retold (the slug convention is the link — root CLAUDE.md). */
+export const countWorks = (books: Pick<BookSummary, 'slug'>[]): number =>
+	books.filter((b) => !/-(children|teens)$/.test(b.slug)).length;
 
 /** The message a leader passes on: the page's line and the link it promises. */
 export const inviteMessage = (invite: ForPage['invite'], siteUrl: string): string =>
 	`${invite.text}\n${siteUrl}${withTrailingSlash(invite.href)}`;
 
-/** Where the message can go: the reader's own WhatsApp or mail client. */
-export function inviteLinks(subject: string, message: string) {
-	const enc = encodeURIComponent;
-	return {
-		whatsapp: `https://wa.me/?text=${enc(message)}`,
-		email: `mailto:?subject=${enc(subject)}&body=${enc(message)}`
-	};
-}
+

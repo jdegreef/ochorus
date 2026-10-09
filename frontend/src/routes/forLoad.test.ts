@@ -90,6 +90,9 @@ describe('for-shelves endpoint', () => {
 	];
 
 	beforeEach(() => {
+		// Not building: the build-wide memo of the shared lists would carry one
+		// test's mock into the next.
+		env.building = false;
 		api.listBooks.mockResolvedValue(everything().map(book));
 		api.listPlans.mockResolvedValue([...new Set(FOR_PAGES.flatMap((p) => p.plans))].map(plan));
 		api.getAudienceShelf.mockImplementation(async (aud: string) => ({
@@ -128,8 +131,17 @@ describe('for-shelves endpoint', () => {
 		// Spurgeon has no long bio in this mock, so the next writer takes his place.
 		expect(got.authors.map((a) => a.slug)).toEqual(page.authors.filter((a) => a !== 'charles-h-spurgeon').slice(0, 6));
 		expect(got.authors[0]).not.toHaveProperty('bio');
-		expect(got.quote).toMatchObject({ text: 'A line.', href: '/books/b/2/?p=1' });
+		expect(got.quote).toMatchObject({ slug: page.quote, text: 'A line.', author: { slug: expect.any(String) } });
 		expect(got.counts).toEqual({ books: expect.any(Number), sermons: 2, plans: expect.any(Number) });
+	});
+
+	it('drops the numbers and the writers, not the build, when their lists fail', async () => {
+		api.listSermons.mockRejectedValue(new Error('503'));
+		api.listAuthors.mockRejectedValue(new Error('503'));
+		const got = await get('youth');
+		expect(got.authors).toEqual([]);
+		expect(got.counts?.sermons).toBe(0);
+		expect(got.shelves.length).toBeGreaterThan(0);
 	});
 
 	it('drops the quotation, not the build, when its quote page fails', async () => {

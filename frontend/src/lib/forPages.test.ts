@@ -2,11 +2,12 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { FOR_LINKS, forPath } from './forLinks';
+import { messageShareLinks } from './share';
 import {
 	AUTHORS_SHOWN,
+	countWorks,
 	EMPTY_SHELF_DATA,
 	forQuote,
-	inviteLinks,
 	inviteMessage,
 	quoteAuthor,
 	FOR_PAGES,
@@ -27,9 +28,6 @@ import type { BookDetail, BookSummary, PlanSummary, QuotePage } from './library-
 const ROUTES = join(import.meta.dirname, '..', 'routes');
 const LIBRARY = join(import.meta.dirname, '..', '..', '..', 'backend', 'library');
 const BOOKS = join(LIBRARY, 'fixtures', 'content', 'books');
-/** The plan slugs in the seed: each plan tuple's FIRST element (the rest of the
- *  tuple names its source books, which must not count; comment lines may sit
- *  between the parenthesis and it). */
 /** The quote seed and the authors fixture, read as text / JSON. */
 const QUOTE_SEED = readFileSync(join(LIBRARY, 'quote_seed.py'), 'utf8');
 const APPROVED = new Set(
@@ -40,6 +38,9 @@ const AUTHOR_SLUGS = new Set(
 		(r) => r.fields.slug
 	)
 );
+/** The plan slugs in the seed: each plan tuple's FIRST element (the rest of the
+ *  tuple names its source books, which must not count; comment lines may sit
+ *  between the parenthesis and it). */
 const PLAN_SLUGS = new Set(
 	[...readFileSync(join(LIBRARY, 'plan_seed.py'), 'utf8').matchAll(/\(\s*\n(?:\s*#[^\n]*\n)*\s*"([a-z0-9-]+)",/g)].map((m) => m[1])
 );
@@ -212,9 +213,9 @@ describe('the "Ochorus for …" pages', () => {
 		}
 		const msg = inviteMessage({ text: 'Read with us.', href: '/young-readers' }, 'https://x.org');
 		expect(msg).toBe('Read with us.\nhttps://x.org/young-readers/');
-		const links = inviteLinks('Subject', msg);
-		expect(links.whatsapp).toBe(`https://wa.me/?text=${encodeURIComponent(msg)}`);
-		expect(links.email).toContain(`body=${encodeURIComponent(msg)}`);
+		const [whatsapp, email] = messageShareLinks('Subject', msg, 'Email');
+		expect(whatsapp.href).toBe(`https://wa.me/?text=${encodeURIComponent(msg)}`);
+		expect(email.href).toContain(`body=${encodeURIComponent(msg)}`);
 	});
 
 	it('resolves a quotation from its author’s page, or nothing', () => {
@@ -226,7 +227,12 @@ describe('the "Ochorus for …" pages', () => {
 				{ slug: 'a-12345678', text: 'Grace.', paragraph: 3, source: { kind: 'chapter', slug: 'b', title: 'C', work: 'Book', order: 2, cover_color: '' } }
 			]
 		} as QuotePage;
-		expect(forQuote(page, 'a-12345678')).toEqual({ text: 'Grace.', author: { slug: 'a', name: 'A' }, work: 'Book', href: '/books/b/2/?p=3' });
+		expect(forQuote(page, 'a-12345678')).toMatchObject({ slug: 'a-12345678', text: 'Grace.', author: { slug: 'a', name: 'A' } });
 		expect(forQuote(page, 'a-00000000')).toBeNull();
+	});
+
+	it('counts works, not their young-reader editions', () => {
+		const slugs = ['pilgrims-progress', 'pilgrims-progress-teens', 'pilgrims-progress-children', 'confessions'];
+		expect(countWorks(slugs.map((slug) => ({ slug })))).toBe(2);
 	});
 });

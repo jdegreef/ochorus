@@ -20,7 +20,7 @@
 	import { localizeHref } from '$lib/href';
 	import { forHref, inviteMessage } from '$lib/forPages';
 	import { LIVE_LOCALES } from '$lib/live-locales.generated';
-	import { guideCardLink, toBookTile } from '$lib/library-public';
+	import { citeLine, guideCardLink, quoteHref, toBookTile } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { hreflangFor, itemList, jsonLd, pickQa } from '$lib/seo';
 
@@ -165,12 +165,12 @@
 	{#if shelf.quote}
 		<figure class="quote-band group-wash mt-14 rounded-card px-6 py-8 sm:px-10">
 			<blockquote class="font-display text-h2 leading-snug">
-				<a class="quote-link" href={localizeHref(shelf.quote.href)}>“<QuoteText text={shelf.quote.text} />”</a>
+				<a class="quote-link" href={localizeHref(quoteHref(shelf.quote))}>“<QuoteText text={shelf.quote.text} />”</a>
 			</blockquote>
 			<figcaption class="mt-3 text-small text-muted">
 				<a class="group-ink font-semibold hover:underline" href={localizeHref(`/quotes/${shelf.quote.author.slug}`)}
 					>{shelf.quote.author.name}</a
-				>, <cite>{shelf.quote.work}</cite>
+				>, <cite>{citeLine(shelf.quote)}</cite>
 			</figcaption>
 		</figure>
 	{/if}
@@ -348,9 +348,11 @@
 	.point-icon {
 		background: color-mix(in srgb, var(--group) 14%, var(--color-surface));
 	}
+	/* As many columns as there are tiles (a zero count drops its tile), two to a
+	   row on a phone. */
 	.counts {
 		display: grid;
-		grid-template-columns: repeat(4, minmax(0, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
 		gap: 0.75rem;
 	}
 	.count-tile dd {
@@ -429,9 +431,6 @@
 		.offline,
 		.writers {
 			grid-template-columns: minmax(0, 1fr);
-		}
-		.counts {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}
 </style>

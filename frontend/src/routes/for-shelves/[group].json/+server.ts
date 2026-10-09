@@ -8,9 +8,11 @@
  * book to draw a few rows of covers — and a client-side visit would download
  * the list again.
  */
+import { building } from '$app/environment';
 import { error, json } from '@sveltejs/kit';
 import {
 	FOR_PAGES,
+	countWorks,
 	forAuthors,
 	forPage,
 	forPlans,
@@ -40,6 +42,28 @@ export const entries: EntryGenerator = () => FOR_PAGES.map((p) => ({ group: p.sl
 
 type Fetch = typeof globalThis.fetch;
 
+/**
+ * The library-wide lists the numbers strip and the writer cards read, fetched
+ * once per build rather than once per group, and optional like the quotation:
+ * a list that fails costs its section, not the build. (A failed fetch isn't
+ * kept, so the next group retries.)
+ */
+const once = new Map<string, Promise<unknown>>();
+function shared<T>(key: string, load: () => Promise<T>): Promise<T | null> {
+	// Only while building: the dev server serves this live, and a list kept
+	// for its lifetime would freeze the numbers at the first visit.
+	if (!building) return load().catch(() => null);
+	let p = once.get(key) as Promise<T | null> | undefined;
+	if (!p) {
+		p = load().catch(() => {
+			once.delete(key);
+			return null;
+		});
+		once.set(key, p);
+	}
+	return p;
+}
+
 /** The books with a printable leader's guide, children's hub first — the
  *  same two hubs, in the same order, as the guide route's prerender entries. */
 async function leaderGuides(fetch: Fetch) {
@@ -63,8 +87,8 @@ export async function GET({ params, fetch }) {
 	const [english, allPlans, sermons, authors, guides, offline, quote] = await Promise.all([
 		books,
 		listPlans('en', fetch),
-		listSermons('en', fetch),
-		listAuthors('en', fetch),
+		shared('sermons', () => listSermons('en', fetch)),
+		shared('authors', () => listAuthors('en', fetch)),
 		page.guides ? leaderGuides(fetch) : [],
 		page.offline ? books.then((all) => offlinePack(page, new Set(all.map((b) => b.slug)), fetch)) : [],
 		// The quotation is a garnish: a quote page that fails to load costs the
@@ -79,9 +103,9 @@ export async function GET({ params, fetch }) {
 		plans: forPlans(allPlans, page.plans),
 		guides,
 		offline,
-		authors: forAuthors(authors, page.authors),
+		authors: authors ? forAuthors(authors, page.authors) : [],
 		quote,
-		counts: { books: english.length, sermons: sermons.length, plans: allPlans.length }
+		counts: { books: countWorks(english), sermons: sermons?.length ?? 0, plans: allPlans.length }
 	};
 	// A shelf with none of its picks published: fail the build rather than ship
 	// a bare heading (the picks need replacing in $lib/forPages). An empty plan,

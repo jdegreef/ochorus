@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
-	import { inviteLinks } from '$lib/forPages';
+	import { messageShareLinks } from '$lib/share';
 
 	/**
 	 * An "Ochorus for …" page's "pass it on" kit: the ready-made message a
@@ -11,38 +11,49 @@
 	 */
 	let { message, subject }: { message: string; subject: string } = $props();
 
-	const links = $derived(inviteLinks(subject, message));
-	let copied = $state(false);
+	const [whatsapp, email] = $derived(messageShareLinks(subject, message, 'Email'));
+	let text = $state<HTMLElement>();
+	/** What the last copy did, for the status line: done, or select-it-yourself. */
+	let copied = $state<'yes' | 'select' | null>(null);
 	let timer: ReturnType<typeof setTimeout> | undefined;
 	$effect(() => () => clearTimeout(timer));
 
 	async function copy() {
 		try {
 			await navigator.clipboard.writeText(message);
-			copied = true;
-			clearTimeout(timer);
-			timer = setTimeout(() => (copied = false), 2000);
+			copied = 'yes';
 		} catch {
-			/* no clipboard (an old browser, a denied permission): the text is on screen to select */
+			// No clipboard here (an in-app browser, a denied permission): select
+			// the message so one long-press or Ctrl+C copies it, and say so.
+			if (text) getSelection()?.selectAllChildren(text);
+			copied = 'select';
 		}
+		clearTimeout(timer);
+		timer = setTimeout(() => (copied = null), 4000);
 	}
 </script>
 
-<figure class="invite rounded-card border border-border bg-surface p-5">
+<div class="invite rounded-card border border-border bg-surface p-5">
 	<!-- The whole message as it will be sent, link included: selectable by hand
 	     where the copy button can't reach the clipboard. -->
-	<blockquote class="message text-body">{message}</blockquote>
-	<figcaption class="mt-4 flex flex-wrap gap-2">
-		<button type="button" class="btn btn-sm" onclick={copy} aria-live="polite">
-			<Icon name={copied ? 'check' : 'page'} size={15} />
-			{copied ? 'Copied' : 'Copy the message'}
+	<blockquote class="message text-body" bind:this={text}>{message}</blockquote>
+	<div class="mt-4 flex flex-wrap items-center gap-2">
+		<button type="button" class="btn btn-sm" onclick={copy}>
+			<Icon name={copied === 'yes' ? 'check' : 'page'} size={15} />
+			{copied === 'yes' ? 'Copied' : 'Copy the message'}
 		</button>
-		<a class="btn btn-sm" href={links.whatsapp} target="_blank" rel="noopener noreferrer">
-			<Icon name="share" size={15} /> WhatsApp
+		<a class="btn btn-sm" href={whatsapp.href} target="_blank" rel="noopener noreferrer">
+			<Icon name="share" size={15} /> {whatsapp.name}
 		</a>
-		<a class="btn btn-sm" href={links.email}><Icon name="mail" size={15} /> Email</a>
-	</figcaption>
-</figure>
+		<a class="btn btn-sm" href={email.href}><Icon name="mail" size={15} /> {email.name}</a>
+		<!-- The copy's outcome, announced apart from the button that caused it. -->
+		<span class="text-small text-muted" role="status"
+			>{#if copied === 'select'}Selected: press Ctrl+C, or long-press and Copy.{:else if copied === 'yes'}<span
+					class="sr-only">Message copied</span
+				>{/if}</span
+		>
+	</div>
+</div>
 
 <style>
 	.message {

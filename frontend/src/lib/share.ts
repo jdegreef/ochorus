@@ -19,6 +19,17 @@ export function shareLinks(title: string, url: string, emailLabel: string): Shar
 	];
 }
 
+/** A whole MESSAGE (its link inside it) rather than a page: WhatsApp takes
+ *  it as the text, email as the body under `subject`. The "Ochorus for"
+ *  pages' pass-it-on kit. */
+export function messageShareLinks(subject: string, message: string, emailLabel: string): ShareLink[] {
+	const enc = encodeURIComponent;
+	return [
+		{ name: 'WhatsApp', href: `https://wa.me/?text=${enc(message)}`, newTab: true },
+		{ name: emailLabel, href: `mailto:?subject=${enc(subject)}&body=${enc(message)}`, newTab: false }
+	];
+}
+
 /** Whether `nativeShare` will try the OS sheet here (decides the menu's
  *  first row before any click). */
 export function hasNativeShare(): boolean {
