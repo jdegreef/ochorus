@@ -5834,6 +5834,16 @@
 			"layout": "split/oxblood",
 			"bar": 0
 		},
+		"es/the-masters-indwelling": {
+			"ground": "7196e97d1d35714df7d1131e0f3684a24487d8a84483e6e2a90723588f25d9b5",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"es/the-person-and-work-of-the-holy-spirit": {
 			"ground": "e807a73d1ad911ae8ad70695feb2c9ffc7651d91dedd1c73a7d112425c4d4446",
 			"style": "revival",
