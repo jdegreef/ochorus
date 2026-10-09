@@ -68,54 +68,55 @@
 		     a single "your reading" section. The panel carries the border and a
 		     --surface ground (it sits on the home page's parchment band), and its
 		     inner blocks are separated by hairlines rather than each floating. -->
-		<div class="space-y-5 rounded-card border border-border bg-surface p-5 sm:p-6">
-			<!-- Streak + weekly goal -->
-			<div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
-				<div class="flex items-center gap-3">
-					<span class="streak-flame" data-tier={tier}><Icon name="flame" size={flameSize} /></span>
-					<div class="leading-tight">
-						{#if streak > 0}
-							<div>
-								<span class="font-display text-h2 font-semibold">{streak}</span>
-								<span class="ms-1 text-body text-text">{t('settings.streakLabel')}</span>
-							</div>
-							<div class="text-small text-muted">
-								{t('settings.streakLongest')}
-								{longest}<span class="opacity-50"> · </span>{days.length}
-								{t('settings.streakDaysRead')}
-							</div>
-						{:else}
-							<div class="text-body text-text">{t('settings.streakNone')}</div>
-						{/if}
+		<div class="space-y-4 rounded-card border border-border bg-surface p-4 sm:p-5">
+			<!-- Streak and weekly goal beside the reading calendar from lg up, so
+			     the panel is one band rather than a tall stack; stacked below lg. -->
+			<div class="grid gap-5 lg:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] lg:items-center lg:gap-8">
+				<div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6 lg:flex-col lg:items-stretch lg:gap-4">
+					<div class="flex items-center gap-3">
+						<span class="streak-flame" data-tier={tier}><Icon name="flame" size={flameSize} /></span>
+						<div class="leading-tight">
+							{#if streak > 0}
+								<div>
+									<span class="font-display text-h2 font-semibold">{streak}</span>
+									<span class="ms-1 text-body text-text">{t('settings.streakLabel')}</span>
+								</div>
+								<div class="text-small text-muted">
+									{t('settings.streakLongest')}
+									{longest}<span class="opacity-50"> · </span>{days.length}
+									{t('settings.streakDaysRead')}
+								</div>
+							{:else}
+								<div class="text-body text-text">{t('settings.streakNone')}</div>
+							{/if}
+						</div>
+					</div>
+
+					<div class="hidden h-9 w-px bg-border sm:block lg:hidden"></div>
+
+					<div class="min-w-0 flex-1">
+						<div class="mb-1.5 text-small text-muted">
+							{#if goalMet}
+								{t('settings.goalMet')}
+							{:else}
+								{weekCount} {t('settings.goalOf')} {goal} {t('settings.goalDaysThisWeek')}
+							{/if}
+						</div>
+						<GoalPips {goal} {weekCount} />
 					</div>
 				</div>
 
-				<div class="hidden h-9 w-px bg-border sm:block"></div>
-
-				<div class="min-w-0 flex-1">
-					<div class="mb-1.5 text-small text-muted">
-						{#if goalMet}
-							{t('settings.goalMet')}
-						{:else}
-							{weekCount} {t('settings.goalOf')} {goal} {t('settings.goalDaysThisWeek')}
-						{/if}
-					</div>
-					<GoalPips {goal} {weekCount} />
+				<!-- Reading calendar — a full year, stretched across its column. -->
+				<div class="min-w-0">
+					<h3 class="text-eyebrow mb-2 text-muted">{t('settings.heatmapTitle')}</h3>
+					<ReadingHeatmap {days} {today} locale={lang.current} weeks={52} />
 				</div>
 			</div>
 
 			<div class="h-px bg-border"></div>
 
-			<!-- Totals -->
-			<StatTiles stats={s} />
-
-			<div class="h-px bg-border"></div>
-
-			<!-- Reading calendar — a full year, stretched across the whole column. -->
-			<div>
-				<h3 class="text-h3 mb-2">{t('settings.heatmapTitle')}</h3>
-				<ReadingHeatmap {days} {today} locale={lang.current} weeks={52} />
-			</div>
+			<!-- Totals, one slim line each -->
+			<StatTiles stats={s} compact />
 
 			<!-- Into the notebook, when there's something in it -->
 			{#if hasNotebook}

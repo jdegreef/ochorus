@@ -157,7 +157,7 @@
 	{/if}
 	<div class="home-hero-scrim"></div>
 	<div class="home-hero-grain"></div>
-	<div class="page-col relative flex items-end justify-between gap-8 px-5 pb-10 pt-14 sm:pb-12 sm:pt-16">
+	<div class="page-col relative flex items-end justify-between gap-8 px-5 pb-8 pt-9 sm:pb-9 sm:pt-11">
 		<div class="min-w-0">
 			<p class="eyebrow home-hero-date mb-3">
 				{today}<span class="sr-only">, </span><span class="home-hero-season"
@@ -243,8 +243,11 @@
 		height: 100%;
 		object-fit: cover;
 		/* Blurred enough to lose the 640px source's pixels at page width, not so
-		   much that the painting's shapes go: its light still reads through. */
-		filter: blur(18px) saturate(1.3);
+		   much that the painting's shapes go: its light still reads through.
+		   Saturated and lifted, so its colour survives the scrim rather than
+		   settling into a murky dark (the scrim, not the wash, holds the text's
+		   contrast — palettes.test.ts measures it against a WHITE painting). */
+		filter: blur(18px) saturate(1.6) brightness(1.15);
 	}
 	/* A slow drift across the painting — a minute each way, too slow to watch,
 	   enough that the band is never quite still. */
@@ -290,8 +293,8 @@
 	.home-hero-frame {
 		display: none;
 		flex-shrink: 0;
-		width: 11rem;
-		padding: 0.55rem;
+		width: 9.5rem;
+		padding: 0.5rem;
 		background: var(--hero-mat);
 		border-radius: 3px;
 		box-shadow:
@@ -323,7 +326,7 @@
 	.home-hero-book {
 		display: none;
 		flex-shrink: 0;
-		width: 10rem;
+		width: 8.5rem;
 		box-shadow: var(--hero-plate-shadow);
 		border-radius: var(--radius-sm);
 		transition: transform var(--duration-fast) ease;

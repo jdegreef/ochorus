@@ -105,12 +105,19 @@
 	<HomeYear />
 </div>
 
-<!-- Today's plan day, then multi-plan progress -->
-<TodaysReading />
-<PlansProgress />
+<!-- Today's plan day beside multi-plan progress — side by side where both
+     show and there is room, one full column when either hides (.dash-pair). -->
+<div class="dash-pair page-col px-5">
+	<TodaysReading />
+	<PlansProgress />
+</div>
 
-<!-- Today's line from the library, over a painting (English only). -->
-<HomeQuote />
+<!-- Today's word: a line from the library over a painting (English only),
+     beside the sermon of the week. -->
+<div class="dash-pair page-col px-5">
+	<HomeQuote />
+	<SermonOfTheWeek />
+</div>
 
 <!-- Personalised discovery — self-hides until there is history to score against -->
 <RecommendedNext />
@@ -121,8 +128,6 @@
 <!-- Generic discovery for a reader with little history yet (RecommendedNext
      above self-hides without one). Same six-book strip as the logged-out page. -->
 <DiscoverStrip books={featured} />
-
-<SermonOfTheWeek />
 
 <!-- Eight articles for today — turns over daily; renders nothing in a language
      with fewer than eight articles. -->
