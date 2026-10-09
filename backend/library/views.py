@@ -1098,11 +1098,16 @@ class BookGuideView(PublicContentCacheMixin, APIView):
         )
 
 
+#: A ladder rung's name for each audience's edition suffix.
+_EDITION_RUNG = {"young_readers": "children", "teens": "teens"}
+
+
 def _edition_rung(slug: str) -> str:
-    """Which step of the edition ladder a slug is: children, teens or full."""
-    for rung, suffix in (("children", "-children"), ("teens", "-teens")):
+    """Which step of the edition ladder a slug is: children, teens or full —
+    read off ``AUDIENCE_EDITION_SUFFIX``, the one place the suffixes are spelled."""
+    for audience, suffix in AUDIENCE_EDITION_SUFFIX.items():
         if slug.endswith(suffix):
-            return rung
+            return _EDITION_RUNG[audience]
     return "full"
 
 
@@ -1227,8 +1232,13 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
 
         printable = sorted(slug for slug in claimed if (slug, language) in EXPORT_EDITIONS)
 
-        picks = AUDIENCE_SPOTLIGHTS.get(audience, ())
-        found = {b.slug: b for b in _book_shelf(language).filter(slug__in=picks)} if picks else {}
+        # Never the start pick too: one book on two banners is a louder page,
+        # not a better one. A pick ending in the hub's suffix is already in
+        # `by_slug`; only one that doesn't costs a query.
+        picks = [s for s in AUDIENCE_SPOTLIGHTS.get(audience, ()) if s != start]
+        found = {s: by_slug[s] for s in picks if s in by_slug}
+        if missing := [s for s in picks if s not in found]:
+            found |= {b.slug: b for b in _book_shelf(language).filter(slug__in=missing)}
         spotlight = next((found[s] for s in picks if s in found), None)
         ladders = _edition_ladders(
             [b.slug for b in editions] + ([spotlight.slug] if spotlight else []), language

@@ -10,6 +10,7 @@
 	import {
 		heroCovers,
 		nextRung,
+		RUNG_LABEL,
 		hubBooks,
 		hubCounts,
 		hubIsEmpty,
@@ -74,11 +75,6 @@
 	const people = $derived(shelf.people ?? []);
 	const quotes = $derived(shelf.quotes ?? []);
 	const ladders = $derived(shelf.ladders ?? {});
-	const RUNG = {
-		children: 'audience.rungChildren',
-		teens: 'audience.rungTeens',
-		full: 'audience.rungFull'
-	} as const;
 	const challengeSeries = $derived(shelf.series.find((s) => s.slug === hub.challenge.series));
 	const leaderGuides = $derived(shelf.leader_guides ?? []);
 
@@ -353,7 +349,7 @@
 				</p>
 				<!-- Each retelling's next step up its ladder — the teens edition after
 				     the children's, the full original after the teens' — one tap away. -->
-				<div class="book-grid hub-rail" use:scrollEdges>
+				<div class="book-grid cover-rail hub-rail" use:scrollEdges>
 					{#each shelf.editions as book (book.slug)}
 						{@const next = nextRung(ladders[book.slug], book.slug)}
 						<div class="flex flex-col gap-2">
@@ -365,7 +361,7 @@
 									onclick={() => track(HUB_EVENT, { hub: hub.audience, action: 'ladder' })}
 								>
 									{t('audience.readyForMore')}
-									<span class="font-semibold">{t(RUNG[next.rung])}</span>
+									<span class="font-semibold">{t(RUNG_LABEL[next.rung])}</span>
 									<Arrow />
 								</a>
 							{/if}
@@ -378,7 +374,7 @@
 		{#if shelf.more.length}
 			<section id="more" class="jump-anchor mb-12">
 				<GroupHeading name={t('audience.moreHeading')} count={shelf.more.length} />
-				<div class="book-grid hub-rail" use:scrollEdges>
+				<div class="book-grid cover-rail hub-rail" use:scrollEdges>
 					{#each shelf.more as book (book.slug)}
 						<BookCard
 							{book}
@@ -591,22 +587,16 @@
 
 	/* On a phone a long shelf swipes sideways — a row per group, as a
 	   streaming app would — rather than a wall the reader scrolls past. The
-	   rail is the shared .cover-rail recipe: positioned, so nothing in it can
-	   widen the page (page-design, phone traps). */
+	   scroller itself is the shared .cover-rail (positioned, hidden scrollbar,
+	   edge fades, reset on desktop); this only turns the grid into one row.
+	   Padding on both sides keeps a card's lift and focus ring unclipped. */
 	@media (max-width: 639.98px) {
 		.hub-rail {
-			position: relative;
 			grid-template-columns: none;
 			grid-auto-flow: column;
 			grid-auto-columns: 44%;
-			overflow-x: auto;
-			overscroll-behavior-x: contain;
 			scroll-snap-type: x proximity;
-			scrollbar-width: none;
-			padding-bottom: 0.5rem;
-		}
-		.hub-rail::-webkit-scrollbar {
-			display: none;
+			padding-block: 0.375rem 0.5rem;
 		}
 		.hub-rail > :global(*) {
 			scroll-snap-align: start;

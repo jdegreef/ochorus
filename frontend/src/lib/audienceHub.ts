@@ -248,6 +248,13 @@ export function challengeState(
 	return { slug, day, order: rec ? resumeOrderOf(rec) : 1, started: !!rec, done };
 }
 
+/** A ladder rung's words: "For children", "For teens", "The original". */
+export const RUNG_LABEL = {
+	children: 'audience.rungChildren',
+	teens: 'audience.rungTeens',
+	full: 'audience.rungFull'
+} as const satisfies Record<EditionRung['rung'], string>;
+
 /** The step after `slug` on its edition ladder — what "Ready for more"
  *  offers a reader who has a retelling in hand — or null at the top. */
 export function nextRung(ladder: EditionRung[] | undefined, slug: string): EditionRung | null {
