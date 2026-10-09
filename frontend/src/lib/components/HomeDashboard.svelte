@@ -98,7 +98,9 @@
 <!-- Resume first: the one thing a returning reader most likely came back to do.
      The current book is already the hero's resume point, so the strip carries
      the rest of what's in progress (and hides when that is nothing). -->
-<ContinueReading exclude={currentBook.key} />
+<div class="section-band" data-section="books">
+	<ContinueReading exclude={currentBook.key} />
+</div>
 
 <!-- Streak, weekly goal, reading calendar and totals — self-hides until there's
      activity to show (replaces the compact ReadingNudge on the dashboard). On a
@@ -116,16 +118,20 @@
 
 <!-- Today's plan day beside multi-plan progress — side by side where both
      show and there is room, one full column when either hides (.dash-pair). -->
-<div class="dash-pair page-col px-5">
-	<TodaysReading />
-	<PlansProgress />
+<div class="section-band" data-section="plans">
+	<div class="dash-pair page-col px-5">
+		<TodaysReading />
+		<PlansProgress />
+	</div>
 </div>
 
 <!-- Today's word: a line from the library over a painting (English only),
      beside the sermon of the week. -->
-<div class="dash-pair page-col px-5">
-	<HomeQuote />
-	<SermonOfTheWeek />
+<div class="section-band" data-section="sermons">
+	<div class="dash-pair page-col px-5">
+		<HomeQuote />
+		<SermonOfTheWeek />
+	</div>
 </div>
 
 <!-- Personalised discovery — self-hides until there is history to score against -->
@@ -144,7 +150,9 @@
 	<HomeArticles />
 </div>
 
-<!-- Browse by topic — the last block on the dashboard, so it carries the
+<!-- Browse by topic — the last block on the dashboard; its band carries the
      trailing bottom padding. -->
-<TopicChips {topics} lastBlock />
+<div class="section-band" data-section="topics">
+	<TopicChips {topics} />
+</div>
 </div>
