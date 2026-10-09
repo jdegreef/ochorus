@@ -1243,10 +1243,9 @@
   },
   {
    "reference": "1 Thessalonians 5:8b",
-   "status": "mined",
+   "status": "self_rendered",
    "chapter_order": 9,
-   "block_index": 32,
-   "source_file": "watchman-nee-a-life.es.json"
+   "block_index": 32
   },
   {
    "reference": "Ephesians 1:17",
