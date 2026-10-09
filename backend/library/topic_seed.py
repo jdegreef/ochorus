@@ -593,6 +593,7 @@ TOPICS = [
             "they-were-young-1",
             "anchored-2",
             "they-were-young-2",
+            "they-were-young-3",
             "corrie-ten-boom-a-life-teens",
             "elisabeth-elliot-a-life-teens",
             "c-s-lewis-a-life-teens",
