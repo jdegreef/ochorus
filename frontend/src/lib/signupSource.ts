@@ -36,6 +36,7 @@ export const PROMPT_SOURCES = [
 	'highlight_toast',
 	'chapter_end',
 	'plan_start',
+	'plan_day',
 	'article',
 	'quote',
 	'footer',

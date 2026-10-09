@@ -13,6 +13,7 @@ from .cover_face import COVER_AUTHOR_FIELDS, cover_face
 from .curated_art import credit
 from .export_policy import is_exportable
 from .hubs import Hubs
+from .leader_guides import guide_for
 from .localization import language_from_request
 from .meta_descriptions import meta_description
 from .models import (
@@ -1777,6 +1778,12 @@ class BookDetailSerializer(BookListSerializer):
     # article table, nothing a shelf should pay (pinned by
     # BookCardPayloadTests.test_book_detail_query_count_is_the_same_in_every_language).
     guides = serializers.SerializerMethodField()
+    # Whether a printable leader's guide exists for this edition
+    # (library/leader_guides.py) — the book page links to /books/<slug>/guide.
+    has_leader_guide = serializers.SerializerMethodField()
+
+    def get_has_leader_guide(self, obj) -> bool:
+        return guide_for(obj.slug, obj.language) is not None
 
     def get_guides(self, obj) -> list[dict]:
         # No language gate: guides_for_book already filters on this edition's
@@ -1872,6 +1879,7 @@ class BookDetailSerializer(BookListSerializer):
             "alternate_titles", "about_html", "qa", "scripture", "opening",
             "featured_people", "author_quote_count", "guides", "series",
             "epub_url", "meta_description", "public_domain", "ages",
+            "has_leader_guide",
         ]
 
     def get_public_domain(self, obj) -> bool:

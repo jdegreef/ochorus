@@ -9,7 +9,8 @@ import { defineConfig } from 'vitest/config';
  * We use the plain Svelte plugin (not the full SvelteKit plugin) so `.svelte.ts`
  * rune modules compile, and alias the SvelteKit imports the stores use:
  * `$app/environment` → a tiny browser=true mock, `$app/navigation` → a stub
- * that records what was preloaded, and `$lib` → `src/lib`. The jsdom
+ * that records what was preloaded, `$app/stores` → a root-URL `page`, and
+ * `$lib` → `src/lib`. The jsdom
  * environment supplies `localStorage`, which the stores persist to.
  */
 export default defineConfig({
@@ -29,6 +30,10 @@ export default defineConfig({
 			{
 				find: '$app/environment',
 				replacement: fileURLToPath(new URL('./src/test/app-environment.ts', import.meta.url))
+			},
+			{
+				find: '$app/stores',
+				replacement: fileURLToPath(new URL('./src/test/app-stores.ts', import.meta.url))
 			},
 			{
 				find: '$app/navigation',

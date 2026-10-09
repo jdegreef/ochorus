@@ -1,11 +1,12 @@
 <script lang="ts">
+	import { untrack } from 'svelte';
 	import { goto } from '$app/navigation';
 	import DrawerShell from '$lib/components/DrawerShell.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
-	import { planSchedules } from '$lib/planSchedules.svelte';
 	import { signInSheet } from '$lib/signInSheet.svelte';
 	import { promptSeen } from '$lib/signupSource';
+	import { askForPlanEmail, planRemindTime, turnOnPlanEmail } from '$lib/planEmail';
 
 	/**
 	 * Asked once, right after a reader starts a plan: how should we remind you
@@ -16,9 +17,9 @@
 	 * Nothing is pre-selected: daily email is something to choose, not a box
 	 * to untick. Email saves the time and the email opt-in on the plan's
 	 * schedule (synced to the account, which sends it: emails.plan_reminders).
-	 * Signed out, the sign-up panel opens first, and the opt-in is saved only
-	 * once an account exists — a reader who closes the panel has asked for
-	 * nothing. Calendar hands over to the plan's calendar view, which already
+	 * Signed out, the sign-up panel opens first and the choice is held; it's
+	 * turned on once an account exists, however the reader gets one
+	 * ($lib/planEmail). Calendar hands over to the plan's calendar view, which already
 	 * makes the Google / .ics reminders. Every path ends on day 1 except that.
 	 */
 	let {
@@ -36,9 +37,9 @@
 	} = $props();
 
 	const t = i18n.t;
-	const DEFAULT_TIME = '07:00';
 	let choice = $state<'email' | 'calendar' | 'none' | null>(null);
-	let time = $state(DEFAULT_TIME);
+	// The sheet belongs to one plan, so its starting time is read once.
+	let time = $state(untrack(() => planRemindTime(slug)));
 	const signedOut = $derived(auth.enabled && !auth.user);
 	/** Waiting on the sign-up panel to turn on email reminders. */
 	let pendingEmail = $state(false);
@@ -47,45 +48,11 @@
 		if (open && signedOut) promptSeen('plan_start');
 	});
 
-	const saveEmail = (at = time) =>
-		planSchedules.set(slug, { ...planSchedules.get(slug), time: at || DEFAULT_TIME, email: true });
-
-	// Google signs in by leaving the page and coming back to it, which loses
-	// `pendingEmail`; the choice waits in this tab's sessionStorage instead and
-	// is applied when the reader is back here signed in.
-	const PENDING_KEY = 'ochorus:plan-email-pending';
-	function rememberPending() {
-		try {
-			sessionStorage.setItem(PENDING_KEY, JSON.stringify({ slug, time }));
-		} catch {
-			/* storage blocked: the in-page path still works */
-		}
-	}
-	$effect(() => {
-		if (!auth.user) return;
-		try {
-			const raw = sessionStorage.getItem(PENDING_KEY);
-			if (!raw) return;
-			sessionStorage.removeItem(PENDING_KEY);
-			const p = JSON.parse(raw) as { slug?: string; time?: string };
-			if (p.slug === slug) saveEmail(p.time);
-		} catch {
-			/* nothing pending */
-		}
-	});
-
-	// Signed out and chose email: once the panel closes, an account means the
-	// opt-in is saved (and syncs up); no account means nothing was asked for.
-	// Either way the reader goes on to day 1.
+	// Signed out and chose email: once the panel closes, on to day 1. (The
+	// held choice is turned on by the root layout when an account exists.)
 	$effect(() => {
 		if (!pendingEmail || signInSheet.open) return;
 		pendingEmail = false;
-		try {
-			sessionStorage.removeItem(PENDING_KEY);
-		} catch {
-			/* nothing to clear */
-		}
-		if (auth.user) saveEmail();
 		goto(dayHref);
 	});
 
@@ -97,15 +64,14 @@
 		}
 		if (choice === 'email') {
 			if (signedOut) {
-				rememberPending();
 				// Next tick, after this sheet has let go of focus (as openFrom does).
 				setTimeout(() => {
 					pendingEmail = true;
-					signInSheet.show('plan_start');
+					askForPlanEmail(slug, 'plan_start', time);
 				}, 0);
 				return;
 			}
-			saveEmail();
+			turnOnPlanEmail(slug, time);
 		}
 		goto(dayHref);
 	}
