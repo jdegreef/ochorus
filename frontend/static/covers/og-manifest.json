@@ -5226,6 +5226,16 @@
 				505
 			]
 		},
+		"es/freedom-of-the-will": {
+			"ground": "fb8b71e3bea4d63bb6774b9e1dd105259cbee3092a5aab2ff906b0db62132cda",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/slate",
+			"bar": 0
+		},
 		"es/george-muller-of-bristol": {
 			"ground": "ddc9b04b2d0f4b40dc845c48a97e2220ffbd6e2b59ddcb33fc94abc90a0c89f4",
 			"style": "revival",
