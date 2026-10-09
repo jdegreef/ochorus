@@ -5884,6 +5884,16 @@
 			"layout": "split/navy",
 			"bar": 0
 		},
+		"es/religious-affections": {
+			"ground": "c139549b9ec5a24c91c91ba3580c5b960da67a455cad0d72653b74300c2cd08d",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/slate",
+			"bar": 0.035
+		},
 		"es/revival-lectures": {
 			"ground": "5ee194c42c95aa84af332789a2b8fb7be0f8d5c28451f9ee66ca0beecd1df41d",
 			"style": "revival",
