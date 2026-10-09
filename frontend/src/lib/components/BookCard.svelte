@@ -192,13 +192,13 @@
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
 		color: var(--surface);
-		background: var(--hue-cypress);
+		background: var(--audience-teens);
 		box-shadow: 0 3px 6px -3px rgb(0 0 0 / 0.45);
 		pointer-events: none;
 		transition: opacity var(--duration-fast);
 	}
 	.edition-ribbon[data-kind='children'] {
-		background: var(--hue-ochre);
+		background: var(--audience-children);
 	}
 	.edition-ribbon[data-kind='original'] {
 		background: var(--section-originals);

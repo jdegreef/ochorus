@@ -75,7 +75,10 @@
 	const people = $derived(shelf.people ?? []);
 	const quotes = $derived(shelf.quotes ?? []);
 	const ladders = $derived(shelf.ladders ?? {});
-	const challengeSeries = $derived(shelf.series.find((s) => s.slug === hub.challenge.series));
+	const challenge = $derived(shelf.challenge ?? null);
+	const challengeSeries = $derived(
+		challenge ? shelf.series.find((s) => s.slug === challenge.series) : undefined
+	);
 	const leaderGuides = $derived(shelf.leader_guides ?? []);
 
 	// The page's groups, in order, each only when it has something — the jump
@@ -260,14 +263,16 @@
 				ladder={ladders[shelf.spotlight.slug]}
 				onstart={() => track(HUB_EVENT, { hub: hub.audience, action: 'spotlight' })}
 				onclimb={() => track(HUB_EVENT, { hub: hub.audience, action: 'ladder' })}
+				onshare={() => track(HUB_EVENT, { hub: hub.audience, action: 'invite' })}
 			/>
 		{/if}
 
-		{#if challengeSeries}
+		{#if challenge && challengeSeries}
 			<HubChallenge
 				series={challengeSeries}
-				challenge={hub.challenge}
+				{challenge}
 				onstart={() => track(HUB_EVENT, { hub: hub.audience, action: 'challenge' })}
+				onshare={() => track(HUB_EVENT, { hub: hub.audience, action: 'invite' })}
 			/>
 		{/if}
 
@@ -493,8 +498,8 @@
 	   twin are defined in every theme, so the band follows lamplight, paper and
 	   sepia without a theme rule here. */
 	.hub-hero {
-		--hub-hue: var(--hue-ochre);
-		--hub-soft: var(--hue-ochre-soft);
+		--hub-hue: var(--audience-children);
+		--hub-soft: var(--audience-children-soft);
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
 		gap: 1.5rem;
@@ -507,8 +512,8 @@
 		background: linear-gradient(135deg, var(--hub-soft), var(--surface) 75%);
 	}
 	.hub-hero[data-audience='teens'] {
-		--hub-hue: var(--hue-cypress);
-		--hub-soft: var(--hue-cypress-soft);
+		--hub-hue: var(--audience-teens);
+		--hub-soft: var(--audience-teens-soft);
 	}
 	/* The fan is decoration: on a phone the words lead and it steps aside. */
 	.hub-fan {

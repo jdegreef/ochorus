@@ -1452,6 +1452,18 @@ export interface HubPerson {
  *  as a cover tile (`_edition_ladders`). */
 export type EditionRung = BookTile & { rung: 'children' | 'teens' | 'full' };
 
+/**
+ * A "30 Days with God" series framed as a challenge (`AUDIENCE_CHALLENGES`):
+ * Anchored for teens, Rooted for young readers. Each volume is an
+ * introduction (chapter 1), then one chapter a day (chapter n + 1 is day n) —
+ * the convention `tests_audience_shelf` holds the fixture to — so a reader's
+ * furthest chapter is the day they've reached, with no new data.
+ */
+export interface HubChallenge {
+	series: string;
+	days: number;
+}
+
 export interface AudienceShelf {
 	series: SeriesSummary[];
 	/** The series' anthologies as faces, each opening its chapter. Optional: an
@@ -1472,6 +1484,8 @@ export interface AudienceShelf {
 	/** The story the hub sells hardest (`AUDIENCE_SPOTLIGHTS`), or null.
 	 *  Optional: an API behind this build omits it. */
 	spotlight?: BookSummary | null;
+	/** The hub's challenge, when its series is here. Optional, as above. */
+	challenge?: HubChallenge | null;
 	/** Each retold edition's (and the spotlight's) family here, youngest first,
 	 *  itself included — keyed by that edition's slug. Optional, as above. */
 	ladders?: Record<string, EditionRung[]>;

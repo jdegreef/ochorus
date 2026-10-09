@@ -34,6 +34,7 @@ from .models import (
 )
 from .serializers import AUDIENCE_EDITION_SUFFIX, EDITION_SUFFIXES
 from .views import (
+    AUDIENCE_CHALLENGES,
     AUDIENCE_SPOTLIGHTS,
     AUDIENCE_STARTS,
     AUDIENCE_TOPICS,
@@ -274,6 +275,12 @@ class AudienceShelfTests(TestCase):
             [],
         )
 
+    def test_the_challenge_is_served_only_where_its_series_is(self):
+        self._book("rooted-1", series=Series.objects.create(
+            slug="rooted", title="Rooted", audience="young_readers"))
+        self.assertEqual(self._get()["challenge"], {"series": "rooted", "days": 30})
+        self.assertIsNone(self._get("teens")["challenge"])
+
     def test_every_spotlight_pick_names_a_real_book(self):
         books = Path(__file__).parent / "fixtures" / "content" / "books"
         missing = [
@@ -444,7 +451,7 @@ class ChallengeSeriesFixtureTests(TestCase):
     a reader's furthest chapter minus one is the day they've reached. Held to
     the English fixture, so a re-cut volume can't silently skew the count."""
 
-    CHALLENGES = {"anchored": 30, "rooted": 30}
+    CHALLENGES = dict(AUDIENCE_CHALLENGES.values())
 
     def test_every_challenge_volume_is_an_introduction_then_one_chapter_a_day(self):
         books = Path(__file__).parent / "fixtures" / "content" / "books"

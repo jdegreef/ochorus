@@ -3092,6 +3092,17 @@ nav.appnav .navsearch:hover {
    Column counts rather than `auto-fill minmax()`: a book cover has a fixed
    aspect ratio, and `auto-fill` at a wide viewport gives a seventh column of
    postage stamps rather than six readable spines. */
+/* Each young-reader audience's colour — the edition ribbons on its covers,
+   its hub's hero band and spotlight — so a teens book and the teens page are
+   the same cypress, a children's book and its page the same ochre. Aliases of
+   the theme hues, so every theme carries them. */
+:root {
+	--audience-teens: var(--hue-cypress);
+	--audience-teens-soft: var(--hue-cypress-soft);
+	--audience-children: var(--hue-ochre);
+	--audience-children-soft: var(--hue-ochre-soft);
+}
+
 .book-grid {
 	display: grid;
 	align-items: stretch;
