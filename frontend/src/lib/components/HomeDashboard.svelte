@@ -19,6 +19,7 @@
 	import RecommendedNext from '$lib/components/RecommendedNext.svelte';
 	import FavoritesShelf from '$lib/components/FavoritesShelf.svelte';
 	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
+	import HomeHighlight from '$lib/components/HomeHighlight.svelte';
 	import HomeArticles from '$lib/components/HomeArticles.svelte';
 	import DiscoverStrip from '$lib/components/DiscoverStrip.svelte';
 	import TopicChips from '$lib/components/TopicChips.svelte';
@@ -104,8 +105,13 @@
      parchment band, which collapses with it. -->
 <div class="page-band">
 	<DashboardStats />
-	<!-- This year's finished covers, under the stats on the same parchment. -->
-	<HomeYear />
+	<!-- One of the reader's own highlights, a new one each day, beside this
+	     year's finished covers — on the same parchment, side by side where both
+	     show (.dash-pair). -->
+	<div class="dash-pair page-col px-5">
+		<HomeHighlight />
+		<HomeYear />
+	</div>
 </div>
 
 <!-- Today's plan day beside multi-plan progress — side by side where both
