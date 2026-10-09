@@ -9,7 +9,16 @@
 	import { buildScheduleICS, googleCalendarUrl, readReminderTime } from '$lib/reminder';
 	import { localizeHref } from '$lib/href';
 	import { localToday } from '$lib/streak';
-	import { READING_DAYS, monthGrid, parseIsoDay, schedulePlan, weekStart, type ReadingDays } from '$lib/planSchedule';
+	import {
+		READING_DAYS,
+		READING_DAY_LABELS,
+		monthGrid,
+		parseIsoDay,
+		schedulePlan,
+		weekStart,
+		type ReadingDays
+	} from '$lib/planSchedule';
+	import { planTogether } from '$lib/planTogether.svelte';
 	import type { PlanDay, PlanDetail } from '$lib/library-public';
 	import Icon from './Icon.svelte';
 
@@ -48,28 +57,29 @@
 	// The reader's choices, read live from the synced store (another device's
 	// choice lands here after a merge); the controls write straight back to it.
 	const prefs = $derived(planSchedules.get(plan.slug));
-	const rule = $derived<ReadingDays>(prefs.rule ?? 'daily');
+	// A "read together" group this device joined sets the dates instead: the
+	// plan lies on the group's calendar, whatever the reader's own choices.
+	const group = $derived(planTogether.get(plan.slug));
+	const rule = $derived<ReadingDays>(group?.rule ?? prefs.rule ?? 'daily');
 	// Alerts default to the daily reminder time the reader set in Settings.
 	const time = $derived(prefs.time ?? readReminderTime());
 	const todayIso = $derived(localToday(today));
 	// A chosen start that has since passed gives way to today.
 	const startIso = $derived(prefs.start && parseIsoDay(prefs.start) && prefs.start >= todayIso ? prefs.start : todayIso);
 
-	const RULE_LABEL: Record<ReadingDays, string> = {
-		daily: 'plans.everyDay',
-		weekdays: 'plans.weekdays',
-		monsat: 'plans.monSat'
-	};
-
 	/** A started plan runs from today; a new one from the chosen start. */
 	// startIso is always a real date on or after today; a started plan runs from today.
 	const start = $derived(started ? today : parseIsoDay(startIso)!);
+	// In a group, every day keeps the group's date, read or not, and only the
+	// ones still ahead are on the calendar (and in its reminders).
 	const schedule = $derived(
-		schedulePlan(
-			plan.days.filter((d) => !doneSet.has(d.day)),
-			start,
-			rule
-		)
+		group
+			? schedulePlan(plan.days, parseIsoDay(group.start)!, group.rule).filter((s) => localToday(s.date) >= todayIso)
+			: schedulePlan(
+					plan.days.filter((d) => !doneSet.has(d.day)),
+					start,
+					rule
+				)
 	);
 	const byDate = $derived(new Map(schedule.map((s) => [localToday(s.date), s.item])));
 	const dateOf = $derived(new Map(schedule.map((s) => [s.item.day, s.date])));
@@ -124,7 +134,7 @@
 				url: absUrl(dayHref(item.day))
 			})),
 			time,
-			{ now: new Date(), uidPrefix: `ochorus-plan-${plan.slug}-${localToday(start)}` }
+			{ now: new Date(), uidPrefix: `ochorus-plan-${plan.slug}-${group?.start ?? localToday(start)}` }
 		);
 		downloadFile(`${plan.slug}.ics`, 'text/calendar;charset=utf-8', ics);
 	};
@@ -133,7 +143,9 @@
 <div class="plan-cal">
 	<!-- The schedule's levers: when to start (a new plan only) and which days. -->
 	<div class="cal-controls">
-		{#if !started}
+		{#if group}
+			<p class="cal-field text-small text-muted">✓ {t('together.joined')}</p>
+		{:else if !started}
 			<label class="cal-field">
 				<span class="text-eyebrow text-muted">{t('plans.startOn')}</span>
 				<input
@@ -156,7 +168,8 @@
 						type="button"
 						class:active={rule === r}
 						aria-pressed={rule === r}
-						onclick={() => planSchedules.set(plan.slug, { rule: r })}>{t(RULE_LABEL[r])}</button
+						disabled={!!group}
+						onclick={() => planSchedules.set(plan.slug, { rule: r })}>{t(READING_DAY_LABELS[r])}</button
 					>
 				{/each}
 			</div>

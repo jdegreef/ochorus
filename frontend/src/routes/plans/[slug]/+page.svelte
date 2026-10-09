@@ -18,6 +18,8 @@
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
+	import PlanTogetherBanner from '$lib/components/PlanTogetherBanner.svelte';
+	import PlanTogetherShare from '$lib/components/PlanTogetherShare.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
@@ -334,6 +336,7 @@
 	     On a phone the panel comes first, so the one action leads. -->
 	<div class="plan-body">
 		<aside class="plan-aside">
+			<PlanTogetherBanner slug={plan.slug} dayCount={plan.day_count} {today} {dayHref} />
 			<!-- The read card, as on the book page: the reading that's next, named —
 			     its book and length, and for a started plan how far through you are —
 			     with the one read verb. A first visit (and the prerender, since plan
@@ -425,6 +428,7 @@
 			<div class="mt-3 flex flex-wrap items-center gap-2">
 				<FavoriteButton kind="plan" slug={plan.slug} showLabel />
 				<ShareButton url={canonical} title={plan.title} showLabel />
+				<PlanTogetherShare title={plan.title} url={canonical} {today} />
 			</div>
 
 			{@render authorsBlock('plan-authors-side mt-6')}

@@ -1525,5 +1525,18 @@
   "reader_questions_hint_teens": "먼저 스스로 생각해 보세요. 그다음 질문을 누르면 한 가지 답변 예시를 볼 수 있습니다.",
   "reader_listen_story": "이 이야기 듣기",
   "reader_young_layout": "어린이 레이아웃",
-  "reader_young_layout_hint": "이 어린이 책을 위한 크고 또렷한 글자입니다. 아래에서 직접 바꾼 설정이 우선 적용됩니다."
+  "reader_young_layout_hint": "이 어린이 책을 위한 크고 또렷한 글자입니다. 아래에서 직접 바꾼 설정이 우선 적용됩니다.",
+  "together_button": "함께 읽기",
+  "together_title": "이 플랜 함께 읽기",
+  "together_intro": "시작일을 고르고 링크를 공유하세요. 링크를 여는 사람은 모두 같은 플랜 일차를 봅니다. 가입이 필요 없고, 누구에 대한 정보도 수집하지 않습니다.",
+  "together_message": "%d%부터 하루에 짧은 읽기 하나씩, %t%을(를) 함께 읽어요. 이 링크를 열어 참여하세요:",
+  "together_eyebrow": "함께 읽는 중",
+  "together_starts": "%d% 시작",
+  "together_today": "오늘 그룹은 %n%일차입니다",
+  "together_next": "다음 읽기 %d%: %n%일차",
+  "together_finished": "이 그룹은 %d%에 마쳤습니다",
+  "together_join": "그룹 참여하기",
+  "together_join_hint": "이 기기에서 플랜의 달력이 그룹의 날짜를 따릅니다.",
+  "together_joined": "이 그룹과 함께 읽고 있습니다",
+  "together_leave": "나가기"
 }

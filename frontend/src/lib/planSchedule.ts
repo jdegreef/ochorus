@@ -10,6 +10,13 @@ import { localToday } from './streak';
 export const READING_DAYS = ['daily', 'weekdays', 'monsat'] as const;
 export type ReadingDays = (typeof READING_DAYS)[number];
 
+/** Each rule's catalogue key, for the controls that choose one. */
+export const READING_DAY_LABELS: Record<ReadingDays, string> = {
+	daily: 'plans.everyDay',
+	weekdays: 'plans.weekdays',
+	monsat: 'plans.monSat'
+};
+
 /** Does `rule` read on this date? (getDay: 0 = Sunday … 6 = Saturday.) */
 export const readsOn = (date: Date, rule: ReadingDays): boolean => {
 	const wd = date.getDay();
