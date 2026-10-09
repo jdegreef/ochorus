@@ -6164,6 +6164,36 @@
 				461
 			]
 		},
+		"fr/first-epistle-of-clement": {
+			"ground": "af4e7dd1c55b639f42a98b6cd5f6d52336209b59408d61991723882fc9a15492",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[136, 102, 464, 131]
+				],
+				"title": [
+					[69, 292, 531, 354],
+					[129, 337, 471, 399],
+					[50, 383, 551, 445]
+				],
+				"subtitle": [
+					[46, 473, 554, 494]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				301,
+				494
+			]
+		},
 		"fr/gleanings-among-the-sheaves": {
 			"ground": "34c21b0a45cba1af757a7731e0666f42b312f15d4efd47f174626f1bb6b8b996",
 			"style": "revival",
