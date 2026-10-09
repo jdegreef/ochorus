@@ -5226,6 +5226,36 @@
 				505
 			]
 		},
+		"es/george-muller-of-bristol": {
+			"ground": "ddc9b04b2d0f4b40dc845c48a97e2220ffbd6e2b59ddcb33fc94abc90a0c89f4",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[125, 102, 475, 131]
+				],
+				"title": [
+					[113, 294, 487, 370],
+					[174, 360, 426, 436]
+				],
+				"subtitle": [
+					[159, 509, 441, 530],
+					[143, 530, 457, 551]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				244,
+				551
+			]
+		},
 		"es/gleanings-among-the-sheaves": {
 			"ground": "902071ea52ec0e6e93ae212780f8436c2b6614b0c2b18de5fea89a6ecca8fad4",
 			"style": "revival",
@@ -7284,6 +7314,37 @@
 					[61, 169, 539, 232],
 					[124, 225, 476, 288],
 					[204, 280, 396, 343]
+				],
+				"subtitle": [
+					[164, 404, 436, 432],
+					[176, 432, 424, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
+			]
+		},
+		"fr/key-teachings-of-gareth-evans": {
+			"ground": "884e64b6ff3a80b636ca618c157c543186cb31fab1ae4ffb2d5be4ec775d8bb0",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[61, 169, 539, 232],
+					[216, 225, 384, 288],
+					[131, 280, 469, 343]
 				],
 				"subtitle": [
 					[164, 404, 436, 432],
