@@ -1,0 +1,124 @@
+{
+ "kind": "book",
+ "slug": "john-hyde-a-life-children",
+ "language": "am",
+ "job_issue": 5747,
+ "pull_request": 5774,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh; re-verified for this job 2026-10-09: all 27 NT books return 200 as usfm/, gen/psa/isa 404). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
+  "Every `mined` row was checked mechanically against the finished text: the quoted Amharic is an exact substring of the 1962 NT verse (USFM on disk) or of the cited corpus file, inside the block named.",
+  "The English epigraphs are child-sized excerpts (\"— from Matthew 9\"); per the shipped am children's editions each quotes the Bible's own wording for the part the English means, with … for words left out, and cites `— ከ<Book> <chapter>`. Isaiah 6:8 is quoted whole (daughters-of-the-king-3.am.json) although the English drops \"who will go for us\". Psalm 51:10a («አቤቱ፥ ንጹሕ ልብን ፍጠርልኝ») matches the wording of the shipped article what-is-repentance.am.json, which the mined-verification gate cannot open (articles are outside its census), so it ships self_rendered. Psalm 81:10b matches the-life-of-trust-children.am.json (also key-teachings-of-a-b-simpson.am.json).",
+  "Self-rendered: chapter 2's closing prayer echoes Isaiah 6:8b in a child's voice («እነሆኝ፤ ላከኝ»). Chapter 10 re-persons Zechariah 2:8 to \"him\" as Hyde heard it («እርሱን የሚነካ የዓይኔን ብሌን ይነካል»; the plural form is in enduring-persecution-for-christ.am.json), alludes to Revelation 12:10 (\"accuser of the brethren\", «የወንድሞች ከሳሽ»; 1962 has «የወንድሞቻችን ከሳሽ»), and turns Philippians 4:8 into Hyde's own prayer.",
+  "Clock times keep the English hour number with Western digits (\"ጠዋት 8 ሰዓት ... ከሰዓት በኋላ 3 ሰዓት ተኩል\", chapter 8), the majority convention in the shipped am books (religious-experience-and-journal.am); a native reviewer may prefer Ethiopian reckoning (ጠዋት 2 ሰዓት / 9 ሰዓት ተኩል).",
+  "Names follow men-who-moved-heaven.am.json chapter 8 (ጆን ኔልሰን ሃይድ, «ጸሎተኛው ሃይድ», ፑንጃብ, ሲያልኮት, ኢሊኖይ). Hyde's Punjabi last words are transliterated into Ge'ez («ቦል፣ ዪሱ መሲሕ፣ ኪ ጃይ!»)."
+ ],
+ "references": [
+  {
+   "reference": "Matthew 9:38",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "daughters-of-the-king-3.am.json"
+  },
+  {
+   "reference": "Isaiah 6:8b",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Luke 11:13b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Psalm 51:10a",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Exodus 4:12b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "amanda-smith-autobiography-teens.am.json"
+  },
+  {
+   "reference": "Mark 1:35",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Zechariah 4:6b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "the-life-of-trust-teens.am.json"
+  },
+  {
+   "reference": "Psalm 81:10b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "the-life-of-trust-children.am.json"
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Zechariah 2:8",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Revelation 12:10",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Luke 15:20b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 15:57",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  }
+ ]
+}
