@@ -4794,6 +4794,8 @@ BODY_CORRECTIONS.setdefault("how-to-bring-men-to-christ", {})["back_matter"] = [
      "<p>“<i>Few books of recent years are better adapted to instruct"),
     ("ሊኖራቸውም የግድ ነው።</p>",
      "<p>“<i>Few books of recent years are better adapted to instruct"),
+    ("avant que Dieu puisse se servir d’eux.</p>",
+     "<p>“<i>Few books of recent years are better adapted to instruct"),
 ]
 # Two stanzas of verse lost at import (Gutenberg #73032). Every chapter heading
 # sits in its own wrapper div, so `import_gutenberg.split_by_heading` takes its
