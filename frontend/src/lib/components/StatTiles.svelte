@@ -21,7 +21,15 @@
 	 * and an icon, so the row reads as six different things rather than six
 	 * beige boxes. A zero tile drops the colour and says how to fill it instead.
 	 */
-	let { stats }: { stats: ReadingStats } = $props();
+	let {
+		stats,
+		compact = false
+	}: {
+		stats: ReadingStats;
+		/** One line per tile (icon, number, label) — the dashboard's slim strip.
+		 *  Settings keeps the tall tiles with their how-to-start hints. */
+		compact?: boolean;
+	} = $props();
 	const t = i18n.t;
 
 	type Hue = 'indigo' | 'cypress' | 'ochre' | 'plum' | 'oxblood' | 'slate';
@@ -84,7 +92,7 @@
      as a "70", and there is nothing to link to: it renders as a plain <div>
      with a dashed edge, a muted icon and a one-line hint on how to start
      (wide screens only). -->
-<div class="grid grid-cols-3 gap-3 sm:grid-cols-6">
+<div class="grid grid-cols-3 sm:grid-cols-6" class:gap-3={!compact} class:gap-2={compact} class:compact>
 	{#each tiles as tile (tile.label)}
 		{#if tile.value > 0}
 			<a
@@ -96,18 +104,21 @@
 					class="tile-hue absolute end-2 top-2 text-eyebrow opacity-0 transition-opacity group-hover:opacity-100"
 					aria-hidden="true">↗</span
 				>
-				<span class="tile-hue inline-flex"><Icon name={tile.icon} size={20} /></span>
-				<div class="tile-hue font-display text-h2 font-semibold">{tile.value}</div>
-				<div class="tile-hue mt-0.5 text-eyebrow">{tile.label}</div>
+				<span class="tile-icon tile-hue inline-flex"><Icon name={tile.icon} size={20} /></span>
+				<div class="tile-value tile-hue font-display text-h2 font-semibold">{tile.value}</div>
+				<div class="tile-label tile-hue mt-0.5 text-eyebrow">{tile.label}</div>
 			</a>
 		{:else}
 			<div class="stat-empty rounded-card px-3 py-4 text-center">
-				<span class="inline-flex text-muted"><Icon name={tile.icon} size={20} /></span>
-				<div class="font-display text-h2 font-semibold text-muted">{tile.value}</div>
-				<div class="mt-0.5 text-eyebrow text-text">{tile.label}</div>
+				<span class="tile-icon inline-flex text-muted"><Icon name={tile.icon} size={20} /></span>
+				<div class="tile-value font-display text-h2 font-semibold text-muted">{tile.value}</div>
+				<div class="tile-label mt-0.5 text-eyebrow text-text">{tile.label}</div>
 				<!-- Not on phones: in a three-column row a translated hint wraps to
-				     four lines and stretches every tile beside it. -->
-				<div class="mt-1 hidden text-eyebrow text-muted sm:block">{tile.hint}</div>
+				     four lines and stretches every tile beside it. Not in the slim
+				     strip either, which is one line by design. -->
+				{#if !compact}
+					<div class="mt-1 hidden text-eyebrow text-muted sm:block">{tile.hint}</div>
+				{/if}
 			</div>
 		{/if}
 	{/each}
@@ -131,5 +142,30 @@
 	   is the token for interactive controls (app.css). */
 	.stat-empty {
 		border: 1.5px dashed var(--border);
+	}
+	/* The slim strip: each tile two short lines — icon and number, then the
+	   label — at about half the tall tile's height. Grid areas over the same
+	   markup, so the two variants stay one template. */
+	.compact .stat-tile,
+	.compact .stat-empty {
+		display: grid;
+		grid-template-columns: auto auto;
+		grid-template-areas: 'icon value' 'label label';
+		justify-content: center;
+		align-items: center;
+		column-gap: 0.4rem;
+		padding-block: 0.55rem;
+	}
+	.compact .tile-icon {
+		grid-area: icon;
+	}
+	.compact .tile-value {
+		grid-area: value;
+		font-size: var(--fs-h3);
+		line-height: 1.1;
+	}
+	.compact .tile-label {
+		grid-area: label;
+		margin-top: 0.1rem;
 	}
 </style>

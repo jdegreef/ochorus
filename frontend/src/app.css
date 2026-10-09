@@ -4018,6 +4018,26 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		--col-w: 100vw;
 	}
 }
+/* THE DASHBOARD'S PAIRS. Two home sections side by side where there is room
+   (two columns of at least 26rem: from about lg up), stacked below. Each
+   section keeps its own markup — a `page-col px-5` section — and the pair
+   takes its column and gutter instead, so nothing inside has to know. A
+   section that renders nothing simply leaves the other the whole width:
+   auto-fit collapses the empty track. */
+.dash-pair {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+	column-gap: 2rem;
+	align-items: start;
+}
+.dash-pair > .page-col {
+	width: auto;
+	margin-inline-start: 0;
+	padding-inline: 0;
+}
+.dash-pair:not(:has(> *)) {
+	display: none;
+}
 /* The site chrome's column: the header bar and the footer rows share the page
    column's edges from sm up (they sat at 88rem / 64rem around a 76rem body),
    never narrower than 64rem — the nav's six links and controls need that.
