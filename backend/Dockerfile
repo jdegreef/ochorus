@@ -1,5 +1,7 @@
 # Production image for the Ochorus API. Portable across Render, Fly.io, etc.
-FROM python:3.12-slim
+# The official python image via Google's Docker Hub mirror: Docker Hub's
+# anonymous pull limit breaks builds on shared runner IPs (see ci.yml).
+FROM mirror.gcr.io/library/python:3.12-slim
 
 # Fast, reproducible installs with uv.
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
