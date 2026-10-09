@@ -3,7 +3,7 @@
  "slug": "elisabeth-elliot-a-life-children",
  "language": "am",
  "job_issue": 5746,
- "pull_request": null,
+ "pull_request": 5767,
  "note": [
   "Amharic (am) is not in library/language_seed.py (added from the admin), so system_prompt('am') raises locally; the translators were briefed with the same template by hand, plus a names table taken from the shipped Amharic Elisabeth Elliot bio (author_bios_am/elisabeth-elliot.html) and the anthologies that tell her story (men-and-women-who-gave-everything-2, brave-for-god-3): ኤልሳቤት ኤሊየት, ጂም ኤሊየት, ኢኳዶር, ዋኦራኒ, ኪቹዋ, ሻንዲያ, ኩራራይ, ኔት ሴይንት, ሬቸል ሴይንት, ቫለሪ, ጊካሪ, «የደስታ መግቢያ በር», «ቀጣዩን ነገር አድርግ». No full or teen Amharic edition of this life exists yet.",
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Re-verified for this job 2026-10-09: the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh/usfm/<code>.usfm, lower-case codes) returns 200 for heb/2ti/rom and 404 for gen/psa/isa/deu/ecc/jer (no usx/ either); api.takeroot.bible is unreachable from the container. So the five NT epigraphs are the 1962 wording lifted by script from the USFM, and every `mined` row is an exact substring of at least 20 characters of that verse inside block 0.",
