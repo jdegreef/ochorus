@@ -5418,6 +5418,16 @@
 				524
 			]
 		},
+		"foxes-book-of-martyrs-teens": {
+			"ground": "04afc7649727f0cdebaff466f8e24ac79e2ce356003e0edbc99f68628ef693c5",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"fr/a-retrospect-children": {
 			"ground": "ef73899737cbfdce10221020943c9275d537bd1e2faaf494d5f611effaa02ac3",
 			"style": "revival",
