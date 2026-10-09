@@ -5195,6 +5195,35 @@
 				439
 			]
 		},
+		"es/finney-memoirs": {
+			"ground": "ec359b486ebc7d943d9740d5ee8abc29c16d7f315dc8e5614f74b5d87cbcfda4",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[126, 102, 474, 131]
+				],
+				"title": [
+					[131, 305, 469, 381],
+					[70, 370, 530, 446]
+				],
+				"subtitle": [
+					[157, 520, 443, 541]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				254,
+				541
+			]
+		},
 		"es/first-epistle-of-clement": {
 			"ground": "6598e83c9f6275e3fea947d397e9393dd0811f91e7a961269a1841b79834f684",
 			"style": "inscriptional",
