@@ -52,7 +52,9 @@
   "cover_url": "/covers/art/a-retrospect-teens.jpg",
   "pdf_url": "",
   "cover_color": "",
-  "series": null,
+  "series": [
+   "straight-talk"
+  ],
   "series_position": null,
   "sort_order": 26,
   "is_published": true,

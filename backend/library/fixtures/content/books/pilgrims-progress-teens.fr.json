@@ -48,7 +48,9 @@
   "cover_url": "/covers/art/pilgrims-progress-teens.jpg",
   "pdf_url": "",
   "cover_color": "",
-  "series": null,
+  "series": [
+   "straight-talk"
+  ],
   "series_position": null,
   "sort_order": 28,
   "is_published": true,
