@@ -1,0 +1,15 @@
+{
+ "kind": "bio",
+ "slug": "david-livingstone",
+ "language": "sw",
+ "job_issue": 5097,
+ "note": [
+  "No Bible verse is quoted in the source (Matthew 28:20 does not appear in this bio); references is empty. Livingstone's Cambridge appeal, the 'forward' letter, the 'open sore' sentence and the 'Fear God and work hard' motto are his words, translated as prose.",
+  "Forms aligned with the shipped sw corpus and the existing david-livingstone.faq.json: Chama cha Umisionari cha London, Kanisa Kuu la Westminster, “piecer” (kept in English, as in the FAQ), Mosi-oa-Tunya “moshi unaonguruma”, biashara ya utumwa ya Waarabu na Waswahili, kidonda kilichowazi cha dunia, Dkt Livingstone, nadhani?, Chifu Chitambo, mabwawa ya Bangweulu, Ujiji, Mto Naili, Rasi (the Cape). The open-sore prayer follows the FAQ's rendering. Universities’ Mission to Central Africa kept in English as an institution name (as China Inland Mission is in the C. T. Studd bio).",
+  "Victoria Falls is not named in the English (only 'renamed them for his queen'), so the name Maporomoko ya Victoria was not added.",
+  "Clock times: per house rule the printed hours are kept — 'from six in the morning until eight at night' => 'kuanzia saa sita asubuhi hadi saa nane usiku'. Reviewer: in Swahili time-reckoning this reads as noon to 2 a.m.; the shipped FAQ for this author converts to 'saa kumi na mbili asubuhi hadi saa mbili usiku'. Consider switching for reader clarity.",
+  "Shipped sw FAQ inconsistency (not this file): david-livingstone.faq.json says Sechele was baptised in 1849; the English bio and the historical record say 1848 (1 October 1848). This bio follows 1848.",
+  "Translated the corrected fact: Livingstone was ordained 20 November 1840 and sailed on the George on 8 December 1840, so 'mwezi uliofuata' (the following month), not the English 'that same month'. The same slip in the English bio/FAQ and the am/es/fr/pt editions (and the sw FAQ) is reported for a separate fix."
+ ],
+ "references": []
+}
