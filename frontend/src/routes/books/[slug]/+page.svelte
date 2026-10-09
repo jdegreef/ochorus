@@ -10,6 +10,7 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import {
 		bookTimeLeft,
+		chapterCount,
 		chapterName,
 		chapterNameIn,
 		contentLang,
@@ -42,6 +43,9 @@
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import { CONTENTS_COLLAPSE_AT, contentsWindow } from '$lib/contentsWindow';
 	import BookCard from '$lib/components/BookCard.svelte';
+	import { editionFamily, RUNG_LABEL } from '$lib/audienceHub';
+	import SeriesSegments from '$lib/components/SeriesSegments.svelte';
+	import type { BookSummary } from '$lib/library-public';
 	import PersonCard from '$lib/components/PersonCard.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import ArticleLinkCard from '$lib/components/ArticleLinkCard.svelte';
@@ -225,7 +229,7 @@
 			.replace('%name%', book.author.name);
 		const facts = [
 			book.chapter_count
-				? `${book.chapter_count} ${book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}`
+				? chapterCount(book.chapter_count)
 				: '',
 			totalWords ? readingTime(totalWords) : ''
 		].filter(Boolean);
@@ -455,16 +459,32 @@
 	const hasAbout = $derived(!!(book.about_html || book.description));
 	const navItems = $derived(
 		[
-			book.editions?.length ? { id: 'editions', label: t('book.otherEditions') } : null,
-			// Shares the heading's key: the pill and the <h2> are the same words.
+			// The pill and the <h2> share their key: they are the same words. A
+			// count where a section is a list — how much is behind the tab.
+			book.editions?.length
+				? { id: 'editions', label: t('audience.spotlightLadder'), count: book.editions.length + 1 }
+				: null,
 			book.guides?.length ? { id: 'guide', label: t('book.readersGuide') } : null,
 			hasAbout ? { id: 'about', label: t('book.aboutWork') } : null,
-			{ id: 'contents', label: t('reader.contents') },
-			qa.items.length ? { id: 'questions', label: t('qa.sectionTitle') } : null,
+			{ id: 'contents', label: t('reader.contents'), count: book.chapter_count },
+			qa.items.length ? { id: 'questions', label: t('qa.sectionTitle'), count: qa.items.length } : null,
 			book.related?.length ? { id: 'related', label: t('book.related') } : null
-		].filter((x): x is { id: string; label: string } => x != null)
+		].filter((x): x is { id: string; label: string; count?: number } => x != null)
 	);
 	const showSubnav = $derived(navItems.length >= 2);
+
+	// One reading of the reader's place for the contents' bar and its rows.
+	// The chapter they're in wins over "read" (a reader who went back to
+	// reread is IN that chapter), and only a reader with a place (`resuming`,
+	// the read verb's own test) has one.
+	const isCurrent = (order: number) => resuming && order === resumeHere;
+	const isRead = (order: number) =>
+		!isCurrent(order) && (finishedAt != null || (furthestHere != null && order < furthestHere));
+	/** The place in words — the read card's line, said again over the contents. */
+	const placeLine = $derived(
+		finishedAt != null ? t('fav.shelfFinished') : `${onChapter}${minutesLeft ? ` · ${bookTimeLeft(minutesLeft)}` : ''}`
+	);
+	const family = $derived(book.editions?.length ? editionFamily<BookSummary>(book, book.editions) : []);
 	let subnavH = $state(0);
 	// A cold #section load jumps against the bar's estimate; re-land it once measured.
 	realignHashOnMeasure(() => subnavH);
@@ -661,9 +681,7 @@
 								<ProgressBar percent={100} label="{book.title}: {t('fav.shelfFinished')}" />
 							</div>
 						{:else if resuming}
-							<p class="text-small text-muted">
-								{onChapter}{#if minutesLeft}{` · ${bookTimeLeft(minutesLeft)}`}{/if}
-							</p>
+							<p class="text-small text-muted">{placeLine}</p>
 							<p class="read-card-title" dir="auto">{chapterNameIn(readOrder, resumeChapter?.title, book.title)}</p>
 							<div class="mt-2">
 								<ProgressBar percent={percentRead} label="{book.title}: {onChapter}" />
@@ -780,7 +798,8 @@
 							class="subnav-link subnav-link-tight"
 							class:is-active={spy.active === item.id}
 							aria-current={spy.active === item.id ? 'true' : undefined}
-							onclick={(e) => spy.jump(e, item.id)}>{item.label}</a
+							onclick={(e) => spy.jump(e, item.id)}
+							>{item.label}{#if item.count}{' '}<span class="count">{item.count}</span>{/if}</a
 						>
 					</li>
 				{/each}
@@ -803,16 +822,36 @@
 	     they start reading, and a child on the retelling needs the way back to
 	     the original. Derived and published-gated server-side (see the API's
 	     `editions`), so it renders only for the handful of works that have one.
-	     The card titles already carry the "(For …)" suffix, so the grid reads as
-	     the editions it is without a per-card badge. -->
+	     The whole family is offered, this edition ringed, youngest first (the
+	     ladder's order, as the hubs draw it);
+	     each card is its rung's name and length — the titles differ only by the
+	     "(For …)" suffix the rung already says. -->
 	{#if book.editions?.length}
 		<section id="editions" class="jump-anchor mt-8">
-			<h2 class="section-heading">{t('book.otherEditions')}</h2>
-			<div class="book-grid">
-				{#each book.editions as ed (ed.slug)}
-					<BookCard book={ed} />
+			<h2 class="section-heading">{t('audience.spotlightLadder')}</h2>
+			<ul class="edition-picker">
+				{#each family as { book: ed, rung } (ed.slug)}
+					{@const here = ed.slug === book.slug}
+					{@const words = here ? totalWords : ed.word_count}
+					<li>
+						<a
+							href={localizeHref(`/books/${ed.slug}`)}
+							class="edition-card"
+							class:here
+							aria-current={here ? 'page' : undefined}
+						>
+							<span class="edition-cover" aria-hidden="true"><BookCover book={ed} /></span>
+							<span class="min-w-0">
+								<span class="edition-rung">{t(RUNG_LABEL[rung])}</span>
+								<span class="block text-small text-muted"
+									><span class="whitespace-nowrap">{chapterCount(ed.chapter_count)}</span
+									>{#if words}{' '}<span class="whitespace-nowrap">· {readingTime(words)}</span>{/if}</span
+								>
+							</span>
+						</a>
+					</li>
 				{/each}
-			</div>
+			</ul>
 		</section>
 	{/if}
 
@@ -924,11 +963,10 @@
 		</nav>
 	{/if}
 
-	<!-- Contents. When the reader has a saved place, each chapter shows where they
-	     are in it: Continue's chapter (resumeHere) reads in the accent colour
-	     (aria-current), and every chapter before the furthest one REACHED
-	     (furthestHere — opened in sequence or read to its end, never a peek) carries
-	     a trailing check. Both are client-only (null at prerender and for a
+	<!-- Contents. When the reader has a saved place, Continue's chapter
+	     (resumeHere, aria-current) is the one they're in, and every chapter before
+	     the furthest one REACHED (furthestHere — opened in sequence or read to its
+	     end, never a peek) counts as read. Both are client-only (null at prerender and for a
 	     first-time reader), so the baked HTML and a new reader's view are exactly as
 	     before — the markers are progressive enhancement that appears after
 	     hydration. There is still no per-chapter completion record, so a check means
@@ -937,18 +975,36 @@
 		<h2 class="section-heading">
 			{t('reader.contents')}
 			<span class="meta"
-				>· <span class="whitespace-nowrap"
-					>{book.chapter_count}
-					{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}</span
+				>· <span class="whitespace-nowrap">{chapterCount(book.chapter_count)}</span
 				> · <span class="whitespace-nowrap">{readingTime(totalWords)}</span></span
 			>
 		</h2>
-		<ol id="contents-list" class="divide-y divide-border">
+		<!-- A reader with a place: the book as one bar in chapter-length parts,
+		     those behind them filled, the one they're in half-tinted — the same
+		     place the read card names, in the same words. -->
+		{#if finishedAt != null || resuming}
+			<div class="mb-2 mt-1">
+				<!-- A part per chapter while the parts stay legible; a long book
+				     (past the length the list itself collapses at) is one bar. -->
+				{#if book.chapters.length <= CONTENTS_COLLAPSE_AT * 2}
+					<SeriesSegments
+						stages={book.chapters.map((c) => (isCurrent(c.order) ? 'reading' : isRead(c.order) ? 'done' : 'unread'))}
+						weights={book.chapters.map((c) => c.word_count)}
+						label={placeLine}
+					/>
+				{:else}
+					<ProgressBar percent={finishedAt != null ? 100 : percentRead} label={placeLine} />
+				{/if}
+				<p class="mt-1.5 text-small text-muted">{placeLine}</p>
+			</div>
+		{/if}
+		<!-- The chapters as a path: a line down the markers, a filled mark with a
+		     tick for each chapter behind the reader, a ring for the one they're in
+		     (its row raised, offering to carry on), a number for the rest. -->
+		<ol id="contents-list" class="contents-path">
 			{#each book.chapters as ch (ch.order)}
-				{@const read = finishedAt != null || (furthestHere != null && ch.order < furthestHere)}
-				{@const current = finishedAt == null && ch.order === resumeHere}
-				{@const numCls = current ? 'text-accent' : 'text-muted'}
-				{@const titleCls = current ? 'text-accent font-medium' : 'text-text'}
+				{@const read = isRead(ch.order)}
+				{@const current = isCurrent(ch.order)}
 				{@const gap = gapBefore.get(ch.order)}
 				{#if gap}
 					<li>
@@ -959,21 +1015,25 @@
 							aria-expanded="false"
 							onclick={() => (showAllChapters = true)}
 						>
-							⋯ {gap} {gap === 1 ? t('book.chapterOne') : t('book.chaptersMany')}
+							⋯ {chapterCount(gap)}
 						</button>
 					</li>
 				{/if}
 				<li class:hidden={visibleOrders != null && !visibleOrders.has(ch.order)}>
 					<a
 						href={readHref(ch.order)}
-						class="flex items-baseline gap-3 py-2.5 hover:no-underline"
+						class="contents-row"
+						class:current
 						aria-current={current ? 'step' : undefined}
 					>
-						<span class="w-6 shrink-0 text-small {numCls}">{ch.order}</span>
-						<span class="flex-1 text-body {titleCls}" dir="auto">{chapterName(ch.order, ch.title)}</span>
-						<span class="text-small text-muted">{readingMinutes(ch.word_count)} {t('common.min')}</span>
-						{#if read}
-							<Icon name="check" size={15} label={t('settings.heatmapRead')} class="shrink-0 text-accent" />
+						<span class="contents-mark" class:read class:current
+							>{ch.order}{#if read}<span class="sr-only">{`, ${t('settings.heatmapRead')}`}</span>{/if}</span
+						>
+						<span class="flex-1 text-body" dir="auto">{chapterName(ch.order, ch.title)}</span>
+						{#if current}
+							<span class="whitespace-nowrap text-small font-semibold text-accent">{t('book.continue')} <Arrow /></span>
+						{:else}
+							<span class="text-small text-muted">{readingMinutes(ch.word_count)} {t('common.min')}</span>
 						{/if}
 					</a>
 				</li>
@@ -1281,13 +1341,118 @@
 		text-decoration: none;
 	}
 
+	/* The edition picker: a card per rung, the one in hand ringed in the
+	   accent (the .seg selected-edge rule: an edge, never the fill alone). */
+	.edition-picker {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+		gap: 0.75rem;
+		margin: 0.75rem 0 0;
+		padding: 0;
+		list-style: none;
+	}
+	.edition-card {
+		display: flex;
+		align-items: center;
+		gap: 0.9rem;
+		height: 100%;
+		padding: 0.75rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: var(--surface);
+		color: var(--text);
+		text-decoration: none;
+	}
+	.edition-card:hover {
+		border-color: var(--accent-soft-border);
+		text-decoration: none;
+	}
+	.edition-card.here {
+		border-color: var(--accent);
+		box-shadow: inset 0 0 0 1px var(--accent);
+	}
+	.edition-cover {
+		flex-shrink: 0;
+		width: 3.5rem;
+	}
+	.edition-rung {
+		display: block;
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		line-height: 1.25;
+	}
+	.here .edition-rung {
+		color: var(--accent);
+	}
+
+	/* The path: a hairline down the markers' centre, behind them. */
+	.contents-path {
+		position: relative;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.contents-path::before {
+		content: '';
+		position: absolute;
+		inset-block: 1rem;
+		inset-inline-start: calc(0.75rem + 0.75rem - 1px);
+		width: 2px;
+		background: var(--border);
+	}
+	.contents-row {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 0.85rem;
+		padding: 0.5rem 0.75rem;
+		border-radius: var(--radius-card);
+		color: var(--text);
+		text-decoration: none;
+	}
+	.contents-row:hover {
+		background: var(--surface-2);
+		text-decoration: none;
+	}
+	.contents-row.current {
+		margin-block: 0.25rem;
+		padding-block: 0.75rem;
+		background: var(--accent-soft);
+		box-shadow: inset 0 0 0 1px var(--accent-soft-border);
+	}
+	.contents-mark {
+		display: inline-flex;
+		flex-shrink: 0;
+		align-items: center;
+		justify-content: center;
+		width: 1.5rem;
+		height: 1.5rem;
+		border: 1.5px solid var(--border-strong);
+		border-radius: 50%;
+		background: var(--bg);
+		font-size: var(--fs-micro);
+		font-variant-numeric: tabular-nums;
+		color: var(--muted);
+	}
+	.contents-mark.read {
+		border-color: var(--accent);
+		background: var(--accent);
+		color: var(--accent-contrast);
+	}
+	.contents-mark.current {
+		border: 2px solid var(--accent);
+		background: var(--surface);
+		font-weight: 600;
+		color: var(--accent);
+	}
+
 	/* The "⋯ N chapters" row standing in for a collapsed run: quiet, indented to
 	   the title column, and a way to open the full list. */
 	.contents-gap {
 		display: block;
 		width: 100%;
 		padding-block: 0.35rem;
-		padding-inline: 2.25rem 0;
+		padding-inline: 3.1rem 0;
 		border: 0;
 		background: transparent;
 		text-align: start;

@@ -5,6 +5,7 @@ import {
 	AUDIENCE_HUBS,
 	TEENS_HUB,
 	challengeState,
+	editionFamily,
 	nextRung,
 	hubFor,
 	YOUNG_READERS_HUB,
@@ -210,5 +211,23 @@ describe('each hub', () => {
 		for (const h of AUDIENCE_HUBS) {
 			expect(existsSync(resolve(import.meta.dirname, `../../static/og${h.href}.png`)), h.href).toBe(true);
 		}
+	});
+});
+
+describe('editionFamily', () => {
+	const rungs = (fam: ReturnType<typeof editionFamily>) => fam.map((e) => `${e.book.slug}:${e.rung}`);
+
+	it('names each edition and orders them youngest first, as the ladder does', () => {
+		expect(rungs(editionFamily({ slug: 'pp' }, [{ slug: 'pp-teens' }, { slug: 'pp-children' }]))).toEqual([
+			'pp-children:children',
+			'pp-teens:teens',
+			'pp:full'
+		]);
+	});
+
+	it('keeps an original whose own slug ends in a suffix the original', () => {
+		expect(
+			rungs(editionFamily({ slug: 'divine-songs-for-children-teens' }, [{ slug: 'divine-songs-for-children' }]))
+		).toEqual(['divine-songs-for-children-teens:teens', 'divine-songs-for-children:full']);
 	});
 });
