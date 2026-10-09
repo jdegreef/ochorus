@@ -9444,6 +9444,16 @@
 				524
 			]
 		},
+		"lg/absolute-surrender": {
+			"ground": "bf1938c977fbb93897749f1ba73fd4a36cef866e54ac501c009178cd39bb7216",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"lg/all-of-grace": {
 			"ground": "061ef7fbfa3d53136aa192a81e9613154bf540c22db8a65fc6520ee9d4762d07",
 			"style": "revival",
