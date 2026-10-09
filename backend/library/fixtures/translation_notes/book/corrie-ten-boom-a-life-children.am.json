@@ -1,0 +1,102 @@
+{
+ "kind": "book",
+ "slug": "corrie-ten-boom-a-life-children",
+ "language": "am",
+ "job_issue": 5744,
+ "pull_request": null,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its NT is on disk in the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh/usfm; re-verified for this job 2026-10-09: luk/mat/1th return 200, psa 404, no OT). The mirror is lossy where it merges verses: Matthew 5:44-46 and 1 Thessalonians 5:17-19 are each a single truncated line («የሚወዱአችሁን ብትወዱ…», «መንፈስን አታጥፉ፤») that drops the very clauses this book quotes, so those two are mined from shipped am works instead. Luke 16:10a matches the mirror verbatim as well as the cited file.",
+  "A `mined` row is an exact substring of at least 20 characters of the cited shipped *.am.json (sentence-final ። aside). Each epigraph follows the shipped am children's editions: the 1962 wording of the part the English child-paraphrase means, cited `— ከ<Book> <chapter>` as the English cites `— from <Book> <chapter>`.",
+  "Self_rendered, needing a native check: Psalm 122:6 (susanna-wesley-clarke.am carries a re-personed form «የኢየሩሳሌምን ሰላም ለምኚ። ‹የሚወድዱሽ ይከናወንላቸዋል።›»; here the plural imperative); Psalm 32:7 (no shipped am rendering); Genesis 5:24a «ከእግዚአብሔር ጋር አካሄደ» (agrees with clothed-with-strength-and-dignity.am but is under 20 characters); Psalm 124:7 reuses verbatim the wording of samuel-ajayi-crowther-a-life-children.am, itself self_rendered, so the two children's editions agree. Isaiah 43:2a follows the children's-shelf form «በውኃ» (amanda-smith-autobiography-children.am, men-and-women-who-gave-everything-2.am) rather than «በውኆች» (a-brand-plucked-from-the-fire.am).",
+  "Names follow Corrie's shipped am bio (author_bios_am/corrie-ten-boom) and the am plan card for family-devotions-brave-and-faithful: ኮሪ ቴን ቡም, ቤትሲ, ቤዬ, ሃርለም, ራቨንስብሩክ, ስኬቨኒንገን, ቩኽት, ዩሲ, ኔዘርላንድስ, ናዚዎች, አይሁዳውያን, የሰፈር ቤት (barracks). Terms: the Angels' Crib = «የመላእክት አልጋ»; «ኢየሱስ አሸናፊ ነው» (Jesus is Victor); the cat ማኄር ሻላል ሐሽ ባዝ as at Isaiah 8:1. Each chapter's three study_questions are translated, as the am plan card promises. Amharic is an admin-added language with no local system_prompt; conventions were measured from the shipped am children's and teen editions. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 122:6",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Psalm 68:6a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "clothed-with-strength-and-dignity.am.json"
+  },
+  {
+   "reference": "Luke 16:10a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "amanda-smith-autobiography-children.am.json"
+  },
+  {
+   "reference": "Esther 4:14b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "rooted-6.am.json"
+  },
+  {
+   "reference": "Psalm 32:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 91:1-2",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "the-god-of-all-comfort.am.json"
+  },
+  {
+   "reference": "Psalm 27:10",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "rooted-4.am.json"
+  },
+  {
+   "reference": "Genesis 5:24a",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Isaiah 43:2a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "amanda-smith-autobiography-children.am.json"
+  },
+  {
+   "reference": "1 Thessalonians 5:18",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "growing-in-wisdom.am.json"
+  },
+  {
+   "reference": "Psalm 139:8",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "the-god-of-all-comfort.am.json"
+  },
+  {
+   "reference": "Psalm 124:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 5:44a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "godliness.am.json"
+  }
+ ]
+}
