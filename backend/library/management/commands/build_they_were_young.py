@@ -179,6 +179,73 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
         ],
     },
+    3: {
+        "sort_order": 143,
+        "publication_year": 2026,
+        "title": "They Were Young – Book 3: Questions",
+        "subtitle": "Six who wrestled with doubt while they were young",
+        "cover_url": "/covers/they-were-young-3.svg",
+        "cover_color": covers.ink_safe("#2a5a6a"),  # a thinking teal
+        "description": (
+            "Six true stories for readers aged 13 to 17 of people who wrestled with "
+            "big questions while they were young: a restless teenager in Roman "
+            "Africa who stole pears for the thrill of it; a French boy who worked "
+            "out geometry for himself; a Dissenter's son who wanted something "
+            "better to sing; a college student who hated the doctrine he came to "
+            "love; a teenage atheist who learned to argue; and a German boy who "
+            "chose the church against his family's doubts. The third book of They "
+            "Were Young."
+        ),
+        "about_html": (
+            "<p>They Were Young is an original Ochorus series of true stories for "
+            "readers aged 13 to 17 about people whose faith began, or was tested, "
+            "while they were young. Book 3, “Questions”, gathers six who wrestled "
+            "with doubt and the big questions of faith as teenagers, and found that "
+            "following Jesus did not mean switching off their minds.</p>"
+            "<p>Augustine chased answers through his teenage years in Carthage "
+            "until a voice in a Milan garden said, “Take up and read.” Blaise "
+            "Pascal was a mathematical prodigy who found that the God of the "
+            "philosophers was not enough. Isaac Watts came to trust Christ at about "
+            "fifteen and wrote hymns still sung today. Jonathan Edwards argued "
+            "against God’s sovereignty until one verse changed how he saw "
+            "everything. C. S. Lewis lost his faith at school and became a "
+            "confident teenage atheist before the long road back. Dietrich "
+            "Bonhoeffer told his family of scientists at fourteen that he would "
+            "study theology, and followed that call all the way to a Nazi "
+            "prison.</p>"
+            "<p>The stories are true, with no invented scenes or conversations; "
+            "where the records are silent or a famous story is only a tradition, "
+            "they say so. Each ends with the person’s own words, four questions to "
+            "think through, and a pointer to read on in the library. Books 1 and 2 "
+            "are not required.</p>"
+        ),
+        "qa": [
+            {
+                "question": "What is Book 3 of They Were Young about?",
+                "answer": "Six true stories of people who wrestled with doubt and the big questions of faith while they were young, and found that faith and thinking belong together. Each chapter tells one life in full, lingering on the teenage years.",
+            },
+            {
+                "question": "Who is in Book 3?",
+                "answer": "Augustine of Hippo, Blaise Pascal, Isaac Watts, Jonathan Edwards, C. S. Lewis and Dietrich Bonhoeffer: thinkers, writers and pastors from North Africa, France, England, America, Ireland and Germany across sixteen centuries.",
+            },
+            {
+                "question": "Is it okay to doubt?",
+                "answer": "These stories take doubt seriously. Several of the six lost their faith or fought against God as teenagers, and their questions became the road that brought them to Jesus. But none of them made doubt a place to live: they kept looking for the truth.",
+            },
+            {
+                "question": "Are the stories true?",
+                "answer": "Yes. They are drawn from the people’s own writings, such as Augustine’s Confessions, Pascal’s Pensées and Edwards’s Personal Narrative, and from the earliest accounts. Where a famous story is a tradition, such as Watts being told to write better hymns, it says so.",
+            },
+            {
+                "question": "Do I need to read Books 1 and 2 first?",
+                "answer": "No. Each book stands on its own. Book 1, Called, tells of six people who came to faith as teenagers, and Book 2, Tested, of six whose faith was tested young.",
+            },
+            {
+                "question": "Can it be used in a youth group?",
+                "answer": "Yes. Each chapter can be read in one sitting and ends with four questions written for discussion.",
+            },
+        ],
+    },
 }
 
 

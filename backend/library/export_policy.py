@@ -104,6 +104,7 @@ EXPORT_PILOT = frozenset({
     ("life-and-diary-of-david-brainerd-teens", "en"),
     ("absolute-surrender-teens", "en"),
     ("foxes-book-of-martyrs-teens", "en"),
+    ("pensees-teens", "en"),
     # Retellings of an Ochorus Original (the Portraits of Courage life): the
     # parent author is the imprint, so, like the Portraits themselves, these have
     # no About the Author page. The Teens edition quotes only the public-domain ASV.
@@ -149,13 +150,14 @@ EXPORT_PILOT = frozenset({
     ("samuel-ajayi-crowther-a-life-children", "sw"),
     # The 2026-10 teen shelf. Seven more Portraits of Courage retellings for
     # teens (ASV, or KJV for Elliot and Lewis) and the Ochorus Originals
-    # Anchored 1–2, Real Questions 1–2 and They Were Young 1–2 (BSB). All
+    # Anchored 1–2, Real Questions 1–2 and They Were Young 1–3 (BSB). All
     # imprint-authored, so no About the Author page; every attribution opens
     # "© Ochorus" and none quotes a version that needs a publisher's notice.
     ("anchored-1", "en"),
     ("anchored-2", "en"),
     ("they-were-young-1", "en"),
     ("they-were-young-2", "en"),
+    ("they-were-young-3", "en"),
     ("real-questions-1", "en"),
     ("corrie-ten-boom-a-life-teens", "en"),
     ("elisabeth-elliot-a-life-teens", "en"),

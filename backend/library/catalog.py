@@ -762,7 +762,7 @@ BOOKS: list[BookEntry] = [
               "docsouth", "https://docsouth.unc.edu/neh/allen/allen.html",
               subtitle="Written by Himself",
               cover_color="#7a1f2b"),
-    BookEntry("amanda-smith-autobiography", "An Autobiography",
+    BookEntry("amanda-smith-autobiography", "Amanda Smith: An Autobiography",
               "amanda-berry-smith", "docsouth",
               "https://docsouth.unc.edu/neh/smitham/smith.html",
               subtitle="The Story of the Lord's Dealings with Mrs. Amanda Smith",

@@ -175,6 +175,29 @@ describe('library palette', () => {
 		}
 	});
 
+	// A .section-band's ground: the section's soft wash half-mixed into the
+	// page (sRGB, as color-mix computes it). Pinned to the CSS so the two
+	// can't drift, then measured for every section in every theme.
+	it('a section band is the soft wash half-mixed into the page', () => {
+		expect(CSS).toMatch(/\.section-band \{\s*background-color: color-mix\(in srgb, var\(--section-hue-soft\) 50%, var\(--bg\)\);/);
+	});
+	for (const [theme, vars] of Object.entries(THEMES)) {
+		it(`text, muted, accent and the section's hue clear 4.5:1 on every section band in ${theme}`, () => {
+			const failures: string[] = [];
+			for (const section of SECTIONS) {
+				const hue = CSS.match(new RegExp(`--section-${section}:\\s*var\\(--hue-(\\w+)\\)`))![1];
+				const soft = rgb(vars[`--hue-${hue}-soft`]);
+				const bg = rgb(vars['--bg']);
+				const ground = soft.map((c, i) => Math.round((c + bg[i]) / 2));
+				for (const ink of ['--text', '--muted', '--accent', `--hue-${hue}`]) {
+					const r = contrastRatio(rgb(vars[ink]), ground);
+					if (r < 4.5) failures.push(`${section}: ${ink} ${r.toFixed(2)}`);
+				}
+			}
+			expect(failures, failures.join('\n')).toEqual([]);
+		});
+	}
+
 	it('every section has a data-section rule', () => {
 		for (const section of SECTIONS) {
 			expect(CSS).toMatch(
