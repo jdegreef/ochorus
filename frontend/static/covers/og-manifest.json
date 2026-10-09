@@ -2389,6 +2389,31 @@
 				517
 			]
 		},
+		"am/watchman-nee-a-life-teens": {
+			"ground": "2a9438d3c574412566fe801019f9f12e80affe723adeef8fb9d7fe2e4d2a842a",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[161, 102, 439, 131]
+				],
+				"title": [
+					[60, 341, 540, 417]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				346,
+				449
+			]
+		},
 		"am/women-who-moved-heaven-2": {
 			"ground": "8e40c6f9e6b91d4e578f37bb7d003df06e80b0e681754c63ef2235015e63efa9",
 			"style": "originals",
