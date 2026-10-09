@@ -10660,6 +10660,16 @@
 				487
 			]
 		},
+		"orthodoxy-teens": {
+			"ground": "1608a79355cd7497a183253d0de65eaf7a9d61feee9b6921e224d624330eab90",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"our-daily-walk": {
 			"ground": "8aa8e59e6f24962428661d08f47f3a4ac4ffbcfb2a94619e444f41d3e5ef0315",
 			"style": "devotional",
