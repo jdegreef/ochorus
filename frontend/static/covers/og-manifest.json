@@ -7637,6 +7637,16 @@
 				503
 			]
 		},
+		"fr/spurgeon-on-prayer": {
+			"ground": "e7e031a953c680db98fe658d3758ec5463a5b74f06bdd5259ddb5f25c3d6cee1",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"fr/stepping-stones-2": {
 			"ground": "eeff2f7a8a6c006168586944f625864372cd295d6475c920a8e11dace39945e3",
 			"style": "lettered",
