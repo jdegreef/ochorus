@@ -5,7 +5,9 @@ import {
 	AUDIENCE_HUBS,
 	TEENS_HUB,
 	challengeState,
+	editionFamily,
 	nextRung,
+	rungOf,
 	hubFor,
 	YOUNG_READERS_HUB,
 	heroCovers,
@@ -210,5 +212,18 @@ describe('each hub', () => {
 		for (const h of AUDIENCE_HUBS) {
 			expect(existsSync(resolve(import.meta.dirname, `../../static/og${h.href}.png`)), h.href).toBe(true);
 		}
+	});
+});
+
+describe('rungOf / editionFamily', () => {
+	it('reads the rung off the slug', () => {
+		expect(rungOf('pilgrims-progress-children')).toBe('children');
+		expect(rungOf('pilgrims-progress-teens')).toBe('teens');
+		expect(rungOf('pilgrims-progress')).toBe('full');
+	});
+
+	it('puts the original first, then teens, then children', () => {
+		const fam = editionFamily({ slug: 'pp-teens' }, [{ slug: 'pp-children' }, { slug: 'pp' }]);
+		expect(fam.map((e) => e.slug)).toEqual(['pp', 'pp-teens', 'pp-children']);
 	});
 });

@@ -161,9 +161,9 @@
 		     spaces survive — as literal text they were collapsed, leaving no
 		     break opportunity after the dot at all. -->
 		<div class="mt-auto pt-0.5 text-eyebrow text-muted">
-			<span class="whitespace-nowrap">{chapters}</span>{#if time}<span
-					class="opacity-50">{' · '}</span
-				><span class="whitespace-nowrap">{time}</span>{/if}
+			<span class="whitespace-nowrap">{chapters}</span>{#if time}{' '}<span class="whitespace-nowrap"
+					><span class="opacity-50">·</span> {time}</span
+				>{/if}
 		</div>
 	</div>
 </a>

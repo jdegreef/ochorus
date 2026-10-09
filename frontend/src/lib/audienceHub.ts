@@ -255,6 +255,19 @@ export const RUNG_LABEL = {
 	full: 'audience.rungFull'
 } as const satisfies Record<EditionRung['rung'], string>;
 
+/** Which rung an edition is, read off its slug — the convention the API's
+ *  `editions` rule keys on (`<base>-children` / `<base>-teens`). */
+export function rungOf(slug: string): EditionRung['rung'] {
+	return slug.endsWith('-children') ? 'children' : slug.endsWith('-teens') ? 'teens' : 'full';
+}
+
+/** A work's editions, the original first: the order a book page offers them,
+ *  where a reader most often arrives at the full text. */
+export function editionFamily<T extends { slug: string }>(current: T, others: readonly T[]): T[] {
+	const order = { full: 0, teens: 1, children: 2 };
+	return [current, ...others].sort((a, b) => order[rungOf(a.slug)] - order[rungOf(b.slug)]);
+}
+
 /** The step after `slug` on its edition ladder — what "Ready for more"
  *  offers a reader who has a retelling in hand — or null at the top. */
 export function nextRung(ladder: EditionRung[] | undefined, slug: string): EditionRung | null {
