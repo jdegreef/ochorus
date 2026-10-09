@@ -43,6 +43,75 @@ def config_for(language: str) -> str:
     return FTS_CONFIGS.get(language, "simple")
 
 
+# --- Prefix-matched languages ---------------------------------------------------
+# Korean writes particles ONTO the word: 은혜를, 은혜는, 은혜의 are all "grace",
+# and `simple` (Postgres ships no Korean config) indexes each as its own token.
+# A websearch query for 은혜 matched only the bare form, which running prose
+# almost never uses — so Korean search found next to nothing. Each word is
+# instead matched as a PREFIX (`'은혜':*`), which the existing GIN index serves:
+# no migration, no re-index, and the stored vectors stay exactly as they are.
+#
+# The reader types particles too ("은혜를 받는"), and a prefix of 은혜를 does not
+# reach 은혜는, so a trailing particle is stripped from each typed word first —
+# only when at least two syllables remain, which keeps 기도, 정의 and 자는 whole.
+# Over-reach is the safe direction here: a word ending in a particle-shaped
+# syllable (어린이 → 어린) still prefix-matches itself.
+#
+# What this gives up: websearch syntax ("quoted phrase", OR, -exclude). Readers
+# rarely type it, and a search that finds nothing is the worse failure.
+PREFIX_LANGUAGES = {"ko"}
+
+# Longest first, so 에서 is tried before 서-less 에. 도 and 만 are left out:
+# too many ordinary words end in them (그리스도, 기도, 사도).
+KO_PARTICLES = (
+    "에서는", "에게서", "으로써", "으로서",
+    "께서", "에서", "에게", "으로", "까지", "부터", "처럼", "보다",
+    "은", "는", "이", "가", "을", "를", "의", "에", "로", "와", "과",
+)
+
+
+def _is_hangul(word: str) -> bool:
+    return all("가" <= ch <= "힣" for ch in word)
+
+
+def strip_particle(word: str) -> str:
+    """``word`` without one trailing Korean particle, if two syllables remain."""
+    if not _is_hangul(word):
+        return word
+    for particle in KO_PARTICLES:
+        if word.endswith(particle) and len(word) - len(particle) >= 2:
+            return word[: -len(particle)]
+    return word
+
+
+def prefix_tsquery(q: str) -> str:
+    """A raw tsquery matching every word of ``q`` as a prefix ('' if none).
+
+    Words are ``\\w`` runs only, so nothing a reader types can inject tsquery
+    syntax (& | ! : ' ( )) into the raw query.
+    """
+    import re
+
+    words = [strip_particle(w) for w in re.findall(r"\w+", q)]
+    return " & ".join(f"'{w}':*" for w in words if w)
+
+
+def search_query(q: str, language: str):
+    """The ``SearchQuery`` for ``q`` in ``language`` — the one place it is built.
+
+    Shared by every search path (results, counts, ranked paging) so they can
+    never disagree about what matches.
+    """
+    from django.contrib.postgres.search import SearchQuery
+
+    config = config_for(language)
+    if language in PREFIX_LANGUAGES:
+        raw = prefix_tsquery(q)
+        if raw:
+            return SearchQuery(raw, config=config, search_type="raw")
+    return SearchQuery(q, config=config, search_type="websearch")
+
+
 # Same weights as the old query-time vectors in search._search_postgres:
 # chapter = title A + book title A + author B + body C;
 # sermon = title A + author B + scripture_ref B + body C.
