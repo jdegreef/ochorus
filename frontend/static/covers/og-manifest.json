@@ -5155,6 +5155,16 @@
 				487
 			]
 		},
+		"es/grace-abounding": {
+			"ground": "00a535d228241958e0e16147c6398a683309390af29afa9c0803c7dfc1a6cbb7",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"es/grace-for-grace-2": {
 			"ground": "f3a2424977200447b90488211dd5a87d8c81543da7531c61f723308ef70957a0",
 			"style": "house",
