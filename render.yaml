@@ -319,6 +319,11 @@ services:
         # each, and each hub's name, intro and Q&A per language.
         - backend/library/hubs.py
         - backend/library/data/hubs/**
+        # Printable leader's guides for the young-reader editions
+        # (/books/<slug>/guide): the loader picks each chapter's verse and
+        # prayer out of its body, and the data files carry the rest.
+        - backend/library/leader_guides.py
+        - backend/library/data/leader_guides/**
     # --- Security headers ---------------------------------------------------
     # The reader had none. That matters more here than on a typical static site:
     # the Supabase access token lives in localStorage and is attached as a Bearer

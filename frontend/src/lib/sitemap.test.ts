@@ -39,6 +39,14 @@ vi.mock('$lib/library-public', () => {
 		// The young readers' hub has something in English, Swahili and an
 		// unadvertised locale; the teens' hub has nothing anywhere.
 		listAudienceLanguages: async () => ({ young_readers: ['en', 'sw', 'xx'], teens: [] }),
+		// The young readers' hub lists a leader's guide in English and Swahili;
+		// the Swahili one is dated. Spanish (no hub there) is never asked.
+		getAudienceShelf: async (audience: string, l = 'en') => {
+			if (audience !== 'young_readers') throw new Error(`teens hub asked for ${l}`);
+			if (l === 'es') throw new Error('asked for a locale the hub is not in');
+			const pp = { slug: 'pilgrims-progress-children', updated_at: l === 'sw' ? '2026-09-20T00:00:00Z' : undefined };
+			return { leader_guides: l === 'en' || l === 'sw' ? [pp] : [] };
+		},
 		// One article in English and Swahili, none in Spanish.
 		listArticles: async (l = 'en') =>
 			l === 'en'
@@ -125,6 +133,7 @@ const data = (over: Partial<SitemapData> = {}): SitemapData => ({
 	chapters: [],
 	openings: [],
 	modern: [],
+	guides: [],
 	...over
 });
 
@@ -258,6 +267,13 @@ describe('sections', () => {
 		expect(sectionLocale('modern')).toBeUndefined();
 	});
 
+	it('gives the leader’s guides their own section', () => {
+		const d = data({ guides: [entry({ en: '/books/pilgrims-progress-children/guide/' })] });
+		expect(sections()).toContain('guides');
+		expect(sectionEntries(d, 'guides')).toHaveLength(1);
+		expect(sectionLocale('guides')).toBeUndefined();
+	});
+
 	it('gives the scripture graph its own section, carrying only English', () => {
 		// These pages exist in English alone (citations parse against English book
 		// names), so a second locale here would be a false alternate.
@@ -334,6 +350,20 @@ describe('build() chapter entries', () => {
 			[['en', '/books/humility/modern/2/']]
 		]);
 		expect(modern[0].lastmod).toBe('2026-09-10T10:00:00Z');
+	});
+
+	it('lists each leader’s guide in the locales whose hub has it', async () => {
+		// The mock throws for a hub/locale it has nothing in, so asking the
+		// teens hub or Spanish would drop the row — the guide must still come
+		// through from the locales that do have it.
+		const { guides } = await sitemapData();
+		expect(guides.map((e) => [...e.byLocale])).toEqual([
+			[
+				['en', '/books/pilgrims-progress-children/guide/'],
+				['sw', '/books/pilgrims-progress-children/guide/']
+			]
+		]);
+		expect([...(guides[0].lastmods ?? new Map())]).toEqual([['sw', '2026-09-20T00:00:00Z']]);
 	});
 });
 
