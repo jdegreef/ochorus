@@ -5056,6 +5056,31 @@
 			"layout": "split/navy",
 			"bar": 0.04
 		},
+		"es/feasting-at-the-table": {
+			"ground": "ca3f76b4cb6f73df54f65066da267dc24df12fb2daf0abf371049c92a4841e82",
+			"style": "lettered",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[49, 344, 552, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				355,
+				439
+			]
+		},
 		"es/gleanings-among-the-sheaves": {
 			"ground": "902071ea52ec0e6e93ae212780f8436c2b6614b0c2b18de5fea89a6ecca8fad4",
 			"style": "revival",
