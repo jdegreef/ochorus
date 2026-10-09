@@ -5195,6 +5195,35 @@
 				439
 			]
 		},
+		"es/finney-memoirs": {
+			"ground": "ec359b486ebc7d943d9740d5ee8abc29c16d7f315dc8e5614f74b5d87cbcfda4",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[126, 102, 474, 131]
+				],
+				"title": [
+					[131, 305, 469, 381],
+					[70, 370, 530, 446]
+				],
+				"subtitle": [
+					[157, 520, 443, 541]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				254,
+				541
+			]
+		},
 		"es/first-epistle-of-clement": {
 			"ground": "6598e83c9f6275e3fea947d397e9393dd0811f91e7a961269a1841b79834f684",
 			"style": "inscriptional",
@@ -5583,6 +5612,33 @@
 			"middle": [
 				313,
 				482
+			]
+		},
+		"es/men-who-moved-heaven": {
+			"ground": "3c1a8e609bc6b5db8d564e86ef149a4dd2b700a96d93f309891706c37e2bd4a6",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[99, 275, 501, 351],
+					[101, 341, 499, 417],
+					[197, 407, 403, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
 			]
 		},
 		"es/men-who-tended-the-flock-2": {
@@ -7875,6 +7931,36 @@
 				"subtitle": [
 					[83, 478, 517, 506],
 					[112, 506, 488, 534]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				261,
+				534
+			]
+		},
+		"fr/rooted-4": {
+			"ground": "9e3a03f4b6df3afa5b1bdded94d85c259c4b5b3653e65cb1086f7e4fc0a8da9f",
+			"style": "young",
+			"volume": "4",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 273, 311, 317],
+					[175, 348, 425, 423]
+				],
+				"subtitle": [
+					[82, 478, 518, 506],
+					[90, 506, 510, 534]
 				],
 				"mark": [
 					[232, 664, 368, 746]
@@ -11305,6 +11391,34 @@
 			"scrim": 1,
 			"layout": "band/oxblood",
 			"bar": 0
+		},
+		"lg/the-christians-secret-of-a-happy-life-4": {
+			"ground": "414336b18085313faee3f50c51424146496f07fd23d8a6a3c7e846364459ff57",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.45,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[79, 102, 521, 131]
+				],
+				"title": [
+					[201, 218, 399, 300],
+					[84, 290, 516, 372],
+					[129, 362, 471, 444],
+					[138, 435, 462, 517]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				223,
+				572
+			]
 		},
 		"lg/the-fourfold-gospel": {
 			"ground": "fbaf688479f32d7d7d2ee46f7196cf03296ec054c047365f796403041d8a4691",
