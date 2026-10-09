@@ -3,6 +3,7 @@
  "slug": "john-hyde-a-life-children",
  "language": "am",
  "job_issue": 5747,
+ "pull_request": 5774,
  "note": [
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh; re-verified for this job 2026-10-09: all 27 NT books return 200 as usfm/, gen/psa/isa 404). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
   "Every `mined` row was checked mechanically against the finished text: the quoted Amharic is an exact substring of the 1962 NT verse (USFM on disk) or of the cited corpus file, inside the block named.",
