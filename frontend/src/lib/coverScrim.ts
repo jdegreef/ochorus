@@ -25,7 +25,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'anchored-2': 0.85,
 	'at-the-back-of-the-north-wind': 0.30,
 	'brave-for-god': 0.30,
-	'brave-for-god-2': 0.30,
+	'brave-for-god-2': 0.40,
 	'brave-for-god-3': 0.30,
 	'brave-for-god-4': 0.30,
 	'c-s-lewis-a-life': 0.40,

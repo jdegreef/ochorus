@@ -173,6 +173,74 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
         ],
     },
+    3: {
+        "sort_order": 153,
+        "publication_year": 2026,
+        "title": "Real Questions – Book 3",
+        "subtitle": "Still more honest answers to the questions teens actually ask",
+        "cover_url": "/covers/real-questions-3.svg",
+        "cover_color": covers.ink_safe("#6a2e4a"),  # a deep plum
+        "description": (
+            "Thirty more honest answers for readers aged 13 to 17: Why can't I feel "
+            "God? Is my faith just how I was raised? Will my pet go to heaven? What "
+            "if my friends think Christianity is stupid? What's the difference "
+            "between Catholics, Orthodox and Protestants? What if I'm being bullied, "
+            "or a friend talks about ending their life? Each answer starts short, "
+            "then goes deeper, is clear where Christians agree and fair where they "
+            "differ, and points to a classic in the library. The third book of Real "
+            "Questions."
+        ),
+        "about_html": (
+            "<p>Real Questions is an original Ochorus series for readers aged 13 to "
+            "17. Book 3 takes thirty more of the questions teenagers really ask, many "
+            "of them close to home, and answers them honestly, in plain words, "
+            "without slogans. You don’t need to have read Books 1 or 2.</p>"
+            "<p>“God, Faith and Me” asks why I can’t feel God, whether my faith is "
+            "just how I was raised, whether Christianity is a Western religion, why "
+            "pray, what sin really is, about people before Jesus, why God made me, "
+            "what heaven will be like, whether my pet will be there, and what the "
+            "gospel is in one minute. “Faith Out Loud” asks about friends who mock, "
+            "being unpopular, non-Christian friends and parents, friends of other "
+            "religions, Catholics, Orthodox and Protestants, racism, war, music and "
+            "films, and schoolwork. “Heart and Life” asks about loneliness, "
+            "bullying, anger, comparison, ambition, a friend at risk, lying, "
+            "gambling, feeling like a fake, and wanting to give up.</p>"
+            "<p>Every chapter opens with a short answer and then goes deeper. On "
+            "the core of the faith it answers plainly, as most evangelical "
+            "churches do, and always with compassion. Where faithful Christians "
+            "genuinely disagree, it sets out the main views fairly and says so. "
+            "Chapters on painful subjects point the reader to a parent or trusted "
+            "adult, and to urgent help where anyone is in danger. Each chapter ends "
+            "with a question to think about and a chapter of a classic to read "
+            "next. Scripture is quoted from the Berean Standard Bible.</p>"
+        ),
+        "qa": [
+            {
+                "question": "What is Real Questions – Book 3?",
+                "answer": "The third book of honest, short answers for readers aged 13 to 17 to the questions teenagers ask about God, faith, friends and everyday life. Each chapter starts with a short answer, then goes deeper, and ends with a question to think about and a classic to read next.",
+            },
+            {
+                "question": "Do I need to read Books 1 and 2 first?",
+                "answer": "No. Each book and each chapter stands on its own, so you can start with whichever question matters most to you.",
+            },
+            {
+                "question": "What questions does Book 3 answer?",
+                "answer": "Thirty, in three parts: God, Faith and Me (feeling God, inherited faith, prayer, sin, heaven, pets, the gospel), Faith Out Loud (friends, parents, other religions, Catholics and Orthodox, racism, war, music and films, schoolwork) and Heart and Life (loneliness, bullying, anger, comparison, ambition, a friend at risk, lying, gambling, feeling fake and wanting to give up).",
+            },
+            {
+                "question": "Does it take sides where Christians disagree?",
+                "answer": "No. On questions where faithful Christians genuinely differ, such as how Catholic, Orthodox and Protestant Christians relate, whether a Christian may fight in a war, whether lying is ever right, and what heaven will be like, it sets out the main views fairly and says what they all agree on.",
+            },
+            {
+                "question": "What should I do if a friend talks about ending their life?",
+                "answer": "Never keep it secret, even if they ask you to. Tell a trusted adult straight away, and if they are in immediate danger, contact emergency services where you live. The book's chapter on this explains what to say and reminds you that it is not your job to help them alone.",
+            },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Every Scripture is quoted from the Berean Standard Bible (BSB), a modern and readable translation that is in the public domain.",
+            },
+        ],
+    },
 }
 
 

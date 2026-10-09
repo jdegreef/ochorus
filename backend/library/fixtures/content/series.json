@@ -451,5 +451,18 @@
   "created_at": "2026-10-08T00:00:00Z",
   "updated_at": "2026-10-08T00:00:00Z"
  }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "fr",
+  "title": "Les enseignements clés",
+  "description": "De courts guides fidèles, écrits par Ochorus, au cœur de l’enseignement d’un auteur classique — chaque chapitre s’achève par des questions et une prière, et renvoie le lecteur aux livres de l’auteur lui-même.",
+  "created_at": "2026-10-09T00:00:00Z",
+  "updated_at": "2026-10-09T00:00:00Z"
+ }
 }
 ]

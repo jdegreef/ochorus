@@ -1,0 +1,1375 @@
+{
+ "kind": "book",
+ "slug": "rooted-2",
+ "language": "es",
+ "job_issue": 3602,
+ "references": [
+  {
+   "reference": "John 20:31",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 4
+  },
+  {
+   "reference": "John 1:1",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 0
+  },
+  {
+   "reference": "John 1:14",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 2
+  },
+  {
+   "reference": "John 1:1a",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 5
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 5
+  },
+  {
+   "reference": "John 1:14a",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 6,
+   "source_file": "men-and-women-who-gave-everything-2.es.json"
+  },
+  {
+   "reference": "John 1:1b",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 8
+  },
+  {
+   "reference": "John 1:1",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 8
+  },
+  {
+   "reference": "John 1:14a",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 8,
+   "source_file": "men-and-women-who-gave-everything-2.es.json"
+  },
+  {
+   "reference": "John 1:14a",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 9,
+   "source_file": "men-and-women-who-gave-everything-2.es.json"
+  },
+  {
+   "reference": "John 1:14b",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 2:6-7",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 2:7b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 5
+  },
+  {
+   "reference": "2 Corinthians 8:9",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 8
+  },
+  {
+   "reference": "Revelation 3:20",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 9
+  },
+  {
+   "reference": "Luke 2:10-11",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 2:9",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 3
+  },
+  {
+   "reference": "Luke 2:10a",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 3,
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Luke 2:14a",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 2:10b",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 7,
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Matthew 1:21",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 9
+  },
+  {
+   "reference": "Luke 2:16-20",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 9
+  },
+  {
+   "reference": "Luke 2:10b",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 13,
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Matthew 2:10-11",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 2:2",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 3
+  },
+  {
+   "reference": "Matthew 2:10",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 2:11a",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 2:46-47",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 2:48b",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 2:49b",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 2:52",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 2:52",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 3
+  },
+  {
+   "reference": "Matthew 3:16-17",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 3:14b",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 3
+  },
+  {
+   "reference": "Matthew 3:17b",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 3:17b",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 4:1-4",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 4:3b",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 4:5-9",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 4:4a",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 6
+  },
+  {
+   "reference": "Hebrews 4:15b",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 10
+  },
+  {
+   "reference": "Mark 1:16-18",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 0
+  },
+  {
+   "reference": "Mark 1:17a",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 3
+  },
+  {
+   "reference": "Mark 1:17b",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 5
+  },
+  {
+   "reference": "Mark 1:18",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 6
+  },
+  {
+   "reference": "Mark 1:17a",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 8
+  },
+  {
+   "reference": "John 2:5",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 0
+  },
+  {
+   "reference": "John 2:11",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 2
+  },
+  {
+   "reference": "John 2:5b",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 6
+  },
+  {
+   "reference": "John 2:7a",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 7
+  },
+  {
+   "reference": "John 2:8a",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 7
+  },
+  {
+   "reference": "John 2:11a",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 9
+  },
+  {
+   "reference": "John 2:11b",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 9
+  },
+  {
+   "reference": "John 2:5b",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 11
+  },
+  {
+   "reference": "John 2:5b",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 13
+  },
+  {
+   "reference": "John 3:1-3",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 0
+  },
+  {
+   "reference": "John 3:2b",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 4
+  },
+  {
+   "reference": "John 3:3b",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 4
+  },
+  {
+   "reference": "John 3:4a",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 5
+  },
+  {
+   "reference": "John 3:8a",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 7
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 9
+  },
+  {
+   "reference": "John 4:13",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 0
+  },
+  {
+   "reference": "John 4:14a",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 0,
+   "source_file": "pandita-ramabai-a-life-children.es.json"
+  },
+  {
+   "reference": "John 4:14b",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 0
+  },
+  {
+   "reference": "John 4:7",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 3
+  },
+  {
+   "reference": "John 4:9",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 4
+  },
+  {
+   "reference": "John 4:14a",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 5,
+   "source_file": "pandita-ramabai-a-life-children.es.json"
+  },
+  {
+   "reference": "John 4:29",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 7
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 0
+  },
+  {
+   "reference": "Mark 4:40",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 0
+  },
+  {
+   "reference": "Mark 4:41",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 0
+  },
+  {
+   "reference": "Mark 4:35",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 2
+  },
+  {
+   "reference": "Mark 4:38b",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 5
+  },
+  {
+   "reference": "Mark 4:39a",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 6
+  },
+  {
+   "reference": "Mark 4:40",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 7
+  },
+  {
+   "reference": "Mark 4:41b",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 8
+  },
+  {
+   "reference": "Mark 4:41b",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 13
+  },
+  {
+   "reference": "John 6:9",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 0
+  },
+  {
+   "reference": "John 6:10",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 0
+  },
+  {
+   "reference": "John 6:11",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 0
+  },
+  {
+   "reference": "John 6:5b",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 3
+  },
+  {
+   "reference": "John 6:7",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 3
+  },
+  {
+   "reference": "John 6:9b",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 4
+  },
+  {
+   "reference": "John 6:11b",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 5
+  },
+  {
+   "reference": "John 6:13",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 14:29",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 14:30",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 14:31",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 14:26",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 3
+  },
+  {
+   "reference": "Matthew 14:27",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 14:28",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 14:29a",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 14:30b",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 14:31a",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 14:30b",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 13
+  },
+  {
+   "reference": "Mark 10:51-52",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 0
+  },
+  {
+   "reference": "Mark 10:47",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 3
+  },
+  {
+   "reference": "Mark 10:48a",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 4
+  },
+  {
+   "reference": "Mark 10:48b",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 4
+  },
+  {
+   "reference": "Mark 10:49",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 5
+  },
+  {
+   "reference": "Mark 10:51a",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 6
+  },
+  {
+   "reference": "Mark 10:51b",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 7
+  },
+  {
+   "reference": "Mark 10:52a",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 7
+  },
+  {
+   "reference": "Mark 10:51a",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 10
+  },
+  {
+   "reference": "Mark 10:51a",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 13
+  },
+  {
+   "reference": "Mark 10:13-14",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 0
+  },
+  {
+   "reference": "Mark 10:13",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 3
+  },
+  {
+   "reference": "Mark 10:14b",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 5
+  },
+  {
+   "reference": "Mark 10:16",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 5
+  },
+  {
+   "reference": "Mark 10:14",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 8
+  },
+  {
+   "reference": "Mark 10:15",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 8
+  },
+  {
+   "reference": "John 11:25-26",
+   "status": "self_rendered",
+   "chapter_order": 19,
+   "block_index": 0
+  },
+  {
+   "reference": "John 11:3",
+   "status": "self_rendered",
+   "chapter_order": 19,
+   "block_index": 2
+  },
+  {
+   "reference": "John 11:21",
+   "status": "self_rendered",
+   "chapter_order": 19,
+   "block_index": 4
+  },
+  {
+   "reference": "John 11:25",
+   "status": "self_rendered",
+   "chapter_order": 19,
+   "block_index": 5
+  },
+  {
+   "reference": "John 11:35",
+   "status": "self_rendered",
+   "chapter_order": 19,
+   "block_index": 6
+  },
+  {
+   "reference": "John 11:43",
+   "status": "self_rendered",
+   "chapter_order": 19,
+   "block_index": 7
+  },
+  {
+   "reference": "John 11:26b",
+   "status": "self_rendered",
+   "chapter_order": 19,
+   "block_index": 11
+  },
+  {
+   "reference": "John 11:25a",
+   "status": "self_rendered",
+   "chapter_order": 19,
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 5:3-8",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 5:9",
+   "status": "mined",
+   "chapter_order": 20,
+   "block_index": 0,
+   "source_file": "mary-slessor-a-life-children.es.json"
+  },
+  {
+   "reference": "Matthew 5:1-2",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "block_index": 2
+  },
+  {
+   "reference": "Matthew 5:3a",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 5:4a",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 5:4b",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 5:5a",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 5:6a",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 5:7a",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 5:8a",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 5:9a",
+   "status": "mined",
+   "chapter_order": 20,
+   "block_index": 11,
+   "source_file": "mary-slessor-a-life-children.es.json"
+  },
+  {
+   "reference": "Matthew 5:3-9",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "block_index": 16
+  },
+  {
+   "reference": "Matthew 5:14",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 5:15",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 5:16",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 5:13a",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 3
+  },
+  {
+   "reference": "Matthew 5:14a",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 4
+  },
+  {
+   "reference": "John 8:12",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 5:14a",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 5:16b",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 5:16b",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 8
+  },
+  {
+   "reference": "John 8:12",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 6:26",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 6:26a",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 6:26b",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 6:26",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 6:27",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 6:26",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 12
+  },
+  {
+   "reference": "Luke 15:4",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 15:5",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 15:6",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 15:7",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 15:2b",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 2
+  },
+  {
+   "reference": "Luke 15:6b",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 15:7a",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 9
+  },
+  {
+   "reference": "John 10:11",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "block_index": 14
+  },
+  {
+   "reference": "Luke 15:20a",
+   "status": "self_rendered",
+   "chapter_order": 24,
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 15:20b",
+   "status": "mined",
+   "chapter_order": 24,
+   "block_index": 0,
+   "source_file": "john-hyde-a-life-children.es.json"
+  },
+  {
+   "reference": "Luke 15:12",
+   "status": "self_rendered",
+   "chapter_order": 24,
+   "block_index": 3
+  },
+  {
+   "reference": "Luke 15:13",
+   "status": "self_rendered",
+   "chapter_order": 24,
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 15:17a",
+   "status": "self_rendered",
+   "chapter_order": 24,
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 15:17-19",
+   "status": "self_rendered",
+   "chapter_order": 24,
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 15:20b",
+   "status": "mined",
+   "chapter_order": 24,
+   "block_index": 7,
+   "source_file": "john-hyde-a-life-children.es.json"
+  },
+  {
+   "reference": "Luke 15:24",
+   "status": "self_rendered",
+   "chapter_order": 24,
+   "block_index": 9
+  },
+  {
+   "reference": "Luke 10:36",
+   "status": "self_rendered",
+   "chapter_order": 25,
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 10:37a",
+   "status": "self_rendered",
+   "chapter_order": 25,
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 10:37b",
+   "status": "self_rendered",
+   "chapter_order": 25,
+   "block_index": 0
+  },
+  {
+   "reference": "Leviticus 19:18b",
+   "status": "self_rendered",
+   "chapter_order": 25,
+   "block_index": 2
+  },
+  {
+   "reference": "Luke 10:29",
+   "status": "self_rendered",
+   "chapter_order": 25,
+   "block_index": 2
+  },
+  {
+   "reference": "Luke 10:33b",
+   "status": "self_rendered",
+   "chapter_order": 25,
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 10:35",
+   "status": "self_rendered",
+   "chapter_order": 25,
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 10:36",
+   "status": "self_rendered",
+   "chapter_order": 25,
+   "block_index": 8
+  },
+  {
+   "reference": "Luke 10:37a",
+   "status": "self_rendered",
+   "chapter_order": 25,
+   "block_index": 8
+  },
+  {
+   "reference": "Luke 10:37b",
+   "status": "self_rendered",
+   "chapter_order": 25,
+   "block_index": 8
+  },
+  {
+   "reference": "Luke 19:5",
+   "status": "self_rendered",
+   "chapter_order": 26,
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 2,
+   "source_file": "john-hyde-a-life-children.es.json"
+  },
+  {
+   "reference": "Luke 19:5b",
+   "status": "self_rendered",
+   "chapter_order": 26,
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 19:7",
+   "status": "self_rendered",
+   "chapter_order": 26,
+   "block_index": 9
+  },
+  {
+   "reference": "Luke 19:6",
+   "status": "self_rendered",
+   "chapter_order": 26,
+   "block_index": 9
+  },
+  {
+   "reference": "Luke 19:8",
+   "status": "self_rendered",
+   "chapter_order": 26,
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 19:9a",
+   "status": "self_rendered",
+   "chapter_order": 26,
+   "block_index": 11
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 11,
+   "source_file": "john-hyde-a-life-children.es.json"
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "self_rendered",
+   "chapter_order": 26,
+   "block_index": 16
+  },
+  {
+   "reference": "Matthew 21:9",
+   "status": "self_rendered",
+   "chapter_order": 27,
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 21:8",
+   "status": "self_rendered",
+   "chapter_order": 27,
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 21:9b",
+   "status": "self_rendered",
+   "chapter_order": 27,
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 21:5b",
+   "status": "self_rendered",
+   "chapter_order": 27,
+   "block_index": 7
+  },
+  {
+   "reference": "John 13:14",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "block_index": 0
+  },
+  {
+   "reference": "John 13:15",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 22:24",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "block_index": 4
+  },
+  {
+   "reference": "John 13:6",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "block_index": 7
+  },
+  {
+   "reference": "John 13:8b",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "block_index": 7
+  },
+  {
+   "reference": "John 13:13",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "block_index": 8
+  },
+  {
+   "reference": "John 13:14",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "block_index": 8
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 0,
+   "source_file": "a-retrospect-teens.es.json"
+  },
+  {
+   "reference": "Mark 15:22",
+   "status": "self_rendered",
+   "chapter_order": 29,
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 5,
+   "source_file": "godliness.es.json"
+  },
+  {
+   "reference": "Luke 23:43",
+   "status": "self_rendered",
+   "chapter_order": 29,
+   "block_index": 5
+  },
+  {
+   "reference": "John 19:30b",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 6,
+   "source_file": "a-retrospect-teens.es.json"
+  },
+  {
+   "reference": "John 19:30b",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 8,
+   "source_file": "a-retrospect-teens.es.json"
+  },
+  {
+   "reference": "John 19:30b",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 11,
+   "source_file": "a-retrospect-teens.es.json"
+  },
+  {
+   "reference": "Matthew 28:5-6",
+   "status": "self_rendered",
+   "chapter_order": 30,
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 28:2-4",
+   "status": "self_rendered",
+   "chapter_order": 30,
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 28:5-6",
+   "status": "self_rendered",
+   "chapter_order": 30,
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 28:6a",
+   "status": "self_rendered",
+   "chapter_order": 30,
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 28:8",
+   "status": "self_rendered",
+   "chapter_order": 30,
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 28:9",
+   "status": "self_rendered",
+   "chapter_order": 30,
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 28:6a",
+   "status": "self_rendered",
+   "chapter_order": 30,
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 28:19-20",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 0,
+   "source_file": "men-and-women-who-gave-everything-2.es.json"
+  },
+  {
+   "reference": "Matthew 28:18b",
+   "status": "self_rendered",
+   "chapter_order": 31,
+   "block_index": 3
+  },
+  {
+   "reference": "Matthew 28:19a",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 3,
+   "source_file": "men-and-women-who-gave-everything-2.es.json"
+  },
+  {
+   "reference": "Matthew 28:19a",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 4,
+   "source_file": "men-and-women-who-gave-everything-2.es.json"
+  },
+  {
+   "reference": "Matthew 4:19",
+   "status": "self_rendered",
+   "chapter_order": 31,
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "self_rendered",
+   "chapter_order": 31,
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 4:19",
+   "status": "self_rendered",
+   "chapter_order": 31,
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 28:18",
+   "status": "self_rendered",
+   "chapter_order": 31,
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 3:17",
+   "status": "self_rendered",
+   "chapter_order": 32,
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 21:9",
+   "status": "self_rendered",
+   "chapter_order": 32,
+   "block_index": 3
+  },
+  {
+   "reference": "Matthew 16:15",
+   "status": "mined",
+   "chapter_order": 32,
+   "block_index": 4,
+   "source_file": "the-key-in-my-hand.es.json"
+  },
+  {
+   "reference": "Matthew 16:16",
+   "status": "self_rendered",
+   "chapter_order": 32,
+   "block_index": 5
+  },
+  {
+   "reference": "John 15:5a",
+   "status": "self_rendered",
+   "chapter_order": 32,
+   "block_index": 12
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "self_rendered",
+   "chapter_order": 32,
+   "block_index": 12
+  },
+  {
+   "reference": "John 20:31",
+   "status": "self_rendered",
+   "chapter_order": 32,
+   "block_index": 14
+  }
+ ]
+}

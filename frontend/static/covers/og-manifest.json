@@ -543,7 +543,7 @@
 			"volume": "2",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -551,22 +551,21 @@
 					[114, 102, 486, 131]
 				],
 				"title": [
-					[289, 212, 311, 256],
-					[118, 287, 482, 362],
-					[216, 348, 384, 423],
-					[116, 410, 484, 485]
+					[289, 243, 311, 287],
+					[148, 318, 452, 393],
+					[79, 379, 521, 454]
 				],
 				"subtitle": [
-					[161, 539, 439, 567],
-					[146, 567, 454, 595]
+					[179, 508, 421, 536],
+					[165, 536, 435, 564]
 				],
 				"mark": [
 					[232, 664, 368, 746]
 				]
 			},
 			"middle": [
-				200,
-				595
+				231,
+				564
 			]
 		},
 		"am/brave-for-god-3": {
@@ -2876,7 +2875,7 @@
 			"volume": "2",
 			"script": "arabic",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -3917,7 +3916,7 @@
 			"volume": "2",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -3930,7 +3929,7 @@
 					[175, 393, 425, 468]
 				],
 				"subtitle": [
-					[48, 522, 552, 550]
+					[49, 522, 551, 550]
 				],
 				"mark": [
 					[232, 664, 368, 746]
@@ -4891,6 +4890,36 @@
 				520
 			]
 		},
+		"es/brave-for-god-2": {
+			"ground": "4b8bfd41502eda736326d8c0d400b061de627a667fcade66176d03a7e164b5b6",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.4,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[132, 271, 468, 346],
+					[115, 332, 485, 407]
+				],
+				"subtitle": [
+					[174, 461, 426, 489],
+					[166, 489, 434, 517]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				278,
+				517
+			]
+		},
 		"es/c-s-lewis-a-life-children": {
 			"ground": "7312da55e3c7aa0c4671a019169aad10051c2034219026ad387d533a07242a88",
 			"style": "young",
@@ -5055,6 +5084,31 @@
 			"scrim": 1,
 			"layout": "split/navy",
 			"bar": 0.04
+		},
+		"es/feasting-at-the-table": {
+			"ground": "ca3f76b4cb6f73df54f65066da267dc24df12fb2daf0abf371049c92a4841e82",
+			"style": "lettered",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[49, 344, 552, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				355,
+				439
+			]
 		},
 		"es/gleanings-among-the-sheaves": {
 			"ground": "902071ea52ec0e6e93ae212780f8436c2b6614b0c2b18de5fea89a6ecca8fad4",
@@ -5644,6 +5698,35 @@
 				487
 			]
 		},
+		"es/rooted-2": {
+			"ground": "058a1589a78ef2e39d677e281f89e24f237be07cd0dd0e35ba84fc3dfc711ee1",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[160, 301, 440, 376]
+				],
+				"subtitle": [
+					[127, 431, 473, 459],
+					[107, 459, 493, 487]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				308,
+				487
+			]
+		},
 		"es/school-of-prayer": {
 			"ground": "97470a6480e1b9ab220bb0111f42bb19bbe075a48c1470c335f385ecc6997764",
 			"style": "devotional",
@@ -5863,6 +5946,16 @@
 			"layout": "split/oxblood",
 			"bar": 0
 		},
+		"es/the-masters-indwelling": {
+			"ground": "7196e97d1d35714df7d1131e0f3684a24487d8a84483e6e2a90723588f25d9b5",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"es/the-person-and-work-of-the-holy-spirit": {
 			"ground": "e807a73d1ad911ae8ad70695feb2c9ffc7651d91dedd1c73a7d112425c4d4446",
 			"style": "revival",
@@ -5971,6 +6064,16 @@
 			"scrim": 1,
 			"layout": "wash/ochre",
 			"bar": 0
+		},
+		"es/till-he-come": {
+			"ground": "68f297953bc6bf7f13a7b98593d043c3f423323010c65346af76cb857cb3758c",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0.04
 		},
 		"es/true-vine": {
 			"ground": "12707a4313939e946d4f132f09ee3e1946db2fcfab8555a0f40dc3ee5a3584f1",
@@ -6419,7 +6522,7 @@
 			"volume": "2",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -6835,6 +6938,37 @@
 			"middle": [
 				287,
 				508
+			]
+		},
+		"fr/key-teachings-of-richard-baxter": {
+			"ground": "8b278a69fc6ce46cca78aa95954abeda10353fdc881847acaef6b0c1203c7e1a",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[147, 102, 453, 131]
+				],
+				"title": [
+					[61, 169, 539, 232],
+					[216, 225, 384, 288],
+					[107, 280, 493, 343]
+				],
+				"subtitle": [
+					[164, 404, 436, 432],
+					[176, 432, 424, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
 			]
 		},
 		"fr/life-of-pascal": {
@@ -7509,6 +7643,35 @@
 			"layout": "box/teal",
 			"bar": 0
 		},
+		"fr/the-imitation-of-christ": {
+			"ground": "83fc8418e08827a00add2b45231f31a40b9fe805163c58fda43209ad88102aed",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[139, 102, 461, 131]
+				],
+				"title": [
+					[120, 266, 480, 348],
+					[148, 338, 452, 420]
+				],
+				"subtitle": [
+					[62, 496, 538, 524]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
+			]
+		},
 		"fr/the-inner-chamber": {
 			"ground": "3afa4e71486fc4623e79bb8a04bf67855b95d846a9319510732d07d1fd541db9",
 			"style": "devotional",
@@ -7576,6 +7739,16 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "wash/sage",
+			"bar": 0
+		},
+		"fr/the-person-and-work-of-the-holy-spirit": {
+			"ground": "55588bce4a2fc7c2c130a9e7b4fd321b53fe791edfaf991f544a24de8c94d4e2",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "diagonal/ochre",
 			"bar": 0
 		},
 		"fr/the-practice-of-the-presence-of-god-children": {
@@ -8027,7 +8200,7 @@
 			"volume": "2",
 			"script": "devanagari",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -8040,7 +8213,7 @@
 					[122, 403, 478, 472]
 				],
 				"subtitle": [
-					[103, 545, 497, 567]
+					[104, 545, 496, 567]
 				],
 				"mark": [
 					[232, 664, 368, 746]
@@ -10153,7 +10326,7 @@
 			"volume": "2",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -12689,6 +12862,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"real-questions-3": {
+			"ground": "820a56783a3344fcb6225fc2d39282ce06e909f80d6540992037272d89ab507e",
+			"style": "originals",
+			"volume": "3",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"reality-of-prayer": {
 			"ground": "3ff7e009de2d59ab5a76e18ec46a5100eaaf0141c4d00598d254897c97e0cca9",
 			"style": "devotional",
@@ -13478,7 +13661,7 @@
 			"volume": "2",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
