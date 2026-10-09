@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { page } from '$app/state';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
-	import { groupStatus, togetherFromQuery, type Together } from '$lib/planTogether';
+	import { groupDateFormat, groupStatus, togetherFromQuery } from '$lib/planTogether';
 	import { planTogether } from '$lib/planTogether.svelte';
 
 	/**
@@ -24,8 +25,11 @@
 	}: { slug: string; dayCount: number; today: Date | null; dayHref: (day: number) => string } = $props();
 	const t = i18n.t;
 
-	let fromLink = $state<Together | null>(null);
-	onMount(() => (fromLink = togetherFromQuery(new URLSearchParams(location.search))));
+	// The query is read only once mounted (a prerendered page has none at build
+	// time), then live, so moving to another plan doesn't carry this one's group.
+	let mounted = $state(false);
+	onMount(() => (mounted = true));
+	const fromLink = $derived(mounted ? togetherFromQuery(page.url.searchParams) : null);
 
 	const joined = $derived(planTogether.get(slug));
 	/** The link's group wins over a joined one: following a new link is how a
@@ -33,7 +37,7 @@
 	const group = $derived(fromLink ?? joined);
 	const isJoined = $derived(!!group && !!joined && joined.start === group.start && joined.rule === group.rule);
 	const status = $derived(group && today ? groupStatus(group, dayCount, today) : null);
-	const fmt = $derived(new Intl.DateTimeFormat(getLang(), { weekday: 'long', month: 'long', day: 'numeric' }));
+	const fmt = $derived(groupDateFormat(getLang()));
 </script>
 
 {#if group && status}
@@ -57,7 +61,9 @@
 				>
 			</p>
 		{/if}
-		{#if status.kind !== 'finished'}
+		<!-- Leave stays offered once the group has finished, or its banner would
+		     never go; joining a finished group has nothing to offer. -->
+		{#if isJoined || status.kind !== 'finished'}
 			<div class="mt-3 flex flex-wrap items-center gap-2 text-small">
 				{#if isJoined}
 					<span class="text-muted">✓ {t('together.joined')}</span>

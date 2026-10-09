@@ -64,6 +64,10 @@ export function groupStatus(t: Together, dayCount: number, today: Date): GroupSt
 	return localToday(at.date) === now ? { kind: 'today', day: at.item } : { kind: 'next', day: at.item, date: at.date };
 }
 
+/** How a group's dates read: "Monday, October 12" in the reader's language. */
+export const groupDateFormat = (lang: string) =>
+	new Intl.DateTimeFormat(lang, { weekday: 'long', month: 'long', day: 'numeric' });
+
 /** The day a leader is offered first: the coming Monday (today, if it is one),
  *  which is where most groups begin a week of reading. */
 export function nextMonday(today: Date): string {

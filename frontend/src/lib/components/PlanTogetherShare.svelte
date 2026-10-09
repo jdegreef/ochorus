@@ -1,17 +1,18 @@
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
+	import ShareButton from '$lib/components/ShareButton.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
-	import { READING_DAYS, parseIsoDay, type ReadingDays } from '$lib/planSchedule';
-	import { nextMonday, togetherQuery } from '$lib/planTogether';
-	import { messageShareLinks } from '$lib/share';
+	import { READING_DAYS, READING_DAY_LABELS, parseIsoDay, type ReadingDays } from '$lib/planSchedule';
+	import { groupDateFormat, nextMonday, togetherQuery } from '$lib/planTogether';
 	import { localToday } from '$lib/streak';
 
 	/**
 	 * "Read together", for whoever leads a group: pick the day the group starts
-	 * and the days it reads, and pass on the link that carries both. Everyone
-	 * who opens it sees the same day of the plan (PlanTogetherBanner); nothing
-	 * about them is stored anywhere (see $lib/planTogether).
+	 * and the days it reads, and pass on the link that carries both — through
+	 * the page's own share control (the phone's share sheet, or copy / WhatsApp
+	 * / email). Everyone who opens it sees the same day of the plan
+	 * (PlanTogetherBanner); nothing about anyone is collected ($lib/planTogether).
 	 */
 	let {
 		title,
@@ -24,11 +25,6 @@
 		today: Date | null;
 	} = $props();
 	const t = i18n.t;
-	const RULE_LABEL: Record<ReadingDays, string> = {
-		daily: 'plans.everyDay',
-		weekdays: 'plans.weekdays',
-		monsat: 'plans.monSat'
-	};
 
 	let open = $state(false);
 	let start = $state('');
@@ -42,28 +38,14 @@
 
 	const startDate = $derived(parseIsoDay(start));
 	const link = $derived(startDate ? `${url}${togetherQuery({ start, rule })}` : '');
-	const message = $derived(
+	// Replacer functions, so a "$&" or a "%d%" in a plan's title is just text.
+	const invite = $derived(
 		startDate
-			? `${t('together.message')
-					.replace('%t%', title)
-					.replace('%d%', new Intl.DateTimeFormat(getLang(), { weekday: 'long', month: 'long', day: 'numeric' }).format(startDate))}\n${link}`
+			? t('together.message')
+					.replace('%d%', () => groupDateFormat(getLang()).format(startDate))
+					.replace('%t%', () => title)
 			: ''
 	);
-	const [whatsapp, email] = $derived(messageShareLinks(title, message, t('login.email')));
-
-	let copied = $state(false);
-	let timer: ReturnType<typeof setTimeout> | undefined;
-	$effect(() => () => clearTimeout(timer));
-	async function copy() {
-		try {
-			await navigator.clipboard.writeText(link);
-			copied = true;
-			clearTimeout(timer);
-			timer = setTimeout(() => (copied = false), 1500);
-		} catch {
-			/* no clipboard: the link is on screen to copy by hand */
-		}
-	}
 </script>
 
 <button type="button" class="btn btn-ghost btn-sm" aria-expanded={open} onclick={toggle}>
@@ -82,21 +64,14 @@
 		<div class="mt-3 flex flex-wrap gap-1.5" role="group" aria-label={t('plans.readOn')}>
 			{#each READING_DAYS as r (r)}
 				<button type="button" class="chip" class:active={rule === r} aria-pressed={rule === r} onclick={() => (rule = r)}
-					>{t(RULE_LABEL[r])}</button
+					>{t(READING_DAY_LABELS[r])}</button
 				>
 			{/each}
 		</div>
 		{#if link}
 			<p class="link mt-3 text-small text-muted">{link}</p>
-			<div class="mt-3 flex flex-wrap gap-2">
-				<button type="button" class="btn btn-sm" onclick={copy}>
-					<Icon name={copied ? 'check' : 'page'} size={15} />
-					{copied ? t('share.linkCopied') : t('share.copyLink')}
-				</button>
-				<a class="btn btn-sm" href={whatsapp.href} target="_blank" rel="noopener noreferrer"
-					><Icon name="share" size={15} /> {whatsapp.name}</a
-				>
-				<a class="btn btn-sm" href={email.href}><Icon name="mail" size={15} /> {email.name}</a>
+			<div class="mt-3">
+				<ShareButton url={link} title={invite} showLabel />
 			</div>
 		{/if}
 	</div>

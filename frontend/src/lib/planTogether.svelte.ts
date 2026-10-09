@@ -2,16 +2,15 @@ import { browser } from '$app/environment';
 import { readJSON, writeJSON } from './persisted';
 import { PLAN_TOGETHER_KEY as KEY } from './reading-schema';
 import { parseIsoDay, READING_DAYS } from './planSchedule';
-import { planSchedules } from './planSchedules.svelte';
 import type { Together } from './planTogether';
 
 /**
  * The "read together" groups this device has joined, by plan slug — so the
  * group's day stays on the plan page after the reader has left the link that
- * brought them. Device-only on purpose: the group is its link, and nothing
- * about who reads with whom is sent anywhere (see planTogether.ts). Joining
- * also lays the plan's own calendar on the group's dates (planSchedules), so
- * the reminders a reader sets there fall on the days the group reads.
+ * brought them, and so the plan's calendar (PlanCalendar) lays the plan on the
+ * group's dates. Device-only on purpose: the group is its link, and nothing
+ * about who reads with whom is sent anywhere — not even to the reader's own
+ * account, so joining leaves their synced schedule choices untouched.
  */
 
 type Store = Record<string, Together>;
@@ -40,7 +39,6 @@ class PlanTogether {
 		store[slug] = t;
 		writeJSON(KEY, store);
 		this.ticks++;
-		planSchedules.set(slug, { start: t.start, rule: t.rule });
 	}
 
 	leave(slug: string) {

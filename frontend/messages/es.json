@@ -1528,7 +1528,7 @@
   "reader_young_layout_hint": "Texto grande y claro para este libro infantil. Tus propios cambios de abajo siguen mandando.",
   "together_button": "Leer juntos",
   "together_title": "Leer este plan juntos",
-  "together_intro": "Elige una fecha de inicio y comparte el enlace. Todos los que lo abran verán el mismo día del plan, y no se guarda nada sobre ellos.",
+  "together_intro": "Elige una fecha de inicio y comparte el enlace. Todos los que lo abran verán el mismo día del plan. Sin registrarse, y no se recoge nada sobre nadie.",
   "together_message": "Leamos juntos %t%, una lectura breve cada día, a partir del %d%. Abre este enlace para unirte:",
   "together_eyebrow": "Leyendo juntos",
   "together_starts": "Empieza el %d%",
@@ -1536,7 +1536,7 @@
   "together_next": "Próxima lectura %d%: Día %n%",
   "together_finished": "Este grupo terminó el %d%",
   "together_join": "Unirse al grupo",
-  "together_join_hint": "El calendario y los recordatorios de tu plan seguirán las fechas del grupo.",
+  "together_join_hint": "El calendario del plan seguirá las fechas del grupo, en este dispositivo.",
   "together_joined": "Estás leyendo con este grupo",
   "together_leave": "Salir"
 }

@@ -1528,7 +1528,7 @@
   "reader_young_layout_hint": "Ebiwandiiko ebinene era ebitegeerekeka eri ekitabo kino eky’abaana. Enkyukakyuka zo wansi ze zisinga.",
   "together_button": "Musome wamu",
   "together_title": "Musome enteekateeka eno wamu",
-  "together_intro": "Londa olunaku lw'okutandika ogabane link. Buli agiggulawo alaba olunaku lwe lumu olw'enteekateeka, era tewali kiterekebwa ku bo.",
+  "together_intro": "Londa olunaku lw'okutandika ogabane link. Buli agiggulawo alaba olunaku lwe lumu olw'enteekateeka. Tewali kwewandiisa, era tewali kikungaanyizibwa ku muntu yenna.",
   "together_message": "Tusome %t% wamu, ekitundu ekimpi buli lunaku, okutandika %d%. Ggulawo link eno okwegatta:",
   "together_eyebrow": "Musoma wamu",
   "together_starts": "Etandika %d%",
@@ -1536,7 +1536,7 @@
   "together_next": "Ekisomebwa ekiddako %d%: Olunaku %n%",
   "together_finished": "Ekibinja kino kyamaliriza %d%",
   "together_join": "Yingira mu kibinja",
-  "together_join_hint": "Kalenda n'okujjukizibwa kw'enteekateeka yo bijja kugoberera ennaku z'ekibinja.",
+  "together_join_hint": "Kalenda y'enteekateeka ejja kugoberera ennaku z'ekibinja, ku kyuma kino.",
   "together_joined": "Osoma wamu n'ekibinja kino",
   "together_leave": "Vaamu"
 }

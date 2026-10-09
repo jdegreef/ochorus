@@ -1528,7 +1528,7 @@
   "reader_young_layout_hint": "Maandishi makubwa na wazi kwa kitabu hiki cha watoto. Mabadiliko yako mwenyewe hapa chini bado yanatumika.",
   "together_button": "Someni pamoja",
   "together_title": "Someni mpango huu pamoja",
-  "together_intro": "Chagua tarehe ya kuanza na ushiriki kiungo. Kila anayekifungua ataona siku ileile ya mpango, na hakuna kinachohifadhiwa kuwahusu.",
+  "together_intro": "Chagua tarehe ya kuanza na ushiriki kiungo. Kila anayekifungua ataona siku ileile ya mpango. Hakuna kujisajili, na hakuna kinachokusanywa kuhusu mtu yeyote.",
   "together_message": "Tusome %t% pamoja, somo fupi moja kila siku, kuanzia %d%. Fungua kiungo hiki ili ujiunge:",
   "together_eyebrow": "Mnasoma pamoja",
   "together_starts": "Inaanza %d%",
@@ -1536,7 +1536,7 @@
   "together_next": "Somo linalofuata %d%: Siku %n%",
   "together_finished": "Kikundi hiki kilimaliza %d%",
   "together_join": "Jiunge na kikundi",
-  "together_join_hint": "Kalenda na vikumbusho vya mpango wako vitafuata tarehe za kikundi.",
+  "together_join_hint": "Kalenda ya mpango itafuata tarehe za kikundi, kwenye kifaa hiki.",
   "together_joined": "Unasoma pamoja na kikundi hiki",
   "together_leave": "Ondoka"
 }
