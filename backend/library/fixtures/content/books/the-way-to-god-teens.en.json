@@ -1,0 +1,371 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "dwight-l-moody"
+  ],
+  "slug": "the-way-to-god-teens",
+  "language": "en",
+  "title": "The Way to God (For Teens)",
+  "subtitle": "",
+  "cover_title": "",
+  "description": "D. L. Moody had about five years of schooling and was selling shoes in Boston when his Sunday school teacher told him about the love of Christ. He went on to preach to millions on two continents. The Way to God is his plain, story-filled explanation of how a person comes to God. This teen edition retells it in everyday words: that God really loves you, what it means to be born again, who Jesus is, what repentance actually is, how to make things right, how you can know you belong to God, and how to come back if you have drifted away. Moody’s own sentences are kept where they say it best.",
+  "hook": "A shoe salesman turned world-famous preacher explains, with real stories, how anyone can find their way to God.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Who was D. L. Moody?",
+    "answer": "Dwight Lyman Moody was an American evangelist, born in 1837 on a farm in Northfield, Massachusetts. His father died when he was four, and he had only about five years of schooling. He became a Christian at seventeen while working in his uncle’s shoe store in Boston, started a huge Sunday school in Chicago, and went on to preach to millions in America and Britain. He founded schools and the Moody Bible Institute, and died in 1899."
+   },
+   {
+    "question": "What does “born again” mean?",
+    "answer": "It comes from Jesus’ words to Nicodemus in John 3: “Except a man be born again, he cannot see the kingdom of God.” Moody explains that it means a new life from God’s Spirit, not just going to church, trying harder or turning over a new leaf. It is something God does in us when we turn to him and trust Jesus."
+   },
+   {
+    "question": "Do I need a dramatic conversion story to be a real Christian?",
+    "answer": "No. Moody says it is dangerous to wait for someone else’s experience. Some people come to God suddenly, others so gradually they can’t tell when it started, like the dawn. What matters is not the story but whether you really belong to Christ."
+   },
+   {
+    "question": "What is repentance?",
+    "answer": "Moody calls it “right about face”: turning around from going your own way to going God’s way. It is not just feeling bad, being scared, or giving up one sin. It is a change of mind that shows itself in a change of direction."
+   },
+   {
+    "question": "Can I really know I am going to heaven?",
+    "answer": "Moody says yes: John wrote his first letter so that believers “may know” they have eternal life. Assurance rests not on your feelings but on what Jesus has done and what God has promised."
+   },
+   {
+    "question": "What if I feel like no one loves me?",
+    "answer": "Moody’s first chapter is all about the love of God, which does not change when we fail. If you feel unloved, very low, or have thoughts of hurting yourself or not wanting to be alive, please tell a trusted adult straight away, or contact a local crisis line. You matter, and help is there."
+   },
+   {
+    "question": "Is this the full text?",
+    "answer": "No. It is a retelling for teenagers in plain modern words, drawn from all nine of Moody’s chapters and keeping his own sentences and stories where they say it best. The full The Way to God is also available."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of D. L. Moody’s The Way to God (1884), which is in the public domain. The telling is our own, free to read and share. Scripture quotations are from the King James Version, which is in the public domain.",
+  "cover_url": "/covers/the-way-to-god-teens.svg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/the-way-to-god-teens.pdf?download=the-way-to-god-teens.pdf",
+  "cover_color": "",
+  "series": [
+   "straight-talk"
+  ],
+  "series_position": null,
+  "sort_order": 163,
+  "is_published": true,
+  "created_at": "2026-10-09T05:30:00Z",
+  "updated_at": "2026-10-09T05:30:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "en"
+  ],
+  "order": 1,
+  "title": "The Boy in the Shoe Store",
+  "body_html": "<blockquote>“Now when they saw the boldness of Peter and John, and perceived that they were unlearned and ignorant men, they marvelled; and they took knowledge of them, that they had been with Jesus.” — Acts 4:13 (KJV)</blockquote> <p>Dwight Lyman Moody was born in 1837 on a small farm in Northfield, Massachusetts. He was the sixth of nine children. When he was four, his father died, and the family was left very poor. Dwight only had about five years of schooling.</p> <p>At seventeen he moved to Boston to work in his uncle’s shoe store. He was energetic, ambitious and a bit rough around the edges.</p> <p>His Sunday school teacher, a man called Edward Kimball, decided to visit him. On 21 April 1855 he found Dwight at the back of the shop, wrapping up shoes, and told him about the love of Christ. Right there among the shelves, Moody gave his heart to Jesus.</p> <p>Moody soon moved to Chicago. He started a Sunday school in one of the roughest parts of the city, an area people called “Little Hell”, and it grew until fifteen hundred children came. Eventually he gave up a successful business so he could give all his time to God.</p> <p>In 1873 he sailed to Britain with a singer called Ira Sankey. They held meetings that filled huge halls, and Moody came home the best-known evangelist in the world. He was never ordained as a minister. People estimate he preached to as many as a hundred million people in his life.</p> <p>The boy with five years of schooling also started schools for young people, the Moody Bible Institute in Chicago, and a project printing Christian books cheap enough for anyone to afford.</p> <p>Moody spoke in plain words and loved telling true stories. The Way to God is his explanation of the most important question there is: how can a person come to God? It is full of stories of real people he met: a man passing a church at night, a self-righteous businessman, a man haunted by a crime he committed, a prisoner who loved flowers.</p> <p>In this book you will hear those stories, and Moody’s plain answers. Like the first disciples, he wasn’t educated, but people could tell he had been with Jesus.</p> <p><strong>One thing to do this week:</strong> think about who first told you about Jesus, a parent, a teacher, a friend, a youth leader. This week, thank God for them, and if you can, send them a message to say thank you.</p>",
+  "study_questions": [
+   {
+    "question": "Where was Moody when he became a Christian?",
+    "answer": "In his uncle’s shoe store in Boston, where his Sunday school teacher Edward Kimball found him wrapping shoes."
+   },
+   {
+    "question": "What did Moody start in Chicago?",
+    "answer": "A Sunday school in a slum called “Little Hell” that grew to fifteen hundred children."
+   },
+   {
+    "question": "Why is Acts 4:13 a good verse for Moody’s life?",
+    "answer": "Because, like Peter and John, Moody had little education, but people could see he had been with Jesus."
+   }
+  ],
+  "body_text": "“Now when they saw the boldness of Peter and John, and perceived that they were unlearned and ignorant men, they marvelled; and they took knowledge of them, that they had been with Jesus.” — Acts 4:13 (KJV) Dwight Lyman Moody was born in 1837 on a small farm in Northfield, Massachusetts. He was the sixth of nine children. When he was four, his father died, and the family was left very poor. Dwight only had about five years of schooling. At seventeen he moved to Boston to work in his uncle’s shoe store. He was energetic, ambitious and a bit rough around the edges. His Sunday school teacher, a man called Edward Kimball, decided to visit him. On 21 April 1855 he found Dwight at the back of the shop, wrapping up shoes, and told him about the love of Christ. Right there among the shelves, Moody gave his heart to Jesus. Moody soon moved to Chicago. He started a Sunday school in one of the roughest parts of the city, an area people called “Little Hell”, and it grew until fifteen hundred children came. Eventually he gave up a successful business so he could give all his time to God. In 1873 he sailed to Britain with a singer called Ira Sankey. They held meetings that filled huge halls, and Moody came home the best-known evangelist in the world. He was never ordained as a minister. People estimate he preached to as many as a hundred million people in his life. The boy with five years of schooling also started schools for young people, the Moody Bible Institute in Chicago, and a project printing Christian books cheap enough for anyone to afford. Moody spoke in plain words and loved telling true stories. The Way to God is his explanation of the most important question there is: how can a person come to God? It is full of stories of real people he met: a man passing a church at night, a self-righteous businessman, a man haunted by a crime he committed, a prisoner who loved flowers. In this book you will hear those stories, and Moody’s plain answers. Like the first disciples, he wasn’t educated, but people could tell he had been with Jesus. One thing to do this week: think about who first told you about Jesus, a parent, a teacher, a friend, a youth leader. This week, thank God for them, and if you can, send them a message to say thank you.",
+  "word_count": 416
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "en"
+  ],
+  "order": 2,
+  "title": "God Is Love",
+  "body_html": "<blockquote>“Herein is love, not that we loved God, but that he loved us, and sent his Son to be the propitiation for our sins.” — 1 John 4:10 (KJV)</blockquote> <p>Moody begins his book with the most important truth of all:</p> <blockquote>“If I could only make men understand the real meaning of the words of the apostle John—“God is love,” I would take that single text, and would go up and down the world proclaiming this glorious truth.”</blockquote> <p>Moody says the trouble is that people think God hates them, and so they keep running away from him.</p> <p>He tells a story. His church in Chicago put the words “God is Love” over the pulpit in gas lights. One night a man walking past glanced through the door and saw them. He thought, “God is Love! No! He does not love me; for I am a poor miserable sinner.” He tried to forget the words, but they seemed to stand in front of him in letters of fire. He turned round, went in, and stayed behind afterwards, crying. When Moody showed him from the Bible how God had loved him all along, he went away rejoicing.</p> <p>Where does the idea that God doesn’t love us come from? Moody says it often comes from being taught that God only loves us when we are good. But that isn’t what the Bible says. Good parents don’t stop loving their children when they misbehave. Moody says: “It is the sin that He hates,” not the person.</p> <p>To see how big God’s love is, Moody says, look at the cross. Jesus laid down his life not only for his friends but for his enemies, for the people who mocked him and killed him. On the cross he prayed, “Father, forgive them, for they know not what they do.”</p> <p>And God’s love doesn’t change. People who loved you once may have grown cold. But Jesus, the night before he died, “having loved his own which were in the world, he loved them unto the end”. He loved Peter, knowing Peter would deny him. He even loved Judas.</p> <p>Moody also answers a question many people ask: if God loves me, why doesn’t he just make me good? Because, he says, “God wants sons and daughters in heaven; He does not want machines or slaves.” He draws us by love.</p> <p>Moody knew that feeling unloved can be crushing. If you feel that nobody loves you, or if you have thoughts of hurting yourself or not wanting to live, please tell a trusted adult today, or contact a crisis line. God loves you, and the people around you want to help.</p> <p><strong>One thing to do this week:</strong> write “God is love” somewhere you will see it every day this week: your mirror, your lock screen, your planner. Each time you see it, say to God, “Thank you that you love me, even today.”</p>",
+  "study_questions": [
+   {
+    "question": "Why did Moody think people run away from God?",
+    "answer": "Because they think God hates them."
+   },
+   {
+    "question": "What happened to the man who saw “God is Love” in gas lights?",
+    "answer": "He couldn’t forget the words, came into the meeting, and through the Scriptures discovered that God had loved him all along."
+   },
+   {
+    "question": "Why doesn’t God just make us good, according to Moody?",
+    "answer": "Because God wants sons and daughters, not machines or slaves; he draws us by love."
+   }
+  ],
+  "body_text": "“Herein is love, not that we loved God, but that he loved us, and sent his Son to be the propitiation for our sins.” — 1 John 4:10 (KJV) Moody begins his book with the most important truth of all: “If I could only make men understand the real meaning of the words of the apostle John—“God is love,” I would take that single text, and would go up and down the world proclaiming this glorious truth.” Moody says the trouble is that people think God hates them, and so they keep running away from him. He tells a story. His church in Chicago put the words “God is Love” over the pulpit in gas lights. One night a man walking past glanced through the door and saw them. He thought, “God is Love! No! He does not love me; for I am a poor miserable sinner.” He tried to forget the words, but they seemed to stand in front of him in letters of fire. He turned round, went in, and stayed behind afterwards, crying. When Moody showed him from the Bible how God had loved him all along, he went away rejoicing. Where does the idea that God doesn’t love us come from? Moody says it often comes from being taught that God only loves us when we are good. But that isn’t what the Bible says. Good parents don’t stop loving their children when they misbehave. Moody says: “It is the sin that He hates,” not the person. To see how big God’s love is, Moody says, look at the cross. Jesus laid down his life not only for his friends but for his enemies, for the people who mocked him and killed him. On the cross he prayed, “Father, forgive them, for they know not what they do.” And God’s love doesn’t change. People who loved you once may have grown cold. But Jesus, the night before he died, “having loved his own which were in the world, he loved them unto the end”. He loved Peter, knowing Peter would deny him. He even loved Judas. Moody also answers a question many people ask: if God loves me, why doesn’t he just make me good? Because, he says, “God wants sons and daughters in heaven; He does not want machines or slaves.” He draws us by love. Moody knew that feeling unloved can be crushing. If you feel that nobody loves you, or if you have thoughts of hurting yourself or not wanting to live, please tell a trusted adult today, or contact a crisis line. God loves you, and the people around you want to help. One thing to do this week: write “God is love” somewhere you will see it every day this week: your mirror, your lock screen, your planner. Each time you see it, say to God, “Thank you that you love me, even today.”",
+  "word_count": 483
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "en"
+  ],
+  "order": 3,
+  "title": "Born Again",
+  "body_html": "<blockquote>“Jesus answered and said unto him, Verily, verily, I say unto thee, Except a man be born again, he cannot see the kingdom of God.” — John 3:3 (KJV)</blockquote> <p>Moody’s next chapter is about Jesus’ conversation with a man named Nicodemus. Nicodemus was a respected religious teacher, probably one of the best people in Jerusalem. He came to Jesus at night, and Jesus told him: “Except a man be born again, he cannot see the kingdom of God.”</p> <p>Moody says he is glad Jesus said this to a respectable man like Nicodemus, and not only to tax collectors or outcasts. Otherwise people would think, “Those people need to be born again, but I’m a good person.” Everyone needs it.</p> <p>Moody calls being born again “the A B C of the Christian religion.” Then he explains what it is not.</p> <p>It is not going to church. It is not trying to do what is right. It is not “turning over a new leaf” with a new resolution. It is not saying your prayers regularly. Moody also says it is not something that happens just because you have been baptised or taken communion. He calls those things good and important, but warns against putting them in the place of being born of the Spirit.</p> <p>Christians from different traditions understand baptism in different ways. But all of them agree with Moody’s main point: going through religious ceremonies is not a substitute for actually trusting Jesus and receiving new life from God.</p> <p>So what is being born again? It is God’s Spirit giving us a new life from above. It is something God does, not something we manage by ourselves. We can’t make ourselves born, physically or spiritually.</p> <p>Moody tells of a man who brought a long list of questions to a friend of his and said, “If you can answer these questions satisfactorily, I have made up my mind to be a Christian.” His friend suggested he come to Christ first and look at the questions afterwards. The man did, and when he looked at his list later, it seemed as if they had all been answered.</p> <p>Questions are good, and you should ask them. But sometimes we use questions to keep God at arm’s length. Moody says that night was “the most blessed night” in Nicodemus’s life, because he met the one who could give him a new beginning.</p> <p><strong>One thing to do this week:</strong> read John 3:1–17 slowly this week. Ask yourself Moody’s question honestly: “Have I been born again?” If you are not sure, tell God that, and ask him to give you new life by his Spirit.</p>",
+  "study_questions": [
+   {
+    "question": "Why was Moody glad Jesus spoke about the new birth to Nicodemus?",
+    "answer": "Because Nicodemus was a respectable religious man, which shows that everyone needs to be born again, not just obvious sinners."
+   },
+   {
+    "question": "Name three things Moody says being born again is not.",
+    "answer": "Any three of: going to church, trying to do right, turning over a new leaf, saying your prayers, being baptised or taking communion."
+   },
+   {
+    "question": "What happened to the man with a list of questions?",
+    "answer": "He came to Christ first, and afterwards found that his questions seemed to have been answered."
+   }
+  ],
+  "body_text": "“Jesus answered and said unto him, Verily, verily, I say unto thee, Except a man be born again, he cannot see the kingdom of God.” — John 3:3 (KJV) Moody’s next chapter is about Jesus’ conversation with a man named Nicodemus. Nicodemus was a respected religious teacher, probably one of the best people in Jerusalem. He came to Jesus at night, and Jesus told him: “Except a man be born again, he cannot see the kingdom of God.” Moody says he is glad Jesus said this to a respectable man like Nicodemus, and not only to tax collectors or outcasts. Otherwise people would think, “Those people need to be born again, but I’m a good person.” Everyone needs it. Moody calls being born again “the A B C of the Christian religion.” Then he explains what it is not. It is not going to church. It is not trying to do what is right. It is not “turning over a new leaf” with a new resolution. It is not saying your prayers regularly. Moody also says it is not something that happens just because you have been baptised or taken communion. He calls those things good and important, but warns against putting them in the place of being born of the Spirit. Christians from different traditions understand baptism in different ways. But all of them agree with Moody’s main point: going through religious ceremonies is not a substitute for actually trusting Jesus and receiving new life from God. So what is being born again? It is God’s Spirit giving us a new life from above. It is something God does, not something we manage by ourselves. We can’t make ourselves born, physically or spiritually. Moody tells of a man who brought a long list of questions to a friend of his and said, “If you can answer these questions satisfactorily, I have made up my mind to be a Christian.” His friend suggested he come to Christ first and look at the questions afterwards. The man did, and when he looked at his list later, it seemed as if they had all been answered. Questions are good, and you should ask them. But sometimes we use questions to keep God at arm’s length. Moody says that night was “the most blessed night” in Nicodemus’s life, because he met the one who could give him a new beginning. One thing to do this week: read John 3:1–17 slowly this week. Ask yourself Moody’s question honestly: “Have I been born again?” If you are not sure, tell God that, and ask him to give you new life by his Spirit.",
+  "word_count": 438
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "en"
+  ],
+  "order": 4,
+  "title": "The Proud Man and the Honest Man",
+  "body_html": "<blockquote>“And the publican, standing afar off, would not lift up so much as his eyes unto heaven, but smote upon his breast, saying, God be merciful to me a sinner.” — Luke 18:13 (KJV)</blockquote> <p>Jesus once told a story about two men who went to the temple to pray. One was a Pharisee, a very religious man, who thanked God that he wasn’t like other people. The other was a tax collector (a “publican”), who knew he was a sinner and could only say, “God be merciful to me a sinner.” Jesus said it was the second man who went home right with God.</p> <p>Moody says everyone looking into Christianity has the spirit of one of these two men. Either they don’t feel they need a Saviour, or they know they do.</p> <p>For the proud kind, Moody points to verses like Romans 3:23: “all have sinned, and come short of the glory of God.” Not some people. All.</p> <p>Then he tells a story. During meetings in a city in Vermont, a woman asked him to pray for her husband. Moody says the man was so self-righteous “you could not get the point of the needle of conviction in anywhere.” Moody told the wife he didn’t think they could get near him. She said, “You must! My heart will break if these meetings end without his conversion.”</p> <p>She kept bringing him. Near the end of thirty days of meetings, the man came up to Moody, put a trembling hand on his shoulder, and asked to speak to him in a side room. Moody thought he was shaking with cold. But the man said:</p> <blockquote>“I am the worst man in the State of Vermont. I want you to pray for me.”</blockquote> <p>Moody thought he must have committed a terrible crime and asked if one particular sin was troubling him. The man said: “My whole life has been a sin. I have been a conceited, self-righteous Pharisee.”</p> <p>That night, at about two in the morning, the light broke into his soul. He went up and down the main street telling people what God had done for him, and he was a keen Christian from then on.</p> <p>Notice two things. First, the hardest person to reach is often not the obviously bad one but the one who thinks they are fine. Second, never give up praying for someone. That wife’s persistent prayer and love mattered.</p> <p><strong>One thing to do this week:</strong> read Luke 18:9–14 this week and ask yourself honestly which man you are more like. Then pray the tax collector’s prayer: “God be merciful to me a sinner.” And choose one person you will keep praying for, like the woman in Vermont.</p>",
+  "study_questions": [
+   {
+    "question": "What are Moody’s “two classes” of people?",
+    "answer": "Those with the spirit of the Pharisee, who don’t feel their need of a Saviour, and those with the spirit of the publican, who know they are sinners."
+   },
+   {
+    "question": "What did the self-righteous man in Vermont finally say?",
+    "answer": "“I am the worst man in the State of Vermont. I want you to pray for me.”"
+   },
+   {
+    "question": "What part did his wife play in his conversion?",
+    "answer": "She kept praying for him and bringing him to the meetings, even when it seemed hopeless."
+   }
+  ],
+  "body_text": "“And the publican, standing afar off, would not lift up so much as his eyes unto heaven, but smote upon his breast, saying, God be merciful to me a sinner.” — Luke 18:13 (KJV) Jesus once told a story about two men who went to the temple to pray. One was a Pharisee, a very religious man, who thanked God that he wasn’t like other people. The other was a tax collector (a “publican”), who knew he was a sinner and could only say, “God be merciful to me a sinner.” Jesus said it was the second man who went home right with God. Moody says everyone looking into Christianity has the spirit of one of these two men. Either they don’t feel they need a Saviour, or they know they do. For the proud kind, Moody points to verses like Romans 3:23: “all have sinned, and come short of the glory of God.” Not some people. All. Then he tells a story. During meetings in a city in Vermont, a woman asked him to pray for her husband. Moody says the man was so self-righteous “you could not get the point of the needle of conviction in anywhere.” Moody told the wife he didn’t think they could get near him. She said, “You must! My heart will break if these meetings end without his conversion.” She kept bringing him. Near the end of thirty days of meetings, the man came up to Moody, put a trembling hand on his shoulder, and asked to speak to him in a side room. Moody thought he was shaking with cold. But the man said: “I am the worst man in the State of Vermont. I want you to pray for me.” Moody thought he must have committed a terrible crime and asked if one particular sin was troubling him. The man said: “My whole life has been a sin. I have been a conceited, self-righteous Pharisee.” That night, at about two in the morning, the light broke into his soul. He went up and down the main street telling people what God had done for him, and he was a keen Christian from then on. Notice two things. First, the hardest person to reach is often not the obviously bad one but the one who thinks they are fine. Second, never give up praying for someone. That wife’s persistent prayer and love mattered. One thing to do this week: read Luke 18:9–14 this week and ask yourself honestly which man you are more like. Then pray the tax collector’s prayer: “God be merciful to me a sinner.” And choose one person you will keep praying for, like the woman in Vermont.",
+  "word_count": 449
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "en"
+  ],
+  "order": 5,
+  "title": "Your Own Story",
+  "body_html": "<blockquote>“For the wages of sin is death; but the gift of God is eternal life through Jesus Christ our Lord.” — Romans 6:23 (KJV)</blockquote> <p>Moody had a word of advice for people who wanted to come to God but were stuck: don’t wait for someone else’s experience.</p> <p>He says some people wait for exactly the same thing to happen to them as happened to their grandparents. He had a friend who was converted in a field, “and he thinks the whole town ought to go down into that meadow and be converted.” Another was converted under a bridge, and thought anyone else should go there too.</p> <p>God doesn’t work like that. Your story doesn’t have to look like anyone else’s. The best thing to do, Moody says, is to go straight to the Bible. If you say, “I have no strength,” the Bible says that Christ died for us “when we were yet without strength”. If you say, “I can’t see,” Jesus says, “I am the light of the world.”</p> <p>Moody also talks about how long it takes to become a Christian. Romans 6:23 calls eternal life “the gift of God”. Moody asks: “How long does it take to accept a gift?” There is a moment when it isn’t yours, and the next moment it is.</p> <p>At the same time, he says, some people come to God so gradually that, “like the morning light, it is impossible to tell when the dawn began.” Others come suddenly, like a flash of light. Moody says: “I would not go across the street to prove when I was converted; but what is important is for me to know that I really have been.”</p> <p>This is very freeing, especially if you grew up in a Christian family and can’t remember a moment when you “became” a Christian. That’s fine. What matters is not whether you can name the day, but whether you trust Jesus now.</p> <p>Moody gives a fun example of a sudden conversion: Zacchaeus, the short tax collector who climbed a tree to see Jesus. Jesus told him to come down, and Moody says, “His conversion must have taken place somewhere between the branch and the ground.” Zacchaeus came down a changed man.</p> <p>Moody compares the gospel to medicine. If a trusted friend had been cured of a deadly disease and offered you the same medicine for free, you would be foolish not to take it. Jesus offers new life as a gift. You don’t need to understand everything, or have the same story as anyone else. You just need to take it.</p> <p><strong>One thing to do this week:</strong> if you are a Christian, write down your story in a few sentences, however ordinary it seems. If you are not sure, read Romans 6:23 and ask yourself: “Have I received this gift?” If not, you can receive it today by telling God you want to trust Jesus.</p>",
+  "study_questions": [
+   {
+    "question": "Why does Moody warn against waiting for someone else’s experience?",
+    "answer": "Because God doesn’t work in the same way with everyone; we should go to the Bible rather than copy someone else’s story."
+   },
+   {
+    "question": "How does Moody describe gradual conversions?",
+    "answer": "Like the morning light, where it is impossible to tell when the dawn began."
+   },
+   {
+    "question": "Where does Moody say Zacchaeus’s conversion happened?",
+    "answer": "Somewhere between the branch and the ground."
+   }
+  ],
+  "body_text": "“For the wages of sin is death; but the gift of God is eternal life through Jesus Christ our Lord.” — Romans 6:23 (KJV) Moody had a word of advice for people who wanted to come to God but were stuck: don’t wait for someone else’s experience. He says some people wait for exactly the same thing to happen to them as happened to their grandparents. He had a friend who was converted in a field, “and he thinks the whole town ought to go down into that meadow and be converted.” Another was converted under a bridge, and thought anyone else should go there too. God doesn’t work like that. Your story doesn’t have to look like anyone else’s. The best thing to do, Moody says, is to go straight to the Bible. If you say, “I have no strength,” the Bible says that Christ died for us “when we were yet without strength”. If you say, “I can’t see,” Jesus says, “I am the light of the world.” Moody also talks about how long it takes to become a Christian. Romans 6:23 calls eternal life “the gift of God”. Moody asks: “How long does it take to accept a gift?” There is a moment when it isn’t yours, and the next moment it is. At the same time, he says, some people come to God so gradually that, “like the morning light, it is impossible to tell when the dawn began.” Others come suddenly, like a flash of light. Moody says: “I would not go across the street to prove when I was converted; but what is important is for me to know that I really have been.” This is very freeing, especially if you grew up in a Christian family and can’t remember a moment when you “became” a Christian. That’s fine. What matters is not whether you can name the day, but whether you trust Jesus now. Moody gives a fun example of a sudden conversion: Zacchaeus, the short tax collector who climbed a tree to see Jesus. Jesus told him to come down, and Moody says, “His conversion must have taken place somewhere between the branch and the ground.” Zacchaeus came down a changed man. Moody compares the gospel to medicine. If a trusted friend had been cured of a deadly disease and offered you the same medicine for free, you would be foolish not to take it. Jesus offers new life as a gift. You don’t need to understand everything, or have the same story as anyone else. You just need to take it. One thing to do this week: if you are a Christian, write down your story in a few sentences, however ordinary it seems. If you are not sure, read Romans 6:23 and ask yourself: “Have I received this gift?” If not, you can receive it today by telling God you want to trust Jesus.",
+  "word_count": 484
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "en"
+  ],
+  "order": 6,
+  "title": "Who Is Jesus?",
+  "body_html": "<blockquote>“He saith unto them, But whom say ye that I am? And Simon Peter answered and said, Thou art the Christ, the Son of the living God.” — Matthew 16:15–16 (KJV)</blockquote> <p>Moody met some people who liked Jesus but didn’t believe he was God. They thought he was a great teacher or a very good man. Moody had once thought the same.</p> <p>He says that when he was a boy, he thought Jesus was a good man like Moses, Joseph or Abraham, maybe the best man who ever lived. But then he noticed that Jesus claimed much more. Jesus said things like, “Before Abraham was, I am.” He claimed to have come from heaven and to be one with God.</p> <p>That left Moody with a problem:</p> <blockquote>“I did not know where to place Christ, or what to do with Him, if He were not divine.”</blockquote> <p>He came to the conclusion that Jesus is either a deceiver, or he is God come in human flesh. Moody argued that if Jesus was just a man, he couldn’t even be called a good man, because he claimed an honour that wasn’t his. And if he truly believed he was God but wasn’t, he would have been deluded. Moody couldn’t accept either of those. Everything about Jesus’ life, teaching and character shows that he was neither a liar nor confused.</p> <p>Moody also points out that Christians around the world worship Jesus. If he is not God, that would be breaking the first commandment, “Thou shalt have no other gods before me.” But if he is God, worshipping him is exactly right.</p> <p>He looks at Jesus’ trial too. When the high priest asked him directly, “Art thou the Christ, the Son of the Blessed?” Jesus answered, “I am.” That was why they condemned him to death. Jesus died because he claimed to be God.</p> <p>This is the most important question you will ever answer. Jesus asked his disciples, “But whom say ye that I am?” Peter answered, “Thou art the Christ, the Son of the living God.” Everyone has to answer that question for themselves.</p> <p>You might not have a full answer yet, and that is OK. Keep looking at Jesus in the Gospels. Read what he said and did. Moody believed that anyone who honestly looks will find that Jesus is who he said he was.</p> <p><strong>One thing to do this week:</strong> read Mark’s Gospel this month, one chapter a day. As you read, keep a note of every time Jesus says or does something that only God could say or do. At the end, answer Jesus’ question for yourself: “Whom say ye that I am?”</p>",
+  "study_questions": [
+   {
+    "question": "What did Moody think of Jesus when he was a boy?",
+    "answer": "That he was a good man like Moses, Joseph or Abraham, perhaps the best man who ever lived."
+   },
+   {
+    "question": "Why did Moody conclude that Jesus could not just be a good man?",
+    "answer": "Because Jesus claimed to be divine; if that claim were false, he would be a deceiver or deluded, not simply good."
+   },
+   {
+    "question": "What answer did Jesus give the high priest when asked if he was the Christ?",
+    "answer": "“I am.”"
+   }
+  ],
+  "body_text": "“He saith unto them, But whom say ye that I am? And Simon Peter answered and said, Thou art the Christ, the Son of the living God.” — Matthew 16:15–16 (KJV) Moody met some people who liked Jesus but didn’t believe he was God. They thought he was a great teacher or a very good man. Moody had once thought the same. He says that when he was a boy, he thought Jesus was a good man like Moses, Joseph or Abraham, maybe the best man who ever lived. But then he noticed that Jesus claimed much more. Jesus said things like, “Before Abraham was, I am.” He claimed to have come from heaven and to be one with God. That left Moody with a problem: “I did not know where to place Christ, or what to do with Him, if He were not divine.” He came to the conclusion that Jesus is either a deceiver, or he is God come in human flesh. Moody argued that if Jesus was just a man, he couldn’t even be called a good man, because he claimed an honour that wasn’t his. And if he truly believed he was God but wasn’t, he would have been deluded. Moody couldn’t accept either of those. Everything about Jesus’ life, teaching and character shows that he was neither a liar nor confused. Moody also points out that Christians around the world worship Jesus. If he is not God, that would be breaking the first commandment, “Thou shalt have no other gods before me.” But if he is God, worshipping him is exactly right. He looks at Jesus’ trial too. When the high priest asked him directly, “Art thou the Christ, the Son of the Blessed?” Jesus answered, “I am.” That was why they condemned him to death. Jesus died because he claimed to be God. This is the most important question you will ever answer. Jesus asked his disciples, “But whom say ye that I am?” Peter answered, “Thou art the Christ, the Son of the living God.” Everyone has to answer that question for themselves. You might not have a full answer yet, and that is OK. Keep looking at Jesus in the Gospels. Read what he said and did. Moody believed that anyone who honestly looks will find that Jesus is who he said he was. One thing to do this week: read Mark’s Gospel this month, one chapter a day. As you read, keep a note of every time Jesus says or does something that only God could say or do. At the end, answer Jesus’ question for yourself: “Whom say ye that I am?”",
+  "word_count": 442
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "en"
+  ],
+  "order": 7,
+  "title": "Right About Face",
+  "body_html": "<blockquote>“Repent ye therefore, and be converted, that your sins may be blotted out, when the times of refreshing shall come from the presence of the Lord.” — Acts 3:19 (KJV)</blockquote> <p>Repentance is one of the most important words in the Bible, and Moody says it is one of the most misunderstood. So he begins with what repentance is not.</p> <p>It is not fear. He talks about sailors who swear constantly but pray loudly during a storm, and then go straight back to swearing when the storm passes. They were scared, but they didn’t repent.</p> <p>It is not just feeling bad. Moody used to preach in a prison in Baltimore. He says nearly every prisoner felt miserable at first and many cried for days, but when they got out, most went straight back to their old ways. “They felt very bad because they had got caught; that was all.”</p> <p>It is not punishing yourself. Moody says that fasting or afflicting your body does not make you repent of a single sin. That is never what God asks.</p> <p>It is not just giving up one sin. Moody says breaking off one sin is like cutting one branch off a tree, “when the whole tree has to come down.” Or like plugging one leak in a ship that has three or four holes.</p> <p>So what is repentance? Moody gives a simple definition:</p> <blockquote>“I will give you a good definition: it is “right about face!””</blockquote> <p>That is a soldier’s command to turn round and face the opposite direction. Repentance means you were walking one way, away from God, and you turn round and walk the other way, towards him.</p> <p>Moody points to Jesus’ story of two sons. A father asked the first son to work in the vineyard, and he said, “I will not.” But afterwards he changed his mind and went. That, says Moody, is repentance: not just thinking “I was wrong”, but actually going.</p> <p>And it doesn’t take months. “It does not take a long while to turn around.” Moody tells of a ship heading for the rocks off Newfoundland. There was a moment when the captain could have reversed the engines and saved it. Then the moment passed. Moody says there is a moment in everyone’s life when they can say, “By the grace of God I will go no further.” He urges his readers not to wait.</p> <p><strong>One thing to do this week:</strong> think of one area of your life where you know you are walking the wrong way. This week, do a “right about face”: tell God you are turning round, and take one concrete step in the opposite direction.</p>",
+  "study_questions": [
+   {
+    "question": "Name three things Moody says repentance is not.",
+    "answer": "Any three of: fear, just feeling bad, punishing yourself, conviction alone, praying alone, or giving up just one sin."
+   },
+   {
+    "question": "What is Moody’s definition of repentance?",
+    "answer": "“Right about face”: turning round from going away from God to going towards him."
+   },
+   {
+    "question": "What does the story of the two sons teach about repentance?",
+    "answer": "Repentance is not just admitting you were wrong but actually changing direction and doing what is right."
+   }
+  ],
+  "body_text": "“Repent ye therefore, and be converted, that your sins may be blotted out, when the times of refreshing shall come from the presence of the Lord.” — Acts 3:19 (KJV) Repentance is one of the most important words in the Bible, and Moody says it is one of the most misunderstood. So he begins with what repentance is not. It is not fear. He talks about sailors who swear constantly but pray loudly during a storm, and then go straight back to swearing when the storm passes. They were scared, but they didn’t repent. It is not just feeling bad. Moody used to preach in a prison in Baltimore. He says nearly every prisoner felt miserable at first and many cried for days, but when they got out, most went straight back to their old ways. “They felt very bad because they had got caught; that was all.” It is not punishing yourself. Moody says that fasting or afflicting your body does not make you repent of a single sin. That is never what God asks. It is not just giving up one sin. Moody says breaking off one sin is like cutting one branch off a tree, “when the whole tree has to come down.” Or like plugging one leak in a ship that has three or four holes. So what is repentance? Moody gives a simple definition: “I will give you a good definition: it is “right about face!”” That is a soldier’s command to turn round and face the opposite direction. Repentance means you were walking one way, away from God, and you turn round and walk the other way, towards him. Moody points to Jesus’ story of two sons. A father asked the first son to work in the vineyard, and he said, “I will not.” But afterwards he changed his mind and went. That, says Moody, is repentance: not just thinking “I was wrong”, but actually going. And it doesn’t take months. “It does not take a long while to turn around.” Moody tells of a ship heading for the rocks off Newfoundland. There was a moment when the captain could have reversed the engines and saved it. Then the moment passed. Moody says there is a moment in everyone’s life when they can say, “By the grace of God I will go no further.” He urges his readers not to wait. One thing to do this week: think of one area of your life where you know you are walking the wrong way. This week, do a “right about face”: tell God you are turning round, and take one concrete step in the opposite direction.",
+  "word_count": 441
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "en"
+  ],
+  "order": 8,
+  "title": "Making It Right",
+  "body_html": "<blockquote>“And Zacchaeus stood, and said unto the Lord; Behold, Lord, the half of my goods I give to the poor; and if I have taken any thing from any man by false accusation, I restore him fourfold.” — Luke 19:8 (KJV)</blockquote> <p>Moody says that real repentance often shows itself in a desire to make things right with people we have wronged. The old word for this is “restitution”. When Zacchaeus met Jesus, he immediately promised to pay back anyone he had cheated four times over.</p> <p>Moody tells a powerful story. A man came to him in great distress. When he was young, he said, his widowed mother had been sinking into poverty. They owned a building insured for a thousand dollars, and when he was twenty, he set fire to it and gave the insurance money to his mother.</p> <p>For twelve years that sin haunted him. “I have tried to drown it by indulgence in pleasure and sin,” he told Moody. “I have cursed God; I have gone into infidelity; I have tried to make out that the Bible is not true.” Nothing worked. He was tormented.</p> <p>Moody told him there was a way out: make restitution. Work out how much with interest, and pay the insurance company back.</p> <blockquote>“It would have done you good to see that man’s face light up when he found there was mercy for him.”</blockquote> <p>Notice that the man wasn’t forgiven because he paid the money back. Jesus forgives freely. But a heart that has truly turned to God wants to put right what it can.</p> <p>Moody says some people stay “in darkness and bondage” because they are not willing to turn from their sins and confess them. Being honest, saying sorry, giving back what you took, or telling the truth about a lie can feel scary. But it often brings huge freedom.</p> <p>A word of wisdom here: making things right should be done wisely. If it involves something serious, talk it through with a trusted adult first. And making things right never means putting yourself in danger, or going back to someone who has hurt you. Sometimes the right thing is simply to be honest with God and get good advice.</p> <p>Moody ends this part with a story from a prison in Colorado. A governor visiting the prison found a young prisoner whose cell window was full of carefully tended flowers. The young man said his mother had loved flowers, and they reminded him of her. The governor was so moved that he pardoned him on the spot. Moody says that when God sees “that beautiful flower of true repentance” in someone’s heart, salvation comes to them.</p> <p><strong>One thing to do this week:</strong> ask God to bring to mind anyone you need to make things right with: an apology, returning something, owning up to a lie. Choose one, talk to a wise adult if you need to, and do it this week.</p>",
+  "study_questions": [
+   {
+    "question": "What is restitution?",
+    "answer": "Making things right with people we have wronged, for example by paying back what we took."
+   },
+   {
+    "question": "What had the man in Moody’s story done, and how did he find peace?",
+    "answer": "He had set fire to an insured building for the money; he found peace when he learned there was mercy and resolved to pay the money back with interest."
+   },
+   {
+    "question": "What should you do before making things right in a serious situation?",
+    "answer": "Talk it through with a trusted adult, and never put yourself in danger or go back to someone who has hurt you."
+   }
+  ],
+  "body_text": "“And Zacchaeus stood, and said unto the Lord; Behold, Lord, the half of my goods I give to the poor; and if I have taken any thing from any man by false accusation, I restore him fourfold.” — Luke 19:8 (KJV) Moody says that real repentance often shows itself in a desire to make things right with people we have wronged. The old word for this is “restitution”. When Zacchaeus met Jesus, he immediately promised to pay back anyone he had cheated four times over. Moody tells a powerful story. A man came to him in great distress. When he was young, he said, his widowed mother had been sinking into poverty. They owned a building insured for a thousand dollars, and when he was twenty, he set fire to it and gave the insurance money to his mother. For twelve years that sin haunted him. “I have tried to drown it by indulgence in pleasure and sin,” he told Moody. “I have cursed God; I have gone into infidelity; I have tried to make out that the Bible is not true.” Nothing worked. He was tormented. Moody told him there was a way out: make restitution. Work out how much with interest, and pay the insurance company back. “It would have done you good to see that man’s face light up when he found there was mercy for him.” Notice that the man wasn’t forgiven because he paid the money back. Jesus forgives freely. But a heart that has truly turned to God wants to put right what it can. Moody says some people stay “in darkness and bondage” because they are not willing to turn from their sins and confess them. Being honest, saying sorry, giving back what you took, or telling the truth about a lie can feel scary. But it often brings huge freedom. A word of wisdom here: making things right should be done wisely. If it involves something serious, talk it through with a trusted adult first. And making things right never means putting yourself in danger, or going back to someone who has hurt you. Sometimes the right thing is simply to be honest with God and get good advice. Moody ends this part with a story from a prison in Colorado. A governor visiting the prison found a young prisoner whose cell window was full of carefully tended flowers. The young man said his mother had loved flowers, and they reminded him of her. The governor was so moved that he pardoned him on the spot. Moody says that when God sees “that beautiful flower of true repentance” in someone’s heart, salvation comes to them. One thing to do this week: ask God to bring to mind anyone you need to make things right with: an apology, returning something, owning up to a lie. Choose one, talk to a wise adult if you need to, and do it this week.",
+  "word_count": 488
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "en"
+  ],
+  "order": 9,
+  "title": "You Can Know",
+  "body_html": "<blockquote>“These things have I written unto you that believe on the name of the Son of God; that ye may know that ye have eternal life, and that ye may believe on the name of the Son of God.” — 1 John 5:13 (KJV)</blockquote> <p>Can a Christian actually know they belong to God and are going to heaven? Some people think it is proud to be sure. Moody disagreed. He says it is “the privilege of every child of God” to know.</p> <p>He points out that John wrote his Gospel so that people would believe, and his first letter so that believers would know. Moody says that in that short letter of five chapters, the word “know” appears over forty times. “It is ‘Know! Know!! KNOW!!!’”</p> <p>Moody says doubts don’t just make us miserable; they stop us helping other people. “If I seem in danger of drowning and do not know whether I shall ever reach the shore, I cannot assist another.” You need to be standing on solid rock before you can pull someone else out of the water.</p> <p>Moody quotes another famous preacher, Charles Spurgeon, about animals. A stork never asks whether it has the right to build its nest in a fir tree. A wild goat never asks whether it’s allowed on the rocky crag that suits it. They just use what God has provided. Spurgeon says:</p> <blockquote>“Yet, though these dumb creatures know the provision of their God, the sinner does not recognize the provision of his Saviour.”</blockquote> <p>We say, “I’m afraid it’s not for me,” or “It’s too good to be true.” But nobody ever promised the stork that its nest would never be pulled down. Jesus has promised: “Him that cometh to me I will in no wise cast out.”</p> <p>Moody tells of travelling down the Mississippi River and watching people light the guiding lights along the banks each evening, so pilots could steer safely. He says God has given us “lights” in the Bible to show whether we are his children. In 1 John 3 he finds several: Jesus came to take away our sins; we love other Christians; and more.</p> <p>Assurance doesn’t rest on how you feel today. It rests on what Jesus has done and what God has said. Feelings go up and down. God’s promises don’t.</p> <p>If you often struggle with doubts about whether you are really saved, you are not alone. Talk to a pastor or youth leader you trust. Sometimes it helps to have someone remind you of God’s promises.</p> <p><strong>One thing to do this week:</strong> read 1 John this week, a chapter a day. Every time you see the word “know”, underline it or write it down. At the end of the week, write a short list: “Things God says I can know.”</p>",
+  "study_questions": [
+   {
+    "question": "Why did John write his first letter, according to 1 John 5:13?",
+    "answer": "So that those who believe in the name of the Son of God may know that they have eternal life."
+   },
+   {
+    "question": "Why does Moody say doubts stop us helping others?",
+    "answer": "Because, like a drowning man who can’t save anyone else, we need to be on solid ground ourselves before we can help others."
+   },
+   {
+    "question": "What does assurance rest on?",
+    "answer": "Not on changing feelings, but on what Jesus has done and what God has promised."
+   }
+  ],
+  "body_text": "“These things have I written unto you that believe on the name of the Son of God; that ye may know that ye have eternal life, and that ye may believe on the name of the Son of God.” — 1 John 5:13 (KJV) Can a Christian actually know they belong to God and are going to heaven? Some people think it is proud to be sure. Moody disagreed. He says it is “the privilege of every child of God” to know. He points out that John wrote his Gospel so that people would believe, and his first letter so that believers would know. Moody says that in that short letter of five chapters, the word “know” appears over forty times. “It is ‘Know! Know!! KNOW!!!’” Moody says doubts don’t just make us miserable; they stop us helping other people. “If I seem in danger of drowning and do not know whether I shall ever reach the shore, I cannot assist another.” You need to be standing on solid rock before you can pull someone else out of the water. Moody quotes another famous preacher, Charles Spurgeon, about animals. A stork never asks whether it has the right to build its nest in a fir tree. A wild goat never asks whether it’s allowed on the rocky crag that suits it. They just use what God has provided. Spurgeon says: “Yet, though these dumb creatures know the provision of their God, the sinner does not recognize the provision of his Saviour.” We say, “I’m afraid it’s not for me,” or “It’s too good to be true.” But nobody ever promised the stork that its nest would never be pulled down. Jesus has promised: “Him that cometh to me I will in no wise cast out.” Moody tells of travelling down the Mississippi River and watching people light the guiding lights along the banks each evening, so pilots could steer safely. He says God has given us “lights” in the Bible to show whether we are his children. In 1 John 3 he finds several: Jesus came to take away our sins; we love other Christians; and more. Assurance doesn’t rest on how you feel today. It rests on what Jesus has done and what God has said. Feelings go up and down. God’s promises don’t. If you often struggle with doubts about whether you are really saved, you are not alone. Talk to a pastor or youth leader you trust. Sometimes it helps to have someone remind you of God’s promises. One thing to do this week: read 1 John this week, a chapter a day. Every time you see the word “know”, underline it or write it down. At the end of the week, write a short list: “Things God says I can know.”",
+  "word_count": 465
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "en"
+  ],
+  "order": 10,
+  "title": "Knowing Jesus Better",
+  "body_html": "<blockquote>“Where there is neither Greek nor Jew, circumcision nor uncircumcision, Barbarian, Scythian, bond nor free: but Christ is all, and in all.” — Colossians 3:11 (KJV)</blockquote> <p>Moody’s next chapter is about how much Jesus wants to be to us. He begins with a striking sentence: “Christ is all to us that we make Him to be.” Some Christians, he says, “have a very small Saviour”, because they won’t let him do great things in their lives.</p> <p>First and most important, Jesus is our Saviour from sin. The angel told Joseph to call him Jesus, “for he shall save his people from their sins.” Moody notices the word: “He did not come to save us in our sins, but from our sins.”</p> <p>Then Moody says there are three ways of knowing a person. Some you only know by hearsay. Some you have met once and know slightly. Some you have known for years and know well. People know Jesus in these three ways too: some only know about him from history, some have a slight personal acquaintance, and some long, like Paul, to “know him, and the power of his resurrection”.</p> <p>Moody says: “The more we know of Christ the more we shall love Him, and the better we shall serve Him.”</p> <p>He also says Jesus is more than a rescuer. “I might save a man from drowning,” he says, but then not be able to do anything else for him. Jesus is different. When God rescued Israel from Egypt, he didn’t just save them from death on the night of the Passover; he also led them out of slavery. In the same way, Jesus doesn’t just forgive us and leave us stuck in our bad habits.</p> <blockquote>“No; He has come to deliver us, and to give us victory over our evil tempers, our passions, and our lusts.”</blockquote> <p>Moody’s advice for anyone stuck in a sin is simple: “go on to know Christ more intimately.” The answer to besetting sins isn’t just trying harder. It’s getting to know Jesus better.</p> <p>Where are you on Moody’s three levels? Do you know Jesus only by hearsay, slightly, or well? Wherever you are, you can know him more.</p> <p><strong>One thing to do this week:</strong> choose one way to get to know Jesus better this week: read a Gospel passage each day, spend ten minutes in prayer, or talk with an older Christian about how they know him. At the end of the week, write down one new thing you learned about him.</p>",
+  "study_questions": [
+   {
+    "question": "What does Moody mean by a “very small Saviour”?",
+    "answer": "A Saviour we don’t allow to do great things in our lives, because we won’t receive him fully."
+   },
+   {
+    "question": "What are Moody’s three ways of knowing a person?",
+    "answer": "By hearsay, by a slight acquaintance, and by knowing them well over many years."
+   },
+   {
+    "question": "What is Moody’s advice for someone stuck in a sin?",
+    "answer": "To go on to know Christ more intimately."
+   }
+  ],
+  "body_text": "“Where there is neither Greek nor Jew, circumcision nor uncircumcision, Barbarian, Scythian, bond nor free: but Christ is all, and in all.” — Colossians 3:11 (KJV) Moody’s next chapter is about how much Jesus wants to be to us. He begins with a striking sentence: “Christ is all to us that we make Him to be.” Some Christians, he says, “have a very small Saviour”, because they won’t let him do great things in their lives. First and most important, Jesus is our Saviour from sin. The angel told Joseph to call him Jesus, “for he shall save his people from their sins.” Moody notices the word: “He did not come to save us in our sins, but from our sins.” Then Moody says there are three ways of knowing a person. Some you only know by hearsay. Some you have met once and know slightly. Some you have known for years and know well. People know Jesus in these three ways too: some only know about him from history, some have a slight personal acquaintance, and some long, like Paul, to “know him, and the power of his resurrection”. Moody says: “The more we know of Christ the more we shall love Him, and the better we shall serve Him.” He also says Jesus is more than a rescuer. “I might save a man from drowning,” he says, but then not be able to do anything else for him. Jesus is different. When God rescued Israel from Egypt, he didn’t just save them from death on the night of the Passover; he also led them out of slavery. In the same way, Jesus doesn’t just forgive us and leave us stuck in our bad habits. “No; He has come to deliver us, and to give us victory over our evil tempers, our passions, and our lusts.” Moody’s advice for anyone stuck in a sin is simple: “go on to know Christ more intimately.” The answer to besetting sins isn’t just trying harder. It’s getting to know Jesus better. Where are you on Moody’s three levels? Do you know Jesus only by hearsay, slightly, or well? Wherever you are, you can know him more. One thing to do this week: choose one way to get to know Jesus better this week: read a Gospel passage each day, spend ten minutes in prayer, or talk with an older Christian about how they know him. At the end of the week, write down one new thing you learned about him.",
+  "word_count": 418
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-way-to-god-teens",
+   "en"
+  ],
+  "order": 11,
+  "title": "Coming Back",
+  "body_html": "<blockquote>“I will heal their backsliding, I will love them freely: for mine anger is turned away from him.” — Hosea 14:4 (KJV)</blockquote> <p>Moody’s last chapter is for people who have drifted away from God. The old word for it is “backsliding”. Perhaps you once felt close to God, prayed and read your Bible, and loved going to church, but now it feels distant. Moody has good news for you.</p> <p>He points out something important from the prophet Jeremiah: God never left them; they left him. God asks, “What iniquity have your fathers found in me, that they are gone far from me?” Moody asks his readers the same: has God changed? “Men are apt to think that God has changed; but the fault is with them.”</p> <p>Jeremiah also uses a picture of “broken cisterns, that can hold no water.” A cistern was a tank for storing water. God is “the fountain of living waters”, but his people dug their own leaky tanks instead. Moody says the world’s pleasures, money and popularity are like that. They cannot satisfy someone who has tasted God.</p> <p>He gives a slightly cheeky example. He used to tell young women, “My friend, you think more of your ear-rings than of the Lord.” They would deny it. Then he would ask: if you lost one earring, wouldn’t you be upset and go looking for it? They admitted they would. But they had drifted from God without it troubling them at all.</p> <p>Today it might be our phones, or a game, or a sports team. What would you search for if you lost it? And are you searching for God like that?</p> <p>Moody says God pleads with backsliders like a parent longing for a child who has gone away and never writes home. He quotes a verse that he says has brought back more wanderers than any other: “know therefore and see that it is an evil thing and bitter, that thou hast forsaken the LORD thy God.” Moody says he has seen hundreds come back, and every one admitted that leaving God had been bitter.</p> <p>But the verse at the top of this chapter is God’s promise: “I will heal their backsliding, I will love them freely.” You don’t have to earn your way back. You only have to turn round, like the prodigal son, and come home.</p> <p>Moody died in 1899, in the same room in Northfield where he had been born. Some months before, he had said:</p> <blockquote>“Some day you will read in the papers that D. L. Moody, of East Northfield, is dead. Don’t you believe a word of it! At that moment I shall be more alive than I am now.”</blockquote> <p>That is the way to God: not through being good enough, but through Jesus, who gives new life that even death can’t end. Whether you are coming to him for the first time or coming back after drifting away, the door is open.</p> <p><strong>One thing to do this week:</strong> if you have drifted from God, come back this week. Read Luke 15:11–24, and then tell God honestly where you have been. If you are close to God, pray for one friend who has drifted, and think of one way to show them you care.</p>",
+  "study_questions": [
+   {
+    "question": "According to Moody, who leaves whom when someone backslides?",
+    "answer": "We leave God; God never leaves us, and he has not changed."
+   },
+   {
+    "question": "What are the “broken cisterns” in Jeremiah?",
+    "answer": "Leaky water tanks that hold no water, a picture of the things people turn to instead of God, which cannot satisfy."
+   },
+   {
+    "question": "What did Moody say people should believe when they read that he had died?",
+    "answer": "Not a word of it; at that moment he would be more alive than ever."
+   }
+  ],
+  "body_text": "“I will heal their backsliding, I will love them freely: for mine anger is turned away from him.” — Hosea 14:4 (KJV) Moody’s last chapter is for people who have drifted away from God. The old word for it is “backsliding”. Perhaps you once felt close to God, prayed and read your Bible, and loved going to church, but now it feels distant. Moody has good news for you. He points out something important from the prophet Jeremiah: God never left them; they left him. God asks, “What iniquity have your fathers found in me, that they are gone far from me?” Moody asks his readers the same: has God changed? “Men are apt to think that God has changed; but the fault is with them.” Jeremiah also uses a picture of “broken cisterns, that can hold no water.” A cistern was a tank for storing water. God is “the fountain of living waters”, but his people dug their own leaky tanks instead. Moody says the world’s pleasures, money and popularity are like that. They cannot satisfy someone who has tasted God. He gives a slightly cheeky example. He used to tell young women, “My friend, you think more of your ear-rings than of the Lord.” They would deny it. Then he would ask: if you lost one earring, wouldn’t you be upset and go looking for it? They admitted they would. But they had drifted from God without it troubling them at all. Today it might be our phones, or a game, or a sports team. What would you search for if you lost it? And are you searching for God like that? Moody says God pleads with backsliders like a parent longing for a child who has gone away and never writes home. He quotes a verse that he says has brought back more wanderers than any other: “know therefore and see that it is an evil thing and bitter, that thou hast forsaken the LORD thy God.” Moody says he has seen hundreds come back, and every one admitted that leaving God had been bitter. But the verse at the top of this chapter is God’s promise: “I will heal their backsliding, I will love them freely.” You don’t have to earn your way back. You only have to turn round, like the prodigal son, and come home. Moody died in 1899, in the same room in Northfield where he had been born. Some months before, he had said: “Some day you will read in the papers that D. L. Moody, of East Northfield, is dead. Don’t you believe a word of it! At that moment I shall be more alive than I am now.” That is the way to God: not through being good enough, but through Jesus, who gives new life that even death can’t end. Whether you are coming to him for the first time or coming back after drifting away, the door is open. One thing to do this week: if you have drifted from God, come back this week. Read Luke 15:11–24, and then tell God honestly where you have been. If you are close to God, pray for one friend who has drifted, and think of one way to show them you care.",
+  "word_count": 542
+ }
+}
+]

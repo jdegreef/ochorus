@@ -615,6 +615,7 @@ TOPICS = [
             "pensees-teens",
             "the-bruised-reed-teens",
             "mortification-of-sin-teens",
+            "the-way-to-god-teens",
             "real-questions-1",
             "real-questions-2",
         ],

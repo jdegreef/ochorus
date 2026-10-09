@@ -107,6 +107,7 @@ EXPORT_PILOT = frozenset({
     ("pensees-teens", "en"),
     ("the-bruised-reed-teens", "en"),
     ("mortification-of-sin-teens", "en"),
+    ("the-way-to-god-teens", "en"),
     # Retellings of an Ochorus Original (the Portraits of Courage life): the
     # parent author is the imprint, so, like the Portraits themselves, these have
     # no About the Author page. The Teens edition quotes only the public-domain ASV.

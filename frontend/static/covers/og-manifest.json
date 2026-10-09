@@ -14718,6 +14718,16 @@
 			"layout": "wash/ochre",
 			"bar": 0
 		},
+		"the-way-to-god-teens": {
+			"ground": "c9651ad195f1c598748a8d1e122682afda78b3c223bb7409a6fc23eeebd2b073",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"they-were-young-1": {
 			"ground": "4e4617ad54c0af3905c9159d881cf567fd77b8264050bb3606208e4ee72c32eb",
 			"style": "originals",
