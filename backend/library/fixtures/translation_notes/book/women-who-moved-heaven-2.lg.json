@@ -1,0 +1,543 @@
+{
+ "kind": "book",
+ "slug": "women-who-moved-heaven-2",
+ "language": "lg",
+ "job_issue": 1786,
+ "references": [
+  {
+   "reference": "1 John 5:14",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch11, ch13"
+  },
+  {
+   "reference": "1 John 5:15",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch11"
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch07, ch13"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "self_rendered",
+   "why": "quoted in ch06 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "1 Timothy 2:1",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch02, ch13"
+  },
+  {
+   "reference": "1 Timothy 2:4",
+   "status": "self_rendered",
+   "why": "quoted in ch02 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch03, ch13"
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered",
+   "why": "quoted in ch03, ch09 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "2 Corinthians 3:17",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch05, ch13"
+  },
+  {
+   "reference": "2 Corinthians 3:17",
+   "status": "self_rendered",
+   "why": "quoted in ch05 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "2 Corinthians 5:14",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch08, ch13"
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch10, ch13"
+  },
+  {
+   "reference": "Acts 16:13",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch01, ch13"
+  },
+  {
+   "reference": "Acts 1:14",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch01"
+  },
+  {
+   "reference": "Acts 1:14",
+   "status": "self_rendered",
+   "why": "quoted in ch11 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Acts 2:42",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch11, ch13"
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch01, ch11, ch13"
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "self_rendered",
+   "why": "quoted in ch11 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "why": "quoted in ch02 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch06, ch13"
+  },
+  {
+   "reference": "Hebrews 11:33",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch09, ch13"
+  },
+  {
+   "reference": "Hebrews 11:34",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch09"
+  },
+  {
+   "reference": "Hebrews 11:34",
+   "status": "self_rendered",
+   "why": "quoted in ch09 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "self_rendered",
+   "why": "quoted in ch09 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch07, ch13"
+  },
+  {
+   "reference": "Isaiah 41:10",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch06, ch13"
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch05, ch13"
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "self_rendered",
+   "why": "quoted in ch09, ch13 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch11, ch13"
+  },
+  {
+   "reference": "Jeremiah 29:11",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch04, ch10, ch13"
+  },
+  {
+   "reference": "Jeremiah 29:13",
+   "status": "self_rendered",
+   "why": "quoted in ch01, ch12 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Jeremiah 29:13",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch12, ch13"
+  },
+  {
+   "reference": "Joel 2:28",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch01, ch13"
+  },
+  {
+   "reference": "Joel 2:29",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch01, ch13"
+  },
+  {
+   "reference": "John 12:24",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch08, ch13"
+  },
+  {
+   "reference": "John 15:15",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch05, ch13"
+  },
+  {
+   "reference": "John 15:4",
+   "status": "self_rendered",
+   "why": "quoted in ch03 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch03, ch13"
+  },
+  {
+   "reference": "John 16:23",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch01, ch13"
+  },
+  {
+   "reference": "John 16:24",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch01, ch13"
+  },
+  {
+   "reference": "John 16:33",
+   "status": "self_rendered",
+   "why": "quoted in ch09 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "John 4:10",
+   "status": "self_rendered",
+   "why": "quoted in ch03 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Joshua 1:9",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch09, ch13"
+  },
+  {
+   "reference": "Joshua 24:15",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch04, ch13"
+  },
+  {
+   "reference": "Lamentations 2:19",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch02, ch13"
+  },
+  {
+   "reference": "Luke 10:2",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch06, ch13"
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch02, ch13"
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "self_rendered",
+   "why": "quoted in ch02 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch06, ch13"
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "self_rendered",
+   "why": "quoted in ch10, ch13 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Matthew 18:19",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch11, ch13"
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch04, ch11, ch13"
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "self_rendered",
+   "why": "quoted in ch11 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Matthew 4:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch09, ch13"
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch03, ch13"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch12"
+  },
+  {
+   "reference": "Matthew 7:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch12"
+  },
+  {
+   "reference": "Matthew 7:8",
+   "status": "self_rendered",
+   "why": "quoted in ch12 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Matthew 9:37",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch08, ch13"
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch08"
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "self_rendered",
+   "why": "quoted in ch08 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Philippians 3:10",
+   "status": "self_rendered",
+   "why": "quoted in ch06 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Philippians 4:11",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch05, ch13"
+  },
+  {
+   "reference": "Philippians 4:12",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch05"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch07, ch13"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch05, ch07, ch13"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "self_rendered",
+   "why": "quoted in ch07 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Proverbs 22:6",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch04, ch13"
+  },
+  {
+   "reference": "Proverbs 3:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch10, ch13"
+  },
+  {
+   "reference": "Proverbs 3:6",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch10"
+  },
+  {
+   "reference": "Psalm 119:147",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch04, ch13"
+  },
+  {
+   "reference": "Psalm 121:1",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch10, ch13"
+  },
+  {
+   "reference": "Psalm 121:1",
+   "status": "self_rendered",
+   "why": "quoted in ch10 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Psalm 121:2",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch10"
+  },
+  {
+   "reference": "Psalm 126:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch13"
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "self_rendered",
+   "why": "quoted in ch12 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch13"
+  },
+  {
+   "reference": "Psalm 46:10",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch13"
+  },
+  {
+   "reference": "Psalm 56:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch13"
+  },
+  {
+   "reference": "Psalms 126:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch02"
+  },
+  {
+   "reference": "Psalms 126:5",
+   "status": "self_rendered",
+   "why": "quoted in ch02 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Psalms 23:4",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch07"
+  },
+  {
+   "reference": "Psalms 23:4",
+   "status": "self_rendered",
+   "why": "quoted in ch07 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Psalms 46:10",
+   "status": "self_rendered",
+   "why": "quoted in ch03 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Psalms 56:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch02"
+  },
+  {
+   "reference": "Psalms 56:8",
+   "status": "self_rendered",
+   "why": "quoted in ch02 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Romans 10:14",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch08, ch13"
+  },
+  {
+   "reference": "Romans 10:15",
+   "status": "self_rendered",
+   "why": "quoted in ch08 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Romans 1:16",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch08, ch13"
+  },
+  {
+   "reference": "Romans 8:28",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch06, ch13"
+  },
+  {
+   "reference": "Romans 8:38",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch07, ch13"
+  },
+  {
+   "reference": "Romans 8:39",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch07"
+  },
+  {
+   "reference": "Romans 8:39",
+   "status": "self_rendered",
+   "why": "quoted in ch07 — self-rendered or adapted (OLCB differs from the English, re-personed, or partial); check against OLCB"
+  },
+  {
+   "reference": "Zechariah 4:6",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "why": "quoted in ch09, ch13"
+  }
+ ]
+}
