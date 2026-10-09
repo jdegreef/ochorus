@@ -695,7 +695,7 @@
 					<span class="btn-label">{t('nav.search')}</span>
 				</a>
 			</div>
-			{#if book.has_guide}
+			{#if book.has_leader_guide}
 				<!-- A printable leader's guide for a group or a homeschool. Its own row
 				     under the strip, not a sixth strip button: the strip's phone form
 				     is five columns, and this is for the leader, not every reader. -->

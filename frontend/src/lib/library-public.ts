@@ -346,7 +346,7 @@ export interface BookDetail extends BookSummary {
 	 * A printable leader's guide exists for this edition (/books/<slug>/guide —
 	 * `getBookGuide`). Optional so an API running behind this build omits it.
 	 */
-	has_guide?: boolean;
+	has_leader_guide?: boolean;
 }
 
 /** An article surfaced on another page that links to it — a reader's guide on
@@ -1471,7 +1471,7 @@ export interface AudienceShelf {
 	articles?: ArticleSummary[];
 	/** The hub's books with a printable leader's guide in this language, in
 	 *  shelf order. Optional: an API behind this build omits it. */
-	guides?: BookSummary[];
+	leader_guides?: BookSummary[];
 }
 
 /** A reading age — a series' own fields, which a book's reuse, so
@@ -1519,8 +1519,8 @@ export const getBookGuide = (slug: string, language = 'en', f?: Fetch) =>
 
 /** The slugs the hubs list with a leader's guide, each once, in hub order —
  *  the guide route's prerender entries. */
-export const guideSlugs = (shelves: Pick<AudienceShelf, 'guides'>[]): string[] => [
-	...new Set(shelves.flatMap((s) => (s.guides ?? []).map((b) => b.slug)))
+export const guideSlugs = (shelves: Pick<AudienceShelf, 'leader_guides'>[]): string[] => [
+	...new Set(shelves.flatMap((s) => (s.leader_guides ?? []).map((b) => b.slug)))
 ];
 
 /** Each hub's `languages` without building either shelf (`AudienceLanguagesView`). */

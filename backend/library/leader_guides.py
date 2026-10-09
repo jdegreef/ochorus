@@ -19,19 +19,19 @@ Files are read once per process and cached by directory, so a test that points
 from __future__ import annotations
 
 import json
-import re
 from functools import lru_cache
 from pathlib import Path
 
 from bs4 import BeautifulSoup
 
+# The body's own tag pattern and plain-text rule, so "markup" and "the text of
+# a block" mean here what they mean for body_text.
+from .text import _TAG, html_to_text
+
 DATA_DIR = Path(__file__).resolve().parent / "data" / "leader_guides"
 
 #: How many steps an activity may have — enough to follow, few enough for ten minutes.
 MIN_STEPS, MAX_STEPS = 3, 5
-
-_TAG = re.compile(r"</?[A-Za-z][^>]*>")
-_WS = re.compile(r"\s+")
 
 
 @lru_cache(maxsize=4)
@@ -59,10 +59,6 @@ def guide_editions() -> set[tuple[str, str]]:
     return set(guides())
 
 
-def _plain(node) -> str:
-    return _WS.sub(" ", node.get_text(" ")).strip()
-
-
 def chapter_extras(body_html: str) -> dict[str, str]:
     """The opening verse and closing prayer a young-reader chapter carries.
 
@@ -73,14 +69,14 @@ def chapter_extras(body_html: str) -> dict[str, str]:
     """
     soup = BeautifulSoup(body_html or "", "html.parser")
     blocks = [el for el in soup.contents if getattr(el, "name", None)]
-    verse = _plain(blocks[0]) if blocks and blocks[0].name == "blockquote" else ""
+    verse = html_to_text(str(blocks[0])) if blocks and blocks[0].name == "blockquote" else ""
     prayer = ""
     if blocks and blocks[-1].name == "p":
         children = [
             c for c in blocks[-1].contents if getattr(c, "name", None) or str(c).strip()
         ]
         if len(children) == 1 and getattr(children[0], "name", None) == "em":
-            prayer = _plain(children[0])
+            prayer = html_to_text(str(children[0]))
     return {"verse": verse, "prayer": prayer}
 
 

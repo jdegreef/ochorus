@@ -1029,7 +1029,12 @@ class BookGuideView(PublicContentCacheMixin, APIView):
         }
         weeks = []
         for week in guide["weeks"]:
-            title, questions, body = chapters.get(week["chapter"], ("", [], ""))
+            # A week whose chapter is not in this edition (the fixture gate
+            # forbids it, but the DB can drift from the file) is dropped rather
+            # than rendered as a blank session with a dead "Read chapter" link.
+            if week["chapter"] not in chapters:
+                continue
+            title, questions, body = chapters[week["chapter"]]
             weeks.append(
                 {
                     "chapter": week["chapter"],
@@ -1041,14 +1046,19 @@ class BookGuideView(PublicContentCacheMixin, APIView):
                     **chapter_extras(body),
                 }
             )
+        # The page's hreflang: the languages with a guide file AND a published
+        # edition, so no alternate points at a 404.
+        guided = {lang for s, lang in guide_editions() if s == slug}
+        available = sorted(
+            Book.objects.filter(slug=slug, is_published=True, language__in=guided)
+            .values_list("language", flat=True)
+            .distinct()
+        )
         ctx = {"request": request, "language": language, "book_topics": {}}
         return Response(
             {
                 "book": BookListSerializer(book, context=ctx).data,
-                # The page's hreflang: every language this work has a guide in.
-                "available_languages": sorted(
-                    lang for s, lang in guide_editions() if s == slug
-                ),
+                "available_languages": available,
                 "intro": guide["intro"],
                 "weeks": weeks,
             }
@@ -1078,10 +1088,11 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
     chapter (``_audience_people``). ``start`` is the one book a newcomer should
     open first (``AUDIENCE_STARTS``);
     ``printable`` lists the slugs among them with a free PDF / EPUB
-    (``export_policy``), for the page's "print it" line; ``guides``, the book
-    cards among them with a printable leader's guide (``leader_guides``);
-    ``languages``, every language the hub has something in (its hreflang). Nothing here falls back
-    to English: a language with no rows gets empty lists, and the page hides.
+    (``export_policy``), for the page's "print it" line; ``leader_guides``, the
+    book cards among them with a printable leader's guide
+    (``library/leader_guides``); ``languages``, every language the hub has
+    something in (its hreflang). Nothing here falls back to English: a language
+    with no rows gets empty lists, and the page hides.
     """
 
     def get(self, request, audience):
@@ -1154,12 +1165,13 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
             )
             if s in guided
         ]
-        guide_books = (
-            {b.slug: b for b in _book_shelf(language).filter(slug__in=guide_slugs)}
-            if guide_slugs
-            else {}
-        )
-        guides = [guide_books[s] for s in guide_slugs if s in guide_books]
+        # Editions and the topic's books are already in memory; only a series
+        # volume the shelf query did not fetch costs a (single) query.
+        guide_books = {s: by_slug[s] for s in guide_slugs if s in by_slug}
+        unfetched = [s for s in guide_slugs if s not in guide_books]
+        if unfetched:
+            guide_books |= {b.slug: b for b in _book_shelf(language).filter(slug__in=unfetched)}
+        leader_guides = [guide_books[s] for s in guide_slugs if s in guide_books]
 
         # The topic's articles here, in its curator's order — the teens' Big
         # Questions (doubt, suffering, the resurrection…) that meet a reader at
@@ -1188,7 +1200,7 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
                 "more": BookListSerializer(more, many=True, context=ctx).data,
                 "plans": PlanListSerializer(plans, many=True, context=plan_ctx).data,
                 "articles": ArticleListSerializer(articles, many=True, context=article_ctx).data,
-                "guides": BookListSerializer(guides, many=True, context=ctx).data,
+                "leader_guides": BookListSerializer(leader_guides, many=True, context=ctx).data,
                 "topic": {"slug": topic.slug, "title": topic.title_for(language)} if topic else None,
                 "start": start,
                 "printable": printable,

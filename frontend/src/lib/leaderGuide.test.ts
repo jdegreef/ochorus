@@ -24,13 +24,13 @@ describe('guideSlugs', () => {
 	it('lists each guided book once, in hub order', () => {
 		expect(
 			guideSlugs([
-				{ guides: [card('pilgrims-progress-children'), card('north-wind')] },
-				{ guides: [card('pilgrims-progress-teens'), card('north-wind')] }
+				{ leader_guides: [card('pilgrims-progress-children'), card('north-wind')] },
+				{ leader_guides: [card('pilgrims-progress-teens'), card('north-wind')] }
 			])
 		).toEqual(['pilgrims-progress-children', 'north-wind', 'pilgrims-progress-teens']);
 	});
 
 	it('tolerates an API that sends no guides', () => {
-		expect(guideSlugs([{}, { guides: [] }])).toEqual([]);
+		expect(guideSlugs([{}, { leader_guides: [] }])).toEqual([]);
 	});
 });

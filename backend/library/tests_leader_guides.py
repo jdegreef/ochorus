@@ -3,7 +3,7 @@
 The files are keyed by slug + language, not joined to a row, so nothing in the
 schema stops one pointing at a renamed edition or skipping a chapter. The file
 gates below do; the API tests pin ``/api/library/books/<slug>/guide/``, the
-book detail's ``has_guide`` and the audience hub's ``guides`` shelf.
+book detail's ``has_leader_guide`` and the audience hub's ``leader_guides``.
 """
 
 from __future__ import annotations
@@ -204,6 +204,22 @@ class BookGuideApiTests(_GuideDirMixin, TestCase):
         self.assertEqual(week["verse"], "“Verse 2” — from Psalm 23")
         self.assertEqual(week["prayer"], "Dear God, prayer 2. Amen.")
 
+    def test_a_week_whose_chapter_is_missing_is_dropped(self):
+        self.book("pilgrims-progress-children", chapters=2)
+        self.write_guide("pilgrims-progress-children", "en", _guide([1, 2, 3]))
+        data = self.client.get(self.URL.format("pilgrims-progress-children", "en")).json()
+        self.assertEqual([w["chapter"] for w in data["weeks"]], [1, 2])
+        self.assertTrue(all(w["title"] for w in data["weeks"]))
+
+    def test_available_languages_are_only_published_editions(self):
+        self.book("pilgrims-progress-children")
+        self.book("pilgrims-progress-children", "es")
+        self.book("pilgrims-progress-children", "fr", published=False)
+        for lang in ("en", "es", "fr", "sw"):  # sw: a guide file with no edition at all
+            self.write_guide("pilgrims-progress-children", lang, _guide([1, 2]))
+        data = self.client.get(self.URL.format("pilgrims-progress-children", "en")).json()
+        self.assertEqual(data["available_languages"], ["en", "es"])
+
     def test_no_guide_file_is_a_404(self):
         self.book("pilgrims-progress-children")
         res = self.client.get(self.URL.format("pilgrims-progress-children", "en"))
@@ -229,13 +245,13 @@ class BookGuideApiTests(_GuideDirMixin, TestCase):
         detail = "/api/library/books/{}/?language=en"
         self.assertIs(
             self.client.get(detail.format("pilgrims-progress-children")).json()[
-                "has_guide"
+                "has_leader_guide"
             ],
             True,
         )
         self.assertIs(
             self.client.get(detail.format("pilgrims-progress-teens")).json()[
-                "has_guide"
+                "has_leader_guide"
             ],
             False,
         )
@@ -266,14 +282,14 @@ class AudienceGuidesTests(_GuideDirMixin, TestCase):
         # Editions before the topic's remainder; a guided book not on the hub
         # ("elsewhere") is not listed.
         self.assertEqual(
-            [b["slug"] for b in data["guides"]],
+            [b["slug"] for b in data["leader_guides"]],
             ["pilgrims-progress-children", "north-wind"],
         )
-        self.assertIn("cover_url", data["guides"][0])
+        self.assertIn("cover_url", data["leader_guides"][0])
 
     def test_no_guides_in_another_language(self):
         self.book("pilgrims-progress", "es")
         self.book("pilgrims-progress-children", "es")
         self.write_guide("pilgrims-progress-children", "en", _guide([1, 2]))
         data = self.client.get(self.URL.format("young_readers", "es")).json()
-        self.assertEqual(data["guides"], [])
+        self.assertEqual(data["leader_guides"], [])

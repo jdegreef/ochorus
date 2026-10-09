@@ -1780,9 +1780,9 @@ class BookDetailSerializer(BookListSerializer):
     guides = serializers.SerializerMethodField()
     # Whether a printable leader's guide exists for this edition
     # (library/leader_guides.py) — the book page links to /books/<slug>/guide.
-    has_guide = serializers.SerializerMethodField()
+    has_leader_guide = serializers.SerializerMethodField()
 
-    def get_has_guide(self, obj) -> bool:
+    def get_has_leader_guide(self, obj) -> bool:
         return guide_for(obj.slug, obj.language) is not None
 
     def get_guides(self, obj) -> list[dict]:
@@ -1879,7 +1879,7 @@ class BookDetailSerializer(BookListSerializer):
             "alternate_titles", "about_html", "qa", "scripture", "opening",
             "featured_people", "author_quote_count", "guides", "series",
             "epub_url", "meta_description", "public_domain", "ages",
-            "has_guide",
+            "has_leader_guide",
         ]
 
     def get_public_domain(self, obj) -> bool:

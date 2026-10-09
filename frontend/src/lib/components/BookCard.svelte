@@ -43,11 +43,13 @@
 		 */
 		hook = '',
 		/**
-		 * Where the card goes instead of the book's page, and the verb its hover
-		 * overlay says — the hubs' leader's-guide cards open `/books/<slug>/guide`.
+		 * A card that opens something other than the book's page — the hubs'
+		 * leader's-guide cards open `/books/<slug>/guide`. `cta` is the hover
+		 * verb, `label` a visible line under the title (so a touch screen, with
+		 * no hover, still says where the card goes) and `ariaLabel` the link's
+		 * accessible name, which must say the same.
 		 */
-		href = '',
-		cta = ''
+		link
 	}: {
 		book: CoverBook;
 		showAuthor?: boolean;
@@ -56,8 +58,7 @@
 		showSeries?: boolean;
 		perChapter?: boolean;
 		hook?: string;
-		href?: string;
-		cta?: string;
+		link?: { href: string; cta: string; label: string; ariaLabel: string };
 	} = $props();
 	const t = i18n.t;
 	const hookId = $props.id();
@@ -86,13 +87,14 @@
 </script>
 
 <a
-	href={localizeHref(href || `/books/${book.slug}`)}
+	href={localizeHref(link?.href ?? `/books/${book.slug}`)}
 	id={anchor ? `author-${anchor}` : undefined}
 	class="book-card card-lift group"
 	style:scroll-margin-top={anchor ? 'calc(var(--pinned-offset, 5rem) + 0.5rem)' : undefined}
 	style:--cover-tint={tint || undefined}
 	data-testid="book-card"
-	aria-label={showAuthor ? `${book.title} — ${book.author.name}` : book.title}
+	aria-label={link?.ariaLabel ??
+		(showAuthor ? `${book.title} — ${book.author.name}` : book.title)}
 	aria-describedby={hook ? hookId : undefined}
 >
 	<!-- The whole cover block (the cover, its hover overlay and the ribbon)
@@ -110,7 +112,7 @@
 		<span
 			class="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-end gap-1 rounded-b-card bg-gradient-to-t from-black/60 to-transparent px-3 pb-2 pt-6 text-small font-semibold text-white opacity-0 transition-opacity group-hover:opacity-100"
 		>
-			{cta || t('book.beginReading')} <Arrow />
+			{link?.cta ?? t('book.beginReading')} <Arrow />
 		</span>
 	</div>
 
@@ -121,6 +123,9 @@
 		<div class="line-clamp-2 min-h-[2lh] text-small font-medium leading-snug text-text" title={book.title}>
 			{edition ? edition.base : book.title}
 		</div>
+		{#if link}
+			<div class="truncate text-eyebrow font-medium text-accent" aria-hidden="true">{link.label}</div>
+		{/if}
 		{#if showAuthor}
 			<div class="truncate text-small text-muted" title={book.author.name}>{book.author.name}</div>
 		{/if}

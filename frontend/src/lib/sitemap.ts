@@ -29,6 +29,7 @@
  */
 import { SITE_URL } from '$lib/config';
 import {
+	getAudienceShelf,
 	listArticles,
 	listAuthors,
 	listBooks,
@@ -185,6 +186,9 @@ export interface SitemapData {
 	/** Every chapter of the Modern English edition, at its own address
 	 *  (`/books/<slug>/modern/<n>/`) — the `modern` section. */
 	modern: Entry[];
+	/** Each printable leader's guide (`/books/<slug>/guide/`), in every
+	 *  advertised locale with a guide of its own — the `guides` section. */
+	guides: Entry[];
 }
 
 /**
@@ -235,6 +239,7 @@ export const sections = (): string[] => [
 	'books',
 	'chapters',
 	'modern',
+	'guides',
 	'sermons',
 	'authors',
 	'scripture',
@@ -265,6 +270,7 @@ export function sectionEntries(data: SitemapData, section: string): Entry[] | nu
 	if (section === 'books') return data.books;
 	if (section === 'chapters') return data.openings;
 	if (section === 'modern') return data.modern;
+	if (section === 'guides') return data.guides;
 	if (section === 'sermons') return data.sermons;
 	if (section === 'authors') return data.authors;
 	if (section === 'scripture') return data.scripture;
@@ -343,6 +349,20 @@ async function build(): Promise<SitemapData> {
 	// en-modern` is what lists it. (Absent `source_type` reads as unreviewed.)
 	const modernBooks = (await listBooks(MODERN_EDITION).catch(() => [])).filter(
 		(b) => b.source_type === 'ai_reviewed'
+	);
+	// The leader's guides: each young-reader hub's `leader_guides`, in every
+	// advertised locale the hub has something in. The English ones are exactly
+	// the guide route's entries; a translated one is built because its book
+	// page (on that locale's hub) links it — so every URL listed is a built page.
+	const guideShelves = await Promise.all(
+		ADVERTISED_LOCALES.flatMap((locale) =>
+			AUDIENCE_HUBS.filter((h) => audienceLanguages[h.audience].includes(locale)).map(
+				async (h) => ({
+					locale,
+					books: (await getAudienceShelf(h.audience, locale).catch(() => null))?.leader_guides ?? []
+				})
+			)
+		)
 	);
 
 	// Emission uses only the advertised locales; `perLocale` (all UI locales)
@@ -843,8 +863,21 @@ async function build(): Promise<SitemapData> {
 		}
 	}
 
+	// One entry per guided work, its locales the alternates; dated per locale by
+	// the edition's own row, like the book pages.
+	const byGuide = new Map<string, Entry>();
+	for (const { locale, books: guided } of guideShelves) {
+		for (const b of guided) {
+			let e = byGuide.get(b.slug);
+			if (!e) byGuide.set(b.slug, (e = { byLocale: new Map() }));
+			e.byLocale.set(locale, `/books/${b.slug}/guide/`);
+			if (b.updated_at) (e.lastmods ??= new Map()).set(locale, b.updated_at);
+		}
+	}
+
 	return {
 		pages,
+		guides: [...byGuide.values()],
 		authors: authorEntries,
 		books,
 		sermons,
