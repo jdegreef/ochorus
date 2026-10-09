@@ -1,0 +1,78 @@
+{
+ "kind": "sermon",
+ "slug": "self-denial-versus-self-assertion",
+ "language": "es",
+ "job_issue": 4298,
+ "references": [
+  {
+   "reference": "Luke 9:23",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 6:19",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "1 Corinthians 6:20",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Galatians 6:14",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "1 Corinthians 15:31",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "2 Corinthians 11:23",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 18:23-35",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 6:14",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 6:15",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "John 18:36",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Philippians 2:12-13",
+   "status": "self_rendered",
+   "block_index": 8
+  }
+ ]
+}
