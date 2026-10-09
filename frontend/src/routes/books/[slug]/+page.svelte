@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { chapterPath } from '$lib/editionHref';
-	import { bookChapterPath } from '$lib/reading-schema';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import ReadBar from '$lib/components/ReadBar.svelte';
-	import { shareCard, shareImage } from '$lib/coverArt';
+	import { isPlateCover, shareCard, shareImage } from '$lib/coverArt';
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { authorLdType, authorPath } from '$lib/originals';
 	import { type BookDetail, formatLifespan } from '$lib/library-public';
 	import { getProgressRecord } from '$lib/progress';
@@ -94,6 +94,14 @@
 	// was reached, not necessarily finished) — clamped the same way, so a
 	// longer edition's furthest doesn't tick every chapter here.
 	const furthestHere = $derived(furthest != null && inEdition(furthest) ? furthest : resumeHere);
+
+	// The cover's painting, blurred and veiled behind the hero as its colour
+	// (app.css --wash-veil) — a raster cover only: a plate is the house's own
+	// drawing, not a painting, and a file that fails to load leaves the plain page.
+	let washBroken = $state<string | null>(null);
+	const wash = $derived(
+		book.cover_url && !isPlateCover(book.cover_url) && book.cover_url !== washBroken ? book.cover_url : null
+	);
 
 	const years = $derived(
 		formatLifespan(book.author.birth_year, book.author.death_year, t('common.bornPrefix'))
@@ -468,7 +476,23 @@
 	structuredData={[bookLd, crumbsLd, qa.ld].filter(Boolean)}
 />
 
-<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavOffset(showSubnav, subnavH)}px)">
+<!-- The hero's band: the page's own ground, coloured by the cover's painting
+     blurred behind it and veiled back toward the page (--wash-veil), fading out
+     before the sub-nav. Decoration (alt=""); a band of its own, outside the
+     column, so the colour runs edge to edge. -->
+<div class="book-band" class:washed={!!wash}>
+	{#if wash}
+		<div class="book-band-art" aria-hidden="true">
+			<img
+				src={wash}
+				alt=""
+				class="book-band-wash"
+				use:hydrateSrc={{ src: wash }}
+				onerror={() => (washBroken = wash)}
+			/>
+		</div>
+	{/if}
+<div class="page-col book-hero-col px-5 pt-10">
 	<Breadcrumb items={crumbs} />
 
 	<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/books" />
@@ -502,12 +526,7 @@
 
 		<div class="book-hero-head min-w-0">
 			<!-- Each part held whole, so a narrow column breaks BETWEEN them. -->
-			<p class="eyebrow mb-1 text-muted">
-				<span class="whitespace-nowrap">{t('search.typeBook')}</span> · <span class="whitespace-nowrap"
-					>{book.chapter_count}
-					{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}</span
-				> · <span class="whitespace-nowrap">{readingTime(totalWords)}</span>
-			</p>
+			<p class="eyebrow mb-1 text-muted">{t('search.typeBook')}</p>
 			<h1 class="text-h1" dir="auto">{book.title}</h1>
 			{#if book.subtitle}<p class="mt-1 text-h3 text-muted">{book.subtitle}</p>{/if}
 			<!-- The names this work is also published under. Shown, not merely marked
@@ -559,25 +578,10 @@
 				</p>
 			{/if}
 
-			{#if ages || book.difficulty || (siblingEditions.length && !fallback)}
+			{#if siblingEditions.length && !fallback}
+				<!-- Not on a fallback page: the notice above lists the editions, and
+				     the section this jumps to is hidden there. -->
 				<div class="mt-3 flex flex-wrap items-center gap-2">
-					{#if ages}
-						<span class="hero-chip"><span class="font-semibold text-text">{ages}</span></span>
-					{/if}
-					{#if book.difficulty}
-						<!-- One inner span: the chip is inline-flex, so label and value
-						     would otherwise wrap as two columns, not a sentence. -->
-						<span class="hero-chip"
-							><span
-								>{t('reader.difficulty')}: <span class="font-semibold text-text"
-									>{t(`reader.difficulty_${book.difficulty}`)}</span
-								></span
-							></span
-						>
-					{/if}
-					<!-- Not on a fallback page: the notice above lists the editions, and
-					     the section this jumps to is hidden there. -->
-					{#if siblingEditions.length && !fallback}
 						<a
 							href="#languages"
 							class="hero-chip hero-chip-link"
@@ -591,10 +595,35 @@
 									>{/each}{#if editionsPill.more}{` +${editionsPill.more}`}{/if}</span
 							></a
 						>
-					{/if}
 				</div>
 			{/if}
 		</div>
+
+		<!-- The book's measure in one ribbon: its length, the time it takes,
+		     how hard it reads and who it's for. Its own grid item, so on a phone
+		     it takes the full width under the cover rather than squeezing into
+		     the title's column beside it. Read as one line ("9 chapters, 2 hr 55
+		     min read, Accessible reading difficulty"). -->
+		<ul class="book-stats">
+			<li>
+				<span class="book-stat-value">{book.chapter_count}</span>
+				<span class="book-stat-label"
+					>{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}</span
+				>
+			</li>
+			{#if totalWords}
+				<li><span class="book-stat-value">{readingTime(totalWords)}</span></li>
+			{/if}
+			{#if book.difficulty}
+				<li>
+					<span class="book-stat-value">{t(`reader.difficulty_${book.difficulty}`)}</span>
+					<span class="book-stat-label">{t('reader.difficulty')}</span>
+				</li>
+			{/if}
+			{#if ages}
+				<li><span class="book-stat-value">{ages}</span></li>
+			{/if}
+		</ul>
 
 		<!-- The action row's container (`.action-host`): it picks strip vs row by
 		     this block's width — the full page width on a phone. -->
@@ -657,17 +686,25 @@
 						>
 					{/if}
 					{#if book.has_modern_edition}
-						<!-- The primary CTA follows the Modern English preference; this
-						     offers the other edition. A button, not a footnote link: the
-						     modern edition is a reason to read here, and the link is how
-						     readers (and the crawler) find its pages. -->
-						<a
-							href={localizeHref(
-								bookChapterPath(book.slug, readOrder, !useModern)
-							)}
-							class="btn btn-ghost btn-sm"
-							>{useModern ? t('reader.readOriginal') : t('book.readModern')}</a
-						>
+						<!-- Which text the read verb opens: the same choice as Settings →
+						     Default edition (readerPrefs.preferModern), made here where
+						     it matters, so the card holds one read button, not two. The
+						     reader's own Modern ⇄ Original links and the sitemap's
+						     `modern` section are how the crawler finds those pages. -->
+						<div class="seg edition-seg" role="group" aria-label={t('settings.defaultEdition')}>
+							<button
+								type="button"
+								class:active={!useModern}
+								aria-pressed={!useModern}
+								onclick={() => readerPrefs.setPreferModern(false)}>{t('reader.original')}</button
+							>
+							<button
+								type="button"
+								class:active={useModern}
+								aria-pressed={useModern}
+								onclick={() => readerPrefs.setPreferModern(true)}>{t('reader.modernEdition')}</button
+							>
+						</div>
 					{/if}
 				</div>
 			</div>
@@ -711,7 +748,10 @@
 			{/if}
 		</div>
 	</header>
+</div>
+</div>
 
+<div class="page-col px-5 pb-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavOffset(showSubnav, subnavH)}px)">
 	<!-- A3: on-page jump navigation. Pinned under the app nav on scroll; its
 	     measured height feeds `--pinned-offset` on the page column so anchored
 	     sections land clear of both bars (the same contract the author sub-nav
@@ -1059,8 +1099,48 @@
 		);
 	}
 
-	/* Row gap 0: the read card carries its own mt-4, as it did in the title's
-	   column. */
+	/* The hero's band. The painting sits under everything, blurred to its
+	   colour and veiled back toward the page by --wash-veil (app.css, where
+	   palettes.test.ts measures every ink over a black and a white painting),
+	   and fades out down the band so the sub-nav meets the plain page. */
+	.book-band {
+		position: relative;
+		isolation: isolate;
+		overflow: hidden;
+	}
+	.book-band-art {
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		mask-image: linear-gradient(to bottom, black 45%, transparent);
+	}
+	.book-band-art::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: color-mix(in srgb, var(--bg) var(--wash-veil), transparent);
+	}
+	.book-band-wash {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		filter: blur(32px) saturate(1.8);
+		transform: scale(1.25);
+	}
+	/* Over the wash, secondary text takes half a step toward the body ink —
+	   the measured margin a veiled painting needs (see --wash-veil). */
+	.washed {
+		--muted: color-mix(in srgb, var(--muted) 50%, var(--text));
+	}
+
+	/* The hero's layout is decided by the room the column has (a container),
+	   not the viewport: the reader's page-width setting can narrow it. Row gap
+	   0: the read card carries its own mt-4, as it did in the title's column.
+	   A phone: the cover beside the title, the ribbon and the actions full
+	   width beneath. */
+	.book-hero-col {
+		container: book-hero / inline-size;
+	}
 	.book-hero {
 		display: grid;
 		grid-template-columns: auto minmax(0, 1fr);
@@ -1070,20 +1150,94 @@
 	.book-hero-cover {
 		width: 7rem;
 	}
+	.book-stats,
 	.book-hero-actions {
 		grid-column: 1 / -1;
 	}
 	@media (min-width: 640px) {
+		/* A last row takes up the cover's spare height, so the title, the
+		   ribbon and the actions stack tight at the top beside it. */
 		.book-hero {
+			grid-template-rows: auto auto auto 1fr;
 			column-gap: 1.25rem;
 		}
 		.book-hero-cover {
-			grid-row: 1 / span 2;
+			grid-row: 1 / -1;
 			width: 11rem;
 		}
+		.book-stats,
 		.book-hero-actions {
 			grid-column: 2;
 		}
+	}
+	/* Wide: three columns — cover, the title and its ribbon, and the read
+	   card, its edition toggle and the actions gathered into one raised panel. */
+	@container book-hero (min-width: 56rem) {
+		.book-hero {
+			grid-template-columns: auto minmax(0, 1fr) 21rem;
+			grid-template-rows: auto auto 1fr;
+			column-gap: 2rem;
+		}
+		.book-hero-cover {
+			width: 12rem;
+		}
+		.book-hero-actions {
+			grid-column: 3;
+			grid-row: 1 / -1;
+			padding: 1.1rem;
+			border: 1px solid var(--border);
+			border-radius: var(--radius-card);
+			background: var(--surface);
+			box-shadow: var(--shadow-card);
+		}
+		.book-hero-actions .read-card {
+			margin-top: 0;
+			padding: 0;
+			background: none;
+		}
+	}
+
+	/* The ribbon: a quiet card of cells, each a value over its label, divided
+	   by hairlines. On its own solid ground, not the wash. Every cell draws its
+	   hairlines on its start and top edges, pulled 1px outside itself, and the
+	   card clips them: so in a narrow column, where the cells wrap, each row
+	   and column is ruled like a table with no rule along the card's own edge. */
+	.book-stats {
+		display: flex;
+		flex-wrap: wrap;
+		justify-self: start;
+		max-width: 100%;
+		margin: 1rem 0 0;
+		padding: 0;
+		list-style: none;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: var(--surface);
+		overflow: hidden;
+	}
+	.book-stats li {
+		display: flex;
+		flex: 1 0 auto;
+		flex-direction: column;
+		justify-content: center;
+		margin-block-start: -1px;
+		margin-inline-start: -1px;
+		padding: 0.55rem 1rem;
+		border-block-start: 1px solid var(--border);
+		border-inline-start: 1px solid var(--border);
+	}
+	.book-stat-value {
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		line-height: 1.2;
+	}
+	.book-stat-label {
+		font-size: var(--fs-eyebrow);
+		color: var(--muted);
+	}
+	/* The edition toggle: full width under the read button, two even halves. */
+	.edition-seg button {
+		flex: 1 1 0;
 	}
 	/* Difficulty and the "also in" languages: quiet chips under the byline. */
 	.hero-chip {

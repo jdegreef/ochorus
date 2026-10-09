@@ -1239,6 +1239,12 @@
    palettes.test.ts composites it against white and measures. */
 :root {
 	--hero-ink: #f8f1e4;
+	/* The book page's band (books/[slug]): the cover's painting, blurred, under
+	   this much of the page's own ground. A painting may be black or white, so
+	   palettes.test.ts composites both at this strength in every theme and
+	   palette and holds the hero's inks to 4.5:1 — body text, the accent, and
+	   muted taken half-way to the text (the band's .washed rule). */
+	--wash-veil: 88%;
 	--hero-ground: #1d2a1f;
 	--hero-tint: #1b1526;
 	/* At least 75% through the lower 85%, where the date and greeting sit —

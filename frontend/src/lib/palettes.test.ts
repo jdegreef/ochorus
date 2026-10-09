@@ -152,6 +152,34 @@ describe('library palettes', () => {
 		});
 	}
 
+	// The book page's band: the cover's painting under --wash-veil of the
+	// page's ground. Composited over a black and a white painting, its inks —
+	// text, the accent, and muted half-way to the text, as the band sets it —
+	// must still clear 4.5:1 in every theme and palette.
+	it("the book band's veil holds the hero's inks over any painting", () => {
+		const veil = parseFloat(heroRoot['--wash-veil']) / 100;
+		expect(veil).toBeGreaterThan(0.5);
+		const failures: string[] = [];
+		for (const mode of ['light', 'dark', 'sepia'] as const)
+			for (const p of APPLIED_PALETTES) {
+				const vars = p === 'parchment' ? theme(mode) : { ...theme(mode), ...paletteBlock(mode, p) };
+				const text = rgb(vars['--text']);
+				const inks = {
+					'--text': text,
+					'--accent': rgb(vars['--accent']),
+					'--muted (band)': rgb(vars['--muted']).map((c, i) => (c + text[i]) / 2)
+				};
+				for (const paint of [0, 255]) {
+					const ground = rgb(vars['--bg']).map((c) => c * veil + paint * (1 - veil));
+					for (const [ink, c] of Object.entries(inks)) {
+						const r = contrastRatio(c, ground);
+						if (r < 4.5) failures.push(`${mode}/${p}: ${ink} over ${paint ? 'white' : 'black'}: ${r.toFixed(2)}`);
+					}
+				}
+			}
+		expect(failures, failures.join('\n')).toEqual([]);
+	});
+
 	it("the painting's label holds on the hero's mat", () => {
 		expect(ratio(heroRoot['--hero-mat-ink'], heroRoot['--hero-mat'])).toBeGreaterThanOrEqual(4.5);
 	});
