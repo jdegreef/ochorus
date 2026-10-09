@@ -609,6 +609,7 @@ TOPICS = [
             "absolute-surrender-teens",
             "foxes-book-of-martyrs-teens",
             "pensees-teens",
+            "the-bruised-reed-teens",
             "real-questions-1",
             "real-questions-2",
         ],

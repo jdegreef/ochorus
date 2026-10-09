@@ -105,6 +105,7 @@ EXPORT_PILOT = frozenset({
     ("absolute-surrender-teens", "en"),
     ("foxes-book-of-martyrs-teens", "en"),
     ("pensees-teens", "en"),
+    ("the-bruised-reed-teens", "en"),
     # Retellings of an Ochorus Original (the Portraits of Courage life): the
     # parent author is the imprint, so, like the Portraits themselves, these have
     # no About the Author page. The Teens edition quotes only the public-domain ASV.
