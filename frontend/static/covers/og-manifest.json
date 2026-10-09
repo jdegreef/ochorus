@@ -5773,6 +5773,16 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"es/plain-account-christian-perfection": {
+			"ground": "09e58a03f0c4c1032ecc22fe891e8013de01924d4d48aa8527446e65254878d7",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/mauve",
+			"bar": 0
+		},
 		"es/possibilities-of-prayer": {
 			"ground": "8fe3b2647d6276f4fa3e94b217c2fc2f11df805a6a72b1510041949240019d9d",
 			"style": "devotional",
