@@ -7058,6 +7058,16 @@
 				478
 			]
 		},
+		"fr/daughters-of-the-king-2": {
+			"ground": "ca34fba0c7f5e5e4d18c37231578837b18b54cc6af8f67a514e403b9233f5fe8",
+			"style": "young",
+			"volume": "2",
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0
+		},
 		"fr/days-of-heaven-upon-earth": {
 			"ground": "0b873fc50e60b5815bed6bb557c833a71d28bd67eb8ee8f104c0f709149679d7",
 			"style": "revival",
