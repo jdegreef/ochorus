@@ -11620,6 +11620,36 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"lg/watchman-nee-a-life": {
+			"ground": "e33bc0a10a33a4e016976edc7a4a77fb438a9736de63d5cf893fa0838feaab32",
+			"style": "house",
+			"volume": "1",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[161, 102, 439, 131]
+				],
+				"title": [
+					[292, 306, 308, 350],
+					[91, 386, 509, 457]
+				],
+				"subtitle": [
+					[108, 476, 492, 504],
+					[82, 504, 518, 532]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				263,
+				532
+			]
+		},
 		"life-and-diary-of-david-brainerd": {
 			"ground": "442fbc2b3e5ed7d8f7277cab5df72e1d099de462f456783a8bb148587be12e80",
 			"style": "enlightenment",
