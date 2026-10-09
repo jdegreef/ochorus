@@ -10,6 +10,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { readJSON, writeJSON } from '$lib/persisted';
 	import { getLang } from '$lib/lang.svelte';
 	import { ERAS, ERA_HUE, eraOf, type EraId } from '$lib/eras';
 	import AuthorBioCard from '$lib/components/AuthorBioCard.svelte';
@@ -294,12 +295,17 @@
 
 	// --- View: rows or a portrait grid ----------------------------------------
 	// Opens on the portrait grid (founder steer, 2026-10-08) — the faces are the
-	// shelf. Not remembered across visits, like the Browse-by lens: the page is
-	// prerendered in this default, and restoring a stored view after hydration
-	// swapped one for the other under the reader (a visible jump on every load).
+	// shelf — and remembers the reader's choice per device, like the Books shelf.
+	// Restored after mount, not during render: the page is prerendered as the
+	// grid, so only a reader who chose rows sees the one swap on load.
 	type View = 'grid' | 'list';
+	const VIEW_KEY = 'ochorus:biographies-view';
 	let view = $state<View>('grid');
-	const setView = (v: View) => (view = v);
+	const setView = (v: View) => ((view = v), writeJSON(VIEW_KEY, v));
+	onMount(() => {
+		const v = readJSON<unknown>(VIEW_KEY, null);
+		if (v === 'grid' || v === 'list') view = v;
+	});
 
 	// The pinned bar was 177px on a 375px screen — 22% of the viewport, kept
 	// forever. On a phone it is search (the thing you actually reach for) plus a
