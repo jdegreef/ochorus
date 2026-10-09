@@ -1,11 +1,13 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
-	import type { BookSummary, EditionRung } from '$lib/library-public';
+	import type { BookSummary, EditionRung, HubAudience } from '$lib/library-public';
+	import { SITE_URL } from '$lib/config';
 	import { contentLang, readingMinutes } from '$lib/reading';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
 	import BookCover from './BookCover.svelte';
 	import EditionLadder from './EditionLadder.svelte';
+	import ShareButton from './ShareButton.svelte';
 
 	/**
 	 * The one story a hub sells hardest (`AUDIENCE_SPOTLIGHTS`), as a banner:
@@ -16,14 +18,19 @@
 	 */
 	let {
 		book,
+		audience,
 		ladder,
 		onstart,
-		onclimb
+		onclimb,
+		onshare
 	}: {
 		book: BookSummary;
+		/** Whose hub — the banner wears that audience's colour. */
+		audience: HubAudience;
 		ladder?: EditionRung[];
 		onstart?: () => void;
 		onclimb?: () => void;
+		onshare?: () => void;
 	} = $props();
 	const t = i18n.t;
 
@@ -36,7 +43,7 @@
 	);
 </script>
 
-<section class="spotlight mb-12" aria-labelledby="spotlight-heading">
+<section class="spotlight mb-12" data-audience={audience} aria-labelledby="spotlight-heading">
 	<a class="spotlight-cover" href={localizeHref(`/books/${book.slug}`)} tabindex="-1" aria-hidden="true">
 		<BookCover {book} />
 	</a>
@@ -61,9 +68,20 @@
 					>{sitting}</span
 				>{/if}
 		</p>
-		<a class="btn btn-primary mt-5" href={localizeHref(`/books/${book.slug}`)} onclick={onstart}>
-			{t('audience.spotlightCta')}
-		</a>
+		<div class="mt-5 flex flex-wrap items-center gap-3">
+			<a class="btn btn-primary" href={localizeHref(`/books/${book.slug}`)} onclick={onstart}>
+				{t('audience.spotlightCta')}
+			</a>
+			<!-- A story travels friend to friend: the book page, with its pitch. -->
+			<ShareButton
+				url={`${SITE_URL}${localizeHref(`/books/${book.slug}`)}`}
+				title={pitch ? `${book.title}: ${pitch}` : book.title}
+				label={t('audience.spotlightShare')}
+				showLabel
+				size="md"
+				{onshare}
+			/>
+		</div>
 		{#if ladder && ladder.length > 1}
 			<div class="mt-6">
 				<p class="section-label mb-2">{t('audience.spotlightLadder')}</p>
@@ -77,6 +95,7 @@
 	/* A dark, cinematic band — the one place on the hub that is a poster rather
 	   than a shelf — in the theme's ink, so it inverts sensibly in lamplight. */
 	.spotlight {
+		--spot-hue: var(--audience-children);
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
 		gap: 1.5rem;
@@ -84,8 +103,11 @@
 		border: 1px solid var(--border);
 		border-radius: var(--radius-card);
 		background:
-			radial-gradient(120% 90% at 0% 0%, color-mix(in oklab, var(--hue-cypress) 22%, transparent), transparent 60%),
+			radial-gradient(120% 90% at 0% 0%, color-mix(in oklab, var(--spot-hue) 22%, transparent), transparent 60%),
 			var(--surface);
+	}
+	.spotlight[data-audience='teens'] {
+		--spot-hue: var(--audience-teens);
 	}
 	.spotlight-cover {
 		display: block;

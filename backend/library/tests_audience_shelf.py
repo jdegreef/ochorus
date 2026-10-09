@@ -34,6 +34,7 @@ from .models import (
 )
 from .serializers import AUDIENCE_EDITION_SUFFIX, EDITION_SUFFIXES
 from .views import (
+    AUDIENCE_CHALLENGES,
     AUDIENCE_SPOTLIGHTS,
     AUDIENCE_STARTS,
     AUDIENCE_TOPICS,
@@ -274,6 +275,21 @@ class AudienceShelfTests(TestCase):
             [],
         )
 
+    def test_the_challenge_is_served_only_where_its_series_is(self):
+        self._book("rooted-1", series=Series.objects.create(
+            slug="rooted", title="Rooted", audience="young_readers"))
+        self.assertEqual(self._get()["challenge"], {"series": "rooted", "days": 30})
+        self.assertIsNone(self._get("teens")["challenge"])
+
+    def test_the_etag_moves_with_the_release(self):
+        # A code-only deploy can add a field (as `challenge` was added); the
+        # cached body must not keep answering 304 without it.
+        with self.settings(RELEASE_COMMIT="a"):
+            first = self.client.get(self.URL.format("teens", "en"))["ETag"]
+        with self.settings(RELEASE_COMMIT="b"):
+            second = self.client.get(self.URL.format("teens", "en"))["ETag"]
+        self.assertNotEqual(first, second)
+
     def test_every_spotlight_pick_names_a_real_book(self):
         books = Path(__file__).parent / "fixtures" / "content" / "books"
         missing = [
@@ -439,12 +455,12 @@ class AudienceShelfTests(TestCase):
 
 
 class ChallengeSeriesFixtureTests(TestCase):
-    """The hubs frame Anchored and Rooted as a 30-day challenge (the frontend's
-    `HubChallenge`): each volume is an introduction, then one chapter a day, so
+    """The hubs frame Anchored and Rooted as a 30-day challenge
+    (``views.AUDIENCE_CHALLENGES``, served as ``challenge``): each volume is an introduction, then one chapter a day, so
     a reader's furthest chapter minus one is the day they've reached. Held to
     the English fixture, so a re-cut volume can't silently skew the count."""
 
-    CHALLENGES = {"anchored": 30, "rooted": 30}
+    CHALLENGES = dict(AUDIENCE_CHALLENGES.values())
 
     def test_every_challenge_volume_is_an_introduction_then_one_chapter_a_day(self):
         books = Path(__file__).parent / "fixtures" / "content" / "books"

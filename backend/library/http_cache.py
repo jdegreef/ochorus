@@ -64,8 +64,12 @@ CACHE_CONTROL = (
 )
 
 
-def content_etag(request) -> str:
-    """A weak, per-URL ETag over (path, content digest, content revision).
+def content_etag(request, *, release: bool = False) -> str:
+    """A weak, per-URL ETag over (path, content digest, content revision) —
+    and, with ``release``, the deployed commit, for a view whose response SHAPE
+    is code (the EPUB's bytes, a hub that gains a field): a deploy that only
+    changes code moves neither the digest nor the revision, so without it a
+    returning reader's cached body, field missing, would keep answering 304.
 
     Weak (``W/``) because it marks a content *version*, not a byte-identical body.
     Per-URL because a conditional request must only 304 against the same resource
@@ -77,6 +81,10 @@ def content_etag(request) -> str:
     from .models import ContentRevision
 
     material = f"{request.get_full_path()}|{content_digest()}|{ContentRevision.current()}"
+    if release:
+        from django.conf import settings
+
+        material += f"|{settings.RELEASE_COMMIT}"
     return 'W/"' + hashlib.sha256(material.encode()).hexdigest()[:16] + '"'
 
 
@@ -96,7 +104,13 @@ class PublicContentCacheMixin:
     Applied per view rather than as middleware so that adding an endpoint is a
     decision: a view that starts varying by reader must not silently inherit
     ``public`` caching. The reading and admin APIs deliberately do not use it.
+
+    ``etag_tracks_release``: also key the ETag to the deployed commit
+    (``content_etag(release=True)``), for a view whose response shape changes
+    with code rather than content.
     """
+
+    etag_tracks_release = False
 
     def dispatch(self, request, *args, **kwargs):
         # Conditional GET: when the client already holds this content version,
@@ -104,7 +118,7 @@ class PublicContentCacheMixin:
         # The tag is only computed when a validator is present, so an ordinary
         # first request pays nothing extra here — finalize_response tags it once.
         if request.method in ("GET", "HEAD") and request.META.get("HTTP_IF_NONE_MATCH"):
-            etag = content_etag(request)
+            etag = content_etag(request, release=self.etag_tracks_release)
             if _if_none_match(request, etag):
                 not_modified = HttpResponseNotModified()
                 not_modified["ETag"] = etag
@@ -118,5 +132,5 @@ class PublicContentCacheMixin:
         # caching a 404 for a minute would outlive the import that fixes it.
         if request.method in ("GET", "HEAD") and response.status_code == 200:
             response["Cache-Control"] = CACHE_CONTROL
-            response["ETag"] = content_etag(request)
+            response["ETag"] = content_etag(request, release=self.etag_tracks_release)
         return response

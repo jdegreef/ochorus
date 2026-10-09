@@ -863,6 +863,15 @@ AUDIENCE_STARTS = {
     Series.Audience.TEENS: ("around-the-wicket-gate", "pilgrims-progress-teens", "all-of-grace"),
 }
 
+#: Each hub's daily devotional series, framed as a challenge — and how many
+#: days each volume runs. A volume is an introduction (chapter 1), then one
+#: chapter a day (chapter n + 1 is day n), so a reader's furthest chapter is
+#: the day they've reached; ``tests_audience_shelf`` holds the fixture to it.
+AUDIENCE_CHALLENGES = {
+    Series.Audience.YOUNG_READERS: ("rooted", 30),
+    Series.Audience.TEENS: ("anchored", 30),
+}
+
 #: Each hub's spotlight — the one story the hub sells hardest, set out as a
 #: banner with its pitch (the book's own ``hook``) and its edition ladder. The
 #: first published in the page's language wins; none, no banner. Teens only:
@@ -1139,6 +1148,15 @@ def _edition_ladders(slugs, language: str) -> dict[str, list[dict]]:
     return ladders
 
 
+def _audience_challenge(audience: str, series: list[dict]) -> dict | None:
+    """The hub's challenge (``AUDIENCE_CHALLENGES``) when its series is on the
+    shelf in this language — ``{series, days}`` — else None."""
+    if audience not in AUDIENCE_CHALLENGES:
+        return None
+    slug, days = AUDIENCE_CHALLENGES[audience]
+    return {"series": slug, "days": days} if any(r["slug"] == slug for r in series) else None
+
+
 class AudienceShelfView(PublicContentCacheMixin, APIView):
     """Everything written for one young audience in the requested language —
     the /young-readers/ and /teens/ hubs, which gather what /series, /originals,
@@ -1164,6 +1182,8 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
     open first (``AUDIENCE_STARTS``); ``spotlight`` the story the hub sells
     hardest (``AUDIENCE_SPOTLIGHTS``), and ``ladders`` each retold edition's
     family — children, teens, full — for the "Ready for more" step;
+    ``challenge`` its daily devotional series as a challenge
+    (``AUDIENCE_CHALLENGES``), when that series is here;
     ``printable`` lists the slugs among them with a free PDF / EPUB
     (``export_policy``), for the page's "print it" line; ``leader_guides``, the
     book cards among them with a printable leader's guide
@@ -1171,6 +1191,10 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
     something in (its hreflang). Nothing here falls back to English: a language
     with no rows gets empty lists, and the page hides.
     """
+
+    # Its shape grows with the hub (people, quotes, ladders, challenge…), and a
+    # code-only deploy moves neither the content digest nor the revision.
+    etag_tracks_release = True
 
     def get(self, request, audience):
         if audience not in AUDIENCE_TOPICS:
@@ -1294,6 +1318,7 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
                 "leader_guides": BookListSerializer(leader_guides, many=True, context=ctx).data,
                 "topic": {"slug": topic.slug, "title": topic.title_for(language)} if topic else None,
                 "start": start,
+                "challenge": _audience_challenge(audience, series),
                 "spotlight": (
                     BookListSerializer(spotlight, context=ctx).data if spotlight else None
                 ),
