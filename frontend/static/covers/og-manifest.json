@@ -352,6 +352,32 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"am/all-of-grace-teens": {
+			"ground": "a6aeb27ea26cc625af7762762f7a43fa3884f56d93f5e85029b0ed8340e0ab82",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.5,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[168, 308, 432, 384],
+					[172, 374, 428, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"am/all-things-for-good": {
 			"ground": "377f95295ffd0d798f8b8bf02cd96734df8b56894499cd8d4f736d228e403c1e",
 			"style": "press",
