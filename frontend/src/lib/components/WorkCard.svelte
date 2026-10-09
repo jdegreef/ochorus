@@ -1,4 +1,15 @@
 <script lang="ts" module>
+	import { i18n as captionI18n } from '$lib/i18n.svelte';
+
+	/**
+	 * A book's chapter meter as a caption — "Chapter 3 / 12 · 25%". Worded here,
+	 * beside the card's own caption, for every surface that shows one (this
+	 * card, the Bookshelf's ShelfBook, the home hero), so none words it apart.
+	 */
+	export function chapterMeter(order: number, chapterCount: number, pct: number): string {
+		return `${captionI18n.t('continue.chapter')} ${order} / ${chapterCount} · ${pct}%`;
+	}
+
 	/**
 	 * A card-shaped placeholder, for a list that knows a card is coming but not
 	 * yet what it holds ("Continue reading" above the hero, while a list loads).
@@ -57,7 +68,7 @@
 				: t('search.typeSermon');
 		}
 		if (complete) return `${t('settings.statFinished')} · ${item.order} / ${item.chapterCount}`;
-		return `${t('continue.chapter')} ${item.order} / ${item.chapterCount} · ${item.pct}%`;
+		return chapterMeter(item.order, item.chapterCount, item.pct);
 	});
 </script>
 

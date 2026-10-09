@@ -1,0 +1,85 @@
+{
+ "kind": "book",
+ "slug": "the-practice-of-the-presence-of-god-children",
+ "language": "es",
+ "job_issue": 5463,
+ "pull_request": 5501,
+ "note": [
+  "Every scripture line in this edition is self_rendered. The English retelling does not quote a Bible: each chapter's opening blockquote is a simplified paraphrase for 8–12 year olds, cited loosely (“— from 1 Samuel 16”). The Spanish renders those paraphrases in the same simple, child-friendly wording (ustedes plural, tú reader address, as in the shipped es children's editions) rather than pasting the Reina-Valera text, which would break the edition's register; api.takeroot.bible was egress-blocked from this session in any case.",
+  "Brother Lawrence is rendered “el Hermano Lorenzo”, the established Spanish name (already used in purpose-in-prayer.es). Translated in-session by the worker (not per-chapter subagents: 12 chapters of ~270 words); tag sequence identical to English chapter by chapter. AI-translated; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "1 Samuel 16:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Psalm 16:11",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Matthew 22:37",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Colossians 3:23",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "1 Corinthians 10:31",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Thessalonians 5:16-18",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "James 4:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "John 14:2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}

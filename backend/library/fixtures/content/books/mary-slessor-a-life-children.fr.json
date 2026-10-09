@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "mary-slessor-a-life-children",
+  "language": "fr",
+  "title": "Mary Slessor (Pour les enfants)",
+  "subtitle": "",
+  "cover_byline": "Mary Slessor",
+  "description": "La véritable histoire de Mary Slessor, une jeune ouvrière d’Écosse qui partit pour Calabar, en Afrique de l’Ouest, apprit à parler l’efik comme les gens du pays, entra dans la forêt d’Okoyong où aucun missionnaire n’avait jamais vécu, et sauva des bébés jumeaux et leurs mamans quand tout le monde fuyait loin d’eux. Cette édition pour les enfants raconte sa vie en courts chapitres faits pour être lus à voix haute : un verset de la Bible, un moment de son histoire, une chose que cela veut dire pour toi, et une courte prière, avec des questions pour en parler ensemble.",
+  "qa": [
+   {
+    "question": "De quoi parle Mary Slessor (Pour les enfants) ?",
+    "answer": "C’est une version pour les enfants de la biographie complète de Mary Slessor. Elle raconte comment une petite fille pauvre, qui travaillait dans une usine à Dundee, est partie pour Calabar, dans ce qui est aujourd’hui le Nigeria, a vécu parmi le peuple d’Okoyong, a protégé des bébés jumeaux et leurs mamans, et a fini par être appelée « la Mère de tout le monde »."
+   },
+   {
+    "question": "Qui était Mary Slessor ?",
+    "answer": "Une missionnaire écossaise qui a vécu de 1848 à 1915. Elle a commencé à travailler à l’usine à onze ans, elle est partie pour Calabar en 1876, et elle a passé presque quarante ans dans ce qui est aujourd’hui le sud-est du Nigeria. Elle a appris la langue efik, a vécu à Okoyong à partir de 1888, a aidé des ennemis à faire la paix, a sauvé des jumeaux, et a fondé des écoles et des églises le long de la rivière Enyong. Les gens l’appelaient Ma."
+   },
+   {
+    "question": "Comment chaque chapitre est-il construit ?",
+    "answer": "Chaque chapitre est court et fait pour être lu à voix haute. Il commence par un verset de la Bible, raconte un moment de l’histoire de Mary, montre une chose simple que cela veut dire pour toi, et se termine par une courte prière. Ensuite viennent trois questions, pour en parler ensemble."
+   },
+   {
+    "question": "Ce livre est-il trop triste pour les enfants ?",
+    "answer": "Certaines parties sont tristes. Le papa de Mary buvait trop, beaucoup des bébés dont elle s’occupait sont morts, et de vieilles coutumes coûtaient la vie à des gens. Le livre ne fait pas semblant du contraire, mais il raconte ces choses avec douceur, sans détails effrayants. Et surtout, c’est l’histoire de la façon dont Dieu a pris soin d’une femme qui avait peur, l’a rendue courageuse, et s’est servi d’elle pour sauver beaucoup de vies."
+   },
+   {
+    "question": "Ces histoires sont-elles vraies ?",
+    "answer": "Oui. Elles viennent des lettres de Mary Slessor et de personnes qui l’ont connue, telles que sa première biographe les a rassemblées. Quelques histoires, comme celle du chef de bande au poids de plomb, ont été retenues d’après ce qu’elle en a raconté elle-même des années plus tard, et le livre le dit. Il dit aussi clairement que Mary n’a pas été la première à s’opposer au meurtre des jumeaux, et que beaucoup d’autres, africains et écossais, l’ont aidée."
+   },
+   {
+    "question": "À qui s’adresse ce livre ?",
+    "answer": "Aux enfants — pour être lu à voix haute par un adulte, ou lu seul par un enfant plus grand. Il existe aussi une édition pour les adolescents, et la biographie complète pour les lecteurs plus âgés."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Une adaptation Ochorus pour les jeunes lecteurs de la biographie Ochorus Mary Slessor, de la série Portraits de courage. La manière de la raconter est la nôtre ; ce livre est libre à lire et à partager.",
+  "cover_url": "/covers/art/mary-slessor-a-life-children.jpg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/mary-slessor-a-life-children.fr.pdf?download=mary-slessor-a-life-children.fr.pdf",
+  "cover_color": "",
+  "sort_order": 149,
+  "is_published": true,
+  "created_at": "2026-10-08T00:00:00Z",
+  "updated_at": "2026-10-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "fr"
+  ],
+  "order": 1,
+  "title": "Une lassie sauvage",
+  "body_html": "<blockquote>« Comme un père a compassion de ses enfants, L’Éternel a compassion de ceux qui le craignent. » — d’après Psaume 103</blockquote> <p>Le 2 décembre 1848, une petite fille est née à Aberdeen, une ville d’Écosse. Elle s’appelait Mary Mitchell Slessor.</p> <p>La maman de Mary était une femme douce, avec une foi profonde et paisible. Son église avait une mission très loin, en Afrique de l’Ouest, dans un endroit appelé Calabar, et à la maison, on lisait à voix haute les nouvelles qui en venaient. Des années plus tard, Mary a dit : « C’est d’elle que je tiens mon enthousiasme missionnaire, et pour Calabar en particulier. » Sa famille se souvenait que, quand la petite Mary jouait à la maîtresse d’école, ses élèves imaginaires étaient toujours des Africains !</p> <p>Mais la maison de Mary n’était pas toujours joyeuse. Son papa, Robert, était cordonnier, et il buvait trop. En 1859, la famille a déménagé à Dundee, une ville pleine d’usines, pour prendre un nouveau départ, mais il dépensait toujours chaque sou pour boire. Alors la maman de Mary est allée travailler à l’usine. Le samedi soir, elle et Mary restaient debout à coudre, en attendant qu’il rentre, et elles priaient tout bas pour calmer leur cœur.</p> <p>Pourtant, Mary n’était pas triste. Elle se disait elle-même « une lassie sauvage » — en écossais, cela veut dire une fille sauvage. Un après-midi d’hiver, une vieille veuve a fait entrer quelques filles qui avaient froid pour qu’elles s’assoient près de son feu. Elle a montré les flammes et les a prévenues : c’était très dangereux de se détourner de Jésus. Mary ne pouvait pas s’arrêter d’y penser. Comme elle l’a dit elle-même, elle s’est « repentie et elle a cru ». Dans son cœur, elle a trouvé l’amour de Dieu, et elle n’a jamais essayé de faire peur à quelqu’un d’autre pour l’y amener.</p> <p>Mary a prié pour son papa pendant des années, et il n’a jamais changé. Bien plus tard, elle a écrit : « Je sais ce que c’est que de prier pendant de longues années sans jamais recevoir la réponse. » Mais elle avait trouvé un Père dans le ciel qui ne la décevait jamais.</p> <p>Peut-être qu’il y a quelque chose à la maison qui te rend triste ou inquiet. Dieu le voit, il s’en soucie, et tu peux tout lui dire. Si un jour tu ne te sens pas en sécurité à la maison, parles-en à un adulte en qui tu as confiance.</p> <p><em>Cher Dieu, merci d’être mon Père dans le ciel et d’être toujours bon avec moi. S’il te plaît, prends soin de ma famille, et aide-moi à tout te dire. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "D’où venait l’amour de Mary pour Calabar ?",
+    "answer": "De sa maman, qui suivait toutes les nouvelles de la mission de Calabar. On les lisait à voix haute à la maison et on en parlait ensemble."
+   },
+   {
+    "question": "Pour quoi Mary a-t-elle prié pendant de nombreuses années ?",
+    "answer": "Elle a prié pour son papa, qui buvait trop. Il n’a jamais changé, mais Mary a appris à faire confiance à son Père dans le ciel."
+   },
+   {
+    "question": "Qu’aimerais-tu dire aujourd’hui à ton Père dans le ciel ?",
+    "answer": "Toute réponse sincère convient ici. Ce que nous apprend ce chapitre : Dieu est un Père bon qui se soucie de tout ce qui nous arrive, même des choses difficiles à la maison."
+   }
+  ],
+  "body_text": "« Comme un père a compassion de ses enfants, L’Éternel a compassion de ceux qui le craignent. » — d’après Psaume 103 Le 2 décembre 1848, une petite fille est née à Aberdeen, une ville d’Écosse. Elle s’appelait Mary Mitchell Slessor. La maman de Mary était une femme douce, avec une foi profonde et paisible. Son église avait une mission très loin, en Afrique de l’Ouest, dans un endroit appelé Calabar, et à la maison, on lisait à voix haute les nouvelles qui en venaient. Des années plus tard, Mary a dit : « C’est d’elle que je tiens mon enthousiasme missionnaire, et pour Calabar en particulier. » Sa famille se souvenait que, quand la petite Mary jouait à la maîtresse d’école, ses élèves imaginaires étaient toujours des Africains ! Mais la maison de Mary n’était pas toujours joyeuse. Son papa, Robert, était cordonnier, et il buvait trop. En 1859, la famille a déménagé à Dundee, une ville pleine d’usines, pour prendre un nouveau départ, mais il dépensait toujours chaque sou pour boire. Alors la maman de Mary est allée travailler à l’usine. Le samedi soir, elle et Mary restaient debout à coudre, en attendant qu’il rentre, et elles priaient tout bas pour calmer leur cœur. Pourtant, Mary n’était pas triste. Elle se disait elle-même « une lassie sauvage » — en écossais, cela veut dire une fille sauvage. Un après-midi d’hiver, une vieille veuve a fait entrer quelques filles qui avaient froid pour qu’elles s’assoient près de son feu. Elle a montré les flammes et les a prévenues : c’était très dangereux de se détourner de Jésus. Mary ne pouvait pas s’arrêter d’y penser. Comme elle l’a dit elle-même, elle s’est « repentie et elle a cru ». Dans son cœur, elle a trouvé l’amour de Dieu, et elle n’a jamais essayé de faire peur à quelqu’un d’autre pour l’y amener. Mary a prié pour son papa pendant des années, et il n’a jamais changé. Bien plus tard, elle a écrit : « Je sais ce que c’est que de prier pendant de longues années sans jamais recevoir la réponse. » Mais elle avait trouvé un Père dans le ciel qui ne la décevait jamais. Peut-être qu’il y a quelque chose à la maison qui te rend triste ou inquiet. Dieu le voit, il s’en soucie, et tu peux tout lui dire. Si un jour tu ne te sens pas en sécurité à la maison, parles-en à un adulte en qui tu as confiance. Cher Dieu, merci d’être mon Père dans le ciel et d’être toujours bon avec moi. S’il te plaît, prends soin de ma famille, et aide-moi à tout te dire. Amen.",
+  "word_count": 445
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "fr"
+  ],
+  "order": 2,
+  "title": "Un livre sur le métier à tisser",
+  "body_html": "<blockquote>« Ta parole est une lampe à mes pieds, Et une lumière sur mon sentier. » — d’après Psaume 119</blockquote> <p>Quand Mary a eu onze ans, elle est allée travailler dans une grande usine qui s’appelait Baxter Brothers. Au début, elle travaillait une moitié de la journée et allait à l’école de l’usine l’autre moitié. Bientôt, elle a travaillé de six heures du matin à six heures du soir, et elle allait à l’école le soir. Elle se levait à cinq heures pour aider au ménage avant de partir !</p> <p>L’atelier de tissage était si bruyant qu’on pouvait à peine se parler. Mary est devenue une tisserande habile, qui s’occupait de deux métiers à tisser à la fois. Quand elle a rapporté sa première paie à la maison, sa maman a pleuré dessus et a dit que cet argent était trop précieux pour être dépensé. Deux des frères de Mary sont morts, et en 1870, son papa est mort, lui aussi. C’est la paie de Mary qui faisait vivre la famille.</p> <p>Mary adorait apprendre. Elle posait un livre ouvert sur son métier à tisser et le lisait en travaillant, et elle lisait aussi en marchant pour aller au travail. Plus que tout, elle lisait la Bible. Un jour, une fille a demandé à Mary quelque chose à lire, et Mary lui a donné sa propre Bible en disant : « Prends-la ; elle a fait de moi une lassie changée. »</p> <p>L’église de Mary se trouvait dans un quartier pauvre de la ville, où des bandes de garçons brutaux traînaient dans les rues. Mary a commencé à leur faire la classe, même si certains garçons venaient pour gâcher les réunions et lui lançaient de la boue. Il semble que, des années plus tard, Mary ait raconté un soir où une bande l’avait entourée. Leur chef faisait tourner autour de sa tête un lourd poids de plomb attaché à une ficelle, de plus en plus près, jusqu’à ce qu’il lui frôle le front. Mary n’a pas bougé. Finalement, il l’a laissé tomber. « Elle a du cran, les gars », a-t-il dit, et toute la bande l’a suivie à la réunion.</p> <p>Toute sa vie, Mary a eu peur de la foule, de parler en public, et même des vaches dans les champs ! Mais elle a appris à rester sur place quand elle avait envie de s’enfuir.</p> <p>Être courageux, ce n’est pas ne jamais avoir peur. Dieu peut t’aider à faire ce qui est bien, même quand tu as peur.</p> <p><em>Cher Dieu, merci pour la Bible, qui me montre le chemin à suivre. Quand j’ai peur, aide-moi à être courageux et à faire ce qui est bien. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Comment Mary trouvait-elle le temps de lire alors qu’elle travaillait de si longues journées ?",
+    "answer": "Elle posait un livre ouvert sur son métier à tisser et lisait en travaillant, et elle lisait aussi en marchant pour aller au travail."
+   },
+   {
+    "question": "Que s’est-il passé quand le chef de la bande a fait tourner le poids de plomb autour de la tête de Mary ?",
+    "answer": "Elle n’a pas bougé, même quand il lui a frôlé le front. Finalement, il l’a laissé tomber, a dit « Elle a du cran, les gars », et la bande l’a suivie à la réunion."
+   },
+   {
+    "question": "Qu’est-ce qui te fait peur ?",
+    "answer": "Toute réponse sincère convient ici. Ce que nous apprend ce chapitre : être courageux, ce n’est pas ne jamais avoir peur. Dieu peut nous aider à faire ce qui est bien, même quand nous avons peur."
+   }
+  ],
+  "body_text": "« Ta parole est une lampe à mes pieds, Et une lumière sur mon sentier. » — d’après Psaume 119 Quand Mary a eu onze ans, elle est allée travailler dans une grande usine qui s’appelait Baxter Brothers. Au début, elle travaillait une moitié de la journée et allait à l’école de l’usine l’autre moitié. Bientôt, elle a travaillé de six heures du matin à six heures du soir, et elle allait à l’école le soir. Elle se levait à cinq heures pour aider au ménage avant de partir ! L’atelier de tissage était si bruyant qu’on pouvait à peine se parler. Mary est devenue une tisserande habile, qui s’occupait de deux métiers à tisser à la fois. Quand elle a rapporté sa première paie à la maison, sa maman a pleuré dessus et a dit que cet argent était trop précieux pour être dépensé. Deux des frères de Mary sont morts, et en 1870, son papa est mort, lui aussi. C’est la paie de Mary qui faisait vivre la famille. Mary adorait apprendre. Elle posait un livre ouvert sur son métier à tisser et le lisait en travaillant, et elle lisait aussi en marchant pour aller au travail. Plus que tout, elle lisait la Bible. Un jour, une fille a demandé à Mary quelque chose à lire, et Mary lui a donné sa propre Bible en disant : « Prends-la ; elle a fait de moi une lassie changée. » L’église de Mary se trouvait dans un quartier pauvre de la ville, où des bandes de garçons brutaux traînaient dans les rues. Mary a commencé à leur faire la classe, même si certains garçons venaient pour gâcher les réunions et lui lançaient de la boue. Il semble que, des années plus tard, Mary ait raconté un soir où une bande l’avait entourée. Leur chef faisait tourner autour de sa tête un lourd poids de plomb attaché à une ficelle, de plus en plus près, jusqu’à ce qu’il lui frôle le front. Mary n’a pas bougé. Finalement, il l’a laissé tomber. « Elle a du cran, les gars », a-t-il dit, et toute la bande l’a suivie à la réunion. Toute sa vie, Mary a eu peur de la foule, de parler en public, et même des vaches dans les champs ! Mais elle a appris à rester sur place quand elle avait envie de s’enfuir. Être courageux, ce n’est pas ne jamais avoir peur. Dieu peut t’aider à faire ce qui est bien, même quand tu as peur. Cher Dieu, merci pour la Bible, qui me montre le chemin à suivre. Quand j’ai peur, aide-moi à être courageux et à faire ce qui est bien. Amen.",
+  "word_count": 447
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "fr"
+  ],
+  "order": 3,
+  "title": "« Priez pour moi ! »",
+  "body_html": "<blockquote>« Me voici, envoie-moi. » — d’après Ésaïe 6</blockquote> <p>Mary avait un petit frère qui s’appelait John. Leur maman espérait qu’il deviendrait missionnaire un jour. Mais John est tombé malade. Il est parti en bateau pour la Nouvelle-Zélande, en espérant que le climat plus chaud le guérirait, et il est mort peu après son arrivée.</p> <p>Mary était très triste. Une petite pensée a commencé à grandir dans son cœur : pourrait-elle aller en Afrique à la place de John ? Pendant longtemps, elle n’en a parlé à personne.</p> <p>À cette époque, on appelait l’Afrique de l’Ouest « le tombeau de l’homme blanc », parce que beaucoup de gens venus d’Europe y attrapaient des fièvres et y mouraient. Mais une amie se souvenait que Mary disait que, justement parce que Calabar était un endroit dangereux, c’était un honneur d’y aller. Peu de gens se porteraient volontaires, alors elle, elle irait.</p> <p>En 1874, on a appris que le célèbre explorateur David Livingstone était mort en Afrique. Toute l’Écosse en a été bouleversée, et Mary a décidé que le moment était venu. Ses sœurs travaillaient maintenant, et elle comptait envoyer de l’argent d’Afrique pour prendre soin de sa maman. Sa maman a dit oui de tout cœur. En mai 1875, Mary s’est proposée à son église, et elle a été acceptée comme institutrice pour Calabar. Elle avait vingt-six ans ; c’était une ouvrière d’usine qui était à peine allée à l’école.</p> <p>Le soir avant qu’elle quitte Dundee pour aller se former à Édimbourg, une amie l’a trouvée en train de pleurer à la porte de l’immeuble où elle habitait. « Au revoir », a dit Mary. Et puis, de tout son cœur : « Priez pour moi ! »</p> <p>Le 5 août 1876, elle est partie de Liverpool sur un bateau qui s’appelait l’Ethiopia. Deux amis sont venus lui dire au revoir. Ils ont vu qu’on chargeait sur le bateau des tonneaux d’alcool fort, pour les vendre en Afrique de l’Ouest. Mary savait ce que la boisson avait fait à sa propre famille. « Des dizaines de tonneaux ! a-t-elle dit. Et un seul missionnaire ! »</p> <p>Mary ne se sentait ni courageuse ni intelligente. Mais elle savait combien Dieu l’aimait, et elle voulait lui dire : « Me voici. Envoie-moi. » Toi aussi, tu peux dire cela à Dieu, où que tu sois.</p> <p><em>Cher Dieu, merci de m’aimer autant. Me voici. S’il te plaît, sers-toi de moi pour aider d’autres personnes à te connaître. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi Mary a-t-elle commencé à penser à partir en Afrique ?",
+    "answer": "Son frère John, dont leur maman espérait qu’il deviendrait missionnaire, est mort. Mary s’est demandé si elle pourrait partir à sa place."
+   },
+   {
+    "question": "Qu’a dit Mary quand elle a vu qu’on chargeait des tonneaux d’alcool sur son bateau ?",
+    "answer": "« Des dizaines de tonneaux ! Et un seul missionnaire ! » Elle savait tout le mal que la boisson pouvait faire."
+   },
+   {
+    "question": "Où penses-tu que Dieu pourrait vouloir t’envoyer, même pour quelque chose de petit ?",
+    "answer": "Toute réponse sincère convient ici. Ce que nous apprend ce chapitre : nous n’avons pas besoin de nous sentir courageux ou intelligents pour dire à Dieu « Me voici ». Il nous suffit de savoir qu’il nous aime."
+   }
+  ],
+  "body_text": "« Me voici, envoie-moi. » — d’après Ésaïe 6 Mary avait un petit frère qui s’appelait John. Leur maman espérait qu’il deviendrait missionnaire un jour. Mais John est tombé malade. Il est parti en bateau pour la Nouvelle-Zélande, en espérant que le climat plus chaud le guérirait, et il est mort peu après son arrivée. Mary était très triste. Une petite pensée a commencé à grandir dans son cœur : pourrait-elle aller en Afrique à la place de John ? Pendant longtemps, elle n’en a parlé à personne. À cette époque, on appelait l’Afrique de l’Ouest « le tombeau de l’homme blanc », parce que beaucoup de gens venus d’Europe y attrapaient des fièvres et y mouraient. Mais une amie se souvenait que Mary disait que, justement parce que Calabar était un endroit dangereux, c’était un honneur d’y aller. Peu de gens se porteraient volontaires, alors elle, elle irait. En 1874, on a appris que le célèbre explorateur David Livingstone était mort en Afrique. Toute l’Écosse en a été bouleversée, et Mary a décidé que le moment était venu. Ses sœurs travaillaient maintenant, et elle comptait envoyer de l’argent d’Afrique pour prendre soin de sa maman. Sa maman a dit oui de tout cœur. En mai 1875, Mary s’est proposée à son église, et elle a été acceptée comme institutrice pour Calabar. Elle avait vingt-six ans ; c’était une ouvrière d’usine qui était à peine allée à l’école. Le soir avant qu’elle quitte Dundee pour aller se former à Édimbourg, une amie l’a trouvée en train de pleurer à la porte de l’immeuble où elle habitait. « Au revoir », a dit Mary. Et puis, de tout son cœur : « Priez pour moi ! » Le 5 août 1876, elle est partie de Liverpool sur un bateau qui s’appelait l’Ethiopia. Deux amis sont venus lui dire au revoir. Ils ont vu qu’on chargeait sur le bateau des tonneaux d’alcool fort, pour les vendre en Afrique de l’Ouest. Mary savait ce que la boisson avait fait à sa propre famille. « Des dizaines de tonneaux ! a-t-elle dit. Et un seul missionnaire ! » Mary ne se sentait ni courageuse ni intelligente. Mais elle savait combien Dieu l’aimait, et elle voulait lui dire : « Me voici. Envoie-moi. » Toi aussi, tu peux dire cela à Dieu, où que tu sois. Cher Dieu, merci de m’aimer autant. Me voici. S’il te plaît, sers-toi de moi pour aider d’autres personnes à te connaître. Amen.",
+  "word_count": 413
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "fr"
+  ],
+  "order": 4,
+  "title": "Un pays appelé Calabar",
+  "body_html": "<blockquote>« Car mon père et ma mère m’abandonnent, Mais l’Éternel me recueillera. » — d’après Psaume 27</blockquote> <p>En septembre 1876, l’Ethiopia a remonté un large fleuve boueux, bordé de palétuviers, et Mary est arrivée à Calabar. Les villes de là-bas étaient gouvernées par leur propre peuple, les Efik.</p> <p>Mary a appris la langue efik à l’oreille, auprès des gens, plus que dans les livres. Avec le temps, des visiteurs ont dit qu’elle parlait l’efik mieux que beaucoup d’Efik !</p> <p>Au début, elle a habité chez un couple de missionnaires plus âgés que tout le monde appelait Papa et Maman Anderson. Une des tâches de Mary était de sonner la cloche pour la prière du matin, avant l’aube. Une fois, elle s’est réveillée dans une chambre pleine de lumière, elle s’est précipitée dehors et a sonné la cloche… et puis elle a découvert que ce n’était que la lune ! Quand elle arrivait en retard aux repas et qu’on l’envoyait au lit sans souper, Papa Anderson lui apportait en cachette des biscuits et des bananes.</p> <p>Après un séjour en Écosse, Mary a été chargée d’un endroit appelé Old Town. C’est là qu’elle a rencontré la coutume qui allait devenir le grand combat de sa vie. Les gens croyaient que des jumeaux apportaient quelque chose de terrible. Les bébés jumeaux étaient tués et abandonnés dans la brousse, et leur maman était chassée pour vivre toute seule. Les chefs efik avaient déjà accepté d’interdire cela avant l’arrivée de Mary, et d’autres missionnaires sauvaient des jumeaux depuis des années. Mais la vieille peur était forte, et cela continuait en cachette.</p> <p>Mary a sauvé deux jumeaux, un garçon et une fille. Pendant qu’elle était sortie, des membres de la famille sont venus et ont emmené le garçon par une ruse, et il a été tué. Mary avait le cœur brisé, et elle était décidée à ce que la petite fille vive. En 1883, quand Mary était si malade qu’il a fallu la porter sur le bateau pour rentrer, elle a emmené le bébé en Écosse avec elle. La petite fille s’appelait Atim Eso. En Écosse, elle a été baptisée sous le nom de Janie.</p> <p>Beaucoup de gens pensaient que Janie ne devait pas vivre. Mais Dieu a envoyé Mary pour la recueillir et l’aimer. Dieu n’oublie jamais aucun enfant, pas même celui que tous les autres rejettent.</p> <p><em>Cher Dieu, merci de ne jamais m’oublier. S’il te plaît, prends soin des enfants qui n’ont personne pour les aimer, et aide-moi à être gentil avec eux. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quelle erreur amusante Mary a-t-elle faite avec la cloche du matin ?",
+    "answer": "Elle s’est réveillée dans une chambre pleine de lumière et a sonné la cloche pour la prière du matin, mais ce n’était que la lune !"
+   },
+   {
+    "question": "Pourquoi les bébés jumeaux étaient-ils en danger à Calabar ?",
+    "answer": "Les gens croyaient que la naissance de jumeaux voulait dire que quelque chose de terrible était arrivé. Alors les bébés étaient tués et leur maman était chassée, même si les chefs avaient accepté d’interdire cela."
+   },
+   {
+    "question": "Comment peux-tu être gentil avec quelqu’un qui est mis à l’écart ?",
+    "answer": "Toute réponse sincère convient ici. Ce que nous apprend ce chapitre : Dieu n’oublie jamais aucun enfant, et il veut que nous prenions soin de ceux que les autres rejettent, comme Mary a recueilli la petite Janie."
+   }
+  ],
+  "body_text": "« Car mon père et ma mère m’abandonnent, Mais l’Éternel me recueillera. » — d’après Psaume 27 En septembre 1876, l’Ethiopia a remonté un large fleuve boueux, bordé de palétuviers, et Mary est arrivée à Calabar. Les villes de là-bas étaient gouvernées par leur propre peuple, les Efik. Mary a appris la langue efik à l’oreille, auprès des gens, plus que dans les livres. Avec le temps, des visiteurs ont dit qu’elle parlait l’efik mieux que beaucoup d’Efik ! Au début, elle a habité chez un couple de missionnaires plus âgés que tout le monde appelait Papa et Maman Anderson. Une des tâches de Mary était de sonner la cloche pour la prière du matin, avant l’aube. Une fois, elle s’est réveillée dans une chambre pleine de lumière, elle s’est précipitée dehors et a sonné la cloche… et puis elle a découvert que ce n’était que la lune ! Quand elle arrivait en retard aux repas et qu’on l’envoyait au lit sans souper, Papa Anderson lui apportait en cachette des biscuits et des bananes. Après un séjour en Écosse, Mary a été chargée d’un endroit appelé Old Town. C’est là qu’elle a rencontré la coutume qui allait devenir le grand combat de sa vie. Les gens croyaient que des jumeaux apportaient quelque chose de terrible. Les bébés jumeaux étaient tués et abandonnés dans la brousse, et leur maman était chassée pour vivre toute seule. Les chefs efik avaient déjà accepté d’interdire cela avant l’arrivée de Mary, et d’autres missionnaires sauvaient des jumeaux depuis des années. Mais la vieille peur était forte, et cela continuait en cachette. Mary a sauvé deux jumeaux, un garçon et une fille. Pendant qu’elle était sortie, des membres de la famille sont venus et ont emmené le garçon par une ruse, et il a été tué. Mary avait le cœur brisé, et elle était décidée à ce que la petite fille vive. En 1883, quand Mary était si malade qu’il a fallu la porter sur le bateau pour rentrer, elle a emmené le bébé en Écosse avec elle. La petite fille s’appelait Atim Eso. En Écosse, elle a été baptisée sous le nom de Janie. Beaucoup de gens pensaient que Janie ne devait pas vivre. Mais Dieu a envoyé Mary pour la recueillir et l’aimer. Dieu n’oublie jamais aucun enfant, pas même celui que tous les autres rejettent. Cher Dieu, merci de ne jamais m’oublier. S’il te plaît, prends soin des enfants qui n’ont personne pour les aimer, et aide-moi à être gentil avec eux. Amen.",
+  "word_count": 420
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "fr"
+  ],
+  "order": 5,
+  "title": "Seule, loin des siens",
+  "body_html": "<blockquote>« Ma chair et mon cœur peuvent se consumer: Dieu sera toujours le rocher de mon cœur et mon partage. » — d’après Psaume 73</blockquote> <p>De retour en Écosse, Mary s’est occupée de la petite Janie et a passé du temps avec sa maman et ses sœurs. La petite Janie avait reçu le nom de la plus jeune sœur de Mary, qui s’appelait Janie, elle aussi.</p> <p>Puis la sœur de Mary, Janie, est tombée très malade, et les médecins ont dit que seul un endroit plus chaud pourrait l’aider. Alors Mary a installé sa sœur et sa maman à Topsham, dans le sud de l’Angleterre. Ensuite, son autre sœur, Susan, est morte tout à coup. Mary devait s’occuper de tout le monde.</p> <p>Mary voulait retourner en Afrique. Elle a demandé à sa maman si elle la laisserait aller encore plus loin, dans des endroits où aucun missionnaire n’était jamais allé. Sa maman a répondu : « Tu es mon enfant, que Dieu m’a donnée, et je te l’ai rendue. Quand il aura besoin de toi et là où il t’enverra, c’est là que je veux que tu sois. »</p> <p>Mary est repartie pour Calabar en novembre 1885. Le jour de l’An, elle a commencé une longue lettre joyeuse pour sa famille. Elle se terminait ainsi : « Racontez-moi tous vos soucis, et surtout prenez bien soin de vous. » Mais aucune réponse n’est jamais arrivée. Sa maman était morte en décembre, quelques semaines seulement après le départ de Mary. Trois mois plus tard, sa sœur Janie est morte, elle aussi.</p> <p>Mary était très, très triste. Le soir où elle a appris la mort de sa maman, elle a quand même dirigé la réunion de prière, et elle n’en a parlé à personne. Plus tard, elle a écrit : « Le ciel est maintenant plus près de moi que la Grande-Bretagne, et personne ne s’inquiétera pour moi si je pars à l’intérieur du pays. »</p> <p>Bientôt, la maison de Mary à Creek Town a de nouveau été pleine d’enfants : la petite Janie, des jumeaux sauvés, et d’autres garçons et filles. Un jour, on a apporté un bébé dont la maman était morte. Mary a demandé au maître du bébé de lui prêter une femme pour le nourrir. La réponse est revenue : « Laisse-le mourir. » Mais Mary ne l’a pas fait. Elle l’a laissé vivre.</p> <p>Quand nous sommes très tristes, Dieu ne nous dit pas d’arrêter de pleurer. Il reste tout près, et il est notre force quand nous n’en avons plus.</p> <p><em>Cher Dieu, merci d’être avec moi quand je suis triste. S’il te plaît, console tous ceux à qui manque quelqu’un qu’ils aiment. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’a répondu la maman de Mary quand Mary lui a demandé si elle pouvait aller dans des endroits très lointains ?",
+    "answer": "Elle a dit que Mary était son enfant, que Dieu lui avait donnée, et qu’elle la lui avait rendue. Partout où Dieu l’enverrait, c’est là que sa maman voulait qu’elle soit."
+   },
+   {
+    "question": "Quelle triste nouvelle est arrivée après le retour de Mary à Calabar ?",
+    "answer": "Sa maman était morte quelques semaines après le départ de Mary, et trois mois plus tard, sa sœur Janie est morte, elle aussi."
+   },
+   {
+    "question": "Qui te manque, ou qui connais-tu qui est triste ?",
+    "answer": "Toute réponse sincère convient ici. Ce que nous apprend ce chapitre : Dieu reste tout près de nous quand nous sommes tristes, et il est notre force quand nous n’en avons plus."
+   }
+  ],
+  "body_text": "« Ma chair et mon cœur peuvent se consumer: Dieu sera toujours le rocher de mon cœur et mon partage. » — d’après Psaume 73 De retour en Écosse, Mary s’est occupée de la petite Janie et a passé du temps avec sa maman et ses sœurs. La petite Janie avait reçu le nom de la plus jeune sœur de Mary, qui s’appelait Janie, elle aussi. Puis la sœur de Mary, Janie, est tombée très malade, et les médecins ont dit que seul un endroit plus chaud pourrait l’aider. Alors Mary a installé sa sœur et sa maman à Topsham, dans le sud de l’Angleterre. Ensuite, son autre sœur, Susan, est morte tout à coup. Mary devait s’occuper de tout le monde. Mary voulait retourner en Afrique. Elle a demandé à sa maman si elle la laisserait aller encore plus loin, dans des endroits où aucun missionnaire n’était jamais allé. Sa maman a répondu : « Tu es mon enfant, que Dieu m’a donnée, et je te l’ai rendue. Quand il aura besoin de toi et là où il t’enverra, c’est là que je veux que tu sois. » Mary est repartie pour Calabar en novembre 1885. Le jour de l’An, elle a commencé une longue lettre joyeuse pour sa famille. Elle se terminait ainsi : « Racontez-moi tous vos soucis, et surtout prenez bien soin de vous. » Mais aucune réponse n’est jamais arrivée. Sa maman était morte en décembre, quelques semaines seulement après le départ de Mary. Trois mois plus tard, sa sœur Janie est morte, elle aussi. Mary était très, très triste. Le soir où elle a appris la mort de sa maman, elle a quand même dirigé la réunion de prière, et elle n’en a parlé à personne. Plus tard, elle a écrit : « Le ciel est maintenant plus près de moi que la Grande-Bretagne, et personne ne s’inquiétera pour moi si je pars à l’intérieur du pays. » Bientôt, la maison de Mary à Creek Town a de nouveau été pleine d’enfants : la petite Janie, des jumeaux sauvés, et d’autres garçons et filles. Un jour, on a apporté un bébé dont la maman était morte. Mary a demandé au maître du bébé de lui prêter une femme pour le nourrir. La réponse est revenue : « Laisse-le mourir. » Mais Mary ne l’a pas fait. Elle l’a laissé vivre. Quand nous sommes très tristes, Dieu ne nous dit pas d’arrêter de pleurer. Il reste tout près, et il est notre force quand nous n’en avons plus. Cher Dieu, merci d’être avec moi quand je suis triste. S’il te plaît, console tous ceux à qui manque quelqu’un qu’ils aiment. Amen.",
+  "word_count": 446
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "fr"
+  ],
+  "order": 6,
+  "title": "Un seul mot dans le noir",
+  "body_html": "<blockquote>« Ne t’ai-je pas donné cet ordre: Fortifie-toi et prends courage? Ne t’effraie point et ne t’épouvante point, car l’Éternel, ton Dieu, est avec toi dans tout ce que tu entreprendras. » — d’après Josué 1</blockquote> <p>À une journée de voyage à l’intérieur des terres se trouvait un pays de forêts appelé Okoyong. Aucun missionnaire n’y vivait, et ses voisins avaient peur de ses habitants. Il y avait aussi des coutumes effrayantes : quand un homme important mourait, on tuait souvent d’autres personnes pour qu’elles partent avec lui.</p> <p>En 1886, la mission a accepté d’envoyer Mary là-bas, mais il a fallu beaucoup de visites pour tout préparer. « J’avais souvent une boule dans la gorge, a-t-elle écrit, et mon courage menaçait sans cesse de prendre des ailes et de s’envoler, même si personne ne s’en doutait ! »</p> <p>Le 4 août 1888, elle est partie en pirogue sous une pluie battante, avec cinq enfants de sa maison. Un jeune homme lui a dit : « Je prierai sans cesse pour vous, mais vous allez au-devant de la mort. » Il faisait presque nuit quand ils ont débarqué, et il restait six kilomètres de forêt à parcourir à pied. La forêt était noire et pleine de bruits de la nuit, et Mary avait envie de faire demi-tour et de s’enfuir. Elle a essayé de prier, mais elle n’arrivait même pas à bouger les lèvres. Elle pouvait seulement lever les yeux et dire, au fond d’elle, un seul mot : « Père ! » Cela a suffi.</p> <p>Alors la petite troupe a continué à marcher : un garçon d’environ onze ans avec une caisse sur la tête, un garçon de huit ans qui pleurait, un garçon de trois ans qui pleurait encore plus fort, une fille de cinq ans qui sanglotait, et tout à la fin, Mary, avec un bébé sur les épaules, qui chantait des chansons rigolotes pour leur redonner courage.</p> <p>Le village d’Ekenge était silencieux, parce que tout le monde était parti à un enterrement. Les porteurs ne voulaient pas monter les bagages ce soir-là, alors Mary est retournée elle-même à travers la forêt noire, sans chaussures, en tombant encore et encore. Un garçon a couru derrière elle pour qu’elle ne soit pas seule. À minuit, les bagages étaient arrivés. Ses pieds étaient si blessés qu’elle n’a pas pu mettre de chaussures pendant six semaines. Son premier dimanche là-bas a été un des jours les plus tristes de sa vie. Mais elle est restée.</p> <p>Quand tu as trop peur pour prier, un seul mot suffit. Tu peux simplement dire : « Père ! » et Dieu t’entend.</p> <p><em>Cher Dieu, quand j’ai peur, aide-moi à me souvenir que tu es avec moi partout où je vais. Merci de toujours m’entendre. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quelle prière d’un seul mot Mary a-t-elle faite dans la forêt sombre ?",
+    "answer": "« Père ! » Elle avait trop peur pour dire autre chose, et cela a suffi."
+   },
+   {
+    "question": "Pourquoi Mary est-elle retournée à travers la forêt cette nuit-là ?",
+    "answer": "Les porteurs ne voulaient pas monter les bagages, et les enfants n’avaient ni nourriture ni vêtements secs, alors elle est retournée elle-même chercher les charges."
+   },
+   {
+    "question": "Quand pourrais-tu faire la prière d’un seul mot de Mary ?",
+    "answer": "Toute réponse sincère convient ici. Ce que nous apprend ce chapitre : quand nous avons trop peur pour dire grand-chose, un seul mot comme « Père ! » est une vraie prière, et Dieu l’entend."
+   }
+  ],
+  "body_text": "« Ne t’ai-je pas donné cet ordre: Fortifie-toi et prends courage? Ne t’effraie point et ne t’épouvante point, car l’Éternel, ton Dieu, est avec toi dans tout ce que tu entreprendras. » — d’après Josué 1 À une journée de voyage à l’intérieur des terres se trouvait un pays de forêts appelé Okoyong. Aucun missionnaire n’y vivait, et ses voisins avaient peur de ses habitants. Il y avait aussi des coutumes effrayantes : quand un homme important mourait, on tuait souvent d’autres personnes pour qu’elles partent avec lui. En 1886, la mission a accepté d’envoyer Mary là-bas, mais il a fallu beaucoup de visites pour tout préparer. « J’avais souvent une boule dans la gorge, a-t-elle écrit, et mon courage menaçait sans cesse de prendre des ailes et de s’envoler, même si personne ne s’en doutait ! » Le 4 août 1888, elle est partie en pirogue sous une pluie battante, avec cinq enfants de sa maison. Un jeune homme lui a dit : « Je prierai sans cesse pour vous, mais vous allez au-devant de la mort. » Il faisait presque nuit quand ils ont débarqué, et il restait six kilomètres de forêt à parcourir à pied. La forêt était noire et pleine de bruits de la nuit, et Mary avait envie de faire demi-tour et de s’enfuir. Elle a essayé de prier, mais elle n’arrivait même pas à bouger les lèvres. Elle pouvait seulement lever les yeux et dire, au fond d’elle, un seul mot : « Père ! » Cela a suffi. Alors la petite troupe a continué à marcher : un garçon d’environ onze ans avec une caisse sur la tête, un garçon de huit ans qui pleurait, un garçon de trois ans qui pleurait encore plus fort, une fille de cinq ans qui sanglotait, et tout à la fin, Mary, avec un bébé sur les épaules, qui chantait des chansons rigolotes pour leur redonner courage. Le village d’Ekenge était silencieux, parce que tout le monde était parti à un enterrement. Les porteurs ne voulaient pas monter les bagages ce soir-là, alors Mary est retournée elle-même à travers la forêt noire, sans chaussures, en tombant encore et encore. Un garçon a couru derrière elle pour qu’elle ne soit pas seule. À minuit, les bagages étaient arrivés. Ses pieds étaient si blessés qu’elle n’a pas pu mettre de chaussures pendant six semaines. Son premier dimanche là-bas a été un des jours les plus tristes de sa vie. Mais elle est restée. Quand tu as trop peur pour prier, un seul mot suffit. Tu peux simplement dire : « Père ! » et Dieu t’entend. Cher Dieu, quand j’ai peur, aide-moi à me souvenir que tu es avec moi partout où je vais. Merci de toujours m’entendre. Amen.",
+  "word_count": 460
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "fr"
+  ],
+  "order": 7,
+  "title": "Une amie secrète",
+  "body_html": "<blockquote>« L’ami aime en tout temps. » — d’après Proverbes 17</blockquote> <p>Au début, Mary a vécu dans une seule petite pièce, dans la cour d’Edem, le chef d’Ekenge. Elle la partageait avec les cinq enfants. De l’autre côté du mur, il y avait deux vaches, et il y avait des chèvres, des rats et des cafards partout !</p> <p>À Okoyong, on trouvait très impoli de laisser un invité tout seul. Alors les femmes du chef et leurs visiteuses tenaient compagnie à Mary toute la journée. Mary rêvait d’un endroit tranquille pour prier à voix haute. Alors elle a pris un grand couteau qu’on appelle une machette, elle est allée dans les buissons et elle a coupé les plantes en priant de toutes ses forces, pendant que le bruit des coups couvrait sa voix !</p> <p>La personne qui a rendu ces mois supportables, c’était la sœur du chef, Eme Ete. Tout le monde l’appelait Ma Eme. C’était une grande et forte femme qui parlait durement dans la cour, mais sa voix devenait douce quand elle parlait à Mary et aux enfants. Elle apportait à manger à Mary et prenait soin d’elle.</p> <p>Ma Eme avait un secret. Personne ne savait qu’elle aidait Mary. Quand elle apprenait que quelqu’un avait été accusé de sorcellerie, ou qu’on allait faire du mal à quelqu’un ou le tuer, elle trouvait un moyen de prévenir Mary, même si cela mettait sa propre vie en danger. Plus tard, elles ont inventé un signal. Si Ma Eme envoyait à Mary une certaine bouteille, en demandant un médicament, cela voulait dire : « Sois prête ! Quelqu’un a besoin d’aide. » Les chefs ont commencé à croire que Mary pouvait lire dans leurs pensées. En réalité, c’était bien souvent Ma Eme !</p> <p>Leur amitié a duré vingt-cinq ans. Ma Eme n’est jamais devenue chrétienne, et cela rendait Mary très triste. Mais Mary n’a jamais oublié sa bonté. Elle l’appelait « ma chère vieille amie, presque ma sœur », et elle disait que « c’est elle qui, si souvent, a rendu possible de sauver des vies dans les premiers temps ».</p> <p>Dieu nous envoie souvent des amis pour nous aider, parfois des personnes auxquelles on ne s’attendrait jamais. Et il veut que toi aussi, tu sois un ami courageux et gentil pour les autres.</p> <p><em>Cher Dieu, merci pour mes amis. Aide-moi à être un ami gentil et fidèle, et à défendre ceux qui sont en difficulté. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Comment Mary a-t-elle trouvé un moyen de prier à voix haute alors qu’on ne la laissait jamais seule ?",
+    "answer": "Elle est allée dans les buissons avec une machette et a coupé les plantes, en priant fort pendant que le bruit des coups couvrait sa voix."
+   },
+   {
+    "question": "Quel était le signal secret entre Mary et Ma Eme ?",
+    "answer": "Ma Eme envoyait une certaine bouteille en demandant un médicament. Cela voulait dire que quelqu’un était en danger et que Mary devait être prête à aider."
+   },
+   {
+    "question": "Qui est un bon ami pour toi, et comment peux-tu être un bon ami pour quelqu’un d’autre ?",
+    "answer": "Toute réponse sincère convient ici. Ce que nous apprend ce chapitre : Dieu nous donne des amis, parfois des amis auxquels on ne s’attend pas, et il veut que nous soyons, nous aussi, des amis gentils et fidèles."
+   }
+  ],
+  "body_text": "« L’ami aime en tout temps. » — d’après Proverbes 17 Au début, Mary a vécu dans une seule petite pièce, dans la cour d’Edem, le chef d’Ekenge. Elle la partageait avec les cinq enfants. De l’autre côté du mur, il y avait deux vaches, et il y avait des chèvres, des rats et des cafards partout ! À Okoyong, on trouvait très impoli de laisser un invité tout seul. Alors les femmes du chef et leurs visiteuses tenaient compagnie à Mary toute la journée. Mary rêvait d’un endroit tranquille pour prier à voix haute. Alors elle a pris un grand couteau qu’on appelle une machette, elle est allée dans les buissons et elle a coupé les plantes en priant de toutes ses forces, pendant que le bruit des coups couvrait sa voix ! La personne qui a rendu ces mois supportables, c’était la sœur du chef, Eme Ete. Tout le monde l’appelait Ma Eme. C’était une grande et forte femme qui parlait durement dans la cour, mais sa voix devenait douce quand elle parlait à Mary et aux enfants. Elle apportait à manger à Mary et prenait soin d’elle. Ma Eme avait un secret. Personne ne savait qu’elle aidait Mary. Quand elle apprenait que quelqu’un avait été accusé de sorcellerie, ou qu’on allait faire du mal à quelqu’un ou le tuer, elle trouvait un moyen de prévenir Mary, même si cela mettait sa propre vie en danger. Plus tard, elles ont inventé un signal. Si Ma Eme envoyait à Mary une certaine bouteille, en demandant un médicament, cela voulait dire : « Sois prête ! Quelqu’un a besoin d’aide. » Les chefs ont commencé à croire que Mary pouvait lire dans leurs pensées. En réalité, c’était bien souvent Ma Eme ! Leur amitié a duré vingt-cinq ans. Ma Eme n’est jamais devenue chrétienne, et cela rendait Mary très triste. Mais Mary n’a jamais oublié sa bonté. Elle l’appelait « ma chère vieille amie, presque ma sœur », et elle disait que « c’est elle qui, si souvent, a rendu possible de sauver des vies dans les premiers temps ». Dieu nous envoie souvent des amis pour nous aider, parfois des personnes auxquelles on ne s’attendrait jamais. Et il veut que toi aussi, tu sois un ami courageux et gentil pour les autres. Cher Dieu, merci pour mes amis. Aide-moi à être un ami gentil et fidèle, et à défendre ceux qui sont en difficulté. Amen.",
+  "word_count": 406
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "fr"
+  ],
+  "order": 8,
+  "title": "« Cours ! »",
+  "body_html": "<blockquote>« Sauvez le misérable et l’indigent, Délivrez-les de la main des méchants. » — d’après Psaume 82</blockquote> <p>Vers 1889, un charpentier écossais plein de bonne humeur, qui s’appelait Charles Ovens, est venu construire une maison pour Mary. Pendant qu’il était là, une chose terrible est arrivée. Etim, le fils aîné du chef Edem, a été frappé au cou par une lourde bûche. Mary l’a soigné pendant deux semaines, mais il est mort.</p> <p>À Okoyong, les gens croyaient qu’une mort comme celle-là devait être causée par la sorcellerie. Un sorcier a accusé un village voisin, et des hommes armés ont ramené plus d’une douzaine d’hommes et de femmes enchaînés. On allait les forcer à boire du poison.</p> <p>Pour consoler la famille en deuil, Mary a habillé Etim de soie pour son enterrement, comme il convenait au fils d’un chef. Ensuite, elle et M. Ovens se sont relayés pour rester assis près des prisonniers, jour et nuit, pour qu’ils ne soient jamais laissés seuls. Une fois, M. Ovens a voulu les libérer lui-même, mais Mary a dit : « Non, non. Prenons encore un peu patience. »</p> <p>Puis Mary a vu des fèves empoisonnées posées sur une pierre. Elle est allée dans sa case et elle a prié. Quand elle s’est relevée, sa peur avait disparu. Elle a dit aux chefs qu’il ne devait y avoir aucune mise à mort, et elle s’est assise à l’entrée de la cour et n’a plus voulu bouger.</p> <p>Cette nuit-là, des hommes ont emmené une des femmes pour lui faire boire le poison. Juste au moment où elle levait le verre, Mary lui a touché l’épaule et a chuchoté : « Ifehe ! » Cela veut dire : « Cours ! » Toutes les deux ont couru ensemble dans la brousse, jusqu’à la maison de Mary.</p> <p>Petit à petit, les chefs ont laissé partir les prisonniers. Ma Eme s’est agenouillée devant son frère et l’a supplié de laisser une des dernières femmes rester, toujours enchaînée, à la case de Mary. Quand Etim a été enterré, personne n’a été tué pour partir avec lui. Plus tard, le chef Edem s’est agenouillé et a remercié Mary. « Nous sommes tous fatigués des vieilles coutumes », lui a-t-il dit. Mais personne ne pouvait les briser tout seul.</p> <p>Parfois, être courageux, c’est rester sur place et dire non. Dieu peut te donner le courage de défendre quelqu’un qui est en danger.</p> <p><em>Cher Dieu, s’il te plaît, donne-moi le courage de défendre ceux à qui on fait du mal, et aide-moi à te faire confiance quand j’ai peur. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’a fait Mary quand elle a vu les fèves empoisonnées ?",
+    "answer": "Elle est allée dans sa case et a prié, et sa peur s’en est allée. Ensuite, elle a dit aux chefs qu’il ne devait y avoir aucune mise à mort, et elle s’est assise à l’entrée de la cour et n’a plus voulu bouger."
+   },
+   {
+    "question": "Que veut dire « Ifehe ! », et pourquoi Mary l’a-t-elle chuchoté ?",
+    "answer": "Cela veut dire « Cours ! ». Mary l’a chuchoté à une femme qui allait boire le poison, et toutes les deux ont couru ensemble jusqu’à la maison de Mary."
+   },
+   {
+    "question": "Te souviens-tu d’un moment où quelqu’un avait besoin que tu le défendes ?",
+    "answer": "Toute réponse sincère convient ici. Ce que nous apprend ce chapitre : Dieu peut nous donner le courage de dire non à ce qui est mal et de rester aux côtés de ceux qui sont en danger."
+   }
+  ],
+  "body_text": "« Sauvez le misérable et l’indigent, Délivrez-les de la main des méchants. » — d’après Psaume 82 Vers 1889, un charpentier écossais plein de bonne humeur, qui s’appelait Charles Ovens, est venu construire une maison pour Mary. Pendant qu’il était là, une chose terrible est arrivée. Etim, le fils aîné du chef Edem, a été frappé au cou par une lourde bûche. Mary l’a soigné pendant deux semaines, mais il est mort. À Okoyong, les gens croyaient qu’une mort comme celle-là devait être causée par la sorcellerie. Un sorcier a accusé un village voisin, et des hommes armés ont ramené plus d’une douzaine d’hommes et de femmes enchaînés. On allait les forcer à boire du poison. Pour consoler la famille en deuil, Mary a habillé Etim de soie pour son enterrement, comme il convenait au fils d’un chef. Ensuite, elle et M. Ovens se sont relayés pour rester assis près des prisonniers, jour et nuit, pour qu’ils ne soient jamais laissés seuls. Une fois, M. Ovens a voulu les libérer lui-même, mais Mary a dit : « Non, non. Prenons encore un peu patience. » Puis Mary a vu des fèves empoisonnées posées sur une pierre. Elle est allée dans sa case et elle a prié. Quand elle s’est relevée, sa peur avait disparu. Elle a dit aux chefs qu’il ne devait y avoir aucune mise à mort, et elle s’est assise à l’entrée de la cour et n’a plus voulu bouger. Cette nuit-là, des hommes ont emmené une des femmes pour lui faire boire le poison. Juste au moment où elle levait le verre, Mary lui a touché l’épaule et a chuchoté : « Ifehe ! » Cela veut dire : « Cours ! » Toutes les deux ont couru ensemble dans la brousse, jusqu’à la maison de Mary. Petit à petit, les chefs ont laissé partir les prisonniers. Ma Eme s’est agenouillée devant son frère et l’a supplié de laisser une des dernières femmes rester, toujours enchaînée, à la case de Mary. Quand Etim a été enterré, personne n’a été tué pour partir avec lui. Plus tard, le chef Edem s’est agenouillé et a remercié Mary. « Nous sommes tous fatigués des vieilles coutumes », lui a-t-il dit. Mais personne ne pouvait les briser tout seul. Parfois, être courageux, c’est rester sur place et dire non. Dieu peut te donner le courage de défendre quelqu’un qui est en danger. Cher Dieu, s’il te plaît, donne-moi le courage de défendre ceux à qui on fait du mal, et aide-moi à te faire confiance quand j’ai peur. Amen.",
+  "word_count": 428
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "fr"
+  ],
+  "order": 9,
+  "title": "Susie",
+  "body_html": "<blockquote>« Il prendra les agneaux dans ses bras, Et les portera dans son sein. » — d’après Ésaïe 40</blockquote> <p>La maison de Mary est devenue un endroit sûr pour les bébés. Certains étaient malades, d’autres n’étaient pas désirés, et d’autres avaient été trouvés tout seuls dans la forêt. Malheureusement, beaucoup étaient trop faibles, et ils sont morts. Mary couchait chacun d’eux dans une petite boîte, au milieu des fleurs, et l’enterrait avec une prière. Elle a pleuré pour chacun d’eux.</p> <p>Un jour, une esclave qui s’appelait Iye a mis au monde des jumeaux. À cause de la vieille peur, les gens ont déchiré ses vêtements, cassé les bassines auxquelles elle tenait tant, et l’ont chassée du village. Ils ont entassé les bébés dans une boîte vide et la lui ont mise sur la tête. Quand Mary l’a appris, elle a couru pieds nus sur le sentier de la forêt pour aller à sa rencontre, et elle a porté la boîte elle-même, parce que personne d’autre ne voulait y toucher. Puis elle est restée debout sous le soleil brûlant pendant que les gens taillaient un tout nouveau sentier, tout droit jusqu’à sa maison, pour qu’Iye n’ait pas à passer par le chemin du village.</p> <p>Le petit garçon avait été trop gravement blessé, et il était déjà mort. Mais la petite fille a vécu. Mary l’a appelée Susie, comme sa propre sœur. Susie est devenue le trésor de la maison. À quatorze mois, elle a eu un grave accident avec de l’eau bouillante. Pendant treize jours et treize nuits, Mary ne l’a presque pas posée. Dans le noir, Mary entendait une toute petite voix qui disait : « Mem, Mem, Mem », et une petite main se tendait pour avoir un bisou. Tôt un dimanche matin, Susie est morte dans les bras de Mary. « Oh, Susie, Susie ! » a écrit Mary.</p> <p>Mais quelque chose de merveilleux est arrivé. Le village s’est rassemblé autour de la tombe d’une jumelle, justement ce qu’on fuyait autrefois, et une femme de la vieille religion s’est levée et a loué le Dieu de Mary pour cette enfant. Mary avait toujours refusé d’acheter des esclaves, mais elle a payé dix livres pour rendre Iye libre. Des années plus tard, Iye a été baptisée.</p> <p>Jésus est comme un berger qui porte ses petits agneaux dans ses bras. Tu n’es jamais trop petit pour qu’il t’aime et te porte.</p> <p><em>Cher Jésus, merci de me porter tout près de ton cœur. S’il te plaît, prends soin des bébés et des enfants qui sont malades ou seuls. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi Mary a-t-elle porté elle-même la boîte avec les bébés jumeaux ?",
+    "answer": "Parce que tout le monde avait peur des jumeaux et que personne d’autre ne voulait y toucher."
+   },
+   {
+    "question": "Qu’a fait Mary pour Iye après la mort de Susie ?",
+    "answer": "Mary avait toujours refusé d’acheter des esclaves, mais elle a payé dix livres pour rendre Iye libre. Des années plus tard, Iye a été baptisée."
+   },
+   {
+    "question": "Qu’est-ce que cela te fait de savoir que Jésus te porte comme un petit agneau ?",
+    "answer": "Toute réponse sincère convient ici. Ce que nous apprend ce chapitre : Jésus est comme un berger qui porte ses agneaux tout près de son cœur, et personne n’est trop petit pour son amour."
+   }
+  ],
+  "body_text": "« Il prendra les agneaux dans ses bras, Et les portera dans son sein. » — d’après Ésaïe 40 La maison de Mary est devenue un endroit sûr pour les bébés. Certains étaient malades, d’autres n’étaient pas désirés, et d’autres avaient été trouvés tout seuls dans la forêt. Malheureusement, beaucoup étaient trop faibles, et ils sont morts. Mary couchait chacun d’eux dans une petite boîte, au milieu des fleurs, et l’enterrait avec une prière. Elle a pleuré pour chacun d’eux. Un jour, une esclave qui s’appelait Iye a mis au monde des jumeaux. À cause de la vieille peur, les gens ont déchiré ses vêtements, cassé les bassines auxquelles elle tenait tant, et l’ont chassée du village. Ils ont entassé les bébés dans une boîte vide et la lui ont mise sur la tête. Quand Mary l’a appris, elle a couru pieds nus sur le sentier de la forêt pour aller à sa rencontre, et elle a porté la boîte elle-même, parce que personne d’autre ne voulait y toucher. Puis elle est restée debout sous le soleil brûlant pendant que les gens taillaient un tout nouveau sentier, tout droit jusqu’à sa maison, pour qu’Iye n’ait pas à passer par le chemin du village. Le petit garçon avait été trop gravement blessé, et il était déjà mort. Mais la petite fille a vécu. Mary l’a appelée Susie, comme sa propre sœur. Susie est devenue le trésor de la maison. À quatorze mois, elle a eu un grave accident avec de l’eau bouillante. Pendant treize jours et treize nuits, Mary ne l’a presque pas posée. Dans le noir, Mary entendait une toute petite voix qui disait : « Mem, Mem, Mem », et une petite main se tendait pour avoir un bisou. Tôt un dimanche matin, Susie est morte dans les bras de Mary. « Oh, Susie, Susie ! » a écrit Mary. Mais quelque chose de merveilleux est arrivé. Le village s’est rassemblé autour de la tombe d’une jumelle, justement ce qu’on fuyait autrefois, et une femme de la vieille religion s’est levée et a loué le Dieu de Mary pour cette enfant. Mary avait toujours refusé d’acheter des esclaves, mais elle a payé dix livres pour rendre Iye libre. Des années plus tard, Iye a été baptisée. Jésus est comme un berger qui porte ses petits agneaux dans ses bras. Tu n’es jamais trop petit pour qu’il t’aime et te porte. Cher Jésus, merci de me porter tout près de ton cœur. S’il te plaît, prends soin des bébés et des enfants qui sont malades ou seuls. Amen.",
+  "word_count": 428
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "fr"
+  ],
+  "order": 10,
+  "title": "Le Dieu de la femme",
+  "body_html": "<blockquote>« Heureux ceux qui procurent la paix, car ils seront appelés fils de Dieu! » — d’après Matthieu 5</blockquote> <p>Peu après son arrivée à Ekenge, un message est venu d’un village à huit heures de marche. Leur chef était très malade, et s’il mourait, on tuerait des gens de sa maison. Ils suppliaient la Ma blanche de venir.</p> <p>Le chef Edem et Ma Eme ont dit que c’était trop loin, mais Mary est partie avec un groupe de femmes. Il pleuvait à verse. Elle a d’abord perdu ses chaussures, puis ses bas, puis son parapluie cassé ! Trempée jusqu’aux os, elle a aussi enlevé la plupart de ses vêtements, et les femmes les ont portés sur leur tête dans de grandes bassines. Mary se sentait très ridicule. Mais plus tard, elle a appris que rien de ce qu’elle a jamais fait n’a gagné le cœur du peuple d’Okoyong autant que cette marche sous la pluie. Et le chef a guéri, alors personne n’a été tué.</p> <p>Quelque temps après, Mary a appris qu’une guerre allait commencer à l’aube. Elle était malade, mais elle s’est mise en route. Elle a demandé à un chef un joueur de tambour pour marcher devant elle. Il lui a fait répondre qu’une femme qui se mêlait d’une guerre montrait seulement combien elle en savait peu. Mary lui a renvoyé cette réponse : « En mesurant la force de la femme, vous avez visiblement oublié de compter avec le Dieu de la femme. »</p> <p>Au village ennemi, un mur silencieux d’hommes armés attendait. Puis un vieil homme s’est avancé et s’est agenouillé aux pieds de Mary, en lui demandant de les aider à faire la paix. C’était le chef qu’elle était allée aider sous la pluie ! Cela a pris toute la journée, mais à la fin, ils se sont mis d’accord sur une amende au lieu d’une guerre.</p> <p>Après cela, les gens ont souvent demandé à Ma de régler leurs disputes. Elle s’asseyait au milieu de tous les cris et tricotait tranquillement. Elle disait que cela l’empêchait de montrer qu’elle avait peur, et le cliquetis des aiguilles calmait tout le monde.</p> <p>Faire la paix, c’est l’œuvre de Dieu. Quand tu aides des gens à arrêter de se disputer et à redevenir amis, tu agis comme un des enfants de Dieu, exactement comme Jésus l’a dit.</p> <p><em>Cher Dieu, s’il te plaît, fais de moi quelqu’un qui apporte la paix. Quand les gens autour de moi sont en colère, aide-moi à rester calme et gentil, et à les aider à redevenir amis. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-il arrivé aux vêtements de Mary pendant sa marche sous la pluie ?",
+    "answer": "Elle a perdu ses chaussures, ses bas et son parapluie cassé, et les femmes ont porté la plupart de ses vêtements sur leur tête dans de grandes bassines."
+   },
+   {
+    "question": "Qui s’est avancé hors de la rangée d’hommes armés et s’est agenouillé aux pieds de Mary ?",
+    "answer": "Le vieux chef qu’elle était allée aider sous la pluie quand il était malade. Il lui a demandé de les aider à faire la paix."
+   },
+   {
+    "question": "Comment pourrais-tu apporter la paix à la maison ou à l’école ?",
+    "answer": "Toute réponse sincère convient ici. Ce que nous apprend ce chapitre : Jésus appelle enfants de Dieu ceux qui procurent la paix, et nous pouvons aider les gens à arrêter de se disputer et à redevenir amis."
+   }
+  ],
+  "body_text": "« Heureux ceux qui procurent la paix, car ils seront appelés fils de Dieu! » — d’après Matthieu 5 Peu après son arrivée à Ekenge, un message est venu d’un village à huit heures de marche. Leur chef était très malade, et s’il mourait, on tuerait des gens de sa maison. Ils suppliaient la Ma blanche de venir. Le chef Edem et Ma Eme ont dit que c’était trop loin, mais Mary est partie avec un groupe de femmes. Il pleuvait à verse. Elle a d’abord perdu ses chaussures, puis ses bas, puis son parapluie cassé ! Trempée jusqu’aux os, elle a aussi enlevé la plupart de ses vêtements, et les femmes les ont portés sur leur tête dans de grandes bassines. Mary se sentait très ridicule. Mais plus tard, elle a appris que rien de ce qu’elle a jamais fait n’a gagné le cœur du peuple d’Okoyong autant que cette marche sous la pluie. Et le chef a guéri, alors personne n’a été tué. Quelque temps après, Mary a appris qu’une guerre allait commencer à l’aube. Elle était malade, mais elle s’est mise en route. Elle a demandé à un chef un joueur de tambour pour marcher devant elle. Il lui a fait répondre qu’une femme qui se mêlait d’une guerre montrait seulement combien elle en savait peu. Mary lui a renvoyé cette réponse : « En mesurant la force de la femme, vous avez visiblement oublié de compter avec le Dieu de la femme. » Au village ennemi, un mur silencieux d’hommes armés attendait. Puis un vieil homme s’est avancé et s’est agenouillé aux pieds de Mary, en lui demandant de les aider à faire la paix. C’était le chef qu’elle était allée aider sous la pluie ! Cela a pris toute la journée, mais à la fin, ils se sont mis d’accord sur une amende au lieu d’une guerre. Après cela, les gens ont souvent demandé à Ma de régler leurs disputes. Elle s’asseyait au milieu de tous les cris et tricotait tranquillement. Elle disait que cela l’empêchait de montrer qu’elle avait peur, et le cliquetis des aiguilles calmait tout le monde. Faire la paix, c’est l’œuvre de Dieu. Quand tu aides des gens à arrêter de se disputer et à redevenir amis, tu agis comme un des enfants de Dieu, exactement comme Jésus l’a dit. Cher Dieu, s’il te plaît, fais de moi quelqu’un qui apporte la paix. Quand les gens autour de moi sont en colère, aide-moi à rester calme et gentil, et à les aider à redevenir amis. Amen.",
+  "word_count": 425
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "fr"
+  ],
+  "order": 11,
+  "title": "La joie au matin",
+  "body_html": "<blockquote>« Le soir arrivent les pleurs, Et le matin l’allégresse. » — d’après Psaume 30</blockquote> <p>En 1896, le peuple d’Okoyong s’est installé sur de nouvelles terres, et Mary est partie avec eux, dans un endroit appelé Akpap. Pendant qu’on construisait une nouvelle maison, elle a vécu dans une cabane de deux pièces, sans plancher.</p> <p>Puis une maladie s’est répandue dans sa maison, et quatre de ses enfants sont morts. Peu après, une terrible maladie appelée la variole a balayé le pays. Mary passait des heures chaque jour à vacciner les gens pour les protéger, et elle a transformé son ancienne maison d’Ekenge en hôpital. Presque tous les autres se sont enfuis.</p> <p>Puis le chef Edem, qui l’avait accueillie huit ans plus tôt, a attrapé la variole. Mary l’a soigné jour et nuit, mais il est mort au milieu de la nuit. Il n’y avait personne pour l’aider. Alors Mary a fabriqué un cercueil de ses propres mains, a creusé une tombe et a enterré son vieil ami. Puis elle est rentrée à Akpap à travers la forêt sombre et mouillée, au moment où le soleil se levait.</p> <p>Pendant un temps, Mary n’avait plus le cœur à rien. Pendant trois ans, elle a travaillé seule, souvent malade et sans pouvoir dormir. « Tout est sombre, a-t-elle écrit, sauf en haut. Le Calvaire tient bon, solide et sûr. » Le Calvaire, c’est l’endroit où Jésus est mort pour nous. Année après année, personne n’a été baptisé. Mais Mary disait : « Christ m’a envoyée prêcher l’Évangile, et c’est lui qui s’occupera des résultats. »</p> <p>Et enfin, le matin est venu. En août 1903, quinze ans après que Mary était entrée pour la première fois à Okoyong, sept jeunes gens y ont été baptisés. Mary a aussi amené onze enfants pour être baptisés, et six d’entre eux étaient des enfants qu’elle avait sauvés. Ensuite, tout le monde a chanté le Psaume 103 en langue efik. Il loue le Dieu « qui délivre ta vie de la fosse », ce qui veut dire qu’il sauve nos vies. Mary avait vu beaucoup de vies arrachées à Okoyong. Maintenant, son peuple chantait un Dieu qui sauve, et ses yeux se sont remplis de larmes.</p> <p>Parfois, nous devons attendre longtemps pour voir arriver de bonnes choses. Mais Dieu est à l’œuvre même dans le noir, et la joie vient au matin.</p> <p><em>Cher Dieu, quand j’ai des jours tristes, aide-moi à me souvenir que tu es toujours avec moi. Merci parce que la joie vient au matin. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’a fait Mary quand le chef Edem est mort de la variole ?",
+    "answer": "Il n’y avait personne pour l’aider, alors elle a fabriqué un cercueil de ses propres mains, a creusé une tombe et l’a enterré, puis elle est rentrée à travers la forêt au lever du soleil."
+   },
+   {
+    "question": "Que s’est-il passé à Okoyong en août 1903 ?",
+    "answer": "Sept jeunes gens et onze enfants ont été baptisés, dont six enfants que Mary avait sauvés, et tout le monde a chanté le Psaume 103 en efik."
+   },
+   {
+    "question": "Quelle bonne chose attends-tu, en priant pour elle ?",
+    "answer": "Toute réponse sincère convient ici. Ce que nous apprend ce chapitre : Dieu est à l’œuvre même quand nous ne le voyons pas, et la joie vient au matin."
+   }
+  ],
+  "body_text": "« Le soir arrivent les pleurs, Et le matin l’allégresse. » — d’après Psaume 30 En 1896, le peuple d’Okoyong s’est installé sur de nouvelles terres, et Mary est partie avec eux, dans un endroit appelé Akpap. Pendant qu’on construisait une nouvelle maison, elle a vécu dans une cabane de deux pièces, sans plancher. Puis une maladie s’est répandue dans sa maison, et quatre de ses enfants sont morts. Peu après, une terrible maladie appelée la variole a balayé le pays. Mary passait des heures chaque jour à vacciner les gens pour les protéger, et elle a transformé son ancienne maison d’Ekenge en hôpital. Presque tous les autres se sont enfuis. Puis le chef Edem, qui l’avait accueillie huit ans plus tôt, a attrapé la variole. Mary l’a soigné jour et nuit, mais il est mort au milieu de la nuit. Il n’y avait personne pour l’aider. Alors Mary a fabriqué un cercueil de ses propres mains, a creusé une tombe et a enterré son vieil ami. Puis elle est rentrée à Akpap à travers la forêt sombre et mouillée, au moment où le soleil se levait. Pendant un temps, Mary n’avait plus le cœur à rien. Pendant trois ans, elle a travaillé seule, souvent malade et sans pouvoir dormir. « Tout est sombre, a-t-elle écrit, sauf en haut. Le Calvaire tient bon, solide et sûr. » Le Calvaire, c’est l’endroit où Jésus est mort pour nous. Année après année, personne n’a été baptisé. Mais Mary disait : « Christ m’a envoyée prêcher l’Évangile, et c’est lui qui s’occupera des résultats. » Et enfin, le matin est venu. En août 1903, quinze ans après que Mary était entrée pour la première fois à Okoyong, sept jeunes gens y ont été baptisés. Mary a aussi amené onze enfants pour être baptisés, et six d’entre eux étaient des enfants qu’elle avait sauvés. Ensuite, tout le monde a chanté le Psaume 103 en langue efik. Il loue le Dieu « qui délivre ta vie de la fosse », ce qui veut dire qu’il sauve nos vies. Mary avait vu beaucoup de vies arrachées à Okoyong. Maintenant, son peuple chantait un Dieu qui sauve, et ses yeux se sont remplis de larmes. Parfois, nous devons attendre longtemps pour voir arriver de bonnes choses. Mais Dieu est à l’œuvre même dans le noir, et la joie vient au matin. Cher Dieu, quand j’ai des jours tristes, aide-moi à me souvenir que tu es toujours avec moi. Merci parce que la joie vient au matin. Amen.",
+  "word_count": 420
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "fr"
+  ],
+  "order": 12,
+  "title": "À l’abri",
+  "body_html": "<blockquote>« Ma grâce te suffit, car ma puissance s’accomplit dans la faiblesse. » — d’après 2 Corinthiens 12</blockquote> <p>En 1903, Mary a emmené deux garçons, Esien et Effiom, et une fille qui s’appelait Mana à Itu, un ancien marché aux esclaves au bord du fleuve. Mana avait elle-même été enlevée autrefois et vendue comme esclave. Mary les a laissés tous les trois là-bas pour enseigner. En quelques mois, plus de trois cents personnes venaient à une église qu’ils avaient construite eux-mêmes, et Mana avait enseigné les femmes d’Itu comme une maman.</p> <p>Mary posait aussi elle-même des sols en ciment. « Je le remue comme de la bouillie, disait-elle, je le verse, je le lisse avec un bâton, et pendant tout ce temps, je continue de prier : “Seigneur, voici le ciment ; si c’est pour ta gloire, fais-le prendre.” Et cela n’a jamais raté une seule fois. »</p> <p>Mary avait maintenant plus de soixante ans, et ses garçons la poussaient à travers la brousse dans un fauteuil en osier monté sur roues. Quand son église n’a envoyé personne dans une ville appelée Ikpe, elle a dit : « Il faut que j’y aille », et elle y est allée. Plus tard, elle a dit : « Je commence chaque journée, presque chaque voyage, dans la douleur, et si fatiguée que je suis sûre de ne pas pouvoir continuer ; et chaque fois que je commence, la force vient, et elle grandit. »</p> <p>En janvier 1915, Mary est tombée très malade. Tôt le matin du 13 janvier, dans un endroit appelé Use, avec à ses côtés les filles qu’elle avait élevées, elle est morte. Des gens sont venus de partout pour pleurer Eka kpukpru owo, ce qui veut dire « la Mère de tout le monde ». Elle a été enterrée sur la colline au-dessus de Duke Town, là où elle avait débarqué pour la première fois trente-neuf ans plus tôt.</p> <p>Près de sa tombe était assise Maman Fuller, une amie jamaïcaine qui la connaissait depuis ses premiers jours à Calabar. Quand des femmes ont commencé à se lamenter, Maman Fuller s’est levée. « Ne pleurez pas, ne pleurez pas, a-t-elle dit. Louez Dieu, de qui viennent toutes les bénédictions. Ma a été une grande bénédiction. » Pendant qu’on descendait le cercueil, elle a dit un seul mot : « À l’abri. »</p> <p>Mary n’a jamais été forte. Mais Dieu lui a donné de la force pour chaque jour, et il fera la même chose pour toi.</p> <p><em>Cher Dieu, merci pour Mary Slessor et pour tous les enfants qu’elle a aimés. Quand je me sens faible, s’il te plaît, donne-moi de la force pour chaque jour, et garde-moi à l’abri près de toi pour toujours. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qui a commencé l’église d’Itu ?",
+    "answer": "Mary a laissé là-bas deux garçons, Esien et Effiom, et une fille qui s’appelait Mana. Mana avait autrefois été vendue comme esclave, et elle a enseigné les femmes d’Itu comme une maman."
+   },
+   {
+    "question": "Quel seul mot Maman Fuller a-t-elle dit près de la tombe de Mary ?",
+    "answer": "« À l’abri. » Mary, que les gens appelaient « la Mère de tout le monde », était enfin à l’abri auprès de Dieu."
+   },
+   {
+    "question": "Quand te sens-tu faible ou fatigué, et comment pourrais-tu demander de la force à Dieu ?",
+    "answer": "Toute réponse sincère convient ici. Ce que nous apprend ce chapitre : Mary n’a jamais été forte, mais Dieu lui donnait de la force pour chaque jour au moment où elle commençait, et il fera la même chose pour toi."
+   }
+  ],
+  "body_text": "« Ma grâce te suffit, car ma puissance s’accomplit dans la faiblesse. » — d’après 2 Corinthiens 12 En 1903, Mary a emmené deux garçons, Esien et Effiom, et une fille qui s’appelait Mana à Itu, un ancien marché aux esclaves au bord du fleuve. Mana avait elle-même été enlevée autrefois et vendue comme esclave. Mary les a laissés tous les trois là-bas pour enseigner. En quelques mois, plus de trois cents personnes venaient à une église qu’ils avaient construite eux-mêmes, et Mana avait enseigné les femmes d’Itu comme une maman. Mary posait aussi elle-même des sols en ciment. « Je le remue comme de la bouillie, disait-elle, je le verse, je le lisse avec un bâton, et pendant tout ce temps, je continue de prier : “Seigneur, voici le ciment ; si c’est pour ta gloire, fais-le prendre.” Et cela n’a jamais raté une seule fois. » Mary avait maintenant plus de soixante ans, et ses garçons la poussaient à travers la brousse dans un fauteuil en osier monté sur roues. Quand son église n’a envoyé personne dans une ville appelée Ikpe, elle a dit : « Il faut que j’y aille », et elle y est allée. Plus tard, elle a dit : « Je commence chaque journée, presque chaque voyage, dans la douleur, et si fatiguée que je suis sûre de ne pas pouvoir continuer ; et chaque fois que je commence, la force vient, et elle grandit. » En janvier 1915, Mary est tombée très malade. Tôt le matin du 13 janvier, dans un endroit appelé Use, avec à ses côtés les filles qu’elle avait élevées, elle est morte. Des gens sont venus de partout pour pleurer Eka kpukpru owo, ce qui veut dire « la Mère de tout le monde ». Elle a été enterrée sur la colline au-dessus de Duke Town, là où elle avait débarqué pour la première fois trente-neuf ans plus tôt. Près de sa tombe était assise Maman Fuller, une amie jamaïcaine qui la connaissait depuis ses premiers jours à Calabar. Quand des femmes ont commencé à se lamenter, Maman Fuller s’est levée. « Ne pleurez pas, ne pleurez pas, a-t-elle dit. Louez Dieu, de qui viennent toutes les bénédictions. Ma a été une grande bénédiction. » Pendant qu’on descendait le cercueil, elle a dit un seul mot : « À l’abri. » Mary n’a jamais été forte. Mais Dieu lui a donné de la force pour chaque jour, et il fera la même chose pour toi. Cher Dieu, merci pour Mary Slessor et pour tous les enfants qu’elle a aimés. Quand je me sens faible, s’il te plaît, donne-moi de la force pour chaque jour, et garde-moi à l’abri près de toi pour toujours. Amen.",
+  "word_count": 455
+ }
+}
+]

@@ -1,0 +1,393 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "c-s-lewis-a-life-children",
+  "language": "sw",
+  "title": "C. S. Lewis (Kwa Watoto)",
+  "subtitle": "",
+  "cover_title": "",
+  "cover_byline": "C. S. Lewis",
+  "description": "Hadithi ya kweli ya Jack Lewis, mvulana wa Belfast aliyependa vitabu, aliyefiwa na mama yake, akaacha kumwamini Mungu, akajeruhiwa vitani na kutimiza ahadi kwa miaka thelathini, mpaka Mungu alipomkuta katika matembezi kando ya mto na safari ndani ya kigari cha pembeni cha pikipiki, naye akakua akaandika Hadithi za Narnia. Toleo hili la watoto linasimulia upya maisha yake katika sura fupi zilizoandaliwa kusomwa kwa sauti: mstari wa Biblia, sehemu moja ya hadithi yake, jambo moja linalokuhusu wewe, na sala fupi, pamoja na maswali ya kuzungumza pamoja.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Kitabu C. S. Lewis (Kwa Watoto) kinahusu nini?",
+    "answer": "Ni toleo la watoto la wasifu kamili wa C. S. Lewis. Kinasimulia jinsi mvulana aitwaye Jack alivyofiwa na mama yake na kuacha kumwamini Mungu, jinsi Mungu alivyomkuta tena alipokuwa mtu mzima, na jinsi alivyotumia maisha yake yote yaliyobaki kuwaeleza watu habari za Yesu katika vitabu, kwenye redio na katika hadithi za Narnia."
+   },
+   {
+    "question": "C. S. Lewis alikuwa nani?",
+    "answer": "Alikuwa mwandishi na mwalimu aliyezaliwa Belfast mwaka 1898 na kufariki Oxford mwaka 1963. Familia yake na rafiki zake walimwita Jack. Alifundisha katika vyuo vikuu vya Oxford na Cambridge, alizungumza kuhusu imani ya Kikristo kwenye redio wakati wa Vita vya Pili vya Dunia, na aliandika vitabu vingi, vikiwemo vitabu saba vya Hadithi za Narnia."
+   },
+   {
+    "question": "Kila sura imepangwaje?",
+    "answer": "Kila sura ni fupi na imeandaliwa kusomwa kwa sauti. Inaanza na mstari wa Biblia, inasimulia sehemu moja ya hadithi ya Jack, inaonyesha jambo moja rahisi linalokuhusu wewe, na inamalizika kwa sala fupi. Kisha yanafuata maswali matatu ya kuzungumza pamoja."
+   },
+   {
+    "question": "Je, kitabu hiki kina huzuni mno kwa watoto?",
+    "answer": "Sehemu yake ina huzuni. Mama yake Jack alifariki alipokuwa na umri wa miaka tisa, yeye mwenyewe aliumizwa vitani, na mke wake Joy alifariki kwa saratani. Kitabu hakijifanyi kwamba mambo hayo hayakutokea. Lakini kinayasimulia kwa upole, kwa ajili ya watoto, na zaidi ya yote ni hadithi ya jinsi Mungu hakuacha kamwe kumtafuta Jack, akakaa naye katika siku za furaha na siku za huzuni."
+   },
+   {
+    "question": "Je, hadithi hizi ni za kweli?",
+    "answer": "Ndiyo. Zinatoka katika barua za Jack mwenyewe, shajara za kaka yake Warnie, na watu waliomfahamu. Mahali ambapo watu hawana uhakika juu ya jambo fulani, kama mwaka hasa ambao Jack alipiga magoti na kuomba kwa mara ya kwanza, kitabu kinasema hivyo. Vitabu vya Jack mwenyewe bado vina hakimiliki, kwa hiyo kitabu hiki kinasimulia hadithi yake kwa maneno yake chenyewe, wala hakisimulii upya hadithi za Narnia. Ili kuzifurahia, soma vitabu vyenyewe."
+   },
+   {
+    "question": "Kitabu hiki ni cha nani?",
+    "answer": "Ni cha watoto — kisomwe kwa sauti na mtu mzima, au kisomwe na mtoto mkubwa peke yake. Kwa Kiingereza kuna pia toleo la vijana, na wasifu kamili kwa ajili ya wasomaji wakubwa."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Usimuliaji upya wa Ochorus kwa ajili ya wasomaji wachanga wa wasifu wa Ochorus, C. S. Lewis, kutoka mfululizo wa Portraits of Courage. Usimuliaji huu ni wetu wenyewe; uko huru kusomwa na kushirikiwa.",
+  "cover_url": "/covers/art/c-s-lewis-a-life-children.jpg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/c-s-lewis-a-life-children.sw.pdf?download=c-s-lewis-a-life-children.sw.pdf",
+  "cover_color": "",
+  "series": null,
+  "series_position": null,
+  "sort_order": 153,
+  "is_published": true,
+  "created_at": "2026-10-08T00:00:00Z",
+  "updated_at": "2026-10-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "sw"
+  ],
+  "order": 1,
+  "title": "Mvulana Aitwaye Jack",
+  "body_html": "<blockquote>“Mlee mtoto katika njia impasayo, naye hataiacha, hata atakapokuwa mzee.” — kutoka Mithali 22</blockquote> <p>Tarehe 29 Novemba 1898, mtoto wa kiume alizaliwa Belfast, mji wenye shughuli nyingi na viwanda vya kujenga meli, kaskazini mwa Ireland. Wazazi wake walimpa jina Clive Staples Lewis. Baba yake, Albert, alikuwa mwanasheria aliyependa vitabu na maneno marefu. Mama yake, Flora, alikuwa mtulivu, mcheshi, na mwenye akili sana. Alikuwa amesoma chuo kikuu na kujifunza hisabati, wakati ambapo wanawake wachache sana walifanya hivyo.</p> <p>Clive alikuwa na kaka mkubwa aitwaye Warren, au Warnie, aliyemzidi kwa miaka mitatu. Clive alipokuwa bado mdogo sana, aliamua kwamba hakulipenda jina lake. Alitaka kuitwa Jacksie, kama jina la mbwa aliyeishi karibu! Hakuitika jina jingine lolote mpaka familia yake ilipokubali. Punde si punde Jacksie likawa Jack, na Jack likabaki jina lake maisha yake yote.</p> <p>Jack na Warnie walikuwa marafiki wakubwa. Siku moja Warnie aliingiza katika chumba cha watoto kifuniko cha bati la biskuti, kilichopambwa kwa majani laini ya kijani, vijiti na maua, kama bustani ndogo sana. Jack aliona kwamba hicho kilikuwa kitu kizuri kuliko vyote alivyowahi kuona. Kilimletea hamu ya ajabu na tamu, hisia ya kutamani kitu fulani asichoweza kukitaja kwa jina. Hisia hiyo ilimrudia tena na tena maisha yake yote.</p> <p>Ndugu hao wawili walibuni pamoja ulimwengu mzima wa kufikirika ulioitwa Boxen. Sehemu ya Jack ilikuwa Nchi ya Wanyama, iliyojaa wanyama waliovaa nguo na mashujaa waliovaa mavazi ya vita ya chuma.</p> <p>Jack alipokuwa na umri wa miaka sita, familia ilihamia nyumba kubwa mpya iitwayo Little Lea. Ilikuwa na korido ndefu na vyumba vya darini, na kulikuwa na vitabu karibu katika kila chumba. Mchana wa siku za mvua Jack aliizunguka nyumba ile akiichunguza, akasoma na kusoma. Hakuna mtu aliyewahi kumwambia kwamba kitabu fulani hakikuwa chake.</p> <p>Wazazi wa Jack walimpeleka kanisani na kumfundisha kuomba. Kwa muda mrefu ilionekana kana kwamba alikuwa amesahau yote hayo. Lakini Mungu hakuwa amemsahau Jack. Mambo tunayojifunza kuhusu Mungu tukiwa wadogo ni kama mbegu. Mungu anajua jinsi ya kuzifanya zikue, hata miaka mingi baadaye.</p> <p><em>Mungu mpendwa, asante kwa familia yangu na kwa kila kitu ninachojifunza kuhusu wewe. Tafadhali zifanye mbegu hizo ndogo zikue ndani yangu. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini Clive Staples Lewis aliitwa Jack?",
+    "answer": "Alipokuwa mdogo sana aliamua kuitwa Jacksie, kama jina la mbwa aliyeishi karibu. Jina hilo likawa Jacks, kisha Jack, naye akalishika maisha yake yote."
+   },
+   {
+    "question": "Jack na Warnie walibuni ulimwengu gani wa kufikirika?",
+    "answer": "Ulimwengu ulioitwa Boxen. Sehemu ya Jack ilikuwa Nchi ya Wanyama, yenye wanyama waliovaa nguo na mashujaa waliovaa mavazi ya vita ya chuma."
+   },
+   {
+    "question": "Umejifunza nini kuhusu Mungu ambacho unatumaini kitakua ndani yako?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba tunachojifunza kuhusu Mungu tukiwa wadogo ni kama mbegu, na Mungu anaweza kuifanya ikue, hata miaka mingi baadaye."
+   }
+  ],
+  "body_text": "“Mlee mtoto katika njia impasayo, naye hataiacha, hata atakapokuwa mzee.” — kutoka Mithali 22 Tarehe 29 Novemba 1898, mtoto wa kiume alizaliwa Belfast, mji wenye shughuli nyingi na viwanda vya kujenga meli, kaskazini mwa Ireland. Wazazi wake walimpa jina Clive Staples Lewis. Baba yake, Albert, alikuwa mwanasheria aliyependa vitabu na maneno marefu. Mama yake, Flora, alikuwa mtulivu, mcheshi, na mwenye akili sana. Alikuwa amesoma chuo kikuu na kujifunza hisabati, wakati ambapo wanawake wachache sana walifanya hivyo. Clive alikuwa na kaka mkubwa aitwaye Warren, au Warnie, aliyemzidi kwa miaka mitatu. Clive alipokuwa bado mdogo sana, aliamua kwamba hakulipenda jina lake. Alitaka kuitwa Jacksie, kama jina la mbwa aliyeishi karibu! Hakuitika jina jingine lolote mpaka familia yake ilipokubali. Punde si punde Jacksie likawa Jack, na Jack likabaki jina lake maisha yake yote. Jack na Warnie walikuwa marafiki wakubwa. Siku moja Warnie aliingiza katika chumba cha watoto kifuniko cha bati la biskuti, kilichopambwa kwa majani laini ya kijani, vijiti na maua, kama bustani ndogo sana. Jack aliona kwamba hicho kilikuwa kitu kizuri kuliko vyote alivyowahi kuona. Kilimletea hamu ya ajabu na tamu, hisia ya kutamani kitu fulani asichoweza kukitaja kwa jina. Hisia hiyo ilimrudia tena na tena maisha yake yote. Ndugu hao wawili walibuni pamoja ulimwengu mzima wa kufikirika ulioitwa Boxen. Sehemu ya Jack ilikuwa Nchi ya Wanyama, iliyojaa wanyama waliovaa nguo na mashujaa waliovaa mavazi ya vita ya chuma. Jack alipokuwa na umri wa miaka sita, familia ilihamia nyumba kubwa mpya iitwayo Little Lea. Ilikuwa na korido ndefu na vyumba vya darini, na kulikuwa na vitabu karibu katika kila chumba. Mchana wa siku za mvua Jack aliizunguka nyumba ile akiichunguza, akasoma na kusoma. Hakuna mtu aliyewahi kumwambia kwamba kitabu fulani hakikuwa chake. Wazazi wa Jack walimpeleka kanisani na kumfundisha kuomba. Kwa muda mrefu ilionekana kana kwamba alikuwa amesahau yote hayo. Lakini Mungu hakuwa amemsahau Jack. Mambo tunayojifunza kuhusu Mungu tukiwa wadogo ni kama mbegu. Mungu anajua jinsi ya kuzifanya zikue, hata miaka mingi baadaye. Mungu mpendwa, asante kwa familia yangu na kwa kila kitu ninachojifunza kuhusu wewe. Tafadhali zifanye mbegu hizo ndogo zikue ndani yangu. Amina.",
+  "word_count": 344
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "sw"
+  ],
+  "order": 2,
+  "title": "Kiangazi cha Huzuni Kuu",
+  "body_html": "<blockquote>“Baba yangu na mama yangu wakiniacha, BWANA atanikaribisha kwake.” — kutoka Zaburi 27</blockquote> <p>Mwaka 1908, Jack alipokuwa na umri wa miaka tisa, mama yake aliugua sana. Madaktari waligundua kwamba alikuwa na saratani. Alifanyiwa upasuaji nyumbani, na kwa muda alionekana kupata nafuu. Lakini wakati wa kiangazi ugonjwa ulirudi. Nyumba ilijaa wauguzi na madaktari, na wavulana walizuiwa wasiingie chumbani mwake. Hawakuelewa kwa kweli kilichokuwa kikitokea.</p> <p>Jack aliomba. Alikuwa amefundishwa kwamba Mungu hujibu maombi, naye alimwomba Mungu, kwa moyo wake wote, amponye mama yake. Tarehe 23 Agosti 1908, mama yake alifariki. Kisha Jack aliomba kwamba mama yake afufuke. Lakini hakurudi.</p> <p>Ulikuwa mwaka mbaya sana kwa familia nzima. Mwaka huo huo baba yake Jack alifiwa na baba yake mwenyewe na kaka yake. Alijaa huzuni kiasi kwamba hakujua jinsi ya kuwafariji wanawe. Kwa hiyo Jack na Warnie walishikamana. Tangu wakati huo, walikuwa karibu zaidi kuliko wakati mwingine wowote.</p> <p>Chini ya mwezi mmoja baadaye, baba yao aliwapeleka wavulana wote wawili mbali, katika shule ya bweni huko Uingereza. Walivuka bahari kwa meli ya usiku, na Jack hakusahau kamwe jinsi safari ile ilivyokuwa ya huzuni. Shule ile ilikuwa mbaya, ikiwa na mwalimu mkuu mkali, na Jack hakuwa na furaha hata kidogo pale.</p> <p>Lakini hata pale, jambo jema lilitokea. Katika shule ile Jack alipelekwa kwenye kanisa ambapo imani ya Kikristo ilifundishwa kana kwamba ni jambo muhimu kweli. Kwa muda mfupi alianza kuomba kwa bidii na kusoma Biblia yake.</p> <p>Jack alipokuwa mtu mzima, bado alikumbuka jinsi ilivyokuwa kumpoteza mama yake. Kwa sababu hiyo, aliweza kuwaandikia barua za upole na za huruma watu wengi waliokuwa na huzuni. Mungu hakulizuia lile jambo la huzuni lisitokee. Lakini alikuwa pamoja na Jack, naye aliitumia hata huzuni ile kwa mema. Tunapokuwa na huzuni, Mungu yuko karibu nasi pia.</p> <p><em>Mungu mpendwa, asante kwa kuwa uko karibu na watoto walio na huzuni. Tafadhali mfariji kila ninayemfahamu aliyefiwa na mtu anayempenda. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Jack aliomba nini mama yake alipokuwa mgonjwa?",
+    "answer": "Aliomba apone. Alipofariki, aliomba kwamba afufuke."
+   },
+   {
+    "question": "Baba yake Jack aliwapeleka wavulana wapi baada ya mama yao kufariki?",
+    "answer": "Katika shule ya bweni huko Uingereza. Walivuka bahari kwa meli ya usiku, na shule ile ilikuwa mahali pakali, pasipo na furaha."
+   },
+   {
+    "question": "Ni nani ambaye ungeweza kuzungumza naye, au kumwomba, unapojisikia huzuni?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu yuko karibu nasi tunapokuwa na huzuni, naye anaweza kutumia hata mambo ya huzuni kwa mema."
+   }
+  ],
+  "body_text": "“Baba yangu na mama yangu wakiniacha, BWANA atanikaribisha kwake.” — kutoka Zaburi 27 Mwaka 1908, Jack alipokuwa na umri wa miaka tisa, mama yake aliugua sana. Madaktari waligundua kwamba alikuwa na saratani. Alifanyiwa upasuaji nyumbani, na kwa muda alionekana kupata nafuu. Lakini wakati wa kiangazi ugonjwa ulirudi. Nyumba ilijaa wauguzi na madaktari, na wavulana walizuiwa wasiingie chumbani mwake. Hawakuelewa kwa kweli kilichokuwa kikitokea. Jack aliomba. Alikuwa amefundishwa kwamba Mungu hujibu maombi, naye alimwomba Mungu, kwa moyo wake wote, amponye mama yake. Tarehe 23 Agosti 1908, mama yake alifariki. Kisha Jack aliomba kwamba mama yake afufuke. Lakini hakurudi. Ulikuwa mwaka mbaya sana kwa familia nzima. Mwaka huo huo baba yake Jack alifiwa na baba yake mwenyewe na kaka yake. Alijaa huzuni kiasi kwamba hakujua jinsi ya kuwafariji wanawe. Kwa hiyo Jack na Warnie walishikamana. Tangu wakati huo, walikuwa karibu zaidi kuliko wakati mwingine wowote. Chini ya mwezi mmoja baadaye, baba yao aliwapeleka wavulana wote wawili mbali, katika shule ya bweni huko Uingereza. Walivuka bahari kwa meli ya usiku, na Jack hakusahau kamwe jinsi safari ile ilivyokuwa ya huzuni. Shule ile ilikuwa mbaya, ikiwa na mwalimu mkuu mkali, na Jack hakuwa na furaha hata kidogo pale. Lakini hata pale, jambo jema lilitokea. Katika shule ile Jack alipelekwa kwenye kanisa ambapo imani ya Kikristo ilifundishwa kana kwamba ni jambo muhimu kweli. Kwa muda mfupi alianza kuomba kwa bidii na kusoma Biblia yake. Jack alipokuwa mtu mzima, bado alikumbuka jinsi ilivyokuwa kumpoteza mama yake. Kwa sababu hiyo, aliweza kuwaandikia barua za upole na za huruma watu wengi waliokuwa na huzuni. Mungu hakulizuia lile jambo la huzuni lisitokee. Lakini alikuwa pamoja na Jack, naye aliitumia hata huzuni ile kwa mema. Tunapokuwa na huzuni, Mungu yuko karibu nasi pia. Mungu mpendwa, asante kwa kuwa uko karibu na watoto walio na huzuni. Tafadhali mfariji kila ninayemfahamu aliyefiwa na mtu anayempenda. Amina.",
+  "word_count": 304
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "sw"
+  ],
+  "order": 3,
+  "title": "Great Knock",
+  "body_html": "<blockquote>“Chuma hunoa chuma; kadhalika mtu hunoa uso wa mwenzake.” — kutoka Mithali 27</blockquote> <p>Jack alipokuwa akikua, alikwenda katika shule nyingine. Mahali fulani kati ya umri wa miaka kumi na miwili na kumi na minne, kimyakimya aliacha kumwamini Mungu. Sehemu ya sababu ilikuwa kwamba kuomba kulikuwa kumekuwa jambo la kumhangaisha. Alidhani kwamba sala haihesabiki isipokuwa awe na hisia sahihi kabisa, naye alikesha usiku baada ya usiku, akijaribu tena na tena. Alipoacha kuamini, alijisikia kama mtu aliyetua mzigo mzito. Hakumwambia mtu yeyote.</p> <p>Alipokuwa na umri wa miaka kumi na mitano, Jack alimtembelea Arthur Greeves, aliyeishi ng’ambo ya barabara na alikuwa mgonjwa kitandani. Juu ya kitanda kulikuwa na kitabu cha hadithi za kale kutoka kaskazini, kuhusu miungu na mashujaa. Jack naye alizipenda hadithi hizo! Wawili hao wakawa marafiki papo hapo, nao waliandikiana barua kwa karibu miaka hamsini.</p> <p>Mwaka huo huo, Jack alipelekwa kuishi na mwalimu aitwaye Bwana Kirkpatrick, katika kijiji kimoja huko Surrey. Familia ilimwita Great Knock. Walipokuwa wakitembea kutoka stesheni, Jack alisema kwamba mashambani pale palikuwa pa porini zaidi kuliko alivyotarajia. Bwana Kirkpatrick alisimama akamwuliza alimaanisha nini aliposema porini! Kila sentensi aliyoisema Jack ilibidi aifikirie kwa makini. Jack alipenda jambo hilo. Alijifunza kufikiri kwa uwazi na kusoma Kigiriki, Kilatini, Kifaransa na Kiitaliano.</p> <p>Bwana Kirkpatrick hakumwamini Mungu, wala Jack hakumwamini. Lakini siku moja mwaka 1916, alipokuwa akisubiri gari moshi, Jack alinunua kitabu kiitwacho Phantastes, cha mwandishi Mskoti aitwaye George MacDonald. Kilikuwa hadithi kuhusu kijana mmoja katika nchi ya ajabu ya hadithi iliyofanana na ndoto. Jack hakujua kwamba MacDonald alikuwa Mkristo. Lakini hadithi ile iligusa moyo wake kwa aina mpya ya wema. Miaka mingi baadaye, Jack alimwita MacDonald mwalimu wake mkuu.</p> <p>Jack hakuwa akimtafuta Mungu hata kidogo. Lakini Mungu alikuwa tayari kazini, kupitia mwalimu mwenye akili kali, rafiki mwema na hadithi iliyonunuliwa stesheni. Mungu anaweza kutumia watu wa kila aina na vitabu vya kila aina kutusaidia, hata kabla hatujatambua.</p> <p><em>Mungu mpendwa, asante kwa walimu wangu na rafiki zangu. Tafadhali tumia vitabu vizuri na watu wema kunileta karibu zaidi nawe. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Great Knock alikuwa nani?",
+    "answer": "Bwana Kirkpatrick, mwalimu ambaye Jack aliishi naye huko Surrey. Alimfundisha Jack kufikiri kwa uwazi na kusoma lugha nyingi."
+   },
+   {
+    "question": "Jack alinunua kitabu gani alipokuwa akisubiri gari moshi?",
+    "answer": "Phantastes, cha George MacDonald. Kilikuwa hadithi kuhusu nchi ya ajabu ya hadithi, nacho kiligusa moyo wa Jack kwa aina mpya ya wema."
+   },
+   {
+    "question": "Ni nani anayekusaidia kufikiri na kujifunza?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu anaweza kutumia walimu, rafiki na vitabu vizuri kutusaidia, hata kabla hatujajua kwamba yeye yuko kazini."
+   }
+  ],
+  "body_text": "“Chuma hunoa chuma; kadhalika mtu hunoa uso wa mwenzake.” — kutoka Mithali 27 Jack alipokuwa akikua, alikwenda katika shule nyingine. Mahali fulani kati ya umri wa miaka kumi na miwili na kumi na minne, kimyakimya aliacha kumwamini Mungu. Sehemu ya sababu ilikuwa kwamba kuomba kulikuwa kumekuwa jambo la kumhangaisha. Alidhani kwamba sala haihesabiki isipokuwa awe na hisia sahihi kabisa, naye alikesha usiku baada ya usiku, akijaribu tena na tena. Alipoacha kuamini, alijisikia kama mtu aliyetua mzigo mzito. Hakumwambia mtu yeyote. Alipokuwa na umri wa miaka kumi na mitano, Jack alimtembelea Arthur Greeves, aliyeishi ng’ambo ya barabara na alikuwa mgonjwa kitandani. Juu ya kitanda kulikuwa na kitabu cha hadithi za kale kutoka kaskazini, kuhusu miungu na mashujaa. Jack naye alizipenda hadithi hizo! Wawili hao wakawa marafiki papo hapo, nao waliandikiana barua kwa karibu miaka hamsini. Mwaka huo huo, Jack alipelekwa kuishi na mwalimu aitwaye Bwana Kirkpatrick, katika kijiji kimoja huko Surrey. Familia ilimwita Great Knock. Walipokuwa wakitembea kutoka stesheni, Jack alisema kwamba mashambani pale palikuwa pa porini zaidi kuliko alivyotarajia. Bwana Kirkpatrick alisimama akamwuliza alimaanisha nini aliposema porini! Kila sentensi aliyoisema Jack ilibidi aifikirie kwa makini. Jack alipenda jambo hilo. Alijifunza kufikiri kwa uwazi na kusoma Kigiriki, Kilatini, Kifaransa na Kiitaliano. Bwana Kirkpatrick hakumwamini Mungu, wala Jack hakumwamini. Lakini siku moja mwaka 1916, alipokuwa akisubiri gari moshi, Jack alinunua kitabu kiitwacho Phantastes, cha mwandishi Mskoti aitwaye George MacDonald. Kilikuwa hadithi kuhusu kijana mmoja katika nchi ya ajabu ya hadithi iliyofanana na ndoto. Jack hakujua kwamba MacDonald alikuwa Mkristo. Lakini hadithi ile iligusa moyo wake kwa aina mpya ya wema. Miaka mingi baadaye, Jack alimwita MacDonald mwalimu wake mkuu. Jack hakuwa akimtafuta Mungu hata kidogo. Lakini Mungu alikuwa tayari kazini, kupitia mwalimu mwenye akili kali, rafiki mwema na hadithi iliyonunuliwa stesheni. Mungu anaweza kutumia watu wa kila aina na vitabu vya kila aina kutusaidia, hata kabla hatujatambua. Mungu mpendwa, asante kwa walimu wangu na rafiki zangu. Tafadhali tumia vitabu vizuri na watu wema kunileta karibu zaidi nawe. Amina.",
+  "word_count": 326
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "sw"
+  ],
+  "order": 4,
+  "title": "Ahadi Wakati wa Vita",
+  "body_html": "<blockquote>“Ukimwahidi Mungu jambo, usikawie kulitimiza.” — kutoka Mhubiri 5</blockquote> <p>Mwaka 1917 Jack alikwenda kusoma katika Chuo Kikuu cha Oxford. Lakini kulikuwa na vita kubwa, na vijana wengi walikuwa mbali wakipigana. Kwa kuwa alitoka Ireland, Jack hakulazimika kujiunga na jeshi. Hata hivyo alichagua kujiunga.</p> <p>Jack alipata mafunzo ya kuwa afisa wa jeshi katika chuo kimoja kiitwacho Keble. Alishiriki chumba kimoja na kijana aitwaye Paddy Moore. Paddy alikuwa karibu umri sawa kabisa na yeye, tena Mwairishi kama yeye. Mama yake Paddy, Bi Moore, alikuwa amekuja Oxford ili awe karibu na mwanawe, pamoja na dada yake mdogo Maureen. Bi Moore alikuwa mchangamfu na mwema, naye alimkaribisha Jack kwa moyo mkunjufu.</p> <p>Jack na Paddy waliahidiana jambo. Kama mmoja wao angeuawa vitani, yule ambaye angebaki hai angemtunza mzazi wa mwenzake. Maureen aliikumbuka ahadi hii miaka mingi baadaye.</p> <p>Jack alifika kwenye mahandaki ya vita huko Ufaransa siku aliyotimiza miaka kumi na tisa, tarehe 29 Novemba 1917. Kulikuwa na baridi na matope, na maisha yalikuwa magumu sana. Mwezi Aprili 1918 kulikuwa na mapigano karibu na kijiji kimoja cha Ufaransa. Askari wa adui wapatao sitini walitoka katikati ya moshi wakiwa wameinua mikono, wakajisalimisha kwa Jack. Alisema alifurahi tu kwamba wao walitaka kufanya hivyo!</p> <p>Siku iliyofuata, tarehe 15 Aprili 1918, kombora lililipuka karibu kabisa na Jack. Aliumia mkononi, mguuni na kifuani. Sajini mmoja mwema aitwaye Harry Ayres, aliyekuwa akimtunza Jack, alikuwa amesimama kando yake, naye aliuawa. Jack alipona hospitalini, lakini kipande kidogo sana cha chuma kilibaki kifuani mwake kwa miaka mingi.</p> <p>Paddy hakurudi nyumbani. Alikuwa amepotea katika mapigano mwezi Machi, na baadaye familia yake ilipata habari kwamba alikuwa ameuawa. Alikuwa na umri wa miaka kumi na tisa tu.</p> <p>Vita ni jambo la huzuni sana, na Jack hakupenda kuzungumza juu yake. Lakini hata wakati ambapo bado hakumwamini Mungu, Mungu alikuwa ameyashika maisha yake mikononi mwake. Na Jack alikuwa ametoa ahadi. Sasa ingembidi aitimize.</p> <p><em>Mungu mpendwa, tafadhali uwe pamoja na wote walio hatarini kwa sababu ya vita leo. Nisaidie kutimiza ahadi zangu, hata inapokuwa vigumu. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Jack na Paddy waliahidiana nini?",
+    "answer": "Kwamba kama mmoja wao angeuawa vitani, yule ambaye angebaki hai angemtunza mzazi wa mwenzake."
+   },
+   {
+    "question": "Nini kilimtokea Jack tarehe 15 Aprili 1918?",
+    "answer": "Kombora lililipuka kando yake naye akaumia mkononi, mguuni na kifuani. Sajini mwema aliyekuwa kando yake, Harry Ayres, aliuawa."
+   },
+   {
+    "question": "Kwa nini ni muhimu kutimiza ahadi?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba ahadi ni jambo muhimu, na Mungu hutusaidia kutimiza ahadi zetu hata inapokuwa vigumu."
+   }
+  ],
+  "body_text": "“Ukimwahidi Mungu jambo, usikawie kulitimiza.” — kutoka Mhubiri 5 Mwaka 1917 Jack alikwenda kusoma katika Chuo Kikuu cha Oxford. Lakini kulikuwa na vita kubwa, na vijana wengi walikuwa mbali wakipigana. Kwa kuwa alitoka Ireland, Jack hakulazimika kujiunga na jeshi. Hata hivyo alichagua kujiunga. Jack alipata mafunzo ya kuwa afisa wa jeshi katika chuo kimoja kiitwacho Keble. Alishiriki chumba kimoja na kijana aitwaye Paddy Moore. Paddy alikuwa karibu umri sawa kabisa na yeye, tena Mwairishi kama yeye. Mama yake Paddy, Bi Moore, alikuwa amekuja Oxford ili awe karibu na mwanawe, pamoja na dada yake mdogo Maureen. Bi Moore alikuwa mchangamfu na mwema, naye alimkaribisha Jack kwa moyo mkunjufu. Jack na Paddy waliahidiana jambo. Kama mmoja wao angeuawa vitani, yule ambaye angebaki hai angemtunza mzazi wa mwenzake. Maureen aliikumbuka ahadi hii miaka mingi baadaye. Jack alifika kwenye mahandaki ya vita huko Ufaransa siku aliyotimiza miaka kumi na tisa, tarehe 29 Novemba 1917. Kulikuwa na baridi na matope, na maisha yalikuwa magumu sana. Mwezi Aprili 1918 kulikuwa na mapigano karibu na kijiji kimoja cha Ufaransa. Askari wa adui wapatao sitini walitoka katikati ya moshi wakiwa wameinua mikono, wakajisalimisha kwa Jack. Alisema alifurahi tu kwamba wao walitaka kufanya hivyo! Siku iliyofuata, tarehe 15 Aprili 1918, kombora lililipuka karibu kabisa na Jack. Aliumia mkononi, mguuni na kifuani. Sajini mmoja mwema aitwaye Harry Ayres, aliyekuwa akimtunza Jack, alikuwa amesimama kando yake, naye aliuawa. Jack alipona hospitalini, lakini kipande kidogo sana cha chuma kilibaki kifuani mwake kwa miaka mingi. Paddy hakurudi nyumbani. Alikuwa amepotea katika mapigano mwezi Machi, na baadaye familia yake ilipata habari kwamba alikuwa ameuawa. Alikuwa na umri wa miaka kumi na tisa tu. Vita ni jambo la huzuni sana, na Jack hakupenda kuzungumza juu yake. Lakini hata wakati ambapo bado hakumwamini Mungu, Mungu alikuwa ameyashika maisha yake mikononi mwake. Na Jack alikuwa ametoa ahadi. Sasa ingembidi aitimize. Mungu mpendwa, tafadhali uwe pamoja na wote walio hatarini kwa sababu ya vita leo. Nisaidie kutimiza ahadi zangu, hata inapokuwa vigumu. Amina.",
+  "word_count": 325
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "sw"
+  ],
+  "order": 5,
+  "title": "Kutimiza Ahadi Yake",
+  "body_html": "<blockquote>“Ni nani atakayekaa karibu na Mungu? Ni yule anayetimiza ahadi yake hata ikimgharimu.” — kutoka Zaburi 15</blockquote> <p>Jack alipokuwa hospitalini London, alimwandikia baba yake akamwomba aje. Baba yake alikuwa mwenye wasiwasi, mwenye huzuni na asiyependa kubadili mazoea yake, naye hakuja. Lakini Bi Moore alikuja mara moja. Alimtembelea Jack, akamwandikia barua na kumtunza.</p> <p>Vita vilipokwisha, Jack alirudi Oxford, na Bi Moore na Maureen wakaja pia. Jack aliitimiza ahadi yake kwa Paddy. Aliishi pamoja nao, naye aliendelea kumtunza Bi Moore kwa zaidi ya miaka thelathini. Katika barua wakati mwingine alimwita mama yake, tena alikuwa na jina la utani la kuchekesha kwa ajili yake: Minto.</p> <p>Hawakuwa na fedha nyingi, nao walihama kutoka vyumba vya kupanga vyenye baridi kwenda vingine. Jack alinunua mahitaji, akaosha vyombo, akatumwa huku na huko, akamtembeza mbwa na kumsaidia Maureen katika somo lake la Kilatini. Kisha alisoma kila alipopata saa moja ya utulivu.</p> <p>Kulikuwa na jambo moja ambalo Jack alifanya lililokuwa baya. Hakumwambia baba yake ukweli kuhusu mahali alipokuwa akiishi, wala kwamba sehemu ya fedha alizotuma baba yake ilikuwa ikiwasaidia akina Moore. Aliificha siri hiyo kwa miaka. Baadaye, Jack alipomjua Mungu, alijuta sana kwa jambo hilo. Alisema lilikuwa mojawapo ya mambo mabaya kuliko yote aliyowahi kufanya.</p> <p>Jack alifanya kazi kwa bidii sana katika masomo yake. Mara tatu alipata alama za juu kabisa katika mitihani yake. Mwaka 1925 akawa mwalimu wa Kiingereza katika Chuo cha Magdalen huko Oxford. Kilikuwa chuo kizuri cha zamani, chenye bustani kubwa iliyojaa kulungu. Baba yake alifurahi kupita kiasi.</p> <p>Jack aliitimiza ahadi yake kwa zaidi ya miaka thelathini, hata ilipokuwa si rahisi. Lakini pia alijifunza kwamba kuficha ukweli huwaumiza watu. Mungu anataka tuwe waaminifu na wakweli. Na tunapokosea, tunaweza kumwambia Mungu kwamba tunajuta.</p> <p><em>Mungu mpendwa, nisaidie kutimiza ahadi zangu na kusema kweli. Ninapokosea, nisaidie kuomba msamaha. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ni nani aliyekuja kumwona Jack hospitalini?",
+    "answer": "Bi Moore, mama yake Paddy. Baba yake Jack hakuja."
+   },
+   {
+    "question": "Jack alifanya nini ambacho baadaye alikijutia?",
+    "answer": "Alimficha baba yake ukweli kuhusu mahali alipokuwa akiishi na kuhusu jinsi fedha za baba yake zilivyokuwa zikitumiwa."
+   },
+   {
+    "question": "Je, kuna jambo ambalo unahitaji kuomba msamaha kwalo?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu anataka tuwe waaminifu na wakweli, naye husikiliza daima tunapomwambia kwamba tunajuta."
+   }
+  ],
+  "body_text": "“Ni nani atakayekaa karibu na Mungu? Ni yule anayetimiza ahadi yake hata ikimgharimu.” — kutoka Zaburi 15 Jack alipokuwa hospitalini London, alimwandikia baba yake akamwomba aje. Baba yake alikuwa mwenye wasiwasi, mwenye huzuni na asiyependa kubadili mazoea yake, naye hakuja. Lakini Bi Moore alikuja mara moja. Alimtembelea Jack, akamwandikia barua na kumtunza. Vita vilipokwisha, Jack alirudi Oxford, na Bi Moore na Maureen wakaja pia. Jack aliitimiza ahadi yake kwa Paddy. Aliishi pamoja nao, naye aliendelea kumtunza Bi Moore kwa zaidi ya miaka thelathini. Katika barua wakati mwingine alimwita mama yake, tena alikuwa na jina la utani la kuchekesha kwa ajili yake: Minto. Hawakuwa na fedha nyingi, nao walihama kutoka vyumba vya kupanga vyenye baridi kwenda vingine. Jack alinunua mahitaji, akaosha vyombo, akatumwa huku na huko, akamtembeza mbwa na kumsaidia Maureen katika somo lake la Kilatini. Kisha alisoma kila alipopata saa moja ya utulivu. Kulikuwa na jambo moja ambalo Jack alifanya lililokuwa baya. Hakumwambia baba yake ukweli kuhusu mahali alipokuwa akiishi, wala kwamba sehemu ya fedha alizotuma baba yake ilikuwa ikiwasaidia akina Moore. Aliificha siri hiyo kwa miaka. Baadaye, Jack alipomjua Mungu, alijuta sana kwa jambo hilo. Alisema lilikuwa mojawapo ya mambo mabaya kuliko yote aliyowahi kufanya. Jack alifanya kazi kwa bidii sana katika masomo yake. Mara tatu alipata alama za juu kabisa katika mitihani yake. Mwaka 1925 akawa mwalimu wa Kiingereza katika Chuo cha Magdalen huko Oxford. Kilikuwa chuo kizuri cha zamani, chenye bustani kubwa iliyojaa kulungu. Baba yake alifurahi kupita kiasi. Jack aliitimiza ahadi yake kwa zaidi ya miaka thelathini, hata ilipokuwa si rahisi. Lakini pia alijifunza kwamba kuficha ukweli huwaumiza watu. Mungu anataka tuwe waaminifu na wakweli. Na tunapokosea, tunaweza kumwambia Mungu kwamba tunajuta. Mungu mpendwa, nisaidie kutimiza ahadi zangu na kusema kweli. Ninapokosea, nisaidie kuomba msamaha. Amina.",
+  "word_count": 290
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "sw"
+  ],
+  "order": 6,
+  "title": "Mungu Alimpata",
+  "body_html": "<blockquote>“Niende wapi nijiepushe na roho yako? Au niukimbie wapi uso wako?” — kutoka Zaburi 139</blockquote> <p>Huko Oxford, Jack alipata rafiki wazuri ajabu. Mmoja wao alikuwa profesa aitwaye J. R. R. Tolkien, aliyezipenda hadithi za kale za kaskazini kama Jack alivyozipenda. Tolkien alikuwa Mkristo. Vivyo hivyo walikuwa rafiki wengine kadhaa wa Jack wenye akili nyingi. Jack aliliona jambo hilo, nalo likamsumbua.</p> <p>Jack hakumwamini Mungu, wala hakutaka kumwamini. Lakini vitabu alivyovipenda kuliko vyote viliendelea kuonekana kuwa vimeandikwa na Wakristo. Kidogo kidogo, kila sababu aliyokuwa nayo ya kutoamini ilianza kuanguka. Baadaye alisema alijisikia kana kwamba Mungu alikuwa akimwinda, naye alikuwa akikosa mahali pa kujificha.</p> <p>Mwaka 1929 baba yake Jack aliugua sana. Jack alirudi nyumbani Belfast akakaa naye kwa wiki kadhaa. Alirudi Oxford baba yake alipoonekana kupata nafuu kidogo, lakini punde si punde telegramu ilimwita nyumbani. Aliharakisha kurudi, lakini alichelewa. Baba yake alikuwa amefariki. Jack alijaa huzuni, tena alijuta kwa jinsi alivyokuwa mara nyingi akimtendea bila wema.</p> <p>Kisha usiku mmoja, akiwa peke yake chumbani mwake huko Magdalen, Jack aliacha kukimbia. Alipiga magoti akaomba, naye akakiri kwamba Mungu ni Mungu. Hakujisikia furaha. Alijiita “mwongofu aliyevunjika moyo kuliko wote na asiyetaka kuliko wote katika Uingereza nzima.” Maana yake ni kwamba alikuwa mtu mwenye huzuni zaidi na asiyetaka zaidi kuliko wote aliyewahi kuja kwa Mungu!</p> <p>Jack alikumbuka kwamba jambo hili lilitokea mwaka 1929. Watu waliozichunguza barua zake kwa makini wanadhani kwamba huenda ilikuwa kiangazi cha mwaka 1930. Kwa vyovyote vile, huo ulikuwa mwanzo. Jack alianza kwenda kanisani, ingawa hakufurahia, kwa sababu aliamini kwamba ni jambo sahihi. Lakini bado hakumwamini Yesu.</p> <p>Jack alijitahidi sana kumkimbia Mungu. Lakini Mungu hakuacha kamwe kumtafuta. Hakuna mtu awezaye kukimbia mbali kiasi kwamba Mungu hawezi kumpata. Mungu anakupenda wewe pia, naye hayuko mbali kamwe.</p> <p><em>Mungu mpendwa, asante kwa kuwa huachi kamwe kututafuta. Asante kwa kuwa siwezi kamwe kukimbia mbali kupita upendo wako. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ni rafiki gani wa Jack aliyezipenda pia hadithi za kale za kaskazini?",
+    "answer": "J. R. R. Tolkien, profesa huko Oxford aliyekuwa Mkristo."
+   },
+   {
+    "question": "Jack alifanya nini alipoacha kumkimbia Mungu?",
+    "answer": "Alipiga magoti chumbani mwake huko Magdalen akakiri kwamba Mungu ni Mungu, ingawa hakujisikia furaha kuhusu jambo hilo."
+   },
+   {
+    "question": "Je, umewahi kuhisi kwamba Mungu alikuwa akikutafuta?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu haachi kamwe kututafuta, na hakuna mtu awezaye kukimbia mbali kupita upendo wake."
+   }
+  ],
+  "body_text": "“Niende wapi nijiepushe na roho yako? Au niukimbie wapi uso wako?” — kutoka Zaburi 139 Huko Oxford, Jack alipata rafiki wazuri ajabu. Mmoja wao alikuwa profesa aitwaye J. R. R. Tolkien, aliyezipenda hadithi za kale za kaskazini kama Jack alivyozipenda. Tolkien alikuwa Mkristo. Vivyo hivyo walikuwa rafiki wengine kadhaa wa Jack wenye akili nyingi. Jack aliliona jambo hilo, nalo likamsumbua. Jack hakumwamini Mungu, wala hakutaka kumwamini. Lakini vitabu alivyovipenda kuliko vyote viliendelea kuonekana kuwa vimeandikwa na Wakristo. Kidogo kidogo, kila sababu aliyokuwa nayo ya kutoamini ilianza kuanguka. Baadaye alisema alijisikia kana kwamba Mungu alikuwa akimwinda, naye alikuwa akikosa mahali pa kujificha. Mwaka 1929 baba yake Jack aliugua sana. Jack alirudi nyumbani Belfast akakaa naye kwa wiki kadhaa. Alirudi Oxford baba yake alipoonekana kupata nafuu kidogo, lakini punde si punde telegramu ilimwita nyumbani. Aliharakisha kurudi, lakini alichelewa. Baba yake alikuwa amefariki. Jack alijaa huzuni, tena alijuta kwa jinsi alivyokuwa mara nyingi akimtendea bila wema. Kisha usiku mmoja, akiwa peke yake chumbani mwake huko Magdalen, Jack aliacha kukimbia. Alipiga magoti akaomba, naye akakiri kwamba Mungu ni Mungu. Hakujisikia furaha. Alijiita “mwongofu aliyevunjika moyo kuliko wote na asiyetaka kuliko wote katika Uingereza nzima.” Maana yake ni kwamba alikuwa mtu mwenye huzuni zaidi na asiyetaka zaidi kuliko wote aliyewahi kuja kwa Mungu! Jack alikumbuka kwamba jambo hili lilitokea mwaka 1929. Watu waliozichunguza barua zake kwa makini wanadhani kwamba huenda ilikuwa kiangazi cha mwaka 1930. Kwa vyovyote vile, huo ulikuwa mwanzo. Jack alianza kwenda kanisani, ingawa hakufurahia, kwa sababu aliamini kwamba ni jambo sahihi. Lakini bado hakumwamini Yesu. Jack alijitahidi sana kumkimbia Mungu. Lakini Mungu hakuacha kamwe kumtafuta. Hakuna mtu awezaye kukimbia mbali kiasi kwamba Mungu hawezi kumpata. Mungu anakupenda wewe pia, naye hayuko mbali kamwe. Mungu mpendwa, asante kwa kuwa huachi kamwe kututafuta. Asante kwa kuwa siwezi kamwe kukimbia mbali kupita upendo wako. Amina.",
+  "word_count": 300
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "sw"
+  ],
+  "order": 7,
+  "title": "Matembezi Kando ya Mto",
+  "body_html": "<blockquote>“Naye Neno alifanyika mwili, akakaa kwetu; nasi tukautazama utukufu wake.” — kutoka Yohana 1</blockquote> <p>Sasa Jack alimwamini Mungu. Lakini hakuweza kumwelewa Yesu. Mtu aliyekufa zamani sana, mahali mbali sana, angewezaje kuleta tofauti yoyote kwa Jack sasa?</p> <p>Tarehe 19 Septemba 1931, Jack aliwaalika rafiki wawili kula chakula cha jioni huko Magdalen: Tolkien na Mkristo mwingine, Hugo Dyson. Baadaye watatu hao walikwenda matembezi katika Addison’s Walk, njia iliyo kando ya mto nyuma ya chuo. Walizungumza na kuzungumza, mpaka usiku sana.</p> <p>Walizungumza kuhusu hadithi za kale. Siku zote Jack alikuwa amezipenda hadithi za zamani sana kuhusu mungu anayekufa na kurudi kuwa hai. Hadithi hizo zilimgusa sana moyoni, hata alipokuwa hawezi kuzieleza. Rafiki zake walisema: hadithi ya Yesu ni kama hadithi zile, pamoja na uzuri na nguvu zao zote. Lakini kuna tofauti moja kubwa. Hadithi ya Yesu ilitokea kweli! Mungu alikuwa ameisimulia hadithi yake, si kwa maneno tu, bali kwa matukio halisi, mahali halisi, wakati halisi.</p> <p>Karibu saa tisa usiku Tolkien alikwenda nyumbani. Jack na Hugo waliendelea kutembea na kuzungumza mpaka karibu saa kumi alfajiri.</p> <p>Siku tisa baadaye, asubuhi moja yenye jua, Warnie alimpeleka Jack kwenye bustani mpya ya wanyama iitwayo Whipsnade. Warnie alikuwa na pikipiki yenye kigari cha pembeni, na Jack alipanda ndani ya kigari hicho. Walipoondoka, Jack hakuamini kwamba Yesu ni Mwana wa Mungu. Walipofika kwenye bustani ya wanyama, aliamini! Alisema ilikuwa kama kuamka na kugundua kwamba tayari uko macho.</p> <p>Siku ile ya Krismasi, Jack alishiriki Meza ya Bwana katika Kanisa la Holy Trinity, karibu na nyumbani kwake. Safari hii aliamini kweli. Na Warnie naye alikuwa amerudi kwenye imani mwaka huo. Sasa ndugu hao wawili walishiriki imani yao, kama walivyoshiriki kila kitu tangu walipokuwa wadogo.</p> <p>Mungu alimtuma Mwanawe Yesu katika ulimwengu wetu halisi. Hadithi ya Yesu si hadithi nzuri tu. Ni ya kweli! Jack alitumia maisha yake yote yaliyobaki kuwaambia watu hivyo. Wewe pia unaweza kuiamini.</p> <p><em>Yesu mpendwa, asante kwa kuja katika ulimwengu wetu. Asante kwa kuwa hadithi yako ni ya kweli. Nisaidie kukujua na kukupenda. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Rafiki zake Jack walimwambia nini kuhusu hadithi ya Yesu?",
+    "answer": "Kwamba ilikuwa kama zile hadithi za kale alizozipenda kuhusu mungu anayekufa na kurudi, lakini ikiwa na tofauti moja kubwa: ilitokea kweli."
+   },
+   {
+    "question": "Jack alikuwa akienda wapi alipoamini kwamba Yesu ni Mwana wa Mungu?",
+    "answer": "Kwenye bustani ya wanyama ya Whipsnade, akiwa amepanda katika kigari cha pembeni cha pikipiki ya Warnie."
+   },
+   {
+    "question": "Ni nini unachokipenda zaidi kuhusu hadithi ya Yesu?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba hadithi ya Yesu si nzuri tu bali ni ya kweli, kwa sababu Mungu alikuja kweli katika ulimwengu wetu."
+   }
+  ],
+  "body_text": "“Naye Neno alifanyika mwili, akakaa kwetu; nasi tukautazama utukufu wake.” — kutoka Yohana 1 Sasa Jack alimwamini Mungu. Lakini hakuweza kumwelewa Yesu. Mtu aliyekufa zamani sana, mahali mbali sana, angewezaje kuleta tofauti yoyote kwa Jack sasa? Tarehe 19 Septemba 1931, Jack aliwaalika rafiki wawili kula chakula cha jioni huko Magdalen: Tolkien na Mkristo mwingine, Hugo Dyson. Baadaye watatu hao walikwenda matembezi katika Addison’s Walk, njia iliyo kando ya mto nyuma ya chuo. Walizungumza na kuzungumza, mpaka usiku sana. Walizungumza kuhusu hadithi za kale. Siku zote Jack alikuwa amezipenda hadithi za zamani sana kuhusu mungu anayekufa na kurudi kuwa hai. Hadithi hizo zilimgusa sana moyoni, hata alipokuwa hawezi kuzieleza. Rafiki zake walisema: hadithi ya Yesu ni kama hadithi zile, pamoja na uzuri na nguvu zao zote. Lakini kuna tofauti moja kubwa. Hadithi ya Yesu ilitokea kweli! Mungu alikuwa ameisimulia hadithi yake, si kwa maneno tu, bali kwa matukio halisi, mahali halisi, wakati halisi. Karibu saa tisa usiku Tolkien alikwenda nyumbani. Jack na Hugo waliendelea kutembea na kuzungumza mpaka karibu saa kumi alfajiri. Siku tisa baadaye, asubuhi moja yenye jua, Warnie alimpeleka Jack kwenye bustani mpya ya wanyama iitwayo Whipsnade. Warnie alikuwa na pikipiki yenye kigari cha pembeni, na Jack alipanda ndani ya kigari hicho. Walipoondoka, Jack hakuamini kwamba Yesu ni Mwana wa Mungu. Walipofika kwenye bustani ya wanyama, aliamini! Alisema ilikuwa kama kuamka na kugundua kwamba tayari uko macho. Siku ile ya Krismasi, Jack alishiriki Meza ya Bwana katika Kanisa la Holy Trinity, karibu na nyumbani kwake. Safari hii aliamini kweli. Na Warnie naye alikuwa amerudi kwenye imani mwaka huo. Sasa ndugu hao wawili walishiriki imani yao, kama walivyoshiriki kila kitu tangu walipokuwa wadogo. Mungu alimtuma Mwanawe Yesu katika ulimwengu wetu halisi. Hadithi ya Yesu si hadithi nzuri tu. Ni ya kweli! Jack alitumia maisha yake yote yaliyobaki kuwaambia watu hivyo. Wewe pia unaweza kuiamini. Yesu mpendwa, asante kwa kuja katika ulimwengu wetu. Asante kwa kuwa hadithi yako ni ya kweli. Nisaidie kukujua na kukupenda. Amina.",
+  "word_count": 325
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "sw"
+  ],
+  "order": 8,
+  "title": "Marafiki Kule Kilns",
+  "body_html": "<blockquote>“Wale waliompenda BWANA walizungumza wao kwa wao, naye BWANA akasikiliza, akasikia.” — kutoka Malaki 3</blockquote> <p>Mwaka 1930 Jack, Warnie na Bi Moore walinunua nyumba yao wenyewe, nje kidogo ya Oxford. Ilikuwa nyumba fupi ya matofali iitwayo Kilns, iliyopewa jina hilo kwa sababu ya tanuri mbili za zamani za kuchomea matofali zilizosimama kando yake. Ilikuwa na misitu, bustani kubwa ya porini na bwawa. Jack aliipenda mara tu alipoiona. Aliishi pale maisha yake yote yaliyobaki.</p> <p>Jack aliogelea bwawani katika kila hali ya hewa na kutembea misituni kila siku, kiko chake kikiwa mdomoni. Kulikuwa na mtunza bustani aitwaye Paxford, ambaye siku zote alitazamia mabaya kuliko yote, na kwa kawaida alikuwa mchangamfu kuhusu hilo. Kulikuwa na mbwa, paka na, kwa muda fulani, kuku wengi. Mwaka 1932 Warnie aliacha jeshi akaja kuishi Kilns pia. Ndugu hao wawili walikuwa pamoja tena.</p> <p>Kila Jumapili, Jack alitembea kuvuka mashamba hadi Kanisa la Holy Trinity kwa ibada ya mapema ya saa mbili asubuhi. Aliketi karibu na mbele, upande mmoja. Kwa watu wa kijiji, hakuwa mwandishi maarufu. Alikuwa tu Bwana Lewis wa Kilns.</p> <p>Jack pia alikuwa na kikundi cha rafiki waliokutana jioni za Alhamisi katika vyumba vyake huko Magdalen. Walijiita Inklings. Warnie aliandaa chai. Kisha mtu mmoja angesoma kwa sauti kitu alichokiandika, hadithi, shairi au sura, na wengine wangesema walivyofikiri, wakati mwingine kwa upole na wakati mwingine sivyo!</p> <p>Tolkien alisoma kwa sauti hadithi kubwa aliyokuwa akiiandika, sura baada ya sura, kwa miaka mingi. Iliitwa The Lord of the Rings (Bwana wa Pete). Tolkien alisema kwamba bila kutiwa moyo na Jack, asingeimaliza kamwe.</p> <p>Rafiki zake Jack walimpenda Mungu na kuambiana ukweli. Rafiki wema hutusaidia kukua, na kanisa ni mahali ambapo sisi ni sehemu ya familia ya Mungu. Mungu husikiliza rafiki zake wanapozungumza pamoja juu yake.</p> <p><em>Mungu mpendwa, asante kwa rafiki zangu na kwa familia yangu ya kanisa. Nisaidie kuwa rafiki mwema anayewatia wengine moyo. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Nyumba ya Jack iliitwaje, na kwa nini?",
+    "answer": "Kilns, kwa sababu tanuri mbili za zamani za kuchomea matofali, ziitwazo kilns kwa Kiingereza, zilisimama kando yake."
+   },
+   {
+    "question": "Inklings walikuwa akina nani?",
+    "answer": "Kikundi cha rafiki zake Jack waliokutana jioni za Alhamisi ili kusoma maandishi yao kwa sauti na kuzungumza. Tolkien aliwasomea The Lord of the Rings."
+   },
+   {
+    "question": "Ungewezaje kumtia moyo rafiki yako wiki hii?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba rafiki wema husaidiana kukua, na Mungu husikiliza rafiki zake wanapozungumza pamoja."
+   }
+  ],
+  "body_text": "“Wale waliompenda BWANA walizungumza wao kwa wao, naye BWANA akasikiliza, akasikia.” — kutoka Malaki 3 Mwaka 1930 Jack, Warnie na Bi Moore walinunua nyumba yao wenyewe, nje kidogo ya Oxford. Ilikuwa nyumba fupi ya matofali iitwayo Kilns, iliyopewa jina hilo kwa sababu ya tanuri mbili za zamani za kuchomea matofali zilizosimama kando yake. Ilikuwa na misitu, bustani kubwa ya porini na bwawa. Jack aliipenda mara tu alipoiona. Aliishi pale maisha yake yote yaliyobaki. Jack aliogelea bwawani katika kila hali ya hewa na kutembea misituni kila siku, kiko chake kikiwa mdomoni. Kulikuwa na mtunza bustani aitwaye Paxford, ambaye siku zote alitazamia mabaya kuliko yote, na kwa kawaida alikuwa mchangamfu kuhusu hilo. Kulikuwa na mbwa, paka na, kwa muda fulani, kuku wengi. Mwaka 1932 Warnie aliacha jeshi akaja kuishi Kilns pia. Ndugu hao wawili walikuwa pamoja tena. Kila Jumapili, Jack alitembea kuvuka mashamba hadi Kanisa la Holy Trinity kwa ibada ya mapema ya saa mbili asubuhi. Aliketi karibu na mbele, upande mmoja. Kwa watu wa kijiji, hakuwa mwandishi maarufu. Alikuwa tu Bwana Lewis wa Kilns. Jack pia alikuwa na kikundi cha rafiki waliokutana jioni za Alhamisi katika vyumba vyake huko Magdalen. Walijiita Inklings. Warnie aliandaa chai. Kisha mtu mmoja angesoma kwa sauti kitu alichokiandika, hadithi, shairi au sura, na wengine wangesema walivyofikiri, wakati mwingine kwa upole na wakati mwingine sivyo! Tolkien alisoma kwa sauti hadithi kubwa aliyokuwa akiiandika, sura baada ya sura, kwa miaka mingi. Iliitwa The Lord of the Rings (Bwana wa Pete). Tolkien alisema kwamba bila kutiwa moyo na Jack, asingeimaliza kamwe. Rafiki zake Jack walimpenda Mungu na kuambiana ukweli. Rafiki wema hutusaidia kukua, na kanisa ni mahali ambapo sisi ni sehemu ya familia ya Mungu. Mungu husikiliza rafiki zake wanapozungumza pamoja juu yake. Mungu mpendwa, asante kwa rafiki zangu na kwa familia yangu ya kanisa. Nisaidie kuwa rafiki mwema anayewatia wengine moyo. Amina.",
+  "word_count": 304
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "sw"
+  ],
+  "order": 9,
+  "title": "Sauti Wakati wa Vita",
+  "body_html": "<blockquote>“Mwe tayari siku zote kumjibu kila mtu awaulizaye habari za tumaini lililo ndani yenu; lakini kwa upole.” — kutoka 1 Petro 3</blockquote> <p>Mwaka 1939 vita vingine vikubwa vilianza. Jack alikuwa na umri wa miaka arobaini, mzee mno kwenda kupigana. Lakini baada ya siku chache tu, kikundi cha wasichana wa shule kutoka London kilikuja kuishi Kilns, ili wawe salama mbali na mabomu. Watoto wengine walikuja katika miaka iliyofuata. Jack hakuwa amewahi kukaa sana na watoto, lakini aligundua kwamba alifurahia kuwa nao!</p> <p>Jumapili moja mwaka 1940, akiwa ameketi kanisani, Jack alipata wazo la kitabu. Kingekuwa barua kutoka kwa pepo mzee kwenda kwa pepo kijana, zikimfundisha jinsi ya kumwongoza mtu mbali na Mungu. Kila kitu ndani yake kilikuwa kimepinduliwa juu chini! Kiliitwa The Screwtape Letters (Barua za Screwtape), na watu walikipenda. Barua hizo zilipochapishwa kwa mara ya kwanza katika gazeti, Jack alilipwa kwa kila moja. Alizitoa fedha hizo kuwasaidia wajane.</p> <p>Kisha BBC ilimwomba Jack atoe mazungumzo kwenye redio. Mwaka 1941, vita vikiendelea, watu kote Uingereza waliwasha redio zao wakasikia sauti yake nzito, ya kirafiki, akieleza kile ambacho Wakristo wanaamini. Alizungumza kwa maneno rahisi, kama mtu anayezungumza mambo ya busara kando ya meza ya jikoni. Mamia ya watu walimwandikia. Baadaye mazungumzo hayo yalifanywa kuwa kitabu, Mere Christianity (Ukristo Halisi), ambacho kimewasaidia watu wengi sana kuja kwenye imani.</p> <p>Jack pia alisafiri kwenda kwenye vituo vya jeshi la anga kuzungumza na wanajeshi vijana wa anga. Mwanzoni aliona jambo hilo kuwa gumu sana. Alijifunza kutumia maneno rahisi na kusikiliza maswali yao.</p> <p>Jack akawa maarufu. Alijua kwamba umaarufu ungeweza kumfanya awe na kiburi. Kwa hiyo karibu kila wiki, kwa miaka kumi na miwili, aliziungama dhambi zake kwa kasisi mzee mwenye hekima aitwaye Padre Adams. Naye aliwapa watu wenye shida sehemu kubwa ya fedha alizopata kutokana na vitabu vyake.</p> <p>Jack hakuwa mchungaji, lakini alikuwa tayari kuwaeleza watu habari za Yesu kwa maneno waliyoweza kuelewa. Huhitaji kuwa na akili nyingi au kuwa maarufu ili kushiriki tumaini lako katika Yesu. Unaweza tu kumwambia mtu, kwa upole, Yesu ana maana gani kwako.</p> <p><em>Yesu mpendwa, nisaidie kuwa tayari kuwaeleza wengine habari zako, kwa upole na kwa wema. Unilinde nisiwe na kiburi. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ni nani waliokuja kuishi Kilns vita vilipoanza?",
+    "answer": "Wasichana wa shule kutoka London, waliopelekwa mashambani ili wawe salama mbali na mabomu."
+   },
+   {
+    "question": "Jack alifanya nini na fedha alizolipwa kwa ajili ya The Screwtape Letters?",
+    "answer": "Alizitoa kuwasaidia wajane. Baadaye aliwapa watu wenye shida sehemu kubwa ya fedha alizopata kutokana na vitabu vyake."
+   },
+   {
+    "question": "Ni nani ambaye ungeweza kumweleza habari za Yesu, nawe ungesema nini?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba hatuhitaji kuwa na akili nyingi au kuwa maarufu ili kushiriki tumaini letu katika Yesu, kwa wema na kwa urahisi."
+   }
+  ],
+  "body_text": "“Mwe tayari siku zote kumjibu kila mtu awaulizaye habari za tumaini lililo ndani yenu; lakini kwa upole.” — kutoka 1 Petro 3 Mwaka 1939 vita vingine vikubwa vilianza. Jack alikuwa na umri wa miaka arobaini, mzee mno kwenda kupigana. Lakini baada ya siku chache tu, kikundi cha wasichana wa shule kutoka London kilikuja kuishi Kilns, ili wawe salama mbali na mabomu. Watoto wengine walikuja katika miaka iliyofuata. Jack hakuwa amewahi kukaa sana na watoto, lakini aligundua kwamba alifurahia kuwa nao! Jumapili moja mwaka 1940, akiwa ameketi kanisani, Jack alipata wazo la kitabu. Kingekuwa barua kutoka kwa pepo mzee kwenda kwa pepo kijana, zikimfundisha jinsi ya kumwongoza mtu mbali na Mungu. Kila kitu ndani yake kilikuwa kimepinduliwa juu chini! Kiliitwa The Screwtape Letters (Barua za Screwtape), na watu walikipenda. Barua hizo zilipochapishwa kwa mara ya kwanza katika gazeti, Jack alilipwa kwa kila moja. Alizitoa fedha hizo kuwasaidia wajane. Kisha BBC ilimwomba Jack atoe mazungumzo kwenye redio. Mwaka 1941, vita vikiendelea, watu kote Uingereza waliwasha redio zao wakasikia sauti yake nzito, ya kirafiki, akieleza kile ambacho Wakristo wanaamini. Alizungumza kwa maneno rahisi, kama mtu anayezungumza mambo ya busara kando ya meza ya jikoni. Mamia ya watu walimwandikia. Baadaye mazungumzo hayo yalifanywa kuwa kitabu, Mere Christianity (Ukristo Halisi), ambacho kimewasaidia watu wengi sana kuja kwenye imani. Jack pia alisafiri kwenda kwenye vituo vya jeshi la anga kuzungumza na wanajeshi vijana wa anga. Mwanzoni aliona jambo hilo kuwa gumu sana. Alijifunza kutumia maneno rahisi na kusikiliza maswali yao. Jack akawa maarufu. Alijua kwamba umaarufu ungeweza kumfanya awe na kiburi. Kwa hiyo karibu kila wiki, kwa miaka kumi na miwili, aliziungama dhambi zake kwa kasisi mzee mwenye hekima aitwaye Padre Adams. Naye aliwapa watu wenye shida sehemu kubwa ya fedha alizopata kutokana na vitabu vyake. Jack hakuwa mchungaji, lakini alikuwa tayari kuwaeleza watu habari za Yesu kwa maneno waliyoweza kuelewa. Huhitaji kuwa na akili nyingi au kuwa maarufu ili kushiriki tumaini lako katika Yesu. Unaweza tu kumwambia mtu, kwa upole, Yesu ana maana gani kwako. Yesu mpendwa, nisaidie kuwa tayari kuwaeleza wengine habari zako, kwa upole na kwa wema. Unilinde nisiwe na kiburi. Amina.",
+  "word_count": 349
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "sw"
+  ],
+  "order": 10,
+  "title": "Kupitia Kabati la Nguo",
+  "body_html": "<blockquote>“Msipoongoka na kuwa kama vitoto vidogo, hamtaingia kamwe katika ufalme wa mbinguni.” — kutoka Mathayo 18</blockquote> <p>Tangu alipokuwa na umri wa miaka kumi na sita hivi, Jack alikuwa amebeba picha fulani kichwani mwake: fauni, nusu mtu na nusu mbuzi, akibeba mwavuli na vifurushi katikati ya msitu uliofunikwa na theluji. Watoto wa London walipokuja Kilns mwaka 1939, alianza hadithi kuhusu watoto wanne waliopelekwa mbali na London ambao wanapata njia ya kuingia katika ulimwengu mwingine. Kisha akaiweka kando.</p> <p>Karibu miaka kumi baadaye, aliitoa tena akaimaliza. Alipomsomea Tolkien, Tolkien hakuipenda hata kidogo! Lakini rafiki mwingine, Roger Lancelyn Green, aliipenda sana. Kwa hiyo Jack aliendelea.</p> <p>Mwaka 1950 kitabu The Lion, the Witch and the Wardrobe (Simba, Mchawi na Kabati) kilichapishwa. Vitabu vingine sita vilifuata, kimoja kila mwaka. Kwa pamoja vinaitwa The Chronicles of Narnia (Hadithi za Narnia). Ndani yake yupo simba mkuu Aslan, aliye mwema, mwenye nguvu na wa ajabu. Jack alisema alikuwa amewazia jinsi Mwana wa Mungu angekuwa kama kungekuwa na ulimwengu mwingine naye akaingia ndani yake. Kitabu cha mwisho kilishinda tuzo maarufu ya vitabu vya watoto.</p> <p>Watoto kote ulimwenguni walimwandikia Jack, naye aliwajibu, kwa mkono, kwa kalamu aliyoichovya katika wino, kwa sababu hakuwahi kujifunza kupiga taipu. Wakati mmoja mtoto mmoja alikuwa na wasiwasi kwamba alimpenda Aslan kuliko Yesu. Jack alimjibu kwa upole: mambo unayoyapenda kuhusu Aslan ndiyo hasa mambo ambayo Yesu alisema na kufanya. Kwa hiyo kwa kweli, ulikuwa ukimpenda Yesu tangu mwanzo!</p> <p>Wakati wote huo, Jack alikuwa bado akimtunza Bi Moore, aliyekuwa amezeeka na kuugua. Alipolazimika kwenda kuishi katika nyumba ya kutunzia wagonjwa, Jack alimtembelea karibu kila siku, mpaka alipofariki mwaka 1951. Alikuwa ameitimiza ahadi yake kwa Paddy mpaka mwisho kabisa.</p> <p>Jack alikuwa mmoja wa watu wenye akili nyingi kuliko wote ulimwenguni. Lakini baadhi ya mambo muhimu zaidi aliyotaka kusema, aliyasema katika hadithi za watoto. Yesu anawapenda watoto, naye anasema kwamba kila mtu lazima aje kwake kama mtoto.</p> <p><em>Yesu mpendwa, asante kwa kuwa unawapenda watoto. Nisaidie kuja kwako na moyo unaokutumaini, kama mtoto. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Jack alikuwa amebeba picha gani kichwani mwake tangu alipokuwa na umri wa miaka kumi na sita hivi?",
+    "answer": "Fauni akibeba mwavuli na vifurushi katikati ya msitu uliofunikwa na theluji."
+   },
+   {
+    "question": "Jack alimwambia nini yule mtoto aliyekuwa na wasiwasi kwamba alimpenda Aslan kuliko Yesu?",
+    "answer": "Kwamba mambo ambayo mtoto huyo aliyapenda kuhusu Aslan ndiyo hasa mambo ambayo Yesu alisema na kufanya."
+   },
+   {
+    "question": "Inamaanisha nini kuja kwa Yesu kama mtoto?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Yesu anawapenda watoto na anataka kila mtu aje kwake na moyo rahisi unaomtumaini."
+   }
+  ],
+  "body_text": "“Msipoongoka na kuwa kama vitoto vidogo, hamtaingia kamwe katika ufalme wa mbinguni.” — kutoka Mathayo 18 Tangu alipokuwa na umri wa miaka kumi na sita hivi, Jack alikuwa amebeba picha fulani kichwani mwake: fauni, nusu mtu na nusu mbuzi, akibeba mwavuli na vifurushi katikati ya msitu uliofunikwa na theluji. Watoto wa London walipokuja Kilns mwaka 1939, alianza hadithi kuhusu watoto wanne waliopelekwa mbali na London ambao wanapata njia ya kuingia katika ulimwengu mwingine. Kisha akaiweka kando. Karibu miaka kumi baadaye, aliitoa tena akaimaliza. Alipomsomea Tolkien, Tolkien hakuipenda hata kidogo! Lakini rafiki mwingine, Roger Lancelyn Green, aliipenda sana. Kwa hiyo Jack aliendelea. Mwaka 1950 kitabu The Lion, the Witch and the Wardrobe (Simba, Mchawi na Kabati) kilichapishwa. Vitabu vingine sita vilifuata, kimoja kila mwaka. Kwa pamoja vinaitwa The Chronicles of Narnia (Hadithi za Narnia). Ndani yake yupo simba mkuu Aslan, aliye mwema, mwenye nguvu na wa ajabu. Jack alisema alikuwa amewazia jinsi Mwana wa Mungu angekuwa kama kungekuwa na ulimwengu mwingine naye akaingia ndani yake. Kitabu cha mwisho kilishinda tuzo maarufu ya vitabu vya watoto. Watoto kote ulimwenguni walimwandikia Jack, naye aliwajibu, kwa mkono, kwa kalamu aliyoichovya katika wino, kwa sababu hakuwahi kujifunza kupiga taipu. Wakati mmoja mtoto mmoja alikuwa na wasiwasi kwamba alimpenda Aslan kuliko Yesu. Jack alimjibu kwa upole: mambo unayoyapenda kuhusu Aslan ndiyo hasa mambo ambayo Yesu alisema na kufanya. Kwa hiyo kwa kweli, ulikuwa ukimpenda Yesu tangu mwanzo! Wakati wote huo, Jack alikuwa bado akimtunza Bi Moore, aliyekuwa amezeeka na kuugua. Alipolazimika kwenda kuishi katika nyumba ya kutunzia wagonjwa, Jack alimtembelea karibu kila siku, mpaka alipofariki mwaka 1951. Alikuwa ameitimiza ahadi yake kwa Paddy mpaka mwisho kabisa. Jack alikuwa mmoja wa watu wenye akili nyingi kuliko wote ulimwenguni. Lakini baadhi ya mambo muhimu zaidi aliyotaka kusema, aliyasema katika hadithi za watoto. Yesu anawapenda watoto, naye anasema kwamba kila mtu lazima aje kwake kama mtoto. Yesu mpendwa, asante kwa kuwa unawapenda watoto. Nisaidie kuja kwako na moyo unaokutumaini, kama mtoto. Amina.",
+  "word_count": 323
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "sw"
+  ],
+  "order": 11,
+  "title": "Harusi Hospitalini",
+  "body_html": "<blockquote>“Kule kuomba kwa imani kutamwokoa mgonjwa, na Bwana atamwinua.” — kutoka Yakobo 5</blockquote> <p>Huko New York aliishi mwandishi mwenye akili nyingi aitwaye Joy Davidman. Alikua bila kumwamini Mungu. Usiku mmoja mwaka 1946, mumewe alipokuwa na matatizo na hakuweza kurudi nyumbani, Joy alikuwa peke yake na mwenye hofu pamoja na wavulana wake wawili wadogo. Kwa mara ya kwanza maishani mwake, alihisi kwamba Mungu alikuwa pale pamoja naye. Akajikuta amepiga magoti, akiomba.</p> <p>Joy alisoma vitabu vya Jack, na mwaka 1950 akamwandikia barua. Naye akamjibu. Mwaka 1952 alikuja Uingereza, nao wakakutana kula chakula cha mchana huko Oxford. Joy alikuwa mcheshi na jasiri, naye aliweza kubishana na Jack na kushinda! Warnie naye alimpenda. Baadaye alikuja kuishi Uingereza pamoja na wanawe, David na Douglas, na ndoa yake ya kwanza ikavunjika.</p> <p>Mwaka 1954 Jack akawa profesa katika Chuo Kikuu cha Cambridge, lakini alirudi nyumbani Kilns mwishoni mwa juma.</p> <p>Mwaka 1956 Joy aliambiwa kwamba hangeweza kuendelea kukaa Uingereza. Jack hakutaka yeye na wavulana wake warudishwe walikotoka. Kwa hiyo alimwoa katika sherehe fupi na rahisi katika ofisi ya serikali, ili aweze kubaki. Aliona jambo hilo kuwa ni kumsaidia rafiki.</p> <p>Lakini miezi michache baadaye mfupa wa mguu wa Joy ulivunjika, na madaktari wakagundua kwamba alikuwa na saratani. Hawakudhani kwamba angeishi muda mrefu. Kisha Jack akatambua jambo fulani: alimpenda! Alitaka kuwa ameoana naye kweli, mbele za Mungu.</p> <p>Tarehe 21 Machi 1957, kasisi aitwaye Peter Bide, aliyewahi kuwa mwanafunzi wa Jack, aliwafungisha ndoa katika chumba cha Joy hospitalini. Kisha akaweka mikono yake juu yake na kumwombea apone. Madaktari wake walishangaa sana, kwa kuwa Joy alianza kupata nafuu! Mifupa yake ilianza kupona, na kufikia mwisho wa mwaka aliweza kutembea kwa fimbo.</p> <p>Jack na Joy waliamini kwamba Mungu alikuwa amesikia maombi yao. Mungu haponyi watu kila mara kwa njia tunayoomba. Lakini yeye hutusikia daima, na sisi tunaweza daima kuwaleta kwake watu tunaowapenda.</p> <p><em>Mungu mpendwa, asante kwa kuwa unasikia maombi yetu. Tafadhali uwe pamoja na wote walio wagonjwa, na unisaidie kuwaombea. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Joy Davidman alimjuaje Mungu?",
+    "answer": "Usiku mmoja, alipokuwa peke yake na mwenye hofu, alihisi kwamba Mungu alikuwa pale pamoja naye, akapiga magoti akaomba."
+   },
+   {
+    "question": "Nini kilitokea baada ya Peter Bide kumwombea Joy?",
+    "answer": "Madaktari walishangaa sana, kwa kuwa alianza kupata nafuu. Mifupa yake ilianza kupona, naye aliweza kutembea tena kwa fimbo."
+   },
+   {
+    "question": "Ungependa kumwombea nani leo?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu husikia maombi yetu daima, na tunaweza daima kuwaleta kwake watu tunaowapenda."
+   }
+  ],
+  "body_text": "“Kule kuomba kwa imani kutamwokoa mgonjwa, na Bwana atamwinua.” — kutoka Yakobo 5 Huko New York aliishi mwandishi mwenye akili nyingi aitwaye Joy Davidman. Alikua bila kumwamini Mungu. Usiku mmoja mwaka 1946, mumewe alipokuwa na matatizo na hakuweza kurudi nyumbani, Joy alikuwa peke yake na mwenye hofu pamoja na wavulana wake wawili wadogo. Kwa mara ya kwanza maishani mwake, alihisi kwamba Mungu alikuwa pale pamoja naye. Akajikuta amepiga magoti, akiomba. Joy alisoma vitabu vya Jack, na mwaka 1950 akamwandikia barua. Naye akamjibu. Mwaka 1952 alikuja Uingereza, nao wakakutana kula chakula cha mchana huko Oxford. Joy alikuwa mcheshi na jasiri, naye aliweza kubishana na Jack na kushinda! Warnie naye alimpenda. Baadaye alikuja kuishi Uingereza pamoja na wanawe, David na Douglas, na ndoa yake ya kwanza ikavunjika. Mwaka 1954 Jack akawa profesa katika Chuo Kikuu cha Cambridge, lakini alirudi nyumbani Kilns mwishoni mwa juma. Mwaka 1956 Joy aliambiwa kwamba hangeweza kuendelea kukaa Uingereza. Jack hakutaka yeye na wavulana wake warudishwe walikotoka. Kwa hiyo alimwoa katika sherehe fupi na rahisi katika ofisi ya serikali, ili aweze kubaki. Aliona jambo hilo kuwa ni kumsaidia rafiki. Lakini miezi michache baadaye mfupa wa mguu wa Joy ulivunjika, na madaktari wakagundua kwamba alikuwa na saratani. Hawakudhani kwamba angeishi muda mrefu. Kisha Jack akatambua jambo fulani: alimpenda! Alitaka kuwa ameoana naye kweli, mbele za Mungu. Tarehe 21 Machi 1957, kasisi aitwaye Peter Bide, aliyewahi kuwa mwanafunzi wa Jack, aliwafungisha ndoa katika chumba cha Joy hospitalini. Kisha akaweka mikono yake juu yake na kumwombea apone. Madaktari wake walishangaa sana, kwa kuwa Joy alianza kupata nafuu! Mifupa yake ilianza kupona, na kufikia mwisho wa mwaka aliweza kutembea kwa fimbo. Jack na Joy waliamini kwamba Mungu alikuwa amesikia maombi yao. Mungu haponyi watu kila mara kwa njia tunayoomba. Lakini yeye hutusikia daima, na sisi tunaweza daima kuwaleta kwake watu tunaowapenda. Mungu mpendwa, asante kwa kuwa unasikia maombi yetu. Tafadhali uwe pamoja na wote walio wagonjwa, na unisaidie kuwaombea. Amina.",
+  "word_count": 318
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "sw"
+  ],
+  "order": 12,
+  "title": "Kwenda Nyumbani",
+  "body_html": "<blockquote>“Nimevipiga vita vilivyo vizuri, mwendo nimeumaliza, imani nimeilinda.” — kutoka 2 Timotheo 4</blockquote> <p>Jack na Joy walikuwa na miaka mitatu ya furaha pamoja. Joy aliifanya nyumba ya zamani ya Kilns kuwa angavu na yenye starehe tena. Walikwenda Ireland, na Jack akamwonyesha milima aliyoipenda alipokuwa mvulana. Kisha saratani ikarudi. Wakati wa majira ya kuchipua ya mwaka 1960 walisafiri kwenda Ugiriki, nchi ambayo Jack alikuwa amesoma habari zake maisha yake yote. Miezi michache baadaye, tarehe 13 Julai 1960, Joy alifariki, Jack akiwa kando yake.</p> <p>Jack alijaa huzuni nyingi. Aliandika hisia zake za huzuni katika madaftari, kwa unyoofu, hata maswali yake magumu kuliko yote kwa Mungu. Polepole, alipata amani tena. Baadaye madaftari hayo yakawa kitabu kidogo, A Grief Observed, ambacho kimewasaidia watu wengi wenye huzuni kujua kwamba hawako peke yao. Jack pia aliwatunza wana wawili wa Joy, David na Douglas, na kuwapa makao Kilns wakati wa likizo.</p> <p>Muda si mrefu Jack mwenyewe aliugua. Mwaka 1963 aliugua sana kiasi kwamba hakutarajiwa kuishi. Lakini aliamka akaomba kikombe cha chai! Hakuogopa kufa. Yeye na Warnie walitumia wiki za utulivu pamoja, wakisoma, wakijaza mafumbo ya maneno na kukumbuka walipokuwa wavulana.</p> <p>Tarehe 22 Novemba 1963, wiki moja kabla ya kutimiza miaka sitini na mitano, Jack alifariki nyumbani Kilns. Alizikwa katika makaburi ya kanisa la Holy Trinity. Miaka kumi baadaye, Warnie alizikwa katika kaburi lile lile. Ndugu wale waliobuni Boxen pamoja walikuwa pamoja tena.</p> <p>Leo, mamilioni ya watu wamesoma vitabu vya Jack. Watoto bado wanapita katika kabati la nguo na kuingia Narnia na kukutana na Aslan, na baadhi yao baadaye wanakutana na Yesu katika Biblia na kumjua.</p> <p>Jack alimkimbia Mungu kwa miaka mingi. Lakini Mungu alimpata, na Jack aliilinda imani mpaka mwisho, katika siku za furaha na siku za huzuni nyingi. Mungu humshika kila mtu anayemtumaini, naye atakushika wewe.</p> <p><em>Mungu mpendwa, asante kwa C. S. Lewis na kwa hadithi ulizompa kusimulia. Nisaidie kukutumaini katika siku za furaha na siku za huzuni, na kuilinda imani maisha yangu yote. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Jack alifanya nini na hisia zake za huzuni baada ya Joy kufariki?",
+    "answer": "Aliziandika kwa unyoofu katika madaftari. Baadaye yakawa kitabu kidogo, A Grief Observed, ambacho kimewasaidia watu wengi wenye huzuni."
+   },
+   {
+    "question": "Jack aliomba nini alipoamka baada ya kuugua sana mwaka 1963?",
+    "answer": "Kikombe cha chai!"
+   },
+   {
+    "question": "Ni nini kinachokusaidia kumtumaini Mungu katika siku za huzuni?",
+    "answer": "Jibu lolote la kweli ni zuri hapa. Funzo la sura hii ni kwamba Mungu humshika kila mtu anayemtumaini, katika siku za furaha na siku za huzuni."
+   }
+  ],
+  "body_text": "“Nimevipiga vita vilivyo vizuri, mwendo nimeumaliza, imani nimeilinda.” — kutoka 2 Timotheo 4 Jack na Joy walikuwa na miaka mitatu ya furaha pamoja. Joy aliifanya nyumba ya zamani ya Kilns kuwa angavu na yenye starehe tena. Walikwenda Ireland, na Jack akamwonyesha milima aliyoipenda alipokuwa mvulana. Kisha saratani ikarudi. Wakati wa majira ya kuchipua ya mwaka 1960 walisafiri kwenda Ugiriki, nchi ambayo Jack alikuwa amesoma habari zake maisha yake yote. Miezi michache baadaye, tarehe 13 Julai 1960, Joy alifariki, Jack akiwa kando yake. Jack alijaa huzuni nyingi. Aliandika hisia zake za huzuni katika madaftari, kwa unyoofu, hata maswali yake magumu kuliko yote kwa Mungu. Polepole, alipata amani tena. Baadaye madaftari hayo yakawa kitabu kidogo, A Grief Observed, ambacho kimewasaidia watu wengi wenye huzuni kujua kwamba hawako peke yao. Jack pia aliwatunza wana wawili wa Joy, David na Douglas, na kuwapa makao Kilns wakati wa likizo. Muda si mrefu Jack mwenyewe aliugua. Mwaka 1963 aliugua sana kiasi kwamba hakutarajiwa kuishi. Lakini aliamka akaomba kikombe cha chai! Hakuogopa kufa. Yeye na Warnie walitumia wiki za utulivu pamoja, wakisoma, wakijaza mafumbo ya maneno na kukumbuka walipokuwa wavulana. Tarehe 22 Novemba 1963, wiki moja kabla ya kutimiza miaka sitini na mitano, Jack alifariki nyumbani Kilns. Alizikwa katika makaburi ya kanisa la Holy Trinity. Miaka kumi baadaye, Warnie alizikwa katika kaburi lile lile. Ndugu wale waliobuni Boxen pamoja walikuwa pamoja tena. Leo, mamilioni ya watu wamesoma vitabu vya Jack. Watoto bado wanapita katika kabati la nguo na kuingia Narnia na kukutana na Aslan, na baadhi yao baadaye wanakutana na Yesu katika Biblia na kumjua. Jack alimkimbia Mungu kwa miaka mingi. Lakini Mungu alimpata, na Jack aliilinda imani mpaka mwisho, katika siku za furaha na siku za huzuni nyingi. Mungu humshika kila mtu anayemtumaini, naye atakushika wewe. Mungu mpendwa, asante kwa C. S. Lewis na kwa hadithi ulizompa kusimulia. Nisaidie kukutumaini katika siku za furaha na siku za huzuni, na kuilinda imani maisha yangu yote. Amina.",
+  "word_count": 319
+ }
+}
+]

@@ -1,0 +1,99 @@
+{
+ "kind": "book",
+ "slug": "amanda-smith-autobiography-teens",
+ "language": "es",
+ "job_issue": 4828,
+ "note": [
+  "Each chapter opens with one epigraph verse (block 0). The English quotes the ESV (WEB for Psalm 68:31); the version label is dropped, as in the other translated teens editions, because the Spanish follows the shipped es corpus's modern Reina-Valera register instead. The ebible spa_rv (archaic RV1909) was not used.",
+  "`mined` rows are a verbatim substring of the cited file's rendering of that verse. Where the English quotes only part of a verse, the Spanish quotes the same part of the corpus wording (Hechos 2:17 stops at «profetizarán», as the English stops at 'shall prophesy').",
+  "`self_rendered` rows are written in RVR1960 register from the translator's knowledge of that text, not pasted from a source: please check them. 1 Corintios 14:34 is Amanda's critics' quotation in chapter 11 (uncited in the English); her own retort «Vuestros hombres callen en la iglesia» is her adaptation of 14:28, not scripture, and is not listed.",
+  "Galatians 3:28 is also paraphrased without quotation marks in chapter 8 (block 4) in the same mined wording."
+ ],
+ "references": [
+  {
+   "reference": "Juan 8:36",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "how-to-succeed-in-the-christian-life.es.json"
+  },
+  {
+   "reference": "Proverbios 24:11",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Salmos 119:130",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Colosenses 2:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Jeremías 29:13",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "ministry-of-intercession.es.json"
+  },
+  {
+   "reference": "Salmos 82:3",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "2 Corintios 12:9",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "Gálatas 3:28",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "men-who-tended-the-flock-2.es.json"
+  },
+  {
+   "reference": "Éxodo 4:12",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Filipenses 4:19",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Hechos 2:17",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "men-and-women-who-gave-everything-2.es.json"
+  },
+  {
+   "reference": "1 Corintios 14:34",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Salmos 68:31",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}

@@ -6,16 +6,27 @@ import {
 	TEENS_HUB,
 	hubFor,
 	YOUNG_READERS_HUB,
+	heroCovers,
 	hubCounts,
 	hubIsEmpty,
+	hubPaths,
 	printableLinks,
 	startPick
 } from './audienceHub';
-import type { AudienceShelf, BookSummary, SeriesSummary } from './library-public';
+import type { AudienceShelf, BookSummary, BookTile, SeriesSummary } from './library-public';
 
-const book = (slug: string): BookSummary => ({ slug, title: `${slug} title` }) as BookSummary;
+const book = (slug: string): BookSummary =>
+	({ slug, title: `${slug} title`, author: { slug: 'a', name: 'A' } }) as BookSummary;
+const tile = (slug: string): BookTile =>
+	({ kind: 'book', slug, title: slug, cover_url: '', cover_color: '' }) as BookTile;
 const series = (slug: string, books: string[]): SeriesSummary =>
-	({ slug, title: `${slug} title`, book_count: books.length, books }) as SeriesSummary;
+	({
+		slug,
+		title: `${slug} title`,
+		book_count: books.length,
+		books,
+		covers: books.map(tile)
+	}) as SeriesSummary;
 
 const shelf = (parts: Partial<AudienceShelf> = {}): AudienceShelf => ({
 	series: [],
@@ -37,6 +48,53 @@ describe('startPick', () => {
 
 	it('is null when the hub has no pick', () => {
 		expect(startPick(shelf({ series: [series('rooted', ['rooted-1'])] }))).toBeNull();
+	});
+});
+
+describe('hubPaths', () => {
+	it('keeps only the paths whose place this language has, in the hub’s order', () => {
+		const s = shelf({
+			series: [series('they-were-young', ['twy-1']), series('anchored', ['anc-1', 'anc-2'])],
+			more: [book('around-the-wicket-gate')],
+			start: 'around-the-wicket-gate'
+		});
+		// No Straight Talk here, so no adventure card.
+		expect(hubPaths(TEENS_HUB, s).map((p) => p.href)).toEqual([
+			'/books/around-the-wicket-gate',
+			'/series/anchored/',
+			'/series/they-were-young/'
+		]);
+	});
+
+	it('fans the covers behind each card and points a group at its anchor', () => {
+		const s = shelf({
+			series: [series('brave-for-god', ['bfg-1', 'bfg-2'])],
+			editions: [book('pp-children')]
+		});
+		const [brave, bedtime] = hubPaths(YOUNG_READERS_HUB, s);
+		expect(brave.covers.map((c) => c.slug)).toEqual(['bfg-1', 'bfg-2']);
+		expect(bedtime).toMatchObject({ href: '#retold', titleKey: 'audience.pathBedtime' });
+		expect(bedtime.covers.map((c) => c.slug)).toEqual(['pp-children']);
+	});
+
+	it('is empty on a hub with none of its places', () => {
+		expect(hubPaths(TEENS_HUB, shelf({ more: [book('x')] }))).toEqual([]);
+	});
+});
+
+describe('heroCovers', () => {
+	it('puts the start pick in front, between two series’ first volumes', () => {
+		const s = shelf({
+			series: [series('a', ['a-1', 'a-2']), series('b', ['b-1']), series('c', ['c-1'])],
+			more: [book('pick')],
+			start: 'pick'
+		});
+		expect(heroCovers(s).map((c) => c.slug)).toEqual(['a-1', 'pick', 'b-1']);
+	});
+
+	it('without a pick, fans the first three series', () => {
+		const s = shelf({ series: [series('a', ['a-1']), series('b', ['b-1'])] });
+		expect(heroCovers(s).map((c) => c.slug)).toEqual(['a-1', 'b-1']);
 	});
 });
 

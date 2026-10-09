@@ -52,6 +52,7 @@ const BROWSE_PAGES: { label: string; file: string }[] = [
  */
 const LEAF_PAGES: { label: string; file: string }[] = [
 	{ label: 'book', file: 'routes/books/[slug]/+page.svelte' },
+	{ label: 'leader guide', file: 'routes/books/[slug]/guide/+page.svelte' },
 	{ label: 'author', file: 'routes/authors/[slug]/+page.svelte' },
 	{ label: 'era', file: 'routes/biographies/era/[era]/+page.svelte' },
 	// Both hub routes are thin wrappers; the shell lives in the component.
@@ -66,7 +67,9 @@ const LEAF_PAGES: { label: string; file: string }[] = [
 	{ label: 'scripture book', file: 'routes/scripture/[book]/+page.svelte' },
 	{ label: 'scripture chapter', file: 'routes/scripture/[book]/[chapter]/+page.svelte' },
 	{ label: 'scripture verse', file: 'routes/scripture/[book]/[chapter]/[verse]/+page.svelte' },
-	{ label: 'error', file: 'routes/+error.svelte' }
+	{ label: 'error', file: 'routes/+error.svelte' },
+	// The "Ochorus for …" landing pages — a pitch, not a leaf, but on the shell.
+	{ label: 'ochorus for', file: 'routes/for/[group]/+page.svelte' }
 ];
 
 /**

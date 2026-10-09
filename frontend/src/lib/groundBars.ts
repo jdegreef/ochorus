@@ -2,35 +2,68 @@
 //
 // The flat dark bars along the edges of each painted ground, as the deepest
 // bar's fraction of its side. A laid-out cover crops just past them; the framed
-// composition's scrim already hides them. `groundBars.test.ts` fails when this
-// no longer matches the files: run `npm run covers:bars`.
+// composition's scrim already hides them. And the grounds too pale to wash the
+// home hero (PALE_GROUNDS). `groundBars.test.ts` fails when this no longer
+// matches the files: run `npm run covers:bars`.
 
 export const GROUND_BARS: Record<string, number> = {
 	'a-hidden-fire': 0.110,
+	'all-of-grace-teens': 0.110,
+	'anchored-1': 0.110,
+	'anchored-2': 0.110,
 	'answers-to-prayer': 0.105,
+	'at-the-back-of-the-north-wind': 0.110,
 	'baptism-with-the-holy-spirit': 0.085,
+	'c-s-lewis-a-life-children': 0.050,
+	'c-s-lewis-a-life-teens': 0.110,
 	'christ-the-healer': 0.030,
+	'confessions-teens': 0.110,
+	'corrie-ten-boom-a-life-teens': 0.110,
+	'diary-of-an-old-soul': 0.110,
 	'divine-healing': 0.050,
 	'divine-songs-for-children': 0.055,
+	'elisabeth-elliot-a-life-children': 0.045,
 	'elisabeth-elliot-a-life': 0.055,
 	'essentials-of-prayer': 0.040,
 	'george-muller-of-bristol': 0.110,
+	'grace-abounding-teens': 0.060,
 	'growing-in-wisdom': 0.110,
+	'heretics': 0.110,
 	'how-to-bring-men-to-christ': 0.055,
 	'hurlbuts-life-of-christ': 0.060,
+	'john-hyde-a-life-children': 0.065,
+	'john-hyde-a-life-teens': 0.110,
 	'lord-teach-us-to-pray-2': 0.110,
+	'mary-slessor-a-life-children': 0.040,
+	'mary-slessor-a-life-teens': 0.110,
 	'men-and-women-who-gave-everything-2': 0.110,
 	'men-who-moved-heaven': 0.110,
 	'necessity-of-prayer': 0.050,
+	'orthodoxy': 0.110,
+	'pandita-ramabai-a-life-children': 0.110,
+	'paradise-lost': 0.110,
+	'phantastes': 0.110,
 	'power-through-prayer': 0.040,
+	'real-questions-1': 0.070,
 	'religious-affections': 0.035,
+	'revelations-of-divine-love': 0.110,
 	'revival-lectures': 0.090,
 	'rise-up-men-of-god-2': 0.110,
+	'samuel-ajayi-crowther-a-life-children': 0.110,
+	'samuel-ajayi-crowther-a-life-teens': 0.070,
 	'school-of-prayer': 0.040,
+	'st-francis-of-assisi': 0.110,
+	'the-everlasting-man': 0.110,
+	'the-practice-of-the-presence-of-god': 0.110,
+	'the-princess-and-the-goblin': 0.110,
 	'the-reformed-pastor': 0.040,
 	'the-unselfishness-of-god': 0.110,
+	'they-were-young-1': 0.110,
+	'they-were-young-2': 0.110,
 	'till-he-come': 0.040,
 	'tukutendereza': 0.110,
+	'unspoken-sermons': 0.110,
+	'watchman-nee-a-life-teens': 0.110,
 	'watchman-nee-a-life': 0.040
 };
 
@@ -38,4 +71,31 @@ export const GROUND_BARS: Record<string, number> = {
 export function groundBar(coverUrl: string | null | undefined): number {
 	const m = /^\/covers\/art\/([^/]+)\.jpg$/.exec(coverUrl ?? '');
 	return (m && GROUND_BARS[m[1]]) || 0;
+}
+
+// The grounds too pale to blur across the home hero's band (mean grey over
+// 0.78): blurred under its scrim they read as mud, so the hero paints the
+// reader's tint instead.
+export const PALE_GROUNDS: ReadonlySet<string> = new Set([
+	'daughters-of-the-king-1',
+	'daughters-of-the-king-2',
+	'daughters-of-the-king-3',
+	'sons-of-the-king-1',
+	'sons-of-the-king-2',
+	'sons-of-the-king-3',
+	'the-god-of-all-comfort',
+	'the-person-and-work-of-the-holy-spirit'
+]);
+
+/** The book slug a `/covers/art/` painting was cut for (any width), or null
+ *  for anything else. Here rather than in heroArt, which re-exports it, so this
+ *  file stays loadable under bare Node (nodeLoadable.test.ts). */
+export function artSlug(url: string): string | null {
+	return url.match(/^\/covers\/art\/([a-z0-9-]+?)(?:-(?:320|640))?\.(?:webp|jpe?g|png)$/)?.[1] ?? null;
+}
+
+/** Whether a painted ground's url (full or a -320/-640 variant) is pale. */
+export function isPaleGround(url: string | null | undefined): boolean {
+	const slug = url ? artSlug(url) : null;
+	return !!slug && PALE_GROUNDS.has(slug);
 }

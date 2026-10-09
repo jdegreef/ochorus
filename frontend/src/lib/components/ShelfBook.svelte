@@ -5,6 +5,7 @@
 	import { readingTime } from '$lib/reading';
 	import { splitEdition } from '$lib/edition';
 	import { shelfHref, type ShelfBook } from '$lib/bookshelf';
+	import { chapterMeter } from './WorkCard.svelte';
 	import BookCover from './BookCover.svelte';
 	import Icon from './Icon.svelte';
 	import ProgressBar from './ProgressBar.svelte';
@@ -49,9 +50,7 @@
 			: ''
 	);
 	const meter = $derived(
-		item?.order
-			? `${t('continue.chapter')} ${item.order} / ${item.book.chapter_count} · ${item.pct}%`
-			: ''
+		item?.order ? chapterMeter(item.order, item.book.chapter_count, item.pct) : ''
 	);
 
 	let open = $state(false);

@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "mary-slessor-a-life-children",
+  "language": "en",
+  "title": "Mary Slessor (For Children)",
+  "subtitle": "",
+  "cover_byline": "Mary Slessor",
+  "description": "The true story of Mary Slessor, a factory girl from Scotland who sailed to Calabar in West Africa, learned to speak Efik like the people, walked into the forest of Okoyong where no missionary had lived, and rescued twin babies and their mothers when everyone else ran away from them. This children’s edition retells her life in short chapters made to be read aloud: a Bible verse, one part of her story, one thing it means for you, and a short prayer, with questions to talk about together.",
+  "qa": [
+   {
+    "question": "What is Mary Slessor (For Children) about?",
+    "answer": "It is a children’s version of the full-length biography of Mary Slessor. It tells how a poor girl who worked in a factory in Dundee went to Calabar, in what is now Nigeria, lived among the Okoyong people, protected twin babies and their mothers, and came to be called “Everybody’s Mother.”"
+   },
+   {
+    "question": "Who was Mary Slessor?",
+    "answer": "A Scottish missionary who lived from 1848 to 1915. She started work in a factory when she was eleven, sailed to Calabar in 1876, and spent almost forty years in what is now south-eastern Nigeria. She learned the Efik language, lived in Okoyong from 1888, helped to make peace between enemies, rescued twins, and started schools and churches along the Enyong Creek. The people called her Ma."
+   },
+   {
+    "question": "How is each chapter set out?",
+    "answer": "Every chapter is short and made to be read aloud. It begins with a Bible verse, tells one part of Mary’s story, shows one simple thing it means for you, and ends with a short prayer. Three questions follow, to talk about together."
+   },
+   {
+    "question": "Is this book too sad for children?",
+    "answer": "Some of it is sad. Mary’s father drank too much, many of the babies she cared for died, and some old customs cost people their lives. The book does not pretend otherwise, but it tells these things gently, without frightening detail. Above all it is a story of how God looked after a frightened woman, made her brave, and used her to save many lives."
+   },
+   {
+    "question": "Are the stories true?",
+    "answer": "Yes. They come from Mary Slessor’s own letters and from people who knew her, as gathered by her first biographer. A few stories, like the one about the gang leader with the lead weight, were remembered from her own telling years later, and the book says so. It also says plainly that Mary was not the first to stand against the killing of twins, and that many others, African and Scottish, helped her."
+   },
+   {
+    "question": "Who is this book for?",
+    "answer": "It is for children, to be read aloud by a grown-up or read by an older child alone. There is also a teen edition, and the full-length biography for older readers."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of the Ochorus biography Mary Slessor, from the Portraits of Courage series. The telling is our own, free to read and share.",
+  "cover_url": "/covers/art/mary-slessor-a-life-children.jpg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/mary-slessor-a-life-children.pdf?download=mary-slessor-a-life-children.pdf",
+  "cover_color": "",
+  "sort_order": 149,
+  "is_published": true,
+  "created_at": "2026-10-08T00:00:00Z",
+  "updated_at": "2026-10-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "en"
+  ],
+  "order": 1,
+  "title": "A Wild Lassie",
+  "body_html": "<blockquote>“As a father is kind to his children, so the Lord is kind to those who love him.” — from Psalm 103</blockquote> <p>On 2 December 1848, a baby girl was born in Aberdeen, a city in Scotland. Her name was Mary Mitchell Slessor.</p> <p>Mary’s mother was a gentle woman with a deep, quiet faith. Her church had a mission far away in West Africa, at a place called Calabar, and the news from it was read aloud at home. Years later Mary said, “I had my missionary enthusiasm for Calabar in particular from her.” Her family remembered that when little Mary played at keeping school, her pretend pupils were always Africans!</p> <p>But Mary’s home was not always a happy one. Her father, Robert, was a shoemaker, and he drank too much. In 1859 the family moved to Dundee, a city full of factories, hoping for a fresh start, but he still spent every penny on drink. So Mary’s mother went out to work in a factory. On Saturday nights she and Mary sat up sewing, waiting for him to come home, and praying quietly to calm their hearts.</p> <p>Still, Mary was not gloomy. She called herself “a wild lassie,” which is Scottish for a wild girl. One winter afternoon an old widow brought some girls in from the cold to sit by her fire. She pointed at the flames and warned them how dangerous it was to turn away from Jesus. Mary could not stop thinking about it. In her own words, she “repented and believed.” Inside, she found God’s love, and she never tried to frighten anyone else into it.</p> <p>Mary prayed for her father for years, and he never changed. Much later she wrote, “I know what it is to pray long years and never get the answer.” But she had found a Father in heaven who never let her down.</p> <p>Maybe something at home makes you sad or worried. God sees, and he cares, and you can tell him everything. If you ever feel unsafe at home, tell a grown-up you trust.</p> <p><em>Dear God, thank you that you are my Father in heaven and that you are always kind to me. Please look after my family, and help me to tell you everything. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Where did Mary’s love for Calabar first come from?",
+    "answer": "From her mother, who followed every report from the mission in Calabar. The reports were read aloud at home and talked over."
+   },
+   {
+    "question": "What did Mary pray for, for many years?",
+    "answer": "She prayed for her father, who drank too much. He never changed, but Mary learned to trust her Father in heaven."
+   },
+   {
+    "question": "What would you like to tell your Father in heaven today?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God is a kind Father who cares about everything that happens to us, even the hard things at home."
+   }
+  ],
+  "body_text": "“As a father is kind to his children, so the Lord is kind to those who love him.” — from Psalm 103 On 2 December 1848, a baby girl was born in Aberdeen, a city in Scotland. Her name was Mary Mitchell Slessor. Mary’s mother was a gentle woman with a deep, quiet faith. Her church had a mission far away in West Africa, at a place called Calabar, and the news from it was read aloud at home. Years later Mary said, “I had my missionary enthusiasm for Calabar in particular from her.” Her family remembered that when little Mary played at keeping school, her pretend pupils were always Africans! But Mary’s home was not always a happy one. Her father, Robert, was a shoemaker, and he drank too much. In 1859 the family moved to Dundee, a city full of factories, hoping for a fresh start, but he still spent every penny on drink. So Mary’s mother went out to work in a factory. On Saturday nights she and Mary sat up sewing, waiting for him to come home, and praying quietly to calm their hearts. Still, Mary was not gloomy. She called herself “a wild lassie,” which is Scottish for a wild girl. One winter afternoon an old widow brought some girls in from the cold to sit by her fire. She pointed at the flames and warned them how dangerous it was to turn away from Jesus. Mary could not stop thinking about it. In her own words, she “repented and believed.” Inside, she found God’s love, and she never tried to frighten anyone else into it. Mary prayed for her father for years, and he never changed. Much later she wrote, “I know what it is to pray long years and never get the answer.” But she had found a Father in heaven who never let her down. Maybe something at home makes you sad or worried. God sees, and he cares, and you can tell him everything. If you ever feel unsafe at home, tell a grown-up you trust. Dear God, thank you that you are my Father in heaven and that you are always kind to me. Please look after my family, and help me to tell you everything. Amen.",
+  "word_count": 377
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "en"
+  ],
+  "order": 2,
+  "title": "A Book on the Loom",
+  "body_html": "<blockquote>“Thy word is a lamp unto my feet, and a light unto my path.” — from Psalm 119</blockquote> <p>When Mary was eleven, she went to work in a big factory called Baxter Brothers. At first she worked for half the day and went to the factory school for the other half. Soon she worked from six in the morning until six at night, and went to school in the evenings. She got up at five to help with the housework before she left!</p> <p>The weaving-shed was so noisy that people could hardly talk. Mary became a skilled weaver, in charge of two looms at once. When she brought home her first wages, her mother cried over them and said they were too precious to spend. Two of Mary’s brothers died, and in 1870 her father died too. Mary’s wages kept the family going.</p> <p>Mary loved to learn. She propped a book open on her loom and read it while she worked, and she read as she walked to work. Most of all she read the Bible. Once a girl asked Mary for something to read, and Mary gave her own Bible, saying, “Take that; it has made me a changed lassie.”</p> <p>Mary’s church was in a poor part of the city, where gangs of rough boys ran wild. Mary began to teach them, though some boys came to spoil the meetings and threw mud at her. Years later, Mary seems to have told of one night when a gang surrounded her. Their leader swung a heavy lead weight on a string around her head, closer and closer, until it brushed her forehead. Mary did not move. At last he let it drop. “She’s game, boys,” he said, and the whole gang followed her into the meeting.</p> <p>All her life Mary was scared of crowds, of speaking in public, and even of cows in fields! But she learned to stay put when she wanted to run.</p> <p>Being brave does not mean never feeling scared. God can help you to do the right thing even when you feel afraid.</p> <p><em>Dear God, thank you for the Bible, which shows me the way to go. When I feel scared, help me to be brave and do what is right. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "How did Mary find time to read when she worked such long days?",
+    "answer": "She propped a book open on her loom and read while she worked, and she read as she walked to work."
+   },
+   {
+    "question": "What happened when the gang leader swung the lead weight around Mary’s head?",
+    "answer": "She did not move, even when it brushed her forehead. At last he dropped it, said “She’s game, boys,” and the gang followed her into the meeting."
+   },
+   {
+    "question": "What is something that makes you feel scared?",
+    "answer": "Any honest answer is good here. The chapter’s point is that being brave does not mean never feeling afraid. God can help us do what is right even when we are scared."
+   }
+  ],
+  "body_text": "“Thy word is a lamp unto my feet, and a light unto my path.” — from Psalm 119 When Mary was eleven, she went to work in a big factory called Baxter Brothers. At first she worked for half the day and went to the factory school for the other half. Soon she worked from six in the morning until six at night, and went to school in the evenings. She got up at five to help with the housework before she left! The weaving-shed was so noisy that people could hardly talk. Mary became a skilled weaver, in charge of two looms at once. When she brought home her first wages, her mother cried over them and said they were too precious to spend. Two of Mary’s brothers died, and in 1870 her father died too. Mary’s wages kept the family going. Mary loved to learn. She propped a book open on her loom and read it while she worked, and she read as she walked to work. Most of all she read the Bible. Once a girl asked Mary for something to read, and Mary gave her own Bible, saying, “Take that; it has made me a changed lassie.” Mary’s church was in a poor part of the city, where gangs of rough boys ran wild. Mary began to teach them, though some boys came to spoil the meetings and threw mud at her. Years later, Mary seems to have told of one night when a gang surrounded her. Their leader swung a heavy lead weight on a string around her head, closer and closer, until it brushed her forehead. Mary did not move. At last he let it drop. “She’s game, boys,” he said, and the whole gang followed her into the meeting. All her life Mary was scared of crowds, of speaking in public, and even of cows in fields! But she learned to stay put when she wanted to run. Being brave does not mean never feeling scared. God can help you to do the right thing even when you feel afraid. Dear God, thank you for the Bible, which shows me the way to go. When I feel scared, help me to be brave and do what is right. Amen.",
+  "word_count": 376
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "en"
+  ],
+  "order": 3,
+  "title": "“Pray for Me!”",
+  "body_html": "<blockquote>“Then I said, Here am I; send me.” — from Isaiah 6</blockquote> <p>Mary had a younger brother named John. Their mother hoped he would be a missionary one day. But John became ill. He sailed to New Zealand, hoping the warmer weather would make him better, and he died soon after he got there.</p> <p>Mary was very sad. A quiet thought began to grow in her heart: could she go to Africa in John’s place? For a long time she told no one.</p> <p>In those days West Africa was called “the white man’s grave,” because so many people from Europe caught fevers there and died. But a friend remembered Mary saying that because Calabar was a dangerous place, it was an honour to go. Few people would volunteer, so she would.</p> <p>In 1874 news came that the famous explorer David Livingstone had died in Africa. All of Scotland was stirred, and Mary decided it was time. Her sisters were working now, and she planned to send money home from Africa to look after her mother. Her mother gladly said yes. In May 1875 Mary offered herself to her church, and she was accepted as a teacher for Calabar. She was twenty-six, a factory girl who had hardly been to school.</p> <p>The night before she left Dundee to train in Edinburgh, a friend found her crying at the door of the building where she lived. “Good-bye,” Mary said. And then, with all her heart, “Pray for me!”</p> <p>On 5 August 1876 she sailed from Liverpool on a ship called the Ethiopia. Two friends came to see her off. They watched as barrels of strong drink were loaded onto the ship, to be sold in West Africa. Mary knew what drink had done to her own family. “Scores of casks!” she said. “And only one missionary!”</p> <p>Mary did not feel brave or clever. But she knew how much God loved her, and she wanted to say, “Here I am. Send me.” You can say that to God too, wherever you are.</p> <p><em>Dear God, thank you for loving me so much. Here I am. Please use me to help other people know you. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Why did Mary first start thinking about going to Africa?",
+    "answer": "Her brother John, whom their mother hoped would be a missionary, died. Mary wondered whether she could go in his place."
+   },
+   {
+    "question": "What did Mary say when she saw the barrels of drink being loaded onto her ship?",
+    "answer": "“Scores of casks! And only one missionary!” She knew how much harm drink could do."
+   },
+   {
+    "question": "Where do you think God might want to send you, even somewhere small?",
+    "answer": "Any honest answer is good here. The chapter’s point is that we do not need to feel brave or clever to say “Here I am” to God. We only need to know that he loves us."
+   }
+  ],
+  "body_text": "“Then I said, Here am I; send me.” — from Isaiah 6 Mary had a younger brother named John. Their mother hoped he would be a missionary one day. But John became ill. He sailed to New Zealand, hoping the warmer weather would make him better, and he died soon after he got there. Mary was very sad. A quiet thought began to grow in her heart: could she go to Africa in John’s place? For a long time she told no one. In those days West Africa was called “the white man’s grave,” because so many people from Europe caught fevers there and died. But a friend remembered Mary saying that because Calabar was a dangerous place, it was an honour to go. Few people would volunteer, so she would. In 1874 news came that the famous explorer David Livingstone had died in Africa. All of Scotland was stirred, and Mary decided it was time. Her sisters were working now, and she planned to send money home from Africa to look after her mother. Her mother gladly said yes. In May 1875 Mary offered herself to her church, and she was accepted as a teacher for Calabar. She was twenty-six, a factory girl who had hardly been to school. The night before she left Dundee to train in Edinburgh, a friend found her crying at the door of the building where she lived. “Good-bye,” Mary said. And then, with all her heart, “Pray for me!” On 5 August 1876 she sailed from Liverpool on a ship called the Ethiopia. Two friends came to see her off. They watched as barrels of strong drink were loaded onto the ship, to be sold in West Africa. Mary knew what drink had done to her own family. “Scores of casks!” she said. “And only one missionary!” Mary did not feel brave or clever. But she knew how much God loved her, and she wanted to say, “Here I am. Send me.” You can say that to God too, wherever you are. Dear God, thank you for loving me so much. Here I am. Please use me to help other people know you. Amen.",
+  "word_count": 361
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "en"
+  ],
+  "order": 4,
+  "title": "A Land Called Calabar",
+  "body_html": "<blockquote>“When my father and my mother forsake me, then the Lord will take me up.” — from Psalm 27</blockquote> <p>In September 1876 the Ethiopia sailed up a wide, muddy river lined with mangrove trees, and Mary arrived at Calabar. The towns there were ruled by their own people, the Efik.</p> <p>Mary learned the Efik language by ear, from the people, more than from books. In time, visitors said she spoke Efik better than many Efik people did!</p> <p>At first she lived with an older missionary couple whom everyone called Daddy and Mammy Anderson. One of Mary’s jobs was to ring the bell for morning prayers before dawn. Once she woke up to a room full of light, rushed out and rang the bell, and then found out it was only the moon! When she was late for meals and sent to bed without supper, Daddy Anderson smuggled her biscuits and bananas.</p> <p>After a visit home, Mary was put in charge of a place called Old Town. There she met the custom that would become the great cause of her life. People believed that twins brought something terrible. The twin babies were killed and left in the bush, and their mother was driven away to live alone. The Efik rulers had already agreed to ban this before Mary came, and other missionaries had been rescuing twins for years. But the old fear was strong, and it went on in secret.</p> <p>Mary rescued a pair of twins, a boy and a girl. While she was out, some relatives came and took the boy by a trick, and he was killed. Mary was heartbroken, and she was determined that the girl would live. In 1883, when Mary was so ill she had to be carried onto the ship home, she took the baby to Scotland with her. The little girl’s name was Atim Eso. In Scotland she was baptised Janie.</p> <p>Many people thought Janie should not live. But God sent Mary to take her up and love her. God never forgets any child, not even one whom everyone else turns away.</p> <p><em>Dear God, thank you that you never forget me. Please look after children who have no one to love them, and help me to be kind to them. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What funny mistake did Mary make with the morning bell?",
+    "answer": "She woke up to a room full of light and rang the bell for morning prayers, but it was only the moon!"
+   },
+   {
+    "question": "Why were twin babies in danger in Calabar?",
+    "answer": "People believed that the birth of twins meant something terrible had happened, so the babies were killed and their mother was driven away, even though the rulers had agreed to ban it."
+   },
+   {
+    "question": "How can you be kind to someone who is left out?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God never forgets any child, and he wants us to take care of people others turn away from, just as Mary took up baby Janie."
+   }
+  ],
+  "body_text": "“When my father and my mother forsake me, then the Lord will take me up.” — from Psalm 27 In September 1876 the Ethiopia sailed up a wide, muddy river lined with mangrove trees, and Mary arrived at Calabar. The towns there were ruled by their own people, the Efik. Mary learned the Efik language by ear, from the people, more than from books. In time, visitors said she spoke Efik better than many Efik people did! At first she lived with an older missionary couple whom everyone called Daddy and Mammy Anderson. One of Mary’s jobs was to ring the bell for morning prayers before dawn. Once she woke up to a room full of light, rushed out and rang the bell, and then found out it was only the moon! When she was late for meals and sent to bed without supper, Daddy Anderson smuggled her biscuits and bananas. After a visit home, Mary was put in charge of a place called Old Town. There she met the custom that would become the great cause of her life. People believed that twins brought something terrible. The twin babies were killed and left in the bush, and their mother was driven away to live alone. The Efik rulers had already agreed to ban this before Mary came, and other missionaries had been rescuing twins for years. But the old fear was strong, and it went on in secret. Mary rescued a pair of twins, a boy and a girl. While she was out, some relatives came and took the boy by a trick, and he was killed. Mary was heartbroken, and she was determined that the girl would live. In 1883, when Mary was so ill she had to be carried onto the ship home, she took the baby to Scotland with her. The little girl’s name was Atim Eso. In Scotland she was baptised Janie. Many people thought Janie should not live. But God sent Mary to take her up and love her. God never forgets any child, not even one whom everyone else turns away. Dear God, thank you that you never forget me. Please look after children who have no one to love them, and help me to be kind to them. Amen.",
+  "word_count": 377
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "en"
+  ],
+  "order": 5,
+  "title": "Stranded and Alone",
+  "body_html": "<blockquote>“My body and my heart may fail, but God is the strength of my heart for ever.” — from Psalm 73</blockquote> <p>Back in Scotland, Mary looked after baby Janie and spent time with her mother and sisters. Baby Janie had been named after Mary’s youngest sister, who was also called Janie.</p> <p>Then Mary’s sister Janie became very ill, and the doctors said only a warmer place might help. So Mary moved her sister and mother to Topsham, in the south of England. Then her other sister, Susan, died suddenly. Mary had to look after everyone.</p> <p>Mary wanted to go back to Africa. She asked her mother whether she would let her go even further, to places where no missionary had ever been. Her mother said, “You are my child, given to me by God, and I have given you back to Him. When He needs you and where He sends you, there I would have you be.”</p> <p>Mary sailed back to Calabar in November 1885. On New Year’s Day she began a long, happy letter home. It ended, “Tell me all your troubles, and be sure you take care of yourselves.” But no answer ever came. Her mother had died in December, just weeks after Mary sailed. Three months later, her sister Janie died too.</p> <p>Mary was very, very sad. On the night she heard about her mother, she still led the prayer meeting, and she told no one. Later she wrote, “Heaven is now nearer to me than Britain, and no one will be anxious about me if I go up-country.”</p> <p>Soon Mary’s home in Creek Town was full of children again: little Janie, rescued twins, and other boys and girls. Once a baby was brought whose mother had died. Mary asked the baby’s owner to lend a woman to feed it. The answer came back: “Let it die.” But Mary did not. She let it live.</p> <p>When we are very sad, God does not tell us to stop crying. He stays close, and he is our strength when we have none left.</p> <p><em>Dear God, thank you that you are with me when I am sad. Please comfort everyone who misses someone they love. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did Mary’s mother say when Mary asked if she could go to faraway places?",
+    "answer": "She said Mary was her child, given to her by God, and she had given her back to him. Wherever God sent her, that was where her mother wanted her to be."
+   },
+   {
+    "question": "What sad news came after Mary went back to Calabar?",
+    "answer": "Her mother had died a few weeks after Mary sailed, and three months later her sister Janie died too."
+   },
+   {
+    "question": "Who do you miss, or who do you know who is sad?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God stays close to us when we are sad, and he is our strength when we have none left."
+   }
+  ],
+  "body_text": "“My body and my heart may fail, but God is the strength of my heart for ever.” — from Psalm 73 Back in Scotland, Mary looked after baby Janie and spent time with her mother and sisters. Baby Janie had been named after Mary’s youngest sister, who was also called Janie. Then Mary’s sister Janie became very ill, and the doctors said only a warmer place might help. So Mary moved her sister and mother to Topsham, in the south of England. Then her other sister, Susan, died suddenly. Mary had to look after everyone. Mary wanted to go back to Africa. She asked her mother whether she would let her go even further, to places where no missionary had ever been. Her mother said, “You are my child, given to me by God, and I have given you back to Him. When He needs you and where He sends you, there I would have you be.” Mary sailed back to Calabar in November 1885. On New Year’s Day she began a long, happy letter home. It ended, “Tell me all your troubles, and be sure you take care of yourselves.” But no answer ever came. Her mother had died in December, just weeks after Mary sailed. Three months later, her sister Janie died too. Mary was very, very sad. On the night she heard about her mother, she still led the prayer meeting, and she told no one. Later she wrote, “Heaven is now nearer to me than Britain, and no one will be anxious about me if I go up-country.” Soon Mary’s home in Creek Town was full of children again: little Janie, rescued twins, and other boys and girls. Once a baby was brought whose mother had died. Mary asked the baby’s owner to lend a woman to feed it. The answer came back: “Let it die.” But Mary did not. She let it live. When we are very sad, God does not tell us to stop crying. He stays close, and he is our strength when we have none left. Dear God, thank you that you are with me when I am sad. Please comfort everyone who misses someone they love. Amen.",
+  "word_count": 366
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "en"
+  ],
+  "order": 6,
+  "title": "One Word in the Dark",
+  "body_html": "<blockquote>“Be strong and of good courage. Do not be afraid, for the Lord your God is with you wherever you go.” — from Joshua 1</blockquote> <p>A day’s journey inland was a forest country called Okoyong. No missionary lived there, and its neighbours feared its people. There were frightening customs too: when an important man died, other people were often killed to go with him.</p> <p>In 1886 the mission agreed to send Mary there, but it took many visits to get ready. “I had often a lump in my throat,” she wrote, “and my courage repeatedly threatened to take wings and fly away, though nobody guessed it!”</p> <p>On 4 August 1888 she set off by canoe in pouring rain, with five children from her house. One young man told her, “I will constantly pray for you, but you are courting death.” It was nearly dark when they landed, with four miles of forest still to walk. The forest was black and full of night noises, and Mary wanted to turn and run. She tried to pray, but she could not even move her lips. She could only look up and say, inside, one word: “Father!” It was enough.</p> <p>So the little group walked on: a boy of about eleven with a box on his head, a boy of eight, crying, a boy of three, crying even louder, a girl of five, sobbing, and last of all Mary, with a baby on her shoulders, singing silly songs to cheer them up.</p> <p>The village of Ekenge was silent, because everyone had gone to a funeral. The carriers would not bring up the luggage that night, so Mary went back through the dark forest herself, without boots, falling again and again. One boy ran after her so she would not be alone. By midnight the luggage had arrived. Her feet were so cut that she could not wear boots for six weeks. Her first Sunday there was one of the saddest days of her life. But she stayed.</p> <p>When you are too scared to pray, one word is enough. You can just say, “Father!” and God hears you.</p> <p><em>Dear God, when I am afraid, help me to remember that you are with me wherever I go. Thank you that you always hear me. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What was the one-word prayer Mary prayed in the dark forest?",
+    "answer": "“Father!” She was too frightened to say anything else, and it was enough."
+   },
+   {
+    "question": "Why did Mary walk back through the forest that night?",
+    "answer": "The carriers would not bring up the luggage, and the children had no food or dry clothes, so she went back herself to fetch the loads."
+   },
+   {
+    "question": "When could you pray Mary’s one-word prayer?",
+    "answer": "Any honest answer is good here. The chapter’s point is that when we are too scared to say much, one word like “Father!” is a real prayer, and God hears it."
+   }
+  ],
+  "body_text": "“Be strong and of good courage. Do not be afraid, for the Lord your God is with you wherever you go.” — from Joshua 1 A day’s journey inland was a forest country called Okoyong. No missionary lived there, and its neighbours feared its people. There were frightening customs too: when an important man died, other people were often killed to go with him. In 1886 the mission agreed to send Mary there, but it took many visits to get ready. “I had often a lump in my throat,” she wrote, “and my courage repeatedly threatened to take wings and fly away, though nobody guessed it!” On 4 August 1888 she set off by canoe in pouring rain, with five children from her house. One young man told her, “I will constantly pray for you, but you are courting death.” It was nearly dark when they landed, with four miles of forest still to walk. The forest was black and full of night noises, and Mary wanted to turn and run. She tried to pray, but she could not even move her lips. She could only look up and say, inside, one word: “Father!” It was enough. So the little group walked on: a boy of about eleven with a box on his head, a boy of eight, crying, a boy of three, crying even louder, a girl of five, sobbing, and last of all Mary, with a baby on her shoulders, singing silly songs to cheer them up. The village of Ekenge was silent, because everyone had gone to a funeral. The carriers would not bring up the luggage that night, so Mary went back through the dark forest herself, without boots, falling again and again. One boy ran after her so she would not be alone. By midnight the luggage had arrived. Her feet were so cut that she could not wear boots for six weeks. Her first Sunday there was one of the saddest days of her life. But she stayed. When you are too scared to pray, one word is enough. You can just say, “Father!” and God hears you. Dear God, when I am afraid, help me to remember that you are with me wherever I go. Thank you that you always hear me. Amen.",
+  "word_count": 380
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "en"
+  ],
+  "order": 7,
+  "title": "A Secret Friend",
+  "body_html": "<blockquote>“A friend loves at all times.” — from Proverbs 17</blockquote> <p>At first Mary lived in one small room in the yard of Edem, the chief of Ekenge. She shared it with the five children. On the other side of the wall were two cows, and there were goats, rats and cockroaches everywhere!</p> <p>In Okoyong it was thought very rude to leave a guest alone. So the chief’s wives and their visitors kept Mary company all day long. Mary longed for a quiet place to pray out loud. So she took a big knife called a machete into the bushes and chopped at the plants, praying at the top of her voice while the noise of the chopping covered it!</p> <p>The person who made those months bearable was the chief’s sister, Eme Ete. Everyone called her Ma Eme. She was a big woman who spoke roughly in the yard, but her voice went soft when she talked to Mary and the children. She brought Mary food and looked after her.</p> <p>Ma Eme had a secret. Nobody knew that she was Mary’s helper. When she heard that someone had been blamed for witchcraft, or was going to be hurt or killed, she found a way to warn Mary, even though it put her own life in danger. Later they made up a signal. If Ma Eme sent a certain bottle to Mary, asking for medicine, it meant: “Be ready! Someone needs help.” The chiefs began to think that Mary could read their minds. Really, much of it was Ma Eme!</p> <p>Their friendship lasted twenty-five years. Ma Eme never became a Christian, and that made Mary very sad. But Mary never forgot her kindness. She called her “my dear old friend and almost sister,” and said that “she made the saving of life so often possible in the early days.”</p> <p>God often sends us friends to help us, sometimes people we would never expect. And he wants you to be a brave, kind friend to others too.</p> <p><em>Dear God, thank you for my friends. Help me to be a kind and loyal friend, and to stand up for people who are in trouble. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "How did Mary find a way to pray out loud when she was never left alone?",
+    "answer": "She went into the bushes with a machete and chopped at the plants, praying loudly while the noise of the chopping covered her voice."
+   },
+   {
+    "question": "What was the secret signal between Mary and Ma Eme?",
+    "answer": "Ma Eme would send a certain bottle asking for medicine. It meant that someone was in danger and Mary should be ready to help."
+   },
+   {
+    "question": "Who is a good friend to you, and how can you be a good friend to someone else?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God gives us friends, sometimes ones we do not expect, and he wants us to be kind and loyal friends too."
+   }
+  ],
+  "body_text": "“A friend loves at all times.” — from Proverbs 17 At first Mary lived in one small room in the yard of Edem, the chief of Ekenge. She shared it with the five children. On the other side of the wall were two cows, and there were goats, rats and cockroaches everywhere! In Okoyong it was thought very rude to leave a guest alone. So the chief’s wives and their visitors kept Mary company all day long. Mary longed for a quiet place to pray out loud. So she took a big knife called a machete into the bushes and chopped at the plants, praying at the top of her voice while the noise of the chopping covered it! The person who made those months bearable was the chief’s sister, Eme Ete. Everyone called her Ma Eme. She was a big woman who spoke roughly in the yard, but her voice went soft when she talked to Mary and the children. She brought Mary food and looked after her. Ma Eme had a secret. Nobody knew that she was Mary’s helper. When she heard that someone had been blamed for witchcraft, or was going to be hurt or killed, she found a way to warn Mary, even though it put her own life in danger. Later they made up a signal. If Ma Eme sent a certain bottle to Mary, asking for medicine, it meant: “Be ready! Someone needs help.” The chiefs began to think that Mary could read their minds. Really, much of it was Ma Eme! Their friendship lasted twenty-five years. Ma Eme never became a Christian, and that made Mary very sad. But Mary never forgot her kindness. She called her “my dear old friend and almost sister,” and said that “she made the saving of life so often possible in the early days.” God often sends us friends to help us, sometimes people we would never expect. And he wants you to be a brave, kind friend to others too. Dear God, thank you for my friends. Help me to be a kind and loyal friend, and to stand up for people who are in trouble. Amen.",
+  "word_count": 361
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "en"
+  ],
+  "order": 8,
+  "title": "“Run!”",
+  "body_html": "<blockquote>“Rescue the poor and needy; save them from the hand of the wicked.” — from Psalm 82</blockquote> <p>About 1889, a cheerful Scottish carpenter called Charles Ovens came to build Mary a house. While he was there, a terrible thing happened. Etim, the eldest son of Chief Edem, was hit on the neck by a heavy log. Mary nursed him for two weeks, but he died.</p> <p>People in Okoyong believed that such a death must be caused by witchcraft. A witch-doctor blamed a nearby village, and armed men brought back more than a dozen men and women in chains. They were going to be made to drink poison.</p> <p>To comfort the grieving family, Mary dressed Etim for his funeral in silk, as a chief’s son deserved. Then she and Mr. Ovens took turns sitting by the prisoners, day and night, so they were never left alone. Once Mr. Ovens wanted to set them free himself, but Mary said, “Na, na. We’ll have a little more patience.”</p> <p>Then Mary saw poison beans lying on a stone. She went to her hut and prayed. When she stood up, her fear was gone. She told the chiefs there must be no killing, and she sat down at the entrance of the yard and would not move.</p> <p>That night some men led one of the women out to drink the poison. Just as she was lifting the glass, Mary touched her shoulder and whispered, “Ifehe!” That means “Run!” The two of them ran into the bush together, all the way to Mary’s house.</p> <p>Little by little, the chiefs let the prisoners go. Ma Eme knelt before her brother and begged him to let one of the last women stay, still chained, at Mary’s hut. When Etim was buried, nobody was killed to go with him. Later Chief Edem knelt and thanked Mary. “We are all weary of the old customs,” he told her. But no one could break them alone.</p> <p>Sometimes being brave means staying put and saying no. God can give you courage to stand up for someone in danger.</p> <p><em>Dear God, please give me courage to stand up for people who are being hurt, and help me to trust you when I am afraid. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did Mary do when she saw the poison beans?",
+    "answer": "She went to her hut and prayed, and her fear went away. Then she told the chiefs there must be no killing and sat at the entrance of the yard and would not move."
+   },
+   {
+    "question": "What does “Ifehe!” mean, and why did Mary whisper it?",
+    "answer": "It means “Run!” Mary whispered it to a woman who was about to drink the poison, and the two of them ran together to Mary’s house."
+   },
+   {
+    "question": "Can you think of a time when someone needed you to stand up for them?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God can give us courage to say no to what is wrong and to stand with people who are in danger."
+   }
+  ],
+  "body_text": "“Rescue the poor and needy; save them from the hand of the wicked.” — from Psalm 82 About 1889, a cheerful Scottish carpenter called Charles Ovens came to build Mary a house. While he was there, a terrible thing happened. Etim, the eldest son of Chief Edem, was hit on the neck by a heavy log. Mary nursed him for two weeks, but he died. People in Okoyong believed that such a death must be caused by witchcraft. A witch-doctor blamed a nearby village, and armed men brought back more than a dozen men and women in chains. They were going to be made to drink poison. To comfort the grieving family, Mary dressed Etim for his funeral in silk, as a chief’s son deserved. Then she and Mr. Ovens took turns sitting by the prisoners, day and night, so they were never left alone. Once Mr. Ovens wanted to set them free himself, but Mary said, “Na, na. We’ll have a little more patience.” Then Mary saw poison beans lying on a stone. She went to her hut and prayed. When she stood up, her fear was gone. She told the chiefs there must be no killing, and she sat down at the entrance of the yard and would not move. That night some men led one of the women out to drink the poison. Just as she was lifting the glass, Mary touched her shoulder and whispered, “Ifehe!” That means “Run!” The two of them ran into the bush together, all the way to Mary’s house. Little by little, the chiefs let the prisoners go. Ma Eme knelt before her brother and begged him to let one of the last women stay, still chained, at Mary’s hut. When Etim was buried, nobody was killed to go with him. Later Chief Edem knelt and thanked Mary. “We are all weary of the old customs,” he told her. But no one could break them alone. Sometimes being brave means staying put and saying no. God can give you courage to stand up for someone in danger. Dear God, please give me courage to stand up for people who are being hurt, and help me to trust you when I am afraid. Amen.",
+  "word_count": 372
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "en"
+  ],
+  "order": 9,
+  "title": "Susie",
+  "body_html": "<blockquote>“He shall gather the lambs with his arm, and carry them in his bosom.” — from Isaiah 40</blockquote> <p>Mary’s house became a safe place for babies. Some were sick, some were unwanted, and some were found alone in the forest. Sadly, many were too weak, and died. Mary laid each one in a little box among flowers and buried it with a prayer. She cried for every one.</p> <p>One day a slave woman named Iye gave birth to twins. Because of the old fear, people tore her clothes, smashed her treasured basins, and drove her out of the village. They crammed the babies into an empty box and put it on her head. When Mary heard, she ran barefoot down the forest path to meet her, and carried the box herself, because no one else would touch it. Then she stood in the blazing sun while the people cut a brand-new path straight to her house, so that Iye would not have to walk along the village path.</p> <p>The little boy had been hurt too badly, and he had already died. But the baby girl lived. Mary named her Susie, after her own sister. Susie became the darling of the house. At fourteen months she had a bad accident with boiling water. For thirteen days and nights Mary hardly put her down. In the dark Mary would hear a tiny voice saying, “Mem, Mem, Mem,” and a little hand would reach up for a kiss. Early one Sunday, Susie died in Mary’s arms. “Oh, Susie, Susie!” Mary wrote.</p> <p>But something wonderful happened. The village gathered round the grave of a twin, the very thing they used to run away from, and a woman of the old religion stood up and praised Mary’s God for the child. Mary had always refused to buy slaves, but she paid ten pounds to set Iye free. Years later, Iye was baptised.</p> <p>Jesus is like a shepherd who carries his little lambs in his arms. You are never too small for him to love and carry.</p> <p><em>Dear Jesus, thank you that you carry me close to your heart. Please look after babies and children who are sick or alone. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Why did Mary carry the box with the twin babies herself?",
+    "answer": "Because everyone was afraid of twins and no one else would touch it."
+   },
+   {
+    "question": "What did Mary do for Iye after Susie died?",
+    "answer": "Mary had always refused to buy slaves, but she paid ten pounds to set Iye free. Years later Iye was baptised."
+   },
+   {
+    "question": "How does it feel to know that Jesus carries you like a little lamb?",
+    "answer": "Any honest answer is good here. The chapter’s point is that Jesus is like a shepherd who carries his lambs close to his heart, and no one is too small for his love."
+   }
+  ],
+  "body_text": "“He shall gather the lambs with his arm, and carry them in his bosom.” — from Isaiah 40 Mary’s house became a safe place for babies. Some were sick, some were unwanted, and some were found alone in the forest. Sadly, many were too weak, and died. Mary laid each one in a little box among flowers and buried it with a prayer. She cried for every one. One day a slave woman named Iye gave birth to twins. Because of the old fear, people tore her clothes, smashed her treasured basins, and drove her out of the village. They crammed the babies into an empty box and put it on her head. When Mary heard, she ran barefoot down the forest path to meet her, and carried the box herself, because no one else would touch it. Then she stood in the blazing sun while the people cut a brand-new path straight to her house, so that Iye would not have to walk along the village path. The little boy had been hurt too badly, and he had already died. But the baby girl lived. Mary named her Susie, after her own sister. Susie became the darling of the house. At fourteen months she had a bad accident with boiling water. For thirteen days and nights Mary hardly put her down. In the dark Mary would hear a tiny voice saying, “Mem, Mem, Mem,” and a little hand would reach up for a kiss. Early one Sunday, Susie died in Mary’s arms. “Oh, Susie, Susie!” Mary wrote. But something wonderful happened. The village gathered round the grave of a twin, the very thing they used to run away from, and a woman of the old religion stood up and praised Mary’s God for the child. Mary had always refused to buy slaves, but she paid ten pounds to set Iye free. Years later, Iye was baptised. Jesus is like a shepherd who carries his little lambs in his arms. You are never too small for him to love and carry. Dear Jesus, thank you that you carry me close to your heart. Please look after babies and children who are sick or alone. Amen.",
+  "word_count": 365
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "en"
+  ],
+  "order": 10,
+  "title": "The Woman’s God",
+  "body_html": "<blockquote>“Blessed are the peacemakers: for they shall be called the children of God.” — from Matthew 5</blockquote> <p>Early in her time at Ekenge, a message came from a village eight hours’ walk away. Their chief was very ill, and if he died, some of his household would be killed. They begged the white Ma to come.</p> <p>Chief Edem and Ma Eme said it was too far, but Mary set off with a group of women. The rain poured down. First she lost her boots, then her stockings, then her broken umbrella! Soaking wet, she took off most of her clothes as well, and the women carried them on their heads in big bowls. Mary felt very silly. But later she learned that nothing she ever did won the hearts of the Okoyong people like that walk in the rain. And the chief got better, so nobody was killed.</p> <p>Some time later, Mary heard that a war was about to begin at dawn. She was ill, but she set off. She asked a chief for a drummer to go before her. He sent back word that a woman who went into a war only showed how little she knew. Mary sent this answer: “In measuring the woman’s power, you have evidently forgotten to take into account the woman’s God.”</p> <p>At the enemy village, a silent wall of armed men stood waiting. Then an old man stepped out and knelt at Mary’s feet, asking her to help them make peace. It was the chief she had walked through the rain to help! It took all day, but in the end they agreed on a fine instead of a war.</p> <p>After that, people often asked Ma to settle their quarrels. She would sit in the middle of all the shouting and quietly knit. She said it stopped her from showing she was scared, and the clicking needles calmed everyone down.</p> <p>Making peace is God’s work. When you help people stop fighting and be friends again, you are being one of God’s children, just as Jesus said.</p> <p><em>Dear God, please make me a peacemaker. When people around me are angry, help me to be calm and kind, and to help them be friends again. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What happened to Mary’s clothes on her walk through the rain?",
+    "answer": "She lost her boots, her stockings and her broken umbrella, and the women carried most of her clothes on their heads in big bowls."
+   },
+   {
+    "question": "Who stepped out of the line of armed men and knelt at Mary’s feet?",
+    "answer": "The old chief she had walked through the rain to help when he was ill. He asked her to help them make peace."
+   },
+   {
+    "question": "How could you be a peacemaker at home or at school?",
+    "answer": "Any honest answer is good here. The chapter’s point is that Jesus calls peacemakers God’s children, and we can help people stop fighting and be friends again."
+   }
+  ],
+  "body_text": "“Blessed are the peacemakers: for they shall be called the children of God.” — from Matthew 5 Early in her time at Ekenge, a message came from a village eight hours’ walk away. Their chief was very ill, and if he died, some of his household would be killed. They begged the white Ma to come. Chief Edem and Ma Eme said it was too far, but Mary set off with a group of women. The rain poured down. First she lost her boots, then her stockings, then her broken umbrella! Soaking wet, she took off most of her clothes as well, and the women carried them on their heads in big bowls. Mary felt very silly. But later she learned that nothing she ever did won the hearts of the Okoyong people like that walk in the rain. And the chief got better, so nobody was killed. Some time later, Mary heard that a war was about to begin at dawn. She was ill, but she set off. She asked a chief for a drummer to go before her. He sent back word that a woman who went into a war only showed how little she knew. Mary sent this answer: “In measuring the woman’s power, you have evidently forgotten to take into account the woman’s God.” At the enemy village, a silent wall of armed men stood waiting. Then an old man stepped out and knelt at Mary’s feet, asking her to help them make peace. It was the chief she had walked through the rain to help! It took all day, but in the end they agreed on a fine instead of a war. After that, people often asked Ma to settle their quarrels. She would sit in the middle of all the shouting and quietly knit. She said it stopped her from showing she was scared, and the clicking needles calmed everyone down. Making peace is God’s work. When you help people stop fighting and be friends again, you are being one of God’s children, just as Jesus said. Dear God, please make me a peacemaker. When people around me are angry, help me to be calm and kind, and to help them be friends again. Amen.",
+  "word_count": 371
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "en"
+  ],
+  "order": 11,
+  "title": "Joy in the Morning",
+  "body_html": "<blockquote>“Weeping may endure for a night, but joy cometh in the morning.” — from Psalm 30</blockquote> <p>In 1896 the people of Okoyong moved to new land, and Mary moved with them to a place called Akpap. While a new house was being built, she lived in a shed with two rooms and no floor.</p> <p>Then a sickness spread through her house, and four of her children died. Soon afterwards a terrible illness called smallpox swept through the land. Mary spent hours every day giving people vaccine to protect them, and turned her old house at Ekenge into a hospital. Almost everyone else ran away.</p> <p>Then Chief Edem, who had welcomed her eight years before, caught smallpox. Mary nursed him day and night, but he died in the middle of the night. There was no one to help her. So Mary made a coffin with her own hands, dug a grave, and buried her old friend. Then she walked back through the dark, wet forest to Akpap as the sun was coming up.</p> <p>For a while Mary had no heart for anything. For three years she worked alone, often ill and unable to sleep. “All is dark,” she wrote, “except above. Calvary stands safe and sure.” Calvary is the place where Jesus died for us. Year after year, nobody was baptised. But Mary said, “Christ sent me to preach the Gospel, and He will look after results.”</p> <p>And at last, the morning came. In August 1903, fifteen years after Mary first walked into Okoyong, seven young people were baptised there. Mary also brought eleven children to be baptised, and six of them were children she had rescued. Then everyone sang Psalm 103 in the Efik language. It praises the God who “redeemeth thy life from destruction,” which means that he saves our lives. Mary had seen many lives taken in Okoyong. Now its people were singing about a God who saves, and her eyes filled with tears.</p> <p>Sometimes we have to wait a long time to see good things happen. But God is at work even in the dark, and joy comes in the morning.</p> <p><em>Dear God, when I have sad days, help me to remember that you are still with me. Thank you that joy comes in the morning. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did Mary do when Chief Edem died of smallpox?",
+    "answer": "There was no one to help, so she made a coffin with her own hands, dug a grave and buried him, then walked back through the forest as the sun came up."
+   },
+   {
+    "question": "What happened in Okoyong in August 1903?",
+    "answer": "Seven young people and eleven children were baptised, six of them children Mary had rescued, and everyone sang Psalm 103 in Efik."
+   },
+   {
+    "question": "What is something good you are waiting and praying for?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God is at work even when we cannot see it, and joy comes in the morning."
+   }
+  ],
+  "body_text": "“Weeping may endure for a night, but joy cometh in the morning.” — from Psalm 30 In 1896 the people of Okoyong moved to new land, and Mary moved with them to a place called Akpap. While a new house was being built, she lived in a shed with two rooms and no floor. Then a sickness spread through her house, and four of her children died. Soon afterwards a terrible illness called smallpox swept through the land. Mary spent hours every day giving people vaccine to protect them, and turned her old house at Ekenge into a hospital. Almost everyone else ran away. Then Chief Edem, who had welcomed her eight years before, caught smallpox. Mary nursed him day and night, but he died in the middle of the night. There was no one to help her. So Mary made a coffin with her own hands, dug a grave, and buried her old friend. Then she walked back through the dark, wet forest to Akpap as the sun was coming up. For a while Mary had no heart for anything. For three years she worked alone, often ill and unable to sleep. “All is dark,” she wrote, “except above. Calvary stands safe and sure.” Calvary is the place where Jesus died for us. Year after year, nobody was baptised. But Mary said, “Christ sent me to preach the Gospel, and He will look after results.” And at last, the morning came. In August 1903, fifteen years after Mary first walked into Okoyong, seven young people were baptised there. Mary also brought eleven children to be baptised, and six of them were children she had rescued. Then everyone sang Psalm 103 in the Efik language. It praises the God who “redeemeth thy life from destruction,” which means that he saves our lives. Mary had seen many lives taken in Okoyong. Now its people were singing about a God who saves, and her eyes filled with tears. Sometimes we have to wait a long time to see good things happen. But God is at work even in the dark, and joy comes in the morning. Dear God, when I have sad days, help me to remember that you are still with me. Thank you that joy comes in the morning. Amen.",
+  "word_count": 380
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mary-slessor-a-life-children",
+   "en"
+  ],
+  "order": 12,
+  "title": "Safe",
+  "body_html": "<blockquote>“My grace is enough for you, for my power is made perfect in weakness.” — from 2 Corinthians 12</blockquote> <p>In 1903 Mary took two boys, Esien and Effiom, and a girl named Mana to Itu, an old slave market on the river. Mana had once been kidnapped and sold as a slave herself. Mary left the three of them there to teach. Within months more than three hundred people came to a church they had built themselves, and Mana had taught the women of Itu like a mother.</p> <p>She laid cement floors herself, too. “I just stir it like porridge,” she said, “turn it out, smooth it with a stick, and all the time keep praying, ‘Lord, here’s the cement, if to Thy glory, set it,’ and it has never once gone wrong.”</p> <p>By now Mary was over sixty, and her boys pushed her through the bush in a basket-chair on wheels. When her church sent no one to a town called Ikpe, she said, “I must go,” and she went. Later she said, “I begin every day, almost every journey in pain, and in such tiredness that I am sure I can’t go on, and whenever I begin, the strength comes, and it increases.”</p> <p>In January 1915 Mary became very ill. Early in the morning on 13 January, at a place called Use, with the girls she had brought up beside her, she died. People came from all around to mourn Eka kpukpru owo, which means “Everybody’s Mother.” She was buried on the hill above Duke Town, where she had first come ashore thirty-nine years before.</p> <p>By her grave sat Mammy Fuller, a Jamaican friend from Mary’s first days in Calabar. When some women began to wail, Mammy Fuller stood up. “Do not cry, do not cry,” she said. “Praise God from whom all blessings flow. Ma was a great blessing.” As the coffin was lowered, she said one word: “Safe.”</p> <p>Mary was never strong. But God gave her strength for each day, and he will do the same for you.</p> <p><em>Dear God, thank you for Mary Slessor and all the children she loved. When I feel weak, please give me strength for each day, and keep me safe with you for ever. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Who started the church at Itu?",
+    "answer": "Mary left two boys, Esien and Effiom, and a girl named Mana there. Mana had once been sold as a slave, and she taught the women of Itu like a mother."
+   },
+   {
+    "question": "What one word did Mammy Fuller say at Mary’s grave?",
+    "answer": "“Safe.” Mary, whom the people called “Everybody’s Mother,” was safe with God at last."
+   },
+   {
+    "question": "When do you feel weak or tired, and how could you ask God for strength?",
+    "answer": "Any honest answer is good here. The chapter’s point is that Mary was never strong, but God gave her strength for each day as she began, and he will do the same for you."
+   }
+  ],
+  "body_text": "“My grace is enough for you, for my power is made perfect in weakness.” — from 2 Corinthians 12 In 1903 Mary took two boys, Esien and Effiom, and a girl named Mana to Itu, an old slave market on the river. Mana had once been kidnapped and sold as a slave herself. Mary left the three of them there to teach. Within months more than three hundred people came to a church they had built themselves, and Mana had taught the women of Itu like a mother. She laid cement floors herself, too. “I just stir it like porridge,” she said, “turn it out, smooth it with a stick, and all the time keep praying, ‘Lord, here’s the cement, if to Thy glory, set it,’ and it has never once gone wrong.” By now Mary was over sixty, and her boys pushed her through the bush in a basket-chair on wheels. When her church sent no one to a town called Ikpe, she said, “I must go,” and she went. Later she said, “I begin every day, almost every journey in pain, and in such tiredness that I am sure I can’t go on, and whenever I begin, the strength comes, and it increases.” In January 1915 Mary became very ill. Early in the morning on 13 January, at a place called Use, with the girls she had brought up beside her, she died. People came from all around to mourn Eka kpukpru owo, which means “Everybody’s Mother.” She was buried on the hill above Duke Town, where she had first come ashore thirty-nine years before. By her grave sat Mammy Fuller, a Jamaican friend from Mary’s first days in Calabar. When some women began to wail, Mammy Fuller stood up. “Do not cry, do not cry,” she said. “Praise God from whom all blessings flow. Ma was a great blessing.” As the coffin was lowered, she said one word: “Safe.” Mary was never strong. But God gave her strength for each day, and he will do the same for you. Dear God, thank you for Mary Slessor and all the children she loved. When I feel weak, please give me strength for each day, and keep me safe with you for ever. Amen.",
+  "word_count": 375
+ }
+}
+]

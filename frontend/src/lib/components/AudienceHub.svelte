@@ -5,12 +5,14 @@
 	import { breadcrumbLd, collectionPage, hreflangExact } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { contentLang } from '$lib/reading';
+	import { contentLang, readingTime } from '$lib/reading';
 	import { seriesCompanion } from '$lib/series';
 	import {
+		heroCovers,
 		hubBooks,
 		hubCounts,
 		hubIsEmpty,
+		hubPaths,
 		printableLinks,
 		startPick,
 		HUB_EVENT,
@@ -23,7 +25,10 @@
 	import SeriesCard from '$lib/components/SeriesCard.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
+	import CoverStrip from '$lib/components/CoverStrip.svelte';
+	import Portrait from '$lib/components/Portrait.svelte';
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
+	import ArticleCard from '$lib/components/ArticleCard.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import ParentsNote from '$lib/components/ParentsNote.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
@@ -33,7 +38,11 @@
 	 * A young-reader hub — /young-readers/ or /teens/ — on the /series index's
 	 * anatomy: a browse shelf whose groups are the kinds of thing written for
 	 * this audience (series, retold classics, the rest of its topic shelf, plans)
-	 * with one "Start here" pick above them and a note for the adults at the end.
+	 * and a note for the adults at the end. Above the shelves it sells rather
+	 * than files: a hero band in the audience's hue with a fan of its covers,
+	 * "where do you want to start?" cards (each a feeling pointing at one real
+	 * place — a wall of covers is where a newcomer gives up), and the lives its
+	 * anthologies tell as a strip of faces, each opening its own chapter.
 	 * Everything is from `getAudienceShelf`; `hub` only says which audience and
 	 * which voice (`$lib/audienceHub`).
 	 */
@@ -50,18 +59,27 @@
 	const path = $derived(`${hub.href}/`);
 
 	const empty = $derived(hubIsEmpty(shelf));
+	const articles = $derived(shelf.articles ?? []);
+	const ready = $derived(!empty && !loadError);
 	const counts = $derived(hubCounts(shelf));
 	const start = $derived(startPick(shelf));
 	const printable = $derived(printableLinks(shelf));
+	const paths = $derived(hubPaths(hub, shelf));
+	const fan = $derived(heroCovers(shelf));
+	const people = $derived(shelf.people ?? []);
+	const leaderGuides = $derived(shelf.leader_guides ?? []);
 
 	// The page's groups, in order, each only when it has something — the jump
 	// chips are built from the same list so a chip never points at nothing.
 	const sections = $derived(
 		[
+			{ id: 'people', name: t(hub.peopleHeadingKey), count: people.length },
 			{ id: 'series', name: t('nav.series'), count: shelf.series.length },
 			{ id: 'retold', name: t('audience.retoldHeading'), count: shelf.editions.length },
 			{ id: 'more', name: t('audience.moreHeading'), count: shelf.more.length },
-			{ id: 'plans', name: t('nav.plans'), count: shelf.plans.length }
+			{ id: 'plans', name: t('nav.plans'), count: shelf.plans.length },
+			{ id: 'questions', name: t('audience.questionsHeading'), count: articles.length },
+			{ id: 'guides', name: t('audience.guidesHeading'), count: leaderGuides.length }
 		].filter((s) => s.count > 0)
 	);
 	const parentsHeading = $derived(t(hub.parentsHeadingKey));
@@ -115,7 +133,30 @@
 </svelte:head>
 
 <div class="page-col px-5 py-10" style="--pinned-offset: var(--appnav-h, 4rem)">
-	<PageHeader {title} {tagline} meta={empty || loadError ? undefined : meta} />
+	<!-- The hero band: the audience's hue (the edition ribbons' — cypress for
+	     teens, ochre for children) and, from sm, a fan of what is inside. -->
+	<section class="hub-hero" data-audience={hub.audience}>
+		<div class="min-w-0">
+			<PageHeader {title} {tagline} meta={ready ? meta : undefined} />
+			{#if ready}
+				<!-- How a hub like this travels: one parent to another, one friend to the next. -->
+				<div class="-mt-4">
+					<ShareButton
+						url={canonical}
+						{title}
+						label={t(hub.shareKey)}
+						showLabel
+						onshare={() => track(HUB_EVENT, { hub: hub.audience, action: 'share' })}
+					/>
+				</div>
+			{/if}
+		</div>
+		{#if ready && fan.length}
+			<div class="hub-fan">
+				<CoverStrip covers={fan} size="fan" priority />
+			</div>
+		{/if}
+	</section>
 	{#snippet meta()}
 		<span class="whitespace-nowrap"
 			>{counts.books} {counts.books === 1 ? t('common.bookOne') : t('common.bookMany')}</span
@@ -125,25 +166,37 @@
 			>{/if}
 	{/snippet}
 
-	{#if !empty && !loadError}
-		<!-- How a hub like this travels: one parent to another, one friend to the next. -->
-		<div class="-mt-4 mb-8">
-			<ShareButton
-				url={canonical}
-				{title}
-				label={t(hub.shareKey)}
-				showLabel
-				onshare={() => track(HUB_EVENT, { hub: hub.audience, action: 'share' })}
-			/>
-		</div>
-	{/if}
-
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if empty}
 		<EmptyState message={t('audience.none')} />
 	{:else}
-		{#if start}
+		{#if paths.length > 1}
+			<!-- A few clear first choices above the shelves, by what the reader is
+			     after rather than by format — the editor's start pick among them. -->
+			<section class="mb-10" aria-labelledby="paths-heading">
+				<h2 id="paths-heading" class="section-label mb-3">{t(hub.pathsHeadingKey)}</h2>
+				<ul class="paths">
+					{#each paths as p (p.href)}
+						<li>
+							<a
+								class="path card-lift"
+								href={p.href.startsWith('#') ? p.href : localizeHref(p.href)}
+								onclick={() => track(HUB_EVENT, { hub: hub.audience, action: 'path' })}
+							>
+								<span class="path-covers"><CoverStrip covers={p.covers} max={3} /></span>
+								<span class="min-w-0">
+									<span class="block font-display text-h3 font-semibold leading-snug text-text"
+										>{t(p.titleKey)}</span
+									>
+									<span class="mt-1 block text-small text-muted">{t(p.lineKey)} <Arrow /></span>
+								</span>
+							</a>
+						</li>
+					{/each}
+				</ul>
+			</section>
+		{:else if start}
 			<!-- One clear first choice above the shelves: a wall of covers is where
 			     a newcomer gives up. The book page's read card, pointing at the book. -->
 			<section class="mb-8" aria-labelledby="start-here">
@@ -184,8 +237,49 @@
 				{#each sections as s (s.id)}
 					<a class="tag" href="#{s.id}">{s.name}<span class="count">{s.count}</span></a>
 				{/each}
-				<a class="tag" href="#parents">{parentsHeading}</a>
+				{#if !hub.foldParents}
+					<a class="tag" href="#parents">{parentsHeading}</a>
+				{/if}
 			</nav>
+		{/if}
+
+		{#if people.length}
+			<section id="people" class="jump-anchor mb-12">
+				<GroupHeading name={t(hub.peopleHeadingKey)} />
+				<p class="-mt-2 mb-4 max-w-2xl text-small text-muted">{t(hub.peopleNoteKey)}</p>
+				<!-- Name and hook are the chapter's own title, in this language. -->
+				<ul class="cover-rail flex gap-3 pb-2" use:scrollEdges>
+					{#each people as p (`${p.book}/${p.chapter}`)}
+						<li class="person">
+							<a
+								href={localizeHref(`/books/${p.book}/${p.chapter}`)}
+								class="person-card card-lift group"
+								onclick={() => track(HUB_EVENT, { hub: hub.audience, action: 'person' })}
+							>
+								<Portrait
+									slug={p.slug}
+									name={p.name}
+									url={p.photo_url}
+									px={80}
+									class="size-20 rounded-full object-cover"
+									initialsClass="text-h3"
+									tone="hover"
+									decorative
+								/>
+								<span class="mt-3 block font-display font-semibold leading-snug text-text"
+									>{p.name}</span
+								>
+								<span class="mt-1 block text-small leading-snug text-muted">{p.hook}</span>
+								{#if p.words}
+									<span class="mt-auto block pt-2 text-eyebrow text-accent"
+										>{readingTime(p.words)}</span
+									>
+								{/if}
+							</a>
+						</li>
+					{/each}
+				</ul>
+			</section>
 		{/if}
 
 		{#if shelf.series.length}
@@ -213,7 +307,7 @@
 				</p>
 				<div class="book-grid">
 					{#each shelf.editions as book (book.slug)}
-						<BookCard {book} showAuthor />
+						<BookCard {book} showAuthor perChapter hook={hub.hooks ? book.hook : ''} />
 					{/each}
 				</div>
 			</section>
@@ -224,7 +318,13 @@
 				<GroupHeading name={t('audience.moreHeading')} count={shelf.more.length} />
 				<div class="book-grid">
 					{#each shelf.more as book (book.slug)}
-						<BookCard {book} showAuthor showSeries />
+						<BookCard
+							{book}
+							showAuthor
+							showSeries
+							perChapter
+							hook={hub.hooks ? book.hook : ''}
+						/>
 					{/each}
 				</div>
 				{#if shelf.topic}
@@ -250,10 +350,48 @@
 			</section>
 		{/if}
 
+		{#if articles.length}
+			<!-- Companions to the books, not a shelf of their own: each answers a
+			     question a reader is actually asking, then points on to a book. -->
+			<section id="questions" class="jump-anchor mb-12">
+				<GroupHeading name={t('audience.questionsHeading')} count={articles.length} />
+				<p class="-mt-2 mb-5 max-w-2xl text-small text-muted">{t('audience.questionsNote')}</p>
+				<div class="grid gap-3 sm:grid-cols-2">
+					{#each articles as article (article.slug)}
+						<ArticleCard {article} heading="h3" />
+					{/each}
+				</div>
+			</section>
+		{/if}
+
+		{#if leaderGuides.length}
+			<!-- For the adult running a group: each card opens the book's printable
+			     leader's guide, not the book. -->
+			<section id="guides" class="jump-anchor mb-12">
+				<GroupHeading name={t('audience.guidesHeading')} count={leaderGuides.length} />
+				<p class="-mt-2 mb-5 max-w-2xl text-small text-muted">{t('audience.guidesNote')}</p>
+				<div class="book-grid">
+					{#each leaderGuides as book (book.slug)}
+						<BookCard
+							{book}
+							showAuthor
+							showSeries={false}
+							link={{
+								href: `/books/${book.slug}/guide`,
+								cta: t('guide.open'),
+								label: t('guide.label'),
+								ariaLabel: `${t('guide.title').replace('%t%', book.title)} — ${book.author.name}`
+							}}
+						/>
+					{/each}
+				</div>
+			</section>
+		{/if}
+
 		<!-- The adult choosing — or reading alongside: free, no account, no ads,
-		     how a family or a class might use these, and what prints. -->
-		<section id="parents" class="jump-anchor">
-			<GroupHeading name={parentsHeading} />
+		     how a family or a class might use these, and what prints. Folded shut
+		     on the teens hub: the page is the teenager's, the note one tap away. -->
+		{#snippet parentsNote()}
 			<ParentsNote class="max-w-2xl space-y-2 text-small text-muted">
 				<p>{t('audience.parentsFree')}</p>
 				<p>{t(hub.parentsTogetherKey)}</p>
@@ -266,7 +404,18 @@
 					</ul>
 				{/if}
 			</ParentsNote>
-		</section>
+		{/snippet}
+		{#if hub.foldParents}
+			<details id="parents" class="parents-fold jump-anchor">
+				<summary class="text-small text-muted">{parentsHeading}</summary>
+				<div class="mt-3">{@render parentsNote()}</div>
+			</details>
+		{:else}
+			<section id="parents" class="jump-anchor">
+				<GroupHeading name={parentsHeading} />
+				{@render parentsNote()}
+			</section>
+		{/if}
 	{/if}
 </div>
 
@@ -277,5 +426,106 @@
 	}
 	.start-cover {
 		width: 4.5rem;
+	}
+
+	/* The hero band, tinted from the audience's hue — each hue and its -soft
+	   twin are defined in every theme, so the band follows lamplight, paper and
+	   sepia without a theme rule here. */
+	.hub-hero {
+		--hub-hue: var(--hue-ochre);
+		--hub-soft: var(--hue-ochre-soft);
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 1.5rem;
+		align-items: center;
+		margin-bottom: 2.5rem;
+		padding: 1.75rem 1.5rem 1.5rem;
+		border: 1px solid var(--border);
+		border-top: 3px solid var(--hub-hue);
+		border-radius: var(--radius-card);
+		background: linear-gradient(135deg, var(--hub-soft), var(--surface) 75%);
+	}
+	.hub-hero[data-audience='teens'] {
+		--hub-hue: var(--hue-cypress);
+		--hub-soft: var(--hue-cypress-soft);
+	}
+	/* The fan is decoration: on a phone the words lead and it steps aside. */
+	.hub-fan {
+		display: none;
+	}
+	@media (min-width: 640px) {
+		.hub-hero {
+			grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
+			gap: 2.5rem;
+			padding: 2.25rem 2.5rem;
+		}
+		.hub-fan {
+			display: block;
+			max-width: 18rem;
+			justify-self: end;
+			width: 100%;
+		}
+	}
+
+	.paths {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 0.875rem;
+	}
+	@media (min-width: 640px) {
+		.paths {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+	@media (min-width: 1024px) {
+		.paths {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+	}
+	/* Cover beside words until four fit across; then covers on top. */
+	.path {
+		display: flex;
+		align-items: center;
+		gap: 0.875rem;
+		height: 100%;
+		padding: 0.875rem 1rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: var(--surface);
+	}
+	.path-covers {
+		display: block;
+		flex: none;
+		width: 5.5rem;
+	}
+	@media (min-width: 1024px) {
+		.path {
+			flex-direction: column;
+			align-items: flex-start;
+			padding: 1rem;
+		}
+		.path-covers {
+			width: 7.5rem;
+		}
+	}
+
+	.person {
+		flex: none;
+		width: 11rem;
+	}
+	.person-card {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		height: 100%;
+		padding: 1rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: var(--surface);
+	}
+
+	.parents-fold summary {
+		cursor: pointer;
+		width: fit-content;
 	}
 </style>

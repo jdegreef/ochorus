@@ -18,7 +18,7 @@
   "source_type": "public_domain",
   "source_url": "https://standardebooks.org/ebooks/george-macdonald/the-princess-and-the-goblin",
   "attribution": "Public domain — George MacDonald's The Princess and the Goblin (1872). Text from the Standard Ebooks edition (CC0), which follows Project Gutenberg ebook 708 checked against a scan of the 1872 printing, with lightly modernised spelling. All thirty-two chapters are complete, with Curdie's rhymes and the goblins' songs.",
-  "cover_url": "/covers/the-princess-and-the-goblin.svg",
+  "cover_url": "/covers/art/the-princess-and-the-goblin.jpg",
   "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/the-princess-and-the-goblin.pdf?download=the-princess-and-the-goblin.pdf",
   "cover_color": "#6a3f63",
   "series": null,
@@ -26,8 +26,6 @@
   "sort_order": 133,
   "is_published": true,
   "created_at": "2026-10-05T05:05:20.056Z",
-  "content_digest": "",
-  "english_digest": "",
   "updated_at": "2026-10-05T05:09:02.557Z"
  }
 },

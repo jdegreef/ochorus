@@ -10,6 +10,7 @@
   "title": "Жінки, які зворушили небо",
   "subtitle": "",
   "description": "Чи замислювалися ви колись, як жінки змінювали хід історії з тихих кімнат і зі змочених слізьми лав? Ця книжка відкриває їхню таємницю: силу наполегливої молитви. Від сімнадцятирічного заступництва Моніки до віри Коррі тен Бом у концентраційному таборі — відкрийте, як ці воїтельки тримали небо відчиненим.",
+  "hook": "Від матері, яка молилася сімнадцять років, до Корі тен Бум у концтаборі.",
   "about_html": "",
   "qa": [
    {
@@ -48,9 +49,9 @@
   "publication_year": null,
   "source_type": "ai_unreviewed",
   "source_url": "",
-  "attribution": "",
+  "attribution": "© Ochorus. Оригінальна книжка Ochorus. Її можна вільно читати й поширювати.",
   "cover_url": "/covers/art/women-who-moved-heaven-2.jpg",
-  "pdf_url": "",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/women-who-moved-heaven-2.uk.pdf?download=women-who-moved-heaven-2.uk.pdf",
   "cover_color": "",
   "series": null,
   "series_position": null,

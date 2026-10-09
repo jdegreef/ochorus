@@ -1,0 +1,89 @@
+{
+ "kind": "book",
+ "slug": "c-s-lewis-a-life-children",
+ "language": "es",
+ "job_issue": 5558,
+ "pull_request": 5575,
+ "note": [
+  "The English retelling does not quote a Bible translation for most chapters: each chapter's opening blockquote is a simplified paraphrase for 8–12 year olds, cited loosely (“— from Proverbs 22”). Those nine are rendered in the same simple, child-friendly Spanish and marked self_rendered (api.takeroot.bible not used; spa_rv is archaic RV1909).",
+  "Three openings (Matthew 18, James 5, 2 Timothy 4) follow KJV wording in the English, so the Spanish pastes the modern Reina-Valera wording verbatim from a shipped es file (mined; source_file named). Matthew 18:3 keeps the RV's vosotros forms, as the corpus does.",
+  "Tag sequence identical to the English chapter by chapter; every verse sits in block 0 of its chapter. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Proverbs 22:6",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Psalm 27:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Proverbs 27:17",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Ecclesiastes 5:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Psalm 15:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 139:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "John 1:14",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Malachi 3:16",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "1 Peter 3:15",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "mined",
+   "source_file": "the-way-to-god.es.json",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "James 5:15",
+   "status": "mined",
+   "source_file": "divine-healing.es.json",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "2 Timothy 4:7",
+   "status": "mined",
+   "source_file": "baptism-with-the-holy-spirit.es.json",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}

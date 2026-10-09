@@ -7,6 +7,7 @@
 	import { getLang } from '$lib/lang.svelte';
 	import { hasStarted, readerActivity } from '$lib/readerActivity';
 	import { welcome } from '$lib/welcome.svelte';
+	import { currentBook } from '$lib/currentBook.svelte';
 	import { greetingName } from '$lib/greeting';
 	import ContinueReading from '$lib/components/ContinueReading.svelte';
 	import OnboardingCard from '$lib/components/OnboardingCard.svelte';
@@ -58,6 +59,13 @@
 	// back from storage here. A reader who has already started reading by then
 	// has found their way in, so the welcome is settled without the detour.
 	onMount(() => welcome.init());
+
+	// The book the reader is in, decided once here for the hero (its resume
+	// point) and the strip (which leaves it out). Resolved at creation from the
+	// cache — this component renders client-side only — so the hero's first
+	// paint is already theirs.
+	currentBook.refresh();
+	onMount(() => currentBook.watch());
 	$effect(() => {
 		if (!welcome.pagePending) return;
 		if (hasStarted(readerActivity(getLang()))) welcome.pageSeen();
@@ -66,7 +74,7 @@
 </script>
 
 <!-- The greeting over the painting of the book they're reading. -->
-<HomeHero {name} />
+<HomeHero current={currentBook.item} {name} />
 
 <!-- Just signed up: choose the colours of your library (once; see WelcomePalette).
      Held back while the /welcome page is still owed, so the card doesn't flash
@@ -84,8 +92,9 @@
 <WelcomeProgress />
 
 <!-- Resume first: the one thing a returning reader most likely came back to do.
-     Promoted above every other block, full width, with deep-link resume. -->
-<ContinueReading />
+     The current book is already the hero's resume point, so the strip carries
+     the rest of what's in progress (and hides when that is nothing). -->
+<ContinueReading exclude={currentBook.key} />
 
 <!-- Streak, weekly goal, reading calendar and totals — self-hides until there's
      activity to show (replaces the compact ReadingNudge on the dashboard). On a

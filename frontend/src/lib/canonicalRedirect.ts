@@ -25,6 +25,7 @@ const SLASHED_SECTIONS = new Set([
 	'articles',
 	'authors',
 	'books',
+	'for',
 	'plans',
 	'quotes',
 	'scripture',

@@ -22,7 +22,9 @@ ONE entry covers every language edition of that work. Each member is
 ``(author_slug, role)`` where ``author_slug`` is the slug of an existing
 ``Author`` (their bio) and ``role`` is one of ``PersonRole``'s values —
 ``"featured"``, ``"subject"`` or ``"mentioned"``. List position sets the display
-order (``sort_order``).
+order (``sort_order``). A member may carry a third item, the ``Chapter.order``
+that tells their story — ``(author_slug, role, chapter)`` — in the anthologies
+written for young readers, whose hubs open a face straight onto its chapter.
 
 ``manage.py seed_book_people`` upserts these into ``BookPerson`` on every deploy
 (idempotent), tolerating a member whose author bio hasn't landed yet — it skips
@@ -45,8 +47,66 @@ from __future__ import annotations
 
 # (book_slug, [(author_slug, role), ...]). See the module docstring for the
 # shape and roles.
-BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
+Member = tuple[str, str] | tuple[str, str, int]
+
+BOOK_PEOPLE: list[tuple[str, list[Member]]] = [
     ("a-hidden-fire", [("simeon-nsibambi", "subject")]),
+    # The young-reader anthologies — one chapter per life, so each member names
+    # its chapter (the hubs' "people" strip opens it). Brave for God is for ages
+    # 8–12, They Were Young for 13–17; a chapter whose subject has no bio yet
+    # (Eric Liddell, Patrick, Perpetua…) waits for one.
+    (
+        "brave-for-god",
+        [
+            ("samuel-ajayi-crowther", "subject", 1),
+            ("mary-slessor", "subject", 2),
+            ("hudson-taylor", "subject", 3),
+            ("george-muller", "subject", 4),
+            ("gladys-aylward", "subject", 5),
+            ("amy-carmichael", "subject", 6),
+        ],
+    ),
+    (
+        "brave-for-god-2",
+        [
+            ("william-carey", "subject", 1),
+            ("david-livingstone", "subject", 2),
+            ("festo-kivengere", "subject", 3),
+            ("pandita-ramabai", "subject", 4),
+            ("corrie-ten-boom", "subject", 5),
+        ],
+    ),
+    (
+        "brave-for-god-3",
+        [
+            ("jim-elliot", "subject", 2),
+            ("elisabeth-elliot", "subject", 2),
+            ("sadhu-sundar-singh", "subject", 3),
+            ("lottie-moon", "subject", 4),
+            ("helen-roseveare", "subject", 5),
+            ("simeon-nsibambi", "subject", 6),
+        ],
+    ),
+    ("brave-for-god-4", [("c-t-studd", "subject", 4)]),
+    (
+        "they-were-young-1",
+        [
+            ("charles-h-spurgeon", "subject", 2),
+            ("samson-occom", "subject", 3),
+            ("robert-murray-mcheyne", "subject", 4),
+            ("billy-graham", "subject", 5),
+            ("kanzo-uchimura", "subject", 6),
+            ("richard-allen", "subject", 7),
+        ],
+    ),
+    (
+        "they-were-young-2",
+        [
+            ("josephine-bakhita", "subject", 3),
+            ("john-newton", "subject", 6),
+            ("sadhu-sundar-singh", "subject", 7),
+        ],
+    ),
     # Pierson's authorised memoir of Müller — like A Hidden Fire, a single
     # biography, so its subject is its lone member.
     ("george-muller-of-bristol", [("george-muller", "subject")]),
@@ -149,9 +209,17 @@ BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
     # ABOUT one person, so its lone subject is who the author page files it
     # under ("Books about"); `tests_originals_series.py` keeps every volume here.
     ("c-s-lewis-a-life", [("c-s-lewis", "subject")]),
+    ("c-s-lewis-a-life-teens", [("c-s-lewis", "subject")]),
+    ("c-s-lewis-a-life-children", [("c-s-lewis", "subject")]),
     ("corrie-ten-boom-a-life", [("corrie-ten-boom", "subject")]),
+    ("corrie-ten-boom-a-life-teens", [("corrie-ten-boom", "subject")]),
+    ("corrie-ten-boom-a-life-children", [("corrie-ten-boom", "subject")]),
     ("elisabeth-elliot-a-life", [("elisabeth-elliot", "subject")]),
+    ("elisabeth-elliot-a-life-teens", [("elisabeth-elliot", "subject")]),
+    ("elisabeth-elliot-a-life-children", [("elisabeth-elliot", "subject")]),
     ("john-hyde-a-life", [("john-hyde", "subject")]),
+    ("john-hyde-a-life-teens", [("john-hyde", "subject")]),
+    ("john-hyde-a-life-children", [("john-hyde", "subject")]),
     ("key-teachings-of-a-b-simpson", [("a-b-simpson", "subject")]),
     ("key-teachings-of-a-w-tozer", [("a-w-tozer", "subject")]),
     ("key-teachings-of-amanda-berry-smith", [("amanda-berry-smith", "subject")]),
@@ -189,7 +257,14 @@ BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
     ("key-teachings-of-richard-baxter", [("richard-baxter", "subject")]),
     ("key-teachings-of-watchman-nee", [("watchman-nee", "subject")]),
     ("mary-slessor-a-life", [("mary-slessor", "subject")]),
+    ("mary-slessor-a-life-teens", [("mary-slessor", "subject")]),
+    ("mary-slessor-a-life-children", [("mary-slessor", "subject")]),
     ("pandita-ramabai-a-life", [("pandita-ramabai", "subject")]),
+    ("pandita-ramabai-a-life-teens", [("pandita-ramabai", "subject")]),
+    ("pandita-ramabai-a-life-children", [("pandita-ramabai", "subject")]),
     ("samuel-ajayi-crowther-a-life", [("samuel-ajayi-crowther", "subject")]),
+    ("samuel-ajayi-crowther-a-life-teens", [("samuel-ajayi-crowther", "subject")]),
+    ("samuel-ajayi-crowther-a-life-children", [("samuel-ajayi-crowther", "subject")]),
     ("watchman-nee-a-life", [("watchman-nee", "subject")]),
+    ("watchman-nee-a-life-teens", [("watchman-nee", "subject")]),
 ]

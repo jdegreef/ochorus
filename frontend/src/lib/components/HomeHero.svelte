@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
 	import { isArtCover } from '$lib/coverArt';
-	import { cachedResumeBooks, knownAbsent, libraryBooks, unfinishedBookSlugs } from '$lib/resumeBooks';
-	import { workSlugKey } from '$lib/reading-schema';
+	import { isPaleGround } from '$lib/groundBars';
+	import type { ResumeBook } from '$lib/resumeItems';
+	import { offerFinish } from '$lib/progress';
+	import { localizeHref } from '$lib/href';
 	import { getLang } from '$lib/lang.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { i18n } from '$lib/i18n.svelte';
@@ -13,27 +14,34 @@
 	import { dayPart } from '$lib/greeting';
 	import * as m from '$lib/paraglide/messages.js';
 	import Fleuron from '$lib/components/Fleuron.svelte';
+	import BookCover from '$lib/components/BookCover.svelte';
+	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import { chapterMeter } from '$lib/components/WorkCard.svelte';
 
 	/**
-	 * The signed-in home's painted hero: the greeting set over the painting the
-	 * reader is living in — the wordless ground (`/covers/art/…`) of the book
-	 * they most recently opened and haven't finished, i.e. the first card of
-	 * "Continue reading" below it. The book's own `cover_url` decides, read from
-	 * the same shared lists that strip uses (`$lib/resumeBooks`), so the two
-	 * agree on which book is current, a book this language lacks is skipped,
-	 * and a plate-covered book asks for no painting that doesn't exist. Anything
-	 * without a painting — a plate, a sermon, no reading yet — gets the season's
-	 * painting (SEASON_ART), labelled on the mat with the museum's own credit.
+	 * The signed-in home's painted hero: the greeting set over a painting —
+	 * the ground (`/covers/art/…`) of the book the reader is in, else the
+	 * season's (SEASON_ART) — blurred across the band as its colour.
 	 *
-	 * Picked at creation from the cache (the dashboard renders client-side only),
-	 * so a returning reader's first paint is already theirs; corrected when the
-	 * full list lands, and again on `ochorus:sync` when the sign-in merge brings
-	 * in progress from the account.
+	 * With a book in progress (`current`, decided once by HomeDashboard through
+	 * `$lib/currentBook.svelte`, which also has "Continue reading" below leave
+	 * it out) the hero is its resume point: the book's own cover, TITLED (a
+	 * bare `/covers/art/` ground is wordless on purpose and, hung alone, read
+	 * as a blank page), linked back to the chapter, beside a resume block under
+	 * the greeting — title, author, meter and a Continue button. A plate
+	 * cover has no painting to wash, so the band takes the season's. With no
+	 * book in progress, the season's painting hangs in the frame instead,
+	 * labelled on the mat with the museum's own credit.
+	 *
+	 * A PALE ground (misty whites, a flower border on cream — `PALE_GROUNDS`,
+	 * measured at build time) is not washed across the band: blurred and
+	 * scrimmed it came out as grey-brown mud. The band is the reader's tint.
 	 *
 	 * The scrim runs from the foot, where the text sits, rather than from one
-	 * side, so it needs no mirroring in a right-to-left locale; the framed plate
-	 * sits at the inline end, so it moves to the left there on its own. The
-	 * painting is decoration (alt=""); the greeting is the page's <h1>.
+	 * side, so it needs no mirroring in a right-to-left locale; the cover or
+	 * frame sits at the inline end, so it moves to the left there on its own.
+	 * The painting is decoration (alt=""); the greeting is the page's <h1>.
+	 * With nothing in progress, the resume block's place offers the library.
 	 *
 	 * The scrim is the reader's palette, deepened (--hero-tint), over a wash
 	 * that drifts very slowly — still under prefers-reduced-motion — with the
@@ -41,7 +49,8 @@
 	 * line names the season of the Church year beside the civil date, with a
 	 * dot in its liturgical colour.
 	 */
-	let { name }: { name: string } = $props();
+	let { name, current }: { name: string; current: ResumeBook | null } = $props();
+	const t = i18n.t;
 
 	// The date, season and greeting turn over with the reader's day, so a tab
 	// left open overnight is right when the reader comes back to it (as
@@ -51,62 +60,46 @@
 		new Intl.DateTimeFormat(getLang(), { weekday: 'long', day: 'numeric', month: 'long' }).format(now)
 	);
 	const season = $derived(liturgicalSeason(now));
+	const seasonArt = $derived(SEASON_ART[season]);
 
-	/** The current book's painting from `books`, null if it has none there. */
-	function paintingOf(books: { slug: string; cover_url: string | null }[]): string | null {
-		const lang = getLang();
-		const absent = knownAbsent(lang);
-		const slug = unfinishedBookSlugs().find((s) => !absent.has(workSlugKey('book', s)));
-		if (!slug) return null;
-		const url = books.find((b) => b.slug === slug)?.cover_url;
-		return url && isArtCover(url) ? url : null;
-	}
+	// The current book's painting washes the band; a plate, or a painting that
+	// failed to load, leaves it to the season's.
+	let broken = $state<string | null>(null);
+	const bookArt = $derived(current && isArtCover(current.book.cover_url) ? current.book.cover_url : null);
+	const art = $derived(bookArt && bookArt !== broken ? bookArt : seasonArt);
+	const pale = $derived(isPaleGround(art));
 
-	// The reader's own painting wins; without one, the season's ($lib/heroArt).
-	let bookArt = $state<string | null>(browser ? paintingOf(cachedResumeBooks(getLang())) : null);
-	const art = $derived(bookArt ?? SEASON_ART[season]);
+	const href = $derived(current ? localizeHref(current.href) : '');
+	const meter = $derived(current ? chapterMeter(current.order, current.chapterCount, current.pct) : '');
 
-	function repick() {
-		const lang = getLang();
-		const cached = paintingOf(cachedResumeBooks(lang));
-		if (cached) bookArt = cached;
-		if (!unfinishedBookSlugs().length) return;
-		libraryBooks(lang)
-			.then((books) => (bookArt = paintingOf(books)))
-			.catch(() => {});
-	}
-
-	onMount(() => {
-		repick();
-		window.addEventListener('ochorus:sync', repick);
-		return () => window.removeEventListener('ochorus:sync', repick);
-	});
-
-	const fallBack = () => (bookArt = null);
-
-	// The museum's label for whatever hangs in the frame, lettered on the mat
-	// like a gallery print. The frame (and so the label) is hidden on a phone;
-	// a painting with no curated entry hangs unlabelled.
+	// The museum's label for the season's painting, lettered on the mat like
+	// a gallery print — only while the frame hangs (no book in progress). The
+	// frame (and so the label) is hidden on a phone; a painting with no
+	// curated entry hangs unlabelled.
 	let label = $state<ArtCredit | null>(null);
 	$effect(() => {
-		const url = art;
+		const url = seasonArt;
 		label = null;
+		if (current) return;
 		artCredit(url).then((c) => {
-			if (art === url) label = c;
+			if (seasonArt === url) label = c;
 		});
 	});
 
 	// "Good evening, James" — for the time of the reader's day, on the same
 	// clock as the date, so the two never disagree. Parameterised so the name
 	// sits where each language wants it (Paraglide's message functions, not
-	// the param-free t() facade). The dashboard is signed-in only, so there
-	// is always a name (at worst the email's local part).
+	// the param-free t() facade); a plain greeting when there is no name to
+	// use (greetingName returns '' rather than an email handle).
 	const GREETING = {
-		morning: m.home_good_morning_named,
-		afternoon: m.home_good_afternoon_named,
-		evening: m.home_good_evening_named
+		morning: { named: m.home_good_morning_named, bare: m.home_good_morning },
+		afternoon: { named: m.home_good_afternoon_named, bare: m.home_good_afternoon },
+		evening: { named: m.home_good_evening_named, bare: m.home_good_evening }
 	};
-	const greeting = $derived(GREETING[dayPart(now.getHours(), getLang())]({ name }));
+	const greeting = $derived.by(() => {
+		const g = GREETING[dayPart(now.getHours(), getLang())];
+		return name ? g.named({ name }) : g.bare();
+	});
 
 	// The leaf draws itself on the first time the dashboard opens in a
 	// session — not on every return to it. The flag is spent on mount, so a
@@ -146,22 +139,25 @@
 	});
 </script>
 
-<section class="home-hero" class:offscreen bind:this={hero}>
+<section class="home-hero" class:offscreen class:pale bind:this={hero}>
 	<!-- The painting twice: blurred and scaled as the band's colour (a 600px
 	     ground stretched to the page width only reads as a smear), and whole,
-	     sharp and framed beside the greeting, where it is seen at its own size. -->
-	<div class="home-hero-drift">
-		<img
-			src={art}
-			alt=""
-			class="home-hero-wash"
-			use:hydrateSrc={{ src: art }}
-			onerror={fallBack}
-		/>
-	</div>
+	     sharp and framed beside the greeting, where it is seen at its own size.
+	     A pale ground is not washed at all: the band is the tint (.pale). -->
+	{#if !pale}
+		<div class="home-hero-drift">
+			<img
+				src={art}
+				alt=""
+				class="home-hero-wash"
+				use:hydrateSrc={{ src: art }}
+				onerror={() => (broken = bookArt)}
+			/>
+		</div>
+	{/if}
 	<div class="home-hero-scrim"></div>
 	<div class="home-hero-grain"></div>
-	<div class="page-col relative flex items-end justify-between gap-8 px-5 pb-10 pt-16 sm:pb-12 sm:pt-20">
+	<div class="page-col relative flex items-end justify-between gap-8 px-5 pb-10 pt-14 sm:pb-12 sm:pt-16">
 		<div class="min-w-0">
 			<p class="eyebrow home-hero-date mb-3">
 				{today}<span class="sr-only">, </span><span class="home-hero-season"
@@ -171,21 +167,57 @@
 			</p>
 			<h1 class="text-display home-hero-ink">{greeting}</h1>
 			<div class="mt-4"><Fleuron {drawIn} /></div>
-		</div>
-		<span class="home-hero-frame">
-			<img
-				src={art}
-				alt=""
-				class="home-hero-plate"
-				use:hydrateSrc={{ src: art }}
-				onerror={fallBack}
-			/>
-			{#if label}
-				<span class="home-hero-label" title={label.credit}
-					>{label.artist}<br /><i>{label.title}</i>{label.year ? `, ${label.year}` : ''}</span
-				>
+			{#if current}
+				<div class="home-hero-resume mt-6">
+					<p class="eyebrow home-hero-date">{t('continue.title')}</p>
+					<a {href} class="home-hero-ink mt-1.5 block font-display text-h3 font-semibold">{current.title}</a>
+					<p class="home-hero-sub mt-0.5 text-small">{current.author}</p>
+					<div class="mt-3 flex items-center gap-4">
+						<a {href} class="btn btn-sm home-hero-cta">{t('book.continue')}</a>
+						<div class="min-w-0 flex-1">
+							<!-- Done with it, or done with it elsewhere: finish it from here,
+							     as its card in "Continue reading" offered (with an Undo). -->
+							<div class="flex items-baseline justify-between gap-3">
+								<p class="home-hero-sub text-micro">{meter}</p>
+								<button
+									type="button"
+									class="home-hero-sub home-hero-finish text-micro"
+									aria-label="{t('continue.markFinished')}: {current.title}"
+									onclick={() => current && offerFinish(current.slug)}>{t('continue.markFinished')}</button
+								>
+							</div>
+							<div class="home-hero-meter mt-1">
+								<ProgressBar percent={current.pct} label="{current.title}: {meter}" />
+							</div>
+						</div>
+					</div>
+				</div>
+			{:else}
+				<!-- Nothing open: a way on, so the band is never just a greeting
+				     over an empty middle (Continue reading below is empty too). -->
+				<div class="home-hero-resume mt-6">
+					<p class="home-hero-sub text-small">{t('home.discoverNext')}</p>
+					<a href={localizeHref('/books')} class="btn btn-sm home-hero-cta mt-3">{t('home.browseLibrary')}</a>
+				</div>
 			{/if}
-		</span>
+		</div>
+		{#if current}
+			<!-- The book itself, titled, as a way back in. Decorative to a screen
+			     reader beside the titled link above (tabindex -1, aria-hidden): one
+			     link per destination in the reading order. -->
+			<a {href} class="home-hero-book" tabindex="-1" aria-hidden="true">
+				<BookCover book={current.book} rounded="rounded-sm" />
+			</a>
+		{:else}
+			<span class="home-hero-frame">
+				<img src={seasonArt} alt="" class="home-hero-plate" use:hydrateSrc={{ src: seasonArt }} />
+				{#if label}
+					<span class="home-hero-label" title={label.credit}
+						>{label.artist}<br /><i>{label.title}</i>{label.year ? `, ${label.year}` : ''}</span
+					>
+				{/if}
+			</span>
+		{/if}
 	</div>
 </section>
 
@@ -229,6 +261,14 @@
 			animation: none;
 			transform: scale(1.18);
 		}
+	}
+	/* A pale painting is not washed across the band (see the header): the
+	   band is the reader's tint, lit a little from the top so it reads as a
+	   ground, not a flat fill. */
+	.pale {
+		background:
+			radial-gradient(ellipse 90% 120% at 50% 0%, color-mix(in srgb, var(--hero-tint) 72%, var(--hero-ink)) 0%, transparent 70%),
+			var(--hero-tint);
 	}
 	.home-hero-scrim,
 	.home-hero-grain {
@@ -278,10 +318,53 @@
 		text-align: center;
 		overflow-wrap: anywhere;
 	}
+	/* The book in progress, titled, standing in the frame's place: a cover
+	   lifted off the band, not matted — it is a book to open, not a print. */
+	.home-hero-book {
+		display: none;
+		flex-shrink: 0;
+		width: 10rem;
+		box-shadow: var(--hero-plate-shadow);
+		border-radius: var(--radius-sm);
+		transition: transform var(--duration-fast) ease;
+	}
+	.home-hero-book:hover {
+		transform: translateY(-3px);
+	}
 	@media (min-width: 640px) {
-		.home-hero-frame {
+		.home-hero-frame,
+		.home-hero-book {
 			display: block;
 		}
+	}
+	.home-hero-resume {
+		max-width: 26rem;
+	}
+	.home-hero-sub {
+		color: color-mix(in srgb, var(--hero-ink) 80%, transparent);
+	}
+	/* The button in the mat's cream and ink — the frame's own pair, measured
+	   by palettes.test.ts — so it belongs to the hero in every palette. */
+	.home-hero-cta {
+		background: var(--hero-mat);
+		color: var(--hero-mat-ink);
+		border-color: var(--hero-gilt);
+	}
+	.home-hero-cta:hover {
+		text-decoration: none;
+		border-color: var(--hero-gilt-deep);
+	}
+	.home-hero-finish:hover,
+	.home-hero-finish:focus-visible {
+		color: var(--hero-ink);
+		text-decoration: underline;
+	}
+	/* The meter on the dark band: an ink track, a gilt fill. */
+	.home-hero-meter :global(.track) {
+		background: var(--hero-ink-faint);
+	}
+	.home-hero-meter :global(.fill) {
+		background: var(--hero-gilt);
 	}
 	.home-hero-ink {
 		color: var(--hero-ink);

@@ -54,6 +54,10 @@ export interface BookSummary {
 	/** The name a cover sets as its byline when it is not the author's — the
 	 *  person a house-written life or companion is about. Blank = the author. */
 	cover_byline?: string;
+	/** An editor's one-line pitch ("Amy Carmichael refused to make missions
+	 *  sound nice…"), in this edition's language; "" for most books. Optional:
+	 *  an API behind this build omits it, and the card shows no line. */
+	hook?: string;
 	author: Author;
 	source_type: SourceType;
 	cover_color: string;
@@ -118,7 +122,8 @@ export const COVER_BOOK_KEYS = [
 	'word_count',
 	'has_modern_edition'
 ] as const;
-export const COVER_BOOK_DROPS = ['topics', 'created_at', 'updated_at'] as const;
+// `hook`: only the teens hub's cards show it, and they read the full summary.
+export const COVER_BOOK_DROPS = ['topics', 'created_at', 'updated_at', 'hook'] as const;
 export const COVER_AUTHOR_KEYS = ['slug', 'name', 'birth_year'] as const;
 export type CoverBook = Pick<BookSummary, (typeof COVER_BOOK_KEYS)[number]> & {
 	author: Pick<Author, (typeof COVER_AUTHOR_KEYS)[number]>;
@@ -337,6 +342,11 @@ export interface BookDetail extends BookSummary {
 	 * build omits it cleanly.
 	 */
 	guides?: ArticleLink[];
+	/**
+	 * A printable leader's guide exists for this edition (/books/<slug>/guide —
+	 * `getBookGuide`). Optional so an API running behind this build omits it.
+	 */
+	has_leader_guide?: boolean;
 }
 
 /** An article surfaced on another page that links to it — a reader's guide on
@@ -1422,8 +1432,27 @@ export type HubAudience = Exclude<SeriesAudience, 'adults'>;
  * `more` (the rest of the audience's curated topic). `plans` read nothing but
  * those books. No English fallback — a language with none gets empty lists.
  */
+/** One face in a hub's people strip: a life its series' anthologies tell in
+ *  one chapter (`_audience_people`). `name` and `hook` are that chapter's own
+ *  title in the page's language, split at its colon. */
+export interface HubPerson {
+	/** The person's bio — the portrait's crop. */
+	slug: string;
+	name: string;
+	hook: string;
+	photo_url: string;
+	/** Where the story is: `/books/<book>/<chapter>`. */
+	book: string;
+	chapter: number;
+	/** The chapter's words — its reading time; null with no text yet. */
+	words: number | null;
+}
+
 export interface AudienceShelf {
 	series: SeriesSummary[];
+	/** The series' anthologies as faces, each opening its chapter. Optional: an
+	 *  API behind this build omits it, and the page draws no strip. */
+	people?: HubPerson[];
 	/** The "(For Children)" / "(For Teens)" retellings no series above holds. */
 	editions: BookSummary[];
 	/** The rest of the audience's topic shelf, in its curator's order. */
@@ -1437,6 +1466,12 @@ export interface AudienceShelf {
 	printable: string[];
 	/** Every language the hub has something in — its hreflang and sitemap. */
 	languages: string[];
+	/** The audience topic's articles here, in its curator's order — the teens'
+	 *  Big Questions. Optional: an API behind this build omits it. */
+	articles?: ArticleSummary[];
+	/** The hub's books with a printable leader's guide in this language, in
+	 *  shelf order. Optional: an API behind this build omits it. */
+	leader_guides?: BookSummary[];
 }
 
 /** A reading age — a series' own fields, which a book's reuse, so
@@ -1448,6 +1483,45 @@ export interface Ages {
 
 export const getAudienceShelf = (audience: HubAudience, language = 'en', f?: Fetch) =>
 	apiFetch<AudienceShelf>(`/api/library/audiences/${audience}/?language=${language}`, {}, f);
+
+/** One week of a leader's guide: the guide file's own summary, memory verse
+ *  and activity, joined to its chapter's title, answered questions, opening
+ *  verse and closing prayer (`BookGuideView`). `verse` / `prayer` are "" when
+ *  the chapter has none. All plain text. */
+export interface GuideWeek {
+	chapter: number;
+	title: string;
+	summary: string;
+	memory_verse: { text: string; reference: string };
+	activity: { title: string; materials: string; steps: string[] };
+	questions: { question: string; answer: string }[];
+	verse: string;
+	prayer: string;
+}
+
+/** A young-reader edition's printable leader's guide. */
+export interface BookGuide {
+	book: BookSummary;
+	/** Every language this work has a guide in — the page's hreflang. */
+	available_languages: string[];
+	intro: string[];
+	weeks: GuideWeek[];
+}
+
+/** A leader's guide in exactly `language` — no English fallback: a language
+ *  with no guide is a 404, as the API answers. */
+export const getBookGuide = (slug: string, language = 'en', f?: Fetch) =>
+	apiFetch<BookGuide>(
+		`/api/library/books/${slug}/guide/?language=${encodeURIComponent(language)}`,
+		{},
+		f
+	);
+
+/** The slugs the hubs list with a leader's guide, each once, in hub order —
+ *  the guide route's prerender entries. */
+export const guideSlugs = (shelves: Pick<AudienceShelf, 'leader_guides'>[]): string[] => [
+	...new Set(shelves.flatMap((s) => (s.leader_guides ?? []).map((b) => b.slug)))
+];
 
 /** Each hub's `languages` without building either shelf (`AudienceLanguagesView`). */
 export const listAudienceLanguages = (f?: Fetch) =>

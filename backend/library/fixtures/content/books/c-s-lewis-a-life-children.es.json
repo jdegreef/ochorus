@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "c-s-lewis-a-life-children",
+  "language": "es",
+  "title": "C. S. Lewis (Para niños)",
+  "subtitle": "",
+  "cover_byline": "C. S. Lewis",
+  "description": "La historia verdadera de Jack Lewis, un niño de Belfast al que le encantaban los libros, que perdió a su mamá, dejó de creer en Dios, fue herido en una guerra y cumplió una promesa durante treinta años, hasta que Dios lo encontró en un paseo junto a un río y en un viaje en sidecar, y que de grande escribió Las crónicas de Narnia. Esta edición para niños vuelve a contar su vida en capítulos cortos, hechos para leer en voz alta: un versículo de la Biblia, una parte de su historia, una cosa que eso quiere decir para ti y una oración corta, con preguntas para conversar juntos.",
+  "qa": [
+   {
+    "question": "¿De qué trata C. S. Lewis (Para niños)?",
+    "answer": "Es una versión para niños de la biografía completa de C. S. Lewis. Cuenta cómo un niño llamado Jack perdió a su mamá y dejó de creer en Dios, cómo Dios lo volvió a encontrar ya de grande, y cómo pasó el resto de su vida hablándole a la gente de Jesús en libros, por la radio y en las historias de Narnia."
+   },
+   {
+    "question": "¿Quién fue C. S. Lewis?",
+    "answer": "Un escritor y profesor que nació en Belfast en 1898 y murió en Oxford en 1963. Su familia y sus amigos lo llamaban Jack. Enseñó en las universidades de Oxford y Cambridge, habló de la fe cristiana por la radio durante la Segunda Guerra Mundial y escribió muchos libros, entre ellos las siete Crónicas de Narnia."
+   },
+   {
+    "question": "¿Cómo está organizado cada capítulo?",
+    "answer": "Cada capítulo es corto y está hecho para leerse en voz alta. Empieza con un versículo de la Biblia, cuenta una parte de la historia de Jack, muestra una cosa sencilla que eso quiere decir para ti y termina con una oración corta. Después vienen tres preguntas para conversar juntos."
+   },
+   {
+    "question": "¿Es este libro demasiado triste para los niños?",
+    "answer": "Algunas partes son tristes. La mamá de Jack murió cuando él tenía nueve años, a él lo hirieron en una guerra y su esposa Joy murió de cáncer. El libro no finge que no fue así. Pero cuenta estas cosas con delicadeza, para niños, y es sobre todo la historia de cómo Dios nunca dejó de buscar a Jack, y estuvo con él en los días felices y en los tristes."
+   },
+   {
+    "question": "¿Son verdaderas las historias?",
+    "answer": "Sí. Vienen de las propias cartas de Jack, de los diarios de su hermano Warnie y de las personas que lo conocieron. Cuando no se sabe algo con seguridad, como el año exacto en que Jack se arrodilló y oró por primera vez, el libro lo dice. Los libros de Jack todavía tienen derechos de autor, así que este libro cuenta su historia con sus propias palabras, y no vuelve a contar las historias de Narnia. Para disfrutarlas, lee los libros mismos."
+   },
+   {
+    "question": "¿Para quién es este libro?",
+    "answer": "Es para niños: para que un adulto lo lea en voz alta, o para que un niño más grande lo lea solo. También hay una edición para adolescentes y la biografía completa, para lectores mayores."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Una nueva narración de Ochorus, para lectores jóvenes, de la biografía de Ochorus C. S. Lewis, de la serie Retratos de valentía. La forma de contarla es nuestra, libre para leer y compartir.",
+  "cover_url": "/covers/art/c-s-lewis-a-life-children.jpg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/c-s-lewis-a-life-children.es.pdf?download=c-s-lewis-a-life-children.es.pdf",
+  "cover_color": "",
+  "sort_order": 153,
+  "is_published": true,
+  "created_at": "2026-10-08T00:00:00Z",
+  "updated_at": "2026-10-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "es"
+  ],
+  "order": 1,
+  "title": "Un niño llamado Jack",
+  "body_html": "<blockquote>“Enseña al niño el camino que debe seguir, y cuando sea viejo no se apartará de él.” — de Proverbios 22</blockquote> <p>El 29 de noviembre de 1898 nació un bebé en Belfast, una ciudad muy ocupada, llena de astilleros, en el norte de Irlanda. Sus padres lo llamaron Clive Staples Lewis. Su papá, Albert, era abogado y le encantaban los libros y las palabras largas. Su mamá, Flora, era tranquila y divertida, y muy inteligente. Había ido a la universidad y había estudiado matemáticas, en una época en que casi ninguna mujer lo hacía.</p> <p>Clive tenía un hermano mayor llamado Warren, o Warnie, que tenía tres años más que él. Cuando Clive todavía era muy pequeño, decidió que no le gustaba su nombre. ¡Quería que lo llamaran Jacksie, como un perro que vivía cerca! No contestaba a ningún otro nombre hasta que su familia se dio por vencida. Pronto Jacksie se convirtió en Jack, y Jack se quedó para el resto de su vida.</p> <p>Jack y Warnie eran los mejores amigos. Un día Warnie llevó al cuarto de los niños la tapa de una lata de galletas, cubierta de musgo, ramitas y flores, como un jardín diminuto. A Jack le pareció lo más hermoso que había visto en su vida. Le dio un anhelo extraño y dulce, la sensación de desear algo que no sabía nombrar. Esa sensación volvió a él una y otra vez durante toda su vida.</p> <p>Juntos, los dos hermanos inventaron todo un mundo imaginario llamado Boxen. La parte de Jack era la Tierra de los Animales, llena de animales vestidos y de caballeros con armadura.</p> <p>Cuando Jack tenía seis años, la familia se mudó a una casa nueva y grande llamada Little Lea. Tenía pasillos largos y desvanes, y había libros en casi todos los cuartos. En las tardes de lluvia Jack exploraba la casa y leía y leía. Nadie le dijo nunca que un libro no era para él.</p> <p>Los papás de Jack lo llevaban a la iglesia y le enseñaron a orar. Durante mucho tiempo pareció que lo había olvidado todo. Pero Dios no se había olvidado de Jack. Las cosas que aprendemos de Dios cuando somos pequeños son como semillas. Dios sabe cómo hacerlas crecer, aun muchos años después.</p> <p><em>Querido Dios, gracias por mi familia y por todo lo que estoy aprendiendo de ti. Por favor, haz que esas semillitas crezcan en mí. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Por qué a Clive Staples Lewis lo llamaban Jack?",
+    "answer": "Cuando era muy pequeño decidió que lo llamaran Jacksie, como un perro que vivía cerca. El nombre pasó a ser Jacks y después Jack, y lo conservó toda su vida."
+   },
+   {
+    "question": "¿Qué mundo imaginario inventaron Jack y Warnie?",
+    "answer": "Un mundo llamado Boxen. La parte de Jack era la Tierra de los Animales, con animales vestidos y caballeros con armadura."
+   },
+   {
+    "question": "¿Qué has aprendido de Dios que esperas que crezca en ti?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo: lo que aprendemos de Dios cuando somos pequeños es como una semilla, y Dios puede hacerla crecer, aun muchos años después."
+   }
+  ],
+  "body_text": "“Enseña al niño el camino que debe seguir, y cuando sea viejo no se apartará de él.” — de Proverbios 22 El 29 de noviembre de 1898 nació un bebé en Belfast, una ciudad muy ocupada, llena de astilleros, en el norte de Irlanda. Sus padres lo llamaron Clive Staples Lewis. Su papá, Albert, era abogado y le encantaban los libros y las palabras largas. Su mamá, Flora, era tranquila y divertida, y muy inteligente. Había ido a la universidad y había estudiado matemáticas, en una época en que casi ninguna mujer lo hacía. Clive tenía un hermano mayor llamado Warren, o Warnie, que tenía tres años más que él. Cuando Clive todavía era muy pequeño, decidió que no le gustaba su nombre. ¡Quería que lo llamaran Jacksie, como un perro que vivía cerca! No contestaba a ningún otro nombre hasta que su familia se dio por vencida. Pronto Jacksie se convirtió en Jack, y Jack se quedó para el resto de su vida. Jack y Warnie eran los mejores amigos. Un día Warnie llevó al cuarto de los niños la tapa de una lata de galletas, cubierta de musgo, ramitas y flores, como un jardín diminuto. A Jack le pareció lo más hermoso que había visto en su vida. Le dio un anhelo extraño y dulce, la sensación de desear algo que no sabía nombrar. Esa sensación volvió a él una y otra vez durante toda su vida. Juntos, los dos hermanos inventaron todo un mundo imaginario llamado Boxen. La parte de Jack era la Tierra de los Animales, llena de animales vestidos y de caballeros con armadura. Cuando Jack tenía seis años, la familia se mudó a una casa nueva y grande llamada Little Lea. Tenía pasillos largos y desvanes, y había libros en casi todos los cuartos. En las tardes de lluvia Jack exploraba la casa y leía y leía. Nadie le dijo nunca que un libro no era para él. Los papás de Jack lo llevaban a la iglesia y le enseñaron a orar. Durante mucho tiempo pareció que lo había olvidado todo. Pero Dios no se había olvidado de Jack. Las cosas que aprendemos de Dios cuando somos pequeños son como semillas. Dios sabe cómo hacerlas crecer, aun muchos años después. Querido Dios, gracias por mi familia y por todo lo que estoy aprendiendo de ti. Por favor, haz que esas semillitas crezcan en mí. Amén.",
+  "word_count": 401
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "es"
+  ],
+  "order": 2,
+  "title": "El verano más triste",
+  "body_html": "<blockquote>“Aunque mi padre y mi madre me dejen, el Señor me recogerá.” — del Salmo 27</blockquote> <p>En 1908, cuando Jack tenía nueve años, su mamá se enfermó mucho. Los médicos descubrieron que tenía cáncer. La operaron en casa, y por un tiempo pareció que mejoraba. Pero en el verano la enfermedad volvió. La casa se llenó de enfermeras y médicos, y a los niños no los dejaban entrar en su cuarto. En realidad no entendían lo que estaba pasando.</p> <p>Jack oró. Le habían enseñado que Dios contesta la oración, y le pidió a Dios con todo su corazón que sanara a su mamá. El 23 de agosto de 1908, su mamá murió. Entonces Jack oró para que ella volviera a la vida. Pero no volvió.</p> <p>Fue un año terrible para toda la familia. Ese mismo año el papá de Jack perdió también a su propio padre y a su hermano. Estaba tan lleno de tristeza que no sabía cómo consolar a sus hijos. Así que Jack y Warnie se agarraron fuerte el uno al otro. Desde entonces estuvieron más unidos que nunca.</p> <p>Menos de un mes después, su papá mandó a los dos niños a un internado en Inglaterra. Cruzaron el mar en un barco de noche, y Jack nunca olvidó lo triste que fue ese viaje. La escuela era mala, con un director muy duro, y Jack fue muy infeliz allí.</p> <p>Pero aun allí pasó algo bueno. En esa escuela llevaron a Jack a una iglesia donde se enseñaba la fe cristiana como algo que de verdad importaba. Por un tiempo empezó a orar en serio y a leer su Biblia.</p> <p>Cuando Jack creció, todavía recordaba lo que se sentía perder a su mamá. Por eso pudo escribir cartas amables y cariñosas a mucha gente que estaba triste. Dios no impidió que pasara aquella cosa triste. Pero estuvo con Jack, y usó hasta esa tristeza para bien. Cuando estamos tristes, Dios está cerca de nosotros también.</p> <p><em>Querido Dios, gracias porque estás cerca de los niños que están tristes. Por favor, consuela a cualquier persona que conozco que haya perdido a alguien a quien ama. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué pidió Jack en oración cuando su mamá estaba enferma?",
+    "answer": "Pidió que se sanara. Cuando ella murió, pidió que volviera a la vida."
+   },
+   {
+    "question": "¿Adónde mandó el papá de Jack a los niños después de que murió su mamá?",
+    "answer": "A un internado en Inglaterra. Cruzaron el mar en un barco de noche, y la escuela era un lugar duro y triste."
+   },
+   {
+    "question": "¿Con quién podrías hablar, o a quién podrías orar, cuando te sientes triste?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo: Dios está cerca de nosotros cuando estamos tristes, y puede usar hasta las cosas tristes para bien."
+   }
+  ],
+  "body_text": "“Aunque mi padre y mi madre me dejen, el Señor me recogerá.” — del Salmo 27 En 1908, cuando Jack tenía nueve años, su mamá se enfermó mucho. Los médicos descubrieron que tenía cáncer. La operaron en casa, y por un tiempo pareció que mejoraba. Pero en el verano la enfermedad volvió. La casa se llenó de enfermeras y médicos, y a los niños no los dejaban entrar en su cuarto. En realidad no entendían lo que estaba pasando. Jack oró. Le habían enseñado que Dios contesta la oración, y le pidió a Dios con todo su corazón que sanara a su mamá. El 23 de agosto de 1908, su mamá murió. Entonces Jack oró para que ella volviera a la vida. Pero no volvió. Fue un año terrible para toda la familia. Ese mismo año el papá de Jack perdió también a su propio padre y a su hermano. Estaba tan lleno de tristeza que no sabía cómo consolar a sus hijos. Así que Jack y Warnie se agarraron fuerte el uno al otro. Desde entonces estuvieron más unidos que nunca. Menos de un mes después, su papá mandó a los dos niños a un internado en Inglaterra. Cruzaron el mar en un barco de noche, y Jack nunca olvidó lo triste que fue ese viaje. La escuela era mala, con un director muy duro, y Jack fue muy infeliz allí. Pero aun allí pasó algo bueno. En esa escuela llevaron a Jack a una iglesia donde se enseñaba la fe cristiana como algo que de verdad importaba. Por un tiempo empezó a orar en serio y a leer su Biblia. Cuando Jack creció, todavía recordaba lo que se sentía perder a su mamá. Por eso pudo escribir cartas amables y cariñosas a mucha gente que estaba triste. Dios no impidió que pasara aquella cosa triste. Pero estuvo con Jack, y usó hasta esa tristeza para bien. Cuando estamos tristes, Dios está cerca de nosotros también. Querido Dios, gracias porque estás cerca de los niños que están tristes. Por favor, consuela a cualquier persona que conozco que haya perdido a alguien a quien ama. Amén.",
+  "word_count": 356
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "es"
+  ],
+  "order": 3,
+  "title": "El Gran Knock",
+  "body_html": "<blockquote>“El hierro afila el hierro, y un amigo afila a otro amigo.” — de Proverbios 27</blockquote> <p>A medida que Jack crecía, fue a otras escuelas. En algún momento entre los doce y los catorce años, dejó de creer en Dios sin decir nada. Una parte de la razón era que orar se había vuelto una preocupación para él. Pensaba que una oración no contaba si no sentía exactamente los sentimientos correctos, y se quedaba despierto noche tras noche, intentándolo una y otra vez. Cuando dejó de creer, sintió como si dejara en el suelo una carga pesada. No se lo contó a nadie.</p> <p>Cuando tenía quince años, Jack visitó a Arthur Greeves, que vivía al otro lado de la calle y estaba enfermo en cama. Sobre la cama había un libro de viejas historias del norte, sobre dioses y héroes. ¡A Jack también le encantaban esas historias! Los dos se hicieron amigos enseguida, y se escribieron cartas durante casi cincuenta años.</p> <p>Ese mismo año mandaron a Jack a vivir con un maestro llamado el señor Kirkpatrick, en un pueblo de Surrey. La familia lo llamaba el Gran Knock. Caminando desde la estación, Jack dijo que el campo era más salvaje de lo que esperaba. ¡El señor Kirkpatrick se detuvo y le preguntó qué quería decir con “salvaje”! Cada frase que Jack decía tenía que estar bien pensada. A Jack le encantaba. Aprendió a pensar con claridad y a leer griego, latín, francés e italiano.</p> <p>El señor Kirkpatrick no creía en Dios, y Jack tampoco. Pero un día de 1916, mientras esperaba un tren, Jack compró un libro llamado Phantastes, de un escritor escocés llamado George MacDonald. Era la historia de un joven en una tierra de hadas, como de sueño. Jack no sabía que MacDonald era cristiano. Pero la historia le tocó el corazón con una clase nueva de bondad. Años después, Jack llamó a MacDonald su maestro.</p> <p>Jack no estaba buscando a Dios para nada. Pero Dios ya estaba obrando, por medio de un maestro muy agudo, un buen amigo y una historia comprada en una estación. Dios puede usar toda clase de personas y de libros para ayudarnos, aun antes de que nos demos cuenta.</p> <p><em>Querido Dios, gracias por mis maestros y mis amigos. Por favor, usa buenos libros y buenas personas para acercarme más a ti. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Quién era el Gran Knock?",
+    "answer": "El señor Kirkpatrick, el maestro con quien Jack vivió en Surrey. Le enseñó a Jack a pensar con claridad y a leer muchos idiomas."
+   },
+   {
+    "question": "¿Qué libro compró Jack mientras esperaba un tren?",
+    "answer": "Phantastes, de George MacDonald. Era una historia sobre una tierra de hadas, y le tocó el corazón a Jack con una clase nueva de bondad."
+   },
+   {
+    "question": "¿Quién te ayuda a pensar y a aprender?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo: Dios puede usar maestros, amigos y buenos libros para ayudarnos, aun antes de que sepamos que él está obrando."
+   }
+  ],
+  "body_text": "“El hierro afila el hierro, y un amigo afila a otro amigo.” — de Proverbios 27 A medida que Jack crecía, fue a otras escuelas. En algún momento entre los doce y los catorce años, dejó de creer en Dios sin decir nada. Una parte de la razón era que orar se había vuelto una preocupación para él. Pensaba que una oración no contaba si no sentía exactamente los sentimientos correctos, y se quedaba despierto noche tras noche, intentándolo una y otra vez. Cuando dejó de creer, sintió como si dejara en el suelo una carga pesada. No se lo contó a nadie. Cuando tenía quince años, Jack visitó a Arthur Greeves, que vivía al otro lado de la calle y estaba enfermo en cama. Sobre la cama había un libro de viejas historias del norte, sobre dioses y héroes. ¡A Jack también le encantaban esas historias! Los dos se hicieron amigos enseguida, y se escribieron cartas durante casi cincuenta años. Ese mismo año mandaron a Jack a vivir con un maestro llamado el señor Kirkpatrick, en un pueblo de Surrey. La familia lo llamaba el Gran Knock. Caminando desde la estación, Jack dijo que el campo era más salvaje de lo que esperaba. ¡El señor Kirkpatrick se detuvo y le preguntó qué quería decir con “salvaje”! Cada frase que Jack decía tenía que estar bien pensada. A Jack le encantaba. Aprendió a pensar con claridad y a leer griego, latín, francés e italiano. El señor Kirkpatrick no creía en Dios, y Jack tampoco. Pero un día de 1916, mientras esperaba un tren, Jack compró un libro llamado Phantastes, de un escritor escocés llamado George MacDonald. Era la historia de un joven en una tierra de hadas, como de sueño. Jack no sabía que MacDonald era cristiano. Pero la historia le tocó el corazón con una clase nueva de bondad. Años después, Jack llamó a MacDonald su maestro. Jack no estaba buscando a Dios para nada. Pero Dios ya estaba obrando, por medio de un maestro muy agudo, un buen amigo y una historia comprada en una estación. Dios puede usar toda clase de personas y de libros para ayudarnos, aun antes de que nos demos cuenta. Querido Dios, gracias por mis maestros y mis amigos. Por favor, usa buenos libros y buenas personas para acercarme más a ti. Amén.",
+  "word_count": 390
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "es"
+  ],
+  "order": 4,
+  "title": "Una promesa en tiempos de guerra",
+  "body_html": "<blockquote>“Cuando le hagas una promesa a Dios, no tardes en cumplirla.” — de Eclesiastés 5</blockquote> <p>En 1917 Jack fue a estudiar a la Universidad de Oxford. Pero había una gran guerra, y la mayoría de los jóvenes estaban lejos, peleando. Como venía de Irlanda, Jack no estaba obligado a entrar en el ejército. Pero decidió entrar de todos modos.</p> <p>Jack se preparó para ser oficial en un colegio llamado Keble. Compartía el cuarto con un joven llamado Paddy Moore. Paddy tenía casi exactamente su misma edad, y era irlandés como él. La mamá de Paddy, la señora Moore, había venido a Oxford para estar cerca de su hijo, con la hermanita de él, Maureen. La señora Moore era cariñosa y amable, y recibió a Jack con los brazos abiertos.</p> <p>Jack y Paddy se hicieron una promesa. Si uno de los dos moría en la guerra, el que quedara vivo cuidaría del padre o la madre del otro. Maureen se acordaba de esa promesa muchos años después.</p> <p>Jack llegó a las trincheras de Francia el día en que cumplió diecinueve años, el 29 de noviembre de 1917. Hacía frío, había mucho barro y todo era muy duro. En abril de 1918 hubo una batalla cerca de un pueblo francés. Unos sesenta soldados enemigos salieron del humo con las manos en alto y se rindieron ante Jack. ¡Él dijo que simplemente se alegraba de que quisieran hacerlo!</p> <p>Al día siguiente, el 15 de abril de 1918, una granada estalló muy cerca de Jack. Lo hirió en la mano, en la pierna y en el pecho. Un sargento bondadoso llamado Harry Ayres, que había cuidado de Jack, estaba a su lado, y murió. Jack se recuperó en el hospital, pero un pedacito de metal se le quedó en el pecho durante muchos años.</p> <p>Paddy no volvió a casa. Había desaparecido en los combates de marzo, y más tarde su familia supo que lo habían matado. Tenía solo diecinueve años.</p> <p>La guerra es algo muy triste, y a Jack no le gustaba hablar de ella. Pero aun cuando todavía no creía en Dios, Dios tenía la vida de Jack en sus manos. Y Jack había hecho una promesa. Ahora tendría que cumplirla.</p> <p><em>Querido Dios, por favor acompaña hoy a todos los que están en peligro por la guerra. Ayúdame a cumplir mis promesas, aunque sea difícil. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué promesa se hicieron Jack y Paddy?",
+    "answer": "Que si uno de los dos moría en la guerra, el que quedara vivo cuidaría del padre o la madre del otro."
+   },
+   {
+    "question": "¿Qué le pasó a Jack el 15 de abril de 1918?",
+    "answer": "Una granada estalló a su lado y lo hirió en la mano, en la pierna y en el pecho. El sargento bondadoso que estaba junto a él, Harry Ayres, murió."
+   },
+   {
+    "question": "¿Por qué es importante cumplir una promesa?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo: una promesa importa, y Dios nos ayuda a cumplir nuestras promesas aunque sea difícil."
+   }
+  ],
+  "body_text": "“Cuando le hagas una promesa a Dios, no tardes en cumplirla.” — de Eclesiastés 5 En 1917 Jack fue a estudiar a la Universidad de Oxford. Pero había una gran guerra, y la mayoría de los jóvenes estaban lejos, peleando. Como venía de Irlanda, Jack no estaba obligado a entrar en el ejército. Pero decidió entrar de todos modos. Jack se preparó para ser oficial en un colegio llamado Keble. Compartía el cuarto con un joven llamado Paddy Moore. Paddy tenía casi exactamente su misma edad, y era irlandés como él. La mamá de Paddy, la señora Moore, había venido a Oxford para estar cerca de su hijo, con la hermanita de él, Maureen. La señora Moore era cariñosa y amable, y recibió a Jack con los brazos abiertos. Jack y Paddy se hicieron una promesa. Si uno de los dos moría en la guerra, el que quedara vivo cuidaría del padre o la madre del otro. Maureen se acordaba de esa promesa muchos años después. Jack llegó a las trincheras de Francia el día en que cumplió diecinueve años, el 29 de noviembre de 1917. Hacía frío, había mucho barro y todo era muy duro. En abril de 1918 hubo una batalla cerca de un pueblo francés. Unos sesenta soldados enemigos salieron del humo con las manos en alto y se rindieron ante Jack. ¡Él dijo que simplemente se alegraba de que quisieran hacerlo! Al día siguiente, el 15 de abril de 1918, una granada estalló muy cerca de Jack. Lo hirió en la mano, en la pierna y en el pecho. Un sargento bondadoso llamado Harry Ayres, que había cuidado de Jack, estaba a su lado, y murió. Jack se recuperó en el hospital, pero un pedacito de metal se le quedó en el pecho durante muchos años. Paddy no volvió a casa. Había desaparecido en los combates de marzo, y más tarde su familia supo que lo habían matado. Tenía solo diecinueve años. La guerra es algo muy triste, y a Jack no le gustaba hablar de ella. Pero aun cuando todavía no creía en Dios, Dios tenía la vida de Jack en sus manos. Y Jack había hecho una promesa. Ahora tendría que cumplirla. Querido Dios, por favor acompaña hoy a todos los que están en peligro por la guerra. Ayúdame a cumplir mis promesas, aunque sea difícil. Amén.",
+  "word_count": 393
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "es"
+  ],
+  "order": 5,
+  "title": "Cumplir su palabra",
+  "body_html": "<blockquote>“¿Quién puede vivir cerca de Dios? El que cumple su promesa aunque le cueste.” — del Salmo 15</blockquote> <p>Mientras Jack estaba en el hospital en Londres, le escribió a su papá y le pidió que viniera. Su papá era nervioso y triste y muy apegado a sus costumbres, y no vino. Pero la señora Moore vino enseguida. Visitaba a Jack, le escribía y lo cuidaba.</p> <p>Cuando terminó la guerra, Jack volvió a Oxford, y la señora Moore y Maureen fueron también. Jack cumplió su promesa a Paddy. Hizo su hogar con ellas, y siguió cuidando de la señora Moore durante más de treinta años. En sus cartas a veces la llamaba su madre, y tenía un apodo gracioso para ella: Minto.</p> <p>No tenían mucho dinero, y se mudaban de unos cuartos fríos a otros. Jack hacía las compras, lavaba los platos, hacía los mandados, sacaba a pasear al perro y ayudaba a Maureen con su latín. Después estudiaba cada vez que encontraba una hora tranquila.</p> <p>Hubo una cosa que Jack hizo mal. No le dijo a su papá la verdad sobre dónde vivía, ni que parte del dinero que su papá le mandaba ayudaba a los Moore. Lo mantuvo escondido durante años. Más tarde, cuando Jack llegó a conocer a Dios, lo lamentó mucho. Dijo que era una de las peores cosas que había hecho en su vida.</p> <p>Jack se esforzó muchísimo en sus estudios. Tres veces sacó las notas más altas en sus exámenes. En 1925 llegó a ser profesor de inglés en el Magdalen College de Oxford. Era un colegio antiguo y hermoso, con un parque lleno de ciervos. Su papá estaba feliz.</p> <p>Jack cumplió su promesa durante más de treinta años, aun cuando no era fácil. Pero también aprendió que esconder la verdad lastima a las personas. Dios quiere que seamos fieles y que seamos sinceros. Y cuando nos equivocamos, podemos decirle a Dios que lo sentimos.</p> <p><em>Querido Dios, ayúdame a cumplir mis promesas y a decir la verdad. Cuando me equivoque, ayúdame a pedir perdón. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Quién fue a ver a Jack al hospital?",
+    "answer": "La señora Moore, la mamá de Paddy. El papá de Jack no fue."
+   },
+   {
+    "question": "¿Qué hizo Jack que después lamentó?",
+    "answer": "Le escondió a su papá la verdad sobre dónde vivía y sobre cómo se usaba el dinero que su papá le mandaba."
+   },
+   {
+    "question": "¿Hay algo por lo que necesitas pedir perdón?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo: Dios quiere que seamos fieles y sinceros, y siempre nos escucha cuando le decimos que lo sentimos."
+   }
+  ],
+  "body_text": "“¿Quién puede vivir cerca de Dios? El que cumple su promesa aunque le cueste.” — del Salmo 15 Mientras Jack estaba en el hospital en Londres, le escribió a su papá y le pidió que viniera. Su papá era nervioso y triste y muy apegado a sus costumbres, y no vino. Pero la señora Moore vino enseguida. Visitaba a Jack, le escribía y lo cuidaba. Cuando terminó la guerra, Jack volvió a Oxford, y la señora Moore y Maureen fueron también. Jack cumplió su promesa a Paddy. Hizo su hogar con ellas, y siguió cuidando de la señora Moore durante más de treinta años. En sus cartas a veces la llamaba su madre, y tenía un apodo gracioso para ella: Minto. No tenían mucho dinero, y se mudaban de unos cuartos fríos a otros. Jack hacía las compras, lavaba los platos, hacía los mandados, sacaba a pasear al perro y ayudaba a Maureen con su latín. Después estudiaba cada vez que encontraba una hora tranquila. Hubo una cosa que Jack hizo mal. No le dijo a su papá la verdad sobre dónde vivía, ni que parte del dinero que su papá le mandaba ayudaba a los Moore. Lo mantuvo escondido durante años. Más tarde, cuando Jack llegó a conocer a Dios, lo lamentó mucho. Dijo que era una de las peores cosas que había hecho en su vida. Jack se esforzó muchísimo en sus estudios. Tres veces sacó las notas más altas en sus exámenes. En 1925 llegó a ser profesor de inglés en el Magdalen College de Oxford. Era un colegio antiguo y hermoso, con un parque lleno de ciervos. Su papá estaba feliz. Jack cumplió su promesa durante más de treinta años, aun cuando no era fácil. Pero también aprendió que esconder la verdad lastima a las personas. Dios quiere que seamos fieles y que seamos sinceros. Y cuando nos equivocamos, podemos decirle a Dios que lo sentimos. Querido Dios, ayúdame a cumplir mis promesas y a decir la verdad. Cuando me equivoque, ayúdame a pedir perdón. Amén.",
+  "word_count": 340
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "es"
+  ],
+  "order": 6,
+  "title": "Encontrado por Dios",
+  "body_html": "<blockquote>“¿Adónde podría ir para alejarme de tu Espíritu? ¿Adónde podría huir de ti?” — del Salmo 139</blockquote> <p>En Oxford, Jack hizo algunos amigos maravillosos. Uno de ellos era un profesor llamado J. R. R. Tolkien, a quien le encantaban las viejas historias del norte igual que a Jack. Tolkien era cristiano. También lo eran varios otros de los amigos inteligentes de Jack. Jack se daba cuenta, y eso le molestaba.</p> <p>Jack no creía en Dios, y no quería creer. Pero los libros que más le gustaban resultaban una y otra vez escritos por cristianos. Poco a poco, cada razón que tenía para no creer empezó a derrumbarse. Más tarde dijo que se sentía como si Dios lo estuviera persiguiendo, y a él se le estuvieran acabando los lugares donde esconderse.</p> <p>En 1929 el papá de Jack se enfermó gravemente. Jack fue a su casa en Belfast y se quedó a su lado durante semanas. Volvió a Oxford cuando su papá pareció mejorar un poco, pero pronto un telegrama lo llamó otra vez. Volvió deprisa, pero llegó demasiado tarde. Su papá había muerto. Jack estaba lleno de dolor, y arrepentido de la manera poco amable en que muchas veces lo había tratado.</p> <p>Entonces una noche, a solas en su cuarto de Magdalen, Jack dejó de huir. Se arrodilló y oró, y reconoció que Dios era Dios. No se sintió feliz. Se llamó a sí mismo “el converso más abatido y reacio de toda Inglaterra”. ¡Eso quiere decir que fue la persona más desanimada y con menos ganas que jamás vino a Dios!</p> <p>Jack recordaba que esto pasó en 1929. Las personas que han estudiado sus cartas con cuidado piensan que es más probable que fuera en el verano de 1930. De cualquier manera, fue el comienzo. Jack empezó a ir a la iglesia, aunque no le gustaba, porque creía que era lo correcto. Pero todavía no creía en Jesús.</p> <p>Jack se esforzó mucho por escaparse de Dios. Pero Dios nunca dejó de buscarlo. Nadie puede huir tan lejos que Dios no lo pueda encontrar. Dios te ama a ti también, y nunca está lejos.</p> <p><em>Querido Dios, gracias porque nunca dejas de buscarnos. Gracias porque nunca puedo huir demasiado lejos de tu amor. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué amigo de Jack amaba también las viejas historias del norte?",
+    "answer": "J. R. R. Tolkien, un profesor de Oxford que era cristiano."
+   },
+   {
+    "question": "¿Qué hizo Jack cuando dejó de huir de Dios?",
+    "answer": "Se arrodilló en su cuarto de Magdalen y reconoció que Dios era Dios, aunque no se sintió feliz por ello."
+   },
+   {
+    "question": "¿Alguna vez has sentido que Dios te estaba buscando?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo: Dios nunca deja de buscarnos, y nadie puede huir demasiado lejos de su amor."
+   }
+  ],
+  "body_text": "“¿Adónde podría ir para alejarme de tu Espíritu? ¿Adónde podría huir de ti?” — del Salmo 139 En Oxford, Jack hizo algunos amigos maravillosos. Uno de ellos era un profesor llamado J. R. R. Tolkien, a quien le encantaban las viejas historias del norte igual que a Jack. Tolkien era cristiano. También lo eran varios otros de los amigos inteligentes de Jack. Jack se daba cuenta, y eso le molestaba. Jack no creía en Dios, y no quería creer. Pero los libros que más le gustaban resultaban una y otra vez escritos por cristianos. Poco a poco, cada razón que tenía para no creer empezó a derrumbarse. Más tarde dijo que se sentía como si Dios lo estuviera persiguiendo, y a él se le estuvieran acabando los lugares donde esconderse. En 1929 el papá de Jack se enfermó gravemente. Jack fue a su casa en Belfast y se quedó a su lado durante semanas. Volvió a Oxford cuando su papá pareció mejorar un poco, pero pronto un telegrama lo llamó otra vez. Volvió deprisa, pero llegó demasiado tarde. Su papá había muerto. Jack estaba lleno de dolor, y arrepentido de la manera poco amable en que muchas veces lo había tratado. Entonces una noche, a solas en su cuarto de Magdalen, Jack dejó de huir. Se arrodilló y oró, y reconoció que Dios era Dios. No se sintió feliz. Se llamó a sí mismo “el converso más abatido y reacio de toda Inglaterra”. ¡Eso quiere decir que fue la persona más desanimada y con menos ganas que jamás vino a Dios! Jack recordaba que esto pasó en 1929. Las personas que han estudiado sus cartas con cuidado piensan que es más probable que fuera en el verano de 1930. De cualquier manera, fue el comienzo. Jack empezó a ir a la iglesia, aunque no le gustaba, porque creía que era lo correcto. Pero todavía no creía en Jesús. Jack se esforzó mucho por escaparse de Dios. Pero Dios nunca dejó de buscarlo. Nadie puede huir tan lejos que Dios no lo pueda encontrar. Dios te ama a ti también, y nunca está lejos. Querido Dios, gracias porque nunca dejas de buscarnos. Gracias porque nunca puedo huir demasiado lejos de tu amor. Amén.",
+  "word_count": 372
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "es"
+  ],
+  "order": 7,
+  "title": "Un paseo junto al río",
+  "body_html": "<blockquote>“La Palabra se hizo hombre y vivió entre nosotros, y vimos su gloria.” — de Juan 1</blockquote> <p>Ahora Jack creía en Dios. Pero no lograba entender a Jesús. ¿Cómo podía un hombre que murió hace mucho tiempo, muy lejos, cambiar algo en la vida de Jack ahora?</p> <p>El 19 de septiembre de 1931, Jack invitó a cenar en Magdalen a dos amigos: Tolkien y otro cristiano, Hugo Dyson. Después, los tres salieron a caminar por Addison’s Walk, un sendero junto al río detrás del colegio. Hablaron y hablaron hasta muy entrada la noche.</p> <p>Hablaron de historias antiguas. A Jack siempre le habían encantado los relatos antiguos de un dios que muere y vuelve a la vida. Esas historias lo conmovían profundamente, aun cuando no podía explicarlas. Sus amigos le dijeron: la historia de Jesús es como esas historias, con toda su belleza y su poder. Pero hay una gran diferencia. ¡La historia de Jesús pasó de verdad! Dios había contado su historia, no solo con palabras, sino con hechos reales, en un lugar real, en un tiempo real.</p> <p>Como a las tres de la mañana, Tolkien se fue a su casa. Jack y Hugo siguieron caminando y hablando hasta casi las cuatro.</p> <p>Nueve días después, en una mañana de sol, Warnie llevó a Jack a un zoológico nuevo llamado Whipsnade. Warnie tenía una motocicleta con sidecar, y Jack iba en el sidecar. Cuando salieron, Jack no creía que Jesús fuera el Hijo de Dios. ¡Cuando llegaron al zoológico, sí lo creía! Dijo que fue como despertarse y descubrir que ya estabas despierto.</p> <p>Ese día de Navidad, Jack tomó la Comunión en la iglesia de Holy Trinity, la Santísima Trinidad, cerca de su casa. Esta vez creía de verdad. Y Warnie también había vuelto a la fe ese año. Ahora los dos hermanos compartían su fe, como lo habían compartido todo desde que eran pequeños.</p> <p>Dios envió a su Hijo Jesús a nuestro mundo real. La historia de Jesús no es solo una historia hermosa. ¡Es verdad! Jack pasó el resto de su vida diciéndoselo a la gente. Tú también puedes creerla.</p> <p><em>Querido Jesús, gracias por venir a nuestro mundo. Gracias porque tu historia es verdad. Ayúdame a conocerte y a amarte. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué le dijeron a Jack sus amigos sobre la historia de Jesús?",
+    "answer": "Que era como las viejas historias que a él le encantaban, de un dios que muere y vuelve a la vida, pero con una gran diferencia: pasó de verdad."
+   },
+   {
+    "question": "¿Adónde iba Jack cuando llegó a creer que Jesús es el Hijo de Dios?",
+    "answer": "Al zoológico de Whipsnade, sentado en el sidecar de la motocicleta de Warnie."
+   },
+   {
+    "question": "¿Qué es lo que más te gusta de la historia de Jesús?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo: la historia de Jesús no solo es hermosa, sino verdadera, porque Dios vino de verdad a nuestro mundo."
+   }
+  ],
+  "body_text": "“La Palabra se hizo hombre y vivió entre nosotros, y vimos su gloria.” — de Juan 1 Ahora Jack creía en Dios. Pero no lograba entender a Jesús. ¿Cómo podía un hombre que murió hace mucho tiempo, muy lejos, cambiar algo en la vida de Jack ahora? El 19 de septiembre de 1931, Jack invitó a cenar en Magdalen a dos amigos: Tolkien y otro cristiano, Hugo Dyson. Después, los tres salieron a caminar por Addison’s Walk, un sendero junto al río detrás del colegio. Hablaron y hablaron hasta muy entrada la noche. Hablaron de historias antiguas. A Jack siempre le habían encantado los relatos antiguos de un dios que muere y vuelve a la vida. Esas historias lo conmovían profundamente, aun cuando no podía explicarlas. Sus amigos le dijeron: la historia de Jesús es como esas historias, con toda su belleza y su poder. Pero hay una gran diferencia. ¡La historia de Jesús pasó de verdad! Dios había contado su historia, no solo con palabras, sino con hechos reales, en un lugar real, en un tiempo real. Como a las tres de la mañana, Tolkien se fue a su casa. Jack y Hugo siguieron caminando y hablando hasta casi las cuatro. Nueve días después, en una mañana de sol, Warnie llevó a Jack a un zoológico nuevo llamado Whipsnade. Warnie tenía una motocicleta con sidecar, y Jack iba en el sidecar. Cuando salieron, Jack no creía que Jesús fuera el Hijo de Dios. ¡Cuando llegaron al zoológico, sí lo creía! Dijo que fue como despertarse y descubrir que ya estabas despierto. Ese día de Navidad, Jack tomó la Comunión en la iglesia de Holy Trinity, la Santísima Trinidad, cerca de su casa. Esta vez creía de verdad. Y Warnie también había vuelto a la fe ese año. Ahora los dos hermanos compartían su fe, como lo habían compartido todo desde que eran pequeños. Dios envió a su Hijo Jesús a nuestro mundo real. La historia de Jesús no es solo una historia hermosa. ¡Es verdad! Jack pasó el resto de su vida diciéndoselo a la gente. Tú también puedes creerla. Querido Jesús, gracias por venir a nuestro mundo. Gracias porque tu historia es verdad. Ayúdame a conocerte y a amarte. Amén.",
+  "word_count": 372
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "es"
+  ],
+  "order": 8,
+  "title": "Amigos en The Kilns",
+  "body_html": "<blockquote>“Los que amaban al Señor hablaban entre sí, y el Señor escuchó y los oyó.” — de Malaquías 3</blockquote> <p>En 1930 Jack, Warnie y la señora Moore compraron una casa propia, en las afueras de Oxford. Era una casa baja de ladrillo llamada The Kilns, que quiere decir “los hornos”, por dos viejos hornos de ladrillo que había a su lado. Tenía bosques, un jardín grande y silvestre y un estanque. A Jack le encantó desde el primer momento. Vivió allí el resto de su vida.</p> <p>Jack nadaba en el estanque con cualquier tiempo y caminaba por el bosque todos los días, con la pipa en la boca. Había un jardinero llamado Paxford, que siempre esperaba lo peor y casi siempre estaba alegre al respecto. Había perros, gatos y, por un tiempo, muchas gallinas. En 1932 Warnie dejó el ejército y se fue a vivir también a The Kilns. Los dos hermanos estaban juntos otra vez.</p> <p>Cada domingo, Jack cruzaba los campos a pie hasta la iglesia de Holy Trinity para el culto temprano de las ocho. Se sentaba cerca del frente, a un lado. Para la gente del pueblo, no era un escritor famoso. Era solo el señor Lewis, de The Kilns.</p> <p>Jack también tenía un grupo de amigos que se reunían los jueves por la noche en sus cuartos de Magdalen. Se llamaban a sí mismos los Inklings. Warnie preparaba el té. Después alguien leía en voz alta algo que había escrito, un cuento, un poema o un capítulo, y los demás decían lo que pensaban, ¡a veces con amabilidad y a veces no!</p> <p>Tolkien leyó, capítulo por capítulo y durante años, una gran historia que estaba escribiendo. Se llamaba El Señor de los Anillos. Tolkien dijo que sin el ánimo de Jack nunca la habría terminado.</p> <p>Los amigos de Jack amaban a Dios y se decían la verdad unos a otros. Los buenos amigos nos ayudan a crecer, y la iglesia es un lugar donde pertenecemos a la familia de Dios. Dios escucha cuando sus amigos hablan juntos de él.</p> <p><em>Querido Dios, gracias por mis amigos y por mi familia de la iglesia. Ayúdame a ser un buen amigo que anima a los demás. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Cómo se llamaba la casa de Jack, y por qué?",
+    "answer": "The Kilns, que quiere decir “los hornos”, porque a su lado había dos viejos hornos de ladrillo."
+   },
+   {
+    "question": "¿Quiénes eran los Inklings?",
+    "answer": "Un grupo de amigos de Jack que se reunían los jueves por la noche para leer en voz alta lo que escribían y conversar. Tolkien les leyó El Señor de los Anillos."
+   },
+   {
+    "question": "¿Cómo podrías animar a un amigo esta semana?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo: los buenos amigos se ayudan a crecer, y Dios escucha cuando sus amigos hablan juntos."
+   }
+  ],
+  "body_text": "“Los que amaban al Señor hablaban entre sí, y el Señor escuchó y los oyó.” — de Malaquías 3 En 1930 Jack, Warnie y la señora Moore compraron una casa propia, en las afueras de Oxford. Era una casa baja de ladrillo llamada The Kilns, que quiere decir “los hornos”, por dos viejos hornos de ladrillo que había a su lado. Tenía bosques, un jardín grande y silvestre y un estanque. A Jack le encantó desde el primer momento. Vivió allí el resto de su vida. Jack nadaba en el estanque con cualquier tiempo y caminaba por el bosque todos los días, con la pipa en la boca. Había un jardinero llamado Paxford, que siempre esperaba lo peor y casi siempre estaba alegre al respecto. Había perros, gatos y, por un tiempo, muchas gallinas. En 1932 Warnie dejó el ejército y se fue a vivir también a The Kilns. Los dos hermanos estaban juntos otra vez. Cada domingo, Jack cruzaba los campos a pie hasta la iglesia de Holy Trinity para el culto temprano de las ocho. Se sentaba cerca del frente, a un lado. Para la gente del pueblo, no era un escritor famoso. Era solo el señor Lewis, de The Kilns. Jack también tenía un grupo de amigos que se reunían los jueves por la noche en sus cuartos de Magdalen. Se llamaban a sí mismos los Inklings. Warnie preparaba el té. Después alguien leía en voz alta algo que había escrito, un cuento, un poema o un capítulo, y los demás decían lo que pensaban, ¡a veces con amabilidad y a veces no! Tolkien leyó, capítulo por capítulo y durante años, una gran historia que estaba escribiendo. Se llamaba El Señor de los Anillos. Tolkien dijo que sin el ánimo de Jack nunca la habría terminado. Los amigos de Jack amaban a Dios y se decían la verdad unos a otros. Los buenos amigos nos ayudan a crecer, y la iglesia es un lugar donde pertenecemos a la familia de Dios. Dios escucha cuando sus amigos hablan juntos de él. Querido Dios, gracias por mis amigos y por mi familia de la iglesia. Ayúdame a ser un buen amigo que anima a los demás. Amén.",
+  "word_count": 368
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "es"
+  ],
+  "order": 9,
+  "title": "Una voz en tiempos de guerra",
+  "body_html": "<blockquote>“Estén siempre listos para contarle a cualquiera que les pregunte sobre la esperanza que tienen, y háganlo con amabilidad.” — de 1 Pedro 3</blockquote> <p>En 1939 empezó otra gran guerra. Jack tenía cuarenta años, demasiados para ir a pelear. Pero a los pocos días, un grupo de niñas de una escuela de Londres llegó a vivir a The Kilns, para estar a salvo de las bombas. En los años siguientes llegaron más niños. Jack nunca había tenido mucho trato con niños, ¡pero descubrió que le gustaba bastante estar con ellos!</p> <p>Un domingo de 1940, sentado en la iglesia, a Jack se le ocurrió la idea de un libro. Serían cartas de un diablo viejo a un diablo joven, enseñándole cómo alejar a un hombre de Dios. ¡Todo en el libro estaba al revés! Se llamó Cartas del diablo a su sobrino, y a la gente le encantó. Cuando las cartas salieron primero en un periódico, a Jack le pagaron por cada una. Él regaló el dinero para ayudar a las viudas.</p> <p>Después la BBC le pidió a Jack que diera charlas por la radio. En 1941, mientras seguía la guerra, la gente de toda Gran Bretaña encendía la radio y escuchaba su voz grave y amistosa explicando lo que creen los cristianos. Hablaba con sencillez, como alguien que conversa con sentido común al otro lado de la mesa de la cocina. Cientos de personas le escribieron. Más tarde las charlas se convirtieron en un libro, Mero cristianismo, que ha ayudado a muchísimas personas a llegar a la fe.</p> <p>Jack también viajó a bases de la fuerza aérea para hablar con jóvenes aviadores. Al principio le pareció muy difícil. Aprendió a usar palabras sencillas y a escuchar sus preguntas.</p> <p>Jack se hizo famoso. Sabía que ser famoso podía volverlo orgulloso. Así que casi todas las semanas, durante doce años, le confesaba sus pecados a un sacerdote anciano y sabio llamado el padre Adams. Y regalaba la mayor parte del dinero de sus libros a personas necesitadas.</p> <p>Jack no era pastor, pero estaba listo para hablarle a la gente de Jesús con palabras que pudieran entender. No necesitas ser inteligente ni famoso para compartir tu esperanza en Jesús. Simplemente puedes contarle a alguien, con amabilidad, lo que Jesús significa para ti.</p> <p><em>Querido Jesús, ayúdame a estar listo para hablarles a otros de ti, con amabilidad y cariño. Guárdame de ser orgulloso. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Quiénes llegaron a vivir a The Kilns cuando empezó la guerra?",
+    "answer": "Unas niñas de una escuela de Londres, a quienes mandaron al campo para estar a salvo de las bombas."
+   },
+   {
+    "question": "¿Qué hizo Jack con el dinero que le pagaron por Cartas del diablo a su sobrino?",
+    "answer": "Lo regaló para ayudar a las viudas. Más tarde regaló la mayor parte del dinero de sus libros a personas necesitadas."
+   },
+   {
+    "question": "¿A quién podrías hablarle de Jesús, y qué le dirías?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo: no necesitamos ser inteligentes ni famosos para compartir nuestra esperanza en Jesús, con amabilidad y sencillez."
+   }
+  ],
+  "body_text": "“Estén siempre listos para contarle a cualquiera que les pregunte sobre la esperanza que tienen, y háganlo con amabilidad.” — de 1 Pedro 3 En 1939 empezó otra gran guerra. Jack tenía cuarenta años, demasiados para ir a pelear. Pero a los pocos días, un grupo de niñas de una escuela de Londres llegó a vivir a The Kilns, para estar a salvo de las bombas. En los años siguientes llegaron más niños. Jack nunca había tenido mucho trato con niños, ¡pero descubrió que le gustaba bastante estar con ellos! Un domingo de 1940, sentado en la iglesia, a Jack se le ocurrió la idea de un libro. Serían cartas de un diablo viejo a un diablo joven, enseñándole cómo alejar a un hombre de Dios. ¡Todo en el libro estaba al revés! Se llamó Cartas del diablo a su sobrino, y a la gente le encantó. Cuando las cartas salieron primero en un periódico, a Jack le pagaron por cada una. Él regaló el dinero para ayudar a las viudas. Después la BBC le pidió a Jack que diera charlas por la radio. En 1941, mientras seguía la guerra, la gente de toda Gran Bretaña encendía la radio y escuchaba su voz grave y amistosa explicando lo que creen los cristianos. Hablaba con sencillez, como alguien que conversa con sentido común al otro lado de la mesa de la cocina. Cientos de personas le escribieron. Más tarde las charlas se convirtieron en un libro, Mero cristianismo, que ha ayudado a muchísimas personas a llegar a la fe. Jack también viajó a bases de la fuerza aérea para hablar con jóvenes aviadores. Al principio le pareció muy difícil. Aprendió a usar palabras sencillas y a escuchar sus preguntas. Jack se hizo famoso. Sabía que ser famoso podía volverlo orgulloso. Así que casi todas las semanas, durante doce años, le confesaba sus pecados a un sacerdote anciano y sabio llamado el padre Adams. Y regalaba la mayor parte del dinero de sus libros a personas necesitadas. Jack no era pastor, pero estaba listo para hablarle a la gente de Jesús con palabras que pudieran entender. No necesitas ser inteligente ni famoso para compartir tu esperanza en Jesús. Simplemente puedes contarle a alguien, con amabilidad, lo que Jesús significa para ti. Querido Jesús, ayúdame a estar listo para hablarles a otros de ti, con amabilidad y cariño. Guárdame de ser orgulloso. Amén.",
+  "word_count": 400
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "es"
+  ],
+  "order": 10,
+  "title": "A través del armario",
+  "body_html": "<blockquote>“Si no os volvéis y os hacéis como niños, no entraréis en el reino de los cielos.” — de Mateo 18</blockquote> <p>Desde que tenía unos dieciséis años, Jack llevaba una imagen en la cabeza: un fauno, mitad hombre y mitad cabra, que cargaba un paraguas y unos paquetes por un bosque nevado. Cuando los niños de Londres llegaron a The Kilns en 1939, empezó una historia sobre cuatro niños enviados lejos de Londres que encuentran el camino a otro mundo. Después la guardó.</p> <p>Casi diez años más tarde, la volvió a sacar y la terminó. Cuando se la leyó a Tolkien, ¡a Tolkien no le gustó para nada! Pero a otro amigo, Roger Lancelyn Green, le encantó. Así que Jack siguió adelante.</p> <p>En 1950 se publicó El león, la bruja y el armario. Le siguieron seis libros más, uno cada año. Juntos se llaman Las crónicas de Narnia. En ellos está el gran león Aslan, que es bueno y fuerte y maravilloso. Jack dijo que había imaginado cómo podría ser el Hijo de Dios si hubiera otro mundo y él entrara en él. El último libro ganó un premio famoso de libros para niños.</p> <p>Niños de todo el mundo le escribían a Jack, y él les contestaba a mano, con una pluma mojada en tinta, porque nunca aprendió a escribir a máquina. Una vez un niño estaba preocupado porque amaba a Aslan más que a Jesús. Jack le contestó con cariño: las cosas que amas de Aslan son justamente las cosas que Jesús dijo e hizo. ¡Así que en realidad estuviste amando a Jesús todo el tiempo!</p> <p>Durante todo ese tiempo, Jack seguía cuidando de la señora Moore, que se había vuelto anciana y estaba enferma. Cuando tuvo que ir a una residencia de ancianos, él la visitaba casi todos los días, hasta que murió en 1951. Había cumplido su promesa a Paddy hasta el final.</p> <p>Jack era uno de los hombres más inteligentes del mundo. Pero algunas de las cosas más importantes que quería decir, las dijo en historias para niños. Jesús ama a los niños, y dice que todos tienen que venir a él como un niño.</p> <p><em>Querido Jesús, gracias porque amas a los niños. Ayúdame a venir a ti con un corazón que confía, como un niño. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué imagen llevaba Jack en la cabeza desde que tenía unos dieciséis años?",
+    "answer": "Un fauno que cargaba un paraguas y unos paquetes por un bosque nevado."
+   },
+   {
+    "question": "¿Qué le dijo Jack al niño que estaba preocupado por amar a Aslan más que a Jesús?",
+    "answer": "Que las cosas que el niño amaba de Aslan eran justamente las cosas que Jesús dijo e hizo."
+   },
+   {
+    "question": "¿Qué quiere decir venir a Jesús como un niño?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo: Jesús ama a los niños y quiere que todos vengan a él con un corazón sencillo y confiado."
+   }
+  ],
+  "body_text": "“Si no os volvéis y os hacéis como niños, no entraréis en el reino de los cielos.” — de Mateo 18 Desde que tenía unos dieciséis años, Jack llevaba una imagen en la cabeza: un fauno, mitad hombre y mitad cabra, que cargaba un paraguas y unos paquetes por un bosque nevado. Cuando los niños de Londres llegaron a The Kilns en 1939, empezó una historia sobre cuatro niños enviados lejos de Londres que encuentran el camino a otro mundo. Después la guardó. Casi diez años más tarde, la volvió a sacar y la terminó. Cuando se la leyó a Tolkien, ¡a Tolkien no le gustó para nada! Pero a otro amigo, Roger Lancelyn Green, le encantó. Así que Jack siguió adelante. En 1950 se publicó El león, la bruja y el armario. Le siguieron seis libros más, uno cada año. Juntos se llaman Las crónicas de Narnia. En ellos está el gran león Aslan, que es bueno y fuerte y maravilloso. Jack dijo que había imaginado cómo podría ser el Hijo de Dios si hubiera otro mundo y él entrara en él. El último libro ganó un premio famoso de libros para niños. Niños de todo el mundo le escribían a Jack, y él les contestaba a mano, con una pluma mojada en tinta, porque nunca aprendió a escribir a máquina. Una vez un niño estaba preocupado porque amaba a Aslan más que a Jesús. Jack le contestó con cariño: las cosas que amas de Aslan son justamente las cosas que Jesús dijo e hizo. ¡Así que en realidad estuviste amando a Jesús todo el tiempo! Durante todo ese tiempo, Jack seguía cuidando de la señora Moore, que se había vuelto anciana y estaba enferma. Cuando tuvo que ir a una residencia de ancianos, él la visitaba casi todos los días, hasta que murió en 1951. Había cumplido su promesa a Paddy hasta el final. Jack era uno de los hombres más inteligentes del mundo. Pero algunas de las cosas más importantes que quería decir, las dijo en historias para niños. Jesús ama a los niños, y dice que todos tienen que venir a él como un niño. Querido Jesús, gracias porque amas a los niños. Ayúdame a venir a ti con un corazón que confía, como un niño. Amén.",
+  "word_count": 381
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "es"
+  ],
+  "order": 11,
+  "title": "Una boda en un hospital",
+  "body_html": "<blockquote>“La oración de fe salvará al enfermo, y el Señor lo levantará.” — de Santiago 5</blockquote> <p>En Nueva York vivía una escritora inteligente llamada Joy Davidman. Creció sin creer en Dios. Una noche de 1946, cuando su esposo estaba en problemas y no podía volver a casa, ella estaba sola y asustada con sus dos niños pequeños. Por primera vez en su vida, sintió que Dios estaba allí con ella. Se encontró de rodillas, orando.</p> <p>Joy leyó los libros de Jack, y en 1950 le escribió una carta. Él le contestó. En 1952 ella fue a Inglaterra, y se reunieron a almorzar en Oxford. Joy era divertida y valiente, ¡y podía discutir con Jack y ganarle! A Warnie también le cayó bien. Más tarde se fue a vivir a Inglaterra con sus hijos, David y Douglas, y su primer matrimonio terminó.</p> <p>En 1954 Jack llegó a ser profesor en la Universidad de Cambridge, pero los fines de semana volvía a casa, a The Kilns.</p> <p>En 1956 le dijeron a Joy que ya no podía quedarse en Inglaterra. Jack no quería que la mandaran lejos a ella y a los niños. Así que se casó con ella en una ceremonia corta y sencilla en una oficina, para que pudiera quedarse. Él lo veía como ayudar a una amiga.</p> <p>Pero unos meses después a Joy se le rompió el hueso de la pierna, y los médicos descubrieron que tenía cáncer. No pensaban que fuera a vivir mucho. Entonces Jack se dio cuenta de algo: ¡la amaba! Quería estar casado con ella de verdad, delante de Dios.</p> <p>El 21 de marzo de 1957, un sacerdote llamado Peter Bide, que había sido alumno de Jack, los casó en el cuarto de hospital de Joy. Después puso las manos sobre ella y oró por su sanidad. ¡Para gran sorpresa de sus médicos, Joy empezó a mejorar! Sus huesos empezaron a sanar, y para el final del año podía caminar con un bastón.</p> <p>Jack y Joy creían que Dios había oído sus oraciones. Dios no siempre sana a las personas de la manera en que se lo pedimos. Pero siempre nos oye, y siempre podemos llevarle a las personas que amamos.</p> <p><em>Querido Dios, gracias porque oyes nuestras oraciones. Por favor, acompaña a todos los que están enfermos, y ayúdame a orar por ellos. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Cómo llegó Joy Davidman a conocer a Dios?",
+    "answer": "Una noche, cuando estaba sola y asustada, sintió que Dios estaba allí con ella, y se arrodilló y oró."
+   },
+   {
+    "question": "¿Qué pasó después de que Peter Bide oró por Joy?",
+    "answer": "Para gran sorpresa de los médicos, empezó a mejorar. Sus huesos empezaron a sanar, y pudo volver a caminar con un bastón."
+   },
+   {
+    "question": "¿Por quién te gustaría orar hoy?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo: Dios siempre oye nuestras oraciones, y siempre podemos llevarle a las personas que amamos."
+   }
+  ],
+  "body_text": "“La oración de fe salvará al enfermo, y el Señor lo levantará.” — de Santiago 5 En Nueva York vivía una escritora inteligente llamada Joy Davidman. Creció sin creer en Dios. Una noche de 1946, cuando su esposo estaba en problemas y no podía volver a casa, ella estaba sola y asustada con sus dos niños pequeños. Por primera vez en su vida, sintió que Dios estaba allí con ella. Se encontró de rodillas, orando. Joy leyó los libros de Jack, y en 1950 le escribió una carta. Él le contestó. En 1952 ella fue a Inglaterra, y se reunieron a almorzar en Oxford. Joy era divertida y valiente, ¡y podía discutir con Jack y ganarle! A Warnie también le cayó bien. Más tarde se fue a vivir a Inglaterra con sus hijos, David y Douglas, y su primer matrimonio terminó. En 1954 Jack llegó a ser profesor en la Universidad de Cambridge, pero los fines de semana volvía a casa, a The Kilns. En 1956 le dijeron a Joy que ya no podía quedarse en Inglaterra. Jack no quería que la mandaran lejos a ella y a los niños. Así que se casó con ella en una ceremonia corta y sencilla en una oficina, para que pudiera quedarse. Él lo veía como ayudar a una amiga. Pero unos meses después a Joy se le rompió el hueso de la pierna, y los médicos descubrieron que tenía cáncer. No pensaban que fuera a vivir mucho. Entonces Jack se dio cuenta de algo: ¡la amaba! Quería estar casado con ella de verdad, delante de Dios. El 21 de marzo de 1957, un sacerdote llamado Peter Bide, que había sido alumno de Jack, los casó en el cuarto de hospital de Joy. Después puso las manos sobre ella y oró por su sanidad. ¡Para gran sorpresa de sus médicos, Joy empezó a mejorar! Sus huesos empezaron a sanar, y para el final del año podía caminar con un bastón. Jack y Joy creían que Dios había oído sus oraciones. Dios no siempre sana a las personas de la manera en que se lo pedimos. Pero siempre nos oye, y siempre podemos llevarle a las personas que amamos. Querido Dios, gracias porque oyes nuestras oraciones. Por favor, acompaña a todos los que están enfermos, y ayúdame a orar por ellos. Amén.",
+  "word_count": 388
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "es"
+  ],
+  "order": 12,
+  "title": "De vuelta a casa",
+  "body_html": "<blockquote>“He peleado la buena batalla, he acabado la carrera, he guardado la fe.” — de 2 Timoteo 4</blockquote> <p>Jack y Joy tuvieron tres años felices juntos. Joy volvió a llenar de luz y calor la vieja casa de The Kilns. Fueron a Irlanda, y Jack le mostró las colinas que había amado de niño. Después el cáncer volvió. En la primavera de 1960 hicieron un viaje a Grecia, un lugar sobre el que Jack había leído toda su vida. Unos meses más tarde, el 13 de julio de 1960, Joy murió, con Jack a su lado.</p> <p>Jack estaba lleno de dolor. Escribió sus sentimientos tristes en cuadernos, con sinceridad, incluso sus preguntas más difíciles para Dios. Poco a poco volvió a encontrar paz. Más tarde los cuadernos se convirtieron en un librito, Una pena en observación, que ha ayudado a muchas personas tristes a saber que no están solas. Jack también cuidó de los dos hijos de Joy, David y Douglas, y les dio un hogar en The Kilns durante las vacaciones.</p> <p>Pronto Jack mismo se enfermó. En 1963 se puso tan grave que no se esperaba que viviera. ¡Pero se despertó y pidió una taza de té! No tenía miedo de morir. Él y Warnie pasaron juntos semanas tranquilas, leyendo, haciendo crucigramas y recordando cuando eran niños.</p> <p>El 22 de noviembre de 1963, una semana antes de cumplir sesenta y cinco años, Jack murió en su casa, en The Kilns. Lo enterraron en el cementerio de la iglesia de Holy Trinity. Diez años después, enterraron a Warnie en la misma tumba. Los hermanos que habían inventado Boxen juntos estaban juntos otra vez.</p> <p>Hoy, millones de personas han leído los libros de Jack. Los niños todavía cruzan el armario hacia Narnia y conocen a Aslan, y algunos de ellos después encuentran a Jesús en la Biblia y lo conocen.</p> <p>Jack huyó de Dios durante muchos años. Pero Dios lo encontró, y Jack guardó la fe hasta el final, en días felices y en días muy tristes. Dios sostiene a todos los que confían en él, y te sostendrá a ti.</p> <p><em>Querido Dios, gracias por C. S. Lewis y por las historias que le diste para contar. Ayúdame a confiar en ti en los días felices y en los días tristes, y a guardar la fe toda mi vida. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué hizo Jack con sus sentimientos tristes después de que murió Joy?",
+    "answer": "Los escribió con sinceridad en cuadernos. Más tarde se convirtieron en un librito, Una pena en observación, que ha ayudado a muchas personas tristes."
+   },
+   {
+    "question": "¿Qué pidió Jack cuando se despertó después de estar muy enfermo en 1963?",
+    "answer": "¡Una taza de té!"
+   },
+   {
+    "question": "¿Qué te ayuda a confiar en Dios en los días tristes?",
+    "answer": "Cualquier respuesta sincera está bien. La idea del capítulo: Dios sostiene a todos los que confían en él, en los días felices y en los tristes."
+   }
+  ],
+  "body_text": "“He peleado la buena batalla, he acabado la carrera, he guardado la fe.” — de 2 Timoteo 4 Jack y Joy tuvieron tres años felices juntos. Joy volvió a llenar de luz y calor la vieja casa de The Kilns. Fueron a Irlanda, y Jack le mostró las colinas que había amado de niño. Después el cáncer volvió. En la primavera de 1960 hicieron un viaje a Grecia, un lugar sobre el que Jack había leído toda su vida. Unos meses más tarde, el 13 de julio de 1960, Joy murió, con Jack a su lado. Jack estaba lleno de dolor. Escribió sus sentimientos tristes en cuadernos, con sinceridad, incluso sus preguntas más difíciles para Dios. Poco a poco volvió a encontrar paz. Más tarde los cuadernos se convirtieron en un librito, Una pena en observación, que ha ayudado a muchas personas tristes a saber que no están solas. Jack también cuidó de los dos hijos de Joy, David y Douglas, y les dio un hogar en The Kilns durante las vacaciones. Pronto Jack mismo se enfermó. En 1963 se puso tan grave que no se esperaba que viviera. ¡Pero se despertó y pidió una taza de té! No tenía miedo de morir. Él y Warnie pasaron juntos semanas tranquilas, leyendo, haciendo crucigramas y recordando cuando eran niños. El 22 de noviembre de 1963, una semana antes de cumplir sesenta y cinco años, Jack murió en su casa, en The Kilns. Lo enterraron en el cementerio de la iglesia de Holy Trinity. Diez años después, enterraron a Warnie en la misma tumba. Los hermanos que habían inventado Boxen juntos estaban juntos otra vez. Hoy, millones de personas han leído los libros de Jack. Los niños todavía cruzan el armario hacia Narnia y conocen a Aslan, y algunos de ellos después encuentran a Jesús en la Biblia y lo conocen. Jack huyó de Dios durante muchos años. Pero Dios lo encontró, y Jack guardó la fe hasta el final, en días felices y en días muy tristes. Dios sostiene a todos los que confían en él, y te sostendrá a ti. Querido Dios, gracias por C. S. Lewis y por las historias que le diste para contar. Ayúdame a confiar en ti en los días felices y en los días tristes, y a guardar la fe toda mi vida. Amén.",
+  "word_count": 389
+ }
+}
+]

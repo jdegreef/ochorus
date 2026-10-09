@@ -32,12 +32,14 @@ SIGNUP_VARIANTS = (
     "highlight_toast",
     "chapter_end",
     "plan_start",
+    "plan_day",
     "article",
     "quote",
     "footer",
     "header",
     "menu",
     "feedback",
+    "one_tap",
 )
 
 

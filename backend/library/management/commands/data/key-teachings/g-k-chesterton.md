@@ -740,7 +740,7 @@ Chesterton began with an unusual claim. In his introduction he wrote that “the
 
 He started in a cave. He imagined a priest and a boy crawling through a long tunnel in the hills and coming out, at last, in a cavern on whose walls, by lamplight, they see the paintings left there by prehistoric men: great sprawling outlines of reindeer and horses and bison, drawn with skill and life. Such caves had indeed been discovered not long before he wrote.
 
-What does the boy learn from the paintings? Not, Chesterton said, that the men who made them were brutes. He learns the opposite: that they were men, very like ourselves, with the very human urge to make pictures. And then he notices something so simple that it is easily missed. He has found the place where a man drew a picture of a reindeer. He would have to dig a great deal deeper before he found the place where a reindeer drew a picture of a man. In the chapter called The Man in the Cave Chesterton put the conclusion in five words: “Art is the signature of man.”
+What does the boy learn from the paintings? Not, Chesterton said, that the men who made them were brutes. He learns the opposite: that they were men, very like ourselves, with the very human urge to make pictures. And then he notices something so simple that it is easily missed. He has found the place where a man drew a picture of a reindeer. He would have to dig a great deal deeper before he found the place where a reindeer drew a picture of a man. In the chapter called The Man in the Cave Chesterton put the conclusion in six words: “Art is the signature of man.”
 
 > I will praise thee; for I am fearfully and wonderfully made: marvellous are thy works; and that my soul knoweth right well. PSALM 139:14
 

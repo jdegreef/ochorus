@@ -49,6 +49,15 @@ export function unfinishedBookSlugs(progress = allProgress()): string[] {
 	return progress.filter((p) => p.kind === 'book' && p.finished_at == null).map((p) => p.slug);
 }
 
+/**
+ * The book the reader is in: the most recently opened unfinished book this
+ * language has (`absent` from `knownAbsent`). The home hero wears it, and
+ * "Continue reading" leaves it out beside the hero, so both ask here.
+ */
+export function currentBookSlug(absent: Set<string>, progress = allProgress()): string | null {
+	return unfinishedBookSlugs(progress).find((s) => !absent.has(workSlugKey('book', s))) ?? null;
+}
+
 /** Bump when the stored shape changes; a cache of another shape is ignored. */
 const SCHEMA = 3;
 

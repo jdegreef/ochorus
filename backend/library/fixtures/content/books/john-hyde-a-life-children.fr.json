@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "john-hyde-a-life-children",
+  "language": "fr",
+  "title": "Hyde l’homme de prière (Pour enfants)",
+  "subtitle": "",
+  "cover_byline": "John Hyde",
+  "description": "La vraie histoire de John Hyde, un jeune Américain timide, qui parlait lentement et entendait mal, parti dans les villages du Pendjab, en Inde. Il a passé une si grande partie de sa vie à prier pour les autres que les gens de là-bas l’appelaient « l’homme qui ne dort jamais », et que les chrétiens du monde entier ont fini par l’appeler « Hyde l’homme de prière ». Cette édition pour enfants raconte sa vie en courts chapitres faits pour être lus à voix haute : un verset de la Bible, un moment de son histoire, une chose que cela veut dire pour toi, et une courte prière, avec des questions pour en parler ensemble.",
+  "qa": [
+   {
+    "question": "De quoi parle Hyde l’homme de prière (Pour enfants) ?",
+    "answer": "C’est une version pour enfants de la grande biographie de John Hyde. Elle raconte comment un fils de pasteur de l’Illinois est parti dans les villages du Pendjab, en Inde, a appris à prier de tout son cœur, a aimé les gens les plus pauvres de là-bas, et en a aidé beaucoup à suivre Jésus."
+   },
+   {
+    "question": "Qui était John Hyde ?",
+    "answer": "Un missionnaire américain qui a vécu de 1865 à 1912. Il était timide, parlait lentement et entendait mal, mais il s’est tellement donné à la prière que les gens du Pendjab l’appelaient « l’homme qui ne dort jamais », et que les chrétiens du monde entier ont fini par l’appeler « Hyde l’homme de prière »."
+   },
+   {
+    "question": "Comment chaque chapitre est-il construit ?",
+    "answer": "Chaque chapitre est court et fait pour être lu à voix haute. Il commence par un verset de la Bible, raconte un moment de l’histoire de John, montre une chose simple que cela veut dire pour toi, et se termine par une courte prière. Trois questions suivent, pour en parler ensemble."
+   },
+   {
+    "question": "Ce livre est-il trop triste pour les enfants ?",
+    "answer": "Quelques passages sont tristes : le frère de John meurt jeune, et à la fin John tombe très malade et meurt. Le livre raconte ces moments honnêtement mais avec douceur, sans détails effrayants. Avant tout, c’est une histoire joyeuse : celle de l’amour de Dieu, de prières exaucées, et d’un homme qui est mort en disant : « C’est simplement la victoire, la victoire, la victoire. »"
+   },
+   {
+    "question": "Les histoires sont-elles vraies ?",
+    "answer": "Oui. Elles viennent des registres de l’Église et des amis qui ont connu John Hyde et qui ont écrit ce dont ils se souvenaient. Quelques histoires ont été racontées de façons un peu différentes, et certains chiffres des vieux livres ne peuvent pas être vérifiés ; le livre le dit doucement quand c’est important."
+   },
+   {
+    "question": "À qui ce livre s’adresse-t-il ?",
+    "answer": "Aux enfants — pour qu’un adulte le leur lise à voix haute, ou qu’un enfant plus grand le lise tout seul. Il existe aussi une édition pour adolescents, et la biographie complète pour les lecteurs plus âgés."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Un récit d’Ochorus pour jeunes lecteurs, d’après la biographie d’Ochorus consacrée à John Hyde, de la série Portraits de courage. La façon de raconter est la nôtre, libre à lire et à partager.",
+  "cover_url": "/covers/art/john-hyde-a-life-children.jpg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/john-hyde-a-life-children.fr.pdf?download=john-hyde-a-life-children.fr.pdf",
+  "cover_color": "",
+  "sort_order": 151,
+  "is_published": true,
+  "created_at": "2026-10-08T00:00:00Z",
+  "updated_at": "2026-10-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "fr"
+  ],
+  "order": 1,
+  "title": "La prière d’un père",
+  "body_html": "<blockquote>« Priez donc le maître de la moisson d’envoyer des ouvriers dans sa moisson. » — d’après Matthieu 9</blockquote> <p>Il y a bien longtemps, le 9 novembre 1865, un petit garçon est né dans l’État de l’Illinois, en Amérique. Il s’appelait John Nelson Hyde. Bien des années plus tard, des chrétiens du monde entier allaient lui donner un nom spécial : « Hyde l’homme de prière » (en anglais, « Praying Hyde »). Voici son histoire.</p> <p>John a grandi dans une petite ville de la prairie appelée Carthage. Son père, Smith Harris Hyde, y était le pasteur de l’Église presbytérienne. John avait deux frères et trois sœurs. Son grand frère Edmund avait deux ans de plus que lui.</p> <p>La mère de John aimait la musique. Des années plus tard, John a dit à un ami qu’elle chantait mieux que tous ceux qu’il avait jamais entendus, et que c’était « une femme si sainte ». Elle lui a appris avec soin à connaître Jésus.</p> <p>À la maison, la famille priait ensemble, et John a entendu son père répéter encore et encore la même prière. C’était la prière que Jésus avait demandé à ses amis de faire : que Dieu envoie des ouvriers dans sa moisson. Jésus voulait dire que le monde est comme un grand champ plein de gens qui ont besoin d’entendre parler de lui, et qu’il n’y a pas assez d’ouvriers pour le leur annoncer. Le père de John faisait cette prière de bon cœur, même si cela pouvait vouloir dire que Dieu enverrait ses propres enfants très loin.</p> <p>John a grandi et il est allé étudier au Carthage College, l’université de sa ville. Il a décidé qu’il voulait devenir missionnaire. Mais, pour être honnête, il voulait être un missionnaire célèbre. Plus tard, il a dit : « Je voulais briller comme un grand missionnaire. » Il aimait vraiment Dieu. Mais il voulait aussi que les gens le trouvent merveilleux, et Dieu allait devoir changer cela, avec douceur.</p> <p>Dieu entend chaque prière, même les toutes petites, même celles que nous répétons encore et encore. Le père de John ne savait pas comment Dieu allait répondre à sa prière. Mais Dieu écoutait, et Dieu t’écoute, toi aussi.</p> <p><em>Cher Dieu, merci pour les personnes qui prient pour moi. S’il te plaît, envoie des ouvriers pour parler de Jésus à tout le monde, et aide-moi à être l’un d’eux. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quelle prière le père de John répétait-il encore et encore ?",
+    "answer": "Il faisait la prière que Jésus a enseignée : il demandait au maître de la moisson d’envoyer des ouvriers dans sa moisson, pour que plus de gens entendent parler de Jésus."
+   },
+   {
+    "question": "Que voulait le jeune John quand il a décidé de devenir missionnaire ?",
+    "answer": "Il aimait Dieu, mais il voulait aussi être un missionnaire célèbre. Il a dit : « Je voulais briller comme un grand missionnaire. »"
+   },
+   {
+    "question": "Qui prie pour toi ? Pour qui pourrais-tu prier ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : Dieu entend chaque prière, même les petites prières répétées encore et encore, et il t’écoute."
+   }
+  ],
+  "body_text": "« Priez donc le maître de la moisson d’envoyer des ouvriers dans sa moisson. » — d’après Matthieu 9 Il y a bien longtemps, le 9 novembre 1865, un petit garçon est né dans l’État de l’Illinois, en Amérique. Il s’appelait John Nelson Hyde. Bien des années plus tard, des chrétiens du monde entier allaient lui donner un nom spécial : « Hyde l’homme de prière » (en anglais, « Praying Hyde »). Voici son histoire. John a grandi dans une petite ville de la prairie appelée Carthage. Son père, Smith Harris Hyde, y était le pasteur de l’Église presbytérienne. John avait deux frères et trois sœurs. Son grand frère Edmund avait deux ans de plus que lui. La mère de John aimait la musique. Des années plus tard, John a dit à un ami qu’elle chantait mieux que tous ceux qu’il avait jamais entendus, et que c’était « une femme si sainte ». Elle lui a appris avec soin à connaître Jésus. À la maison, la famille priait ensemble, et John a entendu son père répéter encore et encore la même prière. C’était la prière que Jésus avait demandé à ses amis de faire : que Dieu envoie des ouvriers dans sa moisson. Jésus voulait dire que le monde est comme un grand champ plein de gens qui ont besoin d’entendre parler de lui, et qu’il n’y a pas assez d’ouvriers pour le leur annoncer. Le père de John faisait cette prière de bon cœur, même si cela pouvait vouloir dire que Dieu enverrait ses propres enfants très loin. John a grandi et il est allé étudier au Carthage College, l’université de sa ville. Il a décidé qu’il voulait devenir missionnaire. Mais, pour être honnête, il voulait être un missionnaire célèbre. Plus tard, il a dit : « Je voulais briller comme un grand missionnaire. » Il aimait vraiment Dieu. Mais il voulait aussi que les gens le trouvent merveilleux, et Dieu allait devoir changer cela, avec douceur. Dieu entend chaque prière, même les toutes petites, même celles que nous répétons encore et encore. Le père de John ne savait pas comment Dieu allait répondre à sa prière. Mais Dieu écoutait, et Dieu t’écoute, toi aussi. Cher Dieu, merci pour les personnes qui prient pour moi. S’il te plaît, envoie des ouvriers pour parler de Jésus à tout le monde, et aide-moi à être l’un d’eux. Amen.",
+  "word_count": 398
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "fr"
+  ],
+  "order": 2,
+  "title": "« C’est réglé »",
+  "body_html": "<blockquote>« J’entendis la voix du Seigneur, disant : Qui enverrai-je ? Je répondis : Me voici, envoie-moi. » — d’après Ésaïe 6</blockquote> <p>Quand John était jeune homme, il est parti dans la grande ville de Chicago pour faire des études et devenir pasteur. Un an plus tard, son frère Edmund est venu y étudier, lui aussi. Edmund avait promis à Dieu de partir comme missionnaire dans un pays lointain, si Dieu le permettait.</p> <p>Un été, Edmund est allé dans l’Ouest, au Montana, pour aider dans les écoles du dimanche. Là-bas, il a attrapé une forte fièvre. Il était si malade qu’on a épinglé son billet de train à son manteau pour qu’il puisse rentrer chez lui. Il est bien arrivé à la maison, mais quelques jours plus tard, en août 1891, il est mort. John a été très triste.</p> <p>Alors John a commencé à se poser des questions. Edmund avait voulu être missionnaire, et maintenant il ne pourrait plus partir. Est-ce que Dieu voulait que John parte à sa place ? John ne s’est pas pressé de décider. Il y a réfléchi pendant presque un an.</p> <p>Un samedi, tard le soir, John est allé dans la chambre d’un ami. Il lui a demandé de lui donner toutes les raisons de partir et toutes les raisons de rester. Mais son ami n’a pas voulu discuter. Il a dit à John d’aller dans sa propre chambre, de se mettre à genoux devant Dieu et d’y rester jusqu’à ce que la question soit réglée.</p> <p>C’est ce que John a fait. Personne ne sait combien de temps il a prié cette nuit-là. Mais le lendemain matin, à la chapelle, il a retrouvé son ami et lui a dit : « C’est réglé. » Son visage rayonnait. Il allait partir.</p> <p>En 1892, John est devenu pasteur, et son Église l’a envoyé au Pendjab, dans le nord de l’Inde. Le 15 octobre 1892, il a pris le bateau à New York. Il avait vingt-six ans.</p> <p>Parfois, nous avons une grande question et nous ne savons pas quoi faire. C’est bien de demander de l’aide à des personnes sages. Mais certaines questions, il vaut mieux les apporter à Dieu. Tu peux tout lui raconter, attendre dans le calme et lui faire confiance pour qu’il te montre le chemin.</p> <p><em>Cher Dieu, quand je ne sais pas quoi faire, aide-moi à venir te parler. Je veux dire, comme John : « Me voici. Envoie-moi. » Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-il arrivé à Edmund, le frère de John ?",
+    "answer": "Il a attrapé une forte fièvre pendant qu’il aidait dans les écoles du dimanche au Montana. Il est rentré à la maison très malade, et il est mort en août 1891."
+   },
+   {
+    "question": "Qu’est-ce que l’ami de John lui a dit de faire, au lieu de discuter ?",
+    "answer": "D’aller dans sa propre chambre, de se mettre à genoux devant Dieu et d’y rester jusqu’à ce que la question soit réglée. Le lendemain matin, John a dit : « C’est réglé. »"
+   },
+   {
+    "question": "Y a-t-il une question que tu aimerais apporter à Dieu ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : nous pouvons apporter nos grandes questions à Dieu, attendre, et lui faire confiance pour qu’il nous montre le chemin."
+   }
+  ],
+  "body_text": "« J’entendis la voix du Seigneur, disant : Qui enverrai-je ? Je répondis : Me voici, envoie-moi. » — d’après Ésaïe 6 Quand John était jeune homme, il est parti dans la grande ville de Chicago pour faire des études et devenir pasteur. Un an plus tard, son frère Edmund est venu y étudier, lui aussi. Edmund avait promis à Dieu de partir comme missionnaire dans un pays lointain, si Dieu le permettait. Un été, Edmund est allé dans l’Ouest, au Montana, pour aider dans les écoles du dimanche. Là-bas, il a attrapé une forte fièvre. Il était si malade qu’on a épinglé son billet de train à son manteau pour qu’il puisse rentrer chez lui. Il est bien arrivé à la maison, mais quelques jours plus tard, en août 1891, il est mort. John a été très triste. Alors John a commencé à se poser des questions. Edmund avait voulu être missionnaire, et maintenant il ne pourrait plus partir. Est-ce que Dieu voulait que John parte à sa place ? John ne s’est pas pressé de décider. Il y a réfléchi pendant presque un an. Un samedi, tard le soir, John est allé dans la chambre d’un ami. Il lui a demandé de lui donner toutes les raisons de partir et toutes les raisons de rester. Mais son ami n’a pas voulu discuter. Il a dit à John d’aller dans sa propre chambre, de se mettre à genoux devant Dieu et d’y rester jusqu’à ce que la question soit réglée. C’est ce que John a fait. Personne ne sait combien de temps il a prié cette nuit-là. Mais le lendemain matin, à la chapelle, il a retrouvé son ami et lui a dit : « C’est réglé. » Son visage rayonnait. Il allait partir. En 1892, John est devenu pasteur, et son Église l’a envoyé au Pendjab, dans le nord de l’Inde. Le 15 octobre 1892, il a pris le bateau à New York. Il avait vingt-six ans. Parfois, nous avons une grande question et nous ne savons pas quoi faire. C’est bien de demander de l’aide à des personnes sages. Mais certaines questions, il vaut mieux les apporter à Dieu. Tu peux tout lui raconter, attendre dans le calme et lui faire confiance pour qu’il te montre le chemin. Cher Dieu, quand je ne sais pas quoi faire, aide-moi à venir te parler. Je veux dire, comme John : « Me voici. Envoie-moi. » Amen.",
+  "word_count": 407
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "fr"
+  ],
+  "order": 3,
+  "title": "La lettre froissée",
+  "body_html": "<blockquote>« À combien plus forte raison le Père céleste donnera-t-il le Saint-Esprit à ceux qui le lui demandent ! » — d’après Luc 11</blockquote> <p>Quand John est monté à bord de son bateau à New York, une lettre l’attendait. Elle venait d’un ami de son père, un chrétien plus âgé qui avait lui-même voulu être missionnaire autrefois, mais qui n’avait pas pu partir.</p> <p>La lettre était courte. Elle disait à peu près ceci : « Je ne cesserai pas de prier pour toi, cher John, jusqu’à ce que tu sois rempli du Saint-Esprit. »</p> <p>John était en colère ! Cet homme pensait-il qu’il n’était pas prêt ? Lui qui allait être un grand missionnaire ! Il a froissé la lettre, il l’a jetée, et il est monté sur le pont, très fâché.</p> <p>Mais pendant qu’il marchait de long en large, il savait, tout au fond de son cœur, que cet homme avait raison. L’ami de son père était un homme bon et saint. Alors John est revenu sur ses pas, il s’est mis à genoux, il a retrouvé la lettre froissée, il l’a défroissée et il l’a relue. Et relue encore.</p> <p>Pendant deux ou trois jours, John s’est senti très malheureux. Enfin, il a demandé à Dieu de le remplir du Saint-Esprit. Alors il a commencé à comprendre qu’il avait surtout voulu être missionnaire pour que les gens l’admirent. Il a dit à Dieu qu’il était prêt à rater ses examens en Inde et à travailler « tranquillement, loin des regards », si seulement Dieu voulait le remplir de son Esprit.</p> <p>John a raconté cette histoire à ses amis plusieurs fois, et certains petits détails ne sont pas tout à fait les mêmes d’une fois à l’autre. Mais l’essentiel est toujours pareil : John a cessé d’être orgueilleux, et il a demandé à Dieu de l’aider.</p> <p>Parfois, quelqu’un qui t’aime te dit quelque chose que tu n’as pas envie d’entendre. C’est facile de se fâcher. Mais c’est sage de s’arrêter, de réfléchir et de demander à Dieu si cette personne a peut-être raison.</p> <p><em>Cher Dieu, quand quelqu’un qui m’aime me dit quelque chose de difficile, aide-moi à écouter et à ne pas être orgueilleux. S’il te plaît, remplis-moi de ton Saint-Esprit. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Que disait la lettre qui attendait John sur le bateau ?",
+    "answer": "Elle disait que l’ami du père de John ne cesserait pas de prier pour lui jusqu’à ce que John soit rempli du Saint-Esprit."
+   },
+   {
+    "question": "Qu’a fait John après avoir jeté la lettre ?",
+    "answer": "Il est revenu, il l’a retrouvée, il l’a défroissée et il l’a relue. Après quelques jours très malheureux, il a demandé à Dieu de le remplir du Saint-Esprit, et il lui a dit qu’il était prêt à travailler tranquillement, loin des regards."
+   },
+   {
+    "question": "Est-ce que quelqu’un t’a déjà dit quelque chose de difficile qui s’est révélé vrai ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : quand quelqu’un qui nous aime nous dit quelque chose de difficile, c’est sage d’écouter et de demander à Dieu si cette personne a raison."
+   }
+  ],
+  "body_text": "« À combien plus forte raison le Père céleste donnera-t-il le Saint-Esprit à ceux qui le lui demandent ! » — d’après Luc 11 Quand John est monté à bord de son bateau à New York, une lettre l’attendait. Elle venait d’un ami de son père, un chrétien plus âgé qui avait lui-même voulu être missionnaire autrefois, mais qui n’avait pas pu partir. La lettre était courte. Elle disait à peu près ceci : « Je ne cesserai pas de prier pour toi, cher John, jusqu’à ce que tu sois rempli du Saint-Esprit. » John était en colère ! Cet homme pensait-il qu’il n’était pas prêt ? Lui qui allait être un grand missionnaire ! Il a froissé la lettre, il l’a jetée, et il est monté sur le pont, très fâché. Mais pendant qu’il marchait de long en large, il savait, tout au fond de son cœur, que cet homme avait raison. L’ami de son père était un homme bon et saint. Alors John est revenu sur ses pas, il s’est mis à genoux, il a retrouvé la lettre froissée, il l’a défroissée et il l’a relue. Et relue encore. Pendant deux ou trois jours, John s’est senti très malheureux. Enfin, il a demandé à Dieu de le remplir du Saint-Esprit. Alors il a commencé à comprendre qu’il avait surtout voulu être missionnaire pour que les gens l’admirent. Il a dit à Dieu qu’il était prêt à rater ses examens en Inde et à travailler « tranquillement, loin des regards », si seulement Dieu voulait le remplir de son Esprit. John a raconté cette histoire à ses amis plusieurs fois, et certains petits détails ne sont pas tout à fait les mêmes d’une fois à l’autre. Mais l’essentiel est toujours pareil : John a cessé d’être orgueilleux, et il a demandé à Dieu de l’aider. Parfois, quelqu’un qui t’aime te dit quelque chose que tu n’as pas envie d’entendre. C’est facile de se fâcher. Mais c’est sage de s’arrêter, de réfléchir et de demander à Dieu si cette personne a peut-être raison. Cher Dieu, quand quelqu’un qui m’aime me dit quelque chose de difficile, aide-moi à écouter et à ne pas être orgueilleux. S’il te plaît, remplis-moi de ton Saint-Esprit. Amen.",
+  "word_count": 372
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "fr"
+  ],
+  "order": 4,
+  "title": "Une question dans la rue",
+  "body_html": "<blockquote>« Ô Dieu ! Crée en moi un cœur pur. » — d’après Psaume 51</blockquote> <p>À la fin de 1892, John est arrivé en Inde. Il a pris le train jusqu’au Pendjab, le pays des cinq rivières. C’était un pays de champs de blé et de villages aux murs de terre, de chameaux et de charrettes tirées par des bœufs. Les gens parlaient l’ourdou et le pendjabi, et John ne savait encore dire aucun mot dans ces deux langues.</p> <p>Dans ses tout premiers jours, un missionnaire plus âgé l’a emmené à une réunion, dehors, dans la rue. Le missionnaire a dit à la foule que Jésus peut vraiment sauver les gens de leur péché. John ne comprenait pas les mots, mais quelqu’un lui a expliqué de quoi il parlait.</p> <p>Quand le missionnaire a eu fini, un homme bien habillé s’est avancé. Il parlait bien l’anglais. Il a demandé au missionnaire si Jésus l’avait sauvé, lui, du péché, de la façon dont il venait de le raconter.</p> <p>Cette question est allée droit au cœur de John. Il savait qu’il y avait dans sa propre vie un péché qui le faisait trébucher, encore et encore. Il n’a jamais dit à personne ce que c’était. Mais il savait que, si l’homme lui avait posé la question à lui, il n’aurait pas pu répondre oui en toute honnêteté.</p> <p>John est rentré dans sa chambre et il a fermé la porte. Il a dit à Dieu qu’il ne pouvait pas parler aux autres de la puissance de Jésus tant qu’il n’avait pas d’abord laissé Jésus l’aider, lui. Il est resté là à prier très longtemps, et Dieu lui a donné l’assurance qu’il pouvait et voulait le libérer. Des années plus tard, John a dit : « Il m’a vraiment délivré. » Son ami n’a jamais oublié le visage triste de John quand il parlait de son péché, ni son merveilleux sourire quand il racontait combien Jésus avait été fidèle.</p> <p>Tout le monde a des péchés qui le font trébucher. C’est peut-être se mettre en colère, ou raconter des petits mensonges, ou être méchant. Tu n’as pas besoin de les cacher à Dieu. Tu peux les lui dire, et il est fidèle pour te pardonner, pour rendre ton cœur pur et pour t’aider.</p> <p><em>Cher Dieu, tu connais les choses que je n’arrête pas de mal faire. S’il te plaît, pardonne-moi, rends mon cœur pur et aide-moi à faire ce qui est bien. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-ce que l’homme dans la rue a demandé au missionnaire ?",
+    "answer": "Il lui a demandé si Jésus l’avait vraiment sauvé du péché, comme il venait de le dire à la foule."
+   },
+   {
+    "question": "Qu’a fait John quand cette question lui est allée droit au cœur ?",
+    "answer": "Il est allé dans sa chambre, il a fermé la porte et il a prié longtemps, jusqu’à ce que Dieu lui donne l’assurance qu’il pouvait le libérer. John a dit : « Il m’a vraiment délivré. »"
+   },
+   {
+    "question": "Y a-t-il quelque chose que tu n’arrêtes pas de mal faire et dont tu pourrais parler à Dieu ?",
+    "answer": "Toute réponse sincère est bonne ici, et tu n’es pas obligé de la dire à voix haute. L’idée du chapitre : nous n’avons jamais besoin de cacher nos péchés à Dieu ; il nous pardonne et il nous aide."
+   }
+  ],
+  "body_text": "« Ô Dieu ! Crée en moi un cœur pur. » — d’après Psaume 51 À la fin de 1892, John est arrivé en Inde. Il a pris le train jusqu’au Pendjab, le pays des cinq rivières. C’était un pays de champs de blé et de villages aux murs de terre, de chameaux et de charrettes tirées par des bœufs. Les gens parlaient l’ourdou et le pendjabi, et John ne savait encore dire aucun mot dans ces deux langues. Dans ses tout premiers jours, un missionnaire plus âgé l’a emmené à une réunion, dehors, dans la rue. Le missionnaire a dit à la foule que Jésus peut vraiment sauver les gens de leur péché. John ne comprenait pas les mots, mais quelqu’un lui a expliqué de quoi il parlait. Quand le missionnaire a eu fini, un homme bien habillé s’est avancé. Il parlait bien l’anglais. Il a demandé au missionnaire si Jésus l’avait sauvé, lui, du péché, de la façon dont il venait de le raconter. Cette question est allée droit au cœur de John. Il savait qu’il y avait dans sa propre vie un péché qui le faisait trébucher, encore et encore. Il n’a jamais dit à personne ce que c’était. Mais il savait que, si l’homme lui avait posé la question à lui, il n’aurait pas pu répondre oui en toute honnêteté. John est rentré dans sa chambre et il a fermé la porte. Il a dit à Dieu qu’il ne pouvait pas parler aux autres de la puissance de Jésus tant qu’il n’avait pas d’abord laissé Jésus l’aider, lui. Il est resté là à prier très longtemps, et Dieu lui a donné l’assurance qu’il pouvait et voulait le libérer. Des années plus tard, John a dit : « Il m’a vraiment délivré. » Son ami n’a jamais oublié le visage triste de John quand il parlait de son péché, ni son merveilleux sourire quand il racontait combien Jésus avait été fidèle. Tout le monde a des péchés qui le font trébucher. C’est peut-être se mettre en colère, ou raconter des petits mensonges, ou être méchant. Tu n’as pas besoin de les cacher à Dieu. Tu peux les lui dire, et il est fidèle pour te pardonner, pour rendre ton cœur pur et pour t’aider. Cher Dieu, tu connais les choses que je n’arrête pas de mal faire. S’il te plaît, pardonne-moi, rends mon cœur pur et aide-moi à faire ce qui est bien. Amen.",
+  "word_count": 407
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "fr"
+  ],
+  "order": 5,
+  "title": "Lent à parler",
+  "body_html": "<blockquote>« Je serai avec ta bouche, et je t’enseignerai ce que tu auras à dire. » — d’après Exode 4</blockquote> <p>John n’était pas quelqu’un qu’on apprenait facilement à connaître. Il était timide et silencieux. Il était aussi un peu sourd, et avec les années il est devenu de plus en plus sourd. Quand on lui parlait, il avait souvent l’air de ne pas entendre, ou alors il mettait longtemps à répondre.</p> <p>Mais tout le monde remarquait ses yeux. Un ami a dit qu’il avait « de merveilleux yeux bleus » qui semblaient voir jusqu’au fond de ton cœur.</p> <p>Les nouveaux missionnaires devaient passer la plus grande partie de leur temps à apprendre la langue. John l’a bien étudiée. Mais il a aussi passé de longues heures à étudier la Bible, et les responsables de la mission l’ont grondé. John a répondu : « L’essentiel d’abord. » Il était venu en Inde pour enseigner la Bible, alors il devait bien la connaître.</p> <p>Pendant longtemps, on a pensé que John ne parlerait jamais très bien l’ourdou ni le pendjabi. Ses dix premières années en Inde ont été lentes, et peu de gens sont venus à Jésus. Certains des autres missionnaires le trouvaient bizarre, parce qu’il passait tellement de temps à prier. Des années plus tard, un ami a demandé à John s’il avait su qu’ils ne l’approuvaient pas. John a souri et il a dit : « Oh, oui, je le savais, mais ils ne me comprenaient pas, c’est tout ; ils n’ont jamais voulu être méchants. » Il n’avait aucune amertume.</p> <p>Petit à petit, Dieu a délié la langue de John. À la fin, il pouvait prêcher en ourdou, en pendjabi et en anglais, et les foules l’écoutaient. Les gens qui parlaient l’ourdou disaient qu’il le parlait bien, même s’il parlait un peu comme un livre !</p> <p>Il y a peut-être quelque chose que tu trouves difficile. Peut-être que tu es timide, ou que tu as du mal à lire, ou à entendre, ou à parler. Dieu t’a créé, et il sait tout cela. Il peut se servir de toi tel que tu es.</p> <p><em>Cher Dieu, merci de m’avoir créé. Quand je me sens timide ou lent, aide-moi à me souvenir que tu es avec moi et que tu peux te servir de moi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi les responsables de la mission ont-ils grondé John ?",
+    "answer": "Parce qu’il passait de longues heures à étudier la Bible au lieu de seulement apprendre la langue. Il a répondu : « L’essentiel d’abord. »"
+   },
+   {
+    "question": "Qu’a dit John quand il a su que certains missionnaires ne l’approuvaient pas ?",
+    "answer": "Il a souri et il a dit qu’ils ne le comprenaient pas, et qu’ils n’avaient jamais voulu être méchants. Il n’avait aucune amertume."
+   },
+   {
+    "question": "Qu’est-ce que tu trouves difficile ? Comment Dieu pourrait-il t’aider ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : Dieu t’a créé, il sait ce que tu trouves difficile, et il peut se servir de toi tel que tu es."
+   }
+  ],
+  "body_text": "« Je serai avec ta bouche, et je t’enseignerai ce que tu auras à dire. » — d’après Exode 4 John n’était pas quelqu’un qu’on apprenait facilement à connaître. Il était timide et silencieux. Il était aussi un peu sourd, et avec les années il est devenu de plus en plus sourd. Quand on lui parlait, il avait souvent l’air de ne pas entendre, ou alors il mettait longtemps à répondre. Mais tout le monde remarquait ses yeux. Un ami a dit qu’il avait « de merveilleux yeux bleus » qui semblaient voir jusqu’au fond de ton cœur. Les nouveaux missionnaires devaient passer la plus grande partie de leur temps à apprendre la langue. John l’a bien étudiée. Mais il a aussi passé de longues heures à étudier la Bible, et les responsables de la mission l’ont grondé. John a répondu : « L’essentiel d’abord. » Il était venu en Inde pour enseigner la Bible, alors il devait bien la connaître. Pendant longtemps, on a pensé que John ne parlerait jamais très bien l’ourdou ni le pendjabi. Ses dix premières années en Inde ont été lentes, et peu de gens sont venus à Jésus. Certains des autres missionnaires le trouvaient bizarre, parce qu’il passait tellement de temps à prier. Des années plus tard, un ami a demandé à John s’il avait su qu’ils ne l’approuvaient pas. John a souri et il a dit : « Oh, oui, je le savais, mais ils ne me comprenaient pas, c’est tout ; ils n’ont jamais voulu être méchants. » Il n’avait aucune amertume. Petit à petit, Dieu a délié la langue de John. À la fin, il pouvait prêcher en ourdou, en pendjabi et en anglais, et les foules l’écoutaient. Les gens qui parlaient l’ourdou disaient qu’il le parlait bien, même s’il parlait un peu comme un livre ! Il y a peut-être quelque chose que tu trouves difficile. Peut-être que tu es timide, ou que tu as du mal à lire, ou à entendre, ou à parler. Dieu t’a créé, et il sait tout cela. Il peut se servir de toi tel que tu es. Cher Dieu, merci de m’avoir créé. Quand je me sens timide ou lent, aide-moi à me souvenir que tu es avec moi et que tu peux te servir de moi. Amen.",
+  "word_count": 384
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "fr"
+  ],
+  "order": 6,
+  "title": "L’homme qui ne dort jamais",
+  "body_html": "<blockquote>« Vers le matin, pendant qu’il faisait encore très sombre, il se leva, et sortit pour aller dans un lieu désert, où il pria. » — d’après Marc 1</blockquote> <p>John travaillait dans les villages du Pendjab. Il voyageait en train, à cheval et dans de petites charrettes, et ses bagages suivaient dans une charrette tirée par des bœufs. Beaucoup de ceux qui sont venus à Jésus là-bas étaient très pauvres. Les autres les méprisaient et ne voulaient même pas les toucher.</p> <p>Mais John les aimait. Il les saluait en les serrant dans ses bras, en posant sa main d’abord sur une épaule, puis sur l’autre. Il vivait avec les prédicateurs indiens qui travaillaient avec lui, et il mangeait et dormait avec eux. Un homme a dit : « C’est l’amour qui lui a fait remporter ses victoires. »</p> <p>Une nuit, John a dû rester debout toute la nuit pour préparer un message sur la Bible. Le message s’est bien passé. Mais ensuite, une pensée lui est venue. Il avait passé une nuit entière à préparer son message. Ne devait-il pas passer aussi une nuit à se préparer lui-même, en priant ? Alors c’est ce qu’il a fait. Il a tellement aimé ce moment qu’il a recommencé la nuit suivante, et d’autres personnes sont venues prier avec lui.</p> <p>John continuait à préparer ses messages avec soin. Mais il disait souvent que préparer le messager était tout aussi important que préparer le message.</p> <p>John se levait très tôt pour prier et lire sa Bible. Quand il était à genoux, sa Bible était ouverte devant lui, et ses mains étaient posées dessus. Pendant la nuit, il allumait sa lampe pour lire un verset et parler avec Dieu. Alors les gens du Pendjab lui ont donné un surnom : « l’homme qui ne dort jamais ». Ce n’était pas vraiment vrai. Il dormait ! Mais pas beaucoup.</p> <p>Toi, tu as besoin de dormir ! Mais tu peux commencer chaque journée comme John, en disant bonjour à Dieu et en lui demandant de te préparer pour la journée.</p> <p><em>Cher Dieu, bonjour ! S’il te plaît, prépare-moi pour aujourd’hui, et aide-moi à aimer toutes les personnes que je rencontre, comme tu les aimes. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Comment John traitait-il les gens pauvres des villages ?",
+    "answer": "Il les aimait. Il les saluait en les serrant dans ses bras, et il vivait, mangeait et dormait avec les prédicateurs indiens qui travaillaient avec lui."
+   },
+   {
+    "question": "Pourquoi les gens appelaient-ils John « l’homme qui ne dort jamais » ?",
+    "answer": "Parce qu’il passait une grande partie de la nuit à prier et à lire sa Bible. Il dormait, mais pas beaucoup."
+   },
+   {
+    "question": "Que pourrais-tu dire à Dieu au début de ta journée ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : comme John, nous pouvons commencer chaque journée avec Dieu et lui demander de nous préparer."
+   }
+  ],
+  "body_text": "« Vers le matin, pendant qu’il faisait encore très sombre, il se leva, et sortit pour aller dans un lieu désert, où il pria. » — d’après Marc 1 John travaillait dans les villages du Pendjab. Il voyageait en train, à cheval et dans de petites charrettes, et ses bagages suivaient dans une charrette tirée par des bœufs. Beaucoup de ceux qui sont venus à Jésus là-bas étaient très pauvres. Les autres les méprisaient et ne voulaient même pas les toucher. Mais John les aimait. Il les saluait en les serrant dans ses bras, en posant sa main d’abord sur une épaule, puis sur l’autre. Il vivait avec les prédicateurs indiens qui travaillaient avec lui, et il mangeait et dormait avec eux. Un homme a dit : « C’est l’amour qui lui a fait remporter ses victoires. » Une nuit, John a dû rester debout toute la nuit pour préparer un message sur la Bible. Le message s’est bien passé. Mais ensuite, une pensée lui est venue. Il avait passé une nuit entière à préparer son message. Ne devait-il pas passer aussi une nuit à se préparer lui-même, en priant ? Alors c’est ce qu’il a fait. Il a tellement aimé ce moment qu’il a recommencé la nuit suivante, et d’autres personnes sont venues prier avec lui. John continuait à préparer ses messages avec soin. Mais il disait souvent que préparer le messager était tout aussi important que préparer le message. John se levait très tôt pour prier et lire sa Bible. Quand il était à genoux, sa Bible était ouverte devant lui, et ses mains étaient posées dessus. Pendant la nuit, il allumait sa lampe pour lire un verset et parler avec Dieu. Alors les gens du Pendjab lui ont donné un surnom : « l’homme qui ne dort jamais ». Ce n’était pas vraiment vrai. Il dormait ! Mais pas beaucoup. Toi, tu as besoin de dormir ! Mais tu peux commencer chaque journée comme John, en disant bonjour à Dieu et en lui demandant de te préparer pour la journée. Cher Dieu, bonjour ! S’il te plaît, prépare-moi pour aujourd’hui, et aide-moi à aimer toutes les personnes que je rencontre, comme tu les aimes. Amen.",
+  "word_count": 368
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "fr"
+  ],
+  "order": 7,
+  "title": "« Il ne m’a donné aucun message »",
+  "body_html": "<blockquote>« Ce n’est ni par la puissance ni par la force, mais c’est par mon esprit, dit l’Éternel. » — d’après Zacharie 4</blockquote> <p>En 1904, John et quelques amis ont commencé à désirer de tout leur cœur que Dieu réveille les Églises du Pendjab. Ils ont fait une promesse ensemble. Chaque jour, peu après midi, ils prieraient pendant une demi-heure, et ils continueraient à prier « jusqu’à ce que le réveil vienne ». Ils se sont appelés l’Union de prière du Pendjab.</p> <p>Cette même année, des chrétiens ont commencé à se réunir chaque année pour une grande rencontre dans une ville appelée Sialkot. Ils venaient étudier la Bible, prier, et demander à Dieu de les rendre plus semblables à Jésus. John y allait tous les ans.</p> <p>En 1905, presque trois cents personnes sont venues, et on a demandé à John de donner les messages du matin sur le Saint-Esprit. Il a posé aux pasteurs une question difficile : « Le Saint-Esprit est-il le premier ? » Quand vous prêchez, leur a-t-il demandé, est-ce que vous mettez l’Esprit de Dieu devant, et est-ce que vous restez derrière lui ?</p> <p>Le lendemain matin, tout le monde attendait le message suivant. L’orateur est entré et a dit doucement : « Je remercie Dieu : il ne m’a donné aucun message pour vous aujourd’hui. » Les gens ont été surpris ! Alors celui qui dirigeait la réunion s’est mis de côté et a dit : « C’est le Saint-Esprit qui dirige cette réunion. » Le rapport de la mission ne donne pas le nom de l’orateur, mais les amis de John étaient sûrs que c’était lui. Il avait appris aux gens à mettre Dieu en premier, et maintenant il le faisait lui-même.</p> <p>Ce qui s’est passé ensuite a été merveilleux. Les gens ont commencé à dire à Dieu qu’ils regrettaient le mal qu’ils avaient fait. Puis une grande joie est venue, et ils ont chanté des psaumes de louange encore et encore. On a réservé une pièce pour la prière, et après le premier ou le deuxième jour, elle n’a plus jamais été vide, ni le jour ni la nuit.</p> <p>C’est bien de travailler dur et de se préparer. Mais le plus important, c’est de laisser Dieu nous conduire. Tu peux lui demander chaque jour : « Qu’est-ce que tu veux que je fasse ? »</p> <p><em>Cher Dieu, s’il te plaît, sois le premier dans ma vie. Aide-moi à t’écouter et à te suivre là où tu me conduis. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quelle promesse l’Union de prière du Pendjab a-t-elle faite ?",
+    "answer": "Prier pendant une demi-heure chaque jour, peu après midi, et continuer à prier jusqu’à ce que Dieu réveille les Églises."
+   },
+   {
+    "question": "Qu’a dit l’orateur le deuxième matin, à Sialkot, en 1905 ?",
+    "answer": "Il a dit : « Je remercie Dieu : il ne m’a donné aucun message pour vous aujourd’hui. » Et celui qui dirigeait la réunion a dit que c’était le Saint-Esprit qui la dirigeait."
+   },
+   {
+    "question": "Comment peux-tu laisser Dieu être le premier dans ta journée ?",
+    "answer": "Toute réponse sincère est bonne ici. Ce que le chapitre veut dire, c’est que le plus important est de laisser Dieu nous conduire, et que nous pouvons lui demander ce qu’il veut que nous fassions."
+   }
+  ],
+  "body_text": "« Ce n’est ni par la puissance ni par la force, mais c’est par mon esprit, dit l’Éternel. » — d’après Zacharie 4 En 1904, John et quelques amis ont commencé à désirer de tout leur cœur que Dieu réveille les Églises du Pendjab. Ils ont fait une promesse ensemble. Chaque jour, peu après midi, ils prieraient pendant une demi-heure, et ils continueraient à prier « jusqu’à ce que le réveil vienne ». Ils se sont appelés l’Union de prière du Pendjab. Cette même année, des chrétiens ont commencé à se réunir chaque année pour une grande rencontre dans une ville appelée Sialkot. Ils venaient étudier la Bible, prier, et demander à Dieu de les rendre plus semblables à Jésus. John y allait tous les ans. En 1905, presque trois cents personnes sont venues, et on a demandé à John de donner les messages du matin sur le Saint-Esprit. Il a posé aux pasteurs une question difficile : « Le Saint-Esprit est-il le premier ? » Quand vous prêchez, leur a-t-il demandé, est-ce que vous mettez l’Esprit de Dieu devant, et est-ce que vous restez derrière lui ? Le lendemain matin, tout le monde attendait le message suivant. L’orateur est entré et a dit doucement : « Je remercie Dieu : il ne m’a donné aucun message pour vous aujourd’hui. » Les gens ont été surpris ! Alors celui qui dirigeait la réunion s’est mis de côté et a dit : « C’est le Saint-Esprit qui dirige cette réunion. » Le rapport de la mission ne donne pas le nom de l’orateur, mais les amis de John étaient sûrs que c’était lui. Il avait appris aux gens à mettre Dieu en premier, et maintenant il le faisait lui-même. Ce qui s’est passé ensuite a été merveilleux. Les gens ont commencé à dire à Dieu qu’ils regrettaient le mal qu’ils avaient fait. Puis une grande joie est venue, et ils ont chanté des psaumes de louange encore et encore. On a réservé une pièce pour la prière, et après le premier ou le deuxième jour, elle n’a plus jamais été vide, ni le jour ni la nuit. C’est bien de travailler dur et de se préparer. Mais le plus important, c’est de laisser Dieu nous conduire. Tu peux lui demander chaque jour : « Qu’est-ce que tu veux que je fasse ? » Cher Dieu, s’il te plaît, sois le premier dans ma vie. Aide-moi à t’écouter et à te suivre là où tu me conduis. Amen.",
+  "word_count": 416
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "fr"
+  ],
+  "order": 8,
+  "title": "La chambre de prière",
+  "body_html": "<blockquote>« Ouvre ta bouche, et je la remplirai. » — d’après Psaume 81</blockquote> <p>Un jour, un missionnaire du pays de Galles, qui s’appelait Pengwern Jones, est venu parler à une réunion dans une ville appelée Ludhiana. Il avait voyagé toute la nuit en train. Il était fatigué, et inquiet pour le message qu’il devait donner l’après-midi.</p> <p>Pendant qu’ils buvaient une tasse de thé le matin, un Américain discret lui a dit : « Je veux vous voir, je vous attendrai à la porte. » C’était John. À la porte, il a dit : « Venez avec moi dans la chambre de prière. » Ils y sont entrés vers huit heures du matin, et ils ont prié jusqu’à trois heures et demie de l’après-midi ! M. Jones a oublié qu’il était fatigué, et il a oublié d’être inquiet.</p> <p>Ensuite, John l’a accompagné jusqu’à la salle de réunion, lui a pris la main et lui a dit : « Entrez et parlez, c’est votre travail. Moi, je retourne dans la chambre de prière pour prier pour vous, c’est mon travail. » Et ce jour-là, Dieu a parlé à beaucoup de gens.</p> <p>Pendant les rencontres de Sialkot, John aimait s’allonger face contre terre sur le tapis de la chambre de prière pour prier. Une fois, il a prié avec le verset de la Bible qui se trouve en haut de ce chapitre, en répétant encore et encore les mots « toute grande » : « Toute grande, Seigneur. Toute grande. » Il demandait à Dieu que son peuple espère de grandes choses.</p> <p>La chambre de prière n’était pas un endroit triste. Quand quelqu’un trouvait la paix avec Dieu, John était parfois si rempli de joie qu’il tapait dans ses mains et se mettait même à danser, et d’autres le rejoignaient pour louer Dieu !</p> <p>John oubliait souvent de manger ou de dormir, et le jeune garçon qui l’aidait en pleurait. Mais une fois, quand la cloche du déjeuner a sonné, un ami l’a entendu murmurer : « Père, veux-tu que j’y aille ? » Puis il a dit : « Merci, Père », et il est allé déjeuner avec le sourire.</p> <p>Certaines personnes parlent, et d’autres prient pour elles. Les deux, c’est le travail de Dieu. Quand tu pries pour ton maître ou ta maîtresse, ton église ou tes amis, toi aussi, tu fais le travail de Dieu.</p> <p><em>Cher Dieu, merci parce que je peux aider les autres en priant pour eux. S’il te plaît, bénis tous ceux qui m’enseignent qui tu es. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-ce que John a dit à M. Jones à la porte de la salle de réunion ?",
+    "answer": "« Entrez et parlez, c’est votre travail. Moi, je retourne dans la chambre de prière pour prier pour vous, c’est mon travail. »"
+   },
+   {
+    "question": "Que faisait parfois John quand quelqu’un trouvait la paix avec Dieu ?",
+    "answer": "Il était si rempli de joie qu’il tapait dans ses mains et se mettait même à danser, et d’autres le rejoignaient pour louer Dieu."
+   },
+   {
+    "question": "Pour qui pourrais-tu prier cette semaine ?",
+    "answer": "Toute réponse sincère est bonne ici. Ce que le chapitre veut dire, c’est que prier pour les autres est un vrai travail pour Dieu, et que tout le monde peut le faire."
+   }
+  ],
+  "body_text": "« Ouvre ta bouche, et je la remplirai. » — d’après Psaume 81 Un jour, un missionnaire du pays de Galles, qui s’appelait Pengwern Jones, est venu parler à une réunion dans une ville appelée Ludhiana. Il avait voyagé toute la nuit en train. Il était fatigué, et inquiet pour le message qu’il devait donner l’après-midi. Pendant qu’ils buvaient une tasse de thé le matin, un Américain discret lui a dit : « Je veux vous voir, je vous attendrai à la porte. » C’était John. À la porte, il a dit : « Venez avec moi dans la chambre de prière. » Ils y sont entrés vers huit heures du matin, et ils ont prié jusqu’à trois heures et demie de l’après-midi ! M. Jones a oublié qu’il était fatigué, et il a oublié d’être inquiet. Ensuite, John l’a accompagné jusqu’à la salle de réunion, lui a pris la main et lui a dit : « Entrez et parlez, c’est votre travail. Moi, je retourne dans la chambre de prière pour prier pour vous, c’est mon travail. » Et ce jour-là, Dieu a parlé à beaucoup de gens. Pendant les rencontres de Sialkot, John aimait s’allonger face contre terre sur le tapis de la chambre de prière pour prier. Une fois, il a prié avec le verset de la Bible qui se trouve en haut de ce chapitre, en répétant encore et encore les mots « toute grande » : « Toute grande, Seigneur. Toute grande. » Il demandait à Dieu que son peuple espère de grandes choses. La chambre de prière n’était pas un endroit triste. Quand quelqu’un trouvait la paix avec Dieu, John était parfois si rempli de joie qu’il tapait dans ses mains et se mettait même à danser, et d’autres le rejoignaient pour louer Dieu ! John oubliait souvent de manger ou de dormir, et le jeune garçon qui l’aidait en pleurait. Mais une fois, quand la cloche du déjeuner a sonné, un ami l’a entendu murmurer : « Père, veux-tu que j’y aille ? » Puis il a dit : « Merci, Père », et il est allé déjeuner avec le sourire. Certaines personnes parlent, et d’autres prient pour elles. Les deux, c’est le travail de Dieu. Quand tu pries pour ton maître ou ta maîtresse, ton église ou tes amis, toi aussi, tu fais le travail de Dieu. Cher Dieu, merci parce que je peux aider les autres en priant pour eux. S’il te plaît, bénis tous ceux qui m’enseignent qui tu es. Amen.",
+  "word_count": 421
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "fr"
+  ],
+  "order": 9,
+  "title": "« Et celui-là ? »",
+  "body_html": "<blockquote>« Car le Fils de l’homme est venu chercher et sauver ce qui était perdu. » — d’après Luc 19</blockquote> <p>En 1908, John a ressenti une grande tristesse pour les gens des villages qui ne connaissaient pas Jésus. Ses amis l’entendaient prier : « Père, donne-moi ces âmes, ou je meurs ! » Il demandait à Dieu, chaque jour, une personne qui croirait en Jésus et serait baptisée.</p> <p>Certains grands chiffres qu’on trouve dans les vieux livres sur John ne peuvent pas être vérifiés aujourd’hui. Mais les registres de la mission montrent que des centaines et des centaines de personnes ont été baptisées dans son district pendant ces années-là. John disait que c’était l’œuvre de « nous » : lui et ses aides indiens, ensemble.</p> <p>Un matin, John et deux prédicateurs indiens ont prié, et ils ont été sûrs que Dieu leur donnerait dix personnes ce jour-là. Ils sont partis en charrette vers un village lointain. Ils ont chanté et prêché toute la journée, mais personne ne s’y est intéressé. Les prédicateurs avaient faim et soif, et ils voulaient rentrer. John, lui, ne voulait pas partir.</p> <p>Pour finir, ils se sont arrêtés devant une petite maison pour demander à boire. L’homme leur a donné du lait en plus de l’eau, et il les a invités à entrer. Il connaissait déjà beaucoup de choses sur Jésus ! Il a appelé sa femme et ses enfants, et toute la famille a décidé de suivre Jésus. John les a tous baptisés. Ça faisait neuf.</p> <p>Maintenant, la nuit tombait, et le chemin du retour longeait la berge dangereuse d’une rivière. Les prédicateurs ont essayé de faire monter John dans la charrette, mais il demandait sans arrêt : « Et celui-là ? »</p> <p>Alors le père est sorti. « Mais oui, le voilà ! » a-t-il dit. Son neveu, un garçon qui vivait avec la famille, était parti jouer ! Le garçon croyait vraiment en Jésus, alors il a été baptisé lui aussi. « Ça fait dix », a dit John, et il est monté dans la charrette. Ils sont bien rentrés chez eux, dans le noir.</p> <p>Jésus est comme un berger qui part chercher une seule brebis perdue. Chaque personne compte pour lui. Ça veut dire que toi aussi, tu comptes pour lui.</p> <p><em>Cher Jésus, merci d’être venu me chercher. S’il te plaît, aide mes amis qui ne te connaissent pas à venir à toi, eux aussi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pour combien de personnes John et ses aides ont-ils prié ce jour-là ?",
+    "answer": "Dix. Le soir, une famille de neuf personnes avait été baptisée, et John ne voulait pas partir avant qu’on ait trouvé la dixième."
+   },
+   {
+    "question": "Qui était la dixième personne ?",
+    "answer": "Le neveu du père, un garçon qui vivait avec la famille et qui était parti jouer. Il croyait en Jésus, et il a été baptisé lui aussi."
+   },
+   {
+    "question": "À ton avis, pourquoi John tenait-il tant à une personne de plus ?",
+    "answer": "Toute réponse sincère est bonne ici. Ce que le chapitre veut dire, c’est que chaque personne compte pour Jésus, le bon Berger, et toi aussi."
+   }
+  ],
+  "body_text": "« Car le Fils de l’homme est venu chercher et sauver ce qui était perdu. » — d’après Luc 19 En 1908, John a ressenti une grande tristesse pour les gens des villages qui ne connaissaient pas Jésus. Ses amis l’entendaient prier : « Père, donne-moi ces âmes, ou je meurs ! » Il demandait à Dieu, chaque jour, une personne qui croirait en Jésus et serait baptisée. Certains grands chiffres qu’on trouve dans les vieux livres sur John ne peuvent pas être vérifiés aujourd’hui. Mais les registres de la mission montrent que des centaines et des centaines de personnes ont été baptisées dans son district pendant ces années-là. John disait que c’était l’œuvre de « nous » : lui et ses aides indiens, ensemble. Un matin, John et deux prédicateurs indiens ont prié, et ils ont été sûrs que Dieu leur donnerait dix personnes ce jour-là. Ils sont partis en charrette vers un village lointain. Ils ont chanté et prêché toute la journée, mais personne ne s’y est intéressé. Les prédicateurs avaient faim et soif, et ils voulaient rentrer. John, lui, ne voulait pas partir. Pour finir, ils se sont arrêtés devant une petite maison pour demander à boire. L’homme leur a donné du lait en plus de l’eau, et il les a invités à entrer. Il connaissait déjà beaucoup de choses sur Jésus ! Il a appelé sa femme et ses enfants, et toute la famille a décidé de suivre Jésus. John les a tous baptisés. Ça faisait neuf. Maintenant, la nuit tombait, et le chemin du retour longeait la berge dangereuse d’une rivière. Les prédicateurs ont essayé de faire monter John dans la charrette, mais il demandait sans arrêt : « Et celui-là ? » Alors le père est sorti. « Mais oui, le voilà ! » a-t-il dit. Son neveu, un garçon qui vivait avec la famille, était parti jouer ! Le garçon croyait vraiment en Jésus, alors il a été baptisé lui aussi. « Ça fait dix », a dit John, et il est monté dans la charrette. Ils sont bien rentrés chez eux, dans le noir. Jésus est comme un berger qui part chercher une seule brebis perdue. Chaque personne compte pour lui. Ça veut dire que toi aussi, tu comptes pour lui. Cher Jésus, merci d’être venu me chercher. S’il te plaît, aide mes amis qui ne te connaissent pas à venir à toi, eux aussi. Amen.",
+  "word_count": 404
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "fr"
+  ],
+  "order": 10,
+  "title": "Montre-moi ce qui est aimable",
+  "body_html": "<blockquote>« Que tout ce qui est aimable, tout ce qui mérite l’approbation, soit l’objet de vos pensées. » — d’après Philippiens 4</blockquote> <p>Un jour, John s’inquiétait pour un pasteur indien. Ce pasteur semblait s’être refroidi envers Dieu, et son Église s’était refroidie, elle aussi. Alors John est allé dans sa chambre pour prier pour lui.</p> <p>Il s’est agenouillé et il a commencé : « Ô Père, tu sais combien il est froid — » Mais il n’a jamais fini sa phrase. Il a eu l’impression qu’un doigt se posait sur ses lèvres. Et dans son cœur, il a entendu Dieu dire : « Celui qui le touche touche la prunelle de mon œil. » La prunelle, c’est le milieu de l’œil, la partie que nous protégeons avec le plus de soin. Dieu voulait dire : « Cet homme est très précieux pour moi. »</p> <p>John a été bouleversé. Il était venu prier pour le pasteur, mais au lieu de cela, il s’était mis à se plaindre de lui auprès de Dieu. Il s’est écrié : « Pardonne-moi, Père, d’avoir été un accusateur des frères devant toi ! »</p> <p>Alors il s’est souvenu du verset de la Bible qui est en haut de ce chapitre, et il a fait une nouvelle prière : « Père, montre-moi ce qui est aimable et ce qui mérite l’approbation dans la vie de mon frère. »</p> <p>Aussitôt, John s’est rappelé de bonnes choses. Le pasteur avait tout quitté pour suivre Jésus, et sa propre famille l’avait maltraité à cause de cela. Il avait travaillé dur pendant des années. Il avait aidé des gens de son Église à arrêter de se disputer. C’était un bon mari. John a passé tout son temps de prière à remercier Dieu pour lui.</p> <p>Peu de temps après, John a appris que Dieu avait beaucoup béni le pasteur, et qu’il prêchait de nouveau « avec feu ». L’ami de John pensait que c’était arrivé pendant que John remerciait Dieu pour lui.</p> <p>Quand quelqu’un nous agace, c’est facile de râler contre lui, même devant Dieu. La prochaine fois, essaie de demander à Dieu de te montrer quelque chose de bien chez cette personne, puis remercie-le pour cela.</p> <p><em>Cher Dieu, aide-moi à ne pas râler contre les autres. Montre-moi ce qu’il y a de bon en eux, et aide-moi à te remercier pour cela. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-ce qui a arrêté John au milieu de sa prière ?",
+    "answer": "Il a eu l’impression qu’un doigt se posait sur ses lèvres, et il a entendu Dieu dire que le pasteur était aussi précieux pour lui que la prunelle de son œil."
+   },
+   {
+    "question": "Quelle nouvelle prière John a-t-il faite ?",
+    "answer": "« Père, montre-moi ce qui est aimable et ce qui mérite l’approbation dans la vie de mon frère. » Ensuite, il a passé son temps de prière à remercier Dieu pour le pasteur."
+   },
+   {
+    "question": "Peux-tu penser à quelque chose de bien chez quelqu’un qui t’agace parfois ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : Dieu aime aussi cette personne, et nous pouvons le remercier pour le bien qu’il a mis en elle."
+   }
+  ],
+  "body_text": "« Que tout ce qui est aimable, tout ce qui mérite l’approbation, soit l’objet de vos pensées. » — d’après Philippiens 4 Un jour, John s’inquiétait pour un pasteur indien. Ce pasteur semblait s’être refroidi envers Dieu, et son Église s’était refroidie, elle aussi. Alors John est allé dans sa chambre pour prier pour lui. Il s’est agenouillé et il a commencé : « Ô Père, tu sais combien il est froid — » Mais il n’a jamais fini sa phrase. Il a eu l’impression qu’un doigt se posait sur ses lèvres. Et dans son cœur, il a entendu Dieu dire : « Celui qui le touche touche la prunelle de mon œil. » La prunelle, c’est le milieu de l’œil, la partie que nous protégeons avec le plus de soin. Dieu voulait dire : « Cet homme est très précieux pour moi. » John a été bouleversé. Il était venu prier pour le pasteur, mais au lieu de cela, il s’était mis à se plaindre de lui auprès de Dieu. Il s’est écrié : « Pardonne-moi, Père, d’avoir été un accusateur des frères devant toi ! » Alors il s’est souvenu du verset de la Bible qui est en haut de ce chapitre, et il a fait une nouvelle prière : « Père, montre-moi ce qui est aimable et ce qui mérite l’approbation dans la vie de mon frère. » Aussitôt, John s’est rappelé de bonnes choses. Le pasteur avait tout quitté pour suivre Jésus, et sa propre famille l’avait maltraité à cause de cela. Il avait travaillé dur pendant des années. Il avait aidé des gens de son Église à arrêter de se disputer. C’était un bon mari. John a passé tout son temps de prière à remercier Dieu pour lui. Peu de temps après, John a appris que Dieu avait beaucoup béni le pasteur, et qu’il prêchait de nouveau « avec feu ». L’ami de John pensait que c’était arrivé pendant que John remerciait Dieu pour lui. Quand quelqu’un nous agace, c’est facile de râler contre lui, même devant Dieu. La prochaine fois, essaie de demander à Dieu de te montrer quelque chose de bien chez cette personne, puis remercie-le pour cela. Cher Dieu, aide-moi à ne pas râler contre les autres. Montre-moi ce qu’il y a de bon en eux, et aide-moi à te remercier pour cela. Amen.",
+  "word_count": 392
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "fr"
+  ],
+  "order": 11,
+  "title": "Des larmes à la fenêtre du train",
+  "body_html": "<blockquote>« Comme il était encore loin, son père le vit et fut ému de compassion, il courut se jeter à son cou et le baisa. » — d’après Luc 15</blockquote> <p>Il y avait un jeune homme que ses amis ont plus tard appelé « J. N. ». Il venait d’une famille hindoue de haute caste. Il est allé dans une école missionnaire, et il a cru en Jésus. Au début, sa famille était en colère. Puis elle a été très gentille avec lui, et il est rentré chez lui. Là, il s’est fait des amis qui l’ont entraîné à trop boire, et il s’est détourné de Jésus.</p> <p>Mais il était malheureux, alors il est venu voir John. John l’a accueilli comme le père dans l’histoire du fils perdu que Jésus a racontée, et J. N. est venu habiter chez lui. Mais encore et encore, il s’est remis à boire. Plus d’une fois, il a même volé les vêtements de John pour les vendre ! John a simplement souri, et il a dit à un ami qu’il allait devoir rester dans les plaines brûlantes cet été-là, parce qu’il n’avait plus de vêtements chauds.</p> <p>Un jour, J. N. était assis dans un train qui partait pour la ville de Lahore. Il a dit d’un ton insolent qu’il retournait chez ses anciens amis. John s’est penché à la fenêtre du wagon et l’a supplié de ne pas partir. Une dame qui travaillait à la gare a vu des larmes couler sur le visage de John. Mais le jeune homme n’a rien voulu entendre, et le train est parti.</p> <p>Dès le lendemain, la dame a vu J. N. revenir. Il était pâle. « Je retourne auprès de lui, a-t-il dit. Je n’ai pas pu oublier ses larmes. » Quand il a retrouvé John, John était en train de prier. John l’a serré dans ses bras et lui a dit : « Je viens justement de prier pour que Dieu te ramène vers moi, et regarde, il m’a exaucé ! »</p> <p>L’histoire de J. N. n’a pas une fin toute simple. Des années plus tard, il avait encore du mal. Mais il n’a jamais oublié combien John l’avait aimé.</p> <p>Jésus continue d’aimer les gens même quand ils font des erreurs encore et encore. Il t’aime comme ça, toi aussi. Et il peut t’aider à aimer les autres de cette manière.</p> <p><em>Cher Jésus, merci de ne jamais cesser de m’aimer, même quand je fais des erreurs. Aide-moi à aimer les personnes qui sont difficiles à aimer. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-ce que J. N. a fait avec les vêtements de John ?",
+    "answer": "Plus d’une fois, il les a volés et vendus. John ne s’est pas mis en colère ; il a simplement souri, et il a continué à l’aimer."
+   },
+   {
+    "question": "Pourquoi J. N. est-il revenu le lendemain de son départ en train ?",
+    "answer": "Il a dit : « Je n’ai pas pu oublier ses larmes. » Il avait vu combien John l’aimait."
+   },
+   {
+    "question": "Y a-t-il quelqu’un de difficile à aimer pour qui tu pourrais prier ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : Jésus ne cesse jamais de nous aimer, et il peut nous aider à aimer les autres de la même manière."
+   }
+  ],
+  "body_text": "« Comme il était encore loin, son père le vit et fut ému de compassion, il courut se jeter à son cou et le baisa. » — d’après Luc 15 Il y avait un jeune homme que ses amis ont plus tard appelé « J. N. ». Il venait d’une famille hindoue de haute caste. Il est allé dans une école missionnaire, et il a cru en Jésus. Au début, sa famille était en colère. Puis elle a été très gentille avec lui, et il est rentré chez lui. Là, il s’est fait des amis qui l’ont entraîné à trop boire, et il s’est détourné de Jésus. Mais il était malheureux, alors il est venu voir John. John l’a accueilli comme le père dans l’histoire du fils perdu que Jésus a racontée, et J. N. est venu habiter chez lui. Mais encore et encore, il s’est remis à boire. Plus d’une fois, il a même volé les vêtements de John pour les vendre ! John a simplement souri, et il a dit à un ami qu’il allait devoir rester dans les plaines brûlantes cet été-là, parce qu’il n’avait plus de vêtements chauds. Un jour, J. N. était assis dans un train qui partait pour la ville de Lahore. Il a dit d’un ton insolent qu’il retournait chez ses anciens amis. John s’est penché à la fenêtre du wagon et l’a supplié de ne pas partir. Une dame qui travaillait à la gare a vu des larmes couler sur le visage de John. Mais le jeune homme n’a rien voulu entendre, et le train est parti. Dès le lendemain, la dame a vu J. N. revenir. Il était pâle. « Je retourne auprès de lui, a-t-il dit. Je n’ai pas pu oublier ses larmes. » Quand il a retrouvé John, John était en train de prier. John l’a serré dans ses bras et lui a dit : « Je viens justement de prier pour que Dieu te ramène vers moi, et regarde, il m’a exaucé ! » L’histoire de J. N. n’a pas une fin toute simple. Des années plus tard, il avait encore du mal. Mais il n’a jamais oublié combien John l’avait aimé. Jésus continue d’aimer les gens même quand ils font des erreurs encore et encore. Il t’aime comme ça, toi aussi. Et il peut t’aider à aimer les autres de cette manière. Cher Jésus, merci de ne jamais cesser de m’aimer, même quand je fais des erreurs. Aide-moi à aimer les personnes qui sont difficiles à aimer. Amen.",
+  "word_count": 421
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "john-hyde-a-life-children",
+   "fr"
+  ],
+  "order": 12,
+  "title": "Victoire, victoire, victoire",
+  "body_html": "<blockquote>« Grâces soient rendues à Dieu, qui nous donne la victoire par notre Seigneur Jésus-Christ ! » — d’après 1 Corinthiens 15</blockquote> <p>Toutes ces années de travail acharné, avec très peu de sommeil, avaient épuisé John. En 1910, un médecin de Calcutta lui a dit que son cœur était en très mauvais état, et qu’il avait besoin de longs mois de repos au calme. John a simplement souri. En mars 1911, il a quitté l’Inde pour la dernière fois, très malade.</p> <p>Sur le chemin du retour, il est resté au pays de Galles, chez son ami M. Jones. Là, il a rencontré une vieille dame qui était très sourde. Elle était triste, parce qu’elle n’entendait rien à l’église. « Vous devriez louer Dieu pour cela ! » lui a dit John. Lui non plus, lui a-t-il expliqué, n’entendait presque rien à l’église. Alors il regardait le prédicateur et priait pour lui, puis il regardait chaque personne et priait pour elle, une par une. La vieille dame a ri et a dit qu’elle allait essayer. Plus tard, elle a écrit que cela avait merveilleusement changé sa vie.</p> <p>Une fois John rentré en Amérique, les médecins ont découvert qu’il avait une maladie qu’ils ne pouvaient pas guérir. Il est allé habiter chez sa sœur, à Northampton, dans le Massachusetts. Il souffrait souvent beaucoup, mais il ne se plaignait pas. Après les pires douleurs, il disait : « Loué soit le Seigneur. » Peu avant sa mort, il a dit à sa sœur : « C’est simplement la victoire, la victoire, la victoire. »</p> <p>John est mort le 17 février 1912. Il avait quarante-six ans. Ses dernières paroles étaient en pendjabi, la langue des villages qu’il aimait. Ses amis s’en souvenaient ainsi : « Bol, Yisu Masih, ki jai ! » Cela veut dire : « Criez la victoire de Jésus-Christ ! » Il a été enterré à Carthage, à côté de son père, de sa mère et de son frère Edmund.</p> <p>Aujourd’hui, partout dans le monde, on se souvient de lui comme de « Hyde l’homme de prière ». Mais John n’a jamais voulu qu’on le regarde, lui. Il voulait qu’on regarde Jésus, et qu’on prie.</p> <p>Quand tu appartiens à Jésus, même la mort n’est pas la fin. Jésus a déjà remporté la victoire, et tous ceux qui lui font confiance seront avec lui pour toujours.</p> <p><em>Cher Jésus, merci d’avoir remporté la victoire. Apprends-moi à prier, et aide-moi à te faire confiance toute ma vie. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-ce que John a conseillé à la vieille dame sourde du pays de Galles de faire à l’église ?",
+    "answer": "De louer Dieu, et de profiter de ce temps pour prier : d’abord pour le prédicateur, puis pour chaque personne qu’elle voyait."
+   },
+   {
+    "question": "Quelles ont été les dernières paroles de John, et que veulent-elles dire ?",
+    "answer": "Elles étaient en pendjabi : « Bol, Yisu Masih, ki jai ! » Cela veut dire : « Criez la victoire de Jésus-Christ ! »"
+   },
+   {
+    "question": "Qu’aimerais-tu demander à Dieu de t’apprendre sur la prière ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : John voulait que les gens regardent Jésus et qu’ils prient, et Jésus a remporté la victoire pour tous ceux qui lui font confiance."
+   }
+  ],
+  "body_text": "« Grâces soient rendues à Dieu, qui nous donne la victoire par notre Seigneur Jésus-Christ ! » — d’après 1 Corinthiens 15 Toutes ces années de travail acharné, avec très peu de sommeil, avaient épuisé John. En 1910, un médecin de Calcutta lui a dit que son cœur était en très mauvais état, et qu’il avait besoin de longs mois de repos au calme. John a simplement souri. En mars 1911, il a quitté l’Inde pour la dernière fois, très malade. Sur le chemin du retour, il est resté au pays de Galles, chez son ami M. Jones. Là, il a rencontré une vieille dame qui était très sourde. Elle était triste, parce qu’elle n’entendait rien à l’église. « Vous devriez louer Dieu pour cela ! » lui a dit John. Lui non plus, lui a-t-il expliqué, n’entendait presque rien à l’église. Alors il regardait le prédicateur et priait pour lui, puis il regardait chaque personne et priait pour elle, une par une. La vieille dame a ri et a dit qu’elle allait essayer. Plus tard, elle a écrit que cela avait merveilleusement changé sa vie. Une fois John rentré en Amérique, les médecins ont découvert qu’il avait une maladie qu’ils ne pouvaient pas guérir. Il est allé habiter chez sa sœur, à Northampton, dans le Massachusetts. Il souffrait souvent beaucoup, mais il ne se plaignait pas. Après les pires douleurs, il disait : « Loué soit le Seigneur. » Peu avant sa mort, il a dit à sa sœur : « C’est simplement la victoire, la victoire, la victoire. » John est mort le 17 février 1912. Il avait quarante-six ans. Ses dernières paroles étaient en pendjabi, la langue des villages qu’il aimait. Ses amis s’en souvenaient ainsi : « Bol, Yisu Masih, ki jai ! » Cela veut dire : « Criez la victoire de Jésus-Christ ! » Il a été enterré à Carthage, à côté de son père, de sa mère et de son frère Edmund. Aujourd’hui, partout dans le monde, on se souvient de lui comme de « Hyde l’homme de prière ». Mais John n’a jamais voulu qu’on le regarde, lui. Il voulait qu’on regarde Jésus, et qu’on prie. Quand tu appartiens à Jésus, même la mort n’est pas la fin. Jésus a déjà remporté la victoire, et tous ceux qui lui font confiance seront avec lui pour toujours. Cher Jésus, merci d’avoir remporté la victoire. Apprends-moi à prier, et aide-moi à te faire confiance toute ma vie. Amen.",
+  "word_count": 414
+ }
+}
+]

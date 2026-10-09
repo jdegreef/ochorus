@@ -1,9 +1,10 @@
 <script lang="ts">
+	import * as m from '$lib/paraglide/messages.js';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { type CoverBook } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { readingTime } from '$lib/reading';
+	import { readingMinutes, readingTime } from '$lib/reading';
 	import { splitEdition } from '$lib/edition';
 	import { cardSeriesLine } from '$lib/series';
 	import BookCover from './BookCover.svelte';
@@ -28,15 +29,39 @@
 		 * The series line ("Book 2 of 6 in Rooted"). Off where the page already
 		 * says which series every card is in — the series page, a by-series group.
 		 */
-		showSeries = true
+		showSeries = true,
+		/**
+		 * The time as a sitting ("~12 min a chapter", the series card's words)
+		 * rather than the whole book's: on the young-reader hubs, where "3 hr
+		 * read" is what puts a reader off and one chapter is the real commitment.
+		 */
+		perChapter = false,
+		/**
+		 * A line that sells the book (`BookSummary.hook`), under the byline —
+		 * the teens hub's cards. The link's label names title and author only,
+		 * so the hook rides along as its description.
+		 */
+		hook = '',
+		/**
+		 * A card that opens something other than the book's page — the hubs'
+		 * leader's-guide cards open `/books/<slug>/guide`. `cta` is the hover
+		 * verb, `label` a visible line under the title (so a touch screen, with
+		 * no hover, still says where the card goes) and `ariaLabel` the link's
+		 * accessible name, which must say the same.
+		 */
+		link
 	}: {
 		book: CoverBook;
 		showAuthor?: boolean;
 		priority?: boolean;
 		anchor?: string;
 		showSeries?: boolean;
+		perChapter?: boolean;
+		hook?: string;
+		link?: { href: string; cta: string; label: string; ariaLabel: string };
 	} = $props();
 	const t = i18n.t;
+	const hookId = $props.id();
 
 	const chapters = $derived(
 		`${book.chapter_count} ${book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}`
@@ -48,18 +73,29 @@
 	const seriesLine = $derived(
 		showSeries ? cardSeriesLine(book) : ''
 	);
+	const time = $derived(
+		!book.word_count
+			? ''
+			: perChapter && book.chapter_count > 1
+				? m.series_chapter_minutes({
+						minutes: readingMinutes(book.word_count / book.chapter_count)
+					})
+				: readingTime(book.word_count)
+	);
 	// The card's tint (app.css, .book-card), from the book's own cover colour.
 	const tint = $derived(cardTint(book.cover_color));
 </script>
 
 <a
-	href={localizeHref(`/books/${book.slug}`)}
+	href={localizeHref(link?.href ?? `/books/${book.slug}`)}
 	id={anchor ? `author-${anchor}` : undefined}
 	class="book-card card-lift group"
 	style:scroll-margin-top={anchor ? 'calc(var(--pinned-offset, 5rem) + 0.5rem)' : undefined}
 	style:--cover-tint={tint || undefined}
 	data-testid="book-card"
-	aria-label={showAuthor ? `${book.title} — ${book.author.name}` : book.title}
+	aria-label={link?.ariaLabel ??
+		(showAuthor ? `${book.title} — ${book.author.name}` : book.title)}
+	aria-describedby={hook ? hookId : undefined}
 >
 	<!-- The whole cover block (the cover, its hover overlay and the ribbon)
 	     tips together on hover, so the overlay stays on the cover. -->
@@ -76,7 +112,7 @@
 		<span
 			class="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-end gap-1 rounded-b-card bg-gradient-to-t from-black/60 to-transparent px-3 pb-2 pt-6 text-small font-semibold text-white opacity-0 transition-opacity group-hover:opacity-100"
 		>
-			{t('book.beginReading')} <Arrow />
+			{link?.cta ?? t('book.beginReading')} <Arrow />
 		</span>
 	</div>
 
@@ -87,6 +123,9 @@
 		<div class="line-clamp-2 min-h-[2lh] text-small font-medium leading-snug text-text" title={book.title}>
 			{edition ? edition.base : book.title}
 		</div>
+		{#if link}
+			<div class="truncate text-eyebrow font-medium text-accent" aria-hidden="true">{link.label}</div>
+		{/if}
 		{#if showAuthor}
 			<div class="truncate text-small text-muted" title={book.author.name}>{book.author.name}</div>
 		{/if}
@@ -94,6 +133,11 @@
 			<!-- Text, not a link: the whole card is already one. The series page is
 			     a tap away on the book page's own series line. -->
 			<div class="truncate text-eyebrow font-medium text-accent" title={seriesLine}>{seriesLine}</div>
+		{/if}
+		{#if hook}
+			<p id={hookId} class="mt-1 line-clamp-4 pb-1 text-small leading-snug text-text" title={hook}>
+				{hook}
+			</p>
 		{/if}
 		<!-- mt-auto pins the meta to the card's bottom, so a one-line title and a
 		     two-line title still bottom out level across a grid row. -->
@@ -103,9 +147,9 @@
 		     spaces survive — as literal text they were collapsed, leaving no
 		     break opportunity after the dot at all. -->
 		<div class="mt-auto pt-0.5 text-eyebrow text-muted">
-			<span class="whitespace-nowrap">{chapters}</span>{#if book.word_count}<span
+			<span class="whitespace-nowrap">{chapters}</span>{#if time}<span
 					class="opacity-50">{' · '}</span
-				><span class="whitespace-nowrap">{readingTime(book.word_count)}</span>{/if}
+				><span class="whitespace-nowrap">{time}</span>{/if}
 		</div>
 	</div>
 </a>

@@ -1,0 +1,143 @@
+{
+ "kind": "book",
+ "slug": "a-retrospect-teens",
+ "language": "sw",
+ "job_issue": 5413,
+ "pull_request": null,
+ "note": [
+  "The English teen edition quotes the ESV in each chapter's epigraph. ESV wording cannot be carried into Swahili, so every epigraph was rendered in the Swahili Union Version (SUV) tradition the shipped sw corpus quotes — not swhonen, a different revised edition (see the translation-worker skill) — and the “(ESV)” label was dropped. Where a shipped *.sw.json carries the SUV words, they were pasted verbatim and the row is `mined` with that file; otherwise the row is `self_rendered` in the SUV register and needs a native check.",
+  "Matthew 8:20 and Matthew 9:37–38: the quoted words of Jesus are verbatim from the-shameful-sufferer.sw.json and women-who-moved-heaven-2.sw.json, but the ESV's narrative frame (“And Jesus said to him”, “Then he said to his disciples”) is ours, so both ship `self_rendered`. John 19:30 likewise keeps the corpus's “Imekwisha” inside a self-rendered SUV-register verse; Psalm 34:10 is self-rendered outright (not in the corpus).",
+  "Chapter 11's Jehovah-jireh motto uses “Bwana atatoa riziki”, the corpus gloss also used by a-retrospect-children.sw — a gloss, not Genesis 22:14's SUV text. Romans 13:8 is shifted to third person (“asiwiwe na mtu cho chote”) because the English reports Taylor's conviction about himself.",
+  "Clock times are CONVERTED to Swahili reckoning (ten at night → saa nne usiku; between one and two in the morning → kati ya saa saba na saa nane usiku), matching a-retrospect-children.sw."
+ ],
+ "references": [
+  {
+   "reference": "John 19:30",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Proverbs 19:17",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Matthew 5:42",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Psalm 118:17",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Psalm 107:29",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "the-excellency-of-christ.sw.json"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Matthew 18:19",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 9:22",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "men-who-tended-the-flock-2.sw.json"
+  },
+  {
+   "reference": "Matthew 8:20",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Isaiah 53:3",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Romans 12:21",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Matthew 5:39",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalm 34:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Romans 13:8",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 11
+  },
+  {
+   "reference": "1 Samuel 7:12",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Genesis 22:14",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 9:37-38",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}

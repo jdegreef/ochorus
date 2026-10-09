@@ -1,7 +1,8 @@
 """Seed the people found in a book (``BookPerson``) from ``book_people_seed``.
 
-Idempotent: membership is upserted each run (new people added, roles and order
-refreshed) so an edited seed reaches an already-seeded row on the next deploy.
+Idempotent: membership is upserted each run (new people added, roles, order and
+story chapters refreshed) so an edited seed reaches an already-seeded row on the
+next deploy.
 Members are keyed by ``(book_slug, author_slug)``; the ``book_slug`` is a soft
 reference, so a work that isn't present in a given language simply doesn't show
 the person on that language's page. A member whose author bio hasn't been
@@ -26,12 +27,12 @@ class Command(BaseCommand):
     def handle(self, *args, **opts):
         # One query for every author a seed member names, so a large seed is a
         # handful of round-trips, not one per person.
-        wanted = {slug for _, members in BOOK_PEOPLE for slug, _ in members}
+        wanted = {member[0] for _, members in BOOK_PEOPLE for member in members}
         authors = {a.slug: a for a in Author.objects.filter(slug__in=wanted)}
 
         added = updated = missing = 0
         for book_slug, members in BOOK_PEOPLE:
-            for i, (author_slug, role) in enumerate(members):
+            for i, (author_slug, role, *chapter) in enumerate(members):
                 person = authors.get(author_slug)
                 if person is None:
                     # A bio that hasn't landed yet — seed can run ahead of it.
@@ -45,7 +46,11 @@ class Command(BaseCommand):
                 _, created = BookPerson.objects.update_or_create(
                     book_slug=book_slug,
                     person=person,
-                    defaults={"role": role, "sort_order": i},
+                    defaults={
+                        "role": role,
+                        "sort_order": i,
+                        "chapter": chapter[0] if chapter else None,
+                    },
                 )
                 added += created
                 updated += not created

@@ -32,7 +32,7 @@ class SingleSubjectSeriesTests(SimpleTestCase):
             seen += 1
             where = path.name
             self.assertEqual(fields["author"], [IMPRINT], f"{where}: not by the imprint")
-            subjects = [p for p, role in people.get(slug, []) if role == "subject"]
+            subjects = [p for p, role, *_ in people.get(slug, []) if role == "subject"]
             self.assertEqual(
                 len(subjects), 1,
                 f"{where}: BOOK_PEOPLE must name exactly one subject for {slug}",

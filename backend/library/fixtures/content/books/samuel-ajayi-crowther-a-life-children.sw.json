@@ -1,0 +1,394 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "samuel-ajayi-crowther-a-life-children",
+  "language": "sw",
+  "title": "Samuel Ajayi Crowther (Kwa Watoto)",
+  "subtitle": "",
+  "cover_title": "",
+  "cover_byline": "Samuel Ajayi Crowther",
+  "description": "Hadithi ya kweli ya Ajayi, mvulana Myoruba aliyekamatwa na wavamizi, akauzwa tena na tena, na kuwekwa huru kutoka katika meli ya watumwa na mabaharia Waingereza, naye alikua akawapa watu wake Biblia katika lugha yao wenyewe, akawa askofu wa kwanza Mwafrika wa Kanisa la Anglikana. Toleo hili la watoto linasimulia upya maisha yake katika sura fupi zilizoandaliwa kusomwa kwa sauti: mstari wa Biblia, sehemu moja ya hadithi yake, jambo moja linalokuhusu wewe, na sala fupi, pamoja na maswali ya kuzungumza pamoja.",
+  "hook": "",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Kitabu Samuel Ajayi Crowther (Kwa Watoto) kinahusu nini?",
+    "answer": "Ni toleo la watoto la wasifu kamili wa Samuel Ajayi Crowther. Kinasimulia jinsi mvulana aitwaye Ajayi alivyochukuliwa kutoka nyumbani kwao katika eneo ambalo sasa ni Nigeria na kuuzwa kama mtumwa, jinsi alivyowekwa huru na kumjua Yesu, na jinsi alivyotumia maisha yake yote kuwapelekea watu wake habari njema katika lugha yao wenyewe."
+   },
+   {
+    "question": "Samuel Ajayi Crowther alikuwa nani?",
+    "answer": "Alikuwa Myoruba aliyeishi miaka mia mbili hivi iliyopita. Alipokuwa mvulana aliuzwa kama mtumwa, kisha akawekwa huru na Jeshi la Wanamaji la Uingereza. Akawa mwalimu, mvumbuzi wa Mto Niger mkubwa, kiongozi wa kikundi kilichotafsiri Biblia katika lugha ya Kiyoruba, na mwaka 1864 akawa askofu wa kwanza Mwafrika wa Kanisa la Anglikana."
+   },
+   {
+    "question": "Kila sura imepangwaje?",
+    "answer": "Kila sura ni fupi na imeandaliwa kusomwa kwa sauti. Inaanza na mstari wa Biblia, inasimulia sehemu moja ya hadithi ya Ajayi, inaonyesha jambo moja rahisi linalomaanisha kwako, na inamalizika kwa sala fupi. Kisha yanafuata maswali matatu ya kuzungumza pamoja."
+   },
+   {
+    "question": "Je, kitabu hiki kina huzuni mno kwa watoto?",
+    "answer": "Sehemu zake zina huzuni, kwa sababu kukamatwa na kuuzwa lilikuwa jambo baya sana, na kitabu hakijifanyi kwamba haikuwa hivyo. Lakini kimesimuliwa kwa upole, kwa ajili ya watoto, na zaidi ya yote ni hadithi ya jinsi Mungu alivyomtunza Ajayi, akamrudishia mama yake, na kuyatumia maisha yake kwa mema makubwa."
+   },
+   {
+    "question": "Je, hadithi hizi ni za kweli?",
+    "answer": "Ndiyo. Zinatoka katika barua na shajara za Samuel Crowther mwenyewe na kwa watu waliomfahamu. Hadithi chache zilikumbukwa na familia yake muda mrefu baadaye, na kitabu kinasema hivyo kinapozisimulia."
+   },
+   {
+    "question": "Kitabu hiki ni cha nani?",
+    "answer": "Ni cha watoto, kisomwe kwa sauti na mtu mzima au kisomwe na mtoto mkubwa peke yake. Kuna pia toleo la vijana, na wasifu kamili kwa wasomaji wakubwa."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Usimuliaji upya wa Ochorus kwa ajili ya wasomaji wachanga wa wasifu wa Ochorus Samuel Ajayi Crowther, kutoka mfululizo wa Taswira za Ujasiri. Usimuliaji huu ni wetu wenyewe; uko huru kusomwa na kushirikiwa.",
+  "cover_url": "/covers/art/samuel-ajayi-crowther-a-life-children.jpg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/samuel-ajayi-crowther-a-life-children.sw.pdf?download=samuel-ajayi-crowther-a-life-children.sw.pdf",
+  "cover_color": "",
+  "series": null,
+  "series_position": null,
+  "sort_order": 138,
+  "is_published": true,
+  "created_at": "2026-10-08T00:00:00Z",
+  "updated_at": "2026-10-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "sw"
+  ],
+  "order": 1,
+  "title": "Mvulana wa Osogun",
+  "body_html": "<blockquote>“Macho yako yaliniona kabla sijakamilika; na katika kitabu chako ziliandikwa zote pia, siku zilizoamriwa kwangu, hata kabla hazijakuwapo.” — kutoka Zaburi 139</blockquote> <p>Zamani sana, karibu mwaka 1807, mtoto wa kiume alizaliwa katika mji uitwao Osogun. Osogun uko katika nchi ya Wayoruba, katika nchi tunayoiita leo Nigeria. Familia yake ilimpa jina Ajayi.</p> <p>Osogun ulikuwa mji mkubwa wenye shughuli nyingi. Ulizungukwa na boma refu la miti, lenye malango sita. Nyumba zilijengwa kwa udongo, zikiwa na paa ndefu, na familia ziliishi karibu karibu kuzunguka viwanja vya wazi. Baba yake Ajayi alikuwa mfumaji na mkulima. Ajayi alikuwa na kaka mkubwa na dada kadhaa, na shangazi na binamu wengi waliokaa karibu.</p> <p>Familia yake ilikumbuka kwamba alikuwa kiongozi wa kikundi cha wavulana wapatao arobaini waliofanya kazi mashambani pamoja. Miaka mingi baadaye alipenda kuwasimulia watoto wake mwenyewe habari zake: jinsi walivyolima matuta ya udongo kwa ajili ya viazi vikuu, kisha wakaketi kivulini wakiwacheka wavulana waliokuwa wazito kuliko yeye!</p> <p>Ajayi hakuwahi kuiona bahari, wala mto mkubwa, wala mtu mweupe. Hakumjua Yesu. Familia yake iliomba kwa miungu ya zamani ya Wayoruba. Hakuweza hata kukisia maisha yake yangekuja kuwa ya namna gani.</p> <p>Lakini Mungu alijua. Biblia inasema kwamba Mungu alimwona kila mmoja wetu kabla hatujazaliwa, na kwamba kila siku ya maisha yetu iliandikwa katika kitabu chake. Mungu alimwona Ajayi akicheza huko Osogun. Na Mungu anakuona wewe pia, popote ulipo.</p> <p><em>Mungu mpendwa, asante kwa kuwa ulinijua kabla sijazaliwa. Asante kwa kuwa kila siku ya maisha yangu iko mikononi mwako. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ajayi alizaliwa wapi?",
+    "answer": "Katika mji wa Osogun, katika nchi ya Wayoruba ambayo sasa ni Nigeria, karibu mwaka 1807."
+   },
+   {
+    "question": "Ajayi alipenda kufanya nini pamoja na wavulana wengine?",
+    "answer": "Familia yake ilikumbuka kwamba aliongoza kikundi cha wavulana wapatao arobaini waliofanya kazi mashambani pamoja, wakilima matuta ya udongo kwa ajili ya viazi vikuu."
+   },
+   {
+    "question": "Mstari wa Biblia unasema Mungu anajua nini kukuhusu?",
+    "answer": "Kwamba Mungu alikuona kabla hujazaliwa, na kwamba kila siku ya maisha yako imeandikwa katika kitabu chake. Anakujua na anakutunza."
+   }
+  ],
+  "body_text": "“Macho yako yaliniona kabla sijakamilika; na katika kitabu chako ziliandikwa zote pia, siku zilizoamriwa kwangu, hata kabla hazijakuwapo.” — kutoka Zaburi 139 Zamani sana, karibu mwaka 1807, mtoto wa kiume alizaliwa katika mji uitwao Osogun. Osogun uko katika nchi ya Wayoruba, katika nchi tunayoiita leo Nigeria. Familia yake ilimpa jina Ajayi. Osogun ulikuwa mji mkubwa wenye shughuli nyingi. Ulizungukwa na boma refu la miti, lenye malango sita. Nyumba zilijengwa kwa udongo, zikiwa na paa ndefu, na familia ziliishi karibu karibu kuzunguka viwanja vya wazi. Baba yake Ajayi alikuwa mfumaji na mkulima. Ajayi alikuwa na kaka mkubwa na dada kadhaa, na shangazi na binamu wengi waliokaa karibu. Familia yake ilikumbuka kwamba alikuwa kiongozi wa kikundi cha wavulana wapatao arobaini waliofanya kazi mashambani pamoja. Miaka mingi baadaye alipenda kuwasimulia watoto wake mwenyewe habari zake: jinsi walivyolima matuta ya udongo kwa ajili ya viazi vikuu, kisha wakaketi kivulini wakiwacheka wavulana waliokuwa wazito kuliko yeye! Ajayi hakuwahi kuiona bahari, wala mto mkubwa, wala mtu mweupe. Hakumjua Yesu. Familia yake iliomba kwa miungu ya zamani ya Wayoruba. Hakuweza hata kukisia maisha yake yangekuja kuwa ya namna gani. Lakini Mungu alijua. Biblia inasema kwamba Mungu alimwona kila mmoja wetu kabla hatujazaliwa, na kwamba kila siku ya maisha yetu iliandikwa katika kitabu chake. Mungu alimwona Ajayi akicheza huko Osogun. Na Mungu anakuona wewe pia, popote ulipo. Mungu mpendwa, asante kwa kuwa ulinijua kabla sijazaliwa. Asante kwa kuwa kila siku ya maisha yangu iko mikononi mwako. Amina.",
+  "word_count": 239
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "sw"
+  ],
+  "order": 2,
+  "title": "Siku Wavamizi Walipokuja",
+  "body_html": "<blockquote>“Nanyi mliniazimia mabaya, bali Mungu aliyaazimia kuwa mema.” — kutoka Mwanzo 50</blockquote> <p>Ajayi alipokuwa na umri wa miaka kumi na mitatu hivi, kulikuwa na vita kila mahali katika nchi ya Wayoruba. Magenge ya wavamizi yalizunguka kutoka mji hadi mji, yakikamata watu ili kuwauza kama watumwa.</p> <p>Asubuhi moja njema mwaka 1821, familia ya Ajayi ilikuwa ikiandaa kifungua kinywa. Ghafla habari zikaenea Osogun kote: adui wanakuja! Wavamizi waliuzunguka mji. Baada ya saa chache za mapigano, waliingia ndani.</p> <p>Kila mtu alikimbia. Akina mama waliwabeba watoto wao wachanga na kuwavuta watoto wao katikati ya vichaka vya miiba. Ajayi alikuwa na upinde na mishale mitano, lakini aliupoteza upinde kwenye miiba. Baba yake alikuja kuwaambia wakimbie. Hiyo ndiyo ilikuwa mara ya mwisho Ajayi kumwona baba yake.</p> <p>Wavamizi walimkamata Ajayi, mama yake, dada zake wawili na binamu yake mmoja. Walimfunga kila mtu kamba shingoni na kuwaongoza mbali, wakiwa wamefungwa pamoja. Walipokuwa wakitoka katika mji uliokuwa ukiteketea kwa moto, Ajayi alimwona bibi yake katikati ya umati kwa dakika chache tu. Kisha akatoweka.</p> <p>Miaka mingi baadaye, Ajayi alipokuwa mtu mzima, aliiita siku hii “siku ya huzuni, lakini iliyobarikiwa.” Ilikuwa ya huzuni, kwa sababu alipoteza nyumba yake na familia yake. Lakini pia aliiita iliyobarikiwa, kwa sababu ilikuwa hatua ya kwanza ya safari ndefu ambayo ingemfikisha kwa Yesu.</p> <p>Wakati mwingine mambo ya huzuni sana hutokea. Mungu hasemi kwamba mambo hayo ni mema. Lakini Mungu anaweza kuwa anafanya kazi hata katika siku yenye huzuni kuliko zote, akileta mema kutoka ndani yake kwa njia ambazo bado hatuwezi kuziona.</p> <p><em>Mungu mpendwa, mambo ya huzuni yanapotokea, unisaidie kukumbuka kwamba bado uko pamoja nami. Asante kwa kuwa unaweza kuleta mema kutoka katika siku ngumu. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Nini kiliupata mji wa Osogun Ajayi alipokuwa na miaka kumi na mitatu hivi?",
+    "answer": "Wavamizi waliuzunguka mji, wakaingia ndani, na kuwakamata watu wengi, akiwemo Ajayi, mama yake na dada zake, ili kuwauza kama watumwa."
+   },
+   {
+    "question": "Kwa nini Ajayi aliiita “siku ya huzuni, lakini iliyobarikiwa”?",
+    "answer": "Ilikuwa ya huzuni kwa sababu alipoteza nyumba yake na familia yake. Ilikuwa iliyobarikiwa kwa sababu ilianzisha safari ndefu iliyomfikisha kwa Yesu."
+   },
+   {
+    "question": "Je, unaweza kukumbuka wakati mgumu ambapo Mungu bado alikuwa pamoja nawe?",
+    "answer": "Jibu lolote la kweli ni jema hapa. Funzo la sura hii ni kwamba Mungu haliiti jambo la huzuni kuwa jema, lakini hukaa pamoja nasi na anaweza kuleta mema kutoka ndani yake."
+   }
+  ],
+  "body_text": "“Nanyi mliniazimia mabaya, bali Mungu aliyaazimia kuwa mema.” — kutoka Mwanzo 50 Ajayi alipokuwa na umri wa miaka kumi na mitatu hivi, kulikuwa na vita kila mahali katika nchi ya Wayoruba. Magenge ya wavamizi yalizunguka kutoka mji hadi mji, yakikamata watu ili kuwauza kama watumwa. Asubuhi moja njema mwaka 1821, familia ya Ajayi ilikuwa ikiandaa kifungua kinywa. Ghafla habari zikaenea Osogun kote: adui wanakuja! Wavamizi waliuzunguka mji. Baada ya saa chache za mapigano, waliingia ndani. Kila mtu alikimbia. Akina mama waliwabeba watoto wao wachanga na kuwavuta watoto wao katikati ya vichaka vya miiba. Ajayi alikuwa na upinde na mishale mitano, lakini aliupoteza upinde kwenye miiba. Baba yake alikuja kuwaambia wakimbie. Hiyo ndiyo ilikuwa mara ya mwisho Ajayi kumwona baba yake. Wavamizi walimkamata Ajayi, mama yake, dada zake wawili na binamu yake mmoja. Walimfunga kila mtu kamba shingoni na kuwaongoza mbali, wakiwa wamefungwa pamoja. Walipokuwa wakitoka katika mji uliokuwa ukiteketea kwa moto, Ajayi alimwona bibi yake katikati ya umati kwa dakika chache tu. Kisha akatoweka. Miaka mingi baadaye, Ajayi alipokuwa mtu mzima, aliiita siku hii “siku ya huzuni, lakini iliyobarikiwa.” Ilikuwa ya huzuni, kwa sababu alipoteza nyumba yake na familia yake. Lakini pia aliiita iliyobarikiwa, kwa sababu ilikuwa hatua ya kwanza ya safari ndefu ambayo ingemfikisha kwa Yesu. Wakati mwingine mambo ya huzuni sana hutokea. Mungu hasemi kwamba mambo hayo ni mema. Lakini Mungu anaweza kuwa anafanya kazi hata katika siku yenye huzuni kuliko zote, akileta mema kutoka ndani yake kwa njia ambazo bado hatuwezi kuziona. Mungu mpendwa, mambo ya huzuni yanapotokea, unisaidie kukumbuka kwamba bado uko pamoja nami. Asante kwa kuwa unaweza kuleta mema kutoka katika siku ngumu. Amina.",
+  "word_count": 269
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "sw"
+  ],
+  "order": 3,
+  "title": "Aliuzwa Tena na Tena",
+  "body_html": "<blockquote>“Na usitutie majaribuni, lakini utuokoe na yule mwovu.” — kutoka Mathayo 6</blockquote> <p>Asubuhi iliyofuata, wavamizi waligawana mateka wao. Ajayi alipewa mkuu wao, kisha akabadilishwa kwa farasi! Lakini farasi huyo hakufaa, kwa hiyo akarudishwa. Kwa muda fulani alikuwa katika mji mmoja na mama yake na dada yake mchanga, naye aliweza kwenda kuwaona.</p> <p>Kisha jioni moja Ajayi alifungwa minyororo pamoja na mateka wengine, ili apelekwe sokoni asubuhi. Alikesha usiku kucha bila kulala. Kulipopambazuka walianza safari, naye alidhani walipita mbele ya nyumba ile ile aliyokuwamo mama yake. Hakuthubutu kuita. Alidhani hatamwona tena kamwe.</p> <p>Ajayi aliuzwa tena, na tena, na tena. Kwa jumla aliuzwa au kubadilishwa mara sita hivi, kwa vitu kama nguo, tumbaku na pombe kali. Kila mara alipelekwa mbali zaidi na nyumbani, kati ya watu waliozungumza tofauti naye.</p> <p>Alihuzunika sana hata akaacha kula, akaugua. Mwishowe alifika ufuoni mwa ziwa kubwa la pwani. Hakuwahi kuona maji mengi kiasi hicho! Yalimtisha sana. Alivushwa kwa mtumbwi usiku hadi mji uitwao Lagos, mahali meli za watumwa zilipofika.</p> <p>Miaka mingi baadaye, Ajayi alitazama nyuma akaikumbuka miezi ile ya giza. Aliona kwamba Mungu alikuwa akimlinda muda wote, hata kabla hajalijua jina la Mungu. Alisema kwamba Mungu “aliniokoa na yule mwovu,” sawasawa na sala ambayo Yesu alitufundisha, muda mrefu kabla yeye hajaiomba kamwe.</p> <p>Mungu anakulinda wewe pia, hata siku unazojisikia kuwa peke yako kabisa.</p> <p><em>Mungu mpendwa, asante kwa kuwa unanilinda hata ninapojisikia kuwa peke yangu. Tafadhali unilinde salama na uniokoe na yule mwovu. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ajayi aliuzwa au kubadilishwa mara ngapi?",
+    "answer": "Mara sita hivi. Wakati mmoja hata alibadilishwa kwa farasi, ambaye alirudishwa kwa sababu hakufaa."
+   },
+   {
+    "question": "Kwa nini Ajayi aliogopa alipofika kwenye ziwa la pwani?",
+    "answer": "Hakuwahi kuona maji mengi kiasi hicho, naye alijua kwamba alikuwa akipelekwa kuelekea mahali meli za watumwa zilipofika."
+   },
+   {
+    "question": "Baadaye Ajayi aliona nini kuhusu miezi ile ya giza?",
+    "answer": "Kwamba Mungu alikuwa akimlinda na kumwokoa na yule mwovu muda wote, hata kabla hajamjua Mungu."
+   }
+  ],
+  "body_text": "“Na usitutie majaribuni, lakini utuokoe na yule mwovu.” — kutoka Mathayo 6 Asubuhi iliyofuata, wavamizi waligawana mateka wao. Ajayi alipewa mkuu wao, kisha akabadilishwa kwa farasi! Lakini farasi huyo hakufaa, kwa hiyo akarudishwa. Kwa muda fulani alikuwa katika mji mmoja na mama yake na dada yake mchanga, naye aliweza kwenda kuwaona. Kisha jioni moja Ajayi alifungwa minyororo pamoja na mateka wengine, ili apelekwe sokoni asubuhi. Alikesha usiku kucha bila kulala. Kulipopambazuka walianza safari, naye alidhani walipita mbele ya nyumba ile ile aliyokuwamo mama yake. Hakuthubutu kuita. Alidhani hatamwona tena kamwe. Ajayi aliuzwa tena, na tena, na tena. Kwa jumla aliuzwa au kubadilishwa mara sita hivi, kwa vitu kama nguo, tumbaku na pombe kali. Kila mara alipelekwa mbali zaidi na nyumbani, kati ya watu waliozungumza tofauti naye. Alihuzunika sana hata akaacha kula, akaugua. Mwishowe alifika ufuoni mwa ziwa kubwa la pwani. Hakuwahi kuona maji mengi kiasi hicho! Yalimtisha sana. Alivushwa kwa mtumbwi usiku hadi mji uitwao Lagos, mahali meli za watumwa zilipofika. Miaka mingi baadaye, Ajayi alitazama nyuma akaikumbuka miezi ile ya giza. Aliona kwamba Mungu alikuwa akimlinda muda wote, hata kabla hajalijua jina la Mungu. Alisema kwamba Mungu “aliniokoa na yule mwovu,” sawasawa na sala ambayo Yesu alitufundisha, muda mrefu kabla yeye hajaiomba kamwe. Mungu anakulinda wewe pia, hata siku unazojisikia kuwa peke yako kabisa. Mungu mpendwa, asante kwa kuwa unanilinda hata ninapojisikia kuwa peke yangu. Tafadhali unilinde salama na uniokoe na yule mwovu. Amina.",
+  "word_count": 235
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "sw"
+  ],
+  "order": 4,
+  "title": "Meli Iliyosimamishwa",
+  "body_html": "<blockquote>“Nafsi yetu imeokoka kama ndege katika mtego wa wawindaji; mtego umevunjika, na sisi tumeokoka.” — kutoka Zaburi 124</blockquote> <p>Huko Lagos, Ajayi alinunuliwa na wafanyabiashara wa watumwa Wareno. Aliwekwa pamoja na wavulana na wanaume wengine katika chumba chenye giza kisicho na dirisha, wakiwa wamefungwa pamoja kwa minyororo shingoni. Walingoja humo kwa karibu miezi minne.</p> <p>Mwishowe, usiku mmoja, walipelekwa kwenye meli. Kulikuwa na watu 187 waliosongamana ndani yake. Meli hiyo ilikuwa iende ng’ambo ya bahari hadi Amerika, ambako watumwa walilazimishwa kufanya kazi katika mashamba makubwa.</p> <p>Lakini jioni ile ile, manowari mbili za Kiingereza zilikuja zikaisimamisha meli ya watumwa! Siku zile jeshi la wanamaji la Uingereza lilizunguka huku na huko kando ya pwani ya Afrika ili kuzisimamisha meli za watumwa na kuwaweka watu huru. Meli zao ziliitwa Myrmidon na Iphigenia. Ilikuwa tarehe 7 Aprili 1822.</p> <p>Ajayi na rafiki zake watano walipelekwa kwenye Myrmidon. Huko waliona kitu cha kutisha: nyama yenye ngozi nyeupe ikiwa imening’inizwa, na safu za mipira ya chuma juu ya sitaha. Wavulana walidhani mabaharia walikuwa wamewala mateka wengine, na kwamba mipira ile ilikuwa vichwa vyao! Lakini walipochunguza kwa karibu, nyama ile ilikuwa ya nguruwe, na mipira ilikuwa mipira ya mizinga tu. Ajayi aliicheka hadithi hii maisha yake yote.</p> <p>Mabaharia walikuwa wema. Waliwapa wavulana chakula na nguo. Baada ya karibu miezi miwili na nusu baharini, meli iliwafikisha Sierra Leone, mahali ambapo watu waliookolewa wangeweza kuishi kwa uhuru. Watu wa huko waliwaambia, “Mko huru!” Na upesi sana, wakaamini.</p> <p>Yesu alikuja kuwaweka watu huru pia. Alisema alikuja “kuwatangazia wafungwa kufunguliwa kwao.” Ajayi aliwekwa huru kutoka katika meli ya watumwa. Siku moja angejifunza habari za uhuru mkubwa zaidi.</p> <p><em>Yesu mpendwa, asante kwa kuwa ulikuja kuwaweka watu huru. Asante kwa watu wanaowasaidia wengine walio katika shida. Unisaidie kuwa mmoja wao. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Nani aliisimamisha meli ya watumwa?",
+    "answer": "Manowari mbili za Kiingereza, Myrmidon na Iphigenia, tarehe 7 Aprili 1822."
+   },
+   {
+    "question": "Wavulana walifikiri nini walipomwona nguruwe na mipira ya mizinga?",
+    "answer": "Waliogopa kwamba mabaharia walikuwa wamewala mateka wengine na kwamba mipira ya mizinga ilikuwa vichwa vyao. Kisha wakagundua kwamba ilikuwa nguruwe tu, na mipira ilikuwa ya chuma."
+   },
+   {
+    "question": "Ni nani unayeweza kumsaidia wiki hii?",
+    "answer": "Jibu lolote ni jema. Mabaharia waliwasaidia watu wasioweza kujisaidia wenyewe, na Yesu alikuja kuwaweka watu huru. Sisi pia tunaweza kuwasaidia wengine."
+   }
+  ],
+  "body_text": "“Nafsi yetu imeokoka kama ndege katika mtego wa wawindaji; mtego umevunjika, na sisi tumeokoka.” — kutoka Zaburi 124 Huko Lagos, Ajayi alinunuliwa na wafanyabiashara wa watumwa Wareno. Aliwekwa pamoja na wavulana na wanaume wengine katika chumba chenye giza kisicho na dirisha, wakiwa wamefungwa pamoja kwa minyororo shingoni. Walingoja humo kwa karibu miezi minne. Mwishowe, usiku mmoja, walipelekwa kwenye meli. Kulikuwa na watu 187 waliosongamana ndani yake. Meli hiyo ilikuwa iende ng’ambo ya bahari hadi Amerika, ambako watumwa walilazimishwa kufanya kazi katika mashamba makubwa. Lakini jioni ile ile, manowari mbili za Kiingereza zilikuja zikaisimamisha meli ya watumwa! Siku zile jeshi la wanamaji la Uingereza lilizunguka huku na huko kando ya pwani ya Afrika ili kuzisimamisha meli za watumwa na kuwaweka watu huru. Meli zao ziliitwa Myrmidon na Iphigenia. Ilikuwa tarehe 7 Aprili 1822. Ajayi na rafiki zake watano walipelekwa kwenye Myrmidon. Huko waliona kitu cha kutisha: nyama yenye ngozi nyeupe ikiwa imening’inizwa, na safu za mipira ya chuma juu ya sitaha. Wavulana walidhani mabaharia walikuwa wamewala mateka wengine, na kwamba mipira ile ilikuwa vichwa vyao! Lakini walipochunguza kwa karibu, nyama ile ilikuwa ya nguruwe, na mipira ilikuwa mipira ya mizinga tu. Ajayi aliicheka hadithi hii maisha yake yote. Mabaharia walikuwa wema. Waliwapa wavulana chakula na nguo. Baada ya karibu miezi miwili na nusu baharini, meli iliwafikisha Sierra Leone, mahali ambapo watu waliookolewa wangeweza kuishi kwa uhuru. Watu wa huko waliwaambia, “Mko huru!” Na upesi sana, wakaamini. Yesu alikuja kuwaweka watu huru pia. Alisema alikuja “kuwatangazia wafungwa kufunguliwa kwao.” Ajayi aliwekwa huru kutoka katika meli ya watumwa. Siku moja angejifunza habari za uhuru mkubwa zaidi. Yesu mpendwa, asante kwa kuwa ulikuja kuwaweka watu huru. Asante kwa watu wanaowasaidia wengine walio katika shida. Unisaidie kuwa mmoja wao. Amina.",
+  "word_count": 285
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "sw"
+  ],
+  "order": 5,
+  "title": "Jina Jipya",
+  "body_html": "<blockquote>“Hata imekuwa, mtu akiwa ndani ya Kristo amekuwa kiumbe kipya; ya kale yamepita; tazama, yamekuwa mapya.” — kutoka 2 Wakorintho 5</blockquote> <p>Huko Sierra Leone, Ajayi alipelekwa katika kijiji kiitwacho Bathurst. Aliishi nyumbani kwa mmisionari, Bwana Davey, na mke wake. Kila jioni Bi. Davey alimfundisha kwa nusu saa.</p> <p>Ajayi alijifunza haraka sana. Baada ya miezi sita tu aliweza kusoma Agano Jipya! Muda si mrefu akafanywa kiranja, yaani aliwasaidia kuwafundisha watoto wadogo. Alilipwa peni saba na nusu kwa mwezi. Kila alipojifunza jambo, alitaka kuwafundisha wengine.</p> <p>Shuleni na kanisani, Ajayi alisikia habari za Yesu. Baadaye alisema kwamba “ilimpendeza Bwana kuufungua moyo wangu.” Alielewa kwamba alikuwa ametenda mabaya na alihitaji msamaha wa Mungu, naye alitaka msamaha ambao Yesu hutoa. Tarehe 11 Desemba 1825 alibatizwa.</p> <p>Alipobatizwa alichukua jina jipya: Samuel Crowther. Lilikuwa jina la kasisi mmoja huko London. Bi. Davey alikuwa mwalimu wa shule ya Jumapili katika kanisa lake, naye ndiye aliyemchagulia mvulana jina hilo. Lakini Samuel hakulisahau kamwe jina lake la Kiyoruba. Maisha yake yote alijiandika Samuel Ajayi Crowther.</p> <p>Huko Bathurst kulikuwa pia na msichana aitwaye Asano. Yeye alikuwa ameokolewa kutoka katika meli nyingine ya watumwa, naye alisoma katika shule ile ile. Miaka kadhaa baadaye, mwaka 1829, Samuel na Asano walioana. Walikaa katika ndoa kwa miaka hamsini na moja na walipata watoto sita.</p> <p>Unapokuwa wa Yesu, unafanywa mpya ndani yako. Lakini bado ni wewe! Mungu hamtupi mtu aliyemuumba. Anamfanya mpya.</p> <p><em>Yesu mpendwa, tafadhali ufungue moyo wangu nikusikie, kama ulivyoufungua moyo wa Samuel. Asante kwa kuwa unanisamehe na kunifanya mpya. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ajayi alijifunza kusoma kwa haraka kiasi gani?",
+    "answer": "Baada ya miezi sita tu huko Sierra Leone aliweza kusoma Agano Jipya, na muda si mrefu akawa anasaidia kuwafundisha watoto wadogo."
+   },
+   {
+    "question": "Ajayi alichukua jina gani jipya alipobatizwa?",
+    "answer": "Samuel Crowther, jina la kasisi mmoja huko London. Lakini aliendelea kulitumia pia jina lake la Kiyoruba, akajiandika Samuel Ajayi Crowther."
+   },
+   {
+    "question": "Kuwa “kiumbe kipya” ndani ya Yesu kunamaanisha nini?",
+    "answer": "Yesu hutusamehe na kutubadilisha ndani yetu, lakini bado sisi ni wale wale ambao Mungu aliwaumba. Samuel alifanywa mpya, lakini bado alikuwa Ajayi."
+   }
+  ],
+  "body_text": "“Hata imekuwa, mtu akiwa ndani ya Kristo amekuwa kiumbe kipya; ya kale yamepita; tazama, yamekuwa mapya.” — kutoka 2 Wakorintho 5 Huko Sierra Leone, Ajayi alipelekwa katika kijiji kiitwacho Bathurst. Aliishi nyumbani kwa mmisionari, Bwana Davey, na mke wake. Kila jioni Bi. Davey alimfundisha kwa nusu saa. Ajayi alijifunza haraka sana. Baada ya miezi sita tu aliweza kusoma Agano Jipya! Muda si mrefu akafanywa kiranja, yaani aliwasaidia kuwafundisha watoto wadogo. Alilipwa peni saba na nusu kwa mwezi. Kila alipojifunza jambo, alitaka kuwafundisha wengine. Shuleni na kanisani, Ajayi alisikia habari za Yesu. Baadaye alisema kwamba “ilimpendeza Bwana kuufungua moyo wangu.” Alielewa kwamba alikuwa ametenda mabaya na alihitaji msamaha wa Mungu, naye alitaka msamaha ambao Yesu hutoa. Tarehe 11 Desemba 1825 alibatizwa. Alipobatizwa alichukua jina jipya: Samuel Crowther. Lilikuwa jina la kasisi mmoja huko London. Bi. Davey alikuwa mwalimu wa shule ya Jumapili katika kanisa lake, naye ndiye aliyemchagulia mvulana jina hilo. Lakini Samuel hakulisahau kamwe jina lake la Kiyoruba. Maisha yake yote alijiandika Samuel Ajayi Crowther. Huko Bathurst kulikuwa pia na msichana aitwaye Asano. Yeye alikuwa ameokolewa kutoka katika meli nyingine ya watumwa, naye alisoma katika shule ile ile. Miaka kadhaa baadaye, mwaka 1829, Samuel na Asano walioana. Walikaa katika ndoa kwa miaka hamsini na moja na walipata watoto sita. Unapokuwa wa Yesu, unafanywa mpya ndani yako. Lakini bado ni wewe! Mungu hamtupi mtu aliyemuumba. Anamfanya mpya. Yesu mpendwa, tafadhali ufungue moyo wangu nikusikie, kama ulivyoufungua moyo wa Samuel. Asante kwa kuwa unanisamehe na kunifanya mpya. Amina.",
+  "word_count": 246
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "sw"
+  ],
+  "order": 6,
+  "title": "Watoto wa Afrika Wenyewe",
+  "body_html": "<blockquote>“Nanyi mtakuwa mashahidi wangu katika Yerusalemu, na katika Uyahudi wote, na Samaria, na hata mwisho wa nchi.” — kutoka Matendo 1</blockquote> <p>Samuel alikua akawa mwalimu. Alikuwa mwanafunzi wa kwanza kabisa wa chuo kipya huko Sierra Leone kiitwacho Fourah Bay. Alianza kuandika maneno ya Kiyoruba, lugha ya utoto wake.</p> <p>Mwaka 1841, serikali ya Uingereza ilituma meli tatu za mvuke juu ya Mto Niger mkubwa, ndani kabisa ya Afrika. Walitaka kukomesha biashara ya watumwa na kushiriki habari njema za Yesu. Samuel alikwenda pamoja nao kama mmisionari.</p> <p>Huko mtoni, homa mbaya sana ilizuka. Karibu Wazungu wote waliugua, na wengi wao walikufa. Lakini Waafrika wengi waliokuwa melini walibaki wazima.</p> <p>Samuel aliandika barua kwa wamisionari huko London. Alisema kwamba Afrika ingesaidiwa zaidi ya yote na “watoto wake mwenyewe.” Alimaanisha kwamba Waafrika wangeweza kuishi mahali ambapo Wazungu waliugua, na wangeweza kuzungumza lugha za watu wa huko. Walipaswa kufundishwa na kutumwa kuwaeleza watu wao wenyewe habari za Yesu.</p> <p>Miaka miwili baadaye, mwaka 1843, Samuel alifanywa kasisi wa Kanisa la Uingereza huko London. Aliporudi nyumbani Sierra Leone, alihubiri katika kanisa lililojaa watu. Watu wengi walikuwa hawajawahi kumwona kasisi Mwafrika! Kisha akafanya jambo jipya: aliongoza ibada ya kanisa kwa Kiyoruba. Alisema kwamba akiwa amesimama pale, alijisikia kama mtoto mchanga anayejifunza kuzungumza lugha yake mwenyewe.</p> <p>Yesu aliwaambia rafiki zake wawaeleze watu habari zake, wakianzia nyumbani. Huhitaji kusafiri mbali ili kufanya hivyo. Unaweza kuanza na watu walio karibu nawe.</p> <p><em>Yesu mpendwa, unisaidie kuwaeleza watu walio karibu nami habari zako, nikianzia pale pale nilipo. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Nini kilitokea kwenye Mto Niger mwaka 1841?",
+    "answer": "Homa mbaya sana ilizuka na Wazungu wengi walikufa, lakini Waafrika wengi walibaki wazima."
+   },
+   {
+    "question": "Samuel alimaanisha nini aliposema Afrika ingesaidiwa na “watoto wake mwenyewe”?",
+    "answer": "Kwamba Waafrika wanapaswa kufundishwa na kutumwa kuwaeleza watu wao wenyewe habari za Yesu, katika lugha zao wenyewe."
+   },
+   {
+    "question": "Ni nani aliye karibu nawe ambaye unaweza kumweleza habari za Yesu?",
+    "answer": "Jibu lolote ni jema. Yesu aliwaambia rafiki zake waanze kueleza habari zake nyumbani, na sisi pia tunaweza kufanya hivyo."
+   }
+  ],
+  "body_text": "“Nanyi mtakuwa mashahidi wangu katika Yerusalemu, na katika Uyahudi wote, na Samaria, na hata mwisho wa nchi.” — kutoka Matendo 1 Samuel alikua akawa mwalimu. Alikuwa mwanafunzi wa kwanza kabisa wa chuo kipya huko Sierra Leone kiitwacho Fourah Bay. Alianza kuandika maneno ya Kiyoruba, lugha ya utoto wake. Mwaka 1841, serikali ya Uingereza ilituma meli tatu za mvuke juu ya Mto Niger mkubwa, ndani kabisa ya Afrika. Walitaka kukomesha biashara ya watumwa na kushiriki habari njema za Yesu. Samuel alikwenda pamoja nao kama mmisionari. Huko mtoni, homa mbaya sana ilizuka. Karibu Wazungu wote waliugua, na wengi wao walikufa. Lakini Waafrika wengi waliokuwa melini walibaki wazima. Samuel aliandika barua kwa wamisionari huko London. Alisema kwamba Afrika ingesaidiwa zaidi ya yote na “watoto wake mwenyewe.” Alimaanisha kwamba Waafrika wangeweza kuishi mahali ambapo Wazungu waliugua, na wangeweza kuzungumza lugha za watu wa huko. Walipaswa kufundishwa na kutumwa kuwaeleza watu wao wenyewe habari za Yesu. Miaka miwili baadaye, mwaka 1843, Samuel alifanywa kasisi wa Kanisa la Uingereza huko London. Aliporudi nyumbani Sierra Leone, alihubiri katika kanisa lililojaa watu. Watu wengi walikuwa hawajawahi kumwona kasisi Mwafrika! Kisha akafanya jambo jipya: aliongoza ibada ya kanisa kwa Kiyoruba. Alisema kwamba akiwa amesimama pale, alijisikia kama mtoto mchanga anayejifunza kuzungumza lugha yake mwenyewe. Yesu aliwaambia rafiki zake wawaeleze watu habari zake, wakianzia nyumbani. Huhitaji kusafiri mbali ili kufanya hivyo. Unaweza kuanza na watu walio karibu nawe. Yesu mpendwa, unisaidie kuwaeleza watu walio karibu nami habari zako, nikianzia pale pale nilipo. Amina.",
+  "word_count": 243
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "sw"
+  ],
+  "order": 7,
+  "title": "“Mama!”",
+  "body_html": "<blockquote>“Ndiwe uliyekuwa msaidizi wa yatima.” — kutoka Zaburi 10</blockquote> <p>Mwaka 1846 Samuel alikwenda kuishi Abeokuta, mji mpya katika nchi ya Wayoruba. Alikwenda huko kuanzisha kanisa na shule. Ilikuwa mara ya kwanza kuishi kati ya watu wake mwenyewe tangu alipokuwa mvulana.</p> <p>Alikuwa amekaa huko chini ya wiki tatu mtu alipomletea habari za ajabu. Mama yake alikuwa hai! Alikuwa akiishi pamoja na dada zake katika mji wa jirani. Samuel akatuma watu wamlete mara moja.</p> <p>Tarehe 21 Agosti 1846, mama yake alifika. Asubuhi ile Samuel alikuwa amesoma mstari wa Biblia: “Wewe ndiwe Msaidizi wa yatima.” Alisema hakuwahi kuhisi ukweli wake kama alivyouhisi siku ile.</p> <p>Mama yake alipomwona, alitetemeka. Hakuweza kuyaamini macho yake. Walishikana na kutazamana kimya, huku machozi makubwa yakitiririka mashavuni mwake yaliyokonda. Alimwita kwa majina ya kubembeleza ambayo bibi yake alikuwa akimwita alipokuwa mdogo. Ilikuwa imepita miaka ishirini na mitano tangu walipotenganishwa kwa nguvu.</p> <p>Mama yake Samuel alikuwa ameishi maisha magumu sana. Kwa miaka mingi kati ya hiyo alikuwa mtumwa. Sasa alikuja kuishi pamoja na mwanawe. Alikwenda kanisani, akajifunza habari za Yesu. Mwaka 1848 alibatizwa, akachukua jina Hana. Samuel alipomwambia kwamba kazi yake ingempeleka mbali mara kwa mara, alisema, “Wewe si mwanangu tena, bali u mtumishi wa Mungu.” Alitaka aende akamtumikie Mungu bila kumhangaikia yeye.</p> <p>Mungu hakumsahau Samuel, wala hakumsahau mama yake Samuel. Hakusahau wewe pia.</p> <p><em>Mungu mpendwa, asante kwa ajili ya familia yangu. Asante kwa kuwa hunisahau kamwe, na kwa kuwa unawasaidia watu walio wapweke au waliompoteza mtu wanayempenda. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Samuel na mama yake walikuwa wametengana kwa muda gani?",
+    "answer": "Karibu miaka ishirini na mitano. Walitenganishwa Samuel alipouzwa mbali, nao wakakutana tena mwaka 1846."
+   },
+   {
+    "question": "Samuel alisoma mstari gani wa Biblia siku ile mama yake alipofika?",
+    "answer": "“Wewe ndiwe Msaidizi wa yatima,” kutoka Zaburi 10. Alisema hakuwahi kuhisi ukweli wake kama siku ile."
+   },
+   {
+    "question": "Mama yake alisema nini alipomwambia kwamba mara nyingi angekuwa mbali?",
+    "answer": "“Wewe si mwanangu tena, bali u mtumishi wa Mungu.” Alitaka aifanye kazi ya Mungu bila kumhangaikia yeye."
+   }
+  ],
+  "body_text": "“Ndiwe uliyekuwa msaidizi wa yatima.” — kutoka Zaburi 10 Mwaka 1846 Samuel alikwenda kuishi Abeokuta, mji mpya katika nchi ya Wayoruba. Alikwenda huko kuanzisha kanisa na shule. Ilikuwa mara ya kwanza kuishi kati ya watu wake mwenyewe tangu alipokuwa mvulana. Alikuwa amekaa huko chini ya wiki tatu mtu alipomletea habari za ajabu. Mama yake alikuwa hai! Alikuwa akiishi pamoja na dada zake katika mji wa jirani. Samuel akatuma watu wamlete mara moja. Tarehe 21 Agosti 1846, mama yake alifika. Asubuhi ile Samuel alikuwa amesoma mstari wa Biblia: “Wewe ndiwe Msaidizi wa yatima.” Alisema hakuwahi kuhisi ukweli wake kama alivyouhisi siku ile. Mama yake alipomwona, alitetemeka. Hakuweza kuyaamini macho yake. Walishikana na kutazamana kimya, huku machozi makubwa yakitiririka mashavuni mwake yaliyokonda. Alimwita kwa majina ya kubembeleza ambayo bibi yake alikuwa akimwita alipokuwa mdogo. Ilikuwa imepita miaka ishirini na mitano tangu walipotenganishwa kwa nguvu. Mama yake Samuel alikuwa ameishi maisha magumu sana. Kwa miaka mingi kati ya hiyo alikuwa mtumwa. Sasa alikuja kuishi pamoja na mwanawe. Alikwenda kanisani, akajifunza habari za Yesu. Mwaka 1848 alibatizwa, akachukua jina Hana. Samuel alipomwambia kwamba kazi yake ingempeleka mbali mara kwa mara, alisema, “Wewe si mwanangu tena, bali u mtumishi wa Mungu.” Alitaka aende akamtumikie Mungu bila kumhangaikia yeye. Mungu hakumsahau Samuel, wala hakumsahau mama yake Samuel. Hakusahau wewe pia. Mungu mpendwa, asante kwa ajili ya familia yangu. Asante kwa kuwa hunisahau kamwe, na kwa kuwa unawasaidia watu walio wapweke au waliompoteza mtu wanayempenda. Amina.",
+  "word_count": 239
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "sw"
+  ],
+  "order": 8,
+  "title": "Sala ya Bwana kwa Mwanga wa Mishumaa",
+  "body_html": "<blockquote>“Imekuwaje basi sisi kusikia kila mtu lugha yetu tuliyozaliwa nayo?” — kutoka Matendo 2</blockquote> <p>Samuel alipozaliwa, karibu hakuna mtu aliyekuwa amewahi kuiandika lugha ya Kiyoruba. Watu walijua methali, hadithi na nyimbo nzuri ajabu, lakini walizihifadhi zote kumbukumbuni.</p> <p>Samuel alitaka watu wake waweze kusoma neno la Mungu katika lugha yao wenyewe. Kwa hiyo aliandika maneno ya Kiyoruba na kutunga kitabu cha kufundishia lugha hiyo. Pamoja na wamisionari wengine, alitafuta njia ya kuiandika kwa herufi. Kisha akaanza kuitafsiri Biblia katika Kiyoruba.</p> <p>Kazi hiyo ilichukua kikundi kizima zaidi ya miaka arobaini. Samuel alifanya sehemu kubwa zaidi. Mwaka 1884 hatimaye Biblia nzima ilitoka kwa Kiyoruba! Watu waliweza kusoma habari za Yesu katika lugha waliyoizungumza nyumbani.</p> <p>Mwaka 1851 Samuel alitembelea Uingereza. Jioni moja alikwenda Kasri la Windsor kuzungumza na Mwana wa Mfalme Albert kuhusu Afrika. Walipokuwa wakitazama ramani, mwanamke mmoja aliingia chumbani kimya kimya, akiwa amevaa nguo za kawaida kabisa. Mwanzoni Samuel hakujua yeye ni nani. Alikuwa Malkia Victoria!</p> <p>Taa ilipozimika, Malkia mwenyewe aliwasha mishumaa. Kisha mtu mmoja akamwomba Samuel aseme kitu kwa Kiyoruba. Alitamka methali moja ya Kiyoruba, kisha akasali Sala ya Bwana kwa Kiyoruba. Malkia alisema ilisikika “laini na yenye mahadhi matamu.”</p> <p>Siku ya Pentekoste, watu kutoka nchi nyingi walisikia habari za Mungu katika lugha zao wenyewe. Mungu anaipenda kila lugha. Anataka kila taifa lisikie habari za Yesu kwa maneno wanayoyaelewa vizuri kuliko yote.</p> <p><em>Baba yetu uliye mbinguni, asante kwa kuwa unaielewa kila lugha duniani. Asante kwa watu wanaowasaidia wengine kusoma Biblia kwa maneno yao wenyewe. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini Samuel alitaka kuiandika lugha ya Kiyoruba?",
+    "answer": "Ili watu wake waweze kusoma neno la Mungu katika lugha waliyoizungumza nyumbani."
+   },
+   {
+    "question": "Samuel alimwambia nini Malkia Victoria kwa Kiyoruba?",
+    "answer": "Methali moja ya Kiyoruba, kisha Sala ya Bwana. Malkia alisema ilisikika “laini na yenye mahadhi matamu.”"
+   },
+   {
+    "question": "Kwa nini Mungu anataka watu wasikie habari zake katika lugha yao wenyewe?",
+    "answer": "Kwa sababu Mungu anaipenda kila lugha na kila taifa, nasi tunaelewa vizuri kuliko yote kwa maneno tuliyokua nayo."
+   }
+  ],
+  "body_text": "“Imekuwaje basi sisi kusikia kila mtu lugha yetu tuliyozaliwa nayo?” — kutoka Matendo 2 Samuel alipozaliwa, karibu hakuna mtu aliyekuwa amewahi kuiandika lugha ya Kiyoruba. Watu walijua methali, hadithi na nyimbo nzuri ajabu, lakini walizihifadhi zote kumbukumbuni. Samuel alitaka watu wake waweze kusoma neno la Mungu katika lugha yao wenyewe. Kwa hiyo aliandika maneno ya Kiyoruba na kutunga kitabu cha kufundishia lugha hiyo. Pamoja na wamisionari wengine, alitafuta njia ya kuiandika kwa herufi. Kisha akaanza kuitafsiri Biblia katika Kiyoruba. Kazi hiyo ilichukua kikundi kizima zaidi ya miaka arobaini. Samuel alifanya sehemu kubwa zaidi. Mwaka 1884 hatimaye Biblia nzima ilitoka kwa Kiyoruba! Watu waliweza kusoma habari za Yesu katika lugha waliyoizungumza nyumbani. Mwaka 1851 Samuel alitembelea Uingereza. Jioni moja alikwenda Kasri la Windsor kuzungumza na Mwana wa Mfalme Albert kuhusu Afrika. Walipokuwa wakitazama ramani, mwanamke mmoja aliingia chumbani kimya kimya, akiwa amevaa nguo za kawaida kabisa. Mwanzoni Samuel hakujua yeye ni nani. Alikuwa Malkia Victoria! Taa ilipozimika, Malkia mwenyewe aliwasha mishumaa. Kisha mtu mmoja akamwomba Samuel aseme kitu kwa Kiyoruba. Alitamka methali moja ya Kiyoruba, kisha akasali Sala ya Bwana kwa Kiyoruba. Malkia alisema ilisikika “laini na yenye mahadhi matamu.” Siku ya Pentekoste, watu kutoka nchi nyingi walisikia habari za Mungu katika lugha zao wenyewe. Mungu anaipenda kila lugha. Anataka kila taifa lisikie habari za Yesu kwa maneno wanayoyaelewa vizuri kuliko yote. Baba yetu uliye mbinguni, asante kwa kuwa unaielewa kila lugha duniani. Asante kwa watu wanaowasaidia wengine kusoma Biblia kwa maneno yao wenyewe. Amina.",
+  "word_count": 244
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "sw"
+  ],
+  "order": 9,
+  "title": "Mwaka Mzima Kando ya Meli Iliyovunjika",
+  "body_html": "<blockquote>“Pande zote twadhikika, bali hatusongwi; … twatupwa chini, bali hatuangamizwi.” — kutoka 2 Wakorintho 4</blockquote> <p>Samuel alipanda Mto Niger tena na tena, kuwaeleza watu walioishi kando yake habari za Yesu. Mwaka 1854 alikwenda kwa meli ndogo ya mvuke iitwayo Pleiad. Baada ya zaidi ya siku mia moja mtoni, hakuna hata mtu mmoja aliyekufa! Samuel alisema, “Si kwetu sisi, bali kwa Mungu, tunatoa sifa.”</p> <p>Mwaka 1857 alipanda mto mara nyingine tena, kwa meli iitwayo Dayspring. Njiani aliwaacha wasaidizi wawili Waafrika katika mji wa Onitsha ili waanzishe kanisa huko. Kisha Dayspring ikaenda mbali sana juu ya mto.</p> <p>Tarehe 7 Oktoba 1857, karibu na mji uitwao Jebba, meli iligonga miamba ikapinduka! Watu walikuja kwa mitumbwi kusaidia, na kila mtu alifika ufuoni salama. Hakuna aliyeumia. Lakini meli haikuweza kuokolewa.</p> <p>Watu hamsini walilazimika kupiga kambi kando ya mto kwa mwaka mzima, wakingoja meli nyingine ije. Samuel aliongoza sala kila asubuhi na kila jioni ndani ya hema lake lililotengenezwa kwa mikeka, naye aliwaruhusu wagonjwa wapumzike humo. Usiku mmoja chui aliingia kambini! Samuel alicheka akakiri, “Mimi si mpiga bunduki.”</p> <p>Hakuupoteza mwaka ule bure. Alifanya urafiki na watu waliokaa karibu. Alijifunza lugha yao, iitwayo Kinupe, akaanza kuiandika. Watu walishangaa sana kuona maneno yao wenyewe yameandikwa kwenye karatasi.</p> <p>Mambo yanapoharibika, ni rahisi kukata tamaa. Lakini Samuel aliendelea kumtumaini Mungu na kuendelea kufanya kazi. Mungu anaweza kutumia hata siku zetu mbaya kuliko zote.</p> <p><em>Mungu mpendwa, mambo yanapoharibika, unisaidie nisikate tamaa. Unisaidie kukutumaini na kuendelea kutenda mema. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Nini kiliipata meli iitwayo Dayspring?",
+    "answer": "Iligonga miamba karibu na Jebba ikapinduka. Kila mtu alifika ufuoni salama, lakini meli haikuweza kuokolewa."
+   },
+   {
+    "question": "Samuel alifanya nini katika mwaka ule kando ya mto?",
+    "answer": "Aliongoza sala, aliwatunza wagonjwa, alifanya urafiki na watu waliokaa karibu, na akaanza kuiandika lugha yao, Kinupe."
+   },
+   {
+    "question": "Ni jambo gani gumu unaloweza kuendelea nalo, kama Samuel alivyofanya?",
+    "answer": "Jibu lolote la kweli ni jema. Samuel aliendelea kumtumaini Mungu na kuendelea kufanya kazi hata wakati kila kitu kilipoharibika."
+   }
+  ],
+  "body_text": "“Pande zote twadhikika, bali hatusongwi; … twatupwa chini, bali hatuangamizwi.” — kutoka 2 Wakorintho 4 Samuel alipanda Mto Niger tena na tena, kuwaeleza watu walioishi kando yake habari za Yesu. Mwaka 1854 alikwenda kwa meli ndogo ya mvuke iitwayo Pleiad. Baada ya zaidi ya siku mia moja mtoni, hakuna hata mtu mmoja aliyekufa! Samuel alisema, “Si kwetu sisi, bali kwa Mungu, tunatoa sifa.” Mwaka 1857 alipanda mto mara nyingine tena, kwa meli iitwayo Dayspring. Njiani aliwaacha wasaidizi wawili Waafrika katika mji wa Onitsha ili waanzishe kanisa huko. Kisha Dayspring ikaenda mbali sana juu ya mto. Tarehe 7 Oktoba 1857, karibu na mji uitwao Jebba, meli iligonga miamba ikapinduka! Watu walikuja kwa mitumbwi kusaidia, na kila mtu alifika ufuoni salama. Hakuna aliyeumia. Lakini meli haikuweza kuokolewa. Watu hamsini walilazimika kupiga kambi kando ya mto kwa mwaka mzima, wakingoja meli nyingine ije. Samuel aliongoza sala kila asubuhi na kila jioni ndani ya hema lake lililotengenezwa kwa mikeka, naye aliwaruhusu wagonjwa wapumzike humo. Usiku mmoja chui aliingia kambini! Samuel alicheka akakiri, “Mimi si mpiga bunduki.” Hakuupoteza mwaka ule bure. Alifanya urafiki na watu waliokaa karibu. Alijifunza lugha yao, iitwayo Kinupe, akaanza kuiandika. Watu walishangaa sana kuona maneno yao wenyewe yameandikwa kwenye karatasi. Mambo yanapoharibika, ni rahisi kukata tamaa. Lakini Samuel aliendelea kumtumaini Mungu na kuendelea kufanya kazi. Mungu anaweza kutumia hata siku zetu mbaya kuliko zote. Mungu mpendwa, mambo yanapoharibika, unisaidie nisikate tamaa. Unisaidie kukutumaini na kuendelea kutenda mema. Amina.",
+  "word_count": 237
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "sw"
+  ],
+  "order": 10,
+  "title": "“Sistahili”",
+  "body_html": "<blockquote>“Humwinua mnyonge kutoka mavumbini, … Awaketishe pamoja na wakuu.” — kutoka 1 Samweli 2</blockquote> <p>Wamisionari huko London waliamua kwamba makanisa yaliyokuwa kando ya Mto Niger yalihitaji askofu, yaani kiongozi wa makanisa yote na wachungaji wote. Waliamua kwamba askofu huyo awe Mwafrika. Wakamchagua Samuel.</p> <p>Familia yake ilikumbuka kwamba Samuel hakutaka kabisa kuwa askofu. “Sistahili,” alisema. Alitaka kubaki mtumishi mnyenyekevu. Lakini mwishowe alikubali, akisema, “Ndiye Bwana; na afanye alionalo kuwa jema.”</p> <p>Tarehe 29 Juni 1864, katika Kanisa Kuu kubwa la Canterbury huko Uingereza, Samuel Ajayi Crowther aliwekwa wakfu kuwa askofu wa kwanza Mwafrika wa Kanisa la Anglikana. Mvulana aliyekuwa ameuzwa kama mtumwa sasa alikuwa askofu!</p> <p>Bibi kizee mmoja alikuja kwenye ibada. Inasimuliwa kwamba alipomkuta mtu mwingine kwenye kiti chake, alikataa kuondoka. Alisema alikuwa na haki kamili ya kiti kile, kwa sababu yeye ndiye aliyemfundisha askofu mpya alfabeti! Alikuwa Bi. Davey, mwalimu wake wa Bathurst, ambaye sasa aliitwa Bi. Weeks.</p> <p>Kuwa askofu hakukumfanya Samuel kuwa na kiburi. Aliwaomba watu wasimwite “Bwana Wangu.” Kama kulikuwa na kiti kimoja tu chumbani na mwalimu wa shule akaingia, askofu alisimama na kumpa mwalimu kiti chake.</p> <p>Mungu hupenda kuwainua watu wanyenyekevu. Huhitaji kuwa mtu muhimu ili Mungu akutumie. Unahitaji tu kumwambia ndiyo.</p> <p><em>Mungu mpendwa, tafadhali unifanye mnyenyekevu kama Samuel. Unisaidie kuwatanguliza wengine na kusema ndiyo kwa lolote utakaloniomba nifanye. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Samuel alisema nini alipoombwa kuwa askofu?",
+    "answer": "“Sistahili.” Alitaka kubaki mtumishi mnyenyekevu, lakini mwishowe alikubali kufanya kile Mungu alichotaka."
+   },
+   {
+    "question": "Yule bibi kizee aliyekuwa kanisa kuu alikuwa nani?",
+    "answer": "Bi. Weeks, ambaye zamani aliitwa Bi. Davey, mwalimu wake wa Bathurst. Alisema alikuwa na haki ya kiti chake kwa sababu alikuwa amemfundisha alfabeti."
+   },
+   {
+    "question": "Samuel alionyeshaje kwamba kuwa askofu hakukumfanya kuwa na kiburi?",
+    "answer": "Aliwaomba watu wasimwite “Bwana Wangu,” na alikuwa akimpa mwalimu wa shule kiti chake mwenyewe."
+   }
+  ],
+  "body_text": "“Humwinua mnyonge kutoka mavumbini, … Awaketishe pamoja na wakuu.” — kutoka 1 Samweli 2 Wamisionari huko London waliamua kwamba makanisa yaliyokuwa kando ya Mto Niger yalihitaji askofu, yaani kiongozi wa makanisa yote na wachungaji wote. Waliamua kwamba askofu huyo awe Mwafrika. Wakamchagua Samuel. Familia yake ilikumbuka kwamba Samuel hakutaka kabisa kuwa askofu. “Sistahili,” alisema. Alitaka kubaki mtumishi mnyenyekevu. Lakini mwishowe alikubali, akisema, “Ndiye Bwana; na afanye alionalo kuwa jema.” Tarehe 29 Juni 1864, katika Kanisa Kuu kubwa la Canterbury huko Uingereza, Samuel Ajayi Crowther aliwekwa wakfu kuwa askofu wa kwanza Mwafrika wa Kanisa la Anglikana. Mvulana aliyekuwa ameuzwa kama mtumwa sasa alikuwa askofu! Bibi kizee mmoja alikuja kwenye ibada. Inasimuliwa kwamba alipomkuta mtu mwingine kwenye kiti chake, alikataa kuondoka. Alisema alikuwa na haki kamili ya kiti kile, kwa sababu yeye ndiye aliyemfundisha askofu mpya alfabeti! Alikuwa Bi. Davey, mwalimu wake wa Bathurst, ambaye sasa aliitwa Bi. Weeks. Kuwa askofu hakukumfanya Samuel kuwa na kiburi. Aliwaomba watu wasimwite “Bwana Wangu.” Kama kulikuwa na kiti kimoja tu chumbani na mwalimu wa shule akaingia, askofu alisimama na kumpa mwalimu kiti chake. Mungu hupenda kuwainua watu wanyenyekevu. Huhitaji kuwa mtu muhimu ili Mungu akutumie. Unahitaji tu kumwambia ndiyo. Mungu mpendwa, tafadhali unifanye mnyenyekevu kama Samuel. Unisaidie kuwatanguliza wengine na kusema ndiyo kwa lolote utakaloniomba nifanye. Amina.",
+  "word_count": 212
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "sw"
+  ],
+  "order": 11,
+  "title": "Wema wa Watumwa",
+  "body_html": "<blockquote>“Na kunguru wakamletea mkate na nyama asubuhi, na mkate na nyama jioni.” — kutoka 1 Wafalme 17</blockquote> <p>Mwaka 1867 Askofu Crowther alikuwa akisafiri juu ya mto kwa mashua yake ndogo mwenyewe pamoja na mwanawe Dandeson. Walisimama kumtembelea chifu mmoja aitwaye Abokko, ambaye Samuel alikuwa amemfahamu kwa miaka mingi.</p> <p>Lakini Abokko alidhani kwamba meli kubwa za biashara zilikuwa mali ya askofu na kwamba alikuwa tajiri sana. Aliichukua mashua, akanyakua vitu vyao vyote, na kuwaweka kama mateka. Hakukubali kuwaachilia mpaka walipiwe rundo kubwa mno la bidhaa.</p> <p>Usiku wa kwanza walilazimika kulala juu ya ardhi yenye unyevunyevu bila kula chochote. Mmoja wa watumwa wa chifu aliwahurumia akampa Samuel nguo yake mwenyewe ajifunike kama blanketi. Mwendesha mashua mmoja alimpa joho lake la kulalia kama mto, naye Samuel akampa Dandeson. Kwa siku kadhaa chifu hakuwapa chakula karibu chochote. Lakini watumwa wa nyumbani mwake waligawana nao chakula chao wenyewe kwa siri. Samuel alimwambia Dandeson kwamba watumwa hawa wema walikuwa kama kunguru ambao Mungu aliwatuma kumlisha Eliya.</p> <p>Siku ya Jumapili, Samuel hakuwa na Biblia, kwa sababu Abokko alikuwa amechukua vitu vyake vyote. Kwa hiyo yeye na Dandeson walikariri mistari ya Biblia pamoja kwa moyo. Kisha Samuel alikwenda kwa ujasiri kwa chifu akaomba Biblia yake, kwa sababu ilikuwa siku ambayo watu wa Mungu hukutana kuomba. Chifu akamrudishia!</p> <p>Dandeson alipewa nafasi ya kuondoka huru peke yake, lakini hakukubali kumwacha baba yake. Baada ya siku nyingi, meli ya mvuke ilifika, na mateka wakatorokea humo. Lakini mtu mmoja jasiri aitwaye Bwana Fell, aliyekuja kuwasaidia, alipigwa mshale akafa. Samuel alihuzunika sana. Alisema afadhali yeye mwenyewe ndiye angekufa.</p> <p>Mungu alimtunza Samuel kupitia wema wa watumwa maskini. Hata wema mdogo unaweza kuwa jibu la Mungu kwa sala ya mtu.</p> <p><em>Mungu mpendwa, asante kwa kuwa unawatunza watu wako, hata mahali pagumu. Unisaidie kuwa mwema kwa watu walio katika shida, kama wale watumwa waliomlisha Samuel. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini Chifu Abokko alimweka askofu kama mateka?",
+    "answer": "Alidhani askofu alikuwa mwenye meli za biashara na kwamba alikuwa tajiri, kwa hiyo alitaka alipwe malipo makubwa mno kabla ya kumwachilia."
+   },
+   {
+    "question": "Nani aliwalisha Samuel na Dandeson walipokuwa mateka?",
+    "answer": "Watumwa wa chifu waligawana nao chakula chao wenyewe kwa siri. Samuel alisema walikuwa kama kunguru ambao Mungu aliwatuma kumlisha Eliya."
+   },
+   {
+    "question": "Ni wema gani mdogo unaoweza kumwonyesha mtu wiki hii?",
+    "answer": "Jibu lolote ni jema. Wema mdogo, kama kugawana chakula au blanketi, unaweza kuwa jibu la Mungu kwa sala ya mtu."
+   }
+  ],
+  "body_text": "“Na kunguru wakamletea mkate na nyama asubuhi, na mkate na nyama jioni.” — kutoka 1 Wafalme 17 Mwaka 1867 Askofu Crowther alikuwa akisafiri juu ya mto kwa mashua yake ndogo mwenyewe pamoja na mwanawe Dandeson. Walisimama kumtembelea chifu mmoja aitwaye Abokko, ambaye Samuel alikuwa amemfahamu kwa miaka mingi. Lakini Abokko alidhani kwamba meli kubwa za biashara zilikuwa mali ya askofu na kwamba alikuwa tajiri sana. Aliichukua mashua, akanyakua vitu vyao vyote, na kuwaweka kama mateka. Hakukubali kuwaachilia mpaka walipiwe rundo kubwa mno la bidhaa. Usiku wa kwanza walilazimika kulala juu ya ardhi yenye unyevunyevu bila kula chochote. Mmoja wa watumwa wa chifu aliwahurumia akampa Samuel nguo yake mwenyewe ajifunike kama blanketi. Mwendesha mashua mmoja alimpa joho lake la kulalia kama mto, naye Samuel akampa Dandeson. Kwa siku kadhaa chifu hakuwapa chakula karibu chochote. Lakini watumwa wa nyumbani mwake waligawana nao chakula chao wenyewe kwa siri. Samuel alimwambia Dandeson kwamba watumwa hawa wema walikuwa kama kunguru ambao Mungu aliwatuma kumlisha Eliya. Siku ya Jumapili, Samuel hakuwa na Biblia, kwa sababu Abokko alikuwa amechukua vitu vyake vyote. Kwa hiyo yeye na Dandeson walikariri mistari ya Biblia pamoja kwa moyo. Kisha Samuel alikwenda kwa ujasiri kwa chifu akaomba Biblia yake, kwa sababu ilikuwa siku ambayo watu wa Mungu hukutana kuomba. Chifu akamrudishia! Dandeson alipewa nafasi ya kuondoka huru peke yake, lakini hakukubali kumwacha baba yake. Baada ya siku nyingi, meli ya mvuke ilifika, na mateka wakatorokea humo. Lakini mtu mmoja jasiri aitwaye Bwana Fell, aliyekuja kuwasaidia, alipigwa mshale akafa. Samuel alihuzunika sana. Alisema afadhali yeye mwenyewe ndiye angekufa. Mungu alimtunza Samuel kupitia wema wa watumwa maskini. Hata wema mdogo unaweza kuwa jibu la Mungu kwa sala ya mtu. Mungu mpendwa, asante kwa kuwa unawatunza watu wako, hata mahali pagumu. Unisaidie kuwa mwema kwa watu walio katika shida, kama wale watumwa waliomlisha Samuel. Amina.",
+  "word_count": 300
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "sw"
+  ],
+  "order": 12,
+  "title": "Usiku Mwema",
+  "body_html": "<blockquote>“Kwa amani nitajilaza na kupata usingizi mara, Maana Wewe, BWANA, peke yako, Ndiwe unijaliaye kukaa salama.” — kutoka Zaburi 4</blockquote> <p>Jioni watoto wa Samuel walipenda kuketi kumzunguka na kusikiliza hadithi zake. Hadithi waliyoipenda kuliko zote ilikuwa ya viatu vyake vya kwanza. Alipokuwa mwanafunzi alipewa buti nzito za kijeshi, lakini hakuwahi kuvaa viatu hata siku moja! Hakuweza kupiga hatua hata moja. Basi alishikilia ukuta na kutembea kuzunguka chumba tena na tena mpaka akaweza kuuachilia. Kwa miezi kadhaa alibeba viatu vyake kwenda kanisani na kuvivaa mlangoni tu. Alipoisimulia hadithi hiyo, aliiigiza, na watoto walipiga makofi na kupiga kelele.</p> <p>Samuel alipokuwa mzee, mambo ya huzuni yalitokea. Mwaka 1880 mke wake mpendwa Asano alifariki. Kisha wamisionari vijana kutoka Uingereza walikuja Niger. Hawakuwaamini wachungaji Waafrika, nao waliwaondolea baadhi yao kazi zao, hata mwana wa Samuel mwenyewe, bila kumsikiliza askofu yule mzee. Haikuwa haki, nayo ilimuumiza Samuel sana. Miaka mingi baadaye, Kanisa la Uingereza lilisema, “Lilikuwa kosa.” Lakini Samuel hakupiga kelele wala hakulipiza. Aliendelea kupenda na kutumika.</p> <p>Mwaka 1891 aliugua akaenda kukaa kwa binti yake Abigail huko Lagos. Usiku wa mwisho wa mwaka, saa sita usiku, Abigail alimfunika vizuri kitandani akasema, “Usiku mwema, baba.” Naye akajibu, “Usiku mwema.” Muda mfupi baadaye, alikwenda nyumbani kukaa na Yesu.</p> <p>Mvulana aliyekuwa ameuzwa kama mtumwa alisaidia kuwaletea watu wake habari njema za Yesu. Leo kuna Wakristo mamilioni mengi nchini Nigeria, nao wanasoma Biblia kwa Kiyoruba, Kiigbo na lugha nyingine nyingi.</p> <p>Samuel alimtumaini Mungu maisha yake yote, siku za furaha na siku za huzuni. Mwishoni kabisa, aliweza kusema “Usiku mwema” kwa amani, kwa sababu alijua yuko salama pamoja na Mungu.</p> <p><em>Mungu mpendwa, asante kwa ajili ya Samuel Ajayi Crowther na yote uliyoyatenda kupitia maisha yake. Unisaidie kukutumaini siku za furaha na siku za huzuni, na kujua kwamba niko salama pamoja nawe siku zote. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Hadithi ya kuchekesha kuhusu viatu vya kwanza vya Samuel ilikuwa ipi?",
+    "answer": "Hakuwahi kuvaa viatu, kwa hiyo alipopewa buti nzito hakuweza kutembea. Alishikilia ukuta na kutembea kuzunguka chumba mpaka akaweza kuuachilia."
+   },
+   {
+    "question": "Samuel alifanya nini watu walipomtendea isivyo haki?",
+    "answer": "Hakupiga kelele wala hakulipiza. Aliendelea kupenda na kutumika. Miaka mingi baadaye, Kanisa la Uingereza lilisema kwamba alichotendewa kilikuwa kosa."
+   },
+   {
+    "question": "Maneno ya mwisho ya Samuel yalikuwa yapi?",
+    "answer": "“Usiku mwema.” Aliyasema kwa binti yake Abigail, kwa amani, kwa sababu alijua yuko salama pamoja na Mungu."
+   }
+  ],
+  "body_text": "“Kwa amani nitajilaza na kupata usingizi mara, Maana Wewe, BWANA, peke yako, Ndiwe unijaliaye kukaa salama.” — kutoka Zaburi 4 Jioni watoto wa Samuel walipenda kuketi kumzunguka na kusikiliza hadithi zake. Hadithi waliyoipenda kuliko zote ilikuwa ya viatu vyake vya kwanza. Alipokuwa mwanafunzi alipewa buti nzito za kijeshi, lakini hakuwahi kuvaa viatu hata siku moja! Hakuweza kupiga hatua hata moja. Basi alishikilia ukuta na kutembea kuzunguka chumba tena na tena mpaka akaweza kuuachilia. Kwa miezi kadhaa alibeba viatu vyake kwenda kanisani na kuvivaa mlangoni tu. Alipoisimulia hadithi hiyo, aliiigiza, na watoto walipiga makofi na kupiga kelele. Samuel alipokuwa mzee, mambo ya huzuni yalitokea. Mwaka 1880 mke wake mpendwa Asano alifariki. Kisha wamisionari vijana kutoka Uingereza walikuja Niger. Hawakuwaamini wachungaji Waafrika, nao waliwaondolea baadhi yao kazi zao, hata mwana wa Samuel mwenyewe, bila kumsikiliza askofu yule mzee. Haikuwa haki, nayo ilimuumiza Samuel sana. Miaka mingi baadaye, Kanisa la Uingereza lilisema, “Lilikuwa kosa.” Lakini Samuel hakupiga kelele wala hakulipiza. Aliendelea kupenda na kutumika. Mwaka 1891 aliugua akaenda kukaa kwa binti yake Abigail huko Lagos. Usiku wa mwisho wa mwaka, saa sita usiku, Abigail alimfunika vizuri kitandani akasema, “Usiku mwema, baba.” Naye akajibu, “Usiku mwema.” Muda mfupi baadaye, alikwenda nyumbani kukaa na Yesu. Mvulana aliyekuwa ameuzwa kama mtumwa alisaidia kuwaletea watu wake habari njema za Yesu. Leo kuna Wakristo mamilioni mengi nchini Nigeria, nao wanasoma Biblia kwa Kiyoruba, Kiigbo na lugha nyingine nyingi. Samuel alimtumaini Mungu maisha yake yote, siku za furaha na siku za huzuni. Mwishoni kabisa, aliweza kusema “Usiku mwema” kwa amani, kwa sababu alijua yuko salama pamoja na Mungu. Mungu mpendwa, asante kwa ajili ya Samuel Ajayi Crowther na yote uliyoyatenda kupitia maisha yake. Unisaidie kukutumaini siku za furaha na siku za huzuni, na kujua kwamba niko salama pamoja nawe siku zote. Amina.",
+  "word_count": 293
+ }
+}
+]

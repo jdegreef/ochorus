@@ -24,12 +24,17 @@ services:
     dockerfilePath: ./Dockerfile
     plan: starter # always-on; avoids cold-start spin-down
     healthCheckPath: /api/health/
-    # Off: the deploy train (.github/workflows/deploy-train.yml) ships main in
-    # batches, moving all three services to the same green commit together.
-    # Deploying every merge kept the ~21-minute web build running back to back
-    # and rebuilt this image for each backend commit. To go back, set
-    # `checksPass` on all three services and disable the train.
-    autoDeployTrigger: "off"
+    # Deploy each merge once its GitHub checks pass. The deploy train
+    # (.github/workflows/deploy-train.yml) was meant to ship main in batches, but
+    # its deploy hooks were never configured, so with auto-deploy off this
+    # service stopped deploying altogether — and every content build of the
+    # still-auto-deploying reader then timed out in its prebuild content gate
+    # (frontend/scripts/await-api-release.mjs) waiting for an API that never
+    # moved. All three services must share one trigger: the web build's gate
+    # assumes the API deploys the same content commit alongside it. To bring
+    # the train back, set "off" on all three, set DEPLOY_TRAIN below to "true",
+    # restore the workflow's schedule, and add its three hook secrets.
+    autoDeployTrigger: checksPass
     # Rebuild the API only for commits that change what the image runs. The
     # rootDir already skips commits outside backend/; this also skips the ones
     # that touch only tests or backend/CLAUDE.md, each of which would otherwise
@@ -78,12 +83,13 @@ services:
       - key: RENDER_WEB_DEPLOY_HOOK
         sync: false
       # Pins that rebuild to this API's own commit (library/golive.py). Only
-      # safe while the deploy train keeps every service on one commit, so it is
-      # set here, in the same Blueprint sync that turns auto-deploy off: under
+      # safe while the deploy train keeps every service on one commit. Under
       # auto-deploy the reader can run a newer frontend-only commit than this
-      # API, and pinning would roll it back.
+      # API, and pinning would roll it back — so it is "false" while the
+      # services auto-deploy, set explicitly so a Blueprint sync overwrites the
+      # "true" the train era left on the service.
       - key: DEPLOY_TRAIN
-        value: "true"
+        value: "false"
       # The reader's public origin (e.g. https://ochorus.com) — lets the admin
       # confirm after a deploy that a newly live locale is really in the built
       # sitemap. Optional: without it that check reports "unknown".
@@ -135,8 +141,8 @@ services:
     rootDir: backend
     dockerfilePath: ./Dockerfile
     schedule: "*/15 * * * *"
-    # Off, like ochorus-api, whose image this rebuilds: the deploy train ships it.
-    autoDeployTrigger: "off"
+    # Same trigger as ochorus-api, whose image this rebuilds.
+    autoDeployTrigger: checksPass
     # Same filter as ochorus-api: the cron builds its own copy of the image, so
     # without this every test-only backend commit paid for a second Docker build.
     buildFilter:
@@ -224,9 +230,9 @@ services:
     rootDir: frontend
     buildCommand: npm ci && npm run build
     staticPublishPath: ./build
-    # Off, like ochorus-api: the deploy train ships it. The buildFilter below
-    # still decides whether a train has anything to deploy.
-    autoDeployTrigger: "off"
+    # Same trigger as ochorus-api (see there): the prebuild gate waits for the
+    # API to land the same content, which only works if both deploy the commit.
+    autoDeployTrigger: checksPass
     # By default Render rebuilds this static service only when files under its
     # rootDir (frontend/) change — so a backend-only content commit (new authors,
     # book/title edits) would leave the prerendered /books|authors|sermons pages
@@ -313,6 +319,11 @@ services:
         # each, and each hub's name, intro and Q&A per language.
         - backend/library/hubs.py
         - backend/library/data/hubs/**
+        # Printable leader's guides for the young-reader editions
+        # (/books/<slug>/guide): the loader picks each chapter's verse and
+        # prayer out of its body, and the data files carry the rest.
+        - backend/library/leader_guides.py
+        - backend/library/data/leader_guides/**
     # --- Security headers ---------------------------------------------------
     # The reader had none. That matters more here than on a typical static site:
     # the Supabase access token lives in localStorage and is attached as a Bearer
@@ -919,6 +930,14 @@ services:
       # PUBLIC_PLAUSIBLE_SRC var added (here or via the Render dashboard) and
       # that host swapped into the CSP. Cloud (the default) needs neither.
       - key: PUBLIC_PLAUSIBLE_DOMAIN
+        sync: false
+      # Optional: Google One Tap sign-in for signed-out readers ($lib/oneTap).
+      # The OAuth **Web client ID** (…apps.googleusercontent.com) that Supabase's
+      # Google provider already uses. It is public by design. Unset = off: no
+      # Google script, no prompt. Also needs https://ochorus.com under that
+      # client's "Authorized JavaScript origins" in Google Cloud, and the ID
+      # listed in Supabase → Auth → Providers → Google → Client IDs.
+      - key: PUBLIC_GOOGLE_CLIENT_ID
         sync: false
       # How long the prebuild waits for ochorus-api to serve THIS commit's
       # content before prerendering (scripts/await-api-release.mjs). A content

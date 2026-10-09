@@ -132,5 +132,19 @@
   "note": [
    "AI-drafted ahead of the books; awaiting native review. Shipped before the five children's editions are translated into this language so their translation jobs never write this shared file: seed_plans creates the row only once every source book is published here. Like the English, it describes the books rather than quoting their titles, so it cannot disagree with whatever title each edition ships under."
   ]
+ },
+ "family-devotions-talking-with-god": {
+  "title": "Culte en famille : parler avec Dieu toute la journée",
+  "description": "Douze soirées de cultes de famille de cinq minutes avec frère Laurent, le maladroit aide de cuisine qui a appris à parler avec Dieu au milieu des casseroles. Lisez à voix haute un court chapitre : comment un arbre nu en hiver l’a tourné vers Dieu, comment il faisait chaque tâche par amour pour Dieu, et ce qu’il faisait quand il se trompait. Chacun se termine par une prière et trois questions à discuter ensemble.",
+  "note": [
+   "AI-drafted ahead of the book; awaiting native review. Shipped before the children's Practice of the Presence of God is translated into this language, so that job never writes this shared file: seed_plans creates the row only once the book is published here. Like the English, it describes the book rather than quoting a title that does not exist yet."
+  ]
+ },
+ "family-devotions-brave-and-faithful": {
+  "title": "Dévotions en famille : courageuses et fidèles",
+  "description": "Cinq semaines de dévotions familiales de cinq minutes : les histoires vraies de trois femmes courageuses, lues à voix haute, un court chapitre par soir — Mary Slessor, la jeune ouvrière écossaise qui a sauvé des bébés jumeaux au Nigeria ; Pandita Ramabai, qui a bâti un foyer pour les veuves et les filles de l’Inde ; et Corrie ten Boom, qui a caché ses voisins juifs pendant la guerre et a appris à pardonner. Chacun se termine par une prière et trois questions à discuter ensemble.",
+  "note": [
+   "AI-drafted ahead of the books; awaiting native review. Shipped before the three children's editions are translated into this language, so those jobs never write this shared file: seed_plans creates the row only once all three books are published here. Like the English, it describes the books rather than quoting titles that do not exist yet."
+  ]
  }
 }

@@ -34,12 +34,17 @@
  * ⚠️ Plausible is in both script-src (loads /js/script.js) and connect-src (the
  * script POSTs to /api/event); it stays even when analytics is unset (the script
  * simply never loads). Self-hosting = swap the host in both.
+ * ⚠️ Google One Tap ($lib/oneTap) needs its four entries, each scoped to the
+ * /gsi/ paths Google documents (script, its stylesheet, the prompt's frame and
+ * its status calls), never all of accounts.google.com. Like Plausible they stay
+ * when PUBLIC_GOOGLE_CLIENT_ID is unset; nothing loads then.
  */
 export const cspDirectives = {
 	'default-src': ['self'],
 	'script-src': [
 		'self',
 		'https://plausible.io',
+		'https://accounts.google.com/gsi/client',
 		// The static app.html boot script (theme, and holding Chrome's install
 		// offer for $lib/install.svelte.ts). SvelteKit hashes the inline
 		// scripts IT emits (the per-build bootstrap) but NOT a template script, so
@@ -61,7 +66,7 @@ export const cspDirectives = {
 		'unsafe-hashes',
 		'sha256-7dQwUgLau1NFCCGjfn9FsYptB6ZtWxJin6VohGIu20I='
 	],
-	'style-src': ['self', 'unsafe-inline'],
+	'style-src': ['self', 'unsafe-inline', 'https://accounts.google.com/gsi/style'],
 	// Every image the app paints is same-origin: book covers under `/covers/`
 	// and author portraits under `/portraits/` are repo-committed static assets
 	// served by the site itself, never hot-linked. `data:` covers the inlined
@@ -81,13 +86,14 @@ export const cspDirectives = {
 		'https://api.ochorus.com',
 		'https://eywunobxqijvwymdzlwy.supabase.co',
 		'https://api.dictionaryapi.dev',
-		'https://plausible.io'
+		'https://plausible.io',
+		'https://accounts.google.com/gsi/'
 	],
 	'manifest-src': ['self'],
 	'worker-src': ['self'],
 	'media-src': ['self'],
 	'object-src': ['none'],
-	'frame-src': ['none'],
+	'frame-src': ['https://accounts.google.com/gsi/'],
 	'frame-ancestors': ['none'],
 	'base-uri': ['self'],
 	'form-action': ['self']

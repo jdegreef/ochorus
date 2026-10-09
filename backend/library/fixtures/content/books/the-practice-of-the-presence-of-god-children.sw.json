@@ -1,0 +1,388 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "brother-lawrence"
+  ],
+  "slug": "the-practice-of-the-presence-of-god-children",
+  "language": "sw",
+  "title": "Kuzoea Kuwapo kwa Mungu (Kwa Watoto)",
+  "subtitle": "",
+  "description": "Habari ya kweli ya Ndugu Lawrence, mtumishi kijana asiye stadi aliyekuja kuwa mpishi katika jiko lenye shughuli nyingi, akajifunza kuzungumza na Mungu mchana kutwa, hata katikati ya sufuria na vyombo. Toleo hili la watoto linasimulia upya maisha yake na mafundisho yake rahisi katika sura fupi zilizoandaliwa kusomwa kwa sauti: mstari mmoja wa Biblia, sehemu moja ya habari yake, jambo moja linalomaanisha kwako, na sala fupi, pamoja na maswali ya kuzungumza pamoja.",
+  "qa": [
+   {
+    "question": "Kitabu Kuzoea Kuwapo kwa Mungu (Kwa Watoto) kinahusu nini?",
+    "answer": "Ni toleo la watoto la kitabu kidogo kinachopendwa sana kuhusu Ndugu Lawrence. Kinasimulia jinsi kijana asiye stadi alivyokuja kumpenda Mungu, akafanya kazi kwa miaka mingi katika jiko asilolipenda, na akajifunza kuzungumza na Mungu mchana kutwa: alipokuwa akipika, akisafiri, akiwa mgonjwa na alipokuwa akizeeka."
+   },
+   {
+    "question": "Ndugu Lawrence alikuwa nani?",
+    "answer": "Alikuwa Mfaransa aliyeishi zaidi ya miaka mia tatu iliyopita. Alikuwa mtumishi wa nyumbani, na alijiita mtu asiye stadi. Mungu alipougeuza moyo wake akiwa na miaka kumi na minane, alijiunga na jumuiya ya Ndugu, akawa mpishi wao. Watu walimjia na kumwandikia barua ili wajifunze jinsi alivyokaa karibu sana na Mungu."
+   },
+   {
+    "question": "Kila sura imepangwaje?",
+    "answer": "Kila sura ni fupi na imeandaliwa kusomwa kwa sauti. Inaanza na mstari wa Biblia, inasimulia sehemu moja ya habari ya Ndugu Lawrence au ya mafundisho yake, inaonyesha jambo moja rahisi linalomaanisha kwako, na inamalizika kwa sala fupi. Kisha yanafuata maswali matatu ya kuzungumza pamoja."
+   },
+   {
+    "question": "Kitabu hiki ni kwa ajili ya nani?",
+    "answer": "Ni kwa ajili ya watoto wenye umri wa karibu miaka minane hadi kumi na miwili, kusomewa kwa sauti na mtu mzima au kusomwa na mtoto mkubwa peke yake. Kitabu kamili cha Ndugu Lawrence, pamoja na mazungumzo yake yaliyoandikwa na barua zake, kinapatikana pia kwa wasomaji wakubwa."
+   },
+   {
+    "question": "“Kuzoea kuwapo kwa Mungu” maana yake nini?",
+    "answer": "Maana yake ni kukumbuka kwamba Mungu yuko pamoja nasi siku zote, na kuzungumza naye mchana kutwa, si wakati wa maombi maalum tu. Ndugu Lawrence alifanya hivyo kwa maombi mafupi na rahisi moyoni mwake alipokuwa akifanya kazi."
+   },
+   {
+    "question": "Je, ni lazima uishi katika nyumba ya watawa ili uombe kama Ndugu Lawrence?",
+    "answer": "Hapana. Ndugu Lawrence mwenyewe alisema huhitaji kuwa kanisani ili uwe pamoja na Mungu, na kwamba mtu yeyote anaweza kuzungumza naye: shuleni, nyumbani, wakati wa chakula au katikati ya siku yenye shughuli nyingi."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Usimulizi wa Ochorus, kwa ajili ya wasomaji wachanga, wa kitabu cha Ndugu Lawrence kiitwacho The Practice of the Presence of God, kazi iliyo mali ya umma. Namna ya kusimulia ni yetu, huru kusomwa na kushirikishwa.",
+  "cover_url": "/covers/art/the-practice-of-the-presence-of-god-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 136,
+  "is_published": true,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "sw"
+  ],
+  "order": 1,
+  "title": "Kijana Aliyevunja Vitu",
+  "body_html": "<blockquote>“Wanadamu huitazama sura ya nje, bali Bwana huutazama moyo.” — kutoka 1 Samweli 16</blockquote> <p>Zamani sana, zaidi ya miaka mia tatu kabla hujazaliwa, aliishi mtu mmoja ambaye leo tunamwita Ndugu Lawrence. Kabla mtu yeyote hajaanza kumwita “Ndugu,” alikuwa mtumishi kijana.</p> <p>Alifanya kazi ya mtumishi wa nyumbani kwa mtu mmoja mashuhuri, mweka hazina aitwaye Monsieur Fieubert. Kazi ya mtumishi huyo ilikuwa kumhudumia bwana wake, kubeba vitu, kuleta vitu na kuweka kila kitu nadhifu na safi.</p> <p>Lakini kulikuwa na tatizo. Lawrence alikuwa mkubwa wa mwili, tena hakuwa stadi hata kidogo. Yeye mwenyewe alisema hivyo. Alijiita “mtu mkubwa mzito, asiye stadi, aliyevunja kila kitu.” Hebu mwone akijaribu kubeba sinia la vikombe vizuri, kisha anagonga mlango. Pa! Hebu mwone akinyosha mkono kuchukua sahani, kisha anaangusha jagi la maji. Chubwi!</p> <p>Watu wengi wasingedhani kwamba kijana huyu asiye stadi angekumbukwa siku moja duniani kote. Wasingedhani kwamba watu wangeendelea kusoma habari zake hata baada ya miaka mia kadhaa. Lakini Mungu hakuwa akiitazama mikono yake isiyo stadi. Mungu alikuwa akiutazama moyo wake.</p> <p>Na jambo fulani lilikuwa karibu kuutokea moyo huo.</p> <p>Je, wewe huwa unajiona si stadi, au si hodari katika mambo fulani? Labda unamwaga kinywaji chako, au unaangusha mpira, au unakosea jibu. Hilo halimzuii Mungu kukupenda wala kukutumia. Yeye anautazama moyo wako.</p> <p><em>Mungu mpendwa, asante kwa sababu hunipendi kwa kuwa mimi ni mwerevu au mwangalifu, bali kwa sababu mimi ni wako. Tafadhali uutunze moyo wangu. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Lawrence alifanya kazi gani alipokuwa kijana?",
+    "answer": "Alikuwa mtumishi wa nyumbani wa mtu mmoja mashuhuri aitwaye Monsieur Fieubert, mweka hazina."
+   },
+   {
+    "question": "Lawrence alisema nini kuhusu yeye mwenyewe?",
+    "answer": "Alisema alikuwa “mtu mkubwa mzito, asiye stadi, aliyevunja kila kitu”, yaani alikuwa akiangusha na kuvunja vitu mara nyingi."
+   },
+   {
+    "question": "Je, umewahi kujiona si stadi au si hodari vya kutosha? Mungu anatazama nini?",
+    "answer": "Somo la sura hii: Mungu hatazami jinsi tulivyo stadi kwa nje. Anautazama moyo, na anaweza kumtumia mtu yeyote."
+   }
+  ],
+  "body_text": "“Wanadamu huitazama sura ya nje, bali Bwana huutazama moyo.” — kutoka 1 Samweli 16 Zamani sana, zaidi ya miaka mia tatu kabla hujazaliwa, aliishi mtu mmoja ambaye leo tunamwita Ndugu Lawrence. Kabla mtu yeyote hajaanza kumwita “Ndugu,” alikuwa mtumishi kijana. Alifanya kazi ya mtumishi wa nyumbani kwa mtu mmoja mashuhuri, mweka hazina aitwaye Monsieur Fieubert. Kazi ya mtumishi huyo ilikuwa kumhudumia bwana wake, kubeba vitu, kuleta vitu na kuweka kila kitu nadhifu na safi. Lakini kulikuwa na tatizo. Lawrence alikuwa mkubwa wa mwili, tena hakuwa stadi hata kidogo. Yeye mwenyewe alisema hivyo. Alijiita “mtu mkubwa mzito, asiye stadi, aliyevunja kila kitu.” Hebu mwone akijaribu kubeba sinia la vikombe vizuri, kisha anagonga mlango. Pa! Hebu mwone akinyosha mkono kuchukua sahani, kisha anaangusha jagi la maji. Chubwi! Watu wengi wasingedhani kwamba kijana huyu asiye stadi angekumbukwa siku moja duniani kote. Wasingedhani kwamba watu wangeendelea kusoma habari zake hata baada ya miaka mia kadhaa. Lakini Mungu hakuwa akiitazama mikono yake isiyo stadi. Mungu alikuwa akiutazama moyo wake. Na jambo fulani lilikuwa karibu kuutokea moyo huo. Je, wewe huwa unajiona si stadi, au si hodari katika mambo fulani? Labda unamwaga kinywaji chako, au unaangusha mpira, au unakosea jibu. Hilo halimzuii Mungu kukupenda wala kukutumia. Yeye anautazama moyo wako. Mungu mpendwa, asante kwa sababu hunipendi kwa kuwa mimi ni mwerevu au mwangalifu, bali kwa sababu mimi ni wako. Tafadhali uutunze moyo wangu. Amina.",
+  "word_count": 228
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "sw"
+  ],
+  "order": 2,
+  "title": "Mti Wakati wa Baridi",
+  "body_html": "<blockquote>“Tangu Mungu alipoumba ulimwengu, uweza wake mkuu umeonekana wazi katika vitu alivyoviumba.” — kutoka Warumi 1</blockquote> <p>Lawrence alipokuwa na umri wa miaka kumi na minane, ulikuwa wakati wa baridi kali. Kila kitu kilikuwa baridi na kijivu.</p> <p>Siku moja alisimama akautazama mti mmoja. Ulikuwa umepukutika majani yake yote. Matawi yake yalikuwa matupu na ya kahawia, kama vidole vyembamba vya mifupa vilivyonyooshwa angani. Ulionekana kama umekufa.</p> <p>Lakini Lawrence alijua jambo fulani kuhusu miti. Alijua kwamba baada ya muda mfupi, majira ya kuchipua yatakapofika, majani mapya mabichi yangerudi kwenye matawi yale matupu. Baada ya hapo yangekuja maua. Na baada ya maua, yangekuja matunda.</p> <p>Alipokuwa amesimama pale akitafakari, wazo kubwa likajaa akilini mwake. Ni nani anayefanya majani yarudi? Ni nani anayeleta maua na matunda, mwaka baada ya mwaka? Ni Mungu! Ghafula Lawrence aliona jinsi Mungu alivyo na nguvu, na jinsi anavyovitunza kwa uangalifu vitu vyote alivyoviumba.</p> <p>Mti ule mmoja mtupu ulibadilisha maisha yake yote. Alisema wazo lile halikumtoka kamwe. Lilimfanya ampende Mungu sana hivi kwamba, zaidi ya miaka arobaini baadaye, bado hakuweza kusema kama upendo wake ulikuwa umeongezeka, kwa sababu ulikuwa mkubwa sana tangu mwanzo.</p> <p>Mungu aliumba kila kitu kinachokuzunguka: miti, ndege, mvua na nyota. Wakati mwingine utakapoutazama mti, mkumbuke Lawrence. Mungu yule yule anayerudisha majani anakutunza wewe pia.</p> <p><em>Mungu mpendwa, asante kwa miti na kwa vitu vyote ulivyoviumba. Nisaidie nione jinsi ulivyo mkuu na mwema. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Lawrence aliona nini alipokuwa na umri wa miaka kumi na minane?",
+    "answer": "Wakati wa baridi aliuona mti usio na majani, akafikiri jinsi majani yake, maua yake na matunda yake yangerudi."
+   },
+   {
+    "question": "Mti ule mtupu ulimfundisha nini kuhusu Mungu?",
+    "answer": "Ulimwonyesha nguvu kuu za Mungu na jinsi Mungu anavyovitunza kwa uaminifu vitu vyote alivyoviumba. Ukamfanya ampende Mungu maisha yake yote."
+   },
+   {
+    "question": "Ni kitu gani unachoweza kukitazama nje wiki hii kinachokukumbusha Mungu?",
+    "answer": "Somo la sura hii: kila kitu Mungu alichokiumba kinaweza kutukumbusha jinsi alivyo na nguvu na jinsi anavyotujali, kama mti ule mmoja mtupu ulivyomfanyia Lawrence."
+   }
+  ],
+  "body_text": "“Tangu Mungu alipoumba ulimwengu, uweza wake mkuu umeonekana wazi katika vitu alivyoviumba.” — kutoka Warumi 1 Lawrence alipokuwa na umri wa miaka kumi na minane, ulikuwa wakati wa baridi kali. Kila kitu kilikuwa baridi na kijivu. Siku moja alisimama akautazama mti mmoja. Ulikuwa umepukutika majani yake yote. Matawi yake yalikuwa matupu na ya kahawia, kama vidole vyembamba vya mifupa vilivyonyooshwa angani. Ulionekana kama umekufa. Lakini Lawrence alijua jambo fulani kuhusu miti. Alijua kwamba baada ya muda mfupi, majira ya kuchipua yatakapofika, majani mapya mabichi yangerudi kwenye matawi yale matupu. Baada ya hapo yangekuja maua. Na baada ya maua, yangekuja matunda. Alipokuwa amesimama pale akitafakari, wazo kubwa likajaa akilini mwake. Ni nani anayefanya majani yarudi? Ni nani anayeleta maua na matunda, mwaka baada ya mwaka? Ni Mungu! Ghafula Lawrence aliona jinsi Mungu alivyo na nguvu, na jinsi anavyovitunza kwa uangalifu vitu vyote alivyoviumba. Mti ule mmoja mtupu ulibadilisha maisha yake yote. Alisema wazo lile halikumtoka kamwe. Lilimfanya ampende Mungu sana hivi kwamba, zaidi ya miaka arobaini baadaye, bado hakuweza kusema kama upendo wake ulikuwa umeongezeka, kwa sababu ulikuwa mkubwa sana tangu mwanzo. Mungu aliumba kila kitu kinachokuzunguka: miti, ndege, mvua na nyota. Wakati mwingine utakapoutazama mti, mkumbuke Lawrence. Mungu yule yule anayerudisha majani anakutunza wewe pia. Mungu mpendwa, asante kwa miti na kwa vitu vyote ulivyoviumba. Nisaidie nione jinsi ulivyo mkuu na mwema. Amina.",
+  "word_count": 223
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "sw"
+  ],
+  "order": 3,
+  "title": "Mshangao wa Furaha",
+  "body_html": "<blockquote>“Mbele za uso wako kuna furaha tele.” — kutoka Zaburi 16</blockquote> <p>Baada ya kuuona mti ule, Lawrence alitaka kumpa Mungu maisha yake yote. Kwa hiyo aliomba kujiunga na nyumba ya watawa. Nyumba ya watawa ilikuwa nyumba kubwa ambamo wanaume waliishi pamoja ili kuomba na kufanya kazi. Wanaume wa pale waliitwa “Ndugu,” na ndivyo alivyokuja kuitwa Ndugu Lawrence.</p> <p>Lakini Lawrence alikuwa na sababu ya kuchekesha ya kwenda huko. Alidhani kwamba katika nyumba ya watawa angepata matatizo kwa sababu ya kutokuwa stadi. Alitazamia kukemewa kwa kila kosa atakalofanya. Alikuwa tayari kuacha mambo yote mazuri ya maisha kwa ajili ya Mungu, hata kama jambo hilo lingemfanya awe na huzuni.</p> <p>Kisha Mungu akamshangaza.</p> <p>Ndugu Lawrence alisema kwamba Mungu “alimkatisha tamaa,” lakini kwa njia nzuri kuliko zote! Badala ya kuwa na huzuni, hakupata kitu kingine pale ila furaha tupu. Alikuwa amejiandaa kwa maisha magumu na ya huzuni. Badala yake Mungu alimjaza furaha.</p> <p>Ndugu Lawrence alijifunza kwamba kumfuata Mungu hakuhusu kuwa na huzuni. Kuwa karibu na Mungu ndiyo mahali penye furaha kuliko pote.</p> <p>Watu wengine hudhani kwamba kumpenda Mungu kunamaanisha kuacha kila kitu kinachofurahisha. Lakini Mungu si mfalme mwenye hasira na mkali. Yeye ni mwema, na kadiri tunavyomkaribia ndivyo anavyotupa furaha zaidi.</p> <p><em>Mungu mpendwa, asante kwa sababu kuwa karibu nawe ndiyo mahali pazuri na penye furaha kuliko pote. Unijaze furaha yako. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini Ndugu Lawrence alidhani hatakuwa na furaha katika nyumba ya watawa?",
+    "answer": "Alidhani angeadhibiwa kwa kutokuwa stadi na kwa makosa yake, na kwamba angeacha mambo yote mazuri ya maisha."
+   },
+   {
+    "question": "Mungu alimshangazaje?",
+    "answer": "Badala ya kuwa na huzuni, Ndugu Lawrence hakupata kitu kingine pale ila furaha tupu. Alisema kwa utani kwamba Mungu “alimkatisha tamaa.”"
+   },
+   {
+    "question": "Unadhani kumfuata Mungu kunawafanya watu wawe na furaha au huzuni? Kwa nini?",
+    "answer": "Somo la sura hii: Mungu ni mwema, si mkali wala mwenye hasira. Kumkaribia kunaleta furaha ya kweli, kama Ndugu Lawrence alivyogundua."
+   }
+  ],
+  "body_text": "“Mbele za uso wako kuna furaha tele.” — kutoka Zaburi 16 Baada ya kuuona mti ule, Lawrence alitaka kumpa Mungu maisha yake yote. Kwa hiyo aliomba kujiunga na nyumba ya watawa. Nyumba ya watawa ilikuwa nyumba kubwa ambamo wanaume waliishi pamoja ili kuomba na kufanya kazi. Wanaume wa pale waliitwa “Ndugu,” na ndivyo alivyokuja kuitwa Ndugu Lawrence. Lakini Lawrence alikuwa na sababu ya kuchekesha ya kwenda huko. Alidhani kwamba katika nyumba ya watawa angepata matatizo kwa sababu ya kutokuwa stadi. Alitazamia kukemewa kwa kila kosa atakalofanya. Alikuwa tayari kuacha mambo yote mazuri ya maisha kwa ajili ya Mungu, hata kama jambo hilo lingemfanya awe na huzuni. Kisha Mungu akamshangaza. Ndugu Lawrence alisema kwamba Mungu “alimkatisha tamaa,” lakini kwa njia nzuri kuliko zote! Badala ya kuwa na huzuni, hakupata kitu kingine pale ila furaha tupu. Alikuwa amejiandaa kwa maisha magumu na ya huzuni. Badala yake Mungu alimjaza furaha. Ndugu Lawrence alijifunza kwamba kumfuata Mungu hakuhusu kuwa na huzuni. Kuwa karibu na Mungu ndiyo mahali penye furaha kuliko pote. Watu wengine hudhani kwamba kumpenda Mungu kunamaanisha kuacha kila kitu kinachofurahisha. Lakini Mungu si mfalme mwenye hasira na mkali. Yeye ni mwema, na kadiri tunavyomkaribia ndivyo anavyotupa furaha zaidi. Mungu mpendwa, asante kwa sababu kuwa karibu nawe ndiyo mahali pazuri na penye furaha kuliko pote. Unijaze furaha yako. Amina.",
+  "word_count": 216
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "sw"
+  ],
+  "order": 4,
+  "title": "Vitabu Vingi Mno",
+  "body_html": "<blockquote>“Mpende Bwana Mungu wako kwa moyo wako wote, na kwa roho yako yote, na kwa akili zako zote.” — kutoka Mathayo 22</blockquote> <p>Ndugu Lawrence alitaka kujua jinsi ya kuwa karibu na Mungu. Kwa hiyo alisoma vitabu vingi kuhusu jambo hilo. Lakini kila kitabu kilisema jambo tofauti. Fanya hivi! Hapana, fanya vile! Omba namna hii! Hapana, namna ile! Badala ya kumsaidia, mawazo hayo yote tofauti yalimchanganya tu.</p> <p>Basi akaamua kufanya jambo rahisi. Alijitoa mzima kwa Mungu, akamwomba Mungu amwondolee dhambi zake. Kisha akaanza kuishi kana kwamba katika ulimwengu wote kulikuwa na watu wawili tu: Mungu na yeye.</p> <p>Alijitahidi kumfikiria Mungu kadiri alivyoweza, mchana kutwa. Siku nyingine alimfikiria Mungu kama hakimu, akasikitika kwa mambo mabaya aliyokuwa ameyafanya. Siku nyingine alimfikiria Mungu kama Baba yake mwenye upendo, anayeishi ndani kabisa ya moyo wake.</p> <p>Haikuwa rahisi. Mawazo yake yalikuwa yakitangatanga. Na kwa miaka mingi alihofu kwamba hampendi Mungu kama ipasavyo, na aliendelea kukumbuka mambo mabaya aliyokuwa ameyafanya. Mara nyingi alianguka, kisha akainuka tena. Lakini aliendelea kumtumaini Mungu.</p> <p>Kisha siku moja, ghafula, amani nyingi tulivu ikaujaza moyo wake, nayo ikadumu. Tangu hapo alitembea na Mungu kwa urahisi, kwa kumtumaini na kwa upendo.</p> <p>Kumpenda Mungu hakuhitaji kuwa jambo gumu. Huhitaji kujua sheria nyingi za kiwerevu. Unaweza kuanza leo, kwa kukumbuka tu kwamba Mungu yuko pamoja nawe, na kumwambia kwamba unampenda.</p> <p><em>Mungu mpendwa, nataka kukupenda kwa moyo wangu wote. Nisaidie nikumbuke kwamba uko pamoja nami, leo na kila siku. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini vitabu vile vyote vilimchanganya Ndugu Lawrence?",
+    "answer": "Kila kitabu kilitoa njia tofauti ya kumkaribia Mungu, na mawazo hayo yote tofauti yalimchanganya badala ya kumsaidia."
+   },
+   {
+    "question": "Aliamua kufanya jambo gani rahisi badala yake?",
+    "answer": "Alijitoa mzima kwa Mungu, akaishi kana kwamba ulimwenguni kulikuwa na Mungu na yeye tu, akimfikiria Mungu mara nyingi kadiri alivyoweza."
+   },
+   {
+    "question": "Ni wakati gani leo unaoweza kukumbuka kwamba Mungu yuko pamoja nawe?",
+    "answer": "Somo la sura hii: kumpenda Mungu si lazima kuwe jambo gumu. Tunaweza kukumbuka tu kwamba yuko pamoja nasi, na kumwambia kwamba tunampenda."
+   }
+  ],
+  "body_text": "“Mpende Bwana Mungu wako kwa moyo wako wote, na kwa roho yako yote, na kwa akili zako zote.” — kutoka Mathayo 22 Ndugu Lawrence alitaka kujua jinsi ya kuwa karibu na Mungu. Kwa hiyo alisoma vitabu vingi kuhusu jambo hilo. Lakini kila kitabu kilisema jambo tofauti. Fanya hivi! Hapana, fanya vile! Omba namna hii! Hapana, namna ile! Badala ya kumsaidia, mawazo hayo yote tofauti yalimchanganya tu. Basi akaamua kufanya jambo rahisi. Alijitoa mzima kwa Mungu, akamwomba Mungu amwondolee dhambi zake. Kisha akaanza kuishi kana kwamba katika ulimwengu wote kulikuwa na watu wawili tu: Mungu na yeye. Alijitahidi kumfikiria Mungu kadiri alivyoweza, mchana kutwa. Siku nyingine alimfikiria Mungu kama hakimu, akasikitika kwa mambo mabaya aliyokuwa ameyafanya. Siku nyingine alimfikiria Mungu kama Baba yake mwenye upendo, anayeishi ndani kabisa ya moyo wake. Haikuwa rahisi. Mawazo yake yalikuwa yakitangatanga. Na kwa miaka mingi alihofu kwamba hampendi Mungu kama ipasavyo, na aliendelea kukumbuka mambo mabaya aliyokuwa ameyafanya. Mara nyingi alianguka, kisha akainuka tena. Lakini aliendelea kumtumaini Mungu. Kisha siku moja, ghafula, amani nyingi tulivu ikaujaza moyo wake, nayo ikadumu. Tangu hapo alitembea na Mungu kwa urahisi, kwa kumtumaini na kwa upendo. Kumpenda Mungu hakuhitaji kuwa jambo gumu. Huhitaji kujua sheria nyingi za kiwerevu. Unaweza kuanza leo, kwa kukumbuka tu kwamba Mungu yuko pamoja nawe, na kumwambia kwamba unampenda. Mungu mpendwa, nataka kukupenda kwa moyo wangu wote. Nisaidie nikumbuke kwamba uko pamoja nami, leo na kila siku. Amina.",
+  "word_count": 233
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "sw"
+  ],
+  "order": 5,
+  "title": "Jiko Asilolipenda",
+  "body_html": "<blockquote>“Lo lote mfanyalo, lifanyeni kwa moyo, kama kwa Bwana.” — kutoka Wakolosai 3</blockquote> <p>Katika nyumba ya watawa, kila mtu alikuwa na kazi yake. Je, unajua walimpa Ndugu Lawrence, yule asiye stadi, kazi gani? Walimfanya kuwa mpishi!</p> <p>Ndugu Lawrence hakuipenda kazi ya jikoni. Alisema ilikuwa kinyume kabisa na mambo aliyoyapenda kwa asili yake. Hebu fikiria jiko lile kubwa: moto mkali, sufuria nzito za chuma, mvuke kila mahali, na Ndugu wengi wenye njaa wakingojea chakula chao cha jioni.</p> <p>Lakini Ndugu Lawrence aligundua siri. Kabla ya kuanza kazi, alikuwa akifikiri kwanza ni nini kinachopaswa kufanywa, na lini, na jinsi gani. Kisha alizungumza na Mungu. Alisema maneno kama haya: “Mungu wangu, uko hapa pamoja nami. Sasa inanibidi nifikirie kazi hizi zote. Tafadhali nisaidie nikae karibu nawe ninapozifanya. Unisaidie, na uipokee kazi yangu yote kama zawadi kwako.”</p> <p>Kisha, alipokuwa akipika, aliendelea kuzungumza na Mungu kimya kimya moyoni mwake. Alimwomba Mungu amsaidie aifanye kazi yake vizuri, na aliifanya yote kwa ajili ya upendo wa Mungu.</p> <p>Na hapa ndipo mshangao ulipo. Kazi ya jikoni aliyokuwa haipendi ikawa rahisi! Alifanya kazi pale kwa miaka kumi na mitano, na aligundua kwamba kuifanya kwa ajili ya Mungu kulileta tofauti kubwa sana.</p> <p>Je, kuna kazi usiyoipenda, kama kupanga chumba chako, kufanya kazi za shule au kuosha vyombo? Jaribu kuifanya kwa ajili ya Mungu. Mwombe akusaidie, na uifanye kama zawadi ya upendo kwake.</p> <p><em>Mungu mpendwa, ninapokuwa na kazi nisiyoipenda, nisaidie niifanye kwa ajili yako, na nikumbuke kwamba uko pale pale kando yangu. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini ilishangaza kwamba Ndugu Lawrence alifanywa kuwa mpishi?",
+    "answer": "Hakuipenda kazi ya jikoni hata kidogo. Ilikuwa kinyume na mambo aliyoyapenda kwa asili yake."
+   },
+   {
+    "question": "Siri yake ya kuifanya kazi ile ilikuwa nini?",
+    "answer": "Alimwomba Mungu amsaidie, akafanya kila kitu kwa ajili ya upendo wa Mungu, huku akizungumza na Mungu alipokuwa akifanya kazi. Ndipo kazi ile ikawa rahisi."
+   },
+   {
+    "question": "Ni kazi gani unayoiona ngumu kuifanya? Unawezaje kuifanya kwa ajili ya Mungu?",
+    "answer": "Somo la sura hii: kazi yoyote, hata ile tusiyoipenda, inaweza kuwa zawadi ya upendo kwa Mungu tunapomwomba msaada na kuifanya kwa ajili yake."
+   }
+  ],
+  "body_text": "“Lo lote mfanyalo, lifanyeni kwa moyo, kama kwa Bwana.” — kutoka Wakolosai 3 Katika nyumba ya watawa, kila mtu alikuwa na kazi yake. Je, unajua walimpa Ndugu Lawrence, yule asiye stadi, kazi gani? Walimfanya kuwa mpishi! Ndugu Lawrence hakuipenda kazi ya jikoni. Alisema ilikuwa kinyume kabisa na mambo aliyoyapenda kwa asili yake. Hebu fikiria jiko lile kubwa: moto mkali, sufuria nzito za chuma, mvuke kila mahali, na Ndugu wengi wenye njaa wakingojea chakula chao cha jioni. Lakini Ndugu Lawrence aligundua siri. Kabla ya kuanza kazi, alikuwa akifikiri kwanza ni nini kinachopaswa kufanywa, na lini, na jinsi gani. Kisha alizungumza na Mungu. Alisema maneno kama haya: “Mungu wangu, uko hapa pamoja nami. Sasa inanibidi nifikirie kazi hizi zote. Tafadhali nisaidie nikae karibu nawe ninapozifanya. Unisaidie, na uipokee kazi yangu yote kama zawadi kwako.” Kisha, alipokuwa akipika, aliendelea kuzungumza na Mungu kimya kimya moyoni mwake. Alimwomba Mungu amsaidie aifanye kazi yake vizuri, na aliifanya yote kwa ajili ya upendo wa Mungu. Na hapa ndipo mshangao ulipo. Kazi ya jikoni aliyokuwa haipendi ikawa rahisi! Alifanya kazi pale kwa miaka kumi na mitano, na aligundua kwamba kuifanya kwa ajili ya Mungu kulileta tofauti kubwa sana. Je, kuna kazi usiyoipenda, kama kupanga chumba chako, kufanya kazi za shule au kuosha vyombo? Jaribu kuifanya kwa ajili ya Mungu. Mwombe akusaidie, na uifanye kama zawadi ya upendo kwake. Mungu mpendwa, ninapokuwa na kazi nisiyoipenda, nisaidie niifanye kwa ajili yako, na nikumbuke kwamba uko pale pale kando yangu. Amina.",
+  "word_count": 241
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "sw"
+  ],
+  "order": 6,
+  "title": "Unyasi Mmoja Ardhini",
+  "body_html": "<blockquote>“Basi mlapo, au mnywapo, au mtendapo neno lo lote, fanyeni yote kwa utukufu wa Mungu.” — kutoka 1 Wakorintho 10</blockquote> <p>Watu wengine hudhani kwamba ni mambo makubwa na muhimu tu yanayomhusu Mungu, kama kuhubiri mbele ya umati wa watu au kujenga makanisa makubwa. Ndugu Lawrence hakufikiri hivyo.</p> <p>Alisema kwamba alifurahi alipoweza kuokota unyasi mmoja tu kutoka ardhini kwa ajili ya upendo wa Mungu. Unyasi mmoja mdogo tu! Si kitu kikubwa hata kidogo. Lakini kama aliufanya kwa sababu alimpenda Mungu, ulikuwa zawadi kwa Mungu.</p> <p>Ndugu Lawrence alisema kwamba Mungu hatazami ukubwa wa kazi. Anatazama ni upendo kiasi gani kazi hiyo inafanywa nao. Kazi ndogo kabisa inayofanywa kwa upendo ni ya thamani kwa Mungu.</p> <p>Kwa hiyo aliwaambia watu wasichoke kamwe kufanya mambo madogo kwa ajili ya upendo wa Mungu. Alisema kwamba kufanana zaidi na Mungu hakumaanishi kufanya kazi tofauti. Kunamaanisha kufanya kazi zile zile za kila siku tunazozifanya tayari, lakini kuzifanya kwa ajili ya Mungu badala ya kwa ajili yetu wenyewe tu.</p> <p>Maana yake ni kwamba kukoroga sufuria kungeweza kufanywa kwa ajili ya Mungu. Kufagia sakafu kungeweza kufanywa kwa ajili ya Mungu. Hata kuokota unyasi kungeweza kufanywa kwa ajili ya Mungu.</p> <p>Huhitaji kungoja mpaka uwe mtu mzima ndipo umfanyie Mungu jambo fulani. Unaweza kulifanya leo: unapomgawia mwenzako kitu cha kuchezea, unaposaidia kuandaa meza au unapookota kitu alichokiangusha mtu, kifanye kwa ajili yake.</p> <p><em>Mungu mpendwa, nisaidie nifanye mambo madogo leo kwa sababu nakupenda. Asante kwa sababu hata mambo madogo ni muhimu kwako. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ni jambo gani dogo kabisa ambalo Ndugu Lawrence alifurahi kulifanya kwa ajili ya Mungu?",
+    "answer": "Alifurahi kuokota unyasi mmoja tu kutoka ardhini kwa ajili ya upendo wa Mungu."
+   },
+   {
+    "question": "Kwa mujibu wa Ndugu Lawrence, Mungu anatazama nini?",
+    "answer": "Hatazami ukubwa wa kazi, bali ni upendo kiasi gani kazi hiyo inafanywa nao."
+   },
+   {
+    "question": "Ni jambo gani moja dogo unaloweza kumfanyia Mungu leo?",
+    "answer": "Somo la sura hii: mambo madogo ya kila siku yanayofanywa kwa kumpenda Mungu ni ya thamani kwake. Hatuhitaji kungoja ili tufanye jambo kubwa."
+   }
+  ],
+  "body_text": "“Basi mlapo, au mnywapo, au mtendapo neno lo lote, fanyeni yote kwa utukufu wa Mungu.” — kutoka 1 Wakorintho 10 Watu wengine hudhani kwamba ni mambo makubwa na muhimu tu yanayomhusu Mungu, kama kuhubiri mbele ya umati wa watu au kujenga makanisa makubwa. Ndugu Lawrence hakufikiri hivyo. Alisema kwamba alifurahi alipoweza kuokota unyasi mmoja tu kutoka ardhini kwa ajili ya upendo wa Mungu. Unyasi mmoja mdogo tu! Si kitu kikubwa hata kidogo. Lakini kama aliufanya kwa sababu alimpenda Mungu, ulikuwa zawadi kwa Mungu. Ndugu Lawrence alisema kwamba Mungu hatazami ukubwa wa kazi. Anatazama ni upendo kiasi gani kazi hiyo inafanywa nao. Kazi ndogo kabisa inayofanywa kwa upendo ni ya thamani kwa Mungu. Kwa hiyo aliwaambia watu wasichoke kamwe kufanya mambo madogo kwa ajili ya upendo wa Mungu. Alisema kwamba kufanana zaidi na Mungu hakumaanishi kufanya kazi tofauti. Kunamaanisha kufanya kazi zile zile za kila siku tunazozifanya tayari, lakini kuzifanya kwa ajili ya Mungu badala ya kwa ajili yetu wenyewe tu. Maana yake ni kwamba kukoroga sufuria kungeweza kufanywa kwa ajili ya Mungu. Kufagia sakafu kungeweza kufanywa kwa ajili ya Mungu. Hata kuokota unyasi kungeweza kufanywa kwa ajili ya Mungu. Huhitaji kungoja mpaka uwe mtu mzima ndipo umfanyie Mungu jambo fulani. Unaweza kulifanya leo: unapomgawia mwenzako kitu cha kuchezea, unaposaidia kuandaa meza au unapookota kitu alichokiangusha mtu, kifanye kwa ajili yake. Mungu mpendwa, nisaidie nifanye mambo madogo leo kwa sababu nakupenda. Asante kwa sababu hata mambo madogo ni muhimu kwako. Amina.",
+  "word_count": 240
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "sw"
+  ],
+  "order": 7,
+  "title": "Sufuria, Vyombo na Maombi",
+  "body_html": "<blockquote>“Furahini siku zote; ombeni bila kukoma; shukuruni kwa kila jambo.” — kutoka 1 Wathesalonike 5</blockquote> <p>Je, unaweza kuwazia jiko la nyumba ya watawa wakati wa chakula cha jioni? Sufuria zinachemka. Vyombo vinagongana. Vijiko vinagonga-gonga. Watu wengi wanakimbia huku na huku, na kadhaa wao wanaita wakitaka vitu tofauti wakati mmoja.</p> <p>Watu wengi wangechanganyikiwa katika jiko kama hilo. Lakini watu waliona jambo fulani kuhusu Ndugu Lawrence. Hata wakati wa shughuli nyingi na kelele nyingi kuliko zote, alibaki mtulivu. Hakuwahi kuwa na haraka, wala hakuwahi kuwa mvivu. Alifanya kila jambo kwa wakati wake, kwa amani na kwa utaratibu.</p> <p>Aliwezaje kufanya hivyo? Alikuwa akiomba wakati wote, si kwa maneno makubwa ya sauti, bali moyoni mwake. Alisema kwamba wakati wake wa kufanya kazi haukuwa tofauti na wakati wake wa kuomba.</p> <p>Kwa maneno yake mwenyewe, kwa lugha rahisi: “Katika kelele na mgongano wa vyombo jikoni mwangu, wakati watu kadhaa wanaita wakitaka vitu tofauti wakati mmoja, ninaye Mungu kwa amani kana kwamba nimepiga magoti katika maombi.”</p> <p>Kwa Ndugu Lawrence, maombi hayakuwa kwa ajili ya nyakati maalum tu. Aliweza kuwa karibu na Mungu mahali popote, hata mikono yake ikiwa ndani ya maji ya kuoshea vyombo.</p> <p>Unaweza kuzungumza na Mungu ukiwa shuleni, ukiwa ndani ya gari, ukiwa uwanjani pa kuchezea au unapopiga mswaki. Huhitaji kungoja mahali palipo kimya. Yeye yuko pamoja nawe hata nyakati za shughuli nyingi na kelele.</p> <p><em>Mungu mpendwa, asante kwa sababu ninaweza kuzungumza nawe mahali popote. Nisaidie nikae karibu nawe wakati mambo yana shughuli nyingi na kelele. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Jiko lilikuwaje wakati wa shughuli nyingi?",
+    "answer": "Lilikuwa na kelele nyingi, sufuria na vyombo vikigongana, na watu kadhaa wakiita wakitaka vitu tofauti wakati mmoja."
+   },
+   {
+    "question": "Ndugu Lawrence alibakije mtulivu?",
+    "answer": "Aliendelea kuomba moyoni mwake alipokuwa akifanya kazi. Alisema wakati wake wa kufanya kazi haukuwa tofauti na wakati wake wa kuomba."
+   },
+   {
+    "question": "Ni sehemu gani ya siku yako iliyo na shughuli nyingi na kelele kuliko zote? Je, unaweza kuzungumza na Mungu wakati huo?",
+    "answer": "Somo la sura hii: maombi si kwa ajili ya nyakati za kimya na maalum tu. Tunaweza kukaa karibu na Mungu katikati ya siku zenye shughuli nyingi na kelele."
+   }
+  ],
+  "body_text": "“Furahini siku zote; ombeni bila kukoma; shukuruni kwa kila jambo.” — kutoka 1 Wathesalonike 5 Je, unaweza kuwazia jiko la nyumba ya watawa wakati wa chakula cha jioni? Sufuria zinachemka. Vyombo vinagongana. Vijiko vinagonga-gonga. Watu wengi wanakimbia huku na huku, na kadhaa wao wanaita wakitaka vitu tofauti wakati mmoja. Watu wengi wangechanganyikiwa katika jiko kama hilo. Lakini watu waliona jambo fulani kuhusu Ndugu Lawrence. Hata wakati wa shughuli nyingi na kelele nyingi kuliko zote, alibaki mtulivu. Hakuwahi kuwa na haraka, wala hakuwahi kuwa mvivu. Alifanya kila jambo kwa wakati wake, kwa amani na kwa utaratibu. Aliwezaje kufanya hivyo? Alikuwa akiomba wakati wote, si kwa maneno makubwa ya sauti, bali moyoni mwake. Alisema kwamba wakati wake wa kufanya kazi haukuwa tofauti na wakati wake wa kuomba. Kwa maneno yake mwenyewe, kwa lugha rahisi: “Katika kelele na mgongano wa vyombo jikoni mwangu, wakati watu kadhaa wanaita wakitaka vitu tofauti wakati mmoja, ninaye Mungu kwa amani kana kwamba nimepiga magoti katika maombi.” Kwa Ndugu Lawrence, maombi hayakuwa kwa ajili ya nyakati maalum tu. Aliweza kuwa karibu na Mungu mahali popote, hata mikono yake ikiwa ndani ya maji ya kuoshea vyombo. Unaweza kuzungumza na Mungu ukiwa shuleni, ukiwa ndani ya gari, ukiwa uwanjani pa kuchezea au unapopiga mswaki. Huhitaji kungoja mahali palipo kimya. Yeye yuko pamoja nawe hata nyakati za shughuli nyingi na kelele. Mungu mpendwa, asante kwa sababu ninaweza kuzungumza nawe mahali popote. Nisaidie nikae karibu nawe wakati mambo yana shughuli nyingi na kelele. Amina.",
+  "word_count": 242
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "sw"
+  ],
+  "order": 8,
+  "title": "Kuzungumza na Mungu Kama Rafiki",
+  "body_html": "<blockquote>“Mkaribieni Mungu, naye atawakaribia ninyi.” — kutoka Yakobo 4</blockquote> <p>Ndugu Lawrence aliwaandikia rafiki zake barua, na ndani yake mara nyingi aliwaeleza jinsi ya kuzungumza na Mungu. Alisema ni jambo rahisi kuliko watu wanavyodhani.</p> <p>“Huhitaji kupiga kelele,” aliandika. “Mungu yu karibu nasi kuliko tunavyotambua.” Tena huhitaji kuwa kanisani ndipo uzungumze naye. Alisema unaweza kuufanya moyo wako kuwa chumba kidogo cha maombi, na kuingia humo kimya kimya kuzungumza na Mungu wakati wowote.</p> <p>Maombi yake mara nyingi yalikuwa mafupi sana. Wakati mwingine alisema tu, “Mungu wangu, mimi hapa, wako kabisa. Bwana, ufanye moyo wangu uwe kama wako.” Wakati mwingine alimfikiria Mungu tu kwa upendo, bila maneno yoyote. Alimwambia rafiki mmoja amwinulie Mungu moyo wake hata wakati wa chakula, au alipokuwa pamoja na watu wengine. Alisema hata wazo dogo kabisa juu ya Mungu linampendeza.</p> <p>Pia aliwapa rafiki zake picha ya kukumbuka. Kama rafiki angekuja kukutembelea, usingeondoka ukamwacha ameketi peke yake. Hiyo ingekuwa ni ukosefu wa adabu! Basi, Mungu yuko pamoja nasi siku zote. Kwa hiyo usimwache peke yake. Mfikirie mara nyingi.</p> <p>Hiyo ndiyo maana yote ya kuzoea kuwapo kwa Mungu: kukumbuka kwamba yuko hapa, na kuzungumza naye.</p> <p>Unaweza kuzungumza na Mungu kama unavyozungumza na rafiki. Mwambie asante. Mwambie una wasiwasi. Mwombe msaada. Ombi lako linaweza kuwa fupi kama sentensi moja tu, naye hupenda kulisikia.</p> <p><em>Mungu mpendwa, asante kwa sababu uko pamoja nami siku zote. Nisaidie nisikuache peke yako, bali nizungumze nawe mchana kutwa. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ndugu Lawrence alisema unaweza kwenda wapi ili kuzungumza na Mungu?",
+    "answer": "Mahali popote. Alisema unaweza kuufanya moyo wako kuwa chumba kidogo cha maombi na kuzungumza na Mungu humo, na huhitaji kupiga kelele, kwa sababu Mungu yu karibu sana."
+   },
+   {
+    "question": "Alitumia picha gani kuhusu rafiki anayekuja kukutembelea?",
+    "answer": "Ingekuwa ukosefu wa adabu kumwacha peke yake rafiki aliyekuja kukutembelea, kwa hiyo hatupaswi kumwacha Mungu peke yake pia. Tunapaswa kumfikiria mara nyingi."
+   },
+   {
+    "question": "Ni ombi gani moja fupi unaloweza kumwambia Mungu leo?",
+    "answer": "Somo la sura hii: kuzungumza na Mungu kunaweza kuwa rahisi na kwa ufupi, kama kuzungumza na rafiki aliye pamoja nasi siku zote."
+   }
+  ],
+  "body_text": "“Mkaribieni Mungu, naye atawakaribia ninyi.” — kutoka Yakobo 4 Ndugu Lawrence aliwaandikia rafiki zake barua, na ndani yake mara nyingi aliwaeleza jinsi ya kuzungumza na Mungu. Alisema ni jambo rahisi kuliko watu wanavyodhani. “Huhitaji kupiga kelele,” aliandika. “Mungu yu karibu nasi kuliko tunavyotambua.” Tena huhitaji kuwa kanisani ndipo uzungumze naye. Alisema unaweza kuufanya moyo wako kuwa chumba kidogo cha maombi, na kuingia humo kimya kimya kuzungumza na Mungu wakati wowote. Maombi yake mara nyingi yalikuwa mafupi sana. Wakati mwingine alisema tu, “Mungu wangu, mimi hapa, wako kabisa. Bwana, ufanye moyo wangu uwe kama wako.” Wakati mwingine alimfikiria Mungu tu kwa upendo, bila maneno yoyote. Alimwambia rafiki mmoja amwinulie Mungu moyo wake hata wakati wa chakula, au alipokuwa pamoja na watu wengine. Alisema hata wazo dogo kabisa juu ya Mungu linampendeza. Pia aliwapa rafiki zake picha ya kukumbuka. Kama rafiki angekuja kukutembelea, usingeondoka ukamwacha ameketi peke yake. Hiyo ingekuwa ni ukosefu wa adabu! Basi, Mungu yuko pamoja nasi siku zote. Kwa hiyo usimwache peke yake. Mfikirie mara nyingi. Hiyo ndiyo maana yote ya kuzoea kuwapo kwa Mungu: kukumbuka kwamba yuko hapa, na kuzungumza naye. Unaweza kuzungumza na Mungu kama unavyozungumza na rafiki. Mwambie asante. Mwambie una wasiwasi. Mwombe msaada. Ombi lako linaweza kuwa fupi kama sentensi moja tu, naye hupenda kulisikia. Mungu mpendwa, asante kwa sababu uko pamoja nami siku zote. Nisaidie nisikuache peke yako, bali nizungumze nawe mchana kutwa. Amina.",
+  "word_count": 230
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "sw"
+  ],
+  "order": 9,
+  "title": "Mashua Iliyojaa Mapipa",
+  "body_html": "<blockquote>“Huku mkimtwika yeye fadhaa zenu zote, kwa maana yeye hujishughulisha na mambo yenu.” — kutoka 1 Petro 5</blockquote> <p>Siku moja viongozi wa nyumba ya watawa walimpa Ndugu Lawrence kazi ambayo kwa kweli hakuitaka. Walimtuma safari ndefu mpaka mahali paitwapo Burgundy, ili akanunue divai ambayo Ndugu wangeihitaji.</p> <p>Ndugu Lawrence hakudhani kwamba alikuwa hodari katika kununua na kuuza. Tena kulikuwa na tatizo jingine. Mguu wake ulikuwa kilema, kwa hiyo ilikuwa vigumu kwake kutembea. Ndani ya mashua hakuweza kutembea karibu kabisa. Njia pekee aliyoweza kuitumia kwenda huku na huku ilikuwa kujiviringisha juu ya mapipa ya divai!</p> <p>Je, unaweza kuwazia jambo hilo? Mtu mkubwa mwenye mguu mbovu, akibingirika juu ya pipa baada ya pipa, dum, dum, dum.</p> <p>Lakini Ndugu Lawrence hakuwa na wasiwasi. Alimwambia Mungu kwamba hii ilikuwa kazi ya Mungu aliyokuwa akiifanya. Alimtumaini Mungu aishughulikie. Na baadaye aligundua kwamba kazi yote ilikuwa imekwenda vizuri sana.</p> <p>Mwaka uliotangulia, alikuwa ametumwa safari ya aina hiyo hiyo mahali pengine, paitwapo Auvergne. Hakuweza hata kueleza jinsi mambo yalivyokwenda, lakini yalikwenda vizuri wakati ule pia.</p> <p>Wakati mwingine inatubidi kufanya mambo yanayoonekana kuwa magumu mno, kama mtihani, shule mpya au jambo la kutisha. Unaweza kufanya kama Ndugu Lawrence alivyofanya: mwambie Mungu habari zake, na umtumaini akusaidie.</p> <p><em>Mungu mpendwa, ninapolazimika kufanya jambo gumu, nisaidie nikutwike wasiwasi wangu, na nikutumaini unitunze. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini safari ya kwenda Burgundy ilikuwa ngumu kwa Ndugu Lawrence?",
+    "answer": "Hakuwa hodari katika biashara, na alikuwa na mguu kilema, kwa hiyo ndani ya mashua aliweza tu kwenda huku na huku kwa kujiviringisha juu ya mapipa ya divai."
+   },
+   {
+    "question": "Alifanya nini badala ya kuwa na wasiwasi?",
+    "answer": "Alimwambia Mungu kwamba ilikuwa kazi ya Mungu aliyokuwa akiifanya, akamtumaini aishughulikie, na kazi ikaenda vizuri sana."
+   },
+   {
+    "question": "Ni jambo gani gumu unalopaswa kulifanya karibuni? Unawezaje kumkabidhi Mungu?",
+    "answer": "Somo la sura hii: kazi inapoonekana kuwa ngumu mno kwetu, tunaweza kumtwika Mungu wasiwasi wetu na kumtumaini atusaidie."
+   }
+  ],
+  "body_text": "“Huku mkimtwika yeye fadhaa zenu zote, kwa maana yeye hujishughulisha na mambo yenu.” — kutoka 1 Petro 5 Siku moja viongozi wa nyumba ya watawa walimpa Ndugu Lawrence kazi ambayo kwa kweli hakuitaka. Walimtuma safari ndefu mpaka mahali paitwapo Burgundy, ili akanunue divai ambayo Ndugu wangeihitaji. Ndugu Lawrence hakudhani kwamba alikuwa hodari katika kununua na kuuza. Tena kulikuwa na tatizo jingine. Mguu wake ulikuwa kilema, kwa hiyo ilikuwa vigumu kwake kutembea. Ndani ya mashua hakuweza kutembea karibu kabisa. Njia pekee aliyoweza kuitumia kwenda huku na huku ilikuwa kujiviringisha juu ya mapipa ya divai! Je, unaweza kuwazia jambo hilo? Mtu mkubwa mwenye mguu mbovu, akibingirika juu ya pipa baada ya pipa, dum, dum, dum. Lakini Ndugu Lawrence hakuwa na wasiwasi. Alimwambia Mungu kwamba hii ilikuwa kazi ya Mungu aliyokuwa akiifanya. Alimtumaini Mungu aishughulikie. Na baadaye aligundua kwamba kazi yote ilikuwa imekwenda vizuri sana. Mwaka uliotangulia, alikuwa ametumwa safari ya aina hiyo hiyo mahali pengine, paitwapo Auvergne. Hakuweza hata kueleza jinsi mambo yalivyokwenda, lakini yalikwenda vizuri wakati ule pia. Wakati mwingine inatubidi kufanya mambo yanayoonekana kuwa magumu mno, kama mtihani, shule mpya au jambo la kutisha. Unaweza kufanya kama Ndugu Lawrence alivyofanya: mwambie Mungu habari zake, na umtumaini akusaidie. Mungu mpendwa, ninapolazimika kufanya jambo gumu, nisaidie nikutwike wasiwasi wangu, na nikutumaini unitunze. Amina.",
+  "word_count": 211
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "sw"
+  ],
+  "order": 10,
+  "title": "Alipokosea",
+  "body_html": "<blockquote>“Tukiziungama dhambi zetu, yeye ni mwaminifu na wa haki hata atuondolee dhambi zetu.” — kutoka 1 Yohana 1</blockquote> <p>Ndugu Lawrence alimpenda Mungu sana. Lakini hakuwa mkamilifu. Bado alifanya makosa. Wakati mwingine alimsahau Mungu kwa muda mrefu kiasi. Wakati mwingine alifanya mambo aliyojua kuwa ni mabaya.</p> <p>Basi alifanya nini alipokosea? Hakununa. Hakukata tamaa. Wala hakutoa visingizio.</p> <p>Alimwambia Mungu tu. Alisema maneno kama haya: “Bwana, ndivyo nilivyo. Ukiniacha peke yangu, nitafanya hivi siku zote. Inakupasa unizuie nisianguke, na urekebishe nilichokosea.” Kisha aliacha kuhangaika juu ya jambo hilo, akarudi kumpenda Mungu, kama hapo awali.</p> <p>Ndugu Lawrence alijua kwamba dhambi zetu zinasamehewa kwa sababu ya Yesu, aliyekufa kwa ajili yetu, si kwa sababu sisi ni wema wa kutosha. Kwa hiyo alimtumaini Yesu, wala hakuyabeba makosa yake kila mahali kama mfuko mzito.</p> <p>Na alipofanya jambo vizuri, alimshukuru Mungu, kwa sababu alijua kwamba nguvu zile zilitoka kwa Mungu. Alisema kwamba kwa kuinuka tena baada ya kila anguko, kidogo kidogo, alijifunza kumfikiria Mungu wakati wote.</p> <p>Kila mtu hukosea, hata watu wazima na hata watu wanaompenda Mungu sana. Unapokosea, usilifiche wala usihangaike kwa siku nyingi. Mwambie Mungu kwamba unasikitika, mtumaini Yesu akusamehe, kisha anza tena.</p> <p><em>Mungu mpendwa, nasikitika kwa mambo mabaya niliyoyafanya. Asante kwa sababu Yesu ananisamehe. Nisaidie niinuke na niendelee kutembea pamoja nawe. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ndugu Lawrence alifanya nini alipofanya kosa?",
+    "answer": "Alimweleza Mungu kwa uaminifu, akamwomba Mungu amsaidie, kisha akaacha kuhangaika, akarudi kumpenda Mungu."
+   },
+   {
+    "question": "Kwa nini hakuhitaji kuendelea kuhangaika juu ya dhambi zake?",
+    "answer": "Kwa sababu alitumaini kwamba dhambi zake zimesamehewa kwa sababu ya Yesu, si kwa sababu yeye alikuwa mwema wa kutosha."
+   },
+   {
+    "question": "Utafanya nini wakati mwingine utakapokosea?",
+    "answer": "Somo la sura hii: tunapokosea, tunaweza kumwambia Mungu, kumtumaini Yesu atusamehe, na kuanza upya bila kuyabeba makosa yetu kila mahali."
+   }
+  ],
+  "body_text": "“Tukiziungama dhambi zetu, yeye ni mwaminifu na wa haki hata atuondolee dhambi zetu.” — kutoka 1 Yohana 1 Ndugu Lawrence alimpenda Mungu sana. Lakini hakuwa mkamilifu. Bado alifanya makosa. Wakati mwingine alimsahau Mungu kwa muda mrefu kiasi. Wakati mwingine alifanya mambo aliyojua kuwa ni mabaya. Basi alifanya nini alipokosea? Hakununa. Hakukata tamaa. Wala hakutoa visingizio. Alimwambia Mungu tu. Alisema maneno kama haya: “Bwana, ndivyo nilivyo. Ukiniacha peke yangu, nitafanya hivi siku zote. Inakupasa unizuie nisianguke, na urekebishe nilichokosea.” Kisha aliacha kuhangaika juu ya jambo hilo, akarudi kumpenda Mungu, kama hapo awali. Ndugu Lawrence alijua kwamba dhambi zetu zinasamehewa kwa sababu ya Yesu, aliyekufa kwa ajili yetu, si kwa sababu sisi ni wema wa kutosha. Kwa hiyo alimtumaini Yesu, wala hakuyabeba makosa yake kila mahali kama mfuko mzito. Na alipofanya jambo vizuri, alimshukuru Mungu, kwa sababu alijua kwamba nguvu zile zilitoka kwa Mungu. Alisema kwamba kwa kuinuka tena baada ya kila anguko, kidogo kidogo, alijifunza kumfikiria Mungu wakati wote. Kila mtu hukosea, hata watu wazima na hata watu wanaompenda Mungu sana. Unapokosea, usilifiche wala usihangaike kwa siku nyingi. Mwambie Mungu kwamba unasikitika, mtumaini Yesu akusamehe, kisha anza tena. Mungu mpendwa, nasikitika kwa mambo mabaya niliyoyafanya. Asante kwa sababu Yesu ananisamehe. Nisaidie niinuke na niendelee kutembea pamoja nawe. Amina.",
+  "word_count": 207
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "sw"
+  ],
+  "order": 11,
+  "title": "Barua kwa Rafiki Walio Katika Shida",
+  "body_html": "<blockquote>“Naam, nijapopita kati ya bonde la uvuli wa mauti, sitaogopa mabaya; kwa maana Wewe upo pamoja nami.” — kutoka Zaburi 23</blockquote> <p>Ndugu Lawrence alipozidi kuzeeka, watu wengi walimwandikia barua, naye akawajibu kwa barua. Baadhi ya rafiki zake walikuwa wakipitia wakati mgumu sana.</p> <p>Rafiki mmoja alimweleza habari za askari kijana aliyekuwa hatarini. Ndugu Lawrence alimjibu kwamba askari huyo hakuhitaji maombi marefu. Hata alipokuwa akitembea vitani, akiwa ameshika upanga mkononi, angeweza kumwinulia Mungu moyo wake kwa kitambo kidogo. Alisema kumkumbuka Mungu kidogo kunatosha, na kwamba maombi hayo mafupi yangemfanya askari yule kuwa jasiri zaidi, si dhaifu zaidi.</p> <p>Rafiki mwingine alikuwa mgonjwa sana, kwa muda mrefu, na dawa hazikuwa zikimsaidia. Ndugu Lawrence alimhurumia rafiki huyo. Alimwambia kwamba mara nyingi Mungu yuko karibu nasi zaidi tunapokuwa wagonjwa kuliko tunapokuwa wazima. Alimwambia aendelee kuzungumza na Mungu, amtumaini, na amtolee maumivu yake.</p> <p>Ndugu Lawrence aliandika pia jambo la kijasiri. Alisema hakuwa akiomba tu kwamba maumivu yakome, bali kwamba Mungu ampe rafiki yake nguvu na saburi ya kuyavumilia. Alijua kwamba Mungu ni Baba yetu mwenye upendo, na kwamba tunaweza kumtumaini hata mambo yanapoumiza.</p> <p>Rafiki zake walikuwa na huzuni na maumivu, lakini barua zake ziliwaelekeza kwa Mungu aliyekuwa pale pale pamoja nao.</p> <p>Unapokuwa mgonjwa, mwenye huzuni au mwenye hofu, Mungu hajaondoka. Yuko karibu. Unaweza kusema ombi fupi, hata “Mungu, nisaidie” tu, na kumtumaini kwamba yuko pamoja nawe.</p> <p><em>Mungu mpendwa, ninapokuwa mgonjwa au mwenye hofu, asante kwa sababu uko karibu nami. Tafadhali unipe nguvu na unisaidie nikutumaini. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ndugu Lawrence alisema askari angeweza kufanya nini, hata alipokuwa akitembea vitani na upanga wake?",
+    "answer": "Angeweza kumwinulia Mungu moyo wake kwa kitambo kidogo. Maombi mafupi kama hayo humpendeza Mungu na humfanya askari kuwa jasiri zaidi."
+   },
+   {
+    "question": "Alimwambia nini rafiki yake aliyekuwa mgonjwa sana?",
+    "answer": "Kwamba mara nyingi Mungu yuko karibu nasi zaidi tunapokuwa wagonjwa kuliko tunapokuwa wazima, na kwamba aendelee kuzungumza na Mungu, amtumaini, na aombe nguvu za kuvumilia maumivu."
+   },
+   {
+    "question": "Je, umewahi kuwa mgonjwa, mwenye huzuni au mwenye hofu? Ungeweza kumwambia Mungu nini wakati huo?",
+    "answer": "Somo la sura hii: Mungu hukaa karibu nasi nyakati ngumu. Hata ombi fupi sana, kama “Mungu, nisaidie,” yeye hulisikia."
+   }
+  ],
+  "body_text": "“Naam, nijapopita kati ya bonde la uvuli wa mauti, sitaogopa mabaya; kwa maana Wewe upo pamoja nami.” — kutoka Zaburi 23 Ndugu Lawrence alipozidi kuzeeka, watu wengi walimwandikia barua, naye akawajibu kwa barua. Baadhi ya rafiki zake walikuwa wakipitia wakati mgumu sana. Rafiki mmoja alimweleza habari za askari kijana aliyekuwa hatarini. Ndugu Lawrence alimjibu kwamba askari huyo hakuhitaji maombi marefu. Hata alipokuwa akitembea vitani, akiwa ameshika upanga mkononi, angeweza kumwinulia Mungu moyo wake kwa kitambo kidogo. Alisema kumkumbuka Mungu kidogo kunatosha, na kwamba maombi hayo mafupi yangemfanya askari yule kuwa jasiri zaidi, si dhaifu zaidi. Rafiki mwingine alikuwa mgonjwa sana, kwa muda mrefu, na dawa hazikuwa zikimsaidia. Ndugu Lawrence alimhurumia rafiki huyo. Alimwambia kwamba mara nyingi Mungu yuko karibu nasi zaidi tunapokuwa wagonjwa kuliko tunapokuwa wazima. Alimwambia aendelee kuzungumza na Mungu, amtumaini, na amtolee maumivu yake. Ndugu Lawrence aliandika pia jambo la kijasiri. Alisema hakuwa akiomba tu kwamba maumivu yakome, bali kwamba Mungu ampe rafiki yake nguvu na saburi ya kuyavumilia. Alijua kwamba Mungu ni Baba yetu mwenye upendo, na kwamba tunaweza kumtumaini hata mambo yanapoumiza. Rafiki zake walikuwa na huzuni na maumivu, lakini barua zake ziliwaelekeza kwa Mungu aliyekuwa pale pale pamoja nao. Unapokuwa mgonjwa, mwenye huzuni au mwenye hofu, Mungu hajaondoka. Yuko karibu. Unaweza kusema ombi fupi, hata “Mungu, nisaidie” tu, na kumtumaini kwamba yuko pamoja nawe. Mungu mpendwa, ninapokuwa mgonjwa au mwenye hofu, asante kwa sababu uko karibu nami. Tafadhali unipe nguvu na unisaidie nikutumaini. Amina.",
+  "word_count": 239
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "sw"
+  ],
+  "order": 12,
+  "title": "Kurudi Nyumbani kwa Mungu",
+  "body_html": "<blockquote>“Naenda kuwaandalia mahali.” — kutoka Yohana 14</blockquote> <p>Ndugu Lawrence alikua akawa mzee. Katika mojawapo ya barua zake aliandika, “Nina karibu miaka themanini.” Wakati huo alikuwa ametembea na Mungu kwa zaidi ya miaka arobaini, tangu ile siku ya baridi alipouona mti ule mtupu.</p> <p>Katika uzee wake mara nyingi alikuwa mgonjwa sana. Lakini hakumwomba Mungu amwondolee maumivu. Badala yake aliomba nguvu za kuyavumilia kwa ujasiri na kwa upendo. Alisema alikuwa na furaha siku zote, kwa sababu Mungu alikuwa pamoja naye.</p> <p>Katika barua zake za mwisho kabisa, aliandika kwamba alitumaini kumwona Mungu karibuni. Siku mbili tu baada ya mojawapo ya barua hizo, alilala kitandani akiwa mgonjwa, na kabla juma lile halijaisha, alikufa, akaenda nyumbani kuwa pamoja na Mungu aliyempenda.</p> <p>Lakini barua zake na maneno yake yalitunzwa, ili sisi tuweze kuyasoma. Na ndani yake aliendelea kutoa mwaliko ule ule. Mfikirie Mungu mara nyingi. Zungumza naye. Mtumaini. “Na tuanze,” aliandika. Mtu mmoja alipomwambia kwamba siku zote yeye husema jambo lile lile, alikubali! Ilikuwa njia bora na rahisi kuliko zote alizozijua, kwa hiyo aliwaambia watu wote.</p> <p>Yule mtumishi kijana asiye stadi alikuwa amejifunza kuishi kila siku pamoja na Mungu, naye alitaka kila mtu mwingine ajue jinsi ya kufanya hivyo.</p> <p>Mwaliko wa Ndugu Lawrence ni kwa ajili yako pia. Huhitaji kuwa mtu mzima, wala mwerevu, wala mwangalifu. Unaweza kuanza leo: kumbuka kwamba Mungu yuko pamoja nawe, na uzungumze naye mchana kutwa.</p> <p><em>Mungu mpendwa, asante kwa sababu uko pamoja nami siku zote. Nisaidie nianze leo kuzungumza nawe na kukutumaini, maisha yangu yote. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ndugu Lawrence alikuwa na umri gani karibu na mwisho wa maisha yake, na alitumaini nini?",
+    "answer": "Aliandika kwamba alikuwa na karibu miaka themanini, na katika barua zake za mwisho alisema alitumaini kumwona Mungu karibuni."
+   },
+   {
+    "question": "Ndugu Lawrence aliendelea kutoa mwaliko gani katika barua zake?",
+    "answer": "Kumfikiria Mungu mara nyingi, kuzungumza naye na kumtumaini. “Na tuanze,” aliandika, na alisema ndiyo njia bora na rahisi kuliko zote alizozijua."
+   },
+   {
+    "question": "Unawezaje kuanza kuzoea kuwa pamoja na Mungu wiki hii?",
+    "answer": "Somo la sura hii: mwaliko wa Ndugu Lawrence ni kwa ajili ya watoto pia. Mtu yeyote anaweza kuanza leo kwa kukumbuka kwamba Mungu yu karibu na kuzungumza naye."
+   }
+  ],
+  "body_text": "“Naenda kuwaandalia mahali.” — kutoka Yohana 14 Ndugu Lawrence alikua akawa mzee. Katika mojawapo ya barua zake aliandika, “Nina karibu miaka themanini.” Wakati huo alikuwa ametembea na Mungu kwa zaidi ya miaka arobaini, tangu ile siku ya baridi alipouona mti ule mtupu. Katika uzee wake mara nyingi alikuwa mgonjwa sana. Lakini hakumwomba Mungu amwondolee maumivu. Badala yake aliomba nguvu za kuyavumilia kwa ujasiri na kwa upendo. Alisema alikuwa na furaha siku zote, kwa sababu Mungu alikuwa pamoja naye. Katika barua zake za mwisho kabisa, aliandika kwamba alitumaini kumwona Mungu karibuni. Siku mbili tu baada ya mojawapo ya barua hizo, alilala kitandani akiwa mgonjwa, na kabla juma lile halijaisha, alikufa, akaenda nyumbani kuwa pamoja na Mungu aliyempenda. Lakini barua zake na maneno yake yalitunzwa, ili sisi tuweze kuyasoma. Na ndani yake aliendelea kutoa mwaliko ule ule. Mfikirie Mungu mara nyingi. Zungumza naye. Mtumaini. “Na tuanze,” aliandika. Mtu mmoja alipomwambia kwamba siku zote yeye husema jambo lile lile, alikubali! Ilikuwa njia bora na rahisi kuliko zote alizozijua, kwa hiyo aliwaambia watu wote. Yule mtumishi kijana asiye stadi alikuwa amejifunza kuishi kila siku pamoja na Mungu, naye alitaka kila mtu mwingine ajue jinsi ya kufanya hivyo. Mwaliko wa Ndugu Lawrence ni kwa ajili yako pia. Huhitaji kuwa mtu mzima, wala mwerevu, wala mwangalifu. Unaweza kuanza leo: kumbuka kwamba Mungu yuko pamoja nawe, na uzungumze naye mchana kutwa. Mungu mpendwa, asante kwa sababu uko pamoja nami siku zote. Nisaidie nianze leo kuzungumza nawe na kukutumaini, maisha yangu yote. Amina.",
+  "word_count": 245
+ }
+}
+]

@@ -429,6 +429,31 @@ CURATED_PLANS = [
             "sons-of-the-king-3",
         ],
     ),
+    (
+        "anchored-two-months",
+        "Anchored: Two Months with God for Teens",
+        "Two months with God for readers aged 13 to 17: both books of Anchored "
+        "— Is It True? Who Am I? and Real Life — one devotion a day on the "
+        "honest questions of faith, who you are in Christ, and following Jesus "
+        "through worry, screens, friendships, home and grief. Each day ends with "
+        "a pointer to one chapter of a classic.",
+        [
+            "anchored-1",
+            "anchored-2",
+        ],
+    ),
+    (
+        "they-were-young-two-weeks",
+        "They Were Young: Two Weeks of True Stories",
+        "Two weeks of true stories for readers aged 13 to 17: both books of They "
+        "Were Young — Called and Tested — one life a day, from Spurgeon in a "
+        "snowstorm and Richard Allen in Delaware to Patrick, Perpetua and the "
+        "Uganda Martyrs, each ending with questions to think through.",
+        [
+            "they-were-young-1",
+            "they-were-young-2",
+        ],
+    ),
     # Family devotions: the young-reader editions read aloud, one short chapter
     # a night — each carries its own verse and prayer, and ends with three
     # questions to talk about (`Chapter.study_questions`), so a night's reading
@@ -462,6 +487,21 @@ CURATED_PLANS = [
         ],
     ),
     (
+        "family-devotions-brave-and-faithful",
+        "Family Devotions: Brave and Faithful",
+        "Five weeks of five-minute family devotions: the true stories of three "
+        "brave women, read aloud one short chapter a night — Mary Slessor, the "
+        "Scottish mill girl who rescued twin babies in Nigeria; Pandita Ramabai, "
+        "who built a home for India’s widows and girls; and Corrie ten Boom, "
+        "who hid Jewish neighbours in the war and learned to forgive. Each ends "
+        "with a prayer and three questions to talk about together.",
+        [
+            "mary-slessor-a-life-children",
+            "pandita-ramabai-a-life-children",
+            "corrie-ten-boom-a-life-children",
+        ],
+    ),
+    (
         "family-devotions-talking-with-god",
         "Family Devotions: Talking with God All Day",
         "Twelve nights of five-minute family devotions with Brother Lawrence, "
@@ -472,6 +512,20 @@ CURATED_PLANS = [
         "talk about together.",
         [
             "the-practice-of-the-presence-of-god-children",
+        ],
+    ),
+    (
+        "family-devotions-boy-from-osogun",
+        "Family Devotions: The Boy from Osogun",
+        "Twelve nights of five-minute family devotions with Samuel Ajayi "
+        "Crowther, the Yoruba boy sold as a slave who grew up to give his "
+        "people the Bible in their own language. Read one short chapter aloud: "
+        "the slave ship stopped at sea, the day he found his mother again, the "
+        "Lord’s Prayer in Yoruba for the Queen, and the kind slaves who fed "
+        "him when he was a prisoner. Each ends with a prayer and three "
+        "questions to talk about together.",
+        [
+            "samuel-ajayi-crowther-a-life-children",
         ],
     ),
 ]

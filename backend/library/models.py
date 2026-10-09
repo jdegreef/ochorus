@@ -594,6 +594,11 @@ class Book(models.Model):
     cover_byline = models.CharField(max_length=120, blank=True)
     # Short summary (a few sentences) — used on cards, lists and SEO meta.
     description = models.TextField(blank=True)
+    # One line that sells the story rather than the cover ("Amy Carmichael
+    # refused to make missions sound nice. This is what she actually saw in
+    # India.") — an editor's line, on the teens hub's book cards. Per-language
+    # like `description`, so a translation carries its own or none at all.
+    hook = models.CharField(max_length=200, blank=True)
     # Long-form "About this work" as cleaned HTML, the twin of Author.bio_html
     # and cleaned by the same sanitizer: what the work is, the situation it was
     # written into, and who it still repays. Rendered on the book page.
@@ -656,9 +661,10 @@ class Book(models.Model):
     # deploy; ``english_digest`` — on a translation only — is the English
     # edition's content_digest when this translation was last (re)made. They
     # differ once the English changes and the translation doesn't. DB-only: not
-    # in the fixture, so the seeds never touch them.
-    content_digest = models.CharField(max_length=64, blank=True, default="")
-    english_digest = models.CharField(max_length=64, blank=True, default="")
+    # in the fixture, so the seeds never touch them — and `serialize=False`, so
+    # no dump or hand-serialized work file carries them either.
+    content_digest = models.CharField(max_length=64, blank=True, default="", serialize=False)
+    english_digest = models.CharField(max_length=64, blank=True, default="", serialize=False)
     # md5 of the text content_digest was computed from (hashed in SQL), so
     # refresh_translation_digests re-reads only rows whose text moved.
     digest_source = models.CharField(
@@ -948,9 +954,10 @@ class Sermon(models.Model):
     # deploy; ``english_digest`` — on a translation only — is the English
     # edition's content_digest when this translation was last (re)made. They
     # differ once the English changes and the translation doesn't. DB-only: not
-    # in the fixture, so the seeds never touch them.
-    content_digest = models.CharField(max_length=64, blank=True, default="")
-    english_digest = models.CharField(max_length=64, blank=True, default="")
+    # in the fixture, so the seeds never touch them — and `serialize=False`, so
+    # no dump or hand-serialized work file carries them either.
+    content_digest = models.CharField(max_length=64, blank=True, default="", serialize=False)
+    english_digest = models.CharField(max_length=64, blank=True, default="", serialize=False)
     # md5 of the text content_digest was computed from (hashed in SQL), so
     # refresh_translation_digests re-reads only rows whose text moved.
     digest_source = models.CharField(
@@ -1086,9 +1093,10 @@ class Article(models.Model):
     # deploy; ``english_digest`` — on a translation only — is the English
     # edition's content_digest when this translation was last (re)made. They
     # differ once the English changes and the translation doesn't. DB-only: not
-    # in the fixture, so the seeds never touch them.
-    content_digest = models.CharField(max_length=64, blank=True, default="")
-    english_digest = models.CharField(max_length=64, blank=True, default="")
+    # in the fixture, so the seeds never touch them — and `serialize=False`, so
+    # no dump or hand-serialized work file carries them either.
+    content_digest = models.CharField(max_length=64, blank=True, default="", serialize=False)
+    english_digest = models.CharField(max_length=64, blank=True, default="", serialize=False)
     # md5 of the text content_digest was computed from (hashed in SQL), so
     # refresh_translation_digests re-reads only rows whose text moved.
     digest_source = models.CharField(
@@ -1601,6 +1609,12 @@ class BookPerson(models.Model):
         max_length=20, choices=PersonRole.choices, default=PersonRole.FEATURED
     )
     sort_order = models.PositiveIntegerField(default=0)
+    # In an anthology that gives each figure a chapter (Brave for God, They Were
+    # Young), the ``Chapter.order`` that tells this person's story — so the
+    # young-reader hubs can open a face straight onto its story, in whatever
+    # language the book is in. Null for a person the work only mentions, or a
+    # single biography (the whole book is theirs).
+    chapter = models.PositiveSmallIntegerField(null=True, blank=True)
 
     class Meta:
         ordering = ["sort_order", "id"]

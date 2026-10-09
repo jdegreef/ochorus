@@ -10,6 +10,7 @@
   "title": "Ekkubo Erituusa eri Katonda",
   "subtitle": "N’Engeri y’Okulizuula",
   "description": "Okunnyonnyola kwa D. L. Moody okwangu era okunyiikivu ku kkubo ery’obulokozi. Ng’atandikira ku kwagala kwa Katonda okusukka okutegeera, akulembera omusomi okuyita mu mulyango gw’okuzaalibwa obuggya, okwenenya, n’obukakafu bw’obulokozi, ng’aleeta ebigambo eby’okuwabula abakkiriza abato era ng’alabula ku kudda ennyuma mu kukkiriza. Butereevu era awatali kwewaanira, kissa essira ku kibuuzo kimu: oyingidde mu?",
+  "hook": "D. L. Moody, eyali atunda engatto n’afuuka omubuulizi, ku ngeri y’okuzuula Katonda ddala.",
   "qa": [
    {
     "question": "Ekitabo “Ekkubo Erituusa eri Katonda” kyogera ku ki?",
@@ -49,7 +50,7 @@
   "source_url": "",
   "attribution": "",
   "cover_url": "/covers/art/the-way-to-god.jpg",
-  "pdf_url": "",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/the-way-to-god.lg.pdf?download=the-way-to-god.lg.pdf",
   "cover_color": "#9a3412",
   "sort_order": 11,
   "is_published": true,

@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "c-s-lewis-a-life-children",
+  "language": "en",
+  "title": "C. S. Lewis (For Children)",
+  "subtitle": "",
+  "cover_byline": "C. S. Lewis",
+  "description": "The true story of Jack Lewis, a book-loving boy from Belfast who lost his mother, stopped believing in God, was wounded in a war and kept a promise for thirty years, until God found him on a walk by a river and a ride in a sidecar, and he grew up to write the Chronicles of Narnia. This children’s edition retells his life in short chapters made to be read aloud: a Bible verse, one part of his story, one thing it means for you, and a short prayer, with questions to talk about together.",
+  "qa": [
+   {
+    "question": "What is C. S. Lewis (For Children) about?",
+    "answer": "It is a children’s version of the full-length biography of C. S. Lewis. It tells how a boy named Jack lost his mother and stopped believing in God, how God found him again as a grown man, and how he spent the rest of his life telling people about Jesus in books, on the radio and in the stories of Narnia."
+   },
+   {
+    "question": "Who was C. S. Lewis?",
+    "answer": "A writer and teacher who was born in Belfast in 1898 and died in Oxford in 1963. His family and friends called him Jack. He taught at the universities of Oxford and Cambridge, spoke about the Christian faith on the radio during the Second World War, and wrote many books, including the seven Chronicles of Narnia."
+   },
+   {
+    "question": "How is each chapter set out?",
+    "answer": "Every chapter is short and made to be read aloud. It begins with a Bible verse, tells one part of Jack’s story, shows one simple thing it means for you, and ends with a short prayer. Three questions follow, to talk about together."
+   },
+   {
+    "question": "Is this book too sad for children?",
+    "answer": "Some of it is sad. Jack’s mother died when he was nine, he was hurt in a war, and his wife Joy died of cancer. The book does not pretend otherwise. But it tells these things gently, for children, and it is above all a story of how God never stopped looking for Jack, and stayed with him on happy days and sad ones."
+   },
+   {
+    "question": "Are the stories true?",
+    "answer": "Yes. They come from Jack’s own letters, his brother Warnie’s diaries, and the people who knew him. Where people are not sure about something, such as the exact year Jack first knelt and prayed, the book says so. Jack’s own books are still under copyright, so this book tells his story in its own words, and it does not retell the Narnia stories. To enjoy those, read the books themselves."
+   },
+   {
+    "question": "Who is this book for?",
+    "answer": "It is for children, to be read aloud by a grown-up or read by an older child alone. There is also a teen edition, and the full-length biography for older readers."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of the Ochorus biography C. S. Lewis, from the Portraits of Courage series. The telling is our own, free to read and share.",
+  "cover_url": "/covers/art/c-s-lewis-a-life-children.jpg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/c-s-lewis-a-life-children.pdf?download=c-s-lewis-a-life-children.pdf",
+  "cover_color": "",
+  "sort_order": 153,
+  "is_published": true,
+  "created_at": "2026-10-08T00:00:00Z",
+  "updated_at": "2026-10-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "en"
+  ],
+  "order": 1,
+  "title": "A Boy Called Jack",
+  "body_html": "<blockquote>“Teach children the way they should go, and when they are old they will not turn away from it.” — from Proverbs 22</blockquote> <p>On 29 November 1898, a baby boy was born in Belfast, a busy city of shipyards in the north of Ireland. His parents named him Clive Staples Lewis. His father, Albert, was a lawyer who loved books and long words. His mother, Flora, was quiet and funny, and very clever. She had gone to university and studied mathematics, at a time when hardly any women did.</p> <p>Clive had a big brother called Warren, or Warnie, who was three years older. When Clive was still very small, he decided he did not like his name. He wanted to be called Jacksie, after a dog that lived nearby! He would not answer to anything else until his family gave in. Soon Jacksie became Jack, and Jack he stayed for the rest of his life.</p> <p>Jack and Warnie were best friends. One day Warnie brought into the nursery the lid of a biscuit tin, covered with moss and twigs and flowers, like a tiny garden. Jack thought it was the most beautiful thing he had ever seen. It gave him a strange, sweet longing, a feeling of wanting something he could not name. That feeling came back to him again and again all his life.</p> <p>Together the brothers made up a whole pretend world called Boxen. Jack’s part was Animal-Land, full of animals in clothes and knights in armour.</p> <p>When Jack was six, the family moved to a big new house called Little Lea. It had long corridors and attics, and there were books in almost every room. On rainy afternoons Jack explored the house and read and read. Nobody ever told him a book was not for him.</p> <p>Jack’s parents took him to church and taught him to pray. For a long time it looked as if he had forgotten all of it. But God had not forgotten Jack. The things we learn about God when we are small are like seeds. God knows how to make them grow, even many years later.</p> <p><em>Dear God, thank you for my family and for everything I am learning about you. Please make those little seeds grow in me. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Why was Clive Staples Lewis called Jack?",
+    "answer": "When he was very small he decided to be called Jacksie, after a dog that lived nearby. The name became Jacks and then Jack, and he kept it all his life."
+   },
+   {
+    "question": "What pretend world did Jack and Warnie make up?",
+    "answer": "A world called Boxen. Jack’s part was Animal-Land, with animals in clothes and knights in armour."
+   },
+   {
+    "question": "What have you learned about God that you hope will grow in you?",
+    "answer": "Any honest answer is good here. The chapter’s point is that what we learn about God when we are young is like a seed, and God can make it grow, even many years later."
+   }
+  ],
+  "body_text": "“Teach children the way they should go, and when they are old they will not turn away from it.” — from Proverbs 22 On 29 November 1898, a baby boy was born in Belfast, a busy city of shipyards in the north of Ireland. His parents named him Clive Staples Lewis. His father, Albert, was a lawyer who loved books and long words. His mother, Flora, was quiet and funny, and very clever. She had gone to university and studied mathematics, at a time when hardly any women did. Clive had a big brother called Warren, or Warnie, who was three years older. When Clive was still very small, he decided he did not like his name. He wanted to be called Jacksie, after a dog that lived nearby! He would not answer to anything else until his family gave in. Soon Jacksie became Jack, and Jack he stayed for the rest of his life. Jack and Warnie were best friends. One day Warnie brought into the nursery the lid of a biscuit tin, covered with moss and twigs and flowers, like a tiny garden. Jack thought it was the most beautiful thing he had ever seen. It gave him a strange, sweet longing, a feeling of wanting something he could not name. That feeling came back to him again and again all his life. Together the brothers made up a whole pretend world called Boxen. Jack’s part was Animal-Land, full of animals in clothes and knights in armour. When Jack was six, the family moved to a big new house called Little Lea. It had long corridors and attics, and there were books in almost every room. On rainy afternoons Jack explored the house and read and read. Nobody ever told him a book was not for him. Jack’s parents took him to church and taught him to pray. For a long time it looked as if he had forgotten all of it. But God had not forgotten Jack. The things we learn about God when we are small are like seeds. God knows how to make them grow, even many years later. Dear God, thank you for my family and for everything I am learning about you. Please make those little seeds grow in me. Amen.",
+  "word_count": 378
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "en"
+  ],
+  "order": 2,
+  "title": "The Saddest Summer",
+  "body_html": "<blockquote>“Even if my father and my mother leave me, the Lord will take me up.” — from Psalm 27</blockquote> <p>In 1908, when Jack was nine, his mother became very ill. The doctors found that she had cancer. She had an operation at home, and for a while she seemed to get better. But in the summer the illness came back. The house filled with nurses and doctors, and the boys were kept out of her room. They did not really understand what was happening.</p> <p>Jack prayed. He had been taught that God answers prayer, and he asked God, with all his heart, to make his mother well. On 23 August 1908, his mother died. Then Jack prayed that she would come back to life. But she did not come back.</p> <p>It was a terrible year for the whole family. Jack’s father lost his own father and his brother that same year. He was so full of sadness that he did not know how to comfort his boys. So Jack and Warnie held on to each other. From then on, they were closer than ever.</p> <p>Less than a month later, their father sent both boys away to a boarding school in England. They crossed the sea on a night boat, and Jack never forgot how miserable that journey was. The school was a bad one, with a harsh headmaster, and Jack was very unhappy there.</p> <p>But even there, something good happened. At that school Jack was taken to a church where the Christian faith was taught as if it really mattered. For a little while he began to pray seriously and to read his Bible.</p> <p>When Jack grew up, he still remembered how it felt to lose his mother. Because of that, he was able to write kind, gentle letters to many people who were sad. God did not stop the sad thing from happening. But he was with Jack, and he used even that sadness for good. When we are sad, God is close to us, too.</p> <p><em>Dear God, thank you that you are close to children who are sad. Please comfort anyone I know who has lost someone they love. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did Jack pray for when his mother was ill?",
+    "answer": "He prayed that she would get well. When she died, he prayed that she would come back to life."
+   },
+   {
+    "question": "Where did Jack’s father send the boys after their mother died?",
+    "answer": "To a boarding school in England. They crossed the sea on a night boat, and the school was a harsh and unhappy place."
+   },
+   {
+    "question": "Who could you talk to, or pray to, when you feel sad?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God is close to us when we are sad, and he can use even sad things for good."
+   }
+  ],
+  "body_text": "“Even if my father and my mother leave me, the Lord will take me up.” — from Psalm 27 In 1908, when Jack was nine, his mother became very ill. The doctors found that she had cancer. She had an operation at home, and for a while she seemed to get better. But in the summer the illness came back. The house filled with nurses and doctors, and the boys were kept out of her room. They did not really understand what was happening. Jack prayed. He had been taught that God answers prayer, and he asked God, with all his heart, to make his mother well. On 23 August 1908, his mother died. Then Jack prayed that she would come back to life. But she did not come back. It was a terrible year for the whole family. Jack’s father lost his own father and his brother that same year. He was so full of sadness that he did not know how to comfort his boys. So Jack and Warnie held on to each other. From then on, they were closer than ever. Less than a month later, their father sent both boys away to a boarding school in England. They crossed the sea on a night boat, and Jack never forgot how miserable that journey was. The school was a bad one, with a harsh headmaster, and Jack was very unhappy there. But even there, something good happened. At that school Jack was taken to a church where the Christian faith was taught as if it really mattered. For a little while he began to pray seriously and to read his Bible. When Jack grew up, he still remembered how it felt to lose his mother. Because of that, he was able to write kind, gentle letters to many people who were sad. God did not stop the sad thing from happening. But he was with Jack, and he used even that sadness for good. When we are sad, God is close to us, too. Dear God, thank you that you are close to children who are sad. Please comfort anyone I know who has lost someone they love. Amen.",
+  "word_count": 362
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "en"
+  ],
+  "order": 3,
+  "title": "The Great Knock",
+  "body_html": "<blockquote>“Iron makes iron sharp, and one friend makes another friend sharp.” — from Proverbs 27</blockquote> <p>As Jack grew older, he went to other schools. Somewhere between the ages of twelve and fourteen, he quietly stopped believing in God. Part of the reason was that praying had become a worry to him. He thought a prayer did not count unless he felt exactly the right feelings, and he lay awake night after night, trying again and again. When he gave up believing, it felt like putting down a heavy load. He did not tell anyone.</p> <p>When he was fifteen, Jack visited Arthur Greeves, who lived across the road and was ill in bed. On the bed lay a book of old stories from the north, about gods and heroes. Jack loved those stories too! The two became friends at once, and they wrote letters to each other for nearly fifty years.</p> <p>That same year, Jack was sent to live with a teacher called Mr Kirkpatrick, in a village in Surrey. The family called him the Great Knock. On the walk from the station, Jack said the countryside was wilder than he had expected. Mr Kirkpatrick stopped and asked him what he meant by wild! Every sentence Jack said had to be thought through carefully. Jack loved it. He learned to think clearly and to read Greek, Latin, French and Italian.</p> <p>Mr Kirkpatrick did not believe in God, and Jack did not either. But one day in 1916, waiting for a train, Jack bought a book called Phantastes, by a Scottish writer named George MacDonald. It was a story about a young man in a dreamlike fairy land. Jack did not know that MacDonald was a Christian. But the story touched his heart with a new kind of goodness. Years later, Jack called MacDonald his master.</p> <p>Jack was not looking for God at all. But God was already at work, through a sharp teacher, a good friend and a story bought at a station. God can use all kinds of people and books to help us, even before we know it.</p> <p><em>Dear God, thank you for my teachers and my friends. Please use good books and good people to bring me closer to you. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Who was the Great Knock?",
+    "answer": "Mr Kirkpatrick, the teacher Jack lived with in Surrey. He taught Jack to think clearly and to read many languages."
+   },
+   {
+    "question": "What book did Jack buy while he was waiting for a train?",
+    "answer": "Phantastes, by George MacDonald. It was a story about a fairy land, and it touched Jack’s heart with a new kind of goodness."
+   },
+   {
+    "question": "Who helps you to think and to learn?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God can use teachers, friends and good books to help us, even before we know he is at work."
+   }
+  ],
+  "body_text": "“Iron makes iron sharp, and one friend makes another friend sharp.” — from Proverbs 27 As Jack grew older, he went to other schools. Somewhere between the ages of twelve and fourteen, he quietly stopped believing in God. Part of the reason was that praying had become a worry to him. He thought a prayer did not count unless he felt exactly the right feelings, and he lay awake night after night, trying again and again. When he gave up believing, it felt like putting down a heavy load. He did not tell anyone. When he was fifteen, Jack visited Arthur Greeves, who lived across the road and was ill in bed. On the bed lay a book of old stories from the north, about gods and heroes. Jack loved those stories too! The two became friends at once, and they wrote letters to each other for nearly fifty years. That same year, Jack was sent to live with a teacher called Mr Kirkpatrick, in a village in Surrey. The family called him the Great Knock. On the walk from the station, Jack said the countryside was wilder than he had expected. Mr Kirkpatrick stopped and asked him what he meant by wild! Every sentence Jack said had to be thought through carefully. Jack loved it. He learned to think clearly and to read Greek, Latin, French and Italian. Mr Kirkpatrick did not believe in God, and Jack did not either. But one day in 1916, waiting for a train, Jack bought a book called Phantastes, by a Scottish writer named George MacDonald. It was a story about a young man in a dreamlike fairy land. Jack did not know that MacDonald was a Christian. But the story touched his heart with a new kind of goodness. Years later, Jack called MacDonald his master. Jack was not looking for God at all. But God was already at work, through a sharp teacher, a good friend and a story bought at a station. God can use all kinds of people and books to help us, even before we know it. Dear God, thank you for my teachers and my friends. Please use good books and good people to bring me closer to you. Amen.",
+  "word_count": 373
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "en"
+  ],
+  "order": 4,
+  "title": "A Promise in Wartime",
+  "body_html": "<blockquote>“When you make a promise to God, do not be slow to keep it.” — from Ecclesiastes 5</blockquote> <p>In 1917 Jack went to study at Oxford University. But there was a great war, and most of the young men were away fighting. Because he came from Ireland, Jack did not have to join the army. He chose to join anyway.</p> <p>Jack trained to be an officer at a college called Keble. He shared a room with a young man named Paddy Moore. Paddy was almost exactly his age, and Irish like him. Paddy’s mother, Mrs Moore, had come to Oxford to be near her son, with his little sister Maureen. Mrs Moore was warm and kind, and she made Jack welcome.</p> <p>Jack and Paddy made a promise to each other. If one of them was killed in the war, the one who lived would look after the other one’s parent. Maureen remembered this promise many years later.</p> <p>Jack reached the trenches in France on his nineteenth birthday, 29 November 1917. It was cold and muddy and very hard. In April 1918 there was a battle near a French village. Some sixty enemy soldiers came out of the smoke with their hands up and gave themselves up to Jack. He said he was just glad they wanted to!</p> <p>The next day, 15 April 1918, a shell burst close beside Jack. He was hurt in his hand, his leg and his chest. A kind sergeant called Harry Ayres, who had looked after Jack, was standing next to him, and he was killed. Jack got better in hospital, but a tiny piece of metal stayed in his chest for many years.</p> <p>Paddy did not come home. He had gone missing in the fighting in March, and later his family learned that he had been killed. He was only nineteen.</p> <p>War is a very sad thing, and Jack did not like to talk about it. But even when he did not yet believe in God, God was holding his life in his hands. And Jack had made a promise. Now he would have to keep it.</p> <p><em>Dear God, please be with everyone who is in danger because of war today. Help me to keep my promises, even when it is hard. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What promise did Jack and Paddy make to each other?",
+    "answer": "That if one of them was killed in the war, the one who lived would look after the other one’s parent."
+   },
+   {
+    "question": "What happened to Jack on 15 April 1918?",
+    "answer": "A shell burst beside him and he was hurt in his hand, his leg and his chest. The kind sergeant next to him, Harry Ayres, was killed."
+   },
+   {
+    "question": "Why is it important to keep a promise?",
+    "answer": "Any honest answer is good here. The chapter’s point is that a promise matters, and God helps us keep our promises even when it is hard."
+   }
+  ],
+  "body_text": "“When you make a promise to God, do not be slow to keep it.” — from Ecclesiastes 5 In 1917 Jack went to study at Oxford University. But there was a great war, and most of the young men were away fighting. Because he came from Ireland, Jack did not have to join the army. He chose to join anyway. Jack trained to be an officer at a college called Keble. He shared a room with a young man named Paddy Moore. Paddy was almost exactly his age, and Irish like him. Paddy’s mother, Mrs Moore, had come to Oxford to be near her son, with his little sister Maureen. Mrs Moore was warm and kind, and she made Jack welcome. Jack and Paddy made a promise to each other. If one of them was killed in the war, the one who lived would look after the other one’s parent. Maureen remembered this promise many years later. Jack reached the trenches in France on his nineteenth birthday, 29 November 1917. It was cold and muddy and very hard. In April 1918 there was a battle near a French village. Some sixty enemy soldiers came out of the smoke with their hands up and gave themselves up to Jack. He said he was just glad they wanted to! The next day, 15 April 1918, a shell burst close beside Jack. He was hurt in his hand, his leg and his chest. A kind sergeant called Harry Ayres, who had looked after Jack, was standing next to him, and he was killed. Jack got better in hospital, but a tiny piece of metal stayed in his chest for many years. Paddy did not come home. He had gone missing in the fighting in March, and later his family learned that he had been killed. He was only nineteen. War is a very sad thing, and Jack did not like to talk about it. But even when he did not yet believe in God, God was holding his life in his hands. And Jack had made a promise. Now he would have to keep it. Dear God, please be with everyone who is in danger because of war today. Help me to keep my promises, even when it is hard. Amen.",
+  "word_count": 378
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "en"
+  ],
+  "order": 5,
+  "title": "Keeping His Word",
+  "body_html": "<blockquote>“Who may live close to God? The one who keeps his promise even when it costs him.” — from Psalm 15</blockquote> <p>While Jack was in hospital in London, he wrote to his father and asked him to come. His father was nervous and sad and very set in his ways, and he did not come. But Mrs Moore came straight away. She visited Jack, wrote to him and looked after him.</p> <p>When the war ended, Jack went back to Oxford, and Mrs Moore and Maureen came too. Jack kept his promise to Paddy. He made his home with them, and he went on looking after Mrs Moore for more than thirty years. In letters he sometimes called her his mother, and he had a funny nickname for her: Minto.</p> <p>They did not have much money, and they moved from one cold set of rooms to another. Jack did the shopping, washed the dishes, ran errands, walked the dog and helped Maureen with her Latin. Then he studied whenever he could find a quiet hour.</p> <p>There was one thing Jack did that was wrong. He did not tell his father the truth about where he was living, or that some of the money his father sent was helping the Moores. He kept it hidden for years. Later, when Jack came to know God, he was very sorry for it. He said it was one of the worst things he had ever done.</p> <p>Jack worked very hard at his studies. Three times he won the very top marks in his exams. In 1925 he became a teacher of English at Magdalen College in Oxford. It was a beautiful old college with a park full of deer. His father was overjoyed.</p> <p>Jack kept his promise for more than thirty years, even when it was not easy. But he also learned that hiding the truth hurts people. God wants us to be faithful and to be honest. And when we get it wrong, we can tell God we are sorry.</p> <p><em>Dear God, help me to keep my promises and to tell the truth. When I get things wrong, help me to say sorry. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Who came to see Jack in hospital?",
+    "answer": "Mrs Moore, Paddy’s mother. Jack’s father did not come."
+   },
+   {
+    "question": "What did Jack do that he was sorry for later?",
+    "answer": "He hid the truth from his father about where he was living and about how his father’s money was being used."
+   },
+   {
+    "question": "Is there something you need to say sorry for?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God wants us to be faithful and honest, and he always listens when we tell him we are sorry."
+   }
+  ],
+  "body_text": "“Who may live close to God? The one who keeps his promise even when it costs him.” — from Psalm 15 While Jack was in hospital in London, he wrote to his father and asked him to come. His father was nervous and sad and very set in his ways, and he did not come. But Mrs Moore came straight away. She visited Jack, wrote to him and looked after him. When the war ended, Jack went back to Oxford, and Mrs Moore and Maureen came too. Jack kept his promise to Paddy. He made his home with them, and he went on looking after Mrs Moore for more than thirty years. In letters he sometimes called her his mother, and he had a funny nickname for her: Minto. They did not have much money, and they moved from one cold set of rooms to another. Jack did the shopping, washed the dishes, ran errands, walked the dog and helped Maureen with her Latin. Then he studied whenever he could find a quiet hour. There was one thing Jack did that was wrong. He did not tell his father the truth about where he was living, or that some of the money his father sent was helping the Moores. He kept it hidden for years. Later, when Jack came to know God, he was very sorry for it. He said it was one of the worst things he had ever done. Jack worked very hard at his studies. Three times he won the very top marks in his exams. In 1925 he became a teacher of English at Magdalen College in Oxford. It was a beautiful old college with a park full of deer. His father was overjoyed. Jack kept his promise for more than thirty years, even when it was not easy. But he also learned that hiding the truth hurts people. God wants us to be faithful and to be honest. And when we get it wrong, we can tell God we are sorry. Dear God, help me to keep my promises and to tell the truth. When I get things wrong, help me to say sorry. Amen.",
+  "word_count": 360
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "en"
+  ],
+  "order": 6,
+  "title": "Found by God",
+  "body_html": "<blockquote>“Where could I go to get away from your Spirit? Where could I run from you?” — from Psalm 139</blockquote> <p>At Oxford, Jack made some wonderful friends. One of them was a professor named J. R. R. Tolkien, who loved the old stories of the north just as Jack did. Tolkien was a Christian. So were several of Jack’s other clever friends. Jack noticed it, and it bothered him.</p> <p>Jack did not believe in God, and he did not want to. But the books he loved best kept turning out to be written by Christians. Bit by bit, every reason he had for not believing began to fall down. Later he said it felt as though God was hunting him, and he was running out of places to hide.</p> <p>In 1929 Jack’s father became very ill. Jack went home to Belfast and sat with him for weeks. He went back to Oxford when his father seemed a little better, but soon a telegram called him home. He hurried back, but he was too late. His father had died. Jack was full of sorrow, and sorry for the unkind way he had often treated him.</p> <p>Then one night, alone in his room at Magdalen, Jack stopped running. He knelt down and prayed, and he admitted that God was God. He did not feel happy. He called himself “the most dejected and reluctant convert in all England.” That means he was the gloomiest, most unwilling person ever to come to God!</p> <p>Jack remembered this happening in 1929. People who have studied his letters carefully think it was more likely the summer of 1930. Either way, it was the beginning. Jack started going to church, even though he did not enjoy it, because he believed it was right. But he did not yet believe in Jesus.</p> <p>Jack tried very hard to get away from God. But God never stopped looking for him. Nobody can run so far that God cannot find them. God loves you, too, and he is never far away.</p> <p><em>Dear God, thank you that you never stop looking for us. Thank you that I can never run too far from your love. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Which friend of Jack’s loved the old northern stories too?",
+    "answer": "J. R. R. Tolkien, a professor at Oxford who was a Christian."
+   },
+   {
+    "question": "What did Jack do when he stopped running from God?",
+    "answer": "He knelt down in his room at Magdalen and admitted that God was God, though he did not feel happy about it."
+   },
+   {
+    "question": "Have you ever felt that God was looking for you?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God never stops looking for us, and no one can run too far from his love."
+   }
+  ],
+  "body_text": "“Where could I go to get away from your Spirit? Where could I run from you?” — from Psalm 139 At Oxford, Jack made some wonderful friends. One of them was a professor named J. R. R. Tolkien, who loved the old stories of the north just as Jack did. Tolkien was a Christian. So were several of Jack’s other clever friends. Jack noticed it, and it bothered him. Jack did not believe in God, and he did not want to. But the books he loved best kept turning out to be written by Christians. Bit by bit, every reason he had for not believing began to fall down. Later he said it felt as though God was hunting him, and he was running out of places to hide. In 1929 Jack’s father became very ill. Jack went home to Belfast and sat with him for weeks. He went back to Oxford when his father seemed a little better, but soon a telegram called him home. He hurried back, but he was too late. His father had died. Jack was full of sorrow, and sorry for the unkind way he had often treated him. Then one night, alone in his room at Magdalen, Jack stopped running. He knelt down and prayed, and he admitted that God was God. He did not feel happy. He called himself “the most dejected and reluctant convert in all England.” That means he was the gloomiest, most unwilling person ever to come to God! Jack remembered this happening in 1929. People who have studied his letters carefully think it was more likely the summer of 1930. Either way, it was the beginning. Jack started going to church, even though he did not enjoy it, because he believed it was right. But he did not yet believe in Jesus. Jack tried very hard to get away from God. But God never stopped looking for him. Nobody can run so far that God cannot find them. God loves you, too, and he is never far away. Dear God, thank you that you never stop looking for us. Thank you that I can never run too far from your love. Amen.",
+  "word_count": 363
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "en"
+  ],
+  "order": 7,
+  "title": "A Walk by the River",
+  "body_html": "<blockquote>“The Word became a man and lived among us, and we saw his glory.” — from John 1</blockquote> <p>Jack now believed in God. But he could not understand Jesus. How could a man who died long ago, far away, make any difference to Jack now?</p> <p>On 19 September 1931, Jack invited two friends to dinner at Magdalen: Tolkien and another Christian, Hugo Dyson. Afterwards the three of them went for a walk along Addison’s Walk, a path beside the river behind the college. They talked and talked, late into the night.</p> <p>They talked about old stories. Jack had always loved the ancient tales of a god who dies and comes back to life. Those stories moved him deeply, even when he could not explain them. His friends said: the story of Jesus is like those stories, with all their beauty and power. But there is one great difference. The story of Jesus really happened! God had told his story, not just in words, but in real events, in a real place, at a real time.</p> <p>At about three in the morning Tolkien went home. Jack and Hugo walked on and talked until nearly four.</p> <p>Nine days later, on a sunny morning, Warnie drove Jack to a new zoo called Whipsnade. Warnie had a motorcycle with a sidecar, and Jack rode in the sidecar. When they set off, Jack did not believe that Jesus was the Son of God. By the time they reached the zoo, he did! He said it was like waking up and finding that you are already awake.</p> <p>That Christmas Day, Jack took Communion at Holy Trinity Church, near his home. This time he really believed. And Warnie had come back to faith that year, too. Now the two brothers shared their faith, as they had shared everything since they were small.</p> <p>God sent his Son Jesus into our real world. The story of Jesus is not just a beautiful story. It is true! Jack spent the rest of his life telling people so. You can believe it, too.</p> <p><em>Dear Jesus, thank you for coming into our world. Thank you that your story is true. Help me to know you and love you. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did Jack’s friends tell him about the story of Jesus?",
+    "answer": "That it was like the old stories he loved about a god who dies and comes back, but with one great difference: it really happened."
+   },
+   {
+    "question": "Where was Jack going when he came to believe that Jesus is the Son of God?",
+    "answer": "To Whipsnade Zoo, riding in the sidecar of Warnie’s motorcycle."
+   },
+   {
+    "question": "What do you love most about the story of Jesus?",
+    "answer": "Any honest answer is good here. The chapter’s point is that the story of Jesus is not just beautiful but true, because God really came into our world."
+   }
+  ],
+  "body_text": "“The Word became a man and lived among us, and we saw his glory.” — from John 1 Jack now believed in God. But he could not understand Jesus. How could a man who died long ago, far away, make any difference to Jack now? On 19 September 1931, Jack invited two friends to dinner at Magdalen: Tolkien and another Christian, Hugo Dyson. Afterwards the three of them went for a walk along Addison’s Walk, a path beside the river behind the college. They talked and talked, late into the night. They talked about old stories. Jack had always loved the ancient tales of a god who dies and comes back to life. Those stories moved him deeply, even when he could not explain them. His friends said: the story of Jesus is like those stories, with all their beauty and power. But there is one great difference. The story of Jesus really happened! God had told his story, not just in words, but in real events, in a real place, at a real time. At about three in the morning Tolkien went home. Jack and Hugo walked on and talked until nearly four. Nine days later, on a sunny morning, Warnie drove Jack to a new zoo called Whipsnade. Warnie had a motorcycle with a sidecar, and Jack rode in the sidecar. When they set off, Jack did not believe that Jesus was the Son of God. By the time they reached the zoo, he did! He said it was like waking up and finding that you are already awake. That Christmas Day, Jack took Communion at Holy Trinity Church, near his home. This time he really believed. And Warnie had come back to faith that year, too. Now the two brothers shared their faith, as they had shared everything since they were small. God sent his Son Jesus into our real world. The story of Jesus is not just a beautiful story. It is true! Jack spent the rest of his life telling people so. You can believe it, too. Dear Jesus, thank you for coming into our world. Thank you that your story is true. Help me to know you and love you. Amen.",
+  "word_count": 367
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "en"
+  ],
+  "order": 8,
+  "title": "Friends at the Kilns",
+  "body_html": "<blockquote>“Those who loved the Lord talked together, and the Lord listened and heard them.” — from Malachi 3</blockquote> <p>In 1930 Jack, Warnie and Mrs Moore bought a home of their own, just outside Oxford. It was a low brick house called the Kilns, named after two old brick ovens that stood beside it. It had woods, a big wild garden and a pond. Jack loved it at first sight. He lived there for the rest of his life.</p> <p>Jack swam in the pond in all weathers and walked in the woods every day, with his pipe in his mouth. There was a gardener named Paxford, who always expected the worst and was usually cheerful about it. There were dogs, cats and, for a while, lots of hens. In 1932 Warnie left the army and came to live at the Kilns too. The two brothers were together again.</p> <p>Every Sunday, Jack walked across the fields to Holy Trinity Church for the early service at eight o’clock. He sat near the front, at the side. To the people of the village, he was not a famous writer. He was just Mr Lewis from the Kilns.</p> <p>Jack also had a group of friends who met on Thursday evenings in his rooms at Magdalen. They called themselves the Inklings. Warnie made the tea. Then someone would read aloud something they had written, a story, a poem or a chapter, and the others would say what they thought, sometimes kindly and sometimes not!</p> <p>Tolkien read out a great story he was writing, chapter by chapter, for years. It was called The Lord of the Rings. Tolkien said that without Jack’s encouragement he would never have finished it.</p> <p>Jack’s friends loved God and told each other the truth. Good friends help us to grow, and church is a place where we belong to God’s family. God listens when his friends talk together about him.</p> <p><em>Dear God, thank you for my friends and for my church family. Help me to be a good friend who encourages others. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What was Jack’s house called, and why?",
+    "answer": "The Kilns, because two old brick ovens, called kilns, stood beside it."
+   },
+   {
+    "question": "Who were the Inklings?",
+    "answer": "A group of Jack’s friends who met on Thursday evenings to read their writing aloud and talk. Tolkien read The Lord of the Rings to them."
+   },
+   {
+    "question": "How could you encourage a friend this week?",
+    "answer": "Any honest answer is good here. The chapter’s point is that good friends help each other to grow, and God listens when his friends talk together."
+   }
+  ],
+  "body_text": "“Those who loved the Lord talked together, and the Lord listened and heard them.” — from Malachi 3 In 1930 Jack, Warnie and Mrs Moore bought a home of their own, just outside Oxford. It was a low brick house called the Kilns, named after two old brick ovens that stood beside it. It had woods, a big wild garden and a pond. Jack loved it at first sight. He lived there for the rest of his life. Jack swam in the pond in all weathers and walked in the woods every day, with his pipe in his mouth. There was a gardener named Paxford, who always expected the worst and was usually cheerful about it. There were dogs, cats and, for a while, lots of hens. In 1932 Warnie left the army and came to live at the Kilns too. The two brothers were together again. Every Sunday, Jack walked across the fields to Holy Trinity Church for the early service at eight o’clock. He sat near the front, at the side. To the people of the village, he was not a famous writer. He was just Mr Lewis from the Kilns. Jack also had a group of friends who met on Thursday evenings in his rooms at Magdalen. They called themselves the Inklings. Warnie made the tea. Then someone would read aloud something they had written, a story, a poem or a chapter, and the others would say what they thought, sometimes kindly and sometimes not! Tolkien read out a great story he was writing, chapter by chapter, for years. It was called The Lord of the Rings. Tolkien said that without Jack’s encouragement he would never have finished it. Jack’s friends loved God and told each other the truth. Good friends help us to grow, and church is a place where we belong to God’s family. God listens when his friends talk together about him. Dear God, thank you for my friends and for my church family. Help me to be a good friend who encourages others. Amen.",
+  "word_count": 341
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "en"
+  ],
+  "order": 9,
+  "title": "A Voice in Wartime",
+  "body_html": "<blockquote>“Always be ready to tell anyone who asks about the hope you have, and do it gently.” — from 1 Peter 3</blockquote> <p>In 1939 another great war began. Jack was forty, too old to fight. But within days, a group of schoolgirls from London came to live at the Kilns, to be safe from the bombs. More children came over the next few years. Jack had never had much to do with children, but he found that he rather enjoyed them!</p> <p>One Sunday in 1940, sitting in church, Jack had an idea for a book. It would be letters from an old devil to a young devil, teaching him how to lead a man away from God. Everything in it was upside down! It was called The Screwtape Letters, and people loved it. When the letters first came out in a paper, Jack was paid for each one. He gave the money away to help widows.</p> <p>Then the BBC asked Jack to give talks on the radio. In 1941, while the war went on, people all over Britain switched on their radios and heard his deep, friendly voice explaining what Christians believe. He spoke plainly, like someone talking sense across a kitchen table. Hundreds of people wrote to him. The talks were later made into a book, Mere Christianity, which has helped many, many people come to faith.</p> <p>Jack also travelled to air force bases to talk to young airmen. At first he found it very hard. He learned to use simple words and to listen to their questions.</p> <p>Jack became famous. He knew that being famous could make him proud. So almost every week, for twelve years, he told his sins to a wise old priest called Father Adams. And he gave away most of the money from his books to people in need.</p> <p>Jack was not a minister, but he was ready to tell people about Jesus in words they could understand. You do not need to be clever or famous to share your hope in Jesus. You can simply tell someone, kindly, what Jesus means to you.</p> <p><em>Dear Jesus, help me to be ready to tell others about you, gently and kindly. Keep me from being proud. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Who came to live at the Kilns when the war began?",
+    "answer": "Schoolgirls from London, who were sent to the countryside to be safe from the bombs."
+   },
+   {
+    "question": "What did Jack do with the money he was paid for The Screwtape Letters?",
+    "answer": "He gave it away to help widows. Later he gave away most of the money from his books to people in need."
+   },
+   {
+    "question": "Who could you tell about Jesus, and what would you say?",
+    "answer": "Any honest answer is good here. The chapter’s point is that we do not need to be clever or famous to share our hope in Jesus, kindly and simply."
+   }
+  ],
+  "body_text": "“Always be ready to tell anyone who asks about the hope you have, and do it gently.” — from 1 Peter 3 In 1939 another great war began. Jack was forty, too old to fight. But within days, a group of schoolgirls from London came to live at the Kilns, to be safe from the bombs. More children came over the next few years. Jack had never had much to do with children, but he found that he rather enjoyed them! One Sunday in 1940, sitting in church, Jack had an idea for a book. It would be letters from an old devil to a young devil, teaching him how to lead a man away from God. Everything in it was upside down! It was called The Screwtape Letters, and people loved it. When the letters first came out in a paper, Jack was paid for each one. He gave the money away to help widows. Then the BBC asked Jack to give talks on the radio. In 1941, while the war went on, people all over Britain switched on their radios and heard his deep, friendly voice explaining what Christians believe. He spoke plainly, like someone talking sense across a kitchen table. Hundreds of people wrote to him. The talks were later made into a book, Mere Christianity, which has helped many, many people come to faith. Jack also travelled to air force bases to talk to young airmen. At first he found it very hard. He learned to use simple words and to listen to their questions. Jack became famous. He knew that being famous could make him proud. So almost every week, for twelve years, he told his sins to a wise old priest called Father Adams. And he gave away most of the money from his books to people in need. Jack was not a minister, but he was ready to tell people about Jesus in words they could understand. You do not need to be clever or famous to share your hope in Jesus. You can simply tell someone, kindly, what Jesus means to you. Dear Jesus, help me to be ready to tell others about you, gently and kindly. Keep me from being proud. Amen.",
+  "word_count": 371
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "en"
+  ],
+  "order": 10,
+  "title": "Through the Wardrobe",
+  "body_html": "<blockquote>“Unless you turn and become like little children, you shall not enter into the kingdom of heaven.” — from Matthew 18</blockquote> <p>Ever since he was about sixteen, Jack had carried a picture in his head: a faun, half man and half goat, carrying an umbrella and parcels through a snowy wood. When the London children came to the Kilns in 1939, he began a story about four children sent away from London who find their way into another world. Then he put it away.</p> <p>Nearly ten years later, he took it out again and finished it. When he read it to Tolkien, Tolkien did not like it at all! But another friend, Roger Lancelyn Green, loved it. So Jack kept going.</p> <p>In 1950 The Lion, the Witch and the Wardrobe was published. Six more books followed, one each year. Together they are called The Chronicles of Narnia. In them is the great lion Aslan, who is good and strong and wonderful. Jack said he had imagined what the Son of God might be like if there were another world and he came into it. The last book won a famous prize for children’s books.</p> <p>Children all over the world wrote to Jack, and he wrote back to them, by hand, with a pen dipped in ink, because he never learned to type. Once a child worried that he loved Aslan more than Jesus. Jack wrote back gently: the things you love about Aslan are the very things Jesus said and did. So really, you were loving Jesus all along!</p> <p>All this time, Jack was still caring for Mrs Moore, who had grown old and ill. When she had to go into a nursing home, he visited her almost every day, until she died in 1951. He had kept his promise to Paddy to the very end.</p> <p>Jack was one of the cleverest men in the world. But some of the most important things he wanted to say, he said in stories for children. Jesus loves children, and he says that everyone must come to him like a child.</p> <p><em>Dear Jesus, thank you that you love children. Help me to come to you with a trusting heart, like a child. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What picture had Jack carried in his head since he was about sixteen?",
+    "answer": "A faun carrying an umbrella and parcels through a snowy wood."
+   },
+   {
+    "question": "What did Jack tell the child who worried about loving Aslan more than Jesus?",
+    "answer": "That the things the child loved about Aslan were the very things Jesus said and did."
+   },
+   {
+    "question": "What does it mean to come to Jesus like a child?",
+    "answer": "Any honest answer is good here. The chapter’s point is that Jesus loves children and wants everyone to come to him with simple, trusting hearts."
+   }
+  ],
+  "body_text": "“Unless you turn and become like little children, you shall not enter into the kingdom of heaven.” — from Matthew 18 Ever since he was about sixteen, Jack had carried a picture in his head: a faun, half man and half goat, carrying an umbrella and parcels through a snowy wood. When the London children came to the Kilns in 1939, he began a story about four children sent away from London who find their way into another world. Then he put it away. Nearly ten years later, he took it out again and finished it. When he read it to Tolkien, Tolkien did not like it at all! But another friend, Roger Lancelyn Green, loved it. So Jack kept going. In 1950 The Lion, the Witch and the Wardrobe was published. Six more books followed, one each year. Together they are called The Chronicles of Narnia. In them is the great lion Aslan, who is good and strong and wonderful. Jack said he had imagined what the Son of God might be like if there were another world and he came into it. The last book won a famous prize for children’s books. Children all over the world wrote to Jack, and he wrote back to them, by hand, with a pen dipped in ink, because he never learned to type. Once a child worried that he loved Aslan more than Jesus. Jack wrote back gently: the things you love about Aslan are the very things Jesus said and did. So really, you were loving Jesus all along! All this time, Jack was still caring for Mrs Moore, who had grown old and ill. When she had to go into a nursing home, he visited her almost every day, until she died in 1951. He had kept his promise to Paddy to the very end. Jack was one of the cleverest men in the world. But some of the most important things he wanted to say, he said in stories for children. Jesus loves children, and he says that everyone must come to him like a child. Dear Jesus, thank you that you love children. Help me to come to you with a trusting heart, like a child. Amen.",
+  "word_count": 370
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "en"
+  ],
+  "order": 11,
+  "title": "A Wedding in a Hospital",
+  "body_html": "<blockquote>“The prayer of faith will save the sick, and the Lord will raise them up.” — from James 5</blockquote> <p>In New York there lived a clever writer named Joy Davidman. She grew up not believing in God. One night in 1946, when her husband was in trouble and could not come home, she was alone and frightened with her two little boys. For the first time in her life, she felt that God was there with her. She found herself on her knees, praying.</p> <p>Joy read Jack’s books, and in 1950 she wrote him a letter. He wrote back. In 1952 she came to England, and they met for lunch in Oxford. Joy was funny and fearless, and she could argue with Jack and win! Warnie liked her too. Later she came to live in England with her sons, David and Douglas, and her first marriage ended.</p> <p>In 1954 Jack became a professor at Cambridge University, but he came home to the Kilns at weekends.</p> <p>In 1956 Joy was told she could not stay in England any longer. Jack did not want her and the boys to be sent away. So he married her in a short, simple ceremony at an office, so that she could stay. He thought of it as helping a friend.</p> <p>But a few months later Joy’s leg bone broke, and the doctors found that she had cancer. They did not think she would live long. Then Jack realised something: he loved her! He wanted to be truly married to her, before God.</p> <p>On 21 March 1957, a priest named Peter Bide, who had once been Jack’s student, married them in Joy’s hospital room. Then he laid his hands on her and prayed for her healing. To her doctors’ great surprise, Joy began to get better! Her bones began to heal, and by the end of the year she could walk with a stick.</p> <p>Jack and Joy believed that God had heard their prayers. God does not always heal people in the way we ask. But he always hears us, and we can always bring the people we love to him.</p> <p><em>Dear God, thank you that you hear our prayers. Please be with everyone who is ill, and help me to pray for them. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "How did Joy Davidman come to know God?",
+    "answer": "One night, when she was alone and frightened, she felt that God was there with her, and she knelt down and prayed."
+   },
+   {
+    "question": "What happened after Peter Bide prayed for Joy?",
+    "answer": "To the doctors’ great surprise, she began to get better. Her bones began to heal, and she was able to walk again with a stick."
+   },
+   {
+    "question": "Who would you like to pray for today?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God always hears our prayers, and we can always bring the people we love to him."
+   }
+  ],
+  "body_text": "“The prayer of faith will save the sick, and the Lord will raise them up.” — from James 5 In New York there lived a clever writer named Joy Davidman. She grew up not believing in God. One night in 1946, when her husband was in trouble and could not come home, she was alone and frightened with her two little boys. For the first time in her life, she felt that God was there with her. She found herself on her knees, praying. Joy read Jack’s books, and in 1950 she wrote him a letter. He wrote back. In 1952 she came to England, and they met for lunch in Oxford. Joy was funny and fearless, and she could argue with Jack and win! Warnie liked her too. Later she came to live in England with her sons, David and Douglas, and her first marriage ended. In 1954 Jack became a professor at Cambridge University, but he came home to the Kilns at weekends. In 1956 Joy was told she could not stay in England any longer. Jack did not want her and the boys to be sent away. So he married her in a short, simple ceremony at an office, so that she could stay. He thought of it as helping a friend. But a few months later Joy’s leg bone broke, and the doctors found that she had cancer. They did not think she would live long. Then Jack realised something: he loved her! He wanted to be truly married to her, before God. On 21 March 1957, a priest named Peter Bide, who had once been Jack’s student, married them in Joy’s hospital room. Then he laid his hands on her and prayed for her healing. To her doctors’ great surprise, Joy began to get better! Her bones began to heal, and by the end of the year she could walk with a stick. Jack and Joy believed that God had heard their prayers. God does not always heal people in the way we ask. But he always hears us, and we can always bring the people we love to him. Dear God, thank you that you hear our prayers. Please be with everyone who is ill, and help me to pray for them. Amen.",
+  "word_count": 379
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-s-lewis-a-life-children",
+   "en"
+  ],
+  "order": 12,
+  "title": "Going Home",
+  "body_html": "<blockquote>“I have fought a good fight, I have finished my course, I have kept the faith.” — from 2 Timothy 4</blockquote> <p>Jack and Joy had three happy years together. Joy made the old house at the Kilns bright and cosy again. They went to Ireland, and Jack showed her the hills he had loved as a boy. Then the cancer came back. In the spring of 1960 they went on a trip to Greece, a place Jack had read about all his life. A few months later, on 13 July 1960, Joy died, with Jack beside her.</p> <p>Jack was full of grief. He wrote down his sad feelings in notebooks, honestly, even his hardest questions for God. Slowly, he found peace again. Later the notebooks became a little book, A Grief Observed, which has helped many sad people to know they are not alone. Jack also looked after Joy’s two sons, David and Douglas, and gave them a home at the Kilns in the holidays.</p> <p>Soon Jack himself grew ill. In 1963 he became so ill that he was not expected to live. But he woke up and asked for a cup of tea! He was not afraid of dying. He and Warnie spent quiet weeks together, reading, doing crosswords and remembering when they were boys.</p> <p>On 22 November 1963, a week before his sixty-fifth birthday, Jack died at home at the Kilns. He was buried in the churchyard at Holy Trinity. Ten years later, Warnie was buried in the same grave. The brothers who had made up Boxen together were together again.</p> <p>Today, millions of people have read Jack’s books. Children still walk through the wardrobe into Narnia and meet Aslan, and some of them later meet Jesus in the Bible and know him.</p> <p>Jack ran away from God for many years. But God found him, and Jack kept the faith to the end, through happy days and very sad ones. God holds on to everyone who trusts him, and he will hold on to you.</p> <p><em>Dear God, thank you for C. S. Lewis and the stories you gave him to tell. Help me to trust you on happy days and sad days, and to keep the faith all my life. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did Jack do with his sad feelings after Joy died?",
+    "answer": "He wrote them down honestly in notebooks. Later they became a little book, A Grief Observed, that has helped many sad people."
+   },
+   {
+    "question": "What did Jack ask for when he woke up after being very ill in 1963?",
+    "answer": "A cup of tea!"
+   },
+   {
+    "question": "What helps you to trust God on sad days?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God holds on to everyone who trusts him, on happy days and sad ones."
+   }
+  ],
+  "body_text": "“I have fought a good fight, I have finished my course, I have kept the faith.” — from 2 Timothy 4 Jack and Joy had three happy years together. Joy made the old house at the Kilns bright and cosy again. They went to Ireland, and Jack showed her the hills he had loved as a boy. Then the cancer came back. In the spring of 1960 they went on a trip to Greece, a place Jack had read about all his life. A few months later, on 13 July 1960, Joy died, with Jack beside her. Jack was full of grief. He wrote down his sad feelings in notebooks, honestly, even his hardest questions for God. Slowly, he found peace again. Later the notebooks became a little book, A Grief Observed, which has helped many sad people to know they are not alone. Jack also looked after Joy’s two sons, David and Douglas, and gave them a home at the Kilns in the holidays. Soon Jack himself grew ill. In 1963 he became so ill that he was not expected to live. But he woke up and asked for a cup of tea! He was not afraid of dying. He and Warnie spent quiet weeks together, reading, doing crosswords and remembering when they were boys. On 22 November 1963, a week before his sixty-fifth birthday, Jack died at home at the Kilns. He was buried in the churchyard at Holy Trinity. Ten years later, Warnie was buried in the same grave. The brothers who had made up Boxen together were together again. Today, millions of people have read Jack’s books. Children still walk through the wardrobe into Narnia and meet Aslan, and some of them later meet Jesus in the Bible and know him. Jack ran away from God for many years. But God found him, and Jack kept the faith to the end, through happy days and very sad ones. God holds on to everyone who trusts him, and he will hold on to you. Dear God, thank you for C. S. Lewis and the stories you gave him to tell. Help me to trust you on happy days and sad days, and to keep the faith all my life. Amen.",
+  "word_count": 373
+ }
+}
+]

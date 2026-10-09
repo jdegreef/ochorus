@@ -36,12 +36,14 @@ export const PROMPT_SOURCES = [
 	'highlight_toast',
 	'chapter_end',
 	'plan_start',
+	'plan_day',
 	'article',
 	'quote',
 	'footer',
 	'header',
 	'menu',
-	'feedback'
+	'feedback',
+	'one_tap'
 ] as const;
 
 export const SIGNUP_SOURCES = [...SIGNUP_VARIANTS, ...PROMPT_SOURCES] as const;
@@ -58,6 +60,19 @@ export function isSignupSource(value: unknown): value is SignupSource {
 /** Record that the reader followed `source` to the sign-up form (last wins). */
 export function noteSignupSource(source: SignupSource, now = Date.now()): void {
 	writeJSON(KEY, { source, at: now });
+}
+
+/**
+ * `noteSignupSource`, plus an undo that puts back exactly what was there
+ * before (timestamp included). For a sign-in that has to write its credit
+ * before it knows whether it worked (One Tap: the auth listener reads the
+ * credit while the sign-in is still in flight), so a failure doesn't leave a
+ * false credit behind for the next 24 hours.
+ */
+export function noteSignupSourceUndoable(source: SignupSource): () => void {
+	const previous = readJSON<unknown>(KEY, null);
+	noteSignupSource(source);
+	return () => void writeJSON(KEY, previous);
 }
 
 /** The source a sign-up made now is credited to, or `null` for none. */

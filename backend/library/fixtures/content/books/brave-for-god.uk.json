@@ -48,9 +48,9 @@
   "publication_year": null,
   "source_type": "ai_unreviewed",
   "source_url": "",
-  "attribution": "Оригінальна книжка Ochorus, написана для юних читачів. Історії правдиві; розповідь — наша власна.",
+  "attribution": "© Ochorus. Оригінальна книжка Ochorus, написана для юних читачів. Історії правдиві; розповідь — наша власна.",
   "cover_url": "/covers/art/brave-for-god.jpg",
-  "pdf_url": "",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/brave-for-god.uk.pdf?download=brave-for-god.uk.pdf",
   "cover_color": "#8a3f4a",
   "series": [
    "brave-for-god"

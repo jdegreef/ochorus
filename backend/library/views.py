@@ -6,6 +6,7 @@ Books are addressed by their canonical ``slug`` plus a ``language`` query param
 
 import hashlib
 import logging
+import re
 
 from django.conf import settings
 from django.core.cache import cache
@@ -32,12 +33,14 @@ from .http_cache import (
 )
 from .hubs import Hubs
 from .languages import entry as language_entry
+from .leader_guides import chapter_extras, guide_editions, guide_for
 from .localization import language_from_request
 from .models import (
     SERMON_CARD_DEFER,
     Article,
     Author,
     Book,
+    BookPerson,
     Chapter,
     ContentRevision,
     Plan,
@@ -88,6 +91,7 @@ from .serializers import (
     article_lead_book_map,
     article_topic_map,
     book_topic_map,
+    lead_book_cards,
     plan_article_index,
     plan_book_index,
     plan_chapter_index,
@@ -858,12 +862,21 @@ AUDIENCE_STARTS = {
     Series.Audience.TEENS: ("around-the-wicket-gate", "pilgrims-progress-teens", "all-of-grace"),
 }
 
+#: Hubs where a series holding a single book in the page's language shows that
+#: book as a card, not as a one-cover series tile: the teens hub sells its books
+#: one by one (each card leads with its hook), and a lone volume in a tile is a
+#: book hidden behind a click (Real Questions, while it is Book 1 alone). The
+#: book heads More to read rather than taking its place in the topic's order. Not
+#: the young readers' hub, whose path cards point at its series by name (Brave
+#: for God has one translated volume in several languages).
+SOLO_SERIES_AS_BOOKS = {Series.Audience.TEENS}
+
 
 def _audience_topic(audience: str):
     """The audience's curated topic, with its entries and translations — or None."""
     return (
         Topic.objects.filter(is_published=True, slug=AUDIENCE_TOPICS[audience])
-        .prefetch_related("translations", "entries")
+        .prefetch_related("translations", "entries", "article_entries")
         .first()
     )
 
@@ -927,6 +940,131 @@ class AudienceLanguagesView(PublicContentCacheMixin, APIView):
         )
 
 
+#: How many faces a hub's people strip carries at most — a strip, not a roll.
+AUDIENCE_PEOPLE_MAX = 16
+
+#: What parts a story chapter's "Name: The Boy Who Looked" title, in every
+#: script the anthologies are translated into (Amharic writes ፦).
+_STORY_TITLE_SEP = re.compile(r"\s*[:：፦]\s*")
+
+
+def split_story_title(title: str) -> tuple[str, str] | None:
+    """``(name, hook)`` from a story chapter's "Name: The Boy Who Looked"
+    title, or None when it isn't in that shape."""
+    parts = _STORY_TITLE_SEP.split(title, maxsplit=1)
+    return (parts[0], parts[1]) if len(parts) == 2 and all(parts) else None
+
+
+def _audience_people(series_rows: list[dict], language: str) -> list[dict]:
+    """The hub's people strip: one face per story chapter of its series'
+    anthologies (``BookPerson.chapter``), in reading order — series, volume,
+    chapter. Name and hook come from the chapter's own title in ``language``
+    ("Charles Spurgeon: The Boy Who Looked"), so a translated anthology brings
+    its names and hooks with it; a chapter missing in the language drops out,
+    and a chapter told about two people (Jim and Elisabeth Elliot) is one face,
+    the first person's."""
+    order = {slug: i for i, slug in enumerate(s for row in series_rows for s in row["books"])}
+    members = sorted(
+        BookPerson.objects.filter(book_slug__in=order, chapter__isnull=False)
+        .select_related("person")
+        .only("book_slug", "chapter", "sort_order", "person__slug", "person__name",
+              "person__photo_url"),
+        key=lambda m: (order[m.book_slug], m.chapter, m.sort_order),
+    )
+    if not members:
+        return []
+    # The member books' member chapter numbers — a superset of the stories
+    # (dropped below), not every chapter of every hub series book.
+    chapters = {
+        (slug, n): (title, words)
+        for slug, n, title, words in Chapter.objects.filter(
+            book__language=language,
+            book__is_published=True,
+            book__slug__in={m.book_slug for m in members},
+            order__in={m.chapter for m in members},
+        ).values_list("book__slug", "order", "title", "word_count")
+    }
+    people: dict[tuple[str, int], dict] = {}
+    for m in members:
+        key = (m.book_slug, m.chapter)
+        if key in people or key not in chapters:
+            continue
+        title, words = chapters[key]
+        name, hook = split_story_title(title) or (m.person.name, title)
+        people[key] = {
+            "slug": m.person.slug,
+            "name": name,
+            "hook": hook,
+            "photo_url": m.person.photo_url,
+            "book": m.book_slug,
+            "chapter": m.chapter,
+            "words": words or None,
+        }
+        if len(people) >= AUDIENCE_PEOPLE_MAX:
+            break
+    return list(people.values())
+
+
+class BookGuideView(PublicContentCacheMixin, APIView):
+    """A young-reader edition's printable leader's guide (/books/<slug>/guide).
+
+    The guide's own file (``library/leader_guides``) holds the leader's intro
+    and, per week, a summary, a memory verse and an activity; each week is
+    joined here to its chapter's title, study questions, opening verse and
+    closing prayer, which the book already carries. 404 when the edition is
+    unpublished or has no guide — never an English fallback.
+    """
+
+    def get(self, request, slug):
+        language = _language(request)
+        guide = guide_for(slug, language)
+        if guide is None:
+            raise Http404("No leader's guide for this edition")
+        book = get_object_or_404(_book_shelf(language), slug=slug)
+        chapters = {
+            order: (title, questions, body)
+            for order, title, questions, body in book.chapters.values_list(
+                "order", "title", "study_questions", "body_html"
+            )
+        }
+        weeks = []
+        for week in guide["weeks"]:
+            # A week whose chapter is not in this edition (the fixture gate
+            # forbids it, but the DB can drift from the file) is dropped rather
+            # than rendered as a blank session with a dead "Read chapter" link.
+            if week["chapter"] not in chapters:
+                continue
+            title, questions, body = chapters[week["chapter"]]
+            weeks.append(
+                {
+                    "chapter": week["chapter"],
+                    "title": title,
+                    "summary": week["summary"],
+                    "memory_verse": week["memory_verse"],
+                    "activity": week["activity"],
+                    "questions": questions or [],
+                    **chapter_extras(body),
+                }
+            )
+        # The page's hreflang: the languages with a guide file AND a published
+        # edition, so no alternate points at a 404.
+        guided = {lang for s, lang in guide_editions() if s == slug}
+        available = sorted(
+            Book.objects.filter(slug=slug, is_published=True, language__in=guided)
+            .values_list("language", flat=True)
+            .distinct()
+        )
+        ctx = {"request": request, "language": language, "book_topics": {}}
+        return Response(
+            {
+                "book": BookListSerializer(book, context=ctx).data,
+                "available_languages": available,
+                "intro": guide["intro"],
+                "weeks": weeks,
+            }
+        )
+
+
 class AudienceShelfView(PublicContentCacheMixin, APIView):
     """Everything written for one young audience in the requested language —
     the /young-readers/ and /teens/ hubs, which gather what /series, /originals,
@@ -934,19 +1072,27 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
 
     Four parts, each book appearing once, in this order of claim:
 
-    - ``series`` — the series whose ``audience`` is this one (the /series rows);
+    - ``series`` — the series whose ``audience`` is this one (the /series rows),
+      less one holding a single book here on a ``SOLO_SERIES_AS_BOOKS`` hub,
+      whose book leads ``more`` (or joins ``editions``) as a card instead;
     - ``editions`` — the retold editions (``-children`` / ``-teens``) that no
       such series already holds;
     - ``more`` — the rest of the audience's curated topic shelf, when that
       topic exists in this language (``topic`` names it for the page's link);
     - ``plans`` — published plans that read ONLY these books, so an adult plan
-      that happens to visit one of them never lands on a children's page.
+      that happens to visit one of them never lands on a children's page;
+    - ``articles`` — the topic's articles in this language (the teens' Big
+      Questions), in its curator's order; companions, so they claim no book.
 
-    ``start`` is the one book a newcomer should open first (``AUDIENCE_STARTS``);
+    ``people`` is the series' anthologies told as faces, each opening its
+    chapter (``_audience_people``). ``start`` is the one book a newcomer should
+    open first (``AUDIENCE_STARTS``);
     ``printable`` lists the slugs among them with a free PDF / EPUB
-    (``export_policy``), for the page's "print it" line; ``languages``, every
-    language the hub has something in (its hreflang). Nothing here falls back
-    to English: a language with no rows gets empty lists, and the page hides.
+    (``export_policy``), for the page's "print it" line; ``leader_guides``, the
+    book cards among them with a printable leader's guide
+    (``library/leader_guides``); ``languages``, every language the hub has
+    something in (its hreflang). Nothing here falls back to English: a language
+    with no rows gets empty lists, and the page hides.
     """
 
     def get(self, request, audience):
@@ -959,12 +1105,18 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
         if topic is not None and not topic.is_translated_into(language):
             topic = None
 
-        series = _series_rows(language, audience)
+        series = all_series = _series_rows(language, audience)
+        solo = []
+        if audience in SOLO_SERIES_AS_BOOKS:
+            solo = [row["books"][0] for row in series if row["book_count"] == 1]
+            series = [row for row in series if row["book_count"] != 1]
         claimed = {slug for row in series for slug in row["books"]}
 
         topic_slugs = [e.book_slug for e in topic.entries.all()] if topic else []
         books = list(
-            _book_shelf(language).filter(Q(slug__endswith=suffix) | Q(slug__in=topic_slugs))
+            _book_shelf(language).filter(
+                Q(slug__endswith=suffix) | Q(slug__in=topic_slugs) | Q(slug__in=solo)
+            )
         )
         bases = _retold_bases([b.slug for b in books], suffix)
         editions = [
@@ -974,8 +1126,12 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
         # The topic's own order — its curator's — not the shelf's. An original
         # whose slug merely ends in the suffix (Divine Songs) reaches the hub here.
         by_slug = {b.slug: b for b in books}
+        # A lone series volume leads — the newest series' first book, which a
+        # topic-ordered shelf would otherwise bury at its end.
         more = [
-            by_slug[s] for s in dict.fromkeys(topic_slugs) if s in by_slug and s not in claimed
+            by_slug[s]
+            for s in dict.fromkeys([*solo, *topic_slugs])
+            if s in by_slug and s not in claimed
         ]
         claimed |= {b.slug for b in more}
         hub_books = [b.slug for b in editions + more]
@@ -998,15 +1154,53 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
         )
 
         printable = sorted(slug for slug in claimed if (slug, language) in EXPORT_EDITIONS)
+
+        # The hub's books that have a printable leader's guide, in shelf order:
+        # the series' volumes, then the retold editions, then the rest.
+        guided = {s for s, lang in guide_editions() if lang == language}
+        guide_slugs = [
+            s
+            for s in dict.fromkeys(
+                [*(s for row in series for s in row["books"]), *(b.slug for b in editions + more)]
+            )
+            if s in guided
+        ]
+        # Editions and the topic's books are already in memory; only a series
+        # volume the shelf query did not fetch costs a (single) query.
+        guide_books = {s: by_slug[s] for s in guide_slugs if s in by_slug}
+        unfetched = [s for s in guide_slugs if s not in guide_books]
+        if unfetched:
+            guide_books |= {b.slug: b for b in _book_shelf(language).filter(slug__in=unfetched)}
+        leader_guides = [guide_books[s] for s in guide_slugs if s in guide_books]
+
+        # The topic's articles here, in its curator's order — the teens' Big
+        # Questions (doubt, suffering, the resurrection…) that meet a reader at
+        # the question and point on to the books. Same rows the topic page shows.
+        article_order = [e.article_slug for e in topic.article_entries.all()] if topic else []
+        by_article = {
+            a.slug: a
+            for a in Article.objects.filter(
+                slug__in=article_order, language=language, is_published=True
+            ).defer("body_html")
+        }
+        articles = [by_article[s] for s in article_order if s in by_article]
+        article_ctx = {
+            "request": request,
+            "language": language,
+            "article_lead_books": lead_book_cards({a.slug: a.related for a in articles}, language),
+        }
         # No topic chips: nothing on the hub filters or shows them.
         ctx = {"request": request, "language": language, "book_topics": {}}
         plan_ctx = {"request": request, **_plan_card_context(plans, language)}
         return Response(
             {
                 "series": series,
+                "people": _audience_people(all_series, language),
                 "editions": BookListSerializer(editions, many=True, context=ctx).data,
                 "more": BookListSerializer(more, many=True, context=ctx).data,
                 "plans": PlanListSerializer(plans, many=True, context=plan_ctx).data,
+                "articles": ArticleListSerializer(articles, many=True, context=article_ctx).data,
+                "leader_guides": BookListSerializer(leader_guides, many=True, context=ctx).data,
                 "topic": {"slug": topic.slug, "title": topic.title_for(language)} if topic else None,
                 "start": start,
                 "printable": printable,
