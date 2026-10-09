@@ -5,6 +5,7 @@ import {
 	AUDIENCE_HUBS,
 	TEENS_HUB,
 	challengeState,
+	nextRung,
 	hubFor,
 	YOUNG_READERS_HUB,
 	heroCovers,
@@ -14,7 +15,13 @@ import {
 	printableLinks,
 	startPick
 } from './audienceHub';
-import type { AudienceShelf, BookSummary, BookTile, SeriesSummary } from './library-public';
+import type {
+	AudienceShelf,
+	BookSummary,
+	BookTile,
+	EditionRung,
+	SeriesSummary
+} from './library-public';
 import type { ProgressRecord } from './reading-schema';
 
 const book = (slug: string): BookSummary =>
@@ -120,6 +127,22 @@ describe('challengeState', () => {
 
 	it('is null for a series with no volumes here', () => {
 		expect(challengeState([], 30, of({}))).toBeNull();
+	});
+});
+
+describe('nextRung', () => {
+	const rung = (slug: string, r: EditionRung['rung']): EditionRung => ({ ...tile(slug), rung: r });
+	const ladder = [rung('pp-children', 'children'), rung('pp-teens', 'teens'), rung('pp', 'full')];
+
+	it('is the next step up from the edition in hand', () => {
+		expect(nextRung(ladder, 'pp-children')?.slug).toBe('pp-teens');
+		expect(nextRung(ladder, 'pp-teens')?.slug).toBe('pp');
+	});
+
+	it('is null at the top, off the ladder, or with no ladder', () => {
+		expect(nextRung(ladder, 'pp')).toBeNull();
+		expect(nextRung(ladder, 'other')).toBeNull();
+		expect(nextRung(undefined, 'pp-children')).toBeNull();
 	});
 });
 

@@ -86,6 +86,7 @@ from .serializers import (
     TopicListSerializer,
     _book_cover,
     _edition_base_slug,
+    _edition_family,
     _is_retold,
     _retold_bases,
     article_lead_book_map,
@@ -862,6 +863,15 @@ AUDIENCE_STARTS = {
     Series.Audience.TEENS: ("around-the-wicket-gate", "pilgrims-progress-teens", "all-of-grace"),
 }
 
+#: Each hub's spotlight — the one story the hub sells hardest, set out as a
+#: banner with its pitch (the book's own ``hook``) and its edition ladder. The
+#: first published in the page's language wins; none, no banner. Teens only:
+#: the young-readers hub's start pick is already its Pilgrim's Progress, and
+#: one book on two banners is a louder page, not a better one.
+AUDIENCE_SPOTLIGHTS = {
+    Series.Audience.TEENS: ("pilgrims-progress-teens",),
+}
+
 #: Hubs where a series holding a single book in the page's language shows that
 #: book as a card, not as a one-cover series tile: the teens hub sells its books
 #: one by one (each card leads with its hook), and a lone volume in a tile is a
@@ -1088,6 +1098,47 @@ class BookGuideView(PublicContentCacheMixin, APIView):
         )
 
 
+#: A ladder rung's name for each audience's edition suffix.
+_EDITION_RUNG = {"young_readers": "children", "teens": "teens"}
+
+
+def _edition_rung(slug: str) -> str:
+    """Which step of the edition ladder a slug is: children, teens or full —
+    read off ``AUDIENCE_EDITION_SUFFIX``, the one place the suffixes are spelled."""
+    for audience, suffix in AUDIENCE_EDITION_SUFFIX.items():
+        if slug.endswith(suffix):
+            return _EDITION_RUNG[audience]
+    return "full"
+
+
+def _edition_ladders(slugs, language: str) -> dict[str, list[dict]]:
+    """For each young-reader edition in ``slugs``, its family's published
+    editions in ``language`` — itself included — as cover tiles with their rung,
+    youngest first (children → teens → full): the hub's "Ready for more" step
+    and the spotlight's ladder. A family with one edition here has no ladder.
+    One query for all of them; the family is the slug convention's
+    (``_edition_family``), as on the book page."""
+    families = {s: _edition_family(_edition_base_slug(s)) for s in slugs}
+    books = {
+        b.slug: b
+        for b in Book.objects.filter(
+            slug__in={m for fam in families.values() for m in fam},
+            language=language,
+            is_published=True,
+        ).select_related("author")
+    }
+    ladders = {}
+    for slug, family in families.items():
+        rungs = [
+            {"rung": _edition_rung(m), **_book_cover(books[m])}
+            for m in reversed(family)
+            if m in books
+        ]
+        if len(rungs) > 1:
+            ladders[slug] = rungs
+    return ladders
+
+
 class AudienceShelfView(PublicContentCacheMixin, APIView):
     """Everything written for one young audience in the requested language —
     the /young-readers/ and /teens/ hubs, which gather what /series, /originals,
@@ -1110,7 +1161,9 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
     ``people`` is the series' anthologies told as faces, each opening its
     chapter (``_audience_people``), and ``quotes`` a few of their own words
     (``_audience_quotes``). ``start`` is the one book a newcomer should
-    open first (``AUDIENCE_STARTS``);
+    open first (``AUDIENCE_STARTS``); ``spotlight`` the story the hub sells
+    hardest (``AUDIENCE_SPOTLIGHTS``), and ``ladders`` each retold edition's
+    family — children, teens, full — for the "Ready for more" step;
     ``printable`` lists the slugs among them with a free PDF / EPUB
     (``export_policy``), for the page's "print it" line; ``leader_guides``, the
     book cards among them with a printable leader's guide
@@ -1179,6 +1232,18 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
 
         printable = sorted(slug for slug in claimed if (slug, language) in EXPORT_EDITIONS)
 
+        # Never the start pick too: one book on two banners is a louder page,
+        # not a better one. A pick ending in the hub's suffix is already in
+        # `by_slug`; only one that doesn't costs a query.
+        picks = [s for s in AUDIENCE_SPOTLIGHTS.get(audience, ()) if s != start]
+        found = {s: by_slug[s] for s in picks if s in by_slug}
+        if missing := [s for s in picks if s not in found]:
+            found |= {b.slug: b for b in _book_shelf(language).filter(slug__in=missing)}
+        spotlight = next((found[s] for s in picks if s in found), None)
+        ladders = _edition_ladders(
+            [b.slug for b in editions] + ([spotlight.slug] if spotlight else []), language
+        )
+
         # The hub's books that have a printable leader's guide, in shelf order:
         # the series' volumes, then the retold editions, then the rest.
         guided = {s for s, lang in guide_editions() if lang == language}
@@ -1229,6 +1294,10 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
                 "leader_guides": BookListSerializer(leader_guides, many=True, context=ctx).data,
                 "topic": {"slug": topic.slug, "title": topic.title_for(language)} if topic else None,
                 "start": start,
+                "spotlight": (
+                    BookListSerializer(spotlight, context=ctx).data if spotlight else None
+                ),
+                "ladders": ladders,
                 "printable": printable,
                 "languages": languages,
             }

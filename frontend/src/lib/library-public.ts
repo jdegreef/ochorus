@@ -1448,6 +1448,10 @@ export interface HubPerson {
 	words: number | null;
 }
 
+/** One step of a work's edition ladder — children, teens, the full text —
+ *  as a cover tile (`_edition_ladders`). */
+export type EditionRung = BookTile & { rung: 'children' | 'teens' | 'full' };
+
 export interface AudienceShelf {
 	series: SeriesSummary[];
 	/** The series' anthologies as faces, each opening its chapter. Optional: an
@@ -1465,6 +1469,12 @@ export interface AudienceShelf {
 	topic: { slug: string; title: string } | null;
 	/** The "Start here" book's slug (one of `editions` / `more`), or null. */
 	start: string | null;
+	/** The story the hub sells hardest (`AUDIENCE_SPOTLIGHTS`), or null.
+	 *  Optional: an API behind this build omits it. */
+	spotlight?: BookSummary | null;
+	/** Each retold edition's (and the spotlight's) family here, youngest first,
+	 *  itself included — keyed by that edition's slug. Optional, as above. */
+	ladders?: Record<string, EditionRung[]>;
 	/** Slugs among all the above with a free PDF / EPUB download. */
 	printable: string[];
 	/** Every language the hub has something in — its hreflang and sitemap. */
