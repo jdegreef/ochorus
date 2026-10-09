@@ -1,0 +1,367 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "g-k-chesterton"
+  ],
+  "slug": "orthodoxy-teens",
+  "language": "en",
+  "title": "Orthodoxy (For Teens)",
+  "subtitle": "",
+  "cover_title": "",
+  "description": "G. K. Chesterton loved a good argument. When critics asked him what he actually believed, he wrote Orthodoxy, the story of how he tried to work out a philosophy of his own and found he had arrived at the old Christian faith. This teen edition retells it in plain words: why over-thinking can trap you, what fairy tales know about life, why God might say “Do it again” to the sun, why rules can be the walls of a playground, how to love a world that isn’t lovable yet, and why joy is the gigantic secret of the Christian. Chesterton’s own sentences are kept where they say it best.",
+  "hook": "A funny, brilliant writer tried to invent his own beliefs and discovered, to his surprise, that he had reinvented Christianity.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Who was G. K. Chesterton?",
+    "answer": "Gilbert Keith Chesterton was an English writer, journalist and debater, born in London in 1874. He wrote poems, novels, essays and the Father Brown detective stories, and loved arguing, cheerfully, with famous sceptics of his day. He wrote Orthodoxy in 1908. He later became a Roman Catholic, and died in 1936. His books helped C. S. Lewis come to faith."
+   },
+   {
+    "question": "What does “orthodoxy” mean?",
+    "answer": "It means “right belief”. Chesterton uses it for the central Christian faith summed up in the Apostles’ Creed: what Christians everywhere have believed about God, Jesus and the world. He is not talking about one particular church."
+   },
+   {
+    "question": "Is this book hard to read?",
+    "answer": "The original is full of jokes, long sentences and references to people from his time, so it can be tricky. This retelling keeps his best pictures and lines, explains the hard bits, and leaves out arguments with writers nobody reads any more."
+   },
+   {
+    "question": "Chesterton talks about madness. Is he making fun of people with mental illness?",
+    "answer": "No. He uses the old words of his time to make a point about a kind of thinking that is trapped in a small circle of logic. Mental illness is real and nobody’s fault. If your thoughts often spiral or feel out of control, please talk to a trusted adult or a doctor."
+   },
+   {
+    "question": "Was Chesterton always a Christian?",
+    "answer": "No. As a young art student he went through a dark time and drifted from faith. He held on, he said, by a thin thread of thanks for being alive at all. Orthodoxy tells how his thinking gradually led him back to Christianity."
+   },
+   {
+    "question": "Is this the full text?",
+    "answer": "No. It is a retelling for teenagers in plain modern words, drawn from across Orthodoxy and keeping Chesterton’s own sentences where they say it best. The full Orthodoxy is also available."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of G. K. Chesterton’s Orthodoxy (1908), which is in the public domain. The telling is our own, free to read and share. Scripture quotations are from the King James Version, which is in the public domain.",
+  "cover_url": "/covers/orthodoxy-teens.svg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/orthodoxy-teens.pdf?download=orthodoxy-teens.pdf",
+  "cover_color": "",
+  "series": [
+   "straight-talk"
+  ],
+  "series_position": null,
+  "sort_order": 165,
+  "is_published": true,
+  "created_at": "2026-10-09T07:30:00Z",
+  "updated_at": "2026-10-09T07:30:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "orthodoxy-teens",
+   "en"
+  ],
+  "order": 1,
+  "title": "The Man Who Discovered England",
+  "body_html": "<blockquote>“Thus saith the LORD, Stand ye in the ways, and see, and ask for the old paths, where is the good way, and walk therein, and ye shall find rest for your souls.” — Jeremiah 6:16 (KJV)</blockquote> <p>Gilbert Keith Chesterton was born in London in 1874. He grew up to be a huge man, very tall and very wide, who wore a cloak and a big hat and was famous for his jokes. He wrote poems, novels, detective stories and hundreds of newspaper articles, and he loved a good argument.</p> <p>But as a young man studying art, he went through a very dark time. He later said he held on by “a thin thread of thanks”, the sense that it was good simply to exist. Slowly, through thinking, reading and the faith of the woman he married, Frances, he found his way to Christianity.</p> <p>In 1905 he wrote a book criticising other people’s beliefs. His critics complained that he never said what he believed himself. So in 1908 he answered them with Orthodoxy. “Orthodoxy” means “right belief”: the basic Christian faith that Christians everywhere have shared.</p> <p>He begins with a story he says he always meant to write. An English sailor slightly miscalculates his course and lands on what he thinks is a brand-new island in the South Seas. He plants his flag on a strange temple, and then discovers that it is a famous building in Brighton. He has “discovered” England.</p> <p>Was he a fool? Chesterton says there is something wonderful about it: he had all the thrill of discovering a strange new land, and all the comfort of coming home. Then Chesterton admits:</p> <blockquote>“I did try to found a heresy of my own; and when I had put the last touches to it, I discovered that it was orthodoxy.”</blockquote> <p>In other words, he had tried to be original and work out his own beliefs from scratch. And when he finished, he found that he had arrived, by his own route, at the old Christian faith. “I am that man in a yacht,” he says. “I discovered England.”</p> <p>That is what this book is about: not proving Christianity like a maths problem, but telling how one very clever, very funny man found that Christianity explained life better than anything else.</p> <p>Chesterton says we all need two things: wonder and welcome. We want life to be an adventure, and we want to feel at home. He found both in Christianity. Many people your age are trying to work out what they believe for themselves. That is good. Chesterton would say: keep going, think hard, and don’t be surprised if you end up somewhere very old.</p> <p><strong>One thing to do this week:</strong> write down three things you believe about life that you have worked out for yourself. This week, find out whether the Bible says anything about each one. You might be surprised how much is “old”.</p>",
+  "study_questions": [
+   {
+    "question": "Why did Chesterton write Orthodoxy?",
+    "answer": "Because critics complained that he criticised other people’s beliefs without saying what he believed himself."
+   },
+   {
+    "question": "What is the story of the man in the yacht?",
+    "answer": "A sailor miscalculates his course and “discovers” what he thinks is a new island, which turns out to be England."
+   },
+   {
+    "question": "What did Chesterton discover when he tried to invent his own beliefs?",
+    "answer": "That the philosophy he had worked out for himself was orthodoxy, the old Christian faith."
+   }
+  ],
+  "body_text": "“Thus saith the LORD, Stand ye in the ways, and see, and ask for the old paths, where is the good way, and walk therein, and ye shall find rest for your souls.” — Jeremiah 6:16 (KJV) Gilbert Keith Chesterton was born in London in 1874. He grew up to be a huge man, very tall and very wide, who wore a cloak and a big hat and was famous for his jokes. He wrote poems, novels, detective stories and hundreds of newspaper articles, and he loved a good argument. But as a young man studying art, he went through a very dark time. He later said he held on by “a thin thread of thanks”, the sense that it was good simply to exist. Slowly, through thinking, reading and the faith of the woman he married, Frances, he found his way to Christianity. In 1905 he wrote a book criticising other people’s beliefs. His critics complained that he never said what he believed himself. So in 1908 he answered them with Orthodoxy. “Orthodoxy” means “right belief”: the basic Christian faith that Christians everywhere have shared. He begins with a story he says he always meant to write. An English sailor slightly miscalculates his course and lands on what he thinks is a brand-new island in the South Seas. He plants his flag on a strange temple, and then discovers that it is a famous building in Brighton. He has “discovered” England. Was he a fool? Chesterton says there is something wonderful about it: he had all the thrill of discovering a strange new land, and all the comfort of coming home. Then Chesterton admits: “I did try to found a heresy of my own; and when I had put the last touches to it, I discovered that it was orthodoxy.” In other words, he had tried to be original and work out his own beliefs from scratch. And when he finished, he found that he had arrived, by his own route, at the old Christian faith. “I am that man in a yacht,” he says. “I discovered England.” That is what this book is about: not proving Christianity like a maths problem, but telling how one very clever, very funny man found that Christianity explained life better than anything else. Chesterton says we all need two things: wonder and welcome. We want life to be an adventure, and we want to feel at home. He found both in Christianity. Many people your age are trying to work out what they believe for themselves. That is good. Chesterton would say: keep going, think hard, and don’t be surprised if you end up somewhere very old. One thing to do this week: write down three things you believe about life that you have worked out for yourself. This week, find out whether the Bible says anything about each one. You might be surprised how much is “old”.",
+  "word_count": 486
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "orthodoxy-teens",
+   "en"
+  ],
+  "order": 2,
+  "title": "Thinking in Circles",
+  "body_html": "<blockquote>“Trust in the LORD with all thine heart; and lean not unto thine own understanding.” — Proverbs 3:5 (KJV)</blockquote> <p>Chesterton starts with a surprising idea. Most people think that too much imagination can make you lose touch with reality. Chesterton says the opposite. It is not imagination that traps people, but a certain kind of over-thinking.</p> <blockquote>“The poet only asks to get his head into the heavens. It is the logician who seeks to get the heavens into his head. And it is his head that splits.”</blockquote> <p>He uses old-fashioned words about madness that we wouldn’t use today, and he isn’t mocking anyone with a mental illness. His point is about a kind of thinking that gets stuck in a small, tight circle. He puts it like this: such a person has not lost their reason; they have “lost everything except his reason.”</p> <p>Think of someone convinced that everyone is plotting against them. Whatever you say, they have an answer. If you say people aren’t plotting, they say, “That’s exactly what plotters would say.” Their logic is complete, but their world has become very small.</p> <p>We all do a mild version of this sometimes. You decide that a friend hates you, and then every message, every look, every silence “proves” it. Your logic is airtight, but you have left out half of reality, like the fact that your friend might just be busy.</p> <p>What is the cure? Chesterton says it isn’t more argument. It is letting in a bigger world: humour, love, ordinary experience, and mystery. He says:</p> <blockquote>“As long as you have mystery you have health; when you destroy mystery you create morbidity.”</blockquote> <p>The healthy person, he says, “has always had one foot in earth and the other in fairyland.” They can live with things they can’t fully explain. They care “more for truth than for consistency”.</p> <p>Christianity, Chesterton thought, gives us exactly this: solid truth to stand on, and a mystery big enough to breathe in. You don’t have to understand everything about God to trust him.</p> <p>If your thoughts often go round and round in circles, especially dark or anxious ones, that is worth taking seriously. Talk to someone you trust, like a parent, a youth leader, a school counsellor or a doctor. You don’t have to think your way out alone.</p> <p><strong>One thing to do this week:</strong> next time you notice your mind going round in circles about something, stop and do something “bigger” instead: go outside, talk to a friend, laugh at something, or pray Proverbs 3:5. Notice whether your thoughts loosen.</p>",
+  "study_questions": [
+   {
+    "question": "What does Chesterton say the over-thinker has lost?",
+    "answer": "Not his reason, but everything except his reason."
+   },
+   {
+    "question": "What is the difference between the poet and the logician, according to Chesterton?",
+    "answer": "The poet tries to get his head into the heavens; the logician tries to get the heavens into his head, and it is his head that splits."
+   },
+   {
+    "question": "What does Chesterton say keeps people healthy in their thinking?",
+    "answer": "Mystery: having one foot on earth and one in fairyland, and caring more for truth than for consistency."
+   }
+  ],
+  "body_text": "“Trust in the LORD with all thine heart; and lean not unto thine own understanding.” — Proverbs 3:5 (KJV) Chesterton starts with a surprising idea. Most people think that too much imagination can make you lose touch with reality. Chesterton says the opposite. It is not imagination that traps people, but a certain kind of over-thinking. “The poet only asks to get his head into the heavens. It is the logician who seeks to get the heavens into his head. And it is his head that splits.” He uses old-fashioned words about madness that we wouldn’t use today, and he isn’t mocking anyone with a mental illness. His point is about a kind of thinking that gets stuck in a small, tight circle. He puts it like this: such a person has not lost their reason; they have “lost everything except his reason.” Think of someone convinced that everyone is plotting against them. Whatever you say, they have an answer. If you say people aren’t plotting, they say, “That’s exactly what plotters would say.” Their logic is complete, but their world has become very small. We all do a mild version of this sometimes. You decide that a friend hates you, and then every message, every look, every silence “proves” it. Your logic is airtight, but you have left out half of reality, like the fact that your friend might just be busy. What is the cure? Chesterton says it isn’t more argument. It is letting in a bigger world: humour, love, ordinary experience, and mystery. He says: “As long as you have mystery you have health; when you destroy mystery you create morbidity.” The healthy person, he says, “has always had one foot in earth and the other in fairyland.” They can live with things they can’t fully explain. They care “more for truth than for consistency”. Christianity, Chesterton thought, gives us exactly this: solid truth to stand on, and a mystery big enough to breathe in. You don’t have to understand everything about God to trust him. If your thoughts often go round and round in circles, especially dark or anxious ones, that is worth taking seriously. Talk to someone you trust, like a parent, a youth leader, a school counsellor or a doctor. You don’t have to think your way out alone. One thing to do this week: next time you notice your mind going round in circles about something, stop and do something “bigger” instead: go outside, talk to a friend, laugh at something, or pray Proverbs 3:5. Notice whether your thoughts loosen.",
+  "word_count": 427
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "orthodoxy-teens",
+   "en"
+  ],
+  "order": 3,
+  "title": "Humble About the Wrong Thing",
+  "body_html": "<blockquote>“Be not wise in thine own eyes: fear the LORD, and depart from evil.” — Proverbs 3:7 (KJV)</blockquote> <p>In his next chapter, Chesterton notices something odd about the way people in his day thought, and it is still true now.</p> <p>People are often very sure about themselves, and very unsure about truth. They will say, “Be yourself, believe in yourself, follow your heart,” and in the same breath, “Who can say what’s really true? It’s all just opinion.” Chesterton thought this was exactly backwards.</p> <blockquote>“But what we suffer from today is humility in the wrong place.”</blockquote> <p>He explains:</p> <blockquote>“A man was meant to be doubtful about himself, but undoubting about the truth; this has been exactly reversed.”</blockquote> <p>Think about that. The Bible tells us to be humble about ourselves: to admit we might be wrong, that we are not the centre of the universe, that our hearts can deceive us. But it also tells us that truth is real, that God has spoken, and that we can know him.</p> <p>Our culture often flips this. It tells us to be confident in ourselves but modest about truth. Chesterton says this makes it hard even to think, because if nothing is really true, then there is nothing to think about. He jokes that the modern sceptic is so humble “that he doubts if he can even learn.”</p> <p>Chesterton also says that some people believe in themselves so completely that they shut themselves inside their own heads. The motto “He believes in himself” sounds inspiring, but if that’s all you believe in, your world becomes very small.</p> <p>So what’s the healthy way? Be humble about yourself. You can be wrong, and you need God and other people. But be bold about truth. You can trust what God has said, and you can stand on it even when it is unpopular.</p> <p>That combination, humble and bold, is rare. It makes people both teachable and brave.</p> <p><strong>One thing to do this week:</strong> notice this week when you hear phrases like “believe in yourself” or “there’s no such thing as truth”. Ask yourself: where should I be humble, and where should I be confident? Write down one truth about God you can be sure of.</p>",
+  "study_questions": [
+   {
+    "question": "What does Chesterton mean by “humility in the wrong place”?",
+    "answer": "People are humble about truth, doubting whether anything is really true, but proud and confident about themselves."
+   },
+   {
+    "question": "What should we be doubtful about, and what should we be sure of?",
+    "answer": "We should be doubtful about ourselves, but undoubting about the truth."
+   },
+   {
+    "question": "Why does Chesterton think doubting all truth makes thinking hard?",
+    "answer": "Because if nothing is really true there is nothing to think about; the sceptic doubts whether he can even learn."
+   }
+  ],
+  "body_text": "“Be not wise in thine own eyes: fear the LORD, and depart from evil.” — Proverbs 3:7 (KJV) In his next chapter, Chesterton notices something odd about the way people in his day thought, and it is still true now. People are often very sure about themselves, and very unsure about truth. They will say, “Be yourself, believe in yourself, follow your heart,” and in the same breath, “Who can say what’s really true? It’s all just opinion.” Chesterton thought this was exactly backwards. “But what we suffer from today is humility in the wrong place.” He explains: “A man was meant to be doubtful about himself, but undoubting about the truth; this has been exactly reversed.” Think about that. The Bible tells us to be humble about ourselves: to admit we might be wrong, that we are not the centre of the universe, that our hearts can deceive us. But it also tells us that truth is real, that God has spoken, and that we can know him. Our culture often flips this. It tells us to be confident in ourselves but modest about truth. Chesterton says this makes it hard even to think, because if nothing is really true, then there is nothing to think about. He jokes that the modern sceptic is so humble “that he doubts if he can even learn.” Chesterton also says that some people believe in themselves so completely that they shut themselves inside their own heads. The motto “He believes in himself” sounds inspiring, but if that’s all you believe in, your world becomes very small. So what’s the healthy way? Be humble about yourself. You can be wrong, and you need God and other people. But be bold about truth. You can trust what God has said, and you can stand on it even when it is unpopular. That combination, humble and bold, is rare. It makes people both teachable and brave. One thing to do this week: notice this week when you hear phrases like “believe in yourself” or “there’s no such thing as truth”. Ask yourself: where should I be humble, and where should I be confident? Write down one truth about God you can be sure of.",
+  "word_count": 369
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "orthodoxy-teens",
+   "en"
+  ],
+  "order": 4,
+  "title": "What Fairy Tales Know",
+  "body_html": "<blockquote>“Except ye be converted, and become as little children, ye shall not enter into the kingdom of heaven.” — Matthew 18:3 (KJV)</blockquote> <p>Chesterton says his first and last philosophy, the one he still believed as a grown man, he learned in the nursery from fairy tales.</p> <p>He loved the moral lessons in them. Jack the Giant Killer teaches that giants should be beaten because they are proud and huge. Cinderella teaches the same lesson as Mary’s song in the Bible: God lifts up the humble. And then there is a lesson Chesterton thought was wonderful:</p> <blockquote>“There is the great lesson of “Beauty and the Beast”; that a thing must be loved before it is loveable.”</blockquote> <p>That is exactly what God does with us. He doesn’t wait for us to become lovable before he loves us. He loves us first, and his love makes us beautiful.</p> <p>But the biggest thing fairy tales taught Chesterton was a way of looking at the world: with wonder. In fairy tales, nobody treats strange things as boring. A tree that grows golden apples is amazing. Chesterton says real trees are just as amazing. Apples growing on trees, grass being green, the sun coming up: none of these had to happen. They are gifts.</p> <p>Scientists in his day talked as if nature’s patterns were “laws” that couldn’t possibly be otherwise. Chesterton said: we observe that apples fall, but there’s no reason they must. We can imagine trees growing candlesticks. The fact that the world works the way it does is a wonder.</p> <p>He also gives a famous definition of tradition:</p> <blockquote>“Tradition means giving votes to the most obscure of all classes, our ancestors. It is the democracy of the dead.”</blockquote> <p>His point is that we shouldn’t ignore the wisdom of people just because they happened to live before us. The faith of millions of ordinary people over many centuries deserves a vote too.</p> <p>Jesus said that unless we become like little children, we will not enter the kingdom of heaven. Part of that is being able to wonder again, to look at the world and say, “Wow.”</p> <p><strong>One thing to do this week:</strong> this week, look at one ordinary thing each day as if you were seeing it for the first time: an apple, a sunrise, rain, your own hand. Write down what is amazing about it, and thank God for it.</p>",
+  "study_questions": [
+   {
+    "question": "What lesson does Chesterton draw from Beauty and the Beast?",
+    "answer": "That a thing must be loved before it is lovable."
+   },
+   {
+    "question": "Why does Chesterton say ordinary things like apples falling are amazing?",
+    "answer": "Because they did not have to happen; we can imagine the world working differently, so its patterns are wonders and gifts."
+   },
+   {
+    "question": "What does Chesterton mean by “the democracy of the dead”?",
+    "answer": "Tradition: giving a vote to the wisdom of people who lived before us, not just those who happen to be alive now."
+   }
+  ],
+  "body_text": "“Except ye be converted, and become as little children, ye shall not enter into the kingdom of heaven.” — Matthew 18:3 (KJV) Chesterton says his first and last philosophy, the one he still believed as a grown man, he learned in the nursery from fairy tales. He loved the moral lessons in them. Jack the Giant Killer teaches that giants should be beaten because they are proud and huge. Cinderella teaches the same lesson as Mary’s song in the Bible: God lifts up the humble. And then there is a lesson Chesterton thought was wonderful: “There is the great lesson of “Beauty and the Beast”; that a thing must be loved before it is loveable.” That is exactly what God does with us. He doesn’t wait for us to become lovable before he loves us. He loves us first, and his love makes us beautiful. But the biggest thing fairy tales taught Chesterton was a way of looking at the world: with wonder. In fairy tales, nobody treats strange things as boring. A tree that grows golden apples is amazing. Chesterton says real trees are just as amazing. Apples growing on trees, grass being green, the sun coming up: none of these had to happen. They are gifts. Scientists in his day talked as if nature’s patterns were “laws” that couldn’t possibly be otherwise. Chesterton said: we observe that apples fall, but there’s no reason they must. We can imagine trees growing candlesticks. The fact that the world works the way it does is a wonder. He also gives a famous definition of tradition: “Tradition means giving votes to the most obscure of all classes, our ancestors. It is the democracy of the dead.” His point is that we shouldn’t ignore the wisdom of people just because they happened to live before us. The faith of millions of ordinary people over many centuries deserves a vote too. Jesus said that unless we become like little children, we will not enter the kingdom of heaven. Part of that is being able to wonder again, to look at the world and say, “Wow.” One thing to do this week: this week, look at one ordinary thing each day as if you were seeing it for the first time: an apple, a sunrise, rain, your own hand. Write down what is amazing about it, and thank God for it.",
+  "word_count": 396
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "orthodoxy-teens",
+   "en"
+  ],
+  "order": 5,
+  "title": "Do It Again",
+  "body_html": "<blockquote>“The heavens declare the glory of God; and the firmament sheweth his handywork.” — Psalm 19:1 (KJV)</blockquote> <p>People often think that because nature repeats itself, sunrise after sunrise, daisy after daisy, it must be a dead machine running on its own. Chesterton turned this idea on its head with one of the most loved passages in the book.</p> <p>He points out that children love repetition. When they find a game or a joke they enjoy, they say, “Do it again!” and the grown-up does it again until they are exhausted. That isn’t because children are dull. It’s because they are so full of life.</p> <blockquote>“For grownup people are not strong enough to exult in monotony. But perhaps God is strong enough to exult in monotony.”</blockquote> <p>Then he imagines this:</p> <blockquote>“It is possible that God says every morning, “Do it again” to the sun; and every evening, “Do it again” to the moon.”</blockquote> <p>Maybe every daisy is alike not because a machine is stamping them out, but because God makes each one separately and has never got tired of making them. Chesterton says perhaps God “has the eternal appetite of infancy; for we have sinned and grown old, and our Father is younger than we.”</p> <p>Isn’t that a beautiful way to see the world? The sunrise you saw this morning wasn’t a machine going through the motions. It might be God delighting in his creation and saying, “Again!”</p> <p>This changed how Chesterton thought about everything. He wrote: “I had always believed that the world involved magic: now I thought that perhaps it involved a magician.” And: “I had always felt life first as a story: and if there is a story there is a storyteller.”</p> <p>If life is a story, then your life is part of it too. You aren’t an accident in a machine. You are a character in a story written by a Storyteller who loves what he has made.</p> <p><strong>One thing to do this week:</strong> watch a sunrise or sunset this week, or just look at the sky. Imagine God saying, “Do it again!” Read Psalm 19:1–6 and thank God for one thing in creation that he keeps on making.</p>",
+  "study_questions": [
+   {
+    "question": "Why do children love repetition, according to Chesterton?",
+    "answer": "Because they are full of life and vitality, not because they are dull."
+   },
+   {
+    "question": "What does Chesterton imagine God saying to the sun every morning?",
+    "answer": "“Do it again.”"
+   },
+   {
+    "question": "What did Chesterton conclude from seeing life as a story?",
+    "answer": "If there is a story, there is a storyteller; if the world involves magic, perhaps it involves a magician."
+   }
+  ],
+  "body_text": "“The heavens declare the glory of God; and the firmament sheweth his handywork.” — Psalm 19:1 (KJV) People often think that because nature repeats itself, sunrise after sunrise, daisy after daisy, it must be a dead machine running on its own. Chesterton turned this idea on its head with one of the most loved passages in the book. He points out that children love repetition. When they find a game or a joke they enjoy, they say, “Do it again!” and the grown-up does it again until they are exhausted. That isn’t because children are dull. It’s because they are so full of life. “For grownup people are not strong enough to exult in monotony. But perhaps God is strong enough to exult in monotony.” Then he imagines this: “It is possible that God says every morning, “Do it again” to the sun; and every evening, “Do it again” to the moon.” Maybe every daisy is alike not because a machine is stamping them out, but because God makes each one separately and has never got tired of making them. Chesterton says perhaps God “has the eternal appetite of infancy; for we have sinned and grown old, and our Father is younger than we.” Isn’t that a beautiful way to see the world? The sunrise you saw this morning wasn’t a machine going through the motions. It might be God delighting in his creation and saying, “Again!” This changed how Chesterton thought about everything. He wrote: “I had always believed that the world involved magic: now I thought that perhaps it involved a magician.” And: “I had always felt life first as a story: and if there is a story there is a storyteller.” If life is a story, then your life is part of it too. You aren’t an accident in a machine. You are a character in a story written by a Storyteller who loves what he has made. One thing to do this week: watch a sunrise or sunset this week, or just look at the sky. Imagine God saying, “Do it again!” Read Psalm 19:1–6 and thank God for one thing in creation that he keeps on making.",
+  "word_count": 362
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "orthodoxy-teens",
+   "en"
+  ],
+  "order": 6,
+  "title": "The One Small “If”",
+  "body_html": "<blockquote>“And the LORD God commanded the man, saying, Of every tree of the garden thou mayest freely eat: But of the tree of the knowledge of good and evil, thou shalt not eat of it.” — Genesis 2:16–17 (KJV)</blockquote> <p>Chesterton noticed something else about fairy tales. The good things in them often come with one strange condition. He gave it a grand name, “the Doctrine of Conditional Joy.”</p> <p>In fairy tales, you may live in a palace of gold, if you don’t say a certain word. You may marry the prince, if you are home by midnight. You may open every door in the castle, except one.</p> <blockquote>“All the dizzy and colossal things conceded depend upon one small thing withheld.”</blockquote> <p>Chesterton says that people who complain about the condition are missing the point. He puts it like this: “If Cinderella says, ‘How is it that I must leave the ball at twelve?’ her godmother might answer, ‘How is it that you are going there till twelve?’” The whole wonderful gift was hers to give. Or, as Chesterton jokes, you “must not look a winged horse in the mouth.”</p> <p>This helped Chesterton understand God’s commands. Many people think of God as a stern ruler who loves saying no. But look at the garden of Eden. God said: you may freely eat from every tree, except one. The command was one small “if” in the middle of an enormous yes.</p> <p>God’s commands are like that. They aren’t there to stop us enjoying life. They protect the joy. Sexual purity guards the gift of sex. Honesty guards trust. Rest guards our health. The “no” serves a much bigger “yes”.</p> <p>Chesterton also says that the more we see life as a gift, the more we want to say thank you. He wrote that the proper way to thank God for good things like food and drink is to enjoy them with humility and restraint. You thank God for a good meal partly by not being greedy with it.</p> <p>Next time a command of God feels restrictive, remember the fairy tale. Look at the huge gift around the small condition. Ask: what is this “no” protecting?</p> <p><strong>One thing to do this week:</strong> pick one of God’s commands that you sometimes find hard. This week, write down the “yes” it protects. Then thank God for the gift around the condition.</p>",
+  "study_questions": [
+   {
+    "question": "What is the “Doctrine of Conditional Joy”?",
+    "answer": "In fairy tales, huge good gifts depend on one small condition or thing withheld."
+   },
+   {
+    "question": "How does the garden of Eden show the same pattern?",
+    "answer": "God said they could eat freely from every tree except one; one small “no” inside an enormous “yes”."
+   },
+   {
+    "question": "What does Chesterton say is the right way to thank God for good things?",
+    "answer": "To enjoy them with humility and restraint, for example by not taking too much."
+   }
+  ],
+  "body_text": "“And the LORD God commanded the man, saying, Of every tree of the garden thou mayest freely eat: But of the tree of the knowledge of good and evil, thou shalt not eat of it.” — Genesis 2:16–17 (KJV) Chesterton noticed something else about fairy tales. The good things in them often come with one strange condition. He gave it a grand name, “the Doctrine of Conditional Joy.” In fairy tales, you may live in a palace of gold, if you don’t say a certain word. You may marry the prince, if you are home by midnight. You may open every door in the castle, except one. “All the dizzy and colossal things conceded depend upon one small thing withheld.” Chesterton says that people who complain about the condition are missing the point. He puts it like this: “If Cinderella says, ‘How is it that I must leave the ball at twelve?’ her godmother might answer, ‘How is it that you are going there till twelve?’” The whole wonderful gift was hers to give. Or, as Chesterton jokes, you “must not look a winged horse in the mouth.” This helped Chesterton understand God’s commands. Many people think of God as a stern ruler who loves saying no. But look at the garden of Eden. God said: you may freely eat from every tree, except one. The command was one small “if” in the middle of an enormous yes. God’s commands are like that. They aren’t there to stop us enjoying life. They protect the joy. Sexual purity guards the gift of sex. Honesty guards trust. Rest guards our health. The “no” serves a much bigger “yes”. Chesterton also says that the more we see life as a gift, the more we want to say thank you. He wrote that the proper way to thank God for good things like food and drink is to enjoy them with humility and restraint. You thank God for a good meal partly by not being greedy with it. Next time a command of God feels restrictive, remember the fairy tale. Look at the huge gift around the small condition. Ask: what is this “no” protecting? One thing to do this week: pick one of God’s commands that you sometimes find hard. This week, write down the “yes” it protects. Then thank God for the gift around the condition.",
+  "word_count": 394
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "orthodoxy-teens",
+   "en"
+  ],
+  "order": 7,
+  "title": "Loving What Isn’t Lovable Yet",
+  "body_html": "<blockquote>“But God commendeth his love toward us, in that, while we were yet sinners, Christ died for us.” — Romans 5:8 (KJV)</blockquote> <p>Chesterton grew up in an age divided between optimists, who said the world was wonderful, and pessimists, who said it was terrible. He thought both were missing something.</p> <p>He says the right attitude to the world is more like loyalty than like a review. A good reviewer says, “This is good, this is bad.” But someone who loves their home doesn’t only love it when it’s good. They love it so much that they want to make it better.</p> <p>He uses the example of a run-down part of London. If you just dislike it, you leave. If you think it’s fine as it is, nothing changes. Chesterton says the only thing that changes such a place is that someone loves it: “to love it with a transcendental tie and without any earthly reason.” Then, he says, it will begin to rise and become beautiful, like a person who becomes more beautiful because they are loved.</p> <p>Remember the lesson of Beauty and the Beast: a thing must be loved before it is lovable. That is the heart of the gospel. God loved us while we were still sinners. He didn’t wait for us to be good. He loved us first, and that love changes us.</p> <p>Chesterton also found a puzzle that Christianity solved for him. How can we love the world and yet not be swallowed up by it? He wrote:</p> <blockquote>“One must somehow find a way of loving the world without trusting it; somehow one must love the world without being worldly.”</blockquote> <p>Christianity gave him the answer. God made the world, and it is good, so we can love it. But God is separate from the world, and the world is broken, so we don’t worship it or trust it completely. When he saw that, Chesterton says, the rest of his thinking “fell in with an eerie exactitude”, like machinery clicking into place.</p> <p>What would it look like for you to love your school, your town or your family like this: not because they are perfect, but so that they can become better?</p> <p><strong>One thing to do this week:</strong> choose one place or group you are part of that isn’t perfect: your class, team, family or street. This week, do one practical thing to love it and make it better, without waiting for it to deserve it.</p>",
+  "study_questions": [
+   {
+    "question": "Why did Chesterton think neither optimists nor pessimists had it right?",
+    "answer": "Because the right attitude is like loyal love, which loves something enough to want to improve it, not just to judge it good or bad."
+   },
+   {
+    "question": "What changes a run-down place, according to Chesterton?",
+    "answer": "Someone loving it without any earthly reason."
+   },
+   {
+    "question": "How does Christianity help us love the world without being worldly?",
+    "answer": "God made the world good, so we can love it, but he is separate from it and it is broken, so we do not worship or trust it completely."
+   }
+  ],
+  "body_text": "“But God commendeth his love toward us, in that, while we were yet sinners, Christ died for us.” — Romans 5:8 (KJV) Chesterton grew up in an age divided between optimists, who said the world was wonderful, and pessimists, who said it was terrible. He thought both were missing something. He says the right attitude to the world is more like loyalty than like a review. A good reviewer says, “This is good, this is bad.” But someone who loves their home doesn’t only love it when it’s good. They love it so much that they want to make it better. He uses the example of a run-down part of London. If you just dislike it, you leave. If you think it’s fine as it is, nothing changes. Chesterton says the only thing that changes such a place is that someone loves it: “to love it with a transcendental tie and without any earthly reason.” Then, he says, it will begin to rise and become beautiful, like a person who becomes more beautiful because they are loved. Remember the lesson of Beauty and the Beast: a thing must be loved before it is lovable. That is the heart of the gospel. God loved us while we were still sinners. He didn’t wait for us to be good. He loved us first, and that love changes us. Chesterton also found a puzzle that Christianity solved for him. How can we love the world and yet not be swallowed up by it? He wrote: “One must somehow find a way of loving the world without trusting it; somehow one must love the world without being worldly.” Christianity gave him the answer. God made the world, and it is good, so we can love it. But God is separate from the world, and the world is broken, so we don’t worship it or trust it completely. When he saw that, Chesterton says, the rest of his thinking “fell in with an eerie exactitude”, like machinery clicking into place. What would it look like for you to love your school, your town or your family like this: not because they are perfect, but so that they can become better? One thing to do this week: choose one place or group you are part of that isn’t perfect: your class, team, family or street. This week, do one practical thing to love it and make it better, without waiting for it to deserve it.",
+  "word_count": 409
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "orthodoxy-teens",
+   "en"
+  ],
+  "order": 8,
+  "title": "The Odd Shape",
+  "body_html": "<blockquote>“For whosoever will save his life shall lose it: and whosoever will lose his life for my sake shall find it.” — Matthew 16:25 (KJV)</blockquote> <p>When Chesterton was young and not yet a believer, he read a lot of books attacking Christianity. And he noticed something strange.</p> <p>Some critics said Christianity was too gloomy; others said it was too cheerful and comforting. Some said it made people too timid and soft; others said it made them too violent. Some said it had dragged people away from home and family; others said it forced home and family on them.</p> <p>At first he thought: Christianity must be a very weird thing if it can be guilty of opposite faults at once. “A man might be too fat in one place and too thin in another; but he would be an odd shape.”</p> <p>Then it struck him. Perhaps Christianity wasn’t the odd shape. Perhaps the critics were. Perhaps Christianity was the right shape, and it just looked too much of one thing to some people and too much of the opposite to others.</p> <p>He found that Christianity has a way of holding two opposites together, both at full strength. He wrote that Christianity “got over the difficulty of combining furious opposites, by keeping them both, and keeping them both furious.” For example:</p> <blockquote>“One can hardly think too little of one’s self. One can hardly think too much of one’s soul.”</blockquote> <p>Courage is another example. Chesterton calls it “almost a contradiction in terms”: a strong desire to live that shows itself as a readiness to die. A soldier surrounded by enemies, or a climber cut off by the tide, will only survive by being willing to risk their life. Jesus said the same: whoever loses their life for his sake will find it.</p> <p>Love is a paradox too. Chesterton says real charity means “pardoning unpardonable acts, or loving unlovable people.” If someone is easy to forgive, it hardly needs forgiveness.</p> <p>So when someone says Christianity is too much of something, ask whether someone else says it is too much of the opposite. It might just be the right shape.</p> <p><strong>One thing to do this week:</strong> think of a criticism of Christianity you have heard. This week, try to find someone or something that criticises it for the opposite reason. Then ask: could Christianity be the right shape after all?</p>",
+  "study_questions": [
+   {
+    "question": "What strange thing did Chesterton notice about critics of Christianity?",
+    "answer": "They attacked it for opposite faults at the same time, such as being too gloomy and too cheerful."
+   },
+   {
+    "question": "What did Chesterton conclude from this?",
+    "answer": "That perhaps Christianity was the right shape and the critics were the odd shape."
+   },
+   {
+    "question": "Why does Chesterton call courage a paradox?",
+    "answer": "Because it is a strong desire to live that shows itself as a readiness to die."
+   }
+  ],
+  "body_text": "“For whosoever will save his life shall lose it: and whosoever will lose his life for my sake shall find it.” — Matthew 16:25 (KJV) When Chesterton was young and not yet a believer, he read a lot of books attacking Christianity. And he noticed something strange. Some critics said Christianity was too gloomy; others said it was too cheerful and comforting. Some said it made people too timid and soft; others said it made them too violent. Some said it had dragged people away from home and family; others said it forced home and family on them. At first he thought: Christianity must be a very weird thing if it can be guilty of opposite faults at once. “A man might be too fat in one place and too thin in another; but he would be an odd shape.” Then it struck him. Perhaps Christianity wasn’t the odd shape. Perhaps the critics were. Perhaps Christianity was the right shape, and it just looked too much of one thing to some people and too much of the opposite to others. He found that Christianity has a way of holding two opposites together, both at full strength. He wrote that Christianity “got over the difficulty of combining furious opposites, by keeping them both, and keeping them both furious.” For example: “One can hardly think too little of one’s self. One can hardly think too much of one’s soul.” Courage is another example. Chesterton calls it “almost a contradiction in terms”: a strong desire to live that shows itself as a readiness to die. A soldier surrounded by enemies, or a climber cut off by the tide, will only survive by being willing to risk their life. Jesus said the same: whoever loses their life for his sake will find it. Love is a paradox too. Chesterton says real charity means “pardoning unpardonable acts, or loving unlovable people.” If someone is easy to forgive, it hardly needs forgiveness. So when someone says Christianity is too much of something, ask whether someone else says it is too much of the opposite. It might just be the right shape. One thing to do this week: think of a criticism of Christianity you have heard. This week, try to find someone or something that criticises it for the opposite reason. Then ask: could Christianity be the right shape after all?",
+  "word_count": 395
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "orthodoxy-teens",
+   "en"
+  ],
+  "order": 9,
+  "title": "The White Post",
+  "body_html": "<blockquote>“And be not conformed to this world: but be ye transformed by the renewing of your mind.” — Romans 12:2 (KJV)</blockquote> <p>Chesterton had a simple but brilliant picture for why good things need constant care. Some people think that if you just leave things as they are, they will stay the same. Chesterton says no:</p> <blockquote>“If you leave a white post alone it will soon be a black post.”</blockquote> <p>Dirt, weather and time will turn it grey and then black. If you want it to stay white, “you must be always painting it again”. Or, as he puts it, “if you want the old white post you must have a new white post.”</p> <p>This is true of everything good. Friendships fade if you don’t keep investing in them. Habits of prayer slip if you don’t keep returning to them. Fairness in a school or a country slowly erodes if nobody keeps standing up for it.</p> <p>Chesterton says this is why Christianity is, in a way, revolutionary. It doesn’t just accept things as they are. It keeps calling people and societies back to what is good, again and again. He notes that people usually suffer not under ancient tyrannies but under new ones that grow up quickly when nobody is watching.</p> <p>And he gives a crucial point about progress. You can only make real progress if you have a fixed idea of what “better” means. If your idea of good keeps changing, you can never tell whether you are improving. Christianity gives a fixed picture of goodness: Jesus himself.</p> <p>Paul says the same in Romans 12: don’t just drift along with the world, but be transformed by the renewing of your mind. Renewal isn’t a one-off. It’s daily repainting.</p> <p>What white post in your life is starting to go grey? Maybe it’s your prayer life, a friendship, your honesty, or how you treat your family. Don’t wait until it’s black. Pick up the paintbrush today.</p> <p><strong>One thing to do this week:</strong> identify one “white post” in your life that has been fading: a friendship, a habit or a value. This week, “repaint” it with one deliberate action, and plan how you will keep repainting it.</p>",
+  "study_questions": [
+   {
+    "question": "What happens to a white post that is left alone?",
+    "answer": "It soon becomes a black post."
+   },
+   {
+    "question": "What does Chesterton mean by “if you want the old white post you must have a new white post”?",
+    "answer": "To keep good things good, you must keep renewing them; leaving them alone lets them decay."
+   },
+   {
+    "question": "Why does real progress need a fixed idea of what is good?",
+    "answer": "Because if your idea of good keeps changing, you can never tell whether you are getting better."
+   }
+  ],
+  "body_text": "“And be not conformed to this world: but be ye transformed by the renewing of your mind.” — Romans 12:2 (KJV) Chesterton had a simple but brilliant picture for why good things need constant care. Some people think that if you just leave things as they are, they will stay the same. Chesterton says no: “If you leave a white post alone it will soon be a black post.” Dirt, weather and time will turn it grey and then black. If you want it to stay white, “you must be always painting it again”. Or, as he puts it, “if you want the old white post you must have a new white post.” This is true of everything good. Friendships fade if you don’t keep investing in them. Habits of prayer slip if you don’t keep returning to them. Fairness in a school or a country slowly erodes if nobody keeps standing up for it. Chesterton says this is why Christianity is, in a way, revolutionary. It doesn’t just accept things as they are. It keeps calling people and societies back to what is good, again and again. He notes that people usually suffer not under ancient tyrannies but under new ones that grow up quickly when nobody is watching. And he gives a crucial point about progress. You can only make real progress if you have a fixed idea of what “better” means. If your idea of good keeps changing, you can never tell whether you are improving. Christianity gives a fixed picture of goodness: Jesus himself. Paul says the same in Romans 12: don’t just drift along with the world, but be transformed by the renewing of your mind. Renewal isn’t a one-off. It’s daily repainting. What white post in your life is starting to go grey? Maybe it’s your prayer life, a friendship, your honesty, or how you treat your family. Don’t wait until it’s black. Pick up the paintbrush today. One thing to do this week: identify one “white post” in your life that has been fading: a friendship, a habit or a value. This week, “repaint” it with one deliberate action, and plan how you will keep repainting it.",
+  "word_count": 364
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "orthodoxy-teens",
+   "en"
+  ],
+  "order": 10,
+  "title": "The Heavenly Chariot",
+  "body_html": "<blockquote>“Beloved, when I gave all diligence to write unto you of the common salvation, it was needful for me to write unto you, and exhort you that ye should earnestly contend for the faith which was once delivered unto the saints.” — Jude 3 (KJV)</blockquote> <p>People sometimes think of “orthodoxy” as dull, safe and boring, like playing it safe while other people have exciting new ideas. Chesterton thought the opposite.</p> <p>He says that through history, Christians have constantly been tempted to fall into one extreme or another. It would have been easy to go along with whichever fashionable idea was popular at the time.</p> <blockquote>“It is always easy to let the age have its head; the difficult thing is to keep one’s own.”</blockquote> <p>Think about how much pressure there is today to go along with whatever is trending: to believe what your friends believe, to think what your feed tells you to think. Following the crowd is easy. Keeping your head is hard.</p> <p>Chesterton says there are many ways to fall, but only one way to stand: “there are an infinity of angles at which one falls, only one at which one stands.” Staying balanced is much harder, and much more exciting, than falling over.</p> <p>Then he paints this picture of the Christian faith through the centuries:</p> <blockquote>“In my vision the heavenly chariot flies thundering through the ages, the dull heresies sprawling and prostrate, the wild truth reeling but erect.”</blockquote> <p>Isn’t that a thrilling image? Orthodoxy isn’t a slow, careful old man shuffling along. It’s a chariot racing at full speed, swerving to avoid crashes on every side, wild but still upright.</p> <p>Chesterton also says that the rules of Christianity aren’t there to make life dull. He found that “the chief aim of that order was to give room for good things to run wild.” Like the banks of a river, the boundaries let the water rush.</p> <p>Jude tells Christians to contend for the faith “once delivered unto the saints”. That isn’t boring. It’s the adventure of a lifetime.</p> <p><strong>One thing to do this week:</strong> think of one popular idea that you feel pressure to agree with. This week, compare it carefully with what Jesus taught. Pray for the courage to keep your head, kindly but firmly.</p>",
+  "study_questions": [
+   {
+    "question": "What did Chesterton say is easy, and what is difficult?",
+    "answer": "It is easy to let the age have its head; the difficult thing is to keep one’s own."
+   },
+   {
+    "question": "How does Chesterton picture orthodoxy through history?",
+    "answer": "As a heavenly chariot flying thundering through the ages, the dull heresies sprawling, the wild truth reeling but upright."
+   },
+   {
+    "question": "What did Chesterton find was the chief aim of Christianity’s order?",
+    "answer": "To give room for good things to run wild."
+   }
+  ],
+  "body_text": "“Beloved, when I gave all diligence to write unto you of the common salvation, it was needful for me to write unto you, and exhort you that ye should earnestly contend for the faith which was once delivered unto the saints.” — Jude 3 (KJV) People sometimes think of “orthodoxy” as dull, safe and boring, like playing it safe while other people have exciting new ideas. Chesterton thought the opposite. He says that through history, Christians have constantly been tempted to fall into one extreme or another. It would have been easy to go along with whichever fashionable idea was popular at the time. “It is always easy to let the age have its head; the difficult thing is to keep one’s own.” Think about how much pressure there is today to go along with whatever is trending: to believe what your friends believe, to think what your feed tells you to think. Following the crowd is easy. Keeping your head is hard. Chesterton says there are many ways to fall, but only one way to stand: “there are an infinity of angles at which one falls, only one at which one stands.” Staying balanced is much harder, and much more exciting, than falling over. Then he paints this picture of the Christian faith through the centuries: “In my vision the heavenly chariot flies thundering through the ages, the dull heresies sprawling and prostrate, the wild truth reeling but erect.” Isn’t that a thrilling image? Orthodoxy isn’t a slow, careful old man shuffling along. It’s a chariot racing at full speed, swerving to avoid crashes on every side, wild but still upright. Chesterton also says that the rules of Christianity aren’t there to make life dull. He found that “the chief aim of that order was to give room for good things to run wild.” Like the banks of a river, the boundaries let the water rush. Jude tells Christians to contend for the faith “once delivered unto the saints”. That isn’t boring. It’s the adventure of a lifetime. One thing to do this week: think of one popular idea that you feel pressure to agree with. This week, compare it carefully with what Jesus taught. Pray for the courage to keep your head, kindly but firmly.",
+  "word_count": 377
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "orthodoxy-teens",
+   "en"
+  ],
+  "order": 11,
+  "title": "The Gigantic Secret",
+  "body_html": "<blockquote>“Neither be ye sorry; for the joy of the LORD is your strength.” — Nehemiah 8:10 (KJV)</blockquote> <p>Chesterton finishes his book with two pictures and one secret.</p> <p>The first picture is of children playing on a grassy island high above the sea. As long as there is a wall around the cliff edge, they can run and shout and play every wild game. But imagine someone knocks down the walls, saying they are restrictive. The children don’t fall off. But when their friends come back, they find them all huddled in the middle of the island, afraid. They have stopped singing.</p> <p>Chesterton says the teachings of the Christian faith may be walls, “but they are the walls of a playground.” They are not there to spoil the fun. They are what make the fun possible.</p> <p>The second picture is about angels. Chesterton jokes that the great saints had the power of levitation, of floating up, and adds that they also had the power of “levity”, of lightness and laughter.</p> <blockquote>“Angels can fly because they can take themselves lightly.”</blockquote> <p>Pride makes us heavy. We take ourselves too seriously. Humility makes us light. We can laugh, and we can rise.</p> <p>And then the secret. Chesterton says that the old pagan world showed joy on the surface but carried sadness at its heart. Christianity is the opposite. There may be sorrows on the surface, but underneath, at the very centre, is joy.</p> <blockquote>“Joy, which was the small publicity of the pagan, is the gigantic secret of the Christian.”</blockquote> <p>He ends by looking at Jesus in the Gospels. Jesus never hid his tears; he wept openly. He never hid his anger at injustice. But Chesterton wonders whether there was one thing he kept hidden, something too great to show:</p> <blockquote>“And I have sometimes fancied that it was His mirth.”</blockquote> <p>Chesterton died in 1936. Christians of every tradition still read him for his joyful, fighting faith. If you remember one thing from this book, let it be this: at the centre of the universe is not a cold machine, but a God of overflowing joy. And he invites you into it.</p> <p><strong>One thing to do this week:</strong> this week, look for one thing each day that makes you genuinely laugh or feel joy, and thank God for it. Ask him to show you the “gigantic secret” of joy at the centre of the Christian life.</p>",
+  "study_questions": [
+   {
+    "question": "What does the story of the children on the island teach?",
+    "answer": "That walls can make play possible; without them the children huddled in fear and stopped singing, so Christian teaching can be the walls of a playground."
+   },
+   {
+    "question": "Why does Chesterton say angels can fly?",
+    "answer": "Because they can take themselves lightly."
+   },
+   {
+    "question": "What is “the gigantic secret of the Christian”?",
+    "answer": "Joy."
+   }
+  ],
+  "body_text": "“Neither be ye sorry; for the joy of the LORD is your strength.” — Nehemiah 8:10 (KJV) Chesterton finishes his book with two pictures and one secret. The first picture is of children playing on a grassy island high above the sea. As long as there is a wall around the cliff edge, they can run and shout and play every wild game. But imagine someone knocks down the walls, saying they are restrictive. The children don’t fall off. But when their friends come back, they find them all huddled in the middle of the island, afraid. They have stopped singing. Chesterton says the teachings of the Christian faith may be walls, “but they are the walls of a playground.” They are not there to spoil the fun. They are what make the fun possible. The second picture is about angels. Chesterton jokes that the great saints had the power of levitation, of floating up, and adds that they also had the power of “levity”, of lightness and laughter. “Angels can fly because they can take themselves lightly.” Pride makes us heavy. We take ourselves too seriously. Humility makes us light. We can laugh, and we can rise. And then the secret. Chesterton says that the old pagan world showed joy on the surface but carried sadness at its heart. Christianity is the opposite. There may be sorrows on the surface, but underneath, at the very centre, is joy. “Joy, which was the small publicity of the pagan, is the gigantic secret of the Christian.” He ends by looking at Jesus in the Gospels. Jesus never hid his tears; he wept openly. He never hid his anger at injustice. But Chesterton wonders whether there was one thing he kept hidden, something too great to show: “And I have sometimes fancied that it was His mirth.” Chesterton died in 1936. Christians of every tradition still read him for his joyful, fighting faith. If you remember one thing from this book, let it be this: at the centre of the universe is not a cold machine, but a God of overflowing joy. And he invites you into it. One thing to do this week: this week, look for one thing each day that makes you genuinely laugh or feel joy, and thank God for it. Ask him to show you the “gigantic secret” of joy at the centre of the Christian life.",
+  "word_count": 400
+ }
+}
+]

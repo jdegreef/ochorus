@@ -225,8 +225,8 @@ CHAPTERS: list[tuple[str, list[str]]] = [
             "people about Jesus, and he grew up to be the fastest runner in all of "
             "Scotland. When he raced, people said, he ran with his head thrown back "
             "and his face lifted to the sky, as if he were running for the sheer "
-            "joy of it. “God made me fast,” Eric said, “and when I "
-            "run, I feel His pleasure.”",
+            "joy of it. Eric believed his speed was a gift from God, and he "
+            "loved to use it.",
             "In 1924 Eric was chosen to run for his country in the Olympic Games, "
             "and everyone was sure he would win the hundred-metre race. Then the "
             "timetable was announced, and Eric's heart sank: his race was to be run "
@@ -239,7 +239,7 @@ CHAPTERS: list[tuple[str, list[str]]] = [
             "was not his best and which nobody expected him to win.",
             "On the day of that race, someone slipped a note into Eric's hand. It "
             "said that God honours those who honour Him. Eric ran as though his feet "
-            "had wings — and he not only won the gold medal, he broke the world "
+            "had wings — and he not only won the gold medal, he set a new Olympic "
             "record. The boy who gave up his best race had been given a better one.",
             "But the most surprising thing came next. At the very height of his "
             "fame, when he could have had anything, Eric gave it all up and went "

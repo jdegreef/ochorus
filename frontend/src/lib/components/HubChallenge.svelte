@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { SeriesSummary } from '$lib/library-public';
-	import { challengeState, type HubChallenge } from '$lib/audienceHub';
+	import type { HubChallenge, SeriesSummary } from '$lib/library-public';
+	import { challengeState } from '$lib/audienceHub';
+	import { SITE_URL } from '$lib/config';
 	import { allProgress } from '$lib/progress';
 	import { readingActivity } from '$lib/readingActivity.svelte';
 	import { currentStreak, localToday } from '$lib/streak';
@@ -13,6 +14,7 @@
 	import CoverStrip from './CoverStrip.svelte';
 	import ProgressBar from './ProgressBar.svelte';
 	import Icon from './Icon.svelte';
+	import ShareButton from './ShareButton.svelte';
 
 	/**
 	 * A hub's daily devotional series, framed as a challenge: "Take the 30-day
@@ -22,12 +24,21 @@
 	 * prerendered, so it bakes the not-yet-started band and a returning reader's
 	 * place fills in), and again on `ochorus:sync` when an account's progress
 	 * lands after the page did — the /series index's "Continue" does the same.
+	 *
+	 * "Do it with a friend" passes the series page on with an invitation — a
+	 * challenge is easier kept with someone, and that needs no account.
 	 */
 	let {
 		series,
 		challenge,
-		onstart
-	}: { series: SeriesSummary; challenge: HubChallenge; onstart?: () => void } = $props();
+		onstart,
+		onshare
+	}: {
+		series: SeriesSummary;
+		challenge: HubChallenge;
+		onstart?: () => void;
+		onshare?: () => void;
+	} = $props();
 	const t = i18n.t;
 
 	let ticks = $state(0);
@@ -85,7 +96,7 @@
 					<ProgressBar percent={(place.day / challenge.days) * 100} label={`${name}: ${dayLabel}`} />
 				</div>
 			{/if}
-			<div class="mt-5">
+			<div class="mt-5 flex flex-wrap items-center gap-3">
 				{#if place.done}
 					<a class="btn btn-ghost" href={localizeHref(`/series/${series.slug}/`)}>
 						{t('audience.challengeSeries')}
@@ -99,6 +110,16 @@
 						{place.started ? t('audience.challengeKeep') : t('audience.challengeStart')}
 					</a>
 				{/if}
+				<!-- Kept once it's done: the reader who finished is the best one to
+				     pass it on. -->
+				<ShareButton
+					url={`${SITE_URL}${localizeHref(`/series/${series.slug}/`)}`}
+					title={t('audience.challengeInvite').replace('%n%', days).replace('%s%', name)}
+					label={t('audience.challengeShare')}
+					showLabel
+					size="md"
+					{onshare}
+				/>
 			</div>
 		</div>
 	</section>

@@ -822,13 +822,19 @@
 		if (w > 0) pagesMeasured = true;
 		if (!measured) return;
 		const el = body!.children[at] as HTMLElement | undefined;
-		const target = wasLast
+		// A reader already in the ending stays where they are: a re-flow there is
+		// usually their own doing (an answer opened, the composer grown), and the
+		// last-page rule turned the page under the click. Only `?pg=last`, until
+		// the reader acts, still pins the last page.
+		const target = stickToLast
 			? pageTotal - 1
 			: inEnd && endStart
 				? pageOfNode(endStart) + (pageIndex - endWas)
-				: el
-					? pageOf(el)
-					: pageIndex;
+				: wasLast
+					? pageTotal - 1
+					: el
+						? pageOf(el)
+						: pageIndex;
 		if (target !== pageIndex) goToPage(target, false);
 	}
 
@@ -1419,6 +1425,9 @@
 	 * changing which chapter you're in off a stray tap is not.
 	 */
 	function onArticleClick(e: MouseEvent) {
+		// The reader is acting on the page in front of them: it is no longer
+		// "the last page, wherever that lands" (see measurePages).
+		stickToLast = false;
 		// A click right on the heels of a swipe is that swipe's synthetic tap.
 		if (performance.now() - lastSwipeEnd < 400) return;
 		if (reader.onScriptureClick(e)) return;

@@ -16,7 +16,7 @@ from __future__ import annotations
 # --- Target languages --------------------------------------------------------
 # bible: the Take Root translation code whose wording is authoritative for
 # Scripture quotations. Every code below is verified against the live API
-# (GET /api/bible/<code>/JHN/1/ → 200 with verse text) EXCEPT fr and vi, added
+# (GET /api/bible/<code>/JHN/1/ → 200 with verse text) EXCEPT fr, vi and ko, added
 # from sessions that could not reach it; each says so in its own NOTE.
 # The code is read ONLY at
 # translation time — seeds and tests never hit the API — so a wrong value can't
@@ -353,6 +353,51 @@ SEED_LANGUAGES: dict[str, dict] = {
             "godliness": "sự tin kính",
             "intercession": "sự cầu thay",
             "surrender": "sự dâng mình / đầu phục",
+        },
+    },
+    "ko": {
+        "name": "Korean",
+        "native": "한국어",
+        # The ebible "kor" text (mirror: bibles/kor_old, all 66 books). The
+        # mirror's metadata calls it "Korean Bible (1910)", but the wording is
+        # the 개역 (Revised) tradition in modern spelling — 태초에 말씀이
+        # 계시니라 (John 1:1), 내 안에 거하라 (John 15:4), 하나님 throughout —
+        # which is the text Korean Protestant readers know. PUBLIC DOMAIN
+        # (meta.json: license "public"), so no credit line is owed and no
+        # bibleCredit.ts entry.
+        #
+        # Deliberately NOT 개역개정 (1998), the text most churches read today:
+        # it is the Korean Bible Society's and licensed. Where this text and
+        # 개역개정 differ, quoted verses keep this one.
+        #
+        # NOTE: `bible` is the Take Root code, which the session that added
+        # this could not verify (api.takeroot.bible is egress-blocked there).
+        # `kor` follows the ebible id. VERIFY before the first API-backed
+        # Korean job:
+        #   CHECK_BIBLE_CODES=1 uv run python manage.py test \
+        #     library.tests_languages.LanguageSeedTableTests
+        # Worker sessions can mine the text verbatim from the ebible mirror
+        # (raw.githubusercontent.com/gracious-tech/fetch_collection, bibles/
+        # kor_old/usfm), which needs no Take Root code.
+        "bible": "kor",
+        # The NAME of the text, not a description: the translation prompt says
+        # "use the supplied {bible_label} wording", so this is what it quotes.
+        "bible_label": "개역 성경",
+        # Protestant register throughout: 하나님 (never the Catholic 하느님).
+        # "abide" and "the flesh" are this Bible's own words (John 15:4 거하라;
+        # Rom 8 육신). Prose is 합니다체. A draft for native review.
+        "glossary": {
+            "justification": "칭의",
+            "sanctification": "성화",
+            "atonement": "속죄",
+            "grace": "은혜",
+            "the flesh": "육신",
+            "abide": "거하다",
+            "the Holy Spirit": "성령",
+            "the Lord": "주",
+            "godliness": "경건",
+            "intercession": "중보기도",
+            "surrender": "순복",
         },
     },
 }

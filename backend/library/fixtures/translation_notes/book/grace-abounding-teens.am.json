@@ -1,0 +1,261 @@
+{
+ "kind": "book",
+ "slug": "grace-abounding-teens",
+ "language": "am",
+ "job_issue": 5737,
+ "pull_request": null,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh; re-verified for this job 2026-10-09: jhn/rom/heb and the other NT books return 200, gen.usfm and psa.usfm 404). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
+  "This edition is the teen retelling of grace-abounding, whose full Amharic edition is shipped. Every quotation of Bunyan and every verse Bunyan quotes inside it was taken from the matching paragraph of grace-abounding.am.json (the full en/am editions are paragraph-aligned), so the full and teen editions read as one family. A `mined` row was re-measured against the finished text: an exact substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter quotations (e.g. «ገናም ስፍራ አለ», «ጸጋዬ ይበቃል», «ወዳጄ») are self_rendered even where they match the full edition.",
+  "Luke 22:31 sits in the mirror's bridged 22:29-31 entry, whose text is only 22:31; the chapter-7 epigraph joins it to 22:32 verbatim. The English quotes the KJV; per the Amharic teen editions the epigraphs cite book and verse with no version label.",
+  "2 Corinthians 12:9: the full edition renders Bunyan's partial verse once as «ጸጋዬ ይበቃሃል» (§204) and once as «ጸጋዬ ይበቃል» (§206). Chapter 10 uses «ጸጋዬ ይበቃል» for the partial verse throughout, because the chapter's point is that the words 'for thee' (ለአንተ) were missing, and «ይበቃሃል» already carries them. A reviewer may want §204 of the full edition aligned."
+ ],
+ "references": [
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Isaiah 55:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "possibilities-of-prayer.am.json"
+  },
+  {
+   "reference": "1 Samuel 16:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "key-teachings-of-jonathan-edwards.am.json"
+  },
+  {
+   "reference": "Romans 10:3",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Matthew 7:14",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 14:22",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 9:16",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 5,
+   "source_file": "grace-abounding.am.json"
+  },
+  {
+   "reference": "Ecclesiasticus 2:10",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 5,
+   "source_file": "grace-abounding.am.json"
+  },
+  {
+   "reference": "Luke 14:23",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Luke 14:22",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Luke 14:22",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Luke 14:22",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Romans 8:38-39",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Song of Songs 4:1",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Luke 22:31-32",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 22:31",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 7,
+   "source_file": "grace-abounding.am.json"
+  },
+  {
+   "reference": "Colossians 1:20",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Hebrews 12:17",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 8,
+   "source_file": "grace-abounding.am.json"
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 8,
+   "source_file": "grace-abounding.am.json"
+  },
+  {
+   "reference": "Psalm 77:7-9",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "grace-abounding.am.json"
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 John 5:16",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 10
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 10
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 10,
+   "source_file": "grace-abounding.am.json"
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 10,
+   "source_file": "grace-abounding.am.json"
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 10,
+   "source_file": "grace-abounding.am.json"
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "key-teachings-of-watchman-nee.am.json"
+  },
+  {
+   "reference": "Joshua 20:5",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 11,
+   "source_file": "grace-abounding.am.json"
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 11,
+   "source_file": "grace-abounding.am.json"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 11,
+   "source_file": "grace-abounding.am.json"
+  },
+  {
+   "reference": "Romans 3:24",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 11
+  },
+  {
+   "reference": "1 Corinthians 13:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 5:20",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 13,
+   "source_file": "the-god-of-all-comfort.am.json"
+  }
+ ]
+}

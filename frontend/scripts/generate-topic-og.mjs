@@ -52,10 +52,9 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
-import { channels } from '../src/lib/coverArt.ts';
 import { topicMeta } from '../src/lib/emblemNames.ts';
 import { EMBLEM_ART } from '../src/lib/emblems.ts';
-import { BACKGROUND, GOLD, HEIGHT, MUTED, PAPER, WIDTH, drawCard, liftToContrast } from './og-card.mjs';
+import { BACKGROUND, GOLD, HEIGHT, MUTED, PAPER, WIDTH, alpha, box, drawCard, emblemUri, liftToContrast } from './og-card.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = resolve(HERE, '../static/og/topics');
@@ -71,17 +70,6 @@ function topicCards() {
 }
 
 // ── The card ────────────────────────────────────────────────────────────────
-
-/** The emblem, wrapped as a standalone SVG document satori can place as an image. */
-function emblemUri(name) {
-	const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">${EMBLEM_ART[name]}</svg>`;
-	return `data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}`;
-}
-
-/** `#rrggbb` at `alpha` — satori has no color-mix, so the tint is mixed here. */
-function alpha(hex, a) {
-	return `rgba(${channels(hex).join(', ')}, ${a})`;
-}
 
 /**
  * Title size by length. Topic titles are short (the longest, "To the Ends of
@@ -107,9 +95,6 @@ function taglineFor(description) {
 	// before the ellipsis (the slice already can't end in whitespace).
 	return cut.slice(0, cut.lastIndexOf(' ')).replace(/[,;—-]+$/, '') + '…';
 }
-
-/** A satori div. Most of this card is layout, so `box` rather than `text`. */
-const box = (style, children) => ({ type: 'div', props: { style, children } });
 
 const digest = (s) => createHash('sha256').update(s).digest('hex');
 
@@ -177,7 +162,7 @@ function card({ title, tagline, scripture_ref, emblem, accent }) {
 							background: alpha(accent, 0.16),
 							border: `2px solid ${alpha(accent, 0.4)}`
 						},
-						{ type: 'img', props: { src: emblemUri(emblem), width: 215, height: 215 } }
+						{ type: 'img', props: { src: emblemUri(EMBLEM_ART[emblem]), width: 215, height: 215 } }
 					)
 				])
 			]

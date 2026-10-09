@@ -1,0 +1,418 @@
+{
+ "kind": "book",
+ "slug": "lord-teach-us-to-pray-2",
+ "language": "es",
+ "job_issue": 2917,
+ "references": [
+  {
+   "reference": "Luke 11:1",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 11:1b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 1
+  },
+  {
+   "reference": "Luke 11:1b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 2
+  },
+  {
+   "reference": "Luke 11:1b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 11:1b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 5
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 11:1b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 11:1b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 7
+  },
+  {
+   "reference": "James 5:17a",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 11:1b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 8
+  },
+  {
+   "reference": "Luke 11:1b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 9
+  },
+  {
+   "reference": "Romans 8:26b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 10:22a",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 11
+  },
+  {
+   "reference": "Hebrews 12:2a",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 11
+  },
+  {
+   "reference": "Luke 11:1b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 12
+  },
+  {
+   "reference": "Job 36:22b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 13
+  },
+  {
+   "reference": "1 Peter 2:5",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 14
+  },
+  {
+   "reference": "Luke 11:1b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 14
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 15
+  },
+  {
+   "reference": "Romans 8:26b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 15
+  },
+  {
+   "reference": "Matthew 5:3a",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 15
+  },
+  {
+   "reference": "Romans 4:20b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 16
+  },
+  {
+   "reference": "John 4:23-24",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "men-who-tended-the-flock-2.es.json"
+  },
+  {
+   "reference": "John 4:22a",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 3
+  },
+  {
+   "reference": "John 4:22b",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 3
+  },
+  {
+   "reference": "John 4:23a",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 3,
+   "source_file": "men-who-tended-the-flock-2.es.json"
+  },
+  {
+   "reference": "John 4:23a",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 5,
+   "source_file": "men-who-tended-the-flock-2.es.json"
+  },
+  {
+   "reference": "John 4:23a",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 6,
+   "source_file": "men-who-tended-the-flock-2.es.json"
+  },
+  {
+   "reference": "John 4:24",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 8,
+   "source_file": "men-who-tended-the-flock-2.es.json"
+  },
+  {
+   "reference": "John 4:21",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 10
+  },
+  {
+   "reference": "John 4:24",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 12,
+   "source_file": "men-who-tended-the-flock-2.es.json"
+  },
+  {
+   "reference": "John 4:23a",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 12,
+   "source_file": "men-who-tended-the-flock-2.es.json"
+  },
+  {
+   "reference": "Galatians 4:6b",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 13
+  },
+  {
+   "reference": "John 1:14b",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 14
+  },
+  {
+   "reference": "John 1:17",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 14
+  },
+  {
+   "reference": "John 14:6a",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 14,
+   "source_file": "christ-all-in-all.es.json"
+  },
+  {
+   "reference": "Hebrews 11:1a",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 15
+  },
+  {
+   "reference": "John 14:17",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 15
+  },
+  {
+   "reference": "Hebrews 10:20",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 17
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 6:6b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 6:8b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 6:6b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 5
+  },
+  {
+   "reference": "Psalm 103:13",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 6:6b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 11
+  },
+  {
+   "reference": "Hebrews 11:6b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 6:8b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 13
+  },
+  {
+   "reference": "1 John 5:15b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 14
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 15
+  },
+  {
+   "reference": "John 4:23",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 2
+  },
+  {
+   "reference": "Psalm 92:10",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 18
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 18
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 6:9a",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 2
+  },
+  {
+   "reference": "Matthew 6:9a",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 3
+  },
+  {
+   "reference": "Matthew 6:9b",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 6:9b",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 6
+  },
+  {
+   "reference": "Ezekiel 36:23a",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 6:10a",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 6:10b",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 6:12",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 6:13a",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 6:13b",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 11:27b",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 17
+  },
+  {
+   "reference": "John 17:26",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 17
+  }
+ ]
+}

@@ -316,7 +316,7 @@
 		<!-- The library is empty in this language. The way out only exists when
 		     there IS one: on /books itself, "read the English library" is where
 		     the reader already is. -->
-		<EmptyState message={t('books.noneInLanguage')} action={isEnglish ? undefined : readEnglish} />
+		<EmptyState art="language" message={t('books.noneInLanguage')} action={isEnglish ? undefined : readEnglish} />
 	{:else}
 		<!-- Continue reading — the shared resume rows (Plans and Series use them
 		     too), most recently read first. -->
@@ -479,7 +479,7 @@
 				<!-- Books exist in this language but the filters removed them all — a
 				     filtered-to-nothing state, so offer to clear (not the bare <p> that
 				     made Books the odd shelf out; C2). -->
-				<EmptyState message={t('books.noResults')} action={clearFiltersAction} />
+				<EmptyState art="search" message={t('books.noResults')} action={clearFiltersAction} />
 			{:else if seriesGroups}
 				<!-- By series: one section per series (group-heading recipe, the name
 				     linking to the series page), then the books in no series. The

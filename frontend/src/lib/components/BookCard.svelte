@@ -155,15 +155,15 @@
 		{/if}
 		<!-- mt-auto pins the meta to the card's bottom, so a one-line title and a
 		     two-line title still bottom out level across a grid row. -->
-		<!-- Two unbreakable halves with a real break between them: on a narrow
-		     card (the library's seven-across) the meta wraps after the dot, not
-		     as "3 hr 15 min / read". The separator is an expression so its
-		     spaces survive — as literal text they were collapsed, leaving no
-		     break opportunity after the dot at all. -->
+		<!-- Two unbreakable halves with a break between them: on a narrow card
+		     (the library's seven-across) the meta wraps BEFORE the dot, which
+		     leads the time onto its line ("12 chapters / · 3 hr 15 min"), never
+		     "3 hr 15 min / read" and never a dot stranded at a line's end. The
+		     space is an expression so Svelte keeps it as the break. -->
 		<div class="mt-auto pt-0.5 text-eyebrow text-muted">
-			<span class="whitespace-nowrap">{chapters}</span>{#if time}<span
-					class="opacity-50">{' · '}</span
-				><span class="whitespace-nowrap">{time}</span>{/if}
+			<span class="whitespace-nowrap">{chapters}</span>{#if time}{' '}<span class="whitespace-nowrap"
+					><span class="opacity-50">·</span> {time}</span
+				>{/if}
 		</div>
 	</div>
 </a>
@@ -192,13 +192,13 @@
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
 		color: var(--surface);
-		background: var(--hue-cypress);
+		background: var(--audience-teens);
 		box-shadow: 0 3px 6px -3px rgb(0 0 0 / 0.45);
 		pointer-events: none;
 		transition: opacity var(--duration-fast);
 	}
 	.edition-ribbon[data-kind='children'] {
-		background: var(--hue-ochre);
+		background: var(--audience-children);
 	}
 	.edition-ribbon[data-kind='original'] {
 		background: var(--section-originals);

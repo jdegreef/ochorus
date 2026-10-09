@@ -1,0 +1,104 @@
+{
+ "kind": "book",
+ "slug": "c-s-lewis-a-life-children",
+ "language": "am",
+ "job_issue": 5742,
+ "pull_request": 5775,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole in the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh, lowercase usfm/<book>.usfm; re-verified for this job 2026-10-09: jhn/mat/jas/1pe/2ti return 200, psa/pro/ecc/mal 404 — the mirror carries no Old Testament). NT epigraphs quote it verbatim. OT epigraphs reuse the wording of an already-shipped Amharic work that quotes the same verse (source_file names it, and the fragment was checked as an exact substring of that file) and are otherwise self_rendered in the 1962 register.",
+  "Every quotation is a chapter epigraph (block 0); the body quotes no scripture. The English epigraphs are simplified child paraphrases (\"— from Psalm 15\"); per the shipped am children's editions each quotes the 1962 Bible's own wording for the part the English means, with … for words left out, and cites `— ከ<Book> <chapter>`.",
+  "Psalm 15: the opening question (15:1a) is growing-in-wisdom.am.json's wording; the second half (\"keeps his promise even when it costs him\", 15:4b) is self_rendered. Ecclesiastes 5:4 and Malachi 3:16 have no shipped Amharic rendering and are self_rendered in the 1962 register — check both against a printed 1962 Bible.",
+  "There is no Amharic full or teen edition of this life yet, so names were set here and should carry to those editions: ሲ. ኤስ. ሉዊስ, ጃክ, ዋርኒ, ቶልኪን, ኦክስፎርድ, ካምብሪጅ, ቤልፋስት, ማግደለን ኮሌጅ, ኪልንስ, ኢንክሊንግስ, አስላን, ናርኒያ (ኦክስፎርድ/ካምብሪጅ/ቤልፋስት/ጆርጅ ማክዶናልድ follow their existing corpus spellings). Lewis's book titles are rendered descriptively («የስክሩቴፕ ደብዳቤዎች», «ተራ ክርስትና» (Mere Christianity), «አንበሳው፣ ጠንቋይቱና የልብስ ቁም ሣጥኑ», «የናርኒያ ዜና መዋዕል», «የታየ ኀዘን» (A Grief Observed)) — a native reviewer may prefer the titles of published Amharic editions where they exist. Nothing of Lewis's own writing is quoted beyond the one phrase the English already quotes (ch. 6).",
+  "Clock times are converted to Ethiopian reckoning, matching the am corpus (ከሌሊቱ ዘጠኝ ሰዓት = 3 a.m., ከሌሊቱ አሥር ሰዓት = 4 a.m., ከጠዋቱ ሁለት ሰዓት = 8 a.m.). Gregorian dates keep the corpus form (ኖቬምበር 29 ቀን 1898)."
+ ],
+ "references": [
+  {
+   "reference": "Proverbs 22:6",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "women-who-moved-heaven-2.am.json"
+  },
+  {
+   "reference": "Psalm 27:10",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "rooted-4.am.json"
+  },
+  {
+   "reference": "Proverbs 27:17",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "rise-up-men-of-god-2.am.json"
+  },
+  {
+   "reference": "Ecclesiastes 5:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Psalm 15:1a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "growing-in-wisdom.am.json"
+  },
+  {
+   "reference": "Psalm 15:4b",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 139:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "the-god-of-all-comfort.am.json"
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Malachi 3:16",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "1 Peter 3:15b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "James 5:15a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "2 Timothy 4:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  }
+ ]
+}

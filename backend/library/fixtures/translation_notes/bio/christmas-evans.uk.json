@@ -1,0 +1,26 @@
+{
+ "kind": "bio",
+ "slug": "christmas-evans",
+ "language": "uk",
+ "job_issue": 1688,
+ "pull_request": null,
+ "note": [
+  "Scripture is spliced byte-for-byte from Kulish (1905), parsed whole from the ebible mirror (ukr_pan); each row was checked mechanically as a verbatim substring of its Kulish verse and present in the bio.",
+  "1 Timothy 6:8: the English quotes only “having food and raiment” and paraphrases the rest; the whole Kulish verse is quoted since the English sentence carries its full sense.",
+  "“As dry as Gilboa” is Evans’s own phrase alluding to 2 Samuel 1:21, not a quotation, so it is rendered in modern prose (Kulish has «гори Гелвуйські»)."
+ ],
+ "references": [
+  {
+   "reference": "Revelation 1:16",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Timothy 6:8",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Kulish (1905) Bible text"
+  }
+ ]
+}

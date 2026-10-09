@@ -16,7 +16,7 @@
 	import { API_BASE_URL } from '$lib/config';
 	import { lang } from '$lib/lang.svelte';
 	import { footerLocales } from '$lib/footerLocales';
-	import { FOR_LINKS, forPath } from '$lib/forLinks';
+	import { FOR_INDEX, FOR_LINKS, forPath } from '$lib/forLinks';
 	import { loginHref, withSignup } from '$lib/loginHref';
 	import { seenOnView, withSource } from '$lib/signupSource';
 	import { bibleCredit, creditParts } from '$lib/bibleCredit';
@@ -67,6 +67,9 @@
 	// Latin-ext / Vietnamese / Cyrillic subsets stay lazy (rare glyphs).
 	import frauncesLatin from '@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2?url';
 	import hankenLatin from '@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-wght-normal.woff2?url';
+	// Korean's faces, as their own stylesheet: ~100 KB of @font-face rules that
+	// only a Korean page should pay for (see fonts-ko.css).
+	import koFonts from '$lib/fonts-ko.css?url';
 
 	let { children } = $props();
 	const t = i18n.t;
@@ -311,6 +314,9 @@
 	{/if}
 	<link rel="preload" href={frauncesLatin} as="font" type="font/woff2" crossorigin="anonymous" />
 	<link rel="preload" href={hankenLatin} as="font" type="font/woff2" crossorigin="anonymous" />
+	{#if getLocale() === 'ko'}
+		<link rel="stylesheet" href={koFonts} />
+	{/if}
 	<!-- Feed autodiscovery: browsers and readers surface the "new works" Atom feed. -->
 	<link rel="alternate" type="application/atom+xml" title="Ochorus — New in the Library" href="/feed.xml" />
 </svelte:head>
@@ -685,7 +691,7 @@
 					<div
 						class="chrome-col flex flex-wrap items-baseline gap-x-5 gap-y-1 px-5 py-4 text-small"
 					>
-						<span class="eyebrow py-1 text-text">Ochorus for</span>
+						<a class="eyebrow py-1 text-text hover:underline" href={FOR_INDEX}>Ochorus for</a>
 						{#each FOR_LINKS as l (l.slug)}
 							<a class="whitespace-nowrap py-1 text-muted hover:text-text" href={forPath(l.slug)}
 								>{l.label}</a

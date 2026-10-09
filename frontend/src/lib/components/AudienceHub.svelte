@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { scrollEdges } from '$lib/actions/scrollEdges';
-	import { citeLine, type AudienceShelf } from '$lib/library-public';
+	import { citeLine, guideCardLink, type AudienceShelf } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, collectionPage, hreflangExact } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
@@ -9,6 +9,8 @@
 	import { seriesCompanion } from '$lib/series';
 	import {
 		heroCovers,
+		nextRung,
+		RUNG_LABEL,
 		hubBooks,
 		hubCounts,
 		hubIsEmpty,
@@ -35,6 +37,7 @@
 	import QuoteCard from '$lib/components/QuoteCard.svelte';
 	import HubContinue from '$lib/components/HubContinue.svelte';
 	import HubChallenge from '$lib/components/HubChallenge.svelte';
+	import HubSpotlight from '$lib/components/HubSpotlight.svelte';
 	import { track } from '$lib/analytics';
 
 	/**
@@ -71,7 +74,11 @@
 	const fan = $derived(heroCovers(shelf));
 	const people = $derived(shelf.people ?? []);
 	const quotes = $derived(shelf.quotes ?? []);
-	const challengeSeries = $derived(shelf.series.find((s) => s.slug === hub.challenge.series));
+	const ladders = $derived(shelf.ladders ?? {});
+	const challenge = $derived(shelf.challenge ?? null);
+	const challengeSeries = $derived(
+		challenge ? shelf.series.find((s) => s.slug === challenge.series) : undefined
+	);
 	const leaderGuides = $derived(shelf.leader_guides ?? []);
 
 	// The page's groups, in order, each only when it has something — the jump
@@ -174,7 +181,7 @@
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if empty}
-		<EmptyState message={t('audience.none')} />
+		<EmptyState art="language" message={t('audience.none')} />
 	{:else}
 		<HubContinue {shelf} exclude={challengeSeries?.slug} />
 
@@ -188,7 +195,7 @@
 						<li>
 							<a
 								class="path card-lift"
-								href={p.href.startsWith('#') ? p.href : localizeHref(p.href)}
+								href={localizeHref(p.href)}
 								onclick={() => track(HUB_EVENT, { hub: hub.audience, action: 'path' })}
 							>
 								<span class="path-covers"><CoverStrip covers={p.covers} max={3} /></span>
@@ -250,11 +257,23 @@
 			</nav>
 		{/if}
 
-		{#if challengeSeries}
+		{#if shelf.spotlight}
+			<HubSpotlight
+				book={shelf.spotlight}
+				audience={hub.audience}
+				ladder={ladders[shelf.spotlight.slug]}
+				onstart={() => track(HUB_EVENT, { hub: hub.audience, action: 'spotlight' })}
+				onclimb={() => track(HUB_EVENT, { hub: hub.audience, action: 'ladder' })}
+				onshare={() => track(HUB_EVENT, { hub: hub.audience, action: 'spotlight-share' })}
+			/>
+		{/if}
+
+		{#if challenge && challengeSeries}
 			<HubChallenge
 				series={challengeSeries}
-				challenge={hub.challenge}
+				{challenge}
 				onstart={() => track(HUB_EVENT, { hub: hub.audience, action: 'challenge' })}
+				onshare={() => track(HUB_EVENT, { hub: hub.audience, action: 'challenge-share' })}
 			/>
 		{/if}
 
@@ -334,9 +353,25 @@
 				<p class="-mt-2 mb-5 max-w-2xl text-small text-muted">
 					{t(hub.retoldKey)}
 				</p>
-				<div class="book-grid">
+				<!-- Each retelling's next step up its ladder — the teens edition after
+				     the children's, the full original after the teens' — one tap away. -->
+				<div class="book-grid cover-rail hub-rail" use:scrollEdges>
 					{#each shelf.editions as book (book.slug)}
-						<BookCard {book} showAuthor perChapter hook={hub.hooks ? book.hook : ''} />
+						{@const next = nextRung(ladders[book.slug], book.slug)}
+						<div class="flex flex-col gap-2">
+							<BookCard {book} showAuthor perChapter hook={hub.hooks ? book.hook : ''} />
+							{#if next}
+								<a
+									class="ready text-eyebrow"
+									href={localizeHref(`/books/${next.slug}`)}
+									onclick={() => track(HUB_EVENT, { hub: hub.audience, action: 'ladder' })}
+								>
+									{t('audience.readyForMore')}
+									<span class="font-semibold">{t(RUNG_LABEL[next.rung])}</span>
+									<Arrow />
+								</a>
+							{/if}
+						</div>
 					{/each}
 				</div>
 			</section>
@@ -345,7 +380,7 @@
 		{#if shelf.more.length}
 			<section id="more" class="jump-anchor mb-12">
 				<GroupHeading name={t('audience.moreHeading')} count={shelf.more.length} />
-				<div class="book-grid">
+				<div class="book-grid cover-rail hub-rail" use:scrollEdges>
 					{#each shelf.more as book (book.slug)}
 						<BookCard
 							{book}
@@ -405,12 +440,7 @@
 							{book}
 							showAuthor
 							showSeries={false}
-							link={{
-								href: `/books/${book.slug}/guide`,
-								cta: t('guide.open'),
-								label: t('guide.label'),
-								ariaLabel: `${t('guide.title').replace('%t%', book.title)} — ${book.author.name}`
-							}}
+							link={guideCardLink(book, t)}
 						/>
 					{/each}
 				</div>
@@ -464,8 +494,8 @@
 	   twin are defined in every theme, so the band follows lamplight, paper and
 	   sepia without a theme rule here. */
 	.hub-hero {
-		--hub-hue: var(--hue-ochre);
-		--hub-soft: var(--hue-ochre-soft);
+		--hub-hue: var(--audience-children);
+		--hub-soft: var(--audience-children-soft);
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
 		gap: 1.5rem;
@@ -478,8 +508,8 @@
 		background: linear-gradient(135deg, var(--hub-soft), var(--surface) 75%);
 	}
 	.hub-hero[data-audience='teens'] {
-		--hub-hue: var(--hue-cypress);
-		--hub-soft: var(--hue-cypress-soft);
+		--hub-hue: var(--audience-teens);
+		--hub-soft: var(--audience-teens-soft);
 	}
 	/* The fan is decoration: on a phone the words lead and it steps aside. */
 	.hub-fan {
@@ -554,6 +584,36 @@
 		border: 1px solid var(--border);
 		border-radius: var(--radius-card);
 		background: var(--surface);
+	}
+
+	/* On a phone a long shelf swipes sideways — a row per group, as a
+	   streaming app would — rather than a wall the reader scrolls past. The
+	   scroller itself is the shared .cover-rail (positioned, hidden scrollbar,
+	   edge fades, reset on desktop); this only turns the grid into one row.
+	   Padding on both sides keeps a card's lift and focus ring unclipped. */
+	@media (max-width: 639.98px) {
+		.hub-rail {
+			grid-template-columns: none;
+			grid-auto-flow: column;
+			grid-auto-columns: 44%;
+			scroll-snap-type: x proximity;
+			padding-block: 0.375rem 0.5rem;
+		}
+		.hub-rail > :global(*) {
+			scroll-snap-align: start;
+		}
+	}
+	.ready {
+		display: inline-flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.25rem;
+		padding-inline: 0.15rem;
+		color: var(--accent);
+		text-decoration: none;
+	}
+	.ready:hover {
+		text-decoration: underline;
 	}
 
 	.parents-fold summary {

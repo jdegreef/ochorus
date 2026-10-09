@@ -445,6 +445,7 @@
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if sorted.length === 0}
 		<EmptyState
+			art={filtering ? 'search' : 'book'}
 			message={filtering ? t('sermons.noMatches') : t('sermons.empty')}
 			action={filtering ? clearFiltersAction : undefined}
 		/>

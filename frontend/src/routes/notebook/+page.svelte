@@ -1,4 +1,5 @@
 <script lang="ts">
+	import EmptyArt from '$lib/components/EmptyArt.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
@@ -376,6 +377,7 @@
 					{:else if byPerson && personCards.length}
 						<PrayerList cards={personCards} {locale} onopen={(p) => (personFilter = p)} onpray={prayFor} />
 					{:else if entries.length === 0}
+						<EmptyArt name={q ? 'search' : 'notes'} class="mt-8" />
 						<p class="empty">{q ? t('notebook.no_matches') : emptyMessage}</p>
 					{:else}
 						{#if split.pinned.length}
@@ -676,7 +678,8 @@
 		gap: 1.75rem;
 	}
 	.empty {
-		margin-top: 1.5rem;
+		margin-top: 1rem;
+		text-align: center;
 		font-family: var(--font-display);
 		font-style: italic;
 		color: var(--muted);

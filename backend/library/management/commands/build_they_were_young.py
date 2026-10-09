@@ -246,6 +246,70 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
         ],
     },
+    4: {
+        "sort_order": 144,
+        "publication_year": 2026,
+        "title": "They Were Young – Book 4: Sent",
+        "subtitle": "Six who did something for God while they were young",
+        "cover_url": "/covers/they-were-young-4.svg",
+        "cover_color": covers.ink_safe("#2f6a3a"),  # a sending green
+        "description": (
+            "Six true stories for readers aged 13 to 17 of people who did something "
+            "for God while they were young: an orphan who carried the gospel into the "
+            "forests of colonial America; a shoemaker's apprentice who dreamed of the "
+            "whole world; a Welsh girl who walked miles for a Bible; a Belfast teenager "
+            "who found what will last; an Olympic runner who would not race on a "
+            "Sunday; and a student who gave what he could not keep. The fourth book "
+            "of They Were Young."
+        ),
+        "about_html": (
+            "<p>They Were Young is an original Ochorus series of true stories for "
+            "readers aged 13 to 17 about people whose faith began, or was tested, "
+            "while they were young. Book 4, “Sent”, gathers six who heard God’s call "
+            "while they were still young and did something about it.</p>"
+            "<p>David Brainerd came to faith at twenty-one and gave his short life "
+            "to the Native American peoples of the colonial frontier. William Carey "
+            "was a poor shoemaker’s apprentice who came to faith as a teenager and "
+            "went on to India. Mary Jones, a Welsh weaver’s daughter, saved for "
+            "years and walked a long way to buy a Bible, and helped give the Bible "
+            "to the world. Amy Carmichael was a Belfast teenager when a verse about "
+            "what will last changed her life. Eric Liddell would not run on a "
+            "Sunday at the 1924 Olympics, won gold anyway, and went to China. Jim "
+            "Elliot wrote as a young man about giving what you cannot keep, and went "
+            "to Ecuador.</p>"
+            "<p>The stories are true and honest about the cost, the mistakes and the "
+            "people these six went to. Where a famous story has grown in the "
+            "telling, or a film changed the facts, they say so. Each ends with the "
+            "person’s own words, four questions to think through, and a pointer to "
+            "read on in the library. The earlier books are not required.</p>"
+        ),
+        "qa": [
+            {
+                "question": "What is Book 4 of They Were Young about?",
+                "answer": "Six true stories of people who did something for God while they were young: a missionary to Native American peoples, a shoemaker who went to India, a Welsh girl who walked for a Bible, a Belfast teenager who went to India, an Olympic champion who went to China, and a student who went to Ecuador.",
+            },
+            {
+                "question": "Who is in Book 4?",
+                "answer": "David Brainerd, William Carey, Mary Jones, Amy Carmichael, Eric Liddell and Jim Elliot: people from America, England, Wales, Ireland and Scotland whose callings took them across the world.",
+            },
+            {
+                "question": "Is it honest about the cost of mission?",
+                "answer": "Yes. It does not make mission sound like an adventure. It tells of illness, depression, early death and a family that paid a heavy price, and it treats the peoples these six went to with respect rather than as a backdrop.",
+            },
+            {
+                "question": "Are the stories true?",
+                "answer": "Yes. They are drawn from the people’s own writings, such as Brainerd’s diary and Amy Carmichael’s Things as They Are, and from the earliest accounts. Where a story has grown in the telling, such as details of Mary Jones’s walk or the film version of Eric Liddell’s Olympics, it says so.",
+            },
+            {
+                "question": "Do I need to read the earlier books first?",
+                "answer": "No. Each book stands on its own. Book 1 is Called, Book 2 is Tested and Book 3 is Questions.",
+            },
+            {
+                "question": "Can it be used in a youth group?",
+                "answer": "Yes. Each chapter can be read in one sitting and ends with four questions written for discussion.",
+            },
+        ],
+    },
 }
 
 

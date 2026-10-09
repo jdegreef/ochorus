@@ -57,7 +57,7 @@ const LOCALES = JSON.parse(
 
 /** Scripts with no italic of their own: a slanted Amiri or Tiro reads as a
  *  rendering fault, so their lines are set upright. */
-const UPRIGHT = new Set(['ar', 'hi', 'am']);
+const UPRIGHT = new Set(['ar', 'hi', 'am', 'ko']);
 const RTL = new Set(['ar']);
 /** Locales whose "Read …" line carries its own quotation marks; the rest
  *  italicise the title instead. */

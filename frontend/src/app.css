@@ -279,9 +279,9 @@
    style (site-fonts.css) — only the ones that say var(--font-display) would.
    Plain, the utilities emit `var(--font-display)` and follow the token. */
 @theme {
-	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'PT Serif', 'Fraunces Fallback', Georgia,
+	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'Noto Serif KR', 'PT Serif', 'Fraunces Fallback', Georgia,
 		'Times New Roman', serif;
-	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic',
+	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic', 'Noto Sans KR',
 		'PT Sans', 'Hanken Grotesk Fallback', ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
@@ -341,7 +341,7 @@
 	   script declares only the cover tokens and --font-display: a var() the
 	   card never declares invalidates the whole stack, and the title lands in
 	   Times with nothing to say so. */
-	--cover-face-young: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic', 'PT Sans', ui-sans-serif, system-ui, sans-serif;
+	--cover-face-young: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic', 'Noto Sans KR', 'PT Sans', ui-sans-serif, system-ui, sans-serif;
 }
 
 /* Runtime theme variables. Default = "lamplight" (dark); [data-theme='light']
@@ -462,9 +462,9 @@
 	   PT Serif above. Hanken was not even a partial answer for Cyrillic — it
 	   ships `cyrillic-ext` (U+0460-052F) and not the base block, so Б, і, ї and є
 	   all fell through it and only ґ did not. Latin still never leaves Hanken. */
-	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'PT Serif', 'Fraunces Fallback', Georgia,
+	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'Noto Serif KR', 'PT Serif', 'Fraunces Fallback', Georgia,
 		'Times New Roman', serif;
-	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic',
+	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic', 'Noto Sans KR',
 		'PT Sans', 'Hanken Grotesk Fallback', ui-sans-serif, system-ui, -apple-system, sans-serif;
 	--reading-scale: 1;
 	/* Motion, per STYLE_GUIDE §7 (quiet and quick, 120-240ms). Eight distinct
@@ -1239,6 +1239,14 @@
    palettes.test.ts composites it against white and measures. */
 :root {
 	--hero-ink: #f8f1e4;
+	/* The book page's band (books/[slug]): the cover's painting, blurred, under
+	   this much of the page's own ground. A painting may be black or white, so
+	   palettes.test.ts composites both at this strength in every theme and
+	   palette and holds the hero's inks to 4.5:1 — body text, the accent, and
+	   --muted-on-wash, the band's secondary ink: muted taken half-way to the
+	   text, the margin a veiled painting needs. */
+	--wash-veil: 88%;
+	--muted-mix-on-wash: 50%;
 	--hero-ground: #1d2a1f;
 	--hero-tint: #1b1526;
 	/* At least 75% through the lower 85%, where the date and greeting sit —
@@ -1303,6 +1311,13 @@
 	--section-biographies-soft: var(--hue-slate-soft);
 	--section-originals: var(--hue-plum);
 	--section-originals-soft: var(--hue-plum-soft);
+	/* Each young-reader audience's colour — the edition ribbons on its covers,
+	   its hub's hero band and spotlight — so a teens book and the teens page
+	   are the same cypress, a children's book and its page the same ochre. */
+	--audience-teens: var(--hue-cypress);
+	--audience-teens-soft: var(--hue-cypress-soft);
+	--audience-children: var(--hue-ochre);
+	--audience-children-soft: var(--hue-ochre-soft);
 }
 
 /* `data-section="books"` on any element puts that section's hue in scope as
@@ -1890,7 +1905,9 @@
      question, not a chapter, so it has no initial.
    - An author's biography (`.reading.bio`, never paged, no <article>) opens
      with the same initial: one rule, one script gate, so a Hindi bio is
-     spared the split akshara exactly as a Hindi chapter is.
+     spared the split akshara exactly as a Hindi chapter is. So does a book
+     page's "About this book": `.has-initial`, the opt-in for any other text
+     (the opposite of `.no-initial`).
 
    ILLUMINATED: the letter is set in the palette's accent (so it is indigo in
    Parchment, navy in Cathedral, violet in Advent under the Church year) and
@@ -1898,7 +1915,7 @@
    a gilt initial's raised edge in a printed devotional. (No RTL variant: no
    right-to-left text gets a floated initial — see above. Print drops the gilt
    with the colour; see the print block.) */
-:is(article:not(.paged) .reading:not(.no-initial), .reading.bio) > p:first-of-type:not(:lang(ar)):not(:lang(hi))::first-letter {
+:is(article:not(.paged) .reading:not(.no-initial), .reading.bio, .has-initial) > p:first-of-type:not(:lang(ar)):not(:lang(hi)):not(:lang(ko))::first-letter {
 	float: inline-start;
 	/* The house serif, not --font-display: that follows the site style
 	   (site-fonts.css), and an initial is part of the page, not the chrome. */
@@ -2012,7 +2029,7 @@
 
 	/* The initial prints in the black accent; a gold gilt edge on black ink
 	   reads as a misregistration, not a flourish. */
-	.reading > p:first-of-type::first-letter {
+	:is(.reading, .has-initial) > p:first-of-type::first-letter {
 		/* !important: the screen rule's selector is far more specific. */
 		text-shadow: none !important;
 	}
@@ -2945,6 +2962,21 @@ nav.appnav .navsearch:hover {
 .emblem-chip > svg {
 	width: 66%;
 	height: 66%;
+}
+/* The "Ochorus for …" pages (routes/for): a group's accent, set as `--group`
+   on a container (FOR_META), reaches the page only as these tints — the topic
+   hero's recipe — never as a fill behind body text. */
+.group-wash {
+	border: 1px solid color-mix(in srgb, var(--group) 22%, var(--color-border));
+	background:
+		radial-gradient(90% 130% at 0% 0%, color-mix(in srgb, var(--group) 16%, transparent), transparent 55%),
+		color-mix(in srgb, var(--group) 7%, var(--color-surface));
+}
+.group-ink {
+	color: color-mix(in srgb, var(--group) 80%, var(--color-text));
+}
+.group-chip {
+	--chip-hue: var(--group);
 }
 /* A finished book's cover in the year shelves (HomeYear, YearInBooks) wears a
    wax seal at its foot — every cover there is a book finished, and a seal is
@@ -4355,4 +4387,26 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		outline: 2px solid Highlight;
 		outline-offset: -2px;
 	}
+}
+
+/* Korean. Hangul is written in spaced words (eojeol), and a line may not break
+   inside one — the browser default breaks between any two syllables, which
+   splits a word and strands its particle on the next line. And Hangul has no
+   italic: Noto Serif/Sans KR ship none, so `em` would come out in a synthesised
+   slant, which reads as a rendering fault (the cover cards already set Korean
+   upright for the same reason). Emphasis keeps its weight instead.
+   The Korean faces themselves load from $lib/fonts-ko.css — see there. */
+:lang(ko) {
+	word-break: keep-all;
+	overflow-wrap: break-word;
+}
+/* On the element itself, not as a descendant of a Korean ancestor: <html
+   lang="ko"> is an ancestor of everything, so a descendant rule would also
+   strip the real Fraunces italic from a Latin island (lang="en") on the page. */
+:is(em, i, cite):lang(ko) {
+	font-style: normal;
+	font-weight: 600;
+}
+:is(blockquote, .italic):lang(ko) {
+	font-style: normal;
 }

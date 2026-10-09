@@ -1,11 +1,25 @@
 import type { IconName } from '$lib/components/Icon.svelte';
-import { toCoverBook, type BookSummary, type CoverBook } from './library-public';
+import { withTrailingSlash } from './href';
+import {
+	toCoverBook,
+	toCoverFace,
+	type AuthorBio,
+	type QuotePage,
+	type SavedQuote,
+	type CoverFace,
+	type BookDetail,
+	type BookSummary,
+	type CoverBook,
+	type PlanSummary
+} from './library-public';
 import { LIVE_LOCALES } from './live-locales.generated';
 
 /**
  * The "Ochorus for …" pages — one page per group we want to reach (churches,
  * homeschool families, parents), each saying what Ochorus is worth to THAT
- * reader and pointing into the library. Linked from the footer's bottom row.
+ * reader and pointing into the library: plans to read together, themed
+ * shelves, and — where the group needs them — printable leader's guides and an
+ * offline pack. Linked from the footer's bottom row and the /for/ index.
  *
  * One route (`/for/[group]/`) renders every entry here, so a new group is a
  * new entry, not a new page. ENGLISH-ONLY for now, like the footer's Discover
@@ -19,7 +33,9 @@ import { LIVE_LOCALES } from './live-locales.generated';
  */
 
 export interface ForLink {
-	/** Unlocalized path, no trailing slash — the page applies `localizeHref`. */
+	/** An unlocalized path, no trailing slash (the page applies `localizeHref`),
+	 *  or an anchor on the page itself — `#plans`, `#shelves`, `#guides`,
+	 *  `#offline` — when the most useful thing for the group is already here. */
 	href: string;
 	label: string;
 }
@@ -29,6 +45,16 @@ export interface ForPoint {
 	title: string;
 	body: string;
 	link?: ForLink;
+}
+
+/** One themed row of covers ("For pastors and leaders"). */
+export interface ForShelfSpec {
+	title: string;
+	note: string;
+	/** Book slugs, in shelf order. The build keeps the first `SHELF_SIZE`
+	 *  published in English (routes/for-shelves), so an unpublished slug drops
+	 *  and the next one takes its place. */
+	picks: string[];
 }
 
 export interface ForPage {
@@ -45,15 +71,65 @@ export interface ForPage {
 	points: ForPoint[];
 	ideasHeading: string;
 	ideas: { title: string; body: string }[];
-	picksNote: string;
-	/** Book slugs, in shelf order. The build picks the first `SHELF_SIZE`
-	 *  published in English out of the live list (routes/for-shelves), so an
-	 *  unpublished slug drops and the next one takes its place. */
-	picks: string[];
+	/** Themed starter shelves; the first one's covers also fan out in the hero. */
+	shelves: ForShelfSpec[];
+	/** Reading-plan slugs for the group, in order; the build shows the first
+	 *  `PLANS_SHOWN` published in English, the rest are backups. */
+	plans: string[];
+	/** Show the printable leader's guides (the young-reader hubs' list). */
+	guides?: boolean;
+	/** An offline pack: books whose PDF / EPUB the build finds are listed with
+	 *  their downloads and a "save them all to this device" button. */
+	offline?: { note: string; picks: string[] };
+	/** A quotation for the page's quote band: a slug from `quote_seed.py`
+	 *  (`<author>-<hash>`). The build resolves it from the author's quote page,
+	 *  so a line whose author is not yet approved simply doesn't show. */
+	quote: string;
+	/** Writers to meet, by author slug, in order; the build keeps the first
+	 *  `AUTHORS_SHOWN` with an English page. */
+	authors: string[];
+	/** The ready-made message a leader passes on — a bulletin line, a group
+	 *  chat — and the page it points readers to (an unlocalized route path). */
+	invite: { text: string; href: string };
 	questions: { q: string; a: string }[];
 	closeHeading: string;
 	closeBody: string;
 }
+
+/** The anchors a `ForLink` may point at: each to the snapshot section that
+ *  answers to it, and the page that holds the same things when that section
+ *  is missing — empty in this build's API, or no snapshot at all (an offline
+ *  reader). */
+export const FOR_ANCHORS = {
+	'#plans': { section: 'plans', fallback: '/plans' },
+	'#shelves': { section: 'shelves', fallback: '/books' },
+	'#guides': { section: 'guides', fallback: '/young-readers' },
+	'#offline': { section: 'offline', fallback: '/books' }
+} as const satisfies Record<string, { section: keyof ForShelfData; fallback: string }>;
+
+export type ForAnchor = keyof typeof FOR_ANCHORS;
+
+/** Every link a page draws from its copy: the two buttons and the points'. */
+export const pageLinks = (p: ForPage): string[] => [
+	p.primary.href,
+	p.secondary.href,
+	...p.points.flatMap((x) => x.link?.href ?? [])
+];
+
+/** Is this href one of the page's own sections? */
+export const isForAnchor = (href: string): href is ForAnchor => Object.hasOwn(FOR_ANCHORS, href);
+
+/** Where a page link really goes: an anchor whose section has nothing in this
+ *  snapshot goes to its fallback page instead of nowhere. */
+export const forHref = (href: string, shelf: ForShelfData): string =>
+	isForAnchor(href) && !shelf[FOR_ANCHORS[href].section].length ? FOR_ANCHORS[href].fallback : href;
+
+/** Is this a snapshot the page can draw? A tab still holding the earlier
+ *  format (a bare array of books) or anything else gets the empty one. */
+export const isShelfData = (x: unknown): x is ForShelfData =>
+	!!x &&
+	typeof x === 'object' &&
+	Object.values(FOR_ANCHORS).every(({ section }) => Array.isArray((x as Record<string, unknown>)[section]));
 
 /** The live languages besides English, by their English names, from the
  *  registry's "Go live" list — so the copy names exactly what the site
@@ -77,7 +153,7 @@ export const FOR_PAGES: ForPage[] = [
 		seoTitle: 'Free Christian Books for Churches',
 		seoDescription:
 			`Classic Christian books, sermons and reading plans for your whole congregation, free to read in ${LIVE_LOCALES.length} languages. No subscriptions and no account needed.`,
-		primary: { href: '/plans', label: 'Browse reading plans' },
+		primary: { href: '#plans', label: 'Choose a plan to read together' },
 		secondary: { href: '/books', label: 'Explore the library' },
 		pointsHeading: 'Why churches use Ochorus',
 		points: [
@@ -124,17 +200,68 @@ export const FOR_PAGES: ForPage[] = [
 				body: 'Young-reader editions retell the great classics for children and teens, so Sunday school and youth group can read the same stories at their own level.'
 			}
 		],
-		picksNote: 'Classics that have fed congregations for generations.',
-		picks: [
-			'school-of-prayer',
-			'power-through-prayer',
-			'the-way-to-god',
-			'all-of-grace',
-			'absolute-surrender',
-			'pilgrims-progress',
-			'the-reformed-pastor',
-			'the-imitation-of-christ'
+		shelves: [
+			{
+				title: 'For the whole congregation',
+				note: 'Classics that have fed congregations for generations.',
+				picks: [
+					'school-of-prayer',
+					'the-way-to-god',
+					'all-of-grace',
+					'pilgrims-progress',
+					'absolute-surrender',
+					'the-imitation-of-christ',
+					'power-through-prayer'
+				]
+			},
+			{
+				title: 'For pastors and leaders',
+				note: 'For the study: shepherding, preaching and the care of souls.',
+				picks: [
+					'the-reformed-pastor',
+					'on-the-priesthood',
+					'men-who-tended-the-flock-2',
+					'how-to-bring-men-to-christ',
+					'revival-lectures',
+					'selected-sermons-whitefield',
+					'key-teachings-of-charles-h-spurgeon'
+				]
+			},
+			{
+				title: 'For Sunday school and youth',
+				note: 'The same classics, retold for children and teens.',
+				picks: [
+					'pilgrims-progress-children',
+					'brave-for-god',
+					'the-life-of-trust-children',
+					'all-of-grace-teens',
+					'rooted-1',
+					'they-were-young-1',
+					'pilgrims-progress-teens'
+				]
+			}
 		],
+		plans: [
+			'grace-for-every-sinner',
+			'new-to-the-faith',
+			'school-of-prayer',
+			'the-pilgrims-way'
+		],
+		guides: true,
+		quote: 'e-m-bounds-d3d581c6',
+		authors: [
+			'charles-h-spurgeon',
+			'dwight-l-moody',
+			'andrew-murray',
+			'richard-baxter',
+			'john-wesley',
+			'george-whitefield',
+			'e-m-bounds'
+		],
+		invite: {
+			text: 'Our church is reading the great Christian classics together on Ochorus: free books, sermons and reading plans on any phone, with no ads and no sign-up.',
+			href: '/plans'
+		},
 		questions: [
 			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
 			{
@@ -165,8 +292,8 @@ export const FOR_PAGES: ForPage[] = [
 		seoTitle: 'Free Books for Small Groups and Bible Studies',
 		seoDescription:
 			'Free Christian classics, sermons and reading plans for small groups and Bible studies. Everyone reads the same book on their own phone, no account needed.',
-		primary: { href: '/plans', label: 'Find a reading plan' },
-		secondary: { href: '/books', label: 'Browse the books' },
+		primary: { href: '#plans', label: 'Pick a plan for your group' },
+		secondary: { href: '/sermons', label: 'Sermons with study questions' },
 		pointsHeading: 'Why small groups use Ochorus',
 		points: [
 			{
@@ -213,17 +340,67 @@ export const FOR_PAGES: ForPage[] = [
 				body: 'Many writers have a full biography, so the group can hear the story behind a book before reading it.'
 			}
 		],
-		picksNote: 'Short classics that open good conversations.',
-		picks: [
-			'the-pursuit-of-god',
-			'absolute-surrender',
-			'the-practice-of-the-presence-of-god',
-			'the-christians-secret-of-a-happy-life-4',
-			'humility-2',
-			'school-of-prayer',
-			'the-god-of-all-comfort',
-			'power-through-prayer'
+		shelves: [
+			{
+				title: 'Short books for a term',
+				note: 'A chapter or two a week, and a good conversation every time.',
+				picks: [
+					'the-pursuit-of-god',
+					'absolute-surrender',
+					'the-practice-of-the-presence-of-god',
+					'humility-2',
+					'the-christians-secret-of-a-happy-life-4',
+					'true-vine',
+					'the-god-of-all-comfort'
+				]
+			},
+			{
+				title: 'For a group that wants to pray',
+				note: 'Read about prayer together, then pray.',
+				picks: [
+					'school-of-prayer',
+					'power-through-prayer',
+					'prevailing-prayer',
+					'lord-teach-us-to-pray-2',
+					'ministry-of-intercession',
+					'spurgeon-on-prayer',
+					'the-inner-chamber'
+				]
+			},
+			{
+				title: 'Lives to read together',
+				note: 'True stories that give a group plenty to talk about.',
+				picks: [
+					'george-muller-of-bristol',
+					'a-retrospect',
+					'corrie-ten-boom-a-life',
+					'amy-carmichael-a-life',
+					'men-who-moved-heaven',
+					'women-who-moved-heaven-2',
+					'c-s-lewis-a-life'
+				]
+			}
 		],
+		plans: [
+			'praying-men',
+			'the-puritan-heart',
+			'pursuit-of-holiness',
+			'deeper-life-in-christ'
+		],
+		quote: 'john-wesley-6cc20b2f',
+		authors: [
+			'andrew-murray',
+			'a-w-tozer',
+			'brother-lawrence',
+			'hannah-whitall-smith',
+			'e-m-bounds',
+			'george-muller',
+			'john-wesley'
+		],
+		invite: {
+			text: 'Our group’s next book is free on Ochorus. Read it on your phone, with no sign-up, and we’ll talk it through when we meet.',
+			href: '/books'
+		},
 		questions: [
 			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
 			{
@@ -250,7 +427,7 @@ export const FOR_PAGES: ForPage[] = [
 		seoDescription:
 			'Free Christian books for youth groups and teens: classics retold, true stories of faith and thirty-day devotionals. On any phone, no ads, no account needed.',
 		primary: { href: '/teens', label: 'Books for teens' },
-		secondary: { href: '/plans', label: 'Reading plans' },
+		secondary: { href: '#plans', label: 'Plans for your group' },
 		pointsHeading: 'Why youth ministries use Ochorus',
 		points: [
 			{
@@ -296,17 +473,67 @@ export const FOR_PAGES: ForPage[] = [
 				body: 'Send a young person who has just come to faith a link to All of Grace for teens and a short reading plan.'
 			}
 		],
-		picksNote: 'Teens editions and devotionals to start with.',
-		picks: [
-			'pilgrims-progress-teens',
-			'all-of-grace-teens',
-			'anchored-1',
-			'rooted-1',
-			'c-s-lewis-a-life-teens',
-			'corrie-ten-boom-a-life-teens',
-			'elisabeth-elliot-a-life-teens',
-			'they-were-young-1'
+		shelves: [
+			{
+				title: 'Classics retold for teens',
+				note: 'The great books in words teenagers read, each linked to the full original.',
+				picks: [
+					'pilgrims-progress-teens',
+					'all-of-grace-teens',
+					'absolute-surrender-teens',
+					'the-pursuit-of-god-teens',
+					'confessions-teens',
+					'the-imitation-of-christ-teens',
+					'grace-abounding-teens'
+				]
+			},
+			{
+				title: 'True stories',
+				note: 'Real people who trusted God when it cost them.',
+				picks: [
+					'c-s-lewis-a-life-teens',
+					'corrie-ten-boom-a-life-teens',
+					'elisabeth-elliot-a-life-teens',
+					'watchman-nee-a-life-teens',
+					'they-were-young-1',
+					'david-livingstone-a-life-teens',
+					'mary-slessor-a-life-teens'
+				]
+			},
+			{
+				title: 'Thirty days with God',
+				note: 'A few minutes a day for a month, on their own phone.',
+				picks: [
+					'anchored-1',
+					'rooted-1',
+					'daughters-of-the-king-1',
+					'sons-of-the-king-1',
+					'real-questions-1',
+					'anchored-2',
+					'growing-in-wisdom'
+				]
+			}
 		],
+		plans: [
+			'first-steps-for-teens',
+			'anchored-two-months',
+			'they-were-young-two-weeks',
+			'rooted-three-months-books-1-3'
+		],
+		quote: 'john-wesley-9a985cd4',
+		authors: [
+			'c-s-lewis',
+			'corrie-ten-boom',
+			'elisabeth-elliot',
+			'watchman-nee',
+			'amy-carmichael',
+			'c-t-studd',
+			'david-livingstone'
+		],
+		invite: {
+			text: 'Free Christian books for teens on Ochorus: true stories, the classics retold and thirty-day devotionals. No ads and no sign-up.',
+			href: '/teens'
+		},
 		questions: [
 			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
 			{
@@ -332,7 +559,7 @@ export const FOR_PAGES: ForPage[] = [
 		seoTitle: 'Free Christian Books for Missionaries',
 		seoDescription:
 			'Free Christian classics, sermons and missionary biographies to share with the people you serve, with full editions in several languages. No payment or sign-up.',
-		primary: { href: '/books', label: 'Browse the library' },
+		primary: { href: '#offline', label: 'Download books for offline' },
 		secondary: { href: '/biographies', label: 'Missionary lives' },
 		pointsHeading: 'Why missionaries use Ochorus',
 		points: [
@@ -379,17 +606,80 @@ export const FOR_PAGES: ForPage[] = [
 				body: 'Point your praying friends to the same missionary biographies that shaped your own calling.'
 			}
 		],
-		picksNote: 'Lives and books that have sent people out.',
-		picks: [
-			'a-retrospect',
-			'life-and-diary-of-david-brainerd',
-			'things-as-they-are',
-			'george-muller-of-bristol',
-			'journal-of-an-expedition-up-the-niger',
-			'evangelization-of-the-world',
-			'how-to-bring-men-to-christ',
-			'separation-and-service'
+		shelves: [
+			{
+				title: 'Lives that sent people out',
+				note: 'The journals and lives of those who went before you.',
+				picks: [
+					'a-retrospect',
+					'life-and-diary-of-david-brainerd',
+					'things-as-they-are',
+					'george-muller-of-bristol',
+					'journal-of-an-expedition-up-the-niger',
+					'amy-carmichael-a-life',
+					'david-livingstone-a-life'
+				]
+			},
+			{
+				title: 'For training local leaders',
+				note: 'Books to read with the people you are raising up.',
+				picks: [
+					'how-to-bring-men-to-christ',
+					'the-reformed-pastor',
+					'the-fundamental-doctrines-of-the-christian-faith',
+					'how-to-succeed-in-the-christian-life',
+					'evangelization-of-the-world',
+					'separation-and-service',
+					'men-who-tended-the-flock-2'
+				]
+			},
+			{
+				title: 'For new believers',
+				note: 'Clear, warm first books to hand someone who has just believed.',
+				picks: [
+					'the-way-to-god',
+					'all-of-grace',
+					'around-the-wicket-gate',
+					'pilgrims-progress',
+					'a-call-to-the-unconverted',
+					'the-pursuit-of-god',
+					'absolute-surrender'
+				]
+			}
 		],
+		plans: [
+			'new-to-the-faith',
+			'grace-for-every-sinner',
+			'everything-for-christ',
+			'waiting-on-god-trust'
+		],
+		offline: {
+			note: 'Books to carry where the signal does not reach. Save them all to this device to read in the app with no connection, or take each one as a PDF to print or an EPUB for an e-reader.',
+			picks: [
+				'the-way-to-god',
+				'all-of-grace',
+				'around-the-wicket-gate',
+				'how-to-succeed-in-the-christian-life',
+				'the-fundamental-doctrines-of-the-christian-faith',
+				'how-to-bring-men-to-christ',
+				'pilgrims-progress',
+				'a-retrospect'
+			]
+		},
+		quote: 'hudson-taylor-f8d18af3',
+		authors: [
+			'hudson-taylor',
+			'david-brainerd',
+			'amy-carmichael',
+			'george-muller',
+			'samuel-ajayi-crowther',
+			'john-r-mott',
+			'mary-slessor'
+		],
+		invite: {
+			text: 'Free Christian classics to read on any phone, in several languages, with nothing to pay and no sign-up: Ochorus.',
+			href: '/books'
+		},
 		questions: [
 			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
 			{
@@ -402,7 +692,7 @@ export const FOR_PAGES: ForPage[] = [
 			},
 			{
 				q: 'Can we read without an internet connection?',
-				a: 'Yes. Use Download on a book’s page to save it for reading offline, and some books can also be downloaded as free PDF and EPUB files.'
+				a: 'Yes. The offline pack on this page saves a set of books to your device in one step, and Download on any book’s page saves that book. Many books can also be downloaded as free PDF and EPUB files, to print or to read on an e-reader.'
 			},
 			{
 				q: 'Can we request a book in a language we serve?',
@@ -419,7 +709,7 @@ export const FOR_PAGES: ForPage[] = [
 		seoTitle: 'Free Christian Books for Chaplains',
 		seoDescription:
 			'Free Christian classics and sermons for prison, hospital and military chaplains: books for suffering, grief and hope, with simpler editions. No account needed.',
-		primary: { href: '/books', label: 'Browse the library' },
+		primary: { href: '#offline', label: 'Get the offline pack' },
 		secondary: { href: '/sermons', label: 'Short sermons' },
 		pointsHeading: 'Why chaplains use Ochorus',
 		points: [
@@ -467,17 +757,80 @@ export const FOR_PAGES: ForPage[] = [
 				body: 'Spurgeon’s Cheque Book of the Bank of Faith gives one promise of Scripture for every day of the year.'
 			}
 		],
-		picksNote: 'Books written for, and often from, hard places.',
-		picks: [
-			'pilgrims-progress',
-			'the-god-of-all-comfort',
-			'all-things-for-good',
-			'the-bruised-reed',
-			'corrie-ten-boom-a-life',
-			'cheque-book',
-			'grace-abounding',
-			'all-of-grace'
+		shelves: [
+			{
+				title: 'For suffering and grief',
+				note: 'Comfort for the long nights.',
+				picks: [
+					'the-god-of-all-comfort',
+					'all-things-for-good',
+					'the-bruised-reed',
+					'he-holds-my-tomorrows',
+					'cheque-book',
+					'revelations-of-divine-love',
+					'the-unselfishness-of-god'
+				]
+			},
+			{
+				title: 'Written from hard places',
+				note: 'Books written in prison, in sickness and under persecution.',
+				picks: [
+					'pilgrims-progress',
+					'grace-abounding',
+					'corrie-ten-boom-a-life',
+					'epistles-of-ignatius',
+					'foxes-book-of-martyrs',
+					'watchman-nee-a-life',
+					'life-and-diary-of-david-brainerd'
+				]
+			},
+			{
+				title: 'In simpler words',
+				note: 'Retellings that suit any adult who finds the originals hard going.',
+				picks: [
+					'pilgrims-progress-words-of-one-syllable',
+					'all-of-grace-teens',
+					'pilgrims-progress-teens',
+					'the-practice-of-the-presence-of-god-teens',
+					'corrie-ten-boom-a-life-teens',
+					'grace-abounding-teens',
+					'the-life-of-trust-teens'
+				]
+			}
 		],
+		plans: [
+			'faith-in-the-fire',
+			'grace-for-every-sinner',
+			'the-pilgrims-way',
+			'waiting-on-god-trust'
+		],
+		offline: {
+			note: 'For a ward, a cell or a ship with no connection. Save them all to this device to read in the app, or download each one as a PDF to print or an EPUB for an e-reader. If you would like to print copies to give away, please contact us first.',
+			picks: [
+				'he-holds-my-tomorrows',
+				'all-things-for-good',
+				'the-bruised-reed',
+				'pilgrims-progress',
+				'cheque-book',
+				'all-of-grace',
+				'grace-abounding',
+				'corrie-ten-boom-a-life'
+			]
+		},
+		quote: 'charles-h-spurgeon-116882b5',
+		authors: [
+			'john-bunyan',
+			'corrie-ten-boom',
+			'hannah-whitall-smith',
+			'richard-sibbes',
+			'thomas-watson',
+			'ignatius-of-antioch',
+			'dietrich-bonhoeffer'
+		],
+		invite: {
+			text: 'Free Christian books and short sermons for hard days, on Ochorus. No account needed: just open the link and read.',
+			href: '/books'
+		},
 		questions: [
 			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
 			{
@@ -486,7 +839,7 @@ export const FOR_PAGES: ForPage[] = [
 			},
 			{
 				q: 'What about people with no internet access?',
-				a: 'Some books can be downloaded as free PDF and EPUB files from the book’s page. If you would like to print books for a prison, hospital or base, please contact us first.'
+				a: 'The offline pack on this page has books you can download as free PDF and EPUB files, or save to your own device in one step to read in the app with no connection. If you would like to print books for a prison, hospital or base, please contact us first.'
 			},
 			{
 				q: 'Is there anything for people who struggle to read?',
@@ -503,8 +856,8 @@ export const FOR_PAGES: ForPage[] = [
 		seoTitle: 'Free Christian Primary Sources for Bible Colleges',
 		seoDescription:
 			'Free primary sources for Bible colleges and seminaries: the church fathers, Reformers, Puritans and revival preachers, with study companions and biographies.',
-		primary: { href: '/books', label: 'Browse the library' },
-		secondary: { href: '/biographies', label: 'Biographies' },
+		primary: { href: '#shelves', label: 'See the reading lists' },
+		secondary: { href: '/originals', label: 'Study companions' },
 		pointsHeading: 'Why Bible colleges use Ochorus',
 		points: [
 			{
@@ -551,17 +904,80 @@ export const FOR_PAGES: ForPage[] = [
 				body: 'Pair the academic reading with devotional classics like The Imitation of Christ and With Christ in the School of Prayer.'
 			}
 		],
-		picksNote: 'Texts every student of the church should read.',
-		picks: [
-			'on-the-incarnation',
-			'confessions',
-			'the-reformed-pastor',
-			'religious-affections',
-			'mortification-of-sin',
-			'on-the-priesthood',
-			'first-epistle-of-clement',
-			'freedom-of-the-will'
+		shelves: [
+			{
+				title: 'The early church',
+				note: 'The fathers in their own words, for church history and patristics.',
+				picks: [
+					'first-epistle-of-clement',
+					'epistles-of-ignatius',
+					'on-the-incarnation',
+					'life-of-antony',
+					'confessions',
+					'treatises-of-cyprian',
+					'enchiridion'
+				]
+			},
+			{
+				title: 'Reformation to revival',
+				note: 'Puritan, Reformed and Methodist divinity, and the preachers of the awakenings.',
+				picks: [
+					'mortification-of-sin',
+					'the-reformed-pastor',
+					'religious-affections',
+					'freedom-of-the-will',
+					'sermons-on-several-occasions',
+					'selected-sermons-whitefield',
+					'revival-lectures'
+				]
+			},
+			{
+				title: 'Pastoral and spiritual theology',
+				note: 'For ministry formation and the inner life of the minister.',
+				picks: [
+					'on-the-priesthood',
+					'the-imitation-of-christ',
+					'a-serious-call',
+					'on-loving-god',
+					'plain-account-christian-perfection',
+					'school-of-prayer',
+					'the-bruised-reed'
+				]
+			}
 		],
+		plans: [
+			'voices-of-the-early-church',
+			'key-teachings-four-teachers',
+			'the-puritan-heart',
+			'send-the-fire'
+		],
+		offline: {
+			note: 'Every text here can be downloaded free, as a PDF to print for a course pack or an EPUB for an e-reader, or saved to this device to read in the app with no connection.',
+			picks: [
+				'on-the-incarnation',
+				'confessions',
+				'the-reformed-pastor',
+				'religious-affections',
+				'mortification-of-sin',
+				'on-the-priesthood',
+				'first-epistle-of-clement',
+				'freedom-of-the-will'
+			]
+		},
+		quote: 'thomas-a-kempis-5e7c6a28',
+		authors: [
+			'augustine-of-hippo',
+			'athanasius-of-alexandria',
+			'john-owen',
+			'jonathan-edwards',
+			'richard-baxter',
+			'john-calvin',
+			'martin-luther'
+		],
+		invite: {
+			text: 'The primary sources for this course are free on Ochorus: the church fathers, the Reformers and the Puritans, on any device, with no account needed.',
+			href: '/books'
+		},
 		questions: [
 			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
 			{
@@ -587,7 +1003,7 @@ export const FOR_PAGES: ForPage[] = [
 		seoTitle: 'Free Christian Classics for Schools',
 		seoDescription:
 			'Free Christian classics for schools: primary sources for Bible, history and literature, missionary biographies, and editions for children and teens.',
-		primary: { href: '/books', label: 'Browse the library' },
+		primary: { href: '#shelves', label: 'Reading lists by subject' },
 		secondary: { href: '/teens', label: 'Books for teens' },
 		pointsHeading: 'Why schools use Ochorus',
 		points: [
@@ -635,17 +1051,68 @@ export const FOR_PAGES: ForPage[] = [
 				body: 'Use a reading plan or a short sermon for a school chapel or a class devotion.'
 			}
 		],
-		picksNote: 'Classics that work in the classroom.',
-		picks: [
-			'pilgrims-progress-teens',
-			'on-the-incarnation',
-			'confessions',
-			'foxes-book-of-martyrs',
-			'orthodoxy',
-			'samuel-ajayi-crowther-a-life-teens',
-			'hurlbuts-life-of-christ',
-			'c-s-lewis-a-life-teens'
+		shelves: [
+			{
+				title: 'Primary sources for history',
+				note: 'Twenty centuries of the church, read in the words of those who lived them.',
+				picks: [
+					'on-the-incarnation',
+					'confessions',
+					'foxes-book-of-martyrs',
+					'first-epistle-of-clement',
+					'journal-of-an-expedition-up-the-niger',
+					'finney-memoirs',
+					'life-of-antony'
+				]
+			},
+			{
+				title: 'Literature with a Christian heritage',
+				note: 'Allegory, fantasy, poetry and essays for the literature class.',
+				picks: [
+					'pilgrims-progress',
+					'orthodoxy',
+					'paradise-lost',
+					'the-princess-and-the-goblin',
+					'at-the-back-of-the-north-wind',
+					'phantastes',
+					'the-everlasting-man'
+				]
+			},
+			{
+				title: 'For younger students',
+				note: 'Teens and children’s editions for the lower years.',
+				picks: [
+					'pilgrims-progress-teens',
+					'samuel-ajayi-crowther-a-life-teens',
+					'c-s-lewis-a-life-teens',
+					'foxes-book-of-martyrs-teens',
+					'hurlbuts-life-of-christ',
+					'pilgrims-progress-children',
+					'mary-slessor-a-life-teens'
+				]
+			}
 		],
+		plans: [
+			'voices-of-the-early-church',
+			'brave-for-god-24-true-stories',
+			'they-were-young-two-weeks',
+			'the-pilgrims-way'
+		],
+		guides: true,
+		quote: 'augustine-of-hippo-01e56d20',
+		authors: [
+			'augustine-of-hippo',
+			'john-bunyan',
+			'g-k-chesterton',
+			'george-macdonald',
+			'john-foxe',
+			'samuel-ajayi-crowther',
+			'c-s-lewis'
+		],
+		invite: {
+			text: 'Our class texts are free on Ochorus, on any device and at several reading levels, with no account needed.',
+			href: '/books'
+		},
 		questions: [
 			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
 			{
@@ -671,8 +1138,8 @@ export const FOR_PAGES: ForPage[] = [
 		seoTitle: 'Free Christian Classics for Homeschool',
 		seoDescription:
 			'Free Christian living books for homeschool families and co-ops: classics, missionary biographies and editions for children and teens, with reading plans.',
-		primary: { href: '/young-readers', label: 'Books for young readers' },
-		secondary: { href: '/plans', label: 'Reading plans' },
+		primary: { href: '#guides', label: 'Printable leader’s guides' },
+		secondary: { href: '/young-readers', label: 'Books for young readers' },
 		pointsHeading: 'Why homeschool families use Ochorus',
 		points: [
 			{
@@ -718,18 +1185,68 @@ export const FOR_PAGES: ForPage[] = [
 				body: 'Open the day with a family devotions plan or a reading from Spurgeon’s Morning by Morning.'
 			}
 		],
-		picksNote: 'Books that work well across ages.',
-		picks: [
-			'pilgrims-progress-children',
-			'pilgrims-progress-teens',
-			'hurlbuts-life-of-christ',
-			'the-life-of-trust-children',
-			'samuel-ajayi-crowther-a-life-teens',
-			'the-princess-and-the-goblin',
-			'foxes-book-of-martyrs',
-			'confessions',
-			'on-the-incarnation'
+		shelves: [
+			{
+				title: 'Read-alouds for little ones',
+				note: 'Stories to share at the kitchen table or at bedtime.',
+				picks: [
+					'pilgrims-progress-children',
+					'the-life-of-trust-children',
+					'samuel-ajayi-crowther-a-life-children',
+					'divine-songs-for-children',
+					'brave-for-god',
+					'the-princess-and-the-goblin',
+					'mary-slessor-a-life-children'
+				]
+			},
+			{
+				title: 'Middle and high school',
+				note: 'The teens editions, and the classics older students are ready for.',
+				picks: [
+					'pilgrims-progress-teens',
+					'samuel-ajayi-crowther-a-life-teens',
+					'foxes-book-of-martyrs-teens',
+					'confessions-teens',
+					'hurlbuts-life-of-christ',
+					'at-the-back-of-the-north-wind',
+					'david-livingstone-a-life-teens'
+				]
+			},
+			{
+				title: 'Living books for history',
+				note: 'Read the history of the church from the people who made it.',
+				picks: [
+					'on-the-incarnation',
+					'confessions',
+					'foxes-book-of-martyrs',
+					'journal-of-an-expedition-up-the-niger',
+					'a-retrospect',
+					'george-muller-of-bristol',
+					'st-francis-of-assisi'
+				]
+			}
 		],
+		plans: [
+			'family-devotions-pilgrims-journey',
+			'family-devotions-heroes-who-trusted-god',
+			'family-devotions-brave-and-faithful',
+			'brave-for-god-24-true-stories'
+		],
+		guides: true,
+		quote: 'george-muller-06569328',
+		authors: [
+			'george-muller',
+			'hudson-taylor',
+			'mary-slessor',
+			'samuel-ajayi-crowther',
+			'george-macdonald',
+			'john-bunyan',
+			'pandita-ramabai'
+		],
+		invite: {
+			text: 'A free library of Christian living books for every age, with editions for children and teens and printable leader’s guides: Ochorus.',
+			href: '/young-readers'
+		},
 		questions: [
 			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
 			{
@@ -761,7 +1278,7 @@ export const FOR_PAGES: ForPage[] = [
 		seoDescription:
 			'Free Christian books for children and teens: true stories of faith, the classics retold and five-minute family devotions. No ads and no account needed.',
 		primary: { href: '/young-readers', label: 'Books for children' },
-		secondary: { href: '/teens', label: 'Books for teens' },
+		secondary: { href: '#plans', label: 'Five-minute family devotions' },
 		pointsHeading: 'Why parents use Ochorus',
 		points: [
 			{
@@ -807,18 +1324,68 @@ export const FOR_PAGES: ForPage[] = [
 				body: 'No ads, no feeds and nothing to buy. Just good books, ready whenever they want to read.'
 			}
 		],
-		picksNote: 'Favourites for reading together.',
-		picks: [
-			'pilgrims-progress-children',
-			'brave-for-god',
-			'the-life-of-trust-children',
-			'samuel-ajayi-crowther-a-life-children',
-			'amanda-smith-autobiography-children',
-			'divine-songs-for-children',
-			'anchored-1',
-			'daughters-of-the-king-1',
-			'sons-of-the-king-1'
+		shelves: [
+			{
+				title: 'Bedtime stories',
+				note: 'Favourites for reading together.',
+				picks: [
+					'pilgrims-progress-children',
+					'brave-for-god',
+					'the-life-of-trust-children',
+					'samuel-ajayi-crowther-a-life-children',
+					'amanda-smith-autobiography-children',
+					'corrie-ten-boom-a-life-children',
+					'the-princess-and-the-goblin'
+				]
+			},
+			{
+				title: 'For teens to read on their own',
+				note: 'Thirty-day devotionals and true stories for a teenager’s own phone.',
+				picks: [
+					'anchored-1',
+					'daughters-of-the-king-1',
+					'sons-of-the-king-1',
+					'they-were-young-1',
+					'real-questions-1',
+					'pilgrims-progress-teens',
+					'c-s-lewis-a-life-teens'
+				]
+			},
+			{
+				title: 'More heroes for young readers',
+				note: 'True stories of courage, told for children.',
+				picks: [
+					'divine-songs-for-children',
+					'a-retrospect-children',
+					'elisabeth-elliot-a-life-children',
+					'amy-carmichael-a-life-children',
+					'david-livingstone-a-life-children',
+					'pandita-ramabai-a-life-children',
+					'c-t-studd-a-life-children'
+				]
+			}
 		],
+		plans: [
+			'family-devotions-talking-with-god',
+			'family-devotions-boy-from-osogun',
+			'family-devotions-heroes-who-trusted-god',
+			'anchored-two-months'
+		],
+		guides: true,
+		quote: 'e-m-bounds-fa8348c7',
+		authors: [
+			'amanda-berry-smith',
+			'george-muller',
+			'susanna-wesley',
+			'isaac-watts',
+			'corrie-ten-boom',
+			'mary-slessor',
+			'hudson-taylor'
+		],
+		invite: {
+			text: 'Free Christian books for children and teens on Ochorus: true stories, classic tales and five-minute family devotions. No ads and nothing to buy.',
+			href: '/young-readers'
+		},
 		questions: [
 			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
 			{
@@ -842,20 +1409,123 @@ export const FOR_PAGES: ForPage[] = [
 /** The page for a URL segment, or undefined. */
 export const forPage = (slug: string): ForPage | undefined => FOR_PAGES.find((p) => p.slug === slug);
 
-/** How many books a page's starter shelf shows: one row of the desktop grid.
- *  `picks` runs longer, so an unpublished pick leaves a backup in its place. */
+/** How many books one starter shelf shows: one row of the desktop grid. Each
+ *  shelf's `picks` runs longer, so an unpublished pick leaves a backup in its
+ *  place. */
 export const SHELF_SIZE = 6;
 
-/** A page's starter shelf: its picks out of the live English list (pass
- *  `listBooks('en')`), in the
- *  page's order, the first `SHELF_SIZE` that are published, trimmed to what a
- *  cover card draws. Built once at build time (routes/for-shelves). */
-export function forShelf(english: BookSummary[], slugs: string[]): CoverBook[] {
-	const bySlug = new Map(english.map((b) => [b.slug, b]));
-	return slugs
-		.flatMap((s) => {
-			const b = bySlug.get(s);
-			return b ? [toCoverBook(b)] : [];
-		})
-		.slice(0, SHELF_SIZE);
+/** How many plan cards a page shows: one row of the plan grid. */
+export const PLANS_SHOWN = 3;
+
+/** `slugs` out of `all`, in `slugs` order, missing ones dropped, the first `n`
+ *  — the one selection rule behind a page's shelves and plans, so an
+ *  unpublished pick leaves its backup in its place. */
+const pickBySlug = <T extends { slug: string }>(all: T[], slugs: string[], n: number): T[] => {
+	const bySlug = new Map(all.map((x) => [x.slug, x]));
+	return slugs.flatMap((s) => bySlug.get(s) ?? []).slice(0, n);
+};
+
+/** A starter shelf: its picks out of the live English list (pass
+ *  `listBooks('en')`), trimmed to what a cover card draws. Built once at build
+ *  time (routes/for-shelves). */
+export const forShelf = (english: BookSummary[], slugs: string[]): CoverBook[] =>
+	pickBySlug(english, slugs, SHELF_SIZE).map(toCoverBook);
+
+/** A page's plans out of the live English plan list. */
+export const forPlans = (english: PlanSummary[], slugs: string[]): PlanSummary[] =>
+	pickBySlug(english, slugs, PLANS_SHOWN);
+
+/** One book in an offline pack: its cover card and its two file downloads.
+ *  Saving it to the device needs no more — `ShelfDownloadControl` fetches the
+ *  chapter list itself, as it does for a Bookshelf shelf. */
+export interface ForOfflineBook {
+	/** Only what the row draws: its cover, title and author. */
+	book: CoverFace;
+	pdf_url: string;
+	epub_url: string;
 }
+
+/** A book detail as an offline-pack entry, or null when it has nothing to
+ *  download — an edition `export_policy` does not list has neither file. */
+export function toOfflineBook(b: BookDetail): ForOfflineBook | null {
+	const epub = b.epub_url ?? '';
+	if (!b.pdf_url && !epub) return null;
+	return { book: toCoverFace(b), pdf_url: b.pdf_url, epub_url: epub };
+}
+
+
+/** A writer card's fields (`PersonCard`). */
+export type ForPerson = Pick<AuthorBio, 'slug' | 'name' | 'photo_url' | 'birth_year' | 'death_year'>;
+
+/** The library's size in English, for the page's numbers strip. `books`
+ *  counts works, not editions: a young-reader retelling is its own row
+ *  (`<slug>-children` / `<slug>-teens`) but not another work. */
+export interface ForCounts {
+	books: number;
+	sermons: number;
+	plans: number;
+}
+
+/** Everything a page draws from the live library, snapshotted at build time
+ *  (routes/for-shelves) — the page's only fetch. */
+export interface ForShelfData {
+	shelves: { title: string; note: string; books: CoverBook[] }[];
+	plans: PlanSummary[];
+	guides: CoverBook[];
+	offline: ForOfflineBook[];
+	authors: ForPerson[];
+	/** The quotation, as the favorites shelf carries one: the quote and its author. */
+	quote: SavedQuote | null;
+	counts: ForCounts | null;
+}
+
+/** What the page shows when the snapshot is missing (offline, a stale tab). */
+export const EMPTY_SHELF_DATA: ForShelfData = {
+	shelves: [],
+	plans: [],
+	guides: [],
+	offline: [],
+	authors: [],
+	quote: null,
+	counts: null
+};
+
+/** How many writer cards a page shows: two rows of the person grid. */
+export const AUTHORS_SHOWN = 6;
+
+/** A page's writers out of the live English author list — only those with a
+ *  full biography, which is what the section promises. */
+export const forAuthors = (english: AuthorBio[], slugs: string[]): ForPerson[] =>
+	pickBySlug(
+		english.filter((a) => a.has_long_bio),
+		slugs,
+		AUTHORS_SHOWN
+	).map((a) => ({
+		slug: a.slug,
+		name: a.name,
+		photo_url: a.photo_url,
+		birth_year: a.birth_year,
+		death_year: a.death_year
+	}));
+
+/** The author a quote slug belongs to: `quote_seed.py` slugs are the author's
+ *  slug and an 8-hex hash of the text. */
+export const quoteAuthor = (slug: string): string => slug.replace(/-[0-9a-f]{8}$/, '');
+
+/** A page's quotation out of its author's quote page, or null when that page
+ *  doesn't list it (the author not approved yet, the line retired). */
+export function forQuote(page: QuotePage, slug: string): SavedQuote | null {
+	const q = page.quotes.find((x) => x.slug === slug);
+	return q ? { ...q, author: { slug: page.author.slug, name: page.author.name } } : null;
+}
+
+/** How many works a book list holds: its young-reader editions are the same
+ *  works retold (the slug convention is the link — root CLAUDE.md). */
+export const countWorks = (books: Pick<BookSummary, 'slug'>[]): number =>
+	books.filter((b) => !/-(children|teens)$/.test(b.slug)).length;
+
+/** The message a leader passes on: the page's line and the link it promises. */
+export const inviteMessage = (invite: ForPage['invite'], siteUrl: string): string =>
+	`${invite.text}\n${siteUrl}${withTrailingSlash(invite.href)}`;
+
+

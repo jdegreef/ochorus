@@ -5,10 +5,10 @@
 // hex-ok-file: the card's fixed palette (see quoteCard.ts) — it renders a PNG
 // that leaves the site and has no theme to follow.
 
-import { scriptOf } from '$lib/coverStyles';
 import { daysWaited, type JournalEntry } from '$lib/journal';
 import {
 	CARD_SERIF,
+	cardScript,
 	GOLD,
 	INK,
 	MUTED,
@@ -73,9 +73,9 @@ export function testimonyText(e: JournalEntry, o: TestimonyOptions, l: Testimony
 
 /** Draw the card to a PNG. */
 export async function renderTestimonyCard(text: TestimonyText, answeredLabel: string, o: TestimonyOptions): Promise<Blob> {
-	const script = scriptOf(o.locale);
+	const script = cardScript(o.locale);
 	const style = quoteStyle(script);
-	await ensureFonts(script);
+	await ensureFonts(script, [text.heading, text.request ?? '', text.answer, text.meta, answeredLabel].join(' '));
 	const canvas = document.createElement('canvas');
 	canvas.width = SIZE;
 	canvas.height = SIZE;

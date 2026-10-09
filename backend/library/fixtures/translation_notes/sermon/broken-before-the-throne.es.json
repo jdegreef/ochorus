@@ -1,0 +1,168 @@
+{
+ "kind": "sermon",
+ "slug": "broken-before-the-throne",
+ "language": "es",
+ "job_issue": 4297,
+ "references": [
+  {
+   "reference": "Romanos 1:18",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Romanos 1:24",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Lucas 24:49",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Juan 17:21",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Juan 17:12",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Juan 17:15",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Juan 17:23",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Juan 17:21",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Efesios 1:15-17",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Salmos 42:1",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Juan 1:8",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Exodus 33:4",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Exodus 33:7",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Hebrews 13:12",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "John 14:9",
+   "status": "self_rendered",
+   "block_index": 72
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "self_rendered",
+   "block_index": 76
+  },
+  {
+   "reference": "Exodus 33:12-17",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "Exodo 33:18",
+   "status": "self_rendered",
+   "block_index": 85
+  },
+  {
+   "reference": "Lucas 18:5",
+   "status": "self_rendered",
+   "block_index": 86
+  },
+  {
+   "reference": "Exodo 33:20",
+   "status": "self_rendered",
+   "block_index": 90
+  },
+  {
+   "reference": "Exodo 33:17",
+   "status": "self_rendered",
+   "block_index": 90
+  },
+  {
+   "reference": "Exodo 33:21",
+   "status": "self_rendered",
+   "block_index": 95
+  },
+  {
+   "reference": "Exodo 17:6",
+   "status": "self_rendered",
+   "block_index": 96
+  },
+  {
+   "reference": "Numeros 20:8",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Numeros 20:12",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Exodo 34:2-3",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "Exodo 33:22-23",
+   "status": "self_rendered",
+   "block_index": 103
+  },
+  {
+   "reference": "Salmos 24:3-4",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "Mateo 5:8",
+   "status": "self_rendered",
+   "block_index": 108
+  },
+  {
+   "reference": "Isaias 64:1",
+   "status": "self_rendered",
+   "block_index": 108
+  },
+  {
+   "reference": "Mateo 16:18",
+   "status": "self_rendered",
+   "block_index": 112
+  },
+  {
+   "reference": "Lucas 12:48",
+   "status": "self_rendered",
+   "block_index": 115
+  }
+ ]
+}

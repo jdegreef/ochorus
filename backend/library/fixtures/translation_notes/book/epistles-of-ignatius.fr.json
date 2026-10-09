@@ -1,0 +1,89 @@
+{
+ "kind": "book",
+ "slug": "epistles-of-ignatius",
+ "language": "fr",
+ "job_issue": 5223,
+ "note": [
+  "Ignatius alludes far more than he quotes, and much of what he quotes follows the Greek Old Testament or a Gospel tradition Segond does not match; those are self_rendered as his own words. Mined rows are short quotations that are verbatim Louis Segond 1910, each checked by script against the verse and its block. Trivial formula echoes (« Ne vous y trompez pas », « Il est écrit ») are not counted.",
+  "The five life chapters quote the letters; each quoted passage was pasted byte-for-byte from the French letter it comes from, so the reader meets the same words twice. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "1 Peter 5:5",
+   "status": "mined",
+   "block_index": 12,
+   "chapter_order": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 12:33",
+   "status": "self_rendered",
+   "block_index": 31,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Corinthians 6:9",
+   "status": "mined",
+   "block_index": 35,
+   "chapter_order": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 1:20",
+   "status": "mined",
+   "block_index": 39,
+   "chapter_order": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 18:17",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Isaiah 52:5",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 8
+  },
+  {
+   "reference": "1 Corinthians 4:4",
+   "status": "mined",
+   "block_index": 11,
+   "chapter_order": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Timothy 1:13",
+   "status": "mined",
+   "block_index": 24,
+   "chapter_order": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 24:39",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 19:12",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 10:16",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Ephesians 5:25",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 12
+  }
+ ]
+}

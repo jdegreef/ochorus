@@ -1,0 +1,25 @@
+/* Hangul, for Korean — loaded ONLY on Korean pages (the root layout links this
+   sheet when the locale is `ko`), not @imported from app.css like the other
+   scripts' faces.
+
+   The difference is the stylesheet, not the fonts. A Hangul face is split into
+   ~120 unicode-range slices, so each weight entrypoint declares 124 @font-face
+   rules: these four files are ~370 KB of CSS, ~24 KB gzipped EACH (measured,
+   fontsource 5.3.0). The Arabic, Devanagari and Ethiopic imports cost a few KB
+   between them. app.css is render-blocking on every page in every language, so
+   carrying Korean there would charge an English reader ~100 KB of CSS for
+   glyphs they never draw. The woff2 slices are unicode-range gated either way;
+   the declarations are what cost.
+
+   The families are still NAMED in app.css's stacks (--font-display,
+   --font-sans): off a Korean page they are simply undeclared and the browser
+   skips them. fontStacks.test.ts reads this file alongside app.css, so the
+   coverage and weight gates hold for Korean too.
+
+   Noto rather than Nanum Myeongjo: it ships the 700 the display stack's
+   headings reach and a sans twin for --font-sans — one superfamily, as with the
+   Arabic, Devanagari and Ethiopic pairs. */
+@import '@fontsource/noto-serif-kr/400.css';
+@import '@fontsource/noto-serif-kr/700.css';
+@import '@fontsource/noto-sans-kr/400.css';
+@import '@fontsource/noto-sans-kr/700.css';

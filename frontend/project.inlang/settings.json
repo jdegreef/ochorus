@@ -12,7 +12,8 @@
     "uk",
     "fr",
     "am",
-    "vi"
+    "vi",
+    "ko"
   ],
   "modules": [
     "./local-plugins/plugin-message-format.js"

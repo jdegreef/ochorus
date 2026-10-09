@@ -51,3 +51,20 @@ describe('the chapter ending lives inside the pager', () => {
 		expect(READER).toMatch(/article\.paged > :global\(:not\(\.pager\)\)/);
 	});
 });
+
+describe('a re-flow in the ending keeps the page', () => {
+	// Opening an answer (or growing the reflection's composer) re-flows the
+	// ending, and the re-measure's last-page rule turned the page under the
+	// click. A reader already in the ending stays put; only `?pg=last`, until
+	// the reader acts, still pins the last page.
+	it('ranks the in-ending anchor above the last-page rule', () => {
+		const m = READER.match(/const target = stickToLast[\s\S]*?;\n/);
+		expect(m, 'measurePages must pick its target with stickToLast first').not.toBeNull();
+		const chain = m![0];
+		expect(chain.indexOf('inEnd')).toBeGreaterThan(-1);
+		expect(chain.indexOf('inEnd')).toBeLessThan(chain.indexOf('wasLast'));
+	});
+	it('drops the ?pg=last pin once the reader clicks the page', () => {
+		expect(READER).toMatch(/function onArticleClick\(e: MouseEvent\) \{[\s\S]{0,200}stickToLast = false;/);
+	});
+});
