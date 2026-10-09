@@ -140,7 +140,7 @@
 	     the cards under it are coming, and a screen reader should say so rather
 	     than announce a heading with nothing beneath it. -->
 	<section class="page-col px-5 pt-14" aria-busy={busy}>
-		<SectionHeader title={t('continue.title')} />
+		<SectionHeader section="books" title={t('continue.title')} />
 		<!-- Four across only from xl: below it a quarter of the page leaves the
 		     title about 100px beside the 80px cover (WorkCard). -->
 		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2" class:xl:grid-cols-4={limit >= 4}>

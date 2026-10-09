@@ -4038,6 +4038,34 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 .dash-pair:not(:has(> *)) {
 	display: none;
 }
+/* THE DASHBOARD'S RHYTHM. Under the signed-in home's hero, every section
+   stands 2.5rem below the last rather than each component's own 3.5rem
+   (pt-14), so the page reads as one composed column, not a stack of
+   separate pages. Scoped here, not changed in the components, which also
+   serve the signed-out home and other pages at their own spacing.
+
+   And each section fades in as it scrolls into view — opacity only, never a
+   transform, because a transform would make the page column a containing
+   block for anything `position: fixed` inside it (see .page-col). Pure CSS
+   on a scroll timeline, so it costs nothing where unsupported (the section
+   is simply there) and is off under reduced motion. */
+.home-dash section.page-col {
+	padding-top: 2.5rem;
+}
+@supports (animation-timeline: view()) {
+	@media (prefers-reduced-motion: no-preference) {
+		.home-dash section.page-col {
+			animation: dash-arrive linear both;
+			animation-timeline: view();
+			animation-range: entry 0% entry 45%;
+		}
+	}
+}
+@keyframes dash-arrive {
+	from {
+		opacity: 0.15;
+	}
+}
 /* The site chrome's column: the header bar and the footer rows share the page
    column's edges from sm up (they sat at 88rem / 64rem around a 76rem body),
    never narrower than 64rem — the nav's six links and controls need that.
