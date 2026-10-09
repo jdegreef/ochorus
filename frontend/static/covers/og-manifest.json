@@ -6190,6 +6190,35 @@
 				532
 			]
 		},
+		"es/way-into-holiest": {
+			"ground": "40ff31cda710cb021162c41a6ab35623997b06aa91b72ca1bde2779db3764aa0",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[197, 102, 403, 131]
+				],
+				"title": [
+					[147, 266, 453, 348],
+					[95, 338, 505, 420]
+				],
+				"subtitle": [
+					[88, 496, 512, 524]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
+			]
+		},
 		"es/women-who-moved-heaven-2": {
 			"ground": "625af6cd81769aadc439ccec0cdf4e2c69543bcc64a2cd34dfb875ccf2822812",
 			"style": "originals",
