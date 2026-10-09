@@ -33,7 +33,12 @@ from .models import (
     TopicTranslation,
 )
 from .serializers import AUDIENCE_EDITION_SUFFIX, EDITION_SUFFIXES
-from .views import AUDIENCE_STARTS, AUDIENCE_TOPICS, split_story_title
+from .views import (
+    AUDIENCE_SPOTLIGHTS,
+    AUDIENCE_STARTS,
+    AUDIENCE_TOPICS,
+    split_story_title,
+)
 
 
 class AudienceShelfTests(TestCase):
@@ -213,6 +218,54 @@ class AudienceShelfTests(TestCase):
         missing = [
             slug
             for picks in AUDIENCE_STARTS.values()
+            for slug in picks
+            if not (books / f"{slug}.en.json").exists()
+        ]
+        self.assertEqual(missing, [])
+
+    def test_the_spotlight_is_the_first_pick_published_here(self):
+        self._book("pilgrims-progress")
+        self._book("pilgrims-progress-teens")
+        self.assertEqual(self._get("teens")["spotlight"]["slug"], "pilgrims-progress-teens")
+        # Not in this language, no banner — no English fallback.
+        self.assertIsNone(self._get("teens", "sw")["spotlight"])
+        # The young readers' hub has none.
+        self.assertIsNone(self._get()["spotlight"])
+
+    def test_ladders_are_each_editions_family_youngest_first(self):
+        self._book("pilgrims-progress")
+        self._book("pilgrims-progress-children")
+        self._book("pilgrims-progress-teens")
+        self._book("talks-to-the-farmer")
+        self._book("talks-to-the-farmer-children", language="sw")
+        self._book("talks-to-the-farmer-teens", published=False)
+        self._book("all-of-grace")
+        self._book("all-of-grace-children")
+        ladders = self._get()["ladders"]
+        self.assertEqual(
+            [(r["rung"], r["slug"]) for r in ladders["pilgrims-progress-children"]],
+            [
+                ("children", "pilgrims-progress-children"),
+                ("teens", "pilgrims-progress-teens"),
+                ("full", "pilgrims-progress"),
+            ],
+        )
+        self.assertEqual(
+            [r["rung"] for r in ladders["all-of-grace-children"]], ["children", "full"]
+        )
+        # Only this language's published editions climb the ladder.
+        self.assertNotIn("talks-to-the-farmer-children", ladders)
+        self.assertEqual(
+            [r["slug"] for r in self._get(language="sw")["ladders"].get(
+                "talks-to-the-farmer-children", [])],
+            [],
+        )
+
+    def test_every_spotlight_pick_names_a_real_book(self):
+        books = Path(__file__).parent / "fixtures" / "content" / "books"
+        missing = [
+            slug
+            for picks in AUDIENCE_SPOTLIGHTS.values()
             for slug in picks
             if not (books / f"{slug}.en.json").exists()
         ]

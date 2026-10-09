@@ -4,6 +4,7 @@ import {
 	type AudienceShelf,
 	type BookSummary,
 	type BookTile,
+	type EditionRung,
 	type HubAudience
 } from './library-public';
 import { furthestOf, resumeOrderOf, type ProgressRecord } from './reading-schema';
@@ -147,8 +148,9 @@ export const TEENS_HUB: AudienceHubConfig = {
 export const AUDIENCE_HUBS: AudienceHubConfig[] = [YOUNG_READERS_HUB, TEENS_HUB];
 
 /** The Plausible event a hub sends when its "Start here", a path card, a
- *  face or its challenge is opened, or it is shared — props `{ hub, action }` (`start`, `path`,
- *  `person`, `challenge`, `share`); its visits are the pageviews themselves. */
+ *  face, its challenge, spotlight or a ladder step is opened, or it is shared —
+ *  props `{ hub, action }` (`start`, `path`, `person`, `challenge`,
+ *  `spotlight`, `ladder`, `share`); its visits are the pageviews themselves. */
 export const HUB_EVENT = 'Hub';
 
 /** The hub for a series audience, if it has one (adults don't). */
@@ -244,6 +246,13 @@ export function challengeState(
 	// furthestOf is at least 1 (the introduction), so day is never negative.
 	const day = done ? days : rec ? Math.min(furthestOf(rec) - 1, days) : 0;
 	return { slug, day, order: rec ? resumeOrderOf(rec) : 1, started: !!rec, done };
+}
+
+/** The step after `slug` on its edition ladder — what "Ready for more"
+ *  offers a reader who has a retelling in hand — or null at the top. */
+export function nextRung(ladder: EditionRung[] | undefined, slug: string): EditionRung | null {
+	const at = ladder?.findIndex((r) => r.slug === slug) ?? -1;
+	return at >= 0 ? (ladder![at + 1] ?? null) : null;
 }
 
 export interface PrintableLink {

@@ -9,6 +9,7 @@
 	import { seriesCompanion } from '$lib/series';
 	import {
 		heroCovers,
+		nextRung,
 		hubBooks,
 		hubCounts,
 		hubIsEmpty,
@@ -35,6 +36,7 @@
 	import QuoteCard from '$lib/components/QuoteCard.svelte';
 	import HubContinue from '$lib/components/HubContinue.svelte';
 	import HubChallenge from '$lib/components/HubChallenge.svelte';
+	import HubSpotlight from '$lib/components/HubSpotlight.svelte';
 	import { track } from '$lib/analytics';
 
 	/**
@@ -71,6 +73,12 @@
 	const fan = $derived(heroCovers(shelf));
 	const people = $derived(shelf.people ?? []);
 	const quotes = $derived(shelf.quotes ?? []);
+	const ladders = $derived(shelf.ladders ?? {});
+	const RUNG = {
+		children: 'audience.rungChildren',
+		teens: 'audience.rungTeens',
+		full: 'audience.rungFull'
+	} as const;
 	const challengeSeries = $derived(shelf.series.find((s) => s.slug === hub.challenge.series));
 	const leaderGuides = $derived(shelf.leader_guides ?? []);
 
@@ -250,6 +258,15 @@
 			</nav>
 		{/if}
 
+		{#if shelf.spotlight}
+			<HubSpotlight
+				book={shelf.spotlight}
+				ladder={ladders[shelf.spotlight.slug]}
+				onstart={() => track(HUB_EVENT, { hub: hub.audience, action: 'spotlight' })}
+				onclimb={() => track(HUB_EVENT, { hub: hub.audience, action: 'ladder' })}
+			/>
+		{/if}
+
 		{#if challengeSeries}
 			<HubChallenge
 				series={challengeSeries}
@@ -334,9 +351,25 @@
 				<p class="-mt-2 mb-5 max-w-2xl text-small text-muted">
 					{t(hub.retoldKey)}
 				</p>
-				<div class="book-grid">
+				<!-- Each retelling's next step up its ladder — the teens edition after
+				     the children's, the full original after the teens' — one tap away. -->
+				<div class="book-grid hub-rail" use:scrollEdges>
 					{#each shelf.editions as book (book.slug)}
-						<BookCard {book} showAuthor perChapter hook={hub.hooks ? book.hook : ''} />
+						{@const next = nextRung(ladders[book.slug], book.slug)}
+						<div class="flex flex-col gap-2">
+							<BookCard {book} showAuthor perChapter hook={hub.hooks ? book.hook : ''} />
+							{#if next}
+								<a
+									class="ready text-eyebrow"
+									href={localizeHref(`/books/${next.slug}`)}
+									onclick={() => track(HUB_EVENT, { hub: hub.audience, action: 'ladder' })}
+								>
+									{t('audience.readyForMore')}
+									<span class="font-semibold">{t(RUNG[next.rung])}</span>
+									<Arrow />
+								</a>
+							{/if}
+						</div>
 					{/each}
 				</div>
 			</section>
@@ -345,7 +378,7 @@
 		{#if shelf.more.length}
 			<section id="more" class="jump-anchor mb-12">
 				<GroupHeading name={t('audience.moreHeading')} count={shelf.more.length} />
-				<div class="book-grid">
+				<div class="book-grid hub-rail" use:scrollEdges>
 					{#each shelf.more as book (book.slug)}
 						<BookCard
 							{book}
@@ -554,6 +587,42 @@
 		border: 1px solid var(--border);
 		border-radius: var(--radius-card);
 		background: var(--surface);
+	}
+
+	/* On a phone a long shelf swipes sideways — a row per group, as a
+	   streaming app would — rather than a wall the reader scrolls past. The
+	   rail is the shared .cover-rail recipe: positioned, so nothing in it can
+	   widen the page (page-design, phone traps). */
+	@media (max-width: 639.98px) {
+		.hub-rail {
+			position: relative;
+			grid-template-columns: none;
+			grid-auto-flow: column;
+			grid-auto-columns: 44%;
+			overflow-x: auto;
+			overscroll-behavior-x: contain;
+			scroll-snap-type: x proximity;
+			scrollbar-width: none;
+			padding-bottom: 0.5rem;
+		}
+		.hub-rail::-webkit-scrollbar {
+			display: none;
+		}
+		.hub-rail > :global(*) {
+			scroll-snap-align: start;
+		}
+	}
+	.ready {
+		display: inline-flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.25rem;
+		padding-inline: 0.15rem;
+		color: var(--accent);
+		text-decoration: none;
+	}
+	.ready:hover {
+		text-decoration: underline;
 	}
 
 	.parents-fold summary {
