@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-import { CARD_SERIF, SCRIPT_FACE, quoteStyle } from './quoteCard';
+import { CARD_SERIF, SCRIPT_FACE, cardScript, quoteStyle } from './quoteCard';
 
 const APP_CSS = readFileSync(join(process.cwd(), 'src/app.css'), 'utf-8').replace(
 	/\/\*[\s\S]*?\*\//g,
@@ -70,10 +70,20 @@ describe('quote card type', () => {
 		// all three for two things they have not got — a synthesised slant over a
 		// synthesised bold, baked into a shareable image.
 		expect(quoteStyle(null), 'Latin should keep its italic').toBe('italic 600');
-		for (const script of ['arabic', 'devanagari', 'cyrillic']) {
+		for (const script of ['arabic', 'devanagari', 'cyrillic', 'ethiopic', 'korean']) {
 			const style = quoteStyle(script);
 			expect(style, `${script} would get a faked italic`).not.toContain('italic');
 			expect(style, `${script} would get a synthesised weight`).toBe('400');
 		}
+	});
+
+	it('sets Korean and Amharic cards for their script, not as Latin', () => {
+		// Neither is in the cover table (`scriptOf` is null for both), which once
+		// meant a Korean card asked for `italic 600` and preloaded nothing.
+		expect(cardScript('ko')).toBe('korean');
+		expect(cardScript('am')).toBe('ethiopic');
+		expect(cardScript('ar')).toBe('arabic');
+		expect(cardScript('en')).toBeNull();
+		expect(cardScript('vi')).toBeNull();
 	});
 });

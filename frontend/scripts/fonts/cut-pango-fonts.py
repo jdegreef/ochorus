@@ -57,3 +57,62 @@ for package, pattern, subsets, instance, stem in FACES:
         out = OUT / f'{stem}-{subset}.ttf'
         font.save(out)
         print(f'{out.name}  {out.stat().st_size // 1024} KB')
+
+# ── Hangul ─────────────────────────────────────────────────────────────────
+# Korean's faces ship as ~120 NUMBERED unicode-range slices, not a named
+# subset, so there is no one woff2 to decompress. Merge the slices back into
+# one font, then keep only the 2,350 syllables of KS X 1001 (every Hangul
+# syllable EUC-KR can encode, which covers ordinary modern Korean) plus ASCII
+# and the punctuation the cards set: ~1.4 MB a face, where all 11,172
+# syllables would be several times that, committed. A rarer syllable falls
+# through fontconfig like any missing glyph.
+#
+# The slices carry a wrong family name ("Noto Serif KR ExtraLight" on the 700
+# slices, in fontsource 5.3.0), and fontconfig matches by family + weight, so
+# the name table is rewritten to what card-kit's stacks ask for.
+from fontTools.merge import Merger
+from fontTools import subset as _subset
+
+KS_X_1001 = ''.join(
+    chr(c) for c in range(0xAC00, 0xD7A4) if len(chr(c).encode('euc_kr', 'ignore')) == 2
+)
+HANGUL_TEXT = KS_X_1001 + ''.join(map(chr, range(0x20, 0x7F))) + '·…—–“”‘’『』「」〈〉《》'
+
+# (package, weight, family, style, output stem)
+HANGUL = [
+    ('@fontsource/noto-serif-kr', 700, 'Noto Serif KR', 'Bold', 'NotoSerifKR-Bold'),
+    ('@fontsource/noto-serif-kr', 400, 'Noto Serif KR', 'Regular', 'NotoSerifKR-Regular'),
+    ('@fontsource/noto-sans-kr', 400, 'Noto Sans KR', 'Regular', 'NotoSansKR-Regular'),
+]
+
+for package, weight, family, style, stem in HANGUL:
+    slug = package.split('/')[1]
+    slices = sorted((MODULES / package / 'files').glob(f'{slug}-[0-9]*-{weight}-normal.woff2'))
+    ttfs = []
+    for i, woff2 in enumerate(slices):
+        font = TTFont(woff2)
+        font.flavor = None
+        path = OUT / f'.{stem}-slice-{i}.ttf'
+        font.save(path)
+        ttfs.append(str(path))
+    font = Merger().merge(ttfs)
+    for path in ttfs:
+        Path(path).unlink()
+    options = _subset.Options()
+    options.layout_features = ['*']
+    options.name_IDs = ['*']
+    subsetter = _subset.Subsetter(options)
+    subsetter.populate(text=HANGUL_TEXT)
+    subsetter.subset(font)
+    names = font['name']
+    for record in list(names.names):
+        if record.nameID in (1, 2, 4, 6, 16, 17):
+            names.removeNames(nameID=record.nameID)
+    names.setName(family, 1, 3, 1, 0x409)
+    names.setName(style, 2, 3, 1, 0x409)
+    names.setName(f'{family} {style}', 4, 3, 1, 0x409)
+    names.setName(f'{family.replace(" ", "")}-{style}', 6, 3, 1, 0x409)
+    font['OS/2'].usWeightClass = weight
+    out = OUT / f'{stem}-hangul.ttf'
+    font.save(out)
+    print(f'{out.name}  {out.stat().st_size // 1024} KB')

@@ -21,7 +21,10 @@ const api = vi.hoisted(() => ({
 	listBooks: vi.fn(),
 	listPlans: vi.fn(),
 	getAudienceShelf: vi.fn(),
-	getBook: vi.fn()
+	getBook: vi.fn(),
+	listSermons: vi.fn(),
+	listAuthors: vi.fn(),
+	getQuotePage: vi.fn()
 }));
 vi.mock('$lib/library-public', async (orig) => ({
 	...(await orig<typeof import('$lib/library-public')>()),
@@ -66,6 +69,11 @@ describe('"Ochorus for" load', () => {
 		expect((await run('parents', async () => Response.json([{ slug: 'x' }]))).shelf).toEqual(EMPTY_SHELF_DATA);
 	});
 
+	it('fills in sections a cached snapshot from the last release lacks', async () => {
+		const old = { shelves: [], plans: [], guides: [], offline: [] };
+		expect((await run('parents', async () => Response.json(old))).shelf).toEqual(EMPTY_SHELF_DATA);
+	});
+
 	it('fails the build instead of prerendering a page without its books', async () => {
 		env.building = true;
 		await expect(run('parents', async () => new Response('', { status: 500 }))).rejects.toThrow(/500/);
@@ -82,6 +90,9 @@ describe('for-shelves endpoint', () => {
 	];
 
 	beforeEach(() => {
+		// Not building: the build-wide memo of the shared lists would carry one
+		// test's mock into the next.
+		env.building = false;
 		api.listBooks.mockResolvedValue(everything().map(book));
 		api.listPlans.mockResolvedValue([...new Set(FOR_PAGES.flatMap((p) => p.plans))].map(plan));
 		api.getAudienceShelf.mockImplementation(async (aud: string) => ({
@@ -90,6 +101,52 @@ describe('for-shelves endpoint', () => {
 		api.getBook.mockImplementation(
 			async (slug: string) => ({ ...book(slug), pdf_url: `/pdfs/${slug}.pdf`, epub_url: '' }) as unknown as BookDetail
 		);
+		api.listSermons.mockResolvedValue([{ slug: 's1' }, { slug: 's2' }]);
+		api.listAuthors.mockResolvedValue(
+			[...new Set(FOR_PAGES.flatMap((p) => p.authors))].map((slug) => ({
+				slug,
+				name: slug,
+				photo_url: '',
+				birth_year: null,
+				death_year: null,
+				bio: 'long',
+				has_long_bio: slug !== 'charles-h-spurgeon'
+			}))
+		);
+		api.getQuotePage.mockImplementation(async (author: string) => ({
+			author: { slug: author, name: author, photo_url: '', birth_year: null },
+			topics: [],
+			quotes: FOR_PAGES.filter((p) => p.quote.startsWith(author)).map((p) => ({
+				slug: p.quote,
+				text: 'A line.',
+				paragraph: 1,
+				source: { kind: 'chapter', slug: 'b', title: 'C', work: 'Book', order: 2, cover_color: '' }
+			}))
+		}));
+	});
+
+	it('serves the writers, the quotation and the numbers', async () => {
+		const page = FOR_PAGES.find((p) => p.slug === 'churches')!;
+		const got = await get('churches');
+		// Spurgeon has no long bio in this mock, so the next writer takes his place.
+		expect(got.authors.map((a) => a.slug)).toEqual(page.authors.filter((a) => a !== 'charles-h-spurgeon').slice(0, 6));
+		expect(got.authors[0]).not.toHaveProperty('bio');
+		expect(got.quote).toMatchObject({ slug: page.quote, text: 'A line.', author: { slug: expect.any(String) } });
+		expect(got.counts).toEqual({ books: expect.any(Number), sermons: 2, plans: expect.any(Number) });
+	});
+
+	it('drops the numbers and the writers, not the build, when their lists fail', async () => {
+		api.listSermons.mockRejectedValue(new Error('503'));
+		api.listAuthors.mockRejectedValue(new Error('503'));
+		const got = await get('youth');
+		expect(got.authors).toEqual([]);
+		expect(got.counts?.sermons).toBe(0);
+		expect(got.shelves.length).toBeGreaterThan(0);
+	});
+
+	it('drops the quotation, not the build, when its quote page fails', async () => {
+		api.getQuotePage.mockRejectedValue(new Error('404'));
+		expect((await get('churches')).quote).toBeNull();
 	});
 
 	it("serves each shelf's published picks, in its order and capped", async () => {

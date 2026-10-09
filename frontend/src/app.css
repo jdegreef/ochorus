@@ -279,9 +279,9 @@
    style (site-fonts.css) — only the ones that say var(--font-display) would.
    Plain, the utilities emit `var(--font-display)` and follow the token. */
 @theme {
-	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'PT Serif', 'Fraunces Fallback', Georgia,
+	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'Noto Serif KR', 'PT Serif', 'Fraunces Fallback', Georgia,
 		'Times New Roman', serif;
-	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic',
+	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic', 'Noto Sans KR',
 		'PT Sans', 'Hanken Grotesk Fallback', ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
@@ -341,7 +341,7 @@
 	   script declares only the cover tokens and --font-display: a var() the
 	   card never declares invalidates the whole stack, and the title lands in
 	   Times with nothing to say so. */
-	--cover-face-young: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic', 'PT Sans', ui-sans-serif, system-ui, sans-serif;
+	--cover-face-young: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic', 'Noto Sans KR', 'PT Sans', ui-sans-serif, system-ui, sans-serif;
 }
 
 /* Runtime theme variables. Default = "lamplight" (dark); [data-theme='light']
@@ -462,9 +462,9 @@
 	   PT Serif above. Hanken was not even a partial answer for Cyrillic — it
 	   ships `cyrillic-ext` (U+0460-052F) and not the base block, so Б, і, ї and є
 	   all fell through it and only ґ did not. Latin still never leaves Hanken. */
-	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'PT Serif', 'Fraunces Fallback', Georgia,
+	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'Noto Serif KR', 'PT Serif', 'Fraunces Fallback', Georgia,
 		'Times New Roman', serif;
-	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic',
+	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic', 'Noto Sans KR',
 		'PT Sans', 'Hanken Grotesk Fallback', ui-sans-serif, system-ui, -apple-system, sans-serif;
 	--reading-scale: 1;
 	/* Motion, per STYLE_GUIDE §7 (quiet and quick, 120-240ms). Eight distinct
@@ -1915,7 +1915,7 @@
    a gilt initial's raised edge in a printed devotional. (No RTL variant: no
    right-to-left text gets a floated initial — see above. Print drops the gilt
    with the colour; see the print block.) */
-:is(article:not(.paged) .reading:not(.no-initial), .reading.bio, .has-initial) > p:first-of-type:not(:lang(ar)):not(:lang(hi))::first-letter {
+:is(article:not(.paged) .reading:not(.no-initial), .reading.bio, .has-initial) > p:first-of-type:not(:lang(ar)):not(:lang(hi)):not(:lang(ko))::first-letter {
 	float: inline-start;
 	/* The house serif, not --font-display: that follows the site style
 	   (site-fonts.css), and an initial is part of the page, not the chrome. */
@@ -4387,4 +4387,26 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		outline: 2px solid Highlight;
 		outline-offset: -2px;
 	}
+}
+
+/* Korean. Hangul is written in spaced words (eojeol), and a line may not break
+   inside one — the browser default breaks between any two syllables, which
+   splits a word and strands its particle on the next line. And Hangul has no
+   italic: Noto Serif/Sans KR ship none, so `em` would come out in a synthesised
+   slant, which reads as a rendering fault (the cover cards already set Korean
+   upright for the same reason). Emphasis keeps its weight instead.
+   The Korean faces themselves load from $lib/fonts-ko.css — see there. */
+:lang(ko) {
+	word-break: keep-all;
+	overflow-wrap: break-word;
+}
+/* On the element itself, not as a descendant of a Korean ancestor: <html
+   lang="ko"> is an ancestor of everything, so a descendant rule would also
+   strip the real Fraunces italic from a Latin island (lang="en") on the page. */
+:is(em, i, cite):lang(ko) {
+	font-style: normal;
+	font-weight: 600;
+}
+:is(blockquote, .italic):lang(ko) {
+	font-style: normal;
 }

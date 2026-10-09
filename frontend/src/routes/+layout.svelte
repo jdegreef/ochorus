@@ -67,6 +67,9 @@
 	// Latin-ext / Vietnamese / Cyrillic subsets stay lazy (rare glyphs).
 	import frauncesLatin from '@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2?url';
 	import hankenLatin from '@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-wght-normal.woff2?url';
+	// Korean's faces, as their own stylesheet: ~100 KB of @font-face rules that
+	// only a Korean page should pay for (see fonts-ko.css).
+	import koFonts from '$lib/fonts-ko.css?url';
 
 	let { children } = $props();
 	const t = i18n.t;
@@ -311,6 +314,9 @@
 	{/if}
 	<link rel="preload" href={frauncesLatin} as="font" type="font/woff2" crossorigin="anonymous" />
 	<link rel="preload" href={hankenLatin} as="font" type="font/woff2" crossorigin="anonymous" />
+	{#if getLocale() === 'ko'}
+		<link rel="stylesheet" href={koFonts} />
+	{/if}
 	<!-- Feed autodiscovery: browsers and readers surface the "new works" Atom feed. -->
 	<link rel="alternate" type="application/atom+xml" title="Ochorus — New in the Library" href="/feed.xml" />
 </svelte:head>

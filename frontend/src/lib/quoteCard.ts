@@ -41,7 +41,7 @@ export interface QuoteCardOptions {
  * device chose, on the one surface built to leave the site.
  */
 export const CARD_SERIF =
-	"'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'PT Serif', Georgia, 'Times New Roman', serif";
+	"'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'Noto Serif KR', 'PT Serif', Georgia, 'Times New Roman', serif";
 
 /**
  * How the quote itself is set, per script.
@@ -154,10 +154,29 @@ export const SCRIPT_FACE: Record<string, string> = {
 	arabic: 'Amiri',
 	devanagari: 'Tiro Devanagari Hindi',
 	cyrillic: 'PT Serif',
-	ethiopic: 'Noto Serif Ethiopic'
+	ethiopic: 'Noto Serif Ethiopic',
+	korean: 'Noto Serif KR'
 };
 
-export async function ensureFonts(script: string | null): Promise<void> {
+/** Scripts a card draws that the COVER table (`scriptOf`) leaves out: covers
+ *  correct only the scripts whose metrics differ from the Latin recipes, but a
+ *  card still has to preload these faces and must not slant them. Before this,
+ *  an Amharic card never preloaded Noto Serif Ethiopic: `scriptOf('am')` is
+ *  null, so the entry above was unreachable. */
+const CARD_ONLY_SCRIPT: Record<string, string> = { Ethi: 'ethiopic', Kore: 'korean' };
+
+/** The script a card in this language is set for; null for Latin. */
+export function cardScript(language: string): string | null {
+	const cover = scriptOf(language);
+	if (cover) return cover;
+	try {
+		return CARD_ONLY_SCRIPT[new Intl.Locale(language).maximize().script ?? ''] ?? null;
+	} catch {
+		return null;
+	}
+}
+
+export async function ensureFonts(script: string | null, text = ''): Promise<void> {
 	try {
 		const fonts = (document as Document & { fonts?: FontFaceSet }).fonts;
 		if (!fonts) return;
@@ -168,7 +187,14 @@ export async function ensureFonts(script: string | null): Promise<void> {
 			// The script face at both sizes the card sets it at. Without this the
 			// card drew Arabic in the device serif even though the stack named
 			// Amiri, because nothing had asked the browser to fetch it yet.
-			...(face ? [fonts.load(`400 64px '${face}'`), fonts.load(`600 34px '${face}'`)] : [])
+			// WITH the card's text: `load` fetches only the faces whose
+			// unicode-range covers the text it is given, and defaults to " ". For a
+			// face split into numbered slices (Noto Serif KR, ~120 of them) that means
+			// the Latin slice alone, and every syllable on the card draws in the
+			// device font the canvas falls back to.
+			...(face
+				? [fonts.load(`400 64px '${face}'`, text || ' '), fonts.load(`600 34px '${face}'`, text || ' ')]
+				: [])
 		]);
 		await fonts.ready;
 	} catch {
@@ -212,9 +238,9 @@ export function drawFooter(ctx: CanvasRenderingContext2D, margin: number, site?:
 
 /** Render the card to a PNG Blob. */
 export async function renderQuoteCard(opts: QuoteCardOptions): Promise<Blob> {
-	const script = scriptOf(opts.language ?? 'en');
+	const script = cardScript(opts.language ?? 'en');
 	const style = quoteStyle(script);
-	await ensureFonts(script);
+	await ensureFonts(script, [opts.quote, opts.author, opts.source].join(' '));
 	const canvas = document.createElement('canvas');
 	canvas.width = SIZE;
 	canvas.height = SIZE;

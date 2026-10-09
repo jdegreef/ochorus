@@ -71,8 +71,14 @@ const SPA_SHELL = '/200.html';
  * actually opened, and a font is fetched when it is first chosen rather than
  * ahead of a choice nobody made.
  */
+// Not Korean's font sheet: ~100 KB of @font-face rules linked only on Korean
+// pages (see $lib/fonts-ko.css). Precaching it would charge every reader who
+// installs the worker for the very cost it was split out of app.css to avoid;
+// a Korean reader gets it on the first Korean page, like any other asset.
 const isCritical = (path: string) =>
-	path.endsWith('.css') || path.includes('/entry/') || path.includes('/chunks/');
+	(path.endsWith('.css') && !path.includes('/fonts-ko')) ||
+	path.includes('/entry/') ||
+	path.includes('/chunks/');
 
 const PRECACHE = [
 	...build.filter(isCritical),

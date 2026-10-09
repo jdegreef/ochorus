@@ -1,0 +1,111 @@
+{
+ "kind": "book",
+ "slug": "amy-carmichael-a-life-children",
+ "language": "am",
+ "job_issue": 5741,
+ "pull_request": 5772,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh; re-verified for this job 2026-10-09: mat/mrk/luk/jhn/1co/2co return 200 as usfm/, psa/pro/isa/jer/dan 404). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work that quotes the same verse (source_file names it), and are otherwise self_rendered in the 1962 register.",
+  "A `mined` row was re-measured against the finished text by script: every quoted fragment is an exact substring both of that block and of the cited 1962 NT verse or corpus file. Mark 16:15a («ወደ ዓለም ሁሉ ሂዱ») is short but is the whole of what the English quotes and is the verse's exact opening, so it is counted mined.",
+  "The English epigraphs are simplified child paraphrases (\"— from Psalm 139\"); as in the shipped am children's editions, each quotes the 1962 wording for the part the English means, with … for words left out, and cites `— ከ<Book> <chapter>`. Jeremiah 31:3 reuses grace-abounding.am.json's «በዘላለም ፍቅር ወድጄሃለሁ» but its second clause (\"with kindness I have drawn you\") is composed, so it is self_rendered. 1 Corinthians 3's epigraph is the verbatim wording of 3:12, whose last clause carries the \"each one's work will be shown\" sense the English gives. Chapter 3's inline list of building materials is Paul's 1962 vocabulary re-cast as a list, so self_rendered. John 12:24 matches talks-to-the-farmer-children.am.json's epigraph exactly.",
+  "No Amharic full or teen edition of this life exists yet, so names follow the shipped am corpus: ኤሚ ካርማይክል, ዶህናቩር, አማ (brave-for-god.am, women-who-moved-heaven-2.am), ኬዝዊክ, ኩዌከር, የቻይና የውስጥ ሚስዮን, ሴይሎን, ታሚል."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 139:14a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "rooted-1.am.json"
+  },
+  {
+   "reference": "Jeremiah 31:3b",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "1 Corinthians 3:12",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 3:12",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Luke 14:21b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Psalm 68:6a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "clothed-with-strength-and-dignity.am.json"
+  },
+  {
+   "reference": "Mark 16:15a",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 5,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Proverbs 3:5-6",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "rooted-6.am.json"
+  },
+  {
+   "reference": "Daniel 12:3b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "all-things-for-good.am.json"
+  },
+  {
+   "reference": "Matthew 18:14",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Isaiah 40:11b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "the-god-of-all-comfort.am.json"
+  },
+  {
+   "reference": "John 13:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "2 Corinthians 12:9a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "John 12:24",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  }
+ ]
+}
