@@ -89,7 +89,7 @@
 	}
 	.home-highlight-text {
 		margin: 0;
-		font-size: 1.15rem;
+		font-size: var(--fs-h3);
 		line-height: 1.5;
 		font-style: italic;
 	}
