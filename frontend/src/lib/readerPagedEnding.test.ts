@@ -52,13 +52,19 @@ describe('the chapter ending lives inside the pager', () => {
 	});
 });
 
-describe('folding a question in the ending keeps the page', () => {
-	// Opening or closing an answer re-flows the ending, and the re-measure placed
-	// the reader by its late-content rules (stay on the last page; clamp when the
-	// count shrinks) — the page turned under the click. The toggled question
-	// anchors that re-measure instead.
-	it('anchors the re-measure on the toggled <details>', () => {
-		expect(pagerMarkup().slice(0, 200)).toContain('ontogglecapture={onPagerToggle}');
-		expect(READER).toMatch(/const target = hold\s*\?\s*pageOfNode\(hold\)/);
+describe('a re-flow in the ending keeps the page', () => {
+	// Opening an answer (or growing the reflection's composer) re-flows the
+	// ending, and the re-measure's last-page rule turned the page under the
+	// click. A reader already in the ending stays put; only `?pg=last`, until
+	// the reader acts, still pins the last page.
+	it('ranks the in-ending anchor above the last-page rule', () => {
+		const m = READER.match(/const target = stickToLast[\s\S]*?;\n/);
+		expect(m, 'measurePages must pick its target with stickToLast first').not.toBeNull();
+		const chain = m![0];
+		expect(chain.indexOf('inEnd')).toBeGreaterThan(-1);
+		expect(chain.indexOf('inEnd')).toBeLessThan(chain.indexOf('wasLast'));
+	});
+	it('drops the ?pg=last pin once the reader clicks the page', () => {
+		expect(READER).toMatch(/function onArticleClick\(e: MouseEvent\) \{[\s\S]{0,200}stickToLast = false;/);
 	});
 });
