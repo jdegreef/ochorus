@@ -1243,8 +1243,10 @@
 	   this much of the page's own ground. A painting may be black or white, so
 	   palettes.test.ts composites both at this strength in every theme and
 	   palette and holds the hero's inks to 4.5:1 — body text, the accent, and
-	   muted taken half-way to the text (the band's .washed rule). */
+	   --muted-on-wash, the band's secondary ink: muted taken half-way to the
+	   text, the margin a veiled painting needs. */
 	--wash-veil: 88%;
+	--muted-mix-on-wash: 50%;
 	--hero-ground: #1d2a1f;
 	--hero-tint: #1b1526;
 	/* At least 75% through the lower 85%, where the date and greeting sit —

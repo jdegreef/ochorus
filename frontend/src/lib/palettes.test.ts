@@ -158,7 +158,9 @@ describe('library palettes', () => {
 	// must still clear 4.5:1 in every theme and palette.
 	it("the book band's veil holds the hero's inks over any painting", () => {
 		const veil = parseFloat(heroRoot['--wash-veil']) / 100;
+		const mix = parseFloat(heroRoot['--muted-mix-on-wash']) / 100;
 		expect(veil).toBeGreaterThan(0.5);
+		expect(mix).toBeGreaterThan(0);
 		const failures: string[] = [];
 		for (const mode of ['light', 'dark', 'sepia'] as const)
 			for (const p of APPLIED_PALETTES) {
@@ -167,7 +169,7 @@ describe('library palettes', () => {
 				const inks = {
 					'--text': text,
 					'--accent': rgb(vars['--accent']),
-					'--muted (band)': rgb(vars['--muted']).map((c, i) => (c + text[i]) / 2)
+					'--muted (band)': rgb(vars['--muted']).map((c, i) => c * mix + text[i] * (1 - mix))
 				};
 				for (const paint of [0, 255]) {
 					const ground = rgb(vars['--bg']).map((c) => c * veil + paint * (1 - veil));

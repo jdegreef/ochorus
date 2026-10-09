@@ -2,7 +2,7 @@
 	import { chapterPath } from '$lib/editionHref';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import ReadBar from '$lib/components/ReadBar.svelte';
-	import { isPlateCover, shareCard, shareImage } from '$lib/coverArt';
+	import { coverVariants, isPlateCover, shareCard, shareImage } from '$lib/coverArt';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { authorLdType, authorPath } from '$lib/originals';
 	import { type BookDetail, formatLifespan } from '$lib/library-public';
@@ -98,10 +98,14 @@
 	// The cover's painting, blurred and veiled behind the hero as its colour
 	// (app.css --wash-veil) — a raster cover only: a plate is the house's own
 	// drawing, not a painting, and a file that fails to load leaves the plain page.
+	// Its smallest webp, the one the cover itself shows at 1x: blurred to a
+	// colour, the full-size original (up to ~400 KB) would be a second download
+	// racing the cover for nothing.
 	let washBroken = $state<string | null>(null);
-	const wash = $derived(
-		book.cover_url && !isPlateCover(book.cover_url) && book.cover_url !== washBroken ? book.cover_url : null
+	const washSrc = $derived(
+		book.cover_url && !isPlateCover(book.cover_url) ? (coverVariants(book.cover_url)[0] ?? book.cover_url) : null
 	);
+	const wash = $derived(washSrc !== washBroken ? washSrc : null);
 
 	const years = $derived(
 		formatLifespan(book.author.birth_year, book.author.death_year, t('common.bornPrefix'))
@@ -476,10 +480,8 @@
 	structuredData={[bookLd, crumbsLd, qa.ld].filter(Boolean)}
 />
 
-<!-- The hero's band: the page's own ground, coloured by the cover's painting
-     blurred behind it and veiled back toward the page (--wash-veil), fading out
-     before the sub-nav. Decoration (alt=""); a band of its own, outside the
-     column, so the colour runs edge to edge. -->
+<!-- The hero's band, coloured by the cover's painting (app.css --wash-veil).
+     Outside the column, so the colour runs edge to edge. -->
 <div class="book-band" class:washed={!!wash}>
 	{#if wash}
 		<div class="book-band-art" aria-hidden="true">
@@ -492,96 +494,96 @@
 			/>
 		</div>
 	{/if}
-<div class="page-col book-hero-col px-5 pt-10">
-	<Breadcrumb items={crumbs} />
+	<div class="page-col book-hero-col px-5 pt-10">
+		<Breadcrumb items={crumbs} />
 
-	<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/books" />
+		<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/books" />
 
-	<!-- A grid, so on a phone the cover sits BESIDE the title (a 9rem cover
-	     alone on its row left the right half of the first screen empty) while
-	     the read card and actions take the full width beneath. From sm it is the
-	     original layout: cover down the left, everything else in one column. -->
-	<header class="book-hero mt-5">
-		<!-- One component decides what a cover is. This page used to branch on
-		     cover_url itself and paint its own gradient box in the else, so the
-		     same cover-less book looked one way on a shelf and another here — and
-		     a cover file that 404s showed a broken image here while every shelf
-		     fell back to the plate. `priority` marks it as the page's LCP image. -->
-		<!-- A1: a larger cover raised off the page. `hero-cover` adds a layered
-		     drop-shadow that hugs the cover's rounded shape (via `filter`, so it
-		     follows any cover — painting, plate or designed raster — without a fake
-		     spine drawn over the artwork) and a slim page-edge on the fore-edge. -->
-		<div class="book-hero-cover">
-			<div class="hero-cover">
-				<BookCover {book} priority />
+		<!-- A grid, so on a phone the cover sits BESIDE the title (a 9rem cover
+		     alone on its row left the right half of the first screen empty) while
+		     the read card and actions take the full width beneath. From sm it is the
+		     original layout: cover down the left, everything else in one column. -->
+		<header class="book-hero mt-5">
+			<!-- One component decides what a cover is. This page used to branch on
+			     cover_url itself and paint its own gradient box in the else, so the
+			     same cover-less book looked one way on a shelf and another here — and
+			     a cover file that 404s showed a broken image here while every shelf
+			     fell back to the plate. `priority` marks it as the page's LCP image. -->
+			<!-- A1: a larger cover raised off the page. `hero-cover` adds a layered
+			     drop-shadow that hugs the cover's rounded shape (via `filter`, so it
+			     follows any cover — painting, plate or designed raster — without a fake
+			     spine drawn over the artwork) and a slim page-edge on the fore-edge. -->
+			<div class="book-hero-cover">
+				<div class="hero-cover">
+					<BookCover {book} priority />
+				</div>
+				{#if book.artwork_credit}
+					<!-- The painting's credit (see the foot copy below for why it is
+					     shown at all): from sm it hangs under the cover it names; a
+					     phone's 7rem cover column is too narrow, so there it stays at
+					     the foot. -->
+					<p class="mt-3 hidden text-eyebrow text-muted sm:block">{book.artwork_credit}</p>
+				{/if}
 			</div>
-			{#if book.artwork_credit}
-				<!-- The painting's credit (see the foot copy below for why it is
-				     shown at all): from sm it hangs under the cover it names; a
-				     phone's 7rem cover column is too narrow, so there it stays at
-				     the foot. -->
-				<p class="mt-3 hidden text-eyebrow text-muted sm:block">{book.artwork_credit}</p>
-			{/if}
-		</div>
 
-		<div class="book-hero-head min-w-0">
-			<!-- Each part held whole, so a narrow column breaks BETWEEN them. -->
-			<p class="eyebrow mb-1 text-muted">{t('search.typeBook')}</p>
-			<h1 class="text-h1" dir="auto">{book.title}</h1>
-			{#if book.subtitle}<p class="mt-1 text-h3 text-muted">{book.subtitle}</p>{/if}
-			<!-- The names this work is also published under. Shown, not merely marked
-			     up: a reader who searched "A Divine Cordial" and landed on a page
-			     headed "All Things for Good" needs to see, on arrival, that they are
-			     in the right place. Held to one line — it is confirmation, not a
-			     second title, and it sits above the author so it reads as part of
-			     naming the work rather than as a fact about it. -->
-			{#if otherTitles.length}
-				<p class="mt-1 text-small text-muted" dir="auto">
-					{t('book.otherTitles')}: {otherTitles.join(' · ')}
+			<div class="book-hero-head min-w-0">
+				<!-- Each part held whole, so a narrow column breaks BETWEEN them. -->
+				<p class="eyebrow mb-1 text-muted">{t('search.typeBook')}</p>
+				<h1 class="text-h1" dir="auto">{book.title}</h1>
+				{#if book.subtitle}<p class="mt-1 text-h3 text-muted">{book.subtitle}</p>{/if}
+				<!-- The names this work is also published under. Shown, not merely marked
+				     up: a reader who searched "A Divine Cordial" and landed on a page
+				     headed "All Things for Good" needs to see, on arrival, that they are
+				     in the right place. Held to one line — it is confirmation, not a
+				     second title, and it sits above the author so it reads as part of
+				     naming the work rather than as a fact about it. -->
+				{#if otherTitles.length}
+					<p class="mt-1 text-small text-muted" dir="auto">
+						{t('book.otherTitles')}: {otherTitles.join(' · ')}
+					</p>
+				{/if}
+				<!-- Where this book sits in its series, and the way on to the next
+				     volume in this language. Absent outside a series and where the series
+				     has no name in this edition's language (the API's no-fallback rule).
+				     Numbers in the edition's digits, as the cover's ring sets them. -->
+				{#if book.series}
+					<p class="mt-2 text-small text-muted" dir="auto">
+						<a
+							href={localizeHref(`/series/${book.series.slug}`)}
+							class="font-medium hover:text-text hover:underline"
+							>{seriesLabel(book.series, contentLang(book.language))}</a
+						>{#if book.series.next}<span class="px-1.5 opacity-50">·</span><a
+								href={localizeHref(`/books/${book.series.next.slug}`)}
+								class="text-accent hover:underline"
+								>{t('book.seriesNext')}: {book.series.next.title} <Arrow /></a
+							>{/if}
+					</p>
+				{/if}
+				<!-- The space as an expression, not literal text: at an {#if} boundary a
+				     literal one gets compiler-trimmed ("Booth· 1829"). And OUTSIDE the
+				     nowrap span, so a narrow column breaks between the name and its dates
+				     — never inside the name or the dates. -->
+				<p class="mt-2 text-body">
+					<a href={localizeHref(authorPath(book.author.slug))} class="text-accent hover:underline"
+						>{book.author.name}</a
+					>{#if years}{' '}<span class="whitespace-nowrap text-muted">{`· ${years}`}</span>{/if}
 				</p>
-			{/if}
-			<!-- Where this book sits in its series, and the way on to the next
-			     volume in this language. Absent outside a series and where the series
-			     has no name in this edition's language (the API's no-fallback rule).
-			     Numbers in the edition's digits, as the cover's ring sets them. -->
-			{#if book.series}
-				<p class="mt-2 text-small text-muted" dir="auto">
-					<a
-						href={localizeHref(`/series/${book.series.slug}`)}
-						class="font-medium hover:text-text hover:underline"
-						>{seriesLabel(book.series, contentLang(book.language))}</a
-					>{#if book.series.next}<span class="px-1.5 opacity-50">·</span><a
-							href={localizeHref(`/books/${book.series.next.slug}`)}
-							class="text-accent hover:underline"
-							>{t('book.seriesNext')}: {book.series.next.title} <Arrow /></a
-						>{/if}
-				</p>
-			{/if}
-			<!-- The space as an expression, not literal text: at an {#if} boundary a
-			     literal one gets compiler-trimmed ("Booth· 1829"). And OUTSIDE the
-			     nowrap span, so a narrow column breaks between the name and its dates
-			     — never inside the name or the dates. -->
-			<p class="mt-2 text-body">
-				<a href={localizeHref(authorPath(book.author.slug))} class="text-accent hover:underline"
-					>{book.author.name}</a
-				>{#if years}{' '}<span class="whitespace-nowrap text-muted">{`· ${years}`}</span>{/if}
-			</p>
 
-			<!-- The author's memorable lines: a bridge from the book to their quote
-			     page. English only, as the quote pages are — mirrors the author
-			     page's own Quotes link, gate and all. -->
-			{#if book.author_quote_count && getLang() === 'en'}
-				<p class="mt-1 text-small">
-					<a href={`/quotes/${book.author.slug}/`} class="text-accent hover:underline"
-						>Quotes from {book.author.name} <Arrow /></a
-					>
-				</p>
-			{/if}
+				<!-- The author's memorable lines: a bridge from the book to their quote
+				     page. English only, as the quote pages are — mirrors the author
+				     page's own Quotes link, gate and all. -->
+				{#if book.author_quote_count && getLang() === 'en'}
+					<p class="mt-1 text-small">
+						<a href={`/quotes/${book.author.slug}/`} class="text-accent hover:underline"
+							>Quotes from {book.author.name} <Arrow /></a
+						>
+					</p>
+				{/if}
 
-			{#if siblingEditions.length && !fallback}
-				<!-- Not on a fallback page: the notice above lists the editions, and
-				     the section this jumps to is hidden there. -->
-				<div class="mt-3 flex flex-wrap items-center gap-2">
+				{#if siblingEditions.length && !fallback}
+					<!-- Not on a fallback page: the notice above lists the editions, and
+					     the section this jumps to is hidden there. -->
+					<div class="mt-3">
 						<a
 							href="#languages"
 							class="hero-chip hero-chip-link"
@@ -595,161 +597,162 @@
 									>{/each}{#if editionsPill.more}{` +${editionsPill.more}`}{/if}</span
 							></a
 						>
-				</div>
-			{/if}
-		</div>
+					</div>
+				{/if}
+			</div>
 
-		<!-- The book's measure in one ribbon: its length, the time it takes,
-		     how hard it reads and who it's for. Its own grid item, so on a phone
-		     it takes the full width under the cover rather than squeezing into
-		     the title's column beside it. Read as one line ("9 chapters, 2 hr 55
-		     min read, Accessible reading difficulty"). -->
-		<ul class="book-stats">
-			<li>
-				<span class="book-stat-value">{book.chapter_count}</span>
-				<span class="book-stat-label"
-					>{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}</span
-				>
-			</li>
-			{#if totalWords}
-				<li><span class="book-stat-value">{readingTime(totalWords)}</span></li>
-			{/if}
-			{#if book.difficulty}
+			<!-- The book's measure in one ribbon: its length, the time it takes,
+			     how hard it reads and who it's for. Its own grid item, so on a phone
+			     it takes the full width under the cover rather than squeezing into
+			     the title's column beside it. Read as one line ("9 chapters, 2 hr 55
+			     min read, Accessible reading difficulty"). -->
+			<ul class="book-stats">
 				<li>
-					<span class="book-stat-value">{t(`reader.difficulty_${book.difficulty}`)}</span>
-					<span class="book-stat-label">{t('reader.difficulty')}</span>
-				</li>
-			{/if}
-			{#if ages}
-				<li><span class="book-stat-value">{ages}</span></li>
-			{/if}
-		</ul>
-
-		<!-- The action row's container (`.action-host`): it picks strip vs row by
-		     this block's width — the full page width on a phone. -->
-		<div class="action-host book-hero-actions min-w-0">
-
-			<!-- Design D: the header's one job for a returning reader is to put them
-			     back where they were, so the read verb sits in a card that NAMES the
-			     chapter they're on, with the book's progress and the time left — a
-			     reason to press Continue, not just a number. A first-time reader (and
-			     the prerendered HTML, since the saved place is client-only) gets the
-			     same card offering chapter 1, carrying the "Free to read · No account
-			     needed" reassurance that used to sit on a row of its own. Start over
-			     is a quiet link: it discards the place, so it shouldn't look like a
-			     second main action. -->
-			<div class="read-card mt-4" bind:this={readCard}>
-				<div class="read-card-body">
-					{#if finishedAt != null}
-						<p class="text-small text-muted">
-							{t('fav.shelfFinished')} · {new Date(finishedAt).toLocaleDateString(getLang(), {
-								day: 'numeric',
-								month: 'long',
-								year: 'numeric'
-							})}
-						</p>
-						<p class="read-card-title" dir="auto">{book.title}</p>
-						<div class="mt-2">
-							<ProgressBar percent={100} label="{book.title}: {t('fav.shelfFinished')}" />
-						</div>
-					{:else if resuming}
-						<p class="text-small text-muted">
-							{onChapter}{#if minutesLeft}{` · ${bookTimeLeft(minutesLeft)}`}{/if}
-						</p>
-						<p class="read-card-title" dir="auto">{chapterNameIn(readOrder, resumeChapter?.title, book.title)}</p>
-						<div class="mt-2">
-							<ProgressBar percent={percentRead} label="{book.title}: {onChapter}" />
-						</div>
-					{:else}
-						<p class="text-small">
-							<span class="font-medium text-accent">{t('book.freeToRead')}</span><span
-								class="px-1.5 opacity-50">·</span
-							><span class="text-muted">{t('book.noAccount')}</span>
-						</p>
-						{#if book.chapters[0]}
-							<p class="read-card-title" dir="auto">
-								{chapterNameIn(firstOrder, book.chapters[0].title, book.title)}
-							</p>
-						{/if}
-					{/if}
-				</div>
-				<div class="read-card-cta">
-					<a href={readHref(readOrder)} class="btn btn-primary">{readLabel}</a>
-					{#if otherPlace}
-						<a href={readHref(otherPlace.order)} class="text-small text-accent hover:underline"
-							>{otherPlace.label.replace('%n%', String(otherPlace.order))}</a
-						>
-					{/if}
-					{#if resuming}
-						<a href={readHref(firstOrder)} class="text-small text-muted underline hover:text-text"
-							>{t('book.startOver')}</a
-						>
-					{/if}
-					{#if book.has_modern_edition}
-						<!-- Which text the read verb opens: the same choice as Settings →
-						     Default edition (readerPrefs.preferModern), made here where
-						     it matters, so the card holds one read button, not two. The
-						     reader's own Modern ⇄ Original links and the sitemap's
-						     `modern` section are how the crawler finds those pages. -->
-						<div class="seg edition-seg" role="group" aria-label={t('settings.defaultEdition')}>
-							<button
-								type="button"
-								class:active={!useModern}
-								aria-pressed={!useModern}
-								onclick={() => readerPrefs.setPreferModern(false)}>{t('reader.original')}</button
-							>
-							<button
-								type="button"
-								class:active={useModern}
-								aria-pressed={useModern}
-								onclick={() => readerPrefs.setPreferModern(true)}>{t('reader.modernEdition')}</button
-							>
-						</div>
-					{/if}
-				</div>
-			</div>
-
-			<!-- Everything else is one quiet row of five: keep it (Save, a shelf),
-			     take it away (one Download menu for offline / EPUB / PDF), pass it on
-			     (Share) and look inside (Search). Share and Search are icon-only on
-			     desktop (`.icon-in-row`); when narrow the `.action-strip` becomes design
-			     B's labelled icon strip. -->
-			<div class="action-strip mt-3">
-				<FavoriteButton kind="book" slug={book.slug} showLabel />
-				<AddToShelfButton slug={book.slug} shortLabel />
-				<BookDownloadMenu {book} />
-				<div class="icon-in-row">
-					<ShareButton url={canonical} title="{book.title} — {book.author.name}" showLabel />
-				</div>
-				<!-- Search inside this book: the real search, scoped to the book. -->
-				<a
-					href={localizeHref(scopedSearchHref('book', book.slug))}
-					class="btn btn-sm btn-ghost icon-in-row"
-					aria-label={t('search.inBook')}
-					title={t('search.inBook')}
-				>
-					<Icon name="search" size={16} />
-					<span class="btn-label">{t('nav.search')}</span>
-				</a>
-			</div>
-			{#if book.has_leader_guide}
-				<!-- A printable leader's guide for a group or a homeschool. Its own row
-				     under the strip, not a sixth strip button: the strip's phone form
-				     is five columns, and this is for the leader, not every reader. -->
-				<div class="mt-2">
-					<a
-						href={localizeHref(`/books/${book.slug}/guide`)}
-						class="btn btn-sm btn-ghost"
+					<span class="book-stat-value">{book.chapter_count}</span>
+					<span class="book-stat-label"
+						>{book.chapter_count === 1 ? t('book.chapterOne') : t('book.chaptersMany')}</span
 					>
-						<Icon name="users" size={16} />
-						{t('guide.label')}
+				</li>
+				{#if totalWords}
+					<li><span class="book-stat-value">{readingTime(totalWords)}</span></li>
+				{/if}
+				{#if book.difficulty}
+					<li>
+						<span class="book-stat-value">{t(`reader.difficulty_${book.difficulty}`)}</span>
+						<span class="book-stat-label">{t('reader.difficulty')}</span>
+					</li>
+				{/if}
+				{#if ages}
+					<li><span class="book-stat-value">{ages}</span></li>
+				{/if}
+			</ul>
+
+			<!-- The action row's container (`.action-host`): it picks strip vs row by
+			     this block's width — the full page width on a phone. -->
+			<div class="action-host book-hero-actions min-w-0">
+
+				<!-- Design D: the header's one job for a returning reader is to put them
+				     back where they were, so the read verb sits in a card that NAMES the
+				     chapter they're on, with the book's progress and the time left — a
+				     reason to press Continue, not just a number. A first-time reader (and
+				     the prerendered HTML, since the saved place is client-only) gets the
+				     same card offering chapter 1, carrying the "Free to read · No account
+				     needed" reassurance that used to sit on a row of its own. Start over
+				     is a quiet link: it discards the place, so it shouldn't look like a
+				     second main action. -->
+				<div class="read-card mt-4" bind:this={readCard}>
+					<div class="read-card-body">
+						{#if finishedAt != null}
+							<p class="text-small text-muted">
+								{t('fav.shelfFinished')} · {new Date(finishedAt).toLocaleDateString(getLang(), {
+									day: 'numeric',
+									month: 'long',
+									year: 'numeric'
+								})}
+							</p>
+							<p class="read-card-title" dir="auto">{book.title}</p>
+							<div class="mt-2">
+								<ProgressBar percent={100} label="{book.title}: {t('fav.shelfFinished')}" />
+							</div>
+						{:else if resuming}
+							<p class="text-small text-muted">
+								{onChapter}{#if minutesLeft}{` · ${bookTimeLeft(minutesLeft)}`}{/if}
+							</p>
+							<p class="read-card-title" dir="auto">{chapterNameIn(readOrder, resumeChapter?.title, book.title)}</p>
+							<div class="mt-2">
+								<ProgressBar percent={percentRead} label="{book.title}: {onChapter}" />
+							</div>
+						{:else}
+							<p class="text-small">
+								<span class="font-medium text-accent">{t('book.freeToRead')}</span><span
+									class="px-1.5 opacity-50">·</span
+								><span class="text-muted">{t('book.noAccount')}</span>
+							</p>
+							{#if book.chapters[0]}
+								<p class="read-card-title" dir="auto">
+									{chapterNameIn(firstOrder, book.chapters[0].title, book.title)}
+								</p>
+							{/if}
+						{/if}
+					</div>
+					<div class="read-card-cta">
+						<a href={readHref(readOrder)} class="btn btn-primary">{readLabel}</a>
+						{#if otherPlace}
+							<a href={readHref(otherPlace.order)} class="text-small text-accent hover:underline"
+								>{otherPlace.label.replace('%n%', String(otherPlace.order))}</a
+							>
+						{/if}
+						{#if resuming}
+							<a href={readHref(firstOrder)} class="text-small text-muted underline hover:text-text"
+								>{t('book.startOver')}</a
+							>
+						{/if}
+						{#if book.has_modern_edition}
+							<!-- Which text the read verb opens: the same choice as Settings →
+							     Default edition (readerPrefs.preferModern), made here where
+							     it matters, so the card holds one read button, not two. The
+							     reader's own Modern ⇄ Original links and the sitemap's
+							     `modern` section are how the crawler finds those pages. -->
+							<div class="seg edition-seg" role="group" aria-label={t('settings.defaultEdition')}>
+								<button
+									type="button"
+									class:active={!useModern}
+									aria-pressed={!useModern}
+									onclick={() => readerPrefs.setPreferModern(false)}>{t('reader.original')}</button
+								>
+								<button
+									type="button"
+									class:active={useModern}
+									aria-pressed={useModern}
+									onclick={() => readerPrefs.setPreferModern(true)}>{t('reader.modernEdition')}</button
+								>
+							</div>
+						{/if}
+					</div>
+				</div>
+
+				<!-- Everything else is one quiet row of five: keep it (Save, a shelf),
+				     take it away (one Download menu for offline / EPUB / PDF), pass it on
+				     (Share) and look inside (Search). Share and Search are icon-only on
+				     desktop (`.icon-in-row`); when narrow the `.action-strip` becomes design
+				     B's labelled icon strip. -->
+				<div class="action-strip mt-3">
+					<FavoriteButton kind="book" slug={book.slug} showLabel />
+					<AddToShelfButton slug={book.slug} shortLabel />
+					<BookDownloadMenu {book} />
+					<div class="icon-in-row">
+						<ShareButton url={canonical} title="{book.title} — {book.author.name}" showLabel />
+					</div>
+					<!-- Search inside this book: the real search, scoped to the book. -->
+					<a
+						href={localizeHref(scopedSearchHref('book', book.slug))}
+						class="btn btn-sm btn-ghost icon-in-row"
+						aria-label={t('search.inBook')}
+						title={t('search.inBook')}
+					>
+						<Icon name="search" size={16} />
+						<span class="btn-label">{t('nav.search')}</span>
 					</a>
 				</div>
-			{/if}
-		</div>
-	</header>
+				{#if book.has_leader_guide}
+					<!-- A printable leader's guide for a group or a homeschool. Its own row
+					     under the strip, not a sixth strip button: the strip's phone form
+					     is five columns, and this is for the leader, not every reader. -->
+					<div class="mt-2">
+						<a
+							href={localizeHref(`/books/${book.slug}/guide`)}
+							class="btn btn-sm btn-ghost"
+						>
+							<Icon name="users" size={16} />
+							{t('guide.label')}
+						</a>
+					</div>
+				{/if}
+			</div>
+		</header>
+	</div>
 </div>
-</div>
+<!-- /book-band -->
 
 <div class="page-col px-5 pb-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavOffset(showSubnav, subnavH)}px)">
 	<!-- A3: on-page jump navigation. Pinned under the app nav on scroll; its
@@ -1099,10 +1102,8 @@
 		);
 	}
 
-	/* The hero's band. The painting sits under everything, blurred to its
-	   colour and veiled back toward the page by --wash-veil (app.css, where
-	   palettes.test.ts measures every ink over a black and a white painting),
-	   and fades out down the band so the sub-nav meets the plain page. */
+	/* The painting under everything, blurred and veiled (see --wash-veil),
+	   fading out down the band so the sub-nav meets the plain page. */
 	.book-band {
 		position: relative;
 		isolation: isolate;
@@ -1124,13 +1125,13 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		filter: blur(32px) saturate(1.8);
+		filter: blur(20px) saturate(1.8);
 		transform: scale(1.25);
 	}
-	/* Over the wash, secondary text takes half a step toward the body ink —
-	   the measured margin a veiled painting needs (see --wash-veil). */
+	/* Over the wash, secondary text takes a step toward the body ink — the
+	   measured margin a veiled painting needs (app.css --muted-mix-on-wash). */
 	.washed {
-		--muted: color-mix(in srgb, var(--muted) 50%, var(--text));
+		--muted: color-mix(in srgb, var(--muted) var(--muted-mix-on-wash), var(--text));
 	}
 
 	/* The hero's layout is decided by the room the column has (a container),
@@ -1154,7 +1155,8 @@
 	.book-hero-actions {
 		grid-column: 1 / -1;
 	}
-	@media (min-width: 640px) {
+	/* From a 640px screen's column (600px inside its gutters). */
+	@container book-hero (min-width: 37.5rem) {
 		/* A last row takes up the cover's spare height, so the title, the
 		   ribbon and the actions stack tight at the top beside it. */
 		.book-hero {
@@ -1239,7 +1241,7 @@
 	.edition-seg button {
 		flex: 1 1 0;
 	}
-	/* Difficulty and the "also in" languages: quiet chips under the byline. */
+	/* The "also in" languages: a quiet chip under the byline. */
 	.hero-chip {
 		display: inline-flex;
 		align-items: center;
