@@ -1,0 +1,109 @@
+{
+ "kind": "book",
+ "slug": "c-t-studd-a-life-children",
+ "language": "am",
+ "job_issue": 5743,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh; re-verified for this job 2026-10-09: jas/act/mat/jhn/rom/heb/2ti return 200 as usfm/, ecc/psa/isa 404). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
+  "A `mined` row was checked by script against the finished text: every fragment of the epigraph is an exact substring of the 1962 NT verse (or of the cited corpus file) and of that block. Romans 10:14c is the one short row (18 characters): it is the whole clause the English quotes, verbatim.",
+  "The English epigraphs are KJV fragments cited `— from <Book> <chapter>`; per the shipped am children's editions each quotes the 1962 Bible's own wording for the part the English means, with … for words left out, and cites `— ከ<Book> <chapter>`. Isaiah 6:8b reuses daughters-of-the-king-3.am.json's two clauses (the nested ‹ › kept); Psalm 126:5 matches women-who-moved-heaven-2.am.json. Ecclesiastes 4:9 has no shipped Amharic rendering and is self_rendered.",
+  "Two body sentences echo a verse without quotation marks, as the English does: chapter 3's “Seek God's kingdom first” (Matthew 6:33a, abridged from the 1962 wording) and chapter 6's rich young man (Matthew 19:21, abridged). Both are self_rendered. Names follow the shipped am C. T. Studd bio (author_bios_am/c-t-studd.html) and the Studd chapter of men-and-women-who-gave-everything-2.am.json: ሲ.ቲ. ስተድ, ፕሪሲላ ሊቪንግስተን ስቱዋርት, ኡታካመንድ, ኢባምቢ, አልፍሬድ ባክስተን, የአፍሪካ እምብርት ሚስዮን, ደብሊው.ኢ.ሲ. ኢንተርናሽናል, «አመዱ» (ዘ አሽስ), «ሃሌ ሉያ», and the bio's rendering of “Only one life”. China Inland Mission follows the books' majority form (የቻይና የውስጥ ሚስዮን, 48 uses) over the bio's የቻይና የውስጥ አገር ሚስዮን."
+ ],
+ "references": [
+  {
+   "reference": "James 1:17a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 6:33a",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 3
+  },
+  {
+   "reference": "John 11:4",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Isaiah 6:8b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "daughters-of-the-king-3.am.json"
+  },
+  {
+   "reference": "Acts 20:35b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 19:21",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Ecclesiastes 4:9",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalm 126:5",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "women-who-moved-heaven-2.am.json"
+  },
+  {
+   "reference": "Romans 10:14c",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Hebrews 11:8",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 10:15b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "2 Timothy 4:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  }
+ ]
+}
