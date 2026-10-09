@@ -1,0 +1,98 @@
+{
+ "kind": "book",
+ "slug": "the-practice-of-the-presence-of-god-children",
+ "language": "am",
+ "job_issue": 5750,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is in the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh/usfm/; re-verified for this job 2026-10-09: rom/mat/col/1co/1th/jas/1pe/1jn/jhn return 200, 1sa/psa 404, so no Old Testament). OT epigraphs reuse an already-shipped Amharic work's wording verbatim (source_file names it).",
+  "The mirror's verse BRIDGES hide text: it carries 1 Thessalonians 5:17-18 and Romans 1:20 under bridged `\\v 17-19` / `\\v 20-22` markers whose text is a later verse, so neither is readable there. Romans 1:20 therefore reuses key-teachings-of-jonathan-edwards.am.json (a partial rendering of the verse) and 1 Thessalonians 5:16-18 reuses school-of-prayer.am.json. 1 Corinthians 10:31 sits under a bridged `\\v 31-33` marker, but its text is 10:31's own, so it is quoted from the mirror.",
+  "The English epigraphs are simplified child paraphrases (\"— from Psalm 16\"); following the shipped am children's editions, each quotes the Bible's own wording for the part the English means, with … for words left out, and cites `— ከ<Book> <chapter>`. Every epigraph is an exact substring of its source; no epigraph was re-personed. The body quotes no further scripture.",
+  "Brother Lawrence's own sayings are paraphrased for children. Chapter 6's «…ሥራዎቻችንን በመለወጥ ላይ የተመሠረተ አይደለም፤ ይልቁንም … ለራሳችን ብለን የምናደርገውን ለእግዚአብሔር ብለን በማድረግ ላይ ነው» and chapter 7's «የሥራ ጊዜ ከጸሎት ጊዜ የተለየ…» deliberately echo purpose-in-prayer.am.json's rendering of the same two sayings. That file (and clothed-with-strength-and-dignity) renders \"presence of God\" as «ሀልዎት»; this book uses «መገኘት» because the plan card family-devotions-talking-with-god already quotes the title «የእግዚአብሔርን መገኘት መለማመድ (ለልጆች)» — a reviewer choosing ሀልዎት should change the title, the body and the card's quotation together."
+ ],
+ "references": [
+  {
+   "reference": "1 Samuel 16:7b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "growing-in-wisdom.am.json"
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "key-teachings-of-jonathan-edwards.am.json"
+  },
+  {
+   "reference": "Psalm 16:11b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "key-teachings-of-jonathan-edwards.am.json"
+  },
+  {
+   "reference": "Matthew 22:37",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Colossians 3:23",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 10:31",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Thessalonians 5:16-18",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "school-of-prayer.am.json"
+  },
+  {
+   "reference": "James 4:8a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Psalm 23:4a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "the-god-of-all-comfort.am.json"
+  },
+  {
+   "reference": "John 14:2b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  }
+ ]
+}

@@ -2382,6 +2382,32 @@
 			"layout": "diagonal/ochre",
 			"bar": 0
 		},
+		"am/the-practice-of-the-presence-of-god-children": {
+			"ground": "4811fb42301c4aa749abec46628e1894de9a32f50d2fab291b8d45ed9445ae88",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[54, 310, 546, 385],
+					[89, 371, 511, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
+		},
 		"am/the-secret-of-guidance": {
 			"ground": "078f5ac17594fbfa0486c73ccbf1473db2b087743666b5d8a2e9ed7f3d12b3aa",
 			"style": "devotional",
