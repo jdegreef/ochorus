@@ -11105,6 +11105,16 @@
 				536
 			]
 		},
+		"lg/the-gospel-of-healing": {
+			"ground": "a3c2ea10738ce19a0a2fef96c0512bfe2f2128760d185fe1772322849d1c5190",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/teal",
+			"bar": 0
+		},
 		"lg/the-inner-chamber": {
 			"ground": "2a58cf5cb54ad7c3760c89b9fab850263f594e5eacee98bc75bc0501f429a6cc",
 			"style": "devotional",
