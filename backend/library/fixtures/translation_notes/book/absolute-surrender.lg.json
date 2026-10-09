@@ -3,6 +3,7 @@
  "slug": "absolute-surrender",
  "language": "lg",
  "job_issue": 1506,
+ "pull_request": 5665,
  "note": [
   "Scripture follows the Open Luganda Contemporary Bible (OLCB 2017, lug_bib — the lug text language_seed.py names), parsed from the ebible mirror's USX. Every `mined` row was checked mechanically: the quoted span in that block is a verbatim (case-insensitive) substring of the OLCB verse. `self_rendered` rows are Murray’s loose or re-personed quotations, unmarked allusions, and places where the OLCB wording drops the word his argument turns on (each carries a `why` from the translator's report). block_index is per chapter (chapter_order).",
   "OLCB follows the critical text in places Murray (KJV) does not: Mark 9:23 lacks “believe”, Mark 9:24 lacks “Lord”, 2 Corinthians 5:14 reads “the love of God” for “the love of Christ”. Those verses are quoted verbatim from OLCB and flagged here for the reviewer.",
