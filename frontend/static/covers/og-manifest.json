@@ -14420,6 +14420,16 @@
 				484
 			]
 		},
+		"the-bruised-reed-teens": {
+			"ground": "94a7f0e66ec52bb6f92ad906b526b229d6ccdea8d7b4794e71bdd4c12d7aee5d",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-everlasting-man": {
 			"ground": "7cd08728ce0c3411240e7980ae0c2a467bcf8b5776f9c54a9a8e914df0196893",
 			"style": "revival",

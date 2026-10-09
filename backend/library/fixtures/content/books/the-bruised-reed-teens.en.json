@@ -1,0 +1,427 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "richard-sibbes"
+  ],
+  "slug": "the-bruised-reed-teens",
+  "language": "en",
+  "title": "The Bruised Reed (For Teens)",
+  "subtitle": "",
+  "cover_title": "",
+  "description": "Four hundred years ago a Cambridge preacher called Richard Sibbes became known as “the sweet dropper” because he went looking for the doubting and the downcast. His most loved book takes one promise about Jesus, “A bruised reed shall he not break, and smoking flax shall he not quench”, and shows what it means for people who feel weak, messed up or barely hanging on. This teen edition retells it in plain words: why small faith is still real faith, what to do with prayers that come out wrong and thoughts you hate, how to stop believing lies about Jesus, and why the fight against sin is one you will win. Sibbes’s own sentences are kept where they say it best.",
+  "hook": "For anyone who feels like a weak, failing, barely-hanging-on Christian: Jesus is gentler than you think.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Who was Richard Sibbes?",
+    "answer": "An English preacher, born in 1577 in Suffolk, the son of a wheelwright. He studied at Cambridge, was converted around 1603, and became a famous preacher in Cambridge and to the lawyers of Gray’s Inn in London. He was known for his gentleness with doubting and discouraged people, and was nicknamed “the sweet dropper” and “the Heavenly Doctor”. He died in 1635."
+   },
+   {
+    "question": "What is a “bruised reed” and “smoking flax”?",
+    "answer": "Two pictures from Isaiah 42:3, quoted about Jesus in Matthew 12:20. A reed is a thin, weak plant, and a bruised one is nearly snapped. Smoking flax is a lamp wick that has almost gone out, giving more smoke than light. Both stand for weak, struggling believers, and the promise is that Jesus will not break or snuff them out but will care for them until they are strong."
+   },
+   {
+    "question": "Does this book mean God hurts people on purpose?",
+    "answer": "Sibbes believed God uses hard times to bring us to our senses and draw us to Christ. But God is never the author of abuse, and nobody who hurts you is doing God’s work. If someone is harming you, tell a trusted adult. Sibbes’s whole point is that Jesus is gentle with the hurting."
+   },
+   {
+    "question": "I get horrible thoughts about God that I hate. Am I a terrible Christian?",
+    "answer": "Sibbes says no. Unwanted thoughts that horrify you are not the same as choosing them, and he tells such people to bring them to Christ rather than hide in shame. If those thoughts are constant, frightening or make you do things over and over to feel safe, please tell a trusted adult or a doctor. That kind of struggle is common and help is available."
+   },
+   {
+    "question": "Is this book only for Christians who are struggling?",
+    "answer": "Mostly, yes, but that is nearly everyone at some point. It is also for anyone who wants to know what Jesus is really like, and for those who want to learn to be gentle with others who are struggling."
+   },
+   {
+    "question": "Does Jesus being gentle mean sin doesn’t matter?",
+    "answer": "No. Sibbes is clear that Jesus is both gentle and King. He cares for weak faith so that it will grow into victory over sin, not so that we can stay comfortable in it. Mercy is meant to draw us closer to him."
+   },
+   {
+    "question": "Is this the full text?",
+    "answer": "No. It is a retelling for teenagers in plain modern words, drawn from across Sibbes’s book and keeping his own sentences where they say it best. The full Bruised Reed is also available."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of Richard Sibbes’s The Bruised Reed (1630), which is in the public domain. The telling is our own, free to read and share. Scripture quotations are from the King James Version, which is in the public domain.",
+  "cover_url": "/covers/the-bruised-reed-teens.svg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/the-bruised-reed-teens.pdf?download=the-bruised-reed-teens.pdf",
+  "cover_color": "",
+  "series": [
+   "straight-talk"
+  ],
+  "series_position": null,
+  "sort_order": 161,
+  "is_published": true,
+  "created_at": "2026-10-09T03:00:00Z",
+  "updated_at": "2026-10-09T03:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-bruised-reed-teens",
+   "en"
+  ],
+  "order": 1,
+  "title": "The Sweet Dropper",
+  "body_html": "<blockquote>“A bruised reed shall he not break, and smoking flax shall he not quench, till he send forth judgment unto victory.” — Matthew 12:20 (KJV)</blockquote> <p>Richard Sibbes was born in 1577 in a village called Tostock, in Suffolk, England. His father was a wheelwright, a man who made and mended wooden wheels for carts, and he is said to have wanted Richard to go into the family business. But the boy loved books. He went from the grammar school at Bury St Edmunds to St John’s College, Cambridge.</p> <p>Around 1603, while he was at Cambridge, Sibbes was converted through the plain, honest preaching of a man called Paul Baynes. For the rest of his life Sibbes called Baynes his father in the gospel.</p> <p>Sibbes became a preacher himself, first in Cambridge and then in London, where he preached to the lawyers of Gray’s Inn. Later he became the head of a Cambridge college. But what people remembered most about him was not his job titles. It was his gentleness.</p> <p>In those days a lot of preaching was very hard on people’s consciences. Preachers piled up warnings and rules, and many listeners went home feeling crushed and unsure whether God could ever accept them. Sibbes noticed those people, the doubting, the downcast, the ones barely holding on, and he went looking for them. People called him “the sweet dropper”, because his words fell on hurting people like gentle rain.</p> <p>His most famous book is called The Bruised Reed. It is based on one verse, which appears first in Isaiah and then in Matthew’s Gospel about Jesus: “A bruised reed shall he not break, and smoking flax shall he not quench.”</p> <p>A reed is a thin, hollow plant that grows by rivers. It isn’t strong to begin with, and a bruised one is nearly snapped. Smoking flax is the wick of an old oil lamp that is almost out, giving off more smoke than light. Sibbes says these are pictures of us: “not trees, but reeds; and not whole, but bruised reeds.”</p> <p>The promise is that Jesus does not snap weak people in two or snuff out struggling faith. He handles it gently and keeps it going until it is strong.</p> <p>Sibbes’s book changed lives. Through his preaching a man named John Cotton was converted. Years later, a travelling pedlar sold a copy of The Bruised Reed at a family’s door, and through it the young Richard Baxter came to know the love of God. Baxter grew up to be one of the greatest pastors in England.</p> <p>If you have ever felt like a weak Christian, or not much of a Christian at all, this book is for you.</p> <p><strong>One thing to do this week:</strong> read Matthew 12:15–21 this week. Write down the words “bruised reed” and “smoking flax” and, next to each, one way you feel like that right now. Then pray: “Jesus, you promised not to break me. Please take care of me.”</p>",
+  "study_questions": [
+   {
+    "question": "Why was Sibbes called “the sweet dropper”?",
+    "answer": "Because he went looking for doubting and discouraged people, and his gentle words fell on them like soft rain."
+   },
+   {
+    "question": "What are a bruised reed and smoking flax?",
+    "answer": "A thin plant that is nearly snapped, and a lamp wick that is almost out; both are pictures of weak, struggling believers."
+   },
+   {
+    "question": "Whose life was changed by a copy of The Bruised Reed sold by a pedlar?",
+    "answer": "Richard Baxter’s; as a young man he came to know God’s love through it."
+   }
+  ],
+  "body_text": "“A bruised reed shall he not break, and smoking flax shall he not quench, till he send forth judgment unto victory.” — Matthew 12:20 (KJV) Richard Sibbes was born in 1577 in a village called Tostock, in Suffolk, England. His father was a wheelwright, a man who made and mended wooden wheels for carts, and he is said to have wanted Richard to go into the family business. But the boy loved books. He went from the grammar school at Bury St Edmunds to St John’s College, Cambridge. Around 1603, while he was at Cambridge, Sibbes was converted through the plain, honest preaching of a man called Paul Baynes. For the rest of his life Sibbes called Baynes his father in the gospel. Sibbes became a preacher himself, first in Cambridge and then in London, where he preached to the lawyers of Gray’s Inn. Later he became the head of a Cambridge college. But what people remembered most about him was not his job titles. It was his gentleness. In those days a lot of preaching was very hard on people’s consciences. Preachers piled up warnings and rules, and many listeners went home feeling crushed and unsure whether God could ever accept them. Sibbes noticed those people, the doubting, the downcast, the ones barely holding on, and he went looking for them. People called him “the sweet dropper”, because his words fell on hurting people like gentle rain. His most famous book is called The Bruised Reed. It is based on one verse, which appears first in Isaiah and then in Matthew’s Gospel about Jesus: “A bruised reed shall he not break, and smoking flax shall he not quench.” A reed is a thin, hollow plant that grows by rivers. It isn’t strong to begin with, and a bruised one is nearly snapped. Smoking flax is the wick of an old oil lamp that is almost out, giving off more smoke than light. Sibbes says these are pictures of us: “not trees, but reeds; and not whole, but bruised reeds.” The promise is that Jesus does not snap weak people in two or snuff out struggling faith. He handles it gently and keeps it going until it is strong. Sibbes’s book changed lives. Through his preaching a man named John Cotton was converted. Years later, a travelling pedlar sold a copy of The Bruised Reed at a family’s door, and through it the young Richard Baxter came to know the love of God. Baxter grew up to be one of the greatest pastors in England. If you have ever felt like a weak Christian, or not much of a Christian at all, this book is for you. One thing to do this week: read Matthew 12:15–21 this week. Write down the words “bruised reed” and “smoking flax” and, next to each, one way you feel like that right now. Then pray: “Jesus, you promised not to break me. Please take care of me.”",
+  "word_count": 493
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-bruised-reed-teens",
+   "en"
+  ],
+  "order": 2,
+  "title": "Bruised",
+  "body_html": "<blockquote>“The LORD is nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit.” — Psalm 34:18 (KJV)</blockquote> <p>Sibbes begins by talking about what it means to be bruised. He does not mean just having a bad day. He means the moments when life knocks us down and, as a result, we see ourselves honestly: that we are not as strong, good or in control as we thought.</p> <p>Sibbes believed God sometimes allows these hard moments to bring us home. He compares it to the prodigal son in Jesus’ story, who only “came to himself” when he was broke and hungry in a far country. “We love to wander from ourselves,” Sibbes says, “and to be strangers at home,” until something brings us up short.</p> <p>One of his best examples is Peter. Before Jesus was arrested, Peter boasted: even if everyone else leaves you, I won’t. A few hours later he had denied knowing Jesus three times, and he went out and wept bitterly. Sibbes says that until then, Peter “had more wind in him than pith.” He was all talk. The bruise made him real.</p> <p>And here is something that encouraged Sibbes. He says the great heroes of the Bible comfort us less by their brave deeds than by their falls and bruises:</p> <blockquote>“The heroical deeds of those great worthies do not comfort the church so much, as their falls and bruises do.”</blockquote> <p>Think about that. When you read about David’s sin, Peter’s denial or Paul’s struggles, you realise you are not the only one. The Bible is full of bruised people whom God did not throw away.</p> <p>Sibbes also says bruising makes us value Jesus. When you know you need help, the good news is really good news. People who have never felt their need often treat Jesus as a nice extra.</p> <p>Some things need saying clearly here. Not every hard thing in your life is God punishing you or teaching you a lesson. Sometimes things are just painful, and Jesus weeps with us. And if someone is hurting you, through abuse, bullying or cruelty, that is never God’s “bruising”. That is wrong, and you should tell a trusted adult. God is close to the broken-hearted. He is not the one breaking them.</p> <p>Sibbes also notices something comforting: some people, “being bred up in the Church”, know God’s kindness “from their childhood” without a dramatic crisis. If that is you, you don’t need to go looking for a bruise. The point is not the bruise. The point is coming home to God.</p> <p><strong>One thing to do this week:</strong> think of a time something went wrong and it made you realise you needed God. Write it down and thank God for how he used it. If something is hurting you right now, tell God about it, and if it involves someone harming you, tell a trusted adult this week.</p>",
+  "study_questions": [
+   {
+    "question": "What does Sibbes mean when he says Peter had “more wind in him than pith”?",
+    "answer": "That Peter was full of big talk but had little real strength until his failure humbled him."
+   },
+   {
+    "question": "Why do the falls of Bible heroes comfort us more than their brave deeds?",
+    "answer": "Because they show us that God does not throw away people who fail, and that we are not the only ones."
+   },
+   {
+    "question": "Is every hard thing in life God’s bruising?",
+    "answer": "No. Some pain is simply painful, and abuse or cruelty is never God’s work; it is wrong and should be reported to a trusted adult."
+   }
+  ],
+  "body_text": "“The LORD is nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit.” — Psalm 34:18 (KJV) Sibbes begins by talking about what it means to be bruised. He does not mean just having a bad day. He means the moments when life knocks us down and, as a result, we see ourselves honestly: that we are not as strong, good or in control as we thought. Sibbes believed God sometimes allows these hard moments to bring us home. He compares it to the prodigal son in Jesus’ story, who only “came to himself” when he was broke and hungry in a far country. “We love to wander from ourselves,” Sibbes says, “and to be strangers at home,” until something brings us up short. One of his best examples is Peter. Before Jesus was arrested, Peter boasted: even if everyone else leaves you, I won’t. A few hours later he had denied knowing Jesus three times, and he went out and wept bitterly. Sibbes says that until then, Peter “had more wind in him than pith.” He was all talk. The bruise made him real. And here is something that encouraged Sibbes. He says the great heroes of the Bible comfort us less by their brave deeds than by their falls and bruises: “The heroical deeds of those great worthies do not comfort the church so much, as their falls and bruises do.” Think about that. When you read about David’s sin, Peter’s denial or Paul’s struggles, you realise you are not the only one. The Bible is full of bruised people whom God did not throw away. Sibbes also says bruising makes us value Jesus. When you know you need help, the good news is really good news. People who have never felt their need often treat Jesus as a nice extra. Some things need saying clearly here. Not every hard thing in your life is God punishing you or teaching you a lesson. Sometimes things are just painful, and Jesus weeps with us. And if someone is hurting you, through abuse, bullying or cruelty, that is never God’s “bruising”. That is wrong, and you should tell a trusted adult. God is close to the broken-hearted. He is not the one breaking them. Sibbes also notices something comforting: some people, “being bred up in the Church”, know God’s kindness “from their childhood” without a dramatic crisis. If that is you, you don’t need to go looking for a bruise. The point is not the bruise. The point is coming home to God. One thing to do this week: think of a time something went wrong and it made you realise you needed God. Write it down and thank God for how he used it. If something is hurting you right now, tell God about it, and if it involves someone harming you, tell a trusted adult this week.",
+  "word_count": 487
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-bruised-reed-teens",
+   "en"
+  ],
+  "order": 3,
+  "title": "He Will Not Break You",
+  "body_html": "<blockquote>“Come unto me, all ye that labour and are heavy laden, and I will give you rest.” — Matthew 11:28 (KJV)</blockquote> <p>Sibbes’s big point is simple: Christ will not break the bruised reed.</p> <p>He explains it with ordinary pictures. A doctor may cause his patient pain, but he does it to heal them, not to destroy them. A surgeon will cut, but not cut off a limb he can save. And a mother with a sick, grumpy child does not throw the child away. Then Sibbes asks:</p> <blockquote>“Shall there be more mercy in the stream than in the spring? shall we think there is more mercy in ourselves than in God, who planteth the affection of mercy in us?”</blockquote> <p>In other words: if a human mother can be patient with her sick child, how much more patient is God, who made mothers and gave them that love in the first place? Any kindness you have ever received from a person is like a stream. God is the spring it came from.</p> <p>Then Sibbes looks at how Jesus describes himself. He calls himself a shepherd, a brother, a husband. He compares himself to the gentlest creatures, a lamb, and a mother hen gathering her chicks. His very name, Jesus, means Saviour. And at his baptism the Holy Spirit came on him in the shape of a dove, to show, Sibbes says, that he would be “a dove-like gentle mediator.”</p> <p>Look at what Jesus actually said. He blessed the poor in spirit. He invited people who were tired and weighed down to come to him. He looked at crowds and felt deep compassion because they were like sheep without a shepherd. And Sibbes adds:</p> <blockquote>“He never turned any back again that came unto him, though some went away of themselves.”</blockquote> <p>That is worth reading twice. In the Gospels, nobody who came to Jesus for help was sent away. Some people walked away from him. But he never turned anyone away.</p> <p>Sibbes also points out that Jesus was tempted himself, so that he can help us when we are tempted. He is not a distant king who doesn’t understand. He knows what it is like to be human, tired and under pressure.</p> <p>So if you feel weak, ashamed or like you’ve messed up too many times, here is the truth: you can come to Jesus. He won’t turn you away.</p> <p><strong>One thing to do this week:</strong> this week, pick one of the Gospel stories where someone comes to Jesus for help, for example Mark 1:40–42 or Mark 5:25–34. Read it slowly and notice how Jesus treats them. Then come to him yourself in prayer with whatever you are carrying.</p>",
+  "study_questions": [
+   {
+    "question": "What does Sibbes mean by “more mercy in the stream than in the spring”?",
+    "answer": "Human kindness is like a stream that flows from God; if people can be merciful, God, the source of mercy, is even more so."
+   },
+   {
+    "question": "What gentle names and pictures does Jesus use for himself?",
+    "answer": "Shepherd, brother, husband, a lamb and a mother hen; at his baptism the Spirit came like a dove."
+   },
+   {
+    "question": "What does Sibbes say about the people who came to Jesus?",
+    "answer": "He never turned any of them away, though some walked away by themselves."
+   }
+  ],
+  "body_text": "“Come unto me, all ye that labour and are heavy laden, and I will give you rest.” — Matthew 11:28 (KJV) Sibbes’s big point is simple: Christ will not break the bruised reed. He explains it with ordinary pictures. A doctor may cause his patient pain, but he does it to heal them, not to destroy them. A surgeon will cut, but not cut off a limb he can save. And a mother with a sick, grumpy child does not throw the child away. Then Sibbes asks: “Shall there be more mercy in the stream than in the spring? shall we think there is more mercy in ourselves than in God, who planteth the affection of mercy in us?” In other words: if a human mother can be patient with her sick child, how much more patient is God, who made mothers and gave them that love in the first place? Any kindness you have ever received from a person is like a stream. God is the spring it came from. Then Sibbes looks at how Jesus describes himself. He calls himself a shepherd, a brother, a husband. He compares himself to the gentlest creatures, a lamb, and a mother hen gathering her chicks. His very name, Jesus, means Saviour. And at his baptism the Holy Spirit came on him in the shape of a dove, to show, Sibbes says, that he would be “a dove-like gentle mediator.” Look at what Jesus actually said. He blessed the poor in spirit. He invited people who were tired and weighed down to come to him. He looked at crowds and felt deep compassion because they were like sheep without a shepherd. And Sibbes adds: “He never turned any back again that came unto him, though some went away of themselves.” That is worth reading twice. In the Gospels, nobody who came to Jesus for help was sent away. Some people walked away from him. But he never turned anyone away. Sibbes also points out that Jesus was tempted himself, so that he can help us when we are tempted. He is not a distant king who doesn’t understand. He knows what it is like to be human, tired and under pressure. So if you feel weak, ashamed or like you’ve messed up too many times, here is the truth: you can come to Jesus. He won’t turn you away. One thing to do this week: this week, pick one of the Gospel stories where someone comes to Jesus for help, for example Mark 1:40–42 or Mark 5:25–34. Read it slowly and notice how Jesus treats them. Then come to him yourself in prayer with whatever you are carrying.",
+  "word_count": 446
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-bruised-reed-teens",
+   "en"
+  ],
+  "order": 4,
+  "title": "Small Beginnings",
+  "body_html": "<blockquote>“For who hath despised the day of small things?” — Zechariah 4:10 (KJV)</blockquote> <p>The second picture in Sibbes’s verse is smoking flax: a lamp wick with just a little light and lots of smoke. Sibbes says that is what faith often looks like at the start.</p> <blockquote>“Nothing so little as grace at first, and nothing more glorious afterward.”</blockquote> <p>Many young Christians get discouraged because their faith feels tiny. You compare yourself to someone who prays for an hour or knows the Bible inside out, and you think, “I’m not a real Christian.” Sibbes says: don’t judge by size. Everything great starts small.</p> <p>He gives examples from nature. A mighty oak grows from an acorn. A tiny seed contains the whole plant, “both bulk and branches, bud and fruit.” Mushrooms spring up overnight and vanish just as fast, but the most valuable things take longest to grow. People take years to grow up. So does faith.</p> <p>Then he says something very kind about how Jesus sees you:</p> <blockquote>“Christ valueth us by what we shall be, and by that we are elected unto.”</blockquote> <p>And he adds a picture: we call a little plant a tree, because it is growing up to be one.</p> <p>When you look at a seedling in a pot, you might call it an oak tree, because that is what it is becoming. Jesus looks at you the same way. He doesn’t only see where you are now. He sees who you are becoming, and he is committed to getting you there.</p> <p>Sibbes is careful, though. He doesn’t want us to be lazy about growing. He says we should look at our small beginnings to make us keep pressing on and to keep us humble. But if we are discouraged, we should look at ourselves as Christ looks at us.</p> <p>The verse from Zechariah at the top of this chapter was spoken to people rebuilding God’s temple after it had been destroyed. The new building looked pathetic compared to the old one, and some people sneered. God said: don’t despise small beginnings. He was going to finish what he had started.</p> <p>Your faith might be small. That is fine. It is real, and it is growing.</p> <p><strong>One thing to do this week:</strong> plant a seed this week, in a pot or a garden, or just look closely at a young plant. Every time you see it, remember Sibbes’s picture: we call a little plant a tree because it is growing up to be one. Thank God that he sees what you are becoming.</p>",
+  "study_questions": [
+   {
+    "question": "What does Sibbes say about grace at the start of the Christian life?",
+    "answer": "That nothing is so little as grace at first, and nothing more glorious afterward."
+   },
+   {
+    "question": "How does Christ value us, according to Sibbes?",
+    "answer": "By what we shall be, like calling a young plant a tree because it is growing into one."
+   },
+   {
+    "question": "Why should we not be discouraged by small faith?",
+    "answer": "Because the most valuable things grow slowly, and small faith is real faith that Christ is committed to growing."
+   }
+  ],
+  "body_text": "“For who hath despised the day of small things?” — Zechariah 4:10 (KJV) The second picture in Sibbes’s verse is smoking flax: a lamp wick with just a little light and lots of smoke. Sibbes says that is what faith often looks like at the start. “Nothing so little as grace at first, and nothing more glorious afterward.” Many young Christians get discouraged because their faith feels tiny. You compare yourself to someone who prays for an hour or knows the Bible inside out, and you think, “I’m not a real Christian.” Sibbes says: don’t judge by size. Everything great starts small. He gives examples from nature. A mighty oak grows from an acorn. A tiny seed contains the whole plant, “both bulk and branches, bud and fruit.” Mushrooms spring up overnight and vanish just as fast, but the most valuable things take longest to grow. People take years to grow up. So does faith. Then he says something very kind about how Jesus sees you: “Christ valueth us by what we shall be, and by that we are elected unto.” And he adds a picture: we call a little plant a tree, because it is growing up to be one. When you look at a seedling in a pot, you might call it an oak tree, because that is what it is becoming. Jesus looks at you the same way. He doesn’t only see where you are now. He sees who you are becoming, and he is committed to getting you there. Sibbes is careful, though. He doesn’t want us to be lazy about growing. He says we should look at our small beginnings to make us keep pressing on and to keep us humble. But if we are discouraged, we should look at ourselves as Christ looks at us. The verse from Zechariah at the top of this chapter was spoken to people rebuilding God’s temple after it had been destroyed. The new building looked pathetic compared to the old one, and some people sneered. God said: don’t despise small beginnings. He was going to finish what he had started. Your faith might be small. That is fine. It is real, and it is growing. One thing to do this week: plant a seed this week, in a pot or a garden, or just look closely at a young plant. Every time you see it, remember Sibbes’s picture: we call a little plant a tree because it is growing up to be one. Thank God that he sees what you are becoming.",
+  "word_count": 424
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-bruised-reed-teens",
+   "en"
+  ],
+  "order": 5,
+  "title": "Smoke and Fire",
+  "body_html": "<blockquote>“Lord, I believe; help thou mine unbelief.” — Mark 9:24 (KJV)</blockquote> <p>Sibbes says grace is not only small at first; it is also mixed. There is real fire in a Christian, but there is also smoke: doubts, selfishness, mixed motives, old habits.</p> <p>He goes through the Bible finding examples of this mixture. A father once came to Jesus with a sick son and said, “Lord, I believe; help thou mine unbelief.” Sibbes points out that “Lord, I believe” is the light, and “help thou mine unbelief” is the smoke.</p> <p>The disciples, in a storm on the lake, woke Jesus and shouted, “Master, carest thou not that we perish?” There was smoke in that, the smoke of fear and doubt. But there was also enough faith to cry out to Jesus. Jonah, inside the great fish, said he had been cast out of God’s sight. That was smoke. But in the same breath he said he would look again towards God’s holy temple. That was light.</p> <p>Even Paul cried out, “O wretched man that I am!” when he thought about the sin still in him. But in the very next breath he thanked God through Jesus Christ.</p> <p>This means you can stop expecting your faith to be pure before you think it counts. Sibbes says even the best actions of the best people need Christ to make them acceptable. When we pray, our prayers need forgiving too.</p> <blockquote>“Broken hearts can yield but broken prayers.”</blockquote> <p>If your prayers come out messy and distracted, if you love God but also love things that pull you away, if you believe but also doubt, welcome to the Christian life. That is smoking flax, and Jesus will not quench it.</p> <p>Sibbes even says there is a reason God leaves us with this mixture for now. It protects us from two dangers: being careless and being proud. If we felt perfect, we would stop depending on Jesus. The smoke keeps us humble and keeps us running back to him.</p> <p>One day, Sibbes says, the smoke will be gone and the fire will be pure. That is heaven. Until then, light and smoke together are normal.</p> <p><strong>One thing to do this week:</strong> this week, try praying the prayer of the father in Mark 9: “Lord, I believe; help thou mine unbelief.” Say it when you feel doubt or when you feel faith, or both at once. Notice that Jesus answered that man’s prayer.</p>",
+  "study_questions": [
+   {
+    "question": "What does “smoke” stand for in a Christian, and what does “fire” stand for?",
+    "answer": "Smoke is doubt, sin and mixed motives; fire is real faith and love for God."
+   },
+   {
+    "question": "Give one Bible example Sibbes uses of smoke and fire together.",
+    "answer": "The father who said “Lord, I believe; help thou mine unbelief”, or the disciples crying out in the storm, or Jonah in the fish, or Paul’s “O wretched man”."
+   },
+   {
+    "question": "Why does God leave us with a mixture of smoke and fire for now?",
+    "answer": "To protect us from carelessness and pride and keep us depending on Christ."
+   }
+  ],
+  "body_text": "“Lord, I believe; help thou mine unbelief.” — Mark 9:24 (KJV) Sibbes says grace is not only small at first; it is also mixed. There is real fire in a Christian, but there is also smoke: doubts, selfishness, mixed motives, old habits. He goes through the Bible finding examples of this mixture. A father once came to Jesus with a sick son and said, “Lord, I believe; help thou mine unbelief.” Sibbes points out that “Lord, I believe” is the light, and “help thou mine unbelief” is the smoke. The disciples, in a storm on the lake, woke Jesus and shouted, “Master, carest thou not that we perish?” There was smoke in that, the smoke of fear and doubt. But there was also enough faith to cry out to Jesus. Jonah, inside the great fish, said he had been cast out of God’s sight. That was smoke. But in the same breath he said he would look again towards God’s holy temple. That was light. Even Paul cried out, “O wretched man that I am!” when he thought about the sin still in him. But in the very next breath he thanked God through Jesus Christ. This means you can stop expecting your faith to be pure before you think it counts. Sibbes says even the best actions of the best people need Christ to make them acceptable. When we pray, our prayers need forgiving too. “Broken hearts can yield but broken prayers.” If your prayers come out messy and distracted, if you love God but also love things that pull you away, if you believe but also doubt, welcome to the Christian life. That is smoking flax, and Jesus will not quench it. Sibbes even says there is a reason God leaves us with this mixture for now. It protects us from two dangers: being careless and being proud. If we felt perfect, we would stop depending on Jesus. The smoke keeps us humble and keeps us running back to him. One day, Sibbes says, the smoke will be gone and the fire will be pure. That is heaven. Until then, light and smoke together are normal. One thing to do this week: this week, try praying the prayer of the father in Mark 9: “Lord, I believe; help thou mine unbelief.” Say it when you feel doubt or when you feel faith, or both at once. Notice that Jesus answered that man’s prayer.",
+  "word_count": 405
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-bruised-reed-teens",
+   "en"
+  ],
+  "order": 6,
+  "title": "He Denied Not Peter",
+  "body_html": "<blockquote>“But I have prayed for thee, that thy faith fail not: and when thou art converted, strengthen thy brethren.” — Luke 22:32 (KJV)</blockquote> <p>Sibbes now shows how Jesus treated people whose faith was weak. It is one of the most encouraging parts of the book.</p> <p>Thomas doubted that Jesus had risen. Jesus didn’t reject him; he showed Thomas his hands and his side. Two disciples walking to Emmaus had given up hope. Jesus walked with them and explained the Scriptures until their hearts burned.</p> <p>And then there is Peter, who swore he didn’t know Jesus. Sibbes sums it up in one of his most famous lines:</p> <blockquote>“Peter denied him, but he denied not Peter.”</blockquote> <p>After the resurrection Jesus came looking for Peter, cooked him breakfast on a beach, and gave him a fresh start. He had already told Peter, before the denial, that he was praying for him so that his faith would not fail.</p> <p>Sibbes keeps going. A man with leprosy came to Jesus and said, “If thou wilt, thou canst make me clean.” He wasn’t sure Jesus wanted to help him. Another man said, “If thou canst do any thing”, not sure Jesus was able. Both had weak faith, with an “if” in it. Sibbes says Jesus could have stood on his own greatness and rejected them. Instead he answered the man’s “if” with a full, gracious yes: “I will; be thou clean.”</p> <p>Then there is the woman who had been ill for twelve years. She was too scared to ask Jesus for anything. She crept up in the crowd and touched just the edge of his clothes. Sibbes notices the details: she “did but touch, and with a trembling hand, and but the hem of his garment, and yet went away both healed and comforted.”</p> <p>Even when the disciples fell asleep in the garden of Gethsemane while Jesus was in agony, he made an excuse for them: “the spirit indeed is willing, but the flesh is weak.”</p> <p>Sibbes says this is the opposite of how people often behave. We tend to snuff out the light because of a little smoke. If someone fails, we write them off. “Man for a little smoke will quench the light,” he says. Christ “cherisheth even the least beginnings.”</p> <p>Whatever your “if” is, whatever your failure, bring it to him. He has not denied you.</p> <p><strong>One thing to do this week:</strong> read John 21:1–19, where Jesus restores Peter. If there is something you are ashamed of, tell Jesus about it this week, and then read verse 17 again and hear him asking you, too: “Lovest thou me?”</p>",
+  "study_questions": [
+   {
+    "question": "What is Sibbes’s famous line about Peter?",
+    "answer": "“Peter denied him, but he denied not Peter.”"
+   },
+   {
+    "question": "How did Jesus answer the leper’s “if”?",
+    "answer": "With a full, gracious yes: “I will, be thou clean.”"
+   },
+   {
+    "question": "What does Sibbes notice about the woman who touched Jesus’ garment?",
+    "answer": "She only touched, with a trembling hand, only the hem, and yet went away healed and comforted."
+   }
+  ],
+  "body_text": "“But I have prayed for thee, that thy faith fail not: and when thou art converted, strengthen thy brethren.” — Luke 22:32 (KJV) Sibbes now shows how Jesus treated people whose faith was weak. It is one of the most encouraging parts of the book. Thomas doubted that Jesus had risen. Jesus didn’t reject him; he showed Thomas his hands and his side. Two disciples walking to Emmaus had given up hope. Jesus walked with them and explained the Scriptures until their hearts burned. And then there is Peter, who swore he didn’t know Jesus. Sibbes sums it up in one of his most famous lines: “Peter denied him, but he denied not Peter.” After the resurrection Jesus came looking for Peter, cooked him breakfast on a beach, and gave him a fresh start. He had already told Peter, before the denial, that he was praying for him so that his faith would not fail. Sibbes keeps going. A man with leprosy came to Jesus and said, “If thou wilt, thou canst make me clean.” He wasn’t sure Jesus wanted to help him. Another man said, “If thou canst do any thing”, not sure Jesus was able. Both had weak faith, with an “if” in it. Sibbes says Jesus could have stood on his own greatness and rejected them. Instead he answered the man’s “if” with a full, gracious yes: “I will; be thou clean.” Then there is the woman who had been ill for twelve years. She was too scared to ask Jesus for anything. She crept up in the crowd and touched just the edge of his clothes. Sibbes notices the details: she “did but touch, and with a trembling hand, and but the hem of his garment, and yet went away both healed and comforted.” Even when the disciples fell asleep in the garden of Gethsemane while Jesus was in agony, he made an excuse for them: “the spirit indeed is willing, but the flesh is weak.” Sibbes says this is the opposite of how people often behave. We tend to snuff out the light because of a little smoke. If someone fails, we write them off. “Man for a little smoke will quench the light,” he says. Christ “cherisheth even the least beginnings.” Whatever your “if” is, whatever your failure, bring it to him. He has not denied you. One thing to do this week: read John 21:1–19, where Jesus restores Peter. If there is something you are ashamed of, tell Jesus about it this week, and then read verse 17 again and hear him asking you, too: “Lovest thou me?”",
+  "word_count": 435
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-bruised-reed-teens",
+   "en"
+  ],
+  "order": 7,
+  "title": "Two Eyes",
+  "body_html": "<blockquote>“There is therefore now no condemnation to them which are in Christ Jesus.” — Romans 8:1 (KJV)</blockquote> <p>How can you tell if you have real faith, even if it is small? Sibbes gives some rules, and they are very wise for anyone who tends to be hard on themselves.</p> <p>First, he says, you need two eyes:</p> <blockquote>“We must have two eyes, one to see imperfections in ourselves and others; the other to see what is good.”</blockquote> <p>Some people only ever look at what is wrong with them. Sibbes says they “delight to be looking on the dark side of the cloud only.” If that is how you look at yourself, you will never feel any comfort. You need to see both your faults and what God has done in you.</p> <p>Second, don’t judge yourself only by how you feel at the moment. When you are tempted or low, all you will see is smoke. But Sibbes says: “Fire may be raked up in the ashes, though not seen; life in the winter is hid in the root.” A tree in winter looks dead, but the life is there, underground, waiting for spring.</p> <p>Third, watch out for false reasoning. Just because your faith doesn’t blaze like someone else’s doesn’t mean you have no faith at all. Sibbes says thinking that way is actually breaking a commandment: you are bearing false witness against yourself. He points to the prodigal son, who said he was not worthy to be called a son, but never said he was not a son.</p> <p>Some people, he says, are so good at accusing themselves that it is as if they had been hired by Satan, the accuser, to do his job for him.</p> <p>Fourth, God is looking for real faith, not a certain amount of it:</p> <blockquote>“A spark of fire is fire as well as the whole element.”</blockquote> <p>And then this beautiful line: “A weak hand may receive a rich jewel.” You don’t need a strong grip to receive a gift. The jewel is Christ and everything he gives. A shaky hand holds it just as truly as a steady one.</p> <p>If you tend to beat yourself up all the time, or feel worthless most days, Sibbes would want you to hear God’s kindness. And it is worth talking to a trusted adult about how you are feeling, too. You don’t have to carry it alone.</p> <p><strong>One thing to do this week:</strong> this week, write two lists. On one side, a fault you are aware of. On the other, one thing God has done in you or one sign of his grace in your life. Every time you add to the first list, add to the second too. Use both eyes.</p>",
+  "study_questions": [
+   {
+    "question": "What are Sibbes’s “two eyes”?",
+    "answer": "One to see imperfections in ourselves and others, and one to see what is good."
+   },
+   {
+    "question": "What does Sibbes mean by bearing false witness against yourself?",
+    "answer": "Wrongly concluding that you have no faith at all just because yours is weaker than someone else’s."
+   },
+   {
+    "question": "What does “A weak hand may receive a rich jewel” mean?",
+    "answer": "You don’t need strong faith to receive Christ and his gifts; weak faith receives them just as truly."
+   }
+  ],
+  "body_text": "“There is therefore now no condemnation to them which are in Christ Jesus.” — Romans 8:1 (KJV) How can you tell if you have real faith, even if it is small? Sibbes gives some rules, and they are very wise for anyone who tends to be hard on themselves. First, he says, you need two eyes: “We must have two eyes, one to see imperfections in ourselves and others; the other to see what is good.” Some people only ever look at what is wrong with them. Sibbes says they “delight to be looking on the dark side of the cloud only.” If that is how you look at yourself, you will never feel any comfort. You need to see both your faults and what God has done in you. Second, don’t judge yourself only by how you feel at the moment. When you are tempted or low, all you will see is smoke. But Sibbes says: “Fire may be raked up in the ashes, though not seen; life in the winter is hid in the root.” A tree in winter looks dead, but the life is there, underground, waiting for spring. Third, watch out for false reasoning. Just because your faith doesn’t blaze like someone else’s doesn’t mean you have no faith at all. Sibbes says thinking that way is actually breaking a commandment: you are bearing false witness against yourself. He points to the prodigal son, who said he was not worthy to be called a son, but never said he was not a son. Some people, he says, are so good at accusing themselves that it is as if they had been hired by Satan, the accuser, to do his job for him. Fourth, God is looking for real faith, not a certain amount of it: “A spark of fire is fire as well as the whole element.” And then this beautiful line: “A weak hand may receive a rich jewel.” You don’t need a strong grip to receive a gift. The jewel is Christ and everything he gives. A shaky hand holds it just as truly as a steady one. If you tend to beat yourself up all the time, or feel worthless most days, Sibbes would want you to hear God’s kindness. And it is worth talking to a trusted adult about how you are feeling, too. You don’t have to carry it alone. One thing to do this week: this week, write two lists. On one side, a fault you are aware of. On the other, one thing God has done in you or one sign of his grace in your life. Every time you add to the first list, add to the second too. Use both eyes.",
+  "word_count": 454
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-bruised-reed-teens",
+   "en"
+  ],
+  "order": 8,
+  "title": "Thoughts You Hate",
+  "body_html": "<blockquote>“For we have not an high priest which cannot be touched with the feeling of our infirmities; but was in all points tempted like as we are, yet without sin.” — Hebrews 4:15 (KJV)</blockquote> <p>Sibbes knew that some Christians are tormented by thoughts they don’t want: ugly, frightening or blasphemous thoughts about God, Jesus or the Bible that pop into their heads and won’t go away. People who struggle with this often feel terrible, as if having the thought proves they are wicked.</p> <p>Sibbes describes these thoughts as being like “busy flies” that “disquiet and molest their peace.” He says you can often tell where they come from by how strange, strong and horrible they are. They are not what you want to think. They are thrown in from outside, “like wildfire”, by the enemy.</p> <p>And then he gives a wonderful comparison from the story of Joseph. Joseph’s servant secretly put a silver cup in his brother Benjamin’s sack. When it was found, Benjamin looked guilty, but he had done nothing.</p> <p>A godly person, he says, is no more guilty of such thoughts “than Benjamin of Joseph’s cup put into his sack.”</p> <p>Having an unwanted thought is not the same as choosing it. The fact that it horrifies you shows where your heart really is.</p> <p>What should you do with such thoughts? Sibbes’s advice is not to hide them in shame, but to take them to Jesus: “to complain unto Christ against them, and to fly under the wings of his protection, and to desire him to take our part against his and our enemy.”</p> <p>He also reminds us that Jesus himself was tempted by Satan with terrible suggestions in the wilderness. Jesus knows what it is to have evil ideas pushed at him, and he did it, Sibbes says, so that he could help people in the same struggle.</p> <p>Sibbes also talks about people who are troubled by constant worries that they have done something wrong, even about the best things they do. He says this often comes not from real guilt but from what he calls “sickness of fantasy”, and that such people are “the more to be pitied, for it is a heavy affliction.” He is gentle with them, not harsh.</p> <p>Today we know that unwanted, intrusive thoughts are very common, and that for some people they become a real struggle, sometimes linked to anxiety or obsessive-compulsive disorder (OCD). If thoughts like these are constant, frightening, or push you to keep repeating things to feel safe, please tell a trusted adult or a doctor. That is not a lack of faith. Getting help is wise, and things can get much better.</p> <p><strong>One thing to do this week:</strong> if unwanted thoughts trouble you, try Sibbes’s advice this week: when one comes, don’t argue with it or panic. Simply say, “Jesus, I don’t want this. Take my side against it.” If it is a big struggle, choose one trusted adult to tell this week.</p>",
+  "study_questions": [
+   {
+    "question": "How does Sibbes describe unwanted, horrible thoughts?",
+    "answer": "Like busy flies that disturb our peace, thrown in like wildfire by the enemy, recognisable by how strange, strong and horrible they are."
+   },
+   {
+    "question": "What does the story of Benjamin and Joseph’s cup teach about these thoughts?",
+    "answer": "That a person troubled by unwanted thoughts is no more guilty of them than Benjamin was of the cup put in his sack."
+   },
+   {
+    "question": "What does Sibbes say to do with such thoughts?",
+    "answer": "Complain to Christ against them, hide under his protection, and ask him to take our side against the enemy."
+   }
+  ],
+  "body_text": "“For we have not an high priest which cannot be touched with the feeling of our infirmities; but was in all points tempted like as we are, yet without sin.” — Hebrews 4:15 (KJV) Sibbes knew that some Christians are tormented by thoughts they don’t want: ugly, frightening or blasphemous thoughts about God, Jesus or the Bible that pop into their heads and won’t go away. People who struggle with this often feel terrible, as if having the thought proves they are wicked. Sibbes describes these thoughts as being like “busy flies” that “disquiet and molest their peace.” He says you can often tell where they come from by how strange, strong and horrible they are. They are not what you want to think. They are thrown in from outside, “like wildfire”, by the enemy. And then he gives a wonderful comparison from the story of Joseph. Joseph’s servant secretly put a silver cup in his brother Benjamin’s sack. When it was found, Benjamin looked guilty, but he had done nothing. A godly person, he says, is no more guilty of such thoughts “than Benjamin of Joseph’s cup put into his sack.” Having an unwanted thought is not the same as choosing it. The fact that it horrifies you shows where your heart really is. What should you do with such thoughts? Sibbes’s advice is not to hide them in shame, but to take them to Jesus: “to complain unto Christ against them, and to fly under the wings of his protection, and to desire him to take our part against his and our enemy.” He also reminds us that Jesus himself was tempted by Satan with terrible suggestions in the wilderness. Jesus knows what it is to have evil ideas pushed at him, and he did it, Sibbes says, so that he could help people in the same struggle. Sibbes also talks about people who are troubled by constant worries that they have done something wrong, even about the best things they do. He says this often comes not from real guilt but from what he calls “sickness of fantasy”, and that such people are “the more to be pitied, for it is a heavy affliction.” He is gentle with them, not harsh. Today we know that unwanted, intrusive thoughts are very common, and that for some people they become a real struggle, sometimes linked to anxiety or obsessive-compulsive disorder (OCD). If thoughts like these are constant, frightening, or push you to keep repeating things to feel safe, please tell a trusted adult or a doctor. That is not a lack of faith. Getting help is wise, and things can get much better. One thing to do this week: if unwanted thoughts trouble you, try Sibbes’s advice this week: when one comes, don’t argue with it or panic. Simply say, “Jesus, I don’t want this. Take my side against it.” If it is a big struggle, choose one trusted adult to tell this week.",
+  "word_count": 495
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-bruised-reed-teens",
+   "en"
+  ],
+  "order": 9,
+  "title": "When You Can’t Pray",
+  "body_html": "<blockquote>“Likewise the Spirit also helpeth our infirmities: for we know not what we should pray for as we ought: but the Spirit itself maketh intercession for us with groanings which cannot be uttered.” — Romans 8:26 (KJV)</blockquote> <p>Lots of Christians feel like they are bad at prayer. Your mind wanders. You don’t know what to say. You feel nothing. Sometimes you skip it because you think, “What’s the point if my heart isn’t in it?”</p> <p>Sibbes understood this completely. He imagines someone complaining that they cannot pray: “O I am troubled with so many distracting thoughts, and never more than now.” His answer is a question: has God put into your heart a desire to pray? Then he will hear the desires of his own Spirit in you.</p> <blockquote>“God can pick sense out of a confused prayer. These desires cry louder in his ears, than thy sins.”</blockquote> <p>Sometimes, Sibbes says, a Christian is so confused they can say nothing except what a child says: “O Father.” And that is enough. A small child crying “Dad!” doesn’t need to explain everything for their father to come running.</p> <p>Will a holy God really accept such a weak prayer? Sibbes answers: “Yes, he will accept that which is his own, and pardon that which is ours.” What is God’s in your prayer, the desire for him that his Spirit gave you, he accepts. What is yours, the wandering and weakness, he forgives.</p> <p>He also points out that James says the great prophet Elijah “was a man subject to like passions as we are.” God didn’t answer Elijah because he was perfect, but because he prayed.</p> <p>What about days when you just don’t feel like praying or reading the Bible? Sibbes says we should keep at it, because often the good feelings come after we start, not before:</p> <blockquote>“Feeling and freeness of spirit is oft reserved until duty be discharged: reward followeth work.”</blockquote> <p>He compares it to rowing against the tide, or sailing a ship: “the hand must be to the stern, and the eye to the star.” Do the little you can, and look up to God for help.</p> <p>But Sibbes is also wise about rest. When your body is worn out, he says, “there may be a cessation till strength be repaired.” Sometimes the most spiritual thing to do is sleep. God is not a harsh master who wants you to grind yourself down.</p> <p>And he encourages us with this: “by prayer we learn to pray.” It gets easier with practice. Pray as you are able.</p> <p><strong>One thing to do this week:</strong> set a short, regular time to pray this week, even five minutes. When you don’t know what to say, just say, “Father,” and sit quietly. Trust Sibbes’s words: God can pick sense out of a confused prayer.</p>",
+  "study_questions": [
+   {
+    "question": "What does Sibbes say about confused or distracted prayers?",
+    "answer": "God can pick sense out of a confused prayer, and our desires for him cry louder in his ears than our sins."
+   },
+   {
+    "question": "How does God accept weak prayers, according to Sibbes?",
+    "answer": "He accepts what is his own in them and pardons what is ours."
+   },
+   {
+    "question": "What does Sibbes mean by “reward followeth work”?",
+    "answer": "Good feelings and freedom in prayer often come after we start, not before."
+   }
+  ],
+  "body_text": "“Likewise the Spirit also helpeth our infirmities: for we know not what we should pray for as we ought: but the Spirit itself maketh intercession for us with groanings which cannot be uttered.” — Romans 8:26 (KJV) Lots of Christians feel like they are bad at prayer. Your mind wanders. You don’t know what to say. You feel nothing. Sometimes you skip it because you think, “What’s the point if my heart isn’t in it?” Sibbes understood this completely. He imagines someone complaining that they cannot pray: “O I am troubled with so many distracting thoughts, and never more than now.” His answer is a question: has God put into your heart a desire to pray? Then he will hear the desires of his own Spirit in you. “God can pick sense out of a confused prayer. These desires cry louder in his ears, than thy sins.” Sometimes, Sibbes says, a Christian is so confused they can say nothing except what a child says: “O Father.” And that is enough. A small child crying “Dad!” doesn’t need to explain everything for their father to come running. Will a holy God really accept such a weak prayer? Sibbes answers: “Yes, he will accept that which is his own, and pardon that which is ours.” What is God’s in your prayer, the desire for him that his Spirit gave you, he accepts. What is yours, the wandering and weakness, he forgives. He also points out that James says the great prophet Elijah “was a man subject to like passions as we are.” God didn’t answer Elijah because he was perfect, but because he prayed. What about days when you just don’t feel like praying or reading the Bible? Sibbes says we should keep at it, because often the good feelings come after we start, not before: “Feeling and freeness of spirit is oft reserved until duty be discharged: reward followeth work.” He compares it to rowing against the tide, or sailing a ship: “the hand must be to the stern, and the eye to the star.” Do the little you can, and look up to God for help. But Sibbes is also wise about rest. When your body is worn out, he says, “there may be a cessation till strength be repaired.” Sometimes the most spiritual thing to do is sleep. God is not a harsh master who wants you to grind yourself down. And he encourages us with this: “by prayer we learn to pray.” It gets easier with practice. Pray as you are able. One thing to do this week: set a short, regular time to pray this week, even five minutes. When you don’t know what to say, just say, “Father,” and sit quietly. Trust Sibbes’s words: God can pick sense out of a confused prayer.",
+  "word_count": 467
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-bruised-reed-teens",
+   "en"
+  ],
+  "order": 10,
+  "title": "Don’t Believe Lies About Jesus",
+  "body_html": "<blockquote>“My little children, these things write I unto you, that ye sin not. And if any man sin, we have an advocate with the Father, Jesus Christ the righteous.” — 1 John 2:1 (KJV)</blockquote> <p>Sibbes says the enemy has a favourite trick when we feel guilty. He paints a false picture of Jesus. He presents Christ “as most severe judge armed with justice against us”, standing over us, angry and waiting to punish.</p> <p>Sibbes says: don’t believe it. Picture Jesus as God himself shows him to us, “holding out a sceptre of mercy, and spreading his arms to receive us.”</p> <p>He makes a lovely point. When you think of gentle people in the Bible, like Joseph or John, you imagine them as warm and kind. How much more should you think of Jesus that way! Any tenderness you have ever seen in a father, a brother or a friend is just “a beam” from him. The sun is far brighter than one ray.</p> <blockquote>“We are weak, but we are his; we are deformed, but yet carry his image upon us.”</blockquote> <p>Sibbes uses the picture of a father. A good father doesn’t look mainly at his child’s scraped knees and messy hair. He sees his own likeness in the child, and loves them. In the same way, Christ sees himself in us and loves us.</p> <p>He also uses the picture of a body. We are Christ’s body. Nobody hates their own body because one part is sick or weak. “Can the head forget the members? can Christ forget himself?”</p> <p>This matters because what you believe about Jesus shapes everything. If you think he is harsh, you will hide from him when you fail, like Adam hiding in the garden. If you know he is gentle, you will run to him.</p> <p>But Sibbes adds a warning so that we don’t twist his message. Some people hear that Jesus is merciful and think it means they can keep doing whatever they like. Sibbes says that is “a lying comfort.” Mercy is meant to draw us closer to Christ, not to make us comfortable in sin. He even says, “the Lamb can be angry” with those who keep refusing his kindness.</p> <p>So both are true. Jesus is not a harsh judge waiting to catch you out. And his kindness is meant to change you. As John says, he writes so that we won’t sin, but if we do, we have someone on our side: Jesus Christ the righteous.</p> <p><strong>One thing to do this week:</strong> notice what picture of Jesus comes into your mind when you’ve done something wrong. This week, when it happens, deliberately picture Jesus with his arms open, and pray: “Jesus, you are my advocate. Thank you for not giving up on me. Help me change.”</p>",
+  "study_questions": [
+   {
+    "question": "What false picture of Jesus does the enemy try to give us?",
+    "answer": "A severe judge armed with justice against us, angry and waiting to punish."
+   },
+   {
+    "question": "What does Sibbes say about a father and his child?",
+    "answer": "A father looks less at his child’s blemishes than at his own nature in the child; so Christ finds reasons to love us in what is his own in us."
+   },
+   {
+    "question": "Why is mercy not an excuse to keep sinning?",
+    "answer": "Because mercy is meant to draw us closer to Christ; using it to stay in sin is “a lying comfort.”"
+   }
+  ],
+  "body_text": "“My little children, these things write I unto you, that ye sin not. And if any man sin, we have an advocate with the Father, Jesus Christ the righteous.” — 1 John 2:1 (KJV) Sibbes says the enemy has a favourite trick when we feel guilty. He paints a false picture of Jesus. He presents Christ “as most severe judge armed with justice against us”, standing over us, angry and waiting to punish. Sibbes says: don’t believe it. Picture Jesus as God himself shows him to us, “holding out a sceptre of mercy, and spreading his arms to receive us.” He makes a lovely point. When you think of gentle people in the Bible, like Joseph or John, you imagine them as warm and kind. How much more should you think of Jesus that way! Any tenderness you have ever seen in a father, a brother or a friend is just “a beam” from him. The sun is far brighter than one ray. “We are weak, but we are his; we are deformed, but yet carry his image upon us.” Sibbes uses the picture of a father. A good father doesn’t look mainly at his child’s scraped knees and messy hair. He sees his own likeness in the child, and loves them. In the same way, Christ sees himself in us and loves us. He also uses the picture of a body. We are Christ’s body. Nobody hates their own body because one part is sick or weak. “Can the head forget the members? can Christ forget himself?” This matters because what you believe about Jesus shapes everything. If you think he is harsh, you will hide from him when you fail, like Adam hiding in the garden. If you know he is gentle, you will run to him. But Sibbes adds a warning so that we don’t twist his message. Some people hear that Jesus is merciful and think it means they can keep doing whatever they like. Sibbes says that is “a lying comfort.” Mercy is meant to draw us closer to Christ, not to make us comfortable in sin. He even says, “the Lamb can be angry” with those who keep refusing his kindness. So both are true. Jesus is not a harsh judge waiting to catch you out. And his kindness is meant to change you. As John says, he writes so that we won’t sin, but if we do, we have someone on our side: Jesus Christ the righteous. One thing to do this week: notice what picture of Jesus comes into your mind when you’ve done something wrong. This week, when it happens, deliberately picture Jesus with his arms open, and pray: “Jesus, you are my advocate. Thank you for not giving up on me. Help me change.”",
+  "word_count": 464
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-bruised-reed-teens",
+   "en"
+  ],
+  "order": 11,
+  "title": "Be Gentle with Bruised People",
+  "body_html": "<blockquote>“Brethren, if a man be overtaken in a fault, ye which are spiritual, restore such an one in the spirit of meekness; considering thyself, lest thou also be tempted.” — Galatians 6:1 (KJV)</blockquote> <p>Sibbes doesn’t just talk about how Jesus treats us. He talks about how we should treat others, especially people who are struggling.</p> <p>He starts with preachers and leaders. He says they should not make the Christian life sound impossible, piling up demands so that ordinary believers feel they can never measure up. He says they should speak plainly, not hide their meaning “in dark speeches.” Jesus himself used everyday words.</p> <p>Then he says something everyone can apply. When someone needs correcting, we should lean towards gentleness. He has a funny picture for overreacting: don’t “kill a fly on the forehead with a beetle.” In Sibbes’s day a beetle was a heavy wooden mallet. If someone has a small fault, don’t smash them with a sledgehammer.</p> <p>He also says:</p> <blockquote>“Misery should be a loadstone of mercy, not a footstool for pride to trample on.”</blockquote> <p>A loadstone is a magnet. When we see someone who is hurting or has failed, their pain should pull mercy out of us like a magnet, not give us a chance to feel superior and stand on them.</p> <p>Think about school, group chats, friendship groups. When someone messes up, does everyone pile on? Do people share screenshots and laugh? Sibbes would say that is the opposite of Christ. Christ cherishes the smallest spark; we are often quick to snuff it out.</p> <p>He also says, “we are debtors to the weak in many things.” We owe something to people who are weaker than us. We should be careful how we use our freedom, so that our example doesn’t drag others down. And we shouldn’t take up “Satan’s office”, as he calls it, of finding the worst motive behind other people’s good actions or spreading rumours about them.</p> <p>Being gentle doesn’t mean pretending wrong is right. Paul says to restore someone who has fallen. But do it “in the spirit of meekness”, remembering that you could fall too.</p> <p>If Jesus is this gentle with bruised reeds, his followers should be too.</p> <p><strong>One thing to do this week:</strong> this week, look out for someone who is struggling, left out or being laughed at, at school, in a group chat or in your family. Do one thing to be gentle with them: a kind message, sitting with them, or refusing to join in when others pile on.</p>",
+  "study_questions": [
+   {
+    "question": "What does Sibbes mean by not killing “a fly on the forehead with a beetle”?",
+    "answer": "Don’t overreact to small faults by crushing people; a beetle was a heavy wooden mallet."
+   },
+   {
+    "question": "What does “Misery should be a loadstone of mercy” mean?",
+    "answer": "Someone else’s pain should draw mercy out of us like a magnet, not give us a chance to look down on them."
+   },
+   {
+    "question": "What does Sibbes call it when we look for bad motives behind others’ good actions?",
+    "answer": "Taking up “Satan’s office.”"
+   }
+  ],
+  "body_text": "“Brethren, if a man be overtaken in a fault, ye which are spiritual, restore such an one in the spirit of meekness; considering thyself, lest thou also be tempted.” — Galatians 6:1 (KJV) Sibbes doesn’t just talk about how Jesus treats us. He talks about how we should treat others, especially people who are struggling. He starts with preachers and leaders. He says they should not make the Christian life sound impossible, piling up demands so that ordinary believers feel they can never measure up. He says they should speak plainly, not hide their meaning “in dark speeches.” Jesus himself used everyday words. Then he says something everyone can apply. When someone needs correcting, we should lean towards gentleness. He has a funny picture for overreacting: don’t “kill a fly on the forehead with a beetle.” In Sibbes’s day a beetle was a heavy wooden mallet. If someone has a small fault, don’t smash them with a sledgehammer. He also says: “Misery should be a loadstone of mercy, not a footstool for pride to trample on.” A loadstone is a magnet. When we see someone who is hurting or has failed, their pain should pull mercy out of us like a magnet, not give us a chance to feel superior and stand on them. Think about school, group chats, friendship groups. When someone messes up, does everyone pile on? Do people share screenshots and laugh? Sibbes would say that is the opposite of Christ. Christ cherishes the smallest spark; we are often quick to snuff it out. He also says, “we are debtors to the weak in many things.” We owe something to people who are weaker than us. We should be careful how we use our freedom, so that our example doesn’t drag others down. And we shouldn’t take up “Satan’s office”, as he calls it, of finding the worst motive behind other people’s good actions or spreading rumours about them. Being gentle doesn’t mean pretending wrong is right. Paul says to restore someone who has fallen. But do it “in the spirit of meekness”, remembering that you could fall too. If Jesus is this gentle with bruised reeds, his followers should be too. One thing to do this week: this week, look out for someone who is struggling, left out or being laughed at, at school, in a group chat or in your family. Do one thing to be gentle with them: a kind message, sitting with them, or refusing to join in when others pile on.",
+  "word_count": 419
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-bruised-reed-teens",
+   "en"
+  ],
+  "order": 12,
+  "title": "Gentle, but King",
+  "body_html": "<blockquote>“Take my yoke upon you, and learn of me; for I am meek and lowly in heart: and ye shall find rest unto your souls.” — Matthew 11:29 (KJV)</blockquote> <p>So far Sibbes has talked about how gentle Jesus is. Now he turns to the last part of his verse: Jesus will keep caring for the bruised reed “till he send forth judgment unto victory.”</p> <p>Sibbes says “judgment” here means Christ’s rule in our hearts. Jesus is not only gentle; he is King. He doesn’t just forgive us and leave us as we are. He sets up his throne in our hearts and starts to change us from the inside.</p> <p>Sibbes puts it like this: Christ “so pardons as he will be obeyed as a king.” The same Spirit who shows us that we need Christ’s forgiveness also shows us that we need his rule. And that is good news, not bad. His love makes us want to become like him.</p> <p>Earthly rulers, Sibbes points out, can make good laws, but they can’t write them on people’s hearts. Christ can. He doesn’t only tell us what to do; he gives us the desire and strength to do it. People are not only told that they should love, fear and obey God; Sibbes says they are “taught love itself and fear and obedience itself.”</p> <p>Sibbes also says that following Christ is the wisest way to live. It “standeth with the strongest and highest reason of all.” It isn’t blind or stupid. It is living with your eyes open.</p> <p>He gives some practical advice for making wise choices. Ask whether something makes you more or less spiritual, whether it brings you nearer to God, whether it will bring peace or sorrow in the end. And judge things now the way you will judge them at the end of your life: “what was best in our worst times” is best now too.</p> <p>So the gentle Jesus is also the King, and those two things go together. He is gentle so that we will come to him. He is King so that he can make us whole. His yoke, he says, is easy, and his burden light. Under his rule we find rest.</p> <p><strong>One thing to do this week:</strong> think about one decision you need to make this week. Use Sibbes’s questions: Will this bring me nearer to God or further away? Will it bring peace or sorrow in the end? What would I think of it at the end of my life? Then ask Jesus, your King, to help you choose.</p>",
+  "study_questions": [
+   {
+    "question": "What does “judgment” mean in Sibbes’s verse?",
+    "answer": "Christ’s rule or government in our hearts."
+   },
+   {
+    "question": "What can Christ do that earthly rulers cannot?",
+    "answer": "Write his laws on people’s hearts, giving them not just commands but the love and strength to obey."
+   },
+   {
+    "question": "Why do Christ’s gentleness and kingship go together?",
+    "answer": "He is gentle so we will come to him, and King so that he can change us and make us whole."
+   }
+  ],
+  "body_text": "“Take my yoke upon you, and learn of me; for I am meek and lowly in heart: and ye shall find rest unto your souls.” — Matthew 11:29 (KJV) So far Sibbes has talked about how gentle Jesus is. Now he turns to the last part of his verse: Jesus will keep caring for the bruised reed “till he send forth judgment unto victory.” Sibbes says “judgment” here means Christ’s rule in our hearts. Jesus is not only gentle; he is King. He doesn’t just forgive us and leave us as we are. He sets up his throne in our hearts and starts to change us from the inside. Sibbes puts it like this: Christ “so pardons as he will be obeyed as a king.” The same Spirit who shows us that we need Christ’s forgiveness also shows us that we need his rule. And that is good news, not bad. His love makes us want to become like him. Earthly rulers, Sibbes points out, can make good laws, but they can’t write them on people’s hearts. Christ can. He doesn’t only tell us what to do; he gives us the desire and strength to do it. People are not only told that they should love, fear and obey God; Sibbes says they are “taught love itself and fear and obedience itself.” Sibbes also says that following Christ is the wisest way to live. It “standeth with the strongest and highest reason of all.” It isn’t blind or stupid. It is living with your eyes open. He gives some practical advice for making wise choices. Ask whether something makes you more or less spiritual, whether it brings you nearer to God, whether it will bring peace or sorrow in the end. And judge things now the way you will judge them at the end of your life: “what was best in our worst times” is best now too. So the gentle Jesus is also the King, and those two things go together. He is gentle so that we will come to him. He is King so that he can make us whole. His yoke, he says, is easy, and his burden light. Under his rule we find rest. One thing to do this week: think about one decision you need to make this week. Use Sibbes’s questions: Will this bring me nearer to God or further away? Will it bring peace or sorrow in the end? What would I think of it at the end of my life? Then ask Jesus, your King, to help you choose.",
+  "word_count": 427
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-bruised-reed-teens",
+   "en"
+  ],
+  "order": 13,
+  "title": "The Fight You Will Win",
+  "body_html": "<blockquote>“But thanks be to God, which giveth us the victory through our Lord Jesus Christ.” — 1 Corinthians 15:57 (KJV)</blockquote> <p>Sibbes is honest: the Christian life is a fight. “There can be no victory where there is no combat,” he says. When Christ starts to rule in someone’s heart, sin fights back. There is, he says, “an army of lusts” that mutinies against him.</p> <p>That can be discouraging. You become a Christian and expect everything to be easy, and then find that temptation is still there, old habits still pull at you, and you sometimes lose.</p> <p>But Sibbes’s last chapter is full of hope. Here is the key:</p> <blockquote>“The victory lieth not upon us, but upon Christ, who hath taken upon him as to conquer for us, so to conquer in us.”</blockquote> <p>The outcome doesn’t depend on how strong you are. If it did, he says, we might well be afraid. It depends on Christ, who has promised to finish the work he started. Your sins are his enemies as well as yours, and he will take your side against them.</p> <p>So Sibbes says: don’t look so much at your enemies as at your Captain. Don’t focus on what they threaten, but on what he promises. “We have more for us, than against us.” And then, with a smile, he asks: “What coward would not fight, when he is sure of victory?”</p> <p>He adds a challenge: “None are here overcome, but he that will not fight.” The only way to lose is to give up. Keep fighting, even when you are tired, because the result is certain.</p> <p>Sibbes ends his book with a prayer you can borrow: “Lord Jesus, thou hast promised not to quench the smoking flax, not to break the bruised reed; cherish thine own grace in me, leave me not to myself, the glory shall be thine.”</p> <p>Sibbes died in London in 1635. A week before, he preached on Jesus’ words, “Let not your heart be troubled.” When someone asked him how his soul was, he said he would do God much wrong if he did not say, very well. The writer Izaak Walton said of him, “Heaven was in him, before he was in heaven.”</p> <p>And his most famous sentence sums up the whole book:</p> <blockquote>“There is more mercy in Christ than sin in us.”</blockquote> <p>Whatever you are carrying, however weak your faith, however many times you have fallen, that is still true. Jesus will not break you. He will not snuff you out. He will keep going with you until the victory is won.</p> <p><strong>One thing to do this week:</strong> write Sibbes’s prayer on a card or in your phone notes: “Lord Jesus, thou hast promised not to quench the smoking flax, not to break the bruised reed; cherish thine own grace in me, leave me not to myself, the glory shall be thine.” Pray it every morning this week.</p>",
+  "study_questions": [
+   {
+    "question": "Whose job is it to win the victory over sin, according to Sibbes?",
+    "answer": "Christ’s; he has taken it on himself to conquer for us and in us."
+   },
+   {
+    "question": "What does Sibbes mean by “None are here overcome, but he that will not fight”?",
+    "answer": "The only way to lose is to give up; anyone who keeps fighting with Christ will win."
+   },
+   {
+    "question": "What is Sibbes’s most famous sentence?",
+    "answer": "“There is more mercy in Christ than sin in us.”"
+   }
+  ],
+  "body_text": "“But thanks be to God, which giveth us the victory through our Lord Jesus Christ.” — 1 Corinthians 15:57 (KJV) Sibbes is honest: the Christian life is a fight. “There can be no victory where there is no combat,” he says. When Christ starts to rule in someone’s heart, sin fights back. There is, he says, “an army of lusts” that mutinies against him. That can be discouraging. You become a Christian and expect everything to be easy, and then find that temptation is still there, old habits still pull at you, and you sometimes lose. But Sibbes’s last chapter is full of hope. Here is the key: “The victory lieth not upon us, but upon Christ, who hath taken upon him as to conquer for us, so to conquer in us.” The outcome doesn’t depend on how strong you are. If it did, he says, we might well be afraid. It depends on Christ, who has promised to finish the work he started. Your sins are his enemies as well as yours, and he will take your side against them. So Sibbes says: don’t look so much at your enemies as at your Captain. Don’t focus on what they threaten, but on what he promises. “We have more for us, than against us.” And then, with a smile, he asks: “What coward would not fight, when he is sure of victory?” He adds a challenge: “None are here overcome, but he that will not fight.” The only way to lose is to give up. Keep fighting, even when you are tired, because the result is certain. Sibbes ends his book with a prayer you can borrow: “Lord Jesus, thou hast promised not to quench the smoking flax, not to break the bruised reed; cherish thine own grace in me, leave me not to myself, the glory shall be thine.” Sibbes died in London in 1635. A week before, he preached on Jesus’ words, “Let not your heart be troubled.” When someone asked him how his soul was, he said he would do God much wrong if he did not say, very well. The writer Izaak Walton said of him, “Heaven was in him, before he was in heaven.” And his most famous sentence sums up the whole book: “There is more mercy in Christ than sin in us.” Whatever you are carrying, however weak your faith, however many times you have fallen, that is still true. Jesus will not break you. He will not snuff you out. He will keep going with you until the victory is won. One thing to do this week: write Sibbes’s prayer on a card or in your phone notes: “Lord Jesus, thou hast promised not to quench the smoking flax, not to break the bruised reed; cherish thine own grace in me, leave me not to myself, the glory shall be thine.” Pray it every morning this week.",
+  "word_count": 485
+ }
+}
+]
