@@ -1,0 +1,13 @@
+{
+ "kind": "bio",
+ "slug": "alexander-maclaren",
+ "language": "uk",
+ "job_issue": 1686,
+ "pull_request": null,
+ "references": [],
+ "note": [
+  "The English bio quotes no scripture and carries no Book C:V citations (0 in both the English and this edition); every quotation in it is Maclaren's own words, translated as prose.",
+  "Translated in one context (no fan-out). The long bio, the short bio and the ten Q&A pairs share one rendering of each recurring phrase: «князь проповідників-тлумачів», «Я мушу віддати це розпеченим», and the two pull-quotes, which the Q&A repeats verbatim.",
+  "Expositions of Holy Scripture is rendered «Тлумачення Святого Письма», following the shipped uk convention of translating English book titles inside <em>«…»</em>. Union Chapel is transliterated as Юніон-чапел, a proper name."
+ ]
+}
