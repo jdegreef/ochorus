@@ -136,5 +136,12 @@
     "note": [
       "Queue job #4812: «La vida de confianza» completes this plan in es (with «Esperando en Dios» and «El secreto de la guía divina»), so the prose ships in the same PR or the es plans page publishes the English card (the #819 defect). Title opens with the shipped es title of its first book."
     ]
+  },
+  "the-pilgrims-way": {
+    "title": "El camino del peregrino",
+    "description": "El camino a casa, en tres clásicos. Charles Spurgeon sale al encuentro del que busca junto a la puerta estrecha, la alegoría inmortal de John Bunyan acompaña al peregrino todo el camino hasta la Ciudad Celestial, y el propio testimonio de Bunyan muestra la gracia que abundó para el primero de los pecadores.",
+    "note": [
+      "Queue job #4819: grace-abounding ships in Spanish as «Gracia abundante para el primero de los pecadores», which completes this (the-pilgrims-way, es) plan with «Junto a la puerta estrecha» and «El progreso del peregrino». Prose ships in the same PR so the es plans page never publishes the English card."
+    ]
   }
 }

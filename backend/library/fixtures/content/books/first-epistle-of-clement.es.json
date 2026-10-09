@@ -1,0 +1,951 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "clement-of-rome"
+  ],
+  "slug": "first-epistle-of-clement",
+  "language": "es",
+  "title": "Primera epístola de Clemente a los corintios",
+  "subtitle": "La iglesia de Roma a la iglesia de Corinto",
+  "cover_title": "",
+  "cover_byline": "",
+  "description": "Escrita desde la iglesia de Roma a la iglesia de Corinto hacia el año 96 d. C., es el escrito cristiano más antiguo fuera del Nuevo Testamento. Clemente, que escribe en nombre de la iglesia romana, ruega a los corintios que pongan fin a una amarga división en la que algunos miembros más jóvenes habían depuesto a sus fieles ancianos, y los llama de nuevo a la humildad, al orden, al arrepentimiento y a la paz de Cristo. Impregnada del Antiguo Testamento y separada de los apóstoles por apenas una generación, es una ventana a la iglesia en el momento en que se cerraba la era apostólica.",
+  "hook": "",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "¿Qué es la Primera epístola de Clemente a los corintios?",
+    "answer": "Es una carta escrita desde la iglesia de Roma a la iglesia de Corinto hacia el año 96 d. C., el escrito cristiano más antiguo que conservamos fuera del Nuevo Testamento. Clemente, en nombre de la iglesia romana, ruega a los corintios que pongan fin a una amarga división en la que algunos miembros más jóvenes habían depuesto a sus ancianos, y los llama a la humildad, al orden y al amor."
+   },
+   {
+    "question": "¿Quién fue Clemente de Roma?",
+    "answer": "Clemente fue un dirigente de la iglesia de Roma a finales del siglo I, contado tradicionalmente entre los primeros obispos de esa iglesia y a veces identificado con el Clemente que Pablo menciona en Filipenses. Escribió esta carta en nombre de la iglesia romana, y los primeros cristianos la tuvieron en tan alta estima que en algunas iglesias se leía públicamente junto a las Escrituras."
+   },
+   {
+    "question": "¿Por qué es tan importante esta carta desde el punto de vista histórico?",
+    "answer": "Porque es el documento cristiano más antiguo que se conserva fuera del Nuevo Testamento, escrito cuando la era apostólica acababa de cerrarse, quizá mientras el apóstol Juan aún vivía. Ofrece una ventana poco común a la vida, el orden y la fe de la iglesia primitiva, y muestra a una iglesia aconsejando a otra sobre la unidad y el liderazgo apenas una generación después de los apóstoles."
+   },
+   {
+    "question": "¿Cuál era el problema de Corinto al que responde Clemente?",
+    "answer": "Una división en la que algunos miembros más jóvenes se habían levantado contra los presbíteros, o ancianos, de la iglesia y los habían destituido. Clemente escribe para sanar esa contienda: reprende el orgullo y la envidia que la alimentaban y exhorta a los culpables a someterse, arrepentirse y restituir a los dirigentes depuestos, para que la paz y el orden vuelvan a la iglesia."
+   },
+   {
+    "question": "¿Qué enseña Clemente sobre el orden y el liderazgo en la iglesia?",
+    "answer": "Que el liderazgo en la iglesia no puede derribarse a voluntad, sino que descansa en un nombramiento ordenado que se remonta, por medio de los apóstoles, a Cristo y a Dios. Clemente apela a ese orden para sostener que los corintios no tenían derecho a deponer a sus fieles ancianos, y su carta es un testimonio temprano e influyente del cuidado de la iglesia por un ministerio ordenado y dado por Dios."
+   },
+   {
+    "question": "¿Qué otros temas, además del orden, recorren la carta?",
+    "answer": "La humildad, el arrepentimiento, el amor y la concordia. Clemente se apoya abundantemente en el Antiguo Testamento y en el ejemplo de Cristo para exhortar a la humildad en lugar del orgullo, e incluye un célebre pasaje sobre el amor que hace eco de las palabras de Pablo a esa misma iglesia. Señala también el orden de la creación y la resurrección como motivos de confianza y de paz entre los creyentes."
+   },
+   {
+    "question": "¿Quién debería leer esta carta hoy?",
+    "answer": "Cualquiera que se interese por la iglesia inmediatamente posterior a los apóstoles, por las raíces de la enseñanza cristiana sobre la unidad y el liderazgo, o por los escritos de los Padres Apostólicos. Ofrece una impresión viva y de primera mano de la vida de la iglesia justo después de la época del Nuevo Testamento, y su consejo sobre la humildad y la paz sigue hablando a las congregaciones divididas."
+   },
+   {
+    "question": "¿Por dónde conviene empezar a leer?",
+    "answer": "Por el principio, leyéndola como la carta que es, desde el cálido saludo de Roma a Corinto hasta su súplica en favor de los ancianos depuestos. Es un único llamamiento continuo, que se lee mejor de corrido, para que el lector siga el argumento de Clemente desde la contienda que lamenta hasta la humildad, el orden y el amor con que exhorta a sanarla."
+   }
+  ],
+  "publication_year": 96,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "",
+  "cover_url": "/covers/art/first-epistle-of-clement.jpg",
+  "pdf_url": "",
+  "cover_color": "#734b2e",
+  "series": null,
+  "series_position": null,
+  "sort_order": 24,
+  "is_published": true,
+  "created_at": "2026-10-09T00:00:00Z",
+  "updated_at": "2026-10-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 1,
+  "title": "El saludo",
+  "body_html": "<p>La Iglesia de Dios que peregrina en Roma, a la Iglesia de Dios que peregrina en Corinto, a los llamados y santificados por la voluntad de Dios, por medio de nuestro Señor Jesucristo: Gracia y paz os sean multiplicadas de parte de Dios todopoderoso, por medio de Jesucristo. </p> <p>Queridos hermanos, a causa de las repentinas y sucesivas calamidades que nos han sobrevenido, sentimos que hemos tardado algo en volver nuestra atención a los asuntos sobre los cuales nos consultasteis; y en especial a esa sedición vergonzosa y detestable, del todo aborrecible para los elegidos de Dios, que unas pocas personas temerarias y presuntuosas han encendido hasta tal grado de frenesí, que vuestro nombre venerable e ilustre, digno de ser amado por todos, ha sufrido grave daño. Porque ¿quién, habiendo morado siquiera por poco tiempo entre vosotros, no halló vuestra fe tan fecunda en virtud como firmemente establecida? ¿Quién no admiró la sobriedad y la moderación de vuestra piedad en Cristo? ¿Quién no proclamó la magnificencia de vuestra habitual hospitalidad? ¿Y quién no se regocijó por vuestro conocimiento perfecto y bien fundado? Porque todo lo hacíais sin acepción de personas, y andabais en los mandamientos de Dios, obedeciendo a los que os gobernaban y tributando todo el honor debido a los presbíteros que había entre vosotros. Exhortabais a los jóvenes a ser de ánimo sobrio y grave; instruíais a vuestras esposas a hacerlo todo con una conciencia irreprochable, decorosa y pura, amando a sus maridos como es su deber; y les enseñabais que, viviendo bajo la regla de la obediencia, administraran con decoro los asuntos de su casa y se distinguieran en todo por la discreción. </p>",
+  "study_questions": [],
+  "body_text": "La Iglesia de Dios que peregrina en Roma, a la Iglesia de Dios que peregrina en Corinto, a los llamados y santificados por la voluntad de Dios, por medio de nuestro Señor Jesucristo: Gracia y paz os sean multiplicadas de parte de Dios todopoderoso, por medio de Jesucristo. Queridos hermanos, a causa de las repentinas y sucesivas calamidades que nos han sobrevenido, sentimos que hemos tardado algo en volver nuestra atención a los asuntos sobre los cuales nos consultasteis; y en especial a esa sedición vergonzosa y detestable, del todo aborrecible para los elegidos de Dios, que unas pocas personas temerarias y presuntuosas han encendido hasta tal grado de frenesí, que vuestro nombre venerable e ilustre, digno de ser amado por todos, ha sufrido grave daño. Porque ¿quién, habiendo morado siquiera por poco tiempo entre vosotros, no halló vuestra fe tan fecunda en virtud como firmemente establecida? ¿Quién no admiró la sobriedad y la moderación de vuestra piedad en Cristo? ¿Quién no proclamó la magnificencia de vuestra habitual hospitalidad? ¿Y quién no se regocijó por vuestro conocimiento perfecto y bien fundado? Porque todo lo hacíais sin acepción de personas, y andabais en los mandamientos de Dios, obedeciendo a los que os gobernaban y tributando todo el honor debido a los presbíteros que había entre vosotros. Exhortabais a los jóvenes a ser de ánimo sobrio y grave; instruíais a vuestras esposas a hacerlo todo con una conciencia irreprochable, decorosa y pura, amando a sus maridos como es su deber; y les enseñabais que, viviendo bajo la regla de la obediencia, administraran con decoro los asuntos de su casa y se distinguieran en todo por la discreción.",
+  "word_count": 275
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 2,
+  "title": "Continúa el elogio de los corintios",
+  "body_html": "<p>Además, todos os distinguíais por la humildad, y en nada os envanecíais de orgullo, sino que preferíais obedecer antes que exigir obediencia, y estabais más dispuestos a dar que a recibir. Contentos con la provisión que Dios os había hecho, y atendiendo con cuidado a sus palabras, estabais llenos interiormente de su doctrina, y sus sufrimientos estaban delante de vuestros ojos. Así se os concedió a todos una paz profunda y abundante, y teníais un deseo insaciable de hacer el bien, mientras una plena efusión del Espíritu Santo estaba sobre todos vosotros. Llenos de santos propósitos, con verdadero fervor de ánimo y piadosa confianza, extendíais las manos a Dios todopoderoso, suplicándole que tuviera misericordia de vosotros si habíais incurrido en alguna transgresión involuntaria. Día y noche os afanabais por toda la hermandad, para que el número de los elegidos de Dios fuera salvo con misericordia y buena conciencia. Erais sinceros e incorruptos, y olvidabais las ofensas entre vosotros. Toda clase de facción y de cisma era abominable a vuestros ojos. Llorabais las transgresiones de vuestro prójimo: sus faltas las teníais por vuestras. Nunca escatimasteis ningún acto de bondad, estando «prontos a toda buena obra». Adornados por una vida enteramente virtuosa y religiosa, lo hacíais todo en el temor de Dios. Los mandamientos y las ordenanzas del Señor estaban escritos en las tablas de vuestro corazón.</p>",
+  "study_questions": [],
+  "body_text": "Además, todos os distinguíais por la humildad, y en nada os envanecíais de orgullo, sino que preferíais obedecer antes que exigir obediencia, y estabais más dispuestos a dar que a recibir. Contentos con la provisión que Dios os había hecho, y atendiendo con cuidado a sus palabras, estabais llenos interiormente de su doctrina, y sus sufrimientos estaban delante de vuestros ojos. Así se os concedió a todos una paz profunda y abundante, y teníais un deseo insaciable de hacer el bien, mientras una plena efusión del Espíritu Santo estaba sobre todos vosotros. Llenos de santos propósitos, con verdadero fervor de ánimo y piadosa confianza, extendíais las manos a Dios todopoderoso, suplicándole que tuviera misericordia de vosotros si habíais incurrido en alguna transgresión involuntaria. Día y noche os afanabais por toda la hermandad, para que el número de los elegidos de Dios fuera salvo con misericordia y buena conciencia. Erais sinceros e incorruptos, y olvidabais las ofensas entre vosotros. Toda clase de facción y de cisma era abominable a vuestros ojos. Llorabais las transgresiones de vuestro prójimo: sus faltas las teníais por vuestras. Nunca escatimasteis ningún acto de bondad, estando «prontos a toda buena obra». Adornados por una vida enteramente virtuosa y religiosa, lo hacíais todo en el temor de Dios. Los mandamientos y las ordenanzas del Señor estaban escritos en las tablas de vuestro corazón.",
+  "word_count": 225
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 3,
+  "title": "El triste estado de la iglesia tras la sedición nacida de la envidia",
+  "body_html": "<p>Se os concedió toda clase de honra y de dicha, y entonces se cumplió lo que está escrito: «Comió y bebió mi amado, y se ensanchó, y engordó, y tiró coces». De ahí brotaron la emulación y la envidia, la contienda y la sedición, la persecución y el desorden, la guerra y la cautividad. Así se levantaron los viles contra los honrados, los sin renombre contra los afamados, los necios contra los sabios, los jóvenes contra los de edad avanzada. Por esta razón la justicia y la paz se han alejado ahora de vosotros, por cuanto cada uno abandona el temor de Dios y se ha vuelto ciego en su fe, y no anda en las ordenanzas que él estableció ni se conduce como conviene a un cristiano, sino que anda según sus propias concupiscencias perversas, volviendo a practicar una envidia injusta e impía, por la cual entró la muerte misma en el mundo.</p>",
+  "study_questions": [],
+  "body_text": "Se os concedió toda clase de honra y de dicha, y entonces se cumplió lo que está escrito: «Comió y bebió mi amado, y se ensanchó, y engordó, y tiró coces». De ahí brotaron la emulación y la envidia, la contienda y la sedición, la persecución y el desorden, la guerra y la cautividad. Así se levantaron los viles contra los honrados, los sin renombre contra los afamados, los necios contra los sabios, los jóvenes contra los de edad avanzada. Por esta razón la justicia y la paz se han alejado ahora de vosotros, por cuanto cada uno abandona el temor de Dios y se ha vuelto ciego en su fe, y no anda en las ordenanzas que él estableció ni se conduce como conviene a un cristiano, sino que anda según sus propias concupiscencias perversas, volviendo a practicar una envidia injusta e impía, por la cual entró la muerte misma en el mundo.",
+  "word_count": 154
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 4,
+  "title": "Muchos males han brotado ya de esta fuente en tiempos antiguos",
+  "body_html": "<p>Porque así está escrito: «Y aconteció después de algunos días que Caín trajo del fruto de la tierra un sacrificio a Dios; y Abel trajo también de los primogénitos de sus ovejas, y de su grosura. Y miró Dios con agrado a Abel y a sus ofrendas, mas a Caín y a sus sacrificios no los miró. Y Caín se entristeció en gran manera, y decayó su semblante. Y dijo Dios a Caín: ¿Por qué te has entristecido, y por qué ha decaído tu semblante? Si ofreces rectamente, pero no divides rectamente, ¿no has pecado? Quédate en paz: tu ofrenda vuelve a ti, y de nuevo la poseerás. Y dijo Caín a Abel su hermano: Vamos al campo. Y aconteció que, estando ellos en el campo, Caín se levantó contra Abel su hermano, y lo mató». Veis, hermanos, cómo la envidia y los celos llevaron al asesinato de un hermano. Por envidia también nuestro padre Jacob huyó de la presencia de Esaú su hermano. La envidia hizo que José fuera perseguido hasta la muerte y llegara a la servidumbre. La envidia obligó a Moisés a huir de la presencia de Faraón, rey de Egipto, cuando oyó estas palabras de su compatriota: «¿Quién te ha puesto por juez o príncipe sobre nosotros? ¿Quieres matarme, como mataste ayer al egipcio?». Por causa de la envidia, Aarón y María tuvieron que habitar fuera del campamento. La envidia hizo descender vivos al Hades a Datán y Abiram, por la sedición que suscitaron contra Moisés, siervo de Dios. Por envidia, David sufrió el odio no solo de los extranjeros, sino que fue también perseguido por Saúl, rey de Israel.</p>",
+  "study_questions": [],
+  "body_text": "Porque así está escrito: «Y aconteció después de algunos días que Caín trajo del fruto de la tierra un sacrificio a Dios; y Abel trajo también de los primogénitos de sus ovejas, y de su grosura. Y miró Dios con agrado a Abel y a sus ofrendas, mas a Caín y a sus sacrificios no los miró. Y Caín se entristeció en gran manera, y decayó su semblante. Y dijo Dios a Caín: ¿Por qué te has entristecido, y por qué ha decaído tu semblante? Si ofreces rectamente, pero no divides rectamente, ¿no has pecado? Quédate en paz: tu ofrenda vuelve a ti, y de nuevo la poseerás. Y dijo Caín a Abel su hermano: Vamos al campo. Y aconteció que, estando ellos en el campo, Caín se levantó contra Abel su hermano, y lo mató». Veis, hermanos, cómo la envidia y los celos llevaron al asesinato de un hermano. Por envidia también nuestro padre Jacob huyó de la presencia de Esaú su hermano. La envidia hizo que José fuera perseguido hasta la muerte y llegara a la servidumbre. La envidia obligó a Moisés a huir de la presencia de Faraón, rey de Egipto, cuando oyó estas palabras de su compatriota: «¿Quién te ha puesto por juez o príncipe sobre nosotros? ¿Quieres matarme, como mataste ayer al egipcio?». Por causa de la envidia, Aarón y María tuvieron que habitar fuera del campamento. La envidia hizo descender vivos al Hades a Datán y Abiram, por la sedición que suscitaron contra Moisés, siervo de Dios. Por envidia, David sufrió el odio no solo de los extranjeros, sino que fue también perseguido por Saúl, rey de Israel.",
+  "word_count": 274
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 5,
+  "title": "No menores males han surgido de la misma fuente en los tiempos más recientes",
+  "body_html": "<p>Pero, para no detenernos en ejemplos antiguos, vengamos a los héroes espirituales más recientes. Tomemos los nobles ejemplos que nos ofrece nuestra propia generación. Por envidia y celos, las columnas más grandes y más justas [de la Iglesia] fueron perseguidas y llevadas a la muerte. Pongamos ante nuestros ojos a los ilustres apóstoles. Pedro, por una envidia injusta, soportó no uno ni dos, sino numerosos trabajos, y, habiendo sufrido al fin el martirio, partió al lugar de gloria que le correspondía. Por envidia también Pablo obtuvo el premio de la paciente perseverancia, después de haber sido siete veces encarcelado, obligado a huir y apedreado. Tras predicar tanto en el oriente como en el occidente, alcanzó la ilustre fama debida a su fe, habiendo enseñado la justicia al mundo entero y llegado al extremo límite del occidente; y sufrió el martirio bajo los prefectos. Así fue quitado del mundo y se fue al lugar santo, habiéndose mostrado un insigne ejemplo de paciencia. </p>",
+  "study_questions": [],
+  "body_text": "Pero, para no detenernos en ejemplos antiguos, vengamos a los héroes espirituales más recientes. Tomemos los nobles ejemplos que nos ofrece nuestra propia generación. Por envidia y celos, las columnas más grandes y más justas [de la Iglesia] fueron perseguidas y llevadas a la muerte. Pongamos ante nuestros ojos a los ilustres apóstoles. Pedro, por una envidia injusta, soportó no uno ni dos, sino numerosos trabajos, y, habiendo sufrido al fin el martirio, partió al lugar de gloria que le correspondía. Por envidia también Pablo obtuvo el premio de la paciente perseverancia, después de haber sido siete veces encarcelado, obligado a huir y apedreado. Tras predicar tanto en el oriente como en el occidente, alcanzó la ilustre fama debida a su fe, habiendo enseñado la justicia al mundo entero y llegado al extremo límite del occidente; y sufrió el martirio bajo los prefectos. Así fue quitado del mundo y se fue al lugar santo, habiéndose mostrado un insigne ejemplo de paciencia.",
+  "word_count": 161
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 6,
+  "title": "Continuación",
+  "body_html": "<p>A estos hombres, que pasaron su vida en la práctica de la santidad, se añade una gran multitud de elegidos que, habiendo soportado por envidia muchos ultrajes y tormentos, nos dejaron un ejemplo excelentísimo. Por envidia, aquellas mujeres, las Danaides y Dirces, perseguidas, después de haber sufrido tormentos terribles e indecibles, acabaron con firmeza la carrera de su fe y, aunque débiles de cuerpo, recibieron una noble recompensa. La envidia ha apartado a las esposas de sus maridos y ha trastocado aquel dicho de nuestro padre Adán: «Esto es ahora hueso de mis huesos y carne de mi carne». La envidia y la contienda han derribado grandes ciudades y desarraigado naciones poderosas. </p>",
+  "study_questions": [],
+  "body_text": "A estos hombres, que pasaron su vida en la práctica de la santidad, se añade una gran multitud de elegidos que, habiendo soportado por envidia muchos ultrajes y tormentos, nos dejaron un ejemplo excelentísimo. Por envidia, aquellas mujeres, las Danaides y Dirces, perseguidas, después de haber sufrido tormentos terribles e indecibles, acabaron con firmeza la carrera de su fe y, aunque débiles de cuerpo, recibieron una noble recompensa. La envidia ha apartado a las esposas de sus maridos y ha trastocado aquel dicho de nuestro padre Adán: «Esto es ahora hueso de mis huesos y carne de mi carne». La envidia y la contienda han derribado grandes ciudades y desarraigado naciones poderosas.",
+  "word_count": 112
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 7,
+  "title": "Exhortación al arrepentimiento",
+  "body_html": "<p>Estas cosas, amados, os escribimos no solo para amonestaros acerca de vuestro deber, sino también para recordárnoslas a nosotros mismos. Porque luchamos en la misma arena, y el mismo combate nos está asignado a unos y a otros. Por tanto, dejemos los cuidados vanos e infructuosos, y acerquémonos a la gloriosa y venerable regla de nuestra santa vocación. Atendamos a lo que es bueno, agradable y aceptable delante de aquel que nos formó. Fijemos con firmeza la mirada en la sangre de Cristo, y veamos cuán preciosa es para Dios esa sangre que, derramada por nuestra salvación, ha puesto la gracia del arrepentimiento delante del mundo entero. Recorramos todas las edades pasadas, y aprendamos que, de generación en generación, el Señor ha concedido lugar de arrepentimiento a todos los que querían convertirse a él. Noé predicó el arrepentimiento, y cuantos le escucharon fueron salvos. Jonás anunció la destrucción a los ninivitas; pero ellos, arrepintiéndose de sus pecados, aplacaron a Dios con la oración y obtuvieron la salvación, aunque eran extraños [a la alianza] de Dios. </p>",
+  "study_questions": [],
+  "body_text": "Estas cosas, amados, os escribimos no solo para amonestaros acerca de vuestro deber, sino también para recordárnoslas a nosotros mismos. Porque luchamos en la misma arena, y el mismo combate nos está asignado a unos y a otros. Por tanto, dejemos los cuidados vanos e infructuosos, y acerquémonos a la gloriosa y venerable regla de nuestra santa vocación. Atendamos a lo que es bueno, agradable y aceptable delante de aquel que nos formó. Fijemos con firmeza la mirada en la sangre de Cristo, y veamos cuán preciosa es para Dios esa sangre que, derramada por nuestra salvación, ha puesto la gracia del arrepentimiento delante del mundo entero. Recorramos todas las edades pasadas, y aprendamos que, de generación en generación, el Señor ha concedido lugar de arrepentimiento a todos los que querían convertirse a él. Noé predicó el arrepentimiento, y cuantos le escucharon fueron salvos. Jonás anunció la destrucción a los ninivitas; pero ellos, arrepintiéndose de sus pecados, aplacaron a Dios con la oración y obtuvieron la salvación, aunque eran extraños [a la alianza] de Dios.",
+  "word_count": 175
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 8,
+  "title": "Continúa el tema del arrepentimiento",
+  "body_html": "<p>Los ministros de la gracia de Dios han hablado del arrepentimiento por medio del Espíritu Santo; y el mismo Señor de todas las cosas ha declarado con juramento acerca de él: «Vivo yo, dice el Señor, que no quiero la muerte del pecador, sino más bien su arrepentimiento»; añadiendo además esta declaración misericordiosa: «Arrepentíos, oh casa de Israel, de vuestra iniquidad. Di a los hijos de mi pueblo: Aunque vuestros pecados lleguen de la tierra al cielo, y aunque sean más rojos que la grana y más negros que el cilicio, si os volvéis a mí de todo vuestro corazón y decís: ¡Padre!, os escucharé como a un pueblo santo». Y en otro lugar habla así: «Lavaos y quedad limpios; quitad la maldad de vuestras almas de delante de mis ojos; dejad vuestros malos caminos, y aprended a hacer el bien; buscad el juicio, librad al oprimido, haced justicia al huérfano, y amparad el derecho de la viuda; y venid, y estemos a cuenta. Él declara: Aunque vuestros pecados sean como el carmesí, los dejaré blancos como la nieve; aunque sean como la grana, los emblanqueceré como la lana. Si quisiereis y me obedeciereis, comeréis el bien de la tierra; pero si no quisiereis ni me oyereis, la espada os devorará, porque la boca del Señor ha dicho estas cosas». Deseando, pues, que todos sus amados participen del arrepentimiento, él lo ha establecido [con estas declaraciones] por su voluntad todopoderosa. </p>",
+  "study_questions": [],
+  "body_text": "Los ministros de la gracia de Dios han hablado del arrepentimiento por medio del Espíritu Santo; y el mismo Señor de todas las cosas ha declarado con juramento acerca de él: «Vivo yo, dice el Señor, que no quiero la muerte del pecador, sino más bien su arrepentimiento»; añadiendo además esta declaración misericordiosa: «Arrepentíos, oh casa de Israel, de vuestra iniquidad. Di a los hijos de mi pueblo: Aunque vuestros pecados lleguen de la tierra al cielo, y aunque sean más rojos que la grana y más negros que el cilicio, si os volvéis a mí de todo vuestro corazón y decís: ¡Padre!, os escucharé como a un pueblo santo». Y en otro lugar habla así: «Lavaos y quedad limpios; quitad la maldad de vuestras almas de delante de mis ojos; dejad vuestros malos caminos, y aprended a hacer el bien; buscad el juicio, librad al oprimido, haced justicia al huérfano, y amparad el derecho de la viuda; y venid, y estemos a cuenta. Él declara: Aunque vuestros pecados sean como el carmesí, los dejaré blancos como la nieve; aunque sean como la grana, los emblanqueceré como la lana. Si quisiereis y me obedeciereis, comeréis el bien de la tierra; pero si no quisiereis ni me oyereis, la espada os devorará, porque la boca del Señor ha dicho estas cosas». Deseando, pues, que todos sus amados participen del arrepentimiento, él lo ha establecido [con estas declaraciones] por su voluntad todopoderosa.",
+  "word_count": 240
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 9,
+  "title": "Ejemplos de los santos",
+  "body_html": "<p>Por tanto, rindamos obediencia a su voluntad excelente y gloriosa; e implorando su misericordia y su bondad, mientras abandonamos todos los trabajos infructuosos, y la contienda, y la envidia que conduce a la muerte, volvámonos y acojámonos a sus compasiones. Contemplemos con firmeza a los que han servido perfectamente a su excelente gloria. Tomemos (por ejemplo) a Enoc, quien, hallado justo en la obediencia, fue trasladado, y nunca se supo que le sobreviniera la muerte. Noé, hallado fiel, predicó por su ministerio la regeneración al mundo; y el Señor salvó por medio de él a los animales que, de común acuerdo, entraron en el arca. </p>",
+  "study_questions": [],
+  "body_text": "Por tanto, rindamos obediencia a su voluntad excelente y gloriosa; e implorando su misericordia y su bondad, mientras abandonamos todos los trabajos infructuosos, y la contienda, y la envidia que conduce a la muerte, volvámonos y acojámonos a sus compasiones. Contemplemos con firmeza a los que han servido perfectamente a su excelente gloria. Tomemos (por ejemplo) a Enoc, quien, hallado justo en la obediencia, fue trasladado, y nunca se supo que le sobreviniera la muerte. Noé, hallado fiel, predicó por su ministerio la regeneración al mundo; y el Señor salvó por medio de él a los animales que, de común acuerdo, entraron en el arca.",
+  "word_count": 105
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 10,
+  "title": "Continuación de lo anterior",
+  "body_html": "<p>Abraham, llamado «el amigo», fue hallado fiel, por cuanto obedeció a las palabras de Dios. En el ejercicio de la obediencia salió de su tierra, y de su parentela, y de la casa de su padre, a fin de que, dejando un territorio pequeño, una familia débil y una casa insignificante, heredara las promesas de Dios. Porque Dios le dijo: «Vete de tu tierra, y de tu parentela, y de la casa de tu padre, a la tierra que yo te mostraré. Y haré de ti una nación grande, y te bendeciré, y engrandeceré tu nombre, y serás bendito. Y bendeciré a los que te bendigan, y maldeciré a los que te maldigan; y en ti serán benditas todas las familias de la tierra». Y de nuevo, cuando se separó de Lot, Dios le dijo: «Alza tus ojos, y mira desde el lugar donde ahora estás, hacia el norte, y hacia el sur, y hacia el oriente, y hacia el occidente; porque toda la tierra que ves, a ti te la daré, y a tu descendencia para siempre. Y haré tu descendencia como el polvo de la tierra, [de modo que] si alguno puede contar el polvo de la tierra, también tu descendencia será contada». Y de nuevo [la Escritura] dice: «Dios sacó fuera a Abram, y le dijo: Mira ahora al cielo, y cuenta las estrellas, si las puedes contar; así será tu descendencia. Y creyó Abram a Dios, y le fue contado por justicia». Por su fe y su hospitalidad se le dio un hijo en su vejez; y en el ejercicio de la obediencia, lo ofreció en sacrificio a Dios sobre uno de los montes que él le mostró.</p>",
+  "study_questions": [],
+  "body_text": "Abraham, llamado «el amigo», fue hallado fiel, por cuanto obedeció a las palabras de Dios. En el ejercicio de la obediencia salió de su tierra, y de su parentela, y de la casa de su padre, a fin de que, dejando un territorio pequeño, una familia débil y una casa insignificante, heredara las promesas de Dios. Porque Dios le dijo: «Vete de tu tierra, y de tu parentela, y de la casa de tu padre, a la tierra que yo te mostraré. Y haré de ti una nación grande, y te bendeciré, y engrandeceré tu nombre, y serás bendito. Y bendeciré a los que te bendigan, y maldeciré a los que te maldigan; y en ti serán benditas todas las familias de la tierra». Y de nuevo, cuando se separó de Lot, Dios le dijo: «Alza tus ojos, y mira desde el lugar donde ahora estás, hacia el norte, y hacia el sur, y hacia el oriente, y hacia el occidente; porque toda la tierra que ves, a ti te la daré, y a tu descendencia para siempre. Y haré tu descendencia como el polvo de la tierra, [de modo que] si alguno puede contar el polvo de la tierra, también tu descendencia será contada». Y de nuevo [la Escritura] dice: «Dios sacó fuera a Abram, y le dijo: Mira ahora al cielo, y cuenta las estrellas, si las puedes contar; así será tu descendencia. Y creyó Abram a Dios, y le fue contado por justicia». Por su fe y su hospitalidad se le dio un hijo en su vejez; y en el ejercicio de la obediencia, lo ofreció en sacrificio a Dios sobre uno de los montes que él le mostró.",
+  "word_count": 282
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 11,
+  "title": "Continuación",
+  "body_html": "<p>Por su hospitalidad y su piedad, Lot fue salvado de Sodoma cuando toda la comarca de alrededor fue castigada con fuego y azufre; el Señor puso así de manifiesto que no abandona a los que esperan en él, sino que entrega al castigo y al tormento a los que se apartan de él. Porque la mujer de Lot, que salió con él, siendo de otro sentir que él y no permaneciendo de acuerdo con él [respecto al mandato que se les había dado], fue puesta como escarmiento, convertida en columna de sal hasta el día de hoy. Esto sucedió para que todos supieran que los de doble ánimo, y los que desconfían del poder de Dios, atraen el juicio sobre sí mismos y se convierten en señal para todas las generaciones venideras. </p>",
+  "study_questions": [],
+  "body_text": "Por su hospitalidad y su piedad, Lot fue salvado de Sodoma cuando toda la comarca de alrededor fue castigada con fuego y azufre; el Señor puso así de manifiesto que no abandona a los que esperan en él, sino que entrega al castigo y al tormento a los que se apartan de él. Porque la mujer de Lot, que salió con él, siendo de otro sentir que él y no permaneciendo de acuerdo con él [respecto al mandato que se les había dado], fue puesta como escarmiento, convertida en columna de sal hasta el día de hoy. Esto sucedió para que todos supieran que los de doble ánimo, y los que desconfían del poder de Dios, atraen el juicio sobre sí mismos y se convierten en señal para todas las generaciones venideras.",
+  "word_count": 132
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 12,
+  "title": "Las recompensas de la fe y la hospitalidad",
+  "body_html": "<p>Por su fe y su hospitalidad fue salvada Rahab la ramera. Porque cuando Josué, hijo de Nun, envió espías a Jericó, el rey del país supo que habían venido a espiar su tierra, y envió hombres para prenderlos, a fin de que, una vez capturados, fueran ejecutados. Pero la hospitalaria Rahab, recibiéndolos, los escondió en el terrado de su casa bajo unos manojos de lino. Y cuando llegaron los hombres enviados por el rey y dijeron: «Vinieron a ti unos hombres para espiar nuestra tierra; sácalos fuera, porque así lo manda el rey», ella les respondió: «Los dos hombres que buscáis vinieron a mí, pero partieron enseguida y se han ido», sin descubrirles así a los espías. Luego dijo a los hombres: «Sé ciertamente que el Señor vuestro Dios os ha dado esta ciudad, porque el temor y el espanto de vosotros han caído sobre sus moradores. Cuando, pues, la hayáis tomado, guardadme a salvo a mí y la casa de mi padre». Y ellos le dijeron: «Será como nos has dicho. Así pues, en cuanto sepas que estamos cerca, reunirás a toda tu familia bajo tu techo, y serán preservados; pero todos los que se hallen fuera de tu morada perecerán». Además, le dieron una señal: que colgara de su casa un hilo de grana. Y así pusieron de manifiesto que por la sangre del Señor vendría la redención a todos los que creen y esperan en Dios. Veis, amados, que en esta mujer hubo no solo fe, sino también profecía. </p>",
+  "study_questions": [],
+  "body_text": "Por su fe y su hospitalidad fue salvada Rahab la ramera. Porque cuando Josué, hijo de Nun, envió espías a Jericó, el rey del país supo que habían venido a espiar su tierra, y envió hombres para prenderlos, a fin de que, una vez capturados, fueran ejecutados. Pero la hospitalaria Rahab, recibiéndolos, los escondió en el terrado de su casa bajo unos manojos de lino. Y cuando llegaron los hombres enviados por el rey y dijeron: «Vinieron a ti unos hombres para espiar nuestra tierra; sácalos fuera, porque así lo manda el rey», ella les respondió: «Los dos hombres que buscáis vinieron a mí, pero partieron enseguida y se han ido», sin descubrirles así a los espías. Luego dijo a los hombres: «Sé ciertamente que el Señor vuestro Dios os ha dado esta ciudad, porque el temor y el espanto de vosotros han caído sobre sus moradores. Cuando, pues, la hayáis tomado, guardadme a salvo a mí y la casa de mi padre». Y ellos le dijeron: «Será como nos has dicho. Así pues, en cuanto sepas que estamos cerca, reunirás a toda tu familia bajo tu techo, y serán preservados; pero todos los que se hallen fuera de tu morada perecerán». Además, le dieron una señal: que colgara de su casa un hilo de grana. Y así pusieron de manifiesto que por la sangre del Señor vendría la redención a todos los que creen y esperan en Dios. Veis, amados, que en esta mujer hubo no solo fe, sino también profecía.",
+  "word_count": 252
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 13,
+  "title": "Exhortación a la humildad",
+  "body_html": "<p>Seamos, pues, hermanos, de ánimo humilde, despojándonos de toda altivez, soberbia, insensatez y cólera; y obremos conforme a lo que está escrito (porque el Espíritu Santo dice: «No se alabe el sabio en su sabiduría, ni el valiente se alabe en su valentía, ni el rico se alabe en sus riquezas; mas el que se alaba, alábese en el Señor, buscándolo con diligencia y haciendo juicio y justicia»), acordándonos sobre todo de las palabras que pronunció el Señor Jesús cuando nos enseñaba la mansedumbre y la longanimidad. Porque así dijo: «Sed misericordiosos, para que alcancéis misericordia; perdonad, para que se os perdone; como hacéis, así se os hará; como juzgáis, así seréis juzgados; como sois bondadosos, así se usará de bondad con vosotros; con la medida con que medís, con esa misma se os medirá». Con este precepto y con estas reglas afirmémonos, para que andemos con toda humildad en obediencia a sus santas palabras. Porque la santa palabra dice: «¿A quién miraré sino al manso y pacífico, y al que tiembla a mis palabras?».</p>",
+  "study_questions": [],
+  "body_text": "Seamos, pues, hermanos, de ánimo humilde, despojándonos de toda altivez, soberbia, insensatez y cólera; y obremos conforme a lo que está escrito (porque el Espíritu Santo dice: «No se alabe el sabio en su sabiduría, ni el valiente se alabe en su valentía, ni el rico se alabe en sus riquezas; mas el que se alaba, alábese en el Señor, buscándolo con diligencia y haciendo juicio y justicia»), acordándonos sobre todo de las palabras que pronunció el Señor Jesús cuando nos enseñaba la mansedumbre y la longanimidad. Porque así dijo: «Sed misericordiosos, para que alcancéis misericordia; perdonad, para que se os perdone; como hacéis, así se os hará; como juzgáis, así seréis juzgados; como sois bondadosos, así se usará de bondad con vosotros; con la medida con que medís, con esa misma se os medirá». Con este precepto y con estas reglas afirmémonos, para que andemos con toda humildad en obediencia a sus santas palabras. Porque la santa palabra dice: «¿A quién miraré sino al manso y pacífico, y al que tiembla a mis palabras?».",
+  "word_count": 175
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 14,
+  "title": "Debemos obedecer a Dios antes que a los autores de la sedición",
+  "body_html": "<p>Es justo y santo, pues, varones hermanos, obedecer a Dios antes que seguir a los que, por soberbia y sedición, se han hecho caudillos de una detestable emulación. Porque no sufriremos un daño ligero, sino más bien un gran peligro, si nos entregamos temerariamente a los designios de hombres que buscan provocar contiendas y tumultos para apartarnos de lo que es bueno. Seamos bondadosos unos con otros, a imitación de la tierna misericordia y la benignidad de nuestro Creador. Porque está escrito: «Los de corazón bondadoso habitarán la tierra, y los inocentes permanecerán en ella; mas los transgresores serán exterminados de sobre su faz». Y de nuevo [la Escritura] dice: «Vi al impío sumamente ensalzado, y levantado como los cedros del Líbano; pasé, y he aquí ya no estaba; busqué con diligencia su lugar, y no lo hallé. Guarda la inocencia y mira la equidad, porque quedará un remanente para el hombre pacífico».</p>",
+  "study_questions": [],
+  "body_text": "Es justo y santo, pues, varones hermanos, obedecer a Dios antes que seguir a los que, por soberbia y sedición, se han hecho caudillos de una detestable emulación. Porque no sufriremos un daño ligero, sino más bien un gran peligro, si nos entregamos temerariamente a los designios de hombres que buscan provocar contiendas y tumultos para apartarnos de lo que es bueno. Seamos bondadosos unos con otros, a imitación de la tierna misericordia y la benignidad de nuestro Creador. Porque está escrito: «Los de corazón bondadoso habitarán la tierra, y los inocentes permanecerán en ella; mas los transgresores serán exterminados de sobre su faz». Y de nuevo [la Escritura] dice: «Vi al impío sumamente ensalzado, y levantado como los cedros del Líbano; pasé, y he aquí ya no estaba; busqué con diligencia su lugar, y no lo hallé. Guarda la inocencia y mira la equidad, porque quedará un remanente para el hombre pacífico».",
+  "word_count": 153
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 15,
+  "title": "Debemos unirnos a los que cultivan la paz",
+  "body_html": "<p>Unámonos, pues, a los que cultivan la paz con piedad, y no a los que hipócritamente dicen desearla. Porque [la Escritura] dice en cierto lugar: «Este pueblo de labios me honra, mas su corazón lejos está de mí». Y también: «Con su boca bendicen, pero maldicen con su corazón». Y dice además: «Lo amaron con su boca, y con su lengua le mintieron; pero su corazón no era recto con él, ni fueron fieles en su pacto». «Enmudezcan los labios engañosos», [y «destruya el Señor todos los labios mentirosos,] y la lengua jactanciosa de los que dijeron: Engrandezcamos nuestra lengua; nuestros labios son nuestros; ¿quién es señor sobre nosotros? Por la opresión de los pobres, y por el gemido de los menesterosos, ahora me levantaré, dice el Señor; lo pondré a salvo; obraré con confianza en su favor».</p>",
+  "study_questions": [],
+  "body_text": "Unámonos, pues, a los que cultivan la paz con piedad, y no a los que hipócritamente dicen desearla. Porque [la Escritura] dice en cierto lugar: «Este pueblo de labios me honra, mas su corazón lejos está de mí». Y también: «Con su boca bendicen, pero maldicen con su corazón». Y dice además: «Lo amaron con su boca, y con su lengua le mintieron; pero su corazón no era recto con él, ni fueron fieles en su pacto». «Enmudezcan los labios engañosos», [y «destruya el Señor todos los labios mentirosos,] y la lengua jactanciosa de los que dijeron: Engrandezcamos nuestra lengua; nuestros labios son nuestros; ¿quién es señor sobre nosotros? Por la opresión de los pobres, y por el gemido de los menesterosos, ahora me levantaré, dice el Señor; lo pondré a salvo; obraré con confianza en su favor».",
+  "word_count": 138
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 16,
+  "title": "Cristo, ejemplo de humildad",
+  "body_html": "<p>Porque Cristo es de los humildes de espíritu, y no de los que se ensalzan sobre su rebaño. Nuestro Señor Jesucristo, el Cetro de la majestad de Dios, no vino con pompa de soberbia ni de arrogancia, aunque pudo haberlo hecho, sino en condición humilde, como el Espíritu Santo había declarado acerca de él. Porque dice: «Señor, ¿quién ha creído a nuestro anuncio? ¿y a quién se ha revelado el brazo del Señor? Hemos anunciado [nuestro mensaje] en su presencia: él es como un niño, y como raíz en tierra sedienta; no hay en él parecer ni gloria; sí, lo vimos, y no tenía parecer ni hermosura; antes su aspecto era sin distinción, más aún, inferior al aspecto [común] de los hombres. Es un hombre expuesto a azotes y sufrimientos, y experimentado en soportar quebranto; porque su rostro fue apartado; fue menospreciado, y no lo estimamos. Él lleva nuestras iniquidades, y sufre dolor por causa de nosotros; y nosotros pensamos que [por causa suya] estaba expuesto al trabajo, a los azotes y a la aflicción. Mas él fue herido por nuestras rebeliones, y molido por nuestras iniquidades. El castigo de nuestra paz fue sobre él, y por su llaga fuimos nosotros curados. Todos nosotros nos descarriamos como ovejas; [cada] hombre se apartó por su camino; y el Señor lo entregó por nuestros pecados, mientras él, en medio de sus padecimientos, no abre su boca. Como oveja fue llevado al matadero, y como cordero mudo delante de su trasquilador, así no abre su boca. En su humillación le fue quitado su juicio; ¿y su generación, quién la contará? porque su vida es quitada de la tierra. Por las transgresiones de mi pueblo fue llevado a la muerte. Y daré a los impíos por su sepultura, y a los ricos por su muerte, porque no hizo maldad, ni se halló engaño en su boca. Y el Señor quiere purificarlo con azotes. Si hacéis ofrenda por el pecado, vuestra alma verá una descendencia de larga vida. Y el Señor quiere librarlo de la aflicción de su alma, mostrarle luz y formarlo con entendimiento, justificar al Justo que sirve bien a muchos; y él mismo llevará los pecados de ellos. Por tanto, heredará a muchos, y repartirá los despojos de los fuertes; porque su alma fue entregada a la muerte, y fue contado entre los transgresores, y llevó los pecados de muchos, y por los pecados de ellos fue entregado». Y de nuevo dice: «Yo soy gusano, y no hombre; oprobio de los hombres, y desecho del pueblo. Todos los que me ven se burlan de mí; hablan con sus labios; menean la cabeza, [diciendo]: Esperó en Dios; que él lo libre, que lo salve, puesto que en él se complacía». Veis, amados, cuál es el ejemplo que se nos ha dado; porque si el Señor se humilló así, ¿qué haremos nosotros, que por medio de él hemos venido bajo el yugo de su gracia? </p>",
+  "study_questions": [],
+  "body_text": "Porque Cristo es de los humildes de espíritu, y no de los que se ensalzan sobre su rebaño. Nuestro Señor Jesucristo, el Cetro de la majestad de Dios, no vino con pompa de soberbia ni de arrogancia, aunque pudo haberlo hecho, sino en condición humilde, como el Espíritu Santo había declarado acerca de él. Porque dice: «Señor, ¿quién ha creído a nuestro anuncio? ¿y a quién se ha revelado el brazo del Señor? Hemos anunciado [nuestro mensaje] en su presencia: él es como un niño, y como raíz en tierra sedienta; no hay en él parecer ni gloria; sí, lo vimos, y no tenía parecer ni hermosura; antes su aspecto era sin distinción, más aún, inferior al aspecto [común] de los hombres. Es un hombre expuesto a azotes y sufrimientos, y experimentado en soportar quebranto; porque su rostro fue apartado; fue menospreciado, y no lo estimamos. Él lleva nuestras iniquidades, y sufre dolor por causa de nosotros; y nosotros pensamos que [por causa suya] estaba expuesto al trabajo, a los azotes y a la aflicción. Mas él fue herido por nuestras rebeliones, y molido por nuestras iniquidades. El castigo de nuestra paz fue sobre él, y por su llaga fuimos nosotros curados. Todos nosotros nos descarriamos como ovejas; [cada] hombre se apartó por su camino; y el Señor lo entregó por nuestros pecados, mientras él, en medio de sus padecimientos, no abre su boca. Como oveja fue llevado al matadero, y como cordero mudo delante de su trasquilador, así no abre su boca. En su humillación le fue quitado su juicio; ¿y su generación, quién la contará? porque su vida es quitada de la tierra. Por las transgresiones de mi pueblo fue llevado a la muerte. Y daré a los impíos por su sepultura, y a los ricos por su muerte, porque no hizo maldad, ni se halló engaño en su boca. Y el Señor quiere purificarlo con azotes. Si hacéis ofrenda por el pecado, vuestra alma verá una descendencia de larga vida. Y el Señor quiere librarlo de la aflicción de su alma, mostrarle luz y formarlo con entendimiento, justificar al Justo que sirve bien a muchos; y él mismo llevará los pecados de ellos. Por tanto, heredará a muchos, y repartirá los despojos de los fuertes; porque su alma fue entregada a la muerte, y fue contado entre los transgresores, y llevó los pecados de muchos, y por los pecados de ellos fue entregado». Y de nuevo dice: «Yo soy gusano, y no hombre; oprobio de los hombres, y desecho del pueblo. Todos los que me ven se burlan de mí; hablan con sus labios; menean la cabeza, [diciendo]: Esperó en Dios; que él lo libre, que lo salve, puesto que en él se complacía». Veis, amados, cuál es el ejemplo que se nos ha dado; porque si el Señor se humilló así, ¿qué haremos nosotros, que por medio de él hemos venido bajo el yugo de su gracia?",
+  "word_count": 491
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 17,
+  "title": "Los santos, ejemplos de humildad",
+  "body_html": "<p>Seamos también imitadores de aquellos que anduvieron cubiertos de pieles de cabras y de ovejas anunciando la venida de Cristo; me refiero a Elías, Eliseo y Ezequiel entre los profetas, con aquellos otros de quienes se da un testimonio semejante [en la Escritura]. Abraham fue honrado de manera especial, y fue llamado amigo de Dios; y, sin embargo, mirando con fervor la gloria de Dios, declaró humildemente: «Yo no soy más que polvo y ceniza». Además, así está escrito de Job: «Job era un hombre justo e irreprochable, veraz, temeroso de Dios y apartado de todo mal». Pero, acusándose a sí mismo, dijo: «Nadie está libre de impureza, aunque su vida sea de un solo día». Moisés fue llamado fiel en toda la casa de Dios; y por medio de él castigó Dios a Egipto con plagas y tormentos. Pero él, aunque tan honrado, no usó palabras altivas, sino que, cuando le llegó el oráculo divino desde la zarza, dijo: «¿Quién soy yo, para que me envíes? Soy hombre de voz débil y tardo de lengua». Y dijo también: «Yo no soy más que como el humo de una olla».</p>",
+  "study_questions": [],
+  "body_text": "Seamos también imitadores de aquellos que anduvieron cubiertos de pieles de cabras y de ovejas anunciando la venida de Cristo; me refiero a Elías, Eliseo y Ezequiel entre los profetas, con aquellos otros de quienes se da un testimonio semejante [en la Escritura]. Abraham fue honrado de manera especial, y fue llamado amigo de Dios; y, sin embargo, mirando con fervor la gloria de Dios, declaró humildemente: «Yo no soy más que polvo y ceniza». Además, así está escrito de Job: «Job era un hombre justo e irreprochable, veraz, temeroso de Dios y apartado de todo mal». Pero, acusándose a sí mismo, dijo: «Nadie está libre de impureza, aunque su vida sea de un solo día». Moisés fue llamado fiel en toda la casa de Dios; y por medio de él castigó Dios a Egipto con plagas y tormentos. Pero él, aunque tan honrado, no usó palabras altivas, sino que, cuando le llegó el oráculo divino desde la zarza, dijo: «¿Quién soy yo, para que me envíes? Soy hombre de voz débil y tardo de lengua». Y dijo también: «Yo no soy más que como el humo de una olla».",
+  "word_count": 190
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 18,
+  "title": "David, ejemplo de humildad",
+  "body_html": "<p>Pero ¿qué diremos de David, de quien se dio tal testimonio, y de quien Dios dijo: «He hallado un varón conforme a mi corazón, David hijo de Isaí; con misericordia eterna lo he ungido»? Y, sin embargo, este mismo hombre dice a Dios: «Ten piedad de mí, oh Señor, conforme a tu gran misericordia; y conforme a la multitud de tus piedades borra mi rebelión. Lávame más y más de mi maldad, y límpiame de mi pecado. Porque yo reconozco mi maldad, y mi pecado está siempre delante de mí. Contra ti, contra ti solo he pecado, y he hecho lo malo delante de tus ojos; para que seas justificado en tus palabras, y venzas cuando seas juzgado. Porque he aquí, en rebeliones fui concebido, y en mis pecados me concibió mi madre. Porque he aquí, tú has amado la verdad; los secretos y lo oculto de la sabiduría me has mostrado. Me rociarás con hisopo, y seré limpio; me lavarás, y seré más blanco que la nieve. Me harás oír gozo y alegría; se regocijarán los huesos que han sido abatidos. Aparta tu rostro de mis pecados, y borra todas mis maldades. Crea en mí, oh Dios, un corazón limpio, y renueva un espíritu recto dentro de mí. No me eches de tu presencia, y no quites de mí tu Santo Espíritu. Vuélveme el gozo de tu salvación, y afiánzame con tu Espíritu soberano. Enseñaré a los transgresores tus caminos, y los impíos se convertirán a ti. Líbrame de homicidios, oh Dios, Dios de mi salvación; mi lengua cantará con júbilo tu justicia. Señor, tú abrirás mi boca, y mis labios publicarán tu alabanza. Porque si hubieras querido sacrificio, yo te lo habría dado; no te agradarán los holocaustos. El sacrificio [acepto] a Dios es el espíritu quebrantado; al corazón contrito y humillado no despreciará Dios».</p>",
+  "study_questions": [],
+  "body_text": "Pero ¿qué diremos de David, de quien se dio tal testimonio, y de quien Dios dijo: «He hallado un varón conforme a mi corazón, David hijo de Isaí; con misericordia eterna lo he ungido»? Y, sin embargo, este mismo hombre dice a Dios: «Ten piedad de mí, oh Señor, conforme a tu gran misericordia; y conforme a la multitud de tus piedades borra mi rebelión. Lávame más y más de mi maldad, y límpiame de mi pecado. Porque yo reconozco mi maldad, y mi pecado está siempre delante de mí. Contra ti, contra ti solo he pecado, y he hecho lo malo delante de tus ojos; para que seas justificado en tus palabras, y venzas cuando seas juzgado. Porque he aquí, en rebeliones fui concebido, y en mis pecados me concibió mi madre. Porque he aquí, tú has amado la verdad; los secretos y lo oculto de la sabiduría me has mostrado. Me rociarás con hisopo, y seré limpio; me lavarás, y seré más blanco que la nieve. Me harás oír gozo y alegría; se regocijarán los huesos que han sido abatidos. Aparta tu rostro de mis pecados, y borra todas mis maldades. Crea en mí, oh Dios, un corazón limpio, y renueva un espíritu recto dentro de mí. No me eches de tu presencia, y no quites de mí tu Santo Espíritu. Vuélveme el gozo de tu salvación, y afiánzame con tu Espíritu soberano. Enseñaré a los transgresores tus caminos, y los impíos se convertirán a ti. Líbrame de homicidios, oh Dios, Dios de mi salvación; mi lengua cantará con júbilo tu justicia. Señor, tú abrirás mi boca, y mis labios publicarán tu alabanza. Porque si hubieras querido sacrificio, yo te lo habría dado; no te agradarán los holocaustos. El sacrificio [acepto] a Dios es el espíritu quebrantado; al corazón contrito y humillado no despreciará Dios».",
+  "word_count": 307
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 19,
+  "title": "Imitando estos ejemplos, busquemos la paz",
+  "body_html": "<p>Así, la humildad y la piadosa sumisión de hombres tan grandes e ilustres nos han hecho mejores no solo a nosotros, sino también a todas las generaciones que nos precedieron; a cuantos han recibido sus oráculos con temor y en verdad. Por tanto, teniendo puestos delante de nosotros tantos ejemplos grandes y gloriosos, volvamos a la práctica de aquella paz que desde el principio fue la meta que se nos propuso; y fijemos con firmeza la mirada en el Padre y Creador del universo, y unámonos a sus dones y beneficios de paz, poderosos y sobremanera grandes. Contemplémoslo con nuestro entendimiento, y miremos con los ojos de nuestra alma su voluntad longánime. Consideremos cuán libre de ira está él para con toda su creación. </p>",
+  "study_questions": [],
+  "body_text": "Así, la humildad y la piadosa sumisión de hombres tan grandes e ilustres nos han hecho mejores no solo a nosotros, sino también a todas las generaciones que nos precedieron; a cuantos han recibido sus oráculos con temor y en verdad. Por tanto, teniendo puestos delante de nosotros tantos ejemplos grandes y gloriosos, volvamos a la práctica de aquella paz que desde el principio fue la meta que se nos propuso; y fijemos con firmeza la mirada en el Padre y Creador del universo, y unámonos a sus dones y beneficios de paz, poderosos y sobremanera grandes. Contemplémoslo con nuestro entendimiento, y miremos con los ojos de nuestra alma su voluntad longánime. Consideremos cuán libre de ira está él para con toda su creación.",
+  "word_count": 124
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 20,
+  "title": "La paz y la armonía del universo",
+  "body_html": "<p>Los cielos, girando bajo su gobierno, le están sujetos en paz. El día y la noche recorren el curso que él les ha señalado, sin estorbarse en modo alguno el uno al otro. El sol y la luna, con los coros de las estrellas, ruedan en armonía según su mandato, dentro de los límites que les han sido prescritos, y sin desviación alguna. La tierra fecunda, conforme a su voluntad, produce alimento en abundancia, a su debido tiempo, para el hombre y para las bestias y para todos los seres vivientes que hay sobre ella, sin vacilar jamás ni alterar ninguna de las ordenanzas que él ha establecido. Los lugares insondables de los abismos y las regiones indescriptibles del mundo inferior están sujetos a las mismas leyes. El mar vasto e inmensurable, reunido por su obra en diversas cuencas, nunca traspasa los límites puestos a su alrededor, sino que hace lo que él le ha mandado. Porque él dijo: «Hasta aquí llegarás, y tus olas se quebrarán dentro de ti». El océano, infranqueable para el hombre, y los mundos que hay más allá de él, se rigen por las mismas disposiciones del Señor. Las estaciones de la primavera, el verano, el otoño y el invierno se suceden pacíficamente unas a otras. Los vientos, cada uno en su lugar, cumplen a su debido tiempo su servicio sin impedimento. Las fuentes perennes, creadas tanto para el disfrute como para la salud, ofrecen sin falta sus pechos para la vida de los hombres. Aun los más pequeños de los seres vivientes se reúnen en paz y concordia. Todas estas cosas ha dispuesto el gran Creador y Señor de todo que existan en paz y armonía; y él hace bien a todos, pero con mayor abundancia a nosotros, que nos hemos acogido a sus compasiones por medio de Jesucristo nuestro Señor, a quien sea la gloria y la majestad por los siglos de los siglos. Amén. </p>",
+  "study_questions": [],
+  "body_text": "Los cielos, girando bajo su gobierno, le están sujetos en paz. El día y la noche recorren el curso que él les ha señalado, sin estorbarse en modo alguno el uno al otro. El sol y la luna, con los coros de las estrellas, ruedan en armonía según su mandato, dentro de los límites que les han sido prescritos, y sin desviación alguna. La tierra fecunda, conforme a su voluntad, produce alimento en abundancia, a su debido tiempo, para el hombre y para las bestias y para todos los seres vivientes que hay sobre ella, sin vacilar jamás ni alterar ninguna de las ordenanzas que él ha establecido. Los lugares insondables de los abismos y las regiones indescriptibles del mundo inferior están sujetos a las mismas leyes. El mar vasto e inmensurable, reunido por su obra en diversas cuencas, nunca traspasa los límites puestos a su alrededor, sino que hace lo que él le ha mandado. Porque él dijo: «Hasta aquí llegarás, y tus olas se quebrarán dentro de ti». El océano, infranqueable para el hombre, y los mundos que hay más allá de él, se rigen por las mismas disposiciones del Señor. Las estaciones de la primavera, el verano, el otoño y el invierno se suceden pacíficamente unas a otras. Los vientos, cada uno en su lugar, cumplen a su debido tiempo su servicio sin impedimento. Las fuentes perennes, creadas tanto para el disfrute como para la salud, ofrecen sin falta sus pechos para la vida de los hombres. Aun los más pequeños de los seres vivientes se reúnen en paz y concordia. Todas estas cosas ha dispuesto el gran Creador y Señor de todo que existan en paz y armonía; y él hace bien a todos, pero con mayor abundancia a nosotros, que nos hemos acogido a sus compasiones por medio de Jesucristo nuestro Señor, a quien sea la gloria y la majestad por los siglos de los siglos. Amén.",
+  "word_count": 322
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 21,
+  "title": "Obedezcamos a Dios, y no a los autores de la sedición",
+  "body_html": "<p>Mirad, amados, que sus muchos beneficios no se conviertan en condenación para todos nosotros. [Porque así ha de suceder] si no andamos como es digno de él, y no hacemos de común acuerdo lo que es bueno y agradable delante de él. Porque [la Escritura] dice en cierto lugar: «El Espíritu del Señor es una lámpara que escudriña lo secreto del vientre». Consideremos cuán cerca está, y que ninguno de los pensamientos o razonamientos que tenemos le es oculto. Es justo, por tanto, que no abandonemos el puesto que su voluntad nos ha asignado. Ofendamos más bien a esos hombres necios e insensatos, engreídos, que se glorían en la soberbia de sus palabras, antes que [ofender] a Dios. Reverenciemos al Señor Jesucristo, cuya sangre fue dada por nosotros; estimemos a los que nos gobiernan; honremos a los ancianos que hay entre nosotros; eduquemos a los jóvenes en el temor de Dios; encaminemos a nuestras esposas hacia lo que es bueno. Que muestren el amable hábito de la pureza [en toda su conducta]; que manifiesten la sincera disposición de la mansedumbre; que pongan de manifiesto, por su manera de hablar, el dominio que tienen sobre su lengua; que muestren su amor, no prefiriendo a unos sobre otros, sino teniendo igual afecto por todos los que temen piadosamente a Dios. Que vuestros hijos participen de una verdadera educación cristiana; que aprendan cuánto vale la humildad delante de Dios, cuánto puede ante él el espíritu de un amor puro, cuán excelente y grande es su temor, y cómo salva a todos los que andan en él con una mente pura. Porque él escudriña los pensamientos y los deseos [del corazón]: su aliento está en nosotros, y cuando quiera nos lo quitará. </p>",
+  "study_questions": [],
+  "body_text": "Mirad, amados, que sus muchos beneficios no se conviertan en condenación para todos nosotros. [Porque así ha de suceder] si no andamos como es digno de él, y no hacemos de común acuerdo lo que es bueno y agradable delante de él. Porque [la Escritura] dice en cierto lugar: «El Espíritu del Señor es una lámpara que escudriña lo secreto del vientre». Consideremos cuán cerca está, y que ninguno de los pensamientos o razonamientos que tenemos le es oculto. Es justo, por tanto, que no abandonemos el puesto que su voluntad nos ha asignado. Ofendamos más bien a esos hombres necios e insensatos, engreídos, que se glorían en la soberbia de sus palabras, antes que [ofender] a Dios. Reverenciemos al Señor Jesucristo, cuya sangre fue dada por nosotros; estimemos a los que nos gobiernan; honremos a los ancianos que hay entre nosotros; eduquemos a los jóvenes en el temor de Dios; encaminemos a nuestras esposas hacia lo que es bueno. Que muestren el amable hábito de la pureza [en toda su conducta]; que manifiesten la sincera disposición de la mansedumbre; que pongan de manifiesto, por su manera de hablar, el dominio que tienen sobre su lengua; que muestren su amor, no prefiriendo a unos sobre otros, sino teniendo igual afecto por todos los que temen piadosamente a Dios. Que vuestros hijos participen de una verdadera educación cristiana; que aprendan cuánto vale la humildad delante de Dios, cuánto puede ante él el espíritu de un amor puro, cuán excelente y grande es su temor, y cómo salva a todos los que andan en él con una mente pura. Porque él escudriña los pensamientos y los deseos [del corazón]: su aliento está en nosotros, y cuando quiera nos lo quitará.",
+  "word_count": 288
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 22,
+  "title": "La fe cristiana confirma estas exhortaciones",
+  "body_html": "<p>Ahora bien, la fe que es en Cristo confirma todas estas [amonestaciones]. Porque él mismo, por el Espíritu Santo, nos habla así: «Venid, hijos, oídme; el temor del Señor os enseñaré. ¿Quién es el hombre que desea vida, y ama ver días buenos? Guarda tu lengua del mal, y tus labios de hablar engaño. Apártate del mal, y haz el bien; busca la paz, y síguela. Los ojos del Señor están sobre los justos, y sus oídos [atentos] a sus oraciones. El rostro del Señor está contra los que hacen el mal, para cortar de la tierra la memoria de ellos. Clamó el justo, y el Señor lo oyó, y lo libró de todas sus angustias». «Muchos son los azotes [reservados] al impío; mas a los que esperan en el Señor los rodeará la misericordia».</p>",
+  "study_questions": [],
+  "body_text": "Ahora bien, la fe que es en Cristo confirma todas estas [amonestaciones]. Porque él mismo, por el Espíritu Santo, nos habla así: «Venid, hijos, oídme; el temor del Señor os enseñaré. ¿Quién es el hombre que desea vida, y ama ver días buenos? Guarda tu lengua del mal, y tus labios de hablar engaño. Apártate del mal, y haz el bien; busca la paz, y síguela. Los ojos del Señor están sobre los justos, y sus oídos [atentos] a sus oraciones. El rostro del Señor está contra los que hacen el mal, para cortar de la tierra la memoria de ellos. Clamó el justo, y el Señor lo oyó, y lo libró de todas sus angustias». «Muchos son los azotes [reservados] al impío; mas a los que esperan en el Señor los rodeará la misericordia».",
+  "word_count": 135
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 23,
+  "title": "Sed humildes, y creed que Cristo vendrá de nuevo",
+  "body_html": "<p>El Padre, todo misericordioso y bienhechor, tiene entrañas [de compasión] para con los que le temen, y con bondad y amor concede sus favores a los que se acercan a él con sencillez de mente. Por tanto, no seamos de doble ánimo, ni se envanezca nuestra alma a causa de sus dones sobremanera grandes y gloriosos. Lejos de nosotros aquello que está escrito: «Desdichados los de doble ánimo y de corazón vacilante, que dicen: Estas cosas las oímos ya en tiempos de nuestros padres; pero, he aquí, hemos envejecido, y ninguna de ellas nos ha sucedido». ¡Insensatos! Comparaos con un árbol: tomad [por ejemplo] la vid. Primero se le caen las hojas, luego brota, después echa hojas, y luego florece; tras esto viene la uva agraz, y luego sigue el fruto maduro. Veis cómo en poco tiempo el fruto de un árbol llega a la madurez. En verdad, pronto y de repente se cumplirá su voluntad, como también lo atestigua la Escritura, diciendo: «Vendrá pronto, y no tardará»; y: «Vendrá súbitamente a su templo el Señor, el Santo, a quien vosotros buscáis».</p>",
+  "study_questions": [],
+  "body_text": "El Padre, todo misericordioso y bienhechor, tiene entrañas [de compasión] para con los que le temen, y con bondad y amor concede sus favores a los que se acercan a él con sencillez de mente. Por tanto, no seamos de doble ánimo, ni se envanezca nuestra alma a causa de sus dones sobremanera grandes y gloriosos. Lejos de nosotros aquello que está escrito: «Desdichados los de doble ánimo y de corazón vacilante, que dicen: Estas cosas las oímos ya en tiempos de nuestros padres; pero, he aquí, hemos envejecido, y ninguna de ellas nos ha sucedido». ¡Insensatos! Comparaos con un árbol: tomad [por ejemplo] la vid. Primero se le caen las hojas, luego brota, después echa hojas, y luego florece; tras esto viene la uva agraz, y luego sigue el fruto maduro. Veis cómo en poco tiempo el fruto de un árbol llega a la madurez. En verdad, pronto y de repente se cumplirá su voluntad, como también lo atestigua la Escritura, diciendo: «Vendrá pronto, y no tardará»; y: «Vendrá súbitamente a su templo el Señor, el Santo, a quien vosotros buscáis».",
+  "word_count": 182
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 24,
+  "title": "Dios nos muestra continuamente en la naturaleza que habrá una resurrección",
+  "body_html": "<p>Consideremos, amados, cómo el Señor nos demuestra continuamente que habrá una resurrección futura, de la cual ha hecho primicias al Señor Jesucristo al resucitarlo de entre los muertos. Contemplemos, amados, la resurrección que tiene lugar en todo tiempo. El día y la noche nos anuncian una resurrección. La noche se duerme, y el día se levanta; el día [a su vez] se va, y llega la noche. Miremos los frutos [de la tierra], cómo se hace la siembra del grano. Sale el sembrador y lo echa en la tierra; y la semilla así esparcida, aunque cayó seca y desnuda sobre la tierra, se va descomponiendo poco a poco. Luego, de su descomposición, el gran poder de la providencia del Señor la levanta de nuevo, y de una sola semilla brotan muchas y dan fruto. </p>",
+  "study_questions": [],
+  "body_text": "Consideremos, amados, cómo el Señor nos demuestra continuamente que habrá una resurrección futura, de la cual ha hecho primicias al Señor Jesucristo al resucitarlo de entre los muertos. Contemplemos, amados, la resurrección que tiene lugar en todo tiempo. El día y la noche nos anuncian una resurrección. La noche se duerme, y el día se levanta; el día [a su vez] se va, y llega la noche. Miremos los frutos [de la tierra], cómo se hace la siembra del grano. Sale el sembrador y lo echa en la tierra; y la semilla así esparcida, aunque cayó seca y desnuda sobre la tierra, se va descomponiendo poco a poco. Luego, de su descomposición, el gran poder de la providencia del Señor la levanta de nuevo, y de una sola semilla brotan muchas y dan fruto.",
+  "word_count": 134
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 25,
+  "title": "El fénix, emblema de nuestra resurrección",
+  "body_html": "<p>Consideremos aquella maravillosa señal [de la resurrección] que tiene lugar en las tierras de Oriente, es decir, en Arabia y en los países de alrededor. Hay un ave que se llama fénix. Es la única de su especie, y vive quinientos años. Y cuando se acerca el tiempo de su disolución, en que ha de morir, se construye un nido de incienso, mirra y otras especias, en el cual, cumplido el tiempo, entra y muere. Pero, al corromperse la carne, se produce cierta clase de gusano que, alimentado por los jugos del ave muerta, echa plumas. Después, cuando ha cobrado fuerzas, toma aquel nido en que están los huesos de su progenitor, y llevándolos pasa de la tierra de Arabia a Egipto, a la ciudad llamada Heliópolis. Y en pleno día, volando a la vista de todos, los deposita sobre el altar del sol, y hecho esto, se apresura a volver a su antigua morada. Los sacerdotes examinan entonces los registros de las fechas, y hallan que ha vuelto exactamente al cumplirse el año quinientos.</p>",
+  "study_questions": [],
+  "body_text": "Consideremos aquella maravillosa señal [de la resurrección] que tiene lugar en las tierras de Oriente, es decir, en Arabia y en los países de alrededor. Hay un ave que se llama fénix. Es la única de su especie, y vive quinientos años. Y cuando se acerca el tiempo de su disolución, en que ha de morir, se construye un nido de incienso, mirra y otras especias, en el cual, cumplido el tiempo, entra y muere. Pero, al corromperse la carne, se produce cierta clase de gusano que, alimentado por los jugos del ave muerta, echa plumas. Después, cuando ha cobrado fuerzas, toma aquel nido en que están los huesos de su progenitor, y llevándolos pasa de la tierra de Arabia a Egipto, a la ciudad llamada Heliópolis. Y en pleno día, volando a la vista de todos, los deposita sobre el altar del sol, y hecho esto, se apresura a volver a su antigua morada. Los sacerdotes examinan entonces los registros de las fechas, y hallan que ha vuelto exactamente al cumplirse el año quinientos.",
+  "word_count": 175
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 26,
+  "title": "Resucitaremos, pues, como también lo atestigua la Escritura",
+  "body_html": "<p>¿Tendremos, pues, por algo grande y maravilloso que el Hacedor de todas las cosas resucite a los que le han servido piadosamente en la seguridad de una buena fe, cuando aun por medio de un ave nos muestra la grandeza de su poder para cumplir su promesa? Porque [la Escritura] dice en cierto lugar: «Tú me levantarás, y te alabaré»; y también: «Yo me acosté, y dormí; desperté, porque tú estás conmigo»; y además dice Job: «Tú resucitarás esta carne mía, que ha sufrido todas estas cosas».</p>",
+  "study_questions": [],
+  "body_text": "¿Tendremos, pues, por algo grande y maravilloso que el Hacedor de todas las cosas resucite a los que le han servido piadosamente en la seguridad de una buena fe, cuando aun por medio de un ave nos muestra la grandeza de su poder para cumplir su promesa? Porque [la Escritura] dice en cierto lugar: «Tú me levantarás, y te alabaré»; y también: «Yo me acosté, y dormí; desperté, porque tú estás conmigo»; y además dice Job: «Tú resucitarás esta carne mía, que ha sufrido todas estas cosas».",
+  "word_count": 87
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 27,
+  "title": "En la esperanza de la resurrección",
+  "body_html": "<p>Teniendo, pues, esta esperanza, únanse nuestras almas a aquel que es fiel en sus promesas y justo en sus juicios. El que nos ha mandado no mentir, mucho menos mentirá él mismo; porque nada es imposible para Dios, excepto mentir. Avívese, pues, de nuevo su fe en nosotros, y consideremos que todas las cosas están cerca de él. Por la palabra de su poder estableció todas las cosas, y por su palabra puede derribarlas. «¿Quién le dirá: Qué has hecho? ¿o quién resistirá el poder de su fuerza?». Cuando quiera y como quiera hará todas las cosas, y nada de lo que él ha determinado pasará. Todas las cosas están patentes delante de él, y nada puede ocultarse a su consejo. «Los cielos cuentan la gloria de Dios, y el firmamento anuncia la obra de sus manos. Un día emite palabra a otro día, y una noche a otra noche declara sabiduría. No hay dichos ni palabras cuyas voces no se oigan».</p>",
+  "study_questions": [],
+  "body_text": "Teniendo, pues, esta esperanza, únanse nuestras almas a aquel que es fiel en sus promesas y justo en sus juicios. El que nos ha mandado no mentir, mucho menos mentirá él mismo; porque nada es imposible para Dios, excepto mentir. Avívese, pues, de nuevo su fe en nosotros, y consideremos que todas las cosas están cerca de él. Por la palabra de su poder estableció todas las cosas, y por su palabra puede derribarlas. «¿Quién le dirá: Qué has hecho? ¿o quién resistirá el poder de su fuerza?». Cuando quiera y como quiera hará todas las cosas, y nada de lo que él ha determinado pasará. Todas las cosas están patentes delante de él, y nada puede ocultarse a su consejo. «Los cielos cuentan la gloria de Dios, y el firmamento anuncia la obra de sus manos. Un día emite palabra a otro día, y una noche a otra noche declara sabiduría. No hay dichos ni palabras cuyas voces no se oigan».",
+  "word_count": 162
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 28,
+  "title": "Dios lo ve todo: evitemos, pues, la transgresión",
+  "body_html": "<p>Puesto que todas las cosas son vistas y oídas [por Dios], temámosle, y abandonemos las obras malas que proceden de los malos deseos, para que, por su misericordia, seamos protegidos de los juicios venideros. Porque ¿adónde podrá huir alguno de nosotros de su poderosa mano? ¿O qué mundo recibirá a alguno de los que huyen de él? Porque la Escritura dice en cierto lugar: «¿Adónde iré, y dónde me esconderé de tu presencia? Si subiere a los cielos, allí estás tú; si me fuere hasta los confines de la tierra, allí está tu diestra; si en el abismo hiciere mi lecho, allí está tu Espíritu». ¿Adónde, pues, irá alguno, o dónde escapará de aquel que abarca todas las cosas? </p>",
+  "study_questions": [],
+  "body_text": "Puesto que todas las cosas son vistas y oídas [por Dios], temámosle, y abandonemos las obras malas que proceden de los malos deseos, para que, por su misericordia, seamos protegidos de los juicios venideros. Porque ¿adónde podrá huir alguno de nosotros de su poderosa mano? ¿O qué mundo recibirá a alguno de los que huyen de él? Porque la Escritura dice en cierto lugar: «¿Adónde iré, y dónde me esconderé de tu presencia? Si subiere a los cielos, allí estás tú; si me fuere hasta los confines de la tierra, allí está tu diestra; si en el abismo hiciere mi lecho, allí está tu Espíritu». ¿Adónde, pues, irá alguno, o dónde escapará de aquel que abarca todas las cosas?",
+  "word_count": 119
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 29,
+  "title": "Acerquémonos también a Dios con pureza de corazón",
+  "body_html": "<p>Acerquémonos, pues, a él con santidad de espíritu, levantando hacia él manos puras y sin mancha, amando a nuestro Padre bondadoso y misericordioso, que nos ha hecho partícipes de las bendiciones de sus elegidos. Porque así está escrito: «Cuando el Altísimo dividió las naciones, cuando dispersó a los hijos de Adán, estableció los términos de las naciones según el número de los ángeles de Dios. Su pueblo Jacob vino a ser la porción del Señor, e Israel la suerte de su heredad». Y en otro lugar [la Escritura] dice: «He aquí, el Señor toma para sí una nación de en medio de las naciones, como un hombre toma las primicias de su era; y de esa nación saldrá el Santísimo».</p>",
+  "study_questions": [],
+  "body_text": "Acerquémonos, pues, a él con santidad de espíritu, levantando hacia él manos puras y sin mancha, amando a nuestro Padre bondadoso y misericordioso, que nos ha hecho partícipes de las bendiciones de sus elegidos. Porque así está escrito: «Cuando el Altísimo dividió las naciones, cuando dispersó a los hijos de Adán, estableció los términos de las naciones según el número de los ángeles de Dios. Su pueblo Jacob vino a ser la porción del Señor, e Israel la suerte de su heredad». Y en otro lugar [la Escritura] dice: «He aquí, el Señor toma para sí una nación de en medio de las naciones, como un hombre toma las primicias de su era; y de esa nación saldrá el Santísimo».",
+  "word_count": 120
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 30,
+  "title": "Hagamos lo que agrada a Dios",
+  "body_html": "<p>Siendo, pues, porción del Santo, hagamos todo lo que pertenece a la santidad, huyendo de toda maledicencia, de todo abrazo abominable e impuro, así como de toda embriaguez, del afán de novedades, de toda concupiscencia abominable, del detestable adulterio y de la execrable soberbia. «Porque Dios», dice [la Escritura], «resiste a los soberbios, y da gracia a los humildes». Unámonos, pues, a aquellos a quienes Dios ha dado su gracia. Revistámonos de concordia y humildad, ejercitando siempre el dominio propio, manteniéndonos lejos de toda murmuración y maledicencia, justificados por nuestras obras y no por nuestras palabras. Porque [la Escritura] dice: «El que mucho habla, también oirá mucho en respuesta. ¿Y el que es pronto en hablar se tiene por justo? Bienaventurado el nacido de mujer, que vive poco tiempo: no te des a hablar mucho». Que nuestra alabanza esté en Dios, y no venga de nosotros mismos; porque Dios aborrece a los que se alaban a sí mismos. Que otros den testimonio de nuestras buenas obras, como sucedió con nuestros justos antepasados. La osadía, la arrogancia y la audacia son propias de los malditos de Dios; pero la moderación, la humildad y la mansedumbre, de los que son bendecidos por él. </p>",
+  "study_questions": [],
+  "body_text": "Siendo, pues, porción del Santo, hagamos todo lo que pertenece a la santidad, huyendo de toda maledicencia, de todo abrazo abominable e impuro, así como de toda embriaguez, del afán de novedades, de toda concupiscencia abominable, del detestable adulterio y de la execrable soberbia. «Porque Dios», dice [la Escritura], «resiste a los soberbios, y da gracia a los humildes». Unámonos, pues, a aquellos a quienes Dios ha dado su gracia. Revistámonos de concordia y humildad, ejercitando siempre el dominio propio, manteniéndonos lejos de toda murmuración y maledicencia, justificados por nuestras obras y no por nuestras palabras. Porque [la Escritura] dice: «El que mucho habla, también oirá mucho en respuesta. ¿Y el que es pronto en hablar se tiene por justo? Bienaventurado el nacido de mujer, que vive poco tiempo: no te des a hablar mucho». Que nuestra alabanza esté en Dios, y no venga de nosotros mismos; porque Dios aborrece a los que se alaban a sí mismos. Que otros den testimonio de nuestras buenas obras, como sucedió con nuestros justos antepasados. La osadía, la arrogancia y la audacia son propias de los malditos de Dios; pero la moderación, la humildad y la mansedumbre, de los que son bendecidos por él.",
+  "word_count": 201
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 31,
+  "title": "Veamos por qué medios podemos obtener la bendición divina",
+  "body_html": "<p>Aferrémonos, pues, a su bendición, y consideremos cuáles son los medios para poseerla. Repasemos lo que ha sucedido desde el principio. ¿Por qué fue bendecido nuestro padre Abraham? ¿No fue porque obró justicia y verdad por medio de la fe? Isaac, con plena confianza, como quien sabe lo que había de suceder, se ofreció de buen grado como sacrificio. Jacob, a causa de su hermano, salió con humildad de su propia tierra, fue a Labán y le sirvió; y le fue dado el cetro de las doce tribus de Israel. </p>",
+  "study_questions": [],
+  "body_text": "Aferrémonos, pues, a su bendición, y consideremos cuáles son los medios para poseerla. Repasemos lo que ha sucedido desde el principio. ¿Por qué fue bendecido nuestro padre Abraham? ¿No fue porque obró justicia y verdad por medio de la fe? Isaac, con plena confianza, como quien sabe lo que había de suceder, se ofreció de buen grado como sacrificio. Jacob, a causa de su hermano, salió con humildad de su propia tierra, fue a Labán y le sirvió; y le fue dado el cetro de las doce tribus de Israel.",
+  "word_count": 90
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 32,
+  "title": "Somos justificados no por nuestras propias obras, sino por la fe",
+  "body_html": "<p>Quien considere con sinceridad cada cosa en particular reconocerá la grandeza de los dones que fueron concedidos por medio de él. Porque de él proceden los sacerdotes y todos los levitas que ministran en el altar de Dios. De él también [descendió] nuestro Señor Jesucristo según la carne. De él [surgieron] reyes, príncipes y gobernantes del linaje de Judá. Tampoco sus demás tribus gozan de poca gloria, puesto que Dios había prometido: «Tu descendencia será como las estrellas del cielo». Todos estos, pues, fueron grandemente honrados y engrandecidos, no por sí mismos, ni por sus propias obras, ni por la justicia que practicaron, sino por la acción de su voluntad. Y nosotros también, llamados por su voluntad en Cristo Jesús, no somos justificados por nosotros mismos, ni por nuestra propia sabiduría, entendimiento o piedad, ni por las obras que hayamos hecho en santidad de corazón, sino por aquella fe por la cual, desde el principio, Dios todopoderoso ha justificado a todos los hombres; a él sea la gloria por los siglos de los siglos. Amén. </p>",
+  "study_questions": [],
+  "body_text": "Quien considere con sinceridad cada cosa en particular reconocerá la grandeza de los dones que fueron concedidos por medio de él. Porque de él proceden los sacerdotes y todos los levitas que ministran en el altar de Dios. De él también [descendió] nuestro Señor Jesucristo según la carne. De él [surgieron] reyes, príncipes y gobernantes del linaje de Judá. Tampoco sus demás tribus gozan de poca gloria, puesto que Dios había prometido: «Tu descendencia será como las estrellas del cielo». Todos estos, pues, fueron grandemente honrados y engrandecidos, no por sí mismos, ni por sus propias obras, ni por la justicia que practicaron, sino por la acción de su voluntad. Y nosotros también, llamados por su voluntad en Cristo Jesús, no somos justificados por nosotros mismos, ni por nuestra propia sabiduría, entendimiento o piedad, ni por las obras que hayamos hecho en santidad de corazón, sino por aquella fe por la cual, desde el principio, Dios todopoderoso ha justificado a todos los hombres; a él sea la gloria por los siglos de los siglos. Amén.",
+  "word_count": 175
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 33,
+  "title": "Pero no abandonemos la práctica de las buenas obras y del amor",
+  "body_html": "<p>¿Qué haremos, pues, hermanos? ¿Nos volveremos perezosos para hacer el bien y dejaremos de practicar el amor? ¡No permita Dios que sigamos tal camino! Antes bien, apresurémonos con toda energía y prontitud de ánimo a realizar toda buena obra. Porque el mismo Creador y Señor de todas las cosas se regocija en sus obras. Pues con su poder infinitamente grande estableció los cielos, y con su sabiduría incomprensible los adornó. Separó también la tierra del agua que la rodea, y la asentó sobre el fundamento inamovible de su propia voluntad. A los animales que hay sobre ella los llamó a la existencia por su propia palabra. Asimismo, cuando hubo formado el mar y los seres vivientes que hay en él, los encerró [dentro de sus propios límites] por su propio poder. Por encima de todo, con sus manos santas y puras formó al hombre, la más excelente [de sus criaturas], verdaderamente grande por el entendimiento que le fue dado: la expresa semejanza de su propia imagen. Porque así dice Dios: «Hagamos al hombre a nuestra imagen, conforme a nuestra semejanza. Y creó Dios al hombre; varón y hembra los creó». Habiendo así terminado todas estas cosas, las aprobó, las bendijo y dijo: «Fructificad y multiplicaos». Vemos, pues, cómo todos los justos han sido adornados de buenas obras, y cómo el Señor mismo, adornándose con sus obras, se regocijó. Teniendo, pues, tal ejemplo, sometámonos sin demora a su voluntad, y obremos la obra de la justicia con todas nuestras fuerzas. </p>",
+  "study_questions": [],
+  "body_text": "¿Qué haremos, pues, hermanos? ¿Nos volveremos perezosos para hacer el bien y dejaremos de practicar el amor? ¡No permita Dios que sigamos tal camino! Antes bien, apresurémonos con toda energía y prontitud de ánimo a realizar toda buena obra. Porque el mismo Creador y Señor de todas las cosas se regocija en sus obras. Pues con su poder infinitamente grande estableció los cielos, y con su sabiduría incomprensible los adornó. Separó también la tierra del agua que la rodea, y la asentó sobre el fundamento inamovible de su propia voluntad. A los animales que hay sobre ella los llamó a la existencia por su propia palabra. Asimismo, cuando hubo formado el mar y los seres vivientes que hay en él, los encerró [dentro de sus propios límites] por su propio poder. Por encima de todo, con sus manos santas y puras formó al hombre, la más excelente [de sus criaturas], verdaderamente grande por el entendimiento que le fue dado: la expresa semejanza de su propia imagen. Porque así dice Dios: «Hagamos al hombre a nuestra imagen, conforme a nuestra semejanza. Y creó Dios al hombre; varón y hembra los creó». Habiendo así terminado todas estas cosas, las aprobó, las bendijo y dijo: «Fructificad y multiplicaos». Vemos, pues, cómo todos los justos han sido adornados de buenas obras, y cómo el Señor mismo, adornándose con sus obras, se regocijó. Teniendo, pues, tal ejemplo, sometámonos sin demora a su voluntad, y obremos la obra de la justicia con todas nuestras fuerzas.",
+  "word_count": 249
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 34,
+  "title": "Grande es la recompensa de las buenas obras ante Dios",
+  "body_html": "<p>El buen siervo recibe con confianza el pan de su trabajo; el perezoso y negligente no puede mirar a la cara a su patrón. Es necesario, por tanto, que seamos diligentes en la práctica del bien; porque de él proceden todas las cosas. Y así nos advierte de antemano: «He aquí el Señor [viene], y su recompensa está delante de su rostro, para pagar a cada uno según su obra». Nos exhorta, pues, a atender a esto de todo corazón: que no seamos perezosos ni negligentes en ninguna buena obra. Que nuestra gloria y nuestra confianza estén en él. Sometámonos a su voluntad. Consideremos toda la multitud de sus ángeles, cómo están siempre dispuestos a servir a su voluntad. Porque dice la Escritura: «Millones de millones estaban en pie en torno a él, y millares de millares le servían, y clamaban: Santo, santo, santo, [es] el Señor de los ejércitos; toda la creación está llena de su gloria». Por tanto, también nosotros, reunidos en concordia y con buena conciencia, clamemos a él fervientemente, como con una sola boca, para que lleguemos a ser partícipes de sus grandes y gloriosas promesas. Porque [la Escritura] dice: «Cosas que ojo no vio, ni oído oyó, ni han subido en corazón de hombre, son las que él ha preparado para los que lo esperan».</p>",
+  "study_questions": [],
+  "body_text": "El buen siervo recibe con confianza el pan de su trabajo; el perezoso y negligente no puede mirar a la cara a su patrón. Es necesario, por tanto, que seamos diligentes en la práctica del bien; porque de él proceden todas las cosas. Y así nos advierte de antemano: «He aquí el Señor [viene], y su recompensa está delante de su rostro, para pagar a cada uno según su obra». Nos exhorta, pues, a atender a esto de todo corazón: que no seamos perezosos ni negligentes en ninguna buena obra. Que nuestra gloria y nuestra confianza estén en él. Sometámonos a su voluntad. Consideremos toda la multitud de sus ángeles, cómo están siempre dispuestos a servir a su voluntad. Porque dice la Escritura: «Millones de millones estaban en pie en torno a él, y millares de millares le servían, y clamaban: Santo, santo, santo, [es] el Señor de los ejércitos; toda la creación está llena de su gloria». Por tanto, también nosotros, reunidos en concordia y con buena conciencia, clamemos a él fervientemente, como con una sola boca, para que lleguemos a ser partícipes de sus grandes y gloriosas promesas. Porque [la Escritura] dice: «Cosas que ojo no vio, ni oído oyó, ni han subido en corazón de hombre, son las que él ha preparado para los que lo esperan».",
+  "word_count": 220
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 35,
+  "title": "Inmensa es esta recompensa",
+  "body_html": "<p>¡Cuán benditos y maravillosos, amados, son los dones de Dios! ¡Vida en inmortalidad, esplendor en justicia, verdad en plena confianza, fe en seguridad, dominio propio en santidad! Y todas estas cosas caen [ya ahora] bajo el conocimiento de nuestro entendimiento; ¿qué serán, entonces, las que están preparadas para los que lo esperan? Solo el Creador y Padre de todos los mundos, el Santísimo, conoce su número y su hermosura. Esforcémonos, pues, con empeño por ser hallados en el número de los que lo esperan, a fin de participar de sus dones prometidos. Pero ¿cómo, amados, se hará esto? Si nuestro entendimiento está fijo por la fe en Dios; si buscamos con empeño lo que le es agradable y aceptable; si hacemos lo que está en armonía con su voluntad intachable; y si seguimos el camino de la verdad, desechando de nosotros toda injusticia e iniquidad, junto con toda avaricia, contienda, malas prácticas, engaño, murmuración y maledicencia, todo odio a Dios, soberbia y altivez, vanagloria y ambición. Porque los que hacen tales cosas son aborrecibles a Dios; y no solo los que las hacen, sino también los que se complacen en quienes las hacen. Porque dice la Escritura: «Pero al pecador dijo Dios: ¿Por qué declaras mis estatutos y tomas mi pacto en tu boca, pues tú aborreces la corrección y echas a tu espalda mis palabras? Si veías al ladrón, consentías con él, y con los adúlteros era tu parte. Tu boca abundaba en maldad, y tu lengua tramaba engaño. Te sentabas y hablabas contra tu hermano; contra el hijo de tu madre ponías infamia. Estas cosas hiciste, y yo he callado; pensabas, malvado, que yo sería como tú. Pero yo te reprenderé, y te pondré delante de ti mismo. Entended ahora esto, los que os olvidáis de Dios, no sea que os despedace como un león, y no haya quien os libre. El sacrificio de alabanza me glorificará, y allí está el camino por el cual le mostraré la salvación de Dios».</p>",
+  "study_questions": [],
+  "body_text": "¡Cuán benditos y maravillosos, amados, son los dones de Dios! ¡Vida en inmortalidad, esplendor en justicia, verdad en plena confianza, fe en seguridad, dominio propio en santidad! Y todas estas cosas caen [ya ahora] bajo el conocimiento de nuestro entendimiento; ¿qué serán, entonces, las que están preparadas para los que lo esperan? Solo el Creador y Padre de todos los mundos, el Santísimo, conoce su número y su hermosura. Esforcémonos, pues, con empeño por ser hallados en el número de los que lo esperan, a fin de participar de sus dones prometidos. Pero ¿cómo, amados, se hará esto? Si nuestro entendimiento está fijo por la fe en Dios; si buscamos con empeño lo que le es agradable y aceptable; si hacemos lo que está en armonía con su voluntad intachable; y si seguimos el camino de la verdad, desechando de nosotros toda injusticia e iniquidad, junto con toda avaricia, contienda, malas prácticas, engaño, murmuración y maledicencia, todo odio a Dios, soberbia y altivez, vanagloria y ambición. Porque los que hacen tales cosas son aborrecibles a Dios; y no solo los que las hacen, sino también los que se complacen en quienes las hacen. Porque dice la Escritura: «Pero al pecador dijo Dios: ¿Por qué declaras mis estatutos y tomas mi pacto en tu boca, pues tú aborreces la corrección y echas a tu espalda mis palabras? Si veías al ladrón, consentías con él, y con los adúlteros era tu parte. Tu boca abundaba en maldad, y tu lengua tramaba engaño. Te sentabas y hablabas contra tu hermano; contra el hijo de tu madre ponías infamia. Estas cosas hiciste, y yo he callado; pensabas, malvado, que yo sería como tú. Pero yo te reprenderé, y te pondré delante de ti mismo. Entended ahora esto, los que os olvidáis de Dios, no sea que os despedace como un león, y no haya quien os libre. El sacrificio de alabanza me glorificará, y allí está el camino por el cual le mostraré la salvación de Dios».",
+  "word_count": 333
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 36,
+  "title": "Todas las bendiciones nos son dadas por medio de Cristo",
+  "body_html": "<p>Este es el camino, amados, en el cual hallamos a nuestro Salvador, Jesucristo, el Sumo Sacerdote de todas nuestras ofrendas, el defensor y auxilio de nuestra debilidad. Por él miramos a las alturas del cielo. Por él contemplamos, como en un espejo, su rostro inmaculado y excelentísimo. Por él son abiertos los ojos de nuestro corazón. Por él nuestro entendimiento necio y entenebrecido florece de nuevo hacia su luz admirable. Por él quiso el Señor que gustáramos del conocimiento inmortal, «el cual, siendo el resplandor de su majestad, es tanto superior a los ángeles cuanto alcanzó por herencia más excelente nombre que ellos». Porque así está escrito: «El que hace a sus ángeles espíritus, y a sus ministros llama de fuego». Pero acerca de su Hijo el Señor habló así: «Mi Hijo eres tú; yo te engendré hoy. Pídeme, y te daré por herencia las naciones, y por posesión tuya los confines de la tierra». Y de nuevo le dice: «Siéntate a mi diestra, hasta que ponga a tus enemigos por estrado de tus pies». Pero ¿quiénes son sus enemigos? Todos los malvados, y los que se empeñan en oponerse a la voluntad de Dios.</p>",
+  "study_questions": [],
+  "body_text": "Este es el camino, amados, en el cual hallamos a nuestro Salvador, Jesucristo, el Sumo Sacerdote de todas nuestras ofrendas, el defensor y auxilio de nuestra debilidad. Por él miramos a las alturas del cielo. Por él contemplamos, como en un espejo, su rostro inmaculado y excelentísimo. Por él son abiertos los ojos de nuestro corazón. Por él nuestro entendimiento necio y entenebrecido florece de nuevo hacia su luz admirable. Por él quiso el Señor que gustáramos del conocimiento inmortal, «el cual, siendo el resplandor de su majestad, es tanto superior a los ángeles cuanto alcanzó por herencia más excelente nombre que ellos». Porque así está escrito: «El que hace a sus ángeles espíritus, y a sus ministros llama de fuego». Pero acerca de su Hijo el Señor habló así: «Mi Hijo eres tú; yo te engendré hoy. Pídeme, y te daré por herencia las naciones, y por posesión tuya los confines de la tierra». Y de nuevo le dice: «Siéntate a mi diestra, hasta que ponga a tus enemigos por estrado de tus pies». Pero ¿quiénes son sus enemigos? Todos los malvados, y los que se empeñan en oponerse a la voluntad de Dios.",
+  "word_count": 195
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 37,
+  "title": "Cristo es nuestro jefe, y nosotros sus soldados",
+  "body_html": "<p>Hombres y hermanos, militemos, pues, con toda energía, conforme a sus santos mandamientos. Consideremos a los que sirven bajo nuestros generales: con qué orden, obediencia y sumisión ejecutan lo que se les manda. No todos son prefectos, ni jefes de mil, ni de cien, ni de cincuenta, ni cosa semejante; sino que cada uno, en su propio rango, ejecuta lo que mandan el rey y los generales. Los grandes no pueden subsistir sin los pequeños, ni los pequeños sin los grandes. Hay una especie de mezcla en todas las cosas, y de ahí nace el provecho mutuo. Tomemos como ejemplo nuestro cuerpo. La cabeza no es nada sin los pies, ni los pies son nada sin la cabeza; más aún, los miembros más pequeños de nuestro cuerpo son necesarios y útiles para todo el cuerpo. Pero todos obran en armonía y están sujetos a una misma regla para la conservación de todo el cuerpo. </p>",
+  "study_questions": [],
+  "body_text": "Hombres y hermanos, militemos, pues, con toda energía, conforme a sus santos mandamientos. Consideremos a los que sirven bajo nuestros generales: con qué orden, obediencia y sumisión ejecutan lo que se les manda. No todos son prefectos, ni jefes de mil, ni de cien, ni de cincuenta, ni cosa semejante; sino que cada uno, en su propio rango, ejecuta lo que mandan el rey y los generales. Los grandes no pueden subsistir sin los pequeños, ni los pequeños sin los grandes. Hay una especie de mezcla en todas las cosas, y de ahí nace el provecho mutuo. Tomemos como ejemplo nuestro cuerpo. La cabeza no es nada sin los pies, ni los pies son nada sin la cabeza; más aún, los miembros más pequeños de nuestro cuerpo son necesarios y útiles para todo el cuerpo. Pero todos obran en armonía y están sujetos a una misma regla para la conservación de todo el cuerpo.",
+  "word_count": 154
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 38,
+  "title": "Que los miembros de la Iglesia se sometan unos a otros",
+  "body_html": "<p>Consérvese, pues, todo nuestro cuerpo en Cristo Jesús; y que cada uno esté sujeto a su prójimo, según el don particular que le ha sido concedido. Que el fuerte no desprecie al débil, y que el débil respete al fuerte. Que el rico provea a las necesidades del pobre; y que el pobre bendiga a Dios, porque le ha dado a alguien por quien su necesidad pueda ser suplida. Que el sabio muestre su sabiduría, no con [meras] palabras, sino con buenas obras. Que el humilde no dé testimonio de sí mismo, sino que deje que otro dé testimonio de él. Que el que es puro en la carne no se enorgullezca de ello ni se jacte, sabiendo que fue otro quien le concedió el don de la continencia. Consideremos, pues, hermanos, de qué materia fuimos hechos; quiénes y qué clase de seres éramos cuando vinimos al mundo, como salidos de un sepulcro y de densas tinieblas. El que nos hizo y nos formó, habiendo preparado para nosotros sus generosos dones antes de que naciéramos, nos introdujo en su mundo. Puesto que recibimos de él todas estas cosas, debemos darle gracias por todo; a él sea la gloria por los siglos de los siglos. Amén. </p>",
+  "study_questions": [],
+  "body_text": "Consérvese, pues, todo nuestro cuerpo en Cristo Jesús; y que cada uno esté sujeto a su prójimo, según el don particular que le ha sido concedido. Que el fuerte no desprecie al débil, y que el débil respete al fuerte. Que el rico provea a las necesidades del pobre; y que el pobre bendiga a Dios, porque le ha dado a alguien por quien su necesidad pueda ser suplida. Que el sabio muestre su sabiduría, no con [meras] palabras, sino con buenas obras. Que el humilde no dé testimonio de sí mismo, sino que deje que otro dé testimonio de él. Que el que es puro en la carne no se enorgullezca de ello ni se jacte, sabiendo que fue otro quien le concedió el don de la continencia. Consideremos, pues, hermanos, de qué materia fuimos hechos; quiénes y qué clase de seres éramos cuando vinimos al mundo, como salidos de un sepulcro y de densas tinieblas. El que nos hizo y nos formó, habiendo preparado para nosotros sus generosos dones antes de que naciéramos, nos introdujo en su mundo. Puesto que recibimos de él todas estas cosas, debemos darle gracias por todo; a él sea la gloria por los siglos de los siglos. Amén.",
+  "word_count": 205
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 39,
+  "title": "No hay razón para la vanidad",
+  "body_html": "<p>Hombres necios e insensatos, que no tienen sabiduría ni instrucción, se burlan de nosotros y nos escarnecen, deseosos de exaltarse a sí mismos en sus propias fantasías. Porque ¿qué puede hacer un hombre mortal? ¿O qué fuerza hay en uno hecho del polvo? Porque está escrito: «No había figura delante de mis ojos; solo oí un susurro y una voz [que decía]: ¿Qué, pues? ¿Será el hombre puro delante del Señor? ¿O será [tenido por] intachable en sus obras, si él no confía en sus siervos, y aun a sus ángeles acusa de perversidad? El cielo no es limpio delante de sus ojos; ¡cuánto menos los que habitan en casas de barro, de las cuales también nosotros mismos fuimos hechos! Los hirió como a la polilla; y de la mañana a la tarde no subsisten. Porque no pudieron valerse a sí mismos, perecieron. Sopló sobre ellos, y murieron, porque no tenían sabiduría. Pero da voces ahora, si hay quien te responda, o si te vuelves a alguno de los santos ángeles; porque la ira mata al necio, y la envidia da muerte al que anda errado. Yo he visto a los necios echar raíces, pero su morada fue consumida en seguida. Estén sus hijos lejos de la salvación; sean despreciados a las puertas de los que son menos que ellos, y no habrá quien los libre. Porque lo que estaba preparado para ellos lo comerán los justos; y ellos no serán librados del mal».</p>",
+  "study_questions": [],
+  "body_text": "Hombres necios e insensatos, que no tienen sabiduría ni instrucción, se burlan de nosotros y nos escarnecen, deseosos de exaltarse a sí mismos en sus propias fantasías. Porque ¿qué puede hacer un hombre mortal? ¿O qué fuerza hay en uno hecho del polvo? Porque está escrito: «No había figura delante de mis ojos; solo oí un susurro y una voz [que decía]: ¿Qué, pues? ¿Será el hombre puro delante del Señor? ¿O será [tenido por] intachable en sus obras, si él no confía en sus siervos, y aun a sus ángeles acusa de perversidad? El cielo no es limpio delante de sus ojos; ¡cuánto menos los que habitan en casas de barro, de las cuales también nosotros mismos fuimos hechos! Los hirió como a la polilla; y de la mañana a la tarde no subsisten. Porque no pudieron valerse a sí mismos, perecieron. Sopló sobre ellos, y murieron, porque no tenían sabiduría. Pero da voces ahora, si hay quien te responda, o si te vuelves a alguno de los santos ángeles; porque la ira mata al necio, y la envidia da muerte al que anda errado. Yo he visto a los necios echar raíces, pero su morada fue consumida en seguida. Estén sus hijos lejos de la salvación; sean despreciados a las puertas de los que son menos que ellos, y no habrá quien los libre. Porque lo que estaba preparado para ellos lo comerán los justos; y ellos no serán librados del mal».",
+  "word_count": 244
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 40,
+  "title": "Guardemos en la Iglesia el orden establecido por Dios",
+  "body_html": "<p>Siéndonos, pues, manifiestas estas cosas, y puesto que hemos penetrado en las profundidades del conocimiento divino, conviene que hagamos con [el debido] orden todas las cosas que el Señor nos ha mandado cumplir en los tiempos señalados. Él ha ordenado que [se le presenten] ofrendas y que se [le] rinda servicio, y eso no a la ligera ni sin orden, sino en los tiempos y horas establecidos. Dónde y por quiénes quiere que se hagan estas cosas, él mismo lo ha fijado por su suprema voluntad, a fin de que todas las cosas, hechas piadosamente según su beneplácito, le sean aceptables. Así pues, los que presentan sus ofrendas en los tiempos señalados son aceptados y bienaventurados; porque, al seguir las leyes del Señor, no pecan. Pues al sumo sacerdote le están asignados sus propios oficios, a los sacerdotes se les ha prescrito su propio lugar, y a los levitas les corresponden sus propios ministerios. El laico está sujeto a las leyes que corresponden a los laicos. </p>",
+  "study_questions": [],
+  "body_text": "Siéndonos, pues, manifiestas estas cosas, y puesto que hemos penetrado en las profundidades del conocimiento divino, conviene que hagamos con [el debido] orden todas las cosas que el Señor nos ha mandado cumplir en los tiempos señalados. Él ha ordenado que [se le presenten] ofrendas y que se [le] rinda servicio, y eso no a la ligera ni sin orden, sino en los tiempos y horas establecidos. Dónde y por quiénes quiere que se hagan estas cosas, él mismo lo ha fijado por su suprema voluntad, a fin de que todas las cosas, hechas piadosamente según su beneplácito, le sean aceptables. Así pues, los que presentan sus ofrendas en los tiempos señalados son aceptados y bienaventurados; porque, al seguir las leyes del Señor, no pecan. Pues al sumo sacerdote le están asignados sus propios oficios, a los sacerdotes se les ha prescrito su propio lugar, y a los levitas les corresponden sus propios ministerios. El laico está sujeto a las leyes que corresponden a los laicos.",
+  "word_count": 166
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 41,
+  "title": "Continuación del mismo tema",
+  "body_html": "<p>Que cada uno de vosotros, hermanos, dé gracias a Dios en su propio orden, viviendo con toda buena conciencia, con la debida gravedad, y sin traspasar la regla del ministerio que le ha sido prescrita. No en cualquier lugar, hermanos, se ofrecen los sacrificios diarios, ni las ofrendas de paz, ni las ofrendas por el pecado y por la culpa, sino solo en Jerusalén. Y aun allí no se ofrecen en cualquier lugar, sino solo ante el altar, delante del templo, después de que lo que se ofrece ha sido examinado con cuidado por el sumo sacerdote y por los ministros ya mencionados. Así pues, los que hacen algo fuera de lo que es conforme a su voluntad son castigados con la muerte. Ya veis, hermanos, que cuanto mayor es el conocimiento que se nos ha concedido, tanto mayor es también el peligro al que estamos expuestos. </p>",
+  "study_questions": [],
+  "body_text": "Que cada uno de vosotros, hermanos, dé gracias a Dios en su propio orden, viviendo con toda buena conciencia, con la debida gravedad, y sin traspasar la regla del ministerio que le ha sido prescrita. No en cualquier lugar, hermanos, se ofrecen los sacrificios diarios, ni las ofrendas de paz, ni las ofrendas por el pecado y por la culpa, sino solo en Jerusalén. Y aun allí no se ofrecen en cualquier lugar, sino solo ante el altar, delante del templo, después de que lo que se ofrece ha sido examinado con cuidado por el sumo sacerdote y por los ministros ya mencionados. Así pues, los que hacen algo fuera de lo que es conforme a su voluntad son castigados con la muerte. Ya veis, hermanos, que cuanto mayor es el conocimiento que se nos ha concedido, tanto mayor es también el peligro al que estamos expuestos.",
+  "word_count": 147
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 42,
+  "title": "El orden de los ministros en la Iglesia",
+  "body_html": "<p>Los apóstoles nos predicaron el evangelio de parte del Señor Jesucristo; Jesucristo [lo hizo] de parte de Dios. Cristo, pues, fue enviado por Dios, y los apóstoles por Cristo. Ambas misiones, por tanto, se hicieron ordenadamente, según la voluntad de Dios. Habiendo, pues, recibido sus instrucciones, y estando plenamente convencidos por la resurrección de nuestro Señor Jesucristo, y afirmados en la palabra de Dios, con plena certeza del Espíritu Santo, salieron anunciando que el reino de Dios estaba cerca. Y así, predicando por regiones y ciudades, establecieron a las primicias [de sus trabajos], después de probarlas por el Espíritu, como obispos y diáconos de los que habían de creer después. Y esto no era cosa nueva, pues ciertamente muchos siglos antes se había escrito acerca de obispos y diáconos. Porque así dice la Escritura en cierto lugar: «Estableceré a sus obispos en justicia, y a sus diáconos en fe».</p>",
+  "study_questions": [],
+  "body_text": "Los apóstoles nos predicaron el evangelio de parte del Señor Jesucristo; Jesucristo [lo hizo] de parte de Dios. Cristo, pues, fue enviado por Dios, y los apóstoles por Cristo. Ambas misiones, por tanto, se hicieron ordenadamente, según la voluntad de Dios. Habiendo, pues, recibido sus instrucciones, y estando plenamente convencidos por la resurrección de nuestro Señor Jesucristo, y afirmados en la palabra de Dios, con plena certeza del Espíritu Santo, salieron anunciando que el reino de Dios estaba cerca. Y así, predicando por regiones y ciudades, establecieron a las primicias [de sus trabajos], después de probarlas por el Espíritu, como obispos y diáconos de los que habían de creer después. Y esto no era cosa nueva, pues ciertamente muchos siglos antes se había escrito acerca de obispos y diáconos. Porque así dice la Escritura en cierto lugar: «Estableceré a sus obispos en justicia, y a sus diáconos en fe».",
+  "word_count": 149
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 43,
+  "title": "Moisés apaciguó la contienda sobre la dignidad sacerdotal",
+  "body_html": "<p>¿Y qué tiene de extraño que los que en Cristo recibieron de Dios semejante encargo establecieran a los [ministros] antes mencionados, cuando también el bienaventurado Moisés, «siervo fiel en toda su casa», consignó en los libros sagrados todos los mandatos que le fueron dados, y cuando también los demás profetas lo siguieron, dando testimonio unánime de las ordenanzas que él había establecido? Porque, cuando surgió la rivalidad acerca del sacerdocio, y las tribus disputaban entre sí sobre cuál de ellas sería honrada con aquel glorioso título, él mandó a los doce príncipes de las tribus que le trajeran sus varas, cada una inscrita con el nombre de su tribu. Y las tomó y las ató [juntas], y las selló con los anillos de los príncipes de las tribus, y las depositó en el tabernáculo del testimonio, sobre la mesa de Dios. Y habiendo cerrado las puertas del tabernáculo, selló las llaves, como había hecho con las varas, y les dijo: Hombres y hermanos, la tribu cuya vara florezca, esa ha escogido Dios para desempeñar el oficio del sacerdocio y ministrarle. Y venida la mañana, convocó a todo Israel, seiscientos mil hombres, mostró los sellos a los príncipes de las tribus, abrió el tabernáculo del testimonio y sacó las varas. Y se halló que la vara de Aarón no solo había florecido, sino que además llevaba fruto. ¿Qué os parece, amados? ¿No sabía Moisés de antemano que esto sucedería? Sin duda lo sabía; pero obró así para que no hubiera sedición en Israel, y para que fuese glorificado el nombre del único Dios verdadero; a él sea la gloria por los siglos de los siglos. Amén. </p>",
+  "study_questions": [],
+  "body_text": "¿Y qué tiene de extraño que los que en Cristo recibieron de Dios semejante encargo establecieran a los [ministros] antes mencionados, cuando también el bienaventurado Moisés, «siervo fiel en toda su casa», consignó en los libros sagrados todos los mandatos que le fueron dados, y cuando también los demás profetas lo siguieron, dando testimonio unánime de las ordenanzas que él había establecido? Porque, cuando surgió la rivalidad acerca del sacerdocio, y las tribus disputaban entre sí sobre cuál de ellas sería honrada con aquel glorioso título, él mandó a los doce príncipes de las tribus que le trajeran sus varas, cada una inscrita con el nombre de su tribu. Y las tomó y las ató [juntas], y las selló con los anillos de los príncipes de las tribus, y las depositó en el tabernáculo del testimonio, sobre la mesa de Dios. Y habiendo cerrado las puertas del tabernáculo, selló las llaves, como había hecho con las varas, y les dijo: Hombres y hermanos, la tribu cuya vara florezca, esa ha escogido Dios para desempeñar el oficio del sacerdocio y ministrarle. Y venida la mañana, convocó a todo Israel, seiscientos mil hombres, mostró los sellos a los príncipes de las tribus, abrió el tabernáculo del testimonio y sacó las varas. Y se halló que la vara de Aarón no solo había florecido, sino que además llevaba fruto. ¿Qué os parece, amados? ¿No sabía Moisés de antemano que esto sucedería? Sin duda lo sabía; pero obró así para que no hubiera sedición en Israel, y para que fuese glorificado el nombre del único Dios verdadero; a él sea la gloria por los siglos de los siglos. Amén.",
+  "word_count": 275
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 44,
+  "title": "Las disposiciones de los apóstoles",
+  "body_html": "<p>También nuestros apóstoles supieron, por nuestro Señor Jesucristo, que habría contienda a causa del cargo del episcopado. Por esta razón, pues, habiendo recibido un perfecto conocimiento previo de ello, establecieron a los [ministros] ya mencionados, y después dieron instrucciones de que, cuando estos durmieran, otros hombres probados les sucedieran en su ministerio. Somos, pues, de la opinión de que los que fueron establecidos por ellos, o después por otros varones eminentes, con el consentimiento de toda la Iglesia, y que han servido de manera intachable al rebaño de Cristo con espíritu humilde, pacífico y desinteresado, y que durante largo tiempo han gozado del buen testimonio de todos, no pueden ser justamente apartados del ministerio. Porque no será pequeño nuestro pecado si expulsamos del episcopado a los que han cumplido sus deberes de manera intachable y santa. Bienaventurados los presbíteros que, habiendo terminado su carrera antes de ahora, obtuvieron una partida fructífera y perfecta [de este mundo]; porque no temen que nadie los remueva del lugar que ahora les ha sido asignado. Pero vemos que vosotros habéis removido del ministerio a algunos hombres de excelente conducta, ministerio que ellos desempeñaban de manera intachable y con honra. </p>",
+  "study_questions": [],
+  "body_text": "También nuestros apóstoles supieron, por nuestro Señor Jesucristo, que habría contienda a causa del cargo del episcopado. Por esta razón, pues, habiendo recibido un perfecto conocimiento previo de ello, establecieron a los [ministros] ya mencionados, y después dieron instrucciones de que, cuando estos durmieran, otros hombres probados les sucedieran en su ministerio. Somos, pues, de la opinión de que los que fueron establecidos por ellos, o después por otros varones eminentes, con el consentimiento de toda la Iglesia, y que han servido de manera intachable al rebaño de Cristo con espíritu humilde, pacífico y desinteresado, y que durante largo tiempo han gozado del buen testimonio de todos, no pueden ser justamente apartados del ministerio. Porque no será pequeño nuestro pecado si expulsamos del episcopado a los que han cumplido sus deberes de manera intachable y santa. Bienaventurados los presbíteros que, habiendo terminado su carrera antes de ahora, obtuvieron una partida fructífera y perfecta [de este mundo]; porque no temen que nadie los remueva del lugar que ahora les ha sido asignado. Pero vemos que vosotros habéis removido del ministerio a algunos hombres de excelente conducta, ministerio que ellos desempeñaban de manera intachable y con honra.",
+  "word_count": 195
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 45,
+  "title": "Es propio de los malvados afligir a los justos",
+  "body_html": "<p>Sois amigos de contiendas, hermanos, y estáis llenos de celo por cosas que no atañen a la salvación. Escudriñad con atención las Escrituras, que son las verdaderas palabras del Espíritu Santo. Observad que nada injusto ni falsificado está escrito en ellas. Allí no hallaréis que los justos fueran rechazados por hombres que fuesen ellos mismos santos. Los justos fueron ciertamente perseguidos, pero solo por los malvados. Fueron echados en la cárcel, pero solo por los impíos; fueron apedreados, pero solo por los transgresores; fueron muertos, pero solo por los malditos y por los que habían concebido contra ellos una envidia injusta. Expuestos a tales sufrimientos, los soportaron gloriosamente. Porque ¿qué diremos, hermanos? ¿Fue Daniel echado en el foso de los leones por quienes temían a Dios? ¿Fueron Ananías, Azarías y Misael encerrados en un horno de fuego por quienes observaban el grande y glorioso culto del Altísimo? ¡Lejos de nosotros tal pensamiento! ¿Quiénes, pues, fueron los que hicieron tales cosas? Los aborrecibles y los llenos de toda maldad fueron arrastrados a tal grado de furor que atormentaron a los que servían a Dios con santo e intachable propósito [de corazón], sin saber que el Altísimo es el Defensor y Protector de todos los que con conciencia pura veneran su excelentísimo nombre; a él sea la gloria por los siglos de los siglos. Amén. Pero los que con confianza soportaron [estas cosas] son ahora herederos de gloria y honra, y han sido exaltados y hechos ilustres por Dios en su memoria por los siglos de los siglos. Amén. </p>",
+  "study_questions": [],
+  "body_text": "Sois amigos de contiendas, hermanos, y estáis llenos de celo por cosas que no atañen a la salvación. Escudriñad con atención las Escrituras, que son las verdaderas palabras del Espíritu Santo. Observad que nada injusto ni falsificado está escrito en ellas. Allí no hallaréis que los justos fueran rechazados por hombres que fuesen ellos mismos santos. Los justos fueron ciertamente perseguidos, pero solo por los malvados. Fueron echados en la cárcel, pero solo por los impíos; fueron apedreados, pero solo por los transgresores; fueron muertos, pero solo por los malditos y por los que habían concebido contra ellos una envidia injusta. Expuestos a tales sufrimientos, los soportaron gloriosamente. Porque ¿qué diremos, hermanos? ¿Fue Daniel echado en el foso de los leones por quienes temían a Dios? ¿Fueron Ananías, Azarías y Misael encerrados en un horno de fuego por quienes observaban el grande y glorioso culto del Altísimo? ¡Lejos de nosotros tal pensamiento! ¿Quiénes, pues, fueron los que hicieron tales cosas? Los aborrecibles y los llenos de toda maldad fueron arrastrados a tal grado de furor que atormentaron a los que servían a Dios con santo e intachable propósito [de corazón], sin saber que el Altísimo es el Defensor y Protector de todos los que con conciencia pura veneran su excelentísimo nombre; a él sea la gloria por los siglos de los siglos. Amén. Pero los que con confianza soportaron [estas cosas] son ahora herederos de gloria y honra, y han sido exaltados y hechos ilustres por Dios en su memoria por los siglos de los siglos. Amén.",
+  "word_count": 257
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 46,
+  "title": "Unámonos a los justos: vuestra contienda es perniciosa",
+  "body_html": "<p>Es justo, pues, hermanos, que sigamos tales ejemplos; puesto que está escrito: «Uníos a los santos, porque los que se unen a ellos serán [también] santificados». Y de nuevo, en otro lugar, [la Escritura] dice: «Con el hombre inocente serás inocente, con el escogido serás escogido, y con el perverso te mostrarás perverso». Unámonos, pues, a los inocentes y justos, ya que estos son los escogidos de Dios. ¿Por qué hay entre vosotros contiendas, tumultos, divisiones, cismas y guerras? ¿No tenemos [todos] un solo Dios y un solo Cristo? ¿No es uno solo el Espíritu de gracia derramado sobre nosotros? ¿Y no tenemos un solo llamamiento en Cristo? ¿Por qué dividimos y despedazamos los miembros de Cristo, y nos levantamos en contienda contra nuestro propio cuerpo, y hemos llegado a tal extremo de locura que olvidamos que «somos miembros los unos de los otros»? Acordaos de las palabras de nuestro Señor Jesucristo, cómo dijo: «¡Ay de aquel hombre [por quien vienen los tropiezos]! Mejor le fuera no haber nacido que hacer tropezar a uno de mis escogidos. Sí, mejor le fuera que se le colgase [al cuello] una piedra de molino, y que se le hundiese en lo profundo del mar, que hacer tropezar a uno de mis pequeños». Vuestro cisma ha pervertido [la fe de] muchos, ha desalentado a muchos, ha sembrado la duda en muchos, y nos ha causado tristeza a todos. Y todavía continúa vuestra sedición. </p>",
+  "study_questions": [],
+  "body_text": "Es justo, pues, hermanos, que sigamos tales ejemplos; puesto que está escrito: «Uníos a los santos, porque los que se unen a ellos serán [también] santificados». Y de nuevo, en otro lugar, [la Escritura] dice: «Con el hombre inocente serás inocente, con el escogido serás escogido, y con el perverso te mostrarás perverso». Unámonos, pues, a los inocentes y justos, ya que estos son los escogidos de Dios. ¿Por qué hay entre vosotros contiendas, tumultos, divisiones, cismas y guerras? ¿No tenemos [todos] un solo Dios y un solo Cristo? ¿No es uno solo el Espíritu de gracia derramado sobre nosotros? ¿Y no tenemos un solo llamamiento en Cristo? ¿Por qué dividimos y despedazamos los miembros de Cristo, y nos levantamos en contienda contra nuestro propio cuerpo, y hemos llegado a tal extremo de locura que olvidamos que «somos miembros los unos de los otros»? Acordaos de las palabras de nuestro Señor Jesucristo, cómo dijo: «¡Ay de aquel hombre [por quien vienen los tropiezos]! Mejor le fuera no haber nacido que hacer tropezar a uno de mis escogidos. Sí, mejor le fuera que se le colgase [al cuello] una piedra de molino, y que se le hundiese en lo profundo del mar, que hacer tropezar a uno de mis pequeños». Vuestro cisma ha pervertido [la fe de] muchos, ha desalentado a muchos, ha sembrado la duda en muchos, y nos ha causado tristeza a todos. Y todavía continúa vuestra sedición.",
+  "word_count": 239
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 47,
+  "title": "Vuestra discordia actual es peor que la de los tiempos de Pablo",
+  "body_html": "<p>Tomad la epístola del bienaventurado apóstol Pablo. ¿Qué os escribió al principio, cuando comenzó a predicarse el evangelio? En verdad, por inspiración del Espíritu, os escribió acerca de sí mismo, de Cefas y de Apolos, porque ya entonces se habían formado partidos entre vosotros. Pero aquella inclinación por uno más que por otro os acarreó menos culpa, por cuanto vuestras preferencias se dirigían entonces a apóstoles de reconocida reputación, y a un hombre aprobado por ellos. Pero ahora considerad quiénes son los que os han pervertido y han menguado el renombre de vuestro afamado amor fraternal. Es vergonzoso, amados, sí, sumamente vergonzoso e indigno de vuestra profesión cristiana, que se oiga decir que la firmísima y antigua Iglesia de los corintios, a causa de una o dos personas, se ha sublevado contra sus presbíteros. Y este rumor no solo ha llegado hasta nosotros, sino también hasta los que no tienen relación con nosotros; de modo que, por vuestra insensatez, el nombre del Señor es blasfemado, a la vez que atraéis peligro sobre vosotros mismos. </p>",
+  "study_questions": [],
+  "body_text": "Tomad la epístola del bienaventurado apóstol Pablo. ¿Qué os escribió al principio, cuando comenzó a predicarse el evangelio? En verdad, por inspiración del Espíritu, os escribió acerca de sí mismo, de Cefas y de Apolos, porque ya entonces se habían formado partidos entre vosotros. Pero aquella inclinación por uno más que por otro os acarreó menos culpa, por cuanto vuestras preferencias se dirigían entonces a apóstoles de reconocida reputación, y a un hombre aprobado por ellos. Pero ahora considerad quiénes son los que os han pervertido y han menguado el renombre de vuestro afamado amor fraternal. Es vergonzoso, amados, sí, sumamente vergonzoso e indigno de vuestra profesión cristiana, que se oiga decir que la firmísima y antigua Iglesia de los corintios, a causa de una o dos personas, se ha sublevado contra sus presbíteros. Y este rumor no solo ha llegado hasta nosotros, sino también hasta los que no tienen relación con nosotros; de modo que, por vuestra insensatez, el nombre del Señor es blasfemado, a la vez que atraéis peligro sobre vosotros mismos.",
+  "word_count": 174
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 48,
+  "title": "Volvamos a la práctica del amor fraternal",
+  "body_html": "<p>Pongamos, pues, fin cuanto antes a este [estado de cosas]; postrémonos delante del Señor y supliquémosle con lágrimas que, en su misericordia, se reconcilie con nosotros y nos restituya a nuestra anterior práctica, digna y santa, del amor fraternal. Porque [tal conducta] es la puerta de la justicia, abierta para alcanzar la vida, como está escrito: «Abridme las puertas de la justicia; entraré por ellas y alabaré al Señor. Esta es la puerta del Señor; por ella entrarán los justos». Así pues, aunque se han abierto muchas puertas, esta puerta de la justicia es aquella puerta en Cristo por la cual son bienaventurados todos los que han entrado y han dirigido su camino en santidad y justicia, haciendo todas las cosas sin desorden. Sea alguno fiel; sea poderoso en declarar el conocimiento; sea sabio en discernir las palabras; sea puro en todas sus obras; con todo, cuanto más parezca ser superior a los demás [en estas cosas], tanto más humilde de espíritu debe ser, y buscar el bien común de todos, y no solamente su propio provecho. </p>",
+  "study_questions": [],
+  "body_text": "Pongamos, pues, fin cuanto antes a este [estado de cosas]; postrémonos delante del Señor y supliquémosle con lágrimas que, en su misericordia, se reconcilie con nosotros y nos restituya a nuestra anterior práctica, digna y santa, del amor fraternal. Porque [tal conducta] es la puerta de la justicia, abierta para alcanzar la vida, como está escrito: «Abridme las puertas de la justicia; entraré por ellas y alabaré al Señor. Esta es la puerta del Señor; por ella entrarán los justos». Así pues, aunque se han abierto muchas puertas, esta puerta de la justicia es aquella puerta en Cristo por la cual son bienaventurados todos los que han entrado y han dirigido su camino en santidad y justicia, haciendo todas las cosas sin desorden. Sea alguno fiel; sea poderoso en declarar el conocimiento; sea sabio en discernir las palabras; sea puro en todas sus obras; con todo, cuanto más parezca ser superior a los demás [en estas cosas], tanto más humilde de espíritu debe ser, y buscar el bien común de todos, y no solamente su propio provecho.",
+  "word_count": 177
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 49,
+  "title": "Alabanza del amor",
+  "body_html": "<p>El que tiene amor en Cristo, guarde los mandamientos de Cristo. ¿Quién puede describir el [bienaventurado] vínculo del amor de Dios? ¿Qué hombre es capaz de expresar la excelencia de su hermosura como se debe? La altura a la que eleva el amor es indecible. El amor nos une a Dios. El amor cubre multitud de pecados. El amor todo lo soporta, en todo es sufrido. No hay nada vil, nada arrogante en el amor. El amor no admite cismas; el amor no promueve sediciones; el amor lo hace todo en concordia. Por el amor fueron perfeccionados todos los escogidos de Dios; sin amor nada es agradable a Dios. En amor nos ha tomado el Señor para sí. Por el amor que nos tuvo, Jesucristo nuestro Señor dio su sangre por nosotros, por voluntad de Dios; su carne por nuestra carne, y su alma por nuestras almas.</p>",
+  "study_questions": [],
+  "body_text": "El que tiene amor en Cristo, guarde los mandamientos de Cristo. ¿Quién puede describir el [bienaventurado] vínculo del amor de Dios? ¿Qué hombre es capaz de expresar la excelencia de su hermosura como se debe? La altura a la que eleva el amor es indecible. El amor nos une a Dios. El amor cubre multitud de pecados. El amor todo lo soporta, en todo es sufrido. No hay nada vil, nada arrogante en el amor. El amor no admite cismas; el amor no promueve sediciones; el amor lo hace todo en concordia. Por el amor fueron perfeccionados todos los escogidos de Dios; sin amor nada es agradable a Dios. En amor nos ha tomado el Señor para sí. Por el amor que nos tuvo, Jesucristo nuestro Señor dio su sangre por nosotros, por voluntad de Dios; su carne por nuestra carne, y su alma por nuestras almas.",
+  "word_count": 147
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 50,
+  "title": "Oremos para ser hallados dignos del amor",
+  "body_html": "<p>Ya veis, amados, cuán grande y maravillosa cosa es el amor, y que no hay manera de expresar su perfección. ¿Quién es apto para ser hallado en él, sino aquellos a quienes Dios ha tenido a bien hacer tales? Oremos, pues, e imploremos su misericordia, para que vivamos sin reproche en el amor, libres de toda parcialidad humana de preferir a uno sobre otro. Todas las generaciones, desde Adán hasta el día de hoy, han pasado; pero los que, por la gracia de Dios, fueron perfeccionados en el amor ocupan ahora un lugar entre los piadosos, y serán manifestados en la revelación del reino de Cristo. Porque está escrito: «Entra en tus aposentos por un poco de tiempo, hasta que pase mi ira y mi furor; y me acordaré de un día propicio, y os levantaré de vuestros sepulcros». Bienaventurados somos, amados, si guardamos los mandamientos de Dios en la concordia del amor, para que por el amor nos sean perdonados nuestros pecados. Porque está escrito: «Bienaventurados aquellos cuyas iniquidades son perdonadas, y cuyos pecados son cubiertos. Bienaventurado el hombre a quien el Señor no imputará pecado, y en cuya boca no hay engaño». Esta bienaventuranza viene sobre los que han sido escogidos por Dios por medio de Jesucristo nuestro Señor; a él sea la gloria por los siglos de los siglos. Amén. </p>",
+  "study_questions": [],
+  "body_text": "Ya veis, amados, cuán grande y maravillosa cosa es el amor, y que no hay manera de expresar su perfección. ¿Quién es apto para ser hallado en él, sino aquellos a quienes Dios ha tenido a bien hacer tales? Oremos, pues, e imploremos su misericordia, para que vivamos sin reproche en el amor, libres de toda parcialidad humana de preferir a uno sobre otro. Todas las generaciones, desde Adán hasta el día de hoy, han pasado; pero los que, por la gracia de Dios, fueron perfeccionados en el amor ocupan ahora un lugar entre los piadosos, y serán manifestados en la revelación del reino de Cristo. Porque está escrito: «Entra en tus aposentos por un poco de tiempo, hasta que pase mi ira y mi furor; y me acordaré de un día propicio, y os levantaré de vuestros sepulcros». Bienaventurados somos, amados, si guardamos los mandamientos de Dios en la concordia del amor, para que por el amor nos sean perdonados nuestros pecados. Porque está escrito: «Bienaventurados aquellos cuyas iniquidades son perdonadas, y cuyos pecados son cubiertos. Bienaventurado el hombre a quien el Señor no imputará pecado, y en cuya boca no hay engaño». Esta bienaventuranza viene sobre los que han sido escogidos por Dios por medio de Jesucristo nuestro Señor; a él sea la gloria por los siglos de los siglos. Amén.",
+  "word_count": 223
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 51,
+  "title": "Que los que tomaron parte en la contienda reconozcan sus pecados",
+  "body_html": "<p>Imploremos, pues, el perdón de todas las transgresiones que hayamos cometido por cualquier [sugestión] del adversario. Y los que han sido cabecillas de la sedición y la discordia deben mirar a la esperanza común. Porque los que viven en temor y amor prefieren sufrir ellos mismos antes que sus prójimos. Y prefieren cargar ellos mismos con la culpa antes que sufra la concordia que nos ha sido transmitida con rectitud y piedad. Porque mejor es que un hombre confiese sus transgresiones que endurecer su corazón, como se endurecieron los corazones de los que promovieron la sedición contra Moisés, el siervo de Dios, y cuya condenación se hizo manifiesta [a todos]. Porque descendieron vivos al Hades, y la muerte se los tragó. El faraón con su ejército y todos los príncipes de Egipto, y los carros con sus jinetes, fueron hundidos en las profundidades del mar Rojo y perecieron, no por otra razón sino porque sus necios corazones se endurecieron, después de que tantas señales y prodigios fueron hechos en la tierra de Egipto por Moisés, el siervo de Dios. </p>",
+  "study_questions": [],
+  "body_text": "Imploremos, pues, el perdón de todas las transgresiones que hayamos cometido por cualquier [sugestión] del adversario. Y los que han sido cabecillas de la sedición y la discordia deben mirar a la esperanza común. Porque los que viven en temor y amor prefieren sufrir ellos mismos antes que sus prójimos. Y prefieren cargar ellos mismos con la culpa antes que sufra la concordia que nos ha sido transmitida con rectitud y piedad. Porque mejor es que un hombre confiese sus transgresiones que endurecer su corazón, como se endurecieron los corazones de los que promovieron la sedición contra Moisés, el siervo de Dios, y cuya condenación se hizo manifiesta [a todos]. Porque descendieron vivos al Hades, y la muerte se los tragó. El faraón con su ejército y todos los príncipes de Egipto, y los carros con sus jinetes, fueron hundidos en las profundidades del mar Rojo y perecieron, no por otra razón sino porque sus necios corazones se endurecieron, después de que tantas señales y prodigios fueron hechos en la tierra de Egipto por Moisés, el siervo de Dios.",
+  "word_count": 179
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 52,
+  "title": "Tal confesión agrada a Dios",
+  "body_html": "<p>El Señor, hermanos, no tiene necesidad de nada; y nada desea de nadie, sino que se le haga confesión. Porque dice el escogido David: «Confesaré al Señor, y esto le agradará más que un becerro que echa cuernos y pezuñas. Véanlo los pobres, y alégrense». Y de nuevo dice: «Sacrifica a Dios alabanza, y paga tus votos al Altísimo. E invócame en el día de la angustia; yo te libraré, y tú me glorificarás». Porque «el sacrificio de Dios es el espíritu quebrantado».</p>",
+  "study_questions": [],
+  "body_text": "El Señor, hermanos, no tiene necesidad de nada; y nada desea de nadie, sino que se le haga confesión. Porque dice el escogido David: «Confesaré al Señor, y esto le agradará más que un becerro que echa cuernos y pezuñas. Véanlo los pobres, y alégrense». Y de nuevo dice: «Sacrifica a Dios alabanza, y paga tus votos al Altísimo. E invócame en el día de la angustia; yo te libraré, y tú me glorificarás». Porque «el sacrificio de Dios es el espíritu quebrantado».",
+  "word_count": 83
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 53,
+  "title": "El amor de Moisés por su pueblo",
+  "body_html": "<p>Vosotros entendéis, amados, entendéis bien las Sagradas Escrituras, y habéis escudriñado con mucho empeño los oráculos de Dios. Traed, pues, estas cosas a vuestra memoria. Cuando Moisés subió al monte y permaneció allí, en ayuno y humillación, cuarenta días y cuarenta noches, el Señor le dijo: «Moisés, Moisés, desciende pronto de aquí; porque tu pueblo, que sacaste de la tierra de Egipto, ha cometido iniquidad. Pronto se han apartado del camino que yo les mandé seguir, y se han hecho imágenes de fundición». Y el Señor le dijo: «Te he hablado una y otra vez, diciendo: He visto este pueblo, y he aquí que es pueblo duro de cerviz; déjame que los destruya, y borre su nombre de debajo del cielo; y yo haré de ti una nación grande y admirable, y mucho más numerosa que esta». Pero Moisés dijo: «Lejos de ti, Señor; perdona el pecado de este pueblo, o bórrame también a mí del libro de los vivientes». ¡Oh amor maravilloso! ¡Oh perfección insuperable! El siervo habla con libertad a su Señor, y pide perdón para el pueblo, o ruega perecer él mismo juntamente con ellos. </p>",
+  "study_questions": [],
+  "body_text": "Vosotros entendéis, amados, entendéis bien las Sagradas Escrituras, y habéis escudriñado con mucho empeño los oráculos de Dios. Traed, pues, estas cosas a vuestra memoria. Cuando Moisés subió al monte y permaneció allí, en ayuno y humillación, cuarenta días y cuarenta noches, el Señor le dijo: «Moisés, Moisés, desciende pronto de aquí; porque tu pueblo, que sacaste de la tierra de Egipto, ha cometido iniquidad. Pronto se han apartado del camino que yo les mandé seguir, y se han hecho imágenes de fundición». Y el Señor le dijo: «Te he hablado una y otra vez, diciendo: He visto este pueblo, y he aquí que es pueblo duro de cerviz; déjame que los destruya, y borre su nombre de debajo del cielo; y yo haré de ti una nación grande y admirable, y mucho más numerosa que esta». Pero Moisés dijo: «Lejos de ti, Señor; perdona el pecado de este pueblo, o bórrame también a mí del libro de los vivientes». ¡Oh amor maravilloso! ¡Oh perfección insuperable! El siervo habla con libertad a su Señor, y pide perdón para el pueblo, o ruega perecer él mismo juntamente con ellos.",
+  "word_count": 188
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 54,
+  "title": "El que está lleno de amor aceptará toda pérdida",
+  "body_html": "<p>¿Quién, pues, entre vosotros es noble de espíritu? ¿Quién es compasivo? ¿Quién está lleno de amor? Que diga: «Si por mi causa han surgido la sedición, la discordia y los cismas, me iré, me marcharé adondequiera que queráis, y haré lo que mande la mayoría; con tal que el rebaño de Cristo viva en paz con los presbíteros puestos sobre él». El que así obre se procurará gran gloria en el Señor, y todo lugar lo recibirá. Porque «del Señor es la tierra y su plenitud». Estas cosas han hecho, y harán siempre, los que viven una vida piadosa, de la que nunca hay que arrepentirse. </p>",
+  "study_questions": [],
+  "body_text": "¿Quién, pues, entre vosotros es noble de espíritu? ¿Quién es compasivo? ¿Quién está lleno de amor? Que diga: «Si por mi causa han surgido la sedición, la discordia y los cismas, me iré, me marcharé adondequiera que queráis, y haré lo que mande la mayoría; con tal que el rebaño de Cristo viva en paz con los presbíteros puestos sobre él». El que así obre se procurará gran gloria en el Señor, y todo lugar lo recibirá. Porque «del Señor es la tierra y su plenitud». Estas cosas han hecho, y harán siempre, los que viven una vida piadosa, de la que nunca hay que arrepentirse.",
+  "word_count": 106
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 55,
+  "title": "Ejemplos de tal amor",
+  "body_html": "<p>Para presentar algunos ejemplos tomados de los paganos: muchos reyes y príncipes, en tiempos de peste, instruidos por un oráculo, se entregaron a la muerte para librar con su propia sangre a sus conciudadanos [de la destrucción]. Muchos se han marchado de sus propias ciudades, para que así cesara la sedición en ellas. Conocemos a muchos entre nosotros que se han entregado a las cadenas para rescatar a otros. Muchos también se han vendido como esclavos, para alimentar a otros con el precio que recibieron por sí mismos. Muchas mujeres, asimismo, fortalecidas por la gracia de Dios, han realizado numerosas hazañas varoniles. La bienaventurada Judit, cuando su ciudad estaba sitiada, pidió permiso a los ancianos para salir al campamento de los extranjeros; y, exponiéndose al peligro, salió por el amor que tenía a su patria y a su pueblo, entonces sitiado; y el Señor entregó a Holofernes en manos de una mujer. También Ester, perfecta en la fe, se expuso a un peligro no menor para librar a las doce tribus de Israel de la destrucción que las amenazaba. Porque con ayuno y humillación suplicó al Dios eterno, que todo lo ve; y él, viendo la humildad de su espíritu, libró al pueblo por cuya causa ella había afrontado el peligro. </p>",
+  "study_questions": [],
+  "body_text": "Para presentar algunos ejemplos tomados de los paganos: muchos reyes y príncipes, en tiempos de peste, instruidos por un oráculo, se entregaron a la muerte para librar con su propia sangre a sus conciudadanos [de la destrucción]. Muchos se han marchado de sus propias ciudades, para que así cesara la sedición en ellas. Conocemos a muchos entre nosotros que se han entregado a las cadenas para rescatar a otros. Muchos también se han vendido como esclavos, para alimentar a otros con el precio que recibieron por sí mismos. Muchas mujeres, asimismo, fortalecidas por la gracia de Dios, han realizado numerosas hazañas varoniles. La bienaventurada Judit, cuando su ciudad estaba sitiada, pidió permiso a los ancianos para salir al campamento de los extranjeros; y, exponiéndose al peligro, salió por el amor que tenía a su patria y a su pueblo, entonces sitiado; y el Señor entregó a Holofernes en manos de una mujer. También Ester, perfecta en la fe, se expuso a un peligro no menor para librar a las doce tribus de Israel de la destrucción que las amenazaba. Porque con ayuno y humillación suplicó al Dios eterno, que todo lo ve; y él, viendo la humildad de su espíritu, libró al pueblo por cuya causa ella había afrontado el peligro.",
+  "word_count": 211
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 56,
+  "title": "Amonestémonos y corrijámonos unos a otros",
+  "body_html": "<p>Oremos, pues, también por los que han caído en algún pecado, para que se les conceda mansedumbre y humildad, de modo que se sometan, no a nosotros, sino a la voluntad de Dios. Porque de esta manera obtendrán de nosotros un recuerdo fructífero y perfecto, con compasión hacia ellos, tanto en nuestras oraciones a Dios como en nuestra mención de ellos ante los santos. Recibamos la corrección, amados, de la cual nadie debe disgustarse. Las exhortaciones con que nos amonestamos unos a otros son buenas [en sí mismas] y muy provechosas, porque tienden a unirnos a la voluntad de Dios. Porque así dice la santa Palabra: «Me castigó gravemente el Señor, mas no me entregó a la muerte». «Porque el Señor al que ama castiga, y azota a todo el que recibe por hijo». «El justo», dice, «me corregirá con misericordia y me reprenderá; pero que el aceite de los pecadores no unja mi cabeza». Y de nuevo dice: «Bienaventurado el hombre a quien el Señor reprende; no menosprecies, pues, la corrección del Todopoderoso. Porque él causa el dolor, y de nuevo restaura [a la alegría]; él hiere, y sus manos curan. En seis tribulaciones te librará, y en la séptima no te tocará el mal. En el hambre te librará de la muerte, y en la guerra te librará del poder de la espada. Del azote de la lengua te esconderá, y no temerás cuando venga el mal. Te reirás de los injustos y de los malvados, y no temerás a las bestias del campo. Porque las fieras estarán en paz contigo; entonces sabrás que tu casa estará en paz, y la morada de tu tienda no faltará. Sabrás también que tu descendencia será grande, y tus hijos como la hierba del campo. Y llegarás al sepulcro como el trigo maduro que se siega a su tiempo, o como el montón de la era que se recoge a su debido tiempo». Ya veis, amados, que hay protección para los que son corregidos por el Señor; porque, siendo Dios bueno, nos corrige para que seamos amonestados por su santo castigo. </p>",
+  "study_questions": [],
+  "body_text": "Oremos, pues, también por los que han caído en algún pecado, para que se les conceda mansedumbre y humildad, de modo que se sometan, no a nosotros, sino a la voluntad de Dios. Porque de esta manera obtendrán de nosotros un recuerdo fructífero y perfecto, con compasión hacia ellos, tanto en nuestras oraciones a Dios como en nuestra mención de ellos ante los santos. Recibamos la corrección, amados, de la cual nadie debe disgustarse. Las exhortaciones con que nos amonestamos unos a otros son buenas [en sí mismas] y muy provechosas, porque tienden a unirnos a la voluntad de Dios. Porque así dice la santa Palabra: «Me castigó gravemente el Señor, mas no me entregó a la muerte». «Porque el Señor al que ama castiga, y azota a todo el que recibe por hijo». «El justo», dice, «me corregirá con misericordia y me reprenderá; pero que el aceite de los pecadores no unja mi cabeza». Y de nuevo dice: «Bienaventurado el hombre a quien el Señor reprende; no menosprecies, pues, la corrección del Todopoderoso. Porque él causa el dolor, y de nuevo restaura [a la alegría]; él hiere, y sus manos curan. En seis tribulaciones te librará, y en la séptima no te tocará el mal. En el hambre te librará de la muerte, y en la guerra te librará del poder de la espada. Del azote de la lengua te esconderá, y no temerás cuando venga el mal. Te reirás de los injustos y de los malvados, y no temerás a las bestias del campo. Porque las fieras estarán en paz contigo; entonces sabrás que tu casa estará en paz, y la morada de tu tienda no faltará. Sabrás también que tu descendencia será grande, y tus hijos como la hierba del campo. Y llegarás al sepulcro como el trigo maduro que se siega a su tiempo, o como el montón de la era que se recoge a su debido tiempo». Ya veis, amados, que hay protección para los que son corregidos por el Señor; porque, siendo Dios bueno, nos corrige para que seamos amonestados por su santo castigo.",
+  "word_count": 350
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 57,
+  "title": "Que los autores de la sedición se sometan",
+  "body_html": "<p>Vosotros, pues, que pusisteis el fundamento de esta sedición, someteos a los presbíteros y recibid la corrección para arrepentiros, doblando las rodillas de vuestro corazón. Aprended a estar sujetos, dejando a un lado la soberbia y arrogante jactancia de vuestra lengua. Porque mejor os es ocupar un lugar humilde pero honroso en el rebaño de Cristo que, estando muy enaltecidos, ser echados fuera de la esperanza de su pueblo. Porque así habla la Sabiduría, llena de toda virtud: «He aquí, os traeré las palabras de mi Espíritu, y os enseñaré mi palabra. Por cuanto llamé, y no oísteis; extendí mis palabras, y no hicisteis caso, sino que desechasteis mis consejos y no cedisteis a mis reprensiones; por eso también yo me reiré de vuestra ruina; sí, me alegraré cuando os sobrevenga la destrucción, y cuando os alcance la turbación repentina, cuando la ruina se presente como una tempestad, o cuando vengan sobre vosotros la tribulación y la angustia. Porque sucederá que, cuando me llaméis, no os oiré; los malvados me buscarán, y no me hallarán. Porque aborrecieron la sabiduría, y no escogieron el temor del Señor; ni quisieron escuchar mis consejos, sino que menospreciaron mis reprensiones. Por tanto, comerán del fruto de su camino, y se hartarán de su propia impiedad». …</p>",
+  "study_questions": [],
+  "body_text": "Vosotros, pues, que pusisteis el fundamento de esta sedición, someteos a los presbíteros y recibid la corrección para arrepentiros, doblando las rodillas de vuestro corazón. Aprended a estar sujetos, dejando a un lado la soberbia y arrogante jactancia de vuestra lengua. Porque mejor os es ocupar un lugar humilde pero honroso en el rebaño de Cristo que, estando muy enaltecidos, ser echados fuera de la esperanza de su pueblo. Porque así habla la Sabiduría, llena de toda virtud: «He aquí, os traeré las palabras de mi Espíritu, y os enseñaré mi palabra. Por cuanto llamé, y no oísteis; extendí mis palabras, y no hicisteis caso, sino que desechasteis mis consejos y no cedisteis a mis reprensiones; por eso también yo me reiré de vuestra ruina; sí, me alegraré cuando os sobrevenga la destrucción, y cuando os alcance la turbación repentina, cuando la ruina se presente como una tempestad, o cuando vengan sobre vosotros la tribulación y la angustia. Porque sucederá que, cuando me llaméis, no os oiré; los malvados me buscarán, y no me hallarán. Porque aborrecieron la sabiduría, y no escogieron el temor del Señor; ni quisieron escuchar mis consejos, sino que menospreciaron mis reprensiones. Por tanto, comerán del fruto de su camino, y se hartarán de su propia impiedad». …",
+  "word_count": 212
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 58,
+  "title": "Bendiciones pedidas para todos los que invocan a Dios",
+  "body_html": "<p>Que Dios, que todo lo ve, Soberano de todos los espíritus y Señor de toda carne, que escogió a nuestro Señor Jesucristo, y a nosotros por medio de él para ser un pueblo propio, conceda a toda alma que invoca su glorioso y santo Nombre fe, temor, paz, paciencia, longanimidad, dominio propio, pureza y sobriedad, para agrado de su Nombre, por medio de nuestro Sumo Sacerdote y Protector, Jesucristo, por quien sea a él la gloria, la majestad, el poder y la honra, ahora y por siempre jamás. Amén. </p>",
+  "study_questions": [],
+  "body_text": "Que Dios, que todo lo ve, Soberano de todos los espíritus y Señor de toda carne, que escogió a nuestro Señor Jesucristo, y a nosotros por medio de él para ser un pueblo propio, conceda a toda alma que invoca su glorioso y santo Nombre fe, temor, paz, paciencia, longanimidad, dominio propio, pureza y sobriedad, para agrado de su Nombre, por medio de nuestro Sumo Sacerdote y Protector, Jesucristo, por quien sea a él la gloria, la majestad, el poder y la honra, ahora y por siempre jamás. Amén.",
+  "word_count": 89
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "first-epistle-of-clement",
+   "es"
+  ],
+  "order": 59,
+  "title": "Se exhorta a los corintios a enviar noticia de que la paz ha sido restaurada",
+  "body_html": "<p>Devolvednos pronto, en paz y con gozo, a estos nuestros mensajeros que os enviamos: Claudio Efebo y Valerio Bitón, junto con Fortunato, para que cuanto antes nos anuncien la paz y la concordia que tan ardientemente deseamos y anhelamos [entre vosotros], y para que nos regocijemos más pronto por el buen orden restablecido entre vosotros. La gracia de nuestro Señor Jesucristo sea con vosotros y con todos, en todo lugar, los que son llamados por Dios por medio de él, por quien sea a él la gloria, la honra, el poder, la majestad y el dominio eterno, desde la eternidad y hasta la eternidad. Amén.</p>",
+  "study_questions": [],
+  "body_text": "Devolvednos pronto, en paz y con gozo, a estos nuestros mensajeros que os enviamos: Claudio Efebo y Valerio Bitón, junto con Fortunato, para que cuanto antes nos anuncien la paz y la concordia que tan ardientemente deseamos y anhelamos [entre vosotros], y para que nos regocijemos más pronto por el buen orden restablecido entre vosotros. La gracia de nuestro Señor Jesucristo sea con vosotros y con todos, en todo lugar, los que son llamados por Dios por medio de él, por quien sea a él la gloria, la honra, el poder, la majestad y el dominio eterno, desde la eternidad y hasta la eternidad. Amén.",
+  "word_count": 105
+ }
+}
+]
