@@ -15,9 +15,9 @@
  * (`FOR_META`) — on the shared OG ground, in the topic card's layout.
  *
  * CONTENT SOURCE — all TypeScript, read directly
- * The label and tagline are `FOR_LINKS` and the index card's words
- * `FOR_INDEX_CARD` ($lib/forLinks, import-free on purpose so this script can
- * read it); the accent + emblem are `FOR_META`. So both
+ * The label is `FOR_LINKS` ($lib/forLinks); the tagline, accent and emblem
+ * are `FOR_META` and the index card's words `FOR_INDEX_CARD` ($lib/forMeta,
+ * import-free on purpose so this script can read it). So both
  * halves of the manifest are recomputed by one gate, `forCards.test.ts`.
  *
  * THE MANIFEST (og-manifest.json)
@@ -30,26 +30,26 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
-import { channels } from '../src/lib/coverArt.ts';
-import { FOR_META } from '../src/lib/emblemNames.ts';
 import { EMBLEM_ART } from '../src/lib/emblems.ts';
-import { FOR_INDEX_CARD, FOR_LINKS } from '../src/lib/forLinks.ts';
-import { BACKGROUND, GOLD, HEIGHT, MUTED, PAPER, WIDTH, drawCard, liftToContrast } from './og-card.mjs';
+import { FOR_LINKS } from '../src/lib/forLinks.ts';
+import { FOR_INDEX_CARD, FOR_META } from '../src/lib/forMeta.ts';
+import {
+	BACKGROUND,
+	GOLD,
+	HEIGHT,
+	MUTED,
+	PAPER,
+	WIDTH,
+	alpha,
+	box,
+	drawCard,
+	emblemUri,
+	liftToContrast
+} from './og-card.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = resolve(HERE, '../static/og/for');
 mkdirSync(OUT_DIR, { recursive: true });
-
-/** The emblem, wrapped as a standalone SVG document satori can place as an image. */
-function emblemUri(name) {
-	const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">${EMBLEM_ART[name]}</svg>`;
-	return `data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}`;
-}
-
-/** `#rrggbb` at `alpha` — satori has no color-mix, so the tint is mixed here. */
-const alpha = (hex, a) => `rgba(${channels(hex).join(', ')}, ${a})`;
-
-const box = (style, children) => ({ type: 'div', props: { style, children } });
 
 /** The app's emblem-chip recipe: a wash of the hue with a ring of it. */
 function chip(emblem, accent, size) {
@@ -65,7 +65,7 @@ function chip(emblem, accent, size) {
 			background: alpha(accent, 0.16),
 			border: `2px solid ${alpha(accent, 0.4)}`
 		},
-		{ type: 'img', props: { src: emblemUri(emblem), width: Math.round(size * 0.74), height: Math.round(size * 0.74) } }
+		{ type: 'img', props: { src: emblemUri(EMBLEM_ART[emblem]), width: Math.round(size * 0.74), height: Math.round(size * 0.74) } }
 	);
 }
 
@@ -111,7 +111,7 @@ function groupCard(link) {
 		eyebrowColor: accent,
 		title: link.label,
 		titleSize: titleSize(link.label),
-		tagline: link.tagline,
+		tagline: FOR_META[link.slug].tagline,
 		art: chip(emblem, accent, 290)
 	});
 }
@@ -144,8 +144,8 @@ const compositionDigest = () =>
 
 /** Everything a group card is drawn from. `forCards.test.ts` mirrors this. */
 const groupDigest = (link) => {
-	const { accent, emblem } = FOR_META[link.slug];
-	return digest([link.label, link.tagline, emblem, EMBLEM_ART[emblem], accent].join('\0'));
+	const { accent, emblem, tagline } = FOR_META[link.slug];
+	return digest([link.label, tagline, emblem, EMBLEM_ART[emblem], accent].join('\0'));
 };
 
 /** The index card: its words, and every group's art in order. */

@@ -1520,11 +1520,25 @@ export const getBookGuide = (slug: string, language = 'en', f?: Fetch) =>
 		f
 	);
 
-/** The slugs the hubs list with a leader's guide, each once, in hub order —
- *  the guide route's prerender entries. */
-export const guideSlugs = (shelves: Pick<AudienceShelf, 'leader_guides'>[]): string[] => [
-	...new Set(shelves.flatMap((s) => (s.leader_guides ?? []).map((b) => b.slug)))
+/** The books the hubs list with a leader's guide, each once, in hub order (a
+ *  Map keeps a key's first position). */
+export const guideBooks = (shelves: Pick<AudienceShelf, 'leader_guides'>[]): BookSummary[] => [
+	...new Map(shelves.flatMap((s) => s.leader_guides ?? []).map((b) => [b.slug, b])).values()
 ];
+
+/** The slugs the hubs list with a leader's guide — the guide route's prerender
+ *  entries. */
+export const guideSlugs = (shelves: Pick<AudienceShelf, 'leader_guides'>[]): string[] =>
+	guideBooks(shelves).map((b) => b.slug);
+
+/** A `BookCard` link that opens a book's printable leader's guide instead of
+ *  the book. `t` is the caller's i18n lookup. */
+export const guideCardLink = (book: Pick<BookSummary, 'slug' | 'title'> & { author: { name: string } }, t: (key: string) => string) => ({
+	href: `/books/${book.slug}/guide`,
+	cta: t('guide.open'),
+	label: t('guide.label'),
+	ariaLabel: `${t('guide.title').replace('%t%', book.title)} — ${book.author.name}`
+});
 
 /** Each hub's `languages` without building either shelf (`AudienceLanguagesView`). */
 export const listAudienceLanguages = (f?: Fetch) =>

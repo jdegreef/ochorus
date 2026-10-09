@@ -1,11 +1,13 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { FOR_LINKS, forPath, forPhrase } from './forLinks';
+import { FOR_LINKS, forPath } from './forLinks';
 import {
-	FOR_ANCHORS,
 	FOR_PAGES,
 	PLANS_SHOWN,
+	type ForAnchor,
+	isForAnchor,
+	pageLinks,
 	SHELF_SIZE,
 	forPage,
 	forPlans,
@@ -49,24 +51,18 @@ describe('the "Ochorus for …" pages', () => {
 		expect(forPath('parents')).toBe('/for/parents/');
 	});
 
-	it('words a label for mid-sentence without lower-casing the Bible', () => {
-		expect(forPhrase('Youth ministries')).toBe('youth ministries');
-		expect(forPhrase('Bible colleges')).toBe('Bible colleges');
-	});
-
 	it('links only to routes that exist, or to a section the page has', () => {
 		for (const p of FOR_PAGES) {
-			const has: Record<(typeof FOR_ANCHORS)[number], boolean> = {
+			const has: Record<ForAnchor, boolean> = {
 				'#plans': p.plans.length > 0,
 				'#shelves': p.shelves.length > 0,
 				'#guides': !!p.guides,
 				'#offline': !!p.offline
 			};
-			const hrefs = [p.primary.href, p.secondary.href, ...p.points.flatMap((x) => x.link?.href ?? [])];
-			for (const href of hrefs) {
+			for (const href of pageLinks(p)) {
 				if (href.startsWith('#')) {
-					expect(FOR_ANCHORS, `${p.slug}: ${href}`).toContain(href);
-					expect(has[href as keyof typeof has], `${p.slug} links ${href} but has no such section`).toBe(true);
+					expect(isForAnchor(href), `${p.slug}: ${href}`).toBe(true);
+					expect(has[href as ForAnchor], `${p.slug} links ${href} but has no such section`).toBe(true);
 					continue;
 				}
 				expect(href, `${p.slug}: ${href}`).toMatch(/^\/[a-z-]+$/);

@@ -3,8 +3,8 @@
 	import Emblem from '$lib/components/Emblem.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import { SITE_URL } from '$lib/config';
-	import { FOR_META } from '$lib/emblemNames';
-	import { FOR_INDEX, FOR_LINKS, forPath, forPhrase } from '$lib/forLinks';
+	import { FOR_INDEX, FOR_LINKS, forPath } from '$lib/forLinks';
+	import { FOR_INDEX_CARD, FOR_META } from '$lib/forMeta';
 	import { collectionPage, hreflangFor } from '$lib/seo';
 
 	/**
@@ -13,14 +13,14 @@
 	 * theirs can see them all at once. English-only, like the pages it lists.
 	 */
 	const canonical = `${SITE_URL}${FOR_INDEX}`;
-	const title = 'Who Ochorus is for';
+	const title = FOR_INDEX_CARD.title;
 	const description =
 		'Free Christian classics for churches, small groups, youth ministries, missionaries, chaplains, Bible colleges, schools, homeschool families and parents.';
 	const pageLd = collectionPage({
 		name: title,
 		description,
 		url: canonical,
-		items: FOR_LINKS.map((l) => ({ name: `Ochorus for ${forPhrase(l.label)}`, url: forPath(l.slug) }))
+		items: FOR_LINKS.map((l) => ({ name: `Ochorus for ${FOR_META[l.slug].phrase}`, url: forPath(l.slug) }))
 	});
 </script>
 
@@ -51,12 +51,12 @@
 		{#each FOR_LINKS as l (l.slug)}
 			{@const meta = FOR_META[l.slug]}
 			<li>
-				<a class="group card-lift" href={forPath(l.slug)} style="--group: {meta.accent}">
-					<span class="badge emblem-chip"><Emblem name={meta.emblem} /></span>
+				<a class="group group-wash card-lift" href={forPath(l.slug)} style="--group: {meta.accent}">
+					<span class="badge emblem-chip group-chip"><Emblem name={meta.emblem} /></span>
 					<span class="min-w-0">
 						<span class="block text-h3 font-semibold text-text">{l.label}</span>
-						<span class="mt-1 block text-small text-muted">{l.tagline}</span>
-						<span class="go mt-3 inline-block text-small font-semibold">Ochorus for {forPhrase(l.label)} <Arrow /></span>
+						<span class="mt-1 block text-small text-muted">{meta.tagline}</span>
+						<span class="group-ink mt-3 inline-block text-small font-semibold">Ochorus for {meta.phrase} <Arrow /></span>
 					</span>
 				</a>
 			</li>
@@ -77,21 +77,13 @@
 		height: 100%;
 		padding: 1.25rem;
 		border-radius: var(--radius-card);
-		border: 1px solid color-mix(in srgb, var(--group) 22%, var(--color-border));
-		background:
-			radial-gradient(90% 130% at 0% 0%, color-mix(in srgb, var(--group) 14%, transparent), transparent 60%),
-			color-mix(in srgb, var(--group) 5%, var(--color-surface));
 	}
 	.group:hover {
 		text-decoration: none;
 		border-color: color-mix(in srgb, var(--group) 50%, var(--color-border));
 	}
 	.badge {
-		--chip-hue: var(--group);
 		--chip-size: 3.25rem;
-	}
-	.go {
-		color: color-mix(in srgb, var(--group) 80%, var(--color-text));
 	}
 	@media (max-width: 1023.98px) {
 		.groups {

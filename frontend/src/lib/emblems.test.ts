@@ -3,7 +3,6 @@ import { EMBLEM_ART, emblemHue, MIN_ACCENT_SATURATION, type EmblemName } from '.
 import {
 	TOPIC_META,
 	PLAN_META,
-	FOR_META,
 	SERMON_EMBLEMS,
 	FALLBACK_POOL,
 	fallbackEmblem,
@@ -11,6 +10,7 @@ import {
 	planMeta,
 	topicMeta
 } from './emblemNames';
+import { FOR_META } from './forMeta';
 
 const names = Object.keys(EMBLEM_ART) as EmblemName[];
 

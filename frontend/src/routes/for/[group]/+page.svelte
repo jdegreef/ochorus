@@ -12,10 +12,10 @@
 	import ShelfDownloadControl from '$lib/components/ShelfDownloadControl.svelte';
 	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
-	import { FOR_META } from '$lib/emblemNames';
-	import { FOR_INDEX, FOR_LINKS, forPath, forPhrase } from '$lib/forLinks';
+	import { FOR_INDEX, FOR_LINKS, forPath } from '$lib/forLinks';
+	import { FOR_META } from '$lib/forMeta';
 	import { localizeHref } from '$lib/href';
-	import { toBookTile } from '$lib/library-public';
+	import { guideCardLink, toBookTile } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { hreflangFor, jsonLd, pickQa } from '$lib/seo';
 
@@ -33,19 +33,15 @@
 	 * column.
 	 */
 	let { data } = $props();
-	const t = i18n.t;
 
 	const page = $derived(data.page);
 	const shelf = $derived(data.shelf);
+	// forCards.test.ts pins one entry per page, so the lookup cannot miss.
 	const meta = $derived(FOR_META[page.slug]);
-	// forPages.test.ts pins one link per page, so the lookup cannot miss.
-	const label = $derived(FOR_LINKS.find((l) => l.slug === page.slug)!.label);
 	const path = $derived(forPath(page.slug));
 	const canonical = $derived(`${SITE_URL}${path}`);
 	const fan = $derived(shelf.shelves[0]?.books ?? []);
 	const qa = $derived(pickQa(page.questions, []));
-	/** A page link: an anchor on this page stays as it is; a path is localized. */
-	const go = (href: string) => (href.startsWith('#') ? href : localizeHref(href));
 	const pageLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',
@@ -66,7 +62,7 @@
 	{canonical}
 	hreflang={hreflangFor(path, ['en'])}
 	ogImage="{SITE_URL}/og/for/{page.slug}.png"
-	ogImageAlt="Ochorus for {forPhrase(label)}"
+	ogImageAlt="Ochorus for {meta.phrase}"
 	ogImageWidth={1200}
 	ogImageHeight={630}
 	structuredData={[pageLd, ...(qa.ld ? [qa.ld] : [])]}
@@ -87,17 +83,17 @@
 		{/each}
 	</nav>
 
-	<section class="hero">
+	<section class="hero group-wash">
 		<div class="min-w-0">
 			<div class="flex items-center gap-3">
-				<span class="badge emblem-chip"><Emblem name={meta.emblem} /></span>
-				<p class="eyebrow group-ink">Ochorus for {forPhrase(label)}</p>
+				<span class="badge emblem-chip group-chip"><Emblem name={meta.emblem} /></span>
+				<p class="eyebrow group-ink">Ochorus for {meta.phrase}</p>
 			</div>
 			<h1 class="mt-3 text-balance font-display text-h1 font-semibold leading-tight">{page.title}</h1>
 			<p class="lede mt-4 text-muted">{page.lead}</p>
 			<div class="mt-6 flex flex-wrap gap-3">
-				<a class="btn btn-primary" href={go(page.primary.href)}>{page.primary.label}</a>
-				<a class="btn btn-ghost" href={go(page.secondary.href)}>{page.secondary.label}</a>
+				<a class="btn btn-primary" href={localizeHref(page.primary.href)}>{page.primary.label}</a>
+				<a class="btn btn-ghost" href={localizeHref(page.secondary.href)}>{page.secondary.label}</a>
 			</div>
 		</div>
 		{#if fan.length}
@@ -112,14 +108,14 @@
 		<ul class="points mt-6">
 			{#each page.points as p (p.title)}
 				<li class="point rounded-card border border-border bg-surface p-5">
-					<span class="point-icon flex h-10 w-10 items-center justify-center rounded-full"
+					<span class="point-icon group-ink flex h-10 w-10 items-center justify-center rounded-full"
 						><Icon name={p.icon} size={22} /></span
 					>
 					<h3 class="mt-3 text-h3">{p.title}</h3>
 					<p class="mt-2 text-body text-muted">{p.body}</p>
 					{#if p.link}
 						<p class="mt-3 text-small">
-							<a class="text-accent hover:underline" href={go(p.link.href)}>{p.link.label} <Arrow /></a>
+							<a class="text-accent hover:underline" href={localizeHref(p.link.href)}>{p.link.label} <Arrow /></a>
 						</p>
 					{/if}
 				</li>
@@ -193,36 +189,33 @@
 						{book}
 						showAuthor
 						showSeries={false}
-						link={{
-							href: `/books/${book.slug}/guide`,
-							cta: t('guide.open'),
-							label: t('guide.label'),
-							ariaLabel: `${t('guide.title').replace('%t%', book.title)} — ${book.author.name}`
-						}}
+						link={guideCardLink(book, i18n.t)}
 					/>
 				{/each}
 			</div>
 		</section>
 	{/if}
 
-	{#if shelf.offline.length && page.offline}
+	{#if shelf.offline.length}
 		<section id="offline" class="jump-anchor mt-14" aria-labelledby="offline-heading">
 			<div class="flex flex-wrap items-baseline gap-x-4 gap-y-2">
 				<h2 id="offline-heading" class="text-h2">Take them offline</h2>
 				<ShelfDownloadControl
 					shelf="for-{page.slug}"
+					label="Save all to this device"
 					books={shelf.offline.map((o) => ({ slug: o.book.slug, language: o.book.language }))}
 				/>
 			</div>
-			<p class="mt-2 max-w-2xl text-body text-muted">{page.offline.note}</p>
+			<p class="mt-2 max-w-2xl text-body text-muted">{page.offline?.note}</p>
 			<ul class="offline mt-6">
 				{#each shelf.offline as o (o.book.slug)}
+					{@const href = localizeHref(`/books/${o.book.slug}`)}
 					<li class="offline-row rounded-card border border-border bg-surface p-3">
-						<a class="offline-cover" href={localizeHref(`/books/${o.book.slug}`)} tabindex="-1" aria-hidden="true"
+						<a class="offline-cover" {href} tabindex="-1" aria-hidden="true"
 							><BookCover book={o.book} rounded="rounded" /></a
 						>
 						<div class="min-w-0">
-							<a class="font-semibold text-text hover:underline" href={localizeHref(`/books/${o.book.slug}`)}
+							<a class="font-semibold text-text hover:underline" {href}
 								>{o.book.title}</a
 							>
 							<p class="text-small text-muted">{o.book.author.name}</p>
@@ -247,21 +240,18 @@
 
 	<QandA items={qa.items} title="Questions" headingClass="text-h2" />
 
-	<section class="close mt-14 flex flex-col items-center rounded-card px-6 py-10 text-center sm:px-10">
-		<span class="badge emblem-chip"><Emblem name={meta.emblem} /></span>
+	<section class="group-wash mt-14 flex flex-col items-center rounded-card px-6 py-10 text-center sm:px-10">
+		<span class="badge emblem-chip group-chip"><Emblem name={meta.emblem} /></span>
 		<h2 class="mt-4 max-w-[22ch] text-h2">{page.closeHeading}</h2>
 		<p class="mt-3 max-w-xl text-body text-muted">{page.closeBody}</p>
 		<div class="mt-6 flex flex-wrap justify-center gap-3">
-			<a class="btn btn-primary" href={go(page.primary.href)}>{page.primary.label}</a>
+			<a class="btn btn-primary" href={localizeHref(page.primary.href)}>{page.primary.label}</a>
 			<a class="btn btn-ghost" href={localizeHref('/contact')}>Contact us</a>
 		</div>
 	</section>
 </div>
 
 <style>
-	/* The group's accent reaches the page only through color-mix tints and a
-	   lifted ink, never as a fill behind body text (STYLE_GUIDE §Cards) — the
-	   topic hero's recipe. */
 	.hero {
 		display: grid;
 		grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
@@ -269,25 +259,16 @@
 		align-items: center;
 		padding: 2rem;
 		border-radius: var(--radius-card);
-		border: 1px solid color-mix(in srgb, var(--group) 22%, var(--color-border));
-		background:
-			radial-gradient(90% 130% at 0% 0%, color-mix(in srgb, var(--group) 16%, transparent), transparent 55%),
-			color-mix(in srgb, var(--group) 7%, var(--color-surface));
-	}
-	.badge {
-		--chip-hue: var(--group);
-		--chip-size: 3.5rem;
-	}
-	.group-ink {
-		color: color-mix(in srgb, var(--group) 80%, var(--color-text));
-	}
-	.point-icon {
-		background: color-mix(in srgb, var(--group) 14%, var(--color-surface));
-		color: color-mix(in srgb, var(--group) 80%, var(--color-text));
 	}
 	/* The hero's buttons jump to these; clear the pinned header on arrival. */
 	.jump-anchor {
 		scroll-margin-top: calc(var(--pinned-offset) + 0.5rem);
+	}
+	.badge {
+		--chip-size: 3.5rem;
+	}
+	.point-icon {
+		background: color-mix(in srgb, var(--group) 14%, var(--color-surface));
 	}
 	.lede {
 		max-width: 52ch;
@@ -326,10 +307,6 @@
 	}
 	.offline-cover {
 		display: block;
-	}
-	.close {
-		border: 1px solid color-mix(in srgb, var(--group) 22%, var(--color-border));
-		background: color-mix(in srgb, var(--group) 7%, var(--color-surface-2));
 	}
 	@media (max-width: 639.98px) {
 		.hero {

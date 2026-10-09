@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { withTrailingSlash } from './href';
+import { localizeHref, withTrailingSlash } from './href';
+
+describe('localizeHref', () => {
+	it('leaves a link to a place on this page as it is', () => {
+		expect(localizeHref('#plans')).toBe('#plans');
+	});
+});
 
 describe('withTrailingSlash', () => {
 	it('adds the slash to detail pages, which is the whole point', () => {

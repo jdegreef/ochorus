@@ -53,6 +53,19 @@ export const MUTED = '#b7afd6';
 
 export const BACKGROUND = `linear-gradient(135deg, ${BG_FROM} 0%, ${BG_TO} 100%)`;
 
+/** A satori div. Most of a card is layout, so `box` rather than `text`. */
+export const box = (style, children) => ({ type: 'div', props: { style, children } });
+
+/** `#rrggbb` at `a` — satori has no color-mix, so a tint is mixed here. */
+export const alpha = (hex, a) => `rgba(${channels(hex).join(', ')}, ${a})`;
+
+/** An emblem's drawing (`EMBLEM_ART[name]`), wrapped as a standalone SVG
+ *  document satori can place as an image. */
+export function emblemUri(art) {
+	const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">${art}</svg>`;
+	return `data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}`;
+}
+
 const FONTS = resolve(dirname(fileURLToPath(import.meta.url)), 'fonts');
 const FONT_SERIF = resolve(FONTS, 'LiberationSerif-Bold.ttf');
 const FONT_SANS = resolve(FONTS, 'LiberationSans-Regular.ttf');

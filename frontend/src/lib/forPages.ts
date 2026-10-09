@@ -1,6 +1,10 @@
 import type { IconName } from '$lib/components/Icon.svelte';
 import {
+	COVER_AUTHOR_KEYS,
+	COVER_FACE_KEYS,
+	pick,
 	toCoverBook,
+	type CoverFace,
 	type BookDetail,
 	type BookSummary,
 	type CoverBook,
@@ -80,9 +84,27 @@ export interface ForPage {
 	closeBody: string;
 }
 
-/** The anchors a `ForLink` may point at, by the section that answers to each
- *  (forPages.test.ts holds a page to having the section it links). */
-export const FOR_ANCHORS = ['#plans', '#shelves', '#guides', '#offline'] as const;
+/** The anchors a `ForLink` may point at, each to the snapshot section that
+ *  answers to it — the build fails if a page links one that came back empty
+ *  (routes/for-shelves). */
+export const FOR_ANCHORS = {
+	'#plans': 'plans',
+	'#shelves': 'shelves',
+	'#guides': 'guides',
+	'#offline': 'offline'
+} as const satisfies Record<string, keyof ForShelfData>;
+
+export type ForAnchor = keyof typeof FOR_ANCHORS;
+
+/** Every link a page draws from its copy: the two buttons and the points'. */
+export const pageLinks = (p: ForPage): string[] => [
+	p.primary.href,
+	p.secondary.href,
+	...p.points.flatMap((x) => x.link?.href ?? [])
+];
+
+/** Is this href one of the page's own sections? */
+export const isForAnchor = (href: string): href is ForAnchor => Object.hasOwn(FOR_ANCHORS, href);
 
 /** The live languages besides English, by their English names, from the
  *  registry's "Go live" list — so the copy names exactly what the site
@@ -1244,32 +1266,30 @@ export const SHELF_SIZE = 6;
 /** How many plan cards a page shows: one row of the plan grid. */
 export const PLANS_SHOWN = 3;
 
-/** A starter shelf: its picks out of the live English list (pass
- *  `listBooks('en')`), in the page's order, the first `SHELF_SIZE` that are
- *  published, trimmed to what a cover card draws. Built once at build time
- *  (routes/for-shelves). */
-export function forShelf(english: BookSummary[], slugs: string[]): CoverBook[] {
-	const bySlug = new Map(english.map((b) => [b.slug, b]));
-	return slugs
-		.flatMap((s) => {
-			const b = bySlug.get(s);
-			return b ? [toCoverBook(b)] : [];
-		})
-		.slice(0, SHELF_SIZE);
-}
+/** `slugs` out of `all`, in `slugs` order, missing ones dropped, the first `n`
+ *  — the one selection rule behind a page's shelves and plans, so an
+ *  unpublished pick leaves its backup in its place. */
+const pickBySlug = <T extends { slug: string }>(all: T[], slugs: string[], n: number): T[] => {
+	const bySlug = new Map(all.map((x) => [x.slug, x]));
+	return slugs.flatMap((s) => bySlug.get(s) ?? []).slice(0, n);
+};
 
-/** A page's plans: its slugs out of the live English plan list, in the page's
- *  order, the first `PLANS_SHOWN` that exist. */
-export function forPlans(english: PlanSummary[], slugs: string[]): PlanSummary[] {
-	const bySlug = new Map(english.map((p) => [p.slug, p]));
-	return slugs.flatMap((s) => bySlug.get(s) ?? []).slice(0, PLANS_SHOWN);
-}
+/** A starter shelf: its picks out of the live English list (pass
+ *  `listBooks('en')`), trimmed to what a cover card draws. Built once at build
+ *  time (routes/for-shelves). */
+export const forShelf = (english: BookSummary[], slugs: string[]): CoverBook[] =>
+	pickBySlug(english, slugs, SHELF_SIZE).map(toCoverBook);
+
+/** A page's plans out of the live English plan list. */
+export const forPlans = (english: PlanSummary[], slugs: string[]): PlanSummary[] =>
+	pickBySlug(english, slugs, PLANS_SHOWN);
 
 /** One book in an offline pack: its cover card and its two file downloads.
  *  Saving it to the device needs no more — `ShelfDownloadControl` fetches the
  *  chapter list itself, as it does for a Bookshelf shelf. */
 export interface ForOfflineBook {
-	book: CoverBook;
+	/** Only what the row draws: its cover, title and author. */
+	book: CoverFace;
 	pdf_url: string;
 	epub_url: string;
 }
@@ -1279,7 +1299,7 @@ export interface ForOfflineBook {
 export function toOfflineBook(b: BookDetail): ForOfflineBook | null {
 	const epub = b.epub_url ?? '';
 	if (!b.pdf_url && !epub) return null;
-	return { book: toCoverBook(b), pdf_url: b.pdf_url, epub_url: epub };
+	return { book: { ...pick(b, COVER_FACE_KEYS), author: pick(b.author, COVER_AUTHOR_KEYS) }, pdf_url: b.pdf_url, epub_url: epub };
 }
 
 /** Everything a page draws from the live library, snapshotted at build time

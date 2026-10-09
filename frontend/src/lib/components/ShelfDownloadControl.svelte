@@ -17,7 +17,17 @@
 	 * Offline, or while another shelf (or a single book) is downloading, the
 	 * download button is disabled — `offlineBooks` runs one download at a time.
 	 */
-	let { shelf, books }: { shelf: string; books: ShelfBookRef[] } = $props();
+	let {
+		shelf,
+		books,
+		label
+	}: {
+		shelf: string;
+		books: ShelfBookRef[];
+		/** The download button's words, when "Download shelf" isn't what the
+		 *  books are to the reader (an "Ochorus for" offline pack). */
+		label?: string;
+	} = $props();
 	const t = i18n.t;
 
 	// `offlineBooks.list()` reads its ticks, so a download or removal anywhere —
@@ -74,7 +84,7 @@
 				onclick={() => shelfDownload.start(shelf, books)}
 			>
 				<Icon name="download" size={15} />
-				{result?.failed ? t('shelf.retry') : `${t('shelf.download')} (${missing.length})`}
+				{result?.failed ? t('shelf.retry') : `${label ?? t('shelf.download')} (${missing.length})`}
 			</button>
 		{/if}
 	</div>

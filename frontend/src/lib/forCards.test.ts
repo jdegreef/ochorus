@@ -4,12 +4,12 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 import { EMBLEM_ART } from './emblems';
-import { FOR_META } from './emblemNames';
-import { FOR_INDEX_CARD, FOR_LINKS, type ForLinkDest } from './forLinks';
+import { FOR_LINKS, type ForLinkDest } from './forLinks';
+import { FOR_INDEX_CARD, FOR_META } from './forMeta';
 
 /**
  * The "Ochorus for …" share cards (scripts/generate-for-og.mjs) are drawn from
- * TypeScript alone — FOR_LINKS' label and tagline, FOR_META's accent and
+ * TypeScript alone — FOR_LINKS' label, FOR_META's tagline, accent and
  * emblem — so this one gate recomputes every input, the topic cards' pattern
  * (topicCards.test.ts) without a Python half.
  *
@@ -27,8 +27,8 @@ const RERUN = 'run `cd frontend && npm run og:for`';
 
 // Mirrors `groupDigest` / `indexDigest` in generate-for-og.mjs.
 const groupDigest = (l: ForLinkDest) => {
-	const { accent, emblem } = FOR_META[l.slug];
-	return sha([l.label, l.tagline, emblem, EMBLEM_ART[emblem], accent].join('\0'));
+	const { accent, emblem, tagline } = FOR_META[l.slug];
+	return sha([l.label, tagline, emblem, EMBLEM_ART[emblem], accent].join('\0'));
 };
 const indexDigest = () =>
 	sha(
