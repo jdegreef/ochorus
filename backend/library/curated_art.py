@@ -1438,6 +1438,31 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "A great dim question mark under stars, with a small figure standing in "
         "its glowing dot: the series mark for Real Questions.",
     ),
+    # The teen Originals series (2026-10-09): one dim series mark behind the
+    # type, as Real Questions has, with a small warm light below the subtitle.
+    # Anchored has an anchor, They Were Young a lantern; the weather changes by
+    # volume. Drawn as inline SVG and rendered like the young-reader set above.
+    "anchored-1": Original(
+        "450b00b185c9965057ea4ba88f78602600a294db278bf5e288b8a017ab705998",
+        "A great dim anchor under a starry night sea, a small boat on the "
+        "horizon with its lamp lit: the series mark for Anchored, Book 1.",
+    ),
+    "anchored-2": Original(
+        "5db81673592b904b4c552e83cb68008ddf1133d3333c0b388b24dd1f7aa82d37",
+        "The same anchor as dawn breaks low on the horizon: Anchored, Book 2, "
+        "faith carried into real life.",
+    ),
+    "they-were-young-1": Original(
+        "52e2b3b63ead62454b0ce29095da1425e8d0d8b90883aff209e211efba4e994f",
+        "A great dim lantern under stars over a dark hill, a small lantern "
+        "burning below it: the series mark for They Were Young, Book 1 "
+        "(Called).",
+    ),
+    "they-were-young-2": Original(
+        "9a093ee6ab9e364e37ee6121e7ae904e413a8b886df110fc1d92a969dbbd0c4f",
+        "The same lantern in wind and rain, its small flame bent but still "
+        "burning: They Were Young, Book 2 (Tested).",
+    ),
 }
 
 

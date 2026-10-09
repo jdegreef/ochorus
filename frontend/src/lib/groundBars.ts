@@ -9,6 +9,8 @@
 export const GROUND_BARS: Record<string, number> = {
 	'a-hidden-fire': 0.110,
 	'all-of-grace-teens': 0.110,
+	'anchored-1': 0.110,
+	'anchored-2': 0.110,
 	'answers-to-prayer': 0.105,
 	'baptism-with-the-holy-spirit': 0.085,
 	'c-s-lewis-a-life-children': 0.050,
@@ -45,6 +47,8 @@ export const GROUND_BARS: Record<string, number> = {
 	'school-of-prayer': 0.040,
 	'the-reformed-pastor': 0.040,
 	'the-unselfishness-of-god': 0.110,
+	'they-were-young-1': 0.110,
+	'they-were-young-2': 0.110,
 	'till-he-come': 0.040,
 	'tukutendereza': 0.110,
 	'watchman-nee-a-life-teens': 0.110,
