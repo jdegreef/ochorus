@@ -3,7 +3,7 @@
  "slug": "c-s-lewis-a-life-children",
  "language": "am",
  "job_issue": 5742,
- "pull_request": null,
+ "pull_request": 5775,
  "note": [
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole in the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh, lowercase usfm/<book>.usfm; re-verified for this job 2026-10-09: jhn/mat/jas/1pe/2ti return 200, psa/pro/ecc/mal 404 — the mirror carries no Old Testament). NT epigraphs quote it verbatim. OT epigraphs reuse the wording of an already-shipped Amharic work that quotes the same verse (source_file names it, and the fragment was checked as an exact substring of that file) and are otherwise self_rendered in the 1962 register.",
   "Every quotation is a chapter epigraph (block 0); the body quotes no scripture. The English epigraphs are simplified child paraphrases (\"— from Psalm 15\"); per the shipped am children's editions each quotes the 1962 Bible's own wording for the part the English means, with … for words left out, and cites `— ከ<Book> <chapter>`.",
