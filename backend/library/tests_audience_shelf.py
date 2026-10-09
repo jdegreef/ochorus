@@ -24,6 +24,7 @@ from .models import (
     Chapter,
     Plan,
     PlanDay,
+    Quote,
     Series,
     SeriesTranslation,
     Topic,
@@ -268,6 +269,51 @@ class AudienceShelfTests(TestCase):
         # No English fallback: a language without the book has no faces.
         self.assertEqual(self._get(language="sw")["people"], [])
 
+    def _quote(self, author, chapter, text, *, slug, reviewed=True):
+        return Quote.objects.create(
+            slug=slug, author=author, text=text, chapter=chapter, paragraph=0,
+            reviewed=reviewed,
+        )
+
+    def test_quotes_are_the_strips_people_in_their_own_words(self):
+        carey = Author.objects.create(slug="william-carey", name="William Carey")
+        slessor = Author.objects.create(slug="mary-slessor", name="Mary Slessor")
+        outsider = Author.objects.create(slug="john-owen", name="John Owen")
+        book = self._book("bfg-1", series=self.series)
+        self._story(book, 1, "Mary Slessor: The Girl Who Feared Nothing", slessor)
+        self._story(book, 2, "William Carey: The Cobbler", carey)
+        source = Chapter.objects.get(book=book, order=1)
+        self._quote(carey, source, "Expect great things from God.", slug="carey-b")
+        self._quote(carey, source, "Attempt great things for God.", slug="carey-a")
+        self._quote(slessor, source, "God plus one is always a majority.", slug="slessor-a")
+        self._quote(slessor, source, "A longer line that loses to the shorter one.", slug="slessor-0a")
+        self._quote(slessor, source, "Unreviewed.", slug="slessor-0", reviewed=False)
+        self._quote(slessor, source, "x" * 200, slug="slessor-00")  # too long to stand alone
+        self._quote(outsider, source, "Not one of the strip's people.", slug="owen-a")
+        quotes = self._get()["quotes"]
+        # The strip's order, one each, the shortest (a tie goes to the slug);
+        # reviewed and short enough to stand alone only.
+        self.assertEqual(
+            [(q["author"]["slug"], q["text"]) for q in quotes],
+            [
+                ("mary-slessor", "God plus one is always a majority."),
+                ("william-carey", "Attempt great things for God."),
+            ],
+        )
+
+    def test_quotes_are_english_only(self):
+        slessor = Author.objects.create(slug="mary-slessor", name="Mary Slessor")
+        en = self._book("bfg-1", series=self.series)
+        sw = self._book("bfg-1", language="sw", series=self.series)
+        SeriesTranslation.objects.create(series=self.series, language="sw", title="Shujaa")
+        self._story(en, 1, "Mary Slessor: The Girl", slessor)
+        Chapter.objects.create(book=sw, order=1, title="Mary Slessor: Msichana", body_html=body_of(9))
+        self._quote(slessor, Chapter.objects.get(book=en), "God plus one.", slug="slessor-a")
+        self.assertEqual(len(self._get()["quotes"]), 1)
+        data = self._get(language="sw")
+        self.assertEqual(len(data["people"]), 1)
+        self.assertEqual(data["quotes"], [])
+
     def test_a_title_without_a_name_falls_back_to_the_person(self):
         crowther = Author.objects.create(slug="samuel-ajayi-crowther", name="Samuel Ajayi Crowther")
         book = self._book("bfg-1", series=self.series)
@@ -324,6 +370,31 @@ class AudienceShelfTests(TestCase):
                     if f["order"] in chapters and split_story_title(f["title"]) is None:
                         unsplit.append((path.name, f["order"], f["title"]))
         self.assertEqual(unsplit, [])
+
+
+class ChallengeSeriesFixtureTests(TestCase):
+    """The hubs frame Anchored and Rooted as a 30-day challenge (the frontend's
+    `HubChallenge`): each volume is an introduction, then one chapter a day, so
+    a reader's furthest chapter minus one is the day they've reached. Held to
+    the English fixture, so a re-cut volume can't silently skew the count."""
+
+    CHALLENGES = {"anchored": 30, "rooted": 30}
+
+    def test_every_challenge_volume_is_an_introduction_then_one_chapter_a_day(self):
+        books = Path(__file__).parent / "fixtures" / "content" / "books"
+        wrong, seen = [], 0
+        for path in sorted(books.glob("*.en.json")):
+            rows = json.loads(path.read_text())
+            series = (rows[0]["fields"].get("series") or [None])[0]
+            if series not in self.CHALLENGES:
+                continue
+            seen += 1
+            titles = {r["fields"]["order"]: r["fields"]["title"] for r in rows[1:]}
+            for day in range(1, self.CHALLENGES[series] + 1):
+                if not titles.get(day + 1, "").startswith(f"Day {day} "):
+                    wrong.append((path.name, day + 1, titles.get(day + 1)))
+        self.assertGreater(seen, 0, "no challenge volumes found — did a series slug change?")
+        self.assertEqual(wrong, [])
 
 
 class BookAgesTests(TestCase):

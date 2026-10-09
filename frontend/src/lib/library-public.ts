@@ -1448,6 +1448,9 @@ export interface AudienceShelf {
 	/** The series' anthologies as faces, each opening its chapter. Optional: an
 	 *  API behind this build omits it, and the page draws no strip. */
 	people?: HubPerson[];
+	/** A few short quotations by those people, one each — English only, like
+	 *  every quote. Optional for the same reason as `people`. */
+	quotes?: SavedQuote[];
 	/** The "(For Children)" / "(For Teens)" retellings no series above holds. */
 	editions: BookSummary[];
 	/** The rest of the audience's topic shelf, in its curator's order. */

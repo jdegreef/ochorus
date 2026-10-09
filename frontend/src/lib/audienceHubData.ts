@@ -12,6 +12,7 @@ import { getLang } from './lang.svelte';
 export const emptyShelf = (): AudienceShelf => ({
 	series: [],
 	people: [],
+	quotes: [],
 	editions: [],
 	more: [],
 	plans: [],

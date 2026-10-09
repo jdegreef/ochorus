@@ -1004,6 +1004,42 @@ def _audience_people(series_rows: list[dict], language: str) -> list[dict]:
     return list(people.values())
 
 
+#: How many "In their own words" quotations a hub carries — one per person.
+AUDIENCE_QUOTES_MAX = 3
+
+
+def _audience_quotes(people: list[dict], language: str) -> list[dict]:
+    """Short reviewed quotations by the people in the hub's strip, one each, in
+    the strip's order: the faces, then their own words. English only, like
+    every quote (the /quotes hub is drawn from the English works), and short
+    enough to stand alone (``FEATURED_MAX_CHARS``, the /quotes lead's bar).
+    Within a person the pick is the shortest — the line that lands on a young
+    reader — ties broken by slug, so it is stable across deploys."""
+    from django.db.models.functions import Length
+
+    from .models import Quote
+
+    if language != "en" or not people:
+        return []
+    order: dict[str, int] = {}
+    for p in people:
+        order.setdefault(p["slug"], len(order))
+    picks: dict[str, Quote] = {}
+    for q in (
+        Quote.objects.filter(reviewed=True, author__slug__in=order)
+        .filter(_PUBLISHED_SOURCE)
+        .annotate(chars=Length("text"))
+        .filter(chars__lte=FEATURED_MAX_CHARS)
+        .select_related("author", "chapter__book", "sermon")
+        .defer("chapter__body_html", "chapter__body_text", "chapter__search_vector",
+               "sermon__body_html", "sermon__body_text", "sermon__search_vector")
+        .order_by("chars", "slug")
+    ):
+        picks.setdefault(q.author.slug, q)
+    chosen = sorted(picks.values(), key=lambda q: order[q.author.slug])
+    return [_quote_card_payload(q) for q in chosen[:AUDIENCE_QUOTES_MAX]]
+
+
 class AudienceShelfView(PublicContentCacheMixin, APIView):
     """Everything written for one young audience in the requested language —
     the /young-readers/ and /teens/ hubs, which gather what /series, /originals,
@@ -1024,7 +1060,8 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
       Questions), in its curator's order; companions, so they claim no book.
 
     ``people`` is the series' anthologies told as faces, each opening its
-    chapter (``_audience_people``). ``start`` is the one book a newcomer should
+    chapter (``_audience_people``), and ``quotes`` a few of their own words
+    (``_audience_quotes``). ``start`` is the one book a newcomer should
     open first (``AUDIENCE_STARTS``);
     ``printable`` lists the slugs among them with a free PDF / EPUB
     (``export_policy``), for the page's "print it" line; ``languages``, every
@@ -1108,13 +1145,15 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
             "language": language,
             "article_lead_books": lead_book_cards({a.slug: a.related for a in articles}, language),
         }
+        people = _audience_people(all_series, language)
         # No topic chips: nothing on the hub filters or shows them.
         ctx = {"request": request, "language": language, "book_topics": {}}
         plan_ctx = {"request": request, **_plan_card_context(plans, language)}
         return Response(
             {
                 "series": series,
-                "people": _audience_people(all_series, language),
+                "people": people,
+                "quotes": _audience_quotes(people, language),
                 "editions": BookListSerializer(editions, many=True, context=ctx).data,
                 "more": BookListSerializer(more, many=True, context=ctx).data,
                 "plans": PlanListSerializer(plans, many=True, context=plan_ctx).data,

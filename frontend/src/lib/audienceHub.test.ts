@@ -4,6 +4,7 @@ import { resolve } from 'node:path';
 import {
 	AUDIENCE_HUBS,
 	TEENS_HUB,
+	challengeState,
 	hubFor,
 	YOUNG_READERS_HUB,
 	heroCovers,
@@ -14,6 +15,7 @@ import {
 	startPick
 } from './audienceHub';
 import type { AudienceShelf, BookSummary, BookTile, SeriesSummary } from './library-public';
+import type { ProgressRecord } from './reading-schema';
 
 const book = (slug: string): BookSummary =>
 	({ slug, title: `${slug} title`, author: { slug: 'a', name: 'A' } }) as BookSummary;
@@ -79,6 +81,45 @@ describe('hubPaths', () => {
 
 	it('is empty on a hub with none of its places', () => {
 		expect(hubPaths(TEENS_HUB, shelf({ more: [book('x')] }))).toEqual([]);
+	});
+});
+
+describe('challengeState', () => {
+	const rec = (furthest: number, finished = false, order = furthest): ProgressRecord =>
+		({ order, furthest, paragraph_index: 0, language: 'en', at: 1, finished_at: finished ? 1 : null }) as ProgressRecord;
+	const of = (map: Record<string, ProgressRecord>) => (slug: string) => map[slug] ?? null;
+
+	it('starts at the first volume’s introduction before any reading', () => {
+		expect(challengeState(['a-1', 'a-2'], 30, of({}))).toEqual({
+			slug: 'a-1', day: 0, order: 1, started: false, done: false
+		});
+	});
+
+	it('counts the introduction out: chapter n + 1 is day n', () => {
+		expect(challengeState(['a-1'], 30, of({ 'a-1': rec(8) }))).toMatchObject({ day: 7, order: 8, started: true });
+		// Still on the introduction: begun, no day yet.
+		expect(challengeState(['a-1'], 30, of({ 'a-1': rec(1) }))?.day).toBe(0);
+		// The closing chapter past day 30 doesn't overshoot.
+		expect(challengeState(['a-1'], 30, of({ 'a-1': rec(32) }))?.day).toBe(30);
+	});
+
+	it('resumes where the reader left off, not at a peek ahead', () => {
+		expect(challengeState(['a-1'], 30, of({ 'a-1': rec(12, false, 5) }))).toMatchObject({ day: 11, order: 5 });
+	});
+
+	it('moves on to the next volume once one is finished', () => {
+		expect(challengeState(['a-1', 'a-2'], 30, of({ 'a-1': rec(32, true) }))).toMatchObject({
+			slug: 'a-2', day: 0, started: false, done: false
+		});
+	});
+
+	it('is done when every volume is finished', () => {
+		const all = of({ 'a-1': rec(32, true), 'a-2': rec(32, true) });
+		expect(challengeState(['a-1', 'a-2'], 30, all)).toMatchObject({ slug: 'a-2', day: 30, done: true });
+	});
+
+	it('is null for a series with no volumes here', () => {
+		expect(challengeState([], 30, of({}))).toBeNull();
 	});
 });
 
