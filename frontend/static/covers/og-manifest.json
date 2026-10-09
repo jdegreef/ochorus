@@ -6243,6 +6243,16 @@
 				508
 			]
 		},
+		"es/the-reformed-pastor": {
+			"ground": "99434c32f09310ccc7f5e08135899d7184e577e2d9db724f12d4b4463bf49875",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/rust",
+			"bar": 0.04
+		},
 		"es/the-secret-of-guidance": {
 			"ground": "ede183597e4b2fbf740ec87df22eb60429f8838022ea4146af06a9b2a6b8f01f",
 			"style": "devotional",
