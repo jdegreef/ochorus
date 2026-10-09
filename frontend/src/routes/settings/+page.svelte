@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { sealsPref } from '$lib/sealsPref.svelte';
 	import { onMount } from 'svelte';
 	import GoalPips from '$lib/components/GoalPips.svelte';
 	import { workPath } from '$lib/editionHref';
@@ -481,6 +482,22 @@
 						</button>
 						<button class:active={readerPrefs.preferModern} onclick={() => readerPrefs.setPreferModern(true)}>
 							{t('reader.modern')}
+						</button>
+					</div>
+				</div>
+
+				<!-- Reading seals — shown at the end of a book and on the Bookshelf. -->
+				<div class="setting-row">
+					<div>
+						<div class="setting-label">{t('seals.setting')}</div>
+						<div class="setting-sub">{t('seals.settingSub')}</div>
+					</div>
+					<div class="seg">
+						<button class:active={sealsPref.on} aria-pressed={sealsPref.on} onclick={() => sealsPref.set(true)}>
+							{t('seals.show')}
+						</button>
+						<button class:active={!sealsPref.on} aria-pressed={!sealsPref.on} onclick={() => sealsPref.set(false)}>
+							{t('seals.hide')}
 						</button>
 					</div>
 				</div>
