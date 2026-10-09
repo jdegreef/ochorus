@@ -1,0 +1,123 @@
+{
+ "kind": "book",
+ "slug": "the-imitation-of-christ-teens",
+ "language": "am",
+ "job_issue": 5739,
+ "pull_request": null,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh; re-verified for this job: the NT books return 200, the OT books 404). OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
+  "A `mined` row was re-measured against the finished text: an exact substring of at least 20 characters of the 1962 NT verse (or of the cited corpus file) inside that block. Shorter quotations are self_rendered even when worded as the 1962 text (John 21:22b, «ምን አግዶህ? አንተ ተከተለኝ»). The English quotes the KJV; per the Amharic teens editions each chapter epigraph cites book and verse with no version label. Luke 9:23 sits inside the mirror's bridged LUK 9:21-23 entry, whose text after «ለሁሉም እንዲህ አላቸው።» is verse 23 whole, so it is quoted from there. Ecclesiastes 1:2 (no shipped Amharic work quotes the whole verse; the corpus's short form «ከንቱ ከንቱ ሁሉ ከንቱ ነው» is in against-eutropius.am.json) and Proverbs 29:25 (no shipped rendering) are self_rendered.",
+  "Thomas's own sentences, and the two verses he quotes in chapter 1 (John 8:12, Ecclesiastes 1:8), are pasted from the shipped full edition, the-imitation-of-christ.am.json, cut only where the English cuts, so the full ⇄ teens cross-link reads as one book. Its John 8:12 is the verse's second half in full (it includes «የሕይወት ብርሃን ይሆንለታል», which the teen English quote omits); kept as the full edition has it. Chapter 3 keeps that edition's «ለምንድር» (likely a typo for «ለምንድን») verbatim; a reviewer fixing it should fix both editions."
+ ],
+ "references": [
+  {
+   "reference": "Ecclesiastes 1:2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "John 8:12b",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 1,
+   "source_file": "the-imitation-of-christ.am.json"
+  },
+  {
+   "reference": "Ecclesiastes 1:8b",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 1,
+   "source_file": "the-imitation-of-christ.am.json"
+  },
+  {
+   "reference": "1 Corinthians 8:1b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "James 1:19b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "John 21:22b",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Matthew 6:6a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 10:13a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Galatians 6:2",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Proverbs 29:25",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "John 15:15a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 John 4:19",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Proverbs 24:16a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "growing-in-wisdom.am.json"
+  },
+  {
+   "reference": "Isaiah 26:3",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "growing-in-wisdom.am.json"
+  },
+  {
+   "reference": "Psalm 90:12",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 13,
+   "source_file": "key-teachings-of-jonathan-edwards.am.json"
+  }
+ ]
+}
