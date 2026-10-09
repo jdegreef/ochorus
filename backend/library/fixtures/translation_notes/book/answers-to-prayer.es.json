@@ -1,0 +1,535 @@
+{
+ "kind": "book",
+ "slug": "answers-to-prayer",
+ "language": "es",
+ "job_issue": 4808,
+ "references": [
+  {
+   "reference": "1 Peter 1:7",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 0
+  },
+  {
+   "reference": "1 Samuel 23:16b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 4
+  },
+  {
+   "reference": "1 Corinthians 7:25b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 4
+  },
+  {
+   "reference": "Psalm 81:10b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 5
+  },
+  {
+   "reference": "Psalm 81:10b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 7
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 8
+  },
+  {
+   "reference": "Acts 27:23b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 11
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 15,
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Psalm 25:3a",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 18
+  },
+  {
+   "reference": "1 Thessalonians 4:14",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 18
+  },
+  {
+   "reference": "Psalm 84:11b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 18
+  },
+  {
+   "reference": "Matthew 18:19",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 20,
+   "source_file": "a-retrospect-teens.es.json"
+  },
+  {
+   "reference": "2 Timothy 2:13b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 25
+  },
+  {
+   "reference": "Jeremiah 17:9",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 27
+  },
+  {
+   "reference": "Psalm 66:18a",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 27
+  },
+  {
+   "reference": "Psalms 103:13a",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 29
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 29
+  },
+  {
+   "reference": "Romans 8:32b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 29
+  },
+  {
+   "reference": "Psalms 55:22a",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 36
+  },
+  {
+   "reference": "1 Corinthians 12:9b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 36
+  },
+  {
+   "reference": "1 Corinthians 12:10",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 36
+  },
+  {
+   "reference": "1 Corinthians 13:2b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 37
+  },
+  {
+   "reference": "1 Samuel 30:6b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 38
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 38
+  },
+  {
+   "reference": "1 Samuel 1:15b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 38
+  },
+  {
+   "reference": "Exodus 14:13",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 38
+  },
+  {
+   "reference": "James 1:17",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 39
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 41
+  },
+  {
+   "reference": "Exodus 14:13",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 42
+  },
+  {
+   "reference": "James 1:4a",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 11:8b",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 8
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 8,
+   "source_file": "godliness.es.json"
+  },
+  {
+   "reference": "Psalms 9:9",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 17
+  },
+  {
+   "reference": "Psalms 9:10",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 17
+  },
+  {
+   "reference": "James 5:11b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 3
+  },
+  {
+   "reference": "Nehemiah 4:6b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 4
+  },
+  {
+   "reference": "Nehemiah 4:6b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 5
+  },
+  {
+   "reference": "Psalm 84:11b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 13
+  },
+  {
+   "reference": "Psalm 66:18a",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 13
+  },
+  {
+   "reference": "Hebrews 10:19a",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 14
+  },
+  {
+   "reference": "Philippians 4:6b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 14
+  },
+  {
+   "reference": "Psalm 128:1b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 16
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 24
+  },
+  {
+   "reference": "Matthew 9:38a",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 27
+  },
+  {
+   "reference": "Psalms 119:68a",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 32
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 40
+  },
+  {
+   "reference": "Psalms 37:4",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 40,
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "John 17:23",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 44
+  },
+  {
+   "reference": "Luke 1:46",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 54
+  },
+  {
+   "reference": "Mark 14:7a",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 46
+  },
+  {
+   "reference": "Mark 14:7a",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 47
+  },
+  {
+   "reference": "Mark 14:7b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 47
+  },
+  {
+   "reference": "2 Corinthians 5:14",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 61
+  },
+  {
+   "reference": "Proverbs 22:19a",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 63
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 64
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 64
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 66
+  },
+  {
+   "reference": "1 John 5:14",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 72
+  },
+  {
+   "reference": "Isaiah 26:4b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 74
+  },
+  {
+   "reference": "Isaiah 26:4",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 75
+  },
+  {
+   "reference": "Isaiah 26:4b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 75
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 76
+  },
+  {
+   "reference": "Jeremiah 2:13",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 77
+  },
+  {
+   "reference": "Psalms 66:18",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 77
+  },
+  {
+   "reference": "Exodus 3:2",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 79
+  },
+  {
+   "reference": "Romans 4:20b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 87
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 89
+  },
+  {
+   "reference": "Psalms 9:10a",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 89
+  },
+  {
+   "reference": "2 Corinthians 5:14a",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 91
+  },
+  {
+   "reference": "Matthew 6:20a",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 91
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 99
+  },
+  {
+   "reference": "Philippians 1:23",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 113
+  },
+  {
+   "reference": "1 Samuel 2:30",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 114
+  },
+  {
+   "reference": "Philippians 4:12a",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 117
+  },
+  {
+   "reference": "Philippians 4:12b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 117
+  },
+  {
+   "reference": "Psalms 66:18",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 125
+  },
+  {
+   "reference": "James 4:3",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 127
+  },
+  {
+   "reference": "James 5:7",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 128
+  },
+  {
+   "reference": "John 8:32",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 0
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 0
+  },
+  {
+   "reference": "Ezekiel 36:37",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 3
+  },
+  {
+   "reference": "1 Corinthians 8:1b",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 0
+  },
+  {
+   "reference": "Proverbs 3:5-6",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 5,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "Proverbs 3:6b",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 5
+  },
+  {
+   "reference": "Proverbs 11:3",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 5
+  },
+  {
+   "reference": "Proverbs 16:3",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 5
+  }
+ ]
+}
