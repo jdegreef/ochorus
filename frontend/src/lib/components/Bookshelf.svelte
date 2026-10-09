@@ -251,7 +251,7 @@
 						</li>
 					{/each}
 				</ul>
-				<div class="empty-plank" aria-hidden="true"></div>
+				<div class="shelf-plank" aria-hidden="true"></div>
 				{#if selectedItem && row.some((i) => items[i].book.slug === selected)}
 					{@render pulledOut(selectedItem)}
 				{/if}
@@ -269,7 +269,7 @@
 			<div class="empty-wall">
 				<p class="m-0 max-w-md text-center text-small text-muted">{emptyHint}</p>
 			</div>
-			<div class="empty-plank" aria-hidden="true"></div>
+			<div class="shelf-plank" aria-hidden="true"></div>
 		{/if}
 	</div>
 </section>
@@ -320,15 +320,5 @@
 		background:
 			linear-gradient(to bottom, rgb(0 0 0 / 0.22), transparent 1.1rem),
 			var(--shelf-back);
-	}
-	.empty-plank {
-		height: 0.95rem;
-		background: linear-gradient(
-			to bottom,
-			rgb(255 255 255 / 0.18) 0 1px,
-			var(--shelf-wood) 1px 60%,
-			var(--shelf-wood-edge) 60% 100%
-		);
-		box-shadow: 0 7px 9px -6px rgb(0 0 0 / 0.45);
 	}
 </style>
