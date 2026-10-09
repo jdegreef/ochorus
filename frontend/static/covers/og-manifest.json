@@ -5758,6 +5758,33 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"es/the-christians-secret-of-a-happy-life-4": {
+			"ground": "78556283fe2f53ce46ccddeeddfb8d3293adcf22c5c9e75eaab7680b4cce364c",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.45,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[79, 102, 521, 131]
+				],
+				"title": [
+					[137, 254, 463, 336],
+					[131, 326, 469, 408],
+					[135, 398, 465, 480]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				259,
+				536
+			]
+		},
 		"es/the-fourfold-gospel": {
 			"ground": "543d1ab7c043ae66c6374ec5cdf3ff6d0e88f653b180980aa101b9aaa2be35f7",
 			"style": "revival",
