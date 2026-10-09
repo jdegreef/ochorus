@@ -10,7 +10,7 @@ from unittest.mock import patch  # noqa: E402
 from django.conf import settings
 from django.core.management import call_command
 from django.db import connection
-from django.test import TestCase, override_settings
+from django.test import SimpleTestCase, TestCase, override_settings
 from rest_framework.test import APIClient
 
 from . import search as search_module
@@ -1364,3 +1364,155 @@ class SearchThrottleTests(TestCase):
         count, _, period = rate.partition("/")
         self.assertEqual(period, "min")
         self.assertGreaterEqual(int(count), 120)
+
+
+class KoreanQueryTests(SimpleTestCase):
+    """Building the Korean prefix query (library/fts.py) — pure, no database."""
+
+    def test_strips_one_trailing_particle(self):
+        from .fts import strip_particle
+
+        self.assertEqual(strip_particle("은혜를"), "은혜")
+        self.assertEqual(strip_particle("하나님의"), "하나님")
+        self.assertEqual(strip_particle("성령으로"), "성령")
+        self.assertEqual(strip_particle("믿음은"), "믿음")
+
+    def test_keeps_short_words_and_non_particle_endings_whole(self):
+        from .fts import strip_particle
+
+        # Two syllables must remain: 기도, 정의 and 자는 are words, not stem+particle.
+        for word in ("기도", "정의", "자는", "은혜", "그리스도", "사도"):
+            self.assertEqual(strip_particle(word), word)
+        # Not Hangul: left alone.
+        self.assertEqual(strip_particle("Murray"), "Murray")
+
+    def test_builds_an_and_of_prefixes(self):
+        from .fts import prefix_tsquery
+
+        self.assertEqual(prefix_tsquery("은혜를 받는"), "'은혜':* & '받는':*")
+        # 머레이 loses a particle-shaped 이: over-reach, but the prefix still
+        # matches the whole name. Latin words pass through as prefixes too.
+        self.assertEqual(prefix_tsquery("머레이 Murray"), "'머레':* & 'Murray':*")
+
+    def test_tsquery_syntax_cannot_be_injected(self):
+        from .fts import prefix_tsquery
+
+        # Operators, quotes and colons are not word characters, so they vanish.
+        self.assertEqual(prefix_tsquery("은혜 & !기도 | ('x':*)"), "'은혜':* & '기도':* & 'x'")
+        self.assertEqual(prefix_tsquery("&|!:'()"), "")
+
+    def test_websearch_operators_keep_their_meaning(self):
+        from .fts import prefix_tsquery
+
+        # Exclusion still excludes, rather than becoming a required word.
+        self.assertEqual(prefix_tsquery("은혜 -율법"), "'은혜':* & !'율법':*")
+        # OR joins its neighbours, rather than becoming a required 'or':* term.
+        self.assertEqual(prefix_tsquery("은혜 OR 사랑"), "'은혜':* | '사랑':*")
+        # An exclusion alone has nothing to match: hand back to websearch.
+        self.assertEqual(prefix_tsquery("-은혜"), "")
+        # A hyphen inside a word is not an exclusion.
+        self.assertEqual(prefix_tsquery("Spurgeon-like"), "'Spurgeon':* & 'like':*")
+
+    def test_one_syllable_words_match_exactly(self):
+        from .fts import prefix_tsquery
+
+        # '주':* would scan 주님, 주제, 주장 … in nearly every chapter.
+        self.assertEqual(prefix_tsquery("주 예수"), "'주' & '예수':*")
+
+    def test_compound_particles_strip_whole(self):
+        from .fts import strip_particle
+
+        self.assertEqual(strip_particle("하나님께서는"), "하나님")
+        self.assertEqual(strip_particle("마음에는"), "마음")
+        self.assertEqual(strip_particle("하나님께"), "하나님")
+        self.assertEqual(strip_particle("그리스도로서"), "그리스도")
+
+    def test_particles_are_tried_longest_first(self):
+        from .fts import KO_PARTICLES
+
+        lengths = [len(p) for p in KO_PARTICLES]
+        self.assertEqual(lengths, sorted(lengths, reverse=True))
+
+
+@skipUnless(connection.vendor == "postgresql", "Korean prefix search is Postgres-only")
+class KoreanSearchTests(TestCase):
+    """Korean attaches particles to words, so a search for 은혜 must find 은혜를."""
+
+    def setUp(self):
+        author = Author.objects.create(slug="andrew-murray", name="Andrew Murray")
+        book = Book.objects.create(
+            author=author, slug="humility", language="ko", title="겸손", is_published=True
+        )
+        Chapter.objects.create(
+            book=book, order=1, title="겸손의 아름다움",
+            body_html="<p>하나님의 은혜를 받은 자는 겸손하게 주님 안에 거합니다.</p>",
+        )
+        Sermon.objects.create(
+            author=author, slug="abide", language="ko", title="그리스도 안에 거하라",
+            scripture_ref="요한복음 15:4",
+            body_html="<p>성령으로 사는 자는 은혜는 날마다 새롭다는 것을 압니다.</p>",
+        )
+
+    def _types(self, q):
+        return [h["type"] for h in search_library(q, "ko")]
+
+    def test_bare_word_finds_the_particle_form(self):
+        # The body says 은혜를 / 은혜는; nothing anywhere says bare 은혜.
+        types = self._types("은혜")
+        self.assertIn("chapter", types)
+        self.assertIn("sermon", types)
+
+    def test_a_typed_particle_reaches_the_other_forms(self):
+        # 은혜는 is in the sermon, 은혜를 in the chapter: typing either finds both.
+        types = self._types("은혜는")
+        self.assertIn("chapter", types)
+        self.assertIn("sermon", types)
+
+    def test_exclusion_excludes(self):
+        # The chapter mentions 겸손; the sermon does not.
+        types = self._types("은혜 -겸손")
+        self.assertNotIn("chapter", types)
+        self.assertIn("sermon", types)
+
+    def test_every_word_must_match(self):
+        self.assertIn("chapter", self._types("은혜 겸손"))
+        self.assertNotIn("chapter", self._types("은혜 사랑"))
+
+    def test_snippet_marks_the_match(self):
+        [hit] = [h for h in search_library("은혜", "ko") if h["type"] == "chapter"]
+        self.assertIn("⟦", hit["snippet"])
+
+    def test_counts_agree_with_results(self):
+        from .search import count_by_type
+
+        counts, _ = count_by_type("은혜", "ko")
+        self.assertEqual(counts.get("chapter"), 1)
+        self.assertEqual(counts.get("sermon"), 1)
+
+    def test_other_languages_keep_websearch(self):
+        from .fts import search_query
+
+        # Stems and phrase syntax still apply outside Korean.
+        self.assertEqual(search_query('"grace" -law', "en").function, "websearch_to_tsquery")
+        self.assertEqual(search_query("은혜", "ko").function, "to_tsquery")
+
+
+class KoreanParticleParityTests(SimpleTestCase):
+    """The reader's arrival highlight strips the same particles the server does."""
+
+    def test_frontend_list_matches(self):
+        import re
+        from pathlib import Path
+
+        from .fts import KO_PARTICLES
+
+        ts = (
+            Path(__file__).resolve().parents[2] / "frontend" / "src" / "lib" / "koParticles.ts"
+        ).read_text(encoding="utf-8")
+        body = ts[ts.index("KO_PARTICLES") : ts.index("].sort")]
+        self.assertEqual(
+            set(re.findall(r"'([^']+)'", body)),
+            set(KO_PARTICLES),
+            "frontend/src/lib/koParticles.ts and fts.KO_PARTICLES have drifted: a "
+            "search would match words the reader's highlight then fails to find",
+        )
