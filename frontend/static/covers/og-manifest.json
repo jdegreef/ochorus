@@ -633,6 +633,31 @@
 				595
 			]
 		},
+		"am/c-t-studd-a-life-children": {
+			"ground": "4b252c9e83bdb8e3b9d0c8ae71a7303ca4f6b5af43a0d9cc418b670ec9681a7c",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[87, 341, 513, 416]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				348,
+				447
+			]
+		},
 		"am/clothed-with-strength-and-dignity": {
 			"ground": "ba57bc4214b38431a6d0642260be42978131896da79dc47ac35a9f09d59d8e47",
 			"style": "originals",
