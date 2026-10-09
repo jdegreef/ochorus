@@ -1,0 +1,395 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "andrew-murray"
+  ],
+  "slug": "absolute-surrender-teens",
+  "language": "en",
+  "title": "Absolute Surrender (For Teens)",
+  "subtitle": "",
+  "cover_title": "",
+  "description": "Andrew Murray asked a wise old Christian what believers needed most, and got a four-word answer: absolute surrender to God. This teen edition retells Murray’s famous talks in plain words: why God asks for everything, how he gives you the willingness you don’t have, what to do when the fire from a camp or a conference fades, why your temper tells the truth about your heart, how Peter failed and was remade, and why a branch on a vine never has to strain. Murray’s own sentences are kept where they say it best.",
+  "hook": "What happens when you stop trying to run your own life and hand the whole thing to God.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Who was Andrew Murray?",
+    "answer": "A South African pastor and writer, born in 1828 in Graaff-Reinet. He studied in Scotland and the Netherlands, was ordained on his twentieth birthday, rode huge distances to serve scattered farms, saw a revival in Worcester in 1860, and wrote more than 240 books, mostly about prayer and living close to Christ. He died in 1917."
+   },
+   {
+    "question": "What does “absolute surrender” mean?",
+    "answer": "Giving your whole self to God, with nothing held back: your plans, your time, your relationships, your words and your future. Murray’s key point is that God does not ask you to do this in your own strength. He works the willingness in you, accepts your trembling yes, keeps you in it, and blesses you through it."
+   },
+   {
+    "question": "Does surrendering to God mean doing whatever a leader or another person says?",
+    "answer": "No. Absolute surrender is to God alone. No pastor, youth leader, friend, boyfriend or girlfriend has the right to demand that kind of control over you. If someone is using God’s name to pressure or control you, tell a trusted adult. Surrender to God makes you freer, not trapped."
+   },
+   {
+    "question": "What if I said yes to God at a camp or event and it faded?",
+    "answer": "That is very common, and Murray talks about it directly. He says the problem is usually that we think keeping going depends on us. God not only accepts our surrender but keeps us in it, moment by moment, as we trust him, stay honest with him, and stay close to his word."
+   },
+   {
+    "question": "Is absolute surrender only for very serious or “advanced” Christians?",
+    "answer": "No. Murray says it is for every child of God, including those who are scared, unsure or just starting out. He tells people to come just as they are, even trembling, and to pray: “My God, I am willing that Thou shouldst make me willing.” God does the work of making us able."
+   },
+   {
+    "question": "Is this the full text?",
+    "answer": "No. It is a retelling for teenagers in plain modern words, drawn from all nine of Murray’s talks and keeping his own sentences where they say it best. The full Absolute Surrender is also available."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of Andrew Murray’s Absolute Surrender, which is in the public domain. The telling is our own, free to read and share. Scripture quotations are from the King James Version, which is in the public domain.",
+  "cover_url": "/covers/absolute-surrender-teens.svg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/absolute-surrender-teens.pdf?download=absolute-surrender-teens.pdf",
+  "cover_color": "",
+  "series": [
+   "straight-talk"
+  ],
+  "series_position": null,
+  "sort_order": 158,
+  "is_published": true,
+  "created_at": "2026-10-08T23:00:00Z",
+  "updated_at": "2026-10-08T23:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "absolute-surrender-teens",
+   "en"
+  ],
+  "order": 1,
+  "title": "The One Thing",
+  "body_html": "<blockquote>“I beseech you therefore, brethren, by the mercies of God, that ye present your bodies a living sacrifice, holy, acceptable unto God, which is your reasonable service.” — Romans 12:1 (KJV)</blockquote> <p>Andrew Murray was born in 1828 in a small town in South Africa called Graaff-Reinet. His father was a minister who prayed week after week for God to pour out his Spirit on their country. At ten, Andrew was sent to school in Scotland. He later studied in the Netherlands, and he was ordained as a minister on his twentieth birthday.</p> <p>His first church covered an area so huge that he rode for weeks at a time to reach lonely farms. Later he saw a revival break out in the town of Worcester, the answer to his father’s prayers. He lost his voice for two years, was injured in a carriage accident, and kept going. By the time he died in 1917 he had written more than 240 books, mostly about prayer and walking closely with Jesus.</p> <p>This book is based on talks he gave about one idea. He tells how he got it. Once, in Scotland, he was with a group of Christians discussing what the church needed most. He asked an experienced man who trained Christian workers what message most needed preaching. The man answered “very quietly and simply and determinedly”:</p> <blockquote>“Absolute surrender to God is the one thing.”</blockquote> <p>Murray said the words struck him as never before. The man explained that the people he trained who had settled that one question always grew, even if they were slow, while others who hadn’t often went backwards and gave up.</p> <p>Murray found the picture for it in an odd place: an Old Testament story about a king named Ahab. An enemy king surrounded his city and demanded everything Ahab had. Ahab answered: “My lord, O king, according to thy saying, I am thine, and all that I have.” Murray says those are exactly the words every child of God should say to their Father.</p> <p>There is a big difference, of course. Ahab was surrendering to a cruel enemy. We are surrendering to a loving Father who wants only our good. And surrender here means giving yourself to God alone, never to a person who tries to control you. But the words are the same: I am yours, and all that I have.</p> <p>It sounds huge, maybe even scary. In the next chapters Murray explains why God asks for it, and, more importantly, how God helps you actually do it.</p> <p><strong>One thing to do this week:</strong> write out Ahab’s sentence in your own words as a prayer to God: “Lord, I am yours, and everything I have.” Pray it each morning this week, even if you are not sure you fully mean it yet.</p>",
+  "study_questions": [
+   {
+    "question": "What did the experienced Christian worker tell Murray was the church’s greatest need?",
+    "answer": "“Absolute surrender to God is the one thing.”"
+   },
+   {
+    "question": "What words of King Ahab does Murray use to describe surrender?",
+    "answer": "“My lord, O king, according to thy saying, I am thine, and all that I have.”"
+   },
+   {
+    "question": "How is surrendering to God different from Ahab surrendering to his enemy?",
+    "answer": "Ahab gave in to a cruel enemy; we give ourselves to a loving Father who wants our good. And surrender is to God alone, never to a person who tries to control us."
+   }
+  ],
+  "body_text": "“I beseech you therefore, brethren, by the mercies of God, that ye present your bodies a living sacrifice, holy, acceptable unto God, which is your reasonable service.” — Romans 12:1 (KJV) Andrew Murray was born in 1828 in a small town in South Africa called Graaff-Reinet. His father was a minister who prayed week after week for God to pour out his Spirit on their country. At ten, Andrew was sent to school in Scotland. He later studied in the Netherlands, and he was ordained as a minister on his twentieth birthday. His first church covered an area so huge that he rode for weeks at a time to reach lonely farms. Later he saw a revival break out in the town of Worcester, the answer to his father’s prayers. He lost his voice for two years, was injured in a carriage accident, and kept going. By the time he died in 1917 he had written more than 240 books, mostly about prayer and walking closely with Jesus. This book is based on talks he gave about one idea. He tells how he got it. Once, in Scotland, he was with a group of Christians discussing what the church needed most. He asked an experienced man who trained Christian workers what message most needed preaching. The man answered “very quietly and simply and determinedly”: “Absolute surrender to God is the one thing.” Murray said the words struck him as never before. The man explained that the people he trained who had settled that one question always grew, even if they were slow, while others who hadn’t often went backwards and gave up. Murray found the picture for it in an odd place: an Old Testament story about a king named Ahab. An enemy king surrounded his city and demanded everything Ahab had. Ahab answered: “My lord, O king, according to thy saying, I am thine, and all that I have.” Murray says those are exactly the words every child of God should say to their Father. There is a big difference, of course. Ahab was surrendering to a cruel enemy. We are surrendering to a loving Father who wants only our good. And surrender here means giving yourself to God alone, never to a person who tries to control you. But the words are the same: I am yours, and all that I have. It sounds huge, maybe even scary. In the next chapters Murray explains why God asks for it, and, more importantly, how God helps you actually do it. One thing to do this week: write out Ahab’s sentence in your own words as a prayer to God: “Lord, I am yours, and everything I have.” Pray it each morning this week, even if you are not sure you fully mean it yet.",
+  "word_count": 465
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "absolute-surrender-teens",
+   "en"
+  ],
+  "order": 2,
+  "title": "Like a Pen in a Hand",
+  "body_html": "<blockquote>“What? know ye not that your body is the temple of the Holy Ghost which is in you, which ye have of God, and ye are not your own?” — 1 Corinthians 6:19 (KJV)</blockquote> <p>Why would God ask for everything? Isn’t that a lot? Murray’s answer starts with who God is. He is “the Fountain of life, the only Source of existence and power and goodness.” Everything good comes from him.</p> <p>Then Murray points to nature. The sun, the moon, the stars, the flowers and the grass: “are they not all absolutely surrendered to God?” A lily doesn’t argue with God about how to grow. It just lets him make it beautiful. Murray asks: if God works that way in flowers, can he really do his best work in his children if only half of them is given to him?</p> <p>He uses a simple, everyday picture:</p> <blockquote>“I have a pen in my pocket, and that pen is absolutely surrendered to the one work of writing, and that pen must be absolutely surrendered to my hand if I am to write properly with it. If another holds it partly, I cannot write properly.”</blockquote> <p>Picture trying to write with someone else gripping the same pen and pulling it in a different direction. The writing would be a mess. That, Murray says, is what happens when we give God part of our lives but keep a firm grip on the rest. He can’t write the story he wants to write.</p> <p>Think honestly about your own life. Most of us are happy to give God some areas: church, prayer before meals, being generally nice. But we keep hold of others: our phone, our friendships, our plans for the future, a habit we don’t want to give up, how we spend our money or our weekends.</p> <p>Murray isn’t saying God wants to take away everything good. The pen doesn’t lose anything by being held by the writer; that is when it finally does what it was made for. He says it is the “one lack of absolute surrender” that “hinders God,” who “delights to communicate Himself to every child who is prepared to receive Him.” God wants to give, not grab.</p> <p>Paul says your body is a temple of the Holy Spirit, and you are not your own. That is not a threat. It is an invitation to let the one who made you do what he made you for.</p> <p><strong>One thing to do this week:</strong> make a quick list of the main areas of your life: school, friends, family, phone, money, future plans, free time. Put a tick by the ones you have honestly given to God and a question mark by the ones you are still gripping. Pick one question mark and talk to God about it.</p>",
+  "study_questions": [
+   {
+    "question": "Why does Murray say all of nature is “absolutely surrendered” to God?",
+    "answer": "Because things like the sun, stars and flowers simply let God work in them as he pleases; a lily lets God make it beautiful."
+   },
+   {
+    "question": "What is Murray’s point with the picture of the pen?",
+    "answer": "A pen can only write properly when it is fully given over to the writer’s hand. If someone else holds it partly, the writing goes wrong, and our lives are the same with God."
+   },
+   {
+    "question": "Does God want everything so he can take good things away?",
+    "answer": "No. Murray says God delights to give himself to those ready to receive him; it is our holding back that hinders him."
+   }
+  ],
+  "body_text": "“What? know ye not that your body is the temple of the Holy Ghost which is in you, which ye have of God, and ye are not your own?” — 1 Corinthians 6:19 (KJV) Why would God ask for everything? Isn’t that a lot? Murray’s answer starts with who God is. He is “the Fountain of life, the only Source of existence and power and goodness.” Everything good comes from him. Then Murray points to nature. The sun, the moon, the stars, the flowers and the grass: “are they not all absolutely surrendered to God?” A lily doesn’t argue with God about how to grow. It just lets him make it beautiful. Murray asks: if God works that way in flowers, can he really do his best work in his children if only half of them is given to him? He uses a simple, everyday picture: “I have a pen in my pocket, and that pen is absolutely surrendered to the one work of writing, and that pen must be absolutely surrendered to my hand if I am to write properly with it. If another holds it partly, I cannot write properly.” Picture trying to write with someone else gripping the same pen and pulling it in a different direction. The writing would be a mess. That, Murray says, is what happens when we give God part of our lives but keep a firm grip on the rest. He can’t write the story he wants to write. Think honestly about your own life. Most of us are happy to give God some areas: church, prayer before meals, being generally nice. But we keep hold of others: our phone, our friendships, our plans for the future, a habit we don’t want to give up, how we spend our money or our weekends. Murray isn’t saying God wants to take away everything good. The pen doesn’t lose anything by being held by the writer; that is when it finally does what it was made for. He says it is the “one lack of absolute surrender” that “hinders God,” who “delights to communicate Himself to every child who is prepared to receive Him.” God wants to give, not grab. Paul says your body is a temple of the Holy Spirit, and you are not your own. That is not a threat. It is an invitation to let the one who made you do what he made you for. One thing to do this week: make a quick list of the main areas of your life: school, friends, family, phone, money, future plans, free time. Put a tick by the ones you have honestly given to God and a question mark by the ones you are still gripping. Pick one question mark and talk to God about it.",
+  "word_count": 464
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "absolute-surrender-teens",
+   "en"
+  ],
+  "order": 3,
+  "title": "Make Me Willing",
+  "body_html": "<blockquote>“For it is God which worketh in you both to will and to do of his good pleasure.” — Philippians 2:13 (KJV)</blockquote> <p>Here is where a lot of people get stuck. You read the last chapter and think: I can’t do that. I don’t even want to give everything to God. I am scared of what he might ask. I am not that kind of Christian.</p> <p>Murray has a message for you. He says it is one of the most important things in the whole book:</p> <blockquote>“God does not ask you to give the perfect surrender in your strength, or by the power of your will; God is willing to work it in you.”</blockquote> <p>He points to a verse in Philippians that says God works in us both “to will and to do”: both the wanting and the doing. You don’t have to produce the willingness yourself. God can create it in you.</p> <p>So what do you do if you are not willing? Murray gives you a prayer for exactly that situation. If you are afraid, if your desire feels weak, if you are not sure you could face whatever God might ask, he says to pray this:</p> <blockquote>“My God, I am willing that Thou shouldst make me willing.”</blockquote> <p>That is a prayer anyone can pray. You don’t have to pretend to be braver or holier than you are. You can be honest: God, I am not there yet. But I am willing for you to change me.</p> <p>Murray adds: “be not afraid that He will command from you what He will not bestow.” God won’t ask you for something and then leave you to find it on your own. Whatever he asks, he gives the strength for.</p> <p>He also says something encouraging about the longing you may feel. The pull towards God, the sense that there must be more than half-hearted faith, is not something you invented. He calls those longings “the drawings of the divine magnet, Christ Jesus.” If you feel drawn, that is because Jesus is drawing you.</p> <p>So stop waiting until you feel ready. Nobody feels ready. Start where you are, with whatever willingness you have, and ask God to do the rest.</p> <p><strong>One thing to do this week:</strong> pray Murray’s prayer every day this week, in your own words: “God, I’m not fully willing, but I’m willing for you to make me willing.” Notice whether anything shifts in you by the end of the week.</p>",
+  "study_questions": [
+   {
+    "question": "Does God expect you to surrender to him in your own strength?",
+    "answer": "No. Murray says God does not ask for perfect surrender by our own strength or willpower; he is willing to work it in us."
+   },
+   {
+    "question": "What prayer does Murray suggest for people who don’t feel willing?",
+    "answer": "“My God, I am willing that Thou shouldst make me willing.”"
+   },
+   {
+    "question": "What does Murray say our longings for more of God really are?",
+    "answer": "“The drawings of the divine magnet, Christ Jesus”: signs that Jesus himself is drawing us."
+   }
+  ],
+  "body_text": "“For it is God which worketh in you both to will and to do of his good pleasure.” — Philippians 2:13 (KJV) Here is where a lot of people get stuck. You read the last chapter and think: I can’t do that. I don’t even want to give everything to God. I am scared of what he might ask. I am not that kind of Christian. Murray has a message for you. He says it is one of the most important things in the whole book: “God does not ask you to give the perfect surrender in your strength, or by the power of your will; God is willing to work it in you.” He points to a verse in Philippians that says God works in us both “to will and to do”: both the wanting and the doing. You don’t have to produce the willingness yourself. God can create it in you. So what do you do if you are not willing? Murray gives you a prayer for exactly that situation. If you are afraid, if your desire feels weak, if you are not sure you could face whatever God might ask, he says to pray this: “My God, I am willing that Thou shouldst make me willing.” That is a prayer anyone can pray. You don’t have to pretend to be braver or holier than you are. You can be honest: God, I am not there yet. But I am willing for you to change me. Murray adds: “be not afraid that He will command from you what He will not bestow.” God won’t ask you for something and then leave you to find it on your own. Whatever he asks, he gives the strength for. He also says something encouraging about the longing you may feel. The pull towards God, the sense that there must be more than half-hearted faith, is not something you invented. He calls those longings “the drawings of the divine magnet, Christ Jesus.” If you feel drawn, that is because Jesus is drawing you. So stop waiting until you feel ready. Nobody feels ready. Start where you are, with whatever willingness you have, and ask God to do the rest. One thing to do this week: pray Murray’s prayer every day this week, in your own words: “God, I’m not fully willing, but I’m willing for you to make me willing.” Notice whether anything shifts in you by the end of the week.",
+  "word_count": 410
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "absolute-surrender-teens",
+   "en"
+  ],
+  "order": 4,
+  "title": "Trembling Is Allowed",
+  "body_html": "<blockquote>“Lord, I believe; help thou mine unbelief.” — Mark 9:24 (KJV)</blockquote> <p>Maybe you have prayed something like that already. Maybe you told God at a camp or in your room that you wanted to give him everything. And then you wondered: did I really mean it? Was it absolute? I didn’t feel anything.</p> <p>Murray says this happens all the time. When you bring God your surrender, he says, it may feel “a thing of great imperfection,” and you may doubt and ask, “Is it absolute?” That is normal.</p> <p>He reminds us of a desperate father in the Gospels whose son was very ill. Jesus told him that all things are possible to someone who believes. The man burst out: “Lord, I believe, help thou mine unbelief.” Half faith and half doubt, all honest. And Jesus healed his son.</p> <p>Murray says your surrender can be like that. Even if you come “with a trembling heart,” feeling no power and no certainty, “it will succeed.” And then:</p> <blockquote>“Be not afraid, but come just as you are, and even in the midst of your trembling the power of the Holy Spirit will work.”</blockquote> <p>He points out that this is how the Spirit often works: with real power on God’s side, while on our side everything looks weak. His greatest example is Jesus himself in the garden of Gethsemane, in agony and sorrow, praying as he faced the cross. From the outside you could see no sign of power, but the Spirit of God was there, enabling him to give himself.</p> <p>So the point is not how you feel. It is where you look. Murray urges: “be occupied with God.” Stop staring at your own heart, checking whether your surrender was strong enough, and look at the God who receives it. He writes that when you quietly say yes to him, there is a God present “who at that very moment takes possession of you. You may not feel it, you may not realize it, but God takes possession if you will trust Him.”</p> <p>Your feelings are real, but they are not the measure of what God is doing. Trembling is allowed. Doubt is allowed. Come anyway.</p> <p><strong>One thing to do this week:</strong> if you have ever told God you wanted to give him everything, thank him this week that he heard and accepted it, even if you didn’t feel anything. If you haven’t, do it this week, honestly, trembling and all.</p>",
+  "study_questions": [
+   {
+    "question": "What does Murray say about surrender that feels imperfect or uncertain?",
+    "answer": "That it is normal to feel it is imperfect and to wonder whether it is absolute, but even if you come with a trembling heart, it will succeed."
+   },
+   {
+    "question": "What did the father in Mark 9 say to Jesus, and why does Murray mention him?",
+    "answer": "“Lord, I believe; help thou mine unbelief.” Murray uses him to show that honest, mixed faith is accepted, and God works through it."
+   },
+   {
+    "question": "Where should we look, according to Murray, instead of at our own feelings?",
+    "answer": "At God: “be occupied with God,” trusting that he takes possession of us even when we do not feel it."
+   }
+  ],
+  "body_text": "“Lord, I believe; help thou mine unbelief.” — Mark 9:24 (KJV) Maybe you have prayed something like that already. Maybe you told God at a camp or in your room that you wanted to give him everything. And then you wondered: did I really mean it? Was it absolute? I didn’t feel anything. Murray says this happens all the time. When you bring God your surrender, he says, it may feel “a thing of great imperfection,” and you may doubt and ask, “Is it absolute?” That is normal. He reminds us of a desperate father in the Gospels whose son was very ill. Jesus told him that all things are possible to someone who believes. The man burst out: “Lord, I believe, help thou mine unbelief.” Half faith and half doubt, all honest. And Jesus healed his son. Murray says your surrender can be like that. Even if you come “with a trembling heart,” feeling no power and no certainty, “it will succeed.” And then: “Be not afraid, but come just as you are, and even in the midst of your trembling the power of the Holy Spirit will work.” He points out that this is how the Spirit often works: with real power on God’s side, while on our side everything looks weak. His greatest example is Jesus himself in the garden of Gethsemane, in agony and sorrow, praying as he faced the cross. From the outside you could see no sign of power, but the Spirit of God was there, enabling him to give himself. So the point is not how you feel. It is where you look. Murray urges: “be occupied with God.” Stop staring at your own heart, checking whether your surrender was strong enough, and look at the God who receives it. He writes that when you quietly say yes to him, there is a God present “who at that very moment takes possession of you. You may not feel it, you may not realize it, but God takes possession if you will trust Him.” Your feelings are real, but they are not the measure of what God is doing. Trembling is allowed. Doubt is allowed. Come anyway. One thing to do this week: if you have ever told God you wanted to give him everything, thank him this week that he heard and accepted it, even if you didn’t feel anything. If you haven’t, do it this week, honestly, trembling and all.",
+  "word_count": 408
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "absolute-surrender-teens",
+   "en"
+  ],
+  "order": 5,
+  "title": "When the Fire Fades",
+  "body_html": "<blockquote>“Who are kept by the power of God through faith unto salvation.” — 1 Peter 1:5 (KJV)</blockquote> <p>Have you ever come home from a camp, a retreat or a big Christian event completely fired up? You told God you would follow him with everything. You were going to read your Bible every day and change everything. And then, a week or a month later, it had faded.</p> <p>Murray had heard this so many times that he quotes people saying it: “I have often been stirred at a meeting, or at a convention, and I have consecrated myself to God, but it has passed away. I know it may last for a week or for a month, but away it fades, and after a time it is all gone.”</p> <p>Sound familiar? Murray’s diagnosis is surprising. He says the problem is that we think keeping going depends on us. But God doesn’t only ask for our surrender and accept it. He keeps us in it. “God maintains it.”</p> <p>He uses a verse from 1 Peter: we are “kept by the power of God through faith.” He explains it with a picture. Imagine a father who works his whole life to save an inheritance for his children, but does nothing to raise them or prepare them for it. Foolish. God isn’t like that. He keeps the inheritance safe in heaven, and he keeps us, here, for it. Many Christians, Murray says, believe God is keeping heaven for them, “but they cannot believe: ‘My God is keeping me for that inheritance.’”</p> <p>And God’s keeping is not vague. Murray borrows a line from an old hymn: “Moment by moment I’m kept in His love.” Just as the sun shines on you without stopping, God’s life can reach you every moment.</p> <p>So what is your part? Murray points to a famous example: George Müller, who on his ninetieth birthday was asked the secret of his happy life. Müller gave two reasons. First, he had been enabled by grace “to maintain a good conscience before God day by day.” Second, “he was a lover of God’s Word.”</p> <p>That is simple enough for anyone. Keep short accounts with God: when something is wrong, deal with it quickly. And keep reading the Bible, not as a box to tick but as food. Then trust God to do the keeping. The fire may flicker, but the God who lit it hasn’t gone anywhere.</p> <p><strong>One thing to do this week:</strong> pick a simple daily habit for this week: one short Bible passage each morning, and each evening a quick, honest check with God. Was there anything today to say sorry for? Then thank him for keeping you, whatever you feel.</p>",
+  "study_questions": [
+   {
+    "question": "Why do our commitments to God often fade, according to Murray?",
+    "answer": "Because we think keeping going depends on us, instead of believing that God maintains our surrender and keeps us."
+   },
+   {
+    "question": "What does Murray’s picture of the father and the inheritance teach?",
+    "answer": "That God not only keeps heaven safe for us but keeps us, here and now, for it, unlike a foolish father who saves money but does nothing to raise his children."
+   },
+   {
+    "question": "What two secrets did George Müller give for his happy life?",
+    "answer": "Keeping a good conscience before God day by day, and being a lover of God’s Word."
+   }
+  ],
+  "body_text": "“Who are kept by the power of God through faith unto salvation.” — 1 Peter 1:5 (KJV) Have you ever come home from a camp, a retreat or a big Christian event completely fired up? You told God you would follow him with everything. You were going to read your Bible every day and change everything. And then, a week or a month later, it had faded. Murray had heard this so many times that he quotes people saying it: “I have often been stirred at a meeting, or at a convention, and I have consecrated myself to God, but it has passed away. I know it may last for a week or for a month, but away it fades, and after a time it is all gone.” Sound familiar? Murray’s diagnosis is surprising. He says the problem is that we think keeping going depends on us. But God doesn’t only ask for our surrender and accept it. He keeps us in it. “God maintains it.” He uses a verse from 1 Peter: we are “kept by the power of God through faith.” He explains it with a picture. Imagine a father who works his whole life to save an inheritance for his children, but does nothing to raise them or prepare them for it. Foolish. God isn’t like that. He keeps the inheritance safe in heaven, and he keeps us, here, for it. Many Christians, Murray says, believe God is keeping heaven for them, “but they cannot believe: ‘My God is keeping me for that inheritance.’” And God’s keeping is not vague. Murray borrows a line from an old hymn: “Moment by moment I’m kept in His love.” Just as the sun shines on you without stopping, God’s life can reach you every moment. So what is your part? Murray points to a famous example: George Müller, who on his ninetieth birthday was asked the secret of his happy life. Müller gave two reasons. First, he had been enabled by grace “to maintain a good conscience before God day by day.” Second, “he was a lover of God’s Word.” That is simple enough for anyone. Keep short accounts with God: when something is wrong, deal with it quickly. And keep reading the Bible, not as a box to tick but as food. Then trust God to do the keeping. The fire may flicker, but the God who lit it hasn’t gone anywhere. One thing to do this week: pick a simple daily habit for this week: one short Bible passage each morning, and each evening a quick, honest check with God. Was there anything today to say sorry for? Then thank him for keeping you, whatever you feel.",
+  "word_count": 449
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "absolute-surrender-teens",
+   "en"
+  ],
+  "order": 6,
+  "title": "What Your Temper Tells You",
+  "body_html": "<blockquote>“But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith.” — Galatians 5:22 (KJV)</blockquote> <p>How do you know if a life is really surrendered to God? Murray’s answer is very practical. Look at how you treat people.</p> <p>He points to Galatians: “The fruit of the Spirit is love.” If the Holy Spirit really has more of us, we should become more loving. Murray asks a searching question: “Has it been our experience that the more we have of the Holy Spirit the more loving we become?”</p> <p>Then he gets specific, and it is a bit uncomfortable. He talks about temper. Some people told him he made too much of it. He disagreed, and explained with a picture:</p> <blockquote>“Think for a moment of a clock and of what its hands mean. The hands tell me what is within the clock.”</blockquote> <p>If the hands are stuck, or wrong, or running fast or slow, you know something inside the clock isn’t working. In the same way, Murray says, “Temper is a proof whether the love of Christ is filling the heart, or not.”</p> <p>That is worth thinking about. You can sing passionately at church and then snap at your parents on the drive home. You can post a Bible verse and then be cruel in a group chat. Murray would say: watch the clock hands. How you speak to your brother or sister, how you react when someone annoys you, how you treat the kid nobody likes: these show what is really going on inside.</p> <p>This isn’t meant to make you feel hopeless. It is meant to point you to the source. Murray explains that love is the fruit of the Spirit because God is love, and “God’s nature is to be always giving.” Love isn’t something you squeeze out of yourself by trying harder to be nice. It is what grows when God fills you. He says: “Give yourselves up to love, and the Holy Spirit will come; receive the Spirit, and He will teach you to love more.”</p> <p>He also says this matters for whole churches and groups, not just individuals. A cracked jar can’t be filled with water. A divided group can’t be filled with God’s blessing. Unity and love among believers really matter.</p> <p>So next time you lose your temper, don’t just feel bad. Treat it as a clock hand. Ask God what it is showing you, and ask him to fill you with his love.</p> <p><strong>One thing to do this week:</strong> notice the moments this week when your temper flares: at home, with friends, on your phone. Each time, afterwards, ask God: “What is this showing me about my heart?” If you hurt someone, say sorry to them.</p>",
+  "study_questions": [
+   {
+    "question": "What test does Murray give for whether we really have more of the Holy Spirit?",
+    "answer": "Whether we become more loving: “the more we have of the Holy Spirit the more loving we become.”"
+   },
+   {
+    "question": "What does Murray compare our temper to?",
+    "answer": "The hands of a clock, which show what is going on inside it. Temper shows whether the love of Christ is filling the heart."
+   },
+   {
+    "question": "Where does real love come from, according to Murray?",
+    "answer": "From God, who is love and whose nature is always to give. As the Holy Spirit fills us, he teaches us to love more."
+   }
+  ],
+  "body_text": "“But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith.” — Galatians 5:22 (KJV) How do you know if a life is really surrendered to God? Murray’s answer is very practical. Look at how you treat people. He points to Galatians: “The fruit of the Spirit is love.” If the Holy Spirit really has more of us, we should become more loving. Murray asks a searching question: “Has it been our experience that the more we have of the Holy Spirit the more loving we become?” Then he gets specific, and it is a bit uncomfortable. He talks about temper. Some people told him he made too much of it. He disagreed, and explained with a picture: “Think for a moment of a clock and of what its hands mean. The hands tell me what is within the clock.” If the hands are stuck, or wrong, or running fast or slow, you know something inside the clock isn’t working. In the same way, Murray says, “Temper is a proof whether the love of Christ is filling the heart, or not.” That is worth thinking about. You can sing passionately at church and then snap at your parents on the drive home. You can post a Bible verse and then be cruel in a group chat. Murray would say: watch the clock hands. How you speak to your brother or sister, how you react when someone annoys you, how you treat the kid nobody likes: these show what is really going on inside. This isn’t meant to make you feel hopeless. It is meant to point you to the source. Murray explains that love is the fruit of the Spirit because God is love, and “God’s nature is to be always giving.” Love isn’t something you squeeze out of yourself by trying harder to be nice. It is what grows when God fills you. He says: “Give yourselves up to love, and the Holy Spirit will come; receive the Spirit, and He will teach you to love more.” He also says this matters for whole churches and groups, not just individuals. A cracked jar can’t be filled with water. A divided group can’t be filled with God’s blessing. Unity and love among believers really matter. So next time you lose your temper, don’t just feel bad. Treat it as a clock hand. Ask God what it is showing you, and ask him to fill you with his love. One thing to do this week: notice the moments this week when your temper flares: at home, with friends, on your phone. Each time, afterwards, ask God: “What is this showing me about my heart?” If you hurt someone, say sorry to them.",
+  "word_count": 454
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "absolute-surrender-teens",
+   "en"
+  ],
+  "order": 7,
+  "title": "Peter Wasn’t Ready",
+  "body_html": "<blockquote>“And the Lord turned, and looked upon Peter… And Peter went out, and wept bitterly.” — Luke 22:61–62 (KJV)</blockquote> <p>Murray loved the apostle Peter. “I do not know a man in the Bible who gives us greater comfort,” he said, because Peter was so full of failures, and yet look what Christ made of him.</p> <p>Peter was a genuinely devoted disciple. He left his boats and nets to follow Jesus. He obeyed when Jesus told him to let down his nets after a night of catching nothing. He stepped out of the boat and walked on water. He was the first to say that Jesus was the Christ, the Son of the living God. “If he were living nowadays,” Murray says, “everyone would say that he was an advanced Christian.”</p> <p>And yet something was badly wrong. Murray puts it in one sharp line:</p> <blockquote>“He had left his boats and his nets, but not his old self.”</blockquote> <p>When Jesus talked about his coming death, Peter told him off. When the disciples argued about who was the greatest, Peter wanted first place. He trusted his own ideas and his own strength. On the night before the crucifixion he promised Jesus he would never deny him, even if everyone else did. Hours later, frightened by a servant girl, he said three times: “I do not know the man.”</p> <p>Then the moment that changed everything. As the rooster crowed, Jesus, who was being tried and beaten, turned and looked at Peter. Peter remembered what Jesus had said, went out, and wept bitterly.</p> <p>Murray says that look was a look of love. Even in his own suffering, Jesus did not forget Peter. And that broken moment was the turning point of Peter’s life: “the point where Peter was converted from self to Christ.” After that came Pentecost, and the fearful denier became the bold preacher, filled with the Holy Spirit.</p> <p>You may be a lot like Peter. Keen, sincere, really trying, and still full of yourself: your plans, your reputation, your strength. Murray says the self-life is not fixed by trying harder. “It is Christ Jesus who can rid you of it.” What he asks is that you humble yourself before him.</p> <p>Failure is not the end. For Peter it was the doorway. If you have let Jesus down badly, he is still looking at you with love, and the same Christ who led Peter to Pentecost, Murray says, “is waiting today to take charge of every heart that is willing to surrender itself to Him.”</p> <p><strong>One thing to do this week:</strong> think of a time you let Jesus down, a time you were too proud, too scared, or too sure of yourself. Read Luke 22:54–62. Then tell Jesus about your failure, and thank him that he looks at you with love too.</p>",
+  "study_questions": [
+   {
+    "question": "What was good about Peter before his denial?",
+    "answer": "He was a devoted disciple: he left everything, obeyed, walked on water in faith, and recognised Jesus as the Christ, the Son of the living God."
+   },
+   {
+    "question": "What does Murray say was still wrong with Peter?",
+    "answer": "“He had left his boats and his nets, but not his old self”: he still trusted his own wisdom and strength and wanted his own honour."
+   },
+   {
+    "question": "What was the turning point in Peter’s life?",
+    "answer": "When Jesus turned and looked at him after his denial, and Peter went out and wept bitterly. That broke his self-reliance, and later he was filled with the Holy Spirit at Pentecost."
+   }
+  ],
+  "body_text": "“And the Lord turned, and looked upon Peter… And Peter went out, and wept bitterly.” — Luke 22:61–62 (KJV) Murray loved the apostle Peter. “I do not know a man in the Bible who gives us greater comfort,” he said, because Peter was so full of failures, and yet look what Christ made of him. Peter was a genuinely devoted disciple. He left his boats and nets to follow Jesus. He obeyed when Jesus told him to let down his nets after a night of catching nothing. He stepped out of the boat and walked on water. He was the first to say that Jesus was the Christ, the Son of the living God. “If he were living nowadays,” Murray says, “everyone would say that he was an advanced Christian.” And yet something was badly wrong. Murray puts it in one sharp line: “He had left his boats and his nets, but not his old self.” When Jesus talked about his coming death, Peter told him off. When the disciples argued about who was the greatest, Peter wanted first place. He trusted his own ideas and his own strength. On the night before the crucifixion he promised Jesus he would never deny him, even if everyone else did. Hours later, frightened by a servant girl, he said three times: “I do not know the man.” Then the moment that changed everything. As the rooster crowed, Jesus, who was being tried and beaten, turned and looked at Peter. Peter remembered what Jesus had said, went out, and wept bitterly. Murray says that look was a look of love. Even in his own suffering, Jesus did not forget Peter. And that broken moment was the turning point of Peter’s life: “the point where Peter was converted from self to Christ.” After that came Pentecost, and the fearful denier became the bold preacher, filled with the Holy Spirit. You may be a lot like Peter. Keen, sincere, really trying, and still full of yourself: your plans, your reputation, your strength. Murray says the self-life is not fixed by trying harder. “It is Christ Jesus who can rid you of it.” What he asks is that you humble yourself before him. Failure is not the end. For Peter it was the doorway. If you have let Jesus down badly, he is still looking at you with love, and the same Christ who led Peter to Pentecost, Murray says, “is waiting today to take charge of every heart that is willing to surrender itself to Him.” One thing to do this week: think of a time you let Jesus down, a time you were too proud, too scared, or too sure of yourself. Read Luke 22:54–62. Then tell Jesus about your failure, and thank him that he looks at you with love too.",
+  "word_count": 468
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "absolute-surrender-teens",
+   "en"
+  ],
+  "order": 8,
+  "title": "Impossible",
+  "body_html": "<blockquote>“The things which are impossible with men are possible with God.” — Luke 18:27 (KJV)</blockquote> <p>When Jesus told a rich young man to sell everything and follow him, the man walked away sad. The disciples were shocked and asked, who then can be saved? Jesus answered: “The things which are impossible with men are possible with God.”</p> <p>Murray says this one verse holds the two great lessons of the Christian life. First: you can’t do it. Second: God can. And he says many Christians learn the first and never learn the second.</p> <p>He describes how it usually goes, and it may describe you. A young person becomes a Christian. They are full of joy and confident. They are sure they can live for God, because they are sincere and God will help them. Then, quite soon, they fail where they never expected to. So they decide they weren’t careful enough. They make stronger promises. They pray harder. And they fail again.</p> <p>Eventually some people reach the next stage: they realise it is impossible. But instead of turning to God, they give up. Murray says many Christians live “a life of failure and of sin, instead of rest and victory,” because they have concluded, “I cannot,” and just settle for less. They will do their best, but they never expect to get very far.</p> <p>But that is only half the lesson. Murray says God wants to bring us to the place where we accept fully that we can’t, and at the same time trust fully that he can. He quotes Philippians: “It is God which worketh in you.” What is impossible for you is exactly what God loves to do.</p> <p>He uses Peter as the example again. Peter spent three years with Jesus and still didn’t learn this lesson until he had denied him and wept. Then he learned it, and then God could use him.</p> <p>This is good news if you feel stuck. If you keep failing at the same thing, the answer is not just “try harder,” and it is not “give up.” It is to bring your “I can’t” to God and say: “I can’t, but you can. Do it in me.”</p> <p>That is what absolute surrender looks like in practice. Not you becoming strong, but you handing your weakness to a strong God.</p> <p><strong>One thing to do this week:</strong> name one thing you have tried and failed to change in yourself. This week, stop making new promises about it. Instead, each time it comes up, pray: “I can’t, Lord, but you can. Work in me.” Tell one trusted person about it too.</p>",
+  "study_questions": [
+   {
+    "question": "What are the two lessons Murray finds in Luke 18:27?",
+    "answer": "First, that we cannot live the Christian life in our own strength; second, that what is impossible with us is possible with God."
+   },
+   {
+    "question": "What goes wrong for Christians who learn only the first lesson?",
+    "answer": "They conclude “I cannot” and give up, settling for a life of failure instead of rest and victory."
+   },
+   {
+    "question": "What should we do with our “I can’t,” according to this chapter?",
+    "answer": "Bring it to God and trust him to do in us what we cannot: “I can’t, but you can.”"
+   }
+  ],
+  "body_text": "“The things which are impossible with men are possible with God.” — Luke 18:27 (KJV) When Jesus told a rich young man to sell everything and follow him, the man walked away sad. The disciples were shocked and asked, who then can be saved? Jesus answered: “The things which are impossible with men are possible with God.” Murray says this one verse holds the two great lessons of the Christian life. First: you can’t do it. Second: God can. And he says many Christians learn the first and never learn the second. He describes how it usually goes, and it may describe you. A young person becomes a Christian. They are full of joy and confident. They are sure they can live for God, because they are sincere and God will help them. Then, quite soon, they fail where they never expected to. So they decide they weren’t careful enough. They make stronger promises. They pray harder. And they fail again. Eventually some people reach the next stage: they realise it is impossible. But instead of turning to God, they give up. Murray says many Christians live “a life of failure and of sin, instead of rest and victory,” because they have concluded, “I cannot,” and just settle for less. They will do their best, but they never expect to get very far. But that is only half the lesson. Murray says God wants to bring us to the place where we accept fully that we can’t, and at the same time trust fully that he can. He quotes Philippians: “It is God which worketh in you.” What is impossible for you is exactly what God loves to do. He uses Peter as the example again. Peter spent three years with Jesus and still didn’t learn this lesson until he had denied him and wept. Then he learned it, and then God could use him. This is good news if you feel stuck. If you keep failing at the same thing, the answer is not just “try harder,” and it is not “give up.” It is to bring your “I can’t” to God and say: “I can’t, but you can. Do it in me.” That is what absolute surrender looks like in practice. Not you becoming strong, but you handing your weakness to a strong God. One thing to do this week: name one thing you have tried and failed to change in yourself. This week, stop making new promises about it. Instead, each time it comes up, pray: “I can’t, Lord, but you can. Work in me.” Tell one trusted person about it too.",
+  "word_count": 435
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "absolute-surrender-teens",
+   "en"
+  ],
+  "order": 9,
+  "title": "Who Shall Deliver Me?",
+  "body_html": "<blockquote>“O wretched man that I am! who shall deliver me from the body of this death? I thank God through Jesus Christ our Lord.” — Romans 7:24–25 (KJV)</blockquote> <p>Romans 7 is one of the most honest chapters in the Bible. In it Paul describes a person who really loves God’s law and wants to do right, and keeps doing wrong anyway. “The good that I would I do not: but the evil which I would not, that I do.”</p> <p>Murray says that this person is not someone who doesn’t care. They genuinely want to please God. They can say, “I delight in the law of God after the inward man.” Their heart is in the right place. And still they fail.</p> <p>That is where many people get confused. “How often people tell us,” Murray says, “that if you set yourself determinedly, you can perform what you will!” But the person in Romans 7 was as determined as anyone could be, and still said, in effect: I want to do good, but I can’t find the power to do it.</p> <p>So the person ends up crying out: “O wretched man that I am! who shall deliver me from the body of this death?” Murray calls these “the words of a man who has come to the end of himself.”</p> <p>If you have ever been there, frustrated, ashamed, fighting the same thing over and over, these words might feel very familiar. Murray wants you to know that this cry is not the end of the road. It is the gateway.</p> <p>Because in the very next breath, Paul answers his own question: “I thank God through Jesus Christ our Lord.” And then comes Romans 8, a chapter full of the Holy Spirit, the Spirit of life who sets us free. Murray points out that in the first sixteen verses of Romans 8 the Holy Spirit is named sixteen times. In Romans 7 he barely appears. That is the difference. Romans 7 is a person trying in their own strength. Romans 8 is a person living by the Spirit.</p> <p>Notice the question Paul asks: not “what will deliver me?” but “who?” The answer isn’t a technique, a program or a stronger resolution. It is a person: Jesus Christ, by his Spirit.</p> <p>So if you feel like the wretched man of Romans 7, don’t despair. Let the cry turn into thanks. Look away from yourself and towards Jesus. He is the one who delivers.</p> <p><strong>One thing to do this week:</strong> read Romans 7:15–25 and then Romans 8:1–11. Count how many times the Spirit is mentioned in each. Then, when you next feel frustrated with yourself, pray Paul’s words: “Who will rescue me? Thank God, through Jesus Christ!”</p>",
+  "study_questions": [
+   {
+    "question": "What kind of person is described in Romans 7, according to Murray?",
+    "answer": "Someone who genuinely loves God’s law and wants to do right, but finds they do not have the power to do it."
+   },
+   {
+    "question": "Why does Murray call the cry “O wretched man that I am” a gateway?",
+    "answer": "Because it is the cry of someone who has come to the end of himself, and it leads straight into Paul’s thanks to God through Jesus and the life of the Spirit in Romans 8."
+   },
+   {
+    "question": "Why is it important that Paul asks “who” will deliver him?",
+    "answer": "Because the answer is not a technique or a stronger resolution but a person: Jesus Christ, working by his Spirit."
+   }
+  ],
+  "body_text": "“O wretched man that I am! who shall deliver me from the body of this death? I thank God through Jesus Christ our Lord.” — Romans 7:24–25 (KJV) Romans 7 is one of the most honest chapters in the Bible. In it Paul describes a person who really loves God’s law and wants to do right, and keeps doing wrong anyway. “The good that I would I do not: but the evil which I would not, that I do.” Murray says that this person is not someone who doesn’t care. They genuinely want to please God. They can say, “I delight in the law of God after the inward man.” Their heart is in the right place. And still they fail. That is where many people get confused. “How often people tell us,” Murray says, “that if you set yourself determinedly, you can perform what you will!” But the person in Romans 7 was as determined as anyone could be, and still said, in effect: I want to do good, but I can’t find the power to do it. So the person ends up crying out: “O wretched man that I am! who shall deliver me from the body of this death?” Murray calls these “the words of a man who has come to the end of himself.” If you have ever been there, frustrated, ashamed, fighting the same thing over and over, these words might feel very familiar. Murray wants you to know that this cry is not the end of the road. It is the gateway. Because in the very next breath, Paul answers his own question: “I thank God through Jesus Christ our Lord.” And then comes Romans 8, a chapter full of the Holy Spirit, the Spirit of life who sets us free. Murray points out that in the first sixteen verses of Romans 8 the Holy Spirit is named sixteen times. In Romans 7 he barely appears. That is the difference. Romans 7 is a person trying in their own strength. Romans 8 is a person living by the Spirit. Notice the question Paul asks: not “what will deliver me?” but “who?” The answer isn’t a technique, a program or a stronger resolution. It is a person: Jesus Christ, by his Spirit. So if you feel like the wretched man of Romans 7, don’t despair. Let the cry turn into thanks. Look away from yourself and towards Jesus. He is the one who delivers. One thing to do this week: read Romans 7:15–25 and then Romans 8:1–11. Count how many times the Spirit is mentioned in each. Then, when you next feel frustrated with yourself, pray Paul’s words: “Who will rescue me? Thank God, through Jesus Christ!”",
+  "word_count": 452
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "absolute-surrender-teens",
+   "en"
+  ],
+  "order": 10,
+  "title": "Don’t Switch Engines",
+  "body_html": "<blockquote>“Are ye so foolish? having begun in the Spirit, are ye now made perfect by the flesh?” — Galatians 3:3 (KJV)</blockquote> <p>Paul wrote a frustrated letter to the Christians in Galatia. They had become Christians by trusting Jesus and receiving the Holy Spirit. But then they started trying to finish the job by their own effort, keeping rules to prove themselves. Paul asks: “Having begun in the Spirit, are ye now made perfect by the flesh?”</p> <p>Murray says this is one of the biggest problems among Christians everywhere. Here is how he describes what the Galatians did:</p> <blockquote>“Having begun in the Spirit, they tried to perfect the work that the Spirit had begun in the flesh by their own effort.”</blockquote> <p>Think of it like an engine. You started your Christian life running on God’s power: trusting him, receiving his grace, amazed at his love. Then, without noticing, you switched engines. Now you are running on effort: trying hard, doing the right Christian things, keeping it going by willpower. And you wonder why you feel tired and dry.</p> <p>“Flesh” in the Bible doesn’t just mean bad desires. It also means human effort without God: doing good things in our own strength. You can go to church, read the Bible, serve on the youth team and still be running on the wrong engine.</p> <p>Murray’s message for every believer is direct: “Nothing will help you unless you come to understand that you must live every day under the power of the Holy Spirit.”</p> <p>This doesn’t mean doing nothing. The Galatians weren’t wrong to want to grow. They were wrong about where the power came from. The same faith that started your Christian life is the faith that continues it. You came to Jesus by trusting him; you keep going by trusting him.</p> <p>How do you know which engine you are running on? One sign is how you feel when you fail. If it is all crushing guilt and frantic promises to do better, you may be running on effort. Another sign is pride when things go well. Running on the Spirit looks more like dependence: asking God for help before you start, thanking him when things go well, coming back to him quickly when they don’t.</p> <p>So check your engine. If you have switched, you can switch back. Tell God, and start trusting him again, today.</p> <p><strong>One thing to do this week:</strong> before each main part of your day this week, school, sport, a job, time with friends, pause for five seconds and pray: “Holy Spirit, I can’t do this well on my own. Help me.” Notice whether it changes how the day feels.</p>",
+  "study_questions": [
+   {
+    "question": "What mistake did the Galatian Christians make?",
+    "answer": "Having begun their Christian life by the Spirit, they tried to complete it by their own effort and rule-keeping."
+   },
+   {
+    "question": "What does “flesh” mean in this chapter?",
+    "answer": "Not only bad desires but human effort without God: doing even good things in our own strength."
+   },
+   {
+    "question": "How can you tell whether you are running on effort or on the Spirit?",
+    "answer": "Running on effort often shows in crushing guilt and frantic promises when we fail, or pride when we succeed; running on the Spirit looks like dependence: asking for help, giving thanks, and returning quickly to God."
+   }
+  ],
+  "body_text": "“Are ye so foolish? having begun in the Spirit, are ye now made perfect by the flesh?” — Galatians 3:3 (KJV) Paul wrote a frustrated letter to the Christians in Galatia. They had become Christians by trusting Jesus and receiving the Holy Spirit. But then they started trying to finish the job by their own effort, keeping rules to prove themselves. Paul asks: “Having begun in the Spirit, are ye now made perfect by the flesh?” Murray says this is one of the biggest problems among Christians everywhere. Here is how he describes what the Galatians did: “Having begun in the Spirit, they tried to perfect the work that the Spirit had begun in the flesh by their own effort.” Think of it like an engine. You started your Christian life running on God’s power: trusting him, receiving his grace, amazed at his love. Then, without noticing, you switched engines. Now you are running on effort: trying hard, doing the right Christian things, keeping it going by willpower. And you wonder why you feel tired and dry. “Flesh” in the Bible doesn’t just mean bad desires. It also means human effort without God: doing good things in our own strength. You can go to church, read the Bible, serve on the youth team and still be running on the wrong engine. Murray’s message for every believer is direct: “Nothing will help you unless you come to understand that you must live every day under the power of the Holy Spirit.” This doesn’t mean doing nothing. The Galatians weren’t wrong to want to grow. They were wrong about where the power came from. The same faith that started your Christian life is the faith that continues it. You came to Jesus by trusting him; you keep going by trusting him. How do you know which engine you are running on? One sign is how you feel when you fail. If it is all crushing guilt and frantic promises to do better, you may be running on effort. Another sign is pride when things go well. Running on the Spirit looks more like dependence: asking God for help before you start, thanking him when things go well, coming back to him quickly when they don’t. So check your engine. If you have switched, you can switch back. Tell God, and start trusting him again, today. One thing to do this week: before each main part of your day this week, school, sport, a job, time with friends, pause for five seconds and pray: “Holy Spirit, I can’t do this well on my own. Help me.” Notice whether it changes how the day feels.",
+  "word_count": 441
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "absolute-surrender-teens",
+   "en"
+  ],
+  "order": 11,
+  "title": "Waiting for Orders",
+  "body_html": "<blockquote>“As they ministered to the Lord, and fasted, the Holy Ghost said, Separate me Barnabas and Saul for the work whereunto I have called them.” — Acts 13:2 (KJV)</blockquote> <p>In Acts 13, a small group of church leaders in Antioch were worshipping and praying. The Holy Spirit told them to set apart Barnabas and Saul for a special work. That was the beginning of the great missionary journeys that took the good news across the world.</p> <p>Murray draws a simple lesson from it: “The Holy Spirit is the director of the work of God upon the earth.” God has his own plans, and our job is to wait for his orders and then obey.</p> <p>He tells a story from his own town, Wellington in South Africa, where they built a Mission Institute. At the opening, the principal reminded everyone that a year earlier the site had been nothing but rubble, stones and bricks. Very few people could imagine the building. Only one man knew exactly what it would be: the architect. The builders, carpenters and labourers all simply took their orders from him, and the building rose. “And just so,” the principal said, the work they were beginning that day was “but laying the foundation of a work of which only God knows what is to become.”</p> <p>Murray says that is what our lives are like. God is the architect. He sees the whole plan. We see only the next brick. Our job is “to wait, that God should communicate to us as much of His will as each time is needful,” and then to be faithful in obedience.</p> <p>He admits that Christians are often bad at this. “We too often make our plan,” he says, and then ask God to bless it, instead of waiting to find out what God wants first.</p> <p>That is very relevant when you are young and facing big decisions: subjects, friendships, relationships, jobs, where to go after school. It is easy to make the plan and then add God at the end. Absolute surrender includes your future. It means saying: God, you are the architect. Show me the next step.</p> <p>That doesn’t mean sitting still until you hear a voice from heaven. Notice what the leaders in Antioch were doing when the Spirit spoke: worshipping, praying and fasting together. God usually guides people who are close to him, listening through the Bible, through prayer and through wise Christians around them.</p> <p>You won’t see the whole building. You don’t need to. You only need to know the Architect, and take the next brick he hands you.</p> <p><strong>One thing to do this week:</strong> think of one decision you are facing. Before you decide, spend time this week asking God what he wants, reading the Bible and praying, and ask one wise Christian adult for their advice. Then take the next step you believe God is showing you.</p>",
+  "study_questions": [
+   {
+    "question": "What does Murray say is the role of the Holy Spirit in God’s work?",
+    "answer": "He is “the director of the work of God upon the earth”: God has his plans, and the Spirit directs them."
+   },
+   {
+    "question": "What is the lesson of the story about the building in Wellington?",
+    "answer": "Only the architect knew the full plan; the workers simply followed his orders. Likewise God sees the whole plan of our lives, and we follow his lead one step at a time."
+   },
+   {
+    "question": "What mistake does Murray say Christians often make with plans?",
+    "answer": "We make our own plans first and then ask God to bless them, instead of waiting to find out his will."
+   }
+  ],
+  "body_text": "“As they ministered to the Lord, and fasted, the Holy Ghost said, Separate me Barnabas and Saul for the work whereunto I have called them.” — Acts 13:2 (KJV) In Acts 13, a small group of church leaders in Antioch were worshipping and praying. The Holy Spirit told them to set apart Barnabas and Saul for a special work. That was the beginning of the great missionary journeys that took the good news across the world. Murray draws a simple lesson from it: “The Holy Spirit is the director of the work of God upon the earth.” God has his own plans, and our job is to wait for his orders and then obey. He tells a story from his own town, Wellington in South Africa, where they built a Mission Institute. At the opening, the principal reminded everyone that a year earlier the site had been nothing but rubble, stones and bricks. Very few people could imagine the building. Only one man knew exactly what it would be: the architect. The builders, carpenters and labourers all simply took their orders from him, and the building rose. “And just so,” the principal said, the work they were beginning that day was “but laying the foundation of a work of which only God knows what is to become.” Murray says that is what our lives are like. God is the architect. He sees the whole plan. We see only the next brick. Our job is “to wait, that God should communicate to us as much of His will as each time is needful,” and then to be faithful in obedience. He admits that Christians are often bad at this. “We too often make our plan,” he says, and then ask God to bless it, instead of waiting to find out what God wants first. That is very relevant when you are young and facing big decisions: subjects, friendships, relationships, jobs, where to go after school. It is easy to make the plan and then add God at the end. Absolute surrender includes your future. It means saying: God, you are the architect. Show me the next step. That doesn’t mean sitting still until you hear a voice from heaven. Notice what the leaders in Antioch were doing when the Spirit spoke: worshipping, praying and fasting together. God usually guides people who are close to him, listening through the Bible, through prayer and through wise Christians around them. You won’t see the whole building. You don’t need to. You only need to know the Architect, and take the next brick he hands you. One thing to do this week: think of one decision you are facing. Before you decide, spend time this week asking God what he wants, reading the Bible and praying, and ask one wise Christian adult for their advice. Then take the next step you believe God is showing you.",
+  "word_count": 481
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "absolute-surrender-teens",
+   "en"
+  ],
+  "order": 12,
+  "title": "Just a Branch",
+  "body_html": "<blockquote>“I am the vine, ye are the branches: He that abideth in me, and I in him, the same bringeth forth much fruit: for without me ye can do nothing.” — John 15:5 (KJV)</blockquote> <p>Murray finishes with one of Jesus’ most beautiful pictures: “I am the vine, ye are the branches.” And he asks us to think about how simple it is to be a branch.</p> <p>A branch grows out of the vine and bears fruit. Murray says it “has no responsibility except just to receive from the root and stem sap and nourishment.” The vine does the hard work, sending roots deep into the soil to find water and food. The branch just receives what flows through it, and the fruit appears.</p> <p>He tells about a famous vine at Hampton Court, near London, that sometimes produced a couple of thousand bunches of grapes. People were amazed until they found out why. Its roots had stretched hundreds of yards underground, all the way to the River Thames, and drank from the rich riverbed. The branches didn’t strain. They were connected to a vine that was connected to the river.</p> <p>That is the first lesson of the branch: absolute dependence. Murray says, “The branch has nothing but what it gets from the vine, and you and I can have nothing but what we get from Jesus.” He also says, “learn to be nothing, learn to be helpless.” That doesn’t mean you are worthless. It means you stop pretending to be the source. You are a branch, loved and fruitful, but only because you are joined to the vine.</p> <p>The second lesson is rest. Murray imagines a little branch speaking to a busy, stressed Christian worker:</p> <blockquote>“With all your hurry and effort in Christ’s work you never prosper. The first thing you need is to come and rest in your Lord Jesus. That is what I do.”</blockquote> <p>Rest doesn’t mean being lazy. Branches bear a lot of fruit. It means not carrying the weight that belongs to the vine. When you serve, help, study or share your faith, the responsibility for the results is Christ’s. Your part is to stay connected to him.</p> <p>And that brings us back to where the book began. Absolute surrender is not a grim, white-knuckled effort to be holy. It is a branch saying to the vine: I am yours, and all that I have. Flow through me.</p> <p>Jesus said that without him we can do nothing, and that whoever remains in him will bear much fruit. That is the promise at the end of surrender. Not less life, but more. Not strain, but fruit.</p> <p><strong>One thing to do this week:</strong> each morning this week, before you check your phone, say to Jesus: “You are the vine, I am a branch. I’m yours today. Flow through me.” At the end of each day, notice one bit of fruit, a kind word, patience, an act of help, and thank him for it.</p>",
+  "study_questions": [
+   {
+    "question": "What is the branch’s only responsibility, according to Murray?",
+    "answer": "To receive sap and nourishment from the vine; the vine does the work, and the fruit comes through the branch."
+   },
+   {
+    "question": "Why was the vine at Hampton Court so fruitful?",
+    "answer": "Its roots had stretched hundreds of yards underground to the River Thames and drew rich nourishment from the riverbed."
+   },
+   {
+    "question": "What two lessons does Murray draw from the branch?",
+    "answer": "Absolute dependence on Jesus, since we have nothing but what we receive from him, and deep rest, not carrying the weight that belongs to him."
+   }
+  ],
+  "body_text": "“I am the vine, ye are the branches: He that abideth in me, and I in him, the same bringeth forth much fruit: for without me ye can do nothing.” — John 15:5 (KJV) Murray finishes with one of Jesus’ most beautiful pictures: “I am the vine, ye are the branches.” And he asks us to think about how simple it is to be a branch. A branch grows out of the vine and bears fruit. Murray says it “has no responsibility except just to receive from the root and stem sap and nourishment.” The vine does the hard work, sending roots deep into the soil to find water and food. The branch just receives what flows through it, and the fruit appears. He tells about a famous vine at Hampton Court, near London, that sometimes produced a couple of thousand bunches of grapes. People were amazed until they found out why. Its roots had stretched hundreds of yards underground, all the way to the River Thames, and drank from the rich riverbed. The branches didn’t strain. They were connected to a vine that was connected to the river. That is the first lesson of the branch: absolute dependence. Murray says, “The branch has nothing but what it gets from the vine, and you and I can have nothing but what we get from Jesus.” He also says, “learn to be nothing, learn to be helpless.” That doesn’t mean you are worthless. It means you stop pretending to be the source. You are a branch, loved and fruitful, but only because you are joined to the vine. The second lesson is rest. Murray imagines a little branch speaking to a busy, stressed Christian worker: “With all your hurry and effort in Christ’s work you never prosper. The first thing you need is to come and rest in your Lord Jesus. That is what I do.” Rest doesn’t mean being lazy. Branches bear a lot of fruit. It means not carrying the weight that belongs to the vine. When you serve, help, study or share your faith, the responsibility for the results is Christ’s. Your part is to stay connected to him. And that brings us back to where the book began. Absolute surrender is not a grim, white-knuckled effort to be holy. It is a branch saying to the vine: I am yours, and all that I have. Flow through me. Jesus said that without him we can do nothing, and that whoever remains in him will bear much fruit. That is the promise at the end of surrender. Not less life, but more. Not strain, but fruit. One thing to do this week: each morning this week, before you check your phone, say to Jesus: “You are the vine, I am a branch. I’m yours today. Flow through me.” At the end of each day, notice one bit of fruit, a kind word, patience, an act of help, and thank him for it.",
+  "word_count": 494
+ }
+}
+]
