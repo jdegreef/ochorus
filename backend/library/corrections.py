@@ -1418,7 +1418,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
     # "Crossweeksung, (New-Jersey,) Agosti, 1745."); chapter X's subtitle
     # follows its REFLECTION IV ("kumbukumbu zilizotangulia"), the death verse
     # its own lead-in ("mauti na kutokufa"), and the Watts line Psalm 127:1 as
-    # the Swahili Bible has it ("kuijenga nyumba"). No quote or translation
+    # the Swahili Bible has it ("kuijenga nyumba"). The Spanish edition was
+    # translated from the settled English, lines included, so its 24 are the
+    # blocks it already ships at those same positions. No quote or translation
     # note in this book is anchored by block position.
     "life-and-diary-of-david-brainerd": {
         "restored_blocks": [
@@ -1492,6 +1494,42 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("<p><i>Siku ya Bwana, Juni 29, 1746.</i>", "<p>[Juni 19, 1746—Oktoba 9, 1747.]</p>"),
             ("<p>Katika maisha ya Brainerd twaweza",
              "<p><i>Tafakari juu ya Kumbukumbu Zilizotangulia.</i></p>"),
+            # es
+            ("<p>David Brainerd nació el", "<p>20 de abril de 1718 – febrero de 1741.</p>"),
+            ("<p>En la primavera de 1742", "<p>1 de abril de 1742-29 de julio de 1742.</p>"),
+            ("<p>«El Señor refrescó mi alma",
+             "<blockquote>«Adiós, mundo vano; mi alma te despide;<br/>«mi Salvador me enseñó a abandonarte.<br/>«Tus encantos podrán agradar a una mente SENSUAL,<br/>«mas no complacer a un alma hecha para Dios.<br/>«Deja de tentarme; cesa, pues, de llamar a mi alma;<br/>«está fija por la gracia: mi Dios será mi TODO.<br/>«Mientras él me deja contemplar así glorias celestiales,<br/>«tus bellezas se marchitan; no hay lugar para ti en mi corazón».</blockquote>"),
+            ("<p><i>27 de abril.</i> «Me",
+             "<blockquote>«Señor, soy aquí un extranjero solitario;<br/>«la tierra no puede dar verdadero consuelo;<br/>«con todo, ausente de mi más amado,<br/>«mi alma se deleita en clamar “¡Señor mío!”.<br/>«Jesús, mi Señor, mi único amor,<br/>«posee mi alma y no te apartes de ella;<br/>«concédeme visitas benignas, Paloma celestial;<br/>«entonces mi Dios tendrá todo mi corazón».</blockquote>"),
+            ("<p><i>30 de julio de 1742.</i>—«Fui", "<p>30 de julio.-25 de noviembre de 1742.</p>"),
+            ("<p><i>26 de noviembre de 1742.</i>—«Seguía",
+             "<p>26 de noviembre de 1742.—31 de marzo de 1743.</p>"),
+            ("<p><i>1 de abril de 1743.</i>", "<p>1 de abril de 1743.—12 de junio de 1744.</p>"),
+            ("<p>«En la oración de la noche",
+             "<blockquote>«Ven, muerte, dame la mano; besaré tus lazos;<br/>«es dicha para mí el morir.—<br/>«¡Qué! ¿Piensas tú que me echaré atrás?<br/>«Iré a la inmortalidad».</blockquote>"),
+            ("<p><i>13 de junio de 1744.</i>", "<p>13 de junio de 1744.—18 de junio de 1745.</p>"),
+            ("<p>[Llegamos ahora a aquella", "<p>19 de junio.—5 de noviembre de 1745.</p>"),
+            ("<p><i>19 de junio.</i>—«Durante",
+             "<p>«<i>Crossweeksung, Nueva Jersey, 17 de junio de 1745.</i></p>"),
+            ("<p><i>Día del Señor, 14 de julio.</i>—«Hablé",
+             "<p><i>Forks of Delaware, en Pensilvania, julio de 1745.</i></p>"),
+            ("<p><i>Día del Señor, 1 de septiembre.</i>—«Prediqué",
+             "<p><i>Forks of Delaware, en Pensilvania, septiembre de 1745.</i></p>"),
+            ("<p><i>13 de septiembre.</i>—«Después",
+             "<p><i>Shaumoking, septiembre de 1745.</i></p>"),
+            ("<p><i>19 de septiembre.</i>—«Visité", "<p><i>Juncauta, septiembre de 1745.</i></p>"),
+            ("<p><i>1 de octubre.</i>—«Hablé", "<p><i>Forks of Delaware, octubre de 1745.</i></p>"),
+            ("<p><i>5 de octubre.</i>—«Prediqué", "<p><i>Crossweeksung, octubre de 1745.</i></p>"),
+            ("<p><i>Día del Señor, 24 de noviembre.</i>—«Prediqué", "<p>5 de noviembre de 1745.—19 de junio de 1746.</p>"),
+            ("<p><i>Día del Señor, 24 de noviembre.</i>—«Prediqué", "<p><i>Crossweeksung, Nueva Jersey, 1745.</i></p>"),
+            ("<p><i>Día del Señor, 16 de febrero.</i>—«Sabiendo",
+             "<p><i>Forks of Delaware, febrero de 1746.</i></p>"),
+            ("<p><i>1 de marzo.</i>—«Catequicé", "<p><i>Crossweeksung, marzo de 1746.</i></p>"),
+            ("<p>y después de encomendarlos",
+             "<blockquote>Si Dios no edifica la casa, etc.</blockquote>"),
+            ("<p><i>Día del Señor, 29 de junio", "<p>[19 de junio de 1746 — 9 de octubre de 1747.]</p>"),
+            ("<p>En la vida de Brainerd",
+             "<p><i>Reflexiones sobre las memorias precedentes.</i></p>"),
         ],
     },
     # Gutenberg #57109 (Hudson Taylor, *Unfailing Springs*) sets the address's
@@ -4772,6 +4810,8 @@ BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {})["back_matter
      "<p>The frequent dated quotations from Brainerd’s diaries"),
     ("dini ya kweli! <i>Amina.</i></p>",
      "<p>Manukuu ya mara kwa mara yenye tarehe kutoka shajara za Brainerd"),
+    ("verdadera religión! <i>Amén.</i></p>",
+     "<p>Las frecuentes citas fechadas de los diarios de Brainerd"),
 ]
 # Edwards signs the preface `<div class="c012">JONATHAN EDWARDS.</div>`, the
 # last block of ch1: the half-title after it is front matter. The old walk
@@ -4784,6 +4824,7 @@ BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {})["back_matter
 BODY_CORRECTIONS["life-and-diary-of-david-brainerd"]["restored_after"] = [
     ("the interest of religion.”</p>", "<h3>JONATHAN EDWARDS.</h3>"),
     ("maslahi ya dini zaidi.”</p>", "<h3>JONATHAN EDWARDS.</h3>"),
+    ("el interés de la religión».</p>", "<h3>JONATHAN EDWARDS.</h3>"),
 ]
 # Gutenberg #51931 follows Torrey's last paragraph with a page break and the
 # Revell ad page for F. B. Meyer (its price tables were dropped; the Moody,
