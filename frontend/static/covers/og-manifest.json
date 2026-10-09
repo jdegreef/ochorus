@@ -543,7 +543,7 @@
 			"volume": "2",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -551,22 +551,21 @@
 					[114, 102, 486, 131]
 				],
 				"title": [
-					[289, 212, 311, 256],
-					[118, 287, 482, 362],
-					[216, 348, 384, 423],
-					[116, 410, 484, 485]
+					[289, 243, 311, 287],
+					[148, 318, 452, 393],
+					[79, 379, 521, 454]
 				],
 				"subtitle": [
-					[161, 539, 439, 567],
-					[146, 567, 454, 595]
+					[179, 508, 421, 536],
+					[165, 536, 435, 564]
 				],
 				"mark": [
 					[232, 664, 368, 746]
 				]
 			},
 			"middle": [
-				200,
-				595
+				231,
+				564
 			]
 		},
 		"am/brave-for-god-3": {
@@ -2876,7 +2875,7 @@
 			"volume": "2",
 			"script": "arabic",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -3917,7 +3916,7 @@
 			"volume": "2",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -3930,7 +3929,7 @@
 					[175, 393, 425, 468]
 				],
 				"subtitle": [
-					[48, 522, 552, 550]
+					[49, 522, 551, 550]
 				],
 				"mark": [
 					[232, 664, 368, 746]
@@ -4889,6 +4888,36 @@
 			"middle": [
 				275,
 				520
+			]
+		},
+		"es/brave-for-god-2": {
+			"ground": "4b8bfd41502eda736326d8c0d400b061de627a667fcade66176d03a7e164b5b6",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.4,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[132, 271, 468, 346],
+					[115, 332, 485, 407]
+				],
+				"subtitle": [
+					[174, 461, 426, 489],
+					[166, 489, 434, 517]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				278,
+				517
 			]
 		},
 		"es/c-s-lewis-a-life-children": {
@@ -6429,7 +6458,7 @@
 			"volume": "2",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -8107,7 +8136,7 @@
 			"volume": "2",
 			"script": "devanagari",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -8120,7 +8149,7 @@
 					[122, 403, 478, 472]
 				],
 				"subtitle": [
-					[103, 545, 497, 567]
+					[104, 545, 496, 567]
 				],
 				"mark": [
 					[232, 664, 368, 746]
@@ -10233,7 +10262,7 @@
 			"volume": "2",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -13568,7 +13597,7 @@
 			"volume": "2",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
