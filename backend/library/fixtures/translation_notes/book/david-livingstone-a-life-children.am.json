@@ -3,7 +3,7 @@
  "slug": "david-livingstone-a-life-children",
  "language": "am",
  "job_issue": 5745,
- "pull_request": null,
+ "pull_request": 5766,
  "note": [
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh, branch master, lowercase usfm/ codes; re-verified for this job 2026-10-09: mat/heb/2ti/act/luk return 200, gen/psa/ecc/isa/pro 404). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
   "The mirror bridges Matthew 28:18-20 into one entry holding only verse 18, so Matthew 28:20 could not be taken from it; it is pasted verbatim from rooted-2.am.json (the wording men-and-women-who-gave-everything-2.am.json also cites as mined from rooted-2).",
