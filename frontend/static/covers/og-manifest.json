@@ -1828,7 +1828,7 @@
 			"volume": "1",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -1837,11 +1837,11 @@
 				],
 				"title": [
 					[292, 273, 308, 317],
-					[162, 348, 438, 423]
+					[190, 348, 410, 423]
 				],
 				"subtitle": [
-					[148, 478, 452, 506],
-					[143, 506, 457, 534]
+					[166, 478, 434, 506],
+					[164, 506, 436, 534]
 				],
 				"mark": [
 					[232, 664, 368, 746]
@@ -3333,7 +3333,7 @@
 			"volume": "1",
 			"script": "arabic",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -3345,7 +3345,7 @@
 					[179, 357, 421, 438]
 				],
 				"subtitle": [
-					[126, 502, 474, 541]
+					[127, 502, 473, 541]
 				],
 				"mark": [
 					[232, 664, 368, 746]
@@ -5615,6 +5615,35 @@
 				482
 			]
 		},
+		"es/rooted-1": {
+			"ground": "e842a4df792a27975b08a07e1a28000cc9787b84b3ca2e42d3991574da49b6e3",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.4,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[160, 301, 440, 376]
+				],
+				"subtitle": [
+					[126, 431, 474, 459],
+					[161, 459, 439, 487]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				308,
+				487
+			]
+		},
 		"es/school-of-prayer": {
 			"ground": "97470a6480e1b9ab220bb0111f42bb19bbe075a48c1470c335f385ecc6997764",
 			"style": "devotional",
@@ -7199,7 +7228,7 @@
 			"volume": "1",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -8381,7 +8410,7 @@
 			"volume": "1",
 			"script": "devanagari",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -12775,7 +12804,7 @@
 			"volume": "1",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -14249,7 +14278,7 @@
 			"volume": "1",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.4,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -14257,12 +14286,12 @@
 					[114, 102, 486, 131]
 				],
 				"title": [
-					[292, 273, 309, 317],
-					[134, 348, 466, 423]
+					[292, 273, 308, 317],
+					[135, 348, 465, 423]
 				],
 				"subtitle": [
-					[158, 478, 442, 506],
-					[114, 506, 487, 534]
+					[157, 478, 443, 506],
+					[113, 506, 487, 534]
 				],
 				"mark": [
 					[232, 664, 368, 746]

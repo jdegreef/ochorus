@@ -139,7 +139,7 @@ ART_SCRIM: dict[str, float] = {
     "revelations-of-divine-love": 0.65,
     "revival-lectures": 0.85,
     "rise-up-men-of-god-2": 0.30,
-    "rooted-1": 0.30,
+    "rooted-1": 0.40,
     "rooted-2": 0.35,
     "rooted-3": 0.30,
     "rooted-4": 0.30,
