@@ -14464,6 +14464,16 @@
 			"layout": "fade/oxblood",
 			"bar": 0
 		},
+		"the-big-story": {
+			"ground": "f7a9f0622e19827749d38e399126f64c093cbc314ba21395af3a9332e143cc82",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-body-of-christ-a-reality": {
 			"ground": "0fdd83b40849fce8da366d2bee1a697dc5b5082ff59a6b708f875c5249d6aefe",
 			"style": "house",
