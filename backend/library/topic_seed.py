@@ -605,6 +605,7 @@ TOPICS = [
             "the-practice-of-the-presence-of-god-teens",
             "the-imitation-of-christ-teens",
             "life-and-diary-of-david-brainerd-teens",
+            "absolute-surrender-teens",
             "real-questions-1",
             "real-questions-2",
         ],

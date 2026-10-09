@@ -151,6 +151,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"absolute-surrender-teens": {
+			"ground": "fe43d6a171aabe76f648f5bc3a324aa0219395f298c1c1a16750cb961fddceee",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"all-of-grace": {
 			"ground": "25d18c1f3133cdd46d916757dc58d064dd8cda9ff6adce9f7edf269c234762d4",
 			"style": "revival",
