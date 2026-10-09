@@ -2954,6 +2954,21 @@ nav.appnav .navsearch:hover {
 	width: 66%;
 	height: 66%;
 }
+/* The "Ochorus for …" pages (routes/for): a group's accent, set as `--group`
+   on a container (FOR_META), reaches the page only as these tints — the topic
+   hero's recipe — never as a fill behind body text. */
+.group-wash {
+	border: 1px solid color-mix(in srgb, var(--group) 22%, var(--color-border));
+	background:
+		radial-gradient(90% 130% at 0% 0%, color-mix(in srgb, var(--group) 16%, transparent), transparent 55%),
+		color-mix(in srgb, var(--group) 7%, var(--color-surface));
+}
+.group-ink {
+	color: color-mix(in srgb, var(--group) 80%, var(--color-text));
+}
+.group-chip {
+	--chip-hue: var(--group);
+}
 /* A finished book's cover in the year shelves (HomeYear, YearInBooks) wears a
    wax seal at its foot — every cover there is a book finished, and a seal is
    how a book was once closed. Decoration on a link that already names the

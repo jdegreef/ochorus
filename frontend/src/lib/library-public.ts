@@ -1230,11 +1230,13 @@ export const tileFace = (t: BookTile): CoverFace | null =>
 
 /** A book as a strip tile, for the fans built in the browser from books the
  *  page already has — the same shape the API's `_book_cover` sends. */
-export const toBookTile = (b: CoverFace): BookTile => ({
-	kind: 'book',
+/** Any book trimmed to what a cover draws. */
+export const toCoverFace = (b: CoverFace): CoverFace => ({
 	...pick(b, COVER_FACE_KEYS),
 	author: pick(b.author, COVER_AUTHOR_KEYS)
 });
+
+export const toBookTile = (b: CoverFace): BookTile => ({ kind: 'book', ...toCoverFace(b) });
 
 /**
  * A sermon in a topic's strip. It carries no cover fields because it is not
@@ -1530,11 +1532,25 @@ export const getBookGuide = (slug: string, language = 'en', f?: Fetch) =>
 		f
 	);
 
-/** The slugs the hubs list with a leader's guide, each once, in hub order —
- *  the guide route's prerender entries. */
-export const guideSlugs = (shelves: Pick<AudienceShelf, 'leader_guides'>[]): string[] => [
-	...new Set(shelves.flatMap((s) => (s.leader_guides ?? []).map((b) => b.slug)))
+/** The books the hubs list with a leader's guide, each once, in hub order (a
+ *  Map keeps a key's first position). */
+export const guideBooks = (shelves: Pick<AudienceShelf, 'leader_guides'>[]): BookSummary[] => [
+	...new Map(shelves.flatMap((s) => s.leader_guides ?? []).map((b) => [b.slug, b])).values()
 ];
+
+/** The slugs the hubs list with a leader's guide — the guide route's prerender
+ *  entries. */
+export const guideSlugs = (shelves: Pick<AudienceShelf, 'leader_guides'>[]): string[] =>
+	guideBooks(shelves).map((b) => b.slug);
+
+/** A `BookCard` link that opens a book's printable leader's guide instead of
+ *  the book. `t` is the caller's i18n lookup. */
+export const guideCardLink = (book: Pick<BookSummary, 'slug' | 'title'> & { author: { name: string } }, t: (key: string) => string) => ({
+	href: `/books/${book.slug}/guide`,
+	cta: t('guide.open'),
+	label: t('guide.label'),
+	ariaLabel: `${t('guide.title').replace('%t%', book.title)} — ${book.author.name}`
+});
 
 /** Each hub's `languages` without building either shelf (`AudienceLanguagesView`). */
 export const listAudienceLanguages = (f?: Fetch) =>

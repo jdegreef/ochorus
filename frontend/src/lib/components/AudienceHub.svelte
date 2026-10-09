@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { scrollEdges } from '$lib/actions/scrollEdges';
-	import { citeLine, type AudienceShelf } from '$lib/library-public';
+	import { citeLine, guideCardLink, type AudienceShelf } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, collectionPage, hreflangExact } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
@@ -192,7 +192,7 @@
 						<li>
 							<a
 								class="path card-lift"
-								href={p.href.startsWith('#') ? p.href : localizeHref(p.href)}
+								href={localizeHref(p.href)}
 								onclick={() => track(HUB_EVENT, { hub: hub.audience, action: 'path' })}
 							>
 								<span class="path-covers"><CoverStrip covers={p.covers} max={3} /></span>
@@ -434,12 +434,7 @@
 							{book}
 							showAuthor
 							showSeries={false}
-							link={{
-								href: `/books/${book.slug}/guide`,
-								cta: t('guide.open'),
-								label: t('guide.label'),
-								ariaLabel: `${t('guide.title').replace('%t%', book.title)} — ${book.author.name}`
-							}}
+							link={guideCardLink(book, t)}
 						/>
 					{/each}
 				</div>

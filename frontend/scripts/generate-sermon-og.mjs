@@ -82,7 +82,6 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
-import { channels } from '../src/lib/coverArt.ts';
 // The slug->emblem assignment picks the card's HUE; the chip itself wears the
 // same passage monogram as the app's sermon rows, drawn by the same parser.
 import { emblemForSermon } from '../src/lib/emblemNames.ts';
@@ -91,16 +90,7 @@ import { sermonMonogram } from '../src/lib/sermonMonogram.ts';
 // The locales that ship their OWN sermon cards instead of the English one — the
 // single source of truth the reader page reads too, so the two cannot drift.
 import { SERMON_OG_LOCALES } from '../src/lib/sermonOgLocales.ts';
-import {
-	BACKGROUND,
-	GOLD,
-	HEIGHT,
-	MUTED,
-	PAPER,
-	WIDTH,
-	drawCard,
-	liftToContrast
-} from './og-card.mjs';
+import { BACKGROUND, GOLD, HEIGHT, MUTED, PAPER, WIDTH, alpha, box, drawCard, liftToContrast } from './og-card.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = resolve(HERE, '../static/og/sermons');
@@ -135,11 +125,6 @@ function sermonsFor(lang) {
 
 // ── The card ────────────────────────────────────────────────────────────────
 
-/** `#rrggbb` at `alpha` — satori has no color-mix, so the tint is mixed here. */
-function alpha(hex, a) {
-	return `rgba(${channels(hex).join(', ')}, ${a})`;
-}
-
 /**
  * Title size by length. The card is a fixed 630px tall with no room to grow,
  * and the longest title in the library runs 40 characters ("Come Thou and All
@@ -151,9 +136,6 @@ function titleSize(title) {
 	if (title.length <= 34) return 70;
 	return 58;
 }
-
-/** A satori div. Most of this card is layout, so `box` rather than `text`. */
-const box = (style, children) => ({ type: 'div', props: { style, children } });
 
 const digest = (s) => createHash('sha256').update(s).digest('hex');
 

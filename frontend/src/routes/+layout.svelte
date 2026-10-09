@@ -16,7 +16,7 @@
 	import { API_BASE_URL } from '$lib/config';
 	import { lang } from '$lib/lang.svelte';
 	import { footerLocales } from '$lib/footerLocales';
-	import { FOR_LINKS, forPath } from '$lib/forLinks';
+	import { FOR_INDEX, FOR_LINKS, forPath } from '$lib/forLinks';
 	import { loginHref, withSignup } from '$lib/loginHref';
 	import { seenOnView, withSource } from '$lib/signupSource';
 	import { bibleCredit, creditParts } from '$lib/bibleCredit';
@@ -685,7 +685,7 @@
 					<div
 						class="chrome-col flex flex-wrap items-baseline gap-x-5 gap-y-1 px-5 py-4 text-small"
 					>
-						<span class="eyebrow py-1 text-text">Ochorus for</span>
+						<a class="eyebrow py-1 text-text hover:underline" href={FOR_INDEX}>Ochorus for</a>
 						{#each FOR_LINKS as l (l.slug)}
 							<a class="whitespace-nowrap py-1 text-muted hover:text-text" href={forPath(l.slug)}
 								>{l.label}</a
