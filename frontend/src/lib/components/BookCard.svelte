@@ -6,6 +6,7 @@
 	import { localizeHref } from '$lib/href';
 	import { readingMinutes, readingTime } from '$lib/reading';
 	import { splitEdition } from '$lib/edition';
+	import { ORIGINALS_SLUG } from '$lib/originals';
 	import { cardSeriesLine } from '$lib/series';
 	import BookCover from './BookCover.svelte';
 	import { cardTint } from '$lib/coverArt';
@@ -49,7 +50,12 @@
 		 * no hover, still says where the card goes) and `ariaLabel` the link's
 		 * accessible name, which must say the same.
 		 */
-		link
+		link,
+		/**
+		 * The Ochorus Originals ribbon on an imprint book. Off on /originals,
+		 * where every card is one and the page already says so.
+		 */
+		showImprint = true
 	}: {
 		book: CoverBook;
 		showAuthor?: boolean;
@@ -59,6 +65,7 @@
 		perChapter?: boolean;
 		hook?: string;
 		link?: { href: string; cta: string; label: string; ariaLabel: string };
+		showImprint?: boolean;
 	} = $props();
 	const t = i18n.t;
 	const hookId = $props.id();
@@ -70,6 +77,9 @@
 	// the title on a narrow card; pull it onto its own line so the two editions
 	// don't look identical. Null for ordinary books.
 	const edition = $derived(splitEdition(book.slug, book.title));
+	// The house imprint's own books wear its ribbon, in the Originals hue —
+	// unless an audience ribbon already sits there (it says more).
+	const imprint = $derived(showImprint && !edition && book.author.slug === ORIGINALS_SLUG);
 	const seriesLine = $derived(
 		showSeries ? cardSeriesLine(book) : ''
 	);
@@ -108,6 +118,10 @@
 			     Hidden from assistive tech: the card's label is the full title,
 			     "(For Teens)" and all. -->
 			<span class="edition-ribbon" data-kind={edition.kind} aria-hidden="true">{edition.audience}</span>
+		{:else if imprint}
+			<!-- Ochorus' own books, told apart from the classics at a glance. The
+			     words are the nav's own "Originals", in every locale already. -->
+			<span class="edition-ribbon" data-kind="original" aria-hidden="true">{t('nav.originals')}</span>
 		{/if}
 		<span
 			class="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-end gap-1 rounded-b-card bg-gradient-to-t from-black/60 to-transparent px-3 pb-2 pt-6 text-small font-semibold text-white opacity-0 transition-opacity group-hover:opacity-100"
@@ -157,8 +171,9 @@
 <style>
 	/* A young-reader edition's ribbon across the cover's lower corner: the top
 	   carries the author's name on the designed covers, the foot only a small
-	   centred mark. Teens in cypress, children in ochre, ink in the surface
-	   colour (each hue clears 4.5:1 against --surface in every theme). A long
+	   centred mark. Teens in cypress, children in ochre, an Ochorus Original
+	   in plum; ink in the surface colour (each hue clears 4.5:1 against
+	   --surface in every theme). A long
 	   translated audience truncates rather than wrapping over the cover, and
 	   the ribbon steps aside on hover for the "Begin reading" label. */
 	.edition-ribbon {
@@ -184,6 +199,9 @@
 	}
 	.edition-ribbon[data-kind='children'] {
 		background: var(--hue-ochre);
+	}
+	.edition-ribbon[data-kind='original'] {
+		background: var(--section-originals);
 	}
 	.book-card:hover .edition-ribbon {
 		opacity: 0;

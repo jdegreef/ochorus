@@ -275,7 +275,7 @@
 					{/if}
 					<div class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5">
 						{#each group.books as book (book.slug)}
-							<BookCard {book} />
+							<BookCard {book} showImprint={false} />
 						{/each}
 					</div>
 				</section>

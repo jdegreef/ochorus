@@ -131,7 +131,7 @@
 				{/if}
 			</div>
 		</div>
-		<div class="plank" aria-hidden="true"></div>
+		<div class="shelf-plank plank" aria-hidden="true"></div>
 		<div class="label">
 			<a
 				href={localizeHref(shelfHref(item))}
@@ -168,7 +168,7 @@
 {:else}
 	<li class="cell" aria-hidden="true">
 		<div class="wall"><div class="aspect-[3/4]"></div></div>
-		<div class="plank"></div>
+		<div class="shelf-plank plank"></div>
 	</li>
 {/if}
 
@@ -260,16 +260,9 @@
 		clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
 		box-shadow: 0 2px 4px rgb(0 0 0 / 0.3);
 	}
-	/* The plank's face and its darker lip; cells join it into one board. */
+	/* The board itself is the shared .shelf-plank (app.css); cells join it
+	   into one. It sits over the wall's foot. */
 	.plank {
-		height: 0.95rem;
-		background: linear-gradient(
-			to bottom,
-			rgb(255 255 255 / 0.18) 0 1px,
-			var(--shelf-wood) 1px 60%,
-			var(--shelf-wood-edge) 60% 100%
-		);
-		box-shadow: 0 7px 9px -6px rgb(0 0 0 / 0.45);
 		position: relative;
 		z-index: 1;
 	}
