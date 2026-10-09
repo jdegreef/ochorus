@@ -339,6 +339,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "portraits-of-courage"
+  ],
+  "language": "lg",
+  "title": "Ebifaananyi by’Obuvumu",
+  "description": "Ebyafaayo by’Ekikristaayo ebijjuvu eby’abasajja n’abakazi abaabalirira omuwendo ne bagoberera Kristo wadde kyali kityo — buli bulamu bunyumizibwa wamu n’okuyigiriza kwabwo, ne bupimibwa n’Ebyawandiikibwa, era ne buwandiikibwa n’okwebaza naye awatali kubugulumiza ng’obutalina kamogo.",
+  "created_at": "2026-10-09T00:00:00Z",
+  "updated_at": "2026-10-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "brave-for-god"
   ],
   "language": "am",
@@ -411,6 +424,19 @@
   "description": "",
   "created_at": "2026-09-28T00:00:00Z",
   "updated_at": "2026-09-28T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "fr",
+  "title": "Filles du Roi – 30 jours avec Dieu pour les filles",
+  "description": "Des méditations sur trente jours pour les filles de 9 à 12 ans: qui tu es en tant que fille du Roi, et les femmes courageuses de la Bible et de l’histoire qui lui ont fait confiance.",
+  "created_at": "2026-10-09T00:00:00Z",
+  "updated_at": "2026-10-09T00:00:00Z"
  }
 },
 {

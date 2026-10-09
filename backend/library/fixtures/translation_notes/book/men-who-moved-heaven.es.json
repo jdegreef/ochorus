@@ -1,0 +1,793 @@
+{
+ "kind": "book",
+ "slug": "men-who-moved-heaven",
+ "language": "es",
+ "job_issue": 4830,
+ "references": [
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 2,
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 3,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 3
+  },
+  {
+   "reference": "Luke 18:1b",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 8,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 8,
+   "source_file": "clothed-with-strength-and-dignity.es.json"
+  },
+  {
+   "reference": "Psalms 62:8",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 11,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "Matthew 7:8",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 11,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 12
+  },
+  {
+   "reference": "Romans 8:26b",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 5,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 6,
+   "source_file": "a-retrospect-teens.es.json"
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 8,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "Psalms 62:8",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 11
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 12
+  },
+  {
+   "reference": "Luke 11:1b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 4
+  },
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 5,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "Isaiah 62:6b-7a",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 7,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "Luke 18:13b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 9,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "Romans 8:26b",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 10,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "Ezekiel 22:30",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 5,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "Ephesians 6:12a",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 5,
+   "source_file": "rise-up-men-of-god-2.es.json"
+  },
+  {
+   "reference": "Matthew 18:18",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 9,
+   "source_file": "the-key-in-my-hand.es.json"
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 10
+  },
+  {
+   "reference": "Isaiah 62:6a",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 11
+  },
+  {
+   "reference": "Isaiah 62:6b-7a",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 11,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 5,
+   "source_file": "reality-of-prayer.es.json"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 7,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 7,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "Matthew 7:7a",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 8,
+   "source_file": "pilgrims-progress-teens.es.json"
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 9,
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Jeremiah 33:3a",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 9
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 4
+  },
+  {
+   "reference": "James 5:17a",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 4,
+   "source_file": "the-inner-chamber.es.json"
+  },
+  {
+   "reference": "Mark 1:35",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 6,
+   "source_file": "the-life-of-trust-teens.es.json"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 7,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "Hebrews 7:25b",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 4,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "Matthew 7:8",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 4,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "1 John 3:22",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 5,
+   "source_file": "spurgeon-on-prayer.es.json"
+  },
+  {
+   "reference": "Psalm 34:8a",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 7
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 8
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 9
+  },
+  {
+   "reference": "Ephesians 3:21a",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 1
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 5,
+   "source_file": "days-of-heaven-upon-earth.es.json"
+  },
+  {
+   "reference": "Romans 8:26b",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 6,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "Romans 9:3",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 8
+  },
+  {
+   "reference": "2 Peter 3:9",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 9
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 10
+  },
+  {
+   "reference": "Psalm 51:17",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 7
+  },
+  {
+   "reference": "Zechariah 4:6b",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 10
+  },
+  {
+   "reference": "Psalm 62:8",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 12
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 5,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "Matthew 6:9b",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 6
+  },
+  {
+   "reference": "Ephesians 6:18a",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 8,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 9,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 4,
+   "source_file": "clothed-with-strength-and-dignity.es.json"
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 8,
+   "source_file": "the-key-in-my-hand.es.json"
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 9,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "Philippians 4:7a",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 10,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 0
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 4
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 9
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 2,
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 3,
+   "source_file": "a-retrospect-teens.es.json"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 4,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 4,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 5,
+   "source_file": "clothed-with-strength-and-dignity.es.json"
+  },
+  {
+   "reference": "Psalm 62:8",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 7:7-8",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 7,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 8
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 11,
+   "source_file": "a-retrospect-teens.es.json"
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 12,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "Psalm 62:8",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 13
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 14
+  },
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 16,
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Isaiah 62:6-7a",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 17
+  },
+  {
+   "reference": "Luke 18:13b",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 18
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 19,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "Romans 8:26b",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 20,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "Ezekiel 22:30",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 22,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "Ephesians 6:12a",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 23,
+   "source_file": "rise-up-men-of-god-2.es.json"
+  },
+  {
+   "reference": "Matthew 18:18",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 24
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 25
+  },
+  {
+   "reference": "Isaiah 62:6-7a",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 26
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 28,
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 29,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 29,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 30,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 31,
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 33
+  },
+  {
+   "reference": "Mark 1:35",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 34,
+   "source_file": "the-life-of-trust-teens.es.json"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 35,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "Jude 1:20",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 36
+  },
+  {
+   "reference": "Hebrews 7:25b",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 37
+  },
+  {
+   "reference": "Matthew 7:7-8",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 39,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "1 John 3:22",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 40,
+   "source_file": "spurgeon-on-prayer.es.json"
+  },
+  {
+   "reference": "Psalm 34:8",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 41
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 42,
+   "source_file": "spurgeon-on-prayer.es.json"
+  },
+  {
+   "reference": "Ephesians 3:20-21a",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 43
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 45,
+   "source_file": "days-of-heaven-upon-earth.es.json"
+  },
+  {
+   "reference": "Romans 8:26b",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 46,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "2 Peter 3:9a",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 47
+  },
+  {
+   "reference": "2 Peter 3:9b",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 48
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 49
+  },
+  {
+   "reference": "Psalm 51:17",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 51
+  },
+  {
+   "reference": "Zechariah 4:6b",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 52
+  },
+  {
+   "reference": "Psalm 62:8",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 53
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 55,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 56,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 57,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 59,
+   "source_file": "clothed-with-strength-and-dignity.es.json"
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 60,
+   "source_file": "the-key-in-my-hand.es.json"
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 61,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 62,
+   "source_file": "men-of-prayer-2.es.json"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 62,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "Jeremiah 29:13",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 63,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  }
+ ]
+}

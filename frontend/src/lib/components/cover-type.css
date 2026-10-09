@@ -287,9 +287,7 @@
 	   the frame move out from under them — the drift this file already
 	   documents at the press rules below. */
 	--frame-inset: 4.3cqw;
-	/* The byline's place and size, named for the same reason: the originals
-	   imprint band is drawn behind the byline from these, and a second copy of
-	   the numbers would let the byline move out of its band. */
+	/* The byline's place and size. */
 	--byline-top: 17cqw;
 	/* The type's side margin — and how far the title block's scrim band reaches
 	   back out to the plate's edges (`.middle::after`). */
@@ -645,37 +643,10 @@
 	margin-top: 3.6cqw;
 }
 
-/* ORIGINALS — Ochorus' own imprint. The byline already reads OCHORUS ORIGINALS,
-   so the composition makes that line what it is: an imprint, run as a band
-   across the frame the way a publisher's series banner sets its name apart from
-   an author's. The mark under the title is a solid bar rather than a hairline —
-   the one filled rule in the library, recognisable from across a shelf.
-   The band is drawn BEHIND the byline and never moves it: the byline is an edge
-   `covers.py` places too (see the gate in `coverComposition.test.ts`), so the
-   band is positioned from the same variables, `--byline-top` and
-   `--byline-size`, rather than by boxing the element. It darkens, never
-   lightens, so it only adds to the contrast `ink_safe` floored the plate colour
-   for — PROVIDED it is under the byline. An absolutely positioned pseudo-element
-   paints over the in-flow type after it (and the byline's opacity makes it a
-   layer of its own), so the band has to be sent back explicitly: `isolation`
-   makes this block the stacking context, and `z-index: -1` puts the band
-   beneath its type but above the ground outside it. Left on top it dimmed the
-   byline by a fifth — measured 236 to 188 on its brightest pixel. */
-.cover-type.style-originals {
-	isolation: isolate;
-}
-.cover-type.style-originals::after {
-	content: '';
-	position: absolute;
-	z-index: -1;
-	inset: calc(var(--byline-top) - 3.8cqw) var(--frame-inset) auto;
-	height: calc(var(--byline-size) + 7.5cqw);
-	pointer-events: none;
-	background:
-		var(--hairline) top / 100% 1px no-repeat,
-		var(--hairline) bottom / 100% 1px no-repeat,
-		rgb(0 0 0 / 0.2);
-}
+/* ORIGINALS — Ochorus' own imprint, in the house face. The mark under the
+   title is a solid bar rather than a hairline — the one filled rule in the
+   library, recognisable from across a shelf. (It once also ran a darkened band
+   behind the OCHORUS ORIGINALS byline; removed at the founder's request.) */
 .cover-type.style-originals .rule {
 	width: 8cqw;
 	height: 0.8cqw;
