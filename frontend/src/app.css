@@ -4063,7 +4063,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 }
 @keyframes dash-arrive {
 	from {
-		opacity: 0.15;
+		opacity: 0.4;
 	}
 }
 /* The site chrome's column: the header bar and the footer rows share the page
@@ -4175,6 +4175,37 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 }
 .page-band:not(:has(section)) {
 	display: none;
+}
+
+/* A SECTION BAND: a .page-band whose ground is the soft wash of the library
+   section it holds (data-section on the band: books indigo, plans cypress,
+   sermons oxblood, topics ochre), half-mixed into the page so it reads as a
+   tint, not a colour block. The signed-in home runs its groups through these,
+   so a scroll down the page passes through the library's colours instead of
+   beige on beige. Text, muted and the accent clear 4.5:1 on every one in all
+   three themes (libraryPalette.test.ts); print drops the ground with the
+   rest of the screen texture. The section's hue also reaches anything inside
+   that draws in --section-hue (a chip, a section icon). */
+.section-band {
+	background-color: color-mix(in srgb, var(--section-hue-soft) 50%, var(--bg));
+	background-image: var(--grain);
+	margin-block-start: 3.5rem;
+	padding-block-end: 3.5rem;
+}
+.section-band:not(:has(section)) {
+	display: none;
+}
+@media print {
+	.section-band {
+		background: none;
+	}
+}
+/* The home hero's band rule above, kept under the dashboard's wrapper: the
+   first band below the hero meets it with no strip of bare page between —
+   the first child that rendered a section, since a band whose section hid
+   itself is still in the DOM (display: none). */
+.home-hero + .home-dash > :is(.page-band, .section-band):nth-child(1 of :has(section)) {
+	margin-block-start: 0;
 }
 
 /* A NIGHT BAND: one deep-indigo band per page, for the feature it most wants

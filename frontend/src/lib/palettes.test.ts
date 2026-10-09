@@ -77,6 +77,18 @@ describe('library palettes', () => {
 					const r = ratio(vars[`--hue-${h}`], vars[`--hue-${h}-soft`]);
 					if (r < 4.5) failures.push(`--hue-${h} on its soft: ${r.toFixed(2)}`);
 				}
+				// A section band (app.css .section-band): each hue's soft wash
+				// half-mixed into the palette's page, under body text, muted, the
+				// accent and the hue itself.
+				for (const h of HUES) {
+					const soft = rgb(vars[`--hue-${h}-soft`]);
+					const bg = rgb(vars['--bg']);
+					const ground = soft.map((c, i) => Math.round((c + bg[i]) / 2));
+					for (const ink of ['--text', '--muted', '--accent', `--hue-${h}`]) {
+						const r = contrastRatio(rgb(vars[ink]), ground);
+						if (r < 4.5) failures.push(`${ink} on the ${h} band: ${r.toFixed(2)}`);
+					}
+				}
 				// A palette's own initial ink (Illuminated's vermilion) is display
 				// type at 3em: large text, so 3:1 on the reading grounds.
 				if (own['--initial'])
