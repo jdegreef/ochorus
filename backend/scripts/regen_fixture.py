@@ -119,6 +119,15 @@ DEFAULTED_OK = {
 # means absent in the output — backfill_word_count fills them after load.
 DROPPED_IF_ABSENT = {
     ("library.article", "word_count"),
+    # Translation-staleness digests (library/translation_staleness.py) are
+    # DB-only, refreshed every deploy. --normalize must not spread them into
+    # every file; the few files that already carry them blank keep them.
+    ("library.book", "content_digest"),
+    ("library.book", "english_digest"),
+    ("library.sermon", "content_digest"),
+    ("library.sermon", "english_digest"),
+    ("library.article", "content_digest"),
+    ("library.article", "english_digest"),
 }
 
 # Hand-written fixtures spell timestamps their own way ("…00.000Z", or with

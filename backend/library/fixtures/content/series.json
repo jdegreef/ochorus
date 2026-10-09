@@ -432,6 +432,19 @@
   "series": [
    "straight-talk"
   ],
+  "language": "fr",
+  "title": "Franc-parler",
+  "description": "Des classiques chrétiens et des vies vraies racontés pour les adolescents, avec franchise et en mots simples : le pèlerin de Bunyan sur la route de la Cité céleste, le franc-parler de Spurgeon depuis la ferme, et les hommes et les femmes qui ont tout misé sur Dieu.",
+  "created_at": "2026-10-08T00:00:00Z",
+  "updated_at": "2026-10-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "straight-talk"
+  ],
   "language": "pt",
   "title": "Papo Reto",
   "description": "Clássicos cristãos e vidas verdadeiras recontados para leitores adolescentes, com sinceridade e em palavras simples: o peregrino de Bunyan a caminho da Cidade Celestial, a conversa franca de Spurgeon vinda do campo, e os homens e mulheres que apostaram tudo em Deus.",
