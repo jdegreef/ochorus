@@ -620,6 +620,7 @@ TOPICS = [
             "life-of-antony-teens",
             "orthodoxy-teens",
             "the-secret-of-guidance-teens",
+            "how-to-succeed-in-the-christian-life-teens",
             "real-questions-1",
             "real-questions-2",
             "real-questions-3",

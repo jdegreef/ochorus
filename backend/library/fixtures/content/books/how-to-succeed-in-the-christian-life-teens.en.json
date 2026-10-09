@@ -1,0 +1,395 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "r-a-torrey"
+  ],
+  "slug": "how-to-succeed-in-the-christian-life-teens",
+  "language": "en",
+  "title": "How to Succeed in the Christian Life (For Teens)",
+  "subtitle": "",
+  "cover_title": "",
+  "description": "R. A. Torrey wrote this little book for brand-new Christians who wanted to know how to keep going. This teen edition retells it in plain words: how to begin right, why you don’t have to keep your faith secret, how you can know you belong to God, what it means to receive the Holy Spirit, how to read the Bible and handle the hard bits, why prayer is an audience with the King, how to choose friends and fun, how to share your faith, what to do when people push back, and how to know the next step. Torrey’s own sentences are kept where they say it best.",
+  "hook": "A practical starter guide for following Jesus: prayer, the Bible, doubts, friends, fun, standing firm and the next step.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Who was R. A. Torrey?",
+    "answer": "Reuben Archer Torrey was an American pastor, teacher and evangelist, born in 1856. After a wild time at university he came to faith, studied in Germany, and led the school that became the Moody Bible Institute. He preached around the world and wrote more than forty books, mostly on prayer and the Holy Spirit. He died in 1928."
+   },
+   {
+    "question": "Is this book only for new Christians?",
+    "answer": "It was written for new believers, but it is useful for anyone who wants to grow: it covers the basics that every Christian keeps coming back to."
+   },
+   {
+    "question": "Torrey had a very dark time at university. What happened?",
+    "answer": "As a student he lived a wild life and, one night in 1875, reached such despair that he meant to end his life. Instead he found himself praying, remembering his mother’s prayers, and gave his life to God. If you ever feel that low, please tell a trusted adult straight away or contact a crisis line. You are not alone, and help is there."
+   },
+   {
+    "question": "Does Torrey say Christians can’t have fun?",
+    "answer": "No. He says young people need recreation and that Jesus delights in wholesome play. He gives simple questions to help decide what is good: can I do this to God’s glory, pray about it, and take Christ with me?"
+   },
+   {
+    "question": "What if people give me a hard time for being a Christian?",
+    "answer": "Torrey says it is common, and that you can stand firm with love. But being picked on or bullied is never something you have to put up with alone. Please tell a trusted adult."
+   },
+   {
+    "question": "Is this the full text?",
+    "answer": "No. It is a retelling for teenagers in plain modern words, drawn from Torrey’s book and keeping his own sentences where they say it best. The full How to Succeed in the Christian Life is also available."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of R. A. Torrey’s How to Succeed in the Christian Life, which is in the public domain. The telling is our own, free to read and share. Scripture quotations are from the King James Version, which is in the public domain.",
+  "cover_url": "/covers/how-to-succeed-in-the-christian-life-teens.svg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/how-to-succeed-in-the-christian-life-teens.pdf?download=how-to-succeed-in-the-christian-life-teens.pdf",
+  "cover_color": "",
+  "series": [
+   "straight-talk"
+  ],
+  "series_position": null,
+  "sort_order": 167,
+  "is_published": true,
+  "created_at": "2026-10-09T15:00:00Z",
+  "updated_at": "2026-10-09T15:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "en"
+  ],
+  "order": 1,
+  "title": "The Student Who Ran Out of Road",
+  "body_html": "<blockquote>“Train up a child in the way he should go: and when he is old, he will not depart from it.” — Proverbs 22:6 (KJV)</blockquote> <p>Reuben Archer Torrey was born in 1856 in New Jersey, USA, into a wealthy family. His mother prayed for him constantly. But when he went to Yale University, he threw himself into everything his mother had prayed against: the theatre, horse racing, card games and heavy drinking.</p> <p>One spring night in 1875, Torrey reached rock bottom. He was so full of despair that he meant to end his life. But instead, he found himself praying. He remembered his mother’s prayers, and he promised God that he would do whatever God asked of him, even, he said, become a preacher.</p> <p>If you ever feel as low as Torrey did that night, please don’t keep it to yourself. Tell a trusted adult straight away, or contact a crisis line. God met Torrey in his darkest hour, and help is there for you too.</p> <p>Torrey kept his promise. He became a minister, studied in Germany, and came home determined to teach people to trust the Bible. In 1888 he gave up his salary to work among the poor, trusting God for every meal his family ate. Then D. L. Moody invited him to Chicago to lead his new Bible school, which became the Moody Bible Institute.</p> <p>Torrey was famous for prayer. For years, hundreds of people met with him every Saturday night to pray for revival around the world. He went on to preach in Australia, New Zealand, China, Japan, India and Britain. He wrote more than forty books.</p> <p>One of the most practical was How to Succeed in the Christian Life. He wrote it for new Christians who had just started following Jesus and wanted to know how to keep going. It is short, clear and full of practical advice.</p> <p>Torrey’s own life is a reminder that it is never too late. If you have drifted, or made a mess of things, you can begin again. As he puts it in the first chapter: “If any one who reads these pages has begun wrong, it is a very simple matter to begin over again and begin right.”</p> <p><strong>One thing to do this week:</strong> if someone has prayed for you, a parent, grandparent or friend, thank them this week. And write down one area of your life where you would like to “begin again” with God.</p>",
+  "study_questions": [
+   {
+    "question": "What kind of life did Torrey live at Yale?",
+    "answer": "A wild one: the theatre, horse racing, card games and heavy drinking."
+   },
+   {
+    "question": "What happened on that night in 1875?",
+    "answer": "In deep despair he meant to end his life, but found himself praying, remembering his mother’s prayers, and promised to do whatever God asked."
+   },
+   {
+    "question": "Who did Torrey write this book for?",
+    "answer": "New Christians who wanted to know how to keep going in following Jesus."
+   }
+  ],
+  "body_text": "“Train up a child in the way he should go: and when he is old, he will not depart from it.” — Proverbs 22:6 (KJV) Reuben Archer Torrey was born in 1856 in New Jersey, USA, into a wealthy family. His mother prayed for him constantly. But when he went to Yale University, he threw himself into everything his mother had prayed against: the theatre, horse racing, card games and heavy drinking. One spring night in 1875, Torrey reached rock bottom. He was so full of despair that he meant to end his life. But instead, he found himself praying. He remembered his mother’s prayers, and he promised God that he would do whatever God asked of him, even, he said, become a preacher. If you ever feel as low as Torrey did that night, please don’t keep it to yourself. Tell a trusted adult straight away, or contact a crisis line. God met Torrey in his darkest hour, and help is there for you too. Torrey kept his promise. He became a minister, studied in Germany, and came home determined to teach people to trust the Bible. In 1888 he gave up his salary to work among the poor, trusting God for every meal his family ate. Then D. L. Moody invited him to Chicago to lead his new Bible school, which became the Moody Bible Institute. Torrey was famous for prayer. For years, hundreds of people met with him every Saturday night to pray for revival around the world. He went on to preach in Australia, New Zealand, China, Japan, India and Britain. He wrote more than forty books. One of the most practical was How to Succeed in the Christian Life. He wrote it for new Christians who had just started following Jesus and wanted to know how to keep going. It is short, clear and full of practical advice. Torrey’s own life is a reminder that it is never too late. If you have drifted, or made a mess of things, you can begin again. As he puts it in the first chapter: “If any one who reads these pages has begun wrong, it is a very simple matter to begin over again and begin right.” One thing to do this week: if someone has prayed for you, a parent, grandparent or friend, thank them this week. And write down one area of your life where you would like to “begin again” with God.",
+  "word_count": 408
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "en"
+  ],
+  "order": 2,
+  "title": "Beginning Right",
+  "body_html": "<blockquote>“But as many as received him, to them gave he power to become the sons of God, even to them that believe on his name.” — John 1:12 (KJV)</blockquote> <p>Torrey starts with the most important thing of all:</p> <blockquote>“There is nothing more important in the Christian life than beginning right. If we begin right we can go on right.”</blockquote> <p>So what is the right beginning? Torrey points to John 1:12: as many as received Jesus, to them he gave power to become children of God. The right way to start, he says, is simply “by receiving Jesus Christ.”</p> <p>What does it mean to receive Jesus? Torrey says it means “to take Christ to be to yourself all that God offers Him to be to everybody.” God offers Jesus as the one who died for your sins, so you trust him for forgiveness. God offers him as your risen Lord, so you hand your life over to him.</p> <p>Torrey makes two strong points. First, nobody is too bad. Even if the reader were “the wickedest man on earth”, the moment he received Jesus, he would become a child of God. Second, nobody is too good to need it. However well brought up you are, however sheltered from bad things, you are not a child of God until you receive Jesus.</p> <p>That second point matters for teenagers who have grown up in church. Knowing about Jesus, going to church and being a nice person are good. But they are not the same as personally receiving him.</p> <p>And here is the encouraging part. If you have begun wrong, or not really begun at all, Torrey says it is “a very simple matter to begin over again and begin right.” You can do it today. Tell Jesus you trust him for forgiveness, and that you want him to be your Lord.</p> <p>Everything else in this book builds on that beginning.</p> <p><strong>One thing to do this week:</strong> read John 1:12 and John 3:16 slowly this week. If you have never personally received Jesus, tell him today that you trust him and want him as your Lord. If you have, thank him for making you God’s child.</p>",
+  "study_questions": [
+   {
+    "question": "What does Torrey say is the right beginning of the Christian life?",
+    "answer": "Receiving Jesus Christ."
+   },
+   {
+    "question": "What does it mean to receive Jesus, according to Torrey?",
+    "answer": "To take Christ to be to yourself all that God offers him to be: Saviour, Lord and everything God gives him to be."
+   },
+   {
+    "question": "Can someone who has begun wrong start again?",
+    "answer": "Yes; Torrey says it is a very simple matter to begin over again and begin right."
+   }
+  ],
+  "body_text": "“But as many as received him, to them gave he power to become the sons of God, even to them that believe on his name.” — John 1:12 (KJV) Torrey starts with the most important thing of all: “There is nothing more important in the Christian life than beginning right. If we begin right we can go on right.” So what is the right beginning? Torrey points to John 1:12: as many as received Jesus, to them he gave power to become children of God. The right way to start, he says, is simply “by receiving Jesus Christ.” What does it mean to receive Jesus? Torrey says it means “to take Christ to be to yourself all that God offers Him to be to everybody.” God offers Jesus as the one who died for your sins, so you trust him for forgiveness. God offers him as your risen Lord, so you hand your life over to him. Torrey makes two strong points. First, nobody is too bad. Even if the reader were “the wickedest man on earth”, the moment he received Jesus, he would become a child of God. Second, nobody is too good to need it. However well brought up you are, however sheltered from bad things, you are not a child of God until you receive Jesus. That second point matters for teenagers who have grown up in church. Knowing about Jesus, going to church and being a nice person are good. But they are not the same as personally receiving him. And here is the encouraging part. If you have begun wrong, or not really begun at all, Torrey says it is “a very simple matter to begin over again and begin right.” You can do it today. Tell Jesus you trust him for forgiveness, and that you want him to be your Lord. Everything else in this book builds on that beginning. One thing to do this week: read John 1:12 and John 3:16 slowly this week. If you have never personally received Jesus, tell him today that you trust him and want him as your Lord. If you have, thank him for making you God’s child.",
+  "word_count": 361
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "en"
+  ],
+  "order": 3,
+  "title": "No Secret Agents",
+  "body_html": "<blockquote>“Whosoever therefore shall confess me before men, him will I confess also before my Father which is in heaven.” — Matthew 10:32 (KJV)</blockquote> <p>Torrey’s next step is something many teenagers find hard: letting people know you follow Jesus.</p> <p>Some people try to be “secret” Christians. They believe in Jesus privately but make sure nobody at school, on the team or in their friendship group knows. Torrey is blunt about it:</p> <blockquote>“To be a secret disciple means to be no disciple at all.”</blockquote> <p>That might sound harsh. But Torrey’s point is that when Jesus is real to you, it naturally shows. Jesus said, “out of the abundance of the heart the mouth speaketh.”</p> <p>And it isn’t a one-off. Torrey says it isn’t enough to confess Christ once, at a church event or a baptism. “We should confess Christ constantly.” At home, at church, at work, and at play, “we should let others know where we stand.”</p> <p>Importantly, he doesn’t mean showing off. “Of course, we should not parade our Christianity or our piety,” he says, “but we should leave no one in doubt whether we belong to Christ.” You don’t need to preach at people. You just don’t hide.</p> <p>Torrey also gives a practical reason. He says that “The failure to confess Christ is one of the most frequent causes of backsliding.” When people go somewhere new, like a new school or a new team, and don’t let anyone know they are Christians, they often start to drift.</p> <p>But the opposite is true too: “It will save you from many a temptation if the fact is clearly known that you are one who acknowledges Christ as Lord in all things.” If people know you follow Jesus, they are less likely to pressure you to do things you don’t want to do.</p> <p>And he adds a simple promise: “The more you make of Jesus Christ, the more He will make of you.”</p> <p><strong>One thing to do this week:</strong> this week, find one natural way to let someone know you follow Jesus: mentioning church, praying before a meal, or simply answering honestly if someone asks what you did at the weekend.</p>",
+  "study_questions": [
+   {
+    "question": "What does Torrey say about secret disciples?",
+    "answer": "To be a secret disciple means to be no disciple at all."
+   },
+   {
+    "question": "Does confessing Christ mean showing off?",
+    "answer": "No; we should not parade our faith, but we should leave no one in doubt that we belong to Christ."
+   },
+   {
+    "question": "How can letting people know you are a Christian protect you?",
+    "answer": "It saves you from many temptations, because people know where you stand, and it helps prevent drifting."
+   }
+  ],
+  "body_text": "“Whosoever therefore shall confess me before men, him will I confess also before my Father which is in heaven.” — Matthew 10:32 (KJV) Torrey’s next step is something many teenagers find hard: letting people know you follow Jesus. Some people try to be “secret” Christians. They believe in Jesus privately but make sure nobody at school, on the team or in their friendship group knows. Torrey is blunt about it: “To be a secret disciple means to be no disciple at all.” That might sound harsh. But Torrey’s point is that when Jesus is real to you, it naturally shows. Jesus said, “out of the abundance of the heart the mouth speaketh.” And it isn’t a one-off. Torrey says it isn’t enough to confess Christ once, at a church event or a baptism. “We should confess Christ constantly.” At home, at church, at work, and at play, “we should let others know where we stand.” Importantly, he doesn’t mean showing off. “Of course, we should not parade our Christianity or our piety,” he says, “but we should leave no one in doubt whether we belong to Christ.” You don’t need to preach at people. You just don’t hide. Torrey also gives a practical reason. He says that “The failure to confess Christ is one of the most frequent causes of backsliding.” When people go somewhere new, like a new school or a new team, and don’t let anyone know they are Christians, they often start to drift. But the opposite is true too: “It will save you from many a temptation if the fact is clearly known that you are one who acknowledges Christ as Lord in all things.” If people know you follow Jesus, they are less likely to pressure you to do things you don’t want to do. And he adds a simple promise: “The more you make of Jesus Christ, the more He will make of you.” One thing to do this week: this week, find one natural way to let someone know you follow Jesus: mentioning church, praying before a meal, or simply answering honestly if someone asks what you did at the weekend.",
+  "word_count": 358
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "en"
+  ],
+  "order": 4,
+  "title": "You Can Know",
+  "body_html": "<blockquote>“These things have I written unto you that believe on the name of the Son of God; that ye may know that ye have eternal life, and that ye may believe on the name of the Son of God.” — 1 John 5:13 (KJV)</blockquote> <p>Some Christians spend years wondering whether they are really saved. Torrey says you don’t have to live like that.</p> <p>He points to 1 John 5:13, where John says he wrote his letter so that believers “may know” that they have eternal life. Torrey says some people claim that nobody can know this until they die, “but God Himself tells us that we may know.”</p> <p>How can you know? Torrey’s answer is simple: because God’s Word says so. If you have received Jesus, John 1:12 says you have become a child of God. You can know it “on the surest of all grounds”, because God has said it.</p> <p>This means your assurance doesn’t depend on how you feel today. Feelings go up and down. God’s promises don’t.</p> <p>Torrey says that knowing you belong to God brings “the fullest measure of joy and power”. People who are always unsure of their salvation find it hard to have joy, and hard to help others.</p> <p>In a later chapter Torrey adds something important about guilt. He says the enemy will try to discourage you by bringing up your sins and failures, trying to convince you that you are not really a child of God. The answer, he says, is to look at what God looks at: Jesus on the cross, who has dealt with every sin.</p> <blockquote>“It is an act of base ingratitude to God to brood over sins that He in His infinite love has cancelled.”</blockquote> <p>That is a striking way to put it. If God has forgiven you, then constantly beating yourself up is not humility; it is not believing him.</p> <p>If you often feel unsure or anxious about whether you are saved, talk to a pastor or youth leader you trust. Sometimes it helps to have someone remind you of God’s promises.</p> <p><strong>One thing to do this week:</strong> write 1 John 5:13 and John 1:12 on a card. Whenever you feel unsure whether you belong to God this week, read them and say: “God says I can know. I trust what he says.”</p>",
+  "study_questions": [
+   {
+    "question": "Why did John write his first letter, according to 1 John 5:13?",
+    "answer": "So that believers may know that they have eternal life."
+   },
+   {
+    "question": "On what ground can a believer know they are a child of God?",
+    "answer": "On the surest of all grounds: because God’s Word says so."
+   },
+   {
+    "question": "What does Torrey say about brooding over forgiven sins?",
+    "answer": "That it is an act of base ingratitude to God, who has cancelled them."
+   }
+  ],
+  "body_text": "“These things have I written unto you that believe on the name of the Son of God; that ye may know that ye have eternal life, and that ye may believe on the name of the Son of God.” — 1 John 5:13 (KJV) Some Christians spend years wondering whether they are really saved. Torrey says you don’t have to live like that. He points to 1 John 5:13, where John says he wrote his letter so that believers “may know” that they have eternal life. Torrey says some people claim that nobody can know this until they die, “but God Himself tells us that we may know.” How can you know? Torrey’s answer is simple: because God’s Word says so. If you have received Jesus, John 1:12 says you have become a child of God. You can know it “on the surest of all grounds”, because God has said it. This means your assurance doesn’t depend on how you feel today. Feelings go up and down. God’s promises don’t. Torrey says that knowing you belong to God brings “the fullest measure of joy and power”. People who are always unsure of their salvation find it hard to have joy, and hard to help others. In a later chapter Torrey adds something important about guilt. He says the enemy will try to discourage you by bringing up your sins and failures, trying to convince you that you are not really a child of God. The answer, he says, is to look at what God looks at: Jesus on the cross, who has dealt with every sin. “It is an act of base ingratitude to God to brood over sins that He in His infinite love has cancelled.” That is a striking way to put it. If God has forgiven you, then constantly beating yourself up is not humility; it is not believing him. If you often feel unsure or anxious about whether you are saved, talk to a pastor or youth leader you trust. Sometimes it helps to have someone remind you of God’s promises. One thing to do this week: write 1 John 5:13 and John 1:12 on a card. Whenever you feel unsure whether you belong to God this week, read them and say: “God says I can know. I trust what he says.”",
+  "word_count": 386
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "en"
+  ],
+  "order": 5,
+  "title": "Receiving the Holy Spirit",
+  "body_html": "<blockquote>“But ye shall receive power, after that the Holy Ghost is come upon you: and ye shall be witnesses unto me.” — Acts 1:8 (KJV)</blockquote> <p>Torrey tells the story from Acts 19. When Paul arrived in the city of Ephesus, he met twelve disciples. Something about them seemed to be missing. Maybe they lacked joy. Maybe Paul noticed that, after all this time, there were still only twelve of them.</p> <p>Paul asked them a direct question: “Have ye received the Holy Ghost since ye believed?” They hadn’t even heard of the Holy Spirit. So Paul explained, and the Holy Spirit came upon them. After that, Torrey says, a great revival began, and the whole city was shaken.</p> <p>Torrey says that Paul’s question should be asked of young Christians everywhere. Why? Because receiving the Holy Spirit is, he says, “the great secret of joyfulness in our own hearts, of victory over sin, of power in prayer, and of effective service.”</p> <p>He is careful to say that every true Christian has the Holy Spirit living in them in some sense. But many don’t know the fullness of the Spirit’s power and joy in their lives.</p> <p>Christians from different traditions describe this in different ways. Some talk about a special experience; others about being filled with the Spirit day by day. But all agree that the Christian life isn’t meant to be lived in our own strength. Jesus promised his followers power when the Holy Spirit came on them.</p> <p>So how do you receive more of the Spirit? Jesus said that our heavenly Father gives the Holy Spirit to those who ask him. Torrey’s advice is simple: surrender your life to God, ask him to fill you with his Spirit, and trust him to do it.</p> <p>You don’t need to fake an experience or work yourself up emotionally. Just ask, honestly and humbly, and keep asking. God loves to give good gifts to his children.</p> <p><strong>One thing to do this week:</strong> each morning this week, pray Luke 11:13 back to God: “Father, you promised to give the Holy Spirit to those who ask. I’m asking. Fill me today.” Notice where you see his help.</p>",
+  "study_questions": [
+   {
+    "question": "What question did Paul ask the disciples at Ephesus?",
+    "answer": "Whether they had received the Holy Ghost since they believed."
+   },
+   {
+    "question": "What does Torrey say is the great secret of joy, victory over sin, power in prayer and effective service?",
+    "answer": "Receiving the Holy Spirit."
+   },
+   {
+    "question": "How can we receive more of the Holy Spirit?",
+    "answer": "By surrendering to God and asking our heavenly Father, who promises to give the Holy Spirit to those who ask."
+   }
+  ],
+  "body_text": "“But ye shall receive power, after that the Holy Ghost is come upon you: and ye shall be witnesses unto me.” — Acts 1:8 (KJV) Torrey tells the story from Acts 19. When Paul arrived in the city of Ephesus, he met twelve disciples. Something about them seemed to be missing. Maybe they lacked joy. Maybe Paul noticed that, after all this time, there were still only twelve of them. Paul asked them a direct question: “Have ye received the Holy Ghost since ye believed?” They hadn’t even heard of the Holy Spirit. So Paul explained, and the Holy Spirit came upon them. After that, Torrey says, a great revival began, and the whole city was shaken. Torrey says that Paul’s question should be asked of young Christians everywhere. Why? Because receiving the Holy Spirit is, he says, “the great secret of joyfulness in our own hearts, of victory over sin, of power in prayer, and of effective service.” He is careful to say that every true Christian has the Holy Spirit living in them in some sense. But many don’t know the fullness of the Spirit’s power and joy in their lives. Christians from different traditions describe this in different ways. Some talk about a special experience; others about being filled with the Spirit day by day. But all agree that the Christian life isn’t meant to be lived in our own strength. Jesus promised his followers power when the Holy Spirit came on them. So how do you receive more of the Spirit? Jesus said that our heavenly Father gives the Holy Spirit to those who ask him. Torrey’s advice is simple: surrender your life to God, ask him to fill you with his Spirit, and trust him to do it. You don’t need to fake an experience or work yourself up emotionally. Just ask, honestly and humbly, and keep asking. God loves to give good gifts to his children. One thing to do this week: each morning this week, pray Luke 11:13 back to God: “Father, you promised to give the Holy Spirit to those who ask. I’m asking. Fill me today.” Notice where you see his help.",
+  "word_count": 361
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "en"
+  ],
+  "order": 6,
+  "title": "Keep Looking at Jesus",
+  "body_html": "<blockquote>“Looking unto Jesus the author and finisher of our faith.” — Hebrews 12:2 (KJV)</blockquote> <p>Torrey says one of the simplest and mightiest secrets of joy and victory is “to never lose sight of Jesus.” He gives three ways to keep looking at him.</p> <p>First, look at Jesus on the cross when you feel guilty. The enemy will try to make you brood over your sins until you are discouraged. But if you look at what God looks at, Jesus dying in your place, you will see that every sin has been dealt with.</p> <p>Second, look at Jesus as your risen Saviour when you are tempted. Torrey says: “Are you tempted to do some wrong at this moment? If you are, remember that Jesus rose from the dead.” Jesus is alive and has all power in heaven and earth, so he can give you victory right now. Ask him, and expect him to help.</p> <p>And if you fail? Torrey says: confess it, know that it is forgiven because God says so in 1 John 1:9, and look to Jesus again.</p> <p>Third, look at Jesus as the one you follow. Torrey says the whole secret of Christian conduct can be summed up in two words Jesus spoke: “Follow Me.”</p> <p>Here he gives an important warning:</p> <blockquote>“One of the commonest causes of failure in Christian life is found in the attempt to follow some good man, whom we greatly admire.”</blockquote> <p>We all have Christian heroes: a youth leader, a famous preacher, a worship leader, an older friend. It is good to learn from them. But Torrey says: “No man and no woman, no matter how good, can be safely followed.” Everyone has flaws. Only Jesus is perfect.</p> <p>That is especially important when someone you admired lets you down. If your faith was built on them, it can crumble. If it was built on Jesus, it will stand.</p> <p><strong>One thing to do this week:</strong> this week, when you feel guilty, picture Jesus on the cross. When you are tempted, remember he is risen. When you wonder what to do, ask: “What would following Jesus look like here?”</p>",
+  "study_questions": [
+   {
+    "question": "What are Torrey’s three ways of looking at Jesus?",
+    "answer": "As the ground of our forgiveness on the cross, as our risen Saviour who gives victory, and as the one we follow."
+   },
+   {
+    "question": "What should you do if you give in to temptation?",
+    "answer": "Confess it, know it is forgiven because God says so, and look to Jesus again."
+   },
+   {
+    "question": "Why does Torrey warn against following a good person we admire?",
+    "answer": "Because no one but Jesus is perfect, and following anyone else will lead us astray."
+   }
+  ],
+  "body_text": "“Looking unto Jesus the author and finisher of our faith.” — Hebrews 12:2 (KJV) Torrey says one of the simplest and mightiest secrets of joy and victory is “to never lose sight of Jesus.” He gives three ways to keep looking at him. First, look at Jesus on the cross when you feel guilty. The enemy will try to make you brood over your sins until you are discouraged. But if you look at what God looks at, Jesus dying in your place, you will see that every sin has been dealt with. Second, look at Jesus as your risen Saviour when you are tempted. Torrey says: “Are you tempted to do some wrong at this moment? If you are, remember that Jesus rose from the dead.” Jesus is alive and has all power in heaven and earth, so he can give you victory right now. Ask him, and expect him to help. And if you fail? Torrey says: confess it, know that it is forgiven because God says so in 1 John 1:9, and look to Jesus again. Third, look at Jesus as the one you follow. Torrey says the whole secret of Christian conduct can be summed up in two words Jesus spoke: “Follow Me.” Here he gives an important warning: “One of the commonest causes of failure in Christian life is found in the attempt to follow some good man, whom we greatly admire.” We all have Christian heroes: a youth leader, a famous preacher, a worship leader, an older friend. It is good to learn from them. But Torrey says: “No man and no woman, no matter how good, can be safely followed.” Everyone has flaws. Only Jesus is perfect. That is especially important when someone you admired lets you down. If your faith was built on them, it can crumble. If it was built on Jesus, it will stand. One thing to do this week: this week, when you feel guilty, picture Jesus on the cross. When you are tempted, remember he is risen. When you wonder what to do, ask: “What would following Jesus look like here?”",
+  "word_count": 353
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "en"
+  ],
+  "order": 7,
+  "title": "Feed Yourself",
+  "body_html": "<blockquote>“Thy word is a lamp unto my feet, and a light unto my path.” — Psalm 119:105 (KJV)</blockquote> <p>Torrey says: “There is nothing more important for the development of the spiritual life of the Christian than regular, systematic Bible study.”</p> <p>He compares it to food. Your body’s health depends on what you eat and how much. Your soul’s food is the Bible. And a sermon once a week isn’t enough, just as one meal a week wouldn’t keep you healthy.</p> <p>He also says something important: “We must learn to feed ourselves.” Good teachers are a gift, but if you only ever hear the Bible from other people, you are dependent on them. If you read it for yourself, you can tell when someone is teaching something wrong.</p> <p>His first and most important piece of advice is to read it every day. He says that “the best results can only be secured when one makes it a matter of principle never to let a single day go by without earnest Bible study.”</p> <p>He gives his own example. He had been a Christian for more than twenty-five years, and yet, he says, “to-day he would not dare to allow even a single day to pass over his head without listening to the voice of God as it speaks to him through the pages of His Book.”</p> <p>This doesn’t mean you need to read for hours. Start small. A chapter a day is a great habit. Read slowly. Ask what it shows you about God, about yourself, and what you should do. Underline things. Write down a verse that stands out.</p> <p>Torrey says this is where many people fall away: they let one day pass without reading, then several, and gradually drift. So the key is consistency. A little every day is far better than a lot once in a while.</p> <p><strong>One thing to do this week:</strong> choose a book of the Bible, Mark or John is a great place to start, and read one chapter every day this week. Write down one verse from each chapter that stands out to you.</p>",
+  "study_questions": [
+   {
+    "question": "What does Torrey compare Bible study to?",
+    "answer": "Food: the Bible is the soul’s food, and we need it daily, not just once a week."
+   },
+   {
+    "question": "Why does Torrey say we must learn to feed ourselves?",
+    "answer": "Because depending only on others leaves us unable to recognise error; reading for ourselves keeps us safe."
+   },
+   {
+    "question": "What is Torrey’s most important piece of advice about Bible study?",
+    "answer": "To read it every day, never letting a single day go by."
+   }
+  ],
+  "body_text": "“Thy word is a lamp unto my feet, and a light unto my path.” — Psalm 119:105 (KJV) Torrey says: “There is nothing more important for the development of the spiritual life of the Christian than regular, systematic Bible study.” He compares it to food. Your body’s health depends on what you eat and how much. Your soul’s food is the Bible. And a sermon once a week isn’t enough, just as one meal a week wouldn’t keep you healthy. He also says something important: “We must learn to feed ourselves.” Good teachers are a gift, but if you only ever hear the Bible from other people, you are dependent on them. If you read it for yourself, you can tell when someone is teaching something wrong. His first and most important piece of advice is to read it every day. He says that “the best results can only be secured when one makes it a matter of principle never to let a single day go by without earnest Bible study.” He gives his own example. He had been a Christian for more than twenty-five years, and yet, he says, “to-day he would not dare to allow even a single day to pass over his head without listening to the voice of God as it speaks to him through the pages of His Book.” This doesn’t mean you need to read for hours. Start small. A chapter a day is a great habit. Read slowly. Ask what it shows you about God, about yourself, and what you should do. Underline things. Write down a verse that stands out. Torrey says this is where many people fall away: they let one day pass without reading, then several, and gradually drift. So the key is consistency. A little every day is far better than a lot once in a while. One thing to do this week: choose a book of the Bible, Mark or John is a great place to start, and read one chapter every day this week. Write down one verse from each chapter that stands out to you.",
+  "word_count": 349
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "en"
+  ],
+  "order": 8,
+  "title": "The Hard Bits",
+  "body_html": "<blockquote>“Now we see through a glass, darkly; but then face to face: now I know in part; but then shall I know even as also I am known.” — 1 Corinthians 13:12 (KJV)</blockquote> <p>Sooner or later, Torrey says, every young Christian comes across parts of the Bible that are hard to understand or hard to believe. For some, these difficulties become a real crisis of faith.</p> <p>Torrey doesn’t pretend the difficulties aren’t there. “We have no desire to conceal the fact that these difficulties exist,” he says. “We rather desire to frankly face and consider them.” Then he gives some wise points.</p> <p>First, difficulties are to be expected. The Bible is God revealing himself to people like us, and we are limited. Torrey says that if someone gave him a book “as simple as the multiplication table” and said it was a complete revelation of God, he wouldn’t believe it. An infinite God is bound to say things we struggle to understand.</p> <p>Second, a difficulty doesn’t prove something is false. Torrey uses an example from science. When astronomers first said the earth goes round the sun, there was a problem: if they were right, the planet Venus should have phases like the moon. But nobody could see any. Later, a stronger telescope showed that Venus did have phases. The difficulty came from not having all the facts yet.</p> <p>Third, Torrey says there are bigger difficulties in believing the Bible is merely human than in believing it comes from God. How do you explain its fulfilled prophecies, its amazing unity, its depth, and its power to change lives?</p> <p>Torrey’s practical advice is this: be honest, keep reading, ask questions, and don’t give up something you have good reason to trust just because you can’t answer every question yet.</p> <p>Doubts and questions are a normal part of growing up in faith. Bring them to God, and talk them through with a wise Christian you trust. You don’t have to have every answer to keep following Jesus.</p> <p><strong>One thing to do this week:</strong> write down one part of the Bible or one question about faith that you find hard. This week, look into it a little, and ask a wise Christian adult about it. Pray: “Lord, help me understand, and help me trust you while I wait.”</p>",
+  "study_questions": [
+   {
+    "question": "Why does Torrey say difficulties in the Bible are to be expected?",
+    "answer": "Because it is the revelation of an infinite God to limited people; a revelation as simple as the multiplication table would not be believable."
+   },
+   {
+    "question": "What does the example of Venus’s phases show?",
+    "answer": "That a difficulty does not prove something false; it may come from not yet having all the facts."
+   },
+   {
+    "question": "What should you do with your doubts and questions?",
+    "answer": "Be honest, keep reading, ask questions, talk them through with a wise Christian, and keep trusting God."
+   }
+  ],
+  "body_text": "“Now we see through a glass, darkly; but then face to face: now I know in part; but then shall I know even as also I am known.” — 1 Corinthians 13:12 (KJV) Sooner or later, Torrey says, every young Christian comes across parts of the Bible that are hard to understand or hard to believe. For some, these difficulties become a real crisis of faith. Torrey doesn’t pretend the difficulties aren’t there. “We have no desire to conceal the fact that these difficulties exist,” he says. “We rather desire to frankly face and consider them.” Then he gives some wise points. First, difficulties are to be expected. The Bible is God revealing himself to people like us, and we are limited. Torrey says that if someone gave him a book “as simple as the multiplication table” and said it was a complete revelation of God, he wouldn’t believe it. An infinite God is bound to say things we struggle to understand. Second, a difficulty doesn’t prove something is false. Torrey uses an example from science. When astronomers first said the earth goes round the sun, there was a problem: if they were right, the planet Venus should have phases like the moon. But nobody could see any. Later, a stronger telescope showed that Venus did have phases. The difficulty came from not having all the facts yet. Third, Torrey says there are bigger difficulties in believing the Bible is merely human than in believing it comes from God. How do you explain its fulfilled prophecies, its amazing unity, its depth, and its power to change lives? Torrey’s practical advice is this: be honest, keep reading, ask questions, and don’t give up something you have good reason to trust just because you can’t answer every question yet. Doubts and questions are a normal part of growing up in faith. Bring them to God, and talk them through with a wise Christian you trust. You don’t have to have every answer to keep following Jesus. One thing to do this week: write down one part of the Bible or one question about faith that you find hard. This week, look into it a little, and ask a wise Christian adult about it. Pray: “Lord, help me understand, and help me trust you while I wait.”",
+  "word_count": 384
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "en"
+  ],
+  "order": 9,
+  "title": "An Audience with the King",
+  "body_html": "<blockquote>“Evening, and morning, and at noon, will I pray, and cry aloud: and he shall hear my voice.” — Psalm 55:17 (KJV)</blockquote> <p>Torrey was famous for prayer, and he says that the person who wants to succeed in the Christian life “must lead a life of prayer.”</p> <p>He quotes James: “Ye have not, because ye ask not.” Many Christians wonder why they have so little victory and so little power. Torrey says the answer is often simply that they don’t pray.</p> <p>He recommends setting apart regular times for prayer. David prayed evening, morning and noon. Daniel prayed three times a day. Torrey says you can also pray anywhere, while walking or sitting at your desk, but you need set times when you go alone with God.</p> <p>Then he describes what prayer really is:</p> <blockquote>“Prayer is a wonderful privilege. It is an audience with the King. It is talking to our Father.”</blockquote> <p>He points out that when someone is invited to meet a king, they don’t ask, “How little time can I spend with him?” They ask, “How much time will the king give me?” Prayer is like that. It isn’t a chore to get over with. It is a privilege.</p> <p>His most practical tip is about the start of the day. Begin with thanks for what God has done, and prayer for what you need today. Think ahead about the temptations you are likely to face, and ask God for strength before they come.</p> <blockquote>“Anticipate your battles, fight them on your knees before temptation comes and you will always have victory.”</blockquote> <p>He points to Jesus in Gethsemane. Jesus prayed the night before the cross and faced it with strength; the disciples slept and, when the test came, they ran away.</p> <p>Try it. Before school, think about the day ahead: the lesson you’re dreading, the person who winds you up, the temptation you know will come. Pray about each one. Win the battle before it starts.</p> <p><strong>One thing to do this week:</strong> each morning this week, before you leave the house, spend five minutes thanking God, then thinking through your day and praying about the hardest moments ahead.</p>",
+  "study_questions": [
+   {
+    "question": "Why do many Christians have little victory, according to Torrey and James?",
+    "answer": "Because they do not ask: “Ye have not, because ye ask not.”"
+   },
+   {
+    "question": "How does Torrey describe prayer?",
+    "answer": "As a wonderful privilege, an audience with the King, talking to our Father."
+   },
+   {
+    "question": "What does Torrey mean by fighting your battles on your knees?",
+    "answer": "Praying ahead about the temptations and challenges of the day before they come, so you gain the victory in advance."
+   }
+  ],
+  "body_text": "“Evening, and morning, and at noon, will I pray, and cry aloud: and he shall hear my voice.” — Psalm 55:17 (KJV) Torrey was famous for prayer, and he says that the person who wants to succeed in the Christian life “must lead a life of prayer.” He quotes James: “Ye have not, because ye ask not.” Many Christians wonder why they have so little victory and so little power. Torrey says the answer is often simply that they don’t pray. He recommends setting apart regular times for prayer. David prayed evening, morning and noon. Daniel prayed three times a day. Torrey says you can also pray anywhere, while walking or sitting at your desk, but you need set times when you go alone with God. Then he describes what prayer really is: “Prayer is a wonderful privilege. It is an audience with the King. It is talking to our Father.” He points out that when someone is invited to meet a king, they don’t ask, “How little time can I spend with him?” They ask, “How much time will the king give me?” Prayer is like that. It isn’t a chore to get over with. It is a privilege. His most practical tip is about the start of the day. Begin with thanks for what God has done, and prayer for what you need today. Think ahead about the temptations you are likely to face, and ask God for strength before they come. “Anticipate your battles, fight them on your knees before temptation comes and you will always have victory.” He points to Jesus in Gethsemane. Jesus prayed the night before the cross and faced it with strength; the disciples slept and, when the test came, they ran away. Try it. Before school, think about the day ahead: the lesson you’re dreading, the person who winds you up, the temptation you know will come. Pray about each one. Win the battle before it starts. One thing to do this week: each morning this week, before you leave the house, spend five minutes thanking God, then thinking through your day and praying about the hardest moments ahead.",
+  "word_count": 357
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "en"
+  ],
+  "order": 10,
+  "title": "Friends and Fun",
+  "body_html": "<blockquote>“He that walketh with wise men shall be wise: but a companion of fools shall be destroyed.” — Proverbs 13:20 (KJV)</blockquote> <p>Torrey has a chapter on friends. He says: “Our companions have a great deal to do with determining our character.” The people you spend most time with shape the air you breathe.</p> <p>He encourages every young Christian to have “a few wisely chosen friends, intimate friends, with whom he can talk freely”, people about your own age who love God, pray, and want to grow.</p> <p>He also says it’s fine to find some Christians easier to get on with than others. “God has made us in that way.”</p> <p>But he doesn’t say you should only have Christian friends. We are to know people who don’t share our faith, and even people who are going the wrong way, so we can love them and point them to Christ. But he warns that we must always be seeking to lift them up, “or else they will be sure to drag us down.” If a friendship is consistently pulling you away from God, he says, give it up.</p> <p>Torrey also writes about fun. He begins: “Young people need recreation.” Jesus enjoyed watching children play, and he went to a wedding party and made it better.</p> <p>Rather than giving a list of banned activities, Torrey gives some questions to ask. If you have doubts about whether something is right, leave it alone. Can I do this to the glory of God? Will it hurt my influence for good with anyone? Can I pray about it and ask God’s blessing on it? Can I take Christ with me there?</p> <p>Some of Torrey’s examples come from his own time and might seem dated now. But his questions are as useful as ever for a party invitation, a game, a film or an app.</p> <p>And remember: these questions aren’t meant to make you anxious. Torrey said that the Christian life isn’t a life of endless rules but of a “trusting, glad, fear-free child” following the Holy Spirit.</p> <p><strong>One thing to do this week:</strong> this week, think about the three or four people you spend most time with. Is each friendship helping you grow, or pulling you away? Thank God for good friends, and ask him for wisdom about the others.</p>",
+  "study_questions": [
+   {
+    "question": "What kind of close friends does Torrey recommend?",
+    "answer": "A few wisely chosen friends of about your own age who love God, pray, and want to grow."
+   },
+   {
+    "question": "What does Torrey say about friends who don’t share our faith?",
+    "answer": "We should know and love them to point them to Christ, but always be lifting them up, or they will drag us down; if a friendship is harming us, we should give it up."
+   },
+   {
+    "question": "Name two of Torrey’s questions for deciding about fun.",
+    "answer": "Any two of: if in doubt, leave it alone; can I do it to God’s glory; will it hurt my influence; can I pray about it; can I take Christ with me."
+   }
+  ],
+  "body_text": "“He that walketh with wise men shall be wise: but a companion of fools shall be destroyed.” — Proverbs 13:20 (KJV) Torrey has a chapter on friends. He says: “Our companions have a great deal to do with determining our character.” The people you spend most time with shape the air you breathe. He encourages every young Christian to have “a few wisely chosen friends, intimate friends, with whom he can talk freely”, people about your own age who love God, pray, and want to grow. He also says it’s fine to find some Christians easier to get on with than others. “God has made us in that way.” But he doesn’t say you should only have Christian friends. We are to know people who don’t share our faith, and even people who are going the wrong way, so we can love them and point them to Christ. But he warns that we must always be seeking to lift them up, “or else they will be sure to drag us down.” If a friendship is consistently pulling you away from God, he says, give it up. Torrey also writes about fun. He begins: “Young people need recreation.” Jesus enjoyed watching children play, and he went to a wedding party and made it better. Rather than giving a list of banned activities, Torrey gives some questions to ask. If you have doubts about whether something is right, leave it alone. Can I do this to the glory of God? Will it hurt my influence for good with anyone? Can I pray about it and ask God’s blessing on it? Can I take Christ with me there? Some of Torrey’s examples come from his own time and might seem dated now. But his questions are as useful as ever for a party invitation, a game, a film or an app. And remember: these questions aren’t meant to make you anxious. Torrey said that the Christian life isn’t a life of endless rules but of a “trusting, glad, fear-free child” following the Holy Spirit. One thing to do this week: this week, think about the three or four people you spend most time with. Is each friendship helping you grow, or pulling you away? Thank God for good friends, and ask him for wisdom about the others.",
+  "word_count": 384
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "en"
+  ],
+  "order": 11,
+  "title": "Telling Others",
+  "body_html": "<blockquote>“And he saith unto them, Follow me, and I will make you fishers of men.” — Matthew 4:19 (KJV)</blockquote> <p>Torrey believed that growing Christians are working Christians. He said: “The working Christian is the happy Christian. The working Christian is the strong Christian.”</p> <p>He compares it to exercise. You can’t keep your body strong without exercise, and you can’t keep your soul strong without serving God. He even says some Christians never drift away “because they are too busy about their Master’s business to backslide.”</p> <p>Jesus said, “Follow me, and I will make you fishers of men.” Torrey says that helping others come to know Jesus is part of following him. And he links it to joy. Jesus said that bearing fruit would make his followers’ joy full. Torrey says: “Those who are full of activity in winning others to Christ are those who are full of joy in Christ Himself.”</p> <p>What does that look like for a teenager? It doesn’t have to mean preaching on a street corner. It might mean praying for a friend by name every day. It might mean inviting someone to youth group, or being honest about your faith when someone asks, or simply being kind in a way that makes people curious.</p> <p>Torrey also had a big heart for the whole world. He wrote a chapter about missions, reminding his readers that Jesus’ last command was to make disciples of all nations. He said there were three ways to “go”: some of us can go ourselves; all of us can give; and all of us can pray.</p> <p>He encouraged every Christian to be open to God calling them to serve in another country. You may not know yet what God has in store for your life. But you can tell him now: “Here I am. Use me wherever you want.”</p> <p>And meanwhile, you can start where you are: with the people in your own class, team and street.</p> <p><strong>One thing to do this week:</strong> write down the names of three friends who don’t yet know Jesus. Pray for each of them by name every day this week, and look for one natural opportunity to show kindness or share something about your faith.</p>",
+  "study_questions": [
+   {
+    "question": "Why does Torrey compare serving God to exercise?",
+    "answer": "Because just as the body needs exercise to stay strong, the soul needs to serve God to stay strong."
+   },
+   {
+    "question": "What does Torrey say about people who are active in sharing their faith?",
+    "answer": "They are full of joy in Christ himself."
+   },
+   {
+    "question": "What are Torrey’s three ways to “go” to the nations?",
+    "answer": "Some can go in person, all can give, and all can pray."
+   }
+  ],
+  "body_text": "“And he saith unto them, Follow me, and I will make you fishers of men.” — Matthew 4:19 (KJV) Torrey believed that growing Christians are working Christians. He said: “The working Christian is the happy Christian. The working Christian is the strong Christian.” He compares it to exercise. You can’t keep your body strong without exercise, and you can’t keep your soul strong without serving God. He even says some Christians never drift away “because they are too busy about their Master’s business to backslide.” Jesus said, “Follow me, and I will make you fishers of men.” Torrey says that helping others come to know Jesus is part of following him. And he links it to joy. Jesus said that bearing fruit would make his followers’ joy full. Torrey says: “Those who are full of activity in winning others to Christ are those who are full of joy in Christ Himself.” What does that look like for a teenager? It doesn’t have to mean preaching on a street corner. It might mean praying for a friend by name every day. It might mean inviting someone to youth group, or being honest about your faith when someone asks, or simply being kind in a way that makes people curious. Torrey also had a big heart for the whole world. He wrote a chapter about missions, reminding his readers that Jesus’ last command was to make disciples of all nations. He said there were three ways to “go”: some of us can go ourselves; all of us can give; and all of us can pray. He encouraged every Christian to be open to God calling them to serve in another country. You may not know yet what God has in store for your life. But you can tell him now: “Here I am. Use me wherever you want.” And meanwhile, you can start where you are: with the people in your own class, team and street. One thing to do this week: write down the names of three friends who don’t yet know Jesus. Pray for each of them by name every day this week, and look for one natural opportunity to show kindness or share something about your faith.",
+  "word_count": 368
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "en"
+  ],
+  "order": 12,
+  "title": "Standing Firm and the Next Step",
+  "body_html": "<blockquote>“Yea, and all that will live godly in Christ Jesus shall suffer persecution.” — 2 Timothy 3:12 (KJV)</blockquote> <p>Torrey warns new Christians that, sooner or later, following Jesus will bring some opposition. It might not be prison or violence. It might be mocking, being left out, or people thinking you are weird.</p> <p>He says many young Christians are surprised by this and give up. But it doesn’t have to be that way. Jesus said, “Blessed are they which are persecuted for righteousness’ sake.” Torrey says that if opposition is received rightly, “it is no longer a hindrance to the Christian life but a help to it.”</p> <p>But he adds a wise warning: make sure the opposition really is for Jesus’ sake, and not because you have been stubborn or unkind. He says some people are disliked “because they are stubborn and cranky and then flatter themselves that they are being persecuted.” So: “Be considerate of the opinions of others … But never yield a jot of principle. Stand for what you believe to be the truth. Do it in love.”</p> <p>A word of care: if you are being bullied, threatened or hurt, for your faith or anything else, that is not something to put up with alone. Please tell a trusted adult.</p> <p>Torrey’s final chapter is about guidance. He says the Christian life is not meant to be a life governed by endless rules and anxiety, but the life of “a trusting, glad, fear-free child” led by the Holy Spirit.</p> <p>His method for guidance is simple: admit you need wisdom, surrender your will to God, ask him for guidance, expect him to answer, and follow step by step. Then he tells a story. A university student came to him in July, worried because he didn’t know what God wanted him to do the next summer. Torrey asked: did he know what he should do tomorrow? Yes. And next autumn? Yes, finish his course. Then that was all he needed for now.</p> <blockquote>“All you need to know is the next step.”</blockquote> <p>That is a good place to end. You don’t need to have your whole life worked out. Begin right, keep looking at Jesus, feed on his Word, pray, stay close to good friends, share your faith, stand firm in love, and take the next step he shows you. That is how to succeed in the Christian life.</p> <p><strong>One thing to do this week:</strong> if you are worried about the future, write down what you already know God wants you to do this week. Do that. Pray: “Lord, I trust you to show me the next step when I need it.”</p>",
+  "study_questions": [
+   {
+    "question": "What does Torrey say about opposition received rightly?",
+    "answer": "It is no longer a hindrance to the Christian life but a help to it."
+   },
+   {
+    "question": "What warning does Torrey give about persecution?",
+    "answer": "Make sure it is really for Christ’s sake and not because we are stubborn or unkind; stand for truth, but in love."
+   },
+   {
+    "question": "What is Torrey’s advice to the worried university student?",
+    "answer": "All you need to know is the next step; do what God has already shown you and he will show you the next."
+   }
+  ],
+  "body_text": "“Yea, and all that will live godly in Christ Jesus shall suffer persecution.” — 2 Timothy 3:12 (KJV) Torrey warns new Christians that, sooner or later, following Jesus will bring some opposition. It might not be prison or violence. It might be mocking, being left out, or people thinking you are weird. He says many young Christians are surprised by this and give up. But it doesn’t have to be that way. Jesus said, “Blessed are they which are persecuted for righteousness’ sake.” Torrey says that if opposition is received rightly, “it is no longer a hindrance to the Christian life but a help to it.” But he adds a wise warning: make sure the opposition really is for Jesus’ sake, and not because you have been stubborn or unkind. He says some people are disliked “because they are stubborn and cranky and then flatter themselves that they are being persecuted.” So: “Be considerate of the opinions of others … But never yield a jot of principle. Stand for what you believe to be the truth. Do it in love.” A word of care: if you are being bullied, threatened or hurt, for your faith or anything else, that is not something to put up with alone. Please tell a trusted adult. Torrey’s final chapter is about guidance. He says the Christian life is not meant to be a life governed by endless rules and anxiety, but the life of “a trusting, glad, fear-free child” led by the Holy Spirit. His method for guidance is simple: admit you need wisdom, surrender your will to God, ask him for guidance, expect him to answer, and follow step by step. Then he tells a story. A university student came to him in July, worried because he didn’t know what God wanted him to do the next summer. Torrey asked: did he know what he should do tomorrow? Yes. And next autumn? Yes, finish his course. Then that was all he needed for now. “All you need to know is the next step.” That is a good place to end. You don’t need to have your whole life worked out. Begin right, keep looking at Jesus, feed on his Word, pray, stay close to good friends, share your faith, stand firm in love, and take the next step he shows you. That is how to succeed in the Christian life. One thing to do this week: if you are worried about the future, write down what you already know God wants you to do this week. Do that. Pray: “Lord, I trust you to show me the next step when I need it.”",
+  "word_count": 440
+ }
+}
+]
