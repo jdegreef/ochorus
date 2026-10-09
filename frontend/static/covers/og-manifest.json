@@ -3323,14 +3323,30 @@
 			"bar": 0
 		},
 		"at-the-back-of-the-north-wind": {
-			"ground": "7f5bd7852fc8aedfce43232c7860222c3cfc2b059cdcc7f458a24d4de7c52530",
+			"ground": "59c89a5493b7857b8a05411322adcd23b9c58256861322a68da531b0c064a97c",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[115, 102, 485, 131]
+				],
+				"title": [
+					[120, 310, 480, 385],
+					[104, 371, 496, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"brave-for-god": {
 			"ground": "20c53172ca517970f584b2547b408aa333f33525846b6322c9b60b031a52dd9e",
@@ -3730,14 +3746,33 @@
 			"bar": 0
 		},
 		"diary-of-an-old-soul": {
-			"ground": "d61a71fadedb8cb4a48c8b4c55050c1b512813d2d7abb08bed53685dc62da5aa",
+			"ground": "0df89225d1f77fef63c6f3df78a6ae2510abf5841c6b571f6417f47d2fbc2b2b",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.7,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[115, 102, 485, 131]
+				],
+				"title": [
+					[139, 305, 461, 381],
+					[150, 370, 450, 446]
+				],
+				"subtitle": [
+					[193, 520, 407, 541]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				254,
+				541
+			]
 		},
 		"divine-healing": {
 			"ground": "af714b6b1c4dd06581012c8a91eaf12ec964f029929dfed0a9327d179b0a45b2",
@@ -6864,14 +6899,29 @@
 			]
 		},
 		"heretics": {
-			"ground": "cc92c90fd5432c6ba802748bf5e663634e287d63836fbd6fd144174550815031",
+			"ground": "3e0e1ab96d54649afe5b436ff2c3ca7434c404783bf9bd429ac9f7a1b6193d0b",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[137, 102, 463, 131]
+				],
+				"title": [
+					[191, 359, 409, 435]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				308,
+				487
+			]
 		},
 		"hi/absolute-surrender": {
 			"ground": "450a82d88d926b869f771cd08e1fa6c105facc09e8ed11152e22d532ba5688cb",
@@ -9962,14 +10012,29 @@
 			]
 		},
 		"orthodoxy": {
-			"ground": "c66ef315e539a441b3f5e73aa632a09dbdfc6dd452da0ab4ee0f914b80722ee9",
+			"ground": "5cff449ccd26243ef1e6804b35d5b3309637b47ff8f22c6dbae11dfb6395939c",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[137, 102, 463, 131]
+				],
+				"title": [
+					[160, 359, 440, 435]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				308,
+				487
+			]
 		},
 		"our-daily-walk": {
 			"ground": "8aa8e59e6f24962428661d08f47f3a4ac4ffbcfb2a94619e444f41d3e5ef0315",
@@ -10083,14 +10148,32 @@
 			]
 		},
 		"paradise-lost": {
-			"ground": "1376e1ad2ef24885e058a912da76a841b3d991190a0454afdf01674c1f690416",
+			"ground": "590b9ea4d368d960649d6c000d8ea3eeccc6e87435c3ee5cd3dd9ef800712a40",
 			"style": "press",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[180, 102, 420, 131]
+				],
+				"title": [
+					[141, 337, 459, 410]
+				],
+				"subtitle": [
+					[147, 463, 453, 484]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				311,
+				484
+			]
 		},
 		"pensees": {
 			"ground": "f1ca61540b0b59478d9834f26314d78e103c39844490a2d60e9b111ffcbfb830",
@@ -10121,14 +10204,32 @@
 			]
 		},
 		"phantastes": {
-			"ground": "0996f3993ea7abf0dfbb271553b7bb0185f129a6502bcd0f45330acc8278159a",
+			"ground": "9500f7e0a5e17a0543cf815f1f1b86a964d0cac00a73dfb29a79ed674c91b084",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.6,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[115, 102, 485, 131]
+				],
+				"title": [
+					[159, 337, 442, 413]
+				],
+				"subtitle": [
+					[57, 487, 543, 508]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
+			]
 		},
 		"pilgrims-progress": {
 			"ground": "8127b1cc84e2573af44c41f4f7dfbf76f7e9ee51ea8beab21a3883579fd6e5a8",
@@ -11521,14 +11622,33 @@
 			]
 		},
 		"revelations-of-divine-love": {
-			"ground": "95665a1e9e73abf85047ac9af0a99328ea4a1644fbb22363a16d6fad8ffe39fc",
+			"ground": "6198e26dd728cafbf0832c2e9c64abfdb917e5bac2cc15975476b4ea90fc0ede",
 			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.65,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[119, 102, 481, 131]
+				],
+				"title": [
+					[122, 314, 478, 376],
+					[79, 360, 521, 422]
+				],
+				"subtitle": [
+					[104, 451, 496, 472]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				323,
+				472
+			]
 		},
 		"revival-lectures": {
 			"ground": "842406cf6789e2fa5426e898a4ab03998bc0395d73e3ce44b25030af0ec886ea",
@@ -11935,14 +12055,29 @@
 			"bar": 0
 		},
 		"st-francis-of-assisi": {
-			"ground": "08c362af071625872d4d52dd094d991af54dd446c62595443e4ffdee8d9f116b",
+			"ground": "b1d9207feb5cc404bd5c5bdc3fdf60316c3086123f65a98082669c0568cc0272",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[137, 102, 463, 131]
+				],
+				"title": [
+					[48, 359, 552, 435]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				308,
+				487
+			]
 		},
 		"susanna-wesley-clarke": {
 			"ground": "6951faa8a60fc830729da35de67d522c9460432498c712a38726b10a132065c4",
@@ -13684,14 +13819,30 @@
 			]
 		},
 		"the-everlasting-man": {
-			"ground": "000eb079389729b799c793af9e18dafec44602d57f657fe9dc99635bb83160f9",
+			"ground": "7cd08728ce0c3411240e7980ae0c2a467bcf8b5776f9c54a9a8e914df0196893",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[137, 102, 463, 131]
+				],
+				"title": [
+					[97, 326, 503, 402],
+					[242, 391, 358, 467]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				519
+			]
 		},
 		"the-fourfold-gospel": {
 			"ground": "db69f96349627742c737be57da3e78156d0cbc57c92d6ab8efd4dc4b8662a828",
@@ -13799,14 +13950,33 @@
 			]
 		},
 		"the-practice-of-the-presence-of-god": {
-			"ground": "fcb34844fd46e3ea87c80b2aff90f15f1c5b03cbb383b3cb40db8afbae9b11af",
+			"ground": "a8081dcf02535ed534abb952ef459291bb213fe8c53ba8939fca7b776317ada0",
 			"style": "press",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[75, 307, 525, 380],
+					[105, 367, 495, 440]
+				],
+				"subtitle": [
+					[117, 492, 483, 513]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				281,
+				513
+			]
 		},
 		"the-practice-of-the-presence-of-god-children": {
 			"ground": "828c72142cea6284a4bb73a8ba14d883d90ebf881bf983996e2904ea1f624f15",
@@ -13846,14 +14016,30 @@
 			"bar": 0
 		},
 		"the-princess-and-the-goblin": {
-			"ground": "3854b45419aceda3308db4ac758ccb413248ab37ebae1acf17e1f086b1468a70",
+			"ground": "bcf401b70dfb37b6d590139e35cc85d5b3d201091eb714d1d2bb48b6fc9f49e4",
 			"style": "young",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.55,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[115, 102, 485, 131]
+				],
+				"title": [
+					[139, 310, 461, 385],
+					[114, 371, 486, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"the-pursuit-of-god": {
 			"ground": "ac90ed259314f9e1044c7d3624e9dc3d57acc45f007acb7ea7e110ed93189f47",
@@ -14645,14 +14831,32 @@
 			"bar": 0
 		},
 		"unspoken-sermons": {
-			"ground": "1e5e4780de2862c6bf80d1a124ea59ae616fe03cb3618742f329fcb614832fff",
+			"ground": "cd64a18ced62a34545b48c8ee02ef1736d85fb8b99d97fbdb584cb56a4834fc8",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[115, 102, 485, 131]
+				],
+				"title": [
+					[48, 337, 552, 413]
+				],
+				"subtitle": [
+					[188, 487, 412, 508]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
+			]
 		},
 		"waiting-on-god": {
 			"ground": "4953e3a74672ccc0d17902faaf8abbf55cef0962b5c9939cea1a6504a6b307b9",
