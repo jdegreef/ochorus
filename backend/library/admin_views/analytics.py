@@ -709,6 +709,7 @@ SIGNUP_VARIANT_LABELS = {
     "highlight_toast": "Highlight message",
     "chapter_end": "End of chapter",
     "plan_start": "Plan start",
+    "plan_day": "Plan day reminder",
     "article": "Articles",
     "quote": "Quotes",
     "footer": "Footer",

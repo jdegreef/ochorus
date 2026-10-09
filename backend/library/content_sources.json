@@ -40,7 +40,9 @@
     "library/data/book_meta",
     "library/rights.py",
     "library/hubs.py",
-    "library/data/hubs"
+    "library/data/hubs",
+    "library/leader_guides.py",
+    "library/data/leader_guides"
   ],
   "_reader_exempt_note": [
     "Modules the serializers import that carry NO reader prose, so a change to",

@@ -7,7 +7,7 @@
   ],
   "slug": "the-life-of-trust-teens",
   "language": "fr",
-  "title": "Une vie de confiance (pour les adolescents)",
+  "title": "Une vie de confiance (Pour ados)",
   "subtitle": "",
   "description": "Avant ses dix-sept ans, George Müller avait menti, volé et fini en prison — puis il a misé toute sa vie sur un Dieu qu’il ne voyait pas. Il a nourri des milliers d’orphelins à Bristol sans demander d’argent à personne d’autre qu’à Dieu, et il a noté chaque réponse. Cette édition pour les adolescents raconte tout sans détour : les soucis d’argent, l’envie d’avoir des preuves, et l’attente de réponses qui arrivent tard.",
   "hook": "Il a menti, volé et fait de la prison avant dix-sept ans. Puis il a nourri des milliers d’orphelins par la seule prière.",
@@ -48,7 +48,9 @@
   "cover_url": "/covers/art/the-life-of-trust-teens.jpg",
   "pdf_url": "",
   "cover_color": "",
-  "series": null,
+  "series": [
+   "straight-talk"
+  ],
   "series_position": null,
   "sort_order": 27,
   "is_published": true,

@@ -74,5 +74,20 @@
 		.md .fill {
 			transition: width var(--duration-slow);
 		}
+		/* On arrival every bar fills from empty to where the reader is — a
+		   transform, so a shelf of them costs no layout. Mirrored in RTL,
+		   where the bar fills from the right. */
+		.fill {
+			transform-origin: left;
+			animation: bar-fill 900ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+		}
+		:global([dir='rtl']) .fill {
+			transform-origin: right;
+		}
+	}
+	@keyframes bar-fill {
+		from {
+			transform: scaleX(0);
+		}
 	}
 </style>

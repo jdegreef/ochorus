@@ -243,6 +243,344 @@ export const FOR_PAGES: ForPage[] = [
 		closeBody: 'Start with a reading plan, or browse the library and pick a classic to read together.'
 	},
 	{
+		slug: 'youth',
+		title: 'Free books your teenagers will actually read',
+		lead: 'The great classics retold for teens, true stories of people who met God before they were grown, and thirty-day devotionals written for young people. Free on their own phone, with no ads and no account needed.',
+		seoTitle: 'Free Christian Books for Youth Ministries',
+		seoDescription:
+			'Free Christian books for youth groups and teens: classics retold, true stories of faith and thirty-day devotionals. On any phone, no ads, no account needed.',
+		primary: { href: '/teens', label: 'Books for teens' },
+		secondary: { href: '/plans', label: 'Reading plans' },
+		pointsHeading: 'Why youth ministries use Ochorus',
+		points: [
+			{
+				icon: 'layers',
+				title: 'Classics in words teens read',
+				body: 'The Pilgrim’s Progress, All of Grace and others, retold for teenagers without losing what they say. Each one links to the full original for when they want more.',
+				link: { href: '/teens', label: 'See the teens editions' }
+			},
+			{
+				icon: 'heart',
+				title: 'True stories worth telling',
+				body: 'C. S. Lewis, Corrie ten Boom, Elisabeth Elliot, Watchman Nee and others, told for teens: real people who trusted God when it cost them.',
+				link: { href: '/teens', label: 'Meet them' }
+			},
+			{
+				icon: 'calendar',
+				title: 'Thirty days with God',
+				body: 'Devotionals like Anchored and Rooted give a teenager a few minutes a day for a month, and reading plans keep a whole group on the same page.',
+				link: { href: '/plans', label: 'See the reading plans' }
+			},
+			{
+				icon: 'headphones',
+				title: 'On their phone, ready to listen',
+				body: 'Everything works on a phone with no sign-up, and any chapter can be read aloud with Listen, for the bus, the walk or the drive home from camp.'
+			}
+		],
+		ideasHeading: 'Ways to use it in your youth ministry',
+		ideas: [
+			{
+				title: 'A thirty-day challenge',
+				body: 'Start the group on the same devotional after a retreat or camp, and check in each week on how it is going.'
+			},
+			{
+				title: 'A book for the term',
+				body: 'Read a teens edition together, a chapter or two a week, and spend youth group on the questions it raises.'
+			},
+			{
+				title: 'Heroes night',
+				body: 'Tell one true story of faith each week, then point the group to the full biography to read at home.'
+			},
+			{
+				title: 'Something to hand a new believer',
+				body: 'Send a young person who has just come to faith a link to All of Grace for teens and a short reading plan.'
+			}
+		],
+		picksNote: 'Teens editions and devotionals to start with.',
+		picks: [
+			'pilgrims-progress-teens',
+			'all-of-grace-teens',
+			'anchored-1',
+			'rooted-1',
+			'c-s-lewis-a-life-teens',
+			'corrie-ten-boom-a-life-teens',
+			'elisabeth-elliot-a-life-teens',
+			'they-were-young-1'
+		],
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Do teens need to sign up?',
+				a: 'No. Anyone can read without an account. A free account is optional: it keeps reading progress, notes and saved books in step across devices.'
+			},
+			{
+				q: 'What ages are the teens books for?',
+				a: 'The teens editions are written for older children and teenagers. For younger members, the books for young readers retell the same classics more simply.'
+			},
+			{
+				q: 'Is it safe to send teenagers to?',
+				a: 'Ochorus has no ads and nothing to buy. It is a library of Christian books, and nothing else competes for their attention.'
+			}
+		],
+		closeHeading: 'Give your group something good to read',
+		closeBody: 'Start with the books for teens, or pick a reading plan to go through together.'
+	},
+	{
+		slug: 'missionaries',
+		title: 'Christian classics to share, free, in the languages you serve',
+		lead: 'A free library you can hand to anyone with a link: no payment, no sign-up. The great classics, sermons and missionary biographies, many published as full editions in other languages.',
+		seoTitle: 'Free Christian Books for Missionaries',
+		seoDescription:
+			'Free Christian classics, sermons and missionary biographies to share with the people you serve, with full editions in several languages. No payment or sign-up.',
+		primary: { href: '/books', label: 'Browse the library' },
+		secondary: { href: '/biographies', label: 'Missionary lives' },
+		pointsHeading: 'Why missionaries use Ochorus',
+		points: [
+			{
+				icon: 'share',
+				title: 'Free to share with anyone',
+				body: 'Every book and sermon is free, with no account needed, so a new believer can be sent a link and start reading straight away.',
+				link: { href: '/books', label: 'Browse the books' }
+			},
+			{
+				icon: 'globe',
+				title: 'Full editions in other languages',
+				body: `Books are published as full editions in ${series(OTHER_LANGUAGES)} as well as English, with more languages on the way, so people can read in their own language.`
+			},
+			{
+				icon: 'compass',
+				title: 'The lives of those who went before',
+				body: 'Hudson Taylor, David Brainerd, Amy Carmichael, George Müller, Samuel Ajayi Crowther and others, in their own words and in biographies.',
+				link: { href: '/biographies', label: 'Read the biographies' }
+			},
+			{
+				icon: 'calendar',
+				title: 'A path for new believers',
+				body: 'Reading plans take a new Christian through a book one short reading a day, and clear books like The Way to God make a good first step.',
+				link: { href: '/plans', label: 'See the reading plans' }
+			}
+		],
+		ideasHeading: 'Ways to use it in your mission',
+		ideas: [
+			{
+				title: 'Discipleship by link',
+				body: 'Send each new believer the same short reading plan, and talk through what they read when you meet.'
+			},
+			{
+				title: 'Training local leaders',
+				body: 'Read Baxter’s The Reformed Pastor or Torrey’s How to Bring Men to Christ with the people you are training.'
+			},
+			{
+				title: 'Strength for the long haul',
+				body: 'When the work is hard, read the journals and letters of those who served before you.'
+			},
+			{
+				title: 'Supporters at home',
+				body: 'Point your praying friends to the same missionary biographies that shaped your own calling.'
+			}
+		],
+		picksNote: 'Lives and books that have sent people out.',
+		picks: [
+			'a-retrospect',
+			'life-and-diary-of-david-brainerd',
+			'things-as-they-are',
+			'george-muller-of-bristol',
+			'journal-of-an-expedition-up-the-niger',
+			'evangelization-of-the-world',
+			'how-to-bring-men-to-christ',
+			'separation-and-service'
+		],
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Do the people I serve need an account?',
+				a: 'No. Anyone with the link can read, with nothing to pay and no sign-up. A free account is optional and only keeps a reader’s progress and notes in step across devices.'
+			},
+			{
+				q: 'Which languages are available?',
+				a: `Besides English, books are published in ${series(OTHER_LANGUAGES)}. Each language has its own editions, so the shelf in each language shows only what has been published in it.`
+			},
+			{
+				q: 'Can we read without an internet connection?',
+				a: 'Yes. Use Download on a book’s page to save it for reading offline, and some books can also be downloaded as free PDF and EPUB files.'
+			},
+			{
+				q: 'Can we request a book in a language we serve?',
+				a: 'Please contact us. We would be glad to hear which books and languages would help your work most.'
+			}
+		],
+		closeHeading: 'Share the classics with the people you serve',
+		closeBody: 'Browse the library, or start with the lives of the missionaries who went before you.'
+	},
+	{
+		slug: 'chaplains',
+		title: 'Free Christian classics for prison, hospital and military chaplains',
+		lead: 'Books and sermons for people facing confinement, illness, grief and danger, free to read with no account needed. Bunyan wrote in prison; Corrie ten Boom survived a concentration camp; Hannah Whitall Smith wrote of the God of all comfort.',
+		seoTitle: 'Free Christian Books for Chaplains',
+		seoDescription:
+			'Free Christian classics and sermons for prison, hospital and military chaplains: books for suffering, grief and hope, with simpler editions. No account needed.',
+		primary: { href: '/books', label: 'Browse the library' },
+		secondary: { href: '/sermons', label: 'Short sermons' },
+		pointsHeading: 'Why chaplains use Ochorus',
+		points: [
+			{
+				icon: 'book',
+				title: 'Free, with nothing to sign up for',
+				body: 'Every book and sermon is free to read with no account, so it can be offered to anyone without a budget, a form or a login.',
+				link: { href: '/books', label: 'Browse the books' }
+			},
+			{
+				icon: 'heart',
+				title: 'Written from the hard places',
+				body: 'Classics written in prison, in sickness and under persecution: The Pilgrim’s Progress, Grace Abounding, the letters of Ignatius and the life of Corrie ten Boom.',
+				link: { href: '/topics', label: 'Browse by topic' }
+			},
+			{
+				icon: 'mic',
+				title: 'A sermon for one visit',
+				body: 'Short sermons by Spurgeon, Moody and others can be read in a single visit to a ward or a cell, and many come with study questions.',
+				link: { href: '/sermons', label: 'Read the sermons' }
+			},
+			{
+				icon: 'layers',
+				title: 'Simpler words when they help',
+				body: 'Many classics are retold in plain language in editions for young readers and teens, which suit adults who find the originals hard going.',
+				link: { href: '/young-readers', label: 'See the simpler editions' }
+			}
+		],
+		ideasHeading: 'Ways to use it in your chaplaincy',
+		ideas: [
+			{
+				title: 'A book for the long days',
+				body: 'Give someone facing a long stay a link to a single book and a reading plan to work through, one short reading a day.'
+			},
+			{
+				title: 'A study group',
+				body: 'Read a sermon together each week and talk through its questions.'
+			},
+			{
+				title: 'Words for grief and fear',
+				body: 'Turn to The God of All Comfort, All Things for Good or The Bruised Reed for those who are suffering.'
+			},
+			{
+				title: 'Promises for each day',
+				body: 'Spurgeon’s Cheque Book of the Bank of Faith gives one promise of Scripture for every day of the year.'
+			}
+		],
+		picksNote: 'Books written for, and often from, hard places.',
+		picks: [
+			'pilgrims-progress',
+			'the-god-of-all-comfort',
+			'all-things-for-good',
+			'the-bruised-reed',
+			'corrie-ten-boom-a-life',
+			'cheque-book',
+			'grace-abounding',
+			'all-of-grace'
+		],
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Does the reader need an account?',
+				a: 'No. Anyone can read without signing up, with nothing to fill in. A free account is optional and only keeps progress and notes in step across devices.'
+			},
+			{
+				q: 'What about people with no internet access?',
+				a: 'Some books can be downloaded as free PDF and EPUB files from the book’s page. If you would like to print books for a prison, hospital or base, please contact us first.'
+			},
+			{
+				q: 'Is there anything for people who struggle to read?',
+				a: 'Yes. The editions for young readers and teens retell many classics in simpler words, and any chapter can be read aloud with Listen.'
+			}
+		],
+		closeHeading: 'Bring the classics to the people you serve',
+		closeBody: 'Browse the library, or start with a short sermon you can read in one visit.'
+	},
+	{
+		slug: 'bible-colleges',
+		title: 'A free library of primary sources for Bible colleges and seminaries',
+		lead: 'The church fathers, the Reformers, the Puritans and the great revival preachers, free for every student and teacher. A ready-made theological library for any college, whatever its budget.',
+		seoTitle: 'Free Christian Primary Sources for Bible Colleges',
+		seoDescription:
+			'Free primary sources for Bible colleges and seminaries: the church fathers, Reformers, Puritans and revival preachers, with study companions and biographies.',
+		primary: { href: '/books', label: 'Browse the library' },
+		secondary: { href: '/biographies', label: 'Biographies' },
+		pointsHeading: 'Why Bible colleges use Ochorus',
+		points: [
+			{
+				icon: 'book',
+				title: 'Primary sources at no cost',
+				body: 'Clement, Ignatius, Athanasius, Augustine, Chrysostom, Calvin, Owen, Baxter, Edwards and Wesley: the texts themselves, free for every student.',
+				link: { href: '/authors', label: 'See every writer' }
+			},
+			{
+				icon: 'list',
+				title: 'Study companions',
+				body: 'More than thirty Key Teachings companions introduce a writer’s life and thought, from Augustine and Luther to Spurgeon and Tozer.',
+				link: { href: '/originals', label: 'See the companions' }
+			},
+			{
+				icon: 'quote',
+				title: 'Quotations you can cite',
+				body: 'Each quotation is traced to the book, chapter and paragraph it comes from, so students can check it in context.',
+				link: { href: '/quotes', label: 'Browse the quotes' }
+			},
+			{
+				icon: 'page',
+				title: 'Scripture in the classics',
+				body: 'The Scripture index shows where the classics and sermons engage a book or chapter of the Bible, a help for exegesis and preaching classes.',
+				link: { href: '/scripture', label: 'Open the Scripture index' }
+			}
+		],
+		ideasHeading: 'Ways to use it in your college',
+		ideas: [
+			{
+				title: 'Church history readers',
+				body: 'Assign On the Incarnation, the Confessions and the Epistles of Ignatius alongside lectures, with every student reading the same text.'
+			},
+			{
+				title: 'Pastoral theology',
+				body: 'Read Baxter’s The Reformed Pastor and Chrysostom’s On the Priesthood with those preparing for ministry.'
+			},
+			{
+				title: 'Preaching classes',
+				body: 'Study sermons by Edwards, Whitefield, Wesley and Spurgeon, and trace how each handled a text.'
+			},
+			{
+				title: 'Spiritual formation',
+				body: 'Pair the academic reading with devotional classics like The Imitation of Christ and With Christ in the School of Prayer.'
+			}
+		],
+		picksNote: 'Texts every student of the church should read.',
+		picks: [
+			'on-the-incarnation',
+			'confessions',
+			'the-reformed-pastor',
+			'religious-affections',
+			'mortification-of-sin',
+			'on-the-priesthood',
+			'first-epistle-of-clement',
+			'freedom-of-the-will'
+		],
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Do students need accounts?',
+				a: 'No. Students can read without signing up. A free account is optional: it keeps progress, notes and saved books in step across devices.'
+			},
+			{
+				q: 'Which traditions are represented?',
+				a: 'The library spans the early church, the medieval church, the Reformation, the Puritans, Methodism and the revival and missionary movements, with writers from many traditions.'
+			},
+			{
+				q: 'Can we download or print the texts?',
+				a: 'Some books can be downloaded as free PDF and EPUB files from the book’s page. If you would like to print texts for your college, please contact us first.'
+			}
+		],
+		closeHeading: 'Give your students the whole tradition',
+		closeBody: 'Browse the library, or start with the biographies of the writers you teach.'
+	},
+	{
 		slug: 'schools',
 		title: 'Free Christian classics for your classroom',
 		lead: 'Primary sources from twenty centuries of the church, free for every student on any device. Augustine, Athanasius, Bunyan and Chesterton, true lives of faith, and many classics retold for children and teens.',

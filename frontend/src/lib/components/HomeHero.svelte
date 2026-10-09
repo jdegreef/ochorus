@@ -17,6 +17,7 @@
 	import BookCover from '$lib/components/BookCover.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import { chapterMeter } from '$lib/components/WorkCard.svelte';
+	import { readingMinutes } from '$lib/reading';
 
 	/**
 	 * The signed-in home's painted hero: the greeting set over a painting —
@@ -71,6 +72,13 @@
 
 	const href = $derived(current ? localizeHref(current.href) : '');
 	const meter = $derived(current ? chapterMeter(current.order, current.chapterCount, current.pct) : '');
+	// What today asks of the reader: a chapter's length at their own pace
+	// ("~7 min a chapter"), the same figure the series cards give.
+	const perChapter = $derived(
+		current?.book.word_count && current.chapterCount > 1
+			? m.series_chapter_minutes({ minutes: readingMinutes(current.book.word_count / current.chapterCount) })
+			: ''
+	);
 
 	// The museum's label for the season's painting, lettered on the mat like
 	// a gallery print — only while the frame hangs (no book in progress). The
@@ -89,14 +97,17 @@
 	// "Good evening, James" — for the time of the reader's day, on the same
 	// clock as the date, so the two never disagree. Parameterised so the name
 	// sits where each language wants it (Paraglide's message functions, not
-	// the param-free t() facade). The dashboard is signed-in only, so there
-	// is always a name (at worst the email's local part).
+	// the param-free t() facade); a plain greeting when there is no name to
+	// use (greetingName returns '' rather than an email handle).
 	const GREETING = {
-		morning: m.home_good_morning_named,
-		afternoon: m.home_good_afternoon_named,
-		evening: m.home_good_evening_named
+		morning: { named: m.home_good_morning_named, bare: m.home_good_morning },
+		afternoon: { named: m.home_good_afternoon_named, bare: m.home_good_afternoon },
+		evening: { named: m.home_good_evening_named, bare: m.home_good_evening }
 	};
-	const greeting = $derived(GREETING[dayPart(now.getHours(), getLang())]({ name }));
+	const greeting = $derived.by(() => {
+		const g = GREETING[dayPart(now.getHours(), getLang())];
+		return name ? g.named({ name }) : g.bare();
+	});
 
 	// The leaf draws itself on the first time the dashboard opens in a
 	// session — not on every return to it. The flag is spent on mount, so a
@@ -154,7 +165,7 @@
 	{/if}
 	<div class="home-hero-scrim"></div>
 	<div class="home-hero-grain"></div>
-	<div class="page-col relative flex items-end justify-between gap-8 px-5 pb-10 pt-14 sm:pb-12 sm:pt-16">
+	<div class="page-col relative flex items-end justify-between gap-8 px-5 pb-8 pt-9 sm:pb-9 sm:pt-11">
 		<div class="min-w-0">
 			<p class="eyebrow home-hero-date mb-3">
 				{today}<span class="sr-only">, </span><span class="home-hero-season"
@@ -175,7 +186,9 @@
 							<!-- Done with it, or done with it elsewhere: finish it from here,
 							     as its card in "Continue reading" offered (with an Undo). -->
 							<div class="flex items-baseline justify-between gap-3">
-								<p class="home-hero-sub text-micro">{meter}</p>
+								<p class="home-hero-sub text-micro">
+									{meter}{#if perChapter}<span class="opacity-60"> · </span>{perChapter}{/if}
+								</p>
 								<button
 									type="button"
 									class="home-hero-sub home-hero-finish text-micro"
@@ -240,8 +253,11 @@
 		height: 100%;
 		object-fit: cover;
 		/* Blurred enough to lose the 640px source's pixels at page width, not so
-		   much that the painting's shapes go: its light still reads through. */
-		filter: blur(18px) saturate(1.3);
+		   much that the painting's shapes go: its light still reads through.
+		   Saturated and lifted, so its colour survives the scrim rather than
+		   settling into a murky dark (the scrim, not the wash, holds the text's
+		   contrast — palettes.test.ts measures it against a WHITE painting). */
+		filter: blur(18px) saturate(1.6) brightness(1.15);
 	}
 	/* A slow drift across the painting — a minute each way, too slow to watch,
 	   enough that the band is never quite still. */
@@ -287,8 +303,8 @@
 	.home-hero-frame {
 		display: none;
 		flex-shrink: 0;
-		width: 11rem;
-		padding: 0.55rem;
+		width: 9.5rem;
+		padding: 0.5rem;
 		background: var(--hero-mat);
 		border-radius: 3px;
 		box-shadow:
@@ -320,7 +336,7 @@
 	.home-hero-book {
 		display: none;
 		flex-shrink: 0;
-		width: 10rem;
+		width: 8.5rem;
 		box-shadow: var(--hero-plate-shadow);
 		border-radius: var(--radius-sm);
 		transition: transform var(--duration-fast) ease;

@@ -174,6 +174,10 @@ const config = {
 					// with a published `en-modern` row — none until one is
 					// contemporized and shipped (contemporize-book skill).
 					'/books/[slug]/modern/[order]',
+					// A leader's guide page exists only for an edition with a guide
+					// file (library/data/leader_guides) — none until one ships, and
+					// none against an API deployed before the guides endpoint.
+					'/books/[slug]/guide',
 					'/account'
 				]);
 				const unexpected = routes.filter((id) => !expected.has(id));

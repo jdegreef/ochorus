@@ -7,7 +7,7 @@
   ],
   "slug": "pilgrims-progress-teens",
   "language": "fr",
-  "title": "Le Voyage du pèlerin (Pour les adolescents)",
+  "title": "Le Voyage du pèlerin (Pour ados)",
   "subtitle": "",
   "description": "John Bunyan a écrit ce livre depuis une cellule de prison : l’histoire d’un homme, Chrétien, qui quitte tout pour porter un fardeau écrasant jusqu’à une porte lointaine, et qui trouve la vraie vie qui l’attend sur la route. Cette version pour les adolescents garde chaque étape difficile — le bourbier du Découragement, le bûcher de la foire de la Vanité, le cachot du géant — et te demande ce que chacune signifie pour toi.",
   "hook": "Écrit dans une cellule de prison : un homme, un fardeau écrasant, et le chemin vers la vraie vie.",
@@ -48,7 +48,9 @@
   "cover_url": "/covers/art/pilgrims-progress-teens.jpg",
   "pdf_url": "",
   "cover_color": "",
-  "series": null,
+  "series": [
+   "straight-talk"
+  ],
   "series_position": null,
   "sort_order": 28,
   "is_published": true,

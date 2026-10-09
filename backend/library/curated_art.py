@@ -1438,6 +1438,98 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "A great dim question mark under stars, with a small figure standing in "
         "its glowing dot: the series mark for Real Questions.",
     ),
+    # The teen Originals series (2026-10-09): one dim series mark behind the
+    # type, as Real Questions has, with a small warm light below the subtitle.
+    # Anchored has an anchor, They Were Young a lantern; the weather changes by
+    # volume. Drawn as inline SVG and rendered like the young-reader set above.
+    "anchored-1": Original(
+        "450b00b185c9965057ea4ba88f78602600a294db278bf5e288b8a017ab705998",
+        "A great dim anchor under a starry night sea, a small boat on the "
+        "horizon with its lamp lit: the series mark for Anchored, Book 1.",
+    ),
+    "anchored-2": Original(
+        "5db81673592b904b4c552e83cb68008ddf1133d3333c0b388b24dd1f7aa82d37",
+        "The same anchor as dawn breaks low on the horizon: Anchored, Book 2, "
+        "faith carried into real life.",
+    ),
+    "they-were-young-1": Original(
+        "52e2b3b63ead62454b0ce29095da1425e8d0d8b90883aff209e211efba4e994f",
+        "A great dim lantern under stars over a dark hill, a small lantern "
+        "burning below it: the series mark for They Were Young, Book 1 "
+        "(Called).",
+    ),
+    "they-were-young-2": Original(
+        "9a093ee6ab9e364e37ee6121e7ae904e413a8b886df110fc1d92a969dbbd0c4f",
+        "The same lantern in wind and rain, its small flame bent but still "
+        "burning: They Were Young, Book 2 (Tested).",
+    ),
+    # The adult classics the museum sources could not reach from the session
+    # (2026-10-09): painterly nocturnes and dawns, one true image from each
+    # book, fractal-noise sky and displaced ridges in inline SVG, rendered like
+    # the sets above. A CURATED painting for any of these is a two-line diff.
+    "orthodoxy": Original(
+        "0de4c0bde58c2a183630a8c16c3242c614f9fd734af28b6c2cdb3e18eadcd295",
+        "A yacht at dawn bearing down on white cliffs: the yachtsman of the "
+        "opening chapter who sets out for a new island and discovers England.",
+    ),
+    "heretics": Original(
+        "64a2e42b63ceab31746c923ffbbfa4a87051cca2e7f081f77664ed1c1dc0efbb",
+        "One gas lamp burning in a dark street between tall houses: the lamp- "
+        "post the crowd pulls down in the first chapter.",
+    ),
+    "st-francis-of-assisi": Original(
+        "020e6196d8c00277370e45a62cc0f2230d52773e58142516b6670d3e2a9911bb",
+        "Assisi on its Umbrian hillside at dusk, the basilica and bell tower "
+        "above the olive trees, birds wheeling over the slope.",
+    ),
+    "the-everlasting-man": Original(
+        "d8804be5b5e53b6ede8f699fa6208e275a23c690e73aec7823c5748d70695ff6",
+        "A starry night seen from deep inside a cave, firelight on the floor "
+        "and a painted beast on the wall: the first painter and the cave at "
+        "Bethlehem.",
+    ),
+    "at-the-back-of-the-north-wind": Original(
+        "af68a7cae6060b62f3b9e4967c068335e9690fc8da50c33518d6abd1dbb0ef2e",
+        "Wind streaming across a starry sky over London roofs, a lit hayloft "
+        "window in the coachman's mews where Diamond slept.",
+    ),
+    "diary-of-an-old-soul": Original(
+        "439ceeb93837f8b79e38bc447180de0a09a627e28878aa7c4d8b98e75a419fbe",
+        "A lamp in a window at dusk with the year's last leaves on the tree "
+        "outside: a daily book of verse written in grief.",
+    ),
+    "phantastes": Original(
+        "26a496b16b8f050190dcf305bc10a46ab5f8fb9681e8b28ce72783f474b61ede",
+        "A moonlit beech wood with a stream running out of it, fireflies among "
+        "the trunks: Anodos's room becoming Fairy Land.",
+    ),
+    "the-princess-and-the-goblin": Original(
+        "d90798fbdfb7d71188497468aa29a89a77be3740c9e6e2d47ee4295c63268d7d",
+        "Irene's great house on the mountainside under the moon, the "
+        "grandmother's lamp in the topmost tower window, the goblin mountain "
+        "dark below.",
+    ),
+    "unspoken-sermons": Original(
+        "98c705c6fb83efc9c54fb6f7905830edf2643a66d9fe5ed5fd6d90d898a06e43",
+        "Light breaking through heavy cloud over the Aberdeenshire hills of "
+        "MacDonald's boyhood.",
+    ),
+    "paradise-lost": Original(
+        "6e43910a8d81748b8c588b9f26049a7c283921ee47329be52c91a5795baef0db",
+        "The world was all before them: two small figures walking from Eden's "
+        "gate, the flaming sword behind them and the wide world opening ahead.",
+    ),
+    "revelations-of-divine-love": Original(
+        "c1549ce32cbf18570cd2c58c9bc824fda8e5733a7ff68e2a7c1d819fb866ca55",
+        "A hazelnut on the sill of the anchoress's window, the Norwich spire in "
+        "the dawn beyond: a little thing, the quantity of an hazel-nut.",
+    ),
+    "the-practice-of-the-presence-of-god": Original(
+        "d8e4fb883ec0ac1671bdb54f437ccdbcd228eed00b2bdb9ab516f471fb9384d1",
+        "A bare tree in winter snow at first light: the sight that turned "
+        "Brother Lawrence to God at eighteen, knowing the leaves and fruit "
+        "would come.",
+    ),
 }
 
 
