@@ -48,9 +48,61 @@ BOOK: dict[str, object] = {
     "subtitle": "The whole Bible for teens, from creation to new creation",
     "cover_url": "/covers/the-big-story.svg",
     "cover_color": covers.ink_safe("#7a5a1a"),  # an old-gold
-    "description": "",
-    "about_html": "",
-    "qa": [],
+    "hook": "Sixty-six books, one story: from a garden to a city, with Jesus at the centre of it all.",
+    "description": (
+        "The whole Bible as one story, for readers aged 13 to 17: thirty "
+        "chapters from the garden in Genesis to the city in Revelation, through "
+        "Abraham, the exodus, the kings and prophets, exile and return, to the "
+        "life, death and resurrection of Jesus and the church sent to the ends "
+        "of the earth. Each chapter gives a passage to read, tells the story "
+        "plainly, shows where Jesus is in it, and points to a classic in the "
+        "library. An Ochorus Original."
+    ),
+    "about_html": (
+        "<p>The Big Story is an original Ochorus book for readers aged 13 to 17 "
+        "that walks through the whole Bible as one story. The Bible is a "
+        "library of sixty-six books written over more than a thousand years, "
+        "and it can be hard to know where you are in it. This book is a map: "
+        "the plot, from creation to new creation, with Jesus at the centre.</p>"
+        "<p>Its thirty chapters move in seven parts: In the Beginning; A Family "
+        "Chosen; Rescued and Called; The Land and the Kings; Prophets, Exile and "
+        "Waiting; The King Comes; and The Story Goes On. Each chapter names a "
+        "passage to read in your own Bible, retells it plainly and honestly, "
+        "including the hard parts, shows where Jesus is in it from the way the "
+        "New Testament itself reads it, and ends with a question to think "
+        "about and a classic to read next.</p>"
+        "<p>It takes a mainstream evangelical view. Where faithful Christians "
+        "read a passage differently, such as the days of Genesis 1 or the "
+        "timeline of Revelation, it sets out the main views fairly and says so. "
+        "A chapter a day takes a month. Scripture is quoted from the Berean "
+        "Standard Bible.</p>"
+    ),
+    "qa": [
+        {
+            "question": "What is The Big Story?",
+            "answer": "A book for readers aged 13 to 17 that tells the whole Bible as one story, in thirty chapters from Genesis to Revelation. Each chapter gives a passage to read, retells it, shows where Jesus is in it, and ends with a question and a classic to read next.",
+        },
+        {
+            "question": "Does it replace reading the Bible?",
+            "answer": "No. It is a map to help you read the Bible itself. Every chapter begins with a passage of one to four Bible chapters to read first.",
+        },
+        {
+            "question": "How long does it take to read?",
+            "answer": "A chapter a day takes about a month. Each chapter, with its Bible passage, can be read in one sitting, alone or with a group.",
+        },
+        {
+            "question": "What does it mean that Jesus is in the whole Bible?",
+            "answer": "After His resurrection Jesus explained to two of His followers what all the Scriptures said about Him (Luke 24:27). Each chapter shows how its part of the story points forward to Jesus, using the way the New Testament itself reads the Old.",
+        },
+        {
+            "question": "Does it deal with the hard parts of the Bible?",
+            "answer": "Yes. It is honest about violence, failure and suffering, such as the conquest of Canaan, David's sin and the book of Job, without graphic detail and without explaining them away.",
+        },
+        {
+            "question": "Does it take sides where Christians disagree?",
+            "answer": "No. On questions such as how to read the days of creation, the date of the exodus or the timeline of Revelation, it sets out the main views fairly and says what all of them agree on.",
+        },
+    ],
 }
 
 

@@ -62,3 +62,10 @@ Mainstream evangelical, as *Real Questions*: Scripture is God's trustworthy Word
 
 Introduction: "One Story" (how the 66 books fit; why the Bible is hard to read and how this book helps).
 Conclusion: "Your Place in the Story" (the story isn't over; how to keep reading the Bible yourself; a simple plan).
+
+## Notes for checking
+
+- **Where Christians differ, named without taking a side:** the days of Genesis 1 (ch 1); the extent of the flood and the Genesis 5 lifespans (ch 3); the date of the exodus (ch 9); how the Sabbath applies today (ch 10); ancient war reports as sweeping language (ch 13); who wrote Ecclesiastes and when Daniel took final form (ch 19–20); the authorship of Isaiah 40–66 (ch 22); whether Paul wrote all thirteen letters (ch 29); Revelation's timeline and the thousand years (ch 30).
+- **Hard passages handled directly:** child sacrifice and Genesis 22 (ch 5); Pharaoh's genocide and the death of the firstborn (ch 8–9); the conquest of Jericho, Joshua 6:21 quoted in full (ch 13); Elijah and the prophets of Baal (ch 18); David and Bathsheba, named as abuse of a king's power (ch 16); the crucifixion, without graphic detail (ch 26).
+- **"Where Jesus is in this"** stays with the New Testament's own readings; where the New Testament makes no link (Goliath, Esther, Rehoboam's yoke) the chapter says so rather than forcing one.
+- **Scripture:** every quotation is BSB, checked by script; a few mid-verse quotations change only an opening capital.
