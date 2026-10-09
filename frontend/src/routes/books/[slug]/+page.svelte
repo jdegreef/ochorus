@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { chapterPath } from '$lib/editionHref';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import ReadBar from '$lib/components/ReadBar.svelte';
 	import { coverVariants, isPlateCover, shareCard, shareImage } from '$lib/coverArt';
@@ -7,7 +6,7 @@
 	import { authorLdType, authorPath } from '$lib/originals';
 	import { type BookDetail, formatLifespan } from '$lib/library-public';
 	import { getProgressRecord } from '$lib/progress';
-	import { furthestOf, resumeOrderOf, type ProgressRecord } from '$lib/reading-schema';
+	import { bookChapterPath, furthestOf, resumeOrderOf, type ProgressRecord } from '$lib/reading-schema';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import {
 		bookTimeLeft,
@@ -98,9 +97,9 @@
 	// The cover's painting, blurred and veiled behind the hero as its colour
 	// (app.css --wash-veil) — a raster cover only: a plate is the house's own
 	// drawing, not a painting, and a file that fails to load leaves the plain page.
-	// Its smallest webp, the one the cover itself shows at 1x: blurred to a
-	// colour, the full-size original (up to ~400 KB) would be a second download
-	// racing the cover for nothing.
+	// Its smallest webp (the cover's own 1x file), fetched at low priority:
+	// blurred to a colour, the full-size original (up to ~400 KB) would race
+	// the cover for nothing.
 	let washBroken = $state<string | null>(null);
 	const washSrc = $derived(
 		book.cover_url && !isPlateCover(book.cover_url) ? (coverVariants(book.cover_url)[0] ?? book.cover_url) : null
@@ -179,10 +178,16 @@
 	// "Prefer Modern English" (settings): when it's on and this book has a modern
 	// edition, the read CTAs open that edition (its own /modern/ address). The
 	// preference is applied at the link (not in the reader) so the reader's own
-	// Modern⇄Original toggle still works within a session.
-	const useModern = $derived(readerPrefs.preferModern && book.has_modern_edition);
-	const readHref = (order: number) =>
-		localizeHref(chapterPath(book.slug, order, book.has_modern_edition));
+	// Modern⇄Original toggle still works within a session. The read card's own
+	// toggle picks for THIS book only (`modernHere`), over the preference —
+	// trying the modern edition of one book shouldn't flip the site default.
+	// Keyed by slug: the page component is reused from one book to the next.
+	let modernHere = $state<{ slug: string; modern: boolean } | null>(null);
+	const useModern = $derived(
+		!!book.has_modern_edition &&
+			(modernHere?.slug === book.slug ? modernHere.modern : readerPrefs.preferModern)
+	);
+	const readHref = (order: number) => localizeHref(bookChapterPath(book.slug, order, useModern));
 
 	// Self-referential canonical + hreflang: this page is prerendered per locale,
 	// so each localized copy points at ITSELF (not the English URL, which would
@@ -489,6 +494,8 @@
 				src={wash}
 				alt=""
 				class="book-band-wash"
+				fetchpriority="low"
+				decoding="async"
 				use:hydrateSrc={{ src: wash }}
 				onerror={() => (washBroken = wash)}
 			/>
@@ -527,7 +534,6 @@
 			</div>
 
 			<div class="book-hero-head min-w-0">
-				<!-- Each part held whole, so a narrow column breaks BETWEEN them. -->
 				<p class="eyebrow mb-1 text-muted">{t('search.typeBook')}</p>
 				<h1 class="text-h1" dir="auto">{book.title}</h1>
 				{#if book.subtitle}<p class="mt-1 text-h3 text-muted">{book.subtitle}</p>{/if}
@@ -688,23 +694,22 @@
 							>
 						{/if}
 						{#if book.has_modern_edition}
-							<!-- Which text the read verb opens: the same choice as Settings →
-							     Default edition (readerPrefs.preferModern), made here where
-							     it matters, so the card holds one read button, not two. The
-							     reader's own Modern ⇄ Original links and the sitemap's
-							     `modern` section are how the crawler finds those pages. -->
+							<!-- Which text the read verb opens, for this book: it starts at
+							     Settings → Default edition and leaves that setting alone. One
+							     read button, not two. The reader's own Modern ⇄ Original links
+							     and the sitemap's `modern` section lead the crawler there. -->
 							<div class="seg edition-seg" role="group" aria-label={t('settings.defaultEdition')}>
 								<button
 									type="button"
 									class:active={!useModern}
 									aria-pressed={!useModern}
-									onclick={() => readerPrefs.setPreferModern(false)}>{t('reader.original')}</button
+									onclick={() => (modernHere = { slug: book.slug, modern: false })}>{t('reader.original')}</button
 								>
 								<button
 									type="button"
 									class:active={useModern}
 									aria-pressed={useModern}
-									onclick={() => readerPrefs.setPreferModern(true)}>{t('reader.modernEdition')}</button
+									onclick={() => (modernHere = { slug: book.slug, modern: true })}>{t('reader.modern')}</button
 								>
 							</div>
 						{/if}
@@ -1104,15 +1109,21 @@
 
 	/* The painting under everything, blurred and veiled (see --wash-veil),
 	   fading out down the band so the sub-nav meets the plain page. */
+	/* Only the art clips (the scaled, blurred image), and the band makes no
+	   stacking context: either would trap the action strip's menus under the
+	   sticky sub-nav or cut them off. The column, positioned after the art,
+	   paints over it by document order alone. */
 	.book-band {
 		position: relative;
-		isolation: isolate;
-		overflow: hidden;
+	}
+	.book-band > .page-col {
+		position: relative;
 	}
 	.book-band-art {
 		position: absolute;
 		inset: 0;
-		z-index: -1;
+		overflow: hidden;
+		-webkit-mask-image: linear-gradient(to bottom, black 45%, transparent);
 		mask-image: linear-gradient(to bottom, black 45%, transparent);
 	}
 	.book-band-art::after {
@@ -1130,12 +1141,18 @@
 	}
 	/* Over the wash, secondary text takes a step toward the body ink — the
 	   measured margin a veiled painting needs (app.css --muted-mix-on-wash). */
+	/* Mixed on the band, applied on its children: --muted defined from itself
+	   on one element would be a cycle (invalid), but a child's --muted may read
+	   the parent's. */
 	.washed {
-		--muted: color-mix(in srgb, var(--muted) var(--muted-mix-on-wash), var(--text));
+		--muted-on-wash: color-mix(in srgb, var(--muted) var(--muted-mix-on-wash), var(--text));
+	}
+	.washed > * {
+		--muted: var(--muted-on-wash);
 	}
 
-	/* The hero's layout is decided by the room the column has (a container),
-	   not the viewport: the reader's page-width setting can narrow it. Row gap
+	/* The wide step is decided by the room the column has (a container), not
+	   the viewport: the reader's page-width setting can narrow it. Row gap
 	   0: the read card carries its own mt-4, as it did in the title's column.
 	   A phone: the cover beside the title, the ribbon and the actions full
 	   width beneath. */
@@ -1155,8 +1172,7 @@
 	.book-hero-actions {
 		grid-column: 1 / -1;
 	}
-	/* From a 640px screen's column (600px inside its gutters). */
-	@container book-hero (min-width: 37.5rem) {
+	@media (min-width: 640px) {
 		/* A last row takes up the cover's spare height, so the title, the
 		   ribbon and the actions stack tight at the top beside it. */
 		.book-hero {
