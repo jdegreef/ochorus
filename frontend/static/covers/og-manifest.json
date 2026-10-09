@@ -4666,6 +4666,16 @@
 				515
 			]
 		},
+		"es/confessions": {
+			"ground": "403fc81e0bf5be043fad733aafa5757e9366ac74cf32a911a52170395acffdee",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/rust",
+			"bar": 0
+		},
 		"es/corrie-ten-boom-a-life-children": {
 			"ground": "fbc895d12bb98738a3752b83d4094516a89b986f5465dfb55e65ed71fed479f8",
 			"style": "young",
@@ -6229,6 +6239,36 @@
 				461
 			]
 		},
+		"fr/first-epistle-of-clement": {
+			"ground": "af4e7dd1c55b639f42a98b6cd5f6d52336209b59408d61991723882fc9a15492",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[136, 102, 464, 131]
+				],
+				"title": [
+					[69, 292, 531, 354],
+					[129, 337, 471, 399],
+					[50, 383, 551, 445]
+				],
+				"subtitle": [
+					[46, 473, 554, 494]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				301,
+				494
+			]
+		},
 		"fr/gleanings-among-the-sheaves": {
 			"ground": "34c21b0a45cba1af757a7731e0666f42b312f15d4efd47f174626f1bb6b8b996",
 			"style": "revival",
@@ -6509,6 +6549,33 @@
 			"middle": [
 				313,
 				482
+			]
+		},
+		"fr/men-who-moved-heaven": {
+			"ground": "0cc8d905498281fc25955155e64fab13d5bc16dec7fcac51e01b094801697875",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[108, 275, 492, 351],
+					[195, 341, 405, 417],
+					[95, 407, 505, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
 			]
 		},
 		"fr/men-who-tended-the-flock-2": {

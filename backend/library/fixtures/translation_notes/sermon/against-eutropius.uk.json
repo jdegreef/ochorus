@@ -1,0 +1,56 @@
+{
+ "kind": "sermon",
+ "slug": "against-eutropius",
+ "language": "uk",
+ "job_issue": 1672,
+ "references": [
+  {
+   "reference": "Ecclesiastes 1:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Proverbs 27:6",
+   "status": "self_rendered",
+   "block_index": 0,
+   "why": "Kulish reads rebukes, not wounds; the sermon builds on wounds, so rendered as prose"
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "1 Peter 1:24",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Psalms 102:3",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Psalms 37:2",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 6:12",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 9:13",
+   "status": "mined",
+   "source_file": "Kulish (ukr1871) Bible text",
+   "block_index": 5
+  }
+ ]
+}
