@@ -13,8 +13,12 @@ const APP_CSS = stripComments(readFileSync(join(process.cwd(), 'src/app.css'), '
 /** The site styles. Their own file, so nothing reading app.css's declarations
  *  as THE house stack (the share-card script, the gates here) sees a style. */
 const SITE_CSS = stripComments(readFileSync(join(process.cwd(), 'src/lib/site-fonts.css'), 'utf-8'));
-/** Every `@import '@fontsource…'` in app.css, as written. */
-const IMPORTS = [...APP_CSS.matchAll(/@import '(@fontsource[^']+)'/g)].map(([, i]) => i);
+/** Korean's faces, linked only on Korean pages rather than imported from
+ *  app.css (see the file for why). Its imports count as the app's own: a stack
+ *  that names Noto Serif KR is satisfied by them on the pages that draw Hangul. */
+const KO_CSS = stripComments(readFileSync(join(process.cwd(), 'src/lib/fonts-ko.css'), 'utf-8'));
+/** Every `@import '@fontsource…'` in app.css and fonts-ko.css, as written. */
+const IMPORTS = [...(APP_CSS + KO_CSS).matchAll(/@import '(@fontsource[^']+)'/g)].map(([, i]) => i);
 /** The quoted family names in a font-family value, in order. */
 const familiesIn = (value: string) => [...value.matchAll(/'([^']+)'/g)].map(([, f]) => f);
 
@@ -74,7 +78,8 @@ describe('font stacks', () => {
 		// ế — Latin Extended Additional, the block Vietnamese's stacked tones live
 		// in. A face with `latin-ext` alone draws ơ and đ but not ế or ộ, so a
 		// Vietnamese word would switch faces mid-syllable without this probe.
-		vietnamese: 0x1ebf
+		vietnamese: 0x1ebf,
+		hangul: 0xac00 // 가
 	};
 	const SUBSETS = Object.keys(PROBE);
 
@@ -121,7 +126,7 @@ describe('font stacks', () => {
 		// from the files each package ships, so a family covering only an extension
 		// block cannot satisfy this by name.
 		const stack = stackOf('font-sans');
-		for (const script of ['arabic', 'devanagari', 'cyrillic', 'ethiopic', 'vietnamese']) {
+		for (const script of ['arabic', 'devanagari', 'cyrillic', 'ethiopic', 'vietnamese', 'hangul']) {
 			const face = stack.find((f) => subsetsOf(f).has(script));
 			expect(
 				face,
@@ -143,7 +148,7 @@ describe('font stacks', () => {
 		// something reasonable — it degrades to Georgia, which has no Arabic
 		// either, and then to whatever the device picked.
 		const stack = stackOf('font-display');
-		for (const script of ['arabic', 'devanagari', 'cyrillic', 'ethiopic', 'vietnamese']) {
+		for (const script of ['arabic', 'devanagari', 'cyrillic', 'ethiopic', 'vietnamese', 'hangul']) {
 			const face = stack.find((f) => subsetsOf(f).has(script));
 			expect(
 				face,
@@ -380,7 +385,9 @@ describe('font stacks', () => {
 		// word's top bar across the float.
 		const rule = /\.reading[^{]*> p:first-of-type([^{]*)::first-letter/.exec(APP_CSS);
 		expect(rule, 'the drop-cap rule is gone').not.toBeNull();
-		for (const lang of ['ar', 'hi']) {
+		// Korean too: Korean book typography has no dropped initial, and a floated
+		// syllable block reads as a layout fault, not an ornament.
+		for (const lang of ['ar', 'hi', 'ko']) {
 			expect(rule![1], `${lang} is not excluded from the floated initial`).toContain(
 				`:not(:lang(${lang}))`
 			);

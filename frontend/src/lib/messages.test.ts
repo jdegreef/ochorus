@@ -14,7 +14,7 @@ import { buildSummary } from '../../scripts/sync-ui-catalogues.mjs';
  *     apart from a small allowlist of borrowed / proper-noun terms.
  */
 
-const LOCALES = ['en', 'es', 'sw', 'lg', 'pt', 'ar', 'hi', 'uk', 'fr', 'am', 'vi'] as const;
+const LOCALES = ['en', 'es', 'sw', 'lg', 'pt', 'ar', 'hi', 'uk', 'fr', 'am', 'vi', 'ko'] as const;
 const BASE = 'en';
 const MSG_DIR = path.resolve('messages');
 
