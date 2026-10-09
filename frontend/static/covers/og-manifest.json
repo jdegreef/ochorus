@@ -14214,6 +14214,16 @@
 				556
 			]
 		},
+		"they-were-young-3": {
+			"ground": "c31c4a70e635aa1e25e4db9adfbb93540af66f1ef401dc6408592250f3e2f622",
+			"style": "originals",
+			"volume": "3",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"things-as-they-are": {
 			"ground": "7090f06cc32398199d5011091deb2f02f2a7caa55e4d8a62a1e71beb562023d5",
 			"style": "devotional",

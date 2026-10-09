@@ -6,13 +6,13 @@ The manuscripts in this folder (`they-were-young-<n>.md`) are the source of trut
 
 ## The series at a glance
 
-Four books of six stories, each themed by the kind of crisis the person met young. Books 1 and 2 are published; 3 and 4 if the first two find readers.
+Four books of six stories, each themed by the kind of crisis the person met young. Books 1–3 are published; 4 is planned.
 
 | Book | Theme | People |
 |---|---|---|
 | 1 · Called | meeting God young | Spurgeon, Samson Occom, Robert Murray M'Cheyne, Billy Graham, Kanzo Uchimura, Richard Allen |
 | 2 · Tested | faith under pressure | Patrick, Josephine Bakhita, Perpetua, the Uganda Martyrs, John Newton, Sundar Singh |
-| 3 · Questions (planned) | doubt and the mind | Augustine, Pascal, C. S. Lewis, Jonathan Edwards, Bonhoeffer, Isaac Watts |
+| 3 · Questions | doubt and the mind | Augustine, Pascal, Isaac Watts, Jonathan Edwards, C. S. Lewis, Bonhoeffer |
 | 4 · Sent (planned) | doing something young | Mary Jones, Amy Carmichael, William Carey, David Brainerd, Jim Elliot, Eric Liddell |
 
 Some *Brave for God* people return (Sundar Singh, Mary Jones, Carey, Elliot, Liddell), told for their teenage years, not retold.
@@ -70,6 +70,25 @@ Some *Brave for God* people return (Sundar Singh, Mary Jones, Carey, Elliot, Lid
 - **Uganda numbers** vary by source (22 Catholic and 23 Anglican martyrs are the usual counts; more died); the story says so.
 - **Legends named as legends:** Patrick and the snakes and the shamrock; the disputed Tibet stories about Sundar Singh.
 - **Newton** went on in the slave trade for years after his conversion; the story says so plainly.
+
+## Book 3 — Questions
+
+| Ch | Story | The question |
+|---|---|---|
+| 1 | Introduction: When Faith Asks Questions | |
+| 2 | Augustine: The Restless Heart | the pears at 15–16, Carthage, Cicero's *Hortensius* at 18; the Milan garden, 386 |
+| 3 | Blaise Pascal: The Boy Who Wanted Reasons | the prodigy; the calculating machine; the 1646 turn at 23; the Memorial, 1654 |
+| 4 | Isaac Watts: Something Better to Sing | conviction in 1688 and trust in Christ in 1689, about 15; the hymns |
+| 5 | Jonathan Edwards: The Doctrine He Hated | Yale at 13; 1 Timothy 1:17, probably 1721, about 17; the Resolutions at 19–20 |
+| 6 | C. S. Lewis: The Boy Who Learned to Argue | lost faith at school; Kirkpatrick from 1914 at 15; the trenches at 19; Christ in 1931 |
+| 7 | Dietrich Bonhoeffer: The Boy Who Chose the Church | Walter's death, 1918; theology at 14; Harlem 1930–31; Flossenbürg, 1945 |
+
+### Book 3 notes for checking
+
+- **Quotations checked word for word** against the library: Augustine's *Confessions* (Pusey), Pascal's *Pensées* and Gilberte Périer's *Life of Blaise Pascal* (still `ai_unreviewed`), Watts's *Divine Songs for Children*, and Edwards's sermon "A Divine and Supernatural Light". Works not in the library (Pascal's Memorial, Edwards's *Personal Narrative* and *Resolutions*, "When I Survey", Lewis's *Surprised by Joy*, Bonhoeffer's *The Cost of Discipleship*) are quoted only in short, famous lines; Lewis and Bonhoeffer, in copyright, a sentence each at most.
+- **Traditions, not documents:** Watts being told to write better hymns; Pascal and the charcoal geometry (may have grown in the telling); the Bonhoeffer "then I shall reform it" story (family memory via Bethge).
+- **Dates hedged in the text:** Augustine's ages (his own "sixteenth year" counting); Pascal's machine (18 or 19); Edwards's 1 Timothy moment (undated in the *Personal Narrative*); Lewis's theism (1929 by his account, 1930 by McGrath).
+- **Library text slips found and fixed with this book:** `confessions` Book III read "unworthy to he compared" (now "be"); Bonhoeffer's author bio, its translations and *The Key Teachings of Dietrich Bonhoeffer* said he died "six days" or "a few days" before Flossenbürg was liberated (now "two weeks": 9 April and 23 April 1945).
 
 ## Building a volume
 
