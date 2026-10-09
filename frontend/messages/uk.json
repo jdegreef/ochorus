@@ -881,6 +881,7 @@
   "settings_activity_subtitle": "Ваша статистика читання й нещодавня історія, збережені на цьому пристрої.",
   "settings_streak_label": "днів поспіль",
   "settings_streak_longest": "Найдовша",
+  "settings_streak_keep_today": "Почитайте сьогодні, щоб не перервати серію",
   "settings_streak_days_read": "днів читання",
   "settings_streak_none": "Серії ще немає — почніть читати сьогодні.",
   "settings_goal_title": "Тижнева мета",

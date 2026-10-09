@@ -881,6 +881,7 @@
   "settings_activity_subtitle": "Your reading stats and recent history, kept on this device.",
   "settings_streak_label": "day streak",
   "settings_streak_longest": "Longest",
+  "settings_streak_keep_today": "Read today to keep your streak",
   "settings_streak_days_read": "days read",
   "settings_streak_none": "No streak yet — read today to start one.",
   "settings_goal_title": "Weekly goal",

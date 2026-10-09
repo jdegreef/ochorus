@@ -46,6 +46,19 @@
 
 	const readCount = $derived(days.filter((d) => d <= today).length);
 
+	// When the year is wider than its column, it opens on THIS week, not on
+	// last year's: the scroller starts at the end where today is (the far left
+	// in a right-to-left page, where modern browsers count scrollLeft down
+	// from 0). Re-run when the grid changes width.
+	function showLatest(el: HTMLElement, _weeks: number) {
+		const go = () => {
+			const rtl = getComputedStyle(el).direction === 'rtl';
+			el.scrollLeft = rtl ? -el.scrollWidth : el.scrollWidth;
+		};
+		go();
+		return { update: go };
+	}
+
 	function cellTitle(iso: string, read: boolean): string {
 		const d = new Date(iso + 'T00:00:00Z').toLocaleDateString(locale, {
 			dateStyle: 'medium',
@@ -62,6 +75,7 @@
      via aspect-ratio, so they scale with the column. -->
 <div
 	class="w-full overflow-x-auto"
+	use:showLatest={weeks}
 	role="img"
 	aria-label="{t('settings.heatmapTitle')}: {readCount} {t('settings.streakDaysRead')}"
 >
@@ -99,8 +113,9 @@
 		{/each}
 	</div>
 
-	<!-- Legend: unread, then the four run shades. -->
-	<div class="mt-2 flex flex-wrap items-center gap-1.5 text-micro text-muted">
+	<!-- Legend: unread, then the four run shades. Sticky at the start edge, so
+	     it stays in view while the year beside it is scrolled to today. -->
+	<div class="sticky start-0 mt-2 flex flex-wrap items-center gap-1.5 text-micro text-muted">
 		<span class="heat heat-swatch rounded-[2px]" data-level="0"></span>
 		<span>{t('settings.heatmapNone')}</span>
 		<span class="ms-2 inline-flex gap-0.5">
