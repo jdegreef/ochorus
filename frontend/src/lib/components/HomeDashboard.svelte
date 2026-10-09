@@ -76,6 +76,9 @@
 <!-- The greeting over the painting of the book they're reading. -->
 <HomeHero current={currentBook.item} {name} />
 
+<!-- Everything under the hero: one rhythm and one entrance (.home-dash). -->
+<div class="home-dash">
+
 <!-- Just signed up: choose the colours of your library (once; see WelcomePalette).
      Held back while the /welcome page is still owed, so the card doesn't flash
      on the way there; it greets the reader on their next visit home instead. -->
@@ -138,3 +141,4 @@
 <!-- Browse by topic — the last block on the dashboard, so it carries the
      trailing bottom padding. -->
 <TopicChips {topics} lastBlock />
+</div>
