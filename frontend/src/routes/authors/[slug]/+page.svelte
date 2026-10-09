@@ -25,7 +25,7 @@
 	import { scopedSearchHref } from '$lib/searchState';
 	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from '$lib/coverArt';
 	import { authorCardUrl } from '$lib/authorCard';
-	import Portrait from '$lib/components/Portrait.svelte';
+	import AuthorHero from '$lib/components/AuthorHero.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { page } from '$app/stores';
@@ -438,23 +438,15 @@
 		<Breadcrumb items={crumbs} />
 	</div>
 
-	<!-- A CENTRED masthead stack: portrait, name, era/counts, then the action row,
-	     all sharing the same reading column as the timeline, quote and biography
-	     below. The page used to left-align a full-width header over a centred body,
-	     so the eye jumped margins and a wide empty gutter opened beside the prose;
-	     one centred column removes both. The action row wraps and stays centred on
-	     a phone. -->
-	<header class="mx-auto flex max-w-[40rem] items-center gap-4 sm:gap-5">
-		<Portrait
-			slug={author.slug}
-			name={author.name}
-			url={author.photo_url}
-			px={112}
-			loading="eager"
-			class="h-20 w-20 shadow-sm sm:h-28 sm:w-28"
-			initialsClass="text-h1"
-		/>
-		<div class="min-w-0">
+	<!-- The masthead: the writer's portrait hung as a framed print on a band of
+	     their era's colour (AuthorHero), the name and what's here beside it. -->
+	<AuthorHero
+		slug={author.slug}
+		name={author.name}
+		photoUrl={author.photo_url}
+		birthYear={author.birth_year}
+		{years}
+	>
 		<h1 class="text-h1" dir="auto">{heading}</h1>
 		{#if summaryBits.length}
 			<p class="mt-1.5 text-body text-muted">
@@ -465,14 +457,13 @@
 		{/if}
 		<!-- The writer's traditions and place, each a hub page of writers like them. -->
 		{#if author.hubs?.length}
-			<ul class="mt-3 flex flex-wrap gap-2">
+			<ul class="mt-4 flex flex-wrap justify-center gap-2 sm:justify-start">
 				{#each author.hubs as h (h.slug)}
 					<li><a class="tag" href={localizeHref(hubPath(h))}>{h.label}</a></li>
 				{/each}
 			</ul>
 		{/if}
-		</div>
-	</header>
+	</AuthorHero>
 
 	<!-- The read card (shared .read-card, as on the book and plan pages): pick up
 	     one of this author's books where you left off, or — first visit, and the
