@@ -2621,6 +2621,22 @@ archaic spelling and period punctuation are the text, not defects in it.
   keep it, prose stays modern. Vietnamese writes every syllable as a separate word,
   so word ratios will run well ABOVE 100% of the English. There is no band yet:
   gate on the tag sequence and record the first batch's spread here.
+- **Korean (ko) Bible is `kor_old` in the ebible mirror — the 개역 (Revised)
+  tradition, PD — despite the mirror labelling it "Korean Bible (1910)"** (locale
+  added 2026-10-09, no content yet). Its wording is 개역 in modern spelling (태초에
+  말씀이 계시니라, 내 안에 거하라), so quote it verbatim; do NOT reach for 개역개정
+  (1998, the Korean Bible Society's, licensed) even where a model knows it better.
+  URL: `bibles/kor_old/usfm/<code>.usfm`, plain `\v N text` lines. Take Root code
+  `kor` is UNVERIFIED (see `language_seed.py`). Pin in every brief: 하나님 (never
+  하느님), 예수 그리스도, 성령, 교회, 은혜; prose in 합니다체 for books and
+  sermons; NEVER 당신 for "you" (omit the subject; 독자님 or 여러분 sparingly).
+  Book titles in 『』. A runtime title or name followed by a particle has no
+  single right form, so write 을(를) / 이(가), or rephrase so no particle
+  touches the placeholder. Korean is agglutinative: expect word ratios well
+  BELOW 100% of the English. There is no band yet: gate on the tag sequence
+  and record the first batch's spread here. Korean cover twins and share cards
+  need Noto Serif KR inlined; `generate-home-og.mjs` shows how (numbered
+  slices, filtered to the text drawn).
 - **es BOOKS are no longer all « » — measure the same AUTHOR's shipped es books
   before briefing** (job #4800, 2026-10-05). The #515 entry above says all 13
   shipped es books convert to « »; at 59 es books that no longer holds. Simpson's

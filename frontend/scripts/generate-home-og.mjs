@@ -97,7 +97,8 @@ const SUBSET = {
 	Arab: 'arabic',
 	Deva: 'devanagari',
 	Cyrl: 'cyrillic',
-	Ethi: 'ethiopic'
+	Ethi: 'ethiopic',
+	Kore: 'korean'
 };
 const scriptOf = (locale) => SUBSET[new Intl.Locale(locale).maximize().script] ?? null;
 
@@ -190,14 +191,31 @@ const dataUri = (file, mime) => `data:${mime};base64,${readFileSync(file).toStri
 /** Every @font-face in one fontsource stylesheet whose subset is wanted, with
  *  its woff2 inlined (Chromium is rendering a string; there is no directory for
  *  a relative url() to resolve against). */
-function faces(sheet, subsets) {
+/** Does a `unicode-range` value cover any character of `text`? */
+const rangeCovers = (range, text) =>
+	[...text].some((ch) => {
+		const cp = ch.codePointAt(0);
+		return range.split(',').some((part) => {
+			const [lo, hi] = part.trim().replace(/U\+/i, '').split('-');
+			return cp >= parseInt(lo, 16) && cp <= parseInt(hi ?? lo, 16);
+		});
+	});
+
+function faces(sheet, subsets, text) {
 	const file = resolve(MODULES, sheet);
-	const want = new RegExp(`url\\(\\./files/[^)]*-(${subsets.join('|')})-`);
+	// Hangul faces ship ~120 NUMBERED slices (`noto-serif-kr-37-700-normal`)
+	// rather than named subsets, and inlining all of them is megabytes of base64
+	// per card. So `korean` takes only the slices that draw this card's text.
+	const korean = subsets.includes('korean');
+	const names = [...subsets, ...(korean ? ['\\d+'] : [])];
+	const want = new RegExp(`url\\(\\./files/[^)]*-(${names.join('|')})-`);
+	const numbered = /url\(\.\/files\/[^)]*-\d+-\d{3}-/;
 	return readFileSync(file, 'utf8')
 		.split('@font-face')
 		.slice(1)
 		.map((b) => `@font-face${b.slice(0, b.indexOf('}') + 1)}`)
 		.filter((b) => want.test(b))
+		.filter((b) => !numbered.test(b) || rangeCovers(/unicode-range:\s*([^;]+);/.exec(b)?.[1] ?? '', text))
 		.map((b) =>
 			b
 				.replace(/,\s*url\(\.\/files\/[^)]+\)\s*format\('woff'\)/g, '')
@@ -209,7 +227,7 @@ function faces(sheet, subsets) {
 		.join('');
 }
 
-function fontCss(script) {
+function fontCss(script, text) {
 	// `vietnamese` for every card: Vietnamese is Latin script, so `script` is null
 	// for it, and latin-ext stops short of its stacked tones (ế, ộ). Unicode-range
 	// gated, so a card with none of those letters draws nothing from it.
@@ -234,7 +252,9 @@ function fontCss(script) {
 		);
 	if (script === 'cyrillic')
 		sheets.push('@fontsource/pt-serif/700.css', '@fontsource/pt-sans/400.css');
-	return sheets.map((s) => faces(s, subsets)).join('');
+	if (script === 'korean')
+		sheets.push('@fontsource/noto-serif-kr/700.css', '@fontsource/noto-sans-kr/400.css');
+	return sheets.map((s) => faces(s, subsets, text)).join('');
 }
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -253,14 +273,14 @@ function page(locale, msg, covers, ownShelf) {
 	// synthesised slant on them reads as a rendering fault. Colour carries it.
 	const accentStyle = !script || script === 'cyrillic' ? 'italic' : 'normal';
 	return `<!doctype html><html lang="${locale}" dir="${script === 'arabic' ? 'rtl' : 'ltr'}"><head><meta charset="utf-8"><style>
-${fontCss(script)}
+${fontCss(script, [counts, msg.home_share_title_lead, msg.home_share_title_accent, msg.footer_tagline].join(''))}
 *{margin:0;box-sizing:border-box}
 html,body{width:${W}px;height:${H}px;overflow:hidden}
-body{background:linear-gradient(180deg,#faf6ef 0%,#f1e8d8 100%);font-family:'Hanken Grotesk Variable','Noto Sans Arabic','Noto Sans Devanagari','Noto Sans Ethiopic','PT Sans',sans-serif}
+body{background:linear-gradient(180deg,#faf6ef 0%,#f1e8d8 100%);font-family:'Hanken Grotesk Variable','Noto Sans Arabic','Noto Sans Devanagari','Noto Sans Ethiopic','Noto Sans KR','PT Sans',sans-serif}
 .top{position:absolute;inset-inline:72px;top:58px;display:flex;justify-content:space-between;align-items:baseline}
 .k{color:#9c6f1e;letter-spacing:.32em;font-size:20px;font-weight:600;direction:ltr}
 .s{color:#6d6152;font-size:19px;font-weight:500}
-h1{position:absolute;inset-inline:72px;top:104px;white-space:nowrap;color:#221c14;font-family:'Fraunces Variable','Amiri','Tiro Devanagari Hindi','Noto Serif Ethiopic','PT Serif',serif;font-size:62px;font-weight:600;line-height:1.1;letter-spacing:-.01em}
+h1{position:absolute;inset-inline:72px;top:104px;white-space:nowrap;color:#221c14;font-family:'Fraunces Variable','Amiri','Tiro Devanagari Hindi','Noto Serif Ethiopic','Noto Serif KR','PT Serif',serif;font-size:62px;font-weight:600;line-height:1.1;letter-spacing:-.01em}
 h1 em{font-style:${accentStyle};font-weight:400;color:#9c6f1e}
 .shelf{position:absolute;left:0;right:0;top:246px;height:300px;display:flex;justify-content:center;align-items:flex-end;gap:26px;direction:ltr;overflow:hidden}
 .shelf img{height:270px;border-radius:4px;box-shadow:0 14px 26px rgba(60,40,10,.32),0 2px 4px rgba(60,40,10,.3)}
