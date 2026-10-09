@@ -5653,6 +5653,36 @@
 			"layout": "split/navy",
 			"bar": 0
 		},
+		"es/revival-lectures": {
+			"ground": "5ee194c42c95aa84af332789a2b8fb7be0f8d5c28451f9ee66ca0beecd1df41d",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[126, 102, 474, 131]
+				],
+				"title": [
+					[91, 272, 509, 348],
+					[112, 337, 488, 413],
+					[131, 403, 469, 479]
+				],
+				"subtitle": [
+					[124, 552, 476, 573]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				221,
+				573
+			]
+		},
 		"es/rise-up-men-of-god-2": {
 			"ground": "bccc04cc94d75205414827d26c66be489deb571a0386bec07a710558b0d0d8bf",
 			"style": "originals",
