@@ -51,3 +51,14 @@ describe('the chapter ending lives inside the pager', () => {
 		expect(READER).toMatch(/article\.paged > :global\(:not\(\.pager\)\)/);
 	});
 });
+
+describe('folding a question in the ending keeps the page', () => {
+	// Opening or closing an answer re-flows the ending, and the re-measure placed
+	// the reader by its late-content rules (stay on the last page; clamp when the
+	// count shrinks) — the page turned under the click. The toggled question
+	// anchors that re-measure instead.
+	it('anchors the re-measure on the toggled <details>', () => {
+		expect(pagerMarkup().slice(0, 200)).toContain('ontogglecapture={onPagerToggle}');
+		expect(READER).toMatch(/const target = hold\s*\?\s*pageOfNode\(hold\)/);
+	});
+});
