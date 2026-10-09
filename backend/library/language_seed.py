@@ -16,7 +16,9 @@ from __future__ import annotations
 # --- Target languages --------------------------------------------------------
 # bible: the Take Root translation code whose wording is authoritative for
 # Scripture quotations. Every code below is verified against the live API
-# (GET /api/bible/<code>/JHN/1/ → 200 with verse text). The code is read ONLY at
+# (GET /api/bible/<code>/JHN/1/ → 200 with verse text) EXCEPT fr and vi, added
+# from sessions that could not reach it; each says so in its own NOTE.
+# The code is read ONLY at
 # translation time — seeds and tests never hit the API — so a wrong value can't
 # break the build, but it WILL garble a content job's scripture. Verify any new
 # one before running its first job.
