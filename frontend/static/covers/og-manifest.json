@@ -451,6 +451,32 @@
 				552
 			]
 		},
+		"am/amy-carmichael-a-life-children": {
+			"ground": "934da9eda755f87d7b739cece47ca967e5dbb440e3c90b419d7d2be761755440",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[144, 102, 456, 131]
+				],
+				"title": [
+					[133, 310, 467, 385],
+					[209, 371, 391, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
+		},
 		"am/answers-to-prayer": {
 			"ground": "4427216bd8dbe970e68e08e45944cac08d76b68b351c28389d6036bc1faa5a9c",
 			"style": "revival",
