@@ -789,6 +789,16 @@
 				478
 			]
 		},
+		"am/days-of-heaven-upon-earth": {
+			"ground": "c8fefe3e505310cef0b326f9a083d51d4714d175cacf665dbe5e37b1b821a598",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/teal",
+			"bar": 0
+		},
 		"am/divine-healing": {
 			"ground": "5c117325c62ea13f955c4db4507bb804fc5f6d06dc4821d6954edf4eda772658",
 			"style": "devotional",
@@ -2163,6 +2173,16 @@
 				484
 			]
 		},
+		"am/talks-to-the-farmer": {
+			"ground": "a0ca9991fc06dcbf11951536ee997979cdea9846bec0ab362f41a24157fe1d7b",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"am/talks-to-the-farmer-children": {
 			"ground": "328af163781b14f92b1364e0e6205e0e2ebfc93e25caef31f05d715a175eacfb",
 			"style": "revival",
@@ -2220,6 +2240,32 @@
 			"scrim": 1,
 			"layout": "framed",
 			"bar": 0
+		},
+		"am/the-christians-secret-of-a-happy-life-4": {
+			"ground": "fab46d178e2e9ba13001d92b4336a7c22fcfa2bd13a6e32d4b5504b410ed73f1",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.45,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[80, 102, 520, 131]
+				],
+				"title": [
+					[73, 290, 527, 372],
+					[95, 362, 505, 444]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				295,
+				500
+			]
 		},
 		"am/the-fourfold-gospel": {
 			"ground": "d0da509adb8cbc721a95106cf94c77302afceed851358b4ae44a5c465003daff",
@@ -2589,6 +2635,35 @@
 			"middle": [
 				346,
 				449
+			]
+		},
+		"am/way-into-holiest": {
+			"ground": "433e100b0058920f8efc9fdb5c39623e695dfb82878ab163e6e796cfbdcae09f",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[82, 266, 518, 348],
+					[72, 338, 528, 420]
+				],
+				"subtitle": [
+					[151, 496, 450, 524]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
 			]
 		},
 		"am/women-who-moved-heaven-2": {
@@ -5120,6 +5195,37 @@
 				439
 			]
 		},
+		"es/first-epistle-of-clement": {
+			"ground": "6598e83c9f6275e3fea947d397e9393dd0811f91e7a961269a1841b79834f684",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[136, 102, 464, 131]
+				],
+				"title": [
+					[48, 281, 552, 343],
+					[84, 327, 516, 389],
+					[90, 372, 510, 434]
+				],
+				"subtitle": [
+					[168, 463, 432, 484],
+					[160, 484, 440, 505]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
+		},
 		"es/george-muller-of-bristol": {
 			"ground": "ddc9b04b2d0f4b40dc845c48a97e2220ffbd6e2b59ddcb33fc94abc90a0c89f4",
 			"style": "revival",
@@ -5184,6 +5290,16 @@
 				308,
 				487
 			]
+		},
+		"es/grace-abounding": {
+			"ground": "00a535d228241958e0e16147c6398a683309390af29afa9c0803c7dfc1a6cbb7",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
 		},
 		"es/grace-for-grace-2": {
 			"ground": "f3a2424977200447b90488211dd5a87d8c81543da7531c61f723308ef70957a0",
@@ -7169,6 +7285,37 @@
 			"middle": [
 				287,
 				508
+			]
+		},
+		"fr/key-teachings-of-andrew-murray": {
+			"ground": "57848743b3d9f812c48162fd2a9cdad686eb269485067a4e94aa94a43ed65f34",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[61, 169, 539, 232],
+					[124, 225, 476, 288],
+					[204, 280, 396, 343]
+				],
+				"subtitle": [
+					[164, 404, 436, 432],
+					[176, 432, 424, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
 			]
 		},
 		"fr/key-teachings-of-richard-baxter": {

@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "billy-graham",
+ "language": "uk",
+ "job_issue": 2936,
+ "pull_request": null,
+ "note": [
+  "The English quotes no scripture. Its one citation, John 14:6 on Graham's gravestone, points at the verse without quoting it, so it is rendered «Йоана 14:6» (the Kulish book name the uk corpus uses) and not listed as a reference.",
+  "The epitaph 'Preacher of the Gospel of the Lord Jesus Christ' runs to five words in Ukrainian, so 'four plain words' / 'the four words' became «кілька простих слів» / «кілька слів».",
+  "The hymn Just As I Am is given its common Ukrainian title «Таким, як є». Names follow the uk corpus (Біллі Грем in stepping-stones-2.uk, Д. Л. Муді in the uk bios). English straight quotes became « », as in the shipped uk bios.",
+  "The quotations from Graham's memoir, Christianity Today (2011) and his 2002 apology are translated from the English. No published Ukrainian wording was checked."
+ ],
+ "references": []
+}
