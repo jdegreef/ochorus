@@ -417,6 +417,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "fr",
+  "title": "Filles du Roi – 30 jours avec Dieu pour les filles",
+  "description": "Des méditations sur trente jours pour les filles de 9 à 12 ans: qui tu es en tant que fille du Roi, et les femmes courageuses de la Bible et de l’histoire qui lui ont fait confiance.",
+  "created_at": "2026-10-09T00:00:00Z",
+  "updated_at": "2026-10-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "rooted"
   ],
   "language": "fr",
