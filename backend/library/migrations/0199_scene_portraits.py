@@ -3,15 +3,15 @@
 Jim Elliot, Elisabeth Elliot, Blasio Kigozi and Yona Kanamuzeyi were all
 photographed, so an invented face would contradict the likeness readers can
 find. Until the real photographs are sourced (the session network blocks
-Wikimedia), each page wears a faceless scene in the black-and-white firelight
-style: a figure seen from behind in a setting from the story — the beach on
-the Curaray with the Piper, a desk by lamplight, dawn over Lake Muhazi from
-Gahini hill, a lit church doorway at night. Credited "a scene, not a
+Wikimedia), each page wears a faceless black-and-white scene: a figure seen
+from behind, chosen by the founder from ten mockups each — Jim beside the Piper
+on the Curaray sandbar, Elisabeth writing by lamplight, Kigozi preaching on the
+hillside, Kanamuzeyi writing his diary by lamplight. Credited "a scene, not a
 likeness" so it never reads as a portrait. Replacing one with a real photo
 later is an ordinary photo_url data migration (see write-biography).
 
-Same mechanism as 0187 / 0197: ``author_sync`` fill-syncs ``photo_url`` but
-NOT the credit fields, so the credit is set here for the seeded prod rows (a
+Same mechanism as 0187 / 0197 (renumbered from 0198 after main's 0198 merge):
+``author_sync`` fill-syncs ``photo_url`` but NOT the credit fields, so the credit is set here for the seeded prod rows (a
 fresh DB gets it from ``authors.json``). Only a blank ``photo_url`` — or this
 image still missing its credit — is touched. Idempotent.
 """
@@ -45,7 +45,7 @@ def unapply(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("library", "0197_imagined_portraits"),
+        ("library", "0198_merge_20261008_2323"),
     ]
 
     operations = [
