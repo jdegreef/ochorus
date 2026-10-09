@@ -111,6 +111,7 @@ EXPORT_PILOT = frozenset({
     ("life-of-antony-teens", "en"),
     ("orthodoxy-teens", "en"),
     ("the-secret-of-guidance-teens", "en"),
+    ("how-to-succeed-in-the-christian-life-teens", "en"),
     # Retellings of an Ochorus Original (the Portraits of Courage life): the
     # parent author is the imprint, so, like the Portraits themselves, these have
     # no About the Author page. The Teens edition quotes only the public-domain ASV.
