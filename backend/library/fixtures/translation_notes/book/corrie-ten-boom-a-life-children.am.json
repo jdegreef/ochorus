@@ -3,7 +3,7 @@
  "slug": "corrie-ten-boom-a-life-children",
  "language": "am",
  "job_issue": 5744,
- "pull_request": null,
+ "pull_request": 5777,
  "note": [
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its NT is on disk in the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh/usfm; re-verified for this job 2026-10-09: luk/mat/1th return 200, psa 404, no OT). The mirror is lossy where it merges verses: Matthew 5:44-46 and 1 Thessalonians 5:17-19 are each a single truncated line («የሚወዱአችሁን ብትወዱ…», «መንፈስን አታጥፉ፤») that drops the very clauses this book quotes, so those two are mined from shipped am works instead. Luke 16:10a matches the mirror verbatim as well as the cited file.",
   "A `mined` row is an exact substring of at least 20 characters of the cited shipped *.am.json (sentence-final ። aside). Each epigraph follows the shipped am children's editions: the 1962 wording of the part the English child-paraphrase means, cited `— ከ<Book> <chapter>` as the English cites `— from <Book> <chapter>`.",
