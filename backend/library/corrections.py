@@ -1899,6 +1899,32 @@ BODY_CORRECTIONS: dict[str, dict] = {
              "to another the gift with the light of perspicuous truth",
              "the word of wisdom, as it were the greater light, for those who "
              "delight in the light of perspicuous truth"),
+            # OCR slips with a single possible reading, found while translating
+            # the book to Spanish (#2799): "be" read as "he", "lo" read as
+            # "to", m/rn and f/t confusions, and one stray footnote marker.
+            ("adomed and well-ordered", "adorned and well-ordered"),
+            ("Wordly honour", "Worldly honour"),
+            ("For lawful if it he for a king", "For lawful if it be for a king"),
+            ("volumes, unravelied by me", "volumes, unravelled by me"),
+            ("whither goeth or whither teeth he", "whither goeth or whither fleeth he"),
+            ("like the fishes of the seal they wander", "like the fishes of the sea, they wander"),
+            ("I proposed to he considered", "I proposed to be considered"),
+            ("allaying their swelling, and tomenting their love",
+             "allaying their swelling, and fomenting their love"),
+            ("and ingrated into me this plant", "and ingrafted into me this plant"),
+            ("because thay are from Thee", "because they are from Thee"),
+            ("should he mingled with opposed powers", "should be mingled with opposed powers"),
+            ("cleave unto God,3 for", "cleave unto God, for"),
+            ("had govemed her house", "had governed her house"),
+            ("to he brought up in Thy discipline", "to be brought up in Thy discipline"),
+            ("as if new, he thought out thence", "as if new, be thought out thence"),
+            ("he should he far from God", "he should be far from God"),
+            ("often days hence", "ten days hence"),
+            ("lest we he deprived of it", "lest we be deprived of it"),
+            ("might he conveyed in my words", "might be conveyed in my words"),
+            ("What then could he wanting", "What then could be wanting"),
+            ("far he it from a minister", "far be it from a minister"),
+            ("who were to he docile unto Thee", "who were to be docile unto Thee"),
             # Two chapter numerals lost their final capital.
             ("<h3>Chapter XXi</h3>", "<h3>Chapter XXI</h3>"),
             ("<h3>Chapter Xi</h3>", "<h3>Chapter XI</h3>"),
