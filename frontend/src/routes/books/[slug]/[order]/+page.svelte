@@ -745,7 +745,11 @@
 
 	/** Which page a body child (paragraph) sits on — transform-independent. */
 	function pageOf(el: HTMLElement): number {
-		return pageOfOffset(el.offsetLeft, flowOrigin, pageW);
+		// offsetLeft is rounded to a whole px but pageW is not (see measurePages),
+		// so a paragraph opening a page can read a hair short of its boundary —
+		// 10.9999 pages, floored to 10. Nudge 1px further along the flow, as
+		// pageOfNode does with rects.
+		return pageOfOffset(el.offsetLeft + (contentRtl ? -1 : 1), flowOrigin, pageW);
 	}
 	/**
 	 * Index of the paragraph a reader on page p is reading: the first one, in
@@ -793,7 +797,12 @@
 		const inEnd = endWas >= 0 && pageIndex >= endWas;
 		const at = measured ? firstIndexOnPage(pageIndex) : -1;
 		applyInsets();
-		const w = articleEl.clientWidth;
+		// The unrounded width, not clientWidth: the column flow is laid out at the
+		// article's fractional width (a reading size or browser zoom gives
+		// 773.75px), and an integer page width drifted from it by that fraction on
+		// every page — 11 pages in, pageOfNode placed the chapter’s ending a page
+		// early, so focusing a question in it turned the reader back a page.
+		const w = articleEl.getBoundingClientRect().width;
 		pageW = w;
 		// Hand the fixed edge page-turn arrows the REAL column width, in px. They're
 		// siblings of the <article>, not descendants, so they can't inherit its
