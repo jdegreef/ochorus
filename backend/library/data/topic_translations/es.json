@@ -302,5 +302,25 @@
       "reference": "Isaías 40:31",
       "text": "Mas los que esperan á Jehová tendrán nuevas fuerzas; levantarán las alas como águilas; correrán, y no se cansarán; caminarán, y no se fatigarán."
     }
+  },
+  "for-teens": {
+    "title": "Para adolescentes",
+    "description": "La fe para los años de la adolescencia — venir a Cristo, pertenecer a su pueblo y tener el valor de seguirle. Libros breves, sencillos y sinceros, e historias verdaderas de vidas que se gastaron por él, escritos para lectores jóvenes o bien a su alcance.",
+    "seo_title": "Libros cristianos para adolescentes — Ochorus",
+    "meta_description": "Los clásicos cristianos para adolescentes, gratis para leer en Ochorus.",
+    "scripture": {
+      "reference": "1 Timoteo 4:12",
+      "text": "Ninguno tenga en poco tu juventud; pero sé ejemplo de los fieles en palabra, en conversación, en caridad, en espíritu, en fe, en limpieza."
+    }
+  },
+  "for-young-readers": {
+    "title": "Para lectores jóvenes",
+    "description": "La fe, contada con sencillez, para los niños y para quienes leen con ellos — la gran historia del viaje a casa, en un lenguaje que un niño puede seguir. Un estante que crece a medida que se cuenta y se escribe más para los pequeños.",
+    "seo_title": "Libros cristianos para niños — Ochorus",
+    "meta_description": "Los clásicos cristianos contados para niños y lectores jóvenes, gratis para leer en Ochorus.",
+    "scripture": {
+      "reference": "Mateo 19:14",
+      "text": "Y Jesús dijo: Dejad á los niños, y no les impidáis de venir á mí; porque de los tales es el reino de los cielos."
+    }
   }
 }

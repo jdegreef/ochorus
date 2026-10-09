@@ -1,0 +1,17 @@
+{
+ "kind": "bio",
+ "slug": "smith-wigglesworth",
+ "language": "sw",
+ "job_issue": 5094,
+ "note": [
+  "Clock times: per house rule the author's printed hour numbers are kept and only \"o'clock\" is translated — \"six until six\" / \"six o'clock\" -> \"saa sita\" (heading block 1 and block 2), \"rose at five\" -> \"saa tano\" (block 2), \"a train to catch at four\" -> \"saa nne\" (block 21). A native reviewer should note that in Swahili time-reckoning these read as midday/11am/10am; the English (European) hours are 6, 5 and 4. Durations (\"twelve hours\" -> \"saa kumi na mbili\") are durations, not clock times.",
+  "No Bible verse is quoted in this bio, so references is empty. Echoes only: \"Only believe\" / \"amini tu\" (blocks 0 and 6) is Wigglesworth's motto, echoing Mark 5:36 / Luke 8:50 — rendered \"amini tu\", which matches the SUV wording \"Usiogope, amini tu\" found in the shipped corpus. \"Like Jeremiah ... a man with a fountain of tears\" (block 9) echoes Jeremiah 9:1; his own words, rendered \"chemchemi ya machozi\", the SUV phrase. The heading \"To the ends of the earth\" (block 30) echoes Acts 1:8; rendered \"Hata miisho ya dunia\".",
+  "\"the Lamb, the bleeding Lamb\" is a hymn line, rendered \"Mwana-Kondoo, Mwana-Kondoo anayetoka damu\" (SUV form Mwana-Kondoo).",
+  "Book titles (Ever Increasing Faith, Faith That Prevails, Smith Wigglesworth: Apostle of Faith) kept in English as in the shipped Bosworth bio; the Frodsham title is glossed once in apposition (\"— Mtume wa Imani —\") because the next paragraph's \"It is a fair title\" depends on the reader understanding it.",
+  "Terminology follows f-f-bosworth.sw: \"ubatizo katika Roho Mtakatifu\", \"uponyaji wa kiungu\", \"Kipentekoste\", \"kunena kwa lugha\"; Salvation Army -> Jeshi la Wokovu; 'the Baptism' (Mary Boddy's word) kept capitalised as \"Ubatizo\"; Pentecost -> Pentekoste; appendicitis -> \"ugonjwa wa kidole tumbo\".",
+  "Place and institution names kept in English (West Riding, Bowland Street, St Peter's Church, All Saints', Glad Tidings Hall, Nab Wood Cemetery); country names use standard Swahili forms (Marekani, Uswisi, Norwei, Uswidi, Denmaki, Skandinavia, Afrika Kusini).",
+  "\"went white with rage\" rendered idiomatically as \"nikigeuka rangi kwa hasira\" (changing colour) rather than literally 'white'.",
+  "\"He went on preaching into his late eighties\" rendered \"hadi umri wake ulipokaribia miaka tisini\" (until his age approached ninety) — natural Swahili for 'late eighties'; consistent with death at 87."
+ ],
+ "references": []
+}

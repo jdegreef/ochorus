@@ -9508,6 +9508,16 @@
 			"layout": "box/teal",
 			"bar": 0
 		},
+		"lg/divine-healing": {
+			"ground": "420ab0d0ca8b2658da118482d7a5ad804915af6603a2bf96ac66599fe758a218",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0.05
+		},
 		"lg/divine-songs-for-children": {
 			"ground": "8dfe115e529b54803684a1f6c220360b59d4703aa09f823ca4b7c28a9ccb30a2",
 			"style": "young",
@@ -9950,6 +9960,16 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "wash/ochre",
+			"bar": 0
+		},
+		"lg/true-vine": {
+			"ground": "fdb8cb88c450534cfb8715827ab4df881de56da4cbcfee2d2f76c717f748878f",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
 			"bar": 0
 		},
 		"lg/waiting-on-god": {
@@ -13450,6 +13470,36 @@
 				"subtitle": [
 					[158, 478, 442, 506],
 					[114, 506, 487, 534]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				261,
+				534
+			]
+		},
+		"sw/rooted-2": {
+			"ground": "55460d0c18770f15580d0839a50b973ec9d8781afda1fdaadcbf687a3857cf74",
+			"style": "young",
+			"volume": "2",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 273, 311, 317],
+					[134, 348, 466, 423]
+				],
+				"subtitle": [
+					[122, 478, 479, 506],
+					[93, 506, 507, 534]
 				],
 				"mark": [
 					[232, 664, 368, 746]
