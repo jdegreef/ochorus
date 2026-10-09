@@ -633,6 +633,31 @@
 				595
 			]
 		},
+		"am/c-s-lewis-a-life-children": {
+			"ground": "061eb8aecf3f5a9ab2337a09539afbc37c1b4fd19cc6466480ecfef1a167bbda",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[59, 341, 541, 416]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				348,
+				447
+			]
+		},
 		"am/c-t-studd-a-life-children": {
 			"ground": "4b252c9e83bdb8e3b9d0c8ae71a7303ca4f6b5af43a0d9cc418b670ec9681a7c",
 			"style": "young",
