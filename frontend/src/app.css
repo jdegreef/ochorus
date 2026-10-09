@@ -4398,7 +4398,13 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	word-break: keep-all;
 	overflow-wrap: break-word;
 }
-:lang(ko) :is(em, i, cite) {
+/* On the element itself, not as a descendant of a Korean ancestor: <html
+   lang="ko"> is an ancestor of everything, so a descendant rule would also
+   strip the real Fraunces italic from a Latin island (lang="en") on the page. */
+:is(em, i, cite):lang(ko) {
 	font-style: normal;
 	font-weight: 600;
+}
+:is(blockquote, .italic):lang(ko) {
+	font-style: normal;
 }

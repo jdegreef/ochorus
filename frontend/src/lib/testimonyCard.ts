@@ -75,7 +75,7 @@ export function testimonyText(e: JournalEntry, o: TestimonyOptions, l: Testimony
 export async function renderTestimonyCard(text: TestimonyText, answeredLabel: string, o: TestimonyOptions): Promise<Blob> {
 	const script = cardScript(o.locale);
 	const style = quoteStyle(script);
-	await ensureFonts(script);
+	await ensureFonts(script, [text.heading, text.request ?? '', text.answer, text.meta, answeredLabel].join(' '));
 	const canvas = document.createElement('canvas');
 	canvas.width = SIZE;
 	canvas.height = SIZE;

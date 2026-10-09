@@ -176,7 +176,7 @@ export function cardScript(language: string): string | null {
 	}
 }
 
-export async function ensureFonts(script: string | null): Promise<void> {
+export async function ensureFonts(script: string | null, text = ''): Promise<void> {
 	try {
 		const fonts = (document as Document & { fonts?: FontFaceSet }).fonts;
 		if (!fonts) return;
@@ -187,7 +187,14 @@ export async function ensureFonts(script: string | null): Promise<void> {
 			// The script face at both sizes the card sets it at. Without this the
 			// card drew Arabic in the device serif even though the stack named
 			// Amiri, because nothing had asked the browser to fetch it yet.
-			...(face ? [fonts.load(`400 64px '${face}'`), fonts.load(`600 34px '${face}'`)] : [])
+			// WITH the card's text: `load` fetches only the faces whose
+			// unicode-range covers the text it is given, and defaults to " ". For a
+			// face split into numbered slices (Noto Serif KR, ~120 of them) that means
+			// the Latin slice alone, and every syllable on the card draws in the
+			// device font the canvas falls back to.
+			...(face
+				? [fonts.load(`400 64px '${face}'`, text || ' '), fonts.load(`600 34px '${face}'`, text || ' ')]
+				: [])
 		]);
 		await fonts.ready;
 	} catch {
@@ -233,7 +240,7 @@ export function drawFooter(ctx: CanvasRenderingContext2D, margin: number, site?:
 export async function renderQuoteCard(opts: QuoteCardOptions): Promise<Blob> {
 	const script = cardScript(opts.language ?? 'en');
 	const style = quoteStyle(script);
-	await ensureFonts(script);
+	await ensureFonts(script, [opts.quote, opts.author, opts.source].join(' '));
 	const canvas = document.createElement('canvas');
 	canvas.width = SIZE;
 	canvas.height = SIZE;

@@ -380,7 +380,9 @@ SEED_LANGUAGES: dict[str, dict] = {
         # (raw.githubusercontent.com/gracious-tech/fetch_collection, bibles/
         # kor_old/usfm), which needs no Take Root code.
         "bible": "kor",
-        "bible_label": "성경 (개역 계열, public domain)",
+        # The NAME of the text, not a description: the translation prompt says
+        # "use the supplied {bible_label} wording", so this is what it quotes.
+        "bible_label": "개역 성경",
         # Protestant register throughout: 하나님 (never the Catholic 하느님).
         # "abide" and "the flesh" are this Bible's own words (John 15:4 거하라;
         # Rom 8 육신). Prose is 합니다체. A draft for native review.

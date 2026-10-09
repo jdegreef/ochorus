@@ -207,8 +207,12 @@ function faces(sheet, subsets, text) {
 	// rather than named subsets, and inlining all of them is megabytes of base64
 	// per card. So `korean` takes only the slices that draw this card's text.
 	const korean = subsets.includes('korean');
-	const names = [...subsets, ...(korean ? ['\\d+'] : [])];
-	const want = new RegExp(`url\\(\\./files/[^)]*-(${names.join('|')})-`);
+	const subsetPart = `-(${subsets.join('|')})-`;
+	// Anchored to the slice NUMBER (`-kr-37-700-`): a bare `\d+` would also match
+	// the weight segment, and pass every named subset of these sheets unfiltered.
+	const want = new RegExp(
+		`url\\(\\./files/[^)]*(${subsetPart}${korean ? '|-kr-\\d+-\\d{3}-' : ''})`
+	);
 	const numbered = /url\(\.\/files\/[^)]*-\d+-\d{3}-/;
 	return readFileSync(file, 'utf8')
 		.split('@font-face')
