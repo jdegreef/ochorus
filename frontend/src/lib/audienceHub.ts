@@ -1,3 +1,4 @@
+import { editionKind } from './edition';
 import type { IconName } from '$lib/components/Icon.svelte';
 import {
 	toBookTile,
@@ -255,17 +256,20 @@ export const RUNG_LABEL = {
 	full: 'audience.rungFull'
 } as const satisfies Record<EditionRung['rung'], string>;
 
-/** Which rung an edition is, read off its slug — the convention the API's
- *  `editions` rule keys on (`<base>-children` / `<base>-teens`). */
+/** Which rung an edition is, read off its slug (`editionKind`). Only for a
+ *  book the API has already placed in a family (`editions`): a full text whose
+ *  own slug ends so is never offered one. */
 export function rungOf(slug: string): EditionRung['rung'] {
-	return slug.endsWith('-children') ? 'children' : slug.endsWith('-teens') ? 'teens' : 'full';
+	return editionKind(slug) ?? 'full';
 }
 
-/** A work's editions, the original first: the order a book page offers them,
- *  where a reader most often arrives at the full text. */
+/** A book page's order: the original first, where a reader most often arrives. */
+const RUNG_ORDER = { full: 0, teens: 1, children: 2 } as const satisfies Record<EditionRung['rung'], number>;
+
+/** A work's editions with `current` placed among the others (which the API
+ *  sends already in this order). */
 export function editionFamily<T extends { slug: string }>(current: T, others: readonly T[]): T[] {
-	const order = { full: 0, teens: 1, children: 2 };
-	return [current, ...others].sort((a, b) => order[rungOf(a.slug)] - order[rungOf(b.slug)]);
+	return [current, ...others].sort((a, b) => RUNG_ORDER[rungOf(a.slug)] - RUNG_ORDER[rungOf(b.slug)]);
 }
 
 /** The step after `slug` on its edition ladder — what "Ready for more"

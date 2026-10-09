@@ -203,6 +203,11 @@ export function chapterNameIn(
  * because four places list chapters (the TOC, its bookmarks, the search drawer
  * and the notebook) and three had grown the same inline ternary.
  */
+/** "9 chapters" / "1 chapter". */
+export function chapterCount(n: number): string {
+	return `${n} ${n === 1 ? i18n.t('book.chapterOne') : i18n.t('book.chaptersMany')}`;
+}
+
 export function chapterLabel(order: number, title: string | null | undefined): string {
 	return title ? `${order}. ${title}` : chapterName(order, title);
 }

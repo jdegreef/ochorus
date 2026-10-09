@@ -18,6 +18,12 @@
  * but no trailing "(…)", so it falls through to its full title unchanged.
  */
 const EDITION_SLUG = /-(teens|children)$/;
+
+/** The young-reader edition a slug names by the convention, or null for a
+ *  full text. The slug alone — see `splitEdition` for when that isn't enough. */
+export function editionKind(slug: string): 'teens' | 'children' | null {
+	return (slug.match(EDITION_SLUG)?.[1] as 'teens' | 'children' | undefined) ?? null;
+}
 const TRAILING_PAREN = /^(.*\S)\s*\(([^()]+)\)$/;
 
 export function splitEdition(
