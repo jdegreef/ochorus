@@ -146,5 +146,12 @@
   "note": [
    "AI-drafted ahead of the books; awaiting native review. Shipped before the three children's editions are translated into this language, so those jobs never write this shared file: seed_plans creates the row only once all three books are published here. Like the English, it describes the books rather than quoting titles that do not exist yet."
   ]
+ },
+ "key-teachings-four-teachers": {
+  "title": "Les enseignements clés : quatre maîtres",
+  "description": "Douze semaines avec quatre maîtres, un court chapitre par jour, chacun s’achevant par des questions et une prière : Richard Baxter sur le repos éternel des saints, Jonathan Edwards sur la beauté de Dieu et la vraie religion, A. B. Simpson sur le Christ notre Sauveur, notre Sanctificateur, notre Guérisseur et notre Roi qui vient, et Watchman Nee sur la vie chrétienne normale.",
+  "note": [
+   "Job #5214. Prose-ahead: shipped with the first French book of the plan (key-teachings-of-richard-baxter); the other three (key-teachings-of-jonathan-edwards, key-teachings-of-a-b-simpson, key-teachings-of-watchman-nee) have no French edition yet, so the plan stays dormant in French until they are translated."
+  ]
  }
 }

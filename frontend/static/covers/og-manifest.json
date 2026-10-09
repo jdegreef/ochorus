@@ -6808,6 +6808,37 @@
 				508
 			]
 		},
+		"fr/key-teachings-of-richard-baxter": {
+			"ground": "8b278a69fc6ce46cca78aa95954abeda10353fdc881847acaef6b0c1203c7e1a",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[147, 102, 453, 131]
+				],
+				"title": [
+					[61, 169, 539, 232],
+					[216, 225, 384, 288],
+					[107, 280, 493, 343]
+				],
+				"subtitle": [
+					[164, 404, 436, 432],
+					[176, 432, 424, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
+			]
+		},
 		"fr/life-of-pascal": {
 			"ground": "84bc72d5d16e144ddd91aa7a7780ef435b5701552787fb9739d915c2a3eb68c4",
 			"style": "press",
