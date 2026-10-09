@@ -11,7 +11,8 @@
     "hi",
     "uk",
     "fr",
-    "am"
+    "am",
+    "vi"
   ],
   "modules": [
     "./local-plugins/plugin-message-format.js"

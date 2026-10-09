@@ -1,0 +1,142 @@
+{
+ "welcome": {
+  "subject": "Chào mừng bạn đến với Ochorus",
+  "preheader": "Một thư viện yên tĩnh gồm những tác phẩm Cơ Đốc kinh điển — miễn phí, mãi mãi.",
+  "heading": "Chào mừng bạn đến với Ochorus",
+  "greeting": "Chào {name},",
+  "paragraphs": [
+   "Cảm ơn bạn đã tham gia Ochorus — một thư viện miễn phí, không quảng cáo, gồm những tác phẩm Cơ Đốc kinh điển thuộc phạm vi công cộng, bằng ngôn ngữ của bạn.",
+   "Mọi thứ ở đây đều dành cho bạn đọc: những tác phẩm lớn về sự cầu nguyện, lòng tận hiến và đời sống thuộc linh sâu nhiệm, từ Andrew Murray đến Thomas à Kempis. Không phải mua gì, cũng không có gì bị khóa.",
+   "Cách tốt nhất để bắt đầu chỉ đơn giản là bắt tay vào đọc. Hãy chọn một cuốn sách thu hút bạn, hoặc để một kế hoạch đọc ngắn đồng hành cùng bạn vài phút mỗi ngày."
+  ],
+  "cta_label": "Bắt đầu đọc",
+  "cta_path": "welcome",
+  "signoff": "Ân điển và bình an,",
+  "signature": "Đội ngũ Ochorus"
+ },
+ "pick_plan": {
+  "subject": "Chỉ vài phút mỗi ngày",
+  "preheader": "Một kế hoạch đọc ngắn là cách dễ nhất để bắt đầu.",
+  "heading": "Tìm nhịp đọc của bạn",
+  "greeting": "Chào {name},",
+  "paragraphs": [
+   "Những độc giả gắn bó với Ochorus hầu như đều bắt đầu theo cùng một cách — với một kế hoạch đọc ngắn, chỉ cần vài phút mỗi ngày.",
+   "Một kế hoạch sẽ dẫn bạn đi qua một tác phẩm kinh điển từng chút một, để việc đọc không bao giờ dồn lại và thói quen tự nhiên hình thành. Hãy chọn một kế hoạch phù hợp với mùa mà bạn đang trải qua."
+  ],
+  "cta_label": "Xem các kế hoạch đọc",
+  "cta_path": "plans",
+  "signoff": "Ân điển và bình an,",
+  "signature": "Đội ngũ Ochorus"
+ },
+ "finish_first_book": {
+  "subject": "Tiếp tục từ chỗ bạn đã dừng",
+  "preheader": "Cuốn sách đầu tiên của bạn đang chờ — vài phút mỗi ngày là đủ để đọc xong.",
+  "heading": "Hoàn thành điều bạn đã bắt đầu",
+  "greeting": "Chào {name},",
+  "paragraphs": [
+   "Bạn đã bắt đầu đọc — đó là bước khó nhất, và bạn đã vượt qua rồi. Cuốn sách bạn mở vẫn được lưu đúng chỗ bạn đã dừng lại.",
+   "Đọc xong cuốn sách đầu tiên tự nó đã là một phần thưởng thầm lặng. Chỉ cần vài phút mỗi ngày; phần còn lại, chúng tôi giữ chỗ cho bạn."
+  ],
+  "cta_label": "Tiếp tục đọc",
+  "cta_path": "reading",
+  "signoff": "Ân điển và bình an,",
+  "signature": "Đội ngũ Ochorus"
+ },
+ "classic": {
+  "subject": "Một tác phẩm kinh điển đáng để bạn dành thời gian",
+  "preheader": "Bao thế kỷ độc giả hẳn không thể cùng sai.",
+  "heading": "Một điều đáng đọc",
+  "greeting": "Chào {name},",
+  "paragraphs": [
+   "Nếu bạn chưa biết bắt đầu từ đâu, hãy bắt đầu với một cuốn sách đã vượt qua mọi trào lưu — một tác phẩm kinh điển mà bao thế hệ độc giả vẫn tìm về.",
+   "Những cuốn sách này ngắn gọn, sâu sắc và lặng lẽ thay đổi cuộc đời: Andrew Murray viết về sự khiêm nhường, Brother Lawrence về sự hiện diện của Đức Chúa Trời, Thomas à Kempis về việc noi gương Đấng Christ. Hãy mở một cuốn ngay tối nay."
+  ],
+  "cta_label": "Khám phá thư viện",
+  "cta_path": "books",
+  "signoff": "Ân điển và bình an,",
+  "signature": "Đội ngũ Ochorus"
+ },
+ "comeback": {
+  "subject": "Việc đọc của bạn đang chờ",
+  "preheader": "Tiếp tục ngay từ chỗ bạn đã dừng.",
+  "heading": "Quay lại với việc đọc",
+  "greeting": "Chào {name},",
+  "paragraphs": [
+   "Đã một thời gian rồi — và điều đó không sao cả. Những cuốn sách vẫn kiên nhẫn chờ, và mọi thứ bạn đã bắt đầu vẫn ở nguyên chỗ cũ.",
+   "Chỉ cần vài phút tĩnh lặng là bạn có thể nối lại mạch đọc. Chỗ của bạn đã được lưu và luôn chờ bạn bất cứ khi nào bạn sẵn sàng."
+  ],
+  "cta_label": "Tiếp tục đọc",
+  "cta_path": "",
+  "signoff": "Ân điển và bình an,",
+  "signature": "Đội ngũ Ochorus"
+ },
+ "winback": {
+  "subject": "Thư viện của bạn vẫn còn đây",
+  "preheader": "Đã lâu rồi — chỗ đọc của bạn vẫn được giữ, và mọi thứ vẫn miễn phí.",
+  "heading": "Chúng tôi vẫn giữ chỗ cho bạn",
+  "greeting": "Chào {name},",
+  "paragraphs": [
+   "Đã lâu rồi bạn chưa ghé Ochorus, và điều đó không sao cả — cuộc sống vốn bận rộn. Chúng tôi chỉ muốn bạn biết rằng thư viện của bạn vẫn còn đây, y nguyên như lúc bạn rời đi.",
+   "Mọi thứ vẫn miễn phí, vẫn không quảng cáo, vẫn là của bạn: những tác phẩm lớn về sự cầu nguyện và đời sống thuộc linh sâu nhiệm, bằng ngôn ngữ của bạn. Bất cứ khi nào bạn có vài phút tĩnh lặng, một cuốn sách hay đang chờ bạn."
+  ],
+  "cta_label": "Quay lại Ochorus",
+  "cta_path": "",
+  "signoff": "Ân điển và bình an,",
+  "signature": "Đội ngũ Ochorus"
+ },
+ "finish_series": {
+  "subject": "Câu chuyện vẫn tiếp tục: {next}",
+  "preheader": "Bạn đã đọc xong {finished} — tập tiếp theo đang chờ bạn.",
+  "heading": "Sẵn sàng cho tập tiếp theo?",
+  "greeting": "Chào {name},",
+  "paragraphs": [
+   "Bạn đã đọc xong {finished} — mong rằng đó là quãng thời gian thật đáng giá.",
+   "Cuốn sách ấy thuộc một bộ sách, và tập tiếp theo, {next}, đã sẵn sàng bất cứ khi nào bạn muốn. Cuốn này dẫn sang cuốn kia."
+  ],
+  "cta_label": "Bắt đầu đọc {next}",
+  "cta_path": "",
+  "signoff": "Ân điển và bình an,",
+  "signature": "Đội ngũ Ochorus"
+ },
+ "plan_reminder": {
+  "subject": "Ngày {day} · {plan}",
+  "preheader": "Bài đọc hôm nay: {reading}",
+  "heading": "{reading}",
+  "greeting": "Chào {name},",
+  "paragraphs": [
+   "Ngày {day} trên {total} của {plan} đã sẵn sàng cho bạn."
+  ],
+  "cta_label": "Đọc ngày {day}",
+  "cta_path": "",
+  "signoff": "Ân điển và bình an,",
+  "signature": "Đội ngũ Ochorus"
+ },
+ "plan_paused": {
+  "subject": "Chỗ đọc của bạn trong {plan} đã được lưu",
+  "preheader": "Hãy tiếp tục bất cứ khi nào bạn sẵn sàng.",
+  "heading": "Chỗ đọc của bạn đã được lưu",
+  "greeting": "Chào {name},",
+  "paragraphs": [
+   "Bạn đã dừng ở ngày {day} của {plan}. Không có gì phải vội — kế hoạch vẫn ở đó bất cứ khi nào bạn sẵn sàng.",
+   "Chúng tôi đã tạm dừng lời nhắc hằng ngày. Hãy đọc ngày tiếp theo, và lời nhắc sẽ bắt đầu lại."
+  ],
+  "cta_label": "Đọc ngày {day}",
+  "cta_path": "",
+  "signoff": "Ân điển và bình an,",
+  "signature": "Đội ngũ Ochorus"
+ },
+ "milestone": {
+  "subject": "{count} cuốn sách — thật tuyệt vời",
+  "preheader": "Một cột mốc thật sự. Chúc bạn tiếp tục với cuốn tiếp theo.",
+  "heading": "Đã đọc {count} cuốn sách",
+  "greeting": "Chào {name},",
+  "paragraphs": [
+   "Bạn đã đọc xong {count} cuốn sách trên Ochorus — đó là một cột mốc thật sự, đáng để dừng lại ghi nhận.",
+   "Mỗi cuốn là một tác phẩm kinh điển đã vững vàng nâng đỡ và khích lệ độc giả qua bao thế hệ, và bạn đã đọc trọn vẹn. Chúc bạn tiếp tục với cuốn tiếp theo, bất cứ khi nào bạn sẵn sàng."
+  ],
+  "cta_label": "Tìm cuốn sách tiếp theo",
+  "cta_path": "",
+  "signoff": "Ân điển và bình an,",
+  "signature": "Đội ngũ Ochorus"
+ }
+}
