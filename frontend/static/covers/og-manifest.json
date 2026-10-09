@@ -6499,6 +6499,36 @@
 				478
 			]
 		},
+		"fr/epistles-of-ignatius": {
+			"ground": "0c6601ce396e065b2ddded1a02ab2e66685d4ee7f04da9fa22650b0986aaba71",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.5,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[101, 102, 499, 131]
+				],
+				"title": [
+					[141, 292, 459, 354],
+					[87, 337, 513, 399],
+					[77, 383, 523, 445]
+				],
+				"subtitle": [
+					[53, 473, 547, 494]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				301,
+				494
+			]
+		},
 		"fr/feasting-at-the-table": {
 			"ground": "6e0eeb78b81466700d36d3c4bd910186a8ac00efbe55b57b93792ce7912394ad",
 			"style": "lettered",
