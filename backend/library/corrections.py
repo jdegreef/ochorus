@@ -1359,6 +1359,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # fr
             ("<p>Nous aurions pu tout naturellement penser",
              "<blockquote><em>« Si quelqu’un veut venir après moi, qu’il renonce à lui-même, qu’il se charge chaque jour de sa croix, et qu’il me suive. »</em> — Luc 9:23.</blockquote>"),
+            # es
+            ("<p>Con toda naturalidad podríamos",
+             "<blockquote><em>«Si alguno quiere venir en pos de mí, niéguese a sí mismo, y tome su cruz cada día, y sígame.</em>—Lucas 9:23.</blockquote>"),
         ],
     },
     "all-sufficiency": {
