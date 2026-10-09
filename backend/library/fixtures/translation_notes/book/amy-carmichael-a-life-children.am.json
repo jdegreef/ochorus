@@ -3,7 +3,7 @@
  "slug": "amy-carmichael-a-life-children",
  "language": "am",
  "job_issue": 5741,
- "pull_request": null,
+ "pull_request": 5772,
  "note": [
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh; re-verified for this job 2026-10-09: mat/mrk/luk/jhn/1co/2co return 200 as usfm/, psa/pro/isa/jer/dan 404). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work that quotes the same verse (source_file names it), and are otherwise self_rendered in the 1962 register.",
   "A `mined` row was re-measured against the finished text by script: every quoted fragment is an exact substring both of that block and of the cited 1962 NT verse or corpus file. Mark 16:15a («ወደ ዓለም ሁሉ ሂዱ») is short but is the whole of what the English quotes and is the verse's exact opening, so it is counted mined.",
