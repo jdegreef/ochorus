@@ -178,6 +178,12 @@ REST_FRAMEWORK = {
     # per worker and approximate: a bound, not an access control.
     "DEFAULT_THROTTLE_RATES": {
         "search-click": "60/min",
+        # Sign-up prompt seen/started counters (accounts.views.PromptEventView).
+        # Signed-out readers are keyed by address, and a church, school or
+        # campus can put a room of them behind one; each sends a few per page.
+        # So this is sized for a busy shared network, while still bounding a
+        # script trying to skew a prompt's numbers.
+        "prompt-event": "300/min",
         # Search is a read that writes: every unscoped query logs a row, and a
         # miss runs the fuzzy-suggestion scan. Sized far above a reader (the
         # page debounces at 250ms, so even continuous typing settles well below

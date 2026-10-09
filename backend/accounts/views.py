@@ -4,9 +4,12 @@ from datetime import timedelta
 from django.conf import settings
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
+from rest_framework.parsers import JSONParser
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+from common.throttling import ScopedCacheThrottle
 
 logger = logging.getLogger(__name__)
 
@@ -222,3 +225,58 @@ class SignupSourceView(APIView):
             profile.signup_variant = variant
             profile.save(update_fields=["signup_variant", "updated_at"])
         return Response(status=204)
+
+
+class _PromptEventThrottle(ScopedCacheThrottle):
+    """Its own bucket (rate in settings.REST_FRAMEWORK.DEFAULT_THROTTLE_RATES),
+    so this public write can't ride a reader's other quotas, or they its."""
+
+    scope = "prompt-event"
+
+
+class PromptEventView(APIView):
+    """Count a sign-up prompt seen or started. Anonymous, fire-and-forget.
+
+    The admin knows how many ACCOUNTS each prompt produced ("By where they
+    started"); this supplies how many people saw and started it, so a prompt's
+    conversion can be read off the same page (``AdminUsersView``'s funnel). One
+    counter per (day, prompt, kind), so nothing about the reader is kept.
+
+    A public write, so bounded rather than trusted, as SearchClickView is: the
+    prompt must be a known sign-up source and the kind one of two, it is
+    throttled per account-or-address, and apart from a throttle rejection it
+    answers 204 whatever happens (nothing to tell the browser, nothing worth
+    telling a prober). JSON only,
+    for the same reason as SearchClickView: with the form parser on, any page
+    could make its visitors bump counters with a plain cross-origin form.
+    """
+
+    permission_classes = [AllowAny]
+    parser_classes = [JSONParser]
+    throttle_classes = [_PromptEventThrottle]
+
+    def post(self, request):
+        from django.db import IntegrityError, transaction
+        from django.db.models import F
+        from django.utils import timezone
+
+        from .models import SIGNUP_VARIANTS, PromptTally
+
+        data = request.data if isinstance(request.data, dict) else {}
+        source, kind = data.get("source"), data.get("kind")
+        if source not in SIGNUP_VARIANTS or kind not in PromptTally.Kind.values:
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+        key = {"day": timezone.localdate(), "source": source, "kind": kind}
+        # Fail-open: analytics must never be why a prompt misbehaves.
+        try:
+            if not PromptTally.objects.filter(**key).update(count=F("count") + 1):
+                try:
+                    with transaction.atomic():
+                        PromptTally.objects.create(**key, count=1)
+                except IntegrityError:
+                    # Another request created today's row first.
+                    PromptTally.objects.filter(**key).update(count=F("count") + 1)
+        except Exception:
+            logger.warning("prompt event counting failed", exc_info=True)
+        return Response(status=status.HTTP_204_NO_CONTENT)

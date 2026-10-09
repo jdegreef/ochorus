@@ -1,7 +1,7 @@
 import { env } from '$env/dynamic/public';
 import { deLocalizeHref } from '$lib/paraglide/runtime';
 import { auth } from '$lib/auth.svelte';
-import { noteSignupSourceUndoable, signupStarted } from '$lib/signupSource';
+import { noteSignupSourceUndoable } from '$lib/signupSource';
 import { signInSheet } from '$lib/signInSheet.svelte';
 
 /**
@@ -65,7 +65,9 @@ export async function makeNonce(): Promise<{ raw: string; hashed: string }> {
  */
 export async function signInWithCredential(credential: string, rawNonce: string): Promise<string | null> {
 	const undo = noteSignupSourceUndoable('one_tap');
-	signupStarted();
+	// No "Signup started" here: a credential can't tell a returning reader's
+	// sign-in from a sign-up, so it would inflate starts. One Tap is judged by
+	// the accounts credited to it (Admin → Users → Prompt funnel).
 	const err = await auth.signInWithGoogleIdToken(credential, rawNonce);
 	if (err) {
 		undo();

@@ -42,6 +42,13 @@ PUBLIC_WRITE_EXEMPTIONS = {
         "forces a CORS preflight, closing the forged cross-origin <form> route "
         "— and it writes one capped row. See config.settings and library.views."
     ),
+    "accounts.views.PromptEventView": (
+        "Public counter: a signed-out reader's browser reports that a sign-up "
+        "prompt was seen or started. Throttled (prompt-event) and JSON-only, "
+        "like SearchClickView; accepts only known prompt names and two kinds, "
+        "and bumps one anonymous per-day counter (no reader data). See "
+        "accounts.views.PromptEventView."
+    ),
     "library.views.QuoteResolveView": (
         "Read-shaped POST: resolves a batch of saved-quote slugs to cards and "
         "writes NOTHING. POST only because the slug list is unbounded and "

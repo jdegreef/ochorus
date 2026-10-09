@@ -2,6 +2,7 @@ import type { Action } from 'svelte/action';
 import { readJSON, writeJSON } from './persisted';
 import { SIGNUP_VARIANTS } from './signupBand';
 import { track } from './analytics';
+import { apiFetch } from './api';
 import { withParam } from './loginHref';
 
 /**
@@ -97,11 +98,29 @@ export function withSource(href: string, source: SignupSource): string {
 
 const seen = new Set<string>();
 
+/**
+ * The same seen/started event, counted by the API too (an anonymous daily
+ * counter, accounts.PromptTally), so the admin can put each prompt's views
+ * next to the accounts it produced: Admin → Users → "Prompt funnel".
+ * Plausible keeps its copy. Fire-and-forget: counting must never get in a
+ * prompt's way.
+ */
+function countPrompt(source: SignupSource, kind: 'seen' | 'started'): void {
+	void apiFetch<void>('/api/auth/prompt-event/', {
+		method: 'POST',
+		body: JSON.stringify({ source, kind }),
+		// A start is often the last thing before the page leaves (Google's
+		// sign-in navigates away at once): keepalive lets the count finish.
+		keepalive: true
+	}).catch(() => {});
+}
+
 /** Count a prompt as seen — once per page session per source. */
 export function promptSeen(source: SignupSource): void {
 	if (seen.has(source)) return;
 	seen.add(source);
 	track('Signup prompt seen', { source });
+	countPrompt(source, 'seen');
 }
 
 /**
@@ -133,7 +152,10 @@ export const seenOnView: Action<Element, SignupSource> = (node, initial) => {
 
 /** Count a sign-up attempt (form submitted, Google pressed). */
 export function signupStarted(): void {
-	track('Signup started', { source: signupSource() ?? 'none' });
+	const source = signupSource();
+	track('Signup started', { source: source ?? 'none' });
+	// A start that followed no prompt has nothing to be counted against.
+	if (source) countPrompt(source, 'started');
 }
 
 /** Test seam: forget which prompts were seen this session. */

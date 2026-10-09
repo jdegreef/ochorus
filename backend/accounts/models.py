@@ -270,3 +270,33 @@ class AdminGrant(models.Model):
             "languages": sorted(g.language_set),
             "role": g.role_label,
         }
+
+
+class PromptTally(models.Model):
+    """How often each sign-up prompt was seen and started, per day.
+
+    The other half of "By where they started" (accounts per prompt): without
+    how many people SAW a prompt, a busy page's prompt looks like a winner and
+    a quiet one like a loser. One counter per (day, prompt, kind), bumped by
+    ``views.PromptEventView``. No reader is identifiable from it: no account,
+    address, page or time beyond the day is stored. The same events also go to
+    Plausible; this copy lets the admin put views next to accounts.
+    """
+
+    class Kind(models.TextChoices):
+        SEEN = "seen", "Seen"
+        STARTED = "started", "Started"
+
+    day = models.DateField()
+    source = models.CharField(max_length=32)
+    kind = models.CharField(max_length=10, choices=Kind.choices)
+    count = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["day", "source", "kind"], name="uniq_prompttally_day_source_kind"),
+        ]
+        indexes = [models.Index(fields=["day"], name="prompttally_day_idx")]
+
+    def __str__(self) -> str:
+        return f"{self.day} {self.source} {self.kind}={self.count}"
