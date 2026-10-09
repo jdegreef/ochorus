@@ -1,7 +1,11 @@
 import type { IconName } from '$lib/components/Icon.svelte';
+import { withTrailingSlash } from './href';
 import {
+	quoteHref,
 	toCoverBook,
 	toCoverFace,
+	type AuthorBio,
+	type QuotePage,
 	type CoverFace,
 	type BookDetail,
 	type BookSummary,
@@ -77,6 +81,16 @@ export interface ForPage {
 	/** An offline pack: books whose PDF / EPUB the build finds are listed with
 	 *  their downloads and a "save them all to this device" button. */
 	offline?: { note: string; picks: string[] };
+	/** A quotation for the page's quote band: a slug from `quote_seed.py`
+	 *  (`<author>-<hash>`). The build resolves it from the author's quote page,
+	 *  so a line whose author is not yet approved simply doesn't show. */
+	quote: string;
+	/** Writers to meet, by author slug, in order; the build keeps the first
+	 *  `AUTHORS_SHOWN` with an English page. */
+	authors: string[];
+	/** The ready-made message a leader passes on — a bulletin line, a group
+	 *  chat — and the page it points readers to (an unlocalized route path). */
+	invite: { text: string; href: string };
 	questions: { q: string; a: string }[];
 	closeHeading: string;
 	closeBody: string;
@@ -234,6 +248,20 @@ export const FOR_PAGES: ForPage[] = [
 			'the-pilgrims-way'
 		],
 		guides: true,
+		quote: 'e-m-bounds-d3d581c6',
+		authors: [
+			'charles-h-spurgeon',
+			'dwight-l-moody',
+			'andrew-murray',
+			'richard-baxter',
+			'john-wesley',
+			'george-whitefield',
+			'e-m-bounds'
+		],
+		invite: {
+			text: 'Our church is reading the great Christian classics together on Ochorus: free books, sermons and reading plans on any phone, with no ads and no sign-up.',
+			href: '/plans'
+		},
 		questions: [
 			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
 			{
@@ -359,6 +387,20 @@ export const FOR_PAGES: ForPage[] = [
 			'pursuit-of-holiness',
 			'deeper-life-in-christ'
 		],
+		quote: 'john-wesley-6cc20b2f',
+		authors: [
+			'andrew-murray',
+			'a-w-tozer',
+			'brother-lawrence',
+			'hannah-whitall-smith',
+			'e-m-bounds',
+			'george-muller',
+			'john-wesley'
+		],
+		invite: {
+			text: 'Our group’s next book is free on Ochorus. Read it on your phone, with no sign-up, and we’ll talk it through when we meet.',
+			href: '/books'
+		},
 		questions: [
 			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
 			{
@@ -478,6 +520,20 @@ export const FOR_PAGES: ForPage[] = [
 			'they-were-young-two-weeks',
 			'rooted-three-months-books-1-3'
 		],
+		quote: 'john-wesley-9a985cd4',
+		authors: [
+			'c-s-lewis',
+			'corrie-ten-boom',
+			'elisabeth-elliot',
+			'watchman-nee',
+			'amy-carmichael',
+			'c-t-studd',
+			'david-livingstone'
+		],
+		invite: {
+			text: 'Free Christian books for teens on Ochorus: true stories, the classics retold and thirty-day devotionals. No ads and no sign-up.',
+			href: '/teens'
+		},
 		questions: [
 			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
 			{
@@ -609,6 +665,20 @@ export const FOR_PAGES: ForPage[] = [
 				'pilgrims-progress',
 				'a-retrospect'
 			]
+		},
+		quote: 'hudson-taylor-f8d18af3',
+		authors: [
+			'hudson-taylor',
+			'david-brainerd',
+			'amy-carmichael',
+			'george-muller',
+			'samuel-ajayi-crowther',
+			'john-r-mott',
+			'mary-slessor'
+		],
+		invite: {
+			text: 'Free Christian classics to read on any phone, in several languages, with nothing to pay and no sign-up: Ochorus.',
+			href: '/books'
 		},
 		questions: [
 			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
@@ -747,6 +817,20 @@ export const FOR_PAGES: ForPage[] = [
 				'corrie-ten-boom-a-life'
 			]
 		},
+		quote: 'charles-h-spurgeon-116882b5',
+		authors: [
+			'john-bunyan',
+			'corrie-ten-boom',
+			'hannah-whitall-smith',
+			'richard-sibbes',
+			'thomas-watson',
+			'ignatius-of-antioch',
+			'dietrich-bonhoeffer'
+		],
+		invite: {
+			text: 'Free Christian books and short sermons for hard days, on Ochorus. No account needed: just open the link and read.',
+			href: '/books'
+		},
 		questions: [
 			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
 			{
@@ -880,6 +964,20 @@ export const FOR_PAGES: ForPage[] = [
 				'freedom-of-the-will'
 			]
 		},
+		quote: 'thomas-a-kempis-5e7c6a28',
+		authors: [
+			'augustine-of-hippo',
+			'athanasius-of-alexandria',
+			'john-owen',
+			'jonathan-edwards',
+			'richard-baxter',
+			'john-calvin',
+			'martin-luther'
+		],
+		invite: {
+			text: 'The primary sources for this course are free on Ochorus: the church fathers, the Reformers and the Puritans, on any device, with no account needed.',
+			href: '/books'
+		},
 		questions: [
 			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
 			{
@@ -1001,6 +1099,20 @@ export const FOR_PAGES: ForPage[] = [
 			'the-pilgrims-way'
 		],
 		guides: true,
+		quote: 'augustine-of-hippo-01e56d20',
+		authors: [
+			'augustine-of-hippo',
+			'john-bunyan',
+			'g-k-chesterton',
+			'george-macdonald',
+			'john-foxe',
+			'samuel-ajayi-crowther',
+			'c-s-lewis'
+		],
+		invite: {
+			text: 'Our class texts are free on Ochorus, on any device and at several reading levels, with no account needed.',
+			href: '/books'
+		},
 		questions: [
 			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
 			{
@@ -1121,6 +1233,20 @@ export const FOR_PAGES: ForPage[] = [
 			'brave-for-god-24-true-stories'
 		],
 		guides: true,
+		quote: 'george-muller-06569328',
+		authors: [
+			'george-muller',
+			'hudson-taylor',
+			'mary-slessor',
+			'samuel-ajayi-crowther',
+			'george-macdonald',
+			'john-bunyan',
+			'pandita-ramabai'
+		],
+		invite: {
+			text: 'A free library of Christian living books for every age, with editions for children and teens and printable leader’s guides: Ochorus.',
+			href: '/young-readers'
+		},
 		questions: [
 			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
 			{
@@ -1246,6 +1372,20 @@ export const FOR_PAGES: ForPage[] = [
 			'anchored-two-months'
 		],
 		guides: true,
+		quote: 'e-m-bounds-fa8348c7',
+		authors: [
+			'amanda-berry-smith',
+			'george-muller',
+			'susanna-wesley',
+			'isaac-watts',
+			'corrie-ten-boom',
+			'mary-slessor',
+			'hudson-taylor'
+		],
+		invite: {
+			text: 'Free Christian books for children and teens on Ochorus: true stories, classic tales and five-minute family devotions. No ads and nothing to buy.',
+			href: '/young-readers'
+		},
 		questions: [
 			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
 			{
@@ -1313,6 +1453,25 @@ export function toOfflineBook(b: BookDetail): ForOfflineBook | null {
 	return { book: toCoverFace(b), pdf_url: b.pdf_url, epub_url: epub };
 }
 
+/** A page's quotation, resolved: the line, who said it, and the paragraph it
+ *  comes from. */
+export interface ForQuote {
+	text: string;
+	author: { slug: string; name: string };
+	work: string;
+	href: string;
+}
+
+/** A writer card's fields (`PersonCard`). */
+export type ForPerson = Pick<AuthorBio, 'slug' | 'name' | 'photo_url' | 'birth_year' | 'death_year'>;
+
+/** The library's size in English, for the page's numbers strip. */
+export interface ForCounts {
+	books: number;
+	sermons: number;
+	plans: number;
+}
+
 /** Everything a page draws from the live library, snapshotted at build time
  *  (routes/for-shelves) — the page's only fetch. */
 export interface ForShelfData {
@@ -1320,7 +1479,61 @@ export interface ForShelfData {
 	plans: PlanSummary[];
 	guides: CoverBook[];
 	offline: ForOfflineBook[];
+	authors: ForPerson[];
+	quote: ForQuote | null;
+	counts: ForCounts | null;
 }
 
 /** What the page shows when the snapshot is missing (offline, a stale tab). */
-export const EMPTY_SHELF_DATA: ForShelfData = { shelves: [], plans: [], guides: [], offline: [] };
+export const EMPTY_SHELF_DATA: ForShelfData = {
+	shelves: [],
+	plans: [],
+	guides: [],
+	offline: [],
+	authors: [],
+	quote: null,
+	counts: null
+};
+
+/** How many writer cards a page shows: two rows of the person grid. */
+export const AUTHORS_SHOWN = 6;
+
+/** A page's writers out of the live English author list — only those with a
+ *  full biography, which is what the section promises. */
+export const forAuthors = (english: AuthorBio[], slugs: string[]): ForPerson[] =>
+	pickBySlug(
+		english.filter((a) => a.has_long_bio),
+		slugs,
+		AUTHORS_SHOWN
+	).map((a) => ({
+		slug: a.slug,
+		name: a.name,
+		photo_url: a.photo_url,
+		birth_year: a.birth_year,
+		death_year: a.death_year
+	}));
+
+/** The author a quote slug belongs to: `quote_seed.py` slugs are the author's
+ *  slug and an 8-hex hash of the text. */
+export const quoteAuthor = (slug: string): string => slug.replace(/-[0-9a-f]{8}$/, '');
+
+/** A page's quotation out of its author's quote page, or null when that page
+ *  doesn't list it (the author not approved yet, the line retired). */
+export function forQuote(page: QuotePage, slug: string): ForQuote | null {
+	const q = page.quotes.find((x) => x.slug === slug);
+	if (!q) return null;
+	return { text: q.text, author: { slug: page.author.slug, name: page.author.name }, work: q.source.work, href: quoteHref(q) };
+}
+
+/** The message a leader passes on: the page's line and the link it promises. */
+export const inviteMessage = (invite: ForPage['invite'], siteUrl: string): string =>
+	`${invite.text}\n${siteUrl}${withTrailingSlash(invite.href)}`;
+
+/** Where the message can go: the reader's own WhatsApp or mail client. */
+export function inviteLinks(subject: string, message: string) {
+	const enc = encodeURIComponent;
+	return {
+		whatsapp: `https://wa.me/?text=${enc(message)}`,
+		email: `mailto:?subject=${enc(subject)}&body=${enc(message)}`
+	};
+}

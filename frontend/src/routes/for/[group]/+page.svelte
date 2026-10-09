@@ -4,10 +4,13 @@
 	import BookCover from '$lib/components/BookCover.svelte';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import Emblem from '$lib/components/Emblem.svelte';
+	import ForInvite from '$lib/components/ForInvite.svelte';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import PersonCard from '$lib/components/PersonCard.svelte';
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
 	import QandA from '$lib/components/QandA.svelte';
+	import QuoteText from '$lib/components/QuoteText.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import ShelfDownloadControl from '$lib/components/ShelfDownloadControl.svelte';
 	import { scrollEdges } from '$lib/actions/scrollEdges';
@@ -15,16 +18,19 @@
 	import { FOR_INDEX, FOR_LINKS, forPath } from '$lib/forLinks';
 	import { FOR_META } from '$lib/forMeta';
 	import { localizeHref } from '$lib/href';
-	import { forHref } from '$lib/forPages';
+	import { forHref, inviteMessage } from '$lib/forPages';
+	import { LIVE_LOCALES } from '$lib/live-locales.generated';
 	import { guideCardLink, toBookTile } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
-	import { hreflangFor, jsonLd, pickQa } from '$lib/seo';
+	import { hreflangFor, itemList, jsonLd, pickQa } from '$lib/seo';
 
 	/**
 	 * An "Ochorus for …" page ($lib/forPages) — a landing page for one group of
-	 * readers: why Ochorus is worth their while, plans to read together, ways to
-	 * use it, themed shelves, printable leader's guides and an offline pack where
-	 * the group needs them, their questions, and a way in. English-only, like the
+	 * readers: the library's numbers, why Ochorus is worth their while, a line
+	 * from one of its writers, plans to read together, ways to use it, themed
+	 * shelves, the writers themselves, printable leader's guides and an offline
+	 * pack where the group needs them, a message to pass on, their questions,
+	 * and a way in. English-only, like the
 	 * footer row that links here, so the copy is content from the data module
 	 * rather than catalogue keys.
 	 *
@@ -43,6 +49,26 @@
 	const canonical = $derived(`${SITE_URL}${path}`);
 	const fan = $derived(shelf.shelves[0]?.books ?? []);
 	const qa = $derived(pickQa(page.questions, []));
+	const invite = $derived(inviteMessage(page.invite, SITE_URL));
+	/** The numbers strip: the library in English, and every language it serves. */
+	const counts = $derived(
+		shelf.counts && [
+			{ value: shelf.counts.books, name: 'books' },
+			{ value: shelf.counts.sermons, name: 'sermons' },
+			{ value: shelf.counts.plans, name: 'reading plans' },
+			{ value: LIVE_LOCALES.length, name: 'languages' }
+		].filter((c) => c.value > 0)
+	);
+	// Each shelf as a schema.org ItemList: an ordered roster of the works, where
+	// the grid alone is opaque to a search engine.
+	const shelvesLd = $derived(
+		shelf.shelves.map((s) =>
+			itemList(
+				s.title,
+				s.books.map((b) => ({ name: b.title, url: `/books/${b.slug}/` }))
+			)
+		)
+	);
 	const pageLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',
@@ -66,7 +92,7 @@
 	ogImageAlt="Ochorus for {meta.phrase}"
 	ogImageWidth={1200}
 	ogImageHeight={630}
-	structuredData={[pageLd, ...(qa.ld ? [qa.ld] : [])]}
+	structuredData={[pageLd, ...shelvesLd, ...(qa.ld ? [qa.ld] : [])]}
 />
 
 <div class="page-col px-5 py-10" lang="en" style="--group: {meta.accent}; --pinned-offset: var(--appnav-h, 4rem)">
@@ -104,6 +130,18 @@
 		{/if}
 	</section>
 
+	{#if counts}
+		<!-- What "a free library" amounts to, counted at build time. -->
+		<dl class="counts mt-6">
+			{#each counts as c (c.name)}
+				<div class="count-tile rounded-card border border-border bg-surface px-4 py-3">
+					<dt class="text-small text-muted">{c.name}</dt>
+					<dd class="font-display text-h2 group-ink">{c.value.toLocaleString('en')}</dd>
+				</div>
+			{/each}
+		</dl>
+	{/if}
+
 	<section class="mt-12" aria-labelledby="why-heading">
 		<h2 id="why-heading" class="text-h2">{page.pointsHeading}</h2>
 		<ul class="points mt-6">
@@ -123,6 +161,19 @@
 			{/each}
 		</ul>
 	</section>
+
+	{#if shelf.quote}
+		<figure class="quote-band group-wash mt-14 rounded-card px-6 py-8 sm:px-10">
+			<blockquote class="font-display text-h2 leading-snug">
+				<a class="quote-link" href={localizeHref(shelf.quote.href)}>“<QuoteText text={shelf.quote.text} />”</a>
+			</blockquote>
+			<figcaption class="mt-3 text-small text-muted">
+				<a class="group-ink font-semibold hover:underline" href={localizeHref(`/quotes/${shelf.quote.author.slug}`)}
+					>{shelf.quote.author.name}</a
+				>, <cite>{shelf.quote.work}</cite>
+			</figcaption>
+		</figure>
+	{/if}
 
 	{#if shelf.plans.length}
 		<section id="plans" class="jump-anchor mt-14" aria-labelledby="plans-heading">
@@ -170,6 +221,23 @@
 					</div>
 				</div>
 			{/each}
+		</section>
+	{/if}
+
+	{#if shelf.authors.length}
+		<section class="mt-14" aria-labelledby="writers-heading">
+			<h2 id="writers-heading" class="text-h2">Meet the writers</h2>
+			<p class="mt-2 max-w-2xl text-body text-muted">
+				The lives behind the books: each one has a full biography, with the books and sermons they left.
+			</p>
+			<ul class="writers mt-6">
+				{#each shelf.authors as person (person.slug)}
+					<li><PersonCard {person} /></li>
+				{/each}
+			</ul>
+			<p class="mt-4 text-small">
+				<a class="text-accent hover:underline" href={localizeHref('/biographies')}>See every biography <Arrow /></a>
+			</p>
 		</section>
 	{/if}
 
@@ -238,6 +306,16 @@
 		</section>
 	{/if}
 
+	<section class="mt-14" aria-labelledby="invite-heading">
+		<h2 id="invite-heading" class="text-h2">Pass it on</h2>
+		<p class="mt-2 max-w-2xl text-body text-muted">
+			A message ready for a bulletin, a group chat or an email. Copy it as it is, or make it your own.
+		</p>
+		<div class="mt-6 max-w-2xl">
+			<ForInvite message={invite} subject="Free Christian classics on Ochorus" />
+		</div>
+	</section>
+
 	<QandA items={qa.items} title="Questions" headingClass="text-h2" />
 
 	<section class="group-wash mt-14 flex flex-col items-center rounded-card px-6 py-10 text-center sm:px-10">
@@ -269,6 +347,28 @@
 	}
 	.point-icon {
 		background: color-mix(in srgb, var(--group) 14%, var(--color-surface));
+	}
+	.counts {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 0.75rem;
+	}
+	.count-tile dd {
+		line-height: 1.1;
+		font-variant-numeric: tabular-nums;
+	}
+	.quote-link {
+		color: var(--color-text);
+		text-decoration: none;
+	}
+	.quote-link:hover {
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+	}
+	.writers {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.75rem;
 	}
 	.lede {
 		max-width: 52ch;
@@ -308,6 +408,11 @@
 	.offline-cover {
 		display: block;
 	}
+	@media (max-width: 1023.98px) {
+		.writers {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
 	@media (max-width: 639.98px) {
 		.hero {
 			grid-template-columns: minmax(0, 1fr);
@@ -321,8 +426,12 @@
 		}
 		.points,
 		.ideas,
-		.offline {
+		.offline,
+		.writers {
 			grid-template-columns: minmax(0, 1fr);
+		}
+		.counts {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}
 </style>
