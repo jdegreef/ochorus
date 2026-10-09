@@ -84,8 +84,8 @@ export interface ForPage {
 
 /** The anchors a `ForLink` may point at: each to the snapshot section that
  *  answers to it, and the page that holds the same things when that section
- *  is missing at runtime (an offline reader without the snapshot). The build
- *  fails if a page links a section that came back empty (routes/for-shelves). */
+ *  is missing — empty in this build's API, or no snapshot at all (an offline
+ *  reader). */
 export const FOR_ANCHORS = {
 	'#plans': { section: 'plans', fallback: '/plans' },
 	'#shelves': { section: 'shelves', fallback: '/books' },

@@ -131,10 +131,11 @@ describe('for-shelves endpoint', () => {
 		await expect(get('churches')).rejects.toMatchObject({ status: 500 });
 	});
 
-	it('fails rather than shipping a button to an empty section', async () => {
+	it('serves an empty section rather than failing — the page falls back', async () => {
+		// The churches page's main button jumps to #plans; forHref sends it to
+		// /plans when the snapshot has none (CI's fixture API has few plans).
 		api.listPlans.mockResolvedValue([]);
-		// The churches page's main button jumps to #plans.
-		await expect(get('churches')).rejects.toMatchObject({ status: 500 });
+		expect((await get('churches')).plans).toEqual([]);
 	});
 
 	it('404s an unknown group rather than inventing a shelf', async () => {

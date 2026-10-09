@@ -9,10 +9,7 @@
  */
 import { error, json } from '@sveltejs/kit';
 import {
-	FOR_ANCHORS,
 	FOR_PAGES,
-	isForAnchor,
-	pageLinks,
 	forPage,
 	forPlans,
 	forShelf,
@@ -61,13 +58,12 @@ export async function GET({ params, fetch }) {
 		guides,
 		offline
 	};
-	// A shelf with none of its picks published, or a section the page's own
-	// buttons point at coming back empty: fail the build rather than ship a
-	// bare heading or a dead link (the picks need replacing in $lib/forPages).
+	// A shelf with none of its picks published: fail the build rather than ship
+	// a bare heading (the picks need replacing in $lib/forPages). An empty plan,
+	// guide or offline section is not an error — the page drops it, and a
+	// button that pointed there goes to its fallback page instead (forHref).
+	// CI's API, seeded from the fixture alone, has only a few plans.
 	const empty = data.shelves.find((s) => !s.books.length);
 	if (empty) error(500, `No published book on the '${page.slug}' shelf '${empty.title}'.`);
-	for (const href of pageLinks(page).filter(isForAnchor)) {
-		if (!data[FOR_ANCHORS[href].section].length) error(500, `'${page.slug}' links ${href}, which is empty.`);
-	}
 	return json(data);
 }
