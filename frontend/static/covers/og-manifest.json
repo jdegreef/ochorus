@@ -5290,6 +5290,35 @@
 				478
 			]
 		},
+		"es/life-and-diary-of-david-brainerd": {
+			"ground": "802a4edfc703abbc2d09834c302f1ed7b0baf902d1685c6d1a6e672de520e7f3",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[150, 102, 450, 131]
+				],
+				"title": [
+					[94, 289, 506, 352],
+					[99, 351, 501, 414]
+				],
+				"subtitle": [
+					[140, 477, 460, 505]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
+		},
 		"es/life-experience-gospel-labours": {
 			"ground": "1705cd87178e053c6e4ebd45fa51e33d2d8aba36c8f4edceb52c2d16d274dd6f",
 			"style": "enlightenment",
