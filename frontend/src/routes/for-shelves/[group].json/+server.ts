@@ -67,7 +67,7 @@ export async function GET({ params, fetch }) {
 	const empty = data.shelves.find((s) => !s.books.length);
 	if (empty) error(500, `No published book on the '${page.slug}' shelf '${empty.title}'.`);
 	for (const href of pageLinks(page).filter(isForAnchor)) {
-		if (!data[FOR_ANCHORS[href]].length) error(500, `'${page.slug}' links ${href}, which is empty.`);
+		if (!data[FOR_ANCHORS[href].section].length) error(500, `'${page.slug}' links ${href}, which is empty.`);
 	}
 	return json(data);
 }

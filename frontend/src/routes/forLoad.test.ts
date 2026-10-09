@@ -62,6 +62,8 @@ describe('"Ochorus for" load', () => {
 	it('drops the sections at runtime — a 404, or the SPA shell answering 200', async () => {
 		expect((await run('parents', async () => new Response('', { status: 404 }))).shelf).toEqual(EMPTY_SHELF_DATA);
 		expect((await run('parents', async () => new Response('<!doctype html>'))).shelf).toEqual(EMPTY_SHELF_DATA);
+		// A cached snapshot from before it was an object: a bare array of books.
+		expect((await run('parents', async () => Response.json([{ slug: 'x' }]))).shelf).toEqual(EMPTY_SHELF_DATA);
 	});
 
 	it('fails the build instead of prerendering a page without its books', async () => {

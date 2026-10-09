@@ -1,6 +1,6 @@
 import { building } from '$app/environment';
 import { error } from '@sveltejs/kit';
-import { EMPTY_SHELF_DATA, FOR_PAGES, forPage, type ForShelfData } from '$lib/forPages';
+import { EMPTY_SHELF_DATA, FOR_PAGES, forPage, isShelfData } from '$lib/forPages';
 import type { EntryGenerator, PageLoad } from './$types';
 
 // The "Ochorus for …" pages ($lib/forPages): English-only, one per group.
@@ -22,7 +22,11 @@ export const load: PageLoad = async ({ params, fetch }) => {
 	try {
 		const res = await fetch(`/for-shelves/${page.slug}.json`);
 		if (!res.ok) throw new Error(`for-shelves/${page.slug}: ${res.status}`);
-		return { page, shelf: (await res.json()) as ForShelfData };
+		const shelf: unknown = await res.json();
+		// A cached copy from before the snapshot was an object would otherwise
+		// reach the page as an array and break it.
+		if (!isShelfData(shelf)) throw new Error(`for-shelves/${page.slug}: not a snapshot`);
+		return { page, shelf };
 	} catch (err) {
 		if (building) throw err;
 		return { page, shelf: EMPTY_SHELF_DATA };

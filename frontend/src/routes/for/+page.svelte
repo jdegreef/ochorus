@@ -14,8 +14,8 @@
 	 */
 	const canonical = `${SITE_URL}${FOR_INDEX}`;
 	const title = FOR_INDEX_CARD.title;
-	const description =
-		'Free Christian classics for churches, small groups, youth ministries, missionaries, chaplains, Bible colleges, schools, homeschool families and parents.';
+	const phrases = FOR_LINKS.map((l) => FOR_META[l.slug].phrase);
+	const description = `Free Christian classics for ${phrases.slice(0, -1).join(', ')} and ${phrases.at(-1)}.`;
 	const pageLd = collectionPage({
 		name: title,
 		description,

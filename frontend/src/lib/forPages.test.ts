@@ -3,8 +3,11 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { FOR_LINKS, forPath } from './forLinks';
 import {
+	EMPTY_SHELF_DATA,
 	FOR_PAGES,
 	PLANS_SHOWN,
+	forHref,
+	isShelfData,
 	type ForAnchor,
 	isForAnchor,
 	pageLinks,
@@ -19,8 +22,12 @@ import type { BookDetail, BookSummary, PlanSummary } from './library-public';
 const ROUTES = join(import.meta.dirname, '..', 'routes');
 const LIBRARY = join(import.meta.dirname, '..', '..', '..', 'backend', 'library');
 const BOOKS = join(LIBRARY, 'fixtures', 'content', 'books');
-/** The plan seed, read as text: each plan slug appears quoted. */
-const PLAN_SEED = readFileSync(join(LIBRARY, 'plan_seed.py'), 'utf8');
+/** The plan slugs in the seed: each plan tuple's FIRST element (the rest of the
+ *  tuple names its source books, which must not count; comment lines may sit
+ *  between the parenthesis and it). */
+const PLAN_SLUGS = new Set(
+	[...readFileSync(join(LIBRARY, 'plan_seed.py'), 'utf8').matchAll(/\(\s*\n(?:\s*#[^\n]*\n)*\s*"([a-z0-9-]+)",/g)].map((m) => m[1])
+);
 
 /** This slug's English book row in the content fixture, or null. */
 const fixtureBook = (slug: string): { is_published: boolean; pdf_url: string } | null => {
@@ -103,8 +110,11 @@ describe('the "Ochorus for …" pages', () => {
 	});
 
 	it('picks plans the seed defines', () => {
+		// The parse itself: a plan slug counts, a source book's does not.
+		expect(PLAN_SLUGS.has('humility-12-days')).toBe(true);
+		expect(PLAN_SLUGS.has('humility-2')).toBe(false);
 		for (const p of FOR_PAGES) {
-			expect(p.plans.filter((s) => !PLAN_SEED.includes(`"${s}"`)), p.slug).toEqual([]);
+			expect(p.plans.filter((s) => !PLAN_SLUGS.has(s)), p.slug).toEqual([]);
 		}
 	});
 
@@ -147,5 +157,20 @@ describe('the "Ochorus for …" pages', () => {
 		expect(toOfflineBook(detail(''))).toBeNull();
 		expect(toOfflineBook(detail('/pdfs/x.pdf'))).toMatchObject({ pdf_url: '/pdfs/x.pdf', epub_url: '' });
 		expect(toOfflineBook(detail('', '/api/x.epub'))?.book.slug).toBe('x');
+	});
+
+	it('sends an anchor whose section is missing to the page that holds the same things', () => {
+		const plans = [{ slug: 'p' }] as PlanSummary[];
+		expect(forHref('#plans', { ...EMPTY_SHELF_DATA, plans })).toBe('#plans');
+		expect(forHref('#plans', EMPTY_SHELF_DATA)).toBe('/plans');
+		expect(forHref('#offline', EMPTY_SHELF_DATA)).toBe('/books');
+		expect(forHref('/teens', EMPTY_SHELF_DATA)).toBe('/teens');
+	});
+
+	it('knows a snapshot from anything else', () => {
+		expect(isShelfData(EMPTY_SHELF_DATA)).toBe(true);
+		expect(isShelfData([{ slug: 'school-of-prayer' }])).toBe(false);
+		expect(isShelfData(null)).toBe(false);
+		expect(isShelfData({ shelves: [], plans: [] })).toBe(false);
 	});
 });

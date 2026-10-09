@@ -1,6 +1,6 @@
 /**
- * The "Ochorus for …" pages' links — the footer's bottom row and each page's
- * "also for" line. Kept apart from the page copy ($lib/forPages) because the
+ * The "Ochorus for …" pages' links — the footer's bottom row, each page's
+ * group switcher, the /for/ index and the share-card script. Kept apart from the page copy ($lib/forPages) because the
  * footer is in the layout: importing the copy there would ship every page's
  * text with every page. forPages.test.ts keeps the two lists in step.
  */

@@ -15,6 +15,7 @@
 	import { FOR_INDEX, FOR_LINKS, forPath } from '$lib/forLinks';
 	import { FOR_META } from '$lib/forMeta';
 	import { localizeHref } from '$lib/href';
+	import { forHref } from '$lib/forPages';
 	import { guideCardLink, toBookTile } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { hreflangFor, jsonLd, pickQa } from '$lib/seo';
@@ -92,8 +93,8 @@
 			<h1 class="mt-3 text-balance font-display text-h1 font-semibold leading-tight">{page.title}</h1>
 			<p class="lede mt-4 text-muted">{page.lead}</p>
 			<div class="mt-6 flex flex-wrap gap-3">
-				<a class="btn btn-primary" href={localizeHref(page.primary.href)}>{page.primary.label}</a>
-				<a class="btn btn-ghost" href={localizeHref(page.secondary.href)}>{page.secondary.label}</a>
+				<a class="btn btn-primary" href={localizeHref(forHref(page.primary.href, shelf))}>{page.primary.label}</a>
+				<a class="btn btn-ghost" href={localizeHref(forHref(page.secondary.href, shelf))}>{page.secondary.label}</a>
 			</div>
 		</div>
 		{#if fan.length}
@@ -115,7 +116,7 @@
 					<p class="mt-2 text-body text-muted">{p.body}</p>
 					{#if p.link}
 						<p class="mt-3 text-small">
-							<a class="text-accent hover:underline" href={localizeHref(p.link.href)}>{p.link.label} <Arrow /></a>
+							<a class="text-accent hover:underline" href={localizeHref(forHref(p.link.href, shelf))}>{p.link.label} <Arrow /></a>
 						</p>
 					{/if}
 				</li>
@@ -161,8 +162,7 @@
 			<h2 id="shelves-heading" class="text-h2">Good places to start</h2>
 			{#each shelf.shelves as s (s.title)}
 				<div class="mt-8">
-					<GroupHeading name={s.title} as="h3" />
-					<p class="-mt-2 mb-5 max-w-2xl text-small text-muted">{s.note}</p>
+					<GroupHeading name={s.title} as="h3" blurb={s.note} />
 					<div class="book-grid">
 						{#each s.books as book (book.slug)}
 							<BookCard {book} showAuthor />
@@ -245,7 +245,7 @@
 		<h2 class="mt-4 max-w-[22ch] text-h2">{page.closeHeading}</h2>
 		<p class="mt-3 max-w-xl text-body text-muted">{page.closeBody}</p>
 		<div class="mt-6 flex flex-wrap justify-center gap-3">
-			<a class="btn btn-primary" href={localizeHref(page.primary.href)}>{page.primary.label}</a>
+			<a class="btn btn-primary" href={localizeHref(forHref(page.primary.href, shelf))}>{page.primary.label}</a>
 			<a class="btn btn-ghost" href={localizeHref('/contact')}>Contact us</a>
 		</div>
 	</section>

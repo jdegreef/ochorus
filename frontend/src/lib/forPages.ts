@@ -1,9 +1,7 @@
 import type { IconName } from '$lib/components/Icon.svelte';
 import {
-	COVER_AUTHOR_KEYS,
-	COVER_FACE_KEYS,
-	pick,
 	toCoverBook,
+	toCoverFace,
 	type CoverFace,
 	type BookDetail,
 	type BookSummary,
@@ -84,15 +82,16 @@ export interface ForPage {
 	closeBody: string;
 }
 
-/** The anchors a `ForLink` may point at, each to the snapshot section that
- *  answers to it — the build fails if a page links one that came back empty
- *  (routes/for-shelves). */
+/** The anchors a `ForLink` may point at: each to the snapshot section that
+ *  answers to it, and the page that holds the same things when that section
+ *  is missing at runtime (an offline reader without the snapshot). The build
+ *  fails if a page links a section that came back empty (routes/for-shelves). */
 export const FOR_ANCHORS = {
-	'#plans': 'plans',
-	'#shelves': 'shelves',
-	'#guides': 'guides',
-	'#offline': 'offline'
-} as const satisfies Record<string, keyof ForShelfData>;
+	'#plans': { section: 'plans', fallback: '/plans' },
+	'#shelves': { section: 'shelves', fallback: '/books' },
+	'#guides': { section: 'guides', fallback: '/young-readers' },
+	'#offline': { section: 'offline', fallback: '/books' }
+} as const satisfies Record<string, { section: keyof ForShelfData; fallback: string }>;
 
 export type ForAnchor = keyof typeof FOR_ANCHORS;
 
@@ -105,6 +104,18 @@ export const pageLinks = (p: ForPage): string[] => [
 
 /** Is this href one of the page's own sections? */
 export const isForAnchor = (href: string): href is ForAnchor => Object.hasOwn(FOR_ANCHORS, href);
+
+/** Where a page link really goes: an anchor whose section has nothing in this
+ *  snapshot goes to its fallback page instead of nowhere. */
+export const forHref = (href: string, shelf: ForShelfData): string =>
+	isForAnchor(href) && !shelf[FOR_ANCHORS[href].section].length ? FOR_ANCHORS[href].fallback : href;
+
+/** Is this a snapshot the page can draw? A tab still holding the earlier
+ *  format (a bare array of books) or anything else gets the empty one. */
+export const isShelfData = (x: unknown): x is ForShelfData =>
+	!!x &&
+	typeof x === 'object' &&
+	Object.values(FOR_ANCHORS).every(({ section }) => Array.isArray((x as Record<string, unknown>)[section]));
 
 /** The live languages besides English, by their English names, from the
  *  registry's "Go live" list — so the copy names exactly what the site
@@ -1299,7 +1310,7 @@ export interface ForOfflineBook {
 export function toOfflineBook(b: BookDetail): ForOfflineBook | null {
 	const epub = b.epub_url ?? '';
 	if (!b.pdf_url && !epub) return null;
-	return { book: { ...pick(b, COVER_FACE_KEYS), author: pick(b.author, COVER_AUTHOR_KEYS) }, pdf_url: b.pdf_url, epub_url: epub };
+	return { book: toCoverFace(b), pdf_url: b.pdf_url, epub_url: epub };
 }
 
 /** Everything a page draws from the live library, snapshotted at build time

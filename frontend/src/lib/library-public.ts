@@ -1230,11 +1230,13 @@ export const tileFace = (t: BookTile): CoverFace | null =>
 
 /** A book as a strip tile, for the fans built in the browser from books the
  *  page already has — the same shape the API's `_book_cover` sends. */
-export const toBookTile = (b: CoverFace): BookTile => ({
-	kind: 'book',
+/** Any book trimmed to what a cover draws. */
+export const toCoverFace = (b: CoverFace): CoverFace => ({
 	...pick(b, COVER_FACE_KEYS),
 	author: pick(b.author, COVER_AUTHOR_KEYS)
 });
+
+export const toBookTile = (b: CoverFace): BookTile => ({ kind: 'book', ...toCoverFace(b) });
 
 /**
  * A sermon in a topic's strip. It carries no cover fields because it is not
