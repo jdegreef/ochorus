@@ -6977,6 +6977,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"fr/how-to-bring-men-to-christ": {
+			"ground": "c2360e66d8103568e5971f99d2e5e908ea0d2b4256d4d8424250fbdf9f0976e9",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "diagonal/ochre",
+			"bar": 0.055
+		},
 		"fr/humility-2": {
 			"ground": "b7ebe70a06a8600d5d850fffd7c551de82f033f08f76304260f30eefb4ecf8d7",
 			"style": "devotional",
