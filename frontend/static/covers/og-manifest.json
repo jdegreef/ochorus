@@ -7156,6 +7156,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"fr/necessity-of-prayer": {
+			"ground": "58dbe05a961d5deb8908899892b01438b3f8d24f388e4cbf99429ff1baad4ea1",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0.05
+		},
 		"fr/pandita-ramabai-a-life-children": {
 			"ground": "578b9b129d985b4c985ebfa5a1a3ee85f98bc9c2b5765d106832360a0930a968",
 			"style": "young",
