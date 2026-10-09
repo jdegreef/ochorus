@@ -13,7 +13,9 @@
 
 <section class="mb-8">
 	<h2 class="section-label mb-4">{heading}</h2>
-	<ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+	<!-- grid-cols-1, not the implicit track: a row's truncating title has a
+	     min-content width that otherwise widens a phone's column off-screen. -->
+	<ul class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
 		{@render children()}
 	</ul>
 </section>

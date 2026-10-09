@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { scrollEdges } from '$lib/actions/scrollEdges';
-	import type { AudienceShelf } from '$lib/library-public';
+	import { citeLine, type AudienceShelf } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, collectionPage, hreflangExact } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
@@ -32,6 +32,9 @@
 	import Arrow from '$lib/components/Arrow.svelte';
 	import ParentsNote from '$lib/components/ParentsNote.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
+	import QuoteCard from '$lib/components/QuoteCard.svelte';
+	import HubContinue from '$lib/components/HubContinue.svelte';
+	import HubChallenge from '$lib/components/HubChallenge.svelte';
 	import { track } from '$lib/analytics';
 
 	/**
@@ -67,6 +70,8 @@
 	const paths = $derived(hubPaths(hub, shelf));
 	const fan = $derived(heroCovers(shelf));
 	const people = $derived(shelf.people ?? []);
+	const quotes = $derived(shelf.quotes ?? []);
+	const challengeSeries = $derived(shelf.series.find((s) => s.slug === hub.challenge.series));
 	const leaderGuides = $derived(shelf.leader_guides ?? []);
 
 	// The page's groups, in order, each only when it has something — the jump
@@ -171,6 +176,8 @@
 	{:else if empty}
 		<EmptyState message={t('audience.none')} />
 	{:else}
+		<HubContinue {shelf} exclude={challengeSeries?.slug} />
+
 		{#if paths.length > 1}
 			<!-- A few clear first choices above the shelves, by what the reader is
 			     after rather than by format — the editor's start pick among them. -->
@@ -243,6 +250,14 @@
 			</nav>
 		{/if}
 
+		{#if challengeSeries}
+			<HubChallenge
+				series={challengeSeries}
+				challenge={hub.challenge}
+				onstart={() => track(HUB_EVENT, { hub: hub.audience, action: 'challenge' })}
+			/>
+		{/if}
+
 		{#if people.length}
 			<section id="people" class="jump-anchor mb-12">
 				<GroupHeading name={t(hub.peopleHeadingKey)} />
@@ -277,6 +292,20 @@
 								{/if}
 							</a>
 						</li>
+					{/each}
+				</ul>
+			</section>
+		{/if}
+
+		{#if quotes.length}
+			<!-- The faces above, in their own words — sourced to the paragraph, with
+			     the quote pages' copy and share-as-image actions (English only). -->
+			<section class="mb-12" aria-labelledby="quotes-heading">
+				<h2 id="quotes-heading" class="section-label mb-4">{t('audience.quotesHeading')}</h2>
+				<ul class="grid grid-cols-1 items-stretch gap-5 md:grid-cols-2 lg:grid-cols-3">
+					{#each quotes as q (q.slug)}
+						<!-- Mixed writers, so the citation leads with whose words they are. -->
+						<QuoteCard quote={q} authorName={q.author.name} cite={`${q.author.name}, ${citeLine(q)}`} />
 					{/each}
 				</ul>
 			</section>
@@ -399,7 +428,10 @@
 					<p>{t('audience.parentsPrintable')}</p>
 					<ul class="flex flex-wrap gap-2 pt-1">
 						{#each printable as link (link.href)}
-							<li><a class="tag" href={localizeHref(link.href)}>{link.label}</a></li>
+							<!-- A long title wraps inside its pill rather than widening a phone. -->
+							<li class="max-w-full">
+								<a class="tag max-w-full whitespace-normal" href={localizeHref(link.href)}>{link.label}</a>
+							</li>
 						{/each}
 					</ul>
 				{/if}
