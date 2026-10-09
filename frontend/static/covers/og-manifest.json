@@ -7097,6 +7097,34 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"fr/tukutendereza": {
+			"ground": "63376009d7535312979317cf1b09f16ba693156d67961c0b2f340d55f680d413",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[72, 314, 528, 390]
+				],
+				"subtitle": [
+					[147, 448, 453, 476]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				319,
+				476
+			]
+		},
 		"fr/union-and-communion": {
 			"ground": "30ebb37ff6e65a8339bc0f4f1d64ce5cbb4c4d3c7fef81fc751f00be5b4688b3",
 			"style": "revival",
