@@ -2197,24 +2197,64 @@
 			]
 		},
 		"anchored-1": {
-			"ground": "2ded8c5d05b8af6fc3895fc121e4f09f8fdec2d017d7e34028487c7766afc358",
+			"ground": "c5e22c0400546afd69a6dc4c01f5c2ce534c43010634b5eaae494324409db1d8",
 			"style": "originals",
 			"volume": "1",
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.8,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 269, 308, 313],
+					[152, 347, 448, 423]
+				],
+				"subtitle": [
+					[94, 481, 506, 509],
+					[137, 509, 463, 537]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				537
+			]
 		},
 		"anchored-2": {
-			"ground": "7dd0bca444a85bdf5b6c74d044c5496a2d41629e8b914cebe66f0f29030a5477",
+			"ground": "cf855af6fc9700b94234167148a5ee01f2f803ed861c051b1f24a44eeb95dd13",
 			"style": "originals",
 			"volume": "2",
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.85,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 269, 311, 313],
+					[152, 347, 448, 423]
+				],
+				"subtitle": [
+					[136, 481, 464, 509],
+					[140, 509, 460, 537]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				537
+			]
 		},
 		"answers-to-prayer": {
 			"ground": "eea397da9a1340cccc9ed01bd4d174bcfa0db47a0da4fc6676220efe11d644ca",
@@ -13841,24 +13881,64 @@
 			"bar": 0
 		},
 		"they-were-young-1": {
-			"ground": "e4c7c5041204def793d8342600b0fbc594ad0ec507826a28eaacf7ab7b01200a",
+			"ground": "4e4617ad54c0af3905c9159d881cf567fd77b8264050bb3606208e4ee72c32eb",
 			"style": "originals",
 			"volume": "1",
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.55,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 250, 308, 294],
+					[139, 328, 461, 404],
+					[205, 394, 395, 470]
+				],
+				"subtitle": [
+					[146, 528, 454, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
+			]
 		},
 		"they-were-young-2": {
-			"ground": "2e5f69fe3b65cbf6e4d983b022c6ba50e7d65c040df579b229f8a4405e5aee32",
+			"ground": "a1d09f390edc3d5acff0332243c46bbf28c699a6bd35168fef663ca71efd0309",
 			"style": "originals",
 			"volume": "2",
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 250, 311, 294],
+					[139, 328, 461, 404],
+					[205, 394, 395, 470]
+				],
+				"subtitle": [
+					[47, 528, 553, 556]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				238,
+				556
+			]
 		},
 		"things-as-they-are": {
 			"ground": "7090f06cc32398199d5011091deb2f02f2a7caa55e4d8a62a1e71beb562023d5",
