@@ -52,5 +52,14 @@
       "«віддання себе» is the glossary rendering of surrender. AI-drafted, awaiting native review.",
       "The row appears only once both source books exist in uk — life-and-diary-of-david-brainerd has no uk edition yet."
     ]
+  },
+  "power-from-on-high": {
+    "title": "Сила згори: Святий Дух",
+    "description": "Чотири тижні з Р. А. Торрі про життя, сповнене Духом: спершу — хрещення Святим Духом і сила, яку воно дає для служіння, а потім — глибше дослідження Особи і діла Духа, що перебуває в кожному віруючому.",
+    "note": [
+      "Job #1676. Торрі follows the shipped uk corpus (24×, «Р. А. Торрі» 4×). «хрещення Святим Духом» quotes the uk title of the first source book, «Хрещення Святим Духом» (baptism-with-the-holy-spirit.uk); «Особи і діла» echoes «Особа і діло Святого Духа», the uk name that book gives the second. «сила згори» and «сповнений Духом» are the corpus's own phrasing.",
+      "AI-drafted, awaiting native review.",
+      "The row appears only once both source books exist in uk — the-person-and-work-of-the-holy-spirit has no uk edition yet."
+    ]
   }
 }
