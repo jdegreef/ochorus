@@ -2029,7 +2029,7 @@
 
 	/* The initial prints in the black accent; a gold gilt edge on black ink
 	   reads as a misregistration, not a flourish. */
-	.reading > p:first-of-type::first-letter {
+	:is(.reading, .has-initial) > p:first-of-type::first-letter {
 		/* !important: the screen rule's selector is far more specific. */
 		text-shadow: none !important;
 	}

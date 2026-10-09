@@ -3,7 +3,7 @@
 	import ReadBar from '$lib/components/ReadBar.svelte';
 	import { coverVariants, isPlateCover, shareCard, shareImage } from '$lib/coverArt';
 	import { hydrateSrc } from '$lib/hydrateSrc';
-	import { authorLdType, authorPath } from '$lib/originals';
+	import { authorLdType, authorPath, ORIGINALS_SLUG } from '$lib/originals';
 	import { type BookDetail, formatLifespan } from '$lib/library-public';
 	import { getProgressRecord } from '$lib/progress';
 	import { bookChapterPath, furthestOf, resumeOrderOf, type ProgressRecord } from '$lib/reading-schema';
@@ -48,7 +48,6 @@
 	import type { BookSummary } from '$lib/library-public';
 	import PersonCard from '$lib/components/PersonCard.svelte';
 	import Portrait from '$lib/components/Portrait.svelte';
-	import LifeTimeline from '$lib/components/LifeTimeline.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import ArticleLinkCard from '$lib/components/ArticleLinkCard.svelte';
 	import Icon from '$lib/components/Icon.svelte';
@@ -476,15 +475,14 @@
 	const showSubnav = $derived(navItems.length >= 2);
 
 	const authorHref = $derived(localizeHref(authorPath(book.author.slug)));
-	// Where this book fell in its author's life: the author page's timeline
-	// with three dots — birth, this book, death — when all three years are
-	// known and in order. Its labels stay off (they'd be English words); the
-	// caption under it names the book.
+	// Where this book fell in its author's life, as a share of the line from
+	// birth to death — when all three years are known and in order. Its own
+	// small line, not the author page's LifeTimeline: that one's SVG scales to
+	// its column, and in this band's narrow one its years drew at ~7px.
 	const lifeline = $derived.by(() => {
 		const { birth_year: b, death_year: d } = book.author;
 		const y = book.publication_year;
-		if (!(b && d && y && b < y && y < d)) return null;
-		return [b, y, d].map((year) => ({ year, label: String(year) }));
+		return b && d && y && b < y && y < d ? ((y - b) / (d - b)) * 100 : null;
 	});
 
 	// One reading of the reader's place for the contents' bar and its rows.
@@ -919,7 +917,11 @@
 	{:else if book.description}
 		<section id="about" class="jump-anchor mt-8" aria-labelledby="about-work">
 			<h2 id="about-work" class="section-heading">{t('book.aboutWork')}</h2>
-			<div class="has-initial" dir="auto"><p class="text-body leading-relaxed">{book.description}</p></div>
+			<!-- The initial only for a description long enough to wrap: beside a
+			     one-line sentence a three-line cap hangs below the text. -->
+			<div class:has-initial={book.description.length > 240} dir="auto">
+				<p class="text-body leading-relaxed">{book.description}</p>
+			</div>
 		</section>
 	{/if}
 
@@ -939,7 +941,7 @@
 	     is given. -->
 	{#if book.opening}
 		<figure class="opening-card mt-8 max-w-xl">
-			<blockquote class="font-display text-h3 italic leading-snug" dir="auto">
+			<blockquote class="font-display text-h3 leading-snug" dir="auto">
 				{book.opening.text}
 			</blockquote>
 			<figcaption class="mt-2 text-small text-muted" dir="auto">
@@ -1116,43 +1118,47 @@
 	     birth to death. No bio: on this page it read as the book's own prose
 	     (bookAboutSection.test.ts); the full life is the author page's, and
 	     this band is the way there. -->
-	<section
-		class="mt-12 flex items-center gap-5 rounded-card bg-surface-2 p-5 sm:gap-7 sm:p-7"
-		aria-labelledby="author-band-name"
-	>
-		<a href={authorHref} class="shrink-0 hover:no-underline" tabindex="-1" aria-hidden="true">
-			<Portrait
-				slug={book.author.slug}
-				name={book.author.name}
-				url={book.author.photo_url}
-				px={128}
-				class="h-20 w-20 sm:h-32 sm:w-32"
-				initialsClass="text-h2"
-			/>
-		</a>
-		<div class="min-w-0 flex-1">
-			<p class="eyebrow text-muted">{t('finished.aboutAuthor')}</p>
-			<h2 id="author-band-name" class="text-h2">
-				<a href={authorHref} class="text-text hover:underline">{book.author.name}</a>
-			</h2>
-			{#if lifeline}
-				<div class="max-w-md">
-					<LifeTimeline
-						birthYear={book.author.birth_year}
-						deathYear={book.author.death_year}
-						milestones={lifeline}
-						labels={false}
-					/>
-					<p class="text-center text-small text-accent" dir="auto">
-						{book.title} · {book.publication_year}
-					</p>
-				</div>
-			{/if}
-			<a href={authorHref} class="mt-3 inline-block text-small font-semibold text-accent hover:underline"
-				>{t('book.moreBy').replace('%name%', book.author.name)} <Arrow /></a
-			>
-		</div>
-	</section>
+	{#if book.author.slug !== ORIGINALS_SLUG}
+		<section
+			class="mt-12 flex items-center gap-5 rounded-card bg-surface-2 p-5 sm:gap-7 sm:p-7"
+			aria-labelledby="author-band-name"
+		>
+			<a href={authorHref} class="shrink-0 hover:no-underline" tabindex="-1" aria-hidden="true">
+				<Portrait
+					slug={book.author.slug}
+					name={book.author.name}
+					url={book.author.photo_url}
+					px={128}
+					class="h-20 w-20 sm:h-32 sm:w-32"
+					initialsClass="text-h2"
+				/>
+			</a>
+			<div class="min-w-0 flex-1">
+				<p class="eyebrow text-muted">{t('finished.aboutAuthor')}</p>
+				<h2 id="author-band-name" class="text-h2">
+					<a href={authorHref} class="text-text hover:underline">{book.author.name}</a>
+				</h2>
+				{#if lifeline != null}
+					<div class="mt-4 max-w-md">
+						<div class="lifeline">
+							<span class="text-small text-muted">{book.author.birth_year}</span>
+							<span class="lifeline-track"
+								><span class="lifeline-mark" style:inset-inline-start="{lifeline}%"></span></span
+							>
+							<span class="text-small text-muted">{book.author.death_year}</span>
+						</div>
+						<!-- In the mark's accent: the legend for the one coloured dot. -->
+						<p class="mt-1 text-center text-small text-accent" dir="auto">
+							{book.title} · {book.publication_year}
+						</p>
+					</div>
+				{/if}
+				<a href={authorHref} class="mt-3 inline-block text-small font-semibold text-accent hover:underline"
+					>{t('book.moreBy').replace('%name%', book.author.name)} <Arrow /></a
+				>
+			</div>
+		</section>
+	{/if}
 
 	<!-- Where to go from here: one book to read next (the first of "More like
 	     this", given room and its pitch) and, for a book with one, the leader's
@@ -1447,13 +1453,37 @@
 		background: var(--surface-2);
 	}
 	.opening-card::before {
-		content: '“';
+		content: '“' / '';
 		display: block;
 		height: 1.6rem;
 		font-family: var(--house-display);
 		font-size: var(--fs-display);
 		line-height: 1;
 		color: var(--ornament);
+	}
+
+	/* The author's lifeline: birth and death at its ends, this book a dot. */
+	.lifeline {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+	}
+	.lifeline-track {
+		position: relative;
+		flex: 1;
+		height: 2px;
+		background: var(--border-strong);
+	}
+	.lifeline-mark {
+		position: absolute;
+		top: 50%;
+		width: 0.85rem;
+		height: 0.85rem;
+		margin-inline-start: -0.425rem;
+		border: 2px solid var(--surface-2);
+		border-radius: 50%;
+		background: var(--accent);
+		transform: translateY(-50%);
 	}
 
 	/* Read next, and the group guide beside it. */
