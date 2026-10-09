@@ -413,6 +413,174 @@ export const FOR_PAGES: ForPage[] = [
 		closeBody: 'Browse the library, or start with the lives of the missionaries who went before you.'
 	},
 	{
+		slug: 'chaplains',
+		title: 'Free Christian classics for prison, hospital and military chaplains',
+		lead: 'Books and sermons for people facing confinement, illness, grief and danger, free to read with no account needed. Bunyan wrote in prison; Corrie ten Boom survived a concentration camp; Hannah Whitall Smith wrote of the God of all comfort.',
+		seoTitle: 'Free Christian Books for Chaplains',
+		seoDescription:
+			'Free Christian classics and sermons for prison, hospital and military chaplains: books for suffering, grief and hope, with simpler editions. No account needed.',
+		primary: { href: '/books', label: 'Browse the library' },
+		secondary: { href: '/sermons', label: 'Short sermons' },
+		pointsHeading: 'Why chaplains use Ochorus',
+		points: [
+			{
+				icon: 'book',
+				title: 'Free, with nothing to sign up for',
+				body: 'Every book and sermon is free to read with no account, so it can be offered to anyone without a budget, a form or a login.',
+				link: { href: '/books', label: 'Browse the books' }
+			},
+			{
+				icon: 'heart',
+				title: 'Written from the hard places',
+				body: 'Classics written in prison, in sickness and under persecution: The Pilgrim’s Progress, Grace Abounding, the letters of Ignatius and the life of Corrie ten Boom.',
+				link: { href: '/topics', label: 'Browse by topic' }
+			},
+			{
+				icon: 'mic',
+				title: 'A sermon for one visit',
+				body: 'Short sermons by Spurgeon, Moody and others can be read in a single visit to a ward or a cell, and many come with study questions.',
+				link: { href: '/sermons', label: 'Read the sermons' }
+			},
+			{
+				icon: 'layers',
+				title: 'Simpler words when they help',
+				body: 'Many classics are retold in plain language in editions for young readers and teens, which suit adults who find the originals hard going.',
+				link: { href: '/young-readers', label: 'See the simpler editions' }
+			}
+		],
+		ideasHeading: 'Ways to use it in your chaplaincy',
+		ideas: [
+			{
+				title: 'A book for the long days',
+				body: 'Give someone facing a long stay a link to a single book and a reading plan to work through, one short reading a day.'
+			},
+			{
+				title: 'A study group',
+				body: 'Read a sermon together each week and talk through its questions.'
+			},
+			{
+				title: 'Words for grief and fear',
+				body: 'Turn to The God of All Comfort, All Things for Good or The Bruised Reed for those who are suffering.'
+			},
+			{
+				title: 'Promises for each day',
+				body: 'Spurgeon’s Cheque Book of the Bank of Faith gives one promise of Scripture for every day of the year.'
+			}
+		],
+		picksNote: 'Books written for, and often from, hard places.',
+		picks: [
+			'pilgrims-progress',
+			'the-god-of-all-comfort',
+			'all-things-for-good',
+			'the-bruised-reed',
+			'corrie-ten-boom-a-life',
+			'cheque-book',
+			'grace-abounding',
+			'all-of-grace'
+		],
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Does the reader need an account?',
+				a: 'No. Anyone can read without signing up, with nothing to fill in. A free account is optional and only keeps progress and notes in step across devices.'
+			},
+			{
+				q: 'What about people with no internet access?',
+				a: 'Some books can be downloaded as free PDF and EPUB files from the book’s page. If you would like to print books for a prison, hospital or base, please contact us first.'
+			},
+			{
+				q: 'Is there anything for people who struggle to read?',
+				a: 'Yes. The editions for young readers and teens retell many classics in simpler words, and any chapter can be read aloud with Listen.'
+			}
+		],
+		closeHeading: 'Bring the classics to the people you serve',
+		closeBody: 'Browse the library, or start with a short sermon you can read in one visit.'
+	},
+	{
+		slug: 'bible-colleges',
+		title: 'A free library of primary sources for Bible colleges and seminaries',
+		lead: 'The church fathers, the Reformers, the Puritans and the great revival preachers, free for every student and teacher. A ready-made theological library for any college, whatever its budget.',
+		seoTitle: 'Free Christian Primary Sources for Bible Colleges',
+		seoDescription:
+			'Free primary sources for Bible colleges and seminaries: the church fathers, Reformers, Puritans and revival preachers, with study companions and biographies.',
+		primary: { href: '/books', label: 'Browse the library' },
+		secondary: { href: '/biographies', label: 'Biographies' },
+		pointsHeading: 'Why Bible colleges use Ochorus',
+		points: [
+			{
+				icon: 'book',
+				title: 'Primary sources at no cost',
+				body: 'Clement, Ignatius, Athanasius, Augustine, Chrysostom, Calvin, Owen, Baxter, Edwards and Wesley: the texts themselves, free for every student.',
+				link: { href: '/authors', label: 'See every writer' }
+			},
+			{
+				icon: 'list',
+				title: 'Study companions',
+				body: 'More than thirty Key Teachings companions introduce a writer’s life and thought, from Augustine and Luther to Spurgeon and Tozer.',
+				link: { href: '/originals', label: 'See the companions' }
+			},
+			{
+				icon: 'quote',
+				title: 'Quotations you can cite',
+				body: 'Each quotation is traced to the book, chapter and paragraph it comes from, so students can check it in context.',
+				link: { href: '/quotes', label: 'Browse the quotes' }
+			},
+			{
+				icon: 'page',
+				title: 'Scripture in the classics',
+				body: 'The Scripture index shows where the classics and sermons engage a book or chapter of the Bible, a help for exegesis and preaching classes.',
+				link: { href: '/scripture', label: 'Open the Scripture index' }
+			}
+		],
+		ideasHeading: 'Ways to use it in your college',
+		ideas: [
+			{
+				title: 'Church history readers',
+				body: 'Assign On the Incarnation, the Confessions and the Epistles of Ignatius alongside lectures, with every student reading the same text.'
+			},
+			{
+				title: 'Pastoral theology',
+				body: 'Read Baxter’s The Reformed Pastor and Chrysostom’s On the Priesthood with those preparing for ministry.'
+			},
+			{
+				title: 'Preaching classes',
+				body: 'Study sermons by Edwards, Whitefield, Wesley and Spurgeon, and trace how each handled a text.'
+			},
+			{
+				title: 'Spiritual formation',
+				body: 'Pair the academic reading with devotional classics like The Imitation of Christ and With Christ in the School of Prayer.'
+			}
+		],
+		picksNote: 'Texts every student of the church should read.',
+		picks: [
+			'on-the-incarnation',
+			'confessions',
+			'the-reformed-pastor',
+			'religious-affections',
+			'mortification-of-sin',
+			'on-the-priesthood',
+			'first-epistle-of-clement',
+			'freedom-of-the-will'
+		],
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Do students need accounts?',
+				a: 'No. Students can read without signing up. A free account is optional: it keeps progress, notes and saved books in step across devices.'
+			},
+			{
+				q: 'Which traditions are represented?',
+				a: 'The library spans the early church, the medieval church, the Reformation, the Puritans, Methodism and the revival and missionary movements, with writers from many traditions.'
+			},
+			{
+				q: 'Can we download or print the texts?',
+				a: 'Some books can be downloaded as free PDF and EPUB files from the book’s page. If you would like to print texts for your college, please contact us first.'
+			}
+		],
+		closeHeading: 'Give your students the whole tradition',
+		closeBody: 'Browse the library, or start with the biographies of the writers you teach.'
+	},
+	{
 		slug: 'schools',
 		title: 'Free Christian classics for your classroom',
 		lead: 'Primary sources from twenty centuries of the church, free for every student on any device. Augustine, Athanasius, Bunyan and Chesterton, true lives of faith, and many classics retold for children and teens.',

@@ -17,6 +17,8 @@ export const FOR_LINKS: ForLinkDest[] = [
 	{ slug: 'small-groups', label: 'Small groups' },
 	{ slug: 'youth', label: 'Youth ministries' },
 	{ slug: 'missionaries', label: 'Missionaries' },
+	{ slug: 'chaplains', label: 'Chaplains' },
+	{ slug: 'bible-colleges', label: 'Bible colleges' },
 	{ slug: 'schools', label: 'Schools' },
 	{ slug: 'homeschool', label: 'Homeschool families' },
 	{ slug: 'parents', label: 'Parents' }
