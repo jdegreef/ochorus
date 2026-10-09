@@ -2178,7 +2178,7 @@
 			]
 		},
 		"amanda-smith-autobiography": {
-			"ground": "aa4cc11c5427d667a4a86ff334ec4bc11d306a55e8dd70f6631e589785737d50",
+			"ground": "6b1b1b5865688dae9f25c5460a615d9c86b54ba98290416964f2a28947adcdab",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
@@ -2191,19 +2191,20 @@
 					[103, 102, 497, 131]
 				],
 				"title": [
-					[65, 327, 535, 403]
+					[100, 294, 500, 370],
+					[65, 360, 535, 436]
 				],
 				"subtitle": [
-					[83, 476, 517, 497],
-					[144, 497, 456, 518]
+					[84, 509, 516, 530],
+					[144, 530, 456, 551]
 				],
 				"mark": [
 					[232, 664, 368, 746]
 				]
 			},
 			"middle": [
-				276,
-				518
+				244,
+				551
 			]
 		},
 		"anchored-1": {
@@ -12239,7 +12240,7 @@
 			]
 		},
 		"sw/amanda-smith-autobiography": {
-			"ground": "5c9a24bdddc4b58a9ae042bf31e12eff71b1cd63c40b6166a102676a1bb0f3b3",
+			"ground": "abb18118f1f6452ac8a3e89e2d1b51b165df6e64577de89defa3ea4db4123ec9",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
@@ -12252,19 +12253,20 @@
 					[103, 102, 497, 131]
 				],
 				"title": [
-					[183, 327, 417, 403]
+					[100, 294, 500, 370],
+					[183, 360, 417, 436]
 				],
 				"subtitle": [
-					[159, 476, 441, 497],
-					[52, 497, 548, 518]
+					[159, 509, 441, 530],
+					[52, 530, 548, 551]
 				],
 				"mark": [
 					[232, 664, 368, 746]
 				]
 			},
 			"middle": [
-				276,
-				518
+				244,
+				551
 			]
 		},
 		"sw/amanda-smith-autobiography-children": {
