@@ -7539,6 +7539,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"fr/the-person-and-work-of-the-holy-spirit": {
+			"ground": "55588bce4a2fc7c2c130a9e7b4fd321b53fe791edfaf991f544a24de8c94d4e2",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "diagonal/ochre",
+			"bar": 0
+		},
 		"fr/the-practice-of-the-presence-of-god-children": {
 			"ground": "3054ae61c1dc370b881658418e8972b0fabd7ee7567a3a095bf5aedcf0191437",
 			"style": "young",
