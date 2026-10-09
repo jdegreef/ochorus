@@ -5520,6 +5520,16 @@
 			"layout": "wash/ochre",
 			"bar": 0
 		},
+		"es/thoughts-for-the-quiet-hour": {
+			"ground": "7acad75bfe17cf35997af81db69d0a50b686985ca03ef268c5b102f7ecf05ef0",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/ochre",
+			"bar": 0
+		},
 		"es/true-vine": {
 			"ground": "12707a4313939e946d4f132f09ee3e1946db2fcfab8555a0f40dc3ee5a3584f1",
 			"style": "devotional",
