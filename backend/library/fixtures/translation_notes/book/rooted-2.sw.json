@@ -1,0 +1,651 @@
+{
+ "kind": "book",
+ "slug": "rooted-2",
+ "language": "sw",
+ "job_issue": 3607,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "John 20:31",
+   "status": "mined",
+   "source_file": "the-way-to-god.sw.json",
+   "block_index": 4
+  },
+  {
+   "reference": "John 1:1",
+   "status": "mined",
+   "source_file": "full-salvation.sw.json",
+   "block_index": 29
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "source_file": "talks-to-the-farmer.sw.json",
+   "block_index": 31
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "mined",
+   "source_file": "rooted-1.sw.json",
+   "block_index": 34
+  },
+  {
+   "reference": "Luke 2:6",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "Luke 2:7",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "Luke 2:10a",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Luke 2:10b–11",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.sw.json",
+   "block_index": 57
+  },
+  {
+   "reference": "Matthew 2:10",
+   "status": "mined",
+   "source_file": "thoughts-for-the-quiet-hour.sw.json",
+   "block_index": 74
+  },
+  {
+   "reference": "Matthew 2:11",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Matthew 2:2b",
+   "status": "self_rendered",
+   "block_index": 77
+  },
+  {
+   "reference": "Luke 2:46",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "Luke 2:47",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "Luke 2:49a",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "Luke 2:49b",
+   "status": "mined",
+   "source_file": "the-masters-indwelling.sw.json",
+   "block_index": 89
+  },
+  {
+   "reference": "Luke 2:48b",
+   "status": "self_rendered",
+   "block_index": 95
+  },
+  {
+   "reference": "Luke 2:52",
+   "status": "mined",
+   "source_file": "spiritual-growth.sw.json",
+   "block_index": 102
+  },
+  {
+   "reference": "Matthew 3:16",
+   "status": "self_rendered",
+   "block_index": 117
+  },
+  {
+   "reference": "Matthew 3:17a",
+   "status": "self_rendered",
+   "block_index": 117
+  },
+  {
+   "reference": "Matthew 3:17b",
+   "status": "mined",
+   "source_file": "baptism-with-the-holy-spirit.sw.json",
+   "block_index": 117
+  },
+  {
+   "reference": "Matthew 3:14b",
+   "status": "self_rendered",
+   "block_index": 120
+  },
+  {
+   "reference": "Matthew 4:1",
+   "status": "self_rendered",
+   "block_index": 130
+  },
+  {
+   "reference": "Matthew 4:2",
+   "status": "self_rendered",
+   "block_index": 130
+  },
+  {
+   "reference": "Matthew 4:3",
+   "status": "self_rendered",
+   "block_index": 130
+  },
+  {
+   "reference": "Matthew 4:4",
+   "status": "mined",
+   "source_file": "the-inner-chamber.sw.json",
+   "block_index": 130
+  },
+  {
+   "reference": "Mark 1:16",
+   "status": "self_rendered",
+   "block_index": 145
+  },
+  {
+   "reference": "Mark 1:17",
+   "status": "mined",
+   "source_file": "cheque-book.sw.json",
+   "block_index": 145
+  },
+  {
+   "reference": "Mark 1:18",
+   "status": "self_rendered",
+   "block_index": 145
+  },
+  {
+   "reference": "John 2:5",
+   "status": "mined",
+   "source_file": "thoughts-for-the-quiet-hour.sw.json",
+   "block_index": 158
+  },
+  {
+   "reference": "John 2:11a",
+   "status": "mined",
+   "source_file": "the-excellency-of-christ.sw.json",
+   "block_index": 160
+  },
+  {
+   "reference": "John 2:11b",
+   "status": "self_rendered",
+   "block_index": 160
+  },
+  {
+   "reference": "John 2:7b",
+   "status": "self_rendered",
+   "block_index": 165
+  },
+  {
+   "reference": "John 2:8a",
+   "status": "self_rendered",
+   "block_index": 165
+  },
+  {
+   "reference": "John 3:1",
+   "status": "self_rendered",
+   "block_index": 173
+  },
+  {
+   "reference": "John 3:2",
+   "status": "self_rendered",
+   "block_index": 173
+  },
+  {
+   "reference": "John 3:3a",
+   "status": "self_rendered",
+   "block_index": 173
+  },
+  {
+   "reference": "John 3:3b",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 173
+  },
+  {
+   "reference": "John 3:4a",
+   "status": "self_rendered",
+   "block_index": 178
+  },
+  {
+   "reference": "John 3:8",
+   "status": "self_rendered",
+   "block_index": 180
+  },
+  {
+   "reference": "John 4:13",
+   "status": "self_rendered",
+   "why": "Words \"Kila anywaye maji haya … ataona kiu tena\" follow unfailing-springs.sw.json, which inserts a bracketed gloss mid-quote; with the gloss removed it is an adaptation.",
+   "block_index": 186
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "source_file": "god-glorified-in-mans-dependence.sw.json",
+   "block_index": 186
+  },
+  {
+   "reference": "John 4:7b",
+   "status": "self_rendered",
+   "block_index": 189
+  },
+  {
+   "reference": "John 4:9a",
+   "status": "self_rendered",
+   "block_index": 190
+  },
+  {
+   "reference": "John 4:29a",
+   "status": "self_rendered",
+   "block_index": 194
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.sw.json",
+   "block_index": 199
+  },
+  {
+   "reference": "Mark 4:40",
+   "status": "self_rendered",
+   "block_index": 199
+  },
+  {
+   "reference": "Mark 4:41",
+   "status": "self_rendered",
+   "block_index": 199
+  },
+  {
+   "reference": "Mark 4:35b",
+   "status": "self_rendered",
+   "block_index": 201
+  },
+  {
+   "reference": "Mark 4:38b",
+   "status": "self_rendered",
+   "block_index": 204
+  },
+  {
+   "reference": "John 6:10",
+   "status": "self_rendered",
+   "block_index": 214
+  },
+  {
+   "reference": "John 6:11",
+   "status": "self_rendered",
+   "block_index": 214
+  },
+  {
+   "reference": "John 6:9",
+   "status": "self_rendered",
+   "block_index": 214
+  },
+  {
+   "reference": "John 6:5b",
+   "status": "self_rendered",
+   "block_index": 217
+  },
+  {
+   "reference": "Matthew 14:29",
+   "status": "self_rendered",
+   "block_index": 226
+  },
+  {
+   "reference": "Matthew 14:30a",
+   "status": "self_rendered",
+   "block_index": 226
+  },
+  {
+   "reference": "Matthew 14:30b",
+   "status": "mined",
+   "source_file": "the-way-to-god.sw.json",
+   "block_index": 226
+  },
+  {
+   "reference": "Matthew 14:31a",
+   "status": "self_rendered",
+   "block_index": 226
+  },
+  {
+   "reference": "Matthew 14:31b",
+   "status": "mined",
+   "source_file": "the-way-to-god.sw.json",
+   "block_index": 226
+  },
+  {
+   "reference": "Matthew 14:26b",
+   "status": "self_rendered",
+   "block_index": 229
+  },
+  {
+   "reference": "Matthew 14:27b",
+   "status": "self_rendered",
+   "block_index": 230
+  },
+  {
+   "reference": "Matthew 14:28b",
+   "status": "self_rendered",
+   "block_index": 231
+  },
+  {
+   "reference": "Mark 10:51a",
+   "status": "self_rendered",
+   "block_index": 243
+  },
+  {
+   "reference": "Mark 10:51b",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.sw.json",
+   "block_index": 243
+  },
+  {
+   "reference": "Mark 10:51c",
+   "status": "self_rendered",
+   "block_index": 243
+  },
+  {
+   "reference": "Mark 10:52a",
+   "status": "self_rendered",
+   "block_index": 243
+  },
+  {
+   "reference": "Mark 10:52b",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.sw.json",
+   "block_index": 243
+  },
+  {
+   "reference": "Mark 10:52c",
+   "status": "self_rendered",
+   "block_index": 243
+  },
+  {
+   "reference": "Mark 10:13",
+   "status": "self_rendered",
+   "block_index": 259
+  },
+  {
+   "reference": "Mark 10:14a",
+   "status": "self_rendered",
+   "block_index": 259
+  },
+  {
+   "reference": "Mark 10:14b",
+   "status": "mined",
+   "source_file": "the-meaning-of-the-cross.sw.json",
+   "block_index": 259
+  },
+  {
+   "reference": "John 11:25a",
+   "status": "self_rendered",
+   "block_index": 273
+  },
+  {
+   "reference": "John 11:25b–26a",
+   "status": "mined",
+   "source_file": "the-way-to-god.sw.json",
+   "block_index": 273
+  },
+  {
+   "reference": "John 11:26b",
+   "status": "mined",
+   "source_file": "cheque-book.sw.json",
+   "block_index": 273
+  },
+  {
+   "reference": "John 11:35",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.sw.json",
+   "block_index": 279
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "source_file": "humility-2.sw.json",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:4",
+   "status": "mined",
+   "source_file": "cheque-book.sw.json",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:5",
+   "status": "mined",
+   "source_file": "humility-2.sw.json",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:6",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:7",
+   "status": "mined",
+   "source_file": "cheque-book.sw.json",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "mined",
+   "source_file": "way-into-holiest.sw.json",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:9",
+   "status": "mined",
+   "source_file": "days-of-heaven-upon-earth.sw.json",
+   "block_index": 287
+  },
+  {
+   "reference": "Matthew 5:14–16",
+   "status": "mined",
+   "source_file": "clothed-with-strength-and-dignity.sw.json",
+   "block_index": 304
+  },
+  {
+   "reference": "Matthew 6:26",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json",
+   "block_index": 317
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.sw.json",
+   "block_index": 325
+  },
+  {
+   "reference": "Luke 15:4",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.sw.json",
+   "block_index": 331
+  },
+  {
+   "reference": "Luke 15:5",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.sw.json",
+   "block_index": 331
+  },
+  {
+   "reference": "Luke 15:6",
+   "status": "mined",
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json",
+   "block_index": 331
+  },
+  {
+   "reference": "Luke 15:7",
+   "status": "self_rendered",
+   "block_index": 331
+  },
+  {
+   "reference": "Luke 15:20",
+   "status": "mined",
+   "source_file": "the-life-of-trust-teens.sw.json",
+   "block_index": 346
+  },
+  {
+   "reference": "Luke 10:36",
+   "status": "self_rendered",
+   "block_index": 360
+  },
+  {
+   "reference": "Luke 10:37",
+   "status": "self_rendered",
+   "block_index": 360
+  },
+  {
+   "reference": "Luke 10:27b",
+   "status": "self_rendered",
+   "block_index": 362
+  },
+  {
+   "reference": "Luke 10:29b",
+   "status": "self_rendered",
+   "block_index": 362
+  },
+  {
+   "reference": "Luke 10:33b",
+   "status": "self_rendered",
+   "block_index": 367
+  },
+  {
+   "reference": "Luke 10:35b",
+   "status": "self_rendered",
+   "block_index": 367
+  },
+  {
+   "reference": "Luke 19:5a",
+   "status": "self_rendered",
+   "block_index": 374
+  },
+  {
+   "reference": "Luke 19:5b",
+   "status": "mined",
+   "source_file": "the-way-to-god.sw.json",
+   "block_index": 374
+  },
+  {
+   "reference": "Luke 19:5c",
+   "status": "self_rendered",
+   "block_index": 374
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "source_file": "john-hyde-a-life-children.sw.json",
+   "block_index": 376
+  },
+  {
+   "reference": "Luke 19:7b",
+   "status": "self_rendered",
+   "block_index": 383
+  },
+  {
+   "reference": "Luke 19:8",
+   "status": "self_rendered",
+   "block_index": 384
+  },
+  {
+   "reference": "Luke 19:9a",
+   "status": "self_rendered",
+   "block_index": 385
+  },
+  {
+   "reference": "Matthew 21:9",
+   "status": "self_rendered",
+   "why": "Only the bare shout \"Hosana!\" is quoted in the shipped corpus (godliness.sw.json); the rest is SUV from memory.",
+   "block_index": 391
+  },
+  {
+   "reference": "Matthew 21:5b",
+   "status": "mined",
+   "source_file": "the-excellency-of-christ.sw.json",
+   "block_index": 398
+  },
+  {
+   "reference": "John 13:14",
+   "status": "mined",
+   "source_file": "humility-2.sw.json",
+   "block_index": 405
+  },
+  {
+   "reference": "John 13:15a",
+   "status": "self_rendered",
+   "block_index": 405
+  },
+  {
+   "reference": "John 13:15b",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.sw.json",
+   "block_index": 405
+  },
+  {
+   "reference": "John 13:6",
+   "status": "self_rendered",
+   "block_index": 412
+  },
+  {
+   "reference": "John 13:8b",
+   "status": "self_rendered",
+   "block_index": 412
+  },
+  {
+   "reference": "John 13:13",
+   "status": "self_rendered",
+   "block_index": 413
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "source_file": "a-retrospect-teens.sw.json",
+   "block_index": 419
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "source_file": "godliness.sw.json",
+   "block_index": 424
+  },
+  {
+   "reference": "Matthew 28:5",
+   "status": "self_rendered",
+   "block_index": 433
+  },
+  {
+   "reference": "Matthew 28:6",
+   "status": "mined",
+   "source_file": "the-resurrection-of-jesus.sw.json",
+   "block_index": 433
+  },
+  {
+   "reference": "Matthew 28:19–20",
+   "status": "mined",
+   "source_file": "men-and-women-who-gave-everything-2.sw.json",
+   "block_index": 448
+  },
+  {
+   "reference": "Matthew 16:15",
+   "status": "mined",
+   "source_file": "the-key-in-my-hand.sw.json",
+   "block_index": 465
+  },
+  {
+   "reference": "John 15:5a",
+   "status": "mined",
+   "source_file": "days-of-heaven-upon-earth.sw.json",
+   "block_index": 473
+  },
+  {
+   "reference": "John 20:31",
+   "status": "mined",
+   "source_file": "the-way-to-god.sw.json",
+   "block_index": 475
+  }
+ ]
+}
