@@ -22,7 +22,8 @@
 	import PlanTogetherShare from '$lib/components/PlanTogetherShare.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
-	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import PlanGarden from '$lib/components/PlanGarden.svelte';
+	import { planMeta } from '$lib/emblemNames';
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
 	import { groupPlanDays, weeksOf, type PlanGroup } from '$lib/planGroups';
 	import { elementVisible, jumpToSection } from '$lib/scrollSpy.svelte';
@@ -106,7 +107,6 @@
 	const next = $derived(planProgress.nextDay(plan.slug, plan.day_count));
 	const doneSet = $derived(new Set(planProgress.doneDays(plan.slug)));
 	const doneCount = $derived(doneSet.size);
-	const pct = $derived(plan.day_count ? Math.round((doneCount / plan.day_count) * 100) : 0);
 	const daysLeft = $derived(Math.max(0, plan.day_count - doneCount));
 	/** Words still to read across the days not yet marked done. */
 	const wordsLeft = $derived(
@@ -377,9 +377,14 @@
 							</div>
 						{/if}
 						{#if started}
-							<div class="mt-2">
-								<ProgressBar
-									percent={pct}
+							<!-- How far through, as a garden: a flower for each day read, a
+							     sprout for today, seeds for the days ahead (PlanGarden). -->
+							<div class="mt-3">
+								<PlanGarden
+									dayCount={plan.day_count}
+									done={doneSet}
+									{next}
+									hue={planMeta(plan.slug).accent}
 									label="{plan.title}: {doneCount} {t('plans.of')} {plan.day_count} {t('plans.days')}"
 								/>
 							</div>
