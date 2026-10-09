@@ -1772,6 +1772,16 @@
 			"layout": "wash/sage",
 			"bar": 0.04
 		},
+		"am/selected-sermons-edwards": {
+			"ground": "ccef65ef56a9b6ab6b3abf159e48a13b0de91002268d9f3c618754cb9331281f",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/slate",
+			"bar": 0
+		},
 		"am/separation-and-service": {
 			"ground": "39d6e8ff1249d02fec49f9b301ceb480cc64d53635b0cee687e5dadd2698e990",
 			"style": "revival",
@@ -1832,6 +1842,34 @@
 			"middle": [
 				313,
 				481
+			]
+		},
+		"am/susanna-wesley-clarke": {
+			"ground": "e0f66cae84ea9ebf4bbef8c59f68dcc6dde96f6cfb3a9332bd11af5c5d83218a",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[145, 102, 455, 131]
+				],
+				"title": [
+					[184, 337, 417, 410]
+				],
+				"subtitle": [
+					[143, 463, 457, 484]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				311,
+				484
 			]
 		},
 		"am/talks-to-the-farmer-children": {
@@ -2022,6 +2060,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"am/the-person-and-work-of-the-holy-spirit": {
+			"ground": "657c38818f3004c89394f9b83dd2169fd576d49d0e1d2f119ca4f1b796c8f374",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "diagonal/ochre",
+			"bar": 0
+		},
 		"am/the-secret-of-guidance": {
 			"ground": "078f5ac17594fbfa0486c73ccbf1473db2b087743666b5d8a2e9ed7f3d12b3aa",
 			"style": "devotional",
@@ -2150,6 +2198,36 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0
+		},
+		"am/watchman-nee-a-life": {
+			"ground": "48502b32d1497b734a7bac73a902c32540d54cce5e823e00d90b86a07e6057e1",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[118, 306, 483, 377],
+					[179, 371, 421, 442]
+				],
+				"subtitle": [
+					[168, 461, 433, 489],
+					[166, 489, 434, 517]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				278,
+				517
+			]
 		},
 		"am/women-who-moved-heaven-2": {
 			"ground": "8e40c6f9e6b91d4e578f37bb7d003df06e80b0e681754c63ef2235015e63efa9",
