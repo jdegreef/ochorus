@@ -362,7 +362,13 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'samuel-ajayi-crowther-a-life': 'house',
 	'pandita-ramabai-a-life': 'house',
 	'c-s-lewis-a-life': 'house',
-	'elisabeth-elliot-a-life': 'house'
+	'elisabeth-elliot-a-life': 'house',
+	// The retold classics for teens sit beside the Portraits teen editions on the
+	// shelf and wear the same object ground, so they take the imprint's face
+	// rather than their adult author's century.
+	'grace-abounding-teens': 'originals',
+	'confessions-teens': 'originals',
+	'all-of-grace-teens': 'originals'
 };
 
 /**

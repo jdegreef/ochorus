@@ -18,7 +18,7 @@
   "source_type": "public_domain",
   "source_url": "https://standardebooks.org/ebooks/g-k-chesterton/orthodoxy",
   "attribution": "Public domain — G. K. Chesterton's Orthodoxy (1908). Text from the Standard Ebooks edition (CC0), which follows Project Gutenberg ebook 16769 checked against a scan of the 1908 printing, with lightly modernised spelling. The Preface and the nine chapters are complete.",
-  "cover_url": "/covers/orthodoxy.svg",
+  "cover_url": "/covers/art/orthodoxy.jpg",
   "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/orthodoxy.pdf?download=orthodoxy.pdf",
   "cover_color": "#7a2e2a",
   "series": null,
@@ -26,8 +26,6 @@
   "sort_order": 125,
   "is_published": true,
   "created_at": "2026-10-05T02:13:07.429Z",
-  "content_digest": "",
-  "english_digest": "",
   "updated_at": "2026-10-05T02:21:34.899Z"
  }
 },

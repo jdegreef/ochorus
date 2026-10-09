@@ -10,6 +10,7 @@ from .views import (
     AuthorListView,
     BookDetailView,
     BookEpubView,
+    BookGuideView,
     BookListView,
     ChapterBatchView,
     ChapterDetailView,
@@ -101,6 +102,7 @@ urlpatterns = [
     path("articles/", ArticleListView.as_view(), name="article-list"),
     path("articles/<slug:slug>/", ArticleDetailView.as_view(), name="article-detail"),
     path("books/<slug:slug>/", BookDetailView.as_view(), name="book-detail"),
+    path("books/<slug:slug>/guide/", BookGuideView.as_view(), name="book-guide"),
     path(
         "books/<slug:slug>/download.epub",
         BookEpubView.as_view(),

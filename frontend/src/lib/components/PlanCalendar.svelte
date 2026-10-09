@@ -5,7 +5,7 @@
 	import { downloadFile } from '$lib/dataExport';
 	import { planSchedules } from '$lib/planSchedules.svelte';
 	import { auth } from '$lib/auth.svelte';
-	import { signInSheet } from '$lib/signInSheet.svelte';
+	import { askForPlanEmail, turnOffPlanEmail, turnOnPlanEmail } from '$lib/planEmail';
 	import { buildScheduleICS, googleCalendarUrl, readReminderTime } from '$lib/reminder';
 	import { localizeHref } from '$lib/href';
 	import { localToday } from '$lib/streak';
@@ -245,11 +245,7 @@
 							type="checkbox"
 							checked={!!prefs.email}
 							onchange={(e) =>
-								planSchedules.set(plan.slug, {
-									...prefs,
-									time: prefs.time ?? time,
-									email: e.currentTarget.checked
-								})}
+								e.currentTarget.checked ? turnOnPlanEmail(plan.slug, time) : turnOffPlanEmail(plan.slug)}
 						/>
 						<span>
 							<span class="text-small text-text">{t('plans.emailToggle')}</span>
@@ -257,7 +253,11 @@
 						</span>
 					</label>
 				{:else if auth.enabled}
-					<button type="button" class="btn btn-ghost btn-sm mt-2 w-full" onclick={() => signInSheet.show('plan_start')}>
+					<button
+						type="button"
+						class="btn btn-ghost btn-sm mt-2 w-full"
+						onclick={() => askForPlanEmail(plan.slug, 'plan_start', time)}
+					>
 						<Icon name="mail" size={16} />{t('plans.emailSignin')}
 					</button>
 				{/if}

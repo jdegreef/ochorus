@@ -67,6 +67,7 @@
 	const paths = $derived(hubPaths(hub, shelf));
 	const fan = $derived(heroCovers(shelf));
 	const people = $derived(shelf.people ?? []);
+	const leaderGuides = $derived(shelf.leader_guides ?? []);
 
 	// The page's groups, in order, each only when it has something — the jump
 	// chips are built from the same list so a chip never points at nothing.
@@ -77,7 +78,8 @@
 			{ id: 'retold', name: t('audience.retoldHeading'), count: shelf.editions.length },
 			{ id: 'more', name: t('audience.moreHeading'), count: shelf.more.length },
 			{ id: 'plans', name: t('nav.plans'), count: shelf.plans.length },
-			{ id: 'questions', name: t('audience.questionsHeading'), count: articles.length }
+			{ id: 'questions', name: t('audience.questionsHeading'), count: articles.length },
+			{ id: 'guides', name: t('audience.guidesHeading'), count: leaderGuides.length }
 		].filter((s) => s.count > 0)
 	);
 	const parentsHeading = $derived(t(hub.parentsHeadingKey));
@@ -357,6 +359,30 @@
 				<div class="grid gap-3 sm:grid-cols-2">
 					{#each articles as article (article.slug)}
 						<ArticleCard {article} heading="h3" />
+					{/each}
+				</div>
+			</section>
+		{/if}
+
+		{#if leaderGuides.length}
+			<!-- For the adult running a group: each card opens the book's printable
+			     leader's guide, not the book. -->
+			<section id="guides" class="jump-anchor mb-12">
+				<GroupHeading name={t('audience.guidesHeading')} count={leaderGuides.length} />
+				<p class="-mt-2 mb-5 max-w-2xl text-small text-muted">{t('audience.guidesNote')}</p>
+				<div class="book-grid">
+					{#each leaderGuides as book (book.slug)}
+						<BookCard
+							{book}
+							showAuthor
+							showSeries={false}
+							link={{
+								href: `/books/${book.slug}/guide`,
+								cta: t('guide.open'),
+								label: t('guide.label'),
+								ariaLabel: `${t('guide.title').replace('%t%', book.title)} — ${book.author.name}`
+							}}
+						/>
 					{/each}
 				</div>
 			</section>
