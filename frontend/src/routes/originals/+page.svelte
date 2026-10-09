@@ -119,7 +119,7 @@
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if shelf.books.length === 0}
-		<EmptyState message={t('originals.empty')} />
+		<EmptyState art="language" message={t('originals.empty')} />
 	{:else}
 		<!-- No visible breadcrumb: a top-level page's trail is Home > this, which
 		     the logo and the H1 already say. The BreadcrumbList stays in the head. -->

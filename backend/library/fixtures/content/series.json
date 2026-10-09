@@ -276,6 +276,19 @@
   "series": [
    "portraits-of-courage"
   ],
+  "language": "fr",
+  "title": "Portraits de courage",
+  "description": "Des biographies chrétiennes complètes d’hommes et de femmes qui ont calculé le prix et ont malgré tout suivi Christ — chaque vie racontée avec son enseignement, pesée à la lumière de l’Écriture, et écrite avec gratitude, mais sans hagiographie.",
+  "created_at": "2026-10-09T00:00:00Z",
+  "updated_at": "2026-10-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "portraits-of-courage"
+  ],
   "language": "hi",
   "title": "साहस के चित्र",
   "description": "उन पुरुषों और स्त्रियों की पूर्ण मसीही जीवनियाँ जिन्होंने कीमत का हिसाब लगाया और फिर भी मसीह के पीछे चले — हर जीवन उसकी शिक्षा के साथ कहा गया, पवित्रशास्त्र की कसौटी पर परखा गया, और कृतज्ञता से लिखा गया, पर बिना अतिशय महिमामंडन के।",
@@ -320,6 +333,19 @@
   "description": "Повні християнські біографії чоловіків і жінок, які порахували ціну й усе ж пішли за Христом, — кожне життя розказане разом із його вченням, зважене у світлі Святого Письма й написане з вдячністю, але без агіографії.",
   "created_at": "2026-09-27T00:00:00Z",
   "updated_at": "2026-09-27T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "portraits-of-courage"
+  ],
+  "language": "lg",
+  "title": "Ebifaananyi by’Obuvumu",
+  "description": "Ebyafaayo by’Ekikristaayo ebijjuvu eby’abasajja n’abakazi abaabalirira omuwendo ne bagoberera Kristo wadde kyali kityo — buli bulamu bunyumizibwa wamu n’okuyigiriza kwabwo, ne bupimibwa n’Ebyawandiikibwa, era ne buwandiikibwa n’okwebaza naye awatali kubugulumiza ng’obutalina kamogo.",
+  "created_at": "2026-10-09T00:00:00Z",
+  "updated_at": "2026-10-09T00:00:00Z"
  }
 },
 {
@@ -404,6 +430,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "fr",
+  "title": "Filles du Roi – 30 jours avec Dieu pour les filles",
+  "description": "Des méditations sur trente jours pour les filles de 9 à 12 ans: qui tu es en tant que fille du Roi, et les femmes courageuses de la Bible et de l’histoire qui lui ont fait confiance.",
+  "created_at": "2026-10-09T00:00:00Z",
+  "updated_at": "2026-10-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "rooted"
   ],
   "language": "fr",
@@ -450,6 +489,19 @@
   "description": "Clássicos cristãos e vidas verdadeiras recontados para leitores adolescentes, com sinceridade e em palavras simples: o peregrino de Bunyan a caminho da Cidade Celestial, a conversa franca de Spurgeon vinda do campo, e os homens e mulheres que apostaram tudo em Deus.",
   "created_at": "2026-10-08T00:00:00Z",
   "updated_at": "2026-10-08T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "fr",
+  "title": "Les enseignements clés",
+  "description": "De courts guides fidèles, écrits par Ochorus, au cœur de l’enseignement d’un auteur classique — chaque chapitre s’achève par des questions et une prière, et renvoie le lecteur aux livres de l’auteur lui-même.",
+  "created_at": "2026-10-09T00:00:00Z",
+  "updated_at": "2026-10-09T00:00:00Z"
  }
 }
 ]

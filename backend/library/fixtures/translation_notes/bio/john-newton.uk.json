@@ -1,0 +1,19 @@
+{
+ "kind": "bio",
+ "slug": "john-newton",
+ "language": "uk",
+ "job_issue": 1684,
+ "note": [
+  "Scripture fragment spliced byte-for-byte from Kulish (1905), parsed whole from the ebible mirror (ukr_pan); checked mechanically as a verbatim substring of its Kulish verse (first letter lowercased mid-sentence).",
+  "Unquoted echoes (John 9:25 in “Amazing Grace”, Galatians 1:23 in the epitaph) are Newton’s own words, rendered as prose and not listed.",
+  "“Amazing Grace” is given its established Ukrainian title «Дивна благодать»; Newton’s other works (Olney Hymns, Cardiphonia, Thoughts upon the African Slave Trade) are plain translations for native review. “wretch” is «нікчема» throughout."
+ ],
+ "references": [
+  {
+   "reference": "1 Corinthians 15:10",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "Kulish (1905) Bible text"
+  }
+ ]
+}

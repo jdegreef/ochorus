@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SealsEarned from '$lib/components/SealsEarned.svelte';
 	import { onMount } from 'svelte';
 	import type { BookDetail, BookSummary, PlanSummary } from '$lib/library-public';
 	import { listPlans } from '$lib/library-public';
@@ -161,6 +162,8 @@
 				</span>
 			</a>
 		{/if}
+		<!-- The seals this finish pressed (a first finish, a writer's third…). -->
+		<SealsEarned slug={book.slug} />
 		<div class="mt-6 flex flex-wrap justify-center gap-2">
 			<ShareButton url={shareUrl} title={book.title} showLabel />
 			<BookDownloadMenu {book} />

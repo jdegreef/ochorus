@@ -1,0 +1,87 @@
+{
+ "kind": "sermon",
+ "slug": "enduring-persecution-for-christ",
+ "language": "uk",
+ "job_issue": 1674,
+ "pull_request": 5787,
+ "note": [
+  "Scripture follows the Kulish Bible (1905), parsed from the ebible mirror (ukr_pan USFM). A `mined` row's quoted span in that block is a verbatim (case-insensitive) substring of the Kulish verse; Kulish orthography (ї, сьв-, -є) is kept inside quotations. Cited paraphrases and allusions that the English does not put in quotation marks are not listed; Calvin’s miscited references are named in the PR.",
+  "Calvin cites in Roman numerals and several citations are wrong in the English (Rom. vii. 36 for 8:36, Matt. viii. 38, Luke xii. 10, Heb. iii. 9, I Cor. iv. 12). The body renders each citation as printed (digits converted); the row here names the verse actually quoted.",
+  "Hebrews is cited as «Євреїв», not Kulish's running head «Жидів», following the shipped uk corpus.",
+  "Translated by one AI translator in one session (job #1674); tag sequence identical to the English. AI-translated; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "John 21:18b",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "Kulish (ukr-kul) Bible text"
+  },
+  {
+   "reference": "Matthew 5:10a",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "Kulish (ukr-kul) Bible text"
+  },
+  {
+   "reference": "Psalms 129:1",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Kulish (ukr-kul) Bible text"
+  },
+  {
+   "reference": "Psalms 129:3",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Kulish (ukr-kul) Bible text"
+  },
+  {
+   "reference": "Romans 8:36b",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Kulish (ukr-kul) Bible text"
+  },
+  {
+   "reference": "Psalms 125:3",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "Kulish (ukr-kul) Bible text"
+  },
+  {
+   "reference": "Psalms 129:4b",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "Kulish (ukr-kul) Bible text"
+  },
+  {
+   "reference": "Psalm 129:2b",
+   "status": "self_rendered",
+   "block_index": 27,
+   "why": "«Нечестиві з усіма своїми зусиллями не досягли того, до чого змагали». The source verse is uncertain (see UNSURE), so I rendered it myself."
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "Kulish (ukr-kul) Bible text"
+  },
+  {
+   "reference": "Luke 21:15",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "Kulish (ukr-kul) Bible text"
+  },
+  {
+   "reference": "Matthew 24:44",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "Kulish (ukr-kul) Bible text"
+  },
+  {
+   "reference": "Zechariah 2:8b",
+   "status": "mined",
+   "block_index": 41,
+   "source_file": "Kulish (ukr-kul) Bible text"
+  }
+ ]
+}

@@ -253,7 +253,10 @@
 {#if shown.length === 0}
 	<!-- Filtered to nothing, or (only via a stale/hand-edited topic slug — a
 	     live chip always has ≥1 article) an empty topic. -->
-	<EmptyState message={filters.active ? t('articles.noMatches') : t('articles.emptyTopic')} />
+	<EmptyState
+		art={filters.active ? 'search' : 'book'}
+		message={filters.active ? t('articles.noMatches') : t('articles.emptyTopic')}
+	/>
 {:else if asCovers}
 	<div class="book-grid">
 		{#each paged.visible as a (a.slug)}

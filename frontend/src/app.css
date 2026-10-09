@@ -1905,7 +1905,9 @@
      question, not a chapter, so it has no initial.
    - An author's biography (`.reading.bio`, never paged, no <article>) opens
      with the same initial: one rule, one script gate, so a Hindi bio is
-     spared the split akshara exactly as a Hindi chapter is.
+     spared the split akshara exactly as a Hindi chapter is. So does a book
+     page's "About this book": `.has-initial`, the opt-in for any other text
+     (the opposite of `.no-initial`).
 
    ILLUMINATED: the letter is set in the palette's accent (so it is indigo in
    Parchment, navy in Cathedral, violet in Advent under the Church year) and
@@ -1913,7 +1915,7 @@
    a gilt initial's raised edge in a printed devotional. (No RTL variant: no
    right-to-left text gets a floated initial — see above. Print drops the gilt
    with the colour; see the print block.) */
-:is(article:not(.paged) .reading:not(.no-initial), .reading.bio) > p:first-of-type:not(:lang(ar)):not(:lang(hi)):not(:lang(ko))::first-letter {
+:is(article:not(.paged) .reading:not(.no-initial), .reading.bio, .has-initial) > p:first-of-type:not(:lang(ar)):not(:lang(hi)):not(:lang(ko))::first-letter {
 	float: inline-start;
 	/* The house serif, not --font-display: that follows the site style
 	   (site-fonts.css), and an initial is part of the page, not the chrome. */
@@ -2027,7 +2029,7 @@
 
 	/* The initial prints in the black accent; a gold gilt edge on black ink
 	   reads as a misregistration, not a flourish. */
-	.reading > p:first-of-type::first-letter {
+	:is(.reading, .has-initial) > p:first-of-type::first-letter {
 		/* !important: the screen rule's selector is far more specific. */
 		text-shadow: none !important;
 	}
@@ -2912,6 +2914,27 @@ nav.appnav .navsearch:hover {
 		),
 		linear-gradient(to bottom, var(--shelf-wood) 0 60%, var(--shelf-wood-edge) 60% 100%);
 	box-shadow: 0 7px 9px -6px rgb(0 0 0 / 0.45);
+}
+/* ── Reading seals ─────────────────────────────────────────────────────────
+   The wax a seal is pressed in (SealMark.svelte). Wax, not a theme surface:
+   it is the same deep colour in every theme, like the gilt and the frame mat,
+   with its emblem struck in --wax-ink. Each sits in the library palette's
+   family (oxblood, indigo, ochre, cypress, plum…), darkened to read as wax.
+   Decoration only: every seal is named in text beside it. */
+:root {
+	--wax-ink: #fbe9c8;
+	--wax-oxblood: #8a2f2a;
+	--wax-umber: #7a4a1e;
+	--wax-indigo: #3f3d9a;
+	--wax-ochre: #a06c16;
+	--wax-teal: #14605a;
+	--wax-cypress: #2f5d46;
+	--wax-plum: #6b3a5e;
+	--wax-ember: #b8612a;
+	--wax-rust: #9a4a12;
+	--wax-bronze: #7a5a22;
+	--wax-violet: #4a3a7a;
+	--wax-pine: #2c594d;
 }
 /* ── Duotone portraits ─────────────────────────────────────────────────────
    A face printed in one ink: the photograph's light and shade, the colour of

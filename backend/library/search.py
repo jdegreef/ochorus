@@ -27,7 +27,7 @@ from django.db.models.functions import Coalesce
 # Config lookup shared with the stored-vector write path (library/fts.py) so
 # query config always matches what the row was indexed with.
 from .cover_face import cover_face
-from .fts import config_for
+from .fts import config_for, search_query
 from .models import (
     Article,
     Author,
@@ -321,18 +321,14 @@ class _Ctx:
 
 
 def _search_postgres(ctx, qs):
-    from django.contrib.postgres.search import (
-        SearchHeadline,
-        SearchQuery,
-        SearchRank,
-    )
+    from django.contrib.postgres.search import SearchHeadline, SearchRank
 
     authors, books, topics = qs["author"], qs["book"], qs["topic"]
     plans, articles = qs["plan"], qs["article"]
     chapters, sermons = qs["chapter"], qs["sermon"]
 
     config = config_for(ctx.language)
-    query = SearchQuery(ctx.q, config=config, search_type="websearch")
+    query = search_query(ctx.q, ctx.language)
 
     def headline(field):
         return SearchHeadline(
@@ -615,10 +611,8 @@ def _match(kind: str, ctx, qs):
         matched = qs.filter(_lite_q(kind, ctx.q))
         return matched.distinct() if kind == "topic" else matched
 
-    from django.contrib.postgres.search import SearchQuery
-
     config = config_for(ctx.language)
-    query = SearchQuery(ctx.q, config=config, search_type="websearch")
+    query = search_query(ctx.q, ctx.language)
     if kind in ("chapter", "sermon"):
         return qs.filter(search_vector=query)
     return qs.annotate(search=_pg_vector(kind, config, ctx.language)).filter(search=query)
@@ -683,10 +677,10 @@ def count_by_type(q: str, language: str, scope=None) -> tuple[dict, dict]:
 
 
 def _pg_rank_order(kind, ctx, qs):
-    from django.contrib.postgres.search import SearchQuery, SearchRank
+    from django.contrib.postgres.search import SearchRank
 
     config = config_for(ctx.language)
-    query = SearchQuery(ctx.q, config=config, search_type="websearch")
+    query = search_query(ctx.q, ctx.language)
     vector = (
         F("search_vector")
         if kind in ("chapter", "sermon")

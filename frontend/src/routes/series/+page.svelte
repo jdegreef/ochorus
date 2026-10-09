@@ -122,7 +122,7 @@
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if series.length === 0}
-		<EmptyState message={t('series.none')} />
+		<EmptyState art="language" message={t('series.none')} />
 	{:else}
 		{#if !filtering}
 			<SeriesContinue {series} />
@@ -150,7 +150,7 @@
 			/>
 		{/if}
 		{#if shown.length === 0}
-			<EmptyState message={t('series.noResults')} action={clearFiltersAction} />
+			<EmptyState art="search" message={t('series.noResults')} action={clearFiltersAction} />
 		{/if}
 		{#if grouped && groups.length > 1}
 			<!-- One link per audience group: "7 Book Series" with only the young

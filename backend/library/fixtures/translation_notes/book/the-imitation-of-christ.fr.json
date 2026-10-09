@@ -1,0 +1,172 @@
+{
+ "kind": "book",
+ "slug": "the-imitation-of-christ",
+ "language": "fr",
+ "job_issue": 5213,
+ "note": [
+  "Thomas weaves Scripture into his sentences, usually from the Latin Vulgate and rarely with a reference. Where he quotes a verse and Louis Segond 1910 says the same, Segond is pasted byte-for-byte by script; where his wording follows the Vulgate (many Psalms, Job 7:1, Luc 17:21 « au-dedans de vous »), it is rendered from the English and not forced into Segond. Rows come from two passes: every printed reference, and every quoted French span of 30+ characters that occurs verbatim in exactly one Segond verse.",
+  "The French follows the English edition throughout; where the English departs from Thomas’s Latin (e.g. “fruit of glory”, “trust yourself to the glory”), the French keeps the English and the PR lists the discrepancy. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "John 8:12",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "John 14:23",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 27,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 11:28",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 34,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalms 30:8",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 35,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Revelation 2:7",
+   "status": "mined",
+   "block_index": 9,
+   "chapter_order": 35,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 17:10",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 37,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "mined",
+   "block_index": 19,
+   "chapter_order": 38,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalms 119:36",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 40,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Exodus 20:19",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 40,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Samuel 3:9",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 40,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 6:68",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 40,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 14:27",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 63,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalms 55:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 69,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 85,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 6:21",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 86,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalms 119:137",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 96,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalms 19:10",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 96,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 98,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 19,
+   "chapter_order": 98,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 15:32",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 100,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 101,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Leviticus 19:2",
+   "status": "mined",
+   "block_index": 12,
+   "chapter_order": 108,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 1:38",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 114,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

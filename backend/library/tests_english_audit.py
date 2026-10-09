@@ -1252,7 +1252,7 @@ class BrainerdDisplayLineTests(SimpleTestCase):
 
     Asserted per edition, like the #23438 repair above: a Swahili pair that
     silently stops matching would leave the sw rows damaged while the English
-    passes. The entry lists the 24 English pairs, then the 24 Swahili ones.
+    passes. The entry lists the 24 English pairs, then the 24 Swahili, then the 24 Spanish.
     """
 
     SLUG = "life-and-diary-of-david-brainerd"
@@ -1264,7 +1264,8 @@ class BrainerdDisplayLineTests(SimpleTestCase):
         from library.content_fixtures import book_fixture_path
 
         pairs = corrections.BODY_CORRECTIONS[cls.SLUG]["restored_blocks"]
-        cls.blocks = {"en": [b for _, b in pairs[:24]], "sw": [b for _, b in pairs[24:]]}
+        cls.blocks = {"en": [b for _, b in pairs[:24]], "sw": [b for _, b in pairs[24:48]],
+                      "es": [b for _, b in pairs[48:]]}
         cls.editions = {
             lang: {
                 row["fields"]["order"]: row["fields"]["body_html"]

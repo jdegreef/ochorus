@@ -1,0 +1,44 @@
+{
+ "kind": "bio",
+ "slug": "george-whitefield",
+ "language": "uk",
+ "job_issue": 1681,
+ "pull_request": null,
+ "note": [
+  "Scripture fragments are spliced byte-for-byte from Kulish (1905), parsed whole from the ebible mirror (ukr_pan); each row was checked mechanically as a verbatim substring of its Kulish verse and present in the bio. They sit inside Whitefield’s own quotations, so Kulish’s pre-1928 spelling (угождав, народити ся звиш) shows inside modern prose — a reviewer may prefer plain prose there.",
+  "Unquoted allusions (Song 3:11, Ps 112:6, 2 Tim 4:7) are rendered as prose and not listed.",
+  "“negroes” in Whitefield’s quoted letters is rendered «негрів» to keep the historical quotation faithful; flagged for native review of tone."
+ ],
+ "references": [
+  {
+   "reference": "John 3:7",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Galatians 1:10",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Luke 5:32",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "Matthew 11:19",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Kulish (1905) Bible text"
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Kulish (1905) Bible text"
+  }
+ ]
+}

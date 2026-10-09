@@ -202,7 +202,7 @@
 		</FilterBar>
 
 		{#if shownGroups.length === 0}
-			<EmptyState message={t('bios.noResults')} action={clearAction} />
+			<EmptyState art="search" message={t('bios.noResults')} action={clearAction} />
 		{/if}
 
 		{#each shownGroups as g (g.letter)}

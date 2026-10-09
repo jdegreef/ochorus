@@ -1,0 +1,12 @@
+{
+ "kind": "bio",
+ "slug": "e-m-bounds",
+ "language": "uk",
+ "job_issue": 1682,
+ "pull_request": null,
+ "note": [
+  "The English bio quotes and cites no scripture (pythonbible finds no references; no parenthetical citations), and neither does the translation, so references is empty by design.",
+  "The three pull-quotes from Power Through Prayer reuse the wording of the shipped uk edition (power-through-prayer.uk.json), with only spacing and drop-cap casing normalised."
+ ],
+ "references": []
+}
