@@ -41,6 +41,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'billy-graham': '50% 0%', // 1966 press photo; face high at ~23% of a 0.80 plate
 	'billy-sunday': '50% 0%', // 1921 LoC studio bust; face at ~33% of a 0.70 plate — 0% is the highest the crop goes
 	'blaise-pascal': '50% 10%', // c. 1690 Versailles oil, cropped to a bust; face at ~35% of a 0.84 plate
+	'blasio-kigozi': '50% 19%', // Ochorus scene (preaching on the hillside), figure from behind, no face
 	'brother-lawrence': '50% 8%', // Ochorus firelight illustration (imagined likeness); face at ~35% of a 0.75 plate
 	'c-s-lewis': '50% 0%', // 1957 dust-jacket photo (John S. Murray); head high — anything lower clips the crown
 	'c-t-studd': '50% 0%', // full-length cricket photo; head high at ~10% of a 0.54 plate
@@ -58,6 +59,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'dietrich-bonhoeffer': '50% 0%', // 1939 standing figure; head high at ~15% of a 0.63 plate
 	'dwight-l-moody': '50% 5%',
 	'e-m-bounds': '50% 2%', // 1864 photograph; face at ~32% of a 0.72 plate
+	'elisabeth-elliot': '50% 20%', // Ochorus scene (writing by lamplight), figure from behind, no face
 	'erica-sabiti': '50% 20%', // bust in clerical cap; near-square
 	'evelyn-christenson': '50% 50%', // square source — the crop takes the whole photo
 	'f-f-bosworth': '50% 0%', // small studio bust; face at ~30% of a 0.85 plate
@@ -82,6 +84,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'jarena-lee': '50% 0%', // 1849 lithograph: seated figure, face at ~18% of a 0.73 plate
 	'jeanne-guyon': '50% 58%',
 	'jesse-lyman-hurlbut': '50% 30%', // c. 1895 bust photo; near-square, so nearly inert
+	'jim-elliot': '50% 38%', // Ochorus scene (beside the Piper on the sandbar), figure from behind, no face
 	'joe-church': '50% 30%', // cropped from a photo with his wife Decie; near-square
 	'john-bunyan': '50% 0%',
 	'john-calvin': '50% 0%', // c.1550 capped portrait; face at ~29% of a 0.72 plate
@@ -135,6 +138,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'william-j-seymour': '50% 0%', // 1910s photo cropped to a bust; face high at ~25% of a 0.75 plate
 	'william-law': '50% 16%', // cropped oval engraving; face at ~33% of a 0.58 plate
 	'william-nagenda': '50% 20%', // cropped from a photo with his wife Sala; near-square
+	'yona-kanamuzeyi': '50% 23%', // Ochorus scene (writing his diary by lamplight, head bowed), figure from behind, no face
 	'yosiya-kinuka': '50% 30%', // cropped from a photo of him riding a motorcycle; near-square
 	'zilpha-elaw': '50% 8%', // Ochorus firelight illustration (imagined likeness); face at ~35% of a 0.75 plate
 };

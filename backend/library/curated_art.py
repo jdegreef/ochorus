@@ -1330,6 +1330,206 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "sandbar: the Curaray country where her husband died and where she "
         "went to live among the people who had killed him.",
     ),
+    # The young-reader shelf (2026-10-08), chosen by the founder from twenty
+    # concepts in three families. Children: one warm poster scene from the
+    # story, Brave for God's family. Teens and retold classics: one symbolic
+    # object on a saturated field with a halftone grain. Originals: a series
+    # mark. Drawn as inline SVG, rendered in headless Chromium at 2x and
+    # downscaled; every subject sits below the title band and clear of the mark.
+    "mary-slessor-a-life-children": Original(
+        "c64a5bc9109370591e05041d5c3956a8850d40d12843f51596b161767cba164d",
+        "A red-haired woman upright in a dugout canoe at sundown on the Cross "
+        "River, palms black against an orange sky.",
+    ),
+    "corrie-ten-boom-a-life-children": Original(
+        "caeed354107eab025f230f8ab8d3a0dac761ae3aad2b2e62c7e1fe95d4978cff",
+        "The narrow stepped-gable house on the Barteljorisstraat at night, its "
+        "clock sign out front and one window lit at the top, where the hiding "
+        "place was.",
+    ),
+    "c-s-lewis-a-life-children": Original(
+        "ac4a8f83a0becab1f91274d1a539d143c5100bdc672f7178b2a07d8e42a20767",
+        "The little end room at Little Lea: a round attic window full of "
+        "Belfast rain, a candle and a stack of books, a boy reading on the "
+        "floor.",
+    ),
+    "elisabeth-elliot-a-life-children": Original(
+        "09fe1e73813f72ccba707e378554ea8bc5b4f067972edd362d23935105ebecfa",
+        "A small yellow plane over green jungle hills and a winding river at "
+        "first light: hopeful, with nothing of 1956 staged.",
+    ),
+    "john-hyde-a-life-children": Original(
+        "f66b05386b0052941fceb65215fbd8fd4b8ef5acfdef0541485f9c29dff949f0",
+        "A Punjabi village under a sky full of stars, every window dark but "
+        "one, where a man kneels by a lamp: the man who never sleeps.",
+    ),
+    "pandita-ramabai-a-life-children": Original(
+        "7498a6e871c4950ad2cd9931eb12b69b7b6d113e35537b47bb28bcdcc1366f4a",
+        "Layered hills at dawn, two tiny figures carrying a cane box on a pole "
+        "down a zigzag path: the book's opening image.",
+    ),
+    "samuel-ajayi-crowther-a-life-children": Original(
+        "bb59168e2859cc752753fb76c64f963b4a365cfc5b553de884919203d46b3a85",
+        "A sailing ship heading into a golden dawn with a boy at the bow: the "
+        "ship that freed Ajayi in 1822.",
+    ),
+    "the-practice-of-the-presence-of-god-children": Original(
+        "c6fe226bfbb1791ceab0ff3b24edf9fed555fc2393c807ba7d945d1dbba85af8",
+        "A monastery kitchen, light through an arched window, a little cake "
+        "flipping over the frying pan: turned for the love of God.",
+    ),
+    "corrie-ten-boom-a-life-teens": Original(
+        "6fd7f533c708b877c106985d9197dbd7eb597e907e6aacefe36af8a8a62e89b4",
+        "One watch face on deep plum; where the hands should be, a narrow "
+        "doorway glows gold. The watchmaker and the secret room.",
+    ),
+    "elisabeth-elliot-a-life-teens": Original(
+        "428d4015f335e38f45dbf493ebc735a1feefc7acfd05d302abdb960175d67143",
+        "Palm Beach from the air: dense forest, one river, a pale sandbar and a "
+        "tiny yellow plane parked on it.",
+    ),
+    "watchman-nee-a-life-teens": Original(
+        "e62a1ca5b42054e6935cc3b1a7db589a92c87848f830ed4d7078ab19d034a2c3",
+        "A night-watchman's wooden clapper in black on vermilion, sound rings "
+        "spreading over the rooftops: the name he chose.",
+    ),
+    "john-hyde-a-life-teens": Original(
+        "8f87089c91468ac0610801c600a93b227cbc9dedd749aed29401b870039717b5",
+        "A clock ring reading 3:00 on midnight blue with one oil-lamp flame at "
+        "its centre: the hour most of us never see.",
+    ),
+    "mary-slessor-a-life-teens": Original(
+        "f7c46453e3cb2ab75a480ae6c77764f97f0face5d153c4abce36b2f304da6c90",
+        "Dundee loom threads run down from the beam and bend into the river "
+        "that carries her canoe.",
+    ),
+    "samuel-ajayi-crowther-a-life-teens": Original(
+        "444ec986325b90654e1720ed3268221c9f003e4599987c0c7eadbdc031ff744e",
+        "A captive's rope, knotted once, turns into the red ribbon marker of an "
+        "open Bible: the boy led away who translated it into Yoruba.",
+    ),
+    "pandita-ramabai-a-life-teens": Original(
+        "0a77ccbec5327f6da3d0ab7939492f003cfc4513c5f89c00114eecc912731acd",
+        "Bare footprints winding up an ochre field crossed by faint contours, "
+        "toward a pale sun: the years of walking.",
+    ),
+    "c-s-lewis-a-life-teens": Original(
+        "de1606a60da639a825e4e79f169a545908b33fb0a8d24edba65baf76528d059b",
+        "A moonlit avenue of trees, three small figures on the path, leaves "
+        "blowing past: Addison's Walk, 19 September 1931.",
+    ),
+    "grace-abounding-teens": Original(
+        "115effd22715f7d553d2af2a8c09393a65a94c7fc0ca75ca88f26a0dcfbdb9fd",
+        "A great bronze bell over slate grey, a small figure in the steeple "
+        "doorway below: the bell Bunyan feared would fall on him.",
+    ),
+    "confessions-teens": Original(
+        "4f72bdf850b9a0f4f03f8b06b475e5f76b618a7e27e9e70dceb9416b2b732c30",
+        "A night garden, one tree heavy with golden pears, a single bitten pear "
+        "on the ground: the theft the book turns on.",
+    ),
+    "all-of-grace-teens": Original(
+        "2dc24b64acaaa70a953bb9270452fba2f634c89429b00cbf34d0e0e2278dd62b",
+        "A thread of light pouring into an empty bowl until it brims: grace "
+        "given to people sure they had nothing to bring.",
+    ),
+    "real-questions-1": Original(
+        "9b40cc0771a60e30714f71e4e9686c8365f5b12092ebbb282ce193f63fe68e8f",
+        "A great dim question mark under stars, with a small figure standing in "
+        "its glowing dot: the series mark for Real Questions.",
+    ),
+    # The teen Originals series (2026-10-09): one dim series mark behind the
+    # type, as Real Questions has, with a small warm light below the subtitle.
+    # Anchored has an anchor, They Were Young a lantern; the weather changes by
+    # volume. Drawn as inline SVG and rendered like the young-reader set above.
+    "anchored-1": Original(
+        "450b00b185c9965057ea4ba88f78602600a294db278bf5e288b8a017ab705998",
+        "A great dim anchor under a starry night sea, a small boat on the "
+        "horizon with its lamp lit: the series mark for Anchored, Book 1.",
+    ),
+    "anchored-2": Original(
+        "5db81673592b904b4c552e83cb68008ddf1133d3333c0b388b24dd1f7aa82d37",
+        "The same anchor as dawn breaks low on the horizon: Anchored, Book 2, "
+        "faith carried into real life.",
+    ),
+    "they-were-young-1": Original(
+        "52e2b3b63ead62454b0ce29095da1425e8d0d8b90883aff209e211efba4e994f",
+        "A great dim lantern under stars over a dark hill, a small lantern "
+        "burning below it: the series mark for They Were Young, Book 1 "
+        "(Called).",
+    ),
+    "they-were-young-2": Original(
+        "9a093ee6ab9e364e37ee6121e7ae904e413a8b886df110fc1d92a969dbbd0c4f",
+        "The same lantern in wind and rain, its small flame bent but still "
+        "burning: They Were Young, Book 2 (Tested).",
+    ),
+    # The adult classics the museum sources could not reach from the session
+    # (2026-10-09): painterly nocturnes and dawns, one true image from each
+    # book, fractal-noise sky and displaced ridges in inline SVG, rendered like
+    # the sets above. A CURATED painting for any of these is a two-line diff.
+    "orthodoxy": Original(
+        "0de4c0bde58c2a183630a8c16c3242c614f9fd734af28b6c2cdb3e18eadcd295",
+        "A yacht at dawn bearing down on white cliffs: the yachtsman of the "
+        "opening chapter who sets out for a new island and discovers England.",
+    ),
+    "heretics": Original(
+        "64a2e42b63ceab31746c923ffbbfa4a87051cca2e7f081f77664ed1c1dc0efbb",
+        "One gas lamp burning in a dark street between tall houses: the lamp- "
+        "post the crowd pulls down in the first chapter.",
+    ),
+    "st-francis-of-assisi": Original(
+        "020e6196d8c00277370e45a62cc0f2230d52773e58142516b6670d3e2a9911bb",
+        "Assisi on its Umbrian hillside at dusk, the basilica and bell tower "
+        "above the olive trees, birds wheeling over the slope.",
+    ),
+    "the-everlasting-man": Original(
+        "d8804be5b5e53b6ede8f699fa6208e275a23c690e73aec7823c5748d70695ff6",
+        "A starry night seen from deep inside a cave, firelight on the floor "
+        "and a painted beast on the wall: the first painter and the cave at "
+        "Bethlehem.",
+    ),
+    "at-the-back-of-the-north-wind": Original(
+        "af68a7cae6060b62f3b9e4967c068335e9690fc8da50c33518d6abd1dbb0ef2e",
+        "Wind streaming across a starry sky over London roofs, a lit hayloft "
+        "window in the coachman's mews where Diamond slept.",
+    ),
+    "diary-of-an-old-soul": Original(
+        "439ceeb93837f8b79e38bc447180de0a09a627e28878aa7c4d8b98e75a419fbe",
+        "A lamp in a window at dusk with the year's last leaves on the tree "
+        "outside: a daily book of verse written in grief.",
+    ),
+    "phantastes": Original(
+        "26a496b16b8f050190dcf305bc10a46ab5f8fb9681e8b28ce72783f474b61ede",
+        "A moonlit beech wood with a stream running out of it, fireflies among "
+        "the trunks: Anodos's room becoming Fairy Land.",
+    ),
+    "the-princess-and-the-goblin": Original(
+        "d90798fbdfb7d71188497468aa29a89a77be3740c9e6e2d47ee4295c63268d7d",
+        "Irene's great house on the mountainside under the moon, the "
+        "grandmother's lamp in the topmost tower window, the goblin mountain "
+        "dark below.",
+    ),
+    "unspoken-sermons": Original(
+        "98c705c6fb83efc9c54fb6f7905830edf2643a66d9fe5ed5fd6d90d898a06e43",
+        "Light breaking through heavy cloud over the Aberdeenshire hills of "
+        "MacDonald's boyhood.",
+    ),
+    "paradise-lost": Original(
+        "6e43910a8d81748b8c588b9f26049a7c283921ee47329be52c91a5795baef0db",
+        "The world was all before them: two small figures walking from Eden's "
+        "gate, the flaming sword behind them and the wide world opening ahead.",
+    ),
+    "revelations-of-divine-love": Original(
+        "c1549ce32cbf18570cd2c58c9bc824fda8e5733a7ff68e2a7c1d819fb866ca55",
+        "A hazelnut on the sill of the anchoress's window, the Norwich spire in "
+        "the dawn beyond: a little thing, the quantity of an hazel-nut.",
+    ),
+    "the-practice-of-the-presence-of-god": Original(
+        "d8e4fb883ec0ac1671bdb54f437ccdbcd228eed00b2bdb9ab516f471fb9384d1",
+        "A bare tree in winter snow at first light: the sight that turned "
+        "Brother Lawrence to God at eighteen, knowing the leaves and fruit "
+        "would come.",
+    ),
 }
 
 
