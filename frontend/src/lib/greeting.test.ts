@@ -37,8 +37,16 @@ describe('greetingName', () => {
 		expect(greetingName('James DeGreef', 'x@y.com')).toBe('James');
 		expect(greetingName('  Amina  ', undefined)).toBe('Amina');
 	});
-	it('falls back to the email local part, never the address', () => {
-		expect(greetingName('', 'reader.one@example.org')).toBe('reader.one');
+	it("falls back to the email's first word when it reads as a name", () => {
+		expect(greetingName('', 'james.degreef+1@gmail.com')).toBe('James');
+		expect(greetingName('', 'amina_yusuf@example.org')).toBe('Amina');
+		expect(greetingName('', 'zoë@example.org')).toBe('Zoë');
+	});
+
+	it('greets no one rather than a handle or the address', () => {
+		expect(greetingName('', 'jd1987@example.org')).toBe('');
+		expect(greetingName('', 'x@example.org')).toBe('');
+		expect(greetingName('', '1reader@example.org')).toBe('');
 		expect(greetingName('   ', undefined)).toBe('');
 	});
 });
