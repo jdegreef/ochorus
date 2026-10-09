@@ -14,6 +14,7 @@
 		getAdminUsers,
 		maskEmail,
 		periodTrend,
+		type AdminPromptFunnel,
 		type AdminUsers,
 		type AdminUserSort,
 		type Trend
@@ -140,6 +141,13 @@
 	const variantMax = $derived(
 		Math.max(1, ...(data?.by_signup_variant.map((v) => v.count_30d) ?? [1]))
 	);
+	// The prompt funnel's window, and the views below which a rate is noise.
+	let funnelDays = $state<7 | 30>(30);
+	const FUNNEL_MIN_SEEN = 100;
+	// One decimal (two past 1,000 views): sign-up rates live around 1%.
+	const funnelCount = (f: AdminPromptFunnel, k: 'seen' | 'started' | 'accounts') =>
+		f[`${k}_${funnelDays}d`];
+	const rate = (n: number, of: number) => `${((100 * n) / of).toFixed(of >= 1000 ? 2 : 1)}%`;
 	const countryMax = $derived(Math.max(1, ...(data?.by_country.map((c) => c.count) ?? [1])));
 	const tzMax = $derived(Math.max(1, ...(data?.by_timezone.map((t) => t.count) ?? [1])));
 
@@ -382,8 +390,86 @@
 							Each account counts once, under the last prompt the reader followed to sign up
 							(within a day). The home band's three random arms split first-time visitors evenly, so
 							they compare directly; “Progress-targeted” is shown only to readers with reading in
-							progress. How many people saw and started each prompt is in Plausible, under the
-							“Signup prompt seen” and “Signup started” goals.
+							progress. How many people saw and started each prompt is in the Prompt funnel below
+							(and in Plausible, under the “Signup prompt seen” and “Signup started” goals).
+						</p>
+					</section>
+				{/if}
+
+				<!-- Prompt funnel: each prompt's views and starts (anonymous daily
+				     counters, accounts.PromptTally) next to the accounts credited to
+				     it, so a prompt is judged by its rate and not by how busy its
+				     page is. Rates under FUNNEL_MIN_SEEN views are shown as too few:
+				     the point is to retire or grow prompts on evidence. -->
+				{#if d.prompt_funnel?.length}
+					<section class="mb-8 rounded-card border border-border bg-surface p-5">
+						<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+							<h2 class="text-h3">Prompt funnel</h2>
+							<div class="flex gap-1 text-small" role="group" aria-label="Window">
+								{#each [7, 30] as const as days (days)}
+									<button
+										type="button"
+										class="rounded-full px-2.5 py-0.5 {funnelDays === days
+											? 'bg-accent-soft font-semibold text-accent'
+											: 'text-muted'}"
+										aria-pressed={funnelDays === days}
+										onclick={() => (funnelDays = days)}>{days} days</button
+									>
+								{/each}
+							</div>
+						</div>
+						<div class="overflow-x-auto">
+							<table class="w-full text-small">
+								<thead>
+									<tr class="text-start text-micro text-muted">
+										<th class="pb-2 text-start font-medium">Prompt</th>
+										<th class="pb-2 text-end font-medium">Seen</th>
+										<th class="pb-2 text-end font-medium">Started</th>
+										<th class="pb-2 text-end font-medium">Accounts</th>
+										<th class="pb-2 text-end font-medium">Seen → account</th>
+									</tr>
+								</thead>
+								<tbody>
+									{#each d.prompt_funnel as f (f.variant)}
+										{@const seen = funnelCount(f, 'seen')}
+										{@const started = funnelCount(f, 'started')}
+										{@const accounts = funnelCount(f, 'accounts')}
+										<tr class="border-t border-border">
+											<td class="py-1.5 text-text">
+												{f.label}
+												{#if f.targeted}<span class="text-micro text-accent"> · targeted</span>{/if}
+												{#if f.seen_on_form}<span class="text-micro text-muted"> · form page</span>{/if}
+											</td>
+											<td class="py-1.5 text-end tabular-nums text-muted">{fmt(seen)}</td>
+											<td class="py-1.5 text-end tabular-nums text-muted">{fmt(started)}</td>
+											<td class="py-1.5 text-end font-semibold tabular-nums text-text">{fmt(accounts)}</td>
+											<td class="py-1.5 text-end tabular-nums">
+												{#if f.views_unknown}
+													<span class="text-muted" title="Google shows One Tap and never says when, so there are no views to divide by"
+														>not measurable</span
+													>
+												{:else if seen >= FUNNEL_MIN_SEEN}
+													<span class="font-semibold text-text">{rate(accounts, seen)}</span>
+												{:else}
+													<span class="text-muted" title="Fewer than {FUNNEL_MIN_SEEN} views: too early to read a rate"
+														>too few</span
+													>
+												{/if}
+											</td>
+										</tr>
+									{/each}
+								</tbody>
+							</table>
+						</div>
+						<p class="mt-3 text-micro text-muted">
+							<b>Seen</b>: readers shown the prompt (once per page visit). <b>Started</b>: sign-up
+							forms sent or Google pressed after it. <b>Accounts</b>: as above, the last prompt
+							followed within a day, so a start under one prompt can end as an account credited to
+							another; only accounts from the day a prompt's views began are counted. A rate needs
+							about {FUNNEL_MIN_SEEN} views before it means much. Compare prompts with similar
+							audiences: “targeted” is shown only to readers with reading in progress, and a “form
+							page” counts a view when the reader is already on the sign-up form, so its rate runs
+							high.
 						</p>
 					</section>
 				{/if}

@@ -1674,6 +1674,88 @@ class AdminUsersTests(TestCase):
         self.assertFalse(rows["bookshelf"]["targeted"])
 
     @override_settings(DEBUG=True)
+    def test_prompt_funnel_puts_views_and_starts_next_to_accounts(self):
+        import uuid
+        from datetime import timedelta
+
+        from django.contrib.auth import get_user_model
+        from django.utils import timezone
+
+        from accounts.models import PromptTally, UserProfile
+
+        User = get_user_model()
+        today = timezone.localdate()
+        # chapter_end: seen 100 this week + 50 three weeks ago; started 9; one account.
+        PromptTally.objects.create(day=today, source="chapter_end", kind="seen", count=100)
+        PromptTally.objects.create(
+            day=today - timedelta(days=20), source="chapter_end", kind="seen", count=50
+        )
+        PromptTally.objects.create(day=today, source="chapter_end", kind="started", count=9)
+        # Outside every window: ignored.
+        PromptTally.objects.create(
+            day=today - timedelta(days=40), source="chapter_end", kind="seen", count=999
+        )
+        # footer: seen, never converted, still listed.
+        PromptTally.objects.create(day=today, source="footer", kind="seen", count=30)
+        u = User.objects.create(username=str(uuid.uuid4()))
+        UserProfile.objects.create(user=u, supabase_uid=uuid.uuid4(), signup_variant="chapter_end")
+
+        res = self.client.get("/api/admin/users/")
+        rows = {r["variant"]: r for r in res.data["prompt_funnel"]}
+        ce = rows["chapter_end"]
+        self.assertEqual((ce["seen_7d"], ce["seen_30d"]), (100, 150))
+        self.assertEqual((ce["started_7d"], ce["started_30d"]), (9, 9))
+        self.assertEqual((ce["accounts_7d"], ce["accounts_30d"]), (1, 1))
+        self.assertEqual(ce["label"], "End of chapter")
+        self.assertEqual(rows["footer"]["seen_30d"], 30)
+        self.assertEqual(rows["footer"]["accounts_30d"], 0)
+        # Accounts first, then views.
+        self.assertEqual(res.data["prompt_funnel"][0]["variant"], "chapter_end")
+        # setUp's untagged profiles aren't a prompt.
+        self.assertNotIn("unknown", rows)
+
+    @override_settings(DEBUG=True)
+    def test_prompt_funnel_aligns_windows_and_counts_accounts_from_first_view(self):
+        import uuid
+        from datetime import timedelta
+
+        from django.contrib.auth import get_user_model
+        from django.utils import timezone
+
+        from accounts.models import PromptTally, UserProfile
+
+        User = get_user_model()
+        today = timezone.localdate()
+
+        def account(variant, days_ago):
+            u = User.objects.create(username=str(uuid.uuid4()))
+            p = UserProfile.objects.create(user=u, supabase_uid=uuid.uuid4(), signup_variant=variant)
+            UserProfile.objects.filter(pk=p.pk).update(
+                created_at=timezone.now() - timedelta(days=days_ago)
+            )
+
+        # A 7-day window is today and the 6 days before it, for views and accounts alike.
+        PromptTally.objects.create(day=today - timedelta(days=6), source="footer", kind="seen", count=10)
+        PromptTally.objects.create(day=today - timedelta(days=7), source="footer", kind="seen", count=5)
+        account("footer", 6)
+        account("footer", 7)
+        # Accounts from before a prompt's views were first counted are left out,
+        # so a new counter never reads as a 300% rate.
+        PromptTally.objects.create(day=today, source="menu", kind="seen", count=3)
+        account("menu", 10)
+        account("menu", 0)
+        # One Tap has no views to count from; its accounts still show.
+        account("one_tap", 2)
+
+        rows = {r["variant"]: r for r in self.client.get("/api/admin/users/").data["prompt_funnel"]}
+        self.assertEqual((rows["footer"]["seen_7d"], rows["footer"]["seen_30d"]), (10, 15))
+        self.assertEqual((rows["footer"]["accounts_7d"], rows["footer"]["accounts_30d"]), (1, 2))
+        self.assertEqual(rows["menu"]["accounts_30d"], 1)
+        self.assertTrue(rows["one_tap"]["views_unknown"])
+        self.assertEqual(rows["one_tap"]["accounts_7d"], 1)
+        self.assertFalse(rows["footer"]["seen_on_form"])
+
+    @override_settings(DEBUG=True)
     def test_recent_lists_individuals_newest_first(self):
         res = self.client.get("/api/admin/users/")
         recent = res.data["recent"]

@@ -1747,6 +1747,27 @@ export interface AdminSignupVariant {
 	targeted: boolean;
 }
 
+/**
+ * One sign-up prompt over the last 7 and 30 days (AdminUsersView._prompt_funnel):
+ * readers who saw it and started signing up from it (anonymous daily
+ * counters), and the accounts credited to it.
+ */
+export interface AdminPromptFunnel {
+	variant: string;
+	label: string;
+	targeted: boolean;
+	/** "Seen" is counted on arrival at the sign-up form (Bookshelf/Notebook pitch pages). */
+	seen_on_form: boolean;
+	/** No views to count (One Tap: Google never says when it shows). */
+	views_unknown: boolean;
+	seen_7d: number;
+	started_7d: number;
+	accounts_7d: number;
+	seen_30d: number;
+	started_30d: number;
+	accounts_30d: number;
+}
+
 /** A single recent sign-up. Admin-only — this is the one place account
  *  analytics names individuals (see the backend AdminUsersView docstring).
  *  `providers` carry their display label from the server, so the client never
@@ -1793,6 +1814,8 @@ export interface AdminUsers {
 	weekly_signups: { week: string; count: number }[];
 	by_method: AdminSignInMethod[];
 	by_signup_variant: AdminSignupVariant[];
+	/** Optional: an API from before the funnel shipped doesn't send it. */
+	prompt_funnel?: AdminPromptFunnel[];
 	recent: AdminRecentSignup[];
 	by_locale: (Language & { count: number })[];
 	by_country: AdminCountry[];

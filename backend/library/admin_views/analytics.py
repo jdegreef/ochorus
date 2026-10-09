@@ -861,6 +861,7 @@ class AdminUsersView(APIView):
                 "weekly_signups": self._weekly_signups(now),
                 "by_method": self._by_method(),
                 "by_signup_variant": self._by_signup_variant(),
+                "prompt_funnel": self._prompt_funnel(),
                 "recent": self._recent(reveal=is_admin_user(request.user, request)),
                 "by_locale": self._by_locale(),
                 **self._geography(),
@@ -906,6 +907,81 @@ class AdminUsersView(APIView):
         if unknown:
             out.append({"method": "unknown", "label": "Unknown", "count": unknown})
         return out
+
+    #: The funnel's windows, in days.
+    FUNNEL_WINDOWS = (7, 30)
+    #: Prompts whose "seen" is counted on arrival at the sign-up form itself
+    #: (the Bookshelf / Notebook pitch pages), not when a button scrolls into
+    #: view: their reader has already clicked through, so their rate isn't
+    #: comparable with the others'. The UI says so.
+    SEEN_ON_FORM = frozenset({"bookshelf", "notebook"})
+    #: Prompts with no measurable "seen": Google shows One Tap, and never says
+    #: when. Accounts still count; the rate is shown as unmeasurable.
+    VIEWS_UNKNOWN = frozenset({"one_tap"})
+
+    def _prompt_funnel(self):
+        """Per sign-up prompt: readers who saw it, started signing up from it,
+        and became accounts, over each of ``FUNNEL_WINDOWS``.
+
+        Seen and started come from ``accounts.PromptTally`` (anonymous daily
+        counters bumped by the prompts themselves); accounts from
+        ``UserProfile.signup_variant``, as in ``_by_signup_variant``.
+
+        All three use the same calendar days (this server's date): a window of
+        d days is today and the d-1 before it. And for each prompt, accounts
+        count only from the first day its views were counted, so a rate never
+        divides months of accounts by days of views (or reads over 100% while
+        the counters are new). Every prompt seen or credited in the longest
+        window is listed, so one seen often but converting never still shows.
+        Rows sort by 30-day accounts, then views; the rate is left to the UI,
+        which marks small samples rather than ranking them.
+        """
+        from datetime import timedelta
+
+        from django.db.models import Min
+        from django.utils import timezone
+
+        from accounts.models import PromptTally, UserProfile
+
+        today = timezone.localdate()
+        starts = {d: today - timedelta(days=d - 1) for d in self.FUNNEL_WINDOWS}
+        earliest = min(starts.values())
+        rows: dict[str, dict] = {}
+
+        def row(code):
+            return rows.setdefault(
+                code,
+                {
+                    "variant": code,
+                    "label": _signup_variant_label(code),
+                    "targeted": code == "progress",
+                    "seen_on_form": code in self.SEEN_ON_FORM,
+                    "views_unknown": code in self.VIEWS_UNKNOWN,
+                    **{f"{k}_{d}d": 0 for d in self.FUNNEL_WINDOWS for k in ("seen", "started", "accounts")},
+                },
+            )
+
+        for t in PromptTally.objects.filter(day__gte=earliest).values("day", "source", "kind", "count"):
+            for d, start in starts.items():
+                if t["day"] >= start:
+                    row(t["source"])[f"{t['kind']}_{d}d"] += t["count"]
+
+        # The day each prompt's counting began (ever, not just in the window).
+        counted_from = dict(
+            PromptTally.objects.values_list("source").annotate(first=Min("day")).values_list("source", "first")
+        )
+        recent = UserProfile.objects.exclude(signup_variant="").filter(
+            created_at__date__gte=earliest - timedelta(days=1)
+        )
+        for code, created in recent.values_list("signup_variant", "created_at"):
+            day = timezone.localdate(created)
+            since = counted_from.get(code)
+            if code not in self.VIEWS_UNKNOWN and (since is None or day < since):
+                continue
+            for d, start in starts.items():
+                if day >= start:
+                    row(code)[f"accounts_{d}d"] += 1
+        return sorted(rows.values(), key=lambda r: (-r["accounts_30d"], -r["seen_30d"], r["variant"]))
 
     def _by_signup_variant(self):
         """Accounts per sign-up source — the prompt each reader followed to sign

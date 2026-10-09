@@ -424,3 +424,56 @@ class HealthEndpointTests(TestCase):
                 content_digest.cache_clear()
                 self.assertEqual(content_digest(), "deadbeefdeadbeef")
         content_digest.cache_clear()
+
+
+class PromptEventViewTests(TestCase):
+    """POST /api/auth/prompt-event/: anonymous daily counters of sign-up
+    prompts seen and started, the views half of the admin's prompt funnel."""
+
+    def setUp(self):
+        self.client = APIClient()
+
+    def _post(self, payload, **kw):
+        return self.client.post("/api/auth/prompt-event/", payload, format="json", **kw)
+
+    def _count(self, source, kind):
+        from accounts.models import PromptTally
+
+        row = PromptTally.objects.filter(source=source, kind=kind).first()
+        return row.count if row else 0
+
+    def test_counts_seen_and_started_per_prompt_per_day(self):
+        for _ in range(3):
+            self.assertEqual(self._post({"source": "chapter_end", "kind": "seen"}).status_code, 204)
+        self._post({"source": "chapter_end", "kind": "started"})
+        self._post({"source": "footer", "kind": "seen"})
+        self.assertEqual(self._count("chapter_end", "seen"), 3)
+        self.assertEqual(self._count("chapter_end", "started"), 1)
+        self.assertEqual(self._count("footer", "seen"), 1)
+
+    def test_ignores_unknown_prompts_and_kinds_without_saying_so(self):
+        from accounts.models import PromptTally
+
+        for payload in (
+            {"source": "not-a-prompt", "kind": "seen"},
+            {"source": "footer", "kind": "clicked"},
+            {"source": ["footer"], "kind": "seen"},
+            {},
+        ):
+            self.assertEqual(self._post(payload).status_code, 204)
+        self.assertFalse(PromptTally.objects.exists())
+
+    def test_takes_json_only(self):
+        # A form post would let any page make its visitors bump counters.
+        res = self.client.post("/api/auth/prompt-event/", {"source": "footer", "kind": "seen"})
+        self.assertEqual(res.status_code, 415)
+        self.assertEqual(self._count("footer", "seen"), 0)
+
+    def test_stores_nothing_about_the_reader(self):
+        from accounts.models import PromptTally
+
+        user = User.objects.create(username="22222222-2222-2222-2222-222222222222")
+        self.client.force_authenticate(user)
+        self._post({"source": "header", "kind": "started"})
+        fields = {f.name for f in PromptTally._meta.get_fields()}
+        self.assertEqual(fields, {"id", "day", "source", "kind", "count"})

@@ -5,7 +5,10 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
  * Google One Tap: where it asks, the nonce handshake, and that a tap becomes a
  * Supabase sign-in credited to `one_tap`.
  */
+// Static and dynamic public env share one test module (vitest.config.ts), so
+// the static API base the api module reads has to be here too.
 vi.mock('$env/dynamic/public', () => ({
+	PUBLIC_API_BASE_URL: '',
 	env: { PUBLIC_GOOGLE_CLIENT_ID: 'test-client.apps.googleusercontent.com' }
 }));
 const auth = vi.hoisted(() => ({ signInWithGoogleIdToken: vi.fn().mockResolvedValue(null) }));
