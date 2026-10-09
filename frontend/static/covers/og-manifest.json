@@ -9508,6 +9508,16 @@
 			"layout": "box/teal",
 			"bar": 0
 		},
+		"lg/divine-healing": {
+			"ground": "420ab0d0ca8b2658da118482d7a5ad804915af6603a2bf96ac66599fe758a218",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0.05
+		},
 		"lg/divine-songs-for-children": {
 			"ground": "8dfe115e529b54803684a1f6c220360b59d4703aa09f823ca4b7c28a9ccb30a2",
 			"style": "young",
