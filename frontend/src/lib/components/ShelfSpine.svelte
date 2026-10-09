@@ -106,11 +106,22 @@
 		outline: 2px solid var(--color-accent);
 		outline-offset: 2px;
 	}
+	/* Gilt bands, struck in the frame metal the home hero hangs its painting
+	   in (--hero-gilt: gold, silver in the cool palettes) — a lit top edge, a
+	   shaded foot, the way leaf catches light on a rounded spine. The title
+	   stays white: the spine colour is floored to carry white at AA, not gold. */
 	.band {
 		flex: none;
-		width: 70%;
-		height: 3px;
-		border-block: 1px solid rgb(255 255 255 / 0.45);
+		width: 72%;
+		height: 4px;
+		border-radius: 1px;
+		background: linear-gradient(
+			to bottom,
+			color-mix(in srgb, var(--hero-gilt) 55%, white),
+			var(--hero-gilt) 45%,
+			var(--hero-gilt-deep)
+		);
+		box-shadow: 0 1px 1px rgb(0 0 0 / 0.35);
 	}
 	.title {
 		flex: 1;

@@ -562,7 +562,7 @@
 								class:text-accent={saved}
 								onclick={fromMore(() => favorites.toggle('sermon', sermon.slug))}
 								aria-pressed={saved}
-								><Icon name="heart" size={20} />{saved ? t('fav.saved') : t('fav.save')}</button
+								><Icon name="favorite" size={20} filled={saved} />{saved ? t('fav.saved') : t('fav.save')}</button
 							>
 							<button class="account-item more-item" onclick={shareFromMore}
 								><Icon name="share" size={20} strokeWidth={1.7} /><span aria-live="polite"

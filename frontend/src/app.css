@@ -2872,6 +2872,32 @@ nav.appnav .navsearch:hover {
 	min-height: 5.75rem;
 	padding: 1rem 1.1rem 0.9rem;
 }
+/* ── The bookshelf plank ────────────────────────────────────────────────────
+   One board for both Bookshelf views (ShelfBook's per-cell length, the spines
+   wall and an empty shelf's): a lit top arris, the face, a darker lip, and a
+   faint grain running along it. The grain is horizontal only, so the cells of
+   a row, each drawing its own length, still join into one unbroken board.
+   Wood, not a theme surface: the tokens dim with the lamp (--shelf-wood). */
+.shelf-plank {
+	height: 1.05rem;
+	background:
+		linear-gradient(
+			to bottom,
+			rgb(255 255 255 / 0.2) 0 1px,
+			transparent 1px 60%,
+			rgb(0 0 0 / 0.25) 60% calc(60% + 1px),
+			transparent calc(60% + 1px)
+		),
+		repeating-linear-gradient(
+			to bottom,
+			transparent 0 2px,
+			rgb(0 0 0 / 0.09) 2px 3px,
+			transparent 3px 4px,
+			rgb(255 255 255 / 0.05) 4px 5px
+		),
+		linear-gradient(to bottom, var(--shelf-wood) 0 60%, var(--shelf-wood-edge) 60% 100%);
+	box-shadow: 0 7px 9px -6px rgb(0 0 0 / 0.45);
+}
 /* ── Duotone portraits ─────────────────────────────────────────────────────
    A face printed in one ink: the photograph's light and shade, the colour of
    the section it stands in. Most sources are already monochrome plates and
