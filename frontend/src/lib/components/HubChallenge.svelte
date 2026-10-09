@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import type { SeriesSummary } from '$lib/library-public';
 	import { challengeState, type HubChallenge } from '$lib/audienceHub';
-	import { getProgressRecord } from '$lib/progress';
+	import { allProgress } from '$lib/progress';
 	import { readingActivity } from '$lib/readingActivity.svelte';
 	import { currentStreak, localToday } from '$lib/streak';
 	import { chapterPath } from '$lib/editionHref';
@@ -39,17 +39,17 @@
 	});
 
 	const volumes = $derived(series.books ?? []);
-	const place = $derived(
-		challengeState(volumes, challenge.days, (slug) => (ticks ? getProgressRecord(slug) : null))
+	// One read of the progress map per mount or sync, not one per volume.
+	const records = $derived(
+		new Map(ticks ? allProgress().filter((p) => p.kind === 'book').map((p) => [p.slug, p]) : [])
 	);
+	const place = $derived(challengeState(volumes, challenge.days, (slug) => records.get(slug) ?? null));
 	const streak = $derived(ticks ? currentStreak(readingActivity.days(), localToday()) : 0);
 	const name = $derived(splitSeriesTitle(series.title).name);
 	const meta = $derived(seriesMeta(series.slug));
 	const days = $derived(String(challenge.days));
 	const dayLabel = $derived(
-		place
-			? t('audience.challengeDay').replace('%d%', String(place.day)).replace('%n%', days)
-			: ''
+		t('audience.challengeDay').replace('%d%', String(place?.day ?? 0)).replace('%n%', days)
 	);
 </script>
 

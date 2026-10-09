@@ -238,15 +238,12 @@ export function challengeState(
 ): ChallengeState | null {
 	if (!volumes.length) return null;
 	const open = volumes.find((slug) => recordOf(slug)?.finished_at == null);
+	const done = !open;
 	const slug = open ?? volumes[volumes.length - 1];
 	const rec = recordOf(slug);
-	return {
-		slug,
-		day: !open ? days : rec ? Math.min(Math.max(furthestOf(rec) - 1, 0), days) : 0,
-		order: rec ? resumeOrderOf(rec) : 1,
-		started: !!rec,
-		done: !open
-	};
+	// furthestOf is at least 1 (the introduction), so day is never negative.
+	const day = done ? days : rec ? Math.min(furthestOf(rec) - 1, days) : 0;
+	return { slug, day, order: rec ? resumeOrderOf(rec) : 1, started: !!rec, done };
 }
 
 export interface PrintableLink {

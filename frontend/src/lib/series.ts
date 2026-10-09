@@ -161,6 +161,9 @@ export interface SeriesToContinue<S> {
 	series: S;
 	slug: string;
 	stages: BookStage[];
+	/** When the series was last read (ms) — the order, and a mixed shelf's
+	 *  key for merging these rows with others (the young-reader hubs). */
+	at: number;
 }
 
 /**
@@ -175,7 +178,7 @@ export function seriesToContinue<S extends Pick<SeriesSummary, 'books'>>(
 	lastRead: (slug: string) => number,
 	limit = 3
 ): SeriesToContinue<S>[] {
-	const rows: (SeriesToContinue<S> & { at: number })[] = [];
+	const rows: SeriesToContinue<S>[] = [];
 	for (const s of series) {
 		const slugs = s.books ?? [];
 		const { started, stages } = seriesProgress(slugs, progressOf);
@@ -185,10 +188,7 @@ export function seriesToContinue<S extends Pick<SeriesSummary, 'books'>>(
 		const at = Math.max(...slugs.map(lastRead));
 		rows.push({ series: s, slug: next.book.slug, stages, at });
 	}
-	return rows
-		.sort((a, b) => b.at - a.at)
-		.slice(0, limit)
-		.map(({ at: _at, ...row }) => row);
+	return rows.sort((a, b) => b.at - a.at).slice(0, limit);
 }
 
 /**

@@ -47,17 +47,11 @@
 
 	const rows = $derived.by((): Row[] => {
 		if (!ticks) return [];
-		const times = bookReadTimes();
 		const series: Row[] = seriesToContinue(
 			shelf.series.filter((s) => s.slug !== exclude),
 			bookProgressReader(),
-			times
-		).map((r) => ({
-			kind: 'series',
-			key: `series:${r.series.slug}`,
-			at: Math.max(...(r.series.books ?? []).map(times)),
-			...r
-		}));
+			bookReadTimes()
+		).map((r) => ({ kind: 'series', key: `series:${r.series.slug}`, ...r }));
 		const bySlug = new Map(hubBooks(shelf).map((b) => [b.slug, b]));
 		const books: Row[] = allProgress()
 			.filter((p) => p.kind === 'book' && p.finished_at == null && bySlug.has(p.slug))
@@ -93,7 +87,9 @@
 				</ContinueRow>
 			{:else}
 				{@const of = row.book.chapter_count}
-				{@const caption = `${t('continue.chapter')} ${row.order} ${t('plans.of')} ${of}`}
+				{@const caption = of
+					? `${t('continue.chapter')} ${row.order} ${t('plans.of')} ${of}`
+					: `${t('continue.chapter')} ${row.order}`}
 				<ContinueRow
 					href={localizeHref(chapterPath(row.book.slug, row.order, row.book.has_modern_edition))}
 					title={row.book.title}
@@ -104,7 +100,9 @@
 						<span class="w-10 shrink-0"><BookCover book={row.book} /></span>
 					{/snippet}
 					{#snippet progress()}
-						<ProgressBar percent={((row.order - 1) / of) * 100} label={`${row.book.title}: ${caption}`} />
+						{#if of}
+							<ProgressBar percent={((row.order - 1) / of) * 100} label={`${row.book.title}: ${caption}`} />
+						{/if}
 					{/snippet}
 				</ContinueRow>
 			{/if}

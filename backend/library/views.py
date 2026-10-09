@@ -1015,26 +1015,13 @@ def _audience_quotes(people: list[dict], language: str) -> list[dict]:
     enough to stand alone (``FEATURED_MAX_CHARS``, the /quotes lead's bar).
     Within a person the pick is the shortest — the line that lands on a young
     reader — ties broken by slug, so it is stable across deploys."""
-    from django.db.models.functions import Length
-
-    from .models import Quote
-
     if language != "en" or not people:
         return []
     order: dict[str, int] = {}
     for p in people:
         order.setdefault(p["slug"], len(order))
-    picks: dict[str, Quote] = {}
-    for q in (
-        Quote.objects.filter(reviewed=True, author__slug__in=order)
-        .filter(_PUBLISHED_SOURCE)
-        .annotate(chars=Length("text"))
-        .filter(chars__lte=FEATURED_MAX_CHARS)
-        .select_related("author", "chapter__book", "sermon")
-        .defer("chapter__body_html", "chapter__body_text", "chapter__search_vector",
-               "sermon__body_html", "sermon__body_text", "sermon__search_vector")
-        .order_by("chars", "slug")
-    ):
+    picks = {}
+    for q in _short_quotes().filter(author__slug__in=order).order_by("chars", "slug"):
         picks.setdefault(q.author.slug, q)
     chosen = sorted(picks.values(), key=lambda q: order[q.author.slug])
     return [_quote_card_payload(q) for q in chosen[:AUDIENCE_QUOTES_MAX]]
@@ -1978,6 +1965,27 @@ FEATURED_PER_AUTHOR = 6
 FEATURED_MAX_CHARS = 160
 
 
+def _short_quotes():
+    """Reviewed quotations from published works, short enough to stand alone
+    (``FEATURED_MAX_CHARS``, annotated as ``chars``), ready for
+    ``_quote_card_payload`` — the /quotes lead's pool and the young-reader
+    hubs' "In their own words" both draw from it."""
+    from django.db.models.functions import Length
+
+    from .models import Quote
+
+    return (
+        Quote.objects.filter(reviewed=True)
+        .filter(_PUBLISHED_SOURCE)
+        .annotate(chars=Length("text"))
+        .filter(chars__lte=FEATURED_MAX_CHARS)
+        .select_related("author", "chapter__book", "sermon")
+        # The card needs titles and slugs, never the bodies they sit in.
+        .defer("chapter__body_html", "chapter__body_text", "chapter__search_vector",
+               "sermon__body_html", "sermon__body_text", "sermon__search_vector")
+    )
+
+
 class QuoteFeaturedView(APIView):
     """The pool the /quotes index draws its featured quotation from.
 
@@ -1991,21 +1999,7 @@ class QuoteFeaturedView(APIView):
     """
 
     def get(self, request):
-        from django.db.models.functions import Length
-
-        from .models import Quote
-
-        rows = (
-            Quote.objects.filter(reviewed=True)
-            .filter(_PUBLISHED_SOURCE)
-            .annotate(chars=Length("text"))
-            .filter(chars__lte=FEATURED_MAX_CHARS)
-            .select_related("author", "chapter__book", "sermon")
-            # The card needs titles and slugs, never the bodies they sit in.
-            .defer("chapter__body_html", "chapter__body_text", "chapter__search_vector",
-                   "sermon__body_html", "sermon__body_text", "sermon__search_vector")
-            .order_by("author__name", "slug")
-        )
+        rows = _short_quotes().order_by("author__name", "slug")
         by_author: dict[int, list] = {}
         for q in rows:
             picks = by_author.setdefault(q.author_id, [])
