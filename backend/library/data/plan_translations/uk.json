@@ -43,5 +43,14 @@
       "Job #804. Echoes the shipped uk book titles «Сам Ісус» (jesus-himself-2.uk) and «Учитель, що живе в нас» (the-masters-indwelling.uk) so the card and the books agree. «Христос у вас» is Col 1:27 as the uk Bible words it. Names follow the uk corpus: Ендрю Мюррей (32×), Гадсон Тейлор (15×).",
       "union-and-communion has no uk edition yet, so seed_plans will not create this row until it ships; «єднання та спілкування з Улюбленим» is this entry's own rendering of that book's motif, not a quotation. Whoever translates union-and-communion → uk should harmonise its title with this card, or adjust this entry in the same PR. AI-drafted; awaiting native review."
     ]
+  },
+  "everything-for-christ": {
+    "title": "Усе для Христа: життя, віддане без останку",
+    "description": "Чого коштує віддання себе всім серцем — і що воно приносить? Проникливий місіонерський щоденник Девіда Брейнерда, а за ним — історії чоловіків і жінок, які віддали все заради Євангелія: заклик до посвяти, розказаний через життя тих, хто на нього відгукнувся.",
+    "note": [
+      "Job #1675. Брейнерд follows the shipped uk corpus (24×). «які віддали все» echoes the uk title of the second source book, «Чоловіки й жінки, які віддали все» (men-and-women-who-gave-everything-2.uk).",
+      "«віддання себе» is the glossary rendering of surrender. AI-drafted, awaiting native review.",
+      "The row appears only once both source books exist in uk — life-and-diary-of-david-brainerd has no uk edition yet."
+    ]
   }
 }
