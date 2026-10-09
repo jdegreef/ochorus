@@ -627,6 +627,16 @@
 			"layout": "framed-light",
 			"bar": 0
 		},
+		"am/days-of-heaven-upon-earth": {
+			"ground": "c8fefe3e505310cef0b326f9a083d51d4714d175cacf665dbe5e37b1b821a598",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/teal",
+			"bar": 0
+		},
 		"am/divine-healing": {
 			"ground": "5c117325c62ea13f955c4db4507bb804fc5f6d06dc4821d6954edf4eda772658",
 			"style": "devotional",
@@ -1872,6 +1882,16 @@
 				484
 			]
 		},
+		"am/talks-to-the-farmer": {
+			"ground": "a0ca9991fc06dcbf11951536ee997979cdea9846bec0ab362f41a24157fe1d7b",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"am/talks-to-the-farmer-children": {
 			"ground": "328af163781b14f92b1364e0e6205e0e2ebfc93e25caef31f05d715a175eacfb",
 			"style": "revival",
@@ -1918,6 +1938,32 @@
 			"middle": [
 				311,
 				484
+			]
+		},
+		"am/the-christians-secret-of-a-happy-life-4": {
+			"ground": "fab46d178e2e9ba13001d92b4336a7c22fcfa2bd13a6e32d4b5504b410ed73f1",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.45,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[80, 102, 520, 131]
+				],
+				"title": [
+					[73, 290, 527, 372],
+					[95, 362, 505, 444]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				295,
+				500
 			]
 		},
 		"am/the-fourfold-gospel": {
@@ -2227,6 +2273,35 @@
 			"middle": [
 				278,
 				517
+			]
+		},
+		"am/way-into-holiest": {
+			"ground": "433e100b0058920f8efc9fdb5c39623e695dfb82878ab163e6e796cfbdcae09f",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[82, 266, 518, 348],
+					[72, 338, 528, 420]
+				],
+				"subtitle": [
+					[151, 496, 450, 524]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
 			]
 		},
 		"am/women-who-moved-heaven-2": {
