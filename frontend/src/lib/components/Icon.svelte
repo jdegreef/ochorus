@@ -43,7 +43,8 @@
 		| 'quote'
 		| 'pen'
 		| 'highlighter'
-		| 'share';
+		| 'share'
+		| 'favorite';
 
 	let {
 		name,
@@ -51,7 +52,8 @@
 		label,
 		strokeWidth = 1.8,
 		class: klass = '',
-		mirror = true
+		mirror = true,
+		filled = false
 	}: {
 		name: IconName;
 		size?: number;
@@ -62,6 +64,9 @@
 		 *  locale — by default. Pass false for one that only rotates (a
 		 *  disclosure), which a flip would fight. */
 		mirror?: boolean;
+		/** Paint the shape solid as well as stroked — the "on" state of a
+		 *  toggle drawn with this glyph (a saved favourite). */
+		filled?: boolean;
 	} = $props();
 	const directional = $derived(mirror && (name === 'chevron-left' || name === 'chevron-right'));
 </script>
@@ -71,7 +76,7 @@
 	width={size}
 	height={size}
 	viewBox="0 0 24 24"
-	fill="none"
+	fill={filled ? 'currentColor' : 'none'}
 	stroke="currentColor"
 	stroke-width={strokeWidth}
 	stroke-linecap="round"
@@ -170,6 +175,11 @@
 		<circle cx="17" cy="6" r="2.6" />
 		<circle cx="17" cy="18" r="2.6" />
 		<path d="M8.3 10.9 14.7 7.2M8.3 13.1l6.4 3.7" />
+	{:else if name === 'favorite'}
+		<!-- The save/favourite toggle (FavoriteButton); `filled` when saved. -->
+		<path
+			d="M19 14c1.5-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"
+		/>
 	{:else if name === 'heart'}
 		<path d="M12 20.5S4 15.9 4 10.3A4.3 4.3 0 0 1 12 8a4.3 4.3 0 0 1 8 2.3c0 5.6-8 10.2-8 10.2z" />
 	{:else if name === 'flame'}
