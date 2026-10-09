@@ -1905,7 +1905,8 @@
      question, not a chapter, so it has no initial.
    - An author's biography (`.reading.bio`, never paged, no <article>) opens
      with the same initial: one rule, one script gate, so a Hindi bio is
-     spared the split akshara exactly as a Hindi chapter is.
+     spared the split akshara exactly as a Hindi chapter is. So does a book
+     page's "About this book" (`.about-initial`).
 
    ILLUMINATED: the letter is set in the palette's accent (so it is indigo in
    Parchment, navy in Cathedral, violet in Advent under the Church year) and
@@ -1913,7 +1914,7 @@
    a gilt initial's raised edge in a printed devotional. (No RTL variant: no
    right-to-left text gets a floated initial — see above. Print drops the gilt
    with the colour; see the print block.) */
-:is(article:not(.paged) .reading:not(.no-initial), .reading.bio) > p:first-of-type:not(:lang(ar)):not(:lang(hi))::first-letter {
+:is(article:not(.paged) .reading:not(.no-initial), .reading.bio, .about-initial) > p:first-of-type:not(:lang(ar)):not(:lang(hi))::first-letter {
 	float: inline-start;
 	/* The house serif, not --font-display: that follows the site style
 	   (site-fonts.css), and an initial is part of the page, not the chrome. */

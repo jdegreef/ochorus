@@ -47,6 +47,7 @@
 	import SeriesSegments from '$lib/components/SeriesSegments.svelte';
 	import type { BookSummary } from '$lib/library-public';
 	import PersonCard from '$lib/components/PersonCard.svelte';
+	import Portrait from '$lib/components/Portrait.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import ArticleLinkCard from '$lib/components/ArticleLinkCard.svelte';
 	import Icon from '$lib/components/Icon.svelte';
@@ -473,6 +474,15 @@
 	);
 	const showSubnav = $derived(navItems.length >= 2);
 
+	const authorHref = $derived(localizeHref(authorPath(book.author.slug)));
+	// Where this book fell in its author's life, as a share of the line from
+	// birth to death — only when all three years are known and in order.
+	const lifeline = $derived.by(() => {
+		const { birth_year: b, death_year: d } = book.author;
+		const y = book.publication_year;
+		return b && d && y && b < d && y >= b && y <= d ? { at: ((y - b) / (d - b)) * 100 } : null;
+	});
+
 	// One reading of the reader's place for the contents' bar and its rows.
 	// The chapter they're in wins over "read" (a reader who went back to
 	// reread is IN that chapter), and only a reader with a place (`resuming`,
@@ -897,7 +907,7 @@
 	{#if book.about_html}
 		<section id="about" class="jump-anchor about-work mt-8" aria-labelledby="about-work">
 			<h2 id="about-work" class="section-heading">{t('book.aboutWork')}</h2>
-			<div class="text-body leading-relaxed" dir="auto">
+			<div class="about-initial text-body leading-relaxed" dir="auto">
 				<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 				{@html book.about_html}
 			</div>
@@ -905,7 +915,7 @@
 	{:else if book.description}
 		<section id="about" class="jump-anchor mt-8" aria-labelledby="about-work">
 			<h2 id="about-work" class="section-heading">{t('book.aboutWork')}</h2>
-			<p class="text-body leading-relaxed" dir="auto">{book.description}</p>
+			<div class="about-initial" dir="auto"><p class="text-body leading-relaxed">{book.description}</p></div>
 		</section>
 	{/if}
 
@@ -924,8 +934,8 @@
 	     owns that judgement (library/opening.py); the page just renders what it
 	     is given. -->
 	{#if book.opening}
-		<figure class="mt-8 max-w-xl border-s-2 border-border ps-4">
-			<blockquote class="text-body leading-relaxed" dir="auto">
+		<figure class="opening-card mt-8 max-w-xl">
+			<blockquote class="font-display text-h3 italic leading-snug" dir="auto">
 				{book.opening.text}
 			</blockquote>
 			<figcaption class="mt-2 text-small text-muted" dir="auto">
@@ -1097,14 +1107,88 @@
 		</section>
 	{/if}
 
+	<!-- The author, after the book: who wrote it and — where the dates are
+	     known — where this book fell in their life, a mark on the line from
+	     birth to death. No bio: on this page it read as the book's own prose
+	     (bookAboutSection.test.ts); the full life is the author page's, and
+	     this band is the way there. -->
+	<section class="author-band mt-12" aria-labelledby="author-band-name">
+		<a href={authorHref} class="shrink-0 hover:no-underline" tabindex="-1" aria-hidden="true">
+			<Portrait
+				slug={book.author.slug}
+				name={book.author.name}
+				url={book.author.photo_url}
+				px={128}
+				class="h-20 w-20 sm:h-32 sm:w-32"
+				initialsClass="text-h2"
+			/>
+		</a>
+		<div class="min-w-0 flex-1">
+			<p class="eyebrow text-muted">{t('finished.aboutAuthor')}</p>
+			<h2 id="author-band-name" class="text-h2">
+				<a href={authorHref} class="text-text hover:underline">{book.author.name}</a>
+			</h2>
+			{#if lifeline}
+				<div class="lifeline mt-4">
+					<span class="text-small text-muted">{book.author.birth_year}</span>
+					<span class="lifeline-track"
+						><span class="lifeline-mark" style:inset-inline-start="{lifeline.at}%"></span></span
+					>
+					<span class="text-small text-muted">{book.author.death_year}</span>
+				</div>
+				<p class="mt-1 text-center text-small text-accent" dir="auto">
+					{book.title} · {book.publication_year}
+				</p>
+			{/if}
+			<a href={authorHref} class="mt-3 inline-block text-small font-semibold text-accent hover:underline"
+				>{t('book.moreBy').replace('%name%', book.author.name)} <Arrow /></a
+			>
+		</div>
+	</section>
+
+	<!-- Where to go from here: one book to read next (the first of "More like
+	     this", given room and its pitch) and, for a book with one, the leader's
+	     guide for reading it with a group — then the rest of the shelf. -->
 	{#if book.related?.length}
+		{@const [next, ...rest] = book.related}
 		<section id="related" class="jump-anchor mt-12">
 			<h2 class="section-heading">{t('book.related')}</h2>
-			<div class="book-grid">
-				{#each book.related as rel (rel.slug)}
-					<BookCard book={rel} showAuthor />
-				{/each}
+			<div class="next-pair">
+				<a href={localizeHref(`/books/${next.slug}`)} class="next-card card-tint">
+					<span class="w-20 shrink-0" aria-hidden="true"><BookCover book={next} /></span>
+					<span class="min-w-0">
+						<span class="eyebrow block text-accent">{t('articles.readNext')}</span>
+						<span class="mt-1 block font-display text-h3 leading-snug" dir="auto">{next.title}</span>
+						<span class="block text-small text-muted">{next.author.name}</span>
+						{#if next.hook}
+							<span class="mt-2 line-clamp-3 block text-small" dir="auto">{next.hook}</span>
+						{:else}
+							<span class="mt-2 block text-small text-muted"
+								>{chapterCount(next.chapter_count)}{#if next.word_count}{` · ${readingTime(next.word_count)}`}{/if}</span
+							>
+						{/if}
+					</span>
+				</a>
+				{#if book.has_leader_guide}
+					<a href={localizeHref(`/books/${book.slug}/guide`)} class="next-card next-card-group card-tint">
+						<span class="next-icon" aria-hidden="true"><Icon name="users" size={22} /></span>
+						<span class="min-w-0">
+							<span class="eyebrow block">{t('guide.label')}</span>
+							<span class="mt-1 block text-small" dir="auto"
+								>{t('guide.description').replace('%t%', book.title)}</span
+							>
+							<span class="mt-2 block text-small font-semibold">{t('guide.open')} <Arrow /></span>
+						</span>
+					</a>
+				{/if}
 			</div>
+			{#if rest.length}
+				<div class="book-grid mt-6">
+					{#each rest as rel (rel.slug)}
+						<BookCard book={rel} showAuthor />
+					{/each}
+				</div>
+			{/if}
 		</section>
 	{/if}
 
@@ -1339,6 +1423,104 @@
 	.hero-chip-link:hover {
 		background: var(--accent-soft);
 		text-decoration: none;
+	}
+
+	/* The opening lines: the author's voice on a quiet card, a gilt quote mark
+	   at its head (the ornament metal, as the drop cap's edge). */
+	.opening-card {
+		padding: 1.25rem 1.4rem 1.1rem;
+		border-radius: var(--radius-card);
+		background: var(--surface-2);
+	}
+	.opening-card::before {
+		content: '“';
+		display: block;
+		height: 1.6rem;
+		font-family: var(--house-display);
+		font-size: var(--fs-display);
+		line-height: 1;
+		color: var(--ornament);
+	}
+
+	/* The author band: portrait beside the name, lifeline and the way on. */
+	.author-band {
+		display: flex;
+		gap: 1.25rem;
+		align-items: center;
+		padding: 1.25rem;
+		border-radius: var(--radius-card);
+		background: var(--surface-2);
+	}
+	@media (min-width: 640px) {
+		.author-band {
+			gap: 1.75rem;
+			padding: 1.75rem;
+		}
+	}
+	.lifeline {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		max-width: 28rem;
+	}
+	.lifeline-track {
+		position: relative;
+		flex: 1;
+		height: 2px;
+		background: var(--border-strong);
+	}
+	.lifeline-mark {
+		position: absolute;
+		top: 50%;
+		width: 0.85rem;
+		height: 0.85rem;
+		margin-inline-start: -0.425rem;
+		border: 2px solid var(--surface-2);
+		border-radius: 50%;
+		background: var(--accent);
+		transform: translateY(-50%);
+	}
+	.author-band .text-center {
+		max-width: 28rem;
+	}
+
+	/* Read next, and the group guide beside it. */
+	.next-pair {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(min(100%, 28rem), 1fr));
+		gap: 1rem;
+	}
+	.next-card {
+		display: flex;
+		gap: 1rem;
+		align-items: flex-start;
+		padding: 1rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: var(--surface);
+		color: var(--text);
+		text-decoration: none;
+	}
+	.next-card:hover {
+		text-decoration: none;
+	}
+	.next-card-group {
+		color: var(--text);
+	}
+	.next-card-group .eyebrow,
+	.next-card-group .font-semibold {
+		color: var(--accent);
+	}
+	.next-icon {
+		display: inline-flex;
+		flex-shrink: 0;
+		align-items: center;
+		justify-content: center;
+		width: 3rem;
+		height: 3rem;
+		border-radius: var(--radius-card);
+		background: var(--accent-soft);
+		color: var(--accent);
 	}
 
 	/* The edition picker: a card per rung, the one in hand ringed in the
