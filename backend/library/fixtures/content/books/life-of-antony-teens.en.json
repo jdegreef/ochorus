@@ -1,0 +1,395 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "athanasius-of-alexandria"
+  ],
+  "slug": "life-of-antony-teens",
+  "language": "en",
+  "title": "The Life of Antony (For Teens)",
+  "subtitle": "",
+  "cover_title": "",
+  "description": "Antony was an Egyptian teenager, about eighteen or twenty, when his parents died and left him a rich farm and a little sister to care for. One Sunday he heard Jesus’ words, “go and sell that thou hast”, and did exactly that. He went on to live in the desert for more than eighty years, and thousands followed him. His friend Athanasius, the great bishop of Alexandria, wrote his story. This teen edition retells it in plain words: learning from everyone, facing temptation, walking past gold in the road, not being afraid, living as though each day could be your last, standing with persecuted friends, and finishing well. Athanasius’s own sentences are kept where they say it best.",
+  "hook": "At about eighteen he heard one Bible verse, gave away everything, and walked into the desert to follow Jesus.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Who was Antony?",
+    "answer": "An Egyptian Christian, born around the middle of the third century to a wealthy Christian family. After his parents died when he was about eighteen or twenty, he gave away his land and money, lived as a hermit in the Egyptian desert, and became a famous teacher and counsellor. He died, according to Athanasius, at about 105 years old. He is often called the father of Christian monasticism."
+   },
+   {
+    "question": "Who was Athanasius, who wrote this book?",
+    "answer": "The bishop of Alexandria in Egypt from 328 to 373. He stood firm for the truth that Jesus is fully God against the teaching of Arius, and was exiled five times. During one exile the desert monks hid him, and it was out of those years that he wrote The Life of Antony."
+   },
+   {
+    "question": "Should I copy Antony’s fasting, sleeping on the ground and living alone?",
+    "answer": "No. Antony lived in a very different time and calling, and some of his habits were extreme. God does not ask you to starve yourself, skip sleep or cut yourself off from people. What we can copy is his love for Jesus, his generosity, his prayer, his courage and his humility. If you find yourself restricting food or punishing your body, please talk to a trusted adult or a doctor."
+   },
+   {
+    "question": "What about the stories of demons in this book?",
+    "answer": "Athanasius describes Antony’s battles with the devil in vivid ways that people of his time would understand. This retelling keeps them simple. The main lesson Antony drew is that evil is real but has little power over those who belong to Christ, so Christians should not live in fear. If you are frightened about these things, talk to a trusted Christian adult."
+   },
+   {
+    "question": "Did Antony think he was more holy than other people?",
+    "answer": "No. Athanasius says Antony learned from everyone, honoured church leaders, and insisted that his healings were done by Christ alone through prayer, not by his own power."
+   },
+   {
+    "question": "Is this the full text?",
+    "answer": "No. It is a retelling for teenagers in plain modern words, drawn from across Athanasius’s book and keeping his sentences where they say it best. The full Life of Antony is also available."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of The Life of Antony by Athanasius of Alexandria, in an English translation that is in the public domain. The telling is our own, free to read and share. Scripture quotations are from the King James Version, which is in the public domain.",
+  "cover_url": "/covers/life-of-antony-teens.svg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/life-of-antony-teens.pdf?download=life-of-antony-teens.pdf",
+  "cover_color": "",
+  "series": [
+   "straight-talk"
+  ],
+  "series_position": null,
+  "sort_order": 164,
+  "is_published": true,
+  "created_at": "2026-10-09T06:30:00Z",
+  "updated_at": "2026-10-09T06:30:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "en"
+  ],
+  "order": 1,
+  "title": "The Sermon That Changed Everything",
+  "body_html": "<blockquote>“Jesus said unto him, If thou wilt be perfect, go and sell that thou hast, and give to the poor, and thou shalt have treasure in heaven: and come and follow me.” — Matthew 19:21 (KJV)</blockquote> <p>About seventeen hundred years ago, in a village in Egypt, there lived a boy called Antony. His parents were Christians and quite wealthy. Antony was a quiet boy. Athanasius, who later wrote his story, says he didn’t much like school or mixing with other boys, but he went to church with his parents and listened carefully to what was read.</p> <p>Then, when Antony was about eighteen or twenty, both his parents died. Suddenly he was responsible for a large farm and for his little sister.</p> <p>Less than six months later, Antony was walking to church, thinking about how the apostles had left everything to follow Jesus, and how the first Christians in the book of Acts sold their possessions to help the poor. As he walked in, the Gospel reading was the story of the rich young man. Antony heard Jesus say: “go and sell that thou hast, and give to the poor … and come and follow me.”</p> <p>Athanasius says Antony felt as though the passage had been read just for him. He went straight out of church and gave away his family’s land, three hundred acres of good farmland, to the people of his village. He sold everything else and gave the money to the poor, keeping a little back to provide for his sister.</p> <p>Not long after, he heard another reading in church: Jesus saying not to be anxious about tomorrow. So he gave away the rest too. He arranged for his sister to be cared for and brought up by trusted Christian women, and he began a new life wholly given to God.</p> <p>That was the start of one of the most famous lives in Christian history. Antony lived to be about 105. Thousands of people followed his example, and his story spread across the world.</p> <p>This book’s author, Athanasius, was the bishop of Alexandria, Egypt’s great city. He was a fearless defender of the truth that Jesus is fully God, and he was driven out of his city five times by emperors who disagreed with him. During one exile, the desert monks hid him for six years. It was out of those years that he wrote Antony’s story.</p> <p>Not everyone is called to do exactly what Antony did. But every Christian is called to take Jesus’ words seriously. Antony heard a Bible verse and acted on it immediately. What would it look like for you to do that?</p> <p><strong>One thing to do this week:</strong> this week, read a Gospel passage each day. Ask God to show you one sentence that is “for you”, like Antony’s verse. When you find it, write it down and do one practical thing about it straight away.</p>",
+  "study_questions": [
+   {
+    "question": "What happened to Antony when he was about eighteen or twenty?",
+    "answer": "Both his parents died, leaving him responsible for their farm and his little sister."
+   },
+   {
+    "question": "What Bible passage did Antony hear in church?",
+    "answer": "Jesus’ words to the rich young man: go and sell what you have, give to the poor, and come and follow me."
+   },
+   {
+    "question": "How did Antony provide for his sister?",
+    "answer": "He kept a little money back for her and arranged for her to be cared for and brought up by trusted Christian women."
+   }
+  ],
+  "body_text": "“Jesus said unto him, If thou wilt be perfect, go and sell that thou hast, and give to the poor, and thou shalt have treasure in heaven: and come and follow me.” — Matthew 19:21 (KJV) About seventeen hundred years ago, in a village in Egypt, there lived a boy called Antony. His parents were Christians and quite wealthy. Antony was a quiet boy. Athanasius, who later wrote his story, says he didn’t much like school or mixing with other boys, but he went to church with his parents and listened carefully to what was read. Then, when Antony was about eighteen or twenty, both his parents died. Suddenly he was responsible for a large farm and for his little sister. Less than six months later, Antony was walking to church, thinking about how the apostles had left everything to follow Jesus, and how the first Christians in the book of Acts sold their possessions to help the poor. As he walked in, the Gospel reading was the story of the rich young man. Antony heard Jesus say: “go and sell that thou hast, and give to the poor … and come and follow me.” Athanasius says Antony felt as though the passage had been read just for him. He went straight out of church and gave away his family’s land, three hundred acres of good farmland, to the people of his village. He sold everything else and gave the money to the poor, keeping a little back to provide for his sister. Not long after, he heard another reading in church: Jesus saying not to be anxious about tomorrow. So he gave away the rest too. He arranged for his sister to be cared for and brought up by trusted Christian women, and he began a new life wholly given to God. That was the start of one of the most famous lives in Christian history. Antony lived to be about 105. Thousands of people followed his example, and his story spread across the world. This book’s author, Athanasius, was the bishop of Alexandria, Egypt’s great city. He was a fearless defender of the truth that Jesus is fully God, and he was driven out of his city five times by emperors who disagreed with him. During one exile, the desert monks hid him for six years. It was out of those years that he wrote Antony’s story. Not everyone is called to do exactly what Antony did. But every Christian is called to take Jesus’ words seriously. Antony heard a Bible verse and acted on it immediately. What would it look like for you to do that? One thing to do this week: this week, read a Gospel passage each day. Ask God to show you one sentence that is “for you”, like Antony’s verse. When you find it, write it down and do one practical thing about it straight away.",
+  "word_count": 483
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "en"
+  ],
+  "order": 2,
+  "title": "Learning from Everyone",
+  "body_html": "<blockquote>“He that walketh with wise men shall be wise: but a companion of fools shall be destroyed.” — Proverbs 13:20 (KJV)</blockquote> <p>When Antony started his new life, there weren’t yet any big monasteries in Egypt. People who wanted to devote themselves to God usually lived quietly near their own villages. Antony did the same at first.</p> <p>In the next village lived an old man who had followed God in this way since his youth. Antony watched him and copied his example. And whenever he heard of another godly person anywhere nearby, he went to find them. Athanasius has a lovely picture for this: Antony went out “like the prudent bee”, collecting good things from each person to take home with him.</p> <p>What did he learn? Athanasius lists it. From one person he learned graciousness; from another, constant prayer; from another, freedom from anger; from another, kindness. He watched one person’s patience, another’s gentleness, another’s love for Christ and for others. Then he tried to put it all together in his own life.</p> <p>This is a really wise way to grow. Nobody is perfect, but almost every Christian you know has something to teach you. One friend might be great at encouraging people. A grandparent might be faithful in prayer. A youth leader might be really patient. Like Antony, you can learn something different from each of them.</p> <p>Antony also worked with his hands. He had heard the Bible say that whoever won’t work shouldn’t eat. So he earned his own living, spent part of it on bread for himself, and gave the rest to people in need.</p> <p>And he paid such close attention to the Bible readings that, Athanasius says, he remembered everything he heard, so that “afterwards his memory served him for books.”</p> <p>Athanasius sums it up simply: “Antony was beloved by all.” He was humble enough to learn from others, and that made people love him.</p> <p><strong>One thing to do this week:</strong> make a list of five Christians you know. Next to each name, write one quality you admire in them. This week, try to learn from one of them: ask them a question, or simply copy one good habit.</p>",
+  "study_questions": [
+   {
+    "question": "What picture does Athanasius use for how Antony learned from others?",
+    "answer": "A prudent bee, going out to collect good things from each person."
+   },
+   {
+    "question": "Name three qualities Antony learned from different people.",
+    "answer": "Any three of: graciousness, constant prayer, freedom from anger, kindness, patience, gentleness, love for Christ and for others."
+   },
+   {
+    "question": "What did Antony do with the money he earned?",
+    "answer": "He spent part on bread for himself and gave the rest to the needy."
+   }
+  ],
+  "body_text": "“He that walketh with wise men shall be wise: but a companion of fools shall be destroyed.” — Proverbs 13:20 (KJV) When Antony started his new life, there weren’t yet any big monasteries in Egypt. People who wanted to devote themselves to God usually lived quietly near their own villages. Antony did the same at first. In the next village lived an old man who had followed God in this way since his youth. Antony watched him and copied his example. And whenever he heard of another godly person anywhere nearby, he went to find them. Athanasius has a lovely picture for this: Antony went out “like the prudent bee”, collecting good things from each person to take home with him. What did he learn? Athanasius lists it. From one person he learned graciousness; from another, constant prayer; from another, freedom from anger; from another, kindness. He watched one person’s patience, another’s gentleness, another’s love for Christ and for others. Then he tried to put it all together in his own life. This is a really wise way to grow. Nobody is perfect, but almost every Christian you know has something to teach you. One friend might be great at encouraging people. A grandparent might be faithful in prayer. A youth leader might be really patient. Like Antony, you can learn something different from each of them. Antony also worked with his hands. He had heard the Bible say that whoever won’t work shouldn’t eat. So he earned his own living, spent part of it on bread for himself, and gave the rest to people in need. And he paid such close attention to the Bible readings that, Athanasius says, he remembered everything he heard, so that “afterwards his memory served him for books.” Athanasius sums it up simply: “Antony was beloved by all.” He was humble enough to learn from others, and that made people love him. One thing to do this week: make a list of five Christians you know. Next to each name, write one quality you admire in them. This week, try to learn from one of them: ask them a question, or simply copy one good habit.",
+  "word_count": 362
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "en"
+  ],
+  "order": 3,
+  "title": "The First Fight",
+  "body_html": "<blockquote>“There hath no temptation taken you but such as is common to man: but God is faithful, who will not suffer you to be tempted above that ye are able; but will with the temptation also make a way to escape, that ye may be able to bear it.” — 1 Corinthians 10:13 (KJV)</blockquote> <p>Athanasius says the devil hated to see “such a resolution in a youth”, and did everything he could to turn Antony back.</p> <p>First came thoughts that sound very familiar. Antony found himself remembering all the money he had given away, worrying about his sister, missing his relatives, wanting to be admired, wanting nice food and an easy life. Then came the thought that following God was just too hard, and would take too long. Athanasius says the enemy “raised in his mind a great dust of debate”.</p> <p>When that didn’t work, the attack changed. Athanasius says the devil turned to what he calls the first trap for young people: lust and sexual temptation. Antony was troubled by impure thoughts by day and night.</p> <p>How did Antony fight back? With prayer, with faith, and by filling his mind with Christ. When a tempting thought came, he answered it with prayer. He thought about what really mattered, and about God’s judgment, and the temptation lost its power.</p> <p>Notice two things. First, Antony was tempted, and that was not a sign he was a bad Christian. Even Jesus was tempted. Temptation is not the same as sin. Second, Athanasius is very clear about who won the victory:</p> <blockquote>“This was Antony’s first struggle against the devil, or rather this victory was the Saviour’s work in Antony.”</blockquote> <p>That is so important. Antony didn’t win because he was strong. Jesus won the victory in him.</p> <p>If you struggle with temptation, including sexual temptation, you are not alone and you are not a failure. Bring it to Jesus, again and again. Fill your mind with good things. And if a struggle feels out of control, talk to a trusted adult. God always provides a way out.</p> <p><strong>One thing to do this week:</strong> think about the kinds of thoughts that pull you away from God, like Antony’s list. When one comes this week, answer it straight away with a short prayer, for example: “Jesus, you are better than this. Help me.”</p>",
+  "study_questions": [
+   {
+    "question": "What kinds of thoughts did the devil first use to tempt Antony?",
+    "answer": "Memories of his wealth, worry for his sister, missing relatives, love of money and glory, desire for nice food and an easy life, and the thought that following God was too hard."
+   },
+   {
+    "question": "How did Antony fight temptation?",
+    "answer": "With prayer, with faith, and by filling his mind with Christ and with what really mattered."
+   },
+   {
+    "question": "Whose work does Athanasius say the victory was?",
+    "answer": "The Saviour’s work in Antony."
+   }
+  ],
+  "body_text": "“There hath no temptation taken you but such as is common to man: but God is faithful, who will not suffer you to be tempted above that ye are able; but will with the temptation also make a way to escape, that ye may be able to bear it.” — 1 Corinthians 10:13 (KJV) Athanasius says the devil hated to see “such a resolution in a youth”, and did everything he could to turn Antony back. First came thoughts that sound very familiar. Antony found himself remembering all the money he had given away, worrying about his sister, missing his relatives, wanting to be admired, wanting nice food and an easy life. Then came the thought that following God was just too hard, and would take too long. Athanasius says the enemy “raised in his mind a great dust of debate”. When that didn’t work, the attack changed. Athanasius says the devil turned to what he calls the first trap for young people: lust and sexual temptation. Antony was troubled by impure thoughts by day and night. How did Antony fight back? With prayer, with faith, and by filling his mind with Christ. When a tempting thought came, he answered it with prayer. He thought about what really mattered, and about God’s judgment, and the temptation lost its power. Notice two things. First, Antony was tempted, and that was not a sign he was a bad Christian. Even Jesus was tempted. Temptation is not the same as sin. Second, Athanasius is very clear about who won the victory: “This was Antony’s first struggle against the devil, or rather this victory was the Saviour’s work in Antony.” That is so important. Antony didn’t win because he was strong. Jesus won the victory in him. If you struggle with temptation, including sexual temptation, you are not alone and you are not a failure. Bring it to Jesus, again and again. Fill your mind with good things. And if a struggle feels out of control, talk to a trusted adult. God always provides a way out. One thing to do this week: think about the kinds of thoughts that pull you away from God, like Antony’s list. When one comes this week, answer it straight away with a short prayer, for example: “Jesus, you are better than this. Help me.”",
+  "word_count": 387
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "en"
+  ],
+  "order": 4,
+  "title": "“Where Were You?”",
+  "body_html": "<blockquote>“For I am persuaded, that neither death, nor life, nor angels, nor principalities, nor powers, nor things present, nor things to come, nor height, nor depth, nor any other creature, shall be able to separate us from the love of God, which is in Christ Jesus our Lord.” — Romans 8:38–39 (KJV)</blockquote> <p>Next, Antony went to live alone in an empty tomb some distance from his village. These were large old burial chambers, not like modern graves. A friend brought him bread every few days.</p> <p>Athanasius tells how, one night, Antony was attacked so violently that he was left lying on the ground, unable to speak. Athanasius describes it as an attack by the devil and his demons. The next day his friend found him lying there as if dead, and carried him back to the village church.</p> <p>That night Antony came round. Instead of staying safely in the village, he asked his friend to carry him straight back to the tombs. There, still too hurt to stand, he prayed lying down and then called out:</p> <blockquote>“Here am I, Antony; I flee not from your stripes, for even if you inflict more nothing shall separate me from the love of Christ.”</blockquote> <p>Then he sang a line from Psalm 27: “though an host should encamp against me, my heart shall not fear.”</p> <p>Athanasius says that after more terrifying experiences, Antony looked up and saw light breaking through the roof, and the attack ended. Then Antony asked a very honest question:</p> <blockquote>“Where wert thou? Why didst thou not appear at the beginning to make my pains to cease?”</blockquote> <p>And Athanasius records the answer Antony heard:</p> <blockquote>“Antony, I was here, but I waited to see thy fight.”</blockquote> <p>Have you ever asked God, “Where were you?” Maybe in a hard time, when you felt alone. Antony asked that too. And the answer he heard was: I was here all along.</p> <p>You don’t need to fear evil or try to have dramatic spiritual battles like this. Athanasius tells this story to show that Christ is stronger than any power of darkness, and that nothing can separate us from God’s love. If you are going through something frightening or painful, God is with you, even when you can’t feel it. And please don’t go through it alone. Talk to someone you trust.</p> <p><strong>One thing to do this week:</strong> if you are in a hard time, pray Antony’s honest question: “Lord, where are you?” Then read Romans 8:35–39 slowly and hear God’s answer: nothing can separate you from his love.</p>",
+  "study_questions": [
+   {
+    "question": "What did Antony do after he was carried back to the village?",
+    "answer": "He asked his friend to carry him straight back to the tombs, where he prayed and declared that nothing would separate him from the love of Christ."
+   },
+   {
+    "question": "What honest question did Antony ask when the attack ended?",
+    "answer": "“Where wert thou? Why didst thou not appear at the beginning to make my pains to cease?”"
+   },
+   {
+    "question": "What answer did he hear?",
+    "answer": "“Antony, I was here, but I waited to see thy fight.”"
+   }
+  ],
+  "body_text": "“For I am persuaded, that neither death, nor life, nor angels, nor principalities, nor powers, nor things present, nor things to come, nor height, nor depth, nor any other creature, shall be able to separate us from the love of God, which is in Christ Jesus our Lord.” — Romans 8:38–39 (KJV) Next, Antony went to live alone in an empty tomb some distance from his village. These were large old burial chambers, not like modern graves. A friend brought him bread every few days. Athanasius tells how, one night, Antony was attacked so violently that he was left lying on the ground, unable to speak. Athanasius describes it as an attack by the devil and his demons. The next day his friend found him lying there as if dead, and carried him back to the village church. That night Antony came round. Instead of staying safely in the village, he asked his friend to carry him straight back to the tombs. There, still too hurt to stand, he prayed lying down and then called out: “Here am I, Antony; I flee not from your stripes, for even if you inflict more nothing shall separate me from the love of Christ.” Then he sang a line from Psalm 27: “though an host should encamp against me, my heart shall not fear.” Athanasius says that after more terrifying experiences, Antony looked up and saw light breaking through the roof, and the attack ended. Then Antony asked a very honest question: “Where wert thou? Why didst thou not appear at the beginning to make my pains to cease?” And Athanasius records the answer Antony heard: “Antony, I was here, but I waited to see thy fight.” Have you ever asked God, “Where were you?” Maybe in a hard time, when you felt alone. Antony asked that too. And the answer he heard was: I was here all along. You don’t need to fear evil or try to have dramatic spiritual battles like this. Athanasius tells this story to show that Christ is stronger than any power of darkness, and that nothing can separate us from God’s love. If you are going through something frightening or painful, God is with you, even when you can’t feel it. And please don’t go through it alone. Talk to someone you trust. One thing to do this week: if you are in a hard time, pray Antony’s honest question: “Lord, where are you?” Then read Romans 8:35–39 slowly and hear God’s answer: nothing can separate you from his love.",
+  "word_count": 423
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "en"
+  ],
+  "order": 5,
+  "title": "Gold in the Road",
+  "body_html": "<blockquote>“For the love of money is the root of all evil: which while some coveted after, they have erred from the faith, and pierced themselves through with many sorrows.” — 1 Timothy 6:10 (KJV)</blockquote> <p>When Antony was about thirty-five, he decided to go further out into the desert. On the way, Athanasius tells two stories about money.</p> <p>First, Antony saw what looked like a large silver dish lying in the road. He stopped and thought about it. Who would carry a big silver dish through an empty desert? If someone had dropped it, surely they would have noticed and come back for it. He decided it was a trick meant to distract him from his purpose, and Athanasius says it vanished “like smoke from the face of fire.”</p> <p>A little further on, he saw real gold scattered on the road. Athanasius says nobody knows whether it was put there by the devil or by God to test him. But it was definitely gold, and a lot of it.</p> <p>What did Antony do? Athanasius says he “passed it by as though he were going over fire”. He didn’t even turn round. He ran to get past the place as fast as he could.</p> <p>Why run? Because Antony knew his own heart. He knew that if he stopped to look, he might start thinking about what he could do with it, and his heart would be pulled back towards the things he had given up.</p> <p>This is good advice for temptations of every kind. Sometimes the wisest thing isn’t to stand and argue with a temptation, but to get away from it quickly.</p> <p>Money isn’t evil in itself. But Paul warns that the love of money is a root of all kinds of evil. Antony had chosen treasure in heaven, and he guarded his heart to keep it there.</p> <p>What is your “gold in the road”? It might be money, popularity, a new phone, a relationship, or just more stuff. None of these are wrong in themselves, but any of them can pull your heart away from God if you let them.</p> <p><strong>One thing to do this week:</strong> think about what you most want to own or have right now. This week, give something away: some money, a possession, or your time. Pray as you do it: “Lord, you are my treasure.”</p>",
+  "study_questions": [
+   {
+    "question": "How did Antony reason about the silver dish?",
+    "answer": "Nobody would carry a large silver dish through an empty desert, and if it had been dropped someone would have come back for it, so he decided it was a trick."
+   },
+   {
+    "question": "What did Antony do when he saw real gold in the road?",
+    "answer": "He passed it by as though going over fire, not even turning round, and ran to get away from the place."
+   },
+   {
+    "question": "Why is running away from some temptations wise?",
+    "answer": "Because stopping to look can start to pull our hearts back towards the things we have given up."
+   }
+  ],
+  "body_text": "“For the love of money is the root of all evil: which while some coveted after, they have erred from the faith, and pierced themselves through with many sorrows.” — 1 Timothy 6:10 (KJV) When Antony was about thirty-five, he decided to go further out into the desert. On the way, Athanasius tells two stories about money. First, Antony saw what looked like a large silver dish lying in the road. He stopped and thought about it. Who would carry a big silver dish through an empty desert? If someone had dropped it, surely they would have noticed and come back for it. He decided it was a trick meant to distract him from his purpose, and Athanasius says it vanished “like smoke from the face of fire.” A little further on, he saw real gold scattered on the road. Athanasius says nobody knows whether it was put there by the devil or by God to test him. But it was definitely gold, and a lot of it. What did Antony do? Athanasius says he “passed it by as though he were going over fire”. He didn’t even turn round. He ran to get past the place as fast as he could. Why run? Because Antony knew his own heart. He knew that if he stopped to look, he might start thinking about what he could do with it, and his heart would be pulled back towards the things he had given up. This is good advice for temptations of every kind. Sometimes the wisest thing isn’t to stand and argue with a temptation, but to get away from it quickly. Money isn’t evil in itself. But Paul warns that the love of money is a root of all kinds of evil. Antony had chosen treasure in heaven, and he guarded his heart to keep it there. What is your “gold in the road”? It might be money, popularity, a new phone, a relationship, or just more stuff. None of these are wrong in themselves, but any of them can pull your heart away from God if you let them. One thing to do this week: think about what you most want to own or have right now. This week, give something away: some money, a possession, or your time. Pray as you do it: “Lord, you are my treasure.”",
+  "word_count": 390
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "en"
+  ],
+  "order": 6,
+  "title": "Twenty Years Alone",
+  "body_html": "<blockquote>“But thou, when thou prayest, enter into thy closet, and when thou hast shut thy door, pray to thy Father which is in secret; and thy Father which seeth in secret shall reward thee openly.” — Matthew 6:6 (KJV)</blockquote> <p>Antony found an old abandoned fort across the River Nile and walled himself in. Friends lowered bread to him twice a year. He stayed there, alone with God, for nearly twenty years.</p> <p>Eventually, so many people wanted to learn from him that his friends broke down the door. Athanasius describes what they saw when Antony came out:</p> <blockquote>“He had the same habit of body as before, and was neither fat, like a man without exercise, nor lean from fasting and striving with the demons, but he was just the same as they had known him before his retirement.”</blockquote> <p>And not only his body. Athanasius says his soul was balanced too. He wasn’t gloomy or giddy. He wasn’t thrown by the crowds, or puffed up by all the people greeting him. He was calm, steady and at peace.</p> <p>Then he began to help people. Athanasius says God healed many through him. He comforted people who were sad, and helped people who had fallen out to make peace. He encouraged everyone “to prefer the love of Christ before all that is in the world.”</p> <p>A word of caution here. Antony fasted a great deal, often went without sleep, and lived in ways that would be harmful for most people. Athanasius admired this, but it was a special calling in a very different time. God does not ask you to starve yourself, go without sleep, or cut yourself off from family and friends. If you find yourself restricting food or punishing your body, please talk to a trusted adult or a doctor.</p> <p>What we can learn from Antony’s twenty years is the value of time alone with God. Jesus told us to go into our room, shut the door and pray to our Father in secret. Most of us live surrounded by noise, notifications and other people’s opinions. Even ten minutes alone with God each day can make you steadier, calmer and more ready to help others.</p> <p>And notice that Antony didn’t stay hidden for ever. His time alone with God prepared him to serve people. Prayer and service go together.</p> <p><strong>One thing to do this week:</strong> find a “closet” this week: a quiet place and time where you can be alone with God for at least ten minutes, without your phone. Use it every day, and notice whether it makes you steadier.</p>",
+  "study_questions": [
+   {
+    "question": "How long did Antony stay in the old fort?",
+    "answer": "Nearly twenty years."
+   },
+   {
+    "question": "What surprised people when Antony came out?",
+    "answer": "He was neither fat nor thin but just the same as before, and his soul was calm and balanced, neither gloomy nor puffed up."
+   },
+   {
+    "question": "Should we copy Antony’s extreme fasting and isolation?",
+    "answer": "No; God does not ask us to harm our bodies or cut ourselves off from people, but we can learn the value of time alone with God."
+   }
+  ],
+  "body_text": "“But thou, when thou prayest, enter into thy closet, and when thou hast shut thy door, pray to thy Father which is in secret; and thy Father which seeth in secret shall reward thee openly.” — Matthew 6:6 (KJV) Antony found an old abandoned fort across the River Nile and walled himself in. Friends lowered bread to him twice a year. He stayed there, alone with God, for nearly twenty years. Eventually, so many people wanted to learn from him that his friends broke down the door. Athanasius describes what they saw when Antony came out: “He had the same habit of body as before, and was neither fat, like a man without exercise, nor lean from fasting and striving with the demons, but he was just the same as they had known him before his retirement.” And not only his body. Athanasius says his soul was balanced too. He wasn’t gloomy or giddy. He wasn’t thrown by the crowds, or puffed up by all the people greeting him. He was calm, steady and at peace. Then he began to help people. Athanasius says God healed many through him. He comforted people who were sad, and helped people who had fallen out to make peace. He encouraged everyone “to prefer the love of Christ before all that is in the world.” A word of caution here. Antony fasted a great deal, often went without sleep, and lived in ways that would be harmful for most people. Athanasius admired this, but it was a special calling in a very different time. God does not ask you to starve yourself, go without sleep, or cut yourself off from family and friends. If you find yourself restricting food or punishing your body, please talk to a trusted adult or a doctor. What we can learn from Antony’s twenty years is the value of time alone with God. Jesus told us to go into our room, shut the door and pray to our Father in secret. Most of us live surrounded by noise, notifications and other people’s opinions. Even ten minutes alone with God each day can make you steadier, calmer and more ready to help others. And notice that Antony didn’t stay hidden for ever. His time alone with God prepared him to serve people. Prayer and service go together. One thing to do this week: find a “closet” this week: a quiet place and time where you can be alone with God for at least ten minutes, without your phone. Use it every day, and notice whether it makes you steadier.",
+  "word_count": 429
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "en"
+  ],
+  "order": 7,
+  "title": "Don’t Be Afraid",
+  "body_html": "<blockquote>“Submit yourselves therefore to God. Resist the devil, and he will flee from you.” — James 4:7 (KJV)</blockquote> <p>When Antony came out of the fort, many people came to live near him and learn from him. Athanasius records a long talk Antony gave them, full of practical wisdom.</p> <p>Antony started by encouraging them that goodness is not far away or impossible. People travel overseas to get an education, he said, but “we have no need to depart from home for the sake of the kingdom of heaven, nor to cross the sea for the sake of virtue.” Jesus said the kingdom of God is within you. Virtue, Antony said, needs only “willingness” from us, with God’s help.</p> <p>Then Antony talked about the devil and evil spirits. He knew they were real. But his main message was that Christians should not be afraid of them. He said they try to frighten people with noise and terrifying shows, but they have very little real power over those who belong to Christ.</p> <blockquote>“For they are nothing and quickly disappear, especially if a man fortify himself beforehand with faith and the sign of the cross.”</blockquote> <p>He also gave a way to tell the difference between good and evil spiritual experiences. Evil brings confusion, fear and disturbance. But when God is near, Antony said, it comes “so quietly and gently that immediately joy, gladness and courage arise in the soul.”</p> <p>This is good wisdom for us. Some people are fascinated by the dark side of the spiritual world, and some are terrified of it. Antony would say: don’t be either. Don’t play with it, and don’t live in fear of it. Stay close to Jesus, who has defeated every power of darkness on the cross.</p> <p>And use Antony’s test for your own life. Does something bring confusion, fear and turmoil into your heart? Or quiet joy, gladness and courage? God’s presence brings peace.</p> <p>If you ever feel frightened by spiritual things, talk to a trusted Christian adult about it. You don’t have to face fear alone.</p> <p><strong>One thing to do this week:</strong> when you feel afraid this week, about anything, say James 4:7 out loud and pray: “Jesus, you have won. I belong to you. I will not be afraid.” Notice whether peace comes.</p>",
+  "study_questions": [
+   {
+    "question": "Why did Antony say we don’t need to travel far to become good?",
+    "answer": "Because the kingdom of heaven is within us, and virtue needs only our willingness with God’s help."
+   },
+   {
+    "question": "What did Antony teach about the devil and evil spirits?",
+    "answer": "That they are real but have little power over those who belong to Christ, so Christians should not be afraid."
+   },
+   {
+    "question": "How did Antony say we can recognise God’s presence?",
+    "answer": "It comes quietly and gently, bringing joy, gladness and courage to the soul."
+   }
+  ],
+  "body_text": "“Submit yourselves therefore to God. Resist the devil, and he will flee from you.” — James 4:7 (KJV) When Antony came out of the fort, many people came to live near him and learn from him. Athanasius records a long talk Antony gave them, full of practical wisdom. Antony started by encouraging them that goodness is not far away or impossible. People travel overseas to get an education, he said, but “we have no need to depart from home for the sake of the kingdom of heaven, nor to cross the sea for the sake of virtue.” Jesus said the kingdom of God is within you. Virtue, Antony said, needs only “willingness” from us, with God’s help. Then Antony talked about the devil and evil spirits. He knew they were real. But his main message was that Christians should not be afraid of them. He said they try to frighten people with noise and terrifying shows, but they have very little real power over those who belong to Christ. “For they are nothing and quickly disappear, especially if a man fortify himself beforehand with faith and the sign of the cross.” He also gave a way to tell the difference between good and evil spiritual experiences. Evil brings confusion, fear and disturbance. But when God is near, Antony said, it comes “so quietly and gently that immediately joy, gladness and courage arise in the soul.” This is good wisdom for us. Some people are fascinated by the dark side of the spiritual world, and some are terrified of it. Antony would say: don’t be either. Don’t play with it, and don’t live in fear of it. Stay close to Jesus, who has defeated every power of darkness on the cross. And use Antony’s test for your own life. Does something bring confusion, fear and turmoil into your heart? Or quiet joy, gladness and courage? God’s presence brings peace. If you ever feel frightened by spiritual things, talk to a trusted Christian adult about it. You don’t have to face fear alone. One thing to do this week: when you feel afraid this week, about anything, say James 4:7 out loud and pray: “Jesus, you have won. I belong to you. I will not be afraid.” Notice whether peace comes.",
+  "word_count": 379
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "en"
+  ],
+  "order": 8,
+  "title": "As Though Today Were the Last",
+  "body_html": "<blockquote>“So teach us to number our days, that we may apply our hearts unto wisdom.” — Psalm 90:12 (KJV)</blockquote> <p>One of Antony’s most famous pieces of advice is about how to live each day. He took Paul’s words, “I die daily”, and gave them a practical meaning:</p> <blockquote>“For if we too live as though dying daily, we shall not sin.”</blockquote> <p>He explained: when you get up in the morning, think that you might not live until the evening. When you go to bed, think that you might not wake up. Our lives are uncertain, and every day is a gift from God.</p> <p>That might sound gloomy, but Antony meant the opposite. He said that living like this frees us from many things. We won’t hold grudges, because we will “forgive all things to all men”. We won’t be greedy or store up treasure on earth. We won’t be dragged around by bad desires. We will be ready.</p> <p>Antony also helped his listeners see how short life is compared with eternity. Even if we live eighty or a hundred years, it is nothing compared with forever. And then he said something remarkable: in this world, everything is sold at its price, “but the promise of eternal life is bought for a trifle.”</p> <p>In other words, whatever we give up for God is tiny compared with what he gives us. Paul said the same: “the sufferings of this present time are not worthy to be compared with the glory which shall be revealed in us.”</p> <p>This isn’t about being morbid or anxious about death. If thinking about death makes you frightened or very low, please talk to someone you trust. The point is to see each day as precious, and to live it well, with no grudges, no wasted time, and no unfinished business with God or other people.</p> <p>What would you do differently today if you knew it was your last? Say sorry to someone? Tell someone you love them? Pray? Antony would say: do it today.</p> <p><strong>One thing to do this week:</strong> each night this week before you sleep, ask yourself: “Is there anyone I need to forgive, or anything I need to put right with God?” Deal with it before you sleep, as Antony said.</p>",
+  "study_questions": [
+   {
+    "question": "What did Antony mean by living “as though dying daily”?",
+    "answer": "Treating each day as possibly our last, so that we do not sin, hold grudges or chase earthly treasure."
+   },
+   {
+    "question": "What did Antony say about the price of eternal life?",
+    "answer": "That while everything in the world is sold at its price, the promise of eternal life is bought for a trifle."
+   },
+   {
+    "question": "What practical things does living as though dying daily help us do?",
+    "answer": "Forgive everyone, avoid greed and bad desires, and live each day ready for God."
+   }
+  ],
+  "body_text": "“So teach us to number our days, that we may apply our hearts unto wisdom.” — Psalm 90:12 (KJV) One of Antony’s most famous pieces of advice is about how to live each day. He took Paul’s words, “I die daily”, and gave them a practical meaning: “For if we too live as though dying daily, we shall not sin.” He explained: when you get up in the morning, think that you might not live until the evening. When you go to bed, think that you might not wake up. Our lives are uncertain, and every day is a gift from God. That might sound gloomy, but Antony meant the opposite. He said that living like this frees us from many things. We won’t hold grudges, because we will “forgive all things to all men”. We won’t be greedy or store up treasure on earth. We won’t be dragged around by bad desires. We will be ready. Antony also helped his listeners see how short life is compared with eternity. Even if we live eighty or a hundred years, it is nothing compared with forever. And then he said something remarkable: in this world, everything is sold at its price, “but the promise of eternal life is bought for a trifle.” In other words, whatever we give up for God is tiny compared with what he gives us. Paul said the same: “the sufferings of this present time are not worthy to be compared with the glory which shall be revealed in us.” This isn’t about being morbid or anxious about death. If thinking about death makes you frightened or very low, please talk to someone you trust. The point is to see each day as precious, and to live it well, with no grudges, no wasted time, and no unfinished business with God or other people. What would you do differently today if you knew it was your last? Say sorry to someone? Tell someone you love them? Pray? Antony would say: do it today. One thing to do this week: each night this week before you sleep, ask yourself: “Is there anyone I need to forgive, or anything I need to put right with God?” Deal with it before you sleep, as Antony said.",
+  "word_count": 376
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "en"
+  ],
+  "order": 9,
+  "title": "Write It Down",
+  "body_html": "<blockquote>“Be ye angry, and sin not: let not the sun go down upon your wrath.” — Ephesians 4:26 (KJV)</blockquote> <p>Antony had some very practical habits for staying close to God.</p> <p>He often told people to remember Paul’s words, “let not the sun go down upon your wrath”. Antony said that this applied not only to anger but to every sin. Don’t let the sun set on any sin without dealing with it.</p> <p>So he encouraged people to look back over each day and night, “and if he have sinned, let him cease from it”, and if not, to give thanks and not become proud.</p> <p>Then he suggested something you might not expect from a man who never learned to read and write:</p> <blockquote>“Let us each one note and write down our actions and the impulses of our soul as though we were going to relate them to each other.”</blockquote> <p>His reasoning was simple. Nobody wants to be seen doing something wrong. If you imagine that you are going to show your journal to a friend, you’ll be more careful about what you do and think. Writing things down helps you be honest with yourself.</p> <p>Today we might call this journalling or a daily review. It is a great habit. It doesn’t have to be long. A few lines each evening, writing what you did, what you felt, where you struggled, and where you saw God at work, can help you grow more than you might think.</p> <p>One caution: this is not about beating yourself up or keeping a long list of failures. Antony’s goal was freedom from sin and peace with God, not anxiety. If you notice yourself writing only negative things about yourself, add what you are thankful for and where you saw God’s grace too.</p> <p>Antony’s main daily counsel to the monks was simple: “Believe on the Lord and love Him … Pray continually; avoid vainglory; sing psalms before sleep and on awaking; hold in your heart the commandments of Scripture.” That is a good plan for anyone.</p> <p><strong>One thing to do this week:</strong> start a simple journal this week. Each evening, write three lines: one thing you are thankful for, one place you struggled or sinned, and one prayer for tomorrow. Before you sleep, make sure you have brought anything wrong to God.</p>",
+  "study_questions": [
+   {
+    "question": "How did Antony apply “let not the sun go down upon your wrath”?",
+    "answer": "To every sin, not just anger: we should not let a day end without dealing with any sin."
+   },
+   {
+    "question": "Why did Antony suggest writing down our actions and thoughts?",
+    "answer": "Because imagining that others will read it makes us more honest and careful, helping us avoid sin."
+   },
+   {
+    "question": "What was Antony’s simple daily counsel to the monks?",
+    "answer": "Believe on the Lord and love him, pray continually, avoid vainglory, sing psalms before sleep and on waking, and hold Scripture in your heart."
+   }
+  ],
+  "body_text": "“Be ye angry, and sin not: let not the sun go down upon your wrath.” — Ephesians 4:26 (KJV) Antony had some very practical habits for staying close to God. He often told people to remember Paul’s words, “let not the sun go down upon your wrath”. Antony said that this applied not only to anger but to every sin. Don’t let the sun set on any sin without dealing with it. So he encouraged people to look back over each day and night, “and if he have sinned, let him cease from it”, and if not, to give thanks and not become proud. Then he suggested something you might not expect from a man who never learned to read and write: “Let us each one note and write down our actions and the impulses of our soul as though we were going to relate them to each other.” His reasoning was simple. Nobody wants to be seen doing something wrong. If you imagine that you are going to show your journal to a friend, you’ll be more careful about what you do and think. Writing things down helps you be honest with yourself. Today we might call this journalling or a daily review. It is a great habit. It doesn’t have to be long. A few lines each evening, writing what you did, what you felt, where you struggled, and where you saw God at work, can help you grow more than you might think. One caution: this is not about beating yourself up or keeping a long list of failures. Antony’s goal was freedom from sin and peace with God, not anxiety. If you notice yourself writing only negative things about yourself, add what you are thankful for and where you saw God’s grace too. Antony’s main daily counsel to the monks was simple: “Believe on the Lord and love Him … Pray continually; avoid vainglory; sing psalms before sleep and on awaking; hold in your heart the commandments of Scripture.” That is a good plan for anyone. One thing to do this week: start a simple journal this week. Each evening, write three lines: one thing you are thankful for, one place you struggled or sinned, and one prayer for tomorrow. Before you sleep, make sure you have brought anything wrong to God.",
+  "word_count": 386
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "en"
+  ],
+  "order": 10,
+  "title": "Standing with the Persecuted",
+  "body_html": "<blockquote>“Remember them that are in bonds, as bound with them; and them which suffer adversity, as being yourselves also in the body.” — Hebrews 13:3 (KJV)</blockquote> <p>In the year 311, a Roman emperor named Maximinus began a cruel persecution of Christians in Egypt. Many believers were arrested and taken to Alexandria to be tried, and some were killed for their faith.</p> <p>Antony left his desert cell and went to Alexandria. “Let us go too,” he said, so that if called, they could stand with those who were suffering.</p> <p>Athanasius says Antony longed to be a martyr himself, but he didn’t hand himself in. Instead, he spent his time caring for Christians who had been arrested: visiting those in prisons and in the mines where they were forced to work, encouraging those on trial to stay faithful, and staying with those who were condemned until the end.</p> <p>The governor ordered that no monks should appear in the courts or stay in the city. The other monks hid. But Antony washed his cloak and stood the next day on a high place where the governor would see him, “shewing the readiness of us Christians.” He wasn’t trying to be reckless. He was refusing to be frightened into abandoning his friends.</p> <p>Antony wasn’t martyred. Athanasius says God kept him alive to teach many others. But this chapter shows his courage and his love for people who were suffering.</p> <p>Today, Christians are still persecuted in many parts of the world. Hebrews tells us to remember them as if we were in prison with them. We can pray for them, learn about them, and support organisations that help them.</p> <p>Closer to home, you can stand with people who are being picked on or left out. That takes courage too. Antony didn’t look away from suffering. He went towards it.</p> <p>One note of wisdom: standing with others doesn’t mean putting yourself in real danger. If someone is being bullied or hurt, the bravest and wisest thing is often to tell a trusted adult and stay alongside the person who is suffering.</p> <p><strong>One thing to do this week:</strong> this week, find out about one country where Christians are persecuted today and pray for them each day. And look out for someone at school who is being left out or picked on, and stand with them in a practical way.</p>",
+  "study_questions": [
+   {
+    "question": "What did Antony do during the persecution of 311?",
+    "answer": "He went to Alexandria and cared for arrested Christians in the prisons and mines, encouraged those on trial, and stayed with those condemned until the end."
+   },
+   {
+    "question": "What did Antony do when the governor ordered monks to leave the courts and the city?",
+    "answer": "He washed his cloak and stood the next day in a high place where the governor would see him, showing he was not afraid."
+   },
+   {
+    "question": "How can we follow Hebrews 13:3 today?",
+    "answer": "By praying for and supporting persecuted Christians, and by standing with people near us who are suffering, wisely and with help from trusted adults."
+   }
+  ],
+  "body_text": "“Remember them that are in bonds, as bound with them; and them which suffer adversity, as being yourselves also in the body.” — Hebrews 13:3 (KJV) In the year 311, a Roman emperor named Maximinus began a cruel persecution of Christians in Egypt. Many believers were arrested and taken to Alexandria to be tried, and some were killed for their faith. Antony left his desert cell and went to Alexandria. “Let us go too,” he said, so that if called, they could stand with those who were suffering. Athanasius says Antony longed to be a martyr himself, but he didn’t hand himself in. Instead, he spent his time caring for Christians who had been arrested: visiting those in prisons and in the mines where they were forced to work, encouraging those on trial to stay faithful, and staying with those who were condemned until the end. The governor ordered that no monks should appear in the courts or stay in the city. The other monks hid. But Antony washed his cloak and stood the next day on a high place where the governor would see him, “shewing the readiness of us Christians.” He wasn’t trying to be reckless. He was refusing to be frightened into abandoning his friends. Antony wasn’t martyred. Athanasius says God kept him alive to teach many others. But this chapter shows his courage and his love for people who were suffering. Today, Christians are still persecuted in many parts of the world. Hebrews tells us to remember them as if we were in prison with them. We can pray for them, learn about them, and support organisations that help them. Closer to home, you can stand with people who are being picked on or left out. That takes courage too. Antony didn’t look away from suffering. He went towards it. One note of wisdom: standing with others doesn’t mean putting yourself in real danger. If someone is being bullied or hurt, the bravest and wisest thing is often to tell a trusted adult and stay alongside the person who is suffering. One thing to do this week: this week, find out about one country where Christians are persecuted today and pray for them each day. And look out for someone at school who is being left out or picked on, and stand with them in a practical way.",
+  "word_count": 392
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "en"
+  ],
+  "order": 11,
+  "title": "Mind or Letters?",
+  "body_html": "<blockquote>“But God hath chosen the foolish things of the world to confound the wise; and God hath chosen the weak things of the world to confound the things which are mighty.” — 1 Corinthians 1:27 (KJV)</blockquote> <p>Antony never learned to read and write. But as his fame grew, educated people came to visit him, some to learn, some to test him, and some to make fun of him.</p> <p>Once, two Greek philosophers came. Antony asked them through an interpreter why they had troubled themselves to visit a “foolish man”. When they said he was not foolish but very wise, he replied: then become like me, “for I am a Christian.”</p> <p>Another time, some visitors tried to mock him for having no education. Antony asked them a question:</p> <blockquote>“What say ye? which is first, mind or letters? And which is the cause of which—mind of letters or letters of mind?”</blockquote> <p>They agreed that the mind comes first and invented writing. “Whoever, therefore, hath a sound mind hath not need of letters,” said Antony. Everyone was amazed.</p> <p>Antony wasn’t saying education is bad. You should work hard at school. He was saying that true wisdom comes from knowing God, not only from books. Athanasius notes that Antony’s manners were not rough, but “graceful and polite, and his speech was seasoned with the divine salt”.</p> <p>Even emperors heard of him. The emperor Constantine and his sons wrote to Antony asking for a reply. The other monks were excited, but Antony said:</p> <blockquote>“Do not be astonished if an emperor writes to us, for he is a man; but rather wonder that God wrote the Law for men and has spoken to us through His own Son.”</blockquote> <p>He replied to the emperors, telling them to remember that Christ alone is the true and eternal King, and asking them to be merciful, to care about justice and to look after the poor.</p> <p>Antony wasn’t impressed by fame or status. He was impressed by God. That is a good attitude to take into a world that is very impressed by famous people.</p> <p><strong>One thing to do this week:</strong> this week, notice how often you are impressed by famous or important people. Each time, remind yourself of Antony’s words: the most amazing thing is that God has spoken to us through his Son. Spend some time reading what Jesus said.</p>",
+  "study_questions": [
+   {
+    "question": "What question did Antony ask people who mocked his lack of education?",
+    "answer": "Which comes first, mind or letters, and which causes which?"
+   },
+   {
+    "question": "How did Antony react to letters from the emperors?",
+    "answer": "He told the monks not to be astonished, since an emperor is just a man, but to wonder that God has spoken to us through his Son."
+   },
+   {
+    "question": "What did Antony advise the emperors?",
+    "answer": "To remember that Christ alone is the true and eternal King, and to be merciful, just and caring towards the poor."
+   }
+  ],
+  "body_text": "“But God hath chosen the foolish things of the world to confound the wise; and God hath chosen the weak things of the world to confound the things which are mighty.” — 1 Corinthians 1:27 (KJV) Antony never learned to read and write. But as his fame grew, educated people came to visit him, some to learn, some to test him, and some to make fun of him. Once, two Greek philosophers came. Antony asked them through an interpreter why they had troubled themselves to visit a “foolish man”. When they said he was not foolish but very wise, he replied: then become like me, “for I am a Christian.” Another time, some visitors tried to mock him for having no education. Antony asked them a question: “What say ye? which is first, mind or letters? And which is the cause of which—mind of letters or letters of mind?” They agreed that the mind comes first and invented writing. “Whoever, therefore, hath a sound mind hath not need of letters,” said Antony. Everyone was amazed. Antony wasn’t saying education is bad. You should work hard at school. He was saying that true wisdom comes from knowing God, not only from books. Athanasius notes that Antony’s manners were not rough, but “graceful and polite, and his speech was seasoned with the divine salt”. Even emperors heard of him. The emperor Constantine and his sons wrote to Antony asking for a reply. The other monks were excited, but Antony said: “Do not be astonished if an emperor writes to us, for he is a man; but rather wonder that God wrote the Law for men and has spoken to us through His own Son.” He replied to the emperors, telling them to remember that Christ alone is the true and eternal King, and asking them to be merciful, to care about justice and to look after the poor. Antony wasn’t impressed by fame or status. He was impressed by God. That is a good attitude to take into a world that is very impressed by famous people. One thing to do this week: this week, notice how often you are impressed by famous or important people. Each time, remind yourself of Antony’s words: the most amazing thing is that God has spoken to us through his Son. Spend some time reading what Jesus said.",
+  "word_count": 392
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "en"
+  ],
+  "order": 12,
+  "title": "The Old Man’s Sheepskin",
+  "body_html": "<blockquote>“I have fought a good fight, I have finished my course, I have kept the faith.” — 2 Timothy 4:7 (KJV)</blockquote> <p>Antony lived to be about 105 years old. Athanasius says that even in old age he stayed strong. His eyesight was clear, he still had his teeth, and he was strong in hands and feet. He was cheerful to the end.</p> <p>Athanasius also notes something important about Antony’s miracles. When people were healed through his prayers, Antony insisted that it was Christ who healed, not him. He never wanted the glory for himself.</p> <p>When he knew he was dying, Antony called the two monks who had looked after him for fifteen years. His last words to them were simple and full of love. He told them not to give up what they had begun, but to keep going “as though now making a beginning”. And then:</p> <blockquote>“Wherefore fear them not, but rather ever breathe Christ, and trust Him. Live as though dying daily.”</blockquote> <p>“Ever breathe Christ.” What a beautiful phrase. Just as you breathe without stopping, let Christ fill every moment of your life.</p> <p>He asked them to bury him quietly, in a place no one else would know, because he didn’t want people making a fuss over his body. And he gave away his few belongings. One of his sheepskins went to his friend, Bishop Athanasius, along with the cloak he was lying on, which Athanasius had given him years before, new, and which had grown old with him.</p> <p>Then Athanasius describes his death. Antony lifted his feet, and his face lit up with joy, “as though he saw friends coming to him and was glad because of them”, and he died.</p> <p>Athanasius says that Antony became famous across the world, in Spain, Gaul, Rome and Africa, not because of books or worldly wisdom, “but solely from his piety towards God.”</p> <p>Antony started as a teenager who heard one verse and obeyed it. He finished as an old man who had kept the faith for nearly ninety years. Your life with God may look very different from his. But it can start the same way: hearing Jesus speak, and saying yes.</p> <p><strong>One thing to do this week:</strong> write Antony’s last words, “ever breathe Christ”, somewhere you will see them. This week, try to turn your thoughts to Jesus at regular moments in the day: waking, eating, travelling, going to sleep.</p>",
+  "study_questions": [
+   {
+    "question": "Who did Antony say healed people through his prayers?",
+    "answer": "Christ, not himself."
+   },
+   {
+    "question": "What did Antony mean by “ever breathe Christ”?",
+    "answer": "To let Christ fill every moment of life, just as we breathe without stopping."
+   },
+   {
+    "question": "What did Antony leave to Athanasius?",
+    "answer": "One of his sheepskins, and the cloak he was lying on, which Athanasius had given him new and which had grown old with him."
+   }
+  ],
+  "body_text": "“I have fought a good fight, I have finished my course, I have kept the faith.” — 2 Timothy 4:7 (KJV) Antony lived to be about 105 years old. Athanasius says that even in old age he stayed strong. His eyesight was clear, he still had his teeth, and he was strong in hands and feet. He was cheerful to the end. Athanasius also notes something important about Antony’s miracles. When people were healed through his prayers, Antony insisted that it was Christ who healed, not him. He never wanted the glory for himself. When he knew he was dying, Antony called the two monks who had looked after him for fifteen years. His last words to them were simple and full of love. He told them not to give up what they had begun, but to keep going “as though now making a beginning”. And then: “Wherefore fear them not, but rather ever breathe Christ, and trust Him. Live as though dying daily.” “Ever breathe Christ.” What a beautiful phrase. Just as you breathe without stopping, let Christ fill every moment of your life. He asked them to bury him quietly, in a place no one else would know, because he didn’t want people making a fuss over his body. And he gave away his few belongings. One of his sheepskins went to his friend, Bishop Athanasius, along with the cloak he was lying on, which Athanasius had given him years before, new, and which had grown old with him. Then Athanasius describes his death. Antony lifted his feet, and his face lit up with joy, “as though he saw friends coming to him and was glad because of them”, and he died. Athanasius says that Antony became famous across the world, in Spain, Gaul, Rome and Africa, not because of books or worldly wisdom, “but solely from his piety towards God.” Antony started as a teenager who heard one verse and obeyed it. He finished as an old man who had kept the faith for nearly ninety years. Your life with God may look very different from his. But it can start the same way: hearing Jesus speak, and saying yes. One thing to do this week: write Antony’s last words, “ever breathe Christ”, somewhere you will see them. This week, try to turn your thoughts to Jesus at regular moments in the day: waking, eating, travelling, going to sleep.",
+  "word_count": 402
+ }
+}
+]
