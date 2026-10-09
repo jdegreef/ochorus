@@ -276,6 +276,19 @@
   "series": [
    "portraits-of-courage"
   ],
+  "language": "fr",
+  "title": "Portraits de courage",
+  "description": "Des biographies chrétiennes complètes d’hommes et de femmes qui ont calculé le prix et ont malgré tout suivi Christ — chaque vie racontée avec son enseignement, pesée à la lumière de l’Écriture, et écrite avec gratitude, mais sans hagiographie.",
+  "created_at": "2026-10-09T00:00:00Z",
+  "updated_at": "2026-10-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "portraits-of-courage"
+  ],
   "language": "hi",
   "title": "साहस के चित्र",
   "description": "उन पुरुषों और स्त्रियों की पूर्ण मसीही जीवनियाँ जिन्होंने कीमत का हिसाब लगाया और फिर भी मसीह के पीछे चले — हर जीवन उसकी शिक्षा के साथ कहा गया, पवित्रशास्त्र की कसौटी पर परखा गया, और कृतज्ञता से लिखा गया, पर बिना अतिशय महिमामंडन के।",

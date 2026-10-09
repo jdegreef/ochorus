@@ -8208,6 +8208,36 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"fr/watchman-nee-a-life": {
+			"ground": "f3061b3785973443bca4f8ee977b23bb72fd26ea34d8d60226c0d07d2626e95b",
+			"style": "house",
+			"volume": "1",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[161, 102, 439, 131]
+				],
+				"title": [
+					[292, 306, 308, 350],
+					[91, 386, 509, 457]
+				],
+				"subtitle": [
+					[83, 476, 517, 504],
+					[138, 504, 462, 532]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				263,
+				532
+			]
+		},
 		"fr/women-who-moved-heaven-2": {
 			"ground": "a355251ae5b0487c24c1446462c9c2ca02028791ab783802d90b24f4bfa37d99",
 			"style": "originals",
