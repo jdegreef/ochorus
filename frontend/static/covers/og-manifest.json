@@ -6054,6 +6054,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"es/ten-commandments": {
+			"ground": "b072d48d1dd688ce1c63a4e9a145f67048b16d44f282a424121f31b2e9b18c37",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/oxblood",
+			"bar": 0
+		},
 		"es/the-christians-secret-of-a-happy-life-4": {
 			"ground": "78556283fe2f53ce46ccddeeddfb8d3293adcf22c5c9e75eaab7680b4cce364c",
 			"style": "devotional",
