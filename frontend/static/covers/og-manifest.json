@@ -7250,6 +7250,16 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"fr/prayer-and-praying-men": {
+			"ground": "939bf55b399576592c07c778b03073d65044e788ab44a6e50e9753f3f1f9f995",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0
+		},
 		"fr/prayer-the-pulse-of-life": {
 			"ground": "6c5bc6830807a295441d54775ee22ec5cd828cfa5222bfb36243c44def42432c",
 			"style": "house",
