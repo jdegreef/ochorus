@@ -68,3 +68,16 @@ describe('a re-flow in the ending keeps the page', () => {
 		expect(READER).toMatch(/function onArticleClick\(e: MouseEvent\) \{[\s\S]{0,200}stickToLast = false;/);
 	});
 });
+
+describe('the page width is the unrounded column width', () => {
+	// The columns are laid out at the article's fractional width (a reading size
+	// or browser zoom gives 773.75px). clientWidth rounds it, so each page was off
+	// by that fraction and the error grew page by page: 11 pages in, pageOfNode
+	// put the chapter's questions on page 10, and focusing one (a click) turned
+	// the reader back a page.
+	it('measures the article with getBoundingClientRect, not clientWidth', () => {
+		const body = READER.slice(READER.indexOf('function measurePages('), READER.indexOf('function measureScrollPages('));
+		expect(body).toMatch(/const w = articleEl\.getBoundingClientRect\(\)\.width;/);
+		expect(body).not.toMatch(/articleEl\.clientWidth/);
+	});
+});
