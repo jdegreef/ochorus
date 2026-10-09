@@ -1,0 +1,33 @@
+{
+ "kind": "bio",
+ "slug": "billy-sunday",
+ "language": "sw",
+ "job_issue": 5095,
+ "note": [
+  "Clock time: “prayed that night until five o'clock” rendered “hadi saa tano”, keeping the printed hour number per house rule. In Swahili time-keeping saa tano reads as 11 a.m.; the English means 5 a.m. (Swahili time: saa kumi na moja alfajiri). Reviewer may wish to adjust.",
+  "Idiom: “the wolf … scratched at the cabin door” (poverty at the door) rendered with the sense “njaa … ilikuwa ikikwaruza mlango wa kibanda” (hunger scratching at the door); the literal wolf is opaque in Swahili.",
+  "Idiom: Kelly's “Religion is not my long suit” (card-playing idiom) rendered by sense: “Dini si fani yangu” (religion is not my field).",
+  "Baseball terms rendered by sense: “sandlots” → viwanja vya mtaani; “bleachers” → mashabiki; “the diamond” → uwanja wa besiboli; “stealing home” → kujirusha kunyakua kituo cha nyumbani (sliding to take home plate). Swahili readers may not know baseball base terminology.",
+  "Heading “A curbstone recruit” rendered “Aliyeandikishwa kando ya barabara” (one enlisted at the roadside), keeping the enlistment image that echoes his soldier father; the baseball sense of ‘recruit’ is lost.",
+  "“hitting the sawdust trail” rendered “kuikanyaga njia ya machujo ya mbao” (treading the sawdust path), used consistently in long and short bio; tabernacles → maskani (the SUV word for tabernacle).",
+  "“John Barleycorn” (personification of liquor) kept as a name in quotation marks, no gloss added; Swahili readers may not recognise it.",
+  "“One Sunday afternoon” — the play on his surname (Sunday) is lost in Swahili (Jumapili).",
+  "Sermon title “Teach Us to Pray” kept in English, as the Smith Wigglesworth bio keeps English book titles.",
+  "Prohibition rendered “marufuku ya vileo”, matching the term already used in the shipped Swahili bios.",
+  "Luke 18:13: English has “God be merciful to me a sinner!”; the SUV wording includes the vocative “Ee Mungu”, which is the standard Swahili rendering of the address, not an addition."
+ ],
+ "references": [
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "source_file": "the-way-to-god.sw.json",
+   "block_index": 10
+  },
+  {
+   "reference": "Acts 16:30",
+   "status": "mined",
+   "source_file": "the-way-to-god.sw.json",
+   "block_index": 34
+  }
+ ]
+}

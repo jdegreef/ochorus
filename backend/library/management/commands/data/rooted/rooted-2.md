@@ -616,7 +616,7 @@ Martha ran to meet Jesus and said, "Lord, if You had been here, my brother would
 
 Jesus answered with some of the most amazing words He ever spoke: "I am the resurrection and the life. Whoever believes in Me will live, even though he dies."
 
-Then Jesus went to the tomb. He saw Mary crying, and the friends who were crying with her. And the Bible says, "Jesus wept" (John 11:35). It's the shortest verse in the Bible, but one of the most important. Jesus knew He was about to bring Lazarus back to life, and He still cried. He was sad with His friends. He cared about their pain.
+Then Mary came to Jesus. He saw her crying, and the friends who were crying with her. And the Bible says, "Jesus wept" (John 11:35). It's the shortest verse in the Bible, but one of the most important. Jesus knew He was about to bring Lazarus back to life, and He still cried. He was sad with His friends. He cared about their pain.
 
 Then Jesus told them to roll the stone away from the tomb. Martha worried it would smell terrible after four days! But Jesus prayed, and then He shouted in a loud voice, "**Lazarus, come out!**"
 
@@ -773,7 +773,7 @@ If you've ever felt lost, far from God or like you don't belong, remember the sh
 > "So he got up and went to his father. But while he was still in the distance, his father saw him and was filled with compassion. He ran to his son, embraced him, and kissed him."
 > — Luke 15:20 (BSB)
 
-Right after the story of the lost sheep, Jesus told another story, about a father and his two sons.
+Soon after the story of the lost sheep, Jesus told another story, about a father and his two sons.
 
 The younger son was tired of living at home. He went to his father and said, "Give me my share of the estate." In other words, *I want my part of your money now. I don't want to wait until you die.* It was a terribly rude and hurtful thing to say.
 
