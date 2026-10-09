@@ -163,7 +163,10 @@ jobs:
     # SQLite-only regression surfaces there — production is what CI must gate.)
     services:
       postgres:
-        image: postgres:17-alpine
+        # Docker Hub's anonymous pull limit, shared across GitHub's runner IPs,
+        # failed every job here at once (2026-10-09). mirror.gcr.io is Google's
+        # pull-through cache of the same official images, with no such limit.
+        image: mirror.gcr.io/library/postgres:17-alpine
         env:
           POSTGRES_PASSWORD: postgres
         ports:
@@ -246,7 +249,7 @@ jobs:
     # image not SERVING — so this both builds AND boots it.
     services:
       postgres:
-        image: postgres:17-alpine
+        image: mirror.gcr.io/library/postgres:17-alpine
         env:
           POSTGRES_PASSWORD: postgres
         ports:
