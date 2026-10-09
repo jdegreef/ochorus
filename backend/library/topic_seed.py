@@ -607,6 +607,7 @@ TOPICS = [
             "the-imitation-of-christ-teens",
             "life-and-diary-of-david-brainerd-teens",
             "absolute-surrender-teens",
+            "foxes-book-of-martyrs-teens",
             "real-questions-1",
             "real-questions-2",
         ],
