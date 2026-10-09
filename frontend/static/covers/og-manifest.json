@@ -1982,6 +1982,16 @@
 				484
 			]
 		},
+		"am/the-bruised-reed-teens": {
+			"ground": "ddba6797bdefd4addea61a3084ad14ba515f6203a5f76366c507b8e19e4925e9",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"am/the-fourfold-gospel": {
 			"ground": "d0da509adb8cbc721a95106cf94c77302afceed851358b4ae44a5c465003daff",
 			"style": "revival",
