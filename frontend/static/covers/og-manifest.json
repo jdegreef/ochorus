@@ -6082,6 +6082,34 @@
 			"layout": "wash/ochre",
 			"bar": 0
 		},
+		"es/things-as-they-are": {
+			"ground": "130213db00649a2f8a28ebd57e565f2f903e2fc1c982508344c77726773039eb",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[144, 102, 456, 131]
+				],
+				"title": [
+					[62, 302, 538, 384]
+				],
+				"subtitle": [
+					[103, 460, 497, 488]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				307,
+				488
+			]
+		},
 		"es/thoughts-for-the-quiet-hour": {
 			"ground": "7acad75bfe17cf35997af81db69d0a50b686985ca03ef268c5b102f7ecf05ef0",
 			"style": "revival",
