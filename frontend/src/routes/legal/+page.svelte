@@ -58,7 +58,6 @@
 
 		<h2 id="terms" class="text-h2 text-text pt-2 scroll-mt-24">{t('legal.termsHeading')}</h2>
 		<p>{t('legal.termsP1')}</p>
-		<p>{t('legal.termsP2')}</p>
 		<p>{t('legal.termsP3')}</p>
 		<p>{t('legal.termsP4')}</p>
 		<p>{t('legal.termsP5')}</p>
