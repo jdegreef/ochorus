@@ -1,0 +1,93 @@
+{
+ "kind": "book",
+ "slug": "elisabeth-elliot-a-life-children",
+ "language": "am",
+ "job_issue": 5746,
+ "pull_request": null,
+ "note": [
+  "Amharic (am) is not in library/language_seed.py (added from the admin), so system_prompt('am') raises locally; the translators were briefed with the same template by hand, plus a names table taken from the shipped Amharic Elisabeth Elliot bio (author_bios_am/elisabeth-elliot.html) and the anthologies that tell her story (men-and-women-who-gave-everything-2, brave-for-god-3): ኤልሳቤት ኤሊየት, ጂም ኤሊየት, ኢኳዶር, ዋኦራኒ, ኪቹዋ, ሻንዲያ, ኩራራይ, ኔት ሴይንት, ሬቸል ሴይንት, ቫለሪ, ጊካሪ, «የደስታ መግቢያ በር», «ቀጣዩን ነገር አድርግ». No full or teen Amharic edition of this life exists yet.",
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Re-verified for this job 2026-10-09: the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh/usfm/<code>.usfm, lower-case codes) returns 200 for heb/2ti/rom and 404 for gen/psa/isa/deu/ecc/jer (no usx/ either); api.takeroot.bible is unreachable from the container. So the five NT epigraphs are the 1962 wording lifted by script from the USFM, and every `mined` row is an exact substring of at least 20 characters of that verse inside block 0.",
+  "The mirror carries no Old Testament, so the seven OT epigraphs are self_rendered. Each reuses wording the am corpus already ships, so the editions agree: Deuteronomy 6:6-7 = clothed-with-strength-and-dignity.am.json (opening clause elided with …); Isaiah 55:8 = a-retrospect.am.json; Isaiah 43:2a = the first half of pilgrims-progress-teens.am.json's verse; Psalm 62:8 = men-who-moved-heaven.am.json; Isaiah 46:4a = the first clause of daughters-of-the-king-3.am.json. Ecclesiastes 4:9 follows the clause order pilgrims-progress-teens.am.json uses in prose («ሁለት ከአንድ ይሻላሉ»; watchman-nee-a-life.am.json has «ከአንድ ሁለት ይሻላል»), and Isaiah 42:16 has no shipped Amharic rendering. They stay self_rendered even where verbatim, because the source wording was never checked against a 1962 OT text either.",
+  "The English epigraphs are simplified child paraphrases (\"— from Romans 12\"). As in the shipped am children's editions, each quotes the Bible's own wording for the part the English means, with … for words left out, and cites `— ከ<Book> <chapter>`. Chapter 12's two radio promises (Jer 31:3, Deut 33:27) are prose in the English, not quotations, so they are not rows here; they use the bio's «በዘላለም ፍቅር» / «የዘላለም ክንዶች».",
+  "Localization choices for the native reviewer: chapter 8's \"half past four\" (in the afternoon) is given on the Ethiopian clock, «ከቀኑ በ10 ሰዓት ተኩል», which is how the am corpus writes clock times (ከቀኑ 10 ሰዓት ተኩል ×4, ከጠዋቱ 12 ሰዓት ገደማ ×20, …). The poem \"Doe the nexte thynge\" keeps its English words, glossed «ቀጣዩን ነገር አድርግ». Seasons: summer → በጋ, autumn → መጸው (ክረምት and በልግ name Ethiopian rainy seasons)."
+ ],
+ "references": [
+  {
+   "reference": "Deuteronomy 6:6-7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Hebrews 12:11",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "2 Timothy 2:15",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Isaiah 55:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Ecclesiastes 4:9",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Romans 10:14b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Isaiah 43:2a",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Isaiah 42:16",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Romans 12:21",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Psalm 62:8",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Isaiah 46:4a",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}
