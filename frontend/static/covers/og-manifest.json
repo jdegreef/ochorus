@@ -10222,6 +10222,16 @@
 				484
 			]
 		},
+		"pensees-teens": {
+			"ground": "edd5a335914e1970bbafbfb70d23f8b9745081ba4e167ceb32f07e8f1ecea8a0",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"phantastes": {
 			"ground": "9500f7e0a5e17a0543cf815f1f1b86a964d0cac00a73dfb29a79ed674c91b084",
 			"style": "revival",

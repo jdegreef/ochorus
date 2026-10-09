@@ -608,6 +608,7 @@ TOPICS = [
             "life-and-diary-of-david-brainerd-teens",
             "absolute-surrender-teens",
             "foxes-book-of-martyrs-teens",
+            "pensees-teens",
             "real-questions-1",
             "real-questions-2",
         ],
