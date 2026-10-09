@@ -5176,6 +5176,32 @@
 			"layout": "split/navy",
 			"bar": 0
 		},
+		"es/rise-up-men-of-god-2": {
+			"ground": "bccc04cc94d75205414827d26c66be489deb571a0386bec07a710558b0d0d8bf",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[120, 308, 480, 384],
+					[50, 374, 550, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"es/school-of-prayer": {
 			"ground": "97470a6480e1b9ab220bb0111f42bb19bbe075a48c1470c335f385ecc6997764",
 			"style": "devotional",
