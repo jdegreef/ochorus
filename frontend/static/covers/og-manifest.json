@@ -9674,6 +9674,16 @@
 				505
 			]
 		},
+		"life-and-diary-of-david-brainerd-teens": {
+			"ground": "0e27b525e6e3a2a25c3b46b63559d4c25599b2005c3f342aaa8d50803601300c",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"life-experience-gospel-labours": {
 			"ground": "14ce76f8769c384ae142f7a77f4a4eb21ed7c2029fac5a2a4f24b82926eae475",
 			"style": "enlightenment",
