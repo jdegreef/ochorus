@@ -6219,6 +6219,16 @@
 				482
 			]
 		},
+		"fr/all-things-for-good": {
+			"ground": "02f7841d83902bdaaeb84ca00dd75645cabf7f01466fa5ca31b298dac0b50bab",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/oxblood",
+			"bar": 0
+		},
 		"fr/amanda-smith-autobiography-children": {
 			"ground": "ffff2a806865952f721cbedbaae55cd25cf7f1e8b019a13a83e163f3ab66b998",
 			"style": "revival",
