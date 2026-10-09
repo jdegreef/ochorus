@@ -339,6 +339,19 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "portraits-of-courage"
+  ],
+  "language": "lg",
+  "title": "Ebifaananyi by’Obuvumu",
+  "description": "Ebyafaayo by’Ekikristaayo ebijjuvu eby’abasajja n’abakazi abaabalirira omuwendo ne bagoberera Kristo wadde kyali kityo — buli bulamu bunyumizibwa wamu n’okuyigiriza kwabwo, ne bupimibwa n’Ebyawandiikibwa, era ne buwandiikibwa n’okwebaza naye awatali kubugulumiza ng’obutalina kamogo.",
+  "created_at": "2026-10-09T00:00:00Z",
+  "updated_at": "2026-10-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "brave-for-god"
   ],
   "language": "am",
