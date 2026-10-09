@@ -818,6 +818,32 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"am/grace-abounding-teens": {
+			"ground": "33f173c6b12385632a47830314847b77b66ebe5e83309a92c025847e2dcf9fe3",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.5,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[177, 102, 423, 131]
+				],
+				"title": [
+					[90, 308, 510, 384],
+					[76, 374, 524, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"am/growing-in-wisdom": {
 			"ground": "8ef595657257815f9b131f0cbe319b4e1b224cbdb4a46b40651a0b9f6151735d",
 			"style": "originals",
