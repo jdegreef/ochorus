@@ -7301,6 +7301,16 @@
 				487
 			]
 		},
+		"fr/purpose-in-prayer": {
+			"ground": "7b3ddf45d47bdfc8a7da10e6969a79e0a941511e1e420b838cd545928861fffa",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0
+		},
 		"fr/rise-up-men-of-god-2": {
 			"ground": "f20d79d322eb36b5e5888b6b377d432edf2599bd277bff2b1048b24cdfd8da34",
 			"style": "originals",
