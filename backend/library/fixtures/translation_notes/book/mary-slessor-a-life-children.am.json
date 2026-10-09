@@ -1,0 +1,98 @@
+{
+ "kind": "book",
+ "slug": "mary-slessor-a-life-children",
+ "language": "am",
+ "job_issue": 5748,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole in the ebible mirror (gracious-tech/fetch_collection, bibles/amh_amh/usfm/; re-verified for this job 2026-10-09: mat and 2co return 200, psa and isa 404). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
+  "A `mined` row was re-measured against the finished text: an exact substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter, re-personed or partly composed quotations are self_rendered.",
+  "The English epigraphs are simplified child paraphrases (\"— from Psalm 103\"); as in the shipped am children's editions (samuel-ajayi-crowther-a-life-children.am) each quotes the Bible's own wording for the part the English means and cites `— ከ<Book> <chapter>`. So chapter 1 says «ለሚፈሩት» (those who fear him) where the child English says \"those who love him\". Proverbs 17:17a matches rooted-5.am.json's words but is under the 25-character bar (and that file closes the clause with ፤), so it stays self_rendered. Joshua 1:9 reuses women-who-moved-heaven-2.am.json's clause but adds «ጽና፥ አይዞህ» for the English \"Be strong and of good courage\", so it is self_rendered. Psalm 27:10, 73:26, 82:4 and 30:5 have no shipped Amharic rendering; 73:26 borrows on-loving-god.am.json's opening «ሥጋዬና ልቤ አለቁ» but that file re-persons the rest. Chapter 11's Psalm 103:4 phrase follows the-fourfold-gospel.am.json's «ሕይወትህን ከጥፋት ይቤዣል» turned into a participle, so it is self_rendered.",
+  "Conventions: names and places follow the am plan note on family-devotions-brave-and-faithful and author_bios_am/mary-slessor (ሜሪ ስሌሰር, ካላባር, ኤፊክ, ኦኮዮንግ, ዳንዲ, አበርዲን, ጄኒ, ናይጄሪያ, ስኮትላንድ, መንታ); «Everybody's Mother» is «የሁሉም እናት» as in her am short bio. Clock times use Ethiopian reckoning as the am corpus does (6 a.m.–6 p.m. = ከጠዋቱ 12 ሰዓት እስከ ምሽቱ 12 ሰዓት). Quotation marks « », nested ‹ ›; reader addressed as አንተ; prayers open «ውድ እግዚአብሔር ሆይ፣». Each chapter's three study_questions are translated, as the plan card promises."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 103:13",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "all-things-for-good.am.json"
+  },
+  {
+   "reference": "Psalm 119:105",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "growing-in-wisdom.am.json"
+  },
+  {
+   "reference": "Isaiah 6:8b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "key-teachings-of-a-b-simpson.am.json"
+  },
+  {
+   "reference": "Psalm 27:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Psalm 73:26",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Joshua 1:9",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Proverbs 17:17a",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalm 82:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Isaiah 40:11b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "the-god-of-all-comfort.am.json"
+  },
+  {
+   "reference": "Matthew 5:9",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Psalm 30:5b",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalm 103:4a",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 11
+  },
+  {
+   "reference": "2 Corinthians 12:9a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  }
+ ]
+}
