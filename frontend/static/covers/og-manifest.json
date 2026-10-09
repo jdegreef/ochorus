@@ -7657,6 +7657,33 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"fr/women-who-moved-heaven-2": {
+			"ground": "a355251ae5b0487c24c1446462c9c2ca02028791ab783802d90b24f4bfa37d99",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[117, 275, 483, 351],
+					[195, 341, 405, 417],
+					[95, 407, 505, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
+		},
 		"freedom-of-the-will": {
 			"ground": "4ea3b353acb149bbd8daf7c9bef83437620e1cd2a5acddd1c3d12c35016e92a2",
 			"style": "enlightenment",
