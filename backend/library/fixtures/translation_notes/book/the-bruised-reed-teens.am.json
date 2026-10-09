@@ -1,0 +1,197 @@
+{
+ "kind": "book",
+ "slug": "the-bruised-reed-teens",
+ "language": "am",
+ "job_issue": 5738,
+ "pull_request": null,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh; re-verified for this job: meta.json and all 27 NT books return 200, isa.usfm 404). The mirror carries no Old Testament, so the two OT epigraphs reuse wording already shipped in Amharic: Psalm 34:18 as key-teachings-of-richard-baxter.am.json quotes it whole (the full edition quotes only its first clause), Zechariah 4:10a exactly as the full edition (the-bruised-reed.am.json) quotes it; at 23 characters it falls under the 25-character corpus threshold and is recorded self_rendered.",
+  "A `mined` row was re-measured against the finished text: an exact substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter quotations are self_rendered even where the words are the Bible's own (Matthew 8:3, John 21:17, John 14:1a, Galatians 6:1's «በየውሃት መንፈስ»). Luke 15:17 drops the verse's enclitic -ም to fit the sentence, so it is self_rendered.",
+  "The English quotes the KJV with a '(KJV)' label; per the shipped Amharic teen editions the epigraphs cite book and verse with no version label. Every sentence of Sibbes's own that this retelling quotes is pasted from the full Amharic edition (the-bruised-reed.am.json) so the full ⇄ teens editions quote him identically; Izaak Walton's line is not in the full text and is this edition's own rendering."
+ ],
+ "references": [
+  {
+   "reference": "Matthew 12:20",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 12:20",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 1,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Psalm 34:18",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "key-teachings-of-richard-baxter.am.json"
+  },
+  {
+   "reference": "Luke 15:17",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Zechariah 4:10a",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Mark 4:38",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 5,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 7:24a",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Luke 22:32",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 8:2",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Mark 9:22",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Matthew 8:3",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Matthew 26:41b",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 6,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "John 21:17",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Hebrews 4:15",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "James 5:17a",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 9
+  },
+  {
+   "reference": "1 John 2:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Galatians 6:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Galatians 6:1",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 12:20a",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 12,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 15:57",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "John 14:1a",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 13
+  }
+ ]
+}
