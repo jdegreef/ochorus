@@ -603,6 +603,7 @@ TOPICS = [
             "grace-abounding-teens",
             "confessions-teens",
             "the-practice-of-the-presence-of-god-teens",
+            "the-pursuit-of-god-teens",
             "the-imitation-of-christ-teens",
             "life-and-diary-of-david-brainerd-teens",
             "absolute-surrender-teens",
