@@ -44,6 +44,7 @@
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
 	import Bookshelf from '$lib/components/Bookshelf.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
+	import SealsShelf from '$lib/components/SealsShelf.svelte';
 	import YearInBooks from '$lib/components/YearInBooks.svelte';
 	import AuthorTile from '$lib/components/AuthorTile.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
@@ -414,6 +415,7 @@
 			</div>
 		{/if}
 		<YearInBooks {progress} books={bookList} />
+		<SealsShelf />
 		<Bookshelf
 			{view}
 			id="finished"
