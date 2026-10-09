@@ -5257,6 +5257,16 @@
 				567
 			]
 		},
+		"es/lord-teach-us-to-pray-2": {
+			"ground": "1775aa31a125fb01ed70e2b9736e21d2193c62d2d0ba4751f750c7911114dabc",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0.11
+		},
 		"es/mary-slessor-a-life-children": {
 			"ground": "cde58c3afbeeddfd19e061014e88116ad61b866c38164b0009352e5e005c2a21",
 			"style": "young",
