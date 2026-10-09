@@ -137,5 +137,87 @@
     "note": [
       "AI-drafted with the book, job #5421; awaiting native review. The title quotes the Swahili edition's first chapter, «Mvulana wa Osogun» (samuel-ajayi-crowther-a-life-children.sw, chapter 1), as the English plan quotes “The Boy from Osogun”; the description's framing (“Usiku kumi na mbili wa ibada za familia za dakika tano… Kila sura inamalizika kwa sala na maswali matatu ya kuzungumza pamoja”) matches family-devotions-talking-with-god so the family-devotions shelf reads as one voice. «Sala ya Bwana» and «Malkia» follow the edition's chapter 8."
     ]
+  },
+  "new-to-the-faith": {
+    "title": "Mpya katika Imani",
+    "description": "Wiki tano na nusu kwa yeyote anayeanza tu safari yake pamoja na Kristo. Charles Spurgeon anakulaki langoni kwa msaada ulio rahisi kabisa wa kumtumaini Yesu; kisha R. A. Torrey, akiwaandikia waamini wapya, anaonyesha jinsi ya kuanza vizuri — uhakika wa wokovu, Roho Mtakatifu, kanisa, Biblia, maombi na kushuhudia. Makala fupi njiani zinajibu maswali ambayo kila Mkristo mpya huuliza: injili ni nini, kwa nini Yesu alikufa, ubatizo na Meza ya Bwana vina maana gani, na jinsi ya kuendelea kukua.",
+    "note": [
+      "Job #5108. The English title names no book, so the Swahili title is a plain rendering, not a quoted edition title.",
+      "«langoni» is the wicket gate as the shipped corpus says it (Karibu na Lango Jembamba = around-the-wicket-gate.sw; pilgrims-progress.sw uses «langoni» throughout), the same word the first-steps-for-teens card uses for this same book. «injili ni nini» echoes the shipped article title «Injili Ni Nini?»; «waamini wapya» and «Meza ya Bwana» are the corpus's settled terms. 'assurance' is rendered «uhakika wa wokovu», the usual Swahili name for the doctrine (bare «uhakika» reads as mere 'certainty').",
+      "seed_plans will not create this row yet — a curated plan needs EVERY source book published in the language, and how-to-succeed-in-the-christian-life (book) and the articles why-did-jesus-die, what-is-grace, what-is-repentance, what-is-baptism, what-is-the-church, what-is-the-lords-supper, how-to-read-the-bible-for-beginners, how-to-share-your-faith, how-to-overcome-sin-and-temptation, how-to-grow-in-your-faith are still English-only. The prose ships first on purpose: the moment the set completes the row IS created, and without an entry here it would take the ENGLISH tuple and publish «New to the Faith» on the Swahili plans page (the #819 defect)."
+    ]
+  },
+  "praying-men": {
+    "title": "Watu wa Maombi: Shule ya Maombi pamoja na E. M. Bounds",
+    "description": "Wiki saba katika tanuru la maombezi pamoja na mtume mkuu wa maombi. E. M. Bounds anaanza na hitaji la mhubiri mwenyewe la nguvu, kisha anafunua kusudi linalofanya maombi yashinde, na ulazima unaoyafanya kuwa kazi nzima ya maisha ya Mkristo.",
+    "note": [
+      "Job #5109. «Watu wa Maombi» is Bounds's own phrase as the shipped Swahili edition of Power Through Prayer («Nguvu Kupitia Maombi», power-through-prayer.sw) renders it — 16 uses there — so the card speaks the book's language. «Shule ya Maombi» matches the shipped sw title of school-of-prayer («Pamoja na Kristo katika Shule ya Maombi») and the school-of-prayer-31-days card; «maombezi» is the glossary term for intercession.",
+      "The title does not open with a book title, so nothing here is provisional. «kusudi» and «ulazima» describe the second and third books; they are not quoted titles, so whoever translates purpose-in-prayer / necessity-of-prayer is free to title them.",
+      "seed_plans will not create this row yet — a curated plan needs EVERY source book published in the language, and purpose-in-prayer, necessity-of-prayer are still English-only. The prose ships first on purpose: the moment the set completes the row IS created, and without an entry here it would take the ENGLISH tuple and publish «Praying Men: A School of Prayer with E. M. Bounds» on the Swahili plans page (the #819 defect)."
+    ]
+  },
+  "voices-of-the-early-church": {
+    "title": "Sauti za Kanisa la Kwanza",
+    "description": "Karne za kwanza za Kikristo kwa maneno yao wenyewe. Clement wa Roma anaandika kutoka kanisa la Roma wakati kizazi cha mitume wenyewe kilikuwa bado hai, Ignatius wa Antiokia anatuma barua zake akiwa njiani kuelekea kifo cha kishahidi, na Athanasius wa Aleksandria anaeleza kiini cha imani — kwa nini Mungu mwenyewe alifanyika mwanadamu — katika «Kuhusu Kufanyika Mwili». Masomo mafupi ya kila siku kwa takriban miezi minne.",
+    "note": [
+      "Job #5110. PROVISIONAL BOOK TITLE: the description names Athanasius's On the Incarnation, which has NO Swahili edition yet, so «Kuhusu Kufanyika Mwili» is this entry's own choice («kufanyika mwili» is the corpus's term for the incarnation, after John 1:14 «Neno alifanyika mwili» as rooted-2.sw and confessions.sw quote it). Whoever translates on-the-incarnation should adopt it, or change this entry in the same PR — a card naming a book differently from the book is the drift the humility-12-days note guards.",
+      "Names stay in their English form (Clement, Ignatius, Athanasius); the cities take the corpus's Swahili forms «Roma», «Antiokia» (24 uses) and «Aleksandria» (as the shipped sw corpus names Athanasius's see).",
+      "seed_plans will not create this row yet — a curated plan needs EVERY source book published in the language, and first-epistle-of-clement, epistles-of-ignatius, on-the-incarnation are still English-only. The prose ships first on purpose: the moment the set completes the row IS created, and without an entry here it would take the ENGLISH tuple and publish «Voices of the Early Church» on the Swahili plans page (the #819 defect)."
+    ]
+  },
+  "rooted-three-months-books-1-3": {
+    "title": "Wenye Mizizi: Miezi Mitatu na Mungu — Vitabu 1–3",
+    "description": "Miezi mitatu na Mungu kwa wasomaji wenye umri wa miaka 9 hadi 12: vitabu vitatu vya kwanza vya Wenye Mizizi — Kupandwa, Kumfuata Yesu na Kukuza Matunda — ibada moja fupi kila siku kuhusu Mungu ni nani na habari njema za Yesu, kutembea pamoja Naye kuanzia horini hadi kwenye kaburi tupu, na kukuza tunda la Roho.",
+    "note": [
+      "Job #5112. «Wenye Mizizi» is the series name verbatim from the shipped sw titles («Wenye Mizizi – Siku 30 na Mungu kwa Vijana – Kitabu cha 1/2»); «Miezi Mitatu na Mungu» follows their «Siku 30 na Mungu». «Kupandwa» and «Kumfuata Yesu» are the shipped subtitles of rooted-1.sw and rooted-2.sw verbatim, and «kuanzia horini hadi kwenye kaburi tupu» is rooted-2.sw's subtitle wording.",
+      "PROVISIONAL: «Kukuza Matunda» renders Book 3's 'Growing Fruit', and rooted-3 has NO Swahili edition yet. Whoever translates rooted-3 should give it this subtitle (in the same verb-noun shape as Kupandwa / Kumfuata Yesu), or change this entry in the same PR. «tunda la Roho» is Galatians 5:22 as the shipped corpus quotes it (46 uses in absolute-surrender.sw alone).",
+      "seed_plans will not create this row yet — a curated plan needs EVERY source book published in the language, and rooted-3 is still English-only. The prose ships first on purpose: the moment the set completes the row IS created, and without an entry here it would take the ENGLISH tuple and publish «Rooted: Three Months with God — Books 1–3» on the Swahili plans page (the #819 defect)."
+    ]
+  },
+  "the-puritan-heart": {
+    "title": "Moyo wa Kipuritani",
+    "description": "Wiki nane pamoja na mabingwa watatu wa maisha ya ndani. Richard Sibbes anauganga mwanzi uliopondeka, John Owen anapigana vita dhidi ya dhambi ambayo bado inakaa ndani yetu, na Thomas Watson analiweka pambano lote juu ya ahadi kwamba mambo yote hufanya kazi pamoja kwa mema.",
+    "note": [
+      "Job #5113. «Kipuritani» is the corpus's adjective (Wapuritani / Kipuritani in the shipped sw books); «maisha ya ndani» is the settled term for the inner life. «mwanzi uliopondeka» is Isaiah 42:3 verbatim as the shipped corpus quotes it («Mwanzi uliopondeka hatauvunja…»).",
+      "The Romans 8:28 echo borrows the corpus's key words («hufanya kazi pamoja», «mema») but is a shortened form, NOT the verbatim verse (the corpus has «katika mambo yote Mungu hufanya kazi pamoja na wale wampendao katika kuwapatia mema»), because the English card uses the short proverb form too.",
+      "No book title is quoted, so nothing here is provisional.",
+      "seed_plans will not create this row yet — a curated plan needs EVERY source book published in the language, and the-bruised-reed, mortification-of-sin, all-things-for-good are still English-only. The prose ships first on purpose: the moment the set completes the row IS created, and without an entry here it would take the ENGLISH tuple and publish «The Puritan Heart» on the Swahili plans page (the #819 defect)."
+    ]
+  },
+  "pursuit-of-holiness": {
+    "title": "Kuutafuta Utakatifu",
+    "description": "Wiki tisa juu ya kuwa mali ya Bwana kikamilifu. Andrew Murray anaufuatilia utakatifu wetu hadi kwenye muungano wetu na Yule Mtakatifu, William Law anatuita kwenye maisha ya utauwa katika kila saa ya kawaida, na John Wesley anaeleza waziwazi ukamilifu wa Kikristo ni nini — na sio nini.",
+    "note": [
+      "Job #5114. «Kuutafuta Utakatifu» leans on Hebrews 12:14 as the shipped corpus quotes it («Tafuteni kwa bidii … huo utakatifu»). «Yule Mtakatifu» is the wording of the shipped Murray edition this plan opens with («Mtakatifu katika Kristo», holy-in-christ.sw — 68 uses); «mali ya Bwana», «utauwa» (glossary: godliness/devout) and «ukamilifu wa Kikristo» are corpus terms.",
+      "No book title is quoted, so nothing here is provisional.",
+      "seed_plans will not create this row yet — a curated plan needs EVERY source book published in the language, and a-serious-call, plain-account-christian-perfection are still English-only. The prose ships first on purpose: the moment the set completes the row IS created, and without an entry here it would take the ENGLISH tuple and publish «The Pursuit of Holiness» on the Swahili plans page (the #819 defect)."
+    ]
+  },
+  "send-the-fire": {
+    "title": "Tuma Moto: Kuombea Uamsho",
+    "description": "Jinsi uamsho unavyokuja, na jinsi ya kuuombea ushuke. Mihadhara ya Charles Finney juu ya masharti ya uamsho, R. A. Torrey juu ya ubatizo wa Roho Mtakatifu unaoutia nguvu, na mahubiri ambayo kwayo Mungu aliitikisa New England chini ya Jonathan Edwards.",
+    "note": [
+      "Job #5115. The description echoes the shipped sw titles of two source books: «Mihadhara juu ya Uamsho wa Dini» (revival-lectures.sw) and «Ubatizo wa Roho Mtakatifu» (baptism-with-the-holy-spirit.sw). «uamsho» and «New England» are the forms revival-lectures.sw uses.",
+      "No book title opens the plan title, so nothing here is provisional.",
+      "seed_plans will not create this row yet — a curated plan needs EVERY source book published in the language, and selected-sermons-edwards is still English-only. The prose ships first on purpose: the moment the set completes the row IS created, and without an entry here it would take the ENGLISH tuple and publish «Send the Fire: Praying for Revival» on the Swahili plans page (the #819 defect)."
+    ]
+  },
+  "key-teachings-four-teachers": {
+    "title": "Mafundisho Makuu: Walimu Wanne",
+    "description": "Wiki kumi na mbili pamoja na walimu wanne, sura moja fupi kila siku, kila moja ikimalizika kwa maswali na sala: Richard Baxter juu ya pumziko la milele la watakatifu, Jonathan Edwards juu ya uzuri wa Mungu na dini ya kweli, A. B. Simpson juu ya Kristo Mwokozi wetu, Mtakasaji, Mponyaji na Mfalme Ajaye, na Watchman Nee juu ya maisha ya kawaida ya Kikristo.",
+    "note": [
+      "Job #5116. PROVISIONAL SERIES TITLE: the English title opens with the series name of its four source books (The Key Teachings of …), none of which has a Swahili edition yet, so «Mafundisho Makuu» is this entry's own choice. Whoever translates the first key-teachings-of-* book into sw should title it «Mafundisho Makuu ya <author>» (author name in English form), or change this entry in the same PR.",
+      "«Mwokozi, Mtakasaji, Mponyaji na Mfalme Ajaye» matches the christ-our-healer card and the-fourfold-gospel.sw; «maisha ya kawaida ya Kikristo» is Nee's phrase as watchman-nee-a-life.sw renders it; «pumziko la milele», «uzuri wa Mungu» and «dini ya kweli» are corpus wording.",
+      "seed_plans will not create this row yet — a curated plan needs EVERY source book published in the language, and key-teachings-of-richard-baxter, key-teachings-of-jonathan-edwards, key-teachings-of-a-b-simpson, key-teachings-of-watchman-nee are still English-only. The prose ships first on purpose: the moment the set completes the row IS created, and without an entry here it would take the ENGLISH tuple and publish «The Key Teachings: Four Teachers» on the Swahili plans page (the #819 defect)."
+    ]
+  },
+  "the-pilgrims-way": {
+    "title": "Njia ya Msafiri",
+    "description": "Njia ya kurudi nyumbani, katika vitabu vitatu mashuhuri vya kale. Charles Spurgeon anamlaki mtafutaji langoni, hadithi ya mfano isiyokufa ya John Bunyan inamfuata msafiri njia nzima hadi Mji wa Mbinguni, na ushuhuda wa Bunyan mwenyewe unaonyesha neema iliyozidi kuwa nyingi kwa mkuu wa wenye dhambi.",
+    "note": [
+      "Job #5117. «Njia ya Msafiri» deliberately echoes the shipped sw title of The Pilgrim's Progress, «Safari ya Msafiri» (pilgrims-progress.sw), as the English 'Pilgrim's Way' echoes 'Pilgrim's Progress'. «langoni» (the wicket gate; Karibu na Lango Jembamba = around-the-wicket-gate.sw) and «Mji wa Mbinguni» (the Celestial City) are the shipped Swahili Pilgrim's Progress's own words.",
+      "«neema iliyozidi kuwa nyingi» is Romans 5:20 as the corpus quotes it («neema ilizidi kuwa nyingi zaidi»), and «mkuu wa wenye dhambi» is corpus wording for 1 Tim 1:15's 'chief of sinners'. These describe Grace Abounding rather than quote a title; whoever translates grace-abounding may find «Neema Iliyozidi kwa Mkuu wa Wenye Dhambi» a fit that keeps this card in step, but nothing here binds it.",
+      "seed_plans will not create this row yet — a curated plan needs EVERY source book published in the language, and grace-abounding is still English-only. The prose ships first on purpose: the moment the set completes the row IS created, and without an entry here it would take the ENGLISH tuple and publish «The Pilgrim's Way» on the Swahili plans page (the #819 defect)."
+    ]
   }
 }
