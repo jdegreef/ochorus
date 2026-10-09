@@ -135,7 +135,7 @@
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if writers.length === 0}
-		<EmptyState message={t('bios.noResults')} />
+		<EmptyState art="search" message={t('bios.noResults')} />
 	{:else}
 		<section aria-labelledby="hub-writers">
 			<h2 id="hub-writers" class="section-heading">{t('hubs.writers')}</h2>

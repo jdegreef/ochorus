@@ -89,7 +89,7 @@
 	<PageHeader title={t('settings.navReading')} tagline={t('reading.subtitle')} />
 
 	{#if isEmpty}
-		<EmptyState message={t('reading.empty')}>
+		<EmptyState art="shelf" message={t('reading.empty')}>
 			{#snippet action()}
 				<a href={localizeHref('/books')} class="btn btn-primary hover:no-underline"
 					>{t('home.browseLibrary')}</a

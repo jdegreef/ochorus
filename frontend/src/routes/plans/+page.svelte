@@ -183,7 +183,7 @@
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if plans.length === 0}
-		<EmptyState message={t('plans.none')} />
+		<EmptyState art="path" message={t('plans.none')} />
 	{:else}
 		<!-- Continue your plans: pick up where you left off. Only shown when the
 		     reader has an unfinished plan in progress, and not while filtering. -->
@@ -276,7 +276,7 @@
 		{/if}
 
 		{#if shownPlans.length === 0}
-			<EmptyState message={t('plans.noResults')} action={clearFiltersAction} />
+			<EmptyState art="search" message={t('plans.noResults')} action={clearFiltersAction} />
 		{:else}
 			<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
 				{#each shownPlans as plan (plan.slug)}
