@@ -75,8 +75,6 @@ export interface AudienceHubConfig {
 	hooks: boolean;
 }
 
-
-
 export const YOUNG_READERS_HUB: AudienceHubConfig = {
 	audience: 'young_readers',
 	href: '/young-readers',
@@ -136,7 +134,8 @@ export const AUDIENCE_HUBS: AudienceHubConfig[] = [YOUNG_READERS_HUB, TEENS_HUB]
 /** The Plausible event a hub sends when its "Start here", a path card, a
  *  face, its challenge, spotlight or a ladder step is opened, or it is shared —
  *  props `{ hub, action }` (`start`, `path`, `person`, `challenge`,
- *  `spotlight`, `ladder`, `invite`, `share`); its visits are the pageviews themselves. */
+ *  `spotlight`, `ladder`, `spotlight-share`, `challenge-share`, `share`); its
+ *  visits are the pageviews themselves. */
 export const HUB_EVENT = 'Hub';
 
 /** The hub for a series audience, if it has one (adults don't). */

@@ -1151,6 +1151,8 @@ def _edition_ladders(slugs, language: str) -> dict[str, list[dict]]:
 def _audience_challenge(audience: str, series: list[dict]) -> dict | None:
     """The hub's challenge (``AUDIENCE_CHALLENGES``) when its series is on the
     shelf in this language — ``{series, days}`` — else None."""
+    if audience not in AUDIENCE_CHALLENGES:
+        return None
     slug, days = AUDIENCE_CHALLENGES[audience]
     return {"series": slug, "days": days} if any(r["slug"] == slug for r in series) else None
 
@@ -1189,6 +1191,10 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
     something in (its hreflang). Nothing here falls back to English: a language
     with no rows gets empty lists, and the page hides.
     """
+
+    # Its shape grows with the hub (people, quotes, ladders, challenge…), and a
+    # code-only deploy moves neither the content digest nor the revision.
+    etag_tracks_release = True
 
     def get(self, request, audience):
         if audience not in AUDIENCE_TOPICS:

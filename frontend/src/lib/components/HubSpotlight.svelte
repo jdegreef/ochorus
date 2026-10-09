@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
-	import type { BookSummary, EditionRung } from '$lib/library-public';
+	import type { BookSummary, EditionRung, HubAudience } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { contentLang, readingMinutes } from '$lib/reading';
 	import { localizeHref } from '$lib/href';
@@ -18,12 +18,15 @@
 	 */
 	let {
 		book,
+		audience,
 		ladder,
 		onstart,
 		onclimb,
 		onshare
 	}: {
 		book: BookSummary;
+		/** Whose hub — the banner wears that audience's colour. */
+		audience: HubAudience;
 		ladder?: EditionRung[];
 		onstart?: () => void;
 		onclimb?: () => void;
@@ -40,7 +43,7 @@
 	);
 </script>
 
-<section class="spotlight mb-12" aria-labelledby="spotlight-heading">
+<section class="spotlight mb-12" data-audience={audience} aria-labelledby="spotlight-heading">
 	<a class="spotlight-cover" href={localizeHref(`/books/${book.slug}`)} tabindex="-1" aria-hidden="true">
 		<BookCover {book} />
 	</a>
@@ -75,6 +78,7 @@
 				title={pitch ? `${book.title}: ${pitch}` : book.title}
 				label={t('audience.spotlightShare')}
 				showLabel
+				size="md"
 				{onshare}
 			/>
 		</div>
@@ -91,6 +95,7 @@
 	/* A dark, cinematic band — the one place on the hub that is a poster rather
 	   than a shelf — in the theme's ink, so it inverts sensibly in lamplight. */
 	.spotlight {
+		--spot-hue: var(--audience-children);
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
 		gap: 1.5rem;
@@ -98,8 +103,11 @@
 		border: 1px solid var(--border);
 		border-radius: var(--radius-card);
 		background:
-			radial-gradient(120% 90% at 0% 0%, color-mix(in oklab, var(--audience-teens) 22%, transparent), transparent 60%),
+			radial-gradient(120% 90% at 0% 0%, color-mix(in oklab, var(--spot-hue) 22%, transparent), transparent 60%),
 			var(--surface);
+	}
+	.spotlight[data-audience='teens'] {
+		--spot-hue: var(--audience-teens);
 	}
 	.spotlight-cover {
 		display: block;

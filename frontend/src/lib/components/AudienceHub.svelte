@@ -260,10 +260,11 @@
 		{#if shelf.spotlight}
 			<HubSpotlight
 				book={shelf.spotlight}
+				audience={hub.audience}
 				ladder={ladders[shelf.spotlight.slug]}
 				onstart={() => track(HUB_EVENT, { hub: hub.audience, action: 'spotlight' })}
 				onclimb={() => track(HUB_EVENT, { hub: hub.audience, action: 'ladder' })}
-				onshare={() => track(HUB_EVENT, { hub: hub.audience, action: 'invite' })}
+				onshare={() => track(HUB_EVENT, { hub: hub.audience, action: 'spotlight-share' })}
 			/>
 		{/if}
 
@@ -272,7 +273,7 @@
 				series={challengeSeries}
 				{challenge}
 				onstart={() => track(HUB_EVENT, { hub: hub.audience, action: 'challenge' })}
-				onshare={() => track(HUB_EVENT, { hub: hub.audience, action: 'invite' })}
+				onshare={() => track(HUB_EVENT, { hub: hub.audience, action: 'challenge-share' })}
 			/>
 		{/if}
 

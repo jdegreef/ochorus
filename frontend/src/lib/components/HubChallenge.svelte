@@ -109,14 +109,17 @@
 					>
 						{place.started ? t('audience.challengeKeep') : t('audience.challengeStart')}
 					</a>
-					<ShareButton
-						url={`${SITE_URL}${localizeHref(`/series/${series.slug}/`)}`}
-						title={t('audience.challengeInvite').replace('%n%', days).replace('%s%', name)}
-						label={t('audience.challengeShare')}
-						showLabel
-						{onshare}
-					/>
 				{/if}
+				<!-- Kept once it's done: the reader who finished is the best one to
+				     pass it on. -->
+				<ShareButton
+					url={`${SITE_URL}${localizeHref(`/series/${series.slug}/`)}`}
+					title={t('audience.challengeInvite').replace('%n%', days).replace('%s%', name)}
+					label={t('audience.challengeShare')}
+					showLabel
+					size="md"
+					{onshare}
+				/>
 			</div>
 		</div>
 	</section>
