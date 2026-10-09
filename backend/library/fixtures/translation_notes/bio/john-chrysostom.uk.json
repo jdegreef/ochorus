@@ -1,0 +1,25 @@
+{
+ "kind": "bio",
+ "slug": "john-chrysostom",
+ "language": "uk",
+ "job_issue": 1687,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Psalms 24:1",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Job 1:21",
+   "status": "self_rendered",
+   "block_index": 18
+  }
+ ],
+ "note": [
+  "Both references sit inside Chrysostom's own letter to Bishop Cyriacus, which adapts them rather than quoting them: 'the earth is the Lord's' and 'naked shall I leave this world'. Neither is a Book C:V citation in the English.",
+  "Kulish (ebible mirror gracious-tech/fetch_collection, bibles/ukr_pan) was fetched and its wording used for the matching fragments, byte for byte: Ps 24:1 «Господня земля» and Job 1:21 «Нагим вийшов я з матерньої утроби, нагим і». Chrysostom's own ending ('покину цей світ') replaces Kulish's 'вернусь', so per the re-personed/adapted rule both rows are self_rendered, not mined.",
+  "Name follows the shipped uk corpus: Іван Золотоустий (14 sites, against 5 Іоанн). 'AD' rendered н. е., the only form in the uk corpus.",
+  "The faq.json (10 pairs, matching English) is translated alongside the bio; quotations in it use « » like the shipped uk faq files."
+ ]
+}
