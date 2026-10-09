@@ -9952,6 +9952,16 @@
 			"layout": "wash/ochre",
 			"bar": 0
 		},
+		"lg/true-vine": {
+			"ground": "fdb8cb88c450534cfb8715827ab4df881de56da4cbcfee2d2f76c717f748878f",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"lg/waiting-on-god": {
 			"ground": "84626082c3df7eb5d2a5cd11b5d88ad6e267f6b07fcfdafbc281034e8bc0faf7",
 			"style": "devotional",
