@@ -2206,6 +2206,88 @@
 				518
 			]
 		},
+		"amy-carmichael-a-life": {
+			"ground": "51890840673408251e53becf361a2f92fdae099db286ed151c2ebb6d0fd065dc",
+			"style": "house",
+			"volume": "9",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[144, 102, 456, 131]
+				],
+				"title": [
+					[289, 306, 311, 350],
+					[70, 386, 530, 457]
+				],
+				"subtitle": [
+					[103, 476, 497, 504],
+					[101, 504, 499, 532]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				263,
+				532
+			]
+		},
+		"amy-carmichael-a-life-children": {
+			"ground": "11c5e4e335a88ceeb0640f2a5a9f2325a83bf6cc2b8a0ca04c7227c0b1f6c879",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[144, 102, 456, 131]
+				],
+				"title": [
+					[88, 310, 512, 385],
+					[125, 371, 475, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
+		},
+		"amy-carmichael-a-life-teens": {
+			"ground": "4127d4a8d54c7bcfce2cd7c1f05f33241a5bf8e96b98b1702be5c38ce1dfa6be",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[144, 102, 456, 131]
+				],
+				"title": [
+					[50, 308, 550, 384],
+					[131, 374, 469, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"anchored-1": {
 			"ground": "c5e22c0400546afd69a6dc4c01f5c2ce534c43010634b5eaae494324409db1d8",
 			"style": "originals",
@@ -3559,6 +3641,88 @@
 				482
 			]
 		},
+		"c-t-studd-a-life": {
+			"ground": "e72e9624e52a3343bf91425caeaa5c1df312071451866ba23708e4bfc87b8695",
+			"style": "house",
+			"volume": "11",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.45,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[283, 306, 317, 350],
+					[153, 386, 447, 457]
+				],
+				"subtitle": [
+					[89, 476, 511, 504],
+					[86, 504, 514, 532]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				263,
+				532
+			]
+		},
+		"c-t-studd-a-life-children": {
+			"ground": "6748deeb35891b7b239b817ec0c49de9ccc8ce4e5b372e52f5341373ecce3cdd",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[163, 310, 437, 385],
+					[125, 371, 475, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
+		},
+		"c-t-studd-a-life-teens": {
+			"ground": "6dd8068b9274d2fa2ffd4b1eaf0f8638204f5b7aec845bce00f3be2a889e8af9",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[140, 308, 460, 384],
+					[131, 374, 469, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"cheque-book": {
 			"ground": "01421c300d0debed099d1d2e3966137ece5b7487ed2361aca7828df570abf0bb",
 			"style": "revival",
@@ -3744,6 +3908,89 @@
 			"scrim": 1,
 			"layout": "framed-light",
 			"bar": 0
+		},
+		"david-livingstone-a-life": {
+			"ground": "f2a08568f8e1ceaabaead9d787596ef64000dfa2252af9aecfca8f0946acf592",
+			"style": "house",
+			"volume": "10",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[120, 102, 480, 131]
+				],
+				"title": [
+					[279, 306, 321, 350],
+					[50, 386, 550, 457]
+				],
+				"subtitle": [
+					[89, 476, 511, 504],
+					[58, 504, 542, 532]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				263,
+				532
+			]
+		},
+		"david-livingstone-a-life-children": {
+			"ground": "343f34d52d2f15b1ac1a6066ec515f3d99899dd63ac0c6b10d454939f557b7b3",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[120, 102, 480, 131]
+				],
+				"title": [
+					[78, 310, 522, 385],
+					[125, 371, 475, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
+		},
+		"david-livingstone-a-life-teens": {
+			"ground": "324d61a59a5af744d3ee4a9b90d5daec164a9c52aaa19c77bdfdd2a5f4930831",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[120, 102, 480, 131]
+				],
+				"title": [
+					[212, 275, 388, 351],
+					[123, 341, 477, 417],
+					[131, 407, 469, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
 		},
 		"days-of-heaven-upon-earth": {
 			"ground": "b1a664f1d52598c64e23cbbd9266dffed4668a23693b0be5fbadb3a98f33e4be",
