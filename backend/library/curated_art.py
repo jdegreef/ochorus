@@ -1330,6 +1330,67 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "sandbar: the Curaray country where her husband died and where she "
         "went to live among the people who had killed him.",
     ),
+    # Portraits of Courage, volumes 9-11. Drawn like volumes 7-8, and for the
+    # same reason (no collection host reachable from the session): an inline SVG
+    # of gradients, fractal-noise cloud and displaced foliage, rendered in
+    # headless Chromium at 2x and downscaled. Places, not likenesses, and no
+    # suffering staged. A public-domain Daniell of the Tinnevelly hills, a
+    # Thomas Baines of the Victoria Falls, or a Congo forest would each be the
+    # natural level-up: a two-line diff here plus a CURATED row.
+    "amy-carmichael-a-life": Original(
+        "98e21c90ef77328704d76c44f8559536e6e2786b083985211623630fe2dcbc19",
+        "Evening at Dohnavur: palmyra palms on red earth under the blue "
+        "Western Ghats, a path leading to a low white-walled compound, the "
+        "home she made for the children of the Tinnevelly temples.",
+    ),
+    "david-livingstone-a-life": Original(
+        "c3b222c0f9a19760ee1f03cd73f2d90c4f624ed36b1e14772fcc10f2d5c22b6a",
+        "Dawn at the Victoria Falls: the spray-cloud the Makololo called "
+        "Mosi-oa-Tunya, the smoke that thunders, rising out of the gorge he "
+        "reached in November 1855, rain forest on the near rim.",
+    ),
+    "c-t-studd-a-life": Original(
+        "fc02259dfb94c57f167aea34e6626dc4fb3f8e5ad2a674ed7975bcdfd51584aa",
+        "A red-earth path into tall rain forest at Ibambi, light coming "
+        "through the canopy onto a small thatched chapel: the Heart of "
+        "Africa Mission he gave his last eighteen years to.",
+    ),
+    # Portraits of Courage for teens, volumes 9-11: one symbolic object on a
+    # saturated field with a halftone grain, like the young-reader set above.
+    "amy-carmichael-a-life-teens": Original(
+        "ba8e7de1df9397a2d904d9994be46e0695f32a6c161287a3c593e03ce149f6f5",
+        "A brass lamp shaped like a lotus, one flame at its heart, on deep "
+        "madder: the Lotus Buds of Dohnavur and the light she kept there.",
+    ),
+    "david-livingstone-a-life-teens": Original(
+        "8649c64c271e2532d0e4f80a37bc779701a0924d4976b6fd6459f8c01e36f493",
+        "A brass pocket compass on deep teal, its needle pointing north, "
+        "with a broken chain lying open beside it: the explorer who "
+        "mapped the interior to end the slave trade.",
+    ),
+    "c-t-studd-a-life-teens": Original(
+        "40b25d79219da9e24d35b7a8d73d1bec89ad9b8829565f7d5491c26803a22a9c",
+        "A cricket bat leaning on a brass-cornered travelling trunk on "
+        "red-earth rust: the England cricketer who gave his fortune away "
+        "and sailed.",
+    ),
+    # Portraits of Courage for children, volumes 9-11: one warm poster scene
+    # from the story, Brave for God's family, every figure a small silhouette.
+    "amy-carmichael-a-life-children": Original(
+        "671c2ffd4caac592d0410ea672e8190184f92b21607d395bd5c17e0159a82f54",
+        "A woman in a sari under a great tree at Dohnavur at sunset, a "
+        "child holding her hand and others sitting near, palms on the left.",
+    ),
+    "david-livingstone-a-life-children": Original(
+        "32d36b2e6c04d05726996cb5c49451c513965312777ca1d2f7be4e135d03e843",
+        "A canoe on a wide river at dawn, the spray of a great waterfall far "
+        "off, a walker and his friends on the bank under an acacia.",
+    ),
+    "c-t-studd-a-life-children": Original(
+        "6df2f0a11f707a316d924b87034ebf8f9e15be34dc25130791f7d23fa0e01bd9",
+        "A jungle path to a little thatched church at sundown, a cricket bat "
+        "propped by the door.",
+    ),
     # The young-reader shelf (2026-10-08), chosen by the founder from twenty
     # concepts in three families. Children: one warm poster scene from the
     # story, Brave for God's family. Teens and retold classics: one symbolic

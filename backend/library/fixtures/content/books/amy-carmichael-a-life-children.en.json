@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "amy-carmichael-a-life-children",
+  "language": "en",
+  "title": "Amy Carmichael (For Children)",
+  "subtitle": "",
+  "cover_byline": "Amy Carmichael",
+  "description": "The true story of Amy Carmichael, a strong-willed girl from a village by the sea in Ireland who went to South India, never came home, and made a safe and loving family at Dohnavur for hundreds of children who had nowhere else to go, beginning with one little girl who walked through the dark to find her. This children’s edition retells her life in short chapters made to be read aloud: a Bible verse, one part of her story, one thing it means for you, and a short prayer, with questions to talk about together.",
+  "qa": [
+   {
+    "question": "What is Amy Carmichael (For Children) about?",
+    "answer": "It is a children’s version of the full-length biography of Amy Carmichael. It tells how a girl from the north of Ireland helped the mill girls of Belfast, went as a missionary to Japan and then to India, and made a home at Dohnavur where children could be safe and loved, and where they called her Amma, “mother.”"
+   },
+   {
+    "question": "Who was Amy Carmichael?",
+    "answer": "An Irish missionary who lived from 1867 to 1951. She went to South India in 1895 and stayed for fifty-five years without ever going home. With Indian Christian friends she travelled the villages telling people about Jesus, and from 1901 she cared for children at Dohnavur, first girls and later boys too. She also wrote many books."
+   },
+   {
+    "question": "How is each chapter set out?",
+    "answer": "Every chapter is short and made to be read aloud. It begins with a Bible verse, tells one part of Amy’s story, shows one simple thing it means for you, and ends with a short prayer. Three questions follow, to talk about together."
+   },
+   {
+    "question": "Is this book too sad for children?",
+    "answer": "Some of it is sad. Amy lost her father, her mother and dear friends, and she spent her last twenty years in pain after a fall. Some little girls in her day were given away to live at temples, where they were not safe or cared for. The book says this very gently, with no frightening detail, and it speaks with respect of the Indian people and Hindu families among whom Amy lived. Above all it is a story about a safe and loving home, and about how God cares for every child."
+   },
+   {
+    "question": "Are the stories true?",
+    "answer": "Yes. They come from Amy Carmichael’s own early books and from the people who knew her, as gathered in the full-length biography. A few stories, like the prayer for blue eyes, the comet at school and the fur gloves in Japan, were remembered by Amy or told about her long afterwards, and the book says so. It also says plainly that the law which ended the giving of girls to temples was the work of Indian leaders."
+   },
+   {
+    "question": "Who is this book for?",
+    "answer": "It is for children, to be read aloud by a grown-up or read by an older child alone. There is also a teen edition, and the full-length biography for older readers."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of the Ochorus biography Amy Carmichael, from the Portraits of Courage series. The telling is our own, free to read and share.",
+  "cover_url": "/covers/art/amy-carmichael-a-life-children.jpg",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/amy-carmichael-a-life-children.pdf?download=amy-carmichael-a-life-children.pdf",
+  "cover_color": "",
+  "sort_order": 163,
+  "is_published": true,
+  "created_at": "2026-10-09T00:00:00Z",
+  "updated_at": "2026-10-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "en"
+  ],
+  "order": 1,
+  "title": "Brown Eyes",
+  "body_html": "<blockquote>“I will praise thee; for I am fearfully and wonderfully made.” — from Psalm 139</blockquote> <p>On 16 December 1867, a baby girl was born in Millisle, a little village by the sea in the north of Ireland. Her name was Amy Beatrice Carmichael. She was the first of seven children, so she was the big sister in a busy, noisy house.</p> <p>Amy’s father, David, was a miller who ran flour mills, like the men of his family before him. Her mother, Catherine, had a warm and steady faith. The family prayed together every day and kept Sunday as a special day for God. Amy learned that God hears our prayers, and she believed it with all her heart.</p> <p>Amy was a lively, strong-willed girl. She loved the sea, the shore and the boats in the harbour, and she led her younger brothers into adventures. She was not a meek little girl, and she never grew up to be a meek woman!</p> <p>Amy had brown eyes, and she wished they were blue. Many years later she told a story about it. One night she asked God to make her eyes blue. In the morning she ran to the mirror, sure that blue eyes would be looking back at her. They were still brown! Amy was disappointed. But she learned something she never forgot: God had heard her, and he had said no. No is an answer too.</p> <p>People tell the story a little differently, and nobody is quite sure how old she was. But long afterwards, when Amy lived in India and wore Indian clothes, her brown eyes did not stand out. Many people who love her story say that God had a better answer in mind all along.</p> <p>God made you on purpose, just the way you are. When he says no to a prayer, it does not mean he has stopped listening. You can trust him.</p> <p><em>Dear God, thank you for making me just the way I am. Help me to trust you, even when your answer to my prayer is no. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Where was Amy Carmichael born?",
+    "answer": "In Millisle, a little village by the sea in the north of Ireland, on 16 December 1867. She was the eldest of seven children."
+   },
+   {
+    "question": "What did Amy pray for when she was small, and what happened?",
+    "answer": "She asked God to make her brown eyes blue. In the morning they were still brown, and she learned that God had heard her and said no."
+   },
+   {
+    "question": "Have you ever prayed for something and the answer was no?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God made us just as we are, and that when he says no he is still listening and can be trusted."
+   }
+  ],
+  "body_text": "“I will praise thee; for I am fearfully and wonderfully made.” — from Psalm 139 On 16 December 1867, a baby girl was born in Millisle, a little village by the sea in the north of Ireland. Her name was Amy Beatrice Carmichael. She was the first of seven children, so she was the big sister in a busy, noisy house. Amy’s father, David, was a miller who ran flour mills, like the men of his family before him. Her mother, Catherine, had a warm and steady faith. The family prayed together every day and kept Sunday as a special day for God. Amy learned that God hears our prayers, and she believed it with all her heart. Amy was a lively, strong-willed girl. She loved the sea, the shore and the boats in the harbour, and she led her younger brothers into adventures. She was not a meek little girl, and she never grew up to be a meek woman! Amy had brown eyes, and she wished they were blue. Many years later she told a story about it. One night she asked God to make her eyes blue. In the morning she ran to the mirror, sure that blue eyes would be looking back at her. They were still brown! Amy was disappointed. But she learned something she never forgot: God had heard her, and he had said no. No is an answer too. People tell the story a little differently, and nobody is quite sure how old she was. But long afterwards, when Amy lived in India and wore Indian clothes, her brown eyes did not stand out. Many people who love her story say that God had a better answer in mind all along. God made you on purpose, just the way you are. When he says no to a prayer, it does not mean he has stopped listening. You can trust him. Dear God, thank you for making me just the way I am. Help me to trust you, even when your answer to my prayer is no. Amen.",
+  "word_count": 344
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "en"
+  ],
+  "order": 2,
+  "title": "A Comet and a Children’s Meeting",
+  "body_html": "<blockquote>“I have loved you with an everlasting love; with kindness I have drawn you.” — from Jeremiah 31</blockquote> <p>When Amy was about twelve, her parents sent her across the sea to a girls’ boarding school in Harrogate, a town in Yorkshire, in England. It was a long way from the seashore at home. There were bells, rules, and walks in pairs. Amy was clever, but she did not always like the rules!</p> <p>In the autumn of 1882, one of the brightest comets of the century could be seen in the early morning sky. The girls wanted to see it, but they were not allowed to stay up. The story goes that Amy got a group of girls to slip out of bed and watch for it at night. When they were found out, she was very nearly sent home!</p> <p>The most important thing happened in 1883, when Amy was fifteen. A children’s mission came to Harrogate. Its speakers told Bible stories, sang choruses, and talked to children about the love of Jesus as if what children thought really mattered.</p> <p>Amy had known about Jesus all her life, and she had prayed since she was tiny. But at one of those meetings she understood that God’s love was for her, too, and she put her trust in Jesus for herself. She never forgot that God had reached her while she was still a child. Years later, when she cared for hundreds of children, she was sure that children can truly know and love Jesus.</p> <p>Soon afterwards, Amy left school. Her father’s business was in trouble, and the family moved to the big city of Belfast.</p> <p>God loved you before you ever knew it. He does not push or frighten people into loving him. He draws them gently, with kindness. And you do not have to wait until you are grown up to know him.</p> <p><em>Dear God, thank you that you have loved me with an everlasting love. Help me to trust Jesus for myself, right now, while I am young. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did Amy do when the girls were not allowed to stay up to see the comet?",
+    "answer": "The story goes that she got a group of girls to slip out of bed and watch for it at night, and she was very nearly sent home for it."
+   },
+   {
+    "question": "What happened to Amy at the children’s mission when she was fifteen?",
+    "answer": "She understood that God’s love was for her too, and she put her trust in Jesus for herself."
+   },
+   {
+    "question": "Do you think children can know and love Jesus? Why?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God loves us before we know it and draws us gently, and that we do not have to be grown up to trust him."
+   }
+  ],
+  "body_text": "“I have loved you with an everlasting love; with kindness I have drawn you.” — from Jeremiah 31 When Amy was about twelve, her parents sent her across the sea to a girls’ boarding school in Harrogate, a town in Yorkshire, in England. It was a long way from the seashore at home. There were bells, rules, and walks in pairs. Amy was clever, but she did not always like the rules! In the autumn of 1882, one of the brightest comets of the century could be seen in the early morning sky. The girls wanted to see it, but they were not allowed to stay up. The story goes that Amy got a group of girls to slip out of bed and watch for it at night. When they were found out, she was very nearly sent home! The most important thing happened in 1883, when Amy was fifteen. A children’s mission came to Harrogate. Its speakers told Bible stories, sang choruses, and talked to children about the love of Jesus as if what children thought really mattered. Amy had known about Jesus all her life, and she had prayed since she was tiny. But at one of those meetings she understood that God’s love was for her, too, and she put her trust in Jesus for herself. She never forgot that God had reached her while she was still a child. Years later, when she cared for hundreds of children, she was sure that children can truly know and love Jesus. Soon afterwards, Amy left school. Her father’s business was in trouble, and the family moved to the big city of Belfast. God loved you before you ever knew it. He does not push or frighten people into loving him. He draws them gently, with kindness. And you do not have to wait until you are grown up to know him. Dear God, thank you that you have loved me with an everlasting love. Help me to trust Jesus for myself, right now, while I am young. Amen.",
+  "word_count": 340
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "en"
+  ],
+  "order": 3,
+  "title": "The Old Woman’s Bundle",
+  "body_html": "<blockquote>“Each one’s work will be shown for what it is, whether it is gold or silver, or wood or straw.” — from 1 Corinthians 3</blockquote> <p>Belfast was a busy city full of linen mills and shipyards. The Carmichaels lived in a nice part of town, but money was getting tighter. Then, in 1885, Amy’s father died. Amy was seventeen. Now she helped her mother look after the younger children and the house.</p> <p>At about this time Amy began to have attacks of strong pain in her nerves, called neuralgia. Sometimes the pain lasted for days. It would trouble her for the rest of her life.</p> <p>One dull Sunday morning, the family was walking home from church. Amy and two of her brothers saw a poor old woman struggling along the street with a heavy bundle. They turned and helped her. They took her arms and carried her load. All the smart people coming out of church could see them, and Amy felt hot with embarrassment.</p> <p>As they passed a fountain in the street, some words from the Bible came into Amy’s mind so strongly that she turned to see who had spoken. They were Paul’s words about building with “gold, silver, precious stones, wood, hay, stubble.” But nobody was there. The fountain splashed, and they walked on with the old woman.</p> <p>When she got home, Amy went to her room and was alone with God for a long time. She said later that she settled something with God that day. Being admired by people was like hay and stubble, which burns up. But love that bends down to help someone in need is like gold. It lasts.</p> <p>God does not look at how important we seem. He sees the kind things we do when nobody claps. Helping someone who needs it, even when you feel silly, is like building with gold.</p> <p><em>Dear God, help me not to worry about what other people think of me. Help me to be kind to people who need help, and to build my life with gold. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did Amy and her brothers do on the way home from church?",
+    "answer": "They helped a poor old woman who was struggling with a heavy bundle, taking her arms and carrying her load, even though people were watching."
+   },
+   {
+    "question": "What words came into Amy’s mind at the fountain?",
+    "answer": "Paul’s words about building with “gold, silver, precious stones, wood, hay, stubble.” They made her think about what would last."
+   },
+   {
+    "question": "How could you help someone this week, even if it felt a bit embarrassing?",
+    "answer": "Any honest answer is good here. The chapter’s point is that kindness done for God is like gold. It matters to him even when nobody else notices."
+   }
+  ],
+  "body_text": "“Each one’s work will be shown for what it is, whether it is gold or silver, or wood or straw.” — from 1 Corinthians 3 Belfast was a busy city full of linen mills and shipyards. The Carmichaels lived in a nice part of town, but money was getting tighter. Then, in 1885, Amy’s father died. Amy was seventeen. Now she helped her mother look after the younger children and the house. At about this time Amy began to have attacks of strong pain in her nerves, called neuralgia. Sometimes the pain lasted for days. It would trouble her for the rest of her life. One dull Sunday morning, the family was walking home from church. Amy and two of her brothers saw a poor old woman struggling along the street with a heavy bundle. They turned and helped her. They took her arms and carried her load. All the smart people coming out of church could see them, and Amy felt hot with embarrassment. As they passed a fountain in the street, some words from the Bible came into Amy’s mind so strongly that she turned to see who had spoken. They were Paul’s words about building with “gold, silver, precious stones, wood, hay, stubble.” But nobody was there. The fountain splashed, and they walked on with the old woman. When she got home, Amy went to her room and was alone with God for a long time. She said later that she settled something with God that day. Being admired by people was like hay and stubble, which burns up. But love that bends down to help someone in need is like gold. It lasts. God does not look at how important we seem. He sees the kind things we do when nobody claps. Helping someone who needs it, even when you feel silly, is like building with gold. Dear God, help me not to worry about what other people think of me. Help me to be kind to people who need help, and to build my life with gold. Amen.",
+  "word_count": 343
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "en"
+  ],
+  "order": 4,
+  "title": "A Hall Called the Welcome",
+  "body_html": "<blockquote>“Go out quickly into the streets and lanes of the city, and bring in the poor.” — from Luke 14</blockquote> <p>In Belfast, thousands of girls worked in the linen mills. They worked long hours in hot, wet, noisy rooms. They were too poor to buy hats, so they wrapped shawls around their heads instead. People called them “shawlies,” and it was not a kind name.</p> <p>Very few shawlies went to church. The churches were full of people in hats, and a girl in a shawl would have felt out of place. But Amy noticed them. She started a Sunday morning class for them in a hall belonging to her church. Some church members were not pleased! But the girls came, and they kept coming. Amy taught them the Bible, sang with them and prayed with them, and they could tell that she really cared about them.</p> <p>Soon there were too many girls for the room. Amy began to pray for a building of their own. She saw an advertisement for a hall made of iron sheets, big enough for five hundred people. It cost five hundred pounds, which was a huge amount of money. Amy did not ask anyone for it. She asked God.</p> <p>The story goes that a Christian lady named Kate Mitchell heard about the need and gave all of the money. A mill owner gave some land to build on. The hall was put up, and it was called the Welcome. That name said everything. It was a place for girls who did not feel welcome anywhere else.</p> <p>The Welcome Hall still stands in Belfast today, and a church still meets there.</p> <p>Jesus told a story about a great feast, where the poor were brought in to share it. God’s family has room for everyone. You can help someone feel welcome too, perhaps someone who often gets left out.</p> <p><em>Dear Jesus, thank you that there is room for everyone in your family. Help me to notice people who feel left out, and to make them welcome. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Who were the “shawlies”?",
+    "answer": "Girls who worked in the Belfast linen mills. They were too poor to buy hats, so they wrapped shawls around their heads."
+   },
+   {
+    "question": "How did the shawlies get a hall of their own?",
+    "answer": "Amy prayed and did not ask anyone for money. The story goes that a lady named Kate Mitchell gave the five hundred pounds, and a mill owner gave the land. The hall was called the Welcome."
+   },
+   {
+    "question": "Is there someone who often gets left out, whom you could welcome?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God’s family has room for everyone, and we can help people feel welcome."
+   }
+  ],
+  "body_text": "“Go out quickly into the streets and lanes of the city, and bring in the poor.” — from Luke 14 In Belfast, thousands of girls worked in the linen mills. They worked long hours in hot, wet, noisy rooms. They were too poor to buy hats, so they wrapped shawls around their heads instead. People called them “shawlies,” and it was not a kind name. Very few shawlies went to church. The churches were full of people in hats, and a girl in a shawl would have felt out of place. But Amy noticed them. She started a Sunday morning class for them in a hall belonging to her church. Some church members were not pleased! But the girls came, and they kept coming. Amy taught them the Bible, sang with them and prayed with them, and they could tell that she really cared about them. Soon there were too many girls for the room. Amy began to pray for a building of their own. She saw an advertisement for a hall made of iron sheets, big enough for five hundred people. It cost five hundred pounds, which was a huge amount of money. Amy did not ask anyone for it. She asked God. The story goes that a Christian lady named Kate Mitchell heard about the need and gave all of the money. A mill owner gave some land to build on. The hall was put up, and it was called the Welcome. That name said everything. It was a place for girls who did not feel welcome anywhere else. The Welcome Hall still stands in Belfast today, and a church still meets there. Jesus told a story about a great feast, where the poor were brought in to share it. God’s family has room for everyone. You can help someone feel welcome too, perhaps someone who often gets left out. Dear Jesus, thank you that there is room for everyone in your family. Help me to notice people who feel left out, and to make them welcome. Amen.",
+  "word_count": 340
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "en"
+  ],
+  "order": 5,
+  "title": "The Dear Old Man",
+  "body_html": "<blockquote>“God setteth the solitary in families.” — from Psalm 68</blockquote> <p>In 1889 Amy and her mother moved to Manchester, in England, to help in a mission to the mill workers there. Amy chose to live in a poor, dirty part of the city, so that she could be near the people she wanted to help. But the hard work and the bad air made her ill. Within months she was worn out and had to stop.</p> <p>Then a kind old friend stepped in. His name was Robert Wilson. He was a Quaker, and he had helped to start a great yearly Christian gathering called the Keswick Convention. He was a widower, which means his wife had died, and he lived in a country house called Broughton Grange. He invited Amy to come and stay.</p> <p>Amy went in 1890, and she stayed. Robert Wilson treated her like a daughter, and she loved him like a father. She gave him a nickname: “the Dear Old Man.” Her own mother let her go to him, which was a generous gift.</p> <p>Many missionaries came to visit Broughton Grange, and Amy heard their stories. Then, on a winter evening, 13 January 1892, Amy was alone in her room. Jesus’ command, “Go ye into all the world,” came to her as if it were spoken to her alone. She was sure that God was calling her to go far away and tell people about Jesus.</p> <p>The next day she wrote to her mother. Her mother wrote back and gave her daughter to God, freely and gladly. Amy kept that letter all her life. It was much harder for the Dear Old Man. He needed Amy, and some friends said she should stay with him. But in the end he said yes too.</p> <p>God gave Amy a new family when she was tired and ill. God cares about lonely people. You might be part of his answer, by being a friend to someone who is alone.</p> <p><em>Dear God, thank you for my family and my friends. Please look after people who are lonely, and help me to listen when you call me. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Who was “the Dear Old Man”?",
+    "answer": "Robert Wilson, a kind old Quaker who took Amy into his home at Broughton Grange when she was ill, and treated her like a daughter."
+   },
+   {
+    "question": "What happened on 13 January 1892?",
+    "answer": "Jesus’ words “Go ye into all the world” came to Amy as if they were meant for her alone, and she was sure God was calling her to go and tell people about him."
+   },
+   {
+    "question": "Who could you be a friend to, if they are lonely?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God sets lonely people in families, and he can use us to care for them."
+   }
+  ],
+  "body_text": "“God setteth the solitary in families.” — from Psalm 68 In 1889 Amy and her mother moved to Manchester, in England, to help in a mission to the mill workers there. Amy chose to live in a poor, dirty part of the city, so that she could be near the people she wanted to help. But the hard work and the bad air made her ill. Within months she was worn out and had to stop. Then a kind old friend stepped in. His name was Robert Wilson. He was a Quaker, and he had helped to start a great yearly Christian gathering called the Keswick Convention. He was a widower, which means his wife had died, and he lived in a country house called Broughton Grange. He invited Amy to come and stay. Amy went in 1890, and she stayed. Robert Wilson treated her like a daughter, and she loved him like a father. She gave him a nickname: “the Dear Old Man.” Her own mother let her go to him, which was a generous gift. Many missionaries came to visit Broughton Grange, and Amy heard their stories. Then, on a winter evening, 13 January 1892, Amy was alone in her room. Jesus’ command, “Go ye into all the world,” came to her as if it were spoken to her alone. She was sure that God was calling her to go far away and tell people about Jesus. The next day she wrote to her mother. Her mother wrote back and gave her daughter to God, freely and gladly. Amy kept that letter all her life. It was much harder for the Dear Old Man. He needed Amy, and some friends said she should stay with him. But in the end he said yes too. God gave Amy a new family when she was tired and ill. God cares about lonely people. You might be part of his answer, by being a friend to someone who is alone. Dear God, thank you for my family and my friends. Please look after people who are lonely, and help me to listen when you call me. Amen.",
+  "word_count": 356
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "en"
+  ],
+  "order": 6,
+  "title": "Fur Gloves and a Winding Road",
+  "body_html": "<blockquote>“Trust in the Lord with all your heart, and he will direct your paths.” — from Proverbs 3</blockquote> <p>Amy wanted to go to China first. But the doctors of the China Inland Mission said she was not healthy enough. The door was shut. Amy was very disappointed, but she did not believe God had changed his mind. Then the Keswick Convention decided to send her as its very first missionary. In March 1893 she sailed for Japan. She was twenty-five.</p> <p>In Japan she joined a missionary called Barclay Buxton and a team of Japanese and English Christians in the town of Matsue. Amy could not speak Japanese, so a young Japanese Christian woman, whom Amy called Misaki San, helped by putting her words into Japanese.</p> <p>Amy told later about a visit to an old woman who was ill. Amy was wearing her English clothes, with fur-lined gloves against the cold. As she talked about Jesus, she saw the old woman looking at her gloves instead of listening. Amy went home and decided that from then on she would wear Japanese clothes. She did not think clothes could save anyone. But she knew they could get in the way.</p> <p>After about fifteen months Amy became very ill, and she left Japan. She went to Ceylon, which is now called Sri Lanka. Then news came that the Dear Old Man had had a stroke, so she hurried home to England to look after him. To some people it looked as if Amy’s missionary days were over.</p> <p>But in 1895 a mission for women, the Church of England Zenana Missionary Society, agreed to send her to India. In October 1895 she sailed again. She did not know it yet, but she would never see her home country again.</p> <p>Amy’s path went this way and that, and it did not always make sense. But God was leading her one step at a time. You do not need to see the whole road. You can trust God for the next step.</p> <p><em>Dear God, when I do not understand what is happening, help me to trust you with all my heart. Please show me the next step. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Why did Amy start wearing Japanese clothes?",
+    "answer": "On a visit to an old woman, she saw that the woman was looking at her fur gloves instead of listening, and she decided her foreign clothes should not get in the way."
+   },
+   {
+    "question": "Why did Amy leave Ceylon and go back to England?",
+    "answer": "News came that Robert Wilson, the Dear Old Man, had had a stroke, so she hurried home to look after him."
+   },
+   {
+    "question": "Is there something you are waiting to understand? How could you trust God with it?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God leads us one step at a time, even when the road winds and we cannot see where it goes."
+   }
+  ],
+  "body_text": "“Trust in the Lord with all your heart, and he will direct your paths.” — from Proverbs 3 Amy wanted to go to China first. But the doctors of the China Inland Mission said she was not healthy enough. The door was shut. Amy was very disappointed, but she did not believe God had changed his mind. Then the Keswick Convention decided to send her as its very first missionary. In March 1893 she sailed for Japan. She was twenty-five. In Japan she joined a missionary called Barclay Buxton and a team of Japanese and English Christians in the town of Matsue. Amy could not speak Japanese, so a young Japanese Christian woman, whom Amy called Misaki San, helped by putting her words into Japanese. Amy told later about a visit to an old woman who was ill. Amy was wearing her English clothes, with fur-lined gloves against the cold. As she talked about Jesus, she saw the old woman looking at her gloves instead of listening. Amy went home and decided that from then on she would wear Japanese clothes. She did not think clothes could save anyone. But she knew they could get in the way. After about fifteen months Amy became very ill, and she left Japan. She went to Ceylon, which is now called Sri Lanka. Then news came that the Dear Old Man had had a stroke, so she hurried home to England to look after him. To some people it looked as if Amy’s missionary days were over. But in 1895 a mission for women, the Church of England Zenana Missionary Society, agreed to send her to India. In October 1895 she sailed again. She did not know it yet, but she would never see her home country again. Amy’s path went this way and that, and it did not always make sense. But God was leading her one step at a time. You do not need to see the whole road. You can trust God for the next step. Dear God, when I do not understand what is happening, help me to trust you with all my heart. Please show me the next step. Amen.",
+  "word_count": 362
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "en"
+  ],
+  "order": 7,
+  "title": "The Starry Cluster",
+  "body_html": "<blockquote>“Those who turn many to righteousness will shine like the stars for ever and ever.” — from Daniel 12</blockquote> <p>In India, Amy first went to Bangalore, a city with a cooler climate, to learn the Tamil language. Tamil is a beautiful old language, and hard to learn, but in time Amy spoke it well. A missionary named Thomas Walker helped her. He was a fine Tamil scholar, and he became her teacher and friend. In 1896 Amy went to live and work with Mr. and Mrs. Walker in the Tinnevelly district, in the far south of India.</p> <p>There Amy travelled from village to village with a small band of Indian Christian women. They visited homes, sang, and told people about Jesus. The band became known by a Tamil name that means “the Starry Cluster.” Its leading member was Ponnammal, a young widow who became Amy’s closest Indian friend.</p> <p>They rode in a bandy, a bullock cart with a mat roof and no springs, over bumpy roads. Once the floods were out and the cart rolled into a pool. “Crash and tumble went the bandy,” Amy wrote. The water floated their books out! They fished them out and went on, “somewhat damp, but happy.”</p> <p>The work was often slow. For a Hindu family, a son or daughter becoming a Christian could mean losing them, so it was a very big step, and only a few took it. One of them was a girl named Arulai, who came to live with Amy and grew up to be one of her most trusted helpers.</p> <p>Amy held on to a Bible verse that says God’s servants must be found faithful. “Praise God,” she wrote, “it does not say ‘successful.’” In her book Things as They Are she told the truth about the work, not just the happy parts.</p> <p>God does not ask you to be famous or successful. He asks you to be faithful, to keep doing what he gives you to do, day after day. Faithful people shine like stars, even when nobody seems to notice.</p> <p><em>Dear God, help me to be faithful in the little things you give me to do, every day, even when nobody notices. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Who travelled with Amy from village to village?",
+    "answer": "A small band of Indian Christian women, known by a Tamil name meaning “the Starry Cluster.” Its leading member was Ponnammal."
+   },
+   {
+    "question": "What happened when the bandy rolled into a pool?",
+    "answer": "The water floated their books out! They fished them out and went on, “somewhat damp, but happy.”"
+   },
+   {
+    "question": "What is one little thing you could do faithfully every day?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God asks us to be faithful, not famous, and faithful people shine like stars."
+   }
+  ],
+  "body_text": "“Those who turn many to righteousness will shine like the stars for ever and ever.” — from Daniel 12 In India, Amy first went to Bangalore, a city with a cooler climate, to learn the Tamil language. Tamil is a beautiful old language, and hard to learn, but in time Amy spoke it well. A missionary named Thomas Walker helped her. He was a fine Tamil scholar, and he became her teacher and friend. In 1896 Amy went to live and work with Mr. and Mrs. Walker in the Tinnevelly district, in the far south of India. There Amy travelled from village to village with a small band of Indian Christian women. They visited homes, sang, and told people about Jesus. The band became known by a Tamil name that means “the Starry Cluster.” Its leading member was Ponnammal, a young widow who became Amy’s closest Indian friend. They rode in a bandy, a bullock cart with a mat roof and no springs, over bumpy roads. Once the floods were out and the cart rolled into a pool. “Crash and tumble went the bandy,” Amy wrote. The water floated their books out! They fished them out and went on, “somewhat damp, but happy.” The work was often slow. For a Hindu family, a son or daughter becoming a Christian could mean losing them, so it was a very big step, and only a few took it. One of them was a girl named Arulai, who came to live with Amy and grew up to be one of her most trusted helpers. Amy held on to a Bible verse that says God’s servants must be found faithful. “Praise God,” she wrote, “it does not say ‘successful.’” In her book Things as They Are she told the truth about the work, not just the happy parts. God does not ask you to be famous or successful. He asks you to be faithful, to keep doing what he gives you to do, day after day. Faithful people shine like stars, even when nobody seems to notice. Dear God, help me to be faithful in the little things you give me to do, every day, even when nobody notices. Amen.",
+  "word_count": 366
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "en"
+  ],
+  "order": 8,
+  "title": "“I Have Come to Stay”",
+  "body_html": "<blockquote>“Your Father in heaven does not want even one of these little ones to be lost.” — from Matthew 18</blockquote> <p>In those days, some little girls in South India were given away to live at temples, where they were not safe or cared for. Amy longed to help them, but she did not see how she could.</p> <p>One evening in early March 1901, a little girl about seven years old was found alone outside the church in the village of Pannaivilai, where Amy lived. It was getting dark. A kind Christian woman took her home for the night. In the morning the girl said she wanted to see a certain foreign lady, so the woman brought her to Amy.</p> <p>Amy was sitting on the verandah. The little girl ran straight to her and climbed onto her knee without any fear at all. Her name was Preena. “I have come to stay,” she said.</p> <p>Preena had been given away as a baby to live with women at a temple. Nobody there loved her, and she was not safe. Once she had run away and walked for three days to find her mother. Her mother cried, but she did not keep her. Then the temple women tried to frighten Preena by pointing at one of Amy’s friends and calling her “the child-stealing Ammal,” which means the lady who steals children. So Preena decided to go and find that lady! She walked to Pannaivilai all by herself.</p> <p>Soon the temple women came to take her back. Preena was frightened, but she stood up in front of them all and cried, “I won’t! I won’t!” Amy and the Walkers decided to keep her safe, even though it was risky. One woman said Preena had taken some money, just fourpence halfpenny, and the missionaries paid it. Later, when Amy taught her how Jesus paid for us, Preena said, “I know how much you paid for me—fourpence halfpenny!”</p> <p>Jesus said that every child matters to God, every single one. God saw Preena when she was all alone, and he sees you too.</p> <p><em>Dear God, thank you that every child matters to you, and that includes me. Please keep children everywhere safe, and help them find people who will love them. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did Preena say when she climbed onto Amy’s knee?",
+    "answer": "“I have come to stay.”"
+   },
+   {
+    "question": "Why did Preena go looking for Amy?",
+    "answer": "The temple women tried to scare her by calling one of Amy’s friends “the child-stealing Ammal,” but Preena decided to go and find the lady who took children in, and walked to Pannaivilai alone."
+   },
+   {
+    "question": "How does it feel to know that you matter to God?",
+    "answer": "Any honest answer is good here. The chapter’s point is that every single child matters to God, and he sees each one, even when they are alone."
+   }
+  ],
+  "body_text": "“Your Father in heaven does not want even one of these little ones to be lost.” — from Matthew 18 In those days, some little girls in South India were given away to live at temples, where they were not safe or cared for. Amy longed to help them, but she did not see how she could. One evening in early March 1901, a little girl about seven years old was found alone outside the church in the village of Pannaivilai, where Amy lived. It was getting dark. A kind Christian woman took her home for the night. In the morning the girl said she wanted to see a certain foreign lady, so the woman brought her to Amy. Amy was sitting on the verandah. The little girl ran straight to her and climbed onto her knee without any fear at all. Her name was Preena. “I have come to stay,” she said. Preena had been given away as a baby to live with women at a temple. Nobody there loved her, and she was not safe. Once she had run away and walked for three days to find her mother. Her mother cried, but she did not keep her. Then the temple women tried to frighten Preena by pointing at one of Amy’s friends and calling her “the child-stealing Ammal,” which means the lady who steals children. So Preena decided to go and find that lady! She walked to Pannaivilai all by herself. Soon the temple women came to take her back. Preena was frightened, but she stood up in front of them all and cried, “I won’t! I won’t!” Amy and the Walkers decided to keep her safe, even though it was risky. One woman said Preena had taken some money, just fourpence halfpenny, and the missionaries paid it. Later, when Amy taught her how Jesus paid for us, Preena said, “I know how much you paid for me—fourpence halfpenny!” Jesus said that every child matters to God, every single one. God saw Preena when she was all alone, and he sees you too. Dear God, thank you that every child matters to you, and that includes me. Please keep children everywhere safe, and help them find people who will love them. Amen.",
+  "word_count": 375
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "en"
+  ],
+  "order": 9,
+  "title": "Amma",
+  "body_html": "<blockquote>“He shall gather the lambs with his arm, and carry them in his bosom.” — from Isaiah 40</blockquote> <p>Later in 1901, Amy, the Walkers, the women of the band and little Preena moved to Dohnavur, a village at the foot of blue mountains. Long before, Dohnavur had been started as a safe place for Christians who had been driven from their homes. Now it became a safe place for children.</p> <p>More girls came, and from about 1904 babies came too. Some were brought by mothers who could not keep them. Some were in danger of being given away to temples. Amy could no longer travel with the band, so she stayed home to care for the children. Some people said she had stopped being a missionary and become a nursemaid! But Amy believed that caring for a child for Jesus’ sake was as holy as preaching.</p> <p>The children called her Amma, which means “mother” in Tamil. Amy wanted Dohnavur to be a family, not an orphanage. Everyone wore Indian clothes, ate Indian food and spoke Tamil, and each child was given a Tamil name chosen with care. Indian Christian women called accals, which means “elder sisters,” looked after the children with love. And in this family nobody was counted higher or lower than anyone else. Everyone was a sister.</p> <p>Preena, whom Amy nicknamed the Elf, was full of fun. She did not like polishing the brass water-pots, until she found that singing helped. She sang very loud, because, she said, “Satan doesn’t like hymns.” At bedtime she counted her sins on one hand and her blessings on the other.</p> <p>Dohnavur never asked anyone for money. Amy told God what they needed, and gifts came. By 1913 there were about a hundred and thirty children in the family.</p> <p>Jesus is like a shepherd who carries his lambs close to his heart. You are never too small for him to love, and he wants you to belong to his family.</p> <p><em>Dear Jesus, thank you for carrying me close to your heart. Thank you for the people who look after me, and help me to love my family well. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What does “Amma” mean, and who called Amy by that name?",
+    "answer": "It means “mother” in Tamil. The children of Dohnavur called her Amma."
+   },
+   {
+    "question": "Why did the Elf sing so loudly while she polished the brass pots?",
+    "answer": "Because, she said, “Satan doesn’t like hymns.” Singing helped her do a job she did not enjoy."
+   },
+   {
+    "question": "Who are the people who look after you, and how can you thank them?",
+    "answer": "Any honest answer is good here. The chapter’s point is that Jesus carries us like a shepherd carries his lambs, and he gives us people to love and care for us."
+   }
+  ],
+  "body_text": "“He shall gather the lambs with his arm, and carry them in his bosom.” — from Isaiah 40 Later in 1901, Amy, the Walkers, the women of the band and little Preena moved to Dohnavur, a village at the foot of blue mountains. Long before, Dohnavur had been started as a safe place for Christians who had been driven from their homes. Now it became a safe place for children. More girls came, and from about 1904 babies came too. Some were brought by mothers who could not keep them. Some were in danger of being given away to temples. Amy could no longer travel with the band, so she stayed home to care for the children. Some people said she had stopped being a missionary and become a nursemaid! But Amy believed that caring for a child for Jesus’ sake was as holy as preaching. The children called her Amma, which means “mother” in Tamil. Amy wanted Dohnavur to be a family, not an orphanage. Everyone wore Indian clothes, ate Indian food and spoke Tamil, and each child was given a Tamil name chosen with care. Indian Christian women called accals, which means “elder sisters,” looked after the children with love. And in this family nobody was counted higher or lower than anyone else. Everyone was a sister. Preena, whom Amy nicknamed the Elf, was full of fun. She did not like polishing the brass water-pots, until she found that singing helped. She sang very loud, because, she said, “Satan doesn’t like hymns.” At bedtime she counted her sins on one hand and her blessings on the other. Dohnavur never asked anyone for money. Amy told God what they needed, and gifts came. By 1913 there were about a hundred and thirty children in the family. Jesus is like a shepherd who carries his lambs close to his heart. You are never too small for him to love, and he wants you to belong to his family. Dear Jesus, thank you for carrying me close to your heart. Thank you for the people who look after me, and help me to love my family well. Amen.",
+  "word_count": 357
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "en"
+  ],
+  "order": 10,
+  "title": "Sad Years and a Baby Boy",
+  "body_html": "<blockquote>“You do not understand now what I am doing, but you will understand later.” — from John 13</blockquote> <p>Then came sad years. In 1905 the Dear Old Man died in England. In August 1912 Thomas Walker died while he was away on a journey, and Amy lost her teacher and wise friend. In July 1913 her own mother died in England. Amy had not seen her since she sailed for India.</p> <p>Then Amy’s dear friend Ponnammal became very ill. She was in pain for a long time, and Amy prayed for her to get better. But Ponnammal died in 1915, and Amy took Ponnammal’s daughter into her own care. Amy did not understand why God let these things happen, but she chose to trust him anyway. And all through those years, even while a great war was going on far away, the family at Dohnavur said they never went without what they needed.</p> <p>All this time Amy carried another worry. She had learned that some boys were not safe either. About 1912 she began to pray: should Dohnavur take in boys too? It would need men to look after them, new buildings, and much more money. For six years she prayed, and nothing seemed to happen.</p> <p>Then, in January 1918, a baby boy was brought to Dohnavur. Amy believed he was God’s answer. More boys came, and in time they had their own part of Dohnavur, with their own school. Men came to care for them, among them Godfrey Webb-Peploe. Amy wanted the boys to grow up strong and brave, to work hard, and to love the outdoors.</p> <p>Later, Dohnavur built a hospital. Amy gave it a Tamil name that means the Place of Heavenly Healing. It cared for people from all the villages around, Hindu and Christian alike.</p> <p>Sometimes we have to wait a long time, and sometimes we do not understand why sad things happen. Jesus said we will understand later. Until then, we can trust him.</p> <p><em>Dear God, when I am sad, or when I have to wait, help me to trust you even when I do not understand. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Which people did Amy lose in the sad years?",
+    "answer": "Robert Wilson, the Dear Old Man, in 1905; Thomas Walker in 1912; her mother in 1913; and her dear friend Ponnammal in 1915."
+   },
+   {
+    "question": "How long did Amy pray before the first boy came to Dohnavur?",
+    "answer": "About six years. She began to pray about 1912, and a baby boy was brought in January 1918."
+   },
+   {
+    "question": "What is something you are waiting for, and how could you trust God while you wait?",
+    "answer": "Any honest answer is good here. The chapter’s point is that even when we do not understand, and even when we have to wait, God is still at work and we can trust him."
+   }
+  ],
+  "body_text": "“You do not understand now what I am doing, but you will understand later.” — from John 13 Then came sad years. In 1905 the Dear Old Man died in England. In August 1912 Thomas Walker died while he was away on a journey, and Amy lost her teacher and wise friend. In July 1913 her own mother died in England. Amy had not seen her since she sailed for India. Then Amy’s dear friend Ponnammal became very ill. She was in pain for a long time, and Amy prayed for her to get better. But Ponnammal died in 1915, and Amy took Ponnammal’s daughter into her own care. Amy did not understand why God let these things happen, but she chose to trust him anyway. And all through those years, even while a great war was going on far away, the family at Dohnavur said they never went without what they needed. All this time Amy carried another worry. She had learned that some boys were not safe either. About 1912 she began to pray: should Dohnavur take in boys too? It would need men to look after them, new buildings, and much more money. For six years she prayed, and nothing seemed to happen. Then, in January 1918, a baby boy was brought to Dohnavur. Amy believed he was God’s answer. More boys came, and in time they had their own part of Dohnavur, with their own school. Men came to care for them, among them Godfrey Webb-Peploe. Amy wanted the boys to grow up strong and brave, to work hard, and to love the outdoors. Later, Dohnavur built a hospital. Amy gave it a Tamil name that means the Place of Heavenly Healing. It cared for people from all the villages around, Hindu and Christian alike. Sometimes we have to wait a long time, and sometimes we do not understand why sad things happen. Jesus said we will understand later. Until then, we can trust him. Dear God, when I am sad, or when I have to wait, help me to trust you even when I do not understand. Amen.",
+  "word_count": 353
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "en"
+  ],
+  "order": 11,
+  "title": "A Room with a Window",
+  "body_html": "<blockquote>“My grace is enough for you, for my power is made perfect in weakness.” — from 2 Corinthians 12</blockquote> <p>By 1931 Amy was sixty-three. The family at Dohnavur had grown to several hundred people, with nurseries, schools, a boys’ compound and a hospital. Amy was still busy every day, walking about, visiting the children, teaching and praying.</p> <p>On 24 October 1931, as it was getting dark, Amy went to look at a building that was being got ready for the work. Workmen had dug a pit in the floor and left it uncovered. In the dim light Amy did not see it, and she fell in. She broke her leg, hurt her ankle and injured her back.</p> <p>Everyone thought she would be better in a few weeks. But she never walked properly again. For almost twenty years she lived mostly in one room, often in pain. People at Dohnavur and all over the world prayed for her to be healed, but she was not healed. Like the little girl at the mirror long ago, Amy learned again that no is an answer too.</p> <p>But the room was not a gloomy place. It had a window onto a garden, and outside it was a bird-bath, where Amy watched the birds come to drink and splash. The children came to visit her. Almost every day she wrote little notes to the people of Dohnavur, with a Bible verse or a kind word. And she wrote books: Gold Cord, the story of Dohnavur; Rose from Brier, for people who were ill or in pain; and a little book called If, about loving others the way Jesus loves us. People all over the world read them, and they still do.</p> <p>In 1939 Arulai died after a long illness, and Amy was very sad. But she went on praying and writing.</p> <p>Sometimes we feel weak or stuck. But God can do wonderful things through people who feel weak. He can use you too, just as you are.</p> <p><em>Dear God, when I feel weak or ill or stuck, help me to remember that your grace is enough for me. Please use me just as I am. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What happened to Amy on 24 October 1931?",
+    "answer": "She fell into an uncovered pit in a building in the dim evening light. She broke her leg, hurt her ankle and injured her back, and she never walked properly again."
+   },
+   {
+    "question": "What did Amy do in her room for almost twenty years?",
+    "answer": "She watched the birds at the bird-bath, saw the children, wrote little notes to the people of Dohnavur, and wrote books like Gold Cord, Rose from Brier and If."
+   },
+   {
+    "question": "When have you felt weak? How might God help you then?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God’s grace is enough for us, and he can do good things through us even when we feel weak."
+   }
+  ],
+  "body_text": "“My grace is enough for you, for my power is made perfect in weakness.” — from 2 Corinthians 12 By 1931 Amy was sixty-three. The family at Dohnavur had grown to several hundred people, with nurseries, schools, a boys’ compound and a hospital. Amy was still busy every day, walking about, visiting the children, teaching and praying. On 24 October 1931, as it was getting dark, Amy went to look at a building that was being got ready for the work. Workmen had dug a pit in the floor and left it uncovered. In the dim light Amy did not see it, and she fell in. She broke her leg, hurt her ankle and injured her back. Everyone thought she would be better in a few weeks. But she never walked properly again. For almost twenty years she lived mostly in one room, often in pain. People at Dohnavur and all over the world prayed for her to be healed, but she was not healed. Like the little girl at the mirror long ago, Amy learned again that no is an answer too. But the room was not a gloomy place. It had a window onto a garden, and outside it was a bird-bath, where Amy watched the birds come to drink and splash. The children came to visit her. Almost every day she wrote little notes to the people of Dohnavur, with a Bible verse or a kind word. And she wrote books: Gold Cord, the story of Dohnavur; Rose from Brier, for people who were ill or in pain; and a little book called If, about loving others the way Jesus loves us. People all over the world read them, and they still do. In 1939 Arulai died after a long illness, and Amy was very sad. But she went on praying and writing. Sometimes we feel weak or stuck. But God can do wonderful things through people who feel weak. He can use you too, just as you are. Dear God, when I feel weak or ill or stuck, help me to remember that your grace is enough for me. Please use me just as I am. Amen.",
+  "word_count": 361
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "en"
+  ],
+  "order": 12,
+  "title": "One Word on a Bird-Bath",
+  "body_html": "<blockquote>“Unless a grain of wheat falls into the ground and dies, it stays alone; but if it dies, it bears much fruit.” — from John 12</blockquote> <p>In 1947 India became an independent country. That same year, a new law in South India said that no more little girls could be given away to temples. Brave Indian leaders, like a doctor named Muthulakshmi Reddy, had worked for many years to make that law. Amy had spent nearly fifty years caring for children one by one, and she lived to see it.</p> <p>Amy grew very old and weak. On 18 January 1951 she died at Dohnavur. She was eighty-three. She had lived in India for fifty-five years, and she had never once gone home. The people who cared for her at the end were her own big family, Indian and British, many of whom had grown up at Dohnavur.</p> <p>Amy did not want a grand stone with her name and a list of the things she had done. She was buried in Dohnavur’s own burial ground, which was called God’s Garden, near children and friends who had gone before her. Over her grave her family put a bird-bath, like the one she had watched from her window. On it they wrote just one word: Amma.</p> <p>Dohnavur did not end when Amy died. Its work goes on today, led by Indian Christians, caring for children and families at the foot of the mountains, and the hospital still helps the villages around. Far away in Belfast, a church still meets in the Welcome Hall that Amy prayed for.</p> <p>Amy’s great work began with one child, Preena, who walked through the dark to find her. Amy believed that one child mattered to God. Then another came, and another, and another.</p> <p>Jesus said that a seed must be planted in the ground before it can grow. Amy gave up many things she loved, and God made her life grow into something beautiful. When you give your life to Jesus, he can make it fruitful too.</p> <p><em>Dear God, thank you for Amy Carmichael and all the children she loved. Thank you that every child matters to you. Help me to give my life to you, and to love others the way Amy did. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What one word is written on the bird-bath over Amy’s grave?",
+    "answer": "“Amma,” which means “mother.” It was the name the children of Dohnavur gave her."
+   },
+   {
+    "question": "Who worked for many years to make the law that stopped girls being given to temples?",
+    "answer": "Brave Indian leaders, like a doctor named Muthulakshmi Reddy. The law was made in 1947, and Amy lived to see it."
+   },
+   {
+    "question": "What is one thing you could give to Jesus, like Amy did?",
+    "answer": "Any honest answer is good here. The chapter’s point is that when we give our lives to Jesus, like a seed planted in the ground, he makes them grow and bear fruit."
+   }
+  ],
+  "body_text": "“Unless a grain of wheat falls into the ground and dies, it stays alone; but if it dies, it bears much fruit.” — from John 12 In 1947 India became an independent country. That same year, a new law in South India said that no more little girls could be given away to temples. Brave Indian leaders, like a doctor named Muthulakshmi Reddy, had worked for many years to make that law. Amy had spent nearly fifty years caring for children one by one, and she lived to see it. Amy grew very old and weak. On 18 January 1951 she died at Dohnavur. She was eighty-three. She had lived in India for fifty-five years, and she had never once gone home. The people who cared for her at the end were her own big family, Indian and British, many of whom had grown up at Dohnavur. Amy did not want a grand stone with her name and a list of the things she had done. She was buried in Dohnavur’s own burial ground, which was called God’s Garden, near children and friends who had gone before her. Over her grave her family put a bird-bath, like the one she had watched from her window. On it they wrote just one word: Amma. Dohnavur did not end when Amy died. Its work goes on today, led by Indian Christians, caring for children and families at the foot of the mountains, and the hospital still helps the villages around. Far away in Belfast, a church still meets in the Welcome Hall that Amy prayed for. Amy’s great work began with one child, Preena, who walked through the dark to find her. Amy believed that one child mattered to God. Then another came, and another, and another. Jesus said that a seed must be planted in the ground before it can grow. Amy gave up many things she loved, and God made her life grow into something beautiful. When you give your life to Jesus, he can make it fruitful too. Dear God, thank you for Amy Carmichael and all the children she loved. Thank you that every child matters to you. Help me to give my life to you, and to love others the way Amy did. Amen.",
+  "word_count": 377
+ }
+}
+]
