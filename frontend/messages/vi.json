@@ -1525,5 +1525,18 @@
   "reader_questions_hint_teens": "Hãy suy nghĩ trước — rồi chạm vào một câu hỏi để xem một cách trả lời.",
   "reader_listen_story": "Nghe câu chuyện này",
   "reader_young_layout": "Bố cục cho thiếu nhi",
-  "reader_young_layout_hint": "Chữ to, rõ cho cuốn sách thiếu nhi này. Những thay đổi riêng của bạn bên dưới vẫn được ưu tiên."
+  "reader_young_layout_hint": "Chữ to, rõ cho cuốn sách thiếu nhi này. Những thay đổi riêng của bạn bên dưới vẫn được ưu tiên.",
+  "together_button": "Cùng đọc",
+  "together_title": "Cùng đọc kế hoạch này",
+  "together_intro": "Chọn ngày bắt đầu và chia sẻ liên kết. Ai mở liên kết cũng thấy cùng một ngày của kế hoạch, và không có gì về họ được lưu lại.",
+  "together_message": "Hãy cùng đọc %t%, mỗi ngày một bài ngắn, bắt đầu từ %d%. Mở liên kết này để tham gia:",
+  "together_eyebrow": "Đang cùng đọc",
+  "together_starts": "Bắt đầu %d%",
+  "together_today": "Hôm nay nhóm đang ở Ngày %n%",
+  "together_next": "Bài đọc tiếp theo %d%: Ngày %n%",
+  "together_finished": "Nhóm này đã hoàn thành vào %d%",
+  "together_join": "Tham gia nhóm",
+  "together_join_hint": "Lịch và lời nhắc của kế hoạch sẽ theo ngày của nhóm.",
+  "together_joined": "Bạn đang đọc cùng nhóm này",
+  "together_leave": "Rời nhóm"
 }

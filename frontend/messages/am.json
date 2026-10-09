@@ -1525,5 +1525,18 @@
   "reader_questions_hint_teens": "መጀመሪያ አስብበት — ከዚያም አንድ የመመለሻ መንገድ ለማየት ጥያቄውን ንካ።",
   "reader_listen_story": "ይህን ታሪክ አዳምጡ",
   "reader_young_layout": "የልጆች ንባብ አቀማመጥ",
-  "reader_young_layout_hint": "ለዚህ የልጆች መጽሐፍ ትልቅና ግልጽ ጽሑፍ። ከታች የምታደርጋቸው የራስህ ለውጦች አሁንም ይቀድማሉ።"
+  "reader_young_layout_hint": "ለዚህ የልጆች መጽሐፍ ትልቅና ግልጽ ጽሑፍ። ከታች የምታደርጋቸው የራስህ ለውጦች አሁንም ይቀድማሉ።",
+  "together_button": "አብረው ያንብቡ",
+  "together_title": "ይህን ዕቅድ አብረው ያንብቡ",
+  "together_intro": "የሚጀምሩበትን ቀን ይምረጡ እና ሊንኩን ያጋሩ። የሚከፍተው ሁሉ ተመሳሳይ የዕቅዱን ቀን ያያል፤ ስለ እነርሱ ምንም አይቀመጥም።",
+  "together_message": "%t%ን አብረን እናንብብ፣ በየቀኑ አንድ አጭር ንባብ፣ ከ%d% ጀምሮ። ለመቀላቀል ይህን ሊንክ ይክፈቱ፦",
+  "together_eyebrow": "አብረን እያነበብን ነው",
+  "together_starts": "%d% ይጀምራል",
+  "together_today": "ቡድኑ ዛሬ በቀን %n% ላይ ነው",
+  "together_next": "ቀጣዩ ንባብ %d%፦ ቀን %n%",
+  "together_finished": "ይህ ቡድን %d% ላይ ጨርሷል",
+  "together_join": "ቡድኑን ይቀላቀሉ",
+  "together_join_hint": "የዕቅድዎ የቀን መቁጠሪያ እና ማሳሰቢያዎች የቡድኑን ቀኖች ይከተላሉ።",
+  "together_joined": "ከዚህ ቡድን ጋር እያነበቡ ነው",
+  "together_leave": "ይውጡ"
 }

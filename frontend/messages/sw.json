@@ -1525,5 +1525,18 @@
   "reader_questions_hint_teens": "Fikiri kwanza — kisha gusa swali kuona njia moja ya kulijibu.",
   "reader_listen_story": "Sikiliza hadithi hii",
   "reader_young_layout": "Mpangilio wa wasomaji wachanga",
-  "reader_young_layout_hint": "Maandishi makubwa na wazi kwa kitabu hiki cha watoto. Mabadiliko yako mwenyewe hapa chini bado yanatumika."
+  "reader_young_layout_hint": "Maandishi makubwa na wazi kwa kitabu hiki cha watoto. Mabadiliko yako mwenyewe hapa chini bado yanatumika.",
+  "together_button": "Someni pamoja",
+  "together_title": "Someni mpango huu pamoja",
+  "together_intro": "Chagua tarehe ya kuanza na ushiriki kiungo. Kila anayekifungua ataona siku ileile ya mpango, na hakuna kinachohifadhiwa kuwahusu.",
+  "together_message": "Tusome %t% pamoja, somo fupi moja kila siku, kuanzia %d%. Fungua kiungo hiki ili ujiunge:",
+  "together_eyebrow": "Mnasoma pamoja",
+  "together_starts": "Inaanza %d%",
+  "together_today": "Leo kikundi kiko Siku %n%",
+  "together_next": "Somo linalofuata %d%: Siku %n%",
+  "together_finished": "Kikundi hiki kilimaliza %d%",
+  "together_join": "Jiunge na kikundi",
+  "together_join_hint": "Kalenda na vikumbusho vya mpango wako vitafuata tarehe za kikundi.",
+  "together_joined": "Unasoma pamoja na kikundi hiki",
+  "together_leave": "Ondoka"
 }

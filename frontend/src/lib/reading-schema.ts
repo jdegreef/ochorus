@@ -20,6 +20,10 @@ export const PLANS_KEY = 'ochorus:plans';
 // calendar view: cached here and synced to the account (planSchedules). Not
 // progress; wiped with it.
 export const PLAN_SCHEDULE_KEY = 'ochorus:plan-schedule';
+// The "read together" groups this device joined, by plan (planTogether.svelte.ts).
+// Device-only — the group lives in its link, never on the server — but it is
+// who-reads-with-whom, so it goes with the reading data on sign-out.
+export const PLAN_TOGETHER_KEY = 'ochorus:plan-together';
 // The Notebook's own writing — notes and prayers (see journal.ts).
 export const JOURNAL_KEY = 'ochorus:journal';
 // Journal entries not yet confirmed by the account: id → the updatedAt last
@@ -84,6 +88,7 @@ export const READING_DATA_KEYS = [
 	BOOKMARKS_KEY,
 	PLANS_KEY,
 	PLAN_SCHEDULE_KEY,
+	PLAN_TOGETHER_KEY,
 	JOURNAL_KEY,
 	JOURNAL_DIRTY_KEY,
 	DAILY_DRAFT_KEY,
