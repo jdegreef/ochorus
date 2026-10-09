@@ -129,5 +129,12 @@
     "note": [
       "Queue job #2821: written in the same PR as growing-in-wisdom.es, which completes this LAUNCH plan's book in Spanish, so seed_plans would otherwise create the es row with English prose. The title opens with the book's shipped es title «Crecer en sabiduría»; uses «tú», as the book does. AI-drafted; awaiting native review."
     ]
+  },
+  "the-pilgrims-way": {
+    "title": "El camino del peregrino",
+    "description": "El camino a casa, en tres clásicos. Charles Spurgeon sale al encuentro del que busca junto a la puerta estrecha, la alegoría inmortal de John Bunyan acompaña al peregrino todo el camino hasta la Ciudad Celestial, y el propio testimonio de Bunyan muestra la gracia que abundó para el primero de los pecadores.",
+    "note": [
+      "Queue job #4819: grace-abounding ships in Spanish as «Gracia abundante para el primero de los pecadores», which completes this (the-pilgrims-way, es) plan with «Junto a la puerta estrecha» and «El progreso del peregrino». Prose ships in the same PR so the es plans page never publishes the English card."
+    ]
   }
 }
