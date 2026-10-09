@@ -728,6 +728,32 @@
 				503
 			]
 		},
+		"am/elisabeth-elliot-a-life-children": {
+			"ground": "a633ff91d05530906f31b2482d140baafc191a577c562935a3d0d81b91a0deb8",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[134, 102, 466, 131]
+				],
+				"title": [
+					[206, 310, 394, 385],
+					[126, 371, 474, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
+		},
 		"am/enchiridion": {
 			"ground": "7ae31c07e8978531c12b9ac476cb427ea9e6130d45630eb4f804ffe1db80367d",
 			"style": "inscriptional",
