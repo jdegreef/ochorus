@@ -881,6 +881,7 @@
   "settings_activity_subtitle": "إحصاءات قراءتك وسجلّك الأخير، محفوظة على هذا الجهاز.",
   "settings_streak_label": "أيام متتالية",
   "settings_streak_longest": "الأطول",
+  "settings_streak_keep_today": "اقرأ اليوم لتحافظ على سلسلتك",
   "settings_streak_days_read": "أيام قراءة",
   "settings_streak_none": "لا سلسلة بعد — اقرأ اليوم لتبدأ واحدة.",
   "settings_goal_title": "الهدف الأسبوعي",

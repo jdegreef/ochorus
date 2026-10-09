@@ -17,6 +17,7 @@
 	import BookCover from '$lib/components/BookCover.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import { chapterMeter } from '$lib/components/WorkCard.svelte';
+	import { readingMinutes } from '$lib/reading';
 
 	/**
 	 * The signed-in home's painted hero: the greeting set over a painting —
@@ -71,6 +72,13 @@
 
 	const href = $derived(current ? localizeHref(current.href) : '');
 	const meter = $derived(current ? chapterMeter(current.order, current.chapterCount, current.pct) : '');
+	// What today asks of the reader: a chapter's length at their own pace
+	// ("~7 min a chapter"), the same figure the series cards give.
+	const perChapter = $derived(
+		current?.book.word_count && current.chapterCount > 1
+			? m.series_chapter_minutes({ minutes: readingMinutes(current.book.word_count / current.chapterCount) })
+			: ''
+	);
 
 	// The museum's label for the season's painting, lettered on the mat like
 	// a gallery print — only while the frame hangs (no book in progress). The
@@ -178,7 +186,9 @@
 							<!-- Done with it, or done with it elsewhere: finish it from here,
 							     as its card in "Continue reading" offered (with an Undo). -->
 							<div class="flex items-baseline justify-between gap-3">
-								<p class="home-hero-sub text-micro">{meter}</p>
+								<p class="home-hero-sub text-micro">
+									{meter}{#if perChapter}<span class="opacity-60"> · </span>{perChapter}{/if}
+								</p>
 								<button
 									type="button"
 									class="home-hero-sub home-hero-finish text-micro"

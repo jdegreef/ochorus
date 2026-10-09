@@ -881,6 +881,7 @@
   "settings_activity_subtitle": "በዚህ መሣሪያ ላይ የተቀመጡ የንባብ ስታቲስቲክስዎና የቅርብ ጊዜ ታሪክዎ።",
   "settings_streak_label": "ተከታታይ ቀናት",
   "settings_streak_longest": "ረጅሙ",
+  "settings_streak_keep_today": "ተከታታይነትዎን ለመጠበቅ ዛሬ ያንብቡ",
   "settings_streak_days_read": "የተነበቡ ቀናት",
   "settings_streak_none": "እስካሁን ተከታታይ ንባብ የለም — ለመጀመር ዛሬ ያንብቡ።",
   "settings_goal_title": "ሳምንታዊ ግብ",

@@ -881,6 +881,7 @@
   "settings_activity_subtitle": "Vos statistiques de lecture et votre historique récent, conservés sur cet appareil.",
   "settings_streak_label": "jours d’affilée",
   "settings_streak_longest": "Record",
+  "settings_streak_keep_today": "Lisez aujourd’hui pour garder votre série",
   "settings_streak_days_read": "jours de lecture",
   "settings_streak_none": "Pas encore de série — lisez aujourd’hui pour en commencer une.",
   "settings_goal_title": "Objectif hebdomadaire",

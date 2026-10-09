@@ -86,6 +86,10 @@
 									{longest}<span class="opacity-50"> · </span>{days.length}
 									{t('settings.streakDaysRead')}
 								</div>
+								<!-- A streak that today would end: say so while there's time. -->
+								{#if !days.includes(today)}
+									<div class="mt-0.5 text-small font-medium text-accent">{t('settings.streakKeepToday')}</div>
+								{/if}
 							{:else}
 								<div class="text-body text-text">{t('settings.streakNone')}</div>
 							{/if}

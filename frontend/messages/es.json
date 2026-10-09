@@ -881,6 +881,7 @@
   "settings_activity_subtitle": "Tus estadísticas de lectura e historial reciente, guardados en este dispositivo.",
   "settings_streak_label": "días seguidos",
   "settings_streak_longest": "Máximo",
+  "settings_streak_keep_today": "Lee hoy para mantener tu racha",
   "settings_streak_days_read": "días de lectura",
   "settings_streak_none": "Aún sin racha: lee hoy para empezar una.",
   "settings_goal_title": "Meta semanal",
