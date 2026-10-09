@@ -1515,6 +1515,32 @@
 				449
 			]
 		},
+		"am/pandita-ramabai-a-life-children": {
+			"ground": "a3316cb4acab065341d6452f7096f1965791866eea24a12e27958c0f93c2a224",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[133, 310, 467, 385],
+					[209, 371, 391, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
+		},
 		"am/pilgrims-progress-children": {
 			"ground": "8e613687910ef239e57c915726d5a43dbe681a6db3e7d1b9bea9189d0fc6357d",
 			"style": "press",
