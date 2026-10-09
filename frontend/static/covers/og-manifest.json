@@ -9701,6 +9701,16 @@
 			"layout": "wash/sage",
 			"bar": 0.11
 		},
+		"lg/ministry-of-intercession": {
+			"ground": "b1e9f304dbe6fc532c20b7df7b3402943c7d48b7f6d1f32b968870a77a566e14",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"lg/pilgrims-progress-words-of-one-syllable": {
 			"ground": "e7a5caf5b7386b46154377fb6492c2d52b679ffa68b061f112ce550f4c794c34",
 			"style": "young",
