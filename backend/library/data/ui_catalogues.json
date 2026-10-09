@@ -43,15 +43,7 @@
 			"pending": []
 		},
 		"vi": {
-			"missing": [
-				"audience_ready_for_more",
-				"audience_rung_children",
-				"audience_rung_full",
-				"audience_rung_teens",
-				"audience_spotlight_cta",
-				"audience_spotlight_eyebrow",
-				"audience_spotlight_ladder"
-			],
+			"missing": [],
 			"pending": []
 		}
 	}
