@@ -2,8 +2,14 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { FOR_LINKS, forPath } from './forLinks';
+import { messageShareLinks } from './share';
 import {
+	AUTHORS_SHOWN,
+	countWorks,
 	EMPTY_SHELF_DATA,
+	forQuote,
+	inviteMessage,
+	quoteAuthor,
 	FOR_PAGES,
 	PLANS_SHOWN,
 	forHref,
@@ -17,11 +23,21 @@ import {
 	forShelf,
 	toOfflineBook
 } from './forPages';
-import type { BookDetail, BookSummary, PlanSummary } from './library-public';
+import type { BookDetail, BookSummary, PlanSummary, QuotePage } from './library-public';
 
 const ROUTES = join(import.meta.dirname, '..', 'routes');
 const LIBRARY = join(import.meta.dirname, '..', '..', '..', 'backend', 'library');
 const BOOKS = join(LIBRARY, 'fixtures', 'content', 'books');
+/** The quote seed and the authors fixture, read as text / JSON. */
+const QUOTE_SEED = readFileSync(join(LIBRARY, 'quote_seed.py'), 'utf8');
+const APPROVED = new Set(
+	[...(/APPROVED = frozenset\(\s*\{([^}]*)\}/.exec(QUOTE_SEED)?.[1] ?? '').matchAll(/"([a-z0-9-]+)"/g)].map((m) => m[1])
+);
+const AUTHOR_SLUGS = new Set(
+	(JSON.parse(readFileSync(join(LIBRARY, 'fixtures', 'content', 'authors.json'), 'utf8')) as { fields: { slug: string } }[]).map(
+		(r) => r.fields.slug
+	)
+);
 /** The plan slugs in the seed: each plan tuple's FIRST element (the rest of the
  *  tuple names its source books, which must not count; comment lines may sit
  *  between the parenthesis and it). */
@@ -172,5 +188,51 @@ describe('the "Ochorus for …" pages', () => {
 		expect(isShelfData([{ slug: 'school-of-prayer' }])).toBe(false);
 		expect(isShelfData(null)).toBe(false);
 		expect(isShelfData({ shelves: [], plans: [] })).toBe(false);
+	});
+
+	it('quotes a line the seed holds, from an author whose quotations are approved', () => {
+		expect(APPROVED.size, 'the APPROVED parse found nothing').toBeGreaterThan(3);
+		for (const p of FOR_PAGES) {
+			expect(QUOTE_SEED.includes(`"slug": "${p.quote}"`), `${p.slug}: ${p.quote}`).toBe(true);
+			expect(APPROVED.has(quoteAuthor(p.quote)), `${p.slug}: ${quoteAuthor(p.quote)} is not approved`).toBe(true);
+		}
+	});
+
+	it('names writers who exist, with backups beyond the grid', () => {
+		for (const p of FOR_PAGES) {
+			expect(p.authors.filter((a) => !AUTHOR_SLUGS.has(a)), p.slug).toEqual([]);
+			expect(new Set(p.authors).size, p.slug).toBe(p.authors.length);
+			expect(p.authors.length, p.slug).toBeGreaterThan(AUTHORS_SHOWN);
+		}
+	});
+
+	it('invites readers to a page that exists, in a message short enough to paste anywhere', () => {
+		for (const p of FOR_PAGES) {
+			expect(p.invite.href === '/' || routeExists(p.invite.href), `${p.slug}: ${p.invite.href}`).toBe(true);
+			expect(p.invite.text.length, p.slug).toBeLessThanOrEqual(200);
+		}
+		const msg = inviteMessage({ text: 'Read with us.', href: '/young-readers' }, 'https://x.org');
+		expect(msg).toBe('Read with us.\nhttps://x.org/young-readers/');
+		const [whatsapp, email] = messageShareLinks('Subject', msg, 'Email');
+		expect(whatsapp.href).toBe(`https://wa.me/?text=${encodeURIComponent(msg)}`);
+		expect(email.href).toContain(`body=${encodeURIComponent(msg)}`);
+	});
+
+	it('resolves a quotation from its author’s page, or nothing', () => {
+		expect(quoteAuthor('charles-h-spurgeon-116882b5')).toBe('charles-h-spurgeon');
+		const page = {
+			author: { slug: 'a', name: 'A', photo_url: '', birth_year: null },
+			topics: [],
+			quotes: [
+				{ slug: 'a-12345678', text: 'Grace.', paragraph: 3, source: { kind: 'chapter', slug: 'b', title: 'C', work: 'Book', order: 2, cover_color: '' } }
+			]
+		} as QuotePage;
+		expect(forQuote(page, 'a-12345678')).toMatchObject({ slug: 'a-12345678', text: 'Grace.', author: { slug: 'a', name: 'A' } });
+		expect(forQuote(page, 'a-00000000')).toBeNull();
+	});
+
+	it('counts works, not their young-reader editions', () => {
+		const slugs = ['pilgrims-progress', 'pilgrims-progress-teens', 'pilgrims-progress-children', 'confessions'];
+		expect(countWorks(slugs.map((slug) => ({ slug })))).toBe(2);
 	});
 });

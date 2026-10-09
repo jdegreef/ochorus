@@ -26,7 +26,9 @@ export const load: PageLoad = async ({ params, fetch }) => {
 		// A cached copy from before the snapshot was an object would otherwise
 		// reach the page as an array and break it.
 		if (!isShelfData(shelf)) throw new Error(`for-shelves/${page.slug}: not a snapshot`);
-		return { page, shelf };
+		// Over the empty one, so a snapshot from before a section existed
+		// (a cached copy of the last release) still has every field.
+		return { page, shelf: { ...EMPTY_SHELF_DATA, ...shelf } };
 	} catch (err) {
 		if (building) throw err;
 		return { page, shelf: EMPTY_SHELF_DATA };
