@@ -52,9 +52,13 @@ const STATIC = resolve(HERE, '../static');
 const MESSAGES = resolve(HERE, '../messages');
 const CONTENT = resolve(HERE, '../../backend/library/fixtures/content');
 const MODULES = resolve(HERE, '../node_modules');
-const LOCALES = JSON.parse(
+const ALL_LOCALES = JSON.parse(
 	readFileSync(resolve(HERE, '../project.inlang/settings.json'), 'utf8')
 ).locales;
+/** `npm run og:home -- vi` redraws just the named cards; no arguments, all. */
+const LOCALES = process.argv.length > 2 ? process.argv.slice(2) : ALL_LOCALES;
+for (const l of LOCALES) if (!ALL_LOCALES.includes(l)) throw new Error(`${l}: not a UI locale`);
+const MIN_SHELF = 3;
 
 /** The covers to lead with, best first; the first one found stands in the
  *  middle of the shelf. Slugs, so each language takes its own edition. */
@@ -72,6 +76,18 @@ const SHELF = [
 	'the-christians-secret-of-a-happy-life-4'
 ];
 const ON_SHELF = 7;
+
+/**
+ * The shelf for a language that has joined the interface before its first book
+ * (vi did, with none). Not the English covers: a cover with words in it serves
+ * one language. The hand-picked books' wordless grounds (`/covers/art/`) serve
+ * them all — the same paintings, with no title on them to be in the wrong
+ * language. Only a locale with NO books gets these; one that has books but too
+ * few shareable covers still fails below, as a regression should.
+ */
+const GROUNDS = SHELF.map((slug) => resolve(STATIC, `covers/art/${slug}.jpg`))
+	.filter((f) => existsSync(f))
+	.slice(0, ON_SHELF);
 
 /** The fontsource subset a locale's copy is written in; null for Latin. From
  *  the locale's likely script rather than a list of codes, so a new language
@@ -194,7 +210,10 @@ function faces(sheet, subsets) {
 }
 
 function fontCss(script) {
-	const subsets = ['latin', 'latin-ext', ...(script ? [script] : [])];
+	// `vietnamese` for every card: Vietnamese is Latin script, so `script` is null
+	// for it, and latin-ext stops short of its stacked tones (ế, ộ). Unicode-range
+	// gated, so a card with none of those letters draws nothing from it.
+	const subsets = ['latin', 'latin-ext', 'vietnamese', ...(script ? [script] : [])];
 	if (script === 'cyrillic') subsets.push('cyrillic-ext');
 	const sheets = [
 		'@fontsource-variable/fraunces/opsz.css',
@@ -220,9 +239,13 @@ function fontCss(script) {
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-function page(locale, msg, covers) {
+function page(locale, msg, covers, ownShelf) {
 	const script = scriptOf(locale);
-	const counts = msg.home_share_counts
+	// A language with no books yet stands the wordless grounds on its shelf, and
+	// "0 books · 0 sermons" would say the wrong thing about it: no counts.
+	const counts = !ownShelf
+		? ''
+		: msg.home_share_counts
 		.replace('{books}', atLeast(BOOKS.filter((b) => b.language === locale).length))
 		.replace('{sermons}', atLeast(SERMONS.filter((s) => s.language === locale).length))
 		.replace('{languages}', isolate(String(LIVE_LOCALES.length)));
@@ -262,9 +285,10 @@ const tab = await browser.newPage({
 });
 for (const locale of LOCALES) {
 	const msg = JSON.parse(readFileSync(resolve(MESSAGES, `${locale}.json`), 'utf8'));
-	const covers = await shelf(locale);
-	if (covers.length < 3) throw new Error(`${locale}: only ${covers.length} shareable covers`);
-	await tab.setContent(page(locale, msg, covers), { waitUntil: 'load' });
+	const ownShelf = BOOKS.some((b) => b.language === locale);
+	const covers = ownShelf ? await shelf(locale) : GROUNDS;
+	if (covers.length < MIN_SHELF) throw new Error(`${locale}: only ${covers.length} shareable covers`);
+	await tab.setContent(page(locale, msg, covers, ownShelf), { waitUntil: 'load' });
 	await tab.evaluate(() => document.fonts.ready);
 	// One line, always: shrink a long headline until it fits the measure rather
 	// than let it wrap into the covers.
@@ -281,7 +305,7 @@ for (const locale of LOCALES) {
 	mkdirSync(dirname(file), { recursive: true });
 	if (!existsSync(file) || !readFileSync(file).equals(jpg)) writeFileSync(file, jpg);
 	console.log(
-		`  ✓ ${homeShareCardUrl(locale)}  (${covers.length} covers, ${(jpg.length / 1024).toFixed(0)} KB)`
+		`  ✓ ${homeShareCardUrl(locale)}  (${covers.length} covers${ownShelf ? '' : ', wordless grounds'}, ${(jpg.length / 1024).toFixed(0)} KB)`
 	);
 }
 await browser.close();

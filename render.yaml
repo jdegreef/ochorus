@@ -861,6 +861,9 @@ services:
       - type: rewrite
         source: /am
         destination: /am.html
+      - type: rewrite
+        source: /vi
+        destination: /vi.html
       # Each UI locale's index pages: one `:lang` rule per page (Render
       # substitutes the placeholder into the destination). A `:lang` that is not
       # a locale (`/x/books`) rewrites to a .html that does not exist and gets a

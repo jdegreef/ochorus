@@ -4,6 +4,8 @@
 	import EmailBlocksEditor from '$lib/components/EmailBlocksEditor.svelte';
 	import EmailPreview from '$lib/components/EmailPreview.svelte';
 	import { ApiError, apiErrorDetail } from '$lib/api';
+	import { localeName } from '$lib/lang.svelte';
+	import { locales } from '$lib/paraglide/runtime';
 	import {
 		listBroadcasts,
 		getBroadcast,
@@ -25,19 +27,13 @@
 		type BroadcastStatus
 	} from '$lib/library-admin';
 
-	// The languages a broadcast can be composed in. Extend when a locale is added.
-	const LOCALES: { code: string; label: string }[] = [
-		{ code: 'en', label: 'English' },
-		{ code: 'es', label: 'Español' },
-		{ code: 'pt', label: 'Português' },
-		{ code: 'fr', label: 'Français' },
-		{ code: 'sw', label: 'Kiswahili' },
-		{ code: 'lg', label: 'Luganda' },
-		{ code: 'ar', label: 'العربية' },
-		{ code: 'hi', label: 'हिन्दी' },
-		{ code: 'uk', label: 'Українська' },
-		{ code: 'am', label: 'አማርኛ' }
-	];
+	// The languages a broadcast can be composed in: every UI locale, named as the
+	// language picker names it. Derived, so a new locale reaches the composer
+	// without an edit here — this was a hand-kept third copy of the list.
+	const LOCALES: { code: string; label: string }[] = locales.map((code) => ({
+		code,
+		label: localeName(code)
+	}));
 	const localeLabel = (code: string) =>
 		LOCALES.find((l) => l.code === code)?.label ?? code;
 

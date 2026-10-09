@@ -146,7 +146,7 @@ class LanguageSeedTableTests(SimpleTestCase):
         # real job — so this proves the codes work for the path that uses them,
         # not for a URL the test built itself. Opt-in so CI stays hermetic:
         #   CHECK_BIBLE_CODES=1 uv run python manage.py test \
-        #     library.tests.LanguageSeedTableTests
+        #     library.tests_languages.LanguageSeedTableTests
         for code, cfg in SEED_LANGUAGES.items():
             with self.subTest(language=code, bible=cfg["bible"]):
                 data = fetch_chapter(cfg["bible"], Ref("JHN", 1))
@@ -172,7 +172,7 @@ class LanguageRegistrySeedTests(TestCase):
         call_command("seed_languages")
         codes = set(Language.objects.values_list("code", flat=True))
         # English (the source) plus every translation target.
-        self.assertEqual(codes, {"en", "es", "sw", "lg", "pt", "ar", "hi", "uk", "fr"})
+        self.assertEqual(codes, {"en", "es", "sw", "lg", "pt", "ar", "hi", "uk", "fr", "vi"})
 
         en = Language.objects.get(code="en")
         self.assertTrue(en.is_source)
