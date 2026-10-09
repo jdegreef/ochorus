@@ -156,3 +156,15 @@ describe('rendering hits into a chapter', () => {
 		expect(el.querySelector('mark.search-hit')?.getAttribute('data-mark-id')).toBeNull();
 	});
 });
+
+describe('Korean queries', () => {
+	it('drops the particle the server dropped, so the highlight finds every form', () => {
+		// The server matched 은혜는 to a chapter saying 은혜를 (fts.strip_particle).
+		expect(queryWords('은혜는')).toEqual(['은혜']);
+		expect(findQueryHits(['하나님의 은혜를 받은 자'], '은혜는')).toEqual([{ p: 0, s: 5, e: 7 }]);
+	});
+
+	it('keeps a word whole when stripping would leave one syllable', () => {
+		expect(queryWords('기도 자는')).toEqual(['기도', '자는']);
+	});
+});

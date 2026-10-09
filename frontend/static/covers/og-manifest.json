@@ -5300,6 +5300,35 @@
 				478
 			]
 		},
+		"es/life-and-diary-of-david-brainerd": {
+			"ground": "802a4edfc703abbc2d09834c302f1ed7b0baf902d1685c6d1a6e672de520e7f3",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[150, 102, 450, 131]
+				],
+				"title": [
+					[94, 289, 506, 352],
+					[99, 351, 501, 414]
+				],
+				"subtitle": [
+					[140, 477, 460, 505]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
+		},
 		"es/life-experience-gospel-labours": {
 			"ground": "1705cd87178e053c6e4ebd45fa51e33d2d8aba36c8f4edceb52c2d16d274dd6f",
 			"style": "enlightenment",
@@ -6030,6 +6059,16 @@
 				292,
 				503
 			]
+		},
+		"es/the-life-of-trust": {
+			"ground": "d0232781763fac00355b4e4a4fc1dba1745ef81eaeee2510872e68922be0073c",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/oxblood",
+			"bar": 0
 		},
 		"es/the-life-of-trust-children": {
 			"ground": "29a970158d0bee0de9c4f3708d45fcd884c49f9880a4a213043e9f11f3015575",
@@ -7817,6 +7856,16 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "box/teal",
+			"bar": 0
+		},
+		"fr/the-fundamental-doctrines-of-the-christian-faith": {
+			"ground": "064e51b3b73ae3e3c6bdab2918234033188bbb8637e1171ab3bb98cd4d527ce5",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "diagonal/ochre",
 			"bar": 0
 		},
 		"fr/the-god-of-all-comfort": {

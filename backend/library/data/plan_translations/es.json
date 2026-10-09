@@ -130,6 +130,13 @@
       "Queue job #2821: written in the same PR as growing-in-wisdom.es, which completes this LAUNCH plan's book in Spanish, so seed_plans would otherwise create the es row with English prose. The title opens with the book's shipped es title «Crecer en sabiduría»; uses «tú», as the book does. AI-drafted; awaiting native review."
     ]
   },
+  "waiting-on-god-trust": {
+    "title": "Esperando en Dios: una vida de confianza",
+    "description": "Diez semanas en la escuela de la confianza. Andrew Murray enseña la disciplina diaria de esperar en Dios, F. B. Meyer revela el secreto de ser guiado por él, y la asombrosa vida de fe de George Müller muestra lo que esa confianza recibe.",
+    "note": [
+      "Queue job #4812: «La vida de confianza» completes this plan in es (with «Esperando en Dios» and «El secreto de la guía divina»), so the prose ships in the same PR or the es plans page publishes the English card (the #819 defect). Title opens with the shipped es title of its first book."
+    ]
+  },
   "the-pilgrims-way": {
     "title": "El camino del peregrino",
     "description": "El camino a casa, en tres clásicos. Charles Spurgeon sale al encuentro del que busca junto a la puerta estrecha, la alegoría inmortal de John Bunyan acompaña al peregrino todo el camino hasta la Ciudad Celestial, y el propio testimonio de Bunyan muestra la gracia que abundó para el primero de los pecadores.",
