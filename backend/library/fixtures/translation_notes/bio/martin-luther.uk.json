@@ -1,0 +1,20 @@
+{
+ "kind": "bio",
+ "slug": "martin-luther",
+ "language": "uk",
+ "job_issue": 1690,
+ "pull_request": null,
+ "references": [
+  {
+   "reference": "Romans 1:17",
+   "status": "mined",
+   "source_file": "Kulish (ukr_pan) Bible text",
+   "block_index": 7
+  }
+ ],
+ "note": [
+  "Scripture authority is Kulish, fetched from the ebible mirror (gracious-tech/fetch_collection, bibles/ukr_pan). Rom 1:17's closing clause «Праведний вірою жив буде» is pasted from it byte for byte, in the bio and in the faq.",
+  "Psalm 46 is named as the source of 'Ein feste Burg' but never quoted, so nothing is recorded for it.",
+  "English straight-quoted terms (\"Junker Jörg\", \"my Katie\", \"Yes.\") are converted to « », the uk bio convention; the hymn title keeps its German original in <em> as the English does, with a Ukrainian rendering beside it."
+ ]
+}
