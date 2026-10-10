@@ -164,5 +164,12 @@
     "note": [
       "Job #4845. Prose-ahead for the plan's last two Spanish books: all-things-for-good («Todas las cosas para bien») already ships in es, the-bruised-reed is this PR, and mortification-of-sin is job #4846. The plan seeds in es once both are merged."
     ]
+  },
+  "women-of-faith": {
+    "title": "Mujeres de fe",
+    "description": "Un recorrido más largo junto a tres mujeres extraordinarias. Hannah Whitall Smith revela en «El secreto del cristiano para una vida feliz» el secreto de una vida dichosa, y las autobiografías de Amanda Berry Smith y Julia A. J. Foote, dos mujeres negras que predicaron el evangelio por el mundo del siglo XIX, muestran ese secreto vivido a un gran costo.",
+    "note": [
+      "Job #4852. Prose-ahead for the plan's last Spanish book: the-christians-secret-of-a-happy-life-4 already ships in es, a-brand-plucked-from-the-fire is this PR, and amanda-smith-autobiography is job #4850. The plan seeds in es once both are merged."
+    ]
   }
 }
