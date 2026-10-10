@@ -769,20 +769,6 @@
 						<span class="btn-label">{t('nav.search')}</span>
 					</a>
 				</div>
-				{#if book.has_leader_guide}
-					<!-- A printable leader's guide for a group or a homeschool. Its own row
-					     under the strip, not a sixth strip button: the strip's phone form
-					     is five columns, and this is for the leader, not every reader. -->
-					<div class="mt-2">
-						<a
-							href={localizeHref(`/books/${book.slug}/guide`)}
-							class="btn btn-sm btn-ghost"
-						>
-							<Icon name="users" size={16} />
-							{t('guide.label')}
-						</a>
-					</div>
-				{/if}
 			</div>
 		</header>
 	</div>
@@ -1162,7 +1148,23 @@
 
 	<!-- Where to go from here: one book to read next (the first of "More like
 	     this", given room and its pitch) and, for a book with one, the leader's
-	     guide for reading it with a group — then the rest of the shelf. -->
+	     guide for reading it with a group — then the rest of the shelf. The
+	     guide's one link on the page: a printable guide for a group or a
+	     homeschool, for the leader, not every reader, so it sits with what
+	     comes next rather than in the hero's actions. -->
+	{#snippet guideCard()}
+		<a
+			href={localizeHref(`/books/${book.slug}/guide`)}
+			class="card-tint flex items-start gap-4 rounded-card border border-border bg-surface p-4 text-text"
+		>
+			<span class="next-icon" aria-hidden="true"><Icon name="users" size={22} /></span>
+			<span class="min-w-0">
+				<span class="eyebrow block text-accent">{t('guide.label')}</span>
+				<span class="mt-1 block text-small" dir="auto">{t('guide.description').replace('%t%', book.title)}</span>
+				<span class="mt-2 block text-small font-semibold text-accent">{t('guide.open')} <Arrow /></span>
+			</span>
+		</a>
+	{/snippet}
 	{#if book.related?.length}
 		{@const [next, ...rest] = book.related}
 		<section id="related" class="jump-anchor mt-12">
@@ -1186,21 +1188,7 @@
 						{/if}
 					</span>
 				</a>
-				{#if book.has_leader_guide}
-					<a
-						href={localizeHref(`/books/${book.slug}/guide`)}
-						class="card-tint flex items-start gap-4 rounded-card border border-border bg-surface p-4 text-text"
-					>
-						<span class="next-icon" aria-hidden="true"><Icon name="users" size={22} /></span>
-						<span class="min-w-0">
-							<span class="eyebrow block text-accent">{t('guide.label')}</span>
-							<span class="mt-1 block text-small" dir="auto"
-								>{t('guide.description').replace('%t%', book.title)}</span
-							>
-							<span class="mt-2 block text-small font-semibold text-accent">{t('guide.open')} <Arrow /></span>
-						</span>
-					</a>
-				{/if}
+				{#if book.has_leader_guide}{@render guideCard()}{/if}
 			</div>
 			{#if rest.length}
 				<div class="book-grid mt-6">
@@ -1210,6 +1198,9 @@
 				</div>
 			{/if}
 		</section>
+	{:else if book.has_leader_guide}
+		<!-- No shelf to sit beside: the guide alone, still offered. -->
+		<div class="next-pair mt-12">{@render guideCard()}</div>
 	{/if}
 
 	{#if book.source_url && book.source_type === 'public_domain'}
