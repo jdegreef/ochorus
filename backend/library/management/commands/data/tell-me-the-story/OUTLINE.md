@@ -71,3 +71,31 @@ An Introduction (for the child — the note for grown-ups lives in about_html, s
 - Every opening verse, and every quotation with a reference in brackets, against the BSB text, by script.
 - Ages, numbers and names against the chapter (Abram 75, Abraham 100, Joseph 17 and 30, twenty pieces of silver).
 - The English audit, and the house title case.
+
+## Book 2: Out of Egypt
+
+An Introduction ("The God Who Rescues"), then twenty-one stories from Exodus to Ruth.
+
+1. A Baby in a Basket (Exodus 1–2:10)
+2. The Bush That Didn't Burn Up (Exodus 3–4)
+3. "Let My People Go!" (Exodus 5; 7–10)
+4. The Night of the Passover (Exodus 11–12)
+5. A Path Through the Sea (Exodus 13:17–15:21)
+6. Bread from Heaven (Exodus 16)
+7. Moses' Tired Arms (Exodus 17)
+8. Ten Good Words (Exodus 19–20)
+9. The Golden Calf (Exodus 32; 34:1–10)
+10. A Tent for God (Exodus 25; 35–36; 40)
+11. Twelve Spies (Numbers 13–14)
+12. The Snake on the Pole (Numbers 21:4–9)
+13. The Donkey Who Talked (Numbers 22–24)
+14. Rahab and the Red Cord (Joshua 2; 6:22–25)
+15. Crossing the Jordan (Joshua 1:1–9; 3–4)
+16. The Walls of Jericho (Joshua 6)
+17. Deborah and the Rainstorm (Judges 4–5)
+18. Gideon's Small Army (Judges 6–7)
+19. Samson the Strong (Judges 13; 16)
+20. Ruth Stays with Naomi (Ruth 1–2)
+21. Boaz the Redeemer (Ruth 3–4)
+
+Handled with care: the Passover night (the firstborn told in one sentence; the grown-up's answer notes God's many warnings), the golden calf ("many people died", not the Levites' sword), Jericho ("its people died in the battle", Rahab saved), Jael (Sisera "would never trouble God's people again"), Samson's blinding and death. Rahab is "not one of God's people, and she had not lived a good life", not named a prostitute.

@@ -2140,7 +2140,7 @@ quotation marks for a hymn/book title; (4) `book_meta/en.json` ≤125 chars;
 dev DB — add it to `topic_seed.py`, run `seed_topics`, THEN generate; (6) the repo
 has no BSB text: fetch `https://bible.helloao.org/api/BSB/<BOOK>/<ch>.json` into
 the scratchpad and check every verse card and every `"…" (Ref)` quotation by
-script (normalise case/punctuation, split on `...`). *(tell-me-the-story, 2026-10)*
+script (normalise case/punctuation, split on `...`); (7) a book's `qa` needs 6–10 entries (`BookQaShapeTests`) — a later volume trimmed to five fails. *(tell-me-the-story, 2026-10)*
 
 ## Two kinds of fix
 
