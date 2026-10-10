@@ -396,6 +396,12 @@ CURATED: dict[str, Artwork] = {
         "first — the one painting the library ever gave two books.",
         focus=0.45,
     ),
+    "spurgeon-on-the-holy-spirit": Artwork(
+        "aic", 47582, "Style of John Constable", "Hampstead, Stormy Sky", "1814",
+        "The wind that bloweth where it listeth, driving cloud over Hampstead with "
+        "light breaking through — the companion to `spurgeon-on-prayer`'s Turner, "
+        "an English sky above Spurgeon's own London.",
+    ),
     # Spurgeon's paired devotionals, one painter's morning and evening, so the
     # two read as a pair on the shelf. Both late Inness, both whole in the band.
     "morning-by-morning": Artwork(

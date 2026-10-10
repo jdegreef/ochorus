@@ -61,6 +61,7 @@ TOPICS = [
             "key-teachings-of-derek-prince",
             "power-from-on-high-new-testament",
             "power-from-on-high-old-testament",
+            "spurgeon-on-the-holy-spirit",
         ],
     ),
     (

@@ -85,6 +85,7 @@ ART_SOURCES: dict[str, str] = {
     "separation-and-service": "cma-172806@0.50",
     "sermons-on-several-occasions": "cma-147017@0.50",
     "spurgeon-on-prayer": "aic-109938@0.45",
+    "spurgeon-on-the-holy-spirit": "aic-47582@0.50",
     "susanna-wesley-clarke": "aic-869@0.50",
     "ten-commandments": "met-359021@0.50",
     "the-bruised-reed": "cma-140341@0.50",
