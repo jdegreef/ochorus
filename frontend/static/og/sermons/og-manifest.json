@@ -82,6 +82,10 @@
 			"content": "1aec68a02f056861fcbce33fc57f2be6358ab3e0e23b5b5d62413059bee4467b",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
+		"behold-the-bridegroom-cometh": {
+			"content": "3d81d0a396cab49d46bfc56f9b800d9ecf9ae20d9ac29981f8ce28d330356fbb",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
 		"behold-the-lamb-of-god": {
 			"content": "2ff18541e46336ab7664685da67a3276c833ed130a299e46294f11c5d8d8455f",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -154,6 +158,10 @@
 			"content": "004bf5d6b3db17b89625d5584e43b3e45cbac1cd622f5fdc4e1ecc64f72ae368",
 			"art": "d2cfa1486c576fafffe1223e02bc035e2a6bf629ace50f8e2fbbb58155ec109b"
 		},
+		"christs-messages-to-the-church": {
+			"content": "5fa5b95ccd585e5c356d9f6514e6051e2f792d2aacdcc12a33af554a0ff01ec1",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"come-thou-into-the-ark": {
 			"content": "525c7d21f1540b4dcdccbfd38f9da22664eb16205bf693582796093be81334bb",
 			"art": "326289b4e8044ad6d2e4f3440e919c83972c9734398d724848e421bac4015d3c"
@@ -185,6 +193,10 @@
 		"consolation-in-the-furnace": {
 			"content": "2a1f8e5ae5b099088ca7194e3d676df877820e01b842704906a2abde59c7fbc3",
 			"art": "ba3780b144eca2376ec3495cd7f7da52760b679831a1739d402b7022e777786e"
+		},
+		"counterfeits": {
+			"content": "fe543ecdc6956203efc8b0027fea89a345b576782797e282263f93d828870831",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"dealing-with-anxious-souls": {
 			"content": "dbf1422d31a3f9481c3424faa803016414cbe6f7b1de22c0aa29c81a7dac02dd",
@@ -257,6 +269,10 @@
 		"gideon-or-the-strength-of-weakness": {
 			"content": "4b01a6b755d1196ef6e7aafe47213bcaf1d860583fb0d74f38d64768186d312f",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"gifts-of-the-spirit": {
+			"content": "522e1c607bc3b314ecec16e67c4b497d120ad998c009acd13beb1ac751abb362",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"glory-of-his-inheritance": {
 			"content": "92a65c385e9b2cf0ac9479777069e90920787400d3a29fe5548c058cbac3061f",
@@ -394,6 +410,10 @@
 			"content": "811d366735b68f6d3485ca0b49aa4a7405054d10fb3222a6987fcd5c0ec26d64",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
+		"in-money-matters": {
+			"content": "45606cdbda08dfb4ba0fff3b88d2808ac918e2b57fa8649e64fd4bb392f43b1d",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"intercession-every-christians-duty": {
 			"content": "f511c07880dd784d09b3e1fd2dc8d4897d41a97199aee7b01c38e0787bdbd6ea",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -409,6 +429,10 @@
 		"justification-by-grace": {
 			"content": "dee6874492ed668860c7765f137424405a467947a8190c5f285e50a871c5c2e1",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"letter-to-one-seeking-the-holy-ghost": {
+			"content": "b2a36cc045082a24e6fe1857f62dc202532fc91eb125591785f9276ee127fc18",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"living-or-dead": {
 			"content": "d4dba771c9095904f1d84419a94a006da4b7dd3ba221331477d98d120c7a9a23",
@@ -506,6 +530,14 @@
 			"content": "8330f321c326748fcf7370712018449aeba2195dd43d7e34225b5520e8359e19",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
+		"rebecca-type-of-the-bride-of-christ": {
+			"content": "a2c96e7cb1e3a9e6d5a07cb7ddb685b0f2c51fc1ee9fec76c9eb5f5f4a5b71a5",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
+		"receive-ye-the-holy-ghost": {
+			"content": "e2b3145ce75aa2d80cec036aa66998f1417e4a3566e229fb603119140efab345",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"refuges-of-lies": {
 			"content": "693a7efb8c2d3eb227a919c8d1d0fe7a0a6cae455abc647174e843cc19f00a8d",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
@@ -513,6 +545,10 @@
 		"rest": {
 			"content": "2145408f8568cd5babd836a0b7d28273d3e733445d3ed82be65d36aacf95c373",
 			"art": "507ce58f3ce91b3c00236b94b1da144963f0e1fbf5db8590eefed221dba33bec"
+		},
+		"river-of-living-water": {
+			"content": "c206958c77eb1f8305920d2fe631c40774ceeb2586d815b8d6df5598d90ebd16",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"rope-wanted": {
 			"content": "6b34f580899832ef131209b6a918d2683f6a76445dafa4cd6b7f20944a56a765",
@@ -533,6 +569,10 @@
 		"seraphims-worship": {
 			"content": "d1b104b069880f173e2a2c25fef0b1d82a0688061a8b6192dffca6d955141730",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"sermon-at-the-execution-of-moses-paul": {
+			"content": "e3ed131bd55952def9e3787815e2e08480f690775d3b36886a0adacfce1acbfe",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"sinners-bound-to-change-their-own-hearts": {
 			"content": "305446a428b2ba40dc7debcabe70482f6d1b66c00a544510ed863aafc2805e40",
@@ -565,6 +605,10 @@
 		"sweet-comfort-for-feeble-saints": {
 			"content": "31822ce7059517b4cd9b2ee165884a4d1d19f0ba4f0ec0fe1fe2f472e9e735f8",
 			"art": "27663481d9b759296ff4996cabf2ee9fb38eb8a959631b59f7146a84414eb867"
+		},
+		"thanksgiving-sermon-abolition-of-the-slave-trade": {
+			"content": "05f8094576dc1c743409b77fe43ee3ddb8ddc88ea5cc4062ad2fb1d64261ad8b",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"the-almost-christian": {
 			"content": "dcf4f69c92fcf72903946eb9aaba1cf59792b828c83123e99906a35b8420c403",
@@ -674,6 +718,10 @@
 			"content": "c8a212a00453bbd403977e1139f5384fe7310ec320df944bfedc08caa5d64ed7",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
+		"the-holy-spirit-bishop-of-the-church": {
+			"content": "18db7360c187de0379f94a64b2355589d458c8d2643367c4ef17fad1bc24e40c",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"the-immutability-of-god": {
 			"content": "ffbdfee8258c33ec5f08f1138c2b52225a8d0cf4afd865e3d4525f5d1142fe42",
 			"art": "60fa7de5ad14e332319494b77bfdf6b3fe9599f3855d39aa75efca7a107ff697"
@@ -709,6 +757,10 @@
 		"the-love-of-christ": {
 			"content": "554aab85928a8160d8740e7b51cda1bd2a3c73f3f6f51a933ee691d9a96710db",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"the-marriage-tie": {
+			"content": "2212e809b61edd8afa2eccfcd60be624d00e24b6eff31b974e08beb6c7c53f9c",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"the-meaning-of-the-cross": {
 			"content": "79070e0892ab3de7c212d262e88b8e58fd99bf39885d428d743b12a757070bd7",
@@ -757,6 +809,10 @@
 		"the-practical-hope-of-the-lords-coming": {
 			"content": "07fc37cd55aa9f840721bc19d820fbec40cdfd822518cc6786a7b9ca2f87ff38",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"the-precious-atonement": {
+			"content": "0043574a268646daff35d77b05c03c3f92d7853927be60465b787b3c5bff57df",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"the-ravens-cry": {
 			"content": "daa26fb3232004840cba6054a8a867b2423c518bbf58f5d039e238f892c8ff02",
