@@ -31,7 +31,7 @@ import json
 import logging
 import uuid
 import zipfile
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date
 from functools import lru_cache
 from pathlib import Path
@@ -45,6 +45,7 @@ from .covers import twin_path
 from .languages import entry as language_entry
 from .localization import DEFAULT_LANGUAGE
 from .models import Book
+from .sanitize import ILLUSTRATION_SRC
 
 log = logging.getLogger(__name__)
 
@@ -164,17 +165,75 @@ class Edition:
     cover: Cover | None
     bio: str  # the author's short biography as XHTML paragraphs; "" for none
     url: str  # the book's page on the reader, "" when the site URL is unknown
+    # The in-book illustrations the chapters point at, by the RELATIVE path
+    # their `<img src>` was rewritten to ("illustrations/<slug>/<name>.jpg") —
+    # the same path inside the EPUB's OEBPS/ and beside the print page.
+    images: dict[str, Cover] = field(default_factory=dict)
 
     @property
     def identifier(self) -> str:
         return f"urn:uuid:{uuid.uuid5(_UUID_NS, f'{self.book.slug}/{self.lang}')}"
 
 
-def to_xhtml(fragment: str) -> str:
-    """Re-serialise a sanitized HTML fragment as well-formed XHTML."""
+#: A committed copy of every illustration an exportable edition shows, at the
+#: same relative path the site serves it under ``/illustrations/``. The same
+#: reason as ``BUNDLED_COVERS``: the API image is built from ``backend/`` alone,
+#: so it can't read ``frontend/static``, and fetching from the public site
+#: failed in production. ``export_book`` writes the copies, and
+#: ``tests_book_export.IllustrationTests`` fails when one is missing or stale.
+BUNDLED_ILLUSTRATIONS = Path(__file__).resolve().parent / "export_illustrations"
+
+
+def bundled_illustration_path(src: str) -> Path:
+    """Where the committed copy of the illustration at ``src`` lives."""
+    return BUNDLED_ILLUSTRATIONS / src.removeprefix("/illustrations/")
+
+
+def _raster(path: Path) -> Cover | None:
+    """A committed JPEG/PNG as a ``Cover``, or None if absent or unshippable."""
+    ext = path.suffix.lower()
+    if ext not in _MEDIA or not path.is_file():
+        return None
+    return Cover(data=path.read_bytes(), media_type=_MEDIA[ext], ext=ext.replace(".jpeg", ".jpg"))
+
+
+def _bundle_images(wrapper, images: dict[str, Cover]) -> None:
+    """Point each `<img>` at its bundled copy, collecting the file into ``images``.
+
+    ``/illustrations/a/b.jpg`` becomes ``illustrations/a/b.jpg`` — relative, so
+    it resolves inside the EPUB and beside the print page alike. An image with
+    no bundled copy, or in a format an EPUB can't carry (WebP), is removed and
+    its caption kept: a download must never fail, nor point at a missing file
+    (epubcheck rejects one). ``loading``/``decoding`` go too — they are web
+    hints, and not in the EPUB's XHTML vocabulary.
+    """
+    for img in list(wrapper.iter("img")):
+        src = img.get("src", "")
+        rel = src.removeprefix("/")
+        image = None
+        if ILLUSTRATION_SRC.match(src):
+            image = images.get(rel) or _raster(bundled_illustration_path(src))
+        if image is None:
+            log.warning("book_export: no bundled illustration for %s", src)
+            img.drop_tree()
+            continue
+        images[rel] = image
+        img.set("src", rel)
+        for hint in ("loading", "decoding"):
+            img.attrib.pop(hint, None)
+
+
+def to_xhtml(fragment: str, images: dict[str, Cover] | None = None) -> str:
+    """Re-serialise a sanitized HTML fragment as well-formed XHTML.
+
+    With ``images``, the fragment's illustrations are bundled as it goes (see
+    :func:`_bundle_images`) — the downloads pass it; nothing else needs to.
+    """
     if not fragment.strip():
         return ""
     wrapper = lxml_html.fragment_fromstring(fragment, create_parent="div")
+    if images is not None:
+        _bundle_images(wrapper, images)
     out = [html.escape(wrapper.text or "", quote=False)]
     for child in wrapper:
         out.append(etree.tostring(child, method="xml", encoding="unicode"))
@@ -261,9 +320,7 @@ def bundled_cover_path(book) -> Path | None:
 def edition_cover(book) -> Cover | None:
     """The cover for an export: the committed copy, else found as ``load_cover`` does."""
     bundled = bundled_cover_path(book)
-    if bundled is not None and bundled.is_file():
-        return Cover(data=bundled.read_bytes(), media_type=_MEDIA[bundled.suffix], ext=bundled.suffix)
-    return load_cover(cover_image_url(book))
+    return (bundled and _raster(bundled)) or load_cover(cover_image_url(book))
 
 
 def site_cover_file(book) -> Path:
@@ -334,11 +391,12 @@ def author_url(book: Book) -> str:
 
 def build_edition(book: Book) -> Edition:
     strings = STRINGS[book.language]
+    images: dict[str, Cover] = {}
     chapters = [
         ExportChapter(
             order=order,
             title=title or strings["chapter"].format(n=order),
-            body=to_xhtml(body),
+            body=to_xhtml(body, images),
             questions=tuple(
                 (qa.get("question", ""), qa.get("answer", "")) for qa in questions or []
             ),
@@ -361,6 +419,7 @@ def build_edition(book: Book) -> Edition:
         cover=edition_cover(book),
         bio=_bio_paragraphs(author_bio(book)),
         url=book_url(book),
+        images=images,
     )
 
 
@@ -532,6 +591,9 @@ nav li { margin: 0.4em 0; }
 .talk li { margin-bottom: 0.4em; }
 .talk h3 { font-size: 1em; margin: 1.2em 0 0.5em; }
 .talk .answers { font-size: 0.9em; }
+figure { margin: 1.5em 0; text-align: center; page-break-inside: avoid; }
+figure img { max-width: 100%; max-height: 90vh; height: auto; }
+figcaption { font-style: italic; font-size: 0.9em; margin-top: 0.5em; text-indent: 0; }
 """.strip()
 
 
@@ -601,6 +663,10 @@ def render_epub(ed: Edition) -> bytes:
         manifest.append(
             f'<item id="cover-image" href="cover{ed.cover.ext}" media-type="{ed.cover.media_type}" properties="cover-image"/>'
         )
+    manifest += [
+        f'<item id="img{n}" href="{href}" media-type="{img.media_type}"/>'
+        for n, (href, img) in enumerate(sorted(ed.images.items()), 1)
+    ]
     manifest += [f'<item id="{i}" href="{h}" media-type="application/xhtml+xml"/>' for i, h, _, _ in docs]
     spine = "".join(f'<itemref idref="{i}"/>' for i, _, _, _ in docs)
     direction = ' page-progression-direction="rtl"' if ed.rtl else ""
@@ -648,6 +714,8 @@ def render_epub(ed: Edition) -> bytes:
         put("OEBPS/style.css", EPUB_CSS)
         if ed.cover:
             put(f"OEBPS/cover{ed.cover.ext}", ed.cover.data, compress=False)
+        for href, img in sorted(ed.images.items()):
+            put(f"OEBPS/{href}", img.data, compress=False)
         for _, href, _, doc in docs:
             put(f"OEBPS/{href}", doc)
     return buf.getvalue()
@@ -710,6 +778,9 @@ blockquote p { text-indent: 0; }
 .talk li { margin: 0 0 1.5mm; }
 .talk h3 { font-size: 10pt; margin: 4mm 0 2mm; break-after: avoid; }
 .talk .answers { font-size: 9.5pt; color: #333; }
+figure { margin: 5mm 0; text-align: center; break-inside: avoid; }
+figure img { max-width: 100%; max-height: 150mm; width: auto; height: auto; }
+figcaption { font-style: italic; font-size: 9.5pt; margin-top: 2mm; text-align: center; }
 """.strip()
 
 #: EB Garamond as STATIC files (OFL; @fontsource/eb-garamond 5.3.0), one per

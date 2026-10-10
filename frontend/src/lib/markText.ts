@@ -28,9 +28,11 @@ export type Highlight = {
 /** Split a chapter's cleaned HTML into its top-level blocks' text — the same
  *  blocks the reader indexes marks against (p = block, s/e = chars in it). */
 export function paragraphs(bodyHtml: string): string[] {
-	const div = document.createElement('div');
-	div.innerHTML = bodyHtml;
-	return [...div.children].map((el) => el.textContent ?? '');
+	// A <template>, not a detached <div>: its content is inert, so a chapter's
+	// illustrations are not downloaded just to read the text around a note.
+	const tpl = document.createElement('template');
+	tpl.innerHTML = bodyHtml;
+	return [...tpl.content.children].map((el) => el.textContent ?? '');
 }
 
 /** The text one mark segment covers (`e === -1` = to the end of the block). */

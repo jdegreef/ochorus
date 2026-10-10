@@ -63,6 +63,9 @@ ATTACKS = [
     '<p style="position:fixed;inset:0;z-index:9999">overlay</p>',
     '<a href="javascript:alert(1)">x</a>',
     '<a href="data:text/html,<script>alert(1)</script>">x</a>',
+    # An allowlisted illustration still loses every attribute but its own.
+    '<img src="/illustrations/a/b.webp" alt="x" onerror="alert(1)">',
+    '<figure><img src="javascript:alert(1)" alt="x"></figure>',
 ]
 
 
@@ -135,6 +138,76 @@ class BiographyMarkupSurvivesTests(TestCase):
         stripped = clean_fragment(bio)
         for tag in ("<aside", "<cite", "<a "):
             self.assertNotIn(tag, stripped)
+
+
+STATIC = Path(__file__).resolve().parents[2] / "frontend" / "static"
+_IMG = re.compile(r"<img\b[^>]*>", re.I)
+_ATTR = re.compile(r'([a-z]+)=(?:"([^"]*)"|\'([^\']*)\')', re.I)
+
+
+class IllustrationMarkupTests(TestCase):
+    """In-book images: the one place the chapter profile keeps attributes."""
+
+    SRC = "/illustrations/the-princess-and-the-goblin/goblins.webp"
+
+    def test_a_figure_survives_with_only_its_own_attributes(self):
+        out = clean_fragment(
+            f'<figure class="x"><img src="{self.SRC}" alt="The goblins" width="454" '
+            'height="600" style="x" srcset="https://evil.test/a.png 2x" title="t">'
+            '<figcaption id="c">The goblins <em>fell</em> back.</figcaption></figure>'
+        )
+        self.assertEqual(
+            out,
+            '<figure><img alt="The goblins" decoding="async" height="600" '
+            f'loading="lazy" src="{self.SRC}" width="454"/>'
+            "<figcaption>The goblins <em>fell</em> back.</figcaption></figure>",
+        )
+
+    def test_an_image_from_anywhere_else_is_dropped(self):
+        for src in (
+            "https://evil.test/x.webp",
+            "//evil.test/x.webp",
+            "images/col01.jpg",  # a Gutenberg relative path
+            "/covers/x.webp",
+            "/illustrations/a/../../b.webp",
+            "/illustrations/a/b.svg",
+            "/illustrations/A/b.webp",
+            "data:image/png;base64,AAAA",
+        ):
+            with self.subTest(src=src):
+                self.assertNotIn("<img", clean_fragment(f'<img src="{src}" alt="x">'))
+
+    def test_an_image_without_alt_text_is_dropped(self):
+        for alt in ("", "   "):
+            with self.subTest(alt=alt):
+                self.assertEqual(clean_fragment(f'<img src="{self.SRC}" alt="{alt}">'), "")
+
+    def test_nonsense_dimensions_are_dropped_not_kept(self):
+        out = clean_fragment(f'<img src="{self.SRC}" alt="x" width="100%" height="99999">')
+        self.assertNotIn("width", out)
+        self.assertNotIn("height", out)
+
+    def test_a_figure_without_a_usable_image_cleans_as_it_always_did(self):
+        """Imports that never had allowlisted images must not change."""
+        raw = (
+            '<figure><img src="images/col01.jpg" alt="x">'
+            "<figcaption>She ran.</figcaption></figure><p>Text.</p>"
+        )
+        self.assertEqual(clean_fragment(raw), "She ran.<p>Text.</p>")
+        self.assertEqual(clean_fragment("<figcaption>stray</figcaption>"), "stray")
+
+    def test_both_profiles_allow_illustrations(self):
+        raw = f'<figure><img src="{self.SRC}" alt="x"></figure>'
+        self.assertEqual(clean_bio_html(raw), clean_fragment(raw))
+        self.assertIn("<img", clean_bio_html(raw))
+
+    def test_illustrations_are_idempotent(self):
+        raw = (
+            f'<figure><img src="{self.SRC}" alt=\'Said "hi" &amp; left\' width="10">'
+            "<figcaption>c</figcaption></figure>"
+        )
+        once = clean_fragment(raw)
+        self.assertEqual(clean_fragment(once), once)
 
 
 class GutenbergInternalLinkTests(TestCase):
@@ -460,6 +533,31 @@ class StoredContentIsSafeTests(TestCase):
             "{@html}:\n  " + "\n  ".join(sorted(set(offenders))),
         )
         self.assertGreater(scanned, 0, "scanned no bodies — the glob is wrong")
+
+    def test_every_shipped_illustration_exists_and_is_described(self):
+        """An `<img>` in a shipped body must name a committed file, with alt text.
+
+        The sanitizer only checks the path's SHAPE; this checks the file is
+        really there, so a typo is a failed build rather than a broken picture
+        on a prerendered page.
+        """
+        problems: list[str] = []
+        for path in sorted(CONTENT_ROOT.rglob("*.json")):
+            text = path.read_text()
+            if "<img" not in text:  # nearly every file — skip the parse
+                continue
+            for row in json.loads(text):
+                body = (row.get("fields") or {}).get("body_html") or ""
+                for tag in _IMG.findall(body):
+                    attrs = {m[0].lower(): m[1] or m[2] for m in _ATTR.findall(tag)}
+                    src = attrs.get("src", "")
+                    if not src.startswith("/illustrations/"):
+                        problems.append(f"{path.name}: not an illustration path: {src!r}")
+                    elif not (STATIC / src.lstrip("/")).is_file():
+                        problems.append(f"{path.name}: missing file {src}")
+                    if not attrs.get("alt", "").strip():
+                        problems.append(f"{path.name}: no alt text on {src}")
+        self.assertEqual(problems, [], "\n  ".join(["Broken illustrations:", *problems]))
 
     def test_no_shipped_author_biography_is_dangerous(self):
         offenders: list[str] = []

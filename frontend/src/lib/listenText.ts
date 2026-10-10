@@ -73,6 +73,9 @@ const BLOCK = /^(?:P|DIV|BLOCKQUOTE|LI|H[1-6])$/;
  * search hits. Those use `blankFootnoteMarkers`, which preserves length.
  */
 export function readerProse(root: Node): string {
+	// An illustration is for the eye — see `collect`. Checked here as well, for
+	// the root itself: a chapter's figure is a top-level block of its own.
+	if ((root as Element).tagName === 'FIGURE') return '';
 	return collect(root)
 		.replace(FOOTNOTE_MARKER, '')
 		.replace(/\s+/g, ' ')
@@ -95,6 +98,10 @@ function collect(el: Node): string {
 		const e = node as Element;
 		const tag = e.tagName;
 		if (isFootnoteMarker(e)) continue;
+		// An illustration is for the eye. Its caption quotes the sentence just
+		// read (that is how a plate is captioned), so speaking it would say the
+		// line twice; a figure-only block becomes empty and the engine skips it.
+		if (tag === 'FIGURE') continue;
 		if (tag === 'BR') {
 			out += ' ';
 			continue;

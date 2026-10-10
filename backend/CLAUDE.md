@@ -42,7 +42,10 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
   (`library/sanitize.py`); the reader trusts stored HTML and renders it with
   `{@html}`. Never store un-sanitized HTML; never sanitize hopefully at render.
   Two profiles, and picking the wrong one is destructive:
-  `clean_fragment` for chapter/sermon bodies (narrow, **no attributes**), and
+  `clean_fragment` for chapter/sermon bodies (narrow, **no attributes** — save
+  an illustration's `<img>`, which keeps a self-hosted `/illustrations/…` src,
+  alt and size; an exportable book's pictures also need their copy under
+  `library/export_illustrations/`, which the API's EPUB reads), and
   `clean_bio_html` for author bios, which legitimately carry
   `<aside class="prayer">` callouts, `<cite>` attributions and internal links —
   the chapter profile would unwrap 323 asides, 478 cites and 7 links across the

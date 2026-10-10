@@ -1996,6 +1996,50 @@
 	margin: 2em auto;
 	width: 40%;
 }
+/* In-book illustrations (`<figure><img><figcaption>`, allowlisted by the
+   sanitizer, self-hosted under /illustrations/). The <img> carries its own
+   width/height, and only `max-width` + `height: auto` act on it here — that
+   keeps the attribute-derived aspect ratio, so the box is reserved before the
+   file arrives and paged mode's page count is right from the first measure.
+   `object-fit: contain` is what lets `max-height` shrink a tall plate without
+   squashing it. `break-inside: avoid` keeps a plate and its caption on one
+   page in paged mode, where the cap is lower so the pair fits a column. */
+.reading figure {
+	margin: 1.8em 0;
+	text-align: center;
+	break-inside: avoid;
+}
+/* Any image the sanitizer let through, figure or not, stays inside the column. */
+.reading img {
+	max-width: 100%;
+	height: auto;
+}
+.reading figure img {
+	display: block;
+	margin-inline: auto;
+	max-height: 80vh;
+	/* No frame (shadow/radius): when max-height clamps a plate, `contain`
+	   letterboxes it inside a wider box, and a frame would outline the gap. */
+	object-fit: contain;
+}
+.paged .reading figure img {
+	max-height: 55vh;
+}
+/* A short screen (landscape phone): the column is ~300px, so the plate gets a
+   smaller share or plate + caption + margins outgrow it and, unable to break,
+   are clipped. */
+@media (max-height: 600px) {
+	.paged .reading figure img {
+		max-height: 35vh;
+	}
+}
+.reading figcaption {
+	margin-top: 0.7em;
+	font-size: 0.86em;
+	line-height: 1.5;
+	font-style: italic;
+	color: var(--muted);
+}
 
 /* ── Print ──────────────────────────────────────────────────────────────────
    There was no print stylesheet at all, so printing or PDF-ing a chapter

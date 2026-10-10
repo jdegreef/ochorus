@@ -288,8 +288,10 @@ grammar). If a quotation's passage was not supplied, translate it carefully and 
 prose should read as if written by a devotional author in {cfg['name']}, never word-for-word \
 translationese. The source English is often Victorian; translate the meaning, not the syntax.
 5. HTML STRUCTURE IS PRESERVED EXACTLY: the body is sanitized HTML. Keep every tag, in order, \
-as-is (<p>, <h2>, <h3>, <blockquote>, <em>, <i>, <hr>). Translate only the human-readable text \
-inside them. Never add, remove, or reorder tags. Preserve HTML entities where needed.
+as-is (<p>, <h2>, <h3>, <blockquote>, <em>, <i>, <hr>, <figure>, <img>, <figcaption>). \
+Translate only the human-readable text inside them — a <figcaption> is text, so translate it; \
+an <img> tag is copied character for character, attributes and all. Never add, remove, or \
+reorder tags. Preserve HTML entities where needed.
 6. Proper names keep their conventional {cfg['name']} biblical forms where one exists; \
 otherwise keep the English form.
 
