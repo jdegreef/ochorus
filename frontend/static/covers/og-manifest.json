@@ -3961,6 +3961,16 @@
 				478
 			]
 		},
+		"at-the-masters-feet": {
+			"ground": "fa17689d5e35829e54247c65a4d041d37199a428494acdb84c58c163e70a73f5",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"brave-for-god": {
 			"ground": "20c53172ca517970f584b2547b408aa333f33525846b6322c9b60b031a52dd9e",
 			"style": "young",
@@ -14289,6 +14299,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"reality-and-religion": {
+			"ground": "a7a72f0eb6c870fa919f383874a04a31a6a514bba7ee8e61ff5ace81c8c6a325",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"reality-of-prayer": {
 			"ground": "3ff7e009de2d59ab5a76e18ec46a5100eaaf0141c4d00598d254897c97e0cca9",
 			"style": "devotional",
@@ -17861,6 +17881,16 @@
 				271,
 				524
 			]
+		},
+		"with-and-without-christ": {
+			"ground": "9601a1b72235d02fc50246b76a19fc4c399b08734e706898b085620c1d08ea1f",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		}
 	}
 }
