@@ -5807,6 +5807,36 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"es/mortification-of-sin": {
+			"ground": "1ebb67c752ae73b7d75218477c7570e06f4f9707aff756da74cc5cab2942088b",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[105, 278, 495, 351],
+					[140, 337, 460, 410],
+					[150, 396, 450, 469]
+				],
+				"subtitle": [
+					[53, 522, 547, 543]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				252,
+				543
+			]
+		},
 		"es/necessity-of-prayer": {
 			"ground": "3df1bade5a5b97226ca4291390c2dc77ecd451f13fc040a9e3b56ad5ff8723f4",
 			"style": "devotional",
