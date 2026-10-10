@@ -16397,6 +16397,16 @@
 				556
 			]
 		},
+		"tell-me-the-story-1": {
+			"ground": "a878a98321ef1ce6ef0a204522921bf99a71fd17d3fedc8cec9add6682617656",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"ten-commandments": {
 			"ground": "66bc7534f5894353ab2420e9d7770736c70994ce2d0ae9ee07510660ca018fb3",
 			"style": "press",
