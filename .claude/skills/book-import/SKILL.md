@@ -2127,6 +2127,21 @@ gates to pre-check: colon-subtitle chapter titles ("Name: The Hook") must satisf
 chapters (~350–450 words) read better than long ones. `build_brave_for_god` (six
 young-readers hero lives) is the model. *(brave-for-god, 2026-09)*
 
+**A children's Original WITH end-of-chapter questions** (`build_tell_me_the_story`
+is the model — the Markdown subset of `build_rooted.parse` plus a
+`### Talk about it together` block of `- Q:` / `  A:` lines lifted into
+`Chapter.study_questions`). Gotchas that each cost a test run: (1) `tests_fixture`
+wants questions on EVERY chapter or none — the Introduction needs its three too;
+(2) key the lifted questions by `_single_marks(title)`, as `parse` curls the
+title's apostrophe, or "The Snake's Trick" silently gets none; curl the Q/A text
+the same way; (3) `about_html` may not contain `<em>` (`tests_about_work`) — use
+quotation marks for a hymn/book title; (4) `book_meta/en.json` ≤125 chars;
+(5) `generate_covers` draws a BLANK plate until the book is a topic member in the
+dev DB — add it to `topic_seed.py`, run `seed_topics`, THEN generate; (6) the repo
+has no BSB text: fetch `https://bible.helloao.org/api/BSB/<BOOK>/<ch>.json` into
+the scratchpad and check every verse card and every `"…" (Ref)` quotation by
+script (normalise case/punctuation, split on `...`). *(tell-me-the-story, 2026-10)*
+
 ## Two kinds of fix
 
 - **Improve the importer** (`import_ochorus.py`) when the pattern recurs across
