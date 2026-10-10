@@ -150,5 +150,12 @@
     "note": [
       "Job #4840. Ships with the last of the four Spanish companions: key-teachings-of-a-b-simpson (#5960) and key-teachings-of-jonathan-edwards (#5962) are merged, key-teachings-of-richard-baxter is #5964. «Cristo nuestro Salvador, Santificador, Sanador y Rey que viene» is the Simpson companion's own wording."
     ]
+  },
+  "the-puritan-heart": {
+    "title": "El corazón puritano",
+    "description": "Ocho semanas con tres maestros de la vida interior. Richard Sibbes venda la caña cascada, John Owen hace guerra contra el pecado que aún mora en nosotros, y Thomas Watson descansa toda la lucha en la promesa de que todas las cosas ayudan a bien.",
+    "note": [
+      "Job #4845. Prose-ahead for the plan's last two Spanish books: all-things-for-good («Todas las cosas para bien») already ships in es, the-bruised-reed is this PR, and mortification-of-sin is job #4846. The plan seeds in es once both are merged."
+    ]
   }
 }
