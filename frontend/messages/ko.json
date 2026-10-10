@@ -1582,5 +1582,8 @@
   "seals_setting": "읽기 인장",
   "seals_setting_sub": "책의 끝과 책장에 표시되는 인장.",
   "seals_show": "표시",
-  "seals_hide": "숨기기"
+  "seals_hide": "숨기기",
+  "cite_book": "이 책 인용하기",
+  "cite_sermon": "이 설교 인용하기",
+  "cite_note": "필요한 양식으로 인용문을 복사하세요."
 }

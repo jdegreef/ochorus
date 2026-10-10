@@ -1582,5 +1582,8 @@
   "seals_setting": "Reading seals",
   "seals_setting_sub": "Seals at the end of a book and on your Bookshelf.",
   "seals_show": "Show",
-  "seals_hide": "Hide"
+  "seals_hide": "Hide",
+  "cite_book": "Cite this book",
+  "cite_sermon": "Cite this sermon",
+  "cite_note": "Copy a citation in the style you need."
 }

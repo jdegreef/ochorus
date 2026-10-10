@@ -1582,5 +1582,8 @@
   "seals_setting": "Obubonero bw’okusoma",
   "seals_setting_sub": "Obubonero ku nkomerero y’ekitabo ne ku sseduuka yo ey’ebitabo.",
   "seals_show": "Laga",
-  "seals_hide": "Kweka"
+  "seals_hide": "Kweka",
+  "cite_book": "Laga ensibuko y’ekitabo kino",
+  "cite_sermon": "Laga ensibuko y’obubaka buno",
+  "cite_note": "Koppa ensibuko mu ngeri gy’oyagala."
 }

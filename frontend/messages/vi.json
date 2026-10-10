@@ -1582,5 +1582,8 @@
   "seals_setting": "Con dấu đọc sách",
   "seals_setting_sub": "Con dấu ở cuối sách và trên kệ sách của bạn.",
   "seals_show": "Hiện",
-  "seals_hide": "Ẩn"
+  "seals_hide": "Ẩn",
+  "cite_book": "Trích dẫn sách này",
+  "cite_sermon": "Trích dẫn bài giảng này",
+  "cite_note": "Sao chép trích dẫn theo kiểu bạn cần."
 }
