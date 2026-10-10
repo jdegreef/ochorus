@@ -143,5 +143,12 @@
     "note": [
       "Queue job #4819: grace-abounding ships in Spanish as «Gracia abundante para el primero de los pecadores», which completes this (the-pilgrims-way, es) plan with «Junto a la puerta estrecha» and «El progreso del peregrino». Prose ships in the same PR so the es plans page never publishes the English card."
     ]
+  },
+  "send-the-fire": {
+    "title": "Envía el fuego: orar por el avivamiento",
+    "description": "Cómo llega el avivamiento y cómo pedirlo en oración. Las conferencias de Charles Finney sobre las condiciones del avivamiento, R. A. Torrey sobre el bautismo con el Espíritu Santo que lo impulsa, y los sermones con que Dios estremeció Nueva Inglaterra bajo Jonathan Edwards.",
+    "note": [
+      "Job #4843. Ships with the last of the plan's three Spanish editions: revival-lectures and baptism-with-the-holy-spirit were already shipped in es; selected-sermons-edwards is this PR."
+    ]
   }
 }
