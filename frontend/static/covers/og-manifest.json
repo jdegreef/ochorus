@@ -5532,6 +5532,37 @@
 				460
 			]
 		},
+		"es/key-teachings-of-richard-baxter": {
+			"ground": "a7389de7d340a799790a1dbd404ec7a07d971f4f3c17708f86529922f1aa02a4",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[147, 102, 453, 131]
+				],
+				"title": [
+					[105, 169, 495, 232],
+					[200, 225, 400, 288],
+					[107, 280, 493, 343]
+				],
+				"subtitle": [
+					[160, 404, 440, 432],
+					[183, 432, 417, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
+			]
+		},
 		"es/life-and-diary-of-david-brainerd": {
 			"ground": "802a4edfc703abbc2d09834c302f1ed7b0baf902d1685c6d1a6e672de520e7f3",
 			"style": "enlightenment",
