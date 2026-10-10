@@ -16793,6 +16793,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"the-soul-winner": {
+			"ground": "1b3a98dd278837cb4378135a91eaa9605193e82453851fa5320287fb73c3875e",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-way-to-god": {
 			"ground": "b4d69b86a37935f6cd1406238b9a4059058a03a900550f56bb3263413d4b1056",
 			"style": "revival",

@@ -433,6 +433,7 @@ TOPICS = [
             "on-the-priesthood",
             "power-through-prayer",
             "how-to-bring-men-to-christ",
+            "the-soul-winner",
             "men-who-tended-the-flock-2",
             "the-fundamental-doctrines-of-the-christian-faith",
         ],
