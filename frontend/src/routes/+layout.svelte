@@ -61,6 +61,7 @@
 	import { currentBook } from '$lib/currentBook.svelte';
 	import { BENEDICTION, PASSAGE } from '$lib/benediction';
 	import { elementVisible } from '$lib/scrollSpy.svelte';
+	import { pageShowsBook } from '$lib/footerResume';
 	import { dismissable } from '$lib/actions/dismissable';
 	// Preload the primary Latin subsets of the two brand fonts (display + body).
 	// @fontsource already ships them font-display:swap; preloading fetches them on
@@ -275,12 +276,11 @@
 	// signed-in reader's current book, else a way into the library.
 	const showInvite = $derived(auth.enabled && !auth.user && !onLogin);
 	const path = $derived(deLocalizeHref($page.url.pathname));
+	// Home's hero always shows it, so home never even resolves it.
 	const wantResume = $derived(!!auth.user && path !== '/');
-	// Not on the pages that already show it: home (the hero resumes it, hence
-	// wantResume) and that book's own detail and chapter pages.
 	const resume = $derived.by(() => {
 		const item = wantResume ? currentBook.item : null;
-		return item && !`${path}/`.startsWith(`/books/${item.slug}/`) ? item : null;
+		return item && !pageShowsBook(path, item.slug) ? item : null;
 	});
 
 	// Resolved only while it could be shown AND the footer is within reach: it
@@ -499,7 +499,10 @@
 						</div>
 					{:else if resume}
 						<!-- Lazy: WorkCard brings the cover stack ($lib/components/FooterResume). -->
-						{#await import('$lib/components/FooterResume.svelte') then { default: FooterResume }}
+						{#await import('$lib/components/FooterResume.svelte')}
+							<!-- Holds the cell so Reading Plans doesn't jump columns. -->
+							<div aria-hidden="true"></div>
+						{:then { default: FooterResume }}
 							<FooterResume item={resume} />
 						{/await}
 					{:else}
