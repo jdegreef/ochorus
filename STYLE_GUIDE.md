@@ -345,7 +345,7 @@ sits on — an `<h2>` had drifted to four sizes (`.text-h1` on the home shelves,
 browse shelves), so the same kind of heading looked different a click apart.
 
 - **`.section-label`** — the label above a *list* of cards or rows ("Continue
-  reading", "New to the library"). Small-caps, muted.
+  reading", "Popular searches"). Small-caps, muted.
 - **`.text-h3`** — a titled *prose* sub-section inside a leaf page ("About this
   book", "In this plan").
 - **`.text-h2`** — a titled *section* of a page (a Settings group, an About

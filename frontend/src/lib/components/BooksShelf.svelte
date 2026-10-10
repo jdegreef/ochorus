@@ -121,12 +121,6 @@
 		return c;
 	});
 
-	// Newest additions first — a "new to the library" discovery strip. Hidden
-	// while searching/filtering, and only when there are enough books to bother.
-	const recent = $derived(
-		[...books].sort((a, b) => b.created_at.localeCompare(a.created_at)).slice(0, 8)
-	);
-
 	const filtered = $derived.by(() => {
 		const q = filters.values.q.trim().toLowerCase();
 		return books.filter((b) => {
@@ -364,34 +358,6 @@
 						<div class="grid w-64 shrink-0">
 							<SeriesCard series={s} compact />
 						</div>
-					{/each}
-				</div>
-			</section>
-		{/if}
-
-		<!-- New to the library -->
-		{#if books.length > 8 && !searching}
-			<section class="mb-8">
-				<h2 class="section-label">
-					{t('books.newTitle')}
-				</h2>
-				<div class="cover-rail flex gap-4 pb-1" use:scrollEdges>
-					{#each recent as book (book.slug)}
-						<!-- A tile this narrow can't hold most titles on two lines, and
-						     "The Evangelization o…" / "Smith Wiggles…" left readers
-						     guessing (QA report): three title lines, the author wraps
-						     rather than ellipsizes, and the full pair rides the tooltip. -->
-						<a
-							href={localizeHref(`/books/${book.slug}`)}
-							class="w-20 shrink-0 hover:no-underline sm:w-24"
-							title="{book.title} — {book.author.name}"
-						>
-							<BookCover {book} />
-							<div class="mt-1.5 line-clamp-3 text-eyebrow font-medium text-text">
-								{book.title}
-							</div>
-							<div class="line-clamp-2 text-eyebrow text-muted">{book.author.name}</div>
-						</a>
 					{/each}
 				</div>
 			</section>

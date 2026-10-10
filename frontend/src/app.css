@@ -2638,7 +2638,7 @@ nav.appnav .navsearch:hover {
 }
 
 /* The label above a block of content within a page — "Continue reading",
-   "New to the library", "Popular searches". Distinct from the page EYEBROW
+   "Popular searches". Distinct from the page EYEBROW
    above an <h1>, which <PageHeader> owns.
 
    These had drifted into three tracking values (wide/wider/widest) and three
@@ -3510,7 +3510,7 @@ a.sermon-row-title:hover {
 	}
 }
 
-/* A horizontal shelf of covers (Continue reading, New to the library, an
+/* A horizontal shelf of covers (Continue reading, an
    author's book rail). Unlike .chip-scroller it never wraps — a rail always
    scrolls — so it keeps overflow at every width; but the end-edge fade that
    signals "more this way" (in place of a hard clip) is only wanted where it
