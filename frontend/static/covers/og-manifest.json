@@ -5654,6 +5654,16 @@
 				567
 			]
 		},
+		"es/life-of-antony": {
+			"ground": "74857e65971bf8ea6e7b8b23eddfdcbba9a0cbd11a03f62965955e14d75619d2",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/indigo",
+			"bar": 0
+		},
 		"es/lord-teach-us-to-pray-2": {
 			"ground": "1775aa31a125fb01ed70e2b9736e21d2193c62d2d0ba4751f750c7911114dabc",
 			"style": "devotional",
@@ -5855,6 +5865,35 @@
 			"scrim": 1,
 			"layout": "rail/indigo",
 			"bar": 0
+		},
+		"es/on-the-priesthood": {
+			"ground": "c7f6c3fd944aa81cd414d70bc043a27f8f5133197754c5e1049a4c35c885ccca",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[131, 102, 469, 131]
+				],
+				"title": [
+					[175, 314, 425, 376],
+					[127, 360, 473, 422]
+				],
+				"subtitle": [
+					[62, 451, 538, 472]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				323,
+				472
+			]
 		},
 		"es/pandita-ramabai-a-life-children": {
 			"ground": "abe4ff7ffffeb6664644328cbd5e132bada8923066366029e19ef029c1be7692",
@@ -6166,6 +6205,16 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0.04
+		},
+		"es/selected-sermons-edwards": {
+			"ground": "e1ba0ae042b70a3a531992afea4f192df2c1357c74508570174e16747a015def",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/slate",
+			"bar": 0
 		},
 		"es/selected-sermons-whitefield": {
 			"ground": "48a65fc59a55dcddea239f72402100f66c206c54df2dc97b160e9dacfeb376bc",
