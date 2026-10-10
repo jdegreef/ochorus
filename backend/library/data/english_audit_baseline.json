@@ -147,6 +147,13 @@
   "justification-by-grace": {
    "orphan-close-quote": 1
   },
+  "lectures-to-my-students": {
+   "orphan-close-quote": 1,
+   "space-before-punct": 4
+  },
+  "lectures-to-my-students-second-series": {
+   "space-before-punct": 4
+  },
   "let-us-pray-2": {
    "orphan-close-quote": 1,
    "space-before-punct": 2
@@ -193,7 +200,7 @@
    "hyphen-space": 1,
    "orphan-close-quote": 8,
    "space-before-punct": 7,
-   "word-fusion": 2
+   "word-fusion": 1
   },
   "our-duty-to-israel": {
    "orphan-close-quote": 1

@@ -11439,6 +11439,26 @@
 				376
 			]
 		},
+		"lectures-to-my-students": {
+			"ground": "50ecd72319750165b8e03713a83f60d936a416dd1194989f2b537b66b721645b",
+			"style": "revival",
+			"volume": "1",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"lectures-to-my-students-second-series": {
+			"ground": "fb2c6d281d2c548fd3faaae61aac8ee0e950d18dd65fc1779eebd7032a40f944",
+			"style": "revival",
+			"volume": "2",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"let-us-pray-2": {
 			"ground": "4725e322e9f3052085a3cf616a13b1d6bbb3a9f9efe226aaf09d166fcf8aa6c9",
 			"style": "house",

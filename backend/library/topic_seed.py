@@ -439,6 +439,8 @@ TOPICS = [
             "men-who-tended-the-flock-2",
             "the-fundamental-doctrines-of-the-christian-faith",
             "come-ye-children",
+            "lectures-to-my-students",
+            "lectures-to-my-students-second-series",
         ],
     ),
     (
