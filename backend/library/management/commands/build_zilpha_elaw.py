@@ -25,6 +25,9 @@ field of travel), under plain editorial titles; `CHAPTERS` names each break by
 the opening words of its first paragraph. The wording is untouched apart from
 `CORRECTIONS`: obvious printer's errors (broken or dropped type, a wrong digit
 the context proves), each one listed there.
+Fixes found AFTER import (english-qa, translators) go in
+`corrections.BODY_CORRECTIONS` like any other book's; this table stays the record
+of the 1846 printer's errors.
 
     DJANGO_DEBUG=true uv run python manage.py build_zilpha_elaw
 """
