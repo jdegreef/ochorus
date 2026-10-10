@@ -5501,6 +5501,37 @@
 				460
 			]
 		},
+		"es/key-teachings-of-jonathan-edwards": {
+			"ground": "f90ce5862c82a85e8131357b4c1e0a2bbfc9b609e755dea500f9df6c0b216dc9",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[117, 102, 483, 131]
+				],
+				"title": [
+					[105, 169, 495, 232],
+					[75, 225, 525, 288],
+					[188, 280, 412, 343]
+				],
+				"subtitle": [
+					[160, 404, 440, 432],
+					[183, 432, 417, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
+			]
+		},
 		"es/key-teachings-of-richard-baxter": {
 			"ground": "a7389de7d340a799790a1dbd404ec7a07d971f4f3c17708f86529922f1aa02a4",
 			"style": "originals",
