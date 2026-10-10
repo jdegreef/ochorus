@@ -1,5 +1,7 @@
 import type { IconName } from '$lib/components/Icon.svelte';
+import { editionKind } from './edition';
 import { withTrailingSlash } from './href';
+import { localeName } from './lang.svelte';
 import {
 	toCoverBook,
 	toCoverFace,
@@ -10,7 +12,9 @@ import {
 	type BookDetail,
 	type BookSummary,
 	type CoverBook,
-	type PlanSummary
+	type EditionRung,
+	type PlanSummary,
+	type Sermon
 } from './library-public';
 import { LIVE_LOCALES } from './live-locales.generated';
 
@@ -88,6 +92,18 @@ export interface ForPage {
 	/** Writers to meet, by author slug, in order; the build keeps the first
 	 *  `AUTHORS_SHOWN` with an English page. */
 	authors: string[];
+	/** Sermon discussion series: a sermon a week, each with its study
+	 *  questions. The build keeps the first `SERIES_WEEKS` picks published in
+	 *  English with questions, so the rest are backups. */
+	series?: ForShelfSpec[];
+	/** "Three levels": works shown as their children's edition, teens edition
+	 *  and full text side by side — each slug the full text's, the young
+	 *  editions found by the slug convention (root CLAUDE.md). A work whose
+	 *  three are not all published is skipped; `LEVELS_SHOWN` are drawn. */
+	levels?: string[];
+	/** Show the library in each live language besides English: its counts,
+	 *  a few covers and a way into that language's library. */
+	languages?: boolean;
 	/** The ready-made message a leader passes on — a bulletin line, a group
 	 *  chat — and the page it points readers to (an unlocalized route path). */
 	invite: { text: string; href: string };
@@ -104,7 +120,9 @@ export const FOR_ANCHORS = {
 	'#plans': { section: 'plans', fallback: '/plans' },
 	'#shelves': { section: 'shelves', fallback: '/books' },
 	'#guides': { section: 'guides', fallback: '/young-readers' },
-	'#offline': { section: 'offline', fallback: '/books' }
+	'#offline': { section: 'offline', fallback: '/books' },
+	'#languages': { section: 'languages', fallback: '/books' },
+	'#series': { section: 'series', fallback: '/sermons' }
 } as const satisfies Record<string, { section: keyof ForShelfData; fallback: string }>;
 
 export type ForAnchor = keyof typeof FOR_ANCHORS;
@@ -125,25 +143,43 @@ export const forHref = (href: string, shelf: ForShelfData): string =>
 	isForAnchor(href) && !shelf[FOR_ANCHORS[href].section].length ? FOR_ANCHORS[href].fallback : href;
 
 /** Is this a snapshot the page can draw? A tab still holding the earlier
- *  format (a bare array of books) or anything else gets the empty one. */
-export const isShelfData = (x: unknown): x is ForShelfData =>
-	!!x &&
-	typeof x === 'object' &&
-	Object.values(FOR_ANCHORS).every(({ section }) => Array.isArray((x as Record<string, unknown>)[section]));
+ *  format (a bare array of books) or anything else gets the empty one. A
+ *  section newer than the shelves may be absent — a cached copy of a release
+ *  before it existed; the load fills it in from the empty snapshot — but one
+ *  that is there is a list. */
+export const isShelfData = (x: unknown): x is ForShelfData => {
+	if (!x || typeof x !== 'object' || !Array.isArray((x as ForShelfData).shelves)) return false;
+	const at = (section: string) => (x as Record<string, unknown>)[section];
+	return Object.values(FOR_ANCHORS).every(({ section }) => at(section) === undefined || Array.isArray(at(section)));
+};
 
 /** The live languages besides English, by their English names, from the
  *  registry's "Go live" list — so the copy names exactly what the site
  *  serves, and a language taken live reaches it on the next build. ICU calls
  *  Luganda "Ganda"; Ochorus uses the name its readers use. */
 const inEnglish = new Intl.DisplayNames(['en'], { type: 'language' });
-const OTHER_LANGUAGES = LIVE_LOCALES.filter((l) => l !== 'en').map((l) =>
-	l === 'lg' ? 'Luganda' : (inEnglish.of(l) ?? l)
-);
+const OTHER_LANGUAGES = LIVE_LOCALES.filter((l) => l !== 'en').map(englishName);
 /** "a, b and c". */
 const series = (xs: string[]) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} and ${xs.at(-1)}`);
 
 const FREE_ANSWER =
 	'Yes. Every book and sermon on Ochorus is free to read, with no paywall, no subscription and no ads. The classics themselves are in the public domain, and Ochorus is a ministry, not a business.';
+
+/** A sermon series two pages share, so a replaced pick changes both. */
+const PRAYER_SERIES: ForShelfSpec = {
+	title: 'Six weeks on prayer',
+	note: 'Six preachers on the life of prayer: one sermon a week, read at home and talked through together.',
+	picks: [
+		'the-golden-key-of-prayer',
+		'do-you-pray',
+		'jesus-on-prayer',
+		'prevailing-prayer',
+		'intercession-every-christians-duty',
+		'order-and-argument-in-prayer',
+		'in-everything-by-prayer',
+		'a-pattern-of-prayer'
+	]
+};
 
 export const FOR_PAGES: ForPage[] = [
 	{
@@ -258,6 +294,7 @@ export const FOR_PAGES: ForPage[] = [
 			'george-whitefield',
 			'e-m-bounds'
 		],
+		series: [PRAYER_SERIES],
 		invite: {
 			text: 'Our church is reading the great Christian classics together on Ochorus: free books, sermons and reading plans on any phone, with no ads and no sign-up.',
 			href: '/plans'
@@ -293,7 +330,7 @@ export const FOR_PAGES: ForPage[] = [
 		seoDescription:
 			'Free Christian classics, sermons and reading plans for small groups and Bible studies. Everyone reads the same book on their own phone, no account needed.',
 		primary: { href: '#plans', label: 'Pick a plan for your group' },
-		secondary: { href: '/sermons', label: 'Sermons with study questions' },
+		secondary: { href: '#series', label: 'Sermons with study questions' },
 		pointsHeading: 'Why small groups use Ochorus',
 		points: [
 			{
@@ -396,6 +433,23 @@ export const FOR_PAGES: ForPage[] = [
 			'e-m-bounds',
 			'george-muller',
 			'john-wesley'
+		],
+		series: [
+			PRAYER_SERIES,
+			{
+				title: 'Six weeks on grace',
+				note: 'The heart of the gospel, from the great evangelical preachers: what grace is, and what it does.',
+				picks: [
+					'christ-crucified',
+					'justification-by-grace',
+					'the-method-of-grace',
+					'salvation-by-faith',
+					'the-almost-christian',
+					'are-you-born-again',
+					'free-grace',
+					'grace-abounding'
+				]
+			}
 		],
 		invite: {
 			text: 'Our group’s next book is free on Ochorus. Read it on your phone, with no sign-up, and we’ll talk it through when we meet.',
@@ -572,7 +626,8 @@ export const FOR_PAGES: ForPage[] = [
 			{
 				icon: 'globe',
 				title: 'Full editions in other languages',
-				body: `Books are published as full editions in ${series(OTHER_LANGUAGES)} as well as English, with more languages on the way, so people can read in their own language.`
+				body: `Books are published as full editions in ${series(OTHER_LANGUAGES)} as well as English, with more languages on the way, so people can read in their own language.`,
+				link: { href: '#languages', label: 'See what each language has' }
 			},
 			{
 				icon: 'compass',
@@ -676,6 +731,7 @@ export const FOR_PAGES: ForPage[] = [
 			'john-r-mott',
 			'mary-slessor'
 		],
+		languages: true,
 		invite: {
 			text: 'Free Christian classics to read on any phone, in several languages, with nothing to pay and no sign-up: Ochorus.',
 			href: '/books'
@@ -1109,6 +1165,7 @@ export const FOR_PAGES: ForPage[] = [
 			'samuel-ajayi-crowther',
 			'c-s-lewis'
 		],
+		levels: ['pilgrims-progress', 'a-retrospect', 'the-life-of-trust'],
 		invite: {
 			text: 'Our class texts are free on Ochorus, on any device and at several reading levels, with no account needed.',
 			href: '/books'
@@ -1243,6 +1300,7 @@ export const FOR_PAGES: ForPage[] = [
 			'john-bunyan',
 			'pandita-ramabai'
 		],
+		levels: ['pilgrims-progress', 'the-life-of-trust', 'the-practice-of-the-presence-of-god'],
 		invite: {
 			text: 'A free library of Christian living books for every age, with editions for children and teens and printable leader’s guides: Ochorus.',
 			href: '/young-readers'
@@ -1382,6 +1440,7 @@ export const FOR_PAGES: ForPage[] = [
 			'mary-slessor',
 			'hudson-taylor'
 		],
+		levels: ['pilgrims-progress', 'amanda-smith-autobiography', 'the-life-of-trust'],
 		invite: {
 			text: 'Free Christian books for children and teens on Ochorus: true stories, classic tales and five-minute family devotions. No ads and nothing to buy.',
 			href: '/young-readers'
@@ -1477,6 +1536,10 @@ export interface ForShelfData {
 	/** The quotation, as the favorites shelf carries one: the quote and its author. */
 	quote: SavedQuote | null;
 	counts: ForCounts | null;
+	series: { title: string; note: string; sermons: ForSermon[] }[];
+	/** Each work's editions, youngest first: children, teens, the full text. */
+	levels: ForRung[][];
+	languages: ForLanguage[];
 }
 
 /** What the page shows when the snapshot is missing (offline, a stale tab). */
@@ -1487,7 +1550,10 @@ export const EMPTY_SHELF_DATA: ForShelfData = {
 	offline: [],
 	authors: [],
 	quote: null,
-	counts: null
+	counts: null,
+	series: [],
+	levels: [],
+	languages: []
 };
 
 /** How many writer cards a page shows: two rows of the person grid. */
@@ -1522,10 +1588,124 @@ export function forQuote(page: QuotePage, slug: string): SavedQuote | null {
 /** How many works a book list holds: its young-reader editions are the same
  *  works retold (the slug convention is the link — root CLAUDE.md). */
 export const countWorks = (books: Pick<BookSummary, 'slug'>[]): number =>
-	books.filter((b) => !/-(children|teens)$/.test(b.slug)).length;
+	books.filter((b) => !editionKind(b.slug)).length;
 
 /** The message a leader passes on: the page's line and the link it promises. */
 export const inviteMessage = (invite: ForPage['invite'], siteUrl: string): string =>
 	`${invite.text}\n${siteUrl}${withTrailingSlash(invite.href)}`;
 
 
+
+/** How many sermons a discussion series runs to: a sermon a week, a
+ *  six-week term. */
+export const SERIES_WEEKS = 6;
+
+/** One week of a sermon series: what its row draws. */
+export interface ForSermon {
+	slug: string;
+	title: string;
+	scripture_ref: string;
+	author: { slug: string; name: string };
+	/** How many study questions the sermon carries. */
+	questions: number;
+	word_count: number;
+}
+
+/** A sermon detail as a series week, or null when it has no study questions
+ *  to discuss — the one thing the series promises. */
+export const toForSermon = (
+	s: Pick<Sermon, 'slug' | 'title' | 'scripture_ref' | 'word_count' | 'author_name' | 'author_slug'> &
+		Partial<Pick<Sermon, 'study_questions'>>
+): ForSermon | null =>
+	s.study_questions?.length
+		? {
+				slug: s.slug,
+				title: s.title,
+				scripture_ref: s.scripture_ref,
+				author: { slug: s.author_slug, name: s.author_name },
+				questions: s.study_questions.length,
+				word_count: s.word_count
+			}
+		: null;
+
+/** How many works a "three levels" section shows. */
+export const LEVELS_SHOWN = 2;
+
+/** A work's rungs, youngest first, as the hubs' edition ladders order them. */
+const RUNGS = ['children', 'teens', 'full'] as const satisfies EditionRung['rung'][];
+
+/** One edition in a "three levels" row. */
+export interface ForRung {
+	rung: EditionRung['rung'];
+	book: CoverBook;
+}
+
+/** Each full-text slug's editions out of the live English list, youngest
+ *  first, a young edition found by the slug convention — only works with all
+ *  three published, the first `LEVELS_SHOWN` of them. */
+export function forLevels(english: BookSummary[], fullSlugs: string[]): ForRung[][] {
+	const bySlug = new Map(english.map((b) => [b.slug, b]));
+	return fullSlugs
+		.map((base) => RUNGS.map((rung) => ({ rung, book: bySlug.get(rung === 'full' ? base : `${base}-${rung}`) })))
+		.filter((family): family is { rung: ForRung['rung']; book: BookSummary }[] => family.every((r) => r.book))
+		.slice(0, LEVELS_SHOWN)
+		.map((family) => family.map((r) => ({ rung: r.rung, book: toCoverBook(r.book) })));
+}
+
+/** One live language's library, for the missionaries' language shelves. */
+export interface ForLanguage {
+	code: string;
+	/** Its English name ("Swahili"), and its own ("Kiswahili") as the
+	 *  registry spells it — the language picker's word for it. */
+	name: string;
+	native: string;
+	counts: ForCounts;
+	/** A few of its covers: the page's own picks where that language has
+	 *  them, then the rest of its works. */
+	covers: CoverBook[];
+}
+
+/** "61 books · 59 sermons", leaving out what there is none of. */
+export const countsLine = (c: ForCounts): string =>
+	(
+		[
+			[c.books, 'book', 'books'],
+			[c.sermons, 'sermon', 'sermons'],
+			[c.plans, 'reading plan', 'reading plans']
+		] as const
+	)
+		.filter(([n]) => n)
+		.map(([n, one, many]) => `${n} ${n === 1 ? one : many}`)
+		.join(' · ');
+
+/** How many covers a language's row shows. */
+export const LANGUAGE_COVERS = 4;
+
+/** A language's English name. ICU calls Luganda "Ganda"; Ochorus uses the
+ *  name its readers use. */
+function englishName(code: string): string {
+	return code === 'lg' ? 'Luganda' : (inEnglish.of(code) ?? code);
+}
+
+/** One language's row from its own lists (no English fallback: a language's
+ *  row holds only what it has). */
+export function forLanguage(
+	code: string,
+	lists: { books: BookSummary[]; sermons: number; plans: number },
+	picks: string[]
+): ForLanguage {
+	// Works only, like the count beside them; each pick once (shelves may share one).
+	const works = lists.books.filter((b) => !editionKind(b.slug));
+	const own = new Set(picks);
+	const covers = [
+		...pickBySlug(works, [...own], LANGUAGE_COVERS),
+		...works.filter((b) => !own.has(b.slug))
+	].slice(0, LANGUAGE_COVERS);
+	return {
+		code,
+		name: englishName(code),
+		native: localeName(code),
+		counts: { books: countWorks(lists.books), sermons: lists.sermons, plans: lists.plans },
+		covers: covers.map(toCoverBook)
+	};
+}
