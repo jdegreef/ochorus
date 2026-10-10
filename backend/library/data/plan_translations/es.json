@@ -171,5 +171,12 @@
     "note": [
       "Job #4852. Prose-ahead for the plan's last Spanish book: the-christians-secret-of-a-happy-life-4 already ships in es, a-brand-plucked-from-the-fire is this PR, and amanda-smith-autobiography is job #4850. The plan seeds in es once both are merged."
     ]
+  },
+  "pursuit-of-holiness": {
+    "title": "En pos de la santidad",
+    "description": "Nueve semanas sobre ser enteramente del Señor. Andrew Murray remonta nuestra santidad a nuestra unión con el Santo, William Law nos llama a una vida devota en cada hora ordinaria, y John Wesley expone con sencillez qué es la perfección cristiana, y qué no es.",
+    "note": [
+      "Job #4857. Ships with the last of the plan's Spanish books: holy-in-christ («Santo en Cristo») and plain-account-christian-perfection («Una explicación sencilla de la perfección cristiana») already ship in es, and a-serious-call is this PR, so the plan seeds in es on merge."
+    ]
   }
 }
