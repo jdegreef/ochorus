@@ -166,6 +166,8 @@ def _bundle_illustrations(book, stdout) -> None:
     static = Path(settings.BASE_DIR).parent / "frontend" / "static"
     for body in book.chapters.values_list("body_html", flat=True):
         for src in set(re.findall(r'<img[^>]*\ssrc="([^"]+)"', body)):
+            if not book_export.ILLUSTRATION_SRC.match(src):
+                continue  # not ours to copy (and would resolve outside the tree)
             site = static / src.lstrip("/")
             dest = book_export.bundled_illustration_path(src)
             if not site.is_file() or (dest.is_file() and dest.read_bytes() == site.read_bytes()):

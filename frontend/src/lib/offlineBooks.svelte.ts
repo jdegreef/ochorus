@@ -230,6 +230,15 @@ class OfflineBooks {
 			// ground under /covers/art/ serves every language (see CLAUDE.md), so
 			// two editions can share a cover_url, and deleting it here would
 			// blank the one still downloaded.
+			// Its pictures too: they live under one folder per WORK, so they are
+			// shared by its editions — keep them while another edition of the same
+			// work is still downloaded.
+			if (!rest.some((b) => b.slug === slug)) {
+				const pictures = `/illustrations/${slug}/`;
+				for (const req of await cache.keys()) {
+					if (new URL(req.url).pathname.startsWith(pictures)) await cache.delete(req);
+				}
+			}
 			const stillUsed = new Set(rest.map((b) => b.coverUrl));
 			if (meta?.coverUrl && !stillUsed.has(meta.coverUrl)) {
 				for (const url of [meta.coverUrl, ...coverVariants(meta.coverUrl)]) {

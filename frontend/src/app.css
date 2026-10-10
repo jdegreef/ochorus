@@ -2009,18 +2009,29 @@
 	text-align: center;
 	break-inside: avoid;
 }
+/* Any image the sanitizer let through, figure or not, stays inside the column. */
+.reading img {
+	max-width: 100%;
+	height: auto;
+}
 .reading figure img {
 	display: block;
 	margin-inline: auto;
-	max-width: 100%;
-	height: auto;
 	max-height: 80vh;
+	/* No frame (shadow/radius): when max-height clamps a plate, `contain`
+	   letterboxes it inside a wider box, and a frame would outline the gap. */
 	object-fit: contain;
-	border-radius: 3px;
-	box-shadow: 0 1px 6px color-mix(in srgb, var(--text) 18%, transparent);
 }
 .paged .reading figure img {
 	max-height: 55vh;
+}
+/* A short screen (landscape phone): the column is ~300px, so the plate gets a
+   smaller share or plate + caption + margins outgrow it and, unable to break,
+   are clipped. */
+@media (max-height: 600px) {
+	.paged .reading figure img {
+		max-height: 35vh;
+	}
 }
 .reading figcaption {
 	margin-top: 0.7em;
