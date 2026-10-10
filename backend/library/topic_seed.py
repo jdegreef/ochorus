@@ -666,6 +666,7 @@ TOPICS = [
             "brave-for-god-4",
             "tell-me-the-story-1",
             "tell-me-the-story-2",
+            "tell-me-the-story-3",
             "hurlbuts-life-of-christ",
             "rooted-1",
             "rooted-2",
