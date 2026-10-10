@@ -380,6 +380,9 @@ export interface Chapter {
 	source_type?: SourceType;
 	/** The book's rights, as `BookDetail.public_domain`. */
 	public_domain?: boolean;
+	/** The audience of the book's series ("young_readers", "teens", "adults"),
+	 * or "" for a book in no series. Optional: an API behind this build omits it. */
+	book_audience?: string;
 	/** This chapter belongs to the Modern English edition. */
 	is_modern_edition: boolean;
 	/** A Modern English edition of this work exists (offer the toggle). */

@@ -358,7 +358,7 @@ class ChapterDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
             is_published=True,
         )
         return get_object_or_404(
-            Chapter.objects.select_related("book__author").defer(*_CHAPTER_UNSERVED),
+            Chapter.objects.select_related("book__author", "book__series").defer(*_CHAPTER_UNSERVED),
             book=book,
             order=self.kwargs["order"],
         )
@@ -392,7 +392,7 @@ class ChapterBatchView(PublicContentCacheMixin, APIView):
 
     def get(self, request, slug):
         book = get_object_or_404(
-            Book.objects.select_related("author"),
+            Book.objects.select_related("author", "series"),
             slug=slug,
             language=_language(request),
             is_published=True,
