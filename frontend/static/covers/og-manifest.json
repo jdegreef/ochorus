@@ -6073,6 +6073,16 @@
 			"layout": "rail/teal",
 			"bar": 0
 		},
+		"es/sermons-on-several-occasions": {
+			"ground": "19f06f7eacdf3b7e3ad23bc1c75d70d26b00a0f1b7b1aca1b1deee4e6b5b15a5",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/mauve",
+			"bar": 0
+		},
 		"es/soar-like-the-eagle-3": {
 			"ground": "0532b87d005ca4dd1e912727269e616c01a184d6f42554a789ac7c0df619f1b8",
 			"style": "lettered",
