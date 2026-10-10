@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { splitEdition } from './edition';
+import { childrensReading, splitEdition } from './edition';
 
 describe('splitEdition', () => {
 	it('splits a children edition into base + audience', () => {
@@ -37,5 +37,22 @@ describe('splitEdition', () => {
 	it('returns null when an edition slug has no trailing parenthetical', () => {
 		// A real work whose own title ends "…for Children" (slug suffix, no "(…)").
 		expect(splitEdition('divine-songs-for-children', 'Divine Songs for Children')).toBeNull();
+	});
+});
+
+describe('childrensReading', () => {
+	it('is a children’s edition, or a book in a young-readers series', () => {
+		expect(childrensReading('children', undefined)).toBe(true);
+		expect(childrensReading(null, 'young_readers')).toBe(true);
+	});
+
+	it('is never a teens edition, even in a young-readers series', () => {
+		expect(childrensReading('teens', 'young_readers')).toBe(false);
+	});
+
+	it('is not an ordinary book, or one served by an API without the field', () => {
+		expect(childrensReading(null, 'adults')).toBe(false);
+		expect(childrensReading(null, '')).toBe(false);
+		expect(childrensReading(null, undefined)).toBe(false);
 	});
 });

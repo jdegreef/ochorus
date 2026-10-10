@@ -2125,7 +2125,7 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
         return self._batch(obj).available_languages
 
     def get_book_audience(self, obj) -> str:
-        return getattr(obj.book.series, "audience", "")
+        return self._batch(obj).book_audience
 
     def get_body_html(self, obj):
         return _link_scripture(obj.body_html, links=self._batch(obj).scripture_links)
@@ -2182,6 +2182,7 @@ class ChapterBatch:
         from .scripture_graph import page_url, pages_for
 
         self.available_languages = _available_languages(Book, book.slug)
+        self.book_audience = getattr(book.series, "audience", "")
         if book.language == MODERN_LANGUAGE:
             self.has_modern_edition = True
         else:

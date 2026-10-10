@@ -5,7 +5,7 @@
 	import { PHONE } from '$lib/breakpoints';
 	import { readingSync } from '$lib/readingSync';
 	import { planDayPath } from '$lib/editionHref';
-	import { splitEdition } from '$lib/edition';
+	import { childrensReading, splitEdition } from '$lib/edition';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount, onDestroy, tick, untrack } from 'svelte';
 	import { authorLdType, authorPath } from '$lib/originals';
@@ -100,13 +100,10 @@
 	const chapterQuestions = $derived(toQa(chapter.study_questions));
 	// Which young-reader edition this is, if any — the questions' voice, and for a
 	// children's edition the young-reader layout, the story styling, the large
-	// Listen button and the gentle read-aloud speed. A book in a series written
-	// for young readers (Tell Me the Story, Brave for God, Rooted) is one too:
-	// it was written for children, so it has no "-children" edition to say so.
+	// Listen button and the gentle read-aloud speed (`childrensReading`: a young-
+	// readers series counts too).
 	const editionKind = $derived(splitEdition(slug, chapter.book_title)?.kind ?? null);
-	const childrens = $derived(
-		editionKind === 'children' || (editionKind === null && chapter.book_audience === 'young_readers')
-	);
+	const childrens = $derived(childrensReading(editionKind, chapter.book_audience));
 	const questionsCopy = $derived.by(() => {
 		if (childrens)
 			return { title: t('reader.questionsYoung'), hint: t('reader.questionsHintYoung'), folded: true };
