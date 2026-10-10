@@ -288,6 +288,7 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'brave-for-god-2': 'young',
 	'brave-for-god-3': 'young',
 	'brave-for-god-4': 'young',
+	'tell-me-the-story-1': 'young',
 	'hurlbuts-life-of-christ': 'young',
 	'rooted-1': 'young',
 	'rooted-2': 'young',

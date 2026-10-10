@@ -115,6 +115,7 @@ export const SERMON_EMBLEMS: Record<string, EmblemName> = {
 /** Per-series visual identity for the series' ShelfCard (same shape again). */
 export const SERIES_META: Record<string, { accent: string; emblem: EmblemName }> = {
 	'key-teachings': { accent: '#2f7f86', emblem: 'golden-key' }, // the key to a teacher's heart
+	'tell-me-the-story': { accent: '#2f6f8f', emblem: 'open-word' }, // tell me the old, old story
 	'brave-for-god': { accent: '#a5552f', emblem: 'shield-of-faith' }, // made brave
 	rooted: { accent: '#5a9e4d', emblem: 'rooted-sapling' }, // rooted and built up in him
 	'daughters-of-the-king': { accent: '#b0578a', emblem: 'alabaster-jar' }, // she hath done what she could

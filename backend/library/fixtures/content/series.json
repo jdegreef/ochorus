@@ -16,6 +16,20 @@
 {
  "model": "library.series",
  "fields": {
+  "slug": "tell-me-the-story",
+  "title": "Tell Me the Story",
+  "description": "The Bible’s own stories retold for children, in three parts: Old Testament Stories, The Life of Jesus and New Testament Stories. Each story is short enough to read aloud at bedtime and ends with a prayer and questions to talk about together.",
+  "sort_order": 15,
+  "audience": "young_readers",
+  "min_age": 6,
+  "max_age": 10,
+  "created_at": "2026-10-10T00:00:00Z",
+  "updated_at": "2026-10-10T00:00:00Z"
+ }
+},
+{
+ "model": "library.series",
+ "fields": {
   "slug": "brave-for-god",
   "title": "Brave for God",
   "description": "True stories of faith for young readers: ordinary people from every part of the world who trusted God and were made brave.",
