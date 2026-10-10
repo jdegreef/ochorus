@@ -119,6 +119,7 @@ TOPICS = [
             "journal-of-an-expedition-up-the-niger",
             "religious-experience-and-journal",
             "a-brand-plucked-from-the-fire",
+            "memoirs-of-mrs-zilpha-elaw",
             "men-and-women-who-gave-everything-2",
             "women-who-moved-heaven-2",
             "union-and-communion",
@@ -286,6 +287,7 @@ TOPICS = [
         "suffered and dared, from Guyon's cell to the freed slave's pulpit.",
         [
             "a-brand-plucked-from-the-fire",
+            "memoirs-of-mrs-zilpha-elaw",
             "amanda-smith-autobiography",
             "religious-experience-and-journal",
             "susanna-wesley-clarke",
@@ -489,6 +491,7 @@ TOPICS = [
             "life-experience-gospel-labours",
             "religious-experience-and-journal",
             "a-brand-plucked-from-the-fire",
+            "memoirs-of-mrs-zilpha-elaw",
             "amanda-smith-autobiography",
             "journal-of-an-expedition-up-the-niger",
             "key-teachings-of-amanda-berry-smith",
