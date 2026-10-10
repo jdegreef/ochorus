@@ -6923,6 +6923,37 @@
 			"layout": "band/oxblood",
 			"bar": 0.04
 		},
+		"es/treatises-of-cyprian": {
+			"ground": "fd0b209f41ef6358b0e2ac61c21c094fd7c1efd858b2ce91ef9b2437c4a6e861",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[95, 102, 505, 131]
+				],
+				"title": [
+					[102, 304, 498, 366],
+					[122, 349, 478, 411]
+				],
+				"subtitle": [
+					[98, 440, 502, 461],
+					[44, 461, 556, 482],
+					[44, 461, 541, 482]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"es/true-vine": {
 			"ground": "12707a4313939e946d4f132f09ee3e1946db2fcfab8555a0f40dc3ee5a3584f1",
 			"style": "devotional",
