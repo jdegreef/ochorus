@@ -303,3 +303,29 @@ class SeriesAudienceTests(TestCase):
         self.assertEqual((row["audience"], row["min_age"], row["max_age"]), ("young_readers", 9, 12))
         page = get("series/rooted/")
         self.assertEqual((page["audience"], page["min_age"], page["max_age"]), ("young_readers", 9, 12))
+
+    def test_a_chapter_carries_its_series_audience_for_the_young_reader_layout(self):
+        # The reader turns its young-reader layout on for a "-children" edition
+        # OR a chapter whose series is for young readers, so both chapter
+        # endpoints must say which; a book in no series says "".
+        author = Author.objects.create(slug="ochorus-originals", name="Ochorus")
+        stories = Series.objects.create(
+            slug="tell-me-the-story", title="Tell Me the Story",
+            audience=Series.Audience.YOUNG_READERS, min_age=6, max_age=10,
+        )
+        for slug, series in (("tell-me-the-story-1", stories), ("solo", None)):
+            book = Book.objects.create(
+                author=author, slug=slug, language="en", title=slug,
+                series=series, series_position=1 if series else None, is_published=True,
+            )
+            Chapter.objects.create(book=book, order=1, title="One", body_html="<p>Once.</p>")
+
+        def get(path):
+            return self.client.get(
+                f"/api/library/books/{path}?language=en", HTTP_HOST="localhost"
+            ).json()
+
+        self.assertEqual(get("tell-me-the-story-1/chapters/1/")["book_audience"], "young_readers")
+        self.assertEqual(get("tell-me-the-story-1/chapters/")[0]["book_audience"], "young_readers")
+        self.assertEqual(get("solo/chapters/1/")["book_audience"], "")
+        self.assertEqual(get("solo/chapters/")[0]["book_audience"], "")
