@@ -2,6 +2,7 @@ import { browser } from '$app/environment';
 import { preloadCode } from '$app/navigation';
 import { API_BASE_URL } from './config';
 import { coverVariants } from './coverArt';
+import { illustrationSrcs } from './illustrations';
 import { readJSON, writeJSON } from './persisted';
 
 /**
@@ -104,10 +105,18 @@ class OfflineBooks {
 		this.active = { slug: book.slug, language: book.language, done: 0, total: urls.length };
 		try {
 			const cache = await caches.open(OFFLINE_CACHE);
+			// Pictures the chapters show, collected as their text downloads and
+			// cached after it — into the same durable cache, or an illustrated book
+			// would read offline with a broken image wherever a plate stood.
+			const pictures = new Set<string>();
 			for (const url of urls) {
 				try {
 					const res = await fetch(url);
-					if (res.ok) await cache.put(url, res.clone());
+					if (res.ok) {
+						await cache.put(url, res.clone());
+						const body = (await res.json().catch(() => null))?.body_html;
+						if (typeof body === 'string') for (const src of illustrationSrcs(body)) pictures.add(src);
+					}
 				} catch {
 					/* one chapter failed — keep going; the rest still download */
 				}
@@ -155,6 +164,14 @@ class OfflineBooks {
 					await cache.put(url, res.clone());
 				} catch {
 					/* cover unavailable — text still reads offline */
+				}
+			}
+			for (const url of pictures) {
+				try {
+					const res = await fetch(url);
+					if (res.ok) await cache.put(url, res.clone());
+				} catch {
+					/* picture unavailable — the text still reads offline */
 				}
 			}
 			// Replace only THIS edition's entry. Filtering on slug alone discarded

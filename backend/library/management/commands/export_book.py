@@ -76,6 +76,9 @@ def _write_print_html(edition, folder: Path, pages=None) -> Path:
     if edition.cover:
         cover_src = f"cover{edition.cover.ext}"
         (folder / cover_src).write_bytes(edition.cover.data)
+    for rel, image in edition.images.items():
+        (folder / rel).parent.mkdir(parents=True, exist_ok=True)
+        (folder / rel).write_bytes(image.data)
     page = folder / "book.html"
     page.write_text(
         book_export.render_print_html(edition, cover_src, pages), encoding="utf-8"

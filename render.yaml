@@ -389,6 +389,10 @@ services:
       - path: /portraits/*
         name: Cache-Control
         value: "public, max-age=3600, s-maxage=300"
+      # In-book pictures (chapter <figure>s): stable names, like the covers.
+      - path: /illustrations/*
+        name: Cache-Control
+        value: "public, max-age=3600, s-maxage=300"
       - path: /og/*
         name: Cache-Control
         value: "public, max-age=3600, s-maxage=300"

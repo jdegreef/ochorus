@@ -447,3 +447,79 @@ def _fixture_fields(slug: str, language: str) -> dict:
 
 def _fixture_cover_url(slug: str, language: str) -> str:
     return _fixture_fields(slug, language)["cover_url"]
+
+
+STATIC = Path(__file__).resolve().parents[2] / "frontend" / "static"
+PLATE = "/illustrations/the-princess-and-the-goblin/come.jpg"
+FIGURE = (
+    f'<figure><img alt="A lady holds out her hands" decoding="async" height="600" '
+    f'loading="lazy" src="{PLATE}" width="458"/><figcaption>“Come.”</figcaption></figure>'
+)
+
+
+@override_settings(PUBLIC_SITE_URL="https://ochorus.test")
+@mock.patch.object(export_policy, "EXPORT_EDITIONS", PILOT)
+@mock.patch.object(book_export, "load_cover", lambda url: None)
+class IllustrationTests(TestCase):
+    """In-book pictures travel inside the download, never as a link out of it."""
+
+    def test_an_image_is_bundled_at_a_relative_path(self):
+        images: dict = {}
+        out = book_export.bundle_illustrations(f"<p>a</p>{FIGURE}<p>b</p>", images)
+        rel = PLATE.removeprefix("/")
+        self.assertIn(f'src="{rel}"', out)
+        self.assertNotIn("loading=", out)
+        self.assertNotIn("decoding=", out)
+        self.assertEqual(list(images), [rel])
+        self.assertEqual(images[rel].media_type, "image/jpeg")
+
+    def test_an_unbundled_or_webp_image_is_dropped_and_its_caption_kept(self):
+        for src in (
+            "/illustrations/nowhere/missing.jpg",
+            "/illustrations/the-princess-and-the-goblin/come.webp",
+        ):
+            with self.subTest(src=src):
+                images: dict = {}
+                out = book_export.bundle_illustrations(FIGURE.replace(PLATE, src), images)
+                self.assertNotIn("<img", out)
+                self.assertIn("“Come.”", out)
+                self.assertEqual(images, {})
+
+    def test_the_epub_carries_the_image_in_its_manifest_and_zip(self):
+        author = Author.objects.create(slug="a-writer", name="A. Writer")
+        book = Book.objects.create(
+            author=author, slug="pilot-book", language="en", title="Pilot", publication_year=1890,
+        )
+        Chapter.objects.create(book=book, order=1, title="One", body_html=f"<p>a</p>{FIGURE}")
+        z = zipfile.ZipFile(io.BytesIO(self.client.get(
+            "/api/library/books/pilot-book/download.epub").content))
+        rel = PLATE.removeprefix("/")
+        self.assertEqual(z.read(f"OEBPS/{rel}"), (STATIC / rel).read_bytes())
+        opf = z.read("OEBPS/content.opf").decode()
+        self.assertIn(f'href="{rel}" media-type="image/jpeg"', opf)
+        chapter = z.read("OEBPS/chapter-001.xhtml").decode()
+        self.assertIn(f'src="{rel}"', chapter)
+        etree.fromstring(chapter.encode())  # still well-formed XHTML
+
+    def test_every_exportable_illustration_is_bundled_and_matches_the_site(self):
+        """The API image can't read frontend/static: each picture an exportable
+        edition shows must have its committed copy, byte for byte the site's."""
+        import json
+        import re
+
+        problems = []
+        content = Path(__file__).resolve().parent / "fixtures" / "content" / "books"
+        for path in sorted(content.glob("*.json")):
+            rows = json.loads(path.read_text())
+            head = rows[0]["fields"]
+            if (head["slug"], head["language"]) not in export_policy.EXPORT_EDITIONS:
+                continue
+            for row in rows[1:]:
+                for src in re.findall(r'<img[^>]*\ssrc="([^"]+)"', row["fields"].get("body_html", "")):
+                    site = STATIC / src.lstrip("/")
+                    bundled = book_export.BUNDLED_ILLUSTRATIONS / src.removeprefix("/illustrations/")
+                    if not bundled.is_file():
+                        problems.append(f"{path.name}: no bundled copy of {src}")
+                    elif not site.is_file() or site.read_bytes() != bundled.read_bytes():
+                        problems.append(f"{path.name}: bundled {src} differs from the site's")
+        self.assertEqual(problems, [], "\n".join(problems))

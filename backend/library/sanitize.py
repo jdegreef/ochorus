@@ -8,9 +8,10 @@ reader's browser. Everything written to `Chapter.body_html`, `Sermon.body_html`,
 Two profiles, because the two kinds of prose legitimately differ:
 
 * :func:`clean_fragment` — chapter and sermon bodies. A narrow structural
-  allowlist and **no attributes at all**. Imported book text needs nothing more,
-  and the measured corpus agrees: across 3,033 stored rows there is not one
-  attribute.
+  allowlist and **no attributes at all** — with one exception, an illustration's
+  ``<img>``, which keeps a self-hosted ``src``, its ``alt`` and its dimensions
+  (see :data:`ILLUSTRATION_SRC`). Imported book text needs nothing more: before
+  illustrations, across 3,033 stored rows there was not one attribute.
 
 * :func:`clean_bio_html` — author biographies, which are authored (by the
   `write-biography` skill), not imported, and use three constructs the chapter
@@ -45,7 +46,24 @@ ALLOWED_TAGS = {
     "p", "h2", "h3", "h4", "blockquote",
     "em", "strong", "i", "b", "br", "hr",
     "ul", "ol", "li", "sup",
+    # Illustrations. `<img>` is the one tag in this profile that keeps
+    # attributes, and only a self-hosted `src` (see ILLUSTRATION_SRC); a
+    # `<figure>` whose image did not survive is unwrapped, so a source with no
+    # allowlisted images cleans exactly as it did before figures existed.
+    "figure", "figcaption", "img",
 }
+
+# Where an in-book image may live: our own static tree, one folder per work —
+# `/illustrations/<work-slug>/<name>.<ext>`. No host, no scheme, no `..`: an
+# image is content we committed, never a hotlink (which could track readers,
+# vanish, or change under a page we prerendered).
+ILLUSTRATION_SRC = re.compile(
+    r"^/illustrations/[a-z0-9]+(?:-[a-z0-9]+)*/[a-z0-9]+(?:-[a-z0-9]+)*\.(?:webp|jpg|png)$"
+)
+
+# Bounds on a declared image dimension — enough for any plate, small enough
+# that a typo can't reserve a screen-filling box.
+_MAX_IMAGE_DIM = 4000
 
 # --- biography profile ------------------------------------------------------
 
@@ -246,8 +264,62 @@ def _safe_bio_href(value: str) -> str | None:
     return href if scheme in BIO_URL_SCHEMES else None
 
 
+def _image_attrs(tag: Tag) -> dict[str, str] | None:
+    """The attributes an illustration keeps, or ``None`` to drop the image.
+
+    `src` must be a self-hosted illustration path; `alt` is required (an image a
+    screen-reader user can't hear is half-shipped) and kept as plain text;
+    `width`/`height` survive only as sane integers, so the reader can reserve
+    the box before the file arrives. `loading`/`decoding` are SET here, never
+    taken from the input — every in-book image is lazy, and saying so in the
+    stored HTML keeps the prerendered page and the SPA identical.
+    """
+    src = (tag.get("src") or "").strip()
+    alt = _WS.sub(" ", tag.get("alt") or "").strip()
+    if not ILLUSTRATION_SRC.match(src) or not alt:
+        return None
+    kept = {"src": src, "alt": alt}
+    for dim in ("width", "height"):
+        value = str(tag.get(dim) or "").strip()
+        if value.isdigit() and 0 < int(value) <= _MAX_IMAGE_DIM:
+            kept[dim] = str(int(value))
+    kept["loading"] = "lazy"
+    kept["decoding"] = "async"
+    return kept
+
+
+def _settle_figures(node: Tag) -> None:
+    """Drop unusable images; unwrap figures (and captions) left without one.
+
+    Runs before the allowlist pass. A `<figure>` is only a figure if a usable
+    image survived inside it — otherwise it unwraps, and its `<figcaption>` with
+    it, which is precisely what both did before figures were allowlisted (so no
+    existing import changes). A caption outside any figure unwraps too.
+    """
+    for img in node.find_all("img"):
+        attrs = _image_attrs(img)
+        if attrs is None:
+            img.decompose()
+        else:
+            img.attrs = attrs
+    for fig in node.find_all("figure"):
+        if fig.find("img") is None:
+            for cap in fig.find_all("figcaption"):
+                cap.unwrap()
+            fig.unwrap()
+    for cap in node.find_all("figcaption"):
+        if cap.find_parent("figure") is None:
+            cap.unwrap()
+
+
 def _scrub_attrs(tag: Tag, *, allow_bio_attrs: bool) -> None:
-    """Strip every attribute, keeping only the biography profile's two."""
+    """Strip every attribute, keeping only the biography profile's two.
+
+    An `<img>` has already been settled by :func:`_settle_figures`, and keeps
+    exactly what that allowed — in either profile.
+    """
+    if tag.name == "img":
+        return
     if not allow_bio_attrs:
         tag.attrs = {}
         return
@@ -315,6 +387,7 @@ def drop_furniture(node: Tag) -> None:
 
 def _clean(node: Tag, *, allowed: set[str], allow_bio_attrs: bool) -> str:
     drop_furniture(node)
+    _settle_figures(node)
     for tag in node.find_all(True):
         if tag.name not in allowed:
             tag.unwrap()
