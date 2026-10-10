@@ -16753,6 +16753,16 @@
 			"layout": "box/rust",
 			"bar": 0.04
 		},
+		"the-saint-and-his-saviour": {
+			"ground": "22e136c08162f2110256d4679ea8d57b2e8a4407dd280a7f28dc0a56f2f82055",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-secret-of-guidance-teens": {
 			"ground": "12fadad26335b0b86cc17e575b0f5b790aa818919ed549a2adb53622098d5851",
 			"style": "devotional",
