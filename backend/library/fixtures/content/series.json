@@ -168,6 +168,20 @@
  }
 },
 {
+ "model": "library.series",
+ "fields": {
+  "slug": "john-ploughman",
+  "title": "John Ploughman",
+  "description": "Spurgeon's two books of homely proverbs and plain advice in the voice of John Ploughman, a Surrey farm labourer: the Talk (1869) and its sequel, the Pictures (1880).",
+  "sort_order": 120,
+  "audience": "adults",
+  "min_age": null,
+  "max_age": null,
+  "created_at": "2026-10-10T00:00:00Z",
+  "updated_at": "2026-10-10T00:00:00Z"
+ }
+},
+{
  "model": "library.seriestranslation",
  "fields": {
   "series": [
