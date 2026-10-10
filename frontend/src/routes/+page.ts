@@ -1,6 +1,7 @@
 import { building } from '$app/environment';
-import type { HomeShelves } from '$lib/homeShelves';
+import { homeShelves, type HomeShelves } from '$lib/homeShelves';
 import { getLang } from '$lib/lang.svelte';
+import { IS_APP } from '$lib/platform';
 import type { PageLoad } from './$types';
 
 /** What the page shows when the snapshot cannot be read at runtime: the shelf
@@ -28,7 +29,12 @@ export const load: PageLoad = async ({ fetch }) => {
 	// looking deliberate. Degraded at runtime: a reader who is offline, or a
 	// locale whose file is missing (the SPA fallback answers 200 with HTML,
 	// which `json()` rejects), gets a shorter page, not a full-page error.
+	//
+	// The app prerenders nothing, so it has no snapshot file: it derives the
+	// shelves from the live API as the snapshot's own endpoint does at build
+	// (routes/home-shelves). There is no prerendered HTML for it to disagree with.
 	try {
+		if (IS_APP) return await homeShelves(getLang());
 		const res = await fetch(`/home-shelves/${getLang()}.json`);
 		if (!res.ok) throw new Error(`home shelves: ${res.status}`);
 		return (await res.json()) as HomeShelves;

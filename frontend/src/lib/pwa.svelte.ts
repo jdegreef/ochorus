@@ -1,6 +1,7 @@
 import { browser, dev } from '$app/environment';
 import { page } from '$app/stores';
 import { get } from 'svelte/store';
+import { IS_APP } from './platform';
 import { isReaderRoute } from './readerRoutes';
 
 /**
@@ -47,7 +48,9 @@ class Pwa {
 		addEventListener('online', () => (this.online = true));
 		addEventListener('offline', () => (this.online = false));
 
-		if (dev || !('serviceWorker' in navigator)) return;
+		// The native app ships its assets inside the app, so it has nothing for a
+		// worker to cache — and iOS's app web view can't run one anyway.
+		if (dev || IS_APP || !('serviceWorker' in navigator)) return;
 
 		// A new worker took control → reload once so the fresh assets are used.
 		navigator.serviceWorker.addEventListener('controllerchange', () => {

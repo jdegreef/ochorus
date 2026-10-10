@@ -3,6 +3,7 @@
 	import { API_BASE_URL } from '$lib/config';
 	import type { BookDetail } from '$lib/library-public';
 	import { offlineBooks } from '$lib/offlineBooks.svelte';
+	import { IS_APP } from '$lib/platform';
 	import { pwa } from '$lib/pwa.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
 	import { menuShift } from '$lib/menuShift';
@@ -35,6 +36,10 @@
 			? offlineBooks.active
 			: null
 	);
+	// `!IS_APP`, not `offlineBooks.supported`: that is false while prerendering
+	// (no browser), and the button must be in the website's HTML, not pop in at
+	// hydration. The app is the one place offline saving is off for everyone.
+	const hasOptions = $derived(!IS_APP || savedOffline || !!book.epub_url || !!book.pdf_url);
 	const pct = $derived(downloading?.total ? Math.round((downloading.done / downloading.total) * 100) : 0);
 
 	// Phones (<640px) get a bottom sheet; wider screens the dropdown. mediaFlag
@@ -87,7 +92,7 @@
 				<span class="hint">{t('offline.remove')}</span>
 			</span>
 		</button>
-	{:else}
+	{:else if offlineBooks.supported}
 		<button
 			type="button"
 			class="account-item dl-item"
@@ -128,46 +133,50 @@
 	{/if}
 {/snippet}
 
-<!-- dismissable only for the dropdown: the sheet is portalled to <body>, so a
-     tap inside it would read as a click away; DrawerShell owns its own scrim,
-     Escape and focus return. -->
-<div
-	class="relative"
-	bind:this={root}
-	use:dismissable={{ open: dropdownOpen, onDismiss: () => (open = false) }}
->
-	<button
-		type="button"
-		class="btn btn-sm btn-ghost"
-		aria-controls={dropdownOpen ? menuId : undefined}
-		aria-haspopup={isPhone ? 'dialog' : undefined}
-		aria-expanded={open}
-		onclick={toggle}
+<!-- Nothing to offer (no offline save on this device, and no EPUB or PDF for
+     this edition): no button, rather than one that opens an empty menu. -->
+{#if hasOptions}
+	<!-- dismissable only for the dropdown: the sheet is portalled to <body>, so a
+	     tap inside it would read as a click away; DrawerShell owns its own scrim,
+	     Escape and focus return. -->
+	<div
+		class="relative"
+		bind:this={root}
+		use:dismissable={{ open: dropdownOpen, onDismiss: () => (open = false) }}
 	>
-		<Icon name={savedOffline ? 'check' : 'download'} size={15} />
-		<span>{downloading ? `${pct}%` : t('book.download')}</span>
-	</button>
-	{#if dropdownOpen}
-		<!-- A labelled group, not a menu role: that promises arrow-key
-		     navigation between menu items, and these are plain links and buttons
-		     reached with Tab — the same treatment as AccountMenu/QuickSettings. -->
-		<div
-			id={menuId}
-			class="account-menu dl-menu"
-			style:width="{width}px"
-			style:left="{shift}px"
-			role="group"
-			aria-label={t('book.download')}
+		<button
+			type="button"
+			class="btn btn-sm btn-ghost"
+			aria-controls={dropdownOpen ? menuId : undefined}
+			aria-haspopup={isPhone ? 'dialog' : undefined}
+			aria-expanded={open}
+			onclick={toggle}
 		>
-			{@render options()}
-		</div>
-	{/if}
-</div>
+			<Icon name={savedOffline ? 'check' : 'download'} size={15} />
+			<span>{downloading ? `${pct}%` : t('book.download')}</span>
+		</button>
+		{#if dropdownOpen}
+			<!-- A labelled group, not a menu role: that promises arrow-key
+			     navigation between menu items, and these are plain links and buttons
+			     reached with Tab — the same treatment as AccountMenu/QuickSettings. -->
+			<div
+				id={menuId}
+				class="account-menu dl-menu"
+				style:width="{width}px"
+				style:left="{shift}px"
+				role="group"
+				aria-label={t('book.download')}
+			>
+				{@render options()}
+			</div>
+		{/if}
+	</div>
 
-{#if isPhone}
-	<DrawerShell bind:open title={t('book.download')} placement="bottom">
-		<div class="dl-sheet">{@render options()}</div>
-	</DrawerShell>
+	{#if isPhone}
+		<DrawerShell bind:open title={t('book.download')} placement="bottom">
+			<div class="dl-sheet">{@render options()}</div>
+		</DrawerShell>
+	{/if}
 {/if}
 
 <style>

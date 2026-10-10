@@ -387,6 +387,16 @@ CORS_ALLOWED_ORIGINS = [
     if o.strip()
 ]
 
+# The native app (iOS + Android, Capacitor — frontend/MOBILE.md) serves the
+# reader from inside the app, so its requests come from these fixed origins on
+# every phone: iOS's custom scheme and Android's local https host. Always
+# allowed, NOT left to the env var above — every installed copy of the app
+# depends on them, and production's override would otherwise drop them. Safe to
+# allow: the API authenticates by Bearer token, never by cookie, so an origin
+# here grants a page nothing it couldn't already do with a token it holds.
+NATIVE_APP_ORIGINS = ["capacitor://localhost", "https://localhost"]
+CORS_ALLOWED_ORIGINS += [o for o in NATIVE_APP_ORIGINS if o not in CORS_ALLOWED_ORIGINS]
+
 CSRF_TRUSTED_ORIGINS = [
     o.strip()
     for o in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",")
