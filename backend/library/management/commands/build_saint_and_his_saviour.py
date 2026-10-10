@@ -43,6 +43,7 @@ existing `charles-h-spurgeon` author from `authors.json`. Idempotent; no
 from __future__ import annotations
 
 import difflib
+import html as _html
 import re
 import statistics
 from collections import Counter
@@ -55,7 +56,13 @@ from library import english_audit
 from library.content_fixtures import book_sort_order
 from library.corrections import settled_chapter_body
 from library.ingest import clean_fragment, word_count
-from library.management.commands.import_archive import _BARE_NUM, _is_header, fetch_text
+from library.management.commands.import_archive import (
+    _BARE_NUM,
+    _NON_LETTER,
+    _WS,
+    _is_header,
+    fetch_text,
+)
 from library.models import Author, Book, Chapter
 from library.quote_marks import assert_punctuation_only, convert
 
@@ -77,6 +84,8 @@ WITNESSES = [
 ]
 #: The one witness from a modern OCR engine; its errors differ in kind.
 MODERN = "sainthissaviouro0000spur"
+VOTERS = WITNESSES[1:]
+_MODERN_INDEX = VOTERS.index(MODERN)
 
 DESCRIPTION = (
     "Written over two busy years at the start of his London ministry, the young "
@@ -133,8 +142,6 @@ _ADDRESS_KEY = "TOTHEUNCONVERTEDREADER"
 _CITATION = re.compile(r"^\W{0,2}(?:[1-3]\s)?[A-Z][a-z]{1,5}\.?\s+[ivxlcIVXLC]+[.,]\s*\d[\d,\s\-—.]*$")
 
 
-_WS = re.compile(r"\s+")
-_LETTERS = re.compile(r"[^A-Za-z]")
 _TOKEN = re.compile(
     r"[A-Za-z0-9]+(?:'[A-Za-z]+)*(?:-[A-Za-z0-9]+(?:'[A-Za-z]+)*)*|—|\S"
 )
@@ -144,6 +151,7 @@ _WORD = re.compile(r"[A-Za-z0-9]")
 #: ("*'  We esteemed him not"), a low-9 mark.
 _QUOTE_GARBLE = re.compile(r"''|^\*['\"]|„")
 _TERMINAL = (".", "!", "?", '"', "'", ":")
+_NUMERAL_LINE = re.compile(r"^[IVXLCYTUMivxlcymigun|]{1,5}\.?$")
 _NO_SPACE_BEFORE = set(",.;:!?)")
 
 #: Footnote reference marks as the scans render them: the printer's * † ‡ § ‖,
@@ -182,11 +190,11 @@ def _normalize_line(line: str) -> str:
 
 
 def _letters_key(text: str) -> str:
-    return _LETTERS.sub("", text).upper()
+    return _NON_LETTER.sub("", text).upper()
 
 
 def _caps_share(text: str) -> float:
-    letters = _LETTERS.sub("", text)
+    letters = _NON_LETTER.sub("", text)
     if not letters:
         return 0.0
     return sum(c.isupper() for c in letters) / len(letters)
@@ -203,7 +211,7 @@ def _is_page_mark(line: str, chapter_key: str) -> bool:
     """A page number or a running header (book title or chapter title)."""
     if _BARE_NUM.match(line) or _is_header(line):
         return True
-    letters = _LETTERS.sub("", line)
+    letters = _NON_LETTER.sub("", line)
     if _caps_share(line) >= 0.8 and len(letters) >= 8:
         key = _letters_key(line)
         # A header whose page number the scanner lost or misread.
@@ -213,7 +221,7 @@ def _is_page_mark(line: str, chapter_key: str) -> bool:
 
 def _is_junk(line: str) -> bool:
     """Stray scanner marks: no letters, or a letter or two with no prose shape."""
-    letters = _LETTERS.sub("", line)
+    letters = _NON_LETTER.sub("", line)
     if not letters:
         return True
     return len(letters) <= 2 and not line.endswith((".", ",", ";", ":", "!", "?", '"'))
@@ -311,9 +319,14 @@ class Witness:
         # The Contents follows the Preface: its heading is the first short
         # capitals line after it ("COKTEKTS" in one scan).
         contents = next(
-            i for i in range(pre + 1, heads[0])
-            if 0 < len(self.lines[i]) < 20 and _similar(_letters_key(self.lines[i]), "CONTENTS") >= 0.6
+            (
+                i for i in range(pre + 1, heads[0])
+                if 0 < len(self.lines[i]) < 20 and _similar(_letters_key(self.lines[i]), "CONTENTS") >= 0.6
+            ),
+            None,
         )
+        if contents is None:
+            raise CommandError("contents not found — the scan changed.")
         self.sections: list[tuple[str, list[str]]] = [("PREFACE", self.lines[pre + 1 : contents])]
         for n, h in enumerate(heads):
             stop = heads[n + 1] if n + 1 < len(heads) else end
@@ -326,13 +339,16 @@ class Witness:
                 or (_caps_share(block[0]) >= 0.9 and _letters_key(block[0]) and _letters_key(block[0]) in key)
             ):
                 block = block[1:]
-            # Drop the next chapter's numeral (a short line at the very end).
-            while block and (not block[-1] or len(_LETTERS.sub("", block[-1])) <= 4):
+            # Drop the next chapter's numeral (a short roman-ish line at the very
+            # end — "VIII.", or as mis-scanned "YIII.", "Mig", "TU."), never a
+            # short closing line of prose or a note ("* Ps. li. 3.").
+            while block and (not block[-1] or _NUMERAL_LINE.match(block[-1])):
                 block = block[:-1]
             self.sections.append((_letters_key(TITLES[n]), block))
 
-    def paragraphs(self, n: int) -> list[Para]:
-        """Section n as Paras, in reading order (footnotes where they print)."""
+    def paragraphs(self, n: int) -> tuple[list[Para], float]:
+        """Section n as Paras, in reading order (footnotes where they print),
+        and the section's measure (median prose line length)."""
         key, block = self.sections[n]
         kind = []
         for ln in block:
@@ -363,7 +379,6 @@ class Witness:
         for i in ends:
             seen = 0
             j = i - 1
-            found = False
             while j >= 0 and kind[j] not in ("page", "head") and seen < 7:
                 if kind[j] == "text":
                     seen += 1
@@ -371,10 +386,9 @@ class Witness:
                         for r in range(j, i):
                             if kind[r] == "text":
                                 kind[r] = "note"
-                        found = True
                         break
                 j -= 1
-            if not found:
+            else:
                 j = i - 1
                 while j >= 0 and kind[j] in ("blank", "junk"):
                     j -= 1
@@ -383,7 +397,6 @@ class Witness:
 
         text_lines = [ln for ln, k in zip(block, kind, strict=True) if k == "text"]
         width = statistics.median(len(x) for x in text_lines) if text_lines else 50
-        self.width = width
 
         paras: list[Para] = []
         cur: Para | None = None
@@ -449,7 +462,7 @@ class Witness:
             gap_blank = gap_page = False
         if cur is not None and cur.lines:
             paras.append(cur)
-        return [p for p in paras if p.lines]
+        return paras, width
 
     def join_lines(self, lines: list[str]) -> list[tuple[str, bool, int]]:
         """Tokens of a run of lines: (text, space_before, line_index)."""
@@ -512,7 +525,7 @@ class Witness:
 
     def stream(self, n: int) -> list[tuple[str, bool]]:
         out: list[tuple[str, bool]] = []
-        for p in self.paragraphs(n):
+        for p in self.paragraphs(n)[0]:
             out.extend((t, s) for t, s, _ in self.join_lines(p.lines))
         return out
 
@@ -569,6 +582,18 @@ def _repair_word(word: str, vocab: Counter, modern: Counter) -> str:
                 best, best_n = cand, n
             start = i + 1
     return best
+
+
+def _repair_glyph(word: str, nxt: str) -> str | None:
+    """A glyph confusion no vocabulary can settle, or None.
+
+    A capital O read as a zero ("0 love, thou bottomless abyss!"), and a
+    roman numeral's l read as I ("Ps. Ixxxviii. 15", "Iv. 4")."""
+    if word == "0" and nxt[:1].isalpha():
+        return "O"
+    if re.fullmatch(r"I[xvi]+", word):
+        return "l" + word[1:]
+    return None
 
 
 def _rejoin(toks: list[Token], modern: Counter, vocab: Counter) -> list[Token]:
@@ -656,7 +681,6 @@ def _vote(
     between consecutive anchors every witness offers its reading, and the
     commonest wins if at least two witnesses hold it and it beats the
     primary's own count (a tie goes to the reading made of real words)."""
-    modern_index = WITNESSES[1:].index(MODERN)
     p = [t.text for t in primary]
     others = [[t for t, _ in w] for w in streams]
     spaces = [[s for _, s in w] for w in streams]
@@ -681,7 +705,7 @@ def _vote(
                 continue  # a misalignment, not a reading
             votes[cand] += 1
             where.setdefault(cand, (wi, ja))
-            if wi == modern_index:
+            if wi == _MODERN_INDEX:
                 modern = cand
         best, n = votes.most_common(1)[0]
         take = None
@@ -700,12 +724,13 @@ def _vote(
             take = modern
         # The older runs' `"W` was erased as a misread capital (see Witness),
         # so before a W only the modern run can see a real opening quote.
-        if modern and modern != (take if take is not None else mine) and _w_quote(modern) == (
-            take if take is not None else mine
-        ):
+        chosen = take if take is not None else mine
+        if modern and modern != chosen and _w_quote(modern) == chosen:
             take = modern
         seg = primary[a:b]
-        if take is None or (not take and any(t.para or t.head or t.line for t in seg)):
+        if take is None or (not take and any(
+            t.para or t.head or t.line or (t.text.isalpha() and len(t.text) > 1) for t in seg
+        )):
             out.extend(seg)
             continue
         changed += 1
@@ -790,7 +815,7 @@ def _render(toks: list[Token], marks: dict[int, str] | None = None) -> str:
 
 
 def _esc(text: str) -> str:
-    text = text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    text = _html.escape(text, quote=False)
     text = re.sub(r"\x01(.*?)\x02", r"<sup>\1</sup>", text)
     return text.replace("\n", "<br/>")
 
@@ -1107,8 +1132,7 @@ def build_chapters(texts: dict[str, str], log=print, *, strict: bool = True) -> 
     fixes_used: Counter = Counter()
     chapters: list[tuple[str, str]] = []
     for n, title in enumerate(["Preface", *TITLES]):
-        paras = prim.paragraphs(n)
-        width = prim.width
+        paras, width = prim.paragraphs(n)
         toks: list[Token] = []
         note_id = 0
         for p in paras:
@@ -1119,7 +1143,7 @@ def build_chapters(texts: dict[str, str], log=print, *, strict: bool = True) -> 
                 tok.para = k == 0 and not p.cont and p.kind in ("text", "head")
                 tok.head = p.kind == "head"
                 tok.line = verse and li > 0
-                tok.page = p.pages[max(li, 0)] if li >= 0 else (toks[-1].page if toks else 0)
+                tok.page = p.pages[li] if li >= 0 else (toks[-1].page if toks else 0)
                 if p.kind == "note":
                     tok.note = note_id
                 toks.append(tok)
@@ -1131,12 +1155,12 @@ def build_chapters(texts: dict[str, str], log=print, *, strict: bool = True) -> 
         start, end = Token(_EDGE, True), Token(_EDGE, True)
         start.para = True
         edge = [(_EDGE, True)]
-        others = [edge + readers[name].stream(n) + edge for name in WITNESSES[1:]]
+        others = [edge + readers[name].stream(n) + edge for name in VOTERS]
         voted, changed = _vote([start, *toks, end], others, vocab)
         voted = [t for t in voted if t.text != _EDGE]
         if voted and not voted[0].para:
             voted[0].para = True
-        voted = _restore_w_quotes(voted, [t for t, _ in others[WITNESSES[1:].index(MODERN)]])
+        voted = _restore_w_quotes(voted, [t for t, _ in others[_MODERN_INDEX]])
         # A page turn the primary misread as a paragraph's end: the voted text
         # runs on mid-sentence into a lowercase word.
         for k in range(1, len(voted)):
@@ -1146,13 +1170,8 @@ def build_chapters(texts: dict[str, str], log=print, *, strict: bool = True) -> 
                 t.para = False
         voted = _rejoin(voted, modern_vocab, vocab)
         for k, t in enumerate(voted):
-            fixed = _repair_word(t.text, vocab, modern_vocab)
-            # A capital O read as a zero ("0 love, thou bottomless abyss!").
-            if t.text == "0" and k + 1 < len(voted) and voted[k + 1].text[:1].isalpha():
-                fixed = "O"
-            # A roman numeral's l read as I ("Ps. Ixxxviii. 15", "lv. 4").
-            if re.fullmatch(r"I[xvi]+", t.text):
-                fixed = "l" + t.text[1:]
+            nxt = voted[k + 1].text if k + 1 < len(voted) else ""
+            fixed = _repair_glyph(t.text, nxt) or _repair_word(t.text, vocab, modern_vocab)
             if fixed != t.text:
                 repairs[(t.text, fixed)] += 1
                 t.text = fixed
@@ -1213,9 +1232,7 @@ def build_chapters(texts: dict[str, str], log=print, *, strict: bool = True) -> 
                 groups.append((i, []))
             groups[-1][1].append(t)
         html = ""
-        first = n > 0  # the Preface opens on no drop cap... and no epigraph
-        if n == 0:
-            first = True
+        first = True  # the opening word is set in capitals (_fix_dropcap)
         for gi, (start, g) in enumerate(groups):
             local = {i - start: s for i, s in mark_of.items() if start <= i < start + len(g)}
             text = _render(g, local)
@@ -1268,7 +1285,7 @@ def load_texts(source_dir: str | None) -> dict[str, str]:
     texts = {}
     for item in WITNESSES:
         if source_dir:
-            texts[item] = (Path(source_dir) / f"{item}.txt").read_text(errors="replace")
+            texts[item] = (Path(source_dir) / f"{item}.txt").read_text(encoding="utf-8", errors="replace")
         else:
             texts[item] = fetch_text(item)
     return texts
