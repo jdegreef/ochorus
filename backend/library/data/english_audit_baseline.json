@@ -49,6 +49,11 @@
   "come-thou-into-the-ark": {
    "space-before-punct": 2
   },
+  "come-ye-children": {
+   "lost-paragraphing": 1,
+   "space-before-punct": 2,
+   "word-fusion": 1
+  },
   "comfort-for-the-desponding": {
    "orphan-close-quote": 2
   },
