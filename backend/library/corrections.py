@@ -4763,6 +4763,19 @@ BODY_CORRECTIONS.setdefault("power-through-prayer", {}).setdefault("replacements
     # ch18: "an" -> "in".
     ("occupied an the spiritual life", "occupied in the spiritual life"),
 ])
+
+# Found while translating to French (2026-10-10); each confirmed against
+# Gutenberg #65115. (Checked and LEFT as printed, because #65115 has them too:
+# "jealous else" ch17, "divine inflatus" ch15, and Liddon's unclosed quotation ch08.)
+BODY_CORRECTIONS.setdefault("power-through-prayer", {}).setdefault("replacements", []).extend([
+    # ch14 (Knox): canonical "Methodistical clergymen" (plural).
+    ("Methodists and Methodistical clergyman", "Methodists and Methodistical clergymen"),
+    # ch14 (Spurgeon epigraph): canonical "instant, constant, fervent".
+    ("continue instant constant fervent in", "continue instant, constant, fervent in"),
+    # ch20: canonical "somebody who can set the saints".
+    ("need some body who can set", "need somebody who can set"),
+])
+
 BODY_CORRECTIONS.setdefault("the-almost-christian", {}).setdefault("replacements", []).extend([
     # subject "he" governs both verbs: "acts and speaks".
     ("all things act and speaks", "all things acts and speaks"),

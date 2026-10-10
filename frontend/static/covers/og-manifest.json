@@ -8402,6 +8402,16 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"fr/power-through-prayer": {
+			"ground": "071275bf69fa6542954e4e693d88f4fb5bed861087179716819d0408c65d3911",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0.04
+		},
 		"fr/prayer-and-praying-men": {
 			"ground": "939bf55b399576592c07c778b03073d65044e788ab44a6e50e9753f3f1f9f995",
 			"style": "devotional",
