@@ -171,5 +171,12 @@
     "note": [
       "Job #4852. Prose-ahead for the plan's last Spanish book: the-christians-secret-of-a-happy-life-4 already ships in es, a-brand-plucked-from-the-fire is this PR, and amanda-smith-autobiography is job #4850. The plan seeds in es once both are merged."
     ]
+  },
+  "voices-of-the-early-church": {
+    "title": "Voces de la Iglesia primitiva",
+    "description": "Los primeros siglos cristianos contados con sus propias palabras. Clemente de Roma escribe en nombre de la iglesia de Roma cuando aún vivía la generación de los apóstoles, Ignacio de Antioquía envía sus cartas por el camino del martirio, y Atanasio de Alejandría expone el corazón de la fe —por qué Dios mismo se hizo hombre— en «Sobre la encarnación». Breves lecturas diarias durante unos cuatro meses.",
+    "note": [
+      "Job #4856. Ships with the last of the plan's Spanish books: first-epistle-of-clement («Primera epístola de Clemente a los corintios») and on-the-incarnation («Sobre la encarnación») already ship in es, and epistles-of-ignatius is this PR, so the plan seeds in es on merge."
+    ]
   }
 }
