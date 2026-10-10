@@ -236,21 +236,23 @@ def _blocks(lines: list[tuple[str, str]]) -> list[tuple[str, object]]:
             blocks.append(["p", text])
         else:
             cur[1] = join(cur[1], text)
-    return [(k, v) for k, v in blocks]
+    return blocks
+
+
+_PARA_SEP, _VERSE_SEP = "\u0000", "\u0001"
 
 
 def _correct(blocks: list[tuple[str, object]]) -> list[tuple[str, object]]:
-    sep = "\u0000"
-    flat = sep.join(v if k == "p" else "\u0001".join(v) for k, v in blocks)
+    flat = _PARA_SEP.join(v if k == "p" else _VERSE_SEP.join(v) for k, v in blocks)
     flat = _resolve_readings(flat)
     for wrong, right, n in CORRECTIONS:
         found = flat.count(wrong)
         if found != n:
             raise CommandError(f"correction {wrong!r}: expected {n}, found {found}")
         flat = flat.replace(wrong, right)
-    parts = flat.split(sep)
+    parts = flat.split(_PARA_SEP)
     return [
-        (k, p if k == "p" else p.split("\u0001"))
+        (k, p if k == "p" else p.split(_VERSE_SEP))
         for (k, _), p in zip(blocks, parts, strict=True)
     ]
 
@@ -324,7 +326,8 @@ class Command(BaseCommand):
         )
         book.chapters.all().delete()
 
-        # The proof is straight-quoted throughout; curl every mark to the
+        # The proof is straight-quoted throughout; curl the double marks (`_text`
+        # already curled the singles) to the
         # corpus's typographic style, guarded so only quote glyphs move.
         for order, (title, body) in enumerate(chapters, start=1):
             settled = settled_chapter_body(SLUG, order, clean_fragment(body))
