@@ -88,7 +88,8 @@
   "title": "Des hommes de prière : à l’école de la prière avec E. M. Bounds",
   "description": "Sept semaines dans la fournaise de l’intercession avec le grand apôtre de la prière. E. M. Bounds commence par le besoin qu’a le prédicateur lui-même de puissance, puis il dévoile le but qui rend la prière victorieuse, et la nécessité qui en fait toute l’affaire de la vie chrétienne.",
   "note": [
-   "Job #3017. Prose-ahead: source books (power-through-prayer, purpose-in-prayer, necessity-of-prayer) have no French edition yet, so seed_plans creates no fr row; dormant until they are translated."
+   "Job #3017. Prose-ahead: source books (power-through-prayer, purpose-in-prayer, necessity-of-prayer) have no French edition yet, so seed_plans creates no fr row; dormant until they are translated.",
+   "2026-10-10: power-through-prayer.fr (« La puissance par la prière ») ships and completes the set — purpose-in-prayer.fr and necessity-of-prayer.fr were already live — so seed_plans now creates the (praying-men, fr) row."
   ]
  },
  "voices-of-the-early-church": {
