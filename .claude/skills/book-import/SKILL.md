@@ -2142,6 +2142,34 @@ has no BSB text: fetch `https://bible.helloao.org/api/BSB/<BOOK>/<ch>.json` into
 the scratchpad and check every verse card and every `"…" (Ref)` quotation by
 script (normalise case/punctuation, split on `...`); (7) a book's `qa` needs 6–10 entries (`BookQaShapeTests`) — a later volume trimmed to five fails. *(tell-me-the-story, 2026-10)*
 
+## Adding illustrations to a book's chapters
+
+Chapter bodies may carry `<figure><img><figcaption></figure>` (sanitizer
+`ILLUSTRATION_SRC`). The recipe, from The Princess and the Goblin's plates:
+
+1. **Source** a PD plate set (Gutenberg `pg<N>-images.html` lists each `<img>`
+   with its plate caption as `alt`; files at `files/<N>/<N>-h/images/`). Check
+   the illustrator/date for PD status; credit them in the book's `attribution`.
+2. **Files**: `frontend/static/illustrations/<slug>/<kebab-name>.jpg` (JPEG or
+   PNG — an EPUB can't carry WebP, so a WebP picture is dropped from downloads).
+   If the edition is in `export_policy.EXPORT_EDITIONS`, put a byte-identical
+   copy under `backend/library/export_illustrations/<slug>/` — the API image
+   can't see `frontend/static`; `tests_book_export.IllustrationTests` enforces it.
+3. **Place** each figure as a TOP-LEVEL block right after the paragraph it
+   pictures (find it by the plate caption's words). Build the figure through
+   `clean_fragment`, with `width`/`height` (reserves the box; paged mode needs
+   it), a written `alt` describing the picture, and the plate caption.
+4. **Rederive** `body_text` + `word_count` for the touched chapters
+   (`library.text.html_to_text` / `word_count`) or the two fixture derivation
+   tests fail. Write with `content_fixtures.render_rows` (keep any trailing
+   bytes the file already had).
+5. Each figure is a top-level block, so it shifts later block indices by one:
+   `remap_marks` (every release) re-finds saved highlights within ±3 blocks —
+   keep it to about one figure between any two stretches of marked text, and
+   check `quote_seed.py` for that book's stored paragraph indices.
+6. Verify: paged + scroll + 375px in the reader; `export_book --format epub`
+   and `--format pdf` (CHROME_PATH) both show the plates.
+
 ## Two kinds of fix
 
 - **Improve the importer** (`import_ochorus.py`) when the pattern recurs across
