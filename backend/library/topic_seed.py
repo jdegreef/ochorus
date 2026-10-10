@@ -159,6 +159,7 @@ TOPICS = [
             "a-call-to-the-unconverted",
             "around-the-wicket-gate",
             "grace-abounding",
+            "how-i-became-a-christian",
             "how-to-bring-men-to-christ",
             "key-teachings-of-dwight-l-moody",
         ],

@@ -10182,6 +10182,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"how-i-became-a-christian": {
+			"ground": "f4b79402b591857946602680c465a16b89996e5fe001830d86e4f24ede51ab59",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"how-to-bring-men-to-christ": {
 			"ground": "90e959b8dbd59b93bef2f3766b1a9e33981a4f9fdb0357c6eba650a723470ae3",
 			"style": "revival",
