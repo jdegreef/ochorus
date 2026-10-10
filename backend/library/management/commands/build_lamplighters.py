@@ -32,15 +32,19 @@ from library import covers, english_audit
 from library.content_fixtures import book_sort_order
 from library.corrections import settled_chapter_body
 from library.ingest import clean_fragment, word_count
-from library.management.commands.build_rooted import AUTHOR_SLUG, DATA_DIR, parse
+from library.management.commands.build_rooted import DATA_DIR, parse
 from library.models import Author, Book, Chapter, Series
 from library.quote_marks import convert
 
 SERIES = "the-lamplighters-of-gloamhaven"
 
+#: The founder's own series, written with Ochorus: credited jointly, as a byline
+#: (``is_imprint``), not as a person with a biography.
+AUTHOR_SLUG = "james-degreef-and-ochorus"
+
 ATTRIBUTION = (
-    "© Ochorus. An Ochorus Original, written for young readers, free to read "
-    "and share. Book 1 of The Lamplighters of Gloamhaven."
+    "© James DeGreef and Ochorus. An Ochorus Original, written for young "
+    "readers, free to read and share. Book 1 of The Lamplighters of Gloamhaven."
 )
 
 VOLUMES: dict[int, dict[str, object]] = {
@@ -49,6 +53,9 @@ VOLUMES: dict[int, dict[str, object]] = {
         "publication_year": 2026,
         "title": "Fire Against the Dark",
         "subtitle": "The Lamplighters of Gloamhaven, Book One",
+        # The cover's byline row is one short line; the Ochorus mark at its foot
+        # completes "James DeGreef and Ochorus", the byline everywhere else.
+        "cover_byline": "James DeGreef",
         "cover_url": "/covers/fire-against-the-dark.svg",
         "cover_color": covers.ink_safe("#b5651d"),  # an ember in the grey
         "description": (
@@ -66,7 +73,7 @@ VOLUMES: dict[int, dict[str, object]] = {
         ),
         "about_html": (
             "<p>Fire Against the Dark is the first book of The Lamplighters of "
-            "Gloamhaven, an adventure series written by Ochorus for readers aged "
+            "Gloamhaven, an adventure series by James DeGreef and Ochorus for readers aged "
             "nine to twelve, and a good book to read aloud to younger children "
             "too. It is a story of chimneys and rooftops, a city wall lit by "
             "failing lamps, shadow-creatures that drain the colour out of "
@@ -86,7 +93,7 @@ VOLUMES: dict[int, dict[str, object]] = {
             "children's fantasy, each one a good evening's reading. Five more "
             "books will follow Wren, Tobin and Old Ash on the long road to the "
             "Bright Mountain, where the Flame began.</p>"
-            "<p>© Ochorus. An Ochorus Original, free to read and share.</p>"
+            "<p>© James DeGreef and Ochorus. An Ochorus Original, free to read and share.</p>"
         ),
         "qa": [
             {
