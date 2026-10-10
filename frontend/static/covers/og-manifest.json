@@ -4705,6 +4705,36 @@
 				505
 			]
 		},
+		"es/a-brand-plucked-from-the-fire": {
+			"ground": "bccc266f1594c96a3d8258f2fd087eb2db5484a8dd28bbb3cf593facbc427446",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[142, 102, 458, 131]
+				],
+				"title": [
+					[192, 272, 408, 348],
+					[157, 337, 443, 413],
+					[181, 403, 419, 479]
+				],
+				"subtitle": [
+					[147, 552, 453, 573]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				221,
+				573
+			]
+		},
 		"es/a-call-to-the-unconverted": {
 			"ground": "827ffa2f6ca60178ab1158f2715f85e868bce52c644654ae9c9de6dc90979f6c",
 			"style": "press",
@@ -4856,6 +4886,36 @@
 			"scrim": 1,
 			"layout": "fade/oxblood",
 			"bar": 0
+		},
+		"es/amanda-smith-autobiography": {
+			"ground": "d9b8745b212da55a7b047884604de077c0a5232ed1c5d04bf1345a854f54cfa5",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[100, 294, 500, 370],
+					[69, 360, 531, 436]
+				],
+				"subtitle": [
+					[89, 509, 511, 530],
+					[114, 530, 486, 551]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				244,
+				551
+			]
 		},
 		"es/amanda-smith-autobiography-children": {
 			"ground": "c6ff9995d114e3f42d508e1695fd9f922eb96e2247b70d06ed1be3b2450a3a2f",
@@ -5468,6 +5528,36 @@
 			"middle": [
 				317,
 				478
+			]
+		},
+		"es/journal-of-an-expedition-up-the-niger": {
+			"ground": "0dfd9658a4312574bf9c76ff730b1834257096a236b84839603b3518ba7367a7",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[72, 102, 528, 131]
+				],
+				"title": [
+					[123, 272, 477, 348],
+					[158, 337, 442, 413],
+					[147, 403, 453, 479]
+				],
+				"subtitle": [
+					[78, 552, 522, 573]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				221,
+				573
 			]
 		},
 		"es/key-teachings-of-a-b-simpson": {
