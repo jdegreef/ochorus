@@ -1,7 +1,7 @@
 """Cover art: the ink-safe plate, the emblem, generated covers, curated art.
 
 Moved out of the 6,500-line library/tests.py so a domain can be run — and
-edited — on its own. Pure move: no test changed.
+edited — on its own.
 """
 
 import re
@@ -907,6 +907,9 @@ class CoverAssetPlanTests(SimpleTestCase):
         with (
             mock.patch.object(module, "plan", return_value=([other], set())),
             mock.patch.object(module, "persist_field") as persist,
+            mock.patch.object(
+                module, "book_editions", return_value=[(Path("x.json"), "my-work", "fr", {})]
+            ),
             mock.patch("sys.argv", ["build_cover_assets.py", "--works", "my-work"]),
         ):
             with self.assertRaises(SystemExit) as caught:
@@ -922,6 +925,9 @@ class CoverAssetPlanTests(SimpleTestCase):
         with (
             mock.patch.object(module, "plan", return_value=([mine], set())),
             mock.patch.object(module, "persist_field") as persist,
+            mock.patch.object(
+                module, "book_editions", return_value=[(Path("x.json"), "my-work", "fr", {})]
+            ),
             mock.patch("sys.argv", ["build_cover_assets.py", "--works", "my-work"]),
             mock.patch("builtins.print"),
         ):

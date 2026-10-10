@@ -262,7 +262,8 @@ prerendered pages reference it.
   sessions' frontend PRs also undeployed). Not your PR. It self-heals as the queue
   clears, else Render dashboard → ochorus-web → Deploy latest commit (user-only).
 - **E · per-language plates** *(automated: `paint_covers` deletes every `<slug>.svg`
-  in every dir, and `build_cover_assets` repoints every edition row)* — a translated
+  in every dir, and `build_cover_assets --works` repoints every edition row of
+  these works — and refuses if another work's row would move)* — a translated
   plate book has `covers/<lang>/<slug>.svg` too, and each must go. The **plate
   files are the authoritative edition list** — a quick fixture-language scope can
   under-report (an `enchiridion.es` edition surfaced only via `es/enchiridion.svg`),

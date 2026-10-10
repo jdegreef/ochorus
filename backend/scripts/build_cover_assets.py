@@ -202,6 +202,11 @@ def main() -> int:
     args = ap.parse_args()
 
     repoints, sources = plan()
+    if args.works:
+        known = {slug for _, slug, _, _ in book_editions()}
+        unknown = sorted(set(args.works) - known)
+        if unknown:
+            raise SystemExit(f"--works names no edition: {', '.join(unknown)}")
     # A RUN FOR ONE WORK MUST NOT EDIT ANOTHER. With nothing else broken that
     # list is empty (`CoverAssetPlanTests` holds main to it); when it is not,
     # either the generator or another work's committed row is wrong, and
@@ -229,9 +234,10 @@ def main() -> int:
         wrote += write_variants(source, args.dry_run)
 
     verb = "would write" if args.dry_run else "wrote"
+    moved = "would repoint" if args.dry_run else "repointed"
     print(
         f"{verb} {len(wrote)} variants for {len(sources)} covers · "
-        f"repointed {len(repoints)} rows"
+        f"{moved} {len(repoints)} rows"
     )
     for name in wrote[:8]:
         print(f"    {name}")
