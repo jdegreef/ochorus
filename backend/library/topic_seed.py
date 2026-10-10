@@ -162,6 +162,7 @@ TOPICS = [
             "how-i-became-a-christian",
             "how-to-bring-men-to-christ",
             "key-teachings-of-dwight-l-moody",
+            "with-and-without-christ",
         ],
     ),
     (
@@ -395,6 +396,8 @@ TOPICS = [
             "revelations-of-divine-love",
             "key-teachings-of-george-macdonald",
             "the-practice-of-the-presence-of-god",
+            "at-the-masters-feet",
+            "reality-and-religion",
         ],
     ),
     (

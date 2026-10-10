@@ -51,6 +51,22 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "at-the-masters-feet": {
+        # CCEL's TOC numbers the six dialogues "I. The Manifestation…", a
+        # mixed-case roman prefix clean_title keeps, which would double the
+        # reader's own number ("4. I. …"). Orders 1–3 are the translators'
+        # note, the Preface and the Introduction; the note's printed heading
+        # is singular.
+        "chapter_titles": {
+            1: "Note by the Translators",
+            4: "The Manifestation of God's Presence",
+            5: "Sin and Salvation",
+            6: "Prayer",
+            7: "Service",
+            8: "The Cross and the Mystery of Suffering",
+            9: "Heaven and Hell",
+        },
+    },
     "the-pursuit-of-god": {
         # Gutenberg #25141 heads each chapter "I  <i>Following Hard after God</i>"
         # — a bare roman numeral on the same line as the italic title, which
@@ -684,6 +700,92 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # `apply_body_corrections`, plus a data migration for prod).
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "at-the-masters-feet": {
+        # CCEL's transcription checked word-for-word against the 1922 Revell
+        # printing (archive.org `atmastersfeet0000sing`): the note's heading
+        # repeats the chapter title, and CCEL drops or alters words the print
+        # has — five whole phrases among them. Each pair restores the print.
+        "replacements": [
+            ('<h2>NOTE BY THE TRANSLATORS </h2> ',
+             ''),
+            ('impression not only on me,',
+             'impression not only upon me,'),
+            ('Mussulman, and thus become a great',
+             'Mussulman, and thus became a great'),
+            ('for bringing men into the way',
+             'for bringing man into the way'),
+            ('Man also has a natural desire',
+             'Man also has this natural desire'),
+            ('acquainted with the criticism of the world',
+             'acquainted with the criticisms of the world'),
+            ('suffering, death, and the like?',
+             'suffering, death, and such like?'),
+            ('prepared for those who love Him',
+             'prepared for those that love Him'),
+            ('reached only by action in accordance',
+             'reached only by acting in accordance'),
+            ('awake to its terrible ravages',
+             'awake to its terrific ravages'),
+            ('how can the saint and angels',
+             'how can the saints and angels'),
+            ('with the eyes of faith was saved',
+             'with the eye of faith was saved'),
+            ('from death to becomes heirs',
+             'from death to become heirs'),
+            ('for the evil, how should we pray',
+             'for the evil, why should we pray'),
+            ('all that will make life is perfect',
+             'all that will make life perfect'),
+            ('He stand there motionless',
+             'He stands there motionless'),
+            ('than those of the mother,',
+             'than those of a mother,'),
+            ('they are not to travel beyond',
+             'they are not able to travel beyond'),
+            ('and by it help walks',
+             'and by its help walks'),
+            ('while the other was a worshipper',
+             'while the other who was a worshipper'),
+            ('bitter cold, you saw one lying',
+             'bitter cold, and saw one lying'),
+            ('able to bring a single soul',
+             'able to bring to a single soul'),
+            ('Gethesemane',
+             'Gethsemane'),
+            ('become heirs to the kingdom of God',
+             'become heirs of the kingdom of God'),
+            ('kept back from serving by',
+             'kept back from service by'),
+            ('act of service to be done, I choose',
+             'act of service to be done, which shall bring salvation and blessing to many, I choose'),
+            ('The cross is the key to heaven.',
+             'The cross is the key of heaven.'),
+            ('in order that the bitter may bear',
+             'in order that the bitter tree may bear'),
+            ('to introduce good into man’s evil nature, it was',
+             'to introduce into man’s evil nature, poisoned by sin, the life spiritual and holy, it was'),
+            ('thirty-three years bearing',
+             'thirty-three years’ bearing'),
+            ('until it caused the greatest pain',
+             'until it causes the greatest pain'),
+            ('surroundings; for which it is clear',
+             'surroundings; from which it is clear'),
+            ('Him they will seek only what is good',
+             'Him they will partake of His love, and in service for one another will seek only what is good'),
+            ('A poor begger sat',
+             'A poor beggar sat'),
+            ('he horded up all',
+             'he hoarded up all'),
+            ('the powerful effort of my own thoughts',
+             'the powerful effect of my own thoughts'),
+            ('This fitness of heart and thoughts',
+             'This fitness of the heart and thoughts'),
+            ('the lordiest throne',
+             'the lordliest throne'),
+            ('drops medicine into the eye does not see it',
+             'drops medicine into it the eye does not see it'),
+        ],
+    },
     "way-into-holiest": {
         "replacements": [
             # Ch.1 (Preface): a modern digitiser's note was appended after Meyer's

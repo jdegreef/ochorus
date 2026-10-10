@@ -30,6 +30,9 @@
   "are-you-forgiven": {
    "orphan-close-quote": 2
   },
+  "at-the-masters-feet": {
+   "space-before-punct": 2
+  },
   "baptism-with-the-holy-spirit": {
    "orphan-close-quote": 1,
    "space-before-punct": 5
@@ -254,6 +257,9 @@
    "orphan-close-quote": 1,
    "run-together": 1
   },
+  "reality-and-religion": {
+   "space-before-punct": 2
+  },
   "religious-affections": {
    "orphan-close-quote": 6,
    "welded-footnote": 75
@@ -436,6 +442,9 @@
   },
   "what-a-revival-of-religion-is": {
    "space-before-punct": 1
+  },
+  "with-and-without-christ": {
+   "space-before-punct": 6
   },
   "women-who-moved-heaven-2": {
    "space-before-punct": 1
