@@ -34,6 +34,16 @@ updates:
       frontend:
         patterns: ["*"]
         update-types: ["minor", "patch"]
+    # SvelteKit 3 is a planned migration, not a bump: it stops reading
+    # svelte.config.js (CSP + prerender guards), replaces $lib with #lib (~356
+    # files) and removes $app/stores. Kit 3 and adapter-static 4 require each
+    # other, so neither Dependabot PR can install alone. Held until the staged
+    # migration is scheduled (#5329, #5330); Kit 2 minor/patch still flow.
+    ignore:
+      - dependency-name: "@sveltejs/kit"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@sveltejs/adapter-static"
+        update-types: ["version-update:semver-major"]
 
   # The CI / prerender-audit workflows' own action versions.
   - package-ecosystem: "github-actions"
