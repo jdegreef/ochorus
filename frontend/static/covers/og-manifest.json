@@ -6350,6 +6350,35 @@
 			"layout": "box/teal",
 			"bar": 0
 		},
+		"es/the-imitation-of-christ": {
+			"ground": "b6ec91ef725af6ebd7a2ec583ac59fa7f5243643e2f974ed770dbffb75372b80",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[139, 102, 461, 131]
+				],
+				"title": [
+					[142, 266, 458, 348],
+					[185, 338, 415, 420]
+				],
+				"subtitle": [
+					[64, 496, 536, 524]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
+			]
+		},
 		"es/the-inner-chamber": {
 			"ground": "336703e5a3b031ffc4533590d4d4a6024e164a09540a43bc18546d77db4c3e7d",
 			"style": "devotional",
