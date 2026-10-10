@@ -5856,6 +5856,35 @@
 			"layout": "rail/indigo",
 			"bar": 0
 		},
+		"es/on-the-priesthood": {
+			"ground": "c7f6c3fd944aa81cd414d70bc043a27f8f5133197754c5e1049a4c35c885ccca",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[131, 102, 469, 131]
+				],
+				"title": [
+					[175, 314, 425, 376],
+					[127, 360, 473, 422]
+				],
+				"subtitle": [
+					[62, 451, 538, 472]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				323,
+				472
+			]
+		},
 		"es/pandita-ramabai-a-life-children": {
 			"ground": "abe4ff7ffffeb6664644328cbd5e132bada8923066366029e19ef029c1be7692",
 			"style": "young",
