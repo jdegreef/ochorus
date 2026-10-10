@@ -5654,6 +5654,16 @@
 				567
 			]
 		},
+		"es/life-of-antony": {
+			"ground": "74857e65971bf8ea6e7b8b23eddfdcbba9a0cbd11a03f62965955e14d75619d2",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/indigo",
+			"bar": 0
+		},
 		"es/lord-teach-us-to-pray-2": {
 			"ground": "1775aa31a125fb01ed70e2b9736e21d2193c62d2d0ba4751f750c7911114dabc",
 			"style": "devotional",
