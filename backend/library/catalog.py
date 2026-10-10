@@ -428,6 +428,18 @@ AUTHORS: dict[str, AuthorEntry] = {
             "missionary."
         ),
     ),
+    # `build_stewart_meditations` (no BookEntry — see that command).
+    "maria-w-stewart": AuthorEntry(
+        slug="maria-w-stewart",
+        name="Maria W. Stewart",
+        birth_year=1803,
+        death_year=1879,
+        bio=(
+            "Boston writer and lecturer, among the first American women to speak "
+            "in public, whose meditations, prayers and addresses called her people "
+            "to faith, learning and freedom."
+        ),
+    ),
     "r-a-torrey": AuthorEntry(
         slug="r-a-torrey",
         name="R. A. Torrey",

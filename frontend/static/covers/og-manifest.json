@@ -12564,6 +12564,16 @@
 				482
 			]
 		},
+		"meditations-maria-w-stewart": {
+			"ground": "6b17ab45ca4c1cc3a2f3e4f4c01a95423dc6a590e2d97af59c138599958c490d",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"memoirs-of-mrs-zilpha-elaw": {
 			"ground": "889c0671f664ae4283a6d81d8cb1f132a1d82fb8f58d46f26c21bb3331603b82",
 			"style": "enlightenment",
