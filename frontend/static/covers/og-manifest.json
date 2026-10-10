@@ -7334,6 +7334,16 @@
 				541
 			]
 		},
+		"fire-against-the-dark": {
+			"ground": "7a212fd67825af0ecc5df9785ea0f3ec31437e54776cc85d2abba2c382ab878c",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"first-epistle-of-clement": {
 			"ground": "137cdb7e6283d0991777a24feef91bed0afaf15652c2248870f789f239e635b4",
 			"style": "inscriptional",
