@@ -32,6 +32,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
 from library import covers, english_audit
+from library.content_fixtures import book_sort_order
 from library.corrections import settled_chapter_body
 from library.ingest import clean_fragment, word_count
 from library.management.commands.build_rooted import (
@@ -59,7 +60,6 @@ ATTRIBUTION = (
 
 VOLUMES: dict[int, dict[str, object]] = {
     1: {
-        "sort_order": 169,
         "publication_year": 2026,
         "title": "Tell Me the Story – Book 1: In the Beginning",
         "subtitle": "Old Testament Stories from Genesis",
@@ -135,11 +135,17 @@ def split_questions(manuscript: str) -> tuple[str, dict[str, list[dict[str, str]
     kept: list[str] = []
     questions: dict[str, list[dict[str, str]]] = {}
     title, in_block = None, False
+    seen: set[str] = set()
     for line in manuscript.splitlines():
         if line.startswith("## "):
             # Keyed as ``parse`` titles the chapter, curly apostrophes and all.
             title, in_block = _single_marks(line[3:].strip()), False
+            if title in seen:
+                raise CommandError(f"two chapters are titled {title!r}: their questions would merge")
+            seen.add(title)
         elif line.strip() == QUESTIONS_HEADING:
+            if title is None:
+                raise CommandError("a questions block comes before the first chapter")
             in_block = True
             questions[title] = []
             continue
@@ -177,7 +183,8 @@ def check_shape(chapters: list[tuple[str, str]], questions: dict[str, list[dict[
             problems.append(f"{title!r}: does not open with its verse")
         if "Read it in your Bible:" not in body:
             problems.append(f"{title!r}: no “Read it in your Bible”")
-        if not re.search(r"<p><em>[^<]*Amen\.</em></p>$", body):
+        # The reader's prayer card: a last paragraph that is one <em> and nothing else.
+        if not re.search(r"<p><em>(?:(?!</em>).)*Amen\.</em></p>$", body):
             problems.append(f"{title!r}: does not end with its prayer")
     if problems:
         raise CommandError("manuscript shape:\n  " + "\n  ".join(problems))
@@ -215,6 +222,7 @@ class Command(BaseCommand):
             "series": series_row,
             "series_position": volume,
             "cover_title": "Tell Me the Story",
+            "sort_order": book_sort_order(slug),
             **VOLUMES[volume],
         }
         book, created = Book.objects.update_or_create(

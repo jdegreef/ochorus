@@ -42,7 +42,7 @@ Mainstream evangelical, as *The Big Story*. The Bible is God's true Word, and Go
 
 ## Book 1: In the Beginning
 
-An Introduction (for the child, with a note for grown-ups, and its own three questions: the reader wants questions on every chapter or none), then twenty-one stories from Genesis.
+An Introduction (for the child — the note for grown-ups lives in about_html, so read-aloud never speaks it — with its own three questions: the reader wants questions on every chapter or none), then twenty-one stories from Genesis.
 
 1. God Makes Everything (Genesis 1:1–2:3)
 2. A Garden for Adam and Eve (Genesis 2)

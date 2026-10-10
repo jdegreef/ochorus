@@ -20,8 +20,6 @@ Each story begins with a verse from the Bible and ends with a prayer. After the 
 
 So snuggle up, and let's begin at the very beginning.
 
-**For grown-ups:** Each story takes about four minutes to read aloud. The stories stay close to what the Bible says, and the people in them say what the Bible says they said, in simple words. Hard stories, like the flood and Joseph's brothers, are told honestly but gently. Under each story are three questions with answers to help you talk together. The first two go back over the story, and the third brings it home.
-
 *Dear God, thank you for the Bible and for all its true stories. As we read them, help us to know you and to love you. Amen.*
 
 ### Talk about it together
@@ -258,7 +256,7 @@ Think about that. Every time the sun comes up in the morning, God is keeping His
 
 Then God blessed Noah and his sons. "Have lots of children," He said, "and fill the earth." The world had been empty after the flood, but now it would fill up with families again.
 
-God told Noah that people are very precious to Him, because He made them in His own image. That is why nobody must ever take another person's life.
+God told Noah that people are very precious to Him, because He made them in His own image. That is why taking a person's life is such a terribly serious wrong.
 
 Then God made a special promise, called a covenant, with Noah and his sons, and with every living creature: the birds and the cattle and all the wild animals that had come out of the ark.
 
