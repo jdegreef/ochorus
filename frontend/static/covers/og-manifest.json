@@ -6167,6 +6167,16 @@
 			"layout": "wash/sage",
 			"bar": 0.04
 		},
+		"es/selected-sermons-edwards": {
+			"ground": "e1ba0ae042b70a3a531992afea4f192df2c1357c74508570174e16747a015def",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/slate",
+			"bar": 0
+		},
 		"es/selected-sermons-whitefield": {
 			"ground": "48a65fc59a55dcddea239f72402100f66c206c54df2dc97b160e9dacfeb376bc",
 			"style": "enlightenment",
