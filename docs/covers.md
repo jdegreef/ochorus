@@ -140,6 +140,12 @@ translation needs a twin, run `npm run og:covers`; it redraws only what changed.
   something about it really changed — don't restore its old bytes, which would
   leave the manifest vouching for a picture it no longer describes.
   `paint_covers` lists any such twins.
+- **A cover run never moves another work's row.** `paint_covers` runs
+  `build_cover_assets --works <slugs>`, which refuses — writing nothing — if any
+  other work's `cover_url` would change, and `CoverAssetPlanTests` holds the
+  committed fixture to exactly what the generator writes. Every English edition
+  (`en-modern` included) of a designed work keeps its designed cover:
+  `covers.wears_designed_english` is that rule, for both generators.
 - **A twin digests the byline.** Renaming an author or retitling a book makes
   that edition's twin stale though the painting is untouched.
 - **Translation races.** A new translation of a work you are painting can land

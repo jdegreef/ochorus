@@ -136,6 +136,20 @@ def keeps_english_designed(slug: str) -> bool:
     return slug in DERIVED_GROUND or slug in CURATED_GROUND
 
 
+def wears_designed_english(slug: str, language: str) -> bool:
+    """Does THIS edition of a shared-ground work keep the designed cover?
+
+    ``keeps_english_designed`` answers for the work; this answers for one row,
+    and "English" here is every English edition — the Modern English one too,
+    whose title is English words like the designed cover's. Two generators
+    spelled it ``language == "en"``, so every cover run repointed the
+    ``en-modern`` rows of ``humility-2`` and ``the-inner-chamber`` at the
+    wordless ground, against the fixture gate that pins them to the designed
+    file — a diff on two unrelated books in whatever PR ran the pipeline.
+    """
+    return keeps_english_designed(slug) and is_english_edition(language)
+
+
 def variant_url(cover_url: str, width: int) -> str:
     """The webp variant of a raster cover at `width`."""
     return f"{cover_url.rsplit('.', 1)[0]}-{width}.webp"

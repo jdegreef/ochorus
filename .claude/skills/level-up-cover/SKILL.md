@@ -117,7 +117,13 @@ its entry; change the entry's artwork or `focus` and the next run redraws it
 (`library/art_sources.py` records each painting's recipe, and a gate fails a
 painting whose entry moved without one). `--recrop` redraws regardless. It refuses a slug not in
 `CURATED`. If it reports twins redrawn **outside** your works, their inputs
-really changed — look before committing. Needs `frontend/node_modules` and Node
+really changed — look before committing. If step 4 **refuses** because it would
+repoint another work's rows, do NOT hand-revert or commit them: the generator
+and that work's fixture disagree, so settle which is wrong in its own PR
+(`CoverAssetPlanTests` should already be failing on main — the `en-modern`
+rows of `humility-2`/`the-inner-chamber` were this, 2026-10-10: the generator
+read "English" as `language == "en"`; `covers.wears_designed_english` is the
+one rule now). Needs `frontend/node_modules` and Node
 22 on PATH. **Run `npm ci` in the worktree — don't symlink the shared checkout's
 `node_modules`**: it lags `main`'s deps and `og:covers` dies `ENOENT … @fontsource/…`
 (Batch 17, 2026-09-27).
@@ -256,7 +262,8 @@ prerendered pages reference it.
   sessions' frontend PRs also undeployed). Not your PR. It self-heals as the queue
   clears, else Render dashboard → ochorus-web → Deploy latest commit (user-only).
 - **E · per-language plates** *(automated: `paint_covers` deletes every `<slug>.svg`
-  in every dir, and `build_cover_assets` repoints every edition row)* — a translated
+  in every dir, and `build_cover_assets --works` repoints every edition row of
+  these works — and refuses if another work's row would move)* — a translated
   plate book has `covers/<lang>/<slug>.svg` too, and each must go. The **plate
   files are the authoritative edition list** — a quick fixture-language scope can
   under-report (an `enchiridion.es` edition surfaced only via `es/enchiridion.svg`),
