@@ -143,5 +143,12 @@
     "note": [
       "Queue job #4819: grace-abounding ships in Spanish as «Gracia abundante para el primero de los pecadores», which completes this (the-pilgrims-way, es) plan with «Junto a la puerta estrecha» and «El progreso del peregrino». Prose ships in the same PR so the es plans page never publishes the English card."
     ]
+  },
+  "key-teachings-four-teachers": {
+    "title": "Las enseñanzas clave: cuatro maestros",
+    "description": "Doce semanas con cuatro maestros, un capítulo breve al día, cada uno con preguntas y una oración al final: Richard Baxter sobre el reposo eterno de los santos, Jonathan Edwards sobre la hermosura de Dios y la verdadera religión, A. B. Simpson sobre Cristo nuestro Salvador, Santificador, Sanador y Rey que viene, y Watchman Nee sobre la vida cristiana normal.",
+    "note": [
+      "Job #4840. Ships with the last of the four Spanish companions: key-teachings-of-a-b-simpson (#5960) and key-teachings-of-jonathan-edwards (#5962) are merged, key-teachings-of-richard-baxter is #5964. «Cristo nuestro Salvador, Santificador, Sanador y Rey que viene» is the Simpson companion's own wording."
+    ]
   }
 }
