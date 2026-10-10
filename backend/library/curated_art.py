@@ -242,6 +242,13 @@ CURATED: dict[str, Artwork] = {
         "church between the cross and the return. Light coming from behind the "
         "headland, not yet arrived.",
     ),
+    "come-ye-children": Artwork(
+        "aic", 896, "Constant Troyon", "The Road to Market", "1858–59",
+        "Spurgeon's book for parents and teachers is Christ's \"Feed My lambs\": "
+        "a family with their children on the road, the flock walking with them "
+        "into the light. A figure scene, but a homely one, and the lambs are "
+        "the subject.",
+    ),
     "the-way-to-god": Artwork(
         "met", 436652, "Meyndert Hobbema", "Entrance to a Village", "ca. 1665",
         "A road ARRIVING somewhere, deliberately paired with the Hobbema on "

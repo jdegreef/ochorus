@@ -4272,6 +4272,16 @@
 				508
 			]
 		},
+		"come-ye-children": {
+			"ground": "3a10279db8dc2bc92b1e2aafd7e893619691286df11c97ba595073fdc4e12680",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"confessions": {
 			"ground": "65b37fbd511d6d02b343619c9c3cd7e029ec286c7dbf5eaa6c8c295010ed9abd",
 			"style": "inscriptional",

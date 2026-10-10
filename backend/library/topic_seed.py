@@ -432,6 +432,7 @@ TOPICS = [
             "how-to-bring-men-to-christ",
             "men-who-tended-the-flock-2",
             "the-fundamental-doctrines-of-the-christian-faith",
+            "come-ye-children",
         ],
     ),
     (

@@ -22,6 +22,7 @@ ART_SOURCES: dict[str, str] = {
     "around-the-wicket-gate": "met-436557@0.50",
     "cheque-book": "met-439844@0.50",
     "christ-the-healer": "aic-146701@0.50",
+    "come-ye-children": "aic-896@0.50",
     "confessions": "met-436455@0.50",
     "corrie-ten-boom-a-life": "wikidata-17275831@0.30",
     "days-of-heaven-upon-earth": "cma-141639@0.40",
