@@ -12482,6 +12482,16 @@
 				482
 			]
 		},
+		"memoirs-of-mrs-zilpha-elaw": {
+			"ground": "889c0671f664ae4283a6d81d8cb1f132a1d82fb8f58d46f26c21bb3331603b82",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"ministry-of-intercession": {
 			"ground": "c29b4e95738f0b032d0f2181c4a32596814abd3bee59c86d7d3f189401531b4f",
 			"style": "devotional",

@@ -955,6 +955,39 @@ dropped; chapters under 120 words are dropped as stubs.
   running headers + page numbers + markers, NOT prose). Verse/hymn reflows to
   prose paragraphs — words preserved, line breaks flattened (acceptable).
   *(a-brand-plucked-from-the-fire, 2026-09)*
+- **An Archive scan too blotchy for any OCR → proof it LINE BY LINE against
+  the page images and COMMIT THE PROOF as the editorial source.** Zilpha Elaw's
+  *Memoirs* (1846, `MinisterialTravelsAndLaboursOfMrs.ZilphaElaw`) is set in a
+  bold, ink-filled face (b/h, e/c, rn/m, 1/I, dropped letters on every line).
+  What worked: two OCR passes (archive.org's layer + a local macOS Vision OCR of
+  each scan) merged into a per-page packet of numbered PRINTED lines with
+  disagreement flags; each page proofed against its image into
+  `data/<slug>/pages.txt` — one line per printed line, prefix `¶ ` (indented
+  paragraph) / `  ` (continuation) / `V ` (verse), `## <page>` markers, 1846
+  spelling and line-end hyphens as printed, `{word?}` for an ink-blotted
+  reading. `build_zilpha_elaw` then reflows (close a line-end hyphen unless the
+  hyphenated form occurs mid-line elsewhere in the book or the head is in a
+  small keep-set like `self-`), settles each `{…?}` from a READINGS table,
+  fixes printer's errors from an explicit CORRECTIONS table (as-printed,
+  corrected, expected count — asserted, so a proof edit can't silently stop a
+  fix), splits at anchor phrases, curls BOTH double marks (`quote_marks.convert`)
+  and single marks (open only at a line start / after a space or bracket, so
+  "Mr. W——'s" stays an apostrophe). Lessons: (1) **check the LAST page of the
+  scan first** — this one stops mid-sentence at p. 168 of 172; the missing
+  pages came from the Google Books copy of the same edition (a 1000×1500
+  viewport screenshot holds one whole page; upscale ×3 and Vision-OCR it, then
+  read it against the image — the OCR still invented `i` for a `"`, `.` for a
+  space, `belier-` for `believ-`). (2) A book with NO chapters gets editorial
+  chapters at narrative turns (new period / new field of travel), titled
+  plainly, and the attribution SAYS the divisions are editorial. (3) Its
+  page-long paragraphs are faithful: baseline the `lost-paragraphing` finding,
+  don't invent breaks. (4) Run a quote-balance pass per paragraph after the
+  build: the printer left four quotations unclosed and opened one with `'` and
+  closed it with `"` — fix each from the image, as a listed correction.
+  (5) Long verbatim source text in the model's OWN output trips an API content
+  filter that kills the run — keep the proofing diff-only (patch files, scripts
+  that print counts and short snippets), never echo pages back.
+  *(memoirs-of-mrs-zilpha-elaw, 2026-10)*
 - **An Archive scan whose chapters are headed by a BARE ROMAN NUMERAL (no
   "CHAPTER" word) → build_<name> that detects heads structurally, because the
   running header IS the chapter title.** Bounds's *Possibilities of Prayer*
