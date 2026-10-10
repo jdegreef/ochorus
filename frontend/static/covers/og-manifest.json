@@ -5500,6 +5500,36 @@
 				478
 			]
 		},
+		"es/journal-of-an-expedition-up-the-niger": {
+			"ground": "0dfd9658a4312574bf9c76ff730b1834257096a236b84839603b3518ba7367a7",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[72, 102, 528, 131]
+				],
+				"title": [
+					[123, 272, 477, 348],
+					[158, 337, 442, 413],
+					[147, 403, 453, 479]
+				],
+				"subtitle": [
+					[78, 552, 522, 573]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				221,
+				573
+			]
+		},
 		"es/key-teachings-of-a-b-simpson": {
 			"ground": "02e30b132a18bdb58b3583bc98b1c64038a2b472fe09c6987f1a86c2fd1fa3b7",
 			"style": "originals",

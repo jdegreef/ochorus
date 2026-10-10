@@ -2666,3 +2666,11 @@ archaic spelling and period punctuation are the text, not defects in it.
   every file of `/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/` into it
   plus `chrome-headless-shell -> …/headless_shell`, then
   `PLAYWRIGHT_BROWSERS_PATH=$S npm run og:covers`. It rendered the twin correctly.
+- **An empty queue is not full coverage. Diff the English corpus against the language
+  before saying "done"** (fr, 2026-10-10). Every fr job had shipped, yet 5 of the 135 English
+  articles had no `.fr.json`, because their jobs were never filed. The admin language page
+  files jobs on demand, so anything added after its last button-press has no issue. A
+  one-line set difference finds them: `.en.json` slugs minus `.<lang>.json` slugs in each
+  content dir. Translate them like jobs, with no issue to close. Also: the scratchpad is wiped
+  between sessions, so re-fetch the Bible mirror and recreate the brief, rather than
+  assuming last session's `lsg_verses.json` is still there.
