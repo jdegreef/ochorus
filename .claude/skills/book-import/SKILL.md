@@ -2152,9 +2152,11 @@ Chapter bodies may carry `<figure><img><figcaption></figure>` (sanitizer
    the illustrator/date for PD status; credit them in the book's `attribution`.
 2. **Files**: `frontend/static/illustrations/<slug>/<kebab-name>.jpg` (JPEG or
    PNG — an EPUB can't carry WebP, so a WebP picture is dropped from downloads).
-   If the edition is in `export_policy.EXPORT_EDITIONS`, put a byte-identical
-   copy under `backend/library/export_illustrations/<slug>/` — the API image
-   can't see `frontend/static`; `tests_book_export.IllustrationTests` enforces it.
+   If the edition is in `export_policy.EXPORT_EDITIONS`, run
+   `export_book <slug> --language <lang> --format epub` once: it writes the
+   copies under `backend/library/export_illustrations/` that the API's EPUB
+   reads (it can't see `frontend/static`); commit them —
+   `tests_book_export.IllustrationTests` fails while one is missing or stale.
 3. **Place** each figure as a TOP-LEVEL block right after the paragraph it
    pictures (find it by the plate caption's words). Build the figure through
    `clean_fragment`, with `width`/`height` (reserves the box; paged mode needs
