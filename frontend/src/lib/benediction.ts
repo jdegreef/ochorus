@@ -22,8 +22,7 @@
 export type Benediction = {
 	/** The Take Root translation code the lines were fetched from. */
 	bible: string;
-	/** "Numbers", as that Bible names the book. The verse span is PASSAGE,
-	 *  set apart from it so bidi can't reorder "6:24–26" inside Arabic. */
+	/** "Numbers", as that Bible names the book (the verses are PASSAGE). */
 	book: string;
 	/** One line per verse, 24–26. */
 	lines: readonly [string, string, string];
@@ -124,8 +123,3 @@ export const BENEDICTION: Readonly<Record<string, Benediction>> = {
 		]
 	}
 };
-
-/** The blessing in `locale`'s own Bible, or null where it has none. */
-export function benediction(locale: string): Benediction | null {
-	return BENEDICTION[locale] ?? null;
-}

@@ -58,11 +58,9 @@
 	import { localizeHref as pageHref } from '$lib/href';
 	import BrandMark from '$lib/components/BrandMark.svelte';
 	import BrandSprite from '$lib/components/BrandSprite.svelte';
-	import BookCover from '$lib/components/BookCover.svelte';
-	import ProgressBar from '$lib/components/ProgressBar.svelte';
-	import { chapterMeter } from '$lib/components/WorkCard.svelte';
 	import { currentBook } from '$lib/currentBook.svelte';
-	import { benediction, PASSAGE } from '$lib/benediction';
+	import { BENEDICTION, PASSAGE } from '$lib/benediction';
+	import { elementVisible } from '$lib/scrollSpy.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
 	// Preload the primary Latin subsets of the two brand fonts (display + body).
 	// @fontsource already ships them font-display:swap; preloading fetches them on
@@ -273,39 +271,30 @@
 		withSource(withSignup(loginHref($page.url.pathname, $page.url.search)), 'footer')
 	);
 
-	// Footer "Before you go" cards (markup has the why). The first card is the
-	// invitation for a signed-out reader, else the signed-in reader's current
-	// book — except on home, whose hero already resumes it — else a way in.
+	// Footer "Before you go" cards: the invitation (signed out), else the
+	// signed-in reader's current book, else a way into the library.
 	const showInvite = $derived(auth.enabled && !auth.user && !onLogin);
-	const onHome = $derived(deLocalizeHref($page.url.pathname) === '/');
-	const resume = $derived(!showInvite && auth.user && !onHome ? currentBook.item : null);
-	const resumeMeter = $derived(
-		resume ? chapterMeter(resume.order, resume.chapterCount, resume.pct) : ''
-	);
+	const path = $derived(deLocalizeHref($page.url.pathname));
+	const wantResume = $derived(!!auth.user && path !== '/');
+	// Not on the pages that already show it: home (the hero resumes it, hence
+	// wantResume) and that book's own detail and chapter pages.
+	const resume = $derived.by(() => {
+		const item = wantResume ? currentBook.item : null;
+		return item && !`${path}/`.startsWith(`/books/${item.slug}/`) ? item : null;
+	});
 
-	// The current book is resolved only as the footer nears the viewport: it
-	// may fetch the language's book list, and most page views never scroll this
-	// far. Re-resolved each time the footer comes back into reach (the layout,
-	// and so the footer, outlives navigations), and on `ochorus:sync`.
-	function nearView(node: HTMLElement) {
-		const io = new IntersectionObserver(
-			(entries) => {
-				if (auth.user && entries.some((e) => e.isIntersecting)) currentBook.refresh();
-			},
-			{ rootMargin: '600px 0px' }
-		);
-		io.observe(node);
-		const unwatch = currentBook.watch();
-		return {
-			destroy() {
-				io.disconnect();
-				unwatch();
-			}
-		};
-	}
+	// Resolved only while it could be shown AND the footer is within reach: it
+	// may fetch the language's book list, and most page views never scroll here.
+	let footerCards = $state<HTMLElement>();
+	const cardsNear = elementVisible(() => footerCards, { rootMargin: '600px 0px' });
+	$effect(() => {
+		if (!wantResume || !cardsNear.visible) return;
+		void lang.current;
+		untrack(() => currentBook.refresh());
+		return currentBook.watch();
+	});
 
-	// The footer's closing blessing, in this locale's own Bible (or none).
-	const blessing = $derived(benediction(lang.current));
+	const blessing = $derived(BENEDICTION[lang.current]);
 
 	// Footer "My Account" column — the reader's own pages (ACCOUNT_NAV, shared
 	// with the phone "More" sheet; accountHref routes a signed-out reader
@@ -478,18 +467,18 @@
 			     indigo-to-gold hairline along the top edge is the one colourful
 			     gesture — the signature pairing, kept to a 2px rule. -->
 
-			<!-- "Before you go": two cards that hand the reader a next step. The
-			     first is personal — for a signed-out reader, the sign-up invitation
-			     (gated on auth.enabled the way the header's sign-in control is, and
-			     dropped on /login, where the form is already the page); for a
-			     signed-in one, the book they are in (Continue reading, the same
-			     current book the home hero resumes — so not on home, where the hero
-			     already shows it); else a way into the library. The second is always
-			     Reading Plans. Every string is an EXISTING, already-translated key
-			     (the invitation's from the sign-up flow), so the row mints no
-			     footer-only keys — the trade is that rewording those at their source
-			     also rewords these cards. -->
-			<div class="chrome-col px-5 pt-10 sm:pt-12" use:nearView>
+			<!-- "Before you go": a personal next step, then Reading Plans. Every
+			     string is an existing translated key (the invitation's from the
+			     sign-up flow), so the row mints no footer-only keys. -->
+			{#snippet linkCard(icon: IconName, title: string, line: string, href: string, cta: string)}
+				<div class="footer-card">
+					<span class="footer-card-mark" aria-hidden="true"><Icon name={icon} size={22} /></span>
+					<p class="footer-card-title">{title}</p>
+					<p class="text-small text-muted">{line}</p>
+					<a class="footer-card-link" {href}>{cta}<Icon name="chevron-right" size={16} /></a>
+				</div>
+			{/snippet}
+			<div class="chrome-col px-5 pt-10 sm:pt-12" bind:this={footerCards}>
 				<div class="footer-cards">
 					{#if showInvite}
 						<div class="footer-card footer-invite">
@@ -509,51 +498,32 @@
 							</a>
 						</div>
 					{:else if resume}
-						<!-- The whole card is the link: one target, named by its title. -->
-						<a class="footer-card footer-resume" href={pageHref(resume.href)}>
-							<div class="w-14 shrink-0">
-								<BookCover book={resume.book} rounded="rounded-sm" />
-							</div>
-							<div class="min-w-0 flex-1">
-								<p class="eyebrow text-accent">{t('continue.title')}</p>
-								<p class="footer-card-title mt-1 truncate">{resume.title}</p>
-								<p class="truncate text-small text-muted">{resume.author}</p>
-								<div class="mt-2">
-									<ProgressBar percent={resume.pct} label="{resume.title}: {resumeMeter}" />
-								</div>
-								<p class="mt-1 truncate text-micro text-muted">{resumeMeter}</p>
-							</div>
-						</a>
+						<!-- Lazy: WorkCard brings the cover stack ($lib/components/FooterResume). -->
+						{#await import('$lib/components/FooterResume.svelte') then { default: FooterResume }}
+							<FooterResume item={resume} />
+						{/await}
 					{:else}
-						<div class="footer-card">
-							<span class="footer-card-mark" aria-hidden="true">
-								<Icon name="compass" size={22} />
-							</span>
-							<p class="footer-card-title">{t('seals.nextBooks')}</p>
-							<p class="text-small text-muted">{t('footer.tagline')}</p>
-							<a class="footer-card-link" href={localizeHref('/books')}
-								>{t('home.browseLibrary')}<Icon name="chevron-right" size={16} /></a
-							>
-						</div>
+						{@render linkCard(
+							'compass',
+							t('seals.nextBooks'),
+							t('footer.tagline'),
+							localizeHref('/books'),
+							t('home.browseLibrary')
+						)}
 					{/if}
-					<div class="footer-card">
-						<span class="footer-card-mark" aria-hidden="true">
-							<Icon name="calendar" size={22} />
-						</span>
-						<p class="footer-card-title">{t('plans.title')}</p>
-						<p class="text-small text-muted">{t('plans.tagline')}</p>
-						<a class="footer-card-link" href={localizeHref('/plans')}
-							>{t('seals.nextPlans')}<Icon name="chevron-right" size={16} /></a
-						>
-					</div>
+					{@render linkCard(
+						'calendar',
+						t('plans.title'),
+						t('plans.tagline'),
+						localizeHref('/plans'),
+						t('seals.nextPlans')
+					)}
 				</div>
 			</div>
 
-			<!-- The closing word: the Aaronic blessing in this locale's own Bible
-			     ($lib/benediction — verbatim from that Bible, never translated
-			     here). A locale whose Bible lacks it shows nothing rather than
-			     another language's verse. lang/dir on the figure so a screen reader
-			     voices it in its own language and Arabic sets right to left. -->
+			<!-- The closing word, verbatim from this locale's own Bible ($lib/benediction);
+			     none where that Bible lacks it. lang/dir so it is voiced and set in its
+			     own language. -->
 			{#if blessing}
 				<figure
 					class="footer-blessing chrome-col px-5"
@@ -901,17 +871,16 @@
 		font-weight: 600;
 		color: var(--accent);
 	}
+	/* The chevron already flips in RTL (Icon's .dir-flip); the hover nudge uses
+	   `translate`, which composes with that flip instead of replacing it. */
 	.footer-card-link :global(svg) {
-		transition: transform var(--duration-fast) ease;
+		transition: translate var(--duration-fast) ease;
 	}
 	.footer-card-link:hover :global(svg) {
-		transform: translateX(3px);
-	}
-	:global([dir='rtl']) .footer-card-link :global(svg) {
-		transform: scaleX(-1);
+		translate: 3px;
 	}
 	:global([dir='rtl']) .footer-card-link:hover :global(svg) {
-		transform: scaleX(-1) translateX(3px);
+		translate: -3px;
 	}
 	/* The sign-up card keeps the invitation's warm soft-indigo panel, and its
 	   mark goes solid, so the one conversion card still reads as the call. */
@@ -923,21 +892,9 @@
 		background: var(--accent);
 		color: var(--accent-contrast);
 	}
-	.footer-invite :global(.footer-invite-cta) {
+	.footer-invite .footer-invite-cta {
 		margin-block-start: auto;
 	}
-	/* Continue reading: the whole card is the link, cover beside the meter. */
-	.footer-resume {
-		flex-direction: row;
-		align-items: center;
-		gap: 1rem;
-		color: inherit;
-	}
-	.footer-resume:hover {
-		text-decoration: none;
-		background: var(--surface-2);
-	}
-
 	/* The closing blessing: the footer's one quiet moment between the cards
 	   and the link columns. Display face, italic, gold lamp above. */
 	.footer-blessing {
@@ -962,10 +919,9 @@
 		color: var(--text);
 		text-wrap: balance;
 	}
-	/* Only Latin script has a true Fraunces italic; elsewhere the browser
-	   would fake one by slanting the fallback face, which mangles Arabic,
-	   Devanagari and Ethiopic. */
-	.footer-blessing:is(:lang(ar), :lang(hi), :lang(am), :lang(uk)) blockquote {
+	/* These scripts' display faces have no italic, so the browser would fake
+	   a slant (app.css keeps Korean upright the same way). */
+	.footer-blessing:is(:lang(ar), :lang(hi), :lang(am)) blockquote {
 		font-style: normal;
 	}
 	.footer-blessing figcaption {
@@ -1054,6 +1010,9 @@
 		}
 		.footer-invite-cta:hover :global(.footer-invite-arrow) {
 			transform: none;
+		}
+		.footer-card-link:hover :global(svg) {
+			translate: none;
 		}
 		.footer-invite-cta:hover::after {
 			animation: none;

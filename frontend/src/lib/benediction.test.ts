@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { BENEDICTION, benediction } from './benediction';
+import { BENEDICTION } from './benediction';
 import { bibleCredit } from './bibleCredit';
 import { locales } from '$lib/paraglide/runtime';
 
@@ -8,12 +8,8 @@ describe('benediction', () => {
 		// vi and ko are the two Take Root has no Numbers for; they show nothing
 		// rather than an English verse.
 		const without = new Set(['vi', 'ko']);
-		for (const l of locales) expect(benediction(l) !== null, l).toBe(!without.has(l));
+		for (const l of locales) expect(l in BENEDICTION, l).toBe(!without.has(l));
 		for (const l of Object.keys(BENEDICTION)) expect(locales as readonly string[]).toContain(l);
-	});
-
-	it('has no blessing for a locale it does not know', () => {
-		expect(benediction('zz')).toBeNull();
 	});
 
 	/**
