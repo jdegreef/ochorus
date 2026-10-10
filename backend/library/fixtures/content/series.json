@@ -503,5 +503,18 @@
   "created_at": "2026-10-09T00:00:00Z",
   "updated_at": "2026-10-09T00:00:00Z"
  }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "es",
+  "title": "Las enseñanzas clave",
+  "description": "Guías breves y fieles de Ochorus al corazón de la enseñanza de un autor clásico: cada capítulo termina con preguntas y una oración, y remite al lector a los propios libros del autor.",
+  "created_at": "2026-10-10T00:00:00Z",
+  "updated_at": "2026-10-10T00:00:00Z"
+ }
 }
 ]

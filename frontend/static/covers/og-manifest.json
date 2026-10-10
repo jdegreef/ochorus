@@ -5470,6 +5470,37 @@
 				478
 			]
 		},
+		"es/key-teachings-of-a-b-simpson": {
+			"ground": "02e30b132a18bdb58b3583bc98b1c64038a2b472fe09c6987f1a86c2fd1fa3b7",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[175, 102, 425, 131]
+				],
+				"title": [
+					[105, 169, 495, 232],
+					[168, 225, 432, 288],
+					[158, 280, 442, 343]
+				],
+				"subtitle": [
+					[160, 404, 440, 432],
+					[183, 432, 417, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
+			]
+		},
 		"es/life-and-diary-of-david-brainerd": {
 			"ground": "802a4edfc703abbc2d09834c302f1ed7b0baf902d1685c6d1a6e672de520e7f3",
 			"style": "enlightenment",
