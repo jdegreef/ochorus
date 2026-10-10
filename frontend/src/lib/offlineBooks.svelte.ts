@@ -109,13 +109,17 @@ class OfflineBooks {
 			// cached after it — into the same durable cache, or an illustrated book
 			// would read offline with a broken image wherever a plate stood.
 			const pictures = new Set<string>();
-			for (const url of urls) {
+			for (const [i, url] of urls.entries()) {
 				try {
 					const res = await fetch(url);
 					if (res.ok) {
 						await cache.put(url, res.clone());
-						const body = (await res.json().catch(() => null))?.body_html;
-						if (typeof body === 'string') for (const src of illustrationSrcs(body)) pictures.add(src);
+						// urls[0] is the book itself; only chapters carry a body.
+						const text = i > 0 ? await res.text() : '';
+						if (text.includes('/illustrations/')) {
+							const body = JSON.parse(text)?.body_html;
+							if (typeof body === 'string') for (const src of illustrationSrcs(body)) pictures.add(src);
+						}
 					}
 				} catch {
 					/* one chapter failed — keep going; the rest still download */
@@ -166,14 +170,14 @@ class OfflineBooks {
 					/* cover unavailable — text still reads offline */
 				}
 			}
-			for (const url of pictures) {
-				try {
+			// Independent and best-effort, so in parallel; one missing picture
+			// leaves the rest (and the text) downloaded.
+			await Promise.allSettled(
+				[...pictures].map(async (url) => {
 					const res = await fetch(url);
-					if (res.ok) await cache.put(url, res.clone());
-				} catch {
-					/* picture unavailable — the text still reads offline */
-				}
-			}
+					if (res.ok) await cache.put(url, res);
+				})
+			);
 			// Replace only THIS edition's entry. Filtering on slug alone discarded
 			// the other language's metadata while its cached bytes stayed behind —
 			// an untracked download that nothing could then remove.

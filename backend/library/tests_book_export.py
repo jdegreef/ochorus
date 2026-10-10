@@ -465,7 +465,7 @@ class IllustrationTests(TestCase):
 
     def test_an_image_is_bundled_at_a_relative_path(self):
         images: dict = {}
-        out = book_export.bundle_illustrations(f"<p>a</p>{FIGURE}<p>b</p>", images)
+        out = book_export.to_xhtml(f"<p>a</p>{FIGURE}<p>b</p>", images)
         rel = PLATE.removeprefix("/")
         self.assertIn(f'src="{rel}"', out)
         self.assertNotIn("loading=", out)
@@ -480,7 +480,7 @@ class IllustrationTests(TestCase):
         ):
             with self.subTest(src=src):
                 images: dict = {}
-                out = book_export.bundle_illustrations(FIGURE.replace(PLATE, src), images)
+                out = book_export.to_xhtml(FIGURE.replace(PLATE, src), images)
                 self.assertNotIn("<img", out)
                 self.assertIn("“Come.”", out)
                 self.assertEqual(images, {})
@@ -507,17 +507,18 @@ class IllustrationTests(TestCase):
         import json
         import re
 
+        from .content_fixtures import book_fixture_path
+
         problems = []
-        content = Path(__file__).resolve().parent / "fixtures" / "content" / "books"
-        for path in sorted(content.glob("*.json")):
-            rows = json.loads(path.read_text())
-            head = rows[0]["fields"]
-            if (head["slug"], head["language"]) not in export_policy.EXPORT_EDITIONS:
+        for slug, lang in sorted(export_policy.EXPORT_EDITIONS):
+            path = book_fixture_path(slug, lang)
+            text = path.read_text() if path.is_file() else ""
+            if "<img" not in text:
                 continue
-            for row in rows[1:]:
+            for row in json.loads(text)[1:]:
                 for src in re.findall(r'<img[^>]*\ssrc="([^"]+)"', row["fields"].get("body_html", "")):
                     site = STATIC / src.lstrip("/")
-                    bundled = book_export.BUNDLED_ILLUSTRATIONS / src.removeprefix("/illustrations/")
+                    bundled = book_export.bundled_illustration_path(src)
                     if not bundled.is_file():
                         problems.append(f"{path.name}: no bundled copy of {src}")
                     elif not site.is_file() or site.read_bytes() != bundled.read_bytes():

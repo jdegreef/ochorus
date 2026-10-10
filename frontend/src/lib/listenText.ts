@@ -73,6 +73,9 @@ const BLOCK = /^(?:P|DIV|BLOCKQUOTE|LI|H[1-6])$/;
  * search hits. Those use `blankFootnoteMarkers`, which preserves length.
  */
 export function readerProse(root: Node): string {
+	// An illustration is for the eye — see `collect`. Checked here as well, for
+	// the root itself: a chapter's figure is a top-level block of its own.
+	if ((root as Element).tagName === 'FIGURE') return '';
 	return collect(root)
 		.replace(FOOTNOTE_MARKER, '')
 		.replace(/\s+/g, ' ')
@@ -81,9 +84,7 @@ export function readerProse(root: Node): string {
 
 /** The text to read aloud for one prose block. See `readerProse`. */
 export function spokenText(el: Element): string {
-	// A chapter's illustration is a top-level block of its own: silent (see
-	// `collect`), so the engine skips it like a rule.
-	return el.tagName === 'FIGURE' ? '' : readerProse(el);
+	return readerProse(el);
 }
 
 function collect(el: Node): string {

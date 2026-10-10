@@ -140,9 +140,7 @@ class BiographyMarkupSurvivesTests(TestCase):
             self.assertNotIn(tag, stripped)
 
 
-ILLUSTRATIONS_ROOT = (
-    Path(__file__).resolve().parents[2] / "frontend" / "static" / "illustrations"
-)
+STATIC = Path(__file__).resolve().parents[2] / "frontend" / "static"
 _IMG = re.compile(r"<img\b[^>]*>", re.I)
 _ATTR = re.compile(r'([a-z]+)=(?:"([^"]*)"|\'([^\']*)\')', re.I)
 
@@ -545,14 +543,17 @@ class StoredContentIsSafeTests(TestCase):
         """
         problems: list[str] = []
         for path in sorted(CONTENT_ROOT.rglob("*.json")):
-            for row in json.loads(path.read_text()):
+            text = path.read_text()
+            if "<img" not in text:  # nearly every file — skip the parse
+                continue
+            for row in json.loads(text):
                 body = (row.get("fields") or {}).get("body_html") or ""
                 for tag in _IMG.findall(body):
                     attrs = {m[0].lower(): m[1] or m[2] for m in _ATTR.findall(tag)}
                     src = attrs.get("src", "")
                     if not src.startswith("/illustrations/"):
                         problems.append(f"{path.name}: not an illustration path: {src!r}")
-                    elif not (ILLUSTRATIONS_ROOT.parent / src.lstrip("/")).is_file():
+                    elif not (STATIC / src.lstrip("/")).is_file():
                         problems.append(f"{path.name}: missing file {src}")
                     if not attrs.get("alt", "").strip():
                         problems.append(f"{path.name}: no alt text on {src}")

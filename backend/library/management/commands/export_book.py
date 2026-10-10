@@ -13,6 +13,7 @@ Set ``CHROME_PATH`` if Chrome isn't in the usual macOS/Linux place.
 """
 
 import os
+import re
 import shutil
 import subprocess
 import tempfile
@@ -158,6 +159,22 @@ def _bundle_cover(book, stdout) -> None:
     stdout.write(f"Bundled cover {dest.name}")
 
 
+def _bundle_illustrations(book, stdout) -> None:
+    """Refresh the committed copies of the pictures this edition's chapters show
+    (see ``book_export.BUNDLED_ILLUSTRATIONS``) from the files the site serves —
+    the covers' rule, so a re-encoded plate never needs copying by hand."""
+    static = Path(settings.BASE_DIR).parent / "frontend" / "static"
+    for body in book.chapters.values_list("body_html", flat=True):
+        for src in set(re.findall(r'<img[^>]*\ssrc="([^"]+)"', body)):
+            site = static / src.lstrip("/")
+            dest = book_export.bundled_illustration_path(src)
+            if not site.is_file() or (dest.is_file() and dest.read_bytes() == site.read_bytes()):
+                continue
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(site, dest)
+            stdout.write(f"Bundled illustration {src}")
+
+
 class Command(BaseCommand):
     help = "Export a book edition as EPUB, print HTML, or PDF."
 
@@ -193,6 +210,7 @@ class Command(BaseCommand):
                 f"{slug} ({language}) is not exportable — see library/export_policy.py."
             )
         _bundle_cover(book, self.stdout)
+        _bundle_illustrations(book, self.stdout)
         edition = book_export.build_edition(book)
 
         if format == "epub":

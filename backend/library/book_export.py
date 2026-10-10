@@ -179,12 +179,25 @@ class Edition:
 #: same relative path the site serves it under ``/illustrations/``. The same
 #: reason as ``BUNDLED_COVERS``: the API image is built from ``backend/`` alone,
 #: so it can't read ``frontend/static``, and fetching from the public site
-#: failed in production. ``tests_book_export.IllustrationTests`` fails when a
-#: copy is missing or differs from the site's file.
+#: failed in production. ``export_book`` writes the copies, and
+#: ``tests_book_export.IllustrationTests`` fails when one is missing or stale.
 BUNDLED_ILLUSTRATIONS = Path(__file__).resolve().parent / "export_illustrations"
 
 
-def bundle_illustrations(fragment: str, images: dict[str, Cover]) -> str:
+def bundled_illustration_path(src: str) -> Path:
+    """Where the committed copy of the illustration at ``src`` lives."""
+    return BUNDLED_ILLUSTRATIONS / src.removeprefix("/illustrations/")
+
+
+def _raster(path: Path) -> Cover | None:
+    """A committed JPEG/PNG as a ``Cover``, or None if absent or unshippable."""
+    ext = path.suffix.lower()
+    if ext not in _MEDIA or not path.is_file():
+        return None
+    return Cover(data=path.read_bytes(), media_type=_MEDIA[ext], ext=ext.replace(".jpeg", ".jpg"))
+
+
+def _bundle_images(wrapper, images: dict[str, Cover]) -> None:
     """Point each `<img>` at its bundled copy, collecting the file into ``images``.
 
     ``/illustrations/a/b.jpg`` becomes ``illustrations/a/b.jpg`` — relative, so
@@ -194,33 +207,33 @@ def bundle_illustrations(fragment: str, images: dict[str, Cover]) -> str:
     (epubcheck rejects one). ``loading``/``decoding`` go too — they are web
     hints, and not in the EPUB's XHTML vocabulary.
     """
-    if "<img" not in fragment:
-        return fragment
-    wrapper = lxml_html.fragment_fromstring(fragment, create_parent="div")
     for img in list(wrapper.iter("img")):
         src = img.get("src", "")
         rel = src.removeprefix("/")
-        path = BUNDLED_ILLUSTRATIONS / src.removeprefix("/illustrations/")
-        ext = path.suffix.lower()
-        if not ILLUSTRATION_SRC.match(src) or ext not in _MEDIA or not path.is_file():
+        image = None
+        if ILLUSTRATION_SRC.match(src):
+            image = images.get(rel) or _raster(bundled_illustration_path(src))
+        if image is None:
             log.warning("book_export: no bundled illustration for %s", src)
             img.drop_tree()
             continue
-        if rel not in images:
-            images[rel] = Cover(data=path.read_bytes(), media_type=_MEDIA[ext], ext=ext)
+        images[rel] = image
         img.set("src", rel)
         for hint in ("loading", "decoding"):
             img.attrib.pop(hint, None)
-    out = [html.escape(wrapper.text or "", quote=False)]
-    out += [lxml_html.tostring(child, encoding="unicode") for child in wrapper]
-    return "".join(out)
 
 
-def to_xhtml(fragment: str) -> str:
-    """Re-serialise a sanitized HTML fragment as well-formed XHTML."""
+def to_xhtml(fragment: str, images: dict[str, Cover] | None = None) -> str:
+    """Re-serialise a sanitized HTML fragment as well-formed XHTML.
+
+    With ``images``, the fragment's illustrations are bundled as it goes (see
+    :func:`_bundle_images`) — the downloads pass it; nothing else needs to.
+    """
     if not fragment.strip():
         return ""
     wrapper = lxml_html.fragment_fromstring(fragment, create_parent="div")
+    if images is not None:
+        _bundle_images(wrapper, images)
     out = [html.escape(wrapper.text or "", quote=False)]
     for child in wrapper:
         out.append(etree.tostring(child, method="xml", encoding="unicode"))
@@ -307,9 +320,7 @@ def bundled_cover_path(book) -> Path | None:
 def edition_cover(book) -> Cover | None:
     """The cover for an export: the committed copy, else found as ``load_cover`` does."""
     bundled = bundled_cover_path(book)
-    if bundled is not None and bundled.is_file():
-        return Cover(data=bundled.read_bytes(), media_type=_MEDIA[bundled.suffix], ext=bundled.suffix)
-    return load_cover(cover_image_url(book))
+    return (bundled and _raster(bundled)) or load_cover(cover_image_url(book))
 
 
 def site_cover_file(book) -> Path:
@@ -385,7 +396,7 @@ def build_edition(book: Book) -> Edition:
         ExportChapter(
             order=order,
             title=title or strings["chapter"].format(n=order),
-            body=to_xhtml(bundle_illustrations(body, images)),
+            body=to_xhtml(body, images),
             questions=tuple(
                 (qa.get("question", ""), qa.get("answer", "")) for qa in questions or []
             ),

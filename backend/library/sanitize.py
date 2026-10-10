@@ -296,18 +296,18 @@ def _settle_figures(node: Tag) -> None:
     it, which is precisely what both did before figures were allowlisted (so no
     existing import changes). A caption outside any figure unwraps too.
     """
-    for img in node.find_all("img"):
+    found = node.find_all(["img", "figure", "figcaption"])
+    for img in (el for el in found if el.name == "img"):
         attrs = _image_attrs(img)
         if attrs is None:
             img.decompose()
         else:
             img.attrs = attrs
-    for fig in node.find_all("figure"):
+    for fig in (el for el in found if el.name == "figure"):
         if fig.find("img") is None:
-            for cap in fig.find_all("figcaption"):
-                cap.unwrap()
             fig.unwrap()
-    for cap in node.find_all("figcaption"):
+    # Last: a caption is stray once its figure has unwrapped.
+    for cap in (el for el in found if el.name == "figcaption"):
         if cap.find_parent("figure") is None:
             cap.unwrap()
 
