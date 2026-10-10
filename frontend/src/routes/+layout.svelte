@@ -58,6 +58,11 @@
 	import { localizeHref as pageHref } from '$lib/href';
 	import BrandMark from '$lib/components/BrandMark.svelte';
 	import BrandSprite from '$lib/components/BrandSprite.svelte';
+	import BookCover from '$lib/components/BookCover.svelte';
+	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import { chapterMeter } from '$lib/components/WorkCard.svelte';
+	import { currentBook } from '$lib/currentBook.svelte';
+	import { benediction, PASSAGE } from '$lib/benediction';
 	import { dismissable } from '$lib/actions/dismissable';
 	// Preload the primary Latin subsets of the two brand fonts (display + body).
 	// @fontsource already ships them font-display:swap; preloading fetches them on
@@ -268,6 +273,40 @@
 		withSource(withSignup(loginHref($page.url.pathname, $page.url.search)), 'footer')
 	);
 
+	// Footer "Before you go" cards (markup has the why). The first card is the
+	// invitation for a signed-out reader, else the signed-in reader's current
+	// book — except on home, whose hero already resumes it — else a way in.
+	const showInvite = $derived(auth.enabled && !auth.user && !onLogin);
+	const onHome = $derived(deLocalizeHref($page.url.pathname) === '/');
+	const resume = $derived(!showInvite && auth.user && !onHome ? currentBook.item : null);
+	const resumeMeter = $derived(
+		resume ? chapterMeter(resume.order, resume.chapterCount, resume.pct) : ''
+	);
+
+	// The current book is resolved only as the footer nears the viewport: it
+	// may fetch the language's book list, and most page views never scroll this
+	// far. Re-resolved each time the footer comes back into reach (the layout,
+	// and so the footer, outlives navigations), and on `ochorus:sync`.
+	function nearView(node: HTMLElement) {
+		const io = new IntersectionObserver(
+			(entries) => {
+				if (auth.user && entries.some((e) => e.isIntersecting)) currentBook.refresh();
+			},
+			{ rootMargin: '600px 0px' }
+		);
+		io.observe(node);
+		const unwatch = currentBook.watch();
+		return {
+			destroy() {
+				io.disconnect();
+				unwatch();
+			}
+		};
+	}
+
+	// The footer's closing blessing, in this locale's own Bible (or none).
+	const blessing = $derived(benediction(lang.current));
+
 	// Footer "My Account" column — the reader's own pages (ACCOUNT_NAV, shared
 	// with the phone "More" sheet; accountHref routes a signed-out reader
 	// through /login with a redirect back).
@@ -439,36 +478,107 @@
 			     indigo-to-gold hairline along the top edge is the one colourful
 			     gesture — the signature pairing, kept to a 2px rule. -->
 
-			<!-- Sign-up invitation, signed-out readers only. auth.enabled gates it
-			     the same way the header's sign-in control is (AccountMenu): with
-			     Supabase keys absent the whole auth UI hides rather than offering a
-			     button that can't work, and once signed in the prompt is spent, so
-			     it drops. Every string is an EXISTING, already-translated key reused
-			     from the sign-up flow (home.signupTitle / login.syncNote /
-			     login.createAccountLink), so the band mints no footer-only keys —
-			     the trade is that rewording those at their source also rewords this
-			     band. -->
-			{#if auth.enabled && !auth.user && !onLogin}
-				<div class="chrome-col px-5 pt-10 sm:pt-12">
-					<div class="footer-invite">
-						<span class="footer-invite-mark" aria-hidden="true">
-							<Icon name="bookmark" size={22} />
-						</span>
-						<div class="footer-invite-text">
-							<p class="footer-invite-title">{t('home.signupTitle')}</p>
+			<!-- "Before you go": two cards that hand the reader a next step. The
+			     first is personal — for a signed-out reader, the sign-up invitation
+			     (gated on auth.enabled the way the header's sign-in control is, and
+			     dropped on /login, where the form is already the page); for a
+			     signed-in one, the book they are in (Continue reading, the same
+			     current book the home hero resumes — so not on home, where the hero
+			     already shows it); else a way into the library. The second is always
+			     Reading Plans. Every string is an EXISTING, already-translated key
+			     (the invitation's from the sign-up flow), so the row mints no
+			     footer-only keys — the trade is that rewording those at their source
+			     also rewords these cards. -->
+			<div class="chrome-col px-5 pt-10 sm:pt-12" use:nearView>
+				<div class="footer-cards">
+					{#if showInvite}
+						<div class="footer-card footer-invite">
+							<span class="footer-card-mark" aria-hidden="true">
+								<Icon name="bookmark" size={22} />
+							</span>
+							<p class="footer-card-title">{t('home.signupTitle')}</p>
 							<p class="text-small text-muted">{t('login.syncNote')}</p>
+							<a
+								href={localizeHref(signupHref)}
+								class="btn footer-invite-cta"
+								use:seenOnView={'footer'}
+								onclick={(e) => openFrom(e, 'footer')}
+							>
+								<span>{t('login.createAccountLink')}</span>
+								<Icon name="chevron-right" size={16} class="footer-invite-arrow" mirror={false} />
+							</a>
 						</div>
-						<a
-							href={localizeHref(signupHref)}
-							class="btn footer-invite-cta"
-							use:seenOnView={'footer'}
-							onclick={(e) => openFrom(e, 'footer')}
-						>
-							<span>{t('login.createAccountLink')}</span>
-							<Icon name="chevron-right" size={16} class="footer-invite-arrow" mirror={false} />
+					{:else if resume}
+						<!-- The whole card is the link: one target, named by its title. -->
+						<a class="footer-card footer-resume" href={pageHref(resume.href)}>
+							<div class="w-14 shrink-0">
+								<BookCover book={resume.book} rounded="rounded-sm" />
+							</div>
+							<div class="min-w-0 flex-1">
+								<p class="eyebrow text-accent">{t('continue.title')}</p>
+								<p class="footer-card-title mt-1 truncate">{resume.title}</p>
+								<p class="truncate text-small text-muted">{resume.author}</p>
+								<div class="mt-2">
+									<ProgressBar percent={resume.pct} label="{resume.title}: {resumeMeter}" />
+								</div>
+								<p class="mt-1 truncate text-micro text-muted">{resumeMeter}</p>
+							</div>
 						</a>
+					{:else}
+						<div class="footer-card">
+							<span class="footer-card-mark" aria-hidden="true">
+								<Icon name="compass" size={22} />
+							</span>
+							<p class="footer-card-title">{t('seals.nextBooks')}</p>
+							<p class="text-small text-muted">{t('footer.tagline')}</p>
+							<a class="footer-card-link" href={localizeHref('/books')}
+								>{t('home.browseLibrary')}<Icon name="chevron-right" size={16} /></a
+							>
+						</div>
+					{/if}
+					<div class="footer-card">
+						<span class="footer-card-mark" aria-hidden="true">
+							<Icon name="calendar" size={22} />
+						</span>
+						<p class="footer-card-title">{t('plans.title')}</p>
+						<p class="text-small text-muted">{t('plans.tagline')}</p>
+						<a class="footer-card-link" href={localizeHref('/plans')}
+							>{t('seals.nextPlans')}<Icon name="chevron-right" size={16} /></a
+						>
 					</div>
 				</div>
+			</div>
+
+			<!-- The closing word: the Aaronic blessing in this locale's own Bible
+			     ($lib/benediction — verbatim from that Bible, never translated
+			     here). A locale whose Bible lacks it shows nothing rather than
+			     another language's verse. lang/dir on the figure so a screen reader
+			     voices it in its own language and Arabic sets right to left. -->
+			{#if blessing}
+				<figure
+					class="footer-blessing chrome-col px-5"
+					lang={lang.current}
+					dir={getTextDirection(lang.current)}
+				>
+					<svg
+						class="footer-blessing-lamp"
+						width="30"
+						height="34"
+						viewBox="0 0 34 40"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.5"
+						aria-hidden="true"
+					>
+						<path d="M17 4c3 4 3 7 0 10c-3-3-3-6 0-10z" />
+						<path d="M6 20h22l-3 10H9z" />
+						<path d="M13 30v4h8v-4M10 36h14" />
+						<path d="M28 22c4 0 4 6 0 6" />
+					</svg>
+					<blockquote>{blessing.lines.join(' ')}</blockquote>
+					<!-- bdi: the verse span keeps its own order inside an RTL caption. -->
+					<figcaption>{blessing.book} <bdi dir="ltr">{PASSAGE}</bdi></figcaption>
+				</figure>
 			{/if}
 
 			<!-- Content columns: brand · Explore · [Discover] · [My Account] ·
@@ -743,36 +853,126 @@
 		background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 55%, var(--gold) 100%);
 	}
 
-	/* Sign-up invitation. A tinted panel — the same soft-indigo surface the
-	   primary button already uses — so it reads as one warm call, not an ad. */
-	.footer-invite {
+	/* "Before you go" cards: two across from sm, stacked on a phone. Each is a
+	   framed panel on the page ground, so it lifts off the footer's tint. */
+	.footer-cards {
 		display: grid;
-		grid-template-columns: auto 1fr auto;
-		align-items: center;
-		gap: 1.25rem;
-		padding: 1.25rem 1.5rem;
-		border: 1px solid var(--accent-soft-border);
-		border-radius: var(--radius-card);
-		background: var(--accent-soft);
+		gap: 1rem;
 	}
-	.footer-invite-mark {
+	@media (min-width: 640px) {
+		.footer-cards {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+	.footer-card {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.6rem;
+		padding: 1.25rem 1.5rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: var(--surface);
+	}
+	.footer-card-mark {
 		display: grid;
 		place-items: center;
 		inline-size: 2.75rem;
 		block-size: 2.75rem;
 		border-radius: var(--radius-sm);
-		background: var(--accent);
-		color: var(--accent-contrast);
+		background: var(--accent-soft);
+		color: var(--accent);
 	}
-	.footer-invite-text {
-		display: grid;
-		gap: 0.15rem;
-	}
-	.footer-invite-title {
+	.footer-card-title {
+		max-inline-size: 100%;
 		font-family: var(--font-display);
 		font-weight: 600;
 		font-size: var(--fs-h3);
 		color: var(--text);
+	}
+	/* The text link that ends a card; pushed to the card's foot so two cards of
+	   different copy lengths still line their links up. */
+	.footer-card-link {
+		margin-block-start: auto;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+		padding-block: 0.35rem;
+		font-weight: 600;
+		color: var(--accent);
+	}
+	.footer-card-link :global(svg) {
+		transition: transform var(--duration-fast) ease;
+	}
+	.footer-card-link:hover :global(svg) {
+		transform: translateX(3px);
+	}
+	:global([dir='rtl']) .footer-card-link :global(svg) {
+		transform: scaleX(-1);
+	}
+	:global([dir='rtl']) .footer-card-link:hover :global(svg) {
+		transform: scaleX(-1) translateX(3px);
+	}
+	/* The sign-up card keeps the invitation's warm soft-indigo panel, and its
+	   mark goes solid, so the one conversion card still reads as the call. */
+	.footer-invite {
+		border-color: var(--accent-soft-border);
+		background: var(--accent-soft);
+	}
+	.footer-invite .footer-card-mark {
+		background: var(--accent);
+		color: var(--accent-contrast);
+	}
+	.footer-invite :global(.footer-invite-cta) {
+		margin-block-start: auto;
+	}
+	/* Continue reading: the whole card is the link, cover beside the meter. */
+	.footer-resume {
+		flex-direction: row;
+		align-items: center;
+		gap: 1rem;
+		color: inherit;
+	}
+	.footer-resume:hover {
+		text-decoration: none;
+		background: var(--surface-2);
+	}
+
+	/* The closing blessing: the footer's one quiet moment between the cards
+	   and the link columns. Display face, italic, gold lamp above. */
+	.footer-blessing {
+		margin: 0 auto;
+		padding-block: 3rem 0.5rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+	.footer-blessing-lamp {
+		color: var(--gold);
+	}
+	.footer-blessing blockquote {
+		margin: 1rem 0 0;
+		max-inline-size: 46rem;
+		font-family: var(--font-display);
+		font-style: italic;
+		font-weight: 400;
+		font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+		line-height: 1.45;
+		color: var(--text);
+		text-wrap: balance;
+	}
+	/* Only Latin script has a true Fraunces italic; elsewhere the browser
+	   would fake one by slanting the fallback face, which mangles Arabic,
+	   Devanagari and Ethiopic. */
+	.footer-blessing:is(:lang(ar), :lang(hi), :lang(am), :lang(uk)) blockquote {
+		font-style: normal;
+	}
+	.footer-blessing figcaption {
+		margin-block-start: 0.75rem;
+		font-size: var(--fs-small);
+		letter-spacing: 0.08em;
+		color: var(--muted);
 	}
 
 	/* The one deliberately LOUD control in the app: it wears the base .btn
@@ -843,19 +1043,10 @@
 		}
 	}
 
-	@media (max-width: 639.98px) {
-		.footer-invite {
-			grid-template-columns: auto 1fr;
-		}
-		.footer-invite-cta {
-			grid-column: 1 / -1;
-			justify-content: center;
-		}
-	}
-
 	@media (prefers-reduced-motion: reduce) {
 		.footer-invite-cta,
-		.footer-invite-cta :global(.footer-invite-arrow) {
+		.footer-invite-cta :global(.footer-invite-arrow),
+		.footer-card-link :global(svg) {
 			transition: none;
 		}
 		.footer-invite-cta:hover {
