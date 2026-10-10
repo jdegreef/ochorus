@@ -5563,6 +5563,37 @@
 				460
 			]
 		},
+		"es/key-teachings-of-watchman-nee": {
+			"ground": "95593639edf00cab1ee3dbb42ec6a4e10ecabf3fd6b82007211655363be1f1bd",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[161, 102, 439, 131]
+				],
+				"title": [
+					[105, 169, 495, 232],
+					[200, 225, 400, 288],
+					[109, 280, 491, 343]
+				],
+				"subtitle": [
+					[160, 404, 440, 432],
+					[183, 432, 417, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
+			]
+		},
 		"es/life-and-diary-of-david-brainerd": {
 			"ground": "802a4edfc703abbc2d09834c302f1ed7b0baf902d1685c6d1a6e672de520e7f3",
 			"style": "enlightenment",
@@ -5814,6 +5845,16 @@
 				323,
 				472
 			]
+		},
+		"es/on-the-incarnation": {
+			"ground": "71689b71c3ec4146ae5951f4b84000f6a8ed811b98e9ee3fdda9d4273d1963ee",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/indigo",
+			"bar": 0
 		},
 		"es/pandita-ramabai-a-life-children": {
 			"ground": "abe4ff7ffffeb6664644328cbd5e132bada8923066366029e19ef029c1be7692",
