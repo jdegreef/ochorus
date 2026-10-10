@@ -42,9 +42,11 @@ from django.db import transaction
 from library import english_audit
 from library.content_fixtures import book_sort_order
 from library.corrections import settled_chapter_body
-from library.ingest import clean_fragment
+from library.ingest import clean_fragment, restates_title
+from library.management.commands.import_web import fetch
 from library.models import Author, Book, Chapter
 from library.quote_marks import assert_punctuation_only, convert
+from library.titlecase import recase_title
 
 SLUG = "an-all-round-ministry"
 TITLE = "An All-Round Ministry"
@@ -153,24 +155,11 @@ FIXES: list[tuple[int, str, str]] = [
 ]
 
 
-def _fetch(url: str) -> str:
-    resp = requests.get(url, timeout=60, headers={"User-Agent": "Mozilla/5.0 (ochorus-import/1.0)"})
-    resp.raise_for_status()
-    return resp.text
-
-
-_SMALL_WORDS = {"a", "an", "and", "as", "at", "but", "by", "for", "in", "of", "on", "or", "the", "to"}
-
-
 def _title_case(text: str) -> str:
+    """An ALL-CAPS section head in the corpus's title case ("Need of Great Care")."""
     words = text.strip().rstrip(".").lower().split()
-    out = []
-    for i, w in enumerate(words):
-        if i and w in _SMALL_WORDS:
-            out.append(w)
-        else:
-            out.append("-".join(p[:1].upper() + p[1:] for p in w.split("-")))
-    return " ".join(out)
+    capped = " ".join("-".join(p[:1].upper() + p[1:] for p in w.split("-")) for w in words)
+    return recase_title(capped)
 
 
 def _lines(fragment: str) -> list[str]:
@@ -192,13 +181,9 @@ def _center_block(inner: str, title: str) -> str:
     if re.search(r"<BR>", text, re.I) or text.startswith('"'):
         stanzas = [s for s in re.split(r"<P>", text, flags=re.I) if s.strip()]
         return "<blockquote>" + "".join(f"<p>{'<br/>'.join(_lines(s))}</p>" for s in stanzas) + "</blockquote>"
-    if _words(text) == _words(title):
+    if restates_title(text, title):
         return f"<blockquote><p>{text}</p></blockquote>"
     return f"<h3>{_title_case(text)}</h3>"
-
-
-def _words(text: str) -> str:
-    return " ".join(re.findall(r"[a-z]+", text.lower()))
 
 
 def _chapter_body(page: str, title: str, keep_note: bool) -> str:
@@ -245,41 +230,44 @@ def _chapter_body(page: str, title: str, keep_note: bool) -> str:
         parts.append(blocks[int(m.group(1))] if m else f"<p>{seg}</p>")
     if note and keep_note:
         parts.append(f"<hr/><p>Note.—{note}</p>")
-    body = "".join(parts).replace("&nbsp;", " ").replace("&#160;", " ")
-    return html.unescape(body).replace("\xa0", " ").replace("&", "&amp;")
+    return html.unescape("".join(parts)).replace("\xa0", " ").replace("&", "&amp;")
 
 
 class Command(BaseCommand):
     help = "Build Spurgeon's An All-Round Ministry from The Spurgeon Archive (dev DB); then serialize the fixture."
 
-    @transaction.atomic  # a mid-run abort rolls back, never a partial book
     def handle(self, *args, **opts):
+        # Network and parsing first, outside the transaction.
+        bodies: list[str] = []
+        for i, (num, title) in enumerate(CHAPTERS):
+            if i:
+                time.sleep(0.5)  # be polite to a small archive host
+            try:
+                page = fetch(f"{BASE}aarm{num}.php")
+            except requests.RequestException as exc:
+                raise CommandError(f"fetch failed for address {num}: {exc}") from None
+            body = _chapter_body(page, title, keep_note=num != "12")
+            # A closing quotation mark set off by a space before its question
+            # mark or colon ("in order to be saved "?") — six times — would
+            # curl as an OPENER. Close the space up.
+            bodies.append(re.sub(r'(\w) "([?!:;,.])', r'\1"\2', body))
+
+        for order, wrong, right in FIXES:
+            n = bodies[order - 1].count(wrong)
+            if n != 1:
+                raise CommandError(f"fix {wrong!r} matches {n}× in ch {order}, expected 1")
+            bodies[order - 1] = bodies[order - 1].replace(wrong, right)
+
+        with transaction.atomic():  # a mid-run abort rolls back, never a partial book
+            self._write(bodies)
+
+    def _write(self, bodies: list[str]) -> None:
         author, created = Author.objects.get_or_create(
             slug=AUTHOR_SLUG,
             defaults={"name": "Charles H. Spurgeon", "birth_year": 1834, "death_year": 1892},
         )
         if created:
             self.stdout.write(f"  (created author stub {AUTHOR_SLUG!r} — real bio lives in authors.json)")
-
-        bodies: list[tuple[str, str]] = []
-        for num, title in CHAPTERS:
-            try:
-                page = _fetch(f"{BASE}aarm{num}.php")
-            except requests.RequestException as exc:
-                raise CommandError(f"fetch failed for address {num}: {exc}") from None
-            bodies.append((title, _chapter_body(page, title, keep_note=num != "12")))
-            time.sleep(0.5)
-
-        # A closing quotation mark set off by a space before its question mark
-        # or colon ("in order to be saved "?") — six times — would curl as an
-        # OPENER. Close the space up.
-        bodies = [(t, re.sub(r'(\w) "([?!:;,.])', r'\1"\2', b)) for t, b in bodies]
-
-        for order, wrong, right in FIXES:
-            title, body = bodies[order - 1]
-            if body.count(wrong) != 1:
-                raise CommandError(f"fix {wrong!r} matches {body.count(wrong)}× in ch {order}, expected 1")
-            bodies[order - 1] = (title, body.replace(wrong, right))
 
         content = {
             "author": author, "title": TITLE, "subtitle": SUBTITLE,
@@ -295,7 +283,7 @@ class Command(BaseCommand):
         book.chapters.all().delete()
 
         total = 0
-        for order, (title, body) in enumerate(bodies, start=1):
+        for order, ((_, title), body) in enumerate(zip(CHAPTERS, bodies, strict=True), start=1):
             body = clean_fragment(body)
             # The transcription is straight-quoted; curl to the corpus's
             # typographic style so QuoteStyleTests sees one consistent style.
