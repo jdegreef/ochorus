@@ -5556,6 +5556,37 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"es/hurlbuts-life-of-christ": {
+			"ground": "2a0c6de03ae3f08101e7076f6e160ee0d62bb7261450d02694a7ce2f3f4a91e5",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[122, 256, 478, 319],
+					[133, 306, 467, 369],
+					[104, 357, 496, 420]
+				],
+				"subtitle": [
+					[151, 476, 449, 504],
+					[129, 504, 471, 532]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				263,
+				532
+			]
+		},
 		"es/jesus-himself-2": {
 			"ground": "ee20fb7af17075643a06a6e89edd086b3c330c6080fe9e113c814a249b4c402b",
 			"style": "devotional",
