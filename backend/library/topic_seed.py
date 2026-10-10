@@ -429,6 +429,7 @@ TOPICS = [
             "the-reformed-pastor",
             "on-the-priesthood",
             "power-through-prayer",
+            "an-all-round-ministry",
             "how-to-bring-men-to-christ",
             "men-who-tended-the-flock-2",
             "the-fundamental-doctrines-of-the-christian-faith",

@@ -2799,6 +2799,16 @@
 				482
 			]
 		},
+		"an-all-round-ministry": {
+			"ground": "ea426d716de1f571e0c78d28f25ca7988df1fbbe7b020895bd71f3ea6f35d96a",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"anchored-1": {
 			"ground": "c5e22c0400546afd69a6dc4c01f5c2ce534c43010634b5eaae494324409db1d8",
 			"style": "originals",
