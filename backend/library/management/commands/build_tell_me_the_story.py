@@ -121,6 +121,69 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
         ],
     },
+    2: {
+        "publication_year": 2026,
+        "title": "Tell Me the Story – Book 2: Out of Egypt",
+        "subtitle": "Old Testament Stories from Exodus to Ruth",
+        "cover_url": "/covers/tell-me-the-story-2.svg",
+        "cover_color": covers.ink_safe("#8a5a2b"),  # desert sand at dusk
+        "description": (
+            "Twenty-one Bible stories from Exodus to Ruth for children aged 6 "
+            "to 10, each short enough to read aloud at bedtime: the baby in the "
+            "basket, the burning bush, the Passover, the path through the sea, "
+            "bread from heaven, the walls of Jericho, Deborah, Gideon's three "
+            "hundred, and Ruth and Boaz. Every story ends with a prayer and "
+            "three questions to talk about together. The second book of Tell "
+            "Me the Story."
+        ),
+        "about_html": (
+            "<p>Tell Me the Story is an original Ochorus storybook Bible for "
+            "children aged 6 to 10, in eight books and three parts: Old "
+            "Testament Stories, The Life of Jesus, and New Testament Stories. "
+            "God is the hero of every story, and the whole Bible is one story "
+            "that leads to Jesus.</p>"
+            "<p>Book 2, “Out of Egypt”, tells twenty-one stories from Exodus, "
+            "Numbers, Joshua, Judges and Ruth: how God rescued His people from "
+            "slavery, fed them in the desert, gave them His commandments and "
+            "brought them into the promised land. It meets brave women like "
+            "Rahab, Deborah and Ruth, and ends with the birth of King David’s "
+            "grandfather. Where the New Testament itself links a story to "
+            "Jesus, as John 3:14 does with the bronze snake, a line says so.</p>"
+            "<p>The stories stay close to what the Bible says, and the people "
+            "in them say what the Bible says they said, in simple words. Hard "
+            "stories, like the Passover night, the golden calf, Jericho and "
+            "Samson, are told honestly but gently. Each takes about four minutes "
+            "to read aloud, and under each are three questions to talk about "
+            "together, with answers for the grown-up reading along. Book 1 is "
+            "not required.</p>"
+        ),
+        "qa": [
+            {
+                "question": "Which stories are in Book 2 of Tell Me the Story?",
+                "answer": "Twenty-one stories from Exodus to Ruth: baby Moses, the burning bush, the plagues, the Passover, the path through the sea, manna, Moses' tired arms, the Ten Commandments, the golden calf, the tabernacle, the twelve spies, the bronze snake, Balaam's donkey, Rahab, crossing the Jordan, Jericho, Deborah, Gideon, Samson, and two stories of Ruth.",
+            },
+            {
+                "question": "Do I need to read Book 1 first?",
+                "answer": "No. Each book stands on its own. Book 2 begins with a short introduction that picks up the story from Joseph's family in Egypt.",
+            },
+            {
+                "question": "How are hard stories like the Passover and Jericho told?",
+                "answer": "Honestly but gently. The Passover night, Jericho and Samson's death are each told in a sentence or two without frightening detail, and the questions help a grown-up talk them through.",
+            },
+            {
+                "question": "How does it point to Jesus?",
+                "answer": "Where the New Testament itself links a story to Jesus, a short \"Looking ahead to Jesus\" line says so: the Passover lamb (1 Corinthians 5:7), the manna (John 6:35), the rock (1 Corinthians 10:4), the tabernacle (John 1:14), the bronze snake (John 3:14), and Rahab and Ruth in Jesus' family tree (Matthew 1:5).",
+            },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Every verse quoted with its reference is word for word from the Berean Standard Bible (BSB), which is in the public domain.",
+            },
+            {
+                "question": "Can it be read aloud at bedtime?",
+                "answer": "Yes, that is what it is written for. Each story takes about four minutes to read aloud, and each chapter has a Listen button that reads it at a gentle speed and then asks the three questions.",
+            },
+        ],
+    },
 }
 
 _QUESTION = re.compile(r"^- Q: (.+)$")

@@ -16457,6 +16457,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"tell-me-the-story-2": {
+			"ground": "3e7838f67302198f2e006045b778840f71bd7ff2c9bbb0bb2908a5e7ad8b1160",
+			"style": "young",
+			"volume": "2",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"ten-commandments": {
 			"ground": "66bc7534f5894353ab2420e9d7770736c70994ce2d0ae9ee07510660ca018fb3",
 			"style": "press",
