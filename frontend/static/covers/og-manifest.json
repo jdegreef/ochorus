@@ -5215,6 +5215,38 @@
 			"layout": "rail/rust",
 			"bar": 0
 		},
+		"es/epistles-of-ignatius": {
+			"ground": "0872982ec0c1c2e4eb11d4526158696e283f5648e6288f4abd0d8747bc5f3ef6",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.5,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[101, 102, 499, 131]
+				],
+				"title": [
+					[142, 258, 458, 320],
+					[108, 304, 492, 366],
+					[130, 349, 470, 411],
+					[143, 395, 457, 457]
+				],
+				"subtitle": [
+					[160, 486, 440, 507],
+					[166, 507, 434, 528]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				267,
+				528
+			]
+		},
 		"es/essentials-of-prayer": {
 			"ground": "706179fb754c8fd90d47cd17780cd9892c98d1bed0f206f4449a0fce88e526b4",
 			"style": "devotional",
