@@ -4705,6 +4705,36 @@
 				505
 			]
 		},
+		"es/a-brand-plucked-from-the-fire": {
+			"ground": "bccc266f1594c96a3d8258f2fd087eb2db5484a8dd28bbb3cf593facbc427446",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[142, 102, 458, 131]
+				],
+				"title": [
+					[192, 272, 408, 348],
+					[157, 337, 443, 413],
+					[181, 403, 419, 479]
+				],
+				"subtitle": [
+					[147, 552, 453, 573]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				221,
+				573
+			]
+		},
 		"es/a-call-to-the-unconverted": {
 			"ground": "827ffa2f6ca60178ab1158f2715f85e868bce52c644654ae9c9de6dc90979f6c",
 			"style": "press",
