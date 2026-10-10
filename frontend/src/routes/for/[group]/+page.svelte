@@ -247,8 +247,8 @@
 		<section id="guides" class="jump-anchor mt-14" aria-labelledby="guides-heading">
 			<h2 id="guides-heading" class="text-h2">Printable leader’s guides</h2>
 			<p class="mt-2 max-w-2xl text-body text-muted">
-				A week-by-week guide to each of these books for children: a summary for the leader, a memory verse,
-				questions with their answers and a simple activity, one chapter a week. Print it, or lead from the
+				A week-by-week guide to each of these books for children and teens: a summary for the leader, a memory
+				verse, questions with their answers and an activity, one chapter a week. Print it, or lead from the
 				screen.
 			</p>
 			<div class="book-grid mt-6">
