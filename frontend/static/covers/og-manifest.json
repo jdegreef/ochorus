@@ -14631,6 +14631,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"spurgeon-on-the-holy-spirit": {
+			"ground": "c3310f9dfe1170bbe3718a98913a97d5b684c018a1d87874be83eebb2d07d240",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"st-francis-of-assisi": {
 			"ground": "b1d9207feb5cc404bd5c5bdc3fdf60316c3086123f65a98082669c0568cc0272",
 			"style": "revival",
