@@ -6428,6 +6428,34 @@
 			"layout": "fade/oxblood",
 			"bar": 0
 		},
+		"es/the-bruised-reed": {
+			"ground": "7618420bb2988970794d46d3f9d860394abe07687d1d54937f959c52a5c7e8f0",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[153, 102, 447, 131]
+				],
+				"title": [
+					[116, 337, 484, 410]
+				],
+				"subtitle": [
+					[157, 463, 443, 484]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				311,
+				484
+			]
+		},
 		"es/the-christians-secret-of-a-happy-life-4": {
 			"ground": "78556283fe2f53ce46ccddeeddfb8d3293adcf22c5c9e75eaab7680b4cce364c",
 			"style": "devotional",

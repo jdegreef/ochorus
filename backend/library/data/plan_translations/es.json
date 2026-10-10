@@ -157,5 +157,12 @@
     "note": [
       "Job #4843. Ships with the last of the plan's three Spanish editions: revival-lectures and baptism-with-the-holy-spirit were already shipped in es; selected-sermons-edwards is this PR."
     ]
+  },
+  "the-puritan-heart": {
+    "title": "El corazón puritano",
+    "description": "Ocho semanas con tres maestros de la vida interior. Richard Sibbes venda la caña cascada, John Owen hace guerra contra el pecado que aún mora en nosotros, y Thomas Watson descansa toda la lucha en la promesa de que todas las cosas ayudan a bien.",
+    "note": [
+      "Job #4845. Prose-ahead for the plan's last two Spanish books: all-things-for-good («Todas las cosas para bien») already ships in es, the-bruised-reed is this PR, and mortification-of-sin is job #4846. The plan seeds in es once both are merged."
+    ]
   }
 }
