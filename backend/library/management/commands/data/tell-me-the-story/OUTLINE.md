@@ -99,3 +99,31 @@ An Introduction ("The God Who Rescues"), then twenty-one stories from Exodus to 
 21. Boaz the Redeemer (Ruth 3–4)
 
 Handled with care: the Passover night (the firstborn told in one sentence; the grown-up's answer notes God's many warnings), the golden calf ("many people died", not the Levites' sword), Jericho ("its people died in the battle", Rahab saved), Jael (Sisera "would never trouble God's people again"), Samson's blinding and death. Rahab is "not one of God's people, and she had not lived a good life", not named a prostitute.
+## Book 3: Kings and Prophets
+
+An Introduction ("Waiting for the King"), then twenty-two stories from 1 Samuel to Nehemiah, the last of the Old Testament Stories.
+
+1. Hannah's Prayer (1 Samuel 1:1–2:11; 2:18–21)
+2. "Speak, Lord" (1 Samuel 3)
+3. The Shepherd Boy Chosen (1 Samuel 16:1–13)
+4. David and the Giant (1 Samuel 17)
+5. David and Jonathan (1 Samuel 18–20)
+6. David Spares the King (1 Samuel 24)
+7. A Seat at the King's Table (2 Samuel 4:4; 9)
+8. The Story of the Little Lamb (2 Samuel 11:1–12:13; Psalm 51)
+9. Solomon Asks for Wisdom (1 Kings 3)
+10. Elijah and the Ravens (1 Kings 17:1–16)
+11. Fire on the Mountain (1 Kings 18)
+12. The Still, Small Voice (1 Kings 19:1–18)
+13. Naaman Washes Seven Times (2 Kings 5:1–16)
+14. Chariots of Fire (2 Kings 6:8–23)
+15. Josiah, the Boy King (2 Kings 22–23:25)
+16. Jonah Runs Away (Jonah 1–2)
+17. Jonah and the Great City (Jonah 3–4)
+18. The Promise of a Child (Isaiah 6; 7:14; 9:2–7; 53:4–6; Micah 5:2)
+19. The Fiery Furnace (Daniel 3)
+20. Daniel and the Lions (Daniel 6)
+21. Queen Esther (Esther 2–8)
+22. Nehemiah Builds the Wall (Nehemiah 1–2; 4; 6:15–16)
+
+Handled with care: Peninnah's "other wife" status told plainly; Goliath's death ("David had won", no beheading); David and Bathsheba ("wanted her to be his own wife", Uriah sent to the fiercest fighting) with a grown-up note to explain no more than the child asks, and the baby's death left as "great sadness to his family"; the two women before Solomon are "two women", not named prostitutes; Carmel's false prophets "were put to death"; the furnace soldiers' death in one clause; Daniel's accusers "were punished instead"; Haman "put to death on the very gallows he had built".

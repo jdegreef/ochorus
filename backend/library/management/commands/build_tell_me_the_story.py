@@ -184,6 +184,71 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
         ],
     },
+    3: {
+        "publication_year": 2026,
+        "title": "Tell Me the Story – Book 3: Kings and Prophets",
+        "subtitle": "Old Testament Stories from Samuel to Nehemiah",
+        "cover_url": "/covers/tell-me-the-story-3.svg",
+        "cover_color": covers.ink_safe("#5b3f86"),  # royal purple
+        "description": (
+            "Twenty-two Bible stories from Samuel to Nehemiah for children aged "
+            "6 to 10, each short enough to read aloud at bedtime: Hannah's "
+            "prayer, the boy Samuel, David and Goliath, Elijah and the fire, "
+            "Naaman, Jonah, Isaiah's promise of a child, the fiery furnace, "
+            "Daniel and the lions, Queen Esther and Nehemiah's wall. Every "
+            "story ends with a prayer and three questions to talk about "
+            "together. The third book of Tell Me the Story."
+        ),
+        "about_html": (
+            "<p>Tell Me the Story is an original Ochorus storybook Bible for "
+            "children aged 6 to 10, in eight books and three parts: Old "
+            "Testament Stories, The Life of Jesus, and New Testament Stories. "
+            "God is the hero of every story, and the whole Bible is one story "
+            "that leads to Jesus.</p>"
+            "<p>Book 3, “Kings and Prophets”, is the last of the Old Testament "
+            "Stories. It tells twenty-two stories from 1 Samuel to Nehemiah: "
+            "the kings God gave His people, from Saul and David to the boy "
+            "king Josiah; the prophets He sent, from Samuel and Elijah to Jonah "
+            "and Isaiah; and the brave ones who stayed faithful far from home, "
+            "like Daniel and Queen Esther. It ends with the people waiting for "
+            "the King God promised. Where the New Testament itself links a "
+            "story to Jesus, as Matthew 12:40 does with Jonah, a line says "
+            "so.</p>"
+            "<p>The stories stay close to what the Bible says, and the people "
+            "in them say what the Bible says they said, in simple words. Hard "
+            "stories, like David’s sin, Mount Carmel and the lions’ den, are "
+            "told honestly but gently. Each takes about four minutes to read "
+            "aloud, and under each are three questions to talk about together, "
+            "with answers for the grown-up reading along. The earlier books are "
+            "not required.</p>"
+        ),
+        "qa": [
+            {
+                "question": "Which stories are in Book 3 of Tell Me the Story?",
+                "answer": "Twenty-two stories from 1 Samuel to Nehemiah: Hannah, Samuel hearing God, David chosen, David and Goliath, David and Jonathan, David sparing Saul, Mephibosheth, Nathan's story of the lamb, Solomon's wisdom, Elijah and the ravens, the fire on Mount Carmel, the still small voice, Naaman, the chariots of fire, Josiah, two stories of Jonah, Isaiah's promise, the fiery furnace, Daniel and the lions, Esther and Nehemiah.",
+            },
+            {
+                "question": "Do I need to read Books 1 and 2 first?",
+                "answer": "No. Each book stands on its own. Book 3 begins with a short introduction that explains what kings and prophets are.",
+            },
+            {
+                "question": "How is David's sin with Bathsheba told?",
+                "answer": "Simply and gently: David wanted another man's wife and had her husband killed in battle. The story then turns to Nathan's parable of the little lamb, David's confession and God's forgiveness, with Psalm 51. A note for the grown-up says no more needs explaining than a child asks.",
+            },
+            {
+                "question": "How does it point to Jesus?",
+                "answer": "Where the New Testament itself links a story to Jesus, a short \"Looking ahead to Jesus\" line says so: David's city of Bethlehem (Luke 2:11), One greater than Solomon (Matthew 12:42), Elijah's widow and Naaman in Jesus' own sermon (Luke 4:26–27), Jonah's three days (Matthew 12:40–41), and Isaiah's promises fulfilled (Matthew 1:23).",
+            },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Every verse quoted with its reference is word for word from the Berean Standard Bible (BSB), which is in the public domain.",
+            },
+            {
+                "question": "Can it be read aloud at bedtime?",
+                "answer": "Yes, that is what it is written for. Each story takes about four minutes to read aloud, and each chapter has a Listen button that reads it at a gentle speed and then asks the three questions.",
+            },
+        ],
+    },
 }
 
 _QUESTION = re.compile(r"^- Q: (.+)$")
