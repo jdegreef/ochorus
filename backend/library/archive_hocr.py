@@ -7,7 +7,8 @@ nothing in the text can tell the two apart. The page IMAGE can: a printed
 paragraph opens on an indented line. Archive's `_hocr.html` keeps every line's
 bounding box, so this module rebuilds paragraphs from the indents themselves,
 across page breaks, and leaves only the book-specific parts (which lines are
-furniture, where the chapters begin, what the OCR misread) to the caller.
+furniture, where the chapters begin, what the OCR misread) to the caller —
+a `library.archive_book.ArchiveBookCommand`, which does the rest of the build.
 
 Built for Sadhu Sundar Singh's *Reality and Religion* (1924) and *With and
 Without Christ* (1929); see `build_reality_and_religion` and
@@ -23,7 +24,7 @@ from statistics import median
 
 import requests
 
-USER_AGENT = "OchorusBot/0.1 (+https://ochorus.org; public-domain book reader)"
+from library.management.commands.import_archive import USER_AGENT
 
 _PAGE = re.compile(r"<div class=['\"]ocr_page['\"]")
 _LINE = re.compile(
@@ -35,9 +36,17 @@ _LINE = re.compile(
 _TAG = re.compile(r"<[^>]+>")
 _WS = re.compile(r"\s+")
 #: A line that is only a page number, a roman folio, or a printer's signature
-#: mark ("I B", "5a)", "3/", "II]") — short, and no run of three lowercase
-#: letters.
+#: mark ("I B", "5a)", "3/", "II]", "Vii") — short, and no run of three
+#: lowercase letters.
 _FOLIO = re.compile(r"^(?!.*[a-z]{3})[\w.,'’‘|/()\[\]*•\-\s]{1,7}$")
+#: ...but a short line that closes a sentence is prose, not furniture: the last
+#: line of a paragraph ("of God.", "to Him.", "it.") passes `_FOLIO`'s shape
+#: and would be dropped from a page's foot. A chapter numeral ("XIII.") ends
+#: on a capital, so it stays a folio.
+_SENTENCE_END = re.compile(r"[a-z][.!?][’”'\"]?$")
+#: A line indented this far (scan pixels) past its page's margin opens a
+#: paragraph.
+_INDENT = 30
 
 
 @dataclass(frozen=True)
@@ -45,8 +54,6 @@ class Line:
     page: int
     x0: int
     y0: int
-    x1: int
-    y1: int
     text: str
 
 
@@ -65,8 +72,7 @@ def parse(hocr: str) -> list[Line]:
         for m in _LINE.finditer(chunk):
             text = _WS.sub(" ", _html.unescape(_TAG.sub("", m.group(5)))).strip()
             if text:
-                x0, y0, x1, y1 = (int(v) for v in m.groups()[:4])
-                out.append(Line(page, x0, y0, x1, y1, text))
+                out.append(Line(page, int(m.group(1)), int(m.group(2)), text))
     return out
 
 
@@ -76,16 +82,27 @@ def margins(lines: list[Line]) -> dict[int, int]:
     Recto and verso pages sit at different offsets in the scan, so the margin
     is measured per page. Full-width lines only — indented first lines and
     short centred ones would drag a mean, and are a minority either way.
+
+    A page with no full-width line (a verse page, a chapter's short last page)
+    borrows the margin of the nearest measured page of the same parity — the
+    same side of the spread — so its indents still open paragraphs.
     """
     by_page: dict[int, list[int]] = {}
     for ln in lines:
         if len(ln.text) >= 30:
             by_page.setdefault(ln.page, []).append(ln.x0)
-    return {p: int(median(xs)) for p, xs in by_page.items()}
+    measured = {p: int(median(xs)) for p, xs in by_page.items()}
+    out = dict(measured)
+    for page in {ln.page for ln in lines} - measured.keys():
+        near = [p for p in measured if p % 2 == page % 2] or list(measured)
+        if near:
+            out[page] = measured[min(near, key=lambda p: abs(p - page))]
+    return out
 
 
 def is_folio(text: str) -> bool:
-    return bool(_FOLIO.match(text.strip()))
+    text = text.strip()
+    return bool(_FOLIO.match(text)) and not _SENTENCE_END.search(text)
 
 
 def caps_core(text: str) -> str:
@@ -112,8 +129,6 @@ def join_lines(
     lines: list[Line],
     margin: dict[int, int],
     keep: set[str],
-    *,
-    indent: int = 30,
 ) -> list[str]:
     """Body lines → paragraph strings.
 
@@ -127,7 +142,7 @@ def join_lines(
     buf = ""
     for ln in lines:
         text = ln.text
-        if ln.x0 - margin.get(ln.page, ln.x0) > indent and buf:
+        if ln.x0 - margin.get(ln.page, ln.x0) > _INDENT and buf:
             paras.append(buf)
             buf = ""
         broken = re.search(r"([A-Za-z]+)-$", buf)
