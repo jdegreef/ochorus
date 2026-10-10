@@ -365,40 +365,9 @@ to do.</p>
 class Command(BaseCommand):
     help = "Build the curated Spurgeon Holy Spirit anthology (dev DB); then serialize the fixture."
 
-    @transaction.atomic  # a mid-run abort rolls back, never a partial book
     def handle(self, *args, **opts):
-        try:
-            author = Author.objects.get(slug=AUTHOR_SLUG)
-        except Author.DoesNotExist:
-            raise CommandError(
-                f"Author {AUTHOR_SLUG!r} is not in this database — run "
-                "`manage.py seed_if_empty` first."
-            ) from None
-        # Workflow-owned fields (source_type, is_published, sort_order) are
-        # create-only so a rebuild can't walk back a review/unpublish.
-        content = {
-            "author": author,
-            "title": TITLE,
-            "subtitle": SUBTITLE,
-            "description": DESCRIPTION,
-            "attribution": ATTRIBUTION,
-            "cover_color": COVER_COLOR,
-            "source_url": "",
-            "qa": QA,
-        }
-        book, created = Book.objects.update_or_create(
-            slug=SLUG,
-            language="en",
-            defaults=content,
-            create_defaults={
-                **content,
-                "source_type": Book.SourceType.PUBLIC_DOMAIN,
-                "is_published": True,
-                "sort_order": book_sort_order(SLUG),
-            },
-        )
-        book.chapters.all().delete()
-
+        # Fetch and clean every sermon BEFORE opening the transaction, so the
+        # ~15s of polite CCEL requests never hold the dev DB locked.
         chapters = [("Introduction", clean_fragment(INTRO_HTML))]
         for i, (title, url, want_ref) in enumerate(SERMONS, start=2):
             time.sleep(0.8)  # be polite to CCEL
@@ -422,15 +391,48 @@ class Command(BaseCommand):
         # apostrophes straight ("the Lord's house"), and every straight ' in the
         # book follows a letter, so curl them to match the other eleven.
         bodies = [re.sub(r"(?<=[A-Za-z])'", "’", b) for b in bodies]
-        for i, ((title, _), body) in enumerate(zip(chapters, bodies, strict=True), start=1):
-            body = settled_chapter_body(SLUG, i, body)
-            wc = word_count(body)
-            if wc < 500:
-                raise CommandError(f"{title!r}: only {wc} words — aborted")
-            Chapter.objects.create(book=book, order=i, title=title, body_html=body)
-            self.stdout.write(f"  ch {i:2}: {title[:50]:50} {wc:>6} words")
+        with transaction.atomic():  # a mid-run abort rolls back, never a partial book
+            try:
+                author = Author.objects.get(slug=AUTHOR_SLUG)
+            except Author.DoesNotExist:
+                raise CommandError(
+                    f"Author {AUTHOR_SLUG!r} is not in this database — run "
+                    "`manage.py seed_if_empty` first."
+                ) from None
+            # Workflow-owned fields (source_type, is_published, sort_order) are
+            # create-only so a rebuild can't walk back a review/unpublish.
+            content = {
+                "author": author,
+                "title": TITLE,
+                "subtitle": SUBTITLE,
+                "description": DESCRIPTION,
+                "attribution": ATTRIBUTION,
+                "cover_color": COVER_COLOR,
+                "source_url": "",
+                "qa": QA,
+            }
+            book, created = Book.objects.update_or_create(
+                slug=SLUG,
+                language="en",
+                defaults=content,
+                create_defaults={
+                    **content,
+                    "source_type": Book.SourceType.PUBLIC_DOMAIN,
+                    "is_published": True,
+                    "sort_order": book_sort_order(SLUG),
+                },
+            )
+            book.chapters.all().delete()
 
-        book.refresh_from_db()
-        english_audit.report(self, english_audit.audit_book(book), book.slug)
-        verb = "Created" if created else "Rebuilt"
-        self.stdout.write(self.style.SUCCESS(f"{verb} {TITLE!r} — {book.chapter_count} chapters"))
+            for i, ((title, _), body) in enumerate(zip(chapters, bodies, strict=True), start=1):
+                body = settled_chapter_body(SLUG, i, body)
+                wc = word_count(body)
+                if wc < 500:
+                    raise CommandError(f"{title!r}: only {wc} words — aborted")
+                Chapter.objects.create(book=book, order=i, title=title, body_html=body)
+                self.stdout.write(f"  ch {i:2}: {title[:50]:50} {wc:>6} words")
+
+            book.refresh_from_db()
+            english_audit.report(self, english_audit.audit_book(book), book.slug)
+            verb = "Created" if created else "Rebuilt"
+            self.stdout.write(self.style.SUCCESS(f"{verb} {TITLE!r} — {book.chapter_count} chapters"))
