@@ -848,3 +848,82 @@ class MiddleBandCssTests(SimpleTestCase):
 
         for subtitle in (False, True):
             self.assertLess(max(a for _p, _c, a in middle_band_stops(subtitle)), 0.9)
+
+
+def _cover_assets():
+    import importlib.util
+
+    path = Path(__file__).resolve().parent.parent / "scripts" / "build_cover_assets.py"
+    spec = importlib.util.spec_from_file_location("build_cover_assets", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+class CoverAssetPlanTests(SimpleTestCase):
+    """A cover run for one work must not change another work's cover.
+
+    `build_cover_assets` repoints EVERY edition row it disagrees with, and
+    `paint_covers` runs it for whichever work is being painted — so any row
+    where the generator and the committed fixture disagree turns up as a diff
+    in an unrelated PR. That happened on 2026-10-10: the generator spelled
+    "English" as `language == "en"`, moved the `en-modern` rows of
+    `humility-2` and `the-inner-chamber` to the wordless ground, and the
+    session painting a Spurgeon cover reverted them by hand.
+    """
+
+    def test_the_committed_fixture_is_what_the_generator_writes(self):
+        repoints, _ = _cover_assets().plan()
+        self.assertEqual(
+            [(r.slug, r.language, r.current, r.wants) for r in repoints],
+            [],
+            "build_cover_assets would repoint these rows — the generator and the "
+            "fixture disagree, so every cover run would rewrite them",
+        )
+
+    def test_every_english_edition_of_a_designed_work_keeps_its_cover(self):
+        from unittest.mock import patch
+
+        from library.covers import wears_designed_english
+        from library.curated_art import CURATED_GROUND, Artwork
+
+        art = Artwork("met", 1, "A Painter", "A Painting", "1650", "because")
+        with patch.dict(CURATED_GROUND, {"a-designed-work": art}, clear=True):
+            for slug, language, keeps in (
+                ("a-designed-work", "en", True),
+                ("a-designed-work", "en-modern", True),
+                ("a-designed-work", "es", False),
+                ("waiting-on-god", "en", False),  # CURATED: no designed cover
+                ("waiting-on-god", "en-modern", False),
+            ):
+                with self.subTest(slug=slug, language=language):
+                    self.assertIs(wears_designed_english(slug, language), keeps)
+
+    def test_a_scoped_run_refuses_to_move_another_works_row(self):
+        module = _cover_assets()
+        other = module.Repoint(
+            Path("x.json"), "another-work", "en-modern", "/covers/a.jpg", "/covers/art/a.jpg"
+        )
+        with (
+            mock.patch.object(module, "plan", return_value=([other], set())),
+            mock.patch.object(module, "persist_field") as persist,
+            mock.patch("sys.argv", ["build_cover_assets.py", "--works", "my-work"]),
+        ):
+            with self.assertRaises(SystemExit) as caught:
+                module.main()
+        self.assertIn("another-work [en-modern]", str(caught.exception))
+        persist.assert_not_called()
+
+    def test_a_scoped_run_still_repoints_its_own_works(self):
+        module = _cover_assets()
+        mine = module.Repoint(
+            Path("x.json"), "my-work", "fr", "/covers/fr/my-work.svg", "/covers/art/my-work.jpg"
+        )
+        with (
+            mock.patch.object(module, "plan", return_value=([mine], set())),
+            mock.patch.object(module, "persist_field") as persist,
+            mock.patch("sys.argv", ["build_cover_assets.py", "--works", "my-work"]),
+            mock.patch("builtins.print"),
+        ):
+            module.main()
+        persist.assert_called_once_with(Path("x.json"), "cover_url", "/covers/art/my-work.jpg")

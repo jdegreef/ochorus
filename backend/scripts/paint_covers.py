@@ -16,7 +16,8 @@ commands whose order mattered — and runs here, stopping at the first failure:
   2. build_curated_covers     — fetch, re-verify the licence, crop the painting
                                 (kept if cut from this entry; --recrop redraws)
   3. delete the retired plates — every `<slug>.svg`, in every language dir
-  4. build_cover_assets       — webp variants; repoints EVERY edition row
+  4. build_cover_assets       — webp variants; repoints these works' editions,
+                                and REFUSES if any other work's row would move
   5. tune_art_scrim <slugs>   — measure these paintings' scrim
   6. npm run og:covers        — the per-edition share twins
   7. the cover gates          — Python fixture gates and the JS twin gates
@@ -124,8 +125,10 @@ def main() -> int:
             if not args.dry_run:
                 plate.unlink()
 
-    step(4, "variants, and repoint every edition")
-    run([*PY, "scripts/build_cover_assets.py"])
+    step(4, "variants, and repoint these works' editions")
+    # Scoped: a row of another work the generator disagrees with stops the run
+    # instead of riding along in this PR (the `en-modern` repoints, 2026-10-10).
+    run([*PY, "scripts/build_cover_assets.py", "--works", *slugs])
 
     step(5, "measure the scrim (before the twins, which are drawn with it)")
     run([*PY, "scripts/tune_art_scrim.py", *slugs])
