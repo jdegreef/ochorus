@@ -464,6 +464,22 @@ AUTHORS: dict[str, AuthorEntry] = {
             "martyrs from the early church to the burnings under Queen Mary."
         ),
     ),
+    # Arrives with How I Became a Christian (Tokyo, 1895), whose fixture was
+    # hand-built from an Internet Archive OCR of the Keiseisha printing,
+    # checked against the scans (no BookEntry: `import_archive` cannot chapter
+    # it, and a re-import would undo the proofreading).
+    "kanzo-uchimura": AuthorEntry(
+        slug="kanzo-uchimura",
+        name="Kanzo Uchimura",
+        birth_year=1861,
+        death_year=1930,
+        bio=(
+            "Japanese Christian writer and Bible teacher, a samurai's son "
+            "converted at Sapporo and brought to assurance at Amherst, who "
+            "founded the Non-Church movement and wrote in English the story "
+            "of his own conversion."
+        ),
+    ),
 }
 
 # Shelf order. Small, clean books first.
