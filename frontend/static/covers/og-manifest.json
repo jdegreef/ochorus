@@ -10314,6 +10314,26 @@
 				482
 			]
 		},
+		"john-ploughmans-pictures": {
+			"ground": "c6841f48e060466855a1a8b638aba91f63f5fa80103d01067cb08e6e53b60f55",
+			"style": "revival",
+			"volume": "2",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"john-ploughmans-talk": {
+			"ground": "10574c4220ec2c9a975cc38bc87eaf024b43f49aefddd4168cf0eb5b1dfc9b08",
+			"style": "revival",
+			"volume": "1",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"journal-of-an-expedition-up-the-niger": {
 			"ground": "37494b21a674597e513108409f2bfd2dfeca857a53d78b9bbb7e51ffe34492d3",
 			"style": "revival",

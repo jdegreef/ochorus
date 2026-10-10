@@ -190,6 +190,8 @@ TOPICS = [
             "revelations-of-divine-love",
             "phantastes",
             "diary-of-an-old-soul",
+            "john-ploughmans-talk",
+            "john-ploughmans-pictures",
         ],
     ),
     (
