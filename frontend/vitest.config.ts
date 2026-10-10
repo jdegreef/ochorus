@@ -50,6 +50,8 @@ export default defineConfig({
 			{ find: '$lib', replacement: fileURLToPath(new URL('./src/lib', import.meta.url)) }
 		]
 	},
+	// Tests run the website's code paths (see `__APP__` in vite.config.ts).
+	define: { __APP__: 'false' },
 	test: {
 		environment: 'jsdom',
 		include: ['src/**/*.test.ts'],

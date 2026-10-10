@@ -3,6 +3,7 @@ import { preloadCode } from '$app/navigation';
 import { API_BASE_URL } from './config';
 import { coverVariants } from './coverArt';
 import { readJSON, writeJSON } from './persisted';
+import { IS_APP } from './platform';
 
 /**
  * "Download for offline" — explicitly precache a whole book (its chapter API
@@ -39,7 +40,14 @@ export interface DownloadableBook {
 	chapters: { order: number }[];
 }
 
-const supported = () => browser && 'caches' in globalThis;
+/**
+ * Off in the native app: a download is only readable offline because the
+ * service worker answers from this cache, and the app runs no service worker
+ * (iOS's app web view has none). The app gets its own offline storage through
+ * $lib/platform — until then the UI hides the option (`offlineBooks.supported`)
+ * rather than offering a download that would not work.
+ */
+const supported = () => browser && !IS_APP && 'caches' in globalThis;
 
 /**
  * A download is a book in ONE language, and always was in the bytes: every
@@ -89,6 +97,11 @@ class OfflineBooks {
 	list(): OfflineBook[] {
 		this.ticks;
 		return [...this.#load()].sort((a, b) => b.at - a.at);
+	}
+
+	/** Whether this device can save a book for offline reading at all. */
+	get supported(): boolean {
+		return supported();
 	}
 
 	has(slug: string, language: string): boolean {

@@ -10,6 +10,9 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
+		"app:build": "node scripts/build-app.mjs",
+		"app:ios": "node scripts/build-app.mjs && cap open ios",
+		"app:android": "node scripts/build-app.mjs && cap open android",
 		"paraglide": "paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide",
 		"prepare": "npm run paraglide && svelte-kit sync || echo ''",
 		"check": "npm run paraglide && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -35,6 +38,7 @@
 		"postbuild": "node scripts/build-404.mjs && node scripts/build-cards.mjs && node scripts/sentry-sourcemaps.mjs"
 	},
 	"devDependencies": {
+		"@capacitor/cli": "8.5.3",
 		"@eslint/js": "^9.39.5",
 		"@inlang/paraglide-js": "^2.25.4",
 		"@playwright/test": "^1.63.0",
@@ -61,6 +65,9 @@
 		"vitest": "^5.0.3"
 	},
 	"dependencies": {
+		"@capacitor/android": "8.5.3",
+		"@capacitor/core": "8.5.3",
+		"@capacitor/ios": "8.5.3",
 		"@fontsource-variable/atkinson-hyperlegible-next": "^5.3.0",
 		"@fontsource-variable/cinzel": "^5.3.0",
 		"@fontsource-variable/eb-garamond": "^5.3.0",

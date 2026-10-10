@@ -4,6 +4,7 @@ import { paraglideVitePlugin } from '@inlang/paraglide-js';
 import { sveltekit } from '@sveltejs/kit/vite';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, type Plugin } from 'vite';
+import { APP } from './app-target.js';
 
 /**
  * Force absolute `/_app/immutable/…` URLs in client JS chunks.
@@ -52,6 +53,24 @@ const absoluteAssetUrls = (): Plugin => ({
 	}
 });
 
+/**
+ * The native app's build (scripts/build-app.mjs) prerenders nothing — but
+ * SvelteKit still calls every route's `entries()` while analysing the build,
+ * and those ask the live API for the slugs to prerender. Un-exporting them in
+ * that build alone keeps it offline and independent of the API; the website's
+ * build is untouched. Route modules only, and only the `entries` export.
+ */
+const ROUTE_MODULE = /[\\/]src[\\/]routes[\\/].*\+(page|server)\.[jt]s$/;
+const ENTRIES_EXPORT = /^export (const|let|async function|function) entries\b/m;
+const appSkipsEntries = (): Plugin => ({
+	name: 'app-skips-prerender-entries',
+	apply: 'build',
+	transform(code, id) {
+		if (!ROUTE_MODULE.test(id) || !ENTRIES_EXPORT.test(code)) return null;
+		return { code: code.replace(ENTRIES_EXPORT, '$1 entries'), map: null };
+	}
+});
+
 export default defineConfig(({ isSsrBuild }) => ({
 	plugins: [
 		tailwindcss(),
@@ -63,6 +82,7 @@ export default defineConfig(({ isSsrBuild }) => ({
 			outdir: './src/lib/paraglide',
 			strategy: ['url', 'cookie', 'baseLocale']
 		}),
+		...(APP ? [appSkipsEntries()] : []),
 		sveltekit(),
 		absoluteAssetUrls()
 	],
@@ -88,6 +108,13 @@ export default defineConfig(({ isSsrBuild }) => ({
 		 * is unset, which yields '' — Sentry then sends no release rather than a
 		 * wrong one.
 		 */
-		__RELEASE__: JSON.stringify(process.env.RENDER_GIT_COMMIT ?? '')
+		__RELEASE__: JSON.stringify(process.env.RENDER_GIT_COMMIT ?? ''),
+		/**
+		 * Whether this bundle is the native app's (Capacitor, iOS + Android)
+		 * rather than the website's. Set by scripts/build-app.mjs; read through
+		 * `IS_APP` in $lib/platform, never directly. A build-time constant so the
+		 * web bundle drops the app-only branches entirely.
+		 */
+		__APP__: JSON.stringify(APP)
 	}
 }));

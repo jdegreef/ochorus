@@ -48,7 +48,7 @@
 	});
 </script>
 
-{#if books.length}
+{#if books.length && offlineBooks.supported}
 	<div class="ms-auto flex flex-wrap items-center justify-end gap-2 text-small">
 		{#if mine}
 			<span class="text-muted" aria-live="polite">

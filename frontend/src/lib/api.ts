@@ -113,6 +113,14 @@ const isIdempotent = (init: RequestInit) =>
 	!init.method || ['GET', 'HEAD'].includes(init.method.toUpperCase());
 
 async function robustFetch(url: string, init: RequestInit, f: Fetch = fetch): Promise<Response> {
+	// The native app's build prerenders nothing, so nothing in it may ask the
+	// API (vite.config.ts un-exports the routes' `entries`). Say so at once,
+	// rather than after the retries below, if something new does.
+	if (building && __APP__) {
+		throw new Error(
+			`The app build asked the API for ${url}. It prerenders nothing — see appSkipsEntries in vite.config.ts.`
+		);
+	}
 	if (!isIdempotent(init)) return f(url, init);
 	const delays = building ? BUILD_RETRY_DELAYS_MS : RUNTIME_RETRY_DELAYS_MS;
 	const transient = (status: number) => (building ? status >= 500 : RUNTIME_TRANSIENT.has(status));
