@@ -6243,6 +6243,35 @@
 			"layout": "fade/slate",
 			"bar": 0.035
 		},
+		"es/religious-experience-and-journal": {
+			"ground": "59d6ced45cea91ae35b009dfa2a94d480f5fd44f697b7d0ed9c70c08d98588fa",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[195, 102, 405, 131]
+				],
+				"title": [
+					[144, 289, 456, 352],
+					[83, 351, 517, 414]
+				],
+				"subtitle": [
+					[49, 477, 551, 505]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
+		},
 		"es/revival-lectures": {
 			"ground": "5ee194c42c95aa84af332789a2b8fb7be0f8d5c28451f9ee66ca0beecd1df41d",
 			"style": "revival",
@@ -6624,6 +6653,16 @@
 			"layout": "box/teal",
 			"bar": 0
 		},
+		"es/the-fundamental-doctrines-of-the-christian-faith": {
+			"ground": "93266f5661111f21a12a5b0e1404c8153d28e283bd9ebca26d8ec295192dd3cb",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "diagonal/ochre",
+			"bar": 0
+		},
 		"es/the-god-of-all-comfort": {
 			"ground": "582097ba8a4394fa0cb338971250642bc4cd65dbdd9e8de25bda19b9bf577f63",
 			"style": "devotional",
@@ -6924,6 +6963,37 @@
 			"scrim": 1,
 			"layout": "band/oxblood",
 			"bar": 0.04
+		},
+		"es/treatises-of-cyprian": {
+			"ground": "fd0b209f41ef6358b0e2ac61c21c094fd7c1efd858b2ce91ef9b2437c4a6e861",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[95, 102, 505, 131]
+				],
+				"title": [
+					[102, 304, 498, 366],
+					[122, 349, 478, 411]
+				],
+				"subtitle": [
+					[98, 440, 502, 461],
+					[44, 461, 556, 482],
+					[44, 461, 541, 482]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"es/true-vine": {
 			"ground": "12707a4313939e946d4f132f09ee3e1946db2fcfab8555a0f40dc3ee5a3584f1",
