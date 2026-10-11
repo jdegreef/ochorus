@@ -1582,5 +1582,8 @@
   "seals_setting": "የንባብ ማኅተሞች",
   "seals_setting_sub": "በመጽሐፍ መጨረሻና በመጽሐፍ መደርደሪያዎ ላይ ያሉ ማኅተሞች።",
   "seals_show": "አሳይ",
-  "seals_hide": "ደብቅ"
+  "seals_hide": "ደብቅ",
+  "cite_book": "ይህን መጽሐፍ ጥቀስ",
+  "cite_sermon": "ይህን ስብከት ጥቀስ",
+  "cite_note": "ጥቅሱን በሚፈልጉት ስልት ይቅዱ።"
 }

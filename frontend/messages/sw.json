@@ -1582,5 +1582,8 @@
   "seals_setting": "Mihuri ya kusoma",
   "seals_setting_sub": "Mihuri mwishoni mwa kitabu na kwenye kabati lako la vitabu.",
   "seals_show": "Onyesha",
-  "seals_hide": "Ficha"
+  "seals_hide": "Ficha",
+  "cite_book": "Nukuu kitabu hiki",
+  "cite_sermon": "Nukuu mahubiri haya",
+  "cite_note": "Nakili marejeo kwa mtindo unaohitaji."
 }

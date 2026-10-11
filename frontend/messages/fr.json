@@ -1582,5 +1582,8 @@
   "seals_setting": "Sceaux de lecture",
   "seals_setting_sub": "Les sceaux à la fin d’un livre et sur votre bibliothèque.",
   "seals_show": "Afficher",
-  "seals_hide": "Masquer"
+  "seals_hide": "Masquer",
+  "cite_book": "Citer ce livre",
+  "cite_sermon": "Citer ce sermon",
+  "cite_note": "Copiez la référence dans le style dont vous avez besoin."
 }

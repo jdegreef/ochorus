@@ -4,7 +4,7 @@
 	import { coverVariants, isPlateCover, shareCard, shareImage } from '$lib/coverArt';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { authorLdType, authorPath, ORIGINALS_SLUG } from '$lib/originals';
-	import { type BookDetail, formatLifespan } from '$lib/library-public';
+	import { type BookDetail, formatLifespan, isTranslated } from '$lib/library-public';
 	import { getProgressRecord } from '$lib/progress';
 	import { bookChapterPath, furthestOf, resumeOrderOf, type ProgressRecord } from '$lib/reading-schema';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
@@ -53,6 +53,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
+	import CitePanel from '$lib/components/CitePanel.svelte';
 	import AddToShelfButton from '$lib/components/AddToShelfButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
@@ -1223,6 +1224,19 @@
 		     trust. Not translated: it is a name, a title and a year. -->
 		<p class="mt-2 text-eyebrow text-muted sm:hidden">{book.artwork_credit}</p>
 	{/if}
+	<!-- A translated edition did not appear in the original's year, so it is
+	     cited without one rather than as a reprint of it. -->
+	<CitePanel
+		lang={book.language}
+		work={{
+			kind: 'book',
+			author: book.author.name,
+			corporate: book.author.slug === ORIGINALS_SLUG,
+			title: book.title,
+			year: isTranslated(book.source_type) ? null : book.publication_year,
+			url: canonical
+		}}
+	/>
 </div>
 
 <!-- Phones: once the read card scrolls away, the read verb rides a bar above

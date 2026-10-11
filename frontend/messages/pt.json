@@ -1582,5 +1582,8 @@
   "seals_setting": "Selos de leitura",
   "seals_setting_sub": "Selos no fim de um livro e na sua estante.",
   "seals_show": "Mostrar",
-  "seals_hide": "Ocultar"
+  "seals_hide": "Ocultar",
+  "cite_book": "Citar este livro",
+  "cite_sermon": "Citar este sermão",
+  "cite_note": "Copie a citação no estilo de que precisa."
 }
