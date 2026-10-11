@@ -21,6 +21,13 @@ import {
 	forPage,
 	forPlans,
 	forShelf,
+	countsLine,
+	forLanguage,
+	forLevels,
+	LANGUAGE_COVERS,
+	LEVELS_SHOWN,
+	SERIES_WEEKS,
+	toForSermon,
 	toOfflineBook
 } from './forPages';
 import type { BookDetail, BookSummary, PlanSummary, QuotePage } from './library-public';
@@ -54,6 +61,15 @@ const fixtureBook = (slug: string): { is_published: boolean; pdf_url: string } |
 	}
 };
 
+/** This slug's English sermon row in the content fixture, or null. */
+const fixtureSermon = (slug: string): { study_questions: unknown[] } | null => {
+	try {
+		return JSON.parse(readFileSync(join(LIBRARY, 'fixtures', 'content', 'sermons', `${slug}.en.json`), 'utf8'))[0].fields;
+	} catch {
+		return null;
+	}
+};
+
 /** Is this slug a published English book in the content fixture? */
 const publishedInFixture = (slug: string) => fixtureBook(slug)?.is_published === true;
 
@@ -80,7 +96,9 @@ describe('the "Ochorus for …" pages', () => {
 				'#plans': p.plans.length > 0,
 				'#shelves': p.shelves.length > 0,
 				'#guides': !!p.guides,
-				'#offline': !!p.offline
+				'#offline': !!p.offline,
+				'#languages': !!p.languages,
+				'#series': !!p.series?.length
 			};
 			for (const href of pageLinks(p)) {
 				if (href.startsWith('#')) {
@@ -180,6 +198,7 @@ describe('the "Ochorus for …" pages', () => {
 		expect(forHref('#plans', { ...EMPTY_SHELF_DATA, plans })).toBe('#plans');
 		expect(forHref('#plans', EMPTY_SHELF_DATA)).toBe('/plans');
 		expect(forHref('#offline', EMPTY_SHELF_DATA)).toBe('/books');
+		expect(forHref('#series', EMPTY_SHELF_DATA)).toBe('/sermons');
 		expect(forHref('/teens', EMPTY_SHELF_DATA)).toBe('/teens');
 	});
 
@@ -187,7 +206,10 @@ describe('the "Ochorus for …" pages', () => {
 		expect(isShelfData(EMPTY_SHELF_DATA)).toBe(true);
 		expect(isShelfData([{ slug: 'school-of-prayer' }])).toBe(false);
 		expect(isShelfData(null)).toBe(false);
-		expect(isShelfData({ shelves: [], plans: [] })).toBe(false);
+		expect(isShelfData({})).toBe(false);
+		// A cached snapshot from before a section existed: the load fills it in.
+		expect(isShelfData({ shelves: [], plans: [], guides: [], offline: [] })).toBe(true);
+		expect(isShelfData({ ...EMPTY_SHELF_DATA, series: {} })).toBe(false);
 	});
 
 	it('quotes a line the seed holds, from an author whose quotations are approved', () => {
@@ -234,5 +256,65 @@ describe('the "Ochorus for …" pages', () => {
 	it('counts works, not their young-reader editions', () => {
 		const slugs = ['pilgrims-progress', 'pilgrims-progress-teens', 'pilgrims-progress-children', 'confessions'];
 		expect(countWorks(slugs.map((slug) => ({ slug })))).toBe(2);
+	});
+
+	it('builds each sermon series from sermons with study questions, with backups', () => {
+		for (const p of FOR_PAGES) {
+			for (const series of p.series ?? []) {
+				const ok = series.picks.filter((s) => fixtureSermon(s)?.study_questions.length);
+				expect(ok, `${p.slug}: ${series.title}`).toEqual(series.picks);
+				expect(new Set(series.picks).size, series.title).toBe(series.picks.length);
+				expect(series.picks.length, series.title).toBeGreaterThan(SERIES_WEEKS);
+			}
+		}
+	});
+
+	it('shows a sermon as a series week only when it has questions to discuss', () => {
+		const s = { slug: 's', title: 'T', scripture_ref: 'John 3:16', word_count: 4000, author_name: 'A', author_slug: 'a' };
+		expect(toForSermon({ ...s, study_questions: [] })).toBeNull();
+		expect(toForSermon(s)).toBeNull();
+		expect(toForSermon({ ...s, study_questions: [{ question: 'Q', answer: 'A' }] })).toEqual({
+			slug: 's',
+			title: 'T',
+			scripture_ref: 'John 3:16',
+			author: { slug: 'a', name: 'A' },
+			questions: 1,
+			word_count: 4000
+		});
+	});
+
+	it('names works whose three editions are all published, with backups', () => {
+		for (const p of FOR_PAGES) {
+			if (!p.levels) continue;
+			const whole = p.levels.filter((b) => ['-children', '-teens', ''].every((x) => publishedInFixture(b + x)));
+			expect(whole, p.slug).toEqual(p.levels);
+			expect(p.levels.length, p.slug).toBeGreaterThan(LEVELS_SHOWN);
+		}
+	});
+
+	it('lays out a work youngest first, skipping one missing an edition', () => {
+		const english = ['a', 'a-teens', 'a-children', 'b', 'b-children', 'c-children', 'c-teens', 'c'].map(
+			(slug) => ({ slug, title: slug, author: { slug: 'x', name: 'X' } }) as unknown as BookSummary
+		);
+		const levels = forLevels(english, ['b', 'a', 'c']);
+		expect(levels[0].map((r) => r.rung)).toEqual(['children', 'teens', 'full']);
+		expect(levels.map((f) => f.map((r) => r.book.slug))).toEqual([
+			['a-children', 'a-teens', 'a'],
+			['c-children', 'c-teens', 'c']
+		]);
+	});
+
+	it("draws a language's row from its own lists: its picks first, then its other works", () => {
+		const books = ['z', 'p2', 'y-children', 'p1', 'x', 'w', 'p1-teens'].map(
+			(slug) => ({ slug, title: slug, author: { slug: 'x', name: 'X' } }) as unknown as BookSummary
+		);
+		const row = forLanguage('sw', { books, sermons: 3, plans: 0 }, ['p1', 'p1-teens', 'missing', 'p2', 'p1']);
+		expect(row).toMatchObject({ code: 'sw', name: 'Swahili', native: 'Kiswahili' });
+		expect(countsLine(row.counts)).toBe('5 books · 3 sermons');
+		expect(countsLine({ books: 1, sermons: 1, plans: 2 })).toBe('1 book · 1 sermon · 2 reading plans');
+		expect(row.counts).toEqual({ books: 5, sermons: 3, plans: 0 });
+		expect(row.covers.map((b) => b.slug)).toEqual(['p1', 'p2', 'z', 'x']);
+		expect(row.covers.length).toBe(LANGUAGE_COVERS);
+		expect(forLanguage('lg', { books: [], sermons: 0, plans: 0 }, []).name).toBe('Luganda');
 	});
 });
