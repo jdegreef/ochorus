@@ -8,6 +8,10 @@
  * "the group is on Day 4 today" from the start date and the reading days
  * alone, the way a printed reading schedule works. Pure, so the arithmetic is
  * tested apart from the page.
+ *
+ * A leader may also turn on the group's TOTALS ("7 of 12 have read Day 4"):
+ * the link then carries a group code too (`&group=…`, $lib/readingGroups),
+ * and readers who choose to be counted are — as numbers, never by name.
  */
 import { READING_DAYS, parseIsoDay, schedulePlan, type ReadingDays } from './planSchedule';
 import { localToday } from './streak';
@@ -17,11 +21,17 @@ export interface Together {
 	/** `YYYY-MM-DD`. */
 	start: string;
 	rule: ReadingDays;
+	/** The group's code when its leader turned on totals. */
+	group?: string;
 }
 
 /** The query parameters a "read together" link carries. */
 const START = 'together';
 const DAYS = 'days';
+const GROUP = 'group';
+
+/** A group code as the API mints them (`secrets.token_urlsafe(9)`). */
+export const isGroupCode = (s: unknown): s is string => typeof s === 'string' && /^[A-Za-z0-9_-]{8,24}$/.test(s);
 
 /** A link's group, or null when it carries none (or a malformed one). An
  *  unknown reading-days rule reads as daily rather than voiding the invite. */
@@ -30,12 +40,28 @@ export function togetherFromQuery(params: URLSearchParams): Together | null {
 	if (!parseIsoDay(start)) return null;
 	const days = params.get(DAYS);
 	const rule = READING_DAYS.find((r) => r === days) ?? 'daily';
-	return { start, rule };
+	const group = params.get(GROUP);
+	return isGroupCode(group) ? { start, rule, group } : { start, rule };
 }
 
 /** The query string that carries `t` (daily is the default, so it is left out). */
 export const togetherQuery = (t: Together): string =>
-	`?${START}=${t.start}` + (t.rule === 'daily' ? '' : `&${DAYS}=${t.rule}`);
+	`?${START}=${t.start}` + (t.rule === 'daily' ? '' : `&${DAYS}=${t.rule}`) + (t.group ? `&${GROUP}=${t.group}` : '');
+
+/** The day whose count the group shows: today's reading, the last one on a
+ *  rest day, the plan's last once it has finished — none before it starts. */
+export function countedDay(status: GroupStatus, dayCount: number): number | null {
+	switch (status.kind) {
+		case 'today':
+			return status.day;
+		case 'next':
+			return status.day > 1 ? status.day - 1 : null;
+		case 'finished':
+			return dayCount;
+		default:
+			return null;
+	}
+}
 
 /** Where the group is on `today`. */
 export type GroupStatus =

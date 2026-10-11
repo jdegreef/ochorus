@@ -1582,5 +1582,17 @@
   "seals_setting": "Selos de leitura",
   "seals_setting_sub": "Selos no fim de um livro e na sua estante.",
   "seals_show": "Mostrar",
-  "seals_hide": "Ocultar"
+  "seals_hide": "Ocultar",
+  "together_count_add": "Mostrar ao grupo quantos já leram",
+  "together_count_added": "Os totais estão ativados. O link mostrará quantos leram a cada dia.",
+  "together_count_sign_in": "Entre para mostrar ao grupo quantos já leram",
+  "together_count_failed": "Não funcionou. Tente novamente.",
+  "together_count_note": "Só são mostrados totais, nunca nomes, e apenas quando %m% pessoas tiverem entrado. Cada leitor escolhe se quer ser contado.",
+  "together_read_count": "%d% de %n% leram o dia %k%",
+  "together_members": "Leitores contados neste grupo: %n%",
+  "together_count_soon": "os totais aparecem com %m%",
+  "together_counted": "Você é contado nos totais do grupo",
+  "together_count_stop": "Deixar de me contar",
+  "together_count_me": "Contar-me nos totais",
+  "together_count_sign_in_join": "Entre para ser contado nos totais do grupo"
 }

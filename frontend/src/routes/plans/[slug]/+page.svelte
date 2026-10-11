@@ -433,7 +433,7 @@
 			<div class="mt-3 flex flex-wrap items-center gap-2">
 				<FavoriteButton kind="plan" slug={plan.slug} showLabel />
 				<ShareButton url={canonical} title={plan.title} showLabel />
-				<PlanTogetherShare title={plan.title} url={canonical} {today} />
+				<PlanTogetherShare slug={plan.slug} title={plan.title} url={canonical} {today} />
 			</div>
 
 			{@render authorsBlock('plan-authors-side mt-6')}

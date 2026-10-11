@@ -1582,5 +1582,17 @@
   "seals_setting": "읽기 인장",
   "seals_setting_sub": "책의 끝과 책장에 표시되는 인장.",
   "seals_show": "표시",
-  "seals_hide": "숨기기"
+  "seals_hide": "숨기기",
+  "together_count_add": "몇 명이 읽었는지 그룹에 보여 주기",
+  "together_count_added": "합계가 켜졌습니다. 링크에서 날마다 몇 명이 읽었는지 보여 줍니다.",
+  "together_count_sign_in": "몇 명이 읽었는지 그룹에 보여 주려면 로그인하세요",
+  "together_count_failed": "잘되지 않았습니다. 다시 시도하세요.",
+  "together_count_note": "합계만 보이고 이름은 절대 보이지 않으며, %m%명이 참여한 뒤에만 보입니다. 집계에 포함될지는 읽는 사람이 각자 정합니다.",
+  "together_read_count": "%n%명 중 %d%명이 %k%일째를 읽었습니다",
+  "together_members": "이 그룹에서 집계되는 독자: %n%명",
+  "together_count_soon": "%m%명이 되면 합계가 보입니다",
+  "together_counted": "그룹 합계에 포함되어 있습니다",
+  "together_count_stop": "집계에서 빼기",
+  "together_count_me": "합계에 포함하기",
+  "together_count_sign_in_join": "그룹 합계에 포함되려면 로그인하세요"
 }

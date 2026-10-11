@@ -1582,5 +1582,17 @@
   "seals_setting": "Mihuri ya kusoma",
   "seals_setting_sub": "Mihuri mwishoni mwa kitabu na kwenye kabati lako la vitabu.",
   "seals_show": "Onyesha",
-  "seals_hide": "Ficha"
+  "seals_hide": "Ficha",
+  "together_count_add": "Onyesha kikundi ni wangapi wamesoma",
+  "together_count_added": "Jumla zimewashwa. Kiungo kitaonyesha ni wangapi wamesoma kila siku.",
+  "together_count_sign_in": "Ingia ili kuonyesha kikundi ni wangapi wamesoma",
+  "together_count_failed": "Haikufanikiwa. Jaribu tena.",
+  "together_count_note": "Ni jumla tu zinazoonyeshwa, kamwe si majina, na baada tu ya watu %m% kujiunga. Kila msomaji anachagua kama ahesabiwe.",
+  "together_read_count": "%d% kati ya %n% wamesoma Siku ya %k%",
+  "together_members": "Wasomaji wanaohesabiwa katika kikundi hiki: %n%",
+  "together_count_soon": "jumla zitaonekana wakifika %m%",
+  "together_counted": "Unahesabiwa katika jumla za kikundi",
+  "together_count_stop": "Acha kunihesabu",
+  "together_count_me": "Nihesabu katika jumla",
+  "together_count_sign_in_join": "Ingia ili uhesabiwe katika jumla za kikundi"
 }

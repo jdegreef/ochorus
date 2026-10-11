@@ -1582,5 +1582,17 @@
   "seals_setting": "أختام القراءة",
   "seals_setting_sub": "الأختام في نهاية الكتاب وعلى رف كتبك.",
   "seals_show": "إظهار",
-  "seals_hide": "إخفاء"
+  "seals_hide": "إخفاء",
+  "together_count_add": "أظهر للمجموعة كم شخصًا قرأ",
+  "together_count_added": "الإجماليات مفعّلة. سيُظهر الرابط عدد من قرأوا كل يوم.",
+  "together_count_sign_in": "سجّل الدخول لتُظهر للمجموعة كم شخصًا قرأ",
+  "together_count_failed": "لم ينجح ذلك. حاول مرة أخرى.",
+  "together_count_note": "لا تُعرض إلا الإجماليات، ولا تُعرض الأسماء أبدًا، ولا يحدث ذلك إلا بعد انضمام %m% أشخاص. يختار كل قارئ إن كان يُحسب أم لا.",
+  "together_read_count": "قرأ %d% من %n% اليوم %k%",
+  "together_members": "القرّاء المحسوبون في هذه المجموعة: %n%",
+  "together_count_soon": "تظهر الإجماليات عند %m%",
+  "together_counted": "أنت محسوب في إجماليات المجموعة",
+  "together_count_stop": "توقّف عن حسابي",
+  "together_count_me": "احسبني في الإجماليات",
+  "together_count_sign_in_join": "سجّل الدخول لتُحسب في إجماليات المجموعة"
 }

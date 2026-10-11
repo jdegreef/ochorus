@@ -1582,5 +1582,17 @@
   "seals_setting": "Con dấu đọc sách",
   "seals_setting_sub": "Con dấu ở cuối sách và trên kệ sách của bạn.",
   "seals_show": "Hiện",
-  "seals_hide": "Ẩn"
+  "seals_hide": "Ẩn",
+  "together_count_add": "Cho nhóm thấy bao nhiêu người đã đọc",
+  "together_count_added": "Đã bật tổng số. Liên kết sẽ cho thấy mỗi ngày có bao nhiêu người đã đọc.",
+  "together_count_sign_in": "Đăng nhập để cho nhóm thấy bao nhiêu người đã đọc",
+  "together_count_failed": "Không thành công. Hãy thử lại.",
+  "together_count_note": "Chỉ hiển thị tổng số, không bao giờ hiển thị tên, và chỉ khi đã có %m% người tham gia. Mỗi người đọc tự chọn có được tính hay không.",
+  "together_read_count": "%d% trên %n% người đã đọc Ngày %k%",
+  "together_members": "Số người đọc được tính trong nhóm này: %n%",
+  "together_count_soon": "tổng số hiện khi có %m% người",
+  "together_counted": "Bạn đang được tính trong tổng số của nhóm",
+  "together_count_stop": "Đừng tính tôi nữa",
+  "together_count_me": "Tính tôi vào tổng số",
+  "together_count_sign_in_join": "Đăng nhập để được tính vào tổng số của nhóm"
 }

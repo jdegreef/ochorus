@@ -4,7 +4,12 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { READING_DAYS, READING_DAY_LABELS, parseIsoDay, type ReadingDays } from '$lib/planSchedule';
+	import { page } from '$app/state';
+	import { auth } from '$lib/auth.svelte';
+	import { localizeHref } from '$lib/href';
+	import { loginHref } from '$lib/loginHref';
 	import { groupDateFormat, nextMonday, togetherQuery } from '$lib/planTogether';
+	import { MIN_COUNTED, createGroup } from '$lib/readingGroups';
 	import { localToday } from '$lib/streak';
 
 	/**
@@ -13,12 +18,18 @@
 	 * the page's own share control (the phone's share sheet, or copy / WhatsApp
 	 * / email). Everyone who opens it sees the same day of the plan
 	 * (PlanTogetherBanner); nothing about anyone is collected ($lib/planTogether).
+	 *
+	 * A signed-in leader may also turn on the group's totals ($lib/readingGroups):
+	 * the link then carries the group's code, and the banner shows how many have
+	 * read — numbers only, for readers who choose to be counted.
 	 */
 	let {
+		slug,
 		title,
 		url,
 		today
 	}: {
+		slug: string;
 		title: string;
 		/** The plan page's absolute, per-locale URL; the group rides its query. */
 		url: string;
@@ -37,7 +48,27 @@
 	}
 
 	const startDate = $derived(parseIsoDay(start));
-	const link = $derived(startDate ? `${url}${togetherQuery({ start, rule })}` : '');
+	/** The group with totals made for these dates — a change of date or days
+	 *  leaves it behind (its code names those), so the link drops it. */
+	let made = $state<{ code: string; start: string; rule: ReadingDays } | null>(null);
+	let making = $state(false);
+	let failed = $state(false);
+	const group = $derived(made && made.start === start && made.rule === rule ? made.code : undefined);
+	const link = $derived(startDate ? `${url}${togetherQuery({ start, rule, group })}` : '');
+
+	async function addTotals() {
+		if (making || !startDate) return;
+		making = true;
+		failed = false;
+		try {
+			const g = await createGroup(slug, { start, rule });
+			made = { code: g.code, start, rule };
+		} catch {
+			failed = true;
+		} finally {
+			making = false;
+		}
+	}
 	// Replacer functions, so a "$&" or a "%d%" in a plan's title is just text.
 	const invite = $derived(
 		startDate
@@ -69,6 +100,25 @@
 			{/each}
 		</div>
 		{#if link}
+			<!-- Totals are opt-in twice: the leader turns them on here, and each
+			     reader chooses to be counted (PlanTogetherBanner). -->
+			{#if auth.enabled}
+				<div class="mt-3 text-small">
+					{#if group}
+						<p class="text-muted">✓ {t('together.countAdded')}</p>
+					{:else if !auth.user}
+						<a class="text-accent hover:underline" href={localizeHref(loginHref(page.url.pathname))}
+							>{t('together.countSignIn')}</a
+						>
+					{:else}
+						<button type="button" class="btn btn-sm btn-ghost" onclick={addTotals} disabled={making} aria-busy={making}
+							>{t('together.countAdd')}</button
+						>
+						{#if failed}<span class="ms-2 text-muted" role="status">{t('together.countFailed')}</span>{/if}
+					{/if}
+					<p class="mt-1 text-muted">{t('together.countNote').replace('%m%', String(MIN_COUNTED))}</p>
+				</div>
+			{/if}
 			<p class="link mt-3 text-small text-muted">{link}</p>
 			<div class="mt-3">
 				<ShareButton url={link} title={invite} showLabel />
