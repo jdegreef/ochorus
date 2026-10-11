@@ -1585,5 +1585,17 @@
   "seals_hide": "Kweka",
   "cite_book": "Laga ensibuko y’ekitabo kino",
   "cite_sermon": "Laga ensibuko y’obubaka buno",
-  "cite_note": "Koppa ensibuko mu ngeri gy’oyagala."
+  "cite_note": "Koppa ensibuko mu ngeri gy’oyagala.",
+  "together_count_add": "Laga ekibiina abamaze okusoma",
+  "together_count_added": "Omuwendo gukoleddwa. Linki eneelaga abasomye buli lunaku.",
+  "together_count_sign_in": "Yingira olage ekibiina abamaze okusoma",
+  "together_count_failed": "Tekikoze. Ddamu ogezeeko.",
+  "together_count_note": "Walagibwa omuwendo gwokka, si mannya, era nga abantu %m% bamaze okwegatta. Buli musomi yeesalirawo oba abalibwe.",
+  "together_read_count": "%d% ku %n% basomye Olunaku %k%",
+  "together_members": "Abasomi ababalibwa mu kibiina kino: %n%",
+  "together_count_soon": "omuwendo gulabika nga bawezezza %m%",
+  "together_counted": "Obalibwa mu muwendo gw’ekibiina",
+  "together_count_stop": "Lekera awo okumbala",
+  "together_count_me": "Mbala mu muwendo",
+  "together_count_sign_in_join": "Yingira obalibwe mu muwendo gw’ekibiina"
 }

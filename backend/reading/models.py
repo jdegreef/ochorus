@@ -672,3 +672,62 @@ class CustomShelf(models.Model):
 
     def __str__(self) -> str:
         return f"{self.profile_id}:shelf:{self.shelf_id}"
+
+
+class ReadingGroup(models.Model):
+    """A "read together" group that chose to see its own totals.
+
+    The plain "Read together" link carries a group entirely in its query
+    (start date + reading days) and stores nothing. A leader who also wants
+    "7 of 12 have read today's reading" creates one of these: a random code
+    the link carries, and nothing else about anyone. Readers choose one by one
+    to be counted (``ReadingGroupMember``), and the group is only ever shown
+    as numbers — how many are counted, how many have finished the day it is
+    on — never as a list of who (``reading.groups``).
+    """
+
+    code = models.CharField(max_length=16, unique=True)
+    plan_slug = models.SlugField(max_length=160)
+    start_on = models.DateField()
+    reading_days = models.CharField(
+        max_length=10,
+        choices=PlanSchedule.ReadingDays.choices,
+        default=PlanSchedule.ReadingDays.DAILY,
+    )
+    # Who may delete it. Kept as a link, not shown to anyone; the group
+    # outlives the leader's account (its members' counts are their own).
+    created_by = models.ForeignKey(
+        "accounts.UserProfile",
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name="reading_groups_led",
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.code} ({self.plan_slug})"
+
+
+class ReadingGroupMember(models.Model):
+    """A reader who chose to be counted in a group's totals. Leaving deletes
+    the row; so does deleting the account."""
+
+    group = models.ForeignKey(
+        ReadingGroup, on_delete=models.CASCADE, related_name="members"
+    )
+    profile = models.ForeignKey(
+        "accounts.UserProfile",
+        on_delete=models.CASCADE,
+        related_name="reading_groups",
+    )
+    joined_at = models.DateTimeField(auto_now_add=True)
+    # The plan days they had already finished when they joined: those don't
+    # count as read for this group (an earlier run through the same plan).
+    baseline = models.JSONField(default=list)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["group", "profile"], name="uniq_readinggroupmember"
+            ),
+        ]

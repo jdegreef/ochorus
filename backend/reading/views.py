@@ -15,14 +15,16 @@ from datetime import UTC, date, datetime, timedelta
 
 from django.db import IntegrityError, transaction
 from rest_framework.exceptions import ValidationError
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import UserProfile
 from common.params import clamp_int
 from common.throttling import ScopedCacheThrottle
+from library.models import Plan
 
+from . import groups
 from .marks import (
     clean_mark_list,
     clean_tombstones,
@@ -41,6 +43,8 @@ from .models import (
     PlanSchedule,
     PrayerGroup,
     ReadingDay,
+    ReadingGroup,
+    ReadingGroupMember,
     ReadingProgress,
     ReadingSession,
     Removal,
@@ -54,6 +58,7 @@ from .serializers import (
     JournalEntrySerializer,
     PlanProgressSerializer,
     PlanScheduleSerializer,
+    ReadingGroupSerializer,
     ReadingProgressSerializer,
 )
 
@@ -1814,3 +1819,118 @@ def _serialize_state(profile) -> dict:
             for m in profile.marks.filter(kind=WorkKind.SERMON)
         ],
     }
+
+
+# --- "Read together" groups with totals (reading.groups) ----------------------
+
+
+def _group_body(group, request, day=None) -> dict:
+    """A group as its page sees it: its facts, its numbers, and whether THIS
+    reader is counted in them — never who else is."""
+    counted = request.user.is_authenticated and ReadingGroupMember.objects.filter(
+        group=group, profile__user=request.user
+    ).exists()
+    return {
+        **ReadingGroupSerializer(group).data,
+        **groups.totals(group, day, _utc_today()),
+        "counted": counted,
+    }
+
+
+def _utc_today() -> date:
+    """The server's date, in UTC — `reading.groups.current_days` allows a day
+    either side for the reader's own."""
+    return datetime.now(UTC).date()
+
+
+def _live_group(code):
+    return groups.live(_utc_today()).filter(code=code).first()
+
+
+class ReadingGroupsView(APIView):
+    """Turn on totals for a group's link. Nobody is counted yet — the leader
+    chooses to be, like everyone else."""
+
+    permission_classes = [IsAuthenticated]
+    throttle_classes = [_ReadingWriteThrottle]
+
+    def post(self, request):
+        profile = _profile(request)
+        data = _dict_body(request)
+        slug = data.get("plan_slug")
+        start = _parse_day(data.get("start_on"))
+        rule = data.get("reading_days") or PlanSchedule.ReadingDays.DAILY
+        if not _valid_slug(slug) or not Plan.objects.filter(slug=slug, is_published=True).exists():
+            return Response({"detail": "Unknown plan."}, status=400)
+        if start is None or rule not in PlanSchedule.ReadingDays.values:
+            return Response({"detail": "Bad start date or reading days."}, status=400)
+        groups.purge_expired(_utc_today())
+        with transaction.atomic():
+            # Serialised per leader, so two requests at once can't pass the cap.
+            UserProfile.objects.select_for_update().filter(pk=profile.pk).first()
+            if ReadingGroup.objects.filter(created_by=profile).count() >= groups.MAX_GROUPS_LED:
+                return Response({"detail": "Too many groups."}, status=429)
+            group = ReadingGroup.objects.create(
+                code=groups.new_code(),
+                plan_slug=slug,
+                start_on=start,
+                reading_days=rule,
+                created_by=profile,
+            )
+        return Response(_group_body(group, request), status=201)
+
+
+class ReadingGroupView(APIView):
+    """A group's numbers, for anyone holding its link (the code is the
+    invitation); `?day=N` asks how many have read day N — answered only for
+    the day the group is on. Its leader may delete it (signed in, so the
+    write is never open: accounts/tests_authz)."""
+
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get_throttles(self):
+        throttle = _ReadingWriteThrottle if self.request.method == "DELETE" else _ReadingReadThrottle
+        return [throttle()]
+
+    def get(self, request, code):
+        group = _live_group(code)
+        if group is None:
+            return Response({"detail": "Not found."}, status=404)
+        day = clamp_int(request.query_params.get("day"), 0, low=0, high=MAX_PLAN_DAYS)
+        return Response(_group_body(group, request, day or None))
+
+    def delete(self, request, code):
+        deleted, _ = ReadingGroup.objects.filter(
+            code=code, created_by=_profile(request)
+        ).delete()
+        return Response(status=204 if deleted else 404)
+
+
+class ReadingGroupMembershipView(APIView):
+    """Be counted in a group (PUT), or stop being counted (DELETE)."""
+
+    permission_classes = [IsAuthenticated]
+    throttle_classes = [_ReadingWriteThrottle]
+
+    def put(self, request, code):
+        group = _live_group(code)
+        if group is None:
+            return Response({"detail": "Not found."}, status=404)
+        profile = _profile(request)
+        if not ReadingGroupMember.objects.filter(group=group, profile=profile).exists():
+            if group.members.count() >= groups.MAX_MEMBERS:
+                return Response({"detail": "This group is full."}, status=429)
+            if ReadingGroupMember.objects.filter(profile=profile).count() >= groups.MAX_GROUPS_JOINED:
+                return Response({"detail": "Too many groups."}, status=429)
+            ReadingGroupMember.objects.get_or_create(
+                group=group,
+                profile=profile,
+                defaults={"baseline": groups.baseline(profile, group.plan_slug)},
+            )
+        return Response(_group_body(group, request))
+
+    def delete(self, request, code):
+        ReadingGroupMember.objects.filter(
+            group__code=code, profile=_profile(request)
+        ).delete()
+        return Response(status=204)

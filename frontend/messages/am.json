@@ -1585,5 +1585,17 @@
   "seals_hide": "ደብቅ",
   "cite_book": "ይህን መጽሐፍ ጥቀስ",
   "cite_sermon": "ይህን ስብከት ጥቀስ",
-  "cite_note": "ጥቅሱን በሚፈልጉት ስልት ይቅዱ።"
+  "cite_note": "ጥቅሱን በሚፈልጉት ስልት ይቅዱ።",
+  "together_count_add": "ቡድኑ ስንቶች እንዳነበቡ አሳይ",
+  "together_count_added": "ድምሮቹ በርተዋል። ሊንኩ በየቀኑ ስንቶች እንዳነበቡ ያሳያል።",
+  "together_count_sign_in": "ቡድኑ ስንቶች እንዳነበቡ ለማሳየት ይግቡ",
+  "together_count_failed": "አልተሳካም። እንደገና ይሞክሩ።",
+  "together_count_note": "የሚታዩት ድምሮች ብቻ ናቸው፣ ስሞች በፍጹም አይታዩም፣ ደግሞም %m% ሰዎች ከተቀላቀሉ በኋላ ብቻ። እያንዳንዱ አንባቢ መቆጠር አለመቆጠሩን ይመርጣል።",
+  "together_read_count": "ከ%n% ውስጥ %d% ቀን %k%ን አንብበዋል",
+  "together_members": "በዚህ ቡድን የሚቆጠሩ አንባቢዎች፦ %n%",
+  "together_count_soon": "ድምሮች %m% ሲደርሱ ይታያሉ",
+  "together_counted": "በቡድኑ ድምር ውስጥ ተቆጥረዋል",
+  "together_count_stop": "መቁጠሬን አቁም",
+  "together_count_me": "በድምሩ ቁጠረኝ",
+  "together_count_sign_in_join": "በቡድኑ ድምር ለመቆጠር ይግቡ"
 }

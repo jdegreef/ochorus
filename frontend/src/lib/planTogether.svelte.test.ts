@@ -32,6 +32,14 @@ describe('planTogether', () => {
 		expect(planTogether.get('p')).toBeNull();
 	});
 
+	it("keeps a group's totals code, and drops one that isn't a code", () => {
+		planTogether.join('p', { start: '2026-10-12', rule: 'daily', group: 'KunYdx4NiTLQ' });
+		expect(planTogether.get('p')?.group).toBe('KunYdx4NiTLQ');
+		localStorage.setItem(PLAN_TOGETHER_KEY, JSON.stringify({ p: { start: '2026-10-12', rule: 'daily', group: '<x>' } }));
+		window.dispatchEvent(new Event('ochorus:sync'));
+		expect(planTogether.get('p')).toEqual({ start: '2026-10-12', rule: 'daily' });
+	});
+
 	it('goes with the reading data on sign-out', () => {
 		expect(SIGN_OUT_DATA_KEYS).toContain(PLAN_TOGETHER_KEY);
 	});

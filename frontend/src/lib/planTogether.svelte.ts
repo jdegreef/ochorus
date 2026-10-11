@@ -2,7 +2,7 @@ import { browser } from '$app/environment';
 import { readJSON, writeJSON } from './persisted';
 import { PLAN_TOGETHER_KEY as KEY } from './reading-schema';
 import { parseIsoDay, READING_DAYS } from './planSchedule';
-import type { Together } from './planTogether';
+import { isGroupCode, type Together } from './planTogether';
 
 /**
  * The "read together" groups this device has joined, by plan slug — so the
@@ -10,7 +10,8 @@ import type { Together } from './planTogether';
  * brought them, and so the plan's calendar (PlanCalendar) lays the plan on the
  * group's dates. Device-only on purpose: the group is its link, and nothing
  * about who reads with whom is sent anywhere — not even to the reader's own
- * account, so joining leaves their synced schedule choices untouched.
+ * account, so joining leaves their synced schedule choices untouched. (Being
+ * COUNTED in a group's totals is a separate, explicit choice: $lib/readingGroups.)
  */
 
 type Store = Record<string, Together>;
@@ -31,7 +32,8 @@ class PlanTogether {
 	get(slug: string): Together | null {
 		void this.ticks;
 		const t = readAll()[slug];
-		return t && parseIsoDay(t.start) && READING_DAYS.includes(t.rule) ? t : null;
+		if (!t || !parseIsoDay(t.start) || !READING_DAYS.includes(t.rule)) return null;
+		return isGroupCode(t.group) ? t : { start: t.start, rule: t.rule };
 	}
 
 	join(slug: string, t: Together) {

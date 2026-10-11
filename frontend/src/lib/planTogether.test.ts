@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { groupStatus, nextMonday, togetherFromQuery, togetherQuery } from './planTogether';
+import { countedDay, groupStatus, nextMonday, togetherFromQuery, togetherQuery } from './planTogether';
 import { localToday } from './streak';
 
 const day = (iso: string) => {
@@ -17,6 +17,16 @@ describe('read-together links', () => {
 	it('leaves the default rule out of the link, and reads its absence as daily', () => {
 		expect(togetherQuery({ start: '2026-10-12', rule: 'daily' })).toBe('?together=2026-10-12');
 		expect(togetherFromQuery(new URLSearchParams('together=2026-10-12'))).toEqual({ start: '2026-10-12', rule: 'daily' });
+	});
+
+	it('carries a group code when its totals are on, and drops a malformed one', () => {
+		const t = { start: '2026-10-12', rule: 'daily' as const, group: 'KunYdx4NiTLQ' };
+		expect(togetherQuery(t)).toBe('?together=2026-10-12&group=KunYdx4NiTLQ');
+		expect(togetherFromQuery(new URLSearchParams(togetherQuery(t)))).toEqual(t);
+		expect(togetherFromQuery(new URLSearchParams('together=2026-10-12&group=<x>'))).toEqual({
+			start: '2026-10-12',
+			rule: 'daily'
+		});
 	});
 
 	it('ignores a link with no group or a malformed date, and an unknown rule', () => {
@@ -56,6 +66,16 @@ describe('where the group is', () => {
 		const s = groupStatus(t, 5, day('2026-10-17'));
 		expect(s.kind).toBe('finished');
 		expect(s.kind === 'finished' && localToday(s.ended)).toBe('2026-10-16');
+	});
+});
+
+describe('the day a group counts', () => {
+	it("is today's reading, the last one on a rest day, the plan's last once finished, none before", () => {
+		expect(countedDay({ kind: 'today', day: 4 }, 12)).toBe(4);
+		expect(countedDay({ kind: 'next', day: 6, date: new Date() }, 12)).toBe(5);
+		expect(countedDay({ kind: 'next', day: 1, date: new Date() }, 12)).toBeNull();
+		expect(countedDay({ kind: 'finished', ended: new Date() }, 12)).toBe(12);
+		expect(countedDay({ kind: 'before', starts: new Date() }, 12)).toBeNull();
 	});
 });
 

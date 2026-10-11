@@ -1585,5 +1585,17 @@
   "seals_hide": "Ocultar",
   "cite_book": "Citar este libro",
   "cite_sermon": "Citar este sermón",
-  "cite_note": "Copia la cita en el estilo que necesites."
+  "cite_note": "Copia la cita en el estilo que necesites.",
+  "together_count_add": "Mostrar al grupo cuántos han leído",
+  "together_count_added": "Los totales están activados. El enlace mostrará cuántos han leído cada día.",
+  "together_count_sign_in": "Inicia sesión para mostrar al grupo cuántos han leído",
+  "together_count_failed": "No funcionó. Inténtalo de nuevo.",
+  "together_count_note": "Solo se muestran totales, nunca nombres, y solo cuando se hayan unido %m% personas. Cada lector decide si se le cuenta.",
+  "together_read_count": "%d% de %n% han leído el día %k%",
+  "together_members": "Lectores contados en este grupo: %n%",
+  "together_count_soon": "los totales aparecen con %m%",
+  "together_counted": "Se te cuenta en los totales del grupo",
+  "together_count_stop": "Dejar de contarme",
+  "together_count_me": "Contarme en los totales",
+  "together_count_sign_in_join": "Inicia sesión para que se te cuente en los totales del grupo"
 }

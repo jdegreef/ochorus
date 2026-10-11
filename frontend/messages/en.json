@@ -1585,5 +1585,17 @@
   "seals_hide": "Hide",
   "cite_book": "Cite this book",
   "cite_sermon": "Cite this sermon",
-  "cite_note": "Copy a citation in the style you need."
+  "cite_note": "Copy a citation in the style you need.",
+  "together_count_add": "Show the group how many have read",
+  "together_count_added": "Totals are on. The link will show how many have read each day.",
+  "together_count_sign_in": "Sign in to show the group how many have read",
+  "together_count_failed": "That didn’t work. Try again.",
+  "together_count_note": "Only totals are ever shown, never names, and only once %m% people have joined. Each reader chooses whether to be counted.",
+  "together_read_count": "%d% of %n% have read Day %k%",
+  "together_members": "Readers counted in this group: %n%",
+  "together_count_soon": "totals appear at %m%",
+  "together_counted": "You’re counted in the group’s totals",
+  "together_count_stop": "Stop counting me",
+  "together_count_me": "Count me in the totals",
+  "together_count_sign_in_join": "Sign in to be counted in the group’s totals"
 }
