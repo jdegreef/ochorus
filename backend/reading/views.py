@@ -15,7 +15,7 @@ from datetime import UTC, date, datetime, timedelta
 
 from django.db import IntegrityError, transaction
 from rest_framework.exceptions import ValidationError
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -1883,9 +1883,10 @@ class ReadingGroupsView(APIView):
 class ReadingGroupView(APIView):
     """A group's numbers, for anyone holding its link (the code is the
     invitation); `?day=N` asks how many have read day N — answered only for
-    the day the group is on. Its leader may delete it."""
+    the day the group is on. Its leader may delete it (signed in, so the
+    write is never open: accounts/tests_authz)."""
 
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get_throttles(self):
         throttle = _ReadingWriteThrottle if self.request.method == "DELETE" else _ReadingReadThrottle
@@ -1899,8 +1900,6 @@ class ReadingGroupView(APIView):
         return Response(_group_body(group, request, day or None))
 
     def delete(self, request, code):
-        if not request.user.is_authenticated:
-            return Response({"detail": "Sign in to delete a group."}, status=401)
         deleted, _ = ReadingGroup.objects.filter(
             code=code, created_by=_profile(request)
         ).delete()
