@@ -44,6 +44,20 @@
 {
  "model": "library.series",
  "fields": {
+  "slug": "the-lamplighters-of-gloamhaven",
+  "title": "The Lamplighters of Gloamhaven",
+  "description": "An adventure series for young readers, set in a land under a cursed sun. Two children, a lamp that cannot be bought or stolen, and the long road to the mountain where the Flame began: a story of light, courage and the grace no one can earn.",
+  "sort_order": 22,
+  "audience": "young_readers",
+  "min_age": 9,
+  "max_age": 12,
+  "created_at": "2026-10-10T00:00:00Z",
+  "updated_at": "2026-10-10T00:00:00Z"
+ }
+},
+{
+ "model": "library.series",
+ "fields": {
   "slug": "rooted",
   "title": "Rooted – 30 Days with God for Youth",
   "description": "Thirty-day devotionals for readers aged 9 to 12, one book at a time: a verse, what it means, a question to think about, something to try, and a prayer.",

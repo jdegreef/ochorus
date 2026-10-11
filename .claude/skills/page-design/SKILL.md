@@ -480,6 +480,14 @@ green in CI but never went live because two of its three books were unpublished
   `t()` / `m.*()` even on an English-only hub; only *content* may be literal.
 - Icons come from `<Icon name>`; never `▦ ☰ ✕ ▶ ✓ ♥ 🔖 📝 ✦ →` as glyphs.
 - Compact buttons are `.btn-sm`, never `py-1.5` / `py-2` on `.btn`.
+- Scripture set in chrome (a verse, a blessing) comes verbatim from each
+  locale's `language_seed` Bible via Take Root (`/api/bible/<code>/<USFM>/<ch>/`),
+  generated into a TS constant, never typed or translated; a locale with no
+  text shows nothing (footer benediction, `$lib/benediction`, 2026-10-10).
+  Two render traps it hit: Fraunces has no Arabic/Devanagari/Ethiopic/Cyrillic
+  italic, so `font-style: italic` makes the browser fake-slant the fallback —
+  set those `:lang()`s upright; and a "Book 6:24–26" reference inside RTL text
+  reorders to "26-6:24" — keep the chapter:verse in `<bdi dir="ltr">`.
 
 ## Guards to extend when a page ships
 

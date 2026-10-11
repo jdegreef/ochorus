@@ -428,6 +428,18 @@ AUTHORS: dict[str, AuthorEntry] = {
             "missionary."
         ),
     ),
+    # `build_stewart_meditations` (no BookEntry — see that command).
+    "maria-w-stewart": AuthorEntry(
+        slug="maria-w-stewart",
+        name="Maria W. Stewart",
+        birth_year=1803,
+        death_year=1879,
+        bio=(
+            "Boston writer and lecturer, among the first American women to speak "
+            "in public, whose meditations, prayers and addresses called her people "
+            "to faith, learning and freedom."
+        ),
+    ),
     "r-a-torrey": AuthorEntry(
         slug="r-a-torrey",
         name="R. A. Torrey",
@@ -478,6 +490,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "converted at Sapporo and brought to assurance at Amherst, who "
             "founded the Non-Church movement and wrote in English the story "
             "of his own conversion."
+        ),
+    ),
+    "sadhu-sundar-singh": AuthorEntry(
+        slug="sadhu-sundar-singh",
+        name="Sadhu Sundar Singh",
+        birth_year=1889,
+        death_year=1929,
+        bio=(
+            "Sikh-born Indian evangelist who met Christ in a vision in 1904 and "
+            "became a barefoot Christian sadhu, preaching across India, into "
+            "Tibet, and around the world."
         ),
     ),
 }
@@ -808,6 +831,14 @@ BOOKS: list[BookEntry] = [
     # only his later books), so it is US public domain.
     BookEntry("the-pursuit-of-god", "The Pursuit of God", "a-w-tozer",
               "gutenberg", "25141", cover_color="#5b3a29"),
+    # Sadhu Sundar Singh's dialogue between the Disciple and the Master, in
+    # the Parkers' translation from the Urdu (Revell, London, 1922; CCEL).
+    # group_parts: each of the six topics is split into short "Section I/II"
+    # leaves; the topic is the reading unit.
+    BookEntry("at-the-masters-feet", "At the Master's Feet",
+              "sadhu-sundar-singh", "ccel", "singh/feet",
+              subtitle="Translated from the Urdu by Rev. Arthur and Mrs. Parker",
+              cover_color="#8a4b1f", group_parts=True),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an

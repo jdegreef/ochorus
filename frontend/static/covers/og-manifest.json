@@ -3961,6 +3961,16 @@
 				478
 			]
 		},
+		"at-the-masters-feet": {
+			"ground": "fa17689d5e35829e54247c65a4d041d37199a428494acdb84c58c163e70a73f5",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"brave-for-god": {
 			"ground": "20c53172ca517970f584b2547b408aa333f33525846b6322c9b60b031a52dd9e",
 			"style": "young",
@@ -7324,6 +7334,16 @@
 				541
 			]
 		},
+		"fire-against-the-dark": {
+			"ground": "a4c2c68f992eb6e2db096af6267687504c759b37083c1bdf6193e4b7e367e70c",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"first-epistle-of-clement": {
 			"ground": "137cdb7e6283d0991777a24feef91bed0afaf15652c2248870f789f239e635b4",
 			"style": "inscriptional",
@@ -8391,6 +8411,16 @@
 			"scrim": 1,
 			"layout": "band/teal",
 			"bar": 0
+		},
+		"fr/power-through-prayer": {
+			"ground": "071275bf69fa6542954e4e693d88f4fb5bed861087179716819d0408c65d3911",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0.04
 		},
 		"fr/prayer-and-praying-men": {
 			"ground": "939bf55b399576592c07c778b03073d65044e788ab44a6e50e9753f3f1f9f995",
@@ -12554,6 +12584,16 @@
 				482
 			]
 		},
+		"meditations-maria-w-stewart": {
+			"ground": "6b17ab45ca4c1cc3a2f3e4f4c01a95423dc6a590e2d97af59c138599958c490d",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"memoirs-of-mrs-zilpha-elaw": {
 			"ground": "889c0671f664ae4283a6d81d8cb1f132a1d82fb8f58d46f26c21bb3331603b82",
 			"style": "enlightenment",
@@ -14283,6 +14323,16 @@
 			"ground": "820a56783a3344fcb6225fc2d39282ce06e909f80d6540992037272d89ab507e",
 			"style": "originals",
 			"volume": "3",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"reality-and-religion": {
+			"ground": "a7a72f0eb6c870fa919f383874a04a31a6a514bba7ee8e61ff5ace81c8c6a325",
+			"style": "revival",
+			"volume": null,
 			"script": "latin",
 			"art": false,
 			"scrim": 1,
@@ -17861,6 +17911,16 @@
 				271,
 				524
 			]
+		},
+		"with-and-without-christ": {
+			"ground": "9601a1b72235d02fc50246b76a19fc4c399b08734e706898b085620c1d08ea1f",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		}
 	}
 }

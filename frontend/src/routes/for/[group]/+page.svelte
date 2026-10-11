@@ -18,7 +18,10 @@
 	import { FOR_INDEX, FOR_LINKS, forPath } from '$lib/forLinks';
 	import { FOR_META } from '$lib/forMeta';
 	import { localizeHref } from '$lib/href';
-	import { forHref, inviteMessage } from '$lib/forPages';
+	import { countsLine, forHref, inviteMessage } from '$lib/forPages';
+	import { RUNG_LABEL } from '$lib/audienceHub';
+	import { hrefInLocale } from '$lib/editionHref';
+	import { readingTime } from '$lib/reading';
 	import { LIVE_LOCALES } from '$lib/live-locales.generated';
 	import { citeLine, guideCardLink, quoteHref, toBookTile } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
@@ -193,6 +196,39 @@
 		</section>
 	{/if}
 
+	{#if shelf.series.length}
+		<!-- A sermon a week, each with the study questions its page answers:
+		     a term's evenings for a group, ready-made. -->
+		<section id="series" class="jump-anchor mt-14" aria-labelledby="series-heading">
+			<h2 id="series-heading" class="text-h2">A sermon series for your group</h2>
+			<p class="mt-2 max-w-2xl text-body text-muted">
+				Read one sermon at home each week, then talk it through together. Every sermon here comes with study
+				questions and their answers, at the foot of the sermon.
+			</p>
+			{#each shelf.series as s (s.title)}
+				<div class="mt-8">
+					<GroupHeading name={s.title} as="h3" blurb={s.note} />
+					<ol class="weeks">
+						{#each s.sermons as w, i (w.slug)}
+							<li class="week rounded-card border border-border bg-surface p-4">
+								<p class="text-eyebrow group-ink">Week {i + 1}</p>
+								<a class="mt-1 block font-semibold text-text hover:underline" href={localizeHref(`/sermons/${w.slug}`)}
+									>{w.title}</a
+								>
+								<p class="mt-1 text-small text-muted">
+									{w.author.name}{#if w.scripture_ref},{' '}{w.scripture_ref}{/if}
+								</p>
+								<p class="mt-2 text-small text-muted">
+									{w.questions} study {w.questions === 1 ? 'question' : 'questions'}{' '}<span class="opacity-50" aria-hidden="true">·</span>{' '}{readingTime(w.word_count)}
+								</p>
+							</li>
+						{/each}
+					</ol>
+				</div>
+			{/each}
+		</section>
+	{/if}
+
 	<section class="mt-14" aria-labelledby="ideas-heading">
 		<h2 id="ideas-heading" class="text-h2">{page.ideasHeading}</h2>
 		<ol class="ideas mt-6">
@@ -224,6 +260,30 @@
 		</section>
 	{/if}
 
+	{#if shelf.levels.length}
+		<!-- The edition family side by side (the slug convention is the link —
+		     root CLAUDE.md): one work, read at seven, at fourteen and in full. -->
+		<section class="mt-14" aria-labelledby="levels-heading">
+			<h2 id="levels-heading" class="text-h2">One story, three reading levels</h2>
+			<p class="mt-2 max-w-2xl text-body text-muted">
+				Many classics come as a children’s edition, a teens edition and the full text, so readers of every age
+				can read the same book, and a child can grow into the original.
+			</p>
+			<div class="families mt-6">
+				{#each shelf.levels as family (family[0].book.slug)}
+					<ol class="levels" aria-label={family.at(-1)?.book.title}>
+						{#each family as { rung, book } (book.slug)}
+							<li>
+								<p class="mb-2 text-eyebrow group-ink">{i18n.t(RUNG_LABEL[rung])}</p>
+								<BookCard {book} showAuthor showSeries={false} />
+							</li>
+						{/each}
+					</ol>
+				{/each}
+			</div>
+		</section>
+	{/if}
+
 	{#if shelf.authors.length}
 		<section class="mt-14" aria-labelledby="writers-heading">
 			<h2 id="writers-heading" class="text-h2">Meet the writers</h2>
@@ -247,8 +307,8 @@
 		<section id="guides" class="jump-anchor mt-14" aria-labelledby="guides-heading">
 			<h2 id="guides-heading" class="text-h2">Printable leader’s guides</h2>
 			<p class="mt-2 max-w-2xl text-body text-muted">
-				A week-by-week guide to each of these books for children: a summary for the leader, a memory verse,
-				questions with their answers and a simple activity, one chapter a week. Print it, or lead from the
+				A week-by-week guide to each of these books for children and teens: a summary for the leader, a memory
+				verse, questions with their answers and an activity, one chapter a week. Print it, or lead from the
 				screen.
 			</p>
 			<div class="book-grid mt-6">
@@ -300,6 +360,43 @@
 								{/if}
 							</p>
 						</div>
+					</li>
+				{/each}
+			</ul>
+		</section>
+	{/if}
+
+	{#if shelf.languages.length}
+		<!-- What each live language holds, from its own lists (no English
+		     fallback): the honest answer to "what can I hand a Swahili speaker?" -->
+		<section id="languages" class="jump-anchor mt-14" aria-labelledby="languages-heading">
+			<h2 id="languages-heading" class="text-h2">In the languages you serve</h2>
+			<p class="mt-2 max-w-2xl text-body text-muted">
+				Each language has its own library of full editions. Send someone straight to theirs, and the whole site
+				reads in that language.
+			</p>
+			<ul class="languages mt-6">
+				{#each shelf.languages as l (l.code)}
+					<li class="language rounded-card border border-border bg-surface p-4">
+						<h3 class="text-h3"><span lang={l.code}>{l.native}</span></h3>
+						{#if l.native !== l.name}<p class="text-small text-muted">{l.name}</p>{/if}
+						<p class="mt-2 text-small text-muted">
+							{countsLine(l.counts)}
+						</p>
+						{#if l.covers.length}
+							<ul class="language-covers mt-3" lang={l.code}>
+								{#each l.covers as book (book.slug)}
+									<li>
+										<a href={hrefInLocale(`/books/${book.slug}`, l.code)} title={book.title}
+											><BookCover {book} rounded="rounded" /><span class="sr-only">{book.title}</span></a
+										>
+									</li>
+								{/each}
+							</ul>
+						{/if}
+						<p class="mt-3 text-small">
+							<a class="text-accent hover:underline" href={hrefInLocale('/books', l.code)}>Open the {l.name} library <Arrow /></a>
+						</p>
 					</li>
 				{/each}
 			</ul>
@@ -410,7 +507,30 @@
 	.offline-cover {
 		display: block;
 	}
+	.weeks,
+	.levels {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.75rem;
+	}
+	/* Two works side by side where there is room, each its own row of three. */
+	.families {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+		gap: 2rem 2.5rem;
+	}
+	.languages {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0.75rem;
+	}
+	.language-covers {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 4.5rem));
+		gap: 0.5rem;
+	}
 	@media (max-width: 1023.98px) {
+		.weeks,
 		.writers {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
@@ -429,7 +549,9 @@
 		.points,
 		.ideas,
 		.offline,
-		.writers {
+		.writers,
+		.weeks,
+		.languages {
 			grid-template-columns: minmax(0, 1fr);
 		}
 	}

@@ -23,12 +23,18 @@ export function editionHref(path: string, edition: string): string {
 	const modern = edition === MODERN_EDITION;
 	const withEdition = modern ? modernPath(path) : path;
 	const locale = modern ? 'en' : baseEdition(edition);
-	// `isAvailable` IS the check the type wants; a content language can be
-	// added in the admin without a frontend deploy, so the set of editions is
-	// wider than the compiled locales and this cannot be proven statically.
-	return lang.isAvailable(locale)
-		? localizeHref(withEdition, { locale: locale as UiLocale })
-		: localizeHref(withEdition);
+	return hrefInLocale(withEdition, locale);
+}
+
+/**
+ * `path` in `locale`'s pages, or the current locale's when the UI does not
+ * carry that one. `isAvailable` IS the check the type wants; a content
+ * language can be added in the admin without a frontend deploy, so the set of
+ * languages is wider than the compiled locales and this cannot be proven
+ * statically.
+ */
+export function hrefInLocale(path: string, locale: string): string {
+	return lang.isAvailable(locale) ? localizeHref(path, { locale: locale as UiLocale }) : localizeHref(path);
 }
 
 const CHAPTER_PATH = /^\/books\/([^/?#]+)\/(\d+)\/?(?=[?#]|$)/;
