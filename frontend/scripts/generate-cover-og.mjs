@@ -267,6 +267,25 @@ function twinPath(slug, language) {
 
 // ── The page ────────────────────────────────────────────────────────────────
 
+/** The `--cover-face-*` and `--font-display` declarations, as written. */
+const coverTokens = () =>
+	[...APP_CSS.matchAll(/^\s*(--(?:cover-face-[a-z]+|font-display):[^;]+);/gm)].map(([, decl]) =>
+		decl.trim()
+	);
+
+/** EVERY quoted family in those tokens — what a cover can name, script faces
+ *  included. One list for the named subsets and the Hangul slices alike. */
+const coverFamilies = (tokens = coverTokens()) =>
+	new Set(tokens.flatMap((decl) => [...decl.matchAll(/'([^']+)'/g)].map(([, f]) => f)));
+
+/** A fontsource @import's stylesheet: a bare package specifier
+ *  ('@fontsource-variable/fraunces') is its index.css through package exports,
+ *  and `resolve` only gives the directory. */
+function sheetFile(spec) {
+	const file = resolve(MODULES, spec);
+	return statSync(file).isDirectory() ? resolve(file, 'index.css') : file;
+}
+
 const dataUri = (file, mime) => `data:${mime};base64,${readFileSync(file).toString('base64')}`;
 
 /**
@@ -299,19 +318,15 @@ const dataUri = (file, mime) => `data:${mime};base64,${readFileSync(file).toStri
  * latin alone; an Arabic one adds Arabic and nothing else. Italic is dropped
  * throughout — only the title takes a cover face, and it is never italic.
  */
-function buildFontCss(script) {
+function buildFontCss(face) {
 	// The token block first: it is also the list of families a cover can ask
 	// for, which is how the reader's OpenDyslexic and the UI's Hanken are left
 	// out without naming either of them here.
-	const tokens = [...APP_CSS.matchAll(/^\s*(--(?:cover-face-[a-z]+|font-display):[^;]+);/gm)].map(
-		([, decl]) => decl.trim()
-	);
+	const tokens = coverTokens();
 	// EVERY quoted name in the tokens, because a stack's script faces sit after
 	// its first: `--font-display` names Fraunces, then Amiri, then Tiro, then PT
 	// Serif. Taking only the first is what left every non-Latin card unserved.
-	const wanted = new Set(
-		tokens.flatMap((decl) => [...decl.matchAll(/'([^']+)'/g)].map(([, f]) => f))
-	);
+	const wanted = coverFamilies(tokens);
 	// The RECIPE face — still the first name in each token — is the one whose
 	// absence means a cover renders in the fallback and looks deliberate, so it
 	// stays the thing the completeness check below insists on. The rest of a
@@ -327,8 +342,8 @@ function buildFontCss(script) {
 	// Korean has no NAMED subset — its faces come as numbered slices, chosen per
 	// card by `hangulFaces` — so here it is latin's case.
 	const subsets = ['latin', 'latin-ext'];
-	if (script && script !== 'korean') subsets.push(script);
-	if (script === 'cyrillic') subsets.push('cyrillic-ext');
+	if (face && face !== 'korean') subsets.push(face);
+	if (face === 'cyrillic') subsets.push('cyrillic-ext');
 	const wantedSubset = new RegExp(`url\\(\\./files/[^)]*-(${subsets.join('|')})-`);
 	// Recorded HERE, while the filenames are still filenames. The blocks are
 	// rewritten below to carry the woff2 inline, which is what a data URI is for
@@ -338,10 +353,7 @@ function buildFontCss(script) {
 	const subsetsSeen = new Set();
 
 	const faces = [...APP_CSS.matchAll(/@import '(@fontsource[^']+)'/g)].flatMap(([, spec]) => {
-		// A bare package specifier ('@fontsource-variable/fraunces') is its
-		// index.css through package exports; `resolve` only gives the directory.
-		let file = resolve(MODULES, spec);
-		if (statSync(file).isDirectory()) file = resolve(file, 'index.css');
+		const file = sheetFile(spec);
 		const dir = dirname(file);
 		return readFileSync(file, 'utf8')
 			.split('@font-face')
@@ -387,12 +399,12 @@ function buildFontCss(script) {
 	// recipe's own family arrived; it cannot notice that an Arabic card carries
 	// six Latin faces and nothing that can draw an Arabic glyph, which is
 	// precisely what shipped. This asks the question the card is about.
-	if (script && script !== 'korean' && !subsetsSeen.has(script)) {
+	if (face && face !== 'korean' && !subsetsSeen.has(face)) {
 		throw new Error(
-			`no @font-face for ${script} reached the card — every ${script} twin would ` +
+			`no @font-face for ${face} reached the card — every ${face} twin would ` +
 				`render in whatever font the machine drawing it happens to have, and look ` +
 				`deliberate. Check that a --cover-face-* or --font-display token names a ` +
-				`family with a ${script} subset, and that app.css @imports it.`
+				`family with a ${face} subset, and that app.css @imports it.`
 		);
 	}
 	return `${faces.join('')}:root{${tokens.join(';')}}`;
@@ -447,14 +459,10 @@ const rangeCovers = (range, text) =>
 let HANGUL_SLICES = null;
 function hangulSlices() {
 	if (HANGUL_SLICES) return HANGUL_SLICES;
-	// The same family list `buildFontCss` serves: a quoted name in a cover token.
-	const wanted = new Set(
-		[...APP_CSS.matchAll(/^\s*--(?:cover-face-[a-z]+|font-display):([^;]+);/gm)].flatMap(
-			([, decl]) => [...decl.matchAll(/'([^']+)'/g)].map(([, f]) => f)
-		)
-	);
+	// The same family list `buildFontCss` serves.
+	const wanted = coverFamilies();
 	HANGUL_SLICES = [...KO_CSS.matchAll(/@import '(@fontsource[^']+)'/g)].flatMap(([, spec]) => {
-		const file = resolve(MODULES, spec);
+		const file = sheetFile(spec);
 		return readFileSync(file, 'utf8')
 			.split('@font-face')
 			.slice(1)
@@ -498,18 +506,21 @@ function hangulSlices() {
  * which is what every committed Korean twin was until this existed.
  */
 function hangulFaces(text) {
-	const css = hangulSlices()
-		.filter((slice) => rangeCovers(slice.range, text))
-		.map((slice) => slice.css);
-	if (/\p{Script=Hangul}/u.test(text) && !css.length) {
+	const slices = hangulSlices().filter((slice) => rangeCovers(slice.range, text));
+	// PER GLYPH, not "did any slice match": one common syllable would satisfy
+	// that while a rare one, or a Hanja, fell through to the machine's face.
+	const unserved = [...new Set(text.match(/[\p{Script=Hangul}\p{Script=Han}]/gu) ?? [])].filter(
+		(ch) => !slices.some((slice) => rangeCovers(slice.range, ch))
+	);
+	if (unserved.length) {
 		throw new Error(
-			`no @font-face for korean reached the card for "${text}" — it would render ` +
+			`no Korean @font-face reached the card for ${unserved.join(' ')} in "${text}" — it would render ` +
 				`in whatever Korean font the machine drawing it happens to have, and look ` +
 				`deliberate. Check that fonts-ko.css still @imports a family the cover ` +
 				`tokens (--font-display, --cover-face-*) name.`
 		);
 	}
-	return css.join('');
+	return slices.map((slice) => slice.css).join('');
 }
 
 /** Every character a card sets in a cover face — what its slices must cover. */
