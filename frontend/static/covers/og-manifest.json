@@ -11925,6 +11925,31 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"ko/the-unselfishness-of-god": {
+			"ground": "8c9582aaa4545dfc8591646debbfb759c1214b5d981de89d0b7e03f90f4b7ec1",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[79, 102, 521, 131]
+				],
+				"title": [
+					[73, 326, 527, 408]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				331,
+				463
+			]
+		},
 		"ko/true-vine": {
 			"ground": "b7875842ddd499da63400547c79f267ea1402c059e9b58eb89ee18e19d2bab38",
 			"style": "devotional",
