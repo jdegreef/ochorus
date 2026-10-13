@@ -1,0 +1,395 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "athanasius-of-alexandria"
+  ],
+  "slug": "life-of-antony-teens",
+  "language": "fr",
+  "title": "Vie d’Antoine (Pour ados)",
+  "subtitle": "",
+  "cover_title": "",
+  "description": "Antoine était un jeune Égyptien d’environ dix-huit ou vingt ans quand ses parents sont morts, lui laissant une riche ferme et une petite sœur à élever. Un dimanche, il a entendu ces mots de Jésus : « va, vends ce que tu possèdes », et il a fait exactement cela. Il a ensuite vécu plus de quatre-vingts ans dans le désert, et des milliers de gens ont suivi son exemple. Son ami Athanase, le grand évêque d’Alexandrie, a écrit son histoire. Cette édition pour ados la raconte avec des mots simples : apprendre de tout le monde, affronter la tentation, passer devant de l’or sur la route sans s’arrêter, ne pas avoir peur, vivre comme si chaque jour pouvait être le dernier, rester aux côtés d’amis persécutés et bien finir la course. Les phrases d’Athanase lui-même sont gardées là où elles disent les choses le mieux.",
+  "hook": "Vers dix-huit ans, il a entendu un seul verset de la Bible, a tout donné et est parti au désert pour suivre Jésus.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Qui était Antoine ?",
+    "answer": "Un chrétien égyptien, né vers le milieu du IIIe siècle dans une famille chrétienne aisée. Après la mort de ses parents, alors qu’il avait environ dix-huit ou vingt ans, il donna ses terres et son argent, vécut en ermite dans le désert d’Égypte et devint un maître et un conseiller célèbre. D’après Athanase, il mourut à environ 105 ans. On l’appelle souvent le père du monachisme chrétien."
+   },
+   {
+    "question": "Qui était Athanase, l’auteur de ce livre ?",
+    "answer": "L’évêque d’Alexandrie, en Égypte, de 328 à 373. Il tint ferme pour la vérité que Jésus est pleinement Dieu, contre l’enseignement d’Arius, et fut exilé cinq fois. Pendant l’un de ces exils, les moines du désert le cachèrent, et c’est de ces années-là qu’est née sa Vie d’Antoine."
+   },
+   {
+    "question": "Est-ce que je dois imiter Antoine, ses jeûnes, ses nuits sur la terre nue et sa vie seul ?",
+    "answer": "Non. Antoine vivait à une tout autre époque, avec un appel très différent, et certaines de ses habitudes étaient extrêmes. Dieu ne te demande pas de t’affamer, de te priver de sommeil ou de te couper des autres. Ce que nous pouvons imiter, c’est son amour pour Jésus, sa générosité, sa prière, son courage et son humilité. Si tu te surprends à te restreindre sur la nourriture ou à punir ton corps, parles-en, s’il te plaît, à un adulte de confiance ou à un médecin."
+   },
+   {
+    "question": "Et les histoires de démons dans ce livre ?",
+    "answer": "Athanase décrit les combats d’Antoine contre le diable de façon très imagée, comme les gens de son époque pouvaient les comprendre. Ce récit les garde simples. La grande leçon qu’en tirait Antoine, c’est que le mal est réel mais qu’il a peu de pouvoir sur ceux qui appartiennent au Christ : les chrétiens n’ont donc pas à vivre dans la peur. Si ces choses t’effraient, parles-en à un adulte chrétien de confiance."
+   },
+   {
+    "question": "Antoine se croyait-il plus saint que les autres ?",
+    "answer": "Non. Athanase raconte qu’Antoine apprenait de tout le monde, honorait les responsables de l’Église et répétait que ses guérisons étaient l’œuvre du Christ seul, par la prière, et non de sa propre puissance."
+   },
+   {
+    "question": "Est-ce le texte intégral ?",
+    "answer": "Non. C’est un récit pour ados, en mots simples d’aujourd’hui, puisé dans tout le livre d’Athanase et qui garde ses phrases là où elles disent les choses le mieux. La Vie d’Antoine intégrale est aussi disponible."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Un récit d’Ochorus pour jeunes lecteurs, d’après Vie d’Antoine (The Life of Antony) d’Athanase d’Alexandrie, dans une traduction anglaise du domaine public. La façon de raconter est la nôtre, libre à lire et à partager. Les citations bibliques de cette édition française sont tirées de la version Louis Segond (1910), qui est dans le domaine public.",
+  "cover_url": "/covers/art/life-of-antony-teens.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "series": [
+   "straight-talk"
+  ],
+  "series_position": null,
+  "sort_order": 164,
+  "is_published": true,
+  "created_at": "2026-10-13T00:00:00Z",
+  "updated_at": "2026-10-13T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "fr"
+  ],
+  "order": 1,
+  "title": "Le sermon qui a tout changé",
+  "body_html": "<blockquote>« Jésus lui dit : Si tu veux être parfait, va, vends ce que tu possèdes, donne-le aux pauvres, et tu auras un trésor dans le ciel. Puis viens, et suis-moi. » — Matthieu 19:21</blockquote> <p>Il y a environ dix-sept cents ans, dans un village d’Égypte, vivait un garçon nommé Antoine. Ses parents étaient chrétiens, et plutôt riches. Antoine était un garçon tranquille. Athanase, qui écrivit plus tard son histoire, raconte qu’il n’aimait pas beaucoup l’école ni la compagnie des autres garçons ; mais il allait à l’église avec ses parents et écoutait attentivement ce qu’on y lisait.</p> <p>Puis, alors qu’Antoine avait environ dix-huit ou vingt ans, ses deux parents moururent. Du jour au lendemain, il se retrouva responsable d’une grande ferme et de sa petite sœur.</p> <p>Moins de six mois plus tard, Antoine se rendait à l’église en pensant aux apôtres, qui avaient tout quitté pour suivre Jésus, et aux premiers chrétiens du livre des Actes, qui vendaient leurs biens pour aider les pauvres. Au moment où il entrait, on lisait dans l’Évangile l’histoire du jeune homme riche. Antoine entendit Jésus dire : « va, vends ce que tu possèdes, donne-le aux pauvres […] Puis viens, et suis-moi. »</p> <p>Athanase raconte qu’Antoine eut l’impression que ce passage avait été lu exprès pour lui. Il sortit aussitôt de l’église et donna aux habitants de son village les terres de sa famille : trois cents arpents de bonnes terres, soit environ cent vingt hectares. Il vendit tout le reste et en donna l’argent aux pauvres, en gardant un peu de côté pour subvenir aux besoins de sa sœur.</p> <p>Peu de temps après, il entendit une autre lecture à l’église : Jésus y disait de ne pas s’inquiéter du lendemain. Alors il donna aussi le reste. Il confia sa sœur à des femmes chrétiennes de confiance, qui prendraient soin d’elle et l’élèveraient, et il commença une vie nouvelle, entièrement donnée à Dieu.</p> <p>Ce fut le début de l’une des vies les plus célèbres de l’histoire chrétienne. Antoine vécut jusqu’à environ 105 ans. Des milliers de personnes suivirent son exemple, et son histoire fit le tour du monde.</p> <p>L’auteur de ce livre, Athanase, était l’évêque d’Alexandrie, la grande ville d’Égypte. Il défendit sans peur la vérité que Jésus est pleinement Dieu, et il fut chassé de sa ville à cinq reprises par des empereurs qui n’étaient pas d’accord avec lui. Pendant l’un de ces exils, les moines du désert le cachèrent pendant six ans. C’est de ces années-là qu’est née l’histoire d’Antoine.</p> <p>Tout le monde n’est pas appelé à faire exactement ce qu’a fait Antoine. Mais tout chrétien est appelé à prendre au sérieux les paroles de Jésus. Antoine a entendu un verset de la Bible et il a agi tout de suite. À quoi est-ce que cela ressemblerait, pour toi, de faire pareil ?</p> <p><strong>Une chose à faire cette semaine :</strong> lis chaque jour un passage des Évangiles. Demande à Dieu de te montrer une phrase qui soit « pour toi », comme le verset d’Antoine. Quand tu la trouves, écris-la, et fais tout de suite une chose concrète à son sujet.</p>",
+  "study_questions": [
+   {
+    "question": "Que se passa-t-il pour Antoine vers dix-huit ou vingt ans ?",
+    "answer": "Ses deux parents moururent, et il se retrouva responsable de leur ferme et de sa petite sœur."
+   },
+   {
+    "question": "Quel passage de la Bible Antoine entendit-il à l’église ?",
+    "answer": "Les paroles de Jésus au jeune homme riche : va, vends ce que tu possèdes, donne aux pauvres, puis viens et suis-moi."
+   },
+   {
+    "question": "Comment Antoine pourvut-il aux besoins de sa sœur ?",
+    "answer": "Il garda un peu d’argent pour elle et la confia à des femmes chrétiennes de confiance, qui prirent soin d’elle et l’élevèrent."
+   }
+  ],
+  "body_text": "« Jésus lui dit : Si tu veux être parfait, va, vends ce que tu possèdes, donne-le aux pauvres, et tu auras un trésor dans le ciel. Puis viens, et suis-moi. » — Matthieu 19:21 Il y a environ dix-sept cents ans, dans un village d’Égypte, vivait un garçon nommé Antoine. Ses parents étaient chrétiens, et plutôt riches. Antoine était un garçon tranquille. Athanase, qui écrivit plus tard son histoire, raconte qu’il n’aimait pas beaucoup l’école ni la compagnie des autres garçons ; mais il allait à l’église avec ses parents et écoutait attentivement ce qu’on y lisait. Puis, alors qu’Antoine avait environ dix-huit ou vingt ans, ses deux parents moururent. Du jour au lendemain, il se retrouva responsable d’une grande ferme et de sa petite sœur. Moins de six mois plus tard, Antoine se rendait à l’église en pensant aux apôtres, qui avaient tout quitté pour suivre Jésus, et aux premiers chrétiens du livre des Actes, qui vendaient leurs biens pour aider les pauvres. Au moment où il entrait, on lisait dans l’Évangile l’histoire du jeune homme riche. Antoine entendit Jésus dire : « va, vends ce que tu possèdes, donne-le aux pauvres […] Puis viens, et suis-moi. » Athanase raconte qu’Antoine eut l’impression que ce passage avait été lu exprès pour lui. Il sortit aussitôt de l’église et donna aux habitants de son village les terres de sa famille : trois cents arpents de bonnes terres, soit environ cent vingt hectares. Il vendit tout le reste et en donna l’argent aux pauvres, en gardant un peu de côté pour subvenir aux besoins de sa sœur. Peu de temps après, il entendit une autre lecture à l’église : Jésus y disait de ne pas s’inquiéter du lendemain. Alors il donna aussi le reste. Il confia sa sœur à des femmes chrétiennes de confiance, qui prendraient soin d’elle et l’élèveraient, et il commença une vie nouvelle, entièrement donnée à Dieu. Ce fut le début de l’une des vies les plus célèbres de l’histoire chrétienne. Antoine vécut jusqu’à environ 105 ans. Des milliers de personnes suivirent son exemple, et son histoire fit le tour du monde. L’auteur de ce livre, Athanase, était l’évêque d’Alexandrie, la grande ville d’Égypte. Il défendit sans peur la vérité que Jésus est pleinement Dieu, et il fut chassé de sa ville à cinq reprises par des empereurs qui n’étaient pas d’accord avec lui. Pendant l’un de ces exils, les moines du désert le cachèrent pendant six ans. C’est de ces années-là qu’est née l’histoire d’Antoine. Tout le monde n’est pas appelé à faire exactement ce qu’a fait Antoine. Mais tout chrétien est appelé à prendre au sérieux les paroles de Jésus. Antoine a entendu un verset de la Bible et il a agi tout de suite. À quoi est-ce que cela ressemblerait, pour toi, de faire pareil ? Une chose à faire cette semaine : lis chaque jour un passage des Évangiles. Demande à Dieu de te montrer une phrase qui soit « pour toi », comme le verset d’Antoine. Quand tu la trouves, écris-la, et fais tout de suite une chose concrète à son sujet.",
+  "word_count": 520
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "fr"
+  ],
+  "order": 2,
+  "title": "Apprendre de tout le monde",
+  "body_html": "<blockquote>« Celui qui fréquente les sages devient sage, Mais celui qui se plaît avec les insensés s’en trouve mal. » — Proverbes 13:20</blockquote> <p>Quand Antoine commença sa nouvelle vie, il n’y avait pas encore de grands monastères en Égypte. Ceux qui voulaient se consacrer à Dieu vivaient en général discrètement près de leur propre village. Au début, Antoine fit de même.</p> <p>Dans le village voisin vivait un vieil homme qui suivait Dieu de cette manière depuis sa jeunesse. Antoine l’observa et imita son exemple. Et chaque fois qu’il entendait parler d’une autre personne pieuse dans les environs, il allait la trouver. Athanase a une jolie image pour cela : Antoine partait « comme l’abeille avisée », récoltant auprès de chacun de bonnes choses à rapporter chez lui.</p> <p>Qu’apprit-il ? Athanase en dresse la liste. De l’un, il apprit l’affabilité ; d’un autre, la prière incessante ; d’un autre, l’absence de colère ; d’un autre encore, la bonté. Il observait la patience de l’un, la douceur de l’autre, l’amour d’un autre pour le Christ et pour son prochain. Puis il s’efforçait de réunir tout cela dans sa propre vie.</p> <p>C’est une manière vraiment sage de grandir. Personne n’est parfait, mais presque tous les chrétiens que tu connais ont quelque chose à t’apprendre. Un ami est peut-être doué pour encourager les autres. Un grand-parent est peut-être fidèle dans la prière. Un responsable de jeunes est peut-être d’une grande patience. Comme Antoine, tu peux apprendre quelque chose de différent de chacun d’eux.</p> <p>Antoine travaillait aussi de ses mains. Il avait entendu la Bible dire que celui qui ne veut pas travailler ne doit pas manger non plus. Il gagnait donc sa vie, en dépensait une partie pour son pain et donnait le reste aux nécessiteux.</p> <p>Et il prêtait une telle attention aux lectures de la Bible que, selon Athanase, il retenait tout ce qu’il entendait, si bien que « dans la suite sa mémoire lui tint lieu de livres ».</p> <p>Athanase résume les choses simplement : « Antoine était aimé de tous. » Il était assez humble pour apprendre des autres, et c’est pour cela qu’on l’aimait.</p> <p><strong>Une chose à faire cette semaine :</strong> fais la liste de cinq chrétiens que tu connais. À côté de chaque nom, écris une qualité que tu admires chez cette personne. Cette semaine, essaie d’apprendre de l’une d’elles : pose-lui une question, ou imite simplement l’une de ses bonnes habitudes.</p>",
+  "study_questions": [
+   {
+    "question": "Quelle image Athanase utilise-t-il pour décrire la façon dont Antoine apprenait des autres ?",
+    "answer": "Une abeille avisée, qui part récolter de bonnes choses auprès de chacun."
+   },
+   {
+    "question": "Cite trois qualités qu’Antoine apprit de différentes personnes.",
+    "answer": "Trois parmi celles-ci : l’affabilité, la prière incessante, l’absence de colère, la bonté, la patience, la douceur, l’amour pour le Christ et pour les autres."
+   },
+   {
+    "question": "Que faisait Antoine de l’argent qu’il gagnait ?",
+    "answer": "Il en dépensait une partie pour son pain et donnait le reste aux nécessiteux."
+   }
+  ],
+  "body_text": "« Celui qui fréquente les sages devient sage, Mais celui qui se plaît avec les insensés s’en trouve mal. » — Proverbes 13:20 Quand Antoine commença sa nouvelle vie, il n’y avait pas encore de grands monastères en Égypte. Ceux qui voulaient se consacrer à Dieu vivaient en général discrètement près de leur propre village. Au début, Antoine fit de même. Dans le village voisin vivait un vieil homme qui suivait Dieu de cette manière depuis sa jeunesse. Antoine l’observa et imita son exemple. Et chaque fois qu’il entendait parler d’une autre personne pieuse dans les environs, il allait la trouver. Athanase a une jolie image pour cela : Antoine partait « comme l’abeille avisée », récoltant auprès de chacun de bonnes choses à rapporter chez lui. Qu’apprit-il ? Athanase en dresse la liste. De l’un, il apprit l’affabilité ; d’un autre, la prière incessante ; d’un autre, l’absence de colère ; d’un autre encore, la bonté. Il observait la patience de l’un, la douceur de l’autre, l’amour d’un autre pour le Christ et pour son prochain. Puis il s’efforçait de réunir tout cela dans sa propre vie. C’est une manière vraiment sage de grandir. Personne n’est parfait, mais presque tous les chrétiens que tu connais ont quelque chose à t’apprendre. Un ami est peut-être doué pour encourager les autres. Un grand-parent est peut-être fidèle dans la prière. Un responsable de jeunes est peut-être d’une grande patience. Comme Antoine, tu peux apprendre quelque chose de différent de chacun d’eux. Antoine travaillait aussi de ses mains. Il avait entendu la Bible dire que celui qui ne veut pas travailler ne doit pas manger non plus. Il gagnait donc sa vie, en dépensait une partie pour son pain et donnait le reste aux nécessiteux. Et il prêtait une telle attention aux lectures de la Bible que, selon Athanase, il retenait tout ce qu’il entendait, si bien que « dans la suite sa mémoire lui tint lieu de livres ». Athanase résume les choses simplement : « Antoine était aimé de tous. » Il était assez humble pour apprendre des autres, et c’est pour cela qu’on l’aimait. Une chose à faire cette semaine : fais la liste de cinq chrétiens que tu connais. À côté de chaque nom, écris une qualité que tu admires chez cette personne. Cette semaine, essaie d’apprendre de l’une d’elles : pose-lui une question, ou imite simplement l’une de ses bonnes habitudes.",
+  "word_count": 403
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "fr"
+  ],
+  "order": 3,
+  "title": "Le premier combat",
+  "body_html": "<blockquote>« Aucune tentation ne vous est survenue qui n’ait été humaine, et Dieu, qui est fidèle, ne permettra pas que vous soyez tentés au-delà de vos forces ; mais avec la tentation il préparera aussi le moyen d’en sortir, afin que vous puissiez la supporter. » — 1 Corinthiens 10:13</blockquote> <p>Athanase raconte que le diable ne put supporter de voir « une telle résolution chez un jeune homme », et qu’il fit tout ce qu’il put pour faire revenir Antoine en arrière.</p> <p>Vinrent d’abord des pensées qui te sembleront très familières. Antoine se surprenait à repenser à tout l’argent qu’il avait donné, à s’inquiéter pour sa sœur, à regretter sa famille, à vouloir être admiré, à désirer de bons repas et une vie facile. Puis vint l’idée que suivre Dieu était tout simplement trop dur, et que cela prendrait trop de temps. Athanase dit que l’Ennemi « souleva dans son esprit une grande poussière de raisonnements ».</p> <p>Comme cela ne marchait pas, l’attaque changea. Athanase raconte que le diable se tourna vers ce qu’il appelle le premier piège tendu aux jeunes : la convoitise et la tentation sexuelle. Antoine fut harcelé de pensées impures, le jour comme la nuit.</p> <p>Comment Antoine riposta-t-il ? Par la prière, par la foi, et en remplissant son esprit du Christ. Quand une pensée tentante arrivait, il y répondait par la prière. Il pensait à ce qui compte vraiment, et au jugement de Dieu, et la tentation perdait sa force.</p> <p>Remarque deux choses. D’abord, Antoine a été tenté, et ce n’était pas le signe qu’il était un mauvais chrétien. Même Jésus a été tenté. La tentation n’est pas la même chose que le péché. Ensuite, Athanase dit très clairement qui a remporté la victoire :</p> <blockquote>« Ce fut là le premier combat d’Antoine contre le diable, ou plutôt cette victoire fut l’œuvre du Sauveur en Antoine. »</blockquote> <p>C’est capital. Antoine n’a pas gagné parce qu’il était fort. C’est Jésus qui a remporté la victoire en lui.</p> <p>Si tu luttes contre la tentation, y compris la tentation sexuelle, tu n’es pas seul et tu n’es pas un raté. Apporte-la à Jésus, encore et encore. Remplis ton esprit de bonnes choses. Et si une lutte te semble hors de contrôle, parles-en à un adulte de confiance. Dieu prépare toujours le moyen d’en sortir.</p> <p><strong>Une chose à faire cette semaine :</strong> pense au genre de pensées qui t’éloignent de Dieu, comme celles de la liste d’Antoine. Quand l’une d’elles se présente cette semaine, réponds-y tout de suite par une courte prière, par exemple : « Jésus, tu vaux mieux que ça. Aide-moi. »</p>",
+  "study_questions": [
+   {
+    "question": "Quel genre de pensées le diable utilisa-t-il d’abord pour tenter Antoine ?",
+    "answer": "Le souvenir de ses richesses, le souci de sa sœur, le manque de sa famille, l’amour de l’argent et de la gloire, l’envie de bons repas et d’une vie facile, et l’idée que suivre Dieu était trop dur."
+   },
+   {
+    "question": "Comment Antoine combattit-il la tentation ?",
+    "answer": "Par la prière, par la foi, et en remplissant son esprit du Christ et de ce qui compte vraiment."
+   },
+   {
+    "question": "D’après Athanase, de qui cette victoire fut-elle l’œuvre ?",
+    "answer": "L’œuvre du Sauveur en Antoine."
+   }
+  ],
+  "body_text": "« Aucune tentation ne vous est survenue qui n’ait été humaine, et Dieu, qui est fidèle, ne permettra pas que vous soyez tentés au-delà de vos forces ; mais avec la tentation il préparera aussi le moyen d’en sortir, afin que vous puissiez la supporter. » — 1 Corinthiens 10:13 Athanase raconte que le diable ne put supporter de voir « une telle résolution chez un jeune homme », et qu’il fit tout ce qu’il put pour faire revenir Antoine en arrière. Vinrent d’abord des pensées qui te sembleront très familières. Antoine se surprenait à repenser à tout l’argent qu’il avait donné, à s’inquiéter pour sa sœur, à regretter sa famille, à vouloir être admiré, à désirer de bons repas et une vie facile. Puis vint l’idée que suivre Dieu était tout simplement trop dur, et que cela prendrait trop de temps. Athanase dit que l’Ennemi « souleva dans son esprit une grande poussière de raisonnements ». Comme cela ne marchait pas, l’attaque changea. Athanase raconte que le diable se tourna vers ce qu’il appelle le premier piège tendu aux jeunes : la convoitise et la tentation sexuelle. Antoine fut harcelé de pensées impures, le jour comme la nuit. Comment Antoine riposta-t-il ? Par la prière, par la foi, et en remplissant son esprit du Christ. Quand une pensée tentante arrivait, il y répondait par la prière. Il pensait à ce qui compte vraiment, et au jugement de Dieu, et la tentation perdait sa force. Remarque deux choses. D’abord, Antoine a été tenté, et ce n’était pas le signe qu’il était un mauvais chrétien. Même Jésus a été tenté. La tentation n’est pas la même chose que le péché. Ensuite, Athanase dit très clairement qui a remporté la victoire : « Ce fut là le premier combat d’Antoine contre le diable, ou plutôt cette victoire fut l’œuvre du Sauveur en Antoine. » C’est capital. Antoine n’a pas gagné parce qu’il était fort. C’est Jésus qui a remporté la victoire en lui. Si tu luttes contre la tentation, y compris la tentation sexuelle, tu n’es pas seul et tu n’es pas un raté. Apporte-la à Jésus, encore et encore. Remplis ton esprit de bonnes choses. Et si une lutte te semble hors de contrôle, parles-en à un adulte de confiance. Dieu prépare toujours le moyen d’en sortir. Une chose à faire cette semaine : pense au genre de pensées qui t’éloignent de Dieu, comme celles de la liste d’Antoine. Quand l’une d’elles se présente cette semaine, réponds-y tout de suite par une courte prière, par exemple : « Jésus, tu vaux mieux que ça. Aide-moi. »",
+  "word_count": 435
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "fr"
+  ],
+  "order": 4,
+  "title": "« Où étais-tu ? »",
+  "body_html": "<blockquote>« Car j’ai l’assurance que ni la mort ni la vie, ni les anges ni les dominations, ni les choses présentes ni les choses à venir, ni les puissances, ni la hauteur, ni la profondeur, ni aucune autre créature ne pourra nous séparer de l’amour de Dieu manifesté en Jésus-Christ notre Seigneur. » — Romains 8:38–39</blockquote> <p>Ensuite, Antoine alla vivre seul dans un tombeau vide, à quelque distance de son village. C’étaient de grandes chambres funéraires anciennes, rien à voir avec nos tombes d’aujourd’hui. Un ami lui apportait du pain tous les deux ou trois jours.</p> <p>Athanase raconte qu’une nuit Antoine fut attaqué si violemment qu’il resta étendu par terre, incapable de parler. Athanase décrit cela comme une attaque du diable et de ses démons. Le lendemain, son ami le trouva gisant là comme mort, et le porta jusqu’à l’église du village.</p> <p>Cette nuit-là, Antoine reprit connaissance. Au lieu de rester en sécurité au village, il demanda à son ami de le ramener tout de suite aux tombeaux. Là, encore trop meurtri pour se tenir debout, il pria couché, puis il s’écria :</p> <blockquote>« Me voici, moi, Antoine ; je ne fuis pas vos coups, car même si vous m’en infligez davantage, rien ne me séparera de l’amour du Christ. »</blockquote> <p>Puis il chanta un verset du Psaume 27 : « Si une armée se campait contre moi, Mon cœur n’aurait aucune crainte. »</p> <p>Athanase raconte qu’après d’autres moments terrifiants, Antoine leva les yeux et vit la lumière percer à travers le toit, et l’attaque prit fin. Alors Antoine posa une question très honnête :</p> <blockquote>« Où étais-tu ? Pourquoi n’es-tu pas apparu dès le commencement pour faire cesser mes douleurs ? »</blockquote> <p>Et Athanase rapporte la réponse qu’Antoine entendit :</p> <blockquote>« Antoine, j’étais ici, mais j’attendais de voir ton combat. »</blockquote> <p>As-tu déjà demandé à Dieu : « Où étais-tu ? » Peut-être dans un moment difficile, quand tu te sentais seul. Antoine aussi a posé cette question. Et la réponse qu’il a entendue, c’est : j’étais là depuis le début.</p> <p>Tu n’as pas besoin d’avoir peur du mal, ni de chercher à vivre des combats spirituels spectaculaires comme celui-ci. Athanase raconte cette histoire pour montrer que le Christ est plus fort que toutes les puissances des ténèbres, et que rien ne peut nous séparer de l’amour de Dieu. Si tu traverses quelque chose d’effrayant ou de douloureux, Dieu est avec toi, même quand tu ne le sens pas. Et, s’il te plaît, ne le traverse pas seul. Parles-en à quelqu’un en qui tu as confiance.</p> <p><strong>Une chose à faire cette semaine :</strong> si tu traverses un moment difficile, prie avec la question honnête d’Antoine : « Seigneur, où es-tu ? » Puis lis lentement Romains 8:35–39 et écoute la réponse de Dieu : rien ne peut te séparer de son amour.</p>",
+  "study_questions": [
+   {
+    "question": "Que fit Antoine après avoir été ramené au village ?",
+    "answer": "Il demanda à son ami de le ramener tout de suite aux tombeaux, où il pria et déclara que rien ne le séparerait de l’amour du Christ."
+   },
+   {
+    "question": "Quelle question honnête Antoine posa-t-il quand l’attaque prit fin ?",
+    "answer": "« Où étais-tu ? Pourquoi n’es-tu pas apparu dès le commencement pour faire cesser mes douleurs ? »"
+   },
+   {
+    "question": "Quelle réponse entendit-il ?",
+    "answer": "« Antoine, j’étais ici, mais j’attendais de voir ton combat. »"
+   }
+  ],
+  "body_text": "« Car j’ai l’assurance que ni la mort ni la vie, ni les anges ni les dominations, ni les choses présentes ni les choses à venir, ni les puissances, ni la hauteur, ni la profondeur, ni aucune autre créature ne pourra nous séparer de l’amour de Dieu manifesté en Jésus-Christ notre Seigneur. » — Romains 8:38–39 Ensuite, Antoine alla vivre seul dans un tombeau vide, à quelque distance de son village. C’étaient de grandes chambres funéraires anciennes, rien à voir avec nos tombes d’aujourd’hui. Un ami lui apportait du pain tous les deux ou trois jours. Athanase raconte qu’une nuit Antoine fut attaqué si violemment qu’il resta étendu par terre, incapable de parler. Athanase décrit cela comme une attaque du diable et de ses démons. Le lendemain, son ami le trouva gisant là comme mort, et le porta jusqu’à l’église du village. Cette nuit-là, Antoine reprit connaissance. Au lieu de rester en sécurité au village, il demanda à son ami de le ramener tout de suite aux tombeaux. Là, encore trop meurtri pour se tenir debout, il pria couché, puis il s’écria : « Me voici, moi, Antoine ; je ne fuis pas vos coups, car même si vous m’en infligez davantage, rien ne me séparera de l’amour du Christ. » Puis il chanta un verset du Psaume 27 : « Si une armée se campait contre moi, Mon cœur n’aurait aucune crainte. » Athanase raconte qu’après d’autres moments terrifiants, Antoine leva les yeux et vit la lumière percer à travers le toit, et l’attaque prit fin. Alors Antoine posa une question très honnête : « Où étais-tu ? Pourquoi n’es-tu pas apparu dès le commencement pour faire cesser mes douleurs ? » Et Athanase rapporte la réponse qu’Antoine entendit : « Antoine, j’étais ici, mais j’attendais de voir ton combat. » As-tu déjà demandé à Dieu : « Où étais-tu ? » Peut-être dans un moment difficile, quand tu te sentais seul. Antoine aussi a posé cette question. Et la réponse qu’il a entendue, c’est : j’étais là depuis le début. Tu n’as pas besoin d’avoir peur du mal, ni de chercher à vivre des combats spirituels spectaculaires comme celui-ci. Athanase raconte cette histoire pour montrer que le Christ est plus fort que toutes les puissances des ténèbres, et que rien ne peut nous séparer de l’amour de Dieu. Si tu traverses quelque chose d’effrayant ou de douloureux, Dieu est avec toi, même quand tu ne le sens pas. Et, s’il te plaît, ne le traverse pas seul. Parles-en à quelqu’un en qui tu as confiance. Une chose à faire cette semaine : si tu traverses un moment difficile, prie avec la question honnête d’Antoine : « Seigneur, où es-tu ? » Puis lis lentement Romains 8:35–39 et écoute la réponse de Dieu : rien ne peut te séparer de son amour.",
+  "word_count": 473
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "fr"
+  ],
+  "order": 5,
+  "title": "De l’or sur la route",
+  "body_html": "<blockquote>« Car l’amour de l’argent est une racine de tous les maux ; et quelques-uns, en étant possédés, se sont égarés loin de la foi, et se sont jetés eux-mêmes dans bien des tourments. » — 1 Timothée 6:10</blockquote> <p>Vers trente-cinq ans, Antoine décida de s’enfoncer plus loin dans le désert. En chemin, raconte Athanase, il lui arriva deux histoires d’argent.</p> <p>D’abord, Antoine vit sur la route ce qui ressemblait à un grand plat d’argent. Il s’arrêta et réfléchit. Qui transporterait un grand plat d’argent à travers un désert vide ? Et si quelqu’un l’avait laissé tomber, il s’en serait sûrement aperçu et serait revenu le chercher. Il conclut que c’était un piège destiné à le détourner de son but, et Athanase raconte que le plat s’évanouit « comme la fumée devant le feu ».</p> <p>Un peu plus loin, il vit de l’or, du vrai, répandu sur la route. Athanase dit que personne ne sait si c’était le diable ou Dieu qui l’avait mis là pour l’éprouver. Mais c’était bel et bien de l’or, et en quantité.</p> <p>Que fit Antoine ? Athanase dit qu’il « passa outre comme s’il marchait sur du feu ». Il ne se retourna même pas. Il se mit à courir pour dépasser l’endroit le plus vite possible.</p> <p>Pourquoi courir ? Parce qu’Antoine connaissait son propre cœur. Il savait que, s’il s’arrêtait pour regarder, il risquait de commencer à penser à ce qu’il pourrait en faire, et que son cœur serait de nouveau tiré vers ce à quoi il avait renoncé.</p> <p>C’est un bon conseil pour toutes sortes de tentations. Parfois, le plus sage n’est pas de rester planté là à discuter avec une tentation, mais de s’en éloigner au plus vite.</p> <p>L’argent n’est pas mauvais en soi. Mais Paul avertit que l’amour de l’argent est une racine de tous les maux. Antoine avait choisi un trésor dans le ciel, et il gardait son cœur pour qu’il y reste.</p> <p>Quel est ton « or sur la route » ? Ce peut être l’argent, la popularité, un nouveau téléphone, une relation amoureuse, ou simplement plus d’affaires. Aucune de ces choses n’est mauvaise en soi, mais chacune peut éloigner ton cœur de Dieu si tu la laisses faire.</p> <p><strong>Une chose à faire cette semaine :</strong> pense à ce que tu as le plus envie de posséder ou d’avoir en ce moment. Cette semaine, donne quelque chose : de l’argent, un objet, ou ton temps. Prie en le faisant : « Seigneur, c’est toi mon trésor. »</p>",
+  "study_questions": [
+   {
+    "question": "Comment Antoine raisonna-t-il au sujet du plat d’argent ?",
+    "answer": "Personne ne transporterait un grand plat d’argent à travers un désert vide, et si quelqu’un l’avait perdu, il serait revenu le chercher ; il en conclut que c’était un piège."
+   },
+   {
+    "question": "Que fit Antoine quand il vit de l’or, du vrai, sur la route ?",
+    "answer": "Il passa outre comme s’il marchait sur du feu, sans même se retourner, et se mit à courir pour s’éloigner de l’endroit."
+   },
+   {
+    "question": "Pourquoi est-il sage de fuir certaines tentations ?",
+    "answer": "Parce que s’arrêter pour regarder peut commencer à tirer notre cœur vers ce à quoi nous avons renoncé."
+   }
+  ],
+  "body_text": "« Car l’amour de l’argent est une racine de tous les maux ; et quelques-uns, en étant possédés, se sont égarés loin de la foi, et se sont jetés eux-mêmes dans bien des tourments. » — 1 Timothée 6:10 Vers trente-cinq ans, Antoine décida de s’enfoncer plus loin dans le désert. En chemin, raconte Athanase, il lui arriva deux histoires d’argent. D’abord, Antoine vit sur la route ce qui ressemblait à un grand plat d’argent. Il s’arrêta et réfléchit. Qui transporterait un grand plat d’argent à travers un désert vide ? Et si quelqu’un l’avait laissé tomber, il s’en serait sûrement aperçu et serait revenu le chercher. Il conclut que c’était un piège destiné à le détourner de son but, et Athanase raconte que le plat s’évanouit « comme la fumée devant le feu ». Un peu plus loin, il vit de l’or, du vrai, répandu sur la route. Athanase dit que personne ne sait si c’était le diable ou Dieu qui l’avait mis là pour l’éprouver. Mais c’était bel et bien de l’or, et en quantité. Que fit Antoine ? Athanase dit qu’il « passa outre comme s’il marchait sur du feu ». Il ne se retourna même pas. Il se mit à courir pour dépasser l’endroit le plus vite possible. Pourquoi courir ? Parce qu’Antoine connaissait son propre cœur. Il savait que, s’il s’arrêtait pour regarder, il risquait de commencer à penser à ce qu’il pourrait en faire, et que son cœur serait de nouveau tiré vers ce à quoi il avait renoncé. C’est un bon conseil pour toutes sortes de tentations. Parfois, le plus sage n’est pas de rester planté là à discuter avec une tentation, mais de s’en éloigner au plus vite. L’argent n’est pas mauvais en soi. Mais Paul avertit que l’amour de l’argent est une racine de tous les maux. Antoine avait choisi un trésor dans le ciel, et il gardait son cœur pour qu’il y reste. Quel est ton « or sur la route » ? Ce peut être l’argent, la popularité, un nouveau téléphone, une relation amoureuse, ou simplement plus d’affaires. Aucune de ces choses n’est mauvaise en soi, mais chacune peut éloigner ton cœur de Dieu si tu la laisses faire. Une chose à faire cette semaine : pense à ce que tu as le plus envie de posséder ou d’avoir en ce moment. Cette semaine, donne quelque chose : de l’argent, un objet, ou ton temps. Prie en le faisant : « Seigneur, c’est toi mon trésor. »",
+  "word_count": 418
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "fr"
+  ],
+  "order": 6,
+  "title": "Vingt ans seul",
+  "body_html": "<blockquote>« Mais quand tu pries, entre dans ta chambre, ferme ta porte, et prie ton Père qui est là dans le lieu secret ; et ton Père, qui voit dans le secret, te le rendra. » — Matthieu 6:6</blockquote> <p>Antoine trouva un vieux fort abandonné de l’autre côté du Nil et s’y emmura. Des amis lui descendaient du pain deux fois par an. Il resta là, seul avec Dieu, pendant près de vingt ans.</p> <p>Finalement, tant de gens voulaient apprendre de lui que ses amis enfoncèrent la porte. Athanase décrit ce qu’ils virent quand Antoine sortit :</p> <blockquote>« Il avait la même constitution qu’auparavant ; il n’était ni gras, comme un homme qui ne prend pas d’exercice, ni amaigri par les jeûnes et par la lutte contre les démons, mais il était exactement tel qu’ils l’avaient connu avant sa retraite. »</blockquote> <p>Et pas seulement son corps. Athanase dit que son âme, elle aussi, était équilibrée. Il n’était ni sombre ni exalté. Il ne se laissait ni déstabiliser par la foule, ni gonfler d’orgueil par tous ces gens qui le saluaient. Il était calme, stable et en paix.</p> <p>Puis il commença à aider les gens. Athanase dit que Dieu en guérit beaucoup par son intermédiaire. Il consolait ceux qui étaient tristes et aidait ceux qui s’étaient brouillés à faire la paix. Il exhortait chacun « à préférer l’amour du Christ à tout ce qui est dans le monde ».</p> <p>Un mot de prudence ici. Antoine jeûnait énormément, se privait souvent de sommeil et vivait d’une manière qui serait dangereuse pour la plupart des gens. Athanase admirait cela, mais c’était un appel particulier, à une époque très différente. Dieu ne te demande pas de t’affamer, de te priver de sommeil ou de te couper de ta famille et de tes amis. Si tu te surprends à te restreindre sur la nourriture ou à punir ton corps, parles-en, s’il te plaît, à un adulte de confiance ou à un médecin.</p> <p>Ce que nous pouvons retenir des vingt années d’Antoine, c’est la valeur du temps passé seul avec Dieu. Jésus nous a dit d’entrer dans notre chambre, de fermer la porte et de prier notre Père dans le secret. La plupart d’entre nous vivent entourés de bruit, de notifications et des opinions des autres. Même dix minutes seul avec Dieu chaque jour peuvent te rendre plus stable, plus calme et plus disponible pour aider les autres.</p> <p>Et remarque qu’Antoine n’est pas resté caché pour toujours. Son temps seul avec Dieu l’a préparé à servir les autres. La prière et le service vont ensemble.</p> <p><strong>Une chose à faire cette semaine :</strong> trouve ta « chambre » : un endroit et un moment calmes où tu peux être seul avec Dieu au moins dix minutes, sans ton téléphone. Retournes-y chaque jour, et regarde si cela te rend plus stable.</p>",
+  "study_questions": [
+   {
+    "question": "Combien de temps Antoine resta-t-il dans le vieux fort ?",
+    "answer": "Près de vingt ans."
+   },
+   {
+    "question": "Qu’est-ce qui surprit les gens quand Antoine sortit ?",
+    "answer": "Il n’était ni gros ni maigre, mais exactement le même qu’avant, et son âme était calme et équilibrée, ni sombre ni gonflée d’orgueil."
+   },
+   {
+    "question": "Devons-nous imiter les jeûnes extrêmes et l’isolement d’Antoine ?",
+    "answer": "Non ; Dieu ne nous demande pas de faire du mal à notre corps ni de nous couper des autres, mais nous pouvons apprendre la valeur du temps passé seul avec Dieu."
+   }
+  ],
+  "body_text": "« Mais quand tu pries, entre dans ta chambre, ferme ta porte, et prie ton Père qui est là dans le lieu secret ; et ton Père, qui voit dans le secret, te le rendra. » — Matthieu 6:6 Antoine trouva un vieux fort abandonné de l’autre côté du Nil et s’y emmura. Des amis lui descendaient du pain deux fois par an. Il resta là, seul avec Dieu, pendant près de vingt ans. Finalement, tant de gens voulaient apprendre de lui que ses amis enfoncèrent la porte. Athanase décrit ce qu’ils virent quand Antoine sortit : « Il avait la même constitution qu’auparavant ; il n’était ni gras, comme un homme qui ne prend pas d’exercice, ni amaigri par les jeûnes et par la lutte contre les démons, mais il était exactement tel qu’ils l’avaient connu avant sa retraite. » Et pas seulement son corps. Athanase dit que son âme, elle aussi, était équilibrée. Il n’était ni sombre ni exalté. Il ne se laissait ni déstabiliser par la foule, ni gonfler d’orgueil par tous ces gens qui le saluaient. Il était calme, stable et en paix. Puis il commença à aider les gens. Athanase dit que Dieu en guérit beaucoup par son intermédiaire. Il consolait ceux qui étaient tristes et aidait ceux qui s’étaient brouillés à faire la paix. Il exhortait chacun « à préférer l’amour du Christ à tout ce qui est dans le monde ». Un mot de prudence ici. Antoine jeûnait énormément, se privait souvent de sommeil et vivait d’une manière qui serait dangereuse pour la plupart des gens. Athanase admirait cela, mais c’était un appel particulier, à une époque très différente. Dieu ne te demande pas de t’affamer, de te priver de sommeil ou de te couper de ta famille et de tes amis. Si tu te surprends à te restreindre sur la nourriture ou à punir ton corps, parles-en, s’il te plaît, à un adulte de confiance ou à un médecin. Ce que nous pouvons retenir des vingt années d’Antoine, c’est la valeur du temps passé seul avec Dieu. Jésus nous a dit d’entrer dans notre chambre, de fermer la porte et de prier notre Père dans le secret. La plupart d’entre nous vivent entourés de bruit, de notifications et des opinions des autres. Même dix minutes seul avec Dieu chaque jour peuvent te rendre plus stable, plus calme et plus disponible pour aider les autres. Et remarque qu’Antoine n’est pas resté caché pour toujours. Son temps seul avec Dieu l’a préparé à servir les autres. La prière et le service vont ensemble. Une chose à faire cette semaine : trouve ta « chambre » : un endroit et un moment calmes où tu peux être seul avec Dieu au moins dix minutes, sans ton téléphone. Retournes-y chaque jour, et regarde si cela te rend plus stable.",
+  "word_count": 473
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "fr"
+  ],
+  "order": 7,
+  "title": "N’aie pas peur",
+  "body_html": "<blockquote>« Soumettez-vous donc à Dieu ; résistez au diable, et il fuira loin de vous. » — Jacques 4:7</blockquote> <p>Quand Antoine sortit du fort, beaucoup de gens vinrent vivre près de lui pour apprendre de lui. Athanase rapporte un long discours qu’Antoine leur adressa, plein de sagesse pratique.</p> <p>Antoine commença par les encourager : le bien n’est ni lointain ni impossible. Les gens traversent la mer pour s’instruire, disait-il, mais « nous, nous n’avons pas besoin de quitter notre demeure pour le royaume des cieux, ni de traverser la mer pour la vertu ». Jésus a dit que le royaume de Dieu est au-dedans de vous. La vertu, disait Antoine, ne demande de notre part que « la bonne volonté », avec l’aide de Dieu.</p> <p>Puis Antoine parla du diable et des esprits mauvais. Il savait qu’ils étaient réels. Mais son message principal, c’était que les chrétiens n’ont pas à en avoir peur. Il disait qu’ils essaient d’effrayer les gens avec du vacarme et des apparitions terrifiantes, mais qu’ils n’ont que très peu de vrai pouvoir sur ceux qui appartiennent au Christ.</p> <blockquote>« Car ils ne sont rien et disparaissent vite, surtout si l’on se fortifie d’avance par la foi et le signe de la croix. »</blockquote> <p>Il donna aussi un moyen de faire la différence entre les bonnes et les mauvaises expériences spirituelles. Le mal apporte la confusion, la peur et le trouble. Mais quand Dieu est proche, disait Antoine, cela vient « si paisiblement et si doucement qu’aussitôt la joie, l’allégresse et le courage naissent dans l’âme ».</p> <p>C’est une sagesse précieuse pour nous. Certains sont fascinés par le côté obscur du monde spirituel, d’autres en sont terrifiés. Antoine dirait : ne sois ni l’un ni l’autre. Ne joue pas avec ça, et ne vis pas dans la peur. Reste près de Jésus, qui a vaincu toutes les puissances des ténèbres à la croix.</p> <p>Et applique le test d’Antoine à ta propre vie. Est-ce que quelque chose apporte dans ton cœur la confusion, la peur et l’agitation ? Ou plutôt une joie tranquille, de l’allégresse et du courage ? La présence de Dieu apporte la paix.</p> <p>Si un jour les choses spirituelles te font peur, parles-en à un adulte chrétien de confiance. Tu n’as pas à affronter la peur tout seul.</p> <p><strong>Une chose à faire cette semaine :</strong> quand tu as peur cette semaine, de quoi que ce soit, dis Jacques 4:7 à voix haute et prie : « Jésus, tu as gagné. Je t’appartiens. Je n’aurai pas peur. » Regarde si la paix vient.</p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi Antoine disait-il que nous n’avons pas besoin d’aller loin pour devenir bons ?",
+    "answer": "Parce que le royaume des cieux est au-dedans de nous, et que la vertu ne demande que notre bonne volonté, avec l’aide de Dieu."
+   },
+   {
+    "question": "Qu’enseignait Antoine sur le diable et les esprits mauvais ?",
+    "answer": "Qu’ils sont réels mais ont peu de pouvoir sur ceux qui appartiennent au Christ ; les chrétiens n’ont donc pas à avoir peur."
+   },
+   {
+    "question": "Comment, selon Antoine, peut-on reconnaître la présence de Dieu ?",
+    "answer": "Elle vient paisiblement et doucement, et fait naître dans l’âme la joie, l’allégresse et le courage."
+   }
+  ],
+  "body_text": "« Soumettez-vous donc à Dieu ; résistez au diable, et il fuira loin de vous. » — Jacques 4:7 Quand Antoine sortit du fort, beaucoup de gens vinrent vivre près de lui pour apprendre de lui. Athanase rapporte un long discours qu’Antoine leur adressa, plein de sagesse pratique. Antoine commença par les encourager : le bien n’est ni lointain ni impossible. Les gens traversent la mer pour s’instruire, disait-il, mais « nous, nous n’avons pas besoin de quitter notre demeure pour le royaume des cieux, ni de traverser la mer pour la vertu ». Jésus a dit que le royaume de Dieu est au-dedans de vous. La vertu, disait Antoine, ne demande de notre part que « la bonne volonté », avec l’aide de Dieu. Puis Antoine parla du diable et des esprits mauvais. Il savait qu’ils étaient réels. Mais son message principal, c’était que les chrétiens n’ont pas à en avoir peur. Il disait qu’ils essaient d’effrayer les gens avec du vacarme et des apparitions terrifiantes, mais qu’ils n’ont que très peu de vrai pouvoir sur ceux qui appartiennent au Christ. « Car ils ne sont rien et disparaissent vite, surtout si l’on se fortifie d’avance par la foi et le signe de la croix. » Il donna aussi un moyen de faire la différence entre les bonnes et les mauvaises expériences spirituelles. Le mal apporte la confusion, la peur et le trouble. Mais quand Dieu est proche, disait Antoine, cela vient « si paisiblement et si doucement qu’aussitôt la joie, l’allégresse et le courage naissent dans l’âme ». C’est une sagesse précieuse pour nous. Certains sont fascinés par le côté obscur du monde spirituel, d’autres en sont terrifiés. Antoine dirait : ne sois ni l’un ni l’autre. Ne joue pas avec ça, et ne vis pas dans la peur. Reste près de Jésus, qui a vaincu toutes les puissances des ténèbres à la croix. Et applique le test d’Antoine à ta propre vie. Est-ce que quelque chose apporte dans ton cœur la confusion, la peur et l’agitation ? Ou plutôt une joie tranquille, de l’allégresse et du courage ? La présence de Dieu apporte la paix. Si un jour les choses spirituelles te font peur, parles-en à un adulte chrétien de confiance. Tu n’as pas à affronter la peur tout seul. Une chose à faire cette semaine : quand tu as peur cette semaine, de quoi que ce soit, dis Jacques 4:7 à voix haute et prie : « Jésus, tu as gagné. Je t’appartiens. Je n’aurai pas peur. » Regarde si la paix vient.",
+  "word_count": 427
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "fr"
+  ],
+  "order": 8,
+  "title": "Comme si c’était le dernier jour",
+  "body_html": "<blockquote>« Enseigne-nous à bien compter nos jours, Afin que nous appliquions notre cœur à la sagesse. » — Psaume 90:12</blockquote> <p>L’un des conseils les plus célèbres d’Antoine porte sur la manière de vivre chaque jour. Il reprit la parole de Paul, « Je meurs chaque jour », et lui donna un sens pratique :</p> <blockquote>« Car si nous aussi nous vivons comme mourant chaque jour, nous ne pécherons pas. »</blockquote> <p>Il expliquait : quand tu te lèves le matin, pense que tu ne vivras peut-être pas jusqu’au soir. Quand tu vas te coucher, pense que tu ne te réveilleras peut-être pas. Notre vie est incertaine, et chaque jour est un cadeau de Dieu.</p> <p>Cela peut sembler sinistre, mais Antoine voulait dire tout le contraire. Il disait que vivre ainsi nous libère de bien des choses. Nous ne garderons pas de rancune, car « nous pardonnerons tout à tous ». Nous ne serons pas avides, et nous n’amasserons pas de trésors sur la terre. Nous ne nous laisserons pas mener par de mauvais désirs. Nous serons prêts.</p> <p>Antoine aidait aussi ses auditeurs à voir combien la vie est courte à côté de l’éternité. Même si nous vivons quatre-vingts ou cent ans, ce n’est rien à côté de ce qui n’aura pas de fin. Et puis il dit une chose remarquable : dans ce monde, toute chose se vend à son prix, « mais la promesse de la vie éternelle s’achète pour presque rien ».</p> <p>Autrement dit, tout ce que nous abandonnons pour Dieu est minuscule à côté de ce qu’il nous donne. Paul dit la même chose : « les souffrances du temps présent ne sauraient être comparées à la gloire à venir qui sera révélée pour nous ».</p> <p>Il ne s’agit pas d’être morbide ou angoissé par la mort. Si penser à la mort te fait peur ou te rend très triste, parles-en, s’il te plaît, à quelqu’un en qui tu as confiance. Le but est de voir chaque jour comme précieux, et de bien le vivre : sans rancune, sans temps perdu, et sans rien laisser en suspens avec Dieu ou avec les autres.</p> <p>Que ferais-tu autrement aujourd’hui si tu savais que c’est ton dernier jour ? Demander pardon à quelqu’un ? Dire à quelqu’un que tu l’aimes ? Prier ? Antoine te dirait : fais-le aujourd’hui.</p> <p><strong>Une chose à faire cette semaine :</strong> chaque soir de cette semaine, avant de dormir, demande-toi : « Y a-t-il quelqu’un à qui je dois pardonner, ou quelque chose que je dois mettre en ordre avec Dieu ? » Règle-le avant de dormir, comme le disait Antoine.</p>",
+  "study_questions": [
+   {
+    "question": "Que voulait dire Antoine par vivre « comme mourant chaque jour » ?",
+    "answer": "Considérer chaque jour comme peut-être le dernier, afin de ne pas pécher, de ne pas garder de rancune et de ne pas courir après les trésors de la terre."
+   },
+   {
+    "question": "Que disait Antoine du prix de la vie éternelle ?",
+    "answer": "Que, si toute chose dans le monde se vend à son prix, la promesse de la vie éternelle s’achète pour presque rien."
+   },
+   {
+    "question": "Concrètement, à quoi nous aide le fait de vivre comme mourant chaque jour ?",
+    "answer": "À pardonner à tous, à éviter l’avidité et les mauvais désirs, et à vivre chaque jour prêts pour Dieu."
+   }
+  ],
+  "body_text": "« Enseigne-nous à bien compter nos jours, Afin que nous appliquions notre cœur à la sagesse. » — Psaume 90:12 L’un des conseils les plus célèbres d’Antoine porte sur la manière de vivre chaque jour. Il reprit la parole de Paul, « Je meurs chaque jour », et lui donna un sens pratique : « Car si nous aussi nous vivons comme mourant chaque jour, nous ne pécherons pas. » Il expliquait : quand tu te lèves le matin, pense que tu ne vivras peut-être pas jusqu’au soir. Quand tu vas te coucher, pense que tu ne te réveilleras peut-être pas. Notre vie est incertaine, et chaque jour est un cadeau de Dieu. Cela peut sembler sinistre, mais Antoine voulait dire tout le contraire. Il disait que vivre ainsi nous libère de bien des choses. Nous ne garderons pas de rancune, car « nous pardonnerons tout à tous ». Nous ne serons pas avides, et nous n’amasserons pas de trésors sur la terre. Nous ne nous laisserons pas mener par de mauvais désirs. Nous serons prêts. Antoine aidait aussi ses auditeurs à voir combien la vie est courte à côté de l’éternité. Même si nous vivons quatre-vingts ou cent ans, ce n’est rien à côté de ce qui n’aura pas de fin. Et puis il dit une chose remarquable : dans ce monde, toute chose se vend à son prix, « mais la promesse de la vie éternelle s’achète pour presque rien ». Autrement dit, tout ce que nous abandonnons pour Dieu est minuscule à côté de ce qu’il nous donne. Paul dit la même chose : « les souffrances du temps présent ne sauraient être comparées à la gloire à venir qui sera révélée pour nous ». Il ne s’agit pas d’être morbide ou angoissé par la mort. Si penser à la mort te fait peur ou te rend très triste, parles-en, s’il te plaît, à quelqu’un en qui tu as confiance. Le but est de voir chaque jour comme précieux, et de bien le vivre : sans rancune, sans temps perdu, et sans rien laisser en suspens avec Dieu ou avec les autres. Que ferais-tu autrement aujourd’hui si tu savais que c’est ton dernier jour ? Demander pardon à quelqu’un ? Dire à quelqu’un que tu l’aimes ? Prier ? Antoine te dirait : fais-le aujourd’hui. Une chose à faire cette semaine : chaque soir de cette semaine, avant de dormir, demande-toi : « Y a-t-il quelqu’un à qui je dois pardonner, ou quelque chose que je dois mettre en ordre avec Dieu ? » Règle-le avant de dormir, comme le disait Antoine.",
+  "word_count": 435
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "fr"
+  ],
+  "order": 9,
+  "title": "Écris-le",
+  "body_html": "<blockquote>« Si vous vous mettez en colère, ne péchez point ; que le soleil ne se couche pas sur votre colère. » — Éphésiens 4:26</blockquote> <p>Antoine avait des habitudes très pratiques pour rester proche de Dieu.</p> <p>Il rappelait souvent aux gens la parole de Paul : « que le soleil ne se couche pas sur votre colère ». Antoine disait que cela ne valait pas seulement pour la colère, mais pour tout péché. Ne laisse pas le soleil se coucher sur un péché sans t’en occuper.</p> <p>Il encourageait donc chacun à repasser chaque journée et chaque nuit : « s’il a péché, qu’il cesse » ; et sinon, à rendre grâce sans s’enorgueillir.</p> <p>Puis il proposa une chose qu’on n’attendrait pas d’un homme qui n’avait jamais appris à lire ni à écrire :</p> <blockquote>« Que chacun de nous remarque et mette par écrit ses actions et les mouvements de son âme, comme s’il devait les raconter aux autres. »</blockquote> <p>Son raisonnement était simple. Personne n’a envie d’être vu en train de mal faire. Si tu imagines que tu vas montrer ton journal à un ami, tu feras plus attention à ce que tu fais et à ce que tu penses. Mettre les choses par écrit t’aide à être honnête avec toi-même.</p> <p>Aujourd’hui, on appellerait cela tenir un journal, ou faire le bilan de sa journée. C’est une excellente habitude. Pas besoin que ce soit long. Quelques lignes chaque soir, où tu notes ce que tu as fait, ce que tu as ressenti, là où tu as eu du mal et là où tu as vu Dieu à l’œuvre, peuvent t’aider à grandir plus que tu ne le crois.</p> <p>Une mise en garde : il ne s’agit pas de te rabaisser sans cesse ni de tenir une longue liste de tes échecs. Ce que cherchait Antoine, c’était la liberté face au péché et la paix avec Dieu, pas l’angoisse. Si tu remarques que tu n’écris que du négatif sur toi-même, ajoute aussi ce pour quoi tu es reconnaissant, et là où tu as vu la grâce de Dieu.</p> <p>Le conseil quotidien d’Antoine aux moines était simple : « Croyez au Seigneur et aimez-le […] Priez continuellement ; fuyez la vaine gloire ; chantez des psaumes avant le sommeil et au réveil ; gardez dans votre cœur les commandements de l’Écriture. » C’est un bon programme pour tout le monde.</p> <p><strong>Une chose à faire cette semaine :</strong> commence un journal tout simple. Chaque soir, écris trois lignes : une chose pour laquelle tu es reconnaissant, un moment où tu as eu du mal ou péché, et une prière pour le lendemain. Avant de dormir, assure-toi d’avoir apporté à Dieu tout ce qui n’allait pas.</p>",
+  "study_questions": [
+   {
+    "question": "Comment Antoine appliquait-il la parole « que le soleil ne se couche pas sur votre colère » ?",
+    "answer": "À tout péché, pas seulement à la colère : il ne faut pas laisser une journée se terminer sans s’occuper d’un péché."
+   },
+   {
+    "question": "Pourquoi Antoine conseillait-il de mettre par écrit nos actions et nos pensées ?",
+    "answer": "Parce qu’imaginer que d’autres vont le lire nous rend plus honnêtes et plus attentifs, et nous aide à éviter le péché."
+   },
+   {
+    "question": "Quel était le conseil quotidien, tout simple, d’Antoine aux moines ?",
+    "answer": "Croire au Seigneur et l’aimer, prier continuellement, fuir la vaine gloire, chanter des psaumes avant le sommeil et au réveil, et garder l’Écriture dans son cœur."
+   }
+  ],
+  "body_text": "« Si vous vous mettez en colère, ne péchez point ; que le soleil ne se couche pas sur votre colère. » — Éphésiens 4:26 Antoine avait des habitudes très pratiques pour rester proche de Dieu. Il rappelait souvent aux gens la parole de Paul : « que le soleil ne se couche pas sur votre colère ». Antoine disait que cela ne valait pas seulement pour la colère, mais pour tout péché. Ne laisse pas le soleil se coucher sur un péché sans t’en occuper. Il encourageait donc chacun à repasser chaque journée et chaque nuit : « s’il a péché, qu’il cesse » ; et sinon, à rendre grâce sans s’enorgueillir. Puis il proposa une chose qu’on n’attendrait pas d’un homme qui n’avait jamais appris à lire ni à écrire : « Que chacun de nous remarque et mette par écrit ses actions et les mouvements de son âme, comme s’il devait les raconter aux autres. » Son raisonnement était simple. Personne n’a envie d’être vu en train de mal faire. Si tu imagines que tu vas montrer ton journal à un ami, tu feras plus attention à ce que tu fais et à ce que tu penses. Mettre les choses par écrit t’aide à être honnête avec toi-même. Aujourd’hui, on appellerait cela tenir un journal, ou faire le bilan de sa journée. C’est une excellente habitude. Pas besoin que ce soit long. Quelques lignes chaque soir, où tu notes ce que tu as fait, ce que tu as ressenti, là où tu as eu du mal et là où tu as vu Dieu à l’œuvre, peuvent t’aider à grandir plus que tu ne le crois. Une mise en garde : il ne s’agit pas de te rabaisser sans cesse ni de tenir une longue liste de tes échecs. Ce que cherchait Antoine, c’était la liberté face au péché et la paix avec Dieu, pas l’angoisse. Si tu remarques que tu n’écris que du négatif sur toi-même, ajoute aussi ce pour quoi tu es reconnaissant, et là où tu as vu la grâce de Dieu. Le conseil quotidien d’Antoine aux moines était simple : « Croyez au Seigneur et aimez-le […] Priez continuellement ; fuyez la vaine gloire ; chantez des psaumes avant le sommeil et au réveil ; gardez dans votre cœur les commandements de l’Écriture. » C’est un bon programme pour tout le monde. Une chose à faire cette semaine : commence un journal tout simple. Chaque soir, écris trois lignes : une chose pour laquelle tu es reconnaissant, un moment où tu as eu du mal ou péché, et une prière pour le lendemain. Avant de dormir, assure-toi d’avoir apporté à Dieu tout ce qui n’allait pas.",
+  "word_count": 452
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "fr"
+  ],
+  "order": 10,
+  "title": "Aux côtés des persécutés",
+  "body_html": "<blockquote>« Souvenez-vous des prisonniers, comme si vous étiez aussi prisonniers ; de ceux qui sont maltraités, comme étant aussi vous-mêmes dans un corps. » — Hébreux 13:3</blockquote> <p>En 311, un empereur romain nommé Maximin déclencha en Égypte une cruelle persécution contre les chrétiens. Beaucoup de croyants furent arrêtés et emmenés à Alexandrie pour y être jugés, et certains furent mis à mort pour leur foi.</p> <p>Antoine quitta sa cellule du désert et se rendit à Alexandrie. « Allons-y, nous aussi », dit-il, pour que, s’ils étaient appelés, ils puissent se tenir aux côtés de ceux qui souffraient.</p> <p>Athanase raconte qu’Antoine désirait ardemment être lui-même martyr, mais il ne se livra pas. Il passa plutôt son temps à prendre soin des chrétiens arrêtés : il visitait ceux qui étaient en prison et dans les mines où on les forçait à travailler, encourageait ceux qui passaient en jugement à rester fidèles, et restait avec les condamnés jusqu’au bout.</p> <p>Le gouverneur ordonna qu’aucun moine ne paraisse au tribunal ni ne reste dans la ville. Les autres moines se cachèrent. Mais Antoine lava son manteau et se tint le lendemain sur un lieu élevé, là où le gouverneur le verrait, « montrant la promptitude de nous autres chrétiens ». Il ne cherchait pas à être imprudent. Il refusait de se laisser effrayer au point d’abandonner ses amis.</p> <p>Antoine ne fut pas martyrisé. Athanase dit que Dieu le garda en vie pour qu’il enseigne beaucoup d’autres personnes. Mais ce chapitre montre son courage et son amour pour ceux qui souffraient.</p> <p>Aujourd’hui, des chrétiens sont encore persécutés dans bien des régions du monde. L’épître aux Hébreux nous dit de nous souvenir d’eux comme si nous étions en prison avec eux. Nous pouvons prier pour eux, nous informer à leur sujet et soutenir les organisations qui leur viennent en aide.</p> <p>Plus près de toi, tu peux te tenir aux côtés de ceux qu’on harcèle ou qu’on met à l’écart. Cela demande du courage, aussi. Antoine ne détournait pas les yeux de la souffrance. Il allait vers elle.</p> <p>Un mot de sagesse : se tenir aux côtés des autres ne veut pas dire se mettre réellement en danger. Si quelqu’un est harcelé ou maltraité, le plus courageux et le plus sage est souvent d’en parler à un adulte de confiance et de rester près de la personne qui souffre.</p> <p><strong>Une chose à faire cette semaine :</strong> renseigne-toi sur un pays où les chrétiens sont persécutés aujourd’hui, et prie pour eux chaque jour. Et repère, au collège ou au lycée, quelqu’un qu’on laisse de côté ou qu’on harcèle, et tiens-toi à ses côtés de manière concrète.</p>",
+  "study_questions": [
+   {
+    "question": "Que fit Antoine pendant la persécution de 311 ?",
+    "answer": "Il se rendit à Alexandrie et prit soin des chrétiens arrêtés, dans les prisons et dans les mines ; il encouragea ceux qui passaient en jugement et resta avec les condamnés jusqu’au bout."
+   },
+   {
+    "question": "Que fit Antoine quand le gouverneur ordonna aux moines de quitter les tribunaux et la ville ?",
+    "answer": "Il lava son manteau et se tint le lendemain sur un lieu élevé où le gouverneur le verrait, montrant qu’il n’avait pas peur."
+   },
+   {
+    "question": "Comment pouvons-nous vivre Hébreux 13:3 aujourd’hui ?",
+    "answer": "En priant pour les chrétiens persécutés et en les soutenant, et en nous tenant aux côtés des gens qui souffrent près de nous, avec sagesse et avec l’aide d’adultes de confiance."
+   }
+  ],
+  "body_text": "« Souvenez-vous des prisonniers, comme si vous étiez aussi prisonniers ; de ceux qui sont maltraités, comme étant aussi vous-mêmes dans un corps. » — Hébreux 13:3 En 311, un empereur romain nommé Maximin déclencha en Égypte une cruelle persécution contre les chrétiens. Beaucoup de croyants furent arrêtés et emmenés à Alexandrie pour y être jugés, et certains furent mis à mort pour leur foi. Antoine quitta sa cellule du désert et se rendit à Alexandrie. « Allons-y, nous aussi », dit-il, pour que, s’ils étaient appelés, ils puissent se tenir aux côtés de ceux qui souffraient. Athanase raconte qu’Antoine désirait ardemment être lui-même martyr, mais il ne se livra pas. Il passa plutôt son temps à prendre soin des chrétiens arrêtés : il visitait ceux qui étaient en prison et dans les mines où on les forçait à travailler, encourageait ceux qui passaient en jugement à rester fidèles, et restait avec les condamnés jusqu’au bout. Le gouverneur ordonna qu’aucun moine ne paraisse au tribunal ni ne reste dans la ville. Les autres moines se cachèrent. Mais Antoine lava son manteau et se tint le lendemain sur un lieu élevé, là où le gouverneur le verrait, « montrant la promptitude de nous autres chrétiens ». Il ne cherchait pas à être imprudent. Il refusait de se laisser effrayer au point d’abandonner ses amis. Antoine ne fut pas martyrisé. Athanase dit que Dieu le garda en vie pour qu’il enseigne beaucoup d’autres personnes. Mais ce chapitre montre son courage et son amour pour ceux qui souffraient. Aujourd’hui, des chrétiens sont encore persécutés dans bien des régions du monde. L’épître aux Hébreux nous dit de nous souvenir d’eux comme si nous étions en prison avec eux. Nous pouvons prier pour eux, nous informer à leur sujet et soutenir les organisations qui leur viennent en aide. Plus près de toi, tu peux te tenir aux côtés de ceux qu’on harcèle ou qu’on met à l’écart. Cela demande du courage, aussi. Antoine ne détournait pas les yeux de la souffrance. Il allait vers elle. Un mot de sagesse : se tenir aux côtés des autres ne veut pas dire se mettre réellement en danger. Si quelqu’un est harcelé ou maltraité, le plus courageux et le plus sage est souvent d’en parler à un adulte de confiance et de rester près de la personne qui souffre. Une chose à faire cette semaine : renseigne-toi sur un pays où les chrétiens sont persécutés aujourd’hui, et prie pour eux chaque jour. Et repère, au collège ou au lycée, quelqu’un qu’on laisse de côté ou qu’on harcèle, et tiens-toi à ses côtés de manière concrète.",
+  "word_count": 437
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "fr"
+  ],
+  "order": 11,
+  "title": "L’intelligence ou les lettres ?",
+  "body_html": "<blockquote>« Mais Dieu a choisi les choses folles du monde pour confondre les sages ; Dieu a choisi les choses faibles du monde pour confondre les fortes. » — 1 Corinthiens 1:27</blockquote> <p>Antoine n’apprit jamais à lire ni à écrire. Mais à mesure que sa renommée grandissait, des gens instruits vinrent le voir : certains pour apprendre, d’autres pour le mettre à l’épreuve, d’autres encore pour se moquer de lui.</p> <p>Un jour, deux philosophes grecs arrivèrent. Antoine leur demanda, par un interprète, pourquoi ils s’étaient donné la peine de venir voir « un homme insensé ». Quand ils répondirent qu’il n’était pas insensé, mais très sage, il répliqua : alors devenez comme moi, « car je suis chrétien ».</p> <p>Une autre fois, des visiteurs voulurent se moquer de lui parce qu’il n’avait pas d’instruction. Antoine leur posa une question :</p> <blockquote>« Que dites-vous ? Qu’est-ce qui vient en premier, l’intelligence ou les lettres ? Et lequel est la cause de l’autre — l’intelligence des lettres, ou les lettres de l’intelligence ? »</blockquote> <p>Ils reconnurent que l’intelligence vient en premier et qu’elle a inventé l’écriture. « Celui donc qui a l’intelligence saine n’a pas besoin des lettres », dit Antoine. Tout le monde en resta stupéfait.</p> <p>Antoine ne disait pas que l’instruction est une mauvaise chose. Tu dois travailler sérieusement à l’école. Il disait que la vraie sagesse vient de la connaissance de Dieu, et pas seulement des livres. Athanase note que les manières d’Antoine n’étaient pas rudes, mais « gracieuses et courtoises, et sa parole était assaisonnée du sel divin ».</p> <p>Même les empereurs entendirent parler de lui. L’empereur Constantin et ses fils écrivirent à Antoine pour lui demander une réponse. Les autres moines étaient tout excités, mais Antoine leur dit :</p> <blockquote>« Ne vous étonnez pas qu’un empereur nous écrive, car c’est un homme ; étonnez-vous plutôt que Dieu ait écrit la Loi pour les hommes et qu’il nous ait parlé par son propre Fils. »</blockquote> <p>Il répondit aux empereurs en leur rappelant que le Christ seul est le Roi véritable et éternel, et en leur demandant d’être miséricordieux, de se soucier de la justice et de prendre soin des pauvres.</p> <p>Antoine n’était pas impressionné par la célébrité ou le rang. Ce qui l’impressionnait, c’était Dieu. C’est une bonne attitude à emporter dans un monde qui se laisse tellement impressionner par les gens célèbres.</p> <p><strong>Une chose à faire cette semaine :</strong> remarque combien de fois tu es impressionné par des gens célèbres ou importants. Chaque fois, rappelle-toi les paroles d’Antoine : le plus extraordinaire, c’est que Dieu nous a parlé par son Fils. Prends un moment pour lire ce que Jésus a dit.</p>",
+  "study_questions": [
+   {
+    "question": "Quelle question Antoine posa-t-il à ceux qui se moquaient de son manque d’instruction ?",
+    "answer": "Qu’est-ce qui vient en premier, l’intelligence ou les lettres, et lequel est la cause de l’autre ?"
+   },
+   {
+    "question": "Comment Antoine réagit-il aux lettres des empereurs ?",
+    "answer": "Il dit aux moines de ne pas s’étonner, puisqu’un empereur n’est qu’un homme, mais de s’émerveiller plutôt que Dieu nous ait parlé par son Fils."
+   },
+   {
+    "question": "Que conseilla Antoine aux empereurs ?",
+    "answer": "De se souvenir que le Christ seul est le Roi véritable et éternel, et d’être miséricordieux, justes et attentifs aux pauvres."
+   }
+  ],
+  "body_text": "« Mais Dieu a choisi les choses folles du monde pour confondre les sages ; Dieu a choisi les choses faibles du monde pour confondre les fortes. » — 1 Corinthiens 1:27 Antoine n’apprit jamais à lire ni à écrire. Mais à mesure que sa renommée grandissait, des gens instruits vinrent le voir : certains pour apprendre, d’autres pour le mettre à l’épreuve, d’autres encore pour se moquer de lui. Un jour, deux philosophes grecs arrivèrent. Antoine leur demanda, par un interprète, pourquoi ils s’étaient donné la peine de venir voir « un homme insensé ». Quand ils répondirent qu’il n’était pas insensé, mais très sage, il répliqua : alors devenez comme moi, « car je suis chrétien ». Une autre fois, des visiteurs voulurent se moquer de lui parce qu’il n’avait pas d’instruction. Antoine leur posa une question : « Que dites-vous ? Qu’est-ce qui vient en premier, l’intelligence ou les lettres ? Et lequel est la cause de l’autre — l’intelligence des lettres, ou les lettres de l’intelligence ? » Ils reconnurent que l’intelligence vient en premier et qu’elle a inventé l’écriture. « Celui donc qui a l’intelligence saine n’a pas besoin des lettres », dit Antoine. Tout le monde en resta stupéfait. Antoine ne disait pas que l’instruction est une mauvaise chose. Tu dois travailler sérieusement à l’école. Il disait que la vraie sagesse vient de la connaissance de Dieu, et pas seulement des livres. Athanase note que les manières d’Antoine n’étaient pas rudes, mais « gracieuses et courtoises, et sa parole était assaisonnée du sel divin ». Même les empereurs entendirent parler de lui. L’empereur Constantin et ses fils écrivirent à Antoine pour lui demander une réponse. Les autres moines étaient tout excités, mais Antoine leur dit : « Ne vous étonnez pas qu’un empereur nous écrive, car c’est un homme ; étonnez-vous plutôt que Dieu ait écrit la Loi pour les hommes et qu’il nous ait parlé par son propre Fils. » Il répondit aux empereurs en leur rappelant que le Christ seul est le Roi véritable et éternel, et en leur demandant d’être miséricordieux, de se soucier de la justice et de prendre soin des pauvres. Antoine n’était pas impressionné par la célébrité ou le rang. Ce qui l’impressionnait, c’était Dieu. C’est une bonne attitude à emporter dans un monde qui se laisse tellement impressionner par les gens célèbres. Une chose à faire cette semaine : remarque combien de fois tu es impressionné par des gens célèbres ou importants. Chaque fois, rappelle-toi les paroles d’Antoine : le plus extraordinaire, c’est que Dieu nous a parlé par son Fils. Prends un moment pour lire ce que Jésus a dit.",
+  "word_count": 444
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "life-of-antony-teens",
+   "fr"
+  ],
+  "order": 12,
+  "title": "La peau de brebis du vieillard",
+  "body_html": "<blockquote>« J’ai combattu le bon combat, j’ai achevé la course, j’ai gardé la foi. » — 2 Timothée 4:7</blockquote> <p>Antoine vécut jusqu’à environ 105 ans. Athanase raconte que, même dans sa vieillesse, il resta robuste. Sa vue était claire, il avait encore ses dents, et ses mains et ses pieds restaient solides. Il garda sa bonne humeur jusqu’à la fin.</p> <p>Athanase souligne aussi un point important au sujet des miracles d’Antoine. Quand des gens étaient guéris par ses prières, Antoine insistait : c’était le Christ qui guérissait, pas lui. Il ne voulait jamais la gloire pour lui-même.</p> <p>Quand il sut qu’il allait mourir, Antoine appela les deux moines qui prenaient soin de lui depuis quinze ans. Ses dernières paroles pour eux furent simples et pleines d’amour. Il leur dit de ne pas abandonner ce qu’ils avaient commencé, mais de tenir bon, « comme si vous ne faisiez que commencer ». Et puis :</p> <blockquote>« C’est pourquoi ne les craignez pas, mais plutôt respirez toujours le Christ et confiez-vous en lui. Vivez comme mourant chaque jour. »</blockquote> <p>« Respirez toujours le Christ. » Quelle belle expression ! De même que tu respires sans t’arrêter, laisse le Christ remplir chaque instant de ta vie.</p> <p>Il leur demanda de l’enterrer discrètement, dans un endroit que personne d’autre ne connaîtrait, car il ne voulait pas qu’on fasse des histoires autour de son corps. Et il donna ses quelques affaires. L’une de ses peaux de brebis alla à son ami, l’évêque Athanase, avec le manteau sur lequel il était couché : Athanase le lui avait donné neuf, des années plus tôt, et ce manteau avait vieilli avec lui.</p> <p>Puis Athanase décrit sa mort. Antoine leva les pieds, et son visage s’illumina de joie, « comme s’il voyait des amis venir à lui et se réjouissait à cause d’eux », et il mourut.</p> <p>Athanase dit qu’Antoine devint célèbre dans le monde entier, en Espagne, en Gaule, à Rome et en Afrique, non par des livres ni par la sagesse du monde, « mais uniquement par sa piété envers Dieu ».</p> <p>Antoine avait commencé comme un ado qui avait entendu un verset et y avait obéi. Il finit comme un vieil homme qui avait gardé la foi pendant près de quatre-vingt-dix ans. Ta vie avec Dieu sera peut-être très différente de la sienne. Mais elle peut commencer de la même façon : en entendant Jésus parler, et en lui disant oui.</p> <p><strong>Une chose à faire cette semaine :</strong> écris les dernières paroles d’Antoine, « respirez toujours le Christ », quelque part où tu les verras. Cette semaine, essaie de tourner tes pensées vers Jésus à des moments réguliers de la journée : au réveil, aux repas, pendant tes trajets, au coucher.</p>",
+  "study_questions": [
+   {
+    "question": "Qui, selon Antoine, guérissait les gens par ses prières ?",
+    "answer": "Le Christ, et non lui-même."
+   },
+   {
+    "question": "Que voulait dire Antoine par « respirez toujours le Christ » ?",
+    "answer": "Laisser le Christ remplir chaque instant de la vie, comme nous respirons sans nous arrêter."
+   },
+   {
+    "question": "Que laissa Antoine à Athanase ?",
+    "answer": "L’une de ses peaux de brebis, et le manteau sur lequel il était couché, qu’Athanase lui avait donné neuf et qui avait vieilli avec lui."
+   }
+  ],
+  "body_text": "« J’ai combattu le bon combat, j’ai achevé la course, j’ai gardé la foi. » — 2 Timothée 4:7 Antoine vécut jusqu’à environ 105 ans. Athanase raconte que, même dans sa vieillesse, il resta robuste. Sa vue était claire, il avait encore ses dents, et ses mains et ses pieds restaient solides. Il garda sa bonne humeur jusqu’à la fin. Athanase souligne aussi un point important au sujet des miracles d’Antoine. Quand des gens étaient guéris par ses prières, Antoine insistait : c’était le Christ qui guérissait, pas lui. Il ne voulait jamais la gloire pour lui-même. Quand il sut qu’il allait mourir, Antoine appela les deux moines qui prenaient soin de lui depuis quinze ans. Ses dernières paroles pour eux furent simples et pleines d’amour. Il leur dit de ne pas abandonner ce qu’ils avaient commencé, mais de tenir bon, « comme si vous ne faisiez que commencer ». Et puis : « C’est pourquoi ne les craignez pas, mais plutôt respirez toujours le Christ et confiez-vous en lui. Vivez comme mourant chaque jour. » « Respirez toujours le Christ. » Quelle belle expression ! De même que tu respires sans t’arrêter, laisse le Christ remplir chaque instant de ta vie. Il leur demanda de l’enterrer discrètement, dans un endroit que personne d’autre ne connaîtrait, car il ne voulait pas qu’on fasse des histoires autour de son corps. Et il donna ses quelques affaires. L’une de ses peaux de brebis alla à son ami, l’évêque Athanase, avec le manteau sur lequel il était couché : Athanase le lui avait donné neuf, des années plus tôt, et ce manteau avait vieilli avec lui. Puis Athanase décrit sa mort. Antoine leva les pieds, et son visage s’illumina de joie, « comme s’il voyait des amis venir à lui et se réjouissait à cause d’eux », et il mourut. Athanase dit qu’Antoine devint célèbre dans le monde entier, en Espagne, en Gaule, à Rome et en Afrique, non par des livres ni par la sagesse du monde, « mais uniquement par sa piété envers Dieu ». Antoine avait commencé comme un ado qui avait entendu un verset et y avait obéi. Il finit comme un vieil homme qui avait gardé la foi pendant près de quatre-vingt-dix ans. Ta vie avec Dieu sera peut-être très différente de la sienne. Mais elle peut commencer de la même façon : en entendant Jésus parler, et en lui disant oui. Une chose à faire cette semaine : écris les dernières paroles d’Antoine, « respirez toujours le Christ », quelque part où tu les verras. Cette semaine, essaie de tourner tes pensées vers Jésus à des moments réguliers de la journée : au réveil, aux repas, pendant tes trajets, au coucher.",
+  "word_count": 454
+ }
+}
+]
