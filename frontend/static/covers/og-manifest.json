@@ -11859,6 +11859,16 @@
 				376
 			]
 		},
+		"ko/absolute-surrender": {
+			"ground": "91125984b699300a36a132503dede33a26c71398f481ab9b6cfd59d176ae634c",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"ko/baptism-with-the-holy-spirit": {
 			"ground": "b9479745ae2364f4a76040c71c10063d58f26fd40268f5d818fc8a54a057d8ce",
 			"style": "revival",
