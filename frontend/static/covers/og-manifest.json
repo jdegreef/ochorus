@@ -8493,6 +8493,36 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"fr/mortification-of-sin": {
+			"ground": "49e06520cdbb76e170db4f641f29c4b7c7222f0558d5708fe9e9bb2a482ed8a7",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[78, 278, 522, 351],
+					[135, 337, 465, 410],
+					[164, 396, 436, 469]
+				],
+				"subtitle": [
+					[76, 522, 524, 543]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				252,
+				543
+			]
+		},
 		"fr/necessity-of-prayer": {
 			"ground": "58dbe05a961d5deb8908899892b01438b3f8d24f388e4cbf99429ff1baad4ea1",
 			"style": "devotional",
@@ -8997,6 +9027,34 @@
 			"scrim": 1,
 			"layout": "band/oxblood",
 			"bar": 0
+		},
+		"fr/the-bruised-reed": {
+			"ground": "2e5a9b19c6edb29da97ff7312bc4812f80593cfbca9655a3efb1cae9c76c602e",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[153, 102, 447, 131]
+				],
+				"title": [
+					[90, 337, 510, 410]
+				],
+				"subtitle": [
+					[142, 463, 458, 484]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				311,
+				484
+			]
 		},
 		"fr/the-christians-secret-of-a-happy-life-4": {
 			"ground": "78e2ee4d0a5719f9eb3f5106947b68924d5812a1fe276d93e84d084327d7766e",

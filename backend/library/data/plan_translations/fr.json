@@ -104,7 +104,8 @@
   "title": "Le cœur puritain",
   "description": "Huit semaines avec trois maîtres de la vie intérieure. Richard Sibbes panse le roseau froissé, John Owen livre combat au péché qui habite encore en nous, et Thomas Watson fait reposer toute la lutte sur la promesse que toutes choses concourent au bien.",
   "note": [
-   "Job #3022. Prose-ahead: source books (the-bruised-reed, mortification-of-sin, all-things-for-good) have no French edition yet, so seed_plans creates no fr row; dormant until they are translated."
+   "Job #3022. Prose-ahead: source books (the-bruised-reed, mortification-of-sin, all-things-for-good) have no French edition yet, so seed_plans creates no fr row; dormant until they are translated.",
+   "2026-10-13: the-bruised-reed.fr (« Le Roseau froissé ») and mortification-of-sin.fr (« De la mortification du péché chez les croyants ») ship together and complete the set — all-things-for-good.fr was already live — so seed_plans now creates the (the-puritan-heart, fr) row."
   ]
  },
  "pursuit-of-holiness": {
