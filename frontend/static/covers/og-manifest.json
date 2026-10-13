@@ -11879,6 +11879,16 @@
 			"layout": "diagonal/ochre",
 			"bar": 0.085
 		},
+		"ko/gleanings-among-the-sheaves": {
+			"ground": "d90914e34a383a2c53285d3437fc826135b791fcabd91908ea302e67f0cd4bcb",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"ko/true-vine": {
 			"ground": "b7875842ddd499da63400547c79f267ea1402c059e9b58eb89ee18e19d2bab38",
 			"style": "devotional",
