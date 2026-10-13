@@ -14010,6 +14010,31 @@
 				478
 			]
 		},
+		"pt/feasting-at-the-table": {
+			"ground": "6dda8fede6c88612a0558cfba72899da0e536239b5309f39e64faf84eb830672",
+			"style": "lettered",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[44, 344, 556, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				355,
+				439
+			]
+		},
 		"pt/gleanings-among-the-sheaves": {
 			"ground": "faff5c2c2ea1a2855af9a50f49b2cbfb760524820994711194fcdb57252c6b45",
 			"style": "revival",
