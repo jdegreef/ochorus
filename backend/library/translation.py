@@ -133,12 +133,13 @@ _VERSE_REPAIRS: dict[str, tuple[tuple[str, str], ...]] = {
     "korean": (
         ("침례", "세례"),
         # Two of Take Root's own typos, each checked against the ebible mirror:
-        # Hebrews 4:12 (좌우에 날선), Isaiah 45:22 (그리하면 구원을) and Romans 8:11
-        # (가운데서). Long
+        # Hebrews 4:12 (좌우에 날선), Isaiah 45:22 (그리하면 구원을), Romans 8:11
+        # (가운데서) and Ruth 2:15 (룻이). Long
         # enough to match nowhere else.
         ("죄우에 날선", "좌우에 날선"),
         ("앙망하라 그리하며 구원", "앙망하라 그리하면 구원"),
         ("죽은 자 가운게서", "죽은 자 가운데서"),  # Romans 8:11
+        ("롯이 이삭을 주우러", "룻이 이삭을 주우러"),  # Ruth 2:15 (롯 is Lot)
     ),
 }
 
