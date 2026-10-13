@@ -3,7 +3,7 @@
  "slug": "feasting-at-the-table",
  "language": "pt",
  "job_issue": 2684,
- "pull_request": null,
+ "pull_request": 6118,
  "note": [
   "Scripture follows the Bíblia Livre (porbrbsl; ebible mirror por_bpm, USFM), the Bible the shipped Portuguese library quotes. Rows were derived by measurement: a row is `mined` only when the translator claimed Bíblia Livre wording AND the block contains either a quoted span that is a verbatim Bíblia Livre substring or a run of six consecutive Bíblia Livre words. Everything else is `self_rendered` with the translator's reason.",
   "Evans quotes modern English Bibles (NIV/NASB/ESV-style); where the Bíblia Livre lacks a word his sentence turns on, only its own words sit inside the quotation marks. His (NASB)/(KJV) labels in chapter 1 were dropped because the words shown are now Bíblia Livre. AI-drafted, awaiting native review."
