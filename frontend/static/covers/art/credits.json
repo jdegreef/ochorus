@@ -71,6 +71,12 @@
 		"year": "1646",
 		"credit": "Jan van Goyen, “The Pelkus Gate near Utrecht” (1646). The Metropolitan Museum of Art, Open Access."
 	},
+	"at-the-masters-feet": {
+		"artist": "Samuel Bourne",
+		"title": "The Upper Himmalayahs. View on the New Road between India and China. Mt. Pangi with the Snowy Peaks of China in the Distance",
+		"year": "1863 or 1866",
+		"credit": "Samuel Bourne, “The Upper Himmalayahs. View on the New Road between India and China. Mt. Pangi with the Snowy Peaks of China in the Distance” (1863 or 1866). The Cleveland Museum of Art, CC0."
+	},
 	"cheque-book": {
 		"artist": "Joseph Anton Koch",
 		"title": "Heroic Landscape with Rainbow",
@@ -203,6 +209,12 @@
 		"year": "1874",
 		"credit": "Gustave Courbet, “An Alpine Scene” (1874). The Art Institute of Chicago, CC0."
 	},
+	"how-i-became-a-christian": {
+		"artist": "Sōami",
+		"title": "Landscape",
+		"year": "early 1500s",
+		"credit": "Sōami, “Landscape” (early 1500s). The Cleveland Museum of Art, CC0."
+	},
 	"how-to-bring-men-to-christ": {
 		"artist": "Gustave Courbet",
 		"title": "The Fishing Boat",
@@ -292,6 +304,18 @@
 		"title": "La Magdalena",
 		"year": "1854",
 		"credit": "Frederic Edwin Church, “La Magdalena” (1854). Wikimedia Commons, public domain."
+	},
+	"meditations-maria-w-stewart": {
+		"artist": "Artist unknown",
+		"title": "Boston Common",
+		"year": "1850–63",
+		"credit": "Artist unknown, “Boston Common” (1850–63). The Art Institute of Chicago, CC0."
+	},
+	"memoirs-of-mrs-zilpha-elaw": {
+		"artist": "Robert S. Duncanson",
+		"title": "View of Lake Pepin, Minnesota",
+		"year": "1862",
+		"credit": "Robert S. Duncanson, “View of Lake Pepin, Minnesota” (1862). The Cleveland Museum of Art, CC0."
 	},
 	"ministry-of-intercession": {
 		"artist": "Emanuel de Witte",
@@ -424,6 +448,12 @@
 		"title": "A Country Road",
 		"year": "1648",
 		"credit": "Salomon van Ruysdael, “A Country Road” (1648). The Metropolitan Museum of Art, Open Access."
+	},
+	"reality-and-religion": {
+		"artist": "Samuel Bourne",
+		"title": "Shimla. The Yarrows and Neighboring Hills",
+		"year": "1863–70",
+		"credit": "Samuel Bourne, “Shimla. The Yarrows and Neighboring Hills” (1863–70). The Cleveland Museum of Art, CC0."
 	},
 	"reality-of-prayer": {
 		"artist": "Joseph Bidauld",
@@ -640,5 +670,11 @@
 		"title": "Wood Interior",
 		"year": "c. 1910",
 		"credit": "Emil Carlsen, “Wood Interior” (c. 1910). The Cleveland Museum of Art, CC0."
+	},
+	"with-and-without-christ": {
+		"artist": "Edward Lear",
+		"title": "Hardwar, India",
+		"year": "1875",
+		"credit": "Edward Lear, “Hardwar, India” (1875). The Cleveland Museum of Art, CC0."
 	}
 }
