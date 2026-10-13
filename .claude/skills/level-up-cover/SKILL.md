@@ -409,7 +409,15 @@ Chrome, downscale with Pillow:
   --window-size=600,800 --screenshot=out@2x.png "file://$PWD/ground.html"
 python3 -c "from PIL import Image; Image.open('out@2x.png').convert('RGB').resize((600,800),Image.LANCZOS).save('ground.jpg',quality=90)"
 ```
-No cairosvg/rsvg/inkscape on this machine; Pillow + Chrome are present. Chrome CLI
+No cairosvg/rsvg/inkscape on this machine; Pillow + Chrome are present.
+Headless Chrome can exit NON-ZERO after writing the screenshot ("Teardown watchdog
+expired", ~10 s per call) — check that the png exists rather than the return code.
+**Take each concept from the edition's OWN text, not the adult book's.** The teen
+retellings (2026-10-13) drop famous images: grep the teen fixture for the image
+before drawing it (four of fourteen first concepts — Kempis's "little book",
+Meyer's harbour lights, Antony's baskets, a running track for Torrey — were not in
+the teen text and were redrawn from what is: the shut cell door, lights as a night
+train nears a town, the gold in the road, a lantern on the next stepping stone). Chrome CLI
 `--screenshot` is fine on a STATIC local file (the memory-noted hang is Vite-HMR-only).
 For a numbered series, hold hero/trail/frame/type CONSTANT and drive each book from a
 `palette` dict + ONE horizon-backdrop SVG string (Brave for God: dawn hills → sea+boat

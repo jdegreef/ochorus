@@ -157,7 +157,21 @@ export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
 	// it to a strip.
 	'grace-abounding-teens': null,
 	'confessions-teens': null,
-	'all-of-grace-teens': null
+	'all-of-grace-teens': null,
+	'absolute-surrender-teens': null,
+	'foxes-book-of-martyrs-teens': null,
+	'how-to-succeed-in-the-christian-life-teens': null,
+	'life-and-diary-of-david-brainerd-teens': null,
+	'life-of-antony-teens': null,
+	'mortification-of-sin-teens': null,
+	'orthodoxy-teens': null,
+	'pensees-teens': null,
+	'the-bruised-reed-teens': null,
+	'the-imitation-of-christ-teens': null,
+	'the-practice-of-the-presence-of-god-teens': null,
+	'the-pursuit-of-god-teens': null,
+	'the-secret-of-guidance-teens': null,
+	'the-way-to-god-teens': null
 };
 
 /**

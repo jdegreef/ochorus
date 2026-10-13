@@ -379,7 +379,21 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	// rather than their adult author's century.
 	'grace-abounding-teens': 'originals',
 	'confessions-teens': 'originals',
-	'all-of-grace-teens': 'originals'
+	'all-of-grace-teens': 'originals',
+	'absolute-surrender-teens': 'originals',
+	'foxes-book-of-martyrs-teens': 'originals',
+	'how-to-succeed-in-the-christian-life-teens': 'originals',
+	'life-and-diary-of-david-brainerd-teens': 'originals',
+	'life-of-antony-teens': 'originals',
+	'mortification-of-sin-teens': 'originals',
+	'orthodoxy-teens': 'originals',
+	'pensees-teens': 'originals',
+	'the-bruised-reed-teens': 'originals',
+	'the-imitation-of-christ-teens': 'originals',
+	'the-practice-of-the-presence-of-god-teens': 'originals',
+	'the-pursuit-of-god-teens': 'originals',
+	'the-secret-of-guidance-teens': 'originals',
+	'the-way-to-god-teens': 'originals'
 };
 
 /**
