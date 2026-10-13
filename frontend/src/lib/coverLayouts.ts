@@ -90,6 +90,8 @@ export const AUTHOR_LAYOUT: Record<string, CoverLayout> = {
 	'charles-h-spurgeon': { layout: 'band', hue: 'oxblood' },
 	'dwight-l-moody': { layout: 'wash', hue: 'ochre' },
 	'e-m-bounds': { layout: 'split', hue: 'navy' },
+	'g-k-chesterton': { layout: 'fade', hue: 'rust' },
+	'george-macdonald': { layout: 'wash', hue: 'indigo' },
 	'george-muller': { layout: 'split', hue: 'oxblood' },
 	'hudson-taylor': { layout: 'rail', hue: 'teal' },
 	'john-bunyan': { layout: 'band', hue: 'teal' },

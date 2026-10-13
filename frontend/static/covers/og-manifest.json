@@ -4008,25 +4008,9 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
-			"layout": "framed",
-			"bar": 0,
-			"rows": {
-				"byline": [
-					[115, 102, 485, 131]
-				],
-				"title": [
-					[120, 310, 480, 385],
-					[104, 371, 496, 446]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				317,
-				478
-			]
+			"scrim": 1,
+			"layout": "wash/indigo",
+			"bar": 0.11
 		},
 		"at-the-masters-feet": {
 			"ground": "a7392c62b15e86671437b504959000c0db0ce0b442d7a118bc65b9201c66254b",
@@ -4635,28 +4619,9 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.7,
-			"layout": "framed",
-			"bar": 0,
-			"rows": {
-				"byline": [
-					[115, 102, 485, 131]
-				],
-				"title": [
-					[139, 305, 461, 381],
-					[150, 370, 450, 446]
-				],
-				"subtitle": [
-					[193, 520, 407, 541]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				254,
-				541
-			]
+			"scrim": 1,
+			"layout": "wash/indigo",
+			"bar": 0.11
 		},
 		"divine-healing": {
 			"ground": "af714b6b1c4dd06581012c8a91eaf12ec964f029929dfed0a9327d179b0a45b2",
@@ -9660,24 +9625,9 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
-			"layout": "framed",
-			"bar": 0,
-			"rows": {
-				"byline": [
-					[137, 102, 463, 131]
-				],
-				"title": [
-					[191, 359, 409, 435]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				308,
-				487
-			]
+			"scrim": 1,
+			"layout": "fade/rust",
+			"bar": 0.11
 		},
 		"hi/absolute-surrender": {
 			"ground": "450a82d88d926b869f771cd08e1fa6c105facc09e8ed11152e22d532ba5688cb",
@@ -13145,24 +13095,9 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
-			"layout": "framed",
-			"bar": 0,
-			"rows": {
-				"byline": [
-					[137, 102, 463, 131]
-				],
-				"title": [
-					[160, 359, 440, 435]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				308,
-				487
-			]
+			"scrim": 1,
+			"layout": "fade/rust",
+			"bar": 0.11
 		},
 		"orthodoxy-teens": {
 			"ground": "180cc4cb60b5da3c10c91fd835fea3436eb83f19b4cba565caa82ea06a11b9e5",
@@ -13389,27 +13324,9 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.6,
-			"layout": "framed",
-			"bar": 0,
-			"rows": {
-				"byline": [
-					[115, 102, 485, 131]
-				],
-				"title": [
-					[159, 337, 442, 413]
-				],
-				"subtitle": [
-					[57, 487, 543, 508]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				287,
-				508
-			]
+			"scrim": 1,
+			"layout": "wash/indigo",
+			"bar": 0.11
 		},
 		"pilgrims-progress": {
 			"ground": "8127b1cc84e2573af44c41f4f7dfbf76f7e9ee51ea8beab21a3883579fd6e5a8",
@@ -15329,24 +15246,9 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
-			"layout": "framed",
-			"bar": 0,
-			"rows": {
-				"byline": [
-					[137, 102, 463, 131]
-				],
-				"title": [
-					[48, 359, 552, 435]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				308,
-				487
-			]
+			"scrim": 1,
+			"layout": "fade/rust",
+			"bar": 0.11
 		},
 		"susanna-wesley-clarke": {
 			"ground": "6951faa8a60fc830729da35de67d522c9460432498c712a38726b10a132065c4",
@@ -17413,25 +17315,9 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
-			"layout": "framed",
-			"bar": 0,
-			"rows": {
-				"byline": [
-					[137, 102, 463, 131]
-				],
-				"title": [
-					[97, 326, 503, 402],
-					[242, 391, 358, 467]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				275,
-				519
-			]
+			"scrim": 1,
+			"layout": "fade/rust",
+			"bar": 0.11
 		},
 		"the-fourfold-gospel": {
 			"ground": "db69f96349627742c737be57da3e78156d0cbc57c92d6ab8efd4dc4b8662a828",
@@ -17644,25 +17530,9 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.55,
-			"layout": "framed",
-			"bar": 0,
-			"rows": {
-				"byline": [
-					[115, 102, 485, 131]
-				],
-				"title": [
-					[139, 310, 461, 385],
-					[114, 371, 486, 446]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				317,
-				478
-			]
+			"scrim": 1,
+			"layout": "wash/indigo",
+			"bar": 0.11
 		},
 		"the-pursuit-of-god": {
 			"ground": "ac90ed259314f9e1044c7d3624e9dc3d57acc45f007acb7ea7e110ed93189f47",
@@ -18620,27 +18490,9 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
-			"layout": "framed",
-			"bar": 0,
-			"rows": {
-				"byline": [
-					[115, 102, 485, 131]
-				],
-				"title": [
-					[48, 337, 552, 413]
-				],
-				"subtitle": [
-					[188, 487, 412, 508]
-				],
-				"mark": [
-					[232, 664, 368, 746]
-				]
-			},
-			"middle": [
-				287,
-				508
-			]
+			"scrim": 1,
+			"layout": "wash/indigo",
+			"bar": 0.11
 		},
 		"waiting-on-god": {
 			"ground": "4953e3a74672ccc0d17902faaf8abbf55cef0962b5c9939cea1a6504a6b307b9",
