@@ -1,6 +1,6 @@
 import type { IconName } from '$lib/components/Icon.svelte';
 import { editionKind } from './edition';
-import { FOR_CHROME, listOf } from './forChrome';
+import { FOR_CHROME, languageName, listOf } from './forChrome';
 import type { ForLocale } from './forLinks';
 import { FOR_PAGES_FR } from './forPagesFr';
 import { withTrailingSlash } from './href';
@@ -159,24 +159,11 @@ export const isShelfData = (x: unknown): x is ForShelfData => {
 	return Object.values(FOR_ANCHORS).every(({ section }) => at(section) === undefined || Array.isArray(at(section)));
 };
 
-const NAMERS = new Map<ForLocale, Intl.DisplayNames>();
-
-/** A language's name in the page's language (lower case in French, as French
- *  writes it mid-sentence). ICU calls Luganda "Ganda"; Ochorus uses the name
- *  its readers use. */
-function languageName(code: string, locale: ForLocale): string {
-	if (code === 'lg') return locale === 'en' ? 'Luganda' : 'luganda';
-	let namer = NAMERS.get(locale);
-	if (!namer) NAMERS.set(locale, (namer = new Intl.DisplayNames([locale], { type: 'language' })));
-	return namer.of(code) ?? code;
-}
 
 /** The live languages besides English, by their English names, from the
  *  registry's "Go live" list — so the copy names exactly what the site
  *  serves, and a language taken live reaches it on the next build. */
 const OTHER_LANGUAGES = LIVE_LOCALES.filter((l) => l !== 'en').map((l) => languageName(l, 'en'));
-/** "a, b and c". */
-const series = (xs: string[]) => listOf(xs, 'and');
 
 const FREE_ANSWER =
 	'Yes. Every book and sermon on Ochorus is free to read, with no paywall, no subscription and no ads. The classics themselves are in the public domain, and Ochorus is a ministry, not a business.';
@@ -230,7 +217,7 @@ export const FOR_PAGES: ForPage[] = [
 			{
 				icon: 'globe',
 				title: 'In the languages your people speak',
-				body: `Books are published as full editions in ${series(OTHER_LANGUAGES)} as well as English, with more languages on the way, so members can read in their own language.`
+				body: `Books are published as full editions in ${listOf(OTHER_LANGUAGES, 'and')} as well as English, with more languages on the way, so members can read in their own language.`
 			}
 		],
 		ideasHeading: 'Ways to use it in your church',
@@ -642,7 +629,7 @@ export const FOR_PAGES: ForPage[] = [
 			{
 				icon: 'globe',
 				title: 'Full editions in other languages',
-				body: `Books are published as full editions in ${series(OTHER_LANGUAGES)} as well as English, with more languages on the way, so people can read in their own language.`,
+				body: `Books are published as full editions in ${listOf(OTHER_LANGUAGES, 'and')} as well as English, with more languages on the way, so people can read in their own language.`,
 				link: { href: '#languages', label: 'See what each language has' }
 			},
 			{
@@ -760,7 +747,7 @@ export const FOR_PAGES: ForPage[] = [
 			},
 			{
 				q: 'Which languages are available?',
-				a: `Besides English, books are published in ${series(OTHER_LANGUAGES)}. Each language has its own editions, so the shelf in each language shows only what has been published in it.`
+				a: `Besides English, books are published in ${listOf(OTHER_LANGUAGES, 'and')}. Each language has its own editions, so the shelf in each language shows only what has been published in it.`
 			},
 			{
 				q: 'Can we read without an internet connection?',

@@ -1,3 +1,4 @@
+import { languageName, listOf } from './forChrome';
 import type { ForPage, ForShelfSpec } from './forPages';
 import { LIVE_LOCALES } from './live-locales.generated';
 
@@ -14,16 +15,13 @@ import { LIVE_LOCALES } from './live-locales.generated';
  * translation was made — review state is admin-only (root CLAUDE.md).
  */
 
-/** The live languages besides French and English, by their French names.
- *  ICU calls Luganda "ganda"; Ochorus uses the name its readers use. */
-const enFrancais = new Intl.DisplayNames(['fr'], { type: 'language' });
-const frenchName = (code: string) => (code === 'lg' ? 'luganda' : (enFrancais.of(code) ?? code));
-const OTHER_LANGUAGES = (LIVE_LOCALES as readonly string[]).filter((l) => l !== 'fr' && l !== 'en').map(frenchName);
-/** "a, b et c". */
-const et = (xs: string[]) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} et ${xs.at(-1)}`);
+/** The live languages besides French and English, by their French names. */
+const OTHER_LANGUAGES = (LIVE_LOCALES as readonly string[])
+	.filter((l) => l !== 'fr' && l !== 'en')
+	.map((l) => languageName(l, 'fr'));
 /** "en français comme en anglais, et aussi en espagnol, en swahili et en portugais". */
 const IN_LANGUAGES = `en français comme en anglais${
-	OTHER_LANGUAGES.length ? `, et aussi ${et(OTHER_LANGUAGES.map((n) => `en ${n}`))}` : ''
+	OTHER_LANGUAGES.length ? `, et aussi ${listOf(OTHER_LANGUAGES.map((n) => `en ${n}`), 'et')}` : ''
 }`;
 
 const FREE_ANSWER =

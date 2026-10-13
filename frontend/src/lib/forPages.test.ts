@@ -380,6 +380,16 @@ describe('the French "Ochorus pour …" pages', () => {
 		}
 	});
 
+	it('gives every page enough to say, without repeats', () => {
+		for (const p of fr) {
+			expect(p.points.length, p.slug).toBeGreaterThanOrEqual(3);
+			expect(p.ideas.length, p.slug).toBeGreaterThanOrEqual(3);
+			expect(p.questions.length, p.slug).toBeGreaterThanOrEqual(2);
+			expect(new Set(p.plans).size, p.slug).toBe(p.plans.length);
+			expect(new Set(p.authors).size, p.slug).toBe(p.authors.length);
+		}
+	});
+
 	it('shelves only published French editions, with backups and no repeats', () => {
 		for (const p of fr) {
 			expect(p.shelves.length, p.slug).toBeGreaterThanOrEqual(2);
