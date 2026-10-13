@@ -188,3 +188,32 @@ The middle book of the Life of Jesus. An Introduction ("Who Is This?"), then twe
 21. Lazarus, Come Out! (John 11:1–45)
 
 "The promise kept" is used only four times: Hosea 6:6 (Matthew 9:13), the Law and Prophets fulfilled (Matthew 5:17), Isaiah 53:4 (Matthew 8:17), and the manna (John 6:31–35). Bartimaeus's "Son of David" is drawn out in the story itself. Not added: the roof's material (Luke has tiles), ropes, the Samaritan's donkey ("his own animal"); Zacchaeus "probably" cheated (his own words imply it).
+
+## Book 6: The Greatest Rescue
+
+The last book of the Life of Jesus. An Introduction ("The Most Important Story"), then twenty-two stories from the Transfiguration to the ascension, ending with the disciples waiting for the Holy Spirit (Book 7).
+
+1. The Shining Mountain (Matthew 17:1–9)
+2. Mary's Gift (John 12:1–8; Mark 14:3–9)
+3. The King on a Donkey (Matthew 21:1–11; John 12:12–16)
+4. Children Singing in the Temple (Matthew 21:12–17)
+5. The Widow's Two Coins (Mark 12:41–44)
+6. Jesus Washes Their Feet (John 13:1–17, 34–35)
+7. The Last Supper (Luke 22:7–23, 31–34; Matthew 26:17–30)
+8. Praying in the Garden (Mark 14:32–42; Luke 22:39–46)
+9. Arrested at Night (John 18:1–12; Luke 22:47–53)
+10. Peter's Three Denials (Luke 22:31–34, 54–62)
+11. Jesus and Pilate (John 18:28–19:16; Mark 14:60–64)
+12. The Cross (Luke 23:26–43; John 19:17–27)
+13. "It Is Finished" (John 19:28–30; Mark 15:33–41; Luke 23:44–49)
+14. Laid in the Tomb (Matthew 27:57–66; John 19:38–42)
+15. He Is Risen! (Matthew 28:1–10; Luke 24:1–12)
+16. Mary in the Garden (John 20:1–18)
+17. The Road to Emmaus (Luke 24:13–35)
+18. "Peace Be with You" (Luke 24:36–49; John 20:19–23)
+19. Thomas Believes (John 20:24–31)
+20. Breakfast on the Beach (John 21:1–19)
+21. Go and Tell the World (Matthew 28:16–20)
+22. Jesus Goes Up to Heaven (Acts 1:1–11; Luke 24:50–53)
+
+The passion is told plainly and without graphic detail: whipped, crowned with thorns, nailed to a cross, in single clauses; the stories dwell on what Jesus said (forgiveness, paradise, His mother, "It is finished"). Where the Gospels' accounts are combined (the empty tomb, the appearances), nothing is added that none of them says. Emmaus gathers up every "Looking ahead to Jesus" and "The promise kept" in the series (Luke 24:27). Breakfast on the Beach draws out John's two charcoal fires (18:18; 21:9) for Peter's three denials and three "I love You"s.
