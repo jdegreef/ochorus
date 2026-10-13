@@ -1,0 +1,26 @@
+{
+ "kind": "bio",
+ "slug": "jonathan-edwards",
+ "language": "ko",
+ "job_issue": 5858,
+ "references": [
+  {
+   "reference": "1 Timothy 1:17",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Deuteronomy 32:35b",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "Acts 16:30b",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 30
+  }
+ ]
+}
