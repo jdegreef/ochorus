@@ -680,6 +680,7 @@ TOPICS = [
             "tell-me-the-story-3",
             "tell-me-the-story-4",
             "tell-me-the-story-5",
+            "tell-me-the-story-6",
             "fire-against-the-dark",
             "hurlbuts-life-of-christ",
             "rooted-1",

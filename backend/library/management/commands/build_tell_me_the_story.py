@@ -376,6 +376,69 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
         ],
     },
+    6: {
+        "publication_year": 2026,
+        "title": "Tell Me the Story – Book 6: The Greatest Rescue",
+        "subtitle": "The Life of Jesus: His Last Week, His Death and His Rising Again",
+        "cover_url": "/covers/tell-me-the-story-6.svg",
+        "cover_color": covers.ink_safe("#7a3b2e"),  # Easter dawn
+        "description": (
+            "Twenty-two Bible stories for children aged 6 to 10 that finish the "
+            "Life of Jesus, each short enough to read aloud: the shining mountain, "
+            "Palm Sunday, the Last Supper, the garden, the cross, the empty tomb, "
+            "Mary in the garden, the road to Emmaus, Thomas, breakfast on the "
+            "beach and the ascension. Told honestly and gently, with a prayer and "
+            "three questions to talk about after every story. The sixth book of "
+            "Tell Me the Story."
+        ),
+        "about_html": (
+            "<p>Tell Me the Story is an original Ochorus storybook Bible for "
+            "children aged 6 to 10, in eight books and three parts: Old "
+            "Testament Stories, The Life of Jesus, and New Testament Stories. "
+            "God is the hero of every story, and the whole Bible is one story "
+            "that leads to Jesus.</p>"
+            "<p>Book 6, “The Greatest Rescue”, is the last book of the Life of "
+            "Jesus and the heart of the whole series. It tells twenty-two stories "
+            "from the Gospels and Acts: the Transfiguration, Jesus’ last week in "
+            "Jerusalem, His arrest, trial, death and burial, and His rising again, "
+            "from the empty tomb to breakfast on the beach, the Great Commission "
+            "and the ascension. Where the Gospels themselves say an Old Testament "
+            "promise came true, as they do with the donkey, the dividing of His "
+            "clothes and the cry from the cross, a line called “The promise kept” "
+            "says so.</p>"
+            "<p>The cross is told plainly and without graphic detail, and the "
+            "questions for the grown-up help a child talk it through. Each story "
+            "takes about four minutes to read aloud, and under each are three "
+            "questions to talk about together, with answers for the grown-up "
+            "reading along. It reads well through Holy Week and Easter.</p>"
+        ),
+        "qa": [
+            {
+                "question": "Which stories are in Book 6 of Tell Me the Story?",
+                "answer": "Twenty-two stories: the shining mountain, Mary's perfume, Palm Sunday, the children singing in the temple, the widow's two coins, Jesus washing feet, the Last Supper, the garden of Gethsemane, the arrest, Peter's denials, Jesus and Pilate, the cross, \"It is finished\", the burial, the empty tomb, Mary in the garden, the road to Emmaus, Jesus appearing to the disciples, Thomas, breakfast on the beach, the Great Commission and the ascension.",
+            },
+            {
+                "question": "How is the crucifixion told for young children?",
+                "answer": "Plainly and gently. The story says that Jesus was whipped, crowned with thorns and nailed to a cross, without dwelling on the details. It focuses on what Jesus said and did: forgiving the soldiers, promising paradise to the thief, caring for His mother, and \"It is finished.\" The grown-up notes suggest letting a child ask whatever they need to.",
+            },
+            {
+                "question": "Is it good for reading at Easter?",
+                "answer": "Yes. Its stories follow the days of Holy Week, from Palm Sunday and the Last Supper to Good Friday and the empty tomb on Easter Sunday, and then the appearances of the risen Jesus.",
+            },
+            {
+                "question": "What is \"The promise kept\"?",
+                "answer": "A short line under some stories, used only where the Gospels themselves say an Old Testament promise came true: Zechariah's King on a donkey (Matthew 21:5), Psalm 8's children's praise (Matthew 21:16), Psalm 22's divided clothes and cry (John 19:24; Matthew 27:46), the Passover lamb (1 Corinthians 5:7), and the whole Scripture explained on the road to Emmaus (Luke 24:27).",
+            },
+            {
+                "question": "Do I need to read Books 4 and 5 first?",
+                "answer": "No. Each book stands on its own, and Book 6 begins with a short introduction. Children who have read the earlier books will recognise Peter, Mary and Martha, Nicodemus, and the Old Testament stories that the road to Emmaus brings together.",
+            },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Every verse quoted with its reference is word for word from the Berean Standard Bible (BSB), which is in the public domain.",
+            },
+        ],
+    },
 }
 
 _QUESTION = re.compile(r"^- Q: (.+)$")
