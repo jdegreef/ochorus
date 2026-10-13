@@ -291,6 +291,7 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'tell-me-the-story-1': 'young',
 	'tell-me-the-story-2': 'young',
 	'tell-me-the-story-3': 'young',
+	'tell-me-the-story-4': 'young',
 	'fire-against-the-dark': 'young',
 	'hurlbuts-life-of-christ': 'young',
 	'rooted-1': 'young',
