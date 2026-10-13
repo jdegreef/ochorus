@@ -439,6 +439,69 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
         ],
     },
+    7: {
+        "publication_year": 2026,
+        "title": "Tell Me the Story – Book 7: The Church Begins",
+        "subtitle": "New Testament Stories from Acts 1–13",
+        "cover_url": "/covers/tell-me-the-story-7.svg",
+        "cover_color": covers.ink_safe("#9a4a1c"),  # Pentecost flame
+        "description": (
+            "Twenty Bible stories from Acts for children aged 6 to 10, each short "
+            "enough to read aloud at bedtime: wind and fire at Pentecost, the man "
+            "at the Beautiful Gate, prison doors opened in the night, brave "
+            "Stephen, Philip and the man from Ethiopia, Saul on the Damascus road, "
+            "Dorcas, Peter's dream, Rhoda at the gate and Barnabas and Saul sent "
+            "out. Every story ends with a prayer and three questions to talk about "
+            "together. The seventh book of Tell Me the Story."
+        ),
+        "about_html": (
+            "<p>Tell Me the Story is an original Ochorus storybook Bible for "
+            "children aged 6 to 10, in eight books and three parts: Old "
+            "Testament Stories, The Life of Jesus, and New Testament Stories. "
+            "God is the hero of every story, and the whole Bible is one story "
+            "that leads to Jesus.</p>"
+            "<p>Book 7, “The Church Begins”, opens the New Testament Stories. It "
+            "tells twenty stories from Acts 1–13: the Holy Spirit coming at "
+            "Pentecost, the first church sharing everything, the apostles who "
+            "could not stop speaking about Jesus, Stephen, Philip, Saul’s "
+            "turning on the Damascus road, Dorcas, Peter and Cornelius, and the "
+            "church at Antioch sending Barnabas and Saul out to the world. Where "
+            "Acts itself says an Old Testament promise came true, as it does with "
+            "Joel’s promise of the Spirit, a line called “The promise kept” says "
+            "so.</p>"
+            "<p>The stories stay close to what the Bible says, in simple words. "
+            "Stephen’s death and the killing of James are told honestly and "
+            "gently. Each story takes about four minutes to read aloud, and under "
+            "each are three questions to talk about together, with answers for "
+            "the grown-up reading along. The earlier books are not required.</p>"
+        ),
+        "qa": [
+            {
+                "question": "Which stories are in Book 7 of Tell Me the Story?",
+                "answer": "Twenty stories from Acts: Pentecost, Peter's sermon, the first church sharing, the man at the Beautiful Gate, the apostles before the council, the prison doors opened, the seven helpers, Stephen, Philip in Samaria, Philip and the Ethiopian, Saul's conversion, Ananias, the escape in a basket, Dorcas, Peter's dream, Cornelius, the first Christians at Antioch, Peter in prison, Rhoda at the gate, and Barnabas and Saul sent out.",
+            },
+            {
+                "question": "How is Stephen's death told for young children?",
+                "answer": "Honestly and gently, in a few sentences. The story dwells on Stephen seeing Jesus standing to welcome him and on his prayer of forgiveness for the people throwing stones, just like Jesus on the cross. The grown-up notes suggest letting a child ask about it.",
+            },
+            {
+                "question": "Does it include Saul's conversion?",
+                "answer": "Yes, in three stories: the light on the Damascus road, brave Ananias who called his enemy \"Brother Saul\", and the escape over the wall in a basket, with Barnabas standing up for him in Jerusalem. The book ends with Barnabas and Saul being sent out, which leads into Book 8.",
+            },
+            {
+                "question": "What is \"The promise kept\"?",
+                "answer": "A short line under some stories, used only where Acts itself says an Old Testament promise came true: Joel's promise of the Spirit (Acts 2:16), the rejected cornerstone of Psalm 118 (Acts 4:11), Isaiah 53 read by the Ethiopian (Acts 8:32–35), and the prophets' witness to forgiveness (Acts 10:43).",
+            },
+            {
+                "question": "Do I need to read the earlier books first?",
+                "answer": "No. Each book stands on its own, and Book 7 begins with a short introduction that picks up from Jesus going back to heaven. Children who have read the earlier books will recognise Peter, the tower of Babel, and Joseph's \"God meant it for good\".",
+            },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Every verse quoted with its reference is word for word from the Berean Standard Bible (BSB), which is in the public domain.",
+            },
+        ],
+    },
 }
 
 _QUESTION = re.compile(r"^- Q: (.+)$")
