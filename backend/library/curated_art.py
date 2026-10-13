@@ -422,6 +422,55 @@ CURATED: dict[str, Artwork] = {
         "to `morning-by-morning`'s silver morning, by the same hand.",
         focus=0.45,
     ),
+    # Spurgeon's 2026-10 books: the two John Ploughman books in one English
+    # painter's countryside, the two series of lectures in the London of the
+    # Pastors' College, and the rest each to its own subject.
+    "john-ploughmans-talk": Artwork(
+        "aic", 4758, "John Constable", "Stoke-by-Nayland", "1836",
+        "A plough left in the foreground of a field on the Essex–Suffolk border, "
+        "the country Spurgeon grew up in and was converted in at Colchester — "
+        "John Ploughman's own ground.",
+        focus=0.12,
+    ),
+    "john-ploughmans-pictures": Artwork(
+        "aic", 49651, "John Constable", "Landscape with Cottages", "1809–10",
+        "Cottages under trees at evening — more of the same plain country, by "
+        "the same hand as `john-ploughmans-talk`, so the pair read as one.",
+        focus=0.55,
+    ),
+    "lectures-to-my-students": Artwork(
+        "aic", 110541, "Camille Pissarro", "The Crystal Palace", "1871",
+        "The Crystal Palace at Sydenham, where Spurgeon preached to over twenty "
+        "thousand in 1857, painted while the Pastors' College was teaching "
+        "these lectures, a walk from the Norwood he later lived in.",
+        focus=0.3,
+    ),
+    "lectures-to-my-students-second-series": Artwork(
+        "aic", 103139, "Claude Monet", "Waterloo Bridge, Gray Weather", "1900",
+        "The Thames at Waterloo Bridge, a mile or so from the Tabernacle and its "
+        "college — the companion to the first series' Crystal Palace, London "
+        "seen by the same generation of painters.",
+        focus=0.45,
+    ),
+    "an-all-round-ministry": Artwork(
+        "aic", 111669, "Harry Thompson", "Landscape with Sheep, Picardy",
+        "Late 19th century",
+        "A shepherd standing among his flock at the water — addresses to the "
+        "pastors Spurgeon trained, on the whole work of tending the sheep.",
+        focus=0.35,
+    ),
+    "the-soul-winner": Artwork(
+        "aic", 111746, "Léon Augustin Lhermitte", "The Harvesters", "1888–89",
+        "Sheaves gathered in at sunset — \"he that winneth souls is wise\", "
+        "and the fields white unto harvest Spurgeon sent his students into.",
+        focus=0.9,
+    ),
+    "the-saint-and-his-saviour": Artwork(
+        "aic", 96559, "Alfred Sisley", "A Turn in the Road", "1873",
+        "A road bending on into light — the soul's progress in knowing Christ, "
+        "which the young Spurgeon traced as a journey taken stage by stage.",
+        focus=0.45,
+    ),
     # ── Batch 7 · R. A. Torrey's plate books ───────────────────────────────
     # Moody's man, three books on three works of the faith — winning others,
     # walking oneself, and the ground both stand on — each to its own subject in
