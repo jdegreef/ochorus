@@ -8503,6 +8503,16 @@
 			"layout": "split/navy",
 			"bar": 0.05
 		},
+		"fr/on-the-incarnation": {
+			"ground": "8373822e5947b828da9b04a127cf1bbdbfa2e655083a8dcfbbad5a1c7752bbdb",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/indigo",
+			"bar": 0
+		},
 		"fr/pandita-ramabai-a-life-children": {
 			"ground": "578b9b129d985b4c985ebfa5a1a3ee85f98bc9c2b5765d106832360a0930a968",
 			"style": "young",
