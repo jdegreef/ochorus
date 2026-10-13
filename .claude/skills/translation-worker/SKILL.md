@@ -2656,6 +2656,21 @@ archaic spelling and period punctuation are the text, not defects in it.
   never lose one. Scripture: quote 개역 with **세례, never 침례** (Take Root's copy
   is the Baptist edition — see the ko Bible entry above); 침례 is still right in
   prose for the denomination (침례교).
+- **The first ko BOOK (baptism-with-the-holy-spirit, #5863, 2026-10-13) — what carries to
+  the next ones.** Citations as `(사도행전 1:5)`: full Korean book name, Western digits, tight
+  `C:V`, never the 고전/롬 abbreviations. Quote marks mirror a curly source with “ ” (‘ ’
+  nested). Chapter band n=5: **0.61–0.67** of the English — lower than ko bios
+  (0.71–0.80) because the 개역 is compact and this book is quotation-dense; tag parity was
+  exact, so read it as the language, not loss. Build the crib with
+  `fetch_chapter('korean', …)` (it carries the 침례→세례 repair); `pythonbible` names
+  numbered books `SAMUEL_1`, so map them to `1 samuel` before looking up `BOOK_USFM`.
+  Three textual traps the 개역 sets: **Matthew 17:21 is absent** (“(없음)”) — a KJV
+  "prayer and fasting" quote has no 개역 verse, use Mark 9:29 and flag it; **Hebrews 4:6
+  reads 순종치 아니함** (disobedience) where KJV has "unbelief" — quote it, flag it;
+  and Take Root's **Isaiah 45:22 reads 그리하며** (typo for 그리하면 — quote the mirror).
+  The book Q&A (`qa`, 8 items) and `about_html` ride on the book row like other editions.
+  Korean og twins are drawn in a SYSTEM font until og:covers learns Hangul (Ge'ez has the
+  same gap) — commit the card, but expect it to change once that lands.
 - **es BOOKS are no longer all « » — measure the same AUTHOR's shipped es books
   before briefing** (job #4800, 2026-10-05). The #515 entry above says all 13
   shipped es books convert to « »; at 59 es books that no longer holds. Simpson's

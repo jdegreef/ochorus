@@ -11723,6 +11723,16 @@
 				376
 			]
 		},
+		"ko/baptism-with-the-holy-spirit": {
+			"ground": "b9479745ae2364f4a76040c71c10063d58f26fd40268f5d818fc8a54a057d8ce",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "diagonal/ochre",
+			"bar": 0.085
+		},
 		"lectures-to-my-students": {
 			"ground": "50ecd72319750165b8e03713a83f60d936a416dd1194989f2b537b66b721645b",
 			"style": "revival",
