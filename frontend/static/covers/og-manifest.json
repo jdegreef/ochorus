@@ -8133,6 +8133,38 @@
 				460
 			]
 		},
+		"fr/life-experience-gospel-labours": {
+			"ground": "bc0500cd948cfff6ad3a5d7a1010c16e1befda06fa707c51606247cc685c0e67",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[159, 102, 441, 131]
+				],
+				"title": [
+					[60, 202, 540, 262],
+					[136, 261, 464, 321],
+					[139, 321, 461, 381],
+					[148, 380, 452, 440],
+					[129, 440, 471, 500]
+				],
+				"subtitle": [
+					[196, 564, 404, 592]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				203,
+				592
+			]
+		},
 		"fr/life-of-pascal": {
 			"ground": "84bc72d5d16e144ddd91aa7a7780ef435b5701552787fb9739d915c2a3eb68c4",
 			"style": "press",
