@@ -1,0 +1,676 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "tell-me-the-story-5",
+  "language": "en",
+  "title": "Tell Me the Story – Book 5: Wonders and Stories",
+  "subtitle": "The Life of Jesus: His Miracles and His Parables",
+  "cover_title": "Tell Me the Story",
+  "cover_byline": "",
+  "description": "Twenty-one Bible stories for children aged 6 to 10 of the wonders Jesus did and the stories He told, each short enough to read aloud at bedtime: the man let down through the roof, the storm stilled, Jairus's daughter, five loaves and two fish, the good Samaritan, the lost sheep and the lost son, Zacchaeus, and Lazarus raised. Every story ends with a prayer and three questions to talk about together. The fifth book of Tell Me the Story.",
+  "hook": "",
+  "about_html": "<p>Tell Me the Story is an original Ochorus storybook Bible for children aged 6 to 10, in eight books and three parts: Old Testament Stories, The Life of Jesus, and New Testament Stories. God is the hero of every story, and the whole Bible is one story that leads to Jesus.</p><p>Book 5, “Wonders and Stories”, is the middle book of the Life of Jesus. It tells twenty-one stories from the Gospels: miracles that only God could do, from calming a storm to raising the dead, and the parables Jesus told about seeds, builders, sheep, coins and a son who came home, along with the Sermon on the Mount and the Lord’s Prayer. It asks the question the crowds asked, “Who is this?”, and ends with Lazarus, which leads into the last week of Jesus’ life. Where the Gospels themselves say an Old Testament promise came true, a line called “The promise kept” says so.</p><p>The stories stay close to what the Bible says, and the people in them say what the Bible says they said, in simple words. Each takes about four minutes to read aloud, and under each are three questions to talk about together, with answers for the grown-up reading along. The earlier books are not required.</p>",
+  "qa": [
+   {
+    "question": "Which stories are in Book 5 of Tell Me the Story?",
+    "answer": "Twenty-one stories from the Gospels: the man through the roof, Matthew the tax collector, the Beatitudes, the Lord's Prayer and the birds, the wise and foolish builders, the centurion's servant, the widow's son at Nain, the storm on the lake, the farmer and the seeds, Jairus's daughter, the five loaves, walking on water, the good Samaritan, Mary and Martha, the lost sheep and coin, the lost son, the ten lepers, Jesus and the children, Bartimaeus, Zacchaeus and Lazarus."
+   },
+   {
+    "question": "Does it include Jesus' parables as well as His miracles?",
+    "answer": "Yes. Alongside the miracles it tells the parables of the wise and foolish builders, the farmer and the seeds, the good Samaritan, the lost sheep, the lost coin and the lost son, each with what it teaches about God."
+   },
+   {
+    "question": "Is the Lord's Prayer in it?",
+    "answer": "Yes, in the story \"Look at the Birds\", with a simple explanation of what its lines mean, alongside Jesus' words about not worrying."
+   },
+   {
+    "question": "How are the stories about death told?",
+    "answer": "Gently and with hope. The widow's son, Jairus's daughter and Lazarus each show that Jesus is stronger than death, and the questions for the grown-up suggest talking gently with a child who has lost someone."
+   },
+   {
+    "question": "Do I need to read the earlier books first?",
+    "answer": "No. Each book stands on its own. Book 5 begins with a short introduction, and children who have read Book 4 will know the disciples already."
+   },
+   {
+    "question": "Which Bible translation does it use?",
+    "answer": "Every verse quoted with its reference is word for word from the Berean Standard Bible (BSB), which is in the public domain."
+   }
+  ],
+  "publication_year": 2026,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus Original, written for children, free to read and share. The stories are the Bible's own, retold in simple words. Scripture quotations are from the Berean Standard Bible (BSB), which is in the public domain.",
+  "cover_url": "/covers/tell-me-the-story-5.svg",
+  "pdf_url": "",
+  "cover_color": "#2e6a4f",
+  "series": [
+   "tell-me-the-story"
+  ],
+  "series_position": 5,
+  "sort_order": 183,
+  "is_published": true,
+  "created_at": "2026-10-13T13:09:13.224Z",
+  "updated_at": "2026-10-13T13:09:13.224Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 1,
+  "title": "Introduction: Who Is This?",
+  "body_html": "<blockquote><p>“Who is this, that even the wind and the sea obey Him?” — Mark 4:41</p></blockquote><p>In the last book, Jesus was born in Bethlehem, grew up in Nazareth, and began His work. He called some fishermen to follow Him, and they left their nets behind.</p><p>Now Jesus travels from town to town with His disciples. Huge crowds follow Him wherever He goes. And everywhere He goes, wonderful things happen.</p><p>In this book you will see Jesus do miracles: things only God could do. He makes people who can’t walk get up and walk. He stops a storm with a word. He feeds thousands of people with one boy’s lunch. He even brings people who have died back to life.</p><p>You will also hear Jesus tell stories. Jesus was the best storyteller there has ever been. His stories are called parables. They are about ordinary things, like seeds and sheep and coins and builders, and every one of them teaches us something about God.</p><p>Wherever Jesus went, people asked the same question: “Who is this?” Who is this man who can forgive sins and calm the sea and raise the dead? Who is this man who loves the people everyone else ignores?</p><p>As you read these stories, you can ask that question too. And by the end, you might know the answer.</p><p><em>Dear Jesus, as we read about the wonderful things you did and the stories you told, help us to know who you really are, and to love you more. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What is a miracle?",
+    "answer": "Something wonderful that only God can do, like healing someone instantly or calming a storm with a word."
+   },
+   {
+    "question": "What is a parable?",
+    "answer": "A story Jesus told about ordinary things, like seeds, sheep or coins, to teach something about God."
+   },
+   {
+    "question": "People kept asking, “Who is this?” Who do you think Jesus is?",
+    "answer": "Let your child answer in their own words. The stories in this book show that Jesus is God’s Son, who has God’s power and God’s love."
+   }
+  ],
+  "body_text": "“Who is this, that even the wind and the sea obey Him?” — Mark 4:41 In the last book, Jesus was born in Bethlehem, grew up in Nazareth, and began His work. He called some fishermen to follow Him, and they left their nets behind. Now Jesus travels from town to town with His disciples. Huge crowds follow Him wherever He goes. And everywhere He goes, wonderful things happen. In this book you will see Jesus do miracles: things only God could do. He makes people who can’t walk get up and walk. He stops a storm with a word. He feeds thousands of people with one boy’s lunch. He even brings people who have died back to life. You will also hear Jesus tell stories. Jesus was the best storyteller there has ever been. His stories are called parables. They are about ordinary things, like seeds and sheep and coins and builders, and every one of them teaches us something about God. Wherever Jesus went, people asked the same question: “Who is this?” Who is this man who can forgive sins and calm the sea and raise the dead? Who is this man who loves the people everyone else ignores? As you read these stories, you can ask that question too. And by the end, you might know the answer. Dear Jesus, as we read about the wonderful things you did and the stories you told, help us to know who you really are, and to love you more. Amen.",
+  "word_count": 251
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 2,
+  "title": "Through the Roof",
+  "body_html": "<blockquote><p>“When Jesus saw their faith, He said to the paralytic, ‘Son, your sins are forgiven.’” — Mark 2:5</p></blockquote><p>Jesus came home to the town of Capernaum, and the news spread quickly: “Jesus is back!” So many people crowded into the house where He was staying that there was no room left, not even outside the door. And Jesus was teaching them God’s Word.</p><p>Then four men came, carrying their friend on a mat. Their friend was paralysed. He couldn’t walk, or even stand up. They had heard about Jesus, and they were sure that if they could just get their friend to Him, Jesus would help.</p><p>But they couldn’t get anywhere near Jesus. The crowd was far too big.</p><p>Did they give up? No! Houses in those days had flat roofs, with stairs on the outside. So the four friends carried the man up onto the roof. Then they started to make a hole right through the roof, right above where Jesus was sitting!</p><p>Imagine being inside, listening to Jesus, when bits of roof start falling on your head! And then a man on a mat is lowered down through the hole, right in front of Jesus.</p><p>Jesus looked up at the four friends peering down through the hole. He saw how much they believed in Him. Then He looked at the man on the mat and said, “Son, your sins are forgiven.”</p><p>Some teachers of the law were sitting there, and they thought to themselves, “Why does this man talk like that? Only God can forgive sins!”</p><p>They were right that only God can forgive sins. But they didn’t realise who Jesus was.</p><p>Jesus knew what they were thinking. “Which is easier,” He asked them, “to say to this man, ‘Your sins are forgiven,’ or to say, ‘Get up, pick up your mat, and walk’? But so that you will know that I have authority on earth to forgive sins...” He turned to the man on the mat. “I tell you, get up, pick up your mat, and go home.”</p><p>And at once the man got up! He picked up his mat and walked out, right in front of everyone.</p><p>Everyone was amazed. They praised God and said, “We have never seen anything like this!”</p><p>Anyone can say, “Your sins are forgiven.” You can’t see whether it’s happened. But when the man got up and walked, everyone could see that Jesus had real power. And if He had power to heal the man’s body, He had power to forgive his sins too. The man needed both, and Jesus gave him both.</p><p>And it all started with four friends who wouldn’t give up.</p><p><strong>Read it in your Bible:</strong> Mark 2:1–12</p><p><em>Dear Jesus, thank you that you can forgive sins and that you can heal. Help me to be a good friend, who brings other people to you. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "How did the four friends get the man to Jesus?",
+    "answer": "They carried him up onto the roof, dug a hole in it, and lowered him down on his mat right in front of Jesus."
+   },
+   {
+    "question": "What two things did Jesus do for the man?",
+    "answer": "He forgave his sins, and He healed him so that he could get up and walk home."
+   },
+   {
+    "question": "The four friends wouldn’t give up. Who is someone you could “carry” to Jesus by praying for them?",
+    "answer": "Choose someone together, perhaps a friend who is ill or sad or doesn’t know Jesus, and pray for them now."
+   }
+  ],
+  "body_text": "“When Jesus saw their faith, He said to the paralytic, ‘Son, your sins are forgiven.’” — Mark 2:5 Jesus came home to the town of Capernaum, and the news spread quickly: “Jesus is back!” So many people crowded into the house where He was staying that there was no room left, not even outside the door. And Jesus was teaching them God’s Word. Then four men came, carrying their friend on a mat. Their friend was paralysed. He couldn’t walk, or even stand up. They had heard about Jesus, and they were sure that if they could just get their friend to Him, Jesus would help. But they couldn’t get anywhere near Jesus. The crowd was far too big. Did they give up? No! Houses in those days had flat roofs, with stairs on the outside. So the four friends carried the man up onto the roof. Then they started to make a hole right through the roof, right above where Jesus was sitting! Imagine being inside, listening to Jesus, when bits of roof start falling on your head! And then a man on a mat is lowered down through the hole, right in front of Jesus. Jesus looked up at the four friends peering down through the hole. He saw how much they believed in Him. Then He looked at the man on the mat and said, “Son, your sins are forgiven.” Some teachers of the law were sitting there, and they thought to themselves, “Why does this man talk like that? Only God can forgive sins!” They were right that only God can forgive sins. But they didn’t realise who Jesus was. Jesus knew what they were thinking. “Which is easier,” He asked them, “to say to this man, ‘Your sins are forgiven,’ or to say, ‘Get up, pick up your mat, and walk’? But so that you will know that I have authority on earth to forgive sins...” He turned to the man on the mat. “I tell you, get up, pick up your mat, and go home.” And at once the man got up! He picked up his mat and walked out, right in front of everyone. Everyone was amazed. They praised God and said, “We have never seen anything like this!” Anyone can say, “Your sins are forgiven.” You can’t see whether it’s happened. But when the man got up and walked, everyone could see that Jesus had real power. And if He had power to heal the man’s body, He had power to forgive his sins too. The man needed both, and Jesus gave him both. And it all started with four friends who wouldn’t give up. Read it in your Bible: Mark 2:1–12 Dear Jesus, thank you that you can forgive sins and that you can heal. Help me to be a good friend, who brings other people to you. Amen.",
+  "word_count": 478
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 3,
+  "title": "The Tax Collector Who Followed",
+  "body_html": "<blockquote><p>“I have not come to call the righteous, but sinners.” — Mark 2:17</p></blockquote><p>As Jesus walked along by the lake, He passed a little booth where a man was sitting, collecting taxes. The man’s name was Matthew, and he was also called Levi.</p><p>Nobody liked tax collectors. They worked for the Romans, who ruled over the land, and they collected money from their own people to give to them. And many tax collectors cheated, taking more money than they should and keeping the extra for themselves. People thought of them as traitors and thieves.</p><p>Jesus stopped at Matthew’s booth. He looked at him and said, “Follow Me.”</p><p>And Matthew got up, left everything behind, and followed Jesus.</p><p>Matthew was so happy that he threw a big party at his house for Jesus. And he invited all his friends, which meant lots of other tax collectors and people who were known as “sinners”. Jesus came and sat down to eat with them all, along with His disciples.</p><p>Some Pharisees, the very strict religious teachers, saw this, and they were shocked. “Why does He eat with tax collectors and sinners?” they asked Jesus’ disciples. They would never sit down to eat with people like that!</p><p>Jesus heard what they said.</p><p>“It is not healthy people who need a doctor,” Jesus said, “but sick people. Go and learn what this means: ‘I want you to show mercy, not just offer sacrifices.’ For I have not come to call people who think they are good, but sinners.”</p><p>A doctor doesn’t stay away from sick people. That’s where a doctor is needed most! And Jesus didn’t stay away from sinners. He came to find them and make them well.</p><p>The Pharisees thought they didn’t need Jesus, because they thought they were good enough already. But the people at Matthew’s party knew they weren’t good enough. And those were the people Jesus came for.</p><p>Matthew went on to be one of Jesus’ twelve closest disciples. And later he wrote the first book of the New Testament, the Gospel of Matthew, telling the story of Jesus. The tax collector everyone hated became one of the people who told the whole world about Jesus.</p><p><strong>The promise kept:</strong> Jesus told the Pharisees to “go and learn what this means: ‘I desire mercy, not sacrifice’” (Matthew 9:13). Those were God’s words, spoken long ago through the prophet Hosea (Hosea 6:6). Jesus showed what God had always wanted: mercy.</p><p><strong>Read it in your Bible:</strong> Mark 2:13–17; Matthew 9:9–13</p><p><em>Dear Jesus, thank you that you came for sinners, and that includes me. Help me to be kind to people that others leave out, just like you were. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Why didn’t people like tax collectors?",
+    "answer": "Because they worked for the Romans and often cheated people out of money, keeping extra for themselves."
+   },
+   {
+    "question": "Why did Jesus eat with tax collectors and sinners?",
+    "answer": "Because, like a doctor goes to sick people, Jesus came to help people who knew they needed Him."
+   },
+   {
+    "question": "Is there someone at school or in your neighbourhood that nobody wants to be friends with? What would Jesus do?",
+    "answer": "Jesus went to the people everyone else avoided. We can be kind to them, include them, and show them God’s love."
+   }
+  ],
+  "body_text": "“I have not come to call the righteous, but sinners.” — Mark 2:17 As Jesus walked along by the lake, He passed a little booth where a man was sitting, collecting taxes. The man’s name was Matthew, and he was also called Levi. Nobody liked tax collectors. They worked for the Romans, who ruled over the land, and they collected money from their own people to give to them. And many tax collectors cheated, taking more money than they should and keeping the extra for themselves. People thought of them as traitors and thieves. Jesus stopped at Matthew’s booth. He looked at him and said, “Follow Me.” And Matthew got up, left everything behind, and followed Jesus. Matthew was so happy that he threw a big party at his house for Jesus. And he invited all his friends, which meant lots of other tax collectors and people who were known as “sinners”. Jesus came and sat down to eat with them all, along with His disciples. Some Pharisees, the very strict religious teachers, saw this, and they were shocked. “Why does He eat with tax collectors and sinners?” they asked Jesus’ disciples. They would never sit down to eat with people like that! Jesus heard what they said. “It is not healthy people who need a doctor,” Jesus said, “but sick people. Go and learn what this means: ‘I want you to show mercy, not just offer sacrifices.’ For I have not come to call people who think they are good, but sinners.” A doctor doesn’t stay away from sick people. That’s where a doctor is needed most! And Jesus didn’t stay away from sinners. He came to find them and make them well. The Pharisees thought they didn’t need Jesus, because they thought they were good enough already. But the people at Matthew’s party knew they weren’t good enough. And those were the people Jesus came for. Matthew went on to be one of Jesus’ twelve closest disciples. And later he wrote the first book of the New Testament, the Gospel of Matthew, telling the story of Jesus. The tax collector everyone hated became one of the people who told the whole world about Jesus. The promise kept: Jesus told the Pharisees to “go and learn what this means: ‘I desire mercy, not sacrifice’” (Matthew 9:13). Those were God’s words, spoken long ago through the prophet Hosea (Hosea 6:6). Jesus showed what God had always wanted: mercy. Read it in your Bible: Mark 2:13–17; Matthew 9:9–13 Dear Jesus, thank you that you came for sinners, and that includes me. Help me to be kind to people that others leave out, just like you were. Amen.",
+  "word_count": 446
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 4,
+  "title": "Blessed Are You",
+  "body_html": "<blockquote><p>“You are the light of the world.” — Matthew 5:14</p></blockquote><p>One day, when Jesus saw the huge crowds following Him, He went up on a hillside and sat down. His disciples gathered around Him, and He began to teach them. This teaching is called the Sermon on the Mount.</p><p>Jesus began with some surprising words. Each one starts with “Blessed are...”, which means “Happy are...” or “God is pleased with...”.</p><p>“Blessed are the poor in spirit,” Jesus said, “for theirs is the kingdom of heaven.” That means people who know they need God.</p><p>“Blessed are those who mourn, for they will be comforted.” That means people who are sad.</p><p>“Blessed are the meek, for they will inherit the earth.” That means people who are gentle and humble.</p><p>“Blessed are those who hunger and thirst for righteousness, for they will be filled.” That means people who really want to do what is right.</p><p>“Blessed are the merciful, for they will be shown mercy.” That means people who are kind and forgiving.</p><p>“Blessed are the pure in heart, for they will see God.”</p><p>“Blessed are the peacemakers, for they will be called sons of God.”</p><p>Isn’t that surprising? Most people think the happy, blessed people are the rich ones, the strong ones, the popular ones, the people who always get their own way. But Jesus turned all that upside down. God’s blessing is for the humble, the gentle, the kind, the sad, and the people who make peace.</p><p>Then Jesus said something wonderful about His followers.</p><p>“You are the salt of the earth,” He said. Salt makes food taste good, and stops it going bad.</p><p>“You are the light of the world. A city on a hill can’t be hidden. People don’t light a lamp and then put it under a bowl. They put it on a stand, so that it gives light to everyone in the house. In the same way, let your light shine in front of other people, so that they will see the good things you do and praise your Father in heaven.”</p><p>When we follow Jesus, we are like lamps in a dark room. Our kindness and love and honesty shine out, and people can see what God is like.</p><p>Jesus said much more on that hillside. He said, “Love your enemies and pray for people who are unkind to you.” He said that we should forgive people, and not show off when we do good things, and not judge others.</p><p>And He said one more thing about Himself: “Don’t think that I have come to get rid of God’s Law or the Prophets. I haven’t come to get rid of them, but to fulfil them.”</p><p><strong>The promise kept:</strong> Jesus said He had come not to abolish the Law and the Prophets, “but to fulfill them” (Matthew 5:17). Everything God said in the Old Testament, every law and every promise, finds its meaning and comes true in Jesus.</p><p><strong>Read it in your Bible:</strong> Matthew 5:1–17, 43–48</p><p><em>Dear Jesus, please make me gentle and kind and a peacemaker. Help me to shine like a light, so that other people can see how good you are. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Who did Jesus say is “blessed”?",
+    "answer": "People who know they need God, people who are sad, the gentle, those who want to do right, the merciful, the pure in heart, and the peacemakers."
+   },
+   {
+    "question": "Jesus said His followers are the light of the world. What does that mean?",
+    "answer": "That our good deeds, love and kindness shine out, so people can see what God is like and praise Him."
+   },
+   {
+    "question": "Which of the “blessed are” sayings would you most like to be true of you?",
+    "answer": "Talk about it together. You could choose one, like being a peacemaker, and look for a way to live it out this week."
+   }
+  ],
+  "body_text": "“You are the light of the world.” — Matthew 5:14 One day, when Jesus saw the huge crowds following Him, He went up on a hillside and sat down. His disciples gathered around Him, and He began to teach them. This teaching is called the Sermon on the Mount. Jesus began with some surprising words. Each one starts with “Blessed are...”, which means “Happy are...” or “God is pleased with...”. “Blessed are the poor in spirit,” Jesus said, “for theirs is the kingdom of heaven.” That means people who know they need God. “Blessed are those who mourn, for they will be comforted.” That means people who are sad. “Blessed are the meek, for they will inherit the earth.” That means people who are gentle and humble. “Blessed are those who hunger and thirst for righteousness, for they will be filled.” That means people who really want to do what is right. “Blessed are the merciful, for they will be shown mercy.” That means people who are kind and forgiving. “Blessed are the pure in heart, for they will see God.” “Blessed are the peacemakers, for they will be called sons of God.” Isn’t that surprising? Most people think the happy, blessed people are the rich ones, the strong ones, the popular ones, the people who always get their own way. But Jesus turned all that upside down. God’s blessing is for the humble, the gentle, the kind, the sad, and the people who make peace. Then Jesus said something wonderful about His followers. “You are the salt of the earth,” He said. Salt makes food taste good, and stops it going bad. “You are the light of the world. A city on a hill can’t be hidden. People don’t light a lamp and then put it under a bowl. They put it on a stand, so that it gives light to everyone in the house. In the same way, let your light shine in front of other people, so that they will see the good things you do and praise your Father in heaven.” When we follow Jesus, we are like lamps in a dark room. Our kindness and love and honesty shine out, and people can see what God is like. Jesus said much more on that hillside. He said, “Love your enemies and pray for people who are unkind to you.” He said that we should forgive people, and not show off when we do good things, and not judge others. And He said one more thing about Himself: “Don’t think that I have come to get rid of God’s Law or the Prophets. I haven’t come to get rid of them, but to fulfil them.” The promise kept: Jesus said He had come not to abolish the Law and the Prophets, “but to fulfill them” (Matthew 5:17). Everything God said in the Old Testament, every law and every promise, finds its meaning and comes true in Jesus. Read it in your Bible: Matthew 5:1–17, 43–48 Dear Jesus, please make me gentle and kind and a peacemaker. Help me to shine like a light, so that other people can see how good you are. Amen.",
+  "word_count": 528
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 5,
+  "title": "Look at the Birds",
+  "body_html": "<blockquote><p>“Look at the birds of the air: They do not sow or reap or gather into barns, and yet your heavenly Father feeds them.” — Matthew 6:26</p></blockquote><p>In His Sermon on the Mount, Jesus taught His followers how to pray. He said that when we pray, we don’t have to use lots of long, fancy words. God is our Father. He already knows what we need, even before we ask.</p><p>“This is how you should pray,” Jesus said:</p><p>“Our Father in heaven,<br/>hallowed be Your name.<br/>Your kingdom come,<br/>Your will be done,<br/>on earth as it is in heaven.<br/>Give us this day our daily bread.<br/>And forgive us our debts,<br/>as we also have forgiven our debtors.<br/>And lead us not into temptation,<br/>but deliver us from the evil one.”</p><p>We call this the Lord’s Prayer. Christians all over the world have prayed it for two thousand years.</p><p>“Hallowed be Your name” means “May everyone honour Your name as holy.” “Daily bread” means everything we need for today. And “forgive us our debts” means “forgive us for the wrong things we have done, as we forgive people who have done wrong to us.”</p><p>Then Jesus talked about worrying.</p><p>“Don’t worry about your life,” He said, “about what you will eat or drink, or what you will wear. Look at the birds. They don’t plant seeds or gather in harvests or store food in barns. And yet your Father in heaven feeds them. Aren’t you worth much more than birds?</p><p>“Can any of you add a single hour to your life by worrying?</p><p>“And why do you worry about clothes? Look at how the wild flowers grow in the fields. They don’t work or make clothes. Yet I tell you, not even King Solomon in all his splendour was dressed as beautifully as one of these flowers. If God dresses the grass in the fields so beautifully, the grass that is here today and gone tomorrow, won’t He take even more care of you?</p><p>“So don’t worry, saying, ‘What will we eat?’ or ‘What will we wear?’ Your Father in heaven knows that you need all these things. But seek first the kingdom of God and His righteousness, and all these things will be given to you as well.</p><p>“So don’t worry about tomorrow. Tomorrow will worry about itself. Each day has enough trouble of its own.”</p><p>Next time you’re worried about something, go and look out of the window. Look for a bird. Every single bird you see is fed by God. And you are worth much more to Him than they are.</p><p><strong>Read it in your Bible:</strong> Matthew 6:5–15, 25–34</p><p><em>Our Father in heaven, thank you that you know what I need, even before I ask. When I am worried, help me to remember the birds and the flowers, and to trust you. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did Jesus say about the birds and the wild flowers?",
+    "answer": "That God feeds the birds and dresses the flowers beautifully, so He will certainly take care of us, because we are worth much more to Him."
+   },
+   {
+    "question": "Can you say the Lord’s Prayer together?",
+    "answer": "Say it slowly together. You might talk about what one line means, like “Give us this day our daily bread.”"
+   },
+   {
+    "question": "What do you sometimes worry about? What could you do instead?",
+    "answer": "Let your child share their worries. We can tell God about them in prayer, and trust Him with today, one day at a time."
+   }
+  ],
+  "body_text": "“Look at the birds of the air: They do not sow or reap or gather into barns, and yet your heavenly Father feeds them.” — Matthew 6:26 In His Sermon on the Mount, Jesus taught His followers how to pray. He said that when we pray, we don’t have to use lots of long, fancy words. God is our Father. He already knows what we need, even before we ask. “This is how you should pray,” Jesus said: “Our Father in heaven, hallowed be Your name. Your kingdom come, Your will be done, on earth as it is in heaven. Give us this day our daily bread. And forgive us our debts, as we also have forgiven our debtors. And lead us not into temptation, but deliver us from the evil one.” We call this the Lord’s Prayer. Christians all over the world have prayed it for two thousand years. “Hallowed be Your name” means “May everyone honour Your name as holy.” “Daily bread” means everything we need for today. And “forgive us our debts” means “forgive us for the wrong things we have done, as we forgive people who have done wrong to us.” Then Jesus talked about worrying. “Don’t worry about your life,” He said, “about what you will eat or drink, or what you will wear. Look at the birds. They don’t plant seeds or gather in harvests or store food in barns. And yet your Father in heaven feeds them. Aren’t you worth much more than birds? “Can any of you add a single hour to your life by worrying? “And why do you worry about clothes? Look at how the wild flowers grow in the fields. They don’t work or make clothes. Yet I tell you, not even King Solomon in all his splendour was dressed as beautifully as one of these flowers. If God dresses the grass in the fields so beautifully, the grass that is here today and gone tomorrow, won’t He take even more care of you? “So don’t worry, saying, ‘What will we eat?’ or ‘What will we wear?’ Your Father in heaven knows that you need all these things. But seek first the kingdom of God and His righteousness, and all these things will be given to you as well. “So don’t worry about tomorrow. Tomorrow will worry about itself. Each day has enough trouble of its own.” Next time you’re worried about something, go and look out of the window. Look for a bird. Every single bird you see is fed by God. And you are worth much more to Him than they are. Read it in your Bible: Matthew 6:5–15, 25–34 Our Father in heaven, thank you that you know what I need, even before I ask. When I am worried, help me to remember the birds and the flowers, and to trust you. Amen.",
+  "word_count": 477
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 6,
+  "title": "The Wise and Foolish Builders",
+  "body_html": "<blockquote><p>“Everyone who hears these words of Mine and acts on them is like a wise man who built his house on the rock.” — Matthew 7:24</p></blockquote><p>At the very end of His Sermon on the Mount, Jesus told a story about two builders.</p><p>“Everyone who hears these words of Mine and does what they say,” Jesus said, “is like a wise man who built his house on the rock.”</p><p>The wise man dug down deep. It was hard work, digging through the soil until he reached solid rock underneath. Then he built his house on top of the rock.</p><p>“Then the rain came down,” said Jesus. “The streams rose and flooded, and the winds blew and beat against that house. But it didn’t fall down, because it was built on the rock.”</p><p>“But everyone who hears these words of Mine and doesn’t do what they say,” Jesus went on, “is like a foolish man who built his house on the sand.”</p><p>The foolish man didn’t bother to dig down deep. Building on sand was quick and easy. And on a sunny day, his house probably looked just as good as the wise man’s house.</p><p>“Then the rain came down,” said Jesus. “The streams rose and flooded, and the winds blew and beat against that house. And it fell down with a great crash!”</p><p>When Jesus finished speaking, the crowds were amazed at His teaching. He didn’t teach like the other teachers, who were always quoting what other people said. Jesus taught like someone who had real authority, as if His own words were God’s words. And they were.</p><p>What is Jesus’ story about?</p><p>Both builders heard the same words. Both of them built a house. And both houses had to face the same storm. The difference was the foundation, the thing underneath that you can’t see.</p><p>Jesus says that the wise person is the one who hears His words and does what He says. That’s like building on rock. When hard times come, like storms in our lives, sad things, scary things, hard things, a life built on Jesus will stand firm.</p><p>The foolish person hears Jesus’ words but doesn’t do anything about them. That’s like building on sand. It might look all right for a while. But when the storms come, it won’t stand.</p><p>It isn’t enough just to hear Jesus’ words. Lots of people have heard what Jesus said. The wise person is the one who does it.</p><p><strong>Read it in your Bible:</strong> Matthew 7:24–29</p><p><em>Dear Jesus, I want to be wise. Help me not only to hear what you say, but to do it, so that my life is built on you, the solid rock. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Where did the wise man and the foolish man build their houses?",
+    "answer": "The wise man dug down deep and built on the rock. The foolish man built on the sand."
+   },
+   {
+    "question": "What happened to each house when the storm came?",
+    "answer": "The house on the rock stood firm. The house on the sand fell with a great crash."
+   },
+   {
+    "question": "Jesus said the wise person hears His words and does them. What is one thing Jesus says that you could do this week?",
+    "answer": "Choose something from the last few stories, like loving your enemies, not worrying, or being a peacemaker, and plan how to do it."
+   }
+  ],
+  "body_text": "“Everyone who hears these words of Mine and acts on them is like a wise man who built his house on the rock.” — Matthew 7:24 At the very end of His Sermon on the Mount, Jesus told a story about two builders. “Everyone who hears these words of Mine and does what they say,” Jesus said, “is like a wise man who built his house on the rock.” The wise man dug down deep. It was hard work, digging through the soil until he reached solid rock underneath. Then he built his house on top of the rock. “Then the rain came down,” said Jesus. “The streams rose and flooded, and the winds blew and beat against that house. But it didn’t fall down, because it was built on the rock.” “But everyone who hears these words of Mine and doesn’t do what they say,” Jesus went on, “is like a foolish man who built his house on the sand.” The foolish man didn’t bother to dig down deep. Building on sand was quick and easy. And on a sunny day, his house probably looked just as good as the wise man’s house. “Then the rain came down,” said Jesus. “The streams rose and flooded, and the winds blew and beat against that house. And it fell down with a great crash!” When Jesus finished speaking, the crowds were amazed at His teaching. He didn’t teach like the other teachers, who were always quoting what other people said. Jesus taught like someone who had real authority, as if His own words were God’s words. And they were. What is Jesus’ story about? Both builders heard the same words. Both of them built a house. And both houses had to face the same storm. The difference was the foundation, the thing underneath that you can’t see. Jesus says that the wise person is the one who hears His words and does what He says. That’s like building on rock. When hard times come, like storms in our lives, sad things, scary things, hard things, a life built on Jesus will stand firm. The foolish person hears Jesus’ words but doesn’t do anything about them. That’s like building on sand. It might look all right for a while. But when the storms come, it won’t stand. It isn’t enough just to hear Jesus’ words. Lots of people have heard what Jesus said. The wise person is the one who does it. Read it in your Bible: Matthew 7:24–29 Dear Jesus, I want to be wise. Help me not only to hear what you say, but to do it, so that my life is built on you, the solid rock. Amen.",
+  "word_count": 449
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 7,
+  "title": "The Soldier’s Great Faith",
+  "body_html": "<blockquote><p>“But just say the word, and my servant will be healed.” — Luke 7:7</p></blockquote><p>In the town of Capernaum there was a Roman army officer called a centurion. He was in charge of a hundred soldiers. He wasn’t an Israelite. He was one of the Romans who ruled the land.</p><p>The centurion had a servant he cared about very much. And the servant was very ill, about to die.</p><p>The centurion had heard about Jesus. So he sent some of the Jewish leaders of the town to ask Jesus to come and heal his servant.</p><p>The Jewish leaders came to Jesus and begged Him to help. “This man deserves it,” they said. “He loves our people, and he even built our synagogue for us.”</p><p>So Jesus went with them. But when He was nearly at the house, the centurion sent some friends with another message.</p><p>“Lord, don’t trouble Yourself,” the centurion said. “I’m not good enough for You to come into my house. That’s why I didn’t even feel worthy to come to You myself. But just say the word, and my servant will be healed. I know about authority. I have officers over me, and I have soldiers under me. I tell one, ‘Go,’ and he goes. I tell another, ‘Come,’ and he comes. I tell my servant, ‘Do this,’ and he does it.”</p><p>The centurion was saying: “You don’t need to come. You’re like a commander. Just give the order, and the illness will obey You.”</p><p>When Jesus heard this, He was amazed. He turned to the crowd following Him and said, “I tell you, I haven’t found faith as great as this, not even in Israel!”</p><p>Then the friends who had been sent went back to the house. And they found the servant completely well.</p><p>The centurion was an important man, a powerful soldier. But he was humble. He said he wasn’t worthy for Jesus even to come into his house. And he trusted Jesus completely. He knew that Jesus had power over sickness, and that one word from Jesus was enough, even from far away.</p><p>Jesus was amazed at the faith of a Roman soldier, a foreigner. Once again, Jesus showed that His kingdom is for people from every nation who trust Him.</p><p><strong>The promise kept:</strong> Matthew tells us that when Jesus healed people like this, it kept the promise of Isaiah: “He took up our infirmities and carried our diseases” (Matthew 8:17). Jesus came to carry everything that is broken in us.</p><p><strong>Read it in your Bible:</strong> Luke 7:1–10; Matthew 8:5–13</p><p><em>Dear Jesus, thank you that your word is so powerful that even sickness has to obey you. Please give me faith like the centurion’s, to trust you completely. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Why did the centurion say Jesus didn’t need to come to his house?",
+    "answer": "Because he knew Jesus had authority over sickness, just as he had authority over his soldiers. Jesus only needed to say the word."
+   },
+   {
+    "question": "Why was Jesus amazed?",
+    "answer": "Because the centurion’s faith was so great, greater than any Jesus had found in Israel, even though he was a Roman soldier."
+   },
+   {
+    "question": "The centurion was important but humble. How can we be humble like him?",
+    "answer": "By remembering that we need God, by not thinking we’re better than other people, and by trusting Jesus instead of ourselves."
+   }
+  ],
+  "body_text": "“But just say the word, and my servant will be healed.” — Luke 7:7 In the town of Capernaum there was a Roman army officer called a centurion. He was in charge of a hundred soldiers. He wasn’t an Israelite. He was one of the Romans who ruled the land. The centurion had a servant he cared about very much. And the servant was very ill, about to die. The centurion had heard about Jesus. So he sent some of the Jewish leaders of the town to ask Jesus to come and heal his servant. The Jewish leaders came to Jesus and begged Him to help. “This man deserves it,” they said. “He loves our people, and he even built our synagogue for us.” So Jesus went with them. But when He was nearly at the house, the centurion sent some friends with another message. “Lord, don’t trouble Yourself,” the centurion said. “I’m not good enough for You to come into my house. That’s why I didn’t even feel worthy to come to You myself. But just say the word, and my servant will be healed. I know about authority. I have officers over me, and I have soldiers under me. I tell one, ‘Go,’ and he goes. I tell another, ‘Come,’ and he comes. I tell my servant, ‘Do this,’ and he does it.” The centurion was saying: “You don’t need to come. You’re like a commander. Just give the order, and the illness will obey You.” When Jesus heard this, He was amazed. He turned to the crowd following Him and said, “I tell you, I haven’t found faith as great as this, not even in Israel!” Then the friends who had been sent went back to the house. And they found the servant completely well. The centurion was an important man, a powerful soldier. But he was humble. He said he wasn’t worthy for Jesus even to come into his house. And he trusted Jesus completely. He knew that Jesus had power over sickness, and that one word from Jesus was enough, even from far away. Jesus was amazed at the faith of a Roman soldier, a foreigner. Once again, Jesus showed that His kingdom is for people from every nation who trust Him. The promise kept: Matthew tells us that when Jesus healed people like this, it kept the promise of Isaiah: “He took up our infirmities and carried our diseases” (Matthew 8:17). Jesus came to carry everything that is broken in us. Read it in your Bible: Luke 7:1–10; Matthew 8:5–13 Dear Jesus, thank you that your word is so powerful that even sickness has to obey you. Please give me faith like the centurion’s, to trust you completely. Amen.",
+  "word_count": 455
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 8,
+  "title": "The Widow’s Only Son",
+  "body_html": "<blockquote><p>“When the Lord saw her, He had compassion on her and said, ‘Do not weep.’” — Luke 7:13</p></blockquote><p>Soon after this, Jesus went to a town called Nain. His disciples went with Him, and a large crowd followed too.</p><p>As Jesus came near the town gate, another crowd was coming out. It was a funeral. People were carrying a young man who had died. He was his mother’s only son, and his mother was a widow. Her husband had already died, and now her son had died too.</p><p>In those days a widow without a son had nobody to look after her. She had lost everyone she loved, and she was all alone. A large crowd of people from the town was walking with her, crying.</p><p>When Jesus saw her, His heart went out to her. He felt so sorry for her. “Don’t cry,” He said to her gently.</p><p>Then Jesus did something nobody expected. He walked up and touched the stretcher they were carrying the young man on. The people carrying it stood still. The whole crowd stopped.</p><p>“Young man,” said Jesus, “I tell you, get up!”</p><p>And the dead man sat up and began to talk!</p><p>And Jesus gave him back to his mother.</p><p>Can you imagine how that mother felt? One moment she was walking behind her son’s body, crying, with no hope at all. The next moment he was alive, sitting up and talking, and Jesus was giving him back to her!</p><p>Everyone was filled with awe, and they praised God. “A great prophet has appeared among us!” they said. “God has come to help His people!”</p><p>And the news about Jesus spread through the whole country.</p><p>Nobody had asked Jesus to help. The widow didn’t know who He was. Nobody begged Him. Jesus just saw her, and His heart was full of love for her, and He helped.</p><p>Long ago, the prophet Elijah had brought a widow’s son back to life (1 Kings 17:17–24). People must have remembered that story. But Jesus didn’t pray and stretch Himself over the boy, the way Elijah did. He just spoke, and death had to obey.</p><p>Jesus sees when people are sad. He cares about people who are lonely and grieving. And one day, Jesus will say “Get up!” to everyone who belongs to Him, and death will be gone for ever.</p><p><strong>Read it in your Bible:</strong> Luke 7:11–17</p><p><em>Dear Jesus, thank you that you see people who are sad, and that your heart goes out to them. Please comfort people who are grieving today. Thank you that you are stronger than death. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Why was the widow so sad?",
+    "answer": "Her husband had already died, and now her only son had died too, so she was all alone."
+   },
+   {
+    "question": "What did Jesus do?",
+    "answer": "He told her not to cry, touched the stretcher, and said, “Young man, I tell you, get up!” The young man sat up and talked, and Jesus gave him back to his mother."
+   },
+   {
+    "question": "Nobody asked Jesus to help, but He saw the widow and felt sorry for her. Who do you know who is sad, that you could notice and care for?",
+    "answer": "Think of someone together. Like Jesus, we can notice when people are sad and show them kindness. (This story may bring up questions about death; let your child ask, and remind them that Jesus is stronger than death.)"
+   }
+  ],
+  "body_text": "“When the Lord saw her, He had compassion on her and said, ‘Do not weep.’” — Luke 7:13 Soon after this, Jesus went to a town called Nain. His disciples went with Him, and a large crowd followed too. As Jesus came near the town gate, another crowd was coming out. It was a funeral. People were carrying a young man who had died. He was his mother’s only son, and his mother was a widow. Her husband had already died, and now her son had died too. In those days a widow without a son had nobody to look after her. She had lost everyone she loved, and she was all alone. A large crowd of people from the town was walking with her, crying. When Jesus saw her, His heart went out to her. He felt so sorry for her. “Don’t cry,” He said to her gently. Then Jesus did something nobody expected. He walked up and touched the stretcher they were carrying the young man on. The people carrying it stood still. The whole crowd stopped. “Young man,” said Jesus, “I tell you, get up!” And the dead man sat up and began to talk! And Jesus gave him back to his mother. Can you imagine how that mother felt? One moment she was walking behind her son’s body, crying, with no hope at all. The next moment he was alive, sitting up and talking, and Jesus was giving him back to her! Everyone was filled with awe, and they praised God. “A great prophet has appeared among us!” they said. “God has come to help His people!” And the news about Jesus spread through the whole country. Nobody had asked Jesus to help. The widow didn’t know who He was. Nobody begged Him. Jesus just saw her, and His heart was full of love for her, and He helped. Long ago, the prophet Elijah had brought a widow’s son back to life (1 Kings 17:17–24). People must have remembered that story. But Jesus didn’t pray and stretch Himself over the boy, the way Elijah did. He just spoke, and death had to obey. Jesus sees when people are sad. He cares about people who are lonely and grieving. And one day, Jesus will say “Get up!” to everyone who belongs to Him, and death will be gone for ever. Read it in your Bible: Luke 7:11–17 Dear Jesus, thank you that you see people who are sad, and that your heart goes out to them. Please comfort people who are grieving today. Thank you that you are stronger than death. Amen.",
+  "word_count": 435
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 9,
+  "title": "The Storm on the Lake",
+  "body_html": "<blockquote><p>“Who is this, that even the wind and the sea obey Him?” — Mark 4:41</p></blockquote><p>One evening, after a long day of teaching the crowds, Jesus said to His disciples, “Let’s go over to the other side of the lake.”</p><p>So they left the crowd behind and set off across the Lake of Galilee in a boat. Other boats came with them too.</p><p>Jesus was so tired that He lay down in the back of the boat, put His head on a cushion, and fell fast asleep.</p><p>Then a terrible storm blew up. The wind howled, and huge waves crashed over the sides of the boat, so that it was filling up with water. Some of the disciples were fishermen. They had been on the lake all their lives. But even they were terrified. They were sure the boat was going to sink.</p><p>And Jesus was still asleep!</p><p>The disciples woke Him up. “Teacher!” they shouted. “Don’t You care that we’re going to drown?”</p><p>Jesus got up. He spoke to the wind, and said to the waves, “Quiet! Be still!”</p><p>And at once the wind stopped. The waves went flat. Everything was completely calm.</p><p>Then Jesus turned to His disciples. “Why are you so afraid?” He asked. “Do you still not have faith?”</p><p>The disciples had been frightened of the storm. But now they were filled with a different kind of fear. A deep, trembling awe. They looked at each other.</p><p>“Who is this?” they said. “Even the wind and the waves obey Him!”</p><p>Who can tell the wind to stop blowing? Who can tell the sea to be calm? Only the one who made the wind and the sea. Only God.</p><p>The disciples were beginning to understand who Jesus really was.</p><p>Did you notice something? Jesus was in the boat with them the whole time. Even when He was asleep, they were never in any danger, because He was there. They didn’t need to be afraid. They just needed to trust Him.</p><p>Sometimes life feels like a storm. Things go wrong, and we feel scared. It can even feel as if Jesus is asleep and doesn’t care. But He does care. He is with us in the storm. And there is nothing, not even the wildest storm, that doesn’t have to obey Him.</p><p><strong>Read it in your Bible:</strong> Mark 4:35–41</p><p><em>Dear Jesus, thank you that the wind and the waves obey you. When I feel afraid, help me to remember that you are with me, and to trust you. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What was Jesus doing when the storm came?",
+    "answer": "He was asleep on a cushion in the back of the boat."
+   },
+   {
+    "question": "What happened when Jesus spoke to the wind and the waves?",
+    "answer": "The wind stopped at once and the lake became completely calm."
+   },
+   {
+    "question": "The disciples asked, “Who is this?” What is the answer?",
+    "answer": "Jesus is God’s Son. Only the one who made the wind and the sea can tell them to be still. And He is with us in our storms too."
+   }
+  ],
+  "body_text": "“Who is this, that even the wind and the sea obey Him?” — Mark 4:41 One evening, after a long day of teaching the crowds, Jesus said to His disciples, “Let’s go over to the other side of the lake.” So they left the crowd behind and set off across the Lake of Galilee in a boat. Other boats came with them too. Jesus was so tired that He lay down in the back of the boat, put His head on a cushion, and fell fast asleep. Then a terrible storm blew up. The wind howled, and huge waves crashed over the sides of the boat, so that it was filling up with water. Some of the disciples were fishermen. They had been on the lake all their lives. But even they were terrified. They were sure the boat was going to sink. And Jesus was still asleep! The disciples woke Him up. “Teacher!” they shouted. “Don’t You care that we’re going to drown?” Jesus got up. He spoke to the wind, and said to the waves, “Quiet! Be still!” And at once the wind stopped. The waves went flat. Everything was completely calm. Then Jesus turned to His disciples. “Why are you so afraid?” He asked. “Do you still not have faith?” The disciples had been frightened of the storm. But now they were filled with a different kind of fear. A deep, trembling awe. They looked at each other. “Who is this?” they said. “Even the wind and the waves obey Him!” Who can tell the wind to stop blowing? Who can tell the sea to be calm? Only the one who made the wind and the sea. Only God. The disciples were beginning to understand who Jesus really was. Did you notice something? Jesus was in the boat with them the whole time. Even when He was asleep, they were never in any danger, because He was there. They didn’t need to be afraid. They just needed to trust Him. Sometimes life feels like a storm. Things go wrong, and we feel scared. It can even feel as if Jesus is asleep and doesn’t care. But He does care. He is with us in the storm. And there is nothing, not even the wildest storm, that doesn’t have to obey Him. Read it in your Bible: Mark 4:35–41 Dear Jesus, thank you that the wind and the waves obey you. When I feel afraid, help me to remember that you are with me, and to trust you. Amen.",
+  "word_count": 421
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 10,
+  "title": "The Farmer and the Seeds",
+  "body_html": "<blockquote><p>“They hear the word, receive it, and produce a crop.” — Mark 4:20</p></blockquote><p>One day Jesus sat in a boat by the lake, and the crowd stood on the shore listening. He told them this story.</p><p>“Listen! A farmer went out to plant his seed. As he scattered the seed, throwing it out by the handful, some fell on the path. And the birds came and ate it up.</p><p>“Some seed fell on rocky ground, where there wasn’t much soil. It sprang up quickly, because the soil wasn’t deep. But when the sun came up, the young plants were scorched, and they withered away, because they had no roots.</p><p>“Other seed fell among thorns. The thorns grew up and choked the plants, so they didn’t produce any grain.</p><p>“But other seed fell on good soil. It came up, and grew, and produced a crop, some thirty times as much as was planted, some sixty times, and some even a hundred times!”</p><p>Then Jesus said, “Whoever has ears to hear, let them hear!”</p><p>Later, when Jesus was alone with His disciples, they asked Him what the story meant. So Jesus explained it.</p><p>“The farmer plants God’s Word,” Jesus said.</p><p>“Some people are like the seed on the path. They hear God’s Word, but straight away the devil comes and takes it away, like birds snatching seed.</p><p>“Some people are like the seed on rocky ground. They hear the Word and are happy about it at first. But it doesn’t go deep into their hearts. So when trouble comes, or people are unkind to them because they believe, they quickly give up.</p><p>“Some people are like the seed among the thorns. They hear the Word, but then worries and wanting money and wanting other things crowd in, like thorns, and choke it. So it never grows.</p><p>“But some people are like the seed on good soil. They hear God’s Word, and they accept it, and it grows. And their lives produce a crop, thirty, sixty, or even a hundred times as much as was planted.”</p><p>The same seed fell everywhere. The difference was the soil. Jesus was asking His listeners: “What kind of soil is your heart?”</p><p>When we hear God’s Word, like the stories in this book, we can let it go in one ear and out the other. Or we can let it sink deep into our hearts, and grow, and change us. Good soil hears God’s Word, holds on to it, and lets it grow.</p><p><strong>Read it in your Bible:</strong> Mark 4:1–20</p><p><em>Dear God, please make my heart like good soil. Help me to listen to your Word, to hold on to it, and to let it grow in me. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Where did the farmer’s seed fall?",
+    "answer": "On the path, on rocky ground, among thorns, and on good soil."
+   },
+   {
+    "question": "What is the seed, and what are the different kinds of soil?",
+    "answer": "The seed is God’s Word. The kinds of soil are like different people’s hearts and how they respond to God’s Word."
+   },
+   {
+    "question": "What helps God’s Word grow in our hearts like good soil?",
+    "answer": "Listening carefully, thinking about it, asking questions, remembering it, and doing what it says. Reading the Bible together is one way."
+   }
+  ],
+  "body_text": "“They hear the word, receive it, and produce a crop.” — Mark 4:20 One day Jesus sat in a boat by the lake, and the crowd stood on the shore listening. He told them this story. “Listen! A farmer went out to plant his seed. As he scattered the seed, throwing it out by the handful, some fell on the path. And the birds came and ate it up. “Some seed fell on rocky ground, where there wasn’t much soil. It sprang up quickly, because the soil wasn’t deep. But when the sun came up, the young plants were scorched, and they withered away, because they had no roots. “Other seed fell among thorns. The thorns grew up and choked the plants, so they didn’t produce any grain. “But other seed fell on good soil. It came up, and grew, and produced a crop, some thirty times as much as was planted, some sixty times, and some even a hundred times!” Then Jesus said, “Whoever has ears to hear, let them hear!” Later, when Jesus was alone with His disciples, they asked Him what the story meant. So Jesus explained it. “The farmer plants God’s Word,” Jesus said. “Some people are like the seed on the path. They hear God’s Word, but straight away the devil comes and takes it away, like birds snatching seed. “Some people are like the seed on rocky ground. They hear the Word and are happy about it at first. But it doesn’t go deep into their hearts. So when trouble comes, or people are unkind to them because they believe, they quickly give up. “Some people are like the seed among the thorns. They hear the Word, but then worries and wanting money and wanting other things crowd in, like thorns, and choke it. So it never grows. “But some people are like the seed on good soil. They hear God’s Word, and they accept it, and it grows. And their lives produce a crop, thirty, sixty, or even a hundred times as much as was planted.” The same seed fell everywhere. The difference was the soil. Jesus was asking His listeners: “What kind of soil is your heart?” When we hear God’s Word, like the stories in this book, we can let it go in one ear and out the other. Or we can let it sink deep into our hearts, and grow, and change us. Good soil hears God’s Word, holds on to it, and lets it grow. Read it in your Bible: Mark 4:1–20 Dear God, please make my heart like good soil. Help me to listen to your Word, to hold on to it, and to let it grow in me. Amen.",
+  "word_count": 452
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 11,
+  "title": "Jairus’s Little Girl",
+  "body_html": "<blockquote><p>“Do not be afraid; just believe.” — Mark 5:36</p></blockquote><p>When Jesus came back across the lake, a big crowd was waiting for Him. One of the leaders of the synagogue, a man called Jairus, pushed his way through the crowd and fell at Jesus’ feet.</p><p>“My little daughter is dying,” he begged. “Please come and put Your hands on her, so that she will get better and live!”</p><p>So Jesus went with him. And the whole crowd came too, pressing in all around Jesus.</p><p>In the crowd there was a woman who had been ill for twelve years. She had been bleeding all that time, and it wouldn’t stop. She had been to lots of doctors and spent all her money, but instead of getting better, she had got worse. Because of her illness, the law said she was “unclean”, so she wasn’t supposed to touch anyone.</p><p>She had heard about Jesus. “If I can just touch His clothes,” she thought, “I will be healed.” So she crept up behind Jesus in the crowd and touched His cloak.</p><p>Immediately the bleeding stopped! She could feel in her body that she was healed.</p><p>At once Jesus knew that power had gone out from Him. He turned around in the crowd. “Who touched My clothes?” He asked.</p><p>“Look at this crowd pressing all around You,” His disciples said, “and You ask, ‘Who touched Me?’”</p><p>But Jesus kept looking around to see who had done it. Then the woman, trembling with fear, came and fell at His feet and told Him the whole truth.</p><p>“Daughter,” Jesus said kindly, “your faith has healed you. Go in peace, and be free from your suffering.”</p><p>He called her “Daughter”. For twelve years nobody had wanted to touch her. Now Jesus called her part of His family.</p><p>But while Jesus was still speaking, some men came from Jairus’s house. “Your daughter is dead,” they told Jairus. “Why bother the Teacher any more?”</p><p>Jesus heard what they said. He turned to Jairus. “Don’t be afraid,” He said. “Just believe.”</p><p>Jesus took only Peter, James and John with Him. At Jairus’s house, people were crying and wailing loudly. “Why all this noise and crying?” Jesus said. “The child isn’t dead. She’s asleep.” And they laughed at Him.</p><p>But Jesus sent them all outside. He took the girl’s mother and father and His three disciples into the room where she was lying. He took her by the hand and said, “Talitha koum!” That means, “Little girl, I say to you, get up!”</p><p>And immediately the little girl stood up and began to walk around! She was twelve years old. Her parents were completely amazed.</p><p>Jesus told them to give her something to eat.</p><p><strong>Read it in your Bible:</strong> Mark 5:21–43</p><p><em>Dear Jesus, thank you that you care about every person in the crowd, and that you are stronger than sickness and even death. When I am afraid, help me to hear you say, “Don’t be afraid; just believe.” Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did the woman in the crowd do, and what happened?",
+    "answer": "She touched Jesus’ cloak, believing she would be healed, and her twelve-year illness stopped at once."
+   },
+   {
+    "question": "What did Jesus say to the little girl, and what does it mean?",
+    "answer": "“Talitha koum!” It means, “Little girl, I say to you, get up!” And she got up and walked around."
+   },
+   {
+    "question": "When the messengers said the girl was dead, Jesus told Jairus, “Don’t be afraid; just believe.” When do you need to remember those words?",
+    "answer": "Whenever things seem hopeless or scary. Jesus is still with us and still able to help, even when it looks too late."
+   }
+  ],
+  "body_text": "“Do not be afraid; just believe.” — Mark 5:36 When Jesus came back across the lake, a big crowd was waiting for Him. One of the leaders of the synagogue, a man called Jairus, pushed his way through the crowd and fell at Jesus’ feet. “My little daughter is dying,” he begged. “Please come and put Your hands on her, so that she will get better and live!” So Jesus went with him. And the whole crowd came too, pressing in all around Jesus. In the crowd there was a woman who had been ill for twelve years. She had been bleeding all that time, and it wouldn’t stop. She had been to lots of doctors and spent all her money, but instead of getting better, she had got worse. Because of her illness, the law said she was “unclean”, so she wasn’t supposed to touch anyone. She had heard about Jesus. “If I can just touch His clothes,” she thought, “I will be healed.” So she crept up behind Jesus in the crowd and touched His cloak. Immediately the bleeding stopped! She could feel in her body that she was healed. At once Jesus knew that power had gone out from Him. He turned around in the crowd. “Who touched My clothes?” He asked. “Look at this crowd pressing all around You,” His disciples said, “and You ask, ‘Who touched Me?’” But Jesus kept looking around to see who had done it. Then the woman, trembling with fear, came and fell at His feet and told Him the whole truth. “Daughter,” Jesus said kindly, “your faith has healed you. Go in peace, and be free from your suffering.” He called her “Daughter”. For twelve years nobody had wanted to touch her. Now Jesus called her part of His family. But while Jesus was still speaking, some men came from Jairus’s house. “Your daughter is dead,” they told Jairus. “Why bother the Teacher any more?” Jesus heard what they said. He turned to Jairus. “Don’t be afraid,” He said. “Just believe.” Jesus took only Peter, James and John with Him. At Jairus’s house, people were crying and wailing loudly. “Why all this noise and crying?” Jesus said. “The child isn’t dead. She’s asleep.” And they laughed at Him. But Jesus sent them all outside. He took the girl’s mother and father and His three disciples into the room where she was lying. He took her by the hand and said, “Talitha koum!” That means, “Little girl, I say to you, get up!” And immediately the little girl stood up and began to walk around! She was twelve years old. Her parents were completely amazed. Jesus told them to give her something to eat. Read it in your Bible: Mark 5:21–43 Dear Jesus, thank you that you care about every person in the crowd, and that you are stronger than sickness and even death. When I am afraid, help me to hear you say, “Don’t be afraid; just believe.” Amen.",
+  "word_count": 499
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 12,
+  "title": "Five Loaves and Two Fish",
+  "body_html": "<blockquote><p>“Here is a boy with five barley loaves and two small fish. But what difference will these make among so many?” — John 6:9</p></blockquote><p>Jesus went up on a hillside by the Lake of Galilee and sat down with His disciples. A huge crowd followed Him, because they had seen Him healing sick people.</p><p>When Jesus looked up and saw the great crowd coming towards Him, He said to His disciple Philip, “Where can we buy bread for all these people to eat?” Jesus already knew what He was going to do. He was testing Philip.</p><p>“Even half a year’s wages wouldn’t buy enough bread for each of them to have a tiny piece!” said Philip.</p><p>Then another disciple, Andrew, Simon Peter’s brother, spoke up. “There’s a boy here with five small barley loaves and two little fish,” he said. “But what good is that for so many people?”</p><p>It was one boy’s lunch. Barley bread was the cheap bread that poor people ate.</p><p>“Tell the people to sit down,” said Jesus. There was lots of green grass in that place, so everyone sat down. There were about five thousand men, as well as women and children.</p><p>Then Jesus took the five loaves and gave thanks to God. He broke the bread and handed it out to the people sitting on the grass. Then He did the same with the fish. And everyone had as much as they wanted!</p><p>The bread kept on coming. The fish kept on coming. Thousands and thousands of people ate until they were full.</p><p>When everyone had eaten enough, Jesus said to His disciples, “Gather up the pieces that are left over. Don’t let anything be wasted.”</p><p>So they went round and gathered up the leftovers. And they filled twelve baskets with the pieces of the five barley loaves!</p><p>They had started with five little loaves and two fish. They ended up with twelve baskets full, more than they had at the beginning!</p><p>When the people saw this amazing sign, they said, “Surely this is the Prophet God promised to send into the world!”</p><p>Can you imagine being that boy? He gave Jesus his lunch, just a little lunch, not much at all. And Jesus took it, and thanked God for it, and used it to feed thousands of people.</p><p>What we have to give might not seem like much. But when we give it to Jesus, He can do amazing things with it.</p><p><strong>The promise kept:</strong> The next day, the crowd reminded Jesus that God gave their ancestors manna in the wilderness: “He gave them bread from heaven to eat” (John 6:31). Jesus answered, “I am the bread of life” (John 6:35). The manna in the desert pointed to Him.</p><p><strong>Read it in your Bible:</strong> John 6:1–14, 31–35</p><p><em>Dear Jesus, thank you that you can do so much with a little. Here is what I have. Please use it for your glory. Thank you that you are the bread of life. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did the boy have, and what did Jesus do with it?",
+    "answer": "Five small barley loaves and two little fish. Jesus thanked God for them and fed over five thousand people with them."
+   },
+   {
+    "question": "How much was left over?",
+    "answer": "Twelve baskets full, more than they started with."
+   },
+   {
+    "question": "The boy gave Jesus what he had, even though it was small. What could you give to Jesus?",
+    "answer": "Our time, our talents, our money, our kindness, even our small offerings. Jesus can do great things with whatever we give Him."
+   }
+  ],
+  "body_text": "“Here is a boy with five barley loaves and two small fish. But what difference will these make among so many?” — John 6:9 Jesus went up on a hillside by the Lake of Galilee and sat down with His disciples. A huge crowd followed Him, because they had seen Him healing sick people. When Jesus looked up and saw the great crowd coming towards Him, He said to His disciple Philip, “Where can we buy bread for all these people to eat?” Jesus already knew what He was going to do. He was testing Philip. “Even half a year’s wages wouldn’t buy enough bread for each of them to have a tiny piece!” said Philip. Then another disciple, Andrew, Simon Peter’s brother, spoke up. “There’s a boy here with five small barley loaves and two little fish,” he said. “But what good is that for so many people?” It was one boy’s lunch. Barley bread was the cheap bread that poor people ate. “Tell the people to sit down,” said Jesus. There was lots of green grass in that place, so everyone sat down. There were about five thousand men, as well as women and children. Then Jesus took the five loaves and gave thanks to God. He broke the bread and handed it out to the people sitting on the grass. Then He did the same with the fish. And everyone had as much as they wanted! The bread kept on coming. The fish kept on coming. Thousands and thousands of people ate until they were full. When everyone had eaten enough, Jesus said to His disciples, “Gather up the pieces that are left over. Don’t let anything be wasted.” So they went round and gathered up the leftovers. And they filled twelve baskets with the pieces of the five barley loaves! They had started with five little loaves and two fish. They ended up with twelve baskets full, more than they had at the beginning! When the people saw this amazing sign, they said, “Surely this is the Prophet God promised to send into the world!” Can you imagine being that boy? He gave Jesus his lunch, just a little lunch, not much at all. And Jesus took it, and thanked God for it, and used it to feed thousands of people. What we have to give might not seem like much. But when we give it to Jesus, He can do amazing things with it. The promise kept: The next day, the crowd reminded Jesus that God gave their ancestors manna in the wilderness: “He gave them bread from heaven to eat” (John 6:31). Jesus answered, “I am the bread of life” (John 6:35). The manna in the desert pointed to Him. Read it in your Bible: John 6:1–14, 31–35 Dear Jesus, thank you that you can do so much with a little. Here is what I have. Please use it for your glory. Thank you that you are the bread of life. Amen.",
+  "word_count": 498
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 13,
+  "title": "Walking on the Water",
+  "body_html": "<blockquote><p>“Take courage! It is I. Do not be afraid.” — Matthew 14:27</p></blockquote><p>After Jesus fed the five thousand, He told His disciples to get into the boat and go ahead of Him to the other side of the lake. Then He sent the crowd home and went up a mountain by Himself to pray.</p><p>When night came, Jesus was still on the mountain, alone. And the disciples’ boat was far out on the lake, being battered by the waves, because the wind was blowing hard against it. They were rowing and rowing, but getting nowhere.</p><p>Very early in the morning, while it was still dark, Jesus came out to them. He was walking on the water!</p><p>When the disciples saw Him walking on the lake, they were terrified. “It’s a ghost!” they cried out in fear.</p><p>But Jesus spoke to them straight away. “Take courage! It is I. Don’t be afraid.”</p><p>Peter called out, “Lord, if it’s really You, tell me to come to You on the water.”</p><p>“Come,” said Jesus.</p><p>So Peter climbed over the side of the boat, and stood on the water, and walked towards Jesus! He was walking on the water too!</p><p>But then Peter looked at the wind and the waves all around him. He became afraid. And as soon as he was afraid, he began to sink.</p><p>“Lord, save me!” Peter cried.</p><p>Immediately Jesus reached out His hand and caught him. “You of little faith,” Jesus said. “Why did you doubt?”</p><p>And when they climbed into the boat, the wind stopped.</p><p>Then the disciples in the boat worshipped Jesus. “Truly You are the Son of God!” they said.</p><p>Peter did something none of the other disciples dared to do. He got out of the boat! As long as he kept his eyes on Jesus, he walked on the water. But when he took his eyes off Jesus and looked at the storm, he started to sink.</p><p>When we keep our eyes on Jesus and trust Him, we can do things we never thought possible. When we look at our problems instead, we start to sink.</p><p>But even when Peter sank, Jesus didn’t let him go under. The moment Peter cried, “Lord, save me!”, Jesus reached out and caught him.</p><p>When we’re sinking, all we need to do is call out to Jesus. His hand is always close enough to catch us.</p><p><strong>Read it in your Bible:</strong> Matthew 14:22–33</p><p><em>Dear Jesus, help me to keep my eyes on you, not on the storms around me. And when I start to sink, thank you that I can call to you, and you will catch me. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did the disciples think when they saw Jesus walking on the water?",
+    "answer": "They thought He was a ghost, and they were terrified."
+   },
+   {
+    "question": "Why did Peter start to sink?",
+    "answer": "Because he looked at the wind and the waves instead of at Jesus, and he became afraid."
+   },
+   {
+    "question": "What did Jesus do when Peter cried, “Lord, save me”? What does that teach us?",
+    "answer": "He immediately reached out and caught him. When we call out to Jesus for help, He is always there to catch us."
+   }
+  ],
+  "body_text": "“Take courage! It is I. Do not be afraid.” — Matthew 14:27 After Jesus fed the five thousand, He told His disciples to get into the boat and go ahead of Him to the other side of the lake. Then He sent the crowd home and went up a mountain by Himself to pray. When night came, Jesus was still on the mountain, alone. And the disciples’ boat was far out on the lake, being battered by the waves, because the wind was blowing hard against it. They were rowing and rowing, but getting nowhere. Very early in the morning, while it was still dark, Jesus came out to them. He was walking on the water! When the disciples saw Him walking on the lake, they were terrified. “It’s a ghost!” they cried out in fear. But Jesus spoke to them straight away. “Take courage! It is I. Don’t be afraid.” Peter called out, “Lord, if it’s really You, tell me to come to You on the water.” “Come,” said Jesus. So Peter climbed over the side of the boat, and stood on the water, and walked towards Jesus! He was walking on the water too! But then Peter looked at the wind and the waves all around him. He became afraid. And as soon as he was afraid, he began to sink. “Lord, save me!” Peter cried. Immediately Jesus reached out His hand and caught him. “You of little faith,” Jesus said. “Why did you doubt?” And when they climbed into the boat, the wind stopped. Then the disciples in the boat worshipped Jesus. “Truly You are the Son of God!” they said. Peter did something none of the other disciples dared to do. He got out of the boat! As long as he kept his eyes on Jesus, he walked on the water. But when he took his eyes off Jesus and looked at the storm, he started to sink. When we keep our eyes on Jesus and trust Him, we can do things we never thought possible. When we look at our problems instead, we start to sink. But even when Peter sank, Jesus didn’t let him go under. The moment Peter cried, “Lord, save me!”, Jesus reached out and caught him. When we’re sinking, all we need to do is call out to Jesus. His hand is always close enough to catch us. Read it in your Bible: Matthew 14:22–33 Dear Jesus, help me to keep my eyes on you, not on the storms around me. And when I start to sink, thank you that I can call to you, and you will catch me. Amen.",
+  "word_count": 440
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 14,
+  "title": "The Good Samaritan",
+  "body_html": "<blockquote><p>“‘The one who showed him mercy,’ replied the expert in the law. Then Jesus told him, ‘Go and do likewise.’” — Luke 10:37</p></blockquote><p>One day an expert in God’s law came to test Jesus. “Teacher,” he said, “what must I do to have eternal life?”</p><p>“What does God’s law say?” Jesus asked him.</p><p>The man answered, “Love the Lord your God with all your heart and with all your soul and with all your strength and with all your mind. And love your neighbour as yourself.”</p><p>“That’s right,” said Jesus. “Do this, and you will live.”</p><p>But the man wanted to make himself look good. So he asked, “And who is my neighbour?”</p><p>Jesus answered with a story.</p><p>“A man was going down the road from Jerusalem to Jericho. It was a lonely, rocky road. On the way, robbers attacked him. They took his clothes, beat him up, and left him lying by the road, half dead.</p><p>“A priest happened to be going down the same road. When he saw the man, he crossed over to the other side of the road and walked straight past.</p><p>“Then a Levite, someone who helped in the temple, came along. He went over and looked at the man. And then he crossed over to the other side of the road and walked past too.</p><p>“Then a Samaritan came along.”</p><p>Do you remember the Samaritans? Jews and Samaritans hated each other. The people listening to Jesus would never have expected the Samaritan to be the hero of the story.</p><p>“When the Samaritan saw the man, his heart was filled with pity,” said Jesus. “He went to him and bandaged his wounds, pouring oil and wine on them to clean them and help them heal. Then he put the man on his own animal, took him to an inn, and looked after him.</p><p>“The next day he took out two silver coins and gave them to the innkeeper. ‘Look after him,’ he said, ‘and if it costs more than this, I’ll pay you back when I come this way again.’”</p><p>Then Jesus asked the expert in the law, “Which of these three do you think was a neighbour to the man who was attacked by robbers?”</p><p>The expert couldn’t even bring himself to say “the Samaritan”. He said, “The one who showed him mercy.”</p><p>“Go and do the same,” said Jesus.</p><p>The expert wanted to know who he had to love, and who he didn’t have to love. But Jesus turned the question around. The question isn’t “Who is my neighbour?” The question is “Who can I be a neighbour to?” And the answer is: anyone who needs help, even someone who is different from us, even someone we’ve been taught not to like.</p><p><strong>Read it in your Bible:</strong> Luke 10:25–37</p><p><em>Dear God, please help me to love you with all my heart, and to love my neighbour as myself. Help me to notice people who need help, and to show them mercy, like the Good Samaritan. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Who walked past the injured man, and who stopped to help?",
+    "answer": "A priest and a Levite walked past on the other side of the road. A Samaritan stopped, bandaged his wounds, took him to an inn and paid for his care."
+   },
+   {
+    "question": "Why was it so surprising that the Samaritan was the hero?",
+    "answer": "Because Jews and Samaritans disliked each other, so Jesus’ listeners would never have expected a Samaritan to be the one who helped."
+   },
+   {
+    "question": "Jesus said, “Go and do the same.” How could you be a good neighbour to someone this week?",
+    "answer": "Think of someone who needs help, perhaps someone hurt, lonely, new or different from you, and plan one way to show them kindness."
+   }
+  ],
+  "body_text": "“‘The one who showed him mercy,’ replied the expert in the law. Then Jesus told him, ‘Go and do likewise.’” — Luke 10:37 One day an expert in God’s law came to test Jesus. “Teacher,” he said, “what must I do to have eternal life?” “What does God’s law say?” Jesus asked him. The man answered, “Love the Lord your God with all your heart and with all your soul and with all your strength and with all your mind. And love your neighbour as yourself.” “That’s right,” said Jesus. “Do this, and you will live.” But the man wanted to make himself look good. So he asked, “And who is my neighbour?” Jesus answered with a story. “A man was going down the road from Jerusalem to Jericho. It was a lonely, rocky road. On the way, robbers attacked him. They took his clothes, beat him up, and left him lying by the road, half dead. “A priest happened to be going down the same road. When he saw the man, he crossed over to the other side of the road and walked straight past. “Then a Levite, someone who helped in the temple, came along. He went over and looked at the man. And then he crossed over to the other side of the road and walked past too. “Then a Samaritan came along.” Do you remember the Samaritans? Jews and Samaritans hated each other. The people listening to Jesus would never have expected the Samaritan to be the hero of the story. “When the Samaritan saw the man, his heart was filled with pity,” said Jesus. “He went to him and bandaged his wounds, pouring oil and wine on them to clean them and help them heal. Then he put the man on his own animal, took him to an inn, and looked after him. “The next day he took out two silver coins and gave them to the innkeeper. ‘Look after him,’ he said, ‘and if it costs more than this, I’ll pay you back when I come this way again.’” Then Jesus asked the expert in the law, “Which of these three do you think was a neighbour to the man who was attacked by robbers?” The expert couldn’t even bring himself to say “the Samaritan”. He said, “The one who showed him mercy.” “Go and do the same,” said Jesus. The expert wanted to know who he had to love, and who he didn’t have to love. But Jesus turned the question around. The question isn’t “Who is my neighbour?” The question is “Who can I be a neighbour to?” And the answer is: anyone who needs help, even someone who is different from us, even someone we’ve been taught not to like. Read it in your Bible: Luke 10:25–37 Dear God, please help me to love you with all my heart, and to love my neighbour as myself. Help me to notice people who need help, and to show them mercy, like the Good Samaritan. Amen.",
+  "word_count": 503
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 15,
+  "title": "Mary and Martha",
+  "body_html": "<blockquote><p>“Mary has chosen the good portion, and it will not be taken away from her.” — Luke 10:42</p></blockquote><p>Jesus had some very good friends in a village called Bethany. There were two sisters, Martha and Mary, and their brother Lazarus. Jesus loved all three of them.</p><p>One day Jesus came to visit, and Martha welcomed Him into her home. There was so much to do! There was food to cook and bread to bake, and the table to lay, and water to fetch, and everything to get ready for their special guest and His disciples.</p><p>Martha rushed around the kitchen, getting hotter and crosser.</p><p>But where was Mary? She was sitting at Jesus’ feet, listening to Him teach.</p><p>Martha had had enough. She came to Jesus and said, “Lord, don’t You care that my sister has left me to do all the work by myself? Tell her to come and help me!”</p><p>But Jesus answered her gently. “Martha, Martha,” He said, “you are worried and upset about so many things. But only one thing is really needed. Mary has chosen what is best, and it will not be taken away from her.”</p><p>Martha wasn’t doing anything wrong by cooking a meal. Serving people is a good thing to do. And Jesus loved Martha. But Martha was so busy doing things for Jesus that she didn’t have any time to be with Jesus. And she was worried and grumpy and cross.</p><p>Mary had chosen the best thing: to sit with Jesus and listen to Him.</p><p>Being busy isn’t bad. But it’s easy to get so busy, even with good things, that we forget to spend time with Jesus. And spending time with Him is the most important thing of all.</p><p>How can we sit at Jesus’ feet today? We can’t see Him the way Mary did. But we can read the Bible, which is His Word. We can pray, which is talking to Him. We can sing to Him. And we can be quiet and remember that He is with us.</p><p><strong>Read it in your Bible:</strong> Luke 10:38–42</p><p><em>Dear Jesus, I want to choose what is best, like Mary did. Help me not to be so busy that I forget to spend time with you. Thank you that you are always happy to have me sit with you. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What was Martha doing while Mary sat at Jesus’ feet?",
+    "answer": "She was rushing around getting the meal and everything ready, and getting cross because Mary wasn’t helping."
+   },
+   {
+    "question": "What did Jesus say to Martha?",
+    "answer": "That she was worried and upset about many things, but only one thing was needed, and Mary had chosen what was best."
+   },
+   {
+    "question": "How could you “sit at Jesus’ feet” each day?",
+    "answer": "By reading the Bible, praying, singing to Him, or being quiet with Him. Choose a time together when you could do it."
+   }
+  ],
+  "body_text": "“Mary has chosen the good portion, and it will not be taken away from her.” — Luke 10:42 Jesus had some very good friends in a village called Bethany. There were two sisters, Martha and Mary, and their brother Lazarus. Jesus loved all three of them. One day Jesus came to visit, and Martha welcomed Him into her home. There was so much to do! There was food to cook and bread to bake, and the table to lay, and water to fetch, and everything to get ready for their special guest and His disciples. Martha rushed around the kitchen, getting hotter and crosser. But where was Mary? She was sitting at Jesus’ feet, listening to Him teach. Martha had had enough. She came to Jesus and said, “Lord, don’t You care that my sister has left me to do all the work by myself? Tell her to come and help me!” But Jesus answered her gently. “Martha, Martha,” He said, “you are worried and upset about so many things. But only one thing is really needed. Mary has chosen what is best, and it will not be taken away from her.” Martha wasn’t doing anything wrong by cooking a meal. Serving people is a good thing to do. And Jesus loved Martha. But Martha was so busy doing things for Jesus that she didn’t have any time to be with Jesus. And she was worried and grumpy and cross. Mary had chosen the best thing: to sit with Jesus and listen to Him. Being busy isn’t bad. But it’s easy to get so busy, even with good things, that we forget to spend time with Jesus. And spending time with Him is the most important thing of all. How can we sit at Jesus’ feet today? We can’t see Him the way Mary did. But we can read the Bible, which is His Word. We can pray, which is talking to Him. We can sing to Him. And we can be quiet and remember that He is with us. Read it in your Bible: Luke 10:38–42 Dear Jesus, I want to choose what is best, like Mary did. Help me not to be so busy that I forget to spend time with you. Thank you that you are always happy to have me sit with you. Amen.",
+  "word_count": 388
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 16,
+  "title": "The Lost Sheep and the Lost Coin",
+  "body_html": "<blockquote><p>“There will be more joy in heaven over one sinner who repents than over ninety-nine righteous ones who do not need to repent.” — Luke 15:7</p></blockquote><p>Lots of tax collectors and other people who were known as “sinners” loved to come and listen to Jesus. But the Pharisees and the teachers of the law grumbled about it. “This man welcomes sinners,” they muttered, “and He even eats with them!”</p><p>So Jesus told them some stories.</p><p>“Suppose one of you has a hundred sheep,” Jesus said, “and you lose one of them. Won’t you leave the ninety-nine in the field, and go after the one that is lost, until you find it?</p><p>“And when you find it, you joyfully put it on your shoulders and carry it home. Then you call your friends and neighbours together and say, ‘Celebrate with me! I’ve found my lost sheep!’</p><p>“I tell you, in the same way there will be more joy in heaven over one sinner who turns back to God than over ninety-nine good people who don’t think they need to.”</p><p>Then Jesus told another story.</p><p>“Or suppose a woman has ten silver coins, and she loses one. Won’t she light a lamp, and sweep the whole house, and search carefully until she finds it?</p><p>“And when she finds it, she calls her friends and neighbours together and says, ‘Celebrate with me! I’ve found my lost coin!’</p><p>“In the same way, I tell you, there is joy in front of God’s angels over one sinner who turns back to God.”</p><p>A shepherd with a hundred sheep might think, “It’s only one sheep. I’ve still got ninety-nine.” But the shepherd in Jesus’ story doesn’t think like that. Every single sheep matters to him. He goes looking for the lost one, and he doesn’t stop until he finds it.</p><p>And a woman with ten coins might think, “It’s only one coin.” But she turns the whole house upside down looking for it, because it’s precious to her.</p><p>That is how God feels about people who are lost and far away from Him. Every single person matters to Him. He goes looking for them. And when one of them comes back to Him, all of heaven has a party!</p><p>The Pharisees grumbled that Jesus spent time with sinners. But Jesus was like the shepherd, out looking for His lost sheep. That’s exactly what He came to do.</p><p><strong>Read it in your Bible:</strong> Luke 15:1–10</p><p><em>Dear Jesus, thank you that you are the Good Shepherd, who goes looking for lost sheep. Thank you that every single person matters to you, including me. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did the shepherd do when he lost one of his hundred sheep?",
+    "answer": "He left the ninety-nine and went searching for the lost one until he found it, then carried it home and had a celebration."
+   },
+   {
+    "question": "What do these stories tell us about how God feels when someone turns back to Him?",
+    "answer": "That God is full of joy, and all of heaven celebrates, because every single person matters to Him."
+   },
+   {
+    "question": "Have you ever lost something precious and then found it? How did you feel?",
+    "answer": "Let your child tell their story. God feels that kind of joy, and much more, when someone who was lost comes home to Him."
+   }
+  ],
+  "body_text": "“There will be more joy in heaven over one sinner who repents than over ninety-nine righteous ones who do not need to repent.” — Luke 15:7 Lots of tax collectors and other people who were known as “sinners” loved to come and listen to Jesus. But the Pharisees and the teachers of the law grumbled about it. “This man welcomes sinners,” they muttered, “and He even eats with them!” So Jesus told them some stories. “Suppose one of you has a hundred sheep,” Jesus said, “and you lose one of them. Won’t you leave the ninety-nine in the field, and go after the one that is lost, until you find it? “And when you find it, you joyfully put it on your shoulders and carry it home. Then you call your friends and neighbours together and say, ‘Celebrate with me! I’ve found my lost sheep!’ “I tell you, in the same way there will be more joy in heaven over one sinner who turns back to God than over ninety-nine good people who don’t think they need to.” Then Jesus told another story. “Or suppose a woman has ten silver coins, and she loses one. Won’t she light a lamp, and sweep the whole house, and search carefully until she finds it? “And when she finds it, she calls her friends and neighbours together and says, ‘Celebrate with me! I’ve found my lost coin!’ “In the same way, I tell you, there is joy in front of God’s angels over one sinner who turns back to God.” A shepherd with a hundred sheep might think, “It’s only one sheep. I’ve still got ninety-nine.” But the shepherd in Jesus’ story doesn’t think like that. Every single sheep matters to him. He goes looking for the lost one, and he doesn’t stop until he finds it. And a woman with ten coins might think, “It’s only one coin.” But she turns the whole house upside down looking for it, because it’s precious to her. That is how God feels about people who are lost and far away from Him. Every single person matters to Him. He goes looking for them. And when one of them comes back to Him, all of heaven has a party! The Pharisees grumbled that Jesus spent time with sinners. But Jesus was like the shepherd, out looking for His lost sheep. That’s exactly what He came to do. Read it in your Bible: Luke 15:1–10 Dear Jesus, thank you that you are the Good Shepherd, who goes looking for lost sheep. Thank you that every single person matters to you, including me. Amen.",
+  "word_count": 436
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 17,
+  "title": "The Son Who Came Home",
+  "body_html": "<blockquote><p>“This son of mine was dead and is alive again! He was lost and is found!” — Luke 15:24</p></blockquote><p>Jesus told one more story about something lost.</p><p>“There was a man who had two sons. The younger son said to his father, ‘Father, give me my share of everything you own now.’ So the father divided his property between his two sons.</p><p>“A few days later, the younger son packed up everything he had and went off to a faraway country. And there he wasted all his money on wild living.</p><p>“When he had spent everything, a terrible famine came over the whole country, and he had nothing to eat. So he got a job looking after pigs. He was so hungry that he wished he could eat the pig food. But nobody gave him anything.</p><p>“At last he came to his senses. He thought, ‘All my father’s servants have more than enough food, and here I am starving to death! I’ll go back to my father and say, “Father, I have sinned against God and against you. I’m not good enough to be called your son any more. Please take me on as one of your servants.”’</p><p>“So he got up and set off for home.</p><p>“But while he was still a long way off, his father saw him. His heart was filled with love, and he ran to his son, threw his arms around him and kissed him.</p><p>“The son began, ‘Father, I have sinned against God and against you. I’m not good enough to be called your son any more...’</p><p>“But the father said to his servants, ‘Quick! Bring the best robe and put it on him. Put a ring on his finger and sandals on his feet. Get the best calf and cook it. Let’s have a feast and celebrate! For this son of mine was dead and is alive again. He was lost and is found!’ And they began to celebrate.</p><p>“Meanwhile, the older son was out in the field. As he came near the house, he heard music and dancing. When he found out what was happening, he was so angry that he wouldn’t go in.</p><p>“So his father came out and begged him to come in. ‘Look!’ said the older son. ‘All these years I’ve worked hard for you and never disobeyed you. But you never gave me even a young goat to have a party with my friends. And now this son of yours comes home after wasting your money, and you kill the best calf for him!’</p><p>“‘My son,’ the father said, ‘you are always with me, and everything I have is yours. But we had to celebrate and be glad, because this brother of yours was dead and is alive again. He was lost and is found.’”</p><p>The father in the story is like God. When we run away from Him and make a mess of things, He doesn’t stop loving us. He watches for us to come home. And when we turn back, He doesn’t wait for us to finish saying sorry. He runs to us, and hugs us, and welcomes us back into His family with a party.</p><p>But the story also has an older brother, who thought he was good and didn’t need forgiving. He was angry that his father was so kind. The story ends without telling us whether he went in to the party. Jesus was asking the Pharisees, “Will you come in and celebrate?”</p><p><strong>Read it in your Bible:</strong> Luke 15:11–32</p><p><em>Dear Father in heaven, thank you that you run to welcome us when we come home to you. Thank you for forgiving me. Help me to be glad when other people are forgiven too. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did the younger son do with his money, and what happened to him?",
+    "answer": "He wasted it all on wild living in a faraway country. Then a famine came and he ended up starving, looking after pigs."
+   },
+   {
+    "question": "What did the father do when he saw his son coming home?",
+    "answer": "He ran to him, hugged and kissed him, dressed him in the best robe, ring and sandals, and threw a party."
+   },
+   {
+    "question": "Who in the story is like God, and what does it tell us about Him?",
+    "answer": "The father. It tells us that God loves us even when we run away, watches for us to come home, and welcomes us back with joy."
+   }
+  ],
+  "body_text": "“This son of mine was dead and is alive again! He was lost and is found!” — Luke 15:24 Jesus told one more story about something lost. “There was a man who had two sons. The younger son said to his father, ‘Father, give me my share of everything you own now.’ So the father divided his property between his two sons. “A few days later, the younger son packed up everything he had and went off to a faraway country. And there he wasted all his money on wild living. “When he had spent everything, a terrible famine came over the whole country, and he had nothing to eat. So he got a job looking after pigs. He was so hungry that he wished he could eat the pig food. But nobody gave him anything. “At last he came to his senses. He thought, ‘All my father’s servants have more than enough food, and here I am starving to death! I’ll go back to my father and say, “Father, I have sinned against God and against you. I’m not good enough to be called your son any more. Please take me on as one of your servants.”’ “So he got up and set off for home. “But while he was still a long way off, his father saw him. His heart was filled with love, and he ran to his son, threw his arms around him and kissed him. “The son began, ‘Father, I have sinned against God and against you. I’m not good enough to be called your son any more...’ “But the father said to his servants, ‘Quick! Bring the best robe and put it on him. Put a ring on his finger and sandals on his feet. Get the best calf and cook it. Let’s have a feast and celebrate! For this son of mine was dead and is alive again. He was lost and is found!’ And they began to celebrate. “Meanwhile, the older son was out in the field. As he came near the house, he heard music and dancing. When he found out what was happening, he was so angry that he wouldn’t go in. “So his father came out and begged him to come in. ‘Look!’ said the older son. ‘All these years I’ve worked hard for you and never disobeyed you. But you never gave me even a young goat to have a party with my friends. And now this son of yours comes home after wasting your money, and you kill the best calf for him!’ “‘My son,’ the father said, ‘you are always with me, and everything I have is yours. But we had to celebrate and be glad, because this brother of yours was dead and is alive again. He was lost and is found.’” The father in the story is like God. When we run away from Him and make a mess of things, He doesn’t stop loving us. He watches for us to come home. And when we turn back, He doesn’t wait for us to finish saying sorry. He runs to us, and hugs us, and welcomes us back into His family with a party. But the story also has an older brother, who thought he was good and didn’t need forgiving. He was angry that his father was so kind. The story ends without telling us whether he went in to the party. Jesus was asking the Pharisees, “Will you come in and celebrate?” Read it in your Bible: Luke 15:11–32 Dear Father in heaven, thank you that you run to welcome us when we come home to you. Thank you for forgiving me. Help me to be glad when other people are forgiven too. Amen.",
+  "word_count": 622
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 18,
+  "title": "The Ten Men Who Were Healed",
+  "body_html": "<blockquote><p>“Was no one found except this foreigner to return and give glory to God?” — Luke 17:18</p></blockquote><p>As Jesus was on His way to Jerusalem, He came to a village. And there, ten men with leprosy came to meet Him.</p><p>Leprosy was a terrible skin disease. People with leprosy had to live outside the towns and villages, away from everyone else, because people were afraid of catching it. They couldn’t live with their families or go to the synagogue. If anyone came near, they had to call out “Unclean!” to warn them.</p><p>So the ten men stood a long way off, and they shouted to Jesus, “Jesus, Master, have pity on us!”</p><p>Jesus saw them. “Go and show yourselves to the priests,” He said.</p><p>The priests were the ones who checked whether someone’s skin disease had gone. If it had, they would say that person could go home and live with everyone again.</p><p>But the men were still sick! Their skin hadn’t changed. Still, they did what Jesus said and set off to find the priests.</p><p>And as they went, they were healed! Their skin became clean and healthy.</p><p>One of them, when he saw that he was healed, turned around and came back. He was praising God in a loud voice. He threw himself down at Jesus’ feet and thanked Him.</p><p>And this man was a Samaritan.</p><p>Jesus said, “Weren’t all ten made clean? Where are the other nine? Was nobody found to come back and give praise to God except this foreigner?”</p><p>Then Jesus said to the man, “Get up and go. Your faith has made you well.”</p><p>All ten men were healed. All ten could go home to their families. But only one came back to say thank you. And he was the one everyone least expected: a Samaritan.</p><p>The other nine got what they wanted from Jesus, and then they went on with their lives. But the Samaritan understood that the most important thing wasn’t just being healed. It was the one who healed him. He came back to Jesus.</p><p>It’s easy to ask God for things, and then forget to thank Him when He answers. God loves it when we come back to Him with thankful hearts.</p><p><strong>Read it in your Bible:</strong> Luke 17:11–19</p><p><em>Dear Jesus, thank you for all the good things you have given me. I don’t want to forget to say thank you. Help me to have a thankful heart. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "When were the ten men healed?",
+    "answer": "As they were on their way to show themselves to the priests, trusting what Jesus had said."
+   },
+   {
+    "question": "How many came back to thank Jesus, and who was he?",
+    "answer": "Only one, and he was a Samaritan, a foreigner."
+   },
+   {
+    "question": "What are some things God has done for you that you could thank Him for right now?",
+    "answer": "Name some together, such as answered prayers, family, food, friends and health, and thank Him for them."
+   }
+  ],
+  "body_text": "“Was no one found except this foreigner to return and give glory to God?” — Luke 17:18 As Jesus was on His way to Jerusalem, He came to a village. And there, ten men with leprosy came to meet Him. Leprosy was a terrible skin disease. People with leprosy had to live outside the towns and villages, away from everyone else, because people were afraid of catching it. They couldn’t live with their families or go to the synagogue. If anyone came near, they had to call out “Unclean!” to warn them. So the ten men stood a long way off, and they shouted to Jesus, “Jesus, Master, have pity on us!” Jesus saw them. “Go and show yourselves to the priests,” He said. The priests were the ones who checked whether someone’s skin disease had gone. If it had, they would say that person could go home and live with everyone again. But the men were still sick! Their skin hadn’t changed. Still, they did what Jesus said and set off to find the priests. And as they went, they were healed! Their skin became clean and healthy. One of them, when he saw that he was healed, turned around and came back. He was praising God in a loud voice. He threw himself down at Jesus’ feet and thanked Him. And this man was a Samaritan. Jesus said, “Weren’t all ten made clean? Where are the other nine? Was nobody found to come back and give praise to God except this foreigner?” Then Jesus said to the man, “Get up and go. Your faith has made you well.” All ten men were healed. All ten could go home to their families. But only one came back to say thank you. And he was the one everyone least expected: a Samaritan. The other nine got what they wanted from Jesus, and then they went on with their lives. But the Samaritan understood that the most important thing wasn’t just being healed. It was the one who healed him. He came back to Jesus. It’s easy to ask God for things, and then forget to thank Him when He answers. God loves it when we come back to Him with thankful hearts. Read it in your Bible: Luke 17:11–19 Dear Jesus, thank you for all the good things you have given me. I don’t want to forget to say thank you. Help me to have a thankful heart. Amen.",
+  "word_count": 409
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 19,
+  "title": "Let the Children Come",
+  "body_html": "<blockquote><p>“Let the little children come to Me, and do not hinder them! For the kingdom of God belongs to such as these.” — Mark 10:14</p></blockquote><p>One day some people were bringing their little children to Jesus. They wanted Jesus to put His hands on them and bless them.</p><p>But the disciples told the parents off. “Don’t bother the Teacher!” they said. “He’s far too busy and important for children.”</p><p>When Jesus saw what was happening, He was not pleased. He was cross with His disciples.</p><p>“Let the little children come to Me,” Jesus said, “and don’t stop them! The kingdom of God belongs to people like these. I tell you the truth, anyone who won’t receive the kingdom of God like a little child will never enter it.”</p><p>And Jesus took the children in His arms, put His hands on them, and blessed them.</p><p>In those days, lots of people thought that children didn’t matter very much. They were too small, too young, too unimportant. The disciples thought Jesus had more important things to do.</p><p>But Jesus didn’t think so. He was cross that anyone would try to keep children away from Him. He wanted them to come. He picked them up, and hugged them, and blessed them.</p><p>And then Jesus said something amazing. He said that grown-ups need to become more like children! What did He mean?</p><p>Little children trust the people who love them. They know they need help. They don’t pretend to be big and important. They come with open hands, ready to receive what they’re given.</p><p>That is how everyone comes into God’s kingdom: not by being big, or clever, or important, but by trusting Jesus like a little child, and receiving His love as a gift.</p><p>So if you are a child reading this, or listening to it, Jesus wants you to know this: you matter to Him. You are never too small or too young for Jesus. He is never too busy for you. You can come to Him any time, and He will welcome you with open arms.</p><p><strong>Read it in your Bible:</strong> Mark 10:13–16</p><p><em>Dear Jesus, thank you that you love children, and that I can come to you any time. Thank you that you are never too busy for me. Help me to trust you like a little child. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Why did the disciples try to stop the children coming to Jesus?",
+    "answer": "They thought Jesus was too busy and important to be bothered by children."
+   },
+   {
+    "question": "What did Jesus do?",
+    "answer": "He told the disciples to let the children come, and He took them in His arms and blessed them."
+   },
+   {
+    "question": "Jesus said grown-ups need to become like little children to enter God’s kingdom. What do you think He meant?",
+    "answer": "That we all need to trust God and receive His love as a gift, the way a child trusts the people who love them, instead of trying to be big and important."
+   }
+  ],
+  "body_text": "“Let the little children come to Me, and do not hinder them! For the kingdom of God belongs to such as these.” — Mark 10:14 One day some people were bringing their little children to Jesus. They wanted Jesus to put His hands on them and bless them. But the disciples told the parents off. “Don’t bother the Teacher!” they said. “He’s far too busy and important for children.” When Jesus saw what was happening, He was not pleased. He was cross with His disciples. “Let the little children come to Me,” Jesus said, “and don’t stop them! The kingdom of God belongs to people like these. I tell you the truth, anyone who won’t receive the kingdom of God like a little child will never enter it.” And Jesus took the children in His arms, put His hands on them, and blessed them. In those days, lots of people thought that children didn’t matter very much. They were too small, too young, too unimportant. The disciples thought Jesus had more important things to do. But Jesus didn’t think so. He was cross that anyone would try to keep children away from Him. He wanted them to come. He picked them up, and hugged them, and blessed them. And then Jesus said something amazing. He said that grown-ups need to become more like children! What did He mean? Little children trust the people who love them. They know they need help. They don’t pretend to be big and important. They come with open hands, ready to receive what they’re given. That is how everyone comes into God’s kingdom: not by being big, or clever, or important, but by trusting Jesus like a little child, and receiving His love as a gift. So if you are a child reading this, or listening to it, Jesus wants you to know this: you matter to Him. You are never too small or too young for Jesus. He is never too busy for you. You can come to Him any time, and He will welcome you with open arms. Read it in your Bible: Mark 10:13–16 Dear Jesus, thank you that you love children, and that I can come to you any time. Thank you that you are never too busy for me. Help me to trust you like a little child. Amen.",
+  "word_count": 389
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 20,
+  "title": "Blind Bartimaeus",
+  "body_html": "<blockquote><p>“‘Go,’ said Jesus, ‘your faith has healed you.’ And immediately he received his sight and followed Jesus along the road.” — Mark 10:52</p></blockquote><p>Jesus and His disciples came to the city of Jericho. As they were leaving the city, with a huge crowd following them, they passed a blind man sitting by the side of the road. His name was Bartimaeus. He couldn’t work, so he sat there every day, begging for money from the people who passed by.</p><p>Bartimaeus heard the noise of the crowd. “What’s happening?” he asked. And someone told him, “It’s Jesus of Nazareth!”</p><p>Bartimaeus had heard about Jesus. And he began to shout as loud as he could, “Jesus, Son of David, have mercy on me!”</p><p>The people around him told him off. “Be quiet!” they said. “Stop making such a fuss!”</p><p>But Bartimaeus shouted even louder. “Son of David, have mercy on me!”</p><p>Jesus stopped. “Call him,” He said.</p><p>So they called the blind man. “Cheer up!” they said. “Get up! He’s calling you!”</p><p>Bartimaeus threw off his cloak, jumped to his feet and came to Jesus.</p><p>“What do you want Me to do for you?” Jesus asked him.</p><p>Jesus could see that the man was blind. But He wanted Bartimaeus to tell Him what he wanted.</p><p>“Teacher,” said Bartimaeus, “I want to see!”</p><p>“Go,” said Jesus. “Your faith has healed you.”</p><p>And immediately Bartimaeus could see! And the first thing he saw was Jesus. Then he followed Jesus along the road.</p><p>Did you notice what Bartimaeus called Jesus? “Son of David.” Do you remember God’s promise to King David, that a King from his family would rule for ever? The people had been waiting a thousand years for that King. Bartimaeus couldn’t see, but he could see something that many people with good eyes couldn’t: that Jesus was the promised King.</p><p>The crowd tried to make Bartimaeus be quiet. But he didn’t let anyone stop him from calling out to Jesus. And Jesus stopped. A huge crowd was following Him, and He was on His way to Jerusalem. But He stopped for one blind beggar by the side of the road.</p><p>Jesus always stops for the person who calls out to Him.</p><p><strong>Read it in your Bible:</strong> Mark 10:46–52</p><p><em>Jesus, Son of David, have mercy on me! Thank you that you always hear me when I call out to you. Please open my eyes to see you more clearly. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did Bartimaeus shout, and what did the crowd tell him to do?",
+    "answer": "He shouted, “Jesus, Son of David, have mercy on me!” The crowd told him to be quiet, but he shouted even louder."
+   },
+   {
+    "question": "What did Jesus ask Bartimaeus, and what happened?",
+    "answer": "Jesus asked, “What do you want Me to do for you?” Bartimaeus said, “I want to see,” and he was healed straight away and followed Jesus."
+   },
+   {
+    "question": "Bartimaeus didn’t let anyone stop him calling out to Jesus. What would you like to ask Jesus for?",
+    "answer": "Let your child tell Jesus what they want, just as Bartimaeus did. Jesus wants us to ask Him, and He always listens."
+   }
+  ],
+  "body_text": "“‘Go,’ said Jesus, ‘your faith has healed you.’ And immediately he received his sight and followed Jesus along the road.” — Mark 10:52 Jesus and His disciples came to the city of Jericho. As they were leaving the city, with a huge crowd following them, they passed a blind man sitting by the side of the road. His name was Bartimaeus. He couldn’t work, so he sat there every day, begging for money from the people who passed by. Bartimaeus heard the noise of the crowd. “What’s happening?” he asked. And someone told him, “It’s Jesus of Nazareth!” Bartimaeus had heard about Jesus. And he began to shout as loud as he could, “Jesus, Son of David, have mercy on me!” The people around him told him off. “Be quiet!” they said. “Stop making such a fuss!” But Bartimaeus shouted even louder. “Son of David, have mercy on me!” Jesus stopped. “Call him,” He said. So they called the blind man. “Cheer up!” they said. “Get up! He’s calling you!” Bartimaeus threw off his cloak, jumped to his feet and came to Jesus. “What do you want Me to do for you?” Jesus asked him. Jesus could see that the man was blind. But He wanted Bartimaeus to tell Him what he wanted. “Teacher,” said Bartimaeus, “I want to see!” “Go,” said Jesus. “Your faith has healed you.” And immediately Bartimaeus could see! And the first thing he saw was Jesus. Then he followed Jesus along the road. Did you notice what Bartimaeus called Jesus? “Son of David.” Do you remember God’s promise to King David, that a King from his family would rule for ever? The people had been waiting a thousand years for that King. Bartimaeus couldn’t see, but he could see something that many people with good eyes couldn’t: that Jesus was the promised King. The crowd tried to make Bartimaeus be quiet. But he didn’t let anyone stop him from calling out to Jesus. And Jesus stopped. A huge crowd was following Him, and He was on His way to Jerusalem. But He stopped for one blind beggar by the side of the road. Jesus always stops for the person who calls out to Him. Read it in your Bible: Mark 10:46–52 Jesus, Son of David, have mercy on me! Thank you that you always hear me when I call out to you. Please open my eyes to see you more clearly. Amen.",
+  "word_count": 407
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 21,
+  "title": "The Man in the Tree",
+  "body_html": "<blockquote><p>“For the Son of Man came to seek and to save the lost.” — Luke 19:10</p></blockquote><p>In the city of Jericho there lived a man called Zacchaeus. He was a chief tax collector, the boss of all the other tax collectors, and he was very rich. Like many tax collectors, he had probably become rich by cheating people, taking more money than he should.</p><p>Everyone in Jericho knew it. Nobody liked Zacchaeus.</p><p>One day Jesus was passing through Jericho, and Zacchaeus wanted to see who He was. But Zacchaeus was a short man, and the crowd was too thick. He couldn’t see over all the heads.</p><p>So Zacchaeus ran on ahead, and climbed up a sycamore-fig tree, a big tree with low, spreading branches, beside the road where Jesus was going to pass. Can you imagine? An important, rich man, climbing a tree like a little boy!</p><p>When Jesus came to that place, He stopped. He looked up into the tree.</p><p>“Zacchaeus,” Jesus said, “hurry and come down! I must stay at your house today.”</p><p>Jesus knew his name! And of all the people in Jericho, Jesus chose to go to his house.</p><p>So Zacchaeus hurried down, and welcomed Jesus to his house with great joy.</p><p>But all the people who saw it began to grumble. “He’s gone to be the guest of a sinner!” they muttered.</p><p>Then Zacchaeus stood up and said to the Lord, “Look, Lord! Here and now I give half of everything I own to the poor. And if I have cheated anybody out of anything, I will pay them back four times as much.”</p><p>Nobody had told Zacchaeus to do that. Jesus hadn’t lectured him. But meeting Jesus changed his heart. The greedy man who loved money now wanted to give it away. The cheat now wanted to put things right.</p><p>Jesus said to him, “Today salvation has come to this house, because this man too is a son of Abraham. For the Son of Man came to seek and to save the lost.”</p><p>Zacchaeus went looking for Jesus. But really, Jesus was looking for Zacchaeus. That’s what Jesus came to do. He came to find lost people, people like Zacchaeus, people everyone else had given up on, and bring them home to God.</p><p><strong>Read it in your Bible:</strong> Luke 19:1–10</p><p><em>Dear Jesus, thank you that you came to look for lost people and save them. Thank you that you know my name. Please change my heart, the way you changed Zacchaeus’s heart. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Why did Zacchaeus climb a tree?",
+    "answer": "Because he was short and couldn’t see Jesus over the crowd."
+   },
+   {
+    "question": "How did Zacchaeus change after Jesus came to his house?",
+    "answer": "He gave half of everything he owned to the poor, and promised to pay back four times as much to anyone he had cheated."
+   },
+   {
+    "question": "Jesus said He came “to seek and to save the lost”. What does that mean?",
+    "answer": "That Jesus came looking for people who were far from God, like Zacchaeus, to bring them back. He looks for each one of us too."
+   }
+  ],
+  "body_text": "“For the Son of Man came to seek and to save the lost.” — Luke 19:10 In the city of Jericho there lived a man called Zacchaeus. He was a chief tax collector, the boss of all the other tax collectors, and he was very rich. Like many tax collectors, he had probably become rich by cheating people, taking more money than he should. Everyone in Jericho knew it. Nobody liked Zacchaeus. One day Jesus was passing through Jericho, and Zacchaeus wanted to see who He was. But Zacchaeus was a short man, and the crowd was too thick. He couldn’t see over all the heads. So Zacchaeus ran on ahead, and climbed up a sycamore-fig tree, a big tree with low, spreading branches, beside the road where Jesus was going to pass. Can you imagine? An important, rich man, climbing a tree like a little boy! When Jesus came to that place, He stopped. He looked up into the tree. “Zacchaeus,” Jesus said, “hurry and come down! I must stay at your house today.” Jesus knew his name! And of all the people in Jericho, Jesus chose to go to his house. So Zacchaeus hurried down, and welcomed Jesus to his house with great joy. But all the people who saw it began to grumble. “He’s gone to be the guest of a sinner!” they muttered. Then Zacchaeus stood up and said to the Lord, “Look, Lord! Here and now I give half of everything I own to the poor. And if I have cheated anybody out of anything, I will pay them back four times as much.” Nobody had told Zacchaeus to do that. Jesus hadn’t lectured him. But meeting Jesus changed his heart. The greedy man who loved money now wanted to give it away. The cheat now wanted to put things right. Jesus said to him, “Today salvation has come to this house, because this man too is a son of Abraham. For the Son of Man came to seek and to save the lost.” Zacchaeus went looking for Jesus. But really, Jesus was looking for Zacchaeus. That’s what Jesus came to do. He came to find lost people, people like Zacchaeus, people everyone else had given up on, and bring them home to God. Read it in your Bible: Luke 19:1–10 Dear Jesus, thank you that you came to look for lost people and save them. Thank you that you know my name. Please change my heart, the way you changed Zacchaeus’s heart. Amen.",
+  "word_count": 419
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "tell-me-the-story-5",
+   "en"
+  ],
+  "order": 22,
+  "title": "Lazarus, Come Out!",
+  "body_html": "<blockquote><p>“I am the resurrection and the life. Whoever believes in Me will live, even though he dies.” — John 11:25</p></blockquote><p>Do you remember Mary and Martha, and their brother Lazarus, who lived in Bethany? Jesus loved them very much.</p><p>One day Lazarus became very ill. So the sisters sent a message to Jesus: “Lord, the one You love is sick.”</p><p>Jesus loved Martha and Mary and Lazarus. But when He heard that Lazarus was ill, He stayed where He was for two more days. Then He said to His disciples, “Let’s go back to Judea. Our friend Lazarus has fallen asleep, but I am going there to wake him up.” Jesus meant that Lazarus had died.</p><p>When Jesus arrived in Bethany, Lazarus had already been in his tomb for four days. Many people had come to comfort Martha and Mary.</p><p>Martha went out to meet Jesus. “Lord,” she said, “if You had been here, my brother would not have died. But I know that even now God will give You whatever You ask.”</p><p>“Your brother will rise again,” Jesus told her.</p><p>“I know he will rise again on the last day,” said Martha.</p><p>Jesus said to her, “I am the resurrection and the life. Whoever believes in Me will live, even though he dies. And everyone who lives and believes in Me will never die. Do you believe this?”</p><p>“Yes, Lord,” said Martha. “I believe that You are the Christ, the Son of God, who was to come into the world.”</p><p>Then Mary came out, and fell at Jesus’ feet, crying. “Lord, if You had been here, my brother would not have died.”</p><p>When Jesus saw her crying, and all the people with her crying, He was deeply troubled. “Where have you laid him?” He asked.</p><p>“Come and see, Lord,” they said.</p><p>And Jesus wept.</p><p>Jesus knew He was about to bring Lazarus back to life. But He still cried with His friends. He was so sad that His friend had died, and that His friends were hurting.</p><p>“See how much He loved him!” people said.</p><p>They came to the tomb. It was a cave, with a big stone rolled across the entrance.</p><p>“Take away the stone,” said Jesus.</p><p>“But Lord,” said Martha, “he’s been dead for four days! It will smell terrible!”</p><p>“Didn’t I tell you that if you believe, you would see the glory of God?” said Jesus.</p><p>So they rolled the stone away. Jesus looked up and prayed, “Father, thank You that You have heard Me.” Then He called out in a loud voice, “Lazarus, come out!”</p><p>And Lazarus came out! His hands and feet were still wrapped in strips of linen, and there was a cloth around his face.</p><p>“Unwrap him,” said Jesus, “and let him go.”</p><p>Many of the people who saw this believed in Jesus. But some went and told the religious leaders, and from that day on, the leaders began to plan how to kill Jesus.</p><p>The one who gave life to Lazarus was about to give up His own life. But that is the story of the next book.</p><p><strong>Read it in your Bible:</strong> John 11:1–45</p><p><em>Dear Jesus, thank you that you cry with us when we are sad. Thank you that you are the resurrection and the life, and that everyone who believes in you will live for ever. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did Jesus do when He saw Mary and her friends crying?",
+    "answer": "He was deeply troubled, and He cried too, even though He knew He was about to bring Lazarus back to life."
+   },
+   {
+    "question": "What did Jesus say at the tomb, and what happened?",
+    "answer": "He said, “Lazarus, come out!” and Lazarus walked out of the tomb, still wrapped in strips of cloth."
+   },
+   {
+    "question": "Jesus said, “I am the resurrection and the life.” What does that mean for people who believe in Him?",
+    "answer": "That death is not the end. Everyone who trusts Jesus will live with Him for ever, even after they die. (If your child has lost someone, this is a good place to talk gently about it.)"
+   }
+  ],
+  "body_text": "“I am the resurrection and the life. Whoever believes in Me will live, even though he dies.” — John 11:25 Do you remember Mary and Martha, and their brother Lazarus, who lived in Bethany? Jesus loved them very much. One day Lazarus became very ill. So the sisters sent a message to Jesus: “Lord, the one You love is sick.” Jesus loved Martha and Mary and Lazarus. But when He heard that Lazarus was ill, He stayed where He was for two more days. Then He said to His disciples, “Let’s go back to Judea. Our friend Lazarus has fallen asleep, but I am going there to wake him up.” Jesus meant that Lazarus had died. When Jesus arrived in Bethany, Lazarus had already been in his tomb for four days. Many people had come to comfort Martha and Mary. Martha went out to meet Jesus. “Lord,” she said, “if You had been here, my brother would not have died. But I know that even now God will give You whatever You ask.” “Your brother will rise again,” Jesus told her. “I know he will rise again on the last day,” said Martha. Jesus said to her, “I am the resurrection and the life. Whoever believes in Me will live, even though he dies. And everyone who lives and believes in Me will never die. Do you believe this?” “Yes, Lord,” said Martha. “I believe that You are the Christ, the Son of God, who was to come into the world.” Then Mary came out, and fell at Jesus’ feet, crying. “Lord, if You had been here, my brother would not have died.” When Jesus saw her crying, and all the people with her crying, He was deeply troubled. “Where have you laid him?” He asked. “Come and see, Lord,” they said. And Jesus wept. Jesus knew He was about to bring Lazarus back to life. But He still cried with His friends. He was so sad that His friend had died, and that His friends were hurting. “See how much He loved him!” people said. They came to the tomb. It was a cave, with a big stone rolled across the entrance. “Take away the stone,” said Jesus. “But Lord,” said Martha, “he’s been dead for four days! It will smell terrible!” “Didn’t I tell you that if you believe, you would see the glory of God?” said Jesus. So they rolled the stone away. Jesus looked up and prayed, “Father, thank You that You have heard Me.” Then He called out in a loud voice, “Lazarus, come out!” And Lazarus came out! His hands and feet were still wrapped in strips of linen, and there was a cloth around his face. “Unwrap him,” said Jesus, “and let him go.” Many of the people who saw this believed in Jesus. But some went and told the religious leaders, and from that day on, the leaders began to plan how to kill Jesus. The one who gave life to Lazarus was about to give up His own life. But that is the story of the next book. Read it in your Bible: John 11:1–45 Dear Jesus, thank you that you cry with us when we are sad. Thank you that you are the resurrection and the life, and that everyone who believes in you will live for ever. Amen.",
+  "word_count": 559
+ }
+}
+]
