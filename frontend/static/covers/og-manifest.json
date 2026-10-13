@@ -8510,7 +8510,7 @@
 			"script": "latin",
 			"art": true,
 			"scrim": 1,
-			"layout": "rail/indigo",
+			"layout": "box/indigo",
 			"bar": 0
 		},
 		"fr/pandita-ramabai-a-life-children": {
