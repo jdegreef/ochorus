@@ -7435,6 +7435,35 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"fr/a-brand-plucked-from-the-fire": {
+			"ground": "31d1f6e8e048daa14c4a185b6242a9644accb5265421d936eba5e43e0b2942a3",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[142, 102, 458, 131]
+				],
+				"title": [
+					[192, 305, 408, 381],
+					[111, 370, 489, 446]
+				],
+				"subtitle": [
+					[120, 520, 480, 541]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				254,
+				541
+			]
+		},
 		"fr/a-retrospect-children": {
 			"ground": "ef73899737cbfdce10221020943c9275d537bd1e2faaf494d5f611effaa02ac3",
 			"style": "revival",
