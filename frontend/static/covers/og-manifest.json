@@ -2867,13 +2867,13 @@
 			]
 		},
 		"an-all-round-ministry": {
-			"ground": "ea426d716de1f571e0c78d28f25ca7988df1fbbe7b020895bd71f3ea6f35d96a",
+			"ground": "fbdeb3d4788d5aac0edc79842f08a98a3218900c1cc28456a205e984a9c5ecc9",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1,
-			"layout": "framed",
+			"layout": "band/oxblood",
 			"bar": 0
 		},
 		"anchored-1": {
@@ -8298,6 +8298,16 @@
 				592
 			]
 		},
+		"fr/life-of-antony": {
+			"ground": "edc73cf3eb8746e5a46088c72b799f430de574866fa04891e9f0c02c7ff07ffb",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/indigo",
+			"bar": 0
+		},
 		"fr/life-of-pascal": {
 			"ground": "84bc72d5d16e144ddd91aa7a7780ef435b5701552787fb9739d915c2a3eb68c4",
 			"style": "press",
@@ -8492,6 +8502,16 @@
 			"scrim": 1,
 			"layout": "split/navy",
 			"bar": 0.05
+		},
+		"fr/on-the-incarnation": {
+			"ground": "8373822e5947b828da9b04a127cf1bbdbfa2e655083a8dcfbbad5a1c7752bbdb",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/indigo",
+			"bar": 0
 		},
 		"fr/pandita-ramabai-a-life-children": {
 			"ground": "578b9b129d985b4c985ebfa5a1a3ee85f98bc9c2b5765d106832360a0930a968",
@@ -10619,23 +10639,23 @@
 			]
 		},
 		"john-ploughmans-pictures": {
-			"ground": "c6841f48e060466855a1a8b638aba91f63f5fa80103d01067cb08e6e53b60f55",
+			"ground": "bd0b53a5d83358e323fb798593d0f5e6b6b858d08f9a60c32e49e7ef7ece39bf",
 			"style": "revival",
 			"volume": "2",
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1,
-			"layout": "framed",
+			"layout": "band/oxblood",
 			"bar": 0
 		},
 		"john-ploughmans-talk": {
-			"ground": "10574c4220ec2c9a975cc38bc87eaf024b43f49aefddd4168cf0eb5b1dfc9b08",
+			"ground": "f83d6e848a88d09dec404fc0271d39da57fb59f35265bafd9a07c9c1014c79b7",
 			"style": "revival",
 			"volume": "1",
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1,
-			"layout": "framed",
+			"layout": "band/oxblood",
 			"bar": 0
 		},
 		"journal-of-an-expedition-up-the-niger": {
@@ -11723,24 +11743,34 @@
 				376
 			]
 		},
+		"ko/baptism-with-the-holy-spirit": {
+			"ground": "b9479745ae2364f4a76040c71c10063d58f26fd40268f5d818fc8a54a057d8ce",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "diagonal/ochre",
+			"bar": 0.085
+		},
 		"lectures-to-my-students": {
-			"ground": "50ecd72319750165b8e03713a83f60d936a416dd1194989f2b537b66b721645b",
+			"ground": "37427d61536e130bbc8758ffd215417b5fd83a18d2235b959f50e85cfb657284",
 			"style": "revival",
 			"volume": "1",
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1,
-			"layout": "framed",
+			"layout": "band/oxblood",
 			"bar": 0
 		},
 		"lectures-to-my-students-second-series": {
-			"ground": "fb2c6d281d2c548fd3faaae61aac8ee0e950d18dd65fc1779eebd7032a40f944",
+			"ground": "c97cf48840b23feea8f11956a2128a21e0ac8085606f4176d5032988b1bd1695",
 			"style": "revival",
 			"volume": "2",
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1,
-			"layout": "framed",
+			"layout": "band/oxblood",
 			"bar": 0
 		},
 		"let-us-pray-2": {
@@ -16915,6 +16945,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"tell-me-the-story-6": {
+			"ground": "1345f93063bf276e2f7e83b6cbd6c5367e12bbfecc8ea933a8adfb11c564eee5",
+			"style": "young",
+			"volume": "6",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"tell-me-the-story-7": {
 			"ground": "dc83395eaef08c2f1ff58bb969a36420d18805d83580c34f0519ee2c21bd3f08",
 			"style": "young",
@@ -17338,13 +17378,13 @@
 			"bar": 0.04
 		},
 		"the-saint-and-his-saviour": {
-			"ground": "22e136c08162f2110256d4679ea8d57b2e8a4407dd280a7f28dc0a56f2f82055",
+			"ground": "ecbb592e7c3c8e50f18b610eaa8798e56b6cf6804a3afd9096bc7a81293ad071",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1,
-			"layout": "framed",
+			"layout": "band/oxblood",
 			"bar": 0
 		},
 		"the-secret-of-guidance-teens": {
@@ -17375,13 +17415,13 @@
 			]
 		},
 		"the-soul-winner": {
-			"ground": "1b3a98dd278837cb4378135a91eaa9605193e82453851fa5320287fb73c3875e",
+			"ground": "ac3ea4d7d155aeb3eada48b0c3bd4b2032dce7d24b5c3dc69e03f2087f99db61",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1,
-			"layout": "framed",
+			"layout": "band/oxblood",
 			"bar": 0
 		},
 		"the-way-to-god": {

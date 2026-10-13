@@ -5908,6 +5908,40 @@ BODY_CORRECTIONS.setdefault("a-brand-plucked-from-the-fire", {}).setdefault("rep
     # [am] stray marker [5] removed in English too
     ("<p>[5] ጥርጣሬዬንና", "<p>ጥርጣሬዬንና"),
 ])
+
+# Found while translating to French (2026-10-13): Life of Antony — a dropped
+# word (like tabernacles, filled with holy bands), having being -> having been,
+# a stray space before a stop.
+BODY_CORRECTIONS.setdefault("life-of-antony", {}).setdefault("replacements", []).extend([
+    # [en] dropped word: NPNF "like tabernacles, filled with holy bands of men"
+    ("in the mountains, like filled with holy bands", "in the mountains, like tabernacles, filled with holy bands"),
+    # [en] grammar slip: "having been"
+    ("having being neglectful", "having been neglectful"),
+    # [en] stray space before the full stop
+    ("is within you .", "is within you."),
+])
+
+# Found while translating to French (2026-10-13): single-reading slips in the
+# Robertson text — whichin (10), Ezechie -> Ezechiel (37), God -> Gad with
+# Asaph and Nathan (39), light and movement and light -> life (42, cf. Acts
+# 17:28 that follows), (I) -> (1) (43), impossible -> impassible (54).
+BODY_CORRECTIONS.setdefault("on-the-incarnation", {}).setdefault("replacements", []).extend([
+    # [en] OCR spacing (1 Tim 6:15)
+    ("whichin its own times", "which in its own times"),
+    # [en] clipped name: Ezekiel, whose sign-acts "indicate what was to come
+    # upon the people" (Robertson spells Esaias, Jeremy, Ezechiel)
+    ("Ezechie suffered", "Ezechiel suffered"),
+    # [en] OCR: Gad the seer, named with Nathan (2 Chr 29:25)
+    ("prophesying: God and Asaph and Nathan", "prophesying: Gad and Asaph and Nathan"),
+    # [en] duplicated word; the Acts 17:28 quotation that follows ("live and
+    # move and have our being") fixes "life"
+    ("their light and movement and light", "their light and movement and life"),
+    # [en] OCR roman I for (1), paired with (2)
+    ("(I) He came", "(1) He came"),
+    # [en] OCR: Robertson "impassible" (the Word cannot suffer), paired with
+    # "incorruptible"
+    ("being impossible and incorruptible", "being impassible and incorruptible"),
+])
 # The paragraph ended on a stop the OCR read as a comma.
 BODY_CORRECTIONS["evangelization-of-the-world"]["paragraph_breaks"] = [
     ('foreign mission service.', 'In 1898 the members'),

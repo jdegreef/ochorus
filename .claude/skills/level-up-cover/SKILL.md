@@ -55,6 +55,13 @@ the picture:
   each object, filter `isPublicDomain && classification=="Paintings" &&
   primaryImage`. Still fine when you know the subject noun; weak for "find me a
   good landscape". See memory `met-api-pd-art-sourcing`.
+  **The old `/public/collection/v1/search` was RETIRED 2026-10-01** (it answers
+  with a JSON message): use `/public/collection/v1.1/search`, paginated by
+  `offset`/`limit`. Object fetches (`/v1/objects/<id>`) still work.
+- **Band layout shows only the LOWER ~45% of the ground** (Spurgeon, 2026-10-13):
+  judge `focus` on the composed twin, not the painting — a subject in the upper
+  half (Constable's spire, Lhermitte's sunset) only shows if it sits low, and
+  figures crop to torsos. `focus` moves the crop sideways only.
 
 - **Wikidata** (`wikidata`, added 2026-09-29 for Corrie ten Boom's Ruisdael *View
   of Haarlem*) — the escape hatch for a painting none of the three hold (the Dutch
