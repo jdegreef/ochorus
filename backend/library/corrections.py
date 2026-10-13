@@ -6151,6 +6151,33 @@ BODY_CORRECTIONS.setdefault("the-bruised-reed", {}).setdefault("replacements", [
     # [pt] citation fix matching the English correction
     ("(Êxodo 4:13)", "(Êxodo 14:13)"),
 ])
+
+
+# Found while translating to French (2026-10-13): Essentials of Prayer —
+# Lucian's Aretaeus and Charixenus (OCR Arctæus/Carixenus); a stray stop in
+# Matt 7:22.
+BODY_CORRECTIONS.setdefault("essentials-of-prayer", {}).setdefault("replacements", []).extend([
+    # [en] Lucian's Eudamidas: his friends Aretaeus and Charixenus (the same
+    # paragraph spells Charixenus)
+    ("friends, Arctæus and Carixenus, left", "friends, Aretæus and Charixenus, left"),
+    # [en] Aretaeus (OCR c for e)
+    ("I bequeath to Arctæus my mother", "I bequeath to Aretæus my mother"),
+    # [en] stray stop inside Matt 7:22
+    ("“Many will say unto me. Lord, Lord,", "“Many will say unto me, Lord, Lord,"),
+])
+
+
+# Found while translating to French (2026-10-13): A Retrospect — cleric ->
+# clerk, can go -> can do, a
+# dropped stop.
+BODY_CORRECTIONS.setdefault("a-retrospect", {}).setdefault("replacements", []).extend([
+    # [en] "cleric" for "clerk" (the next sentence says "The clerk")
+    ("dismay the cleric told me", "dismay the clerk told me"),
+    # [en] OCR go for do
+    ("the best thing you can go is", "the best thing you can do is"),
+    # [en] dropped full stop
+    ("direction of Kia-hing Fu This, I", "direction of Kia-hing Fu. This, I"),
+])
 # The paragraph ended on a stop the OCR read as a comma.
 BODY_CORRECTIONS["evangelization-of-the-world"]["paragraph_breaks"] = [
     ('foreign mission service.', 'In 1898 the members'),

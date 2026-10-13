@@ -7567,6 +7567,16 @@
 				541
 			]
 		},
+		"fr/a-retrospect": {
+			"ground": "3dccbd7098fb78d8f7f6fe3a6108178f72509848b6b23d389a76b87ab8ac7d4a",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0
+		},
 		"fr/a-retrospect-children": {
 			"ground": "ef73899737cbfdce10221020943c9275d537bd1e2faaf494d5f611effaa02ac3",
 			"style": "revival",
@@ -7962,6 +7972,16 @@
 				301,
 				494
 			]
+		},
+		"fr/essentials-of-prayer": {
+			"ground": "514578ce36f8c1db76388b965ba504010742b5add40c984f3f2df931bc2e0cf8",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0.04
 		},
 		"fr/feasting-at-the-table": {
 			"ground": "6e0eeb78b81466700d36d3c4bd910186a8ac00efbe55b57b93792ce7912394ad",
