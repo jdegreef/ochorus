@@ -1,5 +1,8 @@
 import type { IconName } from '$lib/components/Icon.svelte';
 import { editionKind } from './edition';
+import { FOR_CHROME, listOf } from './forChrome';
+import type { ForLocale } from './forLinks';
+import { FOR_PAGES_FR } from './forPagesFr';
 import { withTrailingSlash } from './href';
 import { localeName } from './lang.svelte';
 import {
@@ -26,11 +29,13 @@ import { LIVE_LOCALES } from './live-locales.generated';
  * offline pack. Linked from the footer's bottom row and the /for/ index.
  *
  * One route (`/for/[group]/`) renders every entry here, so a new group is a
- * new entry, not a new page. ENGLISH-ONLY for now, like the footer's Discover
- * hubs: this is pitch copy the founder is still shaping, and putting it into
- * ten catalogues before it settles would mean every edit lands ten times. So
- * the copy lives here as content, the footer row renders only for English
- * readers, and the pages advertise only an English URL (sitemap, hreflang).
+ * new entry, not a new page. Written per language, not through the
+ * catalogues: this is pitch copy the founder is still shaping, and putting it
+ * into every catalogue before it settles would mean every edit lands many
+ * times. So the copy lives here as content — English here, French in
+ * $lib/forPagesFr, each written for what that language's library holds — the
+ * footer row renders for those readers only, and each page advertises the URLs
+ * of the languages it is written in (sitemap, hreflang).
  *
  * Keep every claim true of the live site. Nothing here mentions how a
  * translation was made — review state is admin-only (root CLAUDE.md).
@@ -87,8 +92,9 @@ export interface ForPage {
 	offline?: { note: string; picks: string[] };
 	/** A quotation for the page's quote band: a slug from `quote_seed.py`
 	 *  (`<author>-<hash>`). The build resolves it from the author's quote page,
-	 *  so a line whose author is not yet approved simply doesn't show. */
-	quote: string;
+	 *  so a line whose author is not yet approved simply doesn't show. None in
+	 *  French: the quotation pages are English-only. */
+	quote?: string;
 	/** Writers to meet, by author slug, in order; the build keeps the first
 	 *  `AUTHORS_SHOWN` with an English page. */
 	authors: string[];
@@ -153,14 +159,24 @@ export const isShelfData = (x: unknown): x is ForShelfData => {
 	return Object.values(FOR_ANCHORS).every(({ section }) => at(section) === undefined || Array.isArray(at(section)));
 };
 
+const NAMERS = new Map<ForLocale, Intl.DisplayNames>();
+
+/** A language's name in the page's language (lower case in French, as French
+ *  writes it mid-sentence). ICU calls Luganda "Ganda"; Ochorus uses the name
+ *  its readers use. */
+function languageName(code: string, locale: ForLocale): string {
+	if (code === 'lg') return locale === 'en' ? 'Luganda' : 'luganda';
+	let namer = NAMERS.get(locale);
+	if (!namer) NAMERS.set(locale, (namer = new Intl.DisplayNames([locale], { type: 'language' })));
+	return namer.of(code) ?? code;
+}
+
 /** The live languages besides English, by their English names, from the
  *  registry's "Go live" list — so the copy names exactly what the site
- *  serves, and a language taken live reaches it on the next build. ICU calls
- *  Luganda "Ganda"; Ochorus uses the name its readers use. */
-const inEnglish = new Intl.DisplayNames(['en'], { type: 'language' });
-const OTHER_LANGUAGES = LIVE_LOCALES.filter((l) => l !== 'en').map(englishName);
+ *  serves, and a language taken live reaches it on the next build. */
+const OTHER_LANGUAGES = LIVE_LOCALES.filter((l) => l !== 'en').map((l) => languageName(l, 'en'));
 /** "a, b and c". */
-const series = (xs: string[]) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} and ${xs.at(-1)}`);
+const series = (xs: string[]) => listOf(xs, 'and');
 
 const FREE_ANSWER =
 	'Yes. Every book and sermon on Ochorus is free to read, with no paywall, no subscription and no ads. The classics themselves are in the public domain, and Ochorus is a ministry, not a business.';
@@ -1465,8 +1481,12 @@ export const FOR_PAGES: ForPage[] = [
 	}
 ];
 
-/** The page for a URL segment, or undefined. */
-export const forPage = (slug: string): ForPage | undefined => FOR_PAGES.find((p) => p.slug === slug);
+/** Every language's pages, each list in `FOR_LINKS` order. */
+export const FOR_PAGES_BY_LOCALE: Record<ForLocale, ForPage[]> = { en: FOR_PAGES, fr: FOR_PAGES_FR };
+
+/** The page for a URL segment in a language, or undefined. */
+export const forPage = (slug: string, locale: ForLocale = 'en'): ForPage | undefined =>
+	FOR_PAGES_BY_LOCALE[locale].find((p) => p.slug === slug);
 
 /** How many books one starter shelf shows: one row of the desktop grid. Each
  *  shelf's `picks` runs longer, so an unpublished pick leaves a backup in its
@@ -1655,8 +1675,8 @@ export function forLevels(english: BookSummary[], fullSlugs: string[]): ForRung[
 /** One live language's library, for the missionaries' language shelves. */
 export interface ForLanguage {
 	code: string;
-	/** Its English name ("Swahili"), and its own ("Kiswahili") as the
-	 *  registry spells it — the language picker's word for it. */
+	/** Its name in the page's language ("Swahili"), and its own ("Kiswahili")
+	 *  as the registry spells it — the language picker's word for it. */
 	name: string;
 	native: string;
 	counts: ForCounts;
@@ -1666,33 +1686,31 @@ export interface ForLanguage {
 }
 
 /** "61 books · 59 sermons", leaving out what there is none of. */
-export const countsLine = (c: ForCounts): string =>
-	(
+export const countsLine = (c: ForCounts, locale: ForLocale = 'en'): string => {
+	const w = FOR_CHROME[locale].countWords;
+	return (
 		[
-			[c.books, 'book', 'books'],
-			[c.sermons, 'sermon', 'sermons'],
-			[c.plans, 'reading plan', 'reading plans']
+			[c.books, w.book],
+			[c.sermons, w.sermon],
+			[c.plans, w.plan]
 		] as const
 	)
 		.filter(([n]) => n)
-		.map(([n, one, many]) => `${n} ${n === 1 ? one : many}`)
+		.map(([n, [one, many]]) => `${n} ${n === 1 ? one : many}`)
 		.join(' · ');
+};
 
 /** How many covers a language's row shows. */
 export const LANGUAGE_COVERS = 4;
 
-/** A language's English name. ICU calls Luganda "Ganda"; Ochorus uses the
- *  name its readers use. */
-function englishName(code: string): string {
-	return code === 'lg' ? 'Luganda' : (inEnglish.of(code) ?? code);
-}
 
 /** One language's row from its own lists (no English fallback: a language's
- *  row holds only what it has). */
+ *  row holds only what it has), named in the page's language. */
 export function forLanguage(
 	code: string,
 	lists: { books: BookSummary[]; sermons: number; plans: number },
-	picks: string[]
+	picks: string[],
+	locale: ForLocale = 'en'
 ): ForLanguage {
 	// Works only, like the count beside them; each pick once (shelves may share one).
 	const works = lists.books.filter((b) => !editionKind(b.slug));
@@ -1703,7 +1721,7 @@ export function forLanguage(
 	].slice(0, LANGUAGE_COVERS);
 	return {
 		code,
-		name: englishName(code),
+		name: languageName(code, locale),
 		native: localeName(code),
 		counts: { books: countWorks(lists.books), sermons: lists.sermons, plans: lists.plans },
 		covers: covers.map(toCoverBook)

@@ -53,7 +53,7 @@ import { shareImage } from '$lib/coverArt';
 import { absUrl } from '$lib/seo';
 import { xmlEscape } from '$lib/xml';
 import { ORIGINALS_PATH, ORIGINALS_SLUG } from '$lib/originals';
-import { FOR_INDEX, FOR_LINKS, forPath } from '$lib/forLinks';
+import { FOR_INDEX, FOR_LINKS, FOR_LOCALES, forPath } from '$lib/forLinks';
 import { AUDIENCE_HUBS } from '$lib/audienceHub';
 import { hubLanguages } from '$lib/audienceHubData';
 import { APP_ONLY } from '$lib/robots';
@@ -505,11 +505,11 @@ async function build(): Promise<SitemapData> {
 			lastmod: newest(quoteTopics.map((tp) => tp.updated_at))
 		});
 
-	// The "Ochorus for …" pages ($lib/forLinks): English-only, like the quotes
-	// index — their copy is English content, so each has one URL. Undated: the
-	// copy lives in the frontend, and no API row says when it last changed.
-	pages.push({ byLocale: new Map([['en', FOR_INDEX]]) });
-	for (const l of FOR_LINKS) pages.push({ byLocale: new Map([['en', forPath(l.slug)]]) });
+	// The "Ochorus for …" pages ($lib/forLinks): written in English and French
+	// only, so each has those two URLs. Undated: the copy lives in the
+	// frontend, and no API row says when it last changed.
+	pages.push({ byLocale: new Map(FOR_LOCALES.map((l) => [l, FOR_INDEX])) });
+	for (const link of FOR_LINKS) pages.push({ byLocale: new Map(FOR_LOCALES.map((l) => [l, forPath(link.slug)])) });
 
 	// The house imprint's shelf, in each advertised locale that has one of its
 	// books (no English fallback, so an empty locale has no page to list).

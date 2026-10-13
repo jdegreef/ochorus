@@ -15,8 +15,9 @@
 	import ShelfDownloadControl from '$lib/components/ShelfDownloadControl.svelte';
 	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
-	import { FOR_INDEX, FOR_LINKS, forPath } from '$lib/forLinks';
-	import { FOR_META } from '$lib/forMeta';
+	import { FOR_CHROME } from '$lib/forChrome';
+	import { FOR_EYEBROW, FOR_LINKS, FOR_LOCALES, forIndexPath, forLabel, forPath } from '$lib/forLinks';
+	import { FOR_META, forPhrase } from '$lib/forMeta';
 	import { localizeHref } from '$lib/href';
 	import { countsLine, forHref, inviteMessage } from '$lib/forPages';
 	import { RUNG_LABEL } from '$lib/audienceHub';
@@ -33,9 +34,9 @@
 	 * from one of its writers, plans to read together, ways to use it, themed
 	 * shelves, the writers themselves, printable leader's guides and an offline
 	 * pack where the group needs them, a message to pass on, their questions,
-	 * and a way in. English-only, like the
-	 * footer row that links here, so the copy is content from the data module
-	 * rather than catalogue keys.
+	 * and a way in. Written in English and French ($lib/forLinks), like the
+	 * footer row that links here, so the copy is content from the data modules
+	 * ($lib/forPages, $lib/forChrome) rather than catalogue keys.
 	 *
 	 * Each group wears its own accent and emblem (FOR_META) — the topic hero's
 	 * wash and chip — so nine pages built from one template don't read as copies.
@@ -46,21 +47,25 @@
 
 	const page = $derived(data.page);
 	const shelf = $derived(data.shelf);
+	const locale = $derived(data.locale);
+	const c = $derived(FOR_CHROME[locale]);
 	// forCards.test.ts pins one entry per page, so the lookup cannot miss.
 	const meta = $derived(FOR_META[page.slug]);
-	const path = $derived(forPath(page.slug));
-	const canonical = $derived(`${SITE_URL}${path}`);
+	const phrase = $derived(forPhrase(page.slug, locale));
+	const canonical = $derived(`${SITE_URL}${forPath(page.slug, locale)}`);
+	const ogImage = $derived(`${SITE_URL}/og/for/${locale === 'en' ? '' : `${locale}/`}${page.slug}.png`);
 	const fan = $derived(shelf.shelves[0]?.books ?? []);
 	const qa = $derived(pickQa(page.questions, []));
-	const invite = $derived(inviteMessage(page.invite, SITE_URL));
-	/** The numbers strip: the library in English, and every language it serves. */
+	const invite = $derived(inviteMessage({ ...page.invite, href: localizeHref(page.invite.href) }, SITE_URL));
+	/** The numbers strip: the library in the page's language, and every
+	 *  language it serves. */
 	const counts = $derived(
 		shelf.counts && [
-			{ value: shelf.counts.books, name: 'books' },
-			{ value: shelf.counts.sermons, name: 'sermons' },
-			{ value: shelf.counts.plans, name: 'reading plans' },
-			{ value: LIVE_LOCALES.length, name: 'languages' }
-		].filter((c) => c.value > 0)
+			{ value: shelf.counts.books, name: c.counts.books },
+			{ value: shelf.counts.sermons, name: c.counts.sermons },
+			{ value: shelf.counts.plans, name: c.counts.plans },
+			{ value: LIVE_LOCALES.length, name: c.counts.languages }
+		].filter((x) => x.value > 0)
 	);
 	// Each shelf as a schema.org ItemList: an ordered roster of the works, where
 	// the grid alone is opaque to a search engine.
@@ -68,7 +73,7 @@
 		shelf.shelves.map((s) =>
 			itemList(
 				s.title,
-				s.books.map((b) => ({ name: b.title, url: `/books/${b.slug}/` }))
+				s.books.map((b) => ({ name: b.title, url: localizeHref(`/books/${b.slug}/`) }))
 			)
 		)
 	);
@@ -79,7 +84,7 @@
 			name: page.title,
 			description: page.seoDescription,
 			url: canonical,
-			inLanguage: 'en',
+			inLanguage: locale,
 			isPartOf: { '@type': 'WebSite', name: 'Ochorus', url: SITE_URL },
 			isAccessibleForFree: true
 		})
@@ -90,25 +95,25 @@
 	title="{page.seoTitle} — Ochorus"
 	description={page.seoDescription}
 	{canonical}
-	hreflang={hreflangFor(path, ['en'])}
-	ogImage="{SITE_URL}/og/for/{page.slug}.png"
-	ogImageAlt="Ochorus for {meta.phrase}"
+	hreflang={hreflangFor(forPath(page.slug), [...FOR_LOCALES])}
+	{ogImage}
+	ogImageAlt="{FOR_EYEBROW[locale]} {phrase}"
 	ogImageWidth={1200}
 	ogImageHeight={630}
 	structuredData={[pageLd, ...shelvesLd, ...(qa.ld ? [qa.ld] : [])]}
 />
 
-<div class="page-col px-5 py-10" lang="en" style="--group: {meta.accent}; --pinned-offset: var(--appnav-h, 4rem)">
+<div class="page-col px-5 py-10" lang={locale} style="--group: {meta.accent}; --pinned-offset: var(--appnav-h, 4rem)">
 	<!-- Every group, one tap apart: a reader who is both a parent and a youth
 	     leader, or who landed on the wrong page, moves sideways from here. -->
-	<nav class="chip-scroller mb-6" use:scrollEdges aria-label="Who Ochorus is for">
-		<a class="chip" href={FOR_INDEX}>All</a>
+	<nav class="chip-scroller mb-6" use:scrollEdges aria-label={c.switcherLabel}>
+		<a class="chip" href={forIndexPath(locale)}>{c.all}</a>
 		{#each FOR_LINKS as l (l.slug)}
 			<a
 				class="chip"
 				class:active={l.slug === page.slug}
 				aria-current={l.slug === page.slug ? 'page' : undefined}
-				href={forPath(l.slug)}>{l.label}</a
+				href={forPath(l.slug, locale)}>{forLabel(l, locale)}</a
 			>
 		{/each}
 	</nav>
@@ -117,7 +122,7 @@
 		<div class="min-w-0">
 			<div class="flex items-center gap-3">
 				<span class="badge emblem-chip group-chip"><Emblem name={meta.emblem} /></span>
-				<p class="eyebrow group-ink">Ochorus for {meta.phrase}</p>
+				<p class="eyebrow group-ink">{FOR_EYEBROW[locale]} {phrase}</p>
 			</div>
 			<h1 class="mt-3 text-balance font-display text-h1 font-semibold leading-tight">{page.title}</h1>
 			<p class="lede mt-4 text-muted">{page.lead}</p>
@@ -136,10 +141,10 @@
 	{#if counts}
 		<!-- What "a free library" amounts to, counted at build time. -->
 		<dl class="counts mt-6">
-			{#each counts as c (c.name)}
+			{#each counts as count (count.name)}
 				<div class="count-tile rounded-card border border-border bg-surface px-4 py-3">
-					<dt class="text-small text-muted">{c.name}</dt>
-					<dd class="font-display text-h2 group-ink">{c.value.toLocaleString('en')}</dd>
+					<dt class="text-small text-muted">{count.name}</dt>
+					<dd class="font-display text-h2 group-ink">{count.value.toLocaleString(locale)}</dd>
 				</div>
 			{/each}
 		</dl>
@@ -180,18 +185,15 @@
 
 	{#if shelf.plans.length}
 		<section id="plans" class="jump-anchor mt-14" aria-labelledby="plans-heading">
-			<h2 id="plans-heading" class="text-h2">Plans to read together</h2>
-			<p class="mt-2 max-w-2xl text-body text-muted">
-				One short reading a day. Start on the same day and everyone reaches the same chapter together, each
-				reader ticking off their own progress as they go.
-			</p>
+			<h2 id="plans-heading" class="text-h2">{c.plansHeading}</h2>
+			<p class="mt-2 max-w-2xl text-body text-muted">{c.plansBody}</p>
 			<div class="mt-6 grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
 				{#each shelf.plans as plan (plan.slug)}
 					<PlanShelfCard {plan} headingLevel={3} />
 				{/each}
 			</div>
 			<p class="mt-4 text-small">
-				<a class="text-accent hover:underline" href={localizeHref('/plans')}>See every reading plan <Arrow /></a>
+				<a class="text-accent hover:underline" href={localizeHref('/plans')}>{c.plansMore} <Arrow /></a>
 			</p>
 		</section>
 	{/if}
@@ -200,18 +202,15 @@
 		<!-- A sermon a week, each with the study questions its page answers:
 		     a term's evenings for a group, ready-made. -->
 		<section id="series" class="jump-anchor mt-14" aria-labelledby="series-heading">
-			<h2 id="series-heading" class="text-h2">A sermon series for your group</h2>
-			<p class="mt-2 max-w-2xl text-body text-muted">
-				Read one sermon at home each week, then talk it through together. Every sermon here comes with study
-				questions and their answers, at the foot of the sermon.
-			</p>
+			<h2 id="series-heading" class="text-h2">{c.seriesHeading}</h2>
+			<p class="mt-2 max-w-2xl text-body text-muted">{c.seriesBody}</p>
 			{#each shelf.series as s (s.title)}
 				<div class="mt-8">
 					<GroupHeading name={s.title} as="h3" blurb={s.note} />
 					<ol class="weeks">
 						{#each s.sermons as w, i (w.slug)}
 							<li class="week rounded-card border border-border bg-surface p-4">
-								<p class="text-eyebrow group-ink">Week {i + 1}</p>
+								<p class="text-eyebrow group-ink">{c.week(i + 1)}</p>
 								<a class="mt-1 block font-semibold text-text hover:underline" href={localizeHref(`/sermons/${w.slug}`)}
 									>{w.title}</a
 								>
@@ -219,7 +218,7 @@
 									{w.author.name}{#if w.scripture_ref},{' '}{w.scripture_ref}{/if}
 								</p>
 								<p class="mt-2 text-small text-muted">
-									{w.questions} study {w.questions === 1 ? 'question' : 'questions'}{' '}<span class="opacity-50" aria-hidden="true">·</span>{' '}{readingTime(w.word_count)}
+									{c.studyQuestions(w.questions)}{' '}<span class="opacity-50" aria-hidden="true">·</span>{' '}{readingTime(w.word_count)}
 								</p>
 							</li>
 						{/each}
@@ -246,7 +245,7 @@
 
 	{#if shelf.shelves.length}
 		<section id="shelves" class="jump-anchor mt-14" aria-labelledby="shelves-heading">
-			<h2 id="shelves-heading" class="text-h2">Good places to start</h2>
+			<h2 id="shelves-heading" class="text-h2">{c.shelvesHeading}</h2>
 			{#each shelf.shelves as s (s.title)}
 				<div class="mt-8">
 					<GroupHeading name={s.title} as="h3" blurb={s.note} />
@@ -264,11 +263,8 @@
 		<!-- The edition family side by side (the slug convention is the link —
 		     root CLAUDE.md): one work, read at seven, at fourteen and in full. -->
 		<section class="mt-14" aria-labelledby="levels-heading">
-			<h2 id="levels-heading" class="text-h2">One story, three reading levels</h2>
-			<p class="mt-2 max-w-2xl text-body text-muted">
-				Many classics come as a children’s edition, a teens edition and the full text, so readers of every age
-				can read the same book, and a child can grow into the original.
-			</p>
+			<h2 id="levels-heading" class="text-h2">{c.levelsHeading}</h2>
+			<p class="mt-2 max-w-2xl text-body text-muted">{c.levelsBody}</p>
 			<div class="families mt-6">
 				{#each shelf.levels as family (family[0].book.slug)}
 					<ol class="levels" aria-label={family.at(-1)?.book.title}>
@@ -286,17 +282,15 @@
 
 	{#if shelf.authors.length}
 		<section class="mt-14" aria-labelledby="writers-heading">
-			<h2 id="writers-heading" class="text-h2">Meet the writers</h2>
-			<p class="mt-2 max-w-2xl text-body text-muted">
-				The lives behind the books: each one has a full biography, with the books and sermons they left.
-			</p>
+			<h2 id="writers-heading" class="text-h2">{c.writersHeading}</h2>
+			<p class="mt-2 max-w-2xl text-body text-muted">{c.writersBody}</p>
 			<ul class="writers mt-6">
 				{#each shelf.authors as person (person.slug)}
 					<li><PersonCard {person} /></li>
 				{/each}
 			</ul>
 			<p class="mt-4 text-small">
-				<a class="text-accent hover:underline" href={localizeHref('/biographies')}>See every biography <Arrow /></a>
+				<a class="text-accent hover:underline" href={localizeHref('/biographies')}>{c.writersMore} <Arrow /></a>
 			</p>
 		</section>
 	{/if}
@@ -305,12 +299,8 @@
 		<!-- For the adult running a group: each card opens the book's printable
 		     leader's guide, not the book (the young-reader hubs' recipe). -->
 		<section id="guides" class="jump-anchor mt-14" aria-labelledby="guides-heading">
-			<h2 id="guides-heading" class="text-h2">Printable leader’s guides</h2>
-			<p class="mt-2 max-w-2xl text-body text-muted">
-				A week-by-week guide to each of these books for children and teens: a summary for the leader, a memory
-				verse, questions with their answers and an activity, one chapter a week. Print it, or lead from the
-				screen.
-			</p>
+			<h2 id="guides-heading" class="text-h2">{c.guidesHeading}</h2>
+			<p class="mt-2 max-w-2xl text-body text-muted">{c.guidesBody}</p>
 			<div class="book-grid mt-6">
 				{#each shelf.guides as book (book.slug)}
 					<BookCard
@@ -327,10 +317,10 @@
 	{#if shelf.offline.length}
 		<section id="offline" class="jump-anchor mt-14" aria-labelledby="offline-heading">
 			<div class="flex flex-wrap items-baseline gap-x-4 gap-y-2">
-				<h2 id="offline-heading" class="text-h2">Take them offline</h2>
+				<h2 id="offline-heading" class="text-h2">{c.offlineHeading}</h2>
 				<ShelfDownloadControl
 					shelf="for-{page.slug}"
-					label="Save all to this device"
+					label={c.offlineSaveAll}
 					books={shelf.offline.map((o) => ({ slug: o.book.slug, language: o.book.language }))}
 				/>
 			</div>
@@ -350,12 +340,12 @@
 							<p class="mt-2 flex flex-wrap gap-2">
 								{#if o.pdf_url}
 									<a class="btn btn-sm" href={o.pdf_url} download
-										><Icon name="download" size={14} /> PDF<span class="sr-only"> of {o.book.title}</span></a
+										><Icon name="download" size={14} /> PDF<span class="sr-only"> {c.fileOf} {o.book.title}</span></a
 									>
 								{/if}
 								{#if o.epub_url}
 									<a class="btn btn-sm" href="{API_BASE_URL}{o.epub_url}" download rel="nofollow"
-										><Icon name="book" size={14} /> EPUB<span class="sr-only"> of {o.book.title}</span></a
+										><Icon name="book" size={14} /> EPUB<span class="sr-only"> {c.fileOf} {o.book.title}</span></a
 									>
 								{/if}
 							</p>
@@ -370,18 +360,15 @@
 		<!-- What each live language holds, from its own lists (no English
 		     fallback): the honest answer to "what can I hand a Swahili speaker?" -->
 		<section id="languages" class="jump-anchor mt-14" aria-labelledby="languages-heading">
-			<h2 id="languages-heading" class="text-h2">In the languages you serve</h2>
-			<p class="mt-2 max-w-2xl text-body text-muted">
-				Each language has its own library of full editions. Send someone straight to theirs, and the whole site
-				reads in that language.
-			</p>
+			<h2 id="languages-heading" class="text-h2">{c.languagesHeading}</h2>
+			<p class="mt-2 max-w-2xl text-body text-muted">{c.languagesBody}</p>
 			<ul class="languages mt-6">
 				{#each shelf.languages as l (l.code)}
 					<li class="language rounded-card border border-border bg-surface p-4">
 						<h3 class="text-h3"><span lang={l.code}>{l.native}</span></h3>
 						{#if l.native !== l.name}<p class="text-small text-muted">{l.name}</p>{/if}
 						<p class="mt-2 text-small text-muted">
-							{countsLine(l.counts)}
+							{countsLine(l.counts, locale)}
 						</p>
 						{#if l.covers.length}
 							<ul class="language-covers mt-3" lang={l.code}>
@@ -395,7 +382,7 @@
 							</ul>
 						{/if}
 						<p class="mt-3 text-small">
-							<a class="text-accent hover:underline" href={hrefInLocale('/books', l.code)}>Open the {l.name} library <Arrow /></a>
+							<a class="text-accent hover:underline" href={hrefInLocale('/books', l.code)}>{c.openLibrary(l.name)} <Arrow /></a>
 						</p>
 					</li>
 				{/each}
@@ -404,16 +391,14 @@
 	{/if}
 
 	<section class="mt-14" aria-labelledby="invite-heading">
-		<h2 id="invite-heading" class="text-h2">Pass it on</h2>
-		<p class="mt-2 max-w-2xl text-body text-muted">
-			A message ready for a bulletin, a group chat or an email. Copy it as it is, or make it your own.
-		</p>
+		<h2 id="invite-heading" class="text-h2">{c.inviteHeading}</h2>
+		<p class="mt-2 max-w-2xl text-body text-muted">{c.inviteBody}</p>
 		<div class="mt-6 max-w-2xl">
-			<ForInvite message={invite} subject="Free Christian classics on Ochorus" />
+			<ForInvite message={invite} subject={c.inviteSubject} words={c.invite} />
 		</div>
 	</section>
 
-	<QandA items={qa.items} title="Questions" headingClass="text-h2" />
+	<QandA items={qa.items} title={c.questions} headingClass="text-h2" />
 
 	<section class="group-wash mt-14 flex flex-col items-center rounded-card px-6 py-10 text-center sm:px-10">
 		<span class="badge emblem-chip group-chip"><Emblem name={meta.emblem} /></span>
@@ -421,7 +406,7 @@
 		<p class="mt-3 max-w-xl text-body text-muted">{page.closeBody}</p>
 		<div class="mt-6 flex flex-wrap justify-center gap-3">
 			<a class="btn btn-primary" href={localizeHref(forHref(page.primary.href, shelf))}>{page.primary.label}</a>
-			<a class="btn btn-ghost" href={localizeHref('/contact')}>Contact us</a>
+			<a class="btn btn-ghost" href={localizeHref('/contact')}>{c.contact}</a>
 		</div>
 	</section>
 </div>

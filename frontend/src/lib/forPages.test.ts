@@ -1,7 +1,8 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { FOR_LINKS, forPath } from './forLinks';
+import { FOR_LINKS, forIndexPath, forLocale, forPath } from './forLinks';
+import { FOR_META } from './forMeta';
 import { messageShareLinks } from './share';
 import {
 	AUTHORS_SHOWN,
@@ -10,7 +11,9 @@ import {
 	forQuote,
 	inviteMessage,
 	quoteAuthor,
+	FOR_ANCHORS,
 	FOR_PAGES,
+	FOR_PAGES_BY_LOCALE,
 	PLANS_SHOWN,
 	forHref,
 	isShelfData,
@@ -215,8 +218,9 @@ describe('the "Ochorus for …" pages', () => {
 	it('quotes a line the seed holds, from an author whose quotations are approved', () => {
 		expect(APPROVED.size, 'the APPROVED parse found nothing').toBeGreaterThan(3);
 		for (const p of FOR_PAGES) {
-			expect(QUOTE_SEED.includes(`"slug": "${p.quote}"`), `${p.slug}: ${p.quote}`).toBe(true);
-			expect(APPROVED.has(quoteAuthor(p.quote)), `${p.slug}: ${quoteAuthor(p.quote)} is not approved`).toBe(true);
+			const quote = p.quote ?? '';
+			expect(QUOTE_SEED.includes(`"slug": "${quote}"`), `${p.slug}: ${quote}`).toBe(true);
+			expect(APPROVED.has(quoteAuthor(quote)), `${p.slug}: ${quoteAuthor(quote)} is not approved`).toBe(true);
 		}
 	});
 
@@ -316,5 +320,97 @@ describe('the "Ochorus for …" pages', () => {
 		expect(row.covers.map((b) => b.slug)).toEqual(['p1', 'p2', 'z', 'x']);
 		expect(row.covers.length).toBe(LANGUAGE_COVERS);
 		expect(forLanguage('lg', { books: [], sermons: 0, plans: 0 }, []).name).toBe('Luganda');
+	});
+});
+
+/** This slug's row in a language's content fixture (book or sermon), or null. */
+const fixtureRow = <T>(dir: 'books' | 'sermons', slug: string, lang: string): T | null => {
+	try {
+		return JSON.parse(readFileSync(join(LIBRARY, 'fixtures', 'content', dir, `${slug}.${lang}.json`), 'utf8'))[0].fields;
+	} catch {
+		return null;
+	}
+};
+
+describe('the French "Ochorus pour …" pages', () => {
+	const fr = FOR_PAGES_BY_LOCALE.fr;
+
+	it('has one page per footer link, in the same order, each with its French words', () => {
+		expect(fr.map((p) => p.slug)).toEqual(FOR_LINKS.map((l) => l.slug));
+		expect(forPage('youth', 'fr')?.title).not.toBe(forPage('youth')?.title);
+		expect(forPath('parents', 'fr')).toBe('/fr/for/parents/');
+		expect(forIndexPath('fr')).toBe('/fr/for/');
+		for (const l of FOR_LINKS) {
+			expect(l.fr, l.slug).toBeTruthy();
+			expect(FOR_META[l.slug].fr.phrase, l.slug).toBeTruthy();
+			expect(FOR_META[l.slug].fr.tagline, l.slug).toBeTruthy();
+		}
+	});
+
+	it('shows French readers the French pages, and every other reader the English', () => {
+		expect(forLocale('fr')).toBe('fr');
+		expect(forLocale('sw')).toBe('en');
+		expect(forLocale('en')).toBe('en');
+	});
+
+	it('promises only what French has: no quotation, leader’s guides or downloads', () => {
+		for (const p of fr) {
+			expect(p.quote, p.slug).toBeUndefined();
+			expect(p.guides, p.slug).toBeFalsy();
+			expect(p.offline, p.slug).toBeUndefined();
+			expect(pageLinks(p).filter((h) => h === '#guides' || h === '#offline' || h === '/quotes'), p.slug).toEqual([]);
+		}
+	});
+
+	it('links only to routes that exist, or to a section the page has', () => {
+		for (const p of fr) {
+			for (const href of pageLinks(p)) {
+				if (href.startsWith('#')) {
+					expect(isForAnchor(href), `${p.slug}: ${href}`).toBe(true);
+					const section = FOR_ANCHORS[href as ForAnchor].section;
+					const has = section === 'series' ? !!p.series?.length : section === 'languages' ? !!p.languages : true;
+					expect(has, `${p.slug} links ${href} but has no such section`).toBe(true);
+				} else {
+					expect(routeExists(href), `${p.slug}: ${href}`).toBe(true);
+				}
+			}
+			expect(p.invite.href === '/' || routeExists(p.invite.href), `${p.slug}: ${p.invite.href}`).toBe(true);
+			expect(p.invite.text.length, p.slug).toBeLessThanOrEqual(200);
+			expect(p.seoDescription.length, p.slug).toBeLessThanOrEqual(160);
+		}
+	});
+
+	it('shelves only published French editions, with backups and no repeats', () => {
+		for (const p of fr) {
+			expect(p.shelves.length, p.slug).toBeGreaterThanOrEqual(2);
+			const shelved = p.shelves.flatMap((s) => s.picks);
+			expect(new Set(shelved).size, `${p.slug}: a book is on two shelves`).toBe(shelved.length);
+			for (const s of p.shelves) expect(s.picks.length, `${p.slug} / ${s.title}`).toBeGreaterThan(SHELF_SIZE);
+			const unpublished = shelved.filter((s) => fixtureRow<{ is_published: boolean }>('books', s, 'fr')?.is_published !== true);
+			expect(unpublished, p.slug).toEqual([]);
+		}
+	});
+
+	it('names plans the seed defines, writers who exist, and French sermons with questions', () => {
+		for (const p of fr) {
+			expect(p.plans.filter((s) => !PLAN_SLUGS.has(s)), p.slug).toEqual([]);
+			expect(p.plans.length, p.slug).toBeGreaterThan(PLANS_SHOWN);
+			expect(p.authors.filter((a) => !AUTHOR_SLUGS.has(a)), p.slug).toEqual([]);
+			expect(p.authors.length, p.slug).toBeGreaterThan(AUTHORS_SHOWN);
+			for (const series of p.series ?? []) {
+				const without = series.picks.filter(
+					(s) => !fixtureRow<{ study_questions: unknown[] }>('sermons', s, 'fr')?.study_questions?.length
+				);
+				expect(without, `${p.slug}: ${series.title}`).toEqual([]);
+				expect(series.picks.length, series.title).toBeGreaterThan(SERIES_WEEKS);
+			}
+		}
+	});
+
+	it('counts and names languages in French', () => {
+		expect(countsLine({ books: 1, sermons: 2, plans: 3 }, 'fr')).toBe('1 livre · 2 sermons · 3 plans de lecture');
+		const row = forLanguage('sw', { books: [], sermons: 0, plans: 0 }, [], 'fr');
+		expect(row.name).toBe('swahili');
+		expect(forLanguage('lg', { books: [], sermons: 0, plans: 0 }, [], 'fr').name).toBe('luganda');
 	});
 });
