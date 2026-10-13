@@ -323,16 +323,14 @@ SEED_LANGUAGES: dict[str, dict] = {
         # nhưng) — a fair match for the 19th-century authors this library
         # carries. Prose is modern Vietnamese; quoted verses keep Cadman.
         #
-        # NOTE: `bible` is the Take Root code, which the session that added
-        # this could not verify (api.takeroot.bible is egress-blocked there).
-        # `vie1934` follows the ebible id, as `fralsg` does for French. VERIFY
-        # before the first API-backed Vietnamese job:
-        #   CHECK_BIBLE_CODES=1 uv run python manage.py test \
-        #     library.tests_languages.LanguageSeedTableTests
-        # Worker sessions can mine Cadman verbatim from the ebible mirror
-        # (raw.githubusercontent.com/gracious-tech/fetch_collection, bibles/
-        # vie_kt/usfm), which needs no Take Root code.
-        "bible": "vie1934",
+        # `bible` is the Take Root code, verified 2026-10-13 (CHECK_BIBLE_CODES):
+        # Take Root names this text "vietnamese", NOT the ebible id vie1934,
+        # which it does not carry. Its capital Đ arrives as U+00D0 (Ð), which
+        # translation.fetch_chapter repairs. Worker sessions can also mine
+        # Cadman from the ebible mirror (raw.githubusercontent.com/
+        # gracious-tech/fetch_collection, bibles/vie_kt/usfm); the two differ
+        # only by edition variants (nhơn/nhân), as KJV printings do.
+        "bible": "vietnamese",
         "bible_label": "Kinh Thánh (Cadman, 1925)",
         # PROTESTANT register throughout, pinned because Vietnamese splits by
         # tradition: Đức Chúa Trời / Đức Thánh Linh (Protestant, and Cadman's
@@ -370,16 +368,13 @@ SEED_LANGUAGES: dict[str, dict] = {
         # it is the Korean Bible Society's and licensed. Where this text and
         # 개역개정 differ, quoted verses keep this one.
         #
-        # NOTE: `bible` is the Take Root code, which the session that added
-        # this could not verify (api.takeroot.bible is egress-blocked there).
-        # `kor` follows the ebible id. VERIFY before the first API-backed
-        # Korean job:
-        #   CHECK_BIBLE_CODES=1 uv run python manage.py test \
-        #     library.tests_languages.LanguageSeedTableTests
-        # Worker sessions can mine the text verbatim from the ebible mirror
+        # `bible` is the Take Root code, verified 2026-10-13 (CHECK_BIBLE_CODES):
+        # Take Root names this text "korean", NOT the ebible id kor, which it
+        # does not carry. Same 개역 wording as the ebible mirror
         # (raw.githubusercontent.com/gracious-tech/fetch_collection, bibles/
-        # kor_old/usfm), which needs no Take Root code.
-        "bible": "kor",
+        # kor_old/usfm), which workers can also mine; the two differ only in
+        # word spacing and the odd comma.
+        "bible": "korean",
         # The NAME of the text, not a description: the translation prompt says
         # "use the supplied {bible_label} wording", so this is what it quotes.
         "bible_label": "개역 성경",

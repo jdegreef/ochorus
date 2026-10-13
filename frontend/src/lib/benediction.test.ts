@@ -4,11 +4,8 @@ import { bibleCredit } from './bibleCredit';
 import { locales } from '$lib/paraglide/runtime';
 
 describe('benediction', () => {
-	it('closes every UI locale whose Bible carries Numbers, and only real locales', () => {
-		// vi and ko are the two Take Root has no Numbers for; they show nothing
-		// rather than an English verse.
-		const without = new Set(['vi', 'ko']);
-		for (const l of locales) expect(l in BENEDICTION, l).toBe(!without.has(l));
+	it('closes every UI locale, and only real locales', () => {
+		for (const l of locales) expect(l in BENEDICTION, l).toBe(true);
 		for (const l of Object.keys(BENEDICTION)) expect(locales as readonly string[]).toContain(l);
 	});
 
@@ -32,6 +29,8 @@ describe('benediction', () => {
 				expect(line, l).toBe(line.trim());
 				expect(line, l).not.toMatch(/^[“”‘’"]|[“”‘’"]$/);
 				expect(line, l).not.toMatch(/\s{2}|’ | ’/);
+				// Ð (U+00D0) is Icelandic; Take Root's Cadman uses it for Đ.
+				expect(line, l).not.toContain('\u00d0');
 			}
 		}
 	});

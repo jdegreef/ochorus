@@ -2613,8 +2613,10 @@ archaic spelling and period punctuation are the text, not defects in it.
 - **Vietnamese (vi) Bible is `vie_kt` — Cadman's *Kinh Thánh* (1925), PD — in the
   ebible mirror, and vi is PROTESTANT register throughout** (locale added 2026-10-09,
   no content yet). URL: `bibles/vie_kt/usfm/<code>.usfm`; plain `\v N text` lines
-  (no `\w` Strong's markup in the verses checked). Its Take Root code `vie1934` is
-  UNVERIFIED (see `language_seed.py`), so mine the mirror. Pin in every brief:
+  (no `\w` Strong's markup in the verses checked). Its Take Root code is
+  `vietnamese` (verified 10-13; `vie1934` does not exist there), and Take Root sets the
+  capital Đ as U+00D0 Ð — `fetch_chapter` repairs it, but anything mined by hand must
+  carry U+0110. Mirror and Take Root differ only by edition variants (nhơn/nhân). Pin in every brief:
   Đức Chúa Trời (never Thiên Chúa), Đức Thánh Linh (never Chúa Thánh Thần), Chúa
   Giê-xu, Đấng Christ, Hội Thánh, ân điển, thuộc linh (never tâm linh); reader
   address **bạn**. Cadman reads archaic (ngươi, chẳng, luống nhưng): quoted verses
@@ -2627,7 +2629,8 @@ archaic spelling and period punctuation are the text, not defects in it.
   말씀이 계시니라, 내 안에 거하라), so quote it verbatim; do NOT reach for 개역개정
   (1998, the Korean Bible Society's, licensed) even where a model knows it better.
   URL: `bibles/kor_old/usfm/<code>.usfm`, plain `\v N text` lines. Take Root code
-  `kor` is UNVERIFIED (see `language_seed.py`). Pin in every brief: 하나님 (never
+  is `korean` (verified 10-13; `kor` does not exist there) — same 개역 wording as the
+  mirror, differing only in word spacing. Pin in every brief: 하나님 (never
   하느님), 예수 그리스도, 성령, 교회, 은혜; prose in 합니다체 for books and
   sermons; NEVER 당신 for "you" (omit the subject; 독자님 or 여러분 sparingly).
   Book titles in 『』. A runtime title or name followed by a particle has no

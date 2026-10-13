@@ -319,6 +319,22 @@ class ScriptureFetchTests(TestCase):
             fetch_chapter("rv1858", Ref("JHN", 3))
         self.assertEqual(get.call_count, 1)
 
+    def test_vietnamese_eth_is_repaired_to_d_with_stroke(self):
+        # Take Root's Cadman sets Đ as U+00D0 (Ð); quoted verses must carry the
+        # Vietnamese letter the glossary and search use. Other Bibles untouched.
+        payload = {
+            "book_name": "Giăng",
+            "reference": "Giăng 1",
+            "verses": [{"number": 1, "text": "Ngôi Lời là \u00d0ức Chúa Trời."}],
+        }
+        with mock.patch(
+            "library.translation.requests.get", return_value=self._resp(200, payload)
+        ):
+            vi = fetch_chapter("vietnamese", Ref("JHN", 1))
+            other = fetch_chapter("kjv", Ref("JHN", 1))
+        self.assertEqual(vi["verses"][0]["text"], "Ngôi Lời là \u0110ức Chúa Trời.")
+        self.assertIn("\u00d0", other["verses"][0]["text"])
+
     def test_transient_failure_retries_then_raises_and_is_not_cached(self):
         import requests
 

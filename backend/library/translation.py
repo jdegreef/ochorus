@@ -116,6 +116,30 @@ _FETCH_ATTEMPTS = 3
 _FETCH_BACKOFF = (2, 5)  # seconds slept before the 2nd and 3rd attempts
 
 
+# Per-Bible character repairs, applied to every fetched chapter. Take Root's
+# Cadman ("vietnamese") sets the capital Đ as U+00D0 (Ð, the Icelandic eth): it
+# looks the same but is another letter, so a verse quoted verbatim would spell
+# Ðức Chúa Trời where the glossary, the UI and every reader's search spell
+# Đức Chúa Trời. Its lowercase đ is already right, and the ebible mirror of the
+# same text uses U+0110 throughout.
+_VERSE_REPAIRS = {"vietnamese": str.maketrans("\u00d0", "\u0110")}
+
+
+def _repair(bible: str, data: dict) -> dict:
+    table = _VERSE_REPAIRS.get(bible)
+    if table is None:
+        return data
+    data = dict(data)
+    for field in ("book_name", "reference"):
+        if isinstance(data.get(field), str):
+            data[field] = data[field].translate(table)
+    data["verses"] = [
+        {**v, "text": v["text"].translate(table)} if isinstance(v.get("text"), str) else v
+        for v in data.get("verses") or []
+    ]
+    return data
+
+
 class ScriptureUnavailable(RuntimeError):
     """The Bible API could not be reached for a passage after retries. Raised
     (not returned as None) so a translation job stops rather than silently
@@ -151,6 +175,7 @@ def fetch_chapter(bible: str, ref: Ref) -> dict | None:
                 except ValueError:
                     last_reason = "unparseable JSON body"  # transient — retry
                 else:
+                    data = _repair(bible, data)
                     _verse_cache[key] = data
                     return data
             else:
