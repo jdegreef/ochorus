@@ -1,0 +1,99 @@
+{
+ "kind": "sermon",
+ "slug": "unfailing-springs",
+ "language": "ko",
+ "job_issue": 5876,
+ "references": [
+  {
+   "reference": "John 4:10",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "John 4:17",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "Psalm 18:30",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "John 4:13",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "John 6:35",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "John 6:35",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "John 1:18",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "John 7:37-39",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "2 Kings 19:14",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Ecclesiastes 10:10",
+   "status": "self_rendered",
+   "block_index": 19
+  }
+ ]
+}
