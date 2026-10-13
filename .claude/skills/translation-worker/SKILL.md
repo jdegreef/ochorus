@@ -2674,3 +2674,12 @@ archaic spelling and period punctuation are the text, not defects in it.
   content dir. Translate them like jobs, with no issue to close. Also: the scratchpad is wiped
   between sessions, so re-fetch the Bible mirror and recreate the brief, rather than
   assuming last session's `lsg_verses.json` is still there.
+- **During a GitHub Actions outage, the `test-and-build` aggregator FAILS when a
+  gate job was merely cancelled** (2026-10-05, #5261–#5271). Its log reads
+  `backend-tests did not pass (result: abandoned)` — not a test failure. Before
+  calling a PR red, check which job failed: if every non-aggregator job is
+  success/cancelled/skipped with no failed STEP, it is infra — wait for
+  githubstatus.com Actions = operational, then `gh run rerun <id> --failed`.
+  Never merge past it; a watcher that re-runs then merges only on all-green +
+  `mergeStateStatus == CLEAN` cleared five queued batch PRs safely.
+
