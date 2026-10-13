@@ -1,0 +1,124 @@
+{
+ "kind": "sermon",
+ "slug": "gods-love-for-a-sinning-world",
+ "language": "ko",
+ "job_issue": 5879,
+ "references": [
+  {
+   "reference": "Jude 1:6",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Isaiah 50:6",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Hebrews 2:11",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "1 John 4:14",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Revelation 3:20",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Romans 10:10",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "Mark 12:7",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "Job 21:14",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 8:9",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "Revelation 3:8",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "Hebrews 1:14",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "block_index": 47,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "Job 20:12",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Jeremiah 44:4",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "Colossians 1:24",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Matthew 26:15",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Galatians 6:17",
+   "status": "mined",
+   "block_index": 62,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "mined",
+   "block_index": 62,
+   "source_file": "개역 (Take Root korean) Bible text"
+  }
+ ]
+}
