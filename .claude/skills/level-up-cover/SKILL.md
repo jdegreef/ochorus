@@ -344,7 +344,9 @@ NOT put it in `CURATED` — that would make the museum-provenance table lie
 `ORIGINAL_GROUND` with its `shasum -a 256` → delete plate svgs
 (`find covers -regex '.*/<slug>\.svg' -delete`, incl `lg/ sw/`) → `build_cover_assets.py`
 (repoints EVERY lang row + webp) → `npm run og:covers` → `tune_art_scrim.py` →
-`npm run og:covers` again (redraws the cards whose scrim moved). Same
+`npm run og:covers` again (redraws the cards whose scrim moved) → `npm run covers:bars`
+(an Original ground is a NEW ground too — `groundBars.test.ts` fails CI without it, and
+only the FULL vitest run catches it; fire-against-the-dark #6060). Same
 tail as steps 2–3. `growing-in-wisdom` + teen flagships are next, same tier, no new
 machinery.
 
