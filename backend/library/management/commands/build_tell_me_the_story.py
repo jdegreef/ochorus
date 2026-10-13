@@ -249,6 +249,70 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
         ],
     },
+    4: {
+        "publication_year": 2026,
+        "title": "Tell Me the Story – Book 4: The King Is Born",
+        "subtitle": "The Life of Jesus, from His Birth to the First Disciples",
+        "cover_url": "/covers/tell-me-the-story-4.svg",
+        "cover_color": covers.ink_safe("#1f4f6e"),  # a starlit night
+        "description": (
+            "Twenty-one Bible stories for children aged 6 to 10 that begin the "
+            "Life of Jesus, each short enough to read aloud at bedtime: the angel "
+            "in the temple, Mary's yes, the birth in Bethlehem, the shepherds, "
+            "the wise men, the boy in the temple, Jesus' baptism, water into wine, "
+            "the woman at the well and the first fishermen. Every story ends with "
+            "a prayer and three questions to talk about together. The fourth book "
+            "of Tell Me the Story."
+        ),
+        "about_html": (
+            "<p>Tell Me the Story is an original Ochorus storybook Bible for "
+            "children aged 6 to 10, in eight books and three parts: Old "
+            "Testament Stories, The Life of Jesus, and New Testament Stories. "
+            "God is the hero of every story, and the whole Bible is one story "
+            "that leads to Jesus.</p>"
+            "<p>Book 4, “The King Is Born”, begins the Life of Jesus. It tells "
+            "twenty-one stories from Matthew, Luke and John: the births of John "
+            "and Jesus, the shepherds and the wise men, Simeon and Anna, the boy "
+            "Jesus in the temple, His baptism and testing, and the beginning of "
+            "His work, from the wedding at Cana and the woman at the well to "
+            "the fishermen who left their nets. Where the Gospels themselves say "
+            "an Old Testament promise came true, as Matthew 2:6 does with "
+            "Bethlehem, a line called “The promise kept” says so.</p>"
+            "<p>The stories stay close to what the Bible says, and the people in "
+            "them say what the Bible says they said, in simple words. Each takes "
+            "about four minutes to read aloud, and under each are three questions "
+            "to talk about together, with answers for the grown-up reading along. "
+            "Its Christmas stories, with Old Testament promise stories from Books "
+            "1 to 3, make up the Advent reading plan “Tell Me the Christmas "
+            "Story”.</p>"
+        ),
+        "qa": [
+            {
+                "question": "Which stories are in Book 4 of Tell Me the Story?",
+                "answer": "Twenty-one stories from the Gospels: Zechariah in the temple, Mary and the angel, Mary visits Elizabeth, John's birth, Joseph's dream, Jesus born in Bethlehem, the shepherds, Simeon and Anna, the wise men, the escape to Egypt, the boy in the temple, John the Baptist, Jesus' baptism, the testing in the desert, the first disciples, water into wine, Nicodemus, the woman at the well, the official's son, Jesus in Nazareth, and the fishermen.",
+            },
+            {
+                "question": "Is it good for reading at Christmas?",
+                "answer": "Yes. The first eight stories tell the Christmas story from the angel's visit to Zechariah to Simeon and Anna, and the wise men follow. With promise stories from the earlier books they make up a 25-day Advent reading plan, Tell Me the Christmas Story, for 1 to 25 December.",
+            },
+            {
+                "question": "Does it add things the Bible doesn't say, like a donkey or a stable?",
+                "answer": "No. The stories keep to the Gospels, which mention a manger and no room in the inn, but no stable, donkey or innkeeper. The wise men visit a house some time later, and the Bible doesn't say how many there were. Notes for the grown-up point these out where a nativity play might have taught otherwise.",
+            },
+            {
+                "question": "What is \"The promise kept\"?",
+                "answer": "In the Life of Jesus books, a short line under some stories shows where the Gospels themselves say an Old Testament promise came true: Isaiah's Immanuel (Matthew 1:23), Micah's Bethlehem (Matthew 2:6), Hosea's \"Out of Egypt\" (Matthew 2:15), Isaiah's voice in the wilderness (Matthew 3:3), and others.",
+            },
+            {
+                "question": "Do I need to read Books 1 to 3 first?",
+                "answer": "No. Each book stands on its own, and Book 4's introduction recalls the promises from the Old Testament books. Children who have read them will spot the links, like Jacob's stairway and the bronze snake, which Jesus Himself points back to.",
+            },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Every verse quoted with its reference is word for word from the Berean Standard Bible (BSB), which is in the public domain.",
+            },
+        ],
+    },
 }
 
 _QUESTION = re.compile(r"^- Q: (.+)$")

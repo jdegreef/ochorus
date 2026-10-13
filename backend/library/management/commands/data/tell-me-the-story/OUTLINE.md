@@ -127,3 +127,37 @@ An Introduction ("Waiting for the King"), then twenty-two stories from 1 Samuel 
 22. Nehemiah Builds the Wall (Nehemiah 1–2; 4; 6:15–16)
 
 Handled with care: Peninnah's "other wife" status told plainly; Goliath's death ("David had won", no beheading); David and Bathsheba ("wanted her to be his own wife", Uriah sent to the fiercest fighting) with a grown-up note to explain no more than the child asks, and the baby's death left as "great sadness to his family"; the two women before Solomon are "two women", not named prostitutes; Carmel's false prophets "were put to death"; the furnace soldiers' death in one clause; Daniel's accusers "were punished instead"; Haman "put to death on the very gallows he had built".
+
+## Book 4: The King Is Born
+
+The first book of the Life of Jesus. An Introduction ("The Waiting Is Over"), then twenty-one stories from Matthew, Luke and John.
+
+**In the Life of Jesus books the Jesus line changes.** Every story is about Jesus, so "Looking ahead to Jesus" gives way to `**The promise kept:**`, used only where a Gospel itself says an Old Testament promise came true (Matthew 1:23, 2:6, 2:15, 3:3; Luke 1:17, 1:32, 1:55, 1:69–73, 2:32, 4:21; John 1:51, 3:14, 4:25–26).
+
+1. The Angel in the Temple (Luke 1:5–25)
+2. Mary Says Yes (Luke 1:26–38)
+3. Mary Visits Elizabeth (Luke 1:39–56)
+4. "His Name Is John" (Luke 1:57–80)
+5. Joseph's Dream (Matthew 1:18–25)
+6. Born in Bethlehem (Luke 2:1–7)
+7. Shepherds in the Night (Luke 2:8–20)
+8. Simeon and Anna (Luke 2:21–40)
+9. The Wise Men and the Star (Matthew 2:1–12)
+10. Escape to Egypt (Matthew 2:13–23)
+11. The Boy in the Temple (Luke 2:41–52)
+12. A Voice in the Wilderness (Matthew 3:1–12; Luke 3:7–18)
+13. Jesus Is Baptised (Matthew 3:13–17; Luke 3:21–23)
+14. Tested in the Desert (Matthew 4:1–11)
+15. "Come and See" (John 1:35–51)
+16. Water into Wine (John 2:1–11)
+17. Nicodemus Comes at Night (John 3:1–21)
+18. The Woman at the Well (John 4:1–42)
+19. "Your Son Will Live" (John 4:43–54)
+20. Good News in Nazareth (Luke 4:14–30)
+21. Fishers of People (Luke 5:1–11; Matthew 4:18–22)
+
+Nativity-play traditions are not added: no donkey, stable, innkeeper or animals (the text has a manger and no room in the inn); the wise men are not counted and come to a house, later; the shepherds are not called despised; John is Jesus' "relative", not cousin. The grown-up answers point these out. Herod's killing of the boys is one sentence. The woman at the well's five husbands are told plainly, without judgement.
+
+## Advent plan: Tell Me the Christmas Story
+
+`tell-me-the-christmas-story` in `plan_seed.py`: 25 nights, 1–25 December. Days 1–18 are Old Testament promise stories from Books 1–3 (creation, the snake's defeat, the rainbow, Abram's call, the stars, Sarah, Moriah, Jacob's stairway, Joseph, the burning bush, the Passover, the manna, the tabernacle, the bronze snake, Rahab, Boaz, David chosen in Bethlehem, Isaiah's promised child); days 19–25 are Book 4's stories 1–7, so that day 24 is the birth and day 25 the shepherds.
