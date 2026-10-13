@@ -139,6 +139,18 @@ one rule now). Needs `frontend/node_modules` and Node
 if you loaded it from the shared checkout — that copy is a stale detached HEAD and
 still describes the old hand-run pipeline, not `paint_covers.py`.
 
+**Then export the art credits** — `paint_covers` does NOT do this, and every new
+`CURATED` entry changes them:
+
+```bash
+cd backend && uv run python scripts/export_art_credits.py
+```
+
+It rewrites `backend/library/data/art_credits.json` and
+`frontend/static/covers/art/credits.json` (the home hero's gallery label); commit
+**both**. Re-run it after every `git merge`/`rebase` of `origin/main` too — see
+gotcha **H**.
+
 `cover_url` is **NOT create-only** in `seed_books` (`CREATE_ONLY_FIELDS =
 {source_type, is_published}`), so the fixture edit reaches prod on deploy — **no
 data migration.** Verify covers by reading the og twin PNGs (`covers/<slug>.png`)
@@ -148,8 +160,8 @@ data migration.** Verify covers by reading the og twin PNGs (`covers/<slug>.png`
 
 Diff must be **only** this batch's slugs + `curated_art.py` + `art_sources.py`
 (build_curated_covers records each painting's `crop_recipe` here — expected, not
-stray) + `art_scrim.py` + `coverScrim.ts` + `og-manifest.json` (+ an
-`AUTHOR_STYLE` line if you added one).
+stray) + `art_scrim.py` + `coverScrim.ts` + `og-manifest.json` + the two
+`art_credits.json`/`credits.json` exports (+ an `AUTHOR_STYLE` line if you added one).
 **Never hand-edit `og-manifest.json`** — `coverOgManifest.test.ts` now fails an
 entry that is out of order or duplicated (a hand-appended French card once was
 both, and every later run re-sorted it into someone else's PR). If a twin is
@@ -291,6 +303,15 @@ prerendered pages reference it.
   on purpose"). If nothing survives that filter, close the PR as superseded rather
   than rebase it. (PR #2482, curated-art-batch-3, closed superseded 2026-09-18: 14/21
   already live, 5 `is_published:false`, the last 2 deferred.)
+- **H · stale art-credit export** — CI fails
+  `library.tests_art_credits.ArtCreditExportTests.test_committed_credits_match_the_manifest`
+  ("art_credits.json is stale"). New `CURATED` paintings in `curated_art.py` /
+  `art_sources.py` without a re-export. Fix: `cd backend && uv run python
+  scripts/export_art_credits.py`, commit `backend/library/data/art_credits.json` AND
+  `frontend/static/covers/art/credits.json`. **After merging/rebasing `origin/main`
+  into a cover branch, RE-RUN it** — sibling cover PRs add credits too, so a clean
+  merge of the two JSON files is still stale against the merged `curated_art.py`.
+  (#6080 Spurgeon plates and #6085 diverse voices both hit it, 2026-10-13.)
 
 - **EPUB-bundled covers must follow a repaint** (since #4261, 2026-09-28).
   `backend/library/export_covers/<slug>.<lang>.png` is a byte-exact copy of the
