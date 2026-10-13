@@ -3328,7 +3328,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ('Rom. vii. 34, saith', 'Rom. vii. 24, saith'),  # ch6
             ('candle, Psalm xviii. 26,', 'candle, Psalm xviii. 28,'),  # ch11
             ('Psalm Ixxiii. 22', 'Psalm lxxiii. 22'),  # ch12
-            ('their teeth, Proy. x. 29', 'their teeth, Prov. x. 29'),  # ch17
+            ('their teeth, Proy. x. 29', 'their teeth, Prov. x. 26'),  # ch17 (and x. 29 -> x. 26: Prov 10:26, vinegar to the teeth)
             ('a blessing, 1 Cor. 16;', 'a blessing, 1 Cor. xv. 57, 58;'),  # ch17
             ('Psalm Ixxii. 1', 'Psalm lxxii. 1'),  # ch18
             ('Ps. 1xxxiv. 10', 'Ps. lxxxiv. 10'),  # ch20
@@ -5941,6 +5941,212 @@ BODY_CORRECTIONS.setdefault("on-the-incarnation", {}).setdefault("replacements",
     # [en] OCR: Robertson "impassible" (the Word cannot suffer), paired with
     # "incorruptible"
     ("being impossible and incorruptible", "being impassible and incorruptible"),
+])
+
+# Found while translating to French (2026-10-13): Mortification of Sin — the
+# Greek of 1 Cor 13:12 (ἐσόπτρου) and "overtly" -> "overly" (= superficially).
+BODY_CORRECTIONS.setdefault("mortification-of-sin", {}).setdefault("replacements", []).extend([
+    # [en] scanning slip in the Greek of 1 Cor 13:12 (ἐσόπτρου, "through a
+    # glass"), plus stray space before the comma
+    ("δι’ ἐσύπτρου ,", "δι’ ἐσόπτρου,"),
+    # [en] OCR: Owen's "overly" (= superficially), paired with "too much haste"
+    # and "not fed upon the promise"
+    ("thou hast done it overtly, thou", "thou hast done it overly, thou"),
+])
+
+# Found while translating to French (2026-10-13): The Bruised Reed — misprinted
+# Bible references whose quoted words fix the verse (roman l read as 1 = 50;
+# dropped or misread digits), also in es/am/pt; single-reading OCR slips and
+# two dropped words in ch20.
+BODY_CORRECTIONS.setdefault("the-bruised-reed", {}).setdefault("replacements", []).extend([
+    # [en] stray colon after the full stop (scan mark)
+    ("of the Trinity.:</p>", "of the Trinity.</p>"),
+    # [en] OCR capital X in the roman numeral
+    ("prodigal, Luke Xv. 17", "prodigal, Luke xv. 17"),
+    # [en] OCR slip "isa" for "is a"
+    ("He isa physician", "He is a physician"),
+    # [en] OCR slip "isa" for "is a"
+    ("It isa branch", "It is a branch"),
+    # [en] OCR slip "calla" for "call a"
+    ("We calla little plant", "We call a little plant"),
+    # [en] OCR "[" for "I" (Ps 31:22, "I said in my haste")
+    ("; [said in my haste", "; I said in my haste"),
+    # [en] word split by a stray space
+    ("that he pre serveth light", "that he preserveth light"),
+    # [en] OCR slip "asa" for "as a"
+    ("he doth it asa preservative", "he doth it as a preservative"),
+    # [en] OCR digit 1 for roman l (50): "a word in season to him that is
+    # weary" is Isa 50:4
+    ("in season, Isai. 1. 4,", "in season, Isai. l. 4,"),
+    # [en] book number dropped: "the weaker vessel" is 1 Pet 3:7 (2 Pet 3:7 is
+    # the fire-reserved heavens)
+    ("weaker vessels, Pet. iii. 7,", "weaker vessels, 1 Pet. iii. 7,"),
+    # [en] misprinted verse: "from the days of John the Baptist ... the kingdom
+    # of heaven suffereth violence" is Matt 11:12 (11:22 is Tyre and Sidon)
+    ("suffer violence, Mat. xi. 22,", "suffer violence, Mat. xi. 12,"),
+    # [en] digit dropped: "I am made all things to all men" is 1 Cor 9:22
+    ("to all men, 1 Cor. ix. 2,", "to all men, 1 Cor. ix. 22,"),
+    # [en] doubled full stop (scan mark)
+    ("in this text. . What", "in this text. What"),
+    # [en] OCR digit 1 for roman l (50): "ye shall lie down in sorrow" is Isa
+    # 50:11
+    ("in sorrow, Isaiah 1. 11.", "in sorrow, Isaiah l. 11."),
+    # [en] stray scan stop between words (plainly not text)
+    ("no more guilty. of them", "no more guilty of them"),
+    # [en] doubled full stop (scan mark)
+    ("into his sack. . Amongst", "into his sack. Amongst"),
+    # [en] stray scan stop between words (plainly not text)
+    ("Ill thoughts . are as", "Ill thoughts are as"),
+    # [en] OCR digit 1 for roman l (50): "call upon me in the day of trouble"
+    # is Ps 50:15
+    ("hear thee, Psalm 1.15;", "hear thee, Psalm l. 15;"),
+    # [en] stray scan stop between words (plainly not text)
+    ("is a part of. the Church", "is a part of the Church"),
+    # [en] OCR digit 1 for roman l (50): "set them in order before thine eyes"
+    # is Ps 50:21
+    ("before us, Ps. 1. 21,", "before us, Ps. l. 21,"),
+    # [en] OCR digit 1 for roman l (50): "walketh in darkness, and hath no
+    # light" is Isa 50:10
+    ("no light, Isaiah 1. 10,", "no light, Isaiah l. 10,"),
+    # [en] OCR slip "atter" for "utter"
+    ("just cause of atter despair", "just cause of utter despair"),
+    # [en] OCR slip "n" for "in"
+    ("his Father n his breakings", "his Father in his breakings"),
+    # [en] OCR slip "yom" for "from"
+    ("shall feel yom himself", "shall feel from himself"),
+    # [en] OCR slip "asa" for "as a"
+    ("connatural to it; asa coal", "connatural to it; as a coal"),
+    # [en] doubled full stop (scan mark)
+    ("the Lord’s day.. John", "the Lord’s day. John"),
+    # [en] stray scan stop between words (plainly not text)
+    ("let us not. favour", "let us not favour"),
+    # [en] stray hyphen (scan mark)
+    ("burning upon the-altar of", "burning upon the altar of"),
+    # [en] OCR slip "jperplexed" for "perplexed"
+    ("a dark jperplexed estate", "a dark perplexed estate"),
+    # [en] OCR slip "tin" for "in"
+    ("that are tin such a mist", "that are in such a mist"),
+    # [en] misprinted book (Zech/Zeph): "all ye meek of the earth" is Zeph 2:3;
+    # Zech 2:3 is the angel going forth
+    ("meek of the earth, Zech. ii. 3,", "meek of the earth, Zeph. ii. 3,"),
+    # [en] stray scan stop between words (plainly not text)
+    ("we must be . faithful", "we must be faithful"),
+    # [en] stray scan stop between words (plainly not text)
+    ("who only. did so", "who only did so"),
+    # [en] stray scan stop between words (plainly not text)
+    ("that which is . unlawful", "that which is unlawful"),
+    # [en] stray scan stop between words (plainly not text)
+    ("be the measure. of things", "be the measure of things"),
+    # [en] dropped word "of" (only reading)
+    ("what we do out inward principles", "what we do out of inward principles"),
+    # [en] dropped word "is" (only reading)
+    ("upon that which good, only", "upon that which is good, only"),
+    # [en] stray scan stop between words (plainly not text)
+    ("getteth all the holds. of the soul", "getteth all the holds of the soul"),
+    # [en] stray scan stop between words (plainly not text)
+    ("Christian. Not. that judgment", "Christian. Not that judgment"),
+    # [en] stray scan stop between words (plainly not text)
+    ("If grace is or was. best then", "If grace is or was best then"),
+    # [en] stray stop after the list comma (scan mark)
+    ("or mindlessness,. or unbelief", "or mindlessness, or unbelief"),
+    # [en] stray scan stop between words (plainly not text)
+    ("in whom they see any grace to. shine", "in whom they see any grace to shine"),
+    # [en] misprinted verse (5/0): "the kingdoms of this world are become the
+    # kingdoms of our Lord ... he shall reign for ever" is Rev 11:15
+    ("(Rev. xi. 10, and he", "(Rev. xi. 15, and he"),
+    # [en] transposed numerals: Eve's "The serpent beguiled me" is Gen 3:13
+    # (13:3 is Abram's journey)
+    ("fruitlessly, Gen. xiii. 3;", "fruitlessly, Gen. iii. 13;"),
+    # [en] stray scan stop between words (plainly not text)
+    ("than weight, the. undertaker", "than weight, the undertaker"),
+    # [en] stray scan stop between words (plainly not text)
+    ("come forth? all. which shows", "come forth? all which shows"),
+    # [en] OCR "8" for "3" (the list runs 1, 2, 3, 4) and "anda" for "and a"
+    ("; 8. A working anda mighty power", "; 3. A working and a mighty power"),
+    # [en] impossible verse (1 Cor 4 has 21): "man's judgment" (KJV margin
+    # "man's day") is 1 Cor 4:3
+    ("man’s day, 1 Cor. iv. 33,", "man’s day, 1 Cor. iv. 3,"),
+    # [en] impossible verse (2 Thess 2 has 17): "received not the love of the
+    # truth" is 2 Thess 2:10
+    ("truth in love, 2 Thess. ii. 20;", "truth in love, 2 Thess. ii. 10;"),
+    # [en] stray full stop opening the paragraph (scan mark)
+    ("</p><p>. Wheresoever Christ", "</p><p>Wheresoever Christ"),
+    # [en] stray scan stop between words (plainly not text)
+    ("Those that take. the most", "Those that take the most"),
+    # [en] stray scan stop between words (plainly not text)
+    ("to the judgment of. him after", "to the judgment of him after"),
+    # [en] stray scan stop between words (plainly not text)
+    ("a little while, and. we shall", "a little while, and we shall"),
+    # [en] misread numeral: "until I make thine enemies thy footstool" is Ps
+    # 110:1 (cx. 1); Ps 10:11 is "God hath forgotten"
+    ("his footstool, Psalm x. 11,", "his footstool, Psalm cx. 1,"),
+    # [en] digit dropped: "KING OF KINGS, AND LORD OF LORDS" is Rev 19:16
+    ("Lord of lords, Rev. xix. 1. God", "Lord of lords, Rev. xix. 16. God"),
+    # [en] stray scan stop between words (plainly not text)
+    ("present state of. the church", "present state of the church"),
+    # [en] misread numeral: "see the salvation of the LORD" is Exod 14:13 (4:13
+    # is "send by the hand of him whom thou wilt")
+    ("the Lord, Exod. iv. 13,", "the Lord, Exod. xiv. 13,"),
+    # [es] citation fix matching the English correction
+    ("Mateo 11:22", "Mateo 11:12"),
+    # [es] citation fix matching the English correction
+    ("1 Corintios 9:2,", "1 Corintios 9:22,"),
+    # [es] citation fix matching the English correction
+    ("(Proverbios 10:29)", "(Proverbios 10:26)"),
+    # [es] citation fix matching the English correction
+    ("(Zacarías 2:3)", "(Sofonías 2:3)"),
+    # [es] citation fix matching the English correction
+    ("1 Crónicas 29:13", "1 Crónicas 29:18"),
+    # [es] citation fix matching the English correction
+    ("Apocalipsis 11:10", "Apocalipsis 11:15"),
+    # [es] citation fix matching the English correction
+    ("Génesis 13:3", "Génesis 3:13"),
+    # [es] citation fix matching the English correction
+    ("1 Corintios 4:33", "1 Corintios 4:3"),
+    # [es] citation fix matching the English correction
+    ("2 Tesalonicenses 2:20", "2 Tesalonicenses 2:10"),
+    # [es] citation fix matching the English correction
+    ("Salmo 10:11", "Salmo 110:1"),
+    # [es] citation fix matching the English correction
+    ("Apocalipsis 19:1.", "Apocalipsis 19:16."),
+    # [es] citation fix matching the English correction
+    ("Éxodo 4:13", "Éxodo 14:13"),
+    # [am] citation fix matching the English correction
+    ("(ማቴዎስ 11:22)", "(ማቴዎስ 11:12)"),
+    # [am] citation fix matching the English correction
+    ("(1ኛ ቆሮንቶስ 9:2)", "(1ኛ ቆሮንቶስ 9:22)"),
+    # [am] citation fix matching the English correction
+    ("(ምሳሌ 10:29)", "(ምሳሌ 10:26)"),
+    # [am] citation fix matching the English correction
+    ("(ዘካርያስ 2:3)", "(ሶፎንያስ 2:3)"),
+    # [am] citation fix matching the English correction
+    ("(1ኛ ዜና መዋዕል 29:13)", "(1ኛ ዜና መዋዕል 29:18)"),
+    # [am] citation fix matching the English correction
+    ("(ራእይ 11:10)", "(ራእይ 11:15)"),
+    # [am] citation fix matching the English correction
+    ("(ዘፍጥረት 13:3)", "(ዘፍጥረት 3:13)"),
+    # [pt] citation fix matching the English correction
+    ("(Salmos 1:15)", "(Salmos 50:15)"),
+    # [pt] citation fix matching the English correction
+    ("(Salmos 1:21)", "(Salmos 50:21)"),
+    # [pt] citation fix matching the English correction
+    ("(Zacarias 2:3)", "(Sofonias 2:3)"),
+    # [pt] citation fix matching the English correction
+    ("(1 Crônicas 29:13)", "(1 Crônicas 29:18)"),
+    # [pt] citation fix matching the English correction
+    ("(Apocalipse 11:10)", "(Apocalipse 11:15)"),
+    # [pt] citation fix matching the English correction
+    ("(Gênesis 13:3)", "(Gênesis 3:13)"),
+    # [pt] citation fix matching the English correction
+    ("(1 Coríntios 4:33)", "(1 Coríntios 4:3)"),
+    # [pt] citation fix matching the English correction
+    ("(2 Tessalonicenses 2:20)", "(2 Tessalonicenses 2:10)"),
+    # [pt] citation fix matching the English correction
+    ("(Salmos 10:11)", "(Salmos 110:1)"),
+    # [pt] citation fix matching the English correction
+    ("(Apocalipse 19:1)", "(Apocalipse 19:16)"),
+    # [pt] citation fix matching the English correction
+    ("(Êxodo 4:13)", "(Êxodo 14:13)"),
 ])
 # The paragraph ended on a stop the OCR read as a comma.
 BODY_CORRECTIONS["evangelization-of-the-world"]["paragraph_breaks"] = [
