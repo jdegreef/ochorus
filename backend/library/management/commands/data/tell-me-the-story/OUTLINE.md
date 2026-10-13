@@ -161,3 +161,30 @@ Nativity-play traditions are not added: no donkey, stable, innkeeper or animals 
 ## Advent plan: Tell Me the Christmas Story
 
 `tell-me-the-christmas-story` in `plan_seed.py`: 25 nights, 1–25 December. Days 1–18 are Old Testament promise stories from Books 1–3 (creation, the snake's defeat, the rainbow, Abram's call, the stars, Sarah, Moriah, Jacob's stairway, Joseph, the burning bush, the Passover, the manna, the tabernacle, the bronze snake, Rahab, Boaz, David chosen in Bethlehem, Isaiah's promised child); days 19–25 are Book 4's stories 1–7, so that day 24 is the birth and day 25 the shepherds.
+## Book 5: Wonders and Stories
+
+The middle book of the Life of Jesus. An Introduction ("Who Is This?"), then twenty-one stories: miracles and parables, the Sermon on the Mount and the Lord's Prayer, ending with Lazarus, which leads into Book 6.
+
+1. Through the Roof (Mark 2:1–12)
+2. The Tax Collector Who Followed (Mark 2:13–17; Matthew 9:9–13)
+3. Blessed Are You (Matthew 5:1–17, 43–48)
+4. Look at the Birds (Matthew 6:5–15, 25–34) — the Lord's Prayer
+5. The Wise and Foolish Builders (Matthew 7:24–29)
+6. The Soldier's Great Faith (Luke 7:1–10; Matthew 8:5–13)
+7. The Widow's Only Son (Luke 7:11–17)
+8. The Storm on the Lake (Mark 4:35–41)
+9. The Farmer and the Seeds (Mark 4:1–20)
+10. Jairus's Little Girl (Mark 5:21–43)
+11. Five Loaves and Two Fish (John 6:1–14, 31–35)
+12. Walking on the Water (Matthew 14:22–33)
+13. The Good Samaritan (Luke 10:25–37)
+14. Mary and Martha (Luke 10:38–42)
+15. The Lost Sheep and the Lost Coin (Luke 15:1–10)
+16. The Son Who Came Home (Luke 15:11–32)
+17. The Ten Men Who Were Healed (Luke 17:11–19)
+18. Let the Children Come (Mark 10:13–16)
+19. Blind Bartimaeus (Mark 10:46–52)
+20. The Man in the Tree (Luke 19:1–10)
+21. Lazarus, Come Out! (John 11:1–45)
+
+"The promise kept" is used only four times: Hosea 6:6 (Matthew 9:13), the Law and Prophets fulfilled (Matthew 5:17), Isaiah 53:4 (Matthew 8:17), and the manna (John 6:31–35). Bartimaeus's "Son of David" is drawn out in the story itself. Not added: the roof's material (Luke has tiles), ropes, the Samaritan's donkey ("his own animal"); Zacchaeus "probably" cheated (his own words imply it).

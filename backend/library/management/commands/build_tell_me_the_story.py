@@ -313,6 +313,69 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
         ],
     },
+    5: {
+        "publication_year": 2026,
+        "title": "Tell Me the Story – Book 5: Wonders and Stories",
+        "subtitle": "The Life of Jesus: His Miracles and His Parables",
+        "cover_url": "/covers/tell-me-the-story-5.svg",
+        "cover_color": covers.ink_safe("#2e6a4f"),  # Galilee hills
+        "description": (
+            "Twenty-one Bible stories for children aged 6 to 10 of the wonders "
+            "Jesus did and the stories He told, each short enough to read aloud at "
+            "bedtime: the man let down through the roof, the storm stilled, "
+            "Jairus's daughter, five loaves and two fish, the good Samaritan, the "
+            "lost sheep and the lost son, Zacchaeus, and Lazarus raised. Every "
+            "story ends with a prayer and three questions to talk about together. "
+            "The fifth book of Tell Me the Story."
+        ),
+        "about_html": (
+            "<p>Tell Me the Story is an original Ochorus storybook Bible for "
+            "children aged 6 to 10, in eight books and three parts: Old "
+            "Testament Stories, The Life of Jesus, and New Testament Stories. "
+            "God is the hero of every story, and the whole Bible is one story "
+            "that leads to Jesus.</p>"
+            "<p>Book 5, “Wonders and Stories”, is the middle book of the Life of "
+            "Jesus. It tells twenty-one stories from the Gospels: miracles that "
+            "only God could do, from calming a storm to raising the dead, and the "
+            "parables Jesus told about seeds, builders, sheep, coins and a son who "
+            "came home, along with the Sermon on the Mount and the Lord’s Prayer. "
+            "It asks the question the crowds asked, “Who is this?”, and ends with "
+            "Lazarus, which leads into the last week of Jesus’ life. Where the "
+            "Gospels themselves say an Old Testament promise came true, a line "
+            "called “The promise kept” says so.</p>"
+            "<p>The stories stay close to what the Bible says, and the people in "
+            "them say what the Bible says they said, in simple words. Each takes "
+            "about four minutes to read aloud, and under each are three questions "
+            "to talk about together, with answers for the grown-up reading along. "
+            "The earlier books are not required.</p>"
+        ),
+        "qa": [
+            {
+                "question": "Which stories are in Book 5 of Tell Me the Story?",
+                "answer": "Twenty-one stories from the Gospels: the man through the roof, Matthew the tax collector, the Beatitudes, the Lord's Prayer and the birds, the wise and foolish builders, the centurion's servant, the widow's son at Nain, the storm on the lake, the farmer and the seeds, Jairus's daughter, the five loaves, walking on water, the good Samaritan, Mary and Martha, the lost sheep and coin, the lost son, the ten lepers, Jesus and the children, Bartimaeus, Zacchaeus and Lazarus.",
+            },
+            {
+                "question": "Does it include Jesus' parables as well as His miracles?",
+                "answer": "Yes. Alongside the miracles it tells the parables of the wise and foolish builders, the farmer and the seeds, the good Samaritan, the lost sheep, the lost coin and the lost son, each with what it teaches about God.",
+            },
+            {
+                "question": "Is the Lord's Prayer in it?",
+                "answer": "Yes, in the story \"Look at the Birds\", with a simple explanation of what its lines mean, alongside Jesus' words about not worrying.",
+            },
+            {
+                "question": "How are the stories about death told?",
+                "answer": "Gently and with hope. The widow's son, Jairus's daughter and Lazarus each show that Jesus is stronger than death, and the questions for the grown-up suggest talking gently with a child who has lost someone.",
+            },
+            {
+                "question": "Do I need to read the earlier books first?",
+                "answer": "No. Each book stands on its own. Book 5 begins with a short introduction, and children who have read Book 4 will know the disciples already.",
+            },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Every verse quoted with its reference is word for word from the Berean Standard Bible (BSB), which is in the public domain.",
+            },
+        ],
+    },
 }
 
 _QUESTION = re.compile(r"^- Q: (.+)$")
