@@ -3711,7 +3711,7 @@ RICHARD_ALLEN = [
     },
     {
         "slug": "richard-allen-79563ce8",
-        "text": "Our blessed Lord has not committed his goods to us as a dead stock, to be boarded up, or to lie unprofitably in our own hands.",
+        "text": "Our blessed Lord has not committed his goods to us as a dead stock, to be hoarded up, or to lie unprofitably in our own hands.",
         "chapter": ("life-experience-gospel-labours", 11),
         "paragraph": 17,
     },

@@ -5273,6 +5273,50 @@ BODY_CORRECTIONS.setdefault("evangelization-of-the-world", {}).setdefault("repla
     ('&gt;/ A disproportionately', 'A disproportionately'),
     ('[their] missionary/ policy', '[their] missionary policy'),
 ])
+
+# Found while translating to French (2026-10-13): OCR slips with one reading,
+# and ch07 "five hundred men" -> "five hired men" (the ledger pays the hire of
+# five men; the text later says "the five hired men"), fixed in en, es and am.
+BODY_CORRECTIONS.setdefault("life-experience-gospel-labours", {}).setdefault("replacements", []).extend([
+    # [en] OCR 'it' for 'if' (conditional: if two thirds agreed, it could be
+    # altered)
+    ("he told us it two thirds of the society", "he told us if two thirds of the society"),
+    # [en] transposed-letter typo 'Epispocal'
+    ("the said Methodist Epispocal Church", "the said Methodist Episcopal Church"),
+    # [en] OCR 'hundred' for 'hired': the ledger pays 'the hire of five men'
+    # and the text later says 'the five hired men' (1794 original reads 'five
+    # hired men')
+    ("assistance of five hundred men in the awful", "assistance of five hired men in the awful"),
+    # [en] OCR 'he' for 'be'
+    ("what was proper to he done", "what was proper to be done"),
+    # [en] OCR 'womon' for 'woman'
+    ("A white womon had", "A white woman had"),
+    # [en] OCR 'feet' for 'feel'
+    ("We feet a great satisfaction", "We feel a great satisfaction"),
+    # [en] OCR 'he' for 'be'
+    ("the innocent will he cleared", "the innocent will be cleared"),
+    # [en] typo 'thee' for 'the'
+    ("for thee satisfaction of the mayor", "for the satisfaction of the mayor"),
+    # [en] OCR 'roost' for 'most'
+    ("the power of the roost cruel master", "the power of the most cruel master"),
+    # [en] OCR 'boarded' for 'hoarded' (goods not to be hoarded as dead stock)
+    ("to be boarded up, or to lie", "to be hoarded up, or to lie"),
+    # [en] OCR 'aceording' for 'according'
+    ("assuredly reap aceording to my sowing", "assuredly reap according to my sowing"),
+    # [en] OCR 'go' for 'so'
+    ("be the object ever go undeserving", "be the object ever so undeserving"),
+    # [en] words run together: 'maybe' for 'may be'
+    ("Saviour's practice maybe added", "Saviour's practice may be added"),
+    # [en] Ps. 41:2 quoted verbatim alongside v.1; KJV reads 'preserve'
+    # (dropped 'p')
+    ("The Lord will reserve him and keep him alive", "The Lord will preserve him and keep him alive"),
+    # [es] matches EN fix 'five hundred men' -> 'five hired men' (cf. 'los
+    # cinco hombres contratados' later in the chapter)
+    ("ayuda de quinientos hombres en el terrible", "ayuda de cinco hombres contratados en el terrible"),
+    # [am] matches EN fix 'five hundred men' -> 'five hired men' (cf. 'የተቀጠሩትን
+    # አምስት ሰዎች' later in the chapter)
+    ("የአምስት መቶ ሰዎችን እርዳታ", "የአምስት ተቀጣሪ ሰዎችን እርዳታ"),
+])
 # The paragraph ended on a stop the OCR read as a comma.
 BODY_CORRECTIONS["evangelization-of-the-world"]["paragraph_breaks"] = [
     ('foreign mission service.', 'In 1898 the members'),
@@ -5606,6 +5650,8 @@ def strip_back_matter(body_html: str, seams: Sequence[tuple[str, str]]) -> str:
         if at:
             body_html = body_html[: at.start() + len(last)]
     return body_html
+
+
 
 
 def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
