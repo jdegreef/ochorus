@@ -53,6 +53,12 @@
 		"year": "1867–68",
 		"credit": "Martin Johnson Heade, “Point Judith, Rhode Island” (1867–68). The Cleveland Museum of Art, CC0."
 	},
+	"an-all-round-ministry": {
+		"artist": "Harry Thompson",
+		"title": "Landscape with Sheep, Picardy",
+		"year": "Late 19th century",
+		"credit": "Harry Thompson, “Landscape with Sheep, Picardy” (Late 19th century). The Art Institute of Chicago, CC0."
+	},
 	"answers-to-prayer": {
 		"artist": "Georg Flegel",
 		"title": "Still Life",
@@ -221,11 +227,35 @@
 		"year": "1891",
 		"credit": "George Inness, “Moonrise” (1891). The Art Institute of Chicago, CC0."
 	},
+	"john-ploughmans-pictures": {
+		"artist": "John Constable",
+		"title": "Landscape with Cottages",
+		"year": "1809–10",
+		"credit": "John Constable, “Landscape with Cottages” (1809–10). The Art Institute of Chicago, CC0."
+	},
+	"john-ploughmans-talk": {
+		"artist": "John Constable",
+		"title": "Stoke-by-Nayland",
+		"year": "1836",
+		"credit": "John Constable, “Stoke-by-Nayland” (1836). The Art Institute of Chicago, CC0."
+	},
 	"journal-of-an-expedition-up-the-niger": {
 		"artist": "Eugène Fromentin",
 		"title": "On the Nile",
 		"year": "1871",
 		"credit": "Eugène Fromentin, “On the Nile” (1871). The Art Institute of Chicago, CC0."
+	},
+	"lectures-to-my-students": {
+		"artist": "Camille Pissarro",
+		"title": "The Crystal Palace",
+		"year": "1871",
+		"credit": "Camille Pissarro, “The Crystal Palace” (1871). The Art Institute of Chicago, CC0."
+	},
+	"lectures-to-my-students-second-series": {
+		"artist": "Claude Monet",
+		"title": "Waterloo Bridge, Gray Weather",
+		"year": "1900",
+		"credit": "Claude Monet, “Waterloo Bridge, Gray Weather” (1900). The Art Institute of Chicago, CC0."
 	},
 	"letters-and-minor-works": {
 		"artist": "Camille Pissarro",
@@ -538,6 +568,18 @@
 		"title": "Interior of the Sint-Pieterskerk, 's-Hertogenbosch",
 		"year": "1632",
 		"credit": "Pieter Jansz. Saenredam, “Interior of the Sint-Pieterskerk, 's-Hertogenbosch” (1632). The Metropolitan Museum of Art, Open Access."
+	},
+	"the-saint-and-his-saviour": {
+		"artist": "Alfred Sisley",
+		"title": "A Turn in the Road",
+		"year": "1873",
+		"credit": "Alfred Sisley, “A Turn in the Road” (1873). The Art Institute of Chicago, CC0."
+	},
+	"the-soul-winner": {
+		"artist": "Léon Augustin Lhermitte",
+		"title": "The Harvesters",
+		"year": "1888–89",
+		"credit": "Léon Augustin Lhermitte, “The Harvesters” (1888–89). The Art Institute of Chicago, CC0."
 	},
 	"the-way-to-god": {
 		"artist": "Meyndert Hobbema",
