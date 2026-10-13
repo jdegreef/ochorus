@@ -1,0 +1,265 @@
+{
+ "kind": "book",
+ "slug": "david-livingstone-a-life-teens",
+ "language": "fr",
+ "note": [
+  "The English epigraphs quote the ASV; every French epigraph is the whole verse(s) verbatim from Louis Segond (1910) with only French typographic spacing, the “(ASV)” label dropped, and the attribution's Scripture line changed to Segond as in a-retrospect-teens.fr. Matthew 28:18-20 keeps the English ellipsis (« … ») between Segond's 28:19a and 28:20b and is logged as three mined pieces.",
+  "Segond numbering shifts: Psalm 46:1 is cited « Psaume 46:2 » and Psalm 34:18 « Psaume 34:19 »; reference rows keep English numbering. Segond spells « Habakuk ». In-body echoes adapted to the sentence (Psalm 46:1, Romans 8:18, Habakkuk 1:2 and 2:14, Matthew 6:10, John 12:24, 1 Timothy 5:8, Acts 8:39, Isaiah 35:8) are self_rendered.",
+  "Names and terms follow the French children's edition: « rattacheur » (piecer), Mosi-oa-Tunya « la fumée qui tonne », « Docteur Livingstone, je présume ? », lac Nyassa, setswana, Ma-Robert, the birthday prayer and the Westminster epitaph wording. Societies are given French names (Société missionnaire de Londres, Société royale de géographie, Mission des universités); Missionary Travels is « Voyages missionnaires (Missionary Travels) ». Narration is in passé simple with « tu » for the reader, as in a-retrospect-teens.fr.",
+  "Distances converted: eight miles → treize kilomètres; a hundred miles → cent cinquante kilomètres; two and a half thousand miles → environ quatre mille kilomètres; a thousand miles → environ mille six cents kilomètres. Livingstone's quoted words (Cambridge speech, last journal entry, “open sore of the world”, “word of a gentleman”) are plain French renderings of the English. Ch. 13 says he gave himself to Christ “at twenty and again at sixty” though ch. 12 dates the rededication to his fifty-ninth birthday; kept as the English's round figures. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Ecclesiastes 9:10",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ecclesiastes 9:10a",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 8
+  },
+  {
+   "reference": "Colossians 3:23",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Exodus 4:10",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 10:33-34",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 8
+  },
+  {
+   "reference": "Exodus 4:12a",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Timothy 4:17",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Timothy 4:17b",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 8:30-31",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 8:39",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 10
+  },
+  {
+   "reference": "Isaiah 35:1",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 35:8",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 10
+  },
+  {
+   "reference": "Psalm 46:1",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Timothy 5:8",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 5
+  },
+  {
+   "reference": "Psalm 46:1",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 8
+  },
+  {
+   "reference": "Psalm 15:4",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 15:4b",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 11,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 28:18",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 28:19a",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 13,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 8:18",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 8:18",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 6:24b",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 5,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 34:18",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 4:18",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 4,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 34:18",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 11
+  },
+  {
+   "reference": "Hebrews 11:8",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ephesians 6:4a",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 4,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hebrews 11:8b",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 12,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Habakkuk 1:2",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 4
+  },
+  {
+   "reference": "Habakkuk 1:2",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 5
+  },
+  {
+   "reference": "Habakkuk 2:14",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 5
+  },
+  {
+   "reference": "Habakkuk 1:2",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 11
+  },
+  {
+   "reference": "John 12:24",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 12:24",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 10
+  }
+ ]
+}
