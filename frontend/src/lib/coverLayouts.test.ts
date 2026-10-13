@@ -93,6 +93,21 @@ describe('coverLayoutFor', () => {
 		expect(coverLayoutFor(railed, 'cyrillic', 'a-railed-book')?.layout).toBe('rail');
 	});
 
+	it('gives an edition whose title carries an elision the title box, in its colour', () => {
+		// fr « Sur l’incarnation du Verbe » ran onto a third line over the byline,
+		// and « Vie d’Antoine » split its apostrophe from the D.
+		const railed = Object.keys(AUTHOR_LAYOUT).find((a) => AUTHOR_LAYOUT[a].layout === 'rail')!;
+		const box = { layout: 'box', hue: AUTHOR_LAYOUT[railed].hue };
+		expect(coverLayoutFor(railed, null, 'a-railed-book', 'Sur l’incarnation du Verbe')).toEqual(box);
+		expect(coverLayoutFor(railed, null, 'a-railed-book', 'Vie d’Antoine')).toEqual(box);
+		expect(coverLayoutFor(railed, null, 'a-railed-book', `Vie d'Antoine`)).toEqual(box);
+		// An English possessive is not an elision, and the rail keeps it.
+		const keep = ['Hudson Taylor’s Retrospect', 'On the Incarnation'];
+		for (const title of keep) {
+			expect(coverLayoutFor(railed, null, 'a-railed-book', title)?.layout).toBe('rail');
+		}
+	});
+
 	it('lets a series hold its books framed over their authors\' layouts', () => {
 		// Baxter's own layout is the paper box; his Key Teachings volume is framed.
 		expect(AUTHOR_LAYOUT['richard-baxter']).toBeTruthy();
