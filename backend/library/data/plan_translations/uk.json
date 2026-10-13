@@ -70,5 +70,14 @@
       "«Того, Хто тримає наше завтра» echoes the shipped uk title of the second source book, «Він тримає моє завтра» (he-holds-my-tomorrows.uk). Names follow the uk corpus: Ганна Віталл Сміт (her uk bio), Гарет Еванс (15× against Ґарет Еванс 2×).",
       "AI-drafted, awaiting native review. The row appears only once both source books exist in uk — the-god-of-all-comfort has none yet."
     ]
+  },
+  "grace-for-every-sinner": {
+    "title": "Шлях до Бога: благодать для кожного грішника",
+    "description": "Місяць із найдавнішою доброю новиною, яка тільки є. Лагідний заклик Річарда Бакстера до ненавернених, Д. Л. Муді — про шлях до Бога, і «Усе з благодаті» Чарлза Сперджена: найпростіші провідники в тому, як спасається грішник і як у цьому впевнитися.",
+    "note": [
+      "Job #1678. Spurgeon's book is «Усе з благодаті» and Baxter's «Заклик до ненавернених», as the uk bios already name them (charles-h-spurgeon.html/.faq.json, richard-baxter.faq.json); «до ненавернених» here echoes that title. Names follow the uk corpus: Бакстер (57×), Д. Л. Муді (17× against Моуді 5×), Чарлз Сперджен (his uk bio).",
+      "None of the three source books has a uk edition yet, so seed_plans will not create this row today. The prose ships ahead so the book that completes the set cannot publish an English-titled plan (#819). Whoever translates the-way-to-god into uk should title it «Шлях до Бога» to match this card, or adjust this entry in the same PR.",
+      "AI-drafted, awaiting native review."
+    ]
   }
 }
