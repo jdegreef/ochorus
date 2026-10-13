@@ -4029,14 +4029,33 @@
 			]
 		},
 		"at-the-masters-feet": {
-			"ground": "fa17689d5e35829e54247c65a4d041d37199a428494acdb84c58c163e70a73f5",
+			"ground": "a7392c62b15e86671437b504959000c0db0ce0b442d7a118bc65b9201c66254b",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.95,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[104, 102, 496, 131]
+				],
+				"title": [
+					[46, 327, 554, 403]
+				],
+				"subtitle": [
+					[108, 476, 492, 497],
+					[115, 497, 485, 518]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				276,
+				518
+			]
 		},
 		"brave-for-god": {
 			"ground": "20c53172ca517970f584b2547b408aa333f33525846b6322c9b60b031a52dd9e",
@@ -10450,14 +10469,33 @@
 			"bar": 0
 		},
 		"how-i-became-a-christian": {
-			"ground": "f4b79402b591857946602680c465a16b89996e5fe001830d86e4f24ede51ab59",
+			"ground": "2f3811737640e4bec22e0567f7aaff0fc1ea1dff6882e15aa970edef0912d497",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.8,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[142, 102, 458, 131]
+				],
+				"title": [
+					[115, 305, 485, 381],
+					[156, 370, 444, 446]
+				],
+				"subtitle": [
+					[197, 520, 403, 541]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				254,
+				541
+			]
 		},
 		"how-to-bring-men-to-christ": {
 			"ground": "90e959b8dbd59b93bef2f3766b1a9e33981a4f9fdb0357c6eba650a723470ae3",
@@ -12812,24 +12850,63 @@
 			]
 		},
 		"meditations-maria-w-stewart": {
-			"ground": "6b17ab45ca4c1cc3a2f3e4f4c01a95423dc6a590e2d97af59c138599958c490d",
+			"ground": "a8f2c080817e74ae9dd6419d49230dde7e064035b183be333584e3ad942c5c30",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.85,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[130, 102, 470, 131]
+				],
+				"title": [
+					[145, 327, 455, 403]
+				],
+				"subtitle": [
+					[50, 476, 550, 497],
+					[49, 497, 551, 518]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				276,
+				518
+			]
 		},
 		"memoirs-of-mrs-zilpha-elaw": {
-			"ground": "889c0671f664ae4283a6d81d8cb1f132a1d82fb8f58d46f26c21bb3331603b82",
+			"ground": "5477043e6c259ca8d307dc309f04550d5800c8bd5005d92bca233c70732a2920",
 			"style": "enlightenment",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.75,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[182, 102, 418, 131]
+				],
+				"title": [
+					[81, 275, 519, 338],
+					[145, 337, 455, 400]
+				],
+				"subtitle": [
+					[163, 463, 437, 491],
+					[135, 491, 465, 519]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				276,
+				519
+			]
 		},
 		"ministry-of-intercession": {
 			"ground": "c29b4e95738f0b032d0f2181c4a32596814abd3bee59c86d7d3f189401531b4f",
@@ -14606,14 +14683,33 @@
 			"bar": 0
 		},
 		"reality-and-religion": {
-			"ground": "a7a72f0eb6c870fa919f383874a04a31a6a514bba7ee8e61ff5ace81c8c6a325",
+			"ground": "ff1ae70f6e4acd87f96721e5215c35b70c161557c969101889f3dd7561f00b12",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.85,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[104, 102, 496, 131]
+				],
+				"title": [
+					[155, 305, 445, 381],
+					[191, 370, 409, 446]
+				],
+				"subtitle": [
+					[61, 520, 539, 541]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				254,
+				541
+			]
 		},
 		"reality-of-prayer": {
 			"ground": "3ff7e009de2d59ab5a76e18ec46a5100eaaf0141c4d00598d254897c97e0cca9",
@@ -18318,14 +18414,34 @@
 			]
 		},
 		"with-and-without-christ": {
-			"ground": "9601a1b72235d02fc50246b76a19fc4c399b08734e706898b085620c1d08ea1f",
+			"ground": "d324e4f159e72f4e3c6a4e19c07e8c87bb0e2f9198bbec5b5d965e5a606be063",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.9,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[104, 102, 496, 131]
+				],
+				"title": [
+					[182, 294, 418, 370],
+					[106, 360, 494, 436]
+				],
+				"subtitle": [
+					[76, 509, 524, 530],
+					[78, 530, 522, 551]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				244,
+				551
+			]
 		}
 	}
 }

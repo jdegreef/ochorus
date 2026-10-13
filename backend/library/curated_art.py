@@ -870,6 +870,54 @@ CURATED: dict[str, Artwork] = {
         "sea breaks in light along the rocks under a heavy sky — the deep the "
         "Spirit brooded over before the first day.",
     ),
+    # ── The diverse-voices books (2026-10-13) ───────────────────────────────
+    # Each to its own place, not one generic landscape: Sundar Singh's three
+    # in the India he walked (two of Bourne's Himalayan photographs and Lear's
+    # Hardwar), a Japanese ink landscape for Uchimura, Boston Common in
+    # Maria Stewart's century, and Duncanson again for Zilpha Elaw, beside
+    # Richard Allen, who already wears his work.
+    "at-the-masters-feet": Artwork(
+        "cma", 668066, "Samuel Bourne",
+        "The Upper Himmalayahs. View on the New Road between India and China. "
+        "Mt. Pangi with the Snowy Peaks of China in the Distance",
+        "1863 or 1866",
+        "The road out of the Simla hills toward Tibet, two travellers on it and "
+        "the snows beyond — the road Sundar Singh walked again and again, for a "
+        "book of what the Master told him in prayer.",
+        focus=0.2,
+    ),
+    "reality-and-religion": Artwork(
+        "cma", 668049, "Samuel Bourne",
+        "Shimla. The Yarrows and Neighboring Hills", "1863–70",
+        "Deodar forest on the Simla hills, where the preface is signed (Sabathu, "
+        "Simla Hills, 1923): meditations on God, man and nature, from that "
+        "nature.",
+    ),
+    "with-and-without-christ": Artwork(
+        "cma", 662050, "Edward Lear", "Hardwar, India", "1875",
+        "The pilgrim town on the Ganges where the book's sadhu lay on a bed of "
+        "spikes: lives with and without Christ, met on the road.",
+    ),
+    "how-i-became-a-christian": Artwork(
+        "cma", 139454, "Sōami", "Landscape", "early 1500s",
+        "Ink mountains over water, with no inscription to read over — the "
+        "fields and mountains the young Uchimura roamed \"to commune through "
+        "Nature with Nature's God\".",
+    ),
+    "meditations-maria-w-stewart": Artwork(
+        "aic", 44831, "Artist unknown", "Boston Common", "1850–63",
+        "Boston's common ground under Beacon Hill, the city where in 1832 she "
+        "became the first American woman known to speak to a mixed public "
+        "audience. (Lane's Boston harbour was already `first-epistle-of-clement`'s.)",
+        focus=0.75,
+    ),
+    "memoirs-of-mrs-zilpha-elaw": Artwork(
+        "cma", 125236, "Robert S. Duncanson", "View of Lake Pepin, Minnesota",
+        "1862",
+        "A wide calm water under a clearing sky, by the foremost Black American "
+        "landscape painter of her century, who also paints the ground of "
+        "Richard Allen's life — two Black Methodist preachers of one generation.",
+    ),
 }
 
 
