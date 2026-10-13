@@ -12,10 +12,14 @@
  * static site and the footer is on every page, so a runtime call would be one
  * more request per page for a text that never changes.
  *
- * A locale absent from the map (vi and ko — Take Root carries no Numbers for
- * either) shows no blessing at all. There is no English fallback: a Vietnamese
- * page closing on an English verse is the cross-language leak the library
- * refuses everywhere else. The licensed texts here (hi IRV, lg OLCB, am ULB)
+ * Two more touches for two Bibles: Take Root's Cadman sets the capital Đ as
+ * U+00D0 (Ð), so vi carries the Vietnamese letter that translation.fetch_chapter
+ * also repairs; and the 개역 verse 26 runs on into the Lord's instruction to
+ * Moses ("…원하노라 할지니라 하라"), which is trimmed like the speech marks.
+ *
+ * A locale absent from the map shows no blessing at all. There is no English
+ * fallback: a Vietnamese page closing on an English verse is the cross-language
+ * leak the library refuses everywhere else. The licensed texts here (hi IRV, lg OLCB, am ULB)
  * are already credited by the footer's Bible-credit line, which renders on
  * exactly those locales (bibleCredit.ts).
  */
@@ -111,6 +115,24 @@ export const BENEDICTION: Readonly<Record<string, Benediction>> = {
 			"Que l’Éternel te bénisse, et qu’il te garde!",
 			"Que l’Éternel fasse luire sa face sur toi, et qu’il t’accorde sa grâce!",
 			"Que l’Éternel tourne sa face vers toi, et qu’il te donne la paix!"
+		]
+	},
+	vi: {
+		bible: "vietnamese",
+		book: "Số Đếm Ký",
+		lines: [
+			"Cầu xin Đức Giê-hô-va ban phước cho ngươi và phù hộ ngươi!",
+			"Cầu xin Đức Giê-hô-va chiếu sáng mặt Ngài trên ngươi, và làm ơn cho ngươi!",
+			"Cầu xin Đức Giê-hô-va đoái xem ngươi và ban bình an cho ngươi!"
+		]
+	},
+	ko: {
+		bible: "korean",
+		book: "민수기",
+		lines: [
+			"여호와는 네게 복을 주시고 너를 지키시기를 원하며",
+			"여호와는 그 얼굴로 네게 비취사 은혜 베푸시기를 원하며",
+			"여호와는 그 얼굴을 네게로 향하여 드사 평강주시기를 원하노라"
 		]
 	},
 	am: {

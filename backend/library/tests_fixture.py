@@ -708,6 +708,27 @@ class SeedFieldCoverageTests(SimpleTestCase):
 
 
 
+class IcelandicEthTests(SimpleTestCase):
+    """No content may carry Ð (U+00D0), the Icelandic eth.
+
+    Take Root's Cadman sets the Vietnamese capital Đ (U+0110) as Ð. The two
+    look the same, but a verse quoted with Ð misses every search for Đức and
+    disagrees with the glossary. fetch_chapter repairs the API path; this
+    catches verses that arrive another way (mined by hand, copied by the model).
+    No supported language writes Ð.
+    """
+
+    def test_no_eth_in_content(self):
+        roots = [Path(__file__).parent / "fixtures", Path(__file__).parent / "data"]
+        bad = [
+            str(f.relative_to(Path(__file__).parent))
+            for root in roots
+            for f in sorted(root.rglob("*.json"))
+            if "\u00d0" in (t := f.read_text(encoding="utf-8")) or "\\u00d0" in t.lower()
+        ]
+        self.assertEqual(bad, [], "Ð (U+00D0) where Đ (U+0110) is meant")
+
+
 class CopyrightBlockedTests(SimpleTestCase):
     """No edition of a copyright-blocked work may be published, in any language.
 
