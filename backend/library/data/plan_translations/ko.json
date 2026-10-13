@@ -1,0 +1,10 @@
+{
+ "the-inner-chamber-month": {
+  "title": "골방에서 보내는 한 달",
+  "description": "기도와 말씀의 날마다의 습관을 세우십시오. 앤드류 머레이와 함께하는 서른여섯 번의 아침, 하루에 한 장씩.",
+  "note": [
+   "Korean's FIRST plan prose, shipping with the-inner-chamber.ko (queue job #5862), the sole source book of this launch plan; without it seed_plans would create the ko plan row with no prose, which PlanTranslationCoverageTests fails on.",
+   "The title opens with the shipped edition's own title (『골방』, from 마태복음 6:6 개역 '네 골방에 들어가'), so the plan card and the book on the shelf agree. 합니다체 imperative (세우십시오), the ko house register."
+  ]
+ }
+}
