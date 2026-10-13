@@ -11915,6 +11915,31 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"ko/godliness": {
+			"ground": "f09987508012b1227cb8fa702b8d971a55da5ba8a1d7a8485efb2f9f800b1dcd",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[134, 102, 466, 131]
+				],
+				"title": [
+					[243, 359, 357, 435]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				308,
+				487
+			]
+		},
 		"ko/the-inner-chamber": {
 			"ground": "c7de56895f8b293758df95f953d4a9baf38e7d8d46692e615ab0c57bc08f7c63",
 			"style": "devotional",
