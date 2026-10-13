@@ -348,6 +348,21 @@ class ScriptureFetchTests(TestCase):
             ko = fetch_chapter("korean", Ref("MAT", 3))
         self.assertEqual(ko["verses"][0]["text"], "그 때에 세례 요한이 이르러")
 
+    def test_korean_typos_are_repaired(self):
+        payload = {"verses": [
+            {"number": 12, "text": "운동력이 있어 죄우에 날선 어떤 검보다도"},
+            {"number": 22, "text": "나를 앙망하라 그리하며 구원을 얻으리라"},
+        ]}
+        with mock.patch(
+            "library.translation.requests.get",
+            side_effect=lambda *a, **k: self._resp(200, copy.deepcopy(payload)),
+        ):
+            ko = fetch_chapter("korean", Ref("HEB", 4))
+        self.assertEqual(
+            [v["text"] for v in ko["verses"]],
+            ["운동력이 있어 좌우에 날선 어떤 검보다도", "나를 앙망하라 그리하면 구원을 얻으리라"],
+        )
+
     def test_transient_failure_retries_then_raises_and_is_not_cached(self):
         import requests
 
