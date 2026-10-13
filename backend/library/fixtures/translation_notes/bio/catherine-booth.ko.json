@@ -1,0 +1,20 @@
+{
+ "kind": "bio",
+ "slug": "catherine-booth",
+ "language": "ko",
+ "job_issue": 5859,
+ "references": [
+  {
+   "reference": "2 Corinthians 6:14a",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "2 Corinthians 12:9a",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 26
+  }
+ ]
+}
