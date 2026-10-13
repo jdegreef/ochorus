@@ -370,10 +370,11 @@ SEED_LANGUAGES: dict[str, dict] = {
         #
         # `bible` is the Take Root code, verified 2026-10-13 (CHECK_BIBLE_CODES):
         # Take Root names this text "korean", NOT the ebible id kor, which it
-        # does not carry. Same 개역 wording as the ebible mirror
-        # (raw.githubusercontent.com/gracious-tech/fetch_collection, bibles/
-        # kor_old/usfm), which workers can also mine; the two differ only in
-        # word spacing and the odd comma.
+        # does not carry. It is the 개역 in a Baptist edition — 침례 for every
+        # 세례 — which translation.fetch_chapter restores. Otherwise it matches
+        # the ebible mirror (raw.githubusercontent.com/gracious-tech/
+        # fetch_collection, bibles/kor_old/usfm) up to later spelling
+        # (가까웠/가까왔) and the mirror's backtick quote marks.
         "bible": "korean",
         # The NAME of the text, not a description: the translation prompt says
         # "use the supplied {bible_label} wording", so this is what it quotes.

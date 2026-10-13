@@ -2629,8 +2629,10 @@ archaic spelling and period punctuation are the text, not defects in it.
   말씀이 계시니라, 내 안에 거하라), so quote it verbatim; do NOT reach for 개역개정
   (1998, the Korean Bible Society's, licensed) even where a model knows it better.
   URL: `bibles/kor_old/usfm/<code>.usfm`, plain `\v N text` lines. Take Root code
-  is `korean` (verified 10-13; `kor` does not exist there) — same 개역 wording as the
-  mirror, differing only in word spacing. Pin in every brief: 하나님 (never
+  is `korean` (verified 10-13; `kor` does not exist there). It is a BAPTIST edition:
+  침례 for every 세례 (침례 요한 too) — `fetch_chapter` restores 세례, and anything
+  mined by hand must say 세례. Otherwise it matches the mirror up to later spelling
+  (가까웠/가까왔) and the mirror's backtick quote marks, which a quote must not keep. Pin in every brief: 하나님 (never
   하느님), 예수 그리스도, 성령, 교회, 은혜; prose in 합니다체 for books and
   sermons; NEVER 당신 for "you" (omit the subject; 독자님 or 여러분 sparingly).
   Book titles in 『』. A runtime title or name followed by a particle has no

@@ -338,6 +338,16 @@ class ScriptureFetchTests(TestCase):
         self.assertEqual(vi["verses"][0]["text"], "Ngôi Lời là \u0110ức Chúa Trời.")
         self.assertIn("\u00d0", other["verses"][0]["text"])
 
+    def test_korean_baptist_edition_is_restored_to_sereh(self):
+        # Take Root's 개역 is a Baptist edition (침례); the 개역 reads 세례.
+        payload = {"verses": [{"number": 1, "text": "그 때에 침례 요한이 이르러"}]}
+        with mock.patch(
+            "library.translation.requests.get",
+            side_effect=lambda *a, **k: self._resp(200, copy.deepcopy(payload)),
+        ):
+            ko = fetch_chapter("korean", Ref("MAT", 3))
+        self.assertEqual(ko["verses"][0]["text"], "그 때에 세례 요한이 이르러")
+
     def test_transient_failure_retries_then_raises_and_is_not_cached(self):
         import requests
 

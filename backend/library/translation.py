@@ -116,26 +116,40 @@ _FETCH_ATTEMPTS = 3
 _FETCH_BACKOFF = (2, 5)  # seconds slept before the 2nd and 3rd attempts
 
 
-# Per-Bible character repairs, applied to every fetched chapter. Take Root's
-# Cadman ("vietnamese") sets the capital Đ as U+00D0 (Ð, the Icelandic eth): it
-# looks the same but is another letter, so a verse quoted verbatim would spell
-# Ðức Chúa Trời where the glossary, the UI and every reader's search spell
-# Đức Chúa Trời. Its lowercase đ is already right, and the ebible mirror of the
-# same text uses U+0110 throughout.
-_VERSE_REPAIRS = {"vietnamese": str.maketrans("\u00d0", "\u0110")}
+# Per-Bible text repairs, applied to every fetched chapter, where Take Root's
+# copy departs from the public-domain text the language is pinned to.
+#
+# * "vietnamese" (Cadman) sets the capital Đ as U+00D0 (Ð, the Icelandic eth):
+#   it looks the same but is another letter, so a verse quoted verbatim would
+#   spell Ðức Chúa Trời where the glossary, the UI and every reader's search
+#   spell Đức Chúa Trời. Its lowercase đ is already right.
+# * "korean" is the 개역 text in a Baptist edition: every 세례 (baptism) reads
+#   침례 (immersion), John the Baptist included (침례 요한). The 개역 itself,
+#   and the ebible mirror of it, say 세례 throughout, as most Korean
+#   Protestants read it; nothing else in that text uses 침례.
+_VERSE_REPAIRS: dict[str, tuple[tuple[str, str], ...]] = {
+    "vietnamese": (("\u00d0", "\u0110"),),
+    "korean": (("침례", "세례"),),
+}
 
 
 def _repair(bible: str, data: dict) -> dict:
     """Apply `_VERSE_REPAIRS` in place to a freshly parsed chapter."""
-    table = _VERSE_REPAIRS.get(bible)
-    if table is None:
+    pairs = _VERSE_REPAIRS.get(bible)
+    if not pairs:
         return data
+
+    def fix(text: str) -> str:
+        for old, new in pairs:
+            text = text.replace(old, new)
+        return text
+
     for field in ("book_name", "reference"):
         if isinstance(data.get(field), str):
-            data[field] = data[field].translate(table)
+            data[field] = fix(data[field])
     for v in data.get("verses") or []:
         if isinstance(v.get("text"), str):
-            v["text"] = v["text"].translate(table)
+            v["text"] = fix(v["text"])
     return data
 
 
