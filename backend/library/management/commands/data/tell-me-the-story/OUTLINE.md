@@ -188,3 +188,30 @@ The middle book of the Life of Jesus. An Introduction ("Who Is This?"), then twe
 21. Lazarus, Come Out! (John 11:1–45)
 
 "The promise kept" is used only four times: Hosea 6:6 (Matthew 9:13), the Law and Prophets fulfilled (Matthew 5:17), Isaiah 53:4 (Matthew 8:17), and the manna (John 6:31–35). Bartimaeus's "Son of David" is drawn out in the story itself. Not added: the roof's material (Luke has tiles), ropes, the Samaritan's donkey ("his own animal"); Zacchaeus "probably" cheated (his own words imply it).
+
+## Book 7: The Church Begins
+
+The first book of the New Testament Stories. An Introduction ("The Story Goes On"), then twenty stories from Acts 1–13, ending with Barnabas and Saul sent out from Antioch (Book 8). "The promise kept" continues: Joel 2 (Acts 2:16), Psalm 118:22 (Acts 4:11), Isaiah 53 (Acts 8:32–35), the prophets (Acts 10:43).
+
+1. Wind and Fire (Acts 2:1–13)
+2. Peter Speaks Up (Acts 2:14–41)
+3. Sharing Everything (Acts 2:42–47; 4:32–37)
+4. The Man at the Beautiful Gate (Acts 3:1–16)
+5. "We Cannot Stop Speaking" (Acts 4:1–31)
+6. Out Through the Prison Doors (Acts 5:12–42)
+7. Seven Helpers (Acts 6:1–7)
+8. Stephen Sees Jesus (Acts 6:8–15; 7:54–8:3)
+9. Good News in Samaria (Acts 8:1–17)
+10. Philip and the Man from Ethiopia (Acts 8:26–40)
+11. The Light on the Road (Acts 9:1–9)
+12. Brave Ananias (Acts 9:10–22)
+13. Down the Wall in a Basket (Acts 9:23–31)
+14. "Tabitha, Get Up!" (Acts 9:32–43)
+15. Peter's Strange Dream (Acts 10:1–23)
+16. Good News for Everyone (Acts 10:24–48; 11:1–18)
+17. They Called Them Christians (Acts 11:19–30)
+18. Peter in Prison (Acts 12:1–11, 24)
+19. Rhoda at the Gate (Acts 12:12–19)
+20. Sent Out (Acts 13:1–4)
+
+Left out on purpose: Ananias and Sapphira (Acts 5:1–11), too stark for this age band without more room than a four-minute story allows; it can come back in a teens retelling. Stephen's death and James's are told in a sentence or two, dwelling on Jesus standing to welcome Stephen and on his prayer of forgiveness. Not added: a fixed "ten days" before Pentecost; Persia (Acts 2:9 names Parthia and Media); which James in 12:17 ("probably" the Lord's brother). Callbacks: Pentecost reverses Babel (Book 1); "God meant it for good" (Joseph) for the scattering; "Talitha koum" for Dorcas.
