@@ -126,10 +126,18 @@ _FETCH_BACKOFF = (2, 5)  # seconds slept before the 2nd and 3rd attempts
 # * "korean" is the 개역 text in a Baptist edition: every 세례 (baptism) reads
 #   침례 (immersion), John the Baptist included (침례 요한). The 개역 itself,
 #   and the ebible mirror of it, say 세례 throughout, as most Korean
-#   Protestants read it; nothing else in that text uses 침례.
+#   Protestants read it; nothing else in that text uses 침례. Two typos of its
+#   own are repaired the same way, found by translators quoting the verses.
 _VERSE_REPAIRS: dict[str, tuple[tuple[str, str], ...]] = {
     "vietnamese": (("\u00d0", "\u0110"),),
-    "korean": (("침례", "세례"),),
+    "korean": (
+        ("침례", "세례"),
+        # Two of Take Root's own typos, each checked against the ebible mirror:
+        # Hebrews 4:12 (좌우에 날선) and Isaiah 45:22 (그리하면 구원을). Long
+        # enough to match nowhere else.
+        ("죄우에 날선", "좌우에 날선"),
+        ("앙망하라 그리하며 구원", "앙망하라 그리하면 구원"),
+    ),
 }
 
 
