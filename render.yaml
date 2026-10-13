@@ -406,291 +406,55 @@ services:
       # JavaScript still forwards readers to the slash form. Accepted 2026-09-30:
       # there is no Cloudflare zone for ochorus.com to hold the edge 301 in
       # docs/seo-edge-rules.md (DNS is at GoDaddy; Render's CDN isn't ours).
-      # Legacy WordPress URLs (ochorus.com was a WordPress site before this app
-      # took the domain). Book pages already share the app's /books/<slug>/ shape,
-      # but the two index pages moved — 301 the old paths so inbound links and
-      # search results don't 404. Both the trailing- and non-trailing-slash forms
-      # are listed because Render matches the source path exactly. These come
-      # first so they win before the SPA catch-all.
+      #
+      # KEEP THIS LIST SHORT. Render caps a static site at 200 redirect/rewrite
+      # rules, and a rule deleted here is NOT deleted from the service: the sync
+      # only adds and updates. Leftovers took ochorus-web to the cap, after which
+      # every Blueprint sync failed (2026-10, the /vi and /ko pages never got
+      # their rules). renderRoutes.test.ts holds this file to a small budget.
+      #
+      # One rule per path: Render's matcher is trailing-slash-insensitive, so
+      # `source: /home` also catches `/home/` (verified live: /about/ serves
+      # about.html, and there is no about/ directory).
+      #
+      # Old-site pages that still have inbound links. The WordPress media
+      # (/wp-content/…), retired biography articles and deleted books had their
+      # own 301s until 2026-10-13; Search Console showed no search traffic to any
+      # of them in the 28 days before, and robots.txt already blocks /wp-content/.
+      # They now get the not-found page, which has search and the library.
       - type: redirect
         source: /author-biographies
-        destination: /biographies
-      - type: redirect
-        source: /author-biographies/
         destination: /biographies
       - type: redirect
         source: /ochorus-books
         destination: /books
       - type: redirect
-        source: /ochorus-books/
-        destination: /books
-      # Two more of the old site's pages, found in Search Console on
-      # 2026-08-02: /about-us/ and /home are still RANKING — 10 and 6
-      # impressions in the first ten days, against 12 for the homepage — and
-      # both answer 200 with the 4 KB shell, so every one of those was a
-      # searcher landing on a blank page. /about-us/ also carries 179 of the
-      # internal links Google has on file for this domain.
-      - type: redirect
         source: /about-us
         destination: /about
       - type: redirect
-        source: /about-us/
-        destination: /about
-      - type: redirect
         source: /home
-        destination: /
-      - type: redirect
-        source: /home/
         destination: /
       # A reading plan that moved slug (migration 0172 reshaped its books and
       # renumbered its days; the new slug fences devices' old day numbers).
       - type: redirect
         source: /plans/the-key-teachings-four-teachers
         destination: /plans/key-teachings-four-teachers/
-      - type: redirect
-        source: /plans/the-key-teachings-four-teachers/
-        destination: /plans/key-teachings-four-teachers/
-      # Books that no longer exist. All are indexed and one is still being
-      # served in results (/books/a-king-in-a-manger-2/, 5 impressions), and
-      # like everything else with no file behind it they answer 200 with the
-      # shell. No title here is in the library or the sitemap, so there is no
-      # equivalent page to send them to — /books is the honest destination: a
-      # reader who searched the title lands on the shelf rather than nothing.
-      #
-      # how-to-manage-a-library was withdrawn (migration 0073), so its own PDF
-      # redirect below could no longer point at the book page and moves here
-      # too — the shelf is now the closest honest target for all three of its
-      # indexed URLs.
-      - type: redirect
-        source: /books/a-king-in-a-manger-2
-        destination: /books
-      - type: redirect
-        source: /books/a-king-in-a-manger-2/
-        destination: /books
-      - type: redirect
-        source: /books/grace-for-grace-2
-        destination: /books
-      - type: redirect
-        source: /books/grace-for-grace-2/
-        destination: /books
-      - type: redirect
-        source: /books/how-to-manage-a-library
-        destination: /books
-      - type: redirect
-        source: /books/how-to-manage-a-library/
-        destination: /books
-      - type: redirect
-        source: /wp-content/uploads/2025/12/A-Guide-on-How-to-Manage-a-Library-final.-1.pdf
-        destination: /books
-      # --- Book PDFs moved to Supabase Storage (2026-09-29) --------------
-      # Generated PDFs used to ship as /pdfs/<file>; they now live in the
-      # book-pdfs bucket (library/export_policy.PDF_STORAGE_URL), rebuilt by
-      # .github/workflows/book-pdfs.yml. One wildcard keeps every link shared
-      # before the move working (it was 39 per-file rules, and the Blueprint
-      # sync that carried them failed). Render serves a file that exists before
-      # any rule, so what still sits in frontend/static/pdfs (the WordPress-era
-      # soar-like-the-eagle.pdf, SOURCES.md) is untouched; everything else
-      # under /pdfs/ goes to the bucket.
+      # Book PDFs moved to Supabase Storage (2026-09-29). One wildcard keeps every
+      # link shared before the move working. Render serves a file that exists
+      # before any rule, so what still sits in frontend/static/pdfs is untouched.
       - type: redirect
         source: /pdfs/*
         destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/*
-      # --- Retired WordPress media -------------------------------------
-      # The old site hotlinked book PDFs and covers from /wp-content/uploads/.
-      # Those files are gone, but the URLs are still in search results and in
-      # links people saved — and because of the /* -> /200.html catch-all at
-      # the bottom they answer 200 with the app shell, which reads to a crawler
-      # as a soft 404 rather than an honest move. Sources are recorded in
-      # frontend/static/pdfs/SOURCES.md and in the rehost commit (#416).
-      #
-      # PDFs -> the book itself (26). The book page is the equivalent
-      # content — the whole work, readable — which is what a 301 target should be.
-      - type: redirect
-        source: /wp-content/uploads/2026/02/Baptism-with-the-Holy-Spirit-1.pdf
-        destination: /books/baptism-with-the-holy-spirit/
-      - type: redirect
-        source: /wp-content/uploads/2026/06/CLOTHED-WITH-STRENGTH-AND-DIGNITY-BY-OCHORUS-MINISTRIES.pdf
-        destination: /books/clothed-with-strength-and-dignity/
-      - type: redirect
-        source: /wp-content/uploads/2025/08/FEASTING-AT-THE-TABLE.pdf
-        destination: /books/feasting-at-the-table/
-      - type: redirect
-        source: /wp-content/uploads/2026/07/GODLINESS-MRS.-CATHERINE-BOOTH.pdf
-        destination: /books/godliness/
-      - type: redirect
-        source: /wp-content/uploads/2025/08/He-Holds-me-Tomorrows-Gareth-Evans-1.pdf
-        destination: /books/he-holds-my-tomorrows/
-      - type: redirect
-        source: /wp-content/uploads/2025/08/Humility-Andrew-Murray-2.pdf
-        destination: /books/humility-2/
-      - type: redirect
-        source: /wp-content/uploads/2025/08/Jesus-Himself-Andrew-Murray-2.pdf
-        destination: /books/jesus-himself-2/
-      - type: redirect
-        source: /wp-content/uploads/2026/06/Lord-Teach-Us-to-Pray-Andrew-Murray.pdf
-        destination: /books/lord-teach-us-to-pray-2/
-      - type: redirect
-        source: /wp-content/uploads/2026/06/MEN-AND-WOMEN-WHO-GAVE-EVERYTHING-BY-OCHORUS-MINISTRIES.pdf
-        destination: /books/men-and-women-who-gave-everything-2/
-      - type: redirect
-        source: /wp-content/uploads/2026/06/MEN-OF-PRAYER-BY-OCHORUS.pdf
-        destination: /books/men-of-prayer-2/
-      - type: redirect
-        source: /wp-content/uploads/2026/06/MEN-WHO-MOVED-HEAVEN-BY-OCHORUS-MINISTRIES.pdf
-        destination: /books/men-who-moved-heaven/
-      - type: redirect
-        source: /wp-content/uploads/2026/06/MEN-WHO-TENDED-THE-FLOCK-BY-OCHORUS-MINISTRIES.pdf
-        destination: /books/men-who-tended-the-flock-2/
-      - type: redirect
-        source: /wp-content/uploads/2025/08/PRAYER-THE-PULSE-OF-LIFE.pdf
-        destination: /books/prayer-the-pulse-of-life/
-      - type: redirect
-        source: /wp-content/uploads/2026/03/Purity-of-Heart-by-William-Booth.pdf
-        destination: /books/purity-of-heart/
-      - type: redirect
-        source: /wp-content/uploads/2026/06/Rise-Up-Men-of-God-by-Ochorus.pdf
-        destination: /books/rise-up-men-of-god-2/
-      - type: redirect
-        source: /wp-content/uploads/2025/08/Stepping-Stones-Gareth-Evans-1.pdf
-        destination: /books/stepping-stones-2/
-      - type: redirect
-        source: /wp-content/uploads/2026/03/TALKS-TO-THE-FARMER-CHARLES-SPURGEON.pdf
-        destination: /books/talks-to-the-farmer/
-      - type: redirect
-        source: /wp-content/uploads/2025/08/The-Christians-secret-of-a-happy-life.pdf
-        destination: /books/the-christians-secret-of-a-happy-life-4/
-      - type: redirect
-        source: /wp-content/uploads/2026/04/God-of-All-Comfort-by-Hannah-Whitall-Smith.pdf
-        destination: /books/the-god-of-all-comfort/
-      - type: redirect
-        source: /wp-content/uploads/2025/08/The-Inner-Chamber.pdf
-        destination: /books/the-inner-chamber/
-      - type: redirect
-        source: /wp-content/uploads/2025/08/The-Key-in-my-Hand-Gareth-Evans-1.pdf
-        destination: /books/the-key-in-my-hand/
-      - type: redirect
-        source: /wp-content/uploads/2025/08/THE-MASTERS-INDWELLING-ANDREW-MURRAY.pdf
-        destination: /books/the-masters-indwelling/
-      - type: redirect
-        source: /wp-content/uploads/2025/09/The-Person-and-Work-of-the-Holy-Spirit-BB.pdf
-        destination: /books/the-person-and-work-of-the-holy-spirit/
-      - type: redirect
-        source: /wp-content/uploads/2025/08/The-secret-of-guidance-by-Frederick-Brotherton-Meyer-2.pdf
-        destination: /books/the-secret-of-guidance/
-      - type: redirect
-        source: /wp-content/uploads/2026/06/The-Unselfishness-of-God-by-Hannah-Whitall-Smith.pdf
-        destination: /books/the-unselfishness-of-god/
-      - type: redirect
-        source: /wp-content/uploads/2026/06/WOMEN-WHO-MOVED-HEAVEN-BY-OCHORUS-MINISTRIES.pdf
-        destination: /books/women-who-moved-heaven-2/
-      # Not redirected, deliberately: these books are not published, so a 301
-      # would land on the not-found page — worse than the shell it replaced.
-      # Add a rule here when the book goes live:
-      #   /wp-content/uploads/2025/08/Grace-For-Grace-By-Watchman-Nee-1.pdf -> /books/grace-for-grace-2/
-      #   /wp-content/uploads/2026/02/IF-Amy-Carmichael.pdf -> /books/if/
-      #   /wp-content/uploads/2025/08/Let-Us-Pray-WATCHMAN-NEE-1.pdf -> /books/let-us-pray-2/
-      #   /wp-content/uploads/2025/08/The-Body-of-Christ-Watchman-Nee.pdf -> /books/the-body-of-christ-a-reality/
-      #   /wp-content/uploads/2026/01/The-Body-of-Christ-teen-version-compilied.pdf -> /books/the-body-of-christ-teens/
-      #   /wp-content/uploads/2025/08/The-Normal-Christian-Life-Watchman-Nee-2.pdf -> /books/the-normal-christian-life/
-      # Covers -> the re-hosted image (6). Same resource, new home, so
-      # these go to the file rather than to a page: an image URL that 301s to
-      # HTML is a soft 404 for image search.
-      - type: redirect
-        source: /wp-content/uploads/2025/08/Grace-for-Grace-FB-Cover.jpg
-        destination: /covers/grace-for-grace-2.svg
-      - type: redirect
-        source: /wp-content/uploads/2026/02/Artboard-1-copy-11-100.jpg
-        destination: /covers/if.svg
-      - type: redirect
-        source: /wp-content/uploads/2025/08/66544dc564f9bec5388fc9f4_Screenshot-2024-05-27-120849-1.png
-        destination: /covers/let-us-pray-2.svg
-      - type: redirect
-        source: /wp-content/uploads/2025/08/Body-of-Christ.jpg
-        destination: /covers/the-body-of-christ-a-reality.svg
-      - type: redirect
-        source: /wp-content/uploads/2026/01/small-library-copy-3100.png
-        destination: /covers/the-body-of-christ-teens.svg
-      # ABOVE the rule, never inside it. `renderRoutes.test.ts` reads this file
-      # positionally — `- type:` on one line, `source:` on the next,
-      # `destination:` on the one after — and silently SKIPS any rule whose
-      # three lines are interrupted. This comment sat between `source:` and
-      # `destination:`, which quietly excluded this very rule from the
-      # existence check it was written to describe.
-      #
-      # What it says: a retired cover's redirect follows the COVER, not the
-      # filename. This one was repointed when the book was given a painting and
-      # its generated plate deleted.
-      - type: redirect
-        source: /wp-content/uploads/2025/08/Normal-Christian-Life.jpg
-        destination: /covers/art/the-normal-christian-life.jpg
-      # Retired biography ARTICLES (migrations 0118/0119). Biographies live
-      # only in the biography section now, so each retired /articles/<slug>
-      # 301s to that person's author page — the equivalent, fuller content.
-      # Both slash forms are listed, matching the WordPress-redirect block above;
-      # these come before the SPA catch-all. Guarded by renderRoutes.test.ts.
-      - type: redirect
-        source: /articles/george-mueller-and-the-god-who-answers-prayer
-        destination: /authors/george-muller/
-      - type: redirect
-        source: /articles/george-mueller-and-the-god-who-answers-prayer/
-        destination: /authors/george-muller/
-      - type: redirect
-        source: /articles/charles-spurgeon-the-prince-of-preachers
-        destination: /authors/charles-h-spurgeon/
-      - type: redirect
-        source: /articles/charles-spurgeon-the-prince-of-preachers/
-        destination: /authors/charles-h-spurgeon/
-      - type: redirect
-        source: /articles/john-newton-from-slave-trader-to-amazing-grace
-        destination: /authors/john-newton/
-      - type: redirect
-        source: /articles/john-newton-from-slave-trader-to-amazing-grace/
-        destination: /authors/john-newton/
-      - type: redirect
-        source: /articles/william-carey-father-of-modern-missions
-        destination: /authors/william-carey/
-      - type: redirect
-        source: /articles/william-carey-father-of-modern-missions/
-        destination: /authors/william-carey/
-      - type: redirect
-        source: /articles/corrie-ten-boom-forgiveness-in-the-darkness
-        destination: /authors/corrie-ten-boom/
-      - type: redirect
-        source: /articles/corrie-ten-boom-forgiveness-in-the-darkness/
-        destination: /authors/corrie-ten-boom/
-      - type: redirect
-        source: /articles/hudson-taylor-trusting-god-for-the-impossible
-        destination: /authors/hudson-taylor/
-      - type: redirect
-        source: /articles/hudson-taylor-trusting-god-for-the-impossible/
-        destination: /authors/hudson-taylor/
-      - type: redirect
-        source: /articles/amy-carmichael-and-the-cost-of-love
-        destination: /authors/amy-carmichael/
-      - type: redirect
-        source: /articles/amy-carmichael-and-the-cost-of-love/
-        destination: /authors/amy-carmichael/
-      - type: redirect
-        source: /articles/samuel-crowther-from-captive-to-bishop
-        destination: /authors/samuel-ajayi-crowther/
-      - type: redirect
-        source: /articles/samuel-crowther-from-captive-to-bishop/
-        destination: /authors/samuel-ajayi-crowther/
       # The "Contemporary" era (undated writers) was folded into the modern
       # era. Localized /<lang>/ forms are redirected by the era page's load.
       - type: redirect
         source: /biographies/era/contemporary
-        destination: /biographies/era/modern/
-      - type: redirect
-        source: /biographies/era/contemporary/
         destination: /biographies/era/modern/
       # Ochorus Originals is the house imprint, not a person: its books moved
       # from an author page to their own shelf. Localized /<lang>/authors/
       # ochorus-originals/ URLs are redirected by the page's own load.
       - type: redirect
         source: /authors/ochorus-originals
-        destination: /originals/
-      - type: redirect
-        source: /authors/ochorus-originals/
         destination: /originals/
       # NO no-slash -> slash 301 here, deliberately. Render's route matcher is
       # trailing-slash-INSENSITIVE: a rule with `source: /about` also serves
@@ -756,10 +520,8 @@ services:
         source: /email/preferences/*
         destination: /200.html
       # Every other UI locale: ONE `:lang` placeholder rule per route, never a
-      # copy per locale. The copies took this service to 255 rules and Render
-      # stopped applying them: every Blueprint sync from #4512 on failed on
-      # "Update web service ochorus-web routes" (166 rules synced, 204 did not;
-      # Render documents no limit). Keep the total well under 166.
+      # copy per locale. The copies once took this service to 255 rules, past
+      # Render's cap of 200, and every Blueprint sync failed until they went.
       - type: rewrite
         source: /:lang/admin
         destination: /200.html
