@@ -1007,6 +1007,18 @@ class Original(NamedTuple):
 
 # slug -> the ground we drew. Slugs match Book.slug (shared across languages).
 ORIGINAL_GROUND: dict[str, Original] = {
+    # The Lamplighters of Gloamhaven, Book 1 (young readers, 9–12). Emberwick
+    # at gloaming under the cursed coin of a sun: the cold Great Beacon, the
+    # Ring of lamps along the wall with most of them failing, chimney smoke —
+    # and low on the left, Wren on a roof ridge with the brass lamp on her
+    # knee, her ribbon red in its light. The sky's upper two-thirds stays deep
+    # slate for the white title; the subject sits wholly below the title band.
+    "fire-against-the-dark": Original(
+        "0cc3bf1039be408899b3ca04b1d41e64c10cea87940ea4ba33000c4e1c51e021",
+        "The book's own image: one small warm light in a grey city, carried by "
+        "a child. Drawn as SVG and rendered with Chrome (level-up-cover's "
+        "vector recipe); the lamp's glow keeps clear of the subtitle and mark.",
+    ),
     # Brave for God 1–4 (young readers). A mid-century travel poster, one per
     # volume: flat sun-ray skies, a big pale sun, and a young traveller with a
     # scarf facing a new part of the wide world. Chosen 2026-09-29 from ten

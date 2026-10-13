@@ -305,6 +305,16 @@ prerendered pages reference it.
   mid-tone, bright elements above the title or below the lowest subtitle, clear of
   the mark box.
 
+- **`tune_art_scrim` re-tunes OTHER books whose ground has drifted.** It re-measures
+  every `covers/art/*.jpg`, so a book whose committed value no longer matches its
+  measurement changes too (seen 2026-10-13: `he-holds-my-tomorrows` 0.70→0.65), and the
+  next `og:covers` redraws all its per-language twins and manifest rows. Not your
+  change — scope it out: restore its lines in `art_scrim.py`/`coverScrim.ts` to main's
+  value, `git checkout origin/main -- frontend/static/covers/og-manifest.json <its
+  twins>`, re-run PLAIN `npm run og:covers`, and check that
+  `git diff --unified=0 -- …art_scrim.py …coverScrim.ts …og-manifest.json` names only
+  your slug.
+
 ## Original illustrated grounds (Ochorus Originals — kids/teens) — SHIPPED tier
 
 PD-painting sourcing (steps 1–2 above) does NOT apply to **Ochorus Originals**
@@ -334,7 +344,9 @@ NOT put it in `CURATED` — that would make the museum-provenance table lie
 `ORIGINAL_GROUND` with its `shasum -a 256` → delete plate svgs
 (`find covers -regex '.*/<slug>\.svg' -delete`, incl `lg/ sw/`) → `build_cover_assets.py`
 (repoints EVERY lang row + webp) → `npm run og:covers` → `tune_art_scrim.py` →
-`npm run og:covers` again (redraws the cards whose scrim moved). Same
+`npm run og:covers` again (redraws the cards whose scrim moved) → `npm run covers:bars`
+(an Original ground is a NEW ground too — `groundBars.test.ts` fails CI without it, and
+only the FULL vitest run catches it; fire-against-the-dark #6060). Same
 tail as steps 2–3. `growing-in-wisdom` + teen flagships are next, same tier, no new
 machinery.
 
@@ -462,6 +474,9 @@ Remaining (pre-Batch-19 note): the Puritan/English devotional group
 (Owen, Sibbes, Law, Edwards, Meyer, Guyon, Bounds straggler). Carmichael's
 `if` and all four Watchman-Nee titles are `is_published:false` — skip. Cyprian was
 on `feature/cyprian-treatises` — check first.
+Originals (vector recipe, ORIGINAL_GROUND): Brave for God 1–4 #2877, growing-in-wisdom
+#2905, fire-against-the-dark #6060 (2026-10-13 — novel cover; subject + lamp glow kept
+bottom-LEFT, outside the centred subtitle/mark text, so no band fails; 0.30× floor).
 
 **REVERSING A "deliberately absent" book** (Susanna Wesley, #2891): a book can be
 documented in the `curated_art.py` docstring AND guarded by a test as

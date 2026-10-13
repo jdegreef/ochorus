@@ -53,6 +53,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'ever-increasing-faith': 0.70,
 	'feasting-at-the-table': 0.70,
 	'finney-memoirs': 0.60,
+	'fire-against-the-dark': 0.30,
 	'first-epistle-of-clement': 0.75,
 	'foxes-book-of-martyrs': 0.30,
 	'george-muller-of-bristol': 0.30,

@@ -7335,14 +7335,34 @@
 			]
 		},
 		"fire-against-the-dark": {
-			"ground": "a4c2c68f992eb6e2db096af6267687504c759b37083c1bdf6193e4b7e367e70c",
+			"ground": "3cbc03c11ba786aa74cfd145fdf2433ba00931e752d7a9db183e5d8246e55eea",
 			"style": "young",
 			"volume": "1",
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[292, 257, 308, 301],
+					[148, 332, 452, 407],
+					[189, 393, 411, 468]
+				],
+				"subtitle": [
+					[70, 522, 530, 550]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				245,
+				550
+			]
 		},
 		"first-epistle-of-clement": {
 			"ground": "137cdb7e6283d0991777a24feef91bed0afaf15652c2248870f789f239e635b4",
