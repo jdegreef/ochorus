@@ -242,6 +242,13 @@ CURATED: dict[str, Artwork] = {
         "church between the cross and the return. Light coming from behind the "
         "headland, not yet arrived.",
     ),
+    "come-ye-children": Artwork(
+        "aic", 896, "Constant Troyon", "The Road to Market", "1858–59",
+        "Spurgeon's book for parents and teachers is Christ's \"Feed My lambs\": "
+        "a family with their children on the road, the flock walking with them "
+        "into the light. A figure scene, but a homely one, and the lambs are "
+        "the subject.",
+    ),
     "the-way-to-god": Artwork(
         "met", 436652, "Meyndert Hobbema", "Entrance to a Village", "ca. 1665",
         "A road ARRIVING somewhere, deliberately paired with the Hobbema on "
@@ -395,6 +402,12 @@ CURATED: dict[str, Artwork] = {
         "own century. It replaced the Achenbach, which `till-he-come` had worn "
         "first — the one painting the library ever gave two books.",
         focus=0.45,
+    ),
+    "spurgeon-on-the-holy-spirit": Artwork(
+        "aic", 47582, "Style of John Constable", "Hampstead, Stormy Sky", "1814",
+        "The wind that bloweth where it listeth, driving cloud over Hampstead with "
+        "light breaking through — the companion to `spurgeon-on-prayer`'s Turner, "
+        "an English sky above Spurgeon's own London.",
     ),
     # Spurgeon's paired devotionals, one painter's morning and evening, so the
     # two read as a pair on the shelf. Both late Inness, both whole in the band.
@@ -994,6 +1007,18 @@ class Original(NamedTuple):
 
 # slug -> the ground we drew. Slugs match Book.slug (shared across languages).
 ORIGINAL_GROUND: dict[str, Original] = {
+    # The Lamplighters of Gloamhaven, Book 1 (young readers, 9–12). Emberwick
+    # at gloaming under the cursed coin of a sun: the cold Great Beacon, the
+    # Ring of lamps along the wall with most of them failing, chimney smoke —
+    # and low on the left, Wren on a roof ridge with the brass lamp on her
+    # knee, her ribbon red in its light. The sky's upper two-thirds stays deep
+    # slate for the white title; the subject sits wholly below the title band.
+    "fire-against-the-dark": Original(
+        "0cc3bf1039be408899b3ca04b1d41e64c10cea87940ea4ba33000c4e1c51e021",
+        "The book's own image: one small warm light in a grey city, carried by "
+        "a child. Drawn as SVG and rendered with Chrome (level-up-cover's "
+        "vector recipe); the lamp's glow keeps clear of the subtitle and mark.",
+    ),
     # Brave for God 1–4 (young readers). A mid-century travel poster, one per
     # volume: flat sun-ray skies, a big pale sun, and a young traveller with a
     # scarf facing a new part of the wide world. Chosen 2026-09-29 from ten
@@ -1590,6 +1615,81 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "A bare tree in winter snow at first light: the sight that turned "
         "Brother Lawrence to God at eighteen, knowing the leaves and fruit "
         "would come.",
+    ),
+    # The retold classics for teens (2026-10-13): the object family the Portraits
+    # teen editions started — one true thing from the book, low on a deep ground.
+    "absolute-surrender-teens": Original(
+        "5657232f7f844d9d52f3d1abea81e32ed3e7799e3cf4cdc50d185a84cf160b63",
+        "A ring of old keys, every one on it: the king who answers \"I am "
+        "thine, and all that I have\", which Murray makes the whole book.",
+    ),
+    "foxes-book-of-martyrs-teens": Original(
+        "dd85c106b94fa461e7802de0e1a101c3d8c9b7cee589fb64eb15fc31f9220a8b",
+        "One candle burning in the dark: Latimer at the stake, \"we shall "
+        "this day light such a candle\".",
+    ),
+    "how-to-succeed-in-the-christian-life-teens": Original(
+        "66b996df8a026f21465393e6ba3728c57b156318e718604a9e9322ab311ae10b",
+        "A lantern on the first of a line of stepping stones, lighting only "
+        "the next: Torrey's student who knew what to do tomorrow, and was "
+        "told that was enough.",
+    ),
+    "life-and-diary-of-david-brainerd-teens": Original(
+        "9de17ba15d8613a6ba2285445fe57b99acaca160a9e3ba823c050fff27d96a23",
+        "An open journal with a quill laid across it: the diary kept alone "
+        "in the forests of the Delaware.",
+    ),
+    "life-of-antony-teens": Original(
+        "7bbd54778bcb3691c8389075b33f9c540436ec4dab27c9981cc4713c07852133",
+        "Gold scattered on a desert road and one set of footprints walking "
+        "straight past it: Antony passing it by \"as though he were going "
+        "over fire\".",
+    ),
+    "mortification-of-sin-teens": Original(
+        "baa7641cbfaf474ad017246a46f5695f01bb1886fb274066cf1ec4be296ba45f",
+        "A weed pulled up with every root showing: Owen's \"be killing sin, "
+        "or it will be killing you\", root and all.",
+    ),
+    "orthodoxy-teens": Original(
+        "6d15989d4fcb01892f3eae056b2da89b2a8b94470ccae977d2d285f124123d07",
+        "A single daisy under the stars: the God who makes every daisy "
+        "separately and says \"Do it again\".",
+    ),
+    "pensees-teens": Original(
+        "5a6e96f7522def2bcdc85300b22733fd08135cb03fcd4b06643718273220b487",
+        "A coin spinning in the air above the table: Pascal's wager, before "
+        "it lands.",
+    ),
+    "the-bruised-reed-teens": Original(
+        "9625d29df1816444693bb85e9436b04ec55711459c4f75cc3dbd3c6a3026c47a",
+        "Reeds at the water's edge at dusk, one bent over but not broken: "
+        "\"a bruised reed shall he not break\".",
+    ),
+    "the-imitation-of-christ-teens": Original(
+        "c8ad92923fd3c9b5b8613f6482743a7370ee86343017cb8449b0b18bf3f21606",
+        "A monk's cell door, shut, with warm light under it: \"when thou "
+        "hast shut thy door, pray\", the cell Thomas keeps coming back to.",
+    ),
+    "the-practice-of-the-presence-of-god-teens": Original(
+        "dd1acf1e7b1b03016f5114da40eb61a533b55b11d339668946732ae3516713fa",
+        "A pot over a small fire, its steam rising straight up: God found "
+        "among the pots and pans of the monastery kitchen.",
+    ),
+    "the-pursuit-of-god-teens": Original(
+        "a6c71ec036da36c42c441cf9d41fa3531be3f0e415839e1be1e9115903fd7db8",
+        "A red curtain torn from top to bottom with light pouring through: "
+        "Tozer's chapter on the veil removed.",
+    ),
+    "the-secret-of-guidance-teens": Original(
+        "62ae80c207f5f9558dc302d36f4cbf31a80aa153a1c62ffe88365b139a5c54d2",
+        "Railway lines running toward a town's lights on a dark horizon: "
+        "Meyer's circumstances lining up like lights multiplying as a night "
+        "train nears a town.",
+    ),
+    "the-way-to-god-teens": Original(
+        "5b8d723cf94e348f68419047ad6fa54cb89a771588f19b9491b19bd030d00a56",
+        "A road at night to a cottage with one lit window, a small figure "
+        "walking home: \"turn round, like the prodigal son, and come home\".",
     ),
 }
 

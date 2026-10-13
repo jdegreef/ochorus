@@ -22,11 +22,10 @@ GENERATED PDFs no longer live here. Every exportable edition's PDF is built by
 before the move keep working. `soar-like-the-eagle.pdf` is the one surviving
 WordPress file, kept only so inbound links to it keep working.
 
-The original URLs below are not dead ends: `render.yaml` 301s each one to its book
-page, so an inbound link or a search result lands on the work itself rather than on
-the app shell. Six are omitted there because their book is unpublished — a redirect
-into the not-found page would be worse than none — and are listed in a comment
-beside the rules, to be added when those books go live.
+The original URLs below had 301s to their book pages in `render.yaml` until
+2026-10-13. With no search traffic left and `robots.txt` blocking `/wp-content/`,
+they were retired to keep the service under Render's 200-rule cap; they now get
+the not-found page. The table stays as the record of where each file came from.
 
 | Target file (add here) | Original WordPress source |
 |---|---|

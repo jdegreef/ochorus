@@ -2613,8 +2613,10 @@ archaic spelling and period punctuation are the text, not defects in it.
 - **Vietnamese (vi) Bible is `vie_kt` — Cadman's *Kinh Thánh* (1925), PD — in the
   ebible mirror, and vi is PROTESTANT register throughout** (locale added 2026-10-09,
   no content yet). URL: `bibles/vie_kt/usfm/<code>.usfm`; plain `\v N text` lines
-  (no `\w` Strong's markup in the verses checked). Its Take Root code `vie1934` is
-  UNVERIFIED (see `language_seed.py`), so mine the mirror. Pin in every brief:
+  (no `\w` Strong's markup in the verses checked). Its Take Root code is
+  `vietnamese` (verified 10-13; `vie1934` does not exist there), and Take Root sets the
+  capital Đ as U+00D0 Ð — `fetch_chapter` repairs it, but anything mined by hand must
+  carry U+0110. Mirror and Take Root differ only by edition variants (nhơn/nhân). Pin in every brief:
   Đức Chúa Trời (never Thiên Chúa), Đức Thánh Linh (never Chúa Thánh Thần), Chúa
   Giê-xu, Đấng Christ, Hội Thánh, ân điển, thuộc linh (never tâm linh); reader
   address **bạn**. Cadman reads archaic (ngươi, chẳng, luống nhưng): quoted verses
@@ -2627,7 +2629,10 @@ archaic spelling and period punctuation are the text, not defects in it.
   말씀이 계시니라, 내 안에 거하라), so quote it verbatim; do NOT reach for 개역개정
   (1998, the Korean Bible Society's, licensed) even where a model knows it better.
   URL: `bibles/kor_old/usfm/<code>.usfm`, plain `\v N text` lines. Take Root code
-  `kor` is UNVERIFIED (see `language_seed.py`). Pin in every brief: 하나님 (never
+  is `korean` (verified 10-13; `kor` does not exist there). It is a BAPTIST edition:
+  침례 for every 세례 (침례 요한 too) — `fetch_chapter` restores 세례, and anything
+  mined by hand must say 세례. Otherwise it matches the mirror up to later spelling
+  (가까웠/가까왔) and the mirror's backtick quote marks, which a quote must not keep. Pin in every brief: 하나님 (never
   하느님), 예수 그리스도, 성령, 교회, 은혜; prose in 합니다체 for books and
   sermons; NEVER 당신 for "you" (omit the subject; 독자님 or 여러분 sparingly).
   Book titles in 『』. A runtime title or name followed by a particle has no
@@ -2637,6 +2642,20 @@ archaic spelling and period punctuation are the text, not defects in it.
   and record the first batch's spread here. Korean cover twins and share cards
   need Noto Serif KR inlined; `generate-home-og.mjs` shows how (numbered
   slices, filtered to the text drawn).
+- **The first ko BIO set the Korean bio conventions — follow them for the other nine**
+  (job #5849, a-b-simpson, 2026-10-13). Measured against `ko.json`, not invented:
+  narrative and answers in **합니다체**; FAQ questions in the UI's polite
+  **~인가요? / ~나요?**; Jesus as **예수님** in prose, **주 예수님** for "the Lord
+  Jesus", **예수 그리스도** in formal titles; Fourfold Gospel = **사중복음** (구주,
+  성결케 하시는 분, 치유자, 다시 오실 왕 — the term Korean holiness churches
+  already use); C&MA = **기독교선교연맹(C&MA)** (write `C&amp;MA` in HTML);
+  book and periodical titles in **『』** inside the source's `<em>`, hymn titles in
+  **「」**; curly “ ” for quotations. Band, n=1: **bio 0.803, FAQ 0.782** of the
+  English (`library.text.word_count`). Months and street numbers come out as digits
+  in Korean (12월, 13번가), so the per-block digit check gains numbers but must
+  never lose one. Scripture: quote 개역 with **세례, never 침례** (Take Root's copy
+  is the Baptist edition — see the ko Bible entry above); 침례 is still right in
+  prose for the denomination (침례교).
 - **es BOOKS are no longer all « » — measure the same AUTHOR's shipped es books
   before briefing** (job #4800, 2026-10-05). The #515 entry above says all 13
   shipped es books convert to « »; at 59 es books that no longer holds. Simpson's
@@ -2666,3 +2685,20 @@ archaic spelling and period punctuation are the text, not defects in it.
   every file of `/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/` into it
   plus `chrome-headless-shell -> …/headless_shell`, then
   `PLAYWRIGHT_BROWSERS_PATH=$S npm run og:covers`. It rendered the twin correctly.
+- **An empty queue is not full coverage. Diff the English corpus against the language
+  before saying "done"** (fr, 2026-10-10). Every fr job had shipped, yet 5 of the 135 English
+  articles had no `.fr.json`, because their jobs were never filed. The admin language page
+  files jobs on demand, so anything added after its last button-press has no issue. A
+  one-line set difference finds them: `.en.json` slugs minus `.<lang>.json` slugs in each
+  content dir. Translate them like jobs, with no issue to close. Also: the scratchpad is wiped
+  between sessions, so re-fetch the Bible mirror and recreate the brief, rather than
+  assuming last session's `lsg_verses.json` is still there.
+- **During a GitHub Actions outage, the `test-and-build` aggregator FAILS when a
+  gate job was merely cancelled** (2026-10-05, #5261–#5271). Its log reads
+  `backend-tests did not pass (result: abandoned)` — not a test failure. Before
+  calling a PR red, check which job failed: if every non-aggregator job is
+  success/cancelled/skipped with no failed STEP, it is infra — wait for
+  githubstatus.com Actions = operational, then `gh run rerun <id> --failed`.
+  Never merge past it; a watcher that re-runs then merges only on all-green +
+  `mergeStateStatus == CLEAN` cleared five queued batch PRs safely.
+

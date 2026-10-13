@@ -16,6 +16,20 @@
 {
  "model": "library.series",
  "fields": {
+  "slug": "tell-me-the-story",
+  "title": "Tell Me the Story",
+  "description": "The Bible’s own stories retold for children, in three parts: Old Testament Stories, The Life of Jesus and New Testament Stories. Each story is short enough to read aloud at bedtime and ends with a prayer and questions to talk about together.",
+  "sort_order": 15,
+  "audience": "young_readers",
+  "min_age": 6,
+  "max_age": 10,
+  "created_at": "2026-10-10T00:00:00Z",
+  "updated_at": "2026-10-10T00:00:00Z"
+ }
+},
+{
+ "model": "library.series",
+ "fields": {
   "slug": "brave-for-god",
   "title": "Brave for God",
   "description": "True stories of faith for young readers: ordinary people from every part of the world who trusted God and were made brave.",
@@ -25,6 +39,20 @@
   "max_age": 12,
   "created_at": "2026-09-23T00:00:00Z",
   "updated_at": "2026-09-23T00:00:00Z"
+ }
+},
+{
+ "model": "library.series",
+ "fields": {
+  "slug": "the-lamplighters-of-gloamhaven",
+  "title": "The Lamplighters of Gloamhaven",
+  "description": "An adventure series for young readers, set in a land under a cursed sun. Two children, a lamp that cannot be bought or stolen, and the long road to the mountain where the Flame began: a story of light, courage and the grace no one can earn.",
+  "sort_order": 22,
+  "audience": "young_readers",
+  "min_age": 9,
+  "max_age": 12,
+  "created_at": "2026-10-10T00:00:00Z",
+  "updated_at": "2026-10-10T00:00:00Z"
  }
 },
 {
@@ -151,6 +179,34 @@
   "max_age": 17,
   "created_at": "2026-10-07T00:00:00Z",
   "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.series",
+ "fields": {
+  "slug": "john-ploughman",
+  "title": "John Ploughman",
+  "description": "Spurgeon's two books of homely proverbs and plain advice in the voice of John Ploughman, a Surrey farm labourer: the Talk (1869) and its sequel, the Pictures (1880).",
+  "sort_order": 120,
+  "audience": "adults",
+  "min_age": null,
+  "max_age": null,
+  "created_at": "2026-10-10T00:00:00Z",
+  "updated_at": "2026-10-10T00:00:00Z"
+ }
+},
+{
+ "model": "library.series",
+ "fields": {
+  "slug": "lectures-to-my-students",
+  "title": "Lectures to My Students",
+  "description": "Charles Spurgeon's lectures to the students of his Pastors' College — counsel on the preacher's life, prayer, sermons and delivery, given week by week at the Metropolitan Tabernacle and published in series from 1875.",
+  "sort_order": 130,
+  "audience": "adults",
+  "min_age": null,
+  "max_age": null,
+  "created_at": "2026-10-10T00:00:00Z",
+  "updated_at": "2026-10-10T00:00:00Z"
  }
 },
 {
@@ -502,6 +558,19 @@
   "description": "De courts guides fidèles, écrits par Ochorus, au cœur de l’enseignement d’un auteur classique — chaque chapitre s’achève par des questions et une prière, et renvoie le lecteur aux livres de l’auteur lui-même.",
   "created_at": "2026-10-09T00:00:00Z",
   "updated_at": "2026-10-09T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "es",
+  "title": "Las enseñanzas clave",
+  "description": "Guías breves y fieles de Ochorus al corazón de la enseñanza de un autor clásico: cada capítulo termina con preguntas y una oración, y remite al lector a los propios libros del autor.",
+  "created_at": "2026-10-10T00:00:00Z",
+  "updated_at": "2026-10-10T00:00:00Z"
  }
 }
 ]

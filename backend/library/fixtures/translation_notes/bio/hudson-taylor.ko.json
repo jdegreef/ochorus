@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "hudson-taylor",
+ "language": "ko",
+ "job_issue": 5855,
+ "references": [
+  {
+   "reference": "John 19:30b",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 1
+  }
+ ]
+}

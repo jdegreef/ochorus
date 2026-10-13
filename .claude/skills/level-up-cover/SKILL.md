@@ -117,7 +117,13 @@ its entry; change the entry's artwork or `focus` and the next run redraws it
 (`library/art_sources.py` records each painting's recipe, and a gate fails a
 painting whose entry moved without one). `--recrop` redraws regardless. It refuses a slug not in
 `CURATED`. If it reports twins redrawn **outside** your works, their inputs
-really changed — look before committing. Needs `frontend/node_modules` and Node
+really changed — look before committing. If step 4 **refuses** because it would
+repoint another work's rows, do NOT hand-revert or commit them: the generator
+and that work's fixture disagree, so settle which is wrong in its own PR
+(`CoverAssetPlanTests` should already be failing on main — the `en-modern`
+rows of `humility-2`/`the-inner-chamber` were this, 2026-10-10: the generator
+read "English" as `language == "en"`; `covers.wears_designed_english` is the
+one rule now). Needs `frontend/node_modules` and Node
 22 on PATH. **Run `npm ci` in the worktree — don't symlink the shared checkout's
 `node_modules`**: it lags `main`'s deps and `og:covers` dies `ENOENT … @fontsource/…`
 (Batch 17, 2026-09-27).
@@ -256,7 +262,8 @@ prerendered pages reference it.
   sessions' frontend PRs also undeployed). Not your PR. It self-heals as the queue
   clears, else Render dashboard → ochorus-web → Deploy latest commit (user-only).
 - **E · per-language plates** *(automated: `paint_covers` deletes every `<slug>.svg`
-  in every dir, and `build_cover_assets` repoints every edition row)* — a translated
+  in every dir, and `build_cover_assets --works` repoints every edition row of
+  these works — and refuses if another work's row would move)* — a translated
   plate book has `covers/<lang>/<slug>.svg` too, and each must go. The **plate
   files are the authoritative edition list** — a quick fixture-language scope can
   under-report (an `enchiridion.es` edition surfaced only via `es/enchiridion.svg`),
@@ -298,6 +305,16 @@ prerendered pages reference it.
   mid-tone, bright elements above the title or below the lowest subtitle, clear of
   the mark box.
 
+- **`tune_art_scrim` re-tunes OTHER books whose ground has drifted.** It re-measures
+  every `covers/art/*.jpg`, so a book whose committed value no longer matches its
+  measurement changes too (seen 2026-10-13: `he-holds-my-tomorrows` 0.70→0.65), and the
+  next `og:covers` redraws all its per-language twins and manifest rows. Not your
+  change — scope it out: restore its lines in `art_scrim.py`/`coverScrim.ts` to main's
+  value, `git checkout origin/main -- frontend/static/covers/og-manifest.json <its
+  twins>`, re-run PLAIN `npm run og:covers`, and check that
+  `git diff --unified=0 -- …art_scrim.py …coverScrim.ts …og-manifest.json` names only
+  your slug.
+
 ## Original illustrated grounds (Ochorus Originals — kids/teens) — SHIPPED tier
 
 PD-painting sourcing (steps 1–2 above) does NOT apply to **Ochorus Originals**
@@ -327,7 +344,9 @@ NOT put it in `CURATED` — that would make the museum-provenance table lie
 `ORIGINAL_GROUND` with its `shasum -a 256` → delete plate svgs
 (`find covers -regex '.*/<slug>\.svg' -delete`, incl `lg/ sw/`) → `build_cover_assets.py`
 (repoints EVERY lang row + webp) → `npm run og:covers` → `tune_art_scrim.py` →
-`npm run og:covers` again (redraws the cards whose scrim moved). Same
+`npm run og:covers` again (redraws the cards whose scrim moved) → `npm run covers:bars`
+(an Original ground is a NEW ground too — `groundBars.test.ts` fails CI without it, and
+only the FULL vitest run catches it; fire-against-the-dark #6060). Same
 tail as steps 2–3. `growing-in-wisdom` + teen flagships are next, same tier, no new
 machinery.
 
@@ -390,7 +409,15 @@ Chrome, downscale with Pillow:
   --window-size=600,800 --screenshot=out@2x.png "file://$PWD/ground.html"
 python3 -c "from PIL import Image; Image.open('out@2x.png').convert('RGB').resize((600,800),Image.LANCZOS).save('ground.jpg',quality=90)"
 ```
-No cairosvg/rsvg/inkscape on this machine; Pillow + Chrome are present. Chrome CLI
+No cairosvg/rsvg/inkscape on this machine; Pillow + Chrome are present.
+Headless Chrome can exit NON-ZERO after writing the screenshot ("Teardown watchdog
+expired", ~10 s per call) — check that the png exists rather than the return code.
+**Take each concept from the edition's OWN text, not the adult book's.** The teen
+retellings (2026-10-13) drop famous images: grep the teen fixture for the image
+before drawing it (four of fourteen first concepts — Kempis's "little book",
+Meyer's harbour lights, Antony's baskets, a running track for Torrey — were not in
+the teen text and were redrawn from what is: the shut cell door, lights as a night
+train nears a town, the gold in the road, a lantern on the next stepping stone). Chrome CLI
 `--screenshot` is fine on a STATIC local file (the memory-noted hang is Vite-HMR-only).
 For a numbered series, hold hero/trail/frame/type CONSTANT and drive each book from a
 `palette` dict + ONE horizon-backdrop SVG string (Brave for God: dawn hills → sea+boat
@@ -455,6 +482,9 @@ Remaining (pre-Batch-19 note): the Puritan/English devotional group
 (Owen, Sibbes, Law, Edwards, Meyer, Guyon, Bounds straggler). Carmichael's
 `if` and all four Watchman-Nee titles are `is_published:false` — skip. Cyprian was
 on `feature/cyprian-treatises` — check first.
+Originals (vector recipe, ORIGINAL_GROUND): Brave for God 1–4 #2877, growing-in-wisdom
+#2905, fire-against-the-dark #6060 (2026-10-13 — novel cover; subject + lamp glow kept
+bottom-LEFT, outside the centred subtitle/mark text, so no band fails; 0.30× floor).
 
 **REVERSING A "deliberately absent" book** (Susanna Wesley, #2891): a book can be
 documented in the `curated_art.py` docstring AND guarded by a test as

@@ -1,0 +1,1094 @@
+# Tell Me the Story – Book 3: Kings and Prophets
+
+*Old Testament Stories from Samuel to Nehemiah, for children aged 6 to 10*
+
+Scripture quotations are from the Berean Standard Bible (BSB), public domain.
+
+---
+
+## Introduction: Waiting for the King
+
+> "He will reign on the throne of David and over his kingdom." — Isaiah 9:7
+
+At the end of the last book, God's people were living in the land He had promised them. But they kept forgetting God, and they kept getting into trouble.
+
+In this book, God's people ask for a king, and God gives them kings. Some of them, like David, love God with all their hearts. Some of them, like Saul, start well and end badly. And many of them lead the people far away from God.
+
+So God sends prophets. A prophet is someone God speaks through. You will meet Samuel, who heard God call his name in the night, and Elijah, who saw fire fall from heaven, and Jonah, who ran away from God and ended up inside a fish. The prophets warned the people to turn back to God. And they made wonderful promises, too, about a King who was still to come.
+
+You will also meet some of the bravest people in the whole Bible: a shepherd boy facing a giant, three friends who wouldn't bow down to a statue, Daniel in a den of lions, and a young queen called Esther who risked her life to save her people.
+
+All through this book, God's people are waiting. They are waiting for the King God promised to David, the King who would rule for ever. When you get to the end of this book, keep watching. That King is coming.
+
+*Dear God, thank you that you never give up on your people. As we read about these kings and prophets, help us to love you with all our hearts. Amen.*
+
+### Talk about it together
+
+- Q: What is a prophet?
+  A: Someone God speaks through, to give His messages to His people.
+- Q: Who are some of the people you will meet in this book?
+  A: Samuel, David and Goliath, Elijah, Jonah, Daniel and his friends, Queen Esther, and others.
+- Q: The people in this book are waiting for a King God promised. Who do you think that King is?
+  A: Jesus. He was born into King David's family, and He is the King who will rule for ever.
+
+## Hannah's Prayer
+
+> "I prayed for this boy, and since the LORD has granted me what I asked of Him, I now dedicate the boy to the LORD." — 1 Samuel 1:27–28
+
+There was once a woman called Hannah, who longed and longed for a baby. Her husband, Elkanah, loved her very much. But he had another wife too, called Peninnah, who had children. And Peninnah teased Hannah and made fun of her, year after year, because Hannah had no children.
+
+Every year the family went to Shiloh, where the tabernacle was, to worship God. And every year Peninnah upset Hannah so much that she cried and wouldn't eat.
+
+"Hannah, why are you crying?" Elkanah would say. "Why won't you eat? Don't I mean more to you than ten sons?"
+
+One year, after they had eaten, Hannah got up and went to the house of the Lord. She was so sad. She cried and cried, and she prayed to God.
+
+"O Lord," she prayed, "please look at how unhappy I am, and remember me. If you will give me a son, I will give him back to you for all his life."
+
+Hannah prayed silently. Her lips were moving, but no sound came out. An old priest called Eli was sitting nearby, and he watched her. He thought she must be drunk!
+
+"How long are you going to be drunk?" Eli said to her.
+
+"No, my lord," said Hannah. "I'm not drunk. I am very sad, and I have been pouring out my heart to the Lord."
+
+Then Eli said, "Go in peace. May the God of Israel give you what you have asked Him for."
+
+Hannah went away, and she ate, and she wasn't sad any more.
+
+And God remembered Hannah. She had a baby boy! She named him Samuel, which sounds like the Hebrew words for "heard by God", because she said, "I asked the Lord for him."
+
+Hannah didn't forget her promise. When Samuel was old enough to eat ordinary food, she took him to Shiloh, to the house of the Lord, and brought him to Eli.
+
+"Do you remember me?" she said. "I am the woman who stood here praying. I prayed for this boy, and the Lord has given me what I asked for. So now I give him to the Lord. For his whole life he will belong to the Lord."
+
+So little Samuel stayed with Eli, to serve God in the tabernacle.
+
+Then Hannah prayed again. But this time it was a happy prayer, a song. "My heart rejoices in the Lord!" she sang. "There is no one holy like the Lord. There is no one besides You. There is no Rock like our God."
+
+Every year, Hannah made Samuel a little robe and took it to him when she came to Shiloh. And God gave Hannah three more sons and two daughters.
+
+**Read it in your Bible:** 1 Samuel 1:1–2:11; 2:18–21
+
+*Dear God, thank you that I can pour out my heart to you when I am sad. Thank you that you hear me, even when I pray without making a sound. Amen.*
+
+### Talk about it together
+
+- Q: Why was Hannah so sad?
+  A: Because she longed for a baby and didn't have one, and Peninnah teased her about it year after year.
+- Q: What did Hannah promise God, and did she keep her promise?
+  A: She promised that if God gave her a son, she would give him back to serve God all his life. She kept her promise and took Samuel to live with Eli at the tabernacle.
+- Q: Hannah told God exactly how she felt. Is there something that makes you sad that you could tell God about?
+  A: Let your child share if they want to, and pray about it together. God wants us to pour out our hearts to Him, just as Hannah did.
+
+## "Speak, Lord"
+
+> "Speak, for Your servant is listening." — 1 Samuel 3:10
+
+The boy Samuel grew up in the house of the Lord, helping the old priest Eli. In those days, God didn't speak to people very often.
+
+Eli was very old now, and his eyes were so weak that he could hardly see. One night Eli was lying down in his usual place. Samuel was lying down in the tabernacle, near the ark of God. The lamp of God was still burning.
+
+Then the Lord called, "Samuel!"
+
+"Here I am," said Samuel. And he jumped up and ran to Eli. "Here I am. You called me."
+
+"I didn't call you," said Eli. "Go back and lie down."
+
+So Samuel went back and lay down.
+
+Again the Lord called, "Samuel!"
+
+Samuel got up again and went to Eli. "Here I am. You called me."
+
+"My son, I didn't call you," said Eli. "Go back and lie down."
+
+Samuel didn't know the Lord yet. God had never spoken to him before.
+
+A third time the Lord called, "Samuel!" And again Samuel got up and went to Eli. "Here I am. You called me."
+
+Then Eli understood. It was the Lord who was calling the boy! So Eli said to Samuel, "Go and lie down. If He calls you again, say, 'Speak, Lord, for your servant is listening.'"
+
+So Samuel went and lay down in his place.
+
+Then the Lord came and stood there, and called as before, "Samuel! Samuel!"
+
+And Samuel said, "Speak, for your servant is listening."
+
+God gave Samuel a message. It was a hard message, about Eli's family. Eli's sons were priests, but they were wicked, and they treated God's offerings with contempt. Eli knew about it, but he hadn't stopped them. So God was going to punish Eli's family.
+
+Samuel lay awake until morning. Then he got up and opened the doors of the house of the Lord. He was afraid to tell Eli what God had said.
+
+But Eli called him. "Samuel, my son. What did the Lord say to you? Don't hide it from me."
+
+So Samuel told him everything, and didn't hide anything.
+
+"He is the Lord," said Eli. "Let Him do what He thinks is best."
+
+Samuel grew up, and the Lord was with him. Everything God said through Samuel came true. All the people of Israel, from one end of the land to the other, knew that Samuel was a true prophet of the Lord.
+
+**Read it in your Bible:** 1 Samuel 3
+
+*Dear God, please help me to listen to you, like Samuel did. Speak, Lord, for your servant is listening. Amen.*
+
+### Talk about it together
+
+- Q: Who did Samuel think was calling him?
+  A: He thought it was Eli, so he ran to Eli three times.
+- Q: What did Eli tell Samuel to say?
+  A: "Speak, Lord, for your servant is listening."
+- Q: How does God speak to us today?
+  A: Mostly through the Bible, which is God's Word. When we read it, or hear it read, we can pray Samuel's prayer: "Speak, Lord, for your servant is listening."
+
+## The Shepherd Boy Chosen
+
+> "For man sees the outward appearance, but the LORD sees the heart." — 1 Samuel 16:7
+
+When Samuel was old, the people of Israel came to him. "We want a king," they said, "like all the other nations have." Samuel was upset, because God was already their King. But God told Samuel to give them what they asked for.
+
+So Samuel anointed a man called Saul to be the first king of Israel. Saul was tall and handsome, a head taller than everyone else. But Saul didn't obey God. Again and again he did what he wanted instead of what God said. So God said that Saul's family would not go on being kings.
+
+Then God said to Samuel, "Fill your horn with oil and go to Bethlehem, to a man called Jesse. I have chosen one of his sons to be king."
+
+So Samuel went to Bethlehem. He invited Jesse and his sons to come to a special sacrifice to worship God.
+
+When Jesse's oldest son, Eliab, came in, Samuel looked at him. Eliab was tall and strong. "Surely this is the one God has chosen," Samuel thought.
+
+But God said to Samuel, "Don't look at how handsome he is or how tall he is. I haven't chosen him. The Lord doesn't see things the way people do. People look at the outside, but the Lord looks at the heart."
+
+Then Jesse called his next son, Abinadab. "The Lord hasn't chosen this one either," said Samuel. Then came Shammah. "Not this one." Jesse brought seven of his sons to Samuel, one after another. But Samuel said, "The Lord hasn't chosen any of these."
+
+Then Samuel asked, "Are these all the sons you have?"
+
+"There is still the youngest," said Jesse. "But he's out looking after the sheep."
+
+Nobody had thought it was worth calling the youngest boy in from the fields.
+
+"Send for him," said Samuel. "We won't sit down to eat until he gets here."
+
+So Jesse sent for him. He was a young shepherd boy, with a healthy glow and bright eyes, and he was good-looking. His name was David.
+
+And the Lord said, "Get up and anoint him. He is the one."
+
+So Samuel took the horn of oil and poured it on David's head, right there in front of his brothers. And from that day on, the Spirit of the Lord came powerfully on David.
+
+David didn't become king straight away. He went back to looking after the sheep. But God had chosen him. One day, this shepherd boy would be the greatest king Israel ever had. And he would write many of the songs in the book of Psalms, like the one that begins, "The Lord is my shepherd."
+
+**Looking ahead to Jesus:** David was born in Bethlehem. A thousand years later, another baby was born in Bethlehem, into David's own family. When the angels told the shepherds about Him, they said, "Today in the city of David a Savior has been born to you. He is Christ the Lord!" (Luke 2:11). Jesus is the great King from David's family.
+
+**Read it in your Bible:** 1 Samuel 16:1–13
+
+*Dear God, thank you that you look at my heart, not at how I look on the outside. Please give me a heart that loves you, like David's. Amen.*
+
+### Talk about it together
+
+- Q: Why did Samuel think Eliab must be the one God had chosen?
+  A: Because Eliab was tall and strong and looked like a king.
+- Q: What did God say He looks at?
+  A: "People look at the outside, but the Lord looks at the heart."
+- Q: Do you ever judge people by how they look? What would it mean to look at people the way God does?
+  A: It's easy to notice clothes, looks or how popular someone is. God cares about what people are like inside, and we can try to do the same, like being friends with someone others leave out.
+
+## David and the Giant
+
+> "The battle is the LORD's." — 1 Samuel 17:47
+
+The Philistines came to fight against Israel. Their army camped on one hill, and King Saul's army camped on another hill, with a valley in between.
+
+Then out of the Philistine camp came a champion called Goliath. He was a giant, nearly three metres tall! He wore a bronze helmet and heavy bronze armour, and he carried a spear as thick as a beam of wood.
+
+Goliath stood in the valley and shouted up at the Israelites. "Choose a man to come down and fight me! If he wins, we will be your servants. But if I win, you will be our servants. I defy the armies of Israel! Send me a man to fight!"
+
+When Saul and the Israelites heard him, they were terrified. Every morning and every evening for forty days, Goliath came out and shouted the same thing. And nobody dared to fight him.
+
+David's three oldest brothers were in Saul's army. One day Jesse sent David to take them some food and see how they were. David got to the camp just as Goliath came out to shout again. And David heard him.
+
+"Who is this Philistine," David said, "that he should defy the armies of the living God?"
+
+David's oldest brother, Eliab, was angry with him. "What are you doing here? Who's looking after those few sheep? I know you just came to watch the battle!"
+
+But David went to King Saul. "Don't let anyone lose heart because of this Philistine," he said. "I will go and fight him."
+
+"You can't fight him," said Saul. "You're only a boy, and he's been a soldier all his life."
+
+"I look after my father's sheep," said David. "When a lion or a bear came and took a lamb, I went after it and rescued the lamb. I have killed lions and bears. The Lord who rescued me from the lion and the bear will rescue me from this Philistine."
+
+"Go," said Saul, "and the Lord be with you."
+
+Saul dressed David in his own armour, with a bronze helmet. But it was too big and heavy, and David could hardly walk in it. "I can't go in these," he said. "I'm not used to them." So he took them off.
+
+Instead he took his shepherd's staff, chose five smooth stones from the stream, put them in his shepherd's bag, and with his sling in his hand, he went down to meet the giant.
+
+Goliath looked at David and laughed at him. "Am I a dog, that you come at me with sticks?" he roared.
+
+But David said, "You come against me with a sword and a spear and a javelin. But I come against you in the name of the Lord of Hosts, the God of the armies of Israel, whom you have defied. Today everyone will know that there is a God in Israel. The Lord doesn't save with swords and spears. The battle is the Lord's!"
+
+Goliath came towards him. David ran to meet him. He took a stone out of his bag, put it in his sling, and slung it. The stone hit Goliath right in the forehead, and he fell face down on the ground.
+
+David had won, with a sling and a stone. When the Philistines saw that their champion was dead, they turned and ran.
+
+The giant had seemed far too big for anyone to beat. But David knew that no giant was too big for God.
+
+**Read it in your Bible:** 1 Samuel 17
+
+*Dear God, when I face things that seem as big as giants, help me to remember that the battle is yours. Thank you that you are bigger than anything. Amen.*
+
+### Talk about it together
+
+- Q: Why was everyone in Saul's army afraid?
+  A: Because Goliath was a giant, nearly three metres tall, with heavy armour and a huge spear, and he shouted at them every day for forty days.
+- Q: Why did David take off Saul's armour?
+  A: It was too big and heavy, and he wasn't used to it. He went with what he knew: his staff, his sling and five smooth stones.
+- Q: David said, "The battle is the Lord's." What did he mean?
+  A: That God was the one who would win, not David's strength or weapons. This story is mostly about how great God is. Like David, we can trust God when we face big problems.
+
+## David and Jonathan
+
+> "The souls of Jonathan and David were knit together, and Jonathan loved him as himself." — 1 Samuel 18:1
+
+After David beat Goliath, King Saul took him to live at the palace. And Saul's son, Prince Jonathan, became David's best friend. They loved each other like brothers.
+
+Jonathan made a promise to David that they would always be friends. Then he took off his own royal robe and gave it to David. He gave him his tunic too, and his sword, and his bow, and his belt.
+
+Jonathan was the king's son. Everyone expected him to be the next king. But Jonathan could see that God had chosen David, and he wasn't jealous. He was glad.
+
+King Saul was different. David did everything well, and the people loved him. When the army came home from battle, the women came out dancing and singing, "Saul has killed his thousands, and David his tens of thousands!"
+
+Saul was furious. "They give David tens of thousands," he said, "and me only thousands! What more can he get but the kingdom?" From that day on, Saul was jealous of David and kept a close eye on him.
+
+One day, while David was playing his harp for Saul, Saul threw his spear at David, trying to pin him to the wall! But David dodged it, twice.
+
+Jonathan spoke up for his friend. "Father, don't do wrong to David," he said. "He hasn't done anything wrong to you. He risked his life to kill Goliath, and you were glad." For a while Saul listened. But then the jealousy came back, and he tried to kill David again.
+
+David went to Jonathan. "What have I done?" he asked. "Why is your father trying to kill me?"
+
+"It can't be true!" said Jonathan. "I'll find out, and I'll tell you."
+
+So they made a plan. David would hide in a field. Jonathan would find out whether his father still wanted to hurt David. Then Jonathan would come to the field and shoot three arrows, and send a boy to fetch them. If he shouted, "The arrows are on this side of you," David would know he was safe. But if he shouted, "The arrows are beyond you," David would know he had to run away.
+
+At the king's special dinner, Saul noticed David's empty seat. When Jonathan explained where David was, Saul became so angry that he threw his spear at his own son! Now Jonathan knew. His father really did want to kill David.
+
+The next morning Jonathan went out to the field with a boy. He shot an arrow far beyond the boy, and called out, "Isn't the arrow beyond you? Hurry! Go quickly!"
+
+When the boy had gone home, David came out of his hiding place. He bowed down to Jonathan three times. Then the two friends hugged each other and cried, David most of all.
+
+"Go in peace," said Jonathan. "We have both promised in the name of the Lord that we will be friends for ever, and our children after us."
+
+Then David ran away, and Jonathan went back to the city.
+
+Jonathan could have been jealous, like his father. Instead he was loyal to his friend, even when it cost him the throne. That is what a true friend is like.
+
+**Read it in your Bible:** 1 Samuel 18:1–16; 19:1–7; 20
+
+*Dear God, thank you for my friends. Help me to be a loyal friend, not jealous, and glad when good things happen to other people. Amen.*
+
+### Talk about it together
+
+- Q: What did Jonathan give David to show that they were friends?
+  A: His royal robe, his tunic, his sword, his bow and his belt.
+- Q: How did Jonathan warn David that he had to run away?
+  A: He shot an arrow far beyond the boy and called out, "Isn't the arrow beyond you? Hurry!", which was their secret signal.
+- Q: Saul was jealous of David, but Jonathan wasn't. How can we be glad when good things happen to our friends?
+  A: We can thank God for what He has given us, and remember that someone else's success doesn't take anything away from us. Jonathan was even glad that David would be king instead of him.
+
+## David Spares the King
+
+> "May I never lift my hand against him, since he is the LORD's anointed." — 1 Samuel 24:6
+
+David had to run away from King Saul and hide in the wild hill country. Men came to join him, until he had his own little army of six hundred men. But Saul kept chasing him.
+
+One day Saul heard that David was hiding near a place called En-gedi, among the rocky hills where the wild goats lived. So Saul took three thousand of his best soldiers and went looking for him.
+
+On the way there was a cave, and Saul went into it on his own. He didn't know that David and his men were hiding deep in the back of that very cave!
+
+David's men whispered to him. "This is the day God told you about! He said, 'I will give your enemy into your hands, and you can do whatever you like to him.'"
+
+David crept forward quietly in the dark. He came right up behind Saul. And he cut off a corner of Saul's robe, without Saul even noticing.
+
+But afterwards, David felt bad, even about cutting the robe. "The Lord forbid that I should do such a thing to my master," he said to his men. "He is the king God anointed. I must never lift my hand against him." And David wouldn't let his men attack Saul.
+
+Saul got up and left the cave, and went on his way.
+
+Then David went out of the cave too. "My lord the king!" he called out.
+
+Saul looked behind him. And David bowed down low, with his face to the ground.
+
+"Why do you listen to people who say I want to hurt you?" David said. "Today you have seen with your own eyes that the Lord put you into my hands in the cave. Some of my men told me to kill you. But I spared you. I said, 'I will not lift my hand against my lord, because he is the Lord's anointed.' Look, my father, look at this piece of your robe in my hand! I cut it off, but I didn't kill you. Now you can see that I'm not trying to hurt you. Let the Lord judge between us."
+
+When David finished speaking, Saul said, "Is that your voice, David my son?" And Saul cried out loud.
+
+"You are more righteous than I am," Saul said. "You have treated me well, but I have treated you badly. Today you have shown me how good you are. When the Lord put me into your hands, you didn't kill me. Who finds his enemy and lets him get away unharmed? May the Lord reward you well for what you did for me today. Now I know that you will surely be king."
+
+David could have taken revenge. He could have grabbed the throne for himself. But he chose to wait for God's time, and to be kind to the man who was trying to hurt him.
+
+**Read it in your Bible:** 1 Samuel 24
+
+*Dear God, when someone is unkind to me, help me not to pay them back. Help me to be kind and to trust you to make things right. Amen.*
+
+### Talk about it together
+
+- Q: What did David do when Saul came into the cave?
+  A: He crept up and cut off a corner of Saul's robe, but he wouldn't hurt Saul or let his men hurt him.
+- Q: How did David prove to Saul that he wasn't trying to hurt him?
+  A: He showed Saul the piece of his robe, so Saul could see that David had been close enough to kill him but had spared him.
+- Q: Have you ever wanted to pay someone back for being unkind? What did David do instead?
+  A: It's natural to want revenge. David chose to be kind and to leave things in God's hands. Jesus taught us to love our enemies and pray for them too.
+
+## A Seat at the King's Table
+
+> "Do not be afraid ... you will always eat at my table." — 2 Samuel 9:7
+
+Many years went by. King Saul and his son Jonathan were both killed in a battle with the Philistines. And at last, just as God had promised, David became king of Israel.
+
+When the news came that Saul and Jonathan had died, there was panic in Saul's house. Jonathan had a little boy called Mephibosheth, who was five years old. His nurse picked him up and ran to escape. But as she was hurrying, she dropped him, and he fell. After that, both his feet were lame, and he could never walk properly again.
+
+In those days, when a new king took over, he often got rid of the old king's family, so they couldn't fight him for the throne. Mephibosheth grew up far away, in a little place called Lo-debar, probably afraid that one day David would come for him.
+
+But David remembered his promise to his best friend Jonathan.
+
+One day David asked, "Is there anyone left from Saul's family that I can be kind to, for Jonathan's sake?"
+
+There was an old servant of Saul's family called Ziba. They brought him to the king. "Is there anyone left of Saul's family," asked David, "that I can show God's kindness to?"
+
+"There is still a son of Jonathan," said Ziba. "He is lame in both feet."
+
+"Where is he?" asked the king.
+
+So David sent for Mephibosheth. When Mephibosheth came, he bowed down with his face to the ground. He must have been terrified.
+
+"Mephibosheth!" said David.
+
+"I am your servant," he answered.
+
+"Don't be afraid," said David. "I will be kind to you, for the sake of your father Jonathan. I will give you back all the land that belonged to your grandfather Saul. And you will always eat at my table."
+
+Mephibosheth bowed down again. "Who am I," he said, "that you should be kind to someone like me? I'm no more use than a dead dog."
+
+But David meant it. He told Ziba, "I have given your master's grandson everything that belonged to Saul. You and your sons and your servants must farm the land for him. And Mephibosheth will always eat at my table."
+
+So Mephibosheth went to live in Jerusalem, in the king's palace. Every day he ate at King David's table, like one of the king's own sons.
+
+Mephibosheth hadn't done anything to deserve the king's kindness. He couldn't even walk to the king. The king sent for him, and brought him in, and gave him a place at the table for ever. That is what God's grace is like.
+
+**Read it in your Bible:** 2 Samuel 4:4; 9
+
+*Dear God, thank you that you are kind to people who don't deserve it, like David was to Mephibosheth. Thank you that you welcome me to your table. Help me to keep my promises. Amen.*
+
+### Talk about it together
+
+- Q: How did Mephibosheth become lame?
+  A: When he was five, his nurse dropped him as she was running away after his father and grandfather were killed.
+- Q: Why was David kind to Mephibosheth?
+  A: Because of his promise to Mephibosheth's father, Jonathan, his best friend.
+- Q: Mephibosheth called himself a "dead dog", but the king gave him a place at his table. How is that like what God does for us?
+  A: We can't earn God's love, but He invites us in anyway and makes us part of His family. That is called grace.
+
+## The Story of the Little Lamb
+
+> "Create in me a clean heart, O God, and renew a right spirit within me." — Psalm 51:10
+
+David was a good king, and he loved God. But even David did terrible things.
+
+One spring, when David's army went out to war, David stayed at home in Jerusalem. One evening he saw a beautiful woman called Bathsheba. She was married to a brave soldier called Uriah, who was away fighting in David's army. But David wanted her to be his own wife.
+
+So David did something very wicked. He sent a message to his army commander: "Put Uriah at the front, where the fighting is fiercest, and then pull back, so that he will be killed." And that is what happened. Uriah was killed in the battle. Then David married Bathsheba.
+
+David thought nobody knew. But God knew. And what David had done made God very angry.
+
+So God sent the prophet Nathan to David. Nathan told the king a story.
+
+"There were two men in a certain town," said Nathan. "One was rich and the other was poor. The rich man had lots and lots of sheep and cattle. But the poor man had nothing except one little ewe lamb that he had bought. He looked after it, and it grew up with him and his children. It ate from his plate and drank from his cup and slept in his arms. It was like a daughter to him.
+
+"One day a traveller came to visit the rich man. But the rich man didn't want to take one of his own sheep to make a meal for his visitor. Instead, he took the poor man's little lamb, and cooked that."
+
+David was furious when he heard this. "As surely as the Lord lives," he said, "the man who did this deserves to die! He must pay back four times as much, because he did such a thing and had no pity."
+
+Then Nathan said to David, "You are that man!"
+
+Nathan told David what God said. "I made you king. I saved you from Saul. I gave you everything. Why did you despise what I said and do what is evil? You had Uriah killed, and you took his wife."
+
+David could have been angry with Nathan. He was the king, and he could have had him thrown out, or worse. But he didn't. He knew Nathan was right.
+
+"I have sinned against the Lord," said David.
+
+And Nathan said, "The Lord has taken away your sin. You will not die."
+
+David was forgiven. But his sin still brought great sadness to his family in the years that followed. Sin always hurts people.
+
+David wrote a song to God about that time. It is Psalm 51. "Have mercy on me, O God, according to Your loving devotion," he prayed. "Wash me clean from my sin. Create in me a clean heart, O God, and renew a right spirit within me."
+
+**Read it in your Bible:** 2 Samuel 11:1–12:13; Psalm 51
+
+*Dear God, I am sorry for the wrong things I have done. Please wash me clean and give me a clean heart. Thank you that you forgive everyone who comes to you and says sorry. Amen.*
+
+### Talk about it together
+
+- Q: What was the story Nathan told David about?
+  A: A rich man with lots of sheep who took a poor man's only pet lamb to cook for a visitor, instead of using one of his own.
+- Q: What did David say when Nathan said, "You are that man!"?
+  A: He said, "I have sinned against the Lord." He didn't make excuses.
+- Q: When someone tells us we've done wrong, how should we answer?
+  A: It's tempting to get angry or make excuses. David simply admitted it and said sorry, and God forgave him. We can do the same. (David's sin is told simply here; you don't need to explain more than your child asks.)
+
+## Solomon Asks for Wisdom
+
+> "Give Your servant an understanding heart to judge Your people and to discern between good and evil." — 1 Kings 3:9
+
+When King David grew old and died, his son Solomon became king. Solomon was young, and he loved the Lord.
+
+One night, at a place called Gibeon, God appeared to Solomon in a dream. "Ask for whatever you want," God said, "and I will give it to you."
+
+What would you ask for? Solomon could have asked for anything in the world.
+
+"You were very kind to my father David," Solomon said, "and now You have made me king in his place. But I am only like a little child. I don't know how to lead. And here I am, in charge of all Your people, so many people that they can't be counted. So please give me an understanding heart, so that I can lead Your people well and tell the difference between right and wrong. For who could rule this great people of Yours?"
+
+God was pleased that Solomon had asked for this.
+
+"Because you asked for wisdom," God said, "and not for a long life or riches for yourself, or for your enemies to die, I will give you what you asked for. I will give you a wise and understanding heart, wiser than anyone before you or after you. And I will also give you what you didn't ask for: riches and honour, more than any other king. And if you obey Me, as your father David did, I will give you a long life."
+
+Then Solomon woke up. It had been a dream. But it was true.
+
+Soon Solomon had to use his new wisdom. Two women came to him with a baby. They lived in the same house, and each of them had had a baby boy, just three days apart. But one night, one of the babies died.
+
+"She swapped the babies while I was asleep!" said the first woman. "She took my son, and put her dead baby next to me. But when I looked at him in the morning, I could see it wasn't my baby!"
+
+"No!" said the other woman. "The living one is my son, and the dead one is yours!"
+
+They argued and argued in front of the king. How could anyone know who was telling the truth?
+
+"Bring me a sword," said King Solomon. So they brought a sword. "Cut the living baby in two," said the king, "and give half to one woman and half to the other."
+
+The real mother was filled with love for her son. "Please, my lord!" she cried. "Give her the baby! Don't kill him!"
+
+But the other woman said, "Neither of us shall have him. Cut him in two!"
+
+Then Solomon said, "Give the baby to the first woman. Don't kill him. She is his mother."
+
+Solomon never meant to hurt the baby. He knew a real mother would rather give her baby away than see him hurt. When all Israel heard about it, they were amazed, because they saw that God had given Solomon wisdom to do what was right.
+
+**Looking ahead to Jesus:** Jesus said that "One greater than Solomon is here" (Matthew 12:42). Jesus is wiser than Solomon, because He is God's own wisdom. When we need wisdom, we can ask Him.
+
+**Read it in your Bible:** 1 Kings 3
+
+*Dear God, please give me wisdom to know what is right and to do it. Thank you that you love to give wisdom to people who ask. Amen.*
+
+### Talk about it together
+
+- Q: What did Solomon ask God for?
+  A: An understanding heart, so he could lead God's people well and tell the difference between right and wrong.
+- Q: How did Solomon find out who the real mother was?
+  A: He said to cut the baby in two. The real mother begged him not to and said to give the baby away, so Solomon knew she was the mother. He never meant to hurt the baby.
+- Q: If God said to you, "Ask for whatever you want," what would you ask for? Why?
+  A: Talk about it honestly. The Bible says, "If any of you lacks wisdom, he should ask God" (James 1:5). Wisdom is something God loves to give.
+
+## Elijah and the Ravens
+
+> "The jar of flour was not exhausted and the jug of oil did not run dry." — 1 Kings 17:16
+
+After Solomon, the kingdom split into two. There were many kings, and most of them were bad. The worst of all was King Ahab. He and his wife, Queen Jezebel, worshipped a false god called Baal, and they led the people of Israel to worship Baal too.
+
+So God sent a prophet called Elijah to King Ahab. "As surely as the Lord, the God of Israel, lives," said Elijah, "there will be no dew or rain in the next few years, until I say so."
+
+The people thought Baal sent the rain. But now everyone would see that the Lord was the one who ruled the rain.
+
+Then God told Elijah, "Go and hide by the brook called Kerith. You can drink from the brook, and I have told the ravens to feed you there."
+
+So Elijah went and lived by the brook. And every morning and every evening, big black ravens flew down with bread and meat for him! And he drank water from the brook.
+
+But there was no rain. After a while the brook dried up.
+
+Then God said to Elijah, "Go to the town of Zarephath. I have told a widow there to feed you."
+
+When Elijah came to the town gate, he saw a widow gathering sticks. "Please would you bring me a little water to drink?" he called to her. As she was going to get it, he called, "And please bring me a piece of bread too."
+
+"As surely as the Lord your God lives," she said, "I don't have any bread. All I have is a handful of flour in a jar and a little oil in a jug. I'm gathering a few sticks to make a fire. Then I'll go home and bake one last meal for my son and me. We'll eat it, and then we'll die."
+
+"Don't be afraid," said Elijah. "Go home and do what you said. But first make a small loaf of bread for me, and bring it to me. Then make something for yourself and your son. For this is what the Lord, the God of Israel, says: 'The jar of flour will not run out and the jug of oil will not run dry until the day the Lord sends rain on the land.'"
+
+It must have been very hard to give away her very last bit of food. But the widow did what Elijah said.
+
+And every day after that, when she went to the jar, there was flour in it. And when she tipped up the jug, there was oil in it. Day after day after day, there was always enough for Elijah and the widow and her son. The jar of flour never ran out, and the jug of oil never ran dry, just as God had promised.
+
+**Looking ahead to Jesus:** Jesus told this story Himself. He said there were many widows in Israel in Elijah's time, "Yet Elijah was not sent to any of them, but to the widow of Zarephath in Sidon" (Luke 4:26). She wasn't even an Israelite! Jesus came for people from every country, too.
+
+**Read it in your Bible:** 1 Kings 17:1–16
+
+*Dear God, thank you that you take care of your people, even when it seems impossible. Help me to trust you and to share what I have. Amen.*
+
+### Talk about it together
+
+- Q: How did God feed Elijah by the brook?
+  A: Ravens brought him bread and meat every morning and every evening, and he drank from the brook.
+- Q: What did the widow have left when Elijah met her, and what happened after she fed him?
+  A: Only a handful of flour and a little oil. After she made bread for Elijah first, the flour and oil never ran out.
+- Q: The widow gave away her last bit of food because she trusted God. What could you share with someone else?
+  A: Think together about food, toys, time or money that could help someone. God often provides for people through the generosity of others.
+
+## Fire on the Mountain
+
+> "The LORD, He is God! The LORD, He is God!" — 1 Kings 18:39
+
+For three years there was no rain in Israel. Then God told Elijah, "Go to King Ahab, and I will send rain."
+
+When Ahab saw Elijah, he said, "Is that you, you troublemaker of Israel?"
+
+"I haven't made trouble for Israel," said Elijah. "You have, because you have stopped obeying the Lord and you worship Baal. Now bring all the people to Mount Carmel. And bring the 450 prophets of Baal."
+
+So all the people came to Mount Carmel. Elijah stood in front of them. "How long will you keep wobbling between two opinions?" he said. "If the Lord is God, follow Him. But if Baal is God, follow him." But the people didn't say a word.
+
+"I am the only prophet of the Lord left," said Elijah, "but Baal has 450 prophets. Let's have a test. Get two bulls. Let the prophets of Baal choose one, cut it up and put it on the wood on their altar, but not light the fire. I will do the same with the other bull. Then you call on the name of your god, and I will call on the name of the Lord. The God who answers by fire, He is God."
+
+"That's a good idea," said all the people.
+
+So the prophets of Baal went first. They got their bull ready, and called on Baal from morning until noon. "O Baal, answer us!" they shouted. They danced around the altar. But nothing happened. There was no answer.
+
+At noon Elijah began to make fun of them. "Shout louder!" he said. "Surely he is a god! Perhaps he's busy, or he's gone on a journey. Perhaps he's asleep and needs to be woken up!"
+
+So they shouted louder, and kept on all afternoon. But there was no voice, no answer, no one paying any attention.
+
+Then Elijah called the people over to him. He rebuilt the broken altar of the Lord with twelve stones, one for each tribe of Israel. He dug a trench around it. He put the wood on the altar, and the bull on the wood.
+
+Then he said, "Fill four big jars with water and pour it over the sacrifice and the wood." They did. "Do it again," he said. They did. "Do it a third time," he said. And they did. The water ran down all around the altar and filled the trench. Now everything was soaking wet!
+
+At the time of the evening sacrifice, Elijah stepped forward and prayed. "O Lord, God of Abraham, Isaac and Israel, let everyone know today that You are God in Israel. Answer me, O Lord, answer me, so these people will know that You are God, and that You are turning their hearts back to You."
+
+Then the fire of the Lord fell! It burned up the sacrifice, the wood, the stones and the soil, and it even licked up all the water in the trench.
+
+When the people saw it, they fell on their faces and shouted, "The Lord, He is God! The Lord, He is God!"
+
+The false prophets who had led the people away from God were put to death. Then Elijah climbed to the top of the mountain and prayed for rain. Seven times he sent his servant to look out at the sea. The seventh time, the servant said, "I can see a little cloud, as small as a man's hand, rising from the sea." Soon the sky grew black with clouds, the wind rose, and a heavy rain began to fall.
+
+**Read it in your Bible:** 1 Kings 18
+
+*Dear God, you are the only true God. Please help me never to wobble between you and other things, but to follow you with all my heart. Amen.*
+
+### Talk about it together
+
+- Q: What was Elijah's test to show who the true God was?
+  A: Each side would put a bull on an altar without lighting it, and pray. The God who answered by sending fire would be the true God.
+- Q: Why did Elijah pour water all over his altar?
+  A: To show that no one could have lit it by a trick. Only God could set fire to something so soaking wet.
+- Q: Elijah asked, "How long will you wobble between two opinions?" What does it mean to follow God with your whole heart?
+  A: It means not trying to have God and something else as the most important thing in our lives. We choose to trust and obey Him first.
+
+## The Still, Small Voice
+
+> "And after the fire came a still, small voice." — 1 Kings 19:12
+
+After the fire fell on Mount Carmel, you might think Elijah would have felt on top of the world. But he didn't.
+
+When Queen Jezebel heard what had happened, she was furious. She sent a message to Elijah: "By this time tomorrow, I will kill you!"
+
+Elijah was afraid, and he ran for his life. He ran a long way south, to the edge of the desert. Then he went on alone, a whole day's walk into the wilderness. He sat down under a bush, and he was so tired and sad that he wanted to die. "I've had enough, Lord," he prayed. "Take my life." Then he lay down under the bush and fell asleep.
+
+Suddenly an angel touched him. "Get up and eat," said the angel. Elijah looked around, and there by his head was a loaf of bread baked on hot stones, and a jar of water. He ate and drank, and lay down again.
+
+The angel came back a second time and touched him. "Get up and eat," he said, "because the journey is too much for you." So Elijah got up and ate and drank. And with the strength from that food, he walked for forty days and forty nights, until he came to Horeb, the mountain of God.
+
+Elijah went into a cave and spent the night there. And God spoke to him. "What are you doing here, Elijah?"
+
+"I have worked so hard for You, Lord," said Elijah. "But the Israelites have turned away from You. They have broken down Your altars and killed Your prophets. I am the only one left, and now they are trying to kill me too."
+
+"Go out and stand on the mountain," said the Lord, "for the Lord is about to pass by."
+
+Then a great and mighty wind came, so strong that it tore the mountains apart and smashed the rocks. But the Lord was not in the wind.
+
+After the wind there was an earthquake. But the Lord was not in the earthquake.
+
+After the earthquake there was a fire. But the Lord was not in the fire.
+
+And after the fire there was a still, small voice. A gentle whisper.
+
+When Elijah heard it, he pulled his cloak over his face and went out and stood at the entrance of the cave. And the voice said, "What are you doing here, Elijah?"
+
+Elijah told God how alone he felt. And God was gentle with him. God gave Elijah new work to do. He told him to anoint a new king, and to choose a young man called Elisha to help him and to be the next prophet.
+
+And God told Elijah something else. "You are not alone. There are still seven thousand people in Israel who have not bowed down to Baal."
+
+Elijah had thought he was the only one. But God had thousands of faithful people Elijah didn't know about.
+
+When we are tired and sad, God doesn't shout at us. He takes care of us. He gives us food and rest, and then He speaks to us gently.
+
+**Read it in your Bible:** 1 Kings 19:1–18
+
+*Dear God, when I feel tired, sad or alone, thank you that you take care of me and speak to me gently. Help me to remember that I am never really alone. Amen.*
+
+### Talk about it together
+
+- Q: How did God take care of Elijah when he was tired and sad?
+  A: An angel let him sleep, then woke him and gave him bread and water, twice, so he had strength for the journey.
+- Q: Was God in the wind, the earthquake or the fire?
+  A: No. God came in a still, small voice, a gentle whisper.
+- Q: Elijah thought he was the only one left who loved God. Do you ever feel alone? What did God tell Elijah?
+  A: That there were seven thousand others who still loved God. Feeling alone is real, but God is always with us, and He has other people who love Him too. Sometimes we need sleep and food before things feel better!
+
+## Naaman Washes Seven Times
+
+> "So Naaman went down and dipped himself in the Jordan seven times ... and his flesh was restored and became like that of a little child." — 2 Kings 5:14
+
+In the country of Aram, there was a man called Naaman. He was the commander of the king's army, a great and brave soldier. But Naaman had a terrible skin disease called leprosy. There was no cure for it.
+
+Some time before, Aramean soldiers had raided Israel and taken a young girl captive. She was now a servant to Naaman's wife. She was far from home, and she must have missed her family. But she cared about her master.
+
+"If only my master would go to the prophet in Samaria," she said to her mistress. "He would cure him of his leprosy!"
+
+So Naaman told the king what the girl had said. "Go," said the king of Aram, "and I'll send a letter to the king of Israel." Naaman set off with silver and gold and fine clothes as gifts.
+
+When the king of Israel read the letter, he tore his clothes. "Am I God?" he said. "How can I cure a man of leprosy? He's trying to start a fight with me!"
+
+But the prophet Elisha heard about it. "Send the man to me," he said, "and he will know there is a prophet in Israel."
+
+So Naaman came with his horses and his chariots and stopped at the door of Elisha's house. But Elisha didn't even come out. He sent a messenger to say, "Go and wash yourself seven times in the River Jordan, and your skin will be healed, and you will be clean."
+
+Naaman was furious. "I thought he would come out to me himself," he said, "and stand and call on the name of the Lord his God, and wave his hand over the place and cure me! The rivers back home in Damascus are better than all the rivers in Israel. Couldn't I wash in them and be clean?" And he turned and stormed off in a rage.
+
+But Naaman's servants came up to him. "Sir," they said, "if the prophet had told you to do some great thing, wouldn't you have done it? So why not do this simple thing, when he just says, 'Wash and be clean'?"
+
+So Naaman went down to the River Jordan. He dipped himself in the water once. Twice. Three times. Four, five, six times. And the seventh time he came up out of the water, his skin was healed! It was as smooth and healthy as a little child's.
+
+Naaman went back to Elisha with all his servants. He stood in front of him and said, "Now I know that there is no God in all the world except in Israel!"
+
+Naaman wanted to give Elisha a present to say thank you. But Elisha wouldn't take anything. God's healing was a gift.
+
+It all started with a little servant girl, far from home, who knew about the true God and wasn't afraid to speak up.
+
+**Looking ahead to Jesus:** Jesus told this story too. "There were many lepers in Israel in the time of Elisha the prophet," He said. "Yet not one of them was cleansed—only Naaman the Syrian" (Luke 4:27). God's love reaches people in every country.
+
+**Read it in your Bible:** 2 Kings 5:1–16
+
+*Dear God, thank you that you can heal and make people clean. Help me to be humble and to do what you say, even when it seems too simple. And help me to tell others about you, like the servant girl did. Amen.*
+
+### Talk about it together
+
+- Q: Who told Naaman's wife about the prophet in Israel?
+  A: A young servant girl who had been taken from Israel and now worked for Naaman's wife.
+- Q: Why was Naaman angry when Elisha told him to wash in the Jordan?
+  A: He expected Elisha to come out and do something impressive, and he thought the rivers at home were better. He didn't like being told to do something so simple.
+- Q: The servant girl was far from home, but she still told people about God. How could you tell someone about God?
+  A: By sharing a Bible story, inviting a friend to church, praying for someone, or simply saying what God has done for you. Even small words can make a big difference.
+
+## Chariots of Fire
+
+> "'Do not be afraid,' Elisha answered, 'for those who are with us are more than those who are with them.'" — 2 Kings 6:16
+
+The king of Aram was at war with Israel. He would sit with his officers and plan secret attacks. "We'll set up camp in such and such a place," he would say.
+
+But every time, the prophet Elisha sent a message to the king of Israel. "Be careful not to go past that place," he warned, "because the Arameans are going down there." God was telling Elisha all the enemy's secret plans! Again and again, the king of Israel was warned, and his men stayed safe.
+
+The king of Aram was furious. "Which of you is on the side of the king of Israel?" he demanded. "Who is telling him our plans?"
+
+"None of us, my lord the king," said one of his officers. "It's Elisha, the prophet in Israel. He tells the king of Israel the very words you speak in your bedroom!"
+
+"Go and find out where he is," said the king, "so I can send men to capture him." They found out that Elisha was in a town called Dothan. So the king sent horses and chariots and a great army there. They came at night and surrounded the town.
+
+Early the next morning, Elisha's servant got up and went outside. And there, all around the town, was an army with horses and chariots!
+
+"Oh no, my master!" he cried. "What are we going to do?"
+
+"Don't be afraid," said Elisha. "Those who are with us are more than those who are with them."
+
+The servant must have thought Elisha was mad. There were just the two of them! But Elisha prayed, "O Lord, please open his eyes so that he may see."
+
+And the Lord opened the servant's eyes. He looked up, and the hills all around were full of horses and chariots of fire, all around Elisha! God's army had been there all along. The servant just couldn't see it.
+
+As the Aramean soldiers came down towards them, Elisha prayed, "Lord, please make these men blind." And God did. Then Elisha went out to them. "This isn't the right road," he said. "Follow me, and I'll take you to the man you're looking for." And he led them all the way to Samaria, the capital city of Israel.
+
+When they got inside the city, Elisha prayed, "Lord, open their eyes." And God opened their eyes, and they found themselves right in the middle of their enemy's city!
+
+The king of Israel was excited. "Shall I kill them, my father? Shall I kill them?"
+
+"No," said Elisha. "Give them food and water, so they can eat and drink and go back to their master."
+
+So the king of Israel prepared a great feast for them. They ate and drank, and then he sent them home. And after that, the raiders from Aram stopped attacking Israel.
+
+**Read it in your Bible:** 2 Kings 6:8–23
+
+*Dear God, thank you that you are always with your people, even when we can't see you. When I am afraid, please open my eyes to see how great you are. Amen.*
+
+### Talk about it together
+
+- Q: Why was the king of Aram so angry with Elisha?
+  A: Because God kept telling Elisha the king's secret battle plans, and Elisha warned the king of Israel every time.
+- Q: What did Elisha's servant see when God opened his eyes?
+  A: The hills all around were full of horses and chariots of fire, God's army protecting them.
+- Q: Elisha fed his enemies instead of hurting them. What happened next, and why does that matter?
+  A: The raiders stopped attacking Israel. Kindness to enemies can turn them into friends, just as Jesus taught us to love our enemies.
+
+## Josiah, the Boy King
+
+> "Neither before nor after Josiah was there any king like him, who turned to the LORD with all his heart." — 2 Kings 23:25
+
+Can you imagine being a king when you are eight years old? That's how old Josiah was when he became king of Judah.
+
+Before Josiah, there had been many bad kings. His own grandfather, Manasseh, had been one of the worst. The people had forgotten God and worshipped idols. They had even put idols inside the temple of the Lord in Jerusalem.
+
+But Josiah was different. As he grew up, he did what was right in God's eyes, just like his famous ancestor, King David, had done long before. He didn't turn away to the right or to the left.
+
+When Josiah was twenty-six years old, he decided to repair the temple. It had been neglected for years. So he sent money to pay carpenters and builders and stonemasons.
+
+While they were working, the high priest, Hilkiah, found something amazing in the temple. "I have found the Book of the Law in the house of the Lord!" he said. It was a scroll with God's laws written on it, the laws God had given through Moses. It had been lost for so long that people had forgotten what it said.
+
+A man called Shaphan took the scroll to the king and read it out loud to him.
+
+When King Josiah heard the words of God's law, he tore his clothes. He realised how far the people had wandered from God, and how much they had disobeyed Him. "Go and ask the Lord about what is written in this book," he told his officials. "God must be very angry with us, because our fathers didn't obey the words of this book."
+
+So they went to a prophetess called Huldah. She told them God's message: God would punish the people for their sin, but not in Josiah's lifetime, because Josiah's heart was soft and he had humbled himself before the Lord when he heard God's words.
+
+Then King Josiah called all the people of Judah and Jerusalem together, from the least to the greatest. He stood by a pillar in the temple and read the whole book out loud to them. And he made a promise to God: to follow the Lord and keep His commandments with all his heart and all his soul. And all the people made the promise too.
+
+Then Josiah got to work. He threw all the idols out of the temple and burned them. He broke down the altars to false gods all over the land. And he told the people to celebrate the Passover, just as the book said. There hadn't been a Passover like it since the days of the judges!
+
+The Bible says there was never a king like Josiah, before or after, who turned to the Lord with all his heart and soul and strength.
+
+**Read it in your Bible:** 2 Kings 22–23:25
+
+*Dear God, thank you for the Bible, your Word. Help me to listen to it and obey it with all my heart, like Josiah did. Thank you that even children can follow you. Amen.*
+
+### Talk about it together
+
+- Q: How old was Josiah when he became king?
+  A: Eight years old.
+- Q: What did the high priest find in the temple, and what did Josiah do when he heard it?
+  A: The Book of the Law, God's words given through Moses. Josiah tore his clothes because he realised how far the people had turned away from God, and then he led them back to God.
+- Q: Josiah was young, but he followed God with all his heart. What is one way you could follow God this week?
+  A: Choose something real together, like reading a Bible story each day, telling the truth, or being kind to someone. God doesn't wait for us to grow up before He uses us.
+
+## Jonah Runs Away
+
+> "Salvation is from the LORD!" — Jonah 2:9
+
+One day God spoke to a prophet called Jonah. "Get up! Go to the great city of Nineveh and warn the people there, because I have seen how wicked they are."
+
+Nineveh was the capital city of Assyria, the cruellest enemies of Israel. Jonah didn't want to go there. He didn't want God to be kind to them.
+
+So Jonah got up and ran away from God. Nineveh was to the east, so Jonah went west. He went down to the port of Joppa, found a ship sailing to Tarshish, a faraway place across the sea, paid his fare and climbed on board.
+
+But you can't run away from God.
+
+God sent a great wind on the sea, and such a terrible storm that the ship was about to break apart. The sailors were terrified. Each one cried out to his own god. They threw the cargo overboard to make the ship lighter.
+
+And where was Jonah? He had gone down below deck, and he was fast asleep!
+
+The captain went down to him. "How can you sleep?" he said. "Get up and call on your god! Maybe your god will notice us, and we won't die."
+
+The sailors said to each other, "Let's find out who is to blame for this trouble." So they cast lots, and the lot fell on Jonah.
+
+"Who are you?" they asked him. "Where do you come from?"
+
+"I am a Hebrew," said Jonah. "I worship the Lord, the God of heaven, who made the sea and the dry land." And he told them he was running away from God.
+
+The sailors were even more frightened. "What should we do to you to make the sea calm down?" they asked. The storm was getting worse and worse.
+
+"Pick me up and throw me into the sea," said Jonah, "and it will become calm. I know it's my fault that this great storm has come on you."
+
+But the sailors didn't want to. They rowed as hard as they could to get back to land. But they couldn't. The sea grew even wilder. So at last they prayed to the Lord, and they picked Jonah up and threw him overboard.
+
+And the sea stopped raging. It was calm! The sailors were amazed, and they worshipped the Lord.
+
+Meanwhile, God had prepared a huge fish to swallow Jonah. And Jonah was inside the fish for three days and three nights.
+
+There, inside the fish, Jonah prayed to the Lord. "In my trouble I called to You, and You answered me," he prayed. "You threw me into the deep, and the waters closed over me. Seaweed was wrapped around my head. But You brought my life up from the pit, O Lord my God! Salvation is from the Lord!"
+
+Then God commanded the fish, and it spat Jonah out onto dry land.
+
+**Looking ahead to Jesus:** Jesus said, "As Jonah was three days and three nights in the belly of the great fish, so the Son of Man will be three days and three nights in the heart of the earth" (Matthew 12:40). Jesus was talking about His own death, and how He would rise again on the third day.
+
+**Read it in your Bible:** Jonah 1–2
+
+*Dear God, thank you that I can never run so far away that you can't find me. Thank you that you rescue people who call out to you. Amen.*
+
+### Talk about it together
+
+- Q: Why didn't Jonah want to go to Nineveh?
+  A: Because the people of Nineveh were Israel's cruel enemies, and he didn't want God to be kind to them.
+- Q: What happened when the sailors threw Jonah into the sea?
+  A: The sea became calm, and God sent a huge fish to swallow Jonah. He was inside it for three days and three nights.
+- Q: Jonah tried to run away from God. Can anyone really run away from God?
+  A: No. God is everywhere, and He sees us wherever we go (Psalm 139:7–10). That's good news: it means we can never get lost from His love either.
+
+## Jonah and the Great City
+
+> "So should I not care about the great city of Nineveh?" — Jonah 4:11
+
+God spoke to Jonah a second time. "Get up! Go to the great city of Nineveh and give them the message I tell you."
+
+This time Jonah went. Nineveh was enormous. It took three days to walk through it! On his first day there, Jonah walked into the city and shouted, "Forty more days, and Nineveh will be destroyed!"
+
+And an amazing thing happened. The people of Nineveh believed God! They stopped eating, to show they were sorry, and they all put on rough, scratchy clothes called sackcloth, from the most important people to the least important.
+
+When the news reached the king of Nineveh, he got up from his throne, took off his royal robes, put on sackcloth and sat down in the dust. He sent out an order: "No one is to eat or drink, not even the animals. Everyone must cry out to God and turn away from their wicked ways. Who knows? God may change His mind and not destroy us."
+
+When God saw that they had turned away from their evil ways, He had mercy on them, and He didn't destroy the city.
+
+You would think Jonah would be happy. His preaching had worked! A whole city had turned to God!
+
+But Jonah wasn't happy. He was very angry.
+
+"I knew it!" Jonah prayed. "That's why I ran away in the first place. I knew that You are a gracious and kind God, slow to get angry and full of love. I knew You would forgive them. Now just let me die!"
+
+"Is it right for you to be angry?" God asked.
+
+Jonah went out of the city and sat down on the east side. He made himself a little shelter and sat in its shade, to see what would happen to the city.
+
+Then God made a leafy plant grow up over Jonah, to give him shade from the hot sun. Jonah was very happy about the plant. But the next morning, God sent a worm, which chewed the plant so that it withered. When the sun came up, God sent a scorching east wind. The sun blazed down on Jonah's head until he felt faint. "I'd be better off dead," he said.
+
+"Is it right for you to be angry about the plant?" God asked.
+
+"Yes, it is," said Jonah. "I'm angry enough to die!"
+
+"You care about this plant," God said, "even though you didn't plant it or make it grow. It grew in a night and died in a night. So shouldn't I care about the great city of Nineveh? There are more than a hundred and twenty thousand people there who don't know their right hand from their left, and many animals too."
+
+And that is how the book of Jonah ends: with God's question. God cared about the people of Nineveh, even though they were Jonah's enemies. God loves people Jonah didn't love.
+
+**Looking ahead to Jesus:** Jesus said that the people of Nineveh turned to God when Jonah preached, "and now One greater than Jonah is here" (Matthew 12:41). Jesus is the greatest preacher of all, and He came to save people from every nation.
+
+**Read it in your Bible:** Jonah 3–4
+
+*Dear God, thank you that you are kind and full of love, even to people who have done terrible things. Help me to care about people the way you do, even people I don't like. Amen.*
+
+### Talk about it together
+
+- Q: What did the people of Nineveh do when Jonah preached?
+  A: They believed God, stopped eating, wore sackcloth, and turned away from their wicked ways, from the king down to the animals.
+- Q: Why was Jonah angry when God forgave Nineveh?
+  A: Because he didn't want God to be kind to his enemies. He knew God was gracious and would forgive them.
+- Q: God cared about people Jonah didn't like. Is there someone it's hard for you to care about?
+  A: Talk about it honestly. God loves everyone, even people who have been unkind. We can ask Him to help us care about them too, and to pray for them.
+
+## The Promise of a Child
+
+> "For unto us a child is born, unto us a son is given, and the government will be upon His shoulders." — Isaiah 9:6
+
+In the year that King Uzziah died, the prophet Isaiah saw something wonderful. He saw the Lord sitting on a throne, high and lifted up, and the edges of His robe filled the whole temple. Above Him were shining angels called seraphim, each with six wings. And they were calling out to each other, "Holy, holy, holy is the Lord of Hosts; all the earth is full of His glory!"
+
+The whole temple shook, and it filled with smoke. Isaiah was terrified. "Woe is me!" he cried. "I am a sinful man, and I live among sinful people, and I have seen the King, the Lord of Hosts!"
+
+Then one of the seraphim flew to him with a burning coal from the altar. It touched Isaiah's lips with it and said, "Your sin is taken away."
+
+Then Isaiah heard the Lord say, "Whom shall I send? Who will go for Us?"
+
+And Isaiah said, "Here am I. Send me!"
+
+So God sent Isaiah to speak to His people. Much of what Isaiah had to say was sad. The people had turned away from God, and trouble was coming. Enemies would come and take them away to faraway lands.
+
+But God also gave Isaiah promises, wonderful promises about the future, about a King God would send. Here are some of them:
+
+"The people walking in darkness have seen a great light," said Isaiah. Someone was coming who would shine like the sun in the darkness.
+
+"The virgin will be with child and give birth to a son, and will call Him Immanuel." Immanuel means "God with us".
+
+"For unto us a child is born, unto us a son is given. He will be called Wonderful Counsellor, Mighty God, Everlasting Father, Prince of Peace. He will reign on the throne of David, and His kingdom of peace will never end."
+
+And Isaiah told of a Servant who would suffer for His people. "We all, like sheep, have gone astray," Isaiah said. "Each one has turned to his own way. And the Lord has laid on Him the sin of us all. He was pierced for our wrongdoing, and by His wounds we are healed."
+
+Another prophet, Micah, even said where this King would be born: in the little town of Bethlehem, the town where David came from.
+
+Who could it be? A baby who was "Mighty God"? A King who would suffer for His people? A Servant who would take away the sins of everyone? The people of Israel wondered and waited. They waited for hundreds of years.
+
+**Looking ahead to Jesus:** Every one of these promises came true in Jesus. He was born of the virgin Mary in Bethlehem, and His name was called Immanuel (Matthew 1:23). He is the great light, the Prince of Peace, and the Servant who was pierced for our sins on the cross. When a man in the New Testament was reading Isaiah's words about the Servant, Philip "told him the good news about Jesus" (Acts 8:35).
+
+**Read it in your Bible:** Isaiah 6:1–8; 7:14; 9:2–7; 53:4–6; Micah 5:2
+
+*Dear God, thank you that you keep every promise you make. Thank you for sending Jesus, the King Isaiah promised. Here am I, Lord. Send me! Amen.*
+
+### Talk about it together
+
+- Q: What did Isaiah see in the temple, and what did he say when God asked, "Whom shall I send?"
+  A: He saw the Lord on His throne, with angels calling "Holy, holy, holy." When God asked who would go, Isaiah said, "Here am I. Send me!"
+- Q: What names did Isaiah say the promised child would have?
+  A: Immanuel, which means "God with us", and Wonderful Counsellor, Mighty God, Everlasting Father, Prince of Peace.
+- Q: Who was the child Isaiah was talking about?
+  A: Jesus. He was born in Bethlehem, He is God with us, and He died for our sins, just as the prophets said hundreds of years before.
+
+## The Fiery Furnace
+
+> "But even if He does not, let it be known to you, O king, that we will not serve your gods." — Daniel 3:18
+
+God's people kept turning away from Him, just as the prophets had warned. So at last God let their enemies take them away. The great king of Babylon, Nebuchadnezzar, conquered Jerusalem and carried many of the people away to Babylon, far from home.
+
+Among them were four young men: Daniel, and his three friends Hananiah, Mishael and Azariah. In Babylon they were given new names. Daniel's three friends were called Shadrach, Meshach and Abednego.
+
+King Nebuchadnezzar made a huge golden statue, about thirty metres tall, and set it up on a wide plain. Then he called all his important officials to come and see it.
+
+A herald shouted out the king's command. "People of every nation and language! As soon as you hear the sound of the horn, the flute, the harp and all kinds of music, you must bow down and worship the golden statue. Anyone who doesn't bow down will be thrown straight into a blazing furnace!"
+
+So when the music played, everybody bowed down. Everybody except Shadrach, Meshach and Abednego.
+
+Some men went to the king to tell on them. "There are some Jews you put in charge here," they said. "Shadrach, Meshach and Abednego. They don't serve your gods, and they won't worship the golden statue!"
+
+Nebuchadnezzar was furious. He sent for the three friends. "Is it true that you won't worship my golden statue?" he said. "I'll give you one more chance. When you hear the music, bow down. If you don't, you will be thrown into the blazing furnace. And then what god will be able to rescue you?"
+
+Shadrach, Meshach and Abednego answered, "O king, we don't need to defend ourselves. If we are thrown into the furnace, the God we serve is able to rescue us from it, and He will rescue us from your hand. But even if He does not, we want you to know, O king, that we will never serve your gods or worship your golden statue."
+
+The king was so angry that his face changed. He ordered the furnace to be heated seven times hotter than usual. His strongest soldiers tied up the three friends and threw them into the furnace. The fire was so hot that it killed the soldiers who threw them in.
+
+Then King Nebuchadnezzar jumped up in amazement. "Didn't we throw three men into the fire, tied up?" he asked.
+
+"Yes, O king," said his advisers.
+
+"Look!" he said. "I see four men walking around in the fire, untied and unharmed! And the fourth one looks like a son of the gods!"
+
+The king went to the door of the furnace. "Shadrach, Meshach and Abednego, servants of the Most High God, come out!"
+
+So they came out of the fire. Everyone crowded round them. The fire hadn't harmed them at all. Not one hair on their heads was singed, their clothes weren't scorched, and they didn't even smell of smoke!
+
+"Praise be to the God of Shadrach, Meshach and Abednego!" said the king. "He sent His angel and rescued His servants who trusted in Him. They were willing to give up their lives rather than worship any god except their own God."
+
+**Read it in your Bible:** Daniel 3
+
+*Dear God, help me to stay faithful to you, even when everyone around me is doing something wrong. Thank you that you are with your people, even in the fire. Amen.*
+
+### Talk about it together
+
+- Q: Why wouldn't Shadrach, Meshach and Abednego bow down to the statue?
+  A: Because God's commandments say to worship only Him and not to bow down to idols.
+- Q: What did the king see when he looked into the furnace?
+  A: Four men walking around in the fire, untied and unharmed, and the fourth looked like a son of the gods.
+- Q: The three friends said, "Even if He does not rescue us, we will still not bow down." What does that tell us about their faith?
+  A: They trusted God completely, whether He rescued them or not. God doesn't always take us out of hard things, but He is always with us in them.
+
+## Daniel and the Lions
+
+> "My God sent His angel and shut the mouths of the lions." — Daniel 6:22
+
+Years later, when Daniel was an old man, a new king ruled in Babylon. His name was Darius. Darius put 120 officials in charge of his kingdom, with three leaders over them. Daniel was one of the three.
+
+Daniel was so wise and so honest, and did his work so well, that King Darius planned to put him in charge of the whole kingdom. The other leaders and officials were jealous. They tried to find something Daniel had done wrong, so they could get him into trouble. But they couldn't find anything. Daniel was trustworthy, and he never cheated or lied.
+
+"We'll never catch Daniel doing anything wrong," they said, "unless it has to do with the law of his God."
+
+So they went to the king. "King Darius, live for ever!" they said. "We think you should make a new law. For the next thirty days, anyone who prays to any god or person except you, O king, must be thrown into the den of lions."
+
+King Darius liked the idea, and he signed the law. And in that kingdom, once the king had signed a law, it could never be changed.
+
+When Daniel heard about the new law, he went home to his upstairs room. Its windows opened towards Jerusalem. And three times a day, just as he always did, Daniel got down on his knees, prayed, and gave thanks to God.
+
+The jealous men were watching. They rushed in and found Daniel praying. Then they went straight to the king. "Daniel isn't paying any attention to you, O king, or to your law. He still prays three times a day!"
+
+When the king heard this, he was very upset. He liked Daniel. He tried all day until sunset to find a way to save him. But the men said, "Remember, O king, no law that the king signs can be changed."
+
+So the king gave the order, and Daniel was thrown into the den of lions. "May your God, whom you serve so faithfully, rescue you!" the king said to Daniel. A stone was rolled over the mouth of the den, and the king sealed it with his own ring.
+
+The king went back to his palace. He didn't eat that night, and he couldn't sleep.
+
+At the first light of dawn, the king got up and hurried to the lions' den. "Daniel!" he called anxiously. "Daniel, servant of the living God! Has your God, whom you serve so faithfully, been able to rescue you from the lions?"
+
+And Daniel answered, "O king, live for ever! My God sent His angel and shut the mouths of the lions. They haven't hurt me, because I was found innocent in His sight. And I have never done anything wrong to you, O king."
+
+The king was overjoyed. He had Daniel lifted out of the den. There wasn't a scratch on him, because he had trusted in his God. The men who had plotted against Daniel were punished instead.
+
+Then King Darius wrote to all the people in his kingdom. "Everyone must fear and respect the God of Daniel," he wrote. "For He is the living God, and He lasts for ever. His kingdom will never be destroyed. He rescues and He saves. He has rescued Daniel from the power of the lions."
+
+**Read it in your Bible:** Daniel 6
+
+*Dear God, help me to talk to you every day, like Daniel did, even when it's hard. Thank you that you are the living God who rescues. Amen.*
+
+### Talk about it together
+
+- Q: What was the new law that the jealous men tricked the king into signing?
+  A: For thirty days, anyone who prayed to any god or person except the king would be thrown into the lions' den.
+- Q: What did Daniel do when he heard about the law?
+  A: He went home and prayed to God three times a day by his open window, just as he always had.
+- Q: Daniel kept praying even when it was dangerous. When could you talk to God every day?
+  A: Choose a time together, such as at breakfast, on the way to school, or at bedtime. Daniel had a habit of prayer, and that habit helped him to be brave when the hard day came.
+
+## Queen Esther
+
+> "And who knows if perhaps you have come to the kingdom for such a time as this?" — Esther 4:14
+
+Many of God's people were living far from home, in the great kingdom of Persia. The king of Persia was called Xerxes, and he ruled over a hundred and twenty-seven provinces, from India all the way to Africa.
+
+There was a Jewish girl called Esther. Her mother and father had died, and her older cousin Mordecai had brought her up as his own daughter. Esther was beautiful, and when King Xerxes was looking for a new queen, he chose Esther. He placed the royal crown on her head. But Mordecai told Esther not to tell anyone that she was Jewish.
+
+The king had an important official called Haman. Everyone had to bow down to Haman. But Mordecai wouldn't bow down to him. Haman was furious. And when he found out that Mordecai was Jewish, he decided to destroy not just Mordecai, but all the Jews in the whole kingdom!
+
+Haman went to the king and said, "There is a certain people scattered all through your kingdom who don't obey your laws. Let a law be written to destroy them." The king didn't ask who these people were. He gave Haman his ring to seal the law. So letters went out to every province: on a certain day, all the Jews were to be killed.
+
+When Mordecai heard, he tore his clothes and put on sackcloth and cried loudly in the streets. He sent a message to Esther, begging her to go to the king and plead for her people.
+
+But Esther sent a message back. "There is a law that anyone who goes to the king without being called will be put to death, unless the king holds out his gold sceptre to them. And the king hasn't called for me for thirty days."
+
+Mordecai sent this answer: "Don't think that because you live in the palace you will escape. If you stay silent, help will come from somewhere else, but you and your family will die. And who knows? Perhaps you have become queen for such a time as this."
+
+Then Esther made her choice. "Gather all the Jews in the city," she said, "and fast for me. Don't eat or drink for three days. My maids and I will fast too. Then I will go to the king, even though it is against the law. And if I die, I die."
+
+On the third day Esther put on her royal robes and stood in the courtyard of the palace. When the king saw her, he was pleased, and he held out the gold sceptre. Esther came forward and touched the tip of it. She was safe!
+
+"What is it, Queen Esther?" asked the king. "What do you want? I'll give you anything, even half my kingdom."
+
+Esther was wise. She invited the king and Haman to a special dinner. And at the dinner, she invited them to come to another dinner the next day.
+
+That night, the king couldn't sleep. So he had the history books of his kingdom read to him. And he heard how Mordecai had once discovered a plot to kill the king, and saved his life. "What honour has Mordecai been given for this?" the king asked. "Nothing," said his servants. So the next morning, the king made Haman lead Mordecai through the city on the king's own horse, dressed in the king's own robe, shouting, "This is what is done for the man the king delights to honour!" Haman was furious and ashamed.
+
+At the second dinner, the king asked Esther again, "What do you want, Queen Esther?"
+
+"Please, O king," said Esther, "spare my life and the lives of my people. For we have been sold to be destroyed!"
+
+"Who would dare to do such a thing?" said the king.
+
+"Our enemy," said Esther, "is this wicked man, Haman!"
+
+The king was furious. Haman was put to death on the very gallows he had built for Mordecai. Then the king made Mordecai his chief official, and gave the Jews the right to defend themselves. God's people were saved!
+
+The Jews still celebrate this every year, with a happy festival called Purim. The book of Esther never once mentions God's name. But God was there all along, working behind the scenes, putting Esther in the right place at the right time.
+
+**Read it in your Bible:** Esther 2–8
+
+*Dear God, thank you that you are always at work, even when we can't see you. Please make me brave enough to speak up for people who need help. Amen.*
+
+### Talk about it together
+
+- Q: Why was it dangerous for Esther to go to the king?
+  A: Because there was a law that anyone who went to the king without being called would be put to death, unless he held out his gold sceptre.
+- Q: What did Mordecai mean when he said, "Perhaps you have become queen for such a time as this"?
+  A: That God might have put Esther in the palace exactly so that she could save her people.
+- Q: God's name isn't mentioned in the book of Esther, but He was working all along. How might God be working in your life, even when you can't see it?
+  A: Talk about the people God has put around you and the places He has put you. Like Esther, we may be exactly where we are so that we can help someone.
+
+## Nehemiah Builds the Wall
+
+> "Remember the Lord, who is great and awesome." — Nehemiah 4:14
+
+After many years, God kept His promise and began to bring His people home from far away. Some of them went back to Jerusalem and rebuilt the temple. But the city was still in ruins. Its walls were broken down, and its gates had been burned. Without walls, a city wasn't safe.
+
+Far away in the palace of the king of Persia, there was a man called Nehemiah. He was the king's cupbearer, which meant he served the king his wine. It was an important job, because the king had to trust him completely.
+
+One day some men came from Jerusalem, and Nehemiah asked them how things were there. "The people are in great trouble," they said. "The wall of Jerusalem is broken down, and its gates have been burned."
+
+When Nehemiah heard this, he sat down and cried. For days he was sad. He went without food, and he prayed to the God of heaven. He told God he was sorry for his people's sins, and he asked God to help him when he went to talk to the king.
+
+One day, when Nehemiah was serving the king his wine, the king noticed his sad face. "Why do you look so sad?" the king asked. "You're not ill. This must be sadness of the heart."
+
+Nehemiah was very afraid. But he said, "May the king live for ever! How can I not look sad, when the city where my ancestors are buried lies in ruins, and its gates have been burned?"
+
+"What is it you want?" asked the king.
+
+Then Nehemiah did something very quick. He prayed to the God of heaven, right there, a silent prayer. Then he answered the king. "If it pleases the king, send me to Jerusalem, so that I can rebuild it."
+
+And the king said yes! He gave Nehemiah letters to keep him safe on the journey, and wood from the king's forest to make the gates.
+
+When Nehemiah got to Jerusalem, he rode out secretly at night to look at the broken walls. Then he gathered the people. "You can see the trouble we're in," he said. "Come, let us rebuild the wall of Jerusalem." He told them how God had helped him and what the king had said.
+
+"Let's start rebuilding!" they said. And they got to work. Every family took a section of the wall to build.
+
+But not everyone was happy. Some enemies, Sanballat and Tobiah, laughed at them. "What are these feeble people doing?" they said. "If even a fox climbed up on their wall, it would knock it down!"
+
+Then they planned to attack. So Nehemiah set guards. Half of the men worked, while the other half stood guard with spears and shields. The builders carried materials with one hand and held a weapon with the other! A trumpeter stood by Nehemiah, ready to call everyone together if there was an attack.
+
+"Don't be afraid of them," Nehemiah told the people. "Remember the Lord, who is great and awesome, and fight for your families and your homes."
+
+And they kept on building. The wall was finished in just fifty-two days!
+
+When their enemies heard about it, they were afraid. They knew that this work had been done with the help of God.
+
+**Read it in your Bible:** Nehemiah 1–2; 4; 6:15–16
+
+*Dear God, thank you that I can pray to you anywhere, even in a quick, silent prayer. Help me to work hard and not give up when people laugh at me. Amen.*
+
+### Talk about it together
+
+- Q: Why was Nehemiah so sad when he heard about Jerusalem?
+  A: Because the city's walls were broken down and its gates burned, so God's people were in trouble and not safe.
+- Q: What did Nehemiah do right before he answered the king?
+  A: He prayed a quick, silent prayer to God.
+- Q: Nehemiah's enemies laughed at the builders, but they kept going. What could you keep going with, even if it's hard?
+  A: Think of something real, like learning to read, practising an instrument, or being kind to someone difficult. Like Nehemiah, we can pray, remember how great God is, and keep going.

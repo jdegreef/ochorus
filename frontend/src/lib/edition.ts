@@ -36,3 +36,17 @@ export function splitEdition(
 	if (!m) return null;
 	return { base: m[1], audience: m[2].trim(), kind: edition[1] as 'teens' | 'children' };
 }
+
+/**
+ * Whether the chapter reader treats a chapter as a children's one: its young
+ * layout, story styling, Listen button, gentle speed and spoken questions. A
+ * "-children" edition is one; so is a book in a series written for young
+ * readers (Tell Me the Story, Brave for God, Rooted), which has no edition to
+ * say so. A teens edition never is, whatever its series.
+ */
+export function childrensReading(
+	kind: 'teens' | 'children' | null,
+	bookAudience: string | undefined
+): boolean {
+	return kind === 'children' || (kind === null && bookAudience === 'young_readers');
+}

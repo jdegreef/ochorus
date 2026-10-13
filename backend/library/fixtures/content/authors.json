@@ -136,6 +136,22 @@
   {
     "model": "library.author",
     "fields": {
+      "slug": "james-degreef-and-ochorus",
+      "name": "James DeGreef and Ochorus",
+      "bio": "",
+      "bio_html": "",
+      "photo_url": "",
+      "birth_year": null,
+      "death_year": null,
+      "original_language": "en",
+      "is_imprint": true,
+      "created_at": "2026-10-10T00:00:00.000Z",
+      "same_as": []
+    }
+  },
+  {
+    "model": "library.author",
+    "fields": {
       "slug": "r-a-torrey",
       "name": "R. A. Torrey",
       "bio": "Reuben Archer Torrey (1856–1928) was an American evangelist, pastor and teacher who came to faith at Yale on a night he had resolved to take his own life. D. L. Moody made him the first superintendent of the Moody Bible Institute and he pastored the Chicago Avenue Church, later serving as first dean of the Bible Institute of Los Angeles. He wrote more than forty books, chiefly on prayer and the Holy Spirit.",

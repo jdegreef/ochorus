@@ -22,6 +22,7 @@ const api = vi.hoisted(() => ({
 	listPlans: vi.fn(),
 	getAudienceShelf: vi.fn(),
 	getBook: vi.fn(),
+	getSermon: vi.fn(),
 	listSermons: vi.fn(),
 	listAuthors: vi.fn(),
 	getQuotePage: vi.fn()
@@ -84,6 +85,15 @@ describe('for-shelves endpoint', () => {
 	const book = (slug: string) =>
 		({ slug, language: 'en', title: slug, author: { slug: 'a', name: 'A', birth_year: null } }) as unknown as BookSummary;
 	const plan = (slug: string) => ({ slug }) as PlanSummary;
+	const sermon = (slug: string, questions = 1) => ({
+		slug,
+		title: slug,
+		scripture_ref: '',
+		word_count: 2000,
+		author_name: 'A',
+		author_slug: 'a',
+		study_questions: Array.from({ length: questions }, () => ({ question: 'Q', answer: 'A' }))
+	});
 	/** Every slug any page names, published — so each shelf fills. */
 	const everything = () => [
 		...new Set(FOR_PAGES.flatMap((p) => [...p.shelves.flatMap((s) => s.picks), ...(p.offline?.picks ?? [])]))
@@ -102,6 +112,7 @@ describe('for-shelves endpoint', () => {
 			async (slug: string) => ({ ...book(slug), pdf_url: `/pdfs/${slug}.pdf`, epub_url: '' }) as unknown as BookDetail
 		);
 		api.listSermons.mockResolvedValue([{ slug: 's1' }, { slug: 's2' }]);
+		api.getSermon.mockImplementation(async (slug: string) => sermon(slug));
 		api.listAuthors.mockResolvedValue(
 			[...new Set(FOR_PAGES.flatMap((p) => p.authors))].map((slug) => ({
 				slug,
@@ -197,5 +208,50 @@ describe('for-shelves endpoint', () => {
 
 	it('404s an unknown group rather than inventing a shelf', async () => {
 		await expect(get('nobody')).rejects.toMatchObject({ status: 404 });
+	});
+
+	it('runs a sermon series a week per sermon with questions, skipping one without or one that fails', async () => {
+		const [first, second, third, ...rest] = FOR_PAGES.find((p) => p.slug === 'small-groups')!.series![0].picks;
+		api.getSermon.mockImplementation(async (slug: string) => {
+			if (slug === second) throw new Error('404');
+			return sermon(slug, slug === third ? 0 : 1);
+		});
+		const got = await get('small-groups');
+		expect(got.series[0].sermons.map((w) => w.slug)).toEqual([first, ...rest].slice(0, 6));
+		expect(got.series[0].sermons[0]).toMatchObject({ questions: 1, author: { name: 'A' } });
+		expect((await get('youth')).series).toEqual([]);
+	});
+
+	it('shows three levels only where all three editions are published', async () => {
+		const levels = FOR_PAGES.find((p) => p.slug === 'homeschool')!.levels!;
+		const family = (b: string) => [`${b}-children`, `${b}-teens`, b];
+		// The first work is missing its teens edition, so the next two show.
+		api.listBooks.mockResolvedValue(
+			[...everything(), ...levels.flatMap(family)].filter((s) => s !== `${levels[0]}-teens`).map(book)
+		);
+		const got = await get('homeschool');
+		expect(got.levels.map((f) => f.map((r) => r.book.slug))).toEqual([family(levels[1]), family(levels[2])]);
+		expect((await get('churches')).levels).toEqual([]);
+	});
+
+	it("lists every other live language from that language's own lists, only where the page asks", async () => {
+		api.listBooks.mockImplementation(async (lang: string) =>
+			lang === 'lg' ? [] : (lang === 'en' ? everything() : ['a-sw', 'b-sw']).map(book)
+		);
+		api.listSermons.mockImplementation(async (lang: string) => {
+			if (lang === 'pt') throw new Error('503');
+			return [{ slug: 's' }];
+		});
+		const got = await get('missionaries');
+		const codes = got.languages.map((l) => l.code);
+		// Luganda has no books in this mock, so it has no row; Portuguese's
+		// sermons failing costs only its sermon count.
+		expect(codes).not.toContain('lg');
+		expect(codes).not.toContain('en');
+		expect(got.languages.find((l) => l.code === 'pt')?.counts).toEqual({ books: 2, sermons: 0, plans: expect.any(Number) });
+		expect(got.languages.find((l) => l.code === 'sw')).toMatchObject({ name: 'Swahili', counts: { books: 2, sermons: 1 } });
+		api.listBooks.mockClear();
+		expect((await get('churches')).languages).toEqual([]);
+		expect(api.listBooks).toHaveBeenCalledTimes(1);
 	});
 });

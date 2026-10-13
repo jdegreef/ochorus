@@ -152,14 +152,31 @@
 			"bar": 0
 		},
 		"absolute-surrender-teens": {
-			"ground": "fe43d6a171aabe76f648f5bc3a324aa0219395f298c1c1a16750cb961fddceee",
-			"style": "devotional",
+			"ground": "2824c44d2894dd9a07f545826f8a66d29a3413cdeacce6294ed60f0dbbcb04f5",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[166, 275, 434, 351],
+					[144, 341, 456, 417],
+					[131, 407, 469, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
 		},
 		"all-of-grace": {
 			"ground": "25d18c1f3133cdd46d916757dc58d064dd8cda9ff6adce9f7edf269c234762d4",
@@ -343,14 +360,31 @@
 			"bar": 0
 		},
 		"am/absolute-surrender-teens": {
-			"ground": "607852ca60174ddc03eb564dc7f6de90e5f4f5d4d4bdae0e2ecf037697155799",
-			"style": "devotional",
+			"ground": "5ce47a6388de77172d08539cbb7cc84fc730e2cd8c2a569ecaf1e2710184024d",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[139, 275, 461, 351],
+					[190, 341, 410, 417],
+					[145, 407, 455, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
 		},
 		"am/all-of-grace": {
 			"ground": "ec39b51a2f1a809ace85ede328399c971d1501015f5da0beb73fc5876978ed32",
@@ -2227,14 +2261,31 @@
 			]
 		},
 		"am/the-bruised-reed-teens": {
-			"ground": "ddba6797bdefd4addea61a3084ad14ba515f6203a5f76366c507b8e19e4925e9",
-			"style": "press",
+			"ground": "b428c341cab818fbe9e0f9c8e0fbdc20f718c1875088bc2bdf88cd8d8f978fcb",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[153, 102, 447, 131]
+				],
+				"title": [
+					[140, 275, 460, 351],
+					[195, 341, 405, 417],
+					[145, 407, 455, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
 		},
 		"am/the-christians-secret-of-a-happy-life-4": {
 			"ground": "fab46d178e2e9ba13001d92b4336a7c22fcfa2bd13a6e32d4b5504b410ed73f1",
@@ -2337,14 +2388,30 @@
 			]
 		},
 		"am/the-imitation-of-christ-teens": {
-			"ground": "34af35f686c614d7da6004796d49d69ac655628ebff2765d1edb449424b1a8ca",
-			"style": "devotional",
+			"ground": "9dd7dc2baf5b30334e50ac000fe1ff4942b55fa69539a82caf3ad120887c9fa8",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[139, 102, 461, 131]
+				],
+				"title": [
+					[60, 308, 540, 384],
+					[145, 374, 455, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"am/the-inner-chamber": {
 			"ground": "df4f1775ddb1ebf270d95fdcfa8f01bf2c23f7f241f47c2e095085533218008b",
@@ -2798,6 +2865,16 @@
 				313,
 				482
 			]
+		},
+		"an-all-round-ministry": {
+			"ground": "ea426d716de1f571e0c78d28f25ca7988df1fbbe7b020895bd71f3ea6f35d96a",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"anchored-1": {
 			"ground": "c5e22c0400546afd69a6dc4c01f5c2ce534c43010634b5eaae494324409db1d8",
@@ -3951,6 +4028,16 @@
 				478
 			]
 		},
+		"at-the-masters-feet": {
+			"ground": "fa17689d5e35829e54247c65a4d041d37199a428494acdb84c58c163e70a73f5",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"brave-for-god": {
 			"ground": "20c53172ca517970f584b2547b408aa333f33525846b6322c9b60b031a52dd9e",
 			"style": "young",
@@ -4271,6 +4358,16 @@
 				287,
 				508
 			]
+		},
+		"come-ye-children": {
+			"ground": "3a10279db8dc2bc92b1e2aafd7e893619691286df11c97ba595073fdc4e12680",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
 		},
 		"confessions": {
 			"ground": "65b37fbd511d6d02b343619c9c3cd7e029ec286c7dbf5eaa6c8c295010ed9abd",
@@ -4705,6 +4802,36 @@
 				505
 			]
 		},
+		"es/a-brand-plucked-from-the-fire": {
+			"ground": "bccc266f1594c96a3d8258f2fd087eb2db5484a8dd28bbb3cf593facbc427446",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[142, 102, 458, 131]
+				],
+				"title": [
+					[192, 272, 408, 348],
+					[157, 337, 443, 413],
+					[181, 403, 419, 479]
+				],
+				"subtitle": [
+					[147, 552, 453, 573]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				221,
+				573
+			]
+		},
 		"es/a-call-to-the-unconverted": {
 			"ground": "827ffa2f6ca60178ab1158f2715f85e868bce52c644654ae9c9de6dc90979f6c",
 			"style": "press",
@@ -4773,6 +4900,37 @@
 			"scrim": 1,
 			"layout": "rail/teal",
 			"bar": 0
+		},
+		"es/a-serious-call": {
+			"ground": "0f0fa39e778476503a18eca26eb88e79a4ce6932b5b90b4fc279a23ece7ef59d",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[180, 102, 420, 131]
+				],
+				"title": [
+					[148, 243, 452, 306],
+					[96, 306, 504, 369],
+					[116, 368, 484, 431]
+				],
+				"subtitle": [
+					[138, 494, 462, 522],
+					[165, 522, 435, 550]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				244,
+				550
+			]
 		},
 		"es/a-short-and-easy-method-of-prayer": {
 			"ground": "c75f9e14f8a2a0e87fcbe1018606942b7134b37ce232ff3de18a78afd4693e99",
@@ -4856,6 +5014,36 @@
 			"scrim": 1,
 			"layout": "fade/oxblood",
 			"bar": 0
+		},
+		"es/amanda-smith-autobiography": {
+			"ground": "d9b8745b212da55a7b047884604de077c0a5232ed1c5d04bf1345a854f54cfa5",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[100, 294, 500, 370],
+					[69, 360, 531, 436]
+				],
+				"subtitle": [
+					[89, 509, 511, 530],
+					[114, 530, 486, 551]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				244,
+				551
+			]
 		},
 		"es/amanda-smith-autobiography-children": {
 			"ground": "c6ff9995d114e3f42d508e1695fd9f922eb96e2247b70d06ed1be3b2450a3a2f",
@@ -5155,6 +5343,38 @@
 			"layout": "rail/rust",
 			"bar": 0
 		},
+		"es/epistles-of-ignatius": {
+			"ground": "0872982ec0c1c2e4eb11d4526158696e283f5648e6288f4abd0d8747bc5f3ef6",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.5,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[101, 102, 499, 131]
+				],
+				"title": [
+					[142, 258, 458, 320],
+					[108, 304, 492, 366],
+					[130, 349, 470, 411],
+					[143, 395, 457, 457]
+				],
+				"subtitle": [
+					[160, 486, 440, 507],
+					[166, 507, 434, 528]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				267,
+				528
+			]
+		},
 		"es/essentials-of-prayer": {
 			"ground": "706179fb754c8fd90d47cd17780cd9892c98d1bed0f206f4449a0fce88e526b4",
 			"style": "devotional",
@@ -5414,6 +5634,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"es/how-to-bring-men-to-christ": {
+			"ground": "641022ae5a933c8d2495673b2d418f9552a2d9038a9a533f89c9036d6c8be94e",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "diagonal/ochre",
+			"bar": 0.055
+		},
 		"es/how-to-succeed-in-the-christian-life": {
 			"ground": "ce12a3dec2a82f99c8561a1a213e498d3d7a7a7d9ca86b1a319565b2f819dd1d",
 			"style": "revival",
@@ -5433,6 +5663,37 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0
+		},
+		"es/hurlbuts-life-of-christ": {
+			"ground": "2a0c6de03ae3f08101e7076f6e160ee0d62bb7261450d02694a7ce2f3f4a91e5",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[122, 256, 478, 319],
+					[133, 306, 467, 369],
+					[104, 357, 496, 420]
+				],
+				"subtitle": [
+					[151, 476, 449, 504],
+					[129, 504, 471, 532]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				263,
+				532
+			]
 		},
 		"es/jesus-himself-2": {
 			"ground": "ee20fb7af17075643a06a6e89edd086b3c330c6080fe9e113c814a249b4c402b",
@@ -5468,6 +5729,160 @@
 			"middle": [
 				317,
 				478
+			]
+		},
+		"es/journal-of-an-expedition-up-the-niger": {
+			"ground": "0dfd9658a4312574bf9c76ff730b1834257096a236b84839603b3518ba7367a7",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[72, 102, 528, 131]
+				],
+				"title": [
+					[123, 272, 477, 348],
+					[158, 337, 442, 413],
+					[147, 403, 453, 479]
+				],
+				"subtitle": [
+					[78, 552, 522, 573]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				221,
+				573
+			]
+		},
+		"es/key-teachings-of-a-b-simpson": {
+			"ground": "02e30b132a18bdb58b3583bc98b1c64038a2b472fe09c6987f1a86c2fd1fa3b7",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[175, 102, 425, 131]
+				],
+				"title": [
+					[105, 169, 495, 232],
+					[168, 225, 432, 288],
+					[158, 280, 442, 343]
+				],
+				"subtitle": [
+					[160, 404, 440, 432],
+					[183, 432, 417, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
+			]
+		},
+		"es/key-teachings-of-jonathan-edwards": {
+			"ground": "f90ce5862c82a85e8131357b4c1e0a2bbfc9b609e755dea500f9df6c0b216dc9",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[117, 102, 483, 131]
+				],
+				"title": [
+					[105, 169, 495, 232],
+					[75, 225, 525, 288],
+					[188, 280, 412, 343]
+				],
+				"subtitle": [
+					[160, 404, 440, 432],
+					[183, 432, 417, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
+			]
+		},
+		"es/key-teachings-of-richard-baxter": {
+			"ground": "a7389de7d340a799790a1dbd404ec7a07d971f4f3c17708f86529922f1aa02a4",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[147, 102, 453, 131]
+				],
+				"title": [
+					[105, 169, 495, 232],
+					[200, 225, 400, 288],
+					[107, 280, 493, 343]
+				],
+				"subtitle": [
+					[160, 404, 440, 432],
+					[183, 432, 417, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
+			]
+		},
+		"es/key-teachings-of-watchman-nee": {
+			"ground": "95593639edf00cab1ee3dbb42ec6a4e10ecabf3fd6b82007211655363be1f1bd",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[161, 102, 439, 131]
+				],
+				"title": [
+					[105, 169, 495, 232],
+					[200, 225, 400, 288],
+					[109, 280, 491, 343]
+				],
+				"subtitle": [
+					[160, 404, 440, 432],
+					[183, 432, 417, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
 			]
 		},
 		"es/life-and-diary-of-david-brainerd": {
@@ -5529,6 +5944,16 @@
 				227,
 				567
 			]
+		},
+		"es/life-of-antony": {
+			"ground": "74857e65971bf8ea6e7b8b23eddfdcbba9a0cbd11a03f62965955e14d75619d2",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/indigo",
+			"bar": 0
 		},
 		"es/lord-teach-us-to-pray-2": {
 			"ground": "1775aa31a125fb01ed70e2b9736e21d2193c62d2d0ba4751f750c7911114dabc",
@@ -5683,6 +6108,36 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"es/mortification-of-sin": {
+			"ground": "1ebb67c752ae73b7d75218477c7570e06f4f9707aff756da74cc5cab2942088b",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[105, 278, 495, 351],
+					[140, 337, 460, 410],
+					[150, 396, 450, 469]
+				],
+				"subtitle": [
+					[53, 522, 547, 543]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				252,
+				543
+			]
+		},
 		"es/necessity-of-prayer": {
 			"ground": "3df1bade5a5b97226ca4291390c2dc77ecd451f13fc040a9e3b56ad5ff8723f4",
 			"style": "devotional",
@@ -5712,6 +6167,45 @@
 				],
 				"subtitle": [
 					[188, 451, 412, 472]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				323,
+				472
+			]
+		},
+		"es/on-the-incarnation": {
+			"ground": "71689b71c3ec4146ae5951f4b84000f6a8ed811b98e9ee3fdda9d4273d1963ee",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/indigo",
+			"bar": 0
+		},
+		"es/on-the-priesthood": {
+			"ground": "c7f6c3fd944aa81cd414d70bc043a27f8f5133197754c5e1049a4c35c885ccca",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[131, 102, 469, 131]
+				],
+				"title": [
+					[175, 314, 425, 376],
+					[127, 360, 473, 422]
+				],
+				"subtitle": [
+					[62, 451, 538, 472]
 				],
 				"mark": [
 					[232, 664, 368, 746]
@@ -5909,6 +6403,35 @@
 			"layout": "fade/slate",
 			"bar": 0.035
 		},
+		"es/religious-experience-and-journal": {
+			"ground": "59d6ced45cea91ae35b009dfa2a94d480f5fd44f697b7d0ed9c70c08d98588fa",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[195, 102, 405, 131]
+				],
+				"title": [
+					[144, 289, 456, 352],
+					[83, 351, 517, 414]
+				],
+				"subtitle": [
+					[49, 477, 551, 505]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
+		},
 		"es/revival-lectures": {
 			"ground": "5ee194c42c95aa84af332789a2b8fb7be0f8d5c28451f9ee66ca0beecd1df41d",
 			"style": "revival",
@@ -6033,6 +6556,16 @@
 			"layout": "wash/sage",
 			"bar": 0.04
 		},
+		"es/selected-sermons-edwards": {
+			"ground": "e1ba0ae042b70a3a531992afea4f192df2c1357c74508570174e16747a015def",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/slate",
+			"bar": 0
+		},
 		"es/selected-sermons-whitefield": {
 			"ground": "48a65fc59a55dcddea239f72402100f66c206c54df2dc97b160e9dacfeb376bc",
 			"style": "enlightenment",
@@ -6071,6 +6604,16 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "rail/teal",
+			"bar": 0
+		},
+		"es/sermons-on-several-occasions": {
+			"ground": "19f06f7eacdf3b7e3ad23bc1c75d70d26b00a0f1b7b1aca1b1deee4e6b5b15a5",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/mauve",
 			"bar": 0
 		},
 		"es/soar-like-the-eagle-3": {
@@ -6205,6 +6748,34 @@
 			"layout": "fade/oxblood",
 			"bar": 0
 		},
+		"es/the-bruised-reed": {
+			"ground": "7618420bb2988970794d46d3f9d860394abe07687d1d54937f959c52a5c7e8f0",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[153, 102, 447, 131]
+				],
+				"title": [
+					[116, 337, 484, 410]
+				],
+				"subtitle": [
+					[157, 463, 443, 484]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				311,
+				484
+			]
+		},
 		"es/the-christians-secret-of-a-happy-life-4": {
 			"ground": "78556283fe2f53ce46ccddeeddfb8d3293adcf22c5c9e75eaab7680b4cce364c",
 			"style": "devotional",
@@ -6242,6 +6813,16 @@
 			"layout": "box/teal",
 			"bar": 0
 		},
+		"es/the-fundamental-doctrines-of-the-christian-faith": {
+			"ground": "93266f5661111f21a12a5b0e1404c8153d28e283bd9ebca26d8ec295192dd3cb",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "diagonal/ochre",
+			"bar": 0
+		},
 		"es/the-god-of-all-comfort": {
 			"ground": "582097ba8a4394fa0cb338971250642bc4cd65dbdd9e8de25bda19b9bf577f63",
 			"style": "devotional",
@@ -6277,6 +6858,35 @@
 			"scrim": 1,
 			"layout": "box/teal",
 			"bar": 0
+		},
+		"es/the-imitation-of-christ": {
+			"ground": "b6ec91ef725af6ebd7a2ec583ac59fa7f5243643e2f974ed770dbffb75372b80",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[139, 102, 461, 131]
+				],
+				"title": [
+					[142, 266, 458, 348],
+					[185, 338, 415, 420]
+				],
+				"subtitle": [
+					[64, 496, 536, 524]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
+			]
 		},
 		"es/the-inner-chamber": {
 			"ground": "336703e5a3b031ffc4533590d4d4a6024e164a09540a43bc18546d77db4c3e7d",
@@ -6514,6 +7124,37 @@
 			"layout": "band/oxblood",
 			"bar": 0.04
 		},
+		"es/treatises-of-cyprian": {
+			"ground": "fd0b209f41ef6358b0e2ac61c21c094fd7c1efd858b2ce91ef9b2437c4a6e861",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[95, 102, 505, 131]
+				],
+				"title": [
+					[102, 304, 498, 366],
+					[122, 349, 478, 411]
+				],
+				"subtitle": [
+					[98, 440, 502, 461],
+					[44, 461, 556, 482],
+					[44, 461, 541, 482]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"es/true-vine": {
 			"ground": "12707a4313939e946d4f132f09ee3e1946db2fcfab8555a0f40dc3ee5a3584f1",
 			"style": "devotional",
@@ -6523,6 +7164,34 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0
+		},
+		"es/tukutendereza": {
+			"ground": "c79b2e9755a20e8a50a0dd76e3380b08833a47267ef945f231359870e5b14d0f",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[72, 314, 528, 390]
+				],
+				"subtitle": [
+					[90, 448, 510, 476]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				319,
+				476
+			]
 		},
 		"es/union-and-communion": {
 			"ground": "4f1f6ff65d4511cf388f1a10b5e9b21c9598716f0d06f9c5fcf6382b2190dcdf",
@@ -6732,6 +7401,36 @@
 				541
 			]
 		},
+		"fire-against-the-dark": {
+			"ground": "3cbc03c11ba786aa74cfd145fdf2433ba00931e752d7a9db183e5d8246e55eea",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[292, 257, 308, 301],
+					[148, 332, 452, 407],
+					[189, 393, 411, 468]
+				],
+				"subtitle": [
+					[70, 522, 530, 550]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				245,
+				550
+			]
+		},
 		"first-epistle-of-clement": {
 			"ground": "137cdb7e6283d0991777a24feef91bed0afaf15652c2248870f789f239e635b4",
 			"style": "inscriptional",
@@ -6794,14 +7493,60 @@
 			]
 		},
 		"foxes-book-of-martyrs-teens": {
-			"ground": "04afc7649727f0cdebaff466f8e24ac79e2ce356003e0edbc99f68628ef693c5",
-			"style": "press",
+			"ground": "0f8c05f4ad6a4602355c7fdfad60b7b9e731a1d49d2f6c396cb4e30f2daf768f",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[202, 102, 398, 131]
+				],
+				"title": [
+					[123, 275, 477, 351],
+					[141, 341, 459, 417],
+					[131, 407, 469, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
+		},
+		"fr/a-brand-plucked-from-the-fire": {
+			"ground": "31d1f6e8e048daa14c4a185b6242a9644accb5265421d936eba5e43e0b2942a3",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[142, 102, 458, 131]
+				],
+				"title": [
+					[192, 305, 408, 381],
+					[111, 370, 489, 446]
+				],
+				"subtitle": [
+					[120, 520, 480, 541]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				254,
+				541
+			]
 		},
 		"fr/a-retrospect-children": {
 			"ground": "ef73899737cbfdce10221020943c9275d537bd1e2faaf494d5f611effaa02ac3",
@@ -7521,6 +8266,38 @@
 				460
 			]
 		},
+		"fr/life-experience-gospel-labours": {
+			"ground": "bc0500cd948cfff6ad3a5d7a1010c16e1befda06fa707c51606247cc685c0e67",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[159, 102, 441, 131]
+				],
+				"title": [
+					[60, 202, 540, 262],
+					[136, 261, 464, 321],
+					[139, 321, 461, 381],
+					[148, 380, 452, 440],
+					[129, 440, 471, 500]
+				],
+				"subtitle": [
+					[196, 564, 404, 592]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				203,
+				592
+			]
+		},
 		"fr/life-of-pascal": {
 			"ground": "84bc72d5d16e144ddd91aa7a7780ef435b5701552787fb9739d915c2a3eb68c4",
 			"style": "press",
@@ -7799,6 +8576,16 @@
 			"scrim": 1,
 			"layout": "band/teal",
 			"bar": 0
+		},
+		"fr/power-through-prayer": {
+			"ground": "071275bf69fa6542954e4e693d88f4fb5bed861087179716819d0408c65d3911",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0.04
 		},
 		"fr/prayer-and-praying-men": {
 			"ground": "939bf55b399576592c07c778b03073d65044e788ab44a6e50e9753f3f1f9f995",
@@ -9652,6 +10439,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"how-i-became-a-christian": {
+			"ground": "f4b79402b591857946602680c465a16b89996e5fe001830d86e4f24ede51ab59",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"how-to-bring-men-to-christ": {
 			"ground": "90e959b8dbd59b93bef2f3766b1a9e33981a4f9fdb0357c6eba650a723470ae3",
 			"style": "revival",
@@ -9673,14 +10470,31 @@
 			"bar": 0
 		},
 		"how-to-succeed-in-the-christian-life-teens": {
-			"ground": "33fd32973e43fc5448b37995fe33da87968d8c66d980576a2f3cadf7c3aaafc1",
-			"style": "revival",
+			"ground": "ea289b99f546642f0b1489e435812900b299504363d439ca4079ed49ff66b312",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[63, 275, 537, 351],
+					[68, 341, 532, 417],
+					[67, 407, 533, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
 		},
 		"hurlbuts-life-of-christ": {
 			"ground": "3ab4867b67657e59874967d4faed29e1ff5cbaac62340537d1e151edd5280d16",
@@ -9803,6 +10617,26 @@
 				313,
 				482
 			]
+		},
+		"john-ploughmans-pictures": {
+			"ground": "c6841f48e060466855a1a8b638aba91f63f5fa80103d01067cb08e6e53b60f55",
+			"style": "revival",
+			"volume": "2",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"john-ploughmans-talk": {
+			"ground": "10574c4220ec2c9a975cc38bc87eaf024b43f49aefddd4168cf0eb5b1dfc9b08",
+			"style": "revival",
+			"volume": "1",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"journal-of-an-expedition-up-the-niger": {
 			"ground": "37494b21a674597e513108409f2bfd2dfeca857a53d78b9bbb7e51ffe34492d3",
@@ -10889,6 +11723,26 @@
 				376
 			]
 		},
+		"lectures-to-my-students": {
+			"ground": "50ecd72319750165b8e03713a83f60d936a416dd1194989f2b537b66b721645b",
+			"style": "revival",
+			"volume": "1",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"lectures-to-my-students-second-series": {
+			"ground": "fb2c6d281d2c548fd3faaae61aac8ee0e950d18dd65fc1779eebd7032a40f944",
+			"style": "revival",
+			"volume": "2",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"let-us-pray-2": {
 			"ground": "4725e322e9f3052085a3cf616a13b1d6bbb3a9f9efe226aaf09d166fcf8aa6c9",
 			"style": "house",
@@ -11742,14 +12596,32 @@
 			]
 		},
 		"life-and-diary-of-david-brainerd-teens": {
-			"ground": "0e27b525e6e3a2a25c3b46b63559d4c25599b2005c3f342aaa8d50803601300c",
-			"style": "enlightenment",
+			"ground": "4bf6c96a0d593acdff665e4ddae6c492862d3386e76102eee2db5f9a570beca2",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[150, 102, 450, 131]
+				],
+				"title": [
+					[114, 242, 486, 318],
+					[84, 308, 516, 384],
+					[164, 374, 436, 450],
+					[131, 440, 469, 516]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				247,
+				548
+			]
 		},
 		"life-experience-gospel-labours": {
 			"ground": "14ce76f8769c384ae142f7a77f4a4eb21ed7c2029fac5a2a4f24b82926eae475",
@@ -11792,14 +12664,31 @@
 			"bar": 0
 		},
 		"life-of-antony-teens": {
-			"ground": "71e480e163f4a139653a063c55393864bd95eda9948b58fb729f4b544588b384",
-			"style": "inscriptional",
+			"ground": "54b398be523628caf025af2bc772dc71b3bd413387956132b53292ccbc3472f5",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.85,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[43, 102, 557, 131]
+				],
+				"title": [
+					[177, 275, 423, 351],
+					[152, 341, 448, 417],
+					[131, 407, 469, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
 		},
 		"life-of-pascal": {
 			"ground": "a7c80aa068e841b291e11a02feed83b384f400758b7a9b70b4b6b28d110d082b",
@@ -11912,6 +12801,26 @@
 				482
 			]
 		},
+		"meditations-maria-w-stewart": {
+			"ground": "6b17ab45ca4c1cc3a2f3e4f4c01a95423dc6a590e2d97af59c138599958c490d",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"memoirs-of-mrs-zilpha-elaw": {
+			"ground": "889c0671f664ae4283a6d81d8cb1f132a1d82fb8f58d46f26c21bb3331603b82",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"ministry-of-intercession": {
 			"ground": "c29b4e95738f0b032d0f2181c4a32596814abd3bee59c86d7d3f189401531b4f",
 			"style": "devotional",
@@ -11962,14 +12871,31 @@
 			]
 		},
 		"mortification-of-sin-teens": {
-			"ground": "6704097db221677a9e6049939c32efa4265746969e144da9e7c2728a2d4a36aa",
-			"style": "press",
+			"ground": "6c6cd3d8e9ef43d3235c43ee3da242d73547a3ac08025d074e0679f670b2287d",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[242, 275, 358, 351],
+					[61, 341, 539, 417],
+					[76, 407, 524, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
 		},
 		"necessity-of-prayer": {
 			"ground": "4453c77330141789ef73c7211ec8bf6011cceacf05b45f5b8bafe0af09f10e23",
@@ -12074,14 +13000,30 @@
 			]
 		},
 		"orthodoxy-teens": {
-			"ground": "1608a79355cd7497a183253d0de65eaf7a9d61feee9b6921e224d624330eab90",
-			"style": "revival",
+			"ground": "180cc4cb60b5da3c10c91fd835fea3436eb83f19b4cba565caa82ea06a11b9e5",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[137, 102, 463, 131]
+				],
+				"title": [
+					[138, 308, 462, 384],
+					[131, 374, 469, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"our-daily-walk": {
 			"ground": "8aa8e59e6f24962428661d08f47f3a4ac4ffbcfb2a94619e444f41d3e5ef0315",
@@ -12251,14 +13193,30 @@
 			]
 		},
 		"pensees-teens": {
-			"ground": "edd5a335914e1970bbafbfb70d23f8b9745081ba4e167ceb32f07e8f1ecea8a0",
-			"style": "press",
+			"ground": "9fac807190783a9f6e626cbac5ee995643d1bf721203ddae60f7306c12af8be3",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[179, 308, 421, 384],
+					[131, 374, 469, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"phantastes": {
 			"ground": "9500f7e0a5e17a0543cf815f1f1b86a964d0cac00a73dfb29a79ed674c91b084",
@@ -13637,6 +14595,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"reality-and-religion": {
+			"ground": "a7a72f0eb6c870fa919f383874a04a31a6a514bba7ee8e61ff5ace81c8c6a325",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"reality-of-prayer": {
 			"ground": "3ff7e009de2d59ab5a76e18ec46a5100eaaf0141c4d00598d254897c97e0cca9",
 			"style": "devotional",
@@ -14113,6 +15081,16 @@
 		},
 		"spurgeon-on-prayer": {
 			"ground": "01c102b43a408ef9cac58d20bcde892a01d65cfab95db7a96caaad057f3b7f21",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
+		"spurgeon-on-the-holy-spirit": {
+			"ground": "c3310f9dfe1170bbe3718a98913a97d5b684c018a1d87874be83eebb2d07d240",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
@@ -15887,6 +16865,56 @@
 				556
 			]
 		},
+		"tell-me-the-story-1": {
+			"ground": "a878a98321ef1ce6ef0a204522921bf99a71fd17d3fedc8cec9add6682617656",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"tell-me-the-story-2": {
+			"ground": "3e7838f67302198f2e006045b778840f71bd7ff2c9bbb0bb2908a5e7ad8b1160",
+			"style": "young",
+			"volume": "2",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"tell-me-the-story-3": {
+			"ground": "d0d71070b04ed025d4a474b5ccaf1900b6b625170244c397bd5b26b907cedcca",
+			"style": "young",
+			"volume": "3",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"tell-me-the-story-4": {
+			"ground": "431cf31b0a9fc88dde86193be5a1ce3cbaa2120cf02c1a7939072ed10fa5a37c",
+			"style": "young",
+			"volume": "4",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"tell-me-the-story-5": {
+			"ground": "6be7e977de7b97c318779a0cd428b0052ec587619c37c28d934a02d258d2445b",
+			"style": "young",
+			"volume": "5",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"ten-commandments": {
 			"ground": "66bc7534f5894353ab2420e9d7770736c70994ce2d0ae9ee07510660ca018fb3",
 			"style": "press",
@@ -15956,14 +16984,30 @@
 			]
 		},
 		"the-bruised-reed-teens": {
-			"ground": "94a7f0e66ec52bb6f92ad906b526b229d6ccdea8d7b4794e71bdd4c12d7aee5d",
-			"style": "press",
+			"ground": "e2a52c11499313473625f9724c9ec965e0a689f9acba10a25701f64f23c2da40",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[153, 102, 447, 131]
+				],
+				"title": [
+					[118, 308, 482, 384],
+					[49, 374, 551, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"the-everlasting-man": {
 			"ground": "7cd08728ce0c3411240e7980ae0c2a467bcf8b5776f9c54a9a8e914df0196893",
@@ -16051,14 +17095,31 @@
 			]
 		},
 		"the-imitation-of-christ-teens": {
-			"ground": "75c086223099e66a44c309a05dd4a08c2c5c3edb96dcee8547a4c83fd8b01516",
-			"style": "devotional",
+			"ground": "8348a3ccd20ac2ddbb49184d89bfebfffb7ea4afb4d2061d5c24a724efaee6fd",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[139, 102, 461, 131]
+				],
+				"title": [
+					[93, 275, 507, 351],
+					[169, 341, 431, 417],
+					[131, 407, 469, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
 		},
 		"the-life-of-trust": {
 			"ground": "89b1f3246a70f85e0a65425b7f842156ca97ed3ab1257e1dadc9ec7c710205b6",
@@ -16153,14 +17214,31 @@
 			]
 		},
 		"the-practice-of-the-presence-of-god-teens": {
-			"ground": "8da3334502de96957f5789f4aabacbacedd1e032fc2638a0ecc668d3f930f0c4",
-			"style": "press",
+			"ground": "b86afd4a0a897f4562b326c2f2011de0cbff349b2ea028192f46d755e08b17e7",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[73, 275, 527, 351],
+					[70, 341, 530, 417],
+					[64, 407, 536, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
 		},
 		"the-princess-and-the-goblin": {
 			"ground": "bcf401b70dfb37b6d590139e35cc85d5b3d201091eb714d1d2bb48b6fc9f49e4",
@@ -16214,14 +17292,30 @@
 			]
 		},
 		"the-pursuit-of-god-teens": {
-			"ground": "8b7c2239881ebeffb37c40d9a956af1c0052c582fa0bce499db1ecfbb1dc7da5",
-			"style": "revival",
+			"ground": "47bb2425e4c5922294513be91c9fe70a1e8c4b0e2818c2a27059c401d3b9068d",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[193, 102, 407, 131]
+				],
+				"title": [
+					[85, 308, 515, 384],
+					[64, 374, 536, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"the-reformed-pastor": {
 			"ground": "dc2edf59ee8bc58c50ee8181b46c82f50aa02da5601156c5f730f04f1b433de0",
@@ -16233,9 +17327,46 @@
 			"layout": "box/rust",
 			"bar": 0.04
 		},
+		"the-saint-and-his-saviour": {
+			"ground": "22e136c08162f2110256d4679ea8d57b2e8a4407dd280a7f28dc0a56f2f82055",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-secret-of-guidance-teens": {
-			"ground": "12fadad26335b0b86cc17e575b0f5b790aa818919ed549a2adb53622098d5851",
-			"style": "devotional",
+			"ground": "5183a2a8d560e6643bf2a30588c54facca422d01cbc7d6efdbde5b76085b503c",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[197, 102, 403, 131]
+				],
+				"title": [
+					[140, 275, 460, 351],
+					[121, 341, 479, 417],
+					[131, 407, 469, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
+		},
+		"the-soul-winner": {
+			"ground": "1b3a98dd278837cb4378135a91eaa9605193e82453851fa5320287fb73c3875e",
+			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"art": false,
@@ -16254,14 +17385,30 @@
 			"bar": 0
 		},
 		"the-way-to-god-teens": {
-			"ground": "c9651ad195f1c598748a8d1e122682afda78b3c223bb7409a6fc23eeebd2b073",
-			"style": "revival",
+			"ground": "c1e44fbc957d99b4d8f0b5f618e1fd97d54005ec38d734c85d7735d9f41d45c4",
+			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[66, 308, 534, 384],
+					[131, 374, 469, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"they-were-young-1": {
 			"ground": "4e4617ad54c0af3905c9159d881cf567fd77b8264050bb3606208e4ee72c32eb",
@@ -17149,6 +18296,16 @@
 				271,
 				524
 			]
+		},
+		"with-and-without-christ": {
+			"ground": "9601a1b72235d02fc50246b76a19fc4c399b08734e706898b085620c1d08ea1f",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		}
 	}
 }

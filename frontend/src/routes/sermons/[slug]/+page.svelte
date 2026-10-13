@@ -6,7 +6,7 @@
 	import { readerBookmark } from '$lib/readerBookmark.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { onMount, type Component } from 'svelte';
-	import { type Sermon, type SermonSummary, listSermons } from '$lib/library-public';
+	import { type Sermon, type SermonSummary, isTranslated, listSermons } from '$lib/library-public';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { nextBarHidden } from '$lib/readerAutohide';
@@ -42,6 +42,7 @@
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import CitePanel from '$lib/components/CitePanel.svelte';
 	import SermonPlate from '$lib/components/SermonPlate.svelte';
 	import FootFeedback from '$lib/components/FootFeedback.svelte';
 
@@ -890,6 +891,16 @@
 			<a href={sermon.source_url} target="_blank" rel="noreferrer">{t('book.originalEdition')}</a>.
 		</p>
 	{/if}
+	<CitePanel
+		lang={sermon.language}
+		work={{
+			kind: 'sermon',
+			author: sermon.author_name,
+			title: sermon.title,
+			year: isTranslated(sermon.source_type) ? null : Number(year) || null,
+			url: canonical
+		}}
+	/>
 
 	<nav class="mt-8 flex flex-wrap gap-3">
 		<a href={localizeHref(`/authors/${sermon.author_slug}`)} class="btn btn-ghost"

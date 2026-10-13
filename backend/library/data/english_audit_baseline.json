@@ -24,8 +24,14 @@
    "orphan-close-quote": 2,
    "space-before-punct": 2
   },
+  "an-all-round-ministry": {
+   "space-before-punct": 2
+  },
   "are-you-forgiven": {
    "orphan-close-quote": 2
+  },
+  "at-the-masters-feet": {
+   "space-before-punct": 2
   },
   "baptism-with-the-holy-spirit": {
    "orphan-close-quote": 1,
@@ -48,6 +54,11 @@
   },
   "come-thou-into-the-ark": {
    "space-before-punct": 2
+  },
+  "come-ye-children": {
+   "lost-paragraphing": 1,
+   "space-before-punct": 2,
+   "word-fusion": 1
   },
   "comfort-for-the-desponding": {
    "orphan-close-quote": 2
@@ -115,6 +126,9 @@
   "homily-on-the-paralytic": {
    "lost-paragraphing": 1
   },
+  "how-i-became-a-christian": {
+   "word-fusion": 1
+  },
   "how-to-bring-men-to-christ": {
    "lost-paragraphing": 2
   },
@@ -129,12 +143,22 @@
   "jesus-himself-2": {
    "space-before-punct": 2
   },
+  "john-ploughmans-pictures": {
+   "word-fusion": 2
+  },
   "journal-of-an-expedition-up-the-niger": {
    "lost-paragraphing": 1,
    "orphan-close-quote": 4
   },
   "justification-by-grace": {
    "orphan-close-quote": 1
+  },
+  "lectures-to-my-students": {
+   "orphan-close-quote": 1,
+   "space-before-punct": 4
+  },
+  "lectures-to-my-students-second-series": {
+   "space-before-punct": 4
   },
   "let-us-pray-2": {
    "orphan-close-quote": 1,
@@ -151,6 +175,12 @@
   },
   "lord-teach-us-to-pray-2": {
    "orphan-close-quote": 1
+  },
+  "meditations-maria-w-stewart": {
+   "lost-paragraphing": 1
+  },
+  "memoirs-of-mrs-zilpha-elaw": {
+   "lost-paragraphing": 2
   },
   "men-of-prayer-2": {
    "space-before-punct": 1
@@ -182,7 +212,7 @@
    "hyphen-space": 1,
    "orphan-close-quote": 8,
    "space-before-punct": 7,
-   "word-fusion": 2
+   "word-fusion": 1
   },
   "our-duty-to-israel": {
    "orphan-close-quote": 1
@@ -229,6 +259,9 @@
   "purity-of-heart": {
    "orphan-close-quote": 1,
    "run-together": 1
+  },
+  "reality-and-religion": {
+   "space-before-punct": 2
   },
   "religious-affections": {
    "orphan-close-quote": 6,
@@ -362,6 +395,9 @@
   "the-practical-hope-of-the-lords-coming": {
    "space-before-punct": 2
   },
+  "the-saint-and-his-saviour": {
+   "orphan-close-quote": 1
+  },
   "the-school-of-faith": {
    "space-before-punct": 4
   },
@@ -409,6 +445,9 @@
   },
   "what-a-revival-of-religion-is": {
    "space-before-punct": 1
+  },
+  "with-and-without-christ": {
+   "space-before-punct": 6
   },
   "women-who-moved-heaven-2": {
    "space-before-punct": 1

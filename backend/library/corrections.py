@@ -51,6 +51,22 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "at-the-masters-feet": {
+        # CCEL's TOC numbers the six dialogues "I. The Manifestation…", a
+        # mixed-case roman prefix clean_title keeps, which would double the
+        # reader's own number ("4. I. …"). Orders 1–3 are the translators'
+        # note, the Preface and the Introduction; the note's printed heading
+        # is singular.
+        "chapter_titles": {
+            1: "Note by the Translators",
+            4: "The Manifestation of God's Presence",
+            5: "Sin and Salvation",
+            6: "Prayer",
+            7: "Service",
+            8: "The Cross and the Mystery of Suffering",
+            9: "Heaven and Hell",
+        },
+    },
     "the-pursuit-of-god": {
         # Gutenberg #25141 heads each chapter "I  <i>Following Hard after God</i>"
         # — a bare roman numeral on the same line as the italic title, which
@@ -684,6 +700,92 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # `apply_body_corrections`, plus a data migration for prod).
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "at-the-masters-feet": {
+        # CCEL's transcription checked word-for-word against the 1922 Revell
+        # printing (archive.org `atmastersfeet0000sing`): the note's heading
+        # repeats the chapter title, and CCEL drops or alters words the print
+        # has — five whole phrases among them. Each pair restores the print.
+        "replacements": [
+            ('<h2>NOTE BY THE TRANSLATORS </h2> ',
+             ''),
+            ('impression not only on me,',
+             'impression not only upon me,'),
+            ('Mussulman, and thus become a great',
+             'Mussulman, and thus became a great'),
+            ('for bringing men into the way',
+             'for bringing man into the way'),
+            ('Man also has a natural desire',
+             'Man also has this natural desire'),
+            ('acquainted with the criticism of the world',
+             'acquainted with the criticisms of the world'),
+            ('suffering, death, and the like?',
+             'suffering, death, and such like?'),
+            ('prepared for those who love Him',
+             'prepared for those that love Him'),
+            ('reached only by action in accordance',
+             'reached only by acting in accordance'),
+            ('awake to its terrible ravages',
+             'awake to its terrific ravages'),
+            ('how can the saint and angels',
+             'how can the saints and angels'),
+            ('with the eyes of faith was saved',
+             'with the eye of faith was saved'),
+            ('from death to becomes heirs',
+             'from death to become heirs'),
+            ('for the evil, how should we pray',
+             'for the evil, why should we pray'),
+            ('all that will make life is perfect',
+             'all that will make life perfect'),
+            ('He stand there motionless',
+             'He stands there motionless'),
+            ('than those of the mother,',
+             'than those of a mother,'),
+            ('they are not to travel beyond',
+             'they are not able to travel beyond'),
+            ('and by it help walks',
+             'and by its help walks'),
+            ('while the other was a worshipper',
+             'while the other who was a worshipper'),
+            ('bitter cold, you saw one lying',
+             'bitter cold, and saw one lying'),
+            ('able to bring a single soul',
+             'able to bring to a single soul'),
+            ('Gethesemane',
+             'Gethsemane'),
+            ('become heirs to the kingdom of God',
+             'become heirs of the kingdom of God'),
+            ('kept back from serving by',
+             'kept back from service by'),
+            ('act of service to be done, I choose',
+             'act of service to be done, which shall bring salvation and blessing to many, I choose'),
+            ('The cross is the key to heaven.',
+             'The cross is the key of heaven.'),
+            ('in order that the bitter may bear',
+             'in order that the bitter tree may bear'),
+            ('to introduce good into man’s evil nature, it was',
+             'to introduce into man’s evil nature, poisoned by sin, the life spiritual and holy, it was'),
+            ('thirty-three years bearing',
+             'thirty-three years’ bearing'),
+            ('until it caused the greatest pain',
+             'until it causes the greatest pain'),
+            ('surroundings; for which it is clear',
+             'surroundings; from which it is clear'),
+            ('Him they will seek only what is good',
+             'Him they will partake of His love, and in service for one another will seek only what is good'),
+            ('A poor begger sat',
+             'A poor beggar sat'),
+            ('he horded up all',
+             'he hoarded up all'),
+            ('the powerful effort of my own thoughts',
+             'the powerful effect of my own thoughts'),
+            ('This fitness of heart and thoughts',
+             'This fitness of the heart and thoughts'),
+            ('the lordiest throne',
+             'the lordliest throne'),
+            ('drops medicine into the eye does not see it',
+             'drops medicine into it the eye does not see it'),
+        ],
+    },
     "way-into-holiest": {
         "replacements": [
             # Ch.1 (Preface): a modern digitiser's note was appended after Meyer's
@@ -4661,6 +4763,19 @@ BODY_CORRECTIONS.setdefault("power-through-prayer", {}).setdefault("replacements
     # ch18: "an" -> "in".
     ("occupied an the spiritual life", "occupied in the spiritual life"),
 ])
+
+# Found while translating to French (2026-10-10); each confirmed against
+# Gutenberg #65115. (Checked and LEFT as printed, because #65115 has them too:
+# "jealous else" ch17, "divine inflatus" ch15, and Liddon's unclosed quotation ch08.)
+BODY_CORRECTIONS.setdefault("power-through-prayer", {}).setdefault("replacements", []).extend([
+    # ch14 (Knox): canonical "Methodistical clergymen" (plural).
+    ("Methodists and Methodistical clergyman", "Methodists and Methodistical clergymen"),
+    # ch14 (Spurgeon epigraph): canonical "instant, constant, fervent".
+    ("continue instant constant fervent in", "continue instant, constant, fervent in"),
+    # ch20: canonical "somebody who can set the saints".
+    ("need some body who can set", "need somebody who can set"),
+])
+
 BODY_CORRECTIONS.setdefault("the-almost-christian", {}).setdefault("replacements", []).extend([
     # subject "he" governs both verbs: "acts and speaks".
     ("all things act and speaks", "all things acts and speaks"),
@@ -4836,6 +4951,8 @@ BODY_CORRECTIONS.setdefault("how-to-bring-men-to-christ", {})["back_matter"] = [
     ("ሊኖራቸውም የግድ ነው።</p>",
      "<p>“<i>Few books of recent years are better adapted to instruct"),
     ("avant que Dieu puisse se servir d’eux.</p>",
+     "<p>“<i>Few books of recent years are better adapted to instruct"),
+    ("antes de que Dios pueda usarlos.</p>",
      "<p>“<i>Few books of recent years are better adapted to instruct"),
 ]
 # Two stanzas of verse lost at import (Gutenberg #73032). Every chapter heading
@@ -5155,6 +5272,641 @@ BODY_CORRECTIONS.setdefault("evangelization-of-the-world", {}).setdefault("repla
     ('His great Sacrifice/"', 'His great Sacrifice.\'"'),
     ('&gt;/ A disproportionately', 'A disproportionately'),
     ('[their] missionary/ policy', '[their] missionary policy'),
+])
+
+# Found while translating to French (2026-10-13): OCR slips with one reading,
+# and ch07 "five hundred men" -> "five hired men" (the ledger pays the hire of
+# five men; the text later says "the five hired men"), fixed in en, es and am.
+BODY_CORRECTIONS.setdefault("life-experience-gospel-labours", {}).setdefault("replacements", []).extend([
+    # [en] OCR 'it' for 'if' (conditional: if two thirds agreed, it could be
+    # altered)
+    ("he told us it two thirds of the society", "he told us if two thirds of the society"),
+    # [en] transposed-letter typo 'Epispocal'
+    ("the said Methodist Epispocal Church", "the said Methodist Episcopal Church"),
+    # [en] OCR 'hundred' for 'hired': the ledger pays 'the hire of five men'
+    # and the text later says 'the five hired men' (1794 original reads 'five
+    # hired men')
+    ("assistance of five hundred men in the awful", "assistance of five hired men in the awful"),
+    # [en] OCR 'he' for 'be'
+    ("what was proper to he done", "what was proper to be done"),
+    # [en] OCR 'womon' for 'woman'
+    ("A white womon had", "A white woman had"),
+    # [en] OCR 'feet' for 'feel'
+    ("We feet a great satisfaction", "We feel a great satisfaction"),
+    # [en] OCR 'he' for 'be'
+    ("the innocent will he cleared", "the innocent will be cleared"),
+    # [en] typo 'thee' for 'the'
+    ("for thee satisfaction of the mayor", "for the satisfaction of the mayor"),
+    # [en] OCR 'roost' for 'most'
+    ("the power of the roost cruel master", "the power of the most cruel master"),
+    # [en] OCR 'boarded' for 'hoarded' (goods not to be hoarded as dead stock)
+    ("to be boarded up, or to lie", "to be hoarded up, or to lie"),
+    # [en] OCR 'aceording' for 'according'
+    ("assuredly reap aceording to my sowing", "assuredly reap according to my sowing"),
+    # [en] OCR 'go' for 'so'
+    ("be the object ever go undeserving", "be the object ever so undeserving"),
+    # [en] words run together: 'maybe' for 'may be'
+    ("Saviour's practice maybe added", "Saviour's practice may be added"),
+    # [en] Ps. 41:2 quoted verbatim alongside v.1; KJV reads 'preserve'
+    # (dropped 'p')
+    ("The Lord will reserve him and keep him alive", "The Lord will preserve him and keep him alive"),
+    # [es] matches EN fix 'five hundred men' -> 'five hired men' (cf. 'los
+    # cinco hombres contratados' later in the chapter)
+    ("ayuda de quinientos hombres en el terrible", "ayuda de cinco hombres contratados en el terrible"),
+    # [am] matches EN fix 'five hundred men' -> 'five hired men' (cf. 'የተቀጠሩትን
+    # አምስት ሰዎች' later in the chapter)
+    ("የአምስት መቶ ሰዎችን እርዳታ", "የአምስት ተቀጣሪ ሰዎችን እርዳታ"),
+])
+
+# Found while translating to French (2026-10-13): one-reading OCR slips and
+# line-break word splits in the scanned text; ch20/ch29 Bible references that
+# cannot be what is quoted (Rom. xv. 3 Priscilla -> xvi. 3, Phil. ii. 5
+# Epaphroditus -> ii. 25, Rom. xix. 1 Phebe -> xvi. 1, Luke x. 26 great gulf ->
+# xvi. 26, 1 Thess. i. 13 -> iii. 13, 2 Thess. v. 23 -> 1 Thess. v. 23); stray
+# page markers [5]/(6)/(7). Citation fixes and markers also in es/am.
+BODY_CORRECTIONS.setdefault("a-brand-plucked-from-the-fire", {}).setdefault("replacements", []).extend([
+    # [en] line-break split from the scan
+    ("in sla very,", "in slavery,"),
+    # [en] line-break split from the scan
+    ("mer chandise", "merchandise"),
+    # [en] line-break split from the scan
+    ("poor rela tives.", "poor relatives."),
+    # [en] line-break split from the scan
+    ("night pre vious,", "night previous,"),
+    # [en] OCR "I" for "!"
+    ("\" Ah I she did", "\" Ah! she did"),
+    # [en] line-break split from the scan
+    ("of sla very.", "of slavery."),
+    # [en] line-break split from the scan
+    ("and expect ing to", "and expecting to"),
+    # [en] line-break split from the scan
+    ("spiritu ality", "spirituality"),
+    # [en] line-break split from the scan
+    ("the ordi nances of", "the ordinances of"),
+    # [en] line-break split from the scan
+    ("it hap pened that", "it happened that"),
+    # [en] OCR slip, one reading
+    ("Tt is no wonder", "It is no wonder"),
+    # [en] line-break split from the scan
+    ("thing. Rais ing the", "thing. Raising the"),
+    # [en] stray hyphen
+    ("Giney — - an", "Giney — an"),
+    # [en] line-break split from the scan
+    ("great com fort.", "great comfort."),
+    # [en] OCR "1" for "I"
+    ("that 1 was converted", "that I was converted"),
+    # [en] line-break split from the scan
+    ("by care fully spelling", "by carefully spelling"),
+    # [en] line-break split from the scan
+    ("great pleas ure to", "great pleasure to"),
+    # [en] OCR slip, one reading; garbled opening quote ("a" for ")
+    ("Lord's praj^er and a Now I lay me,", "Lord's prayer and \"Now I lay me,"),
+    # [en] OCR slip, one reading
+    ("was A clam afraid", "was Adam afraid"),
+    # [en] OCR slip, one reading
+    ("Father, wrhich art", "Father, which art"),
+    # [en] garbled nested opening quote
+    ("did say,' ' Suffer", "did say, 'Suffer"),
+    # [en] OCR "1" for "I"
+    ("when 1 heard", "when I heard"),
+    # [en] OCR zero for O
+    ("Lord, 0 my soul", "Lord, O my soul"),
+    # [en] line-break split from the scan
+    ("of useful ness that", "of usefulness that"),
+    # [en] OCR slip, one reading
+    ("to he publicly", "to be publicly"),
+    # [en] OCR "1" for "!"
+    ("Such a sight 1 Never", "Such a sight! Never"),
+    # [en] line-break split from the scan
+    ("the scaf fold he", "the scaffold he"),
+    # [en] line-break split from the scan
+    ("cannot remem ber,", "cannot remember,"),
+    # [en] line-break split from the scan
+    ("capital punish ment may", "capital punishment may"),
+    # [en] line-break split from the scan
+    ("my feel ings underwent", "my feelings underwent"),
+    # [en] line-break split from the scan
+    ("away, laugh ing.", "away, laughing."),
+    # [en] line-break split from the scan
+    ("should con fess that", "should confess that"),
+    # [en] split; chapter spells "rawhide" twice
+    ("the raw hide out", "the rawhide out"),
+    # [en] line-break split from the scan
+    ("African Method ist Church.", "African Methodist Church."),
+    # [en] line-break split from the scan
+    ("the servi ces,", "the services,"),
+    # [en] line-break split from the scan
+    ("and talk ing with", "and talking with"),
+    # [en] OCR "1" for "I"
+    ("that 1 resolved", "that I resolved"),
+    # [en] OCR slip, one reading
+    ("floor. I wras so frightened", "floor. I was so frightened"),
+    # [en] line-break split from the scan
+    ("matter, think ing I", "matter, thinking I"),
+    # [en] line-break split from the scan
+    ("\"little Meth odist fool,\"", "\"little Methodist fool,\""),
+    # [en] garbled opening quote ("u" for ")
+    ("saying, u Repent", "saying, \"Repent"),
+    # [en] OCR slip, one reading
+    ("have smitton me", "have smitten me"),
+    # [en] stray full stop
+    ("spot. .Dear reader", "spot. Dear reader"),
+    # [en] line-break split from the scan
+    ("counte nance", "countenance"),
+    # [en] OCR slip, one reading
+    ("oar whole family", "our whole family"),
+    # [en] line-break split from the scan
+    ("that daugh ter.", "that daughter."),
+    # [en] line-break split from the scan
+    ("I suf fered.", "I suffered."),
+    # [en] line-break split from the scan
+    ("great ter ror I", "great terror I"),
+    # [en] OCR zero for O
+    ("thee, 0 Jacob", "thee, O Jacob"),
+    # [en] OCR slip, one reading
+    ("was billed with", "was filled with"),
+    # [en] OCR slip, one reading
+    ("tempted mo dreadfully", "tempted me dreadfully"),
+    # [en] line-break split from the scan
+    ("this doubt ing,", "this doubting,"),
+    # [en] stray scan mark
+    ("mother. • I now", "mother. I now"),
+    # [en] stray comma
+    ("education more, than ever", "education more than ever"),
+    # [en] OCR slip, one reading
+    ("helped ine byquickening", "helped me by quickening"),
+    # [en] OCR zero for O + stray scan marks
+    ("0 Lord, I •will praise thee,-for great is thy.goodness", "O Lord, I will praise thee, for great is thy goodness"),
+    # [en] OCR slip, one reading
+    ("these repiningg within.", "these repinings within."),
+    # [en] OCR slip, one reading
+    ("relieved fora while;", "relieved for a while;"),
+    # [en] split + stray apostrophe
+    ("re turned 'again", "returned again"),
+    # [en] stray apostrophe
+    ("Again I went' to the", "Again I went to the"),
+    # [en] stray comma
+    ("what, was right", "what was right"),
+    # [en] stray hyphen
+    ("when -I would", "when I would"),
+    # [en] stray apostrophe
+    ("ground' without", "ground without"),
+    # [en] stray asterisk
+    ("entirely* defeated", "entirely defeated"),
+    # [en] stray quote mark (no opener)
+    ("class-leader\",", "class-leader,"),
+    # [en] stray apostrophe
+    ("parents, told' me that", "parents, told me that"),
+    # [en] line-break split from the scan
+    ("to con tend with,", "to contend with,"),
+    # [en] stray apostrophe
+    ("never free'from them", "never free from them"),
+    # [en] OCR "j" for ";"
+    ("death j that", "death; that"),
+    # [en] stray apostrophe
+    ("I must' keep fighting", "I must keep fighting"),
+    # [en] stray asterisk
+    ("cleansed* from", "cleansed from"),
+    # [en] garbled split
+    ("expe-.' ricnce", "experience"),
+    # [en] OCR (Prudence Crandall)
+    ("Miss Cranclall met", "Miss Crandall met"),
+    # [en] line-break split from the scan
+    ("other mis siles at", "other missiles at"),
+    # [en] OCR slip, one reading
+    ("acquainted, wras so frightened", "acquainted, was so frightened"),
+    # [en] line-break split from the scan
+    ("wonder fully", "wonderfully"),
+    # [en] line-break split from the scan
+    ("able to under stand the Bible,", "able to understand the Bible,"),
+    # [en] OCR slip, one reading
+    ("road and write", "read and write"),
+    # [en] OCR slip, one reading
+    ("a 37oung woman,", "a young woman,"),
+    # [en] line-break split from the scan
+    ("wonderfully to under stand the precious", "wonderfully to understand the precious"),
+    # [en] stray apostrophe
+    ("brought ' into", "brought into"),
+    # [en] line-break split from the scan
+    ("from fall ing into", "from falling into"),
+    # [en] line-break split from the scan
+    ("their tem per,", "their temper,"),
+    # [en] OCR "1"/"T" for "I"
+    ("1 at once understood what T needed", "I at once understood what I needed"),
+    # [en] OCR slip, one reading
+    ("and ray leader", "and my leader"),
+    # [en] stray apostrophe
+    ("sought, I' could not", "sought, I could not"),
+    # [en] OCR slip, one reading
+    ("hut my mother", "but my mother"),
+    # [en] stray hyphen
+    ("very-sorrowful", "very sorrowful"),
+    # [en] line-break split from the scan
+    ("min istering", "ministering"),
+    # [en] line-break split from the scan
+    ("on mis sions of", "on missions of"),
+    # [en] OCR slip, one reading
+    ("one at Lome except", "one at home except"),
+    # [en] line-break split from the scan
+    ("carefully mark ing them", "carefully marking them"),
+    # [en] line-break split from the scan
+    ("my con stant prayer,", "my constant prayer,"),
+    # [en] OCR slip, one reading
+    ("devil hud deluded me", "devil had deluded me"),
+    # [en] garbled closing quote + OCR "I" for "l" (lxvi = 66)
+    ("my soul.1'. (Psa. Ixvi", "my soul.\" (Psa. lxvi"),
+    # [en] line-break split from the scan
+    ("trans gression", "transgression"),
+    # [en] OCR slip, one reading
+    ("all jour idols will", "all your idols will"),
+    # [en] line-break split from the scan
+    ("dear minis ter,", "dear minister,"),
+    # [en] OCR slip, one reading
+    ("inspiring ray tongue", "inspiring my tongue"),
+    # [en] OCR slips ("Bloss", zero for O)
+    ("Bloss the Lord, 0 my soul", "Bless the Lord, O my soul"),
+    # [en] OCR slip, one reading
+    ("poor, ignoran^ girl", "poor, ignorant girl"),
+    # [en] line-break split from the scan
+    ("of amuse ment,", "of amusement,"),
+    # [en] line-break split from the scan
+    ("my feel ings were", "my feelings were"),
+    # [en] line-break split from the scan
+    ("cor responded", "corresponded"),
+    # [en] line-break split from the scan
+    ("his relig ious enjoyment,", "his religious enjoyment,"),
+    # [en] line-break split from the scan
+    ("his depart ure,", "his departure,"),
+    # [en] line-break split from the scan
+    ("being unu sually busy", "being unusually busy"),
+    # [en] stray semicolon
+    ("having; committed", "having committed"),
+    # [en] stray letter
+    ("\" Leave w me,", "\" Leave me,"),
+    # [en] line-break split from the scan
+    ("righteous ness", "righteousness"),
+    # [en] OCR slip, one reading
+    ("about a jear to", "about a year to"),
+    # [en] line-break split from the scan
+    ("whom fol lowed us", "whom followed us"),
+    # [en] stray full stop
+    ("home bu.t one", "home but one"),
+    # [en] line-break split from the scan
+    ("quite wil ling to", "quite willing to"),
+    # [en] line-break split from the scan
+    ("appoint ment", "appointment"),
+    # [en] line-break split from the scan
+    ("was com pletely prepared", "was completely prepared"),
+    # [en] line-break split from the scan
+    ("to main tain that", "to maintain that"),
+    # [en] line-break split from the scan
+    ("dear Chris tian women,", "dear Christian women,"),
+    # [en] line-break split from the scan
+    ("to hun ger and", "to hunger and"),
+    # [en] line-break split from the scan
+    ("definite testi mony had", "definite testimony had"),
+    # [en] line-break split from the scan
+    ("disjointed passa ges of", "disjointed passages of"),
+    # [en] stray hyphen
+    ("keep -my dear", "keep my dear"),
+    # [en] misread opening single quote
+    ("said, * I will never", "said, 'I will never"),
+    # [en] line-break split from the scan
+    ("the still ness of", "the stillness of"),
+    # [en] line-break split from the scan
+    ("an adjoin ing room,", "an adjoining room,"),
+    # [en] OCR "1" for "!"
+    ("Hallelujah 1 Amen", "Hallelujah! Amen"),
+    # [en] doubled full stop
+    ("very weak. . She talked", "very weak. She talked"),
+    # [en] line-break split from the scan
+    ("and quiver ing voice.", "and quivering voice."),
+    # [en] stray full stop
+    ("She. dropped", "She dropped"),
+    # [en] OCR (1 John iii. 3 "purifieth himself")
+    ("hope : rifles himself", "hope purifies himself"),
+    # [en] line-break split from the scan
+    ("my hus band leading,", "my husband leading,"),
+    # [en] line-break split from the scan
+    ("precious sea son,", "precious season,"),
+    # [en] stray hyphen
+    ("words of -the poet", "words of the poet"),
+    # [en] line-break split from the scan
+    ("my hus band's", "my husband's"),
+    # [en] line-break split from the scan
+    ("suppli cation", "supplication"),
+    # [en] line-break split from the scan
+    ("and Chris tian forbearance", "and Christian forbearance"),
+    # [en] line-break split from the scan
+    ("from improv ing all", "from improving all"),
+    # [en] line-break split from the scan
+    ("I vis ited many", "I visited many"),
+    # [en] line-break split from the scan
+    ("ones, read ing and", "ones, reading and"),
+    # [en] line-break split from the scan
+    ("and sea faring life;", "and seafaring life;"),
+    # [en] OCR "U" for opening quote
+    ("said, UI am dying", "said, \"I am dying"),
+    # [en] closing quote printed as two apostrophes
+    ("oh, no ! '' he", "oh, no ! \" he"),
+    # [en] line-break split from the scan
+    ("his life less remains", "his lifeless remains"),
+    # [en] line-break split from the scan
+    ("though merci ful and", "though merciful and"),
+    # [en] line-break split from the scan
+    ("without punish ment.", "without punishment."),
+    # [en] line-break split from the scan
+    ("Notwith standing", "Notwithstanding"),
+    # [en] line-break split from the scan
+    ("home, let ters from", "home, letters from"),
+    # [en] line-break split from the scan
+    ("his king dom in", "his kingdom in"),
+    # [en] line-break split from the scan
+    ("particular occa sion,", "particular occasion,"),
+    # [en] line-break split from the scan
+    ("a shrink ing.", "a shrinking."),
+    # [en] stray bracketed page/footnote marker
+    ("<p>[5] I took", "<p>I took"),
+    # [en] stray full stop
+    ("day. my appetite", "day my appetite"),
+    # [en] line-break split from the scan
+    ("who pre scribed medicine,", "who prescribed medicine,"),
+    # [en] OCR slip, one reading
+    ("brink of holl", "brink of hell"),
+    # [en] line-break split from the scan
+    ("that memo rable Sabbath", "that memorable Sabbath"),
+    # [en] OCR slip, one reading
+    ("engaged infer vent prayer", "engaged in fervent prayer"),
+    # [en] stray hyphen
+    ("where-there was", "where there was"),
+    # [en] OCR "U" for opening quote
+    ("out, UI will obey", "out, \"I will obey"),
+    # [en] line-break split from the scan
+    ("in differ ent directions,", "in different directions,"),
+    # [en] OCR slip, one reading
+    ("salvation to alL\"", "salvation to all\""),
+    # [en] OCR slip, one reading
+    ("arid they all", "and they all"),
+    # [en] line-break split from the scan
+    ("cool treat ment of", "cool treatment of"),
+    # [en] OCR slip, one reading
+    ("upon the hrother and", "upon the brother and"),
+    # [en] OCR slip, one reading
+    ("though Pheld", "though I held"),
+    # [en] OCR "1" for "I"
+    ("church. 1 told them I", "church. I told them I"),
+    # [en] stray hyphen
+    ("to -comply with", "to comply with"),
+    # [en] line-break split from the scan
+    ("excommuni cated", "excommunicated"),
+    # [en] line-break split from the scan
+    ("or preach ing as", "or preaching as"),
+    # [en] line-break split from the scan
+    ("was deter mined I", "was determined I"),
+    # [en] line-break split from the scan
+    ("city of Bos ton. To", "city of Boston. To"),
+    # [en] line-break split from the scan
+    ("above false hoods.", "above falsehoods."),
+    # [en] line-break split from the scan
+    ("religious char acter —", "religious character —"),
+    # [en] line-break split from the scan
+    ("I cher ished no", "I cherished no"),
+    # [en] line-break split from the scan
+    ("the suffer ing of", "the suffering of"),
+    # [en] OCR "T" for "I"
+    ("T could not believe", "I could not believe"),
+    # [en] line-break split from the scan
+    ("of Pen tecost was", "of Pentecost was"),
+    # [en] stray caret
+    ("among ^those who", "among those who"),
+    # [en] line-break split from the scan
+    ("woman pre tends to", "woman pretends to"),
+    # [en] wrong citation: Priscilla & Aquila "my helpers" = Rom 16:3 (15:3
+    # unrelated)
+    ("\"fellow-laborer.\" Rom. xv. 3; 2", "\"fellow-laborer.\" Rom. xvi. 3; 2"),
+    # [en] wrong citation: Epaphroditus "companion in labour" = Phil 2:25 (2:5
+    # unrelated)
+    ("Phil. ii. 5;", "Phil. ii. 25;"),
+    # [en] wrong citation: Phebe = Rom 16:1 (Romans has 16 chapters)
+    ("Rom. xix. 1.", "Rom. xvi. 1."),
+    # [en] line-break split from the scan
+    ("that peri she th,", "that perisheth,"),
+    # [en] stray page/footnote marker (sequence [5], (6), (7))
+    ("them. (6) \"And", "them. \"And"),
+    # [en] line-break split from the scan
+    ("the wit ness of", "the witness of"),
+    # [en] line-break split from the scan
+    ("the Con ference,", "the Conference,"),
+    # [en] line-break split from the scan
+    ("three sis ters who", "three sisters who"),
+    # [en] line-break split from the scan
+    ("much dis tressed and", "much distressed and"),
+    # [en] line-break split from the scan
+    ("I pro posed to", "I proposed to"),
+    # [en] line-break split from the scan
+    ("which con tinued eleven", "which continued eleven"),
+    # [en] line-break split from the scan
+    ("our meet ings,", "our meetings,"),
+    # [en] line-break split from the scan
+    ("unpar donable", "unpardonable"),
+    # [en] line-break split from the scan
+    ("with stream ing eyes,", "with streaming eyes,"),
+    # [en] line-break split from the scan
+    ("Henry John son and", "Henry Johnson and"),
+    # [en] stray apostrophe
+    ("' It was a union", "It was a union"),
+    # [en] line-break split from the scan
+    ("the Method ists and", "the Methodists and"),
+    # [en] line-break split from the scan
+    ("was pres ent to", "was present to"),
+    # [en] line-break split from the scan
+    ("a meet ing for", "a meeting for"),
+    # [en] line-break split from the scan
+    ("to hav ing me", "to having me"),
+    # [en] OCR slip, one reading
+    ("the nexfc evening.", "the next evening."),
+    # [en] stray full stop
+    ("Well,\" said.he,", "Well,\" said he,"),
+    # [en] line-break split from the scan
+    ("as com pared with", "as compared with"),
+    # [en] line-break split from the scan
+    ("is march ing on.", "is marching on."),
+    # [en] OCR "1" for "!"
+    ("to his name 1</p>", "to his name!</p>"),
+    # [en] line-break split from the scan
+    ("Mr. Jack son's.", "Mr. Jackson's."),
+    # [en] two apostrophes for an opening quote
+    ("''Governor Seward", "\"Governor Seward"),
+    # [en] line-break split from the scan
+    ("stir, think ing it", "stir, thinking it"),
+    # [en] OCR slip, one reading
+    ("011 the canal", "on the canal"),
+    # [en] line-break split from the scan
+    ("accom panied", "accompanied"),
+    # [en] line-break split from the scan
+    ("the Gen eral Conference", "the General Conference"),
+    # [en] line-break split from the scan
+    ("Church con vened on", "Church convened on"),
+    # [en] line-break split from the scan
+    ("many mem bers to", "many members to"),
+    # [en] line-break split from the scan
+    ("particu lars", "particulars"),
+    # [en] line-break split from the scan
+    ("Poughkeepsie, work ing for", "Poughkeepsie, working for"),
+    # [en] OCR zero for O
+    ("servant. 0 Prejudice !", "servant. O Prejudice !"),
+    # [en] line-break split from the scan
+    ("his weep ing wife,", "his weeping wife,"),
+    # [en] line-break split from the scan
+    ("his eter nal rest.", "his eternal rest."),
+    # [en] OCR zero for O
+    ("Lord, 0 my soul", "Lord, O my soul"),
+    # [en] OCR slip, one reading
+    ("mission agiin.", "mission again."),
+    # [en] line-break split with stray marker "(7)" (sequence [5], (6), (7))
+    ("Fethers(7) ville", "Fethersville"),
+    # [en] line-break split from the scan
+    ("the foun tain of", "the fountain of"),
+    # [en] line-break split from the scan
+    ("Princeton, Rah way,", "Princeton, Rahway,"),
+    # [en] line-break split from the scan
+    ("our com fort and", "our comfort and"),
+    # [en] line-break split from the scan
+    ("great dis tress.", "great distress."),
+    # [en] line-break split from the scan
+    ("Baltimore, labor ing mostly", "Baltimore, laboring mostly"),
+    # [en] line-break split from the scan
+    ("in Pitts burgh,", "in Pittsburgh,"),
+    # [en] line-break split from the scan
+    ("strength ened", "strengthened"),
+    # [en] OCR slip, one reading
+    ("hi that vicinity", "in that vicinity"),
+    # [en] line-break split from the scan
+    ("inherit ance", "inheritance"),
+    # [en] line-break split from the scan
+    ("my Gos pel to", "my Gospel to"),
+    # [en] OCR slip, one reading
+    ("<p>\\Ve visited Zanesville,", "<p>We visited Zanesville,"),
+    # [en] line-break split from the scan
+    ("white Method ists opened", "white Methodists opened"),
+    # [en] stray apostrophe
+    ("needed,' by faith", "needed, by faith"),
+    # [en] line-break split from the scan
+    ("be impos sible unto", "be impossible unto"),
+    # [en] OCR zero for O
+    ("0 daughter of Zion", "O daughter of Zion"),
+    # [en] line-break split from the scan
+    ("the preach ers of", "the preachers of"),
+    # [en] line-break split from the scan
+    ("are com manded to", "are commanded to"),
+    # [en] line-break split from the scan
+    ("of impart ing stability", "of imparting stability"),
+    # [en] OCR "I" for "l" (lx = 60)
+    ("18; Ix. 6-9.", "18; lx. 6-9."),
+    # [en] OCR zero for O
+    ("resolved, 0 sinner,", "resolved, O sinner,"),
+    # [en] line-break split from the scan
+    ("is pow erfully wielded,", "is powerfully wielded,"),
+    # [en] line-break split from the scan
+    ("are invaria bly potent", "are invariably potent"),
+    # [en] line-break split from the scan
+    ("battle. Hal lelujah !", "battle. Hallelujah !"),
+    # [en] line-break split from the scan
+    ("appoint ment", "appointment"),
+    # [en] line-break split from the scan
+    ("three morn ings,", "three mornings,"),
+    # [en] OCR slip, one reading
+    ("a visit %uly, as", "a visit only, as"),
+    # [en] line-break split from the scan
+    ("are exer cised thereby,", "are exercised thereby,"),
+    # [en] stray apostrophe
+    ("sojourns' in", "sojourns in"),
+    # [en] line-break split from the scan
+    ("resigna tion", "resignation"),
+    # [en] OCR slip, one reading
+    ("and te teach", "and to teach"),
+    # [en] line-break split from the scan
+    ("other in Bos ton. I", "other in Boston. I"),
+    # [en] line-break split from the scan
+    ("Christian Har vester\"", "Christian Harvester\""),
+    # [en] missing hyphen at line-break join
+    ("never-to-beforgotten", "never-to-be-forgotten"),
+    # [en] line-break split from the scan
+    ("disobedi ence", "disobedience"),
+    # [en] line-break split from the scan
+    ("was suffer ing severely", "was suffering severely"),
+    # [en] line-break split from the scan
+    ("God suf fered me", "God suffered me"),
+    # [en] line-break split from the scan
+    ("under standings", "understandings"),
+    # [en] line-break split from the scan
+    ("sanctify ing", "sanctifying"),
+    # [en] wrong citation: "a great gulf fixed" = Luke 16:26
+    ("in Luke x. 26,", "in Luke xvi. 26,"),
+    # [en] line-break split from the scan
+    ("eternally pre vent the", "eternally prevent the"),
+    # [en] line-break split from the scan
+    ("worldly pur suits are", "worldly pursuits are"),
+    # [en] line-break split from the scan
+    ("righteous ness", "righteousness"),
+    # [en] stray apostrophe
+    ("As we' look at", "As we look at"),
+    # [en] line-break split from the scan
+    ("transform ing", "transforming"),
+    # [en] line-break split from the scan
+    ("much out ward show", "much outward show"),
+    # [en] stray apostrophe
+    ("sons that' they separate", "sons that they separate"),
+    # [en] line-break split from the scan
+    ("church out wardly,", "church outwardly,"),
+    # [en] line-break split from the scan
+    ("notions respect ing the", "notions respecting the"),
+    # [en] wrong citation: "stablish your hearts unblameable in holiness" = 1
+    # Thess 3:13 (ch 1 has 10 verses)
+    ("1 Thess. i. 13", "1 Thess. iii. 13"),
+    # [en] line-break split from the scan
+    ("is con cerning his", "is concerning his"),
+    # [en] line-break split from the scan
+    ("not teach ing absolute", "not teaching absolute"),
+    # [en] wrong citation: "sanctify you wholly ... spirit and soul and body" =
+    # 1 Thess 5:23 (2 Thess has 3 chapters)
+    ("2 Thess. v. 23", "1 Thess. v. 23"),
+    # [en] misprint
+    ("a propiation,", "a propitiation,"),
+    # [en] OCR slip, one reading
+    ("snow. — CJwrus.</p>", "snow. — Chorus.</p>"),
+    # [en] line-break split from the scan
+    ("sanctification. By th is I mean", "sanctification. By this I mean"),
+    # [en] doubled drop-cap letter
+    ("<p>N Now, dear reader,", "<p>Now, dear reader,"),
+    # [es] citation: Rom 15:3 → 16:3 (Priscilla & Aquila)
+    ("Romanos 15:3; 2 Corintios", "Romanos 16:3; 2 Corintios"),
+    # [es] citation: Phil 2:5 → 2:25 (Epaphroditus)
+    ("Filipenses 2:5; 1 Tesalonicenses", "Filipenses 2:25; 1 Tesalonicenses"),
+    # [es] citation: Rom 19:1 → 16:1 (Phebe)
+    ("Febe (Romanos 19:1)", "Febe (Romanos 16:1)"),
+    # [es] citation: Luke 10:26 → 16:26 (great gulf)
+    ("leemos en Lucas 10:26", "leemos en Lucas 16:26"),
+    # [es] citation: 1 Thess 1:13 → 3:13
+    ("1 Tesalonicenses 1:13;", "1 Tesalonicenses 3:13;"),
+    # [es] stray marker [5] removed in English too
+    ("<p>[5] Llevé", "<p>Llevé"),
+    # [es] stray marker (6) removed in English too
+    ("él. (6) «Y en esto", "él. «Y en esto"),
+    # [am] citation: Rom 15:3 → 16:3 (Priscilla & Aquila)
+    ("ሮሜ 15:3፤", "ሮሜ 16:3፤"),
+    # [am] citation: Phil 2:5 → 2:25 (Epaphroditus)
+    ("ፊልጵስዩስ 2:5፤", "ፊልጵስዩስ 2:25፤"),
+    # [am] citation: Rom 19:1 → 16:1 (Phebe)
+    ("(ሮሜ 19:1)", "(ሮሜ 16:1)"),
+    # [am] citation: Luke 10:26 → 16:26 (great gulf)
+    ("በሉቃስ 10:26", "በሉቃስ 16:26"),
+    # [am] citation: 1 Thess 1:13 → 3:13
+    ("1ኛ ተሰሎንቄ 1:13፤", "1ኛ ተሰሎንቄ 3:13፤"),
+    # [am] citation: 2 Thess 5:23 → 1 Thess 5:23
+    ("(2ኛ ተሰሎንቄ 5:23)", "(1ኛ ተሰሎንቄ 5:23)"),
+    # [am] stray marker [5] removed in English too
+    ("<p>[5] ጥርጣሬዬንና", "<p>ጥርጣሬዬንና"),
 ])
 # The paragraph ended on a stop the OCR read as a comma.
 BODY_CORRECTIONS["evangelization-of-the-world"]["paragraph_breaks"] = [
@@ -5489,6 +6241,8 @@ def strip_back_matter(body_html: str, seams: Sequence[tuple[str, str]]) -> str:
         if at:
             body_html = body_html[: at.start() + len(last)]
     return body_html
+
+
 
 
 def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:

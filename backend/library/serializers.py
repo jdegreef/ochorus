@@ -2084,6 +2084,12 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
     # The book's rights, for the chapter's JSON-LD `license` (library/rights).
     public_domain = serializers.SerializerMethodField()
 
+    # The audience of the book's series ("young_readers", "teens", "adults"),
+    # or "" for a book in no series. A house series written for children (Tell
+    # Me the Story) has no "-children" edition slug to say so, and the reader
+    # keys its young-reader layout on one or the other.
+    book_audience = serializers.SerializerMethodField()
+
     def get_public_domain(self, obj) -> bool:
         # One answer per book per request: a batch run serializes many chapters
         # of the same edition, and the rule may query the English row.
@@ -2118,6 +2124,9 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
     def get_available_languages(self, obj):
         return self._batch(obj).available_languages
 
+    def get_book_audience(self, obj) -> str:
+        return self._batch(obj).book_audience
+
     def get_body_html(self, obj):
         return _link_scripture(obj.body_html, links=self._batch(obj).scripture_links)
 
@@ -2133,7 +2142,7 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
             "order", "title", "body_html", "word_count",
             "book_title", "book_slug", "author_name", "author_slug",
             "is_modern_edition", "has_modern_edition", "available_languages",
-            "source_type", "public_domain",
+            "source_type", "public_domain", "book_audience",
             "prev", "next",
             # The scripture index row at the foot of the chapter — see above.
             "scripture_refs",
@@ -2173,6 +2182,7 @@ class ChapterBatch:
         from .scripture_graph import page_url, pages_for
 
         self.available_languages = _available_languages(Book, book.slug)
+        self.book_audience = getattr(book.series, "audience", "")
         if book.language == MODERN_LANGUAGE:
             self.has_modern_edition = True
         else:

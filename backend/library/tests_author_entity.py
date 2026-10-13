@@ -110,10 +110,11 @@ class FixtureIdentifierTests(SimpleTestCase):
         chose to leave blank. Naming the exceptions means adding a writer
         WITHOUT an identifier is a decision someone has to make here.
         """
-        # A house byline, two living contributors, and a writer with no
+        # Two house bylines, two living contributors, and a writer with no
         # article to point at.
         expected_blank = {
             "ochorus-originals",
+            "james-degreef-and-ochorus",
             "gareth-evans",
             "hannah-buyinza",
             "simeon-nsibambi",
