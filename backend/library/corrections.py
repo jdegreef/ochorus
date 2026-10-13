@@ -5908,6 +5908,18 @@ BODY_CORRECTIONS.setdefault("a-brand-plucked-from-the-fire", {}).setdefault("rep
     # [am] stray marker [5] removed in English too
     ("<p>[5] ጥርጣሬዬንና", "<p>ጥርጣሬዬንና"),
 ])
+
+# Found while translating to French (2026-10-13): Life of Antony — a dropped
+# word (like tabernacles, filled with holy bands), having being -> having been,
+# a stray space before a stop.
+BODY_CORRECTIONS.setdefault("life-of-antony", {}).setdefault("replacements", []).extend([
+    # [en] dropped word: NPNF "like tabernacles, filled with holy bands of men"
+    ("in the mountains, like filled with holy bands", "in the mountains, like tabernacles, filled with holy bands"),
+    # [en] grammar slip: "having been"
+    ("having being neglectful", "having been neglectful"),
+    # [en] stray space before the full stop
+    ("is within you .", "is within you."),
+])
 # The paragraph ended on a stop the OCR read as a comma.
 BODY_CORRECTIONS["evangelization-of-the-world"]["paragraph_breaks"] = [
     ('foreign mission service.', 'In 1898 the members'),
