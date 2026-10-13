@@ -3,7 +3,7 @@
  "slug": "power-through-prayer",
  "language": "lg",
  "job_issue": 1750,
- "pull_request": null,
+ "pull_request": 6096,
  "note": [
   "Scripture follows the Open Luganda Contemporary Bible (OLCB 2017, lug_bib), parsed from the ebible mirror's USX. Every `mined` row was checked mechanically: a quoted span in that block is a verbatim (case-insensitive) substring of the OLCB verse. `self_rendered` rows are Bounds' re-personed or loose quotations, unmarked allusions, and places where OLCB lacks the word his sentence turns on (Eph 3:19, Eph 3:14, 2 Cor 3:5, Ps 63:1, Isa 6:1, Jas 5:16, Phil 2:7); each carries a `why` from the translator's report.",
   "Bounds cites almost nothing, so every reference here was identified by the translators from the English, not detected by pythonbible. AI-drafted, awaiting native review."
