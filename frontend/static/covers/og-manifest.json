@@ -11879,6 +11879,32 @@
 			"layout": "diagonal/ochre",
 			"bar": 0.085
 		},
+		"ko/clothed-with-strength-and-dignity": {
+			"ground": "2529ca642e4205357235bfc13f56ebe31245b91d4d1e27269c3e000d7aaa65d9",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[143, 308, 457, 384],
+					[100, 374, 500, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"ko/gleanings-among-the-sheaves": {
 			"ground": "d90914e34a383a2c53285d3437fc826135b791fcabd91908ea302e67f0cd4bcb",
 			"style": "revival",
