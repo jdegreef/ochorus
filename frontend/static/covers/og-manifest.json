@@ -14741,24 +14741,64 @@
 			]
 		},
 		"real-questions-2": {
-			"ground": "a1499fc02d25a0703050ce8e66f30adf5b3424e12dca0c341a079f59b9bbb8bf",
+			"ground": "58b26f45c3e44ed2cdf91352555c1dc3e7260e752de426cc59779b0adf1b1edb",
 			"style": "originals",
 			"volume": "2",
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.55,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 269, 311, 313],
+					[75, 347, 525, 423]
+				],
+				"subtitle": [
+					[157, 481, 443, 509],
+					[155, 509, 445, 537]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				537
+			]
 		},
 		"real-questions-3": {
-			"ground": "820a56783a3344fcb6225fc2d39282ce06e909f80d6540992037272d89ab507e",
+			"ground": "7886ea01b4ad5194785943f3c4d1cea0fa92ab611b8db05e9b98ba86c57c19b4",
 			"style": "originals",
 			"volume": "3",
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.5,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 269, 310, 313],
+					[75, 347, 525, 423]
+				],
+				"subtitle": [
+					[153, 481, 447, 509],
+					[136, 509, 464, 537]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				537
+			]
 		},
 		"reality-and-religion": {
 			"ground": "ff1ae70f6e4acd87f96721e5215c35b70c161557c969101889f3dd7561f00b12",
@@ -17050,74 +17090,209 @@
 			]
 		},
 		"tell-me-the-story-1": {
-			"ground": "a878a98321ef1ce6ef0a204522921bf99a71fd17d3fedc8cec9add6682617656",
+			"ground": "f449ed6f711fd64a4285857f816f980bf76daf9183241c9120e053aae68e682c",
 			"style": "young",
 			"volume": "1",
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.8,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 287, 308, 331],
+					[85, 362, 515, 437]
+				],
+				"subtitle": [
+					[113, 492, 487, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
 		},
 		"tell-me-the-story-2": {
-			"ground": "3e7838f67302198f2e006045b778840f71bd7ff2c9bbb0bb2908a5e7ad8b1160",
+			"ground": "885912e087d8a6f01978c9178871ff0a6cd6aa2bc49b310acf044e75d83314ba",
 			"style": "young",
 			"volume": "2",
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.75,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 287, 311, 331],
+					[85, 362, 515, 437]
+				],
+				"subtitle": [
+					[75, 492, 525, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
 		},
 		"tell-me-the-story-3": {
-			"ground": "d0d71070b04ed025d4a474b5ccaf1900b6b625170244c397bd5b26b907cedcca",
+			"ground": "f4550c45d081b78dcbfb1ce3a82100a58342f1e2cd61671ff034c84f2efcf18a",
 			"style": "young",
 			"volume": "3",
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.75,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 287, 310, 331],
+					[85, 362, 515, 437]
+				],
+				"subtitle": [
+					[46, 492, 554, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
 		},
 		"tell-me-the-story-4": {
-			"ground": "431cf31b0a9fc88dde86193be5a1ce3cbaa2120cf02c1a7939072ed10fa5a37c",
+			"ground": "634924cc4dd60b48fcf88739ae667258a35cf57a6ab737faab94699dd193403a",
 			"style": "young",
 			"volume": "4",
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.75,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 273, 311, 317],
+					[85, 348, 515, 423]
+				],
+				"subtitle": [
+					[162, 478, 438, 506],
+					[165, 506, 435, 534]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				261,
+				534
+			]
 		},
 		"tell-me-the-story-5": {
-			"ground": "6be7e977de7b97c318779a0cd428b0052ec587619c37c28d934a02d258d2445b",
+			"ground": "f907bec33de1f1103962051f341a5e0d04c47cc26a7397d3af0d29516119f7b7",
 			"style": "young",
 			"volume": "5",
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.75,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 287, 311, 331],
+					[85, 362, 515, 437]
+				],
+				"subtitle": [
+					[54, 492, 546, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
 		},
 		"tell-me-the-story-6": {
-			"ground": "1345f93063bf276e2f7e83b6cbd6c5367e12bbfecc8ea933a8adfb11c564eee5",
+			"ground": "ca0e4a3c4ffb73da60a046553f0d65da830850fea4652dc77ba46ad46e2e270f",
 			"style": "young",
 			"volume": "6",
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.75,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 273, 311, 317],
+					[85, 348, 515, 423]
+				],
+				"subtitle": [
+					[132, 478, 468, 506],
+					[138, 506, 462, 534]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				261,
+				534
+			]
 		},
 		"tell-me-the-story-7": {
-			"ground": "dc83395eaef08c2f1ff58bb969a36420d18805d83580c34f0519ee2c21bd3f08",
+			"ground": "7e64e277b7ad86dfa1aa2c59188a9ee92d3ec45f6dddc961c655bf954259b4b7",
 			"style": "young",
 			"volume": "7",
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.75,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[291, 287, 310, 331],
+					[85, 362, 515, 437]
+				],
+				"subtitle": [
+					[102, 492, 498, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
 		},
 		"ten-commandments": {
 			"ground": "66bc7534f5894353ab2420e9d7770736c70994ce2d0ae9ee07510660ca018fb3",
@@ -17130,14 +17305,33 @@
 			"bar": 0
 		},
 		"the-big-story": {
-			"ground": "f7a9f0622e19827749d38e399126f64c093cbc314ba21395af3a9332e143cc82",
+			"ground": "96d49b04afc3f00fe739f4078febd9a07f3418543fb9f1c193f919bf02bccd94",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.75,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[97, 300, 503, 376]
+				],
+				"subtitle": [
+					[166, 434, 434, 462],
+					[146, 462, 454, 490]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				305,
+				490
+			]
 		},
 		"the-body-of-christ-a-reality": {
 			"ground": "0fdd83b40849fce8da366d2bee1a697dc5b5082ff59a6b708f875c5249d6aefe",
@@ -17675,24 +17869,66 @@
 			]
 		},
 		"they-were-young-3": {
-			"ground": "c31c4a70e635aa1e25e4db9adfbb93540af66f1ef401dc6408592250f3e2f622",
+			"ground": "f8d97b811ce60ca29619ca1a5f59384cf7657d50b9a03b92bf969ae6b98f7ac2",
 			"style": "originals",
 			"volume": "3",
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.35,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 236, 310, 280],
+					[139, 314, 461, 390],
+					[205, 380, 395, 456]
+				],
+				"subtitle": [
+					[153, 514, 447, 542],
+					[184, 542, 416, 570]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				224,
+				570
+			]
 		},
 		"they-were-young-4": {
-			"ground": "4d0f41cf5e3eac0e1926e3504e3f8345df344670c926d0575a5b2aad99b2071e",
+			"ground": "175dcf0d04f59d86da797fb3c9dd7f5b1fa5b9783ed9fa51f5e012e4847fe862",
 			"style": "originals",
 			"volume": "4",
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 236, 311, 280],
+					[139, 314, 461, 390],
+					[205, 380, 395, 456]
+				],
+				"subtitle": [
+					[164, 514, 436, 542],
+					[160, 542, 440, 570]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				224,
+				570
+			]
 		},
 		"things-as-they-are": {
 			"ground": "7090f06cc32398199d5011091deb2f02f2a7caa55e4d8a62a1e71beb562023d5",

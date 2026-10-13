@@ -1788,6 +1788,72 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "A road at night to a cottage with one lit window, a small figure "
         "walking home: \"turn round, like the prodigal son, and come home\".",
     ),
+    # Later volumes of the teen series (2026-10-13): the same mark at Book 1's
+    # geometry, redrawn in SVG (Book 1's source was never committed), with the
+    # weather changing by volume as the series began.
+    "real-questions-2": Original(
+        "f3c7d84aced2c926b29ad3db041bd2c21e527364289808767329e0f27b249bc2",
+        "The question mark under a crescent moon and thin cloud on deep "
+        "teal: Real Questions, Book 2.",
+    ),
+    "real-questions-3": Original(
+        "750c031b4443bb61dd0002f467bd81a4c9841b71a98cebe6497177d1173ab3c8",
+        "The question mark in falling snow on deep wine: Real Questions, "
+        "Book 3.",
+    ),
+    "they-were-young-3": Original(
+        "94b4713a3274110c4ed8af6b34216e79f6160558ae19f8aec5adb35f990b18b0",
+        "The lantern in drifting fog, its small flame still lit below it: "
+        "They Were Young, Book 3 (Questions), six who wrestled with doubt.",
+    ),
+    "they-were-young-4": Original(
+        "1225711d49abb1a815dbb6957b09d39db16486d85f3bad0f24dc461037c31886",
+        "The lantern at first light, dawn rising behind the hill and a path "
+        "going out over it: They Were Young, Book 4 (Sent).",
+    ),
+    # Tell Me the Story 1–7 (2026-10-13), the storybook Bible for ages 6–10: one
+    # frame held constant (a grown-up and a child reading on the near hill), a
+    # sky emblem above the type and a far scene per volume, each from its book.
+    "tell-me-the-story-1": Original(
+        "4a650b874a433de0d138294f7924baf8ce9d870c3448afee7154876f053f114e",
+        "Sun, moon and stars over a fruit tree by a river: God makes "
+        "everything, and a garden for Adam and Eve.",
+    ),
+    "tell-me-the-story-2": Original(
+        "b04a47c0c2504301fac90cc332eb691dc057aafb28f07d96182fd309d01ece39",
+        "A pillar of fire over a path through the sea, its walls of water "
+        "standing up on either side.",
+    ),
+    "tell-me-the-story-3": Original(
+        "d07b9e44b5197ae987b1f30f7876509b5e02b51f49d62f7a78222bf63e924b27",
+        "A gold crown over a walled city and its temple: waiting for the "
+        "king, from Samuel to Nehemiah.",
+    ),
+    "tell-me-the-story-4": Original(
+        "cc0c1fa4b398abb050cbd461fc035c73fe57b35e7ca65e51959a1d40509f406e",
+        "One great star over a small lit stable: born in Bethlehem.",
+    ),
+    "tell-me-the-story-5": Original(
+        "7ed9ac19b4715497ad90b94f9c73d0b60f494fea75ecfaff108cfeb7f33a2d0f",
+        "A fishing boat on the lake under a bright sun: the storm on the "
+        "lake, walking on the water, the loaves and fish.",
+    ),
+    "tell-me-the-story-6": Original(
+        "c2a0ea6a148513544a4803ef2306327858b7cb058efe067b0c656c55ddbf141f",
+        "The sun rising over a garden tomb with its stone rolled away.",
+    ),
+    "tell-me-the-story-7": Original(
+        "8365519950ec3a44e0faf8d5754d2b6384850da71bcfb4f24d1a76e475de014f",
+        "A dove and three tongues of fire over a city, a road leading out "
+        "of it: wind and fire, and the light on the road.",
+    ),
+    # The Big Story (2026-10-13), the whole Bible for teens.
+    "the-big-story": Original(
+        "46a69c7c883ce63b7fa11a869f96131f0fa62c42b4008e5f66b8e05f5d94f334",
+        "A road at night from a fruit tree in the dark foreground to a city "
+        "of light on the far hill: from the garden in Genesis to the city "
+        "in Revelation.",
+    ),
 }
 
 

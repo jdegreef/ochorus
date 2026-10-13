@@ -417,6 +417,19 @@ Chrome, downscale with Pillow:
 python3 -c "from PIL import Image; Image.open('out@2x.png').convert('RGB').resize((600,800),Image.LANCZOS).save('ground.jpg',quality=90)"
 ```
 No cairosvg/rsvg/inkscape on this machine; Pillow + Chrome are present.
+**Commit the generator with the grounds** (`backend/scripts/original_grounds/`,
+2026-10-13). Real Questions 1 and They Were Young 1–2 shipped without their
+source, so their later volumes had to re-measure the mark from Book 1's pixels.
+`originals_series.py` (RQ 2–3, TWY 3–4, Tell Me the Story 1–7, The Big Story)
+and `teen_objects.py` reproduce the shipped jpgs byte-for-byte; a new volume
+adds an entry and runs `<script> OUTDIR <slug>`. Young-layout (`young`) covers
+set the byline at ~y115 and the volume ring at ~y300: a sky emblem belongs in
+y150–265, or it collides with the byline. A light low sky behind the mid-cover
+type costs a 0.95× scrim; hold the dark until ~60% down. Covers of export-pilot
+editions also need `library/export_covers/<slug>.<lang>.png` re-copied from the
+new twin, or `tests_book_export` fails.
+**zsh does not word-split `$VAR`**: `tune_art_scrim.py $SLUGS` passes ONE
+argument and silently tunes nothing — spell the slugs out.
 Headless Chrome can exit NON-ZERO after writing the screenshot ("Teardown watchdog
 expired", ~10 s per call) — check that the png exists rather than the return code.
 **Take each concept from the edition's OWN text, not the adult book's.** The teen
