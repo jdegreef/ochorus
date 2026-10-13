@@ -2642,6 +2642,20 @@ archaic spelling and period punctuation are the text, not defects in it.
   and record the first batch's spread here. Korean cover twins and share cards
   need Noto Serif KR inlined; `generate-home-og.mjs` shows how (numbered
   slices, filtered to the text drawn).
+- **The first ko BIO set the Korean bio conventions — follow them for the other nine**
+  (job #5849, a-b-simpson, 2026-10-13). Measured against `ko.json`, not invented:
+  narrative and answers in **합니다체**; FAQ questions in the UI's polite
+  **~인가요? / ~나요?**; Jesus as **예수님** in prose, **주 예수님** for "the Lord
+  Jesus", **예수 그리스도** in formal titles; Fourfold Gospel = **사중복음** (구주,
+  성결케 하시는 분, 치유자, 다시 오실 왕 — the term Korean holiness churches
+  already use); C&MA = **기독교선교연맹(C&MA)** (write `C&amp;MA` in HTML);
+  book and periodical titles in **『』** inside the source's `<em>`, hymn titles in
+  **「」**; curly “ ” for quotations. Band, n=1: **bio 0.803, FAQ 0.782** of the
+  English (`library.text.word_count`). Months and street numbers come out as digits
+  in Korean (12월, 13번가), so the per-block digit check gains numbers but must
+  never lose one. Scripture: quote 개역 with **세례, never 침례** (Take Root's copy
+  is the Baptist edition — see the ko Bible entry above); 침례 is still right in
+  prose for the denomination (침례교).
 - **es BOOKS are no longer all « » — measure the same AUTHOR's shipped es books
   before briefing** (job #4800, 2026-10-05). The #515 entry above says all 13
   shipped es books convert to « »; at 59 es books that no longer holds. Simpson's
