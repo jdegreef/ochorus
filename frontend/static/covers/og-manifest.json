@@ -8298,6 +8298,16 @@
 				592
 			]
 		},
+		"fr/life-of-antony": {
+			"ground": "edc73cf3eb8746e5a46088c72b799f430de574866fa04891e9f0c02c7ff07ffb",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/indigo",
+			"bar": 0
+		},
 		"fr/life-of-pascal": {
 			"ground": "84bc72d5d16e144ddd91aa7a7780ef435b5701552787fb9739d915c2a3eb68c4",
 			"style": "press",

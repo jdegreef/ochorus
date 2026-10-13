@@ -120,7 +120,7 @@ const needTwins = once(() => {
 				style: coverStyleFor(eraOf(birth.get(f.author[0]) ?? null), f.author[0], f.slug),
 				volume: volumeNumeral(f.series_position, baseEdition(f.language)),
 				layout: (() => {
-					const layout = art ? coverLayoutFor(f.author[0], scriptOf(f.language || 'en'), f.slug) : null;
+					const layout = art ? coverLayoutFor(f.author[0], scriptOf(f.language || 'en'), f.slug, f.title) : null;
 					return layoutKey(
 						layout,
 						art && typeTopFor(f.slug, layout),
