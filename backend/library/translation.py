@@ -126,17 +126,16 @@ _VERSE_REPAIRS = {"vietnamese": str.maketrans("\u00d0", "\u0110")}
 
 
 def _repair(bible: str, data: dict) -> dict:
+    """Apply `_VERSE_REPAIRS` in place to a freshly parsed chapter."""
     table = _VERSE_REPAIRS.get(bible)
     if table is None:
         return data
-    data = dict(data)
     for field in ("book_name", "reference"):
         if isinstance(data.get(field), str):
             data[field] = data[field].translate(table)
-    data["verses"] = [
-        {**v, "text": v["text"].translate(table)} if isinstance(v.get("text"), str) else v
-        for v in data.get("verses") or []
-    ]
+    for v in data.get("verses") or []:
+        if isinstance(v.get("text"), str):
+            v["text"] = v["text"].translate(table)
     return data
 
 

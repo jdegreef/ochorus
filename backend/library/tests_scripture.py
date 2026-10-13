@@ -4,6 +4,7 @@ fetching verse text from the Bible API in a target language.
 A bad Bible code does not fail — it omits scripture silently — so the checks
 here are the ones that notice."""
 
+import copy
 from unittest import mock
 
 from django.core.management import call_command
@@ -327,8 +328,10 @@ class ScriptureFetchTests(TestCase):
             "reference": "Giăng 1",
             "verses": [{"number": 1, "text": "Ngôi Lời là \u00d0ức Chúa Trời."}],
         }
+        # A fresh body per request, as requests gives: the repair is in place.
         with mock.patch(
-            "library.translation.requests.get", return_value=self._resp(200, payload)
+            "library.translation.requests.get",
+            side_effect=lambda *a, **k: self._resp(200, copy.deepcopy(payload)),
         ):
             vi = fetch_chapter("vietnamese", Ref("JHN", 1))
             other = fetch_chapter("kjv", Ref("JHN", 1))
