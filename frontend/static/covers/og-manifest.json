@@ -12326,6 +12326,16 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"lg/power-through-prayer": {
+			"ground": "79cba7910965f0682deed04b3c93a2803d728da638157525bcec42f88e262aad",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0.04
+		},
 		"lg/prayer-the-pulse-of-life": {
 			"ground": "3d415e2371b4aeb25fd799d32fdb99033c0c779544983fb3ecfee4204ca7ec13",
 			"style": "house",
