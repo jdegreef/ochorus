@@ -1,0 +1,20 @@
+{
+ "kind": "bio",
+ "slug": "julian-of-norwich",
+ "language": "fr",
+ "job_issue": 6047,
+ "references": [
+  {
+   "reference": "Matthew 23:37",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}
