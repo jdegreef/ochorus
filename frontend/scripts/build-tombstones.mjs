@@ -36,10 +36,14 @@
  * Fetches the previous list only on Render (`RENDER` is set there) from
  * PUBLIC_SITE_URL, or from TOMBSTONE_PREVIOUS (a URL or a file) when given.
  * CI and local builds use the seed alone. On Render it FAILS THE BUILD if the
- * previous list can't be read (other than a 404 — the very first deploy): a
+ * previous list can't be read — a 404 is accepted only on the very first
+ * deploy, recognised by no seed page being tombstoned live yet — because a
  * deploy that silently skipped this step would publish a list missing the
  * paths it should have tombstoned, and they would never be found again. Set
  * TOMBSTONE_PREVIOUS=none to deploy anyway, knowing that.
+ *
+ * It also fails when more than TOMBSTONE_MAX (default 300) pages would be
+ * tombstoned at once: that is a build short of pages, not a withdrawal.
  */
 import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative, resolve, sep } from 'node:path';
@@ -49,6 +53,8 @@ export const MANIFEST = 'published-pages.txt';
 const SEED = join(dirname(fileURLToPath(import.meta.url)), 'withdrawn-pages.txt');
 /** The two shells are the host's fallbacks, not pages: never listed, never tombstoned. */
 const SHELLS = new Set(['200.html', '404.html']);
+/** More withdrawals than this in one deploy fails the build (see main). */
+const DEFAULT_MAX = 300;
 
 /**
  * Every `.html` under `dir`, as forward-slashed paths relative to it.
@@ -94,8 +100,48 @@ export function tombstonesFor(known, built) {
 	return [...new Set(known)].filter((p) => !have.has(p) && !SHELLS.has(p)).sort();
 }
 
-/** The previous deploy's list, or [] where there is none to read. */
-async function previousList() {
+/** A response body that is the not-found shell (the shell is `noindex`; a page never is). */
+const isShell = (/** @type {string} */ html) => /<meta name="robots" content="noindex/.test(html);
+
+/** GET with a cache-busting query (the CDN holds responses ~5 minutes), retried. */
+/** @param {string} url */
+async function fetchFresh(url) {
+	let lastError;
+	for (let attempt = 1; attempt <= 3; attempt++) {
+		try {
+			const res = await fetch(`${url}?build=${Date.now()}`, { signal: AbortSignal.timeout(30_000) });
+			if (res.status < 500) return { status: res.status, text: await res.text() };
+			lastError = new Error(`${url} answered ${res.status}`);
+		} catch (e) {
+			lastError = e;
+		}
+		if (attempt < 3) await new Promise((r) => setTimeout(r, 2_000 * attempt));
+	}
+	throw lastError;
+}
+
+/**
+ * Is this the first deploy to publish the list? Only if no seed page has been
+ * tombstoned on the live site yet — every deploy with this step tombstones them
+ * all. Once one has, a 404 for the list is a fault (a CDN hiccup, a changed
+ * PUBLIC_SITE_URL), not a beginning, and going on would silently forget every
+ * page this deploy withdraws.
+ * @param {string} origin @param {string[]} seed
+ */
+async function isFirstDeploy(origin, seed) {
+	for (const p of seed.slice(0, 3)) {
+		const { text } = await fetchFresh(`${origin}/${p.replace(/index\.html$/, '')}`);
+		if (isShell(text)) return false;
+	}
+	return true;
+}
+
+/**
+ * The previous deploy's list, or [] where there is none to read.
+ * @param {string[]} seed
+ * @returns {Promise<string[]>}
+ */
+async function previousList(seed) {
 	const configured = process.env.TOMBSTONE_PREVIOUS;
 	if (configured === 'none') {
 		console.warn('build-tombstones: TOMBSTONE_PREVIOUS=none — using the seed only');
@@ -105,45 +151,54 @@ async function previousList() {
 	if (!source) {
 		if (!process.env.RENDER) return [];
 		const site = (process.env.PUBLIC_SITE_URL || '').replace(/\/+$/, '');
-		if (!site) throw new Error('PUBLIC_SITE_URL is unset, so the live page list cannot be fetched');
+		if (!site) throw new Error('PUBLIC_SITE_URL is unset, so the live page list cannot be fetched.');
 		source = `${site}/${MANIFEST}`;
 	}
 	if (!/^https?:\/\//.test(source)) return parsePageList(readFileSync(source, 'utf8'), source);
 
-	// The query busts the CDN's 5-minute cache: the list must be the one the
-	// previous deploy published, not one cached from before it.
-	const url = `${source}?build=${Date.now()}`;
-	let lastError;
-	for (let attempt = 1; attempt <= 3; attempt++) {
-		try {
-			const res = await fetch(url, { signal: AbortSignal.timeout(30_000) });
-			if (res.status === 404) {
-				console.warn(`build-tombstones: no ${source} yet (first deploy with it) — using the seed only`);
-				return [];
-			}
-			if (!res.ok) throw new Error(`${source} answered ${res.status}`);
-			return parsePageList(await res.text(), source);
-		} catch (e) {
-			lastError = e;
-			if (attempt < 3) await new Promise((r) => setTimeout(r, 2_000 * attempt));
+	const { status, text } = await fetchFresh(source);
+	if (status === 404) {
+		if (!(await isFirstDeploy(new URL(source).origin, seed))) {
+			throw new Error(`${source} answered 404, but an earlier deploy already published it.`);
 		}
+		console.warn(`build-tombstones: no ${source} yet (first deploy with it) — using the seed only`);
+		return [];
 	}
-	throw lastError;
+	if (status !== 200) throw new Error(`${source} answered ${status}.`);
+	return parsePageList(text, source);
 }
 
 /** @param {string} buildDir */
 export async function main(buildDir) {
 	const shell = join(buildDir, '404.html');
-	if (!existsSync(shell)) throw new Error(`${shell} is missing — build-404 must run first`);
+	if (!existsSync(shell)) throw new Error(`${shell} is missing — build-404 must run first.`);
 
-	const known = [...(await previousList()), ...parsePageList(readFileSync(SEED, 'utf8'), SEED)];
-	const graves = tombstonesFor(known, htmlFiles(buildDir));
+	const seed = parsePageList(readFileSync(SEED, 'utf8'), SEED);
+	const built = htmlFiles(buildDir).filter((p) => !SHELLS.has(p));
+	const graves = tombstonesFor([...(await previousList(seed)), ...seed], built);
+
+	// A build that is SHORT of pages — an API list answering partially during a
+	// release — would otherwise blank every page it skipped, where the host's
+	// leftover copy was at least right. Withdrawals come a work at a time; a
+	// burst means something upstream is wrong. Withdrawing a whole language is
+	// the legitimate exception: raise TOMBSTONE_MAX for that one deploy.
+	const max = Number(process.env.TOMBSTONE_MAX) || DEFAULT_MAX;
+	if (graves.length > max) {
+		throw Object.assign(
+			new Error(
+				`${graves.length} previously published pages are missing from this build ` +
+					`(limit ${max}), e.g. ${graves.slice(0, 5).map((p) => `/${p}`).join(', ')}.`
+			),
+			{ hint: 'If that many withdrawals are intended (a language taken offline), set TOMBSTONE_MAX above it for this deploy; otherwise find out why the build lost them.' }
+		);
+	}
+
 	for (const p of graves) {
 		const target = join(buildDir, p);
 		mkdirSync(dirname(target), { recursive: true });
 		copyFileSync(shell, target);
 	}
-	const published = htmlFiles(buildDir).filter((p) => !SHELLS.has(p)).sort();
+	const published = [...new Set([...built, ...graves])].sort();
 	writeFileSync(join(buildDir, MANIFEST), published.join('\n') + '\n');
 
 	console.log(
@@ -158,10 +213,13 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1
 	main(resolve(process.cwd(), process.argv[2] ?? 'build')).catch((e) => {
 		console.error(`\n✗ build-tombstones: ${e instanceof Error ? e.message : e}\n`);
 		console.error(
-			'  Without the previous page list, pages withdrawn by this deploy would keep\n' +
-				'  serving their old HTML from the host forever. Fix the cause and redeploy, or\n' +
-				'  set TOMBSTONE_PREVIOUS=none on ochorus-web to deploy without it (and then\n' +
-				'  add any page this deploy withdraws to scripts/withdrawn-pages.txt).\n'
+			'  ' +
+				(e?.hint ??
+					'Without the previous page list, pages withdrawn by this deploy would keep\n' +
+						'  serving their old HTML from the host forever. Fix the cause and redeploy, or\n' +
+						'  set TOMBSTONE_PREVIOUS=none on ochorus-web to deploy without it (and then\n' +
+						'  add any page this deploy withdraws to scripts/withdrawn-pages.txt).') +
+				'\n'
 		);
 		process.exit(1);
 	});

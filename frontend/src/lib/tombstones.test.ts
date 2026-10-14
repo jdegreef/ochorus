@@ -79,9 +79,13 @@ describe('main, over a scratch build', () => {
 		writeFileSync(join(build(), p), body);
 	};
 	const page = (p: string) => readFileSync(join(build(), p), 'utf8');
-	const saved = { ...process.env };
+	const saved = { previous: process.env.TOMBSTONE_PREVIOUS, render: process.env.RENDER };
+	const restore = (key: string, value: string | undefined) =>
+		value === undefined ? delete process.env[key] : (process.env[key] = value);
 	afterEach(() => {
-		process.env = { ...saved };
+		restore('TOMBSTONE_PREVIOUS', saved.previous);
+		restore('RENDER', saved.render);
+		delete process.env.TOMBSTONE_MAX;
 		if (dir) rmSync(dir, { recursive: true, force: true });
 	});
 
@@ -107,5 +111,20 @@ describe('main, over a scratch build', () => {
 		const listed = parsePageList(page(MANIFEST), MANIFEST);
 		expect(listed).toEqual(htmlFiles(build()).filter((p) => !/^(200|404)\.html$/.test(p)).sort());
 		expect(listed).toEqual(expect.arrayContaining(['books/gone/index.html', 'books/new/index.html']));
+	});
+
+	it('refuses a burst of withdrawals — a build short of pages, not a withdrawal', async () => {
+		dir = mkdtempSync(join(tmpdir(), 'tombstones-'));
+		const previous = join(dir, 'previous.txt');
+		writeFileSync(previous, 'a/index.html\nb/index.html\nc/index.html\n');
+		put('404.html', 'SHELL');
+		put('a/index.html', 'REAL');
+		process.env.TOMBSTONE_PREVIOUS = previous;
+		process.env.TOMBSTONE_MAX = '2';
+		delete process.env.RENDER;
+
+		// b, c and every seed path would be tombstoned: over the limit.
+		await expect(main(build())).rejects.toThrow(/missing from this build \(limit 2\)/);
+		expect(page('a/index.html')).toBe('REAL');
 	});
 });
