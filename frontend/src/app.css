@@ -4089,12 +4089,6 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		width: 2.75rem;
 		height: 2.75rem;
 	}
-	/* Footer language strip: grow each autonym's row with padding (no display
-	   change, as .footer-links a does) — a mis-tap here doesn't scroll, it
-	   switches the whole site's language. */
-	.footer-lang {
-		padding-block: 0.7rem;
-	}
 	/* A segmented option is inline-flex on touch (the @layer above), which drops
 	   the literal space before its count ("All130"); desktop keeps the space. */
 	.seg button .count {

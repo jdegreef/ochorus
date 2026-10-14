@@ -37,6 +37,7 @@
 	import { elementVisible } from '$lib/scrollSpy.svelte';
 	import { pageShowsBook } from '$lib/footerResume';
 	import { footerFeedback } from '$lib/footerFeedback.svelte';
+	import { LIVE_LOCALE_BOOKS } from '$lib/live-locales.generated';
 	import type { Snippet } from 'svelte';
 
 	const t = i18n.t;
@@ -411,16 +412,26 @@
 	     here — on an <a> it carries no SEO weight (Google reads it from head
 	     <link>, the sitemap, or headers) and it makes audit tools report
 	     phantom broken alternates on every page. -->
+	{#snippet tile(code: string, name: string)}
+		<span class="footer-lang-name">{name}</span>
+		{#if LIVE_LOCALE_BOOKS[code]}
+			<span class="footer-lang-count" lang={lang.current} dir={getTextDirection(lang.current)}
+				>{LIVE_LOCALE_BOOKS[code]}
+				{LIVE_LOCALE_BOOKS[code] === 1 ? t('common.bookOne') : t('common.bookMany')}</span
+			>
+		{/if}
+	{/snippet}
 	<nav
 		class="border-t border-border"
 		aria-label={t('footer.languages')}
 	>
-		<div
-			class="chrome-col flex flex-wrap items-baseline gap-x-5 gap-y-1 px-5 py-4 text-small"
-		>
-			<span class="eyebrow py-1 text-text"
-				>{t('footer.languages')}</span
-			>
+		<div class="chrome-col px-5 py-6">
+			<p class="eyebrow mb-3 text-text">{t('footer.languages')}</p>
+			<!-- Tiles: the autonym, and under it how many books wait in that
+			     language (baked at build, $lib/live-locales.generated) — no
+			     fallback, so each count is that language's own. The count is
+			     worded in the reader's UI language, like every count on the site. -->
+			<div class="footer-langs">
 			{#each footerLangs as l (l.code)}
 				<!-- nowrap per item: a language name breaking mid-word ("Kiswa- hili")
 				     is worse than the row wrapping between names.
@@ -433,15 +444,15 @@
 				     whole site's language and records the choice. -->
 				{#if l.code === lang.current}
 					<span
-						class="footer-lang whitespace-nowrap py-1 font-semibold text-text"
+						class="footer-lang current"
 						lang={l.code}
 						dir={getTextDirection(l.code)}
-						aria-current="true">{l.native_name}</span
+						aria-current="true">{@render tile(l.code, l.native_name)}</span
 					>
 				{:else}
 					<a
 						href={localizeHref('/', { locale: l.code as (typeof locales)[number] })}
-						class="footer-lang whitespace-nowrap py-1 text-muted hover:text-text"
+						class="footer-lang"
 						lang={l.code}
 						dir={getTextDirection(l.code)}
 						onclick={(e) => {
@@ -456,10 +467,11 @@
 								return;
 							e.preventDefault();
 							lang.choose(l.code);
-						}}>{l.native_name}</a
+						}}>{@render tile(l.code, l.native_name)}</a
 					>
 				{/if}
 			{/each}
+			</div>
 		</div>
 	</nav>
 
@@ -525,6 +537,48 @@
 		inset-inline: 0;
 		block-size: 2px;
 		background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 55%, var(--gold) 100%);
+	}
+
+	/* Language tiles: autonym over its book count. Auto-fill columns, so a
+	   phone gets two or three across and a desktop all ten in a row or two.
+	   Each is at least 3rem tall: a mis-tap here doesn't scroll, it switches
+	   the whole site's language. */
+	.footer-langs {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+		gap: 0.5rem;
+	}
+	.footer-lang {
+		display: flex;
+		flex-direction: column;
+		gap: 0.1rem;
+		min-block-size: 3rem;
+		justify-content: center;
+		padding: 0.55rem 0.85rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-sm);
+		background: var(--surface);
+		color: var(--text);
+		text-decoration: none;
+		transition: border-color var(--duration-fast) ease;
+	}
+	a.footer-lang:hover {
+		border-color: var(--accent);
+		text-decoration: none;
+	}
+	.footer-lang.current {
+		border-color: var(--accent);
+		box-shadow: inset 0 -2px 0 var(--gold);
+	}
+	.footer-lang-name {
+		font-family: var(--font-display);
+		font-size: var(--fs-body);
+		font-weight: 600;
+		white-space: nowrap;
+	}
+	.footer-lang-count {
+		font-size: var(--fs-micro);
+		color: var(--muted);
 	}
 
 	/* Phone link columns: each folds to a ruled row, its heading's toggle the
@@ -778,7 +832,8 @@
 		.footer-card-link:hover :global(svg) {
 			translate: none;
 		}
-		.footer-col :global(.footer-fold-chevron) {
+		.footer-col :global(.footer-fold-chevron),
+		.footer-lang {
 			transition: none;
 		}
 		.footer-invite-cta:hover::after {
