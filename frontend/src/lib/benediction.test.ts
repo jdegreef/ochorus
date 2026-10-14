@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { BLESSINGS } from './benediction.generated';
 import { blessingBible, blessingFor, SEASON_BLESSING, type BlessingKey } from './benediction';
@@ -56,5 +58,21 @@ describe('benediction', () => {
 				expect(b.book, `${l} ${k}`).not.toMatch(/\d+:\d/);
 			}
 		}
+	});
+});
+
+/**
+ * The generator names each locale's Bible by hand; language_seed.py is where
+ * that choice is made. #6012 drifted (ebible ids vie1934/kor, which Take Root
+ * does not carry, so vi and ko silently got no blessing) — hold them equal.
+ * Amharic was added from the admin, so the seed has no entry to compare.
+ */
+describe('benediction sources', () => {
+	it('quotes the Bible language_seed.py names for each locale', () => {
+		const seed = readFileSync(join(process.cwd(), '..', 'backend', 'library', 'language_seed.py'), 'utf-8');
+		const seeded = new Map<string, string>();
+		for (const m of seed.matchAll(/^ {4}"([a-z]{2})": \{[\s\S]*?^ {8}"bible": "([^"]+)"/gm)) seeded.set(m[1], m[2]);
+		expect(seeded.size).toBeGreaterThan(5);
+		for (const [l, bible] of seeded) expect(blessingBible(l), l).toBe(bible);
 	});
 });
