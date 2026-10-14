@@ -1,0 +1,29 @@
+{
+ "kind": "bio",
+ "slug": "catherine-booth",
+ "language": "vi",
+ "job_issue": 5956,
+ "references": [
+  {
+   "reference": "2 Corinthians 6:14",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "1 Corinthians 4:10",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "1 Corinthians 4:10",
+   "status": "self_rendered",
+   "block_index": 27
+  }
+ ]
+}
