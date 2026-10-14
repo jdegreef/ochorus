@@ -32,7 +32,8 @@
   "title": "Le chemin vers Dieu : la grâce pour tout pécheur",
   "description": "Un mois sur la plus ancienne des bonnes nouvelles. L'appel plein de tendresse de Richard Baxter à ceux qui ne sont pas convertis, D. L. Moody sur le chemin qui mène à Dieu, et Tout par grâce de Charles Spurgeon — les guides les plus simples qui soient sur la manière dont un pécheur est sauvé, et dont il peut le savoir.",
   "note": [
-   "Job #2229. Prose-ahead: source books (a-call-to-the-unconverted, the-way-to-god, all-of-grace) have no French edition yet, so seed_plans creates no fr row; dormant until they are translated."
+   "Job #2229. Prose-ahead: source books (a-call-to-the-unconverted, the-way-to-god, all-of-grace) have no French edition yet, so seed_plans creates no fr row; dormant until they are translated.",
+   "2026-10-13: a-call-to-the-unconverted.fr (« Appel aux inconvertis ») completes the set — the-way-to-god.fr and all-of-grace.fr were already live — so seed_plans now creates the (grace-for-every-sinner, fr) row."
   ]
  },
  "faith-in-the-fire": {
@@ -155,6 +156,14 @@
   "description": "Douze semaines avec quatre maîtres, un court chapitre par jour, chacun s’achevant par des questions et une prière : Richard Baxter sur le repos éternel des saints, Jonathan Edwards sur la beauté de Dieu et la vraie religion, A. B. Simpson sur le Christ notre Sauveur, notre Sanctificateur, notre Guérisseur et notre Roi qui vient, et Watchman Nee sur la vie chrétienne normale.",
   "note": [
    "Job #5214. Prose-ahead: shipped with the first French book of the plan (key-teachings-of-richard-baxter); the other three (key-teachings-of-jonathan-edwards, key-teachings-of-a-b-simpson, key-teachings-of-watchman-nee) have no French edition yet, so the plan stays dormant in French until they are translated."
+  ]
+ },
+ "the-pilgrims-way": {
+  "title": "Le chemin du pèlerin",
+  "description": "Le chemin du retour, en trois classiques. Charles Spurgeon vient à la rencontre de celui qui cherche, tout près de la porte étroite ; l’allégorie immortelle de John Bunyan accompagne le pèlerin jusqu’à la Cité céleste ; et le propre témoignage de Bunyan montre la grâce qui a surabondé pour le premier des pécheurs.",
+  "note": [
+   "Book titles as shipped: « Autour de la porte étroite » (around-the-wicket-gate.fr), « Le Voyage du pèlerin » (pilgrims-progress.fr), « Grâce abondante pour le premier des pécheurs » (grace-abounding.fr, added in this PR — the shipped fr study guide's title). The description echoes them (porte étroite / pèlerin / premier des pécheurs).",
+   "grace-abounding.fr completes the plan's three-book set in French, so seed_plans creates the (the-pilgrims-way, fr) row on the deploy that ships it — this prose must land in the SAME PR (the #819 defect)."
   ]
  },
  "brave-for-god-24-true-stories": {

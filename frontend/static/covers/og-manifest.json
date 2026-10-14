@@ -7915,11 +7915,23 @@
 				541
 			]
 		},
+		"fr/a-call-to-the-unconverted": {
+			"ground": "edf0e8865736dd1b67414f629403c4e75e75c13dc1818b2a2ee02b42bac3bdeb",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/rust",
+			"bar": 0
+		},
 		"fr/a-retrospect": {
 			"ground": "3dccbd7098fb78d8f7f6fe3a6108178f72509848b6b23d389a76b87ab8ac7d4a",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 1,
 			"layout": "rail/teal",
@@ -7963,6 +7975,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -8121,6 +8134,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -8322,6 +8336,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -8374,6 +8389,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -8449,6 +8465,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.55,
 			"layout": "framed",
@@ -8502,6 +8519,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.45,
 			"layout": "framed",
@@ -8565,6 +8583,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -8641,6 +8660,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -8698,6 +8718,7 @@
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 1,
 			"layout": "split/navy",
@@ -8768,6 +8789,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -8827,11 +8849,23 @@
 				487
 			]
 		},
+		"fr/grace-abounding": {
+			"ground": "bac2c6cd4bda21edd42611be146e7b44644fbe162d4d82aca11385ffc4db46f4",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"fr/grace-abounding-teens": {
 			"ground": "db9bc14ef285c92ba082806788e21126db98538ee39addea439fbac1682a27c2",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.5,
 			"layout": "framed",
@@ -8953,6 +8987,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -9029,6 +9064,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.65,
 			"layout": "framed",
@@ -9152,6 +9188,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -9222,6 +9259,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.85,
 			"layout": "framed",
@@ -9315,6 +9353,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.8,
 			"layout": "framed",
@@ -9498,6 +9537,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -9547,6 +9587,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -9600,6 +9641,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.35,
 			"layout": "framed",
@@ -9656,6 +9698,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -10020,6 +10063,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -10219,6 +10263,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -10363,6 +10408,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -10503,6 +10549,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -10530,6 +10577,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -10594,6 +10642,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -10658,6 +10707,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -10829,6 +10879,7 @@
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -13282,7 +13333,8 @@
 			"ground": "91125984b699300a36a132503dede33a26c71398f481ab9b6cfd59d176ae634c",
 			"style": "devotional",
 			"volume": null,
-			"script": "latin",
+			"script": "korean",
+			"fonts": "bce8ed7454a054f20de3988b6a43ccc17c1152807277f859703de11f8437005d",
 			"art": true,
 			"scrim": 1,
 			"layout": "wash/sage",
@@ -13303,7 +13355,8 @@
 			"ground": "2529ca642e4205357235bfc13f56ebe31245b91d4d1e27269c3e000d7aaa65d9",
 			"style": "originals",
 			"volume": null,
-			"script": "latin",
+			"script": "korean",
+			"fonts": "77fecf5f28da3ab35e95e7eb8f7c1059c889ff52cc6572232d2b84bb2c49f2df",
 			"art": true,
 			"scrim": 0.35,
 			"layout": "framed",
@@ -13313,8 +13366,8 @@
 					[114, 102, 486, 131]
 				],
 				"title": [
-					[143, 308, 457, 384],
-					[100, 374, 500, 450]
+					[148, 308, 452, 384],
+					[106, 374, 494, 450]
 				],
 				"mark": [
 					[232, 664, 368, 746]
@@ -13329,7 +13382,8 @@
 			"ground": "d90914e34a383a2c53285d3437fc826135b791fcabd91908ea302e67f0cd4bcb",
 			"style": "revival",
 			"volume": null,
-			"script": "latin",
+			"script": "korean",
+			"fonts": "ed0b162daf4b4ed7689b33b6e2f795f0dd6c10925e87fdf3d978defec33cd45a",
 			"art": true,
 			"scrim": 1,
 			"layout": "band/oxblood",
@@ -13339,7 +13393,8 @@
 			"ground": "f09987508012b1227cb8fa702b8d971a55da5ba8a1d7a8485efb2f9f800b1dcd",
 			"style": "revival",
 			"volume": null,
-			"script": "latin",
+			"script": "korean",
+			"fonts": "8cd87ff32926a76e570eda36ccc24ecdb6ab75d13bd7a6224d39e74858edce6a",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -13349,7 +13404,7 @@
 					[134, 102, 466, 131]
 				],
 				"title": [
-					[243, 359, 357, 435]
+					[245, 359, 355, 435]
 				],
 				"mark": [
 					[232, 664, 368, 746]
@@ -13358,6 +13413,33 @@
 			"middle": [
 				308,
 				487
+			]
+		},
+		"ko/he-holds-my-tomorrows": {
+			"ground": "9b964a8144b7314e55bb6adafaf9f39b7f29c5af5f86bc7605032ba5d6d71bcb",
+			"style": "lettered",
+			"volume": null,
+			"script": "korean",
+			"fonts": "d1030488badcb15203403116743bc1efaa59f1d8a853bc5678b816f2cf1d0922",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[84, 302, 516, 408],
+					[84, 386, 516, 492]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				481
 			]
 		},
 		"ko/school-of-prayer": {
@@ -13375,7 +13457,8 @@
 			"ground": "c7de56895f8b293758df95f953d4a9baf38e7d8d46692e615ab0c57bc08f7c63",
 			"style": "devotional",
 			"volume": null,
-			"script": "latin",
+			"script": "korean",
+			"fonts": "587389f9d23ee6d27019a16810666293ca7982c3db98d8d857426296c8373c37",
 			"art": true,
 			"scrim": 1,
 			"layout": "wash/sage",
@@ -13385,7 +13468,8 @@
 			"ground": "8c9582aaa4545dfc8591646debbfb759c1214b5d981de89d0b7e03f90f4b7ec1",
 			"style": "devotional",
 			"volume": null,
-			"script": "latin",
+			"script": "korean",
+			"fonts": "bce8ed7454a054f20de3988b6a43ccc17c1152807277f859703de11f8437005d",
 			"art": true,
 			"scrim": 0.95,
 			"layout": "framed",
@@ -13395,7 +13479,7 @@
 					[79, 102, 521, 131]
 				],
 				"title": [
-					[73, 326, 527, 408]
+					[80, 326, 520, 408]
 				],
 				"mark": [
 					[232, 664, 368, 746]
@@ -13410,7 +13494,8 @@
 			"ground": "b7875842ddd499da63400547c79f267ea1402c059e9b58eb89ee18e19d2bab38",
 			"style": "devotional",
 			"volume": null,
-			"script": "latin",
+			"script": "korean",
+			"fonts": "f4f0efec2db86399a1a8ced57806eca1b8484bbe2b7b54fd0ad2ad263d9d7078",
 			"art": true,
 			"scrim": 1,
 			"layout": "wash/sage",
@@ -13924,6 +14009,7 @@
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 1,
 			"layout": "split/navy",
@@ -14030,6 +14116,7 @@
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 1,
 			"layout": "band/oxblood",
@@ -15516,6 +15603,7 @@
 			"style": "lettered",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 0.7,
 			"layout": "framed",

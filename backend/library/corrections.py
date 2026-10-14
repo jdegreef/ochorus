@@ -6178,6 +6178,290 @@ BODY_CORRECTIONS.setdefault("a-retrospect", {}).setdefault("replacements", []).e
     # [en] dropped full stop
     ("direction of Kia-hing Fu This, I", "direction of Kia-hing Fu. This, I"),
 ])
+
+# Found while translating to French (2026-10-13): Grace Abounding — single-
+# reading OCR slips, Psalm eix -> cix, and the ¶324 lacuna (the 'two
+# considerations' lost their first: enduring a long imprisonment), restored
+# from the standard text in en and es.
+BODY_CORRECTIONS.setdefault("grace-abounding", {}).setdefault("replacements", []).extend([
+    # [en] stray full stop before a lower-case continuation ("…conversion. or
+    # whether…"); the sentence runs on
+    ("before his conversion. or whether", "before his conversion, or whether"),
+    # [en] missing space before the italic title
+    ("for her part,<i>The Plain", "for her part, <i>The Plain"),
+    # [en] full stop for comma splits a dependent clause ("while I stood there,
+    # and hanging down my head, I wished…")
+    ("and hanging down my head. I wished", "and hanging down my head, I wished"),
+    # [en] paragraph number lacks its full stop (every other number is "NN.")
+    ("<p>97 The tempter", "<p>97. The tempter"),
+    # [en] "saith my God" duplicated; KJV Isa 57:21 "There is no peace, saith
+    # my God, to the wicked"
+    ("no peace, saith my God, to the wicked, saith my God.’", "no peace, saith my God, to the wicked.’"),
+    # [en] OCR "up" for "us" (object of "pressed"; the clause continues "that
+    # we")
+    ("He pressed up to take special heed that we", "He pressed us to take special heed that we"),
+    # [en] dropped "as" ("one morning … I was, as at other times, most fiercely
+    # assaulted")
+    ("I was, at other times, most fiercely", "I was, as at other times, most fiercely"),
+    # [en] OCR "world" for "word" ("bear me up … upon this word, from which I
+    # had … sweetness" — the scripture just quoted)
+    ("keep my heart upon this world, from which", "keep my heart upon this word, from which"),
+    # [en] typo "eighteeneth"
+    ("saying in the eighteeneth of Luke", "saying in the eighteenth of Luke"),
+    # [en] dropped verb: "I would which" is ungrammatical; the text reads "I
+    # wonder which of them would get the better of me"
+    ("at once, I would which of them", "at once, I wonder which of them"),
+    # [en] stray full stop before a lower-case continuation
+    ("ground of hope. and so of spiritual", "ground of hope, and so of spiritual"),
+    # [en] OCR "l" for "I"
+    ("by this scripture, l saw that", "by this scripture, I saw that"),
+    # [en] garbled "the twelfth of the author of"; Bunyan's idiom is "that
+    # twelfth of the Hebrews" (cf. "the eighteenth of Luke"); citation
+    # unchanged
+    ("that twelfth of the author of (Hebrews", "that twelfth of the Hebrews (Hebrews"),
+    # [en] OCR "Mounments" for "Monuments" (Foxe's Acts and Monuments)
+    ("Foxe’s Acts and Mounments", "Foxe’s Acts and Monuments"),
+    # [en] OCR "love" for "life" ("when a little life more is over, give an
+    # account to Him that is ready to judge the quick and the dead")
+    ("when a little love more is over", "when a little life more is over"),
+    # [en] OCR "abd" for "and"
+    ("abd at every offer of Satan", "and at every offer of Satan"),
+    # [en] LACUNA PROVEN BY STRUCTURE: ¶324 announces "two considerations",
+    # gives "the first" as death, then answers "the first" with Col 1:11 on
+    # patience/long-suffering, and ¶325
+    ("the first was, how to be able to encounter death, should that be my portion.", "the first was, how to be able to endure, should my imprisonment be long and tedious; the second was, how to be able to encounter death, should that be my portion."),
+    # [en] stray scan hyphen
+    ("three in special here -I will name", "three in special here I will name"),
+    # [en] OCR "flaw" for "flesh" ("as spurs into my flesh")
+    ("as spurs into my flaw.", "as spurs into my flesh."),
+    # [en] OCR "eix" for roman "cix" (Ps 109:6-20, the betrayer's psalm, "let
+    # another take his office" v8; Bunyan is speaking of Judas)
+    ("soberly, Psalm eix. 6-20", "soberly, Psalm cix. 6-20"),
+    # [en] OCR "1" for "I"
+    ("that oft 1 was as if", "that oft I was as if"),
+    # [en] OCR "lie" for "he"
+    ("Is lie a godly man", "Is he a godly man"),
+    # [es] the ¶324 lacuna restored in en; es reproduced the gap
+    ("la primera era cómo ser capaz de hacer frente a la muerte, si esa había de ser mi porción.", "la primera era cómo ser capaz de soportar, si mi encarcelamiento había de ser largo y penoso; la segunda, cómo ser capaz de hacer frente a la muerte, si esa había de ser mi porción."),
+])
+
+# Found while translating to French (2026-10-13): A Call to the Unconverted —
+# 25 scanned page numbers glued into ch01-02, OCR slips, and misprinted
+# references whose quoted words fix the verse, also in the es/pt/am editions.
+BODY_CORRECTIONS.setdefault("a-call-to-the-unconverted", {}).setdefault("replacements", []).extend([
+    # [en] scanned page number (running folio) glued into the text: iv
+    ("sort of men, iv(the ungodly)", "sort of men, (the ungodly)"),
+    # [en] scanned page number (running folio) glued into the text: v
+    ("with that authority v and efficacy", "with that authority and efficacy"),
+    # [en] scanned page number (running folio) glued into the text: vi
+    ("opposite parties. </p>vi<p>Death", "opposite parties. </p> <p>Death"),
+    # [en] scanned page number (running folio) glued into the text: vii
+    ("writings, he said, vii“I was", "writings, he said, “I was"),
+    # [en] scanned page number (running folio) glued into the text: viii
+    ("so useful viiiand beneficial", "so useful and beneficial"),
+    # [en] scanned page number (running folio) glued into the text: ix
+    ("till he died.” </p>ix", "till he died.” </p>"),
+    # [en] scanned page number (running folio) glued into the text: x
+    ("in your mouths. xHe seeth", "in your mouths. He seeth"),
+    # [en] scanned page number (running folio) glued into the text: xi
+    ("to tell xi him that", "to tell him that"),
+    # [en] scanned page number (running folio) glued into the text: xii
+    ("dreadful God of xiiheaven", "dreadful God of heaven"),
+    # [en] scanned page number (running folio) glued into the text: xiii
+    ("keepeth the book now; xiiiand", "keepeth the book now; and"),
+    # [en] scanned page number (running folio) glued into the text: xiv
+    ("against thy xivteachers", "against thy teachers"),
+    # [en] scanned page number (running folio) glued into the text: xv
+    ("the haste he makes, xvand", "the haste he makes, and"),
+    # [en] scanned page number (running folio) glued into the text: xvi
+    ("your course xvi and company", "your course and company"),
+    # [en] scanned page number (running folio) glued into the text: xvii
+    ("or a little xviifading pelf", "or a little fading pelf"),
+    # [en] scanned page number (running folio) glued into the text: xviii
+    ("that you might xviiilive", "that you might live"),
+    # [en] scanned page number (running folio) glued into the text: xix
+    ("deliverance from xixthe remnants", "deliverance from the remnants"),
+    # [en] scanned page number (running folio) glued into the text: xx
+    ("through the Land; xxwhen", "through the Land; when"),
+    # [en] scanned page number (running folio) glued into the text: xxi
+    ("[or perhaps xxionly on", "[or perhaps only on"),
+    # [en] scanned page number (running folio) glued into the text: xxii
+    ("power of sin in xxii our people", "power of sin in our people"),
+    # [en] scanned page number (running folio) glued into the text: xxiii
+    ("but you must xxiii shortly know", "but you must shortly know"),
+    # [en] scanned page number (running folio) glued into the text: xxiv
+    ("of everlasting xxivthings ?", "of everlasting things ?"),
+    # [en] scanned page number (running folio) glued into the text: xxv
+    ("sanctify ourselves. </p>xxv<p>Well, Sirs", "sanctify ourselves. </p> <p>Well, Sirs"),
+    # [en] scanned page number (running folio) glued into the text: xxvi
+    ("once acquainted with xxviyour sin", "once acquainted with your sin"),
+    # [en] scanned page number (running folio) glued into the text: xxvii
+    ("comfortably might xxviiwe leave", "comfortably might we leave"),
+    # [en] scanned page number (running folio) glued into the text: xxviii
+    ("had been forgotten xxviii long ago", "had been forgotten long ago"),
+    # [en] OCR slip: Baxter's parish is Kidderminster
+    ("Parish of Kiaderminster", "Parish of Kidderminster"),
+    # [en] OCR slip "high" for "hath"
+    ("therefore he high commanded us", "therefore he hath commanded us"),
+    # [en] OCR slip "wilfill" for "wilful"
+    ("their wilfill negligence", "their wilful negligence"),
+    # [en] OCR long-s slip "favour" for "savour"
+    ("feel no favour in the word", "feel no savour in the word"),
+    # [en] OCR slip "dinned" for "sinned" (by sinning in the light)
+    ("have dinned yourselves into", "have sinned yourselves into"),
+    # [en] OCR slip "lfe" for "life"
+    ("noble, spiritual lfe of", "noble, spiritual life of"),
+    # [en] OCR slip "he" for "be"
+    ("my life would he a fore-taste", "my life would be a fore-taste"),
+    # [en] OCR slip "he" for "be"
+    ("sentence would he written", "sentence would be written"),
+    # [en] OCR long-s slip "faith" for "saith" (Isa 57:21)
+    ("no peace, faith my God", "no peace, saith my God"),
+    # [en] doubled word "but but"
+    ("if you were but but truly", "if you were but truly"),
+    # [en] OCR slip "wordling" for "worldling"
+    ("nor a wordling, nor", "nor a worldling, nor"),
+    # [en] OCR slip "nor" for "not"
+    ("this patience will nor wait", "this patience will not wait"),
+    # [en] OCR slip "there" for "these"
+    ("try first, there conclusions", "try first, these conclusions"),
+    # [en] OCR slip "anti" for "and"
+    ("your souls, anti whether", "your souls, and whether"),
+    # [en] OCR slip "took" for "look"
+    ("not time to took about you", "not time to look about you"),
+    # [en] OCR slip "Go4" for "God"
+    ("the Call of Go4,", "the Call of God,"),
+    # [en] wrong citation: "the way of the Lord is not equal" … "their ways
+    # that are not equal" is Ezek 18:25
+    ("is handled, chap. xvii. ver. 25.", "is handled, chap. xviii. ver. 25."),
+    # [en] wrong citation: "If our transgressions and our sins be upon us, and
+    # we pine away in them" is Ezek 33:10
+    ("So here they say, in verse 9,", "So here they say, in verse 10,"),
+    # [en] wrong citation: "except ye be converted, and become as little
+    # children" is Matt 18:3
+    ("by these few.—Matt. xviii. 5.", "by these few.—Matt. xviii. 3."),
+    # [en] wrong citation: "neither circumcision availeth any thing … but a new
+    # creature" is Gal 6:15
+    ("none of his.”—Gal. vi. 45.", "none of his.”—Gal. vi. 15."),
+    # [en] OCR digit 1 for l
+    ("nor thankfu1ly entertain", "nor thankfully entertain"),
+    # [en] OCR slip "be" for "he"
+    ("is grieved when be hides", "is grieved when he hides"),
+    # [en] OCR slip "or" for "of"
+    ("with the name or the eternal Majesty", "with the name of the eternal Majesty"),
+    # [en] OCR digit 1 for I
+    ("not seen. If 1 believe God", "not seen. If I believe God"),
+    # [en] OCR slip "yon" for "you"
+    ("I beseech yon deny me not", "I beseech you deny me not"),
+    # [en] wrong citation: "O wicked man, thou shalt surely die" is Ezek 33:8
+    ("in his name, ver. 18, “O wicked man", "in his name, ver. 8, “O wicked man"),
+    # [en] wrong citation: Christ weeping over Jerusalem is Luke 19:41-42 (Luke
+    # 14 has 35 verses)
+    ("impenitent people, Luke xiv. 41, 42.", "impenitent people, Luke xix. 41, 42."),
+    # [en] typo "resollution"
+    ("efficacious resollution", "efficacious resolution"),
+    # [en] OCR slip "or" for "of"
+    ("it is the voice or every affliction", "it is the voice of every affliction"),
+    # [en] OCR slip "or" for "of"
+    ("It is the voice or pity", "It is the voice of pity"),
+    # [en] OCR slip "hat" for "hath"
+    ("the Lord hat confirmed it", "the Lord hath confirmed it"),
+    # [en] garbled citation: "the friendship of the world is enmity with God"
+    # is James 4:4
+    ("is not in him,” James 4. iv. 1 John", "is not in him,” James iv. 4. 1 John"),
+    # [en] OCR slip "you" for "yet" (parallel "but yet I will not" clauses)
+    ("this poison, but you I will not die", "this poison, but yet I will not die"),
+    # [en] OCR slip "its" for "is"
+    ("and hell its such a thing", "and hell is such a thing"),
+    # [en] OCR slip "thing" for "think"
+    ("I do not thing that God", "I do not think that God"),
+    # [en] OCR slip "or" for "of"
+    ("drift or their lives", "drift of their lives"),
+    # [en] OCR slip "there" for "these"
+    ("aver one of there reasons", "aver one of these reasons"),
+    # [en] OCR slip "earthily" for "earthly"
+    ("a carnal earthily man", "a carnal earthly man"),
+    # [en] OCR slip "earthily" for "earthly"
+    ("deep a draught of earthily pleasures", "deep a draught of earthly pleasures"),
+    # [en] wrong citation: "a day in thy courts is better than a thousand" is
+    # Ps 84:10 (Ps 84 has 12 verses)
+    ("any where else,” Psalm lxxxiv. 13.", "any where else,” Psalm lxxxiv. 10."),
+    # [en] OCR slip "ne" for "me" (Ps 81:13)
+    ("had hearkened unto ne,", "had hearkened unto me,"),
+    # [en] wrong citation: "Hast thou not procured this unto thyself, in that
+    # thou hast forsaken the LORD" is Jer 2:17
+    ("the Lord, that would have saved thee,” Jer. ii. 7.", "the Lord, that would have saved thee,” Jer. ii. 17."),
+    # [en] wrong citation: "there shall in no wise enter into it any thing that
+    # defileth" is Rev 21:27
+    ("that is unclean,” Rev. xxi. 17.", "that is unclean,” Rev. xxi. 27."),
+    # [en] wrong citation: "All day long I have stretched forth my hands unto a
+    # disobedient and gainsaying people" is Rom 10:21 (Rom 10 has 21 verses)
+    ("gainsaying people,” Rom. x. 25.", "gainsaying people,” Rom. x. 21."),
+    # [en] wrong citation: "good to all: and his tender mercies are over all
+    # his works" is Ps 145:9
+    ("over all his works.” Psal. cxlv. 17, 19.", "over all his works.” Psal. cxlv. 17, 9."),
+    # [en] OCR slip "or" for "of"
+    ("gracious nature or God,", "gracious nature of God,"),
+    # [en] OCR slip "or" for "of" (Eccl 5:1)
+    ("the sacrifice or fools", "the sacrifice of fools"),
+    # [en] wrong citation: "thou thoughtest that I was altogether such an one
+    # as thyself" is Ps 50:21 (roman l read as i)
+    ("such a one as yourselves, Psalm i. 21.", "such a one as yourselves, Psalm l. 21."),
+    # [en] OCR digit 1 for l
+    ("and your sou1s shall live", "and your souls shall live"),
+    # [en] OCR dropped letter "betwix" for "betwixt"
+    ("divide your heart betwix him", "divide your heart betwixt him"),
+    # [es] citation Jer 2:7 → 2:17 (matches English fix)
+    ("el Señor, que habría querido salvarte» (Jeremías 2:7)", "el Señor, que habría querido salvarte» (Jeremías 2:17)"),
+    # [es] citation Ezek 33:18 → 33:8 (matches English fix)
+    ("en su nombre (v. 18):", "en su nombre (v. 8):"),
+    # [pt] citation Ezek 17:25 → 18:25 (matches English fix)
+    ("tratada no capítulo 17, versículo 25", "tratada no capítulo 18, versículo 25"),
+    # [pt] citation Ezek 33:9 → 33:10 (matches English fix)
+    ("eles dizem, no versículo 9:", "eles dizem, no versículo 10:"),
+    # [pt] citation Matt 18:5 → 18:3 (matches English fix)
+    ("estes poucos.—Mateus 18:5.", "estes poucos.—Mateus 18:3."),
+    # [pt] citation Gal 6:45 → 6:15 (matches English fix)
+    ("não é dele.”—Gálatas 6:45.", "não é dele.”—Gálatas 6:15."),
+    # [pt] citation Ezek 33:18 → 33:8 (matches English fix)
+    ("em seu nome, vers. 18:", "em seu nome, vers. 8:"),
+    # [pt] citation Luke 14:41 → 19:41 (matches English fix)
+    ("impenitente (Lucas 14:41,42)", "impenitente (Lucas 19:41,42)"),
+    # [pt] citation Ps 84:13 → 84:10 (matches English fix)
+    ("qualquer outro lugar” (Salmos 84:13)", "qualquer outro lugar” (Salmos 84:10)"),
+    # [pt] citation Jer 2:7 → 2:17 (matches English fix)
+    ("que te teria salvado” (Jeremias 2:7)", "que te teria salvado” (Jeremias 2:17)"),
+    # [pt] citation Rev 21:17 → 21:27 (matches English fix)
+    ("coisa alguma impura” (Apocalipse 21:17)", "coisa alguma impura” (Apocalipse 21:27)"),
+    # [pt] citation Rom 10:25 → 10:21 (matches English fix)
+    ("desobediente e rebelde” (Romanos 10:25)", "desobediente e rebelde” (Romanos 10:21)"),
+    # [pt] citation Ps 145:19 → 145:9 (matches English fix)
+    ("todas as suas obras” (Salmos 145:17,19)", "todas as suas obras” (Salmos 145:17,9)"),
+    # [pt] citation Ps 1:21 → 50:21 (matches English fix)
+    ("tal como vós (Salmos 1:21)", "tal como vós (Salmos 50:21)"),
+    # [am] citation Ezek 17:25 → 18:25 (matches English fix)
+    ("ክርክር በምዕራፍ 17 ቍጥር 25", "ክርክር በምዕራፍ 18 ቍጥር 25"),
+    # [am] citation Ezek 33:9 → 33:10 (matches English fix)
+    ("እዚህም በቍጥር 9፦", "እዚህም በቍጥር 10፦"),
+    # [am] citation Matt 18:5 → 18:3 (matches English fix)
+    ("ጥቂቶች ልትረኩ ትችላላችሁ።— ማቴዎስ 18:5፦", "ጥቂቶች ልትረኩ ትችላላችሁ።— ማቴዎስ 18:3፦"),
+    # [am] citation Ezek 33:18 → 33:8 (matches English fix)
+    ("በስሙም ቍጥር 18 ላይ፦", "በስሙም ቍጥር 8 ላይ፦"),
+    # [am] citation Luke 14:41 → 19:41 (matches English fix)
+    ("እያለቀሰና እያዘነ (ሉቃስ 14:41-42)", "እያለቀሰና እያዘነ (ሉቃስ 19:41-42)"),
+    # [am] citation Ps 84:13 → 84:10 (matches English fix)
+    ("ከሺህ ይሻላል» (መዝሙር 84:13)", "ከሺህ ይሻላል» (መዝሙር 84:10)"),
+    # [am] citation Jer 2:7 → 2:17 (matches English fix)
+    ("በራስህ ላይ ታመጣዋለህ» (ኤርምያስ 2:7)", "በራስህ ላይ ታመጣዋለህ» (ኤርምያስ 2:17)"),
+    # [am] citation Rev 21:17 → 21:27 (matches English fix)
+    ("ከቶ አይገባም» (ራእይ 21:17)", "ከቶ አይገባም» (ራእይ 21:27)"),
+    # [am] citation Rom 10:25 → 10:21 (matches English fix)
+    ("እጆቼን ዘረጋሁ» (ሮሜ 10:25)", "እጆቼን ዘረጋሁ» (ሮሜ 10:21)"),
+    # [am] citation Ps 145:19 → 145:9 (matches English fix)
+    ("በሥራው ሁሉ ላይ ነው» (መዝሙር 145:17፣ 19)", "በሥራው ሁሉ ላይ ነው» (መዝሙር 145:17፣ 9)"),
+    # [am] citation Ps 1:21 → 50:21 (matches English fix)
+    ("ልታስቡ ትቸኩላላችሁ (መዝሙር 1:21)", "ልታስቡ ትቸኩላላችሁ (መዝሙር 50:21)"),
+])
 # The paragraph ended on a stop the OCR read as a comma.
 BODY_CORRECTIONS["evangelization-of-the-world"]["paragraph_breaks"] = [
     ('foreign mission service.', 'In 1898 the members'),
