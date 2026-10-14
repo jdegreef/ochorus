@@ -1,9 +1,9 @@
 name: Deploy train
 
 # Deploys main to Render in batches instead of on every merge. Render's
-# auto-deploy is off on all three services (render.yaml), so this workflow is
-# the only thing that ships a merge: every two hours it moves all three
-# services to the newest commit whose `test-and-build` passed, if anything
+# auto-deploy is off on ochorus-api and ochorus-web (render.yaml), so this
+# workflow is the only thing that ships them: every two hours it moves both
+# to the newest commit whose `test-and-build` passed, if anything
 # deployable changed since the last deploy.
 # .github/scripts/deploy_train.py has the rules and the why.
 #
@@ -15,8 +15,8 @@ name: Deploy train
 #   gh workflow run deploy-train.yml
 #
 # Setup: copy each service's Render deploy hook (service → Settings → Deploy
-# Hook) into the repo secrets RENDER_DEPLOY_HOOK_API, RENDER_DEPLOY_HOOK_WEB
-# and RENDER_DEPLOY_HOOK_CRON. A missing secret skips that service.
+# Hook) into the repo secrets RENDER_DEPLOY_HOOK_API and RENDER_DEPLOY_HOOK_WEB.
+# The email cron has no deploy hook on Render; it auto-deploys (render.yaml).
 on:
   schedule:
     - cron: '5 */2 * * *'
@@ -52,7 +52,6 @@ jobs:
           FORCE: ${{ inputs.force }}
           RENDER_DEPLOY_HOOK_API: ${{ secrets.RENDER_DEPLOY_HOOK_API }}
           RENDER_DEPLOY_HOOK_WEB: ${{ secrets.RENDER_DEPLOY_HOOK_WEB }}
-          RENDER_DEPLOY_HOOK_CRON: ${{ secrets.RENDER_DEPLOY_HOOK_CRON }}
         run: |
           pip install --quiet pyyaml
           python3 .github/scripts/deploy_train.py

@@ -14,8 +14,8 @@ What it does, in order:
    GitHub deployments Render reports ("main - ochorus-web").
 3. Deploy if a file in LAST..TARGET matches any service's render.yaml
    buildFilter (or rootDir), or if FORCE is set.
-4. Fire EVERY service's deploy hook with `ref=TARGET`. All three services move
-   to the same commit together. That keeps two promises: the web build's
+4. Fire the API and web deploy hooks with `ref=TARGET`. Both move to the same
+   commit together (the email cron has no hook and auto-deploys on its own). That keeps two promises: the web build's
    prebuild gate finds the API serving exactly the content it checks out, and
    the API's own commit (RENDER_GIT_COMMIT) is a safe `ref` for the rebuilds
    the admin fires between trains (library/golive.trigger_web_deploy).
@@ -43,13 +43,13 @@ GATE = "test-and-build"
 # The service whose last deploy tells us where production is. The web build
 # is the expensive one, and the train always moves every service together.
 ANCHOR = "ochorus-web"
+# ochorus-lifecycle-email is not here: Render gives cron jobs no deploy hook,
+# so it auto-deploys on its own (render.yaml).
 HOOK_SECRETS = {
     "ochorus-api": "RENDER_DEPLOY_HOOK_API",
     "ochorus-web": "RENDER_DEPLOY_HOOK_WEB",
-    "ochorus-lifecycle-email": "RENDER_DEPLOY_HOOK_CRON",
 }
 # The two the content gate couples: one without the other fails the web build.
-# The cron only shares the API's image, so a train can ship without it.
 REQUIRED = ("ochorus-api", "ochorus-web")
 LOOKBACK = 60  # commits to search for a green one
 
