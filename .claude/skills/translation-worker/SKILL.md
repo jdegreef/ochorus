@@ -348,6 +348,13 @@ translated Sermon row (natural-key format — `"author": ["author-slug"]`, no
 `pk`; copy source_url/sort_order/preached_on from the English file); `seed_sermons` upserts it on deploy.
 Same canonical formatting as the book file above — half the drifted fixtures are
 sermons, so "same shape, smaller" was evidently not enough.
+- **Look for the sermon inside an already-translated book first.** Many queue
+  sermons also ship as a chapter of a sermon collection (2026-10-14: Whitefield's
+  *The Lord Our Righteousness* = `selected-sermons-whitefield` ch14, Finney's
+  *The Spirit of Prayer* = `revival-lectures` ch8, both ≥99.7% text match). If
+  `<book>.<lang>.json` exists, port that chapter's translation — diff the two
+  ENGLISH bodies and carry each difference over — instead of retranslating;
+  two independent renderings of one sermon on one site is the worse outcome.
 
 **Plan** — a reading plan is a per-language `Plan` row (title + description);
 its days reference **books by slug** and resolve to that language's book rows
