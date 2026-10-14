@@ -1,0 +1,53 @@
+# Pages that went stale BEFORE build-tombstones.mjs published its page list.
+#
+# The host keeps serving a page an earlier deploy published, even after a build
+# stops producing it (see build-tombstones.mjs). From the first deploy with that
+# script on, `published-pages.txt` remembers every published path, so a page
+# withdrawn later is tombstoned automatically and needs NO line here. This file
+# is for the pages already orphaned when the list began — and for any path a
+# deploy run with TOMBSTONE_PREVIOUS=none withdrew.
+#
+# One build-relative .html path per line. Each was confirmed live (200, an old
+# last-modified, API 404) on 2026-10-14.
+
+am/authors/henry-blackaby/index.html
+ar/authors/henry-blackaby/index.html
+authors/henry-blackaby/index.html
+es/authors/henry-blackaby/index.html
+es/books/grace-for-grace-2/1/index.html
+es/books/grace-for-grace-2/2/index.html
+es/books/grace-for-grace-2/3/index.html
+es/books/grace-for-grace-2/4/index.html
+es/books/grace-for-grace-2/5/index.html
+es/books/grace-for-grace-2/6/index.html
+es/books/grace-for-grace-2/7/index.html
+es/books/grace-for-grace-2/8/index.html
+es/books/grace-for-grace-2/9/index.html
+es/books/grace-for-grace-2/index.html
+fr/authors/henry-blackaby/index.html
+fr/books/grace-for-grace-2/1/index.html
+fr/books/grace-for-grace-2/2/index.html
+fr/books/grace-for-grace-2/3/index.html
+fr/books/grace-for-grace-2/4/index.html
+fr/books/grace-for-grace-2/5/index.html
+fr/books/grace-for-grace-2/6/index.html
+fr/books/grace-for-grace-2/7/index.html
+fr/books/grace-for-grace-2/8/index.html
+fr/books/grace-for-grace-2/9/index.html
+fr/books/grace-for-grace-2/index.html
+hi/authors/henry-blackaby/index.html
+lg/authors/henry-blackaby/index.html
+pt/authors/henry-blackaby/index.html
+pt/books/grace-for-grace-2/1/index.html
+pt/books/grace-for-grace-2/2/index.html
+pt/books/grace-for-grace-2/3/index.html
+pt/books/grace-for-grace-2/4/index.html
+pt/books/grace-for-grace-2/5/index.html
+pt/books/grace-for-grace-2/6/index.html
+pt/books/grace-for-grace-2/7/index.html
+pt/books/grace-for-grace-2/8/index.html
+pt/books/grace-for-grace-2/9/index.html
+pt/books/grace-for-grace-2/index.html
+sermons/the-marriage-tie/index.html
+sw/authors/henry-blackaby/index.html
+uk/authors/henry-blackaby/index.html
