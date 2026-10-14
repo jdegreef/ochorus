@@ -187,5 +187,12 @@
   "note": [
    "2026-10-14: written with the-life-of-trust.fr (« Une vie de confiance », the shipped fr study guide's title), which completes the set — waiting-on-god.fr (« S'attendre à Dieu ») and the-secret-of-guidance.fr (« Le secret de la direction divine ») were already live — so seed_plans creates the (waiting-on-god-trust, fr) row on the deploy that ships this PR."
   ]
+ },
+ "women-of-faith": {
+  "title": "Femmes de foi",
+  "description": "Un plus long voyage avec trois femmes remarquables. Hannah Whitall Smith dévoile le secret d’une vie heureuse, et les autobiographies d’Amanda Berry Smith et de Julia A. J. Foote — deux femmes noires qui prêchèrent l’Évangile à travers le monde du XIXᵉ siècle — montrent ce secret vécu à grand prix.",
+  "note": [
+   "2026-10-14: written with amanda-smith-autobiography.fr (« Une autobiographie », the shipped fr study guide's title), which completes the set — the-christians-secret-of-a-happy-life-4.fr and a-brand-plucked-from-the-fire.fr (« Un tison arraché du feu ») were already live — so seed_plans creates the (women-of-faith, fr) row on the deploy that ships this PR."
+  ]
  }
 }

@@ -7695,6 +7695,361 @@ BODY_CORRECTIONS.setdefault("answers-to-prayer", {}).setdefault("replacements", 
     # [es] place name (mirrors EN slip)
     ("Recibidas de Wottan-under-edge", "Recibidas de Wotton-under-Edge"),
 ])
+
+# Found while translating to French (2026-10-14): Amanda Smith's Autobiography
+# — OCR slips and two wrong citations (en + es/sw)
+BODY_CORRECTIONS.setdefault("amanda-smith-autobiography", {}).setdefault("replacements", []).extend([
+    # [en] OCR he→be
+    ("and let it he known", "and let it be known"),
+    # [en] OCR 'if)'→up
+    ("seemed to come if) to hinder", "seemed to come up to hinder"),
+    # [en] OCR Dot→not
+    ("they did Dot know", "they did not know"),
+    # [en] OCR Alter→After
+    ("Alter coaxing her", "After coaxing her"),
+    # [en] OCR or→of
+    ("the cause or the inquiry", "the cause of the inquiry"),
+    # [en] OCR: 'this same blood-hound' = Ben Crout's (5× in chapter)
+    ("blood-hound of Bell Crout's", "blood-hound of Ben Crout's"),
+    # [en] OCR be→he
+    ("then be was very profane", "then he was very profane"),
+    # [en] OCR it→a
+    ("a mile and it half", "a mile and a half"),
+    # [en] typo
+    ("it seeemed to me", "it seemed to me"),
+    # [en] OCR got→get
+    ("he could not got upstairs", "he could not get upstairs"),
+    # [en] split word
+    ("in the grave to a wait the", "in the grave to await the"),
+    # [en] OCR it→a
+    ("husband took it position", "husband took a position"),
+    # [en] OCR whiter→winter
+    ("poor so nicely in the whiter time", "poor so nicely in the winter time"),
+    # [en] OCR by→my
+    ("had sanctified by soul", "had sanctified my soul"),
+    # [en] OCR it→a
+    ("Philadelphia on it visit", "Philadelphia on a visit"),
+    # [en] OCR wailed→waited
+    ("One night I wailed until", "One night I waited until"),
+    # [en] OCR 'an all'→'on an'
+    ("me a bed an all ironing board", "me a bed on an ironing board"),
+    # [en] OCR clays→days
+    ("Two or three clays after", "Two or three days after"),
+    # [en] doubled I
+    ("of her. I I don't owe", "of her. I don't owe"),
+    # [en] OCR call→can
+    ("we call have our garden", "we can have our garden"),
+    # [en] stray I
+    ("I did I not have time", "I did not have time"),
+    # [en] OCR it→at
+    ("and not it the Five Points", "and not at the Five Points"),
+    # [en] OCR month→mouth
+    ("my hands up to my month", "my hands up to my mouth"),
+    # [en] OCR month→mouth
+    ("put in my month:", "put in my mouth:"),
+    # [en] stray I
+    ("in my left I ear", "in my left ear"),
+    # [en] OCR l→!
+    ("Hallelujahl Hallelujah", "Hallelujah! Hallelujah"),
+    # [en] OCR while→white
+    ("his hair was while", "his hair was white"),
+    # [en] OCR camp→came
+    ("if I camp up to all", "if I came up to all"),
+    # [en] citation: quoted words are John 13:14 (KJV)
+    ("another's feet,\" John, 13:15.", "another's feet,\" John, 13:14."),
+    # [en] OCR call→can
+    ("so that you call help them", "so that you can help them"),
+    # [en] OCR hall→had
+    ("what God hall done for her", "what God had done for her"),
+    # [en] OCR it→a
+    ("is even it small nail-hole", "is even a small nail-hole"),
+    # [en] OCR lop→top
+    ("stood at the lop of the stairs", "stood at the top of the stairs"),
+    # [en] OCR check→cheek
+    ("me on the check with his", "me on the cheek with his"),
+    # [en] OCR he→be
+    ("\"Thy will he done,\"", "\"Thy will be done,\""),
+    # [en] OCR front→from
+    ("help was front Philadelphia", "help was from Philadelphia"),
+    # [en] OCR look→took
+    ("them look in washing", "them took in washing"),
+    # [en] OCR 'it mount'→amount
+    ("a certain it mount, or estate", "a certain amount, or estate"),
+    # [en] OCR it→a
+    ("to pray; it very simple", "to pray; a very simple"),
+    # [en] OCR '→!
+    ("glory. Amen' Amen!", "glory. Amen! Amen!"),
+    # [en] OCR I→a
+    ("all right in I few days", "all right in a few days"),
+    # [en] OCR I→a
+    ("I lay down I few moments", "I lay down a few moments"),
+    # [en] split word
+    ("seem to under stand just", "seem to understand just"),
+    # [en] to→too
+    ("got to laughing to;", "got to laughing too;"),
+    # [en] OCR it→a
+    ("that was it wonderful lesson", "that was a wonderful lesson"),
+    # [en] citation: quoted words are Acts 19:2 (KJV)
+    ("believed?' \" (Acts 9:2).", "believed?' \" (Acts 19:2)."),
+    # [en] OCR Call→Can
+    ("ironing. Call you come?", "ironing. Can you come?"),
+    # [en] OCR front→from
+    ("come home front an excellent", "come home from an excellent"),
+    # [en] OCR it→a
+    ("like sardines in it box", "like sardines in a box"),
+    # [en] OCR rather→Father (Father Cooper in same passage)
+    ("while rather Cooper was praying", "while Father Cooper was praying"),
+    # [en] OCR call→can
+    ("house and it call go with", "house and it can go with"),
+    # [en] OCR hall→had
+    ("how God hall answered", "how God had answered"),
+    # [en] OCR he→be
+    ("seemed to he so happy", "seemed to be so happy"),
+    # [en] OCR call→can
+    ("I guess you call use it", "I guess you can use it"),
+    # [en] OCR split name: Olof Hedstrom, NY Methodist (Bethel Ship)
+    ("Rev. Brother Head strum", "Rev. Brother Hedstrom"),
+    # [en] OCR superstitious→superstitions
+    ("heathen superstitious and customs", "heathen superstitions and customs"),
+    # [en] stray I
+    ("\"I that is my name, sir.\"", "\"That is my name, sir.\""),
+    # [en] stray it (Matt 7:7 KJV)
+    ("shall be opened it unto you", "shall be opened unto you"),
+    # [en] OCR 1→I
+    ("1871. 1 remember the great", "1871. I remember the great"),
+    # [en] OCR it→a
+    ("stopped about it mile away", "stopped about a mile away"),
+    # [en] OCR it→a
+    ("through in such it rush", "through in such a rush"),
+    # [en] OCR truncation (Miss Smiley throughout)
+    ("go up to Miss Smile and", "go up to Miss Smiley and"),
+    # [en] OCR gentleman→gentlemen
+    ("A number of gentleman were", "A number of gentlemen were"),
+    # [en] misprint
+    ("with critical suspection", "with critical suspicion"),
+    # [en] OCR it→a
+    ("my outfit; it pretty tan dress", "my outfit; a pretty tan dress"),
+    # [en] OCR it→a
+    ("to have it certain number", "to have a certain number"),
+    # [en] OCR hall→had
+    ("and you hall better get in", "and you had better get in"),
+    # [en] OCR hind→kind
+    ("She was so hind and motherly", "She was so kind and motherly"),
+    # [en] OCR tome→come
+    ("would tome these ladies", "would come these ladies"),
+    # [en] dropped s
+    ("these feeling of sadness", "these feelings of sadness"),
+    # [en] OCR it→if
+    ("and it I did not get it", "and if I did not get it"),
+    # [en] OCR got→get
+    ("Just as I went to got up", "Just as I went to get up"),
+    # [en] run-together
+    ("They had along table", "They had a long table"),
+    # [en] OCR lot→let
+    ("when he lot poor Brother Grey", "when he let poor Brother Grey"),
+    # [en] OCR mister→minister
+    ("to this dear mister.", "to this dear minister."),
+    # [en] OCR want→went
+    ("she turned and want to her cottage", "she turned and went to her cottage"),
+    # [en] OCR is→it
+    ("to think is was not", "to think it was not"),
+    # [en] OCR it→if
+    ("I thought that it they were", "I thought that if they were"),
+    # [en] OCR we→me
+    ("whispered to we to read", "whispered to me to read"),
+    # [en] OCR placers→places
+    ("at all these placers.", "at all these places."),
+    # [en] OCR: Mary R. Denman (ch39)
+    ("woman, Mrs. Mary R. Denmen, of Newark", "woman, Mrs. Mary R. Denman, of Newark"),
+    # [en] OCR: Denman (ch39)
+    ("Mrs. Denmen is a member", "Mrs. Denman is a member"),
+    # [en] OCR: Denman (ch39)
+    ("benefactress, Mrs. Mary R. Denmen.", "benefactress, Mrs. Mary R. Denman."),
+    # [en] OCR Parts→Paris
+    ("The great Parts Exposition", "The great Paris Exposition"),
+    # [en] OCR look→took
+    ("and look it to the postoffice", "and took it to the postoffice"),
+    # [en] OCR us→as
+    ("it was us though some one", "it was as though some one"),
+    # [en] OCR Good→God (Phil 4:19)
+    ("\"My Good shall supply", "\"My God shall supply"),
+    # [en] OCR some→same
+    ("put the some question", "put the same question"),
+    # [en] OCR out→our (hymn)
+    ("Precious Saviour, Still out refuge", "Precious Saviour, Still our refuge"),
+    # [en] lost capital (hymn)
+    ("Take it to the lord in prayer", "Take it to the Lord in prayer"),
+    # [en] OCR wore→were
+    ("his son wore very much interested", "his son were very much interested"),
+    # [en] OCR Cannon→Canon
+    ("Cannon Battersby was", "Canon Battersby was"),
+    # [en] typo
+    ("were crowds of poople", "were crowds of people"),
+    # [en] OCR bad→had
+    ("and they bad been in England", "and they had been in England"),
+    # [en] OCR beat→best
+    ("but I did the beat I could", "but I did the best I could"),
+    # [en] OCR he→she (Miss Amars told him)
+    ("refuse her when he told him of me", "refuse her when she told him of me"),
+    # [en] OCR go→so
+    ("to speaking before men; go there", "to speaking before men; so there"),
+    # [en] OCR it→if
+    ("and it they behave themselves", "and if they behave themselves"),
+    # [en] OCR Lard→Lord
+    ("praised the Lard for", "praised the Lord for"),
+    # [en] stray I
+    ("\"I have I so much work", "\"I have so much work"),
+    # [en] OCR: bust of the young Nero (Florence), 'decided against Christians'
+    ("head of Negro when a boy", "head of Nero when a boy"),
+    # [en] OCR: follows Sunday, 12th; precedes Thursday, 16th
+    ("Monday, 1st. A grand day", "Monday, 13th. A grand day"),
+    # [en] OCR front→from
+    ("brought Paul front the prison", "brought Paul from the prison"),
+    # [en] OCR grave→gave
+    ("tapers and grave each of us", "tapers and gave each of us"),
+    # [en] OCR l→1
+    ("Friday, Sept. l7th, 1879", "Friday, Sept. 17th, 1879"),
+    # [en] OCR it→a
+    ("We walked about it little", "We walked about a little"),
+    # [en] OCR 1800→1880 (arrived Nov. 1879; next para 'January 1st, 1880')
+    ("Bombay until Jan. 1st, 1800,", "Bombay until Jan. 1st, 1880,"),
+    # [en] OCR he→be
+    ("that she would he greatly", "that she would be greatly"),
+    # [en] OCR die→did
+    ("The grave die not seem", "The grave did not seem"),
+    # [en] OCR it→a
+    ("all at once there was it crash", "all at once there was a crash"),
+    # [en] OCR month→mouth
+    ("words out of my month", "words out of my mouth"),
+    # [en] OCR it→a
+    ("he was it photographer", "he was a photographer"),
+    # [en] OCR mid→and
+    ("they felt, mid thought", "they felt, and thought"),
+    # [en] OCR it→a
+    ("got me it pair of dry", "got me a pair of dry"),
+    # [en] OCR we→me
+    ("that came over we to pray", "that came over me to pray"),
+    # [en] OCR it→a
+    ("a beautiful child, it little girl", "a beautiful child, a little girl"),
+    # [en] split word
+    ("we were all a round her", "we were all around her"),
+    # [en] OCR call→can
+    ("All they call do is to weep", "All they can do is to weep"),
+    # [en] OCR l→1
+    ("Wednesday, January l2th", "Wednesday, January 12th"),
+    # [en] OCR it→a
+    ("in time for it meeting for women", "in time for a meeting for women"),
+    # [en] OCR add→and
+    ("have life add happiness", "have life and happiness"),
+    # [en] OCR wonder→wander
+    ("that stray and wonder and", "that stray and wander and"),
+    # [en] OCR he→be
+    ("men that could he depended", "men that could be depended"),
+    # [en] dropped y
+    ("sell things, as the did.", "sell things, as they did."),
+    # [en] typo
+    ("wanted me to go ahsore", "wanted me to go ashore"),
+    # [en] OCR month→mouth (Ps 137:6)
+    ("to the roof of my month.", "to the roof of my mouth."),
+    # [en] OCR Librarian→Liberian
+    ("and the Librarian Conference", "and the Liberian Conference"),
+    # [en] OCR is→as
+    ("is in it is I ever was sure", "is in it as I ever was sure"),
+    # [en] run-together
+    ("Lord is making away for His people", "Lord is making a way for His people"),
+    # [en] OCR wire→wife
+    ("After his poor wire was taken", "After his poor wife was taken"),
+    # [en] dropped s
+    ("over. Thoma Anderson was not", "over. Thomas Anderson was not"),
+    # [en] OCR book→hook (Ezek 29:4)
+    ("God put a book in his jaw", "God put a hook in his jaw"),
+    # [en] split word
+    ("But not with standing all this", "But notwithstanding all this"),
+    # [en] OCR it→a
+    ("and without it house over her head", "and without a house over her head"),
+    # [en] OCR he→lie
+    ("and a corner to he down in", "and a corner to lie down in"),
+    # [en] OCR it→a
+    ("I was thankful for it good bath", "I was thankful for a good bath"),
+    # [en] OCR it→a
+    ("But then it is it snake", "But then it is a snake"),
+    # [en] OCR or→of
+    ("that the object or this meeting", "that the object of this meeting"),
+    # [en] stray hyphen
+    ("As I looked out and-saw", "As I looked out and saw"),
+    # [en] OCR all→an
+    ("somehow, I have all idea", "somehow, I have an idea"),
+    # [en] OCR month→mouth
+    ("and open her month,", "and open her mouth,"),
+    # [en] dropped e
+    ("go and se if he could", "go and see if he could"),
+    # [en] OCR it→if
+    ("So I thought it I could get", "So I thought if I could get"),
+    # [en] dropped s
+    ("I saw three boy that I liked", "I saw three boys that I liked"),
+    # [en] dropped y
+    ("The were very bright, smart boys", "They were very bright, smart boys"),
+    # [en] dropped e
+    ("But non of these parties", "But none of these parties"),
+    # [en] dropped e
+    ("And sh seemed to pity me", "And she seemed to pity me"),
+    # [en] OCR her→be
+    ("if there chance to her a good house", "if there chance to be a good house"),
+    # [en] OCR wag→was
+    ("Everything wag in good order", "Everything was in good order"),
+    # [en] OCR bad→had
+    ("and bad grown in grace", "and had grown in grace"),
+    # [en] stray I
+    ("They were married at I the Methodist", "They were married at the Methodist"),
+    # [en] OCR wits→was
+    ("night; it wits prayer meeting", "night; it was prayer meeting"),
+    # [en] split word
+    ("closed I a rose and said", "closed I arose and said"),
+    # [en] OCR mints→wants
+    ("I feel the Lord mints me to speak", "I feel the Lord wants me to speak"),
+    # [en] dropped h
+    ("they saw the Bisop and myself", "they saw the Bishop and myself"),
+    # [en] stray period
+    ("denominations at Cape. Palmas", "denominations at Cape Palmas"),
+    # [en] OCR of→or
+    ("except to one of two persons", "except to one or two persons"),
+    # [en] OCR all→an
+    ("I saw it was all awful pill", "I saw it was an awful pill"),
+    # [en] alter→altar
+    ("clutch the alter railing", "clutch the altar railing"),
+    # [en] OCR tire→are
+    ("and they tire getting ready", "and they are getting ready"),
+    # [en] OCR one→on (Job 16:19)
+    ("The record is one high.", "The record is on high."),
+    # [en] OCR dinned→dined
+    ("because you dinned with the king", "because you dined with the king"),
+    # [en] OCR C→P
+    ("the fourth to Cape Calmas", "the fourth to Cape Palmas"),
+    # [en] dropped d
+    ("the intelligent an better class", "the intelligent and better class"),
+    # [en] OCR he→be
+    ("I wanted to he sanctified", "I wanted to be sanctified"),
+    # [en] title→tittle (Matt 5:18)
+    ("before one jot or title of His Word", "before one jot or tittle of His Word"),
+    # [en] OCR call→can
+    ("and then you call say to the Tempter", "and then you can say to the Tempter"),
+    # [en] OCR live→five
+    ("had just gone out live minutes", "had just gone out five minutes"),
+    # [en] doubled one
+    ("as though some oneone stood", "as though some one stood"),
+    # [en] OCR its→as
+    ("to see it just its they did", "to see it just as they did"),
+    # [en] tripled n
+    ("wear a Friends' bonnnet", "wear a Friends' bonnet"),
+    # [en] OCR front→from
+    ("on my way front Calcutta", "on my way from Calcutta"),
+    # [en] dropped r
+    ("Upon our arival at New York", "Upon our arrival at New York"),
+    # [es] citation twin: John 13:14
+    ("», Juan 13:15.", "», Juan 13:14."),
+    # [sw] citation twin: John 13:14
+    (",\" Yohana 13:15.", ",\" Yohana 13:14."),
+])
 # The paragraph ended on a stop the OCR read as a comma.
 BODY_CORRECTIONS["evangelization-of-the-world"]["paragraph_breaks"] = [
     ('foreign mission service.', 'In 1898 the members'),
