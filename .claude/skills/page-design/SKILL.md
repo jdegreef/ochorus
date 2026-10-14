@@ -482,11 +482,17 @@ green in CI but never went live because two of its three books were unpublished
 - Compact buttons are `.btn-sm`, never `py-1.5` / `py-2` on `.btn`.
 - Scripture set in chrome (a verse, a blessing) comes verbatim from each
   locale's `language_seed` Bible via Take Root (`/api/bible/<code>/<USFM>/<ch>/`),
-  generated into a TS constant, never typed or translated; a locale with no
-  text shows nothing (footer benediction, `$lib/benediction`, 2026-10-10).
+  generated into a TS constant by a committed script, never typed or
+  translated (`scripts/fetch-benedictions.mjs` → `benediction.generated.ts`);
+  a locale with no text shows nothing. Use the seed's Take Root code, NOT the
+  ebible id (`vietnamese`/`korean`, not `vie1934`/`kor` — #6012 shipped vi/ko
+  blank that way; a test now holds the script to the seed). Versification
+  differs (2 Cor 13:14 is 13:13 in LSG/RV/Kulish/Korean) and ULB merges verses
+  (am Heb 13:20–21 is one entry "20"), so cite each Bible's own numbers.
   Two render traps it hit: Fraunces has no Arabic/Devanagari/Ethiopic/Cyrillic
   italic, so `font-style: italic` makes the browser fake-slant the fallback —
-  set those `:lang()`s upright; and a "Book 6:24–26" reference inside RTL text
+  set those `:lang()`s upright (a scoped `font-style: italic` outranks
+  app.css's site-wide Korean rule, so name `ko` too); and a "Book 6:24–26" reference inside RTL text
   reorders to "26-6:24" — keep the chapter:verse in `<bdi dir="ltr">`.
 
 ## Guards to extend when a page ships
