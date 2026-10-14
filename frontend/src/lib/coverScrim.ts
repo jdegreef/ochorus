@@ -181,7 +181,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'the-secret-of-guidance-teens': 0.30,
 	'the-unselfishness-of-god': 0.95,
 	'the-way-to-god-teens': 0.30,
-	'they-were-young-1': 0.55,
+	'they-were-young-1': 0.60,
 	'they-were-young-2': 0.30,
 	'they-were-young-3': 0.35,
 	'they-were-young-4': 0.30,

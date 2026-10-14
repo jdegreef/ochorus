@@ -202,5 +202,19 @@
   "note": [
    "2026-10-14: written with revival-lectures.fr (« Discours sur les réveils religieux », the shipped fr study guide's title) and selected-sermons-edwards.fr (« Sermons choisis de Jonathan Edwards »), which ship together in this PR and complete the set with baptism-with-the-holy-spirit.fr — so seed_plans creates the (send-the-fire, fr) row on the deploy that ships it."
   ]
+ },
+ "anchored-two-months": {
+  "title": "Ancré : deux mois avec Dieu pour les ados",
+  "description": "Deux mois avec Dieu pour les lecteurs de 13 à 17 ans : les deux livres d’Ancré — « Est-ce vrai ? Qui suis-je ? » et « La vraie vie » — une méditation par jour sur les questions honnêtes de la foi, sur qui tu es en Christ, et sur la manière de suivre Jésus à travers l’inquiétude, les écrans, les amitiés, la maison et le deuil. Chaque jour se termine par un renvoi vers un chapitre d’un classique.",
+  "note": [
+   "2026-10-14: AI-drafted; awaiting native review. Written with anchored-1.fr and anchored-2.fr (« Ancré – 30 jours avec Dieu pour les ados – Livre N »), which ship in this PR and complete the set, so seed_plans creates the (anchored-two-months, fr) row on the deploy that ships it."
+  ]
+ },
+ "they-were-young-two-weeks": {
+  "title": "Ils étaient jeunes : deux semaines d’histoires vraies",
+  "description": "Deux semaines d’histoires vraies pour les lecteurs de 13 à 17 ans : les deux livres d’Ils étaient jeunes — « Appelés » et « Éprouvés » — une vie par jour, de Spurgeon dans une tempête de neige et Richard Allen dans le Delaware à Patrick, Perpétue et les martyrs de l’Ouganda, chacune suivie de questions à méditer.",
+  "note": [
+   "2026-10-14: AI-drafted; awaiting native review. Written with they-were-young-1.fr and they-were-young-2.fr (« Ils étaient jeunes – Livre 1 : Appelés » / « Livre 2 : Éprouvés »), which ship in this PR and complete the set, so seed_plans creates the (they-were-young-two-weeks, fr) row."
+  ]
  }
 }

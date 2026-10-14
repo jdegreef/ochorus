@@ -572,5 +572,31 @@
   "created_at": "2026-10-10T00:00:00Z",
   "updated_at": "2026-10-10T00:00:00Z"
  }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "anchored"
+  ],
+  "language": "fr",
+  "title": "Ancré – 30 jours avec Dieu pour les ados",
+  "description": "Des méditations sur trente jours pour les lecteurs de 13 à 17 ans, qui prennent au sérieux les questions difficiles : un passage de la Bible, un enseignement honnête, une question, une chose à essayer, une prière, et un classique pour aller plus loin.",
+  "created_at": "2026-10-14T00:00:00Z",
+  "updated_at": "2026-10-14T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "they-were-young"
+  ],
+  "language": "fr",
+  "title": "Ils étaient jeunes",
+  "description": "Des histoires vraies, pour les lecteurs de 13 à 17 ans, de personnes dont la foi est née, ou a été mise à l’épreuve, avant l’âge adulte — racontées en entier, avec leurs propres mots quand nous les avons, et des questions pour réfléchir.",
+  "created_at": "2026-10-14T00:00:00Z",
+  "updated_at": "2026-10-14T00:00:00Z"
+ }
 }
 ]

@@ -11022,6 +11022,162 @@ BODY_CORRECTIONS.setdefault("what-have-i-to-do-any-more-with-idols", {}).setdefa
     # 'your' for 'you'
     ("keeps some of your from secret prayer", "keeps some of you from secret prayer"),
 ])
+
+# Found while translating to French (2026-10-14): Bernard's On Loving God —
+# scan-split words, stray marks and running-header debris (EN only; paragraph
+# joins left).
+BODY_CORRECTIONS.setdefault("on-loving-god", {}).setdefault("replacements", []).extend([
+    # [en] split word (scan line-break)
+    ("and un learned ;", "and unlearned ;"),
+    # [en] split word (scan line-break)
+    ("true of man kind,", "true of mankind,"),
+    # [en] split word (scan line-break)
+    ("reason dis tinguishes", "reason distinguishes"),
+    # [en] split word (scan line-break)
+    ("lead us know ingly", "lead us knowingly"),
+    # [en] split word (scan line-break)
+    ("Com pared with the first", "Compared with the first"),
+    # [en] split word (scan line-break)
+    ("that excel lence without", "that excellence without"),
+    # [en] split word (scan line-break)
+    ("claim to intelli gence", "claim to intelligence"),
+    # [en] split word (scan line-break)
+    ("the know ledge of", "the knowledge of"),
+    # [en] stray scan mark
+    ("Therefore to .excellence", "Therefore to excellence"),
+    # [en] running-header debris removed (paragraph break kept)
+    ("He that does so has io LOVE OF GOD.</p>", "He that does so has</p>"),
+    # [en] running-header debris removed
+    ("Him who says LOVE OF GOD. n in Genesis", "Him who says in Genesis"),
+    # [en] split word (scan line-break)
+    ("charity so conde scending", "charity so condescending"),
+    # [en] split word (scan line-break)
+    ("The pome granates", "The pomegranates"),
+    # [en] split word (scan line-break)
+    ("her own perfec tions", "her own perfections"),
+    # [en] split word (scan line-break)
+    ("heavenly Bride groom", "heavenly Bridegroom"),
+    # [en] split word (scan line-break)
+    ("general resur rection", "general resurrection"),
+    # [en] split word (scan line-break)
+    ("in the resurrec tion,", "in the resurrection,"),
+    # [en] split word (scan line-break)
+    ("has super abundantly", "has superabundantly"),
+    # [en] split word (scan line-break)
+    ("our justifica tion", "our justification"),
+    # [en] split word (scan line-break)
+    ("our sal vation", "our salvation"),
+    # [en] split word (scan line-break)
+    ("such stimu lants", "such stimulants"),
+    # [en] split word (scan line-break)
+    ("everlasting genera tions", "everlasting generations"),
+    # [en] split word (scan line-break)
+    ("shall pub lish", "shall publish"),
+    # [en] split word (scan line-break)
+    ("His per petual", "His perpetual"),
+    # [en] split word (scan line-break)
+    ("the consola tion", "the consolation"),
+    # [en] split word (scan line-break)
+    ("to be com forted", "to be comforted"),
+    # [en] split word (scan line-break)
+    ("a hard say ing", "a hard saying"),
+    # [en] split word (scan line-break)
+    ("the hard ness of", "the hardness of"),
+    # [en] split word (scan line-break)
+    ("ineffable sweet ness", "ineffable sweetness"),
+    # [en] split word (scan line-break)
+    ("has she, there fore,", "has she, therefore,"),
+    # [en] split word (scan line-break)
+    ("love whose great ness", "love whose greatness"),
+    # [en] split word (scan line-break)
+    ("with grati tude", "with gratitude"),
+    # [en] split word (scan line-break)
+    ("from all un worthy", "from all unworthy"),
+    # [en] stray scan mark
+    ("and, as if c he spake", "and, as if he spake"),
+    # [en] stray scan mark
+    ("cannot fail to rise' if", "cannot fail to rise if"),
+    # [en] two straight apostrophes for the opening curly quote (chapter closes
+    # with ”)
+    ("no ambition but to ''please God", "no ambition but to “please God"),
+    # [en] split word (scan line-break)
+    ("he owes him self entirely", "he owes himself entirely"),
+    # [en] split word (scan line-break)
+    ("their in heritance", "their inheritance"),
+    # [en] split word (scan line-break)
+    ("More over, when man", "Moreover, when man"),
+    # [en] split word (scan line-break)
+    ("what humilia tions", "what humiliations"),
+    # [en] split word (scan line-break)
+    ("who can under stand", "who can understand"),
+    # [en] split word (scan line-break)
+    ("deserves its re compense", "deserves its recompense"),
+    # [en] split word (scan line-break)
+    ("the posses sion of", "the possession of"),
+    # [en] split word (scan line-break)
+    ("of an am bition", "of an ambition"),
+    # [en] split word (scan line-break)
+    ("it must be en joyed", "it must be enjoyed"),
+    # [en] split word (scan line-break)
+    ("vanity, de ceived", "vanity, deceived"),
+    # [en] split word (scan line-break)
+    ("day in fruit less", "day in fruitless"),
+    # [en] split word (scan line-break)
+    ("perfect happi ness", "perfect happiness"),
+    # [en] split word (scan line-break)
+    ("find all insuffi cient", "find all insufficient"),
+    # [en] stray scan mark
+    ("They consume , their", "They consume their"),
+    # [en] stray scan mark
+    ("O God, th'ine inspiration", "O God, thine inspiration"),
+    # [en] running-header debris removed (paragraph break kept)
+    ("something else, 3o LOVE OF GOD.</p>", "something else,</p>"),
+    # [en] running-header debris removed (paragraph break kept)
+    ("once attain unto LOVE OF GOD.</p>", "once attain unto</p>"),
+    # [en] running-header debris removed (paragraph break kept) (with signature
+    # mark D)
+    ("chance of winning. D LOVE OF GOD.</p>", "chance of winning.</p>"),
+    # [en] split word (scan line-break)
+    ("by loving her self", "by loving herself"),
+    # [en] split word (scan line-break)
+    ("contents him self with", "contents himself with"),
+    # [en] split word (scan line-break)
+    ("find small diffi culty", "find small difficulty"),
+    # [en] split word (scan line-break)
+    ("neighbour be en tirely", "neighbour be entirely"),
+    # [en] stray scan mark
+    ("rather than be f the slave", "rather than be the slave"),
+    # [en] split word (scan line-break)
+    ("our own advan tage", "our own advantage"),
+    # [en] split word (scan line-break)
+    ("O com plete submission", "O complete submission"),
+    # [en] split word (scan line-break)
+    ("most per fect in that", "most perfect in that"),
+    # [en] split word (scan line-break)
+    ("the con templation of", "the contemplation of"),
+    # [en] stray scan mark (chapter uses straight apostrophes)
+    ("in that the'soul's", "in that the soul's"),
+    # [en] stray scan mark
+    ("Will it be given. to such", "Will it be given to such"),
+    # [en] split word (scan line-break)
+    ("a faithful com panion", "a faithful companion"),
+    # [en] split word (scan line-break)
+    ("receiv ing the cup", "receiving the cup"),
+    # [en] split word (scan line-break)
+    ("drink to inebria tion", "drink to inebriation"),
+    # [en] split word (scan line-break)
+    ("in the king dom of", "in the kingdom of"),
+    # [en] split word (scan line-break)
+    ("eating and drink ing", "eating and drinking"),
+    # [en] split word (scan line-break)
+    ("to Him self a glorious", "to Himself a glorious"),
+    # [en] split word (scan line-break)
+    ("eternal and incom parable", "eternal and incomparable"),
+    # [en] two straight apostrophes for the closing curly quote (opened with “)
+    ("will of my Father.''", "will of my Father.”"),
+    # [en] stray scan mark (signature mark E)
+    ("ceases to eat E the bread", "ceases to eat the bread"),
+])
 # The paragraph ended on a stop the OCR read as a comma.
 BODY_CORRECTIONS["evangelization-of-the-world"]["paragraph_breaks"] = [
     ('foreign mission service.', 'In 1898 the members'),
