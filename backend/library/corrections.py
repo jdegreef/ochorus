@@ -11023,6 +11023,32 @@ BODY_CORRECTIONS.setdefault("what-have-i-to-do-any-more-with-idols", {}).setdefa
     ("keeps some of your from secret prayer", "keeps some of you from secret prayer"),
 ])
 
+# Found while translating to French (2026-10-14): Torrey's How to Succeed in
+# the Christian Life — three wrong citations (EN + es + am) and two slips.
+BODY_CORRECTIONS.setdefault("how-to-succeed-in-the-christian-life", {}).setdefault("replacements", []).extend([
+    # [en] 2 Cor 9 citation: the two quoted clauses are vv. 6 and 8
+    ("every good work” (2 Cor. 9: 8, 9", "every good work” (2 Cor. 9: 6, 8"),
+    # [en] children at play = Matt 11:16-19
+    ("ren at their play (Matt. 12: 16-19", "ren at their play (Matt. 11: 16-19"),
+    # [en] Rom 14 has 23 verses; the quoted words are v. 23
+    ("t of faith is sin” (Rom. 14: 32", "t of faith is sin” (Rom. 14: 23"),
+    # [en] missing full stop
+    ("personal conduct Such persons", "personal conduct. Such persons"),
+    # [en] agreement slip
+    ("the ones who believes", "the one who believes"),
+    # [es] citation fix mirrored from EN
+    ("toda buena obra” (2 Cor. 9:8, 9", "toda buena obra” (2 Cor. 9:6, 8"),
+    # [es] citation fix mirrored from EN
+    ("iños en sus juegos (Mat. 12:16-19", "iños en sus juegos (Mat. 11:16-19"),
+    # [es] citation fix mirrored from EN
+    (" de fe, es pecado” (Rom. 14:32", " de fe, es pecado” (Rom. 14:23"),
+    # [am] citation fix mirrored from EN
+    (" ሊያበዛላችሁ ይችላል» (2ኛ ቆሮንቶስ 9:8, 9", " ሊያበዛላችሁ ይችላል» (2ኛ ቆሮንቶስ 9:6, 8"),
+    # [am] citation fix mirrored from EN
+    ("ልጆች ሲጫወቱ ይመለከት ነበር (ማቴዎስ 12:16-19", "ልጆች ሲጫወቱ ይመለከት ነበር (ማቴዎስ 11:16-19"),
+    # [am] citation fix mirrored from EN
+    ("ነትም ያልሆነ ሁሉ ኃጢአት ነው» (ሮሜ 14:32", "ነትም ያልሆነ ሁሉ ኃጢአት ነው» (ሮሜ 14:23"),
+])
 # Found while translating to French (2026-10-14): Bernard's On Loving God —
 # scan-split words, stray marks and running-header debris (EN only; paragraph
 # joins left).

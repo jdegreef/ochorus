@@ -1847,6 +1847,11 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "A dove and three tongues of fire over a city, a road leading out "
         "of it: wind and fire, and the light on the road.",
     ),
+    "tell-me-the-story-8": Original(
+        "da1db4a34ff80cfc5c66c101acace8f3f31ed96b274620d03221abbab90e2b07",
+        "The tree of life in the sky over Paul's ship sailing for a far city: "
+        "to the ends of the earth, and all things made new.",
+    ),
     # The Big Story (2026-10-13), the whole Bible for teens.
     "the-big-story": Original(
         "46a69c7c883ce63b7fa11a869f96131f0fa62c42b4008e5f66b8e05f5d94f334",

@@ -9133,6 +9133,17 @@
 			"layout": "diagonal/ochre",
 			"bar": 0.055
 		},
+		"fr/how-to-succeed-in-the-christian-life": {
+			"ground": "9e1741643b6b8e31067b45872fe42f8d2bcb23aac14cdfa1933bb5cdbefd691e",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "diagonal/ochre",
+			"bar": 0
+		},
 		"fr/how-to-succeed-in-the-christian-life-teens": {
 			"ground": "4e9b1bfc25110ed6f03b640402f5d90534eac163027e82d1a1a265cbfc9707e5",
 			"style": "originals",
@@ -19704,6 +19715,36 @@
 				],
 				"subtitle": [
 					[102, 492, 498, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
+		},
+		"tell-me-the-story-8": {
+			"ground": "fa282fb95116c253f8563138a0712c4148099fe7c50a9b87162cc3fe1a305221",
+			"style": "young",
+			"volume": "8",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 287, 311, 331],
+					[85, 362, 515, 437]
+				],
+				"subtitle": [
+					[42, 492, 558, 520]
 				],
 				"mark": [
 					[232, 664, 368, 746]

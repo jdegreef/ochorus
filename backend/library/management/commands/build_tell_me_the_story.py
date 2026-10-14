@@ -63,7 +63,7 @@ VOLUMES: dict[int, dict[str, object]] = {
         "publication_year": 2026,
         "title": "Tell Me the Story – Book 1: In the Beginning",
         "subtitle": "Old Testament Stories from Genesis",
-        "cover_url": "/covers/tell-me-the-story-1.svg",
+        "cover_url": "/covers/art/tell-me-the-story-1.jpg",
         "cover_color": covers.ink_safe("#2f6f8f"),  # a first-morning sky
         "description": (
             "Twenty-one Bible stories from Genesis for children aged 6 to 10, "
@@ -125,7 +125,7 @@ VOLUMES: dict[int, dict[str, object]] = {
         "publication_year": 2026,
         "title": "Tell Me the Story – Book 2: Out of Egypt",
         "subtitle": "Old Testament Stories from Exodus to Ruth",
-        "cover_url": "/covers/tell-me-the-story-2.svg",
+        "cover_url": "/covers/art/tell-me-the-story-2.jpg",
         "cover_color": covers.ink_safe("#8a5a2b"),  # desert sand at dusk
         "description": (
             "Twenty-one Bible stories from Exodus to Ruth for children aged 6 "
@@ -188,7 +188,7 @@ VOLUMES: dict[int, dict[str, object]] = {
         "publication_year": 2026,
         "title": "Tell Me the Story – Book 3: Kings and Prophets",
         "subtitle": "Old Testament Stories from Samuel to Nehemiah",
-        "cover_url": "/covers/tell-me-the-story-3.svg",
+        "cover_url": "/covers/art/tell-me-the-story-3.jpg",
         "cover_color": covers.ink_safe("#5b3f86"),  # royal purple
         "description": (
             "Twenty-two Bible stories from Samuel to Nehemiah for children aged "
@@ -253,7 +253,7 @@ VOLUMES: dict[int, dict[str, object]] = {
         "publication_year": 2026,
         "title": "Tell Me the Story – Book 4: The King Is Born",
         "subtitle": "The Life of Jesus, from His Birth to the First Disciples",
-        "cover_url": "/covers/tell-me-the-story-4.svg",
+        "cover_url": "/covers/art/tell-me-the-story-4.jpg",
         "cover_color": covers.ink_safe("#1f4f6e"),  # a starlit night
         "description": (
             "Twenty-one Bible stories for children aged 6 to 10 that begin the "
@@ -317,7 +317,7 @@ VOLUMES: dict[int, dict[str, object]] = {
         "publication_year": 2026,
         "title": "Tell Me the Story – Book 5: Wonders and Stories",
         "subtitle": "The Life of Jesus: His Miracles and His Parables",
-        "cover_url": "/covers/tell-me-the-story-5.svg",
+        "cover_url": "/covers/art/tell-me-the-story-5.jpg",
         "cover_color": covers.ink_safe("#2e6a4f"),  # Galilee hills
         "description": (
             "Twenty-one Bible stories for children aged 6 to 10 of the wonders "
@@ -380,7 +380,7 @@ VOLUMES: dict[int, dict[str, object]] = {
         "publication_year": 2026,
         "title": "Tell Me the Story – Book 6: The Greatest Rescue",
         "subtitle": "The Life of Jesus: His Last Week, His Death and His Rising Again",
-        "cover_url": "/covers/tell-me-the-story-6.svg",
+        "cover_url": "/covers/art/tell-me-the-story-6.jpg",
         "cover_color": covers.ink_safe("#7a3b2e"),  # Easter dawn
         "description": (
             "Twenty-two Bible stories for children aged 6 to 10 that finish the "
@@ -443,7 +443,7 @@ VOLUMES: dict[int, dict[str, object]] = {
         "publication_year": 2026,
         "title": "Tell Me the Story – Book 7: The Church Begins",
         "subtitle": "New Testament Stories from Acts 1–13",
-        "cover_url": "/covers/tell-me-the-story-7.svg",
+        "cover_url": "/covers/art/tell-me-the-story-7.jpg",
         "cover_color": covers.ink_safe("#9a4a1c"),  # Pentecost flame
         "description": (
             "Twenty Bible stories from Acts for children aged 6 to 10, each short "
@@ -495,6 +495,68 @@ VOLUMES: dict[int, dict[str, object]] = {
             {
                 "question": "Do I need to read the earlier books first?",
                 "answer": "No. Each book stands on its own, and Book 7 begins with a short introduction that picks up from Jesus going back to heaven. Children who have read the earlier books will recognise Peter, the tower of Babel, and Joseph's \"God meant it for good\".",
+            },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Every verse quoted with its reference is word for word from the Berean Standard Bible (BSB), which is in the public domain.",
+            },
+        ],
+    },
+    8: {
+        "publication_year": 2026,
+        "title": "Tell Me the Story – Book 8: To the Ends of the Earth",
+        "subtitle": "New Testament Stories from Acts 13 to Revelation",
+        "cover_url": "/covers/art/tell-me-the-story-8.jpg",
+        "cover_color": covers.ink_safe("#1f6a5a"),  # sea and new earth
+        "description": (
+            "Twenty-one Bible stories for children aged 6 to 10 that finish the "
+            "series, each short enough to read aloud at bedtime: Lydia by the "
+            "river, Paul and Silas singing in prison, the altar to an unknown god, "
+            "Paul's brave nephew, the storm and the shipwreck, the snake on Malta, "
+            "Timothy, Onesimus, the armour of God and John's vision of all things "
+            "made new. Every story ends with a prayer and three questions to talk "
+            "about together. The eighth book of Tell Me the Story."
+        ),
+        "about_html": (
+            "<p>Tell Me the Story is an original Ochorus storybook Bible for "
+            "children aged 6 to 10, in eight books and three parts: Old "
+            "Testament Stories, The Life of Jesus, and New Testament Stories. "
+            "God is the hero of every story, and the whole Bible is one story "
+            "that leads to Jesus.</p>"
+            "<p>Book 8, “To the Ends of the Earth”, is the last book of the "
+            "series. It follows Paul from Lystra to Rome through Acts 13–28, "
+            "with its riots, prisons, storm and shipwreck; opens four of the "
+            "letters, to Timothy, to Philemon about the runaway Onesimus, on what "
+            "love is like and on the armour of God; and ends with John’s vision "
+            "in Revelation of a new heaven and a new earth, where the tree of "
+            "life from the first garden stands again by the river of life.</p>"
+            "<p>The stories stay close to what the Bible says, in simple words. "
+            "Paul’s beatings and stoning are told gently, and Revelation is kept "
+            "to its plain heart: Jesus is King, and God will make all things new. "
+            "Each story takes about four minutes to read aloud, and under each "
+            "are three questions to talk about together, with answers for the "
+            "grown-up reading along. The earlier books are not required.</p>"
+        ),
+        "qa": [
+            {
+                "question": "Which stories are in Book 8 of Tell Me the Story?",
+                "answer": "Twenty-one stories: Paul and Barnabas mistaken for gods, Lydia, Paul and Silas singing in prison, the unknown god in Athens, Priscilla and Aquila, the riot at Ephesus, Eutychus, goodbye at Miletus, Paul seized in the temple, Paul's nephew, Paul before King Agrippa, the storm, the shipwreck, the snake on Malta, Rome, Timothy, Onesimus, what love is like, the armour of God, John on Patmos, and all things new.",
+            },
+            {
+                "question": "Is this the last book of Tell Me the Story?",
+                "answer": "Yes. It finishes the New Testament Stories and the whole series. Its last story, from Revelation 21–22, ends where the first book began: with God and His people together, and the tree of life from the garden standing again in the city of God.",
+            },
+            {
+                "question": "Does it include any of Paul's letters?",
+                "answer": "Yes, four of them, each told as a story: Paul's letters to young Timothy, his letter to Philemon about the runaway slave Onesimus, his words on love in 1 Corinthians 13, and the armour of God in Ephesians 6.",
+            },
+            {
+                "question": "How is the book of Revelation told for young children?",
+                "answer": "Simply, keeping to its plain heart. One story tells of John seeing the risen Jesus on Patmos, and the other of the new heaven and new earth, with no more tears, death or pain. The book says that parts of Revelation are mysterious and full of pictures, and does not try to explain them.",
+            },
+            {
+                "question": "Do I need to read the earlier books first?",
+                "answer": "No. Each book stands on its own, and Book 8 begins with a short introduction. Children who have read the whole series will see the last story tie back to the first: the garden, the curse and the tree of life.",
             },
             {
                 "question": "Which Bible translation does it use?",
