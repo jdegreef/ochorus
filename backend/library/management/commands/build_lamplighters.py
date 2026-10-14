@@ -25,6 +25,8 @@ Fixture-driven: ``seed_books`` creates the book on the next deploy from
 
 from __future__ import annotations
 
+from html import escape
+
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
@@ -56,7 +58,35 @@ VOLUMES: dict[int, dict[str, object]] = {
         # The cover's byline row is one short line; the Ochorus mark at its foot
         # completes "James DeGreef and Ochorus", the byline everywhere else.
         "cover_byline": "James DeGreef",
-        "cover_url": "/covers/fire-against-the-dark.svg",
+        # The book's endpapers: the whole land first, then the city — set at the
+        # head of Chapter 1, as a printed book sets its maps before the story.
+        # Wordless they are not (a map is lettered), so each language edition
+        # will want its own lettering when the book is translated.
+        "maps": (
+            (
+                "land-of-gloamhaven.jpg",
+                "A parchment map of Gloamhaven: the Bright Mountain in the north "
+                "above the Greywaste and the Delver Deeps; walled Emberwick ringed "
+                "with lamps at the centre; Thornmere’s marshes and the Gloam River "
+                "running to Vaelport on the south-west coast; the Harrowgate "
+                "Highlands in the east; the Burned Country and Cinder Hill to the "
+                "south; and Nightfall Spire on the Sunless Sea. A dotted red road, "
+                "numbered one to six, links them.",
+                "The Land of Gloamhaven",
+            ),
+            (
+                "map-of-emberwick.jpg",
+                "A pen-and-ink map of the walled city of Emberwick: the Ring of "
+                "lamps along the wall, most of them dark; the Great Beacon in "
+                "Beacon Square at the centre; the Hill with the Warden’s Hall, the "
+                "Guild Hall and Thornbury House; the crowded Low Quarter and Soot "
+                "Lane; the Soot Canal with Tallow Bridge and Crookback Market; Old "
+                "Ash’s Leaning Tower on the north wall; and the Grey Gate, where the "
+                "road leaves for the Bright Mountain.",
+                "Emberwick, City of the Ring",
+            ),
+        ),
+        "cover_url": "/covers/art/fire-against-the-dark.jpg",  # ORIGINAL_GROUND, #6060
         "cover_color": covers.ink_safe("#b5651d"),  # an ember in the grey
         "description": (
             "In the smoky city of Emberwick the sun has been pale for three "
@@ -171,6 +201,21 @@ VOLUMES: dict[int, dict[str, object]] = {
 }
 
 
+#: The size every map is shipped at — large enough that its lettering stays
+#: sharp when a reader zooms; the reader scales it to the column.
+MAP_SIZE = (1800, 1350)
+
+
+def _maps_html(slug: str, maps) -> str:
+    """The volume's maps as `<figure>`s (the sanitizer settles their attributes)."""
+    width, height = MAP_SIZE
+    return "".join(
+        f'<figure><img src="/illustrations/{slug}/{file}" alt="{escape(alt)}" '
+        f'width="{width}" height="{height}"><figcaption>{escape(caption)}</figcaption></figure>'
+        for file, alt, caption in maps
+    )
+
+
 class Command(BaseCommand):
     help = "Build a volume of The Lamplighters of Gloamhaven from its manuscript (dev DB); then serialize the fixture."
 
@@ -184,6 +229,7 @@ class Command(BaseCommand):
             raise CommandError(f"{SERIES} has no volume {volume}; known: {sorted(VOLUMES)}")
         meta = dict(VOLUMES[volume])
         slug = meta.pop("slug")
+        maps = meta.pop("maps", ())
         try:
             author = Author.objects.get(slug=AUTHOR_SLUG)
         except Author.DoesNotExist as exc:
@@ -218,6 +264,8 @@ class Command(BaseCommand):
 
         total = 0
         for order, (title, body) in enumerate(chapters, start=1):
+            if order == 1:
+                body = _maps_html(slug, maps) + body
             body, _ = convert(clean_fragment(body), outer_guillemets=False)
             body = settled_chapter_body(slug, order, body)
             title, _ = convert(title, outer_guillemets=False)
