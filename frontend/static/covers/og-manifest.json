@@ -10311,6 +10311,36 @@
 			"layout": "fade/slate",
 			"bar": 0
 		},
+		"fr/selected-sermons-whitefield": {
+			"ground": "9f56814168b963e581e6c06a8f8b007583f18e9343ddae2947c6db0517d75ee9",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[48, 289, 552, 352],
+					[57, 351, 543, 414]
+				],
+				"subtitle": [
+					[171, 477, 429, 505]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
+		},
 		"fr/soar-like-the-eagle-3": {
 			"ground": "435c30f8b3718898f75827d153543c59923e778221872f61a6f615d7dd32a004",
 			"style": "lettered",
