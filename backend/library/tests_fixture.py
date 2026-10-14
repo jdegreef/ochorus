@@ -4022,6 +4022,35 @@ class BookSortOrderTests(SimpleTestCase):
         highest = max((f.get("sort_order") or 0) for *_, f in book_editions())
         self.assertEqual(book_sort_order("no-such-work-yet"), highest + 1)
 
+    # The works that held sort_order 0 or 1 before 2026-10 — the library's
+    # first imports. Frozen: a NEW work at ≤ 1 is max+1 over an empty dev DB
+    # (the Pensées, then Elaw's Memoirs in #6003), not a genuine first place.
+    LOW_SORT_ORDER = frozenset({
+        "baptism-with-the-holy-spirit",
+        "clothed-with-strength-and-dignity",
+        "gleanings-among-the-sheaves",
+        "godliness",
+        "the-inner-chamber",
+    })
+
+    def test_no_new_work_ships_at_the_front_of_the_library(self):
+        from .content_fixtures import book_editions
+
+        low = sorted(
+            f"{path.name}: sort_order {fields.get('sort_order') or 0}"
+            for path, slug, _lang, fields in book_editions()
+            if (fields.get("sort_order") or 0) <= 1 and slug not in self.LOW_SORT_ORDER
+        )
+        self.assertEqual(low, [], "Use content_fixtures.book_sort_order(SLUG) — never "
+                         'Max("sort_order") over the dev DB, which a fresh worktree leaves empty.')
+
+    def test_no_build_command_takes_max_over_the_dev_db(self):
+        commands = Path(__file__).resolve().parent / "management" / "commands"
+        offenders = sorted(
+            p.name for p in commands.glob("build_*.py") if 'Max("sort_order")' in p.read_text()
+        )
+        self.assertEqual(offenders, [], "Use content_fixtures.book_sort_order(SLUG) instead.")
+
 
 class OriginalEditionsTests(SimpleTestCase):
     """A non-English `public_domain` row must be a listed original.

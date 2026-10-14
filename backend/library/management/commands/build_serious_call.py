@@ -19,9 +19,9 @@ from __future__ import annotations
 
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
-from django.db.models import Max
 
 from library import english_audit
+from library.content_fixtures import book_sort_order
 from library.corrections import settled_chapter_body
 from library.ingest import (
     clean_fragment,
@@ -146,7 +146,7 @@ class Command(BaseCommand):
             "description": DESCRIPTION, "attribution": ATTRIBUTION,
             "cover_color": COVER_COLOR, "source_url": "https://ccel.org/ccel/law/serious_call",
         }
-        next_order = (Book.objects.aggregate(m=Max("sort_order"))["m"] or 0) + 1
+        next_order = book_sort_order(SLUG)
         book, was_created = Book.objects.update_or_create(
             slug=SLUG, language="en", defaults=content,
             create_defaults={**content, "source_type": Book.SourceType.PUBLIC_DOMAIN,

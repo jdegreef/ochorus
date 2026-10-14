@@ -66,9 +66,9 @@ from xml.etree import ElementTree as ET
 import requests
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
-from django.db.models import Max
 
 from library import english_audit
+from library.content_fixtures import book_sort_order
 from library.corrections import settled_chapter_body
 from library.ingest import clean_fragment, word_count
 from library.management.commands.import_archive import USER_AGENT
@@ -540,7 +540,7 @@ class Command(BaseCommand):
             "cover_color": COVER_COLOR,
             "source_url": f"https://archive.org/details/{ARCHIVE_ID}",
         }
-        next_order = (Book.objects.aggregate(m=Max("sort_order"))["m"] or 0) + 1
+        next_order = book_sort_order(SLUG)
         book, created = Book.objects.update_or_create(
             slug=SLUG,
             language="en",
