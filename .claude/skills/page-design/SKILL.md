@@ -345,7 +345,7 @@ A content type is not shipped until it is reachable from every surface that
 lists content types, **in the same order** everywhere:
 
 - [ ] top nav `NAV` in `routes/+layout.svelte` (if it earns a nav slot)
-- [ ] footer **Explore** group (same file)
+- [ ] footer **Explore** group (`lib/components/SiteFooter.svelte`)
 - [ ] `COMMANDS` in `lib/components/CommandPalette.svelte`
 - [ ] `SearchHit` kinds in `lib/library-public.ts` + the search page's facet rail
       _(Articles: done — `ArticleHit` + facet rail, see F1. Scripture/Quotes still absent by design.)_
