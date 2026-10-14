@@ -31,8 +31,10 @@ from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import requires
 
 from .. import readiness
+from ..content_targets import LEVEL_1
 from ..demand import readers_elsewhere
 from ..models import Book, Chapter, Language, LanguageHealthSnapshot, Sermon
+from .targets import level_summary
 
 # What the composite weighs, and by how much (weights sum to 1). Readiness leads
 # — a language that fails its go-live bar isn't serving readers whatever else is
@@ -154,6 +156,9 @@ class AdminLanguageHealthView(APIView):
         # of. Shown beside the score, not folded into it, so the score keeps
         # its meaning; the language page lists the works themselves.
         elsewhere = readers_elsewhere([lang.code for lang in languages])
+        # Progress on the named Level 1 set (library.content_targets). Shown
+        # beside the score like reading-elsewhere, not folded into it.
+        level1 = level_summary(LEVEL_1, [lang.code for lang in languages if not lang.is_source])
 
         # Coverage is measured against the source language's published shelf — the
         # ceiling any translation is working toward.
@@ -220,6 +225,7 @@ class AdminLanguageHealthView(APIView):
                     },
                     "readers": n_readers,
                     "reading_elsewhere": elsewhere.get(lang.code, 0),
+                    "level1": level1.get(lang.code),
                 }
             )
 
