@@ -560,8 +560,19 @@ class LanguageListView(PublicContentCacheMixin, APIView):
         if request.query_params.get("all"):
             # The build's view: every live language in display order, whether or
             # not books have landed yet. It needs the intent, not the inventory —
-            # a locale can be live and still be filling up.
-            return Response([_language_entry(c) for c in live])
+            # a locale can be live and still be filling up. Each entry also
+            # carries its published-book count, which the footer's language
+            # tiles show ("Kiswahili · 31 books"); one grouped query, and only
+            # the build asks.
+            counts = dict(
+                Book.objects.filter(is_published=True)
+                .values_list("language")
+                .annotate(n=Count("id"))
+                .values_list("language", "n")
+            )
+            return Response(
+                [{**_language_entry(c), "book_count": counts.get(c, 0)} for c in live]
+            )
         # Which languages have anything published is a scan of every book, and
         # the answer changes when content ships or an admin takes a locale
         # live — never between two requests a second apart. Memoised briefly so

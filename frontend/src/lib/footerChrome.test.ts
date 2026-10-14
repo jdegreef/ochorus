@@ -30,3 +30,18 @@ describe('phone link columns', () => {
 		expect(FOOTER).not.toMatch(/<nav aria-labelledby="footer-/);
 	});
 });
+
+describe('language tiles', () => {
+	const GENERATOR = read('scripts/fetch-live-locales.mjs');
+
+	it('bake each live language\'s book count from the API at build time', () => {
+		expect(GENERATOR).toMatch(/row\?\.book_count/);
+		expect(GENERATOR).toContain('export const LIVE_LOCALE_BOOKS');
+	});
+
+	it('print the count under the autonym, and nothing for a language with none', () => {
+		expect(FOOTER).toContain("import { LIVE_LOCALE_BOOKS } from '$lib/live-locales.generated'");
+		expect(FOOTER).toMatch(/\{#if LIVE_LOCALE_BOOKS\[code\]\}/);
+		expect(FOOTER.match(/\{@render tile\(/g)?.length).toBe(2);
+	});
+});

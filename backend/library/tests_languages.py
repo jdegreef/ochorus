@@ -344,6 +344,21 @@ class LanguageListEndpointTests(TestCase):
         self.assertFalse(rows["es"]["rtl"])
         self.assertTrue(rows["en"]["is_source"])
 
+    def test_all_counts_each_live_languages_published_books(self):
+        # The footer's language tiles print these, so a draft or unpublished
+        # book must not inflate them, and a live language still filling up
+        # reads 0 rather than going missing.
+        Book.objects.create(
+            author=self.author, slug="c", language="en", title="T2", is_published=True
+        )
+        Book.objects.create(
+            author=self.author, slug="d", language="en", title="T3", is_published=False
+        )
+        rows = {r["code"]: r for r in self.client.get("/api/library/languages/?all=1").data}
+        self.assertEqual(rows["en"]["book_count"], 2)
+        self.assertEqual(rows["es"]["book_count"], 1)
+        self.assertEqual(rows["sw"]["book_count"], 0)
+
 
 class ReadinessReportTests(TestCase):
     """`readiness.report` — the computed answer to "can this language go live?"."""
