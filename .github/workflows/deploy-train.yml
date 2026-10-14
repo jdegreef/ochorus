@@ -1,26 +1,26 @@
 name: Deploy train
 
-# PAUSED: Render auto-deploys again (`autoDeployTrigger: checksPass` in
-# render.yaml), so the schedule is off and this runs only by hand. Its hook
-# secrets were never set, and with Render's auto-deploy off the API stopped
-# deploying entirely. To bring the train back, see the note on ochorus-api's
-# autoDeployTrigger in render.yaml and restore the `schedule:` below.
-#
-# Deploys main to Render in batches instead of on every merge: it moves all
-# three services to the newest commit whose `test-and-build` passed, if
-# anything deployable changed since the last deploy.
+# Deploys main to Render in batches instead of on every merge. Render's
+# auto-deploy is off on ochorus-api and ochorus-web (render.yaml), so this
+# workflow is the only thing that ships them: every two hours it moves both
+# to the newest commit whose `test-and-build` passed, if anything
+# deployable changed since the last deploy.
 # .github/scripts/deploy_train.py has the rules and the why.
+#
+# A RED RUN MEANS PRODUCTION IS FROZEN: nothing else deploys. Fix it the same
+# day. (Oct 5–8, 2026: the hook secrets were missing and main went undeployed.)
 #
 # Need it live now? Actions → Deploy train → Run workflow (tick "force" to
 # redeploy even when nothing deployable changed), or:
 #   gh workflow run deploy-train.yml
 #
-# Setup: copy each service's Render deploy hook (service → Settings → Deploy
-# Hook) into the repo secrets RENDER_DEPLOY_HOOK_API, RENDER_DEPLOY_HOOK_WEB
-# and RENDER_DEPLOY_HOOK_CRON. A missing secret skips that service.
+# Setup: a Render API key (Account Settings → API Keys) in the repo secret
+# RENDER_API_KEY. The service IDs below are not secrets. Deploy hooks are not
+# used: Render 500s on a hook carrying `ref=<sha>` (deploy_train.py has why).
+# The email cron is not on the train; it auto-deploys (render.yaml).
 on:
-  # schedule:
-  #   - cron: '5 */3 * * *'
+  schedule:
+    - cron: '5 */2 * * *'
   workflow_dispatch:
     inputs:
       force:
@@ -51,9 +51,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           FORCE: ${{ inputs.force }}
-          RENDER_DEPLOY_HOOK_API: ${{ secrets.RENDER_DEPLOY_HOOK_API }}
-          RENDER_DEPLOY_HOOK_WEB: ${{ secrets.RENDER_DEPLOY_HOOK_WEB }}
-          RENDER_DEPLOY_HOOK_CRON: ${{ secrets.RENDER_DEPLOY_HOOK_CRON }}
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_SERVICE_ID_API: srv-d948c44vikkc73brci60 # ochorus-api
+          RENDER_SERVICE_ID_WEB: srv-d948c44vikkc73brci5g # ochorus-web
         run: |
           pip install --quiet pyyaml
           python3 .github/scripts/deploy_train.py

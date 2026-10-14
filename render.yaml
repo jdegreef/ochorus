@@ -24,17 +24,20 @@ services:
     dockerfilePath: ./Dockerfile
     plan: starter # always-on; avoids cold-start spin-down
     healthCheckPath: /api/health/
-    # Deploy each merge once its GitHub checks pass. The deploy train
-    # (.github/workflows/deploy-train.yml) was meant to ship main in batches, but
-    # its deploy hooks were never configured, so with auto-deploy off this
-    # service stopped deploying altogether — and every content build of the
-    # still-auto-deploying reader then timed out in its prebuild content gate
-    # (frontend/scripts/await-api-release.mjs) waiting for an API that never
-    # moved. All three services must share one trigger: the web build's gate
-    # assumes the API deploys the same content commit alongside it. To bring
-    # the train back, set "off" on all three, set DEPLOY_TRAIN below to "true",
-    # restore the workflow's schedule, and add its three hook secrets.
-    autoDeployTrigger: checksPass
+    # Off: the deploy train (.github/workflows/deploy-train.yml) ships main in
+    # batches every two hours, moving this service and ochorus-web to the same
+    # green commit together (the email cron below auto-deploys on its own).
+    # At 100+ merges a day, deploying each one queued the ~21-minute web build
+    # back to back and rebuilt this image for every backend commit.
+    #
+    # This service and ochorus-web must share one trigger: the web build's gate
+    # (frontend/scripts/await-api-release.mjs) waits for the API to serve the
+    # same content. When only the API was "off" and the train's hook secrets
+    # were missing (Oct 5–8, 2026), the API stopped deploying and every web
+    # build timed out at that gate. To go back to per-merge deploys, set
+    # `checksPass` on both, set DEPLOY_TRAIN below to "false", and comment
+    # out the workflow's schedule (#5448 did exactly that).
+    autoDeployTrigger: "off"
     # Rebuild the API only for commits that change what the image runs. The
     # rootDir already skips commits outside backend/; this also skips the ones
     # that touch only tests or backend/CLAUDE.md, each of which would otherwise
@@ -82,12 +85,14 @@ services:
       # that no deploy fired, rather than pretending it shipped.
       - key: RENDER_WEB_DEPLOY_HOOK
         sync: false
-      # Pins that rebuild to this API's own commit (library/golive.py). Only
-      # safe while the deploy train keeps every service on one commit. Under
-      # auto-deploy the reader can run a newer frontend-only commit than this
-      # API, and pinning would roll it back — so it is "false" while the
-      # services auto-deploy, set explicitly so a Blueprint sync overwrites the
-      # "true" the train era left on the service.
+      # When "true", library/golive.py pins the reader rebuild it fires on a
+      # language launch to this API's commit by adding `ref=<sha>` to the web
+      # deploy hook. Render answers that with a 500 (seen 2026-10-14; the
+      # deploy train moved to the REST API for the same reason), so it stays
+      # "false" even under the train until golive deploys a pinned commit some
+      # other way. Unpinned, the launch rebuild builds main's tip, and if main
+      # holds content this API has not released yet, that one web build waits
+      # at its content gate and fails; the next train ships the launch.
       - key: DEPLOY_TRAIN
         value: "false"
       # The reader's public origin (e.g. https://ochorus.com) — lets the admin
@@ -141,7 +146,12 @@ services:
     rootDir: backend
     dockerfilePath: ./Dockerfile
     schedule: "*/15 * * * *"
-    # Same trigger as ochorus-api, whose image this rebuilds.
+    # NOT on the train: Render gives cron jobs no deploy hook, so the train
+    # cannot fire this one. Left "off" it would never deploy again and run a
+    # stale image forever. So it deploys each green commit itself. That can put
+    # it up to one train (~2 h) ahead of the API's migrations; it runs every
+    # 15 minutes, so a run that trips on a not-yet-migrated column just fails
+    # and the next one after the train succeeds. Nothing else depends on it.
     autoDeployTrigger: checksPass
     # Same filter as ochorus-api: the cron builds its own copy of the image, so
     # without this every test-only backend commit paid for a second Docker build.
@@ -230,9 +240,10 @@ services:
     rootDir: frontend
     buildCommand: npm ci && npm run build
     staticPublishPath: ./build
-    # Same trigger as ochorus-api (see there): the prebuild gate waits for the
-    # API to land the same content, which only works if both deploy the commit.
-    autoDeployTrigger: checksPass
+    # Off, like ochorus-api (see there): the deploy train ships it, together
+    # with the API, so the prebuild gate finds the content it waits for. The
+    # buildFilter below still decides whether a train has anything to deploy.
+    autoDeployTrigger: "off"
     # By default Render rebuilds this static service only when files under its
     # rootDir (frontend/) change — so a backend-only content commit (new authors,
     # book/title edits) would leave the prerendered /books|authors|sermons pages

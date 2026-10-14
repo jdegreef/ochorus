@@ -14,16 +14,22 @@ What it does, in order:
    GitHub deployments Render reports ("main - ochorus-web").
 3. Deploy if a file in LAST..TARGET matches any service's render.yaml
    buildFilter (or rootDir), or if FORCE is set.
-4. Fire EVERY service's deploy hook with `ref=TARGET`. All three services move
-   to the same commit together. That keeps two promises: the web build's
-   prebuild gate finds the API serving exactly the content it checks out, and
-   the API's own commit (RENDER_GIT_COMMIT) is a safe `ref` for the rebuilds
-   the admin fires between trains (library/golive.trigger_web_deploy).
+4. Ask Render's REST API to deploy TARGET (`commitId`) on the API and the
+   web service, so both move to the same commit together and the web build's
+   prebuild gate finds the API serving exactly the content it checks out.
+   The email cron is not on the train: Render's API cannot pin a cron job to
+   a commit, so it auto-deploys on its own (render.yaml).
 
-Until both the API and web hook secrets are set the train deploys nothing
-(it reports what it would have done), so it is harmless before it is set up.
-A failed hook fails the run, so it shows red in Actions. DRY_RUN=1 prints the decision and fires
-nothing.
+WHY THE REST API, NOT DEPLOY HOOKS. Render documents `?ref=<sha>` on a deploy
+hook, but on 2026-10-14 every hook call carrying it answered 500 while the
+same hook without it deployed fine. Without a ref a hook builds the branch
+tip, which may be red or newer than what the API holds. The REST endpoint
+takes `commitId` and does not touch the service's auto-deploy setting.
+
+Needs the RENDER_API_KEY secret and the two service IDs (plain env in the
+workflow). Until the key is set the train deploys nothing and fails the run,
+so a half-configured train shows red instead of silently doing nothing.
+DRY_RUN=1 prints the decision and deploys nothing.
 """
 
 from __future__ import annotations
@@ -33,6 +39,7 @@ import json
 import os
 import subprocess
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -43,14 +50,15 @@ GATE = "test-and-build"
 # The service whose last deploy tells us where production is. The web build
 # is the expensive one, and the train always moves every service together.
 ANCHOR = "ochorus-web"
-HOOK_SECRETS = {
-    "ochorus-api": "RENDER_DEPLOY_HOOK_API",
-    "ochorus-web": "RENDER_DEPLOY_HOOK_WEB",
-    "ochorus-lifecycle-email": "RENDER_DEPLOY_HOOK_CRON",
+# The two services the train moves, and the env var holding each one's Render
+# service ID (srv-…, shown at the top of the service's page; not a secret).
+# Both are required: the content gate couples them, so one without the other
+# fails the web build. ochorus-lifecycle-email is deliberately absent (see top).
+SERVICE_ID_VARS = {
+    "ochorus-api": "RENDER_SERVICE_ID_API",
+    "ochorus-web": "RENDER_SERVICE_ID_WEB",
 }
-# The two the content gate couples: one without the other fails the web build.
-# The cron only shares the API's image, so a train can ship without it.
-REQUIRED = ("ochorus-api", "ochorus-web")
+RENDER_API = "https://api.render.com/v1"
 LOOKBACK = 60  # commits to search for a green one
 
 
@@ -104,12 +112,20 @@ def deployable(path: str, paths: list[str], ignored: list[str]) -> bool:
     return hit and not any(fnmatch.fnmatchcase(path, g) for g in ignored)
 
 
-def fire(hook: str, sha: str) -> int:
-    url = urllib.parse.urlsplit(hook)
-    query = urllib.parse.urlencode(urllib.parse.parse_qsl(url.query) + [("ref", sha)])
-    req = urllib.request.Request(url._replace(query=query).geturl(), method="POST")
+def deploy(service_id: str, sha: str, api_key: str) -> str:
+    """Start a deploy of `sha` on one Render service; returns its deploy id."""
+    req = urllib.request.Request(
+        f"{RENDER_API}/services/{service_id}/deploys",
+        data=json.dumps({"commitId": sha}).encode(),
+        method="POST",
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+        },
+    )
     with urllib.request.urlopen(req, timeout=30) as res:
-        return res.status
+        return json.load(res).get("id", f"HTTP {res.status}")
 
 
 def why_deploy(target: str, last: str | None) -> tuple[str | None, str]:
@@ -151,30 +167,38 @@ def main() -> int:
     if note:
         summary.append(note)
 
-    hooks = {svc: os.environ.get(secret, "").strip() for svc, secret in HOOK_SECRETS.items()}
+    api_key = os.environ.get("RENDER_API_KEY", "").strip()
+    ids = {svc: os.environ.get(var, "").strip() for svc, var in SERVICE_ID_VARS.items()}
+    missing = [var for svc, var in SERVICE_ID_VARS.items() if not ids[svc]]
+    if not api_key:
+        missing.insert(0, "RENDER_API_KEY")
     failed = False
-    if reason and not all(hooks[svc] for svc in REQUIRED):
+    if reason and missing:
         # All or nothing: a web build without its API deploy waits on content
         # the API never serves and fails 15 minutes later. And the run goes RED:
         # a green run here hid two days of undeployed main (2026-10-05 → 07)
         # while every web auto-deploy timed out waiting on a stale API.
         failed = True
-        missing = ", ".join(HOOK_SECRETS[svc] for svc in REQUIRED if not hooks[svc])
-        summary.append(f"Would deploy ({reason}), but **not configured**: {missing}.")
+        summary.append(f"Would deploy ({reason}), but **not configured**: {', '.join(missing)}.")
     elif reason:
-        summary.append(f"Deploying all services to `{target[:8]}`: {reason}.")
-        for service, hook in hooks.items():
-            if not hook:
-                summary.append(f"- {service}: skipped, secret {HOOK_SECRETS[service]} is not set")
-            elif os.environ.get("DRY_RUN"):
+        summary.append(f"Deploying {' and '.join(ids)} to `{target[:8]}`: {reason}.")
+        for service, service_id in ids.items():
+            if os.environ.get("DRY_RUN"):
                 summary.append(f"- {service}: would deploy (dry run)")
-            else:
-                # Each hook on its own: one failing must not strand the others.
-                try:
-                    summary.append(f"- {service}: hook returned {fire(hook, target)}")
-                except OSError as e:  # URLError / HTTPError / timeout
-                    failed = True
-                    summary.append(f"- {service}: **hook failed** ({e})")
+                continue
+            # Each service on its own: one failing must not strand the other.
+            try:
+                summary.append(f"- {service}: deploy `{deploy(service_id, target, api_key)}` started")
+            except OSError as e:  # URLError / HTTPError / timeout
+                failed = True
+                # Render's error body says why (a bad commit, a bad key...);
+                # the status line alone does not.
+                body = ""
+                if isinstance(e, urllib.error.HTTPError):
+                    body = e.read(300).decode("utf-8", "replace").strip()
+                summary.append(
+                    f"- {service}: **deploy failed** ({e})" + (f": `{body}`" if body else "")
+                )
 
     text = "\n".join(summary)
     print(text)
