@@ -1,0 +1,201 @@
+{
+ "kind": "book",
+ "slug": "how-to-succeed-in-the-christian-life-teens",
+ "language": "fr",
+ "note": [
+  "Every epigraph (KJV in the English) is Louis Segond (1910) verbatim with French typographic spacing, and the “(KJV)” label is dropped; the attribution names Segond accordingly. Partial verses where the English is partial: John 1:12 stops before Segond’s run-on « lesquels sont nés, » (and Segond’s « l’ont reçue » refers to the Word/light, feminine); Acts 1:8 stops at « mes témoins »; Hebrews 12:2 is the opening clause with its first letter capitalised.",
+  "Psalm 55:17 (English numbering) is Psaume 55:18 in Segond; the epigraph cites « Psaume 55:18 » and the reference row keeps the English number. Segond’s wording (« je soupire et je gémis ») differs from the KJV’s “pray, and cry aloud” but is the verse.",
+  "Torrey’s own sentences are quoted in my own French rendering (no published French edition of How to Succeed in the Christian Life is on the site); his “He/Him” for God/Christ is lower-cased per house style. Ch. 6 « Suis-moi » is marked mined against Matthew 9:9 (Segond’s exact words); Torrey may have had John 21:22 in mind.",
+  "Title « La foi qui tient (Pour ados) » is exactly 28 characters: the literal « Réussir sa vie chrétienne (Pour ados) » is 37 and too long for the rail cover, so the title carries the book’s ‘keep going / succeed’ idea; the literal French gloss appears in ch. 1 and the closing line of ch. 12, and the English title is kept in the attribution and the Q&A (no French full edition exists). Teen voice uses « tu », narration of Torrey’s life in passé simple, as a-retrospect-teens.fr does.",
+  "AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Proverbs 22:6",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 1:12",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 1:12",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 3
+  },
+  {
+   "reference": "Matthew 10:32",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 12:34b",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 4,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 John 5:13",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 John 5:13",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 2,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 1:12",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 3
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 19:2a",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 2,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 8
+  },
+  {
+   "reference": "Hebrews 12:2a",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 9:9",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 5,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 119:105",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 55:17",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 2,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 55:17",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 3
+  },
+  {
+   "reference": "Daniel 6:10",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 3
+  },
+  {
+   "reference": "Proverbs 13:20",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 4:19",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 4:19",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 3,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 15:11",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 3
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 5
+  },
+  {
+   "reference": "2 Timothy 3:12",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 5:10",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 2,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

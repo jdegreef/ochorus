@@ -1,0 +1,223 @@
+{
+ "kind": "book",
+ "slug": "mary-slessor-a-life-teens",
+ "language": "fr",
+ "note": [
+  "The English teen edition quotes the ASV in each chapter's epigraph; every French epigraph is the whole verse (Isaiah 28:16: the matching final clause) verbatim from Louis Segond (1910), cited without a version label as in a-retrospect-teens.fr, with only French typographic spacing added. 2 Corinthians 12:9 begins with a capitalised « Et » (Segond's lower-case « et » continues verse 8). No psalm quoted here shifts numbering in Segond.",
+  "Names, places and Mary's quotations follow mary-slessor-a-life-children.fr (lassie, Ma, Ma Eme, « Ifehe ! » = « Cours ! », the « Dieu de la femme » reply, Maman Fuller for Mammy Fuller, « À l’abri », Eka kpukpru owo « la Mère de tout le monde »). Witch-doctor is « devin » throughout, to keep it apart from « sorciers » (sorcerers); Enyong Creek is « la crique d’Enyong »; four miles became « six kilomètres » as in the children's edition; pounds and shillings are kept.",
+  "Mary's Scots (« I canna meditate… goes a' roads », « a wee, wee wifie, verra little buikit ») and Ovens's « plenty mair » are given a light spoken French colour (« J’peux pas méditer », « J’suis une toute, toute p’tite bonne femme », « t’en auras bien d’autres ») rather than dialect; the coast pidgin in ch. 4 is rendered as broken French. Her « Lord, I believe, help Thou my unbelief » (Mark 9:24) keeps her added « Seigneur » and is marked self_rendered.",
+  "Narration is in the passé simple and the reader is addressed with « tu », following a-retrospect-teens.fr; « One thing to do this week » is « Une chose à faire cette semaine : ». The ch. 10 line about her « four bairns » (« free to go up and help them ») is read as going up-country, not to heaven — worth a native check. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 103:13",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Lamentations 3:27",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Lamentations 3:27",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 8
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 27:22",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 6:5",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 6:8b",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 28:16",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 28:16",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 9
+  },
+  {
+   "reference": "Psalm 73:26",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 73:26a",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 12,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Joshua 1:9",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Joshua 1:9",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 17:17",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 10:37",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 82:4",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 27:10",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 27:10",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 9
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Micah 6:8",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Micah 6:8",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 9:62",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 103:4a",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 1,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 9:62",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 8
+  },
+  {
+   "reference": "Luke 9:62",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 10
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 4
+  },
+  {
+   "reference": "2 Corinthians 12:9a",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 12:9a",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 10,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

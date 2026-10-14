@@ -7707,6 +7707,32 @@
 				552
 			]
 		},
+		"fr/amy-carmichael-a-life-teens": {
+			"ground": "d95b5576cea78ad6b1ccc9fcb2118ec5e4afc27e25732490b338a9ef8e5dda02",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[144, 102, 456, 131]
+				],
+				"title": [
+					[50, 308, 550, 384],
+					[126, 374, 474, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"fr/around-the-wicket-gate": {
 			"ground": "8ee1c35a9c120b72ab5ff4fd435f081168a71c7ec6274758ade9b1356e4a02d8",
 			"style": "revival",
@@ -7815,6 +7841,58 @@
 				478
 			]
 		},
+		"fr/c-s-lewis-a-life-teens": {
+			"ground": "bb7b1256995e150ecf06919a80cf5c4cb4937dcf4b747b03d69650e70389d257",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[143, 308, 457, 384],
+					[126, 374, 474, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
+		"fr/c-t-studd-a-life-teens": {
+			"ground": "c6598370135135b1da47ae5b790b28c50b5c8c9f4c5da6d2902dc63ed37d44fa",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[140, 308, 460, 384],
+					[126, 374, 474, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"fr/cheque-book": {
 			"ground": "a21978dfd6cf84cc3bba17e06faec15d3d71688b2371ba093fc9aad0a215d101",
 			"style": "revival",
@@ -7887,6 +7965,32 @@
 				478
 			]
 		},
+		"fr/corrie-ten-boom-a-life-teens": {
+			"ground": "d7c3b4bc61b614f3f566e9862d39c2a8382199308f63d737bd6d2a2bca78379e",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.45,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[54, 308, 546, 384],
+					[126, 374, 474, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"fr/daughters-of-the-king-2": {
 			"ground": "ca34fba0c7f5e5e4d18c37231578837b18b54cc6af8f67a514e403b9233f5fe8",
 			"style": "young",
@@ -7896,6 +8000,33 @@
 			"scrim": 1,
 			"layout": "framed-light",
 			"bar": 0
+		},
+		"fr/david-livingstone-a-life-teens": {
+			"ground": "a8baf50ff0063e563e5c3592eab822c45dc423f42a870680eb8692333ba2a437",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[120, 102, 480, 131]
+				],
+				"title": [
+					[212, 275, 388, 351],
+					[123, 341, 477, 417],
+					[126, 407, 474, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
 		},
 		"fr/days-of-heaven-upon-earth": {
 			"ground": "0b873fc50e60b5815bed6bb557c833a71d28bd67eb8ee8f104c0f709149679d7",
@@ -7941,6 +8072,32 @@
 			"middle": [
 				317,
 				478
+			]
+		},
+		"fr/elisabeth-elliot-a-life-teens": {
+			"ground": "789128536a9ab8bb5ed4720fc6cf86a10c4910bd6a57df9e18eb7eaf3d79b954",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[134, 102, 466, 131]
+				],
+				"title": [
+					[72, 308, 528, 384],
+					[126, 374, 474, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
 			]
 		},
 		"fr/epistles-of-ignatius": {
@@ -8165,6 +8322,32 @@
 			"layout": "diagonal/ochre",
 			"bar": 0.055
 		},
+		"fr/how-to-succeed-in-the-christian-life-teens": {
+			"ground": "4e9b1bfc25110ed6f03b640402f5d90534eac163027e82d1a1a265cbfc9707e5",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[84, 308, 516, 384],
+					[126, 374, 474, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"fr/humility-2": {
 			"ground": "b7ebe70a06a8600d5d850fffd7c551de82f033f08f76304260f30eefb4ecf8d7",
 			"style": "devotional",
@@ -8210,6 +8393,33 @@
 			"middle": [
 				287,
 				508
+			]
+		},
+		"fr/john-hyde-a-life-teens": {
+			"ground": "228f093d9c4c1873a7c49410ea9d224bb0eeac0546e4d60175194cb3904ccd1a",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[82, 275, 518, 351],
+					[166, 341, 434, 417],
+					[126, 407, 474, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
 			]
 		},
 		"fr/key-teachings-of-andrew-murray": {
@@ -8303,6 +8513,32 @@
 			"middle": [
 				173,
 				460
+			]
+		},
+		"fr/life-and-diary-of-david-brainerd-teens": {
+			"ground": "be18c333ac2ac32ce22085cbf5b7974e39f690cf54df44a794aaa239900a5ea4",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[150, 102, 450, 131]
+				],
+				"title": [
+					[70, 308, 530, 384],
+					[126, 374, 474, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
 			]
 		},
 		"fr/life-experience-gospel-labours": {
@@ -8409,6 +8645,32 @@
 			"middle": [
 				317,
 				478
+			]
+		},
+		"fr/mary-slessor-a-life-teens": {
+			"ground": "49c608557ec2e19ce453e16718f0271a348104fdb0ac424e28b6f2e402b93999",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[170, 102, 430, 131]
+				],
+				"title": [
+					[105, 308, 495, 384],
+					[126, 374, 474, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
 			]
 		},
 		"fr/men-and-women-who-gave-everything-2": {
@@ -8606,6 +8868,33 @@
 			"middle": [
 				317,
 				478
+			]
+		},
+		"fr/pandita-ramabai-a-life-teens": {
+			"ground": "fcbba6003f18402c54f8f8cf423de779f627c7ea254b437a2b943c4063aaa65f",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[182, 275, 418, 351],
+					[165, 341, 435, 417],
+					[126, 407, 474, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
 			]
 		},
 		"fr/pensees": {
@@ -8930,6 +9219,33 @@
 			"middle": [
 				261,
 				534
+			]
+		},
+		"fr/samuel-ajayi-crowther-a-life-teens": {
+			"ground": "3515130817b0ad1cc898f79fac366798fc0127040209fc80cafdfbaa79359f69",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[72, 102, 528, 131]
+				],
+				"title": [
+					[104, 275, 496, 351],
+					[155, 341, 445, 417],
+					[126, 407, 474, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
 			]
 		},
 		"fr/school-of-prayer": {
@@ -9519,6 +9835,32 @@
 			"middle": [
 				263,
 				532
+			]
+		},
+		"fr/watchman-nee-a-life-teens": {
+			"ground": "8ba7a2ec48af4bd75f7668cadce18556abd4fe4232abf803315f50651149ad10",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[161, 102, 439, 131]
+				],
+				"title": [
+					[73, 308, 527, 384],
+					[126, 374, 474, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
 			]
 		},
 		"fr/women-who-moved-heaven-2": {
