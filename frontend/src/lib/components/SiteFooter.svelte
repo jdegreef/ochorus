@@ -36,6 +36,8 @@
 	import { BENEDICTION, PASSAGE } from '$lib/benediction';
 	import { elementVisible } from '$lib/scrollSpy.svelte';
 	import { pageShowsBook } from '$lib/footerResume';
+	import { footerFeedback } from '$lib/footerFeedback.svelte';
+	import type { Snippet } from 'svelte';
 
 	const t = i18n.t;
 	const copyrightYear = new Date().getFullYear();
@@ -95,6 +97,33 @@
 	});
 
 	const blessing = $derived(BENEDICTION[lang.current]);
+
+	// Phone fold state: the ids of the link columns the reader has opened.
+	let openCols = $state(new Set<string>());
+	function toggleCol(id: string) {
+		const next = new Set(openCols);
+		if (!next.delete(id)) next.add(id);
+		openCols = next;
+	}
+
+	// Tell FeedbackFab once the Account column — which carries "Send feedback" —
+	// has scrolled into view, or past it to the rows below, so the floating
+	// button steps aside instead of duplicating it over the footer's last rows.
+	// The column, not the link: on a phone the link may be folded away while
+	// its heading still shows.
+	$effect(() => {
+		if (!auth.enabled) return; // no Account column to watch
+		const node = document.getElementById('footer-account-heading')?.closest('nav');
+		if (!node || typeof IntersectionObserver === 'undefined') return;
+		const io = new IntersectionObserver(([e]) => {
+			footerFeedback.reached = e.isIntersecting || e.boundingClientRect.top < 0;
+		});
+		io.observe(node);
+		return () => {
+			io.disconnect();
+			footerFeedback.reached = false;
+		};
+	});
 
 	// Footer "My Account" column — the reader's own pages (ACCOUNT_NAV, shared
 	// with the phone "More" sheet; accountHref routes a signed-out reader
@@ -227,8 +256,30 @@
 	     Account shows only where accounts exist, so the count runs 3–5 —
 	     computed once in footerGridClass, which spells every reachable
 	     grid-cols literal out for Tailwind's scanner. -->
+	<!-- One link column. On a phone it folds to its heading (the footer had
+	     grown a screen and a half tall there), opened by a toggle in the heading;
+	     wider, the toggle is hidden and the heading reads plain. CSS decides
+	     which, so the prerendered page (what crawlers read) carries every link
+	     and nothing reflows after hydration. Only the visible half of the
+	     heading names the landmark. -->
+	{#snippet linkColumn(id: string, heading: string, list: Snippet)}
+		<nav aria-labelledby={id} class="footer-col" class:open={openCols.has(id)}>
+			<h2 {id} class="footer-heading">
+				<span class="footer-col-label">{heading}</span>
+				<button
+					type="button"
+					class="footer-col-toggle"
+					aria-expanded={openCols.has(id)}
+					onclick={() => toggleCol(id)}
+				>
+					{heading}<Icon name="chevron-right" size={16} mirror={false} class="footer-fold-chevron" />
+				</button>
+			</h2>
+			{@render list()}
+		</nav>
+	{/snippet}
 	<div
-		class="chrome-col grid grid-cols-2 gap-x-8 gap-y-10 px-5 py-10 sm:py-12 {footerGridClass}"
+		class="footer-cols chrome-col grid grid-cols-2 gap-x-8 gap-y-10 px-5 py-10 sm:py-12 {footerGridClass}"
 	>
 		<div class="col-span-2 lg:col-span-1">
 			<a class="inline-block text-text" href={localizeHref('/')} aria-label={t('common.home')}>
@@ -242,28 +293,28 @@
 		     the visible heading IS the accessible name, so the two can't drift
 		     apart in translation, and a landmark is how a screen-reader user
 		     reaches these links without arrowing the whole page. -->
-		<nav aria-labelledby="footer-explore-heading">
-			<h2 id="footer-explore-heading" class="footer-heading">{t('footer.explore')}</h2>
+		{#snippet exploreList()}
 			<ul class="footer-links">
-				<!-- The primary five, in PRIMARY_NAV order (shared with the top nav and
-				     the command palette so the three can't drift — F2). -->
-				{#each PRIMARY_NAV as d (d.href)}
-					<li><a href={localizeHref(d.href)}>{t(d.labelKey)}</a></li>
-				{/each}
-				<li><a href={pageHref(SERIES_DEST.href)}>{t(SERIES_DEST.labelKey)}</a></li>
-				{#each AUDIENCE_DESTS as d (d.href)}
-					<li><a href={pageHref(d.href)}>{t(d.labelKey)}</a></li>
-				{/each}
-				<li><a href={pageHref(AZ_INDEX_DEST.href)}>{t(AZ_INDEX_DEST.labelKey)}</a></li>
-				<!-- Non-English readers have no Discover column, so the two links that
-				     serve every language — Originals (its books are translated) and
-				     RSS — ride in Explore for them. -->
-				{#if lang.current !== 'en'}
-					<li><a href={pageHref(ORIGINALS_DEST.href)}>{t(ORIGINALS_DEST.labelKey)}</a></li>
-					<li><a href={localizeHref('/rss/')}>RSS</a></li>
-				{/if}
-			</ul>
-		</nav>
+			<!-- The primary five, in PRIMARY_NAV order (shared with the top nav and
+			     the command palette so the three can't drift — F2). -->
+			{#each PRIMARY_NAV as d (d.href)}
+				<li><a href={localizeHref(d.href)}>{t(d.labelKey)}</a></li>
+			{/each}
+			<li><a href={pageHref(SERIES_DEST.href)}>{t(SERIES_DEST.labelKey)}</a></li>
+			{#each AUDIENCE_DESTS as d (d.href)}
+				<li><a href={pageHref(d.href)}>{t(d.labelKey)}</a></li>
+			{/each}
+			<li><a href={pageHref(AZ_INDEX_DEST.href)}>{t(AZ_INDEX_DEST.labelKey)}</a></li>
+			<!-- Non-English readers have no Discover column, so the two links that
+			     serve every language — Originals (its books are translated) and
+			     RSS — ride in Explore for them. -->
+			{#if lang.current !== 'en'}
+				<li><a href={pageHref(ORIGINALS_DEST.href)}>{t(ORIGINALS_DEST.labelKey)}</a></li>
+				<li><a href={localizeHref('/rss/')}>RSS</a></li>
+			{/if}
+		</ul>
+		{/snippet}
+		{@render linkColumn('footer-explore-heading', t('footer.explore'), exploreList)}
 		<!-- Discover — English-only hubs, shown only to English readers rather
 		     than localized. The content is lifted from / parsed against the
 		     English works (scripture cites English book names, quotes cite
@@ -274,16 +325,16 @@
 		     heading is a plain literal (like RSS) — it needs no catalogue key.
 		     The trailing slash matches these pages' canonical URLs. -->
 		{#if lang.current === 'en'}
-			<nav aria-labelledby="footer-discover-heading">
-				<h2 id="footer-discover-heading" class="footer-heading">Discover</h2>
+			{#snippet discoverList()}
 				<ul class="footer-links">
-					{#each ENGLISH_HUBS as d (d.href)}
-						<li><a href="{d.href}/">{t(d.labelKey)}</a></li>
-					{/each}
-					<li><a href={pageHref(ORIGINALS_DEST.href)}>{t(ORIGINALS_DEST.labelKey)}</a></li>
-					<li><a href={localizeHref('/rss/')}>RSS</a></li>
-				</ul>
-			</nav>
+				{#each ENGLISH_HUBS as d (d.href)}
+					<li><a href="{d.href}/">{t(d.labelKey)}</a></li>
+				{/each}
+				<li><a href={pageHref(ORIGINALS_DEST.href)}>{t(ORIGINALS_DEST.labelKey)}</a></li>
+				<li><a href={localizeHref('/rss/')}>RSS</a></li>
+			</ul>
+			{/snippet}
+			{@render linkColumn('footer-discover-heading', 'Discover', discoverList)}
 		{/if}
 		<!-- My Account — the reader's own pages (saved works + notebook). Shown
 		     in every locale, signed in or out: these routes aren't localized
@@ -295,31 +346,31 @@
 		     anyone, so the column drops rather than offering dead links. The
 		     heading reuses account.title, already translated in every locale. -->
 		{#if auth.enabled}
-			<nav aria-labelledby="footer-account-heading">
-				<h2 id="footer-account-heading" class="footer-heading">{t('account.title')}</h2>
+			{#snippet accountList()}
 				<ul class="footer-links">
-					{#each accountLinks as d (d.labelKey)}
-						<li><a href={d.href}>{t(d.labelKey)}</a></li>
-					{/each}
-					<li>
-						<!-- Feedback opens a modal when signed in; signed out it needs an
-						     account first, so it links to /login like the rows above. -->
-						{#if auth.user}
-							<button type="button" onclick={() => (feedbackOpen = true)}
-								>{t('feedback.send')}</button
-							>
-						{:else}
-							<a href={feedbackSignedOutHref} use:seenOnView={'feedback'}>{t('feedback.send')}</a>
-						{/if}
-					</li>
-				</ul>
-			</nav>
+				{#each accountLinks as d (d.labelKey)}
+					<li><a href={d.href}>{t(d.labelKey)}</a></li>
+				{/each}
+				<li>
+					<!-- Feedback opens a modal when signed in; signed out it needs an
+					     account first, so it links to /login like the rows above. -->
+					{#if auth.user}
+						<button type="button" onclick={() => (feedbackOpen = true)}
+							>{t('feedback.send')}</button
+						>
+					{:else}
+						<a href={feedbackSignedOutHref} use:seenOnView={'feedback'}>{t('feedback.send')}</a>
+					{/if}
+				</li>
+			</ul>
+			{/snippet}
+			{@render linkColumn('footer-account-heading', t('account.title'), accountList)}
 		{/if}
 		<!-- Mission rides in the grid rather than spanning the row on mobile
 		     (unlike the brand column) so the link columns pair up two-per-row:
 		     with Explore · Discover · My Account it makes an even 2×2 for a
 		     signed-in English reader instead of leaving My Account stranded. -->
-		<div class="lg:col-span-1">
+		<div class="footer-mission lg:col-span-1">
 			<h2 class="footer-heading">{t('footer.ministryHeading')}</h2>
 			<p class="text-small text-muted">
 				{t('footer.mission')}
@@ -474,6 +525,66 @@
 		inset-inline: 0;
 		block-size: 2px;
 		background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 55%, var(--gold) 100%);
+	}
+
+	/* Phone link columns: each folds to a ruled row, its heading's toggle the
+	   tap target and a chevron that turns as it opens. Wider, the toggle is
+	   hidden and the plain label shows. */
+	.footer-col-toggle {
+		display: none;
+	}
+	@media (max-width: 639.98px) {
+		.footer-cols {
+			row-gap: 0;
+		}
+		.footer-cols > :first-child {
+			margin-block-end: 1.5rem;
+		}
+		.footer-col {
+			grid-column: 1 / -1;
+			border-block: 1px solid var(--border);
+		}
+		.footer-col + .footer-col {
+			border-block-start: 0;
+		}
+		.footer-col .footer-heading {
+			margin: 0;
+		}
+		.footer-col-label {
+			display: none;
+		}
+		.footer-col-toggle {
+			display: flex;
+			inline-size: 100%;
+			min-block-size: 3rem;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0;
+			border: 0;
+			background: none;
+			font: inherit;
+			letter-spacing: inherit;
+			text-transform: inherit;
+			color: inherit;
+			cursor: pointer;
+		}
+		.footer-col:not(.open) :global(.footer-links) {
+			display: none;
+		}
+		.footer-col.open :global(.footer-links) {
+			padding-block-end: 1rem;
+		}
+		.footer-mission {
+			grid-column: 1 / -1;
+			margin-block-start: 2rem;
+		}
+	}
+	.footer-col :global(.footer-fold-chevron) {
+		color: var(--muted);
+		transition: rotate var(--duration-fast) ease;
+	}
+	.footer-col.open :global(.footer-fold-chevron) {
+		rotate: 90deg;
 	}
 
 	/* "Before you go" cards: two across from sm, stacked on a phone. Each is a
@@ -666,6 +777,9 @@
 		}
 		.footer-card-link:hover :global(svg) {
 			translate: none;
+		}
+		.footer-col :global(.footer-fold-chevron) {
+			transition: none;
 		}
 		.footer-invite-cta:hover::after {
 			animation: none;
