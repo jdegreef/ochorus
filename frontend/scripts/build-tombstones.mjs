@@ -100,9 +100,6 @@ export function tombstonesFor(known, built) {
 	return [...new Set(known)].filter((p) => !have.has(p) && !SHELLS.has(p)).sort();
 }
 
-/** A response body that is the not-found shell (the shell is `noindex`; a page never is). */
-const isShell = (/** @type {string} */ html) => /<meta name="robots" content="noindex/.test(html);
-
 /** GET with a cache-busting query (the CDN holds responses ~5 minutes), retried. */
 /** @param {string} url */
 async function fetchFresh(url) {
@@ -126,12 +123,17 @@ async function fetchFresh(url) {
  * all. Once one has, a 404 for the list is a fault (a CDN hiccup, a changed
  * PUBLIC_SITE_URL), not a beginning, and going on would silently forget every
  * page this deploy withdraws.
+ *
+ * A tombstone is a byte copy of the deploy's shell, so it reads back identical
+ * to the live /200.html. (Not "is it noindex": untranslated author pages are
+ * noindex too.)
  * @param {string} origin @param {string[]} seed
  */
 async function isFirstDeploy(origin, seed) {
+	const shell = (await fetchFresh(`${origin}/200.html`)).text;
 	for (const p of seed.slice(0, 3)) {
 		const { text } = await fetchFresh(`${origin}/${p.replace(/index\.html$/, '')}`);
-		if (isShell(text)) return false;
+		if (text === shell) return false;
 	}
 	return true;
 }
