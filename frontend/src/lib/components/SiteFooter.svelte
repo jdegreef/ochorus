@@ -11,7 +11,7 @@
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { footerLocales } from '$lib/footerLocales';
-	import { FOR_EYEBROW, FOR_LINKS, forIndexPath, forLabel, forLocale, forPath } from '$lib/forLinks';
+	import { FOR_EYEBROW, forIndexPath, forLocale, forPath, forSentence } from '$lib/forLinks';
 	import { loginHref, withSignup } from '$lib/loginHref';
 	import { seenOnView, withSource } from '$lib/signupSource';
 	import { bibleCredit, creditParts } from '$lib/bibleCredit';
@@ -33,7 +33,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
 	import { currentBook } from '$lib/currentBook.svelte';
-	import { BENEDICTION, PASSAGE } from '$lib/benediction';
+	import { blessingFor } from '$lib/benediction';
 	import { elementVisible } from '$lib/scrollSpy.svelte';
 	import { pageShowsBook } from '$lib/footerResume';
 	import { footerFeedback } from '$lib/footerFeedback.svelte';
@@ -97,7 +97,7 @@
 		return currentBook.watch();
 	});
 
-	const blessing = $derived(BENEDICTION[lang.current]);
+	const blessing = $derived(blessingFor(lang.current));
 
 	// Phone fold state: the ids of the link columns the reader has opened.
 	let openCols = $state(new Set<string>());
@@ -246,9 +246,9 @@
 				<path d="M13 30v4h8v-4M10 36h14" />
 				<path d="M28 22c4 0 4 6 0 6" />
 			</svg>
-			<blockquote>{blessing.lines.join(' ')}</blockquote>
+			<blockquote>{blessing.text}</blockquote>
 			<!-- bdi: the verse span keeps its own order inside an RTL caption. -->
-			<figcaption>{blessing.book} <bdi dir="ltr">{PASSAGE}</bdi></figcaption>
+			<figcaption>{blessing.book} <bdi dir="ltr">{blessing.passage}</bdi></figcaption>
 		</figure>
 	{/if}
 
@@ -496,23 +496,24 @@
 		</div>
 	</div>
 	<!-- "Ochorus for …" — the landing pages for churches, homeschool
-	     families, parents ($lib/forLinks), as the footer's last row, read
-	     left to right like the language strip above. Only for readers of
-	     a language the pages are written in (English, French): a reader of
-	     any other is not sent to copy they can't read, and the labels are
-	     the pages' own words ($lib/forLinks), not catalogue keys. -->
+	     families, parents ($lib/forLinks), as the footer's closing sentence:
+	     the eyebrow opens it ("OCHORUS FOR churches, small groups, … and
+	     parents."), each audience a link, the list punctuation the language's
+	     own (forSentence). Only for readers of a language the pages are
+	     written in (English, French): a reader of any other is not sent to
+	     copy they can't read, and the words are the pages' own ($lib/forLinks),
+	     not catalogue keys. -->
 	{#if forLang === lang.current}
 		<nav class="border-t border-border" aria-label={FOR_EYEBROW[forLang]}>
-			<div
-				class="chrome-col flex flex-wrap items-baseline gap-x-5 gap-y-1 px-5 py-4 text-small"
-			>
-				<a class="eyebrow py-1 text-text hover:underline" href={forIndexPath(forLang)}>{FOR_EYEBROW[forLang]}</a>
-				{#each FOR_LINKS as l (l.slug)}
-					<a class="whitespace-nowrap py-1 text-muted hover:text-text" href={forPath(l.slug, forLang)}
-						>{forLabel(l, forLang)}</a
-					>
-				{/each}
-			</div>
+			<p class="footer-for chrome-col px-5 py-4 text-small text-muted">
+				<a class="eyebrow text-text hover:underline" href={forIndexPath(forLang)}
+					>{FOR_EYEBROW[forLang]}</a
+				>
+				{#each forSentence(forLang) as part, i (i)}{#if part.slug}<a
+							class="text-text hover:underline"
+							href={forPath(part.slug, forLang)}>{part.text}</a
+						>{:else}{part.text}{/if}{/each}.
+			</p>
 		</nav>
 	{/if}
 </footer>
@@ -537,6 +538,12 @@
 		inset-inline: 0;
 		block-size: 2px;
 		background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 55%, var(--gold) 100%);
+	}
+
+	/* The "Ochorus for" sentence: wrapped prose, so its links get the touch
+	   rows' extra line height rather than padding. */
+	.footer-for {
+		line-height: 2;
 	}
 
 	/* Language tiles: autonym over its book count. Auto-fill columns, so a
@@ -738,8 +745,9 @@
 		text-wrap: balance;
 	}
 	/* These scripts' display faces have no italic, so the browser would fake
-	   a slant (app.css keeps Korean upright the same way). */
-	.footer-blessing:is(:lang(ar), :lang(hi), :lang(am)) blockquote {
+	   a slant. (app.css keeps Korean upright site-wide, but this scoped italic
+	   outranks it, so Korean is named here too.) */
+	.footer-blessing:is(:lang(ar), :lang(hi), :lang(am), :lang(ko)) blockquote {
 		font-style: normal;
 	}
 	.footer-blessing figcaption {
