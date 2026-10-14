@@ -8157,6 +8157,17 @@
 				482
 			]
 		},
+		"fr/answers-to-prayer": {
+			"ground": "30fb3e30e8f8add22f700e97564c5ada92587608fe5cb9a174bbb333dfbd4d8a",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/oxblood",
+			"bar": 0.105
+		},
 		"fr/around-the-wicket-gate": {
 			"ground": "8ee1c35a9c120b72ab5ff4fd435f081168a71c7ec6274758ade9b1356e4a02d8",
 			"style": "revival",
@@ -10571,6 +10582,17 @@
 				292,
 				503
 			]
+		},
+		"fr/the-life-of-trust": {
+			"ground": "487dbde88d4011bbe8deb7361c5744d74628035b15b662ce5988f33691293c99",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/oxblood",
+			"bar": 0
 		},
 		"fr/the-life-of-trust-children": {
 			"ground": "b271f1bcc66d05926eb513a26a6888568a11a7a81b5ff1dec6a8ebf672cca199",

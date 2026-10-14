@@ -7618,6 +7618,83 @@ BODY_CORRECTIONS.setdefault("religious-experience-and-journal", {}).setdefault("
     # [am] 'Haman' (ሐማ) for Hannah (ሐና) reproduced from English
     ("ሐማ ሳሙኤልን በልጅነቱ", "ሐና ሳሙኤልን በልጅነቱ"),
 ])
+
+# Found while translating to French (2026-10-14): Müller's The Life of Trust —
+# OCR slips (en)
+BODY_CORRECTIONS.setdefault("the-life-of-trust", {}).setdefault("replacements", []).extend([
+    # [en] stray period (OCR)
+    ("from the Continental. Society,", "from the Continental Society,"),
+    # [en] stray comma
+    ("but if he, says it is", "but if he says it is"),
+    # [en] "days schools" slip; parallel "two day schools for boys"
+    ("the two days schools for girls", "the two day schools for girls"),
+    # [en] stray capital W (OCR)
+    ("a sister in communion With us", "a sister in communion with us"),
+    # [en] OCR h/n slip
+    ("Our funds are how very low.", "Our funds are now very low."),
+    # [en] dropped "the"
+    ("Thus Lord will kindly allow me", "Thus the Lord will kindly allow me"),
+    # [en] dropped "in"
+    ("unexpectedly found one pound it.", "unexpectedly found one pound in it."),
+    # [en] stray semicolon; same list earlier reads "decision and firmness"
+    ("love, decision; and firmness,", "love, decision, and firmness,"),
+    # [en] OCR M/H slip
+    ("to build an Orphan Mouse,", "to build an Orphan House,"),
+    # [en] OCR "Jam" for "Jan."; sequence Jan. 3 → Jan. 8
+    ("</p> <p>Jam 6. Received", "</p> <p>Jan. 6. Received"),
+    # [en] typo please→pleased
+    ("the Lord was please to set before me", "the Lord was pleased to set before me"),
+    # [en] Rom. 7:24 KJV "that I am"
+    ("“O wretched man than I am!”", "“O wretched man that I am!”"),
+    # [en] semicolon for comma in sum (figures untouched)
+    ("Institution, £496; 10s.", "Institution, £496, 10s."),
+])
+
+# Found while translating to French (2026-10-14): Müller's Answers to Prayer —
+# OCR slips (en; the place-name pairs also repair the untranslated tail of the
+# sw ch3)
+BODY_CORRECTIONS.setdefault("answers-to-prayer", {}).setdefault("replacements", []).extend([
+    # [en] OCR: "month" for "mouth" (Ps. lxxxi. 10, quoted)
+    ("Open thy month wide", "Open thy mouth wide"),
+    # [en] OCR: "trip" for "the"
+    ("£10 for trip other objects", "£10 for the other objects"),
+    # [en] OCR: "tired" for "tried" (trial of faith)
+    ("I was rather tired respecting", "I was rather tried respecting"),
+    # [en] stray scan asterisk
+    ("go into the poor-*house", "go into the poor-house"),
+    # [en] stray asterisk/hyphen at page break
+    ("there is like-*wise a goodly", "there is likewise a goodly"),
+    # [en] "lead" for past participle "led"
+    ("may thereby be lead to increased", "may thereby be led to increased"),
+    # [en] "that" for "than" (comparative)
+    ("lays more upon us that He is willing", "lays more upon us than He is willing"),
+    # [en] OCR: "Setter" for "letter"
+    ("I received a Setter, with", "I received a letter, with"),
+    # [en] OCR lowercase pronoun "i"
+    ("Scarcely had i read this", "Scarcely had I read this"),
+    # [en] OCR: "as" for "us"
+    ("leads as nearer to God", "leads us nearer to God"),
+    # [en] stray semicolon inside comma-paired parenthetical
+    ("to set apart; out of his profits", "to set apart, out of his profits"),
+    # [en] comma for full stop before capitalised sentence
+    ("many souls were converted, There were", "many souls were converted. There were"),
+    # [en] "Naturally we should have been glad…; but spiritually…even then" —
+    # the contrast admits only "enabled" (Müller's Narrative reads so)
+    ("we were unable to delight even then", "we were enabled to delight even then"),
+    # [en] place name Wotton-under-Edge (Glos.) — BLOCKED: identical text in sw
+    # ch3 (sw ch3 blocks ~50–end are untranslated English)
+    ("\"June 3.—From Wottan-under-edge", "\"June 3.—From Wotton-under-Edge"),
+    # [en] place name Wotton-under-Edge (Glos.) — BLOCKED: identical text in sw
+    # ch3 (sw ch3 blocks ~50–end are untranslated English)
+    ("Received from Wottan-under-edge", "Received from Wotton-under-Edge"),
+    # [en] Arnos Vale Cemetery, Bristol — BLOCKED: identical text in sw ch3 (sw
+    # ch3 blocks ~50–end are untranslated English)
+    ("at Arno' Vale Cemetery", "at Arnos Vale Cemetery"),
+    # [es] place name (mirrors EN slip)
+    ("De Wottan-under-edge, £500", "De Wotton-under-Edge, £500"),
+    # [es] place name (mirrors EN slip)
+    ("Recibidas de Wottan-under-edge", "Recibidas de Wotton-under-Edge"),
+])
 # The paragraph ended on a stop the OCR read as a comma.
 BODY_CORRECTIONS["evangelization-of-the-world"]["paragraph_breaks"] = [
     ('foreign mission service.', 'In 1898 the members'),
