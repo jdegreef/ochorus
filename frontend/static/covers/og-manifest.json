@@ -19560,6 +19560,36 @@
 				520
 			]
 		},
+		"tell-me-the-story-8": {
+			"ground": "fa282fb95116c253f8563138a0712c4148099fe7c50a9b87162cc3fe1a305221",
+			"style": "young",
+			"volume": "8",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 287, 311, 331],
+					[85, 362, 515, 437]
+				],
+				"subtitle": [
+					[42, 492, 558, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
+		},
 		"ten-commandments": {
 			"ground": "66bc7534f5894353ab2420e9d7770736c70994ce2d0ae9ee07510660ca018fb3",
 			"style": "press",

@@ -244,3 +244,31 @@ The first book of the New Testament Stories. An Introduction ("The Story Goes On
 20. Sent Out (Acts 13:1–4)
 
 Left out on purpose: Ananias and Sapphira (Acts 5:1–11), too stark for this age band without more room than a four-minute story allows; it can come back in a teens retelling. Stephen's death and James's are told in a sentence or two, dwelling on Jesus standing to welcome Stephen and on his prayer of forgiveness. Not added: a fixed "ten days" before Pentecost; Persia (Acts 2:9 names Parthia and Media); which James in 12:17 ("probably" the Lord's brother). Callbacks: Pentecost reverses Babel (Book 1); "God meant it for good" (Joseph) for the scattering; "Talitha koum" for Dorcas.
+
+## Book 8: To the Ends of the Earth
+
+The last book of the series. An Introduction ("A Light for Every Nation", Acts 13:47), then twenty-one stories: Acts 13–28, four letters told as stories, and two from Revelation, ending where Book 1 began.
+
+1. Mistaken for Gods (Acts 14:8–20)
+2. Lydia by the River (Acts 16:6–15)
+3. Singing at Midnight (Acts 16:16–34)
+4. To an Unknown God (Acts 17:16–34)
+5. Priscilla and Aquila (Acts 18:1–4, 18–28)
+6. The Riot at Ephesus (Acts 19:11–20, 23–41)
+7. The Boy Who Fell Asleep (Acts 20:7–12)
+8. Goodbye at Miletus (Acts 20:17–38)
+9. Seized in the Temple (Acts 21:10–22:21; 23:11)
+10. Paul's Nephew (Acts 23:12–24)
+11. Before the King (Acts 25:23–26:32)
+12. The Great Storm (Acts 27:1–26)
+13. Shipwreck! (Acts 27:27–44)
+14. The Snake on Malta (Acts 28:1–10)
+15. Rome at Last (Acts 28:11–31)
+16. Don't Let Anyone Look Down on You (1 Timothy 4:12; 2 Timothy 1:5; 3:14–15)
+17. The Runaway Slave (Philemon)
+18. What Love Is Like (1 Corinthians 13)
+19. The Armour of God (Ephesians 6:10–20)
+20. John on Patmos (Revelation 1:9–19)
+21. All Things New (Revelation 21–22)
+
+The last story's "The promise kept" is Revelation 22:3, "No longer will there be any curse": the snake crushed (Book 1, Genesis 3:15) and the tree of life open again (Genesis 3:24 → Revelation 22:2). Told gently: Paul stoned at Lystra ("they thought he was dead"), beaten at Philippi, the jailer's despair. Revelation is kept to its plain heart and the book says plainly that much of it is pictures. Not overstated: "one of the very first" churches in Europe; Paul "probably" in Rome for Ephesians; no Roman soaked-shield lore. Onesimus's possible theft is "may have" (Philemon 18 implies it).
