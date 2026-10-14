@@ -7199,6 +7199,384 @@ BODY_CORRECTIONS.setdefault("ten-commandments", {}).setdefault("replacements", [
     # [es] citation: fowls on Abram's sacrifice is Gen 15:11
     ("ahuyentarlas. Génesis 15:2", "ahuyentarlas. Génesis 15:11"),
 ])
+
+# Found while translating to French (2026-10-14): Edwards's Religious
+# Affections — OCR slips and wrong citations (en + es)
+BODY_CORRECTIONS.setdefault("religious-affections", {}).setdefault("replacements", []).extend([
+    # [en] OCR: nation→notion
+    ("under a nation of zeal", "under a notion of zeal"),
+    # [en] stray period in a list of reformers (Luther, Zwinglius, &c.)
+    ("began by Luther. Zwinglius", "began by Luther, Zwinglius"),
+    # [en] cit: “The fruit of the Spirit is love” is Gal 5:22
+    ("Spirit of grace; Gal. 5:21, “The fruit", "Spirit of grace; Gal. 5:22, “The fruit"),
+    # [en] cit: “he that honoureth him hath mercy on the poor” is Prov 14:31
+    ("And Prov. 14:21, “He that honoreth", "And Prov. 14:31, “He that honoreth"),
+    # [en] cit: “Hear, O Israel … And thou shalt love …” is Deut 6:4-5
+    ("and chap. 6:4, 6, “Hear, O Israel", "and chap. 6:4, 5, “Hear, O Israel"),
+    # [en] OCR: the→thy (Deut 10:12 KJV)
+    ("but to fear the Lord the God, to walk", "but to fear the Lord thy God, to walk"),
+    # [en] garbled closing quote ('' → ”)
+    ("they shall be comforted.'' Psal.", "they shall be comforted.” Psal."),
+    # [en] cit: Colossians 1 has 29 verses; Paul's joy in suffering is Col 1:24
+    ("chap 3:3. Col. 1:34. 1 Thess.", "chap 3:3. Col. 1:24. 1 Thess."),
+    # [en] cit: OCR split; “I joy, and rejoice with you all” is Phil 2:17
+    ("“joying and rejoicing,” Phil. 2:1, 7,", "“joying and rejoicing,” Phil. 2:17,"),
+    # [en] OCR: opening quote read as “a”
+    ("he speaks of his a many tears;”", "he speaks of his “many tears;”"),
+    # [en] cit: chapter dropped; “the end of the commandment is charity” is 1
+    # Tim 1:5 (vv. 3-5)
+    ("is love or charity, 1 Tim. 3, 4, 5.", "is love or charity, 1 Tim. 1:3, 4, 5."),
+    # [en] OCR: he→be
+    ("manner that can he conceived of", "manner that can be conceived of"),
+    # [en] OCR: the text is 1 Pet 1:8 “rejoice with joy unspeakable”
+    ("speaks of “repining with joy unspeakable", "speaks of “rejoicing with joy unspeakable"),
+    # [en] cit: “I hate them with perfect hatred” is Ps 139:22 (the psalm has
+    # 24 verses)
+    ("hatred of sin, Psal. 139:21, 29:", "hatred of sin, Psal. 139:21, 22:"),
+    # [en] missing opening quote before the verse (closing ” present)
+    ("Psal. 119:120: My flesh trembleth", "Psal. 119:120: “My flesh trembleth"),
+    # [en] cit: groaning = “groanings which cannot be uttered”, Rom 8:26
+    ("<sup>6</sup><sup>6</sup> Rom. 8:36.", "<sup>6</sup><sup>6</sup> Rom. 8:26."),
+    # [en] slip: “never so high a degree”
+    ("let them be in never to high a degree", "let them be in never so high a degree"),
+    # [en] cit: “like clouds and wind without rain” is Prov 25:14
+    ("the life: Prov. 25:24, “Whoso boasteth", "the life: Prov. 25:14, “Whoso boasteth"),
+    # [en] slip: where→were
+    ("religion, where for a while not suspected", "religion, were for a while not suspected"),
+    # [en] OCR garble: Heb 6:9 “things that accompany salvation”; stray “s” and
+    # “of”
+    ("accompany salvations” of spoken of ver. 9", "accompany salvation” spoken of ver. 9"),
+    # [en] OCR: motion→notion
+    ("not agreeable to a motion of God's operating", "not agreeable to a notion of God's operating"),
+    # [en] dropped “to”
+    ("what reason have we determine that", "what reason have we to determine that"),
+    # [en] OCR: in→no (sense requires it)
+    ("But yet it is in arguing from hence", "But yet it is no arguing from hence"),
+    # [en] OCR: then→men
+    ("that sometimes natural then may have", "that sometimes natural men may have"),
+    # [en] OCR: their→they
+    ("false affection to God, that their may think", "false affection to God, that they may think"),
+    # [en] cit: 1 Sam 31 has 13 verses; Saul's “I have sinned” is 1 Sam 26:21
+    ("1 Sam. 24:16, 17, and 31:21,", "1 Sam. 24:16, 17, and 26:21,"),
+    # [en] OCR: find→and
+    ("just ready to sink, find the disciples", "just ready to sink, and the disciples"),
+    # [en] typo: triple s
+    ("utter uncleannesss by", "utter uncleanness by"),
+    # [en] OCR: be→by
+    ("Joseph, who was sold be his brethren", "Joseph, who was sold by his brethren"),
+    # [en] OCR: be→he
+    ("and then be is strengthened", "and then he is strengthened"),
+    # [en] stray “as”
+    ("to own the as whole of the debt", "to own the whole of the debt"),
+    # [en] cit: “The spirit of man is the candle of the LORD” is Prov 20:27
+    ("therewith; Prov. 20:17; “<i>The spirit of man", "therewith; Prov. 20:27; “<i>The spirit of man"),
+    # [en] OCR: weighted→weighed
+    ("thoroughly weighted, are found", "thoroughly weighed, are found"),
+    # [en] OCR: gave→have
+    ("the sins they gave been guilty of", "the sins they have been guilty of"),
+    # [en] OCR: item→them
+    ("as to range item in a contrary order", "as to range them in a contrary order"),
+    # [en] cit: Anna “departed not from the temple” is Luke 2:37
+    ("Anna the prophetess: Luke 2:27,", "Anna the prophetess: Luke 2:37,"),
+    # [en] cit: Saul extolling David's kindness is 1 Sam 24:16-19 (ch. 25 is
+    # Nabal)
+    ("to him, 1 Sam. 25:16-19, and 26:21", "to him, 1 Sam. 24:16-19, and 26:21"),
+    # [en] OCR: would→world (John 16:33)
+    ("peace. In the would ye shall have", "peace. In the world ye shall have"),
+    # [en] OCR: know→known
+    ("all of them savingly know him", "all of them savingly known him"),
+    # [en] OCR: is→its
+    ("bear upon is top branches", "bear upon its top branches"),
+    # [en] OCR: of→off
+    ("difficulty brought of from it", "difficulty brought off from it"),
+    # [en] dropped “of” (parallel “the peace of a wicked man”)
+    ("from the peace a godly man,", "from the peace of a godly man,"),
+    # [en] cit: “the light of the glorious gospel of Christ, who is the image
+    # of God” is 2 Cor 4:4
+    ("does not shine, believe not,” 2 Cor. 4:5.", "does not shine, believe not,” 2 Cor. 4:4."),
+    # [en] OCR: confidentially→confidently
+    ("exhort them confidentially to trust", "exhort them confidently to trust"),
+    # [en] OCR: dropped initial s
+    ("secretly, ends a sword and they fall", "secretly, sends a sword and they fall"),
+    # [en] dropped “a”
+    ("It has been common thing in the church", "It has been a common thing in the church"),
+    # [en] cit: Romans 2 has 29 verses; “without natural affection” is Rom 1:31
+    ("without natural affection, Rom. 2:31.", "without natural affection, Rom. 1:31."),
+    # [en] stray plural
+    ("in a very different manners than", "in a very different manner than"),
+    # [en] OCR: alter→after
+    ("kingdom, alter his dwelling with the beasts", "kingdom, after his dwelling with the beasts"),
+    # [en] stray period
+    ("and thinking God. to be such a one", "and thinking God to be such a one"),
+    # [en] OCR: we→are
+    ("their affections, we often renewedly set agoing", "their affections, are often renewedly set agoing"),
+    # [en] OCR: Poor→Nor
+    ("Poor is our own interest", "Nor is our own interest"),
+    # [en] OCR: then→when
+    ("And that God loved us, then we had no love", "And that God loved us, when we had no love"),
+    # [en] OCR: of→or
+    ("in the view of contemplation of the divine", "in the view or contemplation of the divine"),
+    # [en] OCR: diving→dying
+    ("Christ's diving love to sinners", "Christ's dying love to sinners"),
+    # [en] OCR: bear→hear (“When they hear … what they hear”)
+    ("they may bear with a great deal of pleasure", "they may hear with a great deal of pleasure"),
+    # [en] OCR: fasting→feasting
+    ("instead of feeding and fasting their souls", "instead of feeding and feasting their souls"),
+    # [en] OCR: tail→for
+    ("as it were, paid tail beforehand", "as it were, paid for beforehand"),
+    # [en] OCR: dropped “in”
+    ("not an flexible obstinacy", "not an inflexible obstinacy"),
+    # [en] OCR: 1 Tim 6:3 “the doctrine which is according to godliness”
+    ("or doctrines according to goodness.", "or doctrines according to godliness."),
+    # [en] dropped “is”
+    ("and it impossible that any perfection", "and it is impossible that any perfection"),
+    # [en] OCR: been→seen (1 John 3:6)
+    ("Whosoever sinneth, hath not been him", "Whosoever sinneth, hath not seen him"),
+    # [en] OCR split: be loved→beloved
+    ("the individual persons who are be loved, expressly", "the individual persons who are beloved, expressly"),
+    # [en] OCR: an→any
+    ("the doctrinal explaining of an part of Scripture", "the doctrinal explaining of any part of Scripture"),
+    # [en] stray capital
+    ("and the other, and Judges what is right", "and the other, and judges what is right"),
+    # [en] OCR: out→but
+    ("false lusters, out in spite of all colors", "false lusters, but in spite of all colors"),
+    # [en] OCR: Agrcola→Agricola
+    ("Johannes Agrcola Eislebius", "Johannes Agricola Eislebius"),
+    # [en] OCR: biding→hiding
+    ("and the devil biding his own shape", "and the devil hiding his own shape"),
+    # [en] stray period after the book number
+    ("thou mayest.” 2. Cor. 4:11", "thou mayest.” 2 Cor. 4:11"),
+    # [en] OCR: one→me (John 17:8, quoted correctly earlier in the chapter)
+    ("that thou didst send one.” Where", "that thou didst send me.” Where"),
+    # [en] cit: duplicated 16; the quotation runs Gal 1:14-16
+    ("Gal. 1:14, 16, 16, “Being", "Gal. 1:14, 15, 16, “Being"),
+    # [en] stray plural
+    ("are of such a kinds as that", "are of such a kind as that"),
+    # [en] stray colon
+    ("declares concerning: God's glorious", "declares concerning God's glorious"),
+    # [en] stray plural
+    ("the prophecies of the Old Testaments and", "the prophecies of the Old Testament and"),
+    # [en] OCR: convection→conviction
+    ("their convection of the truth", "their conviction of the truth"),
+    # [en] OCR: decrees→degrees (parallel “degrees of clearness”)
+    ("a great variety of decrees of strength of faith", "a great variety of degrees of strength of faith"),
+    # [en] stray plural
+    ("they had a stronger reasons or", "they had a stronger reason or"),
+    # [en] OCR: indicted→inflicted
+    ("threatens there to be indicted on sinners", "threatens there to be inflicted on sinners"),
+    # [en] OCR: or→of
+    ("present government or the world", "present government of the world"),
+    # [en] typo: triple s
+    ("despicableness, and odiousnesss,", "despicableness, and odiousness,"),
+    # [en] cit: “And there shall ye remember your ways … committed” is Ezek
+    # 20:43
+    ("Ezek. 20:41, 42, “I will accept you", "Ezek. 20:41, 43, “I will accept you"),
+    # [en] OCR: is→it
+    ("and as is were congenial", "and as it were congenial"),
+    # [en] dropped “to”
+    ("he is willing clothe him", "he is willing to clothe him"),
+    # [en] cit: “humble himself as this little child” is Matt 18:4
+    ("as a little child, Matt. 8:4;", "as a little child, Matt. 18:4;"),
+    # [en] OCR: He→the
+    ("and beholds He respect which", "and beholds the respect which"),
+    # [en] OCR: in deserving→ill-deserving
+    ("against God, is in deserving and hateful", "against God, is ill-deserving and hateful"),
+    # [en] stray plural
+    ("loveliness of it is as nothings, in", "loveliness of it is as nothing, in"),
+    # [en] stray plural
+    ("in whom this is a first thoughts that", "in whom this is a first thought that"),
+    # [en] OCR: obey→they
+    ("in them that obey, under their affections", "in them that they, under their affections"),
+    # [en] cit: the hypocrites' fast (bowing the head as a bulrush) is Isa
+    # 58:5; 57:5 is child sacrifice
+    ("hypocritical Jews, Isa. 57:5,", "hypocritical Jews, Isa. 58:5,"),
+    # [en] OCR: one→me
+    ("humility; it seems to one I am as proud", "humility; it seems to me I am as proud"),
+    # [en] split word
+    ("have of them selves, arises", "have of themselves, arises"),
+    # [en] OCR: patently→patiently
+    ("and takes it patently;", "and takes it patiently;"),
+    # [en] stray capital
+    ("All Gracious affections do arise", "All gracious affections do arise"),
+    # [en] stray plural
+    ("inclined to before his conversions he may", "inclined to before his conversion he may"),
+    # [en] stray semicolon
+    ("before his conversion; was by his natural", "before his conversion, was by his natural"),
+    # [en] OCR: out→but
+    ("original fountain; out this water", "original fountain; but this water"),
+    # [en] closing quote typed as opener
+    ("midst of wolves. “The redemption", "midst of wolves.” The redemption"),
+    # [en] cit: “His eyes are as the eyes of doves” is Song 5:12
+    ("said of Christ, chap. 6:12: “His eyes", "said of Christ, chap. 5:12: “His eyes"),
+    # [en] split word
+    ("trust to their own under standing", "trust to their own understanding"),
+    # [en] OCR: oppositions→opposition,
+    ("There is indeed oppositions and vigorous", "There is indeed opposition, and vigorous"),
+    # [en] missing full stop
+    ("against the sins of others And therefore", "against the sins of others. And therefore"),
+    # [en] OCR: trespassed→trespasses, (Matt 6:14)
+    ("forgive men their trespassed your heavenly", "forgive men their trespasses, your heavenly"),
+    # [en] closing quote typed as opener
+    ("they shall obtain mercy. “2 Cor. 8:8", "they shall obtain mercy.” 2 Cor. 8:8"),
+    # [en] missing period in the abbreviation
+    ("the Lord.” Jam 1:27,", "the Lord.” Jam. 1:27,"),
+    # [en] colon for period in the abbreviation
+    ("synonymous expressions, Isa: 57:1,", "synonymous expressions, Isa. 57:1,"),
+    # [en] OCR: errors→terrors (vs. convictions of sin)
+    ("tendency to put an end to errors, but", "tendency to put an end to terrors, but"),
+    # [en] cit: “Shall not his excellency make you afraid?” is Job 13:11
+    ("holy awe and reverence: Job 13:2, “Shall", "holy awe and reverence: Job 13:11, “Shall"),
+    # [en] cit: weeping with them that weep — “Jesus wept” is John 11:35
+    ("with a Christian, John 11:25, Rom.", "with a Christian, John 11:35, Rom."),
+    # [en] stray plural
+    ("lessens that dispositions which arises", "lessens that disposition which arises"),
+    # [en] dropped “of”
+    ("modesty in the worship God as one sign", "modesty in the worship of God as one sign"),
+    # [en] stray period
+    ("at his word.” Ezra. 9:4,", "at his word.” Ezra 9:4,"),
+    # [en] cit: OCR 6S→62
+    ("Ezek. 16:61, 6S, 63.", "Ezek. 16:61, 62, 63."),
+    # [en] OCR: stay→way
+    ("tends the same stay, until", "tends the same way, until"),
+    # [en] OCR: then→them
+    ("disciples, charging then, that they", "disciples, charging them, that they"),
+    # [en] missing comma in a list
+    ("in close meditations secret prayer", "in close meditations, secret prayer"),
+    # [en] cit: “the fear of the LORD is his treasure” is Isa 33:6
+    ("treasure: Isa. 32:6, “The fear", "treasure: Isa. 33:6, “The fear"),
+    # [en] stray “as”
+    ("the beginning of his as work", "the beginning of his work"),
+    # [en] doubled word
+    ("appeared in that, however ever he seemed", "appeared in that, however he seemed"),
+    # [en] OCR: around→ground
+    ("“the first objective around of gracious", "“the first objective ground of gracious"),
+    # [en] OCR: chance→change
+    ("is liable, in chance of times, to forsake", "is liable, in change of times, to forsake"),
+    # [en] OCR: no→go
+    ("made willing to no through all", "made willing to go through all"),
+    # [en] OCR: he→be
+    ("and not he influenced by them", "and not be influenced by them"),
+    # [en] OCR: That→what
+    ("appears from That has been observed", "appears from what has been observed"),
+    # [en] OCR: hire→him
+    ("forsaking all for hire, so far", "forsaking all for him, so far"),
+    # [en] semicolon for period in the abbreviation
+    ("to this end. Eph; 2:10,", "to this end. Eph. 2:10,"),
+    # [en] OCR: chose→chosen (Eph 1:4 KJV)
+    ("According as he hath chose us in him", "According as he hath chosen us in him"),
+    # [en] split word
+    ("be holy, and with out blame before", "be holy, and without blame before"),
+    # [en] OCR: man→may
+    ("that the trees man bring forth fruit", "that the trees may bring forth fruit"),
+    # [en] cit: the woven robe of the ephod is Exod 39:22; 29:22 is the ram of
+    # consecration
+    ("so it was with the ephod, Exod. 29:22.", "so it was with the ephod, Exod. 39:22."),
+    # [en] OCR: tour→tower (Luke 14:28-30)
+    ("both begin and finish the tour:", "both begin and finish the tower:"),
+    # [en] OCR: be→he
+    ("Herod went far, but be loved his Herodias", "Herod went far, but he loved his Herodias"),
+    # [en] OCR: then→them
+    ("that riseth up within then; it dries", "that riseth up within them; it dries"),
+    # [en] colon for comma between verses
+    ("private interest: Phil. 2:21: 22,", "private interest: Phil. 2:21, 22,"),
+    # [en] OCR: then→than
+    ("which is better then all these common", "which is better than all these common"),
+    # [en] OCR: has→his
+    ("but yet in has practice is violent", "but yet in his practice is violent"),
+    # [en] cit: Isaiah 45 has 25 verses; “Look unto me, and be ye saved” is Isa
+    # 45:22
+    ("this profession, Isa. 45:29, to the end:", "this profession, Isa. 45:22, to the end:"),
+    # [en] cit: the swearing verse Rom 14:11 / Phil 2:10-11 quote is Isa
+    # 45:23-24
+    ("Isa. 19:18, chap. 14:23, 24, compared with Rom. 14:11", "Isa. 19:18, chap. 45:23, 24, compared with Rom. 14:11"),
+    # [en] cit: “He that hath my commandments, and keepeth them” is John 14:21
+    ("when Christ says, John 14:2, “He that hath", "when Christ says, John 14:21, “He that hath"),
+    # [en] OCR: high→him
+    ("he came kneeling to high and called", "he came kneeling to him and called"),
+    # [en] cit: duplicated 16; “Did not thy father eat and drink” opens Jer
+    # 22:15
+    ("is understanding.” Jer. 22:16, 16,", "is understanding.” Jer. 22:15, 16,"),
+    # [en] garbled closing quote ('' → ”)
+    ("respect to all thy commandments.'' Prov.", "respect to all thy commandments.” Prov."),
+    # [en] OCR: noise→wise (Rev 21:27)
+    ("there shall in no noise enter into it", "there shall in no wise enter into it"),
+    # [en] cit: “the day of … revelation of the righteous judgment of God” is
+    # Rom 2:5
+    ("righteous judgment of God, Rom. 2:6. And", "righteous judgment of God, Rom. 2:5. And"),
+    # [en] cit: Psalm 50 has 23 verses; “Whoso offereth praise glorifieth me”
+    # is Ps 50:23
+    ("Verse 92, &amp;c; Whoso offereth", "Verse 23, &amp;c; Whoso offereth"),
+    # [en] OCR: in→ill
+    ("did not behave himself so in before conversion", "did not behave himself so ill before conversion"),
+    # [en] stray s
+    ("Some may be ready to says this", "Some may be ready to say this"),
+    # [en] OCR: win→will
+    ("your assurance win be.", "your assurance will be."),
+    # [en] OCR: has→his
+    ("established about has good estate", "established about his good estate"),
+    # [en] OCR: he→be (2 Pet 1:2)
+    ("“Grace and peace he multiplied unto you", "“Grace and peace be multiplied unto you"),
+    # [en] typo: too→to (Isa 1:17)
+    ("cease to do evil, learn too do well", "cease to do evil, learn to do well"),
+    # [en] stray semicolon
+    ("and the depths of;man's heart", "and the depths of man's heart"),
+    # [en] stray comma (Matt 10:39)
+    ("for my sake, shall, find it.", "for my sake, shall find it."),
+    # [en] missing period in the abbreviation
+    ("his commandments.” Psal 34:11,", "his commandments.” Psal. 34:11,"),
+    # [en] stray capital
+    ("Lord, Lord, shall Enter into the kingdom", "Lord, Lord, shall enter into the kingdom"),
+    # [es] cit: Gal 5:21→5:22 (as en)
+    ("Espíritu de gracia; Gálatas 5:21:", "Espíritu de gracia; Gálatas 5:22:"),
+    # [es] cit: Prov 14:21→14:31 (as en)
+    ("Y Proverbios 14:21: «El que honra", "Y Proverbios 14:31: «El que honra"),
+    # [es] cit: Deut 6:4, 6→6:4, 5 (as en)
+    ("y cap. 6:4, 6: «Oye, Israel", "y cap. 6:4, 5: «Oye, Israel"),
+    # [es] cit: Col 1:34→1:24 (as en)
+    ("Colosenses 1:34. 1 Tesalonicenses", "Colosenses 1:24. 1 Tesalonicenses"),
+    # [es] cit: Phil 2:1, 7→2:17 (as en)
+    ("«se goza y se regocija», Filipenses 2:1, 7,", "«se goza y se regocija», Filipenses 2:17,"),
+    # [es] cit: 1 Tim 3, 4, 5→1:3, 4, 5 (as en)
+    ("la caridad, 1 Timoteo 3, 4, 5.", "la caridad, 1 Timoteo 1:3, 4, 5."),
+    # [es] cit: Ps 139:21, 29→21, 22 (as en)
+    ("Salmo 139:21, 29:", "Salmo 139:21, 22:"),
+    # [es] cit: Rom 8:36→8:26 (as en)
+    ("<sup>6</sup><sup>6</sup> Romanos 8:36.", "<sup>6</sup><sup>6</sup> Romanos 8:26."),
+    # [es] cit: Prov 25:24→25:14 (as en)
+    ("vida: Proverbios 25:24:", "vida: Proverbios 25:14:"),
+    # [es] cit: 1 Sam 31:21→26:21 (as en)
+    ("1 Samuel 24:16, 17, y 31:21,", "1 Samuel 24:16, 17, y 26:21,"),
+    # [es] cit: Prov 20:17→20:27 (as en)
+    ("Proverbios 20:17: “<i>El espíritu", "Proverbios 20:27: “<i>El espíritu"),
+    # [es] cit: Luke 2:27→2:37 (as en)
+    ("la profetisa: Lucas 2:27,", "la profetisa: Lucas 2:37,"),
+    # [es] cit: 1 Sam 25:16-19→24:16-19 (as en)
+    ("1 Samuel 25:16-19, y 26:21", "1 Samuel 24:16-19, y 26:21"),
+    # [es] cit: 2 Cor 4:5→4:4 (as en)
+    ("no creen», 2 Corintios 4:5.", "no creen», 2 Corintios 4:4."),
+    # [es] cit: Ezek 20:41, 42→41, 43 (as en)
+    ("Ezequiel 20:41, 42: «En olor", "Ezequiel 20:41, 43: «En olor"),
+    # [es] cit: Song 6:12→5:12 (as en)
+    ("de Cristo, cap. 6:12: «Sus ojos", "de Cristo, cap. 5:12: «Sus ojos"),
+    # [es] cit: Job 13:2→13:11 (as en)
+    ("reverencia: Job 13:2: «¿No", "reverencia: Job 13:11: «¿No"),
+    # [es] cit: John 11:25→11:35 (as en)
+    ("el cristiano, Juan 11:25, Romanos", "el cristiano, Juan 11:35, Romanos"),
+    # [es] cit: Isa 32:6→33:6 (as en)
+    ("piadoso: Isaías 32:6: «El temor", "piadoso: Isaías 33:6: «El temor"),
+    # [es] cit: Exod 29:22→39:22 (as en)
+    ("así era el efod, Éxodo 29:22.", "así era el efod, Éxodo 39:22."),
+    # [es] cit: Isa 45:29→45:22 (as en)
+    ("profesión, Isaías 45:29 hasta el final", "profesión, Isaías 45:22 hasta el final"),
+    # [es] cit: Isa 14:23, 24→45:23, 24 (as en)
+    ("Isaías 19:18, cap. 14:23, 24, comparado", "Isaías 19:18, cap. 45:23, 24, comparado"),
+    # [es] cit: John 14:2→14:21 (as en)
+    ("cuando Cristo dice, Juan 14:2, «El que", "cuando Cristo dice, Juan 14:21, «El que"),
+    # [es] cit: Rom 2:6→2:5 (as en)
+    ("justo juicio de Dios, Romanos 2:6. Y el", "justo juicio de Dios, Romanos 2:5. Y el"),
+    # [es] cit: Ps 50 “Verse 92”→23 (as en)
+    ("Versículo 92, etc.;", "Versículo 23, etc.;"),
+])
 # The paragraph ended on a stop the OCR read as a comma.
 BODY_CORRECTIONS["evangelization-of-the-world"]["paragraph_breaks"] = [
     ('foreign mission service.', 'In 1898 the members'),
