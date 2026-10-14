@@ -7607,6 +7607,33 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"fr/absolute-surrender-teens": {
+			"ground": "48397791fadab6df93349f5eee157b0546cfbc3a6cfed7a133d1d17aff84bd2e",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[144, 275, 456, 351],
+					[201, 341, 399, 417],
+					[126, 407, 474, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
+		},
 		"fr/all-of-grace": {
 			"ground": "1c9bdb35d02ae3c9fa0d528a870e445629a55f39a200014464be0effca918144",
 			"style": "revival",
@@ -7939,6 +7966,32 @@
 			"layout": "rail/rust",
 			"bar": 0
 		},
+		"fr/confessions-teens": {
+			"ground": "8bde87cc13db0a0d9f33241450d7a6c7e76a89dd1e89f59d7411f8fa68b500c0",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[110, 102, 490, 131]
+				],
+				"title": [
+					[60, 308, 540, 384],
+					[126, 374, 474, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"fr/corrie-ten-boom-a-life-children": {
 			"ground": "17f04d9f903158380192031bc6f28e5c183caaee49a6002a51d1546265f1687c",
 			"style": "young",
@@ -8198,6 +8251,33 @@
 				494
 			]
 		},
+		"fr/foxes-book-of-martyrs-teens": {
+			"ground": "81860a33eb54d864576148ea16c455164bbdc2b663f968033cdc147a2145e164",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[202, 102, 398, 131]
+				],
+				"title": [
+					[123, 275, 477, 351],
+					[177, 341, 423, 417],
+					[126, 407, 474, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
+		},
 		"fr/gleanings-among-the-sheaves": {
 			"ground": "34c21b0a45cba1af757a7731e0666f42b312f15d4efd47f174626f1bb6b8b996",
 			"style": "revival",
@@ -8231,6 +8311,33 @@
 			"middle": [
 				308,
 				487
+			]
+		},
+		"fr/grace-abounding-teens": {
+			"ground": "db9bc14ef285c92ba082806788e21126db98538ee39addea439fbac1682a27c2",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.5,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[177, 102, 423, 131]
+				],
+				"title": [
+					[174, 275, 426, 351],
+					[140, 341, 460, 417],
+					[126, 407, 474, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
 			]
 		},
 		"fr/grace-for-grace-2": {
@@ -8583,6 +8690,32 @@
 			"layout": "box/indigo",
 			"bar": 0
 		},
+		"fr/life-of-antony-teens": {
+			"ground": "61fda5a167c70da4ccd28857e3fd0760f1c5c407beefc8981f6141f7ac4a9366",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[43, 102, 557, 131]
+				],
+				"title": [
+					[102, 308, 498, 384],
+					[126, 374, 474, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"fr/life-of-pascal": {
 			"ground": "84bc72d5d16e144ddd91aa7a7780ef435b5701552787fb9739d915c2a3eb68c4",
 			"style": "press",
@@ -8824,6 +8957,33 @@
 				543
 			]
 		},
+		"fr/mortification-of-sin-teens": {
+			"ground": "5fa2f52988e097e9aa84a011f3cb5fafc0c5c4aefe145b4c0d82f8294fb01ab0",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[161, 275, 439, 351],
+					[179, 341, 421, 417],
+					[126, 407, 474, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
+		},
 		"fr/necessity-of-prayer": {
 			"ground": "58dbe05a961d5deb8908899892b01438b3f8d24f388e4cbf99429ff1baad4ea1",
 			"style": "devotional",
@@ -8843,6 +9003,32 @@
 			"scrim": 1,
 			"layout": "box/indigo",
 			"bar": 0
+		},
+		"fr/orthodoxy-teens": {
+			"ground": "533f7d5df2d8673b3ca88fadd11cd0abd8e80ca5964c8a16ff869535d5749dff",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[137, 102, 463, 131]
+				],
+				"title": [
+					[129, 308, 471, 384],
+					[126, 374, 474, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"fr/pandita-ramabai-a-life-children": {
 			"ground": "578b9b129d985b4c985ebfa5a1a3ee85f98bc9c2b5765d106832360a0930a968",
@@ -8923,6 +9109,32 @@
 			"middle": [
 				311,
 				484
+			]
+		},
+		"fr/pensees-teens": {
+			"ground": "d0a18b961c4fa60c031a5605b16f5a37dc2c8868ae9a26862fb116e6f0a1ac81",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[179, 308, 421, 384],
+					[126, 374, 474, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
 			]
 		},
 		"fr/pilgrims-progress": {
@@ -9411,6 +9623,33 @@
 				484
 			]
 		},
+		"fr/the-bruised-reed-teens": {
+			"ground": "b91b88fd3877367f4f5ff3b25920aebc24011ae7e845d5f39f17bc285aa02a74",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[153, 102, 447, 131]
+				],
+				"title": [
+					[147, 275, 453, 351],
+					[197, 341, 403, 417],
+					[126, 407, 474, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
+		},
 		"fr/the-christians-secret-of-a-happy-life-4": {
 			"ground": "78e2ee4d0a5719f9eb3f5106947b68924d5812a1fe276d93e84d084327d7766e",
 			"style": "devotional",
@@ -9522,6 +9761,33 @@
 				524
 			]
 		},
+		"fr/the-imitation-of-christ-teens": {
+			"ground": "103efefaa2668f8af4fc3fdd9a0204b14583a693b3c533c5855987794310c771",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[139, 102, 461, 131]
+				],
+				"title": [
+					[90, 275, 510, 351],
+					[111, 341, 489, 417],
+					[126, 407, 474, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
+		},
 		"fr/the-inner-chamber": {
 			"ground": "3afa4e71486fc4623e79bb8a04bf67855b95d846a9319510732d07d1fd541db9",
 			"style": "devotional",
@@ -9628,6 +9894,59 @@
 				493
 			]
 		},
+		"fr/the-practice-of-the-presence-of-god-teens": {
+			"ground": "ff488982925d7264b183489aa63b7396525e53e8603198c8f08afede149d9a0d",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[83, 275, 517, 351],
+					[90, 341, 510, 417],
+					[50, 407, 550, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
+		},
+		"fr/the-pursuit-of-god-teens": {
+			"ground": "9e3348f6de7fd186ed7aad08a9af785b98b18d6e87bb6d09585a359c37bc55e6",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[193, 102, 407, 131]
+				],
+				"title": [
+					[50, 308, 550, 384],
+					[50, 374, 550, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"fr/the-reformed-pastor": {
 			"ground": "6dbc7bc4518fdbb7114a688244927e7b4fa4cc832f0e13f9ba34fbf9f4ad29c0",
 			"style": "press",
@@ -9662,6 +9981,32 @@
 			"middle": [
 				295,
 				500
+			]
+		},
+		"fr/the-secret-of-guidance-teens": {
+			"ground": "17086de139769b3e3326b5c5c1faa0957b9c507be00d29c5589c9715c35c0171",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[197, 102, 403, 131]
+				],
+				"title": [
+					[58, 308, 542, 384],
+					[126, 374, 474, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
 			]
 		},
 		"fr/the-unselfishness-of-god": {
@@ -9699,6 +10044,32 @@
 			"scrim": 1,
 			"layout": "wash/ochre",
 			"bar": 0
+		},
+		"fr/the-way-to-god-teens": {
+			"ground": "fa55cbbb3ec60a9c209dc869d0b969390dfcbe3fa8608b284a62b2fba2ef43d2",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[76, 308, 524, 384],
+					[50, 374, 550, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"fr/things-as-they-are": {
 			"ground": "9604d7927dca66d7381115789f4e49b8d6b8a0912ff4df0a3df48237493a3a0c",

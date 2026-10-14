@@ -1,0 +1,215 @@
+{
+ "kind": "book",
+ "slug": "foxes-book-of-martyrs-teens",
+ "language": "fr",
+ "note": [
+  "The English epigraphs quote the KJV; each French epigraph is Louis Segond (1910) verbatim — the whole verse where the English quotes the whole verse, the matching Segond portion where it quotes part (Matt 10:28, Acts 5:29, Matt 7:12, Heb 13:3) — with the “(KJV)” label dropped, line-initial capitals of poetic lines lowered and a verse-final comma/semicolon closed with a full stop, as the shipped teen editions do. Psalm 51:1 (English) is Psaume 51:3 in Segond and is cited so; the rows keep English numbering.",
+  "Foxe’s archaic English quotations (Polycarp, Hus, Luther at Worms, Tyndale, Jane Grey, Latimer, Cranmer, Foxe’s 1575 plea) are rendered in a slightly classical French; Latimer’s “play the man” is « conduisez-vous en homme », Luther’s “Here I stand” is the traditional « Me voici, je ne puis faire autrement ». Wycliffe’s bedside retort is shaped to echo Psaume 118:17 (« Je ne mourrai pas, je vivrai »), which is what it alludes to (self_rendered). In ch. 7 the English phrases “Let there be light” and “the powers that be” are kept in English with their Segond wording glossed (Genesis 1:3, Romans 13:1, mined).",
+  "Names in usual French forms: Polycarpe, Smyrne, Perpétue, Félicité, Révocat, Blandine, Lyon, Jean Hus, John Wyclif (French spelling), Charles Quint, Anvers, Vilvorde, Édouard VI, Marie, Élisabeth, Cantorbéry, Rangoun, Birmanie; Ponticus, Lady Jane Grey, Ridley, Latimer, Cranmer and the Quakers’ names unchanged. The Q&A’s “The full book is also available” became « disponible (en anglais) » since no French full edition exists.",
+  "Title « Le Livre des martyrs (Pour ados) » is 32 characters — over the 28-char rail limit; the shorter « Martyrs de Foxe (Pour ados) » (27) is the fallback if the cover needs it. Narration in passé simple, reader addressed with « tu » as in a-retrospect-teens. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Matthew 16:18",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 16:18b",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 3,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Timothy 4:12",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Timothy 4:12",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 6
+  },
+  {
+   "reference": "Psalm 119:130",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 118:17",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 4
+  },
+  {
+   "reference": "Psalm 119:130",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 10:28a",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 10:28a",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 9
+  },
+  {
+   "reference": "Acts 5:29b",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 5:29b",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 119:105",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Genesis 1:3",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 13:1",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 51:1",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 51:1a",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 5:14",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 5:14",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 9
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 7:59",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 7:12a",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 7:12a",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 7
+  },
+  {
+   "reference": "Hebrews 13:3a",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hebrews 13:3a",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 8
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hebrews 12:1a",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 2,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hebrews 12:1b",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 12:2a",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

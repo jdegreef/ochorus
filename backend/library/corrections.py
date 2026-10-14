@@ -11645,3 +11645,13 @@ BODY_CORRECTIONS.setdefault("power-from-on-high-new-testament", {}).setdefault("
     ("let us as make ready for the beacon blaze",
      "let us make ready for the beacon blaze"),
 ])
+
+
+# Found while translating Pensées (For Teens) to French (2026-10-13): Pascal
+# wrote « en faisant dire des messes » (B. 233; Trotter "having masses
+# said") — having Masses said, not attending Mass.
+BODY_CORRECTIONS.setdefault("pensees-teens", {}).setdefault("replacements", []).extend([
+    # [en]
+    ("taking holy water and attending Mass",
+     "taking holy water and having Masses said"),
+])
