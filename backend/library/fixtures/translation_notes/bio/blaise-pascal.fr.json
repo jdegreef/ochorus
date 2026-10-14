@@ -1,0 +1,20 @@
+{
+ "kind": "bio",
+ "slug": "blaise-pascal",
+ "language": "fr",
+ "job_issue": 6040,
+ "references": [
+  {
+   "reference": "Psalm 119:16",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}
