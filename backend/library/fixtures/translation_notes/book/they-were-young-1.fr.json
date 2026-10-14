@@ -1,0 +1,100 @@
+{
+ "kind": "book",
+ "slug": "they-were-young-1",
+ "language": "fr",
+ "job_issue": null,
+ "note": [
+  "Every quotation is Louis Segond 1910, pasted byte-for-byte by script where Segond says what the author quotes (mined), and rendered from the English where the author adapts, re-persons or blends a verse (self_rendered). Rows are the translators' per-quotation reports; every mined fragment was re-verified as a substring of both the Segond verse and the French chapter.",
+  "Verse numbers are cited as Segond numbers them (Psalm headings count as verse 1; Ecclesiastes 12 starts two verses earlier than the KJV). AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "1 Timothy 4:12",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 45:22",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Isaiah 45:22",
+   "status": "mined",
+   "block_index": 18,
+   "chapter_order": 2,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Peter 2:7",
+   "status": "self_rendered",
+   "block_index": 28,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Jeremiah 45:5",
+   "status": "mined",
+   "block_index": 34,
+   "chapter_order": 2,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Jeremiah 23:6",
+   "status": "mined",
+   "block_index": 30,
+   "chapter_order": 4,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 23:2",
+   "status": "self_rendered",
+   "block_index": 49,
+   "chapter_order": 4
+  },
+  {
+   "reference": "John 14:6",
+   "status": "mined",
+   "block_index": 27,
+   "chapter_order": 5,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 8:5",
+   "status": "mined",
+   "block_index": 18,
+   "chapter_order": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 8:6",
+   "status": "mined",
+   "block_index": 18,
+   "chapter_order": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 16:26",
+   "status": "mined",
+   "block_index": 13,
+   "chapter_order": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Daniel 5:27",
+   "status": "mined",
+   "block_index": 22,
+   "chapter_order": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Genesis 28:17",
+   "status": "mined",
+   "block_index": 32,
+   "chapter_order": 7,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

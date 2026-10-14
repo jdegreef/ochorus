@@ -8219,6 +8219,68 @@
 				482
 			]
 		},
+		"fr/anchored-1": {
+			"ground": "c9bc646fdeab14213f52b4a7db669756f3687bdf001ebdfabe5e0f0d96803197",
+			"style": "originals",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 269, 308, 313],
+					[209, 347, 391, 423]
+				],
+				"subtitle": [
+					[96, 481, 504, 509],
+					[131, 509, 470, 537]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				537
+			]
+		},
+		"fr/anchored-2": {
+			"ground": "f733805cf8c70dfe09f831263600edc1c8ed0cd26e5eb17b475f02bf1160df9c",
+			"style": "originals",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 269, 311, 313],
+					[209, 347, 391, 423]
+				],
+				"subtitle": [
+					[139, 481, 461, 509],
+					[156, 509, 444, 537]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				537
+			]
+		},
 		"fr/answers-to-prayer": {
 			"ground": "30fb3e30e8f8add22f700e97564c5ada92587608fe5cb9a174bbb333dfbd4d8a",
 			"style": "revival",
@@ -9701,6 +9763,36 @@
 			"layout": "split/navy",
 			"bar": 0.05
 		},
+		"fr/on-loving-god": {
+			"ground": "b3d598cea04c02587769b124238cf9c7caab4e11539219ce6c75ba0067d13bcd",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[85, 102, 515, 131]
+				],
+				"title": [
+					[138, 314, 462, 376],
+					[188, 360, 412, 422]
+				],
+				"subtitle": [
+					[188, 451, 412, 472]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				323,
+				472
+			]
+		},
 		"fr/on-the-incarnation": {
 			"ground": "8373822e5947b828da9b04a127cf1bbdbfa2e655083a8dcfbbad5a1c7752bbdb",
 			"style": "inscriptional",
@@ -11015,6 +11107,68 @@
 			"middle": [
 				313,
 				482
+			]
+		},
+		"fr/they-were-young-1": {
+			"ground": "f9a25e170ebc7accd93d97d5639b9ebd8617496f1c2a2dcbc92c2eee60a38109",
+			"style": "originals",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 269, 308, 313],
+					[47, 347, 553, 423]
+				],
+				"subtitle": [
+					[189, 481, 411, 509],
+					[142, 509, 458, 537]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				537
+			]
+		},
+		"fr/they-were-young-2": {
+			"ground": "7e17bec928a567a9e1e90cea194ce312fcd136d567609c4b83ce7818c1362bbc",
+			"style": "originals",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 269, 311, 313],
+					[47, 347, 553, 423]
+				],
+				"subtitle": [
+					[149, 481, 451, 509],
+					[152, 509, 448, 537]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				537
 			]
 		},
 		"fr/things-as-they-are": {
@@ -20147,7 +20301,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.55,
+			"scrim": 0.6,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
