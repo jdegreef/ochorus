@@ -603,3 +603,11 @@ RETIRED_PLANS = {
         for n in (1, 2, 3)
     },
 }
+
+
+def all_plan_sources() -> dict[str, tuple[list[str], list[str]]]:
+    """Every plan slug → the (book slugs, article slugs) it needs, launch and
+    curated alike: what ``seed_plans`` waits on before building it anywhere."""
+    sources = {slug: ([book], []) for slug, book, *_ in LAUNCH_PLANS}
+    sources.update({slug: plan_sources(items) for slug, _title, _desc, items in CURATED_PLANS})
+    return sources

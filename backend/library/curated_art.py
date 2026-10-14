@@ -1852,6 +1852,11 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "The tree of life in the sky over Paul's ship sailing for a far city: "
         "to the ends of the earth, and all things made new.",
     ),
+    "tell-me-the-story-9": Original(
+        "07f457869aa19e6bf8da072d7d5445f8dbc24571f8558b13d9ac6a36da793402",
+        "David's lyre in an evening sky over still waters and two sheep in a "
+        "green pasture: the songs and wise words of the Bible.",
+    ),
     # The Big Story (2026-10-13), the whole Bible for teens.
     "the-big-story": Original(
         "46a69c7c883ce63b7fa11a869f96131f0fa62c42b4008e5f66b8e05f5d94f334",

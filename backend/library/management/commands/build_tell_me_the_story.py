@@ -564,6 +564,69 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
         ],
     },
+    9: {
+        "publication_year": 2026,
+        "title": "Tell Me the Story – Book 9: Songs and Wise Words",
+        "subtitle": "A Companion: the Psalms, Proverbs, Job and Ecclesiastes",
+        "cover_url": "/covers/art/tell-me-the-story-9.jpg",
+        "cover_color": covers.ink_safe("#5a2f5a"),  # an evening song
+        "description": (
+            "A companion to Tell Me the Story for children aged 6 to 10: nineteen "
+            "chapters on the Bible's songs and wise words, each short enough to "
+            "read aloud at bedtime. The shepherd's psalm, \"fearfully and "
+            "wonderfully made\", \"when I am afraid\", \"be still\", songs for sad "
+            "days, the ant, a gentle answer, a friend who loves at all times, Job, "
+            "and a time for everything. Every chapter ends with a prayer and three "
+            "questions to talk about together."
+        ),
+        "about_html": (
+            "<p>Tell Me the Story is an original Ochorus storybook Bible for "
+            "children aged 6 to 10. Its eight books tell the Bible’s story from "
+            "creation to the new creation. Book 9, “Songs and Wise Words”, is a "
+            "companion to them: it opens the books in the middle of the Bible "
+            "that are not mostly stories, the Psalms, Proverbs, Job and "
+            "Ecclesiastes.</p>"
+            "<p>Each chapter takes one song or one wise saying. Where the Bible "
+            "gives the story behind a psalm, like David in Gath behind Psalm 56, "
+            "it tells it; where a proverb needs picturing, it imagines a child "
+            "today and says so. There are happy songs and sad ones, because the "
+            "Psalms teach us to bring God all our feelings; the wisdom of "
+            "Proverbs on work, words and friends; Job, told gently; and "
+            "Ecclesiastes’ “Remember your Creator in the days of your youth”. "
+            "Where the New Testament itself links a passage to Jesus, as John "
+            "10:11 does with the shepherd, a line says so.</p>"
+            "<p>Each chapter takes about four minutes to read aloud and ends with "
+            "a prayer and three questions to talk about together, with answers "
+            "for the grown-up reading along. Many chapters invite a child to "
+            "learn a verse by heart. The other books are not required.</p>"
+        ),
+        "qa": [
+            {
+                "question": "What is in Book 9 of Tell Me the Story?",
+                "answer": "Nineteen chapters on the Bible's songs and wise words: Psalms 23, 139, 19 and 8, 56, 46, 91, 100 and 103, 42, 150 and 1; Proverbs on wisdom, the ant, gentle words, trusting God and friendship; two chapters on Job; and two on Ecclesiastes.",
+            },
+            {
+                "question": "Why is it a companion rather than part of the story?",
+                "answer": "The eight main books follow the Bible's story from creation to the new creation. The Psalms, Proverbs, Job and Ecclesiastes are mostly songs, poems and sayings, so they have a book of their own that can be read alongside the others at any time.",
+            },
+            {
+                "question": "Does it make up stories about the Bible?",
+                "answer": "No. Where the Bible tells the story behind a psalm, the chapter tells it. Where a proverb is easier to understand with an example, the chapter imagines a child today and says clearly that it is imagining. Every verse quoted with its reference is word for word from the Berean Standard Bible.",
+            },
+            {
+                "question": "Are there sad psalms in it?",
+                "answer": "Yes. Psalm 42 and Psalm 56 are honest songs from people who were sad or afraid, and the book explains that God put them in the Bible so that we can bring Him all our feelings. Job's story is told gently too.",
+            },
+            {
+                "question": "Is it good for learning verses by heart?",
+                "answer": "Yes. Many chapters invite a child to learn a verse, such as \"The Lord is my shepherd\", \"When I am afraid, I put my trust in You\" and \"Trust in the Lord with all your heart\".",
+            },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Every verse quoted with its reference is word for word from the Berean Standard Bible (BSB), which is in the public domain.",
+            },
+        ],
+    },
 }
 
 _QUESTION = re.compile(r"^- Q: (.+)$")

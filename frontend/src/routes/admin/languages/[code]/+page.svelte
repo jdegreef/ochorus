@@ -4,9 +4,11 @@
 	import { auth } from '$lib/auth.svelte';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
+	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import LanguageSettingsCard from '$lib/components/LanguageSettingsCard.svelte';
 	import { checkLabels } from '$lib/languageHealth';
 	import { workPath } from '$lib/editionHref';
+	import type { WorkKind } from '$lib/reading-schema';
 	import {
 		type SourceType
 	} from '$lib/library-public';
@@ -20,6 +22,10 @@
 		getAdminLanguageReadiness,
 		getAdminLanguageWanted,
 		type AdminWantedWork,
+		getAdminLanguageTargets,
+		type AdminLanguageTargets,
+		type AdminTargetItem,
+		type AdminTargetKind,
 		updateAdminLanguageThresholds,
 		type AdminLanguageReadiness,
 		type LanguageThresholds,
@@ -73,6 +79,53 @@
 			if (code === data.code) wantedError = e instanceof Error ? e.message : 'Could not load what readers are asking for.';
 		}
 	}
+
+	// Progress on the named Level 1 set (library/content_targets.py). Its own
+	// fetch, like the panels above; a late answer for a language the admin has
+	// left is dropped, since its Translate buttons queue jobs for data.code.
+	let targets = $state<AdminLanguageTargets | null>(null);
+	let targetsError = $state<string | null>(null);
+
+	async function loadTargets(code: string) {
+		targets = null;
+		targetsError = null;
+		try {
+			const res = await getAdminLanguageTargets(code);
+			if (code !== data.code) return;
+			targets = res;
+			if (location.hash === '#sec-targets') {
+				await tick();
+				document.getElementById('sec-targets')?.scrollIntoView();
+			}
+		} catch (e) {
+			if (code === data.code) targetsError = e instanceof Error ? e.message : 'Could not load the Level 1 targets.';
+		}
+	}
+
+	const targetsTotal = $derived(
+		targets
+			? {
+					done: targets.kinds.reduce((n, k) => n + k.done, 0) + (targets.topics?.done ?? 0),
+					target: targets.kinds.reduce((n, k) => n + k.target, 0) + (targets.topics?.target ?? 0)
+				}
+			: null
+	);
+	/** A kind's missing items, still grouped, empty groups dropped. */
+	const missingGroups = (groups: { label: string; items: AdminTargetItem[] }[]) =>
+		groups
+			.map((g) => ({ label: g.label, items: g.items.filter((i) => !i.done) }))
+			.filter((g) => g.items.length);
+	/** Can a job be filed for this missing item? Not for a drafted edition, a
+	 *  work under copyright, or a plan whose sources this language still lacks:
+	 *  seed_plans won't build that plan here until they exist. */
+	const canFile = (i: AdminTargetItem) => !i.drafted && !i.blocked && !i.waiting_on?.length;
+	/** What "Queue all" may file. */
+	const queueable = (groups: { label: string; items: AdminTargetItem[] }[]) =>
+		groups.flatMap((g) => g.items.filter((i) => !i.done && canFile(i)));
+	/** Where a Level 1 item lives. Plans aren't a WorkKind; the rest go through
+	 *  workPath, so their routes (an article's trailing slash) stay in one place. */
+	const targetHref = (k: AdminTargetKind, slug: string) =>
+		k.job_type === 'plan' ? `/plans/${slug}` : workPath(k.job_type as WorkKind, slug);
 
 	async function loadReadiness(code: string) {
 		readiness = null;
@@ -184,6 +237,7 @@
 			void loadJobs();
 			void loadReadiness(data.code);
 			void loadWanted(data.code);
+			void loadTargets(data.code);
 		}
 	);
 	const detail = $derived(language.data);
@@ -340,7 +394,8 @@
 		...(detail && !detail.is_source
 			? [
 					{ id: 'sec-readiness', label: 'Readiness', count: null as number | null },
-					{ id: 'sec-wanted', label: 'Asked for', count: wanted?.works.length ?? null }
+					{ id: 'sec-wanted', label: 'Asked for', count: wanted?.works.length ?? null },
+					{ id: 'sec-targets', label: 'Level 1', count: null as number | null }
 				]
 			: []),
 		{ id: 'sec-books', label: 'Books', count: shown.books.length },
@@ -789,6 +844,114 @@
 						</ul>
 						<p class="mt-3 text-micro text-muted">
 							Counts readers who set their site language to {d.language.name}. Readers still on English aren't counted.
+						</p>
+					{/if}
+				</section>
+
+				<!-- Level 1 content targets: the named set of works every language
+				     should hold (library/content_targets.py). One meter per kind, then
+				     each kind's missing items, queued through the same controls as the
+				     "Next to work on" lists. -->
+				<section
+					id="sec-targets"
+					class="mb-6 scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
+				>
+					<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+						<h2 class="text-h3">Level 1 targets</h2>
+						{#if targetsTotal}
+							<span class="text-small tabular-nums text-muted"
+								>{fmt(targetsTotal.done)} of {fmt(targetsTotal.target)} · {pct(targetsTotal.done, targetsTotal.target)}%</span
+							>
+						{/if}
+					</div>
+					{#if targetsError}
+						<p class="text-small text-warning">{targetsError}</p>
+					{:else if !targets}
+						<p class="text-small text-muted">Loading…</p>
+					{:else}
+						<div class="grid grid-cols-2 gap-x-5 gap-y-3 sm:grid-cols-3 lg:grid-cols-6">
+							{#each targets.kinds as k (k.key)}
+								<div class="min-w-0">
+									<ProgressBar percent={pct(k.done, k.target)} label="{k.label}: {k.done} of {k.target}" size="md" />
+									<p class="mt-1 text-small text-text">
+										{k.label} <span class="tabular-nums text-muted">{fmt(k.done)}/{fmt(k.target)}</span>
+									</p>
+									{#if k.done && k.key !== 'plans'}
+										<p class="text-micro tabular-nums text-muted">{fmt(k.reviewed)} reviewed</p>
+									{/if}
+								</div>
+							{/each}
+							{#if targets.topics}
+								<div class="min-w-0">
+									<ProgressBar
+										percent={pct(targets.topics.done, targets.topics.target)}
+										label="Topics: {targets.topics.done} of {targets.topics.target}"
+										size="md"
+									/>
+									<p class="mt-1 text-small text-text">
+										<a href="#sec-topics" class="hover:text-accent">Topics</a>
+										<span class="tabular-nums text-muted">{fmt(targets.topics.done)}/{fmt(targets.topics.target)}</span>
+									</p>
+									<p class="text-micro text-muted">all shelves</p>
+								</div>
+							{/if}
+						</div>
+
+						{#if queueError}
+							<p class="mt-3 text-small text-warning">{queueError}</p>
+						{/if}
+						<div class="mt-4 flex flex-col gap-1 border-t border-border pt-3">
+							{#each targets.kinds as k (k.key)}
+								{@const groups = missingGroups(k.groups)}
+								{#if groups.length}
+									<details class="group">
+										<summary class="flex cursor-pointer list-none items-baseline justify-between gap-3 py-1.5">
+											<span class="flex items-baseline gap-2">
+												<span class="inline-block text-muted transition-transform group-open:rotate-90" aria-hidden="true">›</span>
+												<span class="font-semibold text-text">{k.label} still missing</span>
+												<span class="text-small tabular-nums text-muted">({fmt(k.target - k.done)})</span>
+											</span>
+										</summary>
+										<!-- Outside the summary, so pressing it doesn't fold the list. -->
+										<div class="flex justify-end">{@render bulkQueueControl(k.job_type, queueable(k.groups))}</div>
+										<div class="mb-3 mt-1 grid gap-x-8 gap-y-3 md:grid-cols-2">
+											{#each groups as g (g.label)}
+												<div class="min-w-0">
+													{#if g.label}<p class="section-label mb-1">{g.label}</p>{/if}
+													<ul class="space-y-1.5">
+														{#each g.items as i (i.slug)}
+															<li class="flex items-center justify-between gap-3 text-body">
+																<span class="min-w-0">
+																	<a href={targetHref(k, i.slug)} class="block truncate text-accent hover:underline">{i.title}</a>
+																	{#if i.author && k.key !== 'sermons'}<span class="text-small text-muted">{i.author}</span>{/if}
+																	{#if i.waiting_on?.length}
+																		<span class="block text-small text-muted" title={i.waiting_on.join(', ')}
+																			>waits on {i.waiting_on.length} source{i.waiting_on.length === 1 ? '' : 's'}</span
+																		>
+																	{/if}
+																</span>
+																{#if i.drafted}
+																	<span class="shrink-0 text-small text-warning" title="An edition exists but is unpublished">unpublished</span>
+																{:else if i.blocked}
+																	<span class="shrink-0 text-small text-muted" title="Under copyright, so it can't be translated">Under copyright</span>
+																{:else if !canFile(i)}
+																	<span class="shrink-0 text-small text-muted" title="Translate its sources first">Sources first</span>
+																{:else}
+																	{@render queueControl(k.job_type, i.slug)}
+																{/if}
+															</li>
+														{/each}
+													</ul>
+												</div>
+											{/each}
+										</div>
+									</details>
+								{/if}
+							{/each}
+						</div>
+						<p class="mt-3 text-micro text-muted">
+							An item counts once {d.language.name} has a published edition, reviewed or not. Edit the set in
+							<code>backend/library/content_targets.py</code>.
 						</p>
 					{/if}
 				</section>
