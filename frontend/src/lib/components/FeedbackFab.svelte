@@ -12,9 +12,9 @@
 	 *
 	 * On a wide screen it says what it is — "+ Send feedback" — in the margin
 	 * beside the page column, never wider than that margin; a bare "+" in the
-	 * corner of a browse page read as "add something". And while it shows, the
-	 * site footer keeps a clear strip at its foot so the button never sits on
-	 * the page's last line.
+	 * corner of a browse page read as "add something". Once the footer's own
+	 * "Send feedback" link scrolls into view it steps aside ($lib/footerFeedback),
+	 * so it never floats over the footer's last rows duplicating that link.
 	 */
 	import { page } from '$app/stores';
 	import { auth } from '$lib/auth.svelte';
@@ -22,6 +22,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { pageWidth } from '$lib/pageWidth.svelte';
 	import FeedbackDialog from '$lib/components/FeedbackDialog.svelte';
+	import { footerFeedback } from '$lib/footerFeedback.svelte';
 
 	const t = i18n.t;
 	let open = $state(false);
@@ -30,6 +31,7 @@
 		auth.enabled &&
 			!!auth.user &&
 			!readerUi.focus &&
+			!footerFeedback.reached &&
 			!($page.route.id ?? '').startsWith('/admin')
 	);
 </script>
@@ -126,14 +128,6 @@
 			font-weight: 600;
 			white-space: nowrap;
 			text-overflow: ellipsis;
-		}
-	}
-	/* Room under the footer's last row (the copyright line sits at the
-	   reading end, exactly where the button floats) while the button shows.
-	   Phones with the tab bar hide the button, so only from sm up. */
-	@media (min-width: 640px) {
-		:global(:root:has(.fb-fab) .site-footer) {
-			padding-bottom: 4.5rem;
 		}
 	}
 	/* Phones with the tab bar carry the "+" in its centre slot (TabBar.svelte),
