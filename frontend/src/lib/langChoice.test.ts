@@ -85,7 +85,7 @@ const SET_ALLOWED = new Set(['lib/auth.svelte.ts']);
  * all omit it. The footer strip advertises; Settings is the full list.
  */
 const SWITCHERS = [
-	'src/routes/+layout.svelte', // footer language strip
+	'src/lib/components/SiteFooter.svelte', // footer language strip
 	'src/routes/settings/+page.svelte' // Settings -> Language
 ];
 
