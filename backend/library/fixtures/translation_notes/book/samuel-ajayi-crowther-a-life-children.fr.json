@@ -1,0 +1,172 @@
+{
+ "kind": "book",
+ "slug": "samuel-ajayi-crowther-a-life-children",
+ "language": "fr",
+ "note": [
+  "Every chapter epigraph in the English is a simplified children's paraphrase cited by chapter only (“— from Psalm 139”), so the French renders that simplified sense in plain child-level French (« — d’après Psaume 139 ») rather than pasting the archaic Louis Segond 1910 wording, following pandita-ramabai-a-life-children.fr; all epigraphs and body echoes are self_rendered. Three direct quotations in the narrative use Segond verbatim and are marked mined: Luke 4:18 (« proclamer aux captifs la délivrance »), Psalm 10:14 (« C’est toi qui viens en aide à l’orphelin ») and 1 Samuel 3:18b (Crowther’s « C’est l’Éternel, qu’il fasse ce qui lui semblera bon ! »).",
+  "Matthew 6:13 keeps « délivre-nous du mal » (the familiar French Lord’s Prayer) instead of Segond’s « du malin », so that the epigraph matches Crowther’s « délivré du mal » in the chapter body. Crowther’s Pleiad remark (Psalm 115:1 echo) is rendered from the English wording.",
+  "Title keeps the full name, « Samuel Ajayi Crowther (Pour enfants) » (37 characters), as the sibling am/sw editions and other person-named French children’s editions do; attribution follows elisabeth-elliot-a-life-children.fr (series « Portraits de courage »). Chapter 8 title shortened to « Le Notre Père à la bougie ».",
+  "Names and terms: ship names kept as in English (Myrmidon, Iphigenia, Pleiad, Dayspring); Yoruba names and places unchanged (Osogun, Abeokuta, Onitsha, Jebba, Nupe → « le nupe »); Canterbury → Cantorbéry; “My Lord” → « Monseigneur »; “sevenpence-halfpenny” → « sept pence et demi »; Crowther’s mother keeps the baptismal name Hannah; “minister” → « pasteur ». AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 139:16",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 0
+  },
+  {
+   "reference": "Psalm 139:16",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 5
+  },
+  {
+   "reference": "Genesis 50:20",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 0
+  },
+  {
+   "reference": "Genesis 50:20",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 6:13",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 6:13",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 5
+  },
+  {
+   "reference": "Psalm 124:7",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 4:18",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 0
+  },
+  {
+   "reference": "Acts 16:14",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 3
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 6
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 0
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 6
+  },
+  {
+   "reference": "Psalm 10:14",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 0
+  },
+  {
+   "reference": "Psalm 10:14",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 3,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 2:8",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 0
+  },
+  {
+   "reference": "Acts 2:6",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 6
+  },
+  {
+   "reference": "2 Corinthians 4:8-9",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 0
+  },
+  {
+   "reference": "Psalm 115:1",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 1
+  },
+  {
+   "reference": "1 Samuel 2:8",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 0
+  },
+  {
+   "reference": "1 Samuel 3:18b",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 2,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Samuel 2:8",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 6
+  },
+  {
+   "reference": "1 Kings 17:6",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 0
+  },
+  {
+   "reference": "1 Kings 17:6",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 3
+  },
+  {
+   "reference": "Psalm 4:8",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 0
+  },
+  {
+   "reference": "Psalm 4:8",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 5
+  }
+ ]
+}

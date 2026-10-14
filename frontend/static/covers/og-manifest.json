@@ -8103,6 +8103,32 @@
 				552
 			]
 		},
+		"fr/amy-carmichael-a-life-children": {
+			"ground": "65e42865de19ea42971400cd18cc451fec439ba9c2ab9bbf39ed353caa8c13de",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[144, 102, 456, 131]
+				],
+				"title": [
+					[88, 310, 512, 385],
+					[122, 371, 478, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
+		},
 		"fr/amy-carmichael-a-life-teens": {
 			"ground": "d95b5576cea78ad6b1ccc9fcb2118ec5e4afc27e25732490b338a9ef8e5dda02",
 			"style": "originals",
@@ -8216,6 +8242,68 @@
 				564
 			]
 		},
+		"fr/brave-for-god-3": {
+			"ground": "663f5e211bf6f2107f9d94a2f6f6de084695648a44ec6a61bb715aa14fa99774",
+			"style": "young",
+			"volume": "3",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 243, 310, 287],
+					[93, 318, 507, 393],
+					[95, 379, 505, 454]
+				],
+				"subtitle": [
+					[160, 508, 440, 536],
+					[145, 536, 455, 564]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				231,
+				564
+			]
+		},
+		"fr/brave-for-god-4": {
+			"ground": "f080b930ce6598bdc7c6ece4c5f3158f4820521072d495fc20431d00ca276986",
+			"style": "young",
+			"volume": "4",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 243, 311, 287],
+					[93, 318, 507, 393],
+					[69, 379, 531, 454]
+				],
+				"subtitle": [
+					[160, 508, 440, 536],
+					[145, 536, 455, 564]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				231,
+				564
+			]
+		},
 		"fr/c-s-lewis-a-life-children": {
 			"ground": "17b9a8668b4b630d4a49a43d9d316aebc4dc8d1a83527fffe052e6e70e7ff84b",
 			"style": "young",
@@ -8268,6 +8356,32 @@
 			"middle": [
 				313,
 				482
+			]
+		},
+		"fr/c-t-studd-a-life-children": {
+			"ground": "e834049c025bc03569b1bc6be36978480d06ad7fbea4dad16ed56c4e073ec4d1",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[163, 310, 437, 385],
+					[122, 371, 478, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
 			]
 		},
 		"fr/c-t-studd-a-life-teens": {
@@ -8437,6 +8551,32 @@
 			"scrim": 1,
 			"layout": "framed-light",
 			"bar": 0
+		},
+		"fr/david-livingstone-a-life-children": {
+			"ground": "739fc0763fe2cabd71350716b0de6ece5ae3c957c80cef1b64c751b071dfb751",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[120, 102, 480, 131]
+				],
+				"title": [
+					[78, 310, 522, 385],
+					[122, 371, 478, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"fr/david-livingstone-a-life-teens": {
 			"ground": "a8baf50ff0063e563e5c3592eab822c45dc423f42a870680eb8692333ba2a437",
@@ -9889,6 +10029,33 @@
 			"middle": [
 				261,
 				534
+			]
+		},
+		"fr/samuel-ajayi-crowther-a-life-children": {
+			"ground": "cf82a187c9ee2f6be04590277c1fcecfea1107fd7d682f8ef729e0d2303571f3",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[72, 102, 528, 131]
+				],
+				"title": [
+					[136, 280, 464, 355],
+					[178, 341, 422, 416],
+					[122, 402, 478, 477]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
 			]
 		},
 		"fr/samuel-ajayi-crowther-a-life-teens": {

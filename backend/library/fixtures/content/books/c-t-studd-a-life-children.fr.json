@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "c-t-studd-a-life-children",
+  "language": "fr",
+  "title": "C. T. Studd (Pour enfants)",
+  "subtitle": "",
+  "cover_byline": "C. T. Studd",
+  "description": "La vraie histoire de Charlie Studd, un garçon riche qui a joué au cricket pour l’Angleterre dans le match qui a donné naissance aux « Ashes ». Ensuite, il a donné toute sa fortune et il est parti en Chine, puis en Inde, et enfin, à cinquante-deux ans, au cœur de l’Afrique, où des chrétiens congolais ont porté la bonne nouvelle à travers la forêt. Cette édition pour enfants raconte sa vie en courts chapitres faits pour être lus à voix haute : un verset de la Bible, un moment de son histoire, une chose que cela veut dire pour toi, et une courte prière, avec des questions pour en parler ensemble.",
+  "qa": [
+   {
+    "question": "De quoi parle C. T. Studd (Pour enfants) ?",
+    "answer": "C’est une version pour enfants de la grande biographie de C. T. Studd. Elle raconte comment un garçon riche qui adorait le cricket a joué pour l’Angleterre, a donné sa fortune pour suivre Jésus, a travaillé en Chine et en Inde, puis, à cinquante-deux ans, est parti au Congo, au milieu de l’Afrique, où une grande Église a grandi dans la forêt."
+   },
+   {
+    "question": "Qui était C. T. Studd ?",
+    "answer": "Charles Thomas Studd, qu’on appelait Charlie, était un missionnaire anglais qui a vécu de 1860 à 1931. Il a joué au cricket pour l’Angleterre en 1882 et en 1883, il est parti pour la Chine en 1885 avec les Sept de Cambridge, il a donné presque tout son héritage, il a été pasteur en Inde, et en 1913, il est parti dans le nord-est du Congo. La mission qu’il a fondée là-bas est devenue WEC International, et l’Église qui en est née est dirigée aujourd’hui par des chrétiens congolais."
+   },
+   {
+    "question": "Comment chaque chapitre est-il construit ?",
+    "answer": "Chaque chapitre est court et fait pour être lu à voix haute. Il commence par un verset de la Bible, raconte un moment de l’histoire de Charlie, montre une chose simple que cela veut dire pour toi, et se termine par une courte prière. Ensuite viennent trois questions, pour en parler ensemble."
+   },
+   {
+    "question": "Ce livre est-il trop triste pour les enfants ?",
+    "answer": "Certains passages sont tristes. Charlie et Priscilla ont perdu deux bébés garçons, ils ont vécu loin l’un de l’autre pendant de longues années, et Charlie était souvent malade. Le livre raconte ces choses avec douceur, sans détails effrayants. Mais c’est avant tout l’histoire joyeuse d’un homme qui a tout donné à Jésus avec joie, et des chrétiens congolais et chinois qui ont porté la bonne nouvelle à leur propre peuple."
+   },
+   {
+    "question": "Les histoires sont-elles vraies ?",
+    "answer": "Oui. Elles viennent de la grande biographie, qui s’appuie sur des documents comme les résultats des matchs de cricket et les récits sur les Sept de Cambridge, et sur les souvenirs de sa famille et de ses amis. Quand une histoire vient seulement des souvenirs de la famille, comme son dernier mot, « Alléluia », le livre le dit. Il dit aussi clairement que les célèbres vers « Une seule vie » étaient des vers qu’il aimait, et non des vers qu’il avait écrits."
+   },
+   {
+    "question": "À qui s’adresse ce livre ?",
+    "answer": "Il s’adresse aux enfants : un adulte peut le lire à voix haute, ou un enfant plus grand peut le lire tout seul. Il existe aussi une édition pour ados, et la grande biographie pour les lecteurs plus âgés."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Un récit d’Ochorus pour jeunes lecteurs, d’après la biographie Ochorus C. T. Studd, de la série Portraits de courage. La façon de raconter est la nôtre, libre à lire et à partager.",
+  "cover_url": "/covers/art/c-t-studd-a-life-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 167,
+  "is_published": true,
+  "created_at": "2026-10-13T00:00:00Z",
+  "updated_at": "2026-10-13T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "fr"
+  ],
+  "order": 1,
+  "title": "Un garçon appelé Charlie",
+  "body_html": "<blockquote>« Toute grâce excellente et tout don parfait descendent d’en haut. » — d’après Jacques 1</blockquote> <p>Le 2 décembre 1860, un petit garçon est né à Spratton, un village au milieu de l’Angleterre. Il s’appelait Charles Thomas Studd. Sa famille l’appelait Charlie. Quand il serait grand, des gens du monde entier le connaîtraient par ses deux premières lettres : C. T.</p> <p>La famille de Charlie était très riche. Son père, Edward, avait fait fortune en Inde en cultivant une plante appelée l’indigo, qui sert à faire une teinture d’un bleu profond. Le dur travail dans les champs était fait par des paysans indiens, qui étaient souvent traités injustement. Quand il était petit, Charlie n’y pensait pas. Mais un jour, il donnerait sa part de cet argent, et une partie retournerait en Inde.</p> <p>Quand Charlie avait dix ans, la famille s’est installée dans une immense maison appelée Tedworth House. Son père adorait les chevaux. Un de ses chevaux de course, Salamander, avait gagné le Grand National, la course de chevaux la plus célèbre d’Angleterre. À Tedworth, il a fait construire un champ de courses pour ses chevaux et un terrain de cricket pour ses garçons.</p> <p>Charlie avait cinq frères, une sœur, et aussi un grand demi-frère. Les garçons jouaient au cricket dès qu’ils le pouvaient. Charlie et ses grands frères, Kynaston et George, sont tous allés dans une école célèbre appelée Eton, et tous les trois ont joué dans l’équipe de cricket de l’école. Les gens qui ont écrit la vie de Charlie disent que, pendant sa dernière année là-bas, il était le capitaine de l’équipe. Il était grand, joyeux et très aimé, et il était déjà l’un des meilleurs jeunes joueurs de cricket d’Angleterre.</p> <p>Charlie avait tant de bonnes choses : un père qui l’aimait, des frères avec qui jouer, et un don merveilleux pour les jeux. La Bible dit que tout bon cadeau vient de Dieu. Tes dons aussi viennent de Dieu, que tu sois doué pour courir, pour dessiner, pour chanter ou pour être gentil. Dieu te les donne parce qu’il t’aime, et il est content quand tu t’en sers pour lui.</p> <p><em>Cher Dieu, merci pour tous les bons cadeaux que tu m’as donnés. Aide-moi à me souvenir qu’ils viennent de toi, et à m’en servir pour toi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "D’où venait l’argent de la famille Studd ?",
+    "answer": "De l’Inde, où le père de Charlie cultivait l’indigo, une plante qui sert à faire une teinture bleue. Des paysans indiens faisaient le dur travail dans les champs, et ils étaient souvent traités injustement."
+   },
+   {
+    "question": "Qu’est-ce que le père de Charlie a fait construire pour ses garçons à Tedworth House ?",
+    "answer": "Un terrain de cricket. Il a aussi fait construire un champ de courses pour ses chevaux."
+   },
+   {
+    "question": "Quel est un bon cadeau que Dieu t’a donné ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : tout bon cadeau vient de Dieu, et il est content quand nous nous servons de nos dons pour lui."
+   }
+  ],
+  "body_text": "« Toute grâce excellente et tout don parfait descendent d’en haut. » — d’après Jacques 1 Le 2 décembre 1860, un petit garçon est né à Spratton, un village au milieu de l’Angleterre. Il s’appelait Charles Thomas Studd. Sa famille l’appelait Charlie. Quand il serait grand, des gens du monde entier le connaîtraient par ses deux premières lettres : C. T. La famille de Charlie était très riche. Son père, Edward, avait fait fortune en Inde en cultivant une plante appelée l’indigo, qui sert à faire une teinture d’un bleu profond. Le dur travail dans les champs était fait par des paysans indiens, qui étaient souvent traités injustement. Quand il était petit, Charlie n’y pensait pas. Mais un jour, il donnerait sa part de cet argent, et une partie retournerait en Inde. Quand Charlie avait dix ans, la famille s’est installée dans une immense maison appelée Tedworth House. Son père adorait les chevaux. Un de ses chevaux de course, Salamander, avait gagné le Grand National, la course de chevaux la plus célèbre d’Angleterre. À Tedworth, il a fait construire un champ de courses pour ses chevaux et un terrain de cricket pour ses garçons. Charlie avait cinq frères, une sœur, et aussi un grand demi-frère. Les garçons jouaient au cricket dès qu’ils le pouvaient. Charlie et ses grands frères, Kynaston et George, sont tous allés dans une école célèbre appelée Eton, et tous les trois ont joué dans l’équipe de cricket de l’école. Les gens qui ont écrit la vie de Charlie disent que, pendant sa dernière année là-bas, il était le capitaine de l’équipe. Il était grand, joyeux et très aimé, et il était déjà l’un des meilleurs jeunes joueurs de cricket d’Angleterre. Charlie avait tant de bonnes choses : un père qui l’aimait, des frères avec qui jouer, et un don merveilleux pour les jeux. La Bible dit que tout bon cadeau vient de Dieu. Tes dons aussi viennent de Dieu, que tu sois doué pour courir, pour dessiner, pour chanter ou pour être gentil. Dieu te les donne parce qu’il t’aime, et il est content quand tu t’en sers pour lui. Cher Dieu, merci pour tous les bons cadeaux que tu m’as donnés. Aide-moi à me souvenir qu’ils viennent de toi, et à m’en servir pour toi. Amen.",
+  "word_count": 381
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "fr"
+  ],
+  "order": 2,
+  "title": "Le père qui a vendu ses chevaux",
+  "body_html": "<blockquote>« Crois au Seigneur Jésus, et tu seras sauvé, toi et ta famille. » — d’après Actes 16</blockquote> <p>Quand Charlie était écolier, un célèbre prédicateur américain, D. L. Moody, est venu à Londres. Des milliers de gens sont allés l’écouter. Un ami a convaincu le père de Charlie d’aller à l’une des réunions. Il ne s’attendait pas à grand-chose, mais il est rentré chez lui complètement changé. Il avait donné sa vie à Jésus. C’était sans doute en 1875, même si les gens ne se souviennent pas tous de la même année.</p> <p>Tout a changé à Tedworth. Edward Studd a vendu ses chevaux de course, et il n’en a gardé qu’un pour chacun de ses grands fils, pour qu’ils puissent monter à cheval. Il a vidé le grand salon, l’a rempli de chaises, et il a invité des prédicateurs à venir parler de Jésus aux voisins.</p> <p>Charlie et ses frères étaient très gênés ! Quand ils rentraient de l’école, leur père leur demandait sans arrêt s’ils étaient sauvés. Les garçons faisaient tout pour ne jamais se retrouver seuls avec lui. Mais Edward n’a pas abandonné. Il continuait à prier pour ses fils. En 1877, après seulement deux ou trois ans de vie chrétienne, il est mort.</p> <p>L’été suivant, en 1878, un ami chrétien de leur père est venu passer quelques jours chez eux. Personne ne sait vraiment comment il s’appelait. Il a trouvé Charlie seul et lui a demandé s’il était chrétien. Charlie a répondu qu’il croyait en Jésus autant que n’importe qui. Alors le visiteur lui a montré la promesse de Dieu : celui qui croit en Jésus a la vie éternelle. Si Charlie le croyait, il devait en remercier Dieu.</p> <p>Charlie a compris que si Dieu l’avait promis, c’était forcément vrai. Il s’est mis à genoux et il a remercié Dieu, et la joie et la paix sont entrées dans son cœur. La famille se souvenait que Kynaston et George avaient décidé de suivre Jésus ce jour-là, eux aussi, chacun sans le dire aux autres !</p> <p>Edward n’a pas vécu assez longtemps pour le voir, mais Dieu a répondu à ses prières. Quand tu pries pour ta famille, Dieu t’entend, même si tu dois attendre longtemps la réponse.</p> <p><em>Cher Dieu, merci pour les personnes qui prient pour moi. Aide-moi à prier pour ma famille et mes amis, et à te faire confiance pour la réponse. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’a fait le père de Charlie après être devenu chrétien ?",
+    "answer": "Il a vendu ses chevaux de course, il n’en a gardé qu’un pour chacun de ses grands fils, et il a rempli de chaises le grand salon de Tedworth pour que des prédicateurs puissent parler de Jésus aux voisins."
+   },
+   {
+    "question": "Quelle promesse le visiteur a-t-il montrée à Charlie en 1878 ?",
+    "answer": "Que celui qui croit en Jésus a la vie éternelle. Charlie l’a cru, il s’est mis à genoux et il a remercié Dieu."
+   },
+   {
+    "question": "Pour qui pourrais-tu prier cette semaine ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : Dieu entend nos prières pour notre famille et nos amis, même quand la réponse prend beaucoup de temps."
+   }
+  ],
+  "body_text": "« Crois au Seigneur Jésus, et tu seras sauvé, toi et ta famille. » — d’après Actes 16 Quand Charlie était écolier, un célèbre prédicateur américain, D. L. Moody, est venu à Londres. Des milliers de gens sont allés l’écouter. Un ami a convaincu le père de Charlie d’aller à l’une des réunions. Il ne s’attendait pas à grand-chose, mais il est rentré chez lui complètement changé. Il avait donné sa vie à Jésus. C’était sans doute en 1875, même si les gens ne se souviennent pas tous de la même année. Tout a changé à Tedworth. Edward Studd a vendu ses chevaux de course, et il n’en a gardé qu’un pour chacun de ses grands fils, pour qu’ils puissent monter à cheval. Il a vidé le grand salon, l’a rempli de chaises, et il a invité des prédicateurs à venir parler de Jésus aux voisins. Charlie et ses frères étaient très gênés ! Quand ils rentraient de l’école, leur père leur demandait sans arrêt s’ils étaient sauvés. Les garçons faisaient tout pour ne jamais se retrouver seuls avec lui. Mais Edward n’a pas abandonné. Il continuait à prier pour ses fils. En 1877, après seulement deux ou trois ans de vie chrétienne, il est mort. L’été suivant, en 1878, un ami chrétien de leur père est venu passer quelques jours chez eux. Personne ne sait vraiment comment il s’appelait. Il a trouvé Charlie seul et lui a demandé s’il était chrétien. Charlie a répondu qu’il croyait en Jésus autant que n’importe qui. Alors le visiteur lui a montré la promesse de Dieu : celui qui croit en Jésus a la vie éternelle. Si Charlie le croyait, il devait en remercier Dieu. Charlie a compris que si Dieu l’avait promis, c’était forcément vrai. Il s’est mis à genoux et il a remercié Dieu, et la joie et la paix sont entrées dans son cœur. La famille se souvenait que Kynaston et George avaient décidé de suivre Jésus ce jour-là, eux aussi, chacun sans le dire aux autres ! Edward n’a pas vécu assez longtemps pour le voir, mais Dieu a répondu à ses prières. Quand tu pries pour ta famille, Dieu t’entend, même si tu dois attendre longtemps la réponse. Cher Dieu, merci pour les personnes qui prient pour moi. Aide-moi à prier pour ma famille et mes amis, et à te faire confiance pour la réponse. Amen.",
+  "word_count": 398
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "fr"
+  ],
+  "order": 3,
+  "title": "Jouer pour l’Angleterre",
+  "body_html": "<blockquote>« Cherchez premièrement le royaume et la justice de Dieu ; et toutes ces choses vous seront données par-dessus. » — d’après Matthieu 6</blockquote> <p>En 1879, Charlie est entré à l’université de Cambridge. Il a un peu étudié et beaucoup joué au cricket ! En 1883, il est devenu capitaine de l’équipe de Cambridge, comme Kynaston et George l’avaient été avant lui.</p> <p>L’été 1882 a été le plus beau de sa vie. Une équipe d’Australie est venue en Angleterre. Son lanceur rapide, Fred Spofforth, faisait si peur que les journaux l’ont surnommé « le Démon ». Mais Cambridge a battu les Australiens, et Charlie a marqué 118 courses, c’est-à-dire 118 points. Au mois d’août, il avait marqué mille courses et éliminé cent batteurs en une seule saison. Un seul homme l’avait fait avant lui : W. G. Grace, le joueur de cricket le plus célèbre du monde. Et d’après les registres, le centième batteur éliminé par Charlie, c’était Grace lui-même !</p> <p>À vingt et un ans, Charlie a été choisi pour jouer pour l’Angleterre contre l’Australie, au stade de l’Oval, à Londres. Le match a été terriblement serré. L’Angleterre n’avait besoin que de 85 courses pour gagner, mais Spofforth éliminait les batteurs les uns après les autres. Charlie a été envoyé à la batte vers la fin. Il se tenait prêt à son bout du terrain, mais avant qu’il ait reçu une seule balle, le dernier batteur anglais a été éliminé. L’Australie avait gagné de sept courses.</p> <p>Quelques jours plus tard, un journal a fait une plaisanterie. Il a écrit que le cricket anglais était mort, et que ses cendres seraient emportées en Australie. Cet hiver-là, Charlie et George sont partis en bateau pour l’Australie avec une équipe anglaise bien décidée à reprendre les cendres, et elle y est arrivée. Aujourd’hui encore, les matchs entre l’Angleterre et l’Australie s’appellent « les Ashes », ce qui veut dire « les Cendres ».</p> <p>Mais quelque chose n’allait pas. Charlie était chrétien, et il le gardait pour lui. Plus tard, il a dit que le cricket avait pris la première place dans sa vie, et qu’il n’avait presque rien donné à Dieu. Pendant environ six ans, sa foi est restée dans un petit coin, bien cachée.</p> <p>Jésus a dit : Cherchez d’abord le royaume de Dieu. Les jeux sont une bonne chose, et Dieu est content quand nous jouons et que nous nous amusons. Mais rien, pas même ce que nous aimons le plus, ne doit prendre la place de Dieu dans notre cœur.</p> <p><em>Cher Dieu, merci pour les jeux et pour les moments où l’on s’amuse. S’il te plaît, aide-moi à te mettre à la première place dans ma vie, avant tout le reste. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Que s’est-il passé pour Charlie pendant le célèbre match de l’Oval ?",
+    "answer": "Il a été envoyé à la batte vers la fin, mais le dernier batteur anglais a été éliminé avant que Charlie reçoive une seule balle, et l’Australie a gagné de sept courses."
+   },
+   {
+    "question": "D’où vient le nom des « Ashes » ?",
+    "answer": "Un journal a plaisanté en écrivant que le cricket anglais était mort et que ses cendres (en anglais, « ashes ») seraient emportées en Australie. Cet hiver-là, l’équipe de Charlie est partie en Australie pour les reprendre."
+   },
+   {
+    "question": "Y a-t-il quelque chose que tu aimes et qui pourrait prendre la place de Dieu ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : les choses que nous aimons sont de bons cadeaux, mais Dieu doit toujours passer en premier."
+   }
+  ],
+  "body_text": "« Cherchez premièrement le royaume et la justice de Dieu ; et toutes ces choses vous seront données par-dessus. » — d’après Matthieu 6 En 1879, Charlie est entré à l’université de Cambridge. Il a un peu étudié et beaucoup joué au cricket ! En 1883, il est devenu capitaine de l’équipe de Cambridge, comme Kynaston et George l’avaient été avant lui. L’été 1882 a été le plus beau de sa vie. Une équipe d’Australie est venue en Angleterre. Son lanceur rapide, Fred Spofforth, faisait si peur que les journaux l’ont surnommé « le Démon ». Mais Cambridge a battu les Australiens, et Charlie a marqué 118 courses, c’est-à-dire 118 points. Au mois d’août, il avait marqué mille courses et éliminé cent batteurs en une seule saison. Un seul homme l’avait fait avant lui : W. G. Grace, le joueur de cricket le plus célèbre du monde. Et d’après les registres, le centième batteur éliminé par Charlie, c’était Grace lui-même ! À vingt et un ans, Charlie a été choisi pour jouer pour l’Angleterre contre l’Australie, au stade de l’Oval, à Londres. Le match a été terriblement serré. L’Angleterre n’avait besoin que de 85 courses pour gagner, mais Spofforth éliminait les batteurs les uns après les autres. Charlie a été envoyé à la batte vers la fin. Il se tenait prêt à son bout du terrain, mais avant qu’il ait reçu une seule balle, le dernier batteur anglais a été éliminé. L’Australie avait gagné de sept courses. Quelques jours plus tard, un journal a fait une plaisanterie. Il a écrit que le cricket anglais était mort, et que ses cendres seraient emportées en Australie. Cet hiver-là, Charlie et George sont partis en bateau pour l’Australie avec une équipe anglaise bien décidée à reprendre les cendres, et elle y est arrivée. Aujourd’hui encore, les matchs entre l’Angleterre et l’Australie s’appellent « les Ashes », ce qui veut dire « les Cendres ». Mais quelque chose n’allait pas. Charlie était chrétien, et il le gardait pour lui. Plus tard, il a dit que le cricket avait pris la première place dans sa vie, et qu’il n’avait presque rien donné à Dieu. Pendant environ six ans, sa foi est restée dans un petit coin, bien cachée. Jésus a dit : Cherchez d’abord le royaume de Dieu. Les jeux sont une bonne chose, et Dieu est content quand nous jouons et que nous nous amusons. Mais rien, pas même ce que nous aimons le plus, ne doit prendre la place de Dieu dans notre cœur. Cher Dieu, merci pour les jeux et pour les moments où l’on s’amuse. S’il te plaît, aide-moi à te mettre à la première place dans ma vie, avant tout le reste. Amen.",
+  "word_count": 453
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "fr"
+  ],
+  "order": 4,
+  "title": "Au chevet de George",
+  "body_html": "<blockquote>« Cette maladie n’est point à la mort ; mais elle est pour la gloire de Dieu. » — d’après Jean 11</blockquote> <p>En novembre 1883, George, le frère de Charlie, est tombé gravement malade. Pendant plusieurs jours, les médecins ont pensé qu’il n’allait pas survivre. Charlie restait assis près de son lit, et il s’est mis à réfléchir très sérieusement.</p> <p>George était célèbre. Des milliers de gens l’avaient acclamé. Mais maintenant, ni ses courses ni sa célébrité ne pouvaient l’aider le moins du monde. Une seule chose comptait : était-il prêt à rencontrer Dieu ? Et Charlie a eu honte. Il connaissait Jésus depuis cinq ans, mais il avait vécu comme si le cricket était ce qui comptait le plus.</p> <p>George s’est rétabli. La famille a cru que Dieu avait répondu à ses prières. Mais Charlie n’a jamais oublié ce à quoi il avait pensé au chevet de son frère.</p> <p>Cet hiver-là, M. Moody, le prédicateur qui avait aidé son père, était de retour à Londres. Charlie est allé l’écouter, et la joie qu’il avait connue à Tedworth est revenue. Cette fois, il ne l’a pas gardée pour lui. Il a parlé de Jésus à ses amis joueurs de cricket et les a invités aux réunions. Et il a demandé à Dieu ce qu’il devait faire de sa vie.</p> <p>En 1884, il a rencontré Hudson Taylor, le directeur de la Mission à l’intérieur de la Chine. Les missionnaires de cette mission allaient loin à l’intérieur de la Chine, dans des endroits où presque personne n’avait entendu parler de Jésus. Charlie a proposé de partir. Sa famille était bouleversée. Sa mère l’a supplié de rester, et Kynaston trouvait qu’il se laissait emporter. C’était dur pour Charlie de rendre si tristes les gens qu’il aimait. Mais il croyait que Dieu l’appelait, et il leur a dit qu’il devait partir. Avec le temps, la plupart d’entre eux ont fini par l’accepter.</p> <p>Parfois, Dieu se sert d’un moment difficile pour nous réveiller et nous montrer ce qui compte vraiment. Si tu traverses un moment difficile, Dieu ne t’a pas oublié. Il est avec toi, et il peut même s’en servir pour faire du bien.</p> <p><em>Cher Dieu, quand des choses difficiles arrivent, aide-moi à me souvenir de ce qui compte vraiment. Merci d’être toujours avec moi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "À quoi Charlie a-t-il pensé pendant que George était si malade ?",
+    "answer": "Que la célébrité ne pouvait pas du tout aider George, et que la seule chose qui comptait, c’était d’être prêt à rencontrer Dieu. Il a eu honte d’avoir vécu comme si le cricket était ce qui comptait le plus."
+   },
+   {
+    "question": "Pourquoi la famille de Charlie était-elle bouleversée en 1884 ?",
+    "answer": "Parce qu’il avait proposé de partir en Chine avec la Mission à l’intérieur de la Chine. Sa mère l’a supplié de rester."
+   },
+   {
+    "question": "Est-ce qu’un moment difficile t’a déjà aidé à voir ce qui compte vraiment ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : Dieu est avec nous dans les moments difficiles, et il peut s’en servir pour nous montrer ce qui est le plus important."
+   }
+  ],
+  "body_text": "« Cette maladie n’est point à la mort ; mais elle est pour la gloire de Dieu. » — d’après Jean 11 En novembre 1883, George, le frère de Charlie, est tombé gravement malade. Pendant plusieurs jours, les médecins ont pensé qu’il n’allait pas survivre. Charlie restait assis près de son lit, et il s’est mis à réfléchir très sérieusement. George était célèbre. Des milliers de gens l’avaient acclamé. Mais maintenant, ni ses courses ni sa célébrité ne pouvaient l’aider le moins du monde. Une seule chose comptait : était-il prêt à rencontrer Dieu ? Et Charlie a eu honte. Il connaissait Jésus depuis cinq ans, mais il avait vécu comme si le cricket était ce qui comptait le plus. George s’est rétabli. La famille a cru que Dieu avait répondu à ses prières. Mais Charlie n’a jamais oublié ce à quoi il avait pensé au chevet de son frère. Cet hiver-là, M. Moody, le prédicateur qui avait aidé son père, était de retour à Londres. Charlie est allé l’écouter, et la joie qu’il avait connue à Tedworth est revenue. Cette fois, il ne l’a pas gardée pour lui. Il a parlé de Jésus à ses amis joueurs de cricket et les a invités aux réunions. Et il a demandé à Dieu ce qu’il devait faire de sa vie. En 1884, il a rencontré Hudson Taylor, le directeur de la Mission à l’intérieur de la Chine. Les missionnaires de cette mission allaient loin à l’intérieur de la Chine, dans des endroits où presque personne n’avait entendu parler de Jésus. Charlie a proposé de partir. Sa famille était bouleversée. Sa mère l’a supplié de rester, et Kynaston trouvait qu’il se laissait emporter. C’était dur pour Charlie de rendre si tristes les gens qu’il aimait. Mais il croyait que Dieu l’appelait, et il leur a dit qu’il devait partir. Avec le temps, la plupart d’entre eux ont fini par l’accepter. Parfois, Dieu se sert d’un moment difficile pour nous réveiller et nous montrer ce qui compte vraiment. Si tu traverses un moment difficile, Dieu ne t’a pas oublié. Il est avec toi, et il peut même s’en servir pour faire du bien. Cher Dieu, quand des choses difficiles arrivent, aide-moi à me souvenir de ce qui compte vraiment. Merci d’être toujours avec moi. Amen.",
+  "word_count": 382
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "fr"
+  ],
+  "order": 5,
+  "title": "Sept jeunes hommes",
+  "body_html": "<blockquote>« Qui enverrai-je, et qui marchera pour nous ? Je répondis : Me voici, envoie-moi. » — d’après Ésaïe 6</blockquote> <p>Charlie n’était pas le seul. À la fin de 1884, sept jeunes hommes avaient proposé de partir en Chine avec la Mission à l’intérieur de la Chine. La plupart avaient fait leurs études à Cambridge. Certains avaient fait de l’aviron pour Cambridge, d’autres étaient officiers dans l’armée, l’un était un jeune pasteur, et l’un d’eux était Charlie, le joueur de cricket de l’équipe d’Angleterre. On les a appelés les Sept de Cambridge.</p> <p>Tout le monde était stupéfait. Pourquoi des jeunes hommes riches et célèbres abandonnaient-ils tant de choses pour partir dans un pays si lointain ? Avant leur départ, les Sept ont pris la parole dans des réunions, dans des universités d’Angleterre et d’Écosse. Charlie n’était pas un grand orateur, mais il disait simplement aux étudiants qu’il avait aimé le cricket et qu’il avait trouvé quelque chose de bien meilleur en Jésus. Le cricket ne durerait pas, disait-il, mais vivre pour Jésus, si. Beaucoup d’étudiants sont rentrés chez eux en se demandant si Dieu les appelait, eux aussi.</p> <p>Le 4 février 1885, une foule d’environ trois mille personnes a rempli une grande salle de Londres pour leur dire au revoir. Le lendemain matin, les Sept sont partis pour la Chine. Leur histoire a aussi traversé l’océan jusqu’en Amérique, et elle a aidé beaucoup d’étudiants là-bas à décider de devenir missionnaires.</p> <p>Le 18 mars, ils sont arrivés à Shanghai. Quelques jours plus tard, ils avaient déjà mis des vêtements chinois : de longues robes et des chaussures en tissu. Ils se sont rasé le devant de la tête et ont porté les cheveux en une longue natte dans le dos, comme les hommes chinois à cette époque. Hudson Taylor enseignait que les missionnaires devaient venir comme des invités et des élèves, et non comme des chefs.</p> <p>Alors, pour la première fois de sa vie, Charlie était un débutant. La langue chinoise était très difficile pour lui. Il ne pouvait même pas demander une tasse de thé sans aide, et n’importe quel enfant dans la rue en savait plus que lui !</p> <p>Dieu demande encore : Qui ira pour moi ? Tu n’as pas besoin d’être célèbre pour répondre. Où que tu sois, tu peux dire : Me voici, mon Dieu. Et tu peux être un bon élève, comme Charlie, qui écoute les autres et qui n’est pas trop fier pour commencer par le début.</p> <p><em>Cher Dieu, me voici. S’il te plaît, sers-toi de moi, et aide-moi à être humble et prêt à apprendre. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qui étaient les Sept de Cambridge ?",
+    "answer": "Sept jeunes hommes, la plupart venus de Cambridge, qui ont proposé de partir en Chine avec la Mission à l’intérieur de la Chine en 1885. Charlie était l’un d’eux."
+   },
+   {
+    "question": "Pourquoi les Sept portaient-ils des vêtements chinois ?",
+    "answer": "Hudson Taylor enseignait que les missionnaires devaient venir comme des invités et des élèves, et non comme des chefs. Alors ils s’habillaient comme les Chinois."
+   },
+   {
+    "question": "Que pourrais-tu dire à Dieu, comme Ésaïe ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : n’importe qui, célèbre ou pas, peut dire : Me voici, mon Dieu, et être prêt à apprendre et à servir."
+   }
+  ],
+  "body_text": "« Qui enverrai-je, et qui marchera pour nous ? Je répondis : Me voici, envoie-moi. » — d’après Ésaïe 6 Charlie n’était pas le seul. À la fin de 1884, sept jeunes hommes avaient proposé de partir en Chine avec la Mission à l’intérieur de la Chine. La plupart avaient fait leurs études à Cambridge. Certains avaient fait de l’aviron pour Cambridge, d’autres étaient officiers dans l’armée, l’un était un jeune pasteur, et l’un d’eux était Charlie, le joueur de cricket de l’équipe d’Angleterre. On les a appelés les Sept de Cambridge. Tout le monde était stupéfait. Pourquoi des jeunes hommes riches et célèbres abandonnaient-ils tant de choses pour partir dans un pays si lointain ? Avant leur départ, les Sept ont pris la parole dans des réunions, dans des universités d’Angleterre et d’Écosse. Charlie n’était pas un grand orateur, mais il disait simplement aux étudiants qu’il avait aimé le cricket et qu’il avait trouvé quelque chose de bien meilleur en Jésus. Le cricket ne durerait pas, disait-il, mais vivre pour Jésus, si. Beaucoup d’étudiants sont rentrés chez eux en se demandant si Dieu les appelait, eux aussi. Le 4 février 1885, une foule d’environ trois mille personnes a rempli une grande salle de Londres pour leur dire au revoir. Le lendemain matin, les Sept sont partis pour la Chine. Leur histoire a aussi traversé l’océan jusqu’en Amérique, et elle a aidé beaucoup d’étudiants là-bas à décider de devenir missionnaires. Le 18 mars, ils sont arrivés à Shanghai. Quelques jours plus tard, ils avaient déjà mis des vêtements chinois : de longues robes et des chaussures en tissu. Ils se sont rasé le devant de la tête et ont porté les cheveux en une longue natte dans le dos, comme les hommes chinois à cette époque. Hudson Taylor enseignait que les missionnaires devaient venir comme des invités et des élèves, et non comme des chefs. Alors, pour la première fois de sa vie, Charlie était un débutant. La langue chinoise était très difficile pour lui. Il ne pouvait même pas demander une tasse de thé sans aide, et n’importe quel enfant dans la rue en savait plus que lui ! Dieu demande encore : Qui ira pour moi ? Tu n’as pas besoin d’être célèbre pour répondre. Où que tu sois, tu peux dire : Me voici, mon Dieu. Et tu peux être un bon élève, comme Charlie, qui écoute les autres et qui n’est pas trop fier pour commencer par le début. Cher Dieu, me voici. S’il te plaît, sers-toi de moi, et aide-moi à être humble et prêt à apprendre. Amen.",
+  "word_count": 433
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "fr"
+  ],
+  "order": 6,
+  "title": "Un trésor dans un champ",
+  "body_html": "<blockquote>« Il y a plus de bonheur à donner qu’à recevoir. » — d’après Actes 20</blockquote> <p>Le père de Charlie avait laissé à chacun de ses fils une grosse part de sa fortune. Charlie devait recevoir la sienne à ses vingt-cinq ans. Cet anniversaire est arrivé en Chine, le 2 décembre 1885.</p> <p>Charlie lisait ce que Jésus avait dit à un jeune homme riche : va, vends ce que tu as, donne-le aux pauvres, puis viens et suis-moi. La plupart des gens pensaient que Jésus ne disait pas cela pour eux. Charlie, lui, croyait que Jésus le disait pour lui.</p> <p>Le 13 janvier 1887, la date dont on se souvient le plus souvent, Charlie a commencé à signer des chèques, avant même de savoir exactement combien d’argent il avait ! Finalement, il en a donné presque tout, environ vingt-cinq ou vingt-neuf mille livres. À cette époque, c’était une fortune énorme, qui vaudrait des millions aujourd’hui.</p> <p>Il a bien choisi à qui donner. Cinq mille livres sont allées à M. Moody, qui avait aidé son père et l’avait aidé lui aussi. Cinq mille sont allées à George Müller, à Bristol, qui s’occupait de milliers d’orphelins et ne demandait de l’argent à personne, sauf à Dieu. Cinq mille sont allées à George Holland, qui aidait des familles très pauvres à Londres. Et cinq mille sont allées à Frederick Booth-Tucker, qui dirigeait l’Armée du Salut en Inde et vivait simplement parmi les pauvres là-bas. Charlie a gardé une somme plus petite, environ trois mille quatre cents livres, qui était prévue pour une épouse, un jour.</p> <p>Jésus a raconté un jour l’histoire d’un homme qui avait trouvé un trésor caché dans un champ. Il était si rempli de joie qu’il a vendu tout ce qu’il avait pour acheter ce champ. Charlie se sentait exactement comme cet homme. Donner son argent ne lui donnait pas l’impression de perdre quelque chose. Cela le rendait libre et joyeux, et il n’a jamais regretté de ne plus l’avoir.</p> <p>Tu n’as peut-être pas de fortune, mais tu peux quand même donner : tes jouets, ton temps, ton aide, ta gentillesse. Jésus a dit que donner nous rend encore plus heureux que recevoir. Essaie, et tu verras !</p> <p><em>Cher Jésus, tu vaux mieux que n’importe quel trésor. Aide-moi à donner aux autres avec joie, comme tu t’es donné toi-même pour moi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’a fait Charlie de sa fortune ?",
+    "answer": "Il en a donné presque tout, à M. Moody, à George Müller, à George Holland, à Frederick Booth-Tucker et à d’autres œuvres chrétiennes."
+   },
+   {
+    "question": "Pourquoi Charlie ressemblait-il à l’homme de l’histoire du trésor racontée par Jésus ?",
+    "answer": "Parce qu’il a tout abandonné avec joie. Il n’avait pas l’impression d’avoir perdu quelque chose, parce que Jésus valait plus que tout cela."
+   },
+   {
+    "question": "Qu’est-ce que tu pourrais donner à quelqu’un cette semaine ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : donner avec joie nous rend heureux, parce qu’il y a plus de bonheur à donner qu’à recevoir."
+   }
+  ],
+  "body_text": "« Il y a plus de bonheur à donner qu’à recevoir. » — d’après Actes 20 Le père de Charlie avait laissé à chacun de ses fils une grosse part de sa fortune. Charlie devait recevoir la sienne à ses vingt-cinq ans. Cet anniversaire est arrivé en Chine, le 2 décembre 1885. Charlie lisait ce que Jésus avait dit à un jeune homme riche : va, vends ce que tu as, donne-le aux pauvres, puis viens et suis-moi. La plupart des gens pensaient que Jésus ne disait pas cela pour eux. Charlie, lui, croyait que Jésus le disait pour lui. Le 13 janvier 1887, la date dont on se souvient le plus souvent, Charlie a commencé à signer des chèques, avant même de savoir exactement combien d’argent il avait ! Finalement, il en a donné presque tout, environ vingt-cinq ou vingt-neuf mille livres. À cette époque, c’était une fortune énorme, qui vaudrait des millions aujourd’hui. Il a bien choisi à qui donner. Cinq mille livres sont allées à M. Moody, qui avait aidé son père et l’avait aidé lui aussi. Cinq mille sont allées à George Müller, à Bristol, qui s’occupait de milliers d’orphelins et ne demandait de l’argent à personne, sauf à Dieu. Cinq mille sont allées à George Holland, qui aidait des familles très pauvres à Londres. Et cinq mille sont allées à Frederick Booth-Tucker, qui dirigeait l’Armée du Salut en Inde et vivait simplement parmi les pauvres là-bas. Charlie a gardé une somme plus petite, environ trois mille quatre cents livres, qui était prévue pour une épouse, un jour. Jésus a raconté un jour l’histoire d’un homme qui avait trouvé un trésor caché dans un champ. Il était si rempli de joie qu’il a vendu tout ce qu’il avait pour acheter ce champ. Charlie se sentait exactement comme cet homme. Donner son argent ne lui donnait pas l’impression de perdre quelque chose. Cela le rendait libre et joyeux, et il n’a jamais regretté de ne plus l’avoir. Tu n’as peut-être pas de fortune, mais tu peux quand même donner : tes jouets, ton temps, ton aide, ta gentillesse. Jésus a dit que donner nous rend encore plus heureux que recevoir. Essaie, et tu verras ! Cher Jésus, tu vaux mieux que n’importe quel trésor. Aide-moi à donner aux autres avec joie, comme tu t’es donné toi-même pour moi. Amen.",
+  "word_count": 392
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "fr"
+  ],
+  "order": 7,
+  "title": "Scilla",
+  "body_html": "<blockquote>« Deux valent mieux qu’un, parce qu’ils retirent un bon salaire de leur travail. » — d’après Ecclésiaste 4</blockquote> <p>En 1864, une petite fille appelée Priscilla Livingstone Stewart est née près de la ville de Belfast, en Irlande. Ses amis l’appelaient Scilla. En grandissant, elle est devenue chaleureuse, vive et pleine d’entrain.</p> <p>Quand elle était jeune femme, elle a donné sa vie à Jésus et elle a proposé de partir en Chine. Hudson Taylor et ses amis avaient prié pour que cent nouveaux missionnaires soient envoyés pendant l’année 1887. À la fin de cette année-là, cent deux étaient partis ! Priscilla était l’une d’eux. Elle est allée vivre avec trois autres jeunes femmes dans une ville au bord d’un grand lac, pour parler de Jésus aux femmes chinoises.</p> <p>Charlie est tombé profondément amoureux d’elle. Plus tard, ils riaient tous les deux en se demandant qui avait demandé l’autre en mariage. Charlie disait toujours que c’était elle qui l’avait demandé. Priscilla disait toujours que c’était lui !</p> <p>Au début de 1888, ils se sont fiancés. Puis Priscilla est tombée très malade, et Charlie a fait le voyage pour être auprès d’elle, alors qu’il se remettait lui-même d’une maladie. Ce printemps-là, ils se sont mariés. La plupart des récits disent que le mariage a eu lieu dans la ville de Tianjin. C’est un pasteur chinois qui les a mariés, et on raconte qu’ils portaient leurs vêtements chinois de tous les jours.</p> <p>Avant le mariage, Charlie a donné à Priscilla l’argent qu’il avait gardé pour elle. Mais Priscilla voulait commencer sa vie de femme mariée comme lui, en faisant confiance à Dieu seul. Alors elle a tout donné à l’Armée du Salut ! Tous les deux ont commencé leur mariage sans rien à la banque, et ils n’ont jamais dit qu’ils le regrettaient.</p> <p>La Bible dit que deux valent mieux qu’un, parce qu’ils peuvent s’aider l’un l’autre. Charlie et Priscilla se sont aidés l’un l’autre pendant quarante ans. Dieu nous donne une famille et des amis pour que nous n’ayons pas à être courageux tout seuls.</p> <p><em>Cher Dieu, merci pour ma famille et pour mes amis. Aide-nous à nous aider les uns les autres et à te faire confiance ensemble. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Comment Priscilla est-elle arrivée en Chine ?",
+    "answer": "Elle faisait partie des cent deux nouveaux missionnaires envoyés par la Mission à l’intérieur de la Chine en 1887, après que Hudson Taylor et ses amis avaient prié pour qu’il y en ait cent."
+   },
+   {
+    "question": "Qu’a fait Priscilla de l’argent que Charlie lui a donné ?",
+    "answer": "Elle l’a donné tout entier à l’Armée du Salut, parce qu’elle voulait commencer sa vie de femme mariée en faisant confiance à Dieu seul, comme Charlie l’avait fait."
+   },
+   {
+    "question": "Qui t’aide, et qui est-ce que tu aides ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : Dieu nous donne une famille et des amis pour que nous puissions nous aider les uns les autres."
+   }
+  ],
+  "body_text": "« Deux valent mieux qu’un, parce qu’ils retirent un bon salaire de leur travail. » — d’après Ecclésiaste 4 En 1864, une petite fille appelée Priscilla Livingstone Stewart est née près de la ville de Belfast, en Irlande. Ses amis l’appelaient Scilla. En grandissant, elle est devenue chaleureuse, vive et pleine d’entrain. Quand elle était jeune femme, elle a donné sa vie à Jésus et elle a proposé de partir en Chine. Hudson Taylor et ses amis avaient prié pour que cent nouveaux missionnaires soient envoyés pendant l’année 1887. À la fin de cette année-là, cent deux étaient partis ! Priscilla était l’une d’eux. Elle est allée vivre avec trois autres jeunes femmes dans une ville au bord d’un grand lac, pour parler de Jésus aux femmes chinoises. Charlie est tombé profondément amoureux d’elle. Plus tard, ils riaient tous les deux en se demandant qui avait demandé l’autre en mariage. Charlie disait toujours que c’était elle qui l’avait demandé. Priscilla disait toujours que c’était lui ! Au début de 1888, ils se sont fiancés. Puis Priscilla est tombée très malade, et Charlie a fait le voyage pour être auprès d’elle, alors qu’il se remettait lui-même d’une maladie. Ce printemps-là, ils se sont mariés. La plupart des récits disent que le mariage a eu lieu dans la ville de Tianjin. C’est un pasteur chinois qui les a mariés, et on raconte qu’ils portaient leurs vêtements chinois de tous les jours. Avant le mariage, Charlie a donné à Priscilla l’argent qu’il avait gardé pour elle. Mais Priscilla voulait commencer sa vie de femme mariée comme lui, en faisant confiance à Dieu seul. Alors elle a tout donné à l’Armée du Salut ! Tous les deux ont commencé leur mariage sans rien à la banque, et ils n’ont jamais dit qu’ils le regrettaient. La Bible dit que deux valent mieux qu’un, parce qu’ils peuvent s’aider l’un l’autre. Charlie et Priscilla se sont aidés l’un l’autre pendant quarante ans. Dieu nous donne une famille et des amis pour que nous n’ayons pas à être courageux tout seuls. Cher Dieu, merci pour ma famille et pour mes amis. Aide-nous à nous aider les uns les autres et à te faire confiance ensemble. Amen.",
+  "word_count": 368
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "fr"
+  ],
+  "order": 8,
+  "title": "Semer avec larmes",
+  "body_html": "<blockquote>« Ceux qui sèment avec larmes moissonneront avec chants d’allégresse. » — d’après le Psaume 126</blockquote> <p>Après leur mariage, Charlie et Priscilla sont allés vivre dans une ville appelée Lungan, dans la province du Shanxi. Les gens de là-bas ne voulaient pas d’étrangers. Certains criaient des insultes, et parfois il y avait des menaces. Beaucoup de Chinois avaient de bonnes raisons de se méfier, car des pays étrangers avaient gagné des guerres contre la Chine et l’avaient forcée à laisser entrer leurs marchands et l’opium, une drogue qui fait beaucoup de mal.</p> <p>Charlie et Priscilla sont restés. Ils vivaient aussi simplement que leurs voisins. Priscilla s’est fait des amies parmi les femmes de la ville, que Charlie ne pouvait presque pas rencontrer. Peu à peu, la colère s’est changée en patience, puis, chez certains, en amitié.</p> <p>Dans cette région de la Chine, des chrétiens chinois tenaient des maisons spéciales où les gens prisonniers de l’opium pouvaient venir pour guérir, grâce à des médicaments, à des soins et à la prière. Le plus connu de ces chrétiens était le pasteur Xi, qui avait lui-même été prisonnier de l’opium autrefois. L’Église de là-bas était construite par des croyants chinois, et quelques habitants de Lungan ont, eux aussi, appris à connaître Jésus. Personne n’a écrit les noms des chrétiens chinois qui travaillaient aux côtés des Studd, mais Dieu les connaît tous, un par un.</p> <p>Quatre filles sont nées à Charlie et Priscilla en Chine : Grace, Dorothy, Edith et Pauline. Deux bébés garçons sont nés aussi, mais ils n’ont vécu que très peu de temps. Cela a été un immense chagrin pour leurs parents.</p> <p>Charlie avait de l’asthme, une maladie qui l’empêchait de bien respirer, et Priscilla et lui étaient souvent malades. En 1894, ils ont dû rentrer en Angleterre. Avant de partir, ils ont donné leur maison de Lungan à la mission, pour que le travail puisse continuer.</p> <p>Parfois, nous travaillons dur pour Dieu et nous ne voyons pas grand-chose arriver. La Bible promet que les graines semées avec des larmes donneront un jour une récolte de joie. Cette Église a tenu bon pendant des temps difficiles, parce que des chrétiens chinois ont continué. Dieu est près de nous quand nous sommes tristes, et rien de ce que nous faisons pour lui n’est perdu.</p> <p><em>Cher Dieu, quand je suis triste ou fatigué, s’il te plaît, reste près de moi. Aide-moi à continuer à faire ce qui est bien, même quand je ne vois pas ce qui va en sortir. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Au début, qu’est-ce que les gens de Lungan pensaient de Charlie et Priscilla ?",
+    "answer": "Ils ne voulaient pas d’étrangers chez eux. Certains criaient des insultes et faisaient des menaces, mais peu à peu, certains sont devenus leurs amis."
+   },
+   {
+    "question": "Qui tenait les maisons où les gens prisonniers de l’opium pouvaient guérir ?",
+    "answer": "Des chrétiens chinois, comme le pasteur Xi, qui avait lui-même été prisonnier de l’opium autrefois."
+   },
+   {
+    "question": "Est-ce qu’il t’est déjà arrivé de continuer alors que quelque chose était dur et lent ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : Dieu est près de nous quand nous sommes tristes, et ce que nous faisons pour lui n’est jamais perdu."
+   }
+  ],
+  "body_text": "« Ceux qui sèment avec larmes moissonneront avec chants d’allégresse. » — d’après le Psaume 126 Après leur mariage, Charlie et Priscilla sont allés vivre dans une ville appelée Lungan, dans la province du Shanxi. Les gens de là-bas ne voulaient pas d’étrangers. Certains criaient des insultes, et parfois il y avait des menaces. Beaucoup de Chinois avaient de bonnes raisons de se méfier, car des pays étrangers avaient gagné des guerres contre la Chine et l’avaient forcée à laisser entrer leurs marchands et l’opium, une drogue qui fait beaucoup de mal. Charlie et Priscilla sont restés. Ils vivaient aussi simplement que leurs voisins. Priscilla s’est fait des amies parmi les femmes de la ville, que Charlie ne pouvait presque pas rencontrer. Peu à peu, la colère s’est changée en patience, puis, chez certains, en amitié. Dans cette région de la Chine, des chrétiens chinois tenaient des maisons spéciales où les gens prisonniers de l’opium pouvaient venir pour guérir, grâce à des médicaments, à des soins et à la prière. Le plus connu de ces chrétiens était le pasteur Xi, qui avait lui-même été prisonnier de l’opium autrefois. L’Église de là-bas était construite par des croyants chinois, et quelques habitants de Lungan ont, eux aussi, appris à connaître Jésus. Personne n’a écrit les noms des chrétiens chinois qui travaillaient aux côtés des Studd, mais Dieu les connaît tous, un par un. Quatre filles sont nées à Charlie et Priscilla en Chine : Grace, Dorothy, Edith et Pauline. Deux bébés garçons sont nés aussi, mais ils n’ont vécu que très peu de temps. Cela a été un immense chagrin pour leurs parents. Charlie avait de l’asthme, une maladie qui l’empêchait de bien respirer, et Priscilla et lui étaient souvent malades. En 1894, ils ont dû rentrer en Angleterre. Avant de partir, ils ont donné leur maison de Lungan à la mission, pour que le travail puisse continuer. Parfois, nous travaillons dur pour Dieu et nous ne voyons pas grand-chose arriver. La Bible promet que les graines semées avec des larmes donneront un jour une récolte de joie. Cette Église a tenu bon pendant des temps difficiles, parce que des chrétiens chinois ont continué. Dieu est près de nous quand nous sommes tristes, et rien de ce que nous faisons pour lui n’est perdu. Cher Dieu, quand je suis triste ou fatigué, s’il te plaît, reste près de moi. Aide-moi à continuer à faire ce qui est bien, même quand je ne vois pas ce qui va en sortir. Amen.",
+  "word_count": 418
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "fr"
+  ],
+  "order": 9,
+  "title": "Une affiche à Liverpool",
+  "body_html": "<blockquote>« Comment en entendront-ils parler, s’il n’y a personne qui prêche ? » — d’après Romains 10</blockquote> <p>De retour en Angleterre, les Studd avaient très peu d’argent, mais leur famille et leurs amis les ont aidés. Charlie parlait dans des réunions quand il était assez en forme. En 1896, il est allé en Amérique et il a passé environ dix-huit mois à visiter des universités, pour parler aux étudiants de Jésus et des millions de gens qui n’avaient jamais entendu parler de lui.</p> <p>En 1900, la famille s’est installée à Ootacamund, une ville perchée dans les collines fraîches du sud de l’Inde, et Charlie est devenu le pasteur d’une église de là-bas pendant environ six ans. La famille était réunie, et les filles grandissaient. Beaucoup de gens auraient été heureux de rester. Mais Charlie pensait sans cesse aux gens qui n’avaient jamais entendu parler de Jésus. En 1906, de nouveau malade, il a ramené sa famille en Angleterre.</p> <p>Un jour de 1908, en se promenant dans la ville de Liverpool, Charlie a vu une affiche devant une salle. À l’intérieur, un missionnaire allemand appelé Karl Kumm parlait de l’Afrique. Il a parlé de peuples, au milieu de l’Afrique, qui n’avaient jamais entendu parler de Jésus. Des marchands, des chasseurs et des chasseurs d’esclaves étaient arrivés jusqu’à eux, mais personne n’était venu leur annoncer la bonne nouvelle.</p> <p>Charlie est ressorti avec une question qu’il ne pouvait pas oublier. Pourquoi aucun chrétien n’était-il allé chez ces peuples ? Parce que personne n’avait été envoyé. Et puis une deuxième question : pourquoi n’irait-il pas lui-même ?</p> <p>La plupart des gens trouvaient que c’était une idée folle. Charlie avait quarante-sept ans. Il avait de l’asthme, il avait été malade bien des fois, et il n’avait pas d’argent à lui. Priscilla était souffrante, et elle ne voulait pas qu’il parte. Mais à la fin de 1910, il est parti en bateau pour l’Afrique, pour aller voir par lui-même. Tout au sud du Soudan, il a appris que, dans le coin nord-est du Congo, vivaient beaucoup de gens qui n’avaient presque jamais entendu parler de Jésus.</p> <p>La Bible demande : Comment les gens entendront-ils parler de Jésus, si personne ne leur en parle ? Tu peux être quelqu’un qui en parle. Tu peux dire à un ami ce que Jésus représente pour toi, et tu peux prier pour des gens très loin d’ici qui n’ont jamais entendu parler de lui.</p> <p><em>Cher Dieu, s’il te plaît, envoie des gens parler de Jésus à tout le monde. Aide-moi, moi aussi, à parler de toi à mes amis. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Où la famille Studd a-t-elle vécu de 1900 à 1906 ?",
+    "answer": "À Ootacamund, une ville dans les collines fraîches du sud de l’Inde, où Charlie était le pasteur d’une église."
+   },
+   {
+    "question": "Quelle question Charlie s’est-il posée après avoir entendu Karl Kumm ?",
+    "answer": "Pourquoi aucun chrétien n’était-il allé chez les peuples du milieu de l’Afrique ? Et ensuite : pourquoi n’irait-il pas lui-même ?"
+   },
+   {
+    "question": "À qui pourrais-tu parler de Jésus ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : les gens ne peuvent entendre parler de Jésus que si quelqu’un leur en parle, et nous pouvons tous en parler et prier."
+   }
+  ],
+  "body_text": "« Comment en entendront-ils parler, s’il n’y a personne qui prêche ? » — d’après Romains 10 De retour en Angleterre, les Studd avaient très peu d’argent, mais leur famille et leurs amis les ont aidés. Charlie parlait dans des réunions quand il était assez en forme. En 1896, il est allé en Amérique et il a passé environ dix-huit mois à visiter des universités, pour parler aux étudiants de Jésus et des millions de gens qui n’avaient jamais entendu parler de lui. En 1900, la famille s’est installée à Ootacamund, une ville perchée dans les collines fraîches du sud de l’Inde, et Charlie est devenu le pasteur d’une église de là-bas pendant environ six ans. La famille était réunie, et les filles grandissaient. Beaucoup de gens auraient été heureux de rester. Mais Charlie pensait sans cesse aux gens qui n’avaient jamais entendu parler de Jésus. En 1906, de nouveau malade, il a ramené sa famille en Angleterre. Un jour de 1908, en se promenant dans la ville de Liverpool, Charlie a vu une affiche devant une salle. À l’intérieur, un missionnaire allemand appelé Karl Kumm parlait de l’Afrique. Il a parlé de peuples, au milieu de l’Afrique, qui n’avaient jamais entendu parler de Jésus. Des marchands, des chasseurs et des chasseurs d’esclaves étaient arrivés jusqu’à eux, mais personne n’était venu leur annoncer la bonne nouvelle. Charlie est ressorti avec une question qu’il ne pouvait pas oublier. Pourquoi aucun chrétien n’était-il allé chez ces peuples ? Parce que personne n’avait été envoyé. Et puis une deuxième question : pourquoi n’irait-il pas lui-même ? La plupart des gens trouvaient que c’était une idée folle. Charlie avait quarante-sept ans. Il avait de l’asthme, il avait été malade bien des fois, et il n’avait pas d’argent à lui. Priscilla était souffrante, et elle ne voulait pas qu’il parte. Mais à la fin de 1910, il est parti en bateau pour l’Afrique, pour aller voir par lui-même. Tout au sud du Soudan, il a appris que, dans le coin nord-est du Congo, vivaient beaucoup de gens qui n’avaient presque jamais entendu parler de Jésus. La Bible demande : Comment les gens entendront-ils parler de Jésus, si personne ne leur en parle ? Tu peux être quelqu’un qui en parle. Tu peux dire à un ami ce que Jésus représente pour toi, et tu peux prier pour des gens très loin d’ici qui n’ont jamais entendu parler de lui. Cher Dieu, s’il te plaît, envoie des gens parler de Jésus à tout le monde. Aide-moi, moi aussi, à parler de toi à mes amis. Amen.",
+  "word_count": 430
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "fr"
+  ],
+  "order": 10,
+  "title": "Au cœur de l’Afrique",
+  "body_html": "<blockquote>« C’est par la foi qu’Abraham, lors de sa vocation, obéit… et qu’il partit sans savoir où il allait. » — d’après Hébreux 11</blockquote> <p>À la fin de 1912, Charlie et quelques amis ont fondé une nouvelle mission. Ils l’ont appelée la Mission du cœur de l’Afrique. Ses missionnaires ne recevraient pas de salaire. Ils vivraient simplement et feraient confiance à Dieu pour tout ce dont ils auraient besoin.</p> <p>Priscilla n’avait pas voulu que Charlie parte, et c’était très dur pour elle. Mais bientôt, elle a fait quelque chose d’extraordinaire. Même si elle avait le cœur fragile, elle a dirigé toute la mission depuis leur maison de Londres. Elle écrivait les lettres, s’occupait de l’argent, trouvait de nouveaux missionnaires et prenait la parole dans des réunions partout dans le pays. Sans elle, la mission n’aurait pas pu continuer.</p> <p>Au début de 1913, Charlie est parti en bateau pour l’Afrique. Il avait cinquante-deux ans, et ses médecins lui avaient conseillé de ne pas partir. Avec lui partait Alfred Buxton, un jeune homme d’environ vingt et un ans qui avait abandonné ses études de médecine pour pouvoir venir. Ils ont voyagé en bateau, en train, en bateau à vapeur sur les fleuves et à pied, à travers les pays qu’on appelle aujourd’hui le Kenya et l’Ouganda, jusqu’au Congo. Le voyage a duré environ neuf mois.</p> <p>Le 16 octobre 1913, ils sont arrivés à Niangara, une ville au bord de la rivière Uele. Beaucoup de peuples vivaient là, qui parlaient beaucoup de langues. Ils avaient déjà beaucoup souffert. Pendant des années, ceux qui gouvernaient le Congo avaient forcé les gens à récolter du caoutchouc et de l’ivoire, et les avaient traités avec cruauté. Les habitants avaient de bonnes raisons de se méfier des étrangers.</p> <p>Alfred a appris vite la langue de la région et prêchait dans cette langue. Charlie était plus lent, mais il voyageait partout. Bientôt, ils avaient ouvert quatre postes de mission. À la fin de 1914, Priscilla est tombée très malade, et Charlie est rentré en vitesse. En 1916, il est reparti au Congo avec sa fille Edith et quelques nouveaux missionnaires. Pour autant qu’on le sache, il n’a jamais revu l’Angleterre.</p> <p>Abraham a obéi à Dieu même quand il ne savait pas où il allait. Charlie aussi. Tu n’as pas besoin de savoir tout ce qui va arriver. Tu peux faire confiance à Dieu un pas après l’autre.</p> <p><em>Cher Dieu, je ne sais pas tout ce qui va m’arriver, mais toi, tu le sais. Aide-moi à te faire confiance un pas après l’autre. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qui est parti avec Charlie en Afrique en 1913 ?",
+    "answer": "Alfred Buxton, un jeune homme d’environ vingt et un ans qui avait abandonné ses études de médecine pour pouvoir partir."
+   },
+   {
+    "question": "Qu’a fait Priscilla pendant que Charlie était en Afrique ?",
+    "answer": "Elle a dirigé toute la mission depuis leur maison de Londres. Elle écrivait des lettres, s’occupait de l’argent, trouvait de nouveaux missionnaires et prenait la parole dans des réunions, même si elle avait le cœur fragile."
+   },
+   {
+    "question": "Qu’est-ce que tu peux confier à Dieu, même si tu ne sais pas comment cela va finir ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : comme Abraham et comme Charlie, nous pouvons faire confiance à Dieu un pas après l’autre."
+   }
+  ],
+  "body_text": "« C’est par la foi qu’Abraham, lors de sa vocation, obéit… et qu’il partit sans savoir où il allait. » — d’après Hébreux 11 À la fin de 1912, Charlie et quelques amis ont fondé une nouvelle mission. Ils l’ont appelée la Mission du cœur de l’Afrique. Ses missionnaires ne recevraient pas de salaire. Ils vivraient simplement et feraient confiance à Dieu pour tout ce dont ils auraient besoin. Priscilla n’avait pas voulu que Charlie parte, et c’était très dur pour elle. Mais bientôt, elle a fait quelque chose d’extraordinaire. Même si elle avait le cœur fragile, elle a dirigé toute la mission depuis leur maison de Londres. Elle écrivait les lettres, s’occupait de l’argent, trouvait de nouveaux missionnaires et prenait la parole dans des réunions partout dans le pays. Sans elle, la mission n’aurait pas pu continuer. Au début de 1913, Charlie est parti en bateau pour l’Afrique. Il avait cinquante-deux ans, et ses médecins lui avaient conseillé de ne pas partir. Avec lui partait Alfred Buxton, un jeune homme d’environ vingt et un ans qui avait abandonné ses études de médecine pour pouvoir venir. Ils ont voyagé en bateau, en train, en bateau à vapeur sur les fleuves et à pied, à travers les pays qu’on appelle aujourd’hui le Kenya et l’Ouganda, jusqu’au Congo. Le voyage a duré environ neuf mois. Le 16 octobre 1913, ils sont arrivés à Niangara, une ville au bord de la rivière Uele. Beaucoup de peuples vivaient là, qui parlaient beaucoup de langues. Ils avaient déjà beaucoup souffert. Pendant des années, ceux qui gouvernaient le Congo avaient forcé les gens à récolter du caoutchouc et de l’ivoire, et les avaient traités avec cruauté. Les habitants avaient de bonnes raisons de se méfier des étrangers. Alfred a appris vite la langue de la région et prêchait dans cette langue. Charlie était plus lent, mais il voyageait partout. Bientôt, ils avaient ouvert quatre postes de mission. À la fin de 1914, Priscilla est tombée très malade, et Charlie est rentré en vitesse. En 1916, il est reparti au Congo avec sa fille Edith et quelques nouveaux missionnaires. Pour autant qu’on le sache, il n’a jamais revu l’Angleterre. Abraham a obéi à Dieu même quand il ne savait pas où il allait. Charlie aussi. Tu n’as pas besoin de savoir tout ce qui va arriver. Tu peux faire confiance à Dieu un pas après l’autre. Cher Dieu, je ne sais pas tout ce qui va m’arriver, mais toi, tu le sais. Aide-moi à te faire confiance un pas après l’autre. Amen.",
+  "word_count": 425
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "fr"
+  ],
+  "order": 11,
+  "title": "L’Église dans la forêt",
+  "body_html": "<blockquote>« Qu’ils sont beaux les pieds de ceux qui annoncent la paix, de ceux qui annoncent de bonnes nouvelles ! » — d’après Romains 10</blockquote> <p>Charlie s’est installé dans un endroit appelé Ibambi, dans la grande forêt de l’Ituri, au milieu du peuple budu. Les premiers bâtiments de la mission ont été construits par des bâtisseurs congolais, avec des poteaux, de la boue et des toits d’herbe, et Charlie vivait dans une maison toute simple, construite de la même façon que celles de la région. Il mangeait la nourriture du pays et travaillait du petit matin jusque tard le soir. Il adorait prêcher, et les gens faisaient un long chemin à travers la forêt pour venir l’écouter.</p> <p>Voici maintenant le moment le plus important de l’histoire. La plupart des gens qui ont appris à connaître Jésus n’ont pas entendu parler de lui par Charlie ou par les autres missionnaires. Ils en ont entendu parler par des chrétiens congolais. Ces évangélistes marchaient sur d’étroits sentiers à travers la forêt jusqu’à des villages où personne ne connaissait Jésus. Ils vivaient avec les gens, leur apprenaient à lire, leur expliquaient la Bible et rassemblaient de petites Églises.</p> <p>Charlie croyait que les Églises congolaises devaient envoyer leurs propres évangélistes et s’occuper d’eux elles-mêmes, comme le faisaient les premières Églises dans la Bible. Et c’est ce qu’elles ont fait ! Des chrétiens qui avaient très peu donnaient ce qu’ils pouvaient, pour que leurs propres messagers puissent porter la bonne nouvelle à des gens plus loin encore. La plupart de leurs noms n’ont jamais été écrits, mais ce sont eux, les vrais héros de l’Église dans la forêt.</p> <p>Des croyants congolais ont aussi aidé à mettre la Bible dans leurs propres langues. Les missionnaires ne pouvaient pas le faire seuls. Des hommes et des femmes congolais expliquaient leurs mots et corrigeaient les erreurs. Charlie et deux autres missionnaires ont travaillé à une traduction en kingwana, une sorte de swahili que beaucoup de gens comprenaient, et en 1930, l’Évangile de Luc et le livre des Actes ont été imprimés dans cette langue.</p> <p>Ses filles Edith et Pauline sont venues aider, elles aussi, avec leurs maris.</p> <p>La Bible dit que les pieds de ceux qui apportent la bonne nouvelle sont beaux. Les évangélistes congolais avaient des pieds fatigués et couverts de poussière, mais pour Dieu, ils étaient beaux. Tes pieds aussi peuvent être beaux, chaque fois que tu vas partager l’amour de Dieu.</p> <p><em>Cher Dieu, merci pour les chrétiens congolais qui ont porté la bonne nouvelle à travers la forêt. Rends mes pieds beaux, eux aussi, prêts à aller partager ton amour. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qui a fait la plus grande partie du travail pour parler de Jésus dans la forêt ?",
+    "answer": "Des chrétiens congolais. Ils marchaient jusqu’à des villages où personne ne connaissait Jésus, vivaient avec les gens, leur apprenaient à lire et rassemblaient de petites Églises."
+   },
+   {
+    "question": "Quelle partie de la Bible a été imprimée en kingwana en 1930 ?",
+    "answer": "L’Évangile de Luc et le livre des Actes. Charlie y a travaillé avec deux autres missionnaires, aidés par des personnes qui parlaient la langue au Congo."
+   },
+   {
+    "question": "Comment tes pieds pourraient-ils être beaux, comme ceux des évangélistes ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : Dieu trouve beaux les pieds de tous ceux qui portent sa bonne nouvelle."
+   }
+  ],
+  "body_text": "« Qu’ils sont beaux les pieds de ceux qui annoncent la paix, de ceux qui annoncent de bonnes nouvelles ! » — d’après Romains 10 Charlie s’est installé dans un endroit appelé Ibambi, dans la grande forêt de l’Ituri, au milieu du peuple budu. Les premiers bâtiments de la mission ont été construits par des bâtisseurs congolais, avec des poteaux, de la boue et des toits d’herbe, et Charlie vivait dans une maison toute simple, construite de la même façon que celles de la région. Il mangeait la nourriture du pays et travaillait du petit matin jusque tard le soir. Il adorait prêcher, et les gens faisaient un long chemin à travers la forêt pour venir l’écouter. Voici maintenant le moment le plus important de l’histoire. La plupart des gens qui ont appris à connaître Jésus n’ont pas entendu parler de lui par Charlie ou par les autres missionnaires. Ils en ont entendu parler par des chrétiens congolais. Ces évangélistes marchaient sur d’étroits sentiers à travers la forêt jusqu’à des villages où personne ne connaissait Jésus. Ils vivaient avec les gens, leur apprenaient à lire, leur expliquaient la Bible et rassemblaient de petites Églises. Charlie croyait que les Églises congolaises devaient envoyer leurs propres évangélistes et s’occuper d’eux elles-mêmes, comme le faisaient les premières Églises dans la Bible. Et c’est ce qu’elles ont fait ! Des chrétiens qui avaient très peu donnaient ce qu’ils pouvaient, pour que leurs propres messagers puissent porter la bonne nouvelle à des gens plus loin encore. La plupart de leurs noms n’ont jamais été écrits, mais ce sont eux, les vrais héros de l’Église dans la forêt. Des croyants congolais ont aussi aidé à mettre la Bible dans leurs propres langues. Les missionnaires ne pouvaient pas le faire seuls. Des hommes et des femmes congolais expliquaient leurs mots et corrigeaient les erreurs. Charlie et deux autres missionnaires ont travaillé à une traduction en kingwana, une sorte de swahili que beaucoup de gens comprenaient, et en 1930, l’Évangile de Luc et le livre des Actes ont été imprimés dans cette langue. Ses filles Edith et Pauline sont venues aider, elles aussi, avec leurs maris. La Bible dit que les pieds de ceux qui apportent la bonne nouvelle sont beaux. Les évangélistes congolais avaient des pieds fatigués et couverts de poussière, mais pour Dieu, ils étaient beaux. Tes pieds aussi peuvent être beaux, chaque fois que tu vas partager l’amour de Dieu. Cher Dieu, merci pour les chrétiens congolais qui ont porté la bonne nouvelle à travers la forêt. Rends mes pieds beaux, eux aussi, prêts à aller partager ton amour. Amen.",
+  "word_count": 435
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "c-t-studd-a-life-children",
+   "fr"
+  ],
+  "order": 12,
+  "title": "Alléluia",
+  "body_html": "<blockquote>« J’ai combattu le bon combat, j’ai achevé la course, j’ai gardé la foi. » — d’après 2 Timothée 4</blockquote> <p>Pendant douze ans, Charlie et Priscilla ont vécu loin l’un de l’autre, lui au Congo et elle en Angleterre. Ils s’écrivaient tout le temps, et ils se sont aimés jusqu’au bout. En 1928, Priscilla a fait le long et difficile voyage jusqu’à Ibambi. Elle n’a pu rester que peu de temps, et c’était la dernière fois qu’ils se sont vus. En janvier 1929, Priscilla est morte en Espagne. Charlie avait perdu sa plus chère compagne.</p> <p>Charlie était vieux maintenant, souvent malade et souvent souffrant. Il pouvait être sévère et difficile à vivre au travail, et les adultes de la mission n’étaient pas toujours d’accord avec lui. Ce n’était pas un homme parfait. Mais il n’a jamais cessé d’aimer Jésus et les gens du Congo.</p> <p>Pendant sa dernière année, il a écrit une lettre d’adieu à ses petits-enfants. Il y a mis deux vers qu’il aimait. Ce n’est pas lui qui les avait écrits, mais ils disaient ce qu’il croyait : « Une seule vie, bien vite passée ; seul ce qui est fait pour Christ durera. »</p> <p>En juillet 1931, Charlie est tombé très malade, et il n’y avait aucun hôpital assez proche pour le soigner. Il est mort à Ibambi le 16 juillet 1931, à l’âge de soixante-dix ans. Sa famille et ses amis se souvenaient que son dernier mot avait été « Alléluia », qui veut dire « Louez le Seigneur ».</p> <p>Une très grande foule de chrétiens congolais est venue à son enterrement, et beaucoup venaient de loin. Il a été enterré à Ibambi, au milieu du peuple qu’il était venu servir. La mission qu’il a fondée envoie encore des ouvriers dans le monde entier, et aujourd’hui elle s’appelle WEC International. Et l’Église dans la forêt n’a pas cessé de grandir. Elle est dirigée par des chrétiens congolais, et ses membres se comptent par centaines de milliers.</p> <p>Charlie a donné toute sa vie à Jésus. Toi aussi, tu n’as qu’une seule vie. Tout ce que tu fais pour Jésus, même les petites choses, durera pour toujours.</p> <p><em>Cher Dieu, merci pour Charlie Studd et pour les chrétiens congolais qui ont porté ta bonne nouvelle à travers la forêt. Aide-moi à vivre ma seule vie pour toi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quels deux vers Charlie a-t-il mis dans sa lettre à ses petits-enfants ?",
+    "answer": "« Une seule vie, bien vite passée ; seul ce qui est fait pour Christ durera. » Il les aimait, même si ce n’est pas lui qui les avait écrits."
+   },
+   {
+    "question": "Quel a été le dernier mot de Charlie, d’après les souvenirs de sa famille ?",
+    "answer": "« Alléluia », qui veut dire « Louez le Seigneur »."
+   },
+   {
+    "question": "Quelle petite chose pourrais-tu faire pour Jésus cette semaine ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : chacun de nous n’a qu’une seule vie, et tout ce que nous faisons pour Jésus durera."
+   }
+  ],
+  "body_text": "« J’ai combattu le bon combat, j’ai achevé la course, j’ai gardé la foi. » — d’après 2 Timothée 4 Pendant douze ans, Charlie et Priscilla ont vécu loin l’un de l’autre, lui au Congo et elle en Angleterre. Ils s’écrivaient tout le temps, et ils se sont aimés jusqu’au bout. En 1928, Priscilla a fait le long et difficile voyage jusqu’à Ibambi. Elle n’a pu rester que peu de temps, et c’était la dernière fois qu’ils se sont vus. En janvier 1929, Priscilla est morte en Espagne. Charlie avait perdu sa plus chère compagne. Charlie était vieux maintenant, souvent malade et souvent souffrant. Il pouvait être sévère et difficile à vivre au travail, et les adultes de la mission n’étaient pas toujours d’accord avec lui. Ce n’était pas un homme parfait. Mais il n’a jamais cessé d’aimer Jésus et les gens du Congo. Pendant sa dernière année, il a écrit une lettre d’adieu à ses petits-enfants. Il y a mis deux vers qu’il aimait. Ce n’est pas lui qui les avait écrits, mais ils disaient ce qu’il croyait : « Une seule vie, bien vite passée ; seul ce qui est fait pour Christ durera. » En juillet 1931, Charlie est tombé très malade, et il n’y avait aucun hôpital assez proche pour le soigner. Il est mort à Ibambi le 16 juillet 1931, à l’âge de soixante-dix ans. Sa famille et ses amis se souvenaient que son dernier mot avait été « Alléluia », qui veut dire « Louez le Seigneur ». Une très grande foule de chrétiens congolais est venue à son enterrement, et beaucoup venaient de loin. Il a été enterré à Ibambi, au milieu du peuple qu’il était venu servir. La mission qu’il a fondée envoie encore des ouvriers dans le monde entier, et aujourd’hui elle s’appelle WEC International. Et l’Église dans la forêt n’a pas cessé de grandir. Elle est dirigée par des chrétiens congolais, et ses membres se comptent par centaines de milliers. Charlie a donné toute sa vie à Jésus. Toi aussi, tu n’as qu’une seule vie. Tout ce que tu fais pour Jésus, même les petites choses, durera pour toujours. Cher Dieu, merci pour Charlie Studd et pour les chrétiens congolais qui ont porté ta bonne nouvelle à travers la forêt. Aide-moi à vivre ma seule vie pour toi. Amen.",
+  "word_count": 389
+ }
+}
+]

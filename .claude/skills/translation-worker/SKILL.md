@@ -2603,7 +2603,11 @@ archaic spelling and period punctuation are the text, not defects in it.
   Words are `\w mot|strong="G…"\w*` (and `\+w` inside `\wj`). Stripping a cross-ref with
   `''` welds sentences in 112 verses (`Fils unique,afin`, `persécutes.Il`). Replace it with
   a SPACE and then collapse whitespace. After that, a scan for punctuation glued to a
-  capital letter finds 0. French bio house style, measured from 62 files: « x » with
+  capital letter finds 0. The opposite holds for word/character MARKERS (`\wj`, `\+w*`):
+  drop them with `''`, or elisions split (`qu ’ il`); and strip a trailing paragraph
+  marker (`\q1`) left at a verse's end. Young-reader editions: titles take « (Pour
+  enfants) » / « (Pour ados) »; epigraphs are whole Segond verses with French spacing
+  before : ; (notes `source_file: "Louis Segond (1910)"`, status `mined`). French bio house style, measured from 62 files: « x » with
   ordinary spaces, curly ’, a space before ? ! ; :, passé simple; bio band 1.04–1.12.
   Translators default to English denomination names, but the fr corpus uses
   « Assemblées de Dieu » and « Alliance chrétienne et missionnaire », so normalise.
