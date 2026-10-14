@@ -1,0 +1,18 @@
+{
+ "kind": "bio",
+ "slug": "a-w-tozer",
+ "language": "vi",
+ "job_issue": 5949,
+ "references": [
+  {
+   "reference": "Luke 18:13",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Psalm 42:2",
+   "status": "self_rendered",
+   "block_index": 26
+  }
+ ]
+}
