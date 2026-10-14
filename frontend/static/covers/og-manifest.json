@@ -13193,6 +13193,17 @@
 				487
 			]
 		},
+		"ko/school-of-prayer": {
+			"ground": "06d0d9789cc78677648d024e6d2350469e922c3ab3193e275ae01d262f401b94",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "bce8ed7454a054f20de3988b6a43ccc17c1152807277f859703de11f8437005d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0.04
+		},
 		"ko/the-inner-chamber": {
 			"ground": "c7de56895f8b293758df95f953d4a9baf38e7d8d46692e615ab0c57bc08f7c63",
 			"style": "devotional",
