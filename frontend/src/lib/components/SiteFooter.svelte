@@ -37,8 +37,6 @@
 	import { elementVisible } from '$lib/scrollSpy.svelte';
 	import { pageShowsBook } from '$lib/footerResume';
 	import { footerFeedback } from '$lib/footerFeedback.svelte';
-	import { mediaFlag } from '$lib/mediaFlag.svelte';
-	import { PHONE } from '$lib/breakpoints';
 	import type { Snippet } from 'svelte';
 
 	const t = i18n.t;
@@ -100,15 +98,22 @@
 
 	const blessing = $derived(BENEDICTION[lang.current]);
 
-	// Phones fold the link columns (see linkColumn).
-	const phone = mediaFlag(PHONE);
+	// Phone fold state: the ids of the link columns the reader has opened.
+	let openCols = $state(new Set<string>());
+	function toggleCol(id: string) {
+		const next = new Set(openCols);
+		if (!next.delete(id)) next.add(id);
+		openCols = next;
+	}
 
-	// Tell FeedbackFab once the column's own "Send feedback" has scrolled into
-	// view — or past it, to the rows below — so the floating button steps
-	// aside instead of duplicating it over the footer's last rows.
-	let feedbackItem = $state<HTMLElement>();
+	// Tell FeedbackFab once the Account column — which carries "Send feedback" —
+	// has scrolled into view, or past it to the rows below, so the floating
+	// button steps aside instead of duplicating it over the footer's last rows.
+	// The column, not the link: on a phone the link may be folded away while
+	// its heading still shows.
 	$effect(() => {
-		const node = feedbackItem;
+		if (!auth.enabled) return; // no Account column to watch
+		const node = document.getElementById('footer-account-heading')?.closest('nav');
 		if (!node || typeof IntersectionObserver === 'undefined') return;
 		const io = new IntersectionObserver(([e]) => {
 			footerFeedback.reached = e.isIntersecting || e.boundingClientRect.top < 0;
@@ -251,32 +256,32 @@
 	     Account shows only where accounts exist, so the count runs 3–5 —
 	     computed once in footerGridClass, which spells every reachable
 	     grid-cols literal out for Tailwind's scanner. -->
-	<!-- One link column. On a phone it folds into a <details> section (the
-	     footer had grown a screen and a half tall there); wider, it is the plain
-	     heading + list. Swapped after hydration (mediaFlag), so the prerendered
-	     page — what crawlers read — is the open desktop form. -->
+	<!-- One link column. On a phone it folds to its heading (the footer had
+	     grown a screen and a half tall there), opened by a toggle in the heading;
+	     wider, the toggle is hidden and the heading reads plain. CSS decides
+	     which, so the prerendered page (what crawlers read) carries every link
+	     and nothing reflows after hydration. Only the visible half of the
+	     heading names the landmark. -->
 	{#snippet linkColumn(id: string, heading: string, list: Snippet)}
-		<nav aria-labelledby={id} class:col-span-2={phone.matches}>
-			{#if phone.matches}
-				<details class="footer-fold">
-					<summary>
-						<h2 {id} class="footer-heading">{heading}</h2>
-						<Icon name="chevron-right" size={16} mirror={false} class="footer-fold-chevron" />
-					</summary>
-					{@render list()}
-				</details>
-			{:else}
-				<h2 {id} class="footer-heading">{heading}</h2>
-				{@render list()}
-			{/if}
+		<nav aria-labelledby={id} class="footer-col" class:open={openCols.has(id)}>
+			<h2 {id} class="footer-heading">
+				<span class="footer-col-label">{heading}</span>
+				<button
+					type="button"
+					class="footer-col-toggle"
+					aria-expanded={openCols.has(id)}
+					onclick={() => toggleCol(id)}
+				>
+					{heading}<Icon name="chevron-right" size={16} mirror={false} class="footer-fold-chevron" />
+				</button>
+			</h2>
+			{@render list()}
 		</nav>
 	{/snippet}
 	<div
-		class="chrome-col grid grid-cols-2 gap-x-8 px-5 py-10 sm:py-12 {phone.matches
-			? 'gap-y-0'
-			: 'gap-y-10'} {footerGridClass}"
+		class="footer-cols chrome-col grid grid-cols-2 gap-x-8 gap-y-10 px-5 py-10 sm:py-12 {footerGridClass}"
 	>
-		<div class="col-span-2 lg:col-span-1" class:mb-6={phone.matches}>
+		<div class="col-span-2 lg:col-span-1">
 			<a class="inline-block text-text" href={localizeHref('/')} aria-label={t('common.home')}>
 				<BrandMark height={34} />
 			</a>
@@ -346,7 +351,7 @@
 				{#each accountLinks as d (d.labelKey)}
 					<li><a href={d.href}>{t(d.labelKey)}</a></li>
 				{/each}
-				<li bind:this={feedbackItem}>
+				<li>
 					<!-- Feedback opens a modal when signed in; signed out it needs an
 					     account first, so it links to /login like the rows above. -->
 					{#if auth.user}
@@ -365,7 +370,7 @@
 		     (unlike the brand column) so the link columns pair up two-per-row:
 		     with Explore · Discover · My Account it makes an even 2×2 for a
 		     signed-in English reader instead of leaving My Account stranded. -->
-		<div class="lg:col-span-1" class:col-span-2={phone.matches} class:mt-8={phone.matches}>
+		<div class="footer-mission lg:col-span-1">
 			<h2 class="footer-heading">{t('footer.ministryHeading')}</h2>
 			<p class="text-small text-muted">
 				{t('footer.mission')}
@@ -522,38 +527,64 @@
 		background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 55%, var(--gold) 100%);
 	}
 
-	/* Phone link columns as <details> sections: a ruled row per column, the
-	   heading as the tap target, a chevron that turns as it opens. */
-	.footer-fold {
-		border-block: 1px solid var(--border);
-	}
-	/* Adjacent sections share one rule, not two. */
-	nav + nav .footer-fold {
-		border-block-start: 0;
-	}
-	.footer-fold summary {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		min-block-size: 3rem;
-		cursor: pointer;
-		list-style: none;
-	}
-	.footer-fold summary::-webkit-details-marker {
+	/* Phone link columns: each folds to a ruled row, its heading's toggle the
+	   tap target and a chevron that turns as it opens. Wider, the toggle is
+	   hidden and the plain label shows. */
+	.footer-col-toggle {
 		display: none;
 	}
-	.footer-fold summary .footer-heading {
-		margin: 0;
+	@media (max-width: 639.98px) {
+		.footer-cols {
+			row-gap: 0;
+		}
+		.footer-cols > :first-child {
+			margin-block-end: 1.5rem;
+		}
+		.footer-col {
+			grid-column: 1 / -1;
+			border-block: 1px solid var(--border);
+		}
+		.footer-col + .footer-col {
+			border-block-start: 0;
+		}
+		.footer-col .footer-heading {
+			margin: 0;
+		}
+		.footer-col-label {
+			display: none;
+		}
+		.footer-col-toggle {
+			display: flex;
+			inline-size: 100%;
+			min-block-size: 3rem;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0;
+			border: 0;
+			background: none;
+			font: inherit;
+			letter-spacing: inherit;
+			text-transform: inherit;
+			color: inherit;
+			cursor: pointer;
+		}
+		.footer-col:not(.open) :global(.footer-links) {
+			display: none;
+		}
+		.footer-col.open :global(.footer-links) {
+			padding-block-end: 1rem;
+		}
+		.footer-mission {
+			grid-column: 1 / -1;
+			margin-block-start: 2rem;
+		}
 	}
-	.footer-fold :global(.footer-fold-chevron) {
+	.footer-col :global(.footer-fold-chevron) {
 		color: var(--muted);
 		transition: rotate var(--duration-fast) ease;
 	}
-	.footer-fold[open] :global(.footer-fold-chevron) {
+	.footer-col.open :global(.footer-fold-chevron) {
 		rotate: 90deg;
-	}
-	.footer-fold :global(.footer-links) {
-		padding-block-end: 1rem;
 	}
 
 	/* "Before you go" cards: two across from sm, stacked on a phone. Each is a
@@ -747,7 +778,7 @@
 		.footer-card-link:hover :global(svg) {
 			translate: none;
 		}
-		.footer-fold :global(.footer-fold-chevron) {
+		.footer-col :global(.footer-fold-chevron) {
 			transition: none;
 		}
 		.footer-invite-cta:hover::after {

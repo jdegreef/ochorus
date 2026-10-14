@@ -26,12 +26,15 @@
 
 	const t = i18n.t;
 	let open = $state(false);
+	// Kept while it holds keyboard focus: stepping aside then would drop the
+	// reader's focus to the top of the document.
+	let focused = $state(false);
 
 	const show = $derived(
 		auth.enabled &&
 			!!auth.user &&
 			!readerUi.focus &&
-			!footerFeedback.reached &&
+			(!footerFeedback.reached || focused) &&
 			!($page.route.id ?? '').startsWith('/admin')
 	);
 </script>
@@ -44,6 +47,8 @@
 		title={t('feedback.send')}
 		aria-haspopup="dialog"
 		onclick={() => (open = true)}
+		onfocus={() => (focused = true)}
+		onblur={() => (focused = false)}
 	>
 		<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4"
 			stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg>
