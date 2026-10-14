@@ -1,0 +1,19 @@
+{
+ "kind": "bio",
+ "slug": "hudson-taylor",
+ "language": "vi",
+ "job_issue": 5953,
+ "references": [
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "John 15:4-5",
+   "status": "self_rendered",
+   "block_index": 17
+  }
+ ]
+}
