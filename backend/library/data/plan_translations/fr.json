@@ -202,5 +202,12 @@
   "note": [
    "2026-10-14: written with revival-lectures.fr (« Discours sur les réveils religieux », the shipped fr study guide's title) and selected-sermons-edwards.fr (« Sermons choisis de Jonathan Edwards »), which ship together in this PR and complete the set with baptism-with-the-holy-spirit.fr — so seed_plans creates the (send-the-fire, fr) row on the deploy that ships it."
   ]
+ },
+ "new-to-the-faith": {
+  "title": "Nouveau dans la foi",
+  "description": "Cinq semaines et demie pour quiconque commence tout juste avec Christ. Charles Spurgeon vous accueille à la porte étroite avec l’aide la plus simple qui soit pour se confier en Jésus ; puis R. A. Torrey, qui écrit pour les nouveaux croyants, montre comment bien commencer — l’assurance, le Saint-Esprit, l’Église, la Bible, la prière et le témoignage. De courts articles, en chemin, répondent aux questions que se pose tout nouveau chrétien : ce qu’est l’Évangile, pourquoi Jésus est mort, ce que signifient le baptême et la sainte cène, et comment continuer à grandir.",
+  "note": [
+   "2026-10-14: AI-drafted; awaiting native review. Written with how-to-succeed-in-the-christian-life.fr (« Comment réussir dans la vie chrétienne »), which ships in this PR; around-the-wicket-gate.fr (« Autour de la porte étroite ») and every article in the plan already have fr editions, so seed_plans now creates the (new-to-the-faith, fr) row."
+  ]
  }
 }
