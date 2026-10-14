@@ -14,9 +14,10 @@ name: Deploy train
 # redeploy even when nothing deployable changed), or:
 #   gh workflow run deploy-train.yml
 #
-# Setup: copy each service's Render deploy hook (service → Settings → Deploy
-# Hook) into the repo secrets RENDER_DEPLOY_HOOK_API and RENDER_DEPLOY_HOOK_WEB.
-# The email cron has no deploy hook on Render; it auto-deploys (render.yaml).
+# Setup: a Render API key (Account Settings → API Keys) in the repo secret
+# RENDER_API_KEY. The service IDs below are not secrets. Deploy hooks are not
+# used: Render 500s on a hook carrying `ref=<sha>` (deploy_train.py has why).
+# The email cron is not on the train; it auto-deploys (render.yaml).
 on:
   schedule:
     - cron: '5 */2 * * *'
@@ -50,8 +51,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           FORCE: ${{ inputs.force }}
-          RENDER_DEPLOY_HOOK_API: ${{ secrets.RENDER_DEPLOY_HOOK_API }}
-          RENDER_DEPLOY_HOOK_WEB: ${{ secrets.RENDER_DEPLOY_HOOK_WEB }}
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_SERVICE_ID_API: srv-d948c44vikkc73brci60 # ochorus-api
+          RENDER_SERVICE_ID_WEB: srv-d948c44vikkc73brci5g # ochorus-web
         run: |
           pip install --quiet pyyaml
           python3 .github/scripts/deploy_train.py

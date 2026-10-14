@@ -85,13 +85,16 @@ services:
       # that no deploy fired, rather than pretending it shipped.
       - key: RENDER_WEB_DEPLOY_HOOK
         sync: false
-      # Pins that rebuild to this API's own commit (library/golive.py). Only
-      # safe while the deploy train keeps every service on one commit, so it
-      # is "true" exactly when autoDeployTrigger is "off" on API and web. Under
-      # auto-deploy the reader can run a newer frontend-only commit than this
-      # API, and pinning would roll it back.
+      # When "true", library/golive.py pins the reader rebuild it fires on a
+      # language launch to this API's commit by adding `ref=<sha>` to the web
+      # deploy hook. Render answers that with a 500 (seen 2026-10-14; the
+      # deploy train moved to the REST API for the same reason), so it stays
+      # "false" even under the train until golive deploys a pinned commit some
+      # other way. Unpinned, the launch rebuild builds main's tip, and if main
+      # holds content this API has not released yet, that one web build waits
+      # at its content gate and fails; the next train ships the launch.
       - key: DEPLOY_TRAIN
-        value: "true"
+        value: "false"
       # The reader's public origin (e.g. https://ochorus.com) — lets the admin
       # confirm after a deploy that a newly live locale is really in the built
       # sitemap. Optional: without it that check reports "unknown".
