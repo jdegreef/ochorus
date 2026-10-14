@@ -12326,3 +12326,56 @@ BODY_CORRECTIONS.setdefault("pensees-teens", {}).setdefault("replacements", []).
     ("taking holy water and attending Mass",
      "taking holy water and having Masses said"),
 ])
+# Found while translating Brave for God: Book Four to French (2026-10-13):
+# three factual slips, fixed in every edition. Mary Paton and her baby died
+# some four months after the Patons landed on Tanna (Nov 1858 - Mar 1859),
+# not weeks; missionary societies (SPG 1701, the Moravians) predate George
+# Liele; and the men refused Ida Scudder's offer of her FATHER, a male
+# doctor, which the English had turned round. Each pair is one edition's.
+BODY_CORRECTIONS.setdefault("brave-for-god-4", {}).setdefault("replacements", []).extend([
+    # [am]
+    ("ጥቂት ሳምንታት ብቻ",
+     "ጥቂት ወራት ብቻ"),
+    # [am]
+    ("በዓለም ላይ ገና አንድም የሚስዮን ማኅበር ባልነበረበት",
+     "የኋለኛው ዘመን ታላላቅ የሚስዮን ማኅበራት ገና ባልተጀመሩበት"),
+    # [am]
+    ("ወዲያውኑ መጥታ ልትረዳ",
+     "ሐኪም የሆነውን አባቷን ወዲያውኑ ልትልክላቸው"),
+    # [ar]
+    ("أسابيع قليلة",
+     "أشهر قليلة"),
+    # [ar]
+    ("أن توجد في العالم أيّ جمعيّة إرساليّة على الإطلاق",
+     "أن تبدأ الجمعيّات الإرساليّة الكبرى التي قامت في السنوات اللاحقة"),
+    # [ar]
+    ("أن تأتي في الحال لتساعد",
+     "أن ترسل إليهم أباها، وكان طبيبًا، في الحال"),
+    # [lg]
+    ("wiiki ntono",
+     "emyezi mitono"),
+    # [lg]
+    ("nga tewannabaawo bibiina bya babuulizi mu nsi n'akatono",
+     "ng'ebibiina ebinene eby'ababuulizi eby'emyaka egyaddirira nga tebinnatandika"),
+    # [lg]
+    ("okujja mangwago okuyamba",
+     "okubaweereza kitaawe, eyali omusawo, mangwago"),
+    # [sw]
+    ("majuma machache tu",
+     "miezi michache tu"),
+    # [sw]
+    ("kuwapo vyama vyovyote vya kimisionari duniani",
+     "kuanza kwa vyama vikubwa vya kimisionari vya miaka ya baadaye"),
+    # [sw]
+    ("kuja mara moja na kusaidia",
+     "kumtuma baba yake, aliyekuwa daktari, mara moja"),
+    # [en]
+    ("died, only weeks after they had arrived",
+     "died, only a few months after they had arrived"),
+    # [en]
+    ("before there were any missionary societies in the world at all",
+     "before the great missionary societies of later years had begun"),
+    # [en]
+    ("Ida offered to come at once and help",
+     "Ida offered to send her father, a doctor, at once"),
+])

@@ -165,5 +165,19 @@
    "Book titles as shipped: « Autour de la porte étroite » (around-the-wicket-gate.fr), « Le Voyage du pèlerin » (pilgrims-progress.fr), « Grâce abondante pour le premier des pécheurs » (grace-abounding.fr, added in this PR — the shipped fr study guide's title). The description echoes them (porte étroite / pèlerin / premier des pécheurs).",
    "grace-abounding.fr completes the plan's three-book set in French, so seed_plans creates the (the-pilgrims-way, fr) row on the deploy that ships it — this prose must land in the SAME PR (the #819 defect)."
   ]
+ },
+ "brave-for-god-24-true-stories": {
+  "title": "Courageux pour Dieu : 24 histoires vraies",
+  "description": "Trois semaines et demie d’histoires vraies pour les jeunes lecteurs, une par jour : les quatre livres de Courageux pour Dieu, vingt-quatre personnes ordinaires venues de toutes les régions du monde, qui ont fait confiance à Dieu et qu’il a rendues courageuses.",
+  "note": [
+   "AI-drafted; awaiting native review. Shipped with the fr editions of brave-for-god-3 and brave-for-god-4 (French young-readers batch), which complete the plan's four source books in French, so seed_plans now creates the fr row. The series name follows the shipped French editions (« Courageux pour Dieu : Livre deux »). Job #6029."
+  ]
+ },
+ "family-devotions-boy-from-osogun": {
+  "title": "Culte en famille : le garçon d’Osogun",
+  "description": "Douze soirées de cultes de famille de cinq minutes avec Samuel Ajayi Crowther, le garçon yoruba vendu comme esclave qui, devenu grand, a donné à son peuple la Bible dans sa propre langue. Lisez à voix haute un court chapitre : le navire négrier arrêté en mer, le jour où il a retrouvé sa mère, le Notre Père en yoruba pour la reine, et les esclaves bienveillants qui l’ont nourri quand il était prisonnier. Chacun se termine par une prière et trois questions à discuter ensemble.",
+  "note": [
+   "AI-drafted; awaiting native review. Shipped with the fr edition of samuel-ajayi-crowther-a-life-children (French young-readers batch), the plan's only source book, so seed_plans now creates the fr row. « Culte en famille » follows the other fr family-devotions plans (heroes-who-trusted-god, pilgrims-journey). Job #6030."
+  ]
  }
 }

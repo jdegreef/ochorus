@@ -1,0 +1,138 @@
+{
+ "kind": "book",
+ "slug": "david-livingstone-a-life-children",
+ "language": "fr",
+ "note": [
+  "Each chapter opens with a verse blockquote cited by chapter only (“— from Ecclesiastes 9”); the French keeps that shape (« — d’après Ecclésiaste 9 »). Where the English quotes the verse itself (KJV/ESV wording), the French uses the Louis Segond (1910) words verbatim, with ‘…’ for the English ellipses (2 Tim 4:17, Isa 61:1, Heb 11:8); only the Psalm 15 paraphrase epigraph and the closing body echoes are self_rendered. Segond line-initial capitals in poetic verses (« Et l’étendue », « La mort ») are kept as Segond prints them. Isaiah 35:1 in Segond says « narcisse » where the KJV has “rose”.",
+  "Segond numbering shifts: Psalm 19:1 = Segond 19:2 and Psalm 34:18 = Segond 34:19; references use English numbering, the French citations give the chapter only, as the English does.",
+  "Terms: “piecer” → « rattacheur »; Mosi-oa-Tunya glossed « la fumée qui tonne »; Lake Nyasa → « lac Nyassa »; Stanley’s greeting uses the established French form « Docteur Livingstone, je présume ? ». Distances converted: “a hundred miles” → « plus de cent cinquante kilomètres », “about a thousand miles” → « environ mille six cents kilomètres ». Livingstone’s and Sechele’s quoted sayings are plain renderings of the English. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Ecclesiastes 9:10a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ecclesiastes 9:10a",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Psalm 19:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Timothy 4:17",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 121:2",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Acts 8:31",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 35:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 15:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 28:20b",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Isaiah 61:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 61:1",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalm 34:18a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 34:18a",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Hebrews 11:8",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 25:25",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 116:15",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 12:24",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 12
+  }
+ ]
+}
