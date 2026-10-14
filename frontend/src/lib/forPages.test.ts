@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { FOR_LINKS, forIndexPath, forLocale, forPath } from './forLinks';
+import { FOR_LINKS, forIndexPath, forLocale, forPath, forSentence } from './forLinks';
 import { FOR_META } from './forMeta';
 import { messageShareLinks } from './share';
 import {
@@ -422,5 +422,20 @@ describe('the French "Ochorus pour …" pages', () => {
 		const row = forLanguage('sw', { books: [], sermons: 0, plans: 0 }, [], 'fr');
 		expect(row.name).toBe('swahili');
 		expect(forLanguage('lg', { books: [], sermons: 0, plans: 0 }, [], 'fr').name).toBe('luganda');
+	});
+});
+
+describe('the footer sentence', () => {
+	it('reads as prose in each page language, every audience linked once', () => {
+		const join = (l: 'en' | 'fr') => forSentence(l).map((p) => p.text).join('');
+		expect(join('en')).toBe(
+			'churches, small groups, youth ministries, missionaries, chaplains, Bible colleges, schools, homeschool families, and parents'
+		);
+		expect(join('fr')).toBe(
+			'les Églises, les petits groupes, la pastorale des jeunes, les missionnaires, les aumôniers, les instituts bibliques, les écoles, l’école à la maison et les parents'
+		);
+		for (const l of ['en', 'fr'] as const) {
+			expect(forSentence(l).filter((p) => p.slug).map((p) => p.slug)).toEqual(FOR_LINKS.map((d) => d.slug));
+		}
 	});
 });
