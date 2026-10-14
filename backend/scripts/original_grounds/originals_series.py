@@ -165,6 +165,18 @@ S["tell-me-the-story-7"] = tmts("#0c2e3a", "#1f6a6a", "#d8d084", "#fff0a8", "#4a
   '<g fill="#ffe08a"><rect x="352" y="580" width="8" height="10"/><rect x="372" y="580" width="8" height="10"/><rect x="444" y="584" width="8" height="10"/><rect x="310" y="592" width="8" height="10"/></g>'
   '<path d="M300 640 C270 660 250 690 236 720" stroke="#e2c08a" stroke-width="9" fill="none" opacity=".75"/>')
 
+S["tell-me-the-story-8"] = tmts("#0c2c3e", "#1c6476", "#e2d88c", "#fff2b0", "#3f9a76", "#25583e",
+  # the tree of life, golden, in the sky
+  '<circle cx="300" cy="214" r="62" fill="#fff2b0" opacity=".16"/><rect x="295" y="226" width="10" height="30" rx="3" fill="#c99a4a"/>'
+  '<circle cx="300" cy="206" r="32" fill="#f2c24a"/><circle cx="276" cy="222" r="20" fill="#f2c24a"/><circle cx="324" cy="222" r="20" fill="#f2c24a"/>'
+  '<g fill="#e8563a"><circle cx="290" cy="198" r="4"/><circle cx="312" cy="208" r="4"/><circle cx="282" cy="224" r="4"/><circle cx="322" cy="226" r="4"/><circle cx="300" cy="186" r="4"/></g>',
+  # the sea, Paul's ship under sail, and a far city on the shore
+  '<path d="M0 640 L0 606 C120 598 240 604 360 600 C460 597 540 600 600 598 L600 640 Z" fill="#2a8aa0"/>'
+  '<path d="M0 606 C120 598 240 604 360 600 C460 597 540 600 600 598" stroke="#dff4f6" stroke-width="2.5" fill="none" opacity=".8"/>'
+  '<g fill="#d8a878"><rect x="470" y="570" width="22" height="30"/><rect x="496" y="560" width="26" height="40"/><rect x="526" y="574" width="20" height="26"/><path d="M496 560 L509 546 L522 560 Z"/></g>'
+  '<path d="M280 596 L392 596 L378 618 L294 618 Z" fill="#8a5432"/><line x1="336" y1="596" x2="336" y2="540" stroke="#5a3a20" stroke-width="4"/>'
+  '<path d="M314 548 L358 548 L362 590 L310 590 Z" fill="#fff6e0"/><path d="M336 548 L336 590" stroke="#e8dcc0" stroke-width="2"/>')
+
 # ── The Big Story: from the garden to the city ──────────────────────────────
 d, b = sky("#0d1230", "#2a2a55", "#8a5a5a")
 glow = '<radialGradient id="city" cx="470" cy="600" r="220" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffd98a" stop-opacity=".7"/><stop offset=".4" stop-color="#e89a5a" stop-opacity=".25"/><stop offset="1" stop-color="#e89a5a" stop-opacity="0"/></radialGradient>'
