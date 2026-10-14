@@ -2204,6 +2204,12 @@ Chapter bodies may carry `<figure><img><figcaption></figure>` (sanitizer
    check `quote_seed.py` for that book's stored paragraph indices.
 6. Verify: paged + scroll + 375px in the reader; `export_book --format epub`
    and `--format pdf` (CHROME_PATH) both show the plates.
+7. **A house-written book (built from a manuscript) places its pictures in the BUILD,
+   not by hand-editing the fixture** — or the next rebuild drops them.
+   `build_lamplighters` is the model: `VOLUMES[n]["maps"]` open Chapter 1, and
+   `PLATES_n` entries `(chapter, paragraph-opening, file, alt, caption)` are set
+   after the paragraph whose opening matches (the build fails unless exactly one
+   matches). Use curly apostrophes in alt/caption text if the book's quotes are curly.
 
 ## Two kinds of fix
 

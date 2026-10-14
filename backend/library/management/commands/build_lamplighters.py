@@ -49,6 +49,95 @@ ATTRIBUTION = (
     "readers, free to read and share. Book 1 of The Lamplighters of Gloamhaven."
 )
 
+#: Book 1's plates — shadow-play silhouettes in the style the founder approved
+#: (2026-10-14). The anchor is the opening of the manuscript paragraph the plate
+#: follows; the build fails if it matches no paragraph, or more than one.
+PLATES_1: tuple[tuple[int, str, str, str, str], ...] = (
+    (
+        1,
+        "Only it was not quite dark.",
+        "plate-01-the-lamp-in-the-flue.jpg",
+        "Wren, a small black silhouette, braced across a narrow brick chimney "
+        "with her back to one wall and her feet to the other, reaches up toward "
+        "a brass lamp glowing gold in a niche, a red ribbon at her wrist; below "
+        "her in the dark, a Gutterling climbs and white eyes watch.",
+        "Halfway up, in a little niche cut into the brick, something was shining.",
+    ),
+    (
+        5,
+        "It was not the small warm glow she knew.",
+        "plate-05-over-the-wall.jpg",
+        "In a dark street of crooked black houses, a small girl holds up a blazing "
+        "white-gold lamp. Near a bakery door, a tall grey faceless smoke-figure "
+        "shrinks back from the light, away from a tiny child patting a grey baker "
+        "on her doorstep, while more grey shapes pour over the city wall behind.",
+        "It was white-gold, blazing, as if somebody had opened the door of a great furnace.",
+    ),
+    (
+        7,
+        "He reached up with his long pole, the brass",
+        "plate-07-the-leaning-tower.jpg",
+        "At night on a city wall, a tall, stooped, bearded old man in a long coat "
+        "uses a long hooked pole to relight a tall street-lamp. High in a crooked "
+        "leaning tower, a girl and a small fox watch from a little gold-lit window "
+        "under the roof, and faint grey figures drift on the plain beyond the wall.",
+        "The Ring-lamp coughed and caught and burned up again, brighter than its neighbours.",
+    ),
+    (
+        8,
+        "Cinder strolled out from behind the stool, and her shadow",
+        "plate-08-the-shadow-play.jpg",
+        "Two children sit in silhouette before a hanging sheet lit gold from "
+        "behind. On it a giant fox shadow walks beside a paper mountain, where a "
+        "tiny figure carries a glowing lamp, while a bearded old man kneels at the "
+        "sheet’s edge.",
+        "A fox the size of a carthorse, with a brush like a bonfire.",
+    ),
+    (
+        10,
+        "He looked at her. He put his foot where",
+        "plate-10-across-the-glass-dome.jpg",
+        "On a vast glass dome high above a dark city, a fox, a terrified gangly boy "
+        "and a small girl inch along a narrow iron rib. The girl reaches back to "
+        "the boy, a faint gold glow shines from inside her coat, and a white-eyed "
+        "imp waits ahead at the dome’s edge.",
+        "“Look at me. Not down. Me.”",
+    ),
+    (
+        12,
+        "He took the stairs two at a time.",
+        "plate-12-the-strongroom-stair.jpg",
+        "A tall, thin boy in a long coat, in black silhouette, climbs a dark stone "
+        "stair two steps at a time, holding up a small brass lamp. Its gold glow "
+        "lights the damp stone wall and catches his spectacles, and an unlit "
+        "lantern dangles from his other hand.",
+        "…every one of its sixty-one steps lit and golden and perfectly plain.",
+    ),
+    (
+        14,
+        "She heard the fire go down into the pipes",
+        "plate-14-given-away.jpg",
+        "On top of the Great Beacon, Wren tips the lamp over the rim of the vast "
+        "iron bowl and gold fire roars up, while Captain Varrick throws an arm "
+        "across his eyes; far below, the Ring of lamps blazes around the city.",
+        "And she tipped the lamp, and gave the Flame away.",
+    ),
+    (
+        15,
+        "They walked out together: a tall old man with",
+        "plate-15-into-the-greywaste.jpg",
+        "From the top of a city wall lined with glowing gold lamps, a tall old man "
+        "with a hooked pole, a lanky boy, a small girl carrying a glowing lamp and "
+        "a grey fox walk away down a road across a pale grey plain of dead trees, "
+        "toward a faint mountain with a gold point under a pale sun; a tiny grey "
+        "horseman is far off on the plain.",
+        "Behind them the Ring burned gold along the wall.",
+    ),
+)
+
+#: The size every plate is shipped at (portrait, the house plate frame).
+PLATE_SIZE = (900, 1200)
+
 VOLUMES: dict[int, dict[str, object]] = {
     1: {
         "slug": "fire-against-the-dark",
@@ -86,6 +175,9 @@ VOLUMES: dict[int, dict[str, object]] = {
                 "Emberwick, City of the Ring",
             ),
         ),
+        # The full-page plates, each set straight after the paragraph it
+        # pictures: (chapter, the paragraph's opening words, file, alt, caption).
+        "plates": PLATES_1,
         "cover_url": "/covers/art/fire-against-the-dark.jpg",  # ORIGINAL_GROUND, #6060
         "cover_color": covers.ink_safe("#b5651d"),  # an ember in the grey
         "description": (
@@ -201,6 +293,32 @@ VOLUMES: dict[int, dict[str, object]] = {
 }
 
 
+
+
+def _figure(slug: str, file: str, alt: str, caption: str, size: tuple[int, int]) -> str:
+    width, height = size
+    return (
+        f'<figure><img src="/illustrations/{slug}/{file}" alt="{escape(alt)}" '
+        f'width="{width}" height="{height}"><figcaption>{escape(caption)}</figcaption></figure>'
+    )
+
+
+def _place_plates(slug: str, order: int, body: str, plates) -> str:
+    """Set each of this chapter's plates after the paragraph its anchor opens."""
+    for chapter, anchor, file, alt, caption in plates:
+        if chapter != order:
+            continue
+        opening = f"<p>{escape(anchor, quote=False)}"
+        if body.count(opening) != 1:
+            raise CommandError(
+                f"plate {file}: anchor {anchor!r} opens {body.count(opening)} paragraphs "
+                f"in chapter {order}, not exactly one"
+            )
+        at = body.index("</p>", body.index(opening)) + len("</p>")
+        body = body[:at] + _figure(slug, file, alt, caption, PLATE_SIZE) + body[at:]
+    return body
+
+
 #: The size every map is shipped at — large enough that its lettering stays
 #: sharp when a reader zooms; the reader scales it to the column.
 MAP_SIZE = (1800, 1350)
@@ -208,12 +326,7 @@ MAP_SIZE = (1800, 1350)
 
 def _maps_html(slug: str, maps) -> str:
     """The volume's maps as `<figure>`s (the sanitizer settles their attributes)."""
-    width, height = MAP_SIZE
-    return "".join(
-        f'<figure><img src="/illustrations/{slug}/{file}" alt="{escape(alt)}" '
-        f'width="{width}" height="{height}"><figcaption>{escape(caption)}</figcaption></figure>'
-        for file, alt, caption in maps
-    )
+    return "".join(_figure(slug, file, alt, caption, MAP_SIZE) for file, alt, caption in maps)
 
 
 class Command(BaseCommand):
@@ -230,6 +343,7 @@ class Command(BaseCommand):
         meta = dict(VOLUMES[volume])
         slug = meta.pop("slug")
         maps = meta.pop("maps", ())
+        plates = meta.pop("plates", ())
         try:
             author = Author.objects.get(slug=AUTHOR_SLUG)
         except Author.DoesNotExist as exc:
@@ -264,6 +378,7 @@ class Command(BaseCommand):
 
         total = 0
         for order, (title, body) in enumerate(chapters, start=1):
+            body = _place_plates(slug, order, body, plates)
             if order == 1:
                 body = _maps_html(slug, maps) + body
             body, _ = convert(clean_fragment(body), outer_guillemets=False)
