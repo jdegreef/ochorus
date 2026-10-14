@@ -10773,6 +10773,17 @@
 			"layout": "fade/slate",
 			"bar": 0
 		},
+		"fr/freedom-of-the-will": {
+			"ground": "7cd7cbe169de93b7bd26436ac17cff6b0a66dc5e9399fa9cfb9b84fb30657d7f",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/slate",
+			"bar": 0
+		},
 		"george-muller-of-bristol": {
 			"ground": "583c4abb5631dde6f80d29f6a5f6649c94f2c866d4ade91304511324b80b4afc",
 			"style": "revival",
@@ -20514,6 +20525,36 @@
 				],
 				"subtitle": [
 					[88, 496, 512, 524]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
+			]
+		},
+		"fr/way-into-holiest": {
+			"ground": "311fb4501761cdd36991c6b6d418a2b3ea6379737ce4d6a5e078237cd5c26f8d",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[197, 102, 403, 131]
+				],
+				"title": [
+					[129, 266, 471, 348],
+					[135, 338, 465, 420]
+				],
+				"subtitle": [
+					[111, 496, 489, 524]
 				],
 				"mark": [
 					[232, 664, 368, 746]
