@@ -2,7 +2,8 @@
  * Generate the Open Graph share images (1200×630 PNG) for the "Ochorus for …"
  * pages: one per group, and one for the /for/ index.
  *
- * Output: frontend/static/og/for/<slug>.png and og/for/index.png — committed and
+ * Output: frontend/static/og/for/<slug>.png and og/for/index.png, and the French
+ * cards under og/for/fr/ (the pages are written in both) — committed and
  * served as static assets, like the topic and sermon cards. NOT part of the
  * build or CI; run it by hand after adding a group or changing one's label,
  * tagline, accent or emblem:
@@ -31,8 +32,8 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
 import { EMBLEM_ART } from '../src/lib/emblems.ts';
-import { FOR_LINKS } from '../src/lib/forLinks.ts';
-import { FOR_INDEX_CARD, FOR_META } from '../src/lib/forMeta.ts';
+import { FOR_EYEBROW, FOR_LINKS, FOR_LOCALES, forLabel } from '../src/lib/forLinks.ts';
+import { FOR_META, forIndexCard, forTagline } from '../src/lib/forMeta.ts';
 import {
 	BACKGROUND,
 	GOLD,
@@ -49,7 +50,7 @@ import {
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = resolve(HERE, '../static/og/for');
-mkdirSync(OUT_DIR, { recursive: true });
+mkdirSync(resolve(OUT_DIR, 'fr'), { recursive: true });
 
 /** The app's emblem-chip recipe: a wash of the hue with a ring of it. */
 function chip(emblem, accent, size) {
@@ -69,8 +70,11 @@ function chip(emblem, accent, size) {
 	);
 }
 
+/** The wordmark row's right-hand words, per language. */
+const FREE_CLASSICS = { en: 'FREE CLASSICS', fr: 'CLASSIQUES GRATUITS' };
+
 /** The shared frame: wordmark row, then the text column beside `art`. */
-function frame({ eyebrow, eyebrowColor, title, titleSize, tagline, art }) {
+function frame({ locale, eyebrow, eyebrowColor, title, titleSize, tagline, art }) {
 	return box(
 		{
 			width: `${WIDTH}px`,
@@ -85,7 +89,7 @@ function frame({ eyebrow, eyebrowColor, title, titleSize, tagline, art }) {
 		[
 			box({ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }, [
 				box({ fontSize: 30, letterSpacing: 6, color: GOLD }, 'OCHORUS'),
-				box({ fontSize: 26, letterSpacing: 6, color: MUTED }, 'FREE CLASSICS')
+				box({ fontSize: 26, letterSpacing: 6, color: MUTED }, FREE_CLASSICS[locale])
 			]),
 			box({ display: 'flex', flex: 1, alignItems: 'center', gap: '56px' }, [
 				box({ display: 'flex', flexDirection: 'column', flex: 1, gap: '18px' }, [
@@ -102,32 +106,36 @@ function frame({ eyebrow, eyebrowColor, title, titleSize, tagline, art }) {
 /** Title size by length: "Missionaries" fits large, "Homeschool families" doesn't. */
 const titleSize = (title) => (title.length <= 14 ? 92 : title.length <= 22 ? 76 : 62);
 
-function groupCard(link) {
+function groupCard(link, locale) {
 	const { accent: curated, emblem } = FOR_META[link.slug];
 	// Tuned for the app's light chips; brightened to carry type on the dark ground.
 	const accent = liftToContrast(curated);
+	const label = forLabel(link, locale);
 	return frame({
-		eyebrow: 'Ochorus for',
+		locale,
+		eyebrow: FOR_EYEBROW[locale],
 		eyebrowColor: accent,
-		title: link.label,
-		titleSize: titleSize(link.label),
-		tagline: FOR_META[link.slug].tagline,
+		title: label,
+		titleSize: titleSize(label),
+		tagline: forTagline(link.slug, locale),
 		art: chip(emblem, accent, 290)
 	});
 }
 
-function indexCard() {
+function indexCard(locale) {
+	const card = forIndexCard(locale);
 	// Every group's emblem, three by three.
 	const tiles = FOR_LINKS.map((l) => {
 		const m = FOR_META[l.slug];
 		return chip(m.emblem, liftToContrast(m.accent), 92);
 	});
 	return frame({
-		eyebrow: FOR_INDEX_CARD.eyebrow,
+		locale,
+		eyebrow: card.eyebrow,
 		eyebrowColor: GOLD,
-		title: FOR_INDEX_CARD.title,
+		title: card.title,
 		titleSize: 76,
-		tagline: FOR_INDEX_CARD.tagline,
+		tagline: card.tagline,
 		art: box({ display: 'flex', flexWrap: 'wrap', width: '320px', gap: '22px', flexShrink: 0 }, tiles)
 	});
 }
@@ -142,22 +150,31 @@ const compositionDigest = () =>
 			.join('\0')
 	);
 
-/** Everything a group card is drawn from. `forCards.test.ts` mirrors this. */
-const groupDigest = (link) => {
-	const { accent, emblem, tagline } = FOR_META[link.slug];
-	return digest([link.label, tagline, emblem, EMBLEM_ART[emblem], accent].join('\0'));
+/** Everything a group card is drawn from. `forCards.test.ts` mirrors this.
+ *  English leads with the words alone (its digests predate the French cards);
+ *  any other language adds its eyebrow. */
+const groupDigest = (link, locale = 'en') => {
+	const { accent, emblem } = FOR_META[link.slug];
+	const words = [forLabel(link, locale), forTagline(link.slug, locale)];
+	if (locale !== 'en') words.unshift(FOR_EYEBROW[locale]);
+	return digest([...words, emblem, EMBLEM_ART[emblem], accent].join('\0'));
 };
 
 /** The index card: its words, and every group's art in order. */
-const indexDigest = () =>
-	digest([FOR_INDEX_CARD.eyebrow, FOR_INDEX_CARD.title, FOR_INDEX_CARD.tagline, ...FOR_LINKS.map(groupDigest)].join('\0'));
+const indexDigest = (locale = 'en') => {
+	const card = forIndexCard(locale);
+	return digest([card.eyebrow, card.title, card.tagline, ...FOR_LINKS.map((l) => groupDigest(l, locale))].join('\0'));
+};
 
 // ── Run ─────────────────────────────────────────────────────────────────────
 
-const cards = [
-	...FOR_LINKS.map((l) => [l.slug, groupCard(l), groupDigest(l)]),
-	['index', indexCard(), indexDigest()]
-];
+/** A card's name: its file under og/for/, without .png. */
+const cardName = (name, locale) => (locale === 'en' ? name : `${locale}/${name}`);
+
+const cards = FOR_LOCALES.flatMap((locale) => [
+	...FOR_LINKS.map((l) => [cardName(l.slug, locale), groupCard(l, locale), groupDigest(l, locale)]),
+	[cardName('index', locale), indexCard(locale), indexDigest(locale)]
+]);
 let wrote = 0;
 for (const [name, node] of cards) {
 	const out = resolve(OUT_DIR, `${name}.png`);

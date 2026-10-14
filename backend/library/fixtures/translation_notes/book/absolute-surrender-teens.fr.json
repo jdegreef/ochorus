@@ -1,0 +1,300 @@
+{
+ "kind": "book",
+ "slug": "absolute-surrender-teens",
+ "language": "fr",
+ "note": [
+  "Each chapter's KJV epigraph is replaced by Louis Segond (1910) verbatim (only French typographic spacing added) and the “(KJV)” label is dropped, as in a-retrospect-teens.fr. Partial-verse epigraphs (1 Peter 1:5, Mark 9:24, Luke 18:27, Luke 22:61–62, Romans 7:24–25a) quote the matching Segond span; Galatians 5:22 quotes the whole Segond verse, whose list runs on to « la douceur, la tempérance » (KJV puts those in v. 23). Segond's Mark 9:24 has no « Seigneur », so the KJV's “Lord” drops out in ch. 4 (epigraph and body).",
+  "Murray's own sentences are pasted from the shipped absolute-surrender.fr.json (« L’abandon absolu ») and keep its « vous » even though the teen prose says « tu ». One deliberate change: Müller's “lover of God’s Word” is « un amoureux de la Parole de Dieu », not the full edition's « un amant », which reads as romantic to a French teenager. Hampton Court's “hundreds of yards” follows the full edition's « centaines de mètres ».",
+  "Term choices: “surrender” = « abandon / s’abandonner » throughout, so “give up” is « renoncer / baisser les bras », never « abandonner ». “Temper” is « l’humeur » inside Murray's clock quote (as in the full edition) and « colères / s’emporter » in the teen prose (ch. 6 title « Ce que révèlent tes colères »). “Pen” is « plume » everywhere to match Murray's quote. Peter's “I do not know the man” is Segond Matthew 26:72.",
+  "Title « L’abandon absolu (Pour ados) » (28 chars) follows the full French edition's title. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Kings 20:4",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Kings 20:4",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Kings 20:4",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 9
+  },
+  {
+   "reference": "1 Corinthians 6:19",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 6:19",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 8
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 4,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 3
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 3,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Peter 1:5",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Peter 1:5",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 4,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 2,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 22:61-62",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 16:16",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 2
+  },
+  {
+   "reference": "Matthew 26:72",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 5,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 22:61-62",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 18:27",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 18:26",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 1
+  },
+  {
+   "reference": "Luke 18:27",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 1,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 5,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 7:25a",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 7:19",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 1,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 7:22",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 2,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 7:18",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 3
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 4,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 7:25a",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 6
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 7:24-25a",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 9
+  },
+  {
+   "reference": "Galatians 3:3",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Galatians 3:3b",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 1,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 13:2",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 13:2",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 13:2",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 7
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 15:5a",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 1,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Kings 20:4",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 9
+  },
+  {
+   "reference": "John 15:5a",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 10
+  }
+ ]
+}

@@ -1,0 +1,1198 @@
+{
+ "kind": "book",
+ "slug": "feasting-at-the-table",
+ "language": "pt",
+ "job_issue": 2684,
+ "pull_request": 6118,
+ "note": [
+  "Scripture follows the Bíblia Livre (porbrbsl; ebible mirror por_bpm, USFM), the Bible the shipped Portuguese library quotes. Rows were derived by measurement: a row is `mined` only when the translator claimed Bíblia Livre wording AND the block contains either a quoted span that is a verbatim Bíblia Livre substring or a run of six consecutive Bíblia Livre words. Everything else is `self_rendered` with the translator's reason.",
+  "Evans quotes modern English Bibles (NIV/NASB/ESV-style); where the Bíblia Livre lacks a word his sentence turns on, only its own words sit inside the quotation marks. His (NASB)/(KJV) labels in chapter 1 were dropped because the words shown are now Bíblia Livre. AI-drafted, awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Ephesians 1:16",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 1,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 1:17",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 1,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 1:18",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 1,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 1:19",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 1,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 16:17",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 2,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 3,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Exodus 33:17",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 3,
+   "why": "Evans’ paraphrase \"I know your name so I will show you My name\": \"Eu o conheço pelo nome\" is BL 33:17 verbatim; \"por isso, mostrarei a você o meu nome\" is his own gloss (cf. 33:19 \"proclamarei o nome do SENHOR\"). Note the first half is v17, though he cites 18,19."
+  },
+  {
+   "reference": "Exodus 33:19",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "why": "Evans’ paraphrase \"I know your name so I will show you My name\": \"Eu o conheço pelo nome\" is BL 33:17 verbatim; \"por isso, mostrarei a você o meu nome\" is his own gloss (cf. 33:19 \"proclamarei o nome do SENHOR\"). Note the first half is v17, though he cites 18,19."
+  },
+  {
+   "reference": "1 John 2:13",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 4,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 John 2:14",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 4,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "why": "unmarked: \"sem a qual é impossível agradar a Deus\" (BL \"é impossível agradar a\" + Deus for ele)."
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 8,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 1:18",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 11,
+   "why": "unmarked: \"as riquezas da glória da Sua herança nos santos\" (Sua capitalised mirroring English)."
+  },
+  {
+   "reference": "Colossians 1:27",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "why": "“Cristo em nós – a esperança da glória”: BL \"Cristo em vocês, a esperança da glória\"; re-personed to \"nós\" as Evans does (\"in us\")."
+  },
+  {
+   "reference": "Genesis 28:16",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 12,
+   "why": "“Certamente o Senhor está neste lugar!”: BL wording but SENHOR → Senhor, because the English prints \"Lord\" (CONVENTIONS: SENHOR only where English prints LORD). Uncited in English."
+  },
+  {
+   "reference": "Ephesians 1:19",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 13,
+   "why": "unmarked: \"a suprema grandeza do Seu poder para conosco, os que cremos\"."
+  },
+  {
+   "reference": "John 1:12",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "why": "‘nos tornarmos filhos de Deus’ (BL \"se tornarem filhos de Deus\", re-personed to fit \"enable us\")."
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "why": "unmarked: \"o poder do alto\" (BL wording)."
+  },
+  {
+   "reference": "Luke 4:21",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 14,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 3:16",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 17,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 3:17",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 17,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 3:18",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 17,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 3:19",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 17,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 5:6",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "why": "unmarked allusion: \"ter fome e sede da Sua justiça\"."
+  },
+  {
+   "reference": "John 14:21",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "why": "prayer to God in \"Tu\", capitals mirroring English You/you; \"revelar-Te\" echoes BL \"me revelarei a ele\"."
+  },
+  {
+   "reference": "John 14:6",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 3,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 13:46",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "unquoted allusion \"the pearl of greatest price\" → BL \"pérola de grande valor\" in prose"
+  },
+  {
+   "reference": "Matthew 13:46",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "‘pérola de grande valor’"
+  },
+  {
+   "reference": "Ephesians 1:3",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 5,
+   "why": "prose paraphrase uses BL \"nas regiões celestiais\""
+  },
+  {
+   "reference": "John 15:7",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "“Se vocês permanecerem em mim…”"
+  },
+  {
+   "reference": "Ephesians 1:4",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 6,
+   "why": "unquoted paraphrase; BL \"santos e irrepreensíveis diante dele\" with Dele capitalised as the English has Him"
+  },
+  {
+   "reference": "Ephesians 1:5",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "‘filhos’ (BL \"adoção como filhos\")"
+  },
+  {
+   "reference": "Romans 8:17",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "\"joint heirs with Jesus\" → \"coerdeiros com Jesus\" (BL coerdeiros com Cristo)"
+  },
+  {
+   "reference": "Ephesians 1:12",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 8,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 1:12",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 10,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Revelation 5:12",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "Moravian motto, not Scripture: “Que o Cordeiro que foi morto receba a recompensa do Seu sofrimento”"
+  },
+  {
+   "reference": "Ephesians 1:6",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "“Nele” is Evans' phrase; \"the beloved\" → \"o Amado\" following BL \"no Amado\" (capital A although the English is lowercase)"
+  },
+  {
+   "reference": "Ephesians 1:7",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "unquoted; BL \"Nele temos a [nossa] redenção\""
+  },
+  {
+   "reference": "Ephesians 1:9",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 14,
+   "why": "unquoted; BL \"fazer convergir todas as coisas em Cristo\""
+  },
+  {
+   "reference": "Ephesians 1:10",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 14,
+   "why": "unquoted; BL \"fazer convergir todas as coisas em Cristo\""
+  },
+  {
+   "reference": "1 Corinthians 2:14",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "unquoted; BL \"o homem natural não [recebe]… lhe são loucura\" reshaped"
+  },
+  {
+   "reference": "Ephesians 1:11",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "unquoted; BL \"recebemos uma herança\""
+  },
+  {
+   "reference": "1 Corinthians 2:9",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 15,
+   "why": "Evans' free paraphrase credited to \"the apostle\" and to \"(Tozer)\"; his wording translated, tail taken from BL \"Deus preparou para aqueles que o amam\" (lowercase o, English has Him)"
+  },
+  {
+   "reference": "Ephesians 1:14",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 15,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 1:13",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 15,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 15:7",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "re-personed: “se permanecermos Nele…”"
+  },
+  {
+   "reference": "Ephesians 1:21",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "unquoted; BL \"muito acima de todo principado\" + \"e poder\""
+  },
+  {
+   "reference": "Colossians 2:15",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "unquoted; BL \"os expôs publicamente\" for \"made an open show of them\""
+  },
+  {
+   "reference": "Ephesians 2:4",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 24,
+   "why": "unquoted; BL \"rico em misericórdia\", \"nos fez assentar nas regiões celestiais em Cristo Jesus\""
+  },
+  {
+   "reference": "Ephesians 2:5",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 24,
+   "why": "unquoted; BL \"rico em misericórdia\", \"nos fez assentar nas regiões celestiais em Cristo Jesus\""
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 24,
+   "why": "unquoted; BL \"rico em misericórdia\", \"nos fez assentar nas regiões celestiais em Cristo Jesus\""
+  },
+  {
+   "reference": "Ephesians 1:3",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "“em Cristo” (phrase; Bíblia Livre substring)"
+  },
+  {
+   "reference": "Ephesians 1:13",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 2,
+   "why": "‘selados Nele’ (BL: “vocês foram selados”; “Nele” opens the verse)"
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "‘assentados Nele’ (BL: “nos fez assentar com ele”)"
+  },
+  {
+   "reference": "Acts 1:4",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 3,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 44:3",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 3,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ezekiel 36:26",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 3,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Joel 2:28",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 3,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Acts 2:33",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 4,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 3:3",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "‘nascido de novo’ (BL “nascer de novo”)"
+  },
+  {
+   "reference": "Acts 1:5",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "‘batismo no Espírito Santo’ (BL “batizados no Espírito Santo”)"
+  },
+  {
+   "reference": "Luke 24:49",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "‘esperar’ (KJV “tarry”; BL “esperem”)"
+  },
+  {
+   "reference": "Luke 11:9",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "not in quote marks; “continuem buscando; continuem pedindo… e Ele dará o Espírito Santo” follows the BL verbs"
+  },
+  {
+   "reference": "Luke 11:10",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "not in quote marks; “continuem buscando; continuem pedindo… e Ele dará o Espírito Santo” follows the BL verbs"
+  },
+  {
+   "reference": "Luke 11:11",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "not in quote marks; “continuem buscando; continuem pedindo… e Ele dará o Espírito Santo” follows the BL verbs"
+  },
+  {
+   "reference": "Luke 11:12",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "not in quote marks; “continuem buscando; continuem pedindo… e Ele dará o Espírito Santo” follows the BL verbs"
+  },
+  {
+   "reference": "Psalms 24:4",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 8,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 10,
+   "why": "not in quote marks (a collapsed heading): “Nos fez assentar com Ele (o Pai) nas regiões celestiais em Cristo Jesus”. BL wording, but with a capital at the start, Ele capitalised as in the English, and Evans' gloss"
+  },
+  {
+   "reference": "Hebrews 4:10",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 10,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Corinthians 2:14",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "‘homem natural’"
+  },
+  {
+   "reference": "1 Corinthians 3:1",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "‘homem carnal’ (BL “carnais”)"
+  },
+  {
+   "reference": "Ephesians 1:3",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "‘regiões celestiais’"
+  },
+  {
+   "reference": "Exodus 3:8",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "‘leite e mel’ (uncited)"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 14,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "“considerar-nos” (BL “considerem-se”)"
+  },
+  {
+   "reference": "John 15:4",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "“permanecer em Cristo” (theological phrase; no verse says it verbatim)"
+  },
+  {
+   "reference": "Ephesians 1:22",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 14,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "“assentado em Cristo”"
+  },
+  {
+   "reference": "John 15:7",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "“Se vocês permanecerem em mim…”"
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 17,
+   "why": "‘esperar’ (gloss on the KJV word “wait”)"
+  },
+  {
+   "reference": "Ephesians 1:10",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 2:5",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "‘vivificou juntamente com Cristo’; BL has “com Cristo”, not “in Him”, so Christ is named inside the marks"
+  },
+  {
+   "reference": "Ephesians 2:14",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 3:6",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "‘membros’ for ‘fellow members’; BL’s “do mesmo” is kept outside the marks"
+  },
+  {
+   "reference": "Ephesians 1:23",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "‘corpo’"
+  },
+  {
+   "reference": "Ephesians 2:22",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "‘edifício’: BL 2:22 has only the verb “edificados”; the noun is in BL 2:21 (“todo o edifício”)"
+  },
+  {
+   "reference": "John 17:22",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 5,
+   "why": "Evans’ loose paraphrase with “You (the Father) and I (the Son)”; built on BL 17:22 “para que sejam um, assim como nós somos um”, re-personed"
+  },
+  {
+   "reference": "John 17:23",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 5,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Corinthians 12:15",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "‘Não tenho necessidade de você’ (foot to hand), wording from BL 12:21; see ENGLISH-ERROR"
+  },
+  {
+   "reference": "1 Corinthians 12:21",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 6,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 4:12",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "‘aperfeiçoamento dos santos’ for ‘equip the saints’"
+  },
+  {
+   "reference": "Ephesians 4:16",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 8,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 17:21",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 11,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 2:22",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "‘edificados juntos’ (uncited in the English)"
+  },
+  {
+   "reference": "Ephesians 2:20",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "‘principal pedra angular’"
+  },
+  {
+   "reference": "1 Corinthians 3:16",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 15,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 1:18",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 17,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 1:19",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 17,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "‘para as boas obras’"
+  },
+  {
+   "reference": "Ephesians 3:3",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "‘mistério’"
+  },
+  {
+   "reference": "Ephesians 2:11",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "‘incircuncisão’"
+  },
+  {
+   "reference": "Ephesians 2:13",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "‘aproximados’"
+  },
+  {
+   "reference": "Ephesians 2:13",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "“Mas agora…”"
+  },
+  {
+   "reference": "Ephesians 3:6",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "re-personed (‘Vocês se tornaram coerdeiros e membros do mesmo ‘corpo’; coparticipantes da promessa em Cristo Jesus’); BL pieces copied, “sua” and “por meio do Evangelho” dropped; the English's unclosed ‘ and nested ‘body’ mirrored"
+  },
+  {
+   "reference": "Exodus 6:7",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 15,
+   "why": "BL Ex 6:7 lacks “you will be My people” in that order; wording copied verbatim from BL Jer 7:23 (“eu serei o seu Deus, e vocês serão o meu povo”), capitalised; citation kept as Êx 6:7"
+  },
+  {
+   "reference": "Exodus 2:24",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 19,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Exodus 3:2",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "‘ardente’ (sarça ‘ardente’; BL 3:2 has “ardia”)"
+  },
+  {
+   "reference": "Exodus 3:6",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 19,
+   "why": "“Eu sou o Deus de Abraão, o Deus de Isaque e o Deus de Jacó” — BL’s “o Deus de seu pai,” omitted, as in the English"
+  },
+  {
+   "reference": "Exodus 3:15",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 19,
+   "why": "“Diga ao povo: o Senhor, [BL: o Deus de Abraão, o Deus de Isaque e o Deus de Jacó], enviou você” — Evans’ paraphrase; “Senhor” not “SENHOR” because the English prints “Lord”"
+  },
+  {
+   "reference": "Exodus 19:5",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 21,
+   "why": "“Se vocês guardarem a minha aliança, então vocês serão a minha propriedade peculiar dentre todos os povos.” — BL “de fato obedecerem à minha voz e” omitted (English omits it too); BL lowercase “minha” kept despite English “My”"
+  },
+  {
+   "reference": "Leviticus 25:9",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 23,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Exodus 25:17",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "‘propiciatório’ (mercy seat)"
+  },
+  {
+   "reference": "Exodus 12:13",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "‘passando por cima’ (BL “passarei por cima”)"
+  },
+  {
+   "reference": "Mark 3:17",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 26,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 14:12",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "‘obras maiores’"
+  },
+  {
+   "reference": "1 Corinthians 11:24",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "“Este é o meu corpo por vocês – tomem, comam” (BL pieces; “que é partido” dropped to follow the English “My body for you”)"
+  },
+  {
+   "reference": "1 Corinthians 11:25",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 35,
+   "why": "“Este cálice é a nova aliança no meu sangue. Bebam dele.” (each sentence verbatim BL; combined)"
+  },
+  {
+   "reference": "Matthew 26:27",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "“Este cálice é a nova aliança no meu sangue. Bebam dele.” (each sentence verbatim BL; combined)"
+  },
+  {
+   "reference": "Colossians 2:14",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 38,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 2:15",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 38,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Corinthians 11:24",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "“Seu corpo, partido por nós” (re-personed from “o meu corpo, que é partido por vocês”)"
+  },
+  {
+   "reference": "1 Corinthians 11:27",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "‘de maneira indigna’"
+  },
+  {
+   "reference": "Matthew 15:26",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "‘cães’ — an epithet, not Jesus’ words (BL 15:26 has “cachorrinhos”)"
+  },
+  {
+   "reference": "Ephesians 3:1",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "“Por esta causa…” (also the opening words of 3:14)"
+  },
+  {
+   "reference": "Ephesians 4:11",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 17,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 3:14",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "“Por esta causa…”"
+  },
+  {
+   "reference": "Ephesians 3:16",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 19,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 3:14",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "‘dobra os seus joelhos’ re-personed from BL “dobro os meus joelhos”."
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "“assentar” (BL Ef 2:6), reflexive \"nos\" outside the marks"
+  },
+  {
+   "reference": "Ephesians 4:1",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 1,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 4:17",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 1,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 5:2",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 1,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 5:8",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 1,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 5:15",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 1,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 1:3",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "‘regiões celestiais’ (heavenly places, per CONVENTIONS)"
+  },
+  {
+   "reference": "Ephesians 4:1",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "unmarked \"WALK in a manner worthy of your calling\" → \"ANDE de modo digno da sua vocação\" (BL wording re-personed)"
+  },
+  {
+   "reference": "Psalms 1:3",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 3,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 4:18",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 18,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 4:19",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 19,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 4:19",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 20,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 4:22",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "“despojar-nos” — BL \"se despojem\" re-personed; object \"velho homem\" (BL) in prose"
+  },
+  {
+   "reference": "Ephesians 4:24",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "“revestir-nos” — BL \"se revistam\" re-personed; object \"novo homem\" (BL) in prose"
+  },
+  {
+   "reference": "Ephesians 5:2",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 23,
+   "why": "h2, unmarked: \"Ande em amor, assim como Cristo também nos amou…\" (BL \"Andem\" → \"Ande\"; English \"you\" → BL \"nos\")"
+  },
+  {
+   "reference": "1 Corinthians 13:1",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 38,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 13:34",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 4,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 5:22",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 5,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 5:23",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "‘head’ → ‘cabeça’ (BL “o cabeça”)"
+  },
+  {
+   "reference": "Ephesians 5:23",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "‘Saviour of the body’ → ‘salvador do corpo’ (BL lower-case s kept verbatim; English capitalises Saviour)"
+  },
+  {
+   "reference": "Ephesians 5:28",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 8,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 3:10",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 12,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 3:10",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 13,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 15,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Hebrews 12:15",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "‘root of bitterness’ → ‘raiz de amargura’"
+  },
+  {
+   "reference": "Ephesians 4:26",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 20,
+   "why": "unquoted allusion “do not let the sun set on your squabble” → “não deixe o sol se pôr sobre a sua briga” (BL “Não deixem o sol se pôr sobre a sua ira”, re-personed, ira→briga per Evans)"
+  },
+  {
+   "reference": "Ephesians 4:27",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "“give the devil an opportunity” → “damos lugar ao diabo” (BL “não deem lugar ao diabo”, re-personed to first-person plural for the question)"
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 32,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 John 4:4",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 33,
+   "why": "unquoted; BL “maior é aquele que está em vocês do que aquele que está no mundo” with sentence-initial M and Aquele capitalised to mirror English “He”"
+  },
+  {
+   "reference": "Ephesians 6:4",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 1,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 John 2:13",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "“jovens”"
+  },
+  {
+   "reference": "1 John 2:14",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "“jovens”"
+  },
+  {
+   "reference": "Romans 8:39",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 10,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Revelation 2:11",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "“que vencer”; Evans' plural “those who overcome” → BL singular àquele “que vencer”"
+  },
+  {
+   "reference": "2 Corinthians 2:11",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 16,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 4:26",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 16,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 4:27",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 16,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 6:16",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "‘dardos inflamados’"
+  },
+  {
+   "reference": "1 Peter 5:8",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 17,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 6:11",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 19,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "‘Principados’"
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "‘Autoridades’ (KJV “Powers”)"
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "‘Dominadores das trevas’ (KJV “Rulers of darkness”)"
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "‘Forças espirituais da maldade’ (KJV “Spiritual wickedness”)"
+  },
+  {
+   "reference": "1 Thessalonians 5:8",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 29,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Corinthians 13:13",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 29,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 John 4:4",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 15,
+   "why": "unmarked in English; BL wording re-personed “em vocês” → “em nós” to follow Evans' “in us”, “Aquele” capitalised per “He”"
+  },
+  {
+   "reference": "Acts 26:6",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "Evans marks it “paraphrased”; BL “por causa da esperança” reused; “before you” → “diante do rei” (avoids você/tu to a king)"
+  },
+  {
+   "reference": "Acts 26:7",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "Evans marks it “paraphrased”; BL “por causa da esperança” reused; “before you” → “diante do rei” (avoids você/tu to a king)"
+  },
+  {
+   "reference": "Ephesians 1:17",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 35,
+   "why": "unmarked prayer; BL text sliced by script, framed with “Oro para que …”, “Ele/Seu/Sua/Dele” capitalised where Evans capitalises, BL plural “vocês” kept"
+  },
+  {
+   "reference": "Ephesians 1:18",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 35,
+   "why": "unmarked prayer; BL text sliced by script, framed with “Oro para que …”, “Ele/Seu/Sua/Dele” capitalised where Evans capitalises, BL plural “vocês” kept"
+  },
+  {
+   "reference": "Ephesians 1:19",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 35,
+   "why": "unmarked prayer; BL text sliced by script, framed with “Oro para que …”, “Ele/Seu/Sua/Dele” capitalised where Evans capitalises, BL plural “vocês” kept"
+  },
+  {
+   "reference": "Ephesians 3:21",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 36,
+   "why": "BL “a ele seja a glória na igreja” → “A Ele …” (capitalised per “Him”)"
+  }
+ ]
+}

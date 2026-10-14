@@ -16,7 +16,7 @@
 	import { API_BASE_URL } from '$lib/config';
 	import { lang } from '$lib/lang.svelte';
 	import { footerLocales } from '$lib/footerLocales';
-	import { FOR_INDEX, FOR_LINKS, forPath } from '$lib/forLinks';
+	import { FOR_EYEBROW, FOR_LINKS, forIndexPath, forLabel, forLocale, forPath } from '$lib/forLinks';
 	import { loginHref, withSignup } from '$lib/loginHref';
 	import { seenOnView, withSource } from '$lib/signupSource';
 	import { bibleCredit, creditParts } from '$lib/bibleCredit';
@@ -259,6 +259,8 @@
 	// (and is tested there): the locale the reader is ACTUALLY IN is always
 	// listed, advertised or not.
 	const footerLangs = $derived(footerLocales(lang.available, lang.current));
+	/** The "Ochorus for …" row's language — shown only where it is the reader's. */
+	const forLang = $derived(forLocale(lang.current));
 
 	// Footer sign-up CTA target. Reuses loginHref's guard (which keeps a reader
 	// who is already on /login from being redirected back to it — see loginHref)
@@ -766,18 +768,19 @@
 			</div>
 			<!-- "Ochorus for …" — the landing pages for churches, homeschool
 			     families, parents ($lib/forLinks), as the footer's last row, read
-			     left to right like the language strip above. English-only like
-			     Discover: the pages are English copy for now, so a localized
-			     reader is not sent to them, and the label is a plain literal. -->
-			{#if lang.current === 'en'}
-				<nav class="border-t border-border" aria-label="Ochorus for">
+			     left to right like the language strip above. Only for readers of
+			     a language the pages are written in (English, French): a reader of
+			     any other is not sent to copy they can't read, and the labels are
+			     the pages' own words ($lib/forLinks), not catalogue keys. -->
+			{#if forLang === lang.current}
+				<nav class="border-t border-border" aria-label={FOR_EYEBROW[forLang]}>
 					<div
 						class="chrome-col flex flex-wrap items-baseline gap-x-5 gap-y-1 px-5 py-4 text-small"
 					>
-						<a class="eyebrow py-1 text-text hover:underline" href={FOR_INDEX}>Ochorus for</a>
+						<a class="eyebrow py-1 text-text hover:underline" href={forIndexPath(forLang)}>{FOR_EYEBROW[forLang]}</a>
 						{#each FOR_LINKS as l (l.slug)}
-							<a class="whitespace-nowrap py-1 text-muted hover:text-text" href={forPath(l.slug)}
-								>{l.label}</a
+							<a class="whitespace-nowrap py-1 text-muted hover:text-text" href={forPath(l.slug, forLang)}
+								>{forLabel(l, forLang)}</a
 							>
 						{/each}
 					</div>

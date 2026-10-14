@@ -1,0 +1,26 @@
+{
+ "the-inner-chamber-month": {
+  "title": "골방에서 보내는 한 달",
+  "description": "기도와 말씀의 날마다의 습관을 세우십시오. 앤드류 머레이와 함께하는 서른여섯 번의 아침, 하루에 한 장씩.",
+  "note": [
+   "Korean's FIRST plan prose, shipping with the-inner-chamber.ko (queue job #5862), the sole source book of this launch plan; without it seed_plans would create the ko plan row with no prose, which PlanTranslationCoverageTests fails on.",
+   "The title opens with the shipped edition's own title (『골방』, from 마태복음 6:6 개역 '네 골방에 들어가'), so the plan card and the book on the shelf agree. 합니다체 imperative (세우십시오), the ko house register."
+  ]
+ },
+ "school-of-prayer-31-days": {
+  "title": "기도 학교에서 보내는 31일",
+  "description": "오직 한 분이신 선생님의 발치에서 앤드류 머레이와 함께 보내는 한 달. 날마다 기도에 관한 예수님의 말씀 하나로 시작하여, “주여, 우리에게 기도를 가르쳐 주옵소서”에서 마지막 밤의 약속들까지 나아가고, 그날의 기도로 마칩니다. 하루 한 과, 약 10분, 중보기도와 기도의 삶을 향해 자라 갑니다.",
+  "note": [
+   "Single-book LAUNCH plan backed by the ko edition of school-of-prayer (queue job #5869; book title 『그리스도와 함께하는 기도 학교』). Ships with the book so seed_plans does not publish an English-titled card in Korean (the #819 defect).",
+   "“기도 학교” echoes the book title; “오직 한 분이신 선생님” is the book's ch02 title; the refrain “주여, 우리에게 기도를 가르쳐 주옵소서” is the self-rendered form the ko book uses throughout (the 개역 Luke 11:1 reads 우리에게도 가르쳐 주옵소서)."
+  ]
+ },
+ "school-of-prayer": {
+  "title": "기도의 기초",
+  "description": "세 안내자와 함께 기도의 기초를 놓는 4주. 주님께서 친히 우리에게 기도를 가르치시는 길에 대해서는 앤드류 머레이, 이기는 기도에 대해서는 D. L. 무디, 그리스도인의 삶에서 날마다 뛰는 맥박인 기도에 대해서는 한나 부인자가 안내합니다.",
+  "note": [
+   "CURATED multi-book plan; written with the school-of-prayer ko job (#5869) because that book is one of its sources. It stays dormant in Korean until the Moody and Buyinza source books ship in ko — the prose ships ahead so their arrival cannot publish an English-titled plan.",
+   "Names follow the shipped ko bios (앤드류 머레이, D. L. 무디); Hannah Buyinza has no ko bio yet — 한나 부인자 is a transliteration to align when one ships. “이기는 기도” = prevailing prayer, as in the ko school-of-prayer edition."
+  ]
+ }
+}

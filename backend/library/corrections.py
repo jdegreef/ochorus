@@ -11647,6 +11647,14 @@ BODY_CORRECTIONS.setdefault("power-from-on-high-new-testament", {}).setdefault("
 ])
 
 
+# Found while translating Pensées (For Teens) to French (2026-10-13): Pascal
+# wrote « en faisant dire des messes » (B. 233; Trotter "having masses
+# said") — having Masses said, not attending Mass.
+BODY_CORRECTIONS.setdefault("pensees-teens", {}).setdefault("replacements", []).extend([
+    # [en]
+    ("taking holy water and attending Mass",
+     "taking holy water and having Masses said"),
+])
 # Found while translating Brave for God: Book Four to French (2026-10-13):
 # three factual slips, fixed in every edition. Mary Paton and her baby died
 # some four months after the Patons landed on Tanna (Nov 1858 - Mar 1859),
