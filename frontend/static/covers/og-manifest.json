@@ -9071,6 +9071,17 @@
 			"layout": "diagonal/ochre",
 			"bar": 0.055
 		},
+		"fr/how-to-succeed-in-the-christian-life": {
+			"ground": "9e1741643b6b8e31067b45872fe42f8d2bcb23aac14cdfa1933bb5cdbefd691e",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "diagonal/ochre",
+			"bar": 0
+		},
 		"fr/how-to-succeed-in-the-christian-life-teens": {
 			"ground": "4e9b1bfc25110ed6f03b640402f5d90534eac163027e82d1a1a265cbfc9707e5",
 			"style": "originals",
