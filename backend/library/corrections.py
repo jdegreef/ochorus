@@ -7651,8 +7651,7 @@ BODY_CORRECTIONS.setdefault("the-life-of-trust", {}).setdefault("replacements", 
 ])
 
 # Found while translating to French (2026-10-14): Müller's Answers to Prayer —
-# OCR slips (en; the place-name pairs also repair the untranslated tail of the
-# sw ch3)
+# OCR slips (en)
 BODY_CORRECTIONS.setdefault("answers-to-prayer", {}).setdefault("replacements", []).extend([
     # [en] OCR: "month" for "mouth" (Ps. lxxxi. 10, quoted)
     ("Open thy month wide", "Open thy mouth wide"),
@@ -7681,14 +7680,11 @@ BODY_CORRECTIONS.setdefault("answers-to-prayer", {}).setdefault("replacements", 
     # [en] "Naturally we should have been glad…; but spiritually…even then" —
     # the contrast admits only "enabled" (Müller's Narrative reads so)
     ("we were unable to delight even then", "we were enabled to delight even then"),
-    # [en] place name Wotton-under-Edge (Glos.) — BLOCKED: identical text in sw
-    # ch3 (sw ch3 blocks ~50–end are untranslated English)
+    # [en] place name Wotton-under-Edge (Glos.)
     ("\"June 3.—From Wottan-under-edge", "\"June 3.—From Wotton-under-Edge"),
-    # [en] place name Wotton-under-Edge (Glos.) — BLOCKED: identical text in sw
-    # ch3 (sw ch3 blocks ~50–end are untranslated English)
+    # [en] place name Wotton-under-Edge (Glos.)
     ("Received from Wottan-under-edge", "Received from Wotton-under-Edge"),
-    # [en] Arnos Vale Cemetery, Bristol — BLOCKED: identical text in sw ch3 (sw
-    # ch3 blocks ~50–end are untranslated English)
+    # [en] Arnos Vale Cemetery, Bristol
     ("at Arno' Vale Cemetery", "at Arnos Vale Cemetery"),
     # [es] place name (mirrors EN slip)
     ("De Wottan-under-edge, £500", "De Wotton-under-Edge, £500"),
