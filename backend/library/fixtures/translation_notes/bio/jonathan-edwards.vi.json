@@ -1,0 +1,36 @@
+{
+ "kind": "bio",
+ "slug": "jonathan-edwards",
+ "language": "vi",
+ "job_issue": 5955,
+ "references": [
+  {
+   "reference": "1 Timothy 1:17",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 11
+  },
+  {
+   "reference": "Deuteronomy 32:35",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "Acts 16:30",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "2 Corinthians 1:14",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Matthew 7:12",
+   "status": "self_rendered",
+   "block_index": 41
+  }
+ ]
+}
