@@ -7577,6 +7577,47 @@ BODY_CORRECTIONS.setdefault("religious-affections", {}).setdefault("replacements
     # [es] cit: Ps 50 “Verse 92”→23 (as en)
     ("Versículo 92, etc.;", "Versículo 23, etc.;"),
 ])
+
+# Found while translating to French (2026-10-14): Jarena Lee's Religious
+# Experience and Journal — OCR slips and two wrong citations (en + es/am)
+BODY_CORRECTIONS.setdefault("religious-experience-and-journal", {}).setdefault("replacements", []).extend([
+    # [en] split word 'burn ed' (OCR)
+    ("which burn ed within me", "which burned within me"),
+    # [en] 'Haman' for Hannah, mother of Samuel (1 Sam 1)
+    ("as Haman gave Samuel to God", "as Hannah gave Samuel to God"),
+    # [en] 'grave' for 'grace' (OCR)
+    ("for his saving grave.", "for his saving grace."),
+    # [en] 'Bride' for 'Bridge' (cf. 'Canton’s Bridge' same chapter)
+    ("found me at Canton Bride, to which", "found me at Canton Bridge, to which"),
+    # [en] 'recommenced' for 'recommended' (OCR)
+    ("and recommenced the impenitent", "and recommended the impenitent"),
+    # [en] 'liiii' for 'liii': quoted verse is Isa 53:1 (cited 'liii. 1' later
+    # in chapter)
+    ("from Isaiah liiii. 1,—", "from Isaiah liii. 1,—"),
+    # [en] 'as firm of' for 'as firm as' (typesetting)
+    ("which are as firm of the pillars", "which are as firm as the pillars"),
+    # [en] 'Alter' for 'After' (OCR)
+    ("Alter preaching once more", "After preaching once more"),
+    # [en] 'Nazereth' misprint in quoted John 1:45 (spelled Nazareth in ch3)
+    ("Jesus of Nazereth, the son", "Jesus of Nazareth, the son"),
+    # [en] chapter/verse transposed: quoted passage is Joel 2:27-28 (Joel has 3
+    # chapters)
+    ("Joel, Chap. 27th, 2nd verse", "Joel, Chap. 2nd, 27th verse"),
+    # [en] quoted 'But he knoweth the way I take' is Job 23:10
+    ("Job, 22d chap. 10th ver.", "Job, 23d chap. 10th ver."),
+    # [es] citation: Joel 2:27
+    ("Joel, capítulo 27, versículo 2", "Joel, capítulo 2, versículo 27"),
+    # [es] citation: quoted verse is Job 23:10
+    ("Job, capítulo 22, versículo 10", "Job, capítulo 23, versículo 10"),
+    # [es] 'Bride' for 'Bridge' reproduced from English
+    ("en Canton Bride, adonde", "en Canton Bridge, adonde"),
+    # [am] citation: Joel 2:27
+    ("ኢዩኤል ምዕራፍ 27 ቍጥር 2", "ኢዩኤል ምዕራፍ 2 ቍጥር 27"),
+    # [am] citation: quoted verse is Job 23:10
+    ("ኢዮብ ምዕራፍ 22፣ ቍጥር 10", "ኢዮብ ምዕራፍ 23፣ ቍጥር 10"),
+    # [am] 'Haman' (ሐማ) for Hannah (ሐና) reproduced from English
+    ("ሐማ ሳሙኤልን በልጅነቱ", "ሐና ሳሙኤልን በልጅነቱ"),
+])
 # The paragraph ended on a stop the OCR read as a comma.
 BODY_CORRECTIONS["evangelization-of-the-world"]["paragraph_breaks"] = [
     ('foreign mission service.', 'In 1898 the members'),
