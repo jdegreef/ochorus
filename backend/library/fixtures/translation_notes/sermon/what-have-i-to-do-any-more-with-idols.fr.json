@@ -1,0 +1,251 @@
+{
+ "kind": "sermon",
+ "slug": "what-have-i-to-do-any-more-with-idols",
+ "language": "fr",
+ "job_issue": 6023,
+ "references": [
+  {
+   "reference": "Hosea 14:8",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hosea 14:8",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 54:5",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hosea 14:5",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 14:16",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 16:7",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 27:3",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Exodus 20:5",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 2:14",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 2:15",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 4:6",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Chronicles 31:1",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 5:30",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 6:14",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 7:29",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Thessalonians 5:13",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hebrews 13:17",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 4:15",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Timothy 3:4",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Revelation 18:2",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 3:17",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 19:17",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 25:40",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 9:8",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 51:12",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 41:14",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hosea 14:4",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Isaiah 53:11",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 5:32",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Isaiah 27:2",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "John 2:14-15",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 10:37",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "2 Chronicles 31:1",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "1 Corinthians 7:39",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "2 Corinthians 12:15",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Corinthians 3:21",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Proverbs 3:16",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Proverbs 19:17",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Psalm 118:27",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "1 Peter 4:3",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Philippians 4:1",
+   "status": "self_rendered",
+   "block_index": 12
+  }
+ ]
+}

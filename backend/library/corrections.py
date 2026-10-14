@@ -1474,6 +1474,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # sw
             ('<p>Jinsi inavyopendeza moyo wa',
              '<blockquote><em>"BWANA MUNGU ni Jua na Ngao:<br/> BWANA atatoa neema na utukufu:<br/> "Hatawanyima kitu chema<br/> hao waendao kwa unyofu."<br/></em>—ZABURI 84:11.</blockquote>'),
+            # fr
+            ("<p>Qu’il est doux au cœur",
+             "<blockquote><em>« L’Éternel Dieu est un soleil et un bouclier,<br/> L’Éternel donne la grâce et la gloire,<br/> Il ne refuse aucun bien à ceux<br/> qui marchent dans l’intégrité. »<br/></em> — PSAUME 84:12.</blockquote>"),
         ],
     },
     "under-the-shepherds-care": {
@@ -10871,6 +10874,153 @@ BODY_CORRECTIONS.setdefault("sermons-on-several-occasions", {}).setdefault("repl
     ("dice: </p> <p>Igneus est ollis vigor, et coelestis origo</p> <p>Semnibus", "dice: </p> <p>Igneus est ollis vigor, et coelestis origo</p> <p>Seminibus"),
     # [es] OCR in shared Latin (mirrors EN): l→I
     ("lnclusi tenebris, et carcere caeco:</p> <p>encerrados", "Inclusi tenebris, et carcere caeco:</p> <p>encerrados"),
+])
+
+
+# Found while translating to French (2026-10-14): OCR / transcript slips in eleven
+# queue sermons, each with one possible reading (EN only).
+BODY_CORRECTIONS.setdefault("all-sufficiency", {}).setdefault("replacements", []).extend([
+    # typo 'form' for 'from'
+    ("does not come form and accord", "does not come from and accord"),
+])
+BODY_CORRECTIONS.setdefault("how-to-contemplate-christs-holy-sufferings", {}).setdefault("replacements", []).extend([
+    # OCR zero for capital O
+    ("apostles: \"0 beloved brethren", "apostles: \"O beloved brethren"),
+    # OCR zero for capital O
+    ("apostles: \"0, brethren", "apostles: \"O, brethren"),
+    # 'quite' for 'quiet' (set against 'a show and false')
+    ("Christ are quite and true", "Christ are quiet and true"),
+])
+BODY_CORRECTIONS.setdefault("pauls-first-prayer", {}).setdefault("replacements", []).extend([
+    # capital 'To' mid-sentence after the exclamation
+    ("said aha! aha! To the church", "said aha! aha! to the church"),
+    # missing opening quote (closer present; parallels “Behold, he prayeth,”)
+    ("it can also be said, Behold, he is", "it can also be said, “Behold, he is"),
+    # inner opening single quote typeset as a closer
+    ("</p><p>’Forever’ on their chains", "</p><p>‘Forever’ on their chains"),
+    # inner opening single quote typeset as a closer
+    ("</p><p>’Forever’ burneth", "</p><p>‘Forever’ burneth"),
+    # inner opening single quote typeset as a closer
+    ("</p><p>’Forever’ ever reigns", "</p><p>‘Forever’ ever reigns"),
+    # elision apostrophe typeset as an opening single quote
+    ("“‘Tis prayer supports", "“’Tis prayer supports"),
+])
+BODY_CORRECTIONS.setdefault("safety-fulness-and-sweet-refreshment-in-christ", {}).setdefault("replacements", []).extend([
+    # 'as last' for 'at last'
+    ("and who as last finds a river", "and who at last finds a river"),
+    # leftover line-break hyphen
+    ("appetite for happiness nev-er can be", "appetite for happiness never can be"),
+    # 'no' for 'not'
+    ("do no only come to a resting-place", "do not only come to a resting-place"),
+    # 'spirits' for 'serpents' (Isa 30:6 'fiery flying serpent'; Deut 8:15)
+    ("and fiery flying spirits;", "and fiery flying serpents;"),
+    # 'the' for 'he'
+    ("has promised that the will subdue", "has promised that he will subdue"),
+    # KJV Ps 90:1 'thou hast been'
+    ("\"Lord, thou has been our dwelling-place", "\"Lord, thou hast been our dwelling-place"),
+])
+BODY_CORRECTIONS.setdefault("the-death-of-self", {}).setdefault("replacements", []).extend([
+    # stray space inside the possessive
+    ("the next of Anak' s race", "the next of Anak's race"),
+    # misplaced space before the closing quote
+    ("The word \"consecrate \"in Hebrew", "The word \"consecrate\" in Hebrew"),
+    # stray apostrophe
+    ("leaning on them instead of' God", "leaning on them instead of God"),
+    # OCR 'put' for 'but'
+    ("sickness, put He is able for you", "sickness, but He is able for you"),
+    # hymn line lost its last word 'I' (Simpson: 'no more I, / But Christ that
+    # lives in me')
+    ("<p>O that it may be no more!</p>", "<p>O that it may be no more I!</p>"),
+])
+BODY_CORRECTIONS.setdefault("the-gift-of-faith", {}).setdefault("replacements", []).extend([
+    # transcript: the '10/40 window'
+    ("praying through the 1040 window", "praying through the 10/40 window"),
+    # transcript: the '10/40 window'
+    ("may not know that the 1040 window", "may not know that the 10/40 window"),
+    # transcript: the '10/40 window'
+    ("not only for the 1040 window", "not only for the 10/40 window"),
+])
+BODY_CORRECTIONS.setdefault("the-lord-our-righteousness", {}).setdefault("replacements", []).extend([
+    # 'false' for 'falsely' (base English reads 'falsely')
+    ("or moralists false so called", "or moralists falsely so called"),
+    # 'of' for 'or'
+    ("lives of the preachers of professors of it", "lives of the preachers or professors of it"),
+    # 'Not' for 'Now'
+    ("glory in myself. Not boasting is excluded", "glory in myself. Now boasting is excluded"),
+    # 'so' for 'to'
+    ("I apply this so those that oppose", "I apply this to those that oppose"),
+    # 'our' for 'out'
+    ("with believing Thomas, cry our,", "with believing Thomas, cry out,"),
+    # 'fine' for 'find'
+    ("if death should fine you naked", "if death should find you naked"),
+    # adjacent italics with no space run the words together
+    ("<i>Sufficient</i><i>Righteousness</i>", "<i>Sufficient</i> <i>Righteousness</i>"),
+    # adjacent italics with no space
+    ("<i>Divine</i><i>Philanthropy</i>", "<i>Divine</i> <i>Philanthropy</i>"),
+    # adjacent italics with no space
+    ("<i>profane</i><i>moralists</i>", "<i>profane</i> <i>moralists</i>"),
+    # adjacent italics with no space
+    ("<i>imputed</i><i>righteousness</i>", "<i>imputed</i> <i>righteousness</i>"),
+])
+BODY_CORRECTIONS.setdefault("the-meaning-of-the-cross", {}).setdefault("replacements", []).extend([
+    # transcript: hymn-writer Elizabeth Clephane
+    ("Elizabeth Clefane, the author", "Elizabeth Clephane, the author"),
+    # transcript: John Bunyan
+    ("read John Benjamin's Pilgrim's Progress", "read John Bunyan's Pilgrim's Progress"),
+    # transcript: Prairie Bible Institute
+    ("at the Prayer Bible Institute in Canada", "at the Prairie Bible Institute in Canada"),
+    # transcript: Hebrews (5:8)
+    ("It says in Hebrew that Jesus learned", "It says in Hebrews that Jesus learned"),
+    # transcript: Hebrews 2:10
+    ("it says in Hebrew 2.10 he is", "it says in Hebrews 2.10 he is"),
+    # transcript: the speaker's own name
+    ("not an Elizabeth Elliott idea", "not an Elisabeth Elliot idea"),
+    # transcript: the speaker's own name
+    ("forget about reading Elizabeth Elliott because", "forget about reading Elisabeth Elliot because"),
+    # transcript: letter addressed to the speaker
+    ("Hard work but worth it. Elizabeth there", "Hard work but worth it. Elisabeth there"),
+    # transcript: the speaker's own name
+    ("I will try what Elizabeth said. Which Elizabeth got", "I will try what Elisabeth said. Which Elisabeth got"),
+    # transcript: her husband Lars Gren
+    ("so when Lars Grenn came after me", "so when Lars Gren came after me"),
+    # transcript: Elizabeth Prentiss (Stepping Heavenward)
+    ("100 years ago by Elizabeth Prentice a few", "100 years ago by Elizabeth Prentiss a few"),
+    # transcript: the title My Utmost for His Highest
+    ("Oswald Chambers' letters for his highest", "Oswald Chambers' My Utmost for His Highest"),
+    # transcript: hymn 'O trysting place' (Beneath the Cross of Jesus)
+    ("refuge tried and sweet O tricing place", "refuge tried and sweet O trysting place"),
+    # transcript: 'trysting place'
+    ("come to that tricing place", "come to that trysting place"),
+    # transcript: Carmichael's 'In Acceptance Lieth Peace'
+    ("yes Lord, inacceptance, life, peace a poem", "yes Lord, in acceptance lieth peace a poem"),
+    # transcript: poem title 'In Acceptance Lieth Peace'
+    ("Amy Carmichael inacceptance, life, peace I", "Amy Carmichael In Acceptance Lieth Peace I"),
+    # transcript: Carmichael's refrain 'then I know nothing of Calvary love'
+    ("then I know nothing. Calvary is love.", "then I know nothing of Calvary love."),
+    # transcript: idiom 'dish it out' (advice)
+    ("I try not to fish it out until", "I try not to dish it out until"),
+])
+BODY_CORRECTIONS.setdefault("the-new-birth", {}).setdefault("replacements", []).extend([
+    # OCR 'eves' for 'eyes'
+    ("with his eves rivetted upon me", "with his eyes rivetted upon me"),
+])
+BODY_CORRECTIONS.setdefault("the-spirit-of-prayer", {}).setdefault("replacements", []).extend([
+    # OCR 'heart' for 'heard' (KJV 1 John 4:3; book English reads 'heard')
+    ("whereof ye have heart that it shall come", "whereof ye have heard that it shall come"),
+    # 'thy' for 'they' (Watts; book English reads 'they')
+    ("Tortured with keen despair thy cry", "Tortured with keen despair they cry"),
+    # 'is' for 'it' (book English reads 'it')
+    ("and that is was not granted", "and that it was not granted"),
+])
+BODY_CORRECTIONS.setdefault("what-have-i-to-do-any-more-with-idols", {}).setdefault("replacements", []).extend([
+    # OCR 'rear' for 'ear'
+    ("no rear to hear them falling", "no ear to hear them falling"),
+    # 'Same' for 'Shame'
+    ("Same on such practical blasphemy", "Shame on such practical blasphemy"),
+    # 'he' for 'her'
+    ("present of flowers for he hair", "present of flowers for her hair"),
+    # 'your' for 'you'
+    ("keeps some of your from secret prayer", "keeps some of you from secret prayer"),
 ])
 # The paragraph ended on a stop the OCR read as a comma.
 BODY_CORRECTIONS["evangelization-of-the-world"]["paragraph_breaks"] = [

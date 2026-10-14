@@ -1,0 +1,205 @@
+{
+ "kind": "sermon",
+ "slug": "the-new-birth",
+ "language": "fr",
+ "job_issue": 6019,
+ "references": [
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 8:24",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "John 3:6",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 13:19",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 3:7",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 5:24",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 4:24",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Romans 8:7",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "John 10:1",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Revelation 7:14",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 3:4",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "John 3:5",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 3:5",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "1 Corinthians 2:14",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "John 3:8",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 16:8",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Jeremiah 13:23",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Luke 7:14",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 7:14",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Ephesians 2:1",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 6:23",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 3:14",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 3:15",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 3:14",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 3:15",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}
