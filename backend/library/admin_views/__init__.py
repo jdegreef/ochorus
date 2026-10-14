@@ -54,6 +54,7 @@ from .quality import (
     AdminReviewQueueView,
     AdminVerseReviewView,
 )
+from .targets import AdminLanguageTargetsView
 from .team import AdminRolesView, AdminTeamView
 from .user_delete import AdminUserDeleteView
 from .user_detail import AdminUserDetailView
@@ -88,6 +89,7 @@ __all__ = [
     "AdminLanguageGoLiveView",
     "AdminLanguageReadinessView",
     "AdminLanguageSettingsView",
+    "AdminLanguageTargetsView",
     "AdminLanguageThresholdsView",
     "AdminReviewDetailView",
     "AdminReviewQueueView",
