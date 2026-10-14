@@ -176,6 +176,20 @@ S["tell-me-the-story-8"] = tmts("#0c2c3e", "#1c6476", "#e2d88c", "#fff2b0", "#3f
   '<g fill="#d8a878"><rect x="470" y="570" width="22" height="30"/><rect x="496" y="560" width="26" height="40"/><rect x="526" y="574" width="20" height="26"/><path d="M496 560 L509 546 L522 560 Z"/></g>'
   '<path d="M280 596 L392 596 L378 618 L294 618 Z" fill="#8a5432"/><line x1="336" y1="596" x2="336" y2="540" stroke="#5a3a20" stroke-width="4"/>'
   '<path d="M314 548 L358 548 L362 590 L310 590 Z" fill="#fff6e0"/><path d="M336 548 L336 590" stroke="#e8dcc0" stroke-width="2"/>')
+# Book 9 is a companion (songs and wisdom), so it takes its own family: plum into amber
+S["tell-me-the-story-9"] = tmts("#2a1638", "#6a3266", "#f2b46a", "#ffd890", "#5f9a4a", "#2f5a2a",
+  # David's lyre in the sky: a sound box, two curving horns, a crossbar, strings
+  '<circle cx="300" cy="214" r="60" fill="#ffd890" opacity=".14"/>'
+  '<path d="M272 254 C252 232 248 200 262 176 C268 166 262 158 254 156 M328 254 C348 232 352 200 338 176 C332 166 338 158 346 156" stroke="#f2c24a" stroke-width="9" fill="none" stroke-linecap="round"/>'
+  '<path d="M262 180 L338 180" stroke="#f2c24a" stroke-width="7" stroke-linecap="round"/>'
+  '<path d="M266 248 L334 248 L328 268 L272 268 Z" fill="#d9a83a"/>'
+  '<g stroke="#fff2c8" stroke-width="2"><line x1="282" y1="181" x2="284" y2="250"/><line x1="294" y1="181" x2="295" y2="250"/><line x1="306" y1="181" x2="305" y2="250"/><line x1="318" y1="181" x2="316" y2="250"/></g>',
+  # still waters and two sheep in a green pasture (Psalm 23)
+  '<path d="M330 640 C360 622 420 616 470 622 C520 628 560 622 600 616 L600 640 Z" fill="#5fb4dc"/>'
+  '<path d="M340 632 C380 620 430 618 470 624" stroke="#e6f6ff" stroke-width="2.5" fill="none" opacity=".8"/>'
+  '<g fill="#f4efe2"><ellipse cx="410" cy="600" rx="22" ry="14"/><circle cx="430" cy="592" r="8" fill="#3a2a22"/>'
+  '<ellipse cx="474" cy="604" rx="18" ry="12"/><circle cx="458" cy="598" r="7" fill="#3a2a22"/></g>'
+  '<g stroke="#3a2a22" stroke-width="3"><line x1="400" y1="612" x2="400" y2="622"/><line x1="418" y1="612" x2="418" y2="622"/><line x1="468" y1="614" x2="468" y2="622"/><line x1="482" y1="614" x2="482" y2="622"/></g>')
 
 # ── The Big Story: from the garden to the city ──────────────────────────────
 d, b = sky("#0d1230", "#2a2a55", "#8a5a5a")

@@ -171,6 +171,7 @@ ART_SCRIM: dict[str, float] = {
     "tell-me-the-story-6": 0.75,
     "tell-me-the-story-7": 0.80,
     "tell-me-the-story-8": 0.75,
+    "tell-me-the-story-9": 0.80,
     "the-big-story": 0.75,
     "the-bruised-reed": 0.85,
     "the-bruised-reed-teens": 0.30,

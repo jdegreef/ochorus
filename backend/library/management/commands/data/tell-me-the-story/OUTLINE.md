@@ -272,3 +272,32 @@ The last book of the series. An Introduction ("A Light for Every Nation", Acts 1
 21. All Things New (Revelation 21–22)
 
 The last story's "The promise kept" is Revelation 22:3, "No longer will there be any curse": the snake crushed (Book 1, Genesis 3:15) and the tree of life open again (Genesis 3:24 → Revelation 22:2). Told gently: Paul stoned at Lystra ("they thought he was dead"), beaten at Philippi, the jailer's despair. Revelation is kept to its plain heart and the book says plainly that much of it is pictures. Not overstated: "one of the very first" churches in Europe; Paul "probably" in Rome for Ephesians; no Roman soaked-shield lore. Onesimus's possible theft is "may have" (Philemon 18 implies it).
+## Book 9: Songs and Wise Words (a companion)
+
+A companion to the eight story books, not a ninth part of the story: the books in the middle of the Bible that are mostly songs, poems and sayings. An Introduction ("The Songs in the Middle of the Bible"), then nineteen chapters.
+
+**Its own faithfulness rule.** Where the Bible gives the story behind a psalm (a heading, or 1 Samuel 21 for Psalm 56), the chapter tells it. Where a proverb needs picturing, the chapter IMAGINES a child today and says "imagine" plainly — never presented as Scripture. Psalm text is quoted or closely paraphrased; every bracketed quotation is exact BSB.
+
+1. The Shepherd's Song (Psalm 23; John 10:11–15) — Looking ahead to Jesus: John 10:11
+2. You Made Me (Psalm 139)
+3. The Sky Is Singing (Psalms 19 and 8)
+4. When I Am Afraid (1 Samuel 21:10–15; Psalm 56)
+5. Be Still (Psalm 46)
+6. Under His Wings (Psalm 91; Luke 13:34) — honest that it is not a promise of no trouble
+7. Make a Joyful Noise (Psalms 100 and 103)
+8. Songs for Sad Days (Psalm 42) — lament as a way of prayer
+9. Everything That Breathes (Psalm 150)
+10. Two Paths (Psalm 1; Proverbs 4:18)
+11. Where Wisdom Starts (Proverbs 1:1–7; 9:10) — Looking ahead to Jesus: 1 Corinthians 1:30
+12. The Little Ant (Proverbs 6:6–11)
+13. A Gentle Answer (Proverbs 15:1; 12:18, 25; 16:24)
+14. Trust with All Your Heart (Proverbs 3:1–12)
+15. A Friend Who Sticks Close (Proverbs 17:17; 18:24; 13:20)
+16. Job Loses Everything (Job 1–2)
+17. God Speaks from the Storm (Job 38–42; James 5:11)
+18. A Time for Everything (Ecclesiastes 3:1–14)
+19. Remember Your Creator (Ecclesiastes 12; 2:4–11)
+
+The BSB check caught five proverbs quoted from memory in modern wording (4:18, 12:18, 13:20, 18:24, Colossians 3:23); all now exact. Job's children's deaths are one sentence; the friends' silence is commended and their later accusations named as wrong (Job 42:7).
+
+Cover: its own colour family (plum into amber, an evening song), David's lyre in the sky, still waters and two sheep below (Psalm 23).
