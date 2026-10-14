@@ -10341,6 +10341,17 @@
 				505
 			]
 		},
+		"fr/sermons-on-several-occasions": {
+			"ground": "185cd593904fb19d33a2fbe85cae0b73db992fbe815fe7993bf89fa9a7053503",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/mauve",
+			"bar": 0
+		},
 		"fr/soar-like-the-eagle-3": {
 			"ground": "435c30f8b3718898f75827d153543c59923e778221872f61a6f615d7dd32a004",
 			"style": "lettered",
