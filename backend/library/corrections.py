@@ -6462,6 +6462,393 @@ BODY_CORRECTIONS.setdefault("a-call-to-the-unconverted", {}).setdefault("replace
     # [am] citation Ps 1:21 → 50:21 (matches English fix)
     ("ልታስቡ ትቸኩላላችሁ (መዝሙር 1:21)", "ልታስቡ ትቸኩላላችሁ (መዝሙር 50:21)"),
 ])
+
+# Found while translating to French (2026-10-14): Freedom of the Will — single-
+# reading OCR slips in the scanned text and misprinted references whose quoted
+# words fix the verse (Isa lxv.13 -> xlv.13, 2 Kings -> 1 Kings 15:27, Isa
+# xliii -> xlii, iii -> lii, xi -> ix, lxii.18 -> .8, Phil ii.18 -> .8, Luke
+# xxii.28, 20 -> 28, 29), also in es.
+BODY_CORRECTIONS.setdefault("freedom-of-the-will", {}).setdefault("replacements", []).extend([
+    # [en] stray capital "The" mid-sentence
+    ("greater clearness in The following", "greater clearness in the following"),
+    # [en] OCR "nets" for "acts"
+    ("are his own nets, in drinking", "are his own acts, in drinking"),
+    # [en] missing space after the numeral
+    ("<p>2.When I say", "<p>2. When I say"),
+    # [en] stray straight apostrophe (scan mark)
+    ("the mind’s view of' the object", "the mind’s view of the object"),
+    # [en] word split by a stray space
+    ("or “where by it cannot", "or “whereby it cannot"),
+    # [en] OCR "natured" for "natural"
+    ("moral and natured Necessity", "moral and natural Necessity"),
+    # [en] slip "their" for "there"
+    ("But yet their may be will", "But yet there may be will"),
+    # [en] OCR "bead" for "head"
+    ("the less on this bead,", "the less on this head,"),
+    # [en] OCR "he" for "be"
+    ("If the first act he not free", "If the first act be not free"),
+    # [en] OCR "Bur" for "But"
+    ("Bur, it being as good", "But, it being as good"),
+    # [en] doubled article
+    ("the exertion of the that act", "the exertion of that act"),
+    # [en] OCR "thirds" for "thirdly"
+    ("and then thirds, from", "and then thirdly, from"),
+    # [en] OCR "cause" for "case"
+    ("it is the cause in fact, that millions", "it is the case in fact, that millions"),
+    # [en] slip "their" for "there"
+    ("and before their is any difference", "and before there is any difference"),
+    # [en] OCR "aloud" for "and"
+    ("by the stars, aloud not upon", "by the stars, and not upon"),
+    # [en] slip "their" for "there"
+    ("their opinion, their must be no beginning", "their opinion, there must be no beginning"),
+    # [en] OCR "vulgularly" for "vulgarly"
+    ("what is vulgularly called", "what is vulgarly called"),
+    # [en] OCR "slate" for "state"
+    ("done IN a slate of freedom", "done IN a state of freedom"),
+    # [en] OCR "stale" for "state"
+    ("exerted in a stale of freedom", "exerted in a state of freedom"),
+    # [en] OCR "he" for "be"
+    ("as not to he dependent on it", "as not to be dependent on it"),
+    # [en] OCR "an" for "on"
+    ("of one thing an the influence", "of one thing on the influence"),
+    # [en] OCR "here" for "there"
+    ("So that here can be no room", "So that there can be no room"),
+    # [en] name misspelt; "Chubb" everywhere else in the chapter (26x)
+    ("this same Mr. Chub holds", "this same Mr. Chubb holds"),
+    # [en] Cyrus building the city ("he shall build my city, and he shall let
+    # go my captives") is Isa 45:13; lxv/xlv transposition
+    ("(Isa. xliv. 28. and lxv. 13.", "(Isa. xliv. 28. and xlv. 13."),
+    # [en] Baasha's conspiracy against Nadab ("Baasha ... conspired against
+    # him") is 1 Kings 15:27
+    ("murders of Bassha, (2 Kings 15.27", "murders of Bassha, (1 Kings 15.27"),
+    # [en] misspelt; the same name is spelt "Epiphanes" in the same sentence
+    ("instead of Epiphones, or illustrious", "instead of Epiphanes, or illustrious"),
+    # [en] stray apostrophe in the book name (reference itself left)
+    ("(1 King’s xxi. 20", "(1 Kings xxi. 20"),
+    # [en] stray full stop inside "&c."
+    ("&amp;c. &amp;.c. I say", "&amp;c. &amp;c. I say"),
+    # [en] OCR "he" for "be"
+    ("the people should he finally", "the people should be finally"),
+    # [en] OCR digit 1 for roman l: Isa 65:1-2 is what Rom 10:20-21 quotes
+    ("and Isa. 1xv. at the beginning", "and Isa. lxv. at the beginning"),
+    # [en] book number dropped: the rejected stone is 1 Pet 2:4, 7
+    ("Acts iv. 11. Pet. ii. 4, 7.", "Acts iv. 11. 1 Pet. ii. 4, 7."),
+    # [en] OCR "mortal" for "moral"
+    ("abuse of their mortal Agency", "abuse of their moral Agency"),
+    # [en] OCR "l" for roman "I" (followed by II. and III.)
+    ("<p>l. It is very evident", "<p>I. It is very evident"),
+    # [en] OCR "fixture" for "future" (repeated later as "more certain or more
+    # future")
+    ("more certain, or more fixture, than", "more certain, or more future, than"),
+    # [en] OCR "he" for "be"
+    ("the thing known now to he necessary", "the thing known now to be necessary"),
+    # [en] OCR "continuance" for "contingence" (the section argues against
+    # contingence)
+    ("against the continuance of the volitions", "against the contingence of the volitions"),
+    # [en] OCR "ail" for "all"
+    ("no cause or orderer at ail.", "no cause or orderer at all."),
+    # [en] OCR "he" for "be"
+    ("that he should he perfectly holy", "that he should be perfectly holy"),
+    # [en] word split by a stray space
+    ("to preserve and up hold him", "to preserve and uphold him"),
+    # [en] "Behold my servant, whom I uphold; mine elect" is Isa 42:1-4
+    ("(Isa. xliii. 1 – 4.)", "(Isa. xlii. 1 – 4.)"),
+    # [en] OCR "iii" for "lii": the exalted Servant (Isa 52:13-15) paired with
+    # 53:10-12
+    ("(See Isa. iii. 13 – 15.", "(See Isa. lii. 13 – 15."),
+    # [en] "For unto us a child is born" (quoted next) is Isa 9:6-7; xi/ix
+    # transposition (Isa 11:1 is cited separately after it)
+    ("in the land.” (Isa. xi. 6, 7.)", "in the land.” (Isa. ix. 6, 7.)"),
+    # [en] Isa 62 has 12 verses; the oath ("The LORD hath sworn by his right
+    # hand") is 62:8
+    ("chap. lxii. 18.)", "chap. lxii. 8.)"),
+    # [en] Christ's obedience ("obedient unto death") is Phil 2:8
+    ("Phil. ii. 18. Heb.", "Phil. ii. 8. Heb."),
+    # [en] the quoted words ("Ye are they which have continued with me ... I
+    # appoint unto you a kingdom") are Luke 22:28-29
+    ("In Luke xxii. 28, 20.", "In Luke xxii. 28, 29."),
+    # [en] OCR "wailed" for "waited" (Luke 2:25)
+    ("and wailed for the consolation", "and waited for the consolation"),
+    # [en] OCR "ulrumque" for "utrumque"
+    ("freedom <i>ad ulrumque,</i>", "freedom <i>ad utrumque,</i>"),
+    # [en] stray full stop inside "&c."
+    ("to establish the earth,” &amp;.c.", "to establish the earth,” &amp;c."),
+    # [en] OCR slip; the paragraph's own word is "well-pleasedness"
+    ("in testimony of well-blessedness", "in testimony of well-pleasedness"),
+    # [en] stray s ("beings" for "being")
+    ("appointed him, beings in all things", "appointed him, being in all things"),
+    # [en] dropped s ("person" for "persons")
+    ("as motives to person to do", "as motives to persons to do"),
+    # [en] OCR "duo" for "quo" (Augustine's "a quo liberum est abstinere")
+    ("an action a duo liberum", "an action a quo liberum"),
+    # [en] OCR "mortal" for "moral"
+    ("manner, mortal difficulty", "manner, moral difficulty"),
+    # [en] slip "unreasonableness" for "unreasonable" (adjective series)
+    ("as very unreasonableness, unjust", "as very unreasonable, unjust"),
+    # [en] OCR "sects" for "effects"
+    ("as the sects or consequences", "as the effects or consequences"),
+    # [en] "imminent" for Edwards's term "immanent acts"
+    ("the state or imminent acts", "the state or immanent acts"),
+    # [en] "imminent" for Edwards's term "immanent acts"
+    ("in the imminent acts or state", "in the immanent acts or state"),
+    # [en] OCR "latitude" for "gratitude" ("that love and gratitude" later in
+    # the sentence)
+    ("Christ, and latitude for his death", "Christ, and gratitude for his death"),
+    # [en] OCR "stale" for "state"
+    ("in a stale of perfect Indifference", "in a state of perfect Indifference"),
+    # [en] OCR "net" for "new"
+    ("give a net bias to the mind", "give a new bias to the mind"),
+    # [en] stray apostrophe
+    ("For these thing’s can operate", "For these things can operate"),
+    # [en] "maybe" for "may be"
+    ("as a person maybe said", "as a person may be said"),
+    # [en] word split by a stray space
+    ("things, in them selves good", "things, in themselves good"),
+    # [en] OCR "he" for "be"
+    ("or effect to he brought", "or effect to be brought"),
+    # [en] OCR "notation" for "notion"
+    ("the notation of plain and manifest", "the notion of plain and manifest"),
+    # [en] OCR "lends" for "leads"
+    ("that insensibly lends and beguiles", "that insensibly leads and beguiles"),
+    # [en] OCR "he" for "be"
+    ("then it would he agreeable", "then it would be agreeable"),
+    # [en] stray capital "His" (refers to a man)
+    ("indifferent in His acting", "indifferent in his acting"),
+    # [en] OCR "he" for "be"
+    ("there would he no such thing", "there would be no such thing"),
+    # [en] OCR "form" for "former" (the former of two alternatives)
+    ("Not the form; for natural", "Not the former; for natural"),
+    # [en] OCR "unutterably" for "unalterably"
+    ("fixed unutterably by necessity", "fixed unalterably by necessity"),
+    # [en] OCR "case" for "ease"
+    ("an end, even his case, or the saving", "an end, even his ease, or the saving"),
+    # [en] OCR "he" for "be"
+    ("it would he a disadvantage", "it would be a disadvantage"),
+    # [en] re-quotes the Essay's "almighty minister of fate" from earlier in
+    # the chapter
+    ("almighty administer of fate", "almighty minister of fate"),
+    # [es] citation fix matching the English correction (Isa. lxv. 13 → xlv.
+    # 13)
+    ("(Isaías 44:28 y 65:13;", "(Isaías 44:28 y 45:13;"),
+    # [es] citation fix matching the English correction (2 Kings 15.27 → 1
+    # Kings)
+    ("Baasa (2 Reyes 15:27", "Baasa (1 Reyes 15:27"),
+])
+
+# Found while translating to French (2026-10-14): The Way into the Holiest —
+# single-reading OCR slips (lie/he, digit slips i6/i8/io in references, lost
+# drop cap) and wrong references whose quoted words fix the verse (Rom xlii ->
+# xiii, Heb ii.2 -> ii.1, ii.10 -> ii.9, Luke x.9 -> x.19, Mark v.28, ver.
+# 17/24), also in es/am/sw.
+BODY_CORRECTIONS.setdefault("way-into-holiest", {}).setdefault("replacements", []).extend([
+    # [en] OCR slip "w~ld" for "would"
+    ("It w~ld seem as if", "It would seem as if"),
+    # [en] doubled full stop (scan mark)
+    ("methods of thought..</i>", "methods of thought.</i>"),
+    # [en] OCR "i6" for 16 (2 Tim 3:16, "given by inspiration")
+    ("(2 Tim. iii. i6 ;", "(2 Tim. iii. 16 ;"),
+    # [en] OCR "ii" for 11 (1 Pet 1:11, "searching what ... did signify")
+    ("1 Pet. i. ii).", "1 Pet. i. 11)."),
+    # [en] OCR "i8" for 18 (John 1:18, "in the bosom of the Father")
+    ("Father\" (John i. i8)", "Father\" (John i. 18)"),
+    # [en] OCR "i8" for 18 (John 5:18, "making himself equal with God")
+    ("with God (John v. i8)", "with God (John v. 18)"),
+    # [en] OCR "bath" for "hath" (John 14:9)
+    ("He that bath seen me", "He that hath seen me"),
+    # [en] OCR "Offce" for "Office"
+    ("<b><i>In Offce. </i></b>", "<b><i>In Office. </i></b>"),
+    # [en] OCR "i8" for 18 (1 Cor 1:18, "the word of the cross")
+    ("(1 Cor. i. i8, R.v.)", "(1 Cor. i. 18, R.v.)"),
+    # [en] OCR "i John" for "1 John" (1 John 3:2)
+    ("(i John iii. 2)", "(1 John iii. 2)"),
+    # [en] OCR "xlii" for xiii: "the night is far spent; the day is at hand" is
+    # Rom 13:11-12
+    ("(Rom. xlii. 11, 12)", "(Rom. xiii. 11, 12)"),
+    # [en] stray colon (scan mark) inside the clause
+    ("harbor, past: which", "harbor, past which"),
+    # [en] wrong verse: "Lest haply we drift away" is Heb 2:1 RV (the chapter
+    # text)
+    ("drift away\" (ii. 2, R.v.)", "drift away\" (ii. 1, R.v.)"),
+    # [en] full stop lost between sentences (only reading)
+    ("exhausting toil If the beasts", "exhausting toil. If the beasts"),
+    # [en] wrong verse: "taste death for every man" is Heb 2:9
+    ("8; Heb. ii. 10)", "8; Heb. ii. 9)"),
+    # [en] misspelling "sufering"
+    ("the path of sufering", "the path of suffering"),
+    # [en] subject lost; parallel to "We dread its leave-taking" (only reading)
+    ("</b>. dread its mystery.", "</b>. We dread its mystery."),
+    # [en] OCR "I 2" for 12 (Heb 2:12, "in the midst of the church")
+    ("company (ver. I 2)", "company (ver. 12)"),
+    # [en] OCR "ii" for 11 (John 16:11, "prince of this world is judged")
+    ("31 ; xvi. ii)", "31 ; xvi. 11)"),
+    # [en] wrong verse: "nothing shall by any means hurt you" is Luke 10:19
+    ("hurt thee (Luke x. 9)", "hurt thee (Luke x. 19)"),
+    # [en] misspelling "consuting"
+    ("never consuting ease", "never consulting ease"),
+    # [en] OCR "lie" for "he"
+    ("our nature, lie should", "our nature, he should"),
+    # [en] OCR "lie" for "he"
+    ("than that lie is our Brother", "than that he is our Brother"),
+    # [en] OCR case slip in a caps section head
+    ("<p>IT Is SOVEREIGN", "<p>IT IS SOVEREIGN"),
+    # [en] print slip "whch"
+    ("fair ideal whch beckons", "fair ideal which beckons"),
+    # [en] stray apostrophe "seem's"
+    ("the age seem's so", "the age seems so"),
+    # [en] print slip "discpline"
+    ("the stern discpline", "the stern discipline"),
+    # [en] "flour" for "floor" with the winnowing-fan (Matt 3:12)
+    ("to purge his flour,", "to purge his floor,"),
+    # [en] OCR tilde for hyphen
+    ("a High~Priest who", "a High-Priest who"),
+    # [en] OCR "relying" for "rallying"
+    ("prevailed, relying around it", "prevailed, rallying around it"),
+    # [en] OCR "I 7, I 8" for 17, 18 (Heb 2:17-18, "reconciliation for the sins
+    # of the people")
+    ("people (ii. I 7, I 8)", "people (ii. 17, 18)"),
+    # [en] chapter numeral dropped: touching his garment is Mark 5:28
+    ("of God (Mark .28)", "of God (Mark v. 28)"),
+    # [en] OCR "lie" for "He" (Mark 14:33)
+    ("lie was sore amazed", "He was sore amazed"),
+    # [en] OCR "free" for "tree" (1 Pet 2:24)
+    ("on the free that he bare", "on the tree that he bare"),
+    # [en] OCR "as king" for "asking"
+    ("his Father, as king that", "his Father, asking that"),
+    # [en] OCR "cnes" for "cries"
+    ("in audible cnes.", "in audible cries."),
+    # [en] OCR "entreatles" for "entreaties"
+    ("with thine entreatles.", "with thine entreaties."),
+    # [en] OCR "15" for "IS"
+    ("WHAT 15 IT TO FALL", "WHAT IS IT TO FALL"),
+    # [en] stray scan debris "1)" (Heb 6:12)
+    ("inherit the 1)promises", "inherit the promises"),
+    # [en] OCR "vias" for "was"
+    ("Priesthood vias the", "Priesthood was the"),
+    # [en] OCR "I" for "!"
+    ("Alas I poor souls", "Alas! poor souls"),
+    # [en] OCR "lie" for "he"
+    ("world: and lie appears", "world: and he appears"),
+    # [en] OCR "a11" for "all"
+    ("the nurse-a11 meet", "the nurse-all meet"),
+    # [en] drop-cap "A" lost (only reading)
+    ("<p>NEW word comes", "<p>A NEW word comes"),
+    # [en] OCR "f" for "I" (the "I will"s of Heb 8:10-12)
+    ("of the f wills of", "of the I wills of"),
+    # [en] OCR "II" for 11 (Heb 8:10-12)
+    ("(vv. 10, II, 12)", "(vv. 10, 11, 12)"),
+    # [en] OCR "I 2" for 12 (Heb 9:12, "eternal redemption")
+    ("redemption (ver. I 2)", "redemption (ver. 12)"),
+    # [en] OCR "ii" for 11 (Lev 17:11, "the life of the flesh is in the blood")
+    ("Lev. xvii. ii)", "Lev. xvii. 11)"),
+    # [en] split word "a s"
+    ("is a s fresh and", "is as fresh and"),
+    # [en] OCR "of" for "if"
+    ("instantly, of ever you", "instantly, if ever you"),
+    # [en] OCR "top" for "to"
+    ("at once top serve", "at once to serve"),
+    # [en] OCR "I 5" for 15 (Heb 9:15)
+    ("it (ver. I 5, and", "it (ver. 15, and"),
+    # [en] OCR "i8" for 18 (Heb 9:18-19, first covenant dedicated with blood)
+    ("(vv. i8, 19)", "(vv. 18, 19)"),
+    # [en] OCR "1" for roman "i" (Rev 1:5, "washed us from our sins in his own
+    # blood")
+    ("(Rev. v. 9; 1. 5)", "(Rev. v. 9; i. 5)"),
+    # [en] OCR "a130" for "also"
+    ("(See a130 ix.", "(See also ix."),
+    # [en] OCR word-break "There petition" for "The repetition"
+    ("There petition of the", "The repetition of the"),
+    # [en] OCR "io" for 10 (Heb 10:10, "once for all")
+    ("PURPOSE (x. io)", "PURPOSE (x. 10)"),
+    # [en] OCR "io" for 10 (Ps 40:10)
+    ("succeeds (ver. io)", "succeeds (ver. 10)"),
+    # [en] OCR "bath" for "hath" (Heb 10:14)
+    ("he bath perfected", "he hath perfected"),
+    # [en] OCR "keel)" for "keep"
+    ("and keel) in fellowship", "and keep in fellowship"),
+    # [en] OCR "lie" for "he"
+    ("as lie will come ere", "as he will come ere"),
+    # [en] OCR "wily" for "why"
+    ("reasons wily a certain", "reasons why a certain"),
+    # [en] stray semicolon (scan mark)
+    ("your arm, ;arresting", "your arm, arresting"),
+    # [en] OCR "lie" for "he"
+    ("the home lie loved", "the home he loved"),
+    # [en] OCR "ii" for 11 (Heb 12:10-11)
+    ("(vv. 10, ii)", "(vv. 10, 11)"),
+    # [en] OCR tilde for hyphen
+    ("the self~watch;", "the self-watch;"),
+    # [en] OCR tilde for hyphen
+    ("be no by~play;", "be no by-play;"),
+    # [en] OCR "early-minded" for "earthly-minded"
+    ("profane and early-minded.", "profane and earthly-minded."),
+    # [en] OCR "fimes" for "times"
+    ("a thousand fimes.", "a thousand times."),
+    # [en] misspelling "martrydom"
+    ("blood of martrydom", "blood of martyrdom"),
+    # [en] OCR "speak~" for "speaks"
+    ("It speak~ to God", "It speaks to God"),
+    # [en] OCR "beast1" for "beasts"
+    ("of all the beast1 ever", "of all the beasts ever"),
+    # [en] OCR "al1" for "all"
+    ("than al1 the tears", "than all the tears"),
+    # [en] OCR "sutbmit" for "submit"
+    ("neck and sutbmit to", "neck and submit to"),
+    # [en] OCR "'7" for 17: "Obey them that have the rule over you" is Heb
+    # 13:17
+    ("Obey (ver. '7)", "Obey (ver. 17)"),
+    # [en] wrong verse: "Salute all them that have the rule over you" is Heb
+    # 13:24
+    ("Salute (ver. 23)", "Salute (ver. 24)"),
+    # [en] OCR "f" for "I"
+    ("who is the f AM;", "who is the I AM;"),
+    # [en] OCR "settlt" for "settle"
+    ("and settlt down", "and settle down"),
+    # [en] split word "way ward"
+    ("your way ward wanderings", "your wayward wanderings"),
+    # [en] OCR "once" for "office" (ffi ligature; Heb 7:24, the unchangeable
+    # priesthood)
+    ("same in his once</i>", "same in his office</i>"),
+    # [en] split word "Inter cessor"
+    ("and Inter cessor of", "and Intercessor of"),
+    # [en] OCR "rnidst" for "midst"
+    ("stands in our rnidst", "stands in our midst"),
+    # [en] OCR "&viner" for "diviner"
+    ("by a &amp;viner right", "by a diviner right"),
+    # [en] word-join "spiritless" for "spirit less" (contrast with the body)
+    ("feed the spiritless than", "feed the spirit less than"),
+    # [en] OCR "tho" for "the"
+    ("pilgrim to tho City", "pilgrim to the City"),
+    # [en] OCR "be" for "he"
+    ("out what be wills", "out what he wills"),
+    # [en] word dropped ("may be needed"; only reading)
+    ("all that may needed", "all that may be needed"),
+    # [es] citation fix matching the English correction (Heb 2:1)
+    ("(2:2, Versión Revisada)", "(2:1, Versión Revisada)"),
+    # [es] citation fix matching the English correction (Heb 2:9)
+    ("8; Hebreos 2:10)", "8; Hebreos 2:9)"),
+    # [es] citation fix matching the English correction (Luke 10:19)
+    ("(Lucas 10:9)", "(Lucas 10:19)"),
+    # [am] citation fix matching the English correction (Heb 2:9)
+    ("8፤ ዕብራውያን 2:10)", "8፤ ዕብራውያን 2:9)"),
+    # [am] citation fix matching the English correction (Heb 13:24)
+    ("(ቁጥር 23)", "(ቁጥር 24)"),
+    # [sw] citation fix matching the English correction (Heb 2:1)
+    ("(2:2, R.v.)", "(2:1, R.v.)"),
+    # [sw] citation fix matching the English correction (Heb 2:9)
+    ("8; Waebrania 2:10)", "8; Waebrania 2:9)"),
+    # [sw] citation fix matching the English correction (Luke 10:19)
+    ("(Luka 10:9)", "(Luka 10:19)"),
+    # [sw] citation fix matching the English correction (Heb 13:17; source OCR
+    # "'7")
+    ("Tii (mst. 7)", "Tii (mst. 17)"),
+    # [sw] citation fix matching the English correction (Heb 13:24)
+    ("Salimuni (mst. 23)", "Salimuni (mst. 24)"),
+    # [sw] citation fix matching the English correction (OCR "io" reproduced;
+    # Heb 10:10)
+    ("LILILOTIMIZWA (x. io)", "LILILOTIMIZWA (x. 10)"),
+    # [sw] OCR "a130" (= also) reproduced from the English; "pia" = also
+    ("(Tazama a130 ix.", "(Tazama pia ix."),
+])
 # The paragraph ended on a stop the OCR read as a comma.
 BODY_CORRECTIONS["evangelization-of-the-world"]["paragraph_breaks"] = [
     ('foreign mission service.', 'In 1898 the members'),
