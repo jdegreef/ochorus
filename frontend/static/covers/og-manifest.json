@@ -19349,7 +19349,7 @@
 			]
 		},
 		"tell-me-the-story-1": {
-			"ground": "f449ed6f711fd64a4285857f816f980bf76daf9183241c9120e053aae68e682c",
+			"ground": "d07e976fcb9c6a7e6358f97d734ae2896d4c81fc821a585685108cda775347d8",
 			"style": "young",
 			"volume": "1",
 			"script": "latin",
@@ -19379,7 +19379,7 @@
 			]
 		},
 		"tell-me-the-story-2": {
-			"ground": "885912e087d8a6f01978c9178871ff0a6cd6aa2bc49b310acf044e75d83314ba",
+			"ground": "8cdd3f1c78ab593b74cdc0da9346336ee169b805d79c9702cf08aef55057b92a",
 			"style": "young",
 			"volume": "2",
 			"script": "latin",
@@ -19409,7 +19409,7 @@
 			]
 		},
 		"tell-me-the-story-3": {
-			"ground": "f4550c45d081b78dcbfb1ce3a82100a58342f1e2cd61671ff034c84f2efcf18a",
+			"ground": "a6705e8f5bf986e4a885619ef2b94d5c3bd571e87b8c907af854c6119cf7d1aa",
 			"style": "young",
 			"volume": "3",
 			"script": "latin",
@@ -19439,7 +19439,7 @@
 			]
 		},
 		"tell-me-the-story-4": {
-			"ground": "634924cc4dd60b48fcf88739ae667258a35cf57a6ab737faab94699dd193403a",
+			"ground": "c4cdbde142520951ee1df405ff388ad2dd601e24a57324a4ae9acae8adfe3c9a",
 			"style": "young",
 			"volume": "4",
 			"script": "latin",
@@ -19470,13 +19470,13 @@
 			]
 		},
 		"tell-me-the-story-5": {
-			"ground": "f907bec33de1f1103962051f341a5e0d04c47cc26a7397d3af0d29516119f7b7",
+			"ground": "a60d549600c95beebd41034999ec59f2337728e056e2b7994b18f0ba3165e1e7",
 			"style": "young",
 			"volume": "5",
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.75,
+			"scrim": 0.8,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -19500,7 +19500,7 @@
 			]
 		},
 		"tell-me-the-story-6": {
-			"ground": "ca0e4a3c4ffb73da60a046553f0d65da830850fea4652dc77ba46ad46e2e270f",
+			"ground": "61f71f85974c2a3003f3d9ee308a5fcaa303dd1dee34ece39ab0d328caf5b1bd",
 			"style": "young",
 			"volume": "6",
 			"script": "latin",
@@ -19531,13 +19531,13 @@
 			]
 		},
 		"tell-me-the-story-7": {
-			"ground": "7e64e277b7ad86dfa1aa2c59188a9ee92d3ec45f6dddc961c655bf954259b4b7",
+			"ground": "b197308628614ba93b126183224fdbe9279486f002693bb10078a0e4d12e0fdd",
 			"style": "young",
 			"volume": "7",
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.75,
+			"scrim": 0.8,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {

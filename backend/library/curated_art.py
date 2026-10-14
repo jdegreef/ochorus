@@ -1815,35 +1815,35 @@ ORIGINAL_GROUND: dict[str, Original] = {
     # frame held constant (a grown-up and a child reading on the near hill), a
     # sky emblem above the type and a far scene per volume, each from its book.
     "tell-me-the-story-1": Original(
-        "4a650b874a433de0d138294f7924baf8ce9d870c3448afee7154876f053f114e",
+        "9cb96be8d005d3940f26720e670371611fe4f28a830080fa50bf15b53a89edcf",
         "Sun, moon and stars over a fruit tree by a river: God makes "
         "everything, and a garden for Adam and Eve.",
     ),
     "tell-me-the-story-2": Original(
-        "b04a47c0c2504301fac90cc332eb691dc057aafb28f07d96182fd309d01ece39",
+        "e3a3b1102dd75924904c697644ef6ffa86912910a4560a46f8854005f31ee57b",
         "A pillar of fire over a path through the sea, its walls of water "
-        "standing up on either side.",
+        "standing up on either side and a family crossing on dry ground.",
     ),
     "tell-me-the-story-3": Original(
-        "d07b9e44b5197ae987b1f30f7876509b5e02b51f49d62f7a78222bf63e924b27",
+        "9c72301ee630cb44f60c6676d33b3d8ca30e35b67d3c9fc290d2dd1209aa8150",
         "A gold crown over a walled city and its temple: waiting for the "
         "king, from Samuel to Nehemiah.",
     ),
     "tell-me-the-story-4": Original(
-        "cc0c1fa4b398abb050cbd461fc035c73fe57b35e7ca65e51959a1d40509f406e",
+        "e59ad4a97b7f3209e050443d88309364933f11c96e12acc5e1fadf1a7c74b81d",
         "One great star over a small lit stable: born in Bethlehem.",
     ),
     "tell-me-the-story-5": Original(
-        "7ed9ac19b4715497ad90b94f9c73d0b60f494fea75ecfaff108cfeb7f33a2d0f",
+        "907c235fa129fdaf37203c08b62dae2a8cd9f664fc7133b59c1b2c554b310bc3",
         "A fishing boat on the lake under a bright sun: the storm on the "
         "lake, walking on the water, the loaves and fish.",
     ),
     "tell-me-the-story-6": Original(
-        "c2a0ea6a148513544a4803ef2306327858b7cb058efe067b0c656c55ddbf141f",
+        "0766afc20259df261f30151dafac26b69ddcdaab8424ffbedd792ee639485758",
         "The sun rising over a garden tomb with its stone rolled away.",
     ),
     "tell-me-the-story-7": Original(
-        "8365519950ec3a44e0faf8d5754d2b6384850da71bcfb4f24d1a76e475de014f",
+        "1b2b47c9a9becfaa74bec7412cd5a1c4bc1e02b95d3a92fe68d1c0ca658289f9",
         "A dove and three tongues of fire over a city, a road leading out "
         "of it: wind and fire, and the light on the road.",
     ),

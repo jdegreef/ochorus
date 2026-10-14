@@ -496,6 +496,8 @@ honours the author — Duncanson (the pre-eminent Black American landscapist) fo
 AME pioneers Lee and Allen. Each sub-batch stacks a new `curated_art` Batch; land
 them in order and union-resolve the `curated_art`/scrim/manifest overlap on rebase.
 
+- **A scene must clear the SUBTITLE band too (y519–543), not just the title.** Every series volume has a subtitle, so a scene element taller than ~y548 puts the white subtitle on top of it (Tell Me the Story 2's water walls, 10-14). Keep scenes in y≈550–640; make a subject read by SHAPE at that height (narrow towers, small figures crossing) rather than by size. And a series' byline band (y102–130) caps the sky emblem: keep its top ≥ ~y145.
+
 ## Done so far
 Murray #1701 (5), Bounds #1745 (6), Nee #1768 (1), Spurgeon #1771 (4), Torrey #1858 (3),
 Murray (2026-09-26; `school-of-prayer` plate → Français olives, 9 langs; `holy-in-christ`
