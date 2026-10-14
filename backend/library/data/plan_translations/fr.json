@@ -180,5 +180,12 @@
   "note": [
    "AI-drafted; awaiting native review. Shipped with the fr edition of samuel-ajayi-crowther-a-life-children (French young-readers batch), the plan's only source book, so seed_plans now creates the fr row. « Culte en famille » follows the other fr family-devotions plans (heroes-who-trusted-god, pilgrims-journey). Job #6030."
   ]
+ },
+ "waiting-on-god-trust": {
+  "title": "S’attendre à Dieu : une vie de confiance",
+  "description": "Dix semaines à l’école de la confiance. Andrew Murray enseigne la discipline quotidienne de l’attente en Dieu, F. B. Meyer dévoile le secret d’être guidé par lui, et l’étonnante vie de foi de George Müller montre ce que reçoit une telle confiance.",
+  "note": [
+   "2026-10-14: written with the-life-of-trust.fr (« Une vie de confiance », the shipped fr study guide's title), which completes the set — waiting-on-god.fr (« S'attendre à Dieu ») and the-secret-of-guidance.fr (« Le secret de la direction divine ») were already live — so seed_plans creates the (waiting-on-god-trust, fr) row on the deploy that ships this PR."
+  ]
  }
 }
