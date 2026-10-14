@@ -7915,6 +7915,17 @@
 				541
 			]
 		},
+		"fr/a-call-to-the-unconverted": {
+			"ground": "edf0e8865736dd1b67414f629403c4e75e75c13dc1818b2a2ee02b42bac3bdeb",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/rust",
+			"bar": 0
+		},
 		"fr/a-retrospect": {
 			"ground": "3dccbd7098fb78d8f7f6fe3a6108178f72509848b6b23d389a76b87ab8ac7d4a",
 			"style": "revival",
@@ -8697,6 +8708,17 @@
 				308,
 				487
 			]
+		},
+		"fr/grace-abounding": {
+			"ground": "bac2c6cd4bda21edd42611be146e7b44644fbe162d4d82aca11385ffc4db46f4",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
 		},
 		"fr/grace-abounding-teens": {
 			"ground": "db9bc14ef285c92ba082806788e21126db98538ee39addea439fbac1682a27c2",
