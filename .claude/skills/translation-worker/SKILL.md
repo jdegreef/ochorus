@@ -2627,6 +2627,31 @@ archaic spelling and period punctuation are the text, not defects in it.
   keep it, prose stays modern. Vietnamese writes every syllable as a separate word,
   so word ratios will run well ABOVE 100% of the English. There is no band yet:
   gate on the tag sequence and record the first batch's spread here.
+- **The first vi BIOS set the Vietnamese bio conventions** (jobs #5947–#5956, 2026-10-14;
+  all ten translated in parallel against one shared CONVENTIONS file, a-b-simpson shipped
+  first). Measured against `vi.json`, not invented: subject is **ông / bà**, reader
+  **bạn** (never quý vị); Jesus **Chúa Giê-xu** in prose, Cadman's **Jêsus** only inside a
+  verbatim verse; **Đấng Christ**, **Hội Thánh**, **Cơ Đốc nhân**, **Chúa Nhật**; Western
+  personal names stay in Latin script, Bible names in Cadman spelling (Phao-lô, Môi-se);
+  dates `ngày 15 tháng 12 năm 1843`. C&MA = **Hội Truyền Giáo Phúc Âm Liên Hiệp (C&MA)**
+  (`C&amp;MA` in HTML) and the Fourfold Gospel = **Phúc Âm Tứ Giác** (Đấng Cứu Rỗi, Đấng
+  Thánh Hóa, Đấng Chữa Lành, Vua Sắp Đến) — the Vietnamese Evangelical Church's own terms;
+  its C&MA missionaries founded it in 1911, so readers know them. Salvation Army = **Đội
+  Quân Cứu Thế**. Cite with the `book_name` Take Root returns for `vietnamese` (Giăng,
+  Công Vụ Các Sứ Đồ, 1 Cô-rinh-tô) and quote Take Root's wording (nhơn), not the mirror's
+  (nhân). Band, n=2: **bio 1.33–1.51, FAQ 1.33–1.49** of the English — Vietnamese is
+  monosyllabic, so ratios run ABOVE 1.
+- **Batch and cross-edition gotchas (ko queue, 2026-10-13).** (1) A batch PR must write
+  `Closes #N` once PER issue: "It closes #5872, #5873…" auto-closed only #5872, leaving
+  eight shipped jobs open. (2) A source fix that removes a paragraph (an "END" line, a
+  stray heading) cannot land in a translation before the English drops it —
+  `TranslatedChapterMarkupTests` compares every edition's markup to the English — so
+  whichever of the fix PR and the translation PR merges SECOND drops the translated
+  paragraph too; text-only fixes can ride in the translation PR. (3) After an og:covers
+  change merges (e.g. #6094, Hangul/Ge'ez faces), cards drawn on branches cut before it
+  land stale and every later `og:covers` run redraws them: let ONE PR carry that refresh
+  and splice only your own manifest entry into main's raw `og-manifest.json` in sibling
+  PRs (the file's array layout does not round-trip through `json.dumps`).
 - **Korean (ko) Bible is `kor_old` in the ebible mirror — the 개역 (Revised)
   tradition, PD — despite the mirror labelling it "Korean Bible (1910)"** (locale
   added 2026-10-09, no content yet). Its wording is 개역 in modern spelling (태초에
