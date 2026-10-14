@@ -18,7 +18,7 @@ from rest_framework.views import APIView
 from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import requires
 
-from ..content_targets import LEVEL_1, Level
+from ..content_targets import KINDS, LEVEL_1, Level
 from ..models import (
     Article,
     Author,
@@ -29,17 +29,19 @@ from ..models import (
     Topic,
     TopicTranslation,
 )
-from ..plan_seed import CURATED_PLANS, LAUNCH_PLANS, plan_sources
+from ..plan_seed import all_plan_sources
 from .jobs import translation_blocked
 
-# kind → (translation-job type, label). Order is the panel's order.
-KIND_META = {
+# kind → (translation-job type, label), in ``KINDS`` order (the panel's order).
+# A kind added to KINDS without an entry here fails at import, not silently.
+_JOB_AND_LABEL = {
     "bios": ("bio", "Biographies"),
     "books": ("book", "Books"),
     "sermons": ("sermon", "Sermons"),
     "plans": ("plan", "Reading plans"),
     "articles": ("article", "Articles"),
 }
+KIND_META = {kind: _JOB_AND_LABEL[kind] for kind in KINDS}
 
 _WORK_MODELS = {"books": Book, "sermons": Sermon, "articles": Article, "plans": Plan}
 
@@ -110,12 +112,6 @@ def _titles(level: Level) -> dict[str, dict[str, tuple[str, str]]]:
     return out
 
 
-def _plan_needs() -> dict[str, tuple[list[str], list[str]]]:
-    needs = {p[0]: ([p[1]], []) for p in LAUNCH_PLANS}
-    needs.update({p[0]: plan_sources(p[3]) for p in CURATED_PLANS})
-    return needs
-
-
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminLanguageTargetsView(APIView):
     """``GET /api/admin/languages/<code>/targets/``: this language against the
@@ -128,7 +124,7 @@ class AdminLanguageTargetsView(APIView):
         level = LEVEL_1
         editions = _editions(level, [code])
         titles = _titles(level)
-        needs = _plan_needs()
+        needs = all_plan_sources()
         kinds = []
         for kind, (job_type, label) in KIND_META.items():
             have = editions[kind][code]

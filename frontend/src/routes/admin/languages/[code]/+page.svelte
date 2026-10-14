@@ -8,6 +8,7 @@
 	import LanguageSettingsCard from '$lib/components/LanguageSettingsCard.svelte';
 	import { checkLabels } from '$lib/languageHealth';
 	import { workPath } from '$lib/editionHref';
+	import type { WorkKind } from '$lib/reading-schema';
 	import {
 		type SourceType
 	} from '$lib/library-public';
@@ -24,6 +25,7 @@
 		getAdminLanguageTargets,
 		type AdminLanguageTargets,
 		type AdminTargetItem,
+		type AdminTargetKind,
 		updateAdminLanguageThresholds,
 		type AdminLanguageReadiness,
 		type LanguageThresholds,
@@ -113,9 +115,17 @@
 		groups
 			.map((g) => ({ label: g.label, items: g.items.filter((i) => !i.done) }))
 			.filter((g) => g.items.length);
-	/** What "Queue all" may file: missing, not drafted, not under copyright. */
+	/** Can a job be filed for this missing item? Not for a drafted edition, a
+	 *  work under copyright, or a plan whose sources this language still lacks:
+	 *  seed_plans won't build that plan here until they exist. */
+	const canFile = (i: AdminTargetItem) => !i.drafted && !i.blocked && !i.waiting_on?.length;
+	/** What "Queue all" may file. */
 	const queueable = (groups: { label: string; items: AdminTargetItem[] }[]) =>
-		groups.flatMap((g) => g.items.filter((i) => !i.done && !i.drafted && !i.blocked));
+		groups.flatMap((g) => g.items.filter((i) => !i.done && canFile(i)));
+	/** Where a Level 1 item lives. Plans aren't a WorkKind; the rest go through
+	 *  workPath, so their routes (an article's trailing slash) stay in one place. */
+	const targetHref = (k: AdminTargetKind, slug: string) =>
+		k.job_type === 'plan' ? `/plans/${slug}` : workPath(k.job_type as WorkKind, slug);
 
 	async function loadReadiness(code: string) {
 		readiness = null;
@@ -912,7 +922,7 @@
 														{#each g.items as i (i.slug)}
 															<li class="flex items-center justify-between gap-3 text-body">
 																<span class="min-w-0">
-																	<a href={k.key === 'bios' ? `/authors/${i.slug}` : `/${k.key}/${i.slug}`} class="block truncate text-accent hover:underline">{i.title}</a>
+																	<a href={targetHref(k, i.slug)} class="block truncate text-accent hover:underline">{i.title}</a>
 																	{#if i.author && k.key !== 'sermons'}<span class="text-small text-muted">{i.author}</span>{/if}
 																	{#if i.waiting_on?.length}
 																		<span class="block text-small text-muted" title={i.waiting_on.join(', ')}
@@ -924,6 +934,8 @@
 																	<span class="shrink-0 text-small text-warning" title="An edition exists but is unpublished">unpublished</span>
 																{:else if i.blocked}
 																	<span class="shrink-0 text-small text-muted" title="Under copyright, so it can't be translated">Under copyright</span>
+																{:else if !canFile(i)}
+																	<span class="shrink-0 text-small text-muted" title="Translate its sources first">Sources first</span>
 																{:else}
 																	{@render queueControl(k.job_type, i.slug)}
 																{/if}

@@ -24,7 +24,7 @@ from .content_fixtures import (
 from .content_targets import BIO_EXCEPTIONS, KINDS, LEVEL_1, LEVELS
 from .corrections import COPYRIGHT_BLOCKED_SLUGS
 from .models import Author, AuthorTranslation, Book
-from .plan_seed import CURATED_PLANS, LAUNCH_PLANS, plan_sources
+from .plan_seed import all_plan_sources
 
 
 def _head(path) -> dict:
@@ -32,18 +32,12 @@ def _head(path) -> dict:
     return json.loads(path.read_text())[0]["fields"]
 
 
-def _plan_sources() -> dict[str, tuple[list[str], list[str]]]:
-    out = {p[0]: ([p[1]], []) for p in LAUNCH_PLANS}
-    out.update({p[0]: plan_sources(p[3]) for p in CURATED_PLANS})
-    return out
-
-
 class ContentTargetsTests(SimpleTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
         cls.authors = {r["fields"]["slug"]: r["fields"] for r in json.loads(AUTHORS_FILE.read_text())}
-        cls.plans = _plan_sources()
+        cls.plans = all_plan_sources()
 
     def test_no_slug_is_listed_twice(self):
         for level in LEVELS:
@@ -83,6 +77,7 @@ class ContentTargetsTests(SimpleTestCase):
     def test_bio_exceptions_still_lack_an_english_bio(self):
         """An exception is temporary: once the bio is written, move it into the level."""
         for slug in BIO_EXCEPTIONS:
+            self.assertIn(slug, self.authors, f"unknown author {slug} in BIO_EXCEPTIONS")
             self.assertFalse(self.authors[slug].get("bio_html"), f"{slug} has a bio now; add it to the level")
 
     def test_every_plan_draws_only_on_the_level(self):
@@ -104,23 +99,38 @@ class ContentTargetsTests(SimpleTestCase):
 
 @override_settings(DEBUG=True)
 class TargetsProgressTests(TestCase):
-    """What the admin counts as done against a level."""
+    """What the admin counts as done against a level. Slugs are drawn from
+    LEVEL_1 itself, so curating the list never breaks these."""
 
     @classmethod
     def setUpTestData(cls):
-        murray = Author.objects.create(slug="andrew-murray", name="Andrew Murray")
+        sources = all_plan_sources()
+        # A level plan whose sources are all books: its first book is the one
+        # these tests translate, so the plan should wait on the rest only.
+        cls.plan = next(p for p in LEVEL_1.plans if not sources[p][1])
+        plan_books = sources[cls.plan][0]
+        others = [s for s in LEVEL_1.slugs("books") if s not in plan_books]
+        cls.first, cls.second = plan_books[0], others[0]
+        cls.waiting = plan_books[1:]
+        author = Author.objects.create(slug=LEVEL_1.slugs("bios")[0], name="An Author")
         for lang, published in (("en", True), ("sw", True), ("lg", False)):
             Book.objects.create(
-                author=murray, slug="humility-2", language=lang, title="Humility", is_published=published
+                author=author, slug=cls.first, language=lang, title="First", is_published=published
             )
         Book.objects.create(
-            author=murray, slug="absolute-surrender", language="sw", title="Kujisalimisha",
+            author=author, slug=cls.second, language="sw", title="Second",
             source_type=Book.SourceType.AI_UNREVIEWED,
         )
-        Book.objects.create(author=murray, slug="not-in-the-level", language="sw", title="Elsewhere")
-        AuthorTranslation.objects.create(author=murray, language="sw", bio_html="<p>Wasifu</p>", reviewed=True)
+        Book.objects.create(author=author, slug="not-in-any-level", language="sw", title="Elsewhere")
+        AuthorTranslation.objects.create(author=author, language="sw", bio_html="<p>Wasifu</p>", reviewed=True)
         # A blank bio is not a biography.
-        AuthorTranslation.objects.create(author=murray, language="lg", bio_html="")
+        AuthorTranslation.objects.create(author=author, language="lg", bio_html="")
+
+    def _kind(self, code, key):
+        res = APIClient().get(f"/api/admin/languages/{code}/targets/")
+        self.assertEqual(res.status_code, 200)
+        kind = next(k for k in res.data["kinds"] if k["key"] == key)
+        return kind, {i["slug"]: i for g in kind["groups"] for i in g["items"]}
 
     def test_summary_counts_published_level_editions_only(self):
         summary = level_summary(LEVEL_1, ["sw", "lg"])
@@ -129,22 +139,14 @@ class TargetsProgressTests(TestCase):
         self.assertEqual(summary["sw"]["total"], sum(len(LEVEL_1.slugs(k)) for k in KINDS))
 
     def test_language_page_reports_each_item(self):
-        res = APIClient().get("/api/admin/languages/lg/targets/")
-        self.assertEqual(res.status_code, 200)
-        books = next(k for k in res.data["kinds"] if k["key"] == "books")
-        items = {i["slug"]: i for g in books["groups"] for i in g["items"]}
+        books, items = self._kind("lg", "books")
         self.assertEqual(len(items), len(LEVEL_1.slugs("books")))
-        self.assertEqual((items["humility-2"]["done"], items["humility-2"]["drafted"]), (False, True))
-        self.assertEqual(items["humility-2"]["title"], "Humility")  # the English title
+        self.assertEqual((items[self.first]["done"], items[self.first]["drafted"]), (False, True))
+        self.assertEqual(items[self.first]["title"], "First")  # the English title
 
-        sw = APIClient().get("/api/admin/languages/sw/targets/").data
-        books = next(k for k in sw["kinds"] if k["key"] == "books")
+        books, _ = self._kind("sw", "books")
         self.assertEqual((books["done"], books["reviewed"]), (2, 1))
 
     def test_a_missing_plan_names_what_it_waits_on(self):
-        res = APIClient().get("/api/admin/languages/sw/targets/")
-        plans = next(k for k in res.data["kinds"] if k["key"] == "plans")
-        humility = next(i for i in plans["groups"][0]["items"] if i["slug"] == "humility-12-days")
-        self.assertEqual(humility["waiting_on"], [])  # its one book is here; the plan text isn't
-        prayer = next(i for i in plans["groups"][0]["items"] if i["slug"] == "school-of-prayer-31-days")
-        self.assertEqual(prayer["waiting_on"], ["school-of-prayer"])
+        _, plans = self._kind("sw", "plans")
+        self.assertEqual(plans[self.plan]["waiting_on"], self.waiting)
