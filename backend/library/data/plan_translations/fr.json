@@ -54,7 +54,8 @@
   "title": "Tout pour Christ : une vie donnée",
   "description": "Que coûte l'abandon sans réserve, et que produit-il ? Le journal missionnaire, plein d'examen de soi, de David Brainerd, suivi des récits d'hommes et de femmes qui ont tout donné pour l'Évangile — un appel à la consécration raconté à travers des vies qui y ont répondu.",
   "note": [
-   "Job #2232. Prose-ahead: source books (life-and-diary-of-david-brainerd, men-and-women-who-gave-everything-2) have no French edition yet; dormant until they are translated."
+   "Job #2232. Prose-ahead: source books (life-and-diary-of-david-brainerd, men-and-women-who-gave-everything-2) have no French edition yet; dormant until they are translated.",
+   "2026-10-14: life-and-diary-of-david-brainerd.fr (« Vie et journal de David Brainerd », the shipped fr study guide's title) ships and completes the set — men-and-women-who-gave-everything-2.fr was already live — so seed_plans now creates the (everything-for-christ, fr) row; this prose lands in the same PR."
   ]
  },
  "growing-in-wisdom-18-days": {

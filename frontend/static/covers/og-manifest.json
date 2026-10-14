@@ -9194,6 +9194,36 @@
 				460
 			]
 		},
+		"fr/life-and-diary-of-david-brainerd": {
+			"ground": "61b7b04780d9eafe9420bc4190cf33346968130a69b333c1566d1605f199c295",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[150, 102, 450, 131]
+				],
+				"title": [
+					[85, 289, 515, 352],
+					[99, 351, 501, 414]
+				],
+				"subtitle": [
+					[154, 477, 446, 505]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
+		},
 		"fr/life-and-diary-of-david-brainerd-teens": {
 			"ground": "be18c333ac2ac32ce22085cbf5b7974e39f690cf54df44a794aaa239900a5ea4",
 			"style": "originals",
@@ -10238,6 +10268,17 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "band/oxblood",
+			"bar": 0
+		},
+		"fr/ten-commandments": {
+			"ground": "966e7a8c51553d80e73a958833a2fb22ac06e1f39d3920a47731876993d77fb4",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/oxblood",
 			"bar": 0
 		},
 		"fr/the-bruised-reed": {

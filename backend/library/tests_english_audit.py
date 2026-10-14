@@ -1508,7 +1508,7 @@ class TrailingBlockRestorationTests(SimpleTestCase):
         unsigned.)"""
         slug = "life-and-diary-of-david-brainerd"
         entries = corrections.BODY_CORRECTIONS[slug]["restored_after"]
-        for lang in ("en", "sw"):
+        for lang in ("en", "sw", "fr"):
             bodies = _book_bodies(slug, lang)
             with self.subTest(language=lang):
                 ((anchor, block),) = [e for e in entries if e[0] in bodies[1]]

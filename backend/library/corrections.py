@@ -4929,7 +4929,8 @@ BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {})["back_matter
     ("dini ya kweli! <i>Amina.</i></p>",
      "<p>Manukuu ya mara kwa mara yenye tarehe kutoka shajara za Brainerd"),
     ("verdadera religión! <i>Amén.</i></p>",
-     "<p>Las frecuentes citas fechadas de los diarios de Brainerd"),
+     "<p>Las frecuentes citas fechadas de los diarios de Brainerd"),    ("vraie religion ! <i>Amen.</i></p>",
+     "<p>Les fréquentes citations datées des journaux de Brainerd"),
 ]
 # Edwards signs the preface `<div class="c012">JONATHAN EDWARDS.</div>`, the
 # last block of ch1: the half-title after it is front matter. The old walk
@@ -4942,7 +4943,7 @@ BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {})["back_matter
 BODY_CORRECTIONS["life-and-diary-of-david-brainerd"]["restored_after"] = [
     ("the interest of religion.”</p>", "<h3>JONATHAN EDWARDS.</h3>"),
     ("maslahi ya dini zaidi.”</p>", "<h3>JONATHAN EDWARDS.</h3>"),
-    ("el interés de la religión».</p>", "<h3>JONATHAN EDWARDS.</h3>"),
+    ("el interés de la religión».</p>", "<h3>JONATHAN EDWARDS.</h3>"),    ("l’intérêt de la religion ».</p>", "<h3>JONATHAN EDWARDS.</h3>"),
 ]
 # Gutenberg #51931 follows Torrey's last paragraph with a page break and the
 # Revell ad page for F. B. Meyer (its price tables were dropped; the Moody,
@@ -6848,6 +6849,355 @@ BODY_CORRECTIONS.setdefault("way-into-holiest", {}).setdefault("replacements", [
     ("LILILOTIMIZWA (x. io)", "LILILOTIMIZWA (x. 10)"),
     # [sw] OCR "a130" (= also) reproduced from the English; "pia" = also
     ("(Tazama a130 ix.", "(Tazama pia ix."),
+])
+
+# Found while translating to French (2026-10-14): The Life and Diary of David
+# Brainerd — OCR slips and two wrong citations (en + es/sw)
+BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {}).setdefault("replacements", []).extend([
+    # [en] OCR slip case→cast (1 John 4:18 echo)
+    ("at that time case out fear.", "at that time cast out fear."),
+    # [en] full stop for comma inside a list (OCR)
+    ("Mr. Cooke of Stratford. Mr. Graham", "Mr. Cooke of Stratford, Mr. Graham"),
+    # [en] OCR slip week→weak
+    ("He came home in a very week state", "He came home in a very weak state"),
+    # [en] OCR slip them→their
+    ("concern for them souls, and surprisingly", "concern for their souls, and surprisingly"),
+    # [en] stray opening quote mark inside the cry
+    ("<i>Have mercy upon ‘me;</i>", "<i>Have mercy upon me;</i>"),
+    # [en] rich young man is Matt 19:16-22 (Matt 9:16-22 = new cloth / Jairus)
+    ("young man in the Gospel. Matt. 9:16-22.", "young man in the Gospel. Matt. 19:16-22."),
+    # [en] OCR slip Lime→time
+    ("at which Lime she went away", "at which time she went away"),
+    # [en] blind man (Bartimaeus) is Mark 10:46-52; Matt 10 is the sending of
+    # the Twelve
+    ("story of the blind man. Matt. 10:46-52.", "story of the blind man. Mark 10:46-52."),
+    # [en] misplaced apostrophe (book prints Lord’s day throughout)
+    ("<i>Lords’ day, March 9.</i>", "<i>Lord’s day, March 9.</i>"),
+    # [en] OCR slip Air→far
+    ("so Air as I am capable of judging", "so far as I am capable of judging"),
+    # [en] word split by stray space
+    ("if we can a weaken in sinners", "if we can awaken in sinners"),
+    # [en] stray scan apostrophe
+    ("the length of the 'evenings would", "the length of the evenings would"),
+    # [es] citation fix mirrors en
+    ("Mateo 9:16-22.", "Mateo 19:16-22."),
+    # [es] citation fix mirrors en
+    ("Mateo 10:46-52.", "Marcos 10:46-52."),
+    # [sw] citation fix mirrors en
+    ("Mathayo, 9:16-22.", "Mathayo, 19:16-22."),
+    # [sw] citation fix mirrors en
+    ("Mathayo, 10:46-52.", "Marko, 10:46-52."),
+])
+
+# Found while translating to French (2026-10-14): Watson's The Ten Commandments
+# — OCR slips and wrong citations (en + es)
+BODY_CORRECTIONS.setdefault("ten-commandments", {}).setdefault("replacements", []).extend([
+    # [en] citation: 'As for me and my house' is Josh 24:15
+    ("we will serve the Lord.’ Josh 14: 15.", "we will serve the Lord.’ Josh 24: 15."),
+    # [en] citation: 'all the fruit to take away his sin' is Isa 27:9
+    ("take away his sin.’ Isa 28: 9.", "take away his sin.’ Isa 27: 9."),
+    # [en] citation: fire in Zion, furnace in Jerusalem is Isa 31:9
+    ("furnace is in Zion. Isa 31: 5.", "furnace is in Zion. Isa 31: 9."),
+    # [en] citation: green tree / dry is Luke 23:31
+    ("in the dry?’ Luke 13: 31.", "in the dry?’ Luke 23: 31."),
+    # [en] citation: 'smoke of their torment' is Rev 14:11 (and stray colon)
+    ("for ever and ever.’ Rev 14: 2: Time", "for ever and ever.’ Rev 14: 11. Time"),
+    # [en] citation: 'Ye have taken away my gods' is Judg 18:24
+    ("said Micah. Judges 18: 14.", "said Micah. Judges 18: 24."),
+    # [en] citation: cakes to the queen of heaven is Jer 7:18
+    ("that is, to the moon. Jer 7: 15.", "that is, to the moon. Jer 7: 18."),
+    # [en] citation: covenant chastening ('I will chasten him with the rod of
+    # men') is 2 Sam 7:14
+    ("covenant-mercy. 2 Sam 7: 17.", "covenant-mercy. 2 Sam 7: 14."),
+    # [en] citation: 'We love him because he first loved us' is 1 John 4:19
+    ("first loved us.’ 1 John 5: 19.", "first loved us.’ 1 John 4: 19."),
+    # [en] citation: 'loved not their lives unto the death' is Rev 12:11 (and
+    # stray colon)
+    ("unto the death.’ Rev 12: 2: Love", "unto the death.’ Rev 12: 11. Love"),
+    # [en] OCR l for 1 in Heb 12:10
+    ("holiness.’ Heb 12: l0.", "holiness.’ Heb 12: 10."),
+    # [en] OCR 'unholiness' for 'in holiness'; citation is Exod 15:11 (KJV
+    # 'glorious in holiness'); stray colon
+    ("Glorious unholiness.’ Exod 15: 2:", "Glorious in holiness.’ Exod 15: 11."),
+    # [en] citation: Abram driving away the fowls is Gen 15:11
+    ("from the sacrifice. Gen 15: 2.", "from the sacrifice. Gen 15: 11."),
+    # [en] citation: 'That good thing which was committed unto thee keep' is
+    # KJV 2 Tim 1:14 verbatim
+    ("is of large meaning. 1 Tim 1: 11.", "is of large meaning. 2 Tim 1: 14."),
+    # [en] citation: Hophni and Phinehas slain is 1 Sam 4:11 (and stray colon)
+    ("were slain. 1 Sam 4: 2:", "were slain. 1 Sam 4: 11."),
+    # [en] OCR l for 1 in 1 Cor 15:10
+    ("with me.’ 1 Cor 15: l0.", "with me.’ 1 Cor 15: 10."),
+    # [en] citation: behemoth 'drinketh up a river' is Job 40:23 (Job 40 has 24
+    # verses)
+    ("is not allayed. Job 40: 33.", "is not allayed. Job 40: 23."),
+    # [en] citation: 'joy and peace in believing' is Rom 15:13
+    ("but in believing. Rom 15: 1, 3.", "but in believing. Rom 15: 13."),
+    # [en] citation: 'He hath dispersed, he hath given to the poor' is Ps 112:9
+    ("given to the poor.’ Psa 29: 9.", "given to the poor.’ Psa 112: 9."),
+    # [en] citation: 'Depart from me, ye cursed' is Matt 25:41
+    ("ye gave me no meat.’ Matt 15: 41.", "ye gave me no meat.’ Matt 25: 41."),
+    # [en] citation: 'be filled with the Spirit' is Eph 5:18
+    ("the Holy Ghost. Eph 5: 19.", "the Holy Ghost. Eph 5: 18."),
+    # [en] citation: 'heinous crime' is Job 31:11 (and stray colon)
+    ("‘heinous crime.’ Job 31: 2:", "‘heinous crime.’ Job 31: 11."),
+    # [en] citation: 'I have made Abram rich' is Gen 14:23
+    ("made him rich.’ Gen 14: 22.", "made him rich.’ Gen 14: 23."),
+    # [en] citation: 'Who knoweth the power of thine anger?' is Ps 90:11 (and
+    # stray colon)
+    ("thine anger?’ Psa 90: 2:", "thine anger?’ Psa 90: 11."),
+    # [en] citation: fowls on Abram's sacrifice is Gen 15:11
+    ("to the sacrifice, therefore we must drive them away. Gen 15: 2.", "to the sacrifice, therefore we must drive them away. Gen 15: 11."),
+    # [en] OCR scaled→sealed
+    ("renewed and scaled on our part", "renewed and sealed on our part"),
+    # [en] OCR wav→way
+    ("is the wav to have our will", "is the way to have our will"),
+    # [en] stray full stop
+    ("Let us obey. God. ‘If thou", "Let us obey God. ‘If thou"),
+    # [en] OCR [21 → [2]
+    ("estates. [21 Would we", "estates. [2] Would we"),
+    # [en] misspelling Epiphanies→Epiphanes
+    ("Antiochus Epiphanies take", "Antiochus Epiphanes take"),
+    # [en] misspelling Origin→Origen
+    ("Origin chose rather", "Origen chose rather"),
+    # [en] OCR slough→plough (makes a baulk)
+    ("obey some commandments, not others; like a slough,", "obey some commandments, not others; like a plough,"),
+    # [en] OCR Asians→Arians (Athanasius)
+    ("most of the world were Asians.", "most of the world were Arians."),
+    # [en] OCR son→sun (Ps 84:11)
+    ("every good], a son, a portion", "every good], a sun, a portion"),
+    # [en] OCR homily→holily
+    ("in us. Live homily.", "in us. Live holily."),
+    # [en] OCR pyres→pyxes
+    ("Their wax, flowers, pyres, agnus", "Their wax, flowers, pyxes, agnus"),
+    # [en] OCR man→manna
+    ("Will God rain down man any more", "Will God rain down manna any more"),
+    # [en] OCR to→the
+    ("sit upon to throne of glory", "sit upon the throne of glory"),
+    # [en] OCR tricked→wicked
+    ("the godly and tricked out of trouble", "the godly and wicked out of trouble"),
+    # [en] missing space
+    ("</p> <p>(3)If God spake", "</p> <p>(3) If God spake"),
+    # [en] OCR laud→law
+    ("between the moral laud and", "between the moral law and"),
+    # [en] OCR use→we
+    ("Why must use cleave", "Why must we cleave"),
+    # [en] OCR consulted→consulter (KJV Deut 18:11)
+    ("among you a consulted with familiar", "among you a consulter with familiar"),
+    # [en] OCR unite→finite
+    ("by that which is unite;", "by that which is finite;"),
+    # [en] OCR untreated→uncreated
+    ("an infinite, untreated Spirit", "an infinite, uncreated Spirit"),
+    # [en] OCR Baste→Basle
+    ("destroyed images at Baste, Zurich", "destroyed images at Basle, Zurich"),
+    # [en] OCR state→statue
+    ("any carved state or image of God", "any carved statue or image of God"),
+    # [en] OCR tip→up
+    ("may not images be set tip?", "may not images be set up?"),
+    # [en] OCR nay→may
+    ("Why nay we not, then", "Why may we not, then"),
+    # [en] misspelling Epiphanies→Epiphanius
+    ("No! Epiphanies, seeing an image", "No! Epiphanius, seeing an image"),
+    # [en] stray possessive
+    ("One special sin for which God’s visits,", "One special sin for which God visits,"),
+    # [en] OCR cat→eat
+    ("every bit of bread we cat;", "every bit of bread we eat;"),
+    # [en] doubled word
+    ("sanctuary that that they should not run", "sanctuary that they should not run"),
+    # [en] OCR (S)→(5)
+    ("</p> <p>(S) He shows mercy in restraining", "</p> <p>(5) He shows mercy in restraining"),
+    # [en] number slip
+    ("with the Philistine, who were his mortal", "with the Philistines, who were his mortal"),
+    # [en] slip lighting→lightning
+    ("three flashes of lighting, which", "three flashes of lightning, which"),
+    # [en] OCR Julia→Julian
+    ("Felix, an officer of Julia, seeing", "Felix, an officer of Julian, seeing"),
+    # [en] OCR repeated→repealed
+    ("That law in paradise was never repeated.", "That law in paradise was never repealed."),
+    # [en] OCR mamma→manna
+    ("The Lord forbade mamma to be gathered", "The Lord forbade manna to be gathered"),
+    # [en] OCR slough→plough
+    ("to follow the devil’s slough;", "to follow the devil’s plough;"),
+    # [en] OCR betides→betimes
+    ("Get up betides on the Sabbath", "Get up betimes on the Sabbath"),
+    # [en] OCR betides→betimes
+    ("hardly be up betides on a Sabbath", "hardly be up betimes on a Sabbath"),
+    # [en] OCR slough→plough
+    ("is early at his slough,", "is early at his plough,"),
+    # [en] OCR A11→All
+    ("efficiently holy. A11 the holiness", "efficiently holy. All the holiness"),
+    # [en] stray semicolon
+    ("While musing; upon the holiness", "While musing upon the holiness"),
+    # [en] caps slip
+    ("Luke 19: 14. SO that all have not", "Luke 19: 14. So that all have not"),
+    # [en] OCR useless→unless
+    ("will not drop its fruit, useless it be shaken", "will not drop its fruit, unless it be shaken"),
+    # [en] OCR slough→plough
+    ("broken up by the slough, it is fit", "broken up by the plough, it is fit"),
+    # [en] OCR open→upon (KJV 1 Cor 7:35)
+    ("That ye may attend open the Lord", "That ye may attend upon the Lord"),
+    # [en] OCR [S]→[5]
+    ("</p> <p>[S] The natural father", "</p> <p>[5] The natural father"),
+    # [en] OCR {I]→[1]
+    ("</p> <p>{I] By a reverential esteem", "</p> <p>[1] By a reverential esteem"),
+    # [en] misspelling flagitous→flagitious
+    ("by their flagitous lives", "by their flagitious lives"),
+    # [en] OCR betides→betimes
+    ("with good principles betides, that", "with good principles betimes, that"),
+    # [en] OCR Odium→Otium (gloss: Idleness)
+    ("Melanchthon says, Odium balneum diaboli [Idleness", "Melanchthon says, Otium balneum diaboli [Idleness"),
+    # [en] OCR set→sed
+    ("imperium, set basilicum [A father", "imperium, sed basilicum [A father"),
+    # [en] Latin slip infanaticidii→infanticidii
+    ("infanaticidii incestus rei [They", "infanticidii incestus rei [They"),
+    # [en] OCR Amass→Amasa
+    ("as Joab killed Abner and Amass.", "as Joab killed Abner and Amasa."),
+    # [en] OCR (g)→(9)
+    ("actual murder. (g) By consenting", "actual murder. (9) By consenting"),
+    # [en] OCR ceaselessly→causelessly
+    ("To shed the blood of another ceaselessly;", "To shed the blood of another causelessly;"),
+    # [en] bracket slip
+    ("</p> <p>{2] One may be guilty", "</p> <p>[2] One may be guilty"),
+    # [en] OCR then→them
+    ("be temporal saviours to then;", "be temporal saviours to them;"),
+    # [en] bracket slip
+    ("</p> <p>{2] Corporal;", "</p> <p>[2] Corporal;"),
+    # [en] OCR fortification→fornication
+    ("allows the sin of fortification and adultery", "allows the sin of fornication and adultery"),
+    # [en] OCR cats→eats
+    ("It cats out all heart", "It eats out all heart"),
+    # [en] Latin slip auternum→aeternum
+    ("auternum quod cruciat [The", "aeternum quod cruciat [The"),
+    # [en] run-together Latin
+    ("Saltatio adadulteras non ad pudicas pertinet [Dancing", "Saltatio ad adulteras non ad pudicas pertinet [Dancing"),
+    # [en] OCR lose→lust
+    ("eyes that sparkled with lose,", "eyes that sparkled with lust,"),
+    # [en] OCR leanest→leavest
+    ("when thou leanest off stealing", "when thou leavest off stealing"),
+    # [en] misspelling Sapphire→Sapphira
+    ("Ananias and Sapphire were", "Ananias and Sapphira were"),
+    # [en] long-s OCR (KJV Ps 50:20)
+    ("‘Thou fittest and slenderest thine", "‘Thou sittest and slanderest thine"),
+    # [en] KJV LORD (Ps 16:5)
+    ("‘The lord is the portion of mine", "‘The LORD is the portion of mine"),
+    # [en] run-together OCR
+    ("the flower of joyfully ripe and blown", "the flower of joy fully ripe and blown"),
+    # [en] OCR Armenians→Arminians (free-will context)
+    ("It confutes the Armenians, who", "It confutes the Arminians, who"),
+    # [en] OCR us→use
+    ("seldom made us of.", "seldom made use of."),
+    # [en] OCR combinations→comminations (threatenings)
+    ("sins against express combinations and", "sins against express comminations and"),
+    # [en] OCR would→wound (KJV Ps 68:21)
+    ("‘God shall would the hairy scalp", "‘God shall wound the hairy scalp"),
+    # [en] OCR Ahab→Ahaz (the verse names Ahaz)
+    ("this is that king Ahab’ 2 Chron 28: 22", "this is that king Ahaz’ 2 Chron 28: 22"),
+    # [en] condemn→contemn (KJV Ps 10:13; 'contempt of God' context)
+    ("but it is worse to condemn him. ‘Wherefore does the wicked condemn God?’", "but it is worse to contemn him. ‘Wherefore does the wicked contemn God?’"),
+    # [en] condemn→contemn (reproach/contempt context)
+    ("To condemn the authority of a prince", "To contemn the authority of a prince"),
+    # [en] OCR Julia→Julian
+    ("Thus Julia threw up his dagger", "Thus Julian threw up his dagger"),
+    # [en] OCR enmity→eternity
+    ("must be satisfying in enmity what", "must be satisfying in eternity what"),
+    # [en] OCR simmers→sinners
+    ("as we are simmers;", "as we are sinners;"),
+    # [en] misspelling Dionysus→Dionysius
+    ("Dionysus thought, as he sat", "Dionysius thought, as he sat"),
+    # [en] Latin slip selus→scelus
+    ("dirum selus, tellus ipsa foedius nihil creat [The", "dirum scelus, tellus ipsa foedius nihil creat [The"),
+    # [en] Latin slip summit→sumit
+    ("initium summit ab infidelitate [A life", "initium sumit ab infidelitate [A life"),
+    # [en] dropped 'not' (repeated sentence reads 'does not rest')
+    ("begins at the heart, it does rest there, but", "begins at the heart, it does not rest there, but"),
+    # [en] OCR lever→laver
+    ("Wash in the lever of repentance.", "Wash in the laver of repentance."),
+    # [en] OCR God→Good
+    ("[4] God motions rising", "[4] Good motions rising"),
+    # [en] OCR yell→you
+    ("which will distract yell, and", "which will distract you, and"),
+    # [en] Apollo→Apollos (Acts 18:24)
+    ("Apollo was mighty in the Scriptures", "Apollos was mighty in the Scriptures"),
+    # [en] OCR sword→word
+    ("rise up in rage against the sword.", "rise up in rage against the word."),
+    # [en] stray plural
+    ("the benefits of redemptions, is", "the benefits of redemption, is"),
+    # [en] stray plural
+    ("in the room of circumcisions, and", "in the room of circumcision, and"),
+    # [en] OCR Julia→Julian
+    ("Julia the apostate, Gregory", "Julian the apostate, Gregory"),
+    # [en] OCR hysteria→mysteria (gloss: mysteries)
+    ("sacraments are tremenda hysteria,", "sacraments are tremenda mysteria,"),
+    # [en] OCR Got→God
+    ("matters stand between Got and his soul", "matters stand between God and his soul"),
+    # [en] can’t→canst
+    ("what thou can’t find wrought", "what thou canst find wrought"),
+    # [en] OCR lever→laver
+    ("Washing in the lever of repenting", "Washing in the laver of repenting"),
+    # [en] OCR conform→confirm
+    ("but a seal to conform, and an instrument", "but a seal to confirm, and an instrument"),
+    # [en] number slip
+    ("As a cheating tradesmen will", "As a cheating tradesman will"),
+    # [en] stray plural
+    ("find out our owns", "find out our own"),
+    # [en] can’t→canst
+    ("but can’t thou weep?", "but canst thou weep?"),
+    # [en] OCR a tiles→aediles
+    ("The a tiles among the Romans", "The aediles among the Romans"),
+    # [en] OCR Cod→God
+    ("have mercy from Cod who", "have mercy from God who"),
+    # [es] citation: 'As for me and my house' is Josh 24:15
+    ("Josué 14:15", "Josué 24:15"),
+    # [es] citation: 'all the fruit to take away his sin' is Isa 27:9
+    ("Isaías 28:9", "Isaías 27:9"),
+    # [es] citation: fire in Zion, furnace in Jerusalem is Isa 31:9
+    ("Isaías 31:5", "Isaías 31:9"),
+    # [es] citation: green tree / dry is Luke 23:31
+    ("Lucas 13:31", "Lucas 23:31"),
+    # [es] citation: 'smoke of their torment' is Rev 14:11 (and stray colon)
+    ("Apocalipsis 14:2:", "Apocalipsis 14:11."),
+    # [es] citation: 'Ye have taken away my gods' is Judg 18:24
+    ("Jueces 18:14", "Jueces 18:24"),
+    # [es] citation: cakes to the queen of heaven is Jer 7:18
+    ("Jeremías 7:15", "Jeremías 7:18"),
+    # [es] citation: covenant chastening ('I will chasten him with the rod of
+    # men') is 2 Sam 7:14
+    ("2 Samuel 7:17", "2 Samuel 7:14"),
+    # [es] citation: 'We love him because he first loved us' is 1 John 4:19
+    ("nos amó primero». 1 Juan 5:19", "nos amó primero». 1 Juan 4:19"),
+    # [es] citation: 'loved not their lives unto the death' is Rev 12:11 (and
+    # stray colon)
+    ("Apocalipsis 12:2:", "Apocalipsis 12:11."),
+    # [es] OCR 'unholiness' for 'in holiness'; citation is Exod 15:11 (KJV
+    # 'glorious in holiness'); stray colon
+    ("Éxodo 15:2.", "Éxodo 15:11."),
+    # [es] citation: Abram driving away the fowls is Gen 15:11
+    ("aves del sacrificio. Génesis 15:2", "aves del sacrificio. Génesis 15:11"),
+    # [es] citation: 'That good thing which was committed unto thee keep' is
+    # KJV 2 Tim 1:14 verbatim
+    ("1 Timoteo 1:11", "2 Timoteo 1:14"),
+    # [es] citation: Hophni and Phinehas slain is 1 Sam 4:11 (and stray colon)
+    ("1 Samuel 4:2.", "1 Samuel 4:11."),
+    # [es] citation: behemoth 'drinketh up a river' is Job 40:23 (Job 40 has 24
+    # verses)
+    ("Job 40:33", "Job 40:23"),
+    # [es] citation: 'joy and peace in believing' is Rom 15:13
+    ("Romanos 15:1, 3", "Romanos 15:13"),
+    # [es] citation: 'He hath dispersed, he hath given to the poor' is Ps 112:9
+    ("Salmos 29:9", "Salmos 112:9"),
+    # [es] citation: 'Depart from me, ye cursed' is Matt 25:41
+    ("Mateo 15:41", "Mateo 25:41"),
+    # [es] citation: 'be filled with the Spirit' is Eph 5:18
+    ("Efesios 5:19", "Efesios 5:18"),
+    # [es] citation: 'heinous crime' is Job 31:11 (and stray colon)
+    ("atroz». Job 31:2.", "atroz». Job 31:11."),
+    # [es] citation: 'I have made Abram rich' is Gen 14:23
+    ("Génesis 14:22", "Génesis 14:23"),
+    # [es] citation: 'Who knoweth the power of thine anger?' is Ps 90:11 (and
+    # stray colon)
+    ("Salmos 90:2.", "Salmos 90:11."),
+    # [es] citation: fowls on Abram's sacrifice is Gen 15:11
+    ("ahuyentarlas. Génesis 15:2", "ahuyentarlas. Génesis 15:11"),
 ])
 # The paragraph ended on a stop the OCR read as a comma.
 BODY_CORRECTIONS["evangelization-of-the-world"]["paragraph_breaks"] = [
