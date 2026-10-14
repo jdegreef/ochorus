@@ -125,7 +125,13 @@ def deploy(service_id: str, sha: str, api_key: str) -> str:
         },
     )
     with urllib.request.urlopen(req, timeout=30) as res:
-        return json.load(res).get("id", f"HTTP {res.status}")
+        # 201 carries the new deploy; a deploy QUEUED behind a running one comes
+        # back 202 with an empty body (2026-10-14), which is a success too.
+        try:
+            body = json.loads(res.read() or b"{}")
+        except ValueError:
+            body = None
+        return (isinstance(body, dict) and body.get("id")) or f"HTTP {res.status}"
 
 
 def why_deploy(target: str, last: str | None) -> tuple[str | None, str]:
@@ -189,7 +195,8 @@ def main() -> int:
             # Each service on its own: one failing must not strand the other.
             try:
                 summary.append(f"- {service}: deploy `{deploy(service_id, target, api_key)}` started")
-            except OSError as e:  # URLError / HTTPError / timeout
+            except Exception as e:  # HTTPError / URLError / timeout / anything
+                # Never let one service's failure skip the other's deploy.
                 failed = True
                 # Render's error body says why (a bad commit, a bad key...);
                 # the status line alone does not.
