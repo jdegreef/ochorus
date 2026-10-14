@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
+	import type { ForChrome } from '$lib/forChrome';
 	import { messageShareLinks } from '$lib/share';
 
 	/**
@@ -7,11 +8,11 @@
 	 * leader drops into a bulletin, a group chat or an email, shown in full so
 	 * they can see exactly what they would send, with one tap to copy it, send
 	 * it on WhatsApp (how this content travels) or open it in their mail app.
-	 * English-only like the page, so the words are literals, not catalogue keys.
+	 * Its words come with the page's copy ($lib/forChrome), not the catalogues.
 	 */
-	let { message, subject }: { message: string; subject: string } = $props();
+	let { message, subject, words }: { message: string; subject: string; words: ForChrome['invite'] } = $props();
 
-	const [whatsapp, email] = $derived(messageShareLinks(subject, message, 'Email'));
+	const [whatsapp, email] = $derived(messageShareLinks(subject, message, words.email));
 	let text = $state<HTMLElement>();
 	/** What the last copy did, for the status line: done, or select-it-yourself. */
 	let copied = $state<'yes' | 'select' | null>(null);
@@ -40,7 +41,7 @@
 	<div class="mt-4 flex flex-wrap items-center gap-2">
 		<button type="button" class="btn btn-sm" onclick={copy}>
 			<Icon name={copied === 'yes' ? 'check' : 'page'} size={15} />
-			{copied === 'yes' ? 'Copied' : 'Copy the message'}
+			{copied === 'yes' ? words.copied : words.copy}
 		</button>
 		<a class="btn btn-sm" href={whatsapp.href} target="_blank" rel="noopener noreferrer">
 			<Icon name="share" size={15} /> {whatsapp.name}
@@ -48,8 +49,8 @@
 		<a class="btn btn-sm" href={email.href}><Icon name="mail" size={15} /> {email.name}</a>
 		<!-- The copy's outcome, announced apart from the button that caused it. -->
 		<span class="text-small text-muted" role="status"
-			>{#if copied === 'select'}Selected: press Ctrl+C, or long-press and Copy.{:else if copied === 'yes'}<span
-					class="sr-only">Message copied</span
+			>{#if copied === 'select'}{words.selected}{:else if copied === 'yes'}<span class="sr-only"
+					>{words.announced}</span
 				>{/if}</span
 		>
 	</div>

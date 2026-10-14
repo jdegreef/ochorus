@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { EMPTY_SHELF_DATA, FOR_PAGES, type ForShelfData } from '$lib/forPages';
+import { EMPTY_SHELF_DATA, FOR_PAGES, FOR_PAGES_BY_LOCALE, type ForShelfData } from '$lib/forPages';
 import type { BookDetail, BookSummary, PlanSummary } from '$lib/library-public';
 
 /**
@@ -34,6 +34,7 @@ vi.mock('$lib/library-public', async (orig) => ({
 
 const { load } = await import('./for/[group]/+page');
 const { GET } = await import('./for-shelves/[group].json/+server');
+const { GET: GET_LOCALE } = await import('./for-shelves/[locale]/[group].json/+server');
 
 const SNAPSHOT: ForShelfData = { ...EMPTY_SHELF_DATA, shelves: [{ title: 'T', note: 'N', books: [] }] };
 
@@ -85,8 +86,9 @@ describe('for-shelves endpoint', () => {
 	const book = (slug: string) =>
 		({ slug, language: 'en', title: slug, author: { slug: 'a', name: 'A', birth_year: null } }) as unknown as BookSummary;
 	const plan = (slug: string) => ({ slug }) as PlanSummary;
-	const sermon = (slug: string, questions = 1) => ({
+	const sermon = (slug: string, questions = 1, language = 'en') => ({
 		slug,
+		language,
 		title: slug,
 		scripture_ref: '',
 		word_count: 2000,
@@ -127,8 +129,8 @@ describe('for-shelves endpoint', () => {
 		api.getQuotePage.mockImplementation(async (author: string) => ({
 			author: { slug: author, name: author, photo_url: '', birth_year: null },
 			topics: [],
-			quotes: FOR_PAGES.filter((p) => p.quote.startsWith(author)).map((p) => ({
-				slug: p.quote,
+			quotes: FOR_PAGES.filter((p) => p.quote?.startsWith(author)).map((p) => ({
+				slug: p.quote as string,
 				text: 'A line.',
 				paragraph: 1,
 				source: { kind: 'chapter', slug: 'b', title: 'C', work: 'Book', order: 2, cover_color: '' }
@@ -253,5 +255,29 @@ describe('for-shelves endpoint', () => {
 		api.listBooks.mockClear();
 		expect((await get('churches')).languages).toEqual([]);
 		expect(api.listBooks).toHaveBeenCalledTimes(1);
+	});
+
+	it('builds a French page from the French lists, dropping a sermon that answers in English', async () => {
+		const fr = FOR_PAGES_BY_LOCALE.fr.find((p) => p.slug === 'small-groups')!;
+		const picks = fr.shelves.flatMap((s) => s.picks);
+		api.listBooks.mockImplementation(async (lang: string) => (lang === 'fr' ? picks : everything()).map(book));
+		const [first, second, ...rest] = fr.series![0].picks;
+		api.getSermon.mockImplementation(async (slug: string, lang: string) => sermon(slug, 1, slug === second ? 'en' : lang));
+		api.getQuotePage.mockClear();
+		const got = (await (
+			await GET_LOCALE({ params: { locale: 'fr', group: 'small-groups' }, fetch } as unknown as Parameters<typeof GET_LOCALE>[0])
+		).json()) as ForShelfData;
+		expect(api.listBooks).toHaveBeenCalledWith('fr', expect.anything());
+		expect(got.shelves.map((s) => s.title)).toEqual(fr.shelves.map((s) => s.title));
+		expect(got.series[0].sermons.map((w) => w.slug)).toEqual([first, ...rest].slice(0, 6));
+		expect(got.quote).toBeNull();
+		expect(api.getQuotePage).not.toHaveBeenCalled();
+	});
+
+	it('404s a language the pages are not written in', async () => {
+		const get404 = (locale: string) =>
+			GET_LOCALE({ params: { locale, group: 'churches' }, fetch } as unknown as Parameters<typeof GET_LOCALE>[0]);
+		await expect(get404('sw')).rejects.toMatchObject({ status: 404 });
+		await expect(get404('en')).rejects.toMatchObject({ status: 404 });
 	});
 });
