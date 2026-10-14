@@ -11204,6 +11204,107 @@ BODY_CORRECTIONS.setdefault("on-loving-god", {}).setdefault("replacements", []).
     # [en] stray scan mark (signature mark E)
     ("ceases to eat E the bread", "ceases to eat the bread"),
 ])
+
+# Found while translating to French (2026-10-14): Pierson's George Müller of
+# Bristol — name scan slips, OCR slips and three certain citations (EN + es +
+# fr).
+BODY_CORRECTIONS.setdefault("george-muller-of-bristol", {}).setdefault("replacements", []).extend([
+    # [en] dropped apostrophe
+    ("enlarged George Müllers circle", "enlarged George Müller's circle"),
+    # [en] dropped apostrophe
+    ("<p>Mr. Müllers unfeigned humility", "<p>Mr. Müller's unfeigned humility"),
+    # [en] dropped apostrophe
+    ("soil of Mr. Müllers heart", "soil of Mr. Müller's heart"),
+    # [en] OCR/scan slip, one reading (Müller)
+    ("in Mr. Mailer's journal", "in Mr. Müller's journal"),
+    # [en] OCR/scan slip, one reading (Francke)
+    ("Meditation on Franeke's life", "Meditation on Francke's life"),
+    # [en] dropped apostrophe
+    ("one of George Müllers life-mottoes", "one of George Müller's life-mottoes"),
+    # [en] dropped apostrophe
+    ("lay back of George Müllers life", "lay back of George Müller's life"),
+    # [en] OCR/scan slip, one reading (Schaffhausen)
+    ("Wurtemberg, Sehaffhausen, Stuttgart", "Wurtemberg, Schaffhausen, Stuttgart"),
+    # [en] dittographic scan slip
+    ("an encompassing passing but invisible", "an encompassing but invisible"),
+    # [en] wrong citation: quoted words are Rom 12:18 (Rom 13 has 14 verses)
+    ("with all men.\" (Rom. xiii. 18.)", "with all men.\" (Rom. xii. 18.)"),
+    # [en] wrong citation: 'strength made perfect in weakness' is 2 Cor 12:9
+    ("<p>* 1 Cor. xii. 1-10.</p>", "<p>* 2 Cor. xii. 1-10.</p>"),
+    # [en] stray scan 'I'
+    ("<i>rest solely on I the promise", "<i>rest solely on the promise"),
+    # [en] stray period
+    ("reader. In Micah. vii. 20 we read", "reader. In Micah vii. 20 we read"),
+    # [en] dropped apostrophe
+    ("in Mr. Müllers own soul", "in Mr. Müller's own soul"),
+    # [en] dropped apostrophe
+    ("step, George Müllers life is", "step, George Müller's life is"),
+    # [en] dropped apostrophe
+    ("was not Mr. Müllers only", "was not Mr. Müller's only"),
+    # [en] OCR/scan slip, one reading (Müller)
+    ("Mr. Mutter's calm but evasive", "Mr. Müller's calm but evasive"),
+    # [en] stray scan quote mark
+    ("uninterrupted interviews 'with God,", "uninterrupted interviews with God,"),
+    # [en] stray scan quote mark
+    ("<i>little in hand, 'but at the fulness", "<i>little in hand, but at the fulness"),
+    # [en] OCR/scan slip, one reading
+    ("themes as He mighty please;", "themes as He might please;"),
+    # [en] stray hyphen
+    ("\"all will be saved,\" not-sinful men only", "\"all will be saved,\" not sinful men only"),
+    # [en] dropped possessive
+    ("Mr. Müller eyes had, for years", "Mr. Müller's eyes had, for years"),
+    # [en] period for comma mid-sentence
+    ("February, 1868. fifty-eight thousand", "February, 1868, fifty-eight thousand"),
+    # [en] OCR/scan slip, one reading (case)
+    ("single and singular ease of advertising", "single and singular case of advertising"),
+    # [en] OCR/scan slip, one reading (3 for comma)
+    ("survey. March 263 1875, is", "survey. March 26, 1875, is"),
+    # [en] OCR/scan slip, one reading (be)
+    ("and it would he difficult to fill", "and it would be difficult to fill"),
+    # [en] wrong citation: 'Them that honour Me I will honour' is 1 Sam 2:30
+    # (ch 2 has 36 verses)
+    ("honour.\" (1 Samuel ii. 39.)", "honour.\" (1 Samuel ii. 30.)"),
+    # [en] OCR/scan slip, one reading
+    ("Mr. MUller felt constrained", "Mr. Müller felt constrained"),
+    # [en] stray apostrophe
+    ("these experience's of divine", "these experiences of divine"),
+    # [en] stray apostrophe
+    ("spread through' seventeen years", "spread through seventeen years"),
+    # [en] missing space
+    ("on January 29,1872, was", "on January 29, 1872, was"),
+    # [en] stray apostrophe
+    ("whom his gift's aided", "whom his gifts aided"),
+    # [en] misplaced quote mark
+    ("principle of' compound probability'", "principle of 'compound probability'"),
+    # [en] stray apostrophe
+    ("the tens of thousand's of answers", "the tens of thousands of answers"),
+    # [en] OCR/scan slip, one reading (God)
+    ("is the Son of Gad. And", "is the Son of God. And"),
+    # [en] citation comma for period
+    ("(Acts viii, 36-38.)", "(Acts viii. 36-38.)"),
+    # [en] citation comma for period
+    ("(Philip, iv. 17.)", "(Philip. iv. 17.)"),
+    # [en] citation comma for period
+    ("(Matt, vi. 34.)", "(Matt. vi. 34.)"),
+    # [en] citation missing period
+    ("(2 Cor viii. 12.)", "(2 Cor. viii. 12.)"),
+    # [en] stray scan quote mark
+    ("which Thou 'hast wrought", "which Thou hast wrought"),
+    # [en] OCR/scan slip, one reading (50l. = £50)
+    ("days, about 501. was given", "days, about 50l. was given"),
+    # [en] OCR/scan slip, one reading (Müller's)
+    ("Mr. Mullets comment on this", "Mr. Müller's comment on this"),
+    # [en] dittographic scan slip
+    ("neglected or misdirected directed child", "neglected or misdirected child"),
+    # [en] OCR/scan slip, one reading (Life of Trust reads Humblings)
+    ("<p>Rumblings last our whole life.", "<p>Humblings last our whole life."),
+    # [en] split word
+    ("for ourselves after wards, are", "for ourselves afterwards, are"),
+    # [es] mirror en ch8 citation fix
+    ("<p>* 1 Corintios 12:1-10.</p>", "<p>* 2 Corintios 12:1-10.</p>"),
+    # [fr] mirror en ch8 citation fix
+    ("<p>* 1 Cor. 12:1-10.</p>", "<p>* 2 Cor. 12:1-10.</p>"),
+])
 # The paragraph ended on a stop the OCR read as a comma.
 BODY_CORRECTIONS["evangelization-of-the-world"]["paragraph_breaks"] = [
     ('foreign mission service.', 'In 1898 the members'),
