@@ -7959,6 +7959,37 @@
 			"layout": "rail/teal",
 			"bar": 0
 		},
+		"fr/a-serious-call": {
+			"ground": "c4d7d7f9c447e80cae5e9df5d8a1bf0133cba4b090224dfba9938bdf60002432",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[180, 102, 420, 131]
+				],
+				"title": [
+					[43, 275, 557, 338],
+					[50, 337, 550, 400]
+				],
+				"subtitle": [
+					[141, 463, 459, 491],
+					[143, 491, 457, 519]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				276,
+				519
+			]
+		},
 		"fr/absolute-surrender": {
 			"ground": "27a4490e3504475ccb2a4dd793a34abd482bed06f8c4a6cd605541518d1bb793",
 			"style": "devotional",
@@ -9839,6 +9870,17 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "band/teal",
+			"bar": 0
+		},
+		"fr/plain-account-christian-perfection": {
+			"ground": "02c9b11abb398e5b665e25d119f2d6cc0a08e4379f4cfe4ffe4b1ac1fb160611",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/mauve",
 			"bar": 0
 		},
 		"fr/power-through-prayer": {

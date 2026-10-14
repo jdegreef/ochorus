@@ -114,7 +114,8 @@
   "title": "À la poursuite de la sainteté",
   "description": "Neuf semaines pour appartenir entièrement au Seigneur. Andrew Murray fait remonter notre sainteté à notre union avec le Saint, William Law nous appelle à une vie consacrée à Dieu à chaque heure ordinaire, et John Wesley expose simplement ce qu’est la perfection chrétienne — et ce qu’elle n’est pas.",
   "note": [
-   "Job #3023. Prose-ahead: of the source books only holy-in-christ (Saint en Christ) has a French edition; a-serious-call and plain-account-christian-perfection do not, so seed_plans creates no fr row until they are translated."
+   "Job #3023. Prose-ahead: of the source books only holy-in-christ (Saint en Christ) has a French edition; a-serious-call and plain-account-christian-perfection do not, so seed_plans creates no fr row until they are translated.",
+   "2026-10-14: a-serious-call.fr (« Appel sérieux à une vie dévote et sainte », the shipped fr study guide's title) and plain-account-christian-perfection.fr (« Simple exposé de la perfection chrétienne ») ship together in this PR and complete the set with holy-in-christ.fr, so seed_plans now creates the (pursuit-of-holiness, fr) row; this prose lands in the same PR."
   ]
  },
  "rooted-three-months-books-1-3": {

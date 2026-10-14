@@ -8200,6 +8200,140 @@ BODY_CORRECTIONS.setdefault("selected-sermons-edwards", {}).setdefault("replacem
     # [am] twin of EN Lam iv. 29→iv. 20
     ("ሰቆቃወ ኤርምያስ 4:29፦", "ሰቆቃወ ኤርምያስ 4:20፦"),
 ])
+
+# Found while translating to French (2026-10-14): Law's A Serious Call — OCR
+# slips and wrong citations (en + es)
+BODY_CORRECTIONS.setdefault("a-serious-call", {}).setdefault("replacements", []).extend([
+    # [en] Luke 10:42 "one thing is needful" (KJV); xi→x
+    ("\"One thing needful,\" [Luke xi. 42]", "\"One thing needful,\" [Luke x. 42]"),
+    # [en] "I was a stranger, and ye took me in" is Matt 25:35 (v.43 is "took
+    # me not in")
+    ("ye took me in,\" [Matt. xxv. 43]", "ye took me in,\" [Matt. xxv. 35]"),
+    # [en] Matt 25 has 46 verses; passage quoted is 25:31-46
+    ("[Matt. xxv. 31-64]", "[Matt. xxv. 31-46]"),
+    # [en] Paul and Silas at midnight sang praises: Acts 16:25
+    ("unto God; [Acts xvi. 35]", "unto God; [Acts xvi. 25]"),
+    # [en] "Four days ago I was fasting until this hour" is Acts 10:30
+    ("until this hour.\" [Acts x. 2]", "until this hour.\" [Acts x. 30]"),
+    # [en] OCR "1.i.c.8" = lib. i, cap. 8
+    ("[Euseb. <i>Dem. Evan</i>. 1.i.c.8]", "[Euseb. <i>Dem. Evan</i>. l. i. c. 8]"),
+    # [en] OCR slip it→to
+    ("religion as it have right notions", "religion as to have right notions"),
+    # [en] 1729 "improvable" (cf. "an improvable talent of the mind")
+    ("considering how improbable the spirit", "considering how improvable the spirit"),
+    # [en] on→of
+    ("that habits on devotion", "that habits of devotion"),
+    # [en] OCR port→part
+    ("holiness into every port,", "holiness into every part,"),
+    # [en] imminent→eminent
+    ("to what an imminent state of holiness", "to what an eminent state of holiness"),
+    # [en] man's faculties contrasted with God's infinite; 1729 "finite"
+    ("using all his infinite faculties", "using all his finite faculties"),
+    # [en] OCR mover→cover
+    ("itself under the mover of many virtues", "itself under the cover of many virtues"),
+    # [en] stray full stop
+    ("to bless. and prosper him", "to bless and prosper him"),
+    # [en] stray space before apostrophe
+    ("All God 's creatures", "All God's creatures"),
+    # [en] stray space before apostrophe
+    ("conducted by God 's providence", "conducted by God's providence"),
+    # [en] stray space before apostrophe
+    ("acceptance of God 's particular", "acceptance of God's particular"),
+    # [en] for→from (sense: power received from God)
+    ("the power of willing for Him", "the power of willing from Him"),
+    # [en] on→of
+    ("repeat the same form on words", "repeat the same form of words"),
+    # [en] OCR folly→fully
+    ("yet even this folly proves", "yet even this fully proves"),
+    # [en] dropped "of"; only reading
+    ("repentance is very little significancy", "repentance is of very little significancy"),
+    # [en] listed with philosophers: the emperor Marcus Antoninus, not Mark
+    # Antony
+    ("Epictetus, Marcus Antonius, etc.", "Epictetus, Marcus Antoninus, etc."),
+    # [es] es reproduces Acts x. 2 for the 10:30 quotation
+    ("en ayunas». [Hechos 10:2]", "en ayunas». [Hechos 10:30]"),
+    # [es] es reproduces OCR 1.i.c.8
+    ("[Eusebio, <i>Dem. Evan</i>. 1.i.c.8]", "[Eusebio, <i>Dem. Evan</i>. l. i. c. 8]"),
+])
+
+# Found while translating to French (2026-10-14): Wesley's Plain Account of
+# Christian Perfection — OCR slips and Matt 12:37→22:37 (en + es/am)
+BODY_CORRECTIONS.setdefault("plain-account-christian-perfection", {}).setdefault("replacements", []).extend([
+    # [en] misprint shall→shalt (KJV Matt 22:37)
+    ("‘Thou shall love the Lord", "‘Thou shalt love the Lord"),
+    # [en] word split by stray space
+    ("to his plea sure;’", "to his pleasure;’"),
+    # [en] dropped letter you→your
+    ("glory in all you actions.", "glory in all your actions."),
+    # [en] OCR slip, single reading fall→full
+    ("Turn the fall stream of", "Turn the full stream of"),
+    # [en] OCR slip, single reading living→having
+    ("Perfect love living now cast out", "Perfect love having now cast out"),
+    # [en] word split by stray period/space (Matt 5:44)
+    ("‘despite. fully use him", "‘despitefully use him"),
+    # [en] OCR slip, single reading iii→in
+    ("but has iii all points", "but has in all points"),
+    # [en] OCR slip, single reading bath→hath
+    ("now He bath set his heart", "now He hath set his heart"),
+    # [en] OCR slip, single reading lie→he
+    ("say, lie may have free leave", "say, he may have free leave"),
+    # [en] OCR slip, single reading lie→he
+    ("‘lie that is born of God", "‘he that is born of God"),
+    # [en] OCR slip, single reading 110→no
+    ("I have 110 sin to be", "I have no sin to be"),
+    # [en] OCR slip, single reading religions→religious
+    ("among religions men,", "among religious men,"),
+    # [en] OCR slip, single reading hooked→looked
+    ("came in, they hooked up,", "came in, they looked up,"),
+    # [en] OCR slip, single reading hike→like
+    ("fled away hike smoke", "fled away like smoke"),
+    # [en] OCR slip, single reading ]→l
+    ("their state in genera],", "their state in general,"),
+    # [en] stray period mid-sentence
+    ("he shows them. that he hath", "he shows them that he hath"),
+    # [en] stray hyphen
+    ("which one-might add", "which one might add"),
+    # [en] OCR slip, single reading lath→hath
+    ("whom God lath ‘sanctified", "whom God hath ‘sanctified"),
+    # [en] OCR slip, single reading bath→hath
+    ("who bath called us out", "who hath called us out"),
+    # [en] OCR slip, single reading Chose→Chosen (hymn)
+    ("<p>Chose from the world, if now", "<p>Chosen from the world, if now"),
+    # [en] OCR slip, single reading fall→full (hymn)
+    ("and fall of faith and love.", "and full of faith and love."),
+    # [en] OCR slip, single reading falfil→fulfil (hymn)
+    ("Fulfil, falfil my large", "Fulfil, fulfil my large"),
+    # [en] OCR slip, single reading ‘is→us
+    ("who differ from ‘is with regard", "who differ from us with regard"),
+    # [en] OCR slip, single reading beloves→behoves
+    ("it beloves us to speak", "it behoves us to speak"),
+    # [en] wrong citation: quoted words are Matt 22:37 (KJV)
+    ("mind.’ (Matt. 12:37.)", "mind.’ (Matt. 22:37.)"),
+    # [en] stray comma
+    ("<p>“Q,. Why may we not", "<p>“Q. Why may we not"),
+    # [en] OCR slip, single reading he→be
+    ("A man may he dying for", "A man may be dying for"),
+    # [en] OCR slip, single reading stills→still
+    ("Yet he stills grows in grace", "Yet he still grows in grace"),
+    # [en] OCR slip, single reading he→be
+    ("desire to he delivered from it", "desire to be delivered from it"),
+    # [en] OCR slip, single reading ill→in (Dan 5:27)
+    ("He is weighed ill the balance", "He is weighed in the balance"),
+    # [en] dropped word "at"; only reading
+    ("they must times think, speak", "they must at times think, speak"),
+    # [en] OCR slip, single reading ‘nay→may (stray quote)
+    ("what God ‘nay vouchsafe", "what God may vouchsafe"),
+    # [en] stray apostrophe
+    ("not for a little’ time only", "not for a little time only"),
+    # [en] stray period
+    ("And. ‘be ye likewise clothed", "And ‘be ye likewise clothed"),
+    # [en] OCR slip, single reading Now→New
+    ("in the Old and Now Testament", "in the Old and New Testament"),
+    # [es] citation follows EN fix
+    ("(Mateo 12:37.)", "(Mateo 22:37.)"),
+    # [am] citation follows EN fix
+    ("(ማቴዎስ 12:37።)", "(ማቴዎስ 22:37።)"),
+])
 # The paragraph ended on a stop the OCR read as a comma.
 BODY_CORRECTIONS["evangelization-of-the-world"]["paragraph_breaks"] = [
     ('foreign mission service.', 'In 1898 the members'),
