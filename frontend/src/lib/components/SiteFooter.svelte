@@ -577,7 +577,7 @@
 		white-space: nowrap;
 	}
 	.footer-lang-count {
-		font-size: var(--fs-micro);
+		font-size: var(--fs-small);
 		color: var(--muted);
 	}
 
