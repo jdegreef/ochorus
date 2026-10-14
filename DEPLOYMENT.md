@@ -179,12 +179,13 @@ makes it quick.
 
 ## Refreshing / adding content later
 
-Re-run the importers locally, regenerate the fixture, commit, and push. Render
-auto-deploys each merge to `main` once its GitHub checks pass
-(`autoDeployTrigger: checksPass` on all three services); the web build's prebuild
-gate waits for the API to land the same content before prerendering. (The
-batching **deploy train**, `.github/workflows/deploy-train.yml`, is paused — see
-render.yaml for how to bring it back.) New content reaches the live database via the deploy's seed
+Re-run the importers locally, regenerate the fixture, commit, and push. The
+**deploy train** ships it: `.github/workflows/deploy-train.yml` runs every two
+hours and moves all three Render services to the newest commit whose
+`test-and-build` passed (Render's own auto-deploy is off on all three). To ship
+now: Actions → Deploy train → Run workflow, or `gh workflow run deploy-train.yml`
+(add `-f force=true` to redeploy with nothing changed). A red train run means
+nothing is deploying — fix it the same day. New content reaches the live database via the deploy's seed
 commands (`seed_books`/`seed_sermons` run on every release). **Never run raw
 `loaddata` against production** — it full-row-overwrites, silently reverting
 approved review states (`source_type`).

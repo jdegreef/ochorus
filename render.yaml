@@ -24,17 +24,20 @@ services:
     dockerfilePath: ./Dockerfile
     plan: starter # always-on; avoids cold-start spin-down
     healthCheckPath: /api/health/
-    # Deploy each merge once its GitHub checks pass. The deploy train
-    # (.github/workflows/deploy-train.yml) was meant to ship main in batches, but
-    # its deploy hooks were never configured, so with auto-deploy off this
-    # service stopped deploying altogether — and every content build of the
-    # still-auto-deploying reader then timed out in its prebuild content gate
-    # (frontend/scripts/await-api-release.mjs) waiting for an API that never
-    # moved. All three services must share one trigger: the web build's gate
-    # assumes the API deploys the same content commit alongside it. To bring
-    # the train back, set "off" on all three, set DEPLOY_TRAIN below to "true",
-    # restore the workflow's schedule, and add its three hook secrets.
-    autoDeployTrigger: checksPass
+    # Off: the deploy train (.github/workflows/deploy-train.yml) ships main in
+    # batches every two hours, moving all three services to the same green
+    # commit together. At 100+ merges a day, deploying each one queued the
+    # ~21-minute web build back to back and rebuilt this image for every
+    # backend commit.
+    #
+    # All three services must share one trigger: the web build's prebuild gate
+    # (frontend/scripts/await-api-release.mjs) waits for the API to serve the
+    # same content. When only the API was "off" and the train's hook secrets
+    # were missing (Oct 5–8, 2026), the API stopped deploying and every web
+    # build timed out at that gate. To go back to per-merge deploys, set
+    # `checksPass` on all three, set DEPLOY_TRAIN below to "false", and comment
+    # out the workflow's schedule (#5448 did exactly that).
+    autoDeployTrigger: "off"
     # Rebuild the API only for commits that change what the image runs. The
     # rootDir already skips commits outside backend/; this also skips the ones
     # that touch only tests or backend/CLAUDE.md, each of which would otherwise
@@ -83,13 +86,12 @@ services:
       - key: RENDER_WEB_DEPLOY_HOOK
         sync: false
       # Pins that rebuild to this API's own commit (library/golive.py). Only
-      # safe while the deploy train keeps every service on one commit. Under
+      # safe while the deploy train keeps every service on one commit, so it
+      # is "true" exactly when autoDeployTrigger is "off" on all three. Under
       # auto-deploy the reader can run a newer frontend-only commit than this
-      # API, and pinning would roll it back — so it is "false" while the
-      # services auto-deploy, set explicitly so a Blueprint sync overwrites the
-      # "true" the train era left on the service.
+      # API, and pinning would roll it back.
       - key: DEPLOY_TRAIN
-        value: "false"
+        value: "true"
       # The reader's public origin (e.g. https://ochorus.com) — lets the admin
       # confirm after a deploy that a newly live locale is really in the built
       # sitemap. Optional: without it that check reports "unknown".
@@ -141,8 +143,8 @@ services:
     rootDir: backend
     dockerfilePath: ./Dockerfile
     schedule: "*/15 * * * *"
-    # Same trigger as ochorus-api, whose image this rebuilds.
-    autoDeployTrigger: checksPass
+    # Off, like ochorus-api, whose image this rebuilds: the deploy train ships it.
+    autoDeployTrigger: "off"
     # Same filter as ochorus-api: the cron builds its own copy of the image, so
     # without this every test-only backend commit paid for a second Docker build.
     buildFilter:
@@ -230,9 +232,10 @@ services:
     rootDir: frontend
     buildCommand: npm ci && npm run build
     staticPublishPath: ./build
-    # Same trigger as ochorus-api (see there): the prebuild gate waits for the
-    # API to land the same content, which only works if both deploy the commit.
-    autoDeployTrigger: checksPass
+    # Off, like ochorus-api (see there): the deploy train ships it, together
+    # with the API, so the prebuild gate finds the content it waits for. The
+    # buildFilter below still decides whether a train has anything to deploy.
+    autoDeployTrigger: "off"
     # By default Render rebuilds this static service only when files under its
     # rootDir (frontend/) change — so a backend-only content commit (new authors,
     # book/title edits) would leave the prerendered /books|authors|sermons pages

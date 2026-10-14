@@ -1,15 +1,14 @@
 name: Deploy train
 
-# PAUSED: Render auto-deploys again (`autoDeployTrigger: checksPass` in
-# render.yaml), so the schedule is off and this runs only by hand. Its hook
-# secrets were never set, and with Render's auto-deploy off the API stopped
-# deploying entirely. To bring the train back, see the note on ochorus-api's
-# autoDeployTrigger in render.yaml and restore the `schedule:` below.
-#
-# Deploys main to Render in batches instead of on every merge: it moves all
-# three services to the newest commit whose `test-and-build` passed, if
-# anything deployable changed since the last deploy.
+# Deploys main to Render in batches instead of on every merge. Render's
+# auto-deploy is off on all three services (render.yaml), so this workflow is
+# the only thing that ships a merge: every two hours it moves all three
+# services to the newest commit whose `test-and-build` passed, if anything
+# deployable changed since the last deploy.
 # .github/scripts/deploy_train.py has the rules and the why.
+#
+# A RED RUN MEANS PRODUCTION IS FROZEN: nothing else deploys. Fix it the same
+# day. (Oct 5–8, 2026: the hook secrets were missing and main went undeployed.)
 #
 # Need it live now? Actions → Deploy train → Run workflow (tick "force" to
 # redeploy even when nothing deployable changed), or:
@@ -19,8 +18,8 @@ name: Deploy train
 # Hook) into the repo secrets RENDER_DEPLOY_HOOK_API, RENDER_DEPLOY_HOOK_WEB
 # and RENDER_DEPLOY_HOOK_CRON. A missing secret skips that service.
 on:
-  # schedule:
-  #   - cron: '5 */3 * * *'
+  schedule:
+    - cron: '5 */2 * * *'
   workflow_dispatch:
     inputs:
       force:
