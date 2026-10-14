@@ -9579,6 +9579,1299 @@ BODY_CORRECTIONS.setdefault("selected-sermons-whitefield", {}).setdefault("repla
     # [es] citation twin: Matt 20:30 (en "Matthew 20:22")
     ("pasaje de Mateo 20:22,", "pasaje de Mateo 20:30,"),
 ])
+
+
+# Found while translating to French (2026-10-14): Wesley's Sermons on Several
+# Occasions — OCR slips and certain citation fixes (EN + es).
+BODY_CORRECTIONS.setdefault("sermons-on-several-occasions", {}).setdefault("replacements", []).extend([
+    # [en] OCR misprint of the preacher Bourdaloue
+    ("Massillon or Bourdabue;", "Massillon or Bourdaloue;"),
+    # [en] OCR misprint of the preacher Bourdaloue
+    ("Massillon, or Bourdabue.", "Massillon, or Bourdaloue."),
+    # [en] OCR it→if
+    ("faint not, it they seek him", "faint not, if they seek him"),
+    # [en] misprint act→acts (parallel 'speaks')
+    ("in all things act and speaks", "in all things acts and speaks"),
+    # [en] 1 John 4:16 KJV 'he that dwelleth in love'
+    ("“he that dwelling in love, dwelleth", "“he that dwelleth in love, dwelleth"),
+    # [en] stray comma; Luke 11:21 'a strong man armed'
+    ("“a strong, man armed,”", "“a strong man armed,”"),
+    # [en] stray full stop
+    ("So that God was the. desire", "So that God was the desire"),
+    # [en] quote mark for apostrophe (Acts 2:42)
+    ("in the Apostles” doctrine", "in the Apostles’ doctrine"),
+    # [en] 'this sect is everywhere spoken against' = Acts 28:22
+    ("spoken against.” (Acts 27:22.)", "spoken against.” (Acts 28:22.)"),
+    # [en] OCR hereby→whereby
+    ("of God the Father, hereby, for the sake", "of God the Father, whereby, for the sake"),
+    # [en] stray comma
+    ("crying in , our hearts", "crying in our hearts"),
+    # [en] Rom 4:5 'believeth on/in him'; is→in
+    ("he “believeth is him that justifieth", "he “believeth in him that justifieth"),
+    # [en] OCR hut→but
+    ("while in Paradise, hut commonly", "while in Paradise, but commonly"),
+    # [en] OCR begin-fling→beginning
+    ("in the begin-fling of this chapter", "in the beginning of this chapter"),
+    # [en] 'By myself have I sworn … in thy seed' = Gen 22:16, 18
+    ("be blessed.” (Gen. 12:15, 18.)", "be blessed.” (Gen. 22:16, 18.)"),
+    # [en] OCR fill→full (Heb 10:22)
+    ("near, in fill assurance of faith", "near, in full assurance of faith"),
+    # [en] missing space before tag
+    ("“who loved<i>thee</i>", "“who loved <i>thee</i>"),
+    # [en] dropped 'in' + stray capital
+    ("does religion consist Orthodoxy, or", "does religion consist in orthodoxy, or"),
+    # [en] line-break hyphen
+    ("“passeth all under-standing,”", "“passeth all understanding,”"),
+    # [en] missing space after paragraph number
+    ("<p>3.But secondly", "<p>3. But secondly"),
+    # [en] stray space
+    ("after the flesh , but after the Spirit", "after the flesh, but after the Spirit"),
+    # [en] OCR call→can
+    ("more foolish than it call yet enter", "more foolish than it can yet enter"),
+    # [en] full stop for comma
+    ("sincere, though imperfect. obedience", "sincere, though imperfect, obedience"),
+    # [en] OCR of→or
+    ("first state of mind, without fear of love,", "first state of mind, without fear or love,"),
+    # [en] OCR in→is
+    ("6. It in not surprising", "6. It is not surprising"),
+    # [en] OCR in→is
+    ("the point which in next to be considered", "the point which is next to be considered"),
+    # [en] Rom 2:6 'according to his deeds/works'; OCR words→works
+    ("every man according to his words, entering", "every man according to his works, entering"),
+    # [en] dropped letter is→his
+    ("hanging over is head;", "hanging over his head;"),
+    # [en] OCR Them→Then
+    ("III. 1. Them it is that this miserable", "III. 1. Then it is that this miserable"),
+    # [en] OCR them→then
+    ("This circumstance, them does by no means", "This circumstance, then does by no means"),
+    # [en] OCR of→or
+    ("among the sons of servants of God!", "among the sons or servants of God!"),
+    # [en] OCR will→with (Deut 6:5)
+    ("the lord thy God will all thy heart", "the lord thy God with all thy heart"),
+    # [en] stray '; ' inside citation
+    ("(1 Cor. 14:20; ) — every man", "(1 Cor. 14:20) — every man"),
+    # [en] 'the answer of a good conscience toward God' = 1 Pet 3:21 verbatim
+    ("toward God.” [Acts 23:1] By the fruits", "toward God.” [1 Pet. 3:21] By the fruits"),
+    # [en] OCR or→for
+    ("which had been or many years well nigh", "which had been for many years well nigh"),
+    # [en] OCR won→own
+    ("consciousness of our won good works", "consciousness of our own good works"),
+    # [en] OCR as→at
+    ("words and actions, as least as much", "words and actions, at least as much"),
+    # [en] stray comma in citation
+    ("(1 John 5:11, ) This is the record", "(1 John 5:11) This is the record"),
+    # [en] stray comma in citation
+    ("(Gal. 4:6, ) “Because ye are sons", "(Gal. 4:6) “Because ye are sons"),
+    # [en] OCR be→he
+    ("or that be has forgotten", "or that he has forgotten"),
+    # [en] doubled comma
+    ("and, Lastly,, that the change", "and, Lastly, that the change"),
+    # [en] missing space after paragraph number
+    ("experience. 3.The design", "experience. 3. The design"),
+    # [en] OCR out→our (2 Cor 1:12)
+    ("the testimony of out conscience, that in", "the testimony of our conscience, that in"),
+    # [en] dropped letters up→upon (Matt 7:27)
+    ("the floods arise and beat up it,", "the floods arise and beat upon it,"),
+    # [en] stray '; ' inside citation
+    ("(Acts 23:1; ) he denotes", "(Acts 23:1) he denotes"),
+    # [en] stray '; ' inside citation
+    ("(Heb. 8:10; ) hereby producing", "(Heb. 8:10) hereby producing"),
+    # [en] OCR or→of
+    ("points out the Author or it,", "points out the Author of it,"),
+    # [en] stray space
+    ("“Not with fleshly wisdom , but", "“Not with fleshly wisdom, but"),
+    # [en] dropped letters up→upon
+    ("of any person then up the earth", "of any person then upon the earth"),
+    # [en] OCR sacred→seared (1 Tim 4:2)
+    ("insensibility of a sacred conscience", "insensibility of a seared conscience"),
+    # [en] word split by space (1 Cor 4:13)
+    ("“the filth and off scouring of the world;”", "“the filth and offscouring of the world;”"),
+    # [en] lost capital on proper name
+    ("every Reformed Church in europe,", "every Reformed Church in Europe,"),
+    # [en] lost capital on proper name
+    ("7. But the english, who", "7. But the English, who"),
+    # [en] lost capital on proper name
+    ("the church of ephesus,", "the church of Ephesus,"),
+    # [en] stray single closing mark
+    ("temples of the Holy Ghost?’” Yes;", "temples of the Holy Ghost?” Yes;"),
+    # [en] 'no more curse … see his face' = Rev 22:3–4
+    ("shall see his face” (21:3, 4), —", "shall see his face” (22:3, 4), —"),
+    # [en] OCR disadvantaged→disadvantage;
+    ("to their disadvantaged that their sins", "to their disadvantage; that their sins"),
+    # [en] extraction debris
+    ("over all his wor! ! ks.", "over all his works."),
+    # [en] extraction debris + stray 'to' (Ps 119:33 KJV)
+    ("and I sha! ! ll to keep it unto the end", "and I shall keep it unto the end"),
+    # [en] extraction debris
+    ("sink deeper into his! ! soul", "sink deeper into his soul"),
+    # [en] extraction debris
+    ("praying with all ! ! that fear him", "praying with all that fear him"),
+    # [en] OCR Jeish→Jewish
+    ("be the Jeish ordinances", "be the Jewish ordinances"),
+    # [en] missing space after tag
+    ("<i>doubting,</i>meden", "<i>doubting,</i> meden"),
+    # [en] OCR form→from (John 8:44)
+    ("“a liar form the beginning.”", "“a liar from the beginning.”"),
+    # [en] OCR thought→though
+    ("not of the world; thought he would choose", "not of the world; though he would choose"),
+    # [en] raise→raised, stray hyphen (Rom 8:11)
+    ("who, as he raise up Christ from the dead, so is able to-quicken us", "who, as he raised up Christ from the dead, so is able to quicken us"),
+    # [en] word split by space
+    ("in the desires there of;", "in the desires thereof;"),
+    # [en] OCR no→not (Rom 8:7)
+    ("which is no subject to the law of God", "which is not subject to the law of God"),
+    # [en] OCR us→as
+    ("the sole End, us well as Source", "the sole End, as well as Source"),
+    # [en] OCR to→no
+    ("Have no end, to ultimate end, but God", "Have no end, no ultimate end, but God"),
+    # [en] OCR be→he
+    ("“whereby be is very far gone", "“whereby he is very far gone"),
+    # [en] OCR arc→are
+    ("the things that arc seen", "the things that are seen"),
+    # [en] OCR arc→are
+    ("the things that arc not seen", "the things that are not seen"),
+    # [en] dropped letter an→and
+    ("the Inspirer an Perfecter", "the Inspirer and Perfecter"),
+    # [en] OCR 'v. as'→was
+    ("that one who v. as “conceived", "that one who was “conceived"),
+    # [en] OCR lees→less
+    ("8. What lees than this", "8. What less than this"),
+    # [en] OCR ill→in (2 Cor 12:10)
+    ("living “ill infirmities,", "living “in infirmities,"),
+    # [en] dropped letters
+    ("Let it be continual offered up", "Let it be continually offered up"),
+    # [en] word split by space
+    ("This is the way where in those", "This is the way wherein those"),
+    # [en] stray scan marks
+    ("when, whether we;’ eat, or drink", "when, whether we eat, or drink"),
+    # [en] quoted words are 1 John 5:18 (Wesley names 'his fifth chapter')
+    ("toucheth him not.” (1 John 3:18.)", "toucheth him not.” (1 John 5:18.)"),
+    # [en] 'I will love thee, O Lord, my strength…' = Ps 18:1–2
+    ("and my refuge.” (Psalm 28:1.)", "and my refuge.” (Psalm 18:1.)"),
+    # [en] stray scan mark
+    ("of his obedience w.as complete", "of his obedience was complete"),
+    # [en] OCR nor→not
+    ("a difference of expression does nor necessarily", "a difference of expression does not necessarily"),
+    # [en] stray OCR 'Is'
+    ("with their heart they Is believe:", "with their heart they believe:"),
+    # [en] word split by space
+    ("affirmed that, not withstanding his", "affirmed that, notwithstanding his"),
+    # [en] OCR be→he
+    ("leprosy of sin, which be brought with him", "leprosy of sin, which he brought with him"),
+    # [en] stray underscore
+    ("judgment;” _enochos estai,", "judgment;” enochos estai,"),
+    # [en] doubled negative (1 Cor 13:4 'vaunteth not itself')
+    ("Love ou perpereuetai, not vaunteth not itself", "Love ou perpereuetai, vaunteth not itself"),
+    # [en] stray space
+    ("in every thought , and word", "in every thought, and word"),
+    # [en] stray space
+    ("forgive their sin ; and if not", "forgive their sin; and if not"),
+    # [en] stray '; ' inside citation
+    ("(Exod. 32:31, 32; ) —", "(Exod. 32:31, 32) —"),
+    # [en] stray second opening mark
+    ("“the children “of God.”", "“the children of God.”"),
+    # [en] stray OCR 'lo'
+    ("may have an influence on lo them also", "may have an influence on them also"),
+    # [en] stray OCR 'lo'
+    ("and not offend lo those whom", "and not offend those whom"),
+    # [en] OCR he→be
+    ("<p>Till all thy will he done.</p>", "<p>Till all thy will be done.</p>"),
+    # [en] stray closing mark
+    ("not to keep company’ with him;", "not to keep company with him;"),
+    # [en] stray closing mark with no opener
+    ("in spirit and in truth?’ Why,", "in spirit and in truth? Why,"),
+    # [en] stray opening mark with no closer
+    ("returning themselves ‘to the great Bishop", "returning themselves to the great Bishop"),
+    # [en] stray single opening mark
+    ("thus “‘made partakers of the Holy Ghost.”", "thus “made partakers of the Holy Ghost.”"),
+    # [en] misprint ajusted→adjusted
+    ("likewise they ajusted with", "likewise they adjusted with"),
+    # [en] Matt 6:1 'of your Father' (as quoted in the text verse)
+    ("for this “of our Father which is in heaven.”", "for this “of your Father which is in heaven.”"),
+    # [en] stray OCR 'I'
+    ("spirits, that I bring us down", "spirits, that bring us down"),
+    # [en] dropped letter An→And
+    ("<p>An hail the Sovereign Lord", "<p>And hail the Sovereign Lord"),
+    # [en] OCR more→move (rhymes with 'love')
+    ("<p>Our bowels of compassion more:</p>", "<p>Our bowels of compassion move:</p>"),
+    # [en] stray closing mark
+    ("“frankly forgive’ us all!", "“frankly forgive us all!"),
+    # [en] stray closing mark with no opener
+    ("quick into hell?’ o tempt", "quick into hell? o tempt"),
+    # [en] quoted words end at Acts 13:3
+    ("they sent them away.” (Acts 13:13.)", "they sent them away.” (Acts 13:3.)"),
+    # [en] full stop for colon in citation
+    ("among the Heathen.” (Joel 2.12.)", "among the Heathen.” (Joel 2:12.)"),
+    # [en] OCR frond→from
+    ("they proceed frond a pure intention", "they proceed from a pure intention"),
+    # [en] line-break hyphen
+    ("destruction and perdi-tion,", "destruction and perdition,"),
+    # [en] OCR those→thou
+    ("not this treasure those art more foolish", "not this treasure thou art more foolish"),
+    # [en] stray single opening mark
+    ("that perish, ‘“all that cometh", "that perish, “all that cometh"),
+    # [en] doubled punctuation
+    ("the fleece of his flock., and", "the fleece of his flock, and"),
+    # [en] maybe→may be
+    ("condemned; and this maybe of various kinds", "condemned; and this may be of various kinds"),
+    # [en] stray OCR 'I'
+    ("allow him second I thoughts", "allow him second thoughts"),
+    # [en] stray OCR 'I' (Matt 7:11)
+    ("being evil, know I how to give", "being evil, know how to give"),
+    # [en] misprint threat→thereat (Matt 7:13)
+    ("many there be which go in threat:", "many there be which go in thereat:"),
+    # [en] OCR painting→panting
+    ("and continually painting after a renewal", "and continually panting after a renewal"),
+    # [en] misprint and→an
+    ("3. Is this and unheard-of,", "3. Is this an unheard-of,"),
+    # [en] 'Every good tree … corrupt tree' = Matt 7:17
+    ("forth evil fruit.” (Matt. 5:17.)", "forth evil fruit.” (Matt. 7:17.)"),
+    # [en] OCR theses→these
+    ("be content with theses light explications", "be content with these light explications"),
+    # [en] OCR form→from
+    ("to the moral law, form which the preceding", "to the moral law, from which the preceding"),
+    # [en] dropped letter the→them
+    ("liberty, he gave the a law,", "liberty, he gave them a law,"),
+    # [en] OCR form→from
+    ("had raised man form the dust", "had raised man from the dust"),
+    # [en] dropped letter he→the
+    ("have existed from he beginning", "have existed from the beginning"),
+    # [en] dropped letter
+    ("because those thing themselves", "because those things themselves"),
+    # [en] OCR to→not
+    ("God. It is to so properly a pledge", "God. It is not so properly a pledge"),
+    # [en] misprint are→art
+    ("9. And if thou are thoroughly convinced", "9. And if thou art thoroughly convinced"),
+    # [en] dropped letter (Prov 3:3 'write them upon the table')
+    ("thy neck; writ it on the table", "thy neck; write it on the table"),
+    # [en] word split by space
+    ("who can work it with out any means", "who can work it without any means"),
+    # [en] dropped plural (2 Cor 11:5)
+    ("as the very chief of the Apostle,", "as the very chief of the Apostles,"),
+    # [en] dittography: clause printed twice
+    ("sets aside the necessity of keeping his law; yet suppose either sets aside the necessity of keeping his law; yet suppose either, (1.)", "sets aside the necessity of keeping his law; yet suppose either, (1.)"),
+    # [en] OCR that→than
+    ("less powerful that the legal?", "less powerful than the legal?"),
+    # [en] dropped letter
+    ("trampling all finer, all superfluity", "trampling all finery, all superfluity"),
+    # [en] dropped letter
+    ("without wounding you conscience?", "without wounding your conscience?"),
+    # [en] misprint and→an
+    ("spare even for and unknown God?", "spare even for an unknown God?"),
+    # [en] dropped prefix: only reading
+    ("(whether directly or directly,)", "(whether directly or indirectly,)"),
+    # [en] dropped 'is'
+    ("holiness; that this less necessary now", "holiness; that this is less necessary now"),
+    # [en] dropped 'at'
+    ("makes it all void a stroke;", "makes it all void at a stroke;"),
+    # [en] OCR un→in
+    ("is still fresh un our own history", "is still fresh in our own history"),
+    # [en] full stop for comma
+    ("gives you a general rule. applicable", "gives you a general rule, applicable"),
+    # [en] full stop for comma
+    ("a sounding word. which means just nothing", "a sounding word, which means just nothing"),
+    # [en] full stop for comma
+    ("our own party. opinion, church", "our own party, opinion, church"),
+    # [en] comma for full stop in paragraph number
+    ("<p>2, Do <i>you</i> beware", "<p>2. Do <i>you</i> beware"),
+    # [en] missing full stop after paragraph number
+    ("<p>5 I mean, Secondly", "<p>5. I mean, Secondly"),
+    # [en] 'heal the sick … raise the dead' = Matt 10:8
+    ("raise the dead. [Mark 10:8]", "raise the dead. [Matt. 10:8]"),
+    # [en] 'no condemnation … after the Spirit' = Rom 8:1
+    ("after the Spirit.” [Rom. 8:2]", "after the Spirit.” [Rom. 8:1]"),
+    # [en] tree good, fruit good = Matt 12:33
+    ("is good also; (Matt. 22:33)", "is good also; (Matt. 12:33)"),
+    # [en] 'grieved for the hardness of their hearts' = Mark 3:5
+    ("of their hearts.” [Mark 3:6]", "of their hearts.” [Mark 3:5]"),
+    # [en] misprint Chose→Chosen
+    ("<p>4 Chose from the world", "<p>4 Chosen from the world"),
+    # [en] misprint By→Be
+    ("<p>By thou my God, and I will be", "<p>Be thou my God, and I will be"),
+    # [en] missing space after stanza number
+    ("<p>26Open my faith", "<p>26 Open my faith"),
+    # [en] misplaced comma
+    ("your peace as, well as joy", "your peace, as well as joy"),
+    # [en] stray closing mark
+    ("whereby, “after’ they have done", "whereby, “after they have done"),
+    # [en] OCR so→go
+    ("alive to God. We so on from grace", "alive to God. We go on from grace"),
+    # [en] OCR five→give
+    ("not be improper to five it a more", "not be improper to give it a more"),
+    # [en] word split by space
+    ("believes; with out faith no man", "believes; without faith no man"),
+    # [en] stray closing mark
+    ("zealous of good works’? Yea", "zealous of good works? Yea"),
+    # [en] OCR there→these
+    ("And there are so necessary,", "And these are so necessary,"),
+    # [en] OCR mist→must
+    ("the inference we mist draw", "the inference we must draw"),
+    # [en] OCR in→is
+    ("there in no moving one step", "there is no moving one step"),
+    # [en] misprint they→thy (Deut 30:6)
+    ("to love the Lord they God with", "to love the Lord thy God with"),
+    # [en] OCR till→fill
+    ("and to till it with all holiness", "and to fill it with all holiness"),
+    # [en] OCR us→is
+    ("But it us infinitely desirable", "But it is infinitely desirable"),
+    # [en] OCR in→is
+    ("There in then no danger", "There is then no danger"),
+    # [en] stray space
+    ("all our sins; and , what is", "all our sins; and, what is"),
+    # [en] OCR he→be
+    ("And it must he acknowledged", "And it must be acknowledged"),
+    # [en] dropped letter
+    ("at all: Thy would have no more", "at all: They would have no more"),
+    # [en] dropped letter
+    ("We do no, like the idolatrous", "We do not, like the idolatrous"),
+    # [en] lost capital
+    ("hereby we rob god of his", "hereby we rob God of his"),
+    # [en] dropped plural
+    ("which all creature bear to their Creator", "which all creatures bear to their Creator"),
+    # [en] stray underscore
+    ("Heathen, _Animi dissoluti", "Heathen, Animi dissoluti"),
+    # [en] OCR flow→fellow (Acts 22:22)
+    ("“Away with such a flow from the earth!”", "“Away with such a fellow from the earth!”"),
+    # [en] OCR put→but
+    ("are put Heathens still", "are but Heathens still"),
+    # [en] misprint and→an
+    ("If we suppose and intelligent creature", "If we suppose an intelligent creature"),
+    # [en] OCR be→he
+    ("as he is born, be begins to see", "as he is born, he begins to see"),
+    # [en] lost capital
+    ("the Spirit of god works in his heart", "the Spirit of God works in his heart"),
+    # [en] lost comma in list
+    ("hatred, envy jealousy, revenge", "hatred, envy, jealousy, revenge"),
+    # [en] misprint and→an (Catechism)
+    ("the other, and inward and spiritual grace", "the other, an inward and spiritual grace"),
+    # [en] garble 'the and'→'the other an'
+    ("the one is a visible, the and invisible thing", "the one is a visible, the other an invisible thing"),
+    # [en] dropped letter
+    ("A man my possibly be", "A man may possibly be"),
+    # [en] OCR I→in
+    ("can be wrought I infants", "can be wrought in infants"),
+    # [en] dropped letter
+    ("importance, as my excuse the considering", "importance, as may excuse the considering"),
+    # [en] lost capital
+    ("God the Father, the son, and the Holy Ghost", "God the Father, the Son, and the Holy Ghost"),
+    # [en] dropped letter word→world
+    ("the love of the word, pride, anger", "the love of the world, pride, anger"),
+    # [en] dropped letter
+    ("first believe the are but as new-born", "first believe they are but as new-born"),
+    # [en] stray space
+    ("in their teeth , will show", "in their teeth, will show"),
+    # [en] dropped letter
+    ("a wide an essential difference", "a wide and essential difference"),
+    # [en] stray comma in citation
+    ("(1 Pet. 1:5, ) “Ye who", "(1 Pet. 1:5) “Ye who"),
+    # [en] stray comma in citation
+    ("(1 Pet. 1:7, ) he mentions", "(1 Pet. 1:7) he mentions"),
+    # [en] stray comma in citation
+    ("(1 Pet. 1:9, ) he speaks", "(1 Pet. 1:9) he speaks"),
+    # [en] stray comma in citation
+    ("(1 Pet. 1:3, ) “Blessed", "(1 Pet. 1:3) “Blessed"),
+    # [en] word split by space
+    ("living hope also, where unto “the God", "living hope also, whereunto “the God"),
+    # [en] OCR 'ours' for 'our'
+    ("to follow ours own will", "to follow our own will"),
+    # [en] stray scan mark '_'
+    ("Hanc mystici docent,_ said", "Hanc mystici docent, said"),
+    # [en] 'maybe' for 'may be'
+    ("We maybe a defence", "We may be a defence"),
+    # [en] dropped 'is'
+    ("which not consistent with", "which is not consistent with"),
+    # [en] lost apostrophe
+    ("learn from Solomons words", "learn from Solomon’s words"),
+    # [en] lost apostrophe
+    ("all thy Lords goods", "all thy Lord’s goods"),
+    # [en] lost apostrophe
+    ("which in deaths sleep", "which in death’s sleep"),
+    # [en] stray 'I'
+    ("they could I have done", "they could have done"),
+    # [en] OCR 'care' for 'are'
+    ("in all that care round about", "in all that are round about"),
+    # [en] OCR 'county' for 'country' (Great Britain)
+    ("this Christian county,", "this Christian country,"),
+    # [en] 'an' for 'and'
+    ("for God, an to repress", "for God, and to repress"),
+    # [en] 'excellent' for 'excellency'
+    ("to show the excellent thereof", "to show the excellency thereof"),
+    # [en] OCR garble of 'any measure'
+    ("to remove in an leisure those", "to remove in any measure those"),
+    # [en] 'hereby' for 'whereby'
+    ("the worthy name hereby we", "the worthy name whereby we"),
+    # [en] 'other' for 'others'
+    ("who betray other into sin", "who betray others into sin"),
+    # [en] word split 'the repressing'
+    ("to whom there pressing these", "to whom the repressing these"),
+    # [en] 'maybe' for 'may be'
+    ("The contrary maybe proved", "The contrary may be proved"),
+    # [en] word split slip 'blessings even'
+    ("how great blessing seven this", "how great blessings even this"),
+    # [en] missing space
+    ("<p>4.Nor is it", "<p>4. Nor is it"),
+    # [en] stray comma
+    ("till after he, had left", "till after he had left"),
+    # [en] OCR 'mild' for 'mind' (Col 3:12)
+    ("humbleness of mild,", "humbleness of mind,"),
+    # [en] 'presences' for 'presence'
+    ("live in his presences for", "live in his presence for"),
+    # [en] 'by' for 'be'
+    ("it must by the One God", "it must be the One God"),
+    # [en] OCR 'belt' for 'melt'
+    ("they will belt, but", "they will melt, but"),
+    # [en] 'roles' for 'rolls'
+    ("This roles on", "This rolls on"),
+    # [en] stray semicolon
+    ("immovable ocean. ;For the", "immovable ocean. For the"),
+    # [en] Rev 4:8 'who was'
+    ("Almighty, who saw, and who is", "Almighty, who was, and who is"),
+    # [en] 'opposition' for 'supposition' (resumed as 'a supposition')
+    ("impossible opposition, that", "impossible supposition, that"),
+    # [en] dropped 'of'
+    ("as well as to matter fact)", "as well as to matter of fact)"),
+    # [en] split word
+    ("and them: There fore we", "and them: Therefore we"),
+    # [en] 'abject' for 'object'
+    ("so astonishing an abject,", "so astonishing an object,"),
+    # [en] 'forth' for 'fourth'
+    ("hundred and forty-forth,", "hundred and forty-fourth,"),
+    # [en] OCR 'gain' for 'chain'
+    ("a whole gain of ancient", "a whole chain of ancient"),
+    # [en] OCR 'either' for 'ether'
+    ("in the fluid either?", "in the fluid ether?"),
+    # [en] 'belie' for 'believe'
+    ("do not belie a Trinity", "do not believe a Trinity"),
+    # [en] OCR 'arc' for 'are'
+    ("there arc three", "there are three"),
+    # [en] 'Thee' for 'The'
+    ("at all. Thee Bible barely", "at all. The Bible barely"),
+    # [en] OCR 'he' for 'be'
+    ("they will he saved", "they will be saved"),
+    # [en] 'his' for 'this'
+    ("to reveal upon his head", "to reveal upon this head"),
+    # [en] stray comma
+    ("that, great and good man", "that great and good man"),
+    # [en] Virgil Ecl. 4.39 misprint (ch65 prints it correctly)
+    ("the poet supposes, </p> <p>Omnis tuli omnia tellus", "the poet supposes, </p> <p>Omnis feret omnia tellus"),
+    # [en] doubled syllable
+    ("was divided ed into", "was divided into"),
+    # [en] Gen 3:19 'art'
+    ("Dust thou are", "Dust thou art"),
+    # [en] capitalisation slip
+    ("upon GOd himself", "upon God himself"),
+    # [en] OCR 'be' for 'he'
+    ("what be is not", "what he is not"),
+    # [en] stray 'in'
+    ("the greatest in masters", "the greatest masters"),
+    # [en] Ovid Met. 1.76 'altae'
+    ("Heathen could observe, </p> <p>Sanctius his animal, mentisque capacius aluae", "Heathen could observe, </p> <p>Sanctius his animal, mentisque capacius altae"),
+    # [en] doubled letter
+    ("ex cathedraa", "ex cathedra"),
+    # [en] OCR 'o' for 'p' (Greek prothesis)
+    ("this orothesis", "this prothesis"),
+    # [en] doubled 'those'
+    ("those in every nation those who would", "those in every nation who would"),
+    # [en] 'Partially' for 'Partiality'
+    ("Partially; respect of persons", "Partiality; respect of persons"),
+    # [en] Latin misprint
+    ("and reads thus: — Remoto Carthaginis metu, sublataque imperri", "and reads thus: — Remoto Carthaginis metu, sublataque imperii"),
+    # [en] Ovid Met. 7.21 misprint
+    ("Detertiora sequor:</p> <p>How exactly", "Deteriora sequor:</p> <p>How exactly"),
+    # [en] elision slip
+    ("The’ o’erwhelming", "Th’ o’erwhelming"),
+    # [en] 'For either' for 'Neither'
+    ("more. For either, indeed, will there", "more. Neither, indeed, will there"),
+    # [en] Milton PL X 'globe'
+    ("This oblique lobe,", "This oblique globe,"),
+    # [en] split word
+    ("this of fice of love", "this office of love"),
+    # [en] dropped 'things' (Phil 3:13)
+    ("forgetting the that are behind", "forgetting the things that are behind"),
+    # [en] 'well-knowing' for 'well-known'
+    ("that well-knowing saying", "that well-known saying"),
+    # [en] 'you' for 'your' (Matt 10:29)
+    ("ground without you Father", "ground without your Father"),
+    # [en] 'through' for 'though'
+    ("through repeated by", "though repeated by"),
+    # [en] 'an' for 'and'
+    ("the heavens an the earth", "the heavens and the earth"),
+    # [en] split word
+    ("He up holdeth", "He upholdeth"),
+    # [en] 'angle' for 'angel'
+    ("eye of an angle", "eye of an angel"),
+    # [en] 'no' for 'not'
+    ("how shall no the eye", "how shall not the eye"),
+    # [en] 'numeral' for 'mineral'
+    ("every numeral or vegetable", "every mineral or vegetable"),
+    # [en] 'he' for 'the'
+    ("any of he children", "any of the children"),
+    # [en] 'hat' for 'that'
+    ("we expect hat a man", "we expect that a man"),
+    # [en] 'or' for 'of'
+    ("either or vice or virtue", "either of vice or virtue"),
+    # [en] 'make' for 'made'
+    ("wherein he make him", "wherein he made him"),
+    # [en] 'won' for 'own'
+    ("his won salvation", "his own salvation"),
+    # [en] 'they' for 'thy'
+    ("Diffusive as they sun’s", "Diffusive as thy sun’s"),
+    # [en] transposed words
+    ("happiness in is any degree", "happiness is in any degree"),
+    # [en] 'or' for 'of'
+    ("Governor or the universe", "Governor of the universe"),
+    # [en] 'no' for 'not' (Matt 6:26)
+    ("Are no ye much better", "Are not ye much better"),
+    # [en] 'foods' for 'floods'
+    ("the foods shall not", "the floods shall not"),
+    # [en] dittography (typeset twice)
+    ("That is no wonder: It was observed long ago, “An unwise man doth no consider this, and a fool doth not understand these things? That is no wonder: It was", "That is no wonder: It was"),
+    # [en] 'particle' for 'particular' (providence)
+    ("contradistinguished from a particle?", "contradistinguished from a particular?"),
+    # [en] 'particle' for 'particular'
+    ("distinct from a particle one", "distinct from a particular one"),
+    # [en] 'particle' for 'particular'
+    ("exclusive of a particle?", "exclusive of a particular?"),
+    # [en] 'no' for 'not'
+    ("Might we no say", "Might we not say"),
+    # [en] 'you' for 'your'
+    ("face of you enemies", "face of your enemies"),
+    # [en] 'of' for 'or'
+    ("of you ascribe", "or you ascribe"),
+    # [en] 'you' for 'your'
+    ("for you wealth", "for your wealth"),
+    # [en] 'so' for 'do'
+    ("as you so this", "as you do this"),
+    # [en] 'father' for 'farther'
+    ("no father hope", "no farther hope"),
+    # [en] stray comma
+    ("turned, back from", "turned back from"),
+    # [en] 'degrees' for 'degree'
+    ("by that same degrees", "by that same degree"),
+    # [en] dropped 'to'
+    ("we know how build", "we know how to build"),
+    # [en] 'expect' for 'except'
+    ("(expect what we receive", "(except what we receive"),
+    # [en] 'glode' for 'globe' (Milton)
+    ("her spotty glode", "her spotty globe"),
+    # [en] dropped 'us'
+    ("But let come to", "But let us come to"),
+    # [en] transposed letters
+    ("body siu generis", "body sui generis"),
+    # [en] 'planet' for 'plant' (vegetable kingdom)
+    ("any one planet under heaven", "any one plant under heaven"),
+    # [en] dropped 'by'
+    ("But what means was", "But by what means was"),
+    # [en] 'that' for 'than'
+    ("of fishes that we have", "of fishes than we have"),
+    # [en] 'now' for 'know'
+    ("we now hardly anything", "we know hardly anything"),
+    # [en] 'now' for 'know'
+    ("We now a few", "We know a few"),
+    # [en] 'now' for 'know'
+    ("How little do we now of", "How little do we know of"),
+    # [en] 'now' for 'know'
+    ("can they now, or remember", "can they know, or remember"),
+    # [en] 'now' for 'know'
+    ("do not we now ourselves", "do not we know ourselves"),
+    # [en] 'or' for 'to'
+    ("a spirit or a clod", "a spirit to a clod"),
+    # [en] Latin misprint
+    ("resolvable in infintum", "resolvable in infinitum"),
+    # [en] 'whit' for 'with'
+    ("If whit blood", "If with blood"),
+    # [en] 'you' for 'your' (Matt 10:30)
+    ("hairs of you head", "hairs of your head"),
+    # [en] misspelling
+    ("imcomprehansible", "incomprehensible"),
+    # [en] dropped letter
+    ("hope of delierance", "hope of deliverance"),
+    # [en] 'or' for 'of'
+    ("outcasts or men", "outcasts of men"),
+    # [en] dropped letter
+    ("well-known Hottenots", "well-known Hottentots"),
+    # [en] misspelling
+    ("has taken musch pains", "has taken much pains"),
+    # [en] 'cast' for 'vast'
+    ("the cast continent", "the vast continent"),
+    # [en] dropped 'of'
+    ("not be one them left", "not be one of them left"),
+    # [en] 'to' for 'too'
+    ("them to much honour", "them too much honour"),
+    # [en] stray scan mark 'lo'
+    ("the divine lo dispensation", "the divine dispensation"),
+    # [en] stray scan mark 'lo'
+    ("ungodliness lo and unrighteousness", "ungodliness and unrighteousness"),
+    # [en] 'they' for 'thy'
+    ("To take they flight", "To take thy flight"),
+    # [en] 'they' for 'thy'
+    ("they humorous folly", "thy humorous folly"),
+    # [en] Latin misprint (Hadrian)
+    ("ADRANI MORIENTIS AD ANIMAM SUAM.<br/> “DYING ADRIAN", "ADRIANI MORIENTIS AD ANIMAM SUAM.<br/> “DYING ADRIAN"),
+    # [en] dropped 'without'
+    ("strength, which all their labour", "strength, without which all their labour"),
+    # [en] citation: words are Luke 4:5–6 (paragraph names St. Luke)
+    ("I give it.” (Matt. 4:5, 6, )", "I give it.” (Luke 4:5, 6, )"),
+    # [en] Latin misprint
+    ("be either paena damni, — “what they lose;” or paena sensus, — “what they feel.”", "be either poena damni, — “what they lose;” or poena sensus, — “what they feel.”"),
+    # [en] Latin misprint
+    ("let us consider the paena damni, — “the punishment", "let us consider the poena damni, — “the punishment"),
+    # [en] OCR ’ for ;
+    ("society at Corinth’ but", "society at Corinth; but"),
+    # [en] dropped plural
+    ("that there are division”", "that there are divisions”"),
+    # [en] 'you' for 'your'
+    ("professing you design is", "professing your design is"),
+    # [en] 'Your' for 'You'
+    ("Your cannot commit", "You cannot commit"),
+    # [en] 'depopulation' for 'depopulating'
+    ("depopulation countries", "depopulating countries"),
+    # [en] 'that' for 'than'
+    ("sense that St. Paul does", "sense than St. Paul does"),
+    # [en] 'is' for 'it'
+    ("that is does not", "that it does not"),
+    # [en] 'to' for 'not'
+    ("which is to once forbidden", "which is not once forbidden"),
+    # [en] dropped plural
+    ("a body of living Christian, with", "a body of living Christians, with"),
+    # [en] 'could' for 'cold'
+    ("our love grows could", "our love grows cold"),
+    # [en] Eph 4:3
+    ("the unity of he Spirit in the bound of peace", "the unity of the Spirit in the bond of peace"),
+    # [en] 'form' for 'from'
+    ("form tale-bearing", "from tale-bearing"),
+    # [en] dropped letter
+    ("the woks of darkness", "the works of darkness"),
+    # [en] dropped plural
+    ("thirty or forty year:", "thirty or forty years:"),
+    # [en] 'with' for 'without'
+    ("with breaking", "without breaking"),
+    # [en] 'bounded' for 'bounden'
+    ("bounded duty", "bounden duty"),
+    # [en] 'may' for 'many'
+    ("so may of those", "so many of those"),
+    # [en] 'hem' for 'him'
+    ("to please hem", "to please him"),
+    # [en] 'tend' for 'rend'
+    ("how you tend the body", "how you rend the body"),
+    # [en] Latin OCR
+    ("et Deus aderit bonce tuce voluntuti: “Do not", "et Deus aderit bonae tuae voluntati: “Do not"),
+    # [en] 'Good' for 'God'
+    ("Good will be present", "God will be present"),
+    # [en] OCR 'likableness' for 'liableness'
+    ("a likableness to", "a liableness to"),
+    # [en] stray comma
+    ("impossible with, men", "impossible with men"),
+    # [en] dropped 'is'
+    ("this a mere strife", "this is a mere strife"),
+    # [en] stray letter
+    ("alone ares capable", "alone are capable"),
+    # [en] 'and' for 'an'
+    ("being and enemy", "being an enemy"),
+    # [en] lost capital
+    ("Mr. hutchinson", "Mr. Hutchinson"),
+    # [en] lost apostrophe
+    ("St. Pauls words", "St. Paul’s words"),
+    # [en] lost capital
+    ("Pyramids of egypt", "Pyramids of Egypt"),
+    # [en] Greek transliteration slip (1 John 2:16)
+    ("uncommon expression, he alazoneia ta biou", "uncommon expression, he alazoneia tou biou"),
+    # [en] lost apostrophe
+    ("the Masters feet", "the Master’s feet"),
+    # [en] lost apostrophe
+    ("her Lords words", "her Lord’s words"),
+    # [en] lost apostrophe
+    ("St. Jamess is", "St. James’s is"),
+    # [en] stray 'to us'
+    ("willing to us receive", "willing to receive"),
+    # [en] 'the' for 'them'
+    ("joined the together", "joined them together"),
+    # [en] dropped 'him' (Luke 8:18)
+    ("but from that hath not", "but from him that hath not"),
+    # [en] dropped 'be'
+    ("it should taken away", "it should be taken away"),
+    # [en] dropped 'no'
+    ("does by means reach", "does by no means reach"),
+    # [en] 'inform' for 'form'
+    ("to inform false judgments", "to form false judgments"),
+    # [en] lost apostrophe
+    ("striking is Cowleys observation", "striking is Cowley’s observation"),
+    # [en] doubled words
+    ("neither of you of you be", "neither of you be"),
+    # [en] lost apostrophe
+    ("(now in Abrahams bosom)", "(now in Abraham’s bosom)"),
+    # [en] 'we' for 'he' (God)
+    ("And we will suffer no temptation", "And he will suffer no temptation"),
+    # [en] lost apostrophe
+    ("a mans sinews", "a man’s sinews"),
+    # [en] stray 'of'
+    ("a way of to escape", "a way to escape"),
+    # [en] 'our' for 'or'
+    ("find our make", "find or make"),
+    # [en] 'by' for 'but'
+    ("in the house by these", "in the house but these"),
+    # [en] 'of' for 'on'
+    ("to pieces of the beach", "to pieces on the beach"),
+    # [en] dropped letter
+    ("lest he say in his hear,", "lest he say in his heart,"),
+    # [en] 'that' for 'than'
+    ("heavier that I can bear", "heavier than I can bear"),
+    # [en] 'they' for 'thy'
+    ("caused they needless fear", "caused thy needless fear"),
+    # [en] 'the' for 'them'
+    ("has not dominion over the, yet", "has not dominion over them, yet"),
+    # [en] 'make' for 'made'
+    ("which he make first", "which he made first"),
+    # [en] misspelling
+    ("with all his strenght;", "with all his strength;"),
+    # [en] 'the' for 'then'
+    ("and the the other", "and then the other"),
+    # [en] 'my' for 'may'
+    ("how my we attain", "how may we attain"),
+    # [en] 'has' for 'his'
+    ("and all has wisdom", "and all his wisdom"),
+    # [en] lost apostrophe
+    ("(editors note)", "(editor’s note)"),
+    # [en] dropped 'in' (Phil 2:1)
+    ("any consolation Christ", "any consolation in Christ"),
+    # [en] OCR 'Human' for 'Haman'
+    ("Poor Human! One unholy", "Poor Haman! One unholy"),
+    # [en] stray 'of'
+    ("out of our of remembrance", "out of our remembrance"),
+    # [en] doubled comma
+    ("Secondly, ,<i>", "Secondly, <i>"),
+    # [en] lost capital
+    ("with their might. (eph. 6:5.)", "with their might. (Eph. 6:5.)"),
+    # [en] doubled comma
+    ("latter word, , meta", "latter word, meta"),
+    # [en] stray footnote mark
+    ("non salvabit nos sine nobis:+ “He that", "non salvabit nos sine nobis: “He that"),
+    # [en] dropped letter
+    ("wherewith he was sanctifed", "wherewith he was sanctified"),
+    # [en] split word
+    ("there fore that sacrifice", "therefore that sacrifice"),
+    # [en] 'instanced' for 'instances'
+    ("extraordinary instanced of", "extraordinary instances of"),
+    # [en] 'his' for 'hiss' (Francis's Horace)
+    ("Let them his on", "Let them hiss on"),
+    # [en] Latin OCR
+    ("fine clothes. </p> <p>Eutrapelus, cuicunque nocere voiebat", "fine clothes. </p> <p>Eutrapelus, cuicunque nocere volebat"),
+    # [en] 'will' for 'with'
+    ("thy God will all thy heart", "thy God with all thy heart"),
+    # [en] stray '_' and dropped letter
+    ("definition of it, is, _falsum testmonium", "definition of it, is, falsum testimonium"),
+    # [en] 'am' for 'any'
+    ("in jest, am more than", "in jest, any more than"),
+    # [en] lost apostrophe
+    ("William Tyndals Bible", "William Tyndal’s Bible"),
+    # [en] lost apostrophe
+    ("Charles Firsts reign", "Charles First’s reign"),
+    # [en] lost apostrophe
+    ("St. Pauls words", "St. Paul’s words"),
+    # [en] stray '_'
+    ("_Autos de Fes", "Autos de Fes"),
+    # [en] stray '_'
+    ("filled with envy,” —eplEsthEsan zElou_,", "filled with envy,” —eplEsthEsan zElou,"),
+    # [en] 'jealously' for 'zealously' (Gal 4:18)
+    ("be jealously affected", "be zealously affected"),
+    # [en] 'veal' for 'zeal'
+    ("transient touches of veal", "transient touches of zeal"),
+    # [en] 'auger' for 'anger'
+    ("call their auger", "call their anger"),
+    # [en] dropped 'is'
+    ("the truth as it in Jesus", "the truth as it is in Jesus"),
+    # [en] dropped 'are'
+    ("idleness the bane", "idleness are the bane"),
+    # [en] citation: Joshua 24:1
+    ("before the Lord.” (Josh. 15:1.)", "before the Lord.” (Josh. 24:1.)"),
+    # [en] citation: Joshua 24:2–13
+    ("(Josh. 15:2–13; )", "(Josh. 24:2–13; )"),
+    # [en] citation: Joshua 24:14
+    ("(Josh. 15:14.)", "(Josh. 24:14.)"),
+    # [en] 'is' for 'it'
+    ("though is admits", "though it admits"),
+    # [en] 'my' for 'may'
+    ("our house my serve", "our house may serve"),
+    # [en] dropped 'and' (John 4:24)
+    ("in spirit in truth", "in spirit and in truth"),
+    # [en] 'on' for 'one'
+    ("As soon as any on had", "As soon as any one had"),
+    # [en] 'on' for 'one'
+    ("seeing on soul", "seeing one soul"),
+    # [en] dittography
+    ("to be saved is under every one under your roof that has a soul to be saved is under your care", "to be saved is under your care"),
+    # [en] 'of' for 'or'
+    ("a longer of shorter", "a longer or shorter"),
+    # [en] 'of' for 'or'
+    ("the week of day", "the week or day"),
+    # [en] 'you' for 'your'
+    ("into you hands", "into your hands"),
+    # [en] 'you' for 'your'
+    ("dismiss you wife", "dismiss your wife"),
+    # [en] 'of' for 'or'
+    ("argument of persuasion", "argument or persuasion"),
+    # [en] 'by' for 'be'
+    ("cannot by overcome", "cannot be overcome"),
+    # [en] 'no' for 'not'
+    ("that no only your", "that not only your"),
+    # [en] 'son' for 'soul'
+    ("the eye of the son,", "the eye of the soul,"),
+    # [en] 'the' for 'them'
+    ("speak to the <i>plainly</i>", "speak to them <i>plainly</i>"),
+    # [en] 'you' for 'your'
+    ("upon you hand", "upon your hand"),
+    # [en] 'so' for 'do'
+    ("to so it only", "to do it only"),
+    # [en] 'you' for 'your'
+    ("taught you children", "taught your children"),
+    # [en] 'you' for 'your'
+    ("send you children", "send your children"),
+    # [en] 'so' for 'do'
+    ("shall I so with", "shall I do with"),
+    # [en] 'you' for 'your'
+    ("Is it you view", "Is it your view"),
+    # [en] 'live' for 'love'
+    ("if you live or fear God", "if you love or fear God"),
+    # [en] 'you' for 'your'
+    ("or you daughter", "or your daughter"),
+    # [en] doubled comma
+    ("glory of God,,", "glory of God,"),
+    # [en] 'you' for 'your'
+    ("member of you family", "member of your family"),
+    # [en] 'not' for 'no'
+    ("by not means", "by no means"),
+    # [en] 'as' for 'at'
+    ("borrowed as second-hand", "borrowed at second-hand"),
+    # [en] garbled 'times … than any'
+    ("a hundred time more, regarded that nay or all", "a hundred times more regarded than any or all"),
+    # [en] 'our' for 'out' (Job 14:4)
+    ("thing our of an unclean", "thing out of an unclean"),
+    # [en] dropped 'it'
+    ("But is generally", "But it is generally"),
+    # [en] 'that' for 'than'
+    ("of God that any of the beasts", "of God than any of the beasts"),
+    # [en] stray 'is'
+    ("great. He is gives them", "great. He gives them"),
+    # [en] 'eves' for 'eyes' (1 John 2:16)
+    ("desire of the eves", "desire of the eyes"),
+    # [en] stray scan mark 'lo'
+    ("of the lo love of money", "of the love of money"),
+    # [en] OCR: Unplanted→implanted
+    ("naturally Unplanted in", "naturally implanted in"),
+    # [en] missing full stop (capital follows)
+    ("important matter In order thereto", "important matter. In order thereto"),
+    # [en] OCR: the an→than a
+    ("little better the an tautology", "little better than a tautology"),
+    # [en] missing full stop (capital follows)
+    ("in all things lawful But it", "in all things lawful. But it"),
+    # [en] dropped "by" (Eph 2:8)
+    ("already saved grace", "already saved by grace"),
+    # [en] dropped subject "we"
+    ("Of this cannot doubt", "Of this we cannot doubt"),
+    # [en] OCR: ignorances an→ignorance as an
+    ("voluntary ignorances an excuse", "voluntary ignorance as an excuse"),
+    # [en] dropped article
+    ("said person of large substance", "said a person of large substance"),
+    # [en] dropped "no" (next clause requires it)
+    ("you are by means sufficient", "you are by no means sufficient"),
+    # [en] dropped "of"
+    ("things greater importance", "things of greater importance"),
+    # [en] dropped "be"
+    ("it will proper to give", "it will be proper to give"),
+    # [en] run-together words
+    ("breakthrough this backwardness", "break through this backwardness"),
+    # [en] dropped "to"
+    ("encouraging them shake off", "encouraging them to shake off"),
+    # [en] dropped subject "they"
+    ("insisted on take for granted", "insisted on they take for granted"),
+    # [en] OCR: deprecated→depreciated (sense)
+    ("utterly deprecated good works", "utterly depreciated good works"),
+    # [en] OCR: guild→guilt
+    ("free from guild", "free from guilt"),
+    # [en] OCR: sign→signs (plural "those")
+    ("those sign of Christ", "those signs of Christ"),
+    # [en] OCR: man→many
+    ("To this refer man of the fragments", "To this refer many of the fragments"),
+    # [en] OCR: dam→Adam
+    ("which dam and Eve", "which Adam and Eve"),
+    # [en] OCR: antediluians→antediluvians
+    ("antediluians", "antediluvians"),
+    # [en] dropped possessive
+    ("any man bare assertion", "any man’s bare assertion"),
+    # [en] OCR: righteouness→righteousness
+    ("righteouness", "righteousness"),
+    # [en] OCR: that→than
+    ("immensely larger that the earth", "immensely larger than the earth"),
+    # [en] dropped article
+    ("in immensity of his works", "in the immensity of his works"),
+    # [en] OCR: time→times
+    ("ten thousand time ten thousand", "ten thousand times ten thousand"),
+    # [en] OCR: though→thou (Ps 8:4)
+    ("that though shouldest", "that thou shouldest"),
+    # [en] OCR: hypotheses→hypothesis
+    ("this whole hypotheses", "this whole hypothesis"),
+    # [en] OCR: beat→bear
+    ("together beat to the infinite", "together bear to the infinite"),
+    # [en] OCR: the→they
+    ("the brought in more and more", "they brought in more and more"),
+    # [en] OCR: as→was
+    ("Yea, it as one of our original", "Yea, it was one of our original"),
+    # [en] OCR: of→or
+    ("forty of fifty years", "forty or fifty years"),
+    # [en] OCR: he→be
+    ("holy Minister he stationed", "holy Minister be stationed"),
+    # [en] OCR: motion→notion
+    ("scriptural motion of it", "scriptural notion of it"),
+    # [en] OCR: place→places
+    ("In both place it is", "In both places it is"),
+    # [en] OCR: conscience→conscious
+    ("at once conscience of our own", "at once conscious of our own"),
+    # [en] OCR: my→may
+    ("and evil my be", "and evil may be"),
+    # [en] OCR: is→in
+    ("frequently found is some of", "frequently found in some of"),
+    # [en] missing full stop (capital follows)
+    ("endowments No;", "endowments. No;"),
+    # [en] OCR: by→be
+    ("Will the Lord by pleased", "Will the Lord be pleased"),
+    # [en] OCR: of→or
+    ("commanding, of as promising", "commanding, or as promising"),
+    # [en] OCR: or→our
+    ("quality of or thoughts", "quality of our thoughts"),
+    # [en] OCR: of→or
+    ("conformity of disconformity", "conformity or disconformity"),
+    # [en] OCR: in→on
+    ("And, in the contrary", "And, on the contrary"),
+    # [en] OCR: you→your
+    ("review you carriage", "review your carriage"),
+    # [en] OCR: you→your
+    ("unbecoming you character", "unbecoming your character"),
+    # [en] OCR: you→your
+    ("whether you heart", "whether your heart"),
+    # [en] OCR: portion→portions
+    ("two portion of time", "two portions of time"),
+    # [en] OCR: they→thy
+    ("Let they whole life", "Let thy whole life"),
+    # [en] OCR: tile→the
+    ("the sin of tile world", "the sin of the world"),
+    # [en] OCR: cave→save
+    ("could cave Judas", "could save Judas"),
+    # [en] OCR: title→tittle
+    ("every title of Holy Scripture", "every tittle of Holy Scripture"),
+    # [en] OCR: time→the
+    ("child of time devil", "child of the devil"),
+    # [en] OCR: sort→sorts
+    ("all the sort of faith", "all the sorts of faith"),
+    # [en] dropped "of"
+    ("any conviction the being of a God", "any conviction of the being of a God"),
+    # [en] dropped "to"
+    ("may not advert it", "may not advert to it"),
+    # [en] OCR: One→Once
+    ("One more, I exhort you", "Once more, I exhort you"),
+    # [en] stray comma (Rom 8:21)
+    ("liberty of the, children", "liberty of the children"),
+    # [en] OCR: fail→fall
+    ("higher or fail lower", "higher or fall lower"),
+    # [en] OCR: remain→remains (subject "society")
+    ("and remain united at this day", "and remains united at this day"),
+    # [en] citation: "come out from among them, and be separate" is 2 Cor 6:17
+    ("[2 Cor. 6:14]", "[2 Cor. 6:17]"),
+    # [en] citation: "maketh increase of the body unto the edifying of itself
+    # in love" is Eph 4:16
+    ("in love.” (Eph. 4:6.)", "in love.” (Eph. 4:16.)"),
+    # [en] OCR: frees→free
+    ("who are frees from", "who are free from"),
+    # [en] OCR: air→are
+    ("air and water air thrown out", "air and water are thrown out"),
+    # [en] OCR: he→be
+    ("may he subdivided", "may be subdivided"),
+    # [en] OCR: front→from
+    ("my soul has front Him", "my soul has from Him"),
+    # [en] OCR: hoe→he
+    ("whenever hoe pleased", "whenever he pleased"),
+    # [en] OCR: lie→he
+    ("just as lie pleases", "just as he pleases"),
+    # [en] OCR: me→men
+    ("the children of me?", "the children of men?"),
+    # [en] OCR: lie→he
+    ("wherein lie was created", "wherein he was created"),
+    # [en] OCR: thus→this
+    ("as thus is the end", "as this is the end"),
+    # [en] stray "lo"
+    ("seized the lo moment", "seized the moment"),
+    # [en] dropped "of"
+    ("the wrath God", "the wrath of God"),
+    # [en] OCR: last→least (least/greatest pair)
+    ("the last and the greatest of all things", "the least and the greatest of all things"),
+    # [en] dropped word (Luke 16:31; text verse)
+    ("though on from the dead", "though one rose from the dead"),
+    # [en] OCR: scare→scarce
+    ("we can scare ever speak", "we can scarce ever speak"),
+    # [en] OCR: has→hast
+    ("Thou has made us for thyself", "Thou hast made us for thyself"),
+    # [en] dropped "of"
+    ("greater part the inhabitants", "greater part of the inhabitants"),
+    # [en] OCR: hulk→bulk
+    ("the hulk of them", "the bulk of them"),
+    # [en] OCR: litter→utter
+    ("Never more litter such", "Never more utter such"),
+    # [en] dropped "of"
+    ("one jot or tittle what is contained", "one jot or tittle of what is contained"),
+    # [en] OCR: thousand→thousands
+    ("now thousand of Methodists", "now thousands of Methodists"),
+    # [en] dropped "be"
+    ("excuse can there for this", "excuse can there be for this"),
+    # [en] OCR: the→they (2 Cor 5:15)
+    ("that the who live", "that they who live"),
+    # [en] dropped "of"
+    ("for the life a man", "for the life of a man"),
+    # [en] OCR: visible→invisible (context: state after death)
+    ("after we enter that visible world", "after we enter that invisible world"),
+    # [en] OCR: no→not
+    ("Will he no be apt", "Will he not be apt"),
+    # [en] stray page/footnote number
+    ("rebelled 20 against", "rebelled against"),
+    # [en] OCR: the→they
+    ("when the are sensible", "when they are sensible"),
+    # [en] OCR: Semnibus→Seminibus (Virgil, Aen. 6.731)
+    ("says: </p> <p>Igneus est ollis vigor, et coelestis origo</p> <p>Semnibus", "says: </p> <p>Igneus est ollis vigor, et coelestis origo</p> <p>Seminibus"),
+    # [en] OCR: l→I
+    ("lnclusi tenebris, et carcere caeco:</p> <p>Inclosed", "Inclusi tenebris, et carcere caeco:</p> <p>Inclosed"),
+    # [en] OCR: it→if
+    ("For it so, he is a poor man", "For if so, he is a poor man"),
+    # [en] missing full stop (capital follows)
+    ("the ensuing week So his", "the ensuing week. So his"),
+    # [en] split word
+    ("your need less ornaments", "your needless ornaments"),
+    # [en] OCR: ever→never (Mark 9:43–48)
+    ("the fire which ever shall be quenched", "the fire which never shall be quenched"),
+    # [en] missing space
+    ("therein,<i>to pieces", "therein, <i>to pieces"),
+    # [en] OCR: bowel→bowels (Col 3:12)
+    ("bowel of mercies", "bowels of mercies"),
+    # [en] dropped "is"
+    ("This that decree of predestination", "This is that decree of predestination"),
+    # [en] doubled comma
+    ("God,, before", "God, before"),
+    # [en] OCR: degree→decree
+    ("the whole degree", "the whole decree"),
+    # [en] OCR: degree→decree
+    ("seconds his degree", "seconds his decree"),
+    # [en] OCR: not→nor
+    ("be damned, not hardens", "be damned, nor hardens"),
+    # [en] OCR: question→questions
+    ("one or two question:", "one or two questions:"),
+    # [en] OCR: on→one
+    ("on part of mankind", "one part of mankind"),
+    # [en] OCR: should→souls
+    ("to save should", "to save souls"),
+    # [en] OCR: you→your
+    ("as you hearing", "as your hearing"),
+    # [en] OCR: not→no
+    ("is not motive to him", "is no motive to him"),
+    # [en] OCR: form→from
+    ("outcast form God", "outcast from God"),
+    # [en] OCR: hoe→hope
+    ("I hoe, not a notion", "I hope, not a notion"),
+    # [en] OCR: grieve→grieved
+    ("And the more you are grieve with", "And the more you are grieved with"),
+    # [en] OCR: on→one
+    ("saying on thing", "saying one thing"),
+    # [en] OCR: his→he
+    ("which his had not", "which he had not"),
+    # [en] OCR: an→can
+    ("never an prove this", "never can prove this"),
+    # [en] OCR: though→through
+    ("pass though the fire", "pass through the fire"),
+    # [en] OCR: are→art
+    ("thou are told", "thou art told"),
+    # [en] OCR: form→from
+    ("form the rising", "from the rising"),
+    # [en] OCR: they→thy
+    ("is they sting", "is thy sting"),
+    # [en] OCR: you→your
+    ("destroy you zeal", "destroy your zeal"),
+    # [en] citation: "I will have mercy on whom I will have mercy" is Rom 9:15
+    ("(Romans 4:15)", "(Romans 9:15)"),
+    # [en] OCR: band→hand (Isa 5:25)
+    ("his band is stretched", "his hand is stretched"),
+    # [en] OCR: shalt→shall
+    ("the earth shalt remove", "the earth shall remove"),
+    # [en] OCR: host→hosts
+    ("the Lord of host,", "the Lord of hosts,"),
+    # [en] OCR: if→of
+    ("the motion if the sea", "the motion of the sea"),
+    # [en] stray parenthesis
+    ("level with) the water", "level with the water"),
+    # [en] OCR: all→an
+    ("in all instant", "in an instant"),
+    # [en] stray comma
+    ("swallowed up by, the sea", "swallowed up by the sea"),
+    # [en] OCR: me→men
+    ("toward the children of me.", "toward the children of men."),
+    # [en] OCR: he→be
+    ("fear cannot he fenced", "fear cannot be fenced"),
+    # [en] citation: "Enter into the rock" is Isa 2:10
+    ("(Isa. 1:10.)", "(Isa. 2:10.)"),
+    # [en] OCR: his→he (Ps 66:5)
+    ("his is terrible in his doings", "he is terrible in his doings"),
+    # [en] citation: "My flesh trembleth for fear of thee" is Ps 119:120
+    ("(Ps. 109:10.)", "(Ps. 119:120.)"),
+    # [en] citation: chapter dropped (Isa 1:16–17 "Wash you, make you clean")
+    ("(Isa. :16, 17.)", "(Isa. 1:16, 17.)"),
+    # [en] OCR: hall→shall
+    ("Jesus hall be delivered", "Jesus shall be delivered"),
+    # [en] OCR: he→be (Luke 18:13)
+    ("God he merciful unto me", "God be merciful unto me"),
+    # [en] citation: words quoted are 1 Chron 21:2
+    ("(2 Sam. 23:2.)", "(1 Chron. 21:2.)"),
+    # [en] citation: "The king’s word was abominable to Joab" is 1 Chron 21:6
+    ("(2 Sam. 23:6, )", "(1 Chron. 21:6, )"),
+    # [en] dropped words (Num 16:22)
+    ("Father of the spirit flesh", "Father of the spirits of all flesh"),
+    # [en] split word
+    ("Not withstanding the nights", "Notwithstanding the nights"),
+    # [en] OCR: vith→with
+    ("living vith him", "living with him"),
+    # [en] OCR: saving→saying
+    ("but on my saving,", "but on my saying,"),
+    # [en] citation: "How is the faithful city become an harlot" is Isa 1:21
+    ("<h3>Isa. 2:21. </h3>", "<h3>Isa. 1:21. </h3>"),
+    # [en] dropped apostrophe (Job 32:21)
+    ("any mans person", "any man’s person"),
+    # [en] OCR: tithes→titles (Job 32:21–22)
+    ("flattering tithes", "flattering titles"),
+    # [en] OCR: own→sown
+    ("the seed he hath own", "the seed he hath sown"),
+    # [en] OCR: lie→he
+    ("of which lie is now possessed", "of which he is now possessed"),
+    # [en] missing full stop (capital follows)
+    ("house of feasting The one", "house of feasting. The one"),
+    # [en] OCR: flow→now
+    ("we are flow clothed", "we are now clothed"),
+    # [en] OCR: his→this
+    ("And his we cannot pretend", "And this we cannot pretend"),
+    # [en] OCR: sheep→sleep
+    ("to another sheep", "to another sleep"),
+    # [en] OCR: hand→land
+    ("that happy hand where", "that happy land where"),
+    # [en] OCR: arid→and
+    ("trouble arid uneasiness", "trouble and uneasiness"),
+    # [en] OCR: be→he
+    ("be finds them all", "he finds them all"),
+    # [en] OCR: hear→bear
+    ("mind can hear the thoughts", "mind can bear the thoughts"),
+    # [en] misspelling
+    ("transgresions", "transgressions"),
+    # [en] OCR: genera]→general
+    ("are, in genera],", "are, in general,"),
+    # [en] OCR: Hold→Holy
+    ("by the Hold Ghost", "by the Holy Ghost"),
+    # [en] OCR: an→any
+    ("repine at an good", "repine at any good"),
+    # [en] dropped "us"
+    ("let consider one or two", "let us consider one or two"),
+    # [en] OCR: trilling→trifling
+    ("slight, trilling pleasure", "slight, trifling pleasure"),
+    # [en] OCR: stead→steady
+    ("a stead, lasting", "a steady, lasting"),
+    # [en] dittography
+    ("beasts that beasts that perish", "beasts that perish"),
+    # [en] OCR: be→he; dropped "to"
+    ("whereof be began triumph", "whereof he began to triumph"),
+    # [en] dropped article
+    ("in virtue of covenant which", "in virtue of the covenant which"),
+    # [en] OCR: it→is
+    ("This it done by", "This is done by"),
+    # [en] dropped "to"
+    ("for the time come", "for the time to come"),
+    # [en] OCR: hut→but
+    ("divine, hut exterior", "divine, but exterior"),
+    # [en] OCR: be→he
+    ("When be would be wise", "When he would be wise"),
+    # [en] OCR: it→its
+    ("satisfy all it faculties", "satisfy all its faculties"),
+    # [en] stray comma (Heb 2:14)
+    ("that, is, the devil", "that is, the devil"),
+    # [en] OCR: he→be
+    ("Will it he sufficient", "Will it be sufficient"),
+    # [en] OCR: or→of
+    ("incarnation or Christ", "incarnation of Christ"),
+    # [en] missing space
+    ("unspeakableand full", "unspeakable and full"),
+    # [en] stray "to"
+    ("shall break to forth into", "shall break forth into"),
+    # [en] OCR: he→be
+    ("may sooner he re-admitted", "may sooner be re-admitted"),
+    # [en] OCR: he→be
+    ("nature to he the same", "nature to be the same"),
+    # [en] OCR: though→thought
+    ("done, in though, or word", "done, in thought, or word"),
+    # [en] OCR: though→thought
+    ("whether in though, or word", "whether in thought, or word"),
+    # [en] OCR: he→be
+    ("mortal bodies shall he raised", "mortal bodies shall be raised"),
+    # [en] OCR: he→be
+    ("Our bodies shall he raised", "Our bodies shall be raised"),
+    # [en] stray comma; OCR: he→be
+    ("would, esteem it the greatest unhappiness to he clothed", "would esteem it the greatest unhappiness to be clothed"),
+    # [en] OCR: he→be
+    ("will not he long ere", "will not be long ere"),
+    # [en] OCR: hall→shall
+    ("all tears hall be wiped", "all tears shall be wiped"),
+    # [es] citation fix mirrors en
+    ("(Hechos 27:22.)", "(Hechos 28:22.)"),
+    # [es] citation fix mirrors en
+    ("(Génesis 12:15, 18.)", "(Génesis 22:16, 18.)"),
+    # [es] citation fix mirrors en
+    ("[Hechos 23:1]", "[1 Pedro 3:21]"),
+    # [es] citation fix mirrors en
+    ("su rostro» (21:3, 4)", "su rostro» (22:3, 4)"),
+    # [es] citation fix mirrors en
+    ("(1 Juan 3:18.)", "(1 Juan 5:18.)"),
+    # [es] citation fix mirrors en
+    ("(Salmo 28:1.)", "(Salmo 18:1.)"),
+    # [es] citation fix mirrors en
+    ("(Hechos 13:13.)", "(Hechos 13:3.)"),
+    # [es] citation fix mirrors en
+    ("(Mateo 5:17.)", "(Mateo 7:17.)"),
+    # [es] citation fix mirrors en
+    ("[Marcos 10:8]", "[Mateo 10:8]"),
+    # [es] citation fix mirrors en
+    ("[Romanos 8:2]", "[Romanos 8:1]"),
+    # [es] citation fix mirrors en
+    ("(Mateo 22:33)", "(Mateo 12:33)"),
+    # [es] citation fix mirrors en
+    ("corazones». [Marcos 3:6]", "corazones». [Marcos 3:5]"),
+    # [es] citation: Luke 4:5–6 (EN fix)
+    ("la doy». (Mateo 4:5, 6, )", "la doy». (Lucas 4:5, 6, )"),
+    # [es] citation: Joshua 24:1 (EN fix)
+    ("delante del Señor» (Josué 15:1)", "delante del Señor» (Josué 24:1)"),
+    # [es] citation: Joshua 24:2–13 (EN fix)
+    ("(Josué 15:2–13)", "(Josué 24:2–13)"),
+    # [es] citation: Joshua 24:14 (EN fix)
+    ("(Josué 15:14)", "(Josué 24:14)"),
+    # [es] citation fix (mirrors EN)
+    ("[2 Corintios 6:14]", "[2 Corintios 6:17]"),
+    # [es] citation fix (mirrors EN)
+    ("(Efesios 4:6.)", "(Efesios 4:16.)"),
+    # [es] citation fix (mirrors EN)
+    ("(Romanos 4:15)", "(Romanos 9:15)"),
+    # [es] citation fix (mirrors EN)
+    ("(Isaías 1:10)", "(Isaías 2:10)"),
+    # [es] citation fix (mirrors EN)
+    ("(Salmo 109:10)", "(Salmo 119:120)"),
+    # [es] citation fix (mirrors EN)
+    ("(2 Samuel 23:2)", "(1 Crónicas 21:2)"),
+    # [es] citation fix (mirrors EN)
+    ("(2 Samuel 23:6)", "(1 Crónicas 21:6)"),
+    # [es] citation fix (mirrors EN)
+    ("<h3>Isaías 2:21. </h3>", "<h3>Isaías 1:21. </h3>"),
+    # [es] OCR in shared Latin (mirrors EN): Semnibus→Seminibus
+    ("dice: </p> <p>Igneus est ollis vigor, et coelestis origo</p> <p>Semnibus", "dice: </p> <p>Igneus est ollis vigor, et coelestis origo</p> <p>Seminibus"),
+    # [es] OCR in shared Latin (mirrors EN): l→I
+    ("lnclusi tenebris, et carcere caeco:</p> <p>encerrados", "Inclusi tenebris, et carcere caeco:</p> <p>encerrados"),
+])
 # The paragraph ended on a stop the OCR read as a comma.
 BODY_CORRECTIONS["evangelization-of-the-world"]["paragraph_breaks"] = [
     ('foreign mission service.', 'In 1898 the members'),
