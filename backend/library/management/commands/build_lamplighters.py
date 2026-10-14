@@ -25,7 +25,8 @@ Fixture-driven: ``seed_books`` creates the book on the next deploy from
 
 from __future__ import annotations
 
-from html import escape
+import re
+from html import escape, unescape
 
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
@@ -64,6 +65,37 @@ PLATES_1: tuple[tuple[int, str, str, str, str], ...] = (
         "Halfway up, in a little niche cut into the brick, something was shining.",
     ),
     (
+        2,
+        "It went in with a dull",
+        "plate-02-the-lamp-in-the-canal.jpg",
+        "A small girl with spiky hair stands silhouetted at the edge of a black "
+        "canal, looking down at a brass lamp still shining on the muddy bottom "
+        "among old bottles; its light spreads in gold rings across the water, "
+        "with black tannery buildings opposite under a hazy grey sky.",
+        "…like a star that had fallen out of the sky and gone to sleep.",
+    ),
+    (
+        3,
+        "As he watched, the point of light moved.",
+        "plate-03-the-orrery.jpg",
+        "A tall, gangly boy in spectacles bends over a round table holding a brass "
+        "ring of tiny dim beads, staring at one brilliant point of light inside "
+        "it; behind him a round window looks onto the night city, with clocks, "
+        "jars, maps and a telescope in the shadows and a small glass lamp at the "
+        "table’s edge.",
+        "…brighter than any bead on the whole Orrery, brighter than the whole Ring put together.",
+    ),
+    (
+        4,
+        "She leapt the gap to the cooper's roof,",
+        "plate-04-the-rooftop-chase.jpg",
+        "A small spiky-haired girl leaps across a gap between two slate roofs, a "
+        "stolen compass in her fist and a warm glow leaking from inside her coat, "
+        "while behind her a tall, gangly boy in spectacles wobbles on the ridge "
+        "with his arms flung out among chimney-pots and sagging washing lines.",
+        "No nob alive could follow her across the roofs of Soot Lane.",
+    ),
+    (
         5,
         "It was not the small warm glow she knew.",
         "plate-05-over-the-wall.jpg",
@@ -72,6 +104,16 @@ PLATES_1: tuple[tuple[int, str, str, str, str], ...] = (
         "shrinks back from the light, away from a tiny child patting a grey baker "
         "on her doorstep, while more grey shapes pour over the city wall behind.",
         "It was white-gold, blazing, as if somebody had opened the door of a great furnace.",
+    ),
+    (
+        6,
+        "Then the younger guardsman stopped in front of the",
+        "plate-06-the-mechanical-footman.jpg",
+        "In a dim attic workshop, a guard with a halberd recoils from a tall tin "
+        "automaton whose two round eyes and chest-door seams glow gold, while a "
+        "boy in spectacles stands rigid at a cluttered bench and a stout sergeant "
+        "watches from the doorway beside a thin steward.",
+        "“Sarge, its eyes are lit.”",
     ),
     (
         7,
@@ -94,6 +136,16 @@ PLATES_1: tuple[tuple[int, str, str, str, str], ...] = (
         "A fox the size of a carthorse, with a brush like a bonfire.",
     ),
     (
+        9,
+        "And as he said it, Tobin saw him",
+        "plate-09-the-ceiling-beam.jpg",
+        "A boy lies along a beam in the dark space above a ceiling, his eye to a "
+        "crack beside a plaster rose; below, a tall man in a grey cloak sits by a "
+        "desk rubbing his palm while a lord stands beneath a portrait of a "
+        "fair-haired woman.",
+        "From up in the ceiling Tobin could see the palm quite clearly.",
+    ),
+    (
         10,
         "He looked at her. He put his foot where",
         "plate-10-across-the-glass-dome.jpg",
@@ -104,6 +156,16 @@ PLATES_1: tuple[tuple[int, str, str, str, str], ...] = (
         "“Look at me. Not down. Me.”",
     ),
     (
+        11,
+        "And in that light, Nettle's freckles came back.",
+        "plate-11-given-to-nettle.jpg",
+        "At night, a kneeling girl holds out a glowing lamp in both hands to a tiny "
+        "girl sitting on a bakery step, whose blue eye and pink cheek show in the "
+        "gold light; a boy shields his eyes, a grey fox with a glowing tail "
+        "watches, and grey ghostly shapes flee.",
+        "“Here, Nettle. It’s for you. You don’t have to do anything.”",
+    ),
+    (
         12,
         "He took the stairs two at a time.",
         "plate-12-the-strongroom-stair.jpg",
@@ -112,6 +174,17 @@ PLATES_1: tuple[tuple[int, str, str, str, str], ...] = (
         "lights the damp stone wall and catches his spectacles, and an unlit "
         "lantern dangles from his other hand.",
         "…every one of its sixty-one steps lit and golden and perfectly plain.",
+    ),
+    (
+        13,
+        "At last Snib stopped at the edge of a high roof and pointed with one long finger.",
+        "plate-13-snibs-rooftop-road.jpg",
+        "Above a blacked-out city, a small white-eyed Gutterling at the end of a "
+        "roof ridge points at a tall black tower with an empty bowl on top; behind "
+        "him come a grey fox with a glowing tail, a hunched girl with gold light "
+        "leaking from her coat and a boy crawling on hands and knees, while grey "
+        "shapes fill the streets and a grey rider waits at the tower’s foot.",
+        "“Beacon Square,” he whispered. “Big tower. Big trouble.”",
     ),
     (
         14,
@@ -303,18 +376,30 @@ def _figure(slug: str, file: str, alt: str, caption: str, size: tuple[int, int])
     )
 
 
+def _plain(html_text: str) -> str:
+    """A paragraph's text for matching: tags gone, entities decoded, quotes straight."""
+    text = unescape(re.sub(r"<[^>]+>", "", html_text))
+    return text.translate(str.maketrans({"’": "'", "‘": "'", "“": '"', "”": '"'}))
+
+
 def _place_plates(slug: str, order: int, body: str, plates) -> str:
-    """Set each of this chapter's plates after the paragraph its anchor opens."""
+    """Set each of this chapter's plates after the paragraph its anchor opens.
+
+    Matched on plain text, so an anchor written as the manuscript reads (straight
+    quotes, *italics* as plain words) finds the parsed paragraph however the
+    parser spelled its apostrophes or emphasis.
+    """
     for chapter, anchor, file, alt, caption in plates:
         if chapter != order:
             continue
-        opening = f"<p>{escape(anchor, quote=False)}"
-        if body.count(opening) != 1:
+        paragraphs = list(re.finditer(r"<p>.*?</p>", body, re.S))
+        hits = [m for m in paragraphs if _plain(m.group(0)).startswith(_plain(anchor))]
+        if len(hits) != 1:
             raise CommandError(
-                f"plate {file}: anchor {anchor!r} opens {body.count(opening)} paragraphs "
+                f"plate {file}: anchor {anchor!r} opens {len(hits)} paragraphs "
                 f"in chapter {order}, not exactly one"
             )
-        at = body.index("</p>", body.index(opening)) + len("</p>")
+        at = hits[0].end()
         body = body[:at] + _figure(slug, file, alt, caption, PLATE_SIZE) + body[at:]
     return body
 
