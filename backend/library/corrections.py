@@ -8050,6 +8050,156 @@ BODY_CORRECTIONS.setdefault("amanda-smith-autobiography", {}).setdefault("replac
     # [sw] citation twin: John 13:14
     (",\" Yohana 13:15.", ",\" Yohana 13:14."),
 ])
+
+# Found while translating to French (2026-10-14): Finney's Lectures on Revivals
+# of Religion — OCR slips (en)
+BODY_CORRECTIONS.setdefault("revival-lectures", {}).setdefault("replacements", []).extend([
+    # [en] OCR is/in slip
+    ("these Lectures, is this, or any other form", "these Lectures, in this, or any other form"),
+    # [en] stray "may" repeated from the previous verse (Mark 11:26)
+    ("which is in heaven may forgive you your trespasses.”", "which is in heaven forgive you your trespasses.”"),
+    # [en] OCR heart/heard (KJV 1 John 4:3)
+    ("whereof ye have heart that it shall come", "whereof ye have heard that it shall come"),
+    # [en] dropped letter; Watts hymn reads "they cry"
+    ("Tortured with keen despair thy cry,", "Tortured with keen despair they cry,"),
+    # [en] is/it slip
+    ("flesh, and that is was not granted", "flesh, and that it was not granted"),
+    # [en] makes/make slip (parallel "break off")
+    ("associates, and makes confession of your sins", "associates, and make confession of your sins"),
+    # [en] know/known slip
+    ("I have know female prayer meetings", "I have known female prayer meetings"),
+    # [en] context requires "unconverted" (she tells him he is going to hell)
+    ("suppose you tell your converted husband", "suppose you tell your unconverted husband"),
+    # [en] in/to slip
+    ("if you mean in impress men favorably", "if you mean to impress men favorably"),
+    # [en] OCR rn/m slip
+    ("to contempt at the comers of streets", "to contempt at the corners of streets"),
+    # [en] that/than slip
+    ("more common that it is now", "more common than it is now"),
+    # [en] OCR properly/property
+    ("injured the person in properly, or character", "injured the person in property, or character"),
+    # [en] transposed words
+    ("If you can it find out, tell him", "If you can find it out, tell him"),
+    # [en] sent/send slip
+    ("only that God would sent out", "only that God would send out"),
+    # [en] misspelling
+    ("that it has succeded <i>in spite</i>", "that it has succeeded <i>in spite</i>"),
+    # [en] doubled "and"
+    ("in the morning, and then and in the afternoon calling", "in the morning, and then in the afternoon calling"),
+    # [en] misspelling
+    ("and his support guarranteed,", "and his support guaranteed,"),
+    # [en] to/too slip
+    ("pulpits that were to loathesome to be", "pulpits that were too loathesome to be"),
+    # [en] OCR tides/titles (KJV Job 32:21-22)
+    ("nor apply flattering tides to men", "nor apply flattering titles to men"),
+    # [en] OCR arranged/arraigned (before the magistrates)
+    ("And so they arranged the preachers of the Gospel", "And so they arraigned the preachers of the Gospel"),
+    # [en] is/it slip
+    ("souls found out that is was made in New England", "souls found out that it was made in New England"),
+    # [en] a/an slip
+    ("and then in a address to the whole", "and then in an address to the whole"),
+    # [en] dropped "s"
+    ("is persevered in, it perpetrators cannot be", "is persevered in, its perpetrators cannot be"),
+    # [en] is/it slip
+    ("how to promote them, or that is was of no importance", "how to promote them, or that it was of no importance"),
+    # [en] OCR case slip: Job is the man in the anecdote
+    ("ensued, in which job referred to all past experience", "ensued, in which Job referred to all past experience"),
+    # [en] takes/take slip
+    ("Just so they takes sides against God", "Just so they take sides against God"),
+    # [en] lessons/lessens (twice)
+    ("But anything that lessons his sense of blame, of course lessons his distress", "But anything that lessens his sense of blame, of course lessens his distress"),
+    # [en] nor/not slip
+    ("The truth is, he has nor repented at all.", "The truth is, he has not repented at all."),
+    # [en] OCR rn/m slip
+    ("no dark and mysterious comer to rest in", "no dark and mysterious corner to rest in"),
+    # [en] OCR It/If
+    ("not thorough. It they are convicted, they need", "not thorough. If they are convicted, they need"),
+    # [en] OCR rn/m slip (Rev 21:8)
+    ("in the lake that bums with fire and brimstone", "in the lake that burns with fire and brimstone"),
+    # [en] OCR an/are
+    ("you may know that you an backslidden in heart", "you may know that you are backslidden in heart"),
+    # [en] OCR month/mouth
+    ("This he puts into the month of a convert", "This he puts into the mouth of a convert"),
+    # [en] split word with stray period
+    ("will allow him. self to be vexed", "will allow himself to be vexed"),
+    # [en] OCR fall/full
+    ("will be fall of his own mistakes", "will be full of his own mistakes"),
+    # [en] OCR fall/full
+    ("will be fall of his own troubles", "will be full of his own troubles"),
+    # [en] OCR he/be
+    ("in heart will he filled with his own words", "in heart will be filled with his own words"),
+    # [en] OCR in/is
+    ("feelings. There in no help for him", "feelings. There is no help for him"),
+    # [en] OCR be/he
+    ("accepted Christ, so far as be is understood", "accepted Christ, so far as he is understood"),
+    # [en] split word with stray comma
+    ("the consecration of our, selves and of all", "the consecration of ourselves and of all"),
+    # [en] maybe/may be
+    ("and although the will maybe given up to God", "and although the will may be given up to God"),
+    # [en] split word
+    ("for the time being, be come more and more seared", "for the time being, become more and more seared"),
+    # [en] OCR low/less
+    ("with more or low acceptance to those", "with more or less acceptance to those"),
+    # [en] OCR Lest/Less
+    ("<p>17. Lest temptation to fret,", "<p>17. Less temptation to fret,"),
+    # [en] OCR fall/full
+    ("reluctance to making fall confession", "reluctance to making full confession"),
+    # [en] OCR ouch/such
+    ("and when in ouch cases, we cannot rest", "and when in such cases, we cannot rest"),
+    # [en] jealously/jealousy
+    ("A growing jealously for the honor of God", "A growing jealousy for the honor of God"),
+    # [en] OCR stop/step
+    ("Remember that every stop of progress", "Remember that every step of progress"),
+    # [en] OCR It/If
+    ("instruction. It on the one hand, they are set", "instruction. If on the one hand, they are set"),
+    # [en] OCR an/are
+    ("pastors, unless they an fully satisfied", "pastors, unless they are fully satisfied"),
+])
+
+# Found while translating to French (2026-10-14): Selected Sermons of Jonathan
+# Edwards — OCR slips and four wrong citations (en + es/am)
+BODY_CORRECTIONS.setdefault("selected-sermons-edwards", {}).setdefault("replacements", []).extend([
+    # [en] 1 Cor 8 has 13 verses; quoted words are 1 Cor 8:6
+    ("through him: 1 Cor. viii. 21, “But to us", "through him: 1 Cor. viii. 6, “But to us"),
+    # [en] eis auton rendered 'in him' is 1 Cor 8:6 (verse just quoted); sermon
+    # row reads 8:6
+    ("is rendered <i>in him</i>, 1 Cor. vii. 6.", "is rendered <i>in him</i>, 1 Cor. viii. 6."),
+    # [en] OCR: st→at
+    ("and they are st peace with him;", "and they are at peace with him;"),
+    # [en] quoted words are Rev 22:17 (foregoing verse 22:16)
+    ("’tis he that speaks, Rev. xvii. 17, “And let him that heareth", "’tis he that speaks, Rev. xxii. 17, “And let him that heareth"),
+    # [en] council→counsel (advice)
+    ("might receive council and warning", "might receive counsel and warning"),
+    # [en] Lam 4 has 22 verses; quoted words are Lam 4:20
+    ("princes: Lam. iv. 29, “The breath", "princes: Lam. iv. 20, “The breath"),
+    # [en] OCR: bearers→hearers
+    ("the apostle does to his bearers, Gal. iv. 13", "the apostle does to his hearers, Gal. iv. 13"),
+    # [en] conversation→conversion (instrument of their conversion; 1 Cor 4:15
+    # begetting)
+    ("such whose conversation and eternal salvation they suppose", "such whose conversion and eternal salvation they suppose"),
+    # [en] dittography: clause repeated word-for-word (only commas differ)
+    ("and wrong one another with regard to each other’s views and designs and the principles and ends that each is influenced by, and are greatly mistaken in their judgment, and wrong one another in their censures.", "and wrong one another in their censures."),
+    # [en] OCR: or→of
+    ("had there been any note or personal vindictiveness", "had there been any note of personal vindictiveness"),
+    # [en] Edwards's preface reads 'be meant'
+    ("if by a relation of experiences, he meant a declaration", "if by a relation of experiences, be meant a declaration"),
+    # [es] twin of EN 1 Cor viii. 21→viii. 6
+    ("por medio de él: 1 Corintios 8:21, «", "por medio de él: 1 Corintios 8:6, «"),
+    # [es] twin of EN 1 Cor vii. 6→viii. 6
+    ("se traduce <i>en él</i> en 1 Corintios 7:6.", "se traduce <i>en él</i> en 1 Corintios 8:6."),
+    # [es] twin of EN Rev xvii. 17→xxii. 17
+    ("es él quien habla, Apocalipsis 17:17,", "es él quien habla, Apocalipsis 22:17,"),
+    # [es] twin of EN Lam iv. 29→iv. 20
+    ("sus príncipes: Lamentaciones 4:29,", "sus príncipes: Lamentaciones 4:20,"),
+    # [am] twin of EN 1 Cor viii. 21→viii. 6
+    ("1ኛ ቆሮንቶስ 8:21፦", "1ኛ ቆሮንቶስ 8:6፦"),
+    # [am] twin of EN 1 Cor vii. 6→viii. 6
+    ("በ1ኛ ቆሮንቶስ 7:6 <i>በእርሱ</i>", "በ1ኛ ቆሮንቶስ 8:6 <i>በእርሱ</i>"),
+    # [am] twin of EN Rev xvii. 17→xxii. 17
+    ("በራእይ 17:17 የሚናገረው", "በራእይ 22:17 የሚናገረው"),
+    # [am] twin of EN Lam iv. 29→iv. 20
+    ("ሰቆቃወ ኤርምያስ 4:29፦", "ሰቆቃወ ኤርምያስ 4:20፦"),
+])
 # The paragraph ended on a stop the OCR read as a comma.
 BODY_CORRECTIONS["evangelization-of-the-world"]["paragraph_breaks"] = [
     ('foreign mission service.', 'In 1898 the members'),
