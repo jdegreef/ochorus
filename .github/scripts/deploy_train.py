@@ -33,6 +33,7 @@ import json
 import os
 import subprocess
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -174,7 +175,14 @@ def main() -> int:
                     summary.append(f"- {service}: hook returned {fire(hook, target)}")
                 except OSError as e:  # URLError / HTTPError / timeout
                     failed = True
-                    summary.append(f"- {service}: **hook failed** ({e})")
+                    # Render's error body says why (a bad ref, a paused
+                    # service...); the status line alone does not.
+                    body = ""
+                    if isinstance(e, urllib.error.HTTPError):
+                        body = e.read(300).decode("utf-8", "replace").strip()
+                    summary.append(
+                        f"- {service}: **hook failed** ({e})" + (f": `{body}`" if body else "")
+                    )
 
     text = "\n".join(summary)
     print(text)
