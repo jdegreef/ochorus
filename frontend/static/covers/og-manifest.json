@@ -10010,6 +10010,36 @@
 				536
 			]
 		},
+		"fr/revival-lectures": {
+			"ground": "78f49badbb9df52845d3e5a8181f23bcf2c092e851437c2be98c2546310b4dcd",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[126, 102, 474, 131]
+				],
+				"title": [
+					[92, 305, 508, 381],
+					[92, 370, 508, 446]
+				],
+				"subtitle": [
+					[141, 520, 459, 541]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				254,
+				541
+			]
+		},
 		"fr/rise-up-men-of-god-2": {
 			"ground": "f20d79d322eb36b5e5888b6b377d432edf2599bd277bff2b1048b24cdfd8da34",
 			"style": "originals",
@@ -10227,6 +10257,17 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0.04
+		},
+		"fr/selected-sermons-edwards": {
+			"ground": "4781584f3179b598315fc9adf3d2a1b6bd082cbdd136cba202868b7cf806f89c",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/slate",
+			"bar": 0
 		},
 		"fr/soar-like-the-eagle-3": {
 			"ground": "435c30f8b3718898f75827d153543c59923e778221872f61a6f615d7dd32a004",

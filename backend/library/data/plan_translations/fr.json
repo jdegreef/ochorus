@@ -194,5 +194,12 @@
   "note": [
    "2026-10-14: written with amanda-smith-autobiography.fr (« Une autobiographie », the shipped fr study guide's title), which completes the set — the-christians-secret-of-a-happy-life-4.fr and a-brand-plucked-from-the-fire.fr (« Un tison arraché du feu ») were already live — so seed_plans creates the (women-of-faith, fr) row on the deploy that ships this PR."
   ]
+ },
+ "send-the-fire": {
+  "title": "Envoie le feu : prier pour le réveil",
+  "description": "Comment vient le réveil, et comment le faire descendre par la prière. Les discours de Charles Finney sur les conditions du réveil, R. A. Torrey sur le baptême du Saint-Esprit qui lui donne sa puissance, et les sermons par lesquels Dieu ébranla la Nouvelle-Angleterre sous Jonathan Edwards.",
+  "note": [
+   "2026-10-14: written with revival-lectures.fr (« Discours sur les réveils religieux », the shipped fr study guide's title) and selected-sermons-edwards.fr (« Sermons choisis de Jonathan Edwards »), which ship together in this PR and complete the set with baptism-with-the-holy-spirit.fr — so seed_plans creates the (send-the-fire, fr) row on the deploy that ships it."
+  ]
  }
 }
