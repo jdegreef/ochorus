@@ -294,6 +294,14 @@ RELEASE_COMMIT = os.getenv("RENDER_GIT_COMMIT", "").strip()
 # RELEASE_COMMIT only then.
 DEPLOY_TRAIN = os.getenv("DEPLOY_TRAIN", "").strip().lower() == "true"
 
+# Under the train, golive pins that rebuild by dispatching the "Rebuild reader"
+# workflow (.github/workflows/rebuild-reader.yml), because Render 500s on a
+# deploy hook carrying `ref=<sha>`. The token needs only `actions: write` on
+# this repo. Unset falls back to the translation-queue token, so granting that
+# token `actions: write` is enough. A token that can't dispatch falls back to
+# the unpinned hook, and golive says so in its report.
+GITHUB_DEPLOY_TOKEN = os.getenv("GITHUB_DEPLOY_TOKEN", "").strip() or GITHUB_TRANSLATION_TOKEN
+
 # Public origin of the READER (e.g. https://ochorus.com), used to confirm after a
 # deploy that a newly live locale actually appears in the built sitemap. Optional:
 # without it the post-deploy check reports "unknown" instead of guessing.

@@ -37,27 +37,31 @@ class InvalidationChannelTests(TestCase):
         self.assertEqual(result.status, "triggered")
         self.assertEqual(post.call_count, 1)
 
-    @override_settings(RELEASE_COMMIT="abc123", DEPLOY_TRAIN=True)
+    @override_settings(RELEASE_COMMIT="abc123", DEPLOY_TRAIN=True, GITHUB_DEPLOY_TOKEN="t")
     def test_the_rebuild_is_pinned_to_the_commit_this_api_runs(self):
         # Deploys are batched, so main's tip may hold content this API hasn't
         # released; building the tip would stall the web build's content gate.
+        # The pin goes through the rebuild-reader workflow, never the hook
+        # (Render 500s on a hook carrying `ref`).
         with mock.patch("library.golive.requests.post", return_value=_ok()) as post:
             invalidation.mark_content_changed(force=True)
-        self.assertEqual(post.call_args.kwargs["params"], {"ref": "abc123"})
+        self.assertEqual(post.call_count, 1)
+        self.assertIn("/actions/workflows/rebuild-reader.yml/dispatches", post.call_args.args[0])
+        self.assertEqual(post.call_args.kwargs["json"]["inputs"], {"commit": "abc123"})
 
-    @override_settings(RELEASE_COMMIT="", DEPLOY_TRAIN=True)
+    @override_settings(RELEASE_COMMIT="", DEPLOY_TRAIN=True, GITHUB_DEPLOY_TOKEN="t")
     def test_no_commit_known_means_no_pin(self):
         with mock.patch("library.golive.requests.post", return_value=_ok()) as post:
             invalidation.mark_content_changed(force=True)
-        self.assertIsNone(post.call_args.kwargs["params"])
+        post.assert_called_once_with(HOOK, timeout=20)
 
-    @override_settings(RELEASE_COMMIT="abc123", DEPLOY_TRAIN=False)
+    @override_settings(RELEASE_COMMIT="abc123", DEPLOY_TRAIN=False, GITHUB_DEPLOY_TOKEN="t")
     def test_no_pin_under_auto_deploy(self):
         # The reader may run a newer frontend-only commit than this API, and a
         # pinned rebuild would roll it back.
         with mock.patch("library.golive.requests.post", return_value=_ok()) as post:
             invalidation.mark_content_changed(force=True)
-        self.assertIsNone(post.call_args.kwargs["params"])
+        post.assert_called_once_with(HOOK, timeout=20)
 
     def test_the_throttle_coalesces_a_burst_but_records_the_tail(self):
         with mock.patch("library.golive.requests.post", return_value=_ok()) as post:
