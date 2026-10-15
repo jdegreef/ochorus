@@ -186,7 +186,10 @@ whose `test-and-build` passed (Render's own auto-deploy is off on both; the
 email cron has no deploy hook, so it still auto-deploys after CI). To ship
 now: Actions → Deploy train → Run workflow, or `gh workflow run deploy-train.yml`
 (add `-f force=true` to redeploy with nothing changed). A red train run means
-nothing is deploying — fix it the same day. New content reaches the live database via the deploy's seed
+nothing is deploying — fix it the same day. Between trains, a language launch
+or other admin content change rebuilds the reader alone at the API's own commit
+through `.github/workflows/rebuild-reader.yml` (dispatched by
+`library/golive.py`; the API's token needs `actions: write`). New content reaches the live database via the deploy's seed
 commands (`seed_books`/`seed_sermons` run on every release). **Never run raw
 `loaddata` against production** — it full-row-overwrites, silently reverting
 approved review states (`source_type`).
