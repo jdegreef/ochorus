@@ -1,0 +1,112 @@
+{
+ "kind": "book",
+ "slug": "tukutendereza",
+ "language": "lg",
+ "job_issue": 2806,
+ "pull_request": null,
+ "note": [
+  "Scripture follows the Open Luganda Contemporary Bible (OLCB 2017, lug_bib — the lug text language_seed.py names), parsed from the ebible mirror's USX and spliced by script. Every `mined` row was checked mechanically: the chapter block holds a verbatim stretch (≥40 characters, or the whole verse if shorter; case, quote marks and apostrophe form ignored) of that OLCB verse.",
+  "The English quotes the NIV; the Luganda quotes the OLCB, so wording differs where the two Bibles differ. Flagged for the reviewer: Matthew 5:44 is quoted only as far as the OLCB carries it (the OLCB lacks the “bless … do good” clauses); Ephesians 5:18 in the OLCB is active (“Omwoyo ajjulenga mu bulamu bwammwe”) where chapter 3 comments on the passive Greek. The OLCB's curly apostrophes were converted to this book's ASCII style.",
+  "Translated by per-chapter AI translators in one session (job #2806); tag sequence identical to the English chapter by chapter. AI-translated; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "1 John 1:7",
+   "chapter_order": 2,
+   "block_index": 19,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "chapter_order": 3,
+   "block_index": 15,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Galatians 3:28",
+   "chapter_order": 4,
+   "block_index": 15,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 5:14",
+   "chapter_order": 5,
+   "block_index": 17,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 1:16",
+   "chapter_order": 6,
+   "block_index": 18,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "James 5:16",
+   "chapter_order": 7,
+   "block_index": 25,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 1:21",
+   "chapter_order": 8,
+   "block_index": 19,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 5:44",
+   "chapter_order": 9,
+   "block_index": 20,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Revelation 12:11",
+   "chapter_order": 10,
+   "block_index": 20,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Timothy 4:12",
+   "chapter_order": 11,
+   "block_index": 20,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Galatians 3:28",
+   "chapter_order": 12,
+   "block_index": 18,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 1:29",
+   "chapter_order": 13,
+   "block_index": 20,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 John 1:7",
+   "chapter_order": 13,
+   "block_index": 20,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 John 1:7",
+   "chapter_order": 14,
+   "block_index": 23,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  }
+ ]
+}

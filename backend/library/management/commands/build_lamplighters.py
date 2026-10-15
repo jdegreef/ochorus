@@ -209,6 +209,193 @@ PLATES_1: tuple[tuple[int, str, str, str, str], ...] = (
 )
 
 #: The size every plate is shipped at (portrait, the house plate frame).
+#: Book 2's plates, in the same hand as Book 1's (2026-10-15).
+PLATES_2: tuple[tuple[int, str, str, str, str], ...] = (
+    (
+        1,
+        "All round the foot of the waystone, in a circle",
+        "b2-plate-01-the-pale-road.jpg",
+        "On a pale grey plain, a small girl with a lamp holds it to a "
+        "glowing stone post, and a circle of green grass spreads round "
+        "its base. A tall stooped old man with a hooked pole, a gangly "
+        "boy holding a compass and a grey fox with a glowing tail-tip "
+        "watch; far off on a rise sits a tiny grey rider.",
+        "“Green,” said Old Ash softly. “That’s green, that is.”",
+    ),
+    (
+        2,
+        "She did not think about it. There was no time",
+        "b2-plate-02-the-hollow-hunt.jpg",
+        "In a dark gully at dusk, a girl lunges forward holding out a "
+        "blazing lamp while grey smoky figures flee up the banks. A boy "
+        "with fogged spectacles stands frozen, a tall old man lies "
+        "propped on one elbow with one leg turned ash-grey, and a grey "
+        "fox with a white-hot tail-tip bristles.",
+        "…it flared — white-gold, all at once, like a door flung open.",
+    ),
+    (
+        3,
+        "“Hide it,” said Old Ash. His voice cracked like",
+        "b2-plate-03-mothwing-weather.jpg",
+        "At dusk, a kneeling girl reaches for a lamp on a stone, beside a"
+        " huge moth whose wings glow like faint stained glass. A boy "
+        "holding sticks stares at it, an old man sitting under dead trees"
+        " thrusts out his arm in warning, and a grey fox on the ridge "
+        "faces an enormous cloud of moths rising from the plain.",
+        "“Hide it, child. Every scrap of light. Now.”",
+    ),
+    (
+        4,
+        "But the girl beside Wren had not flinched. She",
+        "b2-plate-04-down-among-the-delvers.jpg",
+        "In a cavern, a girl sitting on rubble holds a glowing lamp in "
+        "her tied hands. A ring of tall, braided cave-folk raise their "
+        "palms against its warmth, while a girl with long beaded braids "
+        "kneels close and holds her hands out to it.",
+        "“It’s like standing next to someone who’s laughing.”",
+    ),
+    (
+        5,
+        "Every surface. The ledge they stood on was cut",
+        "b2-plate-05-the-city-of-echoes.jpg",
+        "A girl in a cliff doorway holds a lamp high. Its small circle of"
+        " light shows carved spiral walls threaded with faint colours, a "
+        "ridged ledge, a tall fluted column across a gap, a seated girl "
+        "with beaded braids, and a woman carrying a basket on her head. "
+        "Everything beyond the circle is black.",
+        "Above that ring there was no roof that she could see.",
+    ),
+    (
+        6,
+        "It went up gold and white, so bright that",
+        "b2-plate-06-the-elders-judgment.jpg",
+        "In a round hall of tiered stone benches packed with hundreds of "
+        "braided figures, many shielding their faces, a girl on a round "
+        "stone holds out a blazing lamp. Seven elders sit on a carved "
+        "ledge, the huge bearded Speaker in the middle facing her "
+        "unflinching. An old man on a stretcher with a fox, and a boy in "
+        "spectacles, are beside her.",
+        "“Here. Feel it. It’s for you. You don’t have to do anything.”",
+    ),
+    (
+        7,
+        "It was only a shape in the stone.",
+        "b2-plate-07-the-story-wall.jpg",
+        "Two girls kneel in silhouette before a wall of pale carved "
+        "stone: a robed man kneeling with his hand over a child’s eyes, "
+        "holding a small lamp-shaped carving whose bead glows gold. Wren "
+        "holds up a brass lamp, and Mira, with long beaded braids, rests "
+        "her fingertips on rows of raised marks.",
+        "…the little bead in the Warm Man’s hand shone gold.",
+    ),
+    (
+        8,
+        "Mira could not see any of that. So",
+        "b2-plate-08-the-whispering-galleries.jpg",
+        "Inside a round, ribbed tunnel with three dark archways, Wren "
+        "holds the lamp high, while tall Tobin holds a thread that drifts"
+        " into the right-hand arch and Mira touches its end. In front, "
+        "Old Ash lies propped on a stone-sledge with his hooked pole, and"
+        " Cinder the fox sits beside him with her tail glowing.",
+        "…the thread stirred, and lifted, and leaned…",
+    ),
+    (
+        9,
+        "Captain Varrick stepped out of the mouth of",
+        "b2-plate-09-varrick-in-the-deeps.jpg",
+        "A tall man in a grey cloak stands at a ribbed tunnel mouth, with"
+        " armoured knights behind him and grey, smoky, faceless shapes "
+        "drifting in the dark. Facing him, a girl holds up a glowing lamp"
+        " while a fox bristles, a braided girl grips her sleeve, an old "
+        "man lies on a sledge, and blind Delvers cross a rope bridge "
+        "toward a doorway.",
+        "“Give me the lamp, child, and I leave them their songs.”",
+    ),
+    (
+        10,
+        "The lamp stood up straight in the draught.",
+        "b2-plate-10-the-black-stair.jpg",
+        "A boy in spectacles climbs a dark spiral stair, holding a "
+        "glowing lamp above his head. A big bearded man carrying a child "
+        "follows him on a rope, and a line of shadowy figures holding the"
+        " rope winds down into blackness.",
+        "“Though I walk through the gloaming,” said Tobin Harrowgate, “I "
+        "will fear no dark—”",
+    ),
+    (
+        11,
+        "He gathered his son up off the grass, blanket",
+        "b2-plate-11-light-in-the-low-places.jpg",
+        "On a grassy hilltop under a pale moon, a kneeling boy holds out "
+        "a glowing lamp to a small child cradled by a big kneeling man, "
+        "who bows his head over him and weeps. Other figures sit among "
+        "the rocks behind, faces lifted to the sky.",
+        "“Why is it warm? Where is the roof?”",
+    ),
+    (
+        12,
+        "The ferryman did not answer. He dipped his",
+        "b2-plate-12-the-ferryman.jpg",
+        "In a misty grey river, a hooded ferryman leans from the stern of a "
+        "long boat and lays his thumbs on the closed eyes of Mira, a girl with "
+        "beaded braids. Wren watches beside her, holding a glowing lamp, while "
+        "Tobin and Old Ash look on.",
+        "“It is a gift. That is all.”",
+    ),
+    (
+        13,
+        "And Wren laughed.",
+        "b2-plate-13-colours.jpg",
+        "A grey morning beside a misty river, under a dull sun. Mira, "
+        "with long beaded braids, kneels and tilts a tin cup towards a "
+        "small glowing lamp. Wren sits on the shingle with her head "
+        "thrown back laughing and one arm flung up; a fox has its paws on"
+        " her knee. Tobin is bent double laughing behind them, and Old "
+        "Ash sits on a stone by a small fire with one leg stretched out. "
+        "Faint colours show in the pebbles only near the lamp.",
+        "“It is the colour of what it tastes like.”",
+    ),
+    (
+        14,
+        "So Wren went, and stood beside the waystone",
+        "b2-plate-14-a-letter-sealed-in-grey.jpg",
+        "At dusk on grey hills, Tobin sits hunched on the base of a tall "
+        "waystone whose niche glows gold behind him. He holds a folded "
+        "letter with a grey seal showing a tower and a flame. Wren sits a"
+        " little way off at the edge of the stone, hands in her pockets, "
+        "looking at him. Far up the slope the others wait by an open "
+        "satchel and a grazing horse, and a line of small lit waystones "
+        "runs back across the hills.",
+        "For a long time neither of them said anything.",
+    ),
+    (
+        15,
+        "Old Ash had not said a word. He stood",
+        "b2-plate-15-the-lights-of-vaelport.jpg",
+        "Five small black silhouettes stand on a dark clifftop at dusk: a"
+        " tall stooped old man leaning on two poles, a fox sitting with "
+        "its back to the sea, a girl with long braids holding her hands "
+        "up before her face, a small girl holding a glowing gold lamp, "
+        "and a tall boy at the cliff edge. Across a wide bay, a tiered "
+        "city on the hills shines brilliant white, sending long beams "
+        "over the water.",
+        "“That isn’t Flame,” he said.",
+    ),
+)
+
+#: The whole land, shared by every volume's endpapers (the map is the series').
+LAND_MAP = (
+    "land-of-gloamhaven.jpg",
+    "A parchment map of Gloamhaven: the Bright Mountain in the north "
+    "above the Greywaste and the Delver Deeps; walled Emberwick ringed "
+    "with lamps at the centre; Thornmere’s marshes and the Gloam River "
+    "running to Vaelport on the south-west coast; the Harrowgate "
+    "Highlands in the east; the Burned Country and Cinder Hill to the "
+    "south; and Nightfall Spire on the Sunless Sea. A dotted red road, "
+    "numbered one to six, links them.",
+    "The Land of Gloamhaven",
+)
+
 PLATE_SIZE = (900, 1200)
 
 VOLUMES: dict[int, dict[str, object]] = {
@@ -230,17 +417,7 @@ VOLUMES: dict[int, dict[str, object]] = {
         # Wordless they are not (a map is lettered), so each language edition
         # will want its own lettering when the book is translated.
         "maps": (
-            (
-                "land-of-gloamhaven.jpg",
-                "A parchment map of Gloamhaven: the Bright Mountain in the north "
-                "above the Greywaste and the Delver Deeps; walled Emberwick ringed "
-                "with lamps at the centre; Thornmere’s marshes and the Gloam River "
-                "running to Vaelport on the south-west coast; the Harrowgate "
-                "Highlands in the east; the Burned Country and Cinder Hill to the "
-                "south; and Nightfall Spire on the Sunless Sea. A dotted red road, "
-                "numbered one to six, links them.",
-                "The Land of Gloamhaven",
-            ),
+            LAND_MAP,
             (
                 "map-of-emberwick.jpg",
                 "A pen-and-ink map of the walled city of Emberwick: the Ring of "
@@ -378,6 +555,14 @@ VOLUMES: dict[int, dict[str, object]] = {
             "© James DeGreef and Ochorus. An Ochorus Original, written for young "
             "readers, free to read and share. Book 2 of The Lamplighters of Gloamhaven."
         ),
+        # Downloadable (export_policy): book-pdfs.yml builds and uploads the PDF on merge.
+        "pdf_url": (
+            "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/"
+            "book-pdfs/the-black-stair.pdf?download=the-black-stair.pdf"
+        ),
+        # The road has left Emberwick, so the endpaper is the whole land only.
+        "maps": (LAND_MAP,),
+        "plates": PLATES_2,
         "cover_url": "/covers/art/the-black-stair.jpg",  # ORIGINAL_GROUND
         "cover_color": covers.ink_safe("#3d5a6b"),  # deep cave-water slate
         "description": (
