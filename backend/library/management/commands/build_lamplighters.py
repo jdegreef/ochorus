@@ -220,6 +220,11 @@ VOLUMES: dict[int, dict[str, object]] = {
         # The cover's byline row is one short line; the Ochorus mark at its foot
         # completes "James DeGreef and Ochorus", the byline everywhere else.
         "cover_byline": "James DeGreef",
+        # Downloadable (export_policy): book-pdfs.yml builds and uploads the PDF on merge.
+        "pdf_url": (
+            "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/"
+            "book-pdfs/fire-against-the-dark.pdf?download=fire-against-the-dark.pdf"
+        ),
         # The book's endpapers: the whole land first, then the city — set at the
         # head of Chapter 1, as a printed book sets its maps before the story.
         # Wordless they are not (a map is lettered), so each language edition
