@@ -1,0 +1,13 @@
+{
+ "kind": "bio",
+ "slug": "martin-luther",
+ "language": "ko",
+ "job_issue": 6212,
+ "references": [
+  {
+   "reference": "Romans 1:17b",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}

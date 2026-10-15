@@ -1,0 +1,25 @@
+{
+ "kind": "bio",
+ "slug": "hannah-whitall-smith",
+ "language": "ko",
+ "job_issue": 6194,
+ "references": [
+  {
+   "reference": "John 16:24",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 16:23",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 18
+  }
+ ]
+}

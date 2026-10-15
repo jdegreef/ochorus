@@ -1,0 +1,11 @@
+{
+ "kind": "bio",
+ "slug": "john-calvin",
+ "language": "vi",
+ "references": [
+  {
+   "reference": "Psalms 13:1",
+   "status": "self_rendered"
+  }
+ ]
+}

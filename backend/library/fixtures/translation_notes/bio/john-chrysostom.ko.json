@@ -1,0 +1,24 @@
+{
+ "kind": "bio",
+ "slug": "john-chrysostom",
+ "language": "ko",
+ "job_issue": 6214,
+ "references": [
+  {
+   "reference": "Psalm 24:1",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Job 1:21a",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "Job 1:21b",
+   "status": "self_rendered",
+   "block_index": 19
+  }
+ ]
+}

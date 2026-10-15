@@ -1,0 +1,40 @@
+{
+ "kind": "bio",
+ "slug": "thomas-a-kempis",
+ "language": "vi",
+ "references": [
+  {
+   "reference": "1 Samuel 3:10",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "Psalms 119:125",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "Psalms 119:36",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Psalms 78:1",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Deuteronomy 32:2",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Ecclesiastes 1:2",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 41
+  }
+ ]
+}

@@ -1,0 +1,25 @@
+{
+ "kind": "bio",
+ "slug": "smith-wigglesworth",
+ "language": "ko",
+ "job_issue": 6197,
+ "references": [
+  {
+   "reference": "Mark 5:36",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Mark 5:36",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Mark 5:36",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}

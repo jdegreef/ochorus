@@ -1,0 +1,35 @@
+{
+ "kind": "bio",
+ "slug": "j-c-ryle",
+ "language": "ko",
+ "job_issue": 6217,
+ "references": [
+  {
+   "reference": "Ephesians 2:8",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "Ephesians 2:8a",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Ephesians 2:8a",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:8b",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:8a",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}

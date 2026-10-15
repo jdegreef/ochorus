@@ -1,0 +1,39 @@
+{
+ "kind": "bio",
+ "slug": "george-whitefield",
+ "language": "vi",
+ "references": [
+  {
+   "reference": "1 Peter 1:8b",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Galatians 1:10b",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 16
+  },
+  {
+   "reference": "Luke 5:32",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "John 3:7b",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "2 Timothy 4:7",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "John 3:7b",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  }
+ ]
+}

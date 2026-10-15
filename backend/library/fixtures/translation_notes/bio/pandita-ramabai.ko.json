@@ -1,0 +1,36 @@
+{
+ "kind": "bio",
+ "slug": "pandita-ramabai",
+ "language": "ko",
+ "job_issue": 6228,
+ "references": [
+  {
+   "reference": "Malachi 3:10",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "1 Kings 19:12",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 35
+  },
+  {
+   "reference": "Malachi 3:10",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 36
+  },
+  {
+   "reference": "Malachi 3:10",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Kings 19:12",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "kind": "bio",
+ "slug": "blaise-pascal",
+ "language": "ko",
+ "job_issue": 6203,
+ "references": [
+  {
+   "reference": "Psalm 119:16",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}

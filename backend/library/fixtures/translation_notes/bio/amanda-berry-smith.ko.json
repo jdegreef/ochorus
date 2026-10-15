@@ -1,0 +1,19 @@
+{
+ "kind": "bio",
+ "slug": "amanda-berry-smith",
+ "language": "ko",
+ "job_issue": 6208,
+ "references": [
+  {
+   "reference": "Isaiah 41:13",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "Isaiah 41:13",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}

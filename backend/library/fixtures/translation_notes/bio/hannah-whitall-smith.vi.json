@@ -1,0 +1,27 @@
+{
+ "kind": "bio",
+ "slug": "hannah-whitall-smith",
+ "language": "vi",
+ "references": [
+  {
+   "reference": "John 16:24",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Galatians 2:20b",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 16:23",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Galatians 2:20b",
+   "status": "self_rendered"
+  }
+ ]
+}
