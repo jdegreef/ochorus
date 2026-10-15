@@ -423,6 +423,8 @@ services:
       # only adds and updates. Leftovers took ochorus-web to the cap, after which
       # every Blueprint sync failed (2026-10, the /vi and /ko pages never got
       # their rules). renderRoutes.test.ts holds this file to a small budget.
+      # After REMOVING a rule here, run .github/scripts/render_replace_routes.py
+      # (it replaces the service's list with this one via the API), then sync.
       #
       # One rule per path: Render's matcher is trailing-slash-insensitive, so
       # `source: /home` also catches `/home/` (verified live: /about/ serves
