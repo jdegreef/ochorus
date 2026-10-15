@@ -38,6 +38,7 @@ from library.admin_views import (
     AdminBookPublishView,
     AdminContentEditJobsView,
     AdminCoverageView,
+    AdminCoversView,
     AdminDropOffView,
     AdminEngagementView,
     AdminExportView,
@@ -106,6 +107,7 @@ urlpatterns = [
         AdminAuthorsWithoutBioView.as_view(),
         name="admin-authors-without-bio",
     ),
+    path("api/admin/covers/", AdminCoversView.as_view(), name="admin-covers"),
     path("api/admin/search-stats/", AdminSearchView.as_view(), name="admin-search-stats"),
     path("api/admin/search-gap/", AdminSearchGapView.as_view(), name="admin-search-gap"),
     path(
