@@ -11,6 +11,9 @@ export default ts.config(
 	{
 		ignores: [
 			'build/',
+			'build-app/',
+			'android/',
+			'ios/',
 			'.svelte-kit/',
 			'dist/',
 			'node_modules/',
@@ -65,6 +68,25 @@ export default ts.config(
 					varsIgnorePattern: '^_',
 					caughtErrorsIgnorePattern: '^_',
 					destructuredArrayIgnorePattern: '^_'
+				}
+			]
+		}
+	},
+	{
+		// The native app's plugins are reached only through $lib/platform (see
+		// its index.ts), so the website never depends on Capacitor by accident.
+		files: ['src/**/*.{ts,js,svelte}'],
+		ignores: ['src/lib/platform/**'],
+		rules: {
+			'no-restricted-imports': [
+				'error',
+				{
+					patterns: [
+						{
+							group: ['@capacitor/*', '@capacitor-*/*', '@capgo/*', '@capawesome/*'],
+							message: 'Native-app APIs go through $lib/platform.'
+						}
+					]
 				}
 			]
 		}

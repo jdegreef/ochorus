@@ -5,6 +5,15 @@ API. Public content routes are prerendered for SEO (`prerender = true` + an
 `entries()` generator); private/admin routes are client-only
 (`prerender = false; ssr = false`).
 
+## The phone apps
+
+- The iOS + Android apps are a second build of this reader (`npm run
+  app:build` → `build-app/`, Capacitor). `IS_APP` (`$lib/platform`) is the only
+  switch; `@capacitor/*` is imported only under `src/lib/platform/` (ESLint
+  enforces it). Anything that assumes a web origin — `window.location.origin`,
+  a service worker, a prerendered page — needs an app path too.
+  See `MOBILE.md`.
+
 ## Data & API
 
 - Every call to the Django API goes through `$lib/api.ts`: `apiFetch` (attaches

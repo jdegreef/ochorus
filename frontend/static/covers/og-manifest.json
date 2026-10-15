@@ -890,7 +890,7 @@
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 0.65,
+			"scrim": 0.7,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -4876,7 +4876,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.65,
+			"scrim": 0.7,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -5467,6 +5467,38 @@
 				564
 			]
 		},
+		"es/brave-for-god-4": {
+			"ground": "8e78b02f8a2090342c3be5e2efec099a665ac019fcb9b4815307fe09e50cee80",
+			"style": "young",
+			"volume": "4",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 243, 311, 287],
+					[132, 318, 468, 393],
+					[77, 379, 523, 454]
+				],
+				"subtitle": [
+					[174, 508, 426, 536],
+					[166, 536, 434, 564]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				231,
+				564
+			]
+		},
 		"es/c-s-lewis-a-life-children": {
 			"ground": "7312da55e3c7aa0c4671a019169aad10051c2034219026ad387d533a07242a88",
 			"style": "young",
@@ -5571,6 +5603,28 @@
 				478
 			]
 		},
+		"es/daughters-of-the-king-1": {
+			"ground": "7ef697994c132fc78553f2c0b6e17e6d32282cf03314315d7a693925a4702aa0",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0
+		},
+		"es/daughters-of-the-king-2": {
+			"ground": "6f65b0e0d70d89b6a46d92e076612eec0f530b75c4903b1de93bd8fafee44020",
+			"style": "young",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0
+		},
 		"es/days-of-heaven-upon-earth": {
 			"ground": "b7761b5167880578c3cc63cbbaaa3661996fdf8336c45b3ddbd5213dc0de7864",
 			"style": "revival",
@@ -5592,6 +5646,36 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0.05
+		},
+		"es/divine-songs-for-children": {
+			"ground": "b79f45bf489048c04b71e0dff5bd1ae7a638affd30700d9beef5bd7a5be5fad0",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[183, 102, 417, 131]
+				],
+				"title": [
+					[112, 285, 488, 360],
+					[167, 346, 433, 421]
+				],
+				"subtitle": [
+					[43, 475, 557, 503]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				292,
+				503
+			]
 		},
 		"es/elisabeth-elliot-a-life-children": {
 			"ground": "855fe58f501b201c655fddf44bd9cab6783ff9f0a9384d219dbc4c832de42951",
@@ -6099,6 +6183,70 @@
 					[105, 169, 495, 232],
 					[168, 225, 432, 288],
 					[158, 280, 442, 343]
+				],
+				"subtitle": [
+					[160, 404, 440, 432],
+					[183, 432, 417, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
+			]
+		},
+		"es/key-teachings-of-andrew-murray": {
+			"ground": "179ca7ce4891102f54de0a971274dc325242959a978dab781ab2c9057599e509",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[105, 169, 495, 232],
+					[200, 225, 400, 288],
+					[98, 280, 502, 343]
+				],
+				"subtitle": [
+					[160, 404, 440, 432],
+					[183, 432, 417, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
+			]
+		},
+		"es/key-teachings-of-gareth-evans": {
+			"ground": "cc806f5af558c56614faf0314d06474dd6dbd126c766a2270b07c9092803ff60",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[105, 169, 495, 232],
+					[200, 225, 400, 288],
+					[131, 280, 469, 343]
 				],
 				"subtitle": [
 					[160, 404, 440, 432],
@@ -6899,7 +7047,7 @@
 		"es/rooted-1": {
 			"ground": "e842a4df792a27975b08a07e1a28000cc9787b84b3ca2e42d3991574da49b6e3",
 			"style": "young",
-			"volume": null,
+			"volume": "1",
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
@@ -6911,25 +7059,26 @@
 					[114, 102, 486, 131]
 				],
 				"title": [
-					[160, 301, 440, 376]
+					[292, 273, 308, 317],
+					[160, 348, 440, 423]
 				],
 				"subtitle": [
-					[126, 431, 474, 459],
-					[161, 459, 439, 487]
+					[126, 478, 474, 506],
+					[161, 506, 439, 534]
 				],
 				"mark": [
 					[232, 664, 368, 746]
 				]
 			},
 			"middle": [
-				308,
-				487
+				261,
+				534
 			]
 		},
 		"es/rooted-2": {
 			"ground": "058a1589a78ef2e39d677e281f89e24f237be07cd0dd0e35ba84fc3dfc711ee1",
 			"style": "young",
-			"volume": null,
+			"volume": "2",
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
@@ -6941,19 +7090,51 @@
 					[114, 102, 486, 131]
 				],
 				"title": [
-					[160, 301, 440, 376]
+					[289, 273, 311, 317],
+					[160, 348, 440, 423]
 				],
 				"subtitle": [
-					[127, 431, 473, 459],
-					[107, 459, 493, 487]
+					[127, 478, 473, 506],
+					[107, 506, 493, 534]
 				],
 				"mark": [
 					[232, 664, 368, 746]
 				]
 			},
 			"middle": [
-				308,
-				487
+				261,
+				534
+			]
+		},
+		"es/rooted-3": {
+			"ground": "cc594bd88ddf086f021af32b5672a34ce3a408c2ec9554bad5075a20f12c1db4",
+			"style": "young",
+			"volume": "3",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 273, 310, 317],
+					[160, 348, 440, 423]
+				],
+				"subtitle": [
+					[79, 478, 521, 506],
+					[105, 506, 495, 534]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				261,
+				534
 			]
 		},
 		"es/rooted-4": {
@@ -14438,7 +14619,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.65,
+			"scrim": 0.7,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -18488,7 +18669,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.65,
+			"scrim": 0.7,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {

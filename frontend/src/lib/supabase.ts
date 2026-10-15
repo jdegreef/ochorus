@@ -1,6 +1,7 @@
 import { browser } from '$app/environment';
 import { env } from '$env/dynamic/public';
 import type { SupabaseClient } from '@supabase/supabase-js';
+import { IS_APP } from './platform';
 
 /**
  * Supabase browser client, loaded and created lazily, and only when both env
@@ -23,7 +24,10 @@ const url = env.PUBLIC_SUPABASE_URL;
 const anonKey = env.PUBLIC_SUPABASE_ANON_KEY;
 
 /** Synchronous, because callers use it to decide whether to render login UI. */
-export const authEnabled = Boolean(browser && url && anonKey);
+// Off in the native app until it has its own sign-in: the website's flows
+// return to `window.location.origin`, which in the app is not a web address
+// (frontend/MOBILE.md). The app reads signed-out — the whole library is public.
+export const authEnabled = Boolean(browser && !IS_APP && url && anonKey);
 
 let client: SupabaseClient | null = null;
 /** The in-flight load, so concurrent callers share one import and one client. */

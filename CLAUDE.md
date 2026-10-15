@@ -11,6 +11,9 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
   *standalone* **Django REST (DRF) API**. Postgres on Supabase, deployed on
   Render. SvelteKit is **not** the server: no `+page.server.ts`, no form
   actions, no `locals`. Page data comes from the Django API via `$lib/api.ts`.
+- **Phone apps**: the same reader, built a second way (`npm run app:build`, no
+  prerender) and wrapped by Capacitor for iOS + Android. Native APIs only via
+  `$lib/platform`; see `frontend/MOBILE.md`.
 - **Auth**: a Supabase JWT (localStorage) sent as a Bearer token and validated
   by Django (`accounts.authentication.SupabaseJWTAuthentication` — lenient: a
   bad token resolves to anonymous, never a 500). Admin is gated by an email
