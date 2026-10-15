@@ -81,8 +81,9 @@ EXPORT_PILOT = frozenset({
     ("sons-of-the-king-2", "en"),
     ("sons-of-the-king-3", "en"),
     # The Lamplighters of Gloamhaven — the founder's own fantasy series, with
-    # its maps and a plate per chapter; credited "© James DeGreef and Ochorus".
+    # its maps and a plate per chapter in every volume; credited "© James DeGreef and Ochorus".
     ("fire-against-the-dark", "en"),
+    ("the-black-stair", "en"),
     # The young-reader retellings of public-domain classics, in English. The
     # telling is Ochorus's, so each carries a "© Ochorus … retelling" attribution
     # (and the Teens editions Crossway's ESV notice); the About the Author page
