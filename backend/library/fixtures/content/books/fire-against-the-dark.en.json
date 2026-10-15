@@ -53,7 +53,7 @@
   "source_url": "",
   "attribution": "© James DeGreef and Ochorus. An Ochorus Original, written for young readers, free to read and share. Book 1 of The Lamplighters of Gloamhaven.",
   "cover_url": "/covers/art/fire-against-the-dark.jpg",
-  "pdf_url": "",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/fire-against-the-dark.pdf?download=fire-against-the-dark.pdf",
   "cover_color": "#a85d1a",
   "series": [
    "the-lamplighters-of-gloamhaven"
@@ -62,7 +62,7 @@
   "sort_order": 180,
   "is_published": true,
   "created_at": "2026-10-10T23:22:08.176Z",
-  "updated_at": "2026-10-14T19:37:12.720Z"
+  "updated_at": "2026-10-15T17:16:33.315Z"
  }
 },
 {
