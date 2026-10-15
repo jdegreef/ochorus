@@ -238,6 +238,28 @@ export interface AdminAuthorWithoutBio {
 export const getAdminAuthorsWithoutBio = () =>
 	apiFetch<AdminAuthorWithoutBio[]>('/api/admin/authors-without-bio/');
 
+// The cover wall: every published edition's cover, what kind of picture it is,
+// and — for a museum painting — the painter. Read-only; see the backend view.
+export type CoverTier = 'painting' | 'original' | 'derived' | 'designed' | 'plate' | 'none' | 'other';
+export interface AdminCoverArtwork {
+	artist: string;
+	title: string;
+	year: string;
+	source: string;
+	institution: string;
+	object_id: number;
+}
+export interface AdminCover {
+	slug: string;
+	language: string;
+	title: string;
+	author: { slug: string; name: string };
+	cover_url: string;
+	tier: CoverTier;
+	artwork: AdminCoverArtwork | null;
+}
+export const getAdminCovers = () => apiFetch<AdminCover[]>('/api/admin/covers/');
+
 // Per-language health: one composite score (readiness + coverage + review +
 // engagement) per language, ranked, so the dashboard can lead with where the
 // next hour of work should go. Read-only and derived — see the backend view.

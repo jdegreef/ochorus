@@ -85,7 +85,7 @@
    "reference": "Hebrews 4:16",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 0,
+   "block_index": 11,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -116,35 +116,35 @@
    "reference": "Hebrews 4:16",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 6,
+   "block_index": 17,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Matthew 6:9",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 6,
+   "block_index": 17,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Matthew 6:10",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 6,
+   "block_index": 17,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 Timothy 6:15",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 7,
+   "block_index": 18,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Revelation 1:5",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 7,
+   "block_index": 18,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -211,49 +211,49 @@
    "reference": "Matthew 15:27",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 17,
+   "block_index": 28,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Isaiah 25:6",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 17,
+   "block_index": 28,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Isaiah 55:8",
    "status": "self_rendered",
    "chapter_order": 2,
-   "block_index": 17,
+   "block_index": 28,
    "why": "55:9 opening verbatim, rest re-personed (his/your)"
   },
   {
    "reference": "Isaiah 55:9",
    "status": "self_rendered",
    "chapter_order": 2,
-   "block_index": 17,
+   "block_index": 28,
    "why": "55:9 opening verbatim, rest re-personed (his/your)"
   },
   {
    "reference": "Ephesians 3:20",
    "status": "self_rendered",
    "chapter_order": 2,
-   "block_index": 17,
+   "block_index": 28,
    "why": "“okusinga byonna bye tusaba ne bye tulowooza”"
   },
   {
    "reference": "John 4:24",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 19,
+   "block_index": 30,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Proverbs 15:8",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 19,
+   "block_index": 30,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -278,21 +278,21 @@
    "reference": "Psalms 95:6",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 20,
+   "block_index": 31,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 95:7",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 20,
+   "block_index": 31,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 96:9",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 20,
+   "block_index": 31,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -305,7 +305,7 @@
    "reference": "Hebrews 12:20",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 21,
+   "block_index": 32,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -330,7 +330,7 @@
    "reference": "Isaiah 55:6",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 28,
+   "block_index": 39,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -343,7 +343,7 @@
    "reference": "Hosea 14:2",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 29,
+   "block_index": 40,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -362,21 +362,21 @@
    "reference": "Hebrews 4:16",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 29,
+   "block_index": 40,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Isaiah 55:1",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 30,
+   "block_index": 41,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Matthew 27:46",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 31,
+   "block_index": 42,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -389,7 +389,7 @@
    "reference": "Hebrews 4:16",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 32,
+   "block_index": 43,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -408,63 +408,63 @@
    "reference": "Romans 5:21",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 35,
+   "block_index": 46,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Hebrews 7:25",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 35,
+   "block_index": 46,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 John 4:8",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 35,
+   "block_index": 46,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Revelation 4:3",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 35,
+   "block_index": 46,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Ezekiel 1:22",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 36,
+   "block_index": 47,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Romans 9:15",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 36,
+   "block_index": 47,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Romans 9:20",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 36,
+   "block_index": 47,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Romans 9:21",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 36,
+   "block_index": 47,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Daniel 4:35",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 36,
+   "block_index": 47,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -477,14 +477,14 @@
    "reference": "Malachi 3:17",
    "status": "self_rendered",
    "chapter_order": 2,
-   "block_index": 36,
+   "block_index": 47,
    "why": "“ku lunaku lwe ndibakyusizaako okuba ekintu kyange eky’omuwendo” inside Spurgeon’s words for God (OLCB plural object)"
   },
   {
    "reference": "Psalms 89:34",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 37,
+   "block_index": 48,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -497,7 +497,7 @@
    "reference": "Matthew 7:7",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 38,
+   "block_index": 49,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -516,7 +516,7 @@
    "reference": "2 Samuel 23:5",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 39,
+   "block_index": 50,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -529,28 +529,28 @@
    "reference": "Hebrews 12:24",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 39,
+   "block_index": 50,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Hebrews 4:16",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 44,
+   "block_index": 55,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Ephesians 1:17",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 48,
+   "block_index": 59,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Revelation 2:13",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 48,
+   "block_index": 59,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -677,7 +677,7 @@
    "reference": "Exodus 20:17",
    "status": "mined",
    "chapter_order": 3,
-   "block_index": 16,
+   "block_index": 79,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -780,7 +780,7 @@
    "reference": "Romans 8:32",
    "status": "mined",
    "chapter_order": 3,
-   "block_index": 26,
+   "block_index": 89,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -823,7 +823,7 @@
    "reference": "2 Corinthians 12:9",
    "status": "mined",
    "chapter_order": 3,
-   "block_index": 34,
+   "block_index": 97,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -866,7 +866,7 @@
    "reference": "Revelation 5:1",
    "status": "mined",
    "chapter_order": 3,
-   "block_index": 41,
+   "block_index": 104,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -1053,7 +1053,7 @@
    "reference": "Job 42:8",
    "status": "self_rendered",
    "chapter_order": 3,
-   "block_index": 60,
+   "block_index": 123,
    "why": "KJV-shaped (\"captivity\"); OLCB is worded differently"
   },
   {
@@ -1252,7 +1252,7 @@
    "reference": "Genesis 32:26",
    "status": "mined",
    "chapter_order": 4,
-   "block_index": 11,
+   "block_index": 138,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -1367,7 +1367,7 @@
    "reference": "2 Kings 19:14",
    "status": "mined",
    "chapter_order": 4,
-   "block_index": 18,
+   "block_index": 145,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -1398,7 +1398,7 @@
    "reference": "Psalms 74:11",
    "status": "self_rendered",
    "chapter_order": 4,
-   "block_index": 18,
+   "block_index": 145,
    "why": "contains OLCB omukono gwo ogwa ddyo mu kifuba kyo, recast as imperative"
   },
   {
@@ -1429,7 +1429,7 @@
    "reference": "Lamentations 4:2",
    "status": "self_rendered",
    "chapter_order": 4,
-   "block_index": 19,
+   "block_index": 146,
    "why": "opens and closes on OLCB wording (Abaana ba Sayuuni ab’omuwendo ... ensuwa ez’ebbumba, omulimu gw’emikono gy’omubumbi), middle reshaped"
   },
   {
@@ -1448,7 +1448,7 @@
    "reference": "Psalms 71:18",
    "status": "mined",
    "chapter_order": 4,
-   "block_index": 20,
+   "block_index": 147,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -1581,7 +1581,7 @@
    "reference": "James 4:2",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 4,
+   "block_index": 160,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -1612,7 +1612,7 @@
    "reference": "Matthew 11:12",
    "status": "self_rendered",
    "chapter_order": 5,
-   "block_index": 2,
+   "block_index": 158,
    "why": "unmarked; Spurgeon swaps in \"the kingdom of the devil\"; the OLCB tail is kept"
   },
   {
@@ -1625,28 +1625,28 @@
    "reference": "James 4:2",
    "status": "self_rendered",
    "chapter_order": 5,
-   "block_index": 5,
+   "block_index": 161,
    "why": "re-personed to \"they\" (\"Baagala ebintu ne batabifuna\")"
   },
   {
    "reference": "James 4:2",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 8,
+   "block_index": 164,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "James 4:3",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 8,
+   "block_index": 164,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "James 4:1",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 9,
+   "block_index": 165,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -1659,21 +1659,21 @@
    "reference": "James 4:2",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 9,
+   "block_index": 165,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 34:10",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 10,
+   "block_index": 166,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "James 4:2",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 11,
+   "block_index": 167,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -1692,7 +1692,7 @@
    "reference": "James 4:3",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 15,
+   "block_index": 171,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -1711,28 +1711,28 @@
    "reference": "Psalms 37:8",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 19,
+   "block_index": 175,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 37:10",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 19,
+   "block_index": 175,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 37:11",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 19,
+   "block_index": 175,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "James 4:2",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 21,
+   "block_index": 177,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -1745,21 +1745,21 @@
    "reference": "James 4:5",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 26,
+   "block_index": 182,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "James 4:2",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 27,
+   "block_index": 183,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "James 4:3",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 30,
+   "block_index": 186,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -1772,21 +1772,21 @@
    "reference": "James 4:2",
    "status": "self_rendered",
    "chapter_order": 5,
-   "block_index": 30,
+   "block_index": 186,
    "why": "\"Temulina\" + two OLCB pieces joined with \"oba\""
   },
   {
    "reference": "Matthew 7:7",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 34,
+   "block_index": 190,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 2:8",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 35,
+   "block_index": 191,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -1805,21 +1805,21 @@
    "reference": "Exodus 25:4",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 38,
+   "block_index": 194,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Daniel 3:5",
    "status": "self_rendered",
    "chapter_order": 5,
-   "block_index": 38,
+   "block_index": 194,
    "why": "unmarked; the instrument list"
   },
   {
    "reference": "John 3:8",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 38,
+   "block_index": 194,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -1832,28 +1832,28 @@
    "reference": "Psalms 107:19",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 44,
+   "block_index": 200,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 107:26",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 44,
+   "block_index": 200,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 107:27",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 44,
+   "block_index": 200,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 107:28",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 44,
+   "block_index": 200,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -1866,7 +1866,7 @@
    "reference": "Matthew 11:27",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 46,
+   "block_index": 202,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -1885,70 +1885,70 @@
    "reference": "Psalms 66:6",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 46,
+   "block_index": 202,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Hosea 12:4",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 46,
+   "block_index": 202,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Hebrews 13:5",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 46,
+   "block_index": 202,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Joshua 1:5",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 46,
+   "block_index": 202,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "2 Peter 1:20",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 47,
+   "block_index": 203,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 Kings 3:5",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 47,
+   "block_index": 203,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "James 1:5",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 47,
+   "block_index": 203,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Proverbs 3:16",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 47,
+   "block_index": 203,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Matthew 6:33",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 47,
+   "block_index": 203,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Genesis 17:18",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 48,
+   "block_index": 204,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -1967,56 +1967,56 @@
    "reference": "Psalms 21:4",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 49,
+   "block_index": 205,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "2 Samuel 7:18",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 49,
+   "block_index": 205,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Mark 2:5",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 49,
+   "block_index": 205,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Luke 23:42",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 50,
+   "block_index": 206,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Luke 23:43",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 50,
+   "block_index": 206,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Luke 15:19",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 51,
+   "block_index": 207,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Luke 15:24",
    "status": "self_rendered",
    "chapter_order": 5,
-   "block_index": 51,
+   "block_index": 207,
    "why": "two OLCB spans joined in Spurgeon's order"
   },
   {
    "reference": "Luke 15:22",
    "status": "self_rendered",
    "chapter_order": 5,
-   "block_index": 51,
+   "block_index": 207,
    "why": "two OLCB spans joined in Spurgeon's order"
   },
   {
@@ -2029,91 +2029,91 @@
    "reference": "Revelation 8:1",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 52,
+   "block_index": 208,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Revelation 8:2",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 52,
+   "block_index": 208,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Revelation 8:3",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 53,
+   "block_index": 209,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Revelation 8:4",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 53,
+   "block_index": 209,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Revelation 8:5",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 54,
+   "block_index": 210,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Revelation 8:6",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 54,
+   "block_index": 210,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Matthew 6:10",
    "status": "self_rendered",
    "chapter_order": 5,
-   "block_index": 54,
+   "block_index": 210,
    "why": "unmarked; \"His will shall be done…\" with the OLCB tail kept"
   },
   {
    "reference": "1 John 3:22",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 0,
+   "block_index": 211,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 John 3:23",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 0,
+   "block_index": 211,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 John 3:24",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 0,
+   "block_index": 211,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 Thessalonians 5:25",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 1,
+   "block_index": 212,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Isaiah 1:15",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 2,
+   "block_index": 213,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Isaiah 1:13",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 2,
+   "block_index": 213,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2126,7 +2126,7 @@
    "reference": "1 John 3:22",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 3,
+   "block_index": 214,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2139,21 +2139,21 @@
    "reference": "1 John 3:22",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 8,
+   "block_index": 219,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Judges 10:13",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 8,
+   "block_index": 219,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Judges 10:14",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 8,
+   "block_index": 219,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2172,42 +2172,42 @@
    "reference": "Psalms 81:13",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 10,
+   "block_index": 221,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 81:14",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 10,
+   "block_index": 221,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 81:16",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 10,
+   "block_index": 221,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Matthew 21:22",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 10,
+   "block_index": 221,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Leviticus 26:23",
    "status": "self_rendered",
    "chapter_order": 6,
-   "block_index": 11,
+   "block_index": 222,
    "why": "“Bwe” + OLCB fragments; OLCB “ndibalaga obukambwe” (show hostility) for KJV “walk contrary”"
   },
   {
    "reference": "Leviticus 26:24",
    "status": "self_rendered",
    "chapter_order": 6,
-   "block_index": 11,
+   "block_index": 222,
    "why": "“Bwe” + OLCB fragments; OLCB “ndibalaga obukambwe” (show hostility) for KJV “walk contrary”"
   },
   {
@@ -2220,14 +2220,14 @@
    "reference": "Psalms 26:6",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 11,
+   "block_index": 222,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 John 3:22",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 12,
+   "block_index": 223,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2240,7 +2240,7 @@
    "reference": "Numbers 11:33",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 14,
+   "block_index": 225,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2253,7 +2253,7 @@
    "reference": "Matthew 26:39",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 14,
+   "block_index": 225,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2266,49 +2266,49 @@
    "reference": "1 John 3:23",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 15,
+   "block_index": 226,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Hebrews 11:6",
    "status": "self_rendered",
    "chapter_order": 6,
-   "block_index": 15,
+   "block_index": 226,
    "why": "unquoted, re-personed"
   },
   {
    "reference": "Matthew 9:29",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 15,
+   "block_index": 226,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "James 1:5",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 15,
+   "block_index": 226,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "James 1:6",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 15,
+   "block_index": 226,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "James 1:7",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 15,
+   "block_index": 226,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "John 14:14",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 16,
+   "block_index": 227,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2321,7 +2321,7 @@
    "reference": "2 Corinthians 4:18",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 22,
+   "block_index": 233,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2340,28 +2340,28 @@
    "reference": "Psalms 37:5",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 23,
+   "block_index": 234,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 John 3:23",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 23,
+   "block_index": 234,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 John 4:8",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 24,
+   "block_index": 235,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Matthew 7:7",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 24,
+   "block_index": 235,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2386,7 +2386,7 @@
    "reference": "1 John 3:24",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 27,
+   "block_index": 238,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2399,28 +2399,28 @@
    "reference": "John 15:7",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 27,
+   "block_index": 238,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 37:4",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 29,
+   "block_index": 240,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Isaiah 30:20",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 29,
+   "block_index": 240,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 John 3:24",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 30,
+   "block_index": 241,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2433,14 +2433,14 @@
    "reference": "Philippians 2:5",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 31,
+   "block_index": 242,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "John 11:42",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 31,
+   "block_index": 242,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2453,14 +2453,14 @@
    "reference": "1 John 3:21",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 35,
+   "block_index": 246,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 John 3:22",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 35,
+   "block_index": 246,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2473,14 +2473,14 @@
    "reference": "Psalms 147:3",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 36,
+   "block_index": 247,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 147:4",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 36,
+   "block_index": 247,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2499,35 +2499,35 @@
    "reference": "Genesis 8:9",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 41,
+   "block_index": 252,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 John 3:24",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 41,
+   "block_index": 252,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 Corinthians 2:11",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 41,
+   "block_index": 252,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Romans 8:26",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 41,
+   "block_index": 252,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Romans 8:27",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 41,
+   "block_index": 252,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2540,7 +2540,7 @@
    "reference": "Acts 16:7",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 42,
+   "block_index": 253,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2571,7 +2571,7 @@
    "reference": "Genesis 16:13",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 49,
+   "block_index": 260,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2590,7 +2590,7 @@
    "reference": "Matthew 13:30",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 51,
+   "block_index": 262,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2621,112 +2621,112 @@
    "reference": "Jude 20:20",
    "status": "mined",
    "chapter_order": 7,
-   "block_index": 0,
+   "block_index": 264,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Jude 20:20",
    "status": "mined",
    "chapter_order": 7,
-   "block_index": 3,
+   "block_index": 267,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Jude 21:21",
    "status": "mined",
    "chapter_order": 7,
-   "block_index": 4,
+   "block_index": 268,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Jude 20:20",
    "status": "mined",
    "chapter_order": 7,
-   "block_index": 8,
+   "block_index": 272,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Jude 20:20",
    "status": "mined",
    "chapter_order": 7,
-   "block_index": 11,
+   "block_index": 275,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Jude 20:20",
    "status": "mined",
    "chapter_order": 7,
-   "block_index": 18,
+   "block_index": 282,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Jude 20:20",
    "status": "mined",
    "chapter_order": 7,
-   "block_index": 24,
+   "block_index": 288,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Jude 20:20",
    "status": "mined",
    "chapter_order": 7,
-   "block_index": 27,
+   "block_index": 291,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Jude 20:20",
    "status": "mined",
    "chapter_order": 7,
-   "block_index": 51,
+   "block_index": 315,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Joshua 24:15",
    "status": "self_rendered",
    "chapter_order": 7,
-   "block_index": 2,
+   "block_index": 266,
    "why": "“Abalala bakole nga bwe baagala” is Spurgeon’s own lead-in (also in his English, not in the verse); rest follows OLCB “naye nze n’ennyumba yange, ffe tunaaweerezanga Mukama” (dropped OLCB’s final “Katonda”)"
   },
   {
    "reference": "Genesis 32:26",
    "status": "mined",
    "chapter_order": 7,
-   "block_index": 17,
+   "block_index": 281,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Genesis 32:26",
    "status": "mined",
    "chapter_order": 7,
-   "block_index": 39,
+   "block_index": 303,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 103:14",
    "status": "mined",
    "chapter_order": 7,
-   "block_index": 20,
+   "block_index": 284,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 103:13",
    "status": "mined",
    "chapter_order": 7,
-   "block_index": 20,
+   "block_index": 284,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 34:15",
    "status": "mined",
    "chapter_order": 7,
-   "block_index": 21,
+   "block_index": 285,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "John 4:24",
    "status": "self_rendered",
    "chapter_order": 7,
-   "block_index": 36,
+   "block_index": 300,
    "why": "two verbatim OLCB fragments joined (“Katonda Mwoyo n’abo abamusinza kibagwanira okumusinza mu mwoyo ne mu mazima” + “kubanga Kitaffe anoonya abo abamusinza”), following Spurgeon’s blend"
   },
   {
@@ -2739,14 +2739,14 @@
    "reference": "Judges 5:23",
    "status": "mined",
    "chapter_order": 7,
-   "block_index": 54,
+   "block_index": 318,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Isaiah 45:19",
    "status": "mined",
    "chapter_order": 7,
-   "block_index": 57,
+   "block_index": 321,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2759,7 +2759,7 @@
    "reference": "Romans 8:8",
    "status": "self_rendered",
    "chapter_order": 7,
-   "block_index": 9,
+   "block_index": 273,
    "why": "unquoted; “abo abafugibwa omubiri tebayinza kusanyusa Katonda” from OLCB"
   },
   {
@@ -2778,7 +2778,7 @@
    "reference": "Philippians 4:19",
    "status": "self_rendered",
    "chapter_order": 7,
-   "block_index": 7,
+   "block_index": 271,
    "why": "unquoted; OLCB wording, but OLCB has no “in glory”"
   },
   {
@@ -2827,7 +2827,7 @@
    "reference": "John 2:15",
    "status": "self_rendered",
    "chapter_order": 7,
-   "block_index": 42,
+   "block_index": 306,
    "why": "unquoted; “addira emiguwa n’agifunyaafunya ne giba ng’embooko”"
   },
   {
@@ -2840,14 +2840,14 @@
    "reference": "Romans 8:27",
    "status": "mined",
    "chapter_order": 7,
-   "block_index": 47,
+   "block_index": 311,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Romans 3:4",
    "status": "mined",
    "chapter_order": 7,
-   "block_index": 48,
+   "block_index": 312,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2860,14 +2860,14 @@
    "reference": "Acts 2:1",
    "status": "self_rendered",
    "chapter_order": 7,
-   "block_index": 52,
+   "block_index": 316,
    "why": "unquoted; “okuwuuma, nga kuli ng’empewo ey’amaanyi ennyo ekunta” verbatim, plus OLCB-style framing"
   },
   {
    "reference": "Acts 2:2",
    "status": "self_rendered",
    "chapter_order": 7,
-   "block_index": 52,
+   "block_index": 316,
    "why": "unquoted; “okuwuuma, nga kuli ng’empewo ey’amaanyi ennyo ekunta” verbatim, plus OLCB-style framing"
   },
   {
@@ -2892,28 +2892,28 @@
    "reference": "1 Thessalonians 5:17",
    "status": "mined",
    "chapter_order": 8,
-   "block_index": 0,
+   "block_index": 323,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 Thessalonians 5:16",
    "status": "mined",
    "chapter_order": 8,
-   "block_index": 1,
+   "block_index": 324,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 Thessalonians 5:18",
    "status": "mined",
    "chapter_order": 8,
-   "block_index": 2,
+   "block_index": 325,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Exodus 28:2",
    "status": "mined",
    "chapter_order": 8,
-   "block_index": 2,
+   "block_index": 325,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2926,14 +2926,14 @@
    "reference": "Exodus 14:15",
    "status": "mined",
    "chapter_order": 8,
-   "block_index": 4,
+   "block_index": 327,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Acts 17:24",
    "status": "mined",
    "chapter_order": 8,
-   "block_index": 6,
+   "block_index": 329,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -2958,7 +2958,7 @@
    "reference": "Genesis 8:11",
    "status": "self_rendered",
    "chapter_order": 8,
-   "block_index": 13,
+   "block_index": 336,
    "why": "dove “mu kamwa kaalyo akakoola” k’omuzeyituuni"
   },
   {
@@ -3013,7 +3013,7 @@
    "reference": "Matthew 6:33",
    "status": "mined",
    "chapter_order": 8,
-   "block_index": 33,
+   "block_index": 356,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3056,42 +3056,42 @@
    "reference": "Revelation 3:17",
    "status": "mined",
    "chapter_order": 8,
-   "block_index": 38,
+   "block_index": 361,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Revelation 3:18",
    "status": "self_rendered",
    "chapter_order": 8,
-   "block_index": 38,
+   "block_index": 361,
    "why": "naked/poor/miserable + buy gold and raiment, with OLCB words (obwereere, omwavu, munaku asaasirwa, onguleko, ebya zaabu, ebyambalo); “olyoke ogaggawale” verbatim"
   },
   {
    "reference": "1 John 3:17",
    "status": "self_rendered",
    "chapter_order": 8,
-   "block_index": 40,
+   "block_index": 363,
    "why": "“how dwelleth the love of God in us” = okwagala kwa Katonda, kuyinza kutya okuba mu ffe? (OLCB: mu ye)"
   },
   {
    "reference": "Psalms 127:1",
    "status": "mined",
    "chapter_order": 8,
-   "block_index": 41,
+   "block_index": 364,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 127:2",
    "status": "mined",
    "chapter_order": 8,
-   "block_index": 41,
+   "block_index": 364,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Matthew 6:11",
    "status": "mined",
    "chapter_order": 8,
-   "block_index": 41,
+   "block_index": 364,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3134,14 +3134,14 @@
    "reference": "Revelation 3:11",
    "status": "mined",
    "chapter_order": 8,
-   "block_index": 49,
+   "block_index": 372,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "2 Corinthians 5:10",
    "status": "mined",
    "chapter_order": 8,
-   "block_index": 49,
+   "block_index": 372,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3154,7 +3154,7 @@
    "reference": "Mark 11:24",
    "status": "mined",
    "chapter_order": 9,
-   "block_index": 0,
+   "block_index": 374,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3179,14 +3179,14 @@
    "reference": "Mark 11:24",
    "status": "mined",
    "chapter_order": 9,
-   "block_index": 3,
+   "block_index": 377,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Esther 5:6",
    "status": "mined",
    "chapter_order": 9,
-   "block_index": 4,
+   "block_index": 378,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3247,14 +3247,14 @@
    "reference": "Matthew 6:9",
    "status": "mined",
    "chapter_order": 9,
-   "block_index": 7,
+   "block_index": 381,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Matthew 6:10",
    "status": "mined",
    "chapter_order": 9,
-   "block_index": 7,
+   "block_index": 381,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3267,7 +3267,7 @@
    "reference": "Genesis 1:3",
    "status": "mined",
    "chapter_order": 9,
-   "block_index": 8,
+   "block_index": 382,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3286,7 +3286,7 @@
    "reference": "1 John 5:15",
    "status": "mined",
    "chapter_order": 9,
-   "block_index": 8,
+   "block_index": 382,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3323,7 +3323,7 @@
    "reference": "Habakkuk 2:1",
    "status": "self_rendered",
    "chapter_order": 9,
-   "block_index": 9,
+   "block_index": 383,
    "why": "“ndiyimirira mu kifo kyange we ntera okubeera ntunule” verbatim + “nnindirire Katonda wange, mpulire ky’aligamba emmeeme yange” adapted"
   },
   {
@@ -3348,7 +3348,7 @@
    "reference": "Matthew 6:10",
    "status": "mined",
    "chapter_order": 9,
-   "block_index": 8,
+   "block_index": 382,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3361,7 +3361,7 @@
    "reference": "Mark 11:24",
    "status": "mined",
    "chapter_order": 9,
-   "block_index": 10,
+   "block_index": 384,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3380,7 +3380,7 @@
    "reference": "Jeremiah 8:6",
    "status": "mined",
    "chapter_order": 9,
-   "block_index": 11,
+   "block_index": 385,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3429,7 +3429,7 @@
    "reference": "Judges 5:15",
    "status": "mined",
    "chapter_order": 9,
-   "block_index": 13,
+   "block_index": 387,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3472,7 +3472,7 @@
    "reference": "Isaiah 45:19",
    "status": "mined",
    "chapter_order": 9,
-   "block_index": 14,
+   "block_index": 388,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3485,7 +3485,7 @@
    "reference": "Isaiah 45:11",
    "status": "mined",
    "chapter_order": 9,
-   "block_index": 14,
+   "block_index": 388,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3540,7 +3540,7 @@
    "reference": "Psalms 25:11",
    "status": "mined",
    "chapter_order": 9,
-   "block_index": 16,
+   "block_index": 390,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3565,7 +3565,7 @@
    "reference": "Hosea 14:2",
    "status": "self_rendered",
    "chapter_order": 9,
-   "block_index": 16,
+   "block_index": 390,
    "why": "“Tusonyiwe ebibi byaffe byonna, otwanirize n’ekisa” verbatim + “love us freely” from 14:4 re-personed"
   },
   {
@@ -3578,49 +3578,49 @@
    "reference": "Romans 9:5",
    "status": "mined",
    "chapter_order": 9,
-   "block_index": 16,
+   "block_index": 390,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 141:5",
    "status": "mined",
    "chapter_order": 10,
-   "block_index": 0,
+   "block_index": 391,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Matthew 6:9",
    "status": "mined",
    "chapter_order": 10,
-   "block_index": 4,
+   "block_index": 395,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Romans 8:27",
    "status": "self_rendered",
    "chapter_order": 10,
-   "block_index": 6,
+   "block_index": 397,
    "why": "unquoted; verbatim OLCB clause \"yeegayiririra abatukuvu ng’okusiima kwa Katonda bwe kuli\""
   },
   {
    "reference": "Ephesians 6:18",
    "status": "mined",
    "chapter_order": 10,
-   "block_index": 7,
+   "block_index": 398,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Isaiah 62:6",
    "status": "self_rendered",
    "chapter_order": 10,
-   "block_index": 7,
+   "block_index": 398,
    "why": "unquoted; OLCB 62:7 clause verbatim, subject Mukama added"
   },
   {
    "reference": "Isaiah 62:7",
    "status": "self_rendered",
    "chapter_order": 10,
-   "block_index": 7,
+   "block_index": 398,
    "why": "unquoted; OLCB 62:7 clause verbatim, subject Mukama added"
   },
   {
@@ -3633,28 +3633,28 @@
    "reference": "John 13:34",
    "status": "mined",
    "chapter_order": 10,
-   "block_index": 8,
+   "block_index": 399,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 Thessalonians 1:3",
    "status": "self_rendered",
    "chapter_order": 10,
-   "block_index": 9,
+   "block_index": 400,
    "why": "unquoted, verbatim phrase with \"gwabwe\""
   },
   {
    "reference": "Romans 12:5",
    "status": "mined",
    "chapter_order": 10,
-   "block_index": 10,
+   "block_index": 401,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Romans 14:7",
    "status": "self_rendered",
    "chapter_order": 10,
-   "block_index": 11,
+   "block_index": 402,
    "why": "unquoted, \"mu Kkanisa ya Katonda\" inserted"
   },
   {
@@ -3679,7 +3679,7 @@
    "reference": "Isaiah 63:3",
    "status": "mined",
    "chapter_order": 10,
-   "block_index": 17,
+   "block_index": 408,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3722,7 +3722,7 @@
    "reference": "Isaiah 62:6",
    "status": "mined",
    "chapter_order": 10,
-   "block_index": 19,
+   "block_index": 410,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3753,7 +3753,7 @@
    "reference": "1 Thessalonians 5:25",
    "status": "mined",
    "chapter_order": 10,
-   "block_index": 23,
+   "block_index": 414,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3778,28 +3778,28 @@
    "reference": "Psalms 139:23",
    "status": "mined",
    "chapter_order": 10,
-   "block_index": 30,
+   "block_index": 421,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 139:24",
    "status": "mined",
    "chapter_order": 10,
-   "block_index": 30,
+   "block_index": 421,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Ezra 7:22",
    "status": "mined",
    "chapter_order": 10,
-   "block_index": 31,
+   "block_index": 422,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Acts 20:27",
    "status": "self_rendered",
    "chapter_order": 10,
-   "block_index": 32,
+   "block_index": 423,
    "why": "unquoted, \"kwonna\" added"
   },
   {
@@ -3812,7 +3812,7 @@
    "reference": "Psalms 141:5",
    "status": "mined",
    "chapter_order": 10,
-   "block_index": 35,
+   "block_index": 426,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3825,7 +3825,7 @@
    "reference": "Psalms 141:5",
    "status": "mined",
    "chapter_order": 10,
-   "block_index": 40,
+   "block_index": 431,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3838,7 +3838,7 @@
    "reference": "Revelation 3:11",
    "status": "mined",
    "chapter_order": 10,
-   "block_index": 42,
+   "block_index": 433,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3875,7 +3875,7 @@
    "reference": "2 Timothy 4:2",
    "status": "self_rendered",
    "chapter_order": 10,
-   "block_index": 53,
+   "block_index": 444,
    "why": "mwetegefu→beetegefu"
   },
   {
@@ -3888,7 +3888,7 @@
    "reference": "Mark 9:23",
    "status": "mined",
    "chapter_order": 10,
-   "block_index": 56,
+   "block_index": 447,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3907,28 +3907,28 @@
    "reference": "2 Corinthians 1:8",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 1,
+   "block_index": 449,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "2 Corinthians 1:9",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 1,
+   "block_index": 449,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "2 Corinthians 1:10",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 2,
+   "block_index": 450,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Hebrews 13:8",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 3,
+   "block_index": 451,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3947,14 +3947,14 @@
    "reference": "2 Corinthians 1:11",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 5,
+   "block_index": 453,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Ezekiel 36:37",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 8,
+   "block_index": 456,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -3997,21 +3997,21 @@
    "reference": "Isaiah 6:3",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 10,
+   "block_index": 458,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 19:5",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 12,
+   "block_index": 460,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Matthew 18:19",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 14,
+   "block_index": 462,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4024,7 +4024,7 @@
    "reference": "Acts 2:1",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 14,
+   "block_index": 462,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4037,28 +4037,28 @@
    "reference": "Ephesians 4:16",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 17,
+   "block_index": 465,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Hebrews 10:25",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 20,
+   "block_index": 468,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 Thessalonians 5:25",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 21,
+   "block_index": 469,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 Kings 22:31",
    "status": "self_rendered",
    "chapter_order": 11,
-   "block_index": 21,
+   "block_index": 469,
    "why": "OLCB up to \"wabula\", then Spurgeon's \"the ministers of God\" in own words"
   },
   {
@@ -4095,7 +4095,7 @@
    "reference": "Numbers 23:23",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 30,
+   "block_index": 478,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4108,7 +4108,7 @@
    "reference": "Psalms 78:9",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 30,
+   "block_index": 478,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4145,7 +4145,7 @@
    "reference": "2 Corinthians 1:11",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 31,
+   "block_index": 479,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4176,21 +4176,21 @@
    "reference": "Psalms 34:2",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 34,
+   "block_index": 482,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 34:3",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 34,
+   "block_index": 482,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 34:6",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 34,
+   "block_index": 482,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4203,14 +4203,14 @@
    "reference": "2 Corinthians 1:11",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 39,
+   "block_index": 487,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Matthew 13:52",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 42,
+   "block_index": 490,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4229,7 +4229,7 @@
    "reference": "Ephesians 4:21",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 46,
+   "block_index": 494,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4248,21 +4248,21 @@
    "reference": "Acts 20:27",
    "status": "self_rendered",
    "chapter_order": 11,
-   "block_index": 50,
+   "block_index": 498,
    "why": "OLCB pieces; OLCB \"okwagala kwa Katonda\" (will) for \"counsel\""
   },
   {
    "reference": "2 Timothy 4:21",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 52,
+   "block_index": 500,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "2 Corinthians 1:12",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 53,
+   "block_index": 501,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4275,14 +4275,14 @@
    "reference": "2 Corinthians 1:12",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 57,
+   "block_index": 505,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "2 Corinthians 1:12",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 59,
+   "block_index": 507,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4295,7 +4295,7 @@
    "reference": "2 Corinthians 1:12",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 61,
+   "block_index": 509,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4308,14 +4308,14 @@
    "reference": "Matthew 6:10",
    "status": "self_rendered",
    "chapter_order": 11,
-   "block_index": 63,
+   "block_index": 511,
    "why": "third person; \"bikolebwe mu nsi, nga bwe bikolebwa mu ggulu\" verbatim"
   },
   {
    "reference": "John 3:18",
    "status": "mined",
    "chapter_order": 11,
-   "block_index": 64,
+   "block_index": 512,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4328,49 +4328,49 @@
    "reference": "Philippians 4:6",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 0,
+   "block_index": 513,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:7",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 0,
+   "block_index": 513,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:6",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 4,
+   "block_index": 517,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:6",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 5,
+   "block_index": 518,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:7",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 5,
+   "block_index": 518,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Matthew 28:19",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 8,
+   "block_index": 521,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Job 1:21",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 9,
+   "block_index": 522,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4383,28 +4383,28 @@
    "reference": "Psalms 37:3",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 10,
+   "block_index": 523,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Matthew 6:26",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 10,
+   "block_index": 523,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:6",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 13,
+   "block_index": 526,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Matthew 5:36",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 13,
+   "block_index": 526,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4417,49 +4417,49 @@
    "reference": "Philippians 4:6",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 16,
+   "block_index": 529,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:6",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 18,
+   "block_index": 531,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Matthew 10:30",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 19,
+   "block_index": 532,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:6",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 20,
+   "block_index": 533,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:6",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 21,
+   "block_index": 534,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:6",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 22,
+   "block_index": 535,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Hebrews 11:6",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 24,
+   "block_index": 537,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4472,84 +4472,84 @@
    "reference": "Philippians 4:6",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 24,
+   "block_index": 537,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Proverbs 27:10",
    "status": "self_rendered",
    "chapter_order": 12,
-   "block_index": 25,
+   "block_index": 538,
    "why": "OLCB phrase \"ewa muganda wo ng’ogudde mu mitawaana\" framed by \"obutagenda\"; OLCB sense \"lest you be shamed at your brother’s\""
   },
   {
    "reference": "Philippians 4:6",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 26,
+   "block_index": 539,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:7",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 27,
+   "block_index": 540,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:7",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 28,
+   "block_index": 541,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:7",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 29,
+   "block_index": 542,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:7",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 30,
+   "block_index": 543,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Mark 4:39",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 30,
+   "block_index": 543,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:7",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 32,
+   "block_index": 545,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:7",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 33,
+   "block_index": 546,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:7",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 34,
+   "block_index": 547,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:1",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 36,
+   "block_index": 549,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4562,98 +4562,98 @@
    "reference": "Philippians 4:2",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 37,
+   "block_index": 550,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:3",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 38,
+   "block_index": 551,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:3",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 39,
+   "block_index": 552,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:4",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 40,
+   "block_index": 553,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:5",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 41,
+   "block_index": 554,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:5",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 42,
+   "block_index": 555,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:6",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 45,
+   "block_index": 558,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:7",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 45,
+   "block_index": 558,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:8",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 45,
+   "block_index": 558,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:9",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 46,
+   "block_index": 559,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:10",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 48,
+   "block_index": 561,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:11",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 49,
+   "block_index": 562,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:12",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 50,
+   "block_index": 563,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:12",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 51,
+   "block_index": 564,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4672,70 +4672,70 @@
    "reference": "Philippians 4:14",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 54,
+   "block_index": 567,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:15",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 54,
+   "block_index": 567,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:16",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 54,
+   "block_index": 567,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:17",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 54,
+   "block_index": 567,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:18",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 55,
+   "block_index": 568,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:19",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 55,
+   "block_index": 568,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:20",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 56,
+   "block_index": 569,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:21",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 57,
+   "block_index": 570,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:22",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 58,
+   "block_index": 571,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 4:23",
    "status": "mined",
    "chapter_order": 12,
-   "block_index": 59,
+   "block_index": 572,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4796,14 +4796,14 @@
    "reference": "Luke 12:25",
    "status": "self_rendered",
    "chapter_order": 12,
-   "block_index": 12,
+   "block_index": 525,
    "why": "paraphrase of OLCB \"Obanga temusobola kukola kantu katono ng’ako...\" in reported speech"
   },
   {
    "reference": "Luke 12:26",
    "status": "self_rendered",
    "chapter_order": 12,
-   "block_index": 12,
+   "block_index": 525,
    "why": "paraphrase of OLCB \"Obanga temusobola kukola kantu katono ng’ako...\" in reported speech"
   },
   {
@@ -4852,7 +4852,7 @@
    "reference": "Psalms 147:9",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 0,
+   "block_index": 573,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4889,7 +4889,7 @@
    "reference": "Titus 1:15",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 4,
+   "block_index": 577,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4908,7 +4908,7 @@
    "reference": "Luke 12:24",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 5,
+   "block_index": 578,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4927,7 +4927,7 @@
    "reference": "Psalms 23:4",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 8,
+   "block_index": 581,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4952,14 +4952,14 @@
    "reference": "Genesis 32:26",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 9,
+   "block_index": 582,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Genesis 1:26",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 13,
+   "block_index": 586,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4972,7 +4972,7 @@
    "reference": "Psalms 102:17",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 20,
+   "block_index": 593,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -4991,7 +4991,7 @@
    "reference": "Luke 18:13",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 25,
+   "block_index": 598,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -5004,7 +5004,7 @@
    "reference": "Matthew 11:12",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 29,
+   "block_index": 602,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -5023,7 +5023,7 @@
    "reference": "Micah 7:18",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 33,
+   "block_index": 606,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -5036,7 +5036,7 @@
    "reference": "Luke 15:24",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 33,
+   "block_index": 606,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -5061,42 +5061,42 @@
    "reference": "Romans 10:13",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 36,
+   "block_index": 609,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 50:15",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 36,
+   "block_index": 609,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Mark 16:15",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 36,
+   "block_index": 609,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Mark 16:16",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 36,
+   "block_index": 609,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Acts 16:31",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 36,
+   "block_index": 609,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Acts 2:38",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 36,
+   "block_index": 609,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -5115,14 +5115,14 @@
    "reference": "Luke 18:13",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 38,
+   "block_index": 611,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "John 3:7",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 40,
+   "block_index": 613,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -5135,7 +5135,7 @@
    "reference": "Proverbs 15:8",
    "status": "self_rendered",
    "chapter_order": 13,
-   "block_index": 43,
+   "block_index": 616,
    "why": "the \"counterfeit\" text, deliberately shaped on 15:8: \"Okusaba kw’aboonoonyi kwa muzizo eri Mukama\""
   },
   {
@@ -5148,7 +5148,7 @@
    "reference": "Judges 5:7",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 44,
+   "block_index": 617,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -5161,7 +5161,7 @@
    "reference": "Luke 18:13",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 46,
+   "block_index": 619,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -5204,14 +5204,14 @@
    "reference": "2 Corinthians 6:2",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 55,
+   "block_index": 628,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Isaiah 44:22",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 55,
+   "block_index": 628,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
@@ -5230,21 +5230,21 @@
    "reference": "John 3:18",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 64,
+   "block_index": 637,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "John 6:47",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 64,
+   "block_index": 637,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 John 5:10",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 67,
+   "block_index": 640,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   }
  ]

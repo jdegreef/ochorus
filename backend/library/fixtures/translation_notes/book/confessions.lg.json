@@ -1,0 +1,7147 @@
+{
+ "kind": "book",
+ "slug": "confessions",
+ "language": "lg",
+ "job_issue": 2802,
+ "pull_request": null,
+ "note": [
+  "Scripture follows the Open Luganda Contemporary Bible (OLCB 2017, lug_bib — the lug text language_seed.py names), spliced by script. References come from the translators' reports (crib: the fr edition's notes, verse numbers corrected where the crib was off by one). A row is `mined` only when the chapter block holds a verbatim stretch of that OLCB verse (≥40 characters, or the whole verse if shorter; case, quote marks and apostrophe form ignored) AND the translator did not mark it self-rendered; everything else is `self_rendered`.",
+  "Augustine quotes his Latin Bible, mostly re-personed into address to God, so most references are self-rendered by design. Two quoted lines keep Augustine's Vulgate sense where the OLCB differs and are flagged for the reviewer: Psalm 89:10 (“humbledst the proud”; the OLCB names Rahab) in Book VII, and the Vulgate-shaped Psalm 139:6 (“Who can attain it?”) in Book X.",
+  "Translated by AI translators in 35 parts (≤4,200 words each), reconciled book-wide: God addressed as Ggwe, OLCB spelling baddayimooni, headings Essuula. Tag sequence identical to the English chapter by chapter. AI-translated; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 145:3",
+   "chapter_order": 1,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 147:5",
+   "chapter_order": 1,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 4:10",
+   "chapter_order": 1,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 4:6",
+   "chapter_order": 1,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 10:14",
+   "chapter_order": 1,
+   "block_index": 1,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 22:26",
+   "chapter_order": 1,
+   "block_index": 1,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 7:8",
+   "chapter_order": 1,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 139:8",
+   "chapter_order": 1,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 11:36",
+   "chapter_order": 1,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremiah 23:24",
+   "chapter_order": 1,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "chapter_order": 1,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 18:32",
+   "chapter_order": 1,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 9:5",
+   "chapter_order": 1,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 25:27",
+   "chapter_order": 1,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 4:7",
+   "chapter_order": 1,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 35:3",
+   "chapter_order": 1,
+   "block_index": 9,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 27:9",
+   "chapter_order": 1,
+   "block_index": 9,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 33:20",
+   "chapter_order": 1,
+   "block_index": 9,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 19:12",
+   "chapter_order": 1,
+   "block_index": 10,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 19:13",
+   "chapter_order": 1,
+   "block_index": 10,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 4:13",
+   "chapter_order": 1,
+   "block_index": 10,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 32:5",
+   "chapter_order": 1,
+   "block_index": 10,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 9:3",
+   "chapter_order": 1,
+   "block_index": 10,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 27:12",
+   "chapter_order": 1,
+   "block_index": 10,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 130:3",
+   "chapter_order": 1,
+   "block_index": 10,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 18:27",
+   "chapter_order": 1,
+   "block_index": 12,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremiah 12:15",
+   "chapter_order": 1,
+   "block_index": 12,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 1:17",
+   "chapter_order": 1,
+   "block_index": 12,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Malachi 3:6",
+   "chapter_order": 1,
+   "block_index": 15,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 102:27",
+   "chapter_order": 1,
+   "block_index": 15,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 16:15",
+   "chapter_order": 1,
+   "block_index": 15,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 14:4",
+   "chapter_order": 1,
+   "block_index": 17,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 92:1",
+   "chapter_order": 1,
+   "block_index": 18,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 51:5",
+   "chapter_order": 1,
+   "block_index": 18,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 12:43",
+   "chapter_order": 1,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 13:22",
+   "chapter_order": 1,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 3:17",
+   "chapter_order": 1,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 22:3",
+   "chapter_order": 1,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 59:17",
+   "chapter_order": 1,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 4:3",
+   "chapter_order": 1,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 2:8",
+   "chapter_order": 1,
+   "block_index": 27,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 121:5",
+   "chapter_order": 1,
+   "block_index": 27,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 4:26",
+   "chapter_order": 1,
+   "block_index": 27,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "chapter_order": 1,
+   "block_index": 27,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:38",
+   "chapter_order": 1,
+   "block_index": 27,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 3:1",
+   "chapter_order": 1,
+   "block_index": 27,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 10:30",
+   "chapter_order": 1,
+   "block_index": 30,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 78:39",
+   "chapter_order": 1,
+   "block_index": 32,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 73:27",
+   "chapter_order": 1,
+   "block_index": 33,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 4:4",
+   "chapter_order": 1,
+   "block_index": 33,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 35:21",
+   "chapter_order": 1,
+   "block_index": 33,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 3:19",
+   "chapter_order": 1,
+   "block_index": 33,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 102:2",
+   "chapter_order": 1,
+   "block_index": 38,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:5",
+   "chapter_order": 1,
+   "block_index": 38,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 5:3",
+   "chapter_order": 1,
+   "block_index": 38,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 13:4",
+   "chapter_order": 1,
+   "block_index": 54,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 10:20",
+   "chapter_order": 1,
+   "block_index": 54,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 86:15",
+   "chapter_order": 1,
+   "block_index": 56,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 42:14",
+   "chapter_order": 1,
+   "block_index": 56,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 27:8",
+   "chapter_order": 1,
+   "block_index": 56,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 63:2",
+   "chapter_order": 1,
+   "block_index": 56,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 36:9",
+   "chapter_order": 1,
+   "block_index": 56,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 15:13",
+   "chapter_order": 1,
+   "block_index": 56,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 7:12",
+   "chapter_order": 1,
+   "block_index": 57,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 11:33",
+   "chapter_order": 1,
+   "block_index": 57,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 33:5",
+   "chapter_order": 1,
+   "block_index": 57,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 31:23",
+   "chapter_order": 1,
+   "block_index": 58,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 19:14",
+   "chapter_order": 1,
+   "block_index": 58,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 100:3",
+   "chapter_order": 1,
+   "block_index": 59,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 3:4",
+   "chapter_order": 1,
+   "block_index": 59,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 7:28",
+   "chapter_order": 2,
+   "block_index": 4,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Corinthians 7:1",
+   "chapter_order": 2,
+   "block_index": 4,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Corinthians 7:32",
+   "chapter_order": 2,
+   "block_index": 4,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Corinthians 7:33",
+   "chapter_order": 2,
+   "block_index": 4,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 116:12",
+   "chapter_order": 2,
+   "block_index": 21,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 7:24",
+   "chapter_order": 2,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 19:12",
+   "chapter_order": 2,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 50:21",
+   "chapter_order": 2,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 19:12",
+   "chapter_order": 2,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 57:20",
+   "chapter_order": 2,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronomy 32:39",
+   "chapter_order": 2,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 36:9",
+   "chapter_order": 2,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 130:1",
+   "chapter_order": 2,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 1:17",
+   "chapter_order": 2,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 3:9",
+   "chapter_order": 2,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 1:25",
+   "chapter_order": 2,
+   "block_index": 8,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 3:16",
+   "chapter_order": 2,
+   "block_index": 8,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 2:12",
+   "chapter_order": 2,
+   "block_index": 8,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremiah 2:27",
+   "chapter_order": 2,
+   "block_index": 8,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 116:16",
+   "chapter_order": 2,
+   "block_index": 9,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremiah 51:6",
+   "chapter_order": 2,
+   "block_index": 10,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 73:7",
+   "chapter_order": 2,
+   "block_index": 10,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 2:15",
+   "chapter_order": 2,
+   "block_index": 12,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 13:12",
+   "chapter_order": 2,
+   "block_index": 17,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 97:9",
+   "chapter_order": 2,
+   "block_index": 18,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:35",
+   "chapter_order": 2,
+   "block_index": 18,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 73:27",
+   "chapter_order": 2,
+   "block_index": 19,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 7:2",
+   "chapter_order": 2,
+   "block_index": 19,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 9:12",
+   "chapter_order": 2,
+   "block_index": 21,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 6:21",
+   "chapter_order": 2,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 18:29",
+   "chapter_order": 2,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 19:13",
+   "chapter_order": 2,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 25:21",
+   "chapter_order": 2,
+   "block_index": 27,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 64:10",
+   "chapter_order": 2,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 2:14",
+   "chapter_order": 3,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 2:16",
+   "chapter_order": 3,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:176",
+   "chapter_order": 3,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 7:5",
+   "chapter_order": 3,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 59:17",
+   "chapter_order": 3,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 15:18",
+   "chapter_order": 3,
+   "block_index": 10,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 12:13",
+   "chapter_order": 3,
+   "block_index": 11,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 2:8",
+   "chapter_order": 3,
+   "block_index": 11,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Colossians 2:9",
+   "chapter_order": 3,
+   "block_index": 11,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 11:25",
+   "chapter_order": 3,
+   "block_index": 13,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 3:7",
+   "chapter_order": 3,
+   "block_index": 15,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 5:6",
+   "chapter_order": 3,
+   "block_index": 15,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 1:17",
+   "chapter_order": 3,
+   "block_index": 15,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "2 Corinthians 12:10",
+   "chapter_order": 3,
+   "block_index": 15,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 5:26",
+   "chapter_order": 3,
+   "block_index": 15,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 15:16",
+   "chapter_order": 3,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 9:18",
+   "chapter_order": 3,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 9:13",
+   "chapter_order": 3,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 9:14",
+   "chapter_order": 3,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 9:17",
+   "chapter_order": 3,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 4:24",
+   "chapter_order": 3,
+   "block_index": 18,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:27",
+   "chapter_order": 3,
+   "block_index": 18,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 22:37",
+   "chapter_order": 3,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 22:39",
+   "chapter_order": 3,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 2:16",
+   "chapter_order": 3,
+   "block_index": 23,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 144:9",
+   "chapter_order": 3,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 27:12",
+   "chapter_order": 3,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 1:26",
+   "chapter_order": 3,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 26:14",
+   "chapter_order": 3,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremiah 2:13",
+   "chapter_order": 3,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 36:9",
+   "chapter_order": 3,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 36:10",
+   "chapter_order": 3,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 1:9",
+   "chapter_order": 3,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 102:21",
+   "chapter_order": 3,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 75:6",
+   "chapter_order": 3,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 4:28",
+   "chapter_order": 3,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:2",
+   "chapter_order": 3,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 2:4",
+   "chapter_order": 3,
+   "block_index": 27,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 144:7",
+   "chapter_order": 3,
+   "block_index": 29,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 86:13",
+   "chapter_order": 3,
+   "block_index": 29,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 10:17",
+   "chapter_order": 3,
+   "block_index": 29,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 69:3",
+   "chapter_order": 3,
+   "block_index": 30,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 40:3",
+   "chapter_order": 3,
+   "block_index": 30,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 5:5",
+   "chapter_order": 3,
+   "block_index": 30,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 88:3",
+   "chapter_order": 3,
+   "block_index": 30,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 116:17",
+   "chapter_order": 4,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 6:27",
+   "chapter_order": 4,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 74:21",
+   "chapter_order": 4,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 3:13",
+   "chapter_order": 4,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 4:2",
+   "chapter_order": 4,
+   "block_index": 3,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 73:27",
+   "chapter_order": 4,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hosea 12:1",
+   "chapter_order": 4,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 10:20",
+   "chapter_order": 4,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 41:4",
+   "chapter_order": 4,
+   "block_index": 6,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 5:14",
+   "chapter_order": 4,
+   "block_index": 6,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 2:6",
+   "chapter_order": 4,
+   "block_index": 6,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 51:17",
+   "chapter_order": 4,
+   "block_index": 6,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 4:6",
+   "chapter_order": 4,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 5:5",
+   "chapter_order": 4,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 5:5",
+   "chapter_order": 4,
+   "block_index": 10,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 94:1",
+   "chapter_order": 4,
+   "block_index": 10,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 1:3",
+   "chapter_order": 4,
+   "block_index": 10,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 106:2",
+   "chapter_order": 4,
+   "block_index": 11,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 11:33",
+   "chapter_order": 4,
+   "block_index": 11,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 42:5",
+   "chapter_order": 4,
+   "block_index": 12,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:6",
+   "chapter_order": 4,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 71:5",
+   "chapter_order": 4,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 25:15",
+   "chapter_order": 4,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 139:7",
+   "chapter_order": 4,
+   "block_index": 18,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 4:3",
+   "chapter_order": 4,
+   "block_index": 20,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 146:6",
+   "chapter_order": 4,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremiah 23:24",
+   "chapter_order": 4,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:142",
+   "chapter_order": 4,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 80:7",
+   "chapter_order": 4,
+   "block_index": 24,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Job 38:11",
+   "chapter_order": 4,
+   "block_index": 24,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 103:3",
+   "chapter_order": 4,
+   "block_index": 27,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 102:26",
+   "chapter_order": 4,
+   "block_index": 27,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 102:27",
+   "chapter_order": 4,
+   "block_index": 27,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 13:9",
+   "chapter_order": 4,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 17:27",
+   "chapter_order": 4,
+   "block_index": 30,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 46:8",
+   "chapter_order": 4,
+   "block_index": 30,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 19:5",
+   "chapter_order": 4,
+   "block_index": 31,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:10",
+   "chapter_order": 4,
+   "block_index": 31,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "chapter_order": 4,
+   "block_index": 31,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 41:4",
+   "chapter_order": 4,
+   "block_index": 31,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 4:2",
+   "chapter_order": 4,
+   "block_index": 31,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 73:9",
+   "chapter_order": 4,
+   "block_index": 31,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 84:6",
+   "chapter_order": 4,
+   "block_index": 31,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 10:30",
+   "chapter_order": 4,
+   "block_index": 36,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 10:29",
+   "chapter_order": 4,
+   "block_index": 36,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 4:14",
+   "chapter_order": 4,
+   "block_index": 37,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 72:18",
+   "chapter_order": 4,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 8:6",
+   "chapter_order": 4,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 18:28",
+   "chapter_order": 4,
+   "block_index": 40,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:16",
+   "chapter_order": 4,
+   "block_index": 40,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:9",
+   "chapter_order": 4,
+   "block_index": 40,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 1:17",
+   "chapter_order": 4,
+   "block_index": 40,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 4:6",
+   "chapter_order": 4,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 78:39",
+   "chapter_order": 4,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:29",
+   "chapter_order": 4,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 88:6",
+   "chapter_order": 4,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 51:8",
+   "chapter_order": 4,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 3:18",
+   "chapter_order": 4,
+   "block_index": 45,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 3:19",
+   "chapter_order": 4,
+   "block_index": 45,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 15:12",
+   "chapter_order": 4,
+   "block_index": 46,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 59:9",
+   "chapter_order": 4,
+   "block_index": 46,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 15:13",
+   "chapter_order": 4,
+   "block_index": 46,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 63:7",
+   "chapter_order": 4,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 17:8",
+   "chapter_order": 4,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 46:4",
+   "chapter_order": 4,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:108",
+   "chapter_order": 5,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 35:10",
+   "chapter_order": 5,
+   "block_index": 1,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 19:7",
+   "chapter_order": 5,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:4",
+   "chapter_order": 5,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 139:7",
+   "chapter_order": 5,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 73:27",
+   "chapter_order": 5,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 21:4",
+   "chapter_order": 5,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 16:17",
+   "chapter_order": 5,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 2:26",
+   "chapter_order": 5,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 138:6",
+   "chapter_order": 5,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 48:2",
+   "chapter_order": 5,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 34:19",
+   "chapter_order": 5,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 147:4",
+   "chapter_order": 5,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 8:8",
+   "chapter_order": 5,
+   "block_index": 6,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 8:9",
+   "chapter_order": 5,
+   "block_index": 6,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:29",
+   "chapter_order": 5,
+   "block_index": 6,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:6",
+   "chapter_order": 5,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:3",
+   "chapter_order": 5,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 147:5",
+   "chapter_order": 5,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 14:13",
+   "chapter_order": 5,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "chapter_order": 5,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 53:12",
+   "chapter_order": 5,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 22:21",
+   "chapter_order": 5,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 1:21",
+   "chapter_order": 5,
+   "block_index": 7,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 1:22",
+   "chapter_order": 5,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 1:23",
+   "chapter_order": 5,
+   "block_index": 7,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 1:25",
+   "chapter_order": 5,
+   "block_index": 7,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 1:21",
+   "chapter_order": 5,
+   "block_index": 10,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 6:10",
+   "chapter_order": 5,
+   "block_index": 10,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 28:28",
+   "chapter_order": 5,
+   "block_index": 12,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:16",
+   "chapter_order": 5,
+   "block_index": 12,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 4:13",
+   "chapter_order": 5,
+   "block_index": 13,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 4:14",
+   "chapter_order": 5,
+   "block_index": 13,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 50:21",
+   "chapter_order": 5,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 8:21",
+   "chapter_order": 5,
+   "block_index": 18,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 13:14",
+   "chapter_order": 5,
+   "block_index": 19,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 42:4",
+   "chapter_order": 5,
+   "block_index": 19,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 37:23",
+   "chapter_order": 5,
+   "block_index": 19,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 142:5",
+   "chapter_order": 5,
+   "block_index": 21,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 3:16",
+   "chapter_order": 5,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 15:22",
+   "chapter_order": 5,
+   "block_index": 24,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 2:16",
+   "chapter_order": 5,
+   "block_index": 24,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "chapter_order": 5,
+   "block_index": 24,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 51:19",
+   "chapter_order": 5,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 9:36",
+   "chapter_order": 5,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 5:5",
+   "chapter_order": 5,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 5:13",
+   "chapter_order": 5,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 4:7",
+   "chapter_order": 5,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 2:19",
+   "chapter_order": 5,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 2:14",
+   "chapter_order": 5,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 136:1",
+   "chapter_order": 5,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 6:12",
+   "chapter_order": 5,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 116:16",
+   "chapter_order": 5,
+   "block_index": 27,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 3:13",
+   "chapter_order": 5,
+   "block_index": 27,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 41:5",
+   "chapter_order": 5,
+   "block_index": 27,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 12:25",
+   "chapter_order": 5,
+   "block_index": 27,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 141:3",
+   "chapter_order": 5,
+   "block_index": 27,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 141:4",
+   "chapter_order": 5,
+   "block_index": 27,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 11:25",
+   "chapter_order": 5,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 1:16",
+   "chapter_order": 5,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 107:8",
+   "chapter_order": 5,
+   "block_index": 29,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 2:15",
+   "chapter_order": 5,
+   "block_index": 29,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 139:22",
+   "chapter_order": 5,
+   "block_index": 33,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 73:27",
+   "chapter_order": 5,
+   "block_index": 33,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 3:8",
+   "chapter_order": 5,
+   "block_index": 33,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 147:14",
+   "chapter_order": 5,
+   "block_index": 35,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 45:8",
+   "chapter_order": 5,
+   "block_index": 35,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 104:15",
+   "chapter_order": 5,
+   "block_index": 35,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:155",
+   "chapter_order": 5,
+   "block_index": 35,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "2 Corinthians 3:6",
+   "chapter_order": 5,
+   "block_index": 37,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 4:12",
+   "chapter_order": 5,
+   "block_index": 38,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 7:14",
+   "chapter_order": 6,
+   "block_index": 1,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 7:12",
+   "chapter_order": 6,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 71:5",
+   "chapter_order": 6,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 35:11",
+   "chapter_order": 6,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 73:26",
+   "chapter_order": 6,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 11:26",
+   "chapter_order": 6,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 1:3",
+   "chapter_order": 6,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 4:14",
+   "chapter_order": 6,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 4:14",
+   "chapter_order": 6,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 50:10",
+   "chapter_order": 6,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 35:6",
+   "chapter_order": 6,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 68:23",
+   "chapter_order": 6,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 12:11",
+   "chapter_order": 6,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:27",
+   "chapter_order": 6,
+   "block_index": 6,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 2:15",
+   "chapter_order": 6,
+   "block_index": 6,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "chapter_order": 6,
+   "block_index": 8,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 3:6",
+   "chapter_order": 6,
+   "block_index": 9,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 117:2",
+   "chapter_order": 6,
+   "block_index": 9,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 7:13",
+   "chapter_order": 6,
+   "block_index": 12,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 2:4",
+   "chapter_order": 6,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 63:8",
+   "chapter_order": 6,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 63:9",
+   "chapter_order": 6,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 13:15",
+   "chapter_order": 6,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 1:10",
+   "chapter_order": 6,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 51:10",
+   "chapter_order": 6,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:6",
+   "chapter_order": 6,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 9:8",
+   "chapter_order": 6,
+   "block_index": 18,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 120:4",
+   "chapter_order": 6,
+   "block_index": 18,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 107:8",
+   "chapter_order": 6,
+   "block_index": 18,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 1:9",
+   "chapter_order": 6,
+   "block_index": 20,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 16:10",
+   "chapter_order": 6,
+   "block_index": 25,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 16:11",
+   "chapter_order": 6,
+   "block_index": 25,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 16:12",
+   "chapter_order": 6,
+   "block_index": 25,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 145:15",
+   "chapter_order": 6,
+   "block_index": 26,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "chapter_order": 6,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 55:23",
+   "chapter_order": 6,
+   "block_index": 30,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:26",
+   "chapter_order": 6,
+   "block_index": 30,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 3:1",
+   "chapter_order": 6,
+   "block_index": 32,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 28:15",
+   "chapter_order": 6,
+   "block_index": 33,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 103:14",
+   "chapter_order": 6,
+   "block_index": 33,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 7:13",
+   "chapter_order": 6,
+   "block_index": 37,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 19:21",
+   "chapter_order": 6,
+   "block_index": 37,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 33:11",
+   "chapter_order": 6,
+   "block_index": 37,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 145:15",
+   "chapter_order": 6,
+   "block_index": 37,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 145:16",
+   "chapter_order": 6,
+   "block_index": 37,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 69:15",
+   "chapter_order": 6,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 51:4",
+   "chapter_order": 6,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 24:25",
+   "chapter_order": 6,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 7:22",
+   "chapter_order": 6,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:151",
+   "chapter_order": 6,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 46:4",
+   "chapter_order": 6,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 15:52",
+   "chapter_order": 7,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 18:28",
+   "chapter_order": 7,
+   "block_index": 2,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 3:13",
+   "chapter_order": 7,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 3:16",
+   "chapter_order": 7,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:15",
+   "chapter_order": 7,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 6:6",
+   "chapter_order": 7,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "chapter_order": 7,
+   "block_index": 11,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 107:8",
+   "chapter_order": 7,
+   "block_index": 13,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 11:33",
+   "chapter_order": 7,
+   "block_index": 15,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 5:7",
+   "chapter_order": 7,
+   "block_index": 17,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 38:8",
+   "chapter_order": 7,
+   "block_index": 17,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 15:26",
+   "chapter_order": 7,
+   "block_index": 17,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 89:10",
+   "chapter_order": 7,
+   "block_index": 17,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 102:12",
+   "chapter_order": 7,
+   "block_index": 19,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 85:5",
+   "chapter_order": 7,
+   "block_index": 19,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 18:27",
+   "chapter_order": 7,
+   "block_index": 19,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 4:6",
+   "chapter_order": 7,
+   "block_index": 21,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:14",
+   "chapter_order": 7,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:1",
+   "chapter_order": 7,
+   "block_index": 21,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 1:2",
+   "chapter_order": 7,
+   "block_index": 21,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 1:3",
+   "chapter_order": 7,
+   "block_index": 21,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 1:4",
+   "chapter_order": 7,
+   "block_index": 21,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 1:5",
+   "chapter_order": 7,
+   "block_index": 21,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 1:8",
+   "chapter_order": 7,
+   "block_index": 21,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:9",
+   "chapter_order": 7,
+   "block_index": 21,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 1:10",
+   "chapter_order": 7,
+   "block_index": 21,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:11",
+   "chapter_order": 7,
+   "block_index": 21,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 1:12",
+   "chapter_order": 7,
+   "block_index": 21,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 1:13",
+   "chapter_order": 7,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 2:6",
+   "chapter_order": 7,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 2:7",
+   "chapter_order": 7,
+   "block_index": 22,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 2:8",
+   "chapter_order": 7,
+   "block_index": 22,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 2:9",
+   "chapter_order": 7,
+   "block_index": 22,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 2:10",
+   "chapter_order": 7,
+   "block_index": 22,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 2:11",
+   "chapter_order": 7,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:16",
+   "chapter_order": 7,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 5:6",
+   "chapter_order": 7,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:32",
+   "chapter_order": 7,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 10:21",
+   "chapter_order": 7,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 11:25",
+   "chapter_order": 7,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "chapter_order": 7,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "chapter_order": 7,
+   "block_index": 22,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 25:9",
+   "chapter_order": 7,
+   "block_index": 22,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 25:18",
+   "chapter_order": 7,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 1:21",
+   "chapter_order": 7,
+   "block_index": 22,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 1:22",
+   "chapter_order": 7,
+   "block_index": 22,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 1:23",
+   "chapter_order": 7,
+   "block_index": 23,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 25:34",
+   "chapter_order": 7,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 7:39",
+   "chapter_order": 7,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 106:20",
+   "chapter_order": 7,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 9:12",
+   "chapter_order": 7,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 3:22",
+   "chapter_order": 7,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 17:28",
+   "chapter_order": 7,
+   "block_index": 23,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 1:25",
+   "chapter_order": 7,
+   "block_index": 23,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 30:11",
+   "chapter_order": 7,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 118:28",
+   "chapter_order": 7,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 39:12",
+   "chapter_order": 7,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 39:11",
+   "chapter_order": 7,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 3:14",
+   "chapter_order": 7,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 1:20",
+   "chapter_order": 7,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 73:28",
+   "chapter_order": 7,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 16:2",
+   "chapter_order": 7,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 73:28",
+   "chapter_order": 7,
+   "block_index": 27,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 16:2",
+   "chapter_order": 7,
+   "block_index": 27,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "chapter_order": 7,
+   "block_index": 29,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 148:7",
+   "chapter_order": 7,
+   "block_index": 31,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 148:1",
+   "chapter_order": 7,
+   "block_index": 31,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:37",
+   "chapter_order": 7,
+   "block_index": 33,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 1:20",
+   "chapter_order": 7,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 2:5",
+   "chapter_order": 7,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 9:5",
+   "chapter_order": 7,
+   "block_index": 41,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 14:6",
+   "chapter_order": 7,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:14",
+   "chapter_order": 7,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 3:2",
+   "chapter_order": 7,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 3:21",
+   "chapter_order": 7,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:14",
+   "chapter_order": 7,
+   "block_index": 43,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 10:21",
+   "chapter_order": 7,
+   "block_index": 43,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 11:19",
+   "chapter_order": 7,
+   "block_index": 43,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 102:28",
+   "chapter_order": 7,
+   "block_index": 45,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 8:1",
+   "chapter_order": 7,
+   "block_index": 45,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 3:11",
+   "chapter_order": 7,
+   "block_index": 45,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 2:11",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 4:7",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 7:22",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 7:23",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:137",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Daniel 9:5",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 32:4",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 8:44",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 7:24",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 7:25",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 8:22",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:30",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 2:14",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 51:17",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 1:22",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 116:13",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 62:1",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 62:2",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 62:3",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 11:25",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 91:13",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 15:9",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Habakkuk 3:2",
+   "chapter_order": 7,
+   "block_index": 47,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 35:10",
+   "chapter_order": 8,
+   "block_index": 1,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 116:16",
+   "chapter_order": 8,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 116:17",
+   "chapter_order": 8,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 8:2",
+   "chapter_order": 8,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 139:5",
+   "chapter_order": 8,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "chapter_order": 8,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 5:7",
+   "chapter_order": 8,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:6",
+   "chapter_order": 8,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 7:14",
+   "chapter_order": 8,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 26:8",
+   "chapter_order": 8,
+   "block_index": 2,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 7:7",
+   "chapter_order": 8,
+   "block_index": 2,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 19:12",
+   "chapter_order": 8,
+   "block_index": 2,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 1:21",
+   "chapter_order": 8,
+   "block_index": 2,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 18:36",
+   "chapter_order": 8,
+   "block_index": 2,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 28:28",
+   "chapter_order": 8,
+   "block_index": 2,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 3:7",
+   "chapter_order": 8,
+   "block_index": 2,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 1:22",
+   "chapter_order": 8,
+   "block_index": 2,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 13:46",
+   "chapter_order": 8,
+   "block_index": 2,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 2:8",
+   "chapter_order": 8,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 11:25",
+   "chapter_order": 8,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 144:5",
+   "chapter_order": 8,
+   "block_index": 9,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 29:5",
+   "chapter_order": 8,
+   "block_index": 9,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 12:9",
+   "chapter_order": 8,
+   "block_index": 9,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 112:10",
+   "chapter_order": 8,
+   "block_index": 9,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 40:5",
+   "chapter_order": 8,
+   "block_index": 9,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 15:7",
+   "chapter_order": 8,
+   "block_index": 12,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 15:5",
+   "chapter_order": 8,
+   "block_index": 12,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 15:9",
+   "chapter_order": 8,
+   "block_index": 12,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 15:24",
+   "chapter_order": 8,
+   "block_index": 12,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 15:24",
+   "chapter_order": 8,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 102:28",
+   "chapter_order": 8,
+   "block_index": 12,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ecclesiastes 3:11",
+   "chapter_order": 8,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 120:5",
+   "chapter_order": 8,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 1:4",
+   "chapter_order": 8,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:12",
+   "chapter_order": 8,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 2:1",
+   "chapter_order": 8,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 1:27",
+   "chapter_order": 8,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 1:28",
+   "chapter_order": 8,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 15:9",
+   "chapter_order": 8,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 13:9",
+   "chapter_order": 8,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 11:30",
+   "chapter_order": 8,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 12:29",
+   "chapter_order": 8,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "chapter_order": 8,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 5:17",
+   "chapter_order": 8,
+   "block_index": 19,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 5:14",
+   "chapter_order": 8,
+   "block_index": 19,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 7:22",
+   "chapter_order": 8,
+   "block_index": 19,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 116:16",
+   "chapter_order": 8,
+   "block_index": 21,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 2:15",
+   "chapter_order": 8,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 5:3",
+   "chapter_order": 8,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 14:28",
+   "chapter_order": 8,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 14:33",
+   "chapter_order": 8,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 24:29",
+   "chapter_order": 8,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 50:21",
+   "chapter_order": 8,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 36:3",
+   "chapter_order": 8,
+   "block_index": 25,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 55:7",
+   "chapter_order": 8,
+   "block_index": 27,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 11:12",
+   "chapter_order": 8,
+   "block_index": 29,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 35:10",
+   "chapter_order": 8,
+   "block_index": 29,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 68:3",
+   "chapter_order": 8,
+   "block_index": 34,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Titus 1:10",
+   "chapter_order": 8,
+   "block_index": 34,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 5:8",
+   "chapter_order": 8,
+   "block_index": 34,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 1:9",
+   "chapter_order": 8,
+   "block_index": 34,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 34:6",
+   "chapter_order": 8,
+   "block_index": 34,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 7:17",
+   "chapter_order": 8,
+   "block_index": 34,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ecclesiastes 1:2",
+   "chapter_order": 8,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 113:9",
+   "chapter_order": 8,
+   "block_index": 40,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 3:5",
+   "chapter_order": 8,
+   "block_index": 40,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:85",
+   "chapter_order": 8,
+   "block_index": 40,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 51:19",
+   "chapter_order": 8,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 6:4",
+   "chapter_order": 8,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 79:5",
+   "chapter_order": 8,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 79:8",
+   "chapter_order": 8,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 19:21",
+   "chapter_order": 8,
+   "block_index": 43,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 13:13",
+   "chapter_order": 8,
+   "block_index": 43,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 13:14",
+   "chapter_order": 8,
+   "block_index": 43,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 14:1",
+   "chapter_order": 8,
+   "block_index": 44,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "chapter_order": 8,
+   "block_index": 44,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 30:11",
+   "chapter_order": 8,
+   "block_index": 44,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 116:16",
+   "chapter_order": 9,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 116:17",
+   "chapter_order": 9,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 35:10",
+   "chapter_order": 9,
+   "block_index": 1,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 35:3",
+   "chapter_order": 9,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 11:30",
+   "chapter_order": 9,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 84:7",
+   "chapter_order": 9,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 120:4",
+   "chapter_order": 9,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 120:2",
+   "chapter_order": 9,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 7:23",
+   "chapter_order": 9,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 14:16",
+   "chapter_order": 9,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 46:11",
+   "chapter_order": 9,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 14:14",
+   "chapter_order": 9,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 68:16",
+   "chapter_order": 9,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 16:22",
+   "chapter_order": 9,
+   "block_index": 8,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 27:8",
+   "chapter_order": 9,
+   "block_index": 8,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 3:5",
+   "chapter_order": 9,
+   "block_index": 10,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 29:5",
+   "chapter_order": 9,
+   "block_index": 10,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 19:7",
+   "chapter_order": 9,
+   "block_index": 11,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 19:6",
+   "chapter_order": 9,
+   "block_index": 11,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 4:1",
+   "chapter_order": 9,
+   "block_index": 11,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 4:2",
+   "chapter_order": 9,
+   "block_index": 11,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 4:2",
+   "chapter_order": 9,
+   "block_index": 12,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 143:10",
+   "chapter_order": 9,
+   "block_index": 12,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 4:3",
+   "chapter_order": 9,
+   "block_index": 12,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 1:20",
+   "chapter_order": 9,
+   "block_index": 12,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 24:49",
+   "chapter_order": 9,
+   "block_index": 12,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:16",
+   "chapter_order": 9,
+   "block_index": 12,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:17",
+   "chapter_order": 9,
+   "block_index": 12,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 7:39",
+   "chapter_order": 9,
+   "block_index": 12,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 8:34",
+   "chapter_order": 9,
+   "block_index": 12,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 4:4",
+   "chapter_order": 9,
+   "block_index": 13,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 2:5",
+   "chapter_order": 9,
+   "block_index": 13,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 4:18",
+   "chapter_order": 9,
+   "block_index": 13,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 4:6",
+   "chapter_order": 9,
+   "block_index": 13,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 4:7",
+   "chapter_order": 9,
+   "block_index": 13,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:9",
+   "chapter_order": 9,
+   "block_index": 13,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 5:8",
+   "chapter_order": 9,
+   "block_index": 13,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 4:22",
+   "chapter_order": 9,
+   "block_index": 13,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 4:8",
+   "chapter_order": 9,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 15:54",
+   "chapter_order": 9,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Malachi 3:6",
+   "chapter_order": 9,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:139",
+   "chapter_order": 9,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 116:15",
+   "chapter_order": 9,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 1:3",
+   "chapter_order": 9,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 1:4",
+   "chapter_order": 9,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 40:6",
+   "chapter_order": 9,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 68:6",
+   "chapter_order": 9,
+   "block_index": 24,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 3:1",
+   "chapter_order": 9,
+   "block_index": 27,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 5:9",
+   "chapter_order": 9,
+   "block_index": 30,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 5:4",
+   "chapter_order": 9,
+   "block_index": 30,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 5:10",
+   "chapter_order": 9,
+   "block_index": 30,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "chapter_order": 9,
+   "block_index": 30,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 3:13",
+   "chapter_order": 9,
+   "block_index": 32,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:6",
+   "chapter_order": 9,
+   "block_index": 32,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 2:9",
+   "chapter_order": 9,
+   "block_index": 32,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 36:9",
+   "chapter_order": 9,
+   "block_index": 32,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:23",
+   "chapter_order": 9,
+   "block_index": 33,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 21:5",
+   "chapter_order": 9,
+   "block_index": 33,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 80:1",
+   "chapter_order": 9,
+   "block_index": 33,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 100:3",
+   "chapter_order": 9,
+   "block_index": 34,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "chapter_order": 9,
+   "block_index": 34,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 25:21",
+   "chapter_order": 9,
+   "block_index": 34,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 15:51",
+   "chapter_order": 9,
+   "block_index": 34,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 1:5",
+   "chapter_order": 9,
+   "block_index": 40,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 101:1",
+   "chapter_order": 9,
+   "block_index": 42,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 68:5",
+   "chapter_order": 9,
+   "block_index": 43,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 15:22",
+   "chapter_order": 9,
+   "block_index": 54,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 5:22",
+   "chapter_order": 9,
+   "block_index": 54,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 130:3",
+   "chapter_order": 9,
+   "block_index": 54,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 10:17",
+   "chapter_order": 9,
+   "block_index": 54,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 8:34",
+   "chapter_order": 9,
+   "block_index": 55,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 6:12",
+   "chapter_order": 9,
+   "block_index": 55,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 18:35",
+   "chapter_order": 9,
+   "block_index": 55,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 143:2",
+   "chapter_order": 9,
+   "block_index": 55,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 2:13",
+   "chapter_order": 9,
+   "block_index": 55,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 5:7",
+   "chapter_order": 9,
+   "block_index": 55,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 9:15",
+   "chapter_order": 9,
+   "block_index": 55,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:108",
+   "chapter_order": 9,
+   "block_index": 56,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 2:14",
+   "chapter_order": 9,
+   "block_index": 56,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 2:15",
+   "chapter_order": 9,
+   "block_index": 56,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:30",
+   "chapter_order": 9,
+   "block_index": 56,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 6:20",
+   "chapter_order": 9,
+   "block_index": 56,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 91:13",
+   "chapter_order": 9,
+   "block_index": 56,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 12:10",
+   "chapter_order": 9,
+   "block_index": 56,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 8:15",
+   "chapter_order": 9,
+   "block_index": 57,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 4:26",
+   "chapter_order": 9,
+   "block_index": 57,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "chapter_order": 10,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 5:27",
+   "chapter_order": 10,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 4:13",
+   "chapter_order": 10,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 51:8",
+   "chapter_order": 10,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:21",
+   "chapter_order": 10,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 6:12",
+   "chapter_order": 10,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 4:13",
+   "chapter_order": 10,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 4:5",
+   "chapter_order": 10,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 103:3",
+   "chapter_order": 10,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 2:11",
+   "chapter_order": 10,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 13:7",
+   "chapter_order": 10,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 32:1",
+   "chapter_order": 10,
+   "block_index": 6,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 12:10",
+   "chapter_order": 10,
+   "block_index": 6,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 1:11",
+   "chapter_order": 10,
+   "block_index": 8,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 144:7",
+   "chapter_order": 10,
+   "block_index": 8,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 144:8",
+   "chapter_order": 10,
+   "block_index": 8,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 51:3",
+   "chapter_order": 10,
+   "block_index": 8,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 79:9",
+   "chapter_order": 10,
+   "block_index": 8,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 1:6",
+   "chapter_order": 10,
+   "block_index": 8,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 138:8",
+   "chapter_order": 10,
+   "block_index": 8,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 6:3",
+   "chapter_order": 10,
+   "block_index": 8,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 2:11",
+   "chapter_order": 10,
+   "block_index": 9,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 17:8",
+   "chapter_order": 10,
+   "block_index": 9,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "chapter_order": 10,
+   "block_index": 9,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "chapter_order": 10,
+   "block_index": 9,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 4:3",
+   "chapter_order": 10,
+   "block_index": 9,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 2:11",
+   "chapter_order": 10,
+   "block_index": 11,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 18:27",
+   "chapter_order": 10,
+   "block_index": 11,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "chapter_order": 10,
+   "block_index": 11,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 5:6",
+   "chapter_order": 10,
+   "block_index": 11,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "chapter_order": 10,
+   "block_index": 11,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 58:10",
+   "chapter_order": 10,
+   "block_index": 11,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 1:20",
+   "chapter_order": 10,
+   "block_index": 13,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 9:15",
+   "chapter_order": 10,
+   "block_index": 13,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 69:35",
+   "chapter_order": 10,
+   "block_index": 13,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 3:16",
+   "chapter_order": 10,
+   "block_index": 13,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 100:3",
+   "chapter_order": 10,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 1:20",
+   "chapter_order": 10,
+   "block_index": 15,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 104:25",
+   "chapter_order": 10,
+   "block_index": 15,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 32:9",
+   "chapter_order": 10,
+   "block_index": 17,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 3:19",
+   "chapter_order": 10,
+   "block_index": 40,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 37:16",
+   "chapter_order": 10,
+   "block_index": 40,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 40:12",
+   "chapter_order": 10,
+   "block_index": 40,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 35:11",
+   "chapter_order": 10,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 15:8",
+   "chapter_order": 10,
+   "block_index": 44,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 69:32",
+   "chapter_order": 10,
+   "block_index": 48,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 69:33",
+   "chapter_order": 10,
+   "block_index": 48,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 30:15",
+   "chapter_order": 10,
+   "block_index": 48,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:24",
+   "chapter_order": 10,
+   "block_index": 48,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 15:22",
+   "chapter_order": 10,
+   "block_index": 48,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 5:12",
+   "chapter_order": 10,
+   "block_index": 48,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 48:22",
+   "chapter_order": 10,
+   "block_index": 53,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 5:17",
+   "chapter_order": 10,
+   "block_index": 55,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 14:6",
+   "chapter_order": 10,
+   "block_index": 55,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 27:1",
+   "chapter_order": 10,
+   "block_index": 55,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 12:35",
+   "chapter_order": 10,
+   "block_index": 55,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 4:16",
+   "chapter_order": 10,
+   "block_index": 56,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:20",
+   "chapter_order": 10,
+   "block_index": 56,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 102:27",
+   "chapter_order": 10,
+   "block_index": 60,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 6:5",
+   "chapter_order": 10,
+   "block_index": 66,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 9:12",
+   "chapter_order": 10,
+   "block_index": 66,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 7:20",
+   "chapter_order": 10,
+   "block_index": 66,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 2:16",
+   "chapter_order": 10,
+   "block_index": 70,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Corinthians 7:38",
+   "chapter_order": 10,
+   "block_index": 70,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 103:3",
+   "chapter_order": 10,
+   "block_index": 71,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "chapter_order": 10,
+   "block_index": 71,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 2:11",
+   "chapter_order": 10,
+   "block_index": 71,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "chapter_order": 10,
+   "block_index": 71,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 15:54",
+   "chapter_order": 10,
+   "block_index": 71,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 6:34",
+   "chapter_order": 10,
+   "block_index": 73,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 6:13",
+   "chapter_order": 10,
+   "block_index": 73,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 15:53",
+   "chapter_order": 10,
+   "block_index": 73,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 9:27",
+   "chapter_order": 10,
+   "block_index": 73,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 21:34",
+   "chapter_order": 10,
+   "block_index": 75,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Corinthians 8:8",
+   "chapter_order": 10,
+   "block_index": 75,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:11",
+   "chapter_order": 10,
+   "block_index": 75,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:12",
+   "chapter_order": 10,
+   "block_index": 75,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:13",
+   "chapter_order": 10,
+   "block_index": 75,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 103:14",
+   "chapter_order": 10,
+   "block_index": 75,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 2:7",
+   "chapter_order": 10,
+   "block_index": 75,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 15:24",
+   "chapter_order": 10,
+   "block_index": 75,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 10:17",
+   "chapter_order": 10,
+   "block_index": 75,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Titus 1:15",
+   "chapter_order": 10,
+   "block_index": 76,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 14:20",
+   "chapter_order": 10,
+   "block_index": 76,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 4:4",
+   "chapter_order": 10,
+   "block_index": 76,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Colossians 2:16",
+   "chapter_order": 10,
+   "block_index": 76,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 14:3",
+   "chapter_order": 10,
+   "block_index": 76,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 9:3",
+   "chapter_order": 10,
+   "block_index": 76,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Kings 17:6",
+   "chapter_order": 10,
+   "block_index": 76,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 3:4",
+   "chapter_order": 10,
+   "block_index": 76,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 25:34",
+   "chapter_order": 10,
+   "block_index": 76,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Samuel 23:15",
+   "chapter_order": 10,
+   "block_index": 76,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 4:3",
+   "chapter_order": 10,
+   "block_index": 76,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Numbers 11:1",
+   "chapter_order": 10,
+   "block_index": 76,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 34:4",
+   "chapter_order": 10,
+   "block_index": 77,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 16:33",
+   "chapter_order": 10,
+   "block_index": 77,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:34",
+   "chapter_order": 10,
+   "block_index": 77,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 139:16",
+   "chapter_order": 10,
+   "block_index": 77,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 5:8",
+   "chapter_order": 10,
+   "block_index": 77,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 12:15",
+   "chapter_order": 10,
+   "block_index": 82,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 80:14",
+   "chapter_order": 10,
+   "block_index": 82,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 6:2",
+   "chapter_order": 10,
+   "block_index": 82,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 5:2",
+   "chapter_order": 10,
+   "block_index": 84,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "chapter_order": 10,
+   "block_index": 84,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 27:1",
+   "chapter_order": 10,
+   "block_index": 85,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 48:14",
+   "chapter_order": 10,
+   "block_index": 85,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 25:15",
+   "chapter_order": 10,
+   "block_index": 85,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 121:4",
+   "chapter_order": 10,
+   "block_index": 85,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 26:3",
+   "chapter_order": 10,
+   "block_index": 86,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 3:4",
+   "chapter_order": 10,
+   "block_index": 86,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 59:10",
+   "chapter_order": 10,
+   "block_index": 86,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 2:16",
+   "chapter_order": 10,
+   "block_index": 88,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 12:39",
+   "chapter_order": 10,
+   "block_index": 89,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 88:2",
+   "chapter_order": 10,
+   "block_index": 90,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 4:26",
+   "chapter_order": 10,
+   "block_index": 90,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 103:3",
+   "chapter_order": 10,
+   "block_index": 93,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 103:4",
+   "chapter_order": 10,
+   "block_index": 93,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 103:5",
+   "chapter_order": 10,
+   "block_index": 93,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 11:30",
+   "chapter_order": 10,
+   "block_index": 93,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 4:6",
+   "chapter_order": 10,
+   "block_index": 94,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 18:7",
+   "chapter_order": 10,
+   "block_index": 94,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 18:8",
+   "chapter_order": 10,
+   "block_index": 94,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 14:13",
+   "chapter_order": 10,
+   "block_index": 94,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 12:32",
+   "chapter_order": 10,
+   "block_index": 94,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 17:8",
+   "chapter_order": 10,
+   "block_index": 94,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 10:3",
+   "chapter_order": 10,
+   "block_index": 94,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 27:21",
+   "chapter_order": 10,
+   "block_index": 96,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 38:10",
+   "chapter_order": 10,
+   "block_index": 96,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:136",
+   "chapter_order": 10,
+   "block_index": 96,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 19:12",
+   "chapter_order": 10,
+   "block_index": 96,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 22:39",
+   "chapter_order": 10,
+   "block_index": 97,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 1:6",
+   "chapter_order": 10,
+   "block_index": 98,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 141:5",
+   "chapter_order": 10,
+   "block_index": 98,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 40:17",
+   "chapter_order": 10,
+   "block_index": 98,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 139:6",
+   "chapter_order": 10,
+   "block_index": 106,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 31:22",
+   "chapter_order": 10,
+   "block_index": 106,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 8:1",
+   "chapter_order": 10,
+   "block_index": 108,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 18:13",
+   "chapter_order": 10,
+   "block_index": 108,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 2:2",
+   "chapter_order": 10,
+   "block_index": 108,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 11:14",
+   "chapter_order": 10,
+   "block_index": 108,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 6:23",
+   "chapter_order": 10,
+   "block_index": 108,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 2:5",
+   "chapter_order": 10,
+   "block_index": 110,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:6",
+   "chapter_order": 10,
+   "block_index": 110,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:1",
+   "chapter_order": 10,
+   "block_index": 110,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:32",
+   "chapter_order": 10,
+   "block_index": 111,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 5:6",
+   "chapter_order": 10,
+   "block_index": 111,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 2:6",
+   "chapter_order": 10,
+   "block_index": 111,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 2:8",
+   "chapter_order": 10,
+   "block_index": 111,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 10:18",
+   "chapter_order": 10,
+   "block_index": 111,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 4:7",
+   "chapter_order": 10,
+   "block_index": 111,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:34",
+   "chapter_order": 10,
+   "block_index": 111,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:14",
+   "chapter_order": 10,
+   "block_index": 111,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 88:6",
+   "chapter_order": 10,
+   "block_index": 111,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 55:7",
+   "chapter_order": 10,
+   "block_index": 112,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 5:15",
+   "chapter_order": 10,
+   "block_index": 112,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 55:22",
+   "chapter_order": 10,
+   "block_index": 112,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:18",
+   "chapter_order": 10,
+   "block_index": 112,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 6:2",
+   "chapter_order": 10,
+   "block_index": 112,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 2:3",
+   "chapter_order": 10,
+   "block_index": 112,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Revelation 5:9",
+   "chapter_order": 10,
+   "block_index": 112,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:122",
+   "chapter_order": 10,
+   "block_index": 112,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 22:26",
+   "chapter_order": 10,
+   "block_index": 112,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 145:3",
+   "chapter_order": 11,
+   "block_index": 1,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 6:8",
+   "chapter_order": 11,
+   "block_index": 1,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 5:3",
+   "chapter_order": 11,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 118:1",
+   "chapter_order": 11,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 1:2",
+   "chapter_order": 11,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 15:54",
+   "chapter_order": 11,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 86:6",
+   "chapter_order": 11,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 10:12",
+   "chapter_order": 11,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "chapter_order": 11,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 130:1",
+   "chapter_order": 11,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "chapter_order": 11,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 29:9",
+   "chapter_order": 11,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 26:7",
+   "chapter_order": 11,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 74:16",
+   "chapter_order": 11,
+   "block_index": 4,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 119:18",
+   "chapter_order": 11,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "chapter_order": 11,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 86:3",
+   "chapter_order": 11,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 6:33",
+   "chapter_order": 11,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:85",
+   "chapter_order": 11,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 80:17",
+   "chapter_order": 11,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 80:18",
+   "chapter_order": 11,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 2:5",
+   "chapter_order": 11,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:3",
+   "chapter_order": 11,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:34",
+   "chapter_order": 11,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 5:46",
+   "chapter_order": 11,
+   "block_index": 5,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 2:3",
+   "chapter_order": 11,
+   "block_index": 5,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "chapter_order": 11,
+   "block_index": 7,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 33:9",
+   "chapter_order": 11,
+   "block_index": 11,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 17:5",
+   "chapter_order": 11,
+   "block_index": 13,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 40:8",
+   "chapter_order": 11,
+   "block_index": 13,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:1",
+   "chapter_order": 11,
+   "block_index": 15,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 8:25",
+   "chapter_order": 11,
+   "block_index": 17,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 23:8",
+   "chapter_order": 11,
+   "block_index": 17,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:29",
+   "chapter_order": 11,
+   "block_index": 17,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 103:3",
+   "chapter_order": 11,
+   "block_index": 19,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 103:4",
+   "chapter_order": 11,
+   "block_index": 19,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 103:5",
+   "chapter_order": 11,
+   "block_index": 19,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:24",
+   "chapter_order": 11,
+   "block_index": 19,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:25",
+   "chapter_order": 11,
+   "block_index": 19,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 104:24",
+   "chapter_order": 11,
+   "block_index": 19,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 5:7",
+   "chapter_order": 11,
+   "block_index": 21,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 102:27",
+   "chapter_order": 11,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Peter 3:8",
+   "chapter_order": 11,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 2:7",
+   "chapter_order": 11,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 71:5",
+   "chapter_order": 11,
+   "block_index": 40,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:116",
+   "chapter_order": 11,
+   "block_index": 40,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 139:6",
+   "chapter_order": 11,
+   "block_index": 43,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 38:11",
+   "chapter_order": 11,
+   "block_index": 43,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 7:11",
+   "chapter_order": 11,
+   "block_index": 49,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 73:16",
+   "chapter_order": 11,
+   "block_index": 49,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 6:17",
+   "chapter_order": 11,
+   "block_index": 49,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 4:13",
+   "chapter_order": 11,
+   "block_index": 49,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 27:4",
+   "chapter_order": 11,
+   "block_index": 49,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 39:6",
+   "chapter_order": 11,
+   "block_index": 49,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:14",
+   "chapter_order": 11,
+   "block_index": 51,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Joshua 10:13",
+   "chapter_order": 11,
+   "block_index": 52,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 43:3",
+   "chapter_order": 11,
+   "block_index": 52,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 1:20",
+   "chapter_order": 11,
+   "block_index": 56,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 18:28",
+   "chapter_order": 11,
+   "block_index": 56,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 62:9",
+   "chapter_order": 11,
+   "block_index": 60,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 100:3",
+   "chapter_order": 11,
+   "block_index": 60,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 63:3",
+   "chapter_order": 11,
+   "block_index": 67,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 63:8",
+   "chapter_order": 11,
+   "block_index": 67,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 2:5",
+   "chapter_order": 11,
+   "block_index": 67,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 3:12",
+   "chapter_order": 11,
+   "block_index": 67,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 3:13",
+   "chapter_order": 11,
+   "block_index": 67,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 3:14",
+   "chapter_order": 11,
+   "block_index": 67,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 26:7",
+   "chapter_order": 11,
+   "block_index": 67,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 27:4",
+   "chapter_order": 11,
+   "block_index": 67,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 31:10",
+   "chapter_order": 11,
+   "block_index": 67,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 94:19",
+   "chapter_order": 11,
+   "block_index": 67,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 9:5",
+   "chapter_order": 11,
+   "block_index": 67,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 3:13",
+   "chapter_order": 11,
+   "block_index": 69,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "chapter_order": 11,
+   "block_index": 71,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 11:33",
+   "chapter_order": 11,
+   "block_index": 71,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 138:6",
+   "chapter_order": 11,
+   "block_index": 71,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 57:15",
+   "chapter_order": 11,
+   "block_index": 71,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 146:8",
+   "chapter_order": 11,
+   "block_index": 71,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:31",
+   "chapter_order": 12,
+   "block_index": 1,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "chapter_order": 12,
+   "block_index": 1,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 7:8",
+   "chapter_order": 12,
+   "block_index": 1,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 14:6",
+   "chapter_order": 12,
+   "block_index": 1,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 115:16",
+   "chapter_order": 12,
+   "block_index": 3,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "chapter_order": 12,
+   "block_index": 5,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 11:36",
+   "chapter_order": 12,
+   "block_index": 13,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Revelation 4:8",
+   "chapter_order": 12,
+   "block_index": 13,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Corinthians 1:24",
+   "chapter_order": 12,
+   "block_index": 13,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:6",
+   "chapter_order": 12,
+   "block_index": 15,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:8",
+   "chapter_order": 12,
+   "block_index": 15,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "chapter_order": 12,
+   "block_index": 15,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "chapter_order": 12,
+   "block_index": 17,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 30:21",
+   "chapter_order": 12,
+   "block_index": 19,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:176",
+   "chapter_order": 12,
+   "block_index": 19,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 6:16",
+   "chapter_order": 12,
+   "block_index": 21,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 2:19",
+   "chapter_order": 12,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 26:8",
+   "chapter_order": 12,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 42:3",
+   "chapter_order": 12,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 27:4",
+   "chapter_order": 12,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 102:27",
+   "chapter_order": 12,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 15:13",
+   "chapter_order": 12,
+   "block_index": 23,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "chapter_order": 12,
+   "block_index": 26,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "chapter_order": 12,
+   "block_index": 26,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "chapter_order": 12,
+   "block_index": 26,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "chapter_order": 12,
+   "block_index": 28,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "chapter_order": 12,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 139:22",
+   "chapter_order": 12,
+   "block_index": 30,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "chapter_order": 12,
+   "block_index": 30,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 5:15",
+   "chapter_order": 12,
+   "block_index": 30,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 148:6",
+   "chapter_order": 12,
+   "block_index": 32,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Proverbs 8:22",
+   "chapter_order": 12,
+   "block_index": 33,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "chapter_order": 12,
+   "block_index": 33,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Galatians 4:26",
+   "chapter_order": 12,
+   "block_index": 33,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 115:16",
+   "chapter_order": 12,
+   "block_index": 33,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 5:1",
+   "chapter_order": 12,
+   "block_index": 33,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 148:4",
+   "chapter_order": 12,
+   "block_index": 33,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 18:10",
+   "chapter_order": 12,
+   "block_index": 34,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 102:27",
+   "chapter_order": 12,
+   "block_index": 34,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 26:8",
+   "chapter_order": 12,
+   "block_index": 34,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 11:10",
+   "chapter_order": 12,
+   "block_index": 34,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 119:176",
+   "chapter_order": 12,
+   "block_index": 34,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Luke 15:5",
+   "chapter_order": 12,
+   "block_index": 34,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 28:1",
+   "chapter_order": 12,
+   "block_index": 37,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 6:6",
+   "chapter_order": 12,
+   "block_index": 37,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:26",
+   "chapter_order": 12,
+   "block_index": 37,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 137:6",
+   "chapter_order": 12,
+   "block_index": 37,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 4:26",
+   "chapter_order": 12,
+   "block_index": 37,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:23",
+   "chapter_order": 12,
+   "block_index": 37,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "chapter_order": 12,
+   "block_index": 51,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 2:14",
+   "chapter_order": 12,
+   "block_index": 43,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 1:8",
+   "chapter_order": 12,
+   "block_index": 43,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 1:5",
+   "chapter_order": 12,
+   "block_index": 43,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 22:40",
+   "chapter_order": 12,
+   "block_index": 43,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 38:11",
+   "chapter_order": 12,
+   "block_index": 43,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 8:6",
+   "chapter_order": 12,
+   "block_index": 45,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "chapter_order": 12,
+   "block_index": 51,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Colossians 1:16",
+   "chapter_order": 12,
+   "block_index": 51,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:8",
+   "chapter_order": 12,
+   "block_index": 51,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:7",
+   "chapter_order": 12,
+   "block_index": 51,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:9",
+   "chapter_order": 12,
+   "block_index": 51,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 37:4",
+   "chapter_order": 12,
+   "block_index": 53,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 116:17",
+   "chapter_order": 12,
+   "block_index": 55,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 116:18",
+   "chapter_order": 12,
+   "block_index": 55,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 8:44",
+   "chapter_order": 12,
+   "block_index": 57,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 1:8",
+   "chapter_order": 12,
+   "block_index": 58,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 1:5",
+   "chapter_order": 12,
+   "block_index": 58,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 4:6",
+   "chapter_order": 12,
+   "block_index": 58,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 22:37",
+   "chapter_order": 12,
+   "block_index": 58,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 1:10",
+   "chapter_order": 12,
+   "block_index": 58,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 25:18",
+   "chapter_order": 12,
+   "block_index": 60,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 22:39",
+   "chapter_order": 12,
+   "block_index": 60,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 9:21",
+   "chapter_order": 12,
+   "block_index": 60,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 8:4",
+   "chapter_order": 12,
+   "block_index": 60,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 8:5",
+   "chapter_order": 12,
+   "block_index": 60,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:3",
+   "chapter_order": 12,
+   "block_index": 62,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 3:1",
+   "chapter_order": 12,
+   "block_index": 62,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "chapter_order": 12,
+   "block_index": 64,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "chapter_order": 12,
+   "block_index": 65,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 8:25",
+   "chapter_order": 12,
+   "block_index": 65,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 104:24",
+   "chapter_order": 12,
+   "block_index": 65,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 1:8",
+   "chapter_order": 12,
+   "block_index": 69,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 1:5",
+   "chapter_order": 12,
+   "block_index": 69,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 4:7",
+   "chapter_order": 12,
+   "block_index": 69,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 16:17",
+   "chapter_order": 12,
+   "block_index": 73,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 143:10",
+   "chapter_order": 12,
+   "block_index": 73,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "chapter_order": 13,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "chapter_order": 13,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 104:24",
+   "chapter_order": 13,
+   "block_index": 3,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 36:6",
+   "chapter_order": 13,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "chapter_order": 13,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 5:8",
+   "chapter_order": 13,
+   "block_index": 4,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 143:10",
+   "chapter_order": 13,
+   "block_index": 8,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 36:9",
+   "chapter_order": 13,
+   "block_index": 8,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "chapter_order": 13,
+   "block_index": 10,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 25:1",
+   "chapter_order": 13,
+   "block_index": 12,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 5:5",
+   "chapter_order": 13,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 12:31",
+   "chapter_order": 13,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 3:14",
+   "chapter_order": 13,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 3:19",
+   "chapter_order": 13,
+   "block_index": 14,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 124:5",
+   "chapter_order": 13,
+   "block_index": 14,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 18:28",
+   "chapter_order": 13,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 58:10",
+   "chapter_order": 13,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 31:20",
+   "chapter_order": 13,
+   "block_index": 16,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 9:13",
+   "chapter_order": 13,
+   "block_index": 18,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 122:6",
+   "chapter_order": 13,
+   "block_index": 18,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 122:1",
+   "chapter_order": 13,
+   "block_index": 18,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 5:8",
+   "chapter_order": 13,
+   "block_index": 20,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 1:9",
+   "chapter_order": 13,
+   "block_index": 20,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Hebrews 12:14",
+   "chapter_order": 13,
+   "block_index": 22,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 6:3",
+   "chapter_order": 13,
+   "block_index": 24,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 28:19",
+   "chapter_order": 13,
+   "block_index": 24,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 39:11",
+   "chapter_order": 13,
+   "block_index": 24,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 36:6",
+   "chapter_order": 13,
+   "block_index": 24,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 3:2",
+   "chapter_order": 13,
+   "block_index": 24,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 42:6",
+   "chapter_order": 13,
+   "block_index": 24,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:24",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 42:7",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 3:1",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 3:13",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 5:4",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 5:2",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 42:1",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 42:2",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 12:2",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Corinthians 14:20",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Galatians 3:1",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 4:8",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Malachi 3:10",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 46:4",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:29",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:23",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 11:2",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 11:3",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 3:2",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 42:3",
+   "chapter_order": 13,
+   "block_index": 26,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 42:4",
+   "chapter_order": 13,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 42:5",
+   "chapter_order": 13,
+   "block_index": 28,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 119:105",
+   "chapter_order": 13,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 2:3",
+   "chapter_order": 13,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 26:20",
+   "chapter_order": 13,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:10",
+   "chapter_order": 13,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 5:3",
+   "chapter_order": 13,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 8:11",
+   "chapter_order": 13,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 5:5",
+   "chapter_order": 13,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Thessalonians 5:5",
+   "chapter_order": 13,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 7:9",
+   "chapter_order": 13,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:5",
+   "chapter_order": 13,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 4:7",
+   "chapter_order": 13,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 9:21",
+   "chapter_order": 13,
+   "block_index": 28,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 2:17",
+   "chapter_order": 13,
+   "block_index": 28,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 34:4",
+   "chapter_order": 13,
+   "block_index": 30,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 104:2",
+   "chapter_order": 13,
+   "block_index": 30,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 3:21",
+   "chapter_order": 13,
+   "block_index": 30,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 8:3",
+   "chapter_order": 13,
+   "block_index": 31,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 19:7",
+   "chapter_order": 13,
+   "block_index": 31,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 8:2",
+   "chapter_order": 13,
+   "block_index": 31,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 21:16",
+   "chapter_order": 13,
+   "block_index": 31,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 148:2",
+   "chapter_order": 13,
+   "block_index": 32,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 18:10",
+   "chapter_order": 13,
+   "block_index": 32,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 36:5",
+   "chapter_order": 13,
+   "block_index": 32,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 36:6",
+   "chapter_order": 13,
+   "block_index": 32,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 24:35",
+   "chapter_order": 13,
+   "block_index": 32,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 34:4",
+   "chapter_order": 13,
+   "block_index": 32,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 40:8",
+   "chapter_order": 13,
+   "block_index": 32,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "chapter_order": 13,
+   "block_index": 32,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 3:2",
+   "chapter_order": 13,
+   "block_index": 32,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Song of Songs 2:9",
+   "chapter_order": 13,
+   "block_index": 32,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Song of Songs 1:4",
+   "chapter_order": 13,
+   "block_index": 32,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 143:6",
+   "chapter_order": 13,
+   "block_index": 34,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 36:9",
+   "chapter_order": 13,
+   "block_index": 34,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 36:10",
+   "chapter_order": 13,
+   "block_index": 34,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:9",
+   "chapter_order": 13,
+   "block_index": 36,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 95:5",
+   "chapter_order": 13,
+   "block_index": 36,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:10",
+   "chapter_order": 13,
+   "block_index": 36,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 38:11",
+   "chapter_order": 13,
+   "block_index": 36,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 42:3",
+   "chapter_order": 13,
+   "block_index": 37,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 67:7",
+   "chapter_order": 13,
+   "block_index": 37,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:11",
+   "chapter_order": 13,
+   "block_index": 37,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 7:12",
+   "chapter_order": 13,
+   "block_index": 37,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 85:11",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:14",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 58:7",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 58:8",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 2:15",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 2:16",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:15",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 13:11",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 13:12",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 65:11",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 9:38",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 4:38",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 13:39",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 102:27",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 12:7",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:16",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 2:6",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 3:1",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 2:14",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 3:2",
+   "chapter_order": 13,
+   "block_index": 39,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 1:16",
+   "chapter_order": 13,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Isaiah 1:17",
+   "chapter_order": 13,
+   "block_index": 41,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 1:18",
+   "chapter_order": 13,
+   "block_index": 41,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 1:14",
+   "chapter_order": 13,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:15",
+   "chapter_order": 13,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 19:16",
+   "chapter_order": 13,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 10:18",
+   "chapter_order": 13,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 19:17",
+   "chapter_order": 13,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 19:18",
+   "chapter_order": 13,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 19:19",
+   "chapter_order": 13,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 4:31",
+   "chapter_order": 13,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 19:20",
+   "chapter_order": 13,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 19:21",
+   "chapter_order": 13,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 6:21",
+   "chapter_order": 13,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Mark 10:22",
+   "chapter_order": 13,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 13:7",
+   "chapter_order": 13,
+   "block_index": 41,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "chapter_order": 13,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 1:27",
+   "chapter_order": 13,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 19:27",
+   "chapter_order": 13,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 10:15",
+   "chapter_order": 13,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 19:1",
+   "chapter_order": 13,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 19:2",
+   "chapter_order": 13,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:14",
+   "chapter_order": 13,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Acts 2:2",
+   "chapter_order": 13,
+   "block_index": 42,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Acts 2:3",
+   "chapter_order": 13,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 2:16",
+   "chapter_order": 13,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 5:14",
+   "chapter_order": 13,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 5:15",
+   "chapter_order": 13,
+   "block_index": 42,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:20",
+   "chapter_order": 13,
+   "block_index": 44,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:21",
+   "chapter_order": 13,
+   "block_index": 44,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Jeremiah 15:19",
+   "chapter_order": 13,
+   "block_index": 44,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:22",
+   "chapter_order": 13,
+   "block_index": 44,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:24",
+   "chapter_order": 13,
+   "block_index": 44,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 19:3",
+   "chapter_order": 13,
+   "block_index": 44,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 19:4",
+   "chapter_order": 13,
+   "block_index": 44,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "chapter_order": 13,
+   "block_index": 46,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 3:5",
+   "chapter_order": 13,
+   "block_index": 48,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 4:48",
+   "chapter_order": 13,
+   "block_index": 48,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 136:6",
+   "chapter_order": 13,
+   "block_index": 48,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 23:5",
+   "chapter_order": 13,
+   "block_index": 48,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:22",
+   "chapter_order": 13,
+   "block_index": 48,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 5:6",
+   "chapter_order": 13,
+   "block_index": 48,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 14:22",
+   "chapter_order": 13,
+   "block_index": 48,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 3:8",
+   "chapter_order": 13,
+   "block_index": 49,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Thessalonians 1:7",
+   "chapter_order": 13,
+   "block_index": 49,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 1:22",
+   "chapter_order": 13,
+   "block_index": 49,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 69:32",
+   "chapter_order": 13,
+   "block_index": 49,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 6:20",
+   "chapter_order": 13,
+   "block_index": 49,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Timothy 6:21",
+   "chapter_order": 13,
+   "block_index": 49,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 John 2:16",
+   "chapter_order": 13,
+   "block_index": 49,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 4:12",
+   "chapter_order": 13,
+   "block_index": 50,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 8:8",
+   "chapter_order": 13,
+   "block_index": 50,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 10:16",
+   "chapter_order": 13,
+   "block_index": 50,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 1:20",
+   "chapter_order": 13,
+   "block_index": 50,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 12:2",
+   "chapter_order": 13,
+   "block_index": 52,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 1:26",
+   "chapter_order": 13,
+   "block_index": 52,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Corinthians 4:15",
+   "chapter_order": 13,
+   "block_index": 52,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 3:2",
+   "chapter_order": 13,
+   "block_index": 52,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Thessalonians 2:7",
+   "chapter_order": 13,
+   "block_index": 52,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:27",
+   "chapter_order": 13,
+   "block_index": 52,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 2:15",
+   "chapter_order": 13,
+   "block_index": 52,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:26",
+   "chapter_order": 13,
+   "block_index": 54,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Corinthians 2:14",
+   "chapter_order": 13,
+   "block_index": 54,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 49:12",
+   "chapter_order": 13,
+   "block_index": 54,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "chapter_order": 13,
+   "block_index": 54,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Galatians 3:28",
+   "chapter_order": 13,
+   "block_index": 54,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "James 4:11",
+   "chapter_order": 13,
+   "block_index": 54,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 7:16",
+   "chapter_order": 13,
+   "block_index": 54,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 5:12",
+   "chapter_order": 13,
+   "block_index": 54,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:28",
+   "chapter_order": 13,
+   "block_index": 55,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 14:16",
+   "chapter_order": 13,
+   "block_index": 55,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:10",
+   "chapter_order": 13,
+   "block_index": 55,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:22",
+   "chapter_order": 13,
+   "block_index": 57,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 1:28",
+   "chapter_order": 13,
+   "block_index": 57,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "chapter_order": 13,
+   "block_index": 58,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 1:11",
+   "chapter_order": 13,
+   "block_index": 59,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:12",
+   "chapter_order": 13,
+   "block_index": 59,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 14:6",
+   "chapter_order": 13,
+   "block_index": 61,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 3:4",
+   "chapter_order": 13,
+   "block_index": 61,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 8:44",
+   "chapter_order": 13,
+   "block_index": 61,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 1:29",
+   "chapter_order": 13,
+   "block_index": 61,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 1:30",
+   "chapter_order": 13,
+   "block_index": 61,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 1:16",
+   "chapter_order": 13,
+   "block_index": 61,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Corinthians 11:9",
+   "chapter_order": 13,
+   "block_index": 61,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "2 Timothy 4:16",
+   "chapter_order": 13,
+   "block_index": 61,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 10:18",
+   "chapter_order": 13,
+   "block_index": 61,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 3:19",
+   "chapter_order": 13,
+   "block_index": 63,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 4:18",
+   "chapter_order": 13,
+   "block_index": 63,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 4:10",
+   "chapter_order": 13,
+   "block_index": 63,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:11",
+   "chapter_order": 13,
+   "block_index": 63,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:12",
+   "chapter_order": 13,
+   "block_index": 63,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:13",
+   "chapter_order": 13,
+   "block_index": 63,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Colossians 3:10",
+   "chapter_order": 13,
+   "block_index": 64,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 14:2",
+   "chapter_order": 13,
+   "block_index": 64,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 4:14",
+   "chapter_order": 13,
+   "block_index": 64,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalm 4:1",
+   "chapter_order": 13,
+   "block_index": 64,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Philippians 4:15",
+   "chapter_order": 13,
+   "block_index": 64,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:16",
+   "chapter_order": 13,
+   "block_index": 64,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:17",
+   "chapter_order": 13,
+   "block_index": 65,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 10:41",
+   "chapter_order": 13,
+   "block_index": 65,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 10:42",
+   "chapter_order": 13,
+   "block_index": 65,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Kings 17:9",
+   "chapter_order": 13,
+   "block_index": 65,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:31",
+   "chapter_order": 13,
+   "block_index": 69,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "1 Corinthians 2:11",
+   "chapter_order": 13,
+   "block_index": 75,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Corinthians 2:12",
+   "chapter_order": 13,
+   "block_index": 75,
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 10:20",
+   "chapter_order": 13,
+   "block_index": 75,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 5:5",
+   "chapter_order": 13,
+   "block_index": 75,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Exodus 3:14",
+   "chapter_order": 13,
+   "block_index": 75,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:26",
+   "chapter_order": 13,
+   "block_index": 77,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:27",
+   "chapter_order": 13,
+   "block_index": 77,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:16",
+   "chapter_order": 13,
+   "block_index": 77,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 145:10",
+   "chapter_order": 13,
+   "block_index": 79,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 1:2",
+   "chapter_order": 13,
+   "block_index": 81,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Romans 4:5",
+   "chapter_order": 13,
+   "block_index": 81,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 2:2",
+   "chapter_order": 13,
+   "block_index": 85,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Genesis 2:3",
+   "chapter_order": 13,
+   "block_index": 85,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "John 5:17",
+   "chapter_order": 13,
+   "block_index": 87,
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "chapter_order": 13,
+   "block_index": 89,
+   "status": "self_rendered"
+  }
+ ]
+}

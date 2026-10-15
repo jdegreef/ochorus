@@ -301,3 +301,7 @@ A companion to the eight story books, not a ninth part of the story: the books i
 The BSB check caught five proverbs quoted from memory in modern wording (4:18, 12:18, 13:20, 18:24, Colossians 3:23); all now exact. Job's children's deaths are one sentence; the friends' silence is commended and their later accusations named as wrong (Job 42:7).
 
 Cover: its own colour family (plum into amber, an evening song), David's lyre in the sky, still waters and two sheep below (Psalm 23).
+
+## Easter plan: Tell Me the Easter Story
+
+`tell-me-the-easter-story` in `plan_seed.py`: 29 nights from the Sunday three weeks before Easter (7 March in 2027; 28 March is Easter). Nights 1–7 are promise stories (Genesis 3:15, Moriah, the Passover, the bronze snake, Jonah's three days, Isaiah 53, and Book 9's shepherd who lays down his life); 8–21 walk to the cross (the Transfiguration, Lazarus, Mary's perfume, Palm Sunday, the temple, then Book 6 from the foot-washing). Holy Week cannot run one story a weekday (Thursday night to Friday holds six), so only three days are anchored: night 20 Good Friday "It Is Finished", 21 Holy Saturday "Laid in the Tomb", 22 Easter Sunday "He Is Risen!". Nights 23–29 are Easter week to the ascension. The widow's two coins is the one Book 6 story left out, to make the dates fall right.
