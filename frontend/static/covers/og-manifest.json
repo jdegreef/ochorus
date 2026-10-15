@@ -16416,6 +16416,34 @@
 				478
 			]
 		},
+		"pt/men-and-women-who-gave-everything-2": {
+			"ground": "d2f38eaec5b8e9282fe8fd72fbc06bd114a771a73bca7fdd2a2cb6547bd37b50",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[151, 275, 449, 351],
+					[92, 341, 508, 417],
+					[112, 407, 488, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
+		},
 		"pt/men-of-prayer-2": {
 			"ground": "4ccfa79e0cf284fe44c0dbea3faf6ed4eff3f259334e6e7386da1ebd3feaacc6",
 			"style": "originals",
