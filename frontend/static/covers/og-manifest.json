@@ -5467,6 +5467,38 @@
 				564
 			]
 		},
+		"es/brave-for-god-4": {
+			"ground": "8e78b02f8a2090342c3be5e2efec099a665ac019fcb9b4815307fe09e50cee80",
+			"style": "young",
+			"volume": "4",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 243, 311, 287],
+					[132, 318, 468, 393],
+					[77, 379, 523, 454]
+				],
+				"subtitle": [
+					[174, 508, 426, 536],
+					[166, 536, 434, 564]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				231,
+				564
+			]
+		},
 		"es/c-s-lewis-a-life-children": {
 			"ground": "7312da55e3c7aa0c4671a019169aad10051c2034219026ad387d533a07242a88",
 			"style": "young",
@@ -6110,6 +6142,38 @@
 					[105, 169, 495, 232],
 					[168, 225, 432, 288],
 					[158, 280, 442, 343]
+				],
+				"subtitle": [
+					[160, 404, 440, 432],
+					[183, 432, 417, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				460
+			]
+		},
+		"es/key-teachings-of-andrew-murray": {
+			"ground": "179ca7ce4891102f54de0a971274dc325242959a978dab781ab2c9057599e509",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[105, 169, 495, 232],
+					[200, 225, 400, 288],
+					[98, 280, 502, 343]
 				],
 				"subtitle": [
 					[160, 404, 440, 432],

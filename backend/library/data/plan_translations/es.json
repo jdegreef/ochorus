@@ -185,5 +185,12 @@
     "note": [
       "Job #4857. Ships with the last of the plan's Spanish books: holy-in-christ («Santo en Cristo») and plain-account-christian-perfection («Una explicación sencilla de la perfección cristiana») already ship in es, and a-serious-call is this PR, so the plan seeds in es on merge."
     ]
+  },
+  "brave-for-god-24-true-stories": {
+    "title": "Valientes por Dios: 24 historias verdaderas",
+    "description": "Tres semanas y media de historias verdaderas para lectores jóvenes, una cada día: los cuatro libros de Valientes por Dios, veinticuatro personas comunes de todas partes del mundo que confiaron en Dios y fueron hechas valientes.",
+    "note": [
+      "Queue job #4865: «Valientes por Dios: Libro cuatro» completes this plan in es, so the prose ships in the same PR. The title opens with the shipped es series title «Valientes por Dios», and «fueron hechas valientes» echoes the series description."
+    ]
   }
 }

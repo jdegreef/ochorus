@@ -9,6 +9,11 @@ staticfiles/
 # Node / SvelteKit
 node_modules/
 /frontend/build/
+# The native app's web bundle (scripts/build-app.mjs) and its local secrets.
+/frontend/build-app/
+/frontend/app-env/*.local
+# …but app-env/.env itself is committed: the app's public build settings.
+!/frontend/app-env/.env
 /frontend/.svelte-kit/
 .DS_Store
 

@@ -31,6 +31,12 @@ afterEach(() => vi.unstubAllGlobals());
 
 
 describe('offlineBooks tracking', () => {
+	it('is supported on the website wherever the Cache API is', () => {
+		expect(offlineBooks.supported).toBe(false); // jsdom has no Cache API
+		fakeCaches([]);
+		expect(offlineBooks.supported).toBe(true);
+	});
+
 	it('is empty on a fresh device', () => {
 		expect(offlineBooks.list()).toEqual([]);
 		expect(offlineBooks.has('godliness', 'en')).toBe(false);
