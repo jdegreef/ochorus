@@ -7137,6 +7137,37 @@
 				534
 			]
 		},
+		"es/rooted-4": {
+			"ground": "b37c45a3e4917c235fa933fb36c5a3e2d1dc9289b33c97a123ecf6423026664b",
+			"style": "young",
+			"volume": "4",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 273, 311, 317],
+					[160, 348, 440, 423]
+				],
+				"subtitle": [
+					[53, 478, 547, 506],
+					[81, 506, 519, 534]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				261,
+				534
+			]
+		},
 		"es/rooted-5": {
 			"ground": "e9186569b6baf9a9ca5808973d7cf4de70fbce745a5e6e979b4c15c1226161ae",
 			"style": "young",
