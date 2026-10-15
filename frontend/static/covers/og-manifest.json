@@ -6612,6 +6612,17 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"es/pilgrims-progress-words-of-one-syllable": {
+			"ground": "57fd085df0868ebabd97ba580c2b22fed82a30df7296ce878ae77f6636271775",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"es/plain-account-christian-perfection": {
 			"ground": "09e58a03f0c4c1032ecc22fe891e8013de01924d4d48aa8527446e65254878d7",
 			"style": "enlightenment",
