@@ -807,10 +807,12 @@ class GoLiveTests(TestCase):
                     post.assert_called_once_with("https://hook.example/deploy", timeout=20)
         self.assertEqual(res.data["deploy"]["status"], "triggered")
 
-    def _launch_under_train(self, *, token="gh-token", dispatch_status=204):
+    def _launch_under_train(
+        self, *, token="gh-token", dispatch_status=204, hook="https://hook.example/deploy"
+    ):
         """Launch with the deploy train on; returns (response, requests.post mock)."""
         with self.settings(
-            RENDER_WEB_DEPLOY_HOOK="https://hook.example/deploy",
+            RENDER_WEB_DEPLOY_HOOK=hook,
             RELEASE_COMMIT="abc123def456",
             DEPLOY_TRAIN=True,
             GITHUB_DEPLOY_TOKEN=token,
@@ -850,6 +852,12 @@ class GoLiveTests(TestCase):
         self.assertEqual(res.data["deploy"]["status"], "triggered")
         self.assertIn("main's tip", res.data["deploy"]["detail"])
         self.assertIn("403", res.data["deploy"]["detail"])
+
+    def test_a_failed_dispatch_and_no_hook_is_a_failure_not_a_setup_gap(self):
+        res, post = self._launch_under_train(dispatch_status=500, hook="")
+        self.assertEqual(post.call_count, 1)
+        self.assertEqual(res.data["deploy"]["status"], "failed")
+        self.assertIn("500", res.data["deploy"]["detail"])
 
     def test_without_a_deploy_token_the_train_fires_the_unpinned_hook(self):
         res, post = self._launch_under_train(token="")
