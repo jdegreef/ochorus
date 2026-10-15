@@ -1,0 +1,182 @@
+{
+ "kind": "book",
+ "slug": "divine-songs-for-children",
+ "language": "es",
+ "job_issue": 4863,
+ "references": [
+  {
+   "reference": "Genesis 1:31a",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 7
+  },
+  {
+   "reference": "Psalm 139:7",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 10
+  },
+  {
+   "reference": "Psalm 116:12",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 21
+  },
+  {
+   "reference": "Psalm 1:2b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 43
+  },
+  {
+   "reference": "Ecclesiastes 11:3b",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 63
+  },
+  {
+   "reference": "Revelation 21:8b",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 2:52",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 9
+  },
+  {
+   "reference": "Ecclesiastes 7:9b",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 15
+  },
+  {
+   "reference": "James 3:9a",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 17
+  },
+  {
+   "reference": "Matthew 5:22",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 18
+  },
+  {
+   "reference": "2 Kings 2:23",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 20
+  },
+  {
+   "reference": "Luke 16:24",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 26
+  },
+  {
+   "reference": "Proverbs 13:20a",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 35
+  },
+  {
+   "reference": "Matthew 6:20",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 44
+  },
+  {
+   "reference": "Proverbs 30:17",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 48
+  },
+  {
+   "reference": "Exodus 20:12",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 49
+  },
+  {
+   "reference": "Exodus 20:3-17",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 72
+  },
+  {
+   "reference": "Matthew 22:37",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 75
+  },
+  {
+   "reference": "Matthew 22:39",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 75
+  },
+  {
+   "reference": "Matthew 7:12",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 78
+  },
+  {
+   "reference": "Matthew 22:37-39",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 80
+  },
+  {
+   "reference": "Matthew 7:12",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 81
+  },
+  {
+   "reference": "Matthew 21:9",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 85
+  },
+  {
+   "reference": "Zechariah 9:9",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 88
+  },
+  {
+   "reference": "Proverbs 26:14",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 0
+  },
+  {
+   "reference": "Proverbs 6:10a",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 1
+  },
+  {
+   "reference": "Proverbs 6:10b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 1
+  },
+  {
+   "reference": "Proverbs 24:30-31",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 2
+  },
+  {
+   "reference": "Matthew 10:16b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 6
+  }
+ ]
+}

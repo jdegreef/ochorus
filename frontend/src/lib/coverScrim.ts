@@ -44,7 +44,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'david-livingstone-a-life': 0.80,
 	'david-livingstone-a-life-children': 0.30,
 	'david-livingstone-a-life-teens': 0.30,
-	'divine-songs-for-children': 0.65,
+	'divine-songs-for-children': 0.70,
 	'elisabeth-elliot-a-life': 0.80,
 	'elisabeth-elliot-a-life-children': 0.30,
 	'elisabeth-elliot-a-life-teens': 0.30,
