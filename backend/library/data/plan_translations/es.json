@@ -192,5 +192,12 @@
     "note": [
       "Queue job #4865: «Valientes por Dios: Libro cuatro» completes this plan in es, so the prose ships in the same PR. The title opens with the shipped es series title «Valientes por Dios», and «fueron hechas valientes» echoes the series description."
     ]
+  },
+  "daughters-of-the-king-three-months": {
+    "title": "Hijas del Rey: tres meses con Dios",
+    "description": "Tres meses con Dios para chicas de 9 a 12 años: los tres libros de Hijas del Rey —Amada, Valiente y Creciendo—, con un breve devocional al día sobre quién eres en Cristo, el valor para hablar y servir, y crecer con sabiduría.",
+    "note": [
+      "Queue job #5321. «Amada» and «Valiente» are the heads of the shipped es subtitles of Books 1–2; Book 3 is not yet translated, so «Creciendo» renders its English subtitle head \"Growing Up\" and should be matched by that job. seed_plans creates the row only once all three books are published in es."
+    ]
   }
 }
