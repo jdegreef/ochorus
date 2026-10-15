@@ -1,0 +1,267 @@
+{
+ "_note": [
+  "Vietnamese shelf prose, Protestant register throughout (Đức Chúa Trời, Đức Thánh Linh, Chúa Giê-xu, Đấng Christ, Hội Thánh, ân điển); reader address bạn. Western personal names stay in Latin script, as in the shipped vi bios.",
+  "Scripture is Cadman's Kinh Thánh (1925), the Bible language_seed.py names for vi, taken VERBATIM from the ebible mirror (bibles/vie_kt) because api.takeroot.bible was egress-blocked in the writing session — never recalled. Two mirror repairs only: its legacy-encoding 'Aáy'/'Aân' are 'Ấy'/'Ân' (the form the shipped vi bios quote). Where an excerpt is shorter than the verse it is a CONTIGUOUS span of the full verse, asserted at build time; the only other edit is capitalising a span's first letter.",
+  "Reference book names are the modern Protestant forms (Rô-ma, Ca Thương, 1 Phi-e-rơ, Công Vụ Các Sứ Đồ), Arabic numerals, tight C:V. A draft for native review."
+ ],
+ "prayer": {
+  "title": "Về sự cầu nguyện",
+  "description": "Học cầu nguyện — và cứ tiếp tục cầu nguyện. Những tác phẩm kinh điển về đời sống cầu nguyện bên trong, từ nơi kín nhiệm đến sự cầu thay đầy thắng lợi.",
+  "scripture": {
+   "reference": "Giê-rê-mi 33:3",
+   "text": "Hãy kêu cầu ta, ta sẽ trả lời cho; ta sẽ tỏ cho ngươi những việc lớn và khó, là những việc ngươi chưa từng biết."
+  }
+ },
+ "holy-spirit": {
+  "title": "Đức Thánh Linh",
+  "description": "Phép báp-têm, sự ngự trong lòng và công việc của Đức Thánh Linh — quyền năng đã hứa ban cho đời sống Cơ Đốc nhân.",
+  "scripture": {
+   "reference": "Xa-cha-ri 4:6",
+   "text": "Ấy chẳng phải là bởi quyền thế, cũng chẳng phải là bởi năng lực, bèn là bởi Thần ta, Đức Giê-hô-va vạn quân phán vậy."
+  }
+ },
+ "deeper-life": {
+  "title": "Đời sống sâu nhiệm",
+  "description": "Sự thánh khiết, sự dâng mình và sự sống dư dật giấu với Đấng Christ — những cuốn sách để đi sâu hơn.",
+  "scripture": {
+   "reference": "Cô-lô-se 3:3",
+   "text": "Vì anh em đã chết, sự sống mình đã giấu với Đấng Christ trong Đức Chúa Trời."
+  }
+ },
+ "grace-and-comfort": {
+  "title": "Ân điển & An ủi",
+  "description": "Ân điển không hề thiếu của Đức Chúa Trời và sự yên ủi của Ngài trong mọi thử thách — tin lành cho người mỏi mệt.",
+  "scripture": {
+   "reference": "2 Cô-rinh-tô 12:9",
+   "text": "Ân điển ta đủ cho ngươi rồi, vì sức mạnh của ta nên trọn vẹn trong sự yếu đuối."
+  }
+ },
+ "revival-and-missions": {
+  "title": "Phục hưng & Truyền giáo",
+  "description": "Những cuộc đời đổ ra vì Phúc Âm, và những mùa thức tỉnh — củi lửa cho một tấm lòng nóng cháy.",
+  "scripture": {
+   "reference": "Ha-ba-cúc 3:2",
+   "text": "Hỡi Đức Giê-hô-va! Tôi đã nghe danh tiếng Ngài thì tôi sợ hãi. Hỡi Đức Giê-hô-va! xin Ngài lại khiến công việc Ngài dấy lên giữa các năm, Tỏ ra cho biết giữa các năm; Khi Ngài đang giận, xin hãy nhớ lại sự thương xót!"
+  }
+ },
+ "faith-and-guidance": {
+  "title": "Đức tin & Sự dẫn dắt",
+  "description": "Tin cậy Đức Chúa Trời về bánh hằng ngày, về hướng đi và mọi lời hứa — bước đi bởi đức tin, chẳng phải bởi mắt thấy.",
+  "scripture": {
+   "reference": "Châm Ngôn 3:6",
+   "text": "Phàm trong các việc làm của con, khá nhận biết Ngài, Thì Ngài sẽ chỉ dẫn các nẻo của con."
+  }
+ },
+ "the-gospel-call": {
+  "title": "Lời kêu gọi của Phúc Âm",
+  "description": "Lời mời cổ xưa nhất — hãy đến, hãy ăn năn, hãy tin. Những nhà giảng đạo tha thiết nài xin người chưa tin, và lời làm chứng về ân điển mà kẻ đứng đầu các tội nhân đã tìm được.",
+  "scripture": {
+   "reference": "2 Cô-rinh-tô 5:20",
+   "text": "Chúng tôi nhơn danh Đấng Christ mà nài xin anh em: hãy hòa thuận lại với Đức Chúa Trời."
+  }
+ },
+ "enduring-classics": {
+  "title": "Những tác phẩm kinh điển trường tồn",
+  "description": "Những cuốn sách đã đồng hành cùng khách hành hương qua nhiều thế kỷ — lời xưng thú của Augustine, giấc mơ của Bunyan, lời khuyên của à Kempis — những đường lối cũ, vẫn còn tốt lành.",
+  "scripture": {
+   "reference": "Giê-rê-mi 6:16",
+   "text": "Hãy đứng trên các đường cái và nhìn xem; tra xét những đường lối cũ, xem thử đường tốt ở đâu: hãy đi đường ấy, thì các ngươi sẽ được sự an nghỉ cho linh hồn mình."
+  }
+ },
+ "the-way-of-holiness": {
+  "title": "Con đường thánh khiết",
+  "description": "Biệt riêng cho Đức Chúa Trời — các điều răn được tra xét, sự trọn vẹn được theo đuổi cách thành thật, và những tình cảm của lòng được thử luyện và thấy là chân thật.",
+  "scripture": {
+   "reference": "Hê-bơ-rơ 12:14",
+   "text": "Hãy cầu sự bình an với mọi người, cùng tìm theo sự nên thánh, vì nếu không nên thánh thì chẳng ai được thấy Đức Chúa Trời."
+  }
+ },
+ "the-preached-word": {
+  "title": "Lời được rao giảng",
+  "description": "Những bài giảng vĩ đại trên trang giấy — Whitefield và Wesley cất tiếng hết sức mình, Spurgeon giữa những người nông dân của ông — và lời răn bảo của Baxter cho mọi người chăn bầy linh hồn.",
+  "scripture": {
+   "reference": "Rô-ma 10:14",
+   "text": "Nếu chẳng ai rao giảng, thì nghe làm sao?"
+  }
+ },
+ "christ-and-the-cross": {
+  "title": "Đấng Christ & Thập tự giá",
+  "description": "Thân vị và công việc của Đấng Cứu Rỗi — Chiên Con bị giết, sự sỉ nhục và chiến thắng của thập tự giá, sự tuyệt vời của Đấng Christ, và ngôi mộ trống."
+ },
+ "the-puritans": {
+  "title": "Những người Thanh giáo",
+  "description": "Thần học giản dị và thấu suốt của những người Thanh giáo — người hành hương của Bunyan, Owen về tội lỗi bên trong, sự ấm áp của Watson và ngọn lửa của Edwards — giáo lý được ấn sâu vào lòng.",
+  "scripture": {
+   "reference": "Hê-bơ-rơ 4:12",
+   "text": "Vì lời của Đức Chúa Trời là lời sống và linh nghiệm, sắc hơn gươm hai lưỡi, thấu vào đến đỗi chia hồn, linh, cốt, tủy, xem xét tư tưởng và ý định trong lòng."
+  }
+ },
+ "abiding-in-christ": {
+  "title": "Ở trong Đấng Christ",
+  "description": "Nhánh ở trong cây nho — sự hiệp một và tương giao với Chúa Giê-xu, và sự sống tuôn chảy không từ nguồn nào khác ngoài việc ở gần Ngài.",
+  "scripture": {
+   "reference": "Giăng 15:4",
+   "text": "Hãy cứ ở trong ta, thì ta sẽ ở trong các ngươi. Như nhánh nho, nếu không dính vào gốc nho, thì không tự mình kết quả được, cũng một lẽ ấy, nếu các ngươi chẳng cứ ở trong ta, thì cũng không kết quả được."
+  }
+ },
+ "women-of-faith": {
+  "title": "Những người nữ của đức tin",
+  "description": "Những người mẹ, những nhà truyền giáo và những nhà thần bí — đức tin của những người nữ đã cầu nguyện, chịu khổ và dám dấn thân, từ phòng giam của Guyon đến tòa giảng của người nữ nô lệ được giải phóng.",
+  "scripture": {
+   "reference": "Châm Ngôn 31:30",
+   "text": "Duyên là giả dối, sắc lại hư không; Nhưng người nữ nào kính sợ Đức Giê-hô-va sẽ được khen ngợi."
+  }
+ },
+ "voices-of-the-early-church": {
+  "title": "Tiếng nói của Hội Thánh đầu tiên",
+  "description": "Đức tin của những thế kỷ đầu bằng chính lời của họ — tấm lòng phơi bày của Augustine, Athanasius về Ngôi Lời trở nên xác thịt, và những bức thư của các thánh tử đạo và các người chăn bầy.",
+  "scripture": {
+   "reference": "Hê-bơ-rơ 12:1",
+   "text": "Chúng ta được nhiều người chứng kiến vây lấy như đám mây rất lớn"
+  }
+ },
+ "day-by-day": {
+  "title": "Mỗi ngày",
+  "description": "Một bài đọc cho buổi sáng và buổi tối — bánh hằng ngày để nuôi linh hồn, từ những tác phẩm kinh điển được yêu mến của Spurgeon đến những cuốn sách cho giờ yên tĩnh.",
+  "scripture": {
+   "reference": "Ca Thương 3:22-23",
+   "text": "Ấy là nhờ sự nhân từ Đức Giê-hô-va mà chúng ta chưa tuyệt. Vì sự thương xót của Ngài chẳng dứt. Mỗi buổi sáng thì lại mới luôn, sự thành tín Ngài là lớn lắm."
+  }
+ },
+ "the-east-african-revival": {
+  "title": "Cuộc phục hưng Đông Phi",
+  "description": "Tukutendereza Yesu — cuộc thức tỉnh lan ra từ một sườn đồi ở Kampala qua sáu quốc gia và gần trọn một thế kỷ, cùng sự bước đi trong ánh sáng mà nó đã dạy.",
+  "scripture": {
+   "reference": "1 Giăng 1:7",
+   "text": "Nhưng, nếu chúng ta đi trong sự sáng cũng như chính mình Ngài ở trong sự sáng, thì chúng ta giao thông cùng nhau; và huyết của Đức Chúa Jêsus, Con Ngài, làm sạch mọi tội chúng ta."
+  }
+ },
+ "contemporary-voices": {
+  "title": "Những tiếng nói đương đại",
+  "description": "Con đường xưa có những người dẫn đường đang sống — những giáo sư ngày nay viết cho Đông Phi và xa hơn nữa, gặp người môn đồ ngay tại nơi những câu hỏi của hôm nay.",
+  "scripture": {
+   "reference": "Thi Thiên 145:4",
+   "text": "Dòng dõi nầy sẽ ca tụng công việc Chúa cho dòng dõi kia, Và rao truyền việc quyền năng của Chúa."
+  }
+ },
+ "the-inner-life": {
+  "title": "Đời sống bên trong",
+  "description": "Con đường hướng vào bên trong — à Kempis, Law và Guyon, tình yêu đối với Đức Chúa Trời và cánh cửa đóng lại của nơi kín nhiệm, linh hồn ở một mình với Ngài.",
+  "scripture": {
+   "reference": "Ma-thi-ơ 6:6",
+   "text": "Song khi ngươi cầu nguyện, hãy vào phòng riêng, đóng cửa lại, rồi cầu nguyện Cha ngươi, ở nơi kín nhiệm đó; và Cha ngươi, là Đấng thấy trong chỗ kín nhiệm, sẽ thưởng cho ngươi."
+  }
+ },
+ "the-great-awakening": {
+  "title": "Cuộc Đại Tỉnh thức",
+  "description": "Sự giảng đạo đã làm rúng động hai lục địa — Whitefield và Wesley giảng ngoài trời, Edwards giữa hội chúng của ông, Finney về sự phục hưng — và giáo lý nằm bên dưới ngọn lửa.",
+  "scripture": {
+   "reference": "Thi Thiên 85:6",
+   "text": "Chúa há chẳng khứng làm cho chúng tôi sống lại, Hầu cho dân Chúa vui vẻ nơi Chúa sao?"
+  }
+ },
+ "the-body-of-christ": {
+  "title": "Thân thể của Đấng Christ",
+  "description": "Hội Thánh như một thể sống động — làm chi thể của nhau, gắn liền với Đầu, và sự phục vụ cùng sự chăn bầy tuôn chảy từ đó.",
+  "scripture": {
+   "reference": "1 Cô-rinh-tô 12:27",
+   "text": "Vả, anh em là thân của Đấng Christ, và là chi thể của thân, ai riêng phần nấy."
+  }
+ },
+ "for-those-who-lead": {
+  "title": "Cho những người lãnh đạo",
+  "description": "Lời răn bảo cho những người chăn bầy và những người chinh phục linh hồn — sự chăm sóc của mục sư, quyền năng cầu nguyện của nhà giảng đạo, và cách dẫn người ta đến với Đấng Christ.",
+  "scripture": {
+   "reference": "1 Phi-e-rơ 5:2",
+   "text": "Hãy chăn bầy của Đức Chúa Trời đã giao phó cho anh em; làm việc đó chẳng phải bởi ép tình, bèn là bởi vui lòng"
+  }
+ },
+ "the-wesleys-and-early-methodism": {
+  "title": "Anh em Wesley & Phong trào Giám Lý ban đầu",
+  "description": "Cuộc thức tỉnh đã trở thành một phong trào — các bài giảng và bản tường thuật giản dị của John Wesley, người mẹ đã uốn nắn ông, và lòng nhiệt thành tiếp nối sau đó.",
+  "scripture": {
+   "reference": "Lu-ca 24:32",
+   "text": "Khi nãy đi đường, Ngài nói cùng chúng ta và cắt nghĩa Kinh Thánh, lòng chúng ta há chẳng nóng nảy sao?"
+  }
+ },
+ "foundations-of-the-faith": {
+  "title": "Nền tảng của đức tin",
+  "description": "Những giáo lý xưa, được giữ cách giản dị — sự nhập thể, ân điển và ý muốn của Đức Chúa Trời, các điều răn và những điều căn bản đã truyền cho các thánh một lần đủ rồi.",
+  "scripture": {
+   "reference": "Giu-đe 3",
+   "text": "Để khuyên anh em vì đạo mà tranh chiến, là đạo đã truyền cho các thánh một lần đủ rồi."
+  }
+ },
+ "saints-of-the-african-diaspora": {
+  "title": "Các thánh đồ của cộng đồng người Phi tha hương",
+  "description": "Phúc Âm được truyền qua những tiếng nói của người da đen — Richard Allen và những nhà giảng đạo sinh ra tự do, những người nữ thánh khiết không chịu im tiếng, và Crowther trên sông Niger.",
+  "scripture": {
+   "reference": "Thi Thiên 68:31",
+   "text": "Những công-hầu sẽ từ Ê-díp-tô mà ra; Ê-thi-ô-bi sẽ lật đật giơ tay lên cùng Đức Chúa Trời."
+  }
+ },
+ "the-grace-of-god": {
+  "title": "Ân điển của Đức Chúa Trời",
+  "description": "Ân điển từ đầu đến cuối — nhưng không, tể trị và đầy đủ, dư dật cho kẻ đứng đầu các tội nhân và nâng giữ thánh đồ yếu đuối nhất.",
+  "scripture": {
+   "reference": "Ê-phê-sô 2:8",
+   "text": "Vả, ấy là nhờ ân điển, bởi đức tin, mà anh em được cứu, điều đó không phải đến từ anh em, bèn là sự ban cho của Đức Chúa Trời."
+  }
+ },
+ "victory-over-sin": {
+  "title": "Chiến thắng tội lỗi",
+  "description": "Cuộc chiến bên trong vì sự thánh khiết — làm chết tội lỗi, sự trong sạch của lòng, những tình cảm được sắp đặt ngay thẳng, và con đường vào nơi chí thánh.",
+  "scripture": {
+   "reference": "Rô-ma 6:14",
+   "text": "Vì tội lỗi không cai trị trên anh em đâu; bởi anh em chẳng thuộc dưới luật pháp, mà thuộc dưới ân điển."
+  }
+ },
+ "to-the-ends-of-the-earth": {
+  "title": "Cho đến cùng trái đất",
+  "description": "Những nhật ký truyền giáo — Brainerd trong rừng sâu, Taylor ở Trung Hoa, Carmichael ở Ấn Độ, Crowther trên sông Niger — Phúc Âm được mang đi bằng mọi giá.",
+  "scripture": {
+   "reference": "Công Vụ Các Sứ Đồ 1:8",
+   "text": "Nhưng khi Đức Thánh Linh giáng trên các ngươi, thì các ngươi sẽ nhận lấy quyền phép, và làm chứng về ta tại thành Giê-ru-sa-lem, cả xứ Giu-đê, xứ Sa-ma-ri, cho đến cùng trái đất."
+  }
+ },
+ "faith-for-the-impossible": {
+  "title": "Đức tin cho điều không thể",
+  "description": "Tin lời Đức Chúa Trời đúng như Ngài phán — những trẻ mồ côi của Müller được nuôi chỉ bằng sự cầu nguyện, ân điển của sự trông đợi Ngài, và ngân hàng của đức tin không bao giờ vỡ nợ.",
+  "scripture": {
+   "reference": "Mác 9:23",
+   "text": "Kẻ nào tin thì mọi việc đều được cả."
+  }
+ },
+ "men-of-valour": {
+  "title": "Những người dũng sĩ",
+  "description": "Lời kêu gọi gửi đến những người nam — hãy cầu nguyện, hãy dẫn dắt, hãy dâng hết mọi sự và hãy chăn bầy — những cuộc đời can đảm cho các con trai của Đức Chúa Trời.",
+  "scripture": {
+   "reference": "1 Cô-rinh-tô 16:13",
+   "text": "Anh em hãy tỉnh thức, hãy vững vàng trong đức tin, hãy dốc chí trượng phu và mạnh mẽ."
+  }
+ },
+ "for-teens": {
+  "title": "Dành cho tuổi thiếu niên",
+  "description": "Đức tin cho những năm tuổi teen — đến với Đấng Christ, thuộc về dân sự Ngài, và lòng can đảm để đi theo Ngài. Những cuốn sách ngắn, giản dị, chân thật, cùng những câu chuyện có thật về những cuộc đời đã dâng trọn cho Ngài, được viết cho bạn đọc trẻ hoặc vừa tầm với các em.",
+  "scripture": {
+   "reference": "1 Ti-mô-thê 4:12",
+   "text": "Chớ để người ta khinh con vì trẻ tuổi; nhưng phải lấy lời nói, nết làm, sự yêu thương, đức tin và sự tinh sạch mà làm gương cho các tín đồ."
+  }
+ },
+ "soar-like-the-eagle": {
+  "title": "Cất cánh như chim ưng",
+  "description": "Ai trông đợi Đức Giê-hô-va thì chắc được sức mới — những tác phẩm kinh điển về việc nhận sức mạnh từ Đức Chúa Trời khi sức riêng của bạn đã cạn. Sách cho người mỏi mệt: để trông đợi, để nghỉ ngơi, và để lại cất cánh bay cao như chim ưng.",
+  "scripture": {
+   "reference": "Ê-sai 40:31",
+   "text": "Nhưng ai trông đợi Đức Giê-hô-va thì chắc được sức mới, cất cánh bay cao như chim ưng; chạy mà không mệt nhọc, đi mà không mòn mỏi."
+  }
+ },
+ "for-young-readers": {
+  "title": "Dành cho bạn đọc nhỏ tuổi",
+  "description": "Đức tin được kể lại cách giản dị, cho trẻ em và những người đọc cùng các em — câu chuyện vĩ đại về hành trình trở về nhà, bằng lời lẽ mà một đứa trẻ có thể hiểu. Một kệ sách sẽ lớn dần khi có thêm nhiều sách được kể lại và viết cho các em.",
+  "scripture": {
+   "reference": "Ma-thi-ơ 19:14",
+   "text": "Hãy để con trẻ đến cùng ta, đừng ngăn trở; vì nước thiên đàng thuộc về những kẻ giống như con trẻ ấy."
+  }
+ }
+}
