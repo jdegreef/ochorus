@@ -2,7 +2,9 @@ import { building } from '$app/environment';
 import { error } from '@sveltejs/kit';
 import { forLocale } from '$lib/forLinks';
 import { EMPTY_SHELF_DATA, FOR_PAGES, forPage, isShelfData } from '$lib/forPages';
+import { buildForShelf } from '$lib/forShelves';
 import { getLang } from '$lib/lang.svelte';
+import { IS_APP } from '$lib/platform';
 import type { EntryGenerator, PageLoad } from './$types';
 
 // The "Ochorus for …" pages ($lib/forPages): one per group, in English and
@@ -23,8 +25,11 @@ export const load: PageLoad = async ({ params, fetch }) => {
 	// page cannot ship without its books looking deliberate; quiet at runtime,
 	// where a missing file (the SPA fallback answers 200 with HTML, which
 	// `json()` rejects) or an offline reader just gets the page without them.
+	// The app has no snapshot (it prerenders nothing), so it derives the same
+	// data from the live API the way the snapshot's endpoint does at build.
 	const file = locale === 'en' ? `/for-shelves/${page.slug}.json` : `/for-shelves/${locale}/${page.slug}.json`;
 	try {
+		if (IS_APP) return { page, locale, shelf: await buildForShelf(page, locale, fetch) };
 		const res = await fetch(file);
 		if (!res.ok) throw new Error(`${file}: ${res.status}`);
 		const shelf: unknown = await res.json();

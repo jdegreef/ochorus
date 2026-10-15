@@ -2,12 +2,14 @@
  * Generate the app icons and the favicon from the real Ochorus logo.
  *
  * Output: frontend/static/icons/*.png — committed to the repo and served as
- * static assets. This script is NOT part of the build or CI; run it by hand
- * when the logo changes:
+ * static assets — and frontend/resources/*.png, the 1024px sources the native
+ * app's icons and splash screens are cut from (MOBILE.md). This script is NOT
+ * part of the build or CI; run it by hand when the logo changes:
  *
  *     cd frontend
- *     npm i -D @resvg/resvg-js        # build-only, not an app dep
  *     node scripts/generate-icons.mjs
+ *     npx @capacitor/assets@3.0.5 generate --ios --android --iconBackgroundColor '#3b5bdb' \
+ *       --splashBackgroundColor '#faf6ef'    # re-cut the native app's sizes
  *
  * WHY THIS EXISTS
  * The icons were a placeholder blue "O" until the real logo landed (#873), and
@@ -31,10 +33,13 @@ import { dirname, resolve, join } from 'node:path';
 const HERE = dirname(fileURLToPath(import.meta.url));
 const BRAND = resolve(HERE, '../../backend/library/data/brand');
 const OUT_DIR = resolve(HERE, '../static/icons');
+const NATIVE_DIR = resolve(HERE, '../resources');
 
 /** The plate the glyph sits on. Unchanged from the placeholder it replaced, so
  *  this was a glyph swap rather than a rebrand. */
 const PLATE = '#3b5bdb';
+/** The reader's cream paper — the native splash screen's ground. */
+const PAPER = '#faf6ef';
 
 const ICONS = [
 	// The book-and-quill mark, at sizes where its hairlines survive.
@@ -46,7 +51,20 @@ const ICONS = [
 	// The tab icon is the wordmark's capital O, NOT the mark. At 16px the mark's
 	// hairlines collapse into an unreadable smudge (checked against the real
 	// thing); the O is from the same logo and stays crisp.
-	{ out: 'favicon-32.png', size: 32, glyph: 'ochorus-o.svg', fill: 0.66 }
+	{ out: 'favicon-32.png', size: 32, glyph: 'ochorus-o.svg', fill: 0.66 },
+
+	// The native app (iOS + Android): the file names are @capacitor/assets'
+	// inputs. The App Store rejects an icon with an alpha channel, so the
+	// square icon is the opaque plate, as on the web.
+	{ out: 'icon-only.png', dir: NATIVE_DIR, size: 1024, glyph: 'ochorus-mark.svg', fill: 0.62 },
+	// Android's adaptive icon is two layers the launcher masks to its own
+	// shape and may scale by ~10%: the plate alone, and the glyph on nothing,
+	// held inside the 66% safe zone like the maskable one.
+	{ out: 'icon-background.png', dir: NATIVE_DIR, size: 1024, glyph: null },
+	{ out: 'icon-foreground.png', dir: NATIVE_DIR, size: 1024, glyph: 'ochorus-mark.svg', fill: 0.46, plate: null },
+	// Launch screen: the blue mark small on the reader's paper, so opening the
+	// app looks like the page it opens to rather than a flash of blue.
+	{ out: 'splash.png', dir: NATIVE_DIR, size: 2732, glyph: 'ochorus-mark.svg', fill: 0.16, plate: PAPER, ink: PLATE }
 ];
 
 /** The glyph's paths, and its viewBox size. */
@@ -63,24 +81,30 @@ function readGlyph(name) {
 	return { body: inner[1].replaceAll('currentColor', '#ffffff'), w: +box[1], h: +box[2] };
 }
 
-function render({ out, size, glyph, fill }) {
-	const { body, w, h } = readGlyph(glyph);
-	// Fit the glyph's longest side to `fill` of the square, then centre it.
-	const k = (size * fill) / Math.max(w, h);
-	const x = (size - w * k) / 2;
-	const y = (size - h * k) / 2;
+/** `plate: null` leaves the square transparent; `glyph: null` draws the plate alone. */
+function render({ out, dir = OUT_DIR, size, glyph, fill, plate = PLATE, ink = '#ffffff' }) {
+	let mark = '';
+	if (glyph) {
+		const { body, w, h } = readGlyph(glyph);
+		// Fit the glyph's longest side to `fill` of the square, then centre it.
+		const k = (size * fill) / Math.max(w, h);
+		const x = (size - w * k) / 2;
+		const y = (size - h * k) / 2;
+		mark = `<g fill="${ink}" transform="translate(${x.toFixed(2)} ${y.toFixed(2)}) scale(${k.toFixed(5)})">${body.replaceAll('#ffffff', ink)}</g>`;
+	}
 	const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
-  <rect width="${size}" height="${size}" fill="${PLATE}"/>
-  <g fill="#ffffff" transform="translate(${x.toFixed(2)} ${y.toFixed(2)}) scale(${k.toFixed(5)})">${body}</g>
+  ${plate ? `<rect width="${size}" height="${size}" fill="${plate}"/>` : ''}
+  ${mark}
 </svg>`;
 	const png = new Resvg(svg, { fitTo: { mode: 'width', value: size } }).render().asPng();
-	writeFileSync(join(OUT_DIR, out), png);
+	writeFileSync(join(dir, out), png);
 	return png.length;
 }
 
 mkdirSync(OUT_DIR, { recursive: true });
+mkdirSync(NATIVE_DIR, { recursive: true });
 for (const icon of ICONS) {
 	const bytes = render(icon);
 	console.log(`  ✓ ${icon.out.padEnd(24)} ${String(icon.size).padStart(3)}px  ${bytes} bytes`);
 }
-console.log(`Wrote ${ICONS.length} icons to ${OUT_DIR}`);
+console.log(`Wrote ${ICONS.length} icons to ${OUT_DIR} and ${NATIVE_DIR}`);

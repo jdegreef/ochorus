@@ -2,6 +2,7 @@ import adapter from '@sveltejs/adapter-static';
 
 import { readFileSync } from 'node:fs';
 
+import { APP } from './app-target.js';
 import { cspDirectives } from './csp.config.js';
 
 /** The origin of a URL-shaped build env var, or '' when unset/unparseable. */
@@ -46,6 +47,18 @@ const LOCALES = JSON.parse(
 	readFileSync(new URL('./project.inlang/settings.json', import.meta.url), 'utf8')
 ).locales.filter((l) => l !== 'en');
 
+/**
+ * The native app's build (scripts/build-app.mjs; `APP`) prerenders nothing.
+ * The website prerenders every public page for search engines; the app ships
+ * ONE shell (index.html, which Capacitor's local server answers every path
+ * with) and fetches content from the live API like any client-side navigation
+ * does. So it crawls nothing, needs no API at build time, and writes to its own
+ * folder (the adapter below) so it never mixes with build/. With no crawl,
+ * every prerenderable route is "unseen" by design and must not fail the build.
+ * @type {import('@sveltejs/kit').KitConfig['prerender']}
+ */
+const APP_PRERENDER = { entries: [], handleUnseenRoutes: 'ignore' };
+
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	compilerOptions: {
@@ -56,8 +69,12 @@ const config = {
 	kit: {
 		// Static SPA: serve the app shell for every route via the 200.html
 		// fallback. (SEO prerendering can be added later for the web target.)
-		adapter: adapter({ fallback: '200.html' }),
+		adapter: APP
+			? adapter({ pages: 'build-app', assets: 'build-app', fallback: 'index.html' })
+			: adapter({ fallback: '200.html' }),
 		paths: { relative: false },
+		// The app reads its settings from app-env/ alone (see app-env/.env).
+		...(APP ? { env: { dir: 'app-env' } } : {}),
 		// Content-Security-Policy in `hash` mode: SvelteKit computes the hash of
 		// each inline script it emits (the per-build bootstrap) at build time and
 		// injects the policy as a <meta> on every prerendered page + the 200.html
@@ -70,7 +87,7 @@ const config = {
 		// We register src/service-worker.ts ourselves (see lib/pwa.svelte.ts) so we
 		// can surface an "update available" prompt instead of updating silently.
 		serviceWorker: { register: false },
-		prerender: {
+		prerender: APP ? APP_PRERENDER : {
 			// Pages rendered at once: 1 (SvelteKit's default) unless the build asks
 			// for more, and only CI does — its API is a throwaway local gunicorn
 			// with a worker per spare core (.github/workflows/ci.yml). The production
