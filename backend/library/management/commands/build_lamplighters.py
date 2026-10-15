@@ -336,10 +336,10 @@ PLATES_2: tuple[tuple[int, str, str, str, str], ...] = (
         12,
         "The ferryman did not answer. He dipped his",
         "b2-plate-12-the-ferryman.jpg",
-        "In a boat on a misty grey river, a hooded old man leans forward "
-        "and gently touches the closed eyes of a girl with long beaded "
-        "braids. Beside her, a spiky-haired girl holds a glowing lamp, "
-        "and a boy in spectacles watches.",
+        "In a misty grey river, a hooded ferryman leans from the stern of a "
+        "long boat and lays his thumbs on the closed eyes of Mira, a girl with "
+        "beaded braids. Wren watches beside her, holding a glowing lamp, while "
+        "Tobin and Old Ash look on.",
         "“It is a gift. That is all.”",
     ),
     (
