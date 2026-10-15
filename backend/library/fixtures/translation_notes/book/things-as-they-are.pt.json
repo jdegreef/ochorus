@@ -3,7 +3,7 @@
  "slug": "things-as-they-are",
  "language": "pt",
  "job_issue": 2687,
- "pull_request": null,
+ "pull_request": 6299,
  "note": [
   "Scripture follows the Bíblia Livre (porbrbsl; ebible mirror por_bpm, USFM). Rows were derived by measurement: a row is `mined` only when the translator claimed Bíblia Livre wording AND the block contains either a quoted span that is a verbatim Bíblia Livre substring or a run of six consecutive Bíblia Livre words. Everything else is `self_rendered` with the translator's reason. `block_index` is work-level (the admin review panel's block split).",
   "Carmichael quotes the KJV and the RV, and hymn or prayer-book lines; where the Bíblia Livre's wording does not carry her point, the line is rendered from the English and marked self_rendered. Jeremiah 49:23 is taken from the Bíblia Livre's two Portuguese fragments only. The meaning-names of the Indian girls (Vitória, Dourada, Tesouro, Duendinha, ...) are translated, as in the es edition. AI-drafted, awaiting native review."
