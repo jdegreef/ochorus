@@ -14312,6 +14312,17 @@
 				515
 			]
 		},
+		"lg/confessions": {
+			"ground": "921a2bb532c121e254206ec2a4fbe994a86ae474a346f9bf1653fb2e384c41dc",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/rust",
+			"bar": 0
+		},
 		"lg/days-of-heaven-upon-earth": {
 			"ground": "b1561f668d7d04562ad7020e3f09c9800faf2bc1990f544c432932fca622cd44",
 			"style": "revival",
