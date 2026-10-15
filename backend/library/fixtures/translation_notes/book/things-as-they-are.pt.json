@@ -1,0 +1,1565 @@
+{
+ "kind": "book",
+ "slug": "things-as-they-are",
+ "language": "pt",
+ "job_issue": 2687,
+ "pull_request": 6299,
+ "note": [
+  "Scripture follows the Bíblia Livre (porbrbsl; ebible mirror por_bpm, USFM). Rows were derived by measurement: a row is `mined` only when the translator claimed Bíblia Livre wording AND the block contains either a quoted span that is a verbatim Bíblia Livre substring or a run of six consecutive Bíblia Livre words. Everything else is `self_rendered` with the translator's reason. `block_index` is work-level (the admin review panel's block split).",
+  "Carmichael quotes the KJV and the RV, and hymn or prayer-book lines; where the Bíblia Livre's wording does not carry her point, the line is rendered from the English and marked self_rendered. Jeremiah 49:23 is taken from the Bíblia Livre's two Portuguese fragments only. The meaning-names of the Indian girls (Vitória, Dourada, Tesouro, Duendinha, ...) are translated, as in the es edition. AI-drafted, awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Ephesians 6:12",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "why": "\"spiritual hosts of wickedness\" (RV wording) → \"forças espirituais da maldade\", verbatim Bíblia Livre substring"
+  },
+  {
+   "reference": "Matthew 13:19",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "why": "allusion \"the wayside hearers\" → \"os ouvintes à beira do caminho\" (BL phrase, no quotation marks in the English)"
+  },
+  {
+   "reference": "Luke 8:12",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "why": "allusion \"the wayside hearers\" → \"os ouvintes à beira do caminho\" (BL phrase, no quotation marks in the English)"
+  },
+  {
+   "reference": "2 Timothy 3:13",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "why": "\"deceived and being deceived\" (unquoted) → \"enganados e sendo enganados\"; BL has \"enganando e sendo enganados\", so only \"sendo enganados\" is BL wording"
+  },
+  {
+   "reference": "1 Corinthians 2:9",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 13,
+   "why": "unquoted paraphrase \"eyes have not seen and ears have not heard\" → BL \"o olho não viu, e o ouvido não ouviu\" + \"tais coisas\""
+  },
+  {
+   "reference": "Revelation 12:12",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 22,
+   "why": "unquoted paraphrase \"Satan's wrath is great as he realises that his time is short\" → \"Satanás está cheio de grande fúria, sabendo que lhe resta pouco tempo\" (BL phrases; BL says \"o diabo\", English says Satan)"
+  },
+  {
+   "reference": "2 Corinthians 13:8",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 68,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "Unquoted allusion \"Principalities, Powers, Rulers of the Darkness\": rendered with the BL's own nouns (principados, autoridades, dominadores das trevas), capitalised as in the English. No quotation marks in the source."
+  },
+  {
+   "reference": "2 Timothy 2:26",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "Brainerd's epigraph echoes the verse; BL fragments \"levados cativos\" and \"para fazer a sua vontade\" copied by script into his sentence, with \"por Satanás\" and \"da maneira mais passiva\" as his own words."
+  },
+  {
+   "reference": "John 9:25",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 102,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Romans 6:14",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 108,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Luke 8:39",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "Unquoted echo \"the great things God had done for her\" => \"as grandes coisas que Deus tinha feito por ela\", following Luke 8:39's BL wording, put into the third person."
+  },
+  {
+   "reference": "Mark 5:19",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "Unquoted echo \"the great things God had done for her\" => \"as grandes coisas que Deus tinha feito por ela\", following Luke 8:39's BL wording, put into the third person."
+  },
+  {
+   "reference": "1 Corinthians 4:2",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 127,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 4:13",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 131,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Matthew 28:10",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "\"Go, tell\" → \"Vão e digam\" (BL MAT 28:10)."
+  },
+  {
+   "reference": "Psalms 138:1",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "Unquoted allusion \"before the gods ... we sing songs unto Him\" → \"diante dos deuses que aqui dominam cantamos louvores a Ele\" (BL: \"Diante dos deuses, cantarei louvores a você\"), re-personed."
+  },
+  {
+   "reference": "Acts 17:5",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "Unquoted echo \"certain of the baser sort\" → \"alguns homens perversos\" (BL verbatim)."
+  },
+  {
+   "reference": "Hebrews 1:3",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "Unquoted echo \"by the word of His power\" → \"pela palavra do Seu poder\" (BL \"pela palavra do seu poder\", pronoun capitalised as the English does)."
+  },
+  {
+   "reference": "Psalms 106:47",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "Unquoted \"to give thanks unto His holy Name and to triumph in His praise\" → \"dar graças ao Seu santo Nome e triunfar no Seu louvor\" (BL \"para darmos graças ao teu santo nome, e triunfarmos no teu louvor\", re-personed to the third person)."
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "Unquoted echo \"the Ruler of Darkness\" → \"Dominador das Trevas\" (BL \"dominadores das trevas\", singularised and capitalised as the English)."
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "Quoted word \"Powers\" → \"autoridades\", the BL's word for KJV \"powers\". Flag: Carmichael uses \"Powers\" for the whole host of v. 12; the BL splits it into principados / autoridades / dominadores / forças espirituais, so the single BL word reads narrower than her capitalised \"Powers\". Citation \"Ephesian"
+  },
+  {
+   "reference": "Colossians 2:18",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "Unquoted \"intrude into those things which we have not seen\" → \"nas coisas que não vimos\" (BL \"nas coisas que não viu\", re-personed). The BL has no word for \"intrude\"; it is carried in my own prose (\"nos intrometer\")."
+  },
+  {
+   "reference": "Revelation 2:13",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 167,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Matthew 13:28",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "\"Um inimigo fez isso.\" copied verbatim (BL lower-case \"inimigo\"; her capital \"Enemy\" is carried in the following prose as \"do Inimigo\")."
+  },
+  {
+   "reference": "Acts 16:14",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "allusion \"whose heart the Lord opened\" → \"cujo coração o Senhor abriu\" (BL: \"O Senhor abriu o seu coração\"), no quotation marks in English."
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "\"till God makes a way of escape\" → \"até que Deus providencie uma saída\"; \"uma saída\" from BL, BL \"providenciará\" put into the subjunctive for the grammar. Block 17's \"the way of escape God opens\" echoes the same word (\"a saída\")."
+  },
+  {
+   "reference": "Isaiah 53:11",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "\"see of the travail of His soul, and be satisfied\" → \"veja o fruto do sofrimento de sua alma e fique satisfeito\"; \"do sofrimento de sua alma\" copied from BL; verbs re-personed. BL renders \"travail\" as \"sofrimento\", so \"travail of soul\" in the next sentences is \"sofrimento de alma\", and \"Spiritual ch"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "\"until Christ is formed in them\" → \"até que Cristo seja formado neles\" (BL \"...em vocês\"; re-personed)."
+  },
+  {
+   "reference": "Isaiah 49:24",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 190,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Isaiah 49:25",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 190,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Genesis 15:12",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 205,
+   "why": "\"a horror of great darkness was upon me\" → \"terror e grandes trevas caíram sobre mim\" (\"terror e grandes trevas\" copied from BL; \"sobre ele\" re-personed to \"sobre mim\"). No quotation marks in English."
+  },
+  {
+   "reference": "Genesis 4:10",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 206,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Jeremiah 49:23",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "\"Há angústia no mar. Ele não pode se acalmar.\" Two BL fragments with BL's quote marks between them dropped. FLAG: in bible_verses.json this verse is corrupted, with English and Portuguese interleaved (\"Of Damascus: “A respeito de Damasco:” ...\"). The Portuguese fragments were taken as they stand."
+  },
+  {
+   "reference": "Hebrews 6:5",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 215,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 4:13",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 220,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Romans 1:1",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "\"servo . . . separado para o Evangelho.\" Both pieces verbatim BL; the ellipsis is hers."
+  },
+  {
+   "reference": "Philippians 3:10",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "\"da comunhão dos Seus sofrimentos\": BL \"comunhão dos seus sofrimentos\", with \"Seus\" capitalised to match her \"His\" and \"He\" in the same sentence."
+  },
+  {
+   "reference": "2 Corinthians 5:1",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "The text explicitly quotes Conybeare and Howson's translation, whose wording (\"desiring to cover my earthly raiment with the robes of my heavenly mansion\") BL cannot carry. I translated it myself and kept BL's \"eterna, nos céus\" and \"aquele que nos preparou para isso\" sense where they coincide. FLAG"
+  },
+  {
+   "reference": "2 Corinthians 5:2",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "The text explicitly quotes Conybeare and Howson's translation, whose wording (\"desiring to cover my earthly raiment with the robes of my heavenly mansion\") BL cannot carry. I translated it myself and kept BL's \"eterna, nos céus\" and \"aquele que nos preparou para isso\" sense where they coincide. FLAG"
+  },
+  {
+   "reference": "2 Corinthians 5:3",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "The text explicitly quotes Conybeare and Howson's translation, whose wording (\"desiring to cover my earthly raiment with the robes of my heavenly mansion\") BL cannot carry. I translated it myself and kept BL's \"eterna, nos céus\" and \"aquele que nos preparou para isso\" sense where they coincide. FLAG"
+  },
+  {
+   "reference": "2 Corinthians 5:4",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "The text explicitly quotes Conybeare and Howson's translation, whose wording (\"desiring to cover my earthly raiment with the robes of my heavenly mansion\") BL cannot carry. I translated it myself and kept BL's \"eterna, nos céus\" and \"aquele que nos preparou para isso\" sense where they coincide. FLAG"
+  },
+  {
+   "reference": "2 Corinthians 5:4",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "\"Mortality swallowed up in Life\" → \"o que é mortal engolido pela Vida\" (\"o que é mortal\" copied; BL \"seja engolido pela vida\" reshaped)."
+  },
+  {
+   "reference": "2 Corinthians 5:8",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "\"Present with the Lord\" → \"Em casa com o Senhor\" (BL \"estar em casa com o Senhor\"). This loses her \"presence / Present\" wordplay. \"for this very End\" is C&H 2Co 5:5 (self, \"para este mesmo Fim\")."
+  },
+  {
+   "reference": "Luke 14:22",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "allusion \"Yet there is room\" → \"E, no entanto, ainda há lugar\" (\"ainda há lugar\" verbatim BL). Block 58's \"há lugar\" echoes it."
+  },
+  {
+   "reference": "Isaiah 2:11",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "allusion inside Searle's epigraph, no quotation marks of its own; BL \"somente o SENHOR será exaltado naquele dia\" re-shaped to \"para que somente Deus seja exaltado naquele dia\" (English has \"God\")"
+  },
+  {
+   "reference": "Ezekiel 37:9",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "\"Venha, ó fôlego, e sopre!\" = BL words with \"dos quatro ventos\" and \"sobre estes mortos\" dropped, as Carmichael drops them"
+  },
+  {
+   "reference": "Acts 26:28",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "\"quase persuadida\": the KJV \"almost\" has no equivalent in BL (\"Com um pouco de persuasão\"), so the two words are my own (flag)"
+  },
+  {
+   "reference": "Isaiah 1:25",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 269,
+   "why": "\"Voltarei a minha mão contra você, purificarei completamente\" verbatim BL; the italic clause \"de modo a remover o seu azinhavre\" is Carmichael's own Tamil-based rendering, translated by me. BL's word for \"dross\" is \"escória\", so the prose reads: a palavra traduzida por \"escória\" (no inglês, dross) ("
+  },
+  {
+   "reference": "1 John 5:11",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 274,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "1 John 5:12",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 274,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "no quotation marks; BL \"se tornou para nós sabedoria\" put in the subjunctive, \"Sabedoria\" capitalised as the English does"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "\"Cristo vive em mim\" (English \"Christ in me\"; BL has no shorter verbatim form, \"vive\" kept)"
+  },
+  {
+   "reference": "Isaiah 26:18",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 286,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Isaiah 40:12",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 287,
+   "why": "no quotation marks; \"calculou o pó da terra em um cesto de medida\" copied from BL, then \"calcula até o extremo o Pó do Real\" keeps her comprehended/comprehends play"
+  },
+  {
+   "reference": "Psalms 27:13",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "\"believe to see\" (KJV idiom) has no BL equivalent (\"verei a bondade\"); rendered \"cremos que veremos\" in my own words"
+  },
+  {
+   "reference": "Job 12:16",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "\"com Quem estão a força [BL Jó 12:16] e a operação eficaz [cf. BL Ef 3:7 'operação']\", no quotation marks"
+  },
+  {
+   "reference": "Ephesians 3:7",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "\"com Quem estão a força [BL Jó 12:16] e a operação eficaz [cf. BL Ef 3:7 'operação']\", no quotation marks"
+  },
+  {
+   "reference": "1 Corinthians 15:24",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 288,
+   "why": "no quotation marks; BL \"todo domínio, e toda autoridade e poder\", \"abolido\", \"para que Deus seja tudo em todos\" copied, joined by her sentence"
+  },
+  {
+   "reference": "1 Corinthians 15:28",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 288,
+   "why": "no quotation marks; BL \"todo domínio, e toda autoridade e poder\", \"abolido\", \"para que Deus seja tudo em todos\" copied, joined by her sentence"
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "BL \"sem mim vocês não podem fazer nada\" re-personed: \"sem Quem não podemos fazer nada\"; \"abide\" => permaneçamos (glossary)"
+  },
+  {
+   "reference": "2 Corinthians 2:16",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "no quotation marks; BL \"Quem é suficiente\" + \"para libertá-la\" (her sentence)"
+  },
+  {
+   "reference": "Job 28:9",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "\"vira as montanhas pelas raízes\" verbatim BL, inside the epigraph without its own quotation marks"
+  },
+  {
+   "reference": "Matthew 17:21",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 290,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "\"Venham\" (English \"Come\"), BL wording"
+  },
+  {
+   "reference": "Ecclesiastes 1:9",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 340,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Jeremiah 32:17",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "no quotation marks; BL \"difícil demais para ti\" in \"A Índia não é difícil demais para Ti!\" (pronoun capitalised as the English does)"
+  },
+  {
+   "reference": "Psalms 21:13",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 355,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Psalms 72:18",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"Thou, who alone doest wondrous things\" → \"Tu, o único que faz maravilhas\" — BL words \"o único que faz maravilhas\" copied, set in Walker's direct address to God"
+  },
+  {
+   "reference": "1 Samuel 25:29",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "allusion inside a quoted author (\"bound up in the bundle\"); BL's \"feixe\" carried into \"atada no feixe de sua existência cotidiana\""
+  },
+  {
+   "reference": "Galatians 3:28",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "unquoted allusion \"makes all men one in Christ\" → \"faz de todos os homens um em Cristo\" (BL \"um em Cristo\")"
+  },
+  {
+   "reference": "2 Corinthians 4:6",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "unquoted allusion \"the light of the knowledge of books\" → \"a luz do conhecimento dos livros\" (BL \"luz do conhecimento\")"
+  },
+  {
+   "reference": "Acts 9:2",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "the 'Way' of Jesus Christ → o 'Caminho' de Jesus Cristo (BL \"Caminho\")"
+  },
+  {
+   "reference": "Galatians 2:9",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "\"the right hand of brotherhood\" (inside the Monier Williams quotation) → \"estende a destra da fraternidade\" — BL \"a destra da\" copied; \"fraternidade\" kept for \"brotherhood\" (BL has \"comunhão\" = fellowship)"
+  },
+  {
+   "reference": "1 John 3:18",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "unquoted \"in deed and in truth\" → \"em ação e em verdade\" (BL verbatim words, worked into her sentence)"
+  },
+  {
+   "reference": "Ephesians 6:17",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "unquoted \"the Sword of the Spirit\" → \"a espada do Espírito\" (BL verbatim, lowercase \"espada\" as BL prints it; the English capitalises \"Sword\")"
+  },
+  {
+   "reference": "Matthew 10:37",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 400,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Isaiah 40:11",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "unquoted allusion \"gather the lamb in His arms\" → \"reunisse o cordeiro em Seus braços\"; BL has \"reunirá os cordeiros em seu braço\"; singular and capitalised pronoun kept to follow the English."
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "unquoted echo \"one more little living sacrifice\" → \"mais um pequeno sacrifício vivo\" (BL \"sacrifício vivo\")."
+  },
+  {
+   "reference": "Psalms 108:10",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 439,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Psalms 60:9",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "why": "\"Quem me levará à cidade fortificada? Quem me guiará até Edom?\" copied by script from PSA 108:10 (chosen over PSA 60:9, whose BL has past-tense \"conduziu\"). FLAG: \"Wilt not Thou, O God?\" (KJV PSA 60:10 / 108:11) has no counterpart in the BL, which reads \"Não foste tu, Deus, que nos rejeitaste?\" / \"N"
+  },
+  {
+   "reference": "Psalms 108:10",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 441,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Psalms 60:9",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "why": "same BL wording inside the quotes. FLAG: same issue; the English puts the bold <b>Wilt not Thou, O God?</b> inside the quotation; here the quotation closes before <b>Não serás Tu, ó Deus?</b> (tag sequence and quote count unchanged)."
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 432,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Romans 4:17",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 424,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 10:4",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "why": "unquoted echo \"weapons of the flesh\" → \"armas da carne\" (BL \"as armas da nossa milícia não são da carne\")."
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "why": "\"out of darkness into His light\" inside a quoted letter; BL span \"das trevas para a\" copied, then \"Sua luz\" (the writer drops \"marvellous\", so BL's \"maravilhosa\" is not carried); unquoted allusion"
+  },
+  {
+   "reference": "Isaiah 51:3",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "why": "\"the garden of the Lord\", unquoted allusion -> \"jardim do Senhor\" (BL prints SENHOR; outside a verbatim quotation, so Senhor per CONVENTIONS)"
+  },
+  {
+   "reference": "Genesis 13:10",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "why": "\"the garden of the Lord\", unquoted allusion -> \"jardim do Senhor\" (BL prints SENHOR; outside a verbatim quotation, so Senhor per CONVENTIONS)"
+  },
+  {
+   "reference": "2 Thessalonians 2:7",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "why": "\"mystery of iniquity\" -> \"mistério da iniquidade\", verbatim BL span"
+  },
+  {
+   "reference": "Acts 26:8",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 463,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Revelation 3:1",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 464,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Habakkuk 3:2",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 468,
+   "why": "KJV \"O LORD, revive thy work in the midst of the years, in the midst of the years make known\", reshaped by the author into three exclamations; BL spans \"SENHOR\", \"Renove a sua obra\" (lower-cased r in the first), \"Renove a sua obra no meio dos anos\", \"No meio dos anos, torne-a conhecida\" copied by sc"
+  },
+  {
+   "reference": "1 Peter 3:7",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "why": "\"the grace of life\", unquoted allusion -> BL span \"graça da vida\" copied by script"
+  },
+  {
+   "reference": "2 Corinthians 11:23",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "why": "\"deaths oft\" → 'mortes, frequentemente' (nested straight single quotes, as the English has them)"
+  },
+  {
+   "reference": "Isaiah 43:1",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 503,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "1 Kings 18:39",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "why": "\"the Lord is God\" is unquoted in the English; rendered in prose as \"o Senhor é Deus\" (BL: \"O SENHOR, ele é Deus\"), so no quotation marks and no SENHOR."
+  },
+  {
+   "reference": "Judges 5:18",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 544,
+   "why": "Unquoted paraphrase (\"jeopardised their lives unto the death in the high places of the field\"); BL pieces \"a sua vida até a morte\" + \"nos lugares altos do campo\" copied by script, verb re-personed to \"arriscaram\"."
+  },
+  {
+   "reference": "Judges 5:23",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 544,
+   "why": "Unquoted; \"em auxílio do SENHOR, em auxílio do SENHOR contra os poderosos\" copied by script, SENHOR → Senhor because it stands outside quotation marks (CONVENTIONS); \"no dia em que vieram\" carries the framing in own prose."
+  },
+  {
+   "reference": "Mark 8:35",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 545,
+   "why": "FLAG: Carmichael conflates Mark (\"for My sake and the Gospel's\") with Matthew (\"shall find it\"); her next sentences turn on \"lost\"/\"found\". BL Mark 8:35 ends \"a salvará\", so the quotation is built from BL words only: MRK 8:35 \"quem perder a sua vida por minha causa e por causa do Evangelho\" + MAT 16"
+  },
+  {
+   "reference": "Matthew 16:25",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "block_index": 545,
+   "why": "FLAG: Carmichael conflates Mark (\"for My sake and the Gospel's\") with Matthew (\"shall find it\"); her next sentences turn on \"lost\"/\"found\". BL Mark 8:35 ends \"a salvará\", so the quotation is built from BL words only: MRK 8:35 \"quem perder a sua vida por minha causa e por causa do Evangelho\" + MAT 16"
+  },
+  {
+   "reference": "Isaiah 60:1",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "why": "Echo \"the soul He meant should rise and shine\", unquoted; uses BL's verbs (Levante-se, resplandeça) as \"se levantasse e resplandecesse\"."
+  },
+  {
+   "reference": "Mark 12:34",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "why": "Echo \"near the Kingdom\" → \"perto do Reino\" (BL: \"não está longe do Reino de Deus\"); unquoted."
+  },
+  {
+   "reference": "Matthew 19:29",
+   "status": "self_rendered",
+   "chapter_order": 18,
+   "why": "Echo \"lost for His Name's sake\" → \"perdida por causa do nome Dele\" (BL: \"por causa do meu nome\"); unquoted."
+  },
+  {
+   "reference": "John 6:35",
+   "status": "self_rendered",
+   "chapter_order": 19,
+   "why": "allusion \"the Bread of Life\" (no quotation marks) => \"o Pão da Vida\"; BL \"pão da vida\", capitalised as the English"
+  },
+  {
+   "reference": "Genesis 4:10",
+   "status": "self_rendered",
+   "chapter_order": 19,
+   "why": "re-personed paraphrase, no quotation marks; \"desde a terra\" copied from BL; \"a voz do sangue de nossos irmãos, de nossas irmãs, clamando a Deus\" follows BL \"a voz do sangue do seu irmão clama\""
+  },
+  {
+   "reference": "1 John 3:17",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 559,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 1:4",
+   "status": "mined",
+   "chapter_order": 20,
+   "block_index": 567,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Joshua 13:1",
+   "status": "mined",
+   "chapter_order": 20,
+   "block_index": 570,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Luke 6:38",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "why": "\"as the verse describes\": pressed down / shaken / running over, narrated; BL vocabulary used (\"calcando\" ~ BL \"recalcada\", \"sacudindo\" ~ \"sacudida\", \"transbordante\" copied)"
+  },
+  {
+   "reference": "Matthew 21:21",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "why": "villager's garbled report (\"lift a mountain into the sea\") kept as reported speech: \"se você tiver fé, pode erguer um monte e lançá-lo no mar\" (BL vocabulary: tiver fé, monte, mar)"
+  },
+  {
+   "reference": "Mark 11:23",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "why": "villager's garbled report (\"lift a mountain into the sea\") kept as reported speech: \"se você tiver fé, pode erguer um monte e lançá-lo no mar\" (BL vocabulary: tiver fé, monte, mar)"
+  },
+  {
+   "reference": "Ephesians 5:16",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "why": "allusion \"buy them up\" (the minutes) => \"remi-los\", from BL \"remindo o tempo\""
+  },
+  {
+   "reference": "Colossians 4:5",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "why": "allusion \"buy them up\" (the minutes) => \"remi-los\", from BL \"remindo o tempo\""
+  },
+  {
+   "reference": "Psalms 103:1",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "why": "\"all that is within you sings\" => \"tudo o que há em você canta\" (BL \"Tudo o que há em mim\", re-personed)"
+  },
+  {
+   "reference": "2 Corinthians 7:4",
+   "status": "self_rendered",
+   "chapter_order": 20,
+   "why": "\"I have more than an overweight of joy!\" (Conybeare-style rendering of 2 Cor 7:4) => \"Transbordo de alegria!\" verbatim BL; FLAG: the English's \"more than an overweight\" is not in BL; \"transbordo\" carries the superabundance, nothing added inside the marks"
+  },
+  {
+   "reference": "Matthew 10:29",
+   "status": "mined",
+   "chapter_order": 21,
+   "block_index": 595,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "1 Peter 1:18",
+   "status": "mined",
+   "chapter_order": 21,
+   "block_index": 628,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "1 Kings 8:27",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "why": "\"the heaven of heavens\" (inside Ragland's letter): BL \"céus dos céus\" (plural), copied."
+  },
+  {
+   "reference": "Jeremiah 23:24",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "why": "\"Him Who fills heaven and earth\": BL is a question (\"Não encho eu os céus e a terra?\"); only \"os céus e a terra\" copied, verb restated as \"Aquele Que enche\"."
+  },
+  {
+   "reference": "Colossians 1:16",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "why": "\"by Whom all things were created\": BL \"por ele todas as coisas foram criadas\"; \"todas as coisas foram criadas\" copied, the relative pronoun is changed to \"por Quem\"."
+  },
+  {
+   "reference": "Isaiah 40:11",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "block_index": 631,
+   "why": "unquoted paraphrase in the present tense; BL phrases \"o seu rebanho como um pastor\", \"os cordeiros em seu braço\", \"em seu colo\" copied, with the verbs (apascenta/reúne/carrega) moved from future to present."
+  },
+  {
+   "reference": "Isaiah 40:22",
+   "status": "self_rendered",
+   "chapter_order": 21,
+   "why": "\"the circle of the earth\": BL \"círculo da terra\" copied."
+  },
+  {
+   "reference": "Ruth 1:8",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "why": "the child's 'Go, return': BL \"Vão, volte\" copied verbatim."
+  },
+  {
+   "reference": "Luke 10:19",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "why": "allusion in the Elf's prayer, \"the bites of snakes and scorpions\": BL \"serpentes e escorpiões\" copied; \"as picadas de\" is my own prose."
+  },
+  {
+   "reference": "2 Timothy 4:17",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "why": "\"out of the lion's mouth\" (also Ps 22:21): BL \"boca do leão\" copied, inside the child's prayer \"tira outra menininha da boca do leão\"."
+  },
+  {
+   "reference": "John 13:27",
+   "status": "mined",
+   "chapter_order": 22,
+   "block_index": 669,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Romans 15:13",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "why": "\"in the power of the Holy Ghost\" => \"no poder do Espírito Santo\", verbatim substring of ROM 15:13 (unmarked allusion, no quotation marks in the English)."
+  },
+  {
+   "reference": "Matthew 23:27",
+   "status": "self_rendered",
+   "chapter_order": 23,
+   "why": "\"this ghastly whitened sepulchre, within which are dead men's bones\" => \"este horrendo sepulcro caiado, dentro do qual há ossos de mortos\". \"ossos de mortos\" is verbatim; \"sepulcros caiados\" put in the singular to fit her sentence. Unmarked in the English."
+  },
+  {
+   "reference": "Matthew 10:42",
+   "status": "self_rendered",
+   "chapter_order": 24,
+   "why": "\"one of Christ's little ones was thirsty ... a cup of cold water\" => \"um dos pequeninos de Cristo ... um copo de água fria\". \"um copo de água fria\" and \"pequeninos\" are copied verbatim from MAT 10:42; \"um destes pequeninos\" reshaped to \"um dos pequeninos de Cristo\" to follow her sentence. Unmarked i"
+  },
+  {
+   "reference": "John 20:25",
+   "status": "self_rendered",
+   "chapter_order": 24,
+   "why": "\"the print of the nails and the spear\" => \"a marca dos cravos e da lança\". \"a marca dos cravos\" is verbatim from JHN 20:25; \"lança\" is the word JHN 19:34 uses. Unmarked allusion."
+  },
+  {
+   "reference": "Revelation 2:13",
+   "status": "self_rendered",
+   "chapter_order": 25,
+   "why": "\"Satan's seat\" => \"trono de Satanás\" (Bíblia Livre substring, copied by script; unquoted allusion in the English, no quotation marks added)"
+  },
+  {
+   "reference": "Lamentations 2:19",
+   "status": "self_rendered",
+   "chapter_order": 26,
+   "why": "\"pour out like water\" / \"hands lifted up towards God for the life of these young children\" => \"se derramassem como água\" / \"mãos levantadas para Deus pela vida destas crianças pequenas\"; Bíblia Livre fragments \"como água\", \"pela vida\", \"crianças pequenas\" copied by script; re-personed, unquoted in t"
+  },
+  {
+   "reference": "Lamentations 2:11",
+   "status": "self_rendered",
+   "chapter_order": 26,
+   "why": "\"till our eyes do fail with tears for the destruction of the daughters of our people\" => \"até que os nossos olhos se consumam em lágrimas por causa da destruição das filhas do nosso povo\"; fragments \"em lágrimas\", \"por causa da destruição\" copied by script; verb put in the subjunctive (BL \"se consom"
+  },
+  {
+   "reference": "James 3:15",
+   "status": "self_rendered",
+   "chapter_order": 26,
+   "why": "\"earthly, sensual, devilish\" => \"terrena, carnal e demoníaca\" (verbatim BL substring, copied by script). Portuguese gender forces a referent: the feminine agrees with \"sabedoria\" (repeated: \"sábio na sabedoria do seu credo, sabedoria terrena, carnal e demoníaca\"), which is what James 3:15 describes;"
+  },
+  {
+   "reference": "Jeremiah 20:9",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 817,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Matthew 3:3",
+   "status": "self_rendered",
+   "chapter_order": 27,
+   "why": "\"voices crying in the wilderness\" pluralised: \"vozes que clamam no deserto\" (only \"no deserto\" verbatim, from MAT 3:3)"
+  },
+  {
+   "reference": "Isaiah 40:3",
+   "status": "self_rendered",
+   "chapter_order": 27,
+   "why": "\"voices crying in the wilderness\" pluralised: \"vozes que clamam no deserto\" (only \"no deserto\" verbatim, from MAT 3:3)"
+  },
+  {
+   "reference": "Isaiah 50:7",
+   "status": "self_rendered",
+   "chapter_order": 27,
+   "why": "\"set His face as a flint\" → \"fez o Seu rosto como uma pederneira\" (BL \"fiz o meu rosto como uma pederneira\" re-personed, twice)"
+  },
+  {
+   "reference": "Isaiah 58:6",
+   "status": "self_rendered",
+   "chapter_order": 27,
+   "why": "unquoted; BL phrases \"as correntes da maldade\", \"as correias do jugo\", \"todo jugo\", \"os oprimidos\" in reshaped passive clauses. BL renders \"heavy burdens\" as \"correias do jugo\""
+  },
+  {
+   "reference": "Isaiah 9:5",
+   "status": "self_rendered",
+   "chapter_order": 27,
+   "why": "unquoted; only \"as vestes revolvidas em sangue\" is BL; \"confused noise\" carried in my prose (\"em meio ao estrondo\") since BL's verse is reshaped (\"batalha ruidosa\")"
+  },
+  {
+   "reference": "Psalms 69:20",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 847,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Isaiah 51:7",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 847,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Isaiah 51:12",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 847,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Isaiah 51:13",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 847,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Jeremiah 50:22",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 849,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Jeremiah 50:25",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 849,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Jeremiah 48:10",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 849,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Revelation 18:13",
+   "status": "self_rendered",
+   "chapter_order": 27,
+   "why": "\"slaves and souls of men\" → \"corpos e almas de pessoas\" (BL has no \"slaves\"; it reads \"bodies\", the literal Greek)"
+  },
+  {
+   "reference": "1 Corinthians 3:10",
+   "status": "mined",
+   "chapter_order": 28,
+   "block_index": 893,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 14:24",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "why": "\"convinced\" => \"convencido\""
+  },
+  {
+   "reference": "1 Corinthians 14:25",
+   "status": "mined",
+   "chapter_order": 28,
+   "block_index": 898,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 12:12",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "why": "unquoted \"signs of Apostleship\" => \"dos sinais de um apóstolo\" (BL phrase, verbatim)"
+  },
+  {
+   "reference": "Hebrews 11:26",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "why": "unquoted \"the reproach of Christ the Crucified\" => \"o opróbrio de Cristo, o Crucificado\" (BL \"o opróbrio de Cristo\")"
+  },
+  {
+   "reference": "Proverbs 26:5",
+   "status": "self_rendered",
+   "chapter_order": 29,
+   "block_index": 904,
+   "why": "unquoted allusion \"answer ... a fool according to his folly\"; Bíblia Livre \"ao tolo segundo a sua estultícia\" copied verbatim, verb reshaped into the sentence (\"responder ... ao tolo segundo a sua estultícia\")"
+  },
+  {
+   "reference": "John 8:12",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 907,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Genesis 2:7",
+   "status": "self_rendered",
+   "chapter_order": 29,
+   "why": "\"o fôlego de vida\"; reference kept as \"Gn ii. 7\" (the English's roman-numeral form)"
+  },
+  {
+   "reference": "Acts 17:27",
+   "status": "self_rendered",
+   "chapter_order": 29,
+   "block_index": 914,
+   "why": "\"Ele NÃO está longe de cada um de nós\"; BL has subjunctive \"ele não esteja longe de cada um de nós\" (concessive clause), recast as a main-clause statement; capitalised NÃO mirrors the English's \"NOT\""
+  },
+  {
+   "reference": "John 18:38",
+   "status": "self_rendered",
+   "chapter_order": 29,
+   "why": "\"O que é a verdade?\" (Pilate's question, on the man's lips); the follow-on \"Como se pode provar o que é a verdade?\" is his own words"
+  },
+  {
+   "reference": "Psalms 34:8",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 915,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "John 7:17",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 915,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Acts 17:23",
+   "status": "self_rendered",
+   "chapter_order": 29,
+   "block_index": 916,
+   "why": "the man's \"<i>the Unknown God</i>\" → \"o Deus Desconhecido\" (echo of BL \"A UM DEUS DESCONHECIDO\"; his words, not a citation); same phrase in blocks 19 and 20"
+  },
+  {
+   "reference": "John 14:6",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 917,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Psalms 74:10",
+   "status": "self_rendered",
+   "chapter_order": 30,
+   "why": "\"How long, O God, how long?\" (unquoted cry; no citation in the English) → \"Até quando, ó Deus, até quando?\"; \"Até quando, ó Deus\" copied verbatim from BL Ps 74:10 (cf. Ps 13:1, Rev 6:10), repetition added as the English has it"
+  },
+  {
+   "reference": "Psalms 74:10",
+   "status": "self_rendered",
+   "chapter_order": 30,
+   "why": "same refrain closing the poem; poem otherwise translated by me"
+  },
+  {
+   "reference": "Matthew 25:40",
+   "status": "self_rendered",
+   "chapter_order": 30,
+   "why": "poem's paraphrase (\"whatsoe'er is done / Unto Thy weakest and Thy humblest one, / Is even done to Thee\") — verse lines, not a Scripture quotation; translated as poetry, not BL wording (BL: \"visto que o fizeram a um destes meus pequeninos irmãos, vocês o fizeram a mim\")"
+  },
+  {
+   "reference": "Mark 10:14",
+   "status": "self_rendered",
+   "chapter_order": 30,
+   "why": "unquoted echo \"they suffered her not\" (KJV \"suffer the little children ... forbid them not\") → \"mas a impediram\", echoing BL \"Não as impeçam\""
+  },
+  {
+   "reference": "Jeremiah 10:10",
+   "status": "self_rendered",
+   "chapter_order": 31,
+   "why": "\"God is the living God!\" (boy's speech, no citation): \"o Deus vivo\" copied from BL Jer 10:10 (\"Ele é o Deus vivo\"); stock phrase, low-stakes."
+  },
+  {
+   "reference": "John 10:4",
+   "status": "self_rendered",
+   "chapter_order": 31,
+   "why": "\"He goeth before.\" (unquoted): \"Ele vai adiante\" copied from BL Mark 16:7; KJV wording matches both John 10:4 and Mark 16:7."
+  },
+  {
+   "reference": "Mark 16:7",
+   "status": "self_rendered",
+   "chapter_order": 31,
+   "why": "\"He goeth before.\" (unquoted): \"Ele vai adiante\" copied from BL Mark 16:7; KJV wording matches both John 10:4 and Mark 16:7."
+  },
+  {
+   "reference": "Genesis 6:3",
+   "status": "self_rendered",
+   "chapter_order": 31,
+   "why": "\"the Spirit strove\" (allusion) => \"o Espírito contendeu\", the BL verb (\"contenderá\") in narrative past."
+  },
+  {
+   "reference": "Luke 11:1",
+   "status": "self_rendered",
+   "chapter_order": 31,
+   "why": "\"Lord, teach us to pray!\" x2 => \"Senhor, ensina-nos a orar!\" copied from BL."
+  },
+  {
+   "reference": "Luke 11:1",
+   "status": "self_rendered",
+   "chapter_order": 31,
+   "why": "\"Lord, teach us how to pray!\" => \"Senhor, ensina-nos a orar!\" (BL wording; the English's \"how\" is not carried, matching the verse)."
+  },
+  {
+   "reference": "Genesis 4:9",
+   "status": "self_rendered",
+   "chapter_order": 31,
+   "why": "\"Where we disavow being keeper to our brother we're his Cain.\" is E. B. Browning (Aurora Leigh), not Scripture; translated by me, echoing BL's \"guardador do meu irmão\" with \"guardadores do nosso irmão\"."
+  },
+  {
+   "reference": "Romans 8:27",
+   "status": "self_rendered",
+   "chapter_order": 31,
+   "why": "\"Searcher of hearts\" (address to God) => \"Tu que sondas os corações\", reshaped from BL \"aquele que sonda os corações\"; \"Thy\" capitalised as in the English (\"Tua\")."
+  },
+  {
+   "reference": "Luke 5:11",
+   "status": "self_rendered",
+   "chapter_order": 32,
+   "why": "\"left all to follow Him\" => \"deixou tudo para segui-Lo\", reshaped from BL \"deixaram tudo e o seguiram\" (singular, purpose clause as in the English)."
+  },
+  {
+   "reference": "Acts 8:38",
+   "status": "self_rendered",
+   "chapter_order": 32,
+   "why": "\"went down into the other water\" (allusion, not a quotation) => \"desceram à outra água\", built on BL \"desceram à água\"."
+  },
+  {
+   "reference": "Psalms 19:14",
+   "status": "self_rendered",
+   "chapter_order": 32,
+   "why": "chorus line \"My Strength and my Redeemer, my Refuge—Jesus!\" is a hymn/chorus, not the verse; translated by me (\"Minha Força e meu Redentor, meu Refúgio—Jesus!\"). BL Ps 19:14 has \"minha rocha e meu redentor\", so BL wording was deliberately not imposed."
+  },
+  {
+   "reference": "1 Thessalonians 4:13",
+   "status": "mined",
+   "chapter_order": 32,
+   "block_index": 991,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Romans 4:19",
+   "status": "self_rendered",
+   "chapter_order": 33,
+   "why": "Abraham \"considered the facts... wavered not, but waxed strong\" (inverted paraphrase, no quote marks): prose built from Bíblia Livre words \"sem se enfraquecer\", \"olhando para a promessa\", \"não vacilou, mas se fortaleceu\""
+  },
+  {
+   "reference": "Romans 4:20",
+   "status": "self_rendered",
+   "chapter_order": 33,
+   "why": "Abraham \"considered the facts... wavered not, but waxed strong\" (inverted paraphrase, no quote marks): prose built from Bíblia Livre words \"sem se enfraquecer\", \"olhando para a promessa\", \"não vacilou, mas se fortaleceu\""
+  },
+  {
+   "reference": "Revelation 3:17",
+   "status": "self_rendered",
+   "chapter_order": 33,
+   "why": "\"have need of nothing\" paraphrase in prose: \"pensam não precisar de nada\" (echoes BL \"não preciso de nada\")"
+  },
+  {
+   "reference": "Mark 8:35",
+   "status": "self_rendered",
+   "chapter_order": 33,
+   "why": "\"for Christ's sake and His Gospel's\" in prose: \"por causa de Cristo e por causa do Evangelho\" (BL \"por minha causa e por causa do Evangelho\")"
+  },
+  {
+   "reference": "Matthew 10:34",
+   "status": "self_rendered",
+   "chapter_order": 33,
+   "why": "inside quotes only BL \"paz, mas espada\"; the \"not\" carried outside as \"não\" (BL reads \"Não vim trazer paz, mas espada\")"
+  },
+  {
+   "reference": "Isaiah 66:8",
+   "status": "self_rendered",
+   "chapter_order": 33,
+   "why": "\"nations are born in a day\" => \"nações nascem em um só dia\" (BL: \"Pode uma terra nascer em um só dia? Pode uma nação nascer de uma só vez?\"); reshaped to her plural statement"
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "mined",
+   "chapter_order": 33,
+   "block_index": 1008,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Mark 12:37",
+   "status": "self_rendered",
+   "chapter_order": 33,
+   "why": "\"heard Him gladly\" in prose: \"que O ouvia com prazer\" (BL \"o ouvia com prazer\", pronoun capitalised as in the English)"
+  },
+  {
+   "reference": "John 5:40",
+   "status": "mined",
+   "chapter_order": 33,
+   "block_index": 1010,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "John 7:37",
+   "status": "mined",
+   "chapter_order": 33,
+   "block_index": 1010,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "mined",
+   "chapter_order": 33,
+   "block_index": 1015,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Luke 12:51",
+   "status": "mined",
+   "chapter_order": 33,
+   "block_index": 1015,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Luke 12:52",
+   "status": "mined",
+   "chapter_order": 33,
+   "block_index": 1015,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Luke 12:53",
+   "status": "mined",
+   "chapter_order": 33,
+   "block_index": 1015,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "chapter_order": 33,
+   "block_index": 1020,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "self_rendered",
+   "chapter_order": 33,
+   "why": "\"brothers who bind sheaves\" — allusion only, translated freely (\"irmãos que atam feixes\")"
+  },
+  {
+   "reference": "Psalms 126:6",
+   "status": "self_rendered",
+   "chapter_order": 33,
+   "why": "\"brothers who bind sheaves\" — allusion only, translated freely (\"irmãos que atam feixes\")"
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "self_rendered",
+   "chapter_order": 34,
+   "why": "\"Mostre-me a sua glória\" from BL, initial capital + title-case \"Sua Glória\" + \"!\" as the English title"
+  },
+  {
+   "reference": "John 12:24",
+   "status": "self_rendered",
+   "chapter_order": 34,
+   "why": "Ragland's \"corns of wheat falling into the ground and dying ... abide alone\" rendered with BL vocabulary (\"grãos de trigo que caem na terra e morrem ... permaneceremos sós\"); his words, not a verse quote"
+  },
+  {
+   "reference": "Mark 8:35",
+   "status": "self_rendered",
+   "chapter_order": 34,
+   "why": "\"for Christ's sake and His Gospel\" => \"por causa de Cristo e do Seu Evangelho\" (inside Ragland's quotation)"
+  },
+  {
+   "reference": "Psalms 73:4",
+   "status": "self_rendered",
+   "chapter_order": 34,
+   "why": "\"there are no bands in their death\" (no quote marks in the English) => BL \"não há sofrimento na morte\" + \"delas\" (BL \"deles\"; gender adjusted to the women spoken of)"
+  },
+  {
+   "reference": "Revelation 5:12",
+   "status": "self_rendered",
+   "chapter_order": 34,
+   "why": "\"Worthy is the Lamb to receive!\" => \"Digno é o Cordeiro de receber!\" (her elliptical form; BL inserts \"que foi morto,\")"
+  },
+  {
+   "reference": "Proverbs 24:11",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1055,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Proverbs 24:12",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1055,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Proverbs 24:11",
+   "status": "self_rendered",
+   "chapter_order": 34,
+   "block_index": 1056,
+   "why": "her echo \"drawn unto death... ready to be slain\" => BL phrases \"estão sendo levados para a morte\" / \"tropeçam caminhando para o matadouro\""
+  },
+  {
+   "reference": "Matthew 13:38",
+   "status": "self_rendered",
+   "chapter_order": 34,
+   "why": "\"o campo é o mundo\" (in prose, no quote marks in the English)"
+  },
+  {
+   "reference": "John 6:35",
+   "status": "self_rendered",
+   "chapter_order": 34,
+   "why": "\"Bread of Life\" => \"Pão da Vida\" (title only)"
+  },
+  {
+   "reference": "John 12:24",
+   "status": "self_rendered",
+   "chapter_order": 34,
+   "why": "Ragland's italic quotation \"becoming a corn of wheat, falling into the ground and dying\" => \"tornar-se um grão de trigo, cair na terra e morrer\" (BL vocabulary, reshaped)"
+  },
+  {
+   "reference": "1 Corinthians 3:14",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1061,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 3:15",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1061,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 3:12",
+   "status": "self_rendered",
+   "chapter_order": 34,
+   "block_index": 1062,
+   "why": "\"gold, silver, precious stones ... wood, hay, stubble\" in prose: \"ouro, prata, pedras preciosas ... madeira, feno, palha\""
+  },
+  {
+   "reference": "1 Corinthians 3:15",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1062,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 3:13",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1065,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "self_rendered",
+   "chapter_order": 34,
+   "why": "\"criados em Cristo Jesus\"; \"prepared before\" in prose as \"preparadas de antemão\" (BL \"preparou de antemão\")"
+  },
+  {
+   "reference": "John 11:44",
+   "status": "self_rendered",
+   "chapter_order": 34,
+   "why": "\"Desatem-no e deixem-no ir\" — she writes \"Loose it\"; BL \"no\" (him) kept verbatim"
+  },
+  {
+   "reference": "Ezekiel 3:22",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1071,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Ezekiel 1:25",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1071,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Isaiah 42:8",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1074,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Lamentations 1:12",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1074,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "John 19:16",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1074,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "John 19:17",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1074,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "John 19:18",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1074,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "1 John 4:10",
+   "status": "self_rendered",
+   "chapter_order": 34,
+   "why": "\"Nisto consiste o amor\""
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1074,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1075,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Exodus 33:21",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1075,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Exodus 33:22",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1075,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Exodus 33:23",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1075,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1076,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 4:6",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1076,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Exodus 33:22",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1077,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Exodus 33:23",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1077,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1077,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Philippians 3:12",
+   "status": "self_rendered",
+   "chapter_order": 34,
+   "why": "\"apprehended this for which we are apprehended of Christ Jesus\" in prose: \"alcançamos aquilo para o que fomos alcançados por Cristo Jesus\""
+  },
+  {
+   "reference": "Acts 26:19",
+   "status": "self_rendered",
+   "chapter_order": 34,
+   "why": "\"Heavenly Vision\" => \"Visão Celestial\" (title phrase)"
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "self_rendered",
+   "chapter_order": 34,
+   "why": "\"Quem irá por nós?\" (initial capital) and \"Eis-me aqui. Envie-me!\""
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1078,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Philippians 2:17",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1078,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Isaiah 6:6",
+   "status": "self_rendered",
+   "chapter_order": 34,
+   "why": "\"touch our lips with the live coal\" => \"toque os nossos lábios com a brasa viva\" (BL \"brasa viva\", \"tocou os seus lábios\")"
+  },
+  {
+   "reference": "Isaiah 6:7",
+   "status": "self_rendered",
+   "chapter_order": 34,
+   "why": "\"touch our lips with the live coal\" => \"toque os nossos lábios com a brasa viva\" (BL \"brasa viva\", \"tocou os seus lábios\")"
+  },
+  {
+   "reference": "Revelation 5:12",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1082,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "Revelation 5:13",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 1082,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  },
+  {
+   "reference": "2 Samuel 18:33",
+   "status": "mined",
+   "chapter_order": 35,
+   "block_index": 1085,
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text"
+  }
+ ]
+}
