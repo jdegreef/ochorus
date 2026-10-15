@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "andrew-murray",
+ "language": "vi",
+ "job_issue": 5954,
+ "references": [
+  {
+   "reference": "Luke 11:1",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 30
+  }
+ ]
+}

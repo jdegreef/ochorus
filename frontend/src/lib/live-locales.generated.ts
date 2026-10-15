@@ -18,6 +18,10 @@ export const LIVE_LOCALES = ["en","es","sw","lg","pt"] as const;
 // correcting a name in the admin reaches the picker on the next build.
 export const LIVE_LOCALE_NAMES: Record<string, string> = {"en":"English","es":"Español","sw":"Kiswahili","lg":"Luganda","pt":"Português"};
 
+// Each live language's published-book count — the footer's language
+// tiles. Empty when the API predates the field; the tiles then show names.
+export const LIVE_LOCALE_BOOKS: Record<string, number> = {};
+
 // The live languages with at least one published article — the Articles
 // hub's hreflang set (routes/articles).
 export const ARTICLE_LOCALES: readonly string[] = ["en","es","sw","lg","pt"];

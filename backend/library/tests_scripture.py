@@ -4,6 +4,7 @@ fetching verse text from the Bible API in a target language.
 A bad Bible code does not fail — it omits scripture silently — so the checks
 here are the ones that notice."""
 
+import copy
 from unittest import mock
 
 from django.core.management import call_command
@@ -318,6 +319,49 @@ class ScriptureFetchTests(TestCase):
             self.assertEqual(fetch_chapter("rv1858", Ref("JHN", 3)), payload)
             fetch_chapter("rv1858", Ref("JHN", 3))
         self.assertEqual(get.call_count, 1)
+
+    def test_vietnamese_eth_is_repaired_to_d_with_stroke(self):
+        # Take Root's Cadman sets Đ as U+00D0 (Ð); quoted verses must carry the
+        # Vietnamese letter the glossary and search use. Other Bibles untouched.
+        payload = {
+            "book_name": "Giăng",
+            "reference": "Giăng 1",
+            "verses": [{"number": 1, "text": "Ngôi Lời là \u00d0ức Chúa Trời."}],
+        }
+        # A fresh body per request, as requests gives: the repair is in place.
+        with mock.patch(
+            "library.translation.requests.get",
+            side_effect=lambda *a, **k: self._resp(200, copy.deepcopy(payload)),
+        ):
+            vi = fetch_chapter("vietnamese", Ref("JHN", 1))
+            other = fetch_chapter("kjv", Ref("JHN", 1))
+        self.assertEqual(vi["verses"][0]["text"], "Ngôi Lời là \u0110ức Chúa Trời.")
+        self.assertIn("\u00d0", other["verses"][0]["text"])
+
+    def test_korean_baptist_edition_is_restored_to_sereh(self):
+        # Take Root's 개역 is a Baptist edition (침례); the 개역 reads 세례.
+        payload = {"verses": [{"number": 1, "text": "그 때에 침례 요한이 이르러"}]}
+        with mock.patch(
+            "library.translation.requests.get",
+            side_effect=lambda *a, **k: self._resp(200, copy.deepcopy(payload)),
+        ):
+            ko = fetch_chapter("korean", Ref("MAT", 3))
+        self.assertEqual(ko["verses"][0]["text"], "그 때에 세례 요한이 이르러")
+
+    def test_korean_typos_are_repaired(self):
+        payload = {"verses": [
+            {"number": 12, "text": "운동력이 있어 죄우에 날선 어떤 검보다도"},
+            {"number": 22, "text": "나를 앙망하라 그리하며 구원을 얻으리라"},
+        ]}
+        with mock.patch(
+            "library.translation.requests.get",
+            side_effect=lambda *a, **k: self._resp(200, copy.deepcopy(payload)),
+        ):
+            ko = fetch_chapter("korean", Ref("HEB", 4))
+        self.assertEqual(
+            [v["text"] for v in ko["verses"]],
+            ["운동력이 있어 좌우에 날선 어떤 검보다도", "나를 앙망하라 그리하면 구원을 얻으리라"],
+        )
 
     def test_transient_failure_retries_then_raises_and_is_not_cached(self):
         import requests

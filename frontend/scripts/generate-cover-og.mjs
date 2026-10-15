@@ -134,6 +134,10 @@ const COVERS = resolve(STATIC, 'covers');
 const CONTENT = resolve(HERE, '../../backend/library/fixtures/content');
 const MODULES = resolve(HERE, '../node_modules');
 const APP_CSS = readFileSync(resolve(HERE, '../src/app.css'), 'utf8');
+// Korean's faces are not in app.css: the root layout links this sheet on Korean
+// pages only (it is ~100 KB of declarations; see its header). So a Korean card
+// reads its faces from here, as the page it stands in for does.
+const KO_CSS = readFileSync(resolve(HERE, '../src/lib/fonts-ko.css'), 'utf8');
 // Stripped of comments ONCE, here, rather than inlined whole into every card.
 // `cover-type.css` is deliberately more than half prose — it is where the two
 // renderers' shared reasoning lives — and that prose is ~24 KB that Chromium
@@ -199,6 +203,7 @@ function needTwins() {
 			};
 			const cover = fields.cover_url || '';
 			const script = scriptOf(fields.language || 'en');
+			const language = fields.language || 'en';
 			return {
 				slug: fields.slug,
 				// The title the cover SETS, as the component chooses it — and so the
@@ -221,8 +226,12 @@ function needTwins() {
 				// they are read rather than hardcoded so that the day a translated
 				// edition gets one, it is set in its own face rather than silently
 				// in Latin.
-				language: fields.language || 'en',
+				language,
 				script,
+				// And the FACES it needs, which is a different question: see
+				// `faceScriptOf`. Korean and Amharic need no correcting, so `script`
+				// is null for them, and still need a face that can draw their title.
+				face: faceScriptOf(language),
 				// Where this edition's card lives, and what names it in the manifest.
 				// English keeps the historic root path so cards already shared do not
 				// 404; every other language sits under its own directory. The same
@@ -236,7 +245,7 @@ function needTwins() {
 				// painting in the library needs.
 				scrim: scrimStrength(fields.slug),
 				// A painting's composition; a plate takes none.
-				layout: isArtCover(cover) ? coverLayoutFor(author.slug, script, fields.slug) : null
+				layout: isArtCover(cover) ? coverLayoutFor(author.slug, script, fields.slug, fields.title) : null
 			};
 		})
 		// How far a laid-out painting is cropped past its scan border — the
@@ -257,6 +266,25 @@ function twinPath(slug, language) {
 }
 
 // ── The page ────────────────────────────────────────────────────────────────
+
+/** The `--cover-face-*` and `--font-display` declarations, as written. */
+const coverTokens = () =>
+	[...APP_CSS.matchAll(/^\s*(--(?:cover-face-[a-z]+|font-display):[^;]+);/gm)].map(([, decl]) =>
+		decl.trim()
+	);
+
+/** EVERY quoted family in those tokens — what a cover can name, script faces
+ *  included. One list for the named subsets and the Hangul slices alike. */
+const coverFamilies = (tokens = coverTokens()) =>
+	new Set(tokens.flatMap((decl) => [...decl.matchAll(/'([^']+)'/g)].map(([, f]) => f)));
+
+/** A fontsource @import's stylesheet: a bare package specifier
+ *  ('@fontsource-variable/fraunces') is its index.css through package exports,
+ *  and `resolve` only gives the directory. */
+function sheetFile(spec) {
+	const file = resolve(MODULES, spec);
+	return statSync(file).isDirectory() ? resolve(file, 'index.css') : file;
+}
 
 const dataUri = (file, mime) => `data:${mime};base64,${readFileSync(file).toString('base64')}`;
 
@@ -290,19 +318,15 @@ const dataUri = (file, mime) => `data:${mime};base64,${readFileSync(file).toStri
  * latin alone; an Arabic one adds Arabic and nothing else. Italic is dropped
  * throughout — only the title takes a cover face, and it is never italic.
  */
-function buildFontCss(script) {
+function buildFontCss(face) {
 	// The token block first: it is also the list of families a cover can ask
 	// for, which is how the reader's OpenDyslexic and the UI's Hanken are left
 	// out without naming either of them here.
-	const tokens = [...APP_CSS.matchAll(/^\s*(--(?:cover-face-[a-z]+|font-display):[^;]+);/gm)].map(
-		([, decl]) => decl.trim()
-	);
+	const tokens = coverTokens();
 	// EVERY quoted name in the tokens, because a stack's script faces sit after
 	// its first: `--font-display` names Fraunces, then Amiri, then Tiro, then PT
 	// Serif. Taking only the first is what left every non-Latin card unserved.
-	const wanted = new Set(
-		tokens.flatMap((decl) => [...decl.matchAll(/'([^']+)'/g)].map(([, f]) => f))
-	);
+	const wanted = coverFamilies(tokens);
 	// The RECIPE face — still the first name in each token — is the one whose
 	// absence means a cover renders in the fallback and looks deliberate, so it
 	// stays the thing the completeness check below insists on. The rest of a
@@ -315,10 +339,11 @@ function buildFontCss(script) {
 	// latin always — even an Arabic card sets its byline in it — plus the card's
 	// own. Cyrillic takes its ext too: PT Serif splits Ukrainian's ґ out of the
 	// base block, the same split that hid the gap in `--font-sans`.
+	// Korean has no NAMED subset — its faces come as numbered slices, chosen per
+	// card by `hangulFaces` — so here it is latin's case.
 	const subsets = ['latin', 'latin-ext'];
-	if (script === 'arabic') subsets.push('arabic');
-	if (script === 'devanagari') subsets.push('devanagari');
-	if (script === 'cyrillic') subsets.push('cyrillic', 'cyrillic-ext');
+	if (face && face !== 'korean') subsets.push(face);
+	if (face === 'cyrillic') subsets.push('cyrillic-ext');
 	const wantedSubset = new RegExp(`url\\(\\./files/[^)]*-(${subsets.join('|')})-`);
 	// Recorded HERE, while the filenames are still filenames. The blocks are
 	// rewritten below to carry the woff2 inline, which is what a data URI is for
@@ -328,10 +353,7 @@ function buildFontCss(script) {
 	const subsetsSeen = new Set();
 
 	const faces = [...APP_CSS.matchAll(/@import '(@fontsource[^']+)'/g)].flatMap(([, spec]) => {
-		// A bare package specifier ('@fontsource-variable/fraunces') is its
-		// index.css through package exports; `resolve` only gives the directory.
-		let file = resolve(MODULES, spec);
-		if (statSync(file).isDirectory()) file = resolve(file, 'index.css');
+		const file = sheetFile(spec);
 		const dir = dirname(file);
 		return readFileSync(file, 'utf8')
 			.split('@font-face')
@@ -377,22 +399,138 @@ function buildFontCss(script) {
 	// recipe's own family arrived; it cannot notice that an Arabic card carries
 	// six Latin faces and nothing that can draw an Arabic glyph, which is
 	// precisely what shipped. This asks the question the card is about.
-	if (script && !subsetsSeen.has(script)) {
+	if (face && face !== 'korean' && !subsetsSeen.has(face)) {
 		throw new Error(
-			`no @font-face for ${script} reached the card — every ${script} twin would ` +
+			`no @font-face for ${face} reached the card — every ${face} twin would ` +
 				`render in whatever font the machine drawing it happens to have, and look ` +
 				`deliberate. Check that a --cover-face-* or --font-display token names a ` +
-				`family with a ${script} subset, and that app.css @imports it.`
+				`family with a ${face} subset, and that app.css @imports it.`
 		);
 	}
 	return `${faces.join('')}:root{${tokens.join(';')}}`;
 }
 
-/** Built once PER SCRIPT, and only when a page is actually drawn: it was a
+/**
+ * The fontsource subset a card's faces are cut from; null for Latin.
+ *
+ * NOT `coverStyles.scriptOf`, and deliberately not an entry added to it.
+ * `COVER_SCRIPTS` lists the scripts whose RECIPES need correcting — tracking
+ * that breaks a cursive join, an italic nobody drew — and it holds an entry
+ * only for CSS that exists. Hangul and Ge'ez need no correction, so they are
+ * absent there and set exactly as a Latin title is. But they still need a FACE
+ * on this card, which is a different question: the app answers it by unicode-
+ * range, per glyph, from every @font-face it declares, while this card has only
+ * the faces this script chose to inline. Folding the two together would give
+ * Korean a `script-korean` class and a different layout key the day someone
+ * only meant to ship it a font.
+ *
+ * Keyed on the ISO 15924 subtag for `scriptOf`'s reason — an admin can add a
+ * language without a deploy, and `ur` must find Arabic without a list of codes.
+ * `ko` maximises to `Kore` (Hangul + Han), `am` and `ti` to `Ethi`. The same
+ * table `generate-home-og.mjs` keeps for its own cards.
+ */
+const FACE_SUBSET = {
+	Arab: 'arabic',
+	Deva: 'devanagari',
+	Cyrl: 'cyrillic',
+	Ethi: 'ethiopic',
+	Kore: 'korean'
+};
+function faceScriptOf(language) {
+	try {
+		return FACE_SUBSET[new Intl.Locale(language).maximize().script] ?? null;
+	} catch {
+		return null;
+	}
+}
+
+/** Does a `unicode-range` value cover any character of `text`? */
+const rangeCovers = (range, text) =>
+	[...text].some((ch) => {
+		const cp = ch.codePointAt(0);
+		return range.split(',').some((part) => {
+			const [lo, hi] = part.trim().replace(/U\+/i, '').split('-');
+			return cp >= parseInt(lo, 16) && cp <= parseInt(hi ?? lo, 16);
+		});
+	});
+
+/** Every upright Hangul slice `fonts-ko.css` declares for a family some cover
+ *  can name, as { range, css } — read once; each woff2 inlined on first use. */
+let HANGUL_SLICES = null;
+function hangulSlices() {
+	if (HANGUL_SLICES) return HANGUL_SLICES;
+	// The same family list `buildFontCss` serves.
+	const wanted = coverFamilies();
+	HANGUL_SLICES = [...KO_CSS.matchAll(/@import '(@fontsource[^']+)'/g)].flatMap(([, spec]) => {
+		const file = sheetFile(spec);
+		return readFileSync(file, 'utf8')
+			.split('@font-face')
+			.slice(1)
+			.map((block) => `@font-face${block.slice(0, block.indexOf('}') + 1)}`)
+			// Anchored to the slice NUMBER (`-kr-37-700-`), as in the home card: a
+			// bare `\d+` matches the weight too, and passes the named subsets.
+			.filter((block) => /url\(\.\/files\/[^)]*-kr-\d+-\d{3}-/.test(block))
+			.filter((block) => !/font-style:\s*italic/.test(block))
+			.filter((block) => wanted.has(/font-family:\s*'([^']+)'/.exec(block)?.[1] ?? ''))
+			.map((block) => {
+				let css = null;
+				return {
+					range: /unicode-range:\s*([^;]+);/.exec(block)?.[1] ?? '',
+					get css() {
+						css ??= block
+							.replace(/,\s*url\(\.\/files\/[^)]+\)\s*format\('woff'\)/g, '')
+							.replace(
+								/url\(\.\/files\/([^)]+)\)/g,
+								(_m, name) =>
+									`url(${dataUri(resolve(dirname(file), 'files', name), 'font/woff2')})`
+							);
+						return css;
+					}
+				};
+			});
+	});
+	return HANGUL_SLICES;
+}
+
+/**
+ * The Hangul slices that draw THIS card's words, and no others.
+ *
+ * A Hangul face ships ~120 numbered unicode-range slices per weight; inlining
+ * every one is megabytes of base64 per card. Only the slices covering a glyph
+ * of the title, subtitle, byline or numeral can paint anything, and that is
+ * exactly the set unicode-range would have fetched in the app.
+ *
+ * The guard `buildFontCss` keeps for a named subset, kept here: a card with a
+ * Hangul syllable on it and no slice to draw it would be photographed in the
+ * machine's own Korean face (AppleMyungjo on a Mac) and look deliberate —
+ * which is what every committed Korean twin was until this existed.
+ */
+function hangulFaces(text) {
+	const slices = hangulSlices().filter((slice) => rangeCovers(slice.range, text));
+	// PER GLYPH, not "did any slice match": one common syllable would satisfy
+	// that while a rare one, or a Hanja, fell through to the machine's face.
+	const unserved = [...new Set(text.match(/[\p{Script=Hangul}\p{Script=Han}]/gu) ?? [])].filter(
+		(ch) => !slices.some((slice) => rangeCovers(slice.range, ch))
+	);
+	if (unserved.length) {
+		throw new Error(
+			`no Korean @font-face reached the card for ${unserved.join(' ')} in "${text}" — it would render ` +
+				`in whatever Korean font the machine drawing it happens to have, and look ` +
+				`deliberate. Check that fonts-ko.css still @imports a family the cover ` +
+				`tokens (--font-display, --cover-face-*) name.`
+		);
+	}
+	return slices.map((slice) => slice.css).join('');
+}
+
+/** Every character a card sets in a cover face — what its slices must cover. */
+const cardText = (book) => [book.title, book.subtitle, book.author, book.volume ?? ''].join(' ');
+
+/** Built once PER FACE SCRIPT, and only when a page is actually drawn: it was a
  *  per-book call (37 x 6 file reads), and `coverOgManifest.test.ts` imports
- *  this module for `needTwins` alone and should not pay for it at all. Keyed by
- *  script because the faces a card needs depend on it — four entries at most,
- *  and the library draws its cards in slug order, so the cache still holds. */
+ *  this module for `needTwins` alone and should not pay for it at all. A Korean
+ *  card adds its own slices on top (`cardFontCss`), which is why this block is
+ *  only ever the part every card in a script shares. */
 const FONT_CSS = new Map();
 
 /** What a card with no script of its own is set in. Said once, because the
@@ -400,14 +538,18 @@ const FONT_CSS = new Map();
  *  faces are chosen by rather than a second copy of it. */
 const scriptKey = (script) => script ?? 'latin';
 
-/** The face block for one card's script, cut once and kept. The ONE place that
- *  populates the Map — it had become two, the page builder and the digest, and
- *  that is a quiet way for the digest to describe faces other than the ones
- *  actually rendered. */
-function fontCssFor(script) {
-	const key = scriptKey(script);
-	if (!FONT_CSS.has(key)) FONT_CSS.set(key, buildFontCss(script));
+/** The face block a script's cards share, cut once and kept. */
+function fontCssFor(face) {
+	const key = scriptKey(face);
+	if (!FONT_CSS.has(key)) FONT_CSS.set(key, buildFontCss(face));
 	return FONT_CSS.get(key);
+}
+
+/** Every face ONE card is drawn with: its script's block, plus — for Korean —
+ *  the slices its own words need. The one place the page and the digest ask. */
+function cardFontCss(book) {
+	const shared = fontCssFor(book.face);
+	return book.face === 'korean' ? shared + hangulFaces(cardText(book)) : shared;
 }
 
 /** The brand lockup, from the copy `BrandMark.svelte` itself renders. */
@@ -460,7 +602,7 @@ function coverPage(book, groundBytes) {
 	const ground = book.art
 		? `<img class="ground cover-ground"${book.bar ? ` style="--ground-bar: ${book.bar}"` : ''} src="data:${book.cover.endsWith('.svg') ? 'image/svg+xml' : 'image/jpeg'};base64,${groundBytes.toString('base64')}" alt="">`
 		: `<div class="ground">${groundBytes.toString('utf8')}</div>`;
-	return `<style>${fontCssFor(book.script)}${COVER_CSS}
+	return `<style>${cardFontCss(book)}${COVER_CSS}
 html,body{margin:0}
 /* The three things a page needs that a cover inside the app gets from its
    surroundings: the card's box, the ground's own placement, and the container
@@ -619,9 +761,11 @@ const digest = (buf) => createHash('sha256').update(buf).digest('hex');
  *              `prayer-the-pulse-of-life` from 0.30 to 0.90, and moving
  *              `godliness` alone redrew nothing at all — its seven translated
  *              cards kept the old wash with every gate green.
- *   `script` — which face the title is set in. Derived from the language, so it
+ *   `script` — which face the title is set in (`faceScriptOf`, not the
+ *              recipe-correction table). Derived from the language, so it
  *              moves only if that table does; a twin whose LANGUAGE changed is a
  *              different key rather than a changed entry.
+ *   `fonts`  — a digest of the faces this card was drawn with; see `fontDigest`.
  *   `art`    — painting or plate, which is a different ground element entirely.
  *   `layout` — the composition a painting is set in (`coverLayouts.ts`), as
  *              `framed` or `<layout>/<hue>`. Checked by `coverOgManifest.test.ts`
@@ -641,7 +785,8 @@ function made(book, groundBytes) {
 		ground: digest(inputs(book, groundBytes)),
 		style: book.style,
 		volume: book.volume,
-		script: scriptKey(book.script),
+		script: scriptKey(book.face),
+		fonts: fontDigest(book),
 		art: book.art,
 		scrim: book.scrim,
 		layout: layoutKey(book.layout, book.top, book.dark),
@@ -650,12 +795,7 @@ function made(book, groundBytes) {
 }
 
 /**
- * The font faces every card is drawn with, as bytes.
- *
- * Built for each script UP FRONT rather than lazily as pages are rendered, and
- * the skip is what forces that: populate the Map on demand and its contents
- * depend on which cards happened to be redrawn, so the digest would move from
- * run to run for no reason at all.
+ * The font faces ONE card is drawn with, as a digest.
  *
  * Worth digesting because a fontsource upgrade re-cuts the woff2 and every title
  * is then set in glyphs nothing else here can see — not `ground` (the cover file
@@ -663,17 +803,24 @@ function made(book, groundBytes) {
  * every twin was redrawn every run the byte comparison caught that by accident;
  * a skip that trusts the manifest needs it recorded on purpose.
  *
+ * PER CARD, not one digest for the run. It used to be one, over every script's
+ * block, and that made the faces of ANY script a property of EVERY card: giving
+ * Amharic a face moved the run's digest and redrew all ~940 twins — on whatever
+ * machine happened to run it, so ~810 files of Chromium re-encoding churn to
+ * ship 129 real changes. Per card, a new face redraws the cards that wear it.
+ * (And a Korean card's faces depend on its own words, so there is no one block
+ * per script to digest anyway.)
+ *
  * No gate recomputes this one and none should: a digest a gate cannot derive is
  * a gate that fails forever, and these come out of node_modules. It is the
- * script comparing its own arithmetic across two runs, so it cannot go
- * stale-and-unverifiable the way a gate-side digest could.
+ * script comparing its own arithmetic across two runs.
  */
-function fontDigest(books) {
-	for (const book of books) fontCssFor(book.script);
-	const blocks = [...FONT_CSS.entries()]
-		.sort(([a], [b]) => a.localeCompare(b))
-		.map(([key, css]) => `${key}\0${css}`);
-	return digest(Buffer.from(blocks.join('\0')));
+const FONT_DIGEST = new Map();
+function fontDigest(book) {
+	if (book.face === 'korean') return digest(Buffer.from(cardFontCss(book)));
+	const key = scriptKey(book.face);
+	if (!FONT_DIGEST.has(key)) FONT_DIGEST.set(key, digest(Buffer.from(fontCssFor(book.face))));
+	return FONT_DIGEST.get(key);
 }
 
 /**
@@ -723,20 +870,13 @@ async function main() {
 	// Checked once, here, because getting it wrong is not a slow run — it is 134
 	// cards silently keeping a retired design, the exact failure this script was
 	// written to end.
+	// The FACES are not here: they are per card (`fontDigest`), so a new face
+	// redraws the cards that wear it rather than the library.
 	const shared = {
 		css: digest(Buffer.from(COVER_CSS)),
-		markup: digest(readFileSync(resolve(HERE, '../src/lib/coverCardMarkup.ts'))),
-		// THE FACES too, for the reason `fontDigest` gives. Lenient about its
-		// ABSENCE, and only its absence: it arrived after the committed manifest
-		// was written, and reading a missing digest as a mismatch would redraw the
-		// whole library once, on the first run after it shipped. `css` and
-		// `markup` stay strict — every manifest has carried both.
-		fonts: fontDigest(books)
+		markup: digest(readFileSync(resolve(HERE, '../src/lib/coverCardMarkup.ts')))
 	};
-	const composed =
-		previous?.css === shared.css &&
-		previous?.markup === shared.markup &&
-		(previous.fonts === undefined || previous.fonts === shared.fonts);
+	const composed = previous?.css === shared.css && previous?.markup === shared.markup;
 	const known = composed ? (previous.twins ?? {}) : {};
 
 	// Launched on first use, not here: a run with nothing to redraw should not
@@ -823,7 +963,7 @@ async function main() {
 					'cover file and the type over it (checked by CoverAssetTests), `style` ' +
 					'names the house style it was set in, and `css` digests the composition ' +
 					'they were drawn with (both checked by coverOgManifest.test.ts). ' +
-					'`script`, `art`, `scrim`, `layout` and `fonts` are the rest of what a card is ' +
+					'`script`, `fonts`, `art`, `scrim`, `layout` are the rest of what a card is ' +
 					'made from, read back by the skip so a change to any of them redraws. ' +
 					'`rows` and `middle` (framed paintings only) are where each edition\'s white ink ' +
 					'landed and the block its scrim band hangs off, measured in the browser; ' +
@@ -852,10 +992,6 @@ async function main() {
 				// drifts — a card's own markup already reaches the picture through
 				// the byte comparison above.
 				markup: shared.markup,
-				// AND THE FACES. Not a gate — nothing recomputes this and nothing
-				// should; see `fontDigest`. It is here so the next run can ask
-				// whether the faces moved, which no other digest here can answer.
-				fonts: shared.fonts,
 				twins: Object.fromEntries(Object.entries(manifest).sort(([a], [b]) => a.localeCompare(b)))
 			},
 			null,

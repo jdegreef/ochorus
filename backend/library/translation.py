@@ -116,6 +116,54 @@ _FETCH_ATTEMPTS = 3
 _FETCH_BACKOFF = (2, 5)  # seconds slept before the 2nd and 3rd attempts
 
 
+# Per-Bible text repairs, applied to every fetched chapter, where Take Root's
+# copy departs from the public-domain text the language is pinned to.
+#
+# * "vietnamese" (Cadman) sets the capital Đ as U+00D0 (Ð, the Icelandic eth):
+#   it looks the same but is another letter, so a verse quoted verbatim would
+#   spell Ðức Chúa Trời where the glossary, the UI and every reader's search
+#   spell Đức Chúa Trời. Its lowercase đ is already right.
+# * "korean" is the 개역 text in a Baptist edition: every 세례 (baptism) reads
+#   침례 (immersion), John the Baptist included (침례 요한). The 개역 itself,
+#   and the ebible mirror of it, say 세례 throughout, as most Korean
+#   Protestants read it; nothing else in that text uses 침례. Two typos of its
+#   own are repaired the same way, found by translators quoting the verses.
+_VERSE_REPAIRS: dict[str, tuple[tuple[str, str], ...]] = {
+    "vietnamese": (("\u00d0", "\u0110"),),
+    "korean": (
+        ("침례", "세례"),
+        # Two of Take Root's own typos, each checked against the ebible mirror:
+        # Hebrews 4:12 (좌우에 날선), Isaiah 45:22 (그리하면 구원을), Romans 8:11
+        # (가운데서) and Ruth 2:15 (룻이). Long
+        # enough to match nowhere else.
+        ("죄우에 날선", "좌우에 날선"),
+        ("앙망하라 그리하며 구원", "앙망하라 그리하면 구원"),
+        ("죽은 자 가운게서", "죽은 자 가운데서"),  # Romans 8:11
+        ("롯이 이삭을 주우러", "룻이 이삭을 주우러"),  # Ruth 2:15 (롯 is Lot)
+    ),
+}
+
+
+def _repair(bible: str, data: dict) -> dict:
+    """Apply `_VERSE_REPAIRS` in place to a freshly parsed chapter."""
+    pairs = _VERSE_REPAIRS.get(bible)
+    if not pairs:
+        return data
+
+    def fix(text: str) -> str:
+        for old, new in pairs:
+            text = text.replace(old, new)
+        return text
+
+    for field in ("book_name", "reference"):
+        if isinstance(data.get(field), str):
+            data[field] = fix(data[field])
+    for v in data.get("verses") or []:
+        if isinstance(v.get("text"), str):
+            v["text"] = fix(v["text"])
+    return data
+
+
 class ScriptureUnavailable(RuntimeError):
     """The Bible API could not be reached for a passage after retries. Raised
     (not returned as None) so a translation job stops rather than silently
@@ -151,6 +199,7 @@ def fetch_chapter(bible: str, ref: Ref) -> dict | None:
                 except ValueError:
                     last_reason = "unparseable JSON body"  # transient — retry
                 else:
+                    data = _repair(bible, data)
                     _verse_cache[key] = data
                     return data
             else:
@@ -288,8 +337,10 @@ grammar). If a quotation's passage was not supplied, translate it carefully and 
 prose should read as if written by a devotional author in {cfg['name']}, never word-for-word \
 translationese. The source English is often Victorian; translate the meaning, not the syntax.
 5. HTML STRUCTURE IS PRESERVED EXACTLY: the body is sanitized HTML. Keep every tag, in order, \
-as-is (<p>, <h2>, <h3>, <blockquote>, <em>, <i>, <hr>). Translate only the human-readable text \
-inside them. Never add, remove, or reorder tags. Preserve HTML entities where needed.
+as-is (<p>, <h2>, <h3>, <blockquote>, <em>, <i>, <hr>, <figure>, <img>, <figcaption>). \
+Translate only the human-readable text inside them — a <figcaption> is text, so translate it; \
+an <img> tag is copied character for character, attributes and all. Never add, remove, or \
+reorder tags. Preserve HTML entities where needed.
 6. Proper names keep their conventional {cfg['name']} biblical forms where one exists; \
 otherwise keep the English form.
 

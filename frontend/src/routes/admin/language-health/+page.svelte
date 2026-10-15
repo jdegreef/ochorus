@@ -206,6 +206,17 @@
 										>{fmt(l.reading_elsewhere)} reader{l.reading_elsewhere === 1 ? '' : 's'} reading in another language →</a
 									>
 								{/if}
+								{#if l.level1}
+									<a
+										href="/admin/languages/{l.code}#sec-targets"
+										class="mt-1.5 inline-block rounded-full border px-2 py-0.5 text-micro tabular-nums hover:underline {l.level1
+											.done >= l.level1.total
+											? 'border-accent-soft-border text-accent'
+											: 'border-border text-muted'}"
+										title="Works from the named Level 1 set that {l.name} has published"
+										>Level 1: {fmt(l.level1.done)}/{fmt(l.level1.total)} →</a
+									>
+								{/if}
 							</div>
 							<div class="flex shrink-0 items-start gap-3">
 								<!-- Eight weeks of daily scores and the change since a week ago,

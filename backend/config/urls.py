@@ -49,6 +49,7 @@ from library.admin_views import (
     AdminLanguageManualView,
     AdminLanguageReadinessView,
     AdminLanguageSettingsView,
+    AdminLanguageTargetsView,
     AdminLanguageThresholdsView,
     AdminLanguageWantedView,
     AdminManualView,
@@ -297,6 +298,13 @@ urlpatterns = [
         "api/admin/languages/<str:code>/wanted/",
         AdminLanguageWantedView.as_view(),
         name="admin-language-wanted",
+    ),
+    # This language against the named Level 1 content targets
+    # (library.content_targets), every item with its state.
+    path(
+        "api/admin/languages/<str:code>/targets/",
+        AdminLanguageTargetsView.as_view(),
+        name="admin-language-targets",
     ),
     # Identity (names, Bible, glossary) — refused for repo-defined languages,
     # whose rows the deploy re-asserts.

@@ -1,0 +1,134 @@
+{
+ "kind": "book",
+ "slug": "orthodoxy-teens",
+ "language": "fr",
+ "note": [
+  "The English teen edition quotes the KJV in each chapter's epigraph; every French epigraph is Louis Segond (1910) verbatim (only French spacing before : ; ! added, a final « ; » or « : » closed with a full stop), and the “(KJV)” label was dropped as in a-retrospect-teens.fr. Where the KJV quotes only part of a verse, the French quotes the matching Segond span (Jeremiah 6:16 without its last clause, Genesis 2:17 up to « du mal », Romans 12:2 first half, Nehemiah 8:10 last clause opened with « … »); Matthew 18:3 keeps Segond's « Je vous le dis en vérité » because the clause cannot start mid-sentence.",
+  "Psalm 19:1 (English numbering) is Psaume 19:2 in Segond, so the ch. 5 epigraph cites « Psaume 19:2 » and the reading suggestion « Psalm 19:1–6 » becomes « Psaume 19:2–7 »; the reference row keeps the English number.",
+  "All Chesterton quotations are rendered fresh in French (none is taken from a published French translation of Orthodoxy); puns were re-made rather than translated: « tout perdu, excepté sa raison » (lost everything except his reason), « laisser son époque n’en faire qu’à sa tête ; le difficile, c’est de garder la sienne » (let the age have its head / keep one's own), « À cheval ailé donné, on ne regarde pas les dents » (winged horse in the mouth), lévitation/« légèreté » (levitation/levity), « se prennent à la légère », and « la petite vitrine du païen » for “the small publicity of the pagan”. Reviewer: check these read as natural French wit.",
+  "Children's “Do it again!” is « Encore ! Recommence ! » and God's word to the sun is « Recommence ! » (also the ch. 5 title); the reader is addressed with « tu » as in the other teen editions, while Chesterton's generic “you” inside his quotations is « on » or « vous ». Title « Orthodoxie (Pour ados) » is 22 characters.",
+  "AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Jeremiah 6:16",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 3:5",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 3:7",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 1:52",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 2
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 10
+  },
+  {
+   "reference": "Psalm 19:1",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Genesis 2:16-17",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Genesis 2:16-17",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 5
+  },
+  {
+   "reference": "Romans 5:8",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 5:8",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 16:25",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 16:25",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 7
+  },
+  {
+   "reference": "Jude 3",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Jude 3",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Nehemiah 8:10b",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

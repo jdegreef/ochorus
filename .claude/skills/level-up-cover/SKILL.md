@@ -55,6 +55,13 @@ the picture:
   each object, filter `isPublicDomain && classification=="Paintings" &&
   primaryImage`. Still fine when you know the subject noun; weak for "find me a
   good landscape". See memory `met-api-pd-art-sourcing`.
+  **The old `/public/collection/v1/search` was RETIRED 2026-10-01** (it answers
+  with a JSON message): use `/public/collection/v1.1/search`, paginated by
+  `offset`/`limit`. Object fetches (`/v1/objects/<id>`) still work.
+- **Band layout shows only the LOWER ~45% of the ground** (Spurgeon, 2026-10-13):
+  judge `focus` on the composed twin, not the painting — a subject in the upper
+  half (Constable's spire, Lhermitte's sunset) only shows if it sits low, and
+  figures crop to torsos. `focus` moves the crop sideways only.
 
 - **Wikidata** (`wikidata`, added 2026-09-29 for Corrie ten Boom's Ruisdael *View
   of Haarlem*) — the escape hatch for a painting none of the three hold (the Dutch
@@ -117,7 +124,13 @@ its entry; change the entry's artwork or `focus` and the next run redraws it
 (`library/art_sources.py` records each painting's recipe, and a gate fails a
 painting whose entry moved without one). `--recrop` redraws regardless. It refuses a slug not in
 `CURATED`. If it reports twins redrawn **outside** your works, their inputs
-really changed — look before committing. Needs `frontend/node_modules` and Node
+really changed — look before committing. If step 4 **refuses** because it would
+repoint another work's rows, do NOT hand-revert or commit them: the generator
+and that work's fixture disagree, so settle which is wrong in its own PR
+(`CoverAssetPlanTests` should already be failing on main — the `en-modern`
+rows of `humility-2`/`the-inner-chamber` were this, 2026-10-10: the generator
+read "English" as `language == "en"`; `covers.wears_designed_english` is the
+one rule now). Needs `frontend/node_modules` and Node
 22 on PATH. **Run `npm ci` in the worktree — don't symlink the shared checkout's
 `node_modules`**: it lags `main`'s deps and `og:covers` dies `ENOENT … @fontsource/…`
 (Batch 17, 2026-09-27).
@@ -125,6 +138,18 @@ really changed — look before committing. Needs `frontend/node_modules` and Nod
 **Read THIS file from `origin/main`** (`git show origin/main:.claude/skills/level-up-cover/SKILL.md`)
 if you loaded it from the shared checkout — that copy is a stale detached HEAD and
 still describes the old hand-run pipeline, not `paint_covers.py`.
+
+**Then export the art credits** — `paint_covers` does NOT do this, and every new
+`CURATED` entry changes them:
+
+```bash
+cd backend && uv run python scripts/export_art_credits.py
+```
+
+It rewrites `backend/library/data/art_credits.json` and
+`frontend/static/covers/art/credits.json` (the home hero's gallery label); commit
+**both**. Re-run it after every `git merge`/`rebase` of `origin/main` too — see
+gotcha **H**.
 
 `cover_url` is **NOT create-only** in `seed_books` (`CREATE_ONLY_FIELDS =
 {source_type, is_published}`), so the fixture edit reaches prod on deploy — **no
@@ -135,8 +160,8 @@ data migration.** Verify covers by reading the og twin PNGs (`covers/<slug>.png`
 
 Diff must be **only** this batch's slugs + `curated_art.py` + `art_sources.py`
 (build_curated_covers records each painting's `crop_recipe` here — expected, not
-stray) + `art_scrim.py` + `coverScrim.ts` + `og-manifest.json` (+ an
-`AUTHOR_STYLE` line if you added one).
+stray) + `art_scrim.py` + `coverScrim.ts` + `og-manifest.json` + the two
+`art_credits.json`/`credits.json` exports (+ an `AUTHOR_STYLE` line if you added one).
 **Never hand-edit `og-manifest.json`** — `coverOgManifest.test.ts` now fails an
 entry that is out of order or duplicated (a hand-appended French card once was
 both, and every later run re-sorted it into someone else's PR). If a twin is
@@ -256,7 +281,8 @@ prerendered pages reference it.
   sessions' frontend PRs also undeployed). Not your PR. It self-heals as the queue
   clears, else Render dashboard → ochorus-web → Deploy latest commit (user-only).
 - **E · per-language plates** *(automated: `paint_covers` deletes every `<slug>.svg`
-  in every dir, and `build_cover_assets` repoints every edition row)* — a translated
+  in every dir, and `build_cover_assets --works` repoints every edition row of
+  these works — and refuses if another work's row would move)* — a translated
   plate book has `covers/<lang>/<slug>.svg` too, and each must go. The **plate
   files are the authoritative edition list** — a quick fixture-language scope can
   under-report (an `enchiridion.es` edition surfaced only via `es/enchiridion.svg`),
@@ -277,6 +303,15 @@ prerendered pages reference it.
   on purpose"). If nothing survives that filter, close the PR as superseded rather
   than rebase it. (PR #2482, curated-art-batch-3, closed superseded 2026-09-18: 14/21
   already live, 5 `is_published:false`, the last 2 deferred.)
+- **H · stale art-credit export** — CI fails
+  `library.tests_art_credits.ArtCreditExportTests.test_committed_credits_match_the_manifest`
+  ("art_credits.json is stale"). New `CURATED` paintings in `curated_art.py` /
+  `art_sources.py` without a re-export. Fix: `cd backend && uv run python
+  scripts/export_art_credits.py`, commit `backend/library/data/art_credits.json` AND
+  `frontend/static/covers/art/credits.json`. **After merging/rebasing `origin/main`
+  into a cover branch, RE-RUN it** — sibling cover PRs add credits too, so a clean
+  merge of the two JSON files is still stale against the merged `curated_art.py`.
+  (#6080 Spurgeon plates and #6085 diverse voices both hit it, 2026-10-13.)
 
 - **EPUB-bundled covers must follow a repaint** (since #4261, 2026-09-28).
   `backend/library/export_covers/<slug>.<lang>.png` is a byte-exact copy of the
@@ -297,6 +332,16 @@ prerendered pages reference it.
   tuner. Still design for it: keep the region where any edition's words land a rich
   mid-tone, bright elements above the title or below the lowest subtitle, clear of
   the mark box.
+
+- **`tune_art_scrim` re-tunes OTHER books whose ground has drifted.** It re-measures
+  every `covers/art/*.jpg`, so a book whose committed value no longer matches its
+  measurement changes too (seen 2026-10-13: `he-holds-my-tomorrows` 0.70→0.65), and the
+  next `og:covers` redraws all its per-language twins and manifest rows. Not your
+  change — scope it out: restore its lines in `art_scrim.py`/`coverScrim.ts` to main's
+  value, `git checkout origin/main -- frontend/static/covers/og-manifest.json <its
+  twins>`, re-run PLAIN `npm run og:covers`, and check that
+  `git diff --unified=0 -- …art_scrim.py …coverScrim.ts …og-manifest.json` names only
+  your slug.
 
 ## Original illustrated grounds (Ochorus Originals — kids/teens) — SHIPPED tier
 
@@ -327,7 +372,9 @@ NOT put it in `CURATED` — that would make the museum-provenance table lie
 `ORIGINAL_GROUND` with its `shasum -a 256` → delete plate svgs
 (`find covers -regex '.*/<slug>\.svg' -delete`, incl `lg/ sw/`) → `build_cover_assets.py`
 (repoints EVERY lang row + webp) → `npm run og:covers` → `tune_art_scrim.py` →
-`npm run og:covers` again (redraws the cards whose scrim moved). Same
+`npm run og:covers` again (redraws the cards whose scrim moved) → `npm run covers:bars`
+(an Original ground is a NEW ground too — `groundBars.test.ts` fails CI without it, and
+only the FULL vitest run catches it; fire-against-the-dark #6060). Same
 tail as steps 2–3. `growing-in-wisdom` + teen flagships are next, same tier, no new
 machinery.
 
@@ -390,7 +437,28 @@ Chrome, downscale with Pillow:
   --window-size=600,800 --screenshot=out@2x.png "file://$PWD/ground.html"
 python3 -c "from PIL import Image; Image.open('out@2x.png').convert('RGB').resize((600,800),Image.LANCZOS).save('ground.jpg',quality=90)"
 ```
-No cairosvg/rsvg/inkscape on this machine; Pillow + Chrome are present. Chrome CLI
+No cairosvg/rsvg/inkscape on this machine; Pillow + Chrome are present.
+**Commit the generator with the grounds** (`backend/scripts/original_grounds/`,
+2026-10-13). Real Questions 1 and They Were Young 1–2 shipped without their
+source, so their later volumes had to re-measure the mark from Book 1's pixels.
+`originals_series.py` (RQ 2–3, TWY 3–4, Tell Me the Story 1–7, The Big Story)
+and `teen_objects.py` reproduce the shipped jpgs byte-for-byte; a new volume
+adds an entry and runs `<script> OUTDIR <slug>`. Young-layout (`young`) covers
+set the byline at ~y115 and the volume ring at ~y300: a sky emblem belongs in
+y150–265, or it collides with the byline. A light low sky behind the mid-cover
+type costs a 0.95× scrim; hold the dark until ~60% down. Covers of export-pilot
+editions also need `library/export_covers/<slug>.<lang>.png` re-copied from the
+new twin, or `tests_book_export` fails.
+**zsh does not word-split `$VAR`**: `tune_art_scrim.py $SLUGS` passes ONE
+argument and silently tunes nothing — spell the slugs out.
+Headless Chrome can exit NON-ZERO after writing the screenshot ("Teardown watchdog
+expired", ~10 s per call) — check that the png exists rather than the return code.
+**Take each concept from the edition's OWN text, not the adult book's.** The teen
+retellings (2026-10-13) drop famous images: grep the teen fixture for the image
+before drawing it (four of fourteen first concepts — Kempis's "little book",
+Meyer's harbour lights, Antony's baskets, a running track for Torrey — were not in
+the teen text and were redrawn from what is: the shut cell door, lights as a night
+train nears a town, the gold in the road, a lantern on the next stepping stone). Chrome CLI
 `--screenshot` is fine on a STATIC local file (the memory-noted hang is Vite-HMR-only).
 For a numbered series, hold hero/trail/frame/type CONSTANT and drive each book from a
 `palette` dict + ONE horizon-backdrop SVG string (Brave for God: dawn hills → sea+boat
@@ -428,6 +496,10 @@ honours the author — Duncanson (the pre-eminent Black American landscapist) fo
 AME pioneers Lee and Allen. Each sub-batch stacks a new `curated_art` Batch; land
 them in order and union-resolve the `curated_art`/scrim/manifest overlap on rebase.
 
+- **A scene must clear the SUBTITLE band too (y519–543), not just the title.** Every series volume has a subtitle, so a scene element taller than ~y548 puts the white subtitle on top of it (Tell Me the Story 2's water walls, 10-14). Keep scenes in y≈550–640; make a subject read by SHAPE at that height (narrow towers, small figures crossing) rather than by size. And a series' byline band (y102–130) caps the sky emblem: keep its top ≥ ~y145.
+
+- **Order for a NEW book's original ground (Tell Me the Story 8–9, 10-14):** `build_cover_assets` reads the committed FIXTURES (`book_editions()`), not the DB — serialize the book's fixture FIRST or it writes 0 variants for the new slug. Then `tune_art_scrim`: a full run once silently omitted the new slug — always `grep <slug> library/art_scrim.py` after, and if missing run `tune_art_scrim.py <slug>`. Only THEN `npm run og:covers` (the twin bakes the scrim; drawing it before the tune leaves a stale twin). Set `cover_url` straight to `/covers/art/<slug>.jpg` in the build command — no plate, so no svg to delete.
+
 ## Done so far
 Murray #1701 (5), Bounds #1745 (6), Nee #1768 (1), Spurgeon #1771 (4), Torrey #1858 (3),
 Murray (2026-09-26; `school-of-prayer` plate → Français olives, 9 langs; `holy-in-christ`
@@ -455,6 +527,9 @@ Remaining (pre-Batch-19 note): the Puritan/English devotional group
 (Owen, Sibbes, Law, Edwards, Meyer, Guyon, Bounds straggler). Carmichael's
 `if` and all four Watchman-Nee titles are `is_published:false` — skip. Cyprian was
 on `feature/cyprian-treatises` — check first.
+Originals (vector recipe, ORIGINAL_GROUND): Brave for God 1–4 #2877, growing-in-wisdom
+#2905, fire-against-the-dark #6060 (2026-10-13 — novel cover; subject + lamp glow kept
+bottom-LEFT, outside the centred subtitle/mark text, so no band fails; 0.30× floor).
 
 **REVERSING A "deliberately absent" book** (Susanna Wesley, #2891): a book can be
 documented in the `curated_art.py` docstring AND guarded by a test as

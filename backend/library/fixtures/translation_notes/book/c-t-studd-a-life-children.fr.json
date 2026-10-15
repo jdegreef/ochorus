@@ -1,0 +1,168 @@
+{
+ "kind": "book",
+ "slug": "c-t-studd-a-life-children",
+ "language": "fr",
+ "note": [
+  "Each chapter's opening blockquote quotes a King James verse cited by chapter only (“— from James 1”), so the French uses the Louis Segond 1910 wording with the same loose citation (« — d’après Jacques 1 », « — d’après le Psaume 126 »), following john-hyde-a-life-children.fr. Rows marked mined are contiguous Segond excerpts changed only by French spacing and capitalisation: a capital added where the excerpt starts mid-verse (James 1:17, Romans 10:14 drops the leading « Et »), and Segond's poetic line-initial capitals lowered in Psalm 126:5 (« moissonneront ») and Romans 10:15 (« les pieds », « de ceux »). Psalm 126:5 has the same number in Segond.",
+  "Self-rendered: Hebrews 11:8 (the English elides the middle with an ellipsis, so the Segond words are stitched around « … ») and every body echo, which is retold in the children's register. Segond's Acts 16:31 has no « Christ », matching the shorter Segond text rather than the KJV.",
+  "Cricket terms use French cricket usage, glossed once for children: runs → « courses » (« c’est-à-dire 118 points »), wickets taken → « éliminé cent batteurs », bowler → « lanceur », batsman → « batteur »; « the Ashes » is kept as « les Ashes » with the gloss « les Cendres ». Pounds stay « livres »; Mr Moody → « M. Moody »; China Inland Mission → « Mission à l’intérieur de la Chine », Cambridge Seven → « les Sept de Cambridge », Heart of Africa Mission → « Mission du cœur de l’Afrique ».",
+  "The two lines Studd loved (“Only one life, ’twill soon be past, / Only what’s done for Christ will last”) are given in a plain French rendering, « Une seule vie, bien vite passée ; seul ce qui est fait pour Christ durera », not rhymed; a reviewer may prefer a rhyming version. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "James 1:17a",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "James 1:17",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 5
+  },
+  {
+   "reference": "Acts 16:31b",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 3:36a",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 6
+  },
+  {
+   "reference": "John 11:4",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 6:8b",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 6
+  },
+  {
+   "reference": "Acts 20:35b",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 19:21",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 2
+  },
+  {
+   "reference": "Matthew 13:44",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 5
+  },
+  {
+   "reference": "Acts 20:35b",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 6
+  },
+  {
+   "reference": "Ecclesiastes 4:9",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ecclesiastes 4:9",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 6
+  },
+  {
+   "reference": "Psalm 126:5",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 126:5",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 6
+  },
+  {
+   "reference": "Romans 10:14c",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 10:14",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 6
+  },
+  {
+   "reference": "Hebrews 11:8",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 0
+  },
+  {
+   "reference": "Hebrews 11:8",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 6
+  },
+  {
+   "reference": "Romans 10:15b",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 10:15b",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 6
+  },
+  {
+   "reference": "2 Timothy 4:7",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

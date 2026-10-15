@@ -107,6 +107,14 @@ const names = Object.fromEntries(
 // asked for at page load: the hub would otherwise fetch — and inline into its
 // HTML — every language's whole article list just to learn which are empty.
 // Fails loudly like the rest: a wrong list would advertise empty hubs.
+// Published-book counts for the footer's language tiles. Optional: an API
+// from before the field sends none, and the tiles then show names only.
+const books = Object.fromEntries(
+	payload
+		.filter((row) => Number.isInteger(row?.book_count))
+		.map((row) => [row.code, row.book_count])
+);
+
 const articleLocales = [];
 for (const code of codes) {
 	let list;
@@ -144,6 +152,9 @@ writeFileSync(
 		'// prefers these over the hand-maintained map in lang.svelte.ts, so\n' +
 		'// correcting a name in the admin reaches the picker on the next build.\n' +
 		`export const LIVE_LOCALE_NAMES: Record<string, string> = ${JSON.stringify(names)};\n\n` +
+		'// Each live language\'s published-book count — the footer\'s language\n' +
+		'// tiles. Empty when the API predates the field; the tiles then show names.\n' +
+		`export const LIVE_LOCALE_BOOKS: Record<string, number> = ${JSON.stringify(books)};\n\n` +
 		'// The live languages with at least one published article — the Articles\n' +
 		'// hub\'s hreflang set (routes/articles).\n' +
 		`export const ARTICLE_LOCALES: readonly string[] = ${JSON.stringify(articleLocales)};\n`,

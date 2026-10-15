@@ -42,6 +42,7 @@ import argparse
 import io
 import sys
 from pathlib import Path
+from typing import NamedTuple
 
 BACKEND = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BACKEND))
@@ -51,9 +52,9 @@ from library.covers import (  # noqa: E402
     COVER_WIDTHS,
     RASTER_SUFFIXES,
     art_url,
-    keeps_english_designed,
     shares_a_ground,
     variant_url,
+    wears_designed_english,
 )
 from library.designed_covers import DESIGNED_BY_SLUG  # noqa: E402
 
@@ -96,13 +97,26 @@ def write_variants(source: Path, dry_run: bool) -> list[str]:
     return written
 
 
-def main() -> int:
-    ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--dry-run", action="store_true", help="Report; write nothing.")
-    args = ap.parse_args()
+class Repoint(NamedTuple):
+    """One edition row whose `cover_url` disagrees with what it should wear."""
 
-    wrote: list[str] = []
-    repointed = 0
+    path: Path
+    slug: str
+    language: str
+    current: str
+    wants: str
+
+
+def plan() -> tuple[list[Repoint], set[Path]]:
+    """The rows to repoint and the rasters to build variants for — reads only.
+
+    Split from `main` so a test can hold the committed fixture to it: on a
+    healthy tree the repoint list is EMPTY, so a cover run for one work leaves
+    every other work's fixture alone. When it was not (the `en-modern` rows,
+    2026-10-10), every PR that painted a cover carried a diff on two books it
+    never touched.
+    """
+    repoints: list[Repoint] = []
     sources: set[Path] = set()
 
     for path, slug, language, fields in book_editions():
@@ -113,21 +127,19 @@ def main() -> int:
         # cover_url from the fixture every deploy.
         if shares_a_ground(slug):
             url, rel = art_url(slug)
-            # THE ENGLISH ROW IS THE EXCEPTION, and the reason the two tiers are
-            # not simply merged here. A derived ground was cut FROM the English
-            # edition's hand-made cover, which that edition goes on wearing
-            # (library/designed_covers.py); repointing it at the ground is
+            # THE ENGLISH ROWS ARE THE EXCEPTION, and the reason the two tiers
+            # are not simply merged here. A derived ground was cut FROM the
+            # English edition's hand-made cover, which that edition — and the
+            # Modern English one, whose words are English too — go on wearing
+            # (library/designed_covers.py); repointing them at the ground is
             # precisely the loss this tier exists to prevent. A curated work has
             # no such cover, and every one of its languages takes the painting.
-            wants = (
-                DESIGNED_BY_SLUG[slug]
-                if keeps_english_designed(slug) and language == "en"
-                else url
-            )
+            designed = wears_designed_english(slug, language)
+            wants = DESIGNED_BY_SLUG[slug] if designed else url
             if fields.get("cover_url") != wants:
-                if not args.dry_run:
-                    persist_field(path, "cover_url", wants)
-                repointed += 1
+                repoints.append(
+                    Repoint(path, slug, language, fields.get("cover_url") or "", wants)
+                )
             painting = COVERS / rel
             if not painting.exists():
                 raise SystemExit(
@@ -162,7 +174,7 @@ def main() -> int:
             # The English designed cover is a raster a reader downloads too, and
             # this branch `continue`s past the tier below that would have
             # collected it — so it would have shipped without its variants.
-            if keeps_english_designed(slug) and language == "en":
+            if designed:
                 sources.add(COVERS / wants.removeprefix("/covers/"))
             continue
         cover = fields.get("cover_url") or ""
@@ -172,13 +184,65 @@ def main() -> int:
                 raise SystemExit(f"cover_url points at a missing file: {cover}")
             sources.add(source)
 
+    return repoints, sources
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--dry-run", action="store_true", help="Report; write nothing.")
+    ap.add_argument(
+        "--works",
+        nargs="+",
+        metavar="SLUG",
+        help=(
+            "Repoint only these works' rows, and refuse — writing nothing — if "
+            "any OTHER work's row would move. What `paint_covers` passes."
+        ),
+    )
+    args = ap.parse_args()
+
+    repoints, sources = plan()
+    if args.works:
+        known = {slug for _, slug, _, _ in book_editions()}
+        unknown = sorted(set(args.works) - known)
+        if unknown:
+            raise SystemExit(f"--works names no edition: {', '.join(unknown)}")
+    # A RUN FOR ONE WORK MUST NOT EDIT ANOTHER. With nothing else broken that
+    # list is empty (`CoverAssetPlanTests` holds main to it); when it is not,
+    # either the generator or another work's committed row is wrong, and
+    # quietly rewriting it under a PR about a different book is how it got
+    # reverted by hand instead of fixed. Refuse before writing anything.
+    if args.works:
+        elsewhere = [r for r in repoints if r.slug not in args.works]
+        if elsewhere:
+            listed = "\n".join(
+                f"    {r.slug} [{r.language}]: {r.current} -> {r.wants}" for r in elsewhere
+            )
+            raise SystemExit(
+                f"refusing: this run is for {', '.join(args.works)}, but it would "
+                f"repoint {len(elsewhere)} row(s) of other works:\n{listed}\n"
+                "Either their committed cover_url or this script's rule is wrong — "
+                "settle which in its own change, not in this one."
+            )
+
+    for r in repoints:
+        if not args.dry_run:
+            persist_field(r.path, "cover_url", r.wants)
+
+    wrote: list[str] = []
     for source in sorted(sources):
         wrote += write_variants(source, args.dry_run)
 
     verb = "would write" if args.dry_run else "wrote"
-    print(f"{verb} {len(wrote)} variants for {len(sources)} covers · repointed {repointed} rows")
+    moved = "would repoint" if args.dry_run else "repointed"
+    print(
+        f"{verb} {len(wrote)} variants for {len(sources)} covers · "
+        f"{moved} {len(repoints)} rows"
+    )
     for name in wrote[:8]:
         print(f"    {name}")
+    for r in repoints:
+        print(f"    {r.slug} [{r.language}] -> {r.wants}")
     return 0
 
 

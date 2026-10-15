@@ -1,0 +1,290 @@
+{
+ "kind": "book",
+ "slug": "grace-abounding-teens",
+ "language": "fr",
+ "note": [
+  "Every KJV epigraph is replaced by the verbatim Louis Segond (1910) text with the (KJV) tag dropped, and the attribution swaps the KJV sentence for the Segond sentence used by a-retrospect-teens.fr. The 2 Corinthians 12:9 epigraph starts at « Ma grâce te suffit » (the English's “And he said unto me” is omitted), and Psalm 77:7-9 is cited in Segond numbering as Psaume 77:8-10, without its « — Pause. »",
+  "Bunyan's own sentences are rendered freshly into a slightly elevated French, not taken from any published French translation. The “My grace is sufficient” / “for thee” device is recast: the fragment that came first is « Ma grâce suffit », and the missing piece is the little word « te » (« à toi »). The sermon's “My love” (Song of Solomon 4:1) is « Mon amour » / « Tu es mon amour », not Segond's « mon amie », and Ecclesiasticus 2:10 (not in Segond) is self-rendered.",
+  "Names and terms: the game of “cat” is « le jeu du bâtonnet »; Francis Spira appears under his Italian name, Francesco Spiera; Ranters and Bedlam are kept with a gloss; OCD is « TOC »; “counsellor” is « psychologue »; “half a mile” is « quelque huit cents mètres ». The two books from the wife's dowry keep their English titles in italics with a French gloss. The original title is given as « La grâce abondante envers le premier des pécheurs », and The Pilgrim's Progress as « Le Voyage du pèlerin », as on the site.",
+  "As in a-retrospect-teens.fr, narration uses the passé simple and the reader is addressed as « tu ». The book title « La grâce abondante (Pour ados) » is 31 characters long, which is over the usual 28. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 55:7",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Samuel 16:7",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 7:14",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 14:22",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 9:16",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 1,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ecclesiasticus 2:10",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 2
+  },
+  {
+   "reference": "Luke 14:23",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 5,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 14:22b",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 5,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 14:22b",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 14:22b",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 8:38-39",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Song of Solomon 4:1",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 4
+  },
+  {
+   "reference": "Romans 8:39",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 22:31-32",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 22:31a",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 1,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Colossians 1:20",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 5,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hebrews 12:16",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 5,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hebrews 12:17",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 5,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 John 1:7b",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 77:7-9",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 12:9a",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 John 5:17",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 1
+  },
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 2,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 12:9a",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 5
+  },
+  {
+   "reference": "2 Corinthians 12:9a",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 6:37",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 8
+  },
+  {
+   "reference": "2 Corinthians 12:9a",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Deuteronomy 19:4",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 1
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 3,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 1:30b",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 4,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 3:24",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 13:1",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 13:1",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 5:11",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 6
+  },
+  {
+   "reference": "Romans 5:20b",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Job 1:9",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 4
+  }
+ ]
+}

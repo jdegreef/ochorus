@@ -288,6 +288,16 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'brave-for-god-2': 'young',
 	'brave-for-god-3': 'young',
 	'brave-for-god-4': 'young',
+	'tell-me-the-story-1': 'young',
+	'tell-me-the-story-2': 'young',
+	'tell-me-the-story-3': 'young',
+	'tell-me-the-story-4': 'young',
+	'tell-me-the-story-5': 'young',
+	'tell-me-the-story-6': 'young',
+	'tell-me-the-story-7': 'young',
+	'tell-me-the-story-8': 'young',
+	'tell-me-the-story-9': 'young',
+	'fire-against-the-dark': 'young',
 	'hurlbuts-life-of-christ': 'young',
 	'rooted-1': 'young',
 	'rooted-2': 'young',
@@ -374,7 +384,21 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	// rather than their adult author's century.
 	'grace-abounding-teens': 'originals',
 	'confessions-teens': 'originals',
-	'all-of-grace-teens': 'originals'
+	'all-of-grace-teens': 'originals',
+	'absolute-surrender-teens': 'originals',
+	'foxes-book-of-martyrs-teens': 'originals',
+	'how-to-succeed-in-the-christian-life-teens': 'originals',
+	'life-and-diary-of-david-brainerd-teens': 'originals',
+	'life-of-antony-teens': 'originals',
+	'mortification-of-sin-teens': 'originals',
+	'orthodoxy-teens': 'originals',
+	'pensees-teens': 'originals',
+	'the-bruised-reed-teens': 'originals',
+	'the-imitation-of-christ-teens': 'originals',
+	'the-practice-of-the-presence-of-god-teens': 'originals',
+	'the-pursuit-of-god-teens': 'originals',
+	'the-secret-of-guidance-teens': 'originals',
+	'the-way-to-god-teens': 'originals'
 };
 
 /**

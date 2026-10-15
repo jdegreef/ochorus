@@ -1,0 +1,18 @@
+{
+ "kind": "bio",
+ "slug": "a-b-simpson",
+ "language": "vi",
+ "job_issue": 5947,
+ "references": [
+  {
+   "reference": "Matthew 28:18",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "self_rendered",
+   "block_index": 11
+  }
+ ]
+}

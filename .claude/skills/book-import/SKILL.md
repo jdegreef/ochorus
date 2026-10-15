@@ -955,6 +955,39 @@ dropped; chapters under 120 words are dropped as stubs.
   running headers + page numbers + markers, NOT prose). Verse/hymn reflows to
   prose paragraphs — words preserved, line breaks flattened (acceptable).
   *(a-brand-plucked-from-the-fire, 2026-09)*
+- **An Archive scan too blotchy for any OCR → proof it LINE BY LINE against
+  the page images and COMMIT THE PROOF as the editorial source.** Zilpha Elaw's
+  *Memoirs* (1846, `MinisterialTravelsAndLaboursOfMrs.ZilphaElaw`) is set in a
+  bold, ink-filled face (b/h, e/c, rn/m, 1/I, dropped letters on every line).
+  What worked: two OCR passes (archive.org's layer + a local macOS Vision OCR of
+  each scan) merged into a per-page packet of numbered PRINTED lines with
+  disagreement flags; each page proofed against its image into
+  `data/<slug>/pages.txt` — one line per printed line, prefix `¶ ` (indented
+  paragraph) / `  ` (continuation) / `V ` (verse), `## <page>` markers, 1846
+  spelling and line-end hyphens as printed, `{word?}` for an ink-blotted
+  reading. `build_zilpha_elaw` then reflows (close a line-end hyphen unless the
+  hyphenated form occurs mid-line elsewhere in the book or the head is in a
+  small keep-set like `self-`), settles each `{…?}` from a READINGS table,
+  fixes printer's errors from an explicit CORRECTIONS table (as-printed,
+  corrected, expected count — asserted, so a proof edit can't silently stop a
+  fix), splits at anchor phrases, curls BOTH double marks (`quote_marks.convert`)
+  and single marks (open only at a line start / after a space or bracket, so
+  "Mr. W——'s" stays an apostrophe). Lessons: (1) **check the LAST page of the
+  scan first** — this one stops mid-sentence at p. 168 of 172; the missing
+  pages came from the Google Books copy of the same edition (a 1000×1500
+  viewport screenshot holds one whole page; upscale ×3 and Vision-OCR it, then
+  read it against the image — the OCR still invented `i` for a `"`, `.` for a
+  space, `belier-` for `believ-`). (2) A book with NO chapters gets editorial
+  chapters at narrative turns (new period / new field of travel), titled
+  plainly, and the attribution SAYS the divisions are editorial. (3) Its
+  page-long paragraphs are faithful: baseline the `lost-paragraphing` finding,
+  don't invent breaks. (4) Run a quote-balance pass per paragraph after the
+  build: the printer left four quotations unclosed and opened one with `'` and
+  closed it with `"` — fix each from the image, as a listed correction.
+  (5) Long verbatim source text in the model's OWN output trips an API content
+  filter that kills the run — keep the proofing diff-only (patch files, scripts
+  that print counts and short snippets), never echo pages back.
+  *(memoirs-of-mrs-zilpha-elaw, 2026-10)*
 - **An Archive scan whose chapters are headed by a BARE ROMAN NUMERAL (no
   "CHAPTER" word) → build_<name> that detects heads structurally, because the
   running header IS the chapter title.** Bounds's *Possibilities of Prayer*
@@ -1262,7 +1295,7 @@ into the catalog. Instead:
   `create_defaults` only. Wrap `handle()` in `@transaction.atomic` and raise
   `CommandError` (not `return`) on a short body, so an abort can't leave a
   partial book — and inside an `except` clause chain it `... from None`, or ruff
-  B904 fails CI. `sort_order` isn't derivable from `BOOKS` — call `content_fixtures.book_sort_order(SLUG)` (its committed value, else one past the committed max), NEVER `Max("sort_order")+1` over the dev DB: a fresh worktree's DB may hold only your book, so that ships `sort_order` 1 (the Pensées did).
+  B904 fails CI. `sort_order` isn't derivable from `BOOKS` — call `content_fixtures.book_sort_order(SLUG)` (its committed value, else one past the committed max), NEVER `Max("sort_order")+1` over the dev DB: a fresh worktree's DB may hold only your book, so that ships `sort_order` 1 (the Pensées did, then Elaw's Memoirs in #6003). `tests_fixture.BookSortOrderTests` now fails on either: a `Max("sort_order")` in any `build_*.py`, or a work outside the five pre-2026-10 front-of-library slugs at `sort_order` ≤ 1.
 - **Then run the standard new-book finish:** serialize the row to the fixture
   (Django serializer, `indent=1`, natural keys — NOT `json.dump(indent=1)`,
   which indents the top-level list and every sibling fixture does not);
@@ -2126,6 +2159,57 @@ gates to pre-check: colon-subtitle chapter titles ("Name: The Hook") must satisf
 `QuoteStyleTests` (consistency) passes. For a CHILDREN's collection, short
 chapters (~350–450 words) read better than long ones. `build_brave_for_god` (six
 young-readers hero lives) is the model. *(brave-for-god, 2026-09)*
+
+**A children's Original WITH end-of-chapter questions** (`build_tell_me_the_story`
+is the model — the Markdown subset of `build_rooted.parse` plus a
+`### Talk about it together` block of `- Q:` / `  A:` lines lifted into
+`Chapter.study_questions`). Gotchas that each cost a test run: (1) `tests_fixture`
+wants questions on EVERY chapter or none — the Introduction needs its three too;
+(2) key the lifted questions by `_single_marks(title)`, as `parse` curls the
+title's apostrophe, or "The Snake's Trick" silently gets none; curl the Q/A text
+the same way; (3) `about_html` may not contain `<em>` (`tests_about_work`) — use
+quotation marks for a hymn/book title; (4) `book_meta/en.json` ≤125 chars;
+(5) `generate_covers` draws a BLANK plate until the book is a topic member in the
+dev DB — add it to `topic_seed.py`, run `seed_topics`, THEN generate; (6) the repo
+has no BSB text: fetch `https://bible.helloao.org/api/BSB/<BOOK>/<ch>.json` into
+the scratchpad and check every verse card and every `"…" (Ref)` quotation by
+script (normalise case/punctuation, split on `...`); (7) a book's `qa` needs 6–10 entries (`BookQaShapeTests`) — a later volume trimmed to five fails; (8) a verse card whose speech is broken by a speaker tag ("'Do not be afraid,' Elisha answered, 'for…'") must keep the tag — dropping it fails the BSB check; (9) **rebasing a book PR over another book's merge:** the og-manifest "keep both" resolution truncates the earlier entry (shared trailing lines sit outside the conflict) — `git checkout origin/main -- frontend/static/covers/og-manifest.json` and rerun `npm run og:covers` instead; re-dumping `book_meta/en.json` with json.dumps also normalises other entries' spacing — revert those lines. *(tell-me-the-story, 2026-10)*
+
+## Adding illustrations to a book's chapters
+
+Chapter bodies may carry `<figure><img><figcaption></figure>` (sanitizer
+`ILLUSTRATION_SRC`). The recipe, from The Princess and the Goblin's plates:
+
+1. **Source** a PD plate set (Gutenberg `pg<N>-images.html` lists each `<img>`
+   with its plate caption as `alt`; files at `files/<N>/<N>-h/images/`). Check
+   the illustrator/date for PD status; credit them in the book's `attribution`.
+2. **Files**: `frontend/static/illustrations/<slug>/<kebab-name>.jpg` (JPEG or
+   PNG — an EPUB can't carry WebP, so a WebP picture is dropped from downloads).
+   If the edition is in `export_policy.EXPORT_EDITIONS`, run
+   `export_book <slug> --language <lang> --format epub` once: it writes the
+   copies under `backend/library/export_illustrations/` that the API's EPUB
+   reads (it can't see `frontend/static`); commit them —
+   `tests_book_export.IllustrationTests` fails while one is missing or stale.
+3. **Place** each figure as a TOP-LEVEL block right after the paragraph it
+   pictures (find it by the plate caption's words). Build the figure through
+   `clean_fragment`, with `width`/`height` (reserves the box; paged mode needs
+   it), a written `alt` describing the picture, and the plate caption.
+4. **Rederive** `body_text` + `word_count` for the touched chapters
+   (`library.text.html_to_text` / `word_count`) or the two fixture derivation
+   tests fail. Write with `content_fixtures.render_rows` (keep any trailing
+   bytes the file already had).
+5. Each figure is a top-level block, so it shifts later block indices by one:
+   `remap_marks` (every release) re-finds saved highlights within ±3 blocks —
+   keep it to about one figure between any two stretches of marked text, and
+   check `quote_seed.py` for that book's stored paragraph indices.
+6. Verify: paged + scroll + 375px in the reader; `export_book --format epub`
+   and `--format pdf` (CHROME_PATH) both show the plates.
+7. **A house-written book (built from a manuscript) places its pictures in the BUILD,
+   not by hand-editing the fixture** — or the next rebuild drops them.
+   `build_lamplighters` is the model: `VOLUMES[n]["maps"]` open Chapter 1, and
+   `PLATES_n` entries `(chapter, paragraph-opening, file, alt, caption)` are set
+   after the paragraph whose opening matches (the build fails unless exactly one
+   matches). Use curly apostrophes in alt/caption text if the book's quotes are curly.
 
 ## Two kinds of fix
 

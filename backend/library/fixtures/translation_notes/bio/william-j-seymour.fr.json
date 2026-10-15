@@ -1,0 +1,26 @@
+{
+ "kind": "bio",
+ "slug": "william-j-seymour",
+ "language": "fr",
+ "job_issue": 6039,
+ "references": [
+  {
+   "reference": "Luke 24:49",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

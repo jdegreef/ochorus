@@ -46,6 +46,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'c-s-lewis': '50% 0%', // 1957 dust-jacket photo (John S. Murray); head high — anything lower clips the crown
 	'c-t-studd': '50% 0%', // full-length cricket photo; head high at ~10% of a 0.54 plate
 	'catherine-booth': '50% 0%',
+	'catherine-ferguson': '50% 0%', // Lossing 1855 engraving (from an 1850 daguerreotype); face at ~25% of a 0.75 plate
 	'charles-finney': '50% 0%',
 	'charles-h-spurgeon': '50% 0%',
 	'charles-s-price': '50% 30%', // 1920s–30s studio portrait; near-square, so nearly inert
@@ -57,6 +58,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'david-livingstone': '50% 3%', // seated Annan photo; face high at ~25% of a 0.82 plate
 	'derek-prince': '50% 5%', // studio bust; face at ~29% of a 0.71 plate
 	'dietrich-bonhoeffer': '50% 0%', // 1939 standing figure; head high at ~15% of a 0.63 plate
+	'dora-yu': '50% 17%', // 1916 memoir frontispiece, cropped from a seated studio photo; face at ~38%
 	'dwight-l-moody': '50% 5%',
 	'e-m-bounds': '50% 2%', // 1864 photograph; face at ~32% of a 0.72 plate
 	'elisabeth-elliot': '50% 20%', // Ochorus scene (writing by lamplight), figure from behind, no face
@@ -75,6 +77,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'gladys-aylward': '50% 8%', // bust-cropped from a full-length photo; face at ~28% of a 0.74 plate
 	'gregory-the-great': '50% 0%', // Goya painting, seated; face high at ~13% of a 0.57 plate
 	'hannah-whitall-smith': '50% 0%',
+	'harriet-tubman': '50% 0%', // H. Seymour Squyer c.1885 (NPG), cropped to the upper figure; face high at ~25%
 	'helen-roseveare': '50% 8%', // 2003 bust photo; face at ~36% of a 0.82 plate
 	'hudson-taylor': '50% 20%',
 	'ignatius-of-antioch': '50% 0%', // fresco: head at ~17% of a 0.72 plate
@@ -105,6 +108,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'julian-of-norwich': '50% 8%', // Ochorus firelight illustration (imagined likeness); face at ~35% of a 0.75 plate
 	'kanzo-uchimura': '50% 15%', // c.1912 photo; face at ~37% of a 0.75 plate
 	'kateri-tekakwitha': '50% 0%', // Chauchetière's c.1690s painting cropped to the upper figure; face high at ~28%
+	'krupabai-satthianadhan': '50% 0%', // The Sketch, 1895; face at ~30% of a 0.75 plate
 	'lawrence-barham': '50% 0%', // cropped from a photo with his wife Julia; head at the top edge
 	'lemuel-haynes': '50% 0%',
 	'loren-cunningham': '50% 0%', // cropped from a group photo; face at ~22% of a 0.61 plate
@@ -113,8 +117,11 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'martin-luther': '50% 0%', // Cranach 1517 half-length; face at ~23% of a 0.64 plate
 	'martyn-lloyd-jones': '50% 50%', // square source — the crop takes the whole photo
 	'mary-slessor': '50% 3%', // seated photo; head high at ~22% of a 0.67 plate
+	'mary-stone': '50% 0%', // Burton 1918 plate, caption cropped off; face at ~30%
 	'monica-of-hippo': '50% 0%', // Gozzoli fresco, tall niche; head high at ~18% of a 0.42 plate
 	'pandita-ramabai': '50% 20%', // bust photo; face at ~30% of a 0.73 plate
+	'pastor-hsi': '50% 0%', // engraved plate, cropped to the upper figure; face high at ~15%
+	'phillis-wheatley': '50% 0%', // 1773 Poems frontispiece, cropped to the head; face at ~30%
 	'r-a-torrey': '50% 10%',
 	'rees-howells': '50% 10%', // bust photo; face at ~32% of a 0.84 plate
 	'richard-allen': '50% 37%',
@@ -132,6 +139,8 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'thomas-a-kempis': '50% 0%',
 	'thomas-watson': '50% 0%',
 	'timothy-keller': '50% 0%', // speaking pose; face high at ~19% of a 0.73 plate
+	'tiyo-soga': '50% 0%', // carte-de-visite photo; face at ~27% of a 0.75 plate
+	'virginia-broughton': '50% 0%', // 1897 engraving (Haley, Sparkling Gems); face at ~33%
 	'watchman-nee': '50% 32%',
 	'william-booth': '50% 25%',
 	'william-carey': '50% 18%', // engraved bust; face at ~30% of a 0.67 plate

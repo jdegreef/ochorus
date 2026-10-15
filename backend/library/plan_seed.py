@@ -528,6 +528,39 @@ CURATED_PLANS = [
             "samuel-ajayi-crowther-a-life-children",
         ],
     ),
+    # Advent, 1–25 December: eighteen Old Testament promise stories from Tell Me
+    # the Story Books 1–3, then Book 4's Christmas stories, so that day 24 is the
+    # birth in Bethlehem and day 25 the shepherds.
+    (
+        "tell-me-the-christmas-story",
+        "Tell Me the Christmas Story: An Advent Plan",
+        "An Advent calendar of Bible stories for children and the grown-ups who "
+        "read with them: one five-minute story a night from 1 to 25 December. "
+        "It begins with the promises God made, to Eve, to Abraham, to Moses, to "
+        "David and through Isaiah, and follows them all the way to the angel's "
+        "visit, Mary's yes, the birth in Bethlehem on Christmas Eve and the "
+        "shepherds on Christmas Day. Start on 1 December. Each story ends with "
+        "a prayer and three questions to talk about together.",
+        [
+            chapters("tell-me-the-story-1", 2, 2),  # God Makes Everything
+            chapters("tell-me-the-story-1", 4, 4),  # The Snake's Trick (Genesis 3:15)
+            chapters("tell-me-the-story-1", 7, 7),  # The Rainbow Promise
+            chapters("tell-me-the-story-1", 9, 11),  # Abram Sets Out … Sarah Laughs
+            chapters("tell-me-the-story-1", 13, 13),  # God Will Provide
+            chapters("tell-me-the-story-1", 16, 16),  # A Stairway to Heaven
+            chapters("tell-me-the-story-1", 22, 22),  # "I Am Joseph!"
+            chapters("tell-me-the-story-2", 3, 3),  # The Bush That Didn't Burn Up
+            chapters("tell-me-the-story-2", 5, 5),  # The Night of the Passover
+            chapters("tell-me-the-story-2", 7, 7),  # Bread from Heaven
+            chapters("tell-me-the-story-2", 11, 11),  # A Tent for God
+            chapters("tell-me-the-story-2", 13, 13),  # The Snake on the Pole
+            chapters("tell-me-the-story-2", 15, 15),  # Rahab and the Red Cord
+            chapters("tell-me-the-story-2", 22, 22),  # Boaz the Redeemer
+            chapters("tell-me-the-story-3", 4, 4),  # The Shepherd Boy Chosen
+            chapters("tell-me-the-story-3", 19, 19),  # The Promise of a Child
+            chapters("tell-me-the-story-4", 2, 8),  # Zechariah … Born in Bethlehem, the shepherds
+        ],
+    ),
 ]
 
 # Plans that have been withdrawn from the shelf, each with the plan(s) that
@@ -570,3 +603,11 @@ RETIRED_PLANS = {
         for n in (1, 2, 3)
     },
 }
+
+
+def all_plan_sources() -> dict[str, tuple[list[str], list[str]]]:
+    """Every plan slug → the (book slugs, article slugs) it needs, launch and
+    curated alike: what ``seed_plans`` waits on before building it anywhere."""
+    sources = {slug: ([book], []) for slug, book, *_ in LAUNCH_PLANS}
+    sources.update({slug: plan_sources(items) for slug, _title, _desc, items in CURATED_PLANS})
+    return sources

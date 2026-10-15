@@ -32,7 +32,8 @@
   "title": "Le chemin vers Dieu : la grâce pour tout pécheur",
   "description": "Un mois sur la plus ancienne des bonnes nouvelles. L'appel plein de tendresse de Richard Baxter à ceux qui ne sont pas convertis, D. L. Moody sur le chemin qui mène à Dieu, et Tout par grâce de Charles Spurgeon — les guides les plus simples qui soient sur la manière dont un pécheur est sauvé, et dont il peut le savoir.",
   "note": [
-   "Job #2229. Prose-ahead: source books (a-call-to-the-unconverted, the-way-to-god, all-of-grace) have no French edition yet, so seed_plans creates no fr row; dormant until they are translated."
+   "Job #2229. Prose-ahead: source books (a-call-to-the-unconverted, the-way-to-god, all-of-grace) have no French edition yet, so seed_plans creates no fr row; dormant until they are translated.",
+   "2026-10-13: a-call-to-the-unconverted.fr (« Appel aux inconvertis ») completes the set — the-way-to-god.fr and all-of-grace.fr were already live — so seed_plans now creates the (grace-for-every-sinner, fr) row."
   ]
  },
  "faith-in-the-fire": {
@@ -53,7 +54,8 @@
   "title": "Tout pour Christ : une vie donnée",
   "description": "Que coûte l'abandon sans réserve, et que produit-il ? Le journal missionnaire, plein d'examen de soi, de David Brainerd, suivi des récits d'hommes et de femmes qui ont tout donné pour l'Évangile — un appel à la consécration raconté à travers des vies qui y ont répondu.",
   "note": [
-   "Job #2232. Prose-ahead: source books (life-and-diary-of-david-brainerd, men-and-women-who-gave-everything-2) have no French edition yet; dormant until they are translated."
+   "Job #2232. Prose-ahead: source books (life-and-diary-of-david-brainerd, men-and-women-who-gave-everything-2) have no French edition yet; dormant until they are translated.",
+   "2026-10-14: life-and-diary-of-david-brainerd.fr (« Vie et journal de David Brainerd », the shipped fr study guide's title) ships and completes the set — men-and-women-who-gave-everything-2.fr was already live — so seed_plans now creates the (everything-for-christ, fr) row; this prose lands in the same PR."
   ]
  },
  "growing-in-wisdom-18-days": {
@@ -88,28 +90,32 @@
   "title": "Des hommes de prière : à l’école de la prière avec E. M. Bounds",
   "description": "Sept semaines dans la fournaise de l’intercession avec le grand apôtre de la prière. E. M. Bounds commence par le besoin qu’a le prédicateur lui-même de puissance, puis il dévoile le but qui rend la prière victorieuse, et la nécessité qui en fait toute l’affaire de la vie chrétienne.",
   "note": [
-   "Job #3017. Prose-ahead: source books (power-through-prayer, purpose-in-prayer, necessity-of-prayer) have no French edition yet, so seed_plans creates no fr row; dormant until they are translated."
+   "Job #3017. Prose-ahead: source books (power-through-prayer, purpose-in-prayer, necessity-of-prayer) have no French edition yet, so seed_plans creates no fr row; dormant until they are translated.",
+   "2026-10-10: power-through-prayer.fr (« La puissance par la prière ») ships and completes the set — purpose-in-prayer.fr and necessity-of-prayer.fr were already live — so seed_plans now creates the (praying-men, fr) row."
   ]
  },
  "voices-of-the-early-church": {
   "title": "Les voix de l’Église primitive",
   "description": "Les premiers siècles chrétiens racontés par leurs propres mots. Clément de Rome écrit au nom de l’Église de Rome alors que vivait encore la génération des apôtres, Ignace d’Antioche envoie ses lettres sur la route du martyre, et Athanase d’Alexandrie expose le cœur de la foi — pourquoi Dieu lui-même s’est fait homme — dans Sur l’incarnation du Verbe. De courtes lectures quotidiennes pendant environ quatre mois.",
   "note": [
-   "Job #3020. Prose-ahead: source books (first-epistle-of-clement, epistles-of-ignatius, on-the-incarnation) have no French edition yet, so seed_plans creates no fr row; dormant until they are translated."
+   "Job #3020. Prose-ahead: source books (first-epistle-of-clement, epistles-of-ignatius, on-the-incarnation) have no French edition yet, so seed_plans creates no fr row; dormant until they are translated.",
+   "2026-10-13: on-the-incarnation.fr (« Sur l’incarnation du Verbe ») ships and completes the set — first-epistle-of-clement.fr and epistles-of-ignatius.fr were already live — so seed_plans now creates the (voices-of-the-early-church, fr) row."
   ]
  },
  "the-puritan-heart": {
   "title": "Le cœur puritain",
   "description": "Huit semaines avec trois maîtres de la vie intérieure. Richard Sibbes panse le roseau froissé, John Owen livre combat au péché qui habite encore en nous, et Thomas Watson fait reposer toute la lutte sur la promesse que toutes choses concourent au bien.",
   "note": [
-   "Job #3022. Prose-ahead: source books (the-bruised-reed, mortification-of-sin, all-things-for-good) have no French edition yet, so seed_plans creates no fr row; dormant until they are translated."
+   "Job #3022. Prose-ahead: source books (the-bruised-reed, mortification-of-sin, all-things-for-good) have no French edition yet, so seed_plans creates no fr row; dormant until they are translated.",
+   "2026-10-13: the-bruised-reed.fr (« Le Roseau froissé ») and mortification-of-sin.fr (« De la mortification du péché chez les croyants ») ship together and complete the set — all-things-for-good.fr was already live — so seed_plans now creates the (the-puritan-heart, fr) row."
   ]
  },
  "pursuit-of-holiness": {
   "title": "À la poursuite de la sainteté",
   "description": "Neuf semaines pour appartenir entièrement au Seigneur. Andrew Murray fait remonter notre sainteté à notre union avec le Saint, William Law nous appelle à une vie consacrée à Dieu à chaque heure ordinaire, et John Wesley expose simplement ce qu’est la perfection chrétienne — et ce qu’elle n’est pas.",
   "note": [
-   "Job #3023. Prose-ahead: of the source books only holy-in-christ (Saint en Christ) has a French edition; a-serious-call and plain-account-christian-perfection do not, so seed_plans creates no fr row until they are translated."
+   "Job #3023. Prose-ahead: of the source books only holy-in-christ (Saint en Christ) has a French edition; a-serious-call and plain-account-christian-perfection do not, so seed_plans creates no fr row until they are translated.",
+   "2026-10-14: a-serious-call.fr (« Appel sérieux à une vie dévote et sainte », the shipped fr study guide's title) and plain-account-christian-perfection.fr (« Simple exposé de la perfection chrétienne ») ship together in this PR and complete the set with holy-in-christ.fr, so seed_plans now creates the (pursuit-of-holiness, fr) row; this prose lands in the same PR."
   ]
  },
  "rooted-three-months-books-1-3": {
@@ -152,6 +158,70 @@
   "description": "Douze semaines avec quatre maîtres, un court chapitre par jour, chacun s’achevant par des questions et une prière : Richard Baxter sur le repos éternel des saints, Jonathan Edwards sur la beauté de Dieu et la vraie religion, A. B. Simpson sur le Christ notre Sauveur, notre Sanctificateur, notre Guérisseur et notre Roi qui vient, et Watchman Nee sur la vie chrétienne normale.",
   "note": [
    "Job #5214. Prose-ahead: shipped with the first French book of the plan (key-teachings-of-richard-baxter); the other three (key-teachings-of-jonathan-edwards, key-teachings-of-a-b-simpson, key-teachings-of-watchman-nee) have no French edition yet, so the plan stays dormant in French until they are translated."
+  ]
+ },
+ "the-pilgrims-way": {
+  "title": "Le chemin du pèlerin",
+  "description": "Le chemin du retour, en trois classiques. Charles Spurgeon vient à la rencontre de celui qui cherche, tout près de la porte étroite ; l’allégorie immortelle de John Bunyan accompagne le pèlerin jusqu’à la Cité céleste ; et le propre témoignage de Bunyan montre la grâce qui a surabondé pour le premier des pécheurs.",
+  "note": [
+   "Book titles as shipped: « Autour de la porte étroite » (around-the-wicket-gate.fr), « Le Voyage du pèlerin » (pilgrims-progress.fr), « Grâce abondante pour le premier des pécheurs » (grace-abounding.fr, added in this PR — the shipped fr study guide's title). The description echoes them (porte étroite / pèlerin / premier des pécheurs).",
+   "grace-abounding.fr completes the plan's three-book set in French, so seed_plans creates the (the-pilgrims-way, fr) row on the deploy that ships it — this prose must land in the SAME PR (the #819 defect)."
+  ]
+ },
+ "brave-for-god-24-true-stories": {
+  "title": "Courageux pour Dieu : 24 histoires vraies",
+  "description": "Trois semaines et demie d’histoires vraies pour les jeunes lecteurs, une par jour : les quatre livres de Courageux pour Dieu, vingt-quatre personnes ordinaires venues de toutes les régions du monde, qui ont fait confiance à Dieu et qu’il a rendues courageuses.",
+  "note": [
+   "AI-drafted; awaiting native review. Shipped with the fr editions of brave-for-god-3 and brave-for-god-4 (French young-readers batch), which complete the plan's four source books in French, so seed_plans now creates the fr row. The series name follows the shipped French editions (« Courageux pour Dieu : Livre deux »). Job #6029."
+  ]
+ },
+ "family-devotions-boy-from-osogun": {
+  "title": "Culte en famille : le garçon d’Osogun",
+  "description": "Douze soirées de cultes de famille de cinq minutes avec Samuel Ajayi Crowther, le garçon yoruba vendu comme esclave qui, devenu grand, a donné à son peuple la Bible dans sa propre langue. Lisez à voix haute un court chapitre : le navire négrier arrêté en mer, le jour où il a retrouvé sa mère, le Notre Père en yoruba pour la reine, et les esclaves bienveillants qui l’ont nourri quand il était prisonnier. Chacun se termine par une prière et trois questions à discuter ensemble.",
+  "note": [
+   "AI-drafted; awaiting native review. Shipped with the fr edition of samuel-ajayi-crowther-a-life-children (French young-readers batch), the plan's only source book, so seed_plans now creates the fr row. « Culte en famille » follows the other fr family-devotions plans (heroes-who-trusted-god, pilgrims-journey). Job #6030."
+  ]
+ },
+ "waiting-on-god-trust": {
+  "title": "S’attendre à Dieu : une vie de confiance",
+  "description": "Dix semaines à l’école de la confiance. Andrew Murray enseigne la discipline quotidienne de l’attente en Dieu, F. B. Meyer dévoile le secret d’être guidé par lui, et l’étonnante vie de foi de George Müller montre ce que reçoit une telle confiance.",
+  "note": [
+   "2026-10-14: written with the-life-of-trust.fr (« Une vie de confiance », the shipped fr study guide's title), which completes the set — waiting-on-god.fr (« S'attendre à Dieu ») and the-secret-of-guidance.fr (« Le secret de la direction divine ») were already live — so seed_plans creates the (waiting-on-god-trust, fr) row on the deploy that ships this PR."
+  ]
+ },
+ "women-of-faith": {
+  "title": "Femmes de foi",
+  "description": "Un plus long voyage avec trois femmes remarquables. Hannah Whitall Smith dévoile le secret d’une vie heureuse, et les autobiographies d’Amanda Berry Smith et de Julia A. J. Foote — deux femmes noires qui prêchèrent l’Évangile à travers le monde du XIXᵉ siècle — montrent ce secret vécu à grand prix.",
+  "note": [
+   "2026-10-14: written with amanda-smith-autobiography.fr (« Une autobiographie », the shipped fr study guide's title), which completes the set — the-christians-secret-of-a-happy-life-4.fr and a-brand-plucked-from-the-fire.fr (« Un tison arraché du feu ») were already live — so seed_plans creates the (women-of-faith, fr) row on the deploy that ships this PR."
+  ]
+ },
+ "send-the-fire": {
+  "title": "Envoie le feu : prier pour le réveil",
+  "description": "Comment vient le réveil, et comment le faire descendre par la prière. Les discours de Charles Finney sur les conditions du réveil, R. A. Torrey sur le baptême du Saint-Esprit qui lui donne sa puissance, et les sermons par lesquels Dieu ébranla la Nouvelle-Angleterre sous Jonathan Edwards.",
+  "note": [
+   "2026-10-14: written with revival-lectures.fr (« Discours sur les réveils religieux », the shipped fr study guide's title) and selected-sermons-edwards.fr (« Sermons choisis de Jonathan Edwards »), which ship together in this PR and complete the set with baptism-with-the-holy-spirit.fr — so seed_plans creates the (send-the-fire, fr) row on the deploy that ships it."
+  ]
+ },
+ "new-to-the-faith": {
+  "title": "Nouveau dans la foi",
+  "description": "Cinq semaines et demie pour quiconque commence tout juste avec Christ. Charles Spurgeon vous accueille à la porte étroite avec l’aide la plus simple qui soit pour se confier en Jésus ; puis R. A. Torrey, qui écrit pour les nouveaux croyants, montre comment bien commencer — l’assurance, le Saint-Esprit, l’Église, la Bible, la prière et le témoignage. De courts articles, en chemin, répondent aux questions que se pose tout nouveau chrétien : ce qu’est l’Évangile, pourquoi Jésus est mort, ce que signifient le baptême et la sainte cène, et comment continuer à grandir.",
+  "note": [
+   "2026-10-14: AI-drafted; awaiting native review. Written with how-to-succeed-in-the-christian-life.fr (« Comment réussir dans la vie chrétienne »), which ships in this PR; around-the-wicket-gate.fr (« Autour de la porte étroite ») and every article in the plan already have fr editions, so seed_plans now creates the (new-to-the-faith, fr) row."
+  ]
+ },
+ "anchored-two-months": {
+  "title": "Ancré : deux mois avec Dieu pour les ados",
+  "description": "Deux mois avec Dieu pour les lecteurs de 13 à 17 ans : les deux livres d’Ancré — « Est-ce vrai ? Qui suis-je ? » et « La vraie vie » — une méditation par jour sur les questions honnêtes de la foi, sur qui tu es en Christ, et sur la manière de suivre Jésus à travers l’inquiétude, les écrans, les amitiés, la maison et le deuil. Chaque jour se termine par un renvoi vers un chapitre d’un classique.",
+  "note": [
+   "2026-10-14: AI-drafted; awaiting native review. Written with anchored-1.fr and anchored-2.fr (« Ancré – 30 jours avec Dieu pour les ados – Livre N »), which ship in this PR and complete the set, so seed_plans creates the (anchored-two-months, fr) row on the deploy that ships it."
+  ]
+ },
+ "they-were-young-two-weeks": {
+  "title": "Ils étaient jeunes : deux semaines d’histoires vraies",
+  "description": "Deux semaines d’histoires vraies pour les lecteurs de 13 à 17 ans : les deux livres d’Ils étaient jeunes — « Appelés » et « Éprouvés » — une vie par jour, de Spurgeon dans une tempête de neige et Richard Allen dans le Delaware à Patrick, Perpétue et les martyrs de l’Ouganda, chacune suivie de questions à méditer.",
+  "note": [
+   "2026-10-14: AI-drafted; awaiting native review. Written with they-were-young-1.fr and they-were-young-2.fr (« Ils étaient jeunes – Livre 1 : Appelés » / « Livre 2 : Éprouvés »), which ship in this PR and complete the set, so seed_plans creates the (they-were-young-two-weeks, fr) row."
   ]
  }
 }

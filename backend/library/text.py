@@ -20,7 +20,9 @@ from django.utils.html import strip_tags
 
 # Block-level tags become word boundaries so "…end.</p><p>Start…" doesn't fuse
 # into "end.Start" in the text (which would break both matching and snippets).
-_BLOCK_BREAK = re.compile(r"</(p|div|h[1-6]|li|blockquote|br)>|<br\s*/?>", re.I)
+# `figcaption`/`figure` too: an illustration's caption is followed directly by
+# the next paragraph, and without a break the two fuse into one search word.
+_BLOCK_BREAK = re.compile(r"</(p|div|h[1-6]|li|blockquote|br|figcaption|figure)>|<br\s*/?>", re.I)
 _WS = re.compile(r"\s+")
 _TAG = re.compile(r"<[^>]+>")
 

@@ -54,14 +54,17 @@
         "john-wesley",
         "george-whitefield",
         "richard-allen",
+        "old-elizabeth",
         "jarena-lee",
         "zilpha-elaw",
+        "harriet-tubman",
         "julia-foote",
         "e-m-bounds",
         "amanda-berry-smith",
         "fanny-jackson-coppin",
         "jesse-lyman-hurlbut",
-        "john-r-mott"
+        "john-r-mott",
+        "mary-stone"
       ]
     },
     {
@@ -70,10 +73,12 @@
       "members": [
         "william-carey",
         "christmas-evans",
+        "nancy-prince",
         "maria-w-stewart",
         "alexander-maclaren",
         "charles-h-spurgeon",
         "lottie-moon",
+        "virginia-broughton",
         "billy-graham"
       ]
     },
@@ -84,7 +89,10 @@
         "john-calvin",
         "jonathan-edwards",
         "samson-occom",
+        "phillis-wheatley",
+        "catherine-ferguson",
         "robert-murray-mcheyne",
+        "tiyo-soga",
         "arthur-t-pierson",
         "john-hyde",
         "martyn-lloyd-jones",
@@ -129,7 +137,9 @@
         "hannah-whitall-smith",
         "amanda-berry-smith",
         "a-b-simpson",
-        "frederick-brotherton-meyer"
+        "frederick-brotherton-meyer",
+        "virginia-broughton",
+        "dora-yu"
       ]
     },
     {
@@ -150,14 +160,17 @@
         "david-brainerd",
         "samson-occom",
         "william-carey",
+        "nancy-prince",
         "samuel-ajayi-crowther",
         "david-livingstone",
+        "tiyo-soga",
         "hudson-taylor",
         "lottie-moon",
         "mary-slessor",
         "c-t-studd",
         "john-hyde",
         "amy-carmichael",
+        "dora-yu",
         "sadhu-sundar-singh",
         "joe-church",
         "gladys-aylward",
@@ -292,6 +305,7 @@
       "slug": "north-america",
       "members": [
         "kateri-tekakwitha",
+        "mary-prince",
         "a-b-simpson",
         "john-g-lake"
       ]
@@ -306,11 +320,16 @@
         "samson-occom",
         "absalom-jones",
         "lemuel-haynes",
+        "phillis-wheatley",
         "richard-allen",
+        "old-elizabeth",
+        "catherine-ferguson",
         "jarena-lee",
         "zilpha-elaw",
         "charles-finney",
+        "nancy-prince",
         "maria-w-stewart",
+        "harriet-tubman",
         "julia-foote",
         "hannah-whitall-smith",
         "amanda-berry-smith",
@@ -321,6 +340,7 @@
         "jesse-lyman-hurlbut",
         "lottie-moon",
         "r-a-torrey",
+        "virginia-broughton",
         "billy-sunday",
         "john-r-mott",
         "john-hyde",
@@ -374,9 +394,13 @@
       "members": [
         "ignatius-of-antioch",
         "john-chrysostom",
+        "pastor-hsi",
         "soonderbai-powar",
         "pandita-ramabai",
         "kanzo-uchimura",
+        "krupabai-satthianadhan",
+        "dora-yu",
+        "mary-stone",
         "sadhu-sundar-singh",
         "watchman-nee"
       ]

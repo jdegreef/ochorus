@@ -348,6 +348,13 @@ translated Sermon row (natural-key format — `"author": ["author-slug"]`, no
 `pk`; copy source_url/sort_order/preached_on from the English file); `seed_sermons` upserts it on deploy.
 Same canonical formatting as the book file above — half the drifted fixtures are
 sermons, so "same shape, smaller" was evidently not enough.
+- **Look for the sermon inside an already-translated book first.** Many queue
+  sermons also ship as a chapter of a sermon collection (2026-10-14: Whitefield's
+  *The Lord Our Righteousness* = `selected-sermons-whitefield` ch14, Finney's
+  *The Spirit of Prayer* = `revival-lectures` ch8, both ≥99.7% text match). If
+  `<book>.<lang>.json` exists, port that chapter's translation — diff the two
+  ENGLISH bodies and carry each difference over — instead of retranslating;
+  two independent renderings of one sermon on one site is the worse outcome.
 
 **Plan** — a reading plan is a per-language `Plan` row (title + description);
 its days reference **books by slug** and resolve to that language's book rows
@@ -2603,7 +2610,11 @@ archaic spelling and period punctuation are the text, not defects in it.
   Words are `\w mot|strong="G…"\w*` (and `\+w` inside `\wj`). Stripping a cross-ref with
   `''` welds sentences in 112 verses (`Fils unique,afin`, `persécutes.Il`). Replace it with
   a SPACE and then collapse whitespace. After that, a scan for punctuation glued to a
-  capital letter finds 0. French bio house style, measured from 62 files: « x » with
+  capital letter finds 0. The opposite holds for word/character MARKERS (`\wj`, `\+w*`):
+  drop them with `''`, or elisions split (`qu ’ il`); and strip a trailing paragraph
+  marker (`\q1`) left at a verse's end. Young-reader editions: titles take « (Pour
+  enfants) » / « (Pour ados) »; epigraphs are whole Segond verses with French spacing
+  before : ; (notes `source_file: "Louis Segond (1910)"`, status `mined`). French bio house style, measured from 62 files: « x » with
   ordinary spaces, curly ’, a space before ? ! ; :, passé simple; bio band 1.04–1.12.
   Translators default to English denomination names, but the fr corpus uses
   « Assemblées de Dieu » and « Alliance chrétienne et missionnaire », so normalise.
@@ -2613,21 +2624,51 @@ archaic spelling and period punctuation are the text, not defects in it.
 - **Vietnamese (vi) Bible is `vie_kt` — Cadman's *Kinh Thánh* (1925), PD — in the
   ebible mirror, and vi is PROTESTANT register throughout** (locale added 2026-10-09,
   no content yet). URL: `bibles/vie_kt/usfm/<code>.usfm`; plain `\v N text` lines
-  (no `\w` Strong's markup in the verses checked). Its Take Root code `vie1934` is
-  UNVERIFIED (see `language_seed.py`), so mine the mirror. Pin in every brief:
+  (no `\w` Strong's markup in the verses checked). Its Take Root code is
+  `vietnamese` (verified 10-13; `vie1934` does not exist there), and Take Root sets the
+  capital Đ as U+00D0 Ð — `fetch_chapter` repairs it, but anything mined by hand must
+  carry U+0110. Mirror and Take Root differ only by edition variants (nhơn/nhân). Pin in every brief:
   Đức Chúa Trời (never Thiên Chúa), Đức Thánh Linh (never Chúa Thánh Thần), Chúa
   Giê-xu, Đấng Christ, Hội Thánh, ân điển, thuộc linh (never tâm linh); reader
   address **bạn**. Cadman reads archaic (ngươi, chẳng, luống nhưng): quoted verses
   keep it, prose stays modern. Vietnamese writes every syllable as a separate word,
   so word ratios will run well ABOVE 100% of the English. There is no band yet:
   gate on the tag sequence and record the first batch's spread here.
+- **The first vi BIOS set the Vietnamese bio conventions** (jobs #5947–#5956, 2026-10-14;
+  all ten translated in parallel against one shared CONVENTIONS file, a-b-simpson shipped
+  first). Measured against `vi.json`, not invented: subject is **ông / bà**, reader
+  **bạn** (never quý vị); Jesus **Chúa Giê-xu** in prose, Cadman's **Jêsus** only inside a
+  verbatim verse; **Đấng Christ**, **Hội Thánh**, **Cơ Đốc nhân**, **Chúa Nhật**; Western
+  personal names stay in Latin script, Bible names in Cadman spelling (Phao-lô, Môi-se);
+  dates `ngày 15 tháng 12 năm 1843`. C&MA = **Hội Truyền Giáo Phúc Âm Liên Hiệp (C&MA)**
+  (`C&amp;MA` in HTML) and the Fourfold Gospel = **Phúc Âm Tứ Giác** (Đấng Cứu Rỗi, Đấng
+  Thánh Hóa, Đấng Chữa Lành, Vua Sắp Đến) — the Vietnamese Evangelical Church's own terms;
+  its C&MA missionaries founded it in 1911, so readers know them. Salvation Army = **Đội
+  Quân Cứu Thế**. Cite with the `book_name` Take Root returns for `vietnamese` (Giăng,
+  Công Vụ Các Sứ Đồ, 1 Cô-rinh-tô) and quote Take Root's wording (nhơn), not the mirror's
+  (nhân). Band, n=2: **bio 1.33–1.51, FAQ 1.33–1.49** of the English — Vietnamese is
+  monosyllabic, so ratios run ABOVE 1.
+- **Batch and cross-edition gotchas (ko queue, 2026-10-13).** (1) A batch PR must write
+  `Closes #N` once PER issue: "It closes #5872, #5873…" auto-closed only #5872, leaving
+  eight shipped jobs open. (2) A source fix that removes a paragraph (an "END" line, a
+  stray heading) cannot land in a translation before the English drops it —
+  `TranslatedChapterMarkupTests` compares every edition's markup to the English — so
+  whichever of the fix PR and the translation PR merges SECOND drops the translated
+  paragraph too; text-only fixes can ride in the translation PR. (3) After an og:covers
+  change merges (e.g. #6094, Hangul/Ge'ez faces), cards drawn on branches cut before it
+  land stale and every later `og:covers` run redraws them: let ONE PR carry that refresh
+  and splice only your own manifest entry into main's raw `og-manifest.json` in sibling
+  PRs (the file's array layout does not round-trip through `json.dumps`).
 - **Korean (ko) Bible is `kor_old` in the ebible mirror — the 개역 (Revised)
   tradition, PD — despite the mirror labelling it "Korean Bible (1910)"** (locale
   added 2026-10-09, no content yet). Its wording is 개역 in modern spelling (태초에
   말씀이 계시니라, 내 안에 거하라), so quote it verbatim; do NOT reach for 개역개정
   (1998, the Korean Bible Society's, licensed) even where a model knows it better.
   URL: `bibles/kor_old/usfm/<code>.usfm`, plain `\v N text` lines. Take Root code
-  `kor` is UNVERIFIED (see `language_seed.py`). Pin in every brief: 하나님 (never
+  is `korean` (verified 10-13; `kor` does not exist there). It is a BAPTIST edition:
+  침례 for every 세례 (침례 요한 too) — `fetch_chapter` restores 세례, and anything
+  mined by hand must say 세례. Otherwise it matches the mirror up to later spelling
+  (가까웠/가까왔) and the mirror's backtick quote marks, which a quote must not keep. Pin in every brief: 하나님 (never
   하느님), 예수 그리스도, 성령, 교회, 은혜; prose in 합니다체 for books and
   sermons; NEVER 당신 for "you" (omit the subject; 독자님 or 여러분 sparingly).
   Book titles in 『』. A runtime title or name followed by a particle has no
@@ -2637,6 +2678,35 @@ archaic spelling and period punctuation are the text, not defects in it.
   and record the first batch's spread here. Korean cover twins and share cards
   need Noto Serif KR inlined; `generate-home-og.mjs` shows how (numbered
   slices, filtered to the text drawn).
+- **The first ko BIO set the Korean bio conventions — follow them for the other nine**
+  (job #5849, a-b-simpson, 2026-10-13). Measured against `ko.json`, not invented:
+  narrative and answers in **합니다체**; FAQ questions in the UI's polite
+  **~인가요? / ~나요?**; Jesus as **예수님** in prose, **주 예수님** for "the Lord
+  Jesus", **예수 그리스도** in formal titles; Fourfold Gospel = **사중복음** (구주,
+  성결케 하시는 분, 치유자, 다시 오실 왕 — the term Korean holiness churches
+  already use); C&MA = **기독교선교연맹(C&MA)** (write `C&amp;MA` in HTML);
+  book and periodical titles in **『』** inside the source's `<em>`, hymn titles in
+  **「」**; curly “ ” for quotations. Band, n=1: **bio 0.803, FAQ 0.782** of the
+  English (`library.text.word_count`). Months and street numbers come out as digits
+  in Korean (12월, 13번가), so the per-block digit check gains numbers but must
+  never lose one. Scripture: quote 개역 with **세례, never 침례** (Take Root's copy
+  is the Baptist edition — see the ko Bible entry above); 침례 is still right in
+  prose for the denomination (침례교).
+- **The first ko BOOK (baptism-with-the-holy-spirit, #5863, 2026-10-13) — what carries to
+  the next ones.** Citations as `(사도행전 1:5)`: full Korean book name, Western digits, tight
+  `C:V`, never the 고전/롬 abbreviations. Quote marks mirror a curly source with “ ” (‘ ’
+  nested). Chapter band n=5: **0.61–0.67** of the English — lower than ko bios
+  (0.71–0.80) because the 개역 is compact and this book is quotation-dense; tag parity was
+  exact, so read it as the language, not loss. Build the crib with
+  `fetch_chapter('korean', …)` (it carries the 침례→세례 repair); `pythonbible` names
+  numbered books `SAMUEL_1`, so map them to `1 samuel` before looking up `BOOK_USFM`.
+  Three textual traps the 개역 sets: **Matthew 17:21 is absent** (“(없음)”) — a KJV
+  "prayer and fasting" quote has no 개역 verse, use Mark 9:29 and flag it; **Hebrews 4:6
+  reads 순종치 아니함** (disobedience) where KJV has "unbelief" — quote it, flag it;
+  and Take Root's **Isaiah 45:22 reads 그리하며** (typo for 그리하면 — quote the mirror).
+  The book Q&A (`qa`, 8 items) and `about_html` ride on the book row like other editions.
+  Korean og twins are drawn in a SYSTEM font until og:covers learns Hangul (Ge'ez has the
+  same gap) — commit the card, but expect it to change once that lands.
 - **es BOOKS are no longer all « » — measure the same AUTHOR's shipped es books
   before briefing** (job #4800, 2026-10-05). The #515 entry above says all 13
   shipped es books convert to « »; at 59 es books that no longer holds. Simpson's
@@ -2674,3 +2744,12 @@ archaic spelling and period punctuation are the text, not defects in it.
   content dir. Translate them like jobs, with no issue to close. Also: the scratchpad is wiped
   between sessions, so re-fetch the Bible mirror and recreate the brief, rather than
   assuming last session's `lsg_verses.json` is still there.
+- **During a GitHub Actions outage, the `test-and-build` aggregator FAILS when a
+  gate job was merely cancelled** (2026-10-05, #5261–#5271). Its log reads
+  `backend-tests did not pass (result: abandoned)` — not a test failure. Before
+  calling a PR red, check which job failed: if every non-aggregator job is
+  success/cancelled/skipped with no failed STEP, it is infra — wait for
+  githubstatus.com Actions = operational, then `gh run rerun <id> --failed`.
+  Never merge past it; a watcher that re-runs then merges only on all-green +
+  `mergeStateStatus == CLEAN` cleared five queued batch PRs safely.
+

@@ -2,6 +2,7 @@ import { browser } from '$app/environment';
 import { preloadCode } from '$app/navigation';
 import { API_BASE_URL } from './config';
 import { coverVariants } from './coverArt';
+import { illustrationSrcs } from './illustrations';
 import { readJSON, writeJSON } from './persisted';
 
 /**
@@ -104,10 +105,22 @@ class OfflineBooks {
 		this.active = { slug: book.slug, language: book.language, done: 0, total: urls.length };
 		try {
 			const cache = await caches.open(OFFLINE_CACHE);
-			for (const url of urls) {
+			// Pictures the chapters show, collected as their text downloads and
+			// cached after it — into the same durable cache, or an illustrated book
+			// would read offline with a broken image wherever a plate stood.
+			const pictures = new Set<string>();
+			for (const [i, url] of urls.entries()) {
 				try {
 					const res = await fetch(url);
-					if (res.ok) await cache.put(url, res.clone());
+					if (res.ok) {
+						await cache.put(url, res.clone());
+						// urls[0] is the book itself; only chapters carry a body.
+						const text = i > 0 ? await res.text() : '';
+						if (text.includes('/illustrations/')) {
+							const body = JSON.parse(text)?.body_html;
+							if (typeof body === 'string') for (const src of illustrationSrcs(body)) pictures.add(src);
+						}
+					}
 				} catch {
 					/* one chapter failed — keep going; the rest still download */
 				}
@@ -157,6 +170,14 @@ class OfflineBooks {
 					/* cover unavailable — text still reads offline */
 				}
 			}
+			// Independent and best-effort, so in parallel; one missing picture
+			// leaves the rest (and the text) downloaded.
+			await Promise.allSettled(
+				[...pictures].map(async (url) => {
+					const res = await fetch(url);
+					if (res.ok) await cache.put(url, res);
+				})
+			);
 			// Replace only THIS edition's entry. Filtering on slug alone discarded
 			// the other language's metadata while its cached bytes stayed behind —
 			// an untracked download that nothing could then remove.
@@ -209,6 +230,15 @@ class OfflineBooks {
 			// ground under /covers/art/ serves every language (see CLAUDE.md), so
 			// two editions can share a cover_url, and deleting it here would
 			// blank the one still downloaded.
+			// Its pictures too: they live under one folder per WORK, so they are
+			// shared by its editions — keep them while another edition of the same
+			// work is still downloaded.
+			if (!rest.some((b) => b.slug === slug)) {
+				const pictures = `/illustrations/${slug}/`;
+				for (const req of await cache.keys()) {
+					if (new URL(req.url).pathname.startsWith(pictures)) await cache.delete(req);
+				}
+			}
 			const stillUsed = new Set(rest.map((b) => b.coverUrl));
 			if (meta?.coverUrl && !stillUsed.has(meta.coverUrl)) {
 				for (const url of [meta.coverUrl, ...coverVariants(meta.coverUrl)]) {

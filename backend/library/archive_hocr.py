@@ -1,0 +1,162 @@
+"""Internet Archive hOCR → paragraphs, using the print's own first-line indents.
+
+The `_djvu.txt` text layer that `import_archive` reads marks a paragraph only
+by a blank line, and a page break looks exactly like one — so a paragraph that
+runs over a page whose last line happens to end a sentence is split in two, and
+nothing in the text can tell the two apart. The page IMAGE can: a printed
+paragraph opens on an indented line. Archive's `_hocr.html` keeps every line's
+bounding box, so this module rebuilds paragraphs from the indents themselves,
+across page breaks, and leaves only the book-specific parts (which lines are
+furniture, where the chapters begin, what the OCR misread) to the caller —
+a `library.archive_book.ArchiveBookCommand`, which does the rest of the build.
+
+Built for Sadhu Sundar Singh's *Reality and Religion* (1924) and *With and
+Without Christ* (1929); see `build_reality_and_religion` and
+`build_with_and_without_christ`.
+"""
+
+from __future__ import annotations
+
+import html as _html
+import re
+from dataclasses import dataclass
+from statistics import median
+
+import requests
+
+from library.management.commands.import_archive import USER_AGENT
+
+_PAGE = re.compile(r"<div class=['\"]ocr_page['\"]")
+_LINE = re.compile(
+    r"<span class=['\"]ocr_(?:line|caption|header|textfloat)['\"][^>]*?"
+    r"title=['\"]bbox (\d+) (\d+) (\d+) (\d+)[^'\"]*['\"][^>]*>(.*?)</span>\s*"
+    r"(?=<span class=['\"]ocr_(?:line|caption|header|textfloat)|</p>)",
+    re.S,
+)
+_TAG = re.compile(r"<[^>]+>")
+_WS = re.compile(r"\s+")
+#: A line that is only a page number, a roman folio, or a printer's signature
+#: mark ("I B", "5a)", "3/", "II]", "Vii") — short, and no run of three
+#: lowercase letters.
+_FOLIO = re.compile(r"^(?!.*[a-z]{3})[\w.,'’‘|/()\[\]*•\-\s]{1,7}$")
+#: ...but a short line that closes a sentence is prose, not furniture: the last
+#: line of a paragraph ("of God.", "to Him.", "it.") passes `_FOLIO`'s shape
+#: and would be dropped from a page's foot. A chapter numeral ("XIII.") ends
+#: on a capital, so it stays a folio.
+_SENTENCE_END = re.compile(r"[a-z][.!?][’”'\"]?$")
+#: A line indented this far (scan pixels) past its page's margin opens a
+#: paragraph.
+_INDENT = 30
+
+
+@dataclass(frozen=True)
+class Line:
+    page: int
+    x0: int
+    y0: int
+    text: str
+
+
+def fetch_hocr(item_id: str) -> str:
+    url = f"https://archive.org/download/{item_id}/{item_id}_hocr.html"
+    resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=120)
+    resp.raise_for_status()
+    resp.encoding = "utf-8"
+    return resp.text
+
+
+def parse(hocr: str) -> list[Line]:
+    """Every text line of the scan, in reading order, tagged with its page."""
+    out: list[Line] = []
+    for page, chunk in enumerate(_PAGE.split(hocr)[1:]):
+        for m in _LINE.finditer(chunk):
+            text = _WS.sub(" ", _html.unescape(_TAG.sub("", m.group(5)))).strip()
+            if text:
+                out.append(Line(page, int(m.group(1)), int(m.group(2)), text))
+    return out
+
+
+def margins(lines: list[Line]) -> dict[int, int]:
+    """Each page's left text margin: the median start of its full-width lines.
+
+    Recto and verso pages sit at different offsets in the scan, so the margin
+    is measured per page. Full-width lines only — indented first lines and
+    short centred ones would drag a mean, and are a minority either way.
+
+    A page with no full-width line (a verse page, a chapter's short last page)
+    borrows the margin of the nearest measured page of the same parity — the
+    same side of the spread — so its indents still open paragraphs.
+    """
+    by_page: dict[int, list[int]] = {}
+    for ln in lines:
+        if len(ln.text) >= 30:
+            by_page.setdefault(ln.page, []).append(ln.x0)
+    measured = {p: int(median(xs)) for p, xs in by_page.items()}
+    out = dict(measured)
+    for page in {ln.page for ln in lines} - measured.keys():
+        near = [p for p in measured if p % 2 == page % 2] or list(measured)
+        if near:
+            out[page] = measured[min(near, key=lambda p: abs(p - page))]
+    return out
+
+
+def is_folio(text: str) -> bool:
+    text = text.strip()
+    return bool(_FOLIO.match(text)) and not _SENTENCE_END.search(text)
+
+
+def caps_core(text: str) -> str:
+    """Letters and spaces only, upper-cased — for comparing headings despite
+    OCR noise and small-capital misreads ("Tue WorsuIP oF Gop")."""
+    return _WS.sub(" ", re.sub(r"[^A-Za-z ]", " ", text)).strip().upper()
+
+
+def hyphenated_forms(lines: list[Line]) -> set[str]:
+    """Hyphenated compounds the book prints INSIDE a line ("to-day").
+
+    When a word breaks at a line end, the hyphen may be the compound's own or
+    the compositor's. The book itself is the best witness: a compound it sets
+    elsewhere with a hyphen mid-line keeps it; anything else is rejoined.
+    """
+    forms: set[str] = set()
+    for ln in lines:
+        for m in re.finditer(r"\b([A-Za-z]+-[A-Za-z]+)\b", ln.text.rstrip("-")):
+            forms.add(m.group(1).lower())
+    return forms
+
+
+def join_lines(
+    lines: list[Line],
+    margin: dict[int, int],
+    keep: set[str],
+) -> list[str]:
+    """Body lines → paragraph strings.
+
+    A line indented past the page margin opens a paragraph (so does a centred
+    line — a signature, a date); every other line continues the current one,
+    whatever page it is on. A word broken at a line end is rejoined unless the
+    book prints that compound with its hyphen elsewhere (`keep`), and a dash
+    that ends or starts a line closes up to its neighbour.
+    """
+    paras: list[str] = []
+    buf = ""
+    for ln in lines:
+        text = ln.text
+        if ln.x0 - margin.get(ln.page, ln.x0) > _INDENT and buf:
+            paras.append(buf)
+            buf = ""
+        broken = re.search(r"([A-Za-z]+)-$", buf)
+        if broken and text[:1].isalpha():
+            tail = re.match(r"[A-Za-z]+", text).group(0)
+            if f"{broken.group(1)}-{tail}".lower() in keep or tail[:1].isupper():
+                buf += text
+            else:
+                buf = buf[:-1] + text
+        elif buf.endswith("—") or text.startswith("—"):
+            # A dash at a line's end or start is closed up, as the print sets it.
+            buf += text
+        else:
+            buf = f"{buf} {text}" if buf else text
+    if buf:
+        paras.append(buf)
+    return [_WS.sub(" ", p).strip() for p in paras]

@@ -1,0 +1,124 @@
+{
+ "kind": "sermon",
+ "slug": "pauls-praise-of-christian-love",
+ "language": "ko",
+ "job_issue": 5881,
+ "references": [
+  {
+   "reference": "Philippians 2:3",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "Philippians 2:4",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 13:1",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 13:2",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "Titus 1:7",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "John 6:70",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 13:3",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 13:3",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "1 Corinthians 13:4",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 13:5",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 13:6",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "Proverbs 2:14",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 13:7",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "1 Corinthians 13:8",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "1 Corinthians 13:8",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 13:9",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 13:10",
+   "status": "mined",
+   "block_index": 34,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "mined",
+   "block_index": 34,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 13:13",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "Romans 1:16",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "개역 (Take Root korean) Bible text"
+  }
+ ]
+}

@@ -7,7 +7,8 @@
   "references": [
     {
       "reference": "Jeremiah 6:14",
-      "status": "self_rendered"
+      "status": "mined",
+      "source_file": "Louis Segond (1910)"
     },
     {
       "reference": "Matthew 7:15",
@@ -27,11 +28,13 @@
     },
     {
       "reference": "Jeremiah 6:13",
-      "status": "self_rendered"
+      "status": "mined",
+      "source_file": "Louis Segond (1910)"
     },
     {
       "reference": "Jeremiah 6:11-12",
-      "status": "self_rendered"
+      "status": "mined",
+      "source_file": "Louis Segond (1910)"
     },
     {
       "reference": "Philippians 4:7",
@@ -91,11 +94,13 @@
     },
     {
       "reference": "Romans 8:8",
-      "status": "self_rendered"
+      "status": "mined",
+      "source_file": "Louis Segond (1910)"
     },
     {
       "reference": "Romans 14:23",
-      "status": "self_rendered"
+      "status": "mined",
+      "source_file": "Louis Segond (1910)"
     },
     {
       "reference": "James 2:19",
@@ -103,7 +108,8 @@
     },
     {
       "reference": "John 16:9",
-      "status": "self_rendered"
+      "status": "mined",
+      "source_file": "Louis Segond (1910)"
     },
     {
       "reference": "Matthew 11:28",
@@ -175,7 +181,8 @@
     },
     {
       "reference": "John 20:19",
-      "status": "self_rendered"
+      "status": "mined",
+      "source_file": "Louis Segond (1910)"
     },
     {
       "reference": "John 20:17",
@@ -199,7 +206,8 @@
     },
     {
       "reference": "Psalm 119:165",
-      "status": "self_rendered"
+      "status": "mined",
+      "source_file": "Louis Segond (1910)"
     },
     {
       "reference": "Isaiah 57:21",
@@ -227,7 +235,8 @@
     },
     {
       "reference": "John 18:6",
-      "status": "self_rendered"
+      "status": "mined",
+      "source_file": "Louis Segond (1910)"
     },
     {
       "reference": "Revelation 6:16",
@@ -235,7 +244,8 @@
     },
     {
       "reference": "Matthew 25:41",
-      "status": "self_rendered"
+      "status": "mined",
+      "source_file": "Louis Segond (1910)"
     },
     {
       "reference": "Philippians 3:21",
@@ -262,5 +272,5 @@
       "status": "self_rendered"
     }
   ],
-  "note": "Keyless in-session French translation: all references are self_rendered from Louis Segond (1910) by recall. Verify each against the French Bible during native review."
+  "note": "Keyless in-session French translation; references were self_rendered from Louis Segond (1910) by recall. 2026-10-14: the ten quotations the English gives verbatim (Jer 6:11-14, Rom 8:8, Rom 14:23, John 16:9, John 18:6, John 20:19, Ps 119:165, Matt 25:41) were re-aligned to Segond byte-for-byte and marked mined. The rest stay self_rendered — verify each against the French Bible during native review."
 }

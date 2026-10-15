@@ -1,0 +1,149 @@
+{
+ "kind": "book",
+ "slug": "the-practice-of-the-presence-of-god-teens",
+ "language": "fr",
+ "note": [
+  "The English teen edition quotes the KJV; every epigraph is replaced by Louis Segond (1910) verbatim (whole verse where the KJV gives a whole verse, the matching Segond portion with « … » or a clean clause where it is partial), with only French spacing before : and ;, and the “(KJV)” label dropped. Psalm 19:1 is Psaume 19:2 in Segond and is cited so; in-body allusions that are re-worded (Ps 19, Ps 16:11, Luke 10:41–42, 1 Thess 5:17, Matt 6:21) are self_rendered.",
+  "Brother Lawrence spoke and wrote in French, but this retelling quotes the English Revell translation; his words are rendered back into plain, slightly classical French (he addresses God and his correspondents with « vous », mirroring the English ‘Thou’/letter register, while the reader’s own suggested prayers use « tu »). Lines that follow the 17th-century French original from memory and need checking against the Mœurs et entretiens / Lettres: « un gros lourdaud qui cassait tout » (ch. 1), « Dieu l’avait trompé » (ch. 3), « donner le tout pour le tout » (ch. 5), « il ne fallait ni art ni science pour aller à Dieu » (ch. 13), « aller plus vite que la grâce » (ch. 13). The kitchen saying (ch. 6) reuses the children’s fr wording, completed with « devant le saint sacrement » (the original reads roughly « je possède Dieu aussi tranquillement dans le tracas de ma cuisine… que si j’étais à genoux devant le saint sacrement »).",
+  "Shared wording with the-practice-of-the-presence-of-god-children.fr: « gros lourdaud qui cassait tout », the kitchen saying, « Un brin de paille par terre » and « Le bateau plein de tonneaux » chapter titles, « Commençons », « Mon Dieu, me voici ». Per the brief the name is written « frère Laurent » (lower-case title, French typographic usage), whereas the shipped children’s edition writes « Frère Laurent » — the reviewer may want to harmonise one way.",
+  "Title « La Pratique de la présence de Dieu (Pour ados) » is 46 characters, over the 28-character rail guideline, but mirrors the children’s « (Pour enfants) » title (49 characters); no shorter established French title exists. Terms: Discalced Carmelites = « Carmes déchaux », lay brother = « frère convers », Burgundy/Auvergne = Bourgogne/Auvergne; attribution drops the English-translation line since the work is French in origin, and names Louis Segond (1910) for Scripture.",
+  "AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "1 Samuel 16:7b",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 19:1",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 19:1",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 6
+  },
+  {
+   "reference": "Psalm 16:11b",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 16:11b",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 7
+  },
+  {
+   "reference": "1 John 4:18a",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 John 4:18a",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 10:41-42a",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 10:41-42a",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 8
+  },
+  {
+   "reference": "Colossians 3:23",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 16:10a",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 16:10a",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 26:3",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 8
+  },
+  {
+   "reference": "2 Corinthians 12:9a",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "James 4:8a",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 6:21",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 8
+  }
+ ]
+}

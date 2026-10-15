@@ -1,0 +1,266 @@
+{
+ "kind": "book",
+ "slug": "amy-carmichael-a-life-teens",
+ "language": "fr",
+ "note": [
+  "The English epigraphs quote the ASV; each French epigraph is the whole verse(s) verbatim from Louis Segond (1910), with only French typographic spacing before : ; ? !, and the “(ASV)” label dropped; the attribution says the French Scripture is Segond, following a-retrospect-teens.fr. Narration is in the passé simple and the reader is addressed with « tu », as in a-retrospect-teens.fr.",
+  "Psalm 34 (ch. 4, qa): Amy’s KJV line “none of them that trust in him shall be desolate” (Eng. 34:22) is Segond 34:23 with a different sense (« échappent au châtiment »), so the French renders her wording (« aucun de ceux qui se confient en lui ne sera délaissé ») and cites only « Psaume 34 »: self_rendered. John 13:7: Segond reads « tu le comprendras bientôt » for “hereafter”; quotations keep Segond, while the chapter title and commentary use « plus tard » (« Tu comprendras plus tard »). Prov 3:6: Segond « il aplanira tes sentiers » (make level) clashes with the English “doesn’t promise a straight path”, so that sentence was reworded around Segond’s words.",
+  "Name choices match the sibling French children’s edition: le Cher Vieux Monsieur, la Bienvenue (the Welcome), shawlies « filles à châle », la Grappe d’étoiles, le Lutin, l’Ammal voleuse d’enfants, la Convention de Keswick, Les choses telles qu’elles sont (Things as They Are); Pearl-eyes → « Yeux-de-Perle », Treasure → « Trésor », Star → « Étoile », Servants of the gods → « les Servantes des dieux », Sisters of the Common Life → « Sœurs de la vie commune », Place of Heavenly Healing → « le Lieu de la guérison céleste », God’s Garden → « le Jardin de Dieu ». The Dohnavur Fellowship, the Church of England Zenana Missionary Society, the China Inland Mission and the Madras Devadasis (Prevention of Dedication) Act keep their English names; Church Missionary Society → « Société missionnaire de l’Église ». Gold Cord, Rose from Brier, If, Mimosa and Lotus Buds keep English titles.",
+  "Amy’s quotations from Things as They Are are translated afresh (no published French text was used); “Humdrum” → « Monotonie », “Deified Devilry” kept in English with a gloss. Twenty miles → « une trentaine de kilomètres » (ch. 7); fourpence halfpenny stays « quatre pence et demi ». AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 139:14",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 139:14",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 3:12-13",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 3:12",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 3,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 3:13",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 4
+  },
+  {
+   "reference": "Jude 1:24",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 5,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 4
+  },
+  {
+   "reference": "Mark 7:11",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 6
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 9
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 10
+  },
+  {
+   "reference": "Proverbs 3:5-6",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 3:6",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 34:22",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 5
+  },
+  {
+   "reference": "1 Corinthians 4:2",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 4:2",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 4:2",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 10
+  },
+  {
+   "reference": "1 Corinthians 4:2",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 11
+  },
+  {
+   "reference": "Mark 10:29-30",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 10:30",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 10:14",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Peter 1:18",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 4:2",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 4:2",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 24:11-12",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 24:12",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 40:11",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 7:19",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 4
+  },
+  {
+   "reference": "Galatians 3:28",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 8
+  },
+  {
+   "reference": "Isaiah 40:11",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 11
+  },
+  {
+   "reference": "John 13:7",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 13:7",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 13:7",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 12,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Peter 5:3",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 4:32",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Peter 5:3",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 8
+  },
+  {
+   "reference": "John 12:24",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 12:24",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 9
+  }
+ ]
+}

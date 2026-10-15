@@ -1,0 +1,20 @@
+{
+ "kind": "bio",
+ "slug": "kanzo-uchimura",
+ "language": "fr",
+ "job_issue": 6048,
+ "references": [
+  {
+   "reference": "Romans 3:28",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 1:23",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "a-b-simpson",
+ "language": "ko",
+ "job_issue": 5849,
+ "references": [
+  {
+   "reference": "Matthew 28:18-19",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 11
+  }
+ ]
+}

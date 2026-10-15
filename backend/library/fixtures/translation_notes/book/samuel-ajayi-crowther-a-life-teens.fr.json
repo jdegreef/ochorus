@@ -1,0 +1,253 @@
+{
+ "kind": "book",
+ "slug": "samuel-ajayi-crowther-a-life-teens",
+ "language": "fr",
+ "note": [
+  "The English teen edition quotes the ASV in each chapter's epigraph; every French epigraph is the matching Segond (1910) text verbatim (whole verse, or the same portion the English quotes — Matthew 6:13 without Segond's doxology, 1 Samuel 2:8 to « trône de gloire »), with only French typographic spacing added, and the “(ASV)” label dropped. Psalm numbering shifts: Psalm 55:12-13 is cited « Psaume 55:13-14 » and Psalm 4:8 « Psaume 4:9 »; reference rows keep English numbering.",
+  "The Matthew 6:13 epigraph is Segond (« délivre-nous du malin »), but Crowther's own echo and the prayer suggestion keep the familiar French Lord's Prayer « délivre-nous du mal » (self_rendered), matching the children's edition. In ch. 3 the body quotes Isaiah 61:1's Segond « pour proclamer aux captifs la liberté » (rather than Luke 4:18's « la délivrance ») because the text says Jesus read 'the verse at the top of this chapter'.",
+  "Names and terms follow samuel-ajayi-crowther-a-life-children.fr: ship names unchanged (Myrmidon, Iphigenia, Pleiad, Dayspring); Cantorbéry; « Monseigneur » for 'My Lord' ('Right Reverend Bishop' → « Très Révérend Évêque »); « sept pence et demi »; « le Notre Père »; « Bonne nuit, papa ». Benue → « la Bénoué », Fulani → « peul », cowries → « cauris », Hannah kept with a gloss (« Anne, dans les Bibles françaises ») since the French Bible names Samuel's mother Anne. 'Over three hundred miles' → « plus de quatre cent cinquante kilomètres »; £1,000 → « mille livres ».",
+  "Crowther's 1837–1891 letters and journal quotations are rendered in French from the English (no published French text was used). Title « Samuel Ajayi Crowther (Pour ados) » (34 chars) keeps the full name like the children's edition. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Genesis 50:20",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Genesis 50:20a",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Genesis 50:20b",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 6:13a",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 6:13a",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 6:13a",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 9
+  },
+  {
+   "reference": "Isaiah 61:1",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 61:1",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 16:14",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 2
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 6
+  },
+  {
+   "reference": "1 Corinthians 4:7",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 4:7a",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 2,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 10:14",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 10:14",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 3,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 10:9",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 7
+  },
+  {
+   "reference": "Psalm 10:14",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 2:8",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 2:8",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 4:8-9",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 115:1",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 15:15",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 5
+  },
+  {
+   "reference": "2 Corinthians 4:8-9",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 6
+  },
+  {
+   "reference": "1 Samuel 2:8",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Samuel 3:18b",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 3,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Samuel 2:8",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 20:24",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Kings 17:6",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 3
+  },
+  {
+   "reference": "Acts 20:24",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 6
+  },
+  {
+   "reference": "Psalm 55:12-13",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 55:12",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 4:8",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 8:52",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 4
+  },
+  {
+   "reference": "John 12:24",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 6
+  }
+ ]
+}

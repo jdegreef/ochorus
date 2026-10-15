@@ -1,0 +1,25 @@
+{
+ "kind": "bio",
+ "slug": "george-macdonald",
+ "language": "fr",
+ "job_issue": 6042,
+ "references": [
+  {
+   "reference": "Matthew 5:26",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 8:12",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 John 1:5",
+   "status": "self_rendered",
+   "block_index": 30
+  }
+ ]
+}

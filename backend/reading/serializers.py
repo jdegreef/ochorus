@@ -8,6 +8,7 @@ from .models import (
     JournalEntry,
     PlanProgress,
     PlanSchedule,
+    ReadingGroup,
     ReadingProgress,
 )
 
@@ -136,3 +137,12 @@ class CustomShelfSerializer(serializers.ModelSerializer):
             "client_created_at",
             "client_updated_at",
         ]
+
+
+class ReadingGroupSerializer(serializers.ModelSerializer):
+    """A group's own facts — what its link already carries, and its code.
+    Never its creator or its members."""
+
+    class Meta:
+        model = ReadingGroup
+        fields = ["code", "plan_slug", "start_on", "reading_days"]

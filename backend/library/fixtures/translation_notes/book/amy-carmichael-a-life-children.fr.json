@@ -1,0 +1,184 @@
+{
+ "kind": "book",
+ "slug": "amy-carmichael-a-life-children",
+ "language": "fr",
+ "note": [
+  "Each chapter opens with a verse blockquote cited only by chapter (“— from Psalm 139”); the French keeps that shape (« — d’après Psaume 139 »). Where the English is KJV wording or the Louis Segond (1910) text carries the same sense in child-friendly words (Ps 139:14, Ps 68:6, Luke 14:21, Isa 40:11, 2 Cor 12:9, John 12:24), the Segond words are used verbatim and marked mined; Isa 40:11 keeps Segond's line-initial capital « Et ». The other epigraphs are simplified child paraphrases and are self_rendered.",
+  "Numbering: English Psalm 68:6 (“God setteth the solitary in families”) is Segond Psaume 68:7; the French cites the chapter only, so no visible number changes. Body quotations mined from Segond: 1 Cor 3:12 (the gold/silver/stubble list), Mark 16:15 (« Allez par tout le monde ») and 1 Cor 4:2 (« que chacun soit trouvé fidèle »); to fit that wording, Amy's “it does not say ‘successful’” becomes « il ne dit pas “couronné de succès” ».",
+  "Name/term choices: “the Dear Old Man” → « le Cher Vieux Monsieur »; the band's name “the Starry Cluster” → « la Grappe d’étoiles »; Preena's nickname “the Elf” → « le Lutin »; the Welcome hall → « la Bienvenue » / « la salle de la Bienvenue, le Welcome Hall »; “shawlies” kept with the gloss « filles à châle ». Things as They Are uses the shipped French title « Les choses telles qu’elles sont »; Gold Cord, Rose from Brier and If keep their English titles with a French gloss. Money stays in British units (cinq cents livres, quatre pence et demi). Amy's “Crash and tumble went the bandy” is rendered freely (« Et patatras, voilà le bandy par terre ! »).",
+  "The title follows the brief and the Pandita Ramabai children's edition (« (Pour enfants) »), not the C. S. Lewis edition's « (Pour les enfants) »; the attribution follows the Ramabai wording. Children's register with « tu » in the application paragraphs, questions and prayers, as in the reference editions. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 139:14",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 0
+  },
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 6
+  },
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 7
+  },
+  {
+   "reference": "1 Corinthians 3:13",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 0
+  },
+  {
+   "reference": "1 Corinthians 3:12",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 4,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 14:21",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 14:21",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 6
+  },
+  {
+   "reference": "Psalm 68:6",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 4,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 68:6",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 6
+  },
+  {
+   "reference": "Proverbs 3:5",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 0
+  },
+  {
+   "reference": "Proverbs 3:6",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 0
+  },
+  {
+   "reference": "Proverbs 3:5",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 7
+  },
+  {
+   "reference": "Daniel 12:3",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 0
+  },
+  {
+   "reference": "1 Corinthians 4:2",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 5,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Daniel 12:3",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 18:14",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 18:14",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 6
+  },
+  {
+   "reference": "Isaiah 40:11",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 40:11",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 6
+  },
+  {
+   "reference": "John 13:7",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 0
+  },
+  {
+   "reference": "John 13:7",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 6
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 7
+  },
+  {
+   "reference": "John 12:24",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 12:24",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 6
+  }
+ ]
+}

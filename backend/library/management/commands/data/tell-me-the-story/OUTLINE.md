@@ -1,0 +1,303 @@
+# Tell Me the Story: outline
+
+The Bible's own stories retold for children aged 6 to 10 (an Ochorus Original), short enough to read aloud at bedtime. The name comes from Katherine Hankey's hymn *Tell Me the Old, Old Story* (1866, public domain). The manuscripts in this folder (`tell-me-the-story-<n>.md`) are the source of truth; `build_tell_me_the_story` converts them (the closed Markdown subset of `build_rooted.parse`), lifts each story's questions into `Chapter.study_questions`, and checks the shape.
+
+It sits below *The Big Story* (the whole Bible for ages 13 to 17) and beside *Brave for God* (true lives for ages 8 to 12). *Hurlbut's Life of Christ for Young and Old* stays the classic for older readers.
+
+## Stance
+
+Mainstream evangelical, as *The Big Story*. The Bible is God's true Word, and God is the hero of every story: a story ends "God kept His promise", not "be brave like David". Where Christians genuinely differ (how long the days of Genesis 1 were, and so on), a children's story simply tells what the text says and doesn't argue.
+
+## Faithfulness rules
+
+- **Nothing invented and passed off as Scripture.** A story may add small, plain scene-setting a child needs (the heat, the dark, how far a walk is), but never a new event, a new character or a speech the Bible doesn't give.
+- **Speech stays close to the text.** People in the story say what the Bible says they said, in simple words. Anything set in quotation marks with a reference in brackets is exact BSB.
+- **Hard stories are told honestly, without gore.** Cain and Abel, the flood, Moriah and Joseph's brothers are in the Bible for a reason; the stories say what happened in a sentence and move on to what God did.
+- **Every Jesus link comes from the New Testament itself.** A story gets a "Looking ahead to Jesus" line only where the New Testament makes the link (John 1:51 for Jacob's ladder, Hebrews 12:24 for Abel). Where it doesn't (Babel, Rebekah, Hagar), there is no link.
+
+## Each story
+
+- **Opening verse:** a `>` blockquote, `"…" — Book 1:2`, exact BSB (checked by script). The young-reader layout draws it as a card.
+- **The story:** about 400 to 600 words, about four minutes read aloud at the gentle 0.9× speed. Short sentences, real names, British spelling. "He" is capitalised for God, as in the BSB.
+- `**Looking ahead to Jesus:**` one or two sentences, only where the New Testament links the story to Jesus.
+- `**Read it in your Bible:**` the passage, for a grown-up to read alongside or an older child to read alone.
+- **A closing prayer:** the last paragraph, all in italics, ending "Amen." The layout draws it as the "now we pray" card.
+- `### Talk about it together`: three questions, each `- Q:` with an `  A:` line beneath. Two recall the story; the third brings it home. The answers are for the grown-up reading along. The build moves them into `Chapter.study_questions`, where the reader folds the answers and read-aloud speaks only the questions.
+
+## The series: eight books in three parts
+
+**Old Testament Stories**
+1. In the Beginning (Genesis): creation to Joseph
+2. Out of Egypt (Exodus to Ruth): baby Moses, the Passover, the Red Sea, Sinai, Jericho, Deborah, Gideon, Ruth
+3. Kings and Prophets (1 Samuel to Malachi): Hannah, Samuel, David, Solomon, Elijah, Naaman, Jonah, Daniel, Esther, Nehemiah
+
+**The Life of Jesus**
+4. The King Is Born: Jesus' birth, the boy in the temple, His baptism, the first disciples, the woman at the well
+5. Wonders and Stories: the storm stilled, the 5,000 fed, Jairus's daughter, Zacchaeus, the lost son, the good Samaritan
+6. The Greatest Rescue: Palm Sunday, the Last Supper, the cross, the empty tomb, Emmaus, breakfast by the sea, the ascension
+
+**New Testament Stories**
+7. The Church Begins: Pentecost, the lame man healed, Stephen, Philip and the Ethiopian, Saul, Dorcas, Peter in prison
+8. To the Ends of the Earth: Lydia, the jailer, Priscilla and Aquila, the shipwreck, Onesimus, John on Patmos
+
+## Book 1: In the Beginning
+
+An Introduction (for the child — the note for grown-ups lives in about_html, so read-aloud never speaks it — with its own three questions: the reader wants questions on every chapter or none), then twenty-one stories from Genesis.
+
+1. God Makes Everything (Genesis 1:1–2:3)
+2. A Garden for Adam and Eve (Genesis 2)
+3. The Snake's Trick (Genesis 3)
+4. Two Brothers (Genesis 4:1–16)
+5. Noah Builds a Boat (Genesis 6–8)
+6. The Rainbow Promise (Genesis 8:15–9:17)
+7. The Tower That Reached Too High (Genesis 11:1–9)
+8. Abram Sets Out (Genesis 12:1–9)
+9. Count the Stars (Genesis 15:1–6)
+10. Sarah Laughs (Genesis 18:1–15; 21:1–7)
+11. The God Who Sees (Genesis 16; 21:8–21)
+12. God Will Provide (Genesis 22:1–19)
+13. A Bride at the Well (Genesis 24)
+14. Twin Brothers (Genesis 25:19–34; 27)
+15. A Stairway to Heaven (Genesis 28:10–22)
+16. Jacob Wrestles (Genesis 32–33)
+17. Joseph's Colourful Robe (Genesis 37)
+18. Joseph in Prison (Genesis 39–40)
+19. Pharaoh's Dreams (Genesis 41)
+20. The Brothers Come to Egypt (Genesis 42–44)
+21. "I Am Joseph!" (Genesis 45; 50:15–21)
+
+## Checking
+
+- Every opening verse, and every quotation with a reference in brackets, against the BSB text, by script.
+- Ages, numbers and names against the chapter (Abram 75, Abraham 100, Joseph 17 and 30, twenty pieces of silver).
+- The English audit, and the house title case.
+
+## Book 2: Out of Egypt
+
+An Introduction ("The God Who Rescues"), then twenty-one stories from Exodus to Ruth.
+
+1. A Baby in a Basket (Exodus 1–2:10)
+2. The Bush That Didn't Burn Up (Exodus 3–4)
+3. "Let My People Go!" (Exodus 5; 7–10)
+4. The Night of the Passover (Exodus 11–12)
+5. A Path Through the Sea (Exodus 13:17–15:21)
+6. Bread from Heaven (Exodus 16)
+7. Moses' Tired Arms (Exodus 17)
+8. Ten Good Words (Exodus 19–20)
+9. The Golden Calf (Exodus 32; 34:1–10)
+10. A Tent for God (Exodus 25; 35–36; 40)
+11. Twelve Spies (Numbers 13–14)
+12. The Snake on the Pole (Numbers 21:4–9)
+13. The Donkey Who Talked (Numbers 22–24)
+14. Rahab and the Red Cord (Joshua 2; 6:22–25)
+15. Crossing the Jordan (Joshua 1:1–9; 3–4)
+16. The Walls of Jericho (Joshua 6)
+17. Deborah and the Rainstorm (Judges 4–5)
+18. Gideon's Small Army (Judges 6–7)
+19. Samson the Strong (Judges 13; 16)
+20. Ruth Stays with Naomi (Ruth 1–2)
+21. Boaz the Redeemer (Ruth 3–4)
+
+Handled with care: the Passover night (the firstborn told in one sentence; the grown-up's answer notes God's many warnings), the golden calf ("many people died", not the Levites' sword), Jericho ("its people died in the battle", Rahab saved), Jael (Sisera "would never trouble God's people again"), Samson's blinding and death. Rahab is "not one of God's people, and she had not lived a good life", not named a prostitute.
+## Book 3: Kings and Prophets
+
+An Introduction ("Waiting for the King"), then twenty-two stories from 1 Samuel to Nehemiah, the last of the Old Testament Stories.
+
+1. Hannah's Prayer (1 Samuel 1:1–2:11; 2:18–21)
+2. "Speak, Lord" (1 Samuel 3)
+3. The Shepherd Boy Chosen (1 Samuel 16:1–13)
+4. David and the Giant (1 Samuel 17)
+5. David and Jonathan (1 Samuel 18–20)
+6. David Spares the King (1 Samuel 24)
+7. A Seat at the King's Table (2 Samuel 4:4; 9)
+8. The Story of the Little Lamb (2 Samuel 11:1–12:13; Psalm 51)
+9. Solomon Asks for Wisdom (1 Kings 3)
+10. Elijah and the Ravens (1 Kings 17:1–16)
+11. Fire on the Mountain (1 Kings 18)
+12. The Still, Small Voice (1 Kings 19:1–18)
+13. Naaman Washes Seven Times (2 Kings 5:1–16)
+14. Chariots of Fire (2 Kings 6:8–23)
+15. Josiah, the Boy King (2 Kings 22–23:25)
+16. Jonah Runs Away (Jonah 1–2)
+17. Jonah and the Great City (Jonah 3–4)
+18. The Promise of a Child (Isaiah 6; 7:14; 9:2–7; 53:4–6; Micah 5:2)
+19. The Fiery Furnace (Daniel 3)
+20. Daniel and the Lions (Daniel 6)
+21. Queen Esther (Esther 2–8)
+22. Nehemiah Builds the Wall (Nehemiah 1–2; 4; 6:15–16)
+
+Handled with care: Peninnah's "other wife" status told plainly; Goliath's death ("David had won", no beheading); David and Bathsheba ("wanted her to be his own wife", Uriah sent to the fiercest fighting) with a grown-up note to explain no more than the child asks, and the baby's death left as "great sadness to his family"; the two women before Solomon are "two women", not named prostitutes; Carmel's false prophets "were put to death"; the furnace soldiers' death in one clause; Daniel's accusers "were punished instead"; Haman "put to death on the very gallows he had built".
+
+## Book 4: The King Is Born
+
+The first book of the Life of Jesus. An Introduction ("The Waiting Is Over"), then twenty-one stories from Matthew, Luke and John.
+
+**In the Life of Jesus books the Jesus line changes.** Every story is about Jesus, so "Looking ahead to Jesus" gives way to `**The promise kept:**`, used only where a Gospel itself says an Old Testament promise came true (Matthew 1:23, 2:6, 2:15, 3:3; Luke 1:17, 1:32, 1:55, 1:69–73, 2:32, 4:21; John 1:51, 3:14, 4:25–26).
+
+1. The Angel in the Temple (Luke 1:5–25)
+2. Mary Says Yes (Luke 1:26–38)
+3. Mary Visits Elizabeth (Luke 1:39–56)
+4. "His Name Is John" (Luke 1:57–80)
+5. Joseph's Dream (Matthew 1:18–25)
+6. Born in Bethlehem (Luke 2:1–7)
+7. Shepherds in the Night (Luke 2:8–20)
+8. Simeon and Anna (Luke 2:21–40)
+9. The Wise Men and the Star (Matthew 2:1–12)
+10. Escape to Egypt (Matthew 2:13–23)
+11. The Boy in the Temple (Luke 2:41–52)
+12. A Voice in the Wilderness (Matthew 3:1–12; Luke 3:7–18)
+13. Jesus Is Baptised (Matthew 3:13–17; Luke 3:21–23)
+14. Tested in the Desert (Matthew 4:1–11)
+15. "Come and See" (John 1:35–51)
+16. Water into Wine (John 2:1–11)
+17. Nicodemus Comes at Night (John 3:1–21)
+18. The Woman at the Well (John 4:1–42)
+19. "Your Son Will Live" (John 4:43–54)
+20. Good News in Nazareth (Luke 4:14–30)
+21. Fishers of People (Luke 5:1–11; Matthew 4:18–22)
+
+Nativity-play traditions are not added: no donkey, stable, innkeeper or animals (the text has a manger and no room in the inn); the wise men are not counted and come to a house, later; the shepherds are not called despised; John is Jesus' "relative", not cousin. The grown-up answers point these out. Herod's killing of the boys is one sentence. The woman at the well's five husbands are told plainly, without judgement.
+
+## Advent plan: Tell Me the Christmas Story
+
+`tell-me-the-christmas-story` in `plan_seed.py`: 25 nights, 1–25 December. Days 1–18 are Old Testament promise stories from Books 1–3 (creation, the snake's defeat, the rainbow, Abram's call, the stars, Sarah, Moriah, Jacob's stairway, Joseph, the burning bush, the Passover, the manna, the tabernacle, the bronze snake, Rahab, Boaz, David chosen in Bethlehem, Isaiah's promised child); days 19–25 are Book 4's stories 1–7, so that day 24 is the birth and day 25 the shepherds.
+## Book 5: Wonders and Stories
+
+The middle book of the Life of Jesus. An Introduction ("Who Is This?"), then twenty-one stories: miracles and parables, the Sermon on the Mount and the Lord's Prayer, ending with Lazarus, which leads into Book 6.
+
+1. Through the Roof (Mark 2:1–12)
+2. The Tax Collector Who Followed (Mark 2:13–17; Matthew 9:9–13)
+3. Blessed Are You (Matthew 5:1–17, 43–48)
+4. Look at the Birds (Matthew 6:5–15, 25–34) — the Lord's Prayer
+5. The Wise and Foolish Builders (Matthew 7:24–29)
+6. The Soldier's Great Faith (Luke 7:1–10; Matthew 8:5–13)
+7. The Widow's Only Son (Luke 7:11–17)
+8. The Storm on the Lake (Mark 4:35–41)
+9. The Farmer and the Seeds (Mark 4:1–20)
+10. Jairus's Little Girl (Mark 5:21–43)
+11. Five Loaves and Two Fish (John 6:1–14, 31–35)
+12. Walking on the Water (Matthew 14:22–33)
+13. The Good Samaritan (Luke 10:25–37)
+14. Mary and Martha (Luke 10:38–42)
+15. The Lost Sheep and the Lost Coin (Luke 15:1–10)
+16. The Son Who Came Home (Luke 15:11–32)
+17. The Ten Men Who Were Healed (Luke 17:11–19)
+18. Let the Children Come (Mark 10:13–16)
+19. Blind Bartimaeus (Mark 10:46–52)
+20. The Man in the Tree (Luke 19:1–10)
+21. Lazarus, Come Out! (John 11:1–45)
+
+"The promise kept" is used only four times: Hosea 6:6 (Matthew 9:13), the Law and Prophets fulfilled (Matthew 5:17), Isaiah 53:4 (Matthew 8:17), and the manna (John 6:31–35). Bartimaeus's "Son of David" is drawn out in the story itself. Not added: the roof's material (Luke has tiles), ropes, the Samaritan's donkey ("his own animal"); Zacchaeus "probably" cheated (his own words imply it).
+
+## Book 6: The Greatest Rescue
+
+The last book of the Life of Jesus. An Introduction ("The Most Important Story"), then twenty-two stories from the Transfiguration to the ascension, ending with the disciples waiting for the Holy Spirit (Book 7).
+
+1. The Shining Mountain (Matthew 17:1–9)
+2. Mary's Gift (John 12:1–8; Mark 14:3–9)
+3. The King on a Donkey (Matthew 21:1–11; John 12:12–16)
+4. Children Singing in the Temple (Matthew 21:12–17)
+5. The Widow's Two Coins (Mark 12:41–44)
+6. Jesus Washes Their Feet (John 13:1–17, 34–35)
+7. The Last Supper (Luke 22:7–23, 31–34; Matthew 26:17–30)
+8. Praying in the Garden (Mark 14:32–42; Luke 22:39–46)
+9. Arrested at Night (John 18:1–12; Luke 22:47–53)
+10. Peter's Three Denials (Luke 22:31–34, 54–62)
+11. Jesus and Pilate (John 18:28–19:16; Mark 14:60–64)
+12. The Cross (Luke 23:26–43; John 19:17–27)
+13. "It Is Finished" (John 19:28–30; Mark 15:33–41; Luke 23:44–49)
+14. Laid in the Tomb (Matthew 27:57–66; John 19:38–42)
+15. He Is Risen! (Matthew 28:1–10; Luke 24:1–12)
+16. Mary in the Garden (John 20:1–18)
+17. The Road to Emmaus (Luke 24:13–35)
+18. "Peace Be with You" (Luke 24:36–49; John 20:19–23)
+19. Thomas Believes (John 20:24–31)
+20. Breakfast on the Beach (John 21:1–19)
+21. Go and Tell the World (Matthew 28:16–20)
+22. Jesus Goes Up to Heaven (Acts 1:1–11; Luke 24:50–53)
+
+The passion is told plainly and without graphic detail: whipped, crowned with thorns, nailed to a cross, in single clauses; the stories dwell on what Jesus said (forgiveness, paradise, His mother, "It is finished"). Where the Gospels' accounts are combined (the empty tomb, the appearances), nothing is added that none of them says. Emmaus gathers up every "Looking ahead to Jesus" and "The promise kept" in the series (Luke 24:27). Breakfast on the Beach draws out John's two charcoal fires (18:18; 21:9) for Peter's three denials and three "I love You"s.
+
+## Book 7: The Church Begins
+
+The first book of the New Testament Stories. An Introduction ("The Story Goes On"), then twenty stories from Acts 1–13, ending with Barnabas and Saul sent out from Antioch (Book 8). "The promise kept" continues: Joel 2 (Acts 2:16), Psalm 118:22 (Acts 4:11), Isaiah 53 (Acts 8:32–35), the prophets (Acts 10:43).
+
+1. Wind and Fire (Acts 2:1–13)
+2. Peter Speaks Up (Acts 2:14–41)
+3. Sharing Everything (Acts 2:42–47; 4:32–37)
+4. The Man at the Beautiful Gate (Acts 3:1–16)
+5. "We Cannot Stop Speaking" (Acts 4:1–31)
+6. Out Through the Prison Doors (Acts 5:12–42)
+7. Seven Helpers (Acts 6:1–7)
+8. Stephen Sees Jesus (Acts 6:8–15; 7:54–8:3)
+9. Good News in Samaria (Acts 8:1–17)
+10. Philip and the Man from Ethiopia (Acts 8:26–40)
+11. The Light on the Road (Acts 9:1–9)
+12. Brave Ananias (Acts 9:10–22)
+13. Down the Wall in a Basket (Acts 9:23–31)
+14. "Tabitha, Get Up!" (Acts 9:32–43)
+15. Peter's Strange Dream (Acts 10:1–23)
+16. Good News for Everyone (Acts 10:24–48; 11:1–18)
+17. They Called Them Christians (Acts 11:19–30)
+18. Peter in Prison (Acts 12:1–11, 24)
+19. Rhoda at the Gate (Acts 12:12–19)
+20. Sent Out (Acts 13:1–4)
+
+Left out on purpose: Ananias and Sapphira (Acts 5:1–11), too stark for this age band without more room than a four-minute story allows; it can come back in a teens retelling. Stephen's death and James's are told in a sentence or two, dwelling on Jesus standing to welcome Stephen and on his prayer of forgiveness. Not added: a fixed "ten days" before Pentecost; Persia (Acts 2:9 names Parthia and Media); which James in 12:17 ("probably" the Lord's brother). Callbacks: Pentecost reverses Babel (Book 1); "God meant it for good" (Joseph) for the scattering; "Talitha koum" for Dorcas.
+
+## Book 8: To the Ends of the Earth
+
+The last book of the series. An Introduction ("A Light for Every Nation", Acts 13:47), then twenty-one stories: Acts 13–28, four letters told as stories, and two from Revelation, ending where Book 1 began.
+
+1. Mistaken for Gods (Acts 14:8–20)
+2. Lydia by the River (Acts 16:6–15)
+3. Singing at Midnight (Acts 16:16–34)
+4. To an Unknown God (Acts 17:16–34)
+5. Priscilla and Aquila (Acts 18:1–4, 18–28)
+6. The Riot at Ephesus (Acts 19:11–20, 23–41)
+7. The Boy Who Fell Asleep (Acts 20:7–12)
+8. Goodbye at Miletus (Acts 20:17–38)
+9. Seized in the Temple (Acts 21:10–22:21; 23:11)
+10. Paul's Nephew (Acts 23:12–24)
+11. Before the King (Acts 25:23–26:32)
+12. The Great Storm (Acts 27:1–26)
+13. Shipwreck! (Acts 27:27–44)
+14. The Snake on Malta (Acts 28:1–10)
+15. Rome at Last (Acts 28:11–31)
+16. Don't Let Anyone Look Down on You (1 Timothy 4:12; 2 Timothy 1:5; 3:14–15)
+17. The Runaway Slave (Philemon)
+18. What Love Is Like (1 Corinthians 13)
+19. The Armour of God (Ephesians 6:10–20)
+20. John on Patmos (Revelation 1:9–19)
+21. All Things New (Revelation 21–22)
+
+The last story's "The promise kept" is Revelation 22:3, "No longer will there be any curse": the snake crushed (Book 1, Genesis 3:15) and the tree of life open again (Genesis 3:24 → Revelation 22:2). Told gently: Paul stoned at Lystra ("they thought he was dead"), beaten at Philippi, the jailer's despair. Revelation is kept to its plain heart and the book says plainly that much of it is pictures. Not overstated: "one of the very first" churches in Europe; Paul "probably" in Rome for Ephesians; no Roman soaked-shield lore. Onesimus's possible theft is "may have" (Philemon 18 implies it).
+## Book 9: Songs and Wise Words (a companion)
+
+A companion to the eight story books, not a ninth part of the story: the books in the middle of the Bible that are mostly songs, poems and sayings. An Introduction ("The Songs in the Middle of the Bible"), then nineteen chapters.
+
+**Its own faithfulness rule.** Where the Bible gives the story behind a psalm (a heading, or 1 Samuel 21 for Psalm 56), the chapter tells it. Where a proverb needs picturing, the chapter IMAGINES a child today and says "imagine" plainly — never presented as Scripture. Psalm text is quoted or closely paraphrased; every bracketed quotation is exact BSB.
+
+1. The Shepherd's Song (Psalm 23; John 10:11–15) — Looking ahead to Jesus: John 10:11
+2. You Made Me (Psalm 139)
+3. The Sky Is Singing (Psalms 19 and 8)
+4. When I Am Afraid (1 Samuel 21:10–15; Psalm 56)
+5. Be Still (Psalm 46)
+6. Under His Wings (Psalm 91; Luke 13:34) — honest that it is not a promise of no trouble
+7. Make a Joyful Noise (Psalms 100 and 103)
+8. Songs for Sad Days (Psalm 42) — lament as a way of prayer
+9. Everything That Breathes (Psalm 150)
+10. Two Paths (Psalm 1; Proverbs 4:18)
+11. Where Wisdom Starts (Proverbs 1:1–7; 9:10) — Looking ahead to Jesus: 1 Corinthians 1:30
+12. The Little Ant (Proverbs 6:6–11)
+13. A Gentle Answer (Proverbs 15:1; 12:18, 25; 16:24)
+14. Trust with All Your Heart (Proverbs 3:1–12)
+15. A Friend Who Sticks Close (Proverbs 17:17; 18:24; 13:20)
+16. Job Loses Everything (Job 1–2)
+17. God Speaks from the Storm (Job 38–42; James 5:11)
+18. A Time for Everything (Ecclesiastes 3:1–14)
+19. Remember Your Creator (Ecclesiastes 12; 2:4–11)
+
+The BSB check caught five proverbs quoted from memory in modern wording (4:18, 12:18, 13:20, 18:24, Colossians 3:23); all now exact. Job's children's deaths are one sentence; the friends' silence is commended and their later accusations named as wrong (Job 42:7).
+
+Cover: its own colour family (plum into amber, an evening song), David's lyre in the sky, still waters and two sheep below (Psalm 23).

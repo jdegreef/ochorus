@@ -1,0 +1,199 @@
+{
+ "kind": "book",
+ "slug": "the-imitation-of-christ-teens",
+ "language": "fr",
+ "note": [
+  "Every chapter epigraph is Louis Segond (1910) verbatim, cited with the French book name and no version label (as in a-retrospect-teens.fr); where the English KJV quotes part of a verse, the matching Segond portion is used (1 Cor 8:1b, Jas 1:19b starting at Segond's « Ainsi, », Matt 6:6a, 1 Cor 10:13a, John 15:15a, Prov 24:16a). Segond's line-initial capitals and its unaccented « A celui » (Isa 26:3) are kept as printed. Ch. 3 quotes John 21:22 with Segond's opening clause (« Si je veux qu’il demeure… ») so the short reply reads naturally.",
+  "All of Thomas's own sentences are taken word for word from the shipped full edition (the-imitation-of-christ.fr), cut only where the English cuts, so the full and teen editions read as one book; this includes the Book III address « mon fils » for the English 'child' (ch. 12), and ch. 1's John 8:12 and Ecclesiastes 1:8, which follow that edition's wording and are self_rendered. Ch. 5 re-persons « il est humilié, purifié et instruit » to « nous sommes humiliés, purifiés et instruits » as the English does.",
+  "Names follow the full edition: Thomas a Kempis (unaccented, French usage), mont Sainte-Agnès, Frères de la Vie commune. The title « L’Imitation de Jésus-Christ (Pour ados) » (39 characters) is built on the full edition's title as instructed and exceeds the 28-character target; « L’Imitation (Pour ados) » would be the short fallback. Ch. 10 glosses « d’une âme égale » in place of the English gloss of 'equanimity'; ch. 11 drops the gloss of 'eventide', since « le soir venu » needs none.",
+  "Short Gospel echoes worded exactly as Segond are marked mined (Matt 6:34 in ch. 11, Matt 20:16 and 20:28 in ch. 12, « le pain de vie » John 6:35 in ch. 13); a reviewer may prefer to treat them as self_rendered. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Ecclesiastes 1:2",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 8:12",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 5
+  },
+  {
+   "reference": "Ecclesiastes 1:2",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 7
+  },
+  {
+   "reference": "Ecclesiastes 1:8",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 8
+  },
+  {
+   "reference": "1 Corinthians 8:1b",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "James 1:19b",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 21:22",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 6:6a",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 9
+  },
+  {
+   "reference": "1 Corinthians 10:13a",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 10:13b",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 8
+  },
+  {
+   "reference": "Galatians 6:2",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Galatians 6:2",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 10
+  },
+  {
+   "reference": "Proverbs 29:25",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 15:15a",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 2
+  },
+  {
+   "reference": "1 John 4:19",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 John 4:19",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 10
+  },
+  {
+   "reference": "Proverbs 24:16a",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 6:34",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 26:3",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 20:16",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 20:28",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 71:12",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 9
+  },
+  {
+   "reference": "Psalm 90:12",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 6:35",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 119:105",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 7
+  }
+ ]
+}

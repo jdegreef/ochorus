@@ -1,0 +1,192 @@
+{
+ "kind": "book",
+ "slug": "elisabeth-elliot-a-life-teens",
+ "language": "fr",
+ "note": [
+  "The English teen edition quotes the KJV in each chapter's epigraph; every French epigraph is the whole verse(s) verbatim from Louis Segond (1910), with the “(KJV)” label dropped and only French typographic spacing added. Psalm 68:5 and Psalm 62:8 (English numbering) are Psaume 68:6 and 62:9 in Segond and are cited that way in the text; the Psalm 62 epigraph stops before Segond's closing “— Pause” (Selah), ending « Dieu est notre refuge. »",
+  "In-body quotations marked mined are Segond word for word (partial verses). Lamentations 3:26 in Segond has no word for KJV's “hope”, so ch. 3 quotes « Il est bon d’attendre en silence » and the study question talks of « attendre en silence »; Psalm 16:6's “goodly heritage” becomes Segond's « héritage délicieux » (chapter 1 title too). All other echoes (living sacrifice, grain of wheat, earthen vessels as « vases de terre », everlasting love/arms, carried to grey hair) are self_rendered.",
+  "Names, places and terms follow elisabeth-elliot-a-life-children.fr (les Waorani, les Quichuas/le quichua, les Colorados, Shandia, Arajuno, Palm Beach, la Tiwaeno, Gikari = « pic-vert », « Doe the nexte thynge » kept in old English with the gloss « Fais la chose suivante »). Jim Elliot's 1949 sentence is quoted as in Brave for God Book Three fr: « Il n’est pas fou, celui qui donne ce qu’il ne peut garder pour gagner ce qu’il ne peut perdre. »",
+  "Her books keep their English titles in italics with a literal French gloss in guillemets the first time (Through Gates of Splendor, These Strange Ashes, No Graven Image, The Savage My Kinsman, Let Me Be a Woman, Passion and Purity, Gateway to Joy, Amy Carmichael's If); a reviewer may prefer published French titles where they exist. Title « Elisabeth Elliot (Pour ados) » is 28 characters. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 16:6",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 16:6a",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 7
+  },
+  {
+   "reference": "Lamentations 3:26",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Lamentations 3:26",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 55:8-9",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ecclesiastes 4:9",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ecclesiastes 4:9a",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 12:24",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 12:24",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 7
+  },
+  {
+   "reference": "Psalm 68:5",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 68:5",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 7
+  },
+  {
+   "reference": "Isaiah 42:16",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 42:16a",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 12:21",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 12:21",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 8
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 8
+  },
+  {
+   "reference": "Psalm 62:8",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 62:8",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 4
+  },
+  {
+   "reference": "Deuteronomy 33:27",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 4
+  },
+  {
+   "reference": "Deuteronomy 33:27",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 6
+  },
+  {
+   "reference": "Isaiah 46:4",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 46:4",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 7
+  }
+ ]
+}

@@ -1,0 +1,241 @@
+{
+ "kind": "book",
+ "slug": "pandita-ramabai-a-life-teens",
+ "language": "fr",
+ "note": [
+  "The English teen edition quotes the ASV in every epigraph; as in a-retrospect-teens.fr, each French epigraph is the whole verse (or range) verbatim from Louis Segond (1910), the “(ASV)” label is dropped, and the attribution's ASV sentence becomes the Segond sentence. Only change to Segond: French spacing before : ; ? ! and a closing full stop where Segond's verse ends in « ; » (Isaiah 54:5, 1 Thessalonians 5:21). Psalm 56:3 (English) is Psaume 56:4 in Segond and is cited so; the reference row keeps the English number.",
+  "In-body scripture quotations that match the English are Segond word for word (`mined`), including Ramabai's own scriptural sayings where her words are the verse (Job 1:21, Romans 5:8, Deuteronomy 32:7, Isaiah 54:17). Re-personed or loose echoes are `self_rendered`: Heb 11:8 « Je suis partie comme Abraham, sans savoir où j’allais » (same wording as the children's edition), Matthew 4:16 « assise dans les ténèbres », John 1:46 « de Nazareth », and Malachi 3:10 « Mettez-moi à l’épreuve » (Segond has « de la sorte »). Note the children's fr edition renders Job 1:21 in its own simple wording; this edition uses Segond.",
+  "Names, places and terms follow pandita-ramabai-a-life-children.fr (Poona, Srinivas, Lakshmibai, Manorama « joie du cœur », Sharada Sadan « la Maison de la Sagesse », Mukti, Kedgaon, Girija, le père Goreh, Cachemire, Calcutta); new terms: veuves-enfants (child-widows), brahmane, Kripa Sadan « la Maison de la Grâce », Arya Mahila Samaj, Congrès national indien, convention de Keswick, Azusa Street, Société biblique; The High-Caste Hindu Woman is given as « La Femme hindoue de haute caste » with the English title in parentheses at first mention. The coin “pice” is kept as « pice »; “green gram” is « haricots mungo »; “outcastes” → « intouchables ».",
+  "Distances converted to kilometres: four thousand miles → « plus de six mille kilomètres » (as the children's edition), nine hundred miles → « près de mille cinq cents kilomètres », over two miles → « plus de trois kilomètres », thirty-five or forty miles → « cinquante-cinq ou soixante-cinq kilomètres ». Reader address uses « tu », narration passé simple, following a-retrospect-teens.fr. Title « Pandita Ramabai (Pour ados) » is 27 characters.",
+  "Ramabai's English-language writings are rendered into French in-session (no published French versions consulted). AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Deuteronomy 6:6-7",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Deuteronomy 6:7",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 27:10",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 27:10",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ezekiel 36:26",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ezekiel 36:26",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 11,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 54:5",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 6:44",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 54:5",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 31:8",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 31:8",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hebrews 11:8",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 1
+  },
+  {
+   "reference": "John 4:10",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Thessalonians 5:21",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 1:46",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 4
+  },
+  {
+   "reference": "1 Thessalonians 5:21",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 4:16",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 4:16",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 6
+  },
+  {
+   "reference": "Romans 5:8",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 56:3",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 54:17",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 56:3",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Deuteronomy 32:7",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Deuteronomy 32:7",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 2,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 5:8",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Malachi 3:10",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Malachi 3:10",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 5
+  },
+  {
+   "reference": "Acts 2:18",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 2:18",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 6:10",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Job 1:21",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 4,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 6:10",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}
