@@ -184,7 +184,7 @@
 	<div class="account-item muted" aria-live="polite">
 		{@render row('download', `${t('offline.downloading')} ${active.done} / ${active.total}`)}
 	</div>
-{:else}
+{:else if offlineBooks.supported}
 	<button class="account-item" onclick={download} disabled={!!offlineBooks.active}>
 		{@render row('download', failed ? t('offline.needsConnection') : t('offline.download'))}
 	</button>
