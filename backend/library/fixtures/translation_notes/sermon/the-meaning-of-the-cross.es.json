@@ -1,0 +1,348 @@
+{
+ "kind": "sermon",
+ "slug": "the-meaning-of-the-cross",
+ "language": "es",
+ "job_issue": 5317,
+ "references": [
+  {
+   "reference": "Luke 9:23",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Luke 22:42b",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Galatians 2:20a",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Galatians 2:20b",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Philippians 3:13b-14",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Philippians 3:10a",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "1 Corinthians 6:19b-20",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Luke 18:31-32a",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "Luke 18:32b-33",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Luke 18:34",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Matthew 16:21",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Matthew 16:21b",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Matthew 16:22",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Matthew 16:22b",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Matthew 16:18",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Matthew 16:18b-19a",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Matthew 16:22b",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Matthew 16:23",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Matthew 16:23b",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Matthew 16:24-25a",
+   "status": "self_rendered",
+   "block_index": 66
+  },
+  {
+   "reference": "Matthew 16:25b",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Matthew 16:25",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "Hebrews 5:8",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Hebrews 5:8",
+   "status": "self_rendered",
+   "block_index": 75
+  },
+  {
+   "reference": "Hebrews 5:8",
+   "status": "self_rendered",
+   "block_index": 76
+  },
+  {
+   "reference": "Hebrews 2:10",
+   "status": "self_rendered",
+   "block_index": 76
+  },
+  {
+   "reference": "1 Peter 3:6",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Mark 12:30",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Matthew 10:39b",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Matthew 10:39b",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Matthew 25:40",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Matthew 25:45",
+   "status": "self_rendered",
+   "block_index": 100
+  },
+  {
+   "reference": "Matthew 25:40",
+   "status": "self_rendered",
+   "block_index": 107
+  },
+  {
+   "reference": "1 Peter 3:4",
+   "status": "self_rendered",
+   "block_index": 111
+  },
+  {
+   "reference": "Ephesians 5:23",
+   "status": "self_rendered",
+   "block_index": 112
+  },
+  {
+   "reference": "Psalm 37:34a",
+   "status": "self_rendered",
+   "block_index": 117
+  },
+  {
+   "reference": "Matthew 7:9",
+   "status": "self_rendered",
+   "block_index": 117
+  },
+  {
+   "reference": "Matthew 6:12",
+   "status": "self_rendered",
+   "block_index": 124
+  },
+  {
+   "reference": "Matthew 10:39b",
+   "status": "self_rendered",
+   "block_index": 129
+  },
+  {
+   "reference": "Luke 22:42b",
+   "status": "self_rendered",
+   "block_index": 130
+  },
+  {
+   "reference": "Matthew 1:19",
+   "status": "self_rendered",
+   "block_index": 132
+  },
+  {
+   "reference": "John 5:19",
+   "status": "self_rendered",
+   "block_index": 137
+  },
+  {
+   "reference": "Matthew 13:58",
+   "status": "self_rendered",
+   "block_index": 140
+  },
+  {
+   "reference": "Genesis 1:16",
+   "status": "self_rendered",
+   "block_index": 140
+  },
+  {
+   "reference": "Genesis 1:16",
+   "status": "self_rendered",
+   "block_index": 145
+  },
+  {
+   "reference": "Psalm 8:3",
+   "status": "self_rendered",
+   "block_index": 146
+  },
+  {
+   "reference": "Matthew 4:3",
+   "status": "self_rendered",
+   "block_index": 146
+  },
+  {
+   "reference": "John 19:28",
+   "status": "self_rendered",
+   "block_index": 147
+  },
+  {
+   "reference": "Psalm 90:10",
+   "status": "self_rendered",
+   "block_index": 151
+  },
+  {
+   "reference": "Psalm 16:5",
+   "status": "self_rendered",
+   "block_index": 153
+  },
+  {
+   "reference": "1 Peter 3:4",
+   "status": "self_rendered",
+   "block_index": 155
+  },
+  {
+   "reference": "Matthew 16:25b",
+   "status": "self_rendered",
+   "block_index": 155
+  },
+  {
+   "reference": "Matthew 6:9b",
+   "status": "self_rendered",
+   "block_index": 162
+  },
+  {
+   "reference": "Titus 2:4-5",
+   "status": "self_rendered",
+   "block_index": 165
+  },
+  {
+   "reference": "Luke 12:49a",
+   "status": "self_rendered",
+   "block_index": 166
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "self_rendered",
+   "block_index": 167
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "self_rendered",
+   "block_index": 168
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "self_rendered",
+   "block_index": 171
+  },
+  {
+   "reference": "Mark 10:14b",
+   "status": "self_rendered",
+   "block_index": 171
+  },
+  {
+   "reference": "Romans 5:3-5",
+   "status": "self_rendered",
+   "block_index": 171
+  },
+  {
+   "reference": "Isaiah 43:2-3a",
+   "status": "self_rendered",
+   "block_index": 175
+  },
+  {
+   "reference": "Proverbs 13:24a",
+   "status": "self_rendered",
+   "block_index": 176
+  },
+  {
+   "reference": "2 Timothy 2:12a",
+   "status": "self_rendered",
+   "block_index": 176
+  },
+  {
+   "reference": "Genesis 28:12",
+   "status": "self_rendered",
+   "block_index": 177
+  },
+  {
+   "reference": "2 Corinthians 4:12",
+   "status": "self_rendered",
+   "block_index": 177
+  }
+ ]
+}

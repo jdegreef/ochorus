@@ -1,0 +1,113 @@
+{
+ "kind": "sermon",
+ "slug": "the-infinite-god",
+ "language": "es",
+ "job_issue": 5313,
+ "references": [
+  {
+   "reference": "Psalm 147:5",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Isaiah 46:5",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "John 17:3",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "1 Corinthians 2:9",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "1 Corinthians 2:10",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "1 Corinthians 2:11",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "1 Corinthians 2:11a",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "1 Corinthians 2:11b",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Jonah 1:17",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "Acts 4:24",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Ecclesiastes 3:11",
+   "status": "self_rendered",
+   "block_index": 103
+  },
+  {
+   "reference": "Jeremiah 23:24",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "1 Kings 8:27",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "Romans 5:20b",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "Romans 5:20b",
+   "status": "self_rendered",
+   "block_index": 114
+  },
+  {
+   "reference": "Isaiah 6:2",
+   "status": "self_rendered",
+   "block_index": 123
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "block_index": 123
+  },
+  {
+   "reference": "Luke 11:2",
+   "status": "self_rendered",
+   "block_index": 124
+  }
+ ]
+}

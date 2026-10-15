@@ -1,0 +1,53 @@
+{
+ "kind": "sermon",
+ "slug": "breaking-up-the-fallow-ground",
+ "language": "es",
+ "job_issue": 5318,
+ "references": [
+  {
+   "reference": "Hosea 10:12",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Exodus 34:14",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Mark 12:44",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Matthew 7:12",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Malachi 3:8",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Matthew 13:8",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "2 Thessalonians 2:7",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Revelation 2:5",
+   "status": "self_rendered",
+   "block_index": 55
+  }
+ ]
+}

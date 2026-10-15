@@ -1,0 +1,433 @@
+{
+ "kind": "sermon",
+ "slug": "the-sinners-friend",
+ "language": "es",
+ "job_issue": 5249,
+ "references": [
+  {
+   "reference": "Matthew 11:19",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 11:19",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 11:19",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Romans 8:3",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 8:17",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Psalm 40:2",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Luke 19:9",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 15:24",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "John 4:18",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "John 4:27",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "John 4:29",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Isaiah 3:15",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 19:5",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 23:37",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 15:8",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 15:4",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Luke 15:20-24",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 23:13",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "John 6:37",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 12:31",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Hebrews 12:3",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Hebrews 2:11",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Luke 22:44",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 17:20",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Isaiah 53:9",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Isaiah 53:12",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Revelation 20:14",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "1 John 4:10",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "John 15:13",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Romans 4:25",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Psalm 24:7",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Psalm 68:18a",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Psalm 68:18b",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Acts 5:31",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Isaiah 62:1",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "John 8:5b",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "John 8:6a",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Isaiah 3:15",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 3:10",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 11:19",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 9:12",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Hosea 13:9",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Luke 9:56a",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "John 3:17",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 20:28",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Luke 13:7",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Luke 13:8-9",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "John 4:10",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "John 8:12",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Isaiah 45:22",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "1 Corinthians 9:16b",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Acts 9:15",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Psalm 51:17",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Matthew 5:6",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Mark 5:26",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "Luke 7:42a",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "Luke 15:17",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "Isaiah 1:18",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "Psalm 51:7",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "Isaiah 1:6",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "Psalm 41:3",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Isaiah 33:16",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Ephesians 4:30",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Hosea 2:5",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "1 Corinthians 10:22",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Hosea 2:19",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Isaiah 41:10a",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Matthew 10:32",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "1 John 2:1",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Ephesians 1:6",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Hebrews 1:12",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Revelation 15:2",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Job 14:1",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Luke 14:23",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "Lamentations 1:12",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "self_rendered",
+   "block_index": 58
+  }
+ ]
+}
