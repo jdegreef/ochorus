@@ -5571,6 +5571,17 @@
 				478
 			]
 		},
+		"es/daughters-of-the-king-1": {
+			"ground": "7ef697994c132fc78553f2c0b6e17e6d32282cf03314315d7a693925a4702aa0",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0
+		},
 		"es/daughters-of-the-king-2": {
 			"ground": "6f65b0e0d70d89b6a46d92e076612eec0f530b75c4903b1de93bd8fafee44020",
 			"style": "young",

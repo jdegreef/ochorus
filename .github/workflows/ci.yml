@@ -109,6 +109,7 @@ jobs:
       backend: ${{ steps.filter.outputs.backend }}
       content: ${{ steps.filter.outputs.content }}
       frontend: ${{ steps.filter.outputs.frontend }}
+      native: ${{ steps.filter.outputs.native }}
       ci: ${{ steps.filter.outputs.ci }}
     steps:
       - uses: dorny/paths-filter@v4
@@ -124,6 +125,9 @@ jobs:
               - 'backend/library/fixtures/**'
             frontend:
               - 'frontend/**'
+            # The native app's shells and what they are built from (MOBILE.md).
+            native:
+              - 'frontend/{android/**,ios/**,resources/**,capacitor.config.ts,package.json,package-lock.json}'
             ci:
               - '{.github/workflows/**,.github/scripts/**,render.yaml}'
 
@@ -310,7 +314,7 @@ jobs:
     # backend, so a backend- or content-only PR skips this.
     if: ${{ github.event_name != 'pull_request' || needs.changes.outputs.ci == 'true' || needs.changes.outputs.frontend == 'true' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
 
@@ -348,6 +352,54 @@ jobs:
       - name: Unit tests
         working-directory: frontend
         run: npm run test
+
+      - name: Build the native app's bundle (MOBILE.md)
+        working-directory: frontend
+        # A second build of the same code (OCHORUS_TARGET=app): no prerender, no
+        # API, ~1 min. Any frontend change can break it, so it rides here.
+        run: npm run app:build -- --no-sync
+
+  # --- Native app: Android build (frontend/MOBILE.md) ----------------------
+  # The app bundle itself is built in frontend-checks on every frontend PR. This
+  # is the slow half — Gradle — so it runs only when the native side changed
+  # (and always on main). iOS needs macOS and is built on the Mac for now;
+  # TestFlight uploads from CI come with the release pipeline.
+  native-android:
+    name: Native app — Android build
+    needs: [changes]
+    if: ${{ github.event_name != 'pull_request' || needs.changes.outputs.ci == 'true' || needs.changes.outputs.native == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: frontend/.nvmrc
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Setup Java (Capacitor 8 builds with JDK 21)
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: gradle
+
+      - name: Install (locked)
+        working-directory: frontend
+        run: npm ci
+
+      - name: Build the app bundle and sync it into android/
+        working-directory: frontend
+        run: |
+          npm run app:build -- --no-sync
+          npx cap sync android
+
+      - name: Assemble a debug build
+        working-directory: frontend/android
+        run: ./gradlew --no-daemon assembleDebug
 
   # --- Integration: build against a live API + real-browser smoke ----------
   # This is the long pole. The frontend build prerenders pages by fetching the
@@ -554,7 +606,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     if: always()
-    needs: [changes, backend-tests, backend-image, frontend-checks, integration, epub-check]
+    needs: [changes, backend-tests, backend-image, frontend-checks, native-android, integration, epub-check]
     steps:
       - name: Every gate passed or was skipped
         run: |
@@ -562,6 +614,7 @@ jobs:
           echo "backend-tests:   ${{ needs.backend-tests.result }}"
           echo "backend-image:   ${{ needs.backend-image.result }}"
           echo "frontend-checks: ${{ needs.frontend-checks.result }}"
+          echo "native-android:  ${{ needs.native-android.result }}"
           echo "integration:     ${{ needs.integration.result }}"
           echo "epub-check:      ${{ needs.epub-check.result }}"
           # The filter itself must have run; a broken filter must not merge blind.
@@ -573,6 +626,7 @@ jobs:
             "backend-tests:${{ needs.backend-tests.result }}" \
             "backend-image:${{ needs.backend-image.result }}" \
             "frontend-checks:${{ needs.frontend-checks.result }}" \
+            "native-android:${{ needs.native-android.result }}" \
             "integration:${{ needs.integration.result }}" \
             "epub-check:${{ needs.epub-check.result }}"; do
             name="${entry%%:*}"; result="${entry##*:}"
