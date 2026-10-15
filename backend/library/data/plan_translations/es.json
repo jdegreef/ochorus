@@ -199,5 +199,12 @@
     "note": [
       "Queue job #5321. «Amada» and «Valiente» are the heads of the shipped es subtitles of Books 1–2; Book 3 is not yet translated, so «Creciendo» renders its English subtitle head \"Growing Up\" and should be matched by that job. seed_plans creates the row only once all three books are published in es."
     ]
+  },
+  "rooted-three-months-books-1-3": {
+    "title": "Enraizados: tres meses con Dios — Libros 1–3",
+    "description": "Tres meses con Dios para lectores de 9 a 12 años: los tres primeros libros de Enraizados —Plantados, Seguir a Jesús y Dar fruto—, con un breve devocional al día sobre quién es Dios y las buenas noticias de Jesús, caminando con él desde el pesebre hasta la tumba vacía, y dando el fruto del Espíritu.",
+    "note": [
+      "Queue job #4866: «Enraizados – Libro 3» completes this plan in es, so the prose ships in the same PR. Book names are the shipped es subtitles' heads: «Plantados», «Seguir a Jesús», «Dar fruto»."
+    ]
   }
 }
