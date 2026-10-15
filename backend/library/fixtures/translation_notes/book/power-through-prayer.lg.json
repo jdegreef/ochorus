@@ -69,49 +69,49 @@
    "reference": "2 Corinthians 2:16",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 1,
+   "block_index": 13,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "2 Corinthians 3:5",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 2,
+   "block_index": 14,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "2 Corinthians 3:6",
    "status": "mined",
    "chapter_order": 2,
-   "block_index": 2,
+   "block_index": 14,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 42:2",
    "status": "self_rendered",
    "chapter_order": 2,
-   "block_index": 2,
+   "block_index": 14,
    "why": "unquoted allusion \"heart ever athirst for God\"; OLCB \"eyaayaanira Katonda\" re-personed (omutima gwe ... guyaayaanira Katonda)"
   },
   {
    "reference": "Psalms 63:8",
    "status": "self_rendered",
    "chapter_order": 2,
-   "block_index": 2,
+   "block_index": 14,
    "why": "unquoted allusion \"soul following hard after God\"; OLCB \"Emmeeme yange yeekwata ku ggwe\" re-personed"
   },
   {
    "reference": "Matthew 6:22",
    "status": "self_rendered",
    "chapter_order": 2,
-   "block_index": 2,
+   "block_index": 14,
    "why": "unquoted allusion \"eye single to God\"; OLCB \"eriiso ... eddamu\" does not carry the sense here, own prose (eriiso lye litunuulira Katonda yekka)"
   },
   {
    "reference": "Galatians 6:14",
    "status": "self_rendered",
    "chapter_order": 2,
-   "block_index": 2,
+   "block_index": 14,
    "why": "unquoted allusion \"the flesh and the world have been crucified\" (with Gal 5:24); OLCB \"ekomereddwa\" form reused (omubiri n’ensi bikomereddwa)"
   },
   {
@@ -124,1071 +124,1071 @@
    "reference": "2 Corinthians 3:6",
    "status": "self_rendered",
    "chapter_order": 3,
-   "block_index": 1,
+   "block_index": 17,
    "why": "\"the letter which kills\" → \"ennukuta etta\" (unmarked allusion, no quote marks in English)"
   },
   {
    "reference": "1 John 4:19",
    "status": "self_rendered",
    "chapter_order": 3,
-   "block_index": 0,
+   "block_index": 16,
    "why": "McKendree's \"Him who first loved me\" → \"Oyo eyasooka okunjagala\", re-personed from OLCB \"Ye ye yasooka okutwagala\""
   },
   {
    "reference": "Revelation 2:4",
    "status": "self_rendered",
    "chapter_order": 3,
-   "block_index": 0,
+   "block_index": 16,
    "why": "\"declined from first zeal and love\" — loose allusion only; OLCB wording (\"tokyanjagala nga bwe wanjagalanga edda\") does not fit the sentence"
   },
   {
    "reference": "Jeremiah 18:6",
    "status": "self_rendered",
    "chapter_order": 3,
-   "block_index": 3,
+   "block_index": 19,
    "why": "\"like clay in the hands of the potter\" → \"ng’ebbumba mu mukono gw’omubumbi\" (unmarked in English, unmarked here)"
   },
   {
    "reference": "1 Corinthians 2:10",
    "status": "self_rendered",
    "chapter_order": 3,
-   "block_index": 3,
+   "block_index": 19,
    "why": "\"the deep things of God\" → \"eby’omunda ennyo ebya Katonda\""
   },
   {
    "reference": "Isaiah 6:1",
    "status": "mined",
    "chapter_order": 3,
-   "block_index": 3,
+   "block_index": 19,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Isaiah 6:6",
    "status": "self_rendered",
    "chapter_order": 3,
-   "block_index": 3,
+   "block_index": 19,
    "why": "\"the live coal from God’s altar\" → \"eryanda eryaka eriggyiddwa ku kyoto kya Katonda\" (OLCB \"eryanda eryaka\" + \"ku kyoto\"; seraphim → basseraafi as OLCB 6:2)"
   },
   {
    "reference": "Psalms 48:1",
    "status": "self_rendered",
    "chapter_order": 3,
-   "block_index": 3,
+   "block_index": 19,
    "why": "\"The city of our God\" → \"Ekibuga kya Katonda waffe\" (OLCB \"kibuga kya Katonda waffe\"; initial vowel only)"
   },
   {
    "reference": "Psalms 51:6",
    "status": "self_rendered",
    "chapter_order": 3,
-   "block_index": 5,
+   "block_index": 21,
    "why": "\"truth in the inward parts\" → \"Amazima agaviira ddala mu mutima\" (OLCB \"amazima agaviira ddala mu mutima\"; capital only)"
   },
   {
    "reference": "Hebrews 12:23",
    "status": "self_rendered",
    "chapter_order": 3,
-   "block_index": 5,
+   "block_index": 21,
    "why": "\"the Judge of all men\" → \"Omulamuzi wa bonna\""
   },
   {
    "reference": "Ephesians 3:8",
    "status": "self_rendered",
    "chapter_order": 4,
-   "block_index": 1,
+   "block_index": 23,
    "why": "\"less than the least of preachers\" → \"abasembayo wansi mu babuulizi bonna\", reshaped from OLCB \"nsembayo wansi mu batukuvu bonna\" (unmarked allusion)"
   },
   {
    "reference": "Hebrews 5:7",
    "status": "mined",
    "chapter_order": 4,
-   "block_index": 6,
+   "block_index": 28,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Romans 9:2",
    "status": "self_rendered",
    "chapter_order": 4,
-   "block_index": 6,
+   "block_index": 28,
    "why": "\"an agony of desire as Paul’s did\": allusion only, no OLCB words used"
   },
   {
    "reference": "James 5:16",
    "status": "mined",
    "chapter_order": 4,
-   "block_index": 6,
+   "block_index": 28,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Revelation 8:3",
    "status": "self_rendered",
    "chapter_order": 4,
-   "block_index": 6,
+   "block_index": 28,
    "why": "\"the golden censer\" → \"mu kyoterezo ekya zaabu\" (OLCB \"ekyoterezo ekya zaabu\"); \"incensed before God\" is my prose"
   },
   {
    "reference": "Luke 6:12",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 2,
+   "block_index": 34,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Mark 1:35",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 2,
+   "block_index": 34,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 Corinthians 13:1",
    "status": "mined",
    "chapter_order": 5,
-   "block_index": 10,
+   "block_index": 42,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Matthew 16:19",
    "status": "self_rendered",
    "chapter_order": 5,
-   "block_index": 9,
+   "block_index": 41,
    "why": "unquoted allusion \"the keys of his kingdom\" → \"ebisumuluzo by’obwakabaka bwe\" (OLCB noun phrase, re-personed)."
   },
   {
    "reference": "Genesis 28:12",
    "status": "self_rendered",
    "chapter_order": 5,
-   "block_index": 2,
+   "block_index": 34,
    "why": "unquoted allusion \"a Bethel… a ladder\" → \"Beseri… eddaala\" (OLCB forms)."
   },
   {
    "reference": "Genesis 28:19",
    "status": "self_rendered",
    "chapter_order": 5,
-   "block_index": 2,
+   "block_index": 34,
    "why": "unquoted allusion \"a Bethel… a ladder\" → \"Beseri… eddaala\" (OLCB forms)."
   },
   {
    "reference": "Jeremiah 29:13",
    "status": "self_rendered",
    "chapter_order": 6,
-   "block_index": 2,
+   "block_index": 45,
    "why": "unquoted paraphrase \"found of us… seek him with the whole heart\": OLCB \"n’omutima gwammwe gwonna\" re-personed to \"n’omutima gwaffe gwonna\"; \"will be found\" carried in prose (OLCB has \"mulinzuula\" in 29:14)."
   },
   {
    "reference": "Hebrews 5:7",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 5,
+   "block_index": 48,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Ephesians 6:18",
    "status": "self_rendered",
    "chapter_order": 6,
-   "block_index": 5,
+   "block_index": 48,
    "why": "Bounds re-persons the verse to \"they prayed\"; OLCB 2nd-plural forms re-personed to 3rd-plural (musabiririranga→basabiririranga, mwegayiririranga→beegayiririranga, Mwekuumenga nga mugumiikirizanga→nga beekuumanga nga bagumiikirizanga), two OLCB sentences joined. FLAG: OLCB has lowercase \"mu mwoyo\" wh"
   },
   {
    "reference": "James 5:16",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 5,
+   "block_index": 48,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "James 5:17",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 5,
+   "block_index": 48,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "James 5:18",
    "status": "mined",
    "chapter_order": 6,
-   "block_index": 5,
+   "block_index": 48,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Genesis 32:28",
    "status": "self_rendered",
    "chapter_order": 6,
-   "block_index": 5,
+   "block_index": 48,
    "why": "unquoted allusion, Jacob \"wrestling and prevailing\" → \"okumeggana n’okuwangula\" (OLCB verbs omegganye / n’owangula)."
   },
   {
    "reference": "Colossians 4:12",
    "status": "self_rendered",
    "chapter_order": 6,
-   "block_index": 5,
+   "block_index": 48,
    "why": "unquoted allusion, Paul's \"striving with earnest effort of soul\" → \"okufuba n’amaanyi gonna ag’omwoyo\" (OLCB afuba / okufubiranga)."
   },
   {
    "reference": "Genesis 32:24",
    "status": "self_rendered",
    "chapter_order": 7,
-   "block_index": 1,
+   "block_index": 50,
    "why": "\"that all-night wrestling\" → kumeggana okwo okw’ekiro kyonna (allusion; OLCB \"n’ameggana naye okutuusa obudde okukya\")"
   },
   {
    "reference": "Genesis 32:28",
    "status": "self_rendered",
    "chapter_order": 7,
-   "block_index": 1,
+   "block_index": 50,
    "why": "\"prevailed with God\" → atamegganangako ne Katonda n’awangula (allusion; OLCB \"omegganye ne Katonda ... n’owangula\")"
   },
   {
    "reference": "Luke 6:12",
    "status": "self_rendered",
    "chapter_order": 7,
-   "block_index": 1,
+   "block_index": 50,
    "why": "\"spent many whole nights in prayer\" → ng’asaba ekiro kyonna (\"asaba ekiro kyonna\" verbatim substring)"
   },
   {
    "reference": "1 Thessalonians 3:10",
    "status": "self_rendered",
    "chapter_order": 7,
-   "block_index": 1,
+   "block_index": 50,
    "why": "\"Paul prayed day and night\" → \"emisana n’ekiro\" verbatim substring"
   },
   {
    "reference": "Daniel 6:10",
    "status": "self_rendered",
    "chapter_order": 7,
-   "block_index": 1,
+   "block_index": 50,
    "why": "\"three times a day\" → \"emirundi esatu olunaku\" verbatim substring"
   },
   {
    "reference": "Psalms 55:17",
    "status": "self_rendered",
    "chapter_order": 7,
-   "block_index": 1,
+   "block_index": 50,
    "why": "David's \"morning, noon, and night\" → ku makya, mu ttuntu n’ekiro (Bounds' order kept; OLCB has \"Ekiro, ne mu makya ne mu ttuntu\")"
   },
   {
    "reference": "Romans 12:12",
    "status": "self_rendered",
    "chapter_order": 8,
-   "block_index": 2,
+   "block_index": 58,
    "why": "biographer's \"continuing instant in prayer\" → Okunyiikira mu kusaba kwe obutayosa (OLCB \"nyiikira mu kusaba\" copied; re-personed from \"nga munyiikira mu kusaba\")"
   },
   {
    "reference": "Genesis 32:24",
    "status": "self_rendered",
    "chapter_order": 8,
-   "block_index": 10,
+   "block_index": 66,
    "why": "\"even to the break of day\" → \"okutuusa obudde okukya\" verbatim substring (Jacob's wrestling)"
   },
   {
    "reference": "Matthew 26:36",
    "status": "self_rendered",
    "chapter_order": 8,
-   "block_index": 10,
+   "block_index": 66,
    "why": "Gethsemane → \"Gesusemane\" (OLCB name form)"
   },
   {
    "reference": "Luke 22:44",
    "status": "self_rendered",
    "chapter_order": 8,
-   "block_index": 10,
+   "block_index": 66,
    "why": "\"drops of blood which fall to the ground\" → ku \"matondo g’omusaayi\" agatonnya wansi (OLCB \"amatondo g’omusaayi ... ne gatonnya wansi\"; the phrase is verbatim and the verb is reshaped into a relative)"
   },
   {
    "reference": "Matthew 11:12",
    "status": "self_rendered",
    "chapter_order": 8,
-   "block_index": 10,
+   "block_index": 66,
    "why": "\"the kingdom of heaven suffereth violence and the violent take it by force\" → \"obwakabaka obw’omu ggulu buyingirwa n’amaanyi, era abantu ab’amaanyi ennyo be babutwala\" verbatim substring"
   },
   {
    "reference": "Romans 15:30",
    "status": "self_rendered",
    "chapter_order": 8,
-   "block_index": 10,
+   "block_index": 66,
    "why": "\"common intercession with St. Paul as a concerted struggle\" → olutalo olw’okufubira awamu (allusion only; it echoes OLCB \"okufubiranga awamu nange\")"
   },
   {
    "reference": "Psalms 63:1",
    "status": "mined",
    "chapter_order": 9,
-   "block_index": 0,
+   "block_index": 67,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 5:3",
    "status": "mined",
    "chapter_order": 9,
-   "block_index": 0,
+   "block_index": 67,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Mark 1:35",
    "status": "self_rendered",
    "chapter_order": 9,
-   "block_index": 0,
+   "block_index": 67,
    "why": "unquoted paraphrase “Christ arose before day and went into a solitary place”; OLCB phrases copied (enkeera ng’obudde tebunnalaba … n’agenda yekka mu kifo ekyekusifu), subject Kristo."
   },
   {
    "reference": "Psalms 42:2",
    "status": "self_rendered",
    "chapter_order": 9,
-   "block_index": 2,
+   "block_index": 69,
    "why": "unquoted “hungered and thirsted after God”: “eyaayaanira Katonda” (42:2) + “ng’alina ennyonta” (63:1, re-personed from “nga nnina ennyonta”)."
   },
   {
    "reference": "Psalms 63:1",
    "status": "self_rendered",
    "chapter_order": 9,
-   "block_index": 2,
+   "block_index": 69,
    "why": "unquoted “hungered and thirsted after God”: “eyaayaanira Katonda” (42:2) + “ng’alina ennyonta” (63:1, re-personed from “nga nnina ennyonta”)."
   },
   {
    "reference": "Mark 1:35",
    "status": "self_rendered",
    "chapter_order": 9,
-   "block_index": 2,
+   "block_index": 69,
    "why": "unquoted “rising a great while before day … into the mountain to pray”: “ng’obudde tebunnalaba” + “ku lusozi okusaba”."
   },
   {
    "reference": "Luke 6:12",
    "status": "self_rendered",
    "chapter_order": 9,
-   "block_index": 2,
+   "block_index": 69,
    "why": "unquoted “rising a great while before day … into the mountain to pray”: “ng’obudde tebunnalaba” + “ku lusozi okusaba”."
   },
   {
    "reference": "Matthew 23:29",
    "status": "self_rendered",
    "chapter_order": 9,
-   "block_index": 4,
+   "block_index": 71,
    "why": "allusion “We build their tombs”: “Tubazimbira ebijjukizo” (OLCB “muzimbira bannabbi ebijjukizo”)."
   },
   {
    "reference": "Hosea 14:5",
    "status": "self_rendered",
    "chapter_order": 9,
-   "block_index": 5,
+   "block_index": 72,
    "why": "allusion “that he may be as the dew to them”: “ng’omusulo” copied."
   },
   {
    "reference": "Luke 16:8",
    "status": "self_rendered",
    "chapter_order": 9,
-   "block_index": 5,
+   "block_index": 72,
    "why": "unquoted “The children of this world are far wiser than we”: OLCB “abaana b’omulembe guno bagezigezi okusinga” → “…okutusinga nnyo”."
   },
   {
    "reference": "Psalms 63:8",
    "status": "self_rendered",
    "chapter_order": 9,
-   "block_index": 5,
+   "block_index": 72,
    "why": "“follow hard after him”: OLCB 63:8 reads “Emmeeme yange yeekwata ku ggwe” (clings), a different image; rendered in own prose (“nga tamugoberera n’amaanyi ge gonna”) to keep Bounds' “follow hard”."
   },
   {
    "reference": "Ephesians 3:19",
    "status": "mined",
    "chapter_order": 10,
-   "block_index": 1,
+   "block_index": 74,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Ephesians 3:18",
    "status": "self_rendered",
    "chapter_order": 10,
-   "block_index": 1,
+   "block_index": 74,
    "why": "unquoted “heights, breadths, and depths”: OLCB terms copied (obugulumivu, obugazi, okukka wansi), reordered to Bounds' order, “obuwanvu” not used."
   },
   {
    "reference": "Colossians 4:12",
    "status": "mined",
    "chapter_order": 10,
-   "block_index": 1,
+   "block_index": 74,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Ephesians 4:13",
    "status": "mined",
    "chapter_order": 10,
-   "block_index": 1,
+   "block_index": 74,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 92:14",
    "status": "self_rendered",
    "chapter_order": 10,
-   "block_index": 1,
+   "block_index": 74,
    "why": "unquoted “bear fruit in old age, and be fat and flourishing”: “mu bukadde bwabwe” + “balamu era abagimu” copied; verb re-shaped (baalina okubala ebibala … babeere)."
   },
   {
    "reference": "Hosea 6:4",
    "status": "self_rendered",
    "chapter_order": 10,
-   "block_index": 4,
+   "block_index": 77,
    "why": "unquoted “fleeting as the morning cloud or the early dew”: “ng’olufu olw’enkya, era ng’omusulo ogw’enkya” copied."
   },
   {
    "reference": "Colossians 3:11",
    "status": "self_rendered",
    "chapter_order": 10,
-   "block_index": 4,
+   "block_index": 77,
    "why": "idiom “all in all” → “byonna mu byonna”."
   },
   {
    "reference": "1 Corinthians 15:28",
    "status": "self_rendered",
    "chapter_order": 10,
-   "block_index": 4,
+   "block_index": 77,
    "why": "idiom “all in all” → “byonna mu byonna”."
   },
   {
    "reference": "Isaiah 29:13",
    "status": "self_rendered",
    "chapter_order": 10,
-   "block_index": 5,
+   "block_index": 78,
    "why": "allusion “God worshiped by lips”: “n’emimwa gyabwe” → “n’emimwa gy’abantu”."
   },
   {
    "reference": "Jeremiah 32:17",
    "status": "self_rendered",
    "chapter_order": 11,
-   "block_index": 3,
+   "block_index": 83,
    "why": "\"nothing is too hard for God\": OLCB \"Tewali kintu na kimu kikulema\" (2nd person, to God) recast to 3rd person \"tewali kintu na kimu kirema Katonda\"; uncited, no quote marks"
   },
   {
    "reference": "Psalms 4:6",
    "status": "self_rendered",
    "chapter_order": 11,
-   "block_index": 4,
+   "block_index": 84,
    "why": "Brainerd's diary, \"the light of his countenance\": OLCB \"omusana gw’amaaso go\" → \"omusana gw’amaaso ge\" (go→ge, 2nd→3rd person)"
   },
   {
    "reference": "Luke 22:44",
    "status": "self_rendered",
    "chapter_order": 11,
-   "block_index": 4,
+   "block_index": 84,
    "why": "Brainerd's \"my dear Saviour did sweat blood\": OLCB says sweat LIKE drops of blood (ng’amatondo g’omusaayi); kept Brainerd's own words \"yatuuyana omusaayi\" as his speech, not as Scripture. Flag: diary hyperbole, not a Bible quote"
   },
   {
    "reference": "Hebrews 11:4",
    "status": "self_rendered",
    "chapter_order": 11,
-   "block_index": 5,
+   "block_index": 85,
    "why": "\"he being dead yet speaketh\": OLCB \"newaakubadde nga Aberi yafa, akyayogera\" with Aberi dropped → \"newaakubadde nga yafa, akyayogera\" (\"yafa, akyayogera\" is verbatim)"
   },
   {
    "reference": "1 Corinthians 9:24",
    "status": "self_rendered",
    "chapter_order": 11,
-   "block_index": 6,
+   "block_index": 86,
    "why": "Edwards, \"runs a race for a great prize\": \"mu mpaka ez’okudduka\" and \"okuwangula ekirabo\" verbatim OLCB phrases; loose allusion"
   },
   {
    "reference": "1 Timothy 5:17",
    "status": "self_rendered",
    "chapter_order": 11,
-   "block_index": 6,
+   "block_index": 86,
    "why": "Edwards, \"in word and doctrine\": \"mu kubuulira n’okuyigiriza\" verbatim"
   },
   {
    "reference": "Romans 8:26",
    "status": "self_rendered",
    "chapter_order": 11,
-   "block_index": 6,
+   "block_index": 86,
    "why": "Edwards, \"unutterable groans\": \"n’okusinda okutayogerekeka\" verbatim"
   },
   {
    "reference": "Galatians 4:19",
    "status": "self_rendered",
    "chapter_order": 11,
-   "block_index": 6,
+   "block_index": 86,
    "why": "Edwards, \"travailing in birth ... until Christ was formed in\": \"ng’alumwa okuzaala\" verbatim; \"okutuusa Kristo lw’alibumbibwa mu\" changed to past \"lwe yabumbibwa mu mitima gy’abantu\""
   },
   {
    "reference": "Genesis 32:24",
    "status": "self_rendered",
    "chapter_order": 11,
-   "block_index": 6,
+   "block_index": 86,
    "why": "Edwards, \"wrestling ... until the breaking of the day\": \"ng’ameggana\" + \"okutuusa obudde okukya\" verbatim OLCB"
   },
   {
    "reference": "Psalms 119:32",
    "status": "self_rendered",
    "chapter_order": 12,
-   "block_index": 1,
+   "block_index": 88,
    "why": "McCheyne, \"Enlarge my heart\": OLCB \"Bw’onoosumulula omutima gwange\" recast as imperative \"Sumulula omutima gwange\""
   },
   {
    "reference": "John 10:11",
    "status": "self_rendered",
    "chapter_order": 12,
-   "block_index": 6,
+   "block_index": 93,
    "why": "\"hireling ... good shepherd\": OLCB terms \"Omupakasi\" (10:12), \"omulala\" (10:5, stranger), \"omusumba omulungi\" (10:11); allusion, no quote marks"
   },
   {
    "reference": "John 10:12",
    "status": "self_rendered",
    "chapter_order": 12,
-   "block_index": 6,
+   "block_index": 93,
    "why": "\"hireling ... good shepherd\": OLCB terms \"Omupakasi\" (10:12), \"omulala\" (10:5, stranger), \"omusumba omulungi\" (10:11); allusion, no quote marks"
   },
   {
    "reference": "2 Timothy 2:15",
    "status": "self_rendered",
    "chapter_order": 12,
-   "block_index": 9,
+   "block_index": 96,
    "why": "\"show themselves workmen approved of God\": OLCB \"okweraga ng’osiimibwa Katonda, ng’oli mukozi\" (2nd sg.) → \"okweraga nga basiimibwa Katonda, nga bakozi\""
   },
   {
    "reference": "Philippians 2:7",
    "status": "self_rendered",
    "chapter_order": 12,
-   "block_index": 10,
+   "block_index": 97,
    "why": "\"made himself of no reputation and took on Him the form of a servant\": OLCB has no \"of no reputation\" clause; verbatim \"yeewaayo n’afuuka ng’omuddu\" kept, and \"of no reputation\" carried in own prose (\"eyeetoowaza n’atafaayo ku kitiibwa kye\"). Flag: OLCB differs from KJV here"
   },
   {
    "reference": "Matthew 11:29",
    "status": "self_rendered",
    "chapter_order": 12,
-   "block_index": 10,
+   "block_index": 97,
    "why": "\"meek and lowly\": \"muwombeefu era omuteefu mu mutima\" verbatim"
   },
   {
    "reference": "Galatians 6:14",
    "status": "self_rendered",
    "chapter_order": 12,
-   "block_index": 10,
+   "block_index": 97,
    "why": "\"crucifixion to the world\": OLCB \"nkomereddwa eri ensi\" → noun \"okukomererwa eri ensi\""
   },
   {
    "reference": "John 10:11",
    "status": "self_rendered",
    "chapter_order": 12,
-   "block_index": 10,
+   "block_index": 97,
    "why": "\"give his life for the sheep\": \"obulamu bwe olw’endiga\" verbatim (verb okuwaayo as OLCB \"awaayo\", infinitive)"
   },
   {
    "reference": "Philippians 3:8",
    "status": "self_rendered",
    "chapter_order": 12,
-   "block_index": 10,
+   "block_index": 97,
    "why": "Wesley, “I count it dung”: \"Mbiraba ng’ebisasiro\" verbatim; \"and dross\" added in own words \"n’ebikyafu\""
   },
   {
    "reference": "1 Corinthians 15:10",
    "status": "self_rendered",
    "chapter_order": 12,
-   "block_index": 10,
+   "block_index": 97,
    "why": "Wesley, \"(yet not I, but the grace of God in me)\": \"naye si nze\" + verbatim \"wabula ekisa kya Katonda ekiri nange\""
   },
   {
    "reference": "Micah 7:10",
    "status": "self_rendered",
    "chapter_order": 12,
-   "block_index": 10,
+   "block_index": 97,
    "why": "Wesley, \"the mire of the streets\": \"ebitoomi eby’omu nguudo\" verbatim (also cf. Zech 10:5)"
   },
   {
    "reference": "Proverbs 4:23",
    "status": "self_rendered",
    "chapter_order": 12,
-   "block_index": 12,
+   "block_index": 99,
    "why": "\"kept his heart with diligence\": OLCB \"Ekisinga byonna kuuma omutima gwo\" → \"akuumye omutima gwe okusinga byonna\" (OLCB has \"above all\", not \"with diligence\")"
   },
   {
    "reference": "Joshua 6:4",
    "status": "self_rendered",
    "chapter_order": 13,
-   "block_index": 0,
+   "block_index": 100,
    "why": "allusion (no quote marks), \"rams' horns\" uses OLCB phrase \"amakondeere agaakolebwa mu mayembe g’endiga ennume\"; \"Jerichos\" rendered \"Ebibuga nga Yeriko\""
   },
   {
    "reference": "Song of Songs 4:12",
    "status": "self_rendered",
    "chapter_order": 13,
-   "block_index": 0,
+   "block_index": 100,
    "why": "allusion \"a fountain sealed\" uses OLCB \"ensulo eyateekebwako akabonero\""
   },
   {
    "reference": "1 John 4:8",
    "status": "self_rendered",
    "chapter_order": 13,
-   "block_index": 1,
+   "block_index": 101,
    "why": "\"Katonda kwagala\" (also 1 John 4:16), unquoted in English"
   },
   {
    "reference": "John 10:11",
    "status": "self_rendered",
    "chapter_order": 13,
-   "block_index": 3,
+   "block_index": 103,
    "why": "\"Omusumba omulungi awaayo obulamu bwe olw’endiga\", unquoted in English"
   },
   {
    "reference": "Isaiah 53:3",
    "status": "self_rendered",
    "chapter_order": 13,
-   "block_index": 4,
+   "block_index": 104,
    "why": "\"man of sorrows\" = \"omuntu eyagumira ennaku n’obuyinike\", unquoted in English"
   },
   {
    "reference": "Proverbs 23:26",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 5,
+   "block_index": 105,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "John 11:35",
    "status": "mined",
    "chapter_order": 13,
-   "block_index": 6,
+   "block_index": 106,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Psalms 126:6",
    "status": "self_rendered",
    "chapter_order": 13,
-   "block_index": 6,
+   "block_index": 106,
    "why": "unquoted paraphrase woven around Bounds' parenthesis; OLCB wording used (\"Oyo agenda ng’akaaba\", \"ng’atwala ensigo ... okusiga\", \"alikomawo ng’ayimba ennyimba ez’essanyu ng’aleeta ebinywa bye\"); OLCB has no \"precious\", so \"ez’omuwendo\" is carried in my own prose (KJV \"precious seed\")"
   },
   {
    "reference": "1 John 2:20",
    "status": "self_rendered",
    "chapter_order": 14,
-   "block_index": 0,
+   "block_index": 108,
    "why": "\"an unction from the Holy One\": OLCB verb \"mwafukibwako amafuta\" turned into the pinned noun \"okufukibwako amafuta\", + verbatim \"okuva eri Omutukuvu\""
   },
   {
    "reference": "1 Chronicles 11:9",
    "status": "self_rendered",
    "chapter_order": 14,
-   "block_index": 0,
+   "block_index": 108,
    "why": "\"the Lord of hosts\" = \"Mukama ow’Eggye\" (OLCB form)"
   },
   {
    "reference": "Romans 12:12",
    "status": "self_rendered",
    "chapter_order": 14,
-   "block_index": 0,
+   "block_index": 108,
    "why": "\"continue instant ... in supplication\" is an allusion only; rendered in my own words (\"Ka tunyiikirenga ... mu kwegayirira\")"
   },
   {
    "reference": "Judges 6:37",
    "status": "self_rendered",
    "chapter_order": 14,
-   "block_index": 0,
+   "block_index": 108,
    "why": "Gideon's fleece: OLCB phrases \"ebyoya by’endiga\", \"awakubirwa eŋŋaano\", \"binaatoba omusulo\" woven into Spurgeon's metaphor"
   },
   {
    "reference": "Luke 24:32",
    "status": "self_rendered",
    "chapter_order": 14,
-   "block_index": 1,
+   "block_index": 109,
    "why": "\"Did not our hearts burn within us?\" = \"Emitima gyaffe tegyabuguumiridde\" (OLCB clause; OLCB's question continues, so the rest of the verse is not carried)"
   },
   {
    "reference": "James 1:27",
    "status": "self_rendered",
    "chapter_order": 14,
-   "block_index": 1,
+   "block_index": 109,
    "why": "\"true religion and undefiled\" = \"eddiini entuufu etaliiko bbala\" (OLCB \"Eddiini\", initial lowercased); KJV \"pure\" vs Bounds \"true\" both covered by \"entuufu\""
   },
   {
    "reference": "Acts 26:25",
    "status": "self_rendered",
    "chapter_order": 14,
-   "block_index": 1,
+   "block_index": 109,
    "why": "\"words of truth and soberness\": OLCB \"bya nsonga era bya mazima\" (order of truth/soberness reversed as in OLCB), attached to \"ebigambo\""
   },
   {
    "reference": "2 Kings 6:25",
    "status": "self_rendered",
    "chapter_order": 14,
-   "block_index": 3,
+   "block_index": 111,
    "why": "\"Samaria, in famine\" is an allusion; Samaria spelled per OLCB \"Samaliya\""
   },
   {
    "reference": "Isaiah 25:6",
    "status": "self_rendered",
    "chapter_order": 14,
-   "block_index": 3,
+   "block_index": 111,
    "why": "\"feast of fat things, full of marrow\": OLCB \"ekijjulo eky’emmere ennungi\" + \"n’ennyama esingayo obulungi\"; OLCB has no \"marrow\", so no marrow is claimed; Isaiah's feast is \"on this mountain\", Spurgeon applies it to Jerusalem"
   },
   {
    "reference": "Hebrews 4:12",
    "status": "mined",
    "chapter_order": 15,
-   "block_index": 2,
+   "block_index": 114,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Hebrews 4:12",
    "status": "self_rendered",
    "chapter_order": 15,
-   "block_index": 8,
+   "block_index": 120,
    "why": "hymn's first line “a two-edged sword”; the phrase \"ekitala eky’obwogi obubiri\" is copied by script from OLCB Heb 4:12 (the hymn itself is not Scripture; lines 2-8 are my own verse translation)"
   },
   {
    "reference": "Deuteronomy 32:2",
    "status": "self_rendered",
    "chapter_order": 15,
-   "block_index": 7,
+   "block_index": 119,
    "why": "allusion \"distills as the dew\", no quote marks; echoes OLCB \"bigwe ng’omusulo\" as \"Kugwa ng’omusulo\""
   },
   {
    "reference": "Matthew 6:6",
    "status": "self_rendered",
    "chapter_order": 15,
-   "block_index": 16,
+   "block_index": 128,
    "why": "allusion \"in the closet\", no quote marks; echoes OLCB \"mu kisenge ... mu kyama\""
   },
   {
    "reference": "Acts 8:20",
    "status": "self_rendered",
    "chapter_order": 15,
-   "block_index": 16,
+   "block_index": 128,
    "why": "allusion \"It is the gift of God\" after \"No prelatical hands can confer it\"; OLCB phrase \"ekirabo kya Katonda\", no quote marks"
   },
   {
    "reference": "Isaiah 58:12",
    "status": "self_rendered",
    "chapter_order": 15,
-   "block_index": 17,
+   "block_index": 129,
    "why": "allusion \"repair the breaches\", no quote marks; rendered \"okuddaabiriza ebyamenyeka\" (OLCB: \"omuddaabiriza wa bbugwe eyamenyeka\")"
   },
   {
    "reference": "Jeremiah 6:16",
    "status": "self_rendered",
    "chapter_order": 15,
-   "block_index": 17,
+   "block_index": 129,
    "why": "allusion \"her old ways\", no quote marks; OLCB phrase \"amakubo ag’edda\""
   },
   {
    "reference": "Acts 13:2",
    "status": "self_rendered",
    "chapter_order": 16,
-   "block_index": 1,
+   "block_index": 131,
    "why": "allusion \"separating unto God’s work\"; \"okwawula omuntu ku lw’omulimu gwa Katonda\" echoes OLCB \"Munjawulire ... olw’omulimu\""
   },
   {
    "reference": "2 Corinthians 3:18",
    "status": "self_rendered",
    "chapter_order": 16,
-   "block_index": 9,
+   "block_index": 139,
    "why": "allusion \"transforms him into the image of his divine Master\"; \"kumukyusa okufaanana\" echoes OLCB \"tukyusiibwa okumufaanana\""
   },
   {
    "reference": "1 Thessalonians 5:17",
    "status": "self_rendered",
    "chapter_order": 16,
-   "block_index": 10,
+   "block_index": 140,
    "why": "allusion \"unceasing prayer\"; OLCB \"obutayosa\" (also block 12, \"Awatali kusaba obutayosa\")"
   },
   {
    "reference": "Philippians 3:8",
    "status": "self_rendered",
    "chapter_order": 16,
-   "block_index": 10,
+   "block_index": 140,
    "why": "allusion \"deeming all else loss\"; OLCB \"ng’okufiirwa\""
   },
   {
    "reference": "Exodus 16:20",
    "status": "self_rendered",
    "chapter_order": 16,
-   "block_index": 12,
+   "block_index": 142,
    "why": "allusion \"like the manna overkept, breeds worms\"; OLCB \"ezaala envunyu\" -> \"kuzaala envunyu\"; \"emmaanu\" from OLCB John 6:31"
   },
   {
    "reference": "Acts 6:4",
    "status": "self_rendered",
    "chapter_order": 17,
-   "block_index": 1,
+   "block_index": 144,
    "why": "\"give themselves continually to prayer and to the ministry of the word\": OLCB \"twemalire ku kusaba, n’okubuulira n’okuyigiriza\" re-personed twemalire → beemalire (Bounds re-persons to \"themselves\")"
   },
   {
    "reference": "1 Thessalonians 3:10",
    "status": "mined",
    "chapter_order": 17,
-   "block_index": 2,
+   "block_index": 145,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Acts 6:4",
    "status": "mined",
    "chapter_order": 17,
-   "block_index": 2,
+   "block_index": 145,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Ephesians 3:19",
    "status": "mined",
    "chapter_order": 17,
-   "block_index": 5,
+   "block_index": 148,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Ephesians 3:14",
    "status": "self_rendered",
    "chapter_order": 17,
-   "block_index": 5,
+   "block_index": 148,
    "why": "FLAG: OLCB 3:14 is only \"Nfukaamirira Kitaffe,\" (the \"for this cause\" is Kyenva in 3:13 and \"of our Lord Jesus Christ\" is absent). Quoted “yafukaamirira Kitaffe,” (re-personed, as Bounds does); \"for this cause\" and \"Kitaawe wa Mukama waffe Yesu Kristo\" (OLCB phrase from Col 1:3) kept in prose outsid"
   },
   {
    "reference": "Colossians 4:12",
    "status": "self_rendered",
    "chapter_order": 17,
-   "block_index": 5,
+   "block_index": 148,
    "why": "OLCB \"mulyoke muyimirirenga nga munywedde mu kukkiriza era nga mutegeereranga ddala mu byonna Katonda by’ayagala\" re-personed to 3rd plural (balyoke/banywedde/bategeereranga). Note: OLCB has \"stand firm in faith, fully understanding\" for KJV \"stand perfect and complete\"; close enough in sense, flagg"
   },
   {
    "reference": "2 Corinthians 4:7",
    "status": "self_rendered",
    "chapter_order": 17,
-   "block_index": 7,
+   "block_index": 150,
    "why": "unquoted allusion \"treasure in earthen vessels\": OLCB \"mu bibya eby’ebbumba\" in prose"
   },
   {
    "reference": "Isaiah 3:4",
    "status": "self_rendered",
    "chapter_order": 17,
-   "block_index": 7,
+   "block_index": 150,
    "why": "unquoted paraphrase: OLCB \"ndifuula abalenzi obulenzi okuba abafuzi baabwe, n’abaana obwana balibafuga\" → yafuula … ne babafuga (narrative past)"
   },
   {
    "reference": "Isaiah 3:12",
    "status": "self_rendered",
    "chapter_order": 17,
-   "block_index": 7,
+   "block_index": 150,
    "why": "unquoted paraphrase \"children oppress … women rule over them\": OLCB \"abakazi kaakano be babafuga\" → abakazi ne babafuga; first clause rephrased actively"
   },
   {
    "reference": "Isaiah 5:14",
    "status": "self_rendered",
    "chapter_order": 17,
-   "block_index": 11,
+   "block_index": 154,
    "why": "unquoted allusion \"Hell has enlarged herself\": OLCB \"Amagombe … gagaziya omumiro gwago\" → gagaziyizza (perfect)"
   },
   {
    "reference": "1 Thessalonians 5:17",
    "status": "mined",
    "chapter_order": 17,
-   "block_index": 12,
+   "block_index": 155,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Revelation 21:1",
    "status": "self_rendered",
    "chapter_order": 17,
-   "block_index": 12,
+   "block_index": 155,
    "why": "unquoted allusion \"a new heaven and a new earth\": OLCB \"eggulu eriggya n’ensi empya\" in prose; \"pass away\" rendered in own words (bijja kuggwaawo)"
   },
   {
    "reference": "Romans 15:30",
    "status": "mined",
    "chapter_order": 18,
-   "block_index": 4,
+   "block_index": 160,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Ephesians 6:18",
    "status": "mined",
    "chapter_order": 18,
-   "block_index": 4,
+   "block_index": 160,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Ephesians 6:19",
    "status": "mined",
    "chapter_order": 18,
-   "block_index": 4,
+   "block_index": 160,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Colossians 4:3",
    "status": "mined",
    "chapter_order": 18,
-   "block_index": 4,
+   "block_index": 160,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Colossians 4:4",
    "status": "mined",
    "chapter_order": 18,
-   "block_index": 4,
+   "block_index": 160,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 Thessalonians 5:25",
    "status": "mined",
    "chapter_order": 18,
-   "block_index": 4,
+   "block_index": 160,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "2 Corinthians 1:11",
    "status": "mined",
    "chapter_order": 18,
-   "block_index": 4,
+   "block_index": 160,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "2 Thessalonians 3:1",
    "status": "mined",
    "chapter_order": 18,
-   "block_index": 4,
+   "block_index": 160,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "2 Thessalonians 3:2",
    "status": "mined",
    "chapter_order": 18,
-   "block_index": 4,
+   "block_index": 160,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Philippians 1:19",
    "status": "self_rendered",
    "chapter_order": 18,
-   "block_index": 4,
+   "block_index": 160,
    "why": "unquoted paraphrase: OLCB \"olw’okunsabira\" → olw’okumusabira (3rd person)"
   },
   {
    "reference": "Philemon 22:22",
    "status": "self_rendered",
    "chapter_order": 18,
-   "block_index": 4,
+   "block_index": 160,
    "why": "unquoted paraphrase: OLCB \"ontegekere we ndisula\" → okumutegekera we yandisula"
   },
   {
    "reference": "Exodus 17:12",
    "status": "self_rendered",
    "chapter_order": 18,
-   "block_index": 6,
+   "block_index": 162,
    "why": "unquoted allusion: names \"Alooni ne Kuli\" copied from OLCB; OLCB \"ne bawanirira emikono gye\" → Bawanirira emikono gye (present-habitual sense from context)"
   },
   {
    "reference": "2 Corinthians 9:7",
    "status": "self_rendered",
    "chapter_order": 18,
-   "block_index": 7,
+   "block_index": 163,
    "why": "unquoted allusion \"cheerful giving\": OLCB \"agaba n’essanyu\" → okugaba n’essanyu"
   },
   {
    "reference": "Matthew 9:38",
    "status": "mined",
    "chapter_order": 18,
-   "block_index": 8,
+   "block_index": 164,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Luke 18:1",
    "status": "mined",
    "chapter_order": 18,
-   "block_index": 8,
+   "block_index": 164,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Matthew 9:36",
    "status": "self_rendered",
    "chapter_order": 18,
-   "block_index": 8,
+   "block_index": 164,
    "why": "unquoted allusion (compassion, ripened fields, lack of laborers) in own prose; \"abakozi\" matches OLCB 9:37"
   },
   {
    "reference": "Matthew 9:37",
    "status": "self_rendered",
    "chapter_order": 18,
-   "block_index": 8,
+   "block_index": 164,
    "why": "unquoted allusion (compassion, ripened fields, lack of laborers) in own prose; \"abakozi\" matches OLCB 9:37"
   },
   {
    "reference": "Deuteronomy 9:18",
    "status": "self_rendered",
    "chapter_order": 19,
-   "block_index": 2,
+   "block_index": 167,
    "why": "Moses' \"forty days and nights\" (paraphrase, no quote marks in English); \"ennaku amakumi ana emisana n’ekiro\" copied from OLCB"
   },
   {
    "reference": "James 5:17",
    "status": "mined",
    "chapter_order": 19,
-   "block_index": 3,
+   "block_index": 168,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 Kings 17:1",
    "status": "mined",
    "chapter_order": 19,
-   "block_index": 3,
+   "block_index": 168,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "1 Thessalonians 3:10",
    "status": "mined",
    "chapter_order": 19,
-   "block_index": 3,
+   "block_index": 168,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Luke 18:7",
    "status": "mined",
    "chapter_order": 19,
-   "block_index": 7,
+   "block_index": 172,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Isaiah 64:7",
    "status": "self_rendered",
    "chapter_order": 19,
-   "block_index": 9,
+   "block_index": 174,
    "why": "KJV \"stirreth up himself to take hold of thee\"; OLCB \"eyewaliriza okukukwatako\" (2nd person) re-personed to \"eyewaliriza okukwata ku Katonda\""
   },
   {
    "reference": "Luke 6:12",
    "status": "mined",
    "chapter_order": 19,
-   "block_index": 9,
+   "block_index": 174,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Acts 6:4",
    "status": "self_rendered",
    "chapter_order": 19,
-   "block_index": 9,
+   "block_index": 174,
    "why": "OLCB \"twemalire ku kusaba\" (1st pl.) re-personed to \"beemalira ku kusaba\""
   },
   {
    "reference": "John 14:12",
    "status": "mined",
    "chapter_order": 20,
-   "block_index": 8,
+   "block_index": 183,
    "source_file": "Open Luganda Contemporary Bible (lug_bib)"
   },
   {
    "reference": "Isaiah 58:12",
    "status": "self_rendered",
    "chapter_order": 20,
-   "block_index": 2,
+   "block_index": 177,
    "why": "allusion \"Who will restore this breach?\" (no quote marks in English); OLCB \"omuddaabiriza wa bbugwe eyamenyeka\" copied by script into \"Ani aliba ... ono?\""
   },
   {
    "reference": "Acts 17:6",
    "status": "self_rendered",
    "chapter_order": 20,
-   "block_index": 6,
+   "block_index": 181,
    "why": "allusion \"turned the world upside down\" (no quote marks); OLCB verb \"batabuddetabudde ... mu nsi yonna\" reshaped to \"omwoyo ogwatabulatabula ensi yonna\". English lowercase \"spirit\" kept as lowercase \"omwoyo\" (ambiguity preserved, not resolved to Omwoyo Omutukuvu)"
   },
   {
    "reference": "2 Chronicles 16:9",
    "status": "self_rendered",
    "chapter_order": 20,
-   "block_index": 9,
+   "block_index": 184,
    "why": "allusion \"perfect hearts\" (no quote marks); OLCB 16:9 reads \"abamwesigira ddala\", so rendered in own prose \"emitima egituukiridde\" (cf. OLCB 1CH 29:9 \"omutima ogutuukiridde\")"
   },
   {
    "reference": "Ephesians 3:19",
    "status": "self_rendered",
    "chapter_order": 20,
-   "block_index": 5,
+   "block_index": 180,
    "why": "allusion \"all the fullness of God\" (no quote marks); OLCB 3:19 reads \"okutegeerera ddala Katonda bw’ali\" (different sense), so rendered \"obujjuvu bwonna obwa Katonda\" in own prose"
   }
  ]
