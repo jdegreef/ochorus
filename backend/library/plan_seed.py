@@ -561,6 +561,37 @@ CURATED_PLANS = [
             chapters("tell-me-the-story-4", 2, 8),  # Zechariah … Born in Bethlehem, the shepherds
         ],
     ),
+    # Lent into Easter: 29 nights from the Sunday three weeks before Easter (7 March
+    # in 2027). Holy Week cannot run one story a weekday (Thursday night to Friday
+    # holds six), so only the three days that matter most are anchored: night 20 is
+    # Good Friday ("It Is Finished"), 21 Holy Saturday ("Laid in the Tomb"), 22
+    # Easter Sunday ("He Is Risen!"); then a week of Easter stories to the ascension.
+    (
+        "tell-me-the-easter-story",
+        "Tell Me the Easter Story: A Plan for Easter",
+        "Twenty-nine nights of Bible stories for children and the grown-ups who "
+        "read with them, one five-minute story a night. It begins with the "
+        "promises that point to the cross: the lamb God provides, the Passover, "
+        "the snake on the pole, Jonah's three days and the Good Shepherd. Then it "
+        "walks with Jesus to Jerusalem, through the Last Supper, the garden and "
+        "the cross, to the empty tomb, and on through Easter week to the "
+        "ascension. Start on the Sunday three weeks before Easter, and Good "
+        "Friday, Holy Saturday and Easter Sunday fall on their own stories. Each "
+        "story ends with a prayer and three questions to talk about together.",
+        [
+            chapters("tell-me-the-story-1", 4, 4),  # The Snake's Trick (Genesis 3:15)
+            chapters("tell-me-the-story-1", 13, 13),  # God Will Provide
+            chapters("tell-me-the-story-2", 5, 5),  # The Night of the Passover
+            chapters("tell-me-the-story-2", 13, 13),  # The Snake on the Pole
+            chapters("tell-me-the-story-3", 17, 17),  # Jonah Runs Away (three days, Matthew 12:40)
+            chapters("tell-me-the-story-3", 19, 19),  # The Promise of a Child (Isaiah 53)
+            chapters("tell-me-the-story-9", 2, 2),  # The Shepherd's Song (John 10:11)
+            chapters("tell-me-the-story-6", 2, 2),  # The Shining Mountain
+            chapters("tell-me-the-story-5", 22, 22),  # Lazarus, Come Out!
+            chapters("tell-me-the-story-6", 3, 5),  # Mary's Gift, the King on a Donkey, the temple
+            chapters("tell-me-the-story-6", 7, 23),  # foot-washing … Good Friday (14), Easter (16) … ascension
+        ],
+    ),
 ]
 
 # Plans that have been withdrawn from the shelf, each with the plan(s) that

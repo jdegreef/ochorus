@@ -58,6 +58,22 @@ the picture:
   **The old `/public/collection/v1/search` was RETIRED 2026-10-01** (it answers
   with a JSON message): use `/public/collection/v1.1/search`, paginated by
   `offset`/`limit`. Object fetches (`/v1/objects/<id>`) still work.
+- **Cleveland finds PLACE when AIC can't** (diverse voices, #6085):
+  `openaccess-api.clevelandart.org/api/artworks/?q=…&cc0=1&has_image=1` found
+  Bourne's 1860s Himalaya photographs, Lear's *Hardwar* and a wordless Sōami
+  where AIC returned nothing for India/Japan. Read each record's `inscriptions`:
+  photochroms carry a printed imprint and most Japanese scrolls a poem — words on
+  a ground, so pass, or crop clear and ZOOM the corner (`focus=1.0` still left
+  "S.W.S" showing). Grep the object id in `curated_art.py` before building —
+  `test_no_painting_is_given_to_two_works` caught Lane's Boston harbour already
+  on `first-epistle-of-clement`.
+- **Choosing an author LAYOUT: render the candidates, don't pick from names**
+  (Chesterton/MacDonald, #6092). Swap the `AUTHOR_LAYOUT` line, `npm run
+  og:covers` (redraws only that author's twins), montage, repeat. Grounds drawn
+  for `framed` put the subject LOW, so `diagonal`/`box` panels hide it and `split`
+  crops it; `fade`/`wash` keep it. Then `tune_art_scrim <slugs>` (laid-out works
+  drop their ART_SCRIM rows), re-copy `export_covers`, and keep the table
+  alphabetical.
 - **Band layout shows only the LOWER ~45% of the ground** (Spurgeon, 2026-10-13):
   judge `focus` on the composed twin, not the painting — a subject in the upper
   half (Constable's spire, Lhermitte's sunset) only shows if it sits low, and
@@ -482,6 +498,13 @@ Shipped so far on this tier: Brave for God 1–4 (#2877), growing-in-wisdom
 growing tree chosen from 10 concepts) + A Hidden Fire + Tukutendereza ("fires on the
 hills"), Sons/Daughters of the King 1–3 (2026-09-28, "silhouettes done right",
 chosen from 7 concepts). With these, no published book wears a plate.
+
+## Judge the SHELF, not one cover — `/admin/covers`
+The cover wall (#6296) shows every published cover at shelf size with flags
+(plate left, painter on more than `coverWall.PAINTER_CAP` = 3 works, framed scrim
+≥ 0.85×), grouping by painter or by mean hue. Check it before picking a painter
+(is he already on three books?) and after a batch lands (did the run turn one
+colour?). As of 2026-10-15 George Inness is the one painter over the cap (7).
 
 ## Running the singles as a batched sweep
 Too many single-plate authors to do per-book A/B/C. The method that works:

@@ -37,38 +37,95 @@ class DeployResult:
         return self.status == "triggered"
 
 
+#: The workflow that rebuilds ochorus-web alone at a given commit, through
+#: Render's REST API (.github/workflows/rebuild-reader.yml).
+REBUILD_WORKFLOW = "rebuild-reader.yml"
+GITHUB_API = "https://api.github.com"
+
+
 def trigger_web_deploy() -> DeployResult:
-    """Fire the Render deploy hook for the reader.
+    """Rebuild the reader: pinned to this API's commit under the train, else the hook.
+
+    Under the deploy train, build the commit this API runs, not main's tip:
+    main can hold content this API hasn't released, and a web build of the tip
+    would wait on the API for content it will never serve, then fail. The train
+    keeps every service on one commit, so this commit's frontend is also what
+    the reader already runs. Without the train (auto-deploy) the reader may be
+    AHEAD of this commit, so pinning would roll it back.
+
+    The pin can't ride on the deploy hook: Render answers a hook carrying
+    `ref=<sha>` with a 500 (2026-10-14). So it goes through a GitHub workflow
+    that calls Render's REST API with `commitId`, which keeps the workspace-wide
+    Render key in GitHub's secrets and leaves this service holding only a token
+    that can start a workflow. If that dispatch fails, the unpinned hook still
+    fires: a rebuild that may stall at the content gate beats no rebuild.
 
     Never raises: a launch that recorded its status but failed to deploy is a
     recoverable state (deploy again), whereas an exception here would leave the
     caller unsure whether the status flip happened at all.
     """
+    unpinned_because = ""
+    if settings.DEPLOY_TRAIN and settings.RELEASE_COMMIT:
+        if not settings.GITHUB_DEPLOY_TOKEN:
+            unpinned_because = "no GITHUB_DEPLOY_TOKEN set"
+        else:
+            pinned = _dispatch_pinned_rebuild(settings.RELEASE_COMMIT)
+            if pinned.ok:
+                return pinned
+            unpinned_because = pinned.detail
+
     hook = settings.RENDER_WEB_DEPLOY_HOOK
     if not hook:
-        return DeployResult(
-            "not_configured",
-            (
-                "No RENDER_WEB_DEPLOY_HOOK set, so no rebuild was triggered. The "
-                "language is recorded as live but readers won't see it until the "
-                "site is deployed — trigger a deploy in Render, or set the hook."
-            ),
+        detail = (
+            "No RENDER_WEB_DEPLOY_HOOK set, so no rebuild was triggered. The "
+            "language is recorded as live but readers won't see it until the "
+            "site is deployed — trigger a deploy in Render, or set the hook."
         )
-    # Under the deploy train, build the commit this API runs, not main's tip:
-    # main can hold content this API hasn't released, and a web build of the
-    # tip would wait on the API for content it will never serve, then fail.
-    # The train keeps every service on one commit, so this commit's frontend
-    # is also what the reader already runs. Without the train (auto-deploy) the
-    # reader may be AHEAD of this commit, so pinning would roll it back.
-    pin = settings.DEPLOY_TRAIN and settings.RELEASE_COMMIT
-    params = {"ref": settings.RELEASE_COMMIT} if pin else None
+        if unpinned_because:
+            detail += f" (The pinned rebuild didn't start either: {unpinned_because}.)"
+        return DeployResult("not_configured", detail)
     try:
-        res = requests.post(hook, params=params, timeout=20)
+        res = requests.post(hook, timeout=20)
     except requests.RequestException as e:
         return DeployResult("failed", f"Deploy hook unreachable ({e.__class__.__name__}).")
     if not res.ok:
         return DeployResult("failed", f"Deploy hook returned {res.status_code}.")
-    return DeployResult("triggered", "Rebuild triggered; readers see it when it finishes.")
+    detail = "Rebuild triggered; readers see it when it finishes."
+    if unpinned_because:
+        detail += (
+            f" It builds main's tip, not this API's commit ({unpinned_because}); if "
+            "main holds content the API hasn't released, that build fails at its "
+            "content gate and the next deploy train ships the change."
+        )
+    return DeployResult("triggered", detail)
+
+
+def _dispatch_pinned_rebuild(commit: str) -> DeployResult:
+    """Start the rebuild-reader workflow for `commit`; never raises."""
+    url = (
+        f"{GITHUB_API}/repos/{settings.GITHUB_TRANSLATION_REPO}"
+        f"/actions/workflows/{REBUILD_WORKFLOW}/dispatches"
+    )
+    try:
+        res = requests.post(
+            url,
+            json={"ref": "main", "inputs": {"commit": commit}},
+            headers={
+                "Authorization": f"Bearer {settings.GITHUB_DEPLOY_TOKEN}",
+                "Accept": "application/vnd.github+json",
+            },
+            timeout=20,
+        )
+    except requests.RequestException as e:
+        return DeployResult("failed", f"GitHub unreachable ({e.__class__.__name__})")
+    if not res.ok:
+        # 403/404: the token lacks `actions: write`; 422: the workflow is missing.
+        return DeployResult("failed", f"workflow dispatch returned {res.status_code}")
+    return DeployResult(
+        "triggered",
+        f"Rebuild of {commit[:8]} (the commit this API runs) started; readers see "
+        "it when it finishes.",
+    )
 
 
 def go_live(lang: Language, *, force: bool = False) -> dict:

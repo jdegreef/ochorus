@@ -11,6 +11,17 @@
     "title": "Kristo n'omusaalaba",
     "description": "Omuntu n'omulimu gw'Omulokozi — Omwana gw'Endiga eyattibwa, ensonyi n'obuwanguzi bw'omusaalaba, obulungi bwa Kristo, n'entaana enjereere."
   },
+  "contemporary-voices": {
+    "title": "Amaloboozi ag'Omulembe Guno",
+    "description": "Ekkubo ery'edda lirina abalagirizi abalamu — abayigiriza ab'omulembe guno abawandiikira Afirika ey'Obuvanjuba n'ensi endala, abasisinkana omuyigirizwa awali ebibuuzo bye eby'olwaleero.",
+    "scripture": {
+      "reference": "Zabbuli 145:4",
+      "text": "Buli mulembe gunaatenderanga gunnaagwo ebikolwa byo, era gunaatendanga emirimu gyo egy'amaanyi."
+    },
+    "note": [
+      "Verse is OLCB 2017 verbatim (PSA 145:4) from the ebible mirror's lug_bib (= the `lug` text; Take Root is egress-blocked from the worker), same reference as the sw/fr shelves; apostrophes in this file's ASCII style. Job: the lg topic batch alongside #2754 (PR #6290)."
+    ]
+  },
   "day-by-day": {
     "title": "Buli Lunaku",
     "description": "Ekisomebwa eky'oku makya n'eky'akawungeezi — emmere eya buli lunaku okuliisa emmeeme, okuva mu bitabo bya Spurgeon ebyagalwa ennyo okutuuka ku bitabo eby'essaawa ey'akasirise.",
@@ -39,6 +50,61 @@
       "text": "Mu makubo go gonna omumanyenga, naye alitereeza amakubo go."
     }
   },
+  "faith-for-the-impossible": {
+    "title": "Okukkiriza mu Bitasoboka",
+    "description": "Okukkiriza Katonda ku kigambo kye — bamulekwa ba Müller abaaliisibwanga okusaba kwokka, ekisa ky'okumulindirira, ne bbanka y'okukkiriza etaggwaamu.",
+    "scripture": {
+      "reference": "Makko 9:23",
+      "text": "Yesu n'amuddamu nti, “Obanga osobola! Buli kimu kisoboka eri oyo akkiriza.”"
+    },
+    "note": [
+      "Verse is OLCB 2017 verbatim (MRK 9:23) from the ebible mirror's lug_bib (= the `lug` text; Take Root is egress-blocked from the worker), same reference as the sw/fr shelves; apostrophes in this file's ASCII style. Job: the lg topic batch alongside #2754 (PR #6290)."
+    ]
+  },
+  "for-teens": {
+    "title": "Eri Abavubuka",
+    "description": "Okukkiriza mu myaka gy'obuvubuka — okujja eri Kristo, okuba ow'abantu be, n'obuvumu okumugoberera. Ebitabo ebimpi, ebyangu era ebyesimbu, n'emboozi ez'amazima ez'abantu abaawaayo obulamu bwabwe ku lulwe, ebyawandiikirwa abavubuka oba ebitegeerekeka eri abasomi abato.",
+    "scripture": {
+      "reference": "1 Timoseewo 4:12",
+      "text": "Waleme kubaawo muntu n'omu akunyooma olw'obuvubuka bwo, naye mu kwogera ne mu bikolwa, ne mu kwagala, ne mu kukkiriza, ne mu bulongoofu beeranga kyakulabirako eri abakkiriza."
+    },
+    "note": [
+      "Verse is OLCB 2017 verbatim (1TI 4:12) from the ebible mirror's lug_bib (= the `lug` text; Take Root is egress-blocked from the worker), same reference as the sw/fr shelves; apostrophes in this file's ASCII style. Job: the lg topic batch alongside #2754 (PR #6290)."
+    ]
+  },
+  "for-those-who-lead": {
+    "title": "Eri Abakulembeze",
+    "description": "Ekiragiro eri abasumba n'abawangula emmeeme — okulabirira kw'omusumba, amaanyi g'omubuulizi mu kusaba, n'engeri y'okuleeta abantu eri Kristo.",
+    "scripture": {
+      "reference": "1 Peetero 5:2",
+      "text": "Mulundenga ekisibo kya Katonda ekiri mu mmwe, mukiriisenga nga mukirabirira n'okwagala so si na kwemulugunya, nga mukolerera amagoba ag'obukuusa wabula olw'okujjumbira Katonda."
+    },
+    "note": [
+      "Verse is OLCB 2017 verbatim (1PE 5:2) from the ebible mirror's lug_bib (= the `lug` text; Take Root is egress-blocked from the worker), same reference as the sw/fr shelves; apostrophes in this file's ASCII style. Job: the lg topic batch alongside #2754 (PR #6290)."
+    ]
+  },
+  "for-young-readers": {
+    "title": "Eri Abasomi Abato",
+    "description": "Okukkiriza, nga kunnyonnyoddwa mu ngeri ennyangu, eri abaana n'abo abasoma nabo — olugero olukulu olw'olugendo olw'okuddayo eka, mu lulimi omwana lw'asobola okugoberera. Ekibinja ekigenda kikula nga bingi biddamu okunnyonnyolwa n'okuwandiikirwa abato.",
+    "scripture": {
+      "reference": "Matayo 19:14",
+      "text": "Naye Yesu n'agamba abayigirizwa be nti, “Mukkirize abaana abato bajje gye ndi so temubaziyiza, kubanga abafaanana ng'abo be bannannyini bwakabaka obw'omu ggulu.”"
+    },
+    "note": [
+      "Verse is OLCB 2017 verbatim (MAT 19:14) from the ebible mirror's lug_bib (= the `lug` text; Take Root is egress-blocked from the worker), same reference as the sw/fr shelves; apostrophes in this file's ASCII style. Job: the lg topic batch alongside #2754 (PR #6290)."
+    ]
+  },
+  "foundations-of-the-faith": {
+    "title": "Emisingi gy'Okukkiriza",
+    "description": "Enjigiriza ez'edda, nga zinnyonnyoddwa mu ngeri ennyangu — Kristo okufuuka omuntu, ekisa kya Katonda n'ebyo by'ayagala, amateeka, n'emisingi abatukuvu gye baaweebwa omulundi ogumu.",
+    "scripture": {
+      "reference": "Yuda 3",
+      "text": "Abaagalwa, nnali neesunga nnyo okubawandiikira ku bulokozi bwaffe bwe ntyo nawalirizibwa okubawandiikira nga mbazzaamu amaanyi nga mbegayirira mulwanirire okukkiriza abatukuvu kwe baaweebwa omulundi ogumu."
+    },
+    "note": [
+      "Verse is OLCB 2017 verbatim (JUD 1:3) from the ebible mirror's lug_bib (= the `lug` text; Take Root is egress-blocked from the worker), same reference as the sw/fr shelves; apostrophes in this file's ASCII style. Job: the lg topic batch alongside #2754 (PR #6290)."
+    ]
+  },
   "grace-and-comfort": {
     "title": "Ekisa n'Okubudaabuda",
     "description": "Ekisa kya Katonda ekitaggwaawo n'okubudaabuda kwe mu kugezesebwa kwonna — amawulire amalungi eri abakooye.",
@@ -54,6 +120,17 @@
       "reference": "Zekkaliya 4:6",
       "text": "Si na maanyi, so si na buyinza, wabula na Mwoyo gwange, bw'ayogera Mukama ow'eggye."
     }
+  },
+  "men-of-valour": {
+    "title": "Abasajja ab'Obuzira",
+    "description": "Okuyita eri abasajja — okusaba, okukulembera, okuwaayo buli kimu n'okulunda ekisibo — obulamu obw'obuvumu eri batabani ba Katonda.",
+    "scripture": {
+      "reference": "1 Abakkolinso 16:13",
+      "text": "Mutunulenga, munywerere mu kukkiriza, mubeere bazira era ab'amaanyi."
+    },
+    "note": [
+      "Verse is OLCB 2017 verbatim (1CO 16:13) from the ebible mirror's lug_bib (= the `lug` text; Take Root is egress-blocked from the worker), same reference as the sw/fr shelves; apostrophes in this file's ASCII style. Job: the lg topic batch alongside #2754 (PR #6290)."
+    ]
   },
   "prayer": {
     "title": "Ku Kusaba",
@@ -71,9 +148,86 @@
       "text": "Ai Mukama, zzaamu obulamu omulimu gwo wakati mu myaka, wakati mu myaka gumanyise."
     }
   },
+  "saints-of-the-african-diaspora": {
+    "title": "Abatukuvu b'Abaafirika Abaasaasaana mu Nsi",
+    "description": "Enjiri etwalibwa mu maloboozi g'Abaddugavu — Richard Allen n'ababuulizi abaazaalibwa nga ba ddembe, abakazi ab'obutukuvu abaagaana okusirisibwa, ne Crowther ku mugga Niger.",
+    "scripture": {
+      "reference": "Zabbuli 68:31",
+      "text": "Ababaka baliva e Misiri, ne Kuusi aligondera Katonda."
+    },
+    "note": [
+      "Verse is OLCB 2017 verbatim (PSA 68:31) from the ebible mirror's lug_bib (= the `lug` text; Take Root is egress-blocked from the worker), same reference as the sw/fr shelves; apostrophes in this file's ASCII style. Job: the lg topic batch alongside #2754 (PR #6290)."
+    ]
+  },
+  "soar-like-the-eagle": {
+    "title": "Tumbiira ng'Empungu",
+    "description": "Abo abalindirira Mukama baliddamu buggya amaanyi gaabwe — ebitabo eby'edda ku kufuna amaanyi okuva eri Katonda ng'amaanyi go ag'obuntu gaweddewo. Ebitabo eri abakooye: okulindirira, okuwummula, n'okuddamu okutumbiira ku biwaawaatiro by'empungu.",
+    "scripture": {
+      "reference": "Isaaya 40:31",
+      "text": "Naye abo abalindirira Mukama baliddamu buggya amaanyi gaabwe, balitumbiira n'ebiwaawaatiro ng'empungu; balidduka mbiro ne batakoowa, balitambula naye ne batazirika."
+    },
+    "note": [
+      "Verse is OLCB 2017 verbatim (ISA 40:31) from the ebible mirror's lug_bib (= the `lug` text; Take Root is egress-blocked from the worker), same reference as the sw/fr shelves; apostrophes in this file's ASCII style. Job: the lg topic batch alongside #2754 (PR #6290)."
+    ]
+  },
+  "the-body-of-christ": {
+    "title": "Omubiri gwa Kristo",
+    "description": "Ekkanisa ng'omubiri omulamu — ebitundu bya buli omu ku munne, ebigattiddwa ku Mutwe, n'obuweereza n'okulunda ebiva mu ekyo.",
+    "scripture": {
+      "reference": "1 Abakkolinso 12:27",
+      "text": "Kale mwenna awamu muli mubiri gwa Kristo, era buli omu ku mmwe kitundu kyagwo."
+    },
+    "note": [
+      "Verse is OLCB 2017 verbatim (1CO 12:27) from the ebible mirror's lug_bib (= the `lug` text; Take Root is egress-blocked from the worker), same reference as the sw/fr shelves; apostrophes in this file's ASCII style. Job: the lg topic batch alongside #2754 (PR #6290)."
+    ]
+  },
+  "the-east-african-revival": {
+    "title": "Okuzuukuka kw'Afirika ey'Obuvanjuba",
+    "description": "Tukutendereza Yesu — okuzuukuka okwatandikira ku lusozi mu Kampala ne kubuna mu nsi mukaaga okumala kumpi ekyasa kyonna, n'okutambulira mu musana kwe kwayigiriza.",
+    "scripture": {
+      "reference": "1 Yokaana 1:7",
+      "text": "Naye bwe tutambulira mu musana nga ye bw'ali omusana, olwo tussakimu buli muntu ne munne, n'omusaayi gwa Yesu Omwana we, gutunaazaako buli kibi kyonna."
+    },
+    "note": [
+      "Title is the corpus's settled name for the revival (14 uses: simeon-nsibambi/festo-kivengere lg bios, hubs/prose/lg.json). Verse is OLCB 2017 verbatim (ebible mirror lug_bib = the `lug` text; Take Root egress-blocked from the worker), apostrophes in this file's ASCII style; same wording as shipped lg corpus. Job #2754."
+    ]
+  },
   "the-gospel-call": {
     "title": "Okuyita kw'Enjiri",
     "description": "Okuyitibwa okusinga obukadde — jjangu, weenenye, kkiriza. Ababuulizi nga beegayirira abatannaba kulokoka, n'obujulirwa bw'ekisa ekyalabwa omwonoonyi asinga bonna."
+  },
+  "the-grace-of-god": {
+    "title": "Ekisa kya Katonda",
+    "description": "Ekisa okuva ku ntandikwa okutuuka ku nkomerero — eky'obwereere, eky'obuyinza era ekimala, ekisukkirira eri omwonoonyi asinga bonna era ekikwata omutukuvu asinga obunafu.",
+    "scripture": {
+      "reference": "Abaefeso 2:8",
+      "text": "Mwalokolebwa lwa kisa olw'okukkiriza. Tekwava mu mmwe, wabula kirabo kya Katonda."
+    },
+    "note": [
+      "Verse is OLCB 2017 verbatim (EPH 2:8) from the ebible mirror's lug_bib (= the `lug` text; Take Root is egress-blocked from the worker), same reference as the sw/fr shelves; apostrophes in this file's ASCII style. Job: the lg topic batch alongside #2754 (PR #6290)."
+    ]
+  },
+  "the-great-awakening": {
+    "title": "Okuzuukuka Okukulu",
+    "description": "Okubuulira okwanyeenya ssemazinga abiri — Whitefield ne Wesley nga babuulira ebweru, Edwards mu bantu be, Finney ku kuzuukuka — n'enjigiriza eyali wansi w'omuliro ogwo.",
+    "scripture": {
+      "reference": "Zabbuli 85:6",
+      "text": "Tolituzaamu ndasi, abantu bo basanyukirenga mu ggwe?"
+    },
+    "note": [
+      "Verse is OLCB 2017 verbatim (PSA 85:6) from the ebible mirror's lug_bib (= the `lug` text; Take Root is egress-blocked from the worker), same reference as the sw/fr shelves; apostrophes in this file's ASCII style. Job: the lg topic batch alongside #2754 (PR #6290)."
+    ]
+  },
+  "the-inner-life": {
+    "title": "Obulamu obw'Omu Kyama",
+    "description": "Ekkubo erikyukira munda — à Kempis, Law ne Guyon, okwagala Katonda n'oluggi oluggaddwa olw'ekifo eky'ekyama, emmeeme ng'eri yokka naye.",
+    "scripture": {
+      "reference": "Matayo 6:6",
+      "text": "Naye ggwe bw'obanga osaba, oyingiranga mu nnyumba yo, ne weggalira mu kisenge kyo n'osabira eyo mu kyama. Kitaawo ategeera ebyama byo byonna alikuwa by'omusabye."
+    },
+    "note": [
+      "Verse is OLCB 2017 verbatim (MAT 6:6) from the ebible mirror's lug_bib (= the `lug` text; Take Root is egress-blocked from the worker), same reference as the sw/fr shelves; apostrophes in this file's ASCII style. Job: the lg topic batch alongside #2754 (PR #6290)."
+    ]
   },
   "the-preached-word": {
     "title": "Ekigambo Ekibuulirwa",
@@ -90,6 +244,39 @@
   "the-way-of-holiness": {
     "title": "Ekkubo ery'Obutukuvu",
     "description": "Okwawulibwa ku lwa Katonda — amateeka nga gakebejjebwa, okutuukirira nga kunoonyezebwa n'obwesimbu, n'okwagala kw'omutima nga kugezesebwa ne kulabika nga kwa mazima."
+  },
+  "the-wesleys-and-early-methodism": {
+    "title": "Aba Wesley n'Abamesodisiti Abaasooka",
+    "description": "Okuzuukuka okwafuuka ekibiina — okubuulira kwa John Wesley n'ennyinnyonnyola ye ennyangu, maama eyamubumba, n'ebbugumu eryaddirira.",
+    "scripture": {
+      "reference": "Lukka 24:32",
+      "text": "Ne batandika okwewuunaganya nga bagamba nti, “Emitima gyaffe tegyabuguumiridde bwe yabadde ayogera naffe mu kkubo ng'atunnyonnyola Ebyawandiikibwa?”"
+    },
+    "note": [
+      "Verse is OLCB 2017 verbatim (LUK 24:32) from the ebible mirror's lug_bib (= the `lug` text; Take Root is egress-blocked from the worker), same reference as the sw/fr shelves; apostrophes in this file's ASCII style. Job: the lg topic batch alongside #2754 (PR #6290)."
+    ]
+  },
+  "to-the-ends-of-the-earth": {
+    "title": "Okutuuka ku Nkomerero z'Ensi",
+    "description": "Ebiwandiiko by'abaminsani eby'olunaku n'olunaku — Brainerd mu bibira, Taylor mu China, Carmichael mu Buyindi, Crowther ku mugga Niger — enjiri etwalibwa ka kibe kya muwendo ki.",
+    "scripture": {
+      "reference": "Ebikolwa by’Abatume 1:8",
+      "text": "Naye muliweebwa amaanyi, Mwoyo Mutukuvu bw'alimala okubakkako, era munaabanga bajulirwa bange mu Yerusaalemi, ne mu Buyudaaya yonna, ne mu Samaliya okutuukira ddala ku nkomerero z'ensi."
+    },
+    "note": [
+      "Verse is OLCB 2017 verbatim (ACT 1:8) from the ebible mirror's lug_bib (= the `lug` text; Take Root is egress-blocked from the worker), same reference as the sw/fr shelves; apostrophes in this file's ASCII style. The verse's closing ” (the speech continues from 1:7) is dropped so the shelf does not show an orphan mark. Job: the lg topic batch alongside #2754 (PR #6290)."
+    ]
+  },
+  "victory-over-sin": {
+    "title": "Obuwanguzi ku Kibi",
+    "description": "Olutalo olw'omunda olw'obutukuvu — okutta ekibi, omutima omulongoofu, okwagala okutereezebwa, n'ekkubo erituuka mu Kifo Ekitukuvu Ennyo.",
+    "scripture": {
+      "reference": "Abaruumi 6:14",
+      "text": "Temukkiriza kibi kwongera kubafuga, kubanga temukyafugibwa mateeka, wabula ekisa kya Katonda."
+    },
+    "note": [
+      "Verse is OLCB 2017 verbatim (ROM 6:14) from the ebible mirror's lug_bib (= the `lug` text; Take Root is egress-blocked from the worker), same reference as the sw/fr shelves; apostrophes in this file's ASCII style. Job: the lg topic batch alongside #2754 (PR #6290)."
+    ]
   },
   "voices-of-the-early-church": {
     "title": "Amaloboozi g'Ekkanisa ey'Edda",

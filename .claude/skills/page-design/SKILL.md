@@ -530,6 +530,15 @@ components carries neither. **Five source-text guards now scan every `.svelte`
   `settings/+page.svelte` (its `.seg` is the E1 deferral — remove the exemption
   when E1 lands).
 - `colorTokens.test.ts` (no raw hex) and `rtl.test.ts` (physical properties).
+- `hydrateSrc.test.ts` — every data-driven `<img>` must wear `use:hydrateSrc`,
+  **admin and `ssr = false` pages included** (no exemption; wearing it is
+  harmless there). Bit the cover wall (#6296).
+
+**Don't run `npx prettier --write` in `frontend/`.** There is no Prettier config,
+so it falls back to double quotes and 2-space indents and rewrites a tab/single-
+quote file wholesale (and can't parse `.svelte` without the plugin). CI doesn't
+run Prettier; match the surrounding file by hand and let `eslint` +
+`svelte-check` be the gate.
 
 Still unguarded (deliberately or on the backlog): literal *transition* durations
 — the remaining literals (a one-shot celebration keyframe, the spinner period,
