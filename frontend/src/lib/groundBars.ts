@@ -75,6 +75,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'tell-me-the-story-4': 0.110,
 	'tell-me-the-story-9': 0.110,
 	'the-big-story': 0.110,
+	'the-black-stair': 0.110,
 	'the-bruised-reed-teens': 0.110,
 	'the-everlasting-man': 0.110,
 	'the-imitation-of-christ-teens': 0.110,
