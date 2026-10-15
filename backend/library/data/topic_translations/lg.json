@@ -71,6 +71,17 @@
       "text": "Ai Mukama, zzaamu obulamu omulimu gwo wakati mu myaka, wakati mu myaka gumanyise."
     }
   },
+  "the-east-african-revival": {
+    "title": "Okuzuukuka kw'Afirika ey'Obuvanjuba",
+    "description": "Tukutendereza Yesu — okuzuukuka okwatandikira ku lusozi mu Kampala ne kubuna mu nsi mukaaga okumala kumpi ekyasa kyonna, n'okutambulira mu musana kwe kwayigiriza.",
+    "scripture": {
+      "reference": "1 Yokaana 1:7",
+      "text": "Naye bwe tutambulira mu musana nga ye bw'ali omusana, olwo tussakimu buli muntu ne munne, n'omusaayi gwa Yesu Omwana we, gutunaazaako buli kibi kyonna."
+    },
+    "note": [
+      "Title is the corpus's settled name for the revival (14 uses: simeon-nsibambi/festo-kivengere lg bios, hubs/prose/lg.json). Verse is OLCB 2017 verbatim (ebible mirror lug_bib = the `lug` text; Take Root egress-blocked from the worker), apostrophes in this file's ASCII style; same wording as shipped lg corpus. Job #2754."
+    ]
+  },
   "the-gospel-call": {
     "title": "Okuyita kw'Enjiri",
     "description": "Okuyitibwa okusinga obukadde — jjangu, weenenye, kkiriza. Ababuulizi nga beegayirira abatannaba kulokoka, n'obujulirwa bw'ekisa ekyalabwa omwonoonyi asinga bonna."
