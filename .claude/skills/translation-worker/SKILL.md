@@ -95,7 +95,17 @@ three of them gives none of them one.
    pages" below). If an older branch still carries one, resolve the conflict by
    dropping yours. The content didn't collide.
 3. **Claim** the oldest queued job that this gate lets you take — skipping a
-   blocked one is normal, and say on the issue you skipped why. **Re-read that
+   blocked one is normal, and say on the issue you skipped why.
+   **Level 1 jobs go next, after email.** `backend/library/content_targets.py`
+   names the works every language should hold first (the Language Content
+   Targets; the admin's "Level 1 targets" panel tracks them). Among the jobs
+   the gate allows, take the oldest one whose `<type>:<slug>` is in Level 1
+   (every `topic` job counts, since Level 1 wants all shelves). Only when none
+   is left do you fall back to the oldest job overall. Print the set with:
+   `cd backend && uv run python -c "from library.content_targets import LEVEL_1 as L; print('\n'.join(f'{t}:{s}' for t, k in dict(book='books', sermon='sermons', bio='bios', plan='plans', article='articles').items() for s in L.slugs(k)))"`
+   A Level 1 **plan** job whose source books aren't in that language yet still
+   waits: `seed_plans` won't build the plan until they exist, so take the
+   books first. **Re-read that
    issue's labels immediately before you write the claim**, not from the listing
    you fetched in step 1 — then add the `in-progress` label and comment
    `Claimed — session started <UTC time>`.
