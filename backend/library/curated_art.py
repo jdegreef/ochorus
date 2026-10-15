@@ -1104,6 +1104,18 @@ class Original(NamedTuple):
 
 # slug -> the ground we drew. Slugs match Book.slug (shared across languages).
 ORIGINAL_GROUND: dict[str, Original] = {
+    # The Lamplighters of Gloamhaven, Book 2 — a companion to Book 1's ground:
+    # the same slate dark and the Flame's gold, now underground. A vast cavern
+    # under faint stalactites; low on the left, Tobin climbs the Black Stair
+    # with the lamp held up and a short line of Delvers on the rope behind him;
+    # faint step-slabs climb the left edge into blackness. Upper two-thirds
+    # stays cavern-dark for the white title; the subject sits wholly below it.
+    "the-black-stair": Original(
+        "2e45be614b5546455b40045df3cf2f099798c3de82483ff6967c5860aa667296",
+        "Book 2's own image, paired with Book 1's: one small gold light carried "
+        "up through the dark by a frightened boy. Drawn as SVG and rendered with "
+        "Chrome (level-up-cover's vector recipe); the lamp sits where Book 1's does.",
+    ),
     # The Lamplighters of Gloamhaven, Book 1 (young readers, 9–12). Emberwick
     # at gloaming under the cursed coin of a sun: the cold Great Beacon, the
     # Ring of lamps along the wall with most of them failing, chimney smoke —
