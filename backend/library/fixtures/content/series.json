@@ -598,5 +598,18 @@
   "created_at": "2026-10-14T00:00:00Z",
   "updated_at": "2026-10-14T00:00:00Z"
  }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "daughters-of-the-king"
+  ],
+  "language": "es",
+  "title": "Hijas del Rey – 30 días con Dios para chicas",
+  "description": "Devocionales de treinta días para chicas de 9 a 12 años: quién eres como hija del Rey, y las mujeres valientes de la Biblia y de la historia que confiaron en él.",
+  "created_at": "2026-10-15T00:00:00Z",
+  "updated_at": "2026-10-15T00:00:00Z"
+ }
 }
 ]
