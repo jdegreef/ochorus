@@ -81,7 +81,8 @@
 			{@const shown = inLang.filter(
 				(c) => (tier === 'all' || c.tier === tier) && (!flaggedOnly || flagged.get(editionKey(c))!.length)
 			)}
-			{@const sections = groupCovers(shown, group, hues)}
+			<!-- Only the colour order reads `hues`, so thumbnails loading don't regroup the other views. -->
+			{@const sections = group === 'colour' ? groupCovers(shown, group, hues) : groupCovers(shown, group)}
 			{@const tierCounts = TIERS.map((t) => [t, inLang.filter((c) => c.tier === t).length] as const).filter(([, n]) => n)}
 			{@const flagCounts = (Object.keys(FLAG_LABEL) as CoverFlag[]).map(
 				(f) => [f, [...flagged.values()].filter((fs) => fs.includes(f)).length] as const
