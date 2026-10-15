@@ -14925,6 +14925,36 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"lg/tukutendereza": {
+			"ground": "cb46174ab6034029250200666e6d62f837dc972a70675065227681f22d7043a6",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[72, 300, 528, 376]
+				],
+				"subtitle": [
+					[118, 434, 482, 462],
+					[168, 462, 432, 490]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				305,
+				490
+			]
+		},
 		"lg/waiting-on-god": {
 			"ground": "84626082c3df7eb5d2a5cd11b5d88ad6e267f6b07fcfdafbc281034e8bc0faf7",
 			"style": "devotional",
