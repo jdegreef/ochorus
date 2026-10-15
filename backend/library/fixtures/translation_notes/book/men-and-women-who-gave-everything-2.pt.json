@@ -3,7 +3,7 @@
  "slug": "men-and-women-who-gave-everything-2",
  "language": "pt",
  "job_issue": 2787,
- "pull_request": null,
+ "pull_request": 6304,
  "note": [
   "Scripture follows the Bíblia Livre (porbrbsl; ebible mirror por_bpm, USFM). Rows were derived by measurement: a row is `mined` only when the translator claimed Bíblia Livre wording AND the block contains either a quoted span that is a verbatim Bíblia Livre substring or a run of six consecutive Bíblia Livre words. Everything else is `self_rendered` with the translator's reason. `block_index` is work-level (the admin review panel's block split).",
   "This Ochorus Original quotes the NIV (and the NLT once). The Portuguese quotes the Bíblia Livre instead, so the version tags were dropped from the citations and the appendix's opening line names the Bíblia Livre. Where the NIV wording carries a point the Bíblia Livre lacks (Acts 20:24 'worth nothing', Phil 3:10 'I want to know Christ', John 12:24 'seeds', Jer 33:3 NLT 'things to come'), only Bíblia Livre words sit inside the quotation marks and the rest is the author's prose. The appendix pastes each cited verse or range in full. AI-drafted, awaiting native review."
