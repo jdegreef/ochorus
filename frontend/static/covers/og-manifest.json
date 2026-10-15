@@ -5257,6 +5257,16 @@
 			"layout": "split/navy",
 			"bar": 0.04
 		},
+		"es/evening-by-evening": {
+			"ground": "506e34a5fc2577bad64019cfcf6300fdfa2cd7a48c7047162eab6b4256b7421c",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"es/feasting-at-the-table": {
 			"ground": "ca3f76b4cb6f73df54f65066da267dc24df12fb2daf0abf371049c92a4841e82",
 			"style": "lettered",
