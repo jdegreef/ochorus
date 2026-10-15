@@ -499,6 +499,13 @@ growing tree chosen from 10 concepts) + A Hidden Fire + Tukutendereza ("fires on
 hills"), Sons/Daughters of the King 1–3 (2026-09-28, "silhouettes done right",
 chosen from 7 concepts). With these, no published book wears a plate.
 
+## Judge the SHELF, not one cover — `/admin/covers`
+The cover wall (#6296) shows every published cover at shelf size with flags
+(plate left, painter on more than `coverWall.PAINTER_CAP` = 3 works, framed scrim
+≥ 0.85×), grouping by painter or by mean hue. Check it before picking a painter
+(is he already on three books?) and after a batch lands (did the run turn one
+colour?). As of 2026-10-15 George Inness is the one painter over the cap (7).
+
 ## Running the singles as a batched sweep
 Too many single-plate authors to do per-book A/B/C. The method that works:
 group them into **coherent sub-batches** (Church Fathers; African-American
