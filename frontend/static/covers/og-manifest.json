@@ -890,7 +890,7 @@
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 0.65,
+			"scrim": 0.7,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -4876,7 +4876,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.65,
+			"scrim": 0.7,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -5559,6 +5559,36 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0.05
+		},
+		"es/divine-songs-for-children": {
+			"ground": "b79f45bf489048c04b71e0dff5bd1ae7a638affd30700d9beef5bd7a5be5fad0",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[183, 102, 417, 131]
+				],
+				"title": [
+					[112, 285, 488, 360],
+					[167, 346, 433, 421]
+				],
+				"subtitle": [
+					[43, 475, 557, 503]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				292,
+				503
+			]
 		},
 		"es/elisabeth-elliot-a-life-children": {
 			"ground": "855fe58f501b201c655fddf44bd9cab6783ff9f0a9384d219dbc4c832de42951",
@@ -14363,7 +14393,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.65,
+			"scrim": 0.7,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -18383,7 +18413,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.65,
+			"scrim": 0.7,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
