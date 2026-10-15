@@ -5571,6 +5571,17 @@
 				478
 			]
 		},
+		"es/daughters-of-the-king-1": {
+			"ground": "7ef697994c132fc78553f2c0b6e17e6d32282cf03314315d7a693925a4702aa0",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed-light",
+			"bar": 0
+		},
 		"es/days-of-heaven-upon-earth": {
 			"ground": "b7761b5167880578c3cc63cbbaaa3661996fdf8336c45b3ddbd5213dc0de7864",
 			"style": "revival",
