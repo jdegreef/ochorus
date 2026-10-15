@@ -344,6 +344,21 @@ class LanguageListEndpointTests(TestCase):
         self.assertFalse(rows["es"]["rtl"])
         self.assertTrue(rows["en"]["is_source"])
 
+    def test_all_counts_each_live_languages_published_books(self):
+        # The footer's language tiles print these, so a draft or unpublished
+        # book must not inflate them, and a live language still filling up
+        # reads 0 rather than going missing.
+        Book.objects.create(
+            author=self.author, slug="c", language="en", title="T2", is_published=True
+        )
+        Book.objects.create(
+            author=self.author, slug="d", language="en", title="T3", is_published=False
+        )
+        rows = {r["code"]: r for r in self.client.get("/api/library/languages/?all=1").data}
+        self.assertEqual(rows["en"]["book_count"], 2)
+        self.assertEqual(rows["es"]["book_count"], 1)
+        self.assertEqual(rows["sw"]["book_count"], 0)
+
 
 class ReadinessReportTests(TestCase):
     """`readiness.report` — the computed answer to "can this language go live?"."""
@@ -780,7 +795,7 @@ class GoLiveTests(TestCase):
         with self.settings(
             RENDER_WEB_DEPLOY_HOOK="https://hook.example/deploy",
             RELEASE_COMMIT="abc123",
-            DEPLOY_TRAIN=True,
+            DEPLOY_TRAIN=False,
         ):
             with self._perm_and_ready(ready=True):
                 with mock.patch("library.golive.requests.post") as post:
@@ -788,10 +803,58 @@ class GoLiveTests(TestCase):
                     res = self.client.post(
                         "/api/admin/languages/ar/go-live/", {}, format="json"
                     )
-                    post.assert_called_once_with(
-                        "https://hook.example/deploy", params={"ref": "abc123"}, timeout=20
-                    )
+                    # No `ref`, ever: Render 500s on a hook carrying one.
+                    post.assert_called_once_with("https://hook.example/deploy", timeout=20)
         self.assertEqual(res.data["deploy"]["status"], "triggered")
+
+    def _launch_under_train(self, *, token="gh-token", dispatch_status=204):
+        """Launch with the deploy train on; returns (response, requests.post mock)."""
+        with self.settings(
+            RENDER_WEB_DEPLOY_HOOK="https://hook.example/deploy",
+            RELEASE_COMMIT="abc123def456",
+            DEPLOY_TRAIN=True,
+            GITHUB_DEPLOY_TOKEN=token,
+            GITHUB_TRANSLATION_REPO="owner/repo",
+        ):
+            with self._perm_and_ready(ready=True):
+                with mock.patch("library.golive.requests.post") as post:
+                    post.side_effect = lambda url, **kw: mock.Mock(
+                        ok=("/dispatches" not in url or dispatch_status < 400),
+                        status_code=(dispatch_status if "/dispatches" in url else 200),
+                    )
+                    res = self.client.post(
+                        "/api/admin/languages/ar/go-live/", {}, format="json"
+                    )
+        return res, post
+
+    def test_under_the_train_the_launch_rebuilds_the_apis_own_commit(self):
+        # main's tip may hold content this API hasn't released; a web build of it
+        # would stall at its content gate. So the launch dispatches the workflow
+        # that deploys ochorus-web at RELEASE_COMMIT, and never fires the hook.
+        res, post = self._launch_under_train()
+        post.assert_called_once_with(
+            "https://api.github.com/repos/owner/repo/actions/workflows/rebuild-reader.yml/dispatches",
+            json={"ref": "main", "inputs": {"commit": "abc123def456"}},
+            headers={"Authorization": "Bearer gh-token", "Accept": "application/vnd.github+json"},
+            timeout=20,
+        )
+        self.assertEqual(res.data["deploy"]["status"], "triggered")
+        self.assertIn("abc123de", res.data["deploy"]["detail"])
+
+    def test_a_refused_dispatch_falls_back_to_the_unpinned_hook_and_says_so(self):
+        # A token without `actions: write` gets 403. An unpinned rebuild may stall
+        # at the content gate, but it beats no rebuild; the admin is told which.
+        res, post = self._launch_under_train(dispatch_status=403)
+        self.assertEqual(post.call_count, 2)
+        post.assert_called_with("https://hook.example/deploy", timeout=20)
+        self.assertEqual(res.data["deploy"]["status"], "triggered")
+        self.assertIn("main's tip", res.data["deploy"]["detail"])
+        self.assertIn("403", res.data["deploy"]["detail"])
+
+    def test_without_a_deploy_token_the_train_fires_the_unpinned_hook(self):
+        res, post = self._launch_under_train(token="")
+        post.assert_called_once_with("https://hook.example/deploy", timeout=20)
+        self.assertIn("GITHUB_DEPLOY_TOKEN", res.data["deploy"]["detail"])
 
     def test_english_cannot_be_launched(self):
         from unittest.mock import patch

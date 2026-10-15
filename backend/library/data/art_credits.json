@@ -53,6 +53,12 @@
 		"year": "1867–68",
 		"credit": "Martin Johnson Heade, “Point Judith, Rhode Island” (1867–68). The Cleveland Museum of Art, CC0."
 	},
+	"an-all-round-ministry": {
+		"artist": "Harry Thompson",
+		"title": "Landscape with Sheep, Picardy",
+		"year": "Late 19th century",
+		"credit": "Harry Thompson, “Landscape with Sheep, Picardy” (Late 19th century). The Art Institute of Chicago, CC0."
+	},
 	"answers-to-prayer": {
 		"artist": "Georg Flegel",
 		"title": "Still Life",
@@ -65,6 +71,12 @@
 		"year": "1646",
 		"credit": "Jan van Goyen, “The Pelkus Gate near Utrecht” (1646). The Metropolitan Museum of Art, Open Access."
 	},
+	"at-the-masters-feet": {
+		"artist": "Samuel Bourne",
+		"title": "The Upper Himmalayahs. View on the New Road between India and China. Mt. Pangi with the Snowy Peaks of China in the Distance",
+		"year": "1863 or 1866",
+		"credit": "Samuel Bourne, “The Upper Himmalayahs. View on the New Road between India and China. Mt. Pangi with the Snowy Peaks of China in the Distance” (1863 or 1866). The Cleveland Museum of Art, CC0."
+	},
 	"cheque-book": {
 		"artist": "Joseph Anton Koch",
 		"title": "Heroic Landscape with Rainbow",
@@ -76,6 +88,12 @@
 		"title": "Mountain Brook",
 		"year": "1863",
 		"credit": "Albert Bierstadt, “Mountain Brook” (1863). The Art Institute of Chicago, CC0."
+	},
+	"come-ye-children": {
+		"artist": "Constant Troyon",
+		"title": "The Road to Market",
+		"year": "1858–59",
+		"credit": "Constant Troyon, “The Road to Market” (1858–59). The Art Institute of Chicago, CC0."
 	},
 	"confessions": {
 		"artist": "Théodore Géricault",
@@ -191,6 +209,12 @@
 		"year": "1874",
 		"credit": "Gustave Courbet, “An Alpine Scene” (1874). The Art Institute of Chicago, CC0."
 	},
+	"how-i-became-a-christian": {
+		"artist": "Sōami",
+		"title": "Landscape",
+		"year": "early 1500s",
+		"credit": "Sōami, “Landscape” (early 1500s). The Cleveland Museum of Art, CC0."
+	},
 	"how-to-bring-men-to-christ": {
 		"artist": "Gustave Courbet",
 		"title": "The Fishing Boat",
@@ -215,11 +239,35 @@
 		"year": "1891",
 		"credit": "George Inness, “Moonrise” (1891). The Art Institute of Chicago, CC0."
 	},
+	"john-ploughmans-pictures": {
+		"artist": "John Constable",
+		"title": "Landscape with Cottages",
+		"year": "1809–10",
+		"credit": "John Constable, “Landscape with Cottages” (1809–10). The Art Institute of Chicago, CC0."
+	},
+	"john-ploughmans-talk": {
+		"artist": "John Constable",
+		"title": "Stoke-by-Nayland",
+		"year": "1836",
+		"credit": "John Constable, “Stoke-by-Nayland” (1836). The Art Institute of Chicago, CC0."
+	},
 	"journal-of-an-expedition-up-the-niger": {
 		"artist": "Eugène Fromentin",
 		"title": "On the Nile",
 		"year": "1871",
 		"credit": "Eugène Fromentin, “On the Nile” (1871). The Art Institute of Chicago, CC0."
+	},
+	"lectures-to-my-students": {
+		"artist": "Camille Pissarro",
+		"title": "The Crystal Palace",
+		"year": "1871",
+		"credit": "Camille Pissarro, “The Crystal Palace” (1871). The Art Institute of Chicago, CC0."
+	},
+	"lectures-to-my-students-second-series": {
+		"artist": "Claude Monet",
+		"title": "Waterloo Bridge, Gray Weather",
+		"year": "1900",
+		"credit": "Claude Monet, “Waterloo Bridge, Gray Weather” (1900). The Art Institute of Chicago, CC0."
 	},
 	"letters-and-minor-works": {
 		"artist": "Camille Pissarro",
@@ -256,6 +304,18 @@
 		"title": "La Magdalena",
 		"year": "1854",
 		"credit": "Frederic Edwin Church, “La Magdalena” (1854). Wikimedia Commons, public domain."
+	},
+	"meditations-maria-w-stewart": {
+		"artist": "Artist unknown",
+		"title": "Boston Common",
+		"year": "1850–63",
+		"credit": "Artist unknown, “Boston Common” (1850–63). The Art Institute of Chicago, CC0."
+	},
+	"memoirs-of-mrs-zilpha-elaw": {
+		"artist": "Robert S. Duncanson",
+		"title": "View of Lake Pepin, Minnesota",
+		"year": "1862",
+		"credit": "Robert S. Duncanson, “View of Lake Pepin, Minnesota” (1862). The Cleveland Museum of Art, CC0."
 	},
 	"ministry-of-intercession": {
 		"artist": "Emanuel de Witte",
@@ -389,6 +449,12 @@
 		"year": "1648",
 		"credit": "Salomon van Ruysdael, “A Country Road” (1648). The Metropolitan Museum of Art, Open Access."
 	},
+	"reality-and-religion": {
+		"artist": "Samuel Bourne",
+		"title": "Shimla. The Yarrows and Neighboring Hills",
+		"year": "1863–70",
+		"credit": "Samuel Bourne, “Shimla. The Yarrows and Neighboring Hills” (1863–70). The Cleveland Museum of Art, CC0."
+	},
 	"reality-of-prayer": {
 		"artist": "Joseph Bidauld",
 		"title": "Lake Fucino and the Abruzzi Mountains",
@@ -454,6 +520,12 @@
 		"title": "Valley of Aosta: Snowstorm, Avalanche, and Thunderstorm",
 		"year": "1836–37",
 		"credit": "Joseph Mallord William Turner, “Valley of Aosta: Snowstorm, Avalanche, and Thunderstorm” (1836–37). The Art Institute of Chicago, CC0."
+	},
+	"spurgeon-on-the-holy-spirit": {
+		"artist": "Style of John Constable",
+		"title": "Hampstead, Stormy Sky",
+		"year": "1814",
+		"credit": "Style of John Constable, “Hampstead, Stormy Sky” (1814). The Art Institute of Chicago, CC0."
 	},
 	"susanna-wesley-clarke": {
 		"artist": "Meindert Hobbema",
@@ -527,6 +599,18 @@
 		"year": "1632",
 		"credit": "Pieter Jansz. Saenredam, “Interior of the Sint-Pieterskerk, 's-Hertogenbosch” (1632). The Metropolitan Museum of Art, Open Access."
 	},
+	"the-saint-and-his-saviour": {
+		"artist": "Alfred Sisley",
+		"title": "A Turn in the Road",
+		"year": "1873",
+		"credit": "Alfred Sisley, “A Turn in the Road” (1873). The Art Institute of Chicago, CC0."
+	},
+	"the-soul-winner": {
+		"artist": "Léon Augustin Lhermitte",
+		"title": "The Harvesters",
+		"year": "1888–89",
+		"credit": "Léon Augustin Lhermitte, “The Harvesters” (1888–89). The Art Institute of Chicago, CC0."
+	},
 	"the-way-to-god": {
 		"artist": "Meyndert Hobbema",
 		"title": "Entrance to a Village",
@@ -586,5 +670,11 @@
 		"title": "Wood Interior",
 		"year": "c. 1910",
 		"credit": "Emil Carlsen, “Wood Interior” (c. 1910). The Cleveland Museum of Art, CC0."
+	},
+	"with-and-without-christ": {
+		"artist": "Edward Lear",
+		"title": "Hardwar, India",
+		"year": "1875",
+		"credit": "Edward Lear, “Hardwar, India” (1875). The Cleveland Museum of Art, CC0."
 	}
 }

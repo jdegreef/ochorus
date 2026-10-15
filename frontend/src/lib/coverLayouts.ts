@@ -90,6 +90,8 @@ export const AUTHOR_LAYOUT: Record<string, CoverLayout> = {
 	'charles-h-spurgeon': { layout: 'band', hue: 'oxblood' },
 	'dwight-l-moody': { layout: 'wash', hue: 'ochre' },
 	'e-m-bounds': { layout: 'split', hue: 'navy' },
+	'g-k-chesterton': { layout: 'fade', hue: 'rust' },
+	'george-macdonald': { layout: 'wash', hue: 'indigo' },
 	'george-muller': { layout: 'split', hue: 'oxblood' },
 	'hudson-taylor': { layout: 'rail', hue: 'teal' },
 	'john-bunyan': { layout: 'band', hue: 'teal' },
@@ -157,7 +159,21 @@ export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
 	// it to a strip.
 	'grace-abounding-teens': null,
 	'confessions-teens': null,
-	'all-of-grace-teens': null
+	'all-of-grace-teens': null,
+	'absolute-surrender-teens': null,
+	'foxes-book-of-martyrs-teens': null,
+	'how-to-succeed-in-the-christian-life-teens': null,
+	'life-and-diary-of-david-brainerd-teens': null,
+	'life-of-antony-teens': null,
+	'mortification-of-sin-teens': null,
+	'orthodoxy-teens': null,
+	'pensees-teens': null,
+	'the-bruised-reed-teens': null,
+	'the-imitation-of-christ-teens': null,
+	'the-practice-of-the-presence-of-god-teens': null,
+	'the-pursuit-of-god-teens': null,
+	'the-secret-of-guidance-teens': null,
+	'the-way-to-god-teens': null
 };
 
 /**
@@ -247,24 +263,36 @@ export function typeTopFor(bookSlug: string, layout: CoverLayout | null): boolea
 const SIDEWAYS_UNSAFE = new Set(['arabic', 'devanagari']);
 
 /**
+ * An elided article or particle — French « d’Antoine », « l’incarnation »,
+ * Italian « dell’ », « qu’ ». The rail tracks its capitals wide, so the
+ * apostrophe floats free of the letter it belongs to, and the elided word is
+ * one long unbreakable run that wraps the title onto a third line over the
+ * byline (fr « Sur l’incarnation du Verbe », « Vie d’Antoine », 2026-10-13).
+ * Such an edition takes the title box instead, as an unsafe script does.
+ */
+const ELISION = /(^|[\s(«“])(?:[cdjlmnst]|qu|dell|nell|sull|all)[’']/i;
+
+/**
  * The layout a painted cover is drawn in, or null for `framed`.
  *
  * `script` is `coverStyles.scriptOf`'s answer for the edition. The rail sets
  * its title sideways, which suits a Latin or Cyrillic title and mangles an
  * Arabic or Devanagari one — a cursive or hanging script turned on its side —
  * so those editions of a railed author's books take the title box instead,
- * in the same colour.
+ * in the same colour. So does an edition whose `title` carries an elision
+ * (`ELISION`).
  *
  * `bookSlug` first consults `BOOK_LAYOUT`, where a series overrides the author.
  */
 export function coverLayoutFor(
 	authorSlug: string,
 	script: string | null,
-	bookSlug: string
+	bookSlug: string,
+	title = ''
 ): CoverLayout | null {
 	const found = bookSlug in BOOK_LAYOUT ? BOOK_LAYOUT[bookSlug] : AUTHOR_LAYOUT[authorSlug];
 	if (!found) return null;
-	if (found.layout === 'rail' && SIDEWAYS_UNSAFE.has(script ?? '')) {
+	if (found.layout === 'rail' && (SIDEWAYS_UNSAFE.has(script ?? '') || ELISION.test(title))) {
 		return { layout: 'box', hue: found.hue };
 	}
 	return found;

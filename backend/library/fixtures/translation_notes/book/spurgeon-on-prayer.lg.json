@@ -1,0 +1,5251 @@
+{
+ "kind": "book",
+ "slug": "spurgeon-on-prayer",
+ "language": "lg",
+ "job_issue": 1792,
+ "pull_request": 6110,
+ "note": [
+  "Scripture follows the Open Luganda Contemporary Bible (OLCB 2017, lug_bib), parsed from the ebible mirror's USX. Rows were derived by measurement, not from the translators' reports: a row is `mined` only when the translator claimed OLCB wording AND the block (or a neighbour, since translators numbered blocks differently) contains either a quoted span that is a verbatim OLCB substring or a run of six consecutive OLCB words. Everything else is `self_rendered` with the translator's reason, so the count errs toward review.",
+  "Chapters 3 and 4 reuse the shipped Luganda sermons the-golden-key-of-prayer and order-and-argument-in-prayer (quote marks converted to curly to mirror this book's English); their rows come from a separate audit of that text, which also found and fixed meaning errors in both sermons in this PR. Chapter 13 is a fresh translation: the shipped the-ravens-cry.lg sermon was audited and found unreliable, so it was not reused.",
+  "Spurgeon cites rarely; every reference was identified by the translators or auditors from the English. AI-drafted, awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Hebrews 4:16",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "why": "“n’obuvumu” — only the adverb is quoted (\"come boldly\"); OLCB has tusembererenga … n’obuvumu non-contiguous, so the verb is carried in prose (okusemberera)"
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 3,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 4,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 4,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 6,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 1:23",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 9,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Job 23:4",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "why": "allusion, no quote marks: \"ng’ajjuza akamwa ke ensonga\" (from OLCB \"akamwa kange nga nkajjuzizza ensonga zange\")"
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "why": "allusion, no quote marks: \"Kabona waffe Asinga Obukulu bw’abeera omulamu ennaku zonna\" (OLCB 7:25 \"abeera mulamu ennaku zonna\"; title from Heb 4:14)"
+  },
+  {
+   "reference": "Psalms 147:9",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "why": "allusion, no quote marks: \"Katonda aliisa bannamuŋŋoona abato\""
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "why": "allusion, no quote marks: \"okusabanga obutayosa\""
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "“Entebe ya Katonda ey’obwakabaka ey’ekisa” (initial letter capitalised)"
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 11,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "uncited allusion “okutubeera mu bunafu bwaffe” (OLCB “atubeera mu bunafu bwaffe”)"
+  },
+  {
+   "reference": "Isaiah 2:22",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "allusion “omukka obukka mu nnyindo zaffe”"
+  },
+  {
+   "reference": "Isaiah 66:3",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "allusion “amenye ensingo y’embwa”"
+  },
+  {
+   "reference": "2 Corinthians 6:12",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "“not straitened in our own bowels”: OLCB sense differs, own prose"
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 17,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 17,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 17,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Timothy 6:15",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 18,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Revelation 1:5",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 18,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Hebrews 12:29",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "gwe muliro ogwokya"
+  },
+  {
+   "reference": "Exodus 3:5",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "ggyamu engatto zo (initial lower-cased)"
+  },
+  {
+   "reference": "Lamentations 3:29",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "“place thy mouth in the dust”: OLCB says “hide his face in the dust”; own prose"
+  },
+  {
+   "reference": "Revelation 20:11",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "ntebe ey’obwakabaka enjeru"
+  },
+  {
+   "reference": "Job 15:15",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "quoted “Eggulu si ttukuvu mu maaso ge” reshaped from 15:15; “bamalayika be abalanga ensobi” verbatim 4:18"
+  },
+  {
+   "reference": "Job 4:18",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "quoted “Eggulu si ttukuvu mu maaso ge” reshaped from 15:15; “bamalayika be abalanga ensobi” verbatim 4:18"
+  },
+  {
+   "reference": "Job 4:19",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "“ekitonde ekibetentebwa n’okusinga ekiwojjolo” singularised from OLCB plural"
+  },
+  {
+   "reference": "Psalms 90:2",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "ensozi nga tezinnabaawo … (rest re-personed in prose)"
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "“si nga ffe bwe twagala, wabula nga ggwe bw’oyagala” (plural; OLCB singular Nze)"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "“By’oyagala bikolebwe”"
+  },
+  {
+   "reference": "Matthew 15:27",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 28,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 25:6",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 28,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 55:8",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 28,
+   "why": "55:9 opening verbatim, rest re-personed (his/your)"
+  },
+  {
+   "reference": "Isaiah 55:9",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 28,
+   "why": "55:9 opening verbatim, rest re-personed (his/your)"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 28,
+   "why": "“okusinga byonna bye tusaba ne bye tulowooza”"
+  },
+  {
+   "reference": "John 4:24",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 30,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Proverbs 15:8",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 30,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "2 Peter 1:17",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "kitiibwa ekingi ekimasamasa (“excellent glory”)"
+  },
+  {
+   "reference": "Genesis 41:43",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "“Muvuuname.”"
+  },
+  {
+   "reference": "Matthew 18:10",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "“mu maaso ga Kitaffe ali mu ggulu” (OLCB Kitange)"
+  },
+  {
+   "reference": "Psalms 95:6",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 31,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 95:7",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 31,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 96:9",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 31,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Deuteronomy 33:2",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "ng’ava ku Lusozi Palani"
+  },
+  {
+   "reference": "Hebrews 12:20",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 32,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Exodus 19:13",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "ne bw’eba ensolo … ekubwanga amayinja / oba kufumitibwa"
+  },
+  {
+   "reference": "Exodus 34:14",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "hymn: <i>jealous</i> → “Waabuggya” (OLCB divine name)"
+  },
+  {
+   "reference": "Luke 19:14",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "“would not have the Son of God to reign over them”: own prose"
+  },
+  {
+   "reference": "Isaiah 55:6",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 39,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 51:17",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "omutima ogumenyese era oguboneredde"
+  },
+  {
+   "reference": "Hosea 14:2",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 40,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Hosea 14:4",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "“love us freely” carried in prose outside the quote (OLCB 14:4 is God’s promise, not part of the prayer)"
+  },
+  {
+   "reference": "Revelation 1:8",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "Alufa ne Omega"
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 40,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 41,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 27:46",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 42,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 42:7",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "captives, those in darkness: own prose"
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 43,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 6:32",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "“Kitaffe amanyi ng’ebyo byonna tubyetaaga” (OLCB Kitammwe … mubyetaaga)"
+  },
+  {
+   "reference": "Romans 3:26",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "OLCB 3:26 lacks “just, and the justifier”; Spurgeon’s phrase rendered in own prose — FLAG"
+  },
+  {
+   "reference": "Romans 5:21",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 46,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 46,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 46,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Revelation 4:3",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 46,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ezekiel 1:22",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 47,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 9:15",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 47,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 9:20",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 47,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 9:21",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 47,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Daniel 4:35",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 47,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 20:15",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "inside Spurgeon’s own words for God"
+  },
+  {
+   "reference": "Malachi 3:17",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 47,
+   "why": "“ku lunaku lwe ndibakyusizaako okuba ekintu kyange eky’omuwendo” inside Spurgeon’s words for God (OLCB plural object)"
+  },
+  {
+   "reference": "Psalms 89:34",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 48,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "2 Peter 1:4",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "ebisuubizo eby’omuwendo ebikulu"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 49,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "2 Corinthians 1:20",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "“yea and amen”: OLCB has no “yea”; own prose"
+  },
+  {
+   "reference": "Isaiah 55:3",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "“sure mercies of David”: OLCB first person; own prose"
+  },
+  {
+   "reference": "2 Samuel 23:5",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 50,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 24:35",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "Eggulu n’ensi biriggwaawo"
+  },
+  {
+   "reference": "Hebrews 12:24",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 50,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 55,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 1:17",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 59,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Revelation 2:13",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 59,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 2:11",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "Yesu Kristo ye Mukama"
+  },
+  {
+   "reference": "Acts 3:19",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "“times of refreshing”: OLCB 3:19 lacks the phrase; own prose"
+  },
+  {
+   "reference": "Luke 18:7",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "“agenda kubalamula mangu” (OLCB “judge/vindicate” for KJV “avenge”)"
+  },
+  {
+   "reference": "Luke 18:8",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "“agenda kubalamula mangu” (OLCB “judge/vindicate” for KJV “avenge”)"
+  },
+  {
+   "reference": "Acts 19:13",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "“Yesu, Pawulo gwe yabuulira”"
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "house rendering \"Munkoowoole, nange ndibaanukula, ne mbalaga…\"; OLCB is \"Mumpite n’abayitaba ne mbalaga ebikulu ebitanoonyezeka…\""
+  },
+  {
+   "reference": "Isaiah 25:6",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "\"wines on the lees well refined\" (KJV) has no OLCB match"
+  },
+  {
+   "reference": "2 Corinthians 1:5",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "unquoted paraphrase; OLCB is worded differently"
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "same house rendering as block 0"
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "text split into three heads, consistent with block 0"
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "\"Munkoowoole\""
+  },
+  {
+   "reference": "Jonah 1:6",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB is \"Situka okaabirire katonda wo\""
+  },
+  {
+   "reference": "Luke 15:18",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "nested in Satan's speech; OLCB is \"Nnaagenda eri kitange… abapakasi bo\""
+  },
+  {
+   "reference": "Luke 15:19",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "nested in Satan's speech; OLCB is \"Nnaagenda eri kitange… abapakasi bo\""
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "\"Musabenga obutakoowa\"; OLCB is \"obutayosa\""
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "\"Munkoowoole\""
+  },
+  {
+   "reference": "Romans 12:17",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "allusion \"provide things honest in the sight of men\""
+  },
+  {
+   "reference": "Psalms 55:22",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB is \"Ebizibu byo byonna bireete eri Mukama…\""
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "\"Munkoowoole\""
+  },
+  {
+   "reference": "Exodus 20:13",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "\"Tottanga.\""
+  },
+  {
+   "reference": "Exodus 20:17",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 79,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 18:22",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "unquoted allusion; \"emirundi nsanvu emirundi musanvu\" is verbatim"
+  },
+  {
+   "reference": "Psalms 50:15",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB has a different shape"
+  },
+  {
+   "reference": "Psalms 62:8",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB is \"mumutegeezenga byonna ebiri mu mitima gyammwe\""
+  },
+  {
+   "reference": "Isaiah 55:6",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "opens like OLCB (\"Munoonye Mukama…\"), then reworded"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "the first two clauses are verbatim OLCB; the third is \"Mukonkone, munaaggulirwawo\" against OLCB \"Era mukonkone munaggulirwawo\""
+  },
+  {
+   "reference": "Matthew 26:41",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB is \"Mutunule nga bwe musaba\" and has no temptation clause"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "same as block 12"
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB is \"tusembererenga entebe ya Katonda ey’obwakabaka ey’ekisa n’obuvumu\""
+  },
+  {
+   "reference": "James 4:8",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB is \"Musemberere Katonda, ne Katonda anaabasembereranga\""
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "\"Munyiikirenga mu kusaba\" against OLCB \"Munyiikirirenga mu kusaba\""
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "unquoted echo of block 18"
+  },
+  {
+   "reference": "Hebrews 10:20",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "unquoted; \"kkubo eriggya era eddamu\" is verbatim"
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "unquoted paraphrase"
+  },
+  {
+   "reference": "2 Samuel 5:24",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB is \"abakumba ku masanso g’emitugunda… oyanguwe okulumba\""
+  },
+  {
+   "reference": "Psalms 102:13",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "unquoted; reshapes OLCB \"osaasira Sayuuni… ekiseera kye wateekateeka kituuse\""
+  },
+  {
+   "reference": "John 1:14",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "unquoted; \"ajjudde ekisa n’amazima\" is verbatim"
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 89,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 50:15",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "Spurgeon's \"answer\" (KJV has \"deliver\"; compare Ps 91:15) is kept as \"ndikwanukula\""
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "conflates Mark 11:24 and Matthew 21:22; own wording"
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB is \"kimugwanira okukkiriza nti Katonda waali…\""
+  },
+  {
+   "reference": "James 1:6",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB is \"ali ng’ejjengo ery’oku nnyanja erisundibwa empewo\""
+  },
+  {
+   "reference": "James 1:7",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB is \"ali ng’ejjengo ery’oku nnyanja erisundibwa empewo\""
+  },
+  {
+   "reference": "Proverbs 14:23",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "unquoted; OLCB is \"Buli mulimu… gubaako amagoba\""
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 97,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "reorders OLCB \"si nga Nze bwe njagala, wabula nga ggwe bw’oyagala\""
+  },
+  {
+   "reference": "Luke 22:42",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "own wording. See the DEFECT line (by’oyagala nze)"
+  },
+  {
+   "reference": "Luke 18:8",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "\"Alisanga okukkiriza ku nsi?\" inside the Tupper quotation"
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "house rendering"
+  },
+  {
+   "reference": "Daniel 2:17",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "names match OLCB (Kananiya, Misayeri, Azaliya), but the wording is own"
+  },
+  {
+   "reference": "Daniel 2:18",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "names match OLCB (Kananiya, Misayeri, Azaliya), but the wording is own"
+  },
+  {
+   "reference": "Revelation 5:1",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 104,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Revelation 5:4",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "\"Nakaaba nnyo\"; OLCB is \"ne nkaaba amaziga mangi\""
+  },
+  {
+   "reference": "Revelation 5:5",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "\"Empologoma ey’Ekika kya Yuda\" against OLCB \"empologoma ey’omu kika kya Yuda\""
+  },
+  {
+   "reference": "Proverbs 2:3",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB has a different shape"
+  },
+  {
+   "reference": "Proverbs 2:4",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB has a different shape"
+  },
+  {
+   "reference": "Proverbs 2:5",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB has a different shape"
+  },
+  {
+   "reference": "Matthew 11:12",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "unquoted; OLCB is \"buyingirwa n’amaanyi\""
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "the two alternative versions (\"fortified\", \"reserved\") have to be own wording"
+  },
+  {
+   "reference": "John 20:25",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "unquoted allusion"
+  },
+  {
+   "reference": "Hosea 12:4",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "KJV-shaped (includes \"spake with us\"); OLCB is shorter"
+  },
+  {
+   "reference": "1 John 4:17",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB paraphrases the verse entirely differently"
+  },
+  {
+   "reference": "Psalms 61:2",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "unquoted; OLCB is \"lwazi olunsinga obuwanvu\""
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "house rendering"
+  },
+  {
+   "reference": "Lamentations 3:57",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "close in sense to OLCB 3:57. In \"oleseeza ensonga z’emmeeme yange\", \"oleseeza\" is a doubtful verb form (\"You have pleaded\"); worth a native check"
+  },
+  {
+   "reference": "Lamentations 3:58",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "close in sense to OLCB 3:57. In \"oleseeza ensonga z’emmeeme yange\", \"oleseeza\" is a doubtful verb form (\"You have pleaded\"); worth a native check"
+  },
+  {
+   "reference": "Psalms 118:5",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "shares \"n’annyanukula\" with OLCB but the wording is own"
+  },
+  {
+   "reference": "Psalms 118:21",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "shares \"n’annyanukula\" with OLCB but the wording is own"
+  },
+  {
+   "reference": "Psalms 107:6",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB is \"Bwe batyo ne bakaabira Mukama nga bali mu kabi…\""
+  },
+  {
+   "reference": "Psalms 107:7",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB is \"Bwe batyo ne bakaabira Mukama nga bali mu kabi…\""
+  },
+  {
+   "reference": "2 Kings 4:1",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB is \"Omuddu wo, baze yafa…\""
+  },
+  {
+   "reference": "2 Kings 4:7",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB is \"osasule amabanja go, ebinaafikkawo bikuliisenga…\""
+  },
+  {
+   "reference": "John 6:21",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "\"ekyombo\" against OLCB \"eryato\""
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "keeps Spurgeon's \"can ask\" vs \"ask\" contrast; OLCB is \"okusinga byonna bye tusaba, ne bye tulowooza\""
+  },
+  {
+   "reference": "Isaiah 53:12",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "unquoted allusion"
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB is \"Nnyinza okukola byonna mu oyo ampa amaanyi\", with \"ebintu\" and \"Kristo\" added"
+  },
+  {
+   "reference": "Psalms 127:2",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "unquoted allusion"
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "house rendering"
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "re-personed into the mother's speech (\"ondaze… bye ssaamanya\")"
+  },
+  {
+   "reference": "Ruth 2:15",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB is \"Ne bw’anaalonda mu binywa temumugaana\""
+  },
+  {
+   "reference": "Ruth 2:16",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB is \"Ne bw’anaalonda mu binywa temumugaana\""
+  },
+  {
+   "reference": "Ruth 2:14",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB is \"Jjangu okoze omugaati gwo mu wayini akatuuse\""
+  },
+  {
+   "reference": "Job 42:8",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 123,
+   "why": "KJV-shaped (\"captivity\"); OLCB is worded differently"
+  },
+  {
+   "reference": "Job 42:10",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "KJV-shaped (\"captivity\"); OLCB is worded differently"
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "house rendering"
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "unquoted allusion"
+  },
+  {
+   "reference": "Luke 7:47",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB is \"Osonyiyiddwa ebibi byo\""
+  },
+  {
+   "reference": "Luke 7:48",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "why": "OLCB is \"Osonyiyiddwa ebibi byo\""
+  },
+  {
+   "reference": "Job 23:3",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "epigraph; own wording (OLCB: Singa nnali mmanyi aw’okumusanga...)"
+  },
+  {
+   "reference": "Job 23:4",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "epigraph; own wording (OLCB: Singa nnali mmanyi aw’okumusanga...)"
+  },
+  {
+   "reference": "Job 23:3",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "echo of epigraph wording"
+  },
+  {
+   "reference": "Psalms 91:9",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "loose allusion; OLCB uses ekiddukiro"
+  },
+  {
+   "reference": "Job 16:2",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: mikwano gyange egitagasa"
+  },
+  {
+   "reference": "Jeremiah 17:5",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "opens verbatim OLCB (Akolimiddwa oyo eyeesiga omuntu), second clause own"
+  },
+  {
+   "reference": "Jeremiah 17:7",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "follows OLCB shape (eyeesiga Mukama ... essuubi lye), wording differs"
+  },
+  {
+   "reference": "Psalms 19:10",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted allusion; echoes OLCB okusinga omubisi gw’enjuki ... bisenge byagwo"
+  },
+  {
+   "reference": "Job 23:3",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "echo of epigraph"
+  },
+  {
+   "reference": "Matthew 27:46",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: lwaki onjabulidde?"
+  },
+  {
+   "reference": "Song of Songs 3:1",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted paraphrase"
+  },
+  {
+   "reference": "Song of Songs 3:2",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted paraphrase"
+  },
+  {
+   "reference": "Song of Songs 3:3",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "contains OLCB oyo emmeeme yange gw’eyagala; verb differs (OLCB Mundabidde ku)"
+  },
+  {
+   "reference": "Isaiah 54:7",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted, re-personed paraphrase"
+  },
+  {
+   "reference": "Isaiah 54:8",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted, re-personed paraphrase"
+  },
+  {
+   "reference": "Psalms 69:2",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: Ntubira mu bitosi nga sirina we nnywereza kigere"
+  },
+  {
+   "reference": "Job 23:4",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "same wording as epigraph"
+  },
+  {
+   "reference": "Song of Songs 2:14",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted allusion"
+  },
+  {
+   "reference": "2 Samuel 7:18",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted; follows OLCB n’ayingira n’atuula mu maaso ga Mukama"
+  },
+  {
+   "reference": "Genesis 22:3",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted narrative paraphrase of Gen 22:3-10; echoes OLCB n’agolokoka ku makya"
+  },
+  {
+   "reference": "Psalms 5:3",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "KJV 'direct...look up' sense kept for the sermon's archery image; OLCB differs (ne nnindirira onziremu)"
+  },
+  {
+   "reference": "Genesis 18:27",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: Laba nnyinziza okwogera ne Mukama, nze ani, nze enfuufu n’evvu!"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "Spurgeon's adaptation (speak for live)"
+  },
+  {
+   "reference": "Genesis 17:18",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: Isimayiri abeerenga mulamu mu maaso go!; repeated in same block"
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "re-personed from OLCB emmere yaffe eya buli lunaku"
+  },
+  {
+   "reference": "Isaiah 40:17",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted allusion 'less than nothing and vanity'"
+  },
+  {
+   "reference": "Ecclesiastes 5:2",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: ebigambo byo bibeerenga bitono"
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 138,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 41:21",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted ('as Isaiah saith'); echoes OLCB Muleete ensonga zammwe"
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted allusion"
+  },
+  {
+   "reference": "1 Corinthians 6:19",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted phrase; verbatim OLCB phrase"
+  },
+  {
+   "reference": "Genesis 18:24",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "own KJV-shaped rendering; OLCB differs"
+  },
+  {
+   "reference": "Genesis 18:25",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "own KJV-shaped rendering; OLCB differs"
+  },
+  {
+   "reference": "Genesis 18:32",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted paraphrase"
+  },
+  {
+   "reference": "Genesis 32:12",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: waŋŋamba nti, Nnaakugaggawazanga; 'We wagamba' (x3) reads oddly for 'thou saidst' (Ggwe wagamba?)"
+  },
+  {
+   "reference": "2 Samuel 7:25",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: okole nga bwe wasuubiza"
+  },
+  {
+   "reference": "Numbers 23:19",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: Ayogera n’atakola?"
+  },
+  {
+   "reference": "Romans 3:4",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: Katonda ye wa mazima, newaakubadde nga buli muntu yenna mulimba"
+  },
+  {
+   "reference": "1 Kings 8:25",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted narrative summary"
+  },
+  {
+   "reference": "1 Kings 8:26",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted narrative summary"
+  },
+  {
+   "reference": "Joshua 23:14",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "Spurgeon blends Josh 23:14/21:45; OLCB differs"
+  },
+  {
+   "reference": "Joshua 7:9",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "contains OLCB erinnya lyo ekkulu; Spurgeon attributes to Moses but it is Joshua's prayer (author's conflation, kept); repeated in block"
+  },
+  {
+   "reference": "Numbers 14:16",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "shares OLCB kubatuusa mu nsi / kyeyava ... mu ddungu (Num 14:16, Deut 9:28), reshaped"
+  },
+  {
+   "reference": "Psalms 42:10",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "'Katonda wo ali ludda wa?' is verbatim OLCB Ps 42:10; 'Aha! aha!' (Ps 35:21) added as Laba, laba!"
+  },
+  {
+   "reference": "Job 5:19",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "Spurgeon's free paraphrase; OLCB differs"
+  },
+  {
+   "reference": "Psalms 74:22",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: Yimuka, Ayi Katonda"
+  },
+  {
+   "reference": "2 Kings 19:14",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 145,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 36:19",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "follows OLCB Bali ludda wa bakatonda ... but spells Alupada (OLCB Alupadi)"
+  },
+  {
+   "reference": "2 Kings 19:12",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "paraphrase"
+  },
+  {
+   "reference": "2 Kings 18:29",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: Keezeekiya tabalimbanga ... Mukama alibalokola"
+  },
+  {
+   "reference": "2 Kings 18:30",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: Keezeekiya tabalimbanga ... Mukama alibalokola"
+  },
+  {
+   "reference": "Psalms 74:11",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 145,
+   "why": "contains OLCB omukono gwo ogwa ddyo mu kifuba kyo, recast as imperative"
+  },
+  {
+   "reference": "Revelation 17:3",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted allusion"
+  },
+  {
+   "reference": "Isaiah 52:10",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted allusion ('bare arm'); OLCB: omukono gwe omutukuvu"
+  },
+  {
+   "reference": "Lamentations 4:7",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: Abalangira baabwe baatukula nnyo okusinga omuzira..."
+  },
+  {
+   "reference": "Lamentations 4:8",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: Abalangira baabwe baatukula nnyo okusinga omuzira..."
+  },
+  {
+   "reference": "Lamentations 4:2",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 146,
+   "why": "opens and closes on OLCB wording (Abaana ba Sayuuni ab’omuwendo ... ensuwa ez’ebbumba, omulimu gw’emikono gy’omubumbi), middle reshaped"
+  },
+  {
+   "reference": "Psalms 27:9",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: ggw’obadde omubeezi wange ... Tonneggyaako, so tonsuula"
+  },
+  {
+   "reference": "Psalms 71:6",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted paraphrase"
+  },
+  {
+   "reference": "Psalms 71:18",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 147,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Numbers 14:13",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "follows OLCB abantu bano wabaggya mu nsi y’Abamisiri, reshaped"
+  },
+  {
+   "reference": "1 Samuel 7:12",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "allusion; spells Ebenezeeri (OLCB Ebenezeri)"
+  },
+  {
+   "reference": "Judges 14:14",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "follows OLCB Mu muli mwavaamu ekyokulya Mu w’amaanyi mwavaamu ekiwoomerera, reworded"
+  },
+  {
+   "reference": "Psalms 25:11",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: onsonyiwe ebibi byange, kubanga bingi"
+  },
+  {
+   "reference": "Numbers 14:17",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted paraphrase"
+  },
+  {
+   "reference": "Isaiah 42:3",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: lumuli lubetentefu ... olutambi"
+  },
+  {
+   "reference": "1 Samuel 24:14",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: Mbwa nfu oba nkukunyi?"
+  },
+  {
+   "reference": "Job 13:25",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: ekikoola ekifuuyiddwa omuyaga"
+  },
+  {
+   "reference": "Job 7:12",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: Ndi nnyanja oba ndi lukwata"
+  },
+  {
+   "reference": "1 Kings 18:27",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB: Muleekaane nnyo! Katonda ddala!..."
+  },
+  {
+   "reference": "1 Kings 18:33",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "Spurgeon's dramatized paraphrase"
+  },
+  {
+   "reference": "1 Kings 18:34",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB is indirect speech; 'Mukikole omulundi ogwokusatu' likewise"
+  },
+  {
+   "reference": "1 Kings 18:36",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "follows OLCB kimanyibwe nti ggwe Katonda, reshaped (adds wekka)"
+  },
+  {
+   "reference": "1 Kings 18:38",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted narrative paraphrase"
+  },
+  {
+   "reference": "John 16:15",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB Byonna Kitange by’alina byange; bibyange variant"
+  },
+  {
+   "reference": "John 14:14",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "follows OLCB Bwe munaasabanga ekintu kyonna mu linnya lyange; ending per English 'give it you'"
+  },
+  {
+   "reference": "Psalms 37:4",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "unquoted; OLCB: Sanyukiranga mu Mukama, anaakuwanga omutima gwo bye gwetaaga"
+  },
+  {
+   "reference": "Psalms 81:10",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "OLCB Yasamya akamwa ko, nange nnaakajjuza; adds nnyo"
+  },
+  {
+   "reference": "2 Corinthians 6:12",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "why": "re-personed; OLCB differs"
+  },
+  {
+   "reference": "James 4:2",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "both verses whole"
+  },
+  {
+   "reference": "James 4:3",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "both verses whole"
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 160,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 57:20",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "unmarked; the troubled sea which cannot rest"
+  },
+  {
+   "reference": "Ecclesiastes 1:14",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "unmarked; vanity and vexation of spirit"
+  },
+  {
+   "reference": "Habakkuk 2:13",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "unmarked; \"labours in the very fire\" (OLCB words it differently)"
+  },
+  {
+   "reference": "Hosea 8:7",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "unmarked; re-personed to \"we\" (sow the wind / reap the whirlwind)"
+  },
+  {
+   "reference": "Matthew 11:12",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 158,
+   "why": "unmarked; Spurgeon swaps in \"the kingdom of the devil\"; the OLCB tail is kept"
+  },
+  {
+   "reference": "Romans 8:22",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "unmarked allusion; groan and travail"
+  },
+  {
+   "reference": "James 4:2",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 161,
+   "why": "re-personed to \"they\" (\"Baagala ebintu ne batabifuna\")"
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 164,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "James 4:3",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 164,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "James 4:1",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 165,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Leviticus 19:18",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "unmarked; love his neighbour as himself"
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 165,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 34:10",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 166,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 167,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ecclesiastes 8:8",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "unmarked; \"no discharge in this war\": OLCB 8:8 carries no such clause"
+  },
+  {
+   "reference": "Psalms 98:1",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "unmarked; his right hand and arm get him the victory"
+  },
+  {
+   "reference": "James 4:3",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 171,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "James 4:3",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "unmarked; \"that he may consume it upon his lusts\" re-personed"
+  },
+  {
+   "reference": "Psalms 127:2",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "unmarked; rise up early / sit up late"
+  },
+  {
+   "reference": "Psalms 37:8",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 175,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 37:10",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 175,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 37:11",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 175,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 177,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 4:24",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "unmarked; in spirit and in truth"
+  },
+  {
+   "reference": "James 4:5",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 182,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "James 4:2",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 183,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "James 4:3",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 186,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Hebrews 12:29",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "unmarked; a consuming fire"
+  },
+  {
+   "reference": "James 4:2",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 186,
+   "why": "\"Temulina\" + two OLCB pieces joined with \"oba\""
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 190,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 2:8",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 191,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "unmarked; without ceasing"
+  },
+  {
+   "reference": "Acts 8:20",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "unmarked; the gift of God cannot be bought with money"
+  },
+  {
+   "reference": "Exodus 25:4",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 194,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Daniel 3:5",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 194,
+   "why": "unmarked; the instrument list"
+  },
+  {
+   "reference": "John 3:8",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 194,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 107:18",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "unmarked; the soul abhors all meat / draws near to death"
+  },
+  {
+   "reference": "Psalms 107:19",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 200,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 107:26",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 200,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 107:27",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 200,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 107:28",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 200,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Acts 2:1",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "unmarked; \"with one accord in one place\" is inside a hypothetical speech, and OLCB lacks \"one accord\""
+  },
+  {
+   "reference": "Matthew 11:27",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 202,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Corinthians 3:21",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "two OLCB pieces joined"
+  },
+  {
+   "reference": "1 Corinthians 3:23",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "two OLCB pieces joined"
+  },
+  {
+   "reference": "Psalms 66:6",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 202,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Hosea 12:4",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 202,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 202,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Joshua 1:5",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 202,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "2 Peter 1:20",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 203,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Kings 3:5",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 203,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "James 1:5",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 203,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Proverbs 3:16",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 203,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 203,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 17:18",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 204,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 28:20",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "unmarked; bread to eat and raiment"
+  },
+  {
+   "reference": "Genesis 32:10",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "unmarked; \"ebibinja bibiri\" (two bands)"
+  },
+  {
+   "reference": "Psalms 21:4",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 205,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "2 Samuel 7:18",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 205,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Mark 2:5",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 205,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 23:42",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 206,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 23:43",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 206,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 15:19",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 207,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 15:24",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 207,
+   "why": "two OLCB spans joined in Spurgeon's order"
+  },
+  {
+   "reference": "Luke 15:22",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 207,
+   "why": "two OLCB spans joined in Spurgeon's order"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "why": "a DELIBERATE misquotation (\"can ask, or even think\") that Spurgeon is correcting, so it is not OLCB"
+  },
+  {
+   "reference": "Revelation 8:1",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 208,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Revelation 8:2",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 208,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Revelation 8:3",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 209,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Revelation 8:4",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 209,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Revelation 8:5",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 210,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Revelation 8:6",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 210,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 210,
+   "why": "unmarked; \"His will shall be done…\" with the OLCB tail kept"
+  },
+  {
+   "reference": "1 John 3:22",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 211,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 John 3:23",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 211,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 John 3:24",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 211,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Thessalonians 5:25",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 212,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 1:15",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 213,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 1:13",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 213,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 66:18",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted; OLCB “nsirikidde ekibi mu mutima gwange” re-personed to “we”"
+  },
+  {
+   "reference": "1 John 3:22",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 214,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Chronicles 28:9",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted “He will be found of you”; OLCB word “onoomulabanga”"
+  },
+  {
+   "reference": "1 John 3:22",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 219,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Judges 10:13",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 219,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Judges 10:14",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 219,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Lamentations 3:8",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "God’s speech is Spurgeon’s own composition"
+  },
+  {
+   "reference": "Proverbs 1:28",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "God’s speech is Spurgeon’s own composition"
+  },
+  {
+   "reference": "Psalms 81:13",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 221,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 81:14",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 221,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 81:16",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 221,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 21:22",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 221,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Leviticus 26:23",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 222,
+   "why": "“Bwe” + OLCB fragments; OLCB “ndibalaga obukambwe” (show hostility) for KJV “walk contrary”"
+  },
+  {
+   "reference": "Leviticus 26:24",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 222,
+   "why": "“Bwe” + OLCB fragments; OLCB “ndibalaga obukambwe” (show hostility) for KJV “walk contrary”"
+  },
+  {
+   "reference": "Psalms 18:26",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "FLAG: OLCB reads “eri abakyamu weeraga ng’obasinza amagezi” (shrewd), not “stubborn”; moved OUT of the quote marks into 3rd-person prose using OLCB’s sense"
+  },
+  {
+   "reference": "Psalms 26:6",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 222,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 John 3:22",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 223,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Peter 5:3",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted “lords over God’s heritage”; OLCB wording differs"
+  },
+  {
+   "reference": "Numbers 11:33",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 225,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Proverbs 14:14",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted; OLCB reads differently (“Omuntu atalina kukkiriza alisasulwa …”)"
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 225,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 89:7",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted, “abamwetooloola”"
+  },
+  {
+   "reference": "1 John 3:23",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 226,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 226,
+   "why": "unquoted, re-personed"
+  },
+  {
+   "reference": "Matthew 9:29",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 226,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "James 1:5",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 226,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "James 1:6",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 226,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "James 1:7",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 226,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 14:14",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 227,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted “daily bread”, re-personed"
+  },
+  {
+   "reference": "2 Corinthians 4:18",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 233,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 6:19",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted allusion (moths, cankered gold)"
+  },
+  {
+   "reference": "James 5:3",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted allusion (moths, cankered gold)"
+  },
+  {
+   "reference": "Psalms 37:5",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 234,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 John 3:23",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 234,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 235,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 235,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 15:12",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "“Father, give me all the inheritance” is Spurgeon’s variation"
+  },
+  {
+   "reference": "Genesis 37:3",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted, “ekyambalo eky’amabala amangi”"
+  },
+  {
+   "reference": "Genesis 32:28",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted, “olimeggana ne Katonda n’owangula”"
+  },
+  {
+   "reference": "1 John 3:24",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 238,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 91:9",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted “made the Lord his dwelling place”"
+  },
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 238,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 37:4",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 240,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 30:20",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 240,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 John 3:24",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 241,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted “Spirit of adoption”"
+  },
+  {
+   "reference": "Philippians 2:5",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 242,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 11:42",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 242,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 41:16",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted “answers of peace”; OLCB differs"
+  },
+  {
+   "reference": "1 John 3:21",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 246,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 John 3:22",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 246,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 103:13",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted fragment"
+  },
+  {
+   "reference": "Psalms 147:3",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 247,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 147:4",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 247,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 42:3",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "“Sirizikiza” (1st person, as the English) + OLCB “olutambi olwaka empola ennyo”"
+  },
+  {
+   "reference": "Isaiah 45:17",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted, re-personed to 3rd person"
+  },
+  {
+   "reference": "Genesis 8:9",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 252,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 John 3:24",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 252,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Corinthians 2:11",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 252,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 252,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 8:27",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 252,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted “effectual fervent prayer” (“omutima omumalirivu”)"
+  },
+  {
+   "reference": "Acts 16:7",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 253,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 25:14",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted “secret of the Lord is with them that fear Him”; OLCB reads differently"
+  },
+  {
+   "reference": "Ephesians 6:17",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted"
+  },
+  {
+   "reference": "Philippians 3:18",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted “abalabe b’omusaalaba gwa Kristo”"
+  },
+  {
+   "reference": "Psalms 113:3",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted"
+  },
+  {
+   "reference": "Genesis 16:13",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 260,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Exodus 12:38",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted “mixed multitude … fall a-lusting”"
+  },
+  {
+   "reference": "Numbers 11:4",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted “mixed multitude … fall a-lusting”"
+  },
+  {
+   "reference": "Matthew 13:30",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 262,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 13:29",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted"
+  },
+  {
+   "reference": "Ephesians 6:13",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted “having done all, to stand”"
+  },
+  {
+   "reference": "Ephesians 1:6",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "why": "unquoted; OLCB wording differs"
+  },
+  {
+   "reference": "Jude 20:20",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "“Nga musaba mu Mwoyo Mutukuvu.” (verbatim; capital N only)"
+  },
+  {
+   "reference": "Jude 20:20",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 264,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Jude 20:20",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 267,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Jude 21:21",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 268,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Jude 20:20",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 272,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Jude 20:20",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 275,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Jude 20:20",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 282,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Jude 20:20",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 288,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Jude 20:20",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 291,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Jude 20:20",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 315,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Joshua 24:15",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 266,
+   "why": "“Abalala bakole nga bwe baagala” is Spurgeon’s own lead-in (also in his English, not in the verse); rest follows OLCB “naye nze n’ennyumba yange, ffe tunaaweerezanga Mukama” (dropped OLCB’s final “Katonda”)"
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 281,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 303,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 103:14",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 284,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 103:13",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 284,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 34:15",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 285,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 4:24",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 300,
+   "why": "two verbatim OLCB fragments joined (“Katonda Mwoyo n’abo abamusinza kibagwanira okumusinza mu mwoyo ne mu mazima” + “kubanga Kitaffe anoonya abo abamusinza”), following Spurgeon’s blend"
+  },
+  {
+   "reference": "Malachi 1:13",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "“Nga tulabye!” (OLCB ‘Nga tulabye;’; double curly quotes kept to mirror the English)"
+  },
+  {
+   "reference": "Judges 5:23",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 318,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 45:19",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 321,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 3:6",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "unquoted in the English; “Ekizaalibwa omubiri kiba mubiri” copied verbatim into the prose"
+  },
+  {
+   "reference": "Romans 8:8",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 273,
+   "why": "unquoted; “abo abafugibwa omubiri tebayinza kusanyusa Katonda” from OLCB"
+  },
+  {
+   "reference": "Job 15:15",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "unquoted allusion; “eggulu si ttukuvu mu maaso ge”"
+  },
+  {
+   "reference": "John 4:24",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "unquoted; “Katonda, oyo Mwoyo, mu mwoyo ne mu mazima”"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 271,
+   "why": "unquoted; OLCB wording, but OLCB has no “in glory”"
+  },
+  {
+   "reference": "Genesis 17:18",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "unquoted allusion; “Isimayiri abeerenga mulamu mu maaso ga Katonda”"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "unquoted; “ng’atwegayiririra n’okusinda okutayogerekeka”"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "unquoted; “yeegayiririre munda mu nze n’okusinda okutayogerekeka”"
+  },
+  {
+   "reference": "John 4:14",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "unquoted; “ensulo etekalira ekulukuta okutuuka ku bulamu obutaggwaawo”"
+  },
+  {
+   "reference": "Psalms 120:4",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "unquoted allusion; “amanda ag’omuti entaseesa”"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "unquoted; “okusaba n’omutima omumalirivu, okubeera n’obuyinza bungi”"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "unquoted; “Okusaba n’omutima omumalirivu okw’omuntu”"
+  },
+  {
+   "reference": "John 2:15",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 306,
+   "why": "unquoted; “addira emiguwa n’agifunyaafunya ne giba ng’embooko”"
+  },
+  {
+   "reference": "Luke 11:1",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "unquoted “Lord, teach us to pray” → “Mukama waffe, tuyigirize okusaba!”"
+  },
+  {
+   "reference": "Romans 8:27",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 311,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 3:4",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 312,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 37:4",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "inside a non-scripture speech; “abawa emitima gyabwe bye gyetaaga”"
+  },
+  {
+   "reference": "Acts 2:1",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 316,
+   "why": "unquoted; “okuwuuma, nga kuli ng’empewo ey’amaanyi ennyo ekunta” verbatim, plus OLCB-style framing"
+  },
+  {
+   "reference": "Acts 2:2",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 316,
+   "why": "unquoted; “okuwuuma, nga kuli ng’empewo ey’amaanyi ennyo ekunta” verbatim, plus OLCB-style framing"
+  },
+  {
+   "reference": "Ephesians 2:12",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "unquoted; “awatali Katonda era awatali ssuubi”"
+  },
+  {
+   "reference": "Psalms 34:6",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "unquoted; “awulira omunaku bw’akoowoola n’amwanukula”"
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "unquoted; love “shed abroad” → “kufukiddwa / agafukibwa mu mitima”"
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 323,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Thessalonians 5:16",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 324,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Thessalonians 5:18",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 325,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Exodus 28:2",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 325,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Proverbs 1:9",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "“ornament of grace to … neck” = mikuufu gya kisa mu bulago (OLCB emikuufu mu bulago bwo)"
+  },
+  {
+   "reference": "Exodus 14:15",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 327,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Acts 17:24",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 329,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 27:51",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "veil rent: “Awatukuvu Ennyo” (Spurgeon's “Most Holy place”) + OLCB “yulikamu wakati okuva waggulu okutuuka wansi”"
+  },
+  {
+   "reference": "Esther 4:11",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "Ahasuerus' sceptre (Akaswero, Susani, omuggo), narrative paraphrase"
+  },
+  {
+   "reference": "1 Kings 19:12",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "“still small voice” = eddoboozi ettono erya ggonjebwa"
+  },
+  {
+   "reference": "Genesis 8:11",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 336,
+   "why": "dove “mu kamwa kaalyo akakoola” k’omuzeyituuni"
+  },
+  {
+   "reference": "Isaiah 30:18",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "“waiteth to be gracious” = ayagala nnyo okuba ow’ekisa (OLCB carries “desires” rather than “waits”, so the waiting sense is not in the Luganda)"
+  },
+  {
+   "reference": "Deuteronomy 28:23",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "“heavens as brass” = eggulu … ng’ekikomo"
+  },
+  {
+   "reference": "Habakkuk 2:3",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "“if the vision tarry, wait for it” = okwolesebwa bwe kunaaba ng’okuluddewo, kulindirire"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "“helpeth our infirmities” = atubeera mu bunafu bwaffe"
+  },
+  {
+   "reference": "Psalms 119:164",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "“seven times a day” = emirundi musanvu olunaku"
+  },
+  {
+   "reference": "Psalms 55:17",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "David “three times a day”: narrative, not quoted"
+  },
+  {
+   "reference": "Daniel 6:10",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "window “nga goolekedde Yerusaalemi” (OLCB plural amadirisa). See ENGLISH-ERROR for “seven times”"
+  },
+  {
+   "reference": "Psalms 63:8",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "“following hard after him” = okwekwata ku ye (OLCB yeekwata ku ggwe)"
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 356,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Kings 18:43",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "Elijah “go again seven times” = okuddayo emirundi musanvu"
+  },
+  {
+   "reference": "Acts 12:5",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "Peter in prison, knocking at the gate: narrative"
+  },
+  {
+   "reference": "Acts 12:6",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "Peter in prison, knocking at the gate: narrative"
+  },
+  {
+   "reference": "Acts 12:7",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "Peter in prison, knocking at the gate: narrative"
+  },
+  {
+   "reference": "Acts 12:8",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "Peter in prison, knocking at the gate: narrative"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "knock / ask / seek allusion"
+  },
+  {
+   "reference": "Revelation 3:17",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 361,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Revelation 3:18",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 361,
+   "why": "naked/poor/miserable + buy gold and raiment, with OLCB words (obwereere, omwavu, munaku asaasirwa, onguleko, ebya zaabu, ebyambalo); “olyoke ogaggawale” verbatim"
+  },
+  {
+   "reference": "1 John 3:17",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 363,
+   "why": "“how dwelleth the love of God in us” = okwagala kwa Katonda, kuyinza kutya okuba mu ffe? (OLCB: mu ye)"
+  },
+  {
+   "reference": "Psalms 127:1",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 364,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 127:2",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 364,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 364,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "Bunyan's “all-prayer” = okusaba mu ssaala zonna"
+  },
+  {
+   "reference": "Psalms 81:10",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "“open his mouth wider that God may fill it” = kwasamya akamwa ke … alyoke akajjuze"
+  },
+  {
+   "reference": "Genesis 22:17",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "“as the stars of the sky” = nga emmunyeenye ez’eggulu"
+  },
+  {
+   "reference": "1 Thessalonians 5:25",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "“brethren, pray for us” = abooluganda, mutusabirenga"
+  },
+  {
+   "reference": "1 Samuel 3:11",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "“make a man's ears to tingle” = amatu … okuwaawaala"
+  },
+  {
+   "reference": "Isaiah 52:10",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "“God's arm made bare in the eyes of all the people” = Katonda ng’alaga omukono gwe omutukuvu mu maaso g’abantu bonna"
+  },
+  {
+   "reference": "Revelation 3:11",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 372,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "2 Corinthians 5:10",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 372,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Jude 20:20",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "“praying in the Holy Ghost” = nga tusaba mu Mwoyo Mutukuvu (OLCB: musaba)"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 374,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Exodus 14:25",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "chariot wheels taken off / drive heavily (unquoted allusion)"
+  },
+  {
+   "reference": "1 Corinthians 12:31",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "“a more excellent way” → ekkubo eddungi erisinga (unquoted)"
+  },
+  {
+   "reference": "Job 23:12",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "“necessary food” → emmere … gye mulya bulijjo (unquoted)"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 377,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Esther 5:6",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 378,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 62:8",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "pour out my heart → mmutegeeze byonna ebiri mu mutima gwange"
+  },
+  {
+   "reference": "Psalms 42:1",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "soul pants → emmeeme yange kye wejjawejja"
+  },
+  {
+   "reference": "Luke 17:5",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "“Mukama, twongereko okukkiriza?” (OLCB fragment + vocative)"
+  },
+  {
+   "reference": "Psalms 37:4",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "“Mpa, Mukama, omutima gwange bye gwetaaga.”"
+  },
+  {
+   "reference": "Psalms 4:6",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "amulisize omusana gw’amaaso ge"
+  },
+  {
+   "reference": "Isaiah 49:4",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "ateganidde bwereere, amaanyi ge ng’agamalidde bwereere"
+  },
+  {
+   "reference": "Acts 18:10",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "yeefunire abantu bangi mu kibuga kino"
+  },
+  {
+   "reference": "Isaiah 6:2",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "angels veil their faces (unquoted)"
+  },
+  {
+   "reference": "Proverbs 15:8",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "“muzizo eri Mukama” (unquoted)"
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 381,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 381,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "2 Timothy 2:13",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "cannot deny himself → teyeewakanya (unquoted)"
+  },
+  {
+   "reference": "Genesis 1:3",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 382,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "nothing impossible → buli kimu kisoboka (unquoted)"
+  },
+  {
+   "reference": "Genesis 32:28",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "wrestle like Jacob, prevail like Israel (unquoted)"
+  },
+  {
+   "reference": "1 John 5:15",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 382,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Daniel 10:12",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "Spurgeon’s own paraphrase; OLCB fragments “omulangira w’e Buperusi”, “n’ajja n’annyamba”"
+  },
+  {
+   "reference": "Daniel 10:13",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "Spurgeon’s own paraphrase; OLCB fragments “omulangira w’e Buperusi”, “n’ajja n’annyamba”"
+  },
+  {
+   "reference": "Isaiah 65:24",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "before we call he answers (unquoted)"
+  },
+  {
+   "reference": "Isaiah 57:15",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "the High and Holy One → Omugulumivu Omutukuvu"
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "daily bread → emmere yo eya buli lunaku"
+  },
+  {
+   "reference": "Habakkuk 2:1",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 383,
+   "why": "“ndiyimirira mu kifo kyange we ntera okubeera ntunule” verbatim + “nnindirire Katonda wange, mpulire ky’aligamba emmeeme yange” adapted"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "“Mu buli kintu … mutegeezenga Katonda bye mwetaaga” (unquoted)"
+  },
+  {
+   "reference": "Psalms 65:2",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "God that heareth prayer → Katonda awulira okusaba (unquoted)"
+  },
+  {
+   "reference": "2 Kings 19:14",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "spreading before the Lord → okwanjuluza … mu maaso ga Mukama"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 382,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 10:11",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "not be ashamed → kuswazibwa (unquoted)"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 384,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Corinthians 12:31",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "covet earnestly → okwegomba ennyo ebirabo (unquoted)"
+  },
+  {
+   "reference": "Jeremiah 48:11",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "stock prayer phrase “oil … from vessel to vessel” built on OLCB “mu kibya ekimu okumuyiwa mu kirala”"
+  },
+  {
+   "reference": "Jeremiah 8:6",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 385,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 18:20",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "Spurgeon’s DELIBERATELY mangled misquote; kept mangled (thou / met together), on OLCB vocabulary"
+  },
+  {
+   "reference": "Romans 14:4",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "to my own master I stand or fall → Mukama wange y’amanya oba nnyimiridde oba ngwa"
+  },
+  {
+   "reference": "Habakkuk 2:11",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "beams out of the wall → emikiikiro (unquoted)"
+  },
+  {
+   "reference": "Hebrews 9:5",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "mercy seat → entebe ey’okusaasira"
+  },
+  {
+   "reference": "Psalms 78:9",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "children of Ephraim armed … turned back (OLCB fragments, re-personed)"
+  },
+  {
+   "reference": "Isaiah 66:8",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "travail in birth (unquoted)"
+  },
+  {
+   "reference": "Isaiah 16:11",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "bowels sound like a harp for Kir-haresh (OLCB fragments)"
+  },
+  {
+   "reference": "Judges 5:15",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 387,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 52:1",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "Zuukuka, zuukuka → Muzuukuke, muzuukuke (plural)"
+  },
+  {
+   "reference": "Isaiah 32:11",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "careless ones → abateefiirayo"
+  },
+  {
+   "reference": "Amos 6:1",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "at ease in Zion → abali mu Sayuuni … abateefiirayo"
+  },
+  {
+   "reference": "Joel 2:23",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "early and latter rain → enkuba esooka n’esembayo"
+  },
+  {
+   "reference": "Psalms 72:17",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "all nations shall call him blessed → bamuyitenga aweereddwa omukisa"
+  },
+  {
+   "reference": "Psalms 27:8",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "“Munnoonye” (OLCB has no “my face”)"
+  },
+  {
+   "reference": "Isaiah 45:19",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 388,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 30:18",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "waiteth to be gracious → akyayagala nnyo okuba ow’ekisa gye muli"
+  },
+  {
+   "reference": "Isaiah 45:11",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 388,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 11:5",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "“Mukwano gwange, mpa emigaati esatu.” (OLCB “ompoleyo” = lend; Spurgeon/Augustine “give”)"
+  },
+  {
+   "reference": "Psalms 55:14",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "took sweet counsel → twatambulanga … mu ssanyu ng’abooluganda"
+  },
+  {
+   "reference": "Revelation 14:13",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "your works do follow you → ebikolwa byammwe bibagoberera"
+  },
+  {
+   "reference": "Isaiah 65:24",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "before you call he will answer … while you are speaking he will hear"
+  },
+  {
+   "reference": "John 14:13",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "ask in Jesus’ name and it shall be done"
+  },
+  {
+   "reference": "Psalms 81:10",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "open your mouth wide → mwasamye akamwa kammwe"
+  },
+  {
+   "reference": "John 3:7",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "born again → okuzaalibwa omulundi ogwokubiri"
+  },
+  {
+   "reference": "Psalms 147:3",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "broken in heart, healeth → abalina emitima egimenyese … abajjanjaba"
+  },
+  {
+   "reference": "Psalms 25:11",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 390,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ephesians 5:14",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "Zuukuka … ggwe eyeebase, joined with Jonah 1:6 “call upon thy God”"
+  },
+  {
+   "reference": "Isaiah 44:20",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "a lie in thy right hand → obulimba mu mukono gwo ogwa ddyo"
+  },
+  {
+   "reference": "1 Timothy 2:8",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "unholy hands → emikono gyo egitali mirongoofu"
+  },
+  {
+   "reference": "Hosea 14:2",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 390,
+   "why": "“Tusonyiwe ebibi byaffe byonna, otwanirize n’ekisa” verbatim + “love us freely” from 14:4 re-personed"
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "why": "more than conquerors → omuwanguzi n’okukirawo"
+  },
+  {
+   "reference": "Romans 9:5",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 390,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 141:5",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 391,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 395,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 8:27",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 397,
+   "why": "unquoted; verbatim OLCB clause \"yeegayiririra abatukuvu ng’okusiima kwa Katonda bwe kuli\""
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 398,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 62:6",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 398,
+   "why": "unquoted; OLCB 62:7 clause verbatim, subject Mukama added"
+  },
+  {
+   "reference": "Isaiah 62:7",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 398,
+   "why": "unquoted; OLCB 62:7 clause verbatim, subject Mukama added"
+  },
+  {
+   "reference": "Psalms 122:6",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "unquoted \"okusabira Yerusaalemi emirembe\""
+  },
+  {
+   "reference": "John 13:34",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 399,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Thessalonians 1:3",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 400,
+   "why": "unquoted, verbatim phrase with \"gwabwe\""
+  },
+  {
+   "reference": "Romans 12:5",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 401,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 14:7",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 402,
+   "why": "unquoted, \"mu Kkanisa ya Katonda\" inserted"
+  },
+  {
+   "reference": "Mark 10:16",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "allusion, own wording"
+  },
+  {
+   "reference": "Matthew 10:8",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "unquoted in English too; verbatim \"Muweereddwa buwa nammwe muwenga buwa.\""
+  },
+  {
+   "reference": "John 19:30",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "“Kiwedde”"
+  },
+  {
+   "reference": "Isaiah 63:3",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 408,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Hebrews 6:19",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "\"Kabona … Asinga Obukulu\", \"munda w’eggigi\" terms from OLCB"
+  },
+  {
+   "reference": "Hebrews 6:20",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "\"Kabona … Asinga Obukulu\", \"munda w’eggigi\" terms from OLCB"
+  },
+  {
+   "reference": "Exodus 28:29",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "\"ekyomukifuba\" term from OLCB"
+  },
+  {
+   "reference": "Revelation 1:6",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "\"atufudde bakabona eri Katonda waffe\""
+  },
+  {
+   "reference": "Revelation 8:3",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "\"ekyoterezo ekya zaabu\", \"wamu n’okusaba kw’abatukuvu\" verbatim"
+  },
+  {
+   "reference": "Psalms 51:1",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "“Onsaasire”"
+  },
+  {
+   "reference": "Isaiah 62:6",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 410,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Job 28:16",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "\"zaabu wa Ofiri\""
+  },
+  {
+   "reference": "Psalms 45:8",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "\"embiri ez’amasanga\""
+  },
+  {
+   "reference": "Matthew 21:22",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "unquoted, re-personed to \"tu-\""
+  },
+  {
+   "reference": "2 Kings 4:13",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "see flag"
+  },
+  {
+   "reference": "1 Thessalonians 5:25",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 414,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Thessalonians 5:12",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "unquoted, mmwe→ffe"
+  },
+  {
+   "reference": "Galatians 6:1",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "unquoted, first person"
+  },
+  {
+   "reference": "1 Peter 3:4",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "unquoted \"omwoyo omuwombeefu era omuteefu\""
+  },
+  {
+   "reference": "Psalms 139:23",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 421,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 139:24",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 421,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ezra 7:22",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 422,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Acts 20:27",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 423,
+   "why": "unquoted, \"kwonna\" added"
+  },
+  {
+   "reference": "Hebrews 9:5",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "\"entebe ey’okusaasira\" (Mercy Seat)"
+  },
+  {
+   "reference": "Psalms 141:5",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 426,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 7:14",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "name form \"Emmanweri\""
+  },
+  {
+   "reference": "Psalms 141:5",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 431,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "allusion"
+  },
+  {
+   "reference": "Revelation 3:11",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 433,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Zechariah 3:2",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "\"ebisiki ebyaka mu muliro\""
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "\"mu kizikiza … mu butangaavu obutenkanika\""
+  },
+  {
+   "reference": "Acts 2:2",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "in Spurgeon's own prayer"
+  },
+  {
+   "reference": "Acts 2:3",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "in Spurgeon's own prayer"
+  },
+  {
+   "reference": "Job 38:11",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "singular re-personing of \"Wano we mutuuse we munaakoma temujja kweyongerayo\""
+  },
+  {
+   "reference": "2 Timothy 4:2",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 444,
+   "why": "mwetegefu→beetegefu"
+  },
+  {
+   "reference": "Revelation 8:3",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "why": "\"kyoto ekya zaabu\""
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 447,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "2 Corinthians 1:11",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "whole verse; OLCB lacks \"by the means of many persons ... on our behalf\" nuance"
+  },
+  {
+   "reference": "2 Corinthians 1:12",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "whole verse; OLCB has \"mu buwombeefu\" (humility) where KJV has \"simplicity\"; see flag"
+  },
+  {
+   "reference": "2 Corinthians 1:8",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 449,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "2 Corinthians 1:9",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 449,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "2 Corinthians 1:10",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 450,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 451,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "2 Corinthians 1:3",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"God of All Comfort\", unquoted title phrase"
+  },
+  {
+   "reference": "Acts 9:15",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"chosen vessel\": OLCB has no vessel image; own prose"
+  },
+  {
+   "reference": "2 Corinthians 1:11",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 453,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ezekiel 36:37",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 456,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 65:1",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "unquoted paraphrase, OLCB clause copied"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "ask/seek/knock built on OLCB verbs (aweebwa, azuula, aggulirwawo)"
+  },
+  {
+   "reference": "Matthew 7:8",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "ask/seek/knock built on OLCB verbs (aweebwa, azuula, aggulirwawo)"
+  },
+  {
+   "reference": "James 1:17",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "unquoted, \"buli kirabo ekirungi ekituukiridde\""
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"Kitaffe\""
+  },
+  {
+   "reference": "Matthew 6:13",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "doxology \"the kingdom and the power and the glory\" is NOT in OLCB Mat 6:13; own wording kept in quote marks as liturgical quotation"
+  },
+  {
+   "reference": "Isaiah 6:3",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 458,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 19:5",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 460,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 18:19",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 462,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Acts 12:5",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "unquoted; reworded into conditional clause"
+  },
+  {
+   "reference": "Acts 2:1",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 462,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 44:23",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "Spurgeon's reshaped Joseph saying; only \"temugenda kulaba maaso gange\" is OLCB"
+  },
+  {
+   "reference": "Ephesians 4:16",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 465,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Hebrews 10:25",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 468,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Thessalonians 5:25",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 469,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 Kings 22:31",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 469,
+   "why": "OLCB up to \"wabula\", then Spurgeon's \"the ministers of God\" in own words"
+  },
+  {
+   "reference": "1 Samuel 17:51",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"omuzira waabwe ng’afudde\" in own sentence"
+  },
+  {
+   "reference": "Genesis 4:9",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"mukuumi wa muganda (we)\""
+  },
+  {
+   "reference": "Ezekiel 33:6",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "blood required at watchmen's hand, prose with OLCB verb -vunaana"
+  },
+  {
+   "reference": "Revelation 1:16",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "star in His right hand"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"ng’alumwa okuzaala\", unquoted"
+  },
+  {
+   "reference": "Numbers 23:23",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 478,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "2 Samuel 24:16",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"Kinaamala\" for \"It is enough\"; source uncertain (maybe 1 Kgs 19:4 or just idiom)"
+  },
+  {
+   "reference": "Psalms 78:9",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 478,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Numbers 23:21",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"eddoboozi lya kabaka ery’omwanguka\" + own \"heard in your hosts\""
+  },
+  {
+   "reference": "Revelation 2:4",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"first love\", own wording"
+  },
+  {
+   "reference": "1 Samuel 4:21",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"Ikabodi\" (English \"Ich-abod\")"
+  },
+  {
+   "reference": "2 Samuel 1:20",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"abawala b’Abafirisuuti\""
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"abeera mulamu ennaku zonna okubawolereza\""
+  },
+  {
+   "reference": "2 Corinthians 1:11",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 479,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 116:2",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"ateze okutu kwe\" verbatim; \"as long as you live\" re-personed from same verse"
+  },
+  {
+   "reference": "Psalms 37:4",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"omutima gwo bye gwetaaga\""
+  },
+  {
+   "reference": "1 Chronicles 16:3",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "see flag (David, not Solomon; OLCB has raisin cake, not wine)"
+  },
+  {
+   "reference": "Revelation 4:8",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "unquoted \"day and night\""
+  },
+  {
+   "reference": "Psalms 34:2",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 482,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 34:3",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 482,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 34:6",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 482,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 35:6",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"olulimi lw’abatayogera\" + subjunctive \"luyimbe\""
+  },
+  {
+   "reference": "2 Corinthians 1:11",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 487,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 13:52",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 490,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Revelation 2:5",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"ekikondo ky’ettaala\""
+  },
+  {
+   "reference": "Isaiah 40:15",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"ettondo eriri mu nsuwa\" (drop in a bucket)"
+  },
+  {
+   "reference": "Ephesians 4:21",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 494,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Amos 8:11",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "Spurgeon's reshaped prayer; \"njala y’ekigambo kya Katonda\" verbatim, famine of bread/water reworded (OLCB: thirst for water)"
+  },
+  {
+   "reference": "Luke 19:42",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"ebireeta emirembe\" + \"gyaffe\""
+  },
+  {
+   "reference": "Acts 20:27",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 498,
+   "why": "OLCB pieces; OLCB \"okwagala kwa Katonda\" (will) for \"counsel\""
+  },
+  {
+   "reference": "2 Timothy 4:21",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 500,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "2 Corinthians 1:12",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 501,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Malachi 4:2",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"enjuba ey’obutuukirivu\", unquoted"
+  },
+  {
+   "reference": "2 Corinthians 1:12",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 505,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "2 Corinthians 1:12",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 507,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Romans 8:27",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"Oyo akebera emitima\", unquoted"
+  },
+  {
+   "reference": "2 Corinthians 1:12",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 509,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Jeremiah 23:29",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "hammer / Word like fire, own prose"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 511,
+   "why": "third person; \"bikolebwe mu nsi, nga bwe bikolebwa mu ggulu\" verbatim"
+  },
+  {
+   "reference": "John 3:18",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 512,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "\"munaalokolebwa\""
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 513,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 513,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 517,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 518,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 518,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 521,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Job 1:21",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 522,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Job 10:2",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "OLCB \"tell me what you charge me with\" ~ KJV \"shew me wherefore thou contendest with me\"; rest of the prayer is Spurgeon’s"
+  },
+  {
+   "reference": "Psalms 37:3",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 523,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 6:26",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 523,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 526,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 5:36",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 526,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:5",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "verbatim script copy"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 529,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 531,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 10:30",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 532,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 533,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 534,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 535,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 537,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 John 5:15",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "verbatim script copy"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 537,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Proverbs 27:10",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 538,
+   "why": "OLCB phrase \"ewa muganda wo ng’ogudde mu mitawaana\" framed by \"obutagenda\"; OLCB sense \"lest you be shamed at your brother’s\""
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 539,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 540,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 541,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 542,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 543,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 543,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 545,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 546,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 547,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:1",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 549,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Acts 16:25",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "verbatim script copy"
+  },
+  {
+   "reference": "Philippians 4:2",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 550,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:3",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 551,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:3",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 552,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:4",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 553,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:5",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 554,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:5",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 555,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 558,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 558,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 558,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:9",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 559,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:10",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 561,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:11",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 562,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:12",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 563,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:12",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 564,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "verbatim; OLCB \"in him who strengthens me\" does not name Christ"
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "verbatim; OLCB \"in him who strengthens me\" does not name Christ"
+  },
+  {
+   "reference": "Philippians 4:14",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 567,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:15",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 567,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:16",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 567,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:17",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 567,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:18",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 568,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 568,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:20",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 569,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:21",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 570,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:22",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 571,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Philippians 4:23",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 572,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Matthew 6:30",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "OLCB \"ayambaza ... omuddo ogw’omu nsiko\", \"talisingawo nnyo okubambaza? ... okukkiriza okutono\" re-personed to singular"
+  },
+  {
+   "reference": "Romans 12:17",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "\"okukola ebirungi byereere eri bonna\" from OLCB \"mukolenga birungi byereere eri bonna\""
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "Throne of Grace = pinned \"entebe ey’obwakabaka ey’ekisa\""
+  },
+  {
+   "reference": "Joshua 9:6",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "narrative allusion (Gibyoni, \"ng’ekyayokya\", endagaano, did not consult the Lord); the Israelites' quoted words are Spurgeon's own, not a verse"
+  },
+  {
+   "reference": "Joshua 9:7",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "narrative allusion (Gibyoni, \"ng’ekyayokya\", endagaano, did not consult the Lord); the Israelites' quoted words are Spurgeon's own, not a verse"
+  },
+  {
+   "reference": "Joshua 9:8",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "narrative allusion (Gibyoni, \"ng’ekyayokya\", endagaano, did not consult the Lord); the Israelites' quoted words are Spurgeon's own, not a verse"
+  },
+  {
+   "reference": "Joshua 9:9",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "narrative allusion (Gibyoni, \"ng’ekyayokya\", endagaano, did not consult the Lord); the Israelites' quoted words are Spurgeon's own, not a verse"
+  },
+  {
+   "reference": "Proverbs 27:1",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "\"Omanyi olunaku bye lunaaleeta?\" from OLCB \"olunaku bye lunaaleeta tobimanyi\""
+  },
+  {
+   "reference": "Matthew 6:27",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "\"inch taller\" follows KJV stature; OLCB speaks of adding to one's life, so carried in own prose"
+  },
+  {
+   "reference": "Luke 12:25",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 525,
+   "why": "paraphrase of OLCB \"Obanga temusobola kukola kantu katono ng’ako...\" in reported speech"
+  },
+  {
+   "reference": "Luke 12:26",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 525,
+   "why": "paraphrase of OLCB \"Obanga temusobola kukola kantu katono ng’ako...\" in reported speech"
+  },
+  {
+   "reference": "1 Kings 18:43",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "\"emirundi musanvu\" (OLCB); Spurgeon has Elijah himself go seven times (it was his servant) — left as Spurgeon says"
+  },
+  {
+   "reference": "Genesis 32:28",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "OLCB \"omegganye ne Katonda ... n’owangula\"; \"prince with God\" (KJV) is not in OLCB, carried in prose (\"omulangira eri Katonda\")"
+  },
+  {
+   "reference": "Psalms 62:8",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "\"mutegeeze byonna ebiri mu mutima gwo\" from OLCB \"mumutegeezenga byonna ebiri mu mitima gyammwe\""
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "\"tolimpa buli kye neetaaga?\" echo of OLCB \"alibawa buli kye mwetaaga\""
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "\"okumutwalira byonna bye tweraliikirira\" from OLCB \"Mumutwalirenga byonna bye mweraliikirira\""
+  },
+  {
+   "reference": "Psalms 17:8",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "\"wansi w’ekisiikirize ky’ebiwaawaatiro bya Ayinzabyonna\" (OLCB \"ekisiikirize ky’ebiwaawaatiro\" + \"Ayinzabyonna\")"
+  },
+  {
+   "reference": "Psalms 103:20",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "\"angels excel in strength\" is a saying alluding to the psalm; own prose"
+  },
+  {
+   "reference": "Psalms 147:9",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 573,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Job 38:41",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "Caryl's \"wander for lack of meat\": OLCB \"nga batambulatambula nga babuliddwa emmere\" (unquoted in the Bible sense; the quoted speech is Caryl's)"
+  },
+  {
+   "reference": "Proverbs 6:6",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "unquoted \"sent the sluggard to the ant\": enkolooto (OLCB 30:25); OLCB 6:6 itself says \"biwuka\""
+  },
+  {
+   "reference": "Proverbs 30:26",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "conies = obumyu (OLCB 30:26); greyhounds = \"embwa ez’okuyigga\" (OLCB 30:31 has \"sseggwanga\"); spiders = nnabbubi (OLCB 30:28 has \"omunya\")"
+  },
+  {
+   "reference": "Proverbs 30:27",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "conies = obumyu (OLCB 30:26); greyhounds = \"embwa ez’okuyigga\" (OLCB 30:31 has \"sseggwanga\"); spiders = nnabbubi (OLCB 30:28 has \"omunya\")"
+  },
+  {
+   "reference": "Proverbs 30:28",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "conies = obumyu (OLCB 30:26); greyhounds = \"embwa ez’okuyigga\" (OLCB 30:31 has \"sseggwanga\"); spiders = nnabbubi (OLCB 30:28 has \"omunya\")"
+  },
+  {
+   "reference": "Titus 1:15",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 577,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 8:7",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "unquoted allusion (Noah's raven)"
+  },
+  {
+   "reference": "1 Kings 17:6",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "unquoted allusion; \"kagga Kerisi\" as OLCB 17:5"
+  },
+  {
+   "reference": "Luke 12:24",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 578,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 27:34",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "unquoted echo \"exceeding great and bitter cry\""
+  },
+  {
+   "reference": "Matthew 18:6",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "unquoted millstone allusion (\"mu bulago ng’olubengo\")"
+  },
+  {
+   "reference": "Psalms 23:4",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 581,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 77:9",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "\"Katonda yeerabidde ekisa kye?\""
+  },
+  {
+   "reference": "Revelation 20:15",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "unquoted; \"nnyanja ey’omuliro\""
+  },
+  {
+   "reference": "Esther 4:16",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "two verbatim fragments joined by an ellipsis (\"Ndigenda eri Kabaka … Bwe ndiba ow’okuzikirira, nzikirira.\"), omitting the law clause as the English does"
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 582,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Genesis 1:26",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 586,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Ezekiel 18:25",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "unquoted \"whose ways are always equal\""
+  },
+  {
+   "reference": "Psalms 102:17",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 593,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Proverbs 30:25",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "inside the old author's quotation; own wording \"enkolooto, ekuŋŋaanya emmere yaayo mu kyeya\""
+  },
+  {
+   "reference": "Proverbs 14:10",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "unquoted; \"omutima gwo gumanya okulumwa kwagwo\" re-personed from \"Buli mutima gumanya okulumwa kwagwo\""
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 598,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "Throne of Grace = pinned \"entebe ey’obwakabaka ey’ekisa\""
+  },
+  {
+   "reference": "Matthew 11:12",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 602,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 58:1",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "unquoted \"Cry aloud! Spare not!\": \"Kaaba mu ddoboozi ery’omwanguka! Tokisirikira!\" (OLCB \"Kyogere mu ddoboozi ery’omwanguka, tokisirikira\")"
+  },
+  {
+   "reference": "Ephesians 1:4",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "unquoted; \"ng’ensi tennatondebwa\""
+  },
+  {
+   "reference": "Micah 7:18",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 606,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Jeremiah 31:20",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "unquoted Ephraim allusion"
+  },
+  {
+   "reference": "Luke 15:24",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 606,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 15:30",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "unquoted; \"ennyana ensava\" (fatted calf)"
+  },
+  {
+   "reference": "Psalms 50:10",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "unquoted; \"ente eziri ku nsozi olukumi\""
+  },
+  {
+   "reference": "John 14:26",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "Comforter = Omubeezi (OLCB)"
+  },
+  {
+   "reference": "Romans 10:13",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 609,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 50:15",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 609,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 609,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Mark 16:16",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 609,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 609,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Acts 2:38",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 609,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Hosea 14:2",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "\"ajja kukwaniriza n’ekisa\" from \"otwanirize n’ekisa\"; \"onoowaayo gy’ali ebibala by’akamwa ko\" from \"tunaawaayo ebibala by’akamwa kaffe\" (OLCB \"fruit\", KJV \"calves\")"
+  },
+  {
+   "reference": "Hosea 14:4",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "\"akwagale awatali ky’akusalidde kya kusasula\" re-personed from \"ne mbaagala awatali kye mbasalidde kya kusasula\""
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 611,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 3:7",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 613,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 118:12",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "\"Banneebungulula ng’enjuki\" verbatim, repeated in reverse order as the English does"
+  },
+  {
+   "reference": "Proverbs 15:8",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 616,
+   "why": "the \"counterfeit\" text, deliberately shaped on 15:8: \"Okusaba kw’aboonoonyi kwa muzizo eri Mukama\""
+  },
+  {
+   "reference": "Proverbs 28:9",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "unquoted; \"abatassaayo mwoyo kuwulira Mateeka … okusaba kwabwe tekukkirizibwa\". OLCB says \"not accepted\", not \"abomination\", so Spurgeon's \"abomination\" is not put in the Bible's mouth (see flag)"
+  },
+  {
+   "reference": "Judges 5:7",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 617,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Psalms 147:9",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "old woman's paraphrase \"tawulira bannamuŋŋoona abato bwe bamukaabirira?\" (cf. Job 38:41)"
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 619,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "\"Kitange, basonyiwe\" verbatim + Spurgeon's own \"olw’omusaayi gwange ogw’omuwendo\""
+  },
+  {
+   "reference": "1 Kings 18:43",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "\"Ddayo emirundi musanvu\" from OLCB indirect \"addeyo emirundi musanvu\""
+  },
+  {
+   "reference": "Matthew 18:22",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "unquoted; \"emirundi nsanvu emirundi musanvu\""
+  },
+  {
+   "reference": "2 Peter 1:19",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "unquoted \"morning star\""
+  },
+  {
+   "reference": "Psalms 27:8",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "\"Munnoonye\""
+  },
+  {
+   "reference": "Exodus 14:15",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "\"Lwaki okaabirira nze?\""
+  },
+  {
+   "reference": "2 Corinthians 6:2",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 628,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "Isaiah 44:22",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 628,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "\"Nkunaazizzaako ebibi byo byonna\" (echo of 1Jn 1:7, Spurgeon's own words for the Lord)"
+  },
+  {
+   "reference": "John 5:24",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "why": "unquoted; \"Ovudde mu kuzikirira ng’otuuse mu bulamu\" re-personed from \"aliba avudde mu kuzikirira ng’atuuse mu bulamu\""
+  },
+  {
+   "reference": "John 3:18",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 637,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "John 6:47",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 637,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  },
+  {
+   "reference": "1 John 5:10",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 640,
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)"
+  }
+ ]
+}

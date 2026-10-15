@@ -9,6 +9,18 @@ function block(html: string): HTMLElement {
 }
 
 describe('spokenText', () => {
+	it('is silent for an illustration, caption and all', () => {
+		const fig = document.createElement('figure');
+		fig.innerHTML = '<img alt="The goblins" src="/illustrations/a/b.jpg"><figcaption>The goblins fell back.</figcaption>';
+		expect(spokenText(fig)).toBe('');
+	});
+
+	it('leaves a figure out of a selection that spans one', () => {
+		const div = document.createElement('div');
+		div.innerHTML = '<p>Before.</p><figure><figcaption>Caption.</figcaption></figure><p>After.</p>';
+		expect(readerProse(div)).toBe('Before. After.');
+	});
+
 	it('drops a numbered footnote superscript', () => {
 		expect(spokenText(block('first did meet with grace;<sup>4</sup>'))).toBe(
 			'first did meet with grace;'

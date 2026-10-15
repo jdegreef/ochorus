@@ -171,22 +171,25 @@ Let's Encrypt certificates, then check:
   `https://ochorus.com/ochorus-books/` → `/books` (see the redirect rules in
   `render.yaml`; **`render.yaml` route changes only take effect after a
   Blueprint → Sync** in the Render dashboard — a plain push won't apply them).
-- A retired WordPress media URL redirects rather than answering 200 with the app
-  shell: `https://ochorus.com/wp-content/uploads/2025/08/FEASTING-AT-THE-TABLE.pdf`
-  → `/books/feasting-at-the-table/`, and
-  `…/2025/08/Normal-Christian-Life.jpg` → `/covers/art/the-normal-christian-life.jpg`.
+- An unknown URL answers 404 with the app's not-found page, not a blank 200:
+  `https://ochorus.com/wp-content/uploads/2025/08/FEASTING-AT-THE-TABLE.pdf`.
 
 **Rollback:** restore the old `@`/`www` values at the registrar — the low TTL
 makes it quick.
 
 ## Refreshing / adding content later
 
-Re-run the importers locally, regenerate the fixture, commit, and push. Render
-auto-deploys each merge to `main` once its GitHub checks pass
-(`autoDeployTrigger: checksPass` on all three services); the web build's prebuild
-gate waits for the API to land the same content before prerendering. (The
-batching **deploy train**, `.github/workflows/deploy-train.yml`, is paused — see
-render.yaml for how to bring it back.) New content reaches the live database via the deploy's seed
+Re-run the importers locally, regenerate the fixture, commit, and push. The
+**deploy train** ships it: `.github/workflows/deploy-train.yml` runs every two
+hours and moves `ochorus-api` and `ochorus-web` together to the newest commit
+whose `test-and-build` passed (Render's own auto-deploy is off on both; the
+email cron has no deploy hook, so it still auto-deploys after CI). To ship
+now: Actions → Deploy train → Run workflow, or `gh workflow run deploy-train.yml`
+(add `-f force=true` to redeploy with nothing changed). A red train run means
+nothing is deploying — fix it the same day. Between trains, a language launch
+or other admin content change rebuilds the reader alone at the API's own commit
+through `.github/workflows/rebuild-reader.yml` (dispatched by
+`library/golive.py`; the API's token needs `actions: write`). New content reaches the live database via the deploy's seed
 commands (`seed_books`/`seed_sermons` run on every release). **Never run raw
 `loaddata` against production** — it full-row-overwrites, silently reverting
 approved review states (`source_type`).

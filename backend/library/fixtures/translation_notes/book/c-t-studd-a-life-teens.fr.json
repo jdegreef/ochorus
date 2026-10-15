@@ -1,0 +1,268 @@
+{
+ "kind": "book",
+ "slug": "c-t-studd-a-life-teens",
+ "language": "fr",
+ "note": [
+  "Each chapter opens with a full ASV verse marked “(ASV)”; the French gives the Louis Segond 1910 text verbatim (French spacing only) with a tight French citation and no version tag, following a-retrospect-teens.fr. Two epigraphs adjust only the final punctuation: Segond 2 Timothy 2:4 ends with « ; » and is closed with a full stop, and Romans 10:14-15 quotes 10:14 plus the first sentence of 10:15, as the English does. In-text ASV quotations are replaced by the matching Segond words (mined); the 1 Corinthians 9:25, 1 Corinthians 9:19, Acts 15:39 and 2 Timothy 4:7 echoes are paraphrased (self_rendered).",
+  "Teen register follows a-retrospect-teens.fr: passé simple narration, « tu » for the reader, « Une chose à faire cette semaine : » for the closing prompt. Names and terms match the French children's edition of this life: Mission à l’intérieur de la Chine, les Sept de Cambridge, Mission du cœur de l’Afrique, runs → « courses », wickets taken → « batteurs éliminés », the Ashes glossed once as « les Ashes, les Cendres ». Centuries are explained (« huit fois plus de cent courses en une seule manche ») rather than borrowed. Other bodies: Africa Inland Mission → « Mission à l’intérieur de l’Afrique (Africa Inland Mission) », Worldwide Evangelisation Crusade → « Croisade mondiale d’évangélisation (Worldwide Evangelisation Crusade) », Student Volunteer Movement → « Mouvement des étudiants volontaires », Union Church kept in English.",
+  "Studd's tracts are given French titles with the English in parentheses: « Le Soldat en chocolat (The Chocolate Soldier) », « Les Et-cetera du Christ (Christ’s Etceteras) ». The traditional saying is rendered « Si Jésus-Christ est Dieu et qu’il est mort pour moi, alors aucun sacrifice que je pourrais faire pour lui ne peut être trop grand », and the two lines he loved use the children's edition wording « Une seule vie, bien vite passée ; seul ce qui est fait pour Christ durera ». In chapter 7 the English “Priscilla and Aquila” (to echo Scilla's name) becomes « Priscille et Aquilas » (Segond's Acts 18 spelling) though the epigraph keeps Segond's « Prisca » from Romans 16:3.",
+  "Money stays in « livres » with French digit grouping (25 000, 3 400); no distances needed converting. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Acts 16:31",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 16:31b",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 9:24-25",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 4:19",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 1,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "James 2:1",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 9:25",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 7
+  },
+  {
+   "reference": "John 11:4",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 10:37a",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 11:4",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 1:26",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 6:8b",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 9:19",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 9:19",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 13:44",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 19:21b",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 2,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Timothy 6:18b",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 13:44",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 16:3-4",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 16:3",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 10:14-15a",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 10:15a",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 4:5",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 4:5a",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Timothy 2:3-4",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Timothy 2:3",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 3,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 20:28",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Thessalonians 1:8",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Thessalonians 1:8a",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 15:39",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 7:5",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 15:39",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 8
+  },
+  {
+   "reference": "2 Timothy 4:11",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Timothy 4:6-7",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Galatians 6:1b",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 2,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 11:14b",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 3,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Timothy 4:7",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 9
+  }
+ ]
+}

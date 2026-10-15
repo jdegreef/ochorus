@@ -4,7 +4,7 @@
 	import { coverVariants, isPlateCover, shareCard, shareImage } from '$lib/coverArt';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { authorLdType, authorPath, ORIGINALS_SLUG } from '$lib/originals';
-	import { type BookDetail, formatLifespan } from '$lib/library-public';
+	import { type BookDetail, formatLifespan, isTranslated } from '$lib/library-public';
 	import { getProgressRecord } from '$lib/progress';
 	import { bookChapterPath, furthestOf, resumeOrderOf, type ProgressRecord } from '$lib/reading-schema';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
@@ -53,6 +53,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
+	import CitePanel from '$lib/components/CitePanel.svelte';
 	import AddToShelfButton from '$lib/components/AddToShelfButton.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
@@ -769,20 +770,6 @@
 						<span class="btn-label">{t('nav.search')}</span>
 					</a>
 				</div>
-				{#if book.has_leader_guide}
-					<!-- A printable leader's guide for a group or a homeschool. Its own row
-					     under the strip, not a sixth strip button: the strip's phone form
-					     is five columns, and this is for the leader, not every reader. -->
-					<div class="mt-2">
-						<a
-							href={localizeHref(`/books/${book.slug}/guide`)}
-							class="btn btn-sm btn-ghost"
-						>
-							<Icon name="users" size={16} />
-							{t('guide.label')}
-						</a>
-					</div>
-				{/if}
 			</div>
 		</header>
 	</div>
@@ -1162,7 +1149,23 @@
 
 	<!-- Where to go from here: one book to read next (the first of "More like
 	     this", given room and its pitch) and, for a book with one, the leader's
-	     guide for reading it with a group — then the rest of the shelf. -->
+	     guide for reading it with a group — then the rest of the shelf. The
+	     guide's one link on the page: a printable guide for a group or a
+	     homeschool, for the leader, not every reader, so it sits with what
+	     comes next rather than in the hero's actions. -->
+	{#snippet guideCard()}
+		<a
+			href={localizeHref(`/books/${book.slug}/guide`)}
+			class="card-tint flex items-start gap-4 rounded-card border border-border bg-surface p-4 text-text"
+		>
+			<span class="next-icon" aria-hidden="true"><Icon name="users" size={22} /></span>
+			<span class="min-w-0">
+				<span class="eyebrow block text-accent">{t('guide.label')}</span>
+				<span class="mt-1 block text-small" dir="auto">{t('guide.description').replace('%t%', book.title)}</span>
+				<span class="mt-2 block text-small font-semibold text-accent">{t('guide.open')} <Arrow /></span>
+			</span>
+		</a>
+	{/snippet}
 	{#if book.related?.length}
 		{@const [next, ...rest] = book.related}
 		<section id="related" class="jump-anchor mt-12">
@@ -1186,21 +1189,7 @@
 						{/if}
 					</span>
 				</a>
-				{#if book.has_leader_guide}
-					<a
-						href={localizeHref(`/books/${book.slug}/guide`)}
-						class="card-tint flex items-start gap-4 rounded-card border border-border bg-surface p-4 text-text"
-					>
-						<span class="next-icon" aria-hidden="true"><Icon name="users" size={22} /></span>
-						<span class="min-w-0">
-							<span class="eyebrow block text-accent">{t('guide.label')}</span>
-							<span class="mt-1 block text-small" dir="auto"
-								>{t('guide.description').replace('%t%', book.title)}</span
-							>
-							<span class="mt-2 block text-small font-semibold text-accent">{t('guide.open')} <Arrow /></span>
-						</span>
-					</a>
-				{/if}
+				{#if book.has_leader_guide}{@render guideCard()}{/if}
 			</div>
 			{#if rest.length}
 				<div class="book-grid mt-6">
@@ -1210,6 +1199,9 @@
 				</div>
 			{/if}
 		</section>
+	{:else if book.has_leader_guide}
+		<!-- No shelf to sit beside: the guide alone, still offered. -->
+		<div class="next-pair mt-12">{@render guideCard()}</div>
 	{/if}
 
 	{#if book.source_url && book.source_type === 'public_domain'}
@@ -1232,6 +1224,19 @@
 		     trust. Not translated: it is a name, a title and a year. -->
 		<p class="mt-2 text-eyebrow text-muted sm:hidden">{book.artwork_credit}</p>
 	{/if}
+	<!-- A translated edition did not appear in the original's year, so it is
+	     cited without one rather than as a reprint of it. -->
+	<CitePanel
+		lang={book.language}
+		work={{
+			kind: 'book',
+			author: book.author.name,
+			corporate: book.author.slug === ORIGINALS_SLUG,
+			title: book.title,
+			year: isTranslated(book.source_type) ? null : book.publication_year,
+			url: canonical
+		}}
+	/>
 </div>
 
 <!-- Phones: once the read card scrolls away, the read verb rides a bar above

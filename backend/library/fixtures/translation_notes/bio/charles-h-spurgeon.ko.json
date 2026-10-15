@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "charles-h-spurgeon",
+ "language": "ko",
+ "job_issue": 5850,
+ "references": [
+  {
+   "reference": "Isaiah 45:22a",
+   "status": "mined",
+   "source_file": "개역 (ebible kor_old) Bible text",
+   "block_index": 3
+  }
+ ]
+}

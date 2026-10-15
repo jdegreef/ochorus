@@ -1,0 +1,399 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "john-owen"
+  ],
+  "slug": "mortification-of-sin-teens",
+  "language": "fr",
+  "title": "Mortifier le péché (Pour ados)",
+  "subtitle": "",
+  "cover_title": "",
+  "description": "« Faites mourir le péché, ou c’est lui qui vous fera mourir. » John Owen a écrit cette phrase en 1656 pour des étudiants d’Oxford, et son livre reste l’un des plus honnêtes jamais écrits sur le combat contre la tentation. Cette édition pour ados le raconte avec des mots simples : pourquoi le péché ne reste jamais petit, pourquoi la volonté seule perd toujours, à quoi ressemble un vrai changement, les signaux d’alerte qui montrent qu’une habitude devient dangereuse, comment arrêter la tentation dès le début, comment ne pas se fabriquer une fausse paix avec Dieu, et pourquoi le combat se gagne finalement en regardant à Jésus. Les phrases d’Owen lui-même sont gardées là où elles disent les choses le mieux.",
+  "hook": "Comment combattre le péché dans lequel tu retombes sans cesse — non à la force de la volonté, mais avec l’Esprit et avec Jésus.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Qui était John Owen ?",
+    "answer": "Un pasteur et théologien puritain anglais, né en 1616. Il est entré à l’université d’Oxford vers l’âge de douze ans, puis il est devenu doyen de Christ Church et vice-chancelier de l’université, et il a été aumônier d’Oliver Cromwell. En 1662, il a été exclu de l’Église d’Angleterre avec quelque deux mille autres pasteurs, et il a continué à diriger et à écrire jusqu’à sa mort en 1683. On se souvient de lui comme de l’un des plus grands théologiens anglais."
+   },
+   {
+    "question": "Que veut dire « mortification » ?",
+    "answer": "Le mot vient d’un mot latin qui veut dire « faire mourir ». Owen le tire de Romains 8:13 : « si par l’Esprit vous faites mourir les actions du corps, vous vivrez ». Cela veut dire affaiblir et combattre avec constance le péché qui est dans ton cœur, avec l’aide du Saint-Esprit, pour qu’il perde son emprise sur toi."
+   },
+   {
+    "question": "Faire mourir le péché, est-ce que ça veut dire me punir ou me faire du mal ?",
+    "answer": "Non, jamais. Owen était contre les pratiques dures qui punissent le corps, et il disait que le vrai changement est l’œuvre de l’Esprit dans le cœur, pas quelque chose qu’on peut s’imposer à coups de punitions. Faire mourir le péché ne veut jamais dire faire du mal à ton corps. Si tu te fais du mal, ou si tu as l’impression de mériter qu’on te fasse du mal, parles-en s’il te plaît dès aujourd’hui à un adulte de confiance ou à un médecin."
+   },
+   {
+    "question": "Et si une habitude me semble trop forte pour que je puisse arrêter ?",
+    "answer": "Owen dit que tu ne peux faire mourir aucun péché par tes propres forces ; c’est l’œuvre de l’Esprit, et Christ a de quoi te secourir. Dieu se sert aussi des gens. Si une habitude te semble incontrôlable — comme la pornographie, l’alcool, la vape ou la drogue —, en parler à un adulte de confiance, à un responsable de jeunes ou à un médecin est un pas sage et courageux, pas un échec de ta foi."
+   },
+   {
+    "question": "Est-ce que je serai un jour complètement libéré de la tentation dans cette vie ?",
+    "answer": "Owen dit que non : le péché n’est pas complètement détruit dans cette vie, même chez les meilleurs chrétiens. Mais tu peux connaître une vraie victoire, régulière, où un péché s’affaiblit pendant que toi tu deviens plus fort, et un jour Christ achèvera complètement l’œuvre."
+   },
+   {
+    "question": "Ce livre est-il seulement pour ceux qui ont un gros péché bien visible ?",
+    "answer": "Non. Owen écrivait pour des croyants ordinaires, et il dit que c’est aussi le devoir des meilleurs chrétiens. L’orgueil, l’envie, la colère, le mensonge, les ragots et la paresse doivent être combattus tout autant que les péchés que tout le monde remarque."
+   },
+   {
+    "question": "Est-ce le texte intégral ?",
+    "answer": "Non. C’est un récit pour adolescents, avec des mots simples et actuels, tiré de l’ensemble du livre d’Owen et qui garde ses propres phrases là où elles disent les choses le mieux. Le livre complet, De la mortification du péché chez les croyants, est aussi disponible."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Un récit d’Ochorus pour jeunes lecteurs, d’après De la mortification du péché chez les croyants (The Mortification of Sin, 1656) de John Owen, une œuvre du domaine public. La façon de raconter est la nôtre, libre à lire et à partager. Les citations bibliques de cette édition française sont tirées de la version Louis Segond (1910), qui est dans le domaine public.",
+  "cover_url": "/covers/art/mortification-of-sin-teens.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "series": [
+   "straight-talk"
+  ],
+  "series_position": null,
+  "sort_order": 162,
+  "is_published": true,
+  "created_at": "2026-10-13T00:00:00Z",
+  "updated_at": "2026-10-13T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "fr"
+  ],
+  "order": 1,
+  "title": "L’homme qui a écrit « Tue le péché »",
+  "body_html": "<blockquote>« Si vous vivez selon la chair, vous mourrez ; mais si par l’Esprit vous faites mourir les actions du corps, vous vivrez. » — Romains 8:13</blockquote> <p>John Owen est né en 1616 à Stadhampton, un village de l’Oxfordshire, en Angleterre. Son père était pasteur. John était intelligent, très intelligent : il est entré à l’université d’Oxford alors qu’il n’avait qu’environ douze ans.</p> <p>Mais être intelligent et aller à l’église ne lui a pas donné la paix avec Dieu. En 1637, il a quitté Oxford plutôt que d’obéir à des règles sur le culte contraires à sa conscience, et pendant plusieurs années il a vécu dans les ténèbres spirituelles. Il savait beaucoup de choses sur Dieu, mais il n’était pas sûr que Dieu soit à lui.</p> <p>Puis, vers 1642, il est allé dans une église de Londres dans l’espoir d’entendre un prédicateur célèbre. Le prédicateur célèbre n’est pas venu. Un inconnu l’a remplacé au pied levé et a prêché sur les paroles de Jésus à ses disciples effrayés : « Pourquoi avez-vous peur, gens de peu de foi ? » À travers ce sermon tout ordinaire, l’assurance qu’Owen avait tant demandée à Dieu est enfin venue.</p> <p>Owen est devenu l’un des hommes les plus importants de son temps. Oliver Cromwell, le général qui a plus tard gouverné l’Angleterre, en a fait un aumônier de l’armée. En 1651, il est devenu doyen de Christ Church, l’un des plus grands collèges d’Oxford, et l’année suivante vice-chancelier de toute l’université.</p> <p>Là-bas, il a prêché aux étudiants, dont beaucoup étaient des jeunes gens, sur une chose contre laquelle ils luttaient tous : le péché qui ne veut pas s’en aller. Ces sermons sont devenus un livre en 1656. Son titre sonne bizarrement aujourd’hui : De la mortification du péché. « Mortifier » veut dire « faire mourir ».</p> <p>La vie d’Owen n’a pas été facile. Après 1660, le pouvoir a changé, et en 1662 il a été chassé de l’Église d’Angleterre avec environ deux mille autres pasteurs. Sur ses onze enfants environ, tous sauf un sont morts jeunes. Mais il a continué à prêcher et à écrire, et selon un témoignage digne de foi, il a aidé à faire sortir de prison John Bunyan, l’auteur du Voyage du pèlerin.</p> <p>Le livre d’Owen est célèbre pour une phrase : « faites mourir le péché, ou c’est lui qui vous fera mourir ». Ça paraît violent. Mais tu vas le voir : la réponse d’Owen au péché, ce n’est pas de faire plus d’efforts. C’est le Saint-Esprit, et c’est Jésus.</p> <p>Ce livre est pour toi s’il y a un péché dans lequel tu retombes sans cesse, une habitude que tu détestes, ou une colère, une jalousie ou un secret dont tu n’arrives pas à venir à bout.</p> <p><strong>Une chose à faire cette semaine :</strong> pense à un péché ou à une habitude dont tu aimerais vraiment être libéré. Écris-le quelque part, à l’abri des regards, et prie chaque jour cette semaine : « Seigneur, par ton Esprit, aide-moi à faire mourir cela. »</p>",
+  "study_questions": [
+   {
+    "question": "Que s’est-il passé pour Owen vers 1642 ?",
+    "answer": "Il a entendu un prédicateur inconnu, qui en remplaçait un célèbre, prêcher sur « Pourquoi avez-vous peur, gens de peu de foi ? », et à travers ce sermon il a reçu l’assurance de l’amour de Dieu."
+   },
+   {
+    "question": "Qui a entendu en premier les sermons devenus De la mortification du péché ?",
+    "answer": "Les étudiants de l’université d’Oxford, dont Owen était le vice-chancelier."
+   },
+   {
+    "question": "Que veut dire « mortifier » ?",
+    "answer": "Faire mourir."
+   }
+  ],
+  "body_text": "« Si vous vivez selon la chair, vous mourrez ; mais si par l’Esprit vous faites mourir les actions du corps, vous vivrez. » — Romains 8:13 John Owen est né en 1616 à Stadhampton, un village de l’Oxfordshire, en Angleterre. Son père était pasteur. John était intelligent, très intelligent : il est entré à l’université d’Oxford alors qu’il n’avait qu’environ douze ans. Mais être intelligent et aller à l’église ne lui a pas donné la paix avec Dieu. En 1637, il a quitté Oxford plutôt que d’obéir à des règles sur le culte contraires à sa conscience, et pendant plusieurs années il a vécu dans les ténèbres spirituelles. Il savait beaucoup de choses sur Dieu, mais il n’était pas sûr que Dieu soit à lui. Puis, vers 1642, il est allé dans une église de Londres dans l’espoir d’entendre un prédicateur célèbre. Le prédicateur célèbre n’est pas venu. Un inconnu l’a remplacé au pied levé et a prêché sur les paroles de Jésus à ses disciples effrayés : « Pourquoi avez-vous peur, gens de peu de foi ? » À travers ce sermon tout ordinaire, l’assurance qu’Owen avait tant demandée à Dieu est enfin venue. Owen est devenu l’un des hommes les plus importants de son temps. Oliver Cromwell, le général qui a plus tard gouverné l’Angleterre, en a fait un aumônier de l’armée. En 1651, il est devenu doyen de Christ Church, l’un des plus grands collèges d’Oxford, et l’année suivante vice-chancelier de toute l’université. Là-bas, il a prêché aux étudiants, dont beaucoup étaient des jeunes gens, sur une chose contre laquelle ils luttaient tous : le péché qui ne veut pas s’en aller. Ces sermons sont devenus un livre en 1656. Son titre sonne bizarrement aujourd’hui : De la mortification du péché. « Mortifier » veut dire « faire mourir ». La vie d’Owen n’a pas été facile. Après 1660, le pouvoir a changé, et en 1662 il a été chassé de l’Église d’Angleterre avec environ deux mille autres pasteurs. Sur ses onze enfants environ, tous sauf un sont morts jeunes. Mais il a continué à prêcher et à écrire, et selon un témoignage digne de foi, il a aidé à faire sortir de prison John Bunyan, l’auteur du Voyage du pèlerin. Le livre d’Owen est célèbre pour une phrase : « faites mourir le péché, ou c’est lui qui vous fera mourir ». Ça paraît violent. Mais tu vas le voir : la réponse d’Owen au péché, ce n’est pas de faire plus d’efforts. C’est le Saint-Esprit, et c’est Jésus. Ce livre est pour toi s’il y a un péché dans lequel tu retombes sans cesse, une habitude que tu détestes, ou une colère, une jalousie ou un secret dont tu n’arrives pas à venir à bout. Une chose à faire cette semaine : pense à un péché ou à une habitude dont tu aimerais vraiment être libéré. Écris-le quelque part, à l’abri des regards, et prie chaque jour cette semaine : « Seigneur, par ton Esprit, aide-moi à faire mourir cela. »",
+  "word_count": 507
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "fr"
+  ],
+  "order": 2,
+  "title": "Faites mourir le péché",
+  "body_html": "<blockquote>« Faites donc mourir les membres qui sont sur la terre. » — Colossiens 3:5</blockquote> <p>Le livre d’Owen part d’un seul verset de la Bible, Romains 8:13 : « si par l’Esprit vous faites mourir les actions du corps, vous vivrez ». Remarque deux choses. Faire mourir le péché est lié à la vie. Et cela se fait « par l’Esprit ».</p> <p>Owen dit que c’est un travail pour chaque chrétien, y compris les meilleurs. Certains pensent qu’une fois devenus chrétiens, ils peuvent se détendre. Owen dit non. Paul a écrit « Faites donc mourir » à des gens qui étaient déjà ressuscités avec Christ. Puis vient le passage célèbre :</p> <blockquote>« Mortifiez ; faites-en votre œuvre de chaque jour ; soyez-y sans relâche tant que vous vivez ; ne cessez pas un seul jour cette œuvre ; faites mourir le péché, ou c’est lui qui vous fera mourir. »</blockquote> <p>Pourquoi chaque jour ? Parce que le péché est encore en nous, même après que nous avons mis notre confiance en Jésus, et il ne prend jamais de jour de congé. Owen dit : « Quand le péché nous laisse en paix, nous pouvons laisser le péché en paix. » Mais le péché ne nous laisse jamais vraiment en paix. En fait, dit-il, il n’est jamais moins tranquille que lorsqu’il paraît le plus tranquille, comme une eau profonde qui semble calme en surface.</p> <p>Il reprend aussi une image de Jésus. Jésus a dit que son Père émonde tout sarment qui porte du fruit, afin qu’il porte encore plus de fruit. Un jardinier ne taille pas une plante une seule fois pour s’arrêter ensuite. Il continue, saison après saison, parce qu’une croissance saine en dépend.</p> <p>Owen dit aussi ceci : « Celui qui est chargé de tuer un ennemi, s’il cesse de frapper avant que l’autre ait cessé de vivre, ne fait que la moitié de son ouvrage. » Si tu ne combats le péché que jusqu’à ce qu’il arrête de te déranger, tu n’as fait que la moitié du travail.</p> <p>Ça peut sembler épuisant. Mais Owen ne dit pas que tu dois être anxieux et sombre en permanence. Il dit que le péché est une chose sérieuse, parce qu’il peut détruire ta vie et ton amitié avec Dieu, et qu’il vaut la peine de le combattre avec constance, chaque jour, comme un athlète s’entraîne chaque jour.</p> <p>Et souviens-toi de la seconde partie du verset : « vous vivrez ». Faire mourir le péché, ce n’est pas perdre la vie. C’est la trouver.</p> <p><strong>Une chose à faire cette semaine :</strong> chaque soir cette semaine, prends deux minutes pour repasser ta journée avec Dieu. Où le péché s’est-il montré ? Remercie Dieu pour les victoires, confesse les échecs, et demande-lui son aide pour le lendemain.</p>",
+  "study_questions": [
+   {
+    "question": "Sur quel verset de la Bible tout le livre d’Owen est-il construit ?",
+    "answer": "Romains 8:13 : « si par l’Esprit vous faites mourir les actions du corps, vous vivrez »."
+   },
+   {
+    "question": "Pourquoi Owen dit-il qu’il faut combattre le péché chaque jour ?",
+    "answer": "Parce que le péché est toujours en nous et ne prend jamais un jour de congé ; il est le plus dangereux quand il paraît tranquille."
+   },
+   {
+    "question": "Que dit Owen de celui qui cesse trop tôt de frapper un ennemi ?",
+    "answer": "Il n’a fait que la moitié de son ouvrage."
+   }
+  ],
+  "body_text": "« Faites donc mourir les membres qui sont sur la terre. » — Colossiens 3:5 Le livre d’Owen part d’un seul verset de la Bible, Romains 8:13 : « si par l’Esprit vous faites mourir les actions du corps, vous vivrez ». Remarque deux choses. Faire mourir le péché est lié à la vie. Et cela se fait « par l’Esprit ». Owen dit que c’est un travail pour chaque chrétien, y compris les meilleurs. Certains pensent qu’une fois devenus chrétiens, ils peuvent se détendre. Owen dit non. Paul a écrit « Faites donc mourir » à des gens qui étaient déjà ressuscités avec Christ. Puis vient le passage célèbre : « Mortifiez ; faites-en votre œuvre de chaque jour ; soyez-y sans relâche tant que vous vivez ; ne cessez pas un seul jour cette œuvre ; faites mourir le péché, ou c’est lui qui vous fera mourir. » Pourquoi chaque jour ? Parce que le péché est encore en nous, même après que nous avons mis notre confiance en Jésus, et il ne prend jamais de jour de congé. Owen dit : « Quand le péché nous laisse en paix, nous pouvons laisser le péché en paix. » Mais le péché ne nous laisse jamais vraiment en paix. En fait, dit-il, il n’est jamais moins tranquille que lorsqu’il paraît le plus tranquille, comme une eau profonde qui semble calme en surface. Il reprend aussi une image de Jésus. Jésus a dit que son Père émonde tout sarment qui porte du fruit, afin qu’il porte encore plus de fruit. Un jardinier ne taille pas une plante une seule fois pour s’arrêter ensuite. Il continue, saison après saison, parce qu’une croissance saine en dépend. Owen dit aussi ceci : « Celui qui est chargé de tuer un ennemi, s’il cesse de frapper avant que l’autre ait cessé de vivre, ne fait que la moitié de son ouvrage. » Si tu ne combats le péché que jusqu’à ce qu’il arrête de te déranger, tu n’as fait que la moitié du travail. Ça peut sembler épuisant. Mais Owen ne dit pas que tu dois être anxieux et sombre en permanence. Il dit que le péché est une chose sérieuse, parce qu’il peut détruire ta vie et ton amitié avec Dieu, et qu’il vaut la peine de le combattre avec constance, chaque jour, comme un athlète s’entraîne chaque jour. Et souviens-toi de la seconde partie du verset : « vous vivrez ». Faire mourir le péché, ce n’est pas perdre la vie. C’est la trouver. Une chose à faire cette semaine : chaque soir cette semaine, prends deux minutes pour repasser ta journée avec Dieu. Où le péché s’est-il montré ? Remercie Dieu pour les victoires, confesse les échecs, et demande-lui son aide pour le lendemain.",
+  "word_count": 463
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "fr"
+  ],
+  "order": 3,
+  "title": "Le péché ne reste jamais petit",
+  "body_html": "<blockquote>« Mais chacun est tenté quand il est attiré et amorcé par sa propre convoitise. Puis la convoitise, lorsqu’elle a conçu, enfante le péché ; et le péché, étant consommé, produit la mort. » — Jacques 1:14–15</blockquote> <p>L’une des idées les plus importantes d’Owen, c’est que le péché ne veut jamais rester petit. Il le dit ainsi :</p> <blockquote>« Le péché vise toujours à l’extrême ; chaque fois qu’il se lève pour tenter ou séduire, s’il pouvait suivre son cours, il irait jusqu’au péché le plus extrême de son genre. »</blockquote> <p>Puis il donne des exemples. Toute pensée ou tout regard impur deviendrait adultère s’il le pouvait. Tout désir avide deviendrait vol et oppression. Le moindre petit doute sur Dieu deviendrait une incrédulité totale, si on le laissait grandir.</p> <p>Cela ne veut pas dire que chaque petit péché est aussi grave que le plus grand. Cela veut dire que les petits péchés sont des graines. Un peu de jalousie, si tu la nourris, devient amertume et haine. Un petit mensonge devient une habitude de mentir. Un regard devient un secret. Un éclair d’agacement, nourri chaque jour, devient un caractère colérique qui blesse les gens.</p> <p>Owen explique aussi comment le péché nous piège. Au début, il a l’air modeste. Dans « ses premiers mouvements et ses premières propositions », il ne demande pas grand-chose. Il veut juste un peu de place. Mais une fois qu’il a pris pied dans le cœur, il garde le terrain conquis et pousse pour en avoir davantage.</p> <p>Et voici la partie sournoise. Chaque fois que le péché va un peu plus loin, nous nous comparons seulement à là où nous en étions la semaine dernière, pas à notre point de départ. Alors nous pensons : « Je ne suis pas si mauvais. » Pendant ce temps, dit Owen, le cœur s’endurcit lentement.</p> <p>Jacques décrit le même processus dans le verset en tête de ce chapitre : le désir, puis le péché, puis la mort. C’est comme une boule de neige qui dévale une pente, petite en haut et énorme en bas.</p> <p>Voilà pourquoi Owen prend les petits péchés au sérieux. Pas pour te rendre parano, mais parce que le meilleur moment pour arrêter une boule de neige, c’est avant qu’elle commence à rouler.</p> <p><strong>Une chose à faire cette semaine :</strong> pense à un « petit » péché dans ta vie : une habitude d’exagérer, un peu d’envie, un certain genre de blagues, une appli ou un jeu dont tu sais qu’il ne te fait pas de bien. Demande à Dieu de te montrer où il pourrait mener s’il grandissait, et décide d’un pas pour arrêter de le nourrir.</p>",
+  "study_questions": [
+   {
+    "question": "Que veut dire Owen par « Le péché vise toujours à l’extrême » ?",
+    "answer": "Toute tentation, si on la laisse grandir, irait jusqu’au pire péché de son genre."
+   },
+   {
+    "question": "Comment le péché nous piège-t-il quand il apparaît pour la première fois ?",
+    "answer": "Il a l’air modeste et demande peu, mais une fois qu’il a pris pied, il garde son terrain et pousse plus loin."
+   },
+   {
+    "question": "Pourquoi, souvent, ne remarquons-nous pas que le péché grandit ?",
+    "answer": "Parce que nous nous comparons à la semaine dernière au lieu de notre point de départ, et nous pensons ne pas être si mauvais."
+   }
+  ],
+  "body_text": "« Mais chacun est tenté quand il est attiré et amorcé par sa propre convoitise. Puis la convoitise, lorsqu’elle a conçu, enfante le péché ; et le péché, étant consommé, produit la mort. » — Jacques 1:14–15 L’une des idées les plus importantes d’Owen, c’est que le péché ne veut jamais rester petit. Il le dit ainsi : « Le péché vise toujours à l’extrême ; chaque fois qu’il se lève pour tenter ou séduire, s’il pouvait suivre son cours, il irait jusqu’au péché le plus extrême de son genre. » Puis il donne des exemples. Toute pensée ou tout regard impur deviendrait adultère s’il le pouvait. Tout désir avide deviendrait vol et oppression. Le moindre petit doute sur Dieu deviendrait une incrédulité totale, si on le laissait grandir. Cela ne veut pas dire que chaque petit péché est aussi grave que le plus grand. Cela veut dire que les petits péchés sont des graines. Un peu de jalousie, si tu la nourris, devient amertume et haine. Un petit mensonge devient une habitude de mentir. Un regard devient un secret. Un éclair d’agacement, nourri chaque jour, devient un caractère colérique qui blesse les gens. Owen explique aussi comment le péché nous piège. Au début, il a l’air modeste. Dans « ses premiers mouvements et ses premières propositions », il ne demande pas grand-chose. Il veut juste un peu de place. Mais une fois qu’il a pris pied dans le cœur, il garde le terrain conquis et pousse pour en avoir davantage. Et voici la partie sournoise. Chaque fois que le péché va un peu plus loin, nous nous comparons seulement à là où nous en étions la semaine dernière, pas à notre point de départ. Alors nous pensons : « Je ne suis pas si mauvais. » Pendant ce temps, dit Owen, le cœur s’endurcit lentement. Jacques décrit le même processus dans le verset en tête de ce chapitre : le désir, puis le péché, puis la mort. C’est comme une boule de neige qui dévale une pente, petite en haut et énorme en bas. Voilà pourquoi Owen prend les petits péchés au sérieux. Pas pour te rendre parano, mais parce que le meilleur moment pour arrêter une boule de neige, c’est avant qu’elle commence à rouler. Une chose à faire cette semaine : pense à un « petit » péché dans ta vie : une habitude d’exagérer, un peu d’envie, un certain genre de blagues, une appli ou un jeu dont tu sais qu’il ne te fait pas de bien. Demande à Dieu de te montrer où il pourrait mener s’il grandissait, et décide d’un pas pour arrêter de le nourrir.",
+  "word_count": 442
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "fr"
+  ],
+  "order": 4,
+  "title": "Pas par tes propres forces",
+  "body_html": "<blockquote>« Ce n’est ni par la puissance ni par la force, mais c’est par mon esprit, dit l’Éternel des armées. » — Zacharie 4:6</blockquote> <p>Alors, comment faire mourir le péché ? La première réponse de la plupart des gens, c’est : faire plus d’efforts. Prendre une bonne résolution. Serrer les dents. Owen dit que cela ne marchera jamais à soi seul.</p> <blockquote>« Un homme pourrait plus aisément voir sans yeux, parler sans langue, que faire véritablement mourir un seul péché sans l’Esprit. »</blockquote> <p>Souviens-toi du verset : « si par l’Esprit vous faites mourir ». Owen dit que faire mourir le péché est l’œuvre du Saint-Esprit. Il se sert de nos efforts, mais la puissance est la sienne. Sans lui, toutes nos tentatives sont vides.</p> <p>Owen va encore plus loin. Il dit qu’essayer de vaincre le péché par ses propres forces, avec des méthodes de son invention, pour pouvoir être content de soi, c’est le cœur de toute fausse religion :</p> <blockquote>« La mortification par sa propre force, poursuivie par des voies de sa propre invention, en vue d’une propre justice, est l’âme et la substance de toute fausse religion dans le monde. »</blockquote> <p>À l’époque d’Owen, certains essayaient de vaincre le péché par des règles dures et des pratiques douloureuses : des vœux spéciaux, des jeûnes sans fin, des punitions infligées à leur corps. Owen pensait qu’ils passaient complètement à côté, parce qu’ils essayaient de changer l’extérieur sans que l’Esprit change le cœur.</p> <p>Il faut le dire très clairement : faire mourir le péché ne veut jamais dire te faire du mal. Pas te priver de manger, pas te scarifier, pas punir ton corps. Ce n’est pas ce qu’Owen voulait dire, et ce n’est pas ce que Dieu veut. Si tu te fais du mal, ou si tu as l’impression de mériter qu’on te fasse du mal, parles-en s’il te plaît dès aujourd’hui à un adulte de confiance ou à un médecin. Dieu veut te guérir, pas te faire du mal.</p> <p>Owen dit aussi que faire mourir le péché, c’est seulement pour les croyants. On aura beau tailler un buisson d’épines, il ne donnera jamais de figues. Il faut d’abord qu’une personne soit unie à Christ par la foi et reçoive son Esprit. Alors le combat contre le péché commence, avec une vraie puissance.</p> <p>Alors, si tu essaies de vaincre un péché tout seul et que tu échoues, ne te contente pas de faire plus d’efforts. Demande de l’aide : d’abord au Saint-Esprit, et souvent aussi à des personnes sages.</p> <p><strong>Une chose à faire cette semaine :</strong> cette semaine, avant d’affronter ta tentation habituelle, arrête-toi et fais une courte prière : « Saint-Esprit, je n’y arrive pas tout seul. Donne-moi ta force, maintenant. » Remarque ce qui se passe quand tu comptes sur lui.</p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-ce qui, selon Owen, est plus facile que de faire mourir un seul péché sans l’Esprit ?",
+    "answer": "Voir sans yeux ou parler sans langue."
+   },
+   {
+    "question": "Qu’est-ce qu’Owen appelle « l’âme et la substance de toute fausse religion » ?",
+    "answer": "Essayer de faire mourir le péché par ses propres forces et ses propres méthodes pour se rendre juste soi-même."
+   },
+   {
+    "question": "Faire mourir le péché, est-ce punir ou blesser son corps ?",
+    "answer": "Non. Owen rejetait les pratiques corporelles dures ; c’est l’œuvre de l’Esprit dans le cœur, et quiconque se fait du mal devrait en parler à un adulte de confiance ou à un médecin."
+   }
+  ],
+  "body_text": "« Ce n’est ni par la puissance ni par la force, mais c’est par mon esprit, dit l’Éternel des armées. » — Zacharie 4:6 Alors, comment faire mourir le péché ? La première réponse de la plupart des gens, c’est : faire plus d’efforts. Prendre une bonne résolution. Serrer les dents. Owen dit que cela ne marchera jamais à soi seul. « Un homme pourrait plus aisément voir sans yeux, parler sans langue, que faire véritablement mourir un seul péché sans l’Esprit. » Souviens-toi du verset : « si par l’Esprit vous faites mourir ». Owen dit que faire mourir le péché est l’œuvre du Saint-Esprit. Il se sert de nos efforts, mais la puissance est la sienne. Sans lui, toutes nos tentatives sont vides. Owen va encore plus loin. Il dit qu’essayer de vaincre le péché par ses propres forces, avec des méthodes de son invention, pour pouvoir être content de soi, c’est le cœur de toute fausse religion : « La mortification par sa propre force, poursuivie par des voies de sa propre invention, en vue d’une propre justice, est l’âme et la substance de toute fausse religion dans le monde. » À l’époque d’Owen, certains essayaient de vaincre le péché par des règles dures et des pratiques douloureuses : des vœux spéciaux, des jeûnes sans fin, des punitions infligées à leur corps. Owen pensait qu’ils passaient complètement à côté, parce qu’ils essayaient de changer l’extérieur sans que l’Esprit change le cœur. Il faut le dire très clairement : faire mourir le péché ne veut jamais dire te faire du mal. Pas te priver de manger, pas te scarifier, pas punir ton corps. Ce n’est pas ce qu’Owen voulait dire, et ce n’est pas ce que Dieu veut. Si tu te fais du mal, ou si tu as l’impression de mériter qu’on te fasse du mal, parles-en s’il te plaît dès aujourd’hui à un adulte de confiance ou à un médecin. Dieu veut te guérir, pas te faire du mal. Owen dit aussi que faire mourir le péché, c’est seulement pour les croyants. On aura beau tailler un buisson d’épines, il ne donnera jamais de figues. Il faut d’abord qu’une personne soit unie à Christ par la foi et reçoive son Esprit. Alors le combat contre le péché commence, avec une vraie puissance. Alors, si tu essaies de vaincre un péché tout seul et que tu échoues, ne te contente pas de faire plus d’efforts. Demande de l’aide : d’abord au Saint-Esprit, et souvent aussi à des personnes sages. Une chose à faire cette semaine : cette semaine, avant d’affronter ta tentation habituelle, arrête-toi et fais une courte prière : « Saint-Esprit, je n’y arrive pas tout seul. Donne-moi ta force, maintenant. » Remarque ce qui se passe quand tu comptes sur lui.",
+  "word_count": 465
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "fr"
+  ],
+  "order": 5,
+  "title": "Combattre pour la vie",
+  "body_html": "<blockquote>« Le voleur ne vient que pour dérober, égorger et détruire ; moi, je suis venu afin que les brebis aient la vie, et qu’elles soient dans l’abondance. » — Jean 10:10</blockquote> <p>Pourquoi se donner tout ce mal ? Owen donne une réponse simple :</p> <blockquote>« La vigueur, la puissance et la consolation de notre vie spirituelle dépendent de la mortification des actions de la chair. »</blockquote> <p>Pense à une plante étouffée par les mauvaises herbes. Les mauvaises herbes prennent l’eau et la lumière, et la plante ne peut pas grandir. Arrache-les, et la plante s’épanouit. Le péché est comme ces mauvaises herbes. Quand on le laisse tranquille, il vide de sa vie ton amitié avec Dieu. Tu as du mal à prier, du mal à lire la Bible, du mal à sentir que Dieu est proche, du mal à avoir de la joie.</p> <p>Owen dit que le péché non mortifié affaiblit l’âme et l’obscurcit. Il nous enlève la paix, et il nous rend moins utiles à Dieu et aux autres.</p> <p>Mais quand le péché est en train d’être mis à mort, c’est l’inverse qui se produit. La prière reprend vie. La joie grandit. Tu deviens plus capable d’aimer les gens. Tout ce que veut dire Owen, c’est que faire mourir le péché ne rend pas moins vivant. Cela rend plus vivant.</p> <p>C’est très différent de la façon dont le péché se présente. Le péché promet la vie, le plaisir et la liberté. Mais Jésus a dit que le voleur ne vient que pour dérober, égorger et détruire. Le péché prend toujours plus qu’il ne donne. Jésus est venu pour que nous ayons la vie en abondance.</p> <p>Owen met aussi en garde contre ce qui arrive quand on arrête de se battre. Il avait vu des chrétiens, autrefois humbles, sensibles et pleins d’ardeur pour Dieu, devenir avec le temps froids, coléreux et mondains — pas d’ordinaire à cause d’une grosse chute, mais parce qu’ils avaient cessé de veiller et laissé le péché grandir.</p> <p>Le combat en vaut donc la peine. Chaque fois que tu dis non au péché et oui à Dieu, tu ne perds rien. Tu fais de la place pour la vie.</p> <p><strong>Une chose à faire cette semaine :</strong> pense à un domaine où le péché te vide de ta vie : ta joie, ta prière, une amitié. Cette semaine, fais un pas concret contre ce péché, puis regarde si tu as plus de vie et de liberté dans ce domaine.</p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-ce qui dépend, selon Owen, du fait de faire mourir le péché ?",
+    "answer": "La vigueur, la puissance et la consolation de notre vie spirituelle."
+   },
+   {
+    "question": "Que fait le péché non mortifié à l’âme, selon Owen ?",
+    "answer": "Il l’affaiblit et l’obscurcit, il enlève la paix, et il nous rend moins utiles."
+   },
+   {
+    "question": "Qu’a dit Jésus du voleur et de lui-même en Jean 10:10 ?",
+    "answer": "Le voleur vient pour dérober, égorger et détruire ; Jésus est venu pour que nous ayons la vie en abondance."
+   }
+  ],
+  "body_text": "« Le voleur ne vient que pour dérober, égorger et détruire ; moi, je suis venu afin que les brebis aient la vie, et qu’elles soient dans l’abondance. » — Jean 10:10 Pourquoi se donner tout ce mal ? Owen donne une réponse simple : « La vigueur, la puissance et la consolation de notre vie spirituelle dépendent de la mortification des actions de la chair. » Pense à une plante étouffée par les mauvaises herbes. Les mauvaises herbes prennent l’eau et la lumière, et la plante ne peut pas grandir. Arrache-les, et la plante s’épanouit. Le péché est comme ces mauvaises herbes. Quand on le laisse tranquille, il vide de sa vie ton amitié avec Dieu. Tu as du mal à prier, du mal à lire la Bible, du mal à sentir que Dieu est proche, du mal à avoir de la joie. Owen dit que le péché non mortifié affaiblit l’âme et l’obscurcit. Il nous enlève la paix, et il nous rend moins utiles à Dieu et aux autres. Mais quand le péché est en train d’être mis à mort, c’est l’inverse qui se produit. La prière reprend vie. La joie grandit. Tu deviens plus capable d’aimer les gens. Tout ce que veut dire Owen, c’est que faire mourir le péché ne rend pas moins vivant. Cela rend plus vivant. C’est très différent de la façon dont le péché se présente. Le péché promet la vie, le plaisir et la liberté. Mais Jésus a dit que le voleur ne vient que pour dérober, égorger et détruire. Le péché prend toujours plus qu’il ne donne. Jésus est venu pour que nous ayons la vie en abondance. Owen met aussi en garde contre ce qui arrive quand on arrête de se battre. Il avait vu des chrétiens, autrefois humbles, sensibles et pleins d’ardeur pour Dieu, devenir avec le temps froids, coléreux et mondains — pas d’ordinaire à cause d’une grosse chute, mais parce qu’ils avaient cessé de veiller et laissé le péché grandir. Le combat en vaut donc la peine. Chaque fois que tu dis non au péché et oui à Dieu, tu ne perds rien. Tu fais de la place pour la vie. Une chose à faire cette semaine : pense à un domaine où le péché te vide de ta vie : ta joie, ta prière, une amitié. Cette semaine, fais un pas concret contre ce péché, puis regarde si tu as plus de vie et de liberté dans ce domaine.",
+  "word_count": 413
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "fr"
+  ],
+  "order": 6,
+  "title": "Ce que n’est pas la mortification",
+  "body_html": "<blockquote>« Ce n’est pas que j’aie déjà remporté le prix, ou que j’aie déjà atteint la perfection ; mais je cours, pour tâcher de le saisir, puisque moi aussi j’ai été saisi par Jésus-Christ. » — Philippiens 3:12</blockquote> <p>Avant d’expliquer ce que c’est que faire mourir le péché, Owen dissipe quelques erreurs sur ce que ce n’est pas. Elles sont vraiment utiles.</p> <p>Premièrement, ce n’est pas se débarrasser complètement du péché dans cette vie. C’est le but, et Owen dit qu’une victoire réelle et magnifique est possible. Mais même Paul disait qu’il n’avait pas encore « atteint la perfection ». Le péché ne disparaîtra pas totalement avant que Christ nous rende nouveaux. Alors ne désespère pas si tu ressens encore la tentation. C’est normal.</p> <p>Deuxièmement, ce n’est pas simplement cacher le péché. Si tu arrêtes de faire quelque chose en public mais que tu continues dans ton cœur, tu ne l’as pas fait mourir. Tu as juste appris à le dissimuler.</p> <p>Troisièmement, ce n’est pas simplement avoir un tempérament calme. Certaines personnes sont naturellement moins colériques que d’autres. Cela ne veut pas dire qu’elles ont vaincu la colère. Owen dit que ces personnes devraient s’examiner sur les péchés dont leur tempérament ne les protège pas, comme l’envie, l’orgueil ou l’incrédulité.</p> <p>Quatrièmement, ce n’est pas échanger un péché contre un autre. Owen raconte l’histoire de Simon le magicien, dans le livre des Actes, qui avait abandonné ses sortilèges mais restait plein de cupidité et d’ambition. Owen dit de quelqu’un comme lui :</p> <blockquote>« Il a changé de maître, mais il est toujours esclave. »</blockquote> <p>Par exemple, quelqu’un peut arrêter de voler dans les magasins mais se mettre à tricher en classe. Le péché extérieur a changé. Le cœur, non.</p> <p>Cinquièmement, ce n’est pas un sursaut d’efforts après une crise. Quand le péché provoque une catastrophe — quand tu te fais prendre, que tu blesses gravement quelqu’un ou que tu te sens terriblement mal —, tu peux te jeter contre lui de toutes tes forces, et pendant un temps il semble mort. Owen compare cela à des soldats qui tuent un chef ennemi lors d’un raid de nuit : l’ennemi recule un moment, puis il se regroupe. Le péché se tait souvent après une crise, puis il revient.</p> <p>Owen ne dit pas que ces moments ne valent rien. Une crise peut te réveiller. Mais le vrai changement est quelque chose de plus stable et de plus profond.</p> <p><strong>Une chose à faire cette semaine :</strong> relis les cinq « ce n’est pas » d’Owen. L’un d’eux est-il vrai pour toi — par exemple cacher un péché, ou échanger un péché contre un autre ? Parles-en honnêtement à Dieu cette semaine.</p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi ne faut-il pas désespérer si la tentation est toujours là ?",
+    "answer": "Parce que le péché n’est pas complètement détruit dans cette vie ; même Paul disait qu’il n’avait pas encore atteint la perfection."
+   },
+   {
+    "question": "Que veut dire Owen par « Il a changé de maître, mais il est toujours esclave » ?",
+    "answer": "Abandonner un péché pendant qu’un autre prend sa place, ce n’est pas une vraie liberté ; le cœur sert toujours le péché."
+   },
+   {
+    "question": "Pourquoi un sursaut d’efforts après une crise ne suffit-il pas ?",
+    "answer": "Parce que le péché se tait souvent après une crise, puis il revient ; le vrai changement est plus stable et plus profond."
+   }
+  ],
+  "body_text": "« Ce n’est pas que j’aie déjà remporté le prix, ou que j’aie déjà atteint la perfection ; mais je cours, pour tâcher de le saisir, puisque moi aussi j’ai été saisi par Jésus-Christ. » — Philippiens 3:12 Avant d’expliquer ce que c’est que faire mourir le péché, Owen dissipe quelques erreurs sur ce que ce n’est pas. Elles sont vraiment utiles. Premièrement, ce n’est pas se débarrasser complètement du péché dans cette vie. C’est le but, et Owen dit qu’une victoire réelle et magnifique est possible. Mais même Paul disait qu’il n’avait pas encore « atteint la perfection ». Le péché ne disparaîtra pas totalement avant que Christ nous rende nouveaux. Alors ne désespère pas si tu ressens encore la tentation. C’est normal. Deuxièmement, ce n’est pas simplement cacher le péché. Si tu arrêtes de faire quelque chose en public mais que tu continues dans ton cœur, tu ne l’as pas fait mourir. Tu as juste appris à le dissimuler. Troisièmement, ce n’est pas simplement avoir un tempérament calme. Certaines personnes sont naturellement moins colériques que d’autres. Cela ne veut pas dire qu’elles ont vaincu la colère. Owen dit que ces personnes devraient s’examiner sur les péchés dont leur tempérament ne les protège pas, comme l’envie, l’orgueil ou l’incrédulité. Quatrièmement, ce n’est pas échanger un péché contre un autre. Owen raconte l’histoire de Simon le magicien, dans le livre des Actes, qui avait abandonné ses sortilèges mais restait plein de cupidité et d’ambition. Owen dit de quelqu’un comme lui : « Il a changé de maître, mais il est toujours esclave. » Par exemple, quelqu’un peut arrêter de voler dans les magasins mais se mettre à tricher en classe. Le péché extérieur a changé. Le cœur, non. Cinquièmement, ce n’est pas un sursaut d’efforts après une crise. Quand le péché provoque une catastrophe — quand tu te fais prendre, que tu blesses gravement quelqu’un ou que tu te sens terriblement mal —, tu peux te jeter contre lui de toutes tes forces, et pendant un temps il semble mort. Owen compare cela à des soldats qui tuent un chef ennemi lors d’un raid de nuit : l’ennemi recule un moment, puis il se regroupe. Le péché se tait souvent après une crise, puis il revient. Owen ne dit pas que ces moments ne valent rien. Une crise peut te réveiller. Mais le vrai changement est quelque chose de plus stable et de plus profond. Une chose à faire cette semaine : relis les cinq « ce n’est pas » d’Owen. L’un d’eux est-il vrai pour toi — par exemple cacher un péché, ou échanger un péché contre un autre ? Parles-en honnêtement à Dieu cette semaine.",
+  "word_count": 447
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "fr"
+  ],
+  "order": 7,
+  "title": "Ce qu’est la mortification",
+  "body_html": "<blockquote>« Je dis donc : Marchez selon l’Esprit, et vous n’accomplirez pas les désirs de la chair. » — Galates 5:16</blockquote> <p>Alors, à quoi ressemble concrètement le fait de faire mourir un péché ? Owen dit qu’il y a trois parties.</p> <p>La première, c’est l’affaiblir. Toute habitude de péché est comme une forte attraction dans une certaine direction. Owen décrit les habitudes de péché comme poussant le cœur « avec violence ». Faire mourir le péché, c’est voir cette attraction s’affaiblir avec le temps, de sorte que le péché ne se lève plus aussi souvent, aussi fort ni aussi brusquement qu’avant.</p> <p>Owen remarque aussi que certains péchés sont plus forts chez certaines personnes que chez d’autres. Un péché peut devenir particulièrement puissant quand il s’accorde avec notre tempérament naturel, notre façon de vivre, ou les situations dans lesquelles nous nous trouvons souvent. C’est pour ça que tes combats les plus durs ne sont peut-être pas les mêmes que ceux de ton ami. C’est normal.</p> <p>La deuxième partie, c’est le combat constant. Owen dit que cela implique de connaître ton ennemi : comprendre comment un péché précis agit en toi, ce qui le déclenche, quelles excuses il utilise. Cela implique aussi de vraiment vouloir qu’il disparaisse, et de le charger de la culpabilité qu’il mérite au lieu de lui trouver des excuses.</p> <p>La troisième partie, c’est la victoire. Owen dit qu’avec l’aide de l’Esprit nous pouvons remporter de fréquentes victoires. Chaque fois que le péché se lève et qu’il est arrêté, il est un peu plus affaibli. Avec le temps, dit-il, tu peux voir un vrai changement : un péché qui te dominait autrefois perd son emprise.</p> <p>Remarque que c’est un processus, pas un moment unique. Ça ressemble plus à se remettre en forme qu’à appuyer sur un interrupteur. Certains jours tu gagnes, d’autres tu perds, mais au fil des mois et des années, si tu continues à marcher selon l’Esprit, tu changes.</p> <p>Et souviens-toi de qui fait le travail. Paul dit : Marchez selon l’Esprit, et vous n’accomplirez pas les désirs de la chair. Plus tu es rempli de l’Esprit — en priant, en lisant l’Écriture, en adorant Dieu, en passant du temps avec d’autres chrétiens —, moins il reste de place pour le péché.</p> <p><strong>Une chose à faire cette semaine :</strong> choisis le péché que tu veux combattre. Cette semaine, note trois choses : ce qui le déclenche d’habitude, l’excuse qu’il te donne d’habitude, et une façon de « marcher selon l’Esprit » à ce moment-là, à la place.</p>",
+  "study_questions": [
+   {
+    "question": "Quelles sont les trois parties de la mortification selon Owen ?",
+    "answer": "Affaiblir l’habitude de péché, la combattre constamment, et remporter la victoire sur elle."
+   },
+   {
+    "question": "Pourquoi tes combats les plus durs peuvent-ils être différents de ceux d’un ami ?",
+    "answer": "Parce que les péchés deviennent plus forts quand ils s’accordent avec le tempérament, la façon de vivre ou les situations habituelles d’une personne."
+   },
+   {
+    "question": "Faire mourir le péché, est-ce un moment unique ou un processus ?",
+    "answer": "Un processus, qui ressemble plus à se remettre en forme qu’à appuyer sur un interrupteur."
+   }
+  ],
+  "body_text": "« Je dis donc : Marchez selon l’Esprit, et vous n’accomplirez pas les désirs de la chair. » — Galates 5:16 Alors, à quoi ressemble concrètement le fait de faire mourir un péché ? Owen dit qu’il y a trois parties. La première, c’est l’affaiblir. Toute habitude de péché est comme une forte attraction dans une certaine direction. Owen décrit les habitudes de péché comme poussant le cœur « avec violence ». Faire mourir le péché, c’est voir cette attraction s’affaiblir avec le temps, de sorte que le péché ne se lève plus aussi souvent, aussi fort ni aussi brusquement qu’avant. Owen remarque aussi que certains péchés sont plus forts chez certaines personnes que chez d’autres. Un péché peut devenir particulièrement puissant quand il s’accorde avec notre tempérament naturel, notre façon de vivre, ou les situations dans lesquelles nous nous trouvons souvent. C’est pour ça que tes combats les plus durs ne sont peut-être pas les mêmes que ceux de ton ami. C’est normal. La deuxième partie, c’est le combat constant. Owen dit que cela implique de connaître ton ennemi : comprendre comment un péché précis agit en toi, ce qui le déclenche, quelles excuses il utilise. Cela implique aussi de vraiment vouloir qu’il disparaisse, et de le charger de la culpabilité qu’il mérite au lieu de lui trouver des excuses. La troisième partie, c’est la victoire. Owen dit qu’avec l’aide de l’Esprit nous pouvons remporter de fréquentes victoires. Chaque fois que le péché se lève et qu’il est arrêté, il est un peu plus affaibli. Avec le temps, dit-il, tu peux voir un vrai changement : un péché qui te dominait autrefois perd son emprise. Remarque que c’est un processus, pas un moment unique. Ça ressemble plus à se remettre en forme qu’à appuyer sur un interrupteur. Certains jours tu gagnes, d’autres tu perds, mais au fil des mois et des années, si tu continues à marcher selon l’Esprit, tu changes. Et souviens-toi de qui fait le travail. Paul dit : Marchez selon l’Esprit, et vous n’accomplirez pas les désirs de la chair. Plus tu es rempli de l’Esprit — en priant, en lisant l’Écriture, en adorant Dieu, en passant du temps avec d’autres chrétiens —, moins il reste de place pour le péché. Une chose à faire cette semaine : choisis le péché que tu veux combattre. Cette semaine, note trois choses : ce qui le déclenche d’habitude, l’excuse qu’il te donne d’habitude, et une façon de « marcher selon l’Esprit » à ce moment-là, à la place.",
+  "word_count": 420
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "fr"
+  ],
+  "order": 8,
+  "title": "Tout, et pas seulement un",
+  "body_html": "<blockquote>« Sonde-moi, ô Dieu, et connais mon cœur ! Éprouve-moi, et connais mes pensées ! Regarde si je suis sur une mauvaise voie, Et conduis-moi sur la voie de l’éternité ! » — Psaume 139:23–24</blockquote> <p>Owen donne maintenant une règle importante, et elle risque de te surprendre. Si tu ne combats que le seul péché qui te dérange, en ignorant le reste de ta vie, tu ne le vaincras pas.</p> <p>Il décrit quelqu’un qui est vraiment tourmenté par un péché. Il prie contre lui, il gémit à cause de lui, il supplie d’en être libéré. Mais dans d’autres domaines — la prière, la lecture de la Bible, sa façon de traiter les autres —, il est négligent. Owen dit : cette personne ne vaincra jamais le péché qui l’inquiète.</p> <p>Pourquoi ? À cause de la raison pour laquelle elle le combat. Owen dit que la vraie raison, c’est souvent l’amour de soi. Ce péché la met mal à l’aise, alors elle veut qu’il disparaisse. Mais les autres péchés, ceux qui ne la mettent pas mal à l’aise, elle est contente de les garder. Owen s’adresse directement à une telle personne :</p> <blockquote>« Ce ne sont pas moins des péchés et des maux que ceux sous lesquels tu gémis. Jésus-Christ a versé son sang pour eux aussi. Pourquoi ne te dresses-tu pas contre eux aussi ? »</blockquote> <p>Puis il dit ce qui devrait vraiment se trouver au fond de notre combat contre le péché :</p> <blockquote>« La haine du péché en tant que péché, et non seulement en tant qu’il blesse ou inquiète, le sentiment de l’amour de Christ à la croix, se trouvent au fond de toute vraie mortification spirituelle. »</blockquote> <p>Autrement dit, nous devrions combattre le péché non seulement parce qu’il nous fait nous sentir coupables ou risque de nous attirer des ennuis, mais parce qu’il est mal, parce qu’il attriste Dieu, et parce que Jésus est mort pour lui.</p> <p>Owen utilise une image médicale. Si quelqu’un a une plaie causée par un corps en mauvaise santé, mettre de la crème sur la plaie ne la guérira pas. Il doit prendre soin de toute sa santé. De la même manière, si tu veux vaincre un péché, prends soin de toute ta vie avec Dieu.</p> <p>Voilà pourquoi la prière du Psaume 139 est si bonne. Au lieu de demander seulement à Dieu de régler un problème, tu l’invites à sonder tout ton cœur.</p> <p><strong>Une chose à faire cette semaine :</strong> prie le Psaume 139:23–24 chaque jour cette semaine. Demande à Dieu de te montrer tout péché que tu as ignoré parce qu’il ne te dérange pas. Note ce qui te vient à l’esprit et apporte-le-lui aussi.</p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi, selon Owen, combattre seulement le péché qui nous tourmente ne marche-t-il pas ?",
+    "answer": "Parce que si nous sommes négligents dans le reste de notre vie avec Dieu, notre combat est poussé par l’amour de soi, et le péché ne sera pas vraiment mortifié."
+   },
+   {
+    "question": "Qu’est-ce qui devrait se trouver au fond de notre combat contre le péché ?",
+    "answer": "La haine du péché en tant que péché, pas seulement parce qu’il nous trouble, et le sentiment de l’amour de Christ à la croix."
+   },
+   {
+    "question": "Quelle image Owen utilise-t-il à propos d’une plaie et d’un corps en mauvaise santé ?",
+    "answer": "Soigner seulement la plaie ne la guérira pas si tout le corps est malade ; nous devons prendre soin de toute notre vie avec Dieu."
+   }
+  ],
+  "body_text": "« Sonde-moi, ô Dieu, et connais mon cœur ! Éprouve-moi, et connais mes pensées ! Regarde si je suis sur une mauvaise voie, Et conduis-moi sur la voie de l’éternité ! » — Psaume 139:23–24 Owen donne maintenant une règle importante, et elle risque de te surprendre. Si tu ne combats que le seul péché qui te dérange, en ignorant le reste de ta vie, tu ne le vaincras pas. Il décrit quelqu’un qui est vraiment tourmenté par un péché. Il prie contre lui, il gémit à cause de lui, il supplie d’en être libéré. Mais dans d’autres domaines — la prière, la lecture de la Bible, sa façon de traiter les autres —, il est négligent. Owen dit : cette personne ne vaincra jamais le péché qui l’inquiète. Pourquoi ? À cause de la raison pour laquelle elle le combat. Owen dit que la vraie raison, c’est souvent l’amour de soi. Ce péché la met mal à l’aise, alors elle veut qu’il disparaisse. Mais les autres péchés, ceux qui ne la mettent pas mal à l’aise, elle est contente de les garder. Owen s’adresse directement à une telle personne : « Ce ne sont pas moins des péchés et des maux que ceux sous lesquels tu gémis. Jésus-Christ a versé son sang pour eux aussi. Pourquoi ne te dresses-tu pas contre eux aussi ? » Puis il dit ce qui devrait vraiment se trouver au fond de notre combat contre le péché : « La haine du péché en tant que péché, et non seulement en tant qu’il blesse ou inquiète, le sentiment de l’amour de Christ à la croix, se trouvent au fond de toute vraie mortification spirituelle. » Autrement dit, nous devrions combattre le péché non seulement parce qu’il nous fait nous sentir coupables ou risque de nous attirer des ennuis, mais parce qu’il est mal, parce qu’il attriste Dieu, et parce que Jésus est mort pour lui. Owen utilise une image médicale. Si quelqu’un a une plaie causée par un corps en mauvaise santé, mettre de la crème sur la plaie ne la guérira pas. Il doit prendre soin de toute sa santé. De la même manière, si tu veux vaincre un péché, prends soin de toute ta vie avec Dieu. Voilà pourquoi la prière du Psaume 139 est si bonne. Au lieu de demander seulement à Dieu de régler un problème, tu l’invites à sonder tout ton cœur. Une chose à faire cette semaine : prie le Psaume 139:23–24 chaque jour cette semaine. Demande à Dieu de te montrer tout péché que tu as ignoré parce qu’il ne te dérange pas. Note ce qui te vient à l’esprit et apporte-le-lui aussi.",
+  "word_count": 446
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "fr"
+  ],
+  "order": 9,
+  "title": "Voyants rouges",
+  "body_html": "<blockquote>« Mais exhortez-vous les uns les autres chaque jour, aussi longtemps qu’on peut dire : Aujourd’hui ! Afin qu’aucun de vous ne s’endurcisse par la séduction du péché. » — Hébreux 3:13</blockquote> <p>Owen dit que certains péchés présentent des « symptômes dangereux », des voyants rouges qui montrent qu’une habitude est devenue particulièrement grave. Il vaut la peine de les connaître, parce que si tu les vois, tu dois agir vite et sérieusement, et sans doute te faire aider.</p> <p>Le premier voyant rouge, c’est que ça dure depuis longtemps. Si tu as laissé un péché rester fort dans ton cœur pendant une longue période sans vraiment le combattre, Owen dit que la situation est dangereuse.</p> <p>Le deuxième, c’est que tu as fait la paix avec lui. Tu as trouvé des moyens de ne plus te sentir mal à cause de lui. Peut-être que tu te dis : « Tout le monde le fait », ou « Dieu me pardonnera de toute façon », ou « Ce n’est pas si grave ». Owen dit que se servir de la grâce comme d’une excuse pour continuer à pécher est un très mauvais signe.</p> <p>Le troisième, c’est qu’il gagne sans arrêt. Si la tentation vient et que tu cèdes la plupart du temps, ce péché a beaucoup de pouvoir.</p> <p>Le quatrième, c’est que tu ne le combats qu’à cause des conséquences. Si la seule raison pour laquelle tu résistes, c’est la peur d’être pris ou puni, et non l’amour pour Dieu, Owen dit que ton cœur est dans un état inquiétant.</p> <p>Le cinquième, c’est que Dieu t’a déjà parlé à ce sujet — par des avertissements, des moments difficiles ou ta conscience — et que tu as continué malgré tout.</p> <p>Si tu vois ces voyants rouges, ne panique pas, mais ne les ignore pas non plus. Owen dit qu’il faut alors « user de remèdes extraordinaires ». L’un de ces remèdes, c’est de ne pas combattre seul. Le verset en tête de ce chapitre dit : « exhortez-vous les uns les autres chaque jour », pour ne pas être endurcis par le péché. Dieu nous donne d’autres chrétiens exactement pour ça.</p> <p>Si une habitude en est arrivée au point où elle semble incontrôlable — par exemple la pornographie, l’alcool, la vape, la drogue ou n’importe quoi d’autre —, parles-en s’il te plaît à un adulte de confiance, à un responsable de jeunes ou à un médecin. Ce n’est pas de la faiblesse. C’est de la sagesse, et c’est l’un des moyens par lesquels Dieu aide les gens à devenir libres.</p> <p><strong>Une chose à faire cette semaine :</strong> vérifie honnêtement le péché que tu combats à la lumière des cinq voyants rouges d’Owen. Si un ou plusieurs clignotent, choisis un chrétien mûr ou un adulte de confiance et parle-lui-en cette semaine.</p>",
+  "study_questions": [
+   {
+    "question": "Cite deux des signes d’alerte d’Owen qui montrent qu’un péché est devenu dangereux.",
+    "answer": "Deux au choix parmi : il dure depuis longtemps ; tu as fait la paix avec lui ; il gagne sans arrêt ; tu ne le combats que par peur des conséquences ; il a continué alors que Dieu t’en a parlé."
+   },
+   {
+    "question": "Pourquoi faire la paix avec un péché est-il si dangereux ?",
+    "answer": "Parce que cela nous empêche de sentir le besoin de le combattre, et peut faire de la grâce une excuse pour continuer à pécher."
+   },
+   {
+    "question": "D’après Hébreux 3:13, comment Dieu nous aide-t-il à ne pas être endurcis par le péché ?",
+    "answer": "Par d’autres croyants qui nous exhortent et nous encouragent chaque jour."
+   }
+  ],
+  "body_text": "« Mais exhortez-vous les uns les autres chaque jour, aussi longtemps qu’on peut dire : Aujourd’hui ! Afin qu’aucun de vous ne s’endurcisse par la séduction du péché. » — Hébreux 3:13 Owen dit que certains péchés présentent des « symptômes dangereux », des voyants rouges qui montrent qu’une habitude est devenue particulièrement grave. Il vaut la peine de les connaître, parce que si tu les vois, tu dois agir vite et sérieusement, et sans doute te faire aider. Le premier voyant rouge, c’est que ça dure depuis longtemps. Si tu as laissé un péché rester fort dans ton cœur pendant une longue période sans vraiment le combattre, Owen dit que la situation est dangereuse. Le deuxième, c’est que tu as fait la paix avec lui. Tu as trouvé des moyens de ne plus te sentir mal à cause de lui. Peut-être que tu te dis : « Tout le monde le fait », ou « Dieu me pardonnera de toute façon », ou « Ce n’est pas si grave ». Owen dit que se servir de la grâce comme d’une excuse pour continuer à pécher est un très mauvais signe. Le troisième, c’est qu’il gagne sans arrêt. Si la tentation vient et que tu cèdes la plupart du temps, ce péché a beaucoup de pouvoir. Le quatrième, c’est que tu ne le combats qu’à cause des conséquences. Si la seule raison pour laquelle tu résistes, c’est la peur d’être pris ou puni, et non l’amour pour Dieu, Owen dit que ton cœur est dans un état inquiétant. Le cinquième, c’est que Dieu t’a déjà parlé à ce sujet — par des avertissements, des moments difficiles ou ta conscience — et que tu as continué malgré tout. Si tu vois ces voyants rouges, ne panique pas, mais ne les ignore pas non plus. Owen dit qu’il faut alors « user de remèdes extraordinaires ». L’un de ces remèdes, c’est de ne pas combattre seul. Le verset en tête de ce chapitre dit : « exhortez-vous les uns les autres chaque jour », pour ne pas être endurcis par le péché. Dieu nous donne d’autres chrétiens exactement pour ça. Si une habitude en est arrivée au point où elle semble incontrôlable — par exemple la pornographie, l’alcool, la vape, la drogue ou n’importe quoi d’autre —, parles-en s’il te plaît à un adulte de confiance, à un responsable de jeunes ou à un médecin. Ce n’est pas de la faiblesse. C’est de la sagesse, et c’est l’un des moyens par lesquels Dieu aide les gens à devenir libres. Une chose à faire cette semaine : vérifie honnêtement le péché que tu combats à la lumière des cinq voyants rouges d’Owen. Si un ou plusieurs clignotent, choisis un chrétien mûr ou un adulte de confiance et parle-lui-en cette semaine.",
+  "word_count": 467
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "fr"
+  ],
+  "order": 10,
+  "title": "Arrête-le dès le début",
+  "body_html": "<blockquote>« Veillez et priez, afin que vous ne tombiez pas en tentation ; l’esprit est bien disposé, mais la chair est faible. » — Marc 14:38</blockquote> <p>Owen devient maintenant très concret. Deux de ses meilleurs conseils portent sur le fait de veiller et d’arrêter le péché dès le début.</p> <p>D’abord, dit-il, réfléchis aux occasions et aux avantages que ton péché utilise d’habitude, et veille contre tous. Quand ta tentation arrive-t-elle d’habitude ? Quand tu es seul ? Tard le soir ? Avec certaines personnes ? Quand tu t’ennuies, que tu es fatigué, stressé ou que tu te sens seul ? Sur certaines applis ? Jésus a dit à ses disciples de veiller et de prier, afin de ne pas tomber en tentation.</p> <p>C’est du bon sens, mais nous l’ignorons souvent. Si tu sais que tu cèdes toujours à une certaine tentation quand ton téléphone est dans ta chambre la nuit, la chose sage n’est pas de l’y laisser en espérant que tout ira bien. Change la situation.</p> <p>Ensuite, Owen dit :</p> <blockquote>« Lève-toi avec force contre les premiers mouvements de ta maladie, ses premières conceptions ; ne lui laisse pas gagner le moindre terrain. »</blockquote> <p>La « maladie », c’est le mot d’Owen pour une habitude de péché, comme un mal qui ronge l’âme. Il dit : combats la tentation dès le tout premier instant. Ne la laisse gagner aucun terrain.</p> <p>Il met en garde contre un piège précis que nous nous tendons à nous-mêmes : « Ne dis pas : “Il ira jusque-là, et pas plus loin.” S’il obtient la permission d’un pas, il en fera un autre. » Nous pensons pouvoir laisser entrer une tentation un petit peu et l’arrêter avant qu’elle aille trop loin. Mais Owen dit que ça ne marche presque jamais.</p> <p>Il compare le péché à l’eau dans un canal. Une fois qu’elle a fait brèche, elle suit son cours. Il est bien plus facile de l’empêcher de commencer que de l’arrêter une fois lancée.</p> <p>Alors, quand une pensée tentante arrive pour la première fois, ne joue pas avec. N’ouvre pas la porte « juste un peu ». Détourne-toi tout de suite, prie, et fais autre chose. C’est dans les premières secondes que se gagnent la plupart des batailles.</p> <p><strong>Une chose à faire cette semaine :</strong> repère tes deux situations de tentation les plus dangereuses. Fais un changement concret pour chacune — par exemple déplacer ton téléphone, changer d’itinéraire ou éviter un certain groupe de discussion — et entraîne-toi à dire non dans les premières secondes.</p>",
+  "study_questions": [
+   {
+    "question": "Contre quoi Owen nous dit-il de veiller ?",
+    "answer": "Contre les occasions et les avantages que notre péché particulier utilise d’habitude."
+   },
+   {
+    "question": "Que veut dire « Lève-toi avec force contre les premiers mouvements » ?",
+    "answer": "Combattre la tentation dès son tout premier instant, avant qu’elle gagne le moindre terrain."
+   },
+   {
+    "question": "Pourquoi l’idée « Il ira jusque-là, et pas plus loin » est-elle dangereuse ?",
+    "answer": "Parce qu’une fois qu’on a permis un pas au péché, il en fera un autre ; comme l’eau dans un canal, une fois qu’il a fait brèche, il suit son cours."
+   }
+  ],
+  "body_text": "« Veillez et priez, afin que vous ne tombiez pas en tentation ; l’esprit est bien disposé, mais la chair est faible. » — Marc 14:38 Owen devient maintenant très concret. Deux de ses meilleurs conseils portent sur le fait de veiller et d’arrêter le péché dès le début. D’abord, dit-il, réfléchis aux occasions et aux avantages que ton péché utilise d’habitude, et veille contre tous. Quand ta tentation arrive-t-elle d’habitude ? Quand tu es seul ? Tard le soir ? Avec certaines personnes ? Quand tu t’ennuies, que tu es fatigué, stressé ou que tu te sens seul ? Sur certaines applis ? Jésus a dit à ses disciples de veiller et de prier, afin de ne pas tomber en tentation. C’est du bon sens, mais nous l’ignorons souvent. Si tu sais que tu cèdes toujours à une certaine tentation quand ton téléphone est dans ta chambre la nuit, la chose sage n’est pas de l’y laisser en espérant que tout ira bien. Change la situation. Ensuite, Owen dit : « Lève-toi avec force contre les premiers mouvements de ta maladie, ses premières conceptions ; ne lui laisse pas gagner le moindre terrain. » La « maladie », c’est le mot d’Owen pour une habitude de péché, comme un mal qui ronge l’âme. Il dit : combats la tentation dès le tout premier instant. Ne la laisse gagner aucun terrain. Il met en garde contre un piège précis que nous nous tendons à nous-mêmes : « Ne dis pas : “Il ira jusque-là, et pas plus loin.” S’il obtient la permission d’un pas, il en fera un autre. » Nous pensons pouvoir laisser entrer une tentation un petit peu et l’arrêter avant qu’elle aille trop loin. Mais Owen dit que ça ne marche presque jamais. Il compare le péché à l’eau dans un canal. Une fois qu’elle a fait brèche, elle suit son cours. Il est bien plus facile de l’empêcher de commencer que de l’arrêter une fois lancée. Alors, quand une pensée tentante arrive pour la première fois, ne joue pas avec. N’ouvre pas la porte « juste un peu ». Détourne-toi tout de suite, prie, et fais autre chose. C’est dans les premières secondes que se gagnent la plupart des batailles. Une chose à faire cette semaine : repère tes deux situations de tentation les plus dangereuses. Fais un changement concret pour chacune — par exemple déplacer ton téléphone, changer d’itinéraire ou éviter un certain groupe de discussion — et entraîne-toi à dire non dans les premières secondes.",
+  "word_count": 421
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "fr"
+  ],
+  "order": 11,
+  "title": "Pas de fausse paix",
+  "body_html": "<blockquote>« J’écouterai ce que dit Dieu, l’Éternel ; Car il parle de paix à son peuple et à ses fidèles, Pourvu qu’ils ne retombent pas dans la folie. » — Psaume 85:9</blockquote> <p>Owen donne, au sujet de notre conscience, quelques conseils qui méritent qu’on y réfléchisse sérieusement.</p> <p>Il dit que nous devrions prendre notre péché au sérieux en nous parlant honnêtement à nous-mêmes à son sujet. Il imagine quelqu’un qui se pose des questions comme celles-ci :</p> <blockquote>« Que puis-je dire au bien-aimé Seigneur Jésus ? Comment lèverai-je la tête avec quelque assurance devant lui ? »</blockquote> <p>Et ensuite : « Attristerai-je chaque jour cet Esprit par lequel j’ai été scellé pour le jour de la rédemption ? » Le but n’est pas de se vautrer dans la honte. C’est de laisser l’amour de Jésus montrer le péché aussi laid qu’il l’est vraiment. Quand tu te rappelles combien Jésus t’aime, choisir le péché plutôt que lui commence à paraître absurde.</p> <p>Puis Owen met en garde contre un autre danger : se parler de paix à soi-même trop vite. Quand tu te sens coupable, il peut être tentant d’attraper un réconfort rapide — « Dieu pardonne tout, donc ce n’est pas grave » — et de passer à autre chose sans vraiment te détourner du péché.</p> <p>Owen dit : garde-toi de te parler de paix à toi-même avant que Dieu ne te parle de paix ; mais écoute ce qu’il dit à ton âme. La vraie paix vient de Dieu, quand nous nous détournons honnêtement du péché et que nous faisons confiance à Christ. La fausse paix est un raccourci que nous nous offrons pour ne plus nous sentir mal à l’aise.</p> <p>Il le dit ainsi : « L’usage des moyens pour obtenir la paix nous appartient ; le don de la paix est la prérogative de Dieu. » Notre part, c’est de confesser, de nous détourner et de faire confiance. Donner la paix, c’est la part de Dieu.</p> <p>Tout cela n’est pas fait pour te rendre anxieux ou te garder coupable pour toujours. Dieu aime parler de paix à son peuple, comme le dit le psaume. Jésus est mort pour que tu puisses être pardonné. Quand tu reviens vraiment à lui, il pardonne vraiment, et tu peux te reposer là-dessus.</p> <p>Mais remarque la fin du psaume : « Pourvu qu’ils ne retombent pas dans la folie. » La paix de Dieu vient avec un appel à changer. La vraie paix et le vrai changement vont ensemble.</p> <p>Si tu te rends compte que tu n’arrives jamais à te sentir pardonné, peu importe combien de fois tu confesses ton péché, parles-en s’il te plaît à un pasteur ou à un adulte de confiance. Parfois la culpabilité reste coincée, et nous avons besoin d’aide pour entendre le pardon de Dieu.</p> <p><strong>Une chose à faire cette semaine :</strong> la prochaine fois que tu pèches cette semaine, ne te précipite pas vers un « ce n’est pas grave », et ne t’enfonce pas non plus dans la honte. Arrête-toi, confesse-le honnêtement à Jésus, détourne-toi de ce péché, puis lis 1 Jean 1:9 et reçois son pardon.</p>",
+  "study_questions": [
+   {
+    "question": "Quelles questions Owen nous propose-t-il de nous poser au sujet du péché ?",
+    "answer": "Des questions comme « Que puis-je dire au bien-aimé Seigneur Jésus ? » et « Attristerai-je chaque jour cet Esprit par lequel j’ai été scellé ? »"
+   },
+   {
+    "question": "Que veut dire se parler de paix à soi-même trop vite ?",
+    "answer": "Attraper un réconfort rapide en se disant que le péché n’est pas grave, sans vraiment s’en détourner ni écouter Dieu."
+   },
+   {
+    "question": "Selon Owen, à qui revient-il de donner la paix ?",
+    "answer": "À Dieu ; notre part est d’user des moyens pour chercher la paix, comme confesser, se détourner du péché et faire confiance."
+   }
+  ],
+  "body_text": "« J’écouterai ce que dit Dieu, l’Éternel ; Car il parle de paix à son peuple et à ses fidèles, Pourvu qu’ils ne retombent pas dans la folie. » — Psaume 85:9 Owen donne, au sujet de notre conscience, quelques conseils qui méritent qu’on y réfléchisse sérieusement. Il dit que nous devrions prendre notre péché au sérieux en nous parlant honnêtement à nous-mêmes à son sujet. Il imagine quelqu’un qui se pose des questions comme celles-ci : « Que puis-je dire au bien-aimé Seigneur Jésus ? Comment lèverai-je la tête avec quelque assurance devant lui ? » Et ensuite : « Attristerai-je chaque jour cet Esprit par lequel j’ai été scellé pour le jour de la rédemption ? » Le but n’est pas de se vautrer dans la honte. C’est de laisser l’amour de Jésus montrer le péché aussi laid qu’il l’est vraiment. Quand tu te rappelles combien Jésus t’aime, choisir le péché plutôt que lui commence à paraître absurde. Puis Owen met en garde contre un autre danger : se parler de paix à soi-même trop vite. Quand tu te sens coupable, il peut être tentant d’attraper un réconfort rapide — « Dieu pardonne tout, donc ce n’est pas grave » — et de passer à autre chose sans vraiment te détourner du péché. Owen dit : garde-toi de te parler de paix à toi-même avant que Dieu ne te parle de paix ; mais écoute ce qu’il dit à ton âme. La vraie paix vient de Dieu, quand nous nous détournons honnêtement du péché et que nous faisons confiance à Christ. La fausse paix est un raccourci que nous nous offrons pour ne plus nous sentir mal à l’aise. Il le dit ainsi : « L’usage des moyens pour obtenir la paix nous appartient ; le don de la paix est la prérogative de Dieu. » Notre part, c’est de confesser, de nous détourner et de faire confiance. Donner la paix, c’est la part de Dieu. Tout cela n’est pas fait pour te rendre anxieux ou te garder coupable pour toujours. Dieu aime parler de paix à son peuple, comme le dit le psaume. Jésus est mort pour que tu puisses être pardonné. Quand tu reviens vraiment à lui, il pardonne vraiment, et tu peux te reposer là-dessus. Mais remarque la fin du psaume : « Pourvu qu’ils ne retombent pas dans la folie. » La paix de Dieu vient avec un appel à changer. La vraie paix et le vrai changement vont ensemble. Si tu te rends compte que tu n’arrives jamais à te sentir pardonné, peu importe combien de fois tu confesses ton péché, parles-en s’il te plaît à un pasteur ou à un adulte de confiance. Parfois la culpabilité reste coincée, et nous avons besoin d’aide pour entendre le pardon de Dieu. Une chose à faire cette semaine : la prochaine fois que tu pèches cette semaine, ne te précipite pas vers un « ce n’est pas grave », et ne t’enfonce pas non plus dans la honte. Arrête-toi, confesse-le honnêtement à Jésus, détourne-toi de ce péché, puis lis 1 Jean 1:9 et reçois son pardon.",
+  "word_count": 521
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "mortification-of-sin-teens",
+   "fr"
+  ],
+  "order": 12,
+  "title": "Regarde à Jésus",
+  "body_html": "<blockquote>« … ayant les regards sur Jésus, le chef et le consommateur de la foi, qui, en vue de la joie qui lui était réservée, a souffert la croix, méprisé l’ignominie, et s’est assis à la droite du trône de Dieu. » — Hébreux 12:2</blockquote> <p>Owen garde sa direction la plus importante pour la fin. Après tous les conseils sur le fait de veiller, de combattre et de s’examiner, il dit que l’essentiel est ceci :</p> <blockquote>« Mets la foi à l’œuvre sur Christ pour faire mourir ton péché. Son sang est le grand remède souverain pour les âmes malades du péché. »</blockquote> <p>Puis vient une promesse magnifique : « Vis en cela, et tu mourras vainqueur ; bien plus, par la bonne providence de Dieu, tu vivras assez pour voir ta convoitise morte à tes pieds. »</p> <p>Comment faire ? D’abord, dit Owen, remplis ton esprit de ce que Jésus a pour toi. Même si tu as l’impression de ne plus avoir de force, même si tu es « las de combattre » et prêt à abandonner, il y a assez en Jésus-Christ pour te secourir.</p> <p>Il compare cela au fils prodigue de l’histoire racontée par Jésus. Loin de chez lui et mourant de faim, ce qui le faisait tenir, c’était de se rappeler qu’il y avait du pain en abondance dans la maison de son père. De la même manière, quand tu te sens faible, souviens-toi : il y a assez en Christ.</p> <p>Ensuite, dit Owen, regarde Jésus sur la croix : « Regarde-le sous le poids de nos péchés, priant, saignant, mourant ; fais-le entrer dans ton cœur par la foi en cet état ; applique son sang ainsi répandu à tes corruptions : fais cela chaque jour. » Rien ne rend le péché plus laid, ni ne te donne plus envie d’en être libre, que de voir ce qu’il a coûté à Jésus.</p> <p>Et tout cela, nous rappelle Owen, est l’œuvre du Saint-Esprit, qui nous montre notre péché, nous montre Christ, et nous donne la force.</p> <p>Owen a vécu jusqu’en 1683. Deux jours avant sa mort, il a écrit à un ami : « Je m’en vais vers celui que mon âme a aimé, ou plutôt qui m’a aimé d’un amour éternel. » Remarque comment il s’est corrigé lui-même. À la fin, ce qui comptait, ce n’était pas combien Owen avait aimé Jésus, mais combien Jésus l’avait aimé, lui.</p> <p>Voilà où se termine le combat contre le péché : pas avec ta volonté, mais avec son amour. Continue de regarder à Jésus. Un jour, par sa grâce, tu verras ton péché mort à tes pieds.</p> <p><strong>Une chose à faire cette semaine :</strong> chaque jour cette semaine, lis un court passage sur la croix, par exemple Luc 23:33–46. Passe quelques minutes à y regarder Jésus, puis prie au sujet du péché que tu combats : « Seigneur Jésus, tu es mort pour cela. Par ton Esprit, fais-le mourir en moi. »</p>",
+  "study_questions": [
+   {
+    "question": "Quelle est la direction la plus importante d’Owen pour faire mourir le péché ?",
+    "answer": "Mettre la foi à l’œuvre sur Christ ; son sang est le grand remède souverain pour les âmes malades du péché."
+   },
+   {
+    "question": "Qu’est-ce que le « pain en abondance » du fils prodigue nous apprend ?",
+    "answer": "Quand nous nous sentons faibles et prêts à abandonner, il y a assez en Christ pour nous secourir."
+   },
+   {
+    "question": "Qu’a écrit Owen deux jours avant sa mort ?",
+    "answer": "« Je m’en vais vers celui que mon âme a aimé, ou plutôt qui m’a aimé d’un amour éternel. »"
+   }
+  ],
+  "body_text": "« … ayant les regards sur Jésus, le chef et le consommateur de la foi, qui, en vue de la joie qui lui était réservée, a souffert la croix, méprisé l’ignominie, et s’est assis à la droite du trône de Dieu. » — Hébreux 12:2 Owen garde sa direction la plus importante pour la fin. Après tous les conseils sur le fait de veiller, de combattre et de s’examiner, il dit que l’essentiel est ceci : « Mets la foi à l’œuvre sur Christ pour faire mourir ton péché. Son sang est le grand remède souverain pour les âmes malades du péché. » Puis vient une promesse magnifique : « Vis en cela, et tu mourras vainqueur ; bien plus, par la bonne providence de Dieu, tu vivras assez pour voir ta convoitise morte à tes pieds. » Comment faire ? D’abord, dit Owen, remplis ton esprit de ce que Jésus a pour toi. Même si tu as l’impression de ne plus avoir de force, même si tu es « las de combattre » et prêt à abandonner, il y a assez en Jésus-Christ pour te secourir. Il compare cela au fils prodigue de l’histoire racontée par Jésus. Loin de chez lui et mourant de faim, ce qui le faisait tenir, c’était de se rappeler qu’il y avait du pain en abondance dans la maison de son père. De la même manière, quand tu te sens faible, souviens-toi : il y a assez en Christ. Ensuite, dit Owen, regarde Jésus sur la croix : « Regarde-le sous le poids de nos péchés, priant, saignant, mourant ; fais-le entrer dans ton cœur par la foi en cet état ; applique son sang ainsi répandu à tes corruptions : fais cela chaque jour. » Rien ne rend le péché plus laid, ni ne te donne plus envie d’en être libre, que de voir ce qu’il a coûté à Jésus. Et tout cela, nous rappelle Owen, est l’œuvre du Saint-Esprit, qui nous montre notre péché, nous montre Christ, et nous donne la force. Owen a vécu jusqu’en 1683. Deux jours avant sa mort, il a écrit à un ami : « Je m’en vais vers celui que mon âme a aimé, ou plutôt qui m’a aimé d’un amour éternel. » Remarque comment il s’est corrigé lui-même. À la fin, ce qui comptait, ce n’était pas combien Owen avait aimé Jésus, mais combien Jésus l’avait aimé, lui. Voilà où se termine le combat contre le péché : pas avec ta volonté, mais avec son amour. Continue de regarder à Jésus. Un jour, par sa grâce, tu verras ton péché mort à tes pieds. Une chose à faire cette semaine : chaque jour cette semaine, lis un court passage sur la croix, par exemple Luc 23:33–46. Passe quelques minutes à y regarder Jésus, puis prie au sujet du péché que tu combats : « Seigneur Jésus, tu es mort pour cela. Par ton Esprit, fais-le mourir en moi. »",
+  "word_count": 494
+ }
+}
+]

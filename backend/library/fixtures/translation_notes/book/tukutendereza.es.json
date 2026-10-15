@@ -1,0 +1,123 @@
+{
+ "kind": "book",
+ "slug": "tukutendereza",
+ "language": "es",
+ "job_issue": 4847,
+ "references": [
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 10
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 19
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 20
+  },
+  {
+   "reference": "Ephesians 5:18b",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 15,
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Galatians 3:28",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 15
+  },
+  {
+   "reference": "Ephesians 5:14",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 17,
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Romans 1:16",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 18
+  },
+  {
+   "reference": "James 5:16a",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 25
+  },
+  {
+   "reference": "James 5:16a",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 26
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 19
+  },
+  {
+   "reference": "Matthew 5:44a",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 20
+  },
+  {
+   "reference": "Revelation 12:11",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 20
+  },
+  {
+   "reference": "1 Timothy 4:12a",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 20,
+   "source_file": "growing-in-wisdom.es.json"
+  },
+  {
+   "reference": "Galatians 3:28",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 18,
+   "source_file": "amanda-smith-autobiography-teens.es.json"
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 20,
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "1 John 1:7b",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 20,
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 23,
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "chapter_order": 14,
+   "block_index": 6
+  }
+ ]
+}

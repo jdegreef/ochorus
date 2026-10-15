@@ -242,6 +242,13 @@ CURATED: dict[str, Artwork] = {
         "church between the cross and the return. Light coming from behind the "
         "headland, not yet arrived.",
     ),
+    "come-ye-children": Artwork(
+        "aic", 896, "Constant Troyon", "The Road to Market", "1858–59",
+        "Spurgeon's book for parents and teachers is Christ's \"Feed My lambs\": "
+        "a family with their children on the road, the flock walking with them "
+        "into the light. A figure scene, but a homely one, and the lambs are "
+        "the subject.",
+    ),
     "the-way-to-god": Artwork(
         "met", 436652, "Meyndert Hobbema", "Entrance to a Village", "ca. 1665",
         "A road ARRIVING somewhere, deliberately paired with the Hobbema on "
@@ -396,6 +403,12 @@ CURATED: dict[str, Artwork] = {
         "first — the one painting the library ever gave two books.",
         focus=0.45,
     ),
+    "spurgeon-on-the-holy-spirit": Artwork(
+        "aic", 47582, "Style of John Constable", "Hampstead, Stormy Sky", "1814",
+        "The wind that bloweth where it listeth, driving cloud over Hampstead with "
+        "light breaking through — the companion to `spurgeon-on-prayer`'s Turner, "
+        "an English sky above Spurgeon's own London.",
+    ),
     # Spurgeon's paired devotionals, one painter's morning and evening, so the
     # two read as a pair on the shelf. Both late Inness, both whole in the band.
     "morning-by-morning": Artwork(
@@ -407,6 +420,55 @@ CURATED: dict[str, Artwork] = {
         "aic", 64740, "George Inness", "Landscape, Sunset", "1887–89",
         "The last red of the day held in water under dark trees — the companion "
         "to `morning-by-morning`'s silver morning, by the same hand.",
+        focus=0.45,
+    ),
+    # Spurgeon's 2026-10 books: the two John Ploughman books in one English
+    # painter's countryside, the two series of lectures in the London of the
+    # Pastors' College, and the rest each to its own subject.
+    "john-ploughmans-talk": Artwork(
+        "aic", 4758, "John Constable", "Stoke-by-Nayland", "1836",
+        "A plough left in the foreground of a field on the Essex–Suffolk border, "
+        "the country Spurgeon grew up in and was converted in at Colchester — "
+        "John Ploughman's own ground.",
+        focus=0.12,
+    ),
+    "john-ploughmans-pictures": Artwork(
+        "aic", 49651, "John Constable", "Landscape with Cottages", "1809–10",
+        "Cottages under trees at evening — more of the same plain country, by "
+        "the same hand as `john-ploughmans-talk`, so the pair read as one.",
+        focus=0.55,
+    ),
+    "lectures-to-my-students": Artwork(
+        "aic", 110541, "Camille Pissarro", "The Crystal Palace", "1871",
+        "The Crystal Palace at Sydenham, where Spurgeon preached to over twenty "
+        "thousand in 1857, painted while the Pastors' College was teaching "
+        "these lectures, a walk from the Norwood he later lived in.",
+        focus=0.3,
+    ),
+    "lectures-to-my-students-second-series": Artwork(
+        "aic", 103139, "Claude Monet", "Waterloo Bridge, Gray Weather", "1900",
+        "The Thames at Waterloo Bridge, a mile or so from the Tabernacle and its "
+        "college — the companion to the first series' Crystal Palace, London "
+        "seen by the same generation of painters.",
+        focus=0.45,
+    ),
+    "an-all-round-ministry": Artwork(
+        "aic", 111669, "Harry Thompson", "Landscape with Sheep, Picardy",
+        "Late 19th century",
+        "A shepherd standing among his flock at the water — addresses to the "
+        "pastors Spurgeon trained, on the whole work of tending the sheep.",
+        focus=0.35,
+    ),
+    "the-soul-winner": Artwork(
+        "aic", 111746, "Léon Augustin Lhermitte", "The Harvesters", "1888–89",
+        "Sheaves gathered in at sunset — \"he that winneth souls is wise\", "
+        "and the fields white unto harvest Spurgeon sent his students into.",
+        focus=0.9,
+    ),
+    "the-saint-and-his-saviour": Artwork(
+        "aic", 96559, "Alfred Sisley", "A Turn in the Road", "1873",
+        "A road bending on into light — the soul's progress in knowing Christ, "
+        "which the young Spurgeon traced as a journey taken stage by stage.",
         focus=0.45,
     ),
     # ── Batch 7 · R. A. Torrey's plate books ───────────────────────────────
@@ -857,6 +919,54 @@ CURATED: dict[str, Artwork] = {
         "sea breaks in light along the rocks under a heavy sky — the deep the "
         "Spirit brooded over before the first day.",
     ),
+    # ── The diverse-voices books (2026-10-13) ───────────────────────────────
+    # Each to its own place, not one generic landscape: Sundar Singh's three
+    # in the India he walked (two of Bourne's Himalayan photographs and Lear's
+    # Hardwar), a Japanese ink landscape for Uchimura, Boston Common in
+    # Maria Stewart's century, and Duncanson again for Zilpha Elaw, beside
+    # Richard Allen, who already wears his work.
+    "at-the-masters-feet": Artwork(
+        "cma", 668066, "Samuel Bourne",
+        "The Upper Himmalayahs. View on the New Road between India and China. "
+        "Mt. Pangi with the Snowy Peaks of China in the Distance",
+        "1863 or 1866",
+        "The road out of the Simla hills toward Tibet, two travellers on it and "
+        "the snows beyond — the road Sundar Singh walked again and again, for a "
+        "book of what the Master told him in prayer.",
+        focus=0.2,
+    ),
+    "reality-and-religion": Artwork(
+        "cma", 668049, "Samuel Bourne",
+        "Shimla. The Yarrows and Neighboring Hills", "1863–70",
+        "Deodar forest on the Simla hills, where the preface is signed (Sabathu, "
+        "Simla Hills, 1923): meditations on God, man and nature, from that "
+        "nature.",
+    ),
+    "with-and-without-christ": Artwork(
+        "cma", 662050, "Edward Lear", "Hardwar, India", "1875",
+        "The pilgrim town on the Ganges where the book's sadhu lay on a bed of "
+        "spikes: lives with and without Christ, met on the road.",
+    ),
+    "how-i-became-a-christian": Artwork(
+        "cma", 139454, "Sōami", "Landscape", "early 1500s",
+        "Ink mountains over water, with no inscription to read over — the "
+        "fields and mountains the young Uchimura roamed \"to commune through "
+        "Nature with Nature's God\".",
+    ),
+    "meditations-maria-w-stewart": Artwork(
+        "aic", 44831, "Artist unknown", "Boston Common", "1850–63",
+        "Boston's common ground under Beacon Hill, the city where in 1832 she "
+        "became the first American woman known to speak to a mixed public "
+        "audience. (Lane's Boston harbour was already `first-epistle-of-clement`'s.)",
+        focus=0.75,
+    ),
+    "memoirs-of-mrs-zilpha-elaw": Artwork(
+        "cma", 125236, "Robert S. Duncanson", "View of Lake Pepin, Minnesota",
+        "1862",
+        "A wide calm water under a clearing sky, by the foremost Black American "
+        "landscape painter of her century, who also paints the ground of "
+        "Richard Allen's life — two Black Methodist preachers of one generation.",
+    ),
 }
 
 
@@ -994,6 +1104,30 @@ class Original(NamedTuple):
 
 # slug -> the ground we drew. Slugs match Book.slug (shared across languages).
 ORIGINAL_GROUND: dict[str, Original] = {
+    # The Lamplighters of Gloamhaven, Book 2 — a companion to Book 1's ground:
+    # the same slate dark and the Flame's gold, now underground. A vast cavern
+    # under faint stalactites; low on the left, Tobin climbs the Black Stair
+    # with the lamp held up and a short line of Delvers on the rope behind him;
+    # faint step-slabs climb the left edge into blackness. Upper two-thirds
+    # stays cavern-dark for the white title; the subject sits wholly below it.
+    "the-black-stair": Original(
+        "2e45be614b5546455b40045df3cf2f099798c3de82483ff6967c5860aa667296",
+        "Book 2's own image, paired with Book 1's: one small gold light carried "
+        "up through the dark by a frightened boy. Drawn as SVG and rendered with "
+        "Chrome (level-up-cover's vector recipe); the lamp sits where Book 1's does.",
+    ),
+    # The Lamplighters of Gloamhaven, Book 1 (young readers, 9–12). Emberwick
+    # at gloaming under the cursed coin of a sun: the cold Great Beacon, the
+    # Ring of lamps along the wall with most of them failing, chimney smoke —
+    # and low on the left, Wren on a roof ridge with the brass lamp on her
+    # knee, her ribbon red in its light. The sky's upper two-thirds stays deep
+    # slate for the white title; the subject sits wholly below the title band.
+    "fire-against-the-dark": Original(
+        "0cc3bf1039be408899b3ca04b1d41e64c10cea87940ea4ba33000c4e1c51e021",
+        "The book's own image: one small warm light in a grey city, carried by "
+        "a child. Drawn as SVG and rendered with Chrome (level-up-cover's "
+        "vector recipe); the lamp's glow keeps clear of the subtitle and mark.",
+    ),
     # Brave for God 1–4 (young readers). A mid-century travel poster, one per
     # volume: flat sun-ray skies, a big pale sun, and a young traveller with a
     # scarf facing a new part of the wide world. Chosen 2026-09-29 from ten
@@ -1590,6 +1724,157 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "A bare tree in winter snow at first light: the sight that turned "
         "Brother Lawrence to God at eighteen, knowing the leaves and fruit "
         "would come.",
+    ),
+    # The retold classics for teens (2026-10-13): the object family the Portraits
+    # teen editions started — one true thing from the book, low on a deep ground.
+    "absolute-surrender-teens": Original(
+        "5657232f7f844d9d52f3d1abea81e32ed3e7799e3cf4cdc50d185a84cf160b63",
+        "A ring of old keys, every one on it: the king who answers \"I am "
+        "thine, and all that I have\", which Murray makes the whole book.",
+    ),
+    "foxes-book-of-martyrs-teens": Original(
+        "dd85c106b94fa461e7802de0e1a101c3d8c9b7cee589fb64eb15fc31f9220a8b",
+        "One candle burning in the dark: Latimer at the stake, \"we shall "
+        "this day light such a candle\".",
+    ),
+    "how-to-succeed-in-the-christian-life-teens": Original(
+        "66b996df8a026f21465393e6ba3728c57b156318e718604a9e9322ab311ae10b",
+        "A lantern on the first of a line of stepping stones, lighting only "
+        "the next: Torrey's student who knew what to do tomorrow, and was "
+        "told that was enough.",
+    ),
+    "life-and-diary-of-david-brainerd-teens": Original(
+        "9de17ba15d8613a6ba2285445fe57b99acaca160a9e3ba823c050fff27d96a23",
+        "An open journal with a quill laid across it: the diary kept alone "
+        "in the forests of the Delaware.",
+    ),
+    "life-of-antony-teens": Original(
+        "7bbd54778bcb3691c8389075b33f9c540436ec4dab27c9981cc4713c07852133",
+        "Gold scattered on a desert road and one set of footprints walking "
+        "straight past it: Antony passing it by \"as though he were going "
+        "over fire\".",
+    ),
+    "mortification-of-sin-teens": Original(
+        "baa7641cbfaf474ad017246a46f5695f01bb1886fb274066cf1ec4be296ba45f",
+        "A weed pulled up with every root showing: Owen's \"be killing sin, "
+        "or it will be killing you\", root and all.",
+    ),
+    "orthodoxy-teens": Original(
+        "6d15989d4fcb01892f3eae056b2da89b2a8b94470ccae977d2d285f124123d07",
+        "A single daisy under the stars: the God who makes every daisy "
+        "separately and says \"Do it again\".",
+    ),
+    "pensees-teens": Original(
+        "5a6e96f7522def2bcdc85300b22733fd08135cb03fcd4b06643718273220b487",
+        "A coin spinning in the air above the table: Pascal's wager, before "
+        "it lands.",
+    ),
+    "the-bruised-reed-teens": Original(
+        "9625d29df1816444693bb85e9436b04ec55711459c4f75cc3dbd3c6a3026c47a",
+        "Reeds at the water's edge at dusk, one bent over but not broken: "
+        "\"a bruised reed shall he not break\".",
+    ),
+    "the-imitation-of-christ-teens": Original(
+        "c8ad92923fd3c9b5b8613f6482743a7370ee86343017cb8449b0b18bf3f21606",
+        "A monk's cell door, shut, with warm light under it: \"when thou "
+        "hast shut thy door, pray\", the cell Thomas keeps coming back to.",
+    ),
+    "the-practice-of-the-presence-of-god-teens": Original(
+        "dd1acf1e7b1b03016f5114da40eb61a533b55b11d339668946732ae3516713fa",
+        "A pot over a small fire, its steam rising straight up: God found "
+        "among the pots and pans of the monastery kitchen.",
+    ),
+    "the-pursuit-of-god-teens": Original(
+        "a6c71ec036da36c42c441cf9d41fa3531be3f0e415839e1be1e9115903fd7db8",
+        "A red curtain torn from top to bottom with light pouring through: "
+        "Tozer's chapter on the veil removed.",
+    ),
+    "the-secret-of-guidance-teens": Original(
+        "62ae80c207f5f9558dc302d36f4cbf31a80aa153a1c62ffe88365b139a5c54d2",
+        "Railway lines running toward a town's lights on a dark horizon: "
+        "Meyer's circumstances lining up like lights multiplying as a night "
+        "train nears a town.",
+    ),
+    "the-way-to-god-teens": Original(
+        "5b8d723cf94e348f68419047ad6fa54cb89a771588f19b9491b19bd030d00a56",
+        "A road at night to a cottage with one lit window, a small figure "
+        "walking home: \"turn round, like the prodigal son, and come home\".",
+    ),
+    # Later volumes of the teen series (2026-10-13): the same mark at Book 1's
+    # geometry, redrawn in SVG (Book 1's source was never committed), with the
+    # weather changing by volume as the series began.
+    "real-questions-2": Original(
+        "f3c7d84aced2c926b29ad3db041bd2c21e527364289808767329e0f27b249bc2",
+        "The question mark under a crescent moon and thin cloud on deep "
+        "teal: Real Questions, Book 2.",
+    ),
+    "real-questions-3": Original(
+        "750c031b4443bb61dd0002f467bd81a4c9841b71a98cebe6497177d1173ab3c8",
+        "The question mark in falling snow on deep wine: Real Questions, "
+        "Book 3.",
+    ),
+    "they-were-young-3": Original(
+        "94b4713a3274110c4ed8af6b34216e79f6160558ae19f8aec5adb35f990b18b0",
+        "The lantern in drifting fog, its small flame still lit below it: "
+        "They Were Young, Book 3 (Questions), six who wrestled with doubt.",
+    ),
+    "they-were-young-4": Original(
+        "1225711d49abb1a815dbb6957b09d39db16486d85f3bad0f24dc461037c31886",
+        "The lantern at first light, dawn rising behind the hill and a path "
+        "going out over it: They Were Young, Book 4 (Sent).",
+    ),
+    # Tell Me the Story 1–7 (2026-10-13), the storybook Bible for ages 6–10: one
+    # frame held constant (a grown-up and a child reading on the near hill), a
+    # sky emblem above the type and a far scene per volume, each from its book.
+    "tell-me-the-story-1": Original(
+        "9cb96be8d005d3940f26720e670371611fe4f28a830080fa50bf15b53a89edcf",
+        "Sun, moon and stars over a fruit tree by a river: God makes "
+        "everything, and a garden for Adam and Eve.",
+    ),
+    "tell-me-the-story-2": Original(
+        "e3a3b1102dd75924904c697644ef6ffa86912910a4560a46f8854005f31ee57b",
+        "A pillar of fire over a path through the sea, its walls of water "
+        "standing up on either side and a family crossing on dry ground.",
+    ),
+    "tell-me-the-story-3": Original(
+        "9c72301ee630cb44f60c6676d33b3d8ca30e35b67d3c9fc290d2dd1209aa8150",
+        "A gold crown over a walled city and its temple: waiting for the "
+        "king, from Samuel to Nehemiah.",
+    ),
+    "tell-me-the-story-4": Original(
+        "e59ad4a97b7f3209e050443d88309364933f11c96e12acc5e1fadf1a7c74b81d",
+        "One great star over a small lit stable: born in Bethlehem.",
+    ),
+    "tell-me-the-story-5": Original(
+        "907c235fa129fdaf37203c08b62dae2a8cd9f664fc7133b59c1b2c554b310bc3",
+        "A fishing boat on the lake under a bright sun: the storm on the "
+        "lake, walking on the water, the loaves and fish.",
+    ),
+    "tell-me-the-story-6": Original(
+        "0766afc20259df261f30151dafac26b69ddcdaab8424ffbedd792ee639485758",
+        "The sun rising over a garden tomb with its stone rolled away.",
+    ),
+    "tell-me-the-story-7": Original(
+        "1b2b47c9a9becfaa74bec7412cd5a1c4bc1e02b95d3a92fe68d1c0ca658289f9",
+        "A dove and three tongues of fire over a city, a road leading out "
+        "of it: wind and fire, and the light on the road.",
+    ),
+    "tell-me-the-story-8": Original(
+        "da1db4a34ff80cfc5c66c101acace8f3f31ed96b274620d03221abbab90e2b07",
+        "The tree of life in the sky over Paul's ship sailing for a far city: "
+        "to the ends of the earth, and all things made new.",
+    ),
+    "tell-me-the-story-9": Original(
+        "07f457869aa19e6bf8da072d7d5445f8dbc24571f8558b13d9ac6a36da793402",
+        "David's lyre in an evening sky over still waters and two sheep in a "
+        "green pasture: the songs and wise words of the Bible.",
+    ),
+    # The Big Story (2026-10-13), the whole Bible for teens.
+    "the-big-story": Original(
+        "46a69c7c883ce63b7fa11a869f96131f0fa62c42b4008e5f66b8e05f5d94f334",
+        "A road at night from a fruit tree in the dark foreground to a city "
+        "of light on the far hill: from the garden in Genesis to the city "
+        "in Revelation.",
     ),
 }
 

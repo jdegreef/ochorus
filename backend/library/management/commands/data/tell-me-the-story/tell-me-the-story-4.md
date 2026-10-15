@@ -1,0 +1,965 @@
+# Tell Me the Story – Book 4: The King Is Born
+
+*The Life of Jesus, from His birth to the first disciples, for children aged 6 to 10*
+
+Scripture quotations are from the Berean Standard Bible (BSB), public domain.
+
+---
+
+## Introduction: The Waiting Is Over
+
+> "But when the time had fully come, God sent His Son, born of a woman." — Galatians 4:4
+
+Do you remember all the promises God made in the first three books?
+
+He promised Eve that one day a child would crush the snake's head. He promised Abraham that all the families of the earth would be blessed through his family. He promised David that a King from his family would rule for ever. And through the prophets He promised a child called Immanuel, "God with us", who would be born in Bethlehem.
+
+Then God's people waited. They waited for hundreds and hundreds of years. Kings came and went. Empires rose and fell. And still the promised King had not come.
+
+But God doesn't forget His promises. And when the time was exactly right, the waiting was over.
+
+This book begins the second part of Tell Me the Story: the Life of Jesus. You will meet an old priest who couldn't speak, a young girl who said yes to God, shepherds in the fields at night, and wise men following a star. You will see Jesus as a baby, as a boy of twelve, and as a man beginning His work, calling fishermen to follow Him and turning water into wine.
+
+Everything in the Old Testament has been leading up to this. So look out for the old promises as you read. In this book, under some of the stories, you will see a line called "The promise kept". That's where the Bible itself tells us that something God promised long ago has come true in Jesus.
+
+The King is coming. Let's go and meet Him.
+
+*Dear God, thank you that you keep every promise you make. Thank you for sending Jesus. As we read about Him, help us to know Him and love Him. Amen.*
+
+### Talk about it together
+
+- Q: What were some of the promises God made in the Old Testament about the King who was coming?
+  A: That a child would crush the snake's head, that all families would be blessed through Abraham's family, that a King from David's family would rule for ever, and that a child called Immanuel would be born in Bethlehem.
+- Q: How long did God's people have to wait?
+  A: Hundreds and hundreds of years. But God never forgot His promises.
+- Q: Who is the King all those promises were about?
+  A: Jesus, God's own Son. This book tells how He was born and how He began His work.
+
+## The Angel in the Temple
+
+> "Do not be afraid, Zechariah, because your prayer has been heard." — Luke 1:13
+
+In the days when Herod was king of Judea, there lived an old priest called Zechariah and his wife, Elizabeth. They both loved God and obeyed all His commandments. But they had no children. They had prayed and prayed for a baby, and now they were both very old.
+
+Priests took turns to serve God in the temple in Jerusalem. One day it was Zechariah's turn, and he was chosen to do a very special job: to go into the holy place in the temple and burn sweet-smelling incense to God. It was a great honour. Outside, a big crowd of people stood praying.
+
+Zechariah went in, alone. And suddenly an angel of the Lord was standing there, right beside the altar! Zechariah was terrified.
+
+"Do not be afraid, Zechariah," said the angel, "because your prayer has been heard. Your wife Elizabeth will have a son, and you must call him John. He will bring you great joy, and many people will be glad that he was born. He will be great in God's eyes. He will be filled with the Holy Spirit even before he is born. And he will go ahead of the Lord, in the spirit and power of the prophet Elijah, to turn people's hearts back to God, and to get them ready for the Lord."
+
+But Zechariah could hardly believe it. "How can I be sure of this?" he asked. "I am an old man, and my wife is old too."
+
+"I am Gabriel," said the angel. "I stand in the presence of God, and He sent me to tell you this good news. But because you did not believe my words, you will not be able to speak until the day this happens."
+
+Outside, the people were waiting for Zechariah, wondering why he was taking so long. When at last he came out, he couldn't speak to them! He could only make signs with his hands. They realised he must have seen a vision in the temple.
+
+When Zechariah's time of serving in the temple was finished, he went home. And soon, just as the angel had said, Elizabeth was expecting a baby.
+
+"The Lord has done this for me," said Elizabeth joyfully. For years people had felt sorry for her because she had no children. Now God had been kind to her.
+
+For hundreds of years, since the last of the prophets, God's people had been waiting for Him to speak again. But now God was speaking again. Something wonderful was about to happen.
+
+**The promise kept:** The very last words of the Old Testament promised that God would send "Elijah" to turn the hearts of fathers to their children, before the great day of the Lord (Malachi 4:5–6). Gabriel used those same words about John. John was the one who would get everyone ready for Jesus.
+
+**Read it in your Bible:** Luke 1:5–25
+
+*Dear God, thank you that you hear our prayers, even prayers we have prayed for a very long time. Help me to believe what you say. Amen.*
+
+### Talk about it together
+
+- Q: What were Zechariah and Elizabeth sad about?
+  A: They had no children, even though they had prayed for a baby for many years, and now they were very old.
+- Q: Why couldn't Zechariah speak when he came out of the temple?
+  A: Because he didn't believe the angel Gabriel's message, so he was unable to speak until the baby was born.
+- Q: Zechariah and Elizabeth prayed for a very long time before God answered. What could you keep praying about, even when the answer takes a long time?
+  A: Choose something together. God hears every prayer, and sometimes He answers in His own time, in a way that is even better than we expected.
+
+## Mary Says Yes
+
+> "'I am the Lord's servant,' Mary answered. 'May it happen to me according to your word.'" — Luke 1:38
+
+Six months later, God sent the angel Gabriel again. This time he went to a little town called Nazareth, in Galilee, to a young woman called Mary. Mary was engaged to be married to a carpenter called Joseph, who came from the family of King David.
+
+The angel came to Mary and said, "Greetings, you who are highly favoured! The Lord is with you."
+
+Mary was very troubled. What could this greeting mean?
+
+"Do not be afraid, Mary," the angel said, "for God is very pleased with you. You are going to have a baby boy, and you are to call Him Jesus. He will be great, and He will be called the Son of the Most High. The Lord God will give Him the throne of His ancestor David. He will reign over God's people for ever. His kingdom will never end!"
+
+"How can this be," Mary asked, "when I am not married?"
+
+"The Holy Spirit will come upon you," said the angel, "and the power of the Most High will cover you like a shadow. So the holy baby who is born will be called the Son of God."
+
+Then Gabriel gave her some more good news. "Your relative Elizabeth is going to have a baby too, even though she is very old. People said she could never have children, but she is already six months along. For no word from God will ever fail."
+
+Think about what the angel was asking. Mary was young and ordinary. She lived in a small, unimportant town. People might not understand. They might say unkind things about her. Her whole life was going to change.
+
+But Mary trusted God. "I am the Lord's servant," she said. "May it happen to me just as you have said."
+
+And the angel left her.
+
+Mary didn't know everything that was going to happen. She didn't know how hard some of it would be. But she knew God, and she said yes to Him.
+
+The baby Mary was going to have would be like no other baby who had ever been born. He would be a real human baby. And He would be God's own Son, who had always been with God, now coming to live among us.
+
+**The promise kept:** Long before, God promised King David that a King from his family would rule for ever (2 Samuel 7:16). The angel told Mary that God would give her baby "the throne of His father David" (Luke 1:32). Jesus is that promised King.
+
+**Read it in your Bible:** Luke 1:26–38
+
+*Dear God, thank you that Mary trusted you and said yes. Help me to say yes to you too, even when I don't know everything that will happen. I am your servant. Amen.*
+
+### Talk about it together
+
+- Q: What did the angel Gabriel tell Mary?
+  A: That she would have a baby boy called Jesus, who would be the Son of God and would reign as King for ever.
+- Q: What did Mary say?
+  A: "I am the Lord's servant. May it happen to me just as you have said."
+- Q: Mary said yes to God even though it would change her whole life. What is something God might be asking you to say yes to?
+  A: Perhaps to be kind to someone, to tell the truth, to share, or to trust Him with a worry. Saying yes to God is what it means to follow Him.
+
+## Mary Visits Elizabeth
+
+> "My soul magnifies the Lord, and my spirit rejoices in God my Savior!" — Luke 1:46–47
+
+After the angel's visit, Mary got ready and hurried off on a journey. She went south to the hill country of Judea, to the town where Zechariah and Elizabeth lived.
+
+When Mary arrived, she went into Zechariah's house and called out a greeting to Elizabeth.
+
+As soon as Elizabeth heard Mary's voice, the baby inside her leaped for joy! And Elizabeth was filled with the Holy Spirit.
+
+"God has blessed you more than any other woman," Elizabeth called out in a loud voice, "and blessed is the child you will have! Why am I so honoured, that the mother of my Lord should come to visit me? As soon as I heard your greeting, the baby inside me jumped for joy! You are blessed, because you believed that the Lord would do what He said."
+
+Nobody had told Elizabeth about Mary's baby. But God had shown her. Even John, before he was born, was glad that Jesus was coming!
+
+Then Mary sang a song of praise to God. It's sometimes called "the Magnificat", from the first word in Latin.
+
+"My soul magnifies the Lord," Mary sang,
+"and my spirit rejoices in God my Saviour!
+He has noticed me, His humble servant.
+From now on, everyone will call me blessed,
+for the Mighty One has done great things for me.
+Holy is His name.
+He shows mercy to everyone who honours Him.
+He has brought down rulers from their thrones,
+and lifted up the humble.
+He has filled the hungry with good things,
+and sent the rich away empty.
+He has helped His people Israel,
+remembering to be merciful,
+just as He promised to our fathers,
+to Abraham and his children for ever."
+
+Mary's song is about how God turns things upside down. He doesn't choose the proud and powerful people. He chooses humble, ordinary people, like a young girl from Nazareth, and does great things through them. And Mary knew that God was keeping the promise He made to Abraham, all those years ago.
+
+Mary stayed with Elizabeth for about three months. Then she went back home to Nazareth.
+
+**The promise kept:** Mary sang that God was keeping His promise "to Abraham and his descendants forever" (Luke 1:55). Do you remember the night God took Abraham outside and told him to count the stars? Now the promised child was on His way.
+
+**Read it in your Bible:** Luke 1:39–56
+
+*Dear God, my soul magnifies you, and my spirit rejoices in you, my Saviour! Thank you that you notice humble, ordinary people and do great things for them. Amen.*
+
+### Talk about it together
+
+- Q: What happened when Elizabeth heard Mary's greeting?
+  A: The baby inside Elizabeth leaped for joy, and Elizabeth was filled with the Holy Spirit and knew that Mary was going to be the mother of her Lord.
+- Q: What does Mary's song say about the kind of people God chooses?
+  A: That God lifts up humble people and fills hungry people with good things, but brings down the proud.
+- Q: Mary sang a song of praise. What is something you could praise God for today?
+  A: Let your child name things, big or small. You could even make up a short song or prayer of praise together.
+
+## "His Name Is John"
+
+> "Blessed be the Lord, the God of Israel, because He has visited and redeemed His people." — Luke 1:68
+
+At last the time came for Elizabeth to have her baby, and she gave birth to a son! All her neighbours and relatives heard how kind the Lord had been to her, and they were so happy with her.
+
+When the baby was eight days old, everyone came for his special naming day. They wanted to call him Zechariah, after his father.
+
+But Elizabeth said, "No! He is to be called John."
+
+"But nobody in your family has that name!" they said.
+
+So they made signs to Zechariah, who still couldn't speak, to ask what he wanted the baby to be called. Zechariah asked for a writing tablet. And to everyone's amazement, he wrote, "His name is John."
+
+At that very moment, Zechariah's mouth was opened, and he could speak again! And the first thing he did was to praise God.
+
+Everyone who lived nearby was filled with awe. All through the hill country of Judea, people talked about what had happened. "What will this child grow up to be?" they wondered. For they could see that the Lord's hand was with him.
+
+Then Zechariah was filled with the Holy Spirit, and he sang a song of his own.
+
+"Blessed be the Lord, the God of Israel," he sang, "because He has come to help His people and set them free! He has sent a mighty Saviour from the family of His servant David, just as He promised long ago through His holy prophets. He has remembered His holy promise, the promise He made to our father Abraham."
+
+Then Zechariah looked at his little son.
+
+"And you, child, will be called a prophet of the Most High," he sang. "For you will go ahead of the Lord to prepare the way for Him, to tell His people how to be saved by the forgiveness of their sins. Because of the tender mercy of our God, the sunrise will come to us from heaven, to shine on those who live in darkness, and to guide our feet into the path of peace."
+
+Can you imagine how Zechariah must have felt? He had waited all his life for a son. He had waited nine long months without saying a single word. And now his son was here, and he would be the one to get everyone ready for the Saviour.
+
+The little boy John grew up and became strong in spirit. And when he was a man, he went to live in the wilderness, until the day came for him to start his work.
+
+**The promise kept:** Zechariah sang that God had sent the Saviour "just as He promised long ago" to David and to Abraham (Luke 1:69–73). God's promises had been waiting a very long time. Now they were all coming true.
+
+**Read it in your Bible:** Luke 1:57–80
+
+*Dear God, thank you for your tender mercy. Thank you that Jesus came like the sunrise to shine on people in the dark. Please guide my feet into the path of peace. Amen.*
+
+### Talk about it together
+
+- Q: How did Zechariah tell everyone what the baby's name should be?
+  A: He couldn't speak, so he asked for a writing tablet and wrote, "His name is John."
+- Q: What happened as soon as Zechariah wrote the name?
+  A: He could speak again, and the first thing he did was praise God.
+- Q: Zechariah sang that Jesus would be like the sunrise shining on people in the dark. What do you think he meant?
+  A: That Jesus brings light, hope and peace to people who are sad, lost or living without God, just as the sunrise brings light after a long dark night.
+
+## Joseph's Dream
+
+> "You are to give Him the name Jesus, because He will save His people from their sins." — Matthew 1:21
+
+Back in Nazareth, Mary was engaged to Joseph, the carpenter. But before they were married, Joseph found out that Mary was going to have a baby.
+
+Joseph knew the baby wasn't his. He was very upset. What would he do?
+
+Joseph was a good man who loved God. He didn't want to embarrass Mary in front of everyone. So he decided to end their engagement quietly.
+
+But while he was thinking about all this, an angel of the Lord appeared to him in a dream.
+
+"Joseph, son of David," said the angel, "do not be afraid to take Mary home as your wife. The baby inside her is from the Holy Spirit. She will give birth to a Son, and you are to give Him the name Jesus, because He will save His people from their sins."
+
+The name Jesus means "the Lord saves". Do you remember Joshua, who led God's people into the promised land? Jesus and Joshua are really the same name. But this Jesus would save His people from something even bigger than enemies. He would save them from their sins.
+
+When Joseph woke up, he did exactly what the angel had told him. He took Mary home to be his wife. He would take care of her, and of the baby, as if Jesus were his own son.
+
+Joseph doesn't say a single word anywhere in the Bible. But he listened to God, and he obeyed straight away. Mary needed someone to look after her, and God gave her Joseph. Jesus needed a dad to teach Him and care for Him as He grew up, and God gave Him Joseph too.
+
+It wasn't easy for Joseph. People might have talked about him and Mary. But Joseph trusted God more than he worried about what people thought.
+
+**The promise kept:** The Bible says that all this happened to keep the promise God gave through Isaiah: "Behold, the virgin will be with child and will give birth to a son, and they will call Him Immanuel" (Matthew 1:23). Immanuel means "God with us". Jesus is God, come to be with us.
+
+**Read it in your Bible:** Matthew 1:18–25
+
+*Dear God, thank you for Joseph, who listened to you and obeyed. Thank you that Jesus came to save us from our sins. Thank you that you are Immanuel, God with us. Amen.*
+
+### Talk about it together
+
+- Q: What did Joseph plan to do before the angel came to him?
+  A: He planned to end his engagement to Mary quietly, because he didn't want to embarrass her.
+- Q: What does the name Jesus mean, and why was He given that name?
+  A: Jesus means "the Lord saves". He was given that name because He would save His people from their sins.
+- Q: Joseph obeyed God straight away when he woke up. Why is it good to obey God quickly?
+  A: Because God knows best, and when we wait too long we can talk ourselves out of doing the right thing. Joseph's quick obedience meant Mary and Jesus were cared for.
+
+## Born in Bethlehem
+
+> "She wrapped Him in swaddling cloths and laid Him in a manger, because there was no room for them in the inn." — Luke 2:7
+
+In those days the Roman emperor, Caesar Augustus, gave an order. Everyone in his whole empire had to be counted. And everyone had to go back to their family's home town to be registered.
+
+Joseph belonged to the family of King David, and David's home town was Bethlehem. So Joseph had to go there. He set off from Nazareth in Galilee, and Mary went with him. Bethlehem was a long way south, a journey of several days on foot. And Mary was about to have her baby.
+
+When they arrived in Bethlehem, the little town was crowded with people who had come to be counted. While they were there, the time came for the baby to be born.
+
+And Mary gave birth to her firstborn son.
+
+She wrapped Him up snugly in strips of cloth, the way mothers did with newborn babies to keep them warm and safe. And she laid Him in a manger, the wooden or stone box that animals ate their food from. There was no room for them in the inn, so baby Jesus' first bed was an animals' feeding trough.
+
+Think about who this baby was. He was the Son of God. He made the stars and the oceans and the mountains. He was the King the whole world had been waiting for.
+
+And yet He was born in a crowded little town, to a carpenter and a young girl from Nazareth. He wasn't born in a palace. He didn't have a royal cradle with silk sheets. He had a manger, and some strips of cloth, and His mother's arms.
+
+Nobody in Bethlehem knew who had just been born there. The town went on with its busy, noisy night. People were sleeping and eating and talking, with no idea that God had come to live among them as a tiny baby.
+
+Why would God's Son come like this? Because He came for everyone, rich and poor, important and unimportant. He came close to us, as one of us. He came humbly, so that nobody would be too poor or too small to come to Him.
+
+The King was born. The waiting was over.
+
+**The promise kept:** Seven hundred years before, the prophet Micah had said that the ruler of God's people would come out of Bethlehem, a town "small among the clans of Judah" (Micah 5:2). Matthew tells us those words came true when Jesus was born there (Matthew 2:5–6).
+
+**Read it in your Bible:** Luke 2:1–7
+
+*Dear Jesus, thank you that you came to earth as a tiny baby, and that you were born in a manger. Thank you that you came for everyone, even me. Amen.*
+
+### Talk about it together
+
+- Q: Why did Mary and Joseph have to go to Bethlehem?
+  A: Because the emperor ordered everyone to be counted in their family's home town, and Joseph came from King David's family, whose town was Bethlehem.
+- Q: Where did Mary lay baby Jesus, and why?
+  A: In a manger, an animals' feeding box, because there was no room for them in the inn.
+- Q: Why do you think God's Son was born in such a humble way, not in a palace?
+  A: Because He came for everyone, rich and poor, important and ordinary, so that nobody would feel too small to come to Him. (The Bible doesn't mention a stable, a donkey or animals watching; only the manger. You may like to point that out if your child knows a nativity play.)
+
+## Shepherds in the Night
+
+> "I bring you good news of great joy that will be for all the people." — Luke 2:10
+
+That night, in the fields near Bethlehem, there were shepherds. They were living out in the fields, taking turns to keep watch over their sheep in the dark.
+
+Suddenly an angel of the Lord stood in front of them, and the glory of the Lord shone all around them, bright as day. The shepherds were terrified!
+
+But the angel said, "Do not be afraid! For I bring you good news of great joy that will be for all the people. Today in the city of David a Saviour has been born to you. He is Christ the Lord! And this will be a sign to you: you will find a baby wrapped in strips of cloth and lying in a manger."
+
+And suddenly the angel was joined by a huge crowd of angels, a whole army from heaven, filling the sky and praising God. "Glory to God in the highest," they sang, "and on earth peace to people on whom His favour rests!"
+
+Then the angels went back into heaven, and the night was dark and quiet again.
+
+The shepherds looked at each other. "Let's go to Bethlehem," they said, "and see this thing that has happened, which the Lord has told us about!"
+
+So they hurried off into the town. And there they found Mary and Joseph, and the baby lying in the manger, just as the angel had said.
+
+Isn't it interesting who God told first? Not the emperor in Rome. Not King Herod in his palace in Jerusalem. Not the important priests or the clever teachers. God told the news first to shepherds, ordinary working men out in the fields at night.
+
+And how would they know which baby? Lots of babies were born in Bethlehem. But only one was lying in an animals' feeding box. That was the sign.
+
+After they had seen Jesus, the shepherds couldn't keep quiet. They told everyone what the angel had said about this child. And everyone who heard it was amazed.
+
+But Mary kept all these things in her heart and thought about them often.
+
+Then the shepherds went back to their sheep, glorifying and praising God for everything they had heard and seen. It had all happened just as they had been told.
+
+**The promise kept:** The angel called Bethlehem "the city of David" (Luke 2:11). A thousand years before, the shepherd boy David had been chosen as king in Bethlehem. Now, in the same town, shepherds came to see the King from David's family who would rule for ever.
+
+**Read it in your Bible:** Luke 2:8–20
+
+*Glory to God in the highest! Thank you, God, for the good news of great joy: that a Saviour has been born, Christ the Lord. Help me to tell other people about Him, like the shepherds did. Amen.*
+
+### Talk about it together
+
+- Q: What did the angel tell the shepherds?
+  A: That a Saviour had been born in the city of David, Christ the Lord, and that they would find Him wrapped in cloths and lying in a manger.
+- Q: What did the shepherds do after they saw Jesus?
+  A: They told everyone what the angel had said, and went back to their sheep praising God.
+- Q: Why do you think God told the shepherds first, and not the king or the important people?
+  A: To show that Jesus came for ordinary people, not just the rich and important. The good news is "for all the people", including us.
+
+## Simeon and Anna
+
+> "For my eyes have seen Your salvation." — Luke 2:30
+
+When Jesus was eight days old, He was given His name, Jesus, just as the angel had said.
+
+Then, when He was about six weeks old, Mary and Joseph took Him to the temple in Jerusalem. God's law said that parents should bring their firstborn son to the temple to present him to the Lord, and offer a sacrifice. Rich families would offer a lamb. But Mary and Joseph offered what poor families gave: two young pigeons.
+
+In Jerusalem there lived an old man called Simeon. He loved God, and he had been waiting all his life for God to come and comfort His people. The Holy Spirit was with Simeon. And the Holy Spirit had told him that he would not die until he had seen the Christ, the Saviour God had promised.
+
+That day, the Holy Spirit led Simeon into the temple courts. And when Mary and Joseph came in carrying baby Jesus, Simeon knew. This was the one!
+
+Simeon took the baby in his arms and praised God.
+
+"Sovereign Lord," he said, "as You have promised, You now let Your servant go in peace. For my eyes have seen Your salvation, which You have prepared for all people to see: a light to show the way to people of every nation, and the glory of Your people Israel."
+
+Mary and Joseph were amazed at what Simeon said about their baby. Simeon blessed them. Then he told Mary that her son would cause many people to rise and to fall, and that one day she would have great sorrow, like a sword piercing her heart.
+
+There was also a very old woman in the temple called Anna. She was a prophetess. Her husband had died when she was young, after only seven years of marriage, and she was now eighty-four years old. Anna never left the temple. She worshipped God there night and day, praying and fasting.
+
+Anna came up to them at that very moment. She began to thank God, and she told everyone who was waiting for God to rescue His people all about this child.
+
+Simeon and Anna had waited and waited, their whole long lives. Many people had probably given up hoping. But Simeon and Anna kept on trusting God and praying. And at the very end of their lives, they held the answer in their arms.
+
+When Mary and Joseph had done everything God's law said, they went home. And the child grew and became strong. He was filled with wisdom, and God's grace was on Him.
+
+**The promise kept:** Simeon called Jesus "a light for revelation to the Gentiles" (Luke 2:32). That was a promise from Isaiah, who said God's Servant would be "a light for the nations" (Isaiah 49:6). Jesus didn't come for one nation only. He came for the whole world.
+
+**Read it in your Bible:** Luke 2:21–40
+
+*Dear God, thank you for Simeon and Anna, who never stopped waiting for you. Help me to keep trusting you and praying, even when I have to wait. Thank you that Jesus is the light for the whole world. Amen.*
+
+### Talk about it together
+
+- Q: What had the Holy Spirit told Simeon?
+  A: That he would not die before he had seen the Christ, the Saviour God had promised.
+- Q: Who was Anna, and what did she do when she saw Jesus?
+  A: A very old prophetess who worshipped in the temple night and day. She thanked God and told everyone who was waiting for God's rescue about Jesus.
+- Q: Simeon and Anna waited their whole lives. What helps us to keep trusting God when we have to wait?
+  A: Remembering God's promises, praying, and spending time with other people who love God, as Anna did in the temple every day.
+
+## The Wise Men and the Star
+
+> "When they saw the star, they rejoiced with great delight." — Matthew 2:10
+
+Some time after Jesus was born in Bethlehem, some visitors arrived in Jerusalem from far away in the east. They were wise men, called Magi, who studied the stars.
+
+"Where is the one who has been born King of the Jews?" they asked. "We saw His star in the east, and we have come to worship Him."
+
+When King Herod heard this, he was very worried. He was the king! He didn't want any other king taking his place. And all Jerusalem was worried with him.
+
+Herod called together the chief priests and the teachers of God's law. "Where is the Christ going to be born?" he asked them.
+
+"In Bethlehem in Judea," they answered, "because that's what the prophet wrote." And they told him the words of the prophet Micah.
+
+Then Herod secretly called the wise men to meet him. He found out exactly when the star had first appeared. Then he sent them to Bethlehem. "Go and search carefully for the child," he said. "As soon as you find Him, come back and tell me, so that I can go and worship Him too."
+
+But Herod was lying. He didn't want to worship Jesus at all. He wanted to get rid of Him.
+
+So the wise men set off for Bethlehem. And the star they had seen in the east went ahead of them, until it stopped over the place where the child was. When they saw the star, they were filled with joy!
+
+They came to the house, and they saw the child with His mother, Mary. And they bowed down and worshipped Him.
+
+Then they opened their treasure chests and gave Him gifts: gold, and frankincense, and myrrh. Gold was a gift for a king. Frankincense was sweet-smelling incense, used in worshipping God. And myrrh was a perfume, used when people were buried. They were strange gifts for a little child. But they were just right for Jesus, who is the King, who is God, and who would one day die for us.
+
+That night, God warned the wise men in a dream not to go back to Herod. So they went home to their own country by a different road.
+
+The Bible doesn't tell us how many wise men there were. We often say three, because there were three gifts. And they didn't come to the manger on the night Jesus was born. They came later, to a house, when Jesus was a little older.
+
+The wise men weren't Israelites. They came from a faraway country. But they were the first foreigners to worship Jesus. Already, people from far-off nations were coming to the King.
+
+**The promise kept:** The chief priests told Herod where the Christ would be born by reading Micah's promise: "But you, Bethlehem, in the land of Judah, are by no means least among the rulers of Judah, for out of you will come a ruler who will be the shepherd of My people Israel" (Matthew 2:6).
+
+**Read it in your Bible:** Matthew 2:1–12
+
+*Dear Jesus, the wise men travelled a long way to worship you. Help me to worship you too, and to give you my very best. You are my King. Amen.*
+
+### Talk about it together
+
+- Q: How did the wise men find their way to Jesus?
+  A: They followed a star they had seen in the east. In Jerusalem they learned from the prophet Micah that the King would be born in Bethlehem, and the star went ahead of them and stopped over the house.
+- Q: What gifts did the wise men bring, and what do they tell us about Jesus?
+  A: Gold for a King, frankincense for God, and myrrh, used at burials, which pointed to His death for us.
+- Q: The wise men gave Jesus their treasures. What could you give to Jesus?
+  A: We can give Him our love, our time, our worship, and our kindness to others. He wants our hearts most of all.
+
+## Escape to Egypt
+
+> "Out of Egypt I called My Son." — Matthew 2:15
+
+After the wise men had gone, an angel of the Lord appeared to Joseph in a dream.
+
+"Get up!" the angel said. "Take the child and His mother and run away to Egypt. Stay there until I tell you, because Herod is going to search for the child to kill Him."
+
+Joseph didn't wait until morning. He got up that very night, took Jesus and Mary, and left for Egypt. Egypt was a long way away, in another country, where King Herod couldn't reach them.
+
+Do you remember who else went down to Egypt long ago? Jacob and his whole family, when there was a famine and Joseph took care of them there. Now another Joseph was taking God's Son to Egypt to keep Him safe.
+
+When Herod realised that the wise men weren't coming back to tell him where Jesus was, he was furious. He gave a cruel and terrible order: all the little boys in Bethlehem who were two years old or younger were to be killed. There was great weeping in Bethlehem that day.
+
+But Jesus was safe, because God had warned Joseph in time.
+
+Mary and Joseph and Jesus lived in Egypt until wicked King Herod died. Then the angel appeared to Joseph in a dream again. "Get up! Take the child and His mother and go back to the land of Israel. The people who were trying to kill the child are dead."
+
+So Joseph got up and took Jesus and Mary back to the land of Israel. But when he heard that Herod's son was now ruling in Judea, where Bethlehem was, he was afraid to go there. God warned him in another dream. So instead, Joseph took his family north to Galilee, back to the little town of Nazareth.
+
+And that's where Jesus grew up: in Nazareth, in the carpenter's family. That's why people later called Him "Jesus of Nazareth".
+
+Herod was a powerful king, and he tried to stop God's plan. But nobody can stop God's plans. God watched over His Son, and He used Joseph to keep Him safe, one dream at a time.
+
+**The promise kept:** Matthew tells us that Jesus coming back from Egypt kept the words of the prophet Hosea: "Out of Egypt I called My Son" (Matthew 2:15). Long ago God called His people Israel out of Egypt. Now God's own Son came out of Egypt too.
+
+**Read it in your Bible:** Matthew 2:13–23
+
+*Dear God, thank you that you kept Jesus safe, and that no one can stop your plans. Please watch over children everywhere who are in danger or have to leave their homes. Amen.*
+
+### Talk about it together
+
+- Q: Why did Joseph take Mary and Jesus to Egypt?
+  A: Because an angel warned him in a dream that King Herod wanted to kill Jesus.
+- Q: Where did Jesus grow up after they came back from Egypt?
+  A: In the town of Nazareth, in Galilee.
+- Q: Jesus and His family had to run away from their home to a different country. Who are some people today who have had to leave their homes?
+  A: Refugees who have had to flee war or danger. Jesus knows what that is like. We can pray for them and look for ways to help and welcome them. (Herod's cruelty is told in one sentence; there's no need to dwell on it.)
+
+## The Boy in the Temple
+
+> "And Jesus grew in wisdom and stature, and in favor with God and man." — Luke 2:52
+
+Every year, Mary and Joseph went to Jerusalem for the Feast of the Passover. It was a long walk from Nazareth, and lots of families from their town travelled together in a big, noisy group.
+
+When Jesus was twelve years old, He went with them, as usual.
+
+After the festival was over, everyone set off for home. But Jesus stayed behind in Jerusalem. Mary and Joseph didn't know. They thought He was somewhere in the big crowd, with friends or cousins. So they walked for a whole day before they began to look for Him among their relatives and friends.
+
+But Jesus wasn't there! Nobody had seen Him.
+
+Can you imagine how worried Mary and Joseph must have been? They hurried all the way back to Jerusalem to search for Him. They looked and looked.
+
+At last, after three days, they found Him. He was in the temple courts, sitting among the teachers of God's law, listening to them and asking them questions. Everyone who heard Jesus was amazed at how much He understood, and at His answers.
+
+When Mary and Joseph saw Him, they were astonished.
+
+"Son, why have You done this to us?" His mother asked. "Your father and I have been so worried, searching everywhere for You!"
+
+"Why were you looking for Me?" Jesus asked. "Didn't you know I had to be in My Father's house?"
+
+Mary and Joseph didn't understand what He meant. But Jesus was talking about God. God was His real Father, and the temple was His Father's house.
+
+Even at twelve years old, Jesus knew who He was. He knew He was God's Son.
+
+But here's something important. Jesus didn't stay in the temple. He went back home to Nazareth with Mary and Joseph, and He obeyed them. Even though He was God's Son, He did what His parents told Him.
+
+And Mary treasured up all these things in her heart.
+
+Jesus grew up in Nazareth. He got taller and stronger. He learned and grew wiser. He probably learned to be a carpenter from Joseph, making tables and doors and ploughs. And God was pleased with Him, and people liked Him.
+
+Jesus knows what it's like to be a child. He knows what it's like to learn and grow up, and to be part of a family. He was a real boy, just like you.
+
+**Read it in your Bible:** Luke 2:41–52
+
+*Dear Jesus, thank you that you know what it's like to be a child. Please help me to grow like you did: in wisdom, and in my body, and in loving God and other people. Help me to obey my parents. Amen.*
+
+### Talk about it together
+
+- Q: Where did Mary and Joseph find Jesus after searching for three days?
+  A: In the temple courts, sitting among the teachers, listening to them and asking questions.
+- Q: What did Jesus mean when He said, "I had to be in My Father's house"?
+  A: He meant that God was His Father, and the temple was God's house. Even at twelve, Jesus knew He was God's Son.
+- Q: The Bible says Jesus grew in four ways: in wisdom, in stature (getting taller), in favour with God, and in favour with people. Which one would you like to grow in?
+  A: Talk about each one together. We can ask God to help us grow in wisdom by learning from the Bible, and to grow in loving Him and other people.
+
+## A Voice in the Wilderness
+
+> "Prepare the way for the Lord, make straight paths for Him." — Matthew 3:3
+
+Many years went by. Jesus grew up in Nazareth, and His relative John grew up in the wilderness. And when John was a man, God gave him his job to do.
+
+John began preaching out in the desert near the River Jordan. He looked like one of the old prophets. He wore rough clothes made of camel's hair, with a leather belt around his waist, and he ate locusts and wild honey.
+
+"Repent," John told the people, "for the kingdom of heaven is near!" To repent means to turn around: to stop doing wrong and turn back to God.
+
+And people came to hear him, crowds and crowds of them, from Jerusalem and from all over the countryside. They told God they were sorry for their sins, and John baptised them in the River Jordan. That means he dipped them in the water, as a sign that they were turning away from their sins and wanted God to wash them clean.
+
+The crowds asked John, "What should we do?"
+
+"If you have two coats," said John, "share with someone who has none. And if you have food, share that too."
+
+Tax collectors came to be baptised. Tax collectors were often greedy, and took more money than they should. "Teacher, what should we do?" they asked.
+
+"Don't take any more money than you're supposed to," John told them.
+
+Some soldiers asked, "And what about us? What should we do?"
+
+"Don't bully people or tell lies about them to get their money," said John. "Be happy with your pay."
+
+Some people began to wonder whether John might be the promised Christ. But John told them, "I baptise you with water. But someone is coming who is much greater than I am. I'm not even good enough to carry His sandals! He will baptise you with the Holy Spirit and with fire."
+
+John knew exactly what his job was. He wasn't the King. He was getting everyone ready for the King. Like a messenger who runs ahead shouting, "The King is coming! Get ready!"
+
+**The promise kept:** Matthew tells us that John was the one Isaiah had spoken about seven hundred years before: "A voice of one calling in the wilderness, 'Prepare the way for the Lord, make straight paths for Him'" (Matthew 3:3).
+
+**Read it in your Bible:** Matthew 3:1–12; Luke 3:7–18
+
+*Dear God, I am sorry for the wrong things I have done. Please help me to turn away from them and turn to you. Help me to share what I have, like John said. Amen.*
+
+### Talk about it together
+
+- Q: What did John the Baptist wear and eat?
+  A: Rough clothes made of camel's hair with a leather belt, and he ate locusts and wild honey.
+- Q: What does "repent" mean?
+  A: To turn around: to stop doing wrong and turn back to God.
+- Q: John told people that turning back to God meant sharing their coats and food, and being honest and fair. What could that look like for you?
+  A: Perhaps sharing toys or snacks, being honest at school, or not being greedy. Real repentance changes how we treat other people.
+
+## Jesus Is Baptised
+
+> "This is My beloved Son, in whom I am well pleased!" — Matthew 3:17
+
+When Jesus was about thirty years old, He left Nazareth and came to the River Jordan, where John was baptising people. Jesus came to be baptised too.
+
+But John tried to stop Him. "I need to be baptised by You," John said, "and You are coming to me?"
+
+John knew that Jesus had never done anything wrong. Everyone else came to be baptised because they were sorry for their sins. But Jesus had no sins to be sorry for.
+
+"Let it be so for now," Jesus replied. "It is right for us to do this, to do everything God wants." Jesus was choosing to stand with sinful people, right alongside them in the water. So John agreed, and baptised Him.
+
+As soon as Jesus came up out of the water, the sky above Him opened. Jesus saw the Spirit of God coming down like a dove and resting on Him.
+
+And a voice came from heaven: "This is My beloved Son, in whom I am well pleased!"
+
+That was God the Father speaking.
+
+Think about this moment. Jesus, the Son, was standing in the river. The Holy Spirit was coming down on Him like a dove. And God the Father was speaking from heaven. There is only one God. But in this one moment we see God the Father, God the Son, and God the Holy Spirit, all together.
+
+And listen to what the Father said. "This is My Son. I love Him. I am so pleased with Him." Jesus hadn't preached any sermons yet. He hadn't done any miracles. But the Father loved Him and was delighted with Him.
+
+When we trust in Jesus, God makes us His children too. And He loves us, not because of what we do, but because we belong to Jesus.
+
+After this, Jesus began His work. He was about to start teaching and healing and showing everyone what God is like.
+
+**Read it in your Bible:** Matthew 3:13–17; Luke 3:21–23
+
+*Dear God, thank you that you love your Son, Jesus. Thank you that when I trust in Him, I become your child and you love me too. Amen.*
+
+### Talk about it together
+
+- Q: Why didn't John want to baptise Jesus at first?
+  A: Because he knew Jesus had never sinned, and said that Jesus should baptise him instead.
+- Q: What happened when Jesus came up out of the water?
+  A: The sky opened, the Spirit of God came down on Him like a dove, and God's voice said, "This is My beloved Son, in whom I am well pleased."
+- Q: God the Father, the Son and the Holy Spirit were all there at Jesus' baptism. What does this tell us about God?
+  A: That there is one God, who is Father, Son and Holy Spirit. It's a mystery, but the Bible shows us all three together here. (Children often find this easiest as "three in one", like the Father who loves, the Son who saves, and the Spirit who helps.)
+
+## Tested in the Desert
+
+> "Man shall not live on bread alone, but on every word that comes from the mouth of God." — Matthew 4:4
+
+After He was baptised, Jesus was led by the Holy Spirit out into the wilderness, a dry and lonely place. There He would be tempted by the devil. To be tempted means to be tested, to be pulled towards doing something wrong.
+
+Jesus didn't eat anything for forty days and forty nights. And after that, He was very hungry.
+
+Then the tempter came to Him. "If You are the Son of God," the devil said, "tell these stones to turn into bread."
+
+Jesus could have done it. But it would have meant using His power for Himself, and listening to the devil instead of to His Father. So Jesus answered with words from the Bible. "It is written," He said, "'Man shall not live on bread alone, but on every word that comes from the mouth of God.'"
+
+Then the devil took Jesus to Jerusalem and stood Him on the very highest point of the temple. "If You are the Son of God," he said, "throw Yourself down. For it is written: 'He will command His angels to take care of You, and they will catch You in their hands, so that You won't even hurt Your foot on a stone.'"
+
+Did you notice? This time the devil quoted the Bible too! But he twisted it, to make it say what he wanted.
+
+Jesus answered him, "It is also written: 'Do not put the Lord your God to the test.'"
+
+Then the devil took Jesus to a very high mountain and showed Him all the kingdoms of the world and how splendid they were. "I will give You all this," he said, "if You will bow down and worship me."
+
+That was the biggest lie of all. And Jesus had had enough.
+
+"Away from Me, Satan!" Jesus said. "For it is written: 'Worship the Lord your God and serve Him only.'"
+
+Then the devil left Him. And angels came and took care of Jesus.
+
+Every time Jesus was tempted, He answered with God's Word: "It is written." All three of His answers came from Deuteronomy, the book where Moses reminded God's people what they had learned in the wilderness. Long ago, God's people were tested in the wilderness for forty years, and they kept failing. Now Jesus was tested in the wilderness for forty days, and He didn't fail once.
+
+Jesus knows what it's like to be tempted. And because He won, He can help us when we are tempted too.
+
+**Read it in your Bible:** Matthew 4:1–11
+
+*Dear Jesus, thank you that you never gave in to temptation. When I am tempted to do wrong, please help me to remember your Word and to say no. Amen.*
+
+### Talk about it together
+
+- Q: What three things did the devil tempt Jesus to do?
+  A: To turn stones into bread, to throw Himself off the top of the temple, and to bow down and worship the devil in return for all the kingdoms of the world.
+- Q: How did Jesus answer each time?
+  A: With words from the Bible: "It is written."
+- Q: What kinds of things are you tempted to do? How can knowing God's Word help you?
+  A: Talk honestly; grown-ups are tempted too. Learning Bible verses by heart, like "Be kind to one another" or "The Lord is my shepherd", helps us remember what's true when we're tempted.
+
+## "Come and See"
+
+> "'Come and see,' He replied." — John 1:39
+
+One day, John the Baptist was standing with two of his followers when Jesus walked by. John looked at Jesus and said, "Look, the Lamb of God!"
+
+When John's two followers heard this, they left John and followed Jesus.
+
+Jesus turned around and saw them following. "What do you want?" He asked.
+
+"Rabbi," they said, which means Teacher, "where are You staying?"
+
+"Come and see," said Jesus.
+
+So they went with Him and saw where He was staying, and they spent the rest of the day with Him. It was about four o'clock in the afternoon.
+
+One of those two men was called Andrew. And the very first thing Andrew did was go and find his brother, Simon. "We have found the Messiah!" he told him. Messiah means the same as Christ: the King God had promised.
+
+Andrew brought Simon to Jesus. Jesus looked at him and said, "You are Simon, son of John. You will be called Peter." The name Peter means "rock".
+
+The next day Jesus decided to go to Galilee. He found a man called Philip, and said to him, "Follow Me."
+
+Philip went and found his friend Nathanael. "We have found the one Moses wrote about, the one the prophets told us was coming!" Philip said. "It's Jesus of Nazareth, the son of Joseph."
+
+"Nazareth?" said Nathanael. "Can anything good come from Nazareth?" Nazareth was just a little nothing of a town.
+
+"Come and see," said Philip.
+
+When Jesus saw Nathanael coming towards Him, He said, "Here is a true Israelite, a man with nothing false in him."
+
+Nathanael was surprised. "How do You know me?" he asked.
+
+"Before Philip called you," said Jesus, "I saw you under the fig tree."
+
+Nobody could have seen Nathanael sitting under that fig tree. But Jesus had. And Nathanael realised who Jesus really was. "Teacher," he said, "You are the Son of God! You are the King of Israel!"
+
+"Do you believe just because I told you I saw you under the fig tree?" said Jesus. "You will see much greater things than that."
+
+Did you notice what happened in this story? One person met Jesus, and then went and brought someone else. John pointed to Jesus. Andrew brought Simon. Philip brought Nathanael. And the invitation was always the same: "Come and see."
+
+**The promise kept:** Jesus told Nathanael, "You will all see heaven open and the angels of God ascending and descending on the Son of Man" (John 1:51). Do you remember Jacob's dream of a stairway to heaven, with angels going up and down? Jesus was saying that He is that stairway. He is the way between heaven and earth.
+
+**Read it in your Bible:** John 1:35–51
+
+*Dear Jesus, thank you that you invite us to come and see who you are. Help me to follow you, and to bring my friends to meet you too. Amen.*
+
+### Talk about it together
+
+- Q: What was the first thing Andrew did after he spent the day with Jesus?
+  A: He went to find his brother Simon and told him, "We have found the Messiah!" and brought him to Jesus.
+- Q: How did Jesus surprise Nathanael?
+  A: He told Nathanael that He had seen him under the fig tree before Philip called him, though no one could have seen him there.
+- Q: Andrew and Philip each brought someone to Jesus. Who could you invite to "come and see" Jesus?
+  A: Think of a friend or relative together. You might invite them to church, share a Bible story, or simply tell them what Jesus means to you.
+
+## Water into Wine
+
+> "His mother said to the servants, 'Do whatever He tells you.'" — John 2:5
+
+A few days later, there was a wedding in a village called Cana, in Galilee. Jesus' mother, Mary, was there, and Jesus and His new followers, His disciples, had been invited too.
+
+Weddings in those days were big parties that could go on for a whole week. Everyone ate and drank and celebrated. It was the job of the family holding the wedding to make sure there was plenty of food and drink for all the guests.
+
+But in the middle of the party, the wine ran out.
+
+That was a disaster! The bride and groom would be terribly embarrassed. People would talk about it for years.
+
+Mary went to Jesus. "They have no more wine," she said.
+
+"Woman, why do you come to Me?" Jesus answered. "My time has not yet come." Jesus knew there would be a right time for Him to show everyone who He was.
+
+But Mary turned to the servants. "Do whatever He tells you," she said.
+
+Nearby stood six big stone water jars. The Jewish people used the water in them for washing in a special way before they ate. Each jar could hold twenty or thirty gallons. That's as much as a bath full of water!
+
+Jesus said to the servants, "Fill the jars with water." So they filled them right to the brim.
+
+Then Jesus said, "Now draw some out and take it to the master of the banquet," the man who was in charge of the party. So they did.
+
+The master of the banquet tasted it. And it wasn't water any more. It was wine! He didn't know where it had come from, but the servants who had filled the jars knew.
+
+The master of the banquet called the bridegroom over. "Everyone serves the best wine first," he said, "and then the cheaper wine later on, when people have already had plenty. But you have kept the best wine until now!"
+
+This was the very first of Jesus' signs, the miracles that showed who He was. He did it in Cana in Galilee. He showed His glory, and His disciples put their trust in Him.
+
+Isn't it interesting what Jesus chose for His very first miracle? He didn't do it in front of huge crowds. He did it quietly, at a wedding, to save a family from embarrassment and to keep a happy party going. Jesus cares about our everyday lives: our families, our celebrations, our troubles big and small. And when He gives, He gives the very best.
+
+**Read it in your Bible:** John 2:1–11
+
+*Dear Jesus, thank you that you care about every part of my life, even the small things. Help me to do whatever you tell me, like Mary said. Amen.*
+
+### Talk about it together
+
+- Q: What problem happened at the wedding in Cana?
+  A: The wine ran out in the middle of the party, which would have been very embarrassing for the family.
+- Q: What did Mary tell the servants, and what did Jesus ask them to do?
+  A: Mary told them, "Do whatever He tells you." Jesus asked them to fill six big stone jars with water, and then take some to the master of the banquet. The water had become wine.
+- Q: Jesus' first miracle was at a party, helping a family. What does that tell us about what Jesus cares about?
+  A: That Jesus cares about ordinary, everyday things, like families, celebrations, and people being embarrassed. We can bring Him any problem, big or small.
+
+## Nicodemus Comes at Night
+
+> "For God so loved the world that He gave His one and only Son, that everyone who believes in Him shall not perish but have eternal life." — John 3:16
+
+There was an important man called Nicodemus. He was a Pharisee, one of the strict teachers of God's law, and he was a leader of the Jewish people. Everyone respected him.
+
+Nicodemus had heard about Jesus and the amazing things He was doing. He wanted to talk to Him. But he came to see Jesus at night, when nobody would see him.
+
+"Teacher," said Nicodemus, "we know that You are a teacher who has come from God. Nobody could do the signs You are doing if God were not with him."
+
+Jesus answered, "I tell you the truth, no one can see the kingdom of God unless he is born again."
+
+Nicodemus was puzzled. "How can a man be born when he is old?" he asked. "He can't go back inside his mother and be born a second time!"
+
+"I tell you the truth," said Jesus, "no one can enter the kingdom of God unless he is born of water and the Spirit. People give birth to people. But the Spirit gives birth to spirit. Don't be surprised when I say you must be born again."
+
+Jesus was talking about a new start, from the inside out. Not being born as a baby again, but having a brand-new heart and a new life, made by God's Holy Spirit.
+
+"The wind blows wherever it wants," said Jesus. "You hear its sound, but you can't tell where it comes from or where it's going. It's like that with everyone born of the Spirit." You can't see the wind, but you can see what it does: the trees moving, the leaves flying. You can't see the Spirit either, but you can see what He does when He changes someone's life.
+
+"How can this be?" asked Nicodemus.
+
+Then Jesus told him about something that had happened long ago. "Just as Moses lifted up the snake in the wilderness," He said, "so the Son of Man must be lifted up, so that everyone who believes in Him may have eternal life."
+
+Do you remember the story of the bronze snake on the pole? Anyone who had been bitten could look at it and live. Jesus was saying that one day He would be lifted up too, on a cross. And anyone who looks to Him and trusts Him will be saved.
+
+Then Jesus said some of the most famous words in the whole Bible: "For God so loved the world that He gave His one and only Son, that everyone who believes in Him shall not perish but have eternal life."
+
+Nicodemus went away with a lot to think about. But he didn't forget. Later in the Bible, we see him again. He stood up for Jesus when the other leaders were against Him. And after Jesus died, Nicodemus helped to bury Him with great love and care.
+
+**The promise kept:** Jesus Himself pointed back to the bronze snake (John 3:14). What Moses did in the wilderness was a picture, given hundreds of years before, of what Jesus would do on the cross.
+
+**Read it in your Bible:** John 3:1–21
+
+*Dear God, thank you that you love the whole world so much that you gave your Son, Jesus. Please give me a new heart by your Holy Spirit. I believe in Jesus. Amen.*
+
+### Talk about it together
+
+- Q: Why do you think Nicodemus came to Jesus at night?
+  A: Perhaps because he was an important leader and didn't want other people to see him visiting Jesus.
+- Q: What did Jesus mean when He said, "You must be born again"?
+  A: Not being born as a baby again, but having a new start and a new heart, made by God's Holy Spirit.
+- Q: Can you say John 3:16 together? What does it tell us about God?
+  A: "For God so loved the world that He gave His one and only Son, that everyone who believes in Him shall not perish but have eternal life." It tells us that God loves everyone, and that everyone who trusts Jesus has life for ever with Him.
+
+## The Woman at the Well
+
+> "But whoever drinks the water I give him will never thirst." — John 4:14
+
+Jesus and His disciples were walking from Judea back to Galilee, and they had to go through a land called Samaria. The Jews and the Samaritans didn't like each other at all, and they usually didn't speak to each other.
+
+At about midday, they came to a town called Sychar. Near the town was a well that had been dug long, long ago by Jacob. Jesus was tired from the long walk, so He sat down by the well. His disciples went into the town to buy food.
+
+Then a Samaritan woman came to the well with her water jar. She came alone, in the heat of the day.
+
+"Will you give Me a drink?" Jesus asked her.
+
+The woman was astonished. "You are a Jew," she said, "and I am a Samaritan woman. How can You ask me for a drink?"
+
+"If you knew the gift of God," Jesus answered, "and who it is that is asking you for a drink, you would have asked Him, and He would have given you living water."
+
+"Sir," said the woman, "You don't have a bucket, and the well is deep. Where can You get this living water? Are You greater than our father Jacob, who gave us this well?"
+
+"Everyone who drinks this water will be thirsty again," said Jesus. "But whoever drinks the water I give will never be thirsty again. The water I give will become like a spring inside them, bubbling up to eternal life."
+
+"Sir, give me this water," she said, "so that I won't get thirsty and have to keep coming here!"
+
+Then Jesus told her things about her life that a stranger couldn't possibly know. She had been married five times, and the man she was living with now was not her husband. Perhaps that was why she came to the well alone, when nobody else was there.
+
+"Sir," said the woman, "I can see that You are a prophet." Then she said, "I know that the Messiah is coming. When He comes, He will explain everything to us."
+
+And Jesus said, "I am He, the one speaking to you."
+
+Just then His disciples came back. They were surprised to find Jesus talking with a Samaritan woman. And the woman left her water jar and hurried back into the town.
+
+"Come and see a man who told me everything I ever did!" she said to everyone. "Could this be the Christ?"
+
+The people came out to see Jesus. Many of them believed in Him because of what the woman told them. They asked Him to stay, and He stayed there two days. And many more believed because of what Jesus said.
+
+"Now we believe not just because of what you told us," they said to the woman. "We have heard Him for ourselves, and we know that this man really is the Saviour of the world."
+
+Jesus knew everything about her, even the things she was ashamed of. And He didn't turn away from her. He offered her living water. And the woman who came to the well alone went back and brought her whole town to Jesus.
+
+**The promise kept:** The woman said, "I know that Messiah is coming." Jesus answered, "I who speak to you am He" (John 4:25–26). The King God had promised for so long was sitting by Jacob's well.
+
+**Read it in your Bible:** John 4:1–42
+
+*Dear Jesus, thank you that you know everything about me and still love me. Please give me your living water, so that I will never be thirsty for anything more than you. Amen.*
+
+### Talk about it together
+
+- Q: Why was the woman surprised when Jesus asked her for a drink?
+  A: Because He was a Jew and she was a Samaritan woman, and Jews and Samaritans didn't usually speak to each other.
+- Q: What did Jesus mean by "living water"?
+  A: The new life He gives, which satisfies us deep inside and lasts for ever, like a spring that never runs dry.
+- Q: Jesus knew all about the woman's life and still talked kindly to her. How does it feel to know that Jesus knows everything about you and still loves you?
+  A: Let your child answer. It can feel both a little scary and very comforting. Nothing we've done can make Jesus stop loving us, and He always welcomes us when we come to Him.
+
+## "Your Son Will Live"
+
+> "'Go,' said Jesus. 'Your son will live.'" — John 4:50
+
+After two days in Samaria, Jesus went on into Galilee. Once again He came to the village of Cana, where He had turned the water into wine.
+
+In the town of Capernaum, about a day's walk away, there lived a royal official, an important man who worked for the king. And his son was very ill. He had a high fever, and he was about to die.
+
+When the official heard that Jesus had come back to Galilee, he left his son's bedside and hurried all the way to Cana. He found Jesus and begged Him, "Please come down to Capernaum and heal my son, before he dies!"
+
+"Unless you people see signs and wonders," said Jesus, "you will never believe."
+
+But the man didn't give up. "Sir," he pleaded, "please come down before my little boy dies!"
+
+Then Jesus said, "Go. Your son will live."
+
+That was all. Jesus didn't go with him. He didn't see the boy or touch him. He just spoke.
+
+And the man believed what Jesus said. He turned around and set off for home.
+
+It must have been a long walk. Did the man wonder all the way whether it was really true? Did he hurry? The Bible just says that he took Jesus at His word.
+
+The next day, while he was still on the way home, some of his servants came running to meet him. "Your son is alive!" they said. "He's getting better!"
+
+"What time did he start to get better?" the official asked.
+
+"The fever left him yesterday," they said, "at one o'clock in the afternoon."
+
+And the father realised: that was the very same time that Jesus had said, "Your son will live."
+
+So the official and his whole household, everyone who lived and worked in his house, believed in Jesus.
+
+This was the second sign that Jesus did in Galilee.
+
+Jesus didn't need to be in the same room to heal the boy. He didn't even need to be in the same town! His word was enough. When Jesus says something, it happens.
+
+The official had to trust Jesus' word before he saw anything with his own eyes. And that's what faith is: believing what Jesus says, even before we see it.
+
+**Read it in your Bible:** John 4:43–54
+
+*Dear Jesus, thank you that your word is powerful, and that you can help people even when you're not standing right next to them. Please help people I know who are ill. Help me to trust your word. Amen.*
+
+### Talk about it together
+
+- Q: What did the royal official ask Jesus to do?
+  A: To come to Capernaum and heal his son, who was very ill and about to die.
+- Q: How did the official find out that his son had been healed at the very moment Jesus spoke?
+  A: His servants told him the fever left at one o'clock the day before, and he realised that was exactly when Jesus said, "Your son will live."
+- Q: The official believed Jesus' word before he saw his son get better. What does it mean to take Jesus at His word?
+  A: To trust that what Jesus says is true, even before we see it happen. That's what faith is. You could pray together now for someone who is ill.
+
+## Good News in Nazareth
+
+> "The Spirit of the Lord is on Me, because He has anointed Me to preach good news to the poor." — Luke 4:18
+
+Jesus came back to Nazareth, the town where He had grown up. Everyone knew Him there. They had watched Him grow up in the carpenter's family.
+
+On the Sabbath day, He went to the synagogue, the meeting place where people gathered to worship God and hear His Word, just as He always did. He stood up to read, and they handed Him the scroll of the prophet Isaiah.
+
+Jesus unrolled the scroll and found the place where it was written:
+
+"The Spirit of the Lord is on Me, because He has anointed Me to preach good news to the poor. He has sent Me to proclaim freedom for the prisoners, and sight for the blind, to set free those who are crushed, and to announce the year of the Lord's favour."
+
+Then Jesus rolled up the scroll, gave it back to the attendant, and sat down. Everyone in the synagogue was staring at Him.
+
+And Jesus said, "Today this Scripture has come true while you were listening."
+
+At first, everyone spoke well of Him. They were amazed at the gracious words He spoke. "Isn't this Joseph's son?" they said.
+
+But Jesus knew what they were thinking. They had heard about the miracles He had done in other towns, and they wanted Him to do miracles for them too. They thought that because He had grown up there, He belonged to them.
+
+"I tell you the truth," Jesus said, "no prophet is welcome in his own home town." And He reminded them of two old stories. "There were many widows in Israel in Elijah's time, when there was no rain for three and a half years. But Elijah was sent to none of them, only to a widow in Zarephath, in Sidon. And there were many people with leprosy in Israel in Elisha's time, but none of them were healed, only Naaman the Syrian."
+
+Do you remember those stories? Both the widow and Naaman were foreigners, not Israelites at all. Jesus was saying that God's good news isn't just for one town or one people. It is for the whole world, for anyone who will trust Him.
+
+When the people heard that, they were furious. They got up, drove Jesus out of the town, and took Him to the edge of the cliff on the hill where the town was built. They wanted to throw Him off!
+
+But Jesus walked right through the middle of the crowd and went on His way. It wasn't yet the time for Him to die. He had work to do.
+
+**The promise kept:** Jesus read the words of Isaiah (Isaiah 61:1–2) and said, "Today this Scripture is fulfilled in your hearing" (Luke 4:21). He is the one the Spirit of the Lord rests on, sent to bring good news, freedom and sight.
+
+**Read it in your Bible:** Luke 4:14–30
+
+*Dear Jesus, thank you that you came to bring good news to the poor, freedom to people who are trapped, and sight to the blind. Thank you that your good news is for everyone. Amen.*
+
+### Talk about it together
+
+- Q: What did Jesus read in the synagogue at Nazareth, and what did He say afterwards?
+  A: He read Isaiah's words about the one God would send to preach good news to the poor and set people free. Then He said, "Today this Scripture has come true while you were listening."
+- Q: Why did the people of Nazareth get so angry?
+  A: Because Jesus reminded them that God had sent Elijah and Elisha to help foreigners, and they didn't like the idea that God's good news was for other people too, not just for them.
+- Q: Jesus said His good news is for the poor, the prisoners, the blind and people who are crushed. Who do you know who needs some good news?
+  A: Think together about people who are poor, lonely, ill or struggling. We can pray for them and look for ways to show them Jesus' love.
+
+## Fishers of People
+
+> "'Come, follow Me,' Jesus said, 'and I will make you fishers of men.'" — Matthew 4:19
+
+One day Jesus was standing by the Lake of Galilee, with huge crowds of people pressing all around Him to hear God's Word. There were so many that He could hardly move.
+
+Jesus saw two fishing boats pulled up on the shore. The fishermen had got out and were washing their nets. One of the boats belonged to Simon Peter. So Jesus climbed into Simon's boat and asked him to push out a little way from the shore. Then Jesus sat down in the boat and taught the crowds from there, with His voice carrying across the water.
+
+When He had finished speaking, Jesus said to Simon, "Now go out into the deep water, and let down your nets for a catch."
+
+"Master," said Simon, "we've worked hard all night and haven't caught a thing." Simon was an expert fisherman. He knew that the best time to catch fish was at night, not in the middle of the day. "But because You say so," he said, "I will let down the nets."
+
+So they rowed out into the deep water and let down their nets. And they caught so many fish that their nets began to tear! They waved to their partners in the other boat to come and help. The other boat came, and they filled both boats so full of fish that the boats began to sink!
+
+When Simon Peter saw this, he fell down at Jesus' knees. "Go away from me, Lord," he said. "I am a sinful man!"
+
+Peter suddenly realised who Jesus really was. And standing so close to Him, Peter felt how sinful and unworthy he was.
+
+His partners, James and John, the sons of Zebedee, were amazed too.
+
+But Jesus didn't go away. "Don't be afraid," He said to Simon. "From now on you will catch people."
+
+Jesus didn't mean that they would catch people in nets! He meant that instead of bringing fish into their boats, they would bring people to God.
+
+So when they had brought their boats back to the shore, Simon Peter and James and John left everything, their boats, their nets, and the biggest catch of fish they had ever seen, and they followed Jesus.
+
+Peter thought he was too sinful to be near Jesus. But Jesus didn't send him away. He called him to follow. That's what Jesus does with all of us. He doesn't wait for us to be good enough. He calls us just as we are, and He makes us into something new.
+
+The King had come, and now He was gathering His friends. The greatest story of all was only just beginning.
+
+**Read it in your Bible:** Luke 5:1–11; Matthew 4:18–22
+
+*Dear Jesus, thank you that you call people to follow you, even when they feel they're not good enough. I want to follow you too. Please help me to bring other people to you. Amen.*
+
+### Talk about it together
+
+- Q: Why did Simon think letting down the nets was a strange idea?
+  A: Because he was an expert fisherman who had fished all night and caught nothing, and the middle of the day was not a good time for fishing.
+- Q: What did Simon Peter say when he saw all the fish, and what did Jesus say back?
+  A: Peter said, "Go away from me, Lord, I am a sinful man!" Jesus said, "Don't be afraid. From now on you will catch people."
+- Q: Peter, James and John left everything to follow Jesus. What does it mean for you to follow Jesus?
+  A: It means trusting Him, listening to Him, and doing what He says, every day. Jesus calls children to follow Him too, just as they are.

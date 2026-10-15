@@ -1,0 +1,132 @@
+{
+ "kind": "sermon",
+ "slug": "himself",
+ "language": "ko",
+ "job_issue": 5875,
+ "references": [
+  {
+   "reference": "Matthew 8:17",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "Matthew 13:43",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "Ephesians 3:19",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "Matthew 22:42",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "1 Peter 5:8",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Mark 11:22",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Colossians 2:9",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Colossians 1:26",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Colossians 1:26",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "Colossians 1:27",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "1 Corinthians 2:16",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "2 Corinthians 10:5",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 1:16",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Psalm 84:7",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "개역 (Take Root korean) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Psalm 113:2",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 6:19",
+   "status": "self_rendered",
+   "block_index": 32
+  }
+ ]
+}

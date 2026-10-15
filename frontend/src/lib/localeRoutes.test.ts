@@ -98,15 +98,13 @@ describe('render.yaml legacy redirects', () => {
 		['/author-biographies', '/biographies'],
 		['/ochorus-books', '/books'],
 		['/about-us', '/about'],
-		['/home', '/'],
-		['/books/a-king-in-a-manger-2', '/books'],
-		['/books/grace-for-grace-2', '/books']
+		['/home', '/']
 	];
 
 	for (const [from, to] of LEGACY) {
 		it(`301s ${from} -> ${to}`, () => {
-			// Both slash forms are listed in render.yaml; assert the rule exists
-			// and points where we intend.
+			// One rule covers both slash forms (Render's matcher ignores the
+			// trailing slash); assert it exists and points where we intend.
 			const rule = new RegExp(
 				`source: ${from.replace(/\//g, '\\/')}\\/?\\n\\s*destination: ${to.replace(/\//g, '\\/')}\\n`
 			);

@@ -1304,7 +1304,7 @@ class UnfailingSpringsDisplayLineTests(SimpleTestCase):
     `corrections.py`. Asserted per edition, for the same reason as above."""
 
     SLUG = "unfailing-springs"
-    LANGUAGES = {"am", "ar", "en", "es", "fr", "hi", "lg", "pt", "sw", "uk"}
+    LANGUAGES = {"am", "ar", "en", "es", "fr", "hi", "ko", "lg", "pt", "sw", "uk"}
 
     @classmethod
     def setUpClass(cls):
@@ -1508,7 +1508,7 @@ class TrailingBlockRestorationTests(SimpleTestCase):
         unsigned.)"""
         slug = "life-and-diary-of-david-brainerd"
         entries = corrections.BODY_CORRECTIONS[slug]["restored_after"]
-        for lang in ("en", "sw"):
+        for lang in ("en", "sw", "fr"):
             bodies = _book_bodies(slug, lang)
             with self.subTest(language=lang):
                 ((anchor, block),) = [e for e in entries if e[0] in bodies[1]]

@@ -150,5 +150,40 @@
     "note": [
       "Job #4840. Ships with the last of the four Spanish companions: key-teachings-of-a-b-simpson (#5960) and key-teachings-of-jonathan-edwards (#5962) are merged, key-teachings-of-richard-baxter is #5964. «Cristo nuestro Salvador, Santificador, Sanador y Rey que viene» is the Simpson companion's own wording."
     ]
+  },
+  "send-the-fire": {
+    "title": "Envía el fuego: orar por el avivamiento",
+    "description": "Cómo llega el avivamiento y cómo pedirlo en oración. Las conferencias de Charles Finney sobre las condiciones del avivamiento, R. A. Torrey sobre el bautismo con el Espíritu Santo que lo impulsa, y los sermones con que Dios estremeció Nueva Inglaterra bajo Jonathan Edwards.",
+    "note": [
+      "Job #4843. Ships with the last of the plan's three Spanish editions: revival-lectures and baptism-with-the-holy-spirit were already shipped in es; selected-sermons-edwards is this PR."
+    ]
+  },
+  "the-puritan-heart": {
+    "title": "El corazón puritano",
+    "description": "Ocho semanas con tres maestros de la vida interior. Richard Sibbes venda la caña cascada, John Owen hace guerra contra el pecado que aún mora en nosotros, y Thomas Watson descansa toda la lucha en la promesa de que todas las cosas ayudan a bien.",
+    "note": [
+      "Job #4845. Prose-ahead for the plan's last two Spanish books: all-things-for-good («Todas las cosas para bien») already ships in es, the-bruised-reed is this PR, and mortification-of-sin is job #4846. The plan seeds in es once both are merged."
+    ]
+  },
+  "women-of-faith": {
+    "title": "Mujeres de fe",
+    "description": "Un recorrido más largo junto a tres mujeres extraordinarias. Hannah Whitall Smith revela en «El secreto del cristiano para una vida feliz» el secreto de una vida dichosa, y las autobiografías de Amanda Berry Smith y Julia A. J. Foote, dos mujeres negras que predicaron el evangelio por el mundo del siglo XIX, muestran ese secreto vivido a un gran costo.",
+    "note": [
+      "Job #4852. Prose-ahead for the plan's last Spanish book: the-christians-secret-of-a-happy-life-4 already ships in es, a-brand-plucked-from-the-fire is this PR, and amanda-smith-autobiography is job #4850. The plan seeds in es once both are merged."
+    ]
+  },
+  "voices-of-the-early-church": {
+    "title": "Voces de la Iglesia primitiva",
+    "description": "Los primeros siglos cristianos contados con sus propias palabras. Clemente de Roma escribe en nombre de la iglesia de Roma cuando aún vivía la generación de los apóstoles, Ignacio de Antioquía envía sus cartas por el camino del martirio, y Atanasio de Alejandría expone el corazón de la fe —por qué Dios mismo se hizo hombre— en «Sobre la encarnación». Breves lecturas diarias durante unos cuatro meses.",
+    "note": [
+      "Job #4856. Ships with the last of the plan's Spanish books: first-epistle-of-clement («Primera epístola de Clemente a los corintios») and on-the-incarnation («Sobre la encarnación») already ship in es, and epistles-of-ignatius is this PR, so the plan seeds in es on merge."
+    ]
+  },
+  "pursuit-of-holiness": {
+    "title": "En pos de la santidad",
+    "description": "Nueve semanas sobre ser enteramente del Señor. Andrew Murray remonta nuestra santidad a nuestra unión con el Santo, William Law nos llama a una vida devota en cada hora ordinaria, y John Wesley expone con sencillez qué es la perfección cristiana, y qué no es.",
+    "note": [
+      "Job #4857. Ships with the last of the plan's Spanish books: holy-in-christ («Santo en Cristo») and plain-account-christian-perfection («Una explicación sencilla de la perfección cristiana») already ship in es, and a-serious-call is this PR, so the plan seeds in es on merge."
+    ]
   }
 }

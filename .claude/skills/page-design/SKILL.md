@@ -345,7 +345,7 @@ A content type is not shipped until it is reachable from every surface that
 lists content types, **in the same order** everywhere:
 
 - [ ] top nav `NAV` in `routes/+layout.svelte` (if it earns a nav slot)
-- [ ] footer **Explore** group (same file)
+- [ ] footer **Explore** group (`lib/components/SiteFooter.svelte`)
 - [ ] `COMMANDS` in `lib/components/CommandPalette.svelte`
 - [ ] `SearchHit` kinds in `lib/library-public.ts` + the search page's facet rail
       _(Articles: done — `ArticleHit` + facet rail, see F1. Scripture/Quotes still absent by design.)_
@@ -480,6 +480,20 @@ green in CI but never went live because two of its three books were unpublished
   `t()` / `m.*()` even on an English-only hub; only *content* may be literal.
 - Icons come from `<Icon name>`; never `▦ ☰ ✕ ▶ ✓ ♥ 🔖 📝 ✦ →` as glyphs.
 - Compact buttons are `.btn-sm`, never `py-1.5` / `py-2` on `.btn`.
+- Scripture set in chrome (a verse, a blessing) comes verbatim from each
+  locale's `language_seed` Bible via Take Root (`/api/bible/<code>/<USFM>/<ch>/`),
+  generated into a TS constant by a committed script, never typed or
+  translated (`scripts/fetch-benedictions.mjs` → `benediction.generated.ts`);
+  a locale with no text shows nothing. Use the seed's Take Root code, NOT the
+  ebible id (`vietnamese`/`korean`, not `vie1934`/`kor` — #6012 shipped vi/ko
+  blank that way; a test now holds the script to the seed). Versification
+  differs (2 Cor 13:14 is 13:13 in LSG/RV/Kulish/Korean) and ULB merges verses
+  (am Heb 13:20–21 is one entry "20"), so cite each Bible's own numbers.
+  Two render traps it hit: Fraunces has no Arabic/Devanagari/Ethiopic/Cyrillic
+  italic, so `font-style: italic` makes the browser fake-slant the fallback —
+  set those `:lang()`s upright (a scoped `font-style: italic` outranks
+  app.css's site-wide Korean rule, so name `ko` too); and a "Book 6:24–26" reference inside RTL text
+  reorders to "26-6:24" — keep the chapter:verse in `<bdi dir="ltr">`.
 
 ## Guards to extend when a page ships
 
@@ -516,6 +530,15 @@ components carries neither. **Five source-text guards now scan every `.svelte`
   `settings/+page.svelte` (its `.seg` is the E1 deferral — remove the exemption
   when E1 lands).
 - `colorTokens.test.ts` (no raw hex) and `rtl.test.ts` (physical properties).
+- `hydrateSrc.test.ts` — every data-driven `<img>` must wear `use:hydrateSrc`,
+  **admin and `ssr = false` pages included** (no exemption; wearing it is
+  harmless there). Bit the cover wall (#6296).
+
+**Don't run `npx prettier --write` in `frontend/`.** There is no Prettier config,
+so it falls back to double quotes and 2-space indents and rewrites a tab/single-
+quote file wholesale (and can't parse `.svelte` without the plugin). CI doesn't
+run Prettier; match the surrounding file by hand and let `eslint` +
+`svelte-check` be the gate.
 
 Still unguarded (deliberately or on the backlog): literal *transition* durations
 — the remaining literals (a one-shot celebration keyframe, the spinner period,

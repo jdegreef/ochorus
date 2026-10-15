@@ -20,7 +20,6 @@ import { join } from 'node:path';
 import { SHELL_ROUTES } from './shellRoutes';
 
 const REPO = join(process.cwd(), '..');
-const STATIC = join(process.cwd(), 'static');
 
 interface Rule {
 	type: string;
@@ -43,25 +42,13 @@ function rules(): Rule[] {
 	return out;
 }
 
-/** A destination we can check exists without running a build. */
-function resolves(destination: string): boolean {
-	// The catch-all shell and the prerendered index pages are build output, not
-	// repo files — they can't be checked here, and the build's own link tests
-	// cover them. Anything under static/ is a file we can actually look for.
-	if (destination.endsWith('.html')) return true;
-	if (destination.startsWith('/books/') || destination.startsWith('/biographies')) return true;
-	if (['/books', '/biographies', '/sermons', '/plans', '/topics', '/'].includes(destination))
-		return true;
-	return existsSync(join(STATIC, destination.replace(/^\//, '')));
-}
-
 describe('render.yaml routing rules', () => {
 	const all = rules();
 
 	it('parses as a recognisable set of rules', () => {
 		// Guards the guard: if the file's shape changes, every assertion below
 		// would pass vacuously against an empty list.
-		expect(all.length).toBeGreaterThan(60);
+		expect(all.length).toBeGreaterThan(40);
 		expect(all.some((r) => r.type === 'redirect')).toBe(true);
 		expect(all.some((r) => r.destination === '/200.html')).toBe(true);
 	});
@@ -97,86 +84,31 @@ describe('render.yaml routing rules', () => {
 		expect(dupes).toEqual([]);
 	});
 
-	it('sends every legacy WordPress URL somewhere real', () => {
-		const legacy = all.filter((r) => r.source.startsWith('/wp-content/'));
-		expect(legacy.length, 'the retired-media rules should be present').toBeGreaterThan(30);
-		const broken = legacy
-			.filter((r) => !resolves(r.destination))
-			.map((r) => `${r.source} -> ${r.destination} (line ${r.line})`);
-		expect(broken).toEqual([]);
-	});
-
-	it('redirects every retired cover to a file that exists', () => {
-		// These point at static/covers/*.svg, which IS in the repo — so unlike the
-		// page destinations, this is a real existence check, and it is the one
-		// that catches a rename.
-		const covers = all.filter((r) => r.destination.startsWith('/covers/'));
-		expect(covers.length).toBeGreaterThan(0);
-		for (const r of covers) {
-			expect(
-				existsSync(join(STATIC, r.destination.replace(/^\//, ''))),
-				`${r.destination} (line ${r.line}) does not exist in static/`
-			).toBe(true);
-		}
-	});
-
-	it('redirects to book pages that are actually published', () => {
-		// The destination has to be a page that will exist in the build, and what
-		// decides that is the fixture: an unpublished book is not prerendered, so
-		// a 301 to it lands in the not-found shell — strictly worse than the soft
-		// 404 the rule replaced. This also catches a slug rename, which would
-		// otherwise break one rule out of twenty-seven, silently.
-		const BOOKS = join(REPO, 'backend', 'library', 'fixtures', 'content', 'books');
-		const targets = all.filter((r) => /^\/books\/[^/]+\/$/.test(r.destination));
-		expect(targets.length).toBeGreaterThan(20);
-		const broken: string[] = [];
-		for (const r of targets) {
-			const slug = r.destination.split('/')[2];
-			const file = join(BOOKS, `${slug}.en.json`);
-			if (!existsSync(file)) {
-				broken.push(`${r.destination} (line ${r.line}): no ${slug}.en.json`);
-				continue;
-			}
-			const book = JSON.parse(readFileSync(file, 'utf-8')).find(
-				(row: { model: string }) => row.model === 'library.book'
-			);
-			if (!book?.fields?.is_published) {
-				broken.push(`${r.destination} (line ${r.line}): not published`);
-			}
-		}
-		expect(broken).toEqual([]);
-	});
-
-	it('redirects retired biography articles to author pages that exist', () => {
-		// The eight retired biography articles (migrations 0118/0119) 301 to the
-		// person's author page. That page has to be real, or the 301 lands in the
-		// not-found shell — worse than the soft 404 it replaced. authors.json is
-		// the identity source of truth (a bio-only author with no book still has a
-		// row there), so a slug typo or rename is caught here.
-		const AUTHORS = join(REPO, 'backend', 'library', 'fixtures', 'content', 'authors.json');
-		const known = new Set<string>(
-			JSON.parse(readFileSync(AUTHORS, 'utf-8'))
-				.filter((row: { model: string }) => row.model === 'library.author')
-				.map((row: { fields: { slug: string } }) => row.fields.slug)
-		);
-		const targets = all.filter((r) => r.source.startsWith('/articles/'));
-		expect(targets.length).toBe(16);
-		const broken = targets
+	it('redirects only to pages that exist', () => {
+		// A 301 to a page that is not built lands the visitor on the not-found
+		// page with an extra hop. Every kept redirect names a real index page or a
+		// prerendered detail page we can see in the route tree.
+		const ROUTES = join(process.cwd(), 'src', 'routes');
+		const broken = all
+			.filter((r) => r.type === 'redirect' && r.destination.startsWith('/'))
 			.filter((r) => {
-				const m = /^\/authors\/([^/]+)\/$/.exec(r.destination);
-				return !m || !known.has(m[1]);
+				const first = r.destination.split('/').filter(Boolean)[0];
+				return first !== undefined && !existsSync(join(ROUTES, first));
 			})
 			.map((r) => `${r.source} -> ${r.destination} (line ${r.line})`);
 		expect(broken).toEqual([]);
 	});
 
 	it('stays well under the route count Render will apply', () => {
-		// Render documents no limit, but a Blueprint sync with 204 rules here failed
-		// on "Update web service ochorus-web routes" (as did every sync at 255),
-		// while 166 applied. The failure is silent: the old rules keep serving and
-		// every later render.yaml route change quietly never ships. Add a locale or
-		// a page with a `:lang` rule, never a copy per locale.
-		expect(all.length).toBeLessThanOrEqual(150);
+		// Render caps a static site at 200 redirect/rewrite rules, and a rule
+		// removed from this file is NOT removed from the service — the sync only
+		// adds and updates. Leftovers took ochorus-web to the cap in 2026-10 and
+		// every Blueprint sync failed silently from then on (the /vi and /ko pages
+		// never got their rules). Keep this small: add a locale or a page with a
+		// `:lang` rule, never a copy per locale, and retire old-site redirects once
+		// Search Console shows no traffic to them. Removing a rule here also means
+		// deleting it in the dashboard (ochorus-web → Redirects/Rewrites).
+		expect(all.length).toBeLessThanOrEqual(70);
 	});
 
 	it('has no catch-all, so a missing page answers 404', () => {

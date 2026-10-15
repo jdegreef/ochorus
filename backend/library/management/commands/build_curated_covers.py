@@ -66,7 +66,7 @@ from django.core.management.base import BaseCommand, CommandError
 from PIL import Image
 
 from library.art_sources import ART_SOURCES
-from library.covers import art_url, keeps_english_designed
+from library.covers import art_url, wears_designed_english
 from library.curated_art import CURATED, CURATED_GROUND, Artwork, crop_recipe
 from library.models import Book
 
@@ -551,7 +551,7 @@ class Command(BaseCommand):
                     dest.write_bytes(jpeg.read_bytes())
                     drawn[slug] = recipe
                 for book in rows:
-                    # THE ENGLISH ROW OF A `CURATED_GROUND` WORK IS NOT MOVED.
+                    # THE ENGLISH ROWS OF A `CURATED_GROUND` WORK ARE NOT MOVED (en-modern too).
                     # That work has a hand-made English cover and came here only
                     # because no wordless picture could be cut out of it; the
                     # painting is for the translations. Repointing English at it
@@ -559,7 +559,7 @@ class Command(BaseCommand):
                     # this tier exists to avoid — and it would do it silently,
                     # since every other gate is satisfied by a row pointing at a
                     # painting that really is there.
-                    if keeps_english_designed(slug) and book.language == "en":
+                    if wears_designed_english(slug, book.language):
                         continue
                     if book.cover_url != url:
                         book.cover_url = url

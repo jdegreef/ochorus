@@ -1,0 +1,206 @@
+{
+ "kind": "book",
+ "slug": "pensees-teens",
+ "language": "fr",
+ "note": [
+  "Pascal wrote in French, so no Pascal sentence is back-translated from Trotter's English: every quotation is his own wording from the Brunschvicg text in pensees.fr.json (Life of Pascal for « depuis l’âge de dix-huit ans… sans douleur », the sick-child episode and « Que Dieu ne m’abandonne jamais ! »). Where the English trims a fragment, the French keeps the matching run of Pascal's words; two silent corrections of the source transcription: « suffit » for « suffît » (roseau pensant, B. 347) and « à force » for « a force » (B. 536). The attribution drops the Trotter credit and says Pascal is quoted from his original French.",
+  "The Memorial (ch. 1) is not in the repo's French files: « FEU. Dieu d’Abraham, Dieu d’Isaac, Dieu de Jacob, non des philosophes et des savants. Certitude. Certitude. Sentiment. Joie. Paix. Dieu de Jésus-Christ. » is original wording from memory, needs checking (punctuation follows the usual Brunschvicg/Lafuma layout).",
+  "Archaic words kept inside Pascal's quotations get a short bracketed gloss in the narration: goujat/crocheteur (ch. 4), imbécile = faible (ch. 6), « prendre croix » (ch. 9); « l’expérience nous pipe » is glossed in-line (ch. 3). In ch. 9 the wager's practices follow Pascal (« prendre de l’eau bénite, faire dire des messes »), not the English's 'attending Mass'.",
+  "The KJV epigraphs are replaced by Louis Segond (1910) verbatim, cited with Segond numbering: Psalm 46:10 = Psaume 46:11, Psalm 42:1–2 = Psaume 42:2–3, Psalm 8:3–4 = Psaume 8:4–5. Partial epigraphs (Exodus 3:6, Joshua 24:15, Matthew 22:37, Matthew 26:38) quote the matching Segond portion; Joshua 24:15's fragment is capitalised (« Choisissez »). Indirect echoes in the narration are self_rendered.",
+  "Title « Pensées (Pour ados) » (19 chars) follows the shipped « (Pour ados) » pattern; narration in passé simple for the biography, « tu » for the reader as in a-retrospect-teens.fr. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Exodus 3:6",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 46:10a",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 46:10a",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 6:34",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 6:34",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 6
+  },
+  {
+   "reference": "John 5:44",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 5:44",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 9
+  },
+  {
+   "reference": "Psalm 139:14",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 8:3-4",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 9
+  },
+  {
+   "reference": "Psalm 139:14",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 9
+  },
+  {
+   "reference": "Psalm 8:3a",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 11,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 8:4a",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 11,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ecclesiastes 7:29",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 42:1-2",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 42:2a",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 22:37",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 22:37",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 7
+  },
+  {
+   "reference": "Joshua 24:15",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Jeremiah 29:13",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 45:15",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 5
+  },
+  {
+   "reference": "Jeremiah 29:13",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Jeremiah 29:13",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 11
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 4:8",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 8
+  },
+  {
+   "reference": "John 14:6",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 26:38",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 22:44",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 11
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 13
+  }
+ ]
+}

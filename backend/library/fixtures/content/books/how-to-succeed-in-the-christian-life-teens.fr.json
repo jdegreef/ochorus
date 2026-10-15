@@ -1,0 +1,395 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "r-a-torrey"
+  ],
+  "slug": "how-to-succeed-in-the-christian-life-teens",
+  "language": "fr",
+  "title": "La foi qui tient (Pour ados)",
+  "subtitle": "",
+  "cover_title": "",
+  "description": "R. A. Torrey a écrit ce petit livre pour les tout nouveaux chrétiens qui voulaient savoir comment tenir dans la durée. Cette édition pour ados le raconte avec des mots simples : comment bien commencer, pourquoi tu n’as pas à garder ta foi secrète, comment tu peux savoir que tu appartiens à Dieu, ce que veut dire recevoir le Saint-Esprit, comment lire la Bible et faire face aux passages difficiles, pourquoi la prière est une audience avec le Roi, comment choisir tes amis et tes loisirs, comment parler de ta foi, que faire quand on s’oppose à toi, et comment connaître le pas suivant. Les phrases de Torrey lui-même sont gardées là où elles disent les choses le mieux.",
+  "hook": "Un guide pratique pour commencer à suivre Jésus : la prière, la Bible, les doutes, les amis, les loisirs, tenir bon et le pas suivant.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Qui était R. A. Torrey ?",
+    "answer": "Reuben Archer Torrey était un pasteur, enseignant et évangéliste américain, né en 1856. Après des années d’université très agitées, il vint à la foi, fit des études en Allemagne et dirigea l’école qui devint l’Institut biblique Moody. Il prêcha dans le monde entier et écrivit plus de quarante livres, surtout sur la prière et le Saint-Esprit. Il mourut en 1928."
+   },
+   {
+    "question": "Ce livre est-il seulement pour les nouveaux chrétiens ?",
+    "answer": "Il a été écrit pour les nouveaux croyants, mais il est utile à quiconque veut grandir : il couvre les bases auxquelles tout chrétien revient sans cesse."
+   },
+   {
+    "question": "Torrey a traversé une période très sombre à l’université. Que s’est-il passé ?",
+    "answer": "Étudiant, il menait une vie dissolue et, un soir de 1875, il sombra dans un tel désespoir qu’il avait l’intention de mettre fin à ses jours. Au lieu de cela, il se surprit à prier, se souvint des prières de sa mère et donna sa vie à Dieu. Si un jour tu te sens aussi mal, s’il te plaît, parles-en tout de suite à un adulte de confiance ou contacte une ligne d’écoute. Tu n’es pas seul, et il y a de l’aide."
+   },
+   {
+    "question": "Torrey dit-il que les chrétiens ne peuvent pas s’amuser ?",
+    "answer": "Non. Il dit que les jeunes ont besoin de détente et que Jésus prend plaisir aux jeux sains. Il donne des questions simples pour aider à discerner ce qui est bon : puis-je faire cela pour la gloire de Dieu, prier à ce sujet, et emmener Christ avec moi ?"
+   },
+   {
+    "question": "Et si on me mène la vie dure parce que je suis chrétien ?",
+    "answer": "Torrey dit que c’est courant, et que tu peux tenir bon avec amour. Mais être pris pour cible ou harcelé n’est jamais quelque chose que tu dois supporter seul. S’il te plaît, parles-en à un adulte de confiance."
+   },
+   {
+    "question": "S’agit-il du texte intégral ?",
+    "answer": "Non. C’est un récit pour les ados, en mots simples et actuels, tiré du livre de Torrey, qui garde ses propres phrases là où elles disent les choses le mieux. Le texte intégral de How to Succeed in the Christian Life est aussi disponible."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Un récit d’Ochorus pour jeunes lecteurs, d’après How to Succeed in the Christian Life de R. A. Torrey, une œuvre du domaine public. La façon de raconter est la nôtre, libre à lire et à partager. Les citations bibliques de cette édition française sont tirées de la version Louis Segond (1910), qui est dans le domaine public.",
+  "cover_url": "/covers/art/how-to-succeed-in-the-christian-life-teens.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "series": [
+   "straight-talk"
+  ],
+  "series_position": null,
+  "sort_order": 167,
+  "is_published": true,
+  "created_at": "2026-10-13T00:00:00Z",
+  "updated_at": "2026-10-13T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "fr"
+  ],
+  "order": 1,
+  "title": "L’étudiant arrivé au bout du chemin",
+  "body_html": "<blockquote>« Instruis l’enfant selon la voie qu’il doit suivre ; Et quand il sera vieux, il ne s’en détournera pas. » — Proverbes 22:6</blockquote> <p>Reuben Archer Torrey naquit en 1856 dans le New Jersey, aux États-Unis, dans une famille riche. Sa mère priait sans cesse pour lui. Mais quand il entra à l’université Yale, il se jeta à corps perdu dans tout ce contre quoi sa mère avait prié : le théâtre, les courses de chevaux, les jeux de cartes et l’alcool à haute dose.</p> <p>Un soir de printemps 1875, Torrey toucha le fond. Il était si désespéré qu’il avait l’intention de mettre fin à ses jours. Mais au lieu de cela, il se surprit à prier. Il se souvint des prières de sa mère, et il promit à Dieu de faire tout ce que Dieu lui demanderait, même, disait-il, devenir prédicateur.</p> <p>Si un jour tu te sens aussi mal que Torrey ce soir-là, s’il te plaît, ne le garde pas pour toi. Parles-en tout de suite à un adulte de confiance, ou contacte une ligne d’écoute. Dieu a rejoint Torrey au moment le plus sombre de sa vie, et il y a de l’aide pour toi aussi.</p> <p>Torrey tint sa promesse. Il devint pasteur, fit des études en Allemagne et revint chez lui bien décidé à apprendre aux gens à faire confiance à la Bible. En 1888, il renonça à son salaire pour travailler parmi les pauvres, en comptant sur Dieu pour chaque repas de sa famille. Puis D. L. Moody l’invita à Chicago pour diriger sa nouvelle école biblique, qui devint l’Institut biblique Moody.</p> <p>Torrey était célèbre pour sa vie de prière. Pendant des années, des centaines de personnes se retrouvèrent avec lui chaque samedi soir pour prier pour un réveil dans le monde entier. Il alla ensuite prêcher en Australie, en Nouvelle-Zélande, en Chine, au Japon, en Inde et en Grande-Bretagne. Il écrivit plus de quarante livres.</p> <p>L’un des plus pratiques s’intitule How to Succeed in the Christian Life (« Comment réussir sa vie chrétienne »). Il l’écrivit pour les nouveaux chrétiens, ceux qui venaient de commencer à suivre Jésus et voulaient savoir comment tenir dans la durée. C’est un livre court, clair et plein de conseils concrets.</p> <p>La vie de Torrey nous rappelle qu’il n’est jamais trop tard. Si tu t’es éloigné, ou si tu as tout gâché, tu peux recommencer. Comme il le dit dans le premier chapitre : « Si quelqu’un qui lit ces pages a mal commencé, c’est une chose très simple que de recommencer et de bien commencer. »</p> <p><strong>Une chose à faire cette semaine :</strong> si quelqu’un a prié pour toi, un parent, un grand-parent ou un ami, remercie-le cette semaine. Et note un domaine de ta vie où tu aimerais « recommencer » avec Dieu.</p>",
+  "study_questions": [
+   {
+    "question": "Quel genre de vie Torrey mena-t-il à Yale ?",
+    "answer": "Une vie dissolue : le théâtre, les courses de chevaux, les jeux de cartes et l’alcool à haute dose."
+   },
+   {
+    "question": "Que se passa-t-il ce soir-là, en 1875 ?",
+    "answer": "Profondément désespéré, il avait l’intention de mettre fin à ses jours, mais il se surprit à prier, se souvint des prières de sa mère et promit de faire tout ce que Dieu lui demanderait."
+   },
+   {
+    "question": "Pour qui Torrey a-t-il écrit ce livre ?",
+    "answer": "Pour les nouveaux chrétiens qui voulaient savoir comment tenir dans la durée en suivant Jésus."
+   }
+  ],
+  "body_text": "« Instruis l’enfant selon la voie qu’il doit suivre ; Et quand il sera vieux, il ne s’en détournera pas. » — Proverbes 22:6 Reuben Archer Torrey naquit en 1856 dans le New Jersey, aux États-Unis, dans une famille riche. Sa mère priait sans cesse pour lui. Mais quand il entra à l’université Yale, il se jeta à corps perdu dans tout ce contre quoi sa mère avait prié : le théâtre, les courses de chevaux, les jeux de cartes et l’alcool à haute dose. Un soir de printemps 1875, Torrey toucha le fond. Il était si désespéré qu’il avait l’intention de mettre fin à ses jours. Mais au lieu de cela, il se surprit à prier. Il se souvint des prières de sa mère, et il promit à Dieu de faire tout ce que Dieu lui demanderait, même, disait-il, devenir prédicateur. Si un jour tu te sens aussi mal que Torrey ce soir-là, s’il te plaît, ne le garde pas pour toi. Parles-en tout de suite à un adulte de confiance, ou contacte une ligne d’écoute. Dieu a rejoint Torrey au moment le plus sombre de sa vie, et il y a de l’aide pour toi aussi. Torrey tint sa promesse. Il devint pasteur, fit des études en Allemagne et revint chez lui bien décidé à apprendre aux gens à faire confiance à la Bible. En 1888, il renonça à son salaire pour travailler parmi les pauvres, en comptant sur Dieu pour chaque repas de sa famille. Puis D. L. Moody l’invita à Chicago pour diriger sa nouvelle école biblique, qui devint l’Institut biblique Moody. Torrey était célèbre pour sa vie de prière. Pendant des années, des centaines de personnes se retrouvèrent avec lui chaque samedi soir pour prier pour un réveil dans le monde entier. Il alla ensuite prêcher en Australie, en Nouvelle-Zélande, en Chine, au Japon, en Inde et en Grande-Bretagne. Il écrivit plus de quarante livres. L’un des plus pratiques s’intitule How to Succeed in the Christian Life (« Comment réussir sa vie chrétienne »). Il l’écrivit pour les nouveaux chrétiens, ceux qui venaient de commencer à suivre Jésus et voulaient savoir comment tenir dans la durée. C’est un livre court, clair et plein de conseils concrets. La vie de Torrey nous rappelle qu’il n’est jamais trop tard. Si tu t’es éloigné, ou si tu as tout gâché, tu peux recommencer. Comme il le dit dans le premier chapitre : « Si quelqu’un qui lit ces pages a mal commencé, c’est une chose très simple que de recommencer et de bien commencer. » Une chose à faire cette semaine : si quelqu’un a prié pour toi, un parent, un grand-parent ou un ami, remercie-le cette semaine. Et note un domaine de ta vie où tu aimerais « recommencer » avec Dieu.",
+  "word_count": 465
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "fr"
+  ],
+  "order": 2,
+  "title": "Bien commencer",
+  "body_html": "<blockquote>« Mais à tous ceux qui l’ont reçue, à ceux qui croient en son nom, elle a donné le pouvoir de devenir enfants de Dieu. » — Jean 1:12</blockquote> <p>Torrey commence par ce qui compte le plus :</p> <blockquote>« Il n’y a rien de plus important dans la vie chrétienne que de bien commencer. Si nous commençons bien, nous pouvons continuer à bien avancer. »</blockquote> <p>Alors, qu’est-ce qu’un bon commencement ? Torrey renvoie à Jean 1:12 : à tous ceux qui ont reçu Jésus, il a donné le pouvoir de devenir enfants de Dieu. La bonne façon de commencer, dit-il, c’est tout simplement « de recevoir Jésus-Christ ».</p> <p>Que veut dire recevoir Jésus ? Pour Torrey, cela signifie « prendre Christ pour qu’il soit pour toi tout ce que Dieu l’offre à être pour tous ». Dieu offre Jésus comme celui qui est mort pour tes péchés : alors tu lui fais confiance pour ton pardon. Dieu l’offre comme ton Seigneur ressuscité : alors tu lui remets ta vie.</p> <p>Torrey insiste sur deux points. D’abord, personne n’est trop mauvais. Même si le lecteur était « l’homme le plus méchant de la terre », à l’instant où il recevrait Jésus, il deviendrait enfant de Dieu. Ensuite, personne n’est trop bien pour en avoir besoin. Aussi bien élevé sois-tu, aussi protégé du mal sois-tu, tu n’es pas enfant de Dieu tant que tu n’as pas reçu Jésus.</p> <p>Ce second point compte pour les ados qui ont grandi à l’église. Connaître Jésus de nom, aller à l’église et être quelqu’un de gentil, c’est bien. Mais ce n’est pas la même chose que de le recevoir personnellement.</p> <p>Et voici la partie encourageante. Si tu as mal commencé, ou pas vraiment commencé du tout, Torrey dit que c’est « une chose très simple que de recommencer et de bien commencer ». Tu peux le faire aujourd’hui. Dis à Jésus que tu comptes sur lui pour ton pardon, et que tu veux qu’il soit ton Seigneur.</p> <p>Tout le reste de ce livre repose sur ce commencement-là.</p> <p><strong>Une chose à faire cette semaine :</strong> lis lentement Jean 1:12 et Jean 3:16 cette semaine. Si tu n’as jamais reçu Jésus personnellement, dis-lui aujourd’hui que tu as confiance en lui et que tu le veux comme Seigneur. Si tu l’as déjà fait, remercie-le d’avoir fait de toi un enfant de Dieu.</p>",
+  "study_questions": [
+   {
+    "question": "Selon Torrey, quel est le bon commencement de la vie chrétienne ?",
+    "answer": "Recevoir Jésus-Christ."
+   },
+   {
+    "question": "Que signifie recevoir Jésus, d’après Torrey ?",
+    "answer": "Prendre Christ pour qu’il soit pour soi tout ce que Dieu l’offre à être : Sauveur, Seigneur, et tout ce que Dieu donne en lui."
+   },
+   {
+    "question": "Quelqu’un qui a mal commencé peut-il recommencer ?",
+    "answer": "Oui ; Torrey dit que c’est une chose très simple que de recommencer et de bien commencer."
+   }
+  ],
+  "body_text": "« Mais à tous ceux qui l’ont reçue, à ceux qui croient en son nom, elle a donné le pouvoir de devenir enfants de Dieu. » — Jean 1:12 Torrey commence par ce qui compte le plus : « Il n’y a rien de plus important dans la vie chrétienne que de bien commencer. Si nous commençons bien, nous pouvons continuer à bien avancer. » Alors, qu’est-ce qu’un bon commencement ? Torrey renvoie à Jean 1:12 : à tous ceux qui ont reçu Jésus, il a donné le pouvoir de devenir enfants de Dieu. La bonne façon de commencer, dit-il, c’est tout simplement « de recevoir Jésus-Christ ». Que veut dire recevoir Jésus ? Pour Torrey, cela signifie « prendre Christ pour qu’il soit pour toi tout ce que Dieu l’offre à être pour tous ». Dieu offre Jésus comme celui qui est mort pour tes péchés : alors tu lui fais confiance pour ton pardon. Dieu l’offre comme ton Seigneur ressuscité : alors tu lui remets ta vie. Torrey insiste sur deux points. D’abord, personne n’est trop mauvais. Même si le lecteur était « l’homme le plus méchant de la terre », à l’instant où il recevrait Jésus, il deviendrait enfant de Dieu. Ensuite, personne n’est trop bien pour en avoir besoin. Aussi bien élevé sois-tu, aussi protégé du mal sois-tu, tu n’es pas enfant de Dieu tant que tu n’as pas reçu Jésus. Ce second point compte pour les ados qui ont grandi à l’église. Connaître Jésus de nom, aller à l’église et être quelqu’un de gentil, c’est bien. Mais ce n’est pas la même chose que de le recevoir personnellement. Et voici la partie encourageante. Si tu as mal commencé, ou pas vraiment commencé du tout, Torrey dit que c’est « une chose très simple que de recommencer et de bien commencer ». Tu peux le faire aujourd’hui. Dis à Jésus que tu comptes sur lui pour ton pardon, et que tu veux qu’il soit ton Seigneur. Tout le reste de ce livre repose sur ce commencement-là. Une chose à faire cette semaine : lis lentement Jean 1:12 et Jean 3:16 cette semaine. Si tu n’as jamais reçu Jésus personnellement, dis-lui aujourd’hui que tu as confiance en lui et que tu le veux comme Seigneur. Si tu l’as déjà fait, remercie-le d’avoir fait de toi un enfant de Dieu.",
+  "word_count": 392
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "fr"
+  ],
+  "order": 3,
+  "title": "Pas d’agents secrets",
+  "body_html": "<blockquote>« C’est pourquoi, quiconque me confessera devant les hommes, je le confesserai aussi devant mon Père qui est dans les cieux. » — Matthieu 10:32</blockquote> <p>L’étape suivante, chez Torrey, est quelque chose que beaucoup d’ados trouvent difficile : faire savoir aux autres que tu suis Jésus.</p> <p>Certains essaient d’être des chrétiens « secrets ». Ils croient en Jésus en privé, mais font en sorte que personne au collège, au lycée, dans l’équipe ou dans leur groupe d’amis ne le sache. Torrey ne mâche pas ses mots :</p> <blockquote>« Être un disciple secret, c’est n’être pas disciple du tout. »</blockquote> <p>Ça peut paraître dur. Mais ce que Torrey veut dire, c’est que quand Jésus est réel pour toi, cela se voit naturellement. Jésus a dit : « c’est de l’abondance du cœur que la bouche parle. »</p> <p>Et ce n’est pas une affaire d’une seule fois. Torrey dit qu’il ne suffit pas de confesser Christ une fois, lors d’un rassemblement d’église ou d’un baptême. « Nous devrions confesser Christ constamment. » À la maison, à l’église, au travail et dans nos loisirs, « nous devrions faire savoir aux autres de quel côté nous sommes ».</p> <p>Point important : il ne parle pas de se mettre en avant. « Bien sûr, nous ne devrions pas faire étalage de notre christianisme ni de notre piété, dit-il, mais nous ne devrions laisser personne dans le doute quant au fait que nous appartenons à Christ. » Tu n’as pas besoin de faire des sermons aux gens. Simplement, tu ne te caches pas.</p> <p>Torrey donne aussi une raison pratique. Il dit que « ne pas confesser Christ est l’une des causes les plus fréquentes de rechute ». Quand des gens arrivent dans un nouvel endroit, comme un nouvel établissement ou une nouvelle équipe, et ne disent à personne qu’ils sont chrétiens, ils commencent souvent à s’éloigner.</p> <p>Mais l’inverse est vrai aussi : « Cela te gardera de bien des tentations, s’il est clairement connu que tu es quelqu’un qui reconnaît Christ comme Seigneur en toutes choses. » Si les gens savent que tu suis Jésus, ils seront moins portés à te pousser à faire des choses que tu ne veux pas faire.</p> <p>Et il ajoute une promesse toute simple : « Plus tu fais de cas de Jésus-Christ, plus il fera de cas de toi. »</p> <p><strong>Une chose à faire cette semaine :</strong> cette semaine, trouve une manière naturelle de faire savoir à quelqu’un que tu suis Jésus : parler de l’église, prier avant un repas, ou simplement répondre honnêtement si quelqu’un te demande ce que tu as fait le week-end.</p>",
+  "study_questions": [
+   {
+    "question": "Que dit Torrey des disciples secrets ?",
+    "answer": "Être un disciple secret, c’est n’être pas disciple du tout."
+   },
+   {
+    "question": "Confesser Christ, est-ce se mettre en avant ?",
+    "answer": "Non ; nous ne devons pas faire étalage de notre foi, mais nous ne devons laisser personne dans le doute sur le fait que nous appartenons à Christ."
+   },
+   {
+    "question": "En quoi le fait que les gens sachent que tu es chrétien peut-il te protéger ?",
+    "answer": "Cela te garde de bien des tentations, parce que les gens savent de quel côté tu es, et cela t’aide à ne pas t’éloigner."
+   }
+  ],
+  "body_text": "« C’est pourquoi, quiconque me confessera devant les hommes, je le confesserai aussi devant mon Père qui est dans les cieux. » — Matthieu 10:32 L’étape suivante, chez Torrey, est quelque chose que beaucoup d’ados trouvent difficile : faire savoir aux autres que tu suis Jésus. Certains essaient d’être des chrétiens « secrets ». Ils croient en Jésus en privé, mais font en sorte que personne au collège, au lycée, dans l’équipe ou dans leur groupe d’amis ne le sache. Torrey ne mâche pas ses mots : « Être un disciple secret, c’est n’être pas disciple du tout. » Ça peut paraître dur. Mais ce que Torrey veut dire, c’est que quand Jésus est réel pour toi, cela se voit naturellement. Jésus a dit : « c’est de l’abondance du cœur que la bouche parle. » Et ce n’est pas une affaire d’une seule fois. Torrey dit qu’il ne suffit pas de confesser Christ une fois, lors d’un rassemblement d’église ou d’un baptême. « Nous devrions confesser Christ constamment. » À la maison, à l’église, au travail et dans nos loisirs, « nous devrions faire savoir aux autres de quel côté nous sommes ». Point important : il ne parle pas de se mettre en avant. « Bien sûr, nous ne devrions pas faire étalage de notre christianisme ni de notre piété, dit-il, mais nous ne devrions laisser personne dans le doute quant au fait que nous appartenons à Christ. » Tu n’as pas besoin de faire des sermons aux gens. Simplement, tu ne te caches pas. Torrey donne aussi une raison pratique. Il dit que « ne pas confesser Christ est l’une des causes les plus fréquentes de rechute ». Quand des gens arrivent dans un nouvel endroit, comme un nouvel établissement ou une nouvelle équipe, et ne disent à personne qu’ils sont chrétiens, ils commencent souvent à s’éloigner. Mais l’inverse est vrai aussi : « Cela te gardera de bien des tentations, s’il est clairement connu que tu es quelqu’un qui reconnaît Christ comme Seigneur en toutes choses. » Si les gens savent que tu suis Jésus, ils seront moins portés à te pousser à faire des choses que tu ne veux pas faire. Et il ajoute une promesse toute simple : « Plus tu fais de cas de Jésus-Christ, plus il fera de cas de toi. » Une chose à faire cette semaine : cette semaine, trouve une manière naturelle de faire savoir à quelqu’un que tu suis Jésus : parler de l’église, prier avant un repas, ou simplement répondre honnêtement si quelqu’un te demande ce que tu as fait le week-end.",
+  "word_count": 435
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "fr"
+  ],
+  "order": 4,
+  "title": "Tu peux le savoir",
+  "body_html": "<blockquote>« Je vous ai écrit ces choses, afin que vous sachiez que vous avez la vie éternelle, vous qui croyez au nom du Fils de Dieu. » — 1 Jean 5:13</blockquote> <p>Certains chrétiens passent des années à se demander s’ils sont vraiment sauvés. Torrey dit que tu n’es pas obligé de vivre comme ça.</p> <p>Il renvoie à 1 Jean 5:13, où Jean dit qu’il a écrit sa lettre « afin que vous sachiez » que vous avez la vie éternelle. Torrey remarque que certains prétendent que personne ne peut le savoir avant de mourir, « mais Dieu lui-même nous dit que nous pouvons le savoir ».</p> <p>Comment peux-tu le savoir ? La réponse de Torrey est simple : parce que la Parole de Dieu le dit. Si tu as reçu Jésus, Jean 1:12 dit que tu es devenu enfant de Dieu. Tu peux le savoir « sur le plus sûr de tous les fondements », parce que Dieu l’a dit.</p> <p>Cela veut dire que ton assurance ne dépend pas de ce que tu ressens aujourd’hui. Les sentiments montent et descendent. Les promesses de Dieu, non.</p> <p>Torrey dit que savoir que tu appartiens à Dieu apporte « la plus grande mesure de joie et de puissance ». Ceux qui ne sont jamais sûrs de leur salut ont du mal à avoir de la joie, et du mal à aider les autres.</p> <p>Dans un chapitre plus loin, Torrey ajoute quelque chose d’important au sujet de la culpabilité. Il dit que l’ennemi essaiera de te décourager en te rappelant tes péchés et tes échecs, pour te convaincre que tu n’es pas vraiment enfant de Dieu. La réponse, dit-il, c’est de regarder ce que Dieu regarde : Jésus sur la croix, qui a réglé chaque péché.</p> <blockquote>« C’est un acte de basse ingratitude envers Dieu que de ruminer des péchés qu’il a effacés dans son amour infini. »</blockquote> <p>C’est une façon frappante de le dire. Si Dieu t’a pardonné, alors te le reprocher sans arrêt, ce n’est pas de l’humilité ; c’est ne pas le croire.</p> <p>Si tu te sens souvent incertain ou anxieux quant à ton salut, parles-en à un pasteur ou à un responsable de jeunes en qui tu as confiance. Parfois, ça aide d’avoir quelqu’un qui te rappelle les promesses de Dieu.</p> <p><strong>Une chose à faire cette semaine :</strong> écris 1 Jean 5:13 et Jean 1:12 sur une carte. Chaque fois que tu doutes cette semaine d’appartenir à Dieu, relis-les et dis : « Dieu dit que je peux le savoir. Je crois ce qu’il dit. »</p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi Jean a-t-il écrit sa première lettre, d’après 1 Jean 5:13 ?",
+    "answer": "Afin que les croyants sachent qu’ils ont la vie éternelle."
+   },
+   {
+    "question": "Sur quel fondement un croyant peut-il savoir qu’il est enfant de Dieu ?",
+    "answer": "Sur le plus sûr de tous les fondements : parce que la Parole de Dieu le dit."
+   },
+   {
+    "question": "Que dit Torrey du fait de ruminer des péchés pardonnés ?",
+    "answer": "Que c’est un acte de basse ingratitude envers Dieu, qui les a effacés."
+   }
+  ],
+  "body_text": "« Je vous ai écrit ces choses, afin que vous sachiez que vous avez la vie éternelle, vous qui croyez au nom du Fils de Dieu. » — 1 Jean 5:13 Certains chrétiens passent des années à se demander s’ils sont vraiment sauvés. Torrey dit que tu n’es pas obligé de vivre comme ça. Il renvoie à 1 Jean 5:13, où Jean dit qu’il a écrit sa lettre « afin que vous sachiez » que vous avez la vie éternelle. Torrey remarque que certains prétendent que personne ne peut le savoir avant de mourir, « mais Dieu lui-même nous dit que nous pouvons le savoir ». Comment peux-tu le savoir ? La réponse de Torrey est simple : parce que la Parole de Dieu le dit. Si tu as reçu Jésus, Jean 1:12 dit que tu es devenu enfant de Dieu. Tu peux le savoir « sur le plus sûr de tous les fondements », parce que Dieu l’a dit. Cela veut dire que ton assurance ne dépend pas de ce que tu ressens aujourd’hui. Les sentiments montent et descendent. Les promesses de Dieu, non. Torrey dit que savoir que tu appartiens à Dieu apporte « la plus grande mesure de joie et de puissance ». Ceux qui ne sont jamais sûrs de leur salut ont du mal à avoir de la joie, et du mal à aider les autres. Dans un chapitre plus loin, Torrey ajoute quelque chose d’important au sujet de la culpabilité. Il dit que l’ennemi essaiera de te décourager en te rappelant tes péchés et tes échecs, pour te convaincre que tu n’es pas vraiment enfant de Dieu. La réponse, dit-il, c’est de regarder ce que Dieu regarde : Jésus sur la croix, qui a réglé chaque péché. « C’est un acte de basse ingratitude envers Dieu que de ruminer des péchés qu’il a effacés dans son amour infini. » C’est une façon frappante de le dire. Si Dieu t’a pardonné, alors te le reprocher sans arrêt, ce n’est pas de l’humilité ; c’est ne pas le croire. Si tu te sens souvent incertain ou anxieux quant à ton salut, parles-en à un pasteur ou à un responsable de jeunes en qui tu as confiance. Parfois, ça aide d’avoir quelqu’un qui te rappelle les promesses de Dieu. Une chose à faire cette semaine : écris 1 Jean 5:13 et Jean 1:12 sur une carte. Chaque fois que tu doutes cette semaine d’appartenir à Dieu, relis-les et dis : « Dieu dit que je peux le savoir. Je crois ce qu’il dit. »",
+  "word_count": 426
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "fr"
+  ],
+  "order": 5,
+  "title": "Recevoir le Saint-Esprit",
+  "body_html": "<blockquote>« Mais vous recevrez une puissance, le Saint-Esprit survenant sur vous, et vous serez mes témoins. » — Actes 1:8</blockquote> <p>Torrey raconte l’histoire d’Actes 19. Quand Paul arriva dans la ville d’Éphèse, il rencontra douze disciples. Quelque chose semblait leur manquer. Peut-être manquaient-ils de joie. Peut-être Paul remarqua-t-il qu’après tout ce temps, ils n’étaient toujours que douze.</p> <p>Paul leur posa une question directe : « Avez-vous reçu le Saint-Esprit, quand vous avez cru ? » Ils n’avaient même jamais entendu parler du Saint-Esprit. Alors Paul leur expliqua, et le Saint-Esprit vint sur eux. Après cela, dit Torrey, un grand réveil commença, et toute la ville en fut ébranlée.</p> <p>Torrey dit que la question de Paul devrait être posée aux jeunes chrétiens partout. Pourquoi ? Parce que recevoir le Saint-Esprit est, dit-il, « le grand secret de la joie dans nos propres cœurs, de la victoire sur le péché, de la puissance dans la prière et d’un service efficace ».</p> <p>Il prend soin de préciser que tout vrai chrétien a, en un certain sens, le Saint-Esprit qui habite en lui. Mais beaucoup ne connaissent pas la plénitude de la puissance et de la joie de l’Esprit dans leur vie.</p> <p>Les chrétiens de différentes traditions décrivent cela de différentes manières. Certains parlent d’une expérience particulière ; d’autres d’être remplis de l’Esprit jour après jour. Mais tous s’accordent à dire que la vie chrétienne n’est pas faite pour être vécue par nos propres forces. Jésus a promis à ses disciples une puissance quand le Saint-Esprit viendrait sur eux.</p> <p>Alors comment recevoir davantage de l’Esprit ? Jésus a dit que notre Père céleste donne le Saint-Esprit à ceux qui le lui demandent. Le conseil de Torrey est simple : remets ta vie à Dieu, demande-lui de te remplir de son Esprit, et fais-lui confiance pour le faire.</p> <p>Tu n’as pas besoin de simuler une expérience ni de te monter la tête. Demande simplement, honnêtement et humblement, et continue de demander. Dieu aime faire de bons cadeaux à ses enfants.</p> <p><strong>Une chose à faire cette semaine :</strong> chaque matin cette semaine, prie Luc 11:13 en le redisant à Dieu : « Père, tu as promis de donner le Saint-Esprit à ceux qui le demandent. Je te le demande. Remplis-moi aujourd’hui. » Remarque où tu vois son aide.</p>",
+  "study_questions": [
+   {
+    "question": "Quelle question Paul posa-t-il aux disciples d’Éphèse ?",
+    "answer": "S’ils avaient reçu le Saint-Esprit quand ils avaient cru."
+   },
+   {
+    "question": "D’après Torrey, quel est le grand secret de la joie, de la victoire sur le péché, de la puissance dans la prière et d’un service efficace ?",
+    "answer": "Recevoir le Saint-Esprit."
+   },
+   {
+    "question": "Comment pouvons-nous recevoir davantage du Saint-Esprit ?",
+    "answer": "En nous remettant à Dieu et en le demandant à notre Père céleste, qui promet de donner le Saint-Esprit à ceux qui le lui demandent."
+   }
+  ],
+  "body_text": "« Mais vous recevrez une puissance, le Saint-Esprit survenant sur vous, et vous serez mes témoins. » — Actes 1:8 Torrey raconte l’histoire d’Actes 19. Quand Paul arriva dans la ville d’Éphèse, il rencontra douze disciples. Quelque chose semblait leur manquer. Peut-être manquaient-ils de joie. Peut-être Paul remarqua-t-il qu’après tout ce temps, ils n’étaient toujours que douze. Paul leur posa une question directe : « Avez-vous reçu le Saint-Esprit, quand vous avez cru ? » Ils n’avaient même jamais entendu parler du Saint-Esprit. Alors Paul leur expliqua, et le Saint-Esprit vint sur eux. Après cela, dit Torrey, un grand réveil commença, et toute la ville en fut ébranlée. Torrey dit que la question de Paul devrait être posée aux jeunes chrétiens partout. Pourquoi ? Parce que recevoir le Saint-Esprit est, dit-il, « le grand secret de la joie dans nos propres cœurs, de la victoire sur le péché, de la puissance dans la prière et d’un service efficace ». Il prend soin de préciser que tout vrai chrétien a, en un certain sens, le Saint-Esprit qui habite en lui. Mais beaucoup ne connaissent pas la plénitude de la puissance et de la joie de l’Esprit dans leur vie. Les chrétiens de différentes traditions décrivent cela de différentes manières. Certains parlent d’une expérience particulière ; d’autres d’être remplis de l’Esprit jour après jour. Mais tous s’accordent à dire que la vie chrétienne n’est pas faite pour être vécue par nos propres forces. Jésus a promis à ses disciples une puissance quand le Saint-Esprit viendrait sur eux. Alors comment recevoir davantage de l’Esprit ? Jésus a dit que notre Père céleste donne le Saint-Esprit à ceux qui le lui demandent. Le conseil de Torrey est simple : remets ta vie à Dieu, demande-lui de te remplir de son Esprit, et fais-lui confiance pour le faire. Tu n’as pas besoin de simuler une expérience ni de te monter la tête. Demande simplement, honnêtement et humblement, et continue de demander. Dieu aime faire de bons cadeaux à ses enfants. Une chose à faire cette semaine : chaque matin cette semaine, prie Luc 11:13 en le redisant à Dieu : « Père, tu as promis de donner le Saint-Esprit à ceux qui le demandent. Je te le demande. Remplis-moi aujourd’hui. » Remarque où tu vois son aide.",
+  "word_count": 382
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "fr"
+  ],
+  "order": 6,
+  "title": "Garder les yeux sur Jésus",
+  "body_html": "<blockquote>« Ayant les regards sur Jésus, le chef et le consommateur de la foi. » — Hébreux 12:2</blockquote> <p>Torrey dit que l’un des secrets les plus simples et les plus puissants de la joie et de la victoire, c’est de « ne jamais perdre Jésus de vue ». Il donne trois manières de continuer à le regarder.</p> <p>Premièrement, regarde Jésus sur la croix quand tu te sens coupable. L’ennemi essaiera de te faire ruminer tes péchés jusqu’à ce que tu sois découragé. Mais si tu regardes ce que Dieu regarde, Jésus mourant à ta place, tu verras que chaque péché a été réglé.</p> <p>Deuxièmement, regarde Jésus comme ton Sauveur ressuscité quand tu es tenté. Torrey dit : « Es-tu tenté de mal agir en ce moment même ? Si c’est le cas, souviens-toi que Jésus est ressuscité des morts. » Jésus est vivant et il a tout pouvoir dans le ciel et sur la terre ; il peut donc te donner la victoire tout de suite. Demande-le-lui, et attends-toi à ce qu’il t’aide.</p> <p>Et si tu tombes ? Torrey dit : confesse-le, sache que c’est pardonné parce que Dieu le dit en 1 Jean 1:9, et regarde de nouveau à Jésus.</p> <p>Troisièmement, regarde Jésus comme celui que tu suis. Torrey dit que tout le secret de la conduite chrétienne peut se résumer en deux mots prononcés par Jésus : « Suis-moi. »</p> <p>Là, il donne un avertissement important :</p> <blockquote>« L’une des causes d’échec les plus courantes dans la vie chrétienne se trouve dans la tentative de suivre quelque homme de bien que nous admirons beaucoup. »</blockquote> <p>Nous avons tous des héros chrétiens : un responsable de jeunes, un prédicateur connu, un responsable de louange, un ami plus âgé. C’est bien d’apprendre d’eux. Mais Torrey dit : « Aucun homme et aucune femme, si bons soient-ils, ne peuvent être suivis sans danger. » Tout le monde a des défauts. Seul Jésus est parfait.</p> <p>C’est particulièrement important quand quelqu’un que tu admirais te déçoit. Si ta foi était bâtie sur lui, elle peut s’effondrer. Si elle était bâtie sur Jésus, elle tiendra.</p> <p><strong>Une chose à faire cette semaine :</strong> cette semaine, quand tu te sens coupable, représente-toi Jésus sur la croix. Quand tu es tenté, souviens-toi qu’il est ressuscité. Quand tu te demandes quoi faire, pose-toi la question : « À quoi ressemblerait le fait de suivre Jésus, ici ? »</p>",
+  "study_questions": [
+   {
+    "question": "Quelles sont les trois manières de regarder à Jésus selon Torrey ?",
+    "answer": "Comme le fondement de notre pardon sur la croix, comme notre Sauveur ressuscité qui donne la victoire, et comme celui que nous suivons."
+   },
+   {
+    "question": "Que faire si tu as cédé à la tentation ?",
+    "answer": "Le confesser, savoir que c’est pardonné parce que Dieu le dit, et regarder de nouveau à Jésus."
+   },
+   {
+    "question": "Pourquoi Torrey met-il en garde contre le fait de suivre une personne de bien que nous admirons ?",
+    "answer": "Parce que personne d’autre que Jésus n’est parfait, et que suivre quelqu’un d’autre nous égarera."
+   }
+  ],
+  "body_text": "« Ayant les regards sur Jésus, le chef et le consommateur de la foi. » — Hébreux 12:2 Torrey dit que l’un des secrets les plus simples et les plus puissants de la joie et de la victoire, c’est de « ne jamais perdre Jésus de vue ». Il donne trois manières de continuer à le regarder. Premièrement, regarde Jésus sur la croix quand tu te sens coupable. L’ennemi essaiera de te faire ruminer tes péchés jusqu’à ce que tu sois découragé. Mais si tu regardes ce que Dieu regarde, Jésus mourant à ta place, tu verras que chaque péché a été réglé. Deuxièmement, regarde Jésus comme ton Sauveur ressuscité quand tu es tenté. Torrey dit : « Es-tu tenté de mal agir en ce moment même ? Si c’est le cas, souviens-toi que Jésus est ressuscité des morts. » Jésus est vivant et il a tout pouvoir dans le ciel et sur la terre ; il peut donc te donner la victoire tout de suite. Demande-le-lui, et attends-toi à ce qu’il t’aide. Et si tu tombes ? Torrey dit : confesse-le, sache que c’est pardonné parce que Dieu le dit en 1 Jean 1:9, et regarde de nouveau à Jésus. Troisièmement, regarde Jésus comme celui que tu suis. Torrey dit que tout le secret de la conduite chrétienne peut se résumer en deux mots prononcés par Jésus : « Suis-moi. » Là, il donne un avertissement important : « L’une des causes d’échec les plus courantes dans la vie chrétienne se trouve dans la tentative de suivre quelque homme de bien que nous admirons beaucoup. » Nous avons tous des héros chrétiens : un responsable de jeunes, un prédicateur connu, un responsable de louange, un ami plus âgé. C’est bien d’apprendre d’eux. Mais Torrey dit : « Aucun homme et aucune femme, si bons soient-ils, ne peuvent être suivis sans danger. » Tout le monde a des défauts. Seul Jésus est parfait. C’est particulièrement important quand quelqu’un que tu admirais te déçoit. Si ta foi était bâtie sur lui, elle peut s’effondrer. Si elle était bâtie sur Jésus, elle tiendra. Une chose à faire cette semaine : cette semaine, quand tu te sens coupable, représente-toi Jésus sur la croix. Quand tu es tenté, souviens-toi qu’il est ressuscité. Quand tu te demandes quoi faire, pose-toi la question : « À quoi ressemblerait le fait de suivre Jésus, ici ? »",
+  "word_count": 400
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "fr"
+  ],
+  "order": 7,
+  "title": "Nourris-toi toi-même",
+  "body_html": "<blockquote>« Ta parole est une lampe à mes pieds, Et une lumière sur mon sentier. » — Psaume 119:105</blockquote> <p>Torrey dit : « Il n’y a rien de plus important pour le développement de la vie spirituelle du chrétien qu’une étude de la Bible régulière et méthodique. »</p> <p>Il la compare à la nourriture. La santé de ton corps dépend de ce que tu manges et de la quantité. La nourriture de ton âme, c’est la Bible. Et un sermon par semaine ne suffit pas, de même qu’un repas par semaine ne te garderait pas en bonne santé.</p> <p>Il dit aussi quelque chose d’important : « Nous devons apprendre à nous nourrir nous-mêmes. » Les bons enseignants sont un cadeau, mais si tu n’entends jamais la Bible que par la bouche des autres, tu dépends d’eux. Si tu la lis toi-même, tu peux repérer quand quelqu’un enseigne quelque chose de faux.</p> <p>Son premier conseil, et le plus important, c’est de la lire chaque jour. Il dit que « les meilleurs résultats ne peuvent être obtenus que si l’on se fait un principe de ne jamais laisser passer un seul jour sans une étude sérieuse de la Bible ».</p> <p>Il donne son propre exemple. Il était chrétien depuis plus de vingt-cinq ans, et pourtant, dit-il, « aujourd’hui encore il n’oserait pas laisser passer un seul jour sans écouter la voix de Dieu qui lui parle à travers les pages de son Livre ».</p> <p>Cela ne veut pas dire que tu dois lire pendant des heures. Commence petit. Un chapitre par jour, c’est une excellente habitude. Lis lentement. Demande-toi ce que le texte te montre sur Dieu, sur toi-même, et ce que tu devrais faire. Souligne des passages. Note un verset qui te frappe.</p> <p>Torrey dit que c’est là que beaucoup décrochent : ils laissent passer un jour sans lire, puis plusieurs, et s’éloignent peu à peu. La clé, c’est donc la régularité. Un peu chaque jour vaut bien mieux que beaucoup de temps en temps.</p> <p><strong>Une chose à faire cette semaine :</strong> choisis un livre de la Bible, Marc ou Jean sont un excellent point de départ, et lis un chapitre chaque jour cette semaine. Note un verset de chaque chapitre qui te frappe.</p>",
+  "study_questions": [
+   {
+    "question": "À quoi Torrey compare-t-il l’étude de la Bible ?",
+    "answer": "À la nourriture : la Bible est la nourriture de l’âme, et nous en avons besoin chaque jour, pas seulement une fois par semaine."
+   },
+   {
+    "question": "Pourquoi Torrey dit-il que nous devons apprendre à nous nourrir nous-mêmes ?",
+    "answer": "Parce que si nous dépendons seulement des autres, nous sommes incapables de reconnaître l’erreur ; lire la Bible nous-mêmes nous protège."
+   },
+   {
+    "question": "Quel est le conseil le plus important de Torrey sur l’étude de la Bible ?",
+    "answer": "La lire chaque jour, sans jamais laisser passer un seul jour."
+   }
+  ],
+  "body_text": "« Ta parole est une lampe à mes pieds, Et une lumière sur mon sentier. » — Psaume 119:105 Torrey dit : « Il n’y a rien de plus important pour le développement de la vie spirituelle du chrétien qu’une étude de la Bible régulière et méthodique. » Il la compare à la nourriture. La santé de ton corps dépend de ce que tu manges et de la quantité. La nourriture de ton âme, c’est la Bible. Et un sermon par semaine ne suffit pas, de même qu’un repas par semaine ne te garderait pas en bonne santé. Il dit aussi quelque chose d’important : « Nous devons apprendre à nous nourrir nous-mêmes. » Les bons enseignants sont un cadeau, mais si tu n’entends jamais la Bible que par la bouche des autres, tu dépends d’eux. Si tu la lis toi-même, tu peux repérer quand quelqu’un enseigne quelque chose de faux. Son premier conseil, et le plus important, c’est de la lire chaque jour. Il dit que « les meilleurs résultats ne peuvent être obtenus que si l’on se fait un principe de ne jamais laisser passer un seul jour sans une étude sérieuse de la Bible ». Il donne son propre exemple. Il était chrétien depuis plus de vingt-cinq ans, et pourtant, dit-il, « aujourd’hui encore il n’oserait pas laisser passer un seul jour sans écouter la voix de Dieu qui lui parle à travers les pages de son Livre ». Cela ne veut pas dire que tu dois lire pendant des heures. Commence petit. Un chapitre par jour, c’est une excellente habitude. Lis lentement. Demande-toi ce que le texte te montre sur Dieu, sur toi-même, et ce que tu devrais faire. Souligne des passages. Note un verset qui te frappe. Torrey dit que c’est là que beaucoup décrochent : ils laissent passer un jour sans lire, puis plusieurs, et s’éloignent peu à peu. La clé, c’est donc la régularité. Un peu chaque jour vaut bien mieux que beaucoup de temps en temps. Une chose à faire cette semaine : choisis un livre de la Bible, Marc ou Jean sont un excellent point de départ, et lis un chapitre chaque jour cette semaine. Note un verset de chaque chapitre qui te frappe.",
+  "word_count": 373
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "fr"
+  ],
+  "order": 8,
+  "title": "Les passages difficiles",
+  "body_html": "<blockquote>« Aujourd’hui nous voyons au moyen d’un miroir, d’une manière obscure, mais alors nous verrons face à face ; aujourd’hui je connais en partie, mais alors je connaîtrai comme j’ai été connu. » — 1 Corinthiens 13:12</blockquote> <p>Tôt ou tard, dit Torrey, tout jeune chrétien tombe sur des passages de la Bible difficiles à comprendre ou difficiles à croire. Pour certains, ces difficultés deviennent une véritable crise de foi.</p> <p>Torrey ne fait pas semblant que les difficultés n’existent pas. « Nous n’avons aucun désir de cacher que ces difficultés existent, dit-il. Nous désirons plutôt les regarder en face et les examiner franchement. » Puis il donne quelques remarques pleines de sagesse.</p> <p>Premièrement, il faut s’attendre à des difficultés. La Bible, c’est Dieu qui se révèle à des gens comme nous, et nous sommes limités. Torrey dit que si quelqu’un lui donnait un livre « aussi simple que la table de multiplication » en affirmant que c’est une révélation complète de Dieu, il ne le croirait pas. Un Dieu infini dira forcément des choses que nous avons du mal à comprendre.</p> <p>Deuxièmement, une difficulté ne prouve pas qu’une chose est fausse. Torrey prend un exemple dans la science. Quand les astronomes affirmèrent pour la première fois que la Terre tourne autour du Soleil, il y avait un problème : s’ils avaient raison, la planète Vénus devait avoir des phases, comme la Lune. Mais personne n’en voyait. Plus tard, un télescope plus puissant montra que Vénus avait bien des phases. La difficulté venait de ce qu’on n’avait pas encore tous les éléments.</p> <p>Troisièmement, Torrey dit qu’il y a de plus grandes difficultés à croire que la Bible est seulement humaine qu’à croire qu’elle vient de Dieu. Comment expliquer ses prophéties accomplies, son étonnante unité, sa profondeur et sa puissance pour transformer des vies ?</p> <p>Le conseil pratique de Torrey est le suivant : sois honnête, continue de lire, pose des questions, et n’abandonne pas une chose en laquelle tu as de bonnes raisons d’avoir confiance simplement parce que tu ne peux pas encore répondre à toutes les questions.</p> <p>Les doutes et les questions font normalement partie de la croissance dans la foi. Apporte-les à Dieu, et parles-en avec un chrétien sage en qui tu as confiance. Tu n’as pas besoin d’avoir toutes les réponses pour continuer à suivre Jésus.</p> <p><strong>Une chose à faire cette semaine :</strong> note un passage de la Bible ou une question sur la foi que tu trouves difficile. Cette semaine, creuse un peu le sujet, et pose la question à un adulte chrétien plein de sagesse. Prie : « Seigneur, aide-moi à comprendre, et aide-moi à te faire confiance en attendant. »</p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi Torrey dit-il qu’il faut s’attendre à des difficultés dans la Bible ?",
+    "answer": "Parce qu’elle est la révélation d’un Dieu infini à des gens limités ; une révélation aussi simple que la table de multiplication ne serait pas crédible."
+   },
+   {
+    "question": "Que montre l’exemple des phases de Vénus ?",
+    "answer": "Qu’une difficulté ne prouve pas qu’une chose est fausse ; elle peut venir de ce qu’on n’a pas encore tous les éléments."
+   },
+   {
+    "question": "Que faire de tes doutes et de tes questions ?",
+    "answer": "Être honnête, continuer de lire, poser des questions, en parler avec un chrétien sage, et continuer à faire confiance à Dieu."
+   }
+  ],
+  "body_text": "« Aujourd’hui nous voyons au moyen d’un miroir, d’une manière obscure, mais alors nous verrons face à face ; aujourd’hui je connais en partie, mais alors je connaîtrai comme j’ai été connu. » — 1 Corinthiens 13:12 Tôt ou tard, dit Torrey, tout jeune chrétien tombe sur des passages de la Bible difficiles à comprendre ou difficiles à croire. Pour certains, ces difficultés deviennent une véritable crise de foi. Torrey ne fait pas semblant que les difficultés n’existent pas. « Nous n’avons aucun désir de cacher que ces difficultés existent, dit-il. Nous désirons plutôt les regarder en face et les examiner franchement. » Puis il donne quelques remarques pleines de sagesse. Premièrement, il faut s’attendre à des difficultés. La Bible, c’est Dieu qui se révèle à des gens comme nous, et nous sommes limités. Torrey dit que si quelqu’un lui donnait un livre « aussi simple que la table de multiplication » en affirmant que c’est une révélation complète de Dieu, il ne le croirait pas. Un Dieu infini dira forcément des choses que nous avons du mal à comprendre. Deuxièmement, une difficulté ne prouve pas qu’une chose est fausse. Torrey prend un exemple dans la science. Quand les astronomes affirmèrent pour la première fois que la Terre tourne autour du Soleil, il y avait un problème : s’ils avaient raison, la planète Vénus devait avoir des phases, comme la Lune. Mais personne n’en voyait. Plus tard, un télescope plus puissant montra que Vénus avait bien des phases. La difficulté venait de ce qu’on n’avait pas encore tous les éléments. Troisièmement, Torrey dit qu’il y a de plus grandes difficultés à croire que la Bible est seulement humaine qu’à croire qu’elle vient de Dieu. Comment expliquer ses prophéties accomplies, son étonnante unité, sa profondeur et sa puissance pour transformer des vies ? Le conseil pratique de Torrey est le suivant : sois honnête, continue de lire, pose des questions, et n’abandonne pas une chose en laquelle tu as de bonnes raisons d’avoir confiance simplement parce que tu ne peux pas encore répondre à toutes les questions. Les doutes et les questions font normalement partie de la croissance dans la foi. Apporte-les à Dieu, et parles-en avec un chrétien sage en qui tu as confiance. Tu n’as pas besoin d’avoir toutes les réponses pour continuer à suivre Jésus. Une chose à faire cette semaine : note un passage de la Bible ou une question sur la foi que tu trouves difficile. Cette semaine, creuse un peu le sujet, et pose la question à un adulte chrétien plein de sagesse. Prie : « Seigneur, aide-moi à comprendre, et aide-moi à te faire confiance en attendant. »",
+  "word_count": 444
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "fr"
+  ],
+  "order": 9,
+  "title": "Une audience avec le Roi",
+  "body_html": "<blockquote>« Le soir, le matin, et à midi, je soupire et je gémis, Et il entendra ma voix. » — Psaume 55:18</blockquote> <p>Torrey était célèbre pour sa vie de prière, et il dit que celui qui veut réussir dans la vie chrétienne « doit mener une vie de prière ».</p> <p>Il cite Jacques : « vous ne possédez pas, parce que vous ne demandez pas. » Beaucoup de chrétiens se demandent pourquoi ils ont si peu de victoire et si peu de puissance. Torrey dit que la réponse est souvent simplement qu’ils ne prient pas.</p> <p>Il recommande de mettre à part des moments réguliers pour la prière. David priait le soir, le matin et à midi. Daniel priait trois fois par jour. Torrey dit que tu peux aussi prier n’importe où, en marchant ou assis à ton bureau, mais que tu as besoin de moments fixes où tu te retires seul avec Dieu.</p> <p>Puis il décrit ce qu’est vraiment la prière :</p> <blockquote>« La prière est un privilège merveilleux. C’est une audience avec le Roi. C’est parler à notre Père. »</blockquote> <p>Il fait remarquer que quand quelqu’un est invité à rencontrer un roi, il ne se demande pas : « Combien de temps, au minimum, dois-je passer avec lui ? » Il se demande : « Combien de temps le roi va-t-il m’accorder ? » La prière, c’est pareil. Ce n’est pas une corvée dont on veut se débarrasser. C’est un privilège.</p> <p>Son conseil le plus pratique concerne le début de la journée. Commence par remercier Dieu pour ce qu’il a fait, et par prier pour ce dont tu as besoin aujourd’hui. Pense à l’avance aux tentations que tu vas probablement rencontrer, et demande à Dieu de la force avant qu’elles n’arrivent.</p> <blockquote>« Anticipe tes combats, livre-les à genoux avant que la tentation ne vienne, et tu auras toujours la victoire. »</blockquote> <p>Il renvoie à Jésus à Gethsémané. Jésus pria la nuit précédant la croix et l’affronta avec force ; les disciples dormirent et, quand l’épreuve arriva, ils s’enfuirent.</p> <p>Essaie. Avant d’aller en cours, pense à la journée qui t’attend : le cours que tu redoutes, la personne qui t’énerve, la tentation dont tu sais qu’elle viendra. Prie pour chacune de ces choses. Gagne le combat avant qu’il ne commence.</p> <p><strong>Une chose à faire cette semaine :</strong> chaque matin cette semaine, avant de quitter la maison, prends cinq minutes pour remercier Dieu, puis pour passer ta journée en revue et prier pour les moments les plus difficiles qui t’attendent.</p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi beaucoup de chrétiens ont-ils si peu de victoire, selon Torrey et Jacques ?",
+    "answer": "Parce qu’ils ne demandent pas : « vous ne possédez pas, parce que vous ne demandez pas. »"
+   },
+   {
+    "question": "Comment Torrey décrit-il la prière ?",
+    "answer": "Comme un privilège merveilleux, une audience avec le Roi, une conversation avec notre Père."
+   },
+   {
+    "question": "Que veut dire Torrey quand il parle de livrer ses combats à genoux ?",
+    "answer": "Prier à l’avance pour les tentations et les difficultés de la journée avant qu’elles n’arrivent, pour remporter la victoire d’avance."
+   }
+  ],
+  "body_text": "« Le soir, le matin, et à midi, je soupire et je gémis, Et il entendra ma voix. » — Psaume 55:18 Torrey était célèbre pour sa vie de prière, et il dit que celui qui veut réussir dans la vie chrétienne « doit mener une vie de prière ». Il cite Jacques : « vous ne possédez pas, parce que vous ne demandez pas. » Beaucoup de chrétiens se demandent pourquoi ils ont si peu de victoire et si peu de puissance. Torrey dit que la réponse est souvent simplement qu’ils ne prient pas. Il recommande de mettre à part des moments réguliers pour la prière. David priait le soir, le matin et à midi. Daniel priait trois fois par jour. Torrey dit que tu peux aussi prier n’importe où, en marchant ou assis à ton bureau, mais que tu as besoin de moments fixes où tu te retires seul avec Dieu. Puis il décrit ce qu’est vraiment la prière : « La prière est un privilège merveilleux. C’est une audience avec le Roi. C’est parler à notre Père. » Il fait remarquer que quand quelqu’un est invité à rencontrer un roi, il ne se demande pas : « Combien de temps, au minimum, dois-je passer avec lui ? » Il se demande : « Combien de temps le roi va-t-il m’accorder ? » La prière, c’est pareil. Ce n’est pas une corvée dont on veut se débarrasser. C’est un privilège. Son conseil le plus pratique concerne le début de la journée. Commence par remercier Dieu pour ce qu’il a fait, et par prier pour ce dont tu as besoin aujourd’hui. Pense à l’avance aux tentations que tu vas probablement rencontrer, et demande à Dieu de la force avant qu’elles n’arrivent. « Anticipe tes combats, livre-les à genoux avant que la tentation ne vienne, et tu auras toujours la victoire. » Il renvoie à Jésus à Gethsémané. Jésus pria la nuit précédant la croix et l’affronta avec force ; les disciples dormirent et, quand l’épreuve arriva, ils s’enfuirent. Essaie. Avant d’aller en cours, pense à la journée qui t’attend : le cours que tu redoutes, la personne qui t’énerve, la tentation dont tu sais qu’elle viendra. Prie pour chacune de ces choses. Gagne le combat avant qu’il ne commence. Une chose à faire cette semaine : chaque matin cette semaine, avant de quitter la maison, prends cinq minutes pour remercier Dieu, puis pour passer ta journée en revue et prier pour les moments les plus difficiles qui t’attendent.",
+  "word_count": 419
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "fr"
+  ],
+  "order": 10,
+  "title": "Les amis et les loisirs",
+  "body_html": "<blockquote>« Celui qui fréquente les sages devient sage, Mais celui qui se plaît avec les insensés s’en trouve mal. » — Proverbes 13:20</blockquote> <p>Torrey consacre un chapitre aux amis. Il dit : « Nos fréquentations ont une grande part dans la formation de notre caractère. » Les gens avec qui tu passes le plus de temps façonnent l’air que tu respires.</p> <p>Il encourage chaque jeune chrétien à avoir « quelques amis choisis avec sagesse, des amis intimes, avec qui il peut parler librement », des gens à peu près de ton âge qui aiment Dieu, qui prient et qui veulent grandir.</p> <p>Il dit aussi que c’est normal de trouver certains chrétiens plus faciles à vivre que d’autres. « Dieu nous a faits ainsi. »</p> <p>Mais il ne dit pas que tu ne devrais avoir que des amis chrétiens. Nous sommes appelés à côtoyer des gens qui ne partagent pas notre foi, et même des gens qui prennent le mauvais chemin, pour pouvoir les aimer et les conduire à Christ. Mais il avertit que nous devons toujours chercher à les tirer vers le haut, « sinon ils ne manqueront pas de nous tirer vers le bas ». Si une amitié t’éloigne constamment de Dieu, dit-il, renonces-y.</p> <p>Torrey parle aussi des loisirs. Il commence ainsi : « Les jeunes ont besoin de détente. » Jésus aimait regarder les enfants jouer, et il est allé à un repas de noces et l’a rendu encore meilleur.</p> <p>Au lieu de donner une liste d’activités interdites, Torrey propose quelques questions à se poser. Si tu as des doutes sur le fait qu’une chose soit bonne, laisse-la de côté. Puis-je faire cela pour la gloire de Dieu ? Est-ce que cela nuira à mon influence pour le bien auprès de quelqu’un ? Puis-je prier à ce sujet et demander à Dieu de le bénir ? Puis-je emmener Christ avec moi là-bas ?</p> <p>Certains exemples de Torrey viennent de son époque et peuvent sembler dépassés aujourd’hui. Mais ses questions restent aussi utiles que jamais pour une invitation à une fête, un jeu, un film ou une appli.</p> <p>Et souviens-toi : ces questions ne sont pas là pour te rendre anxieux. Torrey disait que la vie chrétienne n’est pas une vie de règles sans fin, mais celle d’un « enfant confiant, joyeux et libre de toute crainte » qui suit le Saint-Esprit.</p> <p><strong>Une chose à faire cette semaine :</strong> cette semaine, pense aux trois ou quatre personnes avec qui tu passes le plus de temps. Chacune de ces amitiés t’aide-t-elle à grandir, ou t’éloigne-t-elle ? Remercie Dieu pour tes bons amis, et demande-lui de la sagesse pour les autres.</p>",
+  "study_questions": [
+   {
+    "question": "Quel genre d’amis proches Torrey recommande-t-il ?",
+    "answer": "Quelques amis choisis avec sagesse, à peu près de ton âge, qui aiment Dieu, qui prient et qui veulent grandir."
+   },
+   {
+    "question": "Que dit Torrey des amis qui ne partagent pas notre foi ?",
+    "answer": "Nous devons les côtoyer et les aimer pour les conduire à Christ, mais toujours chercher à les tirer vers le haut, sinon ils nous tireront vers le bas ; si une amitié nous fait du tort, nous devons y renoncer."
+   },
+   {
+    "question": "Cite deux des questions de Torrey pour faire des choix en matière de loisirs.",
+    "answer": "Deux au choix : dans le doute, s’abstenir ; puis-je le faire pour la gloire de Dieu ; est-ce que cela nuira à mon influence ; puis-je prier à ce sujet ; puis-je emmener Christ avec moi."
+   }
+  ],
+  "body_text": "« Celui qui fréquente les sages devient sage, Mais celui qui se plaît avec les insensés s’en trouve mal. » — Proverbes 13:20 Torrey consacre un chapitre aux amis. Il dit : « Nos fréquentations ont une grande part dans la formation de notre caractère. » Les gens avec qui tu passes le plus de temps façonnent l’air que tu respires. Il encourage chaque jeune chrétien à avoir « quelques amis choisis avec sagesse, des amis intimes, avec qui il peut parler librement », des gens à peu près de ton âge qui aiment Dieu, qui prient et qui veulent grandir. Il dit aussi que c’est normal de trouver certains chrétiens plus faciles à vivre que d’autres. « Dieu nous a faits ainsi. » Mais il ne dit pas que tu ne devrais avoir que des amis chrétiens. Nous sommes appelés à côtoyer des gens qui ne partagent pas notre foi, et même des gens qui prennent le mauvais chemin, pour pouvoir les aimer et les conduire à Christ. Mais il avertit que nous devons toujours chercher à les tirer vers le haut, « sinon ils ne manqueront pas de nous tirer vers le bas ». Si une amitié t’éloigne constamment de Dieu, dit-il, renonces-y. Torrey parle aussi des loisirs. Il commence ainsi : « Les jeunes ont besoin de détente. » Jésus aimait regarder les enfants jouer, et il est allé à un repas de noces et l’a rendu encore meilleur. Au lieu de donner une liste d’activités interdites, Torrey propose quelques questions à se poser. Si tu as des doutes sur le fait qu’une chose soit bonne, laisse-la de côté. Puis-je faire cela pour la gloire de Dieu ? Est-ce que cela nuira à mon influence pour le bien auprès de quelqu’un ? Puis-je prier à ce sujet et demander à Dieu de le bénir ? Puis-je emmener Christ avec moi là-bas ? Certains exemples de Torrey viennent de son époque et peuvent sembler dépassés aujourd’hui. Mais ses questions restent aussi utiles que jamais pour une invitation à une fête, un jeu, un film ou une appli. Et souviens-toi : ces questions ne sont pas là pour te rendre anxieux. Torrey disait que la vie chrétienne n’est pas une vie de règles sans fin, mais celle d’un « enfant confiant, joyeux et libre de toute crainte » qui suit le Saint-Esprit. Une chose à faire cette semaine : cette semaine, pense aux trois ou quatre personnes avec qui tu passes le plus de temps. Chacune de ces amitiés t’aide-t-elle à grandir, ou t’éloigne-t-elle ? Remercie Dieu pour tes bons amis, et demande-lui de la sagesse pour les autres.",
+  "word_count": 440
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "fr"
+  ],
+  "order": 11,
+  "title": "Parler de Jésus aux autres",
+  "body_html": "<blockquote>« Il leur dit : Suivez-moi, et je vous ferai pêcheurs d’hommes. » — Matthieu 4:19</blockquote> <p>Torrey croyait que les chrétiens qui grandissent sont des chrétiens qui servent. Il disait : « Le chrétien qui travaille est le chrétien heureux. Le chrétien qui travaille est le chrétien fort. »</p> <p>Il compare cela à l’exercice physique. Tu ne peux pas garder ton corps en forme sans exercice, et tu ne peux pas garder ton âme en forme sans servir Dieu. Il dit même que certains chrétiens ne s’éloignent jamais « parce qu’ils sont trop occupés aux affaires de leur Maître pour rechuter ».</p> <p>Jésus a dit : « Suivez-moi, et je vous ferai pêcheurs d’hommes. » Torrey dit qu’aider les autres à connaître Jésus fait partie du fait de le suivre. Et il relie cela à la joie. Jésus a dit que porter du fruit rendrait parfaite la joie de ses disciples. Torrey dit : « Ceux qui sont pleins d’activité pour gagner les autres à Christ sont ceux qui sont pleins de joie en Christ lui-même. »</p> <p>À quoi cela ressemble-t-il pour un ado ? Pas forcément à prêcher au coin d’une rue. Ça peut vouloir dire prier chaque jour pour un ami en le nommant. Ça peut vouloir dire inviter quelqu’un au groupe de jeunes, être honnête sur ta foi quand on te pose la question, ou simplement être gentil d’une manière qui rend les gens curieux.</p> <p>Torrey avait aussi un grand cœur pour le monde entier. Il écrivit un chapitre sur la mission, rappelant à ses lecteurs que le dernier commandement de Jésus était de faire de toutes les nations des disciples. Il disait qu’il y a trois manières d’« aller » : certains d’entre nous peuvent y aller eux-mêmes ; nous pouvons tous donner ; et nous pouvons tous prier.</p> <p>Il encourageait chaque chrétien à rester ouvert à l’appel de Dieu à le servir dans un autre pays. Tu ne sais peut-être pas encore ce que Dieu prévoit pour ta vie. Mais tu peux lui dire dès maintenant : « Me voici. Utilise-moi là où tu veux. »</p> <p>Et en attendant, tu peux commencer là où tu es : avec les gens de ta classe, de ton équipe et de ta rue.</p> <p><strong>Une chose à faire cette semaine :</strong> écris le nom de trois amis qui ne connaissent pas encore Jésus. Prie pour chacun d’eux en le nommant chaque jour cette semaine, et guette une occasion naturelle de faire preuve de gentillesse ou de partager quelque chose de ta foi.</p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi Torrey compare-t-il le service de Dieu à l’exercice physique ?",
+    "answer": "Parce que, de même que le corps a besoin d’exercice pour rester en forme, l’âme a besoin de servir Dieu pour rester forte."
+   },
+   {
+    "question": "Que dit Torrey de ceux qui sont actifs pour partager leur foi ?",
+    "answer": "Qu’ils sont pleins de joie en Christ lui-même."
+   },
+   {
+    "question": "Quelles sont les trois manières d’« aller » vers les nations selon Torrey ?",
+    "answer": "Certains peuvent y aller en personne, tous peuvent donner, et tous peuvent prier."
+   }
+  ],
+  "body_text": "« Il leur dit : Suivez-moi, et je vous ferai pêcheurs d’hommes. » — Matthieu 4:19 Torrey croyait que les chrétiens qui grandissent sont des chrétiens qui servent. Il disait : « Le chrétien qui travaille est le chrétien heureux. Le chrétien qui travaille est le chrétien fort. » Il compare cela à l’exercice physique. Tu ne peux pas garder ton corps en forme sans exercice, et tu ne peux pas garder ton âme en forme sans servir Dieu. Il dit même que certains chrétiens ne s’éloignent jamais « parce qu’ils sont trop occupés aux affaires de leur Maître pour rechuter ». Jésus a dit : « Suivez-moi, et je vous ferai pêcheurs d’hommes. » Torrey dit qu’aider les autres à connaître Jésus fait partie du fait de le suivre. Et il relie cela à la joie. Jésus a dit que porter du fruit rendrait parfaite la joie de ses disciples. Torrey dit : « Ceux qui sont pleins d’activité pour gagner les autres à Christ sont ceux qui sont pleins de joie en Christ lui-même. » À quoi cela ressemble-t-il pour un ado ? Pas forcément à prêcher au coin d’une rue. Ça peut vouloir dire prier chaque jour pour un ami en le nommant. Ça peut vouloir dire inviter quelqu’un au groupe de jeunes, être honnête sur ta foi quand on te pose la question, ou simplement être gentil d’une manière qui rend les gens curieux. Torrey avait aussi un grand cœur pour le monde entier. Il écrivit un chapitre sur la mission, rappelant à ses lecteurs que le dernier commandement de Jésus était de faire de toutes les nations des disciples. Il disait qu’il y a trois manières d’« aller » : certains d’entre nous peuvent y aller eux-mêmes ; nous pouvons tous donner ; et nous pouvons tous prier. Il encourageait chaque chrétien à rester ouvert à l’appel de Dieu à le servir dans un autre pays. Tu ne sais peut-être pas encore ce que Dieu prévoit pour ta vie. Mais tu peux lui dire dès maintenant : « Me voici. Utilise-moi là où tu veux. » Et en attendant, tu peux commencer là où tu es : avec les gens de ta classe, de ton équipe et de ta rue. Une chose à faire cette semaine : écris le nom de trois amis qui ne connaissent pas encore Jésus. Prie pour chacun d’eux en le nommant chaque jour cette semaine, et guette une occasion naturelle de faire preuve de gentillesse ou de partager quelque chose de ta foi.",
+  "word_count": 423
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "how-to-succeed-in-the-christian-life-teens",
+   "fr"
+  ],
+  "order": 12,
+  "title": "Tenir bon, et le pas suivant",
+  "body_html": "<blockquote>« Or, tous ceux qui veulent vivre pieusement en Jésus-Christ seront persécutés. » — 2 Timothée 3:12</blockquote> <p>Torrey prévient les nouveaux chrétiens que, tôt ou tard, suivre Jésus leur attirera de l’opposition. Pas forcément la prison ou la violence. Peut-être des moqueries, le fait d’être mis à l’écart, ou des gens qui te trouvent bizarre.</p> <p>Il dit que beaucoup de jeunes chrétiens en sont surpris et abandonnent. Mais ça ne doit pas forcément se passer ainsi. Jésus a dit : « Heureux ceux qui sont persécutés pour la justice. » Torrey dit que si l’opposition est reçue comme il faut, « elle n’est plus un obstacle à la vie chrétienne, mais une aide ».</p> <p>Mais il ajoute un avertissement plein de sagesse : assure-toi que l’opposition vient vraiment de ce que tu suis Jésus, et non de ce que tu as été têtu ou méchant. Il dit que certains sont mal aimés « parce qu’ils sont têtus et grincheux, et ensuite ils se flattent d’être persécutés ». Donc : « Tiens compte des opinions des autres… Mais ne cède jamais un iota sur les principes. Défends ce que tu crois être la vérité. Fais-le avec amour. »</p> <p>Un mot d’attention : si tu es harcelé, menacé ou blessé, à cause de ta foi ou pour toute autre raison, ce n’est pas quelque chose à supporter seul. S’il te plaît, parles-en à un adulte de confiance.</p> <p>Le dernier chapitre de Torrey parle de la direction de Dieu. Il dit que la vie chrétienne n’est pas faite pour être une vie gouvernée par des règles sans fin et par l’anxiété, mais la vie d’« un enfant confiant, joyeux et libre de toute crainte », conduit par le Saint-Esprit.</p> <p>Sa méthode pour être guidé est simple : reconnais que tu as besoin de sagesse, soumets ta volonté à Dieu, demande-lui de te guider, attends-toi à ce qu’il réponde, et suis-le pas à pas. Puis il raconte une histoire. Un étudiant vint le voir en juillet, inquiet parce qu’il ne savait pas ce que Dieu voulait qu’il fasse l’été suivant. Torrey lui demanda : savait-il ce qu’il devait faire le lendemain ? Oui. Et à l’automne suivant ? Oui, terminer ses études. Alors c’était tout ce dont il avait besoin pour l’instant.</p> <blockquote>« Tout ce que tu as besoin de savoir, c’est le pas suivant. »</blockquote> <p>C’est une bonne façon de terminer. Tu n’as pas besoin d’avoir toute ta vie planifiée. Commence bien, garde les yeux sur Jésus, nourris-toi de sa Parole, prie, reste proche de bons amis, partage ta foi, tiens bon avec amour, et fais le pas suivant qu’il te montre. Voilà comment réussir sa vie chrétienne.</p> <p><strong>Une chose à faire cette semaine :</strong> si l’avenir t’inquiète, note ce que tu sais déjà que Dieu veut que tu fasses cette semaine. Fais-le. Prie : « Seigneur, je te fais confiance pour me montrer le pas suivant quand j’en aurai besoin. »</p>",
+  "study_questions": [
+   {
+    "question": "Que dit Torrey de l’opposition reçue comme il faut ?",
+    "answer": "Qu’elle n’est plus un obstacle à la vie chrétienne, mais une aide."
+   },
+   {
+    "question": "Quel avertissement Torrey donne-t-il au sujet de la persécution ?",
+    "answer": "S’assurer qu’elle vient vraiment de ce que nous suivons Christ, et non de ce que nous sommes têtus ou méchants ; défendre la vérité, mais avec amour."
+   },
+   {
+    "question": "Quel conseil Torrey donne-t-il à l’étudiant inquiet ?",
+    "answer": "Tout ce que tu as besoin de savoir, c’est le pas suivant ; fais ce que Dieu t’a déjà montré, et il te montrera la suite."
+   }
+  ],
+  "body_text": "« Or, tous ceux qui veulent vivre pieusement en Jésus-Christ seront persécutés. » — 2 Timothée 3:12 Torrey prévient les nouveaux chrétiens que, tôt ou tard, suivre Jésus leur attirera de l’opposition. Pas forcément la prison ou la violence. Peut-être des moqueries, le fait d’être mis à l’écart, ou des gens qui te trouvent bizarre. Il dit que beaucoup de jeunes chrétiens en sont surpris et abandonnent. Mais ça ne doit pas forcément se passer ainsi. Jésus a dit : « Heureux ceux qui sont persécutés pour la justice. » Torrey dit que si l’opposition est reçue comme il faut, « elle n’est plus un obstacle à la vie chrétienne, mais une aide ». Mais il ajoute un avertissement plein de sagesse : assure-toi que l’opposition vient vraiment de ce que tu suis Jésus, et non de ce que tu as été têtu ou méchant. Il dit que certains sont mal aimés « parce qu’ils sont têtus et grincheux, et ensuite ils se flattent d’être persécutés ». Donc : « Tiens compte des opinions des autres… Mais ne cède jamais un iota sur les principes. Défends ce que tu crois être la vérité. Fais-le avec amour. » Un mot d’attention : si tu es harcelé, menacé ou blessé, à cause de ta foi ou pour toute autre raison, ce n’est pas quelque chose à supporter seul. S’il te plaît, parles-en à un adulte de confiance. Le dernier chapitre de Torrey parle de la direction de Dieu. Il dit que la vie chrétienne n’est pas faite pour être une vie gouvernée par des règles sans fin et par l’anxiété, mais la vie d’« un enfant confiant, joyeux et libre de toute crainte », conduit par le Saint-Esprit. Sa méthode pour être guidé est simple : reconnais que tu as besoin de sagesse, soumets ta volonté à Dieu, demande-lui de te guider, attends-toi à ce qu’il réponde, et suis-le pas à pas. Puis il raconte une histoire. Un étudiant vint le voir en juillet, inquiet parce qu’il ne savait pas ce que Dieu voulait qu’il fasse l’été suivant. Torrey lui demanda : savait-il ce qu’il devait faire le lendemain ? Oui. Et à l’automne suivant ? Oui, terminer ses études. Alors c’était tout ce dont il avait besoin pour l’instant. « Tout ce que tu as besoin de savoir, c’est le pas suivant. » C’est une bonne façon de terminer. Tu n’as pas besoin d’avoir toute ta vie planifiée. Commence bien, garde les yeux sur Jésus, nourris-toi de sa Parole, prie, reste proche de bons amis, partage ta foi, tiens bon avec amour, et fais le pas suivant qu’il te montre. Voilà comment réussir sa vie chrétienne. Une chose à faire cette semaine : si l’avenir t’inquiète, note ce que tu sais déjà que Dieu veut que tu fasses cette semaine. Fais-le. Prie : « Seigneur, je te fais confiance pour me montrer le pas suivant quand j’en aurai besoin. »",
+  "word_count": 489
+ }
+}
+]

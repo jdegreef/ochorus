@@ -1,0 +1,197 @@
+{
+ "kind": "book",
+ "slug": "c-s-lewis-a-life-teens",
+ "language": "fr",
+ "note": [
+  "Proverbs 27:17's epigraph quotes only Segond's first half (« Comme le fer aiguise le fer… »): Segond's second half (« Ainsi un homme excite la colère d’un homme ») means the opposite of the KJV's “sharpeneth the countenance of his friend”, which the chapter builds on.",
+  "Every epigraph replaces the English KJV verse with the whole verse verbatim from Louis Segond (1910), dropping the “(KJV)” label; the only changes are French spacing before : ; ? ! and, in 1 Peter 3:15 (ch9), Segond's trailing comma dropped, and in Ecclesiastes 3:4 (ch12) the initial « un » capitalised. Ecclesiastes 5:4 (English numbering) is Ecclésiaste 5:3 in Segond and is cited as such.",
+  "Proverbs 27:17 in Segond reads « Ainsi un homme excite la colère d’un homme » — a different sense from the KJV's “sharpeneth the countenance of his friend” that the chapter builds on; the whole Segond verse is kept as the epigraph and the body only reuses the shared first half (« le fer aiguise le fer »). A native reviewer may prefer a partial epigraph.",
+  "Lewis's own words (“the most dejected and reluctant convert in all England”, the Whipsnade sentence, the first line of A Grief Observed) are plain renderings of our own, not taken from any published French translation; the convert line matches the children's French edition. King Lear's “Men must endure their going hence” is rendered « Les hommes doivent endurer leur départ d’ici-bas » (also the ch13 title stem).",
+  "Names and titles follow c-s-lewis-a-life-children.fr: Mme Moore, le Grand Coup, les Kilns, collège de Magdalen, église de la Sainte-Trinité, père Adams, Le Monde de Narnia, Tactique du diable, Les Fondements du christianisme, Apprendre la mort, Le Seigneur des anneaux; also Le Problème de la souffrance, L’Homme éternel (Chesterton), Le Roi Lear, and Shadowlands as « Les Ombres du cœur (Shadowlands) ». Eight acres became « plus de trois hectares »; narration is in the passé simple and the reader is addressed with « tu », as in a-retrospect-teens.fr.",
+  "AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Proverbs 22:6",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 22:6",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 9
+  },
+  {
+   "reference": "Psalm 27:10",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 27:10b",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 6:8",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 6:7",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 6:8b",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 27:17a",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 27:17a",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ecclesiastes 5:4",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ecclesiastes 5:4",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 8
+  },
+  {
+   "reference": "James 1:27",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "James 1:27",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 7
+  },
+  {
+   "reference": "Psalm 139:7",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 139:7",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 7
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 1:14a",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Peter 3:15",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Peter 3:15b",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 7
+  },
+  {
+   "reference": "Galatians 6:2",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Galatians 6:2a",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ecclesiastes 3:4",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ecclesiastes 3:4",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 8
+  },
+  {
+   "reference": "2 Timothy 4:7",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Timothy 4:7c",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 8,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

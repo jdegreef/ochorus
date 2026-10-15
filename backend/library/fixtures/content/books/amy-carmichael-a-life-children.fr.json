@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "amy-carmichael-a-life-children",
+  "language": "fr",
+  "title": "Amy Carmichael (Pour enfants)",
+  "subtitle": "",
+  "cover_byline": "Amy Carmichael",
+  "description": "La vraie histoire d’Amy Carmichael, une petite fille au caractère bien trempé, née dans un village au bord de la mer, en Irlande. Elle est partie dans le sud de l’Inde, elle n’est jamais rentrée chez elle, et elle a fondé à Dohnavur une famille sûre et pleine d’amour pour des centaines d’enfants qui n’avaient nulle part où aller. Tout a commencé avec une petite fille qui a marché dans la nuit pour la trouver. Cette édition pour enfants raconte sa vie en courts chapitres faits pour être lus à voix haute : un verset de la Bible, un moment de son histoire, une chose que cela veut dire pour toi, et une courte prière, avec des questions pour en parler ensemble.",
+  "qa": [
+   {
+    "question": "De quoi parle Amy Carmichael (Pour enfants) ?",
+    "answer": "C’est une version pour enfants de la grande biographie d’Amy Carmichael. Elle raconte comment une jeune fille du nord de l’Irlande a aidé les ouvrières des filatures de Belfast, est partie comme missionnaire au Japon puis en Inde, et a ouvert à Dohnavur une maison où les enfants pouvaient être en sécurité et aimés, et où ils l’appelaient Amma, « maman »."
+   },
+   {
+    "question": "Qui était Amy Carmichael ?",
+    "answer": "Une missionnaire irlandaise qui a vécu de 1867 à 1951. Elle est partie dans le sud de l’Inde en 1895 et y est restée cinquante-cinq ans sans jamais rentrer chez elle. Avec des amies chrétiennes indiennes, elle a parcouru les villages pour parler de Jésus aux gens, et à partir de 1901, elle s’est occupée d’enfants à Dohnavur, d’abord des filles, puis aussi des garçons. Elle a aussi écrit beaucoup de livres."
+   },
+   {
+    "question": "Comment chaque chapitre est-il organisé ?",
+    "answer": "Chaque chapitre est court et fait pour être lu à voix haute. Il commence par un verset de la Bible, raconte un moment de l’histoire d’Amy, montre une chose simple que cela veut dire pour toi, et se termine par une courte prière. Ensuite viennent trois questions, pour en parler ensemble."
+   },
+   {
+    "question": "Ce livre est-il trop triste pour les enfants ?",
+    "answer": "Certains passages sont tristes. Amy a perdu son père, sa mère et des amis très chers, et elle a passé ses vingt dernières années à souffrir après une chute. À son époque, certaines petites filles étaient données pour vivre dans des temples, où elles n’étaient ni en sécurité ni bien soignées. Le livre le dit très doucement, sans détails qui font peur, et il parle avec respect du peuple indien et des familles hindoues parmi lesquels Amy a vécu. C’est avant tout l’histoire d’une maison sûre et pleine d’amour, et de Dieu qui prend soin de chaque enfant."
+   },
+   {
+    "question": "Les histoires sont-elles vraies ?",
+    "answer": "Oui. Elles viennent des premiers livres d’Amy Carmichael et des gens qui l’ont connue, tels qu’ils sont rassemblés dans la grande biographie. Quelques histoires, comme la prière pour avoir des yeux bleus, la comète à l’école et les gants fourrés au Japon, ont été racontées par Amy ou à son sujet longtemps après, et le livre le dit. Il dit aussi clairement que la loi qui a mis fin au don des filles aux temples a été l’œuvre de responsables indiens."
+   },
+   {
+    "question": "À qui ce livre est-il destiné ?",
+    "answer": "Il est fait pour les enfants, pour être lu à voix haute par un adulte ou lu seul par un enfant plus grand. Il existe aussi une édition pour les ados, et la grande biographie pour les lecteurs plus âgés."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Un récit d’Ochorus pour jeunes lecteurs, d’après la biographie Ochorus Amy Carmichael, de la série Portraits de courage. La façon de raconter est la nôtre, libre à lire et à partager.",
+  "cover_url": "/covers/art/amy-carmichael-a-life-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 163,
+  "is_published": true,
+  "created_at": "2026-10-13T00:00:00Z",
+  "updated_at": "2026-10-13T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "fr"
+  ],
+  "order": 1,
+  "title": "Des yeux marron",
+  "body_html": "<blockquote>« Je te loue de ce que je suis une créature si merveilleuse. » — d’après Psaume 139</blockquote> <p>Le 16 décembre 1867, une petite fille est née à Millisle, un petit village au bord de la mer, au nord de l’Irlande. Elle s’appelait Amy Beatrice Carmichael. C’était l’aînée de sept enfants : elle était donc la grande sœur, dans une maison pleine de vie et de bruit.</p> <p>Le père d’Amy, David, était meunier. Il faisait marcher des moulins à farine, comme les hommes de sa famille avant lui. Sa mère, Catherine, avait une foi chaleureuse et solide. La famille priait ensemble tous les jours, et le dimanche était un jour à part, réservé à Dieu. Amy a appris que Dieu entend nos prières, et elle l’a cru de tout son cœur.</p> <p>Amy était une petite fille pleine d’énergie, qui savait ce qu’elle voulait. Elle aimait la mer, la plage et les bateaux du port, et elle entraînait ses petits frères dans toutes sortes d’aventures. Ce n’était pas une petite fille sage et timide, et elle n’est jamais devenue une femme timide non plus !</p> <p>Amy avait les yeux marron, et elle aurait voulu qu’ils soient bleus. Bien des années plus tard, elle a raconté une histoire à ce sujet. Un soir, elle a demandé à Dieu de rendre ses yeux bleus. Le matin, elle a couru jusqu’au miroir, certaine qu’elle allait y voir des yeux bleus. Ils étaient toujours marron ! Amy a été déçue. Mais elle a appris quelque chose qu’elle n’a jamais oublié : Dieu l’avait entendue, et il avait dit non. Non, c’est aussi une réponse.</p> <p>Les gens racontent cette histoire un peu différemment, et personne ne sait exactement quel âge elle avait. Mais longtemps après, quand Amy vivait en Inde et portait des vêtements indiens, ses yeux marron ne se remarquaient pas. Beaucoup de gens qui aiment son histoire disent que Dieu avait prévu une meilleure réponse depuis le début.</p> <p>Dieu t’a fait exprès, exactement comme tu es. Quand il dit non à une prière, cela ne veut pas dire qu’il a arrêté d’écouter. Tu peux lui faire confiance.</p> <p><em>Cher Dieu, merci de m’avoir fait exactement comme je suis. Aide-moi à te faire confiance, même quand tu réponds non à ma prière. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Où Amy Carmichael est-elle née ?",
+    "answer": "À Millisle, un petit village au bord de la mer, au nord de l’Irlande, le 16 décembre 1867. C’était l’aînée de sept enfants."
+   },
+   {
+    "question": "Pour quoi Amy a-t-elle prié quand elle était petite, et que s’est-il passé ?",
+    "answer": "Elle a demandé à Dieu de rendre ses yeux marron tout bleus. Le matin, ils étaient toujours marron, et elle a appris que Dieu l’avait entendue et qu’il avait dit non."
+   },
+   {
+    "question": "As-tu déjà prié pour quelque chose, et la réponse a été non ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : Dieu nous a faits exactement comme nous sommes, et quand il dit non, il écoute toujours et on peut lui faire confiance."
+   }
+  ],
+  "body_text": "« Je te loue de ce que je suis une créature si merveilleuse. » — d’après Psaume 139 Le 16 décembre 1867, une petite fille est née à Millisle, un petit village au bord de la mer, au nord de l’Irlande. Elle s’appelait Amy Beatrice Carmichael. C’était l’aînée de sept enfants : elle était donc la grande sœur, dans une maison pleine de vie et de bruit. Le père d’Amy, David, était meunier. Il faisait marcher des moulins à farine, comme les hommes de sa famille avant lui. Sa mère, Catherine, avait une foi chaleureuse et solide. La famille priait ensemble tous les jours, et le dimanche était un jour à part, réservé à Dieu. Amy a appris que Dieu entend nos prières, et elle l’a cru de tout son cœur. Amy était une petite fille pleine d’énergie, qui savait ce qu’elle voulait. Elle aimait la mer, la plage et les bateaux du port, et elle entraînait ses petits frères dans toutes sortes d’aventures. Ce n’était pas une petite fille sage et timide, et elle n’est jamais devenue une femme timide non plus ! Amy avait les yeux marron, et elle aurait voulu qu’ils soient bleus. Bien des années plus tard, elle a raconté une histoire à ce sujet. Un soir, elle a demandé à Dieu de rendre ses yeux bleus. Le matin, elle a couru jusqu’au miroir, certaine qu’elle allait y voir des yeux bleus. Ils étaient toujours marron ! Amy a été déçue. Mais elle a appris quelque chose qu’elle n’a jamais oublié : Dieu l’avait entendue, et il avait dit non. Non, c’est aussi une réponse. Les gens racontent cette histoire un peu différemment, et personne ne sait exactement quel âge elle avait. Mais longtemps après, quand Amy vivait en Inde et portait des vêtements indiens, ses yeux marron ne se remarquaient pas. Beaucoup de gens qui aiment son histoire disent que Dieu avait prévu une meilleure réponse depuis le début. Dieu t’a fait exprès, exactement comme tu es. Quand il dit non à une prière, cela ne veut pas dire qu’il a arrêté d’écouter. Tu peux lui faire confiance. Cher Dieu, merci de m’avoir fait exactement comme je suis. Aide-moi à te faire confiance, même quand tu réponds non à ma prière. Amen.",
+  "word_count": 377
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "fr"
+  ],
+  "order": 2,
+  "title": "Une comète et une réunion d’enfants",
+  "body_html": "<blockquote>« Je t’aime d’un amour éternel ; avec bonté, je t’ai attiré à moi. » — d’après Jérémie 31</blockquote> <p>Quand Amy avait environ douze ans, ses parents l’ont envoyée de l’autre côté de la mer, dans un pensionnat de filles à Harrogate, une ville du Yorkshire, en Angleterre. C’était bien loin de la plage de chez elle. Il y avait des cloches, des règles, et des promenades deux par deux. Amy était intelligente, mais elle n’aimait pas toujours les règles !</p> <p>À l’automne 1882, on pouvait voir au petit matin, dans le ciel, l’une des comètes les plus brillantes du siècle. Les filles voulaient la voir, mais elles n’avaient pas le droit de veiller. On raconte qu’Amy a persuadé un groupe de filles de se glisser hors de leur lit pour la guetter pendant la nuit. Quand on les a découvertes, elle a bien failli être renvoyée chez elle !</p> <p>Le plus important est arrivé en 1883, quand Amy avait quinze ans. Une mission pour les enfants est venue à Harrogate. Ses orateurs racontaient des histoires de la Bible, chantaient des refrains et parlaient aux enfants de l’amour de Jésus, comme si ce que pensaient les enfants comptait vraiment.</p> <p>Amy avait toujours entendu parler de Jésus, et elle priait depuis qu’elle était toute petite. Mais à l’une de ces réunions, elle a compris que l’amour de Dieu était pour elle aussi, et elle a mis sa confiance en Jésus pour elle-même. Elle n’a jamais oublié que Dieu l’avait rejointe quand elle était encore une enfant. Des années plus tard, quand elle s’occupait de centaines d’enfants, elle était sûre que les enfants peuvent vraiment connaître et aimer Jésus.</p> <p>Peu après, Amy a quitté l’école. Les affaires de son père allaient mal, et la famille a déménagé dans la grande ville de Belfast.</p> <p>Dieu t’a aimé avant même que tu le saches. Il ne pousse pas les gens à l’aimer, et il ne leur fait pas peur. Il les attire doucement, avec bonté. Et tu n’as pas besoin d’attendre d’être grand pour le connaître.</p> <p><em>Cher Dieu, merci de m’aimer d’un amour éternel. Aide-moi à faire confiance à Jésus pour moi-même, dès maintenant, pendant que je suis jeune. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’a fait Amy quand les filles n’ont pas eu le droit de veiller pour voir la comète ?",
+    "answer": "On raconte qu’elle a persuadé un groupe de filles de se glisser hors de leur lit pour la guetter pendant la nuit, et qu’elle a bien failli être renvoyée chez elle à cause de ça."
+   },
+   {
+    "question": "Que s’est-il passé pour Amy à la mission pour les enfants, quand elle avait quinze ans ?",
+    "answer": "Elle a compris que l’amour de Dieu était pour elle aussi, et elle a mis sa confiance en Jésus pour elle-même."
+   },
+   {
+    "question": "Crois-tu que les enfants peuvent connaître et aimer Jésus ? Pourquoi ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : Dieu nous aime avant que nous le sachions et il nous attire doucement, et nous n’avons pas besoin d’être grands pour lui faire confiance."
+   }
+  ],
+  "body_text": "« Je t’aime d’un amour éternel ; avec bonté, je t’ai attiré à moi. » — d’après Jérémie 31 Quand Amy avait environ douze ans, ses parents l’ont envoyée de l’autre côté de la mer, dans un pensionnat de filles à Harrogate, une ville du Yorkshire, en Angleterre. C’était bien loin de la plage de chez elle. Il y avait des cloches, des règles, et des promenades deux par deux. Amy était intelligente, mais elle n’aimait pas toujours les règles ! À l’automne 1882, on pouvait voir au petit matin, dans le ciel, l’une des comètes les plus brillantes du siècle. Les filles voulaient la voir, mais elles n’avaient pas le droit de veiller. On raconte qu’Amy a persuadé un groupe de filles de se glisser hors de leur lit pour la guetter pendant la nuit. Quand on les a découvertes, elle a bien failli être renvoyée chez elle ! Le plus important est arrivé en 1883, quand Amy avait quinze ans. Une mission pour les enfants est venue à Harrogate. Ses orateurs racontaient des histoires de la Bible, chantaient des refrains et parlaient aux enfants de l’amour de Jésus, comme si ce que pensaient les enfants comptait vraiment. Amy avait toujours entendu parler de Jésus, et elle priait depuis qu’elle était toute petite. Mais à l’une de ces réunions, elle a compris que l’amour de Dieu était pour elle aussi, et elle a mis sa confiance en Jésus pour elle-même. Elle n’a jamais oublié que Dieu l’avait rejointe quand elle était encore une enfant. Des années plus tard, quand elle s’occupait de centaines d’enfants, elle était sûre que les enfants peuvent vraiment connaître et aimer Jésus. Peu après, Amy a quitté l’école. Les affaires de son père allaient mal, et la famille a déménagé dans la grande ville de Belfast. Dieu t’a aimé avant même que tu le saches. Il ne pousse pas les gens à l’aimer, et il ne leur fait pas peur. Il les attire doucement, avec bonté. Et tu n’as pas besoin d’attendre d’être grand pour le connaître. Cher Dieu, merci de m’aimer d’un amour éternel. Aide-moi à faire confiance à Jésus pour moi-même, dès maintenant, pendant que je suis jeune. Amen.",
+  "word_count": 366
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "fr"
+  ],
+  "order": 3,
+  "title": "Le paquet de la vieille femme",
+  "body_html": "<blockquote>« L’œuvre de chacun sera montrée telle qu’elle est : de l’or ou de l’argent, du bois ou de la paille. » — d’après 1 Corinthiens 3</blockquote> <p>Belfast était une ville très active, pleine de filatures de lin et de chantiers navals. Les Carmichael habitaient un beau quartier, mais l’argent commençait à manquer. Puis, en 1885, le père d’Amy est mort. Amy avait dix-sept ans. Désormais, elle aidait sa mère à s’occuper des plus petits et de la maison.</p> <p>À peu près à cette époque, Amy a commencé à avoir des crises de fortes douleurs dans les nerfs, qu’on appelle des névralgies. Parfois, la douleur durait plusieurs jours. Elle allait la faire souffrir toute sa vie.</p> <p>Un dimanche matin tout gris, la famille rentrait à pied de l’église. Amy et deux de ses frères ont vu une pauvre vieille femme qui avançait péniblement dans la rue avec un lourd paquet. Ils ont fait demi-tour pour l’aider. Ils l’ont prise par le bras et ont porté sa charge. Tous les gens bien habillés qui sortaient de l’église pouvaient les voir, et Amy est devenue toute rouge de gêne.</p> <p>Quand ils sont passés devant une fontaine dans la rue, des paroles de la Bible sont venues à l’esprit d’Amy avec tant de force qu’elle s’est retournée pour voir qui avait parlé. C’étaient les paroles de Paul sur ceux qui bâtissent avec « de l’or, de l’argent, des pierres précieuses, du bois, du foin, du chaume ». Mais il n’y avait personne. La fontaine clapotait, et ils ont continué leur chemin avec la vieille femme.</p> <p>Une fois rentrée, Amy est montée dans sa chambre et elle est restée longtemps seule avec Dieu. Plus tard, elle a dit que ce jour-là, elle avait réglé quelque chose avec Dieu. Être admiré par les gens, c’était comme du foin et du chaume, qui brûlent. Mais l’amour qui se penche pour aider quelqu’un dans le besoin, c’est comme de l’or. Cela dure.</p> <p>Dieu ne regarde pas si nous avons l’air importants. Il voit les gentillesses que nous faisons quand personne n’applaudit. Aider quelqu’un qui en a besoin, même quand on se sent un peu ridicule, c’est comme bâtir avec de l’or.</p> <p><em>Cher Dieu, aide-moi à ne pas trop m’inquiéter de ce que les autres pensent de moi. Aide-moi à être gentil avec ceux qui ont besoin d’aide, et à bâtir ma vie avec de l’or. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’ont fait Amy et ses frères en rentrant de l’église ?",
+    "answer": "Ils ont aidé une pauvre vieille femme qui avait du mal à porter un lourd paquet : ils l’ont prise par le bras et ont porté sa charge, même si les gens les regardaient."
+   },
+   {
+    "question": "Quelles paroles sont venues à l’esprit d’Amy près de la fontaine ?",
+    "answer": "Les paroles de Paul sur ceux qui bâtissent avec « de l’or, de l’argent, des pierres précieuses, du bois, du foin, du chaume ». Elles l’ont fait réfléchir à ce qui dure."
+   },
+   {
+    "question": "Comment pourrais-tu aider quelqu’un cette semaine, même si c’est un peu gênant ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : la gentillesse faite pour Dieu est comme de l’or. Elle compte pour lui, même quand personne d’autre ne la remarque."
+   }
+  ],
+  "body_text": "« L’œuvre de chacun sera montrée telle qu’elle est : de l’or ou de l’argent, du bois ou de la paille. » — d’après 1 Corinthiens 3 Belfast était une ville très active, pleine de filatures de lin et de chantiers navals. Les Carmichael habitaient un beau quartier, mais l’argent commençait à manquer. Puis, en 1885, le père d’Amy est mort. Amy avait dix-sept ans. Désormais, elle aidait sa mère à s’occuper des plus petits et de la maison. À peu près à cette époque, Amy a commencé à avoir des crises de fortes douleurs dans les nerfs, qu’on appelle des névralgies. Parfois, la douleur durait plusieurs jours. Elle allait la faire souffrir toute sa vie. Un dimanche matin tout gris, la famille rentrait à pied de l’église. Amy et deux de ses frères ont vu une pauvre vieille femme qui avançait péniblement dans la rue avec un lourd paquet. Ils ont fait demi-tour pour l’aider. Ils l’ont prise par le bras et ont porté sa charge. Tous les gens bien habillés qui sortaient de l’église pouvaient les voir, et Amy est devenue toute rouge de gêne. Quand ils sont passés devant une fontaine dans la rue, des paroles de la Bible sont venues à l’esprit d’Amy avec tant de force qu’elle s’est retournée pour voir qui avait parlé. C’étaient les paroles de Paul sur ceux qui bâtissent avec « de l’or, de l’argent, des pierres précieuses, du bois, du foin, du chaume ». Mais il n’y avait personne. La fontaine clapotait, et ils ont continué leur chemin avec la vieille femme. Une fois rentrée, Amy est montée dans sa chambre et elle est restée longtemps seule avec Dieu. Plus tard, elle a dit que ce jour-là, elle avait réglé quelque chose avec Dieu. Être admiré par les gens, c’était comme du foin et du chaume, qui brûlent. Mais l’amour qui se penche pour aider quelqu’un dans le besoin, c’est comme de l’or. Cela dure. Dieu ne regarde pas si nous avons l’air importants. Il voit les gentillesses que nous faisons quand personne n’applaudit. Aider quelqu’un qui en a besoin, même quand on se sent un peu ridicule, c’est comme bâtir avec de l’or. Cher Dieu, aide-moi à ne pas trop m’inquiéter de ce que les autres pensent de moi. Aide-moi à être gentil avec ceux qui ont besoin d’aide, et à bâtir ma vie avec de l’or. Amen.",
+  "word_count": 399
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "fr"
+  ],
+  "order": 4,
+  "title": "Une salle appelée la Bienvenue",
+  "body_html": "<blockquote>« Va promptement dans les places et dans les rues de la ville, et amène ici les pauvres. » — d’après Luc 14</blockquote> <p>À Belfast, des milliers de filles travaillaient dans les filatures de lin. Elles faisaient de longues journées dans des salles chaudes, humides et bruyantes. Elles étaient trop pauvres pour s’acheter des chapeaux, alors elles s’enroulaient un châle autour de la tête. On les appelait les « shawlies », les « filles à châle », et ce n’était pas un nom gentil.</p> <p>Très peu de shawlies allaient à l’église. Les églises étaient pleines de gens à chapeau, et une fille en châle ne s’y serait pas sentie à sa place. Mais Amy les a remarquées. Elle a commencé une classe pour elles le dimanche matin, dans une salle qui appartenait à son église. Certains membres de l’église n’étaient pas contents ! Mais les filles sont venues, et elles ont continué à venir. Amy leur enseignait la Bible, chantait avec elles et priait avec elles, et elles voyaient bien qu’elle tenait vraiment à elles.</p> <p>Bientôt, il y a eu trop de filles pour la salle. Amy s’est mise à prier pour avoir un bâtiment rien qu’à elles. Elle a vu une annonce pour une salle en tôle, assez grande pour cinq cents personnes. Elle coûtait cinq cents livres, ce qui était une somme énorme. Amy n’a demandé cet argent à personne. Elle l’a demandé à Dieu.</p> <p>On raconte qu’une dame chrétienne qui s’appelait Kate Mitchell a entendu parler de ce besoin et a donné tout l’argent. Le propriétaire d’une filature a donné un terrain pour construire. La salle a été montée, et on l’a appelée la Bienvenue (en anglais, the Welcome). Ce nom disait tout. C’était un endroit pour les filles qui ne se sentaient les bienvenues nulle part ailleurs.</p> <p>La salle de la Bienvenue, le Welcome Hall, existe toujours à Belfast aujourd’hui, et une église s’y réunit encore.</p> <p>Jésus a raconté l’histoire d’un grand festin, où l’on a fait entrer les pauvres pour qu’ils en profitent eux aussi. Dans la famille de Dieu, il y a de la place pour tout le monde. Toi aussi, tu peux aider quelqu’un à se sentir le bienvenu, peut-être quelqu’un qui est souvent mis de côté.</p> <p><em>Cher Jésus, merci parce qu’il y a de la place pour tout le monde dans ta famille. Aide-moi à remarquer ceux qui se sentent mis de côté, et à les accueillir. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qui étaient les « shawlies » ?",
+    "answer": "Des filles qui travaillaient dans les filatures de lin de Belfast. Elles étaient trop pauvres pour s’acheter des chapeaux, alors elles s’enroulaient un châle autour de la tête."
+   },
+   {
+    "question": "Comment les shawlies ont-elles eu une salle rien qu’à elles ?",
+    "answer": "Amy a prié, et elle n’a demandé d’argent à personne. On raconte qu’une dame appelée Kate Mitchell a donné les cinq cents livres, et que le propriétaire d’une filature a donné le terrain. La salle a été appelée la Bienvenue."
+   },
+   {
+    "question": "Y a-t-il quelqu’un qui est souvent mis de côté, et que tu pourrais accueillir ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : dans la famille de Dieu, il y a de la place pour tout le monde, et nous pouvons aider les autres à se sentir les bienvenus."
+   }
+  ],
+  "body_text": "« Va promptement dans les places et dans les rues de la ville, et amène ici les pauvres. » — d’après Luc 14 À Belfast, des milliers de filles travaillaient dans les filatures de lin. Elles faisaient de longues journées dans des salles chaudes, humides et bruyantes. Elles étaient trop pauvres pour s’acheter des chapeaux, alors elles s’enroulaient un châle autour de la tête. On les appelait les « shawlies », les « filles à châle », et ce n’était pas un nom gentil. Très peu de shawlies allaient à l’église. Les églises étaient pleines de gens à chapeau, et une fille en châle ne s’y serait pas sentie à sa place. Mais Amy les a remarquées. Elle a commencé une classe pour elles le dimanche matin, dans une salle qui appartenait à son église. Certains membres de l’église n’étaient pas contents ! Mais les filles sont venues, et elles ont continué à venir. Amy leur enseignait la Bible, chantait avec elles et priait avec elles, et elles voyaient bien qu’elle tenait vraiment à elles. Bientôt, il y a eu trop de filles pour la salle. Amy s’est mise à prier pour avoir un bâtiment rien qu’à elles. Elle a vu une annonce pour une salle en tôle, assez grande pour cinq cents personnes. Elle coûtait cinq cents livres, ce qui était une somme énorme. Amy n’a demandé cet argent à personne. Elle l’a demandé à Dieu. On raconte qu’une dame chrétienne qui s’appelait Kate Mitchell a entendu parler de ce besoin et a donné tout l’argent. Le propriétaire d’une filature a donné un terrain pour construire. La salle a été montée, et on l’a appelée la Bienvenue (en anglais, the Welcome). Ce nom disait tout. C’était un endroit pour les filles qui ne se sentaient les bienvenues nulle part ailleurs. La salle de la Bienvenue, le Welcome Hall, existe toujours à Belfast aujourd’hui, et une église s’y réunit encore. Jésus a raconté l’histoire d’un grand festin, où l’on a fait entrer les pauvres pour qu’ils en profitent eux aussi. Dans la famille de Dieu, il y a de la place pour tout le monde. Toi aussi, tu peux aider quelqu’un à se sentir le bienvenu, peut-être quelqu’un qui est souvent mis de côté. Cher Jésus, merci parce qu’il y a de la place pour tout le monde dans ta famille. Aide-moi à remarquer ceux qui se sentent mis de côté, et à les accueillir. Amen.",
+  "word_count": 406
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "fr"
+  ],
+  "order": 5,
+  "title": "Le Cher Vieux Monsieur",
+  "body_html": "<blockquote>« Dieu donne une famille à ceux qui étaient abandonnés. » — d’après Psaume 68</blockquote> <p>En 1889, Amy et sa mère ont déménagé à Manchester, en Angleterre, pour aider une mission auprès des ouvriers des filatures. Amy a choisi d’habiter dans un quartier pauvre et sale de la ville, pour être près des gens qu’elle voulait aider. Mais le travail très dur et l’air malsain l’ont rendue malade. En quelques mois, elle était épuisée et elle a dû s’arrêter.</p> <p>Alors un vieil ami plein de bonté est intervenu. Il s’appelait Robert Wilson. C’était un quaker, et il avait aidé à lancer un grand rassemblement chrétien qui avait lieu chaque année, la Convention de Keswick. Il était veuf, ce qui veut dire que sa femme était morte, et il habitait une maison de campagne appelée Broughton Grange. Il a invité Amy à venir chez lui.</p> <p>Amy y est allée en 1890, et elle est restée. Robert Wilson la traitait comme sa fille, et elle l’aimait comme un père. Elle lui a donné un surnom : « le Cher Vieux Monsieur ». Sa propre mère l’a laissée partir chez lui, et c’était un cadeau très généreux.</p> <p>Beaucoup de missionnaires venaient en visite à Broughton Grange, et Amy écoutait leurs histoires. Puis, un soir d’hiver, le 13 janvier 1892, Amy était seule dans sa chambre. L’ordre de Jésus, « Allez par tout le monde », est venu à elle comme s’il ne s’adressait qu’à elle. Elle était sûre que Dieu l’appelait à partir très loin pour parler de Jésus aux gens.</p> <p>Le lendemain, elle a écrit à sa mère. Sa mère lui a répondu, et elle a donné sa fille à Dieu, librement et avec joie. Amy a gardé cette lettre toute sa vie. Ce fut beaucoup plus difficile pour le Cher Vieux Monsieur. Il avait besoin d’Amy, et certains amis disaient qu’elle devait rester avec lui. Mais à la fin, lui aussi a dit oui.</p> <p>Dieu a donné à Amy une nouvelle famille quand elle était fatiguée et malade. Dieu prend soin des gens qui se sentent seuls. Tu peux faire partie de sa réponse, en étant l’ami de quelqu’un qui est seul.</p> <p><em>Cher Dieu, merci pour ma famille et pour mes amis. S’il te plaît, prends soin des gens qui se sentent seuls, et aide-moi à écouter quand tu m’appelles. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qui était « le Cher Vieux Monsieur » ?",
+    "answer": "Robert Wilson, un vieux quaker plein de bonté, qui a accueilli Amy chez lui, à Broughton Grange, quand elle était malade, et qui l’a traitée comme sa fille."
+   },
+   {
+    "question": "Que s’est-il passé le 13 janvier 1892 ?",
+    "answer": "Les paroles de Jésus « Allez par tout le monde » sont venues à Amy comme si elles étaient pour elle seule, et elle a été sûre que Dieu l’appelait à partir pour parler de lui aux gens."
+   },
+   {
+    "question": "De qui pourrais-tu être l’ami, si cette personne se sent seule ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : Dieu donne une famille à ceux qui sont seuls, et il peut se servir de nous pour prendre soin d’eux."
+   }
+  ],
+  "body_text": "« Dieu donne une famille à ceux qui étaient abandonnés. » — d’après Psaume 68 En 1889, Amy et sa mère ont déménagé à Manchester, en Angleterre, pour aider une mission auprès des ouvriers des filatures. Amy a choisi d’habiter dans un quartier pauvre et sale de la ville, pour être près des gens qu’elle voulait aider. Mais le travail très dur et l’air malsain l’ont rendue malade. En quelques mois, elle était épuisée et elle a dû s’arrêter. Alors un vieil ami plein de bonté est intervenu. Il s’appelait Robert Wilson. C’était un quaker, et il avait aidé à lancer un grand rassemblement chrétien qui avait lieu chaque année, la Convention de Keswick. Il était veuf, ce qui veut dire que sa femme était morte, et il habitait une maison de campagne appelée Broughton Grange. Il a invité Amy à venir chez lui. Amy y est allée en 1890, et elle est restée. Robert Wilson la traitait comme sa fille, et elle l’aimait comme un père. Elle lui a donné un surnom : « le Cher Vieux Monsieur ». Sa propre mère l’a laissée partir chez lui, et c’était un cadeau très généreux. Beaucoup de missionnaires venaient en visite à Broughton Grange, et Amy écoutait leurs histoires. Puis, un soir d’hiver, le 13 janvier 1892, Amy était seule dans sa chambre. L’ordre de Jésus, « Allez par tout le monde », est venu à elle comme s’il ne s’adressait qu’à elle. Elle était sûre que Dieu l’appelait à partir très loin pour parler de Jésus aux gens. Le lendemain, elle a écrit à sa mère. Sa mère lui a répondu, et elle a donné sa fille à Dieu, librement et avec joie. Amy a gardé cette lettre toute sa vie. Ce fut beaucoup plus difficile pour le Cher Vieux Monsieur. Il avait besoin d’Amy, et certains amis disaient qu’elle devait rester avec lui. Mais à la fin, lui aussi a dit oui. Dieu a donné à Amy une nouvelle famille quand elle était fatiguée et malade. Dieu prend soin des gens qui se sentent seuls. Tu peux faire partie de sa réponse, en étant l’ami de quelqu’un qui est seul. Cher Dieu, merci pour ma famille et pour mes amis. S’il te plaît, prends soin des gens qui se sentent seuls, et aide-moi à écouter quand tu m’appelles. Amen.",
+  "word_count": 390
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "fr"
+  ],
+  "order": 6,
+  "title": "Des gants fourrés et une route qui tourne",
+  "body_html": "<blockquote>« Confie-toi en l’Éternel de tout ton cœur, et il dirigera tes sentiers. » — d’après Proverbes 3</blockquote> <p>Amy voulait d’abord aller en Chine. Mais les médecins de la Mission à l’intérieur de la Chine ont dit que sa santé n’était pas assez bonne. La porte était fermée. Amy a été très déçue, mais elle ne croyait pas que Dieu avait changé d’avis. Puis la Convention de Keswick a décidé de l’envoyer comme sa toute première missionnaire. En mars 1893, elle a pris le bateau pour le Japon. Elle avait vingt-cinq ans.</p> <p>Au Japon, elle a rejoint un missionnaire appelé Barclay Buxton et une équipe de chrétiens japonais et anglais, dans la ville de Matsue. Amy ne parlait pas japonais, alors une jeune chrétienne japonaise, qu’Amy appelait Misaki San, l’aidait en traduisant ses paroles en japonais.</p> <p>Plus tard, Amy a raconté une visite chez une vieille femme malade. Amy portait ses vêtements anglais, avec des gants fourrés pour se protéger du froid. Pendant qu’elle parlait de Jésus, elle a vu que la vieille femme regardait ses gants au lieu d’écouter. Amy est rentrée chez elle et a décidé qu’à partir de ce jour-là, elle porterait des vêtements japonais. Elle ne pensait pas que des vêtements pouvaient sauver qui que ce soit. Mais elle savait qu’ils pouvaient gêner.</p> <p>Au bout d’environ quinze mois, Amy est tombée très malade, et elle a quitté le Japon. Elle est allée à Ceylan, qu’on appelle aujourd’hui le Sri Lanka. Puis elle a appris que le Cher Vieux Monsieur avait eu une attaque, alors elle est vite rentrée en Angleterre pour s’occuper de lui. Certains ont pensé que c’en était fini de sa vie de missionnaire.</p> <p>Mais en 1895, une mission pour les femmes, la Church of England Zenana Missionary Society, a accepté de l’envoyer en Inde. En octobre 1895, elle a repris le bateau. Elle ne le savait pas encore, mais elle ne reverrait jamais son pays.</p> <p>Le chemin d’Amy est allé dans un sens, puis dans l’autre, et il ne semblait pas toujours logique. Mais Dieu la conduisait, un pas après l’autre. Tu n’as pas besoin de voir toute la route. Tu peux faire confiance à Dieu pour le prochain pas.</p> <p><em>Cher Dieu, quand je ne comprends pas ce qui se passe, aide-moi à te faire confiance de tout mon cœur. S’il te plaît, montre-moi le prochain pas. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi Amy s’est-elle mise à porter des vêtements japonais ?",
+    "answer": "En rendant visite à une vieille femme, elle a vu que celle-ci regardait ses gants fourrés au lieu d’écouter, et elle a décidé que ses vêtements étrangers ne devaient pas gêner."
+   },
+   {
+    "question": "Pourquoi Amy a-t-elle quitté Ceylan pour retourner en Angleterre ?",
+    "answer": "Elle a appris que Robert Wilson, le Cher Vieux Monsieur, avait eu une attaque, alors elle est vite rentrée pour s’occuper de lui."
+   },
+   {
+    "question": "Y a-t-il quelque chose que tu attends de comprendre ? Comment pourrais-tu le confier à Dieu ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : Dieu nous conduit un pas après l’autre, même quand la route tourne et que nous ne voyons pas où elle va."
+   }
+  ],
+  "body_text": "« Confie-toi en l’Éternel de tout ton cœur, et il dirigera tes sentiers. » — d’après Proverbes 3 Amy voulait d’abord aller en Chine. Mais les médecins de la Mission à l’intérieur de la Chine ont dit que sa santé n’était pas assez bonne. La porte était fermée. Amy a été très déçue, mais elle ne croyait pas que Dieu avait changé d’avis. Puis la Convention de Keswick a décidé de l’envoyer comme sa toute première missionnaire. En mars 1893, elle a pris le bateau pour le Japon. Elle avait vingt-cinq ans. Au Japon, elle a rejoint un missionnaire appelé Barclay Buxton et une équipe de chrétiens japonais et anglais, dans la ville de Matsue. Amy ne parlait pas japonais, alors une jeune chrétienne japonaise, qu’Amy appelait Misaki San, l’aidait en traduisant ses paroles en japonais. Plus tard, Amy a raconté une visite chez une vieille femme malade. Amy portait ses vêtements anglais, avec des gants fourrés pour se protéger du froid. Pendant qu’elle parlait de Jésus, elle a vu que la vieille femme regardait ses gants au lieu d’écouter. Amy est rentrée chez elle et a décidé qu’à partir de ce jour-là, elle porterait des vêtements japonais. Elle ne pensait pas que des vêtements pouvaient sauver qui que ce soit. Mais elle savait qu’ils pouvaient gêner. Au bout d’environ quinze mois, Amy est tombée très malade, et elle a quitté le Japon. Elle est allée à Ceylan, qu’on appelle aujourd’hui le Sri Lanka. Puis elle a appris que le Cher Vieux Monsieur avait eu une attaque, alors elle est vite rentrée en Angleterre pour s’occuper de lui. Certains ont pensé que c’en était fini de sa vie de missionnaire. Mais en 1895, une mission pour les femmes, la Church of England Zenana Missionary Society, a accepté de l’envoyer en Inde. En octobre 1895, elle a repris le bateau. Elle ne le savait pas encore, mais elle ne reverrait jamais son pays. Le chemin d’Amy est allé dans un sens, puis dans l’autre, et il ne semblait pas toujours logique. Mais Dieu la conduisait, un pas après l’autre. Tu n’as pas besoin de voir toute la route. Tu peux faire confiance à Dieu pour le prochain pas. Cher Dieu, quand je ne comprends pas ce qui se passe, aide-moi à te faire confiance de tout mon cœur. S’il te plaît, montre-moi le prochain pas. Amen.",
+  "word_count": 395
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "fr"
+  ],
+  "order": 7,
+  "title": "La Grappe d’étoiles",
+  "body_html": "<blockquote>« Ceux qui auront amené beaucoup de gens à la justice brilleront comme les étoiles, pour toujours et à jamais. » — d’après Daniel 12</blockquote> <p>En Inde, Amy est d’abord allée à Bangalore, une ville où il fait moins chaud, pour apprendre le tamoul. Le tamoul est une belle langue très ancienne, difficile à apprendre, mais avec le temps, Amy l’a bien parlé. Un missionnaire qui s’appelait Thomas Walker l’a aidée. C’était un grand spécialiste du tamoul, et il est devenu son professeur et son ami. En 1896, Amy est allée vivre et travailler avec M. et Mme Walker dans la région de Tinnevelly, tout au sud de l’Inde.</p> <p>Là-bas, Amy allait de village en village avec une petite équipe de femmes chrétiennes indiennes. Elles visitaient les maisons, chantaient et parlaient de Jésus aux gens. L’équipe a été connue sous un nom tamoul qui veut dire « la Grappe d’étoiles ». Sa responsable était Ponnammal, une jeune veuve qui est devenue la meilleure amie indienne d’Amy.</p> <p>Elles voyageaient dans un bandy, une charrette tirée par des bœufs, avec un toit en natte et sans ressorts, sur des routes pleines de bosses. Une fois, pendant les inondations, la charrette a roulé dans une mare. « Et patatras, voilà le bandy par terre ! » a écrit Amy. L’eau a emporté leurs livres, qui flottaient ! Elles les ont repêchés et ont continué leur route, « un peu mouillées, mais heureuses ».</p> <p>Le travail avançait souvent lentement. Pour une famille hindoue, un fils ou une fille qui devenait chrétien, cela pouvait vouloir dire le perdre. C’était donc un pas très important, et peu de gens le faisaient. Parmi eux, il y avait une fille qui s’appelait Arulai. Elle est venue vivre avec Amy, et une fois grande, elle est devenue l’une de ses aides les plus fidèles.</p> <p>Amy s’accrochait à un verset de la Bible qui dit, au sujet des serviteurs de Dieu, « que chacun soit trouvé fidèle ». « Dieu soit loué, écrivait-elle, il ne dit pas “couronné de succès”. » Dans son livre Les choses telles qu’elles sont, elle a dit la vérité sur son travail, pas seulement les moments heureux.</p> <p>Dieu ne te demande pas d’être célèbre ou de tout réussir. Il te demande d’être fidèle, de continuer à faire ce qu’il te donne à faire, jour après jour. Les gens fidèles brillent comme des étoiles, même quand personne ne semble les remarquer.</p> <p><em>Cher Dieu, aide-moi à être fidèle dans les petites choses que tu me donnes à faire, chaque jour, même quand personne ne le remarque. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qui voyageait avec Amy de village en village ?",
+    "answer": "Une petite équipe de femmes chrétiennes indiennes, connue sous un nom tamoul qui veut dire « la Grappe d’étoiles ». Sa responsable était Ponnammal."
+   },
+   {
+    "question": "Que s’est-il passé quand le bandy a roulé dans une mare ?",
+    "answer": "L’eau a emporté leurs livres, qui flottaient ! Elles les ont repêchés et ont continué leur route, « un peu mouillées, mais heureuses »."
+   },
+   {
+    "question": "Quelle petite chose pourrais-tu faire fidèlement chaque jour ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : Dieu nous demande d’être fidèles, pas célèbres, et les gens fidèles brillent comme des étoiles."
+   }
+  ],
+  "body_text": "« Ceux qui auront amené beaucoup de gens à la justice brilleront comme les étoiles, pour toujours et à jamais. » — d’après Daniel 12 En Inde, Amy est d’abord allée à Bangalore, une ville où il fait moins chaud, pour apprendre le tamoul. Le tamoul est une belle langue très ancienne, difficile à apprendre, mais avec le temps, Amy l’a bien parlé. Un missionnaire qui s’appelait Thomas Walker l’a aidée. C’était un grand spécialiste du tamoul, et il est devenu son professeur et son ami. En 1896, Amy est allée vivre et travailler avec M. et Mme Walker dans la région de Tinnevelly, tout au sud de l’Inde. Là-bas, Amy allait de village en village avec une petite équipe de femmes chrétiennes indiennes. Elles visitaient les maisons, chantaient et parlaient de Jésus aux gens. L’équipe a été connue sous un nom tamoul qui veut dire « la Grappe d’étoiles ». Sa responsable était Ponnammal, une jeune veuve qui est devenue la meilleure amie indienne d’Amy. Elles voyageaient dans un bandy, une charrette tirée par des bœufs, avec un toit en natte et sans ressorts, sur des routes pleines de bosses. Une fois, pendant les inondations, la charrette a roulé dans une mare. « Et patatras, voilà le bandy par terre ! » a écrit Amy. L’eau a emporté leurs livres, qui flottaient ! Elles les ont repêchés et ont continué leur route, « un peu mouillées, mais heureuses ». Le travail avançait souvent lentement. Pour une famille hindoue, un fils ou une fille qui devenait chrétien, cela pouvait vouloir dire le perdre. C’était donc un pas très important, et peu de gens le faisaient. Parmi eux, il y avait une fille qui s’appelait Arulai. Elle est venue vivre avec Amy, et une fois grande, elle est devenue l’une de ses aides les plus fidèles. Amy s’accrochait à un verset de la Bible qui dit, au sujet des serviteurs de Dieu, « que chacun soit trouvé fidèle ». « Dieu soit loué, écrivait-elle, il ne dit pas “couronné de succès”. » Dans son livre Les choses telles qu’elles sont, elle a dit la vérité sur son travail, pas seulement les moments heureux. Dieu ne te demande pas d’être célèbre ou de tout réussir. Il te demande d’être fidèle, de continuer à faire ce qu’il te donne à faire, jour après jour. Les gens fidèles brillent comme des étoiles, même quand personne ne semble les remarquer. Cher Dieu, aide-moi à être fidèle dans les petites choses que tu me donnes à faire, chaque jour, même quand personne ne le remarque. Amen.",
+  "word_count": 430
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "fr"
+  ],
+  "order": 8,
+  "title": "« Je suis venue pour rester »",
+  "body_html": "<blockquote>« Votre Père qui est dans les cieux ne veut pas qu’un seul de ces petits se perde. » — d’après Matthieu 18</blockquote> <p>À cette époque, dans le sud de l’Inde, certaines petites filles étaient données pour vivre dans des temples, où elles n’étaient ni en sécurité ni bien soignées. Amy avait très envie de les aider, mais elle ne voyait pas comment faire.</p> <p>Un soir du début de mars 1901, on a trouvé une petite fille d’environ sept ans, toute seule devant l’église du village de Pannaivilai, où vivait Amy. La nuit tombait. Une gentille chrétienne l’a emmenée chez elle pour la nuit. Le matin, la petite a dit qu’elle voulait voir une certaine dame étrangère, alors la femme l’a amenée à Amy.</p> <p>Amy était assise sous la véranda. La petite fille a couru droit vers elle et a grimpé sur ses genoux, sans la moindre peur. Elle s’appelait Preena. « Je suis venue pour rester », a-t-elle dit.</p> <p>Preena avait été donnée quand elle était bébé pour vivre avec des femmes dans un temple. Là-bas, personne ne l’aimait, et elle n’était pas en sécurité. Une fois, elle s’était enfuie et avait marché pendant trois jours pour retrouver sa mère. Sa mère avait pleuré, mais elle ne l’avait pas gardée. Ensuite, les femmes du temple ont essayé de faire peur à Preena en lui montrant une des amies d’Amy et en l’appelant « l’Ammal voleuse d’enfants », c’est-à-dire la dame qui vole les enfants. Alors Preena a décidé d’aller trouver cette dame ! Elle a marché jusqu’à Pannaivilai toute seule.</p> <p>Bientôt, les femmes du temple sont venues la reprendre. Preena avait peur, mais elle s’est dressée devant elles toutes et elle a crié : « Je ne veux pas ! Je ne veux pas ! » Amy et les Walker ont décidé de la garder en sécurité, même si c’était risqué. Une des femmes a dit que Preena avait pris un peu d’argent, seulement quatre pence et demi, et les missionnaires l’ont remboursé. Plus tard, quand Amy lui a expliqué comment Jésus a payé pour nous, Preena a dit : « Je sais combien vous avez payé pour moi — quatre pence et demi ! »</p> <p>Jésus a dit que chaque enfant compte pour Dieu, chacun sans exception. Dieu a vu Preena quand elle était toute seule, et il te voit, toi aussi.</p> <p><em>Cher Dieu, merci parce que chaque enfant compte pour toi, et moi aussi. S’il te plaît, protège les enfants partout dans le monde, et aide-les à trouver des gens qui les aimeront. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’a dit Preena quand elle a grimpé sur les genoux d’Amy ?",
+    "answer": "« Je suis venue pour rester. »"
+   },
+   {
+    "question": "Pourquoi Preena est-elle partie à la recherche d’Amy ?",
+    "answer": "Les femmes du temple ont essayé de lui faire peur en appelant une des amies d’Amy « l’Ammal voleuse d’enfants », mais Preena a décidé d’aller trouver la dame qui accueillait les enfants, et elle a marché toute seule jusqu’à Pannaivilai."
+   },
+   {
+    "question": "Qu’est-ce que tu ressens quand tu sais que tu comptes pour Dieu ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : chaque enfant, sans exception, compte pour Dieu, et il voit chacun d’eux, même quand ils sont seuls."
+   }
+  ],
+  "body_text": "« Votre Père qui est dans les cieux ne veut pas qu’un seul de ces petits se perde. » — d’après Matthieu 18 À cette époque, dans le sud de l’Inde, certaines petites filles étaient données pour vivre dans des temples, où elles n’étaient ni en sécurité ni bien soignées. Amy avait très envie de les aider, mais elle ne voyait pas comment faire. Un soir du début de mars 1901, on a trouvé une petite fille d’environ sept ans, toute seule devant l’église du village de Pannaivilai, où vivait Amy. La nuit tombait. Une gentille chrétienne l’a emmenée chez elle pour la nuit. Le matin, la petite a dit qu’elle voulait voir une certaine dame étrangère, alors la femme l’a amenée à Amy. Amy était assise sous la véranda. La petite fille a couru droit vers elle et a grimpé sur ses genoux, sans la moindre peur. Elle s’appelait Preena. « Je suis venue pour rester », a-t-elle dit. Preena avait été donnée quand elle était bébé pour vivre avec des femmes dans un temple. Là-bas, personne ne l’aimait, et elle n’était pas en sécurité. Une fois, elle s’était enfuie et avait marché pendant trois jours pour retrouver sa mère. Sa mère avait pleuré, mais elle ne l’avait pas gardée. Ensuite, les femmes du temple ont essayé de faire peur à Preena en lui montrant une des amies d’Amy et en l’appelant « l’Ammal voleuse d’enfants », c’est-à-dire la dame qui vole les enfants. Alors Preena a décidé d’aller trouver cette dame ! Elle a marché jusqu’à Pannaivilai toute seule. Bientôt, les femmes du temple sont venues la reprendre. Preena avait peur, mais elle s’est dressée devant elles toutes et elle a crié : « Je ne veux pas ! Je ne veux pas ! » Amy et les Walker ont décidé de la garder en sécurité, même si c’était risqué. Une des femmes a dit que Preena avait pris un peu d’argent, seulement quatre pence et demi, et les missionnaires l’ont remboursé. Plus tard, quand Amy lui a expliqué comment Jésus a payé pour nous, Preena a dit : « Je sais combien vous avez payé pour moi — quatre pence et demi ! » Jésus a dit que chaque enfant compte pour Dieu, chacun sans exception. Dieu a vu Preena quand elle était toute seule, et il te voit, toi aussi. Cher Dieu, merci parce que chaque enfant compte pour toi, et moi aussi. S’il te plaît, protège les enfants partout dans le monde, et aide-les à trouver des gens qui les aimeront. Amen.",
+  "word_count": 427
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "fr"
+  ],
+  "order": 9,
+  "title": "Amma",
+  "body_html": "<blockquote>« Il prendra les agneaux dans ses bras, Et les portera dans son sein. » — d’après Ésaïe 40</blockquote> <p>Plus tard en 1901, Amy, les Walker, les femmes de l’équipe et la petite Preena se sont installés à Dohnavur, un village au pied de montagnes bleues. Bien longtemps avant, Dohnavur avait été fondé comme un lieu sûr pour des chrétiens qu’on avait chassés de chez eux. Maintenant, il allait devenir un lieu sûr pour des enfants.</p> <p>D’autres filles sont arrivées, et à partir de 1904 environ, des bébés aussi. Certains étaient amenés par des mamans qui ne pouvaient pas les garder. D’autres risquaient d’être donnés à des temples. Amy ne pouvait plus voyager avec l’équipe, alors elle est restée à la maison pour s’occuper des enfants. Certains disaient qu’elle n’était plus missionnaire, mais bonne d’enfants ! Mais Amy croyait que s’occuper d’un enfant pour l’amour de Jésus était aussi saint que de prêcher.</p> <p>Les enfants l’appelaient Amma, ce qui veut dire « maman » en tamoul. Amy voulait que Dohnavur soit une famille, pas un orphelinat. Tout le monde portait des vêtements indiens, mangeait de la nourriture indienne et parlait tamoul, et chaque enfant recevait un nom tamoul choisi avec soin. Des chrétiennes indiennes qu’on appelait les accals, ce qui veut dire « grandes sœurs », s’occupaient des enfants avec amour. Et dans cette famille, personne n’était considéré comme plus haut ou plus bas que les autres. Toutes étaient des sœurs.</p> <p>Preena, qu’Amy avait surnommée le Lutin, était pleine de gaieté. Elle n’aimait pas astiquer les cruches à eau en cuivre, jusqu’au jour où elle a découvert que chanter l’aidait. Elle chantait très fort, parce que, disait-elle, « Satan n’aime pas les cantiques ». Le soir, au coucher, elle comptait ses péchés sur une main et ses bénédictions sur l’autre.</p> <p>Dohnavur n’a jamais demandé d’argent à personne. Amy disait à Dieu ce dont ils avaient besoin, et les dons arrivaient. En 1913, il y avait environ cent trente enfants dans la famille.</p> <p>Jésus est comme un berger qui porte ses agneaux tout près de son cœur. Tu n’es jamais trop petit pour qu’il t’aime, et il veut que tu fasses partie de sa famille.</p> <p><em>Cher Jésus, merci de me porter tout près de ton cœur. Merci pour les personnes qui prennent soin de moi, et aide-moi à bien aimer ma famille. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Que veut dire « Amma », et qui appelait Amy par ce nom ?",
+    "answer": "Cela veut dire « maman » en tamoul. Les enfants de Dohnavur l’appelaient Amma."
+   },
+   {
+    "question": "Pourquoi Preena, le Lutin, chantait-elle si fort en astiquant les cruches en cuivre ?",
+    "answer": "Parce que, disait-elle, « Satan n’aime pas les cantiques ». Chanter l’aidait à faire un travail qu’elle n’aimait pas."
+   },
+   {
+    "question": "Qui sont les personnes qui prennent soin de toi, et comment peux-tu leur dire merci ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : Jésus nous porte comme un berger porte ses agneaux, et il nous donne des gens pour nous aimer et prendre soin de nous."
+   }
+  ],
+  "body_text": "« Il prendra les agneaux dans ses bras, Et les portera dans son sein. » — d’après Ésaïe 40 Plus tard en 1901, Amy, les Walker, les femmes de l’équipe et la petite Preena se sont installés à Dohnavur, un village au pied de montagnes bleues. Bien longtemps avant, Dohnavur avait été fondé comme un lieu sûr pour des chrétiens qu’on avait chassés de chez eux. Maintenant, il allait devenir un lieu sûr pour des enfants. D’autres filles sont arrivées, et à partir de 1904 environ, des bébés aussi. Certains étaient amenés par des mamans qui ne pouvaient pas les garder. D’autres risquaient d’être donnés à des temples. Amy ne pouvait plus voyager avec l’équipe, alors elle est restée à la maison pour s’occuper des enfants. Certains disaient qu’elle n’était plus missionnaire, mais bonne d’enfants ! Mais Amy croyait que s’occuper d’un enfant pour l’amour de Jésus était aussi saint que de prêcher. Les enfants l’appelaient Amma, ce qui veut dire « maman » en tamoul. Amy voulait que Dohnavur soit une famille, pas un orphelinat. Tout le monde portait des vêtements indiens, mangeait de la nourriture indienne et parlait tamoul, et chaque enfant recevait un nom tamoul choisi avec soin. Des chrétiennes indiennes qu’on appelait les accals, ce qui veut dire « grandes sœurs », s’occupaient des enfants avec amour. Et dans cette famille, personne n’était considéré comme plus haut ou plus bas que les autres. Toutes étaient des sœurs. Preena, qu’Amy avait surnommée le Lutin, était pleine de gaieté. Elle n’aimait pas astiquer les cruches à eau en cuivre, jusqu’au jour où elle a découvert que chanter l’aidait. Elle chantait très fort, parce que, disait-elle, « Satan n’aime pas les cantiques ». Le soir, au coucher, elle comptait ses péchés sur une main et ses bénédictions sur l’autre. Dohnavur n’a jamais demandé d’argent à personne. Amy disait à Dieu ce dont ils avaient besoin, et les dons arrivaient. En 1913, il y avait environ cent trente enfants dans la famille. Jésus est comme un berger qui porte ses agneaux tout près de son cœur. Tu n’es jamais trop petit pour qu’il t’aime, et il veut que tu fasses partie de sa famille. Cher Jésus, merci de me porter tout près de ton cœur. Merci pour les personnes qui prennent soin de moi, et aide-moi à bien aimer ma famille. Amen.",
+  "word_count": 392
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "fr"
+  ],
+  "order": 10,
+  "title": "Des années tristes et un petit garçon",
+  "body_html": "<blockquote>« Tu ne comprends pas maintenant ce que je fais, mais tu le comprendras plus tard. » — d’après Jean 13</blockquote> <p>Puis sont venues des années tristes. En 1905, le Cher Vieux Monsieur est mort en Angleterre. En août 1912, Thomas Walker est mort pendant un voyage, et Amy a perdu son professeur et son sage ami. En juillet 1913, sa propre mère est morte en Angleterre. Amy ne l’avait pas revue depuis son départ pour l’Inde.</p> <p>Ensuite, Ponnammal, l’amie très chère d’Amy, est tombée gravement malade. Elle a souffert pendant longtemps, et Amy a prié pour qu’elle guérisse. Mais Ponnammal est morte en 1915, et Amy a pris la fille de Ponnammal sous sa protection. Amy ne comprenait pas pourquoi Dieu laissait arriver ces choses, mais elle a choisi de lui faire confiance quand même. Et pendant toutes ces années, même pendant qu’une grande guerre se déroulait très loin de là, la famille de Dohnavur a dit qu’elle n’avait jamais manqué de ce dont elle avait besoin.</p> <p>Pendant tout ce temps, Amy avait un autre souci. Elle avait appris que certains garçons n’étaient pas en sécurité non plus. Vers 1912, elle a commencé à prier : Dohnavur devait-il accueillir aussi des garçons ? Il faudrait des hommes pour s’occuper d’eux, de nouveaux bâtiments, et beaucoup plus d’argent. Pendant six ans, elle a prié, et rien ne semblait se passer.</p> <p>Puis, en janvier 1918, on a amené un petit garçon, un bébé, à Dohnavur. Amy a cru qu’il était la réponse de Dieu. D’autres garçons sont venus, et avec le temps, ils ont eu leur propre partie de Dohnavur, avec leur propre école. Des hommes sont venus s’occuper d’eux, parmi lesquels Godfrey Webb-Peploe. Amy voulait que les garçons deviennent forts et courageux, qu’ils travaillent dur et qu’ils aiment la vie au grand air.</p> <p>Plus tard, Dohnavur a construit un hôpital. Amy lui a donné un nom tamoul qui veut dire le Lieu de la guérison céleste. On y soignait les gens de tous les villages des environs, hindous comme chrétiens.</p> <p>Parfois, nous devons attendre longtemps, et parfois, nous ne comprenons pas pourquoi des choses tristes arrivent. Jésus a dit que nous comprendrions plus tard. En attendant, nous pouvons lui faire confiance.</p> <p><em>Cher Dieu, quand je suis triste, ou quand je dois attendre, aide-moi à te faire confiance, même quand je ne comprends pas. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quelles personnes Amy a-t-elle perdues pendant les années tristes ?",
+    "answer": "Robert Wilson, le Cher Vieux Monsieur, en 1905 ; Thomas Walker en 1912 ; sa mère en 1913 ; et son amie très chère Ponnammal en 1915."
+   },
+   {
+    "question": "Combien de temps Amy a-t-elle prié avant que le premier garçon arrive à Dohnavur ?",
+    "answer": "Environ six ans. Elle a commencé à prier vers 1912, et on a amené un petit garçon, un bébé, en janvier 1918."
+   },
+   {
+    "question": "Qu’est-ce que tu attends, et comment pourrais-tu faire confiance à Dieu pendant que tu attends ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : même quand nous ne comprenons pas, et même quand nous devons attendre, Dieu est toujours à l’œuvre et nous pouvons lui faire confiance."
+   }
+  ],
+  "body_text": "« Tu ne comprends pas maintenant ce que je fais, mais tu le comprendras plus tard. » — d’après Jean 13 Puis sont venues des années tristes. En 1905, le Cher Vieux Monsieur est mort en Angleterre. En août 1912, Thomas Walker est mort pendant un voyage, et Amy a perdu son professeur et son sage ami. En juillet 1913, sa propre mère est morte en Angleterre. Amy ne l’avait pas revue depuis son départ pour l’Inde. Ensuite, Ponnammal, l’amie très chère d’Amy, est tombée gravement malade. Elle a souffert pendant longtemps, et Amy a prié pour qu’elle guérisse. Mais Ponnammal est morte en 1915, et Amy a pris la fille de Ponnammal sous sa protection. Amy ne comprenait pas pourquoi Dieu laissait arriver ces choses, mais elle a choisi de lui faire confiance quand même. Et pendant toutes ces années, même pendant qu’une grande guerre se déroulait très loin de là, la famille de Dohnavur a dit qu’elle n’avait jamais manqué de ce dont elle avait besoin. Pendant tout ce temps, Amy avait un autre souci. Elle avait appris que certains garçons n’étaient pas en sécurité non plus. Vers 1912, elle a commencé à prier : Dohnavur devait-il accueillir aussi des garçons ? Il faudrait des hommes pour s’occuper d’eux, de nouveaux bâtiments, et beaucoup plus d’argent. Pendant six ans, elle a prié, et rien ne semblait se passer. Puis, en janvier 1918, on a amené un petit garçon, un bébé, à Dohnavur. Amy a cru qu’il était la réponse de Dieu. D’autres garçons sont venus, et avec le temps, ils ont eu leur propre partie de Dohnavur, avec leur propre école. Des hommes sont venus s’occuper d’eux, parmi lesquels Godfrey Webb-Peploe. Amy voulait que les garçons deviennent forts et courageux, qu’ils travaillent dur et qu’ils aiment la vie au grand air. Plus tard, Dohnavur a construit un hôpital. Amy lui a donné un nom tamoul qui veut dire le Lieu de la guérison céleste. On y soignait les gens de tous les villages des environs, hindous comme chrétiens. Parfois, nous devons attendre longtemps, et parfois, nous ne comprenons pas pourquoi des choses tristes arrivent. Jésus a dit que nous comprendrions plus tard. En attendant, nous pouvons lui faire confiance. Cher Dieu, quand je suis triste, ou quand je dois attendre, aide-moi à te faire confiance, même quand je ne comprends pas. Amen.",
+  "word_count": 394
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "fr"
+  ],
+  "order": 11,
+  "title": "Une chambre avec une fenêtre",
+  "body_html": "<blockquote>« Ma grâce te suffit, car ma puissance s’accomplit dans la faiblesse. » — d’après 2 Corinthiens 12</blockquote> <p>En 1931, Amy avait soixante-trois ans. La famille de Dohnavur avait grandi jusqu’à compter plusieurs centaines de personnes, avec des pouponnières, des écoles, un quartier pour les garçons et un hôpital. Amy était toujours occupée du matin au soir : elle se promenait, rendait visite aux enfants, enseignait et priait.</p> <p>Le 24 octobre 1931, à la tombée de la nuit, Amy est allée voir un bâtiment qu’on préparait pour le travail. Des ouvriers avaient creusé une fosse dans le sol et l’avaient laissée sans couvercle. Dans la faible lumière, Amy ne l’a pas vue, et elle est tombée dedans. Elle s’est cassé la jambe, s’est fait mal à la cheville et s’est blessée au dos.</p> <p>Tout le monde pensait qu’elle serait guérie au bout de quelques semaines. Mais elle n’a plus jamais bien marché. Pendant presque vingt ans, elle a vécu surtout dans une seule chambre, souvent en souffrant. Les gens de Dohnavur et du monde entier ont prié pour qu’elle guérisse, mais elle n’a pas été guérie. Comme la petite fille devant le miroir, il y a bien longtemps, Amy a appris de nouveau que non, c’est aussi une réponse.</p> <p>Mais cette chambre n’était pas un endroit triste. Elle avait une fenêtre qui donnait sur un jardin, et dehors, il y avait un bain d’oiseaux, où Amy regardait les oiseaux venir boire et s’éclabousser. Les enfants venaient la voir. Presque tous les jours, elle écrivait de petits mots aux gens de Dohnavur, avec un verset de la Bible ou une parole gentille. Et elle écrivait des livres : Gold Cord (Le Cordon d’or), l’histoire de Dohnavur ; Rose from Brier (Une rose sur la ronce), pour les gens malades ou qui souffraient ; et un petit livre appelé If (Si), qui parle d’aimer les autres comme Jésus nous aime. Des gens du monde entier les ont lus, et ils les lisent encore.</p> <p>En 1939, Arulai est morte après une longue maladie, et Amy a eu beaucoup de chagrin. Mais elle a continué à prier et à écrire.</p> <p>Parfois, nous nous sentons faibles ou bloqués. Mais Dieu peut faire des choses merveilleuses à travers des gens qui se sentent faibles. Il peut se servir de toi aussi, exactement comme tu es.</p> <p><em>Cher Dieu, quand je me sens faible, malade ou bloqué, aide-moi à me souvenir que ta grâce me suffit. S’il te plaît, sers-toi de moi exactement comme je suis. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Que s’est-il passé pour Amy le 24 octobre 1931 ?",
+    "answer": "Dans la faible lumière du soir, elle est tombée dans une fosse laissée sans couvercle, dans un bâtiment. Elle s’est cassé la jambe, s’est fait mal à la cheville et s’est blessée au dos, et elle n’a plus jamais bien marché."
+   },
+   {
+    "question": "Qu’a fait Amy dans sa chambre pendant presque vingt ans ?",
+    "answer": "Elle regardait les oiseaux au bain d’oiseaux, elle voyait les enfants, elle écrivait de petits mots aux gens de Dohnavur, et elle écrivait des livres comme Gold Cord, Rose from Brier et If."
+   },
+   {
+    "question": "Quand t’es-tu senti faible ? Comment Dieu pourrait-il t’aider à ce moment-là ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : la grâce de Dieu nous suffit, et il peut faire de bonnes choses à travers nous, même quand nous nous sentons faibles."
+   }
+  ],
+  "body_text": "« Ma grâce te suffit, car ma puissance s’accomplit dans la faiblesse. » — d’après 2 Corinthiens 12 En 1931, Amy avait soixante-trois ans. La famille de Dohnavur avait grandi jusqu’à compter plusieurs centaines de personnes, avec des pouponnières, des écoles, un quartier pour les garçons et un hôpital. Amy était toujours occupée du matin au soir : elle se promenait, rendait visite aux enfants, enseignait et priait. Le 24 octobre 1931, à la tombée de la nuit, Amy est allée voir un bâtiment qu’on préparait pour le travail. Des ouvriers avaient creusé une fosse dans le sol et l’avaient laissée sans couvercle. Dans la faible lumière, Amy ne l’a pas vue, et elle est tombée dedans. Elle s’est cassé la jambe, s’est fait mal à la cheville et s’est blessée au dos. Tout le monde pensait qu’elle serait guérie au bout de quelques semaines. Mais elle n’a plus jamais bien marché. Pendant presque vingt ans, elle a vécu surtout dans une seule chambre, souvent en souffrant. Les gens de Dohnavur et du monde entier ont prié pour qu’elle guérisse, mais elle n’a pas été guérie. Comme la petite fille devant le miroir, il y a bien longtemps, Amy a appris de nouveau que non, c’est aussi une réponse. Mais cette chambre n’était pas un endroit triste. Elle avait une fenêtre qui donnait sur un jardin, et dehors, il y avait un bain d’oiseaux, où Amy regardait les oiseaux venir boire et s’éclabousser. Les enfants venaient la voir. Presque tous les jours, elle écrivait de petits mots aux gens de Dohnavur, avec un verset de la Bible ou une parole gentille. Et elle écrivait des livres : Gold Cord (Le Cordon d’or), l’histoire de Dohnavur ; Rose from Brier (Une rose sur la ronce), pour les gens malades ou qui souffraient ; et un petit livre appelé If (Si), qui parle d’aimer les autres comme Jésus nous aime. Des gens du monde entier les ont lus, et ils les lisent encore. En 1939, Arulai est morte après une longue maladie, et Amy a eu beaucoup de chagrin. Mais elle a continué à prier et à écrire. Parfois, nous nous sentons faibles ou bloqués. Mais Dieu peut faire des choses merveilleuses à travers des gens qui se sentent faibles. Il peut se servir de toi aussi, exactement comme tu es. Cher Dieu, quand je me sens faible, malade ou bloqué, aide-moi à me souvenir que ta grâce me suffit. S’il te plaît, sers-toi de moi exactement comme je suis. Amen.",
+  "word_count": 419
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amy-carmichael-a-life-children",
+   "fr"
+  ],
+  "order": 12,
+  "title": "Un seul mot sur un bain d’oiseaux",
+  "body_html": "<blockquote>« Si le grain de blé qui est tombé en terre ne meurt, il reste seul ; mais, s’il meurt, il porte beaucoup de fruit. » — d’après Jean 12</blockquote> <p>En 1947, l’Inde est devenue un pays indépendant. La même année, une nouvelle loi du sud de l’Inde a dit qu’on ne pourrait plus jamais donner de petites filles aux temples. De courageux responsables indiens, comme une femme médecin qui s’appelait Muthulakshmi Reddy, avaient travaillé pendant de longues années pour obtenir cette loi. Amy avait passé presque cinquante ans à s’occuper des enfants un par un, et elle a vécu assez longtemps pour la voir.</p> <p>Amy est devenue très vieille et très faible. Le 18 janvier 1951, elle est morte à Dohnavur. Elle avait quatre-vingt-trois ans. Elle avait vécu en Inde pendant cinquante-cinq ans, et elle n’était jamais rentrée chez elle, pas une seule fois. Les personnes qui se sont occupées d’elle à la fin étaient sa propre grande famille, indienne et britannique, dont beaucoup avaient grandi à Dohnavur.</p> <p>Amy ne voulait pas d’une belle pierre avec son nom et la liste de tout ce qu’elle avait fait. Elle a été enterrée dans le cimetière de Dohnavur, qu’on appelait le Jardin de Dieu, près d’enfants et d’amis partis avant elle. Sur sa tombe, sa famille a placé un bain d’oiseaux, comme celui qu’elle regardait par sa fenêtre. Dessus, on a écrit un seul mot : Amma.</p> <p>Dohnavur ne s’est pas arrêté quand Amy est morte. Son travail continue aujourd’hui, dirigé par des chrétiens indiens : on y prend soin d’enfants et de familles au pied des montagnes, et l’hôpital aide toujours les villages des environs. Très loin de là, à Belfast, une église se réunit encore dans la salle de la Bienvenue, le Welcome Hall, pour laquelle Amy avait prié.</p> <p>La grande œuvre d’Amy a commencé avec une seule enfant, Preena, qui avait marché dans la nuit pour la trouver. Amy croyait que cette enfant comptait pour Dieu. Puis une autre est venue, et une autre, et encore une autre.</p> <p>Jésus a dit qu’une graine doit être plantée dans la terre avant de pouvoir pousser. Amy a renoncé à beaucoup de choses qu’elle aimait, et Dieu a fait grandir sa vie pour en faire quelque chose de beau. Quand tu donnes ta vie à Jésus, il peut lui faire porter du fruit, à toi aussi.</p> <p><em>Cher Dieu, merci pour Amy Carmichael et pour tous les enfants qu’elle a aimés. Merci parce que chaque enfant compte pour toi. Aide-moi à te donner ma vie, et à aimer les autres comme Amy les a aimés. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quel est le seul mot écrit sur le bain d’oiseaux, sur la tombe d’Amy ?",
+    "answer": "« Amma », ce qui veut dire « maman ». C’est le nom que lui donnaient les enfants de Dohnavur."
+   },
+   {
+    "question": "Qui a travaillé pendant de longues années pour obtenir la loi qui a empêché de donner des filles aux temples ?",
+    "answer": "De courageux responsables indiens, comme une femme médecin qui s’appelait Muthulakshmi Reddy. La loi a été votée en 1947, et Amy a vécu assez longtemps pour la voir."
+   },
+   {
+    "question": "Quelle chose pourrais-tu donner à Jésus, comme Amy l’a fait ?",
+    "answer": "Toute réponse sincère est bonne ici. L’idée du chapitre : quand nous donnons notre vie à Jésus, comme une graine plantée dans la terre, il la fait grandir et porter du fruit."
+   }
+  ],
+  "body_text": "« Si le grain de blé qui est tombé en terre ne meurt, il reste seul ; mais, s’il meurt, il porte beaucoup de fruit. » — d’après Jean 12 En 1947, l’Inde est devenue un pays indépendant. La même année, une nouvelle loi du sud de l’Inde a dit qu’on ne pourrait plus jamais donner de petites filles aux temples. De courageux responsables indiens, comme une femme médecin qui s’appelait Muthulakshmi Reddy, avaient travaillé pendant de longues années pour obtenir cette loi. Amy avait passé presque cinquante ans à s’occuper des enfants un par un, et elle a vécu assez longtemps pour la voir. Amy est devenue très vieille et très faible. Le 18 janvier 1951, elle est morte à Dohnavur. Elle avait quatre-vingt-trois ans. Elle avait vécu en Inde pendant cinquante-cinq ans, et elle n’était jamais rentrée chez elle, pas une seule fois. Les personnes qui se sont occupées d’elle à la fin étaient sa propre grande famille, indienne et britannique, dont beaucoup avaient grandi à Dohnavur. Amy ne voulait pas d’une belle pierre avec son nom et la liste de tout ce qu’elle avait fait. Elle a été enterrée dans le cimetière de Dohnavur, qu’on appelait le Jardin de Dieu, près d’enfants et d’amis partis avant elle. Sur sa tombe, sa famille a placé un bain d’oiseaux, comme celui qu’elle regardait par sa fenêtre. Dessus, on a écrit un seul mot : Amma. Dohnavur ne s’est pas arrêté quand Amy est morte. Son travail continue aujourd’hui, dirigé par des chrétiens indiens : on y prend soin d’enfants et de familles au pied des montagnes, et l’hôpital aide toujours les villages des environs. Très loin de là, à Belfast, une église se réunit encore dans la salle de la Bienvenue, le Welcome Hall, pour laquelle Amy avait prié. La grande œuvre d’Amy a commencé avec une seule enfant, Preena, qui avait marché dans la nuit pour la trouver. Amy croyait que cette enfant comptait pour Dieu. Puis une autre est venue, et une autre, et encore une autre. Jésus a dit qu’une graine doit être plantée dans la terre avant de pouvoir pousser. Amy a renoncé à beaucoup de choses qu’elle aimait, et Dieu a fait grandir sa vie pour en faire quelque chose de beau. Quand tu donnes ta vie à Jésus, il peut lui faire porter du fruit, à toi aussi. Cher Dieu, merci pour Amy Carmichael et pour tous les enfants qu’elle a aimés. Merci parce que chaque enfant compte pour toi. Aide-moi à te donner ma vie, et à aimer les autres comme Amy les a aimés. Amen.",
+  "word_count": 434
+ }
+}
+]

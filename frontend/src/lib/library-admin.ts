@@ -238,6 +238,28 @@ export interface AdminAuthorWithoutBio {
 export const getAdminAuthorsWithoutBio = () =>
 	apiFetch<AdminAuthorWithoutBio[]>('/api/admin/authors-without-bio/');
 
+// The cover wall: every published edition's cover, what kind of picture it is,
+// and — for a museum painting — the painter. Read-only; see the backend view.
+export type CoverTier = 'painting' | 'original' | 'derived' | 'designed' | 'plate' | 'none' | 'other';
+export interface AdminCoverArtwork {
+	artist: string;
+	title: string;
+	year: string;
+	source: string;
+	institution: string;
+	object_id: number;
+}
+export interface AdminCover {
+	slug: string;
+	language: string;
+	title: string;
+	author: { slug: string; name: string };
+	cover_url: string;
+	tier: CoverTier;
+	artwork: AdminCoverArtwork | null;
+}
+export const getAdminCovers = () => apiFetch<AdminCover[]>('/api/admin/covers/');
+
 // Per-language health: one composite score (readiness + coverage + review +
 // engagement) per language, ranked, so the dashboard can lead with where the
 // next hour of work should go. Read-only and derived — see the backend view.
@@ -277,6 +299,9 @@ export interface AdminLanguageHealth {
 	/** Readers whose site language this is, reading a work it has no edition
 	 *  of (admin_views/demand.py). Shown beside the score, not part of it. */
 	reading_elsewhere: number;
+	/** Progress on the named Level 1 content targets (library/content_targets.py).
+	 *  Null for the source language; absent from an API before targets existed. */
+	level1?: { done: number; total: number } | null;
 }
 
 export const getAdminLanguageHealth = () =>
@@ -482,6 +507,42 @@ export const getAdminLanguageWanted = (code: string) =>
 	apiFetch<{ language: string; days: number; works: AdminWantedWork[] }>(
 		`/api/admin/languages/${encodeURIComponent(code)}/wanted/`
 	);
+
+// The Language Content Targets: one language against the named Level 1 set
+// (library/content_targets.py). Done = a published edition in this language.
+export interface AdminTargetItem {
+	slug: string;
+	title: string;
+	author: string;
+	done: boolean;
+	/** An edition exists but is unpublished. */
+	drafted: boolean;
+	reviewed: boolean;
+	/** Under copyright: no translation job can be filed. */
+	blocked: boolean;
+	/** Plans only: source books/articles this language still lacks. */
+	waiting_on?: string[];
+}
+
+export interface AdminTargetKind {
+	key: 'bios' | 'books' | 'sermons' | 'plans' | 'articles';
+	job_type: TranslationJobType;
+	label: string;
+	target: number;
+	done: number;
+	reviewed: number;
+	groups: { label: string; items: AdminTargetItem[] }[];
+}
+
+export interface AdminLanguageTargets {
+	language: string;
+	level: { number: number; name: string };
+	kinds: AdminTargetKind[];
+	topics: { target: number; done: number } | null;
+}
+
+export const getAdminLanguageTargets = (code: string) =>
+	apiFetch<AdminLanguageTargets>(`/api/admin/languages/${encodeURIComponent(code)}/targets/`);
 
 // Adding a language. The row IS the language: the translate_* commands read
 // their Bible and glossary from it, so creating one here is what makes the
