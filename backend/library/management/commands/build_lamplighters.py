@@ -368,6 +368,108 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
         ],
     },
+    2: {
+        "slug": "the-black-stair",
+        "publication_year": 2026,
+        "title": "The Black Stair",
+        "subtitle": "The Lamplighters of Gloamhaven, Book Two",
+        "cover_byline": "James DeGreef",
+        "attribution": (
+            "© James DeGreef and Ochorus. An Ochorus Original, written for young "
+            "readers, free to read and share. Book 2 of The Lamplighters of Gloamhaven."
+        ),
+        "cover_url": "/covers/the-black-stair.svg",
+        "cover_color": covers.ink_safe("#3d5a6b"),  # deep cave-water slate
+        "description": (
+            "Wren, Tobin, Old Ash and Cinder have relit Emberwick's Ring and set out "
+            "across the Greywaste for the Bright Mountain, with a grey rider on the "
+            "road behind them. Then a swarm of mothwings drives them underground, "
+            "into the Delver Deeps: a city built for sound, whose people have never "
+            "seen light and think it a fairy tale. There they meet Mira, a blind "
+            "girl who reads the world by echo and believes an old story carved on a "
+            "hidden wall. When Captain Varrick comes down into the dark for the "
+            "lamp, the only way out is the Black Stair, a thousand steps of total "
+            "darkness, and Wren must do the hardest thing she has ever done: give "
+            "the lamp away to someone else and trust him to carry it."
+        ),
+        "about_html": (
+            "<p>The Black Stair is the second book of The Lamplighters of "
+            "Gloamhaven, an adventure series by James DeGreef and Ochorus for readers "
+            "aged nine to twelve. It follows straight on from Fire Against the Dark, "
+            "but a new reader can begin here: the travellers are introduced again, "
+            "and the story stands on its own.</p>"
+            "<p>This is a book about courage in the dark. Tobin, who has always been "
+            "afraid of it, has to climb a thousand steps of it with hundreds of "
+            "people trusting him. Wren, who has never trusted anyone, has to hand "
+            "over the one thing she owns. And Mira, a girl who has never seen, "
+            "believes in a light she cannot see because an old story told her it was "
+            "coming. Like the book before it, it never preaches; it lets a story of "
+            "faith, trust and a gift freely given speak for itself, for children to "
+            "discover and for parents to talk about.</p>"
+            "<p>The book has fifteen chapters, about the length of a classic "
+            "children's fantasy, each one a good evening's reading.</p>"
+            "<p>© James DeGreef and Ochorus. An Ochorus Original, free to read and share.</p>"
+        ),
+        "qa": [
+            {
+                "question": "Do I need to read Fire Against the Dark first?",
+                "answer": (
+                    "It helps, because The Black Stair carries straight on from it, "
+                    "but the opening chapters introduce Wren, Tobin, Old Ash and "
+                    "Cinder again, so a new reader can begin here."
+                ),
+            },
+            {
+                "question": "What age is The Black Stair for?",
+                "answer": (
+                    "Readers aged nine to twelve, and it reads aloud well to younger "
+                    "children from about seven. There is real danger in the dark, "
+                    "but nothing gory, and plenty of humour."
+                ),
+            },
+            {
+                "question": "Who is Mira?",
+                "answer": (
+                    "A Delver girl who has been blind from birth and reads the world "
+                    "by the echo of clicks. She is quick, funny and brave, and she "
+                    "believes an old story about a Warm Man who promised that one day "
+                    "her people would see."
+                ),
+            },
+            {
+                "question": "What is the Black Stair?",
+                "answer": (
+                    "A thousand steps of total darkness that climb from the Delver city "
+                    "of Deepholm to the surface. When Captain Varrick comes for the "
+                    "lamp, it is the only way out."
+                ),
+            },
+            {
+                "question": "What happens to the lamp in this book?",
+                "answer": (
+                    "It still cannot be bought, stolen or earned, only given. On the "
+                    "Black Stair Wren has to truly give it to Tobin so that he can lead "
+                    "the Delvers up, the hardest act of trust she has ever made."
+                ),
+            },
+            {
+                "question": "Is it a Christian book?",
+                "answer": (
+                    "Yes. Like the classic Christian fantasies, it tells its truths as "
+                    "story rather than sermon: faith in what cannot yet be seen, courage "
+                    "that trusts while it is afraid, and sight given as a gift. It never "
+                    "names God or quotes Scripture directly."
+                ),
+            },
+            {
+                "question": "How long is the book?",
+                "answer": (
+                    "Fifteen chapters and about forty-eight thousand words, much the "
+                    "length of a classic children's fantasy."
+                ),
+            },
+        ],
+    },
 }
 
 
