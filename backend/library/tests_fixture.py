@@ -761,6 +761,43 @@ class CopyrightBlockedTests(SimpleTestCase):
             "translation of these may ship without the rights holder's permission)",
         )
 
+
+class SermonPermissionCreditTests(SimpleTestCase):
+    """A by-permission sermon carries its English credit into every translation.
+
+    The sermon page shows ``attribution`` when it is set and otherwise labels
+    the text public domain — so a translation that drops the field relabels a
+    copyrighted sermon, used by its preacher's permission, as public domain.
+    Eight translations of Gareth Evans's sermons shipped that way (es/fr/am/pt/hi,
+    found 2026-10-15): the sermon builders copy the translated fields, and the
+    credit is not one of them. It stays in English, verbatim, as on every other
+    translation.
+    """
+
+    def test_translations_keep_the_english_permission_credit(self):
+        credits, translations = {}, []
+        for rows in files_by_path().values():
+            for row in rows:
+                if row.get("model") != "library.sermon":
+                    continue
+                f = row["fields"]
+                if f.get("language") == "en":
+                    credits[f["slug"]] = f.get("attribution", "")
+                else:
+                    translations.append(f)
+        missing = sorted(
+            f"{f['slug']}.{f['language']}"
+            for f in translations
+            if credits.get(f["slug"]) and f.get("attribution") != credits[f["slug"]]
+        )
+        self.assertEqual(
+            missing,
+            [],
+            "these translations drop or change the English edition's permission "
+            "credit (`attribution`) — copy it verbatim, or the page calls the "
+            "sermon public domain",
+        )
+
 class FileCoherenceTests(SimpleTestCase):
     """Each file must contain exactly what its name and role promise.
 

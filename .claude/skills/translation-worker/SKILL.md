@@ -355,7 +355,9 @@ existing `<slug>.<lang>.json` in the same PR:
 and `body_html` (preserve ALL tags 1:1 — blockquote/h2/br/i, hymn stanzas);
 write one new file `content/sermons/<slug>.<lang>.json` holding the single
 translated Sermon row (natural-key format — `"author": ["author-slug"]`, no
-`pk`; copy source_url/sort_order/preached_on from the English file); `seed_sermons` upserts it on deploy.
+`pk`; copy source_url/sort_order/preached_on **and `attribution`** from the English file — the
+permission credit stays in English, verbatim; drop it and the page labels a by-permission sermon
+public domain, which `SermonPermissionCreditTests` now fails); `seed_sermons` upserts it on deploy.
 Same canonical formatting as the book file above — half the drifted fixtures are
 sermons, so "same shape, smaller" was evidently not enough.
 - **Look for the sermon inside an already-translated book first.** Many queue
