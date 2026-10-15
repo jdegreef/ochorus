@@ -5647,6 +5647,7 @@
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
 			"scrim": 1,
 			"layout": "band/oxblood",
@@ -6532,6 +6533,36 @@
 				472
 			]
 		},
+		"es/our-daily-walk": {
+			"ground": "85a5c4fe454ccd64130d179874ef059d77bf29cd6f2aa85ec0ce24a289289fab",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[197, 102, 403, 131]
+				],
+				"title": [
+					[197, 266, 403, 348],
+					[148, 338, 452, 420]
+				],
+				"subtitle": [
+					[105, 496, 495, 524]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
+			]
+		},
 		"es/pandita-ramabai-a-life-children": {
 			"ground": "abe4ff7ffffeb6664644328cbd5e132bada8923066366029e19ef029c1be7692",
 			"style": "young",
@@ -6584,6 +6615,17 @@
 		"es/pilgrims-progress-teens": {
 			"ground": "c9b0cc8d21ed4228c16c9ffbce7ddaf840ee6140219375c38c485c36621ded46",
 			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
+		"es/pilgrims-progress-words-of-one-syllable": {
+			"ground": "57fd085df0868ebabd97ba580c2b22fed82a30df7296ce878ae77f6636271775",
+			"style": "young",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
@@ -14292,6 +14334,17 @@
 				515
 			]
 		},
+		"lg/confessions": {
+			"ground": "921a2bb532c121e254206ec2a4fbe994a86ae474a346f9bf1653fb2e384c41dc",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/rust",
+			"bar": 0
+		},
 		"lg/days-of-heaven-upon-earth": {
 			"ground": "b1561f668d7d04562ad7020e3f09c9800faf2bc1990f544c432932fca622cd44",
 			"style": "revival",
@@ -14505,6 +14558,35 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0.11
+		},
+		"lg/men-and-women-who-gave-everything-2": {
+			"ground": "2726f68c10dfcfae70b3eef8237a23595dcd3b0408e85571f2f11329286d75a4",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[171, 242, 429, 318],
+					[153, 308, 447, 384],
+					[127, 374, 473, 450],
+					[184, 440, 416, 516]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				247,
+				548
+			]
 		},
 		"lg/ministry-of-intercession": {
 			"ground": "b1e9f304dbe6fc532c20b7df7b3402943c7d48b7f6d1f32b968870a77a566e14",
@@ -16356,6 +16438,34 @@
 				478
 			]
 		},
+		"pt/men-and-women-who-gave-everything-2": {
+			"ground": "d2f38eaec5b8e9282fe8fd72fbc06bd114a771a73bca7fdd2a2cb6547bd37b50",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[151, 275, 449, 351],
+					[92, 341, 508, 417],
+					[112, 407, 488, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
+		},
 		"pt/men-of-prayer-2": {
 			"ground": "4ccfa79e0cf284fe44c0dbea3faf6ed4eff3f259334e6e7386da1ebd3feaacc6",
 			"style": "originals",
@@ -16953,6 +17063,36 @@
 			"scrim": 1,
 			"layout": "wash/ochre",
 			"bar": 0
+		},
+		"pt/things-as-they-are": {
+			"ground": "5780c763cad07fb9109345c4a41430c76b274c7a8190b96ac8e52a207b1b8fc9",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[144, 102, 456, 131]
+				],
+				"title": [
+					[179, 266, 421, 348],
+					[114, 338, 486, 420]
+				],
+				"subtitle": [
+					[120, 496, 480, 524]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
+			]
 		},
 		"pt/thoughts-for-the-quiet-hour": {
 			"ground": "3e0fd296495b83c76d9c42f85a07a6567bc5acfd76549ac1e0faeb23ea2eeb74",
@@ -19877,6 +20017,36 @@
 			"middle": [
 				305,
 				490
+			]
+		},
+		"the-black-stair": {
+			"ground": "04c43c8da62326b0b339c8cbc4750404383aae6b59b8fff80b34a7739dbae7fb",
+			"style": "young",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[289, 287, 311, 331],
+					[107, 362, 493, 437]
+				],
+				"subtitle": [
+					[68, 492, 532, 520]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
 			]
 		},
 		"the-body-of-christ-a-reality": {

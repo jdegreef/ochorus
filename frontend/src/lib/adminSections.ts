@@ -39,6 +39,7 @@ export const ADMIN_SECTIONS: AdminSection[] = [
 	{ href: '/admin/review', label: 'Review queue', capability: 'review' },
 	{ href: '/admin/feedback', label: 'Feedback', capability: 'feedback' },
 	{ href: '/admin/audit', label: 'Content audit', capability: 'audit' },
+	{ href: '/admin/covers', label: 'Cover wall', capability: 'audit' },
 	{ href: '/admin/activity', label: 'Activity', capability: 'reporting' },
 	{ href: '/admin/engagement', label: 'Engagement', capability: 'reporting' },
 	{ href: '/admin/emails', label: 'Emails', superOnly: true, exact: true },
