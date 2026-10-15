@@ -378,7 +378,7 @@ VOLUMES: dict[int, dict[str, object]] = {
             "© James DeGreef and Ochorus. An Ochorus Original, written for young "
             "readers, free to read and share. Book 2 of The Lamplighters of Gloamhaven."
         ),
-        "cover_url": "/covers/the-black-stair.svg",
+        "cover_url": "/covers/art/the-black-stair.jpg",  # ORIGINAL_GROUND
         "cover_color": covers.ink_safe("#3d5a6b"),  # deep cave-water slate
         "description": (
             "Wren, Tobin, Old Ash and Cinder have relit Emberwick's Ring and set out "

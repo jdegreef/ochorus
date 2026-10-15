@@ -1,0 +1,263 @@
+{
+ "_note": [
+  "Korean shelf prose in 합니다체, Protestant register (하나님, 성령, 예수님/주 예수님, 은혜). Names follow the shipped ko corpus (스펄전, 웨슬리, 휫필드, 에드워즈, 번연, 오웬, 백스터, 조지 뮬러, 허드슨 테일러).",
+  "Scripture is the 개역 text language_seed.py names for ko, taken VERBATIM from the ebible mirror (bibles/kor_old) because api.takeroot.bible was egress-blocked in the writing session — never recalled. The mirror's backtick/apostrophe quote marks and its spaced ! / ? are dropped, as the shipped ko books quote these verses. Excerpts are CONTIGUOUS spans of the full verse, asserted at build time.",
+  "for-those-who-lead carries no verse: the mirror's 베드로전서 stops at 4:14, so 5:2 could not be sourced verbatim and the shelf ships without one (allowed — the page renders no verse block). Full Korean book names, Western digits, tight C:V. A draft for native review."
+ ],
+ "prayer": {
+  "title": "기도에 관하여",
+  "description": "기도하기를 배우고, 계속 기도하기를 배웁니다. 은밀한 골방에서 이기는 중보기도에 이르기까지, 기도의 내면 생활을 다룬 고전들입니다.",
+  "scripture": {
+   "reference": "예레미야 33:3",
+   "text": "너는 내게 부르짖으라 내가 네게 응답하겠고 네가 알지 못하는 크고 비밀한 일을 네게 보이리라"
+  }
+ },
+ "holy-spirit": {
+  "title": "성령",
+  "description": "성령의 세례와 내주하심과 역사, 곧 그리스도인의 삶을 위해 약속된 능력입니다.",
+  "scripture": {
+   "reference": "스가랴 4:6",
+   "text": "만군의 여호와께서 말씀하시되 이는 힘으로 되지 아니하며 능으로 되지 아니하고 오직 나의 신으로 되느니라"
+  }
+ },
+ "deeper-life": {
+  "title": "더 깊은 삶",
+  "description": "성결과 순복, 그리스도와 함께 감추어진 풍성한 생명. 더 깊이 나아가려는 이들을 위한 책들입니다.",
+  "scripture": {
+   "reference": "골로새서 3:3",
+   "text": "이는 너희가 죽었고 너희 생명이 그리스도와 함께 하나님 안에 감취었음이니라"
+  }
+ },
+ "grace-and-comfort": {
+  "title": "은혜와 위로",
+  "description": "변함없는 하나님의 은혜와 모든 시련 가운데 주시는 그분의 위로. 지친 이들을 위한 좋은 소식입니다.",
+  "scripture": {
+   "reference": "고린도후서 12:9",
+   "text": "내 은혜가 네게 족하도다 이는 내 능력이 약한데서 온전하여짐이라"
+  }
+ },
+ "revival-and-missions": {
+  "title": "부흥과 선교",
+  "description": "복음을 위해 쏟아부은 삶들과 각성의 계절들. 불타는 마음을 위한 땔감입니다.",
+  "scripture": {
+   "reference": "하박국 3:2",
+   "text": "여호와여 주는 주의 일을 이 수년 내에 부흥케 하옵소서 이 수년 내에 나타내시옵소서"
+  }
+ },
+ "faith-and-guidance": {
+  "title": "믿음과 인도하심",
+  "description": "일용할 양식과 나아갈 길과 모든 약속을 두고 하나님을 신뢰하는 삶. 보는 것으로 하지 않고 믿음으로 걸어갑니다.",
+  "scripture": {
+   "reference": "잠언 3:6",
+   "text": "너는 범사에 그를 인정하라 그리하면 네 길을 지도하시리라"
+  }
+ },
+ "the-gospel-call": {
+  "title": "복음의 부르심",
+  "description": "가장 오래된 초대, 곧 오라, 회개하라, 믿으라는 부르심입니다. 회심하지 않은 이들에게 간절히 호소하는 설교자들과, 죄인 중의 괴수가 발견한 은혜의 간증을 담았습니다.",
+  "scripture": {
+   "reference": "고린도후서 5:20",
+   "text": "그리스도를 대신하여 간구하노니 너희는 하나님과 화목하라"
+  }
+ },
+ "enduring-classics": {
+  "title": "변치 않는 고전",
+  "description": "수 세기 동안 순례자들과 함께 걸어온 책들. 아우구스티누스의 고백, 번연의 꿈, 토마스 아 켐피스의 권면, 여전히 선한 옛적 길입니다.",
+  "scripture": {
+   "reference": "예레미야 6:16",
+   "text": "너희는 길에 서서 보며 옛적 길 곧 선한 길이 어디인지 알아보고 그리로 행하라 너희 심령이 평강을 얻으리라"
+  }
+ },
+ "the-way-of-holiness": {
+  "title": "성결의 길",
+  "description": "하나님께 구별된 삶. 계명을 살피고, 온전함을 정직하게 추구하며, 마음의 감정을 시험하여 참된 것으로 확인합니다.",
+  "scripture": {
+   "reference": "히브리서 12:14",
+   "text": "모든 사람으로 더불어 화평함과 거룩함을 좆으라 이것이 없이는 아무도 주를 보지 못하리라"
+  }
+ },
+ "the-preached-word": {
+  "title": "선포된 말씀",
+  "description": "지면에 옮긴 위대한 설교. 힘차게 외치는 휫필드와 웨슬리, 농부들 사이의 스펄전, 그리고 영혼을 돌보는 모든 목자에게 주는 백스터의 권면입니다.",
+  "scripture": {
+   "reference": "로마서 10:14",
+   "text": "전파하는 자가 없이 어찌 들으리요"
+  }
+ },
+ "christ-and-the-cross": {
+  "title": "그리스도와 십자가",
+  "description": "구주의 인격과 사역. 죽임 당하신 어린 양, 십자가의 수치와 승리, 그리스도의 탁월하심, 그리고 빈 무덤입니다."
+ },
+ "the-puritans": {
+  "title": "청교도",
+  "description": "청교도의 평이하면서도 깊이 살피는 신학. 번연의 순례자, 내주하는 죄에 대한 오웬, 왓슨의 따뜻함과 에드워즈의 불길, 마음 깊이 새겨지는 교리입니다.",
+  "scripture": {
+   "reference": "히브리서 4:12",
+   "text": "하나님의 말씀은 살았고 운동력이 있어 좌우에 날선 어떤 검보다도 예리하여 혼과 영과 및 관절과 골수를 찔러 쪼개기까지 하며 또 마음의 생각과 뜻을 감찰하나니"
+  }
+ },
+ "abiding-in-christ": {
+  "title": "그리스도 안에 거함",
+  "description": "포도나무에 붙은 가지. 주 예수님과의 연합과 교제, 그리고 그분 곁에 머무는 것 외에는 다른 근원이 없는 생명입니다.",
+  "scripture": {
+   "reference": "요한복음 15:4",
+   "text": "내 안에 거하라 나도 너희 안에 거하리라 가지가 포도나무에 붙어 있지 아니하면 절로 과실을 맺을 수 없음 같이 너희도 내 안에 있지 아니하면 그러하리라"
+  }
+ },
+ "women-of-faith": {
+  "title": "믿음의 여성들",
+  "description": "어머니, 선교사, 그리고 신비가들. 귀용 부인의 감방에서 해방된 노예 여성의 강단에 이르기까지, 기도하고 고난받고 담대히 나아간 여성들의 믿음입니다.",
+  "scripture": {
+   "reference": "잠언 31:30",
+   "text": "고운 것도 거짓되고 아름다운 것도 헛되나 오직 여호와를 경외하는 여자는 칭찬을 받을 것이라"
+  }
+ },
+ "voices-of-the-early-church": {
+  "title": "초대 교회의 목소리",
+  "description": "처음 몇 세기의 믿음을 그들 자신의 말로 듣습니다. 마음을 열어 보인 아우구스티누스, 육신이 되신 말씀에 관한 아타나시우스, 그리고 순교자와 목자들의 편지입니다.",
+  "scripture": {
+   "reference": "히브리서 12:1",
+   "text": "우리에게 구름같이 둘러싼 허다한 증인들이 있으니"
+  }
+ },
+ "day-by-day": {
+  "title": "날마다",
+  "description": "아침과 저녁을 위한 읽을거리. 영혼을 먹이는 일용할 양식으로, 사랑받는 스펄전의 고전에서 고요한 시간을 위한 책들까지 담았습니다.",
+  "scripture": {
+   "reference": "예레미야애가 3:22-23",
+   "text": "여호와의 자비와 긍휼이 무궁하시므로 우리가 진멸되지 아니함이니이다 이것이 아침마다 새로우니 주의 성실이 크도소이다"
+  }
+ },
+ "the-east-african-revival": {
+  "title": "동아프리카 부흥",
+  "description": "투쿠텐데레자 예수(Tukutendereza Yesu). 캄팔라의 한 언덕에서 시작해 여섯 나라와 한 세기 가까이 이어진 각성, 그리고 그 부흥이 가르친 빛 가운데 행하는 삶입니다.",
+  "scripture": {
+   "reference": "요한일서 1:7",
+   "text": "저가 빛 가운데 계신 것같이 우리도 빛 가운데 행하면 우리가 서로 사귐이 있고 그 아들 예수의 피가 우리를 모든 죄에서 깨끗하게 하실 것이요"
+  }
+ },
+ "contemporary-voices": {
+  "title": "오늘의 목소리",
+  "description": "옛길에도 살아 있는 안내자들이 있습니다. 동아프리카와 그 너머를 위해 글을 쓰는 오늘의 교사들이, 지금의 질문들이 있는 자리에서 제자들을 만납니다.",
+  "scripture": {
+   "reference": "시편 145:4",
+   "text": "대대로 주의 행사를 크게 칭송하며 주의 능한 일을 선포하리로다"
+  }
+ },
+ "the-inner-life": {
+  "title": "내면의 삶",
+  "description": "안으로 향하는 길. 토마스 아 켐피스와 윌리엄 로와 귀용 부인, 하나님을 향한 사랑과 은밀한 골방의 닫힌 문, 그리고 그분과 홀로 있는 영혼입니다.",
+  "scripture": {
+   "reference": "마태복음 6:6",
+   "text": "너는 기도할 때에 네 골방에 들어가 문을 닫고 은밀한 중에 계신 네 아버지께 기도하라 은밀한 중에 보시는 네 아버지께서 갚으시리라"
+  }
+ },
+ "the-great-awakening": {
+  "title": "대각성",
+  "description": "두 대륙을 뒤흔든 설교. 야외에서 외친 휫필드와 웨슬리, 자기 교인들 가운데 선 에드워즈, 부흥을 말한 피니, 그리고 그 불길 아래 놓인 교리입니다.",
+  "scripture": {
+   "reference": "시편 85:6",
+   "text": "우리를 다시 살리사 주의 백성으로 주를 기뻐하게 아니하시겠나이까"
+  }
+ },
+ "the-body-of-christ": {
+  "title": "그리스도의 몸",
+  "description": "살아 있는 하나의 몸인 교회. 서로 지체가 되어 머리에 연결되고, 거기에서 섬김과 목양이 흘러나옵니다.",
+  "scripture": {
+   "reference": "고린도전서 12:27",
+   "text": "너희는 그리스도의 몸이요 지체의 각 부분이라"
+  }
+ },
+ "for-those-who-lead": {
+  "title": "이끄는 이들을 위하여",
+  "description": "목자와 영혼을 얻는 이들에게 주는 권면. 목회자의 돌봄, 기도 안에 있는 설교자의 능력, 그리고 사람들을 그리스도께 인도하는 길입니다."
+ },
+ "the-wesleys-and-early-methodism": {
+  "title": "웨슬리 형제와 초기 감리교",
+  "description": "운동이 된 각성. 존 웨슬리의 설교와 평이한 해설, 그를 길러 낸 어머니, 그리고 그 뒤를 이은 뜨거운 열심입니다.",
+  "scripture": {
+   "reference": "누가복음 24:32",
+   "text": "길에서 우리에게 말씀하시고 우리에게 성경을 풀어 주실 때에 우리 속에서 마음이 뜨겁지 아니하더냐"
+  }
+ },
+ "foundations-of-the-faith": {
+  "title": "믿음의 기초",
+  "description": "평이하게 붙드는 옛 교리들. 성육신, 하나님의 은혜와 뜻, 계명, 그리고 성도에게 단번에 주신 근본 진리들입니다.",
+  "scripture": {
+   "reference": "유다서 3",
+   "text": "성도에게 단번에 주신 믿음의 도를 위하여 힘써 싸우라"
+  }
+ },
+ "saints-of-the-african-diaspora": {
+  "title": "아프리카 디아스포라의 성도들",
+  "description": "흑인들의 목소리로 전해진 복음. 리처드 앨런과 자유인으로 태어난 설교자들, 침묵하기를 거부한 성결의 여성들, 그리고 나이저 강의 크라우더입니다.",
+  "scripture": {
+   "reference": "시편 68:31",
+   "text": "방백들은 애굽에서 나오고 구스인은 하나님을 향하여 그 손을 신속히 들리로다"
+  }
+ },
+ "the-grace-of-god": {
+  "title": "하나님의 은혜",
+  "description": "처음부터 끝까지 은혜입니다. 값없고 주권적이며 넉넉한 은혜가 죄인 중의 괴수에게 넘치고 가장 연약한 성도를 붙듭니다.",
+  "scripture": {
+   "reference": "에베소서 2:8",
+   "text": "너희가 그 은혜를 인하여 믿음으로 말미암아 구원을 얻었나니 이것이 너희에게서 난 것이 아니요 하나님의 선물이라"
+  }
+ },
+ "victory-over-sin": {
+  "title": "죄를 이기는 삶",
+  "description": "성결을 위한 내면의 싸움. 죄를 죽이는 일, 마음의 정결, 바르게 정돈된 감정, 그리고 지성소로 들어가는 길입니다.",
+  "scripture": {
+   "reference": "로마서 6:14",
+   "text": "죄가 너희를 주관치 못하리니 이는 너희가 법 아래 있지 아니하고 은혜 아래 있음이니라"
+  }
+ },
+ "to-the-ends-of-the-earth": {
+  "title": "땅 끝까지",
+  "description": "선교사들의 일지. 숲속의 브레이너드, 중국의 허드슨 테일러, 인도의 에이미 카마이클, 나이저 강의 크라우더, 어떤 대가를 치르더라도 전해진 복음입니다.",
+  "scripture": {
+   "reference": "사도행전 1:8",
+   "text": "오직 성령이 너희에게 임하시면 너희가 권능을 받고 예루살렘과 온 유대와 사마리아 땅 끝까지 이르러 내 증인이 되리라"
+  }
+ },
+ "faith-for-the-impossible": {
+  "title": "불가능을 향한 믿음",
+  "description": "하나님의 말씀을 그대로 믿는 삶. 오직 기도만으로 먹인 조지 뮬러의 고아들, 그분을 앙망하는 은혜, 그리고 결코 파산하지 않는 믿음의 은행입니다.",
+  "scripture": {
+   "reference": "마가복음 9:23",
+   "text": "믿는 자에게는 능치 못할 일이 없느니라"
+  }
+ },
+ "men-of-valour": {
+  "title": "용사들",
+  "description": "남자들을 향한 부르심. 기도하고, 이끌고, 모든 것을 드리고, 양 떼를 돌보라는 부르심이며, 하나님의 아들들을 위한 용기 있는 삶들입니다.",
+  "scripture": {
+   "reference": "고린도전서 16:13",
+   "text": "깨어 믿음에 굳게 서서 남자답게 강건하여라"
+  }
+ },
+ "for-teens": {
+  "title": "청소년을 위하여",
+  "description": "십대를 위한 믿음. 그리스도께 나아오고, 그분의 백성에 속하며, 그분을 따를 용기를 얻습니다. 짧고 평이하며 솔직한 책들과, 그분을 위해 드려진 삶들의 실화를 담았습니다. 어린 독자를 위해 쓰였거나 그들이 충분히 읽을 수 있는 책들입니다.",
+  "scripture": {
+   "reference": "디모데전서 4:12",
+   "text": "누구든지 네 연소함을 업신여기지 못하게 하고 오직 말과 행실과 사랑과 믿음과 정절에 대하여 믿는 자에게 본이 되어"
+  }
+ },
+ "soar-like-the-eagle": {
+  "title": "독수리처럼 날아오르라",
+  "description": "여호와를 앙망하는 자는 새 힘을 얻습니다. 자기 힘이 다했을 때 하나님께로부터 능력을 길어 오는 법을 다룬 고전들입니다. 지친 이들을 위한 책들로, 기다리고 쉬며 독수리의 날개로 다시 날아오르게 합니다.",
+  "scripture": {
+   "reference": "이사야 40:31",
+   "text": "오직 여호와를 앙망하는 자는 새 힘을 얻으리니 독수리의 날개치며 올라감 같을 것이요 달음박질하여도 곤비치 아니하겠고 걸어가도 피곤치 아니하리로다"
+  }
+ },
+ "for-young-readers": {
+  "title": "어린 독자를 위하여",
+  "description": "어린이와 함께 읽는 이들을 위해 쉽게 들려주는 믿음. 집으로 돌아가는 위대한 여정의 이야기를 어린이가 따라갈 수 있는 말로 전합니다. 어린이를 위해 다시 쓰이고 새로 쓰인 책이 늘어날수록 함께 자라는 서가입니다.",
+  "scripture": {
+   "reference": "마태복음 19:14",
+   "text": "어린 아이들을 용납하고 내게 오는 것을 금하지 말라 천국이 이런 자의 것이니라"
+  }
+ }
+}

@@ -95,5 +95,12 @@
   "note": [
    "AI-drafted ahead of the books; awaiting native review. Shipped before the three children's editions are translated into this language, so those jobs never write this shared file: seed_plans creates the row only once all three books are published here. Like the English, it describes the books rather than quoting titles that do not exist yet."
   ]
+ },
+ "first-steps-for-teens": {
+  "title": "Primeiros Passos: Fé para Adolescentes",
+  "description": "Uma primeira caminhada com Jesus, para leitores adolescentes. Charles Spurgeon vem ao seu encontro em «Junto à Porta Estreita» com a ajuda mais simples para quem está encontrando o caminho até Cristo; depois, as histórias verdadeiras de «Homens e Mulheres Que Deram Tudo» mostram no que essa vida se transforma — dois livros curtos em cerca de três semanas.",
+  "note": [
+   "Job #5701, shipped in the same PR as men-and-women-who-gave-everything-2.pt (job #2787): that book completes this plan's book set in Portuguese (around-the-wicket-gate.pt, «Junto à Porta Estreita», already shipped), so seed_plans would otherwise create the pt row with English prose. The two titles quoted are the shipped pt book titles."
+  ]
  }
 }

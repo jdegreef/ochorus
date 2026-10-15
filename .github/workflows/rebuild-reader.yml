@@ -1,0 +1,50 @@
+name: Rebuild reader
+
+# Rebuilds ochorus-web alone at one commit of main. The API dispatches it
+# (library/golive.trigger_web_deploy) when content changes in its database,
+# a language launch above all, passing the commit the API itself runs, so the
+# reader is prerendered against an API that already serves that content.
+# .github/scripts/rebuild_reader.py has the rules and the why.
+#
+# The API's token needs only `actions: write` on this repo (GITHUB_DEPLOY_TOKEN,
+# or the translation-queue token). The Render key stays here, in the repo
+# secret RENDER_API_KEY that the deploy train already uses.
+#
+# By hand: gh workflow run rebuild-reader.yml -f commit=<full sha>
+on:
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: 'Full SHA on main to build (normally the commit the API runs)'
+        type: string
+        required: true
+
+# Its own group, so a queued rebuild never displaces a queued deploy train. A
+# newer rebuild replaces a pending one; both name the API's current commit.
+concurrency:
+  group: rebuild-reader
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  deployments: read
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Deploy ochorus-web at the API's commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          COMMIT: ${{ inputs.commit }}
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_SERVICE_ID_WEB: srv-d948c44vikkc73brci5g # ochorus-web
+        run: |
+          pip install --quiet pyyaml
+          python3 .github/scripts/rebuild_reader.py
