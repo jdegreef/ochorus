@@ -15,6 +15,7 @@ underneath it. The button is a request to launch, not permission to.
 
 from __future__ import annotations
 
+import os
 from dataclasses import dataclass
 
 import requests
@@ -40,7 +41,8 @@ class DeployResult:
 #: The workflow that rebuilds ochorus-web alone at a given commit, through
 #: Render's REST API (.github/workflows/rebuild-reader.yml).
 REBUILD_WORKFLOW = "rebuild-reader.yml"
-GITHUB_API = "https://api.github.com"
+# Env-overridable like the job queue's (library/admin_views/jobs.py).
+GITHUB_API = os.getenv("GITHUB_API_BASE", "https://api.github.com")
 
 
 def trigger_web_deploy() -> DeployResult:
@@ -82,14 +84,18 @@ def trigger_web_deploy() -> DeployResult:
             "site is deployed — trigger a deploy in Render, or set the hook."
         )
         if unpinned_because:
+            # A pinned path was configured and failed: that's a failure to
+            # retry, not a setup gap.
             detail += f" (The pinned rebuild didn't start either: {unpinned_because}.)"
+            return DeployResult("failed", detail)
         return DeployResult("not_configured", detail)
+    also = f" The pinned rebuild didn't start either: {unpinned_because}." if unpinned_because else ""
     try:
         res = requests.post(hook, timeout=20)
     except requests.RequestException as e:
-        return DeployResult("failed", f"Deploy hook unreachable ({e.__class__.__name__}).")
+        return DeployResult("failed", f"Deploy hook unreachable ({e.__class__.__name__}).{also}")
     if not res.ok:
-        return DeployResult("failed", f"Deploy hook returned {res.status_code}.")
+        return DeployResult("failed", f"Deploy hook returned {res.status_code}.{also}")
     detail = "Rebuild triggered; readers see it when it finishes."
     if unpinned_because:
         detail += (

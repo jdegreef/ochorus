@@ -16,6 +16,11 @@ Refuses, and fails the run, rather than deploy:
 - a commit that isn't on main: a leaked dispatch token must not be able to
   ship an arbitrary branch to readers;
 - a commit OLDER than the reader's last deploy: that would roll the reader back.
+
+Known gap: "last deploy" means the last SUCCESSFUL one. A rebuild dispatched
+while a train's web deploy is still building can queue the older commit behind
+it. That build then waits at the content gate. It takes a content change inside
+the train's few-minute window, and the next train corrects it.
 """
 
 from __future__ import annotations
@@ -36,6 +41,8 @@ def check(commit: str, last: str | None) -> str | None:
         return f"`{commit}` is not a full commit SHA"
     if not is_ancestor(commit, "HEAD"):
         return f"`{commit[:8]}` is not on main"
+    # No successful deploy on record leaves nothing to compare against, so the
+    # rollback check can't run; deploy anyway (it's still a commit on main).
     if last and commit != last and is_ancestor(commit, last):
         return f"`{commit[:8]}` is older than the reader's `{last[:8]}`; that would roll it back"
     return None
@@ -45,12 +52,10 @@ def main() -> int:
     commit = os.environ.get("COMMIT", "").strip().lower()
     api_key = os.environ.get("RENDER_API_KEY", "").strip()
     service_id = os.environ.get("RENDER_SERVICE_ID_WEB", "").strip()
-    last = last_deployed(SERVICE)
-
     failed = True
     if not (api_key and service_id):
         text = "Not configured: RENDER_API_KEY and RENDER_SERVICE_ID_WEB are both needed."
-    elif why := check(commit, last):
+    elif why := check(commit, last_deployed(SERVICE)):
         text = f"Not rebuilding {SERVICE}: {why}."
     elif os.environ.get("DRY_RUN"):
         failed = False
