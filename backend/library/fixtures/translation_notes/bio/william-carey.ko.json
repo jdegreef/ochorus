@@ -1,0 +1,25 @@
+{
+ "kind": "bio",
+ "slug": "william-carey",
+ "language": "ko",
+ "job_issue": 6237,
+ "references": [
+  {
+   "reference": "Isaiah 54:2a",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 5
+  },
+  {
+   "reference": "Psalms 46:10a",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "Isaiah 54:2a",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}

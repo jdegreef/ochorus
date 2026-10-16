@@ -1,0 +1,56 @@
+{
+ "kind": "bio",
+ "slug": "elisabeth-elliot",
+ "language": "ko",
+ "job_issue": 6220,
+ "references": [
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Deuteronomy 33:27",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Deuteronomy 33:27",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Deuteronomy 33:27",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 26
+  },
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Deuteronomy 33:27",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Deuteronomy 33:27",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}

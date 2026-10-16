@@ -1,0 +1,21 @@
+{
+ "kind": "bio",
+ "slug": "samson-occom",
+ "language": "vi",
+ "references": [
+  {
+   "reference": "Romans 6:23",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Genesis 2:23",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 24:44",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  }
+ ]
+}

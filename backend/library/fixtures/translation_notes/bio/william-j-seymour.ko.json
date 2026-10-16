@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "william-j-seymour",
+ "language": "ko",
+ "job_issue": 6221,
+ "references": [
+  {
+   "reference": "Matthew 28:19",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 31
+  }
+ ]
+}

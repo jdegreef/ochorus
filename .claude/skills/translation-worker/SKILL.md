@@ -2765,3 +2765,32 @@ archaic spelling and period punctuation are the text, not defects in it.
   Never merge past it; a watcher that re-runs then merges only on all-green +
   `mergeStateStatus == CLEAN` cleared five queued batch PRs safely.
 
+- **The ebible mirror's vi and ko texts carry repairable damage — clean before you
+  quote** (Level 1 bio batch, 2026-10-15; 50 bios × vi/ko in one workflow). When
+  Take Root is egress-blocked, mine `bibles/vie_kt` / `bibles/kor_old` (URLs need the
+  LOWERCASE book code: `usfm/jhn.usfm`; `JHN.usfm` 404s). Known damage:
+  (1) **vi capitals were mis-converted from VNI**: a capital vowel followed by a lowercase
+  mark — `Aáy`→`Ấy`, `Aân`→`Ân`, `Aùp`→`Áp`, `Eùp`→`Ép`, `Oâng`→`Ông`, `Aét`→`Ắt`,
+  `Eách`→`Ếch` (~2,000 hits; map ù ø û õ ï = acute grave hook tilde dot, â = circumflex,
+  ê = breve, á à å ã ä = circumflex+tone, é è ú ü ë = breve+tone on A).
+  (2) **vi drops the O of vocative `Ớ`** in 31 verses: a standalone `ù` (`rằng: ù Sa-tan`
+  is Cadman's `Ớ Sa-tan`, Matt 16:23). A reviewer caught this; the capital-fixer had not.
+  (3) **ko `kor_old` is truncated in places**: 1 Peter stops at 4:14, and Col, Gen, Psa,
+  Pro and a dozen more books are a few verses short of vie_kt. A verse that isn't there
+  ships nothing (a topic shelf) or is `self_rendered` (prose); never fill it from memory.
+  (4) ko punctuation: drop the mirror's backticks/apostrophes and its spaced ` !` / ` ?`
+  — the shipped ko books quote 개역 without them.
+  Build ONE cleaned `BOOK C:V<TAB>text` index per language and hand it to every
+  translator, so a fan-out quotes one text; a substring check against it is then the
+  `mined` gate.
+- **Batch-wide naming needs a table in the brief, not a rule** (same batch). Fifty
+  parallel ko translators each transliterate the OTHER people a bio mentions; without a
+  mandatory name table the same person comes out three ways. Coined forms that a native
+  reviewer should confirm once for the language: 케직 사경회 (Keswick Convention), and ko
+  titles for books with no ko edition yet (e.g. Wigglesworth's 『날로 자라는 믿음』 = *Ever
+  Increasing Faith*) — a later book job for that title should reuse the bio's form or fix
+  both.
+- **The first vi bio wave shipped EMPTY short bios** (e.g. #6134, #6137 — all ten: every
+  `author_bios_vi/<slug>.short.txt` was a bare newline). Nothing failed — the seed only
+  writes non-empty fields — so the author cards simply had no Vietnamese summary. The
+  Level 1 batch filled them. Check `wc -c` on the `.short.txt` files you ship.

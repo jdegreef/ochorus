@@ -1,0 +1,24 @@
+{
+ "kind": "bio",
+ "slug": "john-hyde",
+ "language": "ko",
+ "job_issue": 6229,
+ "references": [
+  {
+   "reference": "Matthew 9:38",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "Zechariah 2:8",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Revelation 12:10",
+   "status": "self_rendered",
+   "block_index": 20
+  }
+ ]
+}

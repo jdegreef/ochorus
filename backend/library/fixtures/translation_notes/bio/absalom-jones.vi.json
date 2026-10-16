@@ -1,0 +1,48 @@
+{
+ "kind": "bio",
+ "slug": "absalom-jones",
+ "language": "vi",
+ "references": [
+  {
+   "reference": "Hebrews 13:8",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 2
+  },
+  {
+   "reference": "Daniel 3:17",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Exodus 3:7",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 31
+  },
+  {
+   "reference": "Acts 10:34",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 34
+  },
+  {
+   "reference": "Acts 17:26",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "2 Timothy 3:15",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 36
+  },
+  {
+   "reference": "1 Corinthians 7:22",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 36
+  }
+ ]
+}

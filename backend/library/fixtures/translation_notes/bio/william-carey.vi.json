@@ -1,0 +1,24 @@
+{
+ "kind": "bio",
+ "slug": "william-carey",
+ "language": "vi",
+ "references": [
+  {
+   "reference": "Isaiah 54:2",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Psalms 46:10",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Isaiah 54:2",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  }
+ ]
+}

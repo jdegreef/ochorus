@@ -1,0 +1,22 @@
+{
+ "kind": "bio",
+ "slug": "samson-occom",
+ "language": "ko",
+ "job_issue": 6223,
+ "references": [
+  {
+   "reference": "Romans 6:23",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 24:44a",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Genesis 2:23a",
+   "status": "self_rendered"
+  }
+ ]
+}

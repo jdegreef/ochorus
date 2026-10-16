@@ -1,0 +1,40 @@
+{
+ "kind": "bio",
+ "slug": "john-wesley",
+ "language": "vi",
+ "references": [
+  {
+   "reference": "Zechariah 3:2",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Zechariah 3:2",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Zechariah 3:2",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Zechariah 3:2",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Samuel 6:22",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Romans 8:31",
+   "status": "self_rendered",
+   "block_index": 53
+  }
+ ]
+}

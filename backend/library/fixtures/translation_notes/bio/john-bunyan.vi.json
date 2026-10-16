@@ -1,0 +1,30 @@
+{
+ "kind": "bio",
+ "slug": "john-bunyan",
+ "language": "vi",
+ "references": [
+  {
+   "reference": "Jeremiah 49:11a",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Jeremiah 15:11",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Job 1:9",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Hebrews 12:16",
+   "status": "mined",
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Hebrews 12:17",
+   "status": "self_rendered"
+  }
+ ]
+}

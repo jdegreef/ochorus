@@ -1,0 +1,13 @@
+{
+ "kind": "bio",
+ "slug": "john-calvin",
+ "language": "ko",
+ "job_issue": 6213,
+ "references": [
+  {
+   "reference": "Psalms 13:1",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}

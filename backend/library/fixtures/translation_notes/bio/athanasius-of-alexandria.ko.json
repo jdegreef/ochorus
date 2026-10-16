@@ -1,0 +1,28 @@
+{
+ "kind": "bio",
+ "slug": "athanasius-of-alexandria",
+ "language": "ko",
+ "job_issue": 6200,
+ "references": [
+  {
+   "reference": "Psalm 136:1b",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Psalm 136:1b",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 7:24a",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Romans 7:24a",
+   "status": "self_rendered"
+  }
+ ]
+}

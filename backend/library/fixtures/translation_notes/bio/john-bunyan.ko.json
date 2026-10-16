@@ -1,0 +1,30 @@
+{
+ "kind": "bio",
+ "slug": "john-bunyan",
+ "language": "ko",
+ "job_issue": 6189,
+ "references": [
+  {
+   "reference": "Hebrews 12:16-17",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Jeremiah 49:11a",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 37
+  },
+  {
+   "reference": "Jeremiah 15:11",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Job 1:9b",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 44
+  }
+ ]
+}

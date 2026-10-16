@@ -1,0 +1,25 @@
+{
+ "kind": "bio",
+ "slug": "festo-kivengere",
+ "language": "ko",
+ "job_issue": 6225,
+ "references": [
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Luke 23:34a",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}
