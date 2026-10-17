@@ -1767,6 +1767,27 @@ export const searchEmailLibrary = (
 		{ signal: init?.signal }
 	);
 
+export type LibrarySearchKind = 'author' | 'book' | 'sermon' | 'plan' | 'article' | 'topic' | 'quote';
+
+/** One "Insert from the library" result, with the block that inserts it. */
+export interface LibrarySearchResult {
+	kind: LibrarySearchKind;
+	key: string;
+	title: string;
+	subtitle: string;
+	/** A cover or photo: a site path or https URL, or ''. */
+	image: string;
+	/** The languages it reaches — an email in another one leaves it out. */
+	languages: string[];
+	block: EmailBlock;
+}
+
+export const searchLibraryForEmail = (q: string, signal?: AbortSignal) =>
+	apiFetch<{ results: LibrarySearchResult[]; counts: Record<LibrarySearchKind, number> }>(
+		`/api/admin/emails/library/search/?${new URLSearchParams({ q })}`,
+		{ signal }
+	);
+
 /** Upload a picture for an email; returns its public URL. */
 export async function uploadEmailImage(file: File): Promise<string> {
 	const body = new FormData();

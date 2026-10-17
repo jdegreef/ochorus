@@ -6,6 +6,7 @@
 	import EmailBlocksEditor from '$lib/components/EmailBlocksEditor.svelte';
 	import EmailPreview from '$lib/components/EmailPreview.svelte';
 	import EmailTemplateGallery from '$lib/components/EmailTemplateGallery.svelte';
+	import EmailLibraryPanel from '$lib/components/EmailLibraryPanel.svelte';
 	import { ApiError, apiErrorDetail } from '$lib/api';
 	import { localeName } from '$lib/lang.svelte';
 	import { locales } from '$lib/paraglide/runtime';
@@ -30,6 +31,7 @@
 		type BroadcastAudience,
 		type BroadcastCheck,
 		type BroadcastBlock,
+		type EmailBlock,
 		type BroadcastStatus
 	} from '$lib/library-admin';
 
@@ -393,6 +395,15 @@
 		}
 	}
 
+	// --- "Insert from the library" (a drawer beside the designer) ------------
+	let libraryOpen = $state(false);
+
+	function insertBlock(block: EmailBlock) {
+		const content = draft?.content[editLocale];
+		if (!content || readOnly) return;
+		content.blocks = [...content.blocks, block];
+	}
+
 	function switchLocale(code: string) {
 		editLocale = code;
 	}
@@ -565,6 +576,9 @@
 		<section class="mb-5 rounded-card border border-border bg-surface p-4">
 			<div class="mb-3 flex flex-wrap items-center gap-2">
 				<h2 class="mr-2 text-h3">Content</h2>
+				{#if !readOnly && draft.content[editLocale]}
+					<button class="btn btn-ghost btn-sm" onclick={() => (libraryOpen = !libraryOpen)} aria-expanded={libraryOpen}>Insert from the library</button>
+				{/if}
 				{#each draftLocales as code (code)}
 					<button class="rounded-full border px-2.5 py-0.5 text-micro {code === editLocale ? 'border-accent bg-accent-soft text-accent' : 'border-border text-muted'}" onclick={() => switchLocale(code)}>{localeLabel(code)}</button>
 				{/each}
@@ -728,5 +742,11 @@
 			</div>
 		</form>
 		</div>
+	</div>
+{/if}
+
+{#if libraryOpen && draft && !readOnly && draft.content[editLocale]}
+	<div class="fixed inset-y-0 right-0 z-40 w-full max-w-md border-l border-border bg-surface p-4 shadow-xl">
+		<EmailLibraryPanel locale={editLocale} localeName={localeLabel(editLocale)} onInsert={insertBlock} onClose={() => (libraryOpen = false)} />
 	</div>
 {/if}

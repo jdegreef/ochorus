@@ -10,6 +10,7 @@ from emails.admin_auto import AdminAutoEmailBuildView, AdminAutoEmailsView
 from emails.admin_design import (
     AdminBroadcastTranslationView,
     AdminEmailImageView,
+    AdminEmailLibrarySearchView,
     AdminEmailLibraryView,
     AdminEmailPreviewView,
     AdminEmailTemplateDetailView,
@@ -272,6 +273,11 @@ urlpatterns = [
     ),
     path("api/admin/emails/preview/", AdminEmailPreviewView.as_view(), name="admin-email-preview"),
     path("api/admin/emails/library/", AdminEmailLibraryView.as_view(), name="admin-email-library"),
+    path(
+        "api/admin/emails/library/search/",
+        AdminEmailLibrarySearchView.as_view(),
+        name="admin-email-library-search",
+    ),
     path("api/admin/emails/images/", AdminEmailImageView.as_view(), name="admin-email-images"),
     path(
         "api/admin/emails/templates/",

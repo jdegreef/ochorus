@@ -20,7 +20,7 @@ from library.audit import AdminAudited, AdminNotAudited, actor_email
 from library.models import AdminAction
 
 from . import blocks as blocks_mod
-from . import images, starter_templates, translation_jobs
+from . import images, library_search, starter_templates, translation_jobs
 from .admin_views import _serialize_broadcast
 from .models import Broadcast, EmailSubscription, EmailTemplate, TemplateCategory
 from .rendering import render_blocks
@@ -113,6 +113,18 @@ class AdminEmailLibraryView(AdminNotAudited, APIView):
             if row.get("language") == "en":  # name a work by its English title when it has one
                 work["title"] = row[title_field]
         return Response({"results": list(works.values())})
+
+
+class AdminEmailLibrarySearchView(AdminNotAudited, APIView):
+    """The "Insert from the library" panel: ``?q=…`` across books, sermons,
+    plans, articles, authors, topics and quotes, each result with the block
+    that inserts it (emails/library_search.py)."""
+
+    permission_classes = [IsAdminEmail]
+    audit_exempt = "Read-only search."
+
+    def get(self, request):
+        return Response(library_search.search(request.query_params.get("q", "")[:100]))
 
 
 def _serialize_template(t: EmailTemplate) -> dict:
