@@ -52,7 +52,8 @@ export const TOPIC_FOR: Record<string, string> = {
 	'grace-and-comfort': 'chaplains',
 	'revival-and-missions': 'missionaries',
 	'to-the-ends-of-the-earth': 'missionaries',
-	'the-east-african-revival': 'missionaries',
+	'the-east-african-revival': 'african-churches',
+	'saints-of-the-african-diaspora': 'african-churches',
 	'for-young-readers': 'parents',
 	'for-teens': 'youth',
 	prayer: 'prayer-groups',
@@ -61,7 +62,7 @@ export const TOPIC_FOR: Record<string, string> = {
 	'voices-of-the-early-church': 'bible-colleges',
 	'the-puritans': 'bible-colleges',
 	'foundations-of-the-faith': 'new-believers',
-	'the-gospel-call': 'new-believers',
+	'the-gospel-call': 'evangelism',
 	'the-grace-of-god': 'new-believers'
 };
 
@@ -115,7 +116,19 @@ export const SEARCH_FOR: Record<string, string> = {
 	'women s group': 'womens-ministry',
 	'men s ministry': 'mens-ministry',
 	'mens ministry': 'mens-ministry',
-	'men s group': 'mens-ministry'
+	'men s group': 'mens-ministry',
+	evangelism: 'evangelism',
+	outreach: 'evangelism',
+	'soul winning': 'evangelism',
+	africa: 'african-churches',
+	african: 'african-churches',
+	uganda: 'african-churches',
+	kenya: 'african-churches',
+	student: 'campus',
+	students: 'campus',
+	university: 'campus',
+	college: 'campus',
+	campus: 'campus'
 };
 
 /** The group page a search names, if any: the longest phrase it contains. */

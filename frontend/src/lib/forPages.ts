@@ -769,6 +769,159 @@ export const FOR_PAGES: ForPage[] = [
 		closeBody: 'Send them a first book, or start a reading plan together this week.'
 	},
 	{
+		slug: 'evangelism',
+		title: 'Free books for evangelism and outreach',
+		lead: 'Moody, Spurgeon, Torrey and Whitefield on bringing others to Christ, and the short, warm books they wrote to hand to a seeker, free to share by link, by QR code or as a printed PDF.',
+		seoTitle: 'Free Christian Books for Evangelism and Outreach',
+		seoDescription:
+			'Free gospel books to give away and classics on evangelism by Moody, Spurgeon and Torrey, with PDFs to print and links to share. No account needed.',
+		primary: { href: '#shelves', label: 'Books to give away' },
+		secondary: { href: '#series', label: 'Six gospel sermons' },
+		pointsHeading: 'Why outreach teams use Ochorus',
+		points: [
+			{
+				icon: 'share',
+				title: 'A book to give, for nothing',
+				body: 'The Way to God and All of Grace were written for people who are not yet Christians. Share them by link, by QR code or in a message, and the reader needs no account.',
+				link: { href: '#shelves', label: 'See the books' }
+			},
+			{
+				icon: 'download',
+				title: 'PDFs to print',
+				body: 'Many books can be downloaded as free PDFs. If you would like to print copies to give away, please contact us first: Ochorus already prints and gives away books in East Africa.',
+				link: { href: '#offline', label: 'See the downloads' }
+			},
+			{
+				icon: 'book',
+				title: 'Training for the team',
+				body: 'Torrey’s How to Bring Men to Christ and Spurgeon’s The Soul-Winner are practical handbooks for personal evangelism, read by generations of evangelists.',
+				link: { href: '#shelves', label: 'Books for the team' }
+			},
+			{
+				icon: 'calendar',
+				title: 'A next step for new believers',
+				body: 'When someone comes to faith, give them the New to the Faith reading plan: one short reading a day for their first weeks.',
+				link: { href: '#plans', label: 'See the plans' }
+			}
+		],
+		ideasHeading: 'Ways to use it in outreach',
+		ideas: [
+			{
+				title: 'A QR code on the table',
+				body: 'Print the QR code for The Way to God on a card at your book table, outreach event or café night.'
+			},
+			{
+				title: 'Train the team',
+				body: 'Read How to Bring Men to Christ together before a mission, a chapter a week.'
+			},
+			{
+				title: 'Follow up the same week',
+				body: 'Send someone who showed interest a link to a book and a reading plan, so the conversation can carry on.'
+			},
+			{
+				title: 'Pray first',
+				body: 'Prepare with Send the Fire, a reading plan on praying for revival.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Books to give a seeker',
+				note: 'Short, warm and written for those not yet in the faith.',
+				picks: [
+					'the-way-to-god',
+					'all-of-grace',
+					'around-the-wicket-gate',
+					'a-call-to-the-unconverted',
+					'grace-abounding',
+					'pilgrims-progress',
+					'how-i-became-a-christian'
+				]
+			},
+			{
+				title: 'For the evangelist',
+				note: 'Handbooks and lives of those who reached others.',
+				picks: [
+					'how-to-bring-men-to-christ',
+					'the-soul-winner',
+					'revival-lectures',
+					'evangelization-of-the-world',
+					'finney-memoirs',
+					'selected-sermons-whitefield',
+					'men-and-women-who-gave-everything-2'
+				]
+			},
+			{
+				title: 'In simpler words',
+				note: 'Retellings to give to readers of any age.',
+				picks: [
+					'the-way-to-god-teens',
+					'all-of-grace-teens',
+					'pilgrims-progress-teens',
+					'grace-abounding-teens',
+					'how-to-succeed-in-the-christian-life-teens',
+					'the-pursuit-of-god-teens',
+					'confessions-teens'
+				]
+			}
+		],
+		plans: ['grace-for-every-sinner', 'new-to-the-faith', 'send-the-fire', 'the-pilgrims-way', 'everything-for-christ'],
+		offline: {
+			note: 'For a book table or a place with no signal. Download each book as a PDF to print or an EPUB for an e-reader, or save them all to this device. If you would like to print copies to give away, please contact us first.',
+			picks: [
+				'the-way-to-god',
+				'all-of-grace',
+				'around-the-wicket-gate',
+				'a-call-to-the-unconverted',
+				'how-to-bring-men-to-christ',
+				'grace-abounding',
+				'pilgrims-progress'
+			]
+		},
+		quote: 'george-muller-dcfed640',
+		authors: [
+			'dwight-l-moody',
+			'charles-h-spurgeon',
+			'r-a-torrey',
+			'george-whitefield',
+			'charles-finney',
+			'richard-baxter',
+			'john-r-mott'
+		],
+		series: [
+			{
+				title: 'Six gospel sermons',
+				note: 'Sermons that called people to Christ: one a week for your team to read, or to read with someone who is asking.',
+				picks: [
+					'compel-them-to-come-in',
+					'the-way-of-salvation-made-plain',
+					'one-word-gospel',
+					'come-thou-into-the-ark',
+					'the-sinners-friend',
+					'the-right-kind-of-faith',
+					'refuges-of-lies',
+					'the-method-of-grace'
+				]
+			}
+		],
+		invite: {
+			text: 'A free book that explains the good news of Jesus, on any phone, with no sign-up: The Way to God by D. L. Moody, on Ochorus.',
+			href: '/books/the-way-to-god'
+		},
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Can we print books to give away?',
+				a: 'Many books can be downloaded as free PDF files. If you would like to print copies to give away, please contact us first; we would be glad to talk it through.'
+			},
+			{
+				q: 'Does the person we share with need an account?',
+				a: 'No. Anyone can open the link and read, with nothing to sign up for.'
+			}
+		],
+		closeHeading: 'Give someone the good news to read',
+		closeBody: 'Share a book by link or QR code, or train your team with the classics on evangelism.'
+	},
+	{
 		slug: 'prayer-groups',
 		title: 'Free classics for prayer groups and intercessors',
 		lead: 'Andrew Murray, E. M. Bounds, George Müller, Praying Hyde and Spurgeon on prayer: the great books on prayer and the stories of answered prayer, free on any phone, with plans and sermons to pray through together.',
@@ -1314,6 +1467,147 @@ export const FOR_PAGES: ForPage[] = [
 		closeBody: 'Start with the books for teens, or pick a reading plan to go through together.'
 	},
 	{
+		slug: 'campus',
+		title: 'Free Christian classics for campus ministries and students',
+		lead: 'Pascal, Chesterton, Augustine and C. S. Lewis on faith and reason, and the students who changed the world: the Cambridge Seven, John R. Mott and the Student Volunteer Movement. Free on any phone, with nothing to buy for a student budget.',
+		seoTitle: 'Free Christian Books for Students and Campus Ministries',
+		seoDescription:
+			'Free Christian classics for students and campus ministries: Pascal, Chesterton, Augustine and C. S. Lewis on faith and reason, and reading plans.',
+		primary: { href: '#shelves', label: 'Books for big questions' },
+		secondary: { href: '#plans', label: 'Read through the term' },
+		pointsHeading: 'Why campus ministries use Ochorus',
+		points: [
+			{
+				icon: 'search',
+				title: 'Faith that thinks',
+				body: 'Pascal’s Pensées, Chesterton’s Orthodoxy and The Everlasting Man, and Augustine’s Confessions take the hard questions seriously.',
+				link: { href: '#shelves', label: 'See the books' }
+			},
+			{
+				icon: 'globe',
+				title: 'Students who changed the world',
+				body: 'C. T. Studd left Cambridge for China, David Brainerd left Yale for the frontier, and John R. Mott led the Student Volunteer Movement. Their stories are here.',
+				link: { href: '#shelves', label: 'Read their stories' }
+			},
+			{
+				icon: 'calendar',
+				title: 'A plan for the term',
+				body: 'Reading plans give a student group one short reading a day: on the Puritans, on holiness, or on four great teachers of the faith.',
+				link: { href: '#plans', label: 'See the plans' }
+			},
+			{
+				icon: 'book',
+				title: 'Free for every student',
+				body: 'Nothing to buy and no account needed. Share one link in the group chat and everyone can read that night.',
+				link: { href: '/books', label: 'Browse the books' }
+			}
+		],
+		ideasHeading: 'Ways to use it on campus',
+		ideas: [
+			{
+				title: 'A book club for skeptics',
+				body: 'Read Orthodoxy or the Pensées with friends who are asking whether Christianity is true.'
+			},
+			{
+				title: 'A term’s reading plan',
+				body: 'Start a plan at the beginning of term and meet weekly to talk about what you read.'
+			},
+			{
+				title: 'Mission week',
+				body: 'Read The Evangelization of the World in This Generation, Mott’s call to students, before a mission week.'
+			},
+			{
+				title: 'For the long vacation',
+				body: 'Give each student a classic to read over the summer, and a reading plan to keep them going.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Faith and reason',
+				note: 'Books for the big questions.',
+				picks: [
+					'orthodoxy',
+					'pensees',
+					'the-everlasting-man',
+					'confessions',
+					'heretics',
+					'freedom-of-the-will',
+					'on-the-incarnation'
+				]
+			},
+			{
+				title: 'Students who changed the world',
+				note: 'Lives begun on campus and given away.',
+				picks: [
+					'evangelization-of-the-world',
+					'c-t-studd-a-life',
+					'life-and-diary-of-david-brainerd',
+					'c-s-lewis-a-life',
+					'key-teachings-of-c-s-lewis',
+					'key-teachings-of-dietrich-bonhoeffer',
+					'john-hyde-a-life'
+				]
+			},
+			{
+				title: 'For the inner life',
+				note: 'Classics for the student who wants to grow.',
+				picks: [
+					'the-pursuit-of-god',
+					'a-serious-call',
+					'mortification-of-sin',
+					'the-imitation-of-christ',
+					'the-practice-of-the-presence-of-god',
+					'religious-affections',
+					'paradise-lost'
+				]
+			}
+		],
+		plans: ['everything-for-christ', 'the-puritan-heart', 'pursuit-of-holiness', 'key-teachings-four-teachers', 'voices-of-the-early-church'],
+		quote: 'jonathan-edwards-2591b226',
+		authors: [
+			'c-s-lewis',
+			'g-k-chesterton',
+			'blaise-pascal',
+			'augustine-of-hippo',
+			'john-r-mott',
+			'jonathan-edwards',
+			'dietrich-bonhoeffer'
+		],
+		series: [
+			{
+				title: 'Six weeks of big questions',
+				note: 'Sin, the cross, salvation and grace: one sermon a week for a student group, with questions to argue over.',
+				picks: [
+					'the-cross-is-a-radical-thing',
+					'so-great-salvation',
+					'sinners-in-the-hands-of-an-angry-god',
+					'god-will-have-all-men-to-be-saved',
+					'the-meaning-of-the-cross',
+					'grace-and-truth',
+					'full-salvation',
+					'free-grace'
+				]
+			}
+		],
+		invite: {
+			text: 'Our student group is reading the great Christian classics together on Ochorus: Pascal, Chesterton, Augustine and more, free on any phone with no sign-up.',
+			href: '/plans'
+		},
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Can students cite these books in essays?',
+				a: 'Yes. The classic texts are in the public domain and can be quoted freely, and each book page names its author.'
+			},
+			{
+				q: 'Do students need an account?',
+				a: 'No. Anyone can read without signing up. A free account is optional: it keeps notes and progress in step across a phone and a laptop.'
+			}
+		],
+		closeHeading: 'Bring the classics to campus',
+		closeBody: 'Start a reading plan with your group, or hand a friend a book for the big questions.'
+	},
+	{
 		slug: 'missionaries',
 		title: 'Christian classics to share, free, in the languages you serve',
 		lead: 'A free library you can hand to anyone with a link: no payment, no sign-up. The great classics, sermons and missionary biographies, many published as full editions in other languages.',
@@ -1464,6 +1758,132 @@ export const FOR_PAGES: ForPage[] = [
 		],
 		closeHeading: 'Share the classics with the people you serve',
 		closeBody: 'Browse the library, or start with the lives of the missionaries who went before you.'
+	},
+	{
+		slug: 'african-churches',
+		title: 'Free Christian classics for churches in Africa',
+		lead: 'Augustine, Athanasius, Cyprian and Antony were Africans. So were Samuel Ajayi Crowther and the brothers and sisters of the East African Revival. Their books, and the great classics in English, Swahili and Luganda, free on any phone.',
+		seoTitle: 'Free Christian Books for Churches in Africa',
+		seoDescription:
+			'Free Christian classics for African churches: the African church fathers, the East African Revival and Samuel Ajayi Crowther, in English, Swahili and Luganda.',
+		primary: { href: '#languages', label: 'Read in your language' },
+		secondary: { href: '#shelves', label: 'Africa’s own story' },
+		pointsHeading: 'Why African churches use Ochorus',
+		points: [
+			{
+				icon: 'globe',
+				title: 'In the languages your people speak',
+				body: `Full editions in ${listOf(OTHER_LANGUAGES, 'and')} as well as English, with more languages on the way.`,
+				link: { href: '#languages', label: 'See each language' }
+			},
+			{
+				icon: 'flame',
+				title: 'The East African Revival',
+				body: 'Tukutendereza and A Hidden Fire tell the story of the Balokole revival that began in Uganda in 1929 and spread through six countries.',
+				link: { href: '/topics', label: 'Browse the topics' }
+			},
+			{
+				icon: 'book',
+				title: 'Africa’s church fathers',
+				body: 'Augustine of Hippo, Athanasius of Alexandria, Cyprian of Carthage and Antony of Egypt shaped the faith of the whole church. Their books are here in full.',
+				link: { href: '#shelves', label: 'See the books' }
+			},
+			{
+				icon: 'heart',
+				title: 'Free, and printed too',
+				body: 'Every book is free to read with no account. Ochorus also prints books and gives them away at pastors’ conferences and in churches, schools and prisons across East Africa.',
+				link: { href: '/about', label: 'About the work' }
+			}
+		],
+		ideasHeading: 'Ways to use it in your church',
+		ideas: [
+			{
+				title: 'Read in Swahili or Luganda',
+				body: 'Point each member to the library in their own language: the whole site reads in it.'
+			},
+			{
+				title: 'Tell the revival story',
+				body: 'Read Tukutendereza with your fellowship and ask what that revival asks of you today.'
+			},
+			{
+				title: 'Africa’s fathers for students',
+				body: 'Give Bible-school students Augustine’s Confessions and Athanasius On the Incarnation, written on African soil.'
+			},
+			{
+				title: 'Heroes for children',
+				body: 'Read the life of Samuel Ajayi Crowther with children: the boy from Osogun who became a bishop.'
+			}
+		],
+		shelves: [
+			{
+				title: 'The church in Africa',
+				note: 'Revival, mission, and the first African Anglican bishop.',
+				picks: [
+					'tukutendereza',
+					'a-hidden-fire',
+					'samuel-ajayi-crowther-a-life',
+					'journal-of-an-expedition-up-the-niger',
+					'mary-slessor-a-life',
+					'amanda-smith-autobiography',
+					'david-livingstone-a-life'
+				]
+			},
+			{
+				title: 'Africa’s church fathers',
+				note: 'From Hippo, Alexandria, Carthage and the Egyptian desert.',
+				picks: [
+					'confessions',
+					'on-the-incarnation',
+					'life-of-antony',
+					'treatises-of-cyprian',
+					'enchiridion',
+					'key-teachings-of-augustine-of-hippo',
+					'key-teachings-of-athanasius-of-alexandria'
+				]
+			},
+			{
+				title: 'For children and teens',
+				note: 'The same lives, told for young readers.',
+				picks: [
+					'samuel-ajayi-crowther-a-life-children',
+					'samuel-ajayi-crowther-a-life-teens',
+					'mary-slessor-a-life-children',
+					'mary-slessor-a-life-teens',
+					'life-of-antony-teens',
+					'confessions-teens',
+					'david-livingstone-a-life-teens'
+				]
+			}
+		],
+		plans: ['family-devotions-boy-from-osogun', 'voices-of-the-early-church', 'grace-for-every-sinner', 'new-to-the-faith', 'faith-in-the-fire'],
+		quote: 'augustine-of-hippo-71005631',
+		authors: [
+			'augustine-of-hippo',
+			'athanasius-of-alexandria',
+			'cyprian-of-carthage',
+			'samuel-ajayi-crowther',
+			'simeon-nsibambi',
+			'mary-slessor',
+			'amanda-berry-smith'
+		],
+		languages: true,
+		invite: {
+			text: 'Free Christian classics in English, Swahili and Luganda, from Augustine to the East African Revival, on Ochorus. No account needed.',
+			href: '/books'
+		},
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Which African languages are there?',
+				a: `Books are published as full editions in ${listOf(OTHER_LANGUAGES, 'and')} as well as English, and more languages are on the way. Each language has its own library.`
+			},
+			{
+				q: 'Can we get printed books?',
+				a: 'Ochorus prints books and gives them away at pastors’ conferences and in churches, schools and prisons across East Africa. If your church would like to take part, please contact us.'
+			}
+		],
+		closeHeading: 'Africa’s story, in Africa’s languages',
+		closeBody: 'Open the library in your language, or start with the story of the East African Revival.'
 	},
 	{
 		slug: 'chaplains',

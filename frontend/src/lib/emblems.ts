@@ -858,7 +858,45 @@ export const EMBLEM_ART = {
 		<path d="M13 28h22" stroke="${GD}" stroke-width="2" stroke-linecap="round"/>
 		<path d="M20 37h8l1.5 5h-11z" fill="${GD}"/>
 		<circle cx="24" cy="32" r="1.8" fill="${R}"/>
-		<path d="M14 42.5h20" stroke="${PD}" stroke-width="2.4" stroke-linecap="round"/>`
+		<path d="M14 42.5h20" stroke="${PD}" stroke-width="2.4" stroke-linecap="round"/>`,
+	'sower-and-seed': `
+		<circle cx="24" cy="22" r="17" fill="${GR}" fill-opacity=".16"/>
+		<circle cx="11" cy="11" r="4.5" fill="${G}"/>
+		<g transform="rotate(-32 36 14)">
+			<path d="M30.5 9h11l2.5 11c0 3.4-3.6 5.4-8 5.4s-8-2-8-5.4z" fill="${BR}"/>
+			<path d="M30 9.5h12" stroke="${G}" stroke-width="2.4" stroke-linecap="round"/>
+			<path d="M33 15c1.6 1 4.4 1 6 0" stroke="${BRD}" stroke-width="1" fill="none" opacity=".6"/>
+		</g>
+		<circle cx="27.5" cy="19.5" r="1.3" fill="${G}"/>
+		<circle cx="24" cy="23.5" r="1.3" fill="${G}"/>
+		<circle cx="21.5" cy="28" r="1.3" fill="${G}"/>
+		<circle cx="27" cy="25.5" r="1.1" fill="${G}"/>
+		<path d="M3 36c9-2.5 18-2.5 27 0s11 2.5 15 0v9H3z" fill="${BR}"/>
+		<path d="M5 39.5c8-1.6 16-1.6 24 0M8 42.5c7-1.2 14-1.2 21 0" stroke="${BRD}" stroke-width="1" fill="none" opacity=".7"/>
+		<path d="M11 35.5v-5M33 36v-5.5M40 35v-4" stroke="${GR}" stroke-width="1.6" stroke-linecap="round"/>
+		<path d="M11 31.5c-2-1-2.5-2.6-2-4 1.8.3 2.6 1.6 2 4zM33 31.5c2-1 2.6-2.8 2-4.2-1.8.4-2.6 1.8-2 4.2zM40 32c-1.7-.8-2.1-2.2-1.6-3.4 1.5.3 2.2 1.4 1.6 3.4z" fill="${GR}"/>`,
+	'baobab-at-dawn': `
+		<circle cx="24" cy="23" r="17" fill="${G}" fill-opacity=".18"/>
+		<path d="M8 36a16 16 0 0 1 32 0z" fill="${R}" fill-opacity=".3"/>
+		<path d="M14 36a10 10 0 0 1 20 0z" fill="${G}"/>
+		<path d="M3 36h42v3.5H3z" fill="${GD}"/>
+		<path d="M19 36c1.4-5 1.6-11 .4-16h8.2c-1.2 5-1 11 .4 16z" fill="${BRD}"/>
+		<path d="M21 20c-2-4-5.5-6-9.5-6.5M27 20c2-4 5.5-6 9.5-6.5M24 20c0-4 .5-7 2-9.5" stroke="${BRD}" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+		<ellipse cx="11" cy="12.5" rx="5" ry="2.6" fill="${GRD}"/>
+		<ellipse cx="37" cy="12.5" rx="5" ry="2.6" fill="${GRD}"/>
+		<ellipse cx="26.5" cy="9.5" rx="4.6" ry="2.4" fill="${GR}"/>
+		<path d="M5 42h38" stroke="${BR}" stroke-width="2" stroke-linecap="round" opacity=".7"/>`,
+	'college-tower': `
+		<circle cx="24" cy="21" r="17" fill="${BD}" fill-opacity=".16"/>
+		<path d="M17 18h14v24H17z" fill="${CRD}"/>
+		<path d="M15.5 18.5L24 8l8.5 10.5z" fill="${BD}"/>
+		<path d="M24 3v5" stroke="${GD}" stroke-width="1.6" stroke-linecap="round"/>
+		<circle cx="24" cy="24" r="3.4" fill="${W}" stroke="${BR}" stroke-width="1"/>
+		<path d="M24 22.2v1.9l1.3.9" stroke="${BRD}" stroke-width=".9" stroke-linecap="round" fill="none"/>
+		<path d="M21.5 42v-7a2.5 2.5 0 0 1 5 0v7z" fill="${BRD}"/>
+		<path d="M6 30h11v12H6zM31 30h11v12H31z" fill="${CR}"/>
+		<path d="M8.5 33h2.5v3H8.5zM37 33h2.5v3H37z" fill="${G}"/>
+		<path d="M4 42.5h40" stroke="${GR}" stroke-width="2.4" stroke-linecap="round"/>`
 } as const;
 
 export type EmblemName = keyof typeof EMBLEM_ART;

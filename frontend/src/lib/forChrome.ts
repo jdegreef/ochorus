@@ -235,7 +235,10 @@ export const FOR_CHROME: Record<ForLocale, ForChrome> = {
 				'prison-ministry': 'People in prison',
 				'prayer-groups': 'A prayer group',
 				'womens-ministry': 'A women’s group',
-				'mens-ministry': 'A men’s group'
+				'mens-ministry': 'A men’s group',
+				evangelism: 'People I’m reaching with the gospel',
+				'african-churches': 'A church in Africa',
+				campus: 'Students'
 			},
 			goals: {
 				together: 'Read a plan together',
@@ -370,7 +373,10 @@ export const FOR_CHROME: Record<ForLocale, ForChrome> = {
 				'prison-ministry': 'Des personnes en prison',
 				'prayer-groups': 'Un groupe de prière',
 				'womens-ministry': 'Un groupe de femmes',
-				'mens-ministry': 'Un groupe d’hommes'
+				'mens-ministry': 'Un groupe d’hommes',
+				evangelism: 'Ceux à qui j’annonce l’Évangile',
+				'african-churches': 'Une Église en Afrique',
+				campus: 'Des étudiants'
 			},
 			goals: {
 				together: 'Lire un plan ensemble',
