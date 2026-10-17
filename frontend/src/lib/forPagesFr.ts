@@ -614,6 +614,344 @@ export const FOR_PAGES_FR: ForPage[] = [
 		closeBody: 'Envoyez-lui un premier livre, ou commencez les six semaines ensemble cette semaine.'
 	},
 	{
+		slug: 'prayer-groups',
+		title: 'Des classiques gratuits pour les groupes de prière',
+		lead: 'Andrew Murray, E. M. Bounds, George Müller et Spurgeon sur la prière : les grands livres sur la prière et les récits de prières exaucées, gratuits sur téléphone, avec des plans et des sermons pour prier ensemble.',
+		seoTitle: 'Livres chrétiens gratuits sur la prière',
+		seoDescription:
+			'Classiques gratuits sur la prière d’Andrew Murray, E. M. Bounds, George Müller et Spurgeon, avec des plans de lecture et des sermons pour les groupes de prière.',
+		primary: { href: '#plans', label: 'Prier avec un plan' },
+		secondary: { href: '#series', label: 'Six semaines sur la prière' },
+		pointsHeading: 'Pourquoi les groupes de prière utilisent Ochorus',
+		points: [
+			{
+				icon: 'book',
+				title: 'Les grands livres sur la prière',
+				body: 'À l’école de la prière avec Christ, La puissance par la prière, Le ministère de l’intercession : des livres lus par ceux qui prient depuis des générations.',
+				link: { href: '#shelves', label: 'Voir les livres' }
+			},
+			{
+				icon: 'sparkle',
+				title: 'Des prières exaucées',
+				body: 'George Müller a tenu le registre des réponses à ses prières pour les orphelins dont il avait la charge. Des hommes qui ont ébranlé le ciel en raconte d’autres.',
+				link: { href: '#shelves', label: 'Lire les récits' }
+			},
+			{
+				icon: 'mic',
+				title: 'Six semaines sur la prière',
+				body: 'Un sermon par semaine sur la prière et la vie dans l’Esprit, avec des questions d’étude et leurs réponses.',
+				link: { href: '#series', label: 'Voir les six semaines' }
+			}
+		],
+		ideasHeading: 'Des idées pour votre groupe',
+		ideas: [
+			{
+				title: 'Lire, puis prier',
+				body: 'Ouvrez la rencontre par une courte lecture du plan du jour, puis priez à partir d’elle.'
+			},
+			{
+				title: 'Un mois à l’école de la prière',
+				body: 'Suivez ensemble le plan de 31 jours d’Andrew Murray, une leçon par jour, et retrouvez-vous chaque semaine.'
+			},
+			{
+				title: 'Des récits pour la foi',
+				body: 'Lisez à voix haute une réponse à la prière tirée de Müller avant de commencer.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Les classiques de la prière',
+				note: 'Des livres lus par ceux qui prient depuis des générations.',
+				picks: [
+					'school-of-prayer',
+					'power-through-prayer',
+					'necessity-of-prayer',
+					'essentials-of-prayer',
+					'purpose-in-prayer',
+					'prayer-and-praying-men',
+					'prevailing-prayer'
+				]
+			},
+			{
+				title: 'Des prières exaucées',
+				note: 'Des hommes et des femmes qui ont prié.',
+				picks: [
+					'answers-to-prayer',
+					'men-who-moved-heaven',
+					'women-who-moved-heaven-2',
+					'men-of-prayer-2',
+					'george-muller-of-bristol',
+					'spurgeon-on-prayer',
+					'lord-teach-us-to-pray-2'
+				]
+			},
+			{
+				title: 'La vie intérieure de la prière',
+				note: 'La prière comme communion avec Dieu.',
+				picks: [
+					'ministry-of-intercession',
+					'the-inner-chamber',
+					'waiting-on-god',
+					'prayer-the-pulse-of-life',
+					'the-practice-of-the-presence-of-god-teens',
+					'the-masters-indwelling',
+					'true-vine'
+				]
+			}
+		],
+		plans: ['school-of-prayer-31-days', 'the-inner-chamber-month', 'praying-men', 'humility-12-days', 'deeper-life-in-christ'],
+		authors: [
+			'andrew-murray',
+			'e-m-bounds',
+			'george-muller',
+			'charles-h-spurgeon',
+			'charles-finney',
+			'dwight-l-moody',
+			'hannah-buyinza'
+		],
+		series: [PRAYER_SPIRIT_SERIES],
+		invite: {
+			text: 'Notre groupe de prière lit ensemble les grands livres sur la prière sur Ochorus : Murray, Bounds, Müller et Spurgeon, gratuits sur téléphone.',
+			href: '/plans'
+		},
+		questions: [
+			{ q: 'Ochorus est-il vraiment gratuit ?', a: FREE_ANSWER },
+			{
+				q: 'Par où commencer ?',
+				a: 'Beaucoup commencent par À l’école de la prière avec Christ d’Andrew Murray, en plan de lecture de 31 jours, ou par La puissance par la prière d’E. M. Bounds.'
+			},
+			{
+				q: 'Pouvons-nous lire la même chose le même jour ?',
+				a: 'Oui. Commencez un plan de lecture ensemble et partagez le lien : chacun en est à la même lecture du jour. Personne n’a besoin de compte.'
+			}
+		],
+		closeHeading: 'Apprenez à prier avec les grands intercesseurs',
+		closeBody: 'Commencez ensemble un plan sur la prière, ou lisez un récit de prière exaucée avant votre prochaine rencontre.'
+	},
+	{
+		slug: 'womens-ministry',
+		title: 'Des classiques chrétiens gratuits pour les ministères féminins',
+		lead: 'Amanda Smith, Hannah Whitall Smith, Catherine Booth, Susanna Wesley et Amy Carmichael : des femmes qui ont prêché, écrit, prié et donné leur vie, avec leurs livres et des plans de lecture, gratuits sur téléphone.',
+		seoTitle: 'Livres chrétiens gratuits pour les femmes',
+		seoDescription:
+			'Classiques chrétiens et plans de lecture gratuits pour les groupes de femmes : des femmes de foi, de Susanna Wesley à Amy Carmichael. Sans inscription.',
+		primary: { href: '#shelves', label: 'Des livres à lire ensemble' },
+		secondary: { href: '/plans', label: 'Voir les plans de lecture' },
+		pointsHeading: 'Pourquoi les groupes de femmes utilisent Ochorus',
+		points: [
+			{
+				icon: 'heart',
+				title: 'Des femmes qui l’ont vécu',
+				body: 'Les récits de femmes qui ont prêché, soigné, recueilli des enfants et traversé l’épreuve : Amanda Smith, Julia Foote, Jarena Lee et Susanna Wesley.',
+				link: { href: '#shelves', label: 'Voir les livres' }
+			},
+			{
+				icon: 'book',
+				title: 'Pour chaque jour',
+				body: 'Revêtue de force et de dignité et Filles du Roi donnent une courte lecture par jour, pour les femmes et pour les jeunes filles.',
+				link: { href: '#shelves', label: 'Voir les dévotions' }
+			},
+			{
+				icon: 'users',
+				title: 'Gratuit pour tout le groupe',
+				body: 'Personne n’a besoin d’acheter un exemplaire ni de créer un compte. Partagez un seul lien : chacune peut commencer le jour même.',
+				link: { href: '/books', label: 'Parcourir les livres' }
+			}
+		],
+		ideasHeading: 'Des idées pour votre groupe',
+		ideas: [
+			{
+				title: 'Un livre pour le trimestre',
+				body: 'Lisez ensemble Le secret d’une vie chrétienne heureuse, un chapitre par semaine.'
+			},
+			{
+				title: 'Une vie par mois',
+				body: 'Lisez chaque mois la vie d’une femme de foi, et parlez de ce que son histoire vous demande.'
+			},
+			{
+				title: 'Mères et filles',
+				body: 'Lisez Filles du Roi avec votre fille ou une jeune femme que vous accompagnez, la même lecture chaque jour.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Des femmes qui ont écrit et prêché',
+				note: 'Avec leurs propres mots.',
+				picks: [
+					'the-christians-secret-of-a-happy-life-4',
+					'amanda-smith-autobiography',
+					'godliness',
+					'a-brand-plucked-from-the-fire',
+					'religious-experience-and-journal',
+					'things-as-they-are',
+					'the-god-of-all-comfort'
+				]
+			},
+			{
+				title: 'Pour chaque jour',
+				note: 'De courtes lectures et des vies de foi.',
+				picks: [
+					'clothed-with-strength-and-dignity',
+					'daughters-of-the-king-2',
+					'women-who-moved-heaven-2',
+					'susanna-wesley-clarke',
+					'prayer-the-pulse-of-life',
+					'the-unselfishness-of-god',
+					'he-holds-my-tomorrows'
+				]
+			},
+			{
+				title: 'Pour les jeunes filles',
+				note: 'Les mêmes vies, racontées aux adolescentes.',
+				picks: [
+					'amy-carmichael-a-life-teens',
+					'elisabeth-elliot-a-life-teens',
+					'mary-slessor-a-life-teens',
+					'pandita-ramabai-a-life-teens',
+					'corrie-ten-boom-a-life-teens',
+					'amanda-smith-autobiography-teens',
+					'the-practice-of-the-presence-of-god-teens'
+				]
+			}
+		],
+		plans: ['deeper-life-in-christ', 'the-inner-chamber-month', 'school-of-prayer-31-days', 'humility-12-days', 'growing-in-wisdom-18-days'],
+		authors: [
+			'amanda-berry-smith',
+			'hannah-whitall-smith',
+			'catherine-booth',
+			'susanna-wesley',
+			'amy-carmichael',
+			'julia-foote',
+			'jarena-lee'
+		],
+		invite: {
+			text: 'Notre groupe de femmes lit les vies et les écrits de femmes de foi sur Ochorus : livres et plans de lecture gratuits sur téléphone, sans inscription.',
+			href: '/books'
+		},
+		questions: [
+			{ q: 'Ochorus est-il vraiment gratuit ?', a: FREE_ANSWER },
+			{ q: 'Faut-il créer un compte ?', a: ACCOUNT_ANSWER },
+			{
+				q: 'Y a-t-il quelque chose pour les adolescentes ?',
+				a: 'Oui. Filles du Roi est un recueil de dévotions pour les jeunes filles, et les vies d’Amy Carmichael, de Mary Slessor et de Corrie ten Boom existent en éditions pour ados.'
+			}
+		],
+		closeHeading: 'Lisez avec celles qui nous ont précédées',
+		closeBody: 'Choisissez un livre à lire ensemble, ou l’histoire d’une femme de foi pour ce mois-ci.'
+	},
+	{
+		slug: 'mens-ministry',
+		title: 'Des classiques chrétiens gratuits pour les groupes d’hommes',
+		lead: 'Hudson Taylor, George Müller, David Brainerd et les hommes de prière des réveils : des vies qui appellent les hommes à la foi, à la prière et au courage, avec des livres et des plans de lecture gratuits sur téléphone.',
+		seoTitle: 'Livres chrétiens gratuits pour les hommes',
+		seoDescription:
+			'Classiques chrétiens et plans de lecture gratuits pour les groupes d’hommes : des vies de courage et des livres sur la prière et la sainteté.',
+		primary: { href: '#shelves', label: 'Des livres pour les hommes' },
+		secondary: { href: '#series', label: 'Six semaines ensemble' },
+		pointsHeading: 'Pourquoi les groupes d’hommes utilisent Ochorus',
+		points: [
+			{
+				icon: 'heart',
+				title: 'Des vies qui élèvent',
+				body: 'Müller a nourri des milliers d’orphelins par la prière, Hudson Taylor a tout quitté pour la Chine et Watchman Nee est mort en prison. Leurs histoires sont racontées en entier.',
+				link: { href: '#shelves', label: 'Voir les livres' }
+			},
+			{
+				icon: 'mic',
+				title: 'Six semaines ensemble',
+				body: 'Un sermon par semaine sur Christ et sa grâce, avec des questions d’étude et leurs réponses, à reprendre quand vous vous retrouvez.',
+				link: { href: '#series', label: 'Voir les six semaines' }
+			},
+			{
+				icon: 'book',
+				title: 'Gratuit, sans inscription',
+				body: 'Personne n’a besoin d’acheter un exemplaire ni de créer un compte. Partagez un seul lien dans le groupe.',
+				link: { href: '/books', label: 'Parcourir les livres' }
+			}
+		],
+		ideasHeading: 'Des idées pour votre groupe',
+		ideas: [
+			{
+				title: 'Un livre pour le petit-déjeuner',
+				body: 'Lisez un chapitre de Levez-vous, hommes de Dieu avant chaque rencontre, et parlez-en autour d’un café.'
+			},
+			{
+				title: 'Une vie par mois',
+				body: 'Lisez chaque mois la vie d’un homme de foi : à quoi a-t-il renoncé, et qu’a-t-il reçu ?'
+			},
+			{
+				title: 'Pères et fils',
+				body: 'Lisez une même vie de courage avec votre fils, dans l’édition pour ados.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Pour les hommes',
+				note: 'Des livres qui appellent les hommes à Christ et au courage.',
+				picks: [
+					'rise-up-men-of-god-2',
+					'men-who-moved-heaven',
+					'men-of-prayer-2',
+					'men-who-tended-the-flock-2',
+					'men-and-women-who-gave-everything-2',
+					'mortification-of-sin',
+					'prayer-and-praying-men'
+				]
+			},
+			{
+				title: 'Des vies données',
+				note: 'Des hommes qui ont tout donné.',
+				picks: [
+					'a-retrospect',
+					'the-life-of-trust',
+					'george-muller-of-bristol',
+					'life-and-diary-of-david-brainerd',
+					'watchman-nee-a-life',
+					'union-and-communion',
+					'the-key-in-my-hand'
+				]
+			},
+			{
+				title: 'Pour les jeunes hommes',
+				note: 'Les mêmes vies, racontées aux adolescents.',
+				picks: [
+					'c-t-studd-a-life-teens',
+					'david-livingstone-a-life-teens',
+					'john-hyde-a-life-teens',
+					'samuel-ajayi-crowther-a-life-teens',
+					'watchman-nee-a-life-teens',
+					'c-s-lewis-a-life-teens',
+					'life-and-diary-of-david-brainerd-teens'
+				]
+			}
+		],
+		plans: ['praying-men', 'the-puritan-heart', 'deeper-life-in-christ', 'faith-in-the-fire', 'humility-12-days'],
+		authors: [
+			'hudson-taylor',
+			'george-muller',
+			'e-m-bounds',
+			'john-owen',
+			'david-brainerd',
+			'charles-h-spurgeon',
+			'andrew-murray'
+		],
+		series: [CHRIST_GRACE_SERIES],
+		invite: {
+			text: 'Notre groupe d’hommes lit ensemble les grands classiques chrétiens sur Ochorus : livres et plans de lecture gratuits sur téléphone, sans inscription.',
+			href: '/books'
+		},
+		questions: [
+			{ q: 'Ochorus est-il vraiment gratuit ?', a: FREE_ANSWER },
+			{ q: 'Faut-il créer un compte ?', a: ACCOUNT_ANSWER },
+			{
+				q: 'Y a-t-il quelque chose pour les adolescents ?',
+				a: 'Oui. Les vies de C. T. Studd, David Livingstone et C. S. Lewis existent en éditions pour ados.'
+			}
+		],
+		closeHeading: 'Lisez avec ceux qui nous ont précédés',
+		closeBody: 'Choisissez un livre à lire ensemble, ou l’histoire d’un homme de foi pour ce mois-ci.'
+	},
+	{
 		slug: 'youth',
 		title: 'Des livres gratuits que vos adolescents liront vraiment',
 		lead: 'Les grands classiques racontés pour les adolescents, des histoires vraies de foi et de courage, et des méditations de trente jours écrites pour les jeunes. Gratuits sur leur propre téléphone, sans publicité et sans compte.',

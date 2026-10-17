@@ -52,6 +52,8 @@ describe('links to the "Ochorus for …" pages from the rest of the site', () =>
 		expect(searchFor('books for a small group')).toBe('small-groups');
 		expect(searchFor('Bible college reading')).toBe('bible-colleges');
 		expect(searchFor('prayer')).toBeNull();
+		expect(searchFor('Men of Prayer')).toBeNull();
+		expect(searchFor('books for a women’s group')).toBe('womens-ministry');
 		expect(searchFor('churchill')).toBeNull();
 	});
 
