@@ -1393,6 +1393,22 @@ class CoverAssetTests(SimpleTestCase):
             copied, [], "translated edition sets the English cover title — translate it or blank it"
         )
 
+    def test_translated_editions_translate_their_hook(self):
+        """A translated edition's hook is not the English one, word for word.
+
+        ``hook`` is per-language prose on the teens hub's cards, but a
+        translation written by copying the English row carries it over
+        untranslated — five fr/ko editions did, and nothing complained."""
+        english = {f["slug"]: f.get("hook") for f in self.books if f["language"] == "en"}
+        copied = sorted(
+            f"{f['slug']}.{f['language']}"
+            for f in self.books
+            if not is_english_edition(f["language"])
+            and f.get("hook")
+            and f["hook"] == english.get(f["slug"])
+        )
+        self.assertEqual(copied, [], "translated edition carries the English hook — translate it")
+
     def test_cover_title_is_trimmed_and_shorter_than_the_title(self):
         """It exists to be shorter; one that is not is a typo in the wrong field.
         Trimmed here rather than at render, so ``coverTitle.ts`` and
