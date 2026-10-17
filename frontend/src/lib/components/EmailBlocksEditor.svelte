@@ -9,6 +9,7 @@
 	 * is no English fallback).
 	 */
 	import { apiErrorDetail } from '$lib/api';
+	import { hydrateSrc } from '$lib/hydrateSrc';
 	import {
 		HERO_COLORS,
 		searchEmailLibrary,
@@ -248,7 +249,7 @@
 	<div class="flex flex-wrap items-center gap-2">
 		{#if value}
 			<!-- An admin-chosen https URL or site path, shown as a thumbnail only. -->
-			<img src={value} alt="" class="h-14 w-20 rounded border border-border object-cover" />
+			<img src={value} alt="" use:hydrateSrc={{ src: value }} class="h-14 w-20 rounded border border-border object-cover" />
 		{/if}
 		<input class="min-w-0 flex-1 rounded-md border border-border bg-surface p-2 text-small" aria-label={label} value={value} oninput={(e) => (blocks[i] = { ...blocks[i], [field]: (e.currentTarget as HTMLInputElement).value } as EmailBlock)} {disabled} placeholder="https://… or a site path like /covers/humility-2.png" />
 		{#if !disabled}
