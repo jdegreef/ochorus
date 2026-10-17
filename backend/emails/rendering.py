@@ -18,7 +18,7 @@ from library.languages import entry as language_entry
 
 from . import blocks as blocks_mod
 from . import copy as copy_mod
-from . import links
+from . import links, merge_tags
 
 _TEMPLATE = "emails/blocks.html"
 
@@ -178,20 +178,34 @@ def render_blocks(
     lang: str,
     cards=None,
     localize_buttons: bool = True,
+    values: dict | None = None,
 ) -> RenderedEmail:
     """Render one language's block content (emails/blocks.py) for ``profile``.
     Shared by every send and the admin's live preview, so the preview is the
-    email. ``cards`` is the caller's library-card cache (``blocks.resolve``)."""
+    email. ``cards`` is the caller's library-card cache (``blocks.resolve``),
+    which also holds the merge-tag lookups. ``values`` overrides the merge-tag
+    values — a preview "as a sample reader"."""
+    blocks = blocks_mod.blocks_for(content)
+    preheader = content.get("preheader", "")
+    if values is None:
+        needed = merge_tags.tags_in(
+            subject, preheader, *(b.get(f, "") for b in blocks for f in blocks_mod.WORD_FIELDS)
+        )
+        values = merge_tags.values_for(
+            profile, lang, first_name=_display_name(profile, lang), needed=needed, cache=cards
+        )
+    subject = merge_tags.fill_subject(subject, values, lang)
     context = {
         "subject": subject,
-        "preheader": content.get("preheader", ""),
+        "preheader": merge_tags.fill_subject(preheader, values, lang),
         "blocks": blocks_mod.resolve(
-            blocks_mod.blocks_for(content),
+            blocks,
             lang,
-            name=_display_name(profile, lang),
+            name=values["first_name"],
             cards=cards,
             localize_buttons=localize_buttons,
             profile=profile,
+            values=values,
         ),
         **_base_context(subscription, lang),
     }

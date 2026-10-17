@@ -28,7 +28,7 @@ from django.db.models.functions import Coalesce
 from django.utils import timezone
 
 from . import blocks as blocks_mod
-from . import health, preflight
+from . import health, merge_tags, preflight
 from .audience import resolve
 from .models import (
     Broadcast,
@@ -53,6 +53,16 @@ BATCH_SIZE = 50
 LEASE = timedelta(minutes=5)
 #: Run the bounce/complaint guardrail every this many batches.
 GUARDRAIL_EVERY = 5
+
+def _texts(broadcast) -> list[str]:
+    """Every piece of a broadcast's words, in all its languages."""
+    out = [str(s) for s in (broadcast.subject or {}).values()]
+    for content in (broadcast.content or {}).values():
+        if isinstance(content, dict):
+            out.append(str(content.get("preheader", "")))
+            out += [b.get(f, "") for b in blocks_mod.blocks_for(content) for f in blocks_mod.WORD_FIELDS]
+    return out
+
 
 def broadcast_key(broadcast, profile) -> str:
     return idempotency_key(EmailKind.BROADCAST, str(broadcast.id), profile)
@@ -251,6 +261,7 @@ def run_send(broadcast, *, deadline: float | None = None, rate: float | None = N
         if isinstance(content, dict)
         for b in blocks_mod.blocks_for(content)
     )
+    needs_facts = bool(merge_tags.tags_in(*_texts(broadcast)) & merge_tags.READER_FACT_TAGS)
     batches = 0
     try:
         while True:
@@ -292,6 +303,8 @@ def run_send(broadcast, *, deadline: float | None = None, rate: float | None = N
             subscriptions = _subscriptions_for(batch)
             if has_continue:
                 blocks_mod.prefetch_progress([p.pk for p in batch], cards)
+            if needs_facts:
+                merge_tags.prefetch([p.pk for p in batch], cards)
             for profile in batch:
                 if deadline is not None and time.monotonic() >= deadline:
                     break

@@ -278,12 +278,12 @@
 			</div>
 
 			{#if b.type === 'heading'}
-				<input class="w-full rounded-md border border-border bg-surface p-2 text-body font-semibold" aria-label="Heading" bind:value={b.text} {disabled} placeholder="A heading" />
+				<input class="w-full rounded-md border border-border bg-surface p-2 text-body font-semibold" aria-label="Heading" data-tags bind:value={b.text} {disabled} placeholder="A heading" />
 			{:else if b.type === 'text'}
-				<textarea class="h-28 w-full rounded-md border border-border bg-surface p-2 text-body" aria-label="Text" bind:value={b.text} {disabled} placeholder="Write here. A blank line starts a new paragraph. {'{name}'} becomes the reader's first name."></textarea>
+				<textarea class="h-28 w-full rounded-md border border-border bg-surface p-2 text-body" aria-label="Text" data-tags bind:value={b.text} {disabled} placeholder="Write here. A blank line starts a new paragraph. Use Insert tag for the reader's name and more."></textarea>
 			{:else if b.type === 'button'}
 				<div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
-					<input class="rounded-md border border-border bg-surface p-2 text-small" aria-label="Button label" bind:value={b.label} {disabled} placeholder="Button label" />
+					<input class="rounded-md border border-border bg-surface p-2 text-small" aria-label="Button label" data-tags bind:value={b.label} {disabled} placeholder="Button label" />
 					<input class="rounded-md border border-border bg-surface p-2 text-small" aria-label="Button link path" bind:value={b.path} {disabled} placeholder="Link path, e.g. plans/humility-12-days" />
 				</div>
 			{:else if b.type === 'quote'}
@@ -302,27 +302,27 @@
 				</div>
 			{:else if b.type === 'continue_reading'}
 				<p class="mb-2 text-small text-muted">Each reader’s own book in progress, at the chapter they reached. Left out for a reader with nothing in progress.</p>
-				<input class="mb-2 w-full rounded-md border border-border bg-surface p-2 text-small" aria-label="Heading above the card" bind:value={b.heading} {disabled} placeholder="Heading above the card, e.g. Continue reading" />
-				<input class="w-full rounded-md border border-border bg-surface p-2 text-small" aria-label="Link label" bind:value={b.label} {disabled} placeholder="Link label, e.g. Pick up at chapter {'{chapter}'}" />
+				<input class="mb-2 w-full rounded-md border border-border bg-surface p-2 text-small" aria-label="Heading above the card" data-tags bind:value={b.heading} {disabled} placeholder="Heading above the card, e.g. Continue reading" />
+				<input class="w-full rounded-md border border-border bg-surface p-2 text-small" aria-label="Link label" data-tags bind:value={b.label} {disabled} placeholder="Link label, e.g. Pick up at chapter {'{chapter}'}" />
 			{:else if b.type === 'image'}
 				{@render imageField(i, 'url', b.url, 'Image address')}
 				<div class="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
 					<input class="rounded-md border border-border bg-surface p-2 text-small" aria-label="Image description" bind:value={b.alt} {disabled} placeholder="Description, for readers who can't see it" />
 					<input class="rounded-md border border-border bg-surface p-2 text-small" aria-label="Image link path" bind:value={b.path} {disabled} placeholder="Link path (optional), e.g. books" />
 				</div>
-				<input class="mt-2 w-full rounded-md border border-border bg-surface p-2 text-small" aria-label="Caption" bind:value={b.caption} {disabled} placeholder="Caption (optional)" />
+				<input class="mt-2 w-full rounded-md border border-border bg-surface p-2 text-small" aria-label="Caption" data-tags bind:value={b.caption} {disabled} placeholder="Caption (optional)" />
 			{:else if b.type === 'hero'}
 				<div role="group" aria-label="Banner colour" class="mb-2 flex flex-wrap items-center gap-1.5">
 					{#each Object.entries(HERO_COLORS) as [name, hex] (name)}
 						<button class="h-7 w-7 rounded-full border-2 {b.color === name ? 'border-text' : 'border-transparent'}" style="background: {hex}" aria-label="{name} banner" aria-pressed={b.color === name} onclick={() => (b.color = name as typeof b.color)} {disabled}></button>
 					{/each}
 				</div>
-				<input class="mb-2 w-full rounded-md border border-border bg-surface p-2 text-small" aria-label="Small line above the title" bind:value={b.eyebrow} {disabled} placeholder="Small line above the title (optional), e.g. November" />
-				<input class="mb-2 w-full rounded-md border border-border bg-surface p-2 text-body font-semibold" aria-label="Banner title" bind:value={b.title} {disabled} placeholder="Title" />
-				<textarea class="mb-2 h-16 w-full rounded-md border border-border bg-surface p-2 text-small" aria-label="Banner text" bind:value={b.text} {disabled} placeholder="A sentence or two (optional)"></textarea>
+				<input class="mb-2 w-full rounded-md border border-border bg-surface p-2 text-small" aria-label="Small line above the title" data-tags bind:value={b.eyebrow} {disabled} placeholder="Small line above the title (optional), e.g. November" />
+				<input class="mb-2 w-full rounded-md border border-border bg-surface p-2 text-body font-semibold" aria-label="Banner title" data-tags bind:value={b.title} {disabled} placeholder="Title" />
+				<textarea class="mb-2 h-16 w-full rounded-md border border-border bg-surface p-2 text-small" aria-label="Banner text" data-tags bind:value={b.text} {disabled} placeholder="A sentence or two (optional)"></textarea>
 				{@render imageField(i, 'image', b.image, 'Banner picture')}
 				<div class="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
-					<input class="rounded-md border border-border bg-surface p-2 text-small" aria-label="Banner button label" bind:value={b.label} {disabled} placeholder="Button label (optional)" />
+					<input class="rounded-md border border-border bg-surface p-2 text-small" aria-label="Banner button label" data-tags bind:value={b.label} {disabled} placeholder="Button label (optional)" />
 					<input class="rounded-md border border-border bg-surface p-2 text-small" aria-label="Banner button link path" bind:value={b.path} {disabled} placeholder="Link path, e.g. plans" />
 				</div>
 			{:else if b.type === 'book_row'}
@@ -376,7 +376,7 @@
 			{/if}
 
 			{#if !disabled && (isLibrary(b) || b.type === 'book_row')}
-				<input class="mt-2 w-full rounded-md border border-border bg-surface p-2 text-small" aria-label="Link label" bind:value={b.label} {disabled} placeholder="Link label under the card (optional), e.g. Start reading" />
+				<input class="mt-2 w-full rounded-md border border-border bg-surface p-2 text-small" aria-label="Link label" data-tags bind:value={b.label} {disabled} placeholder="Link label under the card (optional), e.g. Start reading" />
 			{/if}
 		</div>
 	{/each}

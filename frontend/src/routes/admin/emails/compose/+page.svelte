@@ -7,6 +7,7 @@
 	import EmailPreview from '$lib/components/EmailPreview.svelte';
 	import EmailTemplateGallery from '$lib/components/EmailTemplateGallery.svelte';
 	import EmailLibraryPanel from '$lib/components/EmailLibraryPanel.svelte';
+	import MergeTagMenu from '$lib/components/MergeTagMenu.svelte';
 	import { ApiError, apiErrorDetail } from '$lib/api';
 	import { localeName } from '$lib/lang.svelte';
 	import { locales } from '$lib/paraglide/runtime';
@@ -396,6 +397,17 @@
 		}
 	}
 
+	// --- Merge tags: "Insert tag" fills the text field focused last ----------
+	let tagTarget: HTMLInputElement | HTMLTextAreaElement | null = null;
+	function trackTagTarget(e: FocusEvent) {
+		const el = e.target;
+		// Only fields whose words are filled per reader (marked data-tags) — never
+		// a link path or a picture address.
+		if ((el instanceof HTMLTextAreaElement || el instanceof HTMLInputElement) && el.dataset.tags !== undefined) {
+			tagTarget = el;
+		}
+	}
+
 	// --- "Insert from the library" (a drawer beside the designer) ------------
 	let libraryOpen = $state(false);
 
@@ -579,11 +591,12 @@
 		</section>
 
 		<!-- Content per language -->
-		<section class="mb-5 rounded-card border border-border bg-surface p-4">
+		<section class="mb-5 rounded-card border border-border bg-surface p-4" onfocusin={trackTagTarget}>
 			<div class="mb-3 flex flex-wrap items-center gap-2">
 				<h2 class="mr-2 text-h3">Content</h2>
 				{#if !readOnly && draft.content[editLocale]}
 					<button class="btn btn-ghost btn-sm" onclick={() => (libraryOpen = !libraryOpen)} aria-expanded={libraryOpen}>Insert from the library</button>
+					<MergeTagMenu getTarget={() => tagTarget} />
 				{/if}
 				{#each draftLocales as code (code)}
 					<button class="rounded-full border px-2.5 py-0.5 text-micro {code === editLocale ? 'border-accent bg-accent-soft text-accent' : 'border-border text-muted'}" onclick={() => switchLocale(code)}>{localeLabel(code)}</button>
@@ -625,11 +638,11 @@
 				<div class="mb-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
 					<label class="block">
 						<span class="mb-1 block text-micro text-muted">Subject line</span>
-						<input class="w-full rounded-md border border-border bg-surface p-2 text-body" bind:value={draft.subject[editLocale]} disabled={readOnly} />
+						<input class="w-full rounded-md border border-border bg-surface p-2 text-body" bind:value={draft.subject[editLocale]} disabled={readOnly} data-tags />
 					</label>
 					<label class="block">
 						<span class="mb-1 block text-micro text-muted">Inbox preview text (optional)</span>
-						<input class="w-full rounded-md border border-border bg-surface p-2 text-body" bind:value={draft.content[editLocale].preheader} disabled={readOnly} placeholder="Shown after the subject in most inboxes" />
+						<input class="w-full rounded-md border border-border bg-surface p-2 text-body" bind:value={draft.content[editLocale].preheader} disabled={readOnly} data-tags placeholder="Shown after the subject in most inboxes" />
 					</label>
 				</div>
 				<div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
