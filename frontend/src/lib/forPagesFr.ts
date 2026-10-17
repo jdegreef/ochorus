@@ -614,6 +614,121 @@ export const FOR_PAGES_FR: ForPage[] = [
 		closeBody: 'Envoyez-lui un premier livre, ou commencez les six semaines ensemble cette semaine.'
 	},
 	{
+		slug: 'evangelism',
+		title: 'Des livres gratuits pour l’évangélisation',
+		lead: 'Moody, Spurgeon, Torrey et Whitefield sur la manière d’amener d’autres à Christ, et les livres courts et chaleureux qu’ils ont écrits pour ceux qui cherchent, gratuits à partager par un lien ou un code QR.',
+		seoTitle: 'Livres chrétiens gratuits pour l’évangélisation',
+		seoDescription:
+			'Des livres d’Évangile gratuits à offrir et des classiques sur l’évangélisation de Moody, Spurgeon et Torrey, à partager par un lien. Sans inscription.',
+		primary: { href: '#shelves', label: 'Des livres à offrir' },
+		secondary: { href: '#series', label: 'Six sermons d’Évangile' },
+		pointsHeading: 'Pourquoi les équipes d’évangélisation utilisent Ochorus',
+		points: [
+			{
+				icon: 'share',
+				title: 'Un livre à offrir, pour rien',
+				body: 'Le chemin vers Dieu et Tout par grâce ont été écrits pour ceux qui ne sont pas encore chrétiens. Partagez-les par un lien ou un code QR : le lecteur n’a besoin d’aucun compte.',
+				link: { href: '#shelves', label: 'Voir les livres' }
+			},
+			{
+				icon: 'book',
+				title: 'Former l’équipe',
+				body: 'Comment amener les hommes à Christ de Torrey est un manuel pratique d’évangélisation personnelle, lu par des générations d’évangélistes.',
+				link: { href: '#shelves', label: 'Des livres pour l’équipe' }
+			},
+			{
+				icon: 'mic',
+				title: 'Six sermons d’Évangile',
+				body: 'Des sermons qui ont appelé à Christ, avec des questions d’étude, à lire en équipe ou avec quelqu’un qui cherche.',
+				link: { href: '#series', label: 'Voir les six semaines' }
+			}
+		],
+		ideasHeading: 'Des idées pour l’évangélisation',
+		ideas: [
+			{
+				title: 'Un code QR sur la table',
+				body: 'Imprimez le code QR du Chemin vers Dieu sur une carte, pour votre stand, votre soirée ou votre café.'
+			},
+			{
+				title: 'Former l’équipe',
+				body: 'Lisez ensemble Comment amener les hommes à Christ avant une mission, un chapitre par semaine.'
+			},
+			{
+				title: 'Faire suivre la même semaine',
+				body: 'Envoyez un lien vers un livre à celui qui s’est montré intéressé, pour que la conversation continue.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Des livres à offrir',
+				note: 'Courts, chaleureux, écrits pour ceux qui cherchent.',
+				picks: [
+					'the-way-to-god',
+					'all-of-grace',
+					'around-the-wicket-gate',
+					'a-call-to-the-unconverted',
+					'grace-abounding',
+					'pilgrims-progress',
+					'how-to-succeed-in-the-christian-life'
+				]
+			},
+			{
+				title: 'Pour l’évangéliste',
+				note: 'Des manuels et des vies de ceux qui ont atteint les autres.',
+				picks: [
+					'how-to-bring-men-to-christ',
+					'revival-lectures',
+					'selected-sermons-whitefield',
+					'sermons-on-several-occasions',
+					'life-and-diary-of-david-brainerd',
+					'men-and-women-who-gave-everything-2',
+					'the-fundamental-doctrines-of-the-christian-faith'
+				]
+			},
+			{
+				title: 'En termes simples',
+				note: 'Des récits à offrir à des lecteurs de tout âge.',
+				picks: [
+					'the-way-to-god-teens',
+					'all-of-grace-teens',
+					'pilgrims-progress-teens',
+					'grace-abounding-teens',
+					'how-to-succeed-in-the-christian-life-teens',
+					'the-pursuit-of-god-teens',
+					'confessions-teens'
+				]
+			}
+		],
+		plans: ['faith-in-the-fire', 'deeper-life-in-christ', 'praying-men', 'first-steps-for-teens'],
+		authors: [
+			'dwight-l-moody',
+			'charles-h-spurgeon',
+			'r-a-torrey',
+			'george-whitefield',
+			'charles-finney',
+			'richard-baxter',
+			'john-wesley'
+		],
+		series: [CHRIST_GRACE_SERIES],
+		invite: {
+			text: 'Un livre gratuit qui explique la bonne nouvelle de Jésus, sur n’importe quel téléphone et sans inscription : Le chemin vers Dieu de D. L. Moody, sur Ochorus.',
+			href: '/books/the-way-to-god'
+		},
+		questions: [
+			{ q: 'Ochorus est-il vraiment gratuit ?', a: FREE_ANSWER },
+			{
+				q: 'La personne à qui nous l’envoyons doit-elle créer un compte ?',
+				a: 'Non. Chacun peut ouvrir le lien et lire, sans rien remplir.'
+			},
+			{
+				q: 'Pouvons-nous imprimer des livres à offrir ?',
+				a: 'Écrivez-nous d’abord : nous serons heureux d’en parler.'
+			}
+		],
+		closeHeading: 'Offrez la bonne nouvelle à lire',
+		closeBody: 'Partagez un livre par un lien ou un code QR, ou formez votre équipe avec les classiques de l’évangélisation.'
+	},
+	{
 		slug: 'prayer-groups',
 		title: 'Des classiques gratuits pour les groupes de prière',
 		lead: 'Andrew Murray, E. M. Bounds, George Müller et Spurgeon sur la prière : les grands livres sur la prière et les récits de prières exaucées, gratuits sur téléphone, avec des plans et des sermons pour prier ensemble.',
@@ -1084,6 +1199,118 @@ export const FOR_PAGES_FR: ForPage[] = [
 		closeBody: 'Commencez par les livres pour adolescents, ou choisissez un plan de lecture à suivre ensemble.'
 	},
 	{
+		slug: 'campus',
+		title: 'Des classiques chrétiens gratuits pour les étudiants',
+		lead: 'Pascal, Augustin et Edwards sur la foi et la raison, et les étudiants qui ont changé le monde, de David Brainerd à C. T. Studd. Gratuits sur téléphone : rien à acheter pour un budget d’étudiant.',
+		seoTitle: 'Livres chrétiens gratuits pour les étudiants',
+		seoDescription:
+			'Classiques chrétiens gratuits pour les étudiants et les groupes bibliques universitaires : Pascal, Augustin et Edwards sur la foi et la raison.',
+		primary: { href: '#shelves', label: 'Des livres pour les grandes questions' },
+		secondary: { href: '/plans', label: 'Voir les plans de lecture' },
+		pointsHeading: 'Pourquoi les groupes d’étudiants utilisent Ochorus',
+		points: [
+			{
+				icon: 'search',
+				title: 'Une foi qui pense',
+				body: 'Les Pensées et Les Provinciales de Pascal, les Confessions d’Augustin et Edwards sur la liberté de la volonté prennent les questions difficiles au sérieux.',
+				link: { href: '#shelves', label: 'Voir les livres' }
+			},
+			{
+				icon: 'globe',
+				title: 'Des étudiants qui ont changé le monde',
+				body: 'David Brainerd a quitté Yale pour la frontière, C. T. Studd a quitté Cambridge pour la Chine. Leurs histoires sont ici.',
+				link: { href: '#shelves', label: 'Lire leurs histoires' }
+			},
+			{
+				icon: 'book',
+				title: 'Gratuit pour chaque étudiant',
+				body: 'Rien à acheter, aucun compte à créer. Partagez un seul lien dans le groupe, et chacun peut lire le soir même.',
+				link: { href: '/books', label: 'Parcourir les livres' }
+			}
+		],
+		ideasHeading: 'Des idées pour le campus',
+		ideas: [
+			{
+				title: 'Un club de lecture pour sceptiques',
+				body: 'Lisez les Pensées avec des amis qui se demandent si le christianisme est vrai.'
+			},
+			{
+				title: 'Un plan pour le semestre',
+				body: 'Commencez un plan au début du semestre et retrouvez-vous chaque semaine pour en parler.'
+			},
+			{
+				title: 'Pour les vacances',
+				body: 'Donnez à chaque étudiant un classique à lire pendant l’été.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Foi et raison',
+				note: 'Des livres pour les grandes questions.',
+				picks: [
+					'pensees',
+					'provincial-letters',
+					'life-of-pascal',
+					'confessions',
+					'freedom-of-the-will',
+					'religious-affections',
+					'on-the-incarnation'
+				]
+			},
+			{
+				title: 'Pour la vie intérieure',
+				note: 'Des classiques pour l’étudiant qui veut grandir.',
+				picks: [
+					'a-serious-call',
+					'the-imitation-of-christ',
+					'mortification-of-sin',
+					'the-bruised-reed',
+					'humility-2',
+					'the-masters-indwelling',
+					'union-and-communion'
+				]
+			},
+			{
+				title: 'Des étudiants qui ont changé le monde',
+				note: 'Des vies commencées sur les bancs et données.',
+				picks: [
+					'life-and-diary-of-david-brainerd',
+					'c-t-studd-a-life-teens',
+					'c-s-lewis-a-life-teens',
+					'john-hyde-a-life-teens',
+					'watchman-nee-a-life',
+					'orthodoxy-teens',
+					'pensees-teens'
+				]
+			}
+		],
+		plans: ['the-puritan-heart', 'voices-of-the-early-church', 'deeper-life-in-christ', 'humility-12-days'],
+		authors: [
+			'blaise-pascal',
+			'augustine-of-hippo',
+			'jonathan-edwards',
+			'john-owen',
+			'david-brainerd',
+			'g-k-chesterton',
+			'c-s-lewis'
+		],
+		series: [CHRIST_GRACE_SERIES],
+		invite: {
+			text: 'Notre groupe d’étudiants lit ensemble les grands classiques chrétiens sur Ochorus : Pascal, Augustin et d’autres, gratuits sur téléphone et sans inscription.',
+			href: '/books'
+		},
+		questions: [
+			{ q: 'Ochorus est-il vraiment gratuit ?', a: FREE_ANSWER },
+			{
+				q: 'Peut-on citer ces livres dans un devoir ?',
+				a: 'Oui. Les textes classiques appartiennent au domaine public et peuvent être cités librement ; chaque page de livre en nomme l’auteur.'
+			},
+			{ q: 'Faut-il créer un compte ?', a: ACCOUNT_ANSWER }
+		],
+		closeHeading: 'Les classiques sur le campus',
+		closeBody: 'Commencez un plan de lecture avec votre groupe, ou offrez à un ami un livre pour les grandes questions.'
+	},
+	{
 		slug: 'missionaries',
 		title: 'Des classiques chrétiens à partager, gratuits, dans les langues que vous servez',
 		lead: 'Une bibliothèque gratuite que vous pouvez offrir à n’importe qui avec un simple lien : rien à payer, aucune inscription. Les grands classiques, des sermons et des vies de missionnaires, avec des éditions complètes en plusieurs langues.',
@@ -1217,6 +1444,114 @@ export const FOR_PAGES_FR: ForPage[] = [
 		],
 		closeHeading: 'Partagez les classiques avec ceux que vous servez',
 		closeBody: 'Parcourez la bibliothèque, ou commencez par la vie des missionnaires qui vous ont précédés.'
+	},
+	{
+		slug: 'african-churches',
+		title: 'Des classiques chrétiens gratuits pour les Églises d’Afrique',
+		lead: 'Augustin, Athanase et Antoine étaient africains, comme Samuel Ajayi Crowther et les frères et sœurs du réveil d’Afrique de l’Est. Leurs livres, et les grands classiques en français, en anglais, en swahili et en luganda, gratuits sur téléphone.',
+		seoTitle: 'Livres chrétiens gratuits pour l’Afrique',
+		seoDescription:
+			'Classiques chrétiens gratuits pour les Églises d’Afrique : les Pères africains, le réveil d’Afrique de l’Est et Samuel Ajayi Crowther. Sans inscription.',
+		primary: { href: '#languages', label: 'Lire dans votre langue' },
+		secondary: { href: '#shelves', label: 'L’histoire de l’Afrique' },
+		pointsHeading: 'Pourquoi les Églises d’Afrique utilisent Ochorus',
+		points: [
+			{
+				icon: 'globe',
+				title: 'Dans les langues de votre peuple',
+				body: `Les livres paraissent en éditions complètes ${IN_LANGUAGES}, et d’autres langues suivront.`,
+				link: { href: '#languages', label: 'Voir chaque langue' }
+			},
+			{
+				icon: 'flame',
+				title: 'Le réveil d’Afrique de l’Est',
+				body: 'Tukutendereza raconte le réveil des Balokole, né en Ouganda en 1929 et répandu dans six pays.',
+				link: { href: '#shelves', label: 'Voir les livres' }
+			},
+			{
+				icon: 'book',
+				title: 'Les Pères de l’Église d’Afrique',
+				body: 'Augustin d’Hippone, Athanase d’Alexandrie et Antoine d’Égypte ont façonné la foi de toute l’Église. Leurs livres sont ici en entier.',
+				link: { href: '#shelves', label: 'Voir les livres' }
+			},
+			{
+				icon: 'heart',
+				title: 'Gratuit, et imprimé aussi',
+				body: 'Chaque livre se lit gratuitement, sans compte. Ochorus imprime aussi des livres et les offre lors de conférences pastorales, dans des Églises, des écoles et des prisons d’Afrique de l’Est.',
+				link: { href: '/about', label: 'À propos de l’œuvre' }
+			}
+		],
+		ideasHeading: 'Des idées pour votre Église',
+		ideas: [
+			{
+				title: 'Lire dans sa langue',
+				body: 'Envoyez chaque membre vers la bibliothèque dans sa propre langue : tout le site s’affiche alors dans cette langue.'
+			},
+			{
+				title: 'Raconter le réveil',
+				body: 'Lisez Tukutendereza avec votre communauté et demandez-vous ce que ce réveil vous dit aujourd’hui.'
+			},
+			{
+				title: 'Des héros pour les enfants',
+				body: 'Lisez avec les enfants la vie de Samuel Ajayi Crowther, le garçon d’Osogun devenu évêque.'
+			}
+		],
+		shelves: [
+			{
+				title: 'L’Église en Afrique, hier et aujourd’hui',
+				note: 'Des Pères du désert au réveil d’Afrique de l’Est.',
+				picks: [
+					'tukutendereza',
+					'confessions',
+					'on-the-incarnation',
+					'life-of-antony',
+					'amanda-smith-autobiography',
+					'samuel-ajayi-crowther-a-life-teens',
+					'mary-slessor-a-life-teens'
+				]
+			},
+			{
+				title: 'Pour les enfants et les ados',
+				note: 'Les mêmes vies, racontées aux jeunes lecteurs.',
+				picks: [
+					'samuel-ajayi-crowther-a-life-children',
+					'mary-slessor-a-life-children',
+					'david-livingstone-a-life-children',
+					'david-livingstone-a-life-teens',
+					'amanda-smith-autobiography-teens',
+					'confessions-teens',
+					'life-of-antony-teens'
+				]
+			}
+		],
+		plans: ['voices-of-the-early-church', 'faith-in-the-fire', 'deeper-life-in-christ', 'first-steps-for-teens'],
+		authors: [
+			'augustine-of-hippo',
+			'athanasius-of-alexandria',
+			'samuel-ajayi-crowther',
+			'simeon-nsibambi',
+			'mary-slessor',
+			'amanda-berry-smith',
+			'david-livingstone'
+		],
+		languages: true,
+		invite: {
+			text: 'Des classiques chrétiens gratuits en français, en anglais, en swahili et en luganda, d’Augustin au réveil d’Afrique de l’Est, sur Ochorus.',
+			href: '/books'
+		},
+		questions: [
+			{ q: 'Ochorus est-il vraiment gratuit ?', a: FREE_ANSWER },
+			{
+				q: 'Quelles langues trouve-t-on ?',
+				a: `Les livres paraissent en éditions complètes ${IN_LANGUAGES}. Chaque langue a sa propre bibliothèque.`
+			},
+			{
+				q: 'Pouvons-nous recevoir des livres imprimés ?',
+				a: 'Ochorus imprime des livres et les offre lors de conférences pastorales, dans des Églises, des écoles et des prisons d’Afrique de l’Est. Si votre Église souhaite y prendre part, écrivez-nous.'
+			}
+		],
+		closeHeading: 'L’histoire de l’Afrique, dans les langues de l’Afrique',
+		closeBody: 'Ouvrez la bibliothèque dans votre langue, ou commencez par l’histoire du réveil d’Afrique de l’Est.'
 	},
 	{
 		slug: 'chaplains',

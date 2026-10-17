@@ -149,6 +149,36 @@ export const FOR_META: Record<string, ForMeta> = {
 			phrase: 'les groupes de prière',
 			tagline: 'Les grands livres sur la prière et les récits de prières exaucées'
 		}
+	},
+	evangelism: {
+		accent: '#3d8a5a',
+		emblem: 'sower-and-seed', // a sower went forth to sow
+		phrase: 'evangelism and outreach',
+		tagline: 'Gospel books to give away, and the classics on reaching others',
+		fr: {
+			phrase: 'l’évangélisation',
+			tagline: 'Des livres d’Évangile à offrir, et les classiques de l’évangélisation'
+		}
+	},
+	'african-churches': {
+		accent: '#c0632a',
+		emblem: 'baobab-at-dawn', // Ethiopia shall stretch out her hands unto God
+		phrase: 'African churches',
+		tagline: 'Africa’s church fathers, the East African Revival, and books in Swahili and Luganda',
+		fr: {
+			phrase: 'les Églises d’Afrique',
+			tagline: 'Les Pères africains, le réveil d’Afrique de l’Est et des livres en swahili et en luganda'
+		}
+	},
+	campus: {
+		accent: '#36598f',
+		emblem: 'college-tower', // the fear of the Lord is the beginning of wisdom
+		phrase: 'campus ministries',
+		tagline: 'Faith and reason, and the students who changed the world',
+		fr: {
+			phrase: 'les étudiants',
+			tagline: 'Foi et raison, et les étudiants qui ont changé le monde'
+		}
 	}
 };
 
