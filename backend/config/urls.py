@@ -7,6 +7,15 @@ from django.urls import include, path
 
 from accounts.views import MeView, PromptEventView, SignupSourceView, health
 from emails.admin_auto import AdminAutoEmailBuildView, AdminAutoEmailsView
+from emails.admin_automations import (
+    AdminAutomationActionView,
+    AdminAutomationDetailView,
+    AdminAutomationEmailDetailView,
+    AdminAutomationEmailsView,
+    AdminAutomationEmailTranslationView,
+    AdminAutomationsView,
+    AdminAutomationVocabularyView,
+)
 from emails.admin_design import (
     AdminBroadcastTranslationView,
     AdminEmailImageView,
@@ -272,6 +281,33 @@ urlpatterns = [
         name="admin-broadcast-translations",
     ),
     path("api/admin/emails/auto/", AdminAutoEmailsView.as_view(), name="admin-email-auto"),
+    path("api/admin/automations/", AdminAutomationsView.as_view(), name="admin-automations"),
+    path(
+        "api/admin/automations/vocabulary/",
+        AdminAutomationVocabularyView.as_view(),
+        name="admin-automation-vocabulary",
+    ),
+    path("api/admin/automations/<int:pk>/", AdminAutomationDetailView.as_view(), name="admin-automation"),
+    path(
+        "api/admin/automations/<int:pk>/action/",
+        AdminAutomationActionView.as_view(),
+        name="admin-automation-action",
+    ),
+    path(
+        "api/admin/automations/<int:pk>/emails/",
+        AdminAutomationEmailsView.as_view(),
+        name="admin-automation-emails",
+    ),
+    path(
+        "api/admin/automation-emails/<int:pk>/",
+        AdminAutomationEmailDetailView.as_view(),
+        name="admin-automation-email",
+    ),
+    path(
+        "api/admin/automation-emails/<int:pk>/translations/",
+        AdminAutomationEmailTranslationView.as_view(),
+        name="admin-automation-email-translations",
+    ),
     path("api/admin/emails/lifecycle/", AdminLifecycleListView.as_view(), name="admin-email-lifecycle"),
     path(
         "api/admin/emails/lifecycle/<str:step>/",

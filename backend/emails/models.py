@@ -586,3 +586,95 @@ class LifecycleCopyVersion(models.Model):
 
     def __str__(self) -> str:  # pragma: no cover - repr only
         return f"lifecycle-copy-version<{self.copy_id} {self.published_at:%Y-%m-%d}>"
+
+
+class Automation(models.Model):
+    """A flow an admin builds: when a reader does something (``trigger``), a
+    sequence of ``steps`` — waits, conditions, emails — runs for them
+    (emails/automations.py). Off until switched on; each reader goes through an
+    automation at most once.
+
+    ``trigger`` is ``{"type": <trigger>, ...params}``; ``steps`` is an ordered
+    list of ``{"id", "type": "wait"|"condition"|"email", ...}``; ``exit`` is a
+    list of conditions that take a reader out early. The vocabulary — which
+    triggers, which conditions and their parameters — is in automations.py.
+    """
+
+    name = models.CharField(max_length=200)
+    trigger = models.JSONField(default=dict, blank=True)
+    steps = models.JSONField(default=list, blank=True)
+    exit = models.JSONField(default=list, blank=True)
+    # The preference-center stream whose consent its emails obey.
+    stream = models.CharField(max_length=40, choices=STREAM_CHOICES, default="onboarding")
+    enabled = models.BooleanField(default=False)
+    # The baseline: only what readers do after this enrols them (no back catalogue).
+    enabled_at = models.DateTimeField(null=True, blank=True)
+    # How far the trigger has been scanned; the next scan starts after it.
+    scanned_to = models.DateTimeField(null=True, blank=True)
+    updated_by = models.CharField(max_length=254, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self) -> str:  # pragma: no cover - repr only
+        return f"automation<{self.name}>"
+
+
+class AutomationEmail(models.Model):
+    """One email an automation sends: per-language subject and block content,
+    like a broadcast's — and translated the same way (``translations`` holds the
+    AI-draft states; an unapproved draft isn't sent)."""
+
+    automation = models.ForeignKey(Automation, on_delete=models.CASCADE, related_name="emails")
+    subject = models.JSONField(default=dict, blank=True)
+    content = models.JSONField(default=dict, blank=True)
+    translations = models.JSONField(default=dict, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    #: Automation emails can always be edited (a send is per reader, not a batch).
+    is_locked = False
+
+    class Meta:
+        ordering = ["id"]
+
+    def __str__(self) -> str:  # pragma: no cover - repr only
+        return f"automation-email<{self.automation_id}:{self.pk}>"
+
+    @property
+    def job_ref(self) -> str:
+        """How a translation job names it (emails/translation_jobs.py)."""
+        return f"automation-email-{self.pk}"
+
+
+class RunStatus(models.TextChoices):
+    ACTIVE = "active", "In progress"
+    DONE = "done", "Finished"
+    EXITED = "exited", "Left early"
+
+
+class AutomationRun(models.Model):
+    """One reader going through one automation: where they are and when the
+    next step is due."""
+
+    automation = models.ForeignKey(Automation, on_delete=models.CASCADE, related_name="runs")
+    profile = models.ForeignKey("accounts.UserProfile", on_delete=models.CASCADE, related_name="automation_runs")
+    step_index = models.PositiveIntegerField(default=0)
+    next_at = models.DateTimeField()
+    status = models.CharField(max_length=10, choices=RunStatus.choices, default=RunStatus.ACTIVE)
+    # What enrolled them (e.g. the book they finished) and why a run ended.
+    context = models.JSONField(default=dict, blank=True)
+    reason = models.CharField(max_length=200, blank=True)
+    started_at = models.DateTimeField(auto_now_add=True)
+    finished_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["automation", "profile"], name="uniq_automation_run"),
+        ]
+        indexes = [models.Index(fields=["status", "next_at"])]
+
+    def __str__(self) -> str:  # pragma: no cover - repr only
+        return f"run<{self.automation_id}:{self.profile_id} @{self.step_index}>"
