@@ -517,6 +517,7 @@ def resolve(
     localize_buttons: bool = True,
     profile=None,
     values: dict | None = None,
+    link: str | None = None,
 ) -> list[dict]:
     """Render-ready blocks for one email in ``lang``: merge tags filled in,
     button paths made absolute, library blocks looked up in ``lang`` — and those
@@ -557,9 +558,14 @@ def resolve(
             for slug in missing:
                 cards[(kind, lang, slug)] = found.get(slug)
 
+    per_reader_link = link
+
     def link(path: str) -> str:
-        """An admin-written site path as an absolute link ("" ⇒ the home page)."""
+        """An admin-written site path as an absolute link ("" ⇒ the home page);
+        ``{link}`` is an automated email's per-reader link, chosen by code."""
         path = (path or "").strip()
+        if path == "{link}":
+            return links.site_url(per_reader_link or "")
         return links.site_url(_button_path(path, lang) if localize_buttons else path)
 
     out = []

@@ -1927,6 +1927,75 @@ export interface AutoEmails {
 	recent: AdminBroadcast[];
 }
 
+// --- Automated emails' words (backend `emails/lifecycle_copy.py`) ----------
+
+export type LifecycleStatus = 'original' | 'edited' | 'published' | 'requested' | 'draft';
+
+export interface LifecycleStep {
+	key: string;
+	label: string;
+	/** When it goes out, in words. */
+	when: string;
+	stream: string;
+	/** The step's own per-reader words, e.g. {next: 'the next volume'}. */
+	placeholders: Record<string, string>;
+	/** Where its per-reader button goes ('' when its button is fixed). */
+	link: string;
+}
+
+export interface LifecycleStepRow extends LifecycleStep {
+	subject: string;
+	languages: number;
+	counts: Partial<Record<LifecycleStatus, number>>;
+	/** Languages left behind by an English change. */
+	stale: number;
+}
+
+export interface LifecycleLanguageStatus {
+	status: LifecycleStatus;
+	stale: boolean;
+	published_at: string | null;
+	published_by: string;
+}
+
+export interface LifecycleDetail extends LifecycleStep {
+	subject: Record<string, string>;
+	content: Record<string, BroadcastBlock>;
+	statuses: Record<string, LifecycleLanguageStatus>;
+	names: Record<string, string>;
+	translations: Record<string, EmailTranslation>;
+	updated_by: string;
+	versions: { id: number; published_at: string; published_by: string; languages: string[] }[];
+	outcome?: Record<string, string>;
+}
+
+export type LifecycleAction = 'publish' | 'reset' | 'restore' | 'request' | 'fetch' | 'approve' | 'request_stale';
+
+export const listLifecycleEmails = () =>
+	apiFetch<{ steps: LifecycleStepRow[] }>('/api/admin/emails/lifecycle/');
+
+export const getLifecycleEmail = (step: string) =>
+	apiFetch<LifecycleDetail>(`/api/admin/emails/lifecycle/${step}/`);
+
+export const saveLifecycleEmail = (
+	step: string,
+	payload: { subject: Record<string, string>; content: Record<string, BroadcastBlock> }
+) =>
+	apiFetch<LifecycleDetail>(`/api/admin/emails/lifecycle/${step}/`, {
+		method: 'PATCH',
+		body: JSON.stringify(payload)
+	});
+
+export const lifecycleEmailAction = (
+	step: string,
+	action: LifecycleAction,
+	extra: { language?: string; languages?: string[]; version?: number } = {}
+) =>
+	apiFetch<LifecycleDetail>(`/api/admin/emails/lifecycle/${step}/action/`, {
+		method: 'POST',
+		body: JSON.stringify({ action, ...extra })
+	});
+
 export const getAutoEmails = () => apiFetch<AutoEmails>('/api/admin/emails/auto/');
 
 export const updateAutoEmail = (

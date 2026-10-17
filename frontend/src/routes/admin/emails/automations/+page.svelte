@@ -4,6 +4,7 @@
 	import { apiErrorDetail } from '$lib/api';
 	import {
 		getAutoEmails,
+		listLifecycleEmails,
 		updateAutoEmail,
 		buildDigestNow,
 		type AutoEmailConfig,
@@ -14,6 +15,7 @@
 	} from '$lib/library-admin';
 
 	const auto = adminResource(getAutoEmails, "Couldn't load the automated emails.");
+	const lifecycle = adminResource(listLifecycleEmails, "Couldn't load the onboarding emails.");
 
 	let busy = $state(false);
 	let error = $state('');
@@ -99,6 +101,45 @@
 	{#if notice}
 		<div class="mb-4 rounded-card border border-border bg-surface-2 p-3 text-small text-text" aria-live="polite">{notice}</div>
 	{/if}
+
+	<section class="mb-6 rounded-card border border-border bg-surface p-4" aria-labelledby="words-title">
+		<h2 id="words-title" class="text-h3">Onboarding and reading emails</h2>
+		<p class="mb-3 text-small text-muted">
+			The emails readers get as they go — their words, per language. Each starts from the original; edit and publish to
+			change what readers get.
+		</p>
+		<AdminGate resource={lifecycle} errorTitle="Couldn't load the onboarding emails">
+			{#snippet children(l)}
+				<div class="overflow-x-auto">
+					<table class="w-full text-small">
+						<thead>
+							<tr class="border-b border-border text-left text-muted">
+								<th class="p-2 font-semibold">Email</th>
+								<th class="p-2 font-semibold">Goes out</th>
+								<th class="p-2 font-semibold">Subject (English)</th>
+								<th class="p-2 font-semibold">Languages</th>
+								<th class="p-2"></th>
+							</tr>
+						</thead>
+						<tbody>
+							{#each l.steps as s (s.key)}
+								<tr class="border-b border-border/50">
+									<td class="p-2 font-medium text-text">{s.label}</td>
+									<td class="p-2 text-muted">{s.when}</td>
+									<td class="p-2 text-text">{s.subject}</td>
+									<td class="p-2 text-muted">
+										{s.languages}{s.counts.published ? ` · ${s.counts.published} edited` : ' · original'}{s.counts.edited ? ` · ${s.counts.edited} unpublished` : ''}
+										{#if s.stale}<span class="text-warning"> · {s.stale} to review</span>{/if}
+									</td>
+									<td class="p-2 text-right"><a class="btn btn-ghost btn-sm" href="/admin/emails/automations/{s.key}">Edit</a></td>
+								</tr>
+							{/each}
+						</tbody>
+					</table>
+				</div>
+			{/snippet}
+		</AdminGate>
+	</section>
 
 	<AdminGate resource={auto} errorTitle="Couldn't load the automated emails">
 		{#snippet children(d)}

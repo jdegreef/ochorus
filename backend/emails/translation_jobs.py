@@ -7,7 +7,8 @@ except that a broadcast lives only in this database, not in the repo, so the
 draft comes BACK through GitHub too:
 
 1. **request** — the admin presses "Draft <language> with AI". We file an issue
-   ``[translation] email:broadcast-<id> -> <lang>`` (label ``translation-job``)
+   ``[translation] email:broadcast-<id> -> <lang>`` (label ``translation-job``;
+   an edited onboarding email is ``email:lifecycle-<step>``)
    whose body carries the source language's WORDS only — subject, preheader and
    each block's text, in order — never the layout.
 2. A worker session (``pq``; email jobs go first — they're small and someone is
@@ -93,6 +94,18 @@ class TranslationJobError(ValueError):
     """Why a translation step can't go ahead — shown to the admin as is."""
 
 
+def job_ref(email) -> str:
+    """What a job's title names: ``broadcast-<id>``, or ``lifecycle-<step>`` for
+    an edited onboarding email (``LifecycleCopy`` — any object with ``subject``,
+    ``content``, ``translations`` and ``is_locked`` can be translated here)."""
+    return getattr(email, "job_ref", None) or f"broadcast-{email.pk}"
+
+
+def job_id(email):
+    """The id a job's payload carries back: the broadcast's pk, or the job ref."""
+    return email.pk if not getattr(email, "job_ref", None) else email.job_ref
+
+
 def _entry(broadcast, target: str) -> dict:
     return (broadcast.translations or {}).get(target) or {}
 
@@ -126,7 +139,7 @@ def job_payload(broadcast, source: str, target: str) -> dict:
     blocks = _source_blocks(broadcast, source)
     return {
         "type": "email",
-        "broadcast": broadcast.pk,
+        "broadcast": job_id(broadcast),
         "source_locale": source,
         "target": target,
         "source_digest": locale_digest(broadcast, source),
@@ -224,7 +237,7 @@ def request(broadcast, source: str, target: str) -> dict:
     _require_github()
 
     payload = job_payload(broadcast, source, target)
-    issue = file_issue(job_title("email", f"broadcast-{broadcast.pk}", target), _issue_body(payload))
+    issue = file_issue(job_title("email", job_ref(broadcast), target), _issue_body(payload))
     if current.get("state") == State.REQUESTED:
         _close(current["issue"])  # asked again: the newer job replaces the older
     entry = {
@@ -277,7 +290,7 @@ def fetch(broadcast, target: str) -> dict:
     reply = next(_replies(entry["issue"]), None)
     if reply is None:
         return entry
-    if reply.get("broadcast") != broadcast.pk or reply.get("target") != target:
+    if reply.get("broadcast") != job_id(broadcast) or reply.get("target") != target:
         raise TranslationJobError("The reply on the issue is for a different email or language.")
     source = entry["source_locale"]
     payload = job_payload(broadcast, source, target)

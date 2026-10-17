@@ -17,6 +17,11 @@ from emails.admin_design import (
     AdminEmailTemplateDetailView,
     AdminEmailTemplatesView,
 )
+from emails.admin_lifecycle import (
+    AdminLifecycleActionView,
+    AdminLifecycleDetailView,
+    AdminLifecycleListView,
+)
 from emails.admin_views import (
     AdminAudiencePreviewView,
     AdminBroadcastActionView,
@@ -267,6 +272,17 @@ urlpatterns = [
         name="admin-broadcast-translations",
     ),
     path("api/admin/emails/auto/", AdminAutoEmailsView.as_view(), name="admin-email-auto"),
+    path("api/admin/emails/lifecycle/", AdminLifecycleListView.as_view(), name="admin-email-lifecycle"),
+    path(
+        "api/admin/emails/lifecycle/<str:step>/",
+        AdminLifecycleDetailView.as_view(),
+        name="admin-email-lifecycle-detail",
+    ),
+    path(
+        "api/admin/emails/lifecycle/<str:step>/action/",
+        AdminLifecycleActionView.as_view(),
+        name="admin-email-lifecycle-action",
+    ),
     path(
         "api/admin/emails/auto/build/",
         AdminAutoEmailBuildView.as_view(),

@@ -39,6 +39,7 @@ three of them gives none of them one.
    run reported the article queue empty while it was not. Use `--limit 1000`
    (or paginate), and if the count equals the limit, you have NOT seen it all.
    **Email jobs go first.** A title `[translation] email:broadcast-<id> -> <lang>`
+   (or `email:lifecycle-<step>` — an edited onboarding email, same recipe)
    is an AI draft of a campaign email someone is waiting on — a few hundred
    words, minutes of work, and it ships nothing to the repo. Take the oldest
    email job before any other type, whatever its age (recipe: "email" below).
@@ -192,7 +193,9 @@ issue, and the admin pulls it in and approves it there
    translate (the layout, works and links stay on the server). Translate them
    in-session into the target language with that language's glossary and
    register (`library.translation.system_prompt` holds both; the same rules as
-   a book). Keep `{name}` as written, keep the strings in order and the same
+   a book). Keep every merge tag in braces (`{first_name}`, `{name}`,
+   `{plan_day}`, `{next}`, …) exactly as written — after a `|` inside one,
+   translate only the fallback words — keep the strings in order and the same
    count, keep the subject short.
 3. Write your answer to a file as `{"subject": ..., "preheader": ..., "texts": [...]}`
    and run `cd backend && uv run python manage.py translate_email_job <issue file>
