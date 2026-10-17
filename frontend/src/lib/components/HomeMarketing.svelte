@@ -14,9 +14,6 @@
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
 	import SignupBand from '$lib/components/SignupBand.svelte';
 	import Icon, { type IconName } from '$lib/components/Icon.svelte';
-	import { hydrateSrc } from '$lib/hydrateSrc';
-	import { liturgicalSeason } from '$lib/liturgical';
-	import { SEASON_ART } from '$lib/heroArt';
 
 	/**
 	 * The logged-OUT home page: what a first-time visitor and every crawler sees.
@@ -66,12 +63,6 @@
 		].filter((x) => x.n > 0)
 	);
 
-	// The hero's painting: the season's, as on the signed-in home (heroArt.ts) —
-	// so the front door opens on the same painted band the reader will find
-	// once inside. Baked at build time with that day's season and corrected at
-	// hydration (hydrateSrc) if the season has turned since.
-	const art = $derived(SEASON_ART[liturgicalSeason(new Date())]);
-
 	// The trust row beneath the hero's calls to action.
 	const proof: { icon: IconName; label: string }[] = [
 		{ icon: 'heart', label: t('home.proofFree') },
@@ -99,23 +90,18 @@
      (this page is prerendered), so the blocks appear at hydration rather than
      in the baked HTML. -->
 <div class="flex flex-col">
-	<!-- Hero: the season's painting, blurred into a band under the palette's
-	     own tint (the signed-in home's recipe, app.css THE HOME HERO), with the
-	     words in the hero's light ink and the search in its own white pill. -->
-	<section class="mkt-hero order-2">
-		<div class="mkt-hero-drift" aria-hidden="true">
-			<img src={art} alt="" class="mkt-hero-wash" use:hydrateSrc={{ src: art }} />
-		</div>
-		<div class="mkt-hero-scrim" aria-hidden="true"></div>
-		<div class="mkt-hero-grain" aria-hidden="true"></div>
-		<div class="relative mx-auto max-w-4xl px-5 py-14 text-center sm:py-20">
-			<p class="eyebrow mkt-hero-ink mb-4">
+	<!-- Hero: plain words on the page's own ground — no painting, scrim or
+	     grain — so the first screen reads light and calm, with the theme's ink
+	     and its one accent (the search button). -->
+	<section class="order-2">
+		<div class="mx-auto max-w-4xl px-5 pt-14 text-center sm:pt-20">
+			<p class="eyebrow mb-4 text-muted">
 				{t('home.heroEyebrow')}
 			</p>
-			<h1 class="text-display mkt-hero-ink mkt-hero-title mx-auto mb-5 max-w-3xl">
+			<h1 class="text-display mx-auto mb-5 max-w-3xl">
 				{t('home.heroTitle')}
 			</h1>
-			<p class="mkt-hero-ink mx-auto mb-7 max-w-xl text-body">
+			<p class="mx-auto mb-7 max-w-xl text-body text-muted">
 				{t('home.heroTagline')}
 			</p>
 			<form
@@ -152,14 +138,14 @@
 			     alternative routes into the same library, not competing calls to
 			     action, so they read as secondary. -->
 			<div class="flex flex-wrap justify-center gap-3">
-				<a href={localizeHref('/books')} class="btn mkt-hero-btn">{t('home.browseLibrary')}</a>
-				<a href={localizeHref('/about')} class="btn mkt-hero-btn">{t('home.aboutOchorus')}</a>
+				<a href={localizeHref('/books')} class="btn btn-ghost">{t('home.browseLibrary')}</a>
+				<a href={localizeHref('/about')} class="btn btn-ghost">{t('home.aboutOchorus')}</a>
 			</div>
 			<!-- Trust row: the reasons to stay, at a glance -->
 			<div class="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2">
 				{#each proof as p (p.label)}
-					<span class="mkt-hero-ink inline-flex items-center gap-1.5 text-small">
-						<span class="mkt-hero-gilt"><Icon name={p.icon} size={16} /></span>
+					<span class="inline-flex items-center gap-1.5 text-small text-muted">
+						<Icon name={p.icon} size={16} />
 						{p.label}
 					</span>
 				{/each}
@@ -170,7 +156,7 @@
 </div>
 
 <!-- Discover Your Next Book — above the plan/sermon blocks -->
-<DiscoverStrip books={featured} />
+<DiscoverStrip books={featured} band="page" />
 
 <!-- How it works — a first-time visitor's three steps, previewing the reading
      journey the dashboard delivers once they sign in. Static, so it shows on
@@ -262,76 +248,6 @@
 	 * So the closing rule and the space above the hero come and go with the
 	 * content, and a first visit is exactly the page it was before.
 	 */
-	/* The painted hero (see the markup). The wash is the season's painting,
-	   blurred and slowly drifting; the scrim holds the palette's tint at 82%
-	   all the way up — the words sit everywhere in this band, not only at its
-	   foot — which clears --hero-ink at 4.5:1 even over a white painting
-	   (palettes.test.ts measures 75%). */
-	.mkt-hero {
-		position: relative;
-		overflow: hidden;
-		background: var(--hero-ground);
-	}
-	.mkt-hero-drift {
-		position: absolute;
-		inset: 0;
-		animation: mkt-hero-drift 60s ease-in-out infinite alternate;
-	}
-	.mkt-hero-wash {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		filter: blur(18px) saturate(1.6) brightness(1.15);
-	}
-	@keyframes mkt-hero-drift {
-		from {
-			transform: scale(1.18) translate3d(-1.5%, 0, 0);
-		}
-		to {
-			transform: scale(1.26) translate3d(1.5%, -2%, 0);
-		}
-	}
-	@media (prefers-reduced-motion: reduce) {
-		.mkt-hero-drift {
-			animation: none;
-			transform: scale(1.18);
-		}
-	}
-	.mkt-hero-scrim,
-	.mkt-hero-grain {
-		position: absolute;
-		inset: 0;
-	}
-	.mkt-hero-scrim {
-		background:
-			radial-gradient(ellipse 120% 90% at 50% 40%, transparent 55%, rgb(0 0 0 / 0.3) 100%),
-			color-mix(in srgb, var(--hero-tint) 82%, transparent);
-	}
-	.mkt-hero-grain {
-		background-image: var(--grain-light-specks);
-		opacity: 0.7;
-		pointer-events: none;
-	}
-	.mkt-hero-ink {
-		color: var(--hero-ink);
-	}
-	.mkt-hero-title {
-		text-shadow: var(--hero-ink-shadow);
-	}
-	.mkt-hero-gilt {
-		color: var(--hero-gilt);
-	}
-	/* The two secondary routes, as outlines in the hero's ink. */
-	.mkt-hero-btn {
-		background: transparent;
-		color: var(--hero-ink);
-		border: 1px solid color-mix(in srgb, var(--hero-ink) 45%, transparent);
-	}
-	.mkt-hero-btn:hover {
-		background: color-mix(in srgb, var(--hero-ink) 12%, transparent);
-		border-color: var(--hero-ink);
-		text-decoration: none;
-	}
 	/* The mission band's figures: big serif numerals over small labels. */
 	.mkt-numbers {
 		display: flex;
@@ -345,18 +261,6 @@
 		line-height: 1.1;
 		color: var(--accent);
 	}
-	@media print {
-		.mkt-hero-drift,
-		.mkt-hero-scrim,
-		.mkt-hero-grain {
-			display: none;
-		}
-		.mkt-hero-ink,
-		.mkt-hero-btn {
-			color: var(--text);
-		}
-	}
-
 	.personal:not(:empty) {
 		padding-bottom: 3.5rem;
 		border-bottom: 1px solid var(--border);
