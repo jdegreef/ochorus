@@ -12,18 +12,21 @@
 	 * bare heading over an empty grid reads as "Ochorus has no books", where
 	 * showing nothing simply reads as a shorter page.
 	 *
-	 * It sits on the home page's one night band (app.css, .night-band): six
-	 * covers are the most colourful thing the page has, and they look their best
-	 * on a dark ground. The band re-declares the theme tokens, so BookCard and
-	 * the header draw in its night palette with no variant of their own.
+	 * On the signed-in dashboard it sits on the page's one night band (app.css,
+	 * .night-band): six covers are the most colourful thing the page has, and
+	 * they look their best on a dark ground. The band re-declares the theme
+	 * tokens, so BookCard and the header draw in its night palette with no
+	 * variant of their own. The logged-out home asks for `band="page"` instead —
+	 * the theme's own light tinted band — so a first visit opens on a light page
+	 * rather than on dark band after dark band.
 	 */
-	let { books }: { books: CoverBook[] } = $props();
+	let { books, band = 'night' }: { books: CoverBook[]; band?: 'night' | 'page' } = $props();
 
 	const t = i18n.t;
 </script>
 
 {#if books.length}
-	<div class="night-band">
+	<div class={band === 'night' ? 'night-band' : 'page-band'}>
 		<section class="page-col px-5 pt-14">
 			<SectionHeader
 				section="books"

@@ -282,6 +282,12 @@ urlpatterns = [
     ),
     path("api/admin/emails/images/", AdminEmailImageView.as_view(), name="admin-email-images"),
     path(
+        "api/admin/emails/library/search/",
+        AdminEmailLibrarySearchView.as_view(),
+        name="admin-email-library-search",
+    ),
+    path("api/admin/emails/images/", AdminEmailImageView.as_view(), name="admin-email-images"),
+    path(
         "api/admin/emails/templates/",
         AdminEmailTemplatesView.as_view(),
         name="admin-email-templates",

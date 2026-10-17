@@ -13,6 +13,7 @@
 	import { planCardUrl } from '$lib/planCard';
 	import { localizeHref } from '$lib/href';
 	import { getLang } from '$lib/lang.svelte';
+	import ForPromo from '$lib/components/ForPromo.svelte';
 	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
 	import { editionSeo, languageFallback } from '$lib/languageFallback';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
@@ -428,6 +429,7 @@
 				<!-- A status line, not a control: a finished plan has no action, so it
 				     must not wear a button's chrome (it read as a disabled button). -->
 				<p class="text-small font-medium text-muted">✓ {t('plans.finished')}</p>
+				<ForPromo place="plan-done" class="mt-2" />
 			{/if}
 
 			<div class="mt-3 flex flex-wrap items-center gap-2">
@@ -435,6 +437,8 @@
 				<ShareButton url={canonical} title={plan.title} showLabel />
 				<PlanTogetherShare slug={plan.slug} title={plan.title} url={canonical} {today} />
 			</div>
+			<!-- A leader reading this with a group: the page made for them. -->
+			<ForPromo place="plan" class="mt-3" />
 
 			{@render authorsBlock('plan-authors-side mt-6')}
 		</aside>
