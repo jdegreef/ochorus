@@ -6,7 +6,7 @@
 	 * scripts, no same-origin access — though it is server-escaped text anyway.
 	 */
 	import { apiErrorDetail } from '$lib/api';
-	import { previewEmail, type BroadcastBlock } from '$lib/library-admin';
+	import { previewEmail, type BroadcastBlock, type PreviewReader } from '$lib/library-admin';
 
 	let { locale, subject, content }: { locale: string; subject: string; content: BroadcastBlock } =
 		$props();
@@ -14,14 +14,23 @@
 	let html = $state('');
 	let error = $state('');
 	let width = $state<'desktop' | 'mobile'>('desktop');
+	let reader = $state<PreviewReader>('me');
+	let renderedSubject = $state('');
+	const READERS: { key: PreviewReader; label: string }[] = [
+		{ key: 'me', label: 'Me' },
+		{ key: 'sample', label: 'A reader with everything' },
+		{ key: 'new', label: 'A new reader' }
+	];
 
 	$effect(() => {
 		// A deep snapshot reads every field, so any edit re-renders the preview.
-		const snap = $state.snapshot({ locale, subject, content });
+		const snap = $state.snapshot({ locale, subject, content, reader });
 		const controller = new AbortController();
 		const timer = setTimeout(async () => {
 			try {
-				html = (await previewEmail(snap.locale, snap.subject, snap.content, controller.signal)).html;
+				const rendered = await previewEmail(snap.locale, snap.subject, snap.content, controller.signal, snap.reader);
+				html = rendered.html;
+				renderedSubject = rendered.subject;
 				error = '';
 			} catch (e) {
 				if (!controller.signal.aborted) error = apiErrorDetail(e, "Couldn't render the preview.");
@@ -43,6 +52,15 @@
 			<button class="rounded-full border px-2 py-0.5 text-micro {width === 'mobile' ? 'border-accent bg-accent-soft text-accent' : 'border-border text-muted'}" aria-pressed={width === 'mobile'} onclick={() => (width = 'mobile')}>Mobile</button>
 		</div>
 	</div>
+	<div class="mb-2 flex flex-wrap items-center gap-1" role="group" aria-label="Preview as">
+		<span class="text-micro text-muted">As</span>
+		{#each READERS as r (r.key)}
+			<button class="rounded-full border px-2 py-0.5 text-micro {reader === r.key ? 'border-accent bg-accent-soft text-accent' : 'border-border text-muted'}" aria-pressed={reader === r.key} onclick={() => (reader = r.key)}>{r.label}</button>
+		{/each}
+	</div>
+	{#if renderedSubject && renderedSubject !== subject}
+		<p class="mb-2 text-micro text-muted">Subject: <span class="text-text">{renderedSubject}</span></p>
+	{/if}
 	{#if error}<p class="mb-2 text-small text-danger">{error}</p>{/if}
 	<div class="flex justify-center rounded-card border border-border bg-surface-2 p-2">
 		<iframe

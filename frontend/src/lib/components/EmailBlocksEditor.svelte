@@ -279,7 +279,7 @@
 			{#if b.type === 'heading'}
 				<input class="w-full rounded-md border border-border bg-surface p-2 text-body font-semibold" aria-label="Heading" bind:value={b.text} {disabled} placeholder="A heading" />
 			{:else if b.type === 'text'}
-				<textarea class="h-28 w-full rounded-md border border-border bg-surface p-2 text-body" aria-label="Text" bind:value={b.text} {disabled} placeholder="Write here. A blank line starts a new paragraph. {'{name}'} becomes the reader's first name."></textarea>
+				<textarea class="h-28 w-full rounded-md border border-border bg-surface p-2 text-body" aria-label="Text" bind:value={b.text} {disabled} placeholder="Write here. A blank line starts a new paragraph. Use Insert tag for the reader's name and more."></textarea>
 			{:else if b.type === 'button'}
 				<div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
 					<input class="rounded-md border border-border bg-surface p-2 text-small" aria-label="Button label" bind:value={b.label} {disabled} placeholder="Button label" />

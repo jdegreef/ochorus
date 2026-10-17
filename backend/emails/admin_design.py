@@ -20,7 +20,8 @@ from library.audit import AdminAudited, AdminNotAudited, actor_email
 from library.models import AdminAction
 
 from . import blocks as blocks_mod
-from . import images, library_search, starter_templates, translation_jobs
+from . import copy as copy_mod
+from . import images, library_search, merge_tags, starter_templates, translation_jobs
 from .admin_views import _serialize_broadcast
 from .models import Broadcast, EmailSubscription, EmailTemplate, TemplateCategory
 from .rendering import render_blocks
@@ -33,10 +34,13 @@ class AdminEmailPreviewView(AdminNotAudited, APIView):
     """Render one language of a design exactly as a reader would receive it —
     the unsaved editor state, so the preview follows every keystroke.
 
-    Body: ``{"locale": "es", "subject": "...", "content": {...one language...}}``.
-    Rendered for the admin's own account when it has one (their first name fills
-    ``{name}``), never touching the database: the subscription is a stand-in, so
-    the footer links in a preview go nowhere.
+    Body: ``{"locale": "es", "subject": "...", "content": {...one language...},
+    "as": "me" | "sample" | "new"}``. ``me`` (the default) renders for the
+    admin's own account when it has one — their own merge-tag values; ``sample``
+    for a made-up reader with every tag filled; ``new`` for a reader with no
+    name and no reading yet, to see the fallbacks and the sentences that drop
+    out. Never touches the database: the subscription is a stand-in, so the
+    footer links in a preview go nowhere.
     """
 
     permission_classes = [IsAdminEmail]
@@ -50,14 +54,18 @@ class AdminEmailPreviewView(AdminNotAudited, APIView):
                 {"detail": "content must be an object"}, status=http_status.HTTP_400_BAD_REQUEST
             )
         content = blocks_mod.clean_content({locale: content})[locale]
+        reader = str(request.data.get("as") or "me")
         uid = getattr(request.user, "username", "")
-        profile = (uid and UserProfile.objects.filter(supabase_uid=uid).first()) or UserProfile()
+        profile = UserProfile()
+        if reader == "me" and uid:
+            profile = UserProfile.objects.filter(supabase_uid=uid).first() or profile
         rendered = render_blocks(
             subject=str(request.data.get("subject") or "")[:300],
             content=content,
             profile=profile,
             subscription=EmailSubscription(unsubscribe_token="preview"),
             lang=locale,
+            values=merge_tags.sample_values(locale) if reader == "sample" else None,
         )
         return Response({"subject": rendered.subject, "html": rendered.html})
 
@@ -105,6 +113,25 @@ class AdminEmailLibraryView(AdminNotAudited, APIView):
             work.pop("cover", None)
             work["languages"] = sorted(reach.get(work["slug"], set()))
         return Response({"results": list(works.values())})
+
+
+class AdminEmailMergeTagsView(AdminNotAudited, APIView):
+    """The merge tags the designer offers, with a sample value and what each
+    means (emails/merge_tags.py)."""
+
+    permission_classes = [IsAdminEmail]
+    audit_exempt = "Read-only list."
+
+    def get(self, request):
+        return Response(
+            {
+                "tags": [
+                    {"key": t.key, "label": t.label, "sample": t.sample, "description": t.description}
+                    for t in merge_tags.TAGS.values()
+                ],
+                "friend": copy_mod.FRIEND,
+            }
+        )
 
 
 class AdminEmailLibrarySearchView(AdminNotAudited, APIView):

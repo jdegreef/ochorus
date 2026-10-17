@@ -1736,17 +1736,34 @@ export const sendDirectEmail = (uid: string, payload: DirectEmailPayload) =>
 
 // --- Campaign design: preview, library picker, templates -----------------------
 
+/** Whose details fill the merge tags in a preview: the admin's own, a made-up
+ *  reader with everything, or a new reader with nothing yet (fallbacks show
+ *  and sentences with nothing to say drop out). */
+export type PreviewReader = 'me' | 'sample' | 'new';
+
 export const previewEmail = (
 	locale: string,
 	subject: string,
 	content: BroadcastBlock,
-	signal?: AbortSignal
+	signal?: AbortSignal,
+	reader: PreviewReader = 'me'
 ) =>
 	apiFetch<{ subject: string; html: string }>('/api/admin/emails/preview/', {
 		method: 'POST',
-		body: JSON.stringify({ locale, subject, content }),
+		body: JSON.stringify({ locale, subject, content, as: reader }),
 		signal
 	});
+
+/** A merge tag the designer offers (backend `emails/merge_tags.py`). */
+export interface MergeTag {
+	key: string;
+	label: string;
+	sample: string;
+	description: string;
+}
+
+export const getMergeTags = () =>
+	apiFetch<{ tags: MergeTag[]; friend: Record<string, string> }>('/api/admin/emails/merge-tags/');
 
 export interface EmailLibraryItem {
 	slug: string;

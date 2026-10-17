@@ -24,8 +24,9 @@ template escapes all of it, so there is still nothing to sanitize.
   fallback**, so a work with no edition in that language is simply left out of
   that language's email (the pre-send checks say so beforehand).
 
-Text in ``heading``/``text`` blocks may use ``{name}`` for the reader's first
-name — a literal replace, never ``str.format`` (see ``rendering._render``).
+An admin's words — headings, text, button labels, captions, a hero's lines —
+may use merge tags such as ``{first_name}`` or ``{plan_day|1}``; they are filled
+per reader by ``emails.merge_tags`` (a literal replace, never ``str.format``).
 
 Older broadcasts stored fixed fields (heading, greeting, paragraphs, a CTA,
 signoff); :func:`blocks_for` reads those as the equivalent blocks, so both shapes
@@ -505,8 +506,9 @@ def resolve(
     cards=None,
     localize_buttons: bool = True,
     profile=None,
+    values: dict | None = None,
 ) -> list[dict]:
-    """Render-ready blocks for one email in ``lang``: ``{name}`` filled in,
+    """Render-ready blocks for one email in ``lang``: merge tags filled in,
     button paths made absolute, library blocks looked up in ``lang`` — and those
     with no edition in ``lang`` left out.
 
@@ -518,12 +520,26 @@ def resolve(
     ``profile`` is the recipient, for the blocks that differ per reader
     (``continue_reading``); without one those blocks are left out.
 
+    ``values`` are the merge-tag values (``merge_tags.values_for``); without
+    them only the first name (``name``) is known.
+
     ``cards`` is an optional cache owned by the caller, ``{(kind, lang, slug):
     card or None}``: a send renders the same blocks for thousands of readers, so
     each card is looked up once per run, not per reader.
     """
+    from . import merge_tags
+
     if cards is None:
         cards = {}
+    if values is None:
+        values = {"first_name": name}
+
+    def line(text: str) -> str | None:
+        return merge_tags.fill_line(text or "", values, lang)
+
+    def paragraph(text: str) -> str:
+        return merge_tags.fill_paragraph(text or "", values, lang)
+
     for kind, slugs in library_refs(blocks).items():
         missing = {s for s in slugs if (kind, lang, s) not in cards}
         if missing:
@@ -551,16 +567,22 @@ def resolve(
         elif kind == BlockType.IMAGE:
             src = image_url(b.get("url", ""))
             if src:
-                out.append({**b, "src": src, "url": link(b["path"]) if b.get("path") else ""})
+                url = link(b["path"]) if b.get("path") else ""
+                out.append({**b, "src": src, "url": url, "caption": line(b.get("caption", "")) or ""})
         elif kind == BlockType.HERO:
-            if b.get("title") or b.get("text"):
+            title, text = line(b.get("title", "")) or "", paragraph(b.get("text", ""))
+            if title or text:
+                label = line(b.get("label", "")) or ""
                 out.append(
                     {
                         **b,
                         "src": image_url(b.get("image", "")),
                         "bg": HERO_COLORS.get(b.get("color", ""), HERO_COLORS["navy"]),
-                        "url": link(b.get("path", "")) if b.get("label") else "",
-                        **{f: b.get(f, "").replace("{name}", name) for f in ("eyebrow", "title", "text")},
+                        "label": label,
+                        "url": link(b.get("path", "")) if label else "",
+                        "eyebrow": line(b.get("eyebrow", "")) or "",
+                        "title": title,
+                        "text": text,
                     }
                 )
         elif kind == BlockType.SPACER:
@@ -575,18 +597,20 @@ def resolve(
                 label = b.get("label", "").replace("{chapter}", str(card["chapter"]))
                 out.append({"type": kind, "heading": b.get("heading", ""), "label": label, **card})
         elif kind == BlockType.BUTTON:
-            if b.get("label"):
-                out.append({**b, "url": link(b.get("path", ""))})
-        elif kind in (BlockType.HEADING, BlockType.TEXT):
-            text = b.get("text", "").replace("{name}", name)
-            if not text:
-                continue
-            if kind == BlockType.TEXT:
-                # Blank lines separate paragraphs; single breaks stay in one.
-                paras = [p.strip() for p in text.replace("\r\n", "\n").split("\n\n")]
-                out.append({"type": kind, "paragraphs": [p for p in paras if p]})
-            else:
+            label = line(b.get("label", ""))
+            if label:
+                out.append({**b, "label": label, "url": link(b.get("path", ""))})
+        elif kind == BlockType.HEADING:
+            text = line(b.get("text", ""))
+            if text:
                 out.append({"type": kind, "text": text})
+        elif kind == BlockType.TEXT:
+            # Blank lines separate paragraphs; single breaks stay in one.
+            raw = b.get("text", "").replace("\r\n", "\n").split("\n\n")
+            paras = [paragraph(p.strip()) for p in raw]
+            paras = [p for p in paras if p]
+            if paras:
+                out.append({"type": kind, "paragraphs": paras})
         else:
             out.append(b)
     return out

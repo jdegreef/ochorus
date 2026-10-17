@@ -7,6 +7,7 @@
 	import EmailPreview from '$lib/components/EmailPreview.svelte';
 	import EmailTemplateGallery from '$lib/components/EmailTemplateGallery.svelte';
 	import EmailLibraryPanel from '$lib/components/EmailLibraryPanel.svelte';
+	import MergeTagMenu from '$lib/components/MergeTagMenu.svelte';
 	import { ApiError, apiErrorDetail } from '$lib/api';
 	import { localeName } from '$lib/lang.svelte';
 	import { locales } from '$lib/paraglide/runtime';
@@ -396,6 +397,15 @@
 		}
 	}
 
+	// --- Merge tags: "Insert tag" fills the text field focused last ----------
+	let tagTarget: HTMLInputElement | HTMLTextAreaElement | null = null;
+	function trackTagTarget(e: FocusEvent) {
+		const el = e.target;
+		if (el instanceof HTMLTextAreaElement || (el instanceof HTMLInputElement && (el.type === 'text' || el.type === ''))) {
+			tagTarget = el;
+		}
+	}
+
 	// --- "Insert from the library" (a drawer beside the designer) ------------
 	let libraryOpen = $state(false);
 
@@ -579,11 +589,12 @@
 		</section>
 
 		<!-- Content per language -->
-		<section class="mb-5 rounded-card border border-border bg-surface p-4">
+		<section class="mb-5 rounded-card border border-border bg-surface p-4" onfocusin={trackTagTarget}>
 			<div class="mb-3 flex flex-wrap items-center gap-2">
 				<h2 class="mr-2 text-h3">Content</h2>
 				{#if !readOnly && draft.content[editLocale]}
 					<button class="btn btn-ghost btn-sm" onclick={() => (libraryOpen = !libraryOpen)} aria-expanded={libraryOpen}>Insert from the library</button>
+					<MergeTagMenu getTarget={() => tagTarget} />
 				{/if}
 				{#each draftLocales as code (code)}
 					<button class="rounded-full border px-2.5 py-0.5 text-micro {code === editLocale ? 'border-accent bg-accent-soft text-accent' : 'border-border text-muted'}" onclick={() => switchLocale(code)}>{localeLabel(code)}</button>

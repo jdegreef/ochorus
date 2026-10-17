@@ -12,6 +12,7 @@ from emails.admin_design import (
     AdminEmailImageView,
     AdminEmailLibrarySearchView,
     AdminEmailLibraryView,
+    AdminEmailMergeTagsView,
     AdminEmailPreviewView,
     AdminEmailTemplateDetailView,
     AdminEmailTemplatesView,
@@ -273,6 +274,7 @@ urlpatterns = [
     ),
     path("api/admin/emails/preview/", AdminEmailPreviewView.as_view(), name="admin-email-preview"),
     path("api/admin/emails/library/", AdminEmailLibraryView.as_view(), name="admin-email-library"),
+    path("api/admin/emails/merge-tags/", AdminEmailMergeTagsView.as_view(), name="admin-email-merge-tags"),
     path(
         "api/admin/emails/library/search/",
         AdminEmailLibrarySearchView.as_view(),

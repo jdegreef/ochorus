@@ -19,7 +19,7 @@ from library.languages import entry as language_entry
 
 from . import blocks as blocks_mod
 from . import copy as copy_mod
-from . import health, translation_jobs
+from . import health, merge_tags, translation_jobs
 from .audience import resolve
 from .rendering import resolve_broadcast_locale, sendable_locales
 from .sending import emails_enabled
@@ -103,6 +103,30 @@ def _content_checks(broadcast) -> list[dict]:
                     f"placeholder:{code}",
                     WARNING,
                     f"{name}: “{hint}” looks like a template hint — replace it unless it is meant.",
+                )
+            )
+        unknown = merge_tags.unknown_in(*texts)
+        if unknown:
+            out.append(
+                _check(
+                    f"tags:{code}",
+                    WARNING,
+                    f"{name}: {', '.join(sorted(unknown))} isn't a merge tag, so it shows as written. "
+                    f"The tags are {', '.join('{' + k + '}' for k in merge_tags.TAGS)}.",
+                )
+            )
+        vanishing = [
+            m.group(0)
+            for m in merge_tags.TAG.finditer(subject)
+            if m.group(2) is None and merge_tags.tag_key(m.group(1)) in merge_tags.READER_FACT_TAGS
+        ]
+        if vanishing:
+            out.append(
+                _check(
+                    f"subject-tags:{code}",
+                    WARNING,
+                    f"{name}: readers with nothing for {', '.join(vanishing)} get the subject without it — "
+                    "give it a fallback, like {last_book|a classic}.",
                 )
             )
         if not blocks_mod.has_body(blocks, reaches):

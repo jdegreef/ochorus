@@ -52,6 +52,7 @@ from library.languages import entry as language_entry
 from library.languages import known_codes
 
 from . import blocks as blocks_mod
+from . import merge_tags
 from .rendering import sendable_locales
 
 
@@ -78,7 +79,10 @@ INSTRUCTIONS = (
     "Translate its `subject`, its inbox `preheader` and each string in `texts`, "
     "keeping the strings in the same order and the same count, with the target "
     "language's glossary and register rules (`library.translation.system_prompt`). "
-    "Keep `{name}` exactly as written (it becomes the reader's first name). Keep "
+    "Keep every merge tag in braces — `{first_name}`, `{name}`, `{plan_day}` and "
+    "the like — exactly as written (each becomes something about the reader); "
+    "after a `|` inside one, translate only the fallback words: "
+    "`{last_book|a classic}` → `{last_book|un classique}`. Keep "
     "each string about the length of its source; a subject line must stay short. "
     "Book and sermon titles inside the text take their published title in the "
     "target language where one exists."
@@ -165,8 +169,13 @@ def check_answer(payload: dict, answer: dict) -> dict:
     for i, (src, text) in enumerate(zip(payload["texts"], texts, strict=True)):
         if not str(text).strip():
             raise TranslationJobError(f"Translated string {i + 1} is empty.")
-        if str(text).count("{name}") != src.count("{name}"):
-            raise TranslationJobError(f"Translated string {i + 1} must keep {{name}} exactly as written.")
+        if merge_tags.tag_names(str(text)) != merge_tags.tag_names(src):
+            raise TranslationJobError(
+                f"Translated string {i + 1} must keep its merge tags ({', '.join(merge_tags.tag_names(src)) or 'none'}) exactly as written."
+            )
+    for field in ("subject", "preheader"):
+        if merge_tags.tag_names(str(answer.get(field) or "")) != merge_tags.tag_names(str(payload.get(field) or "")):
+            raise TranslationJobError(f"The {field} must keep its merge tags exactly as written.")
     return {
         "broadcast": payload["broadcast"],
         "target": payload["target"],
