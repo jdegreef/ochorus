@@ -5,12 +5,15 @@
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import Emblem from '$lib/components/Emblem.svelte';
 	import ForInvite from '$lib/components/ForInvite.svelte';
+	import ForSeries from '$lib/components/ForSeries.svelte';
+	import ForTogether from '$lib/components/ForTogether.svelte';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import PersonCard from '$lib/components/PersonCard.svelte';
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
 	import QandA from '$lib/components/QandA.svelte';
 	import QuoteText from '$lib/components/QuoteText.svelte';
+	import SectionBar from '$lib/components/SectionBar.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import ShelfDownloadControl from '$lib/components/ShelfDownloadControl.svelte';
 	import { scrollEdges } from '$lib/actions/scrollEdges';
@@ -20,9 +23,10 @@
 	import { FOR_META, forPhrase } from '$lib/forMeta';
 	import { localizeHref } from '$lib/href';
 	import { countsLine, forHref, inviteMessage } from '$lib/forPages';
+	import { FOR_EVENT, forSectionOrder, navSections } from '$lib/forSections';
+	import { track } from '$lib/analytics';
 	import { RUNG_LABEL } from '$lib/audienceHub';
 	import { hrefInLocale } from '$lib/editionHref';
-	import { readingTime } from '$lib/reading';
 	import { LIVE_LOCALES } from '$lib/live-locales.generated';
 	import { citeLine, guideCardLink, quoteHref, toBookTile } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
@@ -41,7 +45,12 @@
 	 * Each group wears its own accent and emblem (FOR_META) — the topic hero's
 	 * wash and chip — so nine pages built from one template don't read as copies.
 	 * The bands below borrow About's eyebrow-and-heading rhythm, inside the page
-	 * column.
+	 * column, in the order that group needs them ($lib/forSections): a chaplain's
+	 * page opens on the offline pack, a parent's on the reading levels. A
+	 * sticky jump bar lists them, and the tools a leader acts on — start a
+	 * reading group, put a series on the calendar, a QR code, a bulletin insert
+	 * — sit in the sections they belong to. Each tool's use is counted, as
+	 * labels only ($lib/analytics), so we learn which pages and tools help.
 	 */
 	let { data } = $props();
 
@@ -57,6 +66,10 @@
 	const fan = $derived(shelf.shelves[0]?.books ?? []);
 	const qa = $derived(pickQa(page.questions, []));
 	const invite = $derived(inviteMessage({ ...page.invite, href: localizeHref(page.invite.href) }, SITE_URL));
+	const inviteLink = $derived(`${SITE_URL}${localizeHref(page.invite.href)}`);
+	const order = $derived(forSectionOrder(page.slug, shelf));
+	const jumps = $derived(navSections(order).map((id) => ({ id, label: c.nav[id] })));
+	const report = (action: string) => track(FOR_EVENT, { group: page.slug, action });
 	/** The numbers strip: the library in the page's language, and every
 	 *  language it serves. */
 	const counts = $derived(
@@ -103,7 +116,7 @@
 	structuredData={[pageLd, ...shelvesLd, ...(qa.ld ? [qa.ld] : [])]}
 />
 
-<div class="page-col px-5 py-10" lang={locale} style="--group: {meta.accent}; --pinned-offset: var(--appnav-h, 4rem)">
+<div class="page-col px-5 py-10" lang={locale} style="--group: {meta.accent}; --pinned-offset: calc(var(--appnav-h, 4rem) + var(--section-bar-h, 0px))">
 	<!-- Every group, one tap apart: a reader who is both a parent and a youth
 	     leader, or who landed on the wrong page, moves sideways from here. -->
 	<nav class="chip-scroller mb-6" use:scrollEdges aria-label={c.switcherLabel}>
@@ -127,8 +140,12 @@
 			<h1 class="mt-3 text-balance font-display text-h1 font-semibold leading-tight">{page.title}</h1>
 			<p class="lede mt-4 text-muted">{page.lead}</p>
 			<div class="mt-6 flex flex-wrap gap-3">
-				<a class="btn btn-primary" href={localizeHref(forHref(page.primary.href, shelf))}>{page.primary.label}</a>
-				<a class="btn btn-ghost" href={localizeHref(forHref(page.secondary.href, shelf))}>{page.secondary.label}</a>
+				<a class="btn btn-primary" href={localizeHref(forHref(page.primary.href, shelf))} onclick={() => report('hero-primary')}
+					>{page.primary.label}</a
+				>
+				<a class="btn btn-ghost" href={localizeHref(forHref(page.secondary.href, shelf))} onclick={() => report('hero-secondary')}
+					>{page.secondary.label}</a
+				>
 			</div>
 		</div>
 		{#if fan.length}
@@ -150,27 +167,31 @@
 		</dl>
 	{/if}
 
-	<section class="mt-12" aria-labelledby="why-heading">
-		<h2 id="why-heading" class="text-h2">{page.pointsHeading}</h2>
-		<ul class="points mt-6">
-			{#each page.points as p (p.title)}
-				<li class="point rounded-card border border-border bg-surface p-5">
-					<span class="point-icon group-ink flex h-10 w-10 items-center justify-center rounded-full"
-						><Icon name={p.icon} size={22} /></span
-					>
-					<h3 class="mt-3 text-h3">{p.title}</h3>
-					<p class="mt-2 text-body text-muted">{p.body}</p>
-					{#if p.link}
-						<p class="mt-3 text-small">
-							<a class="text-accent hover:underline" href={localizeHref(forHref(p.link.href, shelf))}>{p.link.label} <Arrow /></a>
-						</p>
-					{/if}
-				</li>
-			{/each}
-		</ul>
-	</section>
+	<!-- Every section, one tap away, lit as it scrolls past. -->
+	<SectionBar class="mt-8" sections={jumps} label={c.jumpLabel} onjump={(id) => report(`jump-${id}`)} />
 
-	{#if shelf.quote}
+	{#each order as section (section)}
+		{#if section === 'why'}
+		<section id="why" class="jump-anchor mt-14" aria-labelledby="why-heading">
+			<h2 id="why-heading" class="text-h2">{page.pointsHeading}</h2>
+			<ul class="points mt-6">
+				{#each page.points as p (p.title)}
+					<li class="point rounded-card border border-border bg-surface p-5">
+						<span class="point-icon group-ink flex h-10 w-10 items-center justify-center rounded-full"
+							><Icon name={p.icon} size={22} /></span
+						>
+						<h3 class="mt-3 text-h3">{p.title}</h3>
+						<p class="mt-2 text-body text-muted">{p.body}</p>
+						{#if p.link}
+							<p class="mt-3 text-small">
+								<a class="text-accent hover:underline" href={localizeHref(forHref(p.link.href, shelf))}>{p.link.label} <Arrow /></a>
+							</p>
+						{/if}
+					</li>
+				{/each}
+			</ul>
+		</section>
+		{:else if section === 'quote' && shelf.quote}
 		<figure class="quote-band group-wash mt-14 rounded-card px-6 py-8 sm:px-10">
 			<blockquote class="font-display text-h2 leading-snug">
 				<a class="quote-link" href={localizeHref(quoteHref(shelf.quote))}>“<QuoteText text={shelf.quote.text} />”</a>
@@ -181,9 +202,7 @@
 				>, <cite>{citeLine(shelf.quote)}</cite>
 			</figcaption>
 		</figure>
-	{/if}
-
-	{#if shelf.plans.length}
+		{:else if section === 'plans'}
 		<section id="plans" class="jump-anchor mt-14" aria-labelledby="plans-heading">
 			<h2 id="plans-heading" class="text-h2">{c.plansHeading}</h2>
 			<p class="mt-2 max-w-2xl text-body text-muted">{c.plansBody}</p>
@@ -195,55 +214,38 @@
 			<p class="mt-4 text-small">
 				<a class="text-accent hover:underline" href={localizeHref('/plans')}>{c.plansMore} <Arrow /></a>
 			</p>
+			<!-- The plans above, made into a group: the link, its QR code and a
+			     bulletin insert, without leaving the page. -->
+			<div class="mt-8">
+				<ForTogether plans={shelf.plans} {locale} words={c} onaction={report} />
+			</div>
 		</section>
-	{/if}
-
-	{#if shelf.series.length}
+		{:else if section === 'series'}
 		<!-- A sermon a week, each with the study questions its page answers:
-		     a term's evenings for a group, ready-made. -->
+		     a term's evenings for a group, ready-made, and on the calendar. -->
 		<section id="series" class="jump-anchor mt-14" aria-labelledby="series-heading">
 			<h2 id="series-heading" class="text-h2">{c.seriesHeading}</h2>
 			<p class="mt-2 max-w-2xl text-body text-muted">{c.seriesBody}</p>
 			{#each shelf.series as s (s.title)}
-				<div class="mt-8">
-					<GroupHeading name={s.title} as="h3" blurb={s.note} />
-					<ol class="weeks">
-						{#each s.sermons as w, i (w.slug)}
-							<li class="week rounded-card border border-border bg-surface p-4">
-								<p class="text-eyebrow group-ink">{c.week(i + 1)}</p>
-								<a class="mt-1 block font-semibold text-text hover:underline" href={localizeHref(`/sermons/${w.slug}`)}
-									>{w.title}</a
-								>
-								<p class="mt-1 text-small text-muted">
-									{w.author.name}{#if w.scripture_ref},{' '}{w.scripture_ref}{/if}
-								</p>
-								<p class="mt-2 text-small text-muted">
-									{c.studyQuestions(w.questions)}{' '}<span class="opacity-50" aria-hidden="true">·</span>{' '}{readingTime(w.word_count)}
-								</p>
-							</li>
-						{/each}
-					</ol>
-				</div>
+				<ForSeries series={s} words={c} {locale} onaction={report} />
 			{/each}
 		</section>
-	{/if}
-
-	<section class="mt-14" aria-labelledby="ideas-heading">
-		<h2 id="ideas-heading" class="text-h2">{page.ideasHeading}</h2>
-		<ol class="ideas mt-6">
-			{#each page.ideas as idea, i (idea.title)}
-				<li class="idea">
-					<span class="idea-num font-display text-h2 group-ink" aria-hidden="true">{i + 1}</span>
-					<div>
-						<h3 class="text-h3">{idea.title}</h3>
-						<p class="mt-1 text-body text-muted">{idea.body}</p>
-					</div>
-				</li>
-			{/each}
-		</ol>
-	</section>
-
-	{#if shelf.shelves.length}
+		{:else if section === 'ideas'}
+		<section id="ideas" class="jump-anchor mt-14" aria-labelledby="ideas-heading">
+			<h2 id="ideas-heading" class="text-h2">{page.ideasHeading}</h2>
+			<ol class="ideas mt-6">
+				{#each page.ideas as idea, i (idea.title)}
+					<li class="idea">
+						<span class="idea-num font-display text-h2 group-ink" aria-hidden="true">{i + 1}</span>
+						<div>
+							<h3 class="text-h3">{idea.title}</h3>
+							<p class="mt-1 text-body text-muted">{idea.body}</p>
+						</div>
+					</li>
+				{/each}
+			</ol>
+		</section>
+		{:else if section === 'shelves'}
 		<section id="shelves" class="jump-anchor mt-14" aria-labelledby="shelves-heading">
 			<h2 id="shelves-heading" class="text-h2">{c.shelvesHeading}</h2>
 			{#each shelf.shelves as s (s.title)}
@@ -257,12 +259,10 @@
 				</div>
 			{/each}
 		</section>
-	{/if}
-
-	{#if shelf.levels.length}
+		{:else if section === 'levels'}
 		<!-- The edition family side by side (the slug convention is the link —
 		     root CLAUDE.md): one work, read at seven, at fourteen and in full. -->
-		<section class="mt-14" aria-labelledby="levels-heading">
+		<section id="levels" class="jump-anchor mt-14" aria-labelledby="levels-heading">
 			<h2 id="levels-heading" class="text-h2">{c.levelsHeading}</h2>
 			<p class="mt-2 max-w-2xl text-body text-muted">{c.levelsBody}</p>
 			<div class="families mt-6">
@@ -278,10 +278,8 @@
 				{/each}
 			</div>
 		</section>
-	{/if}
-
-	{#if shelf.authors.length}
-		<section class="mt-14" aria-labelledby="writers-heading">
+		{:else if section === 'writers'}
+		<section id="writers" class="jump-anchor mt-14" aria-labelledby="writers-heading">
 			<h2 id="writers-heading" class="text-h2">{c.writersHeading}</h2>
 			<p class="mt-2 max-w-2xl text-body text-muted">{c.writersBody}</p>
 			<ul class="writers mt-6">
@@ -293,9 +291,7 @@
 				<a class="text-accent hover:underline" href={localizeHref('/biographies')}>{c.writersMore} <Arrow /></a>
 			</p>
 		</section>
-	{/if}
-
-	{#if shelf.guides.length}
+		{:else if section === 'guides'}
 		<!-- For the adult running a group: each card opens the book's printable
 		     leader's guide, not the book (the young-reader hubs' recipe). -->
 		<section id="guides" class="jump-anchor mt-14" aria-labelledby="guides-heading">
@@ -312,9 +308,7 @@
 				{/each}
 			</div>
 		</section>
-	{/if}
-
-	{#if shelf.offline.length}
+		{:else if section === 'offline'}
 		<section id="offline" class="jump-anchor mt-14" aria-labelledby="offline-heading">
 			<div class="flex flex-wrap items-baseline gap-x-4 gap-y-2">
 				<h2 id="offline-heading" class="text-h2">{c.offlineHeading}</h2>
@@ -354,9 +348,7 @@
 				{/each}
 			</ul>
 		</section>
-	{/if}
-
-	{#if shelf.languages.length}
+		{:else if section === 'languages'}
 		<!-- What each live language holds, from its own lists (no English
 		     fallback): the honest answer to "what can I hand a Swahili speaker?" -->
 		<section id="languages" class="jump-anchor mt-14" aria-labelledby="languages-heading">
@@ -388,25 +380,44 @@
 				{/each}
 			</ul>
 		</section>
-	{/if}
-
-	<section class="mt-14" aria-labelledby="invite-heading">
-		<h2 id="invite-heading" class="text-h2">{c.inviteHeading}</h2>
-		<p class="mt-2 max-w-2xl text-body text-muted">{c.inviteBody}</p>
-		<div class="mt-6 max-w-2xl">
-			<ForInvite message={invite} subject={c.inviteSubject} words={c.invite} />
-		</div>
-	</section>
-
-	<QandA items={qa.items} title={c.questions} headingClass="text-h2" />
+		{:else if section === 'invite'}
+		<section id="invite" class="jump-anchor mt-14" aria-labelledby="invite-heading">
+			<h2 id="invite-heading" class="text-h2">{c.inviteHeading}</h2>
+			<p class="mt-2 max-w-2xl text-body text-muted">{c.inviteBody}</p>
+			<div class="mt-6 max-w-2xl">
+				<ForInvite
+					message={invite}
+					subject={c.inviteSubject}
+					words={c.invite}
+					link={inviteLink}
+					chrome={c}
+					onaction={report}
+					flyer={{
+						eyebrow: `${FOR_EYEBROW[locale]} ${phrase}`,
+						title: page.title,
+						line: page.invite.text,
+						url: inviteLink,
+						scan: c.flyer.scan,
+						free: c.flyer.free,
+						qrLabel: c.qr.alt(page.title)
+					}}
+				/>
+			</div>
+		</section>
+		{:else if section === 'questions'}
+		<QandA items={qa.items} title={c.questions} headingClass="text-h2" />
+		{/if}
+	{/each}
 
 	<section class="group-wash mt-14 flex flex-col items-center rounded-card px-6 py-10 text-center sm:px-10">
 		<span class="badge emblem-chip group-chip"><Emblem name={meta.emblem} /></span>
 		<h2 class="mt-4 max-w-[22ch] text-h2">{page.closeHeading}</h2>
 		<p class="mt-3 max-w-xl text-body text-muted">{page.closeBody}</p>
 		<div class="mt-6 flex flex-wrap justify-center gap-3">
-			<a class="btn btn-primary" href={localizeHref(forHref(page.primary.href, shelf))}>{page.primary.label}</a>
-			<a class="btn btn-ghost" href={localizeHref('/contact')}>{c.contact}</a>
+			<a class="btn btn-primary" href={localizeHref(forHref(page.primary.href, shelf))} onclick={() => report('close-primary')}
+				>{page.primary.label}</a
+			>
+			<a class="btn btn-ghost" href={localizeHref('/contact')} onclick={() => report('contact')}>{c.contact}</a>
 		</div>
 	</section>
 </div>
@@ -492,7 +503,6 @@
 	.offline-cover {
 		display: block;
 	}
-	.weeks,
 	.levels {
 		display: grid;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -515,7 +525,6 @@
 		gap: 0.5rem;
 	}
 	@media (max-width: 1023.98px) {
-		.weeks,
 		.writers {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
@@ -535,7 +544,6 @@
 		.ideas,
 		.offline,
 		.writers,
-		.weeks,
 		.languages {
 			grid-template-columns: minmax(0, 1fr);
 		}

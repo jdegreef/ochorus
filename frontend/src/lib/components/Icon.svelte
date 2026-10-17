@@ -44,7 +44,9 @@
 		| 'pen'
 		| 'highlighter'
 		| 'share'
-		| 'favorite';
+		| 'favorite'
+		| 'print'
+		| 'qr';
 
 	let {
 		name,
@@ -212,5 +214,15 @@
 	{:else if name === 'layers'}
 		<!-- Book spines side by side: the Bookshelf's spine view. -->
 		<path d="M5 4v16M9.5 4v16M14 6l4 14M3 20h18" />
+	{:else if name === 'print'}
+		<!-- A printer with its sheet: the bulletin insert. -->
+		<path d="M7 9V3h10v6M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2" />
+		<rect x="7" y="14" width="10" height="7" rx="1" />
+	{:else if name === 'qr'}
+		<!-- Three finder squares and a scatter: a QR code. -->
+		<rect x="3" y="3" width="7" height="7" rx="1" />
+		<rect x="14" y="3" width="7" height="7" rx="1" />
+		<rect x="3" y="14" width="7" height="7" rx="1" />
+		<path d="M14 14h3v3M21 14v.01M14 21h.01M17.5 21H21v-3.5" />
 	{/if}
 </svg>

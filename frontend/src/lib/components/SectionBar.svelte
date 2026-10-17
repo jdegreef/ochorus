@@ -10,7 +10,18 @@
 	import { tick } from 'svelte';
 	import { jumpToSection, scrollSpy, SUBNAV_H_EST } from '$lib/scrollSpy.svelte';
 
-	let { sections }: { sections: { id: string; label: string }[] } = $props();
+	let {
+		sections,
+		label = 'Sections',
+		onjump,
+		class: cls = ''
+	}: {
+		sections: { id: string; label: string }[];
+		/** The bar's accessible name, in the page's language. */
+		label?: string;
+		onjump?: (id: string) => void;
+		class?: string;
+	} = $props();
 
 	// A band across the top third of the screen, below the pinned bars.
 	const spy = scrollSpy(() => sections.map((s) => s.id), { rootMargin: '-120px 0px -66% 0px' });
@@ -41,8 +52,8 @@
 <nav
 	bind:this={bar}
 	bind:clientHeight={barH}
-	aria-label="Sections"
-	class="sticky top-[var(--appnav-h,0px)] z-(--z-pinned) -mx-5 mb-6 flex overflow-x-auto border-b border-border bg-bg px-3 [scrollbar-width:none]"
+	aria-label={label}
+	class="{cls} sticky top-[var(--appnav-h,0px)] z-(--z-pinned) -mx-5 mb-6 flex overflow-x-auto border-b border-border bg-bg px-3 [scrollbar-width:none]"
 >
 	{#each sections as s (s.id)}
 		<a
@@ -50,7 +61,10 @@
 			class="subnav-link"
 			class:is-active={spy.active === s.id}
 			aria-current={spy.active === s.id ? 'location' : undefined}
-			onclick={(e) => spy.jump(e, s.id)}>{s.label}</a
+			onclick={(e) => {
+				spy.jump(e, s.id);
+				onjump?.(s.id);
+			}}>{s.label}</a
 		>
 	{/each}
 </nav>

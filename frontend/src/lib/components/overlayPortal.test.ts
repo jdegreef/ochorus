@@ -226,7 +226,9 @@ describe('overlays that jsdom cannot open', () => {
 		['SelectionBar.svelte', 'class="selbar"'],
 		['ReaderOverlays.svelte', 'class="reader-dock listen-notice"'],
 		['ReaderOverlays.svelte', 'class="saved-notice"'],
-		['notebook/TestimonyDialog.svelte', '<ModalShell']
+		['notebook/TestimonyDialog.svelte', '<ModalShell'],
+		// Not an overlay, but printed alone by hiding <body>'s other children.
+		['PrintFlyer.svelte', 'class="for-flyer"']
 	])('%s: the %s root portals', (file, root) => {
 		expect(read(file)).toMatch(
 			root === '<ModalShell' ? /<\/script>\s*<ModalShell[\s\S]*<\/ModalShell>\s*(<style|$)/ : new RegExp(`${root}[^<]*?use:portal`)

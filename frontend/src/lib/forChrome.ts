@@ -1,4 +1,7 @@
 import type { ForLocale } from './forLinks';
+import type { ForGoal } from './forPicker';
+import type { ForSection } from './forSections';
+import type { ReadingDays } from './planSchedule';
 
 /**
  * The words the "Ochorus for …" template draws around each page's copy — its
@@ -46,6 +49,54 @@ export interface ForChrome {
 	indexDescription: (phrases: string[]) => string;
 	/** "61 books · 59 sermons": singular and plural of each count. */
 	countWords: { book: [string, string]; sermon: [string, string]; plan: [string, string] };
+	/** The jump bar: its label, and each section's name on it. */
+	jumpLabel: string;
+	nav: Record<Exclude<ForSection, 'quote'>, string>;
+	/** "Start a reading group", the plans section's tool ($lib/planTogether). */
+	together: {
+		heading: string;
+		body: string;
+		plan: string;
+		start: string;
+		days: string;
+		dayLabels: Record<ReadingDays, string>;
+		link: string;
+		share: string;
+		/** The message the link is shared with: the plan, and its first day. */
+		message: (plan: string, date: string) => string;
+		totalsAdd: string;
+		totalsAdded: string;
+		totalsSignIn: string;
+		totalsFailed: string;
+		totalsNote: (min: number) => string;
+	};
+	/** A link's QR code: show it, save it, and what it reads as. */
+	qr: {
+		show: string;
+		hide: string;
+		download: string;
+		alt: (what: string) => string;
+	};
+	/** The printable bulletin insert: two to a page, to cut in half. */
+	flyer: {
+		print: string;
+		eyebrow: string;
+		/** "A short reading a day · from Monday 20 October · weekdays". */
+		schedule: (date: string, days: string) => string;
+		scan: string;
+		free: string;
+	};
+	/** A sermon series on the group's calendar. */
+	seriesCalendar: { first: string; add: string; note: string };
+	/** The /for/ index's two questions. */
+	picker: {
+		heading: string;
+		who: string;
+		what: string;
+		roles: Record<string, string>;
+		goals: Record<ForGoal, string>;
+		go: (phrase: string) => string;
+	};
 }
 
 /** "a, b and c" in the language's own "and". */
@@ -110,7 +161,87 @@ export const FOR_CHROME: Record<ForLocale, ForChrome> = {
 		indexLead:
 			'A free library of the great Christian classics, with no ads, no paywall and no account needed. Here is what it offers each of the people who use it: plans to read together, books to start with, printable guides and books to take offline.',
 		indexDescription: (phrases) => `Free Christian classics for ${listOf(phrases, 'and')}.`,
-		countWords: { book: ['book', 'books'], sermon: ['sermon', 'sermons'], plan: ['reading plan', 'reading plans'] }
+		countWords: { book: ['book', 'books'], sermon: ['sermon', 'sermons'], plan: ['reading plan', 'reading plans'] },
+		jumpLabel: 'On this page',
+		nav: {
+			why: 'Why Ochorus',
+			plans: 'Plans',
+			series: 'Sermon series',
+			ideas: 'Ideas',
+			shelves: 'Books',
+			levels: 'Reading levels',
+			writers: 'Writers',
+			guides: 'Leader’s guides',
+			offline: 'Offline',
+			languages: 'Languages',
+			invite: 'Pass it on',
+			questions: 'Questions'
+		},
+		together: {
+			heading: 'Start a reading group',
+			body: 'Choose a plan and the day you begin, then pass on the link. Everyone who opens it is on the same day of the plan. Nobody needs an account, and nothing about anyone is collected.',
+			plan: 'Plan',
+			start: 'Start on',
+			days: 'Read on',
+			dayLabels: {
+				daily: 'Every day',
+				weekdays: 'Weekdays',
+				monsat: 'Monday to Saturday'
+			},
+			link: 'Your group’s link',
+			share: 'Share the link',
+			message: (plan, date) => `Let’s read ${plan} together, one short reading a day, starting ${date}. Open this link to join:`,
+			totalsAdd: 'Also show how many have read',
+			totalsAdded: 'The link now shows how many have read each day',
+			totalsSignIn: 'Sign in to show how many have read',
+			totalsFailed: 'That didn’t work. Please try again.',
+			totalsNote: (min) =>
+				`Numbers only, never names, and only for readers who choose to be counted. They show once ${min} have joined.`
+		},
+		qr: {
+			show: 'QR code',
+			hide: 'Hide QR code',
+			download: 'Download QR code',
+			alt: (what) => `QR code: ${what}`
+		},
+		flyer: {
+			print: 'Print a bulletin insert',
+			eyebrow: 'Read together',
+			schedule: (date, days) => `One short reading a day · from ${date} · ${days.toLowerCase()}`,
+			scan: 'Scan with your phone’s camera, or open',
+			free: 'Free to read on any phone or computer. No ads, and no sign-up needed.'
+		},
+		seriesCalendar: {
+			first: 'First meeting',
+			add: 'Add to calendar',
+			note: 'One event a week naming the sermon to read, with a reminder that morning. Send the file to your group so their calendars have it too.'
+		},
+		picker: {
+			heading: 'Find what you need',
+			who: 'Who are you reading with?',
+			what: 'What would you like to do?',
+			roles: {
+				churches: 'My congregation',
+				'small-groups': 'A small group or Bible study',
+				youth: 'A youth group',
+				missionaries: 'People I serve on the mission field',
+				chaplains: 'Patients, inmates or service members',
+				'bible-colleges': 'Bible college students',
+				schools: 'A class at school',
+				homeschool: 'My homeschool',
+				parents: 'My children'
+			},
+			goals: {
+				together: 'Read a plan together',
+				series: 'Run a sermon series',
+				young: 'Find books for each age',
+				guides: 'Print a leader’s guide',
+				offline: 'Read without the internet',
+				languages: 'Read in other languages',
+				books: 'Find books to start with'
+			},
+			go: (phrase) => `Go to Ochorus for ${phrase}`
+		}
 	},
 	fr: {
 		all: 'Tous',
@@ -158,6 +289,87 @@ export const FOR_CHROME: Record<ForLocale, ForChrome> = {
 		indexLead:
 			'Une bibliothèque gratuite des grands classiques chrétiens, sans publicité, sans abonnement et sans compte à créer. Voici ce qu’elle offre à chacun de ceux qui l’utilisent : des plans pour lire ensemble et des livres par où commencer.',
 		indexDescription: (phrases) => `Des classiques chrétiens gratuits pour ${listOf(phrases, 'et')}.`,
-		countWords: { book: ['livre', 'livres'], sermon: ['sermon', 'sermons'], plan: ['plan de lecture', 'plans de lecture'] }
+		countWords: { book: ['livre', 'livres'], sermon: ['sermon', 'sermons'], plan: ['plan de lecture', 'plans de lecture'] },
+		jumpLabel: 'Sur cette page',
+		nav: {
+			why: 'Pourquoi Ochorus',
+			plans: 'Plans',
+			series: 'Série de sermons',
+			ideas: 'Idées',
+			shelves: 'Livres',
+			levels: 'Niveaux de lecture',
+			writers: 'Auteurs',
+			guides: 'Guides',
+			offline: 'Hors ligne',
+			languages: 'Langues',
+			invite: 'Faire passer le mot',
+			questions: 'Questions'
+		},
+		together: {
+			heading: 'Lancer un groupe de lecture',
+			body: 'Choisissez un plan et le jour où vous commencez, puis transmettez le lien. Tous ceux qui l’ouvrent en sont au même jour du plan. Aucun compte n’est nécessaire, et rien n’est collecté sur personne.',
+			plan: 'Plan',
+			start: 'Commencer le',
+			days: 'Lire',
+			dayLabels: {
+				daily: 'Tous les jours',
+				weekdays: 'En semaine',
+				monsat: 'Du lundi au samedi'
+			},
+			link: 'Le lien de votre groupe',
+			share: 'Partager le lien',
+			message: (plan, date) =>
+				`Lisons ensemble ${plan}, une courte lecture par jour, à partir du ${date}. Ouvrez ce lien pour nous rejoindre :`,
+			totalsAdd: 'Afficher aussi combien ont lu',
+			totalsAdded: 'Le lien affiche maintenant combien ont lu chaque jour',
+			totalsSignIn: 'Connectez-vous pour afficher combien ont lu',
+			totalsFailed: 'Cela n’a pas fonctionné. Veuillez réessayer.',
+			totalsNote: (min) =>
+				`Des chiffres seulement, jamais de noms, et uniquement pour les lecteurs qui choisissent d’être comptés. Ils s’affichent dès que ${min} personnes ont rejoint le groupe.`
+		},
+		qr: {
+			show: 'Code QR',
+			hide: 'Masquer le code QR',
+			download: 'Télécharger le code QR',
+			alt: (what) => `Code QR : ${what}`
+		},
+		flyer: {
+			print: 'Imprimer un encart pour le bulletin',
+			eyebrow: 'Lisons ensemble',
+			schedule: (date, days) => `Une courte lecture par jour · à partir du ${date} · ${days.toLowerCase()}`,
+			scan: 'Scannez avec l’appareil photo de votre téléphone, ou ouvrez',
+			free: 'Gratuit, sur tout téléphone ou ordinateur. Sans publicité et sans inscription.'
+		},
+		seriesCalendar: {
+			first: 'Première rencontre',
+			add: 'Ajouter au calendrier',
+			note: 'Un événement par semaine avec le sermon à lire, et un rappel le matin même. Envoyez le fichier à votre groupe pour que chacun l’ait aussi dans son calendrier.'
+		},
+		picker: {
+			heading: 'Trouvez ce qu’il vous faut',
+			who: 'Avec qui lisez-vous ?',
+			what: 'Que voulez-vous faire ?',
+			roles: {
+				churches: 'Mon Église',
+				'small-groups': 'Un petit groupe ou une étude biblique',
+				youth: 'Un groupe de jeunes',
+				missionaries: 'Ceux que je sers en mission',
+				chaplains: 'Des patients, des détenus ou des militaires',
+				'bible-colleges': 'Des étudiants d’institut biblique',
+				schools: 'Une classe',
+				homeschool: 'L’école à la maison',
+				parents: 'Mes enfants'
+			},
+			goals: {
+				together: 'Lire un plan ensemble',
+				series: 'Suivre une série de sermons',
+				young: 'Trouver des livres pour chaque âge',
+				guides: 'Imprimer un guide',
+				offline: 'Lire sans internet',
+				languages: 'Lire dans d’autres langues',
+				books: 'Trouver par où commencer'
+			},
+			go: (phrase) => `Aller à Ochorus pour ${phrase}`
+		}
 	}
 };
