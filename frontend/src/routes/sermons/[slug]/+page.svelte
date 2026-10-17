@@ -2,6 +2,7 @@
 	import { define } from '$lib/define.svelte';
 	import { mediaFlag } from '$lib/mediaFlag.svelte';
 	import { PHONE } from '$lib/breakpoints';
+	import ForPromo from '$lib/components/ForPromo.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { readerBookmark } from '$lib/readerBookmark.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
@@ -790,6 +791,7 @@
 					</div>
 				{/each}
 			</dl>
+			<ForPromo place="sermon" class="mt-6" />
 		</section>
 	{/if}
 

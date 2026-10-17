@@ -5,6 +5,7 @@
 	import { SITE_URL } from '$lib/config';
 	import { itemList, hreflangAll } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
+	import ForPromo from '$lib/components/ForPromo.svelte';
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
@@ -175,6 +176,7 @@
 		tagline={t('plans.tagline')}
 		meta={plans.length ? planCounts : undefined}
 	/>
+	<ForPromo place="plans-shelf" class="-mt-2 mb-6" />
 	{#snippet planCounts()}
 		{plans.length}
 		{plans.length === 1 ? t('common.planOne') : t('common.planMany')}

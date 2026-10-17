@@ -12,6 +12,7 @@
 	import HomeAudienceHubs from '$lib/components/HomeAudienceHubs.svelte';
 	import AuthorTile from '$lib/components/AuthorTile.svelte';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
+	import HomeForGroups from '$lib/components/HomeForGroups.svelte';
 	import SignupBand from '$lib/components/SignupBand.svelte';
 	import Icon, { type IconName } from '$lib/components/Icon.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
@@ -212,6 +213,9 @@
 
 <!-- For young readers and teens — the hubs this language has. -->
 <HomeAudienceHubs audiences={data.audiences ?? []} />
+
+<!-- The leader behind the reader: a page for each group they lead. -->
+<HomeForGroups />
 
 <!-- Mission teaser -->
 <section class="mt-14 border-y border-border bg-surface-2">
