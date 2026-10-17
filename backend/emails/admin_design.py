@@ -21,6 +21,7 @@ from library.models import AdminAction
 
 from . import blocks as blocks_mod
 from . import images, library_search, merge_tags, starter_templates, translation_jobs
+from . import languages as languages_mod
 from .admin_views import _serialize_broadcast
 from .models import Broadcast, EmailSubscription, EmailTemplate, TemplateCategory
 from .rendering import render_blocks
@@ -258,7 +259,9 @@ class AdminBroadcastTranslationView(AdminAudited, APIView):
 
     _AUDIT = {
         "request": AdminAction.Action.EMAIL_TRANSLATION_REQUEST,
+        "request_all": AdminAction.Action.EMAIL_TRANSLATION_REQUEST,
         "fetch": AdminAction.Action.EMAIL_TRANSLATION_DRAFT,
+        "fetch_all": AdminAction.Action.EMAIL_TRANSLATION_DRAFT,
         "approve": AdminAction.Action.EMAIL_TRANSLATION_APPROVE,
     }
 
@@ -268,6 +271,8 @@ class AdminBroadcastTranslationView(AdminAudited, APIView):
         )
 
     def audit_entry(self, request, response):
+        if str(request.data.get("action", "")).endswith("_all"):
+            return (f"broadcast:{self.kwargs.get('pk')}:all", {"outcome": response.data.get("outcome", {})})
         language = str(request.data.get("language", "")).strip().lower()
         entry = (response.data.get("translations") or {}).get(language) or {}
         return (
@@ -281,8 +286,13 @@ class AdminBroadcastTranslationView(AdminAudited, APIView):
             return Response(status=http_status.HTTP_404_NOT_FOUND)
         action = str(request.data.get("action", ""))
         language = str(request.data.get("language", "")).strip().lower()
+        outcome = None
         try:
-            if action == "request":
+            if action == "request_all":
+                outcome = languages_mod.request_all(broadcast)
+            elif action == "fetch_all":
+                outcome = languages_mod.fetch_all(broadcast)
+            elif action == "request":
                 source = str(request.data.get("source") or "en").strip().lower()
                 translation_jobs.request(broadcast, source, language)
             elif action == "fetch":
@@ -291,7 +301,7 @@ class AdminBroadcastTranslationView(AdminAudited, APIView):
                 translation_jobs.approve(broadcast, language, actor=actor_email(request))
             else:
                 return Response(
-                    {"detail": "action must be request, fetch or approve"},
+                    {"detail": "action must be request, request_all, fetch, fetch_all or approve"},
                     status=http_status.HTTP_400_BAD_REQUEST,
                 )
         except translation_jobs.TranslationJobError as exc:
@@ -301,7 +311,10 @@ class AdminBroadcastTranslationView(AdminAudited, APIView):
                 {"detail": "GitHub is unreachable — try again shortly."},
                 status=http_status.HTTP_502_BAD_GATEWAY,
             )
-        return Response(_serialize_broadcast(broadcast, detail=True))
+        data = _serialize_broadcast(broadcast, detail=True)
+        if outcome is not None:
+            data["outcome"] = outcome
+        return Response(data)
 
 
 class AdminEmailImageView(AdminAudited, APIView):

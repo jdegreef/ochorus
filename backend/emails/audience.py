@@ -8,7 +8,8 @@ audience count reflects "who this targets" and the send reflects "who agreed".
 Supported keys:
 
 * ``locale``          — a code or list of codes (reader's reading language)
-* ``email_language``  — a code: readers whose EMAIL goes out in that language —
+* ``email_language``  — a code or list of codes: readers whose EMAIL goes out in
+  that language —
   the preference center's email language when set, else the reading language
   (as ``rendering.email_language`` decides)
 * ``signup_variant``  — the home sign-up prompt they arrived through
@@ -40,7 +41,11 @@ def resolve(audience: dict):
 
     email_language = audience.get("email_language")
     if email_language:
-        qs = qs.filter(_email_language_q(str(email_language)))
+        codes = [email_language] if isinstance(email_language, str) else list(email_language)
+        match = Q()
+        for code in codes:
+            match |= _email_language_q(str(code))
+        qs = qs.filter(match)
 
     variant = audience.get("signup_variant")
     if variant:
@@ -81,6 +86,29 @@ def _apply_activity(qs, activity):
     if activity == "never_seen":
         return qs.filter(last_seen_at__isnull=True)
     return qs
+
+
+def by_email_language(audience: dict) -> dict[str, int]:
+    """``{language: readers}`` in the audience, by the language their email goes
+    out in (the preference center's email language when set, else the reading
+    language — as ``rendering.email_language`` decides). One grouped query."""
+    from django.db.models import Count, F, Value
+    from django.db.models.functions import Coalesce, NullIf
+
+    from .copy import base_lang
+
+    rows = (
+        resolve(audience)
+        .annotate(lang=Coalesce(NullIf(F("email_subscription__email_locale"), Value("")), F("locale")))
+        .values("lang")
+        .annotate(n=Count("id"))
+        .order_by()
+    )
+    out: dict[str, int] = {}
+    for row in rows:
+        lang = base_lang(row["lang"] or "")
+        out[lang] = out.get(lang, 0) + row["n"]
+    return out
 
 
 def count(audience: dict) -> int:

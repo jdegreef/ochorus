@@ -8,6 +8,8 @@
 	import EmailTemplateGallery from '$lib/components/EmailTemplateGallery.svelte';
 	import EmailLibraryPanel from '$lib/components/EmailLibraryPanel.svelte';
 	import MergeTagMenu from '$lib/components/MergeTagMenu.svelte';
+	import EmailLanguagesPanel from '$lib/components/EmailLanguagesPanel.svelte';
+	import EmailTranslationReview from '$lib/components/EmailTranslationReview.svelte';
 	import { ApiError, apiErrorDetail } from '$lib/api';
 	import { localeName } from '$lib/lang.svelte';
 	import { locales } from '$lib/paraglide/runtime';
@@ -64,6 +66,8 @@
 		audience_count: number;
 		locked: boolean;
 		translations: NonNullable<AdminBroadcast['translations']>;
+		languages: AdminBroadcast['languages'];
+		strict_locale: boolean;
 	};
 
 	const list = adminResource(listBroadcasts, 'Something went wrong loading broadcasts.');
@@ -105,7 +109,9 @@
 			status_reason: b.status_reason,
 			audience_count: b.audience_count,
 			locked: b.locked,
-			translations: b.translations ?? {}
+			translations: b.translations ?? {},
+			languages: b.languages,
+			strict_locale: b.strict_locale
 		};
 	}
 
@@ -206,7 +212,8 @@
 			subject: draft.subject,
 			content: draft.content,
 			audience: draft.audience,
-			from_address: draft.from_address
+			from_address: draft.from_address,
+			strict_locale: draft.strict_locale
 		});
 		draft = toDraft(b);
 	}
@@ -394,6 +401,59 @@
 			error = apiErrorDetail(e);
 		} finally {
 			busy = false;
+		}
+	}
+
+	// --- Every language at once (emails/languages.py) -------------------------
+	let reviewing = $state<string | null>(null);
+
+	async function allLanguages(action: 'request_all' | 'fetch_all') {
+		if (!draft) return;
+		if (action === 'request_all' && !confirm(`Ask for AI drafts of the ${draft.languages?.missing.length ?? 0} missing languages? Each goes to the translation queue; check back once a worker has run.`)) return;
+		busy = true;
+		error = '';
+		notice = '';
+		try {
+			if (!readOnly) await persist(); // drafts are made from what is saved
+			const res = await broadcastTranslation(draft.id, action);
+			draft = toDraft(res);
+			const outcome = Object.entries(res.outcome ?? {});
+			const problems = outcome.filter(([, v]) => !['requested', 'draft'].includes(v));
+			const done = outcome.filter(([, v]) => v === (action === 'request_all' ? 'requested' : 'draft')).map(([c]) => localeLabel(c));
+			notice =
+				action === 'request_all'
+					? `Asked for ${done.length} AI draft${done.length === 1 ? '' : 's'}.`
+					: done.length
+						? `Back and waiting for your review: ${done.join(', ')}.`
+						: 'No drafts are back yet.';
+			if (problems.length) error = problems.map(([c, why]) => `${localeLabel(c)}: ${why}`).join(' · ');
+		} catch (e) {
+			error = apiErrorDetail(e);
+		} finally {
+			busy = false;
+		}
+	}
+
+	async function setStrict(strict: boolean) {
+		if (!draft || readOnly) return;
+		draft.strict_locale = strict;
+		busy = true;
+		try {
+			await persist();
+		} catch (e) {
+			error = apiErrorDetail(e);
+		} finally {
+			busy = false;
+		}
+	}
+
+	async function approveReviewed() {
+		if (!reviewing) return;
+		const code = reviewing;
+		await translation('approve', code);
+		if (draft?.translations[code]?.state === 'approved') {
+			reviewing = null;
+			editLocale = code;
 		}
 	}
 
@@ -589,6 +649,34 @@
 				</label>
 			</div>
 		</section>
+
+		{#if draft.languages}
+			<EmailLanguagesPanel
+				overview={draft.languages}
+				{busy}
+				{readOnly}
+				onRequestAll={() => allLanguages('request_all')}
+				onFetchAll={() => allLanguages('fetch_all')}
+				onRequest={(code) => translation('request', code)}
+				onReview={(code) => (reviewing = code)}
+				onOpen={(code) => { reviewing = null; editLocale = code; }}
+				onStrict={setStrict}
+			/>
+		{/if}
+
+		{#if reviewing && draft.languages?.source && draft.content[reviewing] && draft.content[draft.languages.source]}
+			<EmailTranslationReview
+				sourceName={localeLabel(draft.languages.source)}
+				targetName={localeLabel(reviewing)}
+				sourceSubject={draft.subject[draft.languages.source] ?? ''}
+				source={draft.content[draft.languages.source]}
+				bind:subject={draft.subject[reviewing]}
+				bind:target={draft.content[reviewing]}
+				{busy}
+				onApprove={approveReviewed}
+				onClose={() => { editLocale = reviewing!; reviewing = null; }}
+			/>
+		{/if}
 
 		<!-- Content per language -->
 		<section class="mb-5 rounded-card border border-border bg-surface p-4" onfocusin={trackTagTarget}>

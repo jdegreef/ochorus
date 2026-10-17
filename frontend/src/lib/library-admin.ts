@@ -1581,8 +1581,8 @@ export interface BroadcastBlock {
 
 export interface BroadcastAudience {
 	locale?: string;
-	/** Readers whose email goes out in this language (set by "new in your language"). */
-	email_language?: string;
+	/** Readers whose email goes out in this language (or any of these). */
+	email_language?: string | string[];
 	signup_variant?: string;
 	activity?: 'active_7d' | 'active_30d' | 'lapsed_30d' | 'never_seen';
 	has_plan?: boolean;
@@ -1617,11 +1617,13 @@ export interface AdminBroadcast {
 	/** AI-drafted translations per language — admin-only review state. */
 	translations?: Record<string, EmailTranslation>;
 	content?: Record<string, BroadcastBlock>;
+	languages?: LanguagesOverview;
 	stats?: EmailMetricRow;
 	checks?: BroadcastCheck[];
 }
 
 export interface BroadcastPayload {
+	strict_locale?: boolean;
 	name?: string;
 	subject?: Record<string, string>;
 	content?: Record<string, BroadcastBlock>;
@@ -1662,15 +1664,43 @@ export interface EmailTranslation {
 	approved_by?: string;
 }
 
+/** Where one language of a broadcast stands (backend `emails/languages.py`). */
+export type LanguageStatus = 'source' | 'approved' | 'draft' | 'requested' | 'written' | 'incomplete' | 'missing';
+
+export interface LanguageRow {
+	code: string;
+	name: string;
+	native_name: string;
+	status: LanguageStatus;
+	/** The source changed after this translation was made. */
+	stale: boolean;
+	issue_url: string;
+	approved_by: string;
+	/** Readers in the audience whose email goes out in this language. */
+	readers: number;
+	/** Library items in the email with no edition in this language (left out). */
+	gaps: { type: string; slug: string }[];
+	/** Ready to go out (source, approved, or written by hand). */
+	sendable: boolean;
+}
+
+export interface LanguagesOverview {
+	source: string | null;
+	strict_locale: boolean;
+	rows: LanguageRow[];
+	missing: string[];
+}
+
 /** Ask for an AI draft (`request`), pull it in once it's back (`fetch`), or
- *  mark a reviewed draft approved (`approve`). */
+ *  mark a reviewed draft approved (`approve`) — or ask for every missing
+ *  language / check every request at once (`request_all` / `fetch_all`). */
 export const broadcastTranslation = (
 	id: number,
-	action: 'request' | 'fetch' | 'approve',
-	language: string,
+	action: 'request' | 'fetch' | 'approve' | 'request_all' | 'fetch_all',
+	language = '',
 	source?: string
 ) =>
-	apiFetch<AdminBroadcast>(`/api/admin/broadcasts/${id}/translations/`, {
+	apiFetch<AdminBroadcast & { outcome?: Record<string, string> }>(`/api/admin/broadcasts/${id}/translations/`, {
 		method: 'POST',
 		body: JSON.stringify({ action, language, source })
 	});

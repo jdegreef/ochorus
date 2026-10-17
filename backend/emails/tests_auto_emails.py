@@ -54,6 +54,10 @@ def _live(*codes):
     languages.invalidate()
 
 
+def tearDownModule():
+    languages.invalidate()  # the registry cache outlives each test's rows
+
+
 def _book(slug, lang, *, author, created=None, title=None):
     book = Book.objects.create(author=author, slug=slug, language=lang, title=title or slug.title())
     if created is not None:

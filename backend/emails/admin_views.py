@@ -33,6 +33,7 @@ from . import broadcasts as broadcasts_mod
 from . import direct as direct_mod
 from . import health, preflight, translation_jobs
 from . import history as history_mod
+from . import languages as languages_mod
 from .models import (
     Broadcast,
     BroadcastStatus,
@@ -180,6 +181,7 @@ def _serialize_broadcast(b: Broadcast, *, detail: bool = False, checks=None) -> 
         # AI-drafted translations per language (admin-only review state), with
         # whether the source changed since each was asked for.
         data["translations"] = translation_jobs.states(b)
+        data["languages"] = languages_mod.overview(b)
         data["content"] = blocks_mod.as_blocks(b.content)
         data["stats"] = health.metrics(EmailMessage.objects.filter(broadcast=b))
         if b.can_send:
@@ -190,7 +192,7 @@ def _serialize_broadcast(b: Broadcast, *, detail: bool = False, checks=None) -> 
 
 
 #: The fields an admin edits (everything else is the send's own state).
-_EDITABLE = ("name", "subject", "content", "audience", "from_address")
+_EDITABLE = ("name", "subject", "content", "audience", "from_address", "strict_locale")
 
 
 def _apply_fields(broadcast: Broadcast, data) -> None:
@@ -204,6 +206,8 @@ def _apply_fields(broadcast: Broadcast, data) -> None:
         broadcast.content = blocks_mod.clean_content(data["content"])
     if "from_address" in data:
         broadcast.from_address = str(data["from_address"]).strip()[:200]
+    if isinstance(data.get("strict_locale"), bool):
+        broadcast.strict_locale = data["strict_locale"]
 
 
 class AdminBroadcastsView(AdminAudited, APIView):
