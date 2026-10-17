@@ -2072,7 +2072,10 @@ export const getAutomationVocabulary = () => apiFetch<AutomationVocabulary>('/ap
 
 export const saveAutomation = (
 	id: number,
-	payload: Partial<Pick<AutomationDetail, 'name' | 'trigger' | 'steps' | 'exit' | 'stream'>>
+	payload: Partial<Pick<AutomationDetail, 'name' | 'trigger' | 'steps' | 'exit' | 'stream'>> & {
+		/** Confirm that changing the steps ends the runs of readers part-way through. */
+		end_runs?: boolean;
+	}
 ) =>
 	apiFetch<AutomationDetail>(`/api/admin/automations/${id}/`, { method: 'PATCH', body: JSON.stringify(payload) });
 

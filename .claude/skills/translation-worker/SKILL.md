@@ -39,7 +39,8 @@ three of them gives none of them one.
    run reported the article queue empty while it was not. Use `--limit 1000`
    (or paginate), and if the count equals the limit, you have NOT seen it all.
    **Email jobs go first.** A title `[translation] email:broadcast-<id> -> <lang>`
-   (or `email:lifecycle-<step>` — an edited onboarding email, same recipe)
+   (or `email:lifecycle-<step>` — an edited onboarding email — or
+   `email:automation-email-<id>` — an automation's email; same recipe)
    is an AI draft of a campaign email someone is waiting on — a few hundred
    words, minutes of work, and it ships nothing to the repo. Take the oldest
    email job before any other type, whatever its age (recipe: "email" below).

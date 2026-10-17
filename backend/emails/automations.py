@@ -25,10 +25,10 @@ send twice.
 
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 
-from django.db import transaction
 from django.utils import timezone
 
 from accounts.models import UserProfile
@@ -54,8 +54,13 @@ from .rendering import email_language, render_blocks, sendable_locales
 from .sending import deliver
 from .streams import STREAM_KEYS
 
+logger = logging.getLogger(__name__)
+
 #: Runs advanced per cron pass at most; the rest are picked up next pass.
 BATCH = 500
+#: How long before the switch-on a synced event may have happened (a book
+#: finished offline the evening before still counts).
+SYNC_GRACE = timedelta(days=1)
 
 
 @dataclass(frozen=True)
@@ -251,11 +256,12 @@ def language_problems(email: AutomationEmail, code: str) -> list[str]:
     subject = str(email.subject.get(code) or "")
     content = email.content.get(code) or {}
     blocks = blocks_mod.blocks_for(content)
+    library = blocks_mod.library_editions({code: blocks})
     out = []
     if not subject.strip():
         out.append("the subject is empty")
-    if not blocks_mod.has_body(blocks):
-        out.append("it has no content")
+    if not blocks_mod.has_body(blocks, lambda b: code in library.get(b["type"], {}).get(b["slug"], set())):
+        out.append("it has no content in this language")
     texts = [subject, str(content.get("preheader", "")), *(b.get(f, "") for b in blocks for f in blocks_mod.WORD_FIELDS)]
     hint = _placeholder(texts)
     if hint in STARTER_HINTS:
@@ -287,8 +293,14 @@ def _candidates(automation: Automation, start: datetime, end: datetime) -> list[
     if kind == "signed_up":
         ids = UserProfile.objects.filter(created_at__gt=start, created_at__lte=end).values_list("id", flat=True)
         return [(pk, {}) for pk in ids]
+    # Reading rows carry the reader's own clock (an offline finish syncs later
+    # with its earlier time), so a scan windows on the server's updated_at and
+    # then asks only that the event itself came after the switch-on.
+    baseline = automation.enabled_at - SYNC_GRACE
     if kind == "finished_book":
-        rows = ReadingProgress.objects.filter(kind=WorkKind.BOOK, finished_at__gt=start, finished_at__lte=end)
+        rows = ReadingProgress.objects.filter(
+            kind=WorkKind.BOOK, updated_at__gt=start, updated_at__lte=end, finished_at__gte=baseline
+        )
         if trigger.get("book"):
             rows = rows.filter(book_slug=trigger["book"])
         if trigger.get("author"):
@@ -299,7 +311,7 @@ def _candidates(automation: Automation, start: datetime, end: datetime) -> list[
             found.setdefault(row["profile_id"], {"book": row["book_slug"], "language": row["language"]})
         return list(found.items())
     if kind == "started_plan":
-        rows = PlanProgress.objects.filter(started_at__gt=start, started_at__lte=end)
+        rows = PlanProgress.objects.filter(updated_at__gt=start, updated_at__lte=end, started_at__gte=baseline)
         if trigger.get("plan"):
             rows = rows.filter(plan_slug=trigger["plan"])
         found = {}
@@ -389,7 +401,10 @@ def _send(run: AutomationRun, email: AutomationEmail, now: datetime, cache: dict
         run.next_at = last + MIN_GAP
         return "held"
     lang = email_language(profile, subscription)
-    if lang not in ready_locales(email):
+    ready = cache.get(("ready", email.pk))
+    if ready is None:
+        ready = cache[("ready", email.pk)] = ready_locales(email)
+    if lang not in ready:
         return "skipped"  # not written (or not approved) in their language
     to_email = verified_email(profile)
     if not to_email:
@@ -478,8 +493,14 @@ def run_due(now: datetime | None = None) -> dict[str, int]:
     for run in due:
         if run.automation_id not in emails:
             emails[run.automation_id] = {e.pk: e for e in run.automation.emails.all()}
-        with transaction.atomic():
+        # No transaction around it: a send that went out stays recorded (its
+        # key makes a retry a no-op) even if a later step of this run fails.
+        try:
             advance(run, now, emails=emails[run.automation_id], cache=cache)
+        except Exception:
+            logger.exception("automation %s: run %s failed", run.automation_id, run.pk)
+            tally["failed"] = tally.get("failed", 0) + 1
+            continue
         tally["advanced"] += 1
     return tally
 
@@ -491,3 +512,10 @@ def set_enabled(automation: Automation, enabled: bool) -> None:
         automation.enabled_at = timezone.now()
         automation.scanned_to = automation.enabled_at
     automation.enabled = enabled
+
+
+def end_active_runs(automation: Automation, reason: str) -> int:
+    """End every reader's run part-way through (the steps changed under them)."""
+    return AutomationRun.objects.filter(automation=automation, status=RunStatus.ACTIVE).update(
+        status=RunStatus.EXITED, reason=reason[:200], finished_at=timezone.now()
+    )

@@ -54,7 +54,9 @@ def _finish(profile, slug, when):
 @mock.patch("emails.sending.send_email", return_value="rid")
 class EngineTests(TestCase):
     def setUp(self):
-        self.now = timezone.now()
+        # The pass runs a minute after the test writes its rows (scans window on
+        # the server's updated_at).
+        self.now = timezone.now() + timedelta(minutes=1)
         murray = Author.objects.create(slug="murray", name="Andrew Murray")
         Book.objects.create(author=murray, slug="surrender", language="en", title="Absolute Surrender")
         Book.objects.create(author=murray, slug="humility", language="en", title="Humility")
@@ -246,3 +248,66 @@ class HintTests(TestCase):
         email.save()
         self.assertEqual(auto.ready_locales(email), [])
         self.assertTrue(any("template hint" in p for p in auto.problems(a)))
+
+
+@SENDING
+@mock.patch("emails.sending.send_email", return_value="rid")
+class ReviewFixTests(TestCase):
+    def setUp(self):
+        self.now = timezone.now()
+        self.reader = _make_profile(name="Ana Reader")
+
+    def test_a_finish_that_syncs_late_still_enrols(self, send):
+        a, _ = _flow({"type": "finished_book"}, lambda e: [{"id": "e", "type": "email", "email": e.pk}], at=self.now - timedelta(hours=5))
+        Automation.objects.filter(pk=a.pk).update(scanned_to=self.now - timedelta(minutes=1))
+        # Finished offline two hours ago; reaches the server only now.
+        _finish(self.reader, "surrender", self.now - timedelta(hours=2))
+        self.assertEqual(auto.run_due(self.now + timedelta(seconds=1))["enrolled"], 1)
+
+    def test_one_failing_run_doesnt_stop_the_pass(self, send):
+        _flow({"type": "signed_up"}, lambda e: [{"id": "e", "type": "email", "email": e.pk}], at=self.now - timedelta(days=1))
+        other = _make_profile(email="b@example.com")
+        later = self.now + timedelta(minutes=1)
+        real = auto.advance
+
+        def flaky(run, now, **kw):
+            if run.profile_id == self.reader.pk:
+                raise RuntimeError("boom")
+            return real(run, now, **kw)
+
+        with mock.patch.object(auto, "advance", side_effect=flaky), self.assertLogs("emails.automations", "ERROR"):
+            tally = auto.run_due(later)
+        self.assertEqual((tally["advanced"], tally["failed"]), (1, 1))
+        self.assertEqual(AutomationRun.objects.get(profile=other).status, RunStatus.DONE)
+
+    def test_a_test_send_doesnt_take_the_readers_slot(self, send):
+        from .lifecycle import last_lifecycle_sent_at
+
+        EmailMessage.objects.create(
+            recipient=self.reader, to_email="a@example.com", kind=EmailKind.LIFECYCLE, lifecycle_step="automation-test:1",
+            idempotency_key="t", status=SendStatus.SENT, sent_at=self.now, is_test=True,
+        )
+        self.assertIsNone(last_lifecycle_sent_at(self.reader))
+
+
+@override_settings(DEBUG=True)  # loopback test client → admin gate bypassed
+class EditSafetyTests(TestCase):
+    def _patch(self, pk, payload):
+        return self.client.patch(f"/api/admin/automations/{pk}/", data=json.dumps(payload), content_type="application/json")
+
+    def test_changing_steps_under_readers_asks_first_then_ends_their_runs(self):
+        a, email = _flow({"type": "signed_up"}, lambda e: [{"id": "e", "type": "email", "email": e.pk}], enabled=False)
+        AutomationRun.objects.create(automation=a, profile=_make_profile(), next_at=timezone.now())
+        steps = [{"id": "w", "type": "wait", "days": 1}, *a.steps]
+        res = self._patch(a.pk, {"steps": steps})
+        self.assertEqual(res.status_code, 409)
+        self.assertTrue(res.json()["needs_end_runs"])
+        res = self._patch(a.pk, {"steps": steps, "end_runs": True})
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(AutomationRun.objects.get().status, RunStatus.EXITED)
+
+    def test_a_live_flow_cant_be_saved_broken(self):
+        a, _ = _flow({"type": "signed_up"}, lambda e: [{"id": "c", "type": "condition", "check": "has_plan", "negate": False}, {"id": "e", "type": "email", "email": e.pk}])
+        steps = [{**a.steps[0], "check": ""}, a.steps[1]]
+        self.assertEqual(self._patch(a.pk, {"steps": steps}).status_code, 409)
+        self.assertEqual(Automation.objects.get(pk=a.pk).steps[0]["check"], "has_plan")

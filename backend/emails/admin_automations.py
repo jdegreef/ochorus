@@ -32,6 +32,7 @@ from .models import (
     EmailMessage,
     EmailSubscription,
     EmailTemplate,
+    RunStatus,
     SendStatus,
     idempotency_key,
 )
@@ -134,13 +135,26 @@ class AdminAutomationDetailView(AdminAudited, APIView):
         if a is None:
             return Response(status=http_status.HTTP_404_NOT_FOUND)
         data = request.data
+        end_runs = False
         if "steps" in data:
             steps = auto.clean_steps(data["steps"])
-            if a.enabled and _shape(steps) != _shape(a.steps):
-                return Response(
-                    {"detail": "Turn it off to add, remove or reorder steps — readers part-way through are pinned to a step."},
-                    status=http_status.HTTP_409_CONFLICT,
-                )
+            if _shape(steps) != _shape(a.steps):
+                if a.enabled:
+                    return Response(
+                        {"detail": "Turn it off to add, remove or reorder steps — readers part-way through are pinned to a step."},
+                        status=http_status.HTTP_409_CONFLICT,
+                    )
+                active = a.runs.filter(status=RunStatus.ACTIVE).count()
+                if active and not data.get("end_runs"):
+                    return Response(
+                        {
+                            "detail": f"{active} reader{'s are' if active != 1 else ' is'} part-way through. Changing "
+                            "the steps ends their runs (they won't get the rest).",
+                            "needs_end_runs": True,
+                        },
+                        status=http_status.HTTP_409_CONFLICT,
+                    )
+                end_runs = bool(active)
             a.steps = steps
         if "name" in data:
             a.name = str(data["name"]).strip()[:200] or a.name
@@ -155,6 +169,13 @@ class AdminAutomationDetailView(AdminAudited, APIView):
             a.exit = auto.clean_exit(data["exit"])
         if "stream" in data and data["stream"] in STREAM_KEYS:
             a.stream = data["stream"]
+        if a.enabled:
+            # A live flow must stay one that could have been switched on.
+            issues = auto.problems(a)
+            if issues:
+                return Response({"detail": issues[0], "problems": issues}, status=http_status.HTTP_409_CONFLICT)
+        if end_runs:
+            auto.end_active_runs(a, "the automation's steps changed")
         a.updated_by = actor_email(request)[:254]
         a.save()
         return Response(_detail(a))

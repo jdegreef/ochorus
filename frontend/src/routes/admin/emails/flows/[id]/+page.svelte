@@ -116,18 +116,21 @@
 
 	const selectedStep = $derived(steps.find((s) => s.id === selected));
 
-	async function run<T>(fn: () => Promise<T>, done: string, after?: (r: T) => void) {
+	/** Run an action; returns whether it went through. */
+	async function run<T>(fn: () => Promise<T>, done: string, after?: (r: T) => void): Promise<boolean> {
 		busy = true;
 		error = '';
 		notice = '';
 		try {
 			const r = await fn();
-			after?.(r);
 			notice = done;
+			after?.(r); // may say something more specific
+			return true;
 		} catch (e) {
 			const body = e instanceof ApiError ? (e.body as { problems?: string[] }) : undefined;
 			if (body?.problems) problems = body.problems;
 			error = apiErrorDetail(e);
+			return false;
 		} finally {
 			busy = false;
 		}
@@ -140,11 +143,32 @@
 		emails = { ...emails, ...unsaved }; // a flow save doesn't drop unsaved email edits
 	};
 
-	const saveFlow = () =>
-		run(() => saveAutomation(id, { name, trigger, steps, exit: exitConds, stream }), 'Saved.', keepEmails);
+	async function saveFlow(): Promise<boolean> {
+		const payload = { name, trigger, steps, exit: exitConds, stream };
+		try {
+			busy = true;
+			error = '';
+			const d = await saveAutomation(id, payload);
+			keepEmails(d);
+			notice = 'Saved.';
+			return true;
+		} catch (e) {
+			const body = e instanceof ApiError ? (e.body as { needs_end_runs?: boolean; problems?: string[] }) : undefined;
+			if (body?.needs_end_runs) {
+				busy = false;
+				if (!confirm(`${apiErrorDetail(e)}\n\nSave anyway?`)) return false;
+				return run(() => saveAutomation(id, { ...payload, end_runs: true }), 'Saved. Readers who were part-way through have been stopped.', keepEmails);
+			}
+			if (body?.problems) problems = body.problems;
+			error = apiErrorDetail(e);
+			return false;
+		} finally {
+			busy = false;
+		}
+	}
 
 	async function switchTo(on: boolean) {
-		if (on && dirty) await saveFlow();
+		if (on && dirty && !(await saveFlow())) return; // never switch on what didn't save
 		if (on && !confirm('Turn it on? Readers who trigger it from now on go through it; nobody from before.')) return;
 		await run(() => automationAction(id, on ? 'enable' : 'disable'), on ? 'It’s on.' : 'It’s off — readers part-way through wait where they are.', keepEmails);
 	}
