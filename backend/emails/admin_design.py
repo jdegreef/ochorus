@@ -185,7 +185,10 @@ class AdminEmailTemplateDetailView(AdminAudited, APIView):
         return AdminAction.Action.EMAIL_TEMPLATE_SAVE
 
     def audit_entry(self, request, response):
-        return (f"email-template:{self.kwargs.get('pk')}", {})
+        detail = {}
+        if request.method == "PATCH" and isinstance(response.data, dict):
+            detail = {"edited": True, "name": response.data.get("name", "")}
+        return (f"email-template:{self.kwargs.get('pk')}", detail)
 
     def patch(self, request, pk):
         template = EmailTemplate.objects.filter(pk=pk).first()

@@ -64,7 +64,7 @@ STARTERS: list[dict] = [
             {"type": "heading", "text": "Now in the library"},
             _book("the-practice-of-the-presence-of-god"),
             {"type": "text", "text": "[Why this book, and who it is for — two or three sentences.]"},
-            {"type": "button", "label": "Start reading", "path": "books/the-practice-of-the-presence-of-god/"},
+            {"type": "button", "label": "Browse the library", "path": "books"},
             _letter_close(),
         ],
     },
@@ -119,8 +119,8 @@ STARTERS: list[dict] = [
     {
         "key": "book-recommendation",
         "name": "Book recommendation",
-        "category": C.AUTOMATION,
-        "description": "Personal: the book they are reading, and one to read next.",
+        "category": C.NEWSLETTER,
+        "description": "Personal: the book each reader is in the middle of, and one to read next.",
         "subject": "One to read next",
         "preheader": "Picked for you from the library.",
         "blocks": [

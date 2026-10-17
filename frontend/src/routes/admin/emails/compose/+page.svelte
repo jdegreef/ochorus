@@ -121,6 +121,8 @@
 	}
 
 	async function newBroadcast(template?: EmailTemplateBase) {
+		if (busy) return; // a double click must not make two drafts
+		busy = true;
 		error = '';
 		try {
 			const b = await createBroadcast({
@@ -133,6 +135,8 @@
 			await openEditor(b.id);
 		} catch (e) {
 			error = apiErrorDetail(e);
+		} finally {
+			busy = false;
 		}
 	}
 

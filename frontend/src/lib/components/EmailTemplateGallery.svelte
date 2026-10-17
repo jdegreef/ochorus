@@ -86,17 +86,21 @@
 		<ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
 			{#each shown as c (c.id)}
 				<li class="flex flex-col overflow-hidden rounded-card border border-border bg-surface">
-					<EmailThumbnail locale={firstLocale(c)} subject={c.subject[firstLocale(c)] ?? ''} content={c.content[firstLocale(c)]} />
+					{#if c.content[firstLocale(c)]}
+						<EmailThumbnail locale={firstLocale(c)} subject={c.subject[firstLocale(c)] ?? ''} content={c.content[firstLocale(c)]} />
+					{:else}
+						<div class="flex h-[220px] items-center justify-center bg-surface-2 text-micro text-muted" aria-hidden="true">Empty</div>
+					{/if}
 					<div class="flex flex-1 flex-col gap-1 p-3">
 						<div class="flex items-baseline justify-between gap-2">
 							<h3 class="text-small font-semibold text-text">{c.name}</h3>
 							<span class="shrink-0 text-micro text-muted">{c.saved ? 'Saved' : categoryLabel(c.category)}</span>
 						</div>
 						{#if c.description}<p class="flex-1 text-micro text-muted">{c.description}</p>{/if}
-						<p class="text-micro text-muted">{c.locales.join(', ')}{c.saved?.created_by ? ` · ${c.saved.created_by}` : ''}</p>
+						<p class="text-micro text-muted">{c.locales.join(', ') || 'empty'}{c.saved?.created_by ? ` · ${c.saved.created_by}` : ''}</p>
 						<div class="mt-2 flex flex-wrap gap-1">
 							<button class="btn btn-primary btn-sm" onclick={() => onUse(c)} disabled={busy}>Use</button>
-							<button class="btn btn-ghost btn-sm" onclick={() => (previewing = c)}>Preview</button>
+							<button class="btn btn-ghost btn-sm" onclick={() => (previewing = c)} disabled={!c.content[firstLocale(c)]}>Preview</button>
 							{#if c.saved}
 								<button class="btn btn-ghost btn-sm" onclick={() => onEdit(c.saved!)} disabled={busy}>Edit</button>
 								<button class="btn btn-ghost btn-sm text-danger" onclick={() => onDelete(c.saved!)} disabled={busy}>Delete</button>

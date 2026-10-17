@@ -487,6 +487,12 @@ class EmailTemplate(models.Model):
 
     class Meta:
         ordering = ["name"]
+        constraints = [
+            models.CheckConstraint(
+                condition=models.Q(category__in=TemplateCategory.values),
+                name="emailtemplate_category_known",
+            ),
+        ]
 
     def __str__(self) -> str:  # pragma: no cover - repr only
         return f"template<{self.name}>"

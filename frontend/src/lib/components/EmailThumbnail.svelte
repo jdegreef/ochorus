@@ -6,6 +6,7 @@
 	 * iframe that can't be clicked into.
 	 */
 	import { previewEmail, type BroadcastBlock } from '$lib/library-admin';
+	import { thumbnailCache } from './emailThumbnailCache';
 
 	let {
 		locale,
@@ -27,8 +28,18 @@
 		const observer = new IntersectionObserver((entries) => {
 			if (!entries.some((e) => e.isIntersecting)) return;
 			observer.disconnect();
-			previewEmail(locale, subject, $state.snapshot(content), controller.signal)
-				.then((r) => (html = r.html))
+			const snap = $state.snapshot(content);
+			const key = JSON.stringify([locale, subject, snap]);
+			const cached = thumbnailCache.get(key);
+			if (cached) {
+				html = cached;
+				return;
+			}
+			previewEmail(locale, subject, snap, controller.signal)
+				.then((r) => {
+					thumbnailCache.set(key, r.html);
+					html = r.html;
+				})
 				.catch(() => {
 					if (!controller.signal.aborted) failed = true;
 				});

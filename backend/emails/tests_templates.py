@@ -49,6 +49,8 @@ class StarterTests(SimpleTestCase):
 
     def test_hint_pattern(self):
         self.assertTrue(PLACEHOLDER.search("Now in the library: [Book title]"))
+        self.assertTrue(PLACEHOLDER.search("[عنوان الكتاب]"))
+        self.assertTrue(PLACEHOLDER.search("[Écrivez votre note]"))
         self.assertFalse(PLACEHOLDER.search("Romans [sic] and [1]"))
 
 
@@ -58,6 +60,22 @@ class PlaceholderCheckTests(TestCase):
         b = _broadcast(subject=starter["subject"], content=starter["content"])
         errors = {c["code"] for c in run_checks(b) if c["level"] == "error"}
         self.assertIn("placeholder:en", errors)
+
+    def test_an_editors_bracket_only_warns(self):
+        b = _broadcast(
+            subject={"en": "John 3:16"},
+            content={"en": {"preheader": "", "blocks": [{"type": "quote", "text": "For [God] so loved the world", "attribution": "John 3:16"}]}},
+        )
+        levels = {c["code"]: c["level"] for c in run_checks(b)}
+        self.assertEqual(levels["placeholder:en"], "warning")
+
+    def test_a_hint_in_the_preheader_is_caught(self):
+        b = _broadcast(
+            subject={"en": "News"},
+            content={"en": {"preheader": "[This month at Ochorus]", "blocks": [{"type": "text", "text": "Hi"}]}},
+        )
+        levels = {c["code"]: c["level"] for c in run_checks(b)}
+        self.assertEqual(levels["placeholder:en"], "error")
 
     def test_own_words_pass(self):
         b = _broadcast(
