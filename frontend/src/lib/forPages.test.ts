@@ -429,10 +429,10 @@ describe('the footer sentence', () => {
 	it('reads as prose in each page language, every audience linked once', () => {
 		const join = (l: 'en' | 'fr') => forSentence(l).map((p) => p.text).join('');
 		expect(join('en')).toBe(
-			'churches, small groups, youth ministries, missionaries, chaplains, Bible colleges, schools, homeschool families, and parents'
+			'churches, pastors, small groups, new believers, evangelism, prayer groups, women’s ministry, men’s ministry, youth ministries, campus ministries, missionaries, African churches, chaplains, prison ministry, Bible colleges, schools, homeschool families, and parents'
 		);
 		expect(join('fr')).toBe(
-			'les Églises, les petits groupes, la pastorale des jeunes, les missionnaires, les aumôniers, les instituts bibliques, les écoles, l’école à la maison et les parents'
+			'les Églises, les pasteurs, les petits groupes, les nouveaux croyants, l’évangélisation, les groupes de prière, les femmes, les hommes, la pastorale des jeunes, les étudiants, les missionnaires, les Églises d’Afrique, les aumôniers, les prisons, les instituts bibliques, les écoles, l’école à la maison et les parents'
 		);
 		for (const l of ['en', 'fr'] as const) {
 			expect(forSentence(l).filter((p) => p.slug).map((p) => p.slug)).toEqual(FOR_LINKS.map((d) => d.slug));
