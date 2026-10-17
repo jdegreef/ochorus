@@ -171,6 +171,10 @@ def _serialize_broadcast(b: Broadcast, *, detail: bool = False, checks=None) -> 
         "status_reason": b.status_reason,
         "send_started_at": b.send_started_at.isoformat() if b.send_started_at else None,
         "locked": b.is_locked,
+        # What consent it obeys, and — for one the system built — which one.
+        "stream": b.stream,
+        "auto_key": b.auto_key,
+        "strict_locale": b.strict_locale,
     }
     if detail:
         # AI-drafted translations per language (admin-only review state), with

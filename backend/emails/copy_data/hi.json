@@ -138,5 +138,36 @@
   "cta_path": "",
   "signoff": "अनुग्रह और शांति,",
   "signature": "Ochorus टीम"
+ },
+ "digest": {
+  "subject": "Ochorus पर आपका महीना",
+  "preheader": "पुस्तकालय में नया क्या है, और आगे पढ़ने के लिए कुछ पुस्तकें।",
+  "heading": "Ochorus पर आपका महीना",
+  "greeting": "नमस्ते {name},",
+  "paragraphs": [
+   "इस महीने पुस्तकालय में यह नया आया है, साथ में कुछ पुस्तकें जिन्हें आगे पढ़ना सार्थक होगा।"
+  ],
+  "cta_label": "पुस्तकालय देखें",
+  "cta_path": "books",
+  "signoff": "अनुग्रह और शांति,",
+  "signature": "Ochorus टीम",
+  "continue_heading": "पढ़ना जारी रखें",
+  "continue_label": "अध्याय {chapter} से आगे पढ़ें",
+  "new_heading": "इस महीने नया",
+  "quote_heading": "सहेजने योग्य एक पंक्ति",
+  "plan_heading": "शुरू करने के लिए एक योजना"
+ },
+ "new_in_language": {
+  "subject": "Ochorus पर {language} में नया",
+  "preheader": "अभी-अभी आपकी भाषा में प्रकाशित।",
+  "heading": "{language} में नया",
+  "greeting": "नमस्ते {name},",
+  "paragraphs": [
+   "ये क्लासिक पुस्तकें अभी-अभी Ochorus पर {language} में प्रकाशित हुई हैं। हर एक आज ही मुफ़्त में पढ़ी जा सकती है।"
+  ],
+  "cta_label": "पूरा पुस्तकालय देखें",
+  "cta_path": "books",
+  "signoff": "अनुग्रह और शांति,",
+  "signature": "Ochorus टीम"
  }
 }

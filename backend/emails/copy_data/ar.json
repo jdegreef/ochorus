@@ -138,5 +138,36 @@
   "cta_path": "",
   "signoff": "نعمة وسلام،",
   "signature": "فريق Ochorus"
+ },
+ "digest": {
+  "subject": "شهرك على Ochorus",
+  "preheader": "الجديد في المكتبة، وبعض ما يستحق القراءة بعد ذلك.",
+  "heading": "شهرك على Ochorus",
+  "greeting": "مرحبًا {name}،",
+  "paragraphs": [
+   "إليك الجديد في المكتبة هذا الشهر، مع بعض الكتب التي تستحق أن تبدأ بها."
+  ],
+  "cta_label": "استكشف المكتبة",
+  "cta_path": "books",
+  "signoff": "نعمة وسلام،",
+  "signature": "فريق Ochorus",
+  "continue_heading": "تابع القراءة",
+  "continue_label": "تابع من الفصل {chapter}",
+  "new_heading": "جديد هذا الشهر",
+  "quote_heading": "عبارة تستحق أن تُحفظ",
+  "plan_heading": "خطة للبدء"
+ },
+ "new_in_language": {
+  "subject": "جديد باللغة {language} على Ochorus",
+  "preheader": "نُشر للتو بلغتك.",
+  "heading": "جديد باللغة {language}",
+  "greeting": "مرحبًا {name}،",
+  "paragraphs": [
+   "نُشرت هذه الكلاسيكيات للتو باللغة {language} على Ochorus. وكلها متاحة للقراءة مجانًا، اليوم."
+  ],
+  "cta_label": "تصفّح المكتبة كلها",
+  "cta_path": "books",
+  "signoff": "نعمة وسلام،",
+  "signature": "فريق Ochorus"
  }
 }

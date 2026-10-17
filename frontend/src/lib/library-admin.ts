@@ -1536,7 +1536,11 @@ export type EmailBlock =
 	| { type: 'button'; label: string; path: string }
 	| { type: 'divider' }
 	| { type: 'quote'; text: string; attribution: string }
-	| { type: 'book' | 'sermon' | 'plan'; slug: string; label: string };
+	| { type: 'book' | 'sermon' | 'plan'; slug: string; label: string }
+	/** The reader's own book in progress, filled per recipient; `{chapter}` in
+	 *  the label becomes the chapter they reached. Left out for a reader with
+	 *  nothing in progress (heading included). */
+	| { type: 'continue_reading'; heading: string; label: string };
 
 export type EmailBlockType = EmailBlock['type'];
 export type LibraryBlockType = Extract<EmailBlock, { slug: string }>['type'];
@@ -1550,6 +1554,8 @@ export interface BroadcastBlock {
 
 export interface BroadcastAudience {
 	locale?: string;
+	/** Readers whose email goes out in this language (set by "new in your language"). */
+	email_language?: string;
 	signup_variant?: string;
 	activity?: 'active_7d' | 'active_30d' | 'lapsed_30d' | 'never_seen';
 	has_plan?: boolean;
@@ -1574,6 +1580,12 @@ export interface AdminBroadcast {
 	send_started_at: string | null;
 	/** Copy and audience are frozen: it has (or may have) mailed someone. */
 	locked: boolean;
+	/** The preference-center stream whose consent it obeys. */
+	stream: string;
+	/** Set when the system built it (`digest:2026-11`, `new_in_language:fr:…`). */
+	auto_key: string;
+	/** A reader whose email language it isn't written in is skipped, not sent another language. */
+	strict_locale: boolean;
 	// detail only:
 	/** AI-drafted translations per language — admin-only review state. */
 	translations?: Record<string, EmailTranslation>;
@@ -1748,6 +1760,45 @@ export const saveEmailTemplate = (payload: { name: string; from_broadcast: numbe
 
 export const deleteEmailTemplate = (id: number) =>
 	apiFetch<null>(`/api/admin/emails/templates/${id}/`, { method: 'DELETE' });
+
+// --- Automatic campaigns (backend `emails/auto_emails.py`) -----------------
+
+export type AutoEmailKey = 'digest' | 'new_in_language';
+export type DigestSection = 'letter' | 'continue' | 'new' | 'quote' | 'plan';
+
+export interface AutoEmailConfig {
+	key: AutoEmailKey;
+	label: string;
+	enabled: boolean;
+	enabled_at: string | null;
+	require_approval: boolean;
+	updated_by: string;
+	/** Digest only: which sections it includes. */
+	sections?: Record<DigestSection, boolean>;
+}
+
+export interface AutoEmails {
+	configs: AutoEmailConfig[];
+	digest_next_send: string;
+	digest_builds_at: string;
+	recent: AdminBroadcast[];
+}
+
+export const getAutoEmails = () => apiFetch<AutoEmails>('/api/admin/emails/auto/');
+
+export const updateAutoEmail = (
+	payload: { key: AutoEmailKey } & Partial<Pick<AutoEmailConfig, 'enabled' | 'require_approval' | 'sections'>>
+) =>
+	apiFetch<AutoEmails>('/api/admin/emails/auto/', {
+		method: 'PATCH',
+		body: JSON.stringify(payload)
+	});
+
+export const buildDigestNow = () =>
+	apiFetch<AutoEmails & { built: number }>('/api/admin/emails/auto/build/', {
+		method: 'POST',
+		body: JSON.stringify({ key: 'digest' })
+	});
 
 export const previewAudience = (audience: BroadcastAudience) =>
 	apiFetch<{ count: number }>('/api/admin/broadcasts/audience-preview/', {

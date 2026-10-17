@@ -138,5 +138,36 @@
   "cta_path": "",
   "signoff": "ጸጋና ሰላም ይብዛላችሁ፣",
   "signature": "የOchorus ቡድን"
+ },
+ "digest": {
+  "subject": "በOchorus ላይ የእርስዎ ወር",
+  "preheader": "በቤተ መጻሕፍቱ ውስጥ አዲስ የሆነው፣ እና በቀጣይ የሚነበቡ ጥቂት መጻሕፍት።",
+  "heading": "በOchorus ላይ የእርስዎ ወር",
+  "greeting": "ሰላም {name}፣",
+  "paragraphs": [
+   "በዚህ ወር በቤተ መጻሕፍቱ ውስጥ አዲስ የሆነው ይኸው ነው፤ በቀጣይ ሊነበቡ የሚገባቸው ጥቂት መጻሕፍትም አሉ።"
+  ],
+  "cta_label": "ቤተ መጻሕፍቱን ያስሱ",
+  "cta_path": "books",
+  "signoff": "ጸጋና ሰላም ይብዛላችሁ፣",
+  "signature": "የOchorus ቡድን",
+  "continue_heading": "ማንበብዎን ይቀጥሉ",
+  "continue_label": "ከምዕራፍ {chapter} ይቀጥሉ",
+  "new_heading": "በዚህ ወር አዲስ",
+  "quote_heading": "ሊያስታውሱት የሚገባ ቃል",
+  "plan_heading": "ለመጀመር የሚሆን እቅድ"
+ },
+ "new_in_language": {
+  "subject": "በOchorus ላይ በ{language} አዲስ",
+  "preheader": "በቋንቋዎ አሁን የታተመ።",
+  "heading": "በ{language} አዲስ",
+  "greeting": "ሰላም {name}፣",
+  "paragraphs": [
+   "እነዚህ ጥንታዊ መጻሕፍት አሁን በOchorus ላይ በ{language} ታትመዋል። እያንዳንዳቸው ዛሬውኑ በነጻ ይነበባሉ።"
+  ],
+  "cta_label": "ቤተ መጻሕፍቱን በሙሉ ይመልከቱ",
+  "cta_path": "books",
+  "signoff": "ጸጋና ሰላም ይብዛላችሁ፣",
+  "signature": "የOchorus ቡድን"
  }
 }

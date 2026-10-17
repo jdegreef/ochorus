@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.urls import include, path
 
 from accounts.views import MeView, PromptEventView, SignupSourceView, health
+from emails.admin_auto import AdminAutoEmailBuildView, AdminAutoEmailsView
 from emails.admin_design import (
     AdminBroadcastTranslationView,
     AdminEmailLibraryView,
@@ -261,6 +262,12 @@ urlpatterns = [
         "api/admin/broadcasts/<int:pk>/translations/",
         AdminBroadcastTranslationView.as_view(),
         name="admin-broadcast-translations",
+    ),
+    path("api/admin/emails/auto/", AdminAutoEmailsView.as_view(), name="admin-email-auto"),
+    path(
+        "api/admin/emails/auto/build/",
+        AdminAutoEmailBuildView.as_view(),
+        name="admin-email-auto-build",
     ),
     path("api/admin/emails/preview/", AdminEmailPreviewView.as_view(), name="admin-email-preview"),
     path("api/admin/emails/library/", AdminEmailLibraryView.as_view(), name="admin-email-library"),

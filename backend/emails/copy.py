@@ -587,6 +587,107 @@ LIFECYCLE: dict[str, dict[str, dict[str, object]]] = {
             "signature": "A equipa do Ochorus",
         },
     },
+    # The monthly digest and "new in your language" (emails/auto_emails.py). Not
+    # drip steps: these blocks are the fixed words around an email the system
+    # builds from the library. ``{chapter}`` is the chapter a reader reached and
+    # ``{language}`` the language's own name, both filled at build/render time.
+    "digest": {
+        "en": {
+            "subject": "Your month on Ochorus",
+            "preheader": "What’s new in the library, and a few things to read next.",
+            "heading": "Your month on Ochorus",
+            "greeting": "Hello {name},",
+            "paragraphs": [
+                "Here is what’s new in the library this month, with a few things worth reading next."
+            ],
+            "cta_label": "Explore the library",
+            "cta_path": "books",
+            "signoff": "Grace and peace,",
+            "signature": "The Ochorus team",
+            "continue_heading": "Continue reading",
+            "continue_label": "Pick up at chapter {chapter}",
+            "new_heading": "New this month",
+            "quote_heading": "A line worth keeping",
+            "plan_heading": "A plan to start",
+        },
+        "es": {
+            "subject": "Tu mes en Ochorus",
+            "preheader": "Lo nuevo en la biblioteca y algunas lecturas para seguir.",
+            "heading": "Tu mes en Ochorus",
+            "greeting": "Hola {name}:",
+            "paragraphs": [
+                "Esto es lo nuevo en la biblioteca este mes, con algunas lecturas que vale la pena empezar."
+            ],
+            "cta_label": "Explora la biblioteca",
+            "cta_path": "books",
+            "signoff": "Gracia y paz,",
+            "signature": "El equipo de Ochorus",
+            "continue_heading": "Sigue leyendo",
+            "continue_label": "Retoma en el capítulo {chapter}",
+            "new_heading": "Nuevo este mes",
+            "quote_heading": "Una frase para guardar",
+            "plan_heading": "Un plan para empezar",
+        },
+        "pt": {
+            "subject": "O seu mês no Ochorus",
+            "preheader": "As novidades da biblioteca e algumas leituras para continuar.",
+            "heading": "O seu mês no Ochorus",
+            "greeting": "Olá {name},",
+            "paragraphs": [
+                "Eis as novidades da biblioteca este mês, com algumas leituras que vale a pena começar."
+            ],
+            "cta_label": "Explore a biblioteca",
+            "cta_path": "books",
+            "signoff": "Graça e paz,",
+            "signature": "A equipa do Ochorus",
+            "continue_heading": "Continue a ler",
+            "continue_label": "Retome no capítulo {chapter}",
+            "new_heading": "Novo este mês",
+            "quote_heading": "Uma frase para guardar",
+            "plan_heading": "Um plano para começar",
+        },
+    },
+    "new_in_language": {
+        "en": {
+            "subject": "New in {language} on Ochorus",
+            "preheader": "Just published in your language.",
+            "heading": "New in {language}",
+            "greeting": "Hello {name},",
+            "paragraphs": [
+                "These classics were just published in {language} on Ochorus. Every one is free to read, today."
+            ],
+            "cta_label": "See everything in the library",
+            "cta_path": "books",
+            "signoff": "Grace and peace,",
+            "signature": "The Ochorus team",
+        },
+        "es": {
+            "subject": "Nuevo en {language} en Ochorus",
+            "preheader": "Recién publicado en tu idioma.",
+            "heading": "Nuevo en {language}",
+            "greeting": "Hola {name}:",
+            "paragraphs": [
+                "Estos clásicos acaban de publicarse en {language} en Ochorus. Todos se pueden leer gratis, hoy mismo."
+            ],
+            "cta_label": "Ver toda la biblioteca",
+            "cta_path": "books",
+            "signoff": "Gracia y paz,",
+            "signature": "El equipo de Ochorus",
+        },
+        "pt": {
+            "subject": "Novo em {language} no Ochorus",
+            "preheader": "Acabado de publicar na sua língua.",
+            "heading": "Novo em {language}",
+            "greeting": "Olá {name},",
+            "paragraphs": [
+                "Estes clássicos acabam de ser publicados em {language} no Ochorus. Todos podem ser lidos gratuitamente, hoje mesmo."
+            ],
+            "cta_label": "Ver toda a biblioteca",
+            "cta_path": "books",
+            "signoff": "Graça e paz,",
+            "signature": "A equipa do Ochorus",
+        },
+    },
 }
 
 

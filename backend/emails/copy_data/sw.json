@@ -138,5 +138,36 @@
   "cta_path": "",
   "signoff": "Neema na amani,",
   "signature": "Timu ya Ochorus"
+ },
+ "digest": {
+  "subject": "Mwezi wako kwenye Ochorus",
+  "preheader": "Vipya maktabani, na vitabu vichache vya kusoma baadaye.",
+  "heading": "Mwezi wako kwenye Ochorus",
+  "greeting": "Habari {name},",
+  "paragraphs": [
+   "Haya ndiyo mapya maktabani mwezi huu, pamoja na vitabu vichache vinavyostahili kusomwa baadaye."
+  ],
+  "cta_label": "Gundua maktaba",
+  "cta_path": "books",
+  "signoff": "Neema na amani,",
+  "signature": "Timu ya Ochorus",
+  "continue_heading": "Endelea kusoma",
+  "continue_label": "Endelea kwenye sura ya {chapter}",
+  "new_heading": "Mapya mwezi huu",
+  "quote_heading": "Neno la kukumbuka",
+  "plan_heading": "Mpango wa kuanza"
+ },
+ "new_in_language": {
+  "subject": "Mapya kwa {language} kwenye Ochorus",
+  "preheader": "Vimechapishwa sasa hivi kwa lugha yako.",
+  "heading": "Mapya kwa {language}",
+  "greeting": "Habari {name},",
+  "paragraphs": [
+   "Vitabu hivi vya zamani vimechapishwa sasa hivi kwa {language} kwenye Ochorus. Kila kimoja ni bure kusoma, leo."
+  ],
+  "cta_label": "Tazama maktaba yote",
+  "cta_path": "books",
+  "signoff": "Neema na amani,",
+  "signature": "Timu ya Ochorus"
  }
 }

@@ -78,7 +78,7 @@ def _send_one(
     broadcast, profile, subscription, pacer: _Pacer | None = None, cards: dict | None = None
 ) -> str:
     """Send the broadcast to one recipient. Returns a tally bucket name."""
-    if not subscription.wants(EmailKind.BROADCAST):
+    if not subscription.wants_stream(broadcast.stream):
         return "skipped"
     to_email = verified_email(profile)
     if not to_email:

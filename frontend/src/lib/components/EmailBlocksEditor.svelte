@@ -29,7 +29,8 @@
 		{ type: 'divider', label: 'Divider' },
 		{ type: 'book', label: 'Book' },
 		{ type: 'sermon', label: 'Sermon' },
-		{ type: 'plan', label: 'Reading plan' }
+		{ type: 'plan', label: 'Reading plan' },
+		{ type: 'continue_reading', label: 'Continue reading' }
 	];
 	const typeLabel = (t: EmailBlockType) => TYPES.find((x) => x.type === t)?.label ?? t;
 	const LIBRARY = new Set<EmailBlockType>(['book', 'sermon', 'plan']);
@@ -48,6 +49,8 @@
 				return { type, text: '', attribution: '' };
 			case 'divider':
 				return { type };
+			case 'continue_reading':
+				return { type, heading: '', label: '' };
 			default:
 				return { type, slug: '', label: '' };
 		}
@@ -167,6 +170,10 @@
 			{:else if b.type === 'quote'}
 				<textarea class="mb-2 h-20 w-full rounded-md border border-border bg-surface p-2 text-body italic" aria-label="Quote" bind:value={b.text} {disabled} placeholder="The quotation"></textarea>
 				<input class="w-full rounded-md border border-border bg-surface p-2 text-small" aria-label="Attribution" bind:value={b.attribution} {disabled} placeholder="Who said it, and where" />
+			{:else if b.type === 'continue_reading'}
+				<p class="mb-2 text-small text-muted">Each reader’s own book in progress, at the chapter they reached. Left out for a reader with nothing in progress.</p>
+				<input class="mb-2 w-full rounded-md border border-border bg-surface p-2 text-small" aria-label="Heading above the card" bind:value={b.heading} {disabled} placeholder="Heading above the card, e.g. Continue reading" />
+				<input class="w-full rounded-md border border-border bg-surface p-2 text-small" aria-label="Link label" bind:value={b.label} {disabled} placeholder="Link label, e.g. Pick up at chapter {'{chapter}'}" />
 			{:else if b.type === 'divider'}
 				<hr class="border-border" />
 			{:else if isLibrary(b)}

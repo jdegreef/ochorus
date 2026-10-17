@@ -186,6 +186,7 @@ def render_blocks(
             name=_display_name(profile, lang),
             cards=cards,
             localize_buttons=localize_buttons,
+            profile=profile,
         ),
         **_base_context(subscription, lang),
     }
@@ -207,8 +208,11 @@ def sendable_locales(broadcast) -> list[str]:
 
 def resolve_broadcast_locale(broadcast, lang: str) -> str | None:
     """The locale to actually render: the reader's language, else English, else
-    the first locale the broadcast can be sent in."""
+    the first locale the broadcast can be sent in — or, for a ``strict_locale``
+    campaign, the reader's language or nothing."""
     locales = sendable_locales(broadcast)
+    if broadcast.strict_locale:
+        return lang if lang in locales else None
     for candidate in (lang, "en"):
         if candidate in locales:
             return candidate

@@ -1,5 +1,5 @@
 """Run the whole email cron in one process: lifecycle sweep, series nudges,
-milestone cards, then due broadcasts — and, once a day, the nightly content
+milestone cards, the auto-built campaigns, then due broadcasts — and, once a day, the nightly content
 audit (``audit_scan``).
 
 A single command exists so the cron's ``dockerCommand`` needs **no shell** —
@@ -36,6 +36,9 @@ class Command(BaseCommand):
         call_command("send_plan_reminders")
         call_command("send_series_nudges")
         call_command("send_milestone_cards")
+        # The digest and "new in your language" are built as broadcasts, so they
+        # go first: one built without approval is then sent on this same pass.
+        call_command("build_auto_emails")
         call_command("send_due_broadcasts")
         # The nightly content audit rides this cron rather than a second paid
         # Render cron service: `--if-due` makes it a no-op on all but one tick a

@@ -8,6 +8,9 @@ audience count reflects "who this targets" and the send reflects "who agreed".
 Supported keys:
 
 * ``locale``          — a code or list of codes (reader's reading language)
+* ``email_language``  — a code: readers whose EMAIL goes out in that language —
+  the preference center's email language when set, else the reading language
+  (as ``rendering.email_language`` decides)
 * ``signup_variant``  — the home sign-up prompt they arrived through
 * ``activity``        — ``active_7d`` / ``active_30d`` / ``lapsed_30d`` / ``never_seen``
 * ``has_plan``        — bool: has (or hasn't) started a reading plan
@@ -17,6 +20,7 @@ from __future__ import annotations
 
 from datetime import timedelta
 
+from django.db.models import Q
 from django.utils import timezone
 
 from accounts.models import UserProfile
@@ -34,6 +38,10 @@ def resolve(audience: dict):
         locales = [locale] if isinstance(locale, str) else list(locale)
         qs = qs.filter(locale__in=locales)
 
+    email_language = audience.get("email_language")
+    if email_language:
+        qs = qs.filter(_email_language_q(str(email_language)))
+
     variant = audience.get("signup_variant")
     if variant:
         qs = qs.filter(signup_variant=variant)
@@ -46,6 +54,20 @@ def resolve(audience: dict):
         qs = qs.filter(pk__in=planned) if has_plan else qs.exclude(pk__in=planned)
 
     return qs.order_by("created_at")
+
+
+def _base_language_q(field: str, code: str) -> Q:
+    """``field`` names ``code`` or a regional form of it (``pt`` ⇒ ``pt-BR``),
+    matching ``copy.base_lang``."""
+    return Q(**{f"{field}__iexact": code}) | Q(**{f"{field}__istartswith": f"{code}-"})
+
+
+def _email_language_q(code: str) -> Q:
+    """Readers whose email language is ``code``: an email-language override that
+    names it, or no override and a reading language that does."""
+    override = "email_subscription__email_locale"
+    no_override = Q(email_subscription__isnull=True) | Q(**{override: ""})
+    return _base_language_q(override, code) | (no_override & _base_language_q("locale", code))
 
 
 def _apply_activity(qs, activity):
