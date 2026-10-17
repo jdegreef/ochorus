@@ -62,6 +62,7 @@ function chip(emblem, accent, size) {
 			flexShrink: 0,
 			width: `${size}px`,
 			height: `${size}px`,
+			boxSizing: 'border-box',
 			borderRadius: '999px',
 			background: alpha(accent, 0.16),
 			border: `2px solid ${alpha(accent, 0.4)}`
@@ -79,6 +80,9 @@ function frame({ locale, eyebrow, eyebrowColor, title, titleSize, tagline, art }
 		{
 			width: `${WIDTH}px`,
 			height: `${HEIGHT}px`,
+			// The padding sits inside the card: satori now lays boxes out
+			// content-box, which pushed the art and the wordmark off its edge.
+			boxSizing: 'border-box',
 			display: 'flex',
 			flexDirection: 'column',
 			justifyContent: 'space-between',
@@ -124,19 +128,25 @@ function groupCard(link, locale) {
 
 function indexCard(locale) {
 	const card = forIndexCard(locale);
-	// Every group's emblem, three by three.
+	// Every group's emblem, three across while four rows hold them; past
+	// twelve groups, more columns of smaller tiles, so the grid never runs
+	// off the card.
+	const cols = Math.max(3, Math.ceil(FOR_LINKS.length / 4));
+	const gap = cols === 3 ? 22 : 16;
+	const width = cols === 3 ? 320 : 380;
+	const size = cols === 3 ? 92 : Math.floor((width - (cols - 1) * gap) / cols);
 	const tiles = FOR_LINKS.map((l) => {
 		const m = FOR_META[l.slug];
-		return chip(m.emblem, liftToContrast(m.accent), 92);
+		return chip(m.emblem, liftToContrast(m.accent), size);
 	});
 	return frame({
 		locale,
 		eyebrow: card.eyebrow,
 		eyebrowColor: GOLD,
 		title: card.title,
-		titleSize: 76,
+		titleSize: cols === 3 ? 76 : 62,
 		tagline: card.tagline,
-		art: box({ display: 'flex', flexWrap: 'wrap', width: '320px', gap: '22px', flexShrink: 0 }, tiles)
+		art: box({ display: 'flex', flexWrap: 'wrap', width: `${width}px`, gap: `${gap}px`, flexShrink: 0 }, tiles)
 	});
 }
 

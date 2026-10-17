@@ -199,6 +199,146 @@ export const FOR_PAGES_FR: ForPage[] = [
 			'Commencez par un plan de lecture que chacun peut suivre, ou parcourez la bibliothèque et choisissez un livre à lire ensemble.'
 	},
 	{
+		slug: 'pastors',
+		title: 'Des classiques gratuits pour les pasteurs et les prédicateurs',
+		lead: 'Les grands prédicateurs sur la prédication, la prière et le soin des âmes, et leurs sermons, gratuits sur téléphone ou ordinateur. Le pasteur réformé de Baxter, les sermons de Whitefield, d’Edwards et de Wesley : pour le bureau, et pour votre propre âme.',
+		seoTitle: 'Livres chrétiens gratuits pour les pasteurs',
+		seoDescription:
+			'Classiques gratuits sur la prédication, la prière et le soin pastoral, et sermons de Spurgeon, Whitefield, Edwards et Wesley. Sans inscription.',
+		primary: { href: '#shelves', label: 'Des livres pour le bureau' },
+		secondary: { href: '/sermons', label: 'Lire les sermons' },
+		pointsHeading: 'Pourquoi les pasteurs utilisent Ochorus',
+		points: [
+			{
+				icon: 'mic',
+				title: 'Des sermons dont on apprend',
+				body: 'Des sermons de Spurgeon, Whitefield, Edwards, Wesley, Moody et d’autres, chacun avec son texte. Voyez comment les grands prédicateurs ouvraient un passage et l’appliquaient.',
+				link: { href: '/sermons', label: 'Lire les sermons' }
+			},
+			{
+				icon: 'search',
+				title: 'Qui a prêché sur votre texte',
+				body: 'Cherchez un passage de l’Écriture et voyez les sermons et les livres qui le traitent : une manière simple d’entendre des voix anciennes sur le texte que vous préparez.',
+				link: { href: '/scripture', label: 'Chercher par passage' }
+			},
+			{
+				icon: 'book',
+				title: 'Des classiques sur le ministère',
+				body: 'Baxter sur le soin du troupeau, Torrey sur l’évangélisation personnelle, Finney sur le réveil : des livres sur lesquels des pasteurs se forment depuis des siècles.',
+				link: { href: '#shelves', label: 'Voir les livres' }
+			},
+			{
+				icon: 'heart',
+				title: 'D’abord pour votre âme',
+				body: 'E. M. Bounds écrivait que le prédicateur se forme dans le secret de la prière. Des plans de lecture sur la prière et la vie profonde vous donnent une courte lecture par jour.',
+				link: { href: '/plans', label: 'Voir les plans de lecture' }
+			}
+		],
+		ideasHeading: 'Des idées pour votre ministère',
+		ideas: [
+			{
+				title: 'À côté de vos commentaires',
+				body: 'Quand vous préparez un texte, lisez comment Whitefield ou Edwards l’ont prêché. Les sermons anciens voient ce que les commentaires récents laissent passer.'
+			},
+			{
+				title: 'Un livre pour vos anciens',
+				body: 'Lisez Le pasteur réformé ou Des hommes qui ont pris soin du troupeau avec vos anciens, un chapitre avant chaque réunion.'
+			},
+			{
+				title: 'Former les futurs prédicateurs',
+				body: 'Donnez-leur les classiques du ministère, gratuitement, sans rien à acheter.'
+			},
+			{
+				title: 'Prolonger votre prédication',
+				body: 'Vous prêchez sur un thème ? Partagez un plan de lecture ou un sermon pour que l’assemblée continue de lire pendant la semaine.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Pour le bureau',
+				note: 'Le ministère, par ceux qui l’ont exercé.',
+				picks: [
+					'the-reformed-pastor',
+					'men-who-tended-the-flock-2',
+					'key-teachings-of-richard-baxter',
+					'how-to-bring-men-to-christ',
+					'revival-lectures',
+					'the-fundamental-doctrines-of-the-christian-faith',
+					'rise-up-men-of-god-2'
+				]
+			},
+			{
+				title: 'Prédication et théologie',
+				note: 'Les sermons et les écrits des grands prédicateurs.',
+				picks: [
+					'selected-sermons-whitefield',
+					'selected-sermons-edwards',
+					'sermons-on-several-occasions',
+					'till-he-come',
+					'gleanings-among-the-sheaves',
+					'religious-affections',
+					'freedom-of-the-will'
+				]
+			},
+			{
+				title: 'Pour l’âme du pasteur',
+				note: 'La prière, l’humilité et la vie cachée.',
+				picks: [
+					'power-through-prayer',
+					'prayer-and-praying-men',
+					'ministry-of-intercession',
+					'humility-2',
+					'men-of-prayer-2',
+					'a-serious-call',
+					'the-imitation-of-christ'
+				]
+			}
+		],
+		plans: ['praying-men', 'the-puritan-heart', 'deeper-life-in-christ', 'humility-12-days', 'school-of-prayer-31-days'],
+		authors: [
+			'charles-h-spurgeon',
+			'richard-baxter',
+			'george-whitefield',
+			'jonathan-edwards',
+			'john-wesley',
+			'e-m-bounds',
+			'charles-finney'
+		],
+		series: [
+			{
+				title: 'Six sermons qui ont marqué l’Église',
+				note: 'Des sermons dont les prédicateurs apprennent encore : un par semaine, lu chez soi et discuté avec vos anciens.',
+				picks: [
+					'the-lord-our-righteousness',
+					'the-excellency-of-christ',
+					'god-glorified-in-mans-dependence',
+					'christ-the-believers-wisdom',
+					'catholic-spirit',
+					'the-impressions-of-natural-men',
+					'walking-with-god',
+					'the-appearing-of-the-grace-of-god'
+				]
+			}
+		],
+		invite: {
+			text: 'Des classiques gratuits sur la prédication, la prière et le soin des âmes, et les sermons des grands prédicateurs, sur Ochorus. Sans inscription.',
+			href: '/sermons'
+		},
+		questions: [
+			{ q: 'Ochorus est-il vraiment gratuit ?', a: FREE_ANSWER },
+			{
+				q: 'Puis-je citer ces sermons et ces livres dans mes prédications ?',
+				a: 'Oui. Les livres et les sermons classiques appartiennent au domaine public : vous pouvez les citer librement. Les Ochorus Originals sont des œuvres nouvelles ; écrivez-nous avant de les reproduire longuement.'
+			},
+			{
+				q: 'Puis-je trouver des sermons sur un passage précis ?',
+				a: 'Oui. Cherchez par référence biblique pour voir les sermons et les livres qui traitent un passage. Chaque page de sermon indique aussi les passages qu’il commente.'
+			}
+		],
+		closeHeading: 'À l’école des grands prédicateurs',
+		closeBody: 'Commencez par un livre pour le bureau, ou lisez comment Whitefield et Edwards ont prêché.'
+	},
+	{
 		slug: 'small-groups',
 		title: 'Des livres gratuits pour votre petit groupe ou votre étude biblique',
 		lead: 'Choisissez un classique pour le trimestre : chacun dans le groupe peut le lire gratuitement sur son propre téléphone. La prière, la sainteté, la grâce et la vie de foi, avec Murray, Bounds, Hannah Whitall Smith, Moody et bien d’autres.',
@@ -333,6 +473,600 @@ export const FOR_PAGES_FR: ForPage[] = [
 		closeBody: 'Commencez par un plan de lecture, ou parcourez la bibliothèque et choisissez un classique à lire ensemble.'
 	},
 	{
+		slug: 'new-believers',
+		title: 'Des livres gratuits pour les nouveaux croyants et ceux qui les accompagnent',
+		lead: 'Des premiers livres clairs et chaleureux, de courts plans de lecture et six semaines de sermons sur les fondements de la foi, gratuits sur téléphone. Donnez un seul lien à celui qui vient de venir à Christ, ou lisez avec lui.',
+		seoTitle: 'Livres chrétiens gratuits pour nouveaux croyants',
+		seoDescription:
+			'Premiers livres pour nouveaux chrétiens, plans de lecture et six semaines de sermons sur les fondements, par Moody, Spurgeon et Torrey. Sans inscription.',
+		primary: { href: '#series', label: 'Six semaines pour bien commencer' },
+		secondary: { href: '#shelves', label: 'Premiers livres à lire' },
+		pointsHeading: 'Pourquoi c’est une aide pour qui commence',
+		points: [
+			{
+				icon: 'book',
+				title: 'Des premiers livres clairs',
+				body: 'Le chemin vers Dieu de Moody et Tout par grâce de Spurgeon ont été écrits pour ceux qui font leurs premiers pas. Ils sont courts, simples et pleins de l’Évangile.',
+				link: { href: '#shelves', label: 'Voir les premiers livres' }
+			},
+			{
+				icon: 'mic',
+				title: 'Six semaines sur l’essentiel',
+				body: 'Des sermons sur la nouvelle naissance, la grâce, la foi et le repos en Christ, chacun avec des questions d’étude et leurs réponses, à reprendre ensemble.',
+				link: { href: '#series', label: 'Voir les six semaines' }
+			},
+			{
+				icon: 'calendar',
+				title: 'Une courte lecture par jour',
+				body: 'Les plans de lecture donnent une courte lecture chaque jour : personne n’a à se demander par où commencer.',
+				link: { href: '/plans', label: 'Voir les plans de lecture' }
+			},
+			{
+				icon: 'users',
+				title: 'Lire à ses côtés',
+				body: 'Commencez un plan le même jour et vous lisez la même page. Aucun compte, et rien n’est collecté sur personne.',
+				link: { href: '/plans', label: 'Lire ensemble' }
+			}
+		],
+		ideasHeading: 'Des idées pour accompagner',
+		ideas: [
+			{
+				title: 'Un lien, la semaine même',
+				body: 'Envoyez Le chemin vers Dieu à un nouveau croyant la semaine où il vient à la foi. Cela ne coûte rien, et il peut commencer le soir même.'
+			},
+			{
+				title: 'Lire côte à côte',
+				body: 'Commencez un plan le même jour et retrouvez-vous chaque semaine pour parler de ce que vous avez lu.'
+			},
+			{
+				title: 'Un parcours pour nouveaux membres',
+				body: 'Utilisez les six semaines de sermons comme un court parcours avant le baptême, un sermon et ses questions par semaine.'
+			},
+			{
+				title: 'Des vies transformées',
+				body: 'Bunyan, Augustin et Amanda Smith racontent comment ils sont venus à la foi : le nouveau chrétien découvre qu’il n’est pas le premier à lutter.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Premiers livres',
+				note: 'Courts, simples et pleins de l’Évangile.',
+				picks: [
+					'the-way-to-god',
+					'all-of-grace',
+					'around-the-wicket-gate',
+					'how-to-succeed-in-the-christian-life',
+					'the-fundamental-doctrines-of-the-christian-faith',
+					'the-christians-secret-of-a-happy-life-4',
+					'a-call-to-the-unconverted'
+				]
+			},
+			{
+				title: 'Des vies transformées',
+				note: 'Comment d’autres sont venus à la foi, avec leurs propres mots.',
+				picks: [
+					'grace-abounding',
+					'confessions',
+					'pilgrims-progress',
+					'amanda-smith-autobiography',
+					'the-life-of-trust',
+					'a-brand-plucked-from-the-fire',
+					'religious-experience-and-journal'
+				]
+			},
+			{
+				title: 'En termes simples',
+				note: 'Les mêmes livres, racontés en langage simple.',
+				picks: [
+					'the-way-to-god-teens',
+					'all-of-grace-teens',
+					'how-to-succeed-in-the-christian-life-teens',
+					'pilgrims-progress-teens',
+					'grace-abounding-teens',
+					'confessions-teens',
+					'the-practice-of-the-presence-of-god-teens'
+				]
+			}
+		],
+		plans: ['first-steps-for-teens', 'faith-in-the-fire', 'deeper-life-in-christ', 'humility-12-days', 'school-of-prayer-31-days'],
+		authors: [
+			'dwight-l-moody',
+			'charles-h-spurgeon',
+			'r-a-torrey',
+			'john-bunyan',
+			'augustine-of-hippo',
+			'andrew-murray',
+			'amanda-berry-smith'
+		],
+		series: [
+			{
+				title: 'Six semaines pour bien commencer',
+				note: 'La nouvelle naissance, la grâce, la foi et le repos en Christ : un sermon par semaine, lu chez soi et discuté ensemble.',
+				picks: [
+					'the-new-birth',
+					'the-dying-thief',
+					'behold-the-lamb-of-god',
+					'the-appearing-of-the-grace-of-god',
+					'every-mans-need-of-a-refuge',
+					'the-gift-of-faith',
+					'rest',
+					'the-lord-our-righteousness'
+				]
+			}
+		],
+		invite: {
+			text: 'Nouveau dans la foi ? Ochorus propose des premiers livres gratuits et des sermons sur l’essentiel de la foi, sur n’importe quel téléphone. Sans inscription.',
+			href: '/books'
+		},
+		questions: [
+			{ q: 'Ochorus est-il vraiment gratuit ?', a: FREE_ANSWER },
+			{
+				q: 'Par où commencer ?',
+				a: 'La plupart commencent par Le chemin vers Dieu de D. L. Moody ou Tout par grâce de C. H. Spurgeon, puis les six semaines de sermons de cette page.'
+			},
+			{ q: 'Faut-il créer un compte ?', a: ACCOUNT_ANSWER },
+			{
+				q: 'Ces livres sont-ils difficiles à lire ?',
+				a: 'Certains classiques sont d’une langue ancienne. Beaucoup existent aussi en éditions pour ados, qui les racontent avec des mots simples et conviennent à tout adulte.'
+			}
+		],
+		closeHeading: 'Aidez quelqu’un à faire ses premiers pas',
+		closeBody: 'Envoyez-lui un premier livre, ou commencez les six semaines ensemble cette semaine.'
+	},
+	{
+		slug: 'evangelism',
+		title: 'Des livres gratuits pour l’évangélisation',
+		lead: 'Moody, Spurgeon, Torrey et Whitefield sur la manière d’amener d’autres à Christ, et les livres courts et chaleureux qu’ils ont écrits pour ceux qui cherchent, gratuits à partager par un lien ou un code QR.',
+		seoTitle: 'Livres chrétiens gratuits pour l’évangélisation',
+		seoDescription:
+			'Des livres d’Évangile gratuits à offrir et des classiques sur l’évangélisation de Moody, Spurgeon et Torrey, à partager par un lien. Sans inscription.',
+		primary: { href: '#shelves', label: 'Des livres à offrir' },
+		secondary: { href: '#series', label: 'Six sermons d’Évangile' },
+		pointsHeading: 'Pourquoi les équipes d’évangélisation utilisent Ochorus',
+		points: [
+			{
+				icon: 'share',
+				title: 'Un livre à offrir, pour rien',
+				body: 'Le chemin vers Dieu et Tout par grâce ont été écrits pour ceux qui ne sont pas encore chrétiens. Partagez-les par un lien ou un code QR : le lecteur n’a besoin d’aucun compte.',
+				link: { href: '#shelves', label: 'Voir les livres' }
+			},
+			{
+				icon: 'book',
+				title: 'Former l’équipe',
+				body: 'Comment amener les hommes à Christ de Torrey est un manuel pratique d’évangélisation personnelle, lu par des générations d’évangélistes.',
+				link: { href: '#shelves', label: 'Des livres pour l’équipe' }
+			},
+			{
+				icon: 'mic',
+				title: 'Six sermons d’Évangile',
+				body: 'Des sermons qui ont appelé à Christ, avec des questions d’étude, à lire en équipe ou avec quelqu’un qui cherche.',
+				link: { href: '#series', label: 'Voir les six semaines' }
+			}
+		],
+		ideasHeading: 'Des idées pour l’évangélisation',
+		ideas: [
+			{
+				title: 'Un code QR sur la table',
+				body: 'Imprimez le code QR du Chemin vers Dieu sur une carte, pour votre stand, votre soirée ou votre café.'
+			},
+			{
+				title: 'Former l’équipe',
+				body: 'Lisez ensemble Comment amener les hommes à Christ avant une mission, un chapitre par semaine.'
+			},
+			{
+				title: 'Faire suivre la même semaine',
+				body: 'Envoyez un lien vers un livre à celui qui s’est montré intéressé, pour que la conversation continue.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Des livres à offrir',
+				note: 'Courts, chaleureux, écrits pour ceux qui cherchent.',
+				picks: [
+					'the-way-to-god',
+					'all-of-grace',
+					'around-the-wicket-gate',
+					'a-call-to-the-unconverted',
+					'grace-abounding',
+					'pilgrims-progress',
+					'how-to-succeed-in-the-christian-life'
+				]
+			},
+			{
+				title: 'Pour l’évangéliste',
+				note: 'Des manuels et des vies de ceux qui ont atteint les autres.',
+				picks: [
+					'how-to-bring-men-to-christ',
+					'revival-lectures',
+					'selected-sermons-whitefield',
+					'sermons-on-several-occasions',
+					'life-and-diary-of-david-brainerd',
+					'men-and-women-who-gave-everything-2',
+					'the-fundamental-doctrines-of-the-christian-faith'
+				]
+			},
+			{
+				title: 'En termes simples',
+				note: 'Des récits à offrir à des lecteurs de tout âge.',
+				picks: [
+					'the-way-to-god-teens',
+					'all-of-grace-teens',
+					'pilgrims-progress-teens',
+					'grace-abounding-teens',
+					'how-to-succeed-in-the-christian-life-teens',
+					'the-pursuit-of-god-teens',
+					'confessions-teens'
+				]
+			}
+		],
+		plans: ['faith-in-the-fire', 'deeper-life-in-christ', 'praying-men', 'first-steps-for-teens'],
+		authors: [
+			'dwight-l-moody',
+			'charles-h-spurgeon',
+			'r-a-torrey',
+			'george-whitefield',
+			'charles-finney',
+			'richard-baxter',
+			'john-wesley'
+		],
+		series: [CHRIST_GRACE_SERIES],
+		invite: {
+			text: 'Un livre gratuit qui explique la bonne nouvelle de Jésus, sur n’importe quel téléphone et sans inscription : Le chemin vers Dieu de D. L. Moody, sur Ochorus.',
+			href: '/books/the-way-to-god'
+		},
+		questions: [
+			{ q: 'Ochorus est-il vraiment gratuit ?', a: FREE_ANSWER },
+			{
+				q: 'La personne à qui nous l’envoyons doit-elle créer un compte ?',
+				a: 'Non. Chacun peut ouvrir le lien et lire, sans rien remplir.'
+			},
+			{
+				q: 'Pouvons-nous imprimer des livres à offrir ?',
+				a: 'Écrivez-nous d’abord : nous serons heureux d’en parler.'
+			}
+		],
+		closeHeading: 'Offrez la bonne nouvelle à lire',
+		closeBody: 'Partagez un livre par un lien ou un code QR, ou formez votre équipe avec les classiques de l’évangélisation.'
+	},
+	{
+		slug: 'prayer-groups',
+		title: 'Des classiques gratuits pour les groupes de prière',
+		lead: 'Andrew Murray, E. M. Bounds, George Müller et Spurgeon sur la prière : les grands livres sur la prière et les récits de prières exaucées, gratuits sur téléphone, avec des plans et des sermons pour prier ensemble.',
+		seoTitle: 'Livres chrétiens gratuits sur la prière',
+		seoDescription:
+			'Classiques gratuits sur la prière d’Andrew Murray, E. M. Bounds, George Müller et Spurgeon, avec des plans de lecture et des sermons pour les groupes de prière.',
+		primary: { href: '#plans', label: 'Prier avec un plan' },
+		secondary: { href: '#series', label: 'Six semaines sur la prière' },
+		pointsHeading: 'Pourquoi les groupes de prière utilisent Ochorus',
+		points: [
+			{
+				icon: 'book',
+				title: 'Les grands livres sur la prière',
+				body: 'À l’école de la prière avec Christ, La puissance par la prière, Le ministère de l’intercession : des livres lus par ceux qui prient depuis des générations.',
+				link: { href: '#shelves', label: 'Voir les livres' }
+			},
+			{
+				icon: 'sparkle',
+				title: 'Des prières exaucées',
+				body: 'George Müller a tenu le registre des réponses à ses prières pour les orphelins dont il avait la charge. Des hommes qui ont ébranlé le ciel en raconte d’autres.',
+				link: { href: '#shelves', label: 'Lire les récits' }
+			},
+			{
+				icon: 'mic',
+				title: 'Six semaines sur la prière',
+				body: 'Un sermon par semaine sur la prière et la vie dans l’Esprit, avec des questions d’étude et leurs réponses.',
+				link: { href: '#series', label: 'Voir les six semaines' }
+			}
+		],
+		ideasHeading: 'Des idées pour votre groupe',
+		ideas: [
+			{
+				title: 'Lire, puis prier',
+				body: 'Ouvrez la rencontre par une courte lecture du plan du jour, puis priez à partir d’elle.'
+			},
+			{
+				title: 'Un mois à l’école de la prière',
+				body: 'Suivez ensemble le plan de 31 jours d’Andrew Murray, une leçon par jour, et retrouvez-vous chaque semaine.'
+			},
+			{
+				title: 'Des récits pour la foi',
+				body: 'Lisez à voix haute une réponse à la prière tirée de Müller avant de commencer.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Les classiques de la prière',
+				note: 'Des livres lus par ceux qui prient depuis des générations.',
+				picks: [
+					'school-of-prayer',
+					'power-through-prayer',
+					'necessity-of-prayer',
+					'essentials-of-prayer',
+					'purpose-in-prayer',
+					'prayer-and-praying-men',
+					'prevailing-prayer'
+				]
+			},
+			{
+				title: 'Des prières exaucées',
+				note: 'Des hommes et des femmes qui ont prié.',
+				picks: [
+					'answers-to-prayer',
+					'men-who-moved-heaven',
+					'women-who-moved-heaven-2',
+					'men-of-prayer-2',
+					'george-muller-of-bristol',
+					'spurgeon-on-prayer',
+					'lord-teach-us-to-pray-2'
+				]
+			},
+			{
+				title: 'La vie intérieure de la prière',
+				note: 'La prière comme communion avec Dieu.',
+				picks: [
+					'ministry-of-intercession',
+					'the-inner-chamber',
+					'waiting-on-god',
+					'prayer-the-pulse-of-life',
+					'the-practice-of-the-presence-of-god-teens',
+					'the-masters-indwelling',
+					'true-vine'
+				]
+			}
+		],
+		plans: ['school-of-prayer-31-days', 'the-inner-chamber-month', 'praying-men', 'humility-12-days', 'deeper-life-in-christ'],
+		authors: [
+			'andrew-murray',
+			'e-m-bounds',
+			'george-muller',
+			'charles-h-spurgeon',
+			'charles-finney',
+			'dwight-l-moody',
+			'hannah-buyinza'
+		],
+		series: [PRAYER_SPIRIT_SERIES],
+		invite: {
+			text: 'Notre groupe de prière lit ensemble les grands livres sur la prière sur Ochorus : Murray, Bounds, Müller et Spurgeon, gratuits sur téléphone.',
+			href: '/plans'
+		},
+		questions: [
+			{ q: 'Ochorus est-il vraiment gratuit ?', a: FREE_ANSWER },
+			{
+				q: 'Par où commencer ?',
+				a: 'Beaucoup commencent par À l’école de la prière avec Christ d’Andrew Murray, en plan de lecture de 31 jours, ou par La puissance par la prière d’E. M. Bounds.'
+			},
+			{
+				q: 'Pouvons-nous lire la même chose le même jour ?',
+				a: 'Oui. Commencez un plan de lecture ensemble et partagez le lien : chacun en est à la même lecture du jour. Personne n’a besoin de compte.'
+			}
+		],
+		closeHeading: 'Apprenez à prier avec les grands intercesseurs',
+		closeBody: 'Commencez ensemble un plan sur la prière, ou lisez un récit de prière exaucée avant votre prochaine rencontre.'
+	},
+	{
+		slug: 'womens-ministry',
+		title: 'Des classiques chrétiens gratuits pour les ministères féminins',
+		lead: 'Amanda Smith, Hannah Whitall Smith, Catherine Booth, Susanna Wesley et Amy Carmichael : des femmes qui ont prêché, écrit, prié et donné leur vie, avec leurs livres et des plans de lecture, gratuits sur téléphone.',
+		seoTitle: 'Livres chrétiens gratuits pour les femmes',
+		seoDescription:
+			'Classiques chrétiens et plans de lecture gratuits pour les groupes de femmes : des femmes de foi, de Susanna Wesley à Amy Carmichael. Sans inscription.',
+		primary: { href: '#shelves', label: 'Des livres à lire ensemble' },
+		secondary: { href: '/plans', label: 'Voir les plans de lecture' },
+		pointsHeading: 'Pourquoi les groupes de femmes utilisent Ochorus',
+		points: [
+			{
+				icon: 'heart',
+				title: 'Des femmes qui l’ont vécu',
+				body: 'Les récits de femmes qui ont prêché, soigné, recueilli des enfants et traversé l’épreuve : Amanda Smith, Julia Foote, Jarena Lee et Susanna Wesley.',
+				link: { href: '#shelves', label: 'Voir les livres' }
+			},
+			{
+				icon: 'book',
+				title: 'Pour chaque jour',
+				body: 'Revêtue de force et de dignité et Filles du Roi donnent une courte lecture par jour, pour les femmes et pour les jeunes filles.',
+				link: { href: '#shelves', label: 'Voir les dévotions' }
+			},
+			{
+				icon: 'users',
+				title: 'Gratuit pour tout le groupe',
+				body: 'Personne n’a besoin d’acheter un exemplaire ni de créer un compte. Partagez un seul lien : chacune peut commencer le jour même.',
+				link: { href: '/books', label: 'Parcourir les livres' }
+			}
+		],
+		ideasHeading: 'Des idées pour votre groupe',
+		ideas: [
+			{
+				title: 'Un livre pour le trimestre',
+				body: 'Lisez ensemble Le secret d’une vie chrétienne heureuse, un chapitre par semaine.'
+			},
+			{
+				title: 'Une vie par mois',
+				body: 'Lisez chaque mois la vie d’une femme de foi, et parlez de ce que son histoire vous demande.'
+			},
+			{
+				title: 'Mères et filles',
+				body: 'Lisez Filles du Roi avec votre fille ou une jeune femme que vous accompagnez, la même lecture chaque jour.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Des femmes qui ont écrit et prêché',
+				note: 'Avec leurs propres mots.',
+				picks: [
+					'the-christians-secret-of-a-happy-life-4',
+					'amanda-smith-autobiography',
+					'godliness',
+					'a-brand-plucked-from-the-fire',
+					'religious-experience-and-journal',
+					'things-as-they-are',
+					'the-god-of-all-comfort'
+				]
+			},
+			{
+				title: 'Pour chaque jour',
+				note: 'De courtes lectures et des vies de foi.',
+				picks: [
+					'clothed-with-strength-and-dignity',
+					'daughters-of-the-king-2',
+					'women-who-moved-heaven-2',
+					'susanna-wesley-clarke',
+					'prayer-the-pulse-of-life',
+					'the-unselfishness-of-god',
+					'he-holds-my-tomorrows'
+				]
+			},
+			{
+				title: 'Pour les jeunes filles',
+				note: 'Les mêmes vies, racontées aux adolescentes.',
+				picks: [
+					'amy-carmichael-a-life-teens',
+					'elisabeth-elliot-a-life-teens',
+					'mary-slessor-a-life-teens',
+					'pandita-ramabai-a-life-teens',
+					'corrie-ten-boom-a-life-teens',
+					'amanda-smith-autobiography-teens',
+					'the-practice-of-the-presence-of-god-teens'
+				]
+			}
+		],
+		plans: ['deeper-life-in-christ', 'the-inner-chamber-month', 'school-of-prayer-31-days', 'humility-12-days', 'growing-in-wisdom-18-days'],
+		authors: [
+			'amanda-berry-smith',
+			'hannah-whitall-smith',
+			'catherine-booth',
+			'susanna-wesley',
+			'amy-carmichael',
+			'julia-foote',
+			'jarena-lee'
+		],
+		invite: {
+			text: 'Notre groupe de femmes lit les vies et les écrits de femmes de foi sur Ochorus : livres et plans de lecture gratuits sur téléphone, sans inscription.',
+			href: '/books'
+		},
+		questions: [
+			{ q: 'Ochorus est-il vraiment gratuit ?', a: FREE_ANSWER },
+			{ q: 'Faut-il créer un compte ?', a: ACCOUNT_ANSWER },
+			{
+				q: 'Y a-t-il quelque chose pour les adolescentes ?',
+				a: 'Oui. Filles du Roi est un recueil de dévotions pour les jeunes filles, et les vies d’Amy Carmichael, de Mary Slessor et de Corrie ten Boom existent en éditions pour ados.'
+			}
+		],
+		closeHeading: 'Lisez avec celles qui nous ont précédées',
+		closeBody: 'Choisissez un livre à lire ensemble, ou l’histoire d’une femme de foi pour ce mois-ci.'
+	},
+	{
+		slug: 'mens-ministry',
+		title: 'Des classiques chrétiens gratuits pour les groupes d’hommes',
+		lead: 'Hudson Taylor, George Müller, David Brainerd et les hommes de prière des réveils : des vies qui appellent les hommes à la foi, à la prière et au courage, avec des livres et des plans de lecture gratuits sur téléphone.',
+		seoTitle: 'Livres chrétiens gratuits pour les hommes',
+		seoDescription:
+			'Classiques chrétiens et plans de lecture gratuits pour les groupes d’hommes : des vies de courage et des livres sur la prière et la sainteté.',
+		primary: { href: '#shelves', label: 'Des livres pour les hommes' },
+		secondary: { href: '#series', label: 'Six semaines ensemble' },
+		pointsHeading: 'Pourquoi les groupes d’hommes utilisent Ochorus',
+		points: [
+			{
+				icon: 'heart',
+				title: 'Des vies qui élèvent',
+				body: 'Müller a nourri des milliers d’orphelins par la prière, Hudson Taylor a tout quitté pour la Chine et Watchman Nee est mort en prison. Leurs histoires sont racontées en entier.',
+				link: { href: '#shelves', label: 'Voir les livres' }
+			},
+			{
+				icon: 'mic',
+				title: 'Six semaines ensemble',
+				body: 'Un sermon par semaine sur Christ et sa grâce, avec des questions d’étude et leurs réponses, à reprendre quand vous vous retrouvez.',
+				link: { href: '#series', label: 'Voir les six semaines' }
+			},
+			{
+				icon: 'book',
+				title: 'Gratuit, sans inscription',
+				body: 'Personne n’a besoin d’acheter un exemplaire ni de créer un compte. Partagez un seul lien dans le groupe.',
+				link: { href: '/books', label: 'Parcourir les livres' }
+			}
+		],
+		ideasHeading: 'Des idées pour votre groupe',
+		ideas: [
+			{
+				title: 'Un livre pour le petit-déjeuner',
+				body: 'Lisez un chapitre de Levez-vous, hommes de Dieu avant chaque rencontre, et parlez-en autour d’un café.'
+			},
+			{
+				title: 'Une vie par mois',
+				body: 'Lisez chaque mois la vie d’un homme de foi : à quoi a-t-il renoncé, et qu’a-t-il reçu ?'
+			},
+			{
+				title: 'Pères et fils',
+				body: 'Lisez une même vie de courage avec votre fils, dans l’édition pour ados.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Pour les hommes',
+				note: 'Des livres qui appellent les hommes à Christ et au courage.',
+				picks: [
+					'rise-up-men-of-god-2',
+					'men-who-moved-heaven',
+					'men-of-prayer-2',
+					'men-who-tended-the-flock-2',
+					'men-and-women-who-gave-everything-2',
+					'mortification-of-sin',
+					'prayer-and-praying-men'
+				]
+			},
+			{
+				title: 'Des vies données',
+				note: 'Des hommes qui ont tout donné.',
+				picks: [
+					'a-retrospect',
+					'the-life-of-trust',
+					'george-muller-of-bristol',
+					'life-and-diary-of-david-brainerd',
+					'watchman-nee-a-life',
+					'union-and-communion',
+					'the-key-in-my-hand'
+				]
+			},
+			{
+				title: 'Pour les jeunes hommes',
+				note: 'Les mêmes vies, racontées aux adolescents.',
+				picks: [
+					'c-t-studd-a-life-teens',
+					'david-livingstone-a-life-teens',
+					'john-hyde-a-life-teens',
+					'samuel-ajayi-crowther-a-life-teens',
+					'watchman-nee-a-life-teens',
+					'c-s-lewis-a-life-teens',
+					'life-and-diary-of-david-brainerd-teens'
+				]
+			}
+		],
+		plans: ['praying-men', 'the-puritan-heart', 'deeper-life-in-christ', 'faith-in-the-fire', 'humility-12-days'],
+		authors: [
+			'hudson-taylor',
+			'george-muller',
+			'e-m-bounds',
+			'john-owen',
+			'david-brainerd',
+			'charles-h-spurgeon',
+			'andrew-murray'
+		],
+		series: [CHRIST_GRACE_SERIES],
+		invite: {
+			text: 'Notre groupe d’hommes lit ensemble les grands classiques chrétiens sur Ochorus : livres et plans de lecture gratuits sur téléphone, sans inscription.',
+			href: '/books'
+		},
+		questions: [
+			{ q: 'Ochorus est-il vraiment gratuit ?', a: FREE_ANSWER },
+			{ q: 'Faut-il créer un compte ?', a: ACCOUNT_ANSWER },
+			{
+				q: 'Y a-t-il quelque chose pour les adolescents ?',
+				a: 'Oui. Les vies de C. T. Studd, David Livingstone et C. S. Lewis existent en éditions pour ados.'
+			}
+		],
+		closeHeading: 'Lisez avec ceux qui nous ont précédés',
+		closeBody: 'Choisissez un livre à lire ensemble, ou l’histoire d’un homme de foi pour ce mois-ci.'
+	},
+	{
 		slug: 'youth',
 		title: 'Des livres gratuits que vos adolescents liront vraiment',
 		lead: 'Les grands classiques racontés pour les adolescents, des histoires vraies de foi et de courage, et des méditations de trente jours écrites pour les jeunes. Gratuits sur leur propre téléphone, sans publicité et sans compte.',
@@ -463,6 +1197,118 @@ export const FOR_PAGES_FR: ForPage[] = [
 		],
 		closeHeading: 'Donnez à votre groupe quelque chose de bon à lire',
 		closeBody: 'Commencez par les livres pour adolescents, ou choisissez un plan de lecture à suivre ensemble.'
+	},
+	{
+		slug: 'campus',
+		title: 'Des classiques chrétiens gratuits pour les étudiants',
+		lead: 'Pascal, Augustin et Edwards sur la foi et la raison, et les étudiants qui ont changé le monde, de David Brainerd à C. T. Studd. Gratuits sur téléphone : rien à acheter pour un budget d’étudiant.',
+		seoTitle: 'Livres chrétiens gratuits pour les étudiants',
+		seoDescription:
+			'Classiques chrétiens gratuits pour les étudiants et les groupes bibliques universitaires : Pascal, Augustin et Edwards sur la foi et la raison.',
+		primary: { href: '#shelves', label: 'Des livres pour les grandes questions' },
+		secondary: { href: '/plans', label: 'Voir les plans de lecture' },
+		pointsHeading: 'Pourquoi les groupes d’étudiants utilisent Ochorus',
+		points: [
+			{
+				icon: 'search',
+				title: 'Une foi qui pense',
+				body: 'Les Pensées et Les Provinciales de Pascal, les Confessions d’Augustin et Edwards sur la liberté de la volonté prennent les questions difficiles au sérieux.',
+				link: { href: '#shelves', label: 'Voir les livres' }
+			},
+			{
+				icon: 'globe',
+				title: 'Des étudiants qui ont changé le monde',
+				body: 'David Brainerd a quitté Yale pour la frontière, C. T. Studd a quitté Cambridge pour la Chine. Leurs histoires sont ici.',
+				link: { href: '#shelves', label: 'Lire leurs histoires' }
+			},
+			{
+				icon: 'book',
+				title: 'Gratuit pour chaque étudiant',
+				body: 'Rien à acheter, aucun compte à créer. Partagez un seul lien dans le groupe, et chacun peut lire le soir même.',
+				link: { href: '/books', label: 'Parcourir les livres' }
+			}
+		],
+		ideasHeading: 'Des idées pour le campus',
+		ideas: [
+			{
+				title: 'Un club de lecture pour sceptiques',
+				body: 'Lisez les Pensées avec des amis qui se demandent si le christianisme est vrai.'
+			},
+			{
+				title: 'Un plan pour le semestre',
+				body: 'Commencez un plan au début du semestre et retrouvez-vous chaque semaine pour en parler.'
+			},
+			{
+				title: 'Pour les vacances',
+				body: 'Donnez à chaque étudiant un classique à lire pendant l’été.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Foi et raison',
+				note: 'Des livres pour les grandes questions.',
+				picks: [
+					'pensees',
+					'provincial-letters',
+					'life-of-pascal',
+					'confessions',
+					'freedom-of-the-will',
+					'religious-affections',
+					'on-the-incarnation'
+				]
+			},
+			{
+				title: 'Pour la vie intérieure',
+				note: 'Des classiques pour l’étudiant qui veut grandir.',
+				picks: [
+					'a-serious-call',
+					'the-imitation-of-christ',
+					'mortification-of-sin',
+					'the-bruised-reed',
+					'humility-2',
+					'the-masters-indwelling',
+					'union-and-communion'
+				]
+			},
+			{
+				title: 'Des étudiants qui ont changé le monde',
+				note: 'Des vies commencées sur les bancs et données.',
+				picks: [
+					'life-and-diary-of-david-brainerd',
+					'c-t-studd-a-life-teens',
+					'c-s-lewis-a-life-teens',
+					'john-hyde-a-life-teens',
+					'watchman-nee-a-life',
+					'orthodoxy-teens',
+					'pensees-teens'
+				]
+			}
+		],
+		plans: ['the-puritan-heart', 'voices-of-the-early-church', 'deeper-life-in-christ', 'humility-12-days'],
+		authors: [
+			'blaise-pascal',
+			'augustine-of-hippo',
+			'jonathan-edwards',
+			'john-owen',
+			'david-brainerd',
+			'g-k-chesterton',
+			'c-s-lewis'
+		],
+		series: [CHRIST_GRACE_SERIES],
+		invite: {
+			text: 'Notre groupe d’étudiants lit ensemble les grands classiques chrétiens sur Ochorus : Pascal, Augustin et d’autres, gratuits sur téléphone et sans inscription.',
+			href: '/books'
+		},
+		questions: [
+			{ q: 'Ochorus est-il vraiment gratuit ?', a: FREE_ANSWER },
+			{
+				q: 'Peut-on citer ces livres dans un devoir ?',
+				a: 'Oui. Les textes classiques appartiennent au domaine public et peuvent être cités librement ; chaque page de livre en nomme l’auteur.'
+			},
+			{ q: 'Faut-il créer un compte ?', a: ACCOUNT_ANSWER }
+		],
+		closeHeading: 'Les classiques sur le campus',
+		closeBody: 'Commencez un plan de lecture avec votre groupe, ou offrez à un ami un livre pour les grandes questions.'
 	},
 	{
 		slug: 'missionaries',
@@ -600,6 +1446,114 @@ export const FOR_PAGES_FR: ForPage[] = [
 		closeBody: 'Parcourez la bibliothèque, ou commencez par la vie des missionnaires qui vous ont précédés.'
 	},
 	{
+		slug: 'african-churches',
+		title: 'Des classiques chrétiens gratuits pour les Églises d’Afrique',
+		lead: 'Augustin, Athanase et Antoine étaient africains, comme Samuel Ajayi Crowther et les frères et sœurs du réveil d’Afrique de l’Est. Leurs livres, et les grands classiques en français, en anglais, en swahili et en luganda, gratuits sur téléphone.',
+		seoTitle: 'Livres chrétiens gratuits pour l’Afrique',
+		seoDescription:
+			'Classiques chrétiens gratuits pour les Églises d’Afrique : les Pères africains, le réveil d’Afrique de l’Est et Samuel Ajayi Crowther. Sans inscription.',
+		primary: { href: '#languages', label: 'Lire dans votre langue' },
+		secondary: { href: '#shelves', label: 'L’histoire de l’Afrique' },
+		pointsHeading: 'Pourquoi les Églises d’Afrique utilisent Ochorus',
+		points: [
+			{
+				icon: 'globe',
+				title: 'Dans les langues de votre peuple',
+				body: `Les livres paraissent en éditions complètes ${IN_LANGUAGES}, et d’autres langues suivront.`,
+				link: { href: '#languages', label: 'Voir chaque langue' }
+			},
+			{
+				icon: 'flame',
+				title: 'Le réveil d’Afrique de l’Est',
+				body: 'Tukutendereza raconte le réveil des Balokole, né en Ouganda en 1929 et répandu dans six pays.',
+				link: { href: '#shelves', label: 'Voir les livres' }
+			},
+			{
+				icon: 'book',
+				title: 'Les Pères de l’Église d’Afrique',
+				body: 'Augustin d’Hippone, Athanase d’Alexandrie et Antoine d’Égypte ont façonné la foi de toute l’Église. Leurs livres sont ici en entier.',
+				link: { href: '#shelves', label: 'Voir les livres' }
+			},
+			{
+				icon: 'heart',
+				title: 'Gratuit, et imprimé aussi',
+				body: 'Chaque livre se lit gratuitement, sans compte. Ochorus imprime aussi des livres et les offre lors de conférences pastorales, dans des Églises, des écoles et des prisons d’Afrique de l’Est.',
+				link: { href: '/about', label: 'À propos de l’œuvre' }
+			}
+		],
+		ideasHeading: 'Des idées pour votre Église',
+		ideas: [
+			{
+				title: 'Lire dans sa langue',
+				body: 'Envoyez chaque membre vers la bibliothèque dans sa propre langue : tout le site s’affiche alors dans cette langue.'
+			},
+			{
+				title: 'Raconter le réveil',
+				body: 'Lisez Tukutendereza avec votre communauté et demandez-vous ce que ce réveil vous dit aujourd’hui.'
+			},
+			{
+				title: 'Des héros pour les enfants',
+				body: 'Lisez avec les enfants la vie de Samuel Ajayi Crowther, le garçon d’Osogun devenu évêque.'
+			}
+		],
+		shelves: [
+			{
+				title: 'L’Église en Afrique, hier et aujourd’hui',
+				note: 'Des Pères du désert au réveil d’Afrique de l’Est.',
+				picks: [
+					'tukutendereza',
+					'confessions',
+					'on-the-incarnation',
+					'life-of-antony',
+					'amanda-smith-autobiography',
+					'samuel-ajayi-crowther-a-life-teens',
+					'mary-slessor-a-life-teens'
+				]
+			},
+			{
+				title: 'Pour les enfants et les ados',
+				note: 'Les mêmes vies, racontées aux jeunes lecteurs.',
+				picks: [
+					'samuel-ajayi-crowther-a-life-children',
+					'mary-slessor-a-life-children',
+					'david-livingstone-a-life-children',
+					'david-livingstone-a-life-teens',
+					'amanda-smith-autobiography-teens',
+					'confessions-teens',
+					'life-of-antony-teens'
+				]
+			}
+		],
+		plans: ['voices-of-the-early-church', 'faith-in-the-fire', 'deeper-life-in-christ', 'first-steps-for-teens'],
+		authors: [
+			'augustine-of-hippo',
+			'athanasius-of-alexandria',
+			'samuel-ajayi-crowther',
+			'simeon-nsibambi',
+			'mary-slessor',
+			'amanda-berry-smith',
+			'david-livingstone'
+		],
+		languages: true,
+		invite: {
+			text: 'Des classiques chrétiens gratuits en français, en anglais, en swahili et en luganda, d’Augustin au réveil d’Afrique de l’Est, sur Ochorus.',
+			href: '/books'
+		},
+		questions: [
+			{ q: 'Ochorus est-il vraiment gratuit ?', a: FREE_ANSWER },
+			{
+				q: 'Quelles langues trouve-t-on ?',
+				a: `Les livres paraissent en éditions complètes ${IN_LANGUAGES}. Chaque langue a sa propre bibliothèque.`
+			},
+			{
+				q: 'Pouvons-nous recevoir des livres imprimés ?',
+				a: 'Ochorus imprime des livres et les offre lors de conférences pastorales, dans des Églises, des écoles et des prisons d’Afrique de l’Est. Si votre Église souhaite y prendre part, écrivez-nous.'
+			}
+		],
+		closeHeading: 'L’histoire de l’Afrique, dans les langues de l’Afrique',
+		closeBody: 'Ouvrez la bibliothèque dans votre langue, ou commencez par l’histoire du réveil d’Afrique de l’Est.'
+	},
+	{
 		slug: 'chaplains',
 		title: 'Des classiques chrétiens gratuits pour les aumôniers de prison, d’hôpital et des armées',
 		lead: 'Des livres et des sermons pour ceux qui traversent l’enfermement, la maladie, le deuil ou le danger, gratuits et sans compte. Bunyan a écrit en prison ; Ignace a écrit ses lettres en marchant vers le martyre ; Hannah Whitall Smith a parlé du Dieu de toute consolation.',
@@ -728,6 +1682,142 @@ export const FOR_PAGES_FR: ForPage[] = [
 		],
 		closeHeading: 'Apportez les classiques à ceux que vous servez',
 		closeBody: 'Parcourez la bibliothèque, ou commencez par un sermon court à lire en une seule visite.'
+	},
+	{
+		slug: 'prison-ministry',
+		title: 'Des livres d’espérance pour l’aumônerie de prison',
+		lead: 'Bunyan a écrit Le Voyage du pèlerin dans une cellule. Ignace a écrit ses lettres en route vers le martyre, et Watchman Nee est mort en prison. Leurs livres, gratuits, pour les visiteurs, les aumôniers et les familles qui portent l’espérance à l’intérieur.',
+		seoTitle: 'Livres chrétiens gratuits pour la prison',
+		seoDescription:
+			'Classiques chrétiens gratuits pour l’aumônerie de prison : des livres écrits dans l’épreuve, des éditions en langage simple et six semaines d’étude.',
+		primary: { href: '#series', label: 'Six semaines d’étude' },
+		secondary: { href: '/books', label: 'Explorer la bibliothèque' },
+		pointsHeading: 'Pourquoi l’aumônerie de prison utilise Ochorus',
+		points: [
+			{
+				icon: 'heart',
+				title: 'Écrits par ceux qui ont connu la prison',
+				body: 'Bunyan, Ignace et Watchman Nee ont écrit ou souffert derrière les barreaux. Leurs mots ont du poids pour ceux qui y sont aujourd’hui.',
+				link: { href: '#shelves', label: 'Voir les livres' }
+			},
+			{
+				icon: 'mic',
+				title: 'Une étude pour chaque visite',
+				body: 'Six sermons sur le pardon, un nouveau départ et le brigand sur la croix, chacun avec des questions d’étude et leurs réponses, assez courts pour une seule visite.',
+				link: { href: '#series', label: 'Voir les six semaines' }
+			},
+			{
+				icon: 'layers',
+				title: 'Des mots simples pour chaque lecteur',
+				body: 'Beaucoup de classiques sont racontés en langage simple dans les éditions pour ados, qui conviennent aux adultes que l’original rebute.',
+				link: { href: '/young-readers', label: 'Voir les éditions simples' }
+			},
+			{
+				icon: 'book',
+				title: 'Gratuit, sans inscription',
+				body: 'Chaque livre et chaque sermon se lit gratuitement, sans compte. Si vous souhaitez imprimer des livres pour une prison, écrivez-nous d’abord.',
+				link: { href: '/contact', label: 'Nous écrire' }
+			}
+		],
+		ideasHeading: 'Des idées pour votre aumônerie',
+		ideas: [
+			{
+				title: 'Une étude biblique chaque semaine',
+				body: 'Lisez ensemble l’un des six sermons chaque semaine et parlez de ses questions.'
+			},
+			{
+				title: 'Pour les familles à l’extérieur',
+				body: 'Envoyez le même livre à un proche, pour qu’il le lise en même temps que celui qu’il visite.'
+			},
+			{
+				title: 'Après la sortie',
+				body: 'Donnez le lien d’un plan de lecture pour les premières semaines dehors. Cela ne coûte rien et fonctionne sur tout téléphone.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Écrits dans l’épreuve',
+				note: 'Des livres écrits en prison, ou par ceux qui ont souffert pour leur foi.',
+				picks: [
+					'pilgrims-progress',
+					'grace-abounding',
+					'epistles-of-ignatius',
+					'watchman-nee-a-life',
+					'foxes-book-of-martyrs-teens',
+					'men-and-women-who-gave-everything-2',
+					'the-bruised-reed'
+				]
+			},
+			{
+				title: 'Un nouveau départ',
+				note: 'La grâce pour le premier des pécheurs, et un chemin pour recommencer.',
+				picks: [
+					'the-way-to-god',
+					'all-of-grace',
+					'around-the-wicket-gate',
+					'a-call-to-the-unconverted',
+					'cheque-book',
+					'how-to-succeed-in-the-christian-life',
+					'the-god-of-all-comfort'
+				]
+			},
+			{
+				title: 'En termes simples',
+				note: 'Des récits pour ceux que l’original rebute.',
+				picks: [
+					'pilgrims-progress-teens',
+					'all-of-grace-teens',
+					'the-way-to-god-teens',
+					'grace-abounding-teens',
+					'corrie-ten-boom-a-life-teens',
+					'the-bruised-reed-teens',
+					'watchman-nee-a-life-teens'
+				]
+			}
+		],
+		plans: ['faith-in-the-fire', 'first-steps-for-teens', 'deeper-life-in-christ', 'humility-12-days'],
+		authors: [
+			'john-bunyan',
+			'corrie-ten-boom',
+			'watchman-nee',
+			'ignatius-of-antioch',
+			'charles-h-spurgeon',
+			'dwight-l-moody',
+			'richard-sibbes'
+		],
+		series: [
+			{
+				title: 'Six semaines d’espérance',
+				note: 'Le pardon, un nouveau départ et le brigand sur la croix : un sermon par semaine, assez court pour une seule visite.',
+				picks: [
+					'the-dying-thief',
+					'how-to-forgive',
+					'rest',
+					'every-mans-need-of-a-refuge',
+					'the-new-birth',
+					'behold-the-lamb-of-god',
+					'the-ravens-cry',
+					'all-sufficiency'
+				]
+			}
+		],
+		invite: {
+			text: 'Des livres chrétiens d’espérance, dont beaucoup ont été écrits dans l’épreuve, gratuits sur Ochorus. Sans inscription.',
+			href: '/books'
+		},
+		questions: [
+			{ q: 'Ochorus est-il vraiment gratuit ?', a: FREE_ANSWER },
+			{
+				q: 'Pouvons-nous imprimer des livres pour une prison ?',
+				a: 'Écrivez-nous d’abord : nous serons heureux d’en parler. Ochorus imprime déjà des livres et les offre dans des prisons d’Afrique de l’Est.'
+			},
+			{
+				q: 'Et pour les lecteurs que la langue ancienne rebute ?',
+				a: 'Beaucoup de classiques existent en éditions pour ados, en langage simple. En ligne, chaque chapitre peut aussi être lu à voix haute.'
+			}
+		],
+		closeHeading: 'Portez l’espérance à l’intérieur',
+		closeBody: 'Commencez les six semaines d’étude lors de votre prochaine visite, ou parcourez la bibliothèque.'
 	},
 	{
 		slug: 'bible-colleges',

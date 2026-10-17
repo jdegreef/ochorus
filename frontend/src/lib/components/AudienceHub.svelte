@@ -20,6 +20,7 @@
 		HUB_EVENT,
 		type AudienceHubConfig
 	} from '$lib/audienceHub';
+	import ForPromo from '$lib/components/ForPromo.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
@@ -161,6 +162,8 @@
 						onshare={() => track(HUB_EVENT, { hub: hub.audience, action: 'share' })}
 					/>
 				</div>
+				<!-- The adult choosing for a child or a youth group: their page. -->
+				<ForPromo place={hub.audience === 'teens' ? 'teens' : 'young-readers'} class="mt-4" />
 			{/if}
 		</div>
 		{#if ready && fan.length}
