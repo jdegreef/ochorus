@@ -1767,6 +1767,9 @@ export const searchEmailLibrary = (
 		{ signal: init?.signal }
 	);
 
+/** Most blocks one language's email keeps (backend `blocks.MAX_BLOCKS`). */
+export const MAX_EMAIL_BLOCKS = 60;
+
 export type LibrarySearchKind = 'author' | 'book' | 'sermon' | 'plan' | 'article' | 'topic' | 'quote';
 
 /** One "Insert from the library" result, with the block that inserts it. */

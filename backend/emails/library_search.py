@@ -11,8 +11,6 @@ matching the query by its author's name counts ("murray" finds Murray's books).
 
 from __future__ import annotations
 
-from types import SimpleNamespace
-
 from django.db.models import Q
 
 from . import blocks as blocks_mod
@@ -21,53 +19,42 @@ from .blocks import BlockType
 #: Results per kind; the panel shows counts and lets the admin narrow by kind.
 PER_KIND = 8
 #: The order kinds are listed in.
-KINDS = ("author", "book", "sermon", "plan", "article", "topic", "quote")
+KINDS = (
+    BlockType.AUTHOR,
+    BlockType.BOOK,
+    BlockType.SERMON,
+    BlockType.PLAN,
+    BlockType.ARTICLE,
+    BlockType.TOPIC,
+    BlockType.QUOTE,
+)
 MIN_QUERY = 2
-
-
-def _cover(slug: str, language: str, cover_url: str) -> str:
-    from library.book_export import cover_image_url
-
-    return cover_image_url(SimpleNamespace(slug=slug, language=language, cover_url=cover_url))
 
 
 def _per_language(kind: str, q: str) -> tuple[list[dict], int]:
     """Books, sermons, plans or articles matching ``q``: one row per slug."""
     _, _, _, title_field = blocks_mod.LIBRARY[kind]
-    model = blocks_mod.library_model(kind)
+    rows = blocks_mod.library_model(kind).objects.filter(is_published=True)
     match = Q(**{f"{title_field}__icontains": q}) | Q(slug__icontains=q)
     if blocks_mod.has_author(kind):
         match |= Q(author__name__icontains=q)
-    rows = model.objects.filter(is_published=True).filter(match)
-    slugs = list(rows.order_by("slug").values_list("slug", flat=True).distinct())
-    total = len(slugs)
-    slugs = slugs[:PER_KIND]
-    fields = ["slug", "language", title_field]
-    if blocks_mod.has_author(kind):
-        fields.append("author__name")
-    if kind == BlockType.BOOK:
-        fields.append("cover_url")
-    found: dict[str, dict] = {}
-    for row in model.objects.filter(is_published=True, slug__in=slugs).order_by("slug", "language").values(*fields):
-        item = found.setdefault(
-            row["slug"],
-            {
-                "kind": kind,
-                "key": f"{kind}:{row['slug']}",
-                "title": row[title_field],
-                "subtitle": row.get("author__name", ""),
-                "image": "",
-                "languages": [],
-                "block": {"type": kind, "slug": row["slug"], "label": ""},
-            },
-        )
-        item["languages"].append(row["language"])
-        if row["language"] == "en" or not item["image"]:
-            if row["language"] == "en":
-                item["title"] = row[title_field]
-            if kind == BlockType.BOOK:
-                item["image"] = _cover(row["slug"], row["language"], row["cover_url"])
-    return [found[s] for s in slugs if s in found], total
+    matching = rows.filter(match).values("slug").distinct()
+    total = matching.count()
+    slugs = list(matching.order_by("slug").values_list("slug", flat=True)[:PER_KIND])
+    works = blocks_mod.works_by_slug(kind, rows, slugs)
+    return [
+        {
+            "kind": kind,
+            "key": f"{kind}:{slug}",
+            "title": works[slug]["title"],
+            "subtitle": works[slug]["author"],
+            "image": works[slug]["cover"],
+            "languages": works[slug]["languages"],
+            "block": {"type": kind, "slug": slug, "label": ""},
+        }
+        for slug in slugs
+        if slug in works
+    ], total
 
 
 def _authors(q: str) -> tuple[list[dict], int]:
@@ -84,7 +71,7 @@ def _authors(q: str) -> tuple[list[dict], int]:
             "kind": BlockType.AUTHOR,
             "key": f"author:{r['slug']}",
             "title": r["name"],
-            "subtitle": "–".join(str(y) for y in (r["birth_year"], r["death_year"]) if y),
+            "subtitle": blocks_mod.life_years(r["birth_year"], r["death_year"]),
             "image": r["photo_url"] or "",
             "languages": sorted(reach.get(r["slug"], set())),
             "block": {"type": BlockType.AUTHOR, "slug": r["slug"], "label": ""},
@@ -121,7 +108,11 @@ def _quotes(q: str) -> tuple[list[dict], int]:
     with the sourcing written out. A quote is in its source work's language."""
     from library.models import Quote
 
-    rows = Quote.objects.filter(reviewed=True).filter(Q(text__icontains=q) | Q(author__name__icontains=q))
+    rows = (
+        Quote.objects.filter(reviewed=True)
+        .filter(Q(chapter__book__is_published=True) | Q(sermon__is_published=True))
+        .filter(Q(text__icontains=q) | Q(author__name__icontains=q))
+    )
     total = rows.count()
     out = []
     for r in rows.order_by("slug")[:PER_KIND].values(
@@ -132,7 +123,7 @@ def _quotes(q: str) -> tuple[list[dict], int]:
         attribution = f"{r['author__name']}, {source}" if source else r["author__name"]
         out.append(
             {
-                "kind": "quote",
+                "kind": BlockType.QUOTE,
                 "key": f"quote:{r['slug']}",
                 "title": r["text"],
                 "subtitle": attribution,
@@ -150,9 +141,9 @@ def search(q: str) -> dict:
     if len(q) < MIN_QUERY:
         return {"results": [], "counts": dict.fromkeys(KINDS, 0)}
     found: dict[str, tuple[list[dict], int]] = {
-        "author": _authors(q),
-        "topic": _topics(q),
-        "quote": _quotes(q),
+        BlockType.AUTHOR: _authors(q),
+        BlockType.TOPIC: _topics(q),
+        BlockType.QUOTE: _quotes(q),
     }
     for kind in (BlockType.BOOK, BlockType.SERMON, BlockType.PLAN, BlockType.ARTICLE):
         found[kind] = _per_language(kind, q)

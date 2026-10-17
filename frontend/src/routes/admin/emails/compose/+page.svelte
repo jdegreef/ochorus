@@ -32,6 +32,7 @@
 		type BroadcastCheck,
 		type BroadcastBlock,
 		type EmailBlock,
+		MAX_EMAIL_BLOCKS,
 		type BroadcastStatus
 	} from '$lib/library-admin';
 
@@ -398,10 +399,15 @@
 	// --- "Insert from the library" (a drawer beside the designer) ------------
 	let libraryOpen = $state(false);
 
-	function insertBlock(block: EmailBlock) {
+	function insertBlock(block: EmailBlock): boolean {
 		const content = draft?.content[editLocale];
-		if (!content || readOnly) return;
+		if (!content || readOnly) return false;
+		if (content.blocks.length >= MAX_EMAIL_BLOCKS) {
+			error = `An email holds at most ${MAX_EMAIL_BLOCKS} blocks; remove one first.`;
+			return false;
+		}
 		content.blocks = [...content.blocks, block];
+		return true;
 	}
 
 	function switchLocale(code: string) {

@@ -73,3 +73,12 @@ class SearchTests(TestCase):
         res = self.client.get("/api/admin/emails/library/search/?q=humil")
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.json()["counts"]["book"], 1)
+
+
+class QuoteSourceTests(TestCase):
+    def test_a_quote_from_an_unpublished_work_is_not_offered(self):
+        author = Author.objects.create(slug="a", name="A")
+        book = Book.objects.create(author=author, slug="hidden", language="en", title="Hidden", is_published=False)
+        chapter = Chapter.objects.create(book=book, order=1, title="One", body_html="<p>x</p>")
+        Quote.objects.create(slug="h", author=author, text="Grace upon grace", chapter=chapter, paragraph=0, reviewed=True)
+        self.assertEqual(library_search.search("grace upon")["counts"]["quote"], 0)

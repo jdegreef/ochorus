@@ -21,7 +21,8 @@
 	}: {
 		locale: string;
 		localeName?: string;
-		onInsert: (block: EmailBlock) => void;
+		/** Returns whether the block was added. */
+		onInsert: (block: EmailBlock) => boolean;
 		onClose: () => void;
 	} = $props();
 
@@ -50,6 +51,8 @@
 
 	$effect(() => {
 		const q = query.trim();
+		failed = false;
+		searching = false;
 		if (q.length < 2) {
 			results = [];
 			counts = {};
@@ -78,7 +81,7 @@
 	});
 
 	function insert(r: LibrarySearchResult) {
-		onInsert($state.snapshot(r.block) as EmailBlock);
+		if (!onInsert($state.snapshot(r.block) as EmailBlock)) return;
 		inserted = r.key;
 		setTimeout(() => {
 			if (inserted === r.key) inserted = null;
@@ -123,13 +126,18 @@
 				{#each shown as r (r.key)}
 					<li class="flex items-start gap-3 rounded-md border border-border bg-surface p-2">
 						{#if r.image}
-							<img src={r.image} alt="" class="h-14 w-10 shrink-0 rounded-sm object-cover {r.kind === 'author' ? 'h-10 rounded-full' : ''}" />
+							<img src={r.image} alt="" class="w-10 shrink-0 object-cover {r.kind === 'author' ? 'h-10 rounded-full' : 'h-14 rounded-sm'}" />
 						{/if}
 						<div class="min-w-0 flex-1">
 							<p class="text-micro font-semibold uppercase tracking-wide text-muted">{KIND_LABELS[r.kind].replace(/s$/, '')}</p>
 							<p class="text-small text-text {r.kind === 'quote' ? 'italic' : 'font-semibold'} line-clamp-3">{r.title}</p>
 							{#if r.subtitle}<p class="text-micro text-muted">{r.subtitle}</p>{/if}
-							{#if r.languages.length}
+							{#if r.kind === 'quote'}
+								<!-- A quote is inserted as its words, so it shows in any language as written. -->
+								{#if r.languages.length && !r.languages.includes(locale)}
+									<p class="text-micro text-warning">Written in {r.languages[0]} — it shows in this {localeName} email as is</p>
+								{/if}
+							{:else if r.languages.length}
 								<p class="text-micro {r.languages.includes(locale) ? 'text-muted' : 'text-warning'}">
 									{r.languages.includes(locale) ? r.languages.join(' · ') : `Not in ${localeName} — left out of this email`}
 								</p>
@@ -139,6 +147,11 @@
 					</li>
 				{/each}
 			</ul>
+			{#if kind !== 'all' && (counts[kind] ?? 0) > shown.length}
+				<p class="mt-2 text-micro text-muted">Showing {shown.length} of {counts[kind]} — add words to narrow the search.</p>
+			{:else if kind === 'all' && kinds.some((k) => (counts[k] ?? 0) > results.filter((r) => r.kind === k).length)}
+				<p class="mt-2 text-micro text-muted">The first few of each kind — add words to narrow the search.</p>
+			{/if}
 		{/if}
 	</div>
 </aside>

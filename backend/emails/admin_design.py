@@ -94,24 +94,16 @@ class AdminEmailLibraryView(AdminNotAudited, APIView):
             matches = rows.filter(Q(**{f"{title_field}__icontains": q}) | Q(slug__icontains=q)) if q else rows
             slugs = list(matches.order_by("slug").values_list("slug", flat=True).distinct()[:LIBRARY_LIMIT])
         reach = blocks_mod.editions(kind, slugs)
-        works: dict[str, dict] = {}
-        fields = ["slug", title_field]
         if kind in blocks_mod.LIBRARY_TYPES:
-            fields.append("language")
-        if blocks_mod.has_author(kind):
-            fields.append("author__name")
-        for row in rows.filter(slug__in=slugs).order_by("slug").values(*fields):
-            work = works.setdefault(
-                row["slug"],
-                {
-                    "slug": row["slug"],
-                    "title": row[title_field],
-                    "author": row.get("author__name", ""),
-                    "languages": sorted(reach.get(row["slug"], set())),
-                },
-            )
-            if row.get("language") == "en":  # name a work by its English title when it has one
-                work["title"] = row[title_field]
+            works = blocks_mod.works_by_slug(kind, rows, slugs)
+        else:
+            works = {
+                row["slug"]: {"slug": row["slug"], "title": row[title_field], "author": ""}
+                for row in rows.filter(slug__in=slugs).order_by("slug").values("slug", title_field)
+            }
+        for work in works.values():
+            work.pop("cover", None)
+            work["languages"] = sorted(reach.get(work["slug"], set()))
         return Response({"results": list(works.values())})
 
 
