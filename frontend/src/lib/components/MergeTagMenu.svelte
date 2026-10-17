@@ -53,7 +53,7 @@
 		{disabled}>{'{ }'} Insert tag ▾</button
 	>
 	{#if open}
-		<div class="absolute left-0 top-full z-30 mt-1 w-80 rounded-card border border-border bg-surface p-2 shadow-lg" role="menu">
+		<div class="absolute left-0 top-full z-(--z-popover) mt-1 w-80 rounded-card border border-border bg-surface p-2 shadow-lg" role="menu">
 			{#each tags as tag (tag.key)}
 				<button
 					class="flex w-full items-baseline justify-between gap-3 rounded-md p-2 text-start hover:bg-surface-2"
