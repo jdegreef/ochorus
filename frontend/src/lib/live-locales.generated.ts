@@ -20,7 +20,7 @@ export const LIVE_LOCALE_NAMES: Record<string, string> = {"en":"English","es":"E
 
 // Each live language's published-book count — the footer's language
 // tiles. Empty when the API predates the field; the tiles then show names.
-export const LIVE_LOCALE_BOOKS: Record<string, number> = {};
+export const LIVE_LOCALE_BOOKS: Record<string, number> = {"en":279,"es":144,"sw":89,"lg":46,"pt":72};
 
 // The live languages with at least one published article — the Articles
 // hub's hreflang set (routes/articles).
