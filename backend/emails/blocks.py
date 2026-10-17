@@ -9,6 +9,15 @@ template escapes all of it, so there is still nothing to sanitize.
 * ``continue_reading`` is the reader's OWN book in progress — their most recent
   unfinished book, at the chapter they reached — so it differs per recipient and
   is left out for a reader with nothing in progress.
+* Design blocks: ``image`` (an uploaded or site image, optionally linked),
+  ``hero`` (a coloured banner with a title, optional picture and button),
+  ``spacer``, and ``scripture`` (a verse and its reference, in the email's own
+  words).
+* ``book_row`` shows up to three books side by side, each the edition in the
+  email's language; books with no such edition drop out of the row.
+* ``author`` and ``topic`` point at one row with translated text: an author card
+  (photo, name, the bio in that language when there is one) and a topic card
+  (its title in that language — a topic not translated into it is left out).
 * Library blocks point at a work by slug — ``book``, ``sermon``, ``plan`` — and
   are resolved at render time to the edition in the email's language: its title,
   author, cover and link. Content is per-language rows with **no English
@@ -42,6 +51,14 @@ class BlockType(models.TextChoices):
     SERMON = "sermon", "Sermon"
     PLAN = "plan", "Reading plan"
     CONTINUE = "continue_reading", "Continue reading"
+    IMAGE = "image", "Image"
+    HERO = "hero", "Hero banner"
+    BOOK_ROW = "book_row", "Book row"
+    SPACER = "spacer", "Spacer"
+    SCRIPTURE = "scripture", "Scripture"
+    AUTHOR = "author", "Author"
+    TOPIC = "topic", "Topic"
+    ARTICLE = "article", "Article"
 
 
 #: The fields each block type keeps (all strings); anything else is dropped.
@@ -55,9 +72,37 @@ FIELDS: dict[str, tuple[str, ...]] = {
     BlockType.SERMON: ("slug", "label"),
     BlockType.PLAN: ("slug", "label"),
     BlockType.CONTINUE: ("heading", "label"),
+    BlockType.IMAGE: ("url", "alt", "path", "caption"),
+    BlockType.HERO: ("eyebrow", "title", "text", "image", "color", "label", "path"),
+    BlockType.BOOK_ROW: ("slugs", "label"),
+    BlockType.SPACER: ("size",),
+    BlockType.SCRIPTURE: ("text", "reference"),
+    BlockType.AUTHOR: ("slug", "label"),
+    BlockType.TOPIC: ("slug", "label"),
+    BlockType.ARTICLE: ("slug", "label"),
 }
 
-LIBRARY_TYPES = (BlockType.BOOK, BlockType.SERMON, BlockType.PLAN)
+#: Per-language rows sharing a slug: a block renders the email language's own
+#: row, or nothing (there is no English fallback).
+LIBRARY_TYPES = (BlockType.BOOK, BlockType.SERMON, BlockType.PLAN, BlockType.ARTICLE)
+#: One row with translated text (authors, topics).
+ENTITY_TYPES = (BlockType.AUTHOR, BlockType.TOPIC)
+#: Every block that names something in the library by slug.
+SLUG_TYPES = (*LIBRARY_TYPES, *ENTITY_TYPES)
+
+#: A hero's background colours — the site's own hues, dark enough for white text.
+HERO_COLORS = {
+    "navy": "#1f3a6e",
+    "cypress": "#2c594d",
+    "indigo": "#3b438f",
+    "plum": "#613f64",
+    "oxblood": "#833731",
+    "ochre": "#795725",
+}
+#: A spacer's heights, in pixels.
+SPACER_SIZES = {"small": 12, "medium": 28, "large": 48}
+#: Most books a book row shows.
+BOOK_ROW_MAX = 3
 
 #: Guards against a runaway payload; far above any real email.
 MAX_BLOCKS = 60
@@ -136,7 +181,7 @@ def as_blocks(content: dict) -> dict:
 
 
 #: The fields that carry an admin's own words (what a translation changes).
-WORD_FIELDS = ("text", "label", "attribution", "heading")
+WORD_FIELDS = ("text", "label", "attribution", "heading", "title", "eyebrow", "caption", "alt", "reference")
 
 
 def has_body(blocks: list[dict], reaches=None) -> bool:
@@ -146,32 +191,53 @@ def has_body(blocks: list[dict], reaches=None) -> bool:
     for b in blocks:
         if b["type"] == BlockType.CONTINUE:
             continue  # per reader, and absent for anyone with nothing in progress
-        if b["type"] in LIBRARY_TYPES:
+        if b["type"] in SLUG_TYPES:
             if b.get("slug") and (reaches is None or reaches(b)):
                 return True
-        elif any(b.get(f) for f in ("text", "label")):
+        elif b["type"] == BlockType.BOOK_ROW:
+            if any(reaches is None or reaches({"type": BlockType.BOOK, "slug": s}) for s in row_slugs(b)):
+                return True
+        elif b["type"] == BlockType.IMAGE:
+            if b.get("url"):
+                return True
+        elif any(b.get(f) for f in ("text", "label", "title")):
             return True
     return False
+
+
+def row_slugs(block: dict) -> list[str]:
+    """The books a ``book_row`` names, in order (comma-separated, deduplicated)."""
+    seen: list[str] = []
+    for slug in (block.get("slugs") or "").split(","):
+        slug = slug.strip()
+        if slug and slug not in seen:
+            seen.append(slug)
+    return seen[:BOOK_ROW_MAX]
 
 
 def library_refs(blocks: list[dict]) -> dict[str, set[str]]:
     """``{kind: slugs}`` for the library blocks that name a work."""
     refs: dict[str, set[str]] = {}
     for b in blocks:
-        if b["type"] in LIBRARY_TYPES and b.get("slug"):
+        if b["type"] in SLUG_TYPES and b.get("slug"):
             refs.setdefault(b["type"], set()).add(b["slug"])
+        elif b["type"] == BlockType.BOOK_ROW:
+            refs.setdefault(BlockType.BOOK, set()).update(row_slugs(b))
     return refs
 
 
 # --- Library lookups ------------------------------------------------------------
 
 
-#: What each library type is: its model, its reader-site section, and the field
-#: its card's blurb comes from. Plans have no author.
+#: What each library type is: its model, its reader-site section, the field its
+#: card's blurb comes from, and its title field. Plans and articles have no author.
 LIBRARY = {
-    BlockType.BOOK: ("Book", "books", "description"),
-    BlockType.SERMON: ("Sermon", "sermons", "summary"),
-    BlockType.PLAN: ("Plan", "plans", "description"),
+    BlockType.BOOK: ("Book", "books", "description", "title"),
+    BlockType.SERMON: ("Sermon", "sermons", "summary", "title"),
+    BlockType.PLAN: ("Plan", "plans", "description", "title"),
+    BlockType.ARTICLE: ("Article", "articles", "description", "h1"),
+    BlockType.AUTHOR: ("Author", "authors", "bio", "name"),
+    BlockType.TOPIC: ("Topic", "topics", "description", "title"),
 }
 
 
@@ -183,12 +249,34 @@ def library_model(kind: str):
 
 
 def has_author(kind: str) -> bool:
-    return kind != BlockType.PLAN
+    return kind in (BlockType.BOOK, BlockType.SERMON)
 
 
 def editions(kind: str, slugs) -> dict[str, set[str]]:
-    """``{slug: {languages it is published in}}`` for one library type."""
+    """``{slug: {languages it is published in}}`` for one library type.
+
+    An author is in every language (their name and photo travel; the bio shows
+    where it is translated); a topic is in English and each language it has a
+    translated title in."""
+    from library.languages import known_codes
+
     out: dict[str, set[str]] = {}
+    if kind == BlockType.AUTHOR:
+        codes = set(known_codes())
+        return {slug: set(codes) for slug in library_model(kind).objects.filter(slug__in=set(slugs)).values_list("slug", flat=True)}
+    if kind == BlockType.TOPIC:
+        from library.models import TopicTranslation
+
+        for slug in library_model(kind).objects.filter(slug__in=set(slugs), is_published=True).values_list("slug", flat=True):
+            out[slug] = {"en"}
+        rows = (
+            TopicTranslation.objects.filter(topic__slug__in=list(out))
+            .exclude(title="")
+            .values_list("topic__slug", "language")
+        )
+        for slug, language in rows:
+            out[slug].add(language)
+        return out
     rows = library_model(kind).objects.filter(slug__in=set(slugs), is_published=True).values_list(
         "slug", "language"
     )
@@ -207,8 +295,10 @@ def _cards(kind: str, slugs, lang: str) -> dict[str, dict]:
     Only the card's columns are read — a sermon row also carries its whole body."""
     from library.book_export import cover_image_url
 
-    _, section, blurb_field = LIBRARY[kind]
-    fields = ["slug", "title", blurb_field]
+    if kind in ENTITY_TYPES:
+        return _entity_cards(kind, slugs, lang)
+    _, section, blurb_field, title_field = LIBRARY[kind]
+    fields = ["slug", title_field, blurb_field]
     if has_author(kind):
         fields.append("author__name")
     if kind == BlockType.BOOK:
@@ -227,13 +317,78 @@ def _cards(kind: str, slugs, lang: str) -> dict[str, dict]:
                 SimpleNamespace(slug=row["slug"], language=lang, cover_url=row["cover_url"])
             )
         cards[row["slug"]] = {
-            "title": row["title"],
+            "title": row[title_field],
             "author": row.get("author__name", ""),
             "description": _blurb(row[blurb_field]),
             "cover_url": links.site_url(cover) if cover.startswith("/") else cover,
             "url": links.site_url(links.reader_path(section, row["slug"], lang)),
         }
     return cards
+
+
+def _entity_cards(kind: str, slugs, lang: str) -> dict[str, dict]:
+    """Cards for authors and topics: one row each, its words in ``lang`` from the
+    translation side-table (English from the row itself). A topic with no title
+    in ``lang`` has no card; an author always has one, with their bio only where
+    it is written in ``lang``."""
+    from library.models import AuthorTranslation, TopicTranslation
+
+    _, section, _, _ = LIBRARY[kind]
+    model = library_model(kind)
+    cards: dict[str, dict] = {}
+    if kind == BlockType.AUTHOR:
+        rows = model.objects.filter(slug__in=set(slugs)).values(
+            "id", "slug", "name", "bio", "tagline", "photo_url", "birth_year", "death_year"
+        )
+        bios = {}
+        if lang != "en":
+            bios = dict(
+                AuthorTranslation.objects.filter(author__slug__in=set(slugs), language=lang)
+                .exclude(bio="")
+                .values_list("author__slug", "bio")
+            )
+        for row in rows:
+            bio = row["bio"] if lang == "en" else bios.get(row["slug"], "")
+            years = "–".join(str(y) for y in (row["birth_year"], row["death_year"]) if y)
+            photo = row["photo_url"] or ""
+            cards[row["slug"]] = {
+                "title": row["name"],
+                "author": years,
+                "description": _blurb(bio),
+                "cover_url": links.site_url(photo) if photo.startswith("/") else photo,
+                "url": links.site_url(links.reader_path(section, row["slug"], lang)),
+            }
+        return cards
+    rows = model.objects.filter(slug__in=set(slugs), is_published=True).values("id", "slug", "title", "description")
+    words = {}
+    if lang != "en":
+        words = {
+            t["topic__slug"]: t
+            for t in TopicTranslation.objects.filter(topic__slug__in=set(slugs), language=lang)
+            .exclude(title="")
+            .values("topic__slug", "title", "description")
+        }
+    for row in rows:
+        text = row if lang == "en" else words.get(row["slug"])
+        if not text:
+            continue
+        cards[row["slug"]] = {
+            "title": text["title"],
+            "author": "",
+            "description": _blurb(text["description"]),
+            "cover_url": "",
+            "url": links.site_url(links.reader_path(section, row["slug"], lang)),
+        }
+    return cards
+
+
+def image_url(url: str) -> str:
+    """An image address an email can show: a site path made absolute, or an
+    https URL as is; anything else (http, data:, javascript:) is ``""``."""
+    url = (url or "").strip()
+    if url.startswith("/") and not url.startswith("//"):
+        return links.site_url(url)
+    return url if url.startswith("https://") else ""
 
 
 def _latest_progress(profile_ids) -> dict:
@@ -333,14 +488,44 @@ def resolve(
             for slug in missing:
                 cards[(kind, lang, slug)] = found.get(slug)
 
+    def path_url(path: str) -> str:
+        path = (path or "").strip()
+        if not path:
+            return ""
+        return links.site_url(_button_path(path, lang) if localize_buttons else path)
+
     out = []
     for b in blocks:
         kind = b["type"]
-        if kind in LIBRARY_TYPES:
+        if kind in SLUG_TYPES:
             card = cards.get((kind, lang, b.get("slug", "")))
             if card is None:
                 continue
             out.append({"type": kind, "label": b.get("label", ""), **card})
+        elif kind == BlockType.BOOK_ROW:
+            row = [c for s in row_slugs(b) if (c := cards.get((BlockType.BOOK, lang, s)))]
+            if row:
+                out.append({"type": kind, "label": b.get("label", ""), "books": row, "width": 100 // len(row)})
+        elif kind == BlockType.IMAGE:
+            src = image_url(b.get("url", ""))
+            if src:
+                out.append({**b, "src": src, "url": path_url(b.get("path", ""))})
+        elif kind == BlockType.HERO:
+            if b.get("title") or b.get("text"):
+                out.append(
+                    {
+                        **b,
+                        "src": image_url(b.get("image", "")),
+                        "bg": HERO_COLORS.get(b.get("color", ""), HERO_COLORS["navy"]),
+                        "url": path_url(b.get("path", "")) if b.get("label") else "",
+                        "text": b.get("text", "").replace("{name}", name),
+                    }
+                )
+        elif kind == BlockType.SPACER:
+            out.append({"type": kind, "height": SPACER_SIZES.get(b.get("size", ""), SPACER_SIZES["medium"])})
+        elif kind == BlockType.SCRIPTURE:
+            if b.get("text"):
+                out.append(b)
         elif kind == BlockType.CONTINUE:
             card = _continue_card(profile, cards)
             if card is not None:

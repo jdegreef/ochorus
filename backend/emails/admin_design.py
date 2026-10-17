@@ -10,6 +10,7 @@ from __future__ import annotations
 import requests
 from django.db.models import Q
 from rest_framework import status as http_status
+from rest_framework.parsers import MultiPartParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -19,7 +20,7 @@ from library.audit import AdminAudited, AdminNotAudited, actor_email
 from library.models import AdminAction
 
 from . import blocks as blocks_mod
-from . import starter_templates, translation_jobs
+from . import images, starter_templates, translation_jobs
 from .admin_views import _serialize_broadcast
 from .models import Broadcast, EmailSubscription, EmailTemplate, TemplateCategory
 from .rendering import render_blocks
@@ -62,50 +63,52 @@ class AdminEmailPreviewView(AdminNotAudited, APIView):
 
 
 class AdminEmailLibraryView(AdminNotAudited, APIView):
-    """Search the library for the picker: ``?type=book|sermon|plan&q=…``, or look
-    up exact works with ``&slugs=a,b`` (what a saved design already names).
+    """Search the library for the picker: ``?type=<block type>&q=…`` (book,
+    sermon, plan, article, author or topic), or look up exact items with
+    ``&slugs=a,b`` (what a saved design already names).
 
-    One row per work (slug), with every language it is published in, so the
-    designer can show at a glance which editions a block will reach."""
+    One row per item (slug), with every language it reaches, so the designer
+    can show at a glance which emails a block will appear in."""
 
     permission_classes = [IsAdminEmail]
     audit_exempt = "Read-only search."
 
     def get(self, request):
         kind = request.query_params.get("type", blocks_mod.BlockType.BOOK)
-        if kind not in blocks_mod.LIBRARY_TYPES:
+        if kind not in blocks_mod.SLUG_TYPES:
             return Response(
-                {"detail": "type must be book, sermon or plan"},
+                {"detail": f"type must be one of {', '.join(blocks_mod.SLUG_TYPES)}"},
                 status=http_status.HTTP_400_BAD_REQUEST,
             )
-        published = blocks_mod.library_model(kind).objects.filter(is_published=True)
+        _, _, _, title_field = blocks_mod.LIBRARY[kind]
+        model = blocks_mod.library_model(kind)
+        rows = model.objects.all() if kind == blocks_mod.BlockType.AUTHOR else model.objects.filter(is_published=True)
         exact = [s for s in request.query_params.get("slugs", "").split(",") if s]
         if exact:
             slugs = exact[:LIBRARY_LIMIT]
         else:
             q = request.query_params.get("q", "").strip()
-            matches = published.filter(Q(title__icontains=q) | Q(slug__icontains=q)) if q else published
-            slugs = list(
-                matches.order_by("slug").values_list("slug", flat=True).distinct()[:LIBRARY_LIMIT]
-            )
-        # Only the picker's columns: a sermon row also carries its whole body.
-        fields = ["slug", "language", "title"]
+            matches = rows.filter(Q(**{f"{title_field}__icontains": q}) | Q(slug__icontains=q)) if q else rows
+            slugs = list(matches.order_by("slug").values_list("slug", flat=True).distinct()[:LIBRARY_LIMIT])
+        reach = blocks_mod.editions(kind, slugs)
+        works: dict[str, dict] = {}
+        fields = ["slug", title_field]
+        if kind in blocks_mod.LIBRARY_TYPES:
+            fields.append("language")
         if blocks_mod.has_author(kind):
             fields.append("author__name")
-        works: dict[str, dict] = {}
-        for row in published.filter(slug__in=slugs).order_by("slug", "language").values(*fields):
+        for row in rows.filter(slug__in=slugs).order_by("slug").values(*fields):
             work = works.setdefault(
                 row["slug"],
                 {
                     "slug": row["slug"],
-                    "title": row["title"],
+                    "title": row[title_field],
                     "author": row.get("author__name", ""),
-                    "languages": [],
+                    "languages": sorted(reach.get(row["slug"], set())),
                 },
             )
-            work["languages"].append(row["language"])
-            if row["language"] == "en":  # name a work by its English title when it has one
-                work["title"] = row["title"]
+            if row.get("language") == "en":  # name a work by its English title when it has one
+                work["title"] = row[title_field]
         return Response({"results": list(works.values())})
 
 
@@ -267,3 +270,32 @@ class AdminBroadcastTranslationView(AdminAudited, APIView):
                 status=http_status.HTTP_502_BAD_GATEWAY,
             )
         return Response(_serialize_broadcast(broadcast, detail=True))
+
+
+class AdminEmailImageView(AdminAudited, APIView):
+    """Upload a picture for an email (multipart ``file``); returns its public
+    ``url`` for an image or hero block (emails/images.py)."""
+
+    permission_classes = [IsAdminEmail]
+    parser_classes = [MultiPartParser]
+    audit_action = AdminAction.Action.EMAIL_IMAGE_UPLOAD
+
+    def audit_entry(self, request, response):
+        return ("email-image", {"url": response.data.get("url", "")})
+
+    def post(self, request):
+        upload = request.FILES.get("file")
+        if upload is None:
+            return Response({"detail": "choose a picture to upload"}, status=http_status.HTTP_400_BAD_REQUEST)
+        if upload.size > images.MAX_BYTES:
+            return Response({"detail": "That file is too large."}, status=http_status.HTTP_400_BAD_REQUEST)
+        try:
+            url = images.upload(upload.read())
+        except images.ImageError as exc:
+            return Response({"detail": str(exc)}, status=http_status.HTTP_400_BAD_REQUEST)
+        except requests.RequestException:
+            return Response(
+                {"detail": "The image store didn't answer — try again shortly."},
+                status=http_status.HTTP_502_BAD_GATEWAY,
+            )
+        return Response({"url": url}, status=http_status.HTTP_201_CREATED)

@@ -42,8 +42,9 @@ class StarterTests(SimpleTestCase):
         for s in starter_templates.STARTERS:
             for b in s["blocks"]:
                 with self.subTest(s["key"], slug=b.get("slug")):
-                    if b["type"] == "book":
-                        self.assertTrue((CONTENT / "books" / f"{b['slug']}.en.json").exists())
+                    if b["type"] in ("book", "book_row"):
+                        for slug in blocks_mod.row_slugs(b) if b["type"] == "book_row" else [b["slug"]]:
+                            self.assertTrue((CONTENT / "books" / f"{slug}.en.json").exists())
                     elif b["type"] == "plan":
                         self.assertIn(b["slug"], plans)
 

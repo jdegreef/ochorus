@@ -35,12 +35,19 @@ STARTERS: list[dict] = [
         "subject": "[This month at Ochorus]",
         "preheader": "New classics, a line worth keeping, and a plan for the month.",
         "blocks": [
-            {"type": "heading", "text": "[This month at Ochorus]"},
+            {
+                "type": "hero",
+                "eyebrow": "[Month]",
+                "title": "[This month at Ochorus]",
+                "text": "",
+                "image": "",
+                "color": "navy",
+                "label": "",
+                "path": "",
+            },
             {"type": "text", "text": "Dear {name},\n\n[A few sentences about the month — what was added, and why it matters.]"},
             {"type": "heading", "text": "New in the library"},
-            _book("the-pursuit-of-god", "Start reading"),
-            _book("absolute-surrender", "Start reading"),
-            _book("power-through-prayer", "Start reading"),
+            {"type": "book_row", "slugs": "the-pursuit-of-god,absolute-surrender,power-through-prayer", "label": "Start reading"},
             {"type": "divider"},
             {
                 "type": "quote",
@@ -110,7 +117,7 @@ STARTERS: list[dict] = [
         "preheader": "A few quiet minutes for the season.",
         "blocks": [
             {"type": "heading", "text": "[An Advent reading]"},
-            {"type": "quote", "text": "[A verse for the season]", "attribution": "[Reference]"},
+            {"type": "scripture", "text": "[A verse for the season]", "reference": "[Reference]"},
             {"type": "text", "text": "[A short reflection — a paragraph or two from a classic, or your own words.]"},
             {"type": "plan", "slug": "humility-12-days", "label": "Read through the season"},
             _letter_close(),

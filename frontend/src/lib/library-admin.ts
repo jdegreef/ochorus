@@ -1536,11 +1536,38 @@ export type EmailBlock =
 	| { type: 'button'; label: string; path: string }
 	| { type: 'divider' }
 	| { type: 'quote'; text: string; attribution: string }
-	| { type: 'book' | 'sermon' | 'plan'; slug: string; label: string }
+	| { type: 'book' | 'sermon' | 'plan' | 'article' | 'author' | 'topic'; slug: string; label: string }
 	/** The reader's own book in progress, filled per recipient; `{chapter}` in
 	 *  the label becomes the chapter they reached. Left out for a reader with
 	 *  nothing in progress (heading included). */
-	| { type: 'continue_reading'; heading: string; label: string };
+	| { type: 'continue_reading'; heading: string; label: string }
+	/** `url` is an https address or a site path; `path` optionally links it. */
+	| { type: 'image'; url: string; alt: string; path: string; caption: string }
+	| {
+			type: 'hero';
+			eyebrow: string;
+			title: string;
+			text: string;
+			image: string;
+			color: HeroColor;
+			label: string;
+			path: string;
+	  }
+	/** Up to three books side by side; `slugs` is comma-separated. */
+	| { type: 'book_row'; slugs: string; label: string }
+	| { type: 'spacer'; size: 'small' | 'medium' | 'large' }
+	| { type: 'scripture'; text: string; reference: string };
+
+/** A hero banner's background (backend `blocks.HERO_COLORS`). */
+export type HeroColor = 'navy' | 'cypress' | 'indigo' | 'plum' | 'oxblood' | 'ochre' | '';
+export const HERO_COLORS: Record<Exclude<HeroColor, ''>, string> = {
+	navy: '#1f3a6e',
+	cypress: '#2c594d',
+	indigo: '#3b438f',
+	plum: '#613f64',
+	oxblood: '#833731',
+	ochre: '#795725'
+};
 
 export type EmailBlockType = EmailBlock['type'];
 export type LibraryBlockType = Extract<EmailBlock, { slug: string }>['type'];
@@ -1739,6 +1766,14 @@ export const searchEmailLibrary = (
 		`/api/admin/emails/library/?${new URLSearchParams({ type, q, slugs: (init?.slugs ?? []).join(',') })}`,
 		{ signal: init?.signal }
 	);
+
+/** Upload a picture for an email; returns its public URL. */
+export async function uploadEmailImage(file: File): Promise<string> {
+	const body = new FormData();
+	body.append('file', file);
+	const res = await apiFetchRaw('/api/admin/emails/images/', { method: 'POST', body });
+	return ((await res.json()) as { url: string }).url;
+}
 
 export type TemplateCategory = 'newsletter' | 'announcement' | 'automation' | 'seasonal' | 'other';
 
