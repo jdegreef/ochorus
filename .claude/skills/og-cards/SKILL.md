@@ -91,6 +91,16 @@ generator to refresh the manifest, and commit PNGs + manifest together.
   backend script/test. (Import-member sort `I001` bit the topics PR: green tests
   locally, red CI. `ruff check --fix` sorts it.)
 
+- **satori now lays boxes out content-box (found 2026-10-17).** A frame with
+  `width: 1200px` and `padding: 72px` became 1344px wide, pushing the wordmark,
+  the art and the tagline's wrap off the card. The committed cards predate the
+  change. `generate-for-og.mjs` sets `boxSizing: 'border-box'` on its frame and
+  chip, and re-renders the old /for cards byte-identically. `og-card.mjs`, and
+  so `og:pages`, `og:topics` and `og:sermons`, still render the broken layout
+  on a fresh install: before re-running any of them, add the same
+  `boxSizing: 'border-box'` to each sized box with padding or a border, then
+  check that an unchanged card comes out byte-identical (`git status`).
+
 ## Ledger
 
 - sermons, pages: pre-existing. **topics: shipped** (per-topic cards replacing

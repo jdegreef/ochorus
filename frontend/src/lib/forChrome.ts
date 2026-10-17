@@ -229,7 +229,16 @@ export const FOR_CHROME: Record<ForLocale, ForChrome> = {
 				'bible-colleges': 'Bible college students',
 				schools: 'A class at school',
 				homeschool: 'My homeschool',
-				parents: 'My children'
+				parents: 'My children',
+				pastors: 'The people I preach to',
+				'new-believers': 'Someone new to the faith',
+				'prison-ministry': 'People in prison',
+				'prayer-groups': 'A prayer group',
+				'womens-ministry': 'A women’s group',
+				'mens-ministry': 'A men’s group',
+				evangelism: 'People I’m reaching with the gospel',
+				'african-churches': 'A church in Africa',
+				campus: 'Students'
 			},
 			goals: {
 				together: 'Read a plan together',
@@ -358,7 +367,16 @@ export const FOR_CHROME: Record<ForLocale, ForChrome> = {
 				'bible-colleges': 'Des étudiants d’institut biblique',
 				schools: 'Une classe',
 				homeschool: 'L’école à la maison',
-				parents: 'Mes enfants'
+				parents: 'Mes enfants',
+				pastors: 'Ceux à qui je prêche',
+				'new-believers': 'Quelqu’un de nouveau dans la foi',
+				'prison-ministry': 'Des personnes en prison',
+				'prayer-groups': 'Un groupe de prière',
+				'womens-ministry': 'Un groupe de femmes',
+				'mens-ministry': 'Un groupe d’hommes',
+				evangelism: 'Ceux à qui j’annonce l’Évangile',
+				'african-churches': 'Une Église en Afrique',
+				campus: 'Des étudiants'
 			},
 			goals: {
 				together: 'Lire un plan ensemble',
