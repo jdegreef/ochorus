@@ -78,6 +78,9 @@
 			email.data = d;
 			take(d);
 			notice = done;
+			// A bulk request reports per language; say what didn't go through.
+			const failed = Object.entries(d.outcome ?? {}).filter(([, v]) => v !== 'requested');
+			if (failed.length) error = failed.map(([c, why]) => `${name(c)}: ${why}`).join(' · ');
 			void steps.load();
 		} catch (e) {
 			error = apiErrorDetail(e);
@@ -98,9 +101,16 @@
 	}
 
 	function publish() {
-		const langs = dirty ? [...new Set([...edited, lang])] : edited;
-		if (!confirm(`Publish ${langs.map(name).join(', ') || 'these changes'}? Readers get the new words from the next send.`)) return;
-		act('publish', {}, 'Published. Readers get the new words from the next send.');
+		// Exactly the languages the dialog names: those with changes, never an
+		// AI draft or request still waiting.
+		const waiting = (code: string) => ['draft', 'requested'].includes(detail?.statuses[code]?.status ?? '');
+		const langs = [...new Set([...edited, ...(dirty ? [lang] : [])])].filter((c) => !waiting(c));
+		if (!langs.length) {
+			error = 'There is nothing to publish — an AI draft needs approving first.';
+			return;
+		}
+		if (!confirm(`Publish ${langs.map(name).join(', ')}? Readers get the new words from the next send.`)) return;
+		act('publish', { languages: langs }, 'Published. Readers get the new words from the next send.');
 	}
 
 	function resetLanguage() {
@@ -190,7 +200,7 @@
 							>
 						{/each}
 						{#if staleCount}
-							<button class="btn btn-ghost btn-sm ms-auto" onclick={() => act('request_stale', {}, 'AI drafts requested for the languages the English change left behind.')} disabled={busy}>
+							<button class="btn btn-ghost btn-sm ms-auto" onclick={() => act('request_stale', {}, 'AI drafts requested for the languages the English change left behind (any that failed are listed).')} disabled={busy}>
 								Re-translate the {staleCount} the English change left behind
 							</button>
 						{/if}

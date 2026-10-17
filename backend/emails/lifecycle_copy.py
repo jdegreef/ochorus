@@ -208,10 +208,6 @@ def statuses(copy: LifecycleCopy) -> dict[str, dict]:
 # --- Publishing ---------------------------------------------------------------------
 
 
-def _allowed_braces(step: str) -> set[str]:
-    return {*merge_tags.TAGS, *merge_tags.ALIASES, *STEP_BY_KEY[step].placeholders, "link", "chapter"}
-
-
 def check(step: str, lang: str, email: dict) -> list[str]:
     """What stops ``email`` going out, in words — empty when it can."""
     problems = []
@@ -219,12 +215,31 @@ def check(step: str, lang: str, email: dict) -> list[str]:
         problems.append("the subject line is empty")
     if not blocks_mod.has_body(email["blocks"]):
         problems.append("the email has no content")
-    texts = [email["subject"], email["preheader"], *(b.get(f, "") for b in email["blocks"] for f in blocks_mod.WORD_FIELDS)]
-    unknown = sorted(
-        m.group(0) for t in texts for m in merge_tags.TAG.finditer(t or "") if m.group(1) not in _allowed_braces(step)
-    )
+    own = STEP_BY_KEY[step].placeholders
+    words: list[tuple[str, str]] = [("", email["subject"]), ("", email["preheader"])]
+    for b in email["blocks"]:
+        words += [(f"{b['type']}.{f}", b.get(f, "")) for f in blocks_mod.WORD_FIELDS]
+    unknown, fallbacks = set(), set()
+    for where, text in words:
+        for m in merge_tags.TAG.finditer(text or ""):
+            name = m.group(1)
+            if name in own:
+                if m.group(2) is not None:
+                    fallbacks.add(m.group(0))  # filled by code, always — no fallback
+            elif name == "chapter" and where == "continue_reading.label":
+                continue
+            elif merge_tags.tag_key(name) is None:
+                unknown.add(m.group(0))
     if unknown:
-        problems.append(f"{', '.join(unknown)} isn't something this email can fill in")
+        problems.append(f"{', '.join(sorted(unknown))} isn't something this email can fill in")
+    if fallbacks:
+        problems.append(f"{', '.join(sorted(fallbacks))}: this email always fills these in, so drop the part after “|”")
+    link_buttons = [b for b in email["blocks"] if b.get("path") == LINK or b.get("url") == LINK]
+    if STEP_BY_KEY[step].link:
+        if not any(b["type"] in ("button", "hero") and b.get("label") for b in link_buttons):
+            problems.append(f"keep a button whose link is {LINK} — it goes to {STEP_BY_KEY[step].link}")
+    elif link_buttons:
+        problems.append(f"{LINK} only works in an email with a per-reader link — use a path on the site")
     return problems
 
 
@@ -277,7 +292,9 @@ def reset(step: str, lang: str | None = None, actor: str = "") -> LifecycleCopy:
     with transaction.atomic():
         for code in langs:
             copy.live.pop(code, None)
-            copy.translations.pop(code, None)
+            job = copy.translations.pop(code, None) or {}
+            if job.get("state") == translation_jobs.State.REQUESTED and job.get("issue"):
+                translation_jobs._close(job["issue"])  # nobody will fetch its reply now
             email = original(step, code)
             if email is None:
                 copy.subject.pop(code, None)

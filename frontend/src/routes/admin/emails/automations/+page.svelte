@@ -128,7 +128,11 @@
 									<td class="p-2 text-muted">{s.when}</td>
 									<td class="p-2 text-text">{s.subject}</td>
 									<td class="p-2 text-muted">
-										{s.languages}{s.counts.published ? ` · ${s.counts.published} edited` : ' · original'}{s.counts.edited ? ` · ${s.counts.edited} unpublished` : ''}
+										{s.languages}
+										{#if s.counts.published}· {s.counts.published} published{/if}
+										{#if s.counts.edited}· {s.counts.edited} unpublished{/if}
+										{#if s.counts.draft || s.counts.requested}· {(s.counts.draft ?? 0) + (s.counts.requested ?? 0)} AI draft{/if}
+										{#if s.counts.original === s.languages}· all original{/if}
 										{#if s.stale}<span class="text-warning"> · {s.stale} to review</span>{/if}
 									</td>
 									<td class="p-2 text-right"><a class="btn btn-ghost btn-sm" href="/admin/emails/automations/{s.key}">Edit</a></td>

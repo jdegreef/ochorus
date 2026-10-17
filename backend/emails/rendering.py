@@ -78,6 +78,10 @@ def _render_step(
 
     mapping = mapping or {}
     edited = lifecycle_copy.live_email(step, lang)
+    if edited is None and lang not in copy_mod.LIFECYCLE[step]:
+        # A language with no words of its own gets the English — the edited
+        # English when there is one, as it would get the original.
+        edited = lifecycle_copy.live_email(step, copy_mod.DEFAULT_LOCALE)
     if edited is not None:
         blocks = [
             {k: _fill(v, mapping) if k in blocks_mod.WORD_FIELDS else v for k, v in b.items()}
@@ -90,6 +94,8 @@ def _render_step(
             subscription=subscription,
             lang=lang,
             link=cta_path or "",
+            # Like the original: its fixed paths were written for every language.
+            localize_buttons=False,
         )
     text = {key: _fill(value, mapping) for key, value in copy_mod.step_copy(step, lang).items()}
     if cta_path is not None:

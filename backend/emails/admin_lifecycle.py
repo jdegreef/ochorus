@@ -68,14 +68,16 @@ class AdminLifecycleListView(AdminNotAudited, APIView):
     def get(self, request):
         rows = []
         for step in lc.STEPS:
-            statuses = lc.statuses(lc.row(step.key))
+            copy = lc.row(step.key)
+            statuses = lc.statuses(copy)
             counts: dict[str, int] = {}
             for s in statuses.values():
                 counts[s["status"]] = counts.get(s["status"], 0) + 1
+            english = lc.working(copy, "en")
             rows.append(
                 {
                     **_step(step),
-                    "subject": lc.working(lc.row(step.key), "en")["subject"] if "en" in statuses else "",
+                    "subject": english["subject"] if english else "",
                     "languages": len(statuses),
                     "counts": counts,
                     "stale": sum(1 for s in statuses.values() if s["stale"]),
@@ -92,7 +94,8 @@ class AdminLifecycleDetailView(AdminAudited, APIView):
     audit_action = AdminAction.Action.EMAIL_LIFECYCLE_EDIT
 
     def audit_entry(self, request, response):
-        return (f"lifecycle:{self.kwargs.get('step')}", {"languages": sorted((request.data.get("content") or {}).keys())})
+        content = request.data.get("content")
+        return (f"lifecycle:{self.kwargs.get('step')}", {"languages": sorted(content) if isinstance(content, dict) else []})
 
     def get(self, request, step):
         copy = _get_step(step)

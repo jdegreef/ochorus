@@ -197,3 +197,29 @@ class ApiTests(_Clean):
 
     def test_unknown_step(self):
         self.assertEqual(self.client.get("/api/admin/emails/lifecycle/nope/").status_code, 404)
+
+
+@SENDING
+class ReviewFixTests(_Clean):
+    def test_a_language_without_its_own_words_gets_the_edited_english(self):
+        from . import copy as copy_mod
+
+        reader = _make_profile(locale="de")
+        sub = EmailSubscription.objects.create(profile=reader)
+        self.assertNotIn("de", copy_mod.LIFECYCLE["welcome"])
+        _edit("welcome", "en", subject="Welcome home")
+        lc.publish("welcome")
+        self.assertEqual(render_step("welcome", reader, sub).subject, "Welcome home")
+
+    def test_step_placeholders_take_no_fallback(self):
+        email = lc.original("finish_series", "en")
+        email["subject"] = "Up next: {next|the next book}"
+        self.assertTrue(any("drop the part" in p for p in lc.check("finish_series", "en", email)))
+
+    def test_link_only_as_a_button_path_and_required_where_it_matters(self):
+        email = lc.original("plan_reminder", "en")
+        email["blocks"] = [b for b in email["blocks"] if b["type"] != "button"]
+        self.assertTrue(any("{link}" in p for p in lc.check("plan_reminder", "en", email)))
+        welcome = lc.original("welcome", "en")
+        welcome["blocks"].append({"type": "text", "text": "Open it: {link}"})
+        self.assertTrue(any("{link}" in p for p in lc.check("welcome", "en", welcome)))
