@@ -329,6 +329,16 @@ def life_years(birth: int | None, death: int | None) -> str:
     return "–".join(str(y) for y in (birth, death) if y)
 
 
+def library_editions(blocks_by_locale: dict[str, list[dict]]) -> dict[str, dict[str, set[str]]]:
+    """``{kind: {slug: languages}}`` for every library item named in any of the
+    block lists — one lookup per kind, shared by all the languages."""
+    wanted: dict[str, set[str]] = {}
+    for blocks in blocks_by_locale.values():
+        for kind, slugs in library_refs(blocks).items():
+            wanted.setdefault(kind, set()).update(slugs)
+    return {kind: editions(kind, slugs) for kind, slugs in wanted.items()}
+
+
 def _blurb(text: str) -> str:
     text = (text or "").strip()
     return text if len(text) <= 220 else text[:217].rsplit(" ", 1)[0] + "…"

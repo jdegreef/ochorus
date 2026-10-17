@@ -12,15 +12,12 @@ from __future__ import annotations
 import re
 
 from django.conf import settings
-from django.db.models import Count, F, Value
-from django.db.models.functions import Coalesce, NullIf
 
 from library.languages import entry as language_entry
 
 from . import blocks as blocks_mod
-from . import copy as copy_mod
 from . import health, merge_tags, translation_jobs
-from .audience import resolve
+from .audience import by_email_language
 from .rendering import resolve_broadcast_locale, sendable_locales
 from .sending import emails_enabled
 
@@ -65,7 +62,7 @@ def _content_checks(broadcast) -> list[dict]:
     blocks_by_locale = {
         code: blocks_mod.blocks_for(broadcast.content.get(code) or {}) for code in locales
     }
-    library = _library_editions(blocks_by_locale)
+    library = blocks_mod.library_editions(blocks_by_locale)
     for code, blocks in blocks_by_locale.items():
         name = _lang_name(code)
         subject = str(broadcast.subject.get(code) or "").strip()
@@ -238,16 +235,6 @@ def _untranslated_checks(blocks_by_locale: dict[str, list[dict]]) -> list[dict]:
     return out
 
 
-def _library_editions(blocks_by_locale: dict[str, list[dict]]) -> dict[str, dict[str, set[str]]]:
-    """``{kind: {slug: languages}}`` for every library block in the broadcast —
-    one query per kind, shared by all its languages' checks."""
-    wanted: dict[str, set[str]] = {}
-    for blocks in blocks_by_locale.values():
-        for kind, slugs in blocks_mod.library_refs(blocks).items():
-            wanted.setdefault(kind, set()).update(slugs)
-    return {kind: blocks_mod.editions(kind, slugs) for kind, slugs in wanted.items()}
-
-
 def _block_checks(block: dict, key: str, name: str, code: str, library) -> list[dict]:
     """Problems with one block of one language's email."""
     kind = block["type"]
@@ -372,22 +359,7 @@ def _slug_check(kind: str, slug: str, key: str, name: str, code: str, library) -
 
 
 def _audience_checks(broadcast) -> list[dict]:
-    # One grouped query: readers per email language — the preference center's
-    # email language when set, else the reading language, as the renderer
-    # decides (rendering.email_language).
-    rows = (
-        resolve(broadcast.audience)
-        .annotate(
-            lang=Coalesce(NullIf(F("email_subscription__email_locale"), Value("")), F("locale"))
-        )
-        .values("lang")
-        .annotate(n=Count("id"))
-        .order_by()
-    )
-    by_lang: dict[str, int] = {}
-    for row in rows:
-        lang = copy_mod.base_lang(row["lang"] or "")
-        by_lang[lang] = by_lang.get(lang, 0) + row["n"]
+    by_lang = by_email_language(broadcast.audience)
     total = sum(by_lang.values())
     if not total:
         # A warning, not an error: a schedule's audience can fill up before it

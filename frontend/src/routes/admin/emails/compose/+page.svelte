@@ -8,6 +8,8 @@
 	import EmailTemplateGallery from '$lib/components/EmailTemplateGallery.svelte';
 	import EmailLibraryPanel from '$lib/components/EmailLibraryPanel.svelte';
 	import MergeTagMenu from '$lib/components/MergeTagMenu.svelte';
+	import EmailLanguagesPanel from '$lib/components/EmailLanguagesPanel.svelte';
+	import EmailTranslationReview from '$lib/components/EmailTranslationReview.svelte';
 	import { ApiError, apiErrorDetail } from '$lib/api';
 	import { localeName } from '$lib/lang.svelte';
 	import { locales } from '$lib/paraglide/runtime';
@@ -64,6 +66,8 @@
 		audience_count: number;
 		locked: boolean;
 		translations: NonNullable<AdminBroadcast['translations']>;
+		languages: AdminBroadcast['languages'];
+		strict_locale: boolean;
 	};
 
 	const list = adminResource(listBroadcasts, 'Something went wrong loading broadcasts.');
@@ -105,11 +109,14 @@
 			status_reason: b.status_reason,
 			audience_count: b.audience_count,
 			locked: b.locked,
-			translations: b.translations ?? {}
+			translations: b.translations ?? {},
+			languages: b.languages,
+			strict_locale: b.strict_locale
 		};
 	}
 
 	async function openEditor(id: number) {
+		reviewing = null;
 		error = '';
 		notice = '';
 		try {
@@ -206,7 +213,8 @@
 			subject: draft.subject,
 			content: draft.content,
 			audience: draft.audience,
-			from_address: draft.from_address
+			from_address: draft.from_address,
+			strict_locale: draft.strict_locale
 		});
 		draft = toDraft(b);
 	}
@@ -370,7 +378,7 @@
 			.map(([code]) => code)
 	);
 
-	async function translation(action: 'request' | 'fetch' | 'approve', code: string) {
+	async function translation(action: 'request' | 'fetch' | 'approve', code: string, from?: string) {
 		if (!draft) return;
 		if (action === 'request' && !confirm(`Ask for ${translationOf(code)?.state === 'requested' ? 'a new' : 'an'} AI draft in ${localeLabel(code)}? It goes to the translation queue (replacing any open request); check back once a worker has run.`)) return;
 		busy = true;
@@ -380,7 +388,7 @@
 			// Save first: a request is made from what is saved, and the reply
 			// replaces this page's copy (unsaved edits would be lost).
 			if (!readOnly) await persist();
-			const source = editLocale in draft.content && !translationOf(editLocale) ? editLocale : 'en';
+			const source = from ?? (editLocale in draft.content && !translationOf(editLocale) ? editLocale : 'en');
 			const b = await broadcastTranslation(draft.id, action, code, action === 'request' ? source : undefined);
 			draft = toDraft(b);
 			const state = draft.translations[code]?.state;
@@ -394,6 +402,69 @@
 			error = apiErrorDetail(e);
 		} finally {
 			busy = false;
+		}
+	}
+
+	// --- Every language at once (emails/languages.py) -------------------------
+	let reviewing = $state<string | null>(null);
+
+	async function allLanguages(action: 'request_all' | 'fetch_all') {
+		if (!draft) return;
+		if (action === 'request_all' && !confirm(`Ask for AI drafts of the ${draft.languages?.missing.length ?? 0} missing languages? Each goes to the translation queue; check back once a worker has run.`)) return;
+		busy = true;
+		error = '';
+		notice = '';
+		try {
+			if (!readOnly) await persist(); // drafts are made from what is saved
+			const res = await broadcastTranslation(draft.id, action);
+			draft = toDraft(res);
+			const outcome = Object.entries(res.outcome ?? {});
+			const problems = outcome.filter(([, v]) => !['requested', 'draft'].includes(v));
+			const done = outcome.filter(([, v]) => v === (action === 'request_all' ? 'requested' : 'draft')).map(([c]) => localeLabel(c));
+			notice =
+				action === 'request_all'
+					? `Asked for ${done.length} AI draft${done.length === 1 ? '' : 's'}.`
+					: done.length
+						? `Back and waiting for your review: ${done.join(', ')}.`
+						: 'No drafts are back yet.';
+			if (problems.length) error = problems.map(([c, why]) => `${localeLabel(c)}: ${why}`).join(' · ');
+		} catch (e) {
+			error = apiErrorDetail(e);
+		} finally {
+			busy = false;
+		}
+	}
+
+	async function setStrict(strict: boolean) {
+		if (!draft || readOnly) return;
+		const was = draft.strict_locale;
+		draft.strict_locale = strict;
+		busy = true;
+		error = '';
+		notice = '';
+		try {
+			await persist(); // saves the rest of the email too, like Save
+			notice = strict ? 'Readers whose language isn’t ready won’t get it.' : 'Readers whose language isn’t ready get the English version.';
+		} catch (e) {
+			if (draft) draft.strict_locale = was;
+			error = apiErrorDetail(e);
+		} finally {
+			busy = false;
+		}
+	}
+
+	/** The language a reviewed draft was translated from (its left column). */
+	const reviewSource = $derived(
+		reviewing ? (draft?.translations[reviewing]?.source_locale ?? draft?.languages?.source ?? null) : null
+	);
+
+	async function approveReviewed() {
+		if (!reviewing) return;
+		const code = reviewing;
+		await translation('approve', code);
+		if (draft?.translations[code]?.state === 'approved') {
+			reviewing = null;
+			editLocale = code;
 		}
 	}
 
@@ -589,6 +660,39 @@
 				</label>
 			</div>
 		</section>
+
+		{#if draft.languages}
+			<EmailLanguagesPanel
+				overview={draft.languages}
+				{busy}
+				{readOnly}
+				onRequestAll={() => allLanguages('request_all')}
+				onFetchAll={() => allLanguages('fetch_all')}
+				onRequest={(code) => translation('request', code, draft?.languages?.source ?? undefined)}
+				onReview={(code) => (reviewing = code)}
+				onOpen={(code) => { reviewing = null; editLocale = code; }}
+				onStrict={setStrict}
+			/>
+		{/if}
+
+		{#if reviewing && reviewSource && draft.content[reviewing] && draft.content[reviewSource]}
+			{@const code = reviewing}
+			<EmailTranslationReview
+				sourceName={localeLabel(reviewSource)}
+				targetName={localeLabel(code)}
+				sourceSubject={draft.subject[reviewSource] ?? ''}
+				source={draft.content[reviewSource]}
+				subject={draft.subject[code] ?? ''}
+				target={draft.content[code]}
+				wordFields={draft.languages?.word_fields ?? []}
+				onSubject={(v) => (draft!.subject[code] = v)}
+				onPreheader={(v) => (draft!.content[code].preheader = v)}
+				onWord={(i, f, v) => (draft!.content[code].blocks[i] = { ...draft!.content[code].blocks[i], [f]: v } as EmailBlock)}
+				{busy}
+				onApprove={approveReviewed}
+				onClose={() => { editLocale = reviewing!; reviewing = null; }}
+			/>
+		{/if}
 
 		<!-- Content per language -->
 		<section class="mb-5 rounded-card border border-border bg-surface p-4" onfocusin={trackTagTarget}>
