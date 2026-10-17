@@ -796,7 +796,107 @@ export const EMBLEM_ART = {
 		<path d="M13 22c5-3 10-4 16-3M19 17c4-1.5 8-1.6 12-.6" stroke="${W}" stroke-width="1" stroke-opacity=".6" fill="none"/>
 		<circle cx="39.5" cy="14.5" r="3.4" fill="${RO}"/>
 		<circle cx="40.6" cy="13.8" r=".7" fill="${BRD}"/>
-		<path d="M42.6 14.4l2.8.9-2.8.9z" fill="${G}"/>`
+		<path d="M42.6 14.4l2.8.9-2.8.9z" fill="${G}"/>`,
+	'shepherds-crook': `
+		<circle cx="24" cy="22" r="17" fill="${T}" fill-opacity=".16"/>
+		<path d="M30 40V14a6 6 0 0 0-12 0v2.5" stroke="${BR}" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+		<path d="M11 13.5l1.2 2.6 2.8.4-2 2 .5 2.8-2.5-1.3-2.5 1.3.5-2.8-2-2 2.8-.4z" fill="${G}"/>
+		<path d="M5 34.5c6.5-2 13-1.5 19 1.5V45c-6-3-12.5-3.5-19-1.5z" fill="${CR}"/>
+		<path d="M43 34.5c-6.5-2-13-1.5-19 1.5V45c6-3 12.5-3.5 19-1.5z" fill="${CRD}"/>
+		<path d="M24 36v9" stroke="${BR}" stroke-width="1.2"/>
+		<path d="M8.5 38.2c3.5-.8 7-.6 11 .6M8.5 41.2c3.5-.8 7-.6 11 .6M28.5 38.8c4-1.2 7.5-1.4 11-.6" stroke="${BRD}" stroke-width=".9" stroke-opacity=".5" fill="none"/>
+		<path d="M24 33.5v-3M21.5 31.5h5" stroke="${RD}" stroke-width="1.4" stroke-linecap="round"/>`,
+	'open-gate': `
+		<circle cx="24" cy="20" r="17" fill="${G}" fill-opacity=".18"/>
+		<path d="M15 40V18a9 9 0 0 1 18 0v22z" fill="${SK}"/>
+		<circle cx="24" cy="27" r="5.5" fill="${G}"/>
+		<path d="M15 33h18v7H15z" fill="${GR}"/>
+		<path d="M21 40l1.6-7h2.8l1.6 7z" fill="${CRD}"/>
+		<path d="M12 41V17a12 12 0 0 1 24 0v24" stroke="${BRD}" stroke-width="2.4" fill="none"/>
+		<path d="M15 18.5V40l-8 3.2V20.6z" fill="${BR}"/>
+		<circle cx="9.2" cy="31" r="1" fill="${G}"/>
+		<path d="M3 43.5h42" stroke="${GRD}" stroke-width="2.4" stroke-linecap="round"/>`,
+	'dove-at-the-bars': `
+		<rect x="5" y="9" width="27" height="30" rx="2" fill="${SLD}"/>
+		<rect x="8" y="12" width="21" height="24" rx="1" fill="${SK}"/>
+		<circle cx="18.5" cy="24" r="6" fill="${G}" fill-opacity=".85"/>
+		<path d="M13 12v24M18.5 12v24M24 12v24" stroke="${SL}" stroke-width="2"/>
+		<path d="M3 38.5h31v4H3z" fill="${BRD}"/>
+		<path d="M31.5 18c2-5 6-7.5 11-7-2 1.7-3 4-3 6.5z" fill="${CRD}"/>
+		<ellipse cx="37" cy="19.5" rx="6" ry="3.4" fill="${W}" transform="rotate(-20 37 19.5)"/>
+		<circle cx="42.4" cy="16.2" r="2.4" fill="${W}"/>
+		<path d="M44.5 16l2.4.6-2.4 1z" fill="${G}"/>
+		<circle cx="42.9" cy="15.7" r=".55" fill="${BRD}"/>
+		<path d="M45 17.6c-.4 2.4-1.6 4-3.6 5" stroke="${GRD}" stroke-width="1" fill="none"/>
+		<path d="M43.6 20.2c1.3.1 2 .8 2.1 1.9-1.3-.1-2-.8-2.1-1.9zM42 22c1.2.3 1.8 1.1 1.7 2.2-1.2-.3-1.8-1.1-1.7-2.2z" fill="${GR}"/>`,
+	'lamp-and-distaff': `
+		<circle cx="24" cy="22" r="17" fill="${RO}" fill-opacity=".16"/>
+		<path d="M36 6v34" stroke="${BR}" stroke-width="2.2" stroke-linecap="round"/>
+		<ellipse cx="36" cy="13" rx="4.2" ry="6" fill="${CRD}"/>
+		<path d="M32.4 10.5c2.4 1 4.8 1 7.2 0M32.2 14c2.5 1 5 1 7.6 0" stroke="${BR}" stroke-width=".9" stroke-opacity=".5" fill="none"/>
+		<path d="M24 22c-3.6-4.2-2.4-8.8.9-11.4-.4 2.8.7 4.3 1.9 5.3 1.4 1.1 2.4 2.7 2.4 4.4A5.3 5.3 0 0 1 24 22z" fill="${R}"/>
+		<path d="M24 21c-1.8-2.2-1.1-4.4.5-5.6-.2 1.4.4 2.2 1 2.7.7.6 1.2 1.4 1.2 2.2A2.7 2.7 0 0 1 24 21z" fill="${G}"/>
+		<path d="M10 28h22c0 6-5 10-11 10s-11-4-11-10z" fill="${GD}"/>
+		<path d="M30 30c4 0 6 2.4 6 4.6" stroke="${GD}" stroke-width="2" fill="none" stroke-linecap="round"/>
+		<path d="M16 24.5c2-1.5 8-1.5 10 0v3.5H16z" fill="${G}"/>
+		<path d="M8 42h32" stroke="${BRD}" stroke-width="2.4" stroke-linecap="round"/>`,
+	'iron-sharpens-iron': `
+		<circle cx="24" cy="23" r="17" fill="${B}" fill-opacity=".16"/>
+		<path d="M9 37L30 16" stroke="${SL}" stroke-width="5" stroke-linecap="round"/>
+		<path d="M39 37L18 16" stroke="${SLD}" stroke-width="5" stroke-linecap="round"/>
+		<path d="M30 16l4-4 2 2-4 4z" fill="${BR}"/>
+		<path d="M18 16l-4-4-2 2 4 4z" fill="${BRD}"/>
+		<path d="M7 39l3-3M41 39l-3-3" stroke="${BR}" stroke-width="3" stroke-linecap="round"/>
+		<path d="M24 22l1.4-4 1.4 4 4-1.4-4 1.4z" fill="${G}"/>
+		<path d="M24 10v4M17.5 12.5l2 3M30.5 12.5l-2 3" stroke="${G}" stroke-width="1.8" stroke-linecap="round"/>
+		<circle cx="24" cy="26.5" r="1.6" fill="${R}"/>`,
+	'golden-censer': `
+		<circle cx="24" cy="20" r="17" fill="${P}" fill-opacity=".16"/>
+		<path d="M24 26c-4-4 4-6 0-10s4-6 0-10" stroke="${SK}" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+		<path d="M18.5 25c-3-3 3-4.5 0-7.5M29.5 25c3-3-3-4.5 0-7.5" stroke="${SK}" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".75"/>
+		<path d="M13 28h22l-3 9H16z" fill="${G}"/>
+		<path d="M13 28h22" stroke="${GD}" stroke-width="2" stroke-linecap="round"/>
+		<path d="M20 37h8l1.5 5h-11z" fill="${GD}"/>
+		<circle cx="24" cy="32" r="1.8" fill="${R}"/>
+		<path d="M14 42.5h20" stroke="${PD}" stroke-width="2.4" stroke-linecap="round"/>`,
+	'sower-and-seed': `
+		<circle cx="24" cy="22" r="17" fill="${GR}" fill-opacity=".16"/>
+		<circle cx="11" cy="11" r="4.5" fill="${G}"/>
+		<g transform="rotate(-32 36 14)">
+			<path d="M30.5 9h11l2.5 11c0 3.4-3.6 5.4-8 5.4s-8-2-8-5.4z" fill="${BR}"/>
+			<path d="M30 9.5h12" stroke="${G}" stroke-width="2.4" stroke-linecap="round"/>
+			<path d="M33 15c1.6 1 4.4 1 6 0" stroke="${BRD}" stroke-width="1" fill="none" opacity=".6"/>
+		</g>
+		<circle cx="27.5" cy="19.5" r="1.3" fill="${G}"/>
+		<circle cx="24" cy="23.5" r="1.3" fill="${G}"/>
+		<circle cx="21.5" cy="28" r="1.3" fill="${G}"/>
+		<circle cx="27" cy="25.5" r="1.1" fill="${G}"/>
+		<path d="M3 36c9-2.5 18-2.5 27 0s11 2.5 15 0v9H3z" fill="${BR}"/>
+		<path d="M5 39.5c8-1.6 16-1.6 24 0M8 42.5c7-1.2 14-1.2 21 0" stroke="${BRD}" stroke-width="1" fill="none" opacity=".7"/>
+		<path d="M11 35.5v-5M33 36v-5.5M40 35v-4" stroke="${GR}" stroke-width="1.6" stroke-linecap="round"/>
+		<path d="M11 31.5c-2-1-2.5-2.6-2-4 1.8.3 2.6 1.6 2 4zM33 31.5c2-1 2.6-2.8 2-4.2-1.8.4-2.6 1.8-2 4.2zM40 32c-1.7-.8-2.1-2.2-1.6-3.4 1.5.3 2.2 1.4 1.6 3.4z" fill="${GR}"/>`,
+	'baobab-at-dawn': `
+		<circle cx="24" cy="23" r="17" fill="${G}" fill-opacity=".18"/>
+		<path d="M8 36a16 16 0 0 1 32 0z" fill="${R}" fill-opacity=".3"/>
+		<path d="M14 36a10 10 0 0 1 20 0z" fill="${G}"/>
+		<path d="M3 36h42v3.5H3z" fill="${GD}"/>
+		<path d="M19 36c1.4-5 1.6-11 .4-16h8.2c-1.2 5-1 11 .4 16z" fill="${BRD}"/>
+		<path d="M21 20c-2-4-5.5-6-9.5-6.5M27 20c2-4 5.5-6 9.5-6.5M24 20c0-4 .5-7 2-9.5" stroke="${BRD}" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+		<ellipse cx="11" cy="12.5" rx="5" ry="2.6" fill="${GRD}"/>
+		<ellipse cx="37" cy="12.5" rx="5" ry="2.6" fill="${GRD}"/>
+		<ellipse cx="26.5" cy="9.5" rx="4.6" ry="2.4" fill="${GR}"/>
+		<path d="M5 42h38" stroke="${BR}" stroke-width="2" stroke-linecap="round" opacity=".7"/>`,
+	'college-tower': `
+		<circle cx="24" cy="21" r="17" fill="${BD}" fill-opacity=".16"/>
+		<path d="M17 18h14v24H17z" fill="${CRD}"/>
+		<path d="M15.5 18.5L24 8l8.5 10.5z" fill="${BD}"/>
+		<path d="M24 3v5" stroke="${GD}" stroke-width="1.6" stroke-linecap="round"/>
+		<circle cx="24" cy="24" r="3.4" fill="${W}" stroke="${BR}" stroke-width="1"/>
+		<path d="M24 22.2v1.9l1.3.9" stroke="${BRD}" stroke-width=".9" stroke-linecap="round" fill="none"/>
+		<path d="M21.5 42v-7a2.5 2.5 0 0 1 5 0v7z" fill="${BRD}"/>
+		<path d="M6 30h11v12H6zM31 30h11v12H31z" fill="${CR}"/>
+		<path d="M8.5 33h2.5v3H8.5zM37 33h2.5v3H37z" fill="${G}"/>
+		<path d="M4 42.5h40" stroke="${GR}" stroke-width="2.4" stroke-linecap="round"/>`
 } as const;
 
 export type EmblemName = keyof typeof EMBLEM_ART;

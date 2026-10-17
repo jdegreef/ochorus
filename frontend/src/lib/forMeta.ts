@@ -89,6 +89,96 @@ export const FOR_META: Record<string, ForMeta> = {
 		phrase: 'parents',
 		tagline: 'True stories, classic tales and five-minute family devotions',
 		fr: { phrase: 'les parents', tagline: 'Histoires vraies, récits classiques et dévotions de cinq minutes' }
+	},
+	pastors: {
+		accent: '#8a3f4f',
+		emblem: 'shepherds-crook', // feed the flock of God which is among you
+		phrase: 'pastors and preachers',
+		tagline: 'The great preachers on preaching, prayer and the care of souls',
+		fr: {
+			phrase: 'les pasteurs et les prédicateurs',
+			tagline: 'Les grands prédicateurs sur la prédication, la prière et le soin des âmes'
+		}
+	},
+	'new-believers': {
+		accent: '#4f86b8',
+		emblem: 'open-gate', // I am the door
+		phrase: 'new believers',
+		tagline: 'Clear, warm first books and short plans for the first months of faith',
+		fr: {
+			phrase: 'les nouveaux croyants',
+			tagline: 'Des premiers livres clairs et chaleureux pour les premiers mois de la foi'
+		}
+	},
+	'prison-ministry': {
+		accent: '#55606e',
+		emblem: 'dove-at-the-bars', // to proclaim liberty to the captives
+		phrase: 'prison ministry',
+		tagline: 'Books of hope from those who wrote behind bars, free to print and pass on',
+		fr: {
+			phrase: 'l’aumônerie de prison',
+			tagline: 'Des livres d’espérance écrits derrière les barreaux, à lire et à transmettre'
+		}
+	},
+	'womens-ministry': {
+		accent: '#a8457e',
+		emblem: 'lamp-and-distaff', // her lamp does not go out by night
+		phrase: 'women’s ministry',
+		tagline: 'The lives and writings of women of faith, with plans to read together',
+		fr: {
+			phrase: 'les groupes de femmes',
+			tagline: 'Les vies et les écrits de femmes de foi, à lire ensemble'
+		}
+	},
+	'mens-ministry': {
+		accent: '#3e6a8a',
+		emblem: 'iron-sharpens-iron', // as iron sharpens iron
+		phrase: 'men’s ministry',
+		tagline: 'Lives of courage and books on prayer and holiness for men',
+		fr: {
+			phrase: 'les groupes d’hommes',
+			tagline: 'Des vies de courage et des livres sur la prière et la sainteté'
+		}
+	},
+	'prayer-groups': {
+		accent: '#7451a8',
+		emblem: 'golden-censer', // let my prayer be set forth as incense
+		phrase: 'prayer groups',
+		tagline: 'The great books on prayer and the stories of answered prayer',
+		fr: {
+			phrase: 'les groupes de prière',
+			tagline: 'Les grands livres sur la prière et les récits de prières exaucées'
+		}
+	},
+	evangelism: {
+		accent: '#3d8a5a',
+		emblem: 'sower-and-seed', // a sower went forth to sow
+		phrase: 'evangelism and outreach',
+		tagline: 'Gospel books to give away, and the classics on reaching others',
+		fr: {
+			phrase: 'l’évangélisation',
+			tagline: 'Des livres d’Évangile à offrir, et les classiques de l’évangélisation'
+		}
+	},
+	'african-churches': {
+		accent: '#c0632a',
+		emblem: 'baobab-at-dawn', // Ethiopia shall stretch out her hands unto God
+		phrase: 'African churches',
+		tagline: 'Africa’s church fathers, the East African Revival, and books in Swahili and Luganda',
+		fr: {
+			phrase: 'les Églises d’Afrique',
+			tagline: 'Les Pères africains, le réveil d’Afrique de l’Est et des livres en swahili et en luganda'
+		}
+	},
+	campus: {
+		accent: '#36598f',
+		emblem: 'college-tower', // the fear of the Lord is the beginning of wisdom
+		phrase: 'campus ministries',
+		tagline: 'Faith and reason, and the students who changed the world',
+		fr: {
+			phrase: 'les étudiants',
+			tagline: 'Foi et raison, et les étudiants qui ont changé le monde'
+		}
 	}
 };
 

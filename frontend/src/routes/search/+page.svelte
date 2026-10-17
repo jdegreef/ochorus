@@ -1,4 +1,6 @@
 <script lang="ts">
+	import ForPromo from '$lib/components/ForPromo.svelte';
+	import { searchFor } from '$lib/forPromos';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import Icon from '$lib/components/Icon.svelte';
@@ -66,6 +68,7 @@
 	let searchBarH = $state(0);
 	let searchError = $state(false);
 	let ran = $state('');
+	const forGroup = $derived(ran ? searchFor(ran) : null);
 	let suggestion = $state('');
 	// The word actually searched when an admin's synonym replaced the reader's.
 	let searchedFor = $state('');
@@ -878,6 +881,12 @@
 		{ran ? `${shownCount} ${t('search.resultsMany')}` : ''}
 	</p>
 	<p class="sr-only" aria-live="polite">{activeAnnouncement}</p>
+
+	<!-- A search that names a group ("homeschool", "bible study"): their page
+	     answers it better than any one book. -->
+	{#if forGroup}
+		<ForPromo place="search" slugs={[forGroup]} class="mb-4" />
+	{/if}
 
 	{#if scriptureAnswer}
 		<!-- Instant scripture answer: the passage text for a reference query. -->
