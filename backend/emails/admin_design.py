@@ -82,7 +82,10 @@ class AdminEmailLibraryView(AdminNotAudited, APIView):
             )
         _, _, _, title_field = blocks_mod.LIBRARY[kind]
         model = blocks_mod.library_model(kind)
-        rows = model.objects.all() if kind == blocks_mod.BlockType.AUTHOR else model.objects.filter(is_published=True)
+        if kind == blocks_mod.BlockType.AUTHOR:
+            rows = model.objects.filter(is_imprint=False, list_in_biographies=True)
+        else:
+            rows = model.objects.filter(is_published=True)
         exact = [s for s in request.query_params.get("slugs", "").split(",") if s]
         if exact:
             slugs = exact[:LIBRARY_LIMIT]
@@ -287,8 +290,6 @@ class AdminEmailImageView(AdminAudited, APIView):
         upload = request.FILES.get("file")
         if upload is None:
             return Response({"detail": "choose a picture to upload"}, status=http_status.HTTP_400_BAD_REQUEST)
-        if upload.size > images.MAX_BYTES:
-            return Response({"detail": "That file is too large."}, status=http_status.HTTP_400_BAD_REQUEST)
         try:
             url = images.upload(upload.read())
         except images.ImageError as exc:

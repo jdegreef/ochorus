@@ -290,6 +290,14 @@ def _hero_checks(block: dict, key: str, name: str) -> list[dict]:
         link = cta_path_problem(block.get("path", ""))
         if link:
             out.append(_check(f"hero-cta:{key}", ERROR, f"{name}: a hero banner's button link {link}."))
+        elif not block.get("path"):
+            out.append(
+                _check(
+                    f"hero-cta:{key}",
+                    WARNING,
+                    f"{name}: a hero banner's button has no link path, so it opens the home page.",
+                )
+            )
     return out
 
 

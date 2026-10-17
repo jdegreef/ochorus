@@ -198,9 +198,12 @@ def has_body(blocks: list[dict], reaches=None) -> bool:
             if any(reaches is None or reaches({"type": BlockType.BOOK, "slug": s}) for s in row_slugs(b)):
                 return True
         elif b["type"] == BlockType.IMAGE:
-            if b.get("url"):
+            if image_url(b.get("url", "")):
                 return True
-        elif any(b.get(f) for f in ("text", "label", "title")):
+        elif b["type"] == BlockType.HERO:
+            if b.get("title") or b.get("text"):
+                return True
+        elif any(b.get(f) for f in ("text", "label")):
             return True
     return False
 
@@ -255,15 +258,18 @@ def has_author(kind: str) -> bool:
 def editions(kind: str, slugs) -> dict[str, set[str]]:
     """``{slug: {languages it is published in}}`` for one library type.
 
-    An author is in every language (their name and photo travel; the bio shows
-    where it is translated); a topic is in English and each language it has a
-    translated title in."""
+    An author is in each language the Biographies page lists them in (a work or
+    a bio a reader of it can read — the languages their page is built for); a
+    topic is in English and each language it has a translated title in."""
     from library.languages import known_codes
 
     out: dict[str, set[str]] = {}
     if kind == BlockType.AUTHOR:
-        codes = set(known_codes())
-        return {slug: set(codes) for slug in library_model(kind).objects.filter(slug__in=set(slugs)).values_list("slug", flat=True)}
+        authors = library_model(kind).objects
+        for code in sorted(known_codes()):
+            for slug in authors.listed_in_biographies(code).filter(slug__in=set(slugs)).values_list("slug", flat=True):
+                out.setdefault(slug, set()).add(code)
+        return out
     if kind == BlockType.TOPIC:
         from library.models import TopicTranslation
 
@@ -337,8 +343,8 @@ def _entity_cards(kind: str, slugs, lang: str) -> dict[str, dict]:
     model = library_model(kind)
     cards: dict[str, dict] = {}
     if kind == BlockType.AUTHOR:
-        rows = model.objects.filter(slug__in=set(slugs)).values(
-            "id", "slug", "name", "bio", "tagline", "photo_url", "birth_year", "death_year"
+        rows = model.objects.listed_in_biographies(lang).filter(slug__in=set(slugs)).values(
+            "slug", "name", "bio", "photo_url", "birth_year", "death_year"
         )
         bios = {}
         if lang != "en":
@@ -359,7 +365,7 @@ def _entity_cards(kind: str, slugs, lang: str) -> dict[str, dict]:
                 "url": links.site_url(links.reader_path(section, row["slug"], lang)),
             }
         return cards
-    rows = model.objects.filter(slug__in=set(slugs), is_published=True).values("id", "slug", "title", "description")
+    rows = model.objects.filter(slug__in=set(slugs), is_published=True).values("slug", "title", "description")
     words = {}
     if lang != "en":
         words = {
@@ -488,10 +494,9 @@ def resolve(
             for slug in missing:
                 cards[(kind, lang, slug)] = found.get(slug)
 
-    def path_url(path: str) -> str:
+    def link(path: str) -> str:
+        """An admin-written site path as an absolute link ("" ⇒ the home page)."""
         path = (path or "").strip()
-        if not path:
-            return ""
         return links.site_url(_button_path(path, lang) if localize_buttons else path)
 
     out = []
@@ -509,7 +514,7 @@ def resolve(
         elif kind == BlockType.IMAGE:
             src = image_url(b.get("url", ""))
             if src:
-                out.append({**b, "src": src, "url": path_url(b.get("path", ""))})
+                out.append({**b, "src": src, "url": link(b["path"]) if b.get("path") else ""})
         elif kind == BlockType.HERO:
             if b.get("title") or b.get("text"):
                 out.append(
@@ -517,8 +522,8 @@ def resolve(
                         **b,
                         "src": image_url(b.get("image", "")),
                         "bg": HERO_COLORS.get(b.get("color", ""), HERO_COLORS["navy"]),
-                        "url": path_url(b.get("path", "")) if b.get("label") else "",
-                        "text": b.get("text", "").replace("{name}", name),
+                        "url": link(b.get("path", "")) if b.get("label") else "",
+                        **{f: b.get(f, "").replace("{name}", name) for f in ("eyebrow", "title", "text")},
                     }
                 )
         elif kind == BlockType.SPACER:
@@ -534,9 +539,7 @@ def resolve(
                 out.append({"type": kind, "heading": b.get("heading", ""), "label": label, **card})
         elif kind == BlockType.BUTTON:
             if b.get("label"):
-                path = b.get("path", "")
-                url = links.site_url(_button_path(path, lang) if localize_buttons else path)
-                out.append({**b, "url": url})
+                out.append({**b, "url": link(b.get("path", ""))})
         elif kind in (BlockType.HEADING, BlockType.TEXT):
             text = b.get("text", "").replace("{name}", name)
             if not text:

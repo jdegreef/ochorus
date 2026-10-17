@@ -219,9 +219,13 @@
 		if (!file) return;
 		uploading = i;
 		uploadError = '';
+		const target = blocks[i];
 		try {
 			const url = await uploadEmailImage(file);
-			blocks[i] = { ...blocks[i], [field]: url } as EmailBlock;
+			// Blocks may have moved (or this one been removed) while it uploaded:
+			// put the picture on the block it was chosen for, wherever it is now.
+			const at = blocks.indexOf(target);
+			if (at >= 0) blocks[at] = { ...blocks[at], [field]: url } as EmailBlock;
 		} catch (e) {
 			uploadError = apiErrorDetail(e, "Couldn't upload that picture.");
 		} finally {
@@ -264,8 +268,8 @@
 				<span class="text-micro font-semibold uppercase tracking-wide text-muted">{typeLabel(b.type)}</span>
 				{#if !disabled}
 					<span class="flex gap-1">
-						<button class="btn btn-ghost btn-sm" aria-label="Move up" onclick={() => move(i, -1)} disabled={i === 0}>↑</button>
-						<button class="btn btn-ghost btn-sm" aria-label="Move down" onclick={() => move(i, 1)} disabled={i === blocks.length - 1}>↓</button>
+						<button class="btn btn-ghost btn-sm" aria-label="Move up" onclick={() => move(i, -1)} disabled={i === 0 || uploading !== null}>↑</button>
+						<button class="btn btn-ghost btn-sm" aria-label="Move down" onclick={() => move(i, 1)} disabled={i === blocks.length - 1 || uploading !== null}>↓</button>
 						<button class="btn btn-ghost btn-sm" aria-label="Duplicate block" onclick={() => duplicate(i)}>⧉</button>
 						<button class="btn btn-ghost btn-sm text-danger" aria-label="Remove block" onclick={() => remove(i)}>✕</button>
 					</span>

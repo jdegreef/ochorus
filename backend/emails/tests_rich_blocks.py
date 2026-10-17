@@ -284,3 +284,73 @@ class JsonShapeTests(SimpleTestCase):
     def test_every_block_type_has_fields(self):
         self.assertEqual(set(blocks_mod.FIELDS), set(blocks_mod.BlockType.values))
         json.dumps(blocks_mod.FIELDS)
+
+
+class ReviewFixTests(TestCase):
+    def test_hero_colours_match_the_designer(self):
+        import re
+        from pathlib import Path
+
+        ts = (Path(__file__).resolve().parents[2] / "frontend/src/lib/library-admin.ts").read_text()
+        block = ts[ts.index("export const HERO_COLORS") :]
+        block = block[: block.index("};")]
+        self.assertEqual(dict(re.findall(r"(\w+): '(#[0-9a-f]{6})'", block)), blocks_mod.HERO_COLORS)
+
+    @override_settings(PUBLIC_SITE_URL="https://ochorus.test")
+    def test_hero_title_takes_the_name(self):
+        out = blocks_mod.resolve(
+            [{"type": "hero", "eyebrow": "For {name}", "title": "Welcome, {name}", "text": "", "image": "", "color": "", "label": "", "path": ""}],
+            "en",
+            name="Ana",
+        )
+        self.assertEqual((out[0]["title"], out[0]["eyebrow"]), ("Welcome, Ana", "For Ana"))
+
+    def test_an_email_of_only_an_insecure_image_or_a_bare_hero_button_is_empty(self):
+        b = _broadcast(
+            subject={"en": "Hi"},
+            content={
+                "en": {
+                    "blocks": [
+                        {"type": "image", "url": "http://x/a.png", "alt": "", "path": "", "caption": ""},
+                        {"type": "hero", "eyebrow": "", "title": "", "text": "", "image": "", "color": "", "label": "Go", "path": ""},
+                    ]
+                }
+            },
+        )
+        levels = {c["code"]: c["level"] for c in run_checks(b)}
+        self.assertEqual(levels["body:en"], "error")
+        self.assertEqual(levels["hero-cta:en:1"], "warning")
+
+    def test_an_author_reaches_only_the_languages_their_page_is_built_for(self):
+        from library.models import Language
+
+        Language.objects.get_or_create(code="fr", defaults={"name": "French", "native_name": "Français"})
+        Author.objects.create(slug="ochorus-originals", name="Ochorus", is_imprint=True)
+        quiet = Author.objects.create(slug="quiet", name="Quiet Person")
+        murray = Author.objects.create(slug="murray", name="Andrew Murray", bio="Pastor.")
+        Book.objects.create(author=quiet, slug="q", language="fr", title="Q")
+        reach = blocks_mod.editions("author", ["ochorus-originals", "quiet", "murray"])
+        self.assertNotIn("ochorus-originals", reach)
+        self.assertEqual(reach["quiet"], {"fr"})
+        self.assertIn("en", reach["murray"])
+        self.assertTrue(murray)
+
+
+class ImagePrepTests(SimpleTestCase):
+    def test_a_rotated_phone_photo_is_turned_upright_and_stripped(self):
+        img = Image.new("RGB", (40, 20), "navy")
+        exif = img.getexif()
+        exif[0x0112] = 6  # Orientation: rotate 90° CW to view
+        exif[0x010F] = "PhoneMaker"
+        out = io.BytesIO()
+        img.save(out, "JPEG", exif=exif)
+        data, ext, _ = images._prepare(out.getvalue())
+        stored = Image.open(io.BytesIO(data))
+        self.assertEqual(stored.size, (20, 40))
+        self.assertEqual(dict(stored.getexif()), {})
+        self.assertEqual(ext, "jpg")
+
+    def test_too_many_pixels(self):
+        with mock.patch.object(images, "MAX_PIXELS", 100):
+            with self.assertRaises(images.ImageError):
+                images._prepare(_png(20, 20))

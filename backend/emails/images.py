@@ -5,8 +5,9 @@ Mail clients fetch images from the open web, so the file must be public and
 stable — hence a public bucket rather than anything behind the API. The upload is
 checked (a real PNG / JPEG / GIF / WebP, under :data:`MAX_BYTES`) and a large
 still image is scaled down to :data:`MAX_WIDTH`, since an email shows it at most
-600px wide and a heavy picture is a slow, clipped email. Animated GIFs are kept
-as they are.
+600px wide and a heavy picture is a slow, clipped email. Every still is
+re-encoded, which also turns a phone photo upright and strips its metadata;
+animated GIFs are kept as they are.
 """
 
 from __future__ import annotations
@@ -24,6 +25,9 @@ BUCKET = "email-images"
 MAX_BYTES = 5 * 1024 * 1024
 #: Twice the email's width, so the picture stays sharp on a high-density screen.
 MAX_WIDTH = 1200
+#: Refuse anything bigger than this before decoding it (a small file can
+#: unpack to gigabytes).
+MAX_PIXELS = 40_000_000
 _FORMATS = {"PNG": ("png", "image/png"), "JPEG": ("jpg", "image/jpeg"), "GIF": ("gif", "image/gif"), "WEBP": ("webp", "image/webp")}
 _TIMEOUT = 20
 
@@ -34,30 +38,36 @@ class ImageError(Exception):
 
 def _prepare(data: bytes) -> tuple[bytes, str, str]:
     """Check an upload and shrink a large still image: ``(bytes, ext, type)``."""
-    from PIL import Image, UnidentifiedImageError
+    from PIL import Image, ImageOps, UnidentifiedImageError
 
     if len(data) > MAX_BYTES:
         raise ImageError(f"That file is over {MAX_BYTES // (1024 * 1024)} MB.")
     try:
         image = Image.open(io.BytesIO(data))
+        if image.width * image.height > MAX_PIXELS:
+            raise ImageError("That picture is too large in pixels — export it smaller first.")
         image.verify()  # a truncated or disguised file fails here
         image = Image.open(io.BytesIO(data))
-    except (UnidentifiedImageError, OSError, SyntaxError) as exc:
+    except (UnidentifiedImageError, OSError, SyntaxError, Image.DecompressionBombError) as exc:
         raise ImageError("That isn't a picture we can use (PNG, JPEG, GIF or WebP).") from exc
     fmt = image.format
     if fmt not in _FORMATS:
         raise ImageError("Use a PNG, JPEG, GIF or WebP picture.")
     ext, content_type = _FORMATS[fmt]
-    if image.width > MAX_WIDTH and not getattr(image, "is_animated", False):
+    if getattr(image, "is_animated", False):
+        return data, ext, content_type  # re-encoding would lose the frames
+    # Every still is re-encoded: that turns a phone photo the right way up and
+    # drops its metadata (a location, a device) before it goes somewhere public.
+    image = ImageOps.exif_transpose(image)
+    if image.width > MAX_WIDTH:
         height = round(image.height * MAX_WIDTH / image.width)
         image = image.resize((MAX_WIDTH, height), Image.LANCZOS)
-        out = io.BytesIO()
-        if fmt == "JPEG":
-            image.convert("RGB").save(out, "JPEG", quality=85, optimize=True)
-        else:
-            image.save(out, fmt)
-        data = out.getvalue()
-    return data, ext, content_type
+    out = io.BytesIO()
+    if fmt == "JPEG":
+        image.convert("RGB").save(out, "JPEG", quality=85, optimize=True)
+    else:
+        image.save(out, fmt)
+    return out.getvalue(), ext, content_type
 
 
 def _storage(path: str) -> str:
