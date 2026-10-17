@@ -7,6 +7,9 @@
 	import { FOR_EYEBROW, FOR_INDEX, FOR_LINKS, FOR_LOCALES, forIndexPath, forLabel, forLocale, forPath } from '$lib/forLinks';
 	import { FOR_META, forIndexCard, forPhrase, forTagline } from '$lib/forMeta';
 	import { lang } from '$lib/lang.svelte';
+	import { track } from '$lib/analytics';
+	import { PICKER_GOALS, pickerHref, type ForGoal } from '$lib/forPicker';
+	import { FOR_EVENT } from '$lib/forSections';
 	import { collectionPage, hreflangFor } from '$lib/seo';
 
 	/**
@@ -14,6 +17,10 @@
 	 * accent and emblem (FOR_META), so a visitor who isn't sure which page is
 	 * theirs can see them all at once. In English and French, like the pages it
 	 * lists.
+	 *
+	 * Above the cards, two questions do the sorting for a visitor who would
+	 * rather not read nine: who they read with, then what they want to do —
+	 * and one link to that page's section that does it ($lib/forPicker).
 	 */
 	const locale = $derived(forLocale(lang.current));
 	const c = $derived(FOR_CHROME[locale]);
@@ -21,6 +28,19 @@
 	const canonical = $derived(`${SITE_URL}${forIndexPath(locale)}`);
 	const title = $derived(card.title);
 	const description = $derived(c.indexDescription(FOR_LINKS.map((l) => forPhrase(l.slug, locale))));
+
+	let role = $state<string | null>(null);
+	let goal = $state<ForGoal | null>(null);
+	const goals = $derived(role ? PICKER_GOALS[role][locale] : []);
+	const chosen = $derived(role ? FOR_LINKS.find((l) => l.slug === role) : undefined);
+	const chosenHref = $derived(
+		chosen ? (goal ? pickerHref(forPath(chosen.slug, locale), goal) : forPath(chosen.slug, locale)) : ''
+	);
+	function pickRole(slug: string) {
+		role = slug;
+		goal = null;
+	}
+
 	const pageLd = $derived(
 		collectionPage({
 			name: title,
@@ -52,6 +72,40 @@
 		<h1 class="mt-2 text-balance font-display text-h1 font-semibold leading-tight">{title}</h1>
 		<p class="mt-4 text-body text-muted">{c.indexLead}</p>
 	</header>
+
+	<!-- Two taps instead of nine cards: who, then what — one link to the right
+	     section of the right page. -->
+	<section class="picker mt-8 rounded-card border border-border bg-surface p-5 sm:p-6" aria-labelledby="picker-heading">
+		<h2 id="picker-heading" class="text-h3">{c.picker.heading}</h2>
+		<p class="mt-4 text-eyebrow text-muted" id="picker-who">{c.picker.who}</p>
+		<div class="mt-2 flex flex-wrap gap-1.5" role="group" aria-labelledby="picker-who">
+			{#each FOR_LINKS as l (l.slug)}
+				<button
+					type="button"
+					class="chip"
+					class:active={role === l.slug}
+					aria-pressed={role === l.slug}
+					onclick={() => pickRole(l.slug)}>{c.picker.roles[l.slug]}</button
+				>
+			{/each}
+		</div>
+		{#if chosen}
+			<p class="mt-5 text-eyebrow text-muted" id="picker-what">{c.picker.what}</p>
+			<div class="mt-2 flex flex-wrap gap-1.5" role="group" aria-labelledby="picker-what">
+				{#each goals as g (g)}
+					<button type="button" class="chip" class:active={goal === g} aria-pressed={goal === g} onclick={() => (goal = g)}
+						>{c.picker.goals[g]}</button
+					>
+				{/each}
+			</div>
+			<a
+				class="btn btn-primary mt-5"
+				href={chosenHref}
+				onclick={() => track(FOR_EVENT, { group: chosen.slug, action: `picker-${goal ?? 'page'}` })}
+				>{c.picker.go(forPhrase(chosen.slug, locale))} <Arrow /></a
+			>
+		{/if}
+	</section>
 
 	<ul class="groups mt-10">
 		{#each FOR_LINKS as l (l.slug)}
