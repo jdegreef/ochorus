@@ -13,6 +13,8 @@
 	import { AUDIENCE_HUBS } from '$lib/audienceHub';
 	import { ACCOUNT_NAV } from '$lib/accountNav';
 	import { theme, THEME_OPTIONS } from '$lib/theme.svelte';
+	import { FOR_EYEBROW } from '$lib/forLinks';
+	import { promoLocale } from '$lib/forPromos';
 
 	/**
 	 * The phone tab bar's "More": what the top nav's hamburger, gear and sign-in
@@ -23,6 +25,8 @@
 	 */
 	let { open = $bindable(false) }: { open?: boolean } = $props();
 	const t = i18n.t;
+	/** The "Ochorus for …" pages, where they are written (English, French). */
+	const forLoc = $derived(promoLocale(lang.current));
 
 	const signIn = $derived(
 		withSource(localizeHref(loginHref($page.url.pathname, $page.url.search)), 'menu')
@@ -109,6 +113,7 @@
 		<div class="mt-3 flex gap-5">
 			<a href={localizeHref('/about')} class="more-link">{t('nav.about')}</a>
 			<a href={localizeHref('/contact')} class="more-link">{t('nav.contact')}</a>
+			{#if forLoc}<a href={localizeHref('/for')} class="more-link">{FOR_EYEBROW[forLoc]}…</a>{/if}
 		</div>
 	</div>
 </DrawerShell>

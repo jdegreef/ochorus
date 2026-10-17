@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ForPromo from '$lib/components/ForPromo.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import ReadBar from '$lib/components/ReadBar.svelte';
 	import { coverVariants, isPlateCover, shareCard, shareImage } from '$lib/coverArt';
@@ -770,6 +771,11 @@
 						<span class="btn-label">{t('nav.search')}</span>
 					</a>
 				</div>
+				<!-- A book with files to take offline: the leaders who carry books
+				     where there is no signal. -->
+				{#if book.pdf_url || book.epub_url}
+					<ForPromo place="book-download" class="mt-3" />
+				{/if}
 			</div>
 		</header>
 	</div>

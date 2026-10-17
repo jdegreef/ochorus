@@ -3,6 +3,7 @@
 	import { hreflangAll, jsonLd } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import ForPromo from '$lib/components/ForPromo.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 
 	const t = i18n.t;
@@ -42,6 +43,7 @@
 	<p class="text-body text-muted">
 		{t('contact.intro')}
 	</p>
+	<ForPromo index class="mt-4" />
 
 	<!-- The page said "a direct contact option is coming soon" while About and the
 	     footer both sent people here to get in touch — so the one page named

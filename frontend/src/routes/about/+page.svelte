@@ -5,6 +5,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { LIVE_LOCALES } from '$lib/live-locales.generated';
+	import ForPromo from '$lib/components/ForPromo.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 
 	const t = i18n.t;
@@ -219,6 +220,8 @@
 				</div>
 			{/each}
 		</dl>
+		<!-- Who it is for, group by group. -->
+		<ForPromo index class="mt-8" />
 	</div>
 </section>
 

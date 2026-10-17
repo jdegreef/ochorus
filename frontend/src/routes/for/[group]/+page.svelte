@@ -23,7 +23,7 @@
 	import { FOR_META, forPhrase } from '$lib/forMeta';
 	import { localizeHref } from '$lib/href';
 	import { countsLine, forHref, inviteMessage } from '$lib/forPages';
-	import { FOR_EVENT, forSectionOrder, navSections } from '$lib/forSections';
+	import { FOR_EVENT, FOR_SECTIONS, forSectionOrder, navSections } from '$lib/forSections';
 	import { track } from '$lib/analytics';
 	import { RUNG_LABEL } from '$lib/audienceHub';
 	import { hrefInLocale } from '$lib/editionHref';
@@ -69,6 +69,10 @@
 	const inviteLink = $derived(`${SITE_URL}${localizeHref(page.invite.href)}`);
 	const order = $derived(forSectionOrder(page.slug, shelf));
 	const jumps = $derived(navSections(order).map((id) => ({ id, label: c.nav[id] })));
+	/** Sections this page doesn't draw (nothing in this build's snapshot, or
+	 *  not this group's): links from elsewhere on the site name them, so each
+	 *  still lands, at the top of the sections, rather than nowhere. */
+	const absent = $derived(navSections([...FOR_SECTIONS]).filter((s) => !order.includes(s)));
 	const report = (action: string) => track(FOR_EVENT, { group: page.slug, action });
 	/** The numbers strip: the library in the page's language, and every
 	 *  language it serves. */
@@ -169,6 +173,7 @@
 
 	<!-- Every section, one tap away, lit as it scrolls past. -->
 	<SectionBar class="mt-8" sections={jumps} label={c.jumpLabel} onjump={(id) => report(`jump-${id}`)} />
+	{#each absent as id (id)}<span {id} class="jump-anchor" aria-hidden="true"></span>{/each}
 
 	{#each order as section (section)}
 		{#if section === 'why'}

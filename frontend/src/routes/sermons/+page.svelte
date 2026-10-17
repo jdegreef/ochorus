@@ -5,6 +5,7 @@
 	import { SvelteSet } from 'svelte/reactivity';
 	import { SITE_URL } from '$lib/config';
 	import { collectionPage, breadcrumbLd, hreflangAll } from '$lib/seo';
+	import ForPromo from '$lib/components/ForPromo.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
@@ -306,6 +307,7 @@
 		tagline={t('sermons.tagline')}
 		meta={sermons.length ? sermonCounts : undefined}
 	/>
+	<ForPromo place="sermons-shelf" class="-mt-2 mb-6" />
 	<!-- "N sermons · M preachers" — mirrors the Books shelf's count line, but names
 	     the writers behind the sermons as PREACHERS, not "authors": it's the
 	     accurate word (and the one this page's "By preacher" grouping already
