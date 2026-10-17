@@ -38,7 +38,7 @@ export const FOR_PROMOS: Record<Exclude<ForPlace, 'topic' | 'search'>, ForPromo>
 	'plan-done': { slugs: ['small-groups'], section: 'plans' },
 	'plans-shelf': { slugs: ['small-groups', 'churches', 'youth'], section: 'plans' },
 	sermon: { slugs: ['small-groups'], section: 'series' },
-	'sermons-shelf': { slugs: ['small-groups', 'churches'], section: 'series' },
+	'sermons-shelf': { slugs: ['small-groups', 'pastors'], section: 'series' },
 	'young-readers': { slugs: ['parents', 'homeschool', 'schools'], section: 'levels' },
 	teens: { slugs: ['youth', 'parents'] },
 	guide: { slugs: ['schools', 'homeschool'], section: 'guides' },
@@ -47,7 +47,8 @@ export const FOR_PROMOS: Record<Exclude<ForPlace, 'topic' | 'search'>, ForPromo>
 
 /** A topic shelf whose readers are often leading others, and their page. */
 export const TOPIC_FOR: Record<string, string> = {
-	'for-those-who-lead': 'churches',
+	'for-those-who-lead': 'pastors',
+	'the-preached-word': 'pastors',
 	'grace-and-comfort': 'chaplains',
 	'revival-and-missions': 'missionaries',
 	'to-the-ends-of-the-earth': 'missionaries',
@@ -57,7 +58,9 @@ export const TOPIC_FOR: Record<string, string> = {
 	prayer: 'small-groups',
 	'voices-of-the-early-church': 'bible-colleges',
 	'the-puritans': 'bible-colleges',
-	'foundations-of-the-faith': 'churches'
+	'foundations-of-the-faith': 'new-believers',
+	'the-gospel-call': 'new-believers',
+	'the-grace-of-god': 'new-believers'
 };
 
 /** Words in a search that name a group, and its page. Whole words, lower case. */
@@ -77,7 +80,20 @@ export const SEARCH_FOR: Record<string, string> = {
 	chaplain: 'chaplains',
 	chaplains: 'chaplains',
 	hospital: 'chaplains',
-	prison: 'chaplains',
+	prison: 'prison-ministry',
+	prisoners: 'prison-ministry',
+	inmates: 'prison-ministry',
+	pastor: 'pastors',
+	pastors: 'pastors',
+	preacher: 'pastors',
+	preachers: 'pastors',
+	preaching: 'pastors',
+	'sermon prep': 'pastors',
+	'new believer': 'new-believers',
+	'new believers': 'new-believers',
+	'new christian': 'new-believers',
+	'new christians': 'new-believers',
+	discipleship: 'new-believers',
 	'bible college': 'bible-colleges',
 	seminary: 'bible-colleges',
 	school: 'schools',

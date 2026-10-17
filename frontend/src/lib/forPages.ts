@@ -326,6 +326,153 @@ export const FOR_PAGES: ForPage[] = [
 			'Start with a reading plan everyone can follow, or browse the library and choose a book to read together.'
 	},
 	{
+		slug: 'pastors',
+		title: 'Free classics for pastors and preachers',
+		lead: 'The great preachers on preaching, prayer and the care of souls, and hundreds of their sermons, free on any phone or computer. Baxter’s Reformed Pastor, Spurgeon’s Lectures to My Students and Chrysostom on the priesthood, for the study and for your own soul.',
+		seoTitle: 'Free Christian Books for Pastors and Preachers',
+		seoDescription:
+			'Free classics on preaching, prayer and pastoral care, and hundreds of sermons by Spurgeon, Whitefield, Edwards and Wesley. No account needed.',
+		primary: { href: '#shelves', label: 'Books for the study' },
+		secondary: { href: '/sermons', label: 'Read the sermons' },
+		pointsHeading: 'Why pastors use Ochorus',
+		points: [
+			{
+				icon: 'mic',
+				title: 'Sermons to learn from',
+				body: 'Hundreds of sermons by Spurgeon, Whitefield, Edwards, Wesley, Moody and others, each with its text. Read how the great preachers opened a passage, built an argument and pressed it home.',
+				link: { href: '/sermons', label: 'Read the sermons' }
+			},
+			{
+				icon: 'search',
+				title: 'Who preached on your text',
+				body: 'Look up a passage of Scripture and see the sermons and books that take it up, a quick way to hear older voices on the text you are preparing.',
+				link: { href: '/scripture', label: 'Search by Scripture' }
+			},
+			{
+				icon: 'book',
+				title: 'Classics on the work itself',
+				body: 'Baxter on shepherding the flock, Spurgeon’s lectures to his students, Chrysostom on the priesthood and Torrey on personal work: books pastors have trained on for centuries.',
+				link: { href: '#shelves', label: 'See the books' }
+			},
+			{
+				icon: 'heart',
+				title: 'For your own soul first',
+				body: 'E. M. Bounds wrote that the preacher is made in the closet. Reading plans on prayer and the deeper life give you a short reading a day, before the work begins.',
+				link: { href: '/plans', label: 'See the reading plans' }
+			}
+		],
+		ideasHeading: 'Ways to use it in your ministry',
+		ideas: [
+			{
+				title: 'Beside your commentaries',
+				body: 'When you prepare a text, read how Spurgeon or Whitefield preached it. Older sermons see things that newer commentaries pass over.'
+			},
+			{
+				title: 'A book for your elders',
+				body: 'Read The Reformed Pastor or Men Who Tended the Flock with your elders or staff, a chapter before each meeting.'
+			},
+			{
+				title: 'Training the next preachers',
+				body: 'Spurgeon gave his Lectures to My Students to young men learning to preach. Give them to yours, free, with nothing to buy.'
+			},
+			{
+				title: 'Point your people to what you preach',
+				body: 'Preaching through a theme? Share a reading plan or a sermon on it so your congregation can keep reading through the week.'
+			}
+		],
+		shelves: [
+			{
+				title: 'For the study',
+				note: 'The work of the ministry, by those who did it.',
+				picks: [
+					'the-reformed-pastor',
+					'lectures-to-my-students',
+					'lectures-to-my-students-second-series',
+					'on-the-priesthood',
+					'men-who-tended-the-flock-2',
+					'an-all-round-ministry',
+					'the-soul-winner',
+					'how-to-bring-men-to-christ'
+				]
+			},
+			{
+				title: 'Sermons to learn from',
+				note: 'Collected sermons of the great preachers.',
+				picks: [
+					'selected-sermons-whitefield',
+					'selected-sermons-edwards',
+					'sermons-on-several-occasions',
+					'revival-lectures',
+					'till-he-come',
+					'gleanings-among-the-sheaves',
+					'unspoken-sermons'
+				]
+			},
+			{
+				title: 'For the pastor’s own soul',
+				note: 'Prayer, humility and the hidden life.',
+				picks: [
+					'power-through-prayer',
+					'prayer-and-praying-men',
+					'ministry-of-intercession',
+					'humility-2',
+					'the-pursuit-of-god',
+					'a-serious-call',
+					'the-imitation-of-christ'
+				]
+			}
+		],
+		plans: ['praying-men', 'the-puritan-heart', 'key-teachings-four-teachers', 'send-the-fire', 'deeper-life-in-christ'],
+		quote: 'hudson-taylor-6356623c',
+		authors: [
+			'charles-h-spurgeon',
+			'richard-baxter',
+			'george-whitefield',
+			'jonathan-edwards',
+			'john-chrysostom',
+			'e-m-bounds',
+			'charles-finney',
+			'martyn-lloyd-jones'
+		],
+		series: [
+			{
+				title: 'Six sermons that shaped the church',
+				note: 'Sermons preachers still learn from: one a week, read at home and talked through with your staff or elders.',
+				picks: [
+					'sinners-in-the-hands-of-an-angry-god',
+					'the-method-of-grace',
+					'salvation-by-faith',
+					'free-grace',
+					'justification-by-grace',
+					'the-scripture-way-of-salvation',
+					'grace-and-truth',
+					'compel-them-to-come-in'
+				]
+			}
+		],
+		invite: {
+			text: 'Free classics on preaching, prayer and the care of souls, and hundreds of sermons by the great preachers, on Ochorus. No account needed.',
+			href: '/sermons'
+		},
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Can I quote these sermons and books in my preaching?',
+				a: 'Yes. The classic books and sermons are in the public domain, so you can quote them as freely as you like. The Ochorus Originals are new works; please contact us before reproducing them at length.'
+			},
+			{
+				q: 'Can I find sermons on a particular passage?',
+				a: 'Yes. Search by Scripture reference, or open the Scripture index, to see the sermons and books that take up a passage. Each sermon page also lists the passages it engages.'
+			},
+			{
+				q: 'Is there anything for my congregation?',
+				a: 'Yes. Reading plans, sermons with study questions and young-reader editions are all free for your whole church. The page for churches gathers them together.'
+			}
+		],
+		closeHeading: 'Sit at the feet of the great preachers',
+		closeBody: 'Start with a book for the study, or read how Spurgeon and Whitefield preached the text you are working on.'
+	},
+	{
 		slug: 'small-groups',
 		title: 'Free books for your small group or Bible study',
 		lead: 'Choose a classic for the term and everyone in the group can read it, free, on their own phone. Prayer, holiness, grace and the life of faith, from Murray, Tozer, Brother Lawrence, Hannah Whitall Smith and many more.',
@@ -475,6 +622,151 @@ export const FOR_PAGES: ForPage[] = [
 		],
 		closeHeading: 'Choose your group’s next book',
 		closeBody: 'Start with a reading plan, or browse the library and pick a classic to read together.'
+	},
+	{
+		slug: 'new-believers',
+		title: 'Free books for new believers and those who disciple them',
+		lead: 'Clear, warm first books, short reading plans and six weeks of sermons on the basics of the faith, free to read on any phone. Give one link to someone who has just come to Christ, or read alongside them.',
+		seoTitle: 'Free Christian Books for New Believers',
+		seoDescription:
+			'Free first books for new Christians, short reading plans and six weeks of sermons on the basics, by Moody, Spurgeon, Ryle and Torrey. No account needed.',
+		primary: { href: '#plans', label: 'Start with a reading plan' },
+		secondary: { href: '#shelves', label: 'First books to read' },
+		pointsHeading: 'Why it helps someone new to the faith',
+		points: [
+			{
+				icon: 'book',
+				title: 'Clear, warm first books',
+				body: 'Moody’s The Way to God and Spurgeon’s All of Grace were written for people taking their first steps. They are short, plain and full of the gospel.',
+				link: { href: '#shelves', label: 'See the first books' }
+			},
+			{
+				icon: 'calendar',
+				title: 'A plan for the first weeks',
+				body: 'New to the Faith takes a beginner through five and a half weeks of short daily readings. Nobody has to wonder where to start.',
+				link: { href: '#plans', label: 'See the plans' }
+			},
+			{
+				icon: 'mic',
+				title: 'Six weeks on the basics',
+				body: 'Sermons on the new birth, forgiveness, assurance and growing in grace, each with study questions and answers to talk through together.',
+				link: { href: '#series', label: 'See the six weeks' }
+			},
+			{
+				icon: 'users',
+				title: 'Read alongside them',
+				body: 'Start a reading plan together and you are both on the same day’s reading. No accounts, and nothing about anyone is collected.',
+				link: { href: '#plans', label: 'Start a reading group' }
+			}
+		],
+		ideasHeading: 'Ways to use it in discipleship',
+		ideas: [
+			{
+				title: 'One link, the week they believe',
+				body: 'Send a new believer The Way to God or the New to the Faith plan the same week. It costs nothing and they can start that night.'
+			},
+			{
+				title: 'Read a plan side by side',
+				body: 'Start a plan on the same day and meet once a week to talk about what you each read.'
+			},
+			{
+				title: 'A course for new members',
+				body: 'Use the six weeks of sermons as a short course for baptism or membership, one sermon and its questions a week.'
+			},
+			{
+				title: 'Stories of changed lives',
+				body: 'Bunyan, Augustine and Amanda Smith tell how they came to faith. A new Christian finds they are not the first to struggle.'
+			}
+		],
+		shelves: [
+			{
+				title: 'First books',
+				note: 'Short, plain and full of the gospel.',
+				picks: [
+					'the-way-to-god',
+					'all-of-grace',
+					'around-the-wicket-gate',
+					'how-to-succeed-in-the-christian-life',
+					'the-fundamental-doctrines-of-the-christian-faith',
+					'the-christians-secret-of-a-happy-life-4',
+					'a-call-to-the-unconverted'
+				]
+			},
+			{
+				title: 'Lives that began again',
+				note: 'How others came to faith, in their own words.',
+				picks: [
+					'grace-abounding',
+					'confessions',
+					'pilgrims-progress',
+					'amanda-smith-autobiography',
+					'finney-memoirs',
+					'how-i-became-a-christian',
+					'the-life-of-trust'
+				]
+			},
+			{
+				title: 'In simpler words',
+				note: 'The same books, retold in plain language.',
+				picks: [
+					'the-way-to-god-teens',
+					'all-of-grace-teens',
+					'how-to-succeed-in-the-christian-life-teens',
+					'pilgrims-progress-teens',
+					'grace-abounding-teens',
+					'confessions-teens',
+					'the-practice-of-the-presence-of-god-teens'
+				]
+			}
+		],
+		plans: ['new-to-the-faith', 'grace-for-every-sinner', 'the-pilgrims-way', 'first-steps-for-teens', 'school-of-prayer-31-days'],
+		quote: 'charles-h-spurgeon-b0f71ee3',
+		authors: [
+			'dwight-l-moody',
+			'charles-h-spurgeon',
+			'r-a-torrey',
+			'j-c-ryle',
+			'john-bunyan',
+			'augustine-of-hippo',
+			'andrew-murray'
+		],
+		series: [
+			{
+				title: 'Six weeks on the basics',
+				note: 'The new birth, forgiveness, assurance and growth: one sermon a week, read at home and talked through together.',
+				picks: [
+					'are-you-born-again',
+					'the-new-birth',
+					'are-you-forgiven',
+					'assurance-of-salvation',
+					'faith-and-assurance',
+					'how-to-grow-in-grace',
+					'the-way-of-salvation-made-plain',
+					'salvation-by-faith'
+				]
+			}
+		],
+		invite: {
+			text: 'New to the faith? Ochorus has free first books and a short daily reading plan for your first weeks, on any phone. No account needed.',
+			href: '/plans/new-to-the-faith'
+		},
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Where should someone new begin?',
+				a: 'Most begin with The Way to God by D. L. Moody or All of Grace by C. H. Spurgeon, then the New to the Faith reading plan, one short reading a day.'
+			},
+			{
+				q: 'Do they need an account?',
+				a: 'No. Anyone can read without signing up. A free account is optional: it keeps their place, notes and saved books in step across devices.'
+			},
+			{
+				q: 'Are these books hard to read?',
+				a: 'Some of the classics use older English. Many are also published in editions for teens, which retell them in plain words that suit any adult.'
+			}
+		],
+		closeHeading: 'Help someone take their first steps',
+		closeBody: 'Send them a first book, or start a reading plan together this week.'
 	},
 	{
 		slug: 'youth',
@@ -907,6 +1199,164 @@ export const FOR_PAGES: ForPage[] = [
 		],
 		closeHeading: 'Bring the classics to the people you serve',
 		closeBody: 'Browse the library, or start with a short sermon you can read in one visit.'
+	},
+	{
+		slug: 'prison-ministry',
+		title: 'Books of hope for prison ministry',
+		lead: 'Bunyan wrote The Pilgrim’s Progress in a prison cell. Ignatius wrote his letters on the way to execution, and Corrie ten Boom survived a concentration camp. Their books, free to read and to download as PDFs, for the volunteers, chaplains and families who carry hope inside.',
+		seoTitle: 'Free Christian Books for Prison Ministry',
+		seoDescription:
+			'Free Christian classics for prison ministry: books written behind bars, plain-language editions and PDFs to download. No account needed.',
+		primary: { href: '#offline', label: 'Get the books to download' },
+		secondary: { href: '#series', label: 'A six-week study' },
+		pointsHeading: 'Why prison ministries use Ochorus',
+		points: [
+			{
+				icon: 'download',
+				title: 'Free to download',
+				body: 'Many books can be downloaded as free PDF and EPUB files, for a facility with no internet. If you would like to print copies to give away, please contact us first.',
+				link: { href: '#offline', label: 'See the downloads' }
+			},
+			{
+				icon: 'heart',
+				title: 'Written by people who knew prison',
+				body: 'Bunyan, Ignatius, Watchman Nee, Dietrich Bonhoeffer and Corrie ten Boom all wrote or suffered behind bars. Their words carry weight with readers who are there now.',
+				link: { href: '#shelves', label: 'See the books' }
+			},
+			{
+				icon: 'mic',
+				title: 'A study for a weekly visit',
+				body: 'Six sermons on forgiveness, a fresh start and the dying thief, each with study questions and answers, short enough to read and discuss in one visit.',
+				link: { href: '#series', label: 'See the six weeks' }
+			},
+			{
+				icon: 'layers',
+				title: 'Plain words for every reader',
+				body: 'Many classics are retold in simpler language, and The Pilgrim’s Progress even comes in words of one syllable, for readers who find the originals hard going.',
+				link: { href: '/young-readers', label: 'See the simpler editions' }
+			}
+		],
+		ideasHeading: 'Ways to use it in your prison ministry',
+		ideas: [
+			{
+				title: 'A weekly Bible study',
+				body: 'Read one of the six sermons together each week and talk through its questions.'
+			},
+			{
+				title: 'A book to leave behind',
+				body: 'Download a book as a PDF to print for someone inside, if the facility allows it. Please contact us first if you plan to print copies to give away.'
+			},
+			{
+				title: 'For families on the outside',
+				body: 'Send the same book to a family member, so they can read it alongside the one they visit.'
+			},
+			{
+				title: 'After release',
+				body: 'Give a link to a reading plan for the first weeks outside. It costs nothing and works on any phone.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Written behind bars',
+				note: 'Books written in prison, or by those who suffered there.',
+				picks: [
+					'pilgrims-progress',
+					'grace-abounding',
+					'epistles-of-ignatius',
+					'corrie-ten-boom-a-life',
+					'watchman-nee-a-life',
+					'key-teachings-of-dietrich-bonhoeffer',
+					'foxes-book-of-martyrs'
+				]
+			},
+			{
+				title: 'A fresh start',
+				note: 'Grace for the worst of sinners, and a way to begin again.',
+				picks: [
+					'the-way-to-god',
+					'all-of-grace',
+					'around-the-wicket-gate',
+					'a-call-to-the-unconverted',
+					'the-bruised-reed',
+					'cheque-book',
+					'how-to-succeed-in-the-christian-life'
+				]
+			},
+			{
+				title: 'In plain words',
+				note: 'Retellings for readers who find the originals hard going.',
+				picks: [
+					'pilgrims-progress-words-of-one-syllable',
+					'pilgrims-progress-teens',
+					'all-of-grace-teens',
+					'the-way-to-god-teens',
+					'grace-abounding-teens',
+					'corrie-ten-boom-a-life-teens',
+					'the-bruised-reed-teens'
+				]
+			}
+		],
+		plans: ['grace-for-every-sinner', 'new-to-the-faith', 'the-pilgrims-way', 'faith-in-the-fire', 'waiting-on-god-trust'],
+		offline: {
+			note: 'For a facility with no internet. Download each book as a PDF to print or an EPUB for an e-reader, or save them all to this device to read in the app. If you would like to print copies to give away, please contact us first.',
+			picks: [
+				'pilgrims-progress',
+				'grace-abounding',
+				'all-of-grace',
+				'the-way-to-god',
+				'the-bruised-reed',
+				'cheque-book',
+				'corrie-ten-boom-a-life',
+				'he-holds-my-tomorrows'
+			]
+		},
+		quote: 'george-muller-7716c8c8',
+		authors: [
+			'john-bunyan',
+			'corrie-ten-boom',
+			'watchman-nee',
+			'dietrich-bonhoeffer',
+			'ignatius-of-antioch',
+			'charles-h-spurgeon',
+			'dwight-l-moody'
+		],
+		series: [
+			{
+				title: 'Six weeks of hope',
+				note: 'Forgiveness, a fresh start and the thief on the cross: one sermon a week, short enough to read and discuss in a single visit.',
+				picks: [
+					'the-dying-thief',
+					'lord-remember-me',
+					'the-sinners-friend',
+					'are-you-forgiven',
+					'how-to-forgive',
+					'every-mans-need-of-a-refuge',
+					'come-unto-him',
+					'rest'
+				]
+			}
+		],
+		invite: {
+			text: 'Free Christian books of hope, many written behind bars, on Ochorus. Read online or download them as PDFs. No account needed.',
+			href: '/books'
+		},
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Can we print books for people in prison?',
+				a: 'Many books can be downloaded as free PDF files from this page or the book’s page. If you would like to print copies to give away, please contact us first. Ochorus already prints books and gives them away in prisons in East Africa, and we would be glad to talk it through.'
+			},
+			{
+				q: 'What about readers who struggle with older English?',
+				a: 'Many classics come in editions that retell them in plain words, and The Pilgrim’s Progress comes in words of one syllable. Online, any chapter can also be read aloud with Listen.'
+			},
+			{
+				q: 'Is there a page for prison chaplains?',
+				a: 'Yes. The page for chaplains covers prison, hospital and military chaplaincy together, with books for suffering and grief.'
+			}
+		],
+		closeHeading: 'Carry hope inside',
+		closeBody: 'Download a book to print, or start the six-week study on your next visit.'
 	},
 	{
 		slug: 'bible-colleges',

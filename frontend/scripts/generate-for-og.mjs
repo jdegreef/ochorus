@@ -62,6 +62,7 @@ function chip(emblem, accent, size) {
 			flexShrink: 0,
 			width: `${size}px`,
 			height: `${size}px`,
+			boxSizing: 'border-box',
 			borderRadius: '999px',
 			background: alpha(accent, 0.16),
 			border: `2px solid ${alpha(accent, 0.4)}`
@@ -79,6 +80,9 @@ function frame({ locale, eyebrow, eyebrowColor, title, titleSize, tagline, art }
 		{
 			width: `${WIDTH}px`,
 			height: `${HEIGHT}px`,
+			// The padding sits inside the card: satori now lays boxes out
+			// content-box, which pushed the art and the wordmark off its edge.
+			boxSizing: 'border-box',
 			display: 'flex',
 			flexDirection: 'column',
 			justifyContent: 'space-between',
