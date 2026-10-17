@@ -5,6 +5,7 @@
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import EmailBlocksEditor from '$lib/components/EmailBlocksEditor.svelte';
 	import EmailPreview from '$lib/components/EmailPreview.svelte';
+	import EmailTemplateGallery from '$lib/components/EmailTemplateGallery.svelte';
 	import { ApiError, apiErrorDetail } from '$lib/api';
 	import { localeName } from '$lib/lang.svelte';
 	import { locales } from '$lib/paraglide/runtime';
@@ -20,7 +21,10 @@
 		saveEmailTemplate,
 		broadcastTranslation,
 		deleteEmailTemplate,
+		updateEmailTemplate,
 		type EmailTemplate,
+		type EmailTemplateBase,
+		type TemplateCategory,
 		type AdminBroadcast,
 		type BroadcastActionName,
 		type BroadcastAudience,
@@ -60,7 +64,7 @@
 
 	const list = adminResource(listBroadcasts, 'Something went wrong loading broadcasts.');
 
-	let mode = $state<'list' | 'edit'>('list');
+	let mode = $state<'list' | 'gallery' | 'edit'>('list');
 	let draft = $state<Draft | null>(null);
 	let editLocale = $state('en');
 	let audienceCount = $state<number | null>(null);
@@ -116,7 +120,9 @@
 		}
 	}
 
-	async function newBroadcast(template?: EmailTemplate) {
+	async function newBroadcast(template?: EmailTemplateBase) {
+		if (busy) return; // a double click must not make two drafts
+		busy = true;
 		error = '';
 		try {
 			const b = await createBroadcast({
@@ -129,23 +135,49 @@
 			await openEditor(b.id);
 		} catch (e) {
 			error = apiErrorDetail(e);
+		} finally {
+			busy = false;
 		}
 	}
 
 	// --- Templates ------------------------------------------------------------
 	const templates = adminResource(listEmailTemplates, "Couldn't load templates.");
 
-	async function saveAsTemplate() {
+	// The save / edit-template form: one small dialog for both.
+	type TemplateForm = {
+		id?: number;
+		name: string;
+		category: TemplateCategory;
+		description: string;
+	};
+	let templateForm = $state<TemplateForm | null>(null);
+
+	function saveAsTemplate() {
 		if (!draft) return;
-		const name = prompt('Name this template', draft.name)?.trim();
-		if (!name) return;
+		templateForm = { name: draft.name, category: 'other', description: '' };
+	}
+
+	function editTemplate(t: EmailTemplate) {
+		templateForm = { id: t.id, name: t.name, category: t.category, description: t.description };
+	}
+
+	async function submitTemplateForm() {
+		const form = templateForm;
+		if (!form || !form.name.trim()) return;
 		busy = true;
 		error = '';
 		try {
-			if (!readOnly) await persist();
-			await saveEmailTemplate({ name, from_broadcast: draft.id });
+			const fields = { name: form.name.trim(), category: form.category, description: form.description };
+			if (form.id) {
+				await updateEmailTemplate(form.id, fields);
+				notice = `Template “${fields.name}” saved.`;
+			} else if (draft) {
+				if (!readOnly) await persist();
+				await saveEmailTemplate({ ...fields, from_broadcast: draft.id });
+				notice = `Saved as the template “${fields.name}”.`;
+			}
+			templateForm = null;
 			await templates.load();
-			notice = `Saved as the template “${name}”.`;
 		} catch (e) {
 			error = apiErrorDetail(e);
 		} finally {
@@ -406,27 +438,8 @@
 		<AdminGate resource={list} errorTitle="Couldn't load broadcasts">
 			{#snippet children(d)}
 				<div class="mb-4 flex justify-end">
-					<button class="btn btn-primary btn-sm" onclick={() => newBroadcast()}>New broadcast</button>
+					<button class="btn btn-primary btn-sm" onclick={() => (mode = 'gallery')}>New broadcast</button>
 				</div>
-				{#if templates.data?.templates.length}
-					<section class="mb-5 rounded-card border border-border bg-surface p-4">
-						<h2 class="mb-2 text-h3">Start from a template</h2>
-						<ul class="divide-y divide-border/60">
-							{#each templates.data.templates as t (t.id)}
-								<li class="flex flex-wrap items-center justify-between gap-2 py-2">
-									<span class="text-small text-text">
-										<span class="font-semibold">{t.name}</span>
-										<span class="text-muted"> · {t.locales.join(', ') || 'empty'}</span>
-									</span>
-									<span class="flex gap-1">
-										<button class="btn btn-ghost btn-sm" onclick={() => newBroadcast(t)}>Use</button>
-										<button class="btn btn-ghost btn-sm text-danger" onclick={() => removeTemplate(t)}>Delete</button>
-									</span>
-								</li>
-							{/each}
-						</ul>
-					</section>
-				{/if}
 				{#if d.broadcasts.length === 0}
 					<div class="rounded-card border border-border bg-surface p-8 text-center">
 						<p class="text-h3">No broadcasts yet</p>
@@ -458,6 +471,22 @@
 						</table>
 					</div>
 				{/if}
+			{/snippet}
+		</AdminGate>
+	{:else if mode === 'gallery'}
+		<div class="mb-4">
+			<button class="btn btn-ghost btn-sm" onclick={() => (mode = 'list')}>← All broadcasts</button>
+		</div>
+		<AdminGate resource={templates} errorTitle="Couldn't load templates">
+			{#snippet children(t)}
+				<EmailTemplateGallery
+					data={t}
+					{busy}
+					onUse={(tpl) => newBroadcast(tpl)}
+					onBlank={() => newBroadcast()}
+					onEdit={editTemplate}
+					onDelete={removeTemplate}
+				/>
 			{/snippet}
 		</AdminGate>
 	{:else if draft}
@@ -668,3 +697,36 @@
 		</section>
 	{/if}
 </div>
+
+{#if templateForm}
+	<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4" role="presentation">
+		<div class="w-full max-w-md rounded-card bg-surface p-5" role="dialog" aria-modal="true" aria-labelledby="template-form-title">
+		<form
+			onsubmit={(e) => {
+				e.preventDefault();
+				submitTemplateForm();
+			}}
+		>
+			<h2 id="template-form-title" class="mb-3 text-h3">{templateForm.id ? 'Edit template' : 'Save as a template'}</h2>
+			<label class="mb-3 block">
+				<span class="mb-1 block text-small font-semibold text-text">Name</span>
+				<input class="w-full rounded-md border border-border bg-surface p-2 text-body" bind:value={templateForm.name} required />
+			</label>
+			<label class="mb-3 block">
+				<span class="mb-1 block text-small font-semibold text-text">Kind</span>
+				<select class="w-full rounded-md border border-border bg-surface p-2 text-small" bind:value={templateForm.category}>
+					{#each templates.data?.categories ?? [] as c (c.key)}<option value={c.key}>{c.label}</option>{/each}
+				</select>
+			</label>
+			<label class="mb-4 block">
+				<span class="mb-1 block text-small font-semibold text-text">What it’s for (optional)</span>
+				<input class="w-full rounded-md border border-border bg-surface p-2 text-small" bind:value={templateForm.description} maxlength="300" placeholder="e.g. Our launch email for a new translation" />
+			</label>
+			<div class="flex justify-end gap-2">
+				<button type="button" class="btn btn-ghost btn-sm" onclick={() => (templateForm = null)}>Cancel</button>
+				<button type="submit" class="btn btn-primary btn-sm" disabled={busy || !templateForm.name.trim()}>Save</button>
+			</div>
+		</form>
+		</div>
+	</div>
+{/if}

@@ -9,6 +9,8 @@ campaign with an empty subject line or a broken button link can't go out.
 
 from __future__ import annotations
 
+import re
+
 from django.conf import settings
 from django.db.models import Count, F, Value
 from django.db.models.functions import Coalesce, NullIf
@@ -81,6 +83,28 @@ def _content_checks(broadcast) -> list[dict]:
         def reaches(block, code=code):
             return code in library.get(block["type"], {}).get(block["slug"], set())
 
+        preheader = str((broadcast.content.get(code) or {}).get("preheader") or "")
+        texts = [subject, preheader, *(b.get(f, "") for b in blocks for f in blocks_mod.WORD_FIELDS)]
+        hint = _placeholder(texts)
+        if hint in STARTER_HINTS:
+            out.append(
+                _check(
+                    f"placeholder:{code}",
+                    ERROR,
+                    f"{name}: “{hint}” is a template hint — replace it with your own words.",
+                )
+            )
+        elif hint:
+            # Could be a hint (a translated one, or a saved template's) — or an
+            # editor's insertion in a quotation ("For [God] so loved"). Say so;
+            # don't block.
+            out.append(
+                _check(
+                    f"placeholder:{code}",
+                    WARNING,
+                    f"{name}: “{hint}” looks like a template hint — replace it unless it is meant.",
+                )
+            )
         if not blocks_mod.has_body(blocks, reaches):
             out.append(_check(f"body:{code}", ERROR, f"{name}: the email has no content yet."))
         for i, block in enumerate(blocks):
@@ -105,6 +129,36 @@ def _content_checks(broadcast) -> list[dict]:
             )
         )
     return out
+
+
+#: A template's "write your own here" hint: a phrase in square brackets that
+#: starts with a capital (or any non-ASCII letter — a translated hint), e.g.
+#: ``[Book title]`` (emails/starter_templates.py).
+PLACEHOLDER = re.compile(r"\[[^\W\d_a-z][^\[\]\n]{2,}\]")
+
+
+def _starter_hints() -> frozenset[str]:
+    from .starter_templates import STARTERS
+
+    texts = []
+    for s in STARTERS:
+        texts += [s["subject"], s["preheader"]]
+        texts += [b.get(f, "") for b in s["blocks"] for f in blocks_mod.WORD_FIELDS]
+    return frozenset(m for t in texts for m in PLACEHOLDER.findall(t))
+
+
+#: The starters' own hints, word for word: one left in is certainly unedited,
+#: so it blocks the send. Any other bracketed phrase only warns.
+STARTER_HINTS = _starter_hints()
+
+
+def _placeholder(texts) -> str | None:
+    """The first template hint left in ``texts``, or ``None``."""
+    for text in texts:
+        match = PLACEHOLDER.search(text or "")
+        if match:
+            return match.group(0)
+    return None
 
 
 def _words(blocks: list[dict]) -> set[str]:
