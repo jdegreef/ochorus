@@ -114,7 +114,7 @@
 </section>
 
 {#if previewing}
-	<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4" role="presentation" onclick={(e) => e.target === e.currentTarget && (previewing = null)}>
+	<div class="fixed inset-0 z-(--z-modal) flex items-center justify-center bg-black/40 p-4" role="presentation" onclick={(e) => e.target === e.currentTarget && (previewing = null)}>
 		<div class="max-h-full w-full max-w-3xl overflow-y-auto rounded-card bg-surface p-4" role="dialog" aria-modal="true" aria-label="Preview of {previewing.name}">
 			<div class="mb-3 flex items-center justify-between gap-2">
 				<h3 class="text-h3">{previewing.name}</h3>
