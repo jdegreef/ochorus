@@ -326,6 +326,153 @@ export const FOR_PAGES: ForPage[] = [
 			'Start with a reading plan everyone can follow, or browse the library and choose a book to read together.'
 	},
 	{
+		slug: 'pastors',
+		title: 'Free classics for pastors and preachers',
+		lead: 'The great preachers on preaching, prayer and the care of souls, and hundreds of their sermons, free on any phone or computer. Baxter’s Reformed Pastor, Spurgeon’s Lectures to My Students and Chrysostom on the priesthood, for the study and for your own soul.',
+		seoTitle: 'Free Christian Books for Pastors and Preachers',
+		seoDescription:
+			'Free classics on preaching, prayer and pastoral care, and hundreds of sermons by Spurgeon, Whitefield, Edwards and Wesley. No account needed.',
+		primary: { href: '#shelves', label: 'Books for the study' },
+		secondary: { href: '/sermons', label: 'Read the sermons' },
+		pointsHeading: 'Why pastors use Ochorus',
+		points: [
+			{
+				icon: 'mic',
+				title: 'Sermons to learn from',
+				body: 'Hundreds of sermons by Spurgeon, Whitefield, Edwards, Wesley, Moody and others, each with its text. Read how the great preachers opened a passage, built an argument and pressed it home.',
+				link: { href: '/sermons', label: 'Read the sermons' }
+			},
+			{
+				icon: 'search',
+				title: 'Who preached on your text',
+				body: 'Look up a passage of Scripture and see the sermons and books that take it up, a quick way to hear older voices on the text you are preparing.',
+				link: { href: '/scripture', label: 'Search by Scripture' }
+			},
+			{
+				icon: 'book',
+				title: 'Classics on the work itself',
+				body: 'Baxter on shepherding the flock, Spurgeon’s lectures to his students, Chrysostom on the priesthood and Torrey on personal work: books pastors have trained on for centuries.',
+				link: { href: '#shelves', label: 'See the books' }
+			},
+			{
+				icon: 'heart',
+				title: 'For your own soul first',
+				body: 'E. M. Bounds wrote that the preacher is made in the closet. Reading plans on prayer and the deeper life give you a short reading a day, before the work begins.',
+				link: { href: '/plans', label: 'See the reading plans' }
+			}
+		],
+		ideasHeading: 'Ways to use it in your ministry',
+		ideas: [
+			{
+				title: 'Beside your commentaries',
+				body: 'When you prepare a text, read how Spurgeon or Whitefield preached it. Older sermons see things that newer commentaries pass over.'
+			},
+			{
+				title: 'A book for your elders',
+				body: 'Read The Reformed Pastor or Men Who Tended the Flock with your elders or staff, a chapter before each meeting.'
+			},
+			{
+				title: 'Training the next preachers',
+				body: 'Spurgeon gave his Lectures to My Students to young men learning to preach. Give them to yours, free, with nothing to buy.'
+			},
+			{
+				title: 'Point your people to what you preach',
+				body: 'Preaching through a theme? Share a reading plan or a sermon on it so your congregation can keep reading through the week.'
+			}
+		],
+		shelves: [
+			{
+				title: 'For the study',
+				note: 'The work of the ministry, by those who did it.',
+				picks: [
+					'the-reformed-pastor',
+					'lectures-to-my-students',
+					'lectures-to-my-students-second-series',
+					'on-the-priesthood',
+					'men-who-tended-the-flock-2',
+					'an-all-round-ministry',
+					'the-soul-winner',
+					'how-to-bring-men-to-christ'
+				]
+			},
+			{
+				title: 'Sermons to learn from',
+				note: 'Collected sermons of the great preachers.',
+				picks: [
+					'selected-sermons-whitefield',
+					'selected-sermons-edwards',
+					'sermons-on-several-occasions',
+					'revival-lectures',
+					'till-he-come',
+					'gleanings-among-the-sheaves',
+					'unspoken-sermons'
+				]
+			},
+			{
+				title: 'For the pastor’s own soul',
+				note: 'Prayer, humility and the hidden life.',
+				picks: [
+					'power-through-prayer',
+					'prayer-and-praying-men',
+					'ministry-of-intercession',
+					'humility-2',
+					'the-pursuit-of-god',
+					'a-serious-call',
+					'the-imitation-of-christ'
+				]
+			}
+		],
+		plans: ['praying-men', 'the-puritan-heart', 'key-teachings-four-teachers', 'send-the-fire', 'deeper-life-in-christ'],
+		quote: 'hudson-taylor-6356623c',
+		authors: [
+			'charles-h-spurgeon',
+			'richard-baxter',
+			'george-whitefield',
+			'jonathan-edwards',
+			'john-chrysostom',
+			'e-m-bounds',
+			'charles-finney',
+			'martyn-lloyd-jones'
+		],
+		series: [
+			{
+				title: 'Six sermons that shaped the church',
+				note: 'Sermons preachers still learn from: one a week, read at home and talked through with your staff or elders.',
+				picks: [
+					'sinners-in-the-hands-of-an-angry-god',
+					'the-method-of-grace',
+					'salvation-by-faith',
+					'free-grace',
+					'justification-by-grace',
+					'the-scripture-way-of-salvation',
+					'grace-and-truth',
+					'compel-them-to-come-in'
+				]
+			}
+		],
+		invite: {
+			text: 'Free classics on preaching, prayer and the care of souls, and hundreds of sermons by the great preachers, on Ochorus. No account needed.',
+			href: '/sermons'
+		},
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Can I quote these sermons and books in my preaching?',
+				a: 'Yes. The classic books and sermons are in the public domain, so you can quote them as freely as you like. The Ochorus Originals are new works; please contact us before reproducing them at length.'
+			},
+			{
+				q: 'Can I find sermons on a particular passage?',
+				a: 'Yes. Search by Scripture reference, or open the Scripture index, to see the sermons and books that take up a passage. Each sermon page also lists the passages it engages.'
+			},
+			{
+				q: 'Is there anything for my congregation?',
+				a: 'Yes. Reading plans, sermons with study questions and young-reader editions are all free for your whole church. The page for churches gathers them together.'
+			}
+		],
+		closeHeading: 'Sit at the feet of the great preachers',
+		closeBody: 'Start with a book for the study, or read how Spurgeon and Whitefield preached the text you are working on.'
+	},
+	{
 		slug: 'small-groups',
 		title: 'Free books for your small group or Bible study',
 		lead: 'Choose a classic for the term and everyone in the group can read it, free, on their own phone. Prayer, holiness, grace and the life of faith, from Murray, Tozer, Brother Lawrence, Hannah Whitall Smith and many more.',
@@ -477,6 +624,716 @@ export const FOR_PAGES: ForPage[] = [
 		closeBody: 'Start with a reading plan, or browse the library and pick a classic to read together.'
 	},
 	{
+		slug: 'new-believers',
+		title: 'Free books for new believers and those who disciple them',
+		lead: 'Clear, warm first books, short reading plans and six weeks of sermons on the basics of the faith, free to read on any phone. Give one link to someone who has just come to Christ, or read alongside them.',
+		seoTitle: 'Free Christian Books for New Believers',
+		seoDescription:
+			'Free first books for new Christians, short reading plans and six weeks of sermons on the basics, by Moody, Spurgeon, Ryle and Torrey. No account needed.',
+		primary: { href: '#plans', label: 'Start with a reading plan' },
+		secondary: { href: '#shelves', label: 'First books to read' },
+		pointsHeading: 'Why it helps someone new to the faith',
+		points: [
+			{
+				icon: 'book',
+				title: 'Clear, warm first books',
+				body: 'Moody’s The Way to God and Spurgeon’s All of Grace were written for people taking their first steps. They are short, plain and full of the gospel.',
+				link: { href: '#shelves', label: 'See the first books' }
+			},
+			{
+				icon: 'calendar',
+				title: 'A plan for the first weeks',
+				body: 'New to the Faith takes a beginner through five and a half weeks of short daily readings. Nobody has to wonder where to start.',
+				link: { href: '#plans', label: 'See the plans' }
+			},
+			{
+				icon: 'mic',
+				title: 'Six weeks on the basics',
+				body: 'Sermons on the new birth, forgiveness, assurance and growing in grace, each with study questions and answers to talk through together.',
+				link: { href: '#series', label: 'See the six weeks' }
+			},
+			{
+				icon: 'users',
+				title: 'Read alongside them',
+				body: 'Start a reading plan together and you are both on the same day’s reading. No accounts, and nothing about anyone is collected.',
+				link: { href: '#plans', label: 'Start a reading group' }
+			}
+		],
+		ideasHeading: 'Ways to use it in discipleship',
+		ideas: [
+			{
+				title: 'One link, the week they believe',
+				body: 'Send a new believer The Way to God or the New to the Faith plan the same week. It costs nothing and they can start that night.'
+			},
+			{
+				title: 'Read a plan side by side',
+				body: 'Start a plan on the same day and meet once a week to talk about what you each read.'
+			},
+			{
+				title: 'A course for new members',
+				body: 'Use the six weeks of sermons as a short course for baptism or membership, one sermon and its questions a week.'
+			},
+			{
+				title: 'Stories of changed lives',
+				body: 'Bunyan, Augustine and Amanda Smith tell how they came to faith. A new Christian finds they are not the first to struggle.'
+			}
+		],
+		shelves: [
+			{
+				title: 'First books',
+				note: 'Short, plain and full of the gospel.',
+				picks: [
+					'the-way-to-god',
+					'all-of-grace',
+					'around-the-wicket-gate',
+					'how-to-succeed-in-the-christian-life',
+					'the-fundamental-doctrines-of-the-christian-faith',
+					'the-christians-secret-of-a-happy-life-4',
+					'a-call-to-the-unconverted'
+				]
+			},
+			{
+				title: 'Lives that began again',
+				note: 'How others came to faith, in their own words.',
+				picks: [
+					'grace-abounding',
+					'confessions',
+					'pilgrims-progress',
+					'amanda-smith-autobiography',
+					'finney-memoirs',
+					'how-i-became-a-christian',
+					'the-life-of-trust'
+				]
+			},
+			{
+				title: 'In simpler words',
+				note: 'The same books, retold in plain language.',
+				picks: [
+					'the-way-to-god-teens',
+					'all-of-grace-teens',
+					'how-to-succeed-in-the-christian-life-teens',
+					'pilgrims-progress-teens',
+					'grace-abounding-teens',
+					'confessions-teens',
+					'the-practice-of-the-presence-of-god-teens'
+				]
+			}
+		],
+		plans: ['new-to-the-faith', 'grace-for-every-sinner', 'the-pilgrims-way', 'first-steps-for-teens', 'school-of-prayer-31-days'],
+		quote: 'charles-h-spurgeon-b0f71ee3',
+		authors: [
+			'dwight-l-moody',
+			'charles-h-spurgeon',
+			'r-a-torrey',
+			'j-c-ryle',
+			'john-bunyan',
+			'augustine-of-hippo',
+			'andrew-murray'
+		],
+		series: [
+			{
+				title: 'Six weeks on the basics',
+				note: 'The new birth, forgiveness, assurance and growth: one sermon a week, read at home and talked through together.',
+				picks: [
+					'are-you-born-again',
+					'the-new-birth',
+					'are-you-forgiven',
+					'assurance-of-salvation',
+					'faith-and-assurance',
+					'how-to-grow-in-grace',
+					'the-way-of-salvation-made-plain',
+					'salvation-by-faith'
+				]
+			}
+		],
+		invite: {
+			text: 'New to the faith? Ochorus has free first books and a short daily reading plan for your first weeks, on any phone. No account needed.',
+			href: '/plans/new-to-the-faith'
+		},
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Where should someone new begin?',
+				a: 'Most begin with The Way to God by D. L. Moody or All of Grace by C. H. Spurgeon, then the New to the Faith reading plan, one short reading a day.'
+			},
+			{
+				q: 'Do they need an account?',
+				a: 'No. Anyone can read without signing up. A free account is optional: it keeps their place, notes and saved books in step across devices.'
+			},
+			{
+				q: 'Are these books hard to read?',
+				a: 'Some of the classics use older English. Many are also published in editions for teens, which retell them in plain words that suit any adult.'
+			}
+		],
+		closeHeading: 'Help someone take their first steps',
+		closeBody: 'Send them a first book, or start a reading plan together this week.'
+	},
+	{
+		slug: 'evangelism',
+		title: 'Free books for evangelism and outreach',
+		lead: 'Moody, Spurgeon, Torrey and Whitefield on bringing others to Christ, and the short, warm books they wrote to hand to a seeker, free to share by link, by QR code or as a printed PDF.',
+		seoTitle: 'Free Christian Books for Evangelism and Outreach',
+		seoDescription:
+			'Free gospel books to give away and classics on evangelism by Moody, Spurgeon and Torrey, with PDFs to print and links to share. No account needed.',
+		primary: { href: '#shelves', label: 'Books to give away' },
+		secondary: { href: '#series', label: 'Six gospel sermons' },
+		pointsHeading: 'Why outreach teams use Ochorus',
+		points: [
+			{
+				icon: 'share',
+				title: 'A book to give, for nothing',
+				body: 'The Way to God and All of Grace were written for people who are not yet Christians. Share them by link, by QR code or in a message, and the reader needs no account.',
+				link: { href: '#shelves', label: 'See the books' }
+			},
+			{
+				icon: 'download',
+				title: 'PDFs to print',
+				body: 'Many books can be downloaded as free PDFs. If you would like to print copies to give away, please contact us first: Ochorus already prints and gives away books in East Africa.',
+				link: { href: '#offline', label: 'See the downloads' }
+			},
+			{
+				icon: 'book',
+				title: 'Training for the team',
+				body: 'Torrey’s How to Bring Men to Christ and Spurgeon’s The Soul-Winner are practical handbooks for personal evangelism, read by generations of evangelists.',
+				link: { href: '#shelves', label: 'Books for the team' }
+			},
+			{
+				icon: 'calendar',
+				title: 'A next step for new believers',
+				body: 'When someone comes to faith, give them the New to the Faith reading plan: one short reading a day for their first weeks.',
+				link: { href: '#plans', label: 'See the plans' }
+			}
+		],
+		ideasHeading: 'Ways to use it in outreach',
+		ideas: [
+			{
+				title: 'A QR code on the table',
+				body: 'Print the QR code for The Way to God on a card at your book table, outreach event or café night.'
+			},
+			{
+				title: 'Train the team',
+				body: 'Read How to Bring Men to Christ together before a mission, a chapter a week.'
+			},
+			{
+				title: 'Follow up the same week',
+				body: 'Send someone who showed interest a link to a book and a reading plan, so the conversation can carry on.'
+			},
+			{
+				title: 'Pray first',
+				body: 'Prepare with Send the Fire, a reading plan on praying for revival.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Books to give a seeker',
+				note: 'Short, warm and written for those not yet in the faith.',
+				picks: [
+					'the-way-to-god',
+					'all-of-grace',
+					'around-the-wicket-gate',
+					'a-call-to-the-unconverted',
+					'grace-abounding',
+					'pilgrims-progress',
+					'how-i-became-a-christian'
+				]
+			},
+			{
+				title: 'For the evangelist',
+				note: 'Handbooks and lives of those who reached others.',
+				picks: [
+					'how-to-bring-men-to-christ',
+					'the-soul-winner',
+					'revival-lectures',
+					'evangelization-of-the-world',
+					'finney-memoirs',
+					'selected-sermons-whitefield',
+					'men-and-women-who-gave-everything-2'
+				]
+			},
+			{
+				title: 'In simpler words',
+				note: 'Retellings to give to readers of any age.',
+				picks: [
+					'the-way-to-god-teens',
+					'all-of-grace-teens',
+					'pilgrims-progress-teens',
+					'grace-abounding-teens',
+					'how-to-succeed-in-the-christian-life-teens',
+					'the-pursuit-of-god-teens',
+					'confessions-teens'
+				]
+			}
+		],
+		plans: ['grace-for-every-sinner', 'new-to-the-faith', 'send-the-fire', 'the-pilgrims-way', 'everything-for-christ'],
+		offline: {
+			note: 'For a book table or a place with no signal. Download each book as a PDF to print or an EPUB for an e-reader, or save them all to this device. If you would like to print copies to give away, please contact us first.',
+			picks: [
+				'the-way-to-god',
+				'all-of-grace',
+				'around-the-wicket-gate',
+				'a-call-to-the-unconverted',
+				'how-to-bring-men-to-christ',
+				'grace-abounding',
+				'pilgrims-progress'
+			]
+		},
+		quote: 'george-muller-dcfed640',
+		authors: [
+			'dwight-l-moody',
+			'charles-h-spurgeon',
+			'r-a-torrey',
+			'george-whitefield',
+			'charles-finney',
+			'richard-baxter',
+			'john-r-mott'
+		],
+		series: [
+			{
+				title: 'Six gospel sermons',
+				note: 'Sermons that called people to Christ: one a week for your team to read, or to read with someone who is asking.',
+				picks: [
+					'compel-them-to-come-in',
+					'the-way-of-salvation-made-plain',
+					'one-word-gospel',
+					'come-thou-into-the-ark',
+					'the-sinners-friend',
+					'the-right-kind-of-faith',
+					'refuges-of-lies',
+					'the-method-of-grace'
+				]
+			}
+		],
+		invite: {
+			text: 'A free book that explains the good news of Jesus, on any phone, with no sign-up: The Way to God by D. L. Moody, on Ochorus.',
+			href: '/books/the-way-to-god'
+		},
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Can we print books to give away?',
+				a: 'Many books can be downloaded as free PDF files. If you would like to print copies to give away, please contact us first; we would be glad to talk it through.'
+			},
+			{
+				q: 'Does the person we share with need an account?',
+				a: 'No. Anyone can open the link and read, with nothing to sign up for.'
+			}
+		],
+		closeHeading: 'Give someone the good news to read',
+		closeBody: 'Share a book by link or QR code, or train your team with the classics on evangelism.'
+	},
+	{
+		slug: 'prayer-groups',
+		title: 'Free classics for prayer groups and intercessors',
+		lead: 'Andrew Murray, E. M. Bounds, George Müller, Praying Hyde and Spurgeon on prayer: the great books on prayer and the stories of answered prayer, free on any phone, with plans and sermons to pray through together.',
+		seoTitle: 'Free Christian Books on Prayer for Prayer Groups',
+		seoDescription:
+			'Free classics on prayer by Andrew Murray, E. M. Bounds, George Müller and Spurgeon, with reading plans and sermons for prayer groups. No account needed.',
+		primary: { href: '#plans', label: 'Pray through a plan together' },
+		secondary: { href: '#series', label: 'Six weeks on prayer' },
+		pointsHeading: 'Why prayer groups use Ochorus',
+		points: [
+			{
+				icon: 'book',
+				title: 'The great books on prayer',
+				body: 'With Christ in the School of Prayer, Power Through Prayer, The Ministry of Intercession and A Short and Easy Method of Prayer, read by praying people for generations.',
+				link: { href: '#shelves', label: 'See the books' }
+			},
+			{
+				icon: 'sparkle',
+				title: 'Stories of answered prayer',
+				body: 'George Müller kept a record of answers to prayer for the orphans in his care. Praying Hyde, Men Who Moved Heaven and Women Who Moved Heaven tell more.',
+				link: { href: '#shelves', label: 'Read the stories' }
+			},
+			{
+				icon: 'calendar',
+				title: 'A school of prayer in 31 days',
+				body: 'Reading plans walk a group through Murray’s school of prayer and The Inner Chamber one short reading a day, so you come to the meeting already praying.',
+				link: { href: '#plans', label: 'See the plans' }
+			},
+			{
+				icon: 'mic',
+				title: 'Six weeks on prayer',
+				body: 'Six preachers on the life of prayer, one sermon a week, each with study questions and their answers.',
+				link: { href: '#series', label: 'See the six weeks' }
+			}
+		],
+		ideasHeading: 'Ways to use it in your prayer group',
+		ideas: [
+			{
+				title: 'Read, then pray',
+				body: 'Open the meeting with a short reading from the day’s plan, then pray out of it.'
+			},
+			{
+				title: 'A month in the school of prayer',
+				body: 'Take the 31-day School of Prayer plan together, a lesson a day, and meet weekly to share what you are learning.'
+			},
+			{
+				title: 'Stories to stir faith',
+				body: 'Read an answer to prayer from Müller or Praying Hyde aloud before you begin.'
+			},
+			{
+				title: 'Before a season of prayer',
+				body: 'Prepare a week of prayer or a revival meeting with Send the Fire, Finney and Bounds on praying for revival.'
+			}
+		],
+		shelves: [
+			{
+				title: 'The classics of prayer',
+				note: 'Books praying people have read for generations.',
+				picks: [
+					'school-of-prayer',
+					'power-through-prayer',
+					'necessity-of-prayer',
+					'essentials-of-prayer',
+					'purpose-in-prayer',
+					'possibilities-of-prayer',
+					'reality-of-prayer',
+					'prevailing-prayer'
+				]
+			},
+			{
+				title: 'Answered prayer',
+				note: 'True stories of men and women who prayed.',
+				picks: [
+					'answers-to-prayer',
+					'john-hyde-a-life',
+					'men-who-moved-heaven',
+					'women-who-moved-heaven-2',
+					'george-muller-of-bristol',
+					'prayer-and-praying-men',
+					'men-of-prayer-2'
+				]
+			},
+			{
+				title: 'The inner life of prayer',
+				note: 'Prayer as communion with God.',
+				picks: [
+					'ministry-of-intercession',
+					'a-short-and-easy-method-of-prayer',
+					'the-practice-of-the-presence-of-god',
+					'the-inner-chamber',
+					'waiting-on-god',
+					'lord-teach-us-to-pray-2',
+					'spurgeon-on-prayer'
+				]
+			}
+		],
+		plans: ['school-of-prayer-31-days', 'school-of-prayer', 'the-inner-chamber-month', 'praying-men', 'send-the-fire', 'waiting-on-god-trust'],
+		quote: 'e-m-bounds-49d3b925',
+		authors: [
+			'andrew-murray',
+			'e-m-bounds',
+			'george-muller',
+			'charles-h-spurgeon',
+			'jeanne-guyon',
+			'brother-lawrence',
+			'dwight-l-moody'
+		],
+		series: [PRAYER_SERIES],
+		invite: {
+			text: 'Our prayer group is reading the great books on prayer together on Ochorus: Murray, Bounds, Müller and Spurgeon, free on any phone with no sign-up.',
+			href: '/plans'
+		},
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Where should a prayer group begin?',
+				a: 'Many begin with Andrew Murray’s With Christ in the School of Prayer, as a 31-day reading plan, or with E. M. Bounds’ Power Through Prayer.'
+			},
+			{
+				q: 'Can we read the same thing on the same day?',
+				a: 'Yes. Start a reading plan together and share the link: everyone who opens it is on the same day’s reading. Nobody needs an account.'
+			}
+		],
+		closeHeading: 'Learn to pray with the great intercessors',
+		closeBody: 'Start a plan on prayer together, or read one answer to prayer before your next meeting.'
+	},
+	{
+		slug: 'womens-ministry',
+		title: 'Free Christian classics for women’s ministry',
+		lead: 'Amanda Smith, Hannah Whitall Smith, Catherine Booth, Amy Carmichael, Corrie ten Boom and Elisabeth Elliot: women who preached, wrote, prayed and gave their lives, with books, sermons and reading plans free on any phone.',
+		seoTitle: 'Free Christian Books for Women’s Ministry',
+		seoDescription:
+			'Free Christian classics, sermons and reading plans for women’s ministry and Bible studies, by women of faith from Catherine Booth to Elisabeth Elliot.',
+		primary: { href: '#plans', label: 'Choose a plan to read together' },
+		secondary: { href: '#series', label: 'Six weeks with women who preached' },
+		pointsHeading: 'Why women’s ministries use Ochorus',
+		points: [
+			{
+				icon: 'heart',
+				title: 'Women who lived it',
+				body: 'Autobiographies and lives of women who preached, nursed, rescued children and survived the camps: Amanda Smith, Mary Slessor, Pandita Ramabai and Corrie ten Boom.',
+				link: { href: '#shelves', label: 'See the books' }
+			},
+			{
+				icon: 'calendar',
+				title: 'Plans to read together',
+				body: 'Women of Faith walks through the lives of godly women one reading a day, and Daughters of the King gives teenage girls three months of daily devotions.',
+				link: { href: '#plans', label: 'See the plans' }
+			},
+			{
+				icon: 'mic',
+				title: 'Sermons by women',
+				body: 'Catherine Booth, Corrie ten Boom and Elisabeth Elliot on faith, forgiveness and a quiet heart, each with study questions to talk through.',
+				link: { href: '#series', label: 'See the six weeks' }
+			},
+			{
+				icon: 'book',
+				title: 'Free for every woman in the group',
+				body: 'Nobody needs to buy a copy or make an account. Share one link and everyone can start reading that day.',
+				link: { href: '/books', label: 'Browse the books' }
+			}
+		],
+		ideasHeading: 'Ways to use it in your women’s ministry',
+		ideas: [
+			{
+				title: 'A book for the term',
+				body: 'Read The Christian’s Secret of a Happy Life or Clothed with Strength and Dignity together, a chapter a week.'
+			},
+			{
+				title: 'A life a month',
+				body: 'Read the life of one woman of faith each month and talk about what her story asks of you.'
+			},
+			{
+				title: 'Mothers and daughters',
+				body: 'Read Daughters of the King alongside a daughter or a young woman you mentor, the same day’s reading for each of you.'
+			},
+			{
+				title: 'A study through a hard season',
+				body: 'Turn to The God of All Comfort or the sermons of Corrie ten Boom when the group is carrying grief.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Women who wrote and preached',
+				note: 'In their own words.',
+				picks: [
+					'the-christians-secret-of-a-happy-life-4',
+					'amanda-smith-autobiography',
+					'godliness',
+					'a-brand-plucked-from-the-fire',
+					'religious-experience-and-journal',
+					'things-as-they-are',
+					'revelations-of-divine-love',
+					'the-god-of-all-comfort'
+				]
+			},
+			{
+				title: 'Lives of courage',
+				note: 'Women who gave everything, told for today.',
+				picks: [
+					'women-who-moved-heaven-2',
+					'corrie-ten-boom-a-life',
+					'amy-carmichael-a-life',
+					'mary-slessor-a-life',
+					'pandita-ramabai-a-life',
+					'elisabeth-elliot-a-life',
+					'susanna-wesley-clarke'
+				]
+			},
+			{
+				title: 'For daily devotion',
+				note: 'Short readings for every day.',
+				picks: [
+					'clothed-with-strength-and-dignity',
+					'daughters-of-the-king-1',
+					'daughters-of-the-king-2',
+					'daughters-of-the-king-3',
+					'a-short-and-easy-method-of-prayer',
+					'prayer-the-pulse-of-life',
+					'the-unselfishness-of-god'
+				]
+			}
+		],
+		plans: ['women-of-faith', 'daughters-of-the-king-three-months', 'waiting-on-god-trust', 'deeper-life-in-christ', 'school-of-prayer-31-days'],
+		quote: 'amanda-berry-smith-d3999568',
+		authors: [
+			'amanda-berry-smith',
+			'hannah-whitall-smith',
+			'catherine-booth',
+			'amy-carmichael',
+			'corrie-ten-boom',
+			'elisabeth-elliot',
+			'julia-foote',
+			'susanna-wesley'
+		],
+		series: [
+			{
+				title: 'Six weeks with women who preached',
+				note: 'Catherine Booth, Corrie ten Boom and Elisabeth Elliot: one sermon a week, read at home and talked through together.',
+				picks: [
+					'women-that-make-a-difference',
+					'i-keep-a-quiet-heart',
+					'a-true-and-a-false-faith',
+					'how-to-forgive',
+					'the-greatest-of-these-is-love',
+					'hearts-set-on-pilgrimage',
+					'christ-lives-in-me',
+					'how-to-find-rest'
+				]
+			}
+		],
+		invite: {
+			text: 'Our women’s group is reading the lives and writings of women of faith on Ochorus: free books, sermons and reading plans on any phone, with no sign-up.',
+			href: '/plans'
+		},
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Do the women in our group need an account?',
+				a: 'No. Anyone can read without signing up. A free account is optional: it keeps progress, notes and saved books in step across devices.'
+			},
+			{
+				q: 'Is there something for teenage girls?',
+				a: 'Yes. Daughters of the King is a three-month devotional for girls, and the lives of Amy Carmichael, Mary Slessor and Corrie ten Boom come in editions for teens and children.'
+			}
+		],
+		closeHeading: 'Read with the women who went before',
+		closeBody: 'Start a reading plan together, or choose one woman’s story to read this month.'
+	},
+	{
+		slug: 'mens-ministry',
+		title: 'Free Christian classics for men’s ministry',
+		lead: 'Hudson Taylor, George Müller, C. T. Studd, David Livingstone and the praying men of revival: lives that call men to faith, prayer and courage, with books and reading plans free on any phone.',
+		seoTitle: 'Free Christian Books for Men’s Ministry',
+		seoDescription:
+			'Free Christian classics, sermons and reading plans for men’s groups: lives of courage, books on prayer and holiness, and a three-month plan for young men.',
+		primary: { href: '#plans', label: 'Choose a plan to read together' },
+		secondary: { href: '#shelves', label: 'Books for men' },
+		pointsHeading: 'Why men’s groups use Ochorus',
+		points: [
+			{
+				icon: 'heart',
+				title: 'Lives that call men higher',
+				body: 'Studd gave away a fortune, Müller fed thousands of orphans by prayer, Livingstone crossed Africa and Watchman Nee died in prison. Their stories are told in full.',
+				link: { href: '#shelves', label: 'See the books' }
+			},
+			{
+				icon: 'calendar',
+				title: 'A plan for the group',
+				body: 'Praying Men, Everything for Christ and The Pursuit of Holiness give a group one short reading a day to talk about when you meet.',
+				link: { href: '#plans', label: 'See the plans' }
+			},
+			{
+				icon: 'users',
+				title: 'For fathers and sons',
+				body: 'Sons of the King gives young men three months of daily devotions, and many of the lives come in editions for teens.',
+				link: { href: '/teens', label: 'See the teen editions' }
+			},
+			{
+				icon: 'book',
+				title: 'Free, with nothing to sign up for',
+				body: 'Nobody needs to buy a copy or make an account. Share one link in the group chat and every man can start that night.',
+				link: { href: '/books', label: 'Browse the books' }
+			}
+		],
+		ideasHeading: 'Ways to use it in your men’s ministry',
+		ideas: [
+			{
+				title: 'A breakfast book',
+				body: 'Read a chapter of Rise Up, Men of God before each breakfast and talk it through over coffee.'
+			},
+			{
+				title: 'A life a month',
+				body: 'Read the life of one man of faith each month: what did he give up, and what did he gain?'
+			},
+			{
+				title: 'Fathers and sons',
+				body: 'Read Sons of the King alongside a son or a young man you mentor, the same reading each day.'
+			},
+			{
+				title: 'Six weeks on faith',
+				body: 'Read one sermon a week on faith that holds, and talk through its study questions.'
+			}
+		],
+		shelves: [
+			{
+				title: 'For men',
+				note: 'Books written to call men to Christ and to courage.',
+				picks: [
+					'rise-up-men-of-god-2',
+					'men-who-moved-heaven',
+					'men-of-prayer-2',
+					'men-who-tended-the-flock-2',
+					'prayer-and-praying-men',
+					'mortification-of-sin',
+					'orthodoxy'
+				]
+			},
+			{
+				title: 'Lives of courage',
+				note: 'Men who gave everything, in their own words and in ours.',
+				picks: [
+					'a-retrospect',
+					'the-life-of-trust',
+					'c-t-studd-a-life',
+					'david-livingstone-a-life',
+					'john-hyde-a-life',
+					'samuel-ajayi-crowther-a-life',
+					'watchman-nee-a-life',
+					'life-and-diary-of-david-brainerd'
+				]
+			},
+			{
+				title: 'For young men',
+				note: 'Daily devotions and true stories for the next generation.',
+				picks: [
+					'sons-of-the-king-1',
+					'sons-of-the-king-2',
+					'sons-of-the-king-3',
+					'c-t-studd-a-life-teens',
+					'david-livingstone-a-life-teens',
+					'mortification-of-sin-teens',
+					'c-s-lewis-a-life-teens'
+				]
+			}
+		],
+		plans: ['praying-men', 'sons-of-the-king-three-months', 'everything-for-christ', 'pursuit-of-holiness', 'faith-in-the-fire'],
+		quote: 'hudson-taylor-d8fd45a2',
+		authors: [
+			'hudson-taylor',
+			'george-muller',
+			'e-m-bounds',
+			'john-owen',
+			'david-brainerd',
+			'c-s-lewis',
+			'charles-h-spurgeon'
+		],
+		series: [
+			{
+				title: 'Six weeks on faith that holds',
+				note: 'Simpson, Spurgeon, Tozer and Maclaren on faith under pressure: one sermon a week, read at home and talked through together.',
+				picks: [
+					'jephthah-or-the-faith-that-leads-to-faithfulness',
+					'the-school-of-faith',
+					'the-power-of-feeble-faith',
+					'faith',
+					'the-hidden-life-of-faith',
+					'the-possibilities-of-faith',
+					'working-out-our-own-salvation',
+					'under-the-shepherds-care'
+				]
+			}
+		],
+		invite: {
+			text: 'Our men’s group is reading the great Christian classics together on Ochorus: free books and reading plans on any phone, with no sign-up.',
+			href: '/plans'
+		},
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Do the men in our group need an account?',
+				a: 'No. Anyone can read without signing up. A free account is optional: it keeps progress, notes and saved books in step across devices.'
+			},
+			{
+				q: 'Is there something for teenage boys?',
+				a: 'Yes. Sons of the King is a three-month devotional for young men, and the lives of C. T. Studd, David Livingstone and C. S. Lewis come in editions for teens.'
+			}
+		],
+		closeHeading: 'Read with the men who went before',
+		closeBody: 'Start a reading plan together, or choose one man’s story to read this month.'
+	},
+	{
 		slug: 'youth',
 		title: 'Free books your teenagers will actually read',
 		lead: 'The great classics retold for teens, true stories of people who met God before they were grown, and thirty-day devotionals written for young people. Free on their own phone, with no ads and no account needed.',
@@ -608,6 +1465,147 @@ export const FOR_PAGES: ForPage[] = [
 		],
 		closeHeading: 'Give your group something good to read',
 		closeBody: 'Start with the books for teens, or pick a reading plan to go through together.'
+	},
+	{
+		slug: 'campus',
+		title: 'Free Christian classics for campus ministries and students',
+		lead: 'Pascal, Chesterton, Augustine and C. S. Lewis on faith and reason, and the students who changed the world: the Cambridge Seven, John R. Mott and the Student Volunteer Movement. Free on any phone, with nothing to buy for a student budget.',
+		seoTitle: 'Free Christian Books for Students and Campus Ministries',
+		seoDescription:
+			'Free Christian classics for students and campus ministries: Pascal, Chesterton, Augustine and C. S. Lewis on faith and reason, and reading plans.',
+		primary: { href: '#shelves', label: 'Books for big questions' },
+		secondary: { href: '#plans', label: 'Read through the term' },
+		pointsHeading: 'Why campus ministries use Ochorus',
+		points: [
+			{
+				icon: 'search',
+				title: 'Faith that thinks',
+				body: 'Pascal’s Pensées, Chesterton’s Orthodoxy and The Everlasting Man, and Augustine’s Confessions take the hard questions seriously.',
+				link: { href: '#shelves', label: 'See the books' }
+			},
+			{
+				icon: 'globe',
+				title: 'Students who changed the world',
+				body: 'C. T. Studd left Cambridge for China, David Brainerd left Yale for the frontier, and John R. Mott led the Student Volunteer Movement. Their stories are here.',
+				link: { href: '#shelves', label: 'Read their stories' }
+			},
+			{
+				icon: 'calendar',
+				title: 'A plan for the term',
+				body: 'Reading plans give a student group one short reading a day: on the Puritans, on holiness, or on four great teachers of the faith.',
+				link: { href: '#plans', label: 'See the plans' }
+			},
+			{
+				icon: 'book',
+				title: 'Free for every student',
+				body: 'Nothing to buy and no account needed. Share one link in the group chat and everyone can read that night.',
+				link: { href: '/books', label: 'Browse the books' }
+			}
+		],
+		ideasHeading: 'Ways to use it on campus',
+		ideas: [
+			{
+				title: 'A book club for skeptics',
+				body: 'Read Orthodoxy or the Pensées with friends who are asking whether Christianity is true.'
+			},
+			{
+				title: 'A term’s reading plan',
+				body: 'Start a plan at the beginning of term and meet weekly to talk about what you read.'
+			},
+			{
+				title: 'Mission week',
+				body: 'Read The Evangelization of the World in This Generation, Mott’s call to students, before a mission week.'
+			},
+			{
+				title: 'For the long vacation',
+				body: 'Give each student a classic to read over the summer, and a reading plan to keep them going.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Faith and reason',
+				note: 'Books for the big questions.',
+				picks: [
+					'orthodoxy',
+					'pensees',
+					'the-everlasting-man',
+					'confessions',
+					'heretics',
+					'freedom-of-the-will',
+					'on-the-incarnation'
+				]
+			},
+			{
+				title: 'Students who changed the world',
+				note: 'Lives begun on campus and given away.',
+				picks: [
+					'evangelization-of-the-world',
+					'c-t-studd-a-life',
+					'life-and-diary-of-david-brainerd',
+					'c-s-lewis-a-life',
+					'key-teachings-of-c-s-lewis',
+					'key-teachings-of-dietrich-bonhoeffer',
+					'john-hyde-a-life'
+				]
+			},
+			{
+				title: 'For the inner life',
+				note: 'Classics for the student who wants to grow.',
+				picks: [
+					'the-pursuit-of-god',
+					'a-serious-call',
+					'mortification-of-sin',
+					'the-imitation-of-christ',
+					'the-practice-of-the-presence-of-god',
+					'religious-affections',
+					'paradise-lost'
+				]
+			}
+		],
+		plans: ['everything-for-christ', 'the-puritan-heart', 'pursuit-of-holiness', 'key-teachings-four-teachers', 'voices-of-the-early-church'],
+		quote: 'jonathan-edwards-2591b226',
+		authors: [
+			'c-s-lewis',
+			'g-k-chesterton',
+			'blaise-pascal',
+			'augustine-of-hippo',
+			'john-r-mott',
+			'jonathan-edwards',
+			'dietrich-bonhoeffer'
+		],
+		series: [
+			{
+				title: 'Six weeks of big questions',
+				note: 'Sin, the cross, salvation and grace: one sermon a week for a student group, with questions to argue over.',
+				picks: [
+					'the-cross-is-a-radical-thing',
+					'so-great-salvation',
+					'sinners-in-the-hands-of-an-angry-god',
+					'god-will-have-all-men-to-be-saved',
+					'the-meaning-of-the-cross',
+					'grace-and-truth',
+					'full-salvation',
+					'free-grace'
+				]
+			}
+		],
+		invite: {
+			text: 'Our student group is reading the great Christian classics together on Ochorus: Pascal, Chesterton, Augustine and more, free on any phone with no sign-up.',
+			href: '/plans'
+		},
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Can students cite these books in essays?',
+				a: 'Yes. The classic texts are in the public domain and can be quoted freely, and each book page names its author.'
+			},
+			{
+				q: 'Do students need an account?',
+				a: 'No. Anyone can read without signing up. A free account is optional: it keeps notes and progress in step across a phone and a laptop.'
+			}
+		],
+		closeHeading: 'Bring the classics to campus',
+		closeBody: 'Start a reading plan with your group, or hand a friend a book for the big questions.'
 	},
 	{
 		slug: 'missionaries',
@@ -762,6 +1760,132 @@ export const FOR_PAGES: ForPage[] = [
 		closeBody: 'Browse the library, or start with the lives of the missionaries who went before you.'
 	},
 	{
+		slug: 'african-churches',
+		title: 'Free Christian classics for churches in Africa',
+		lead: 'Augustine, Athanasius, Cyprian and Antony were Africans. So were Samuel Ajayi Crowther and the brothers and sisters of the East African Revival. Their books, and the great classics in English, Swahili and Luganda, free on any phone.',
+		seoTitle: 'Free Christian Books for Churches in Africa',
+		seoDescription:
+			'Free Christian classics for African churches: the African church fathers, the East African Revival and Samuel Ajayi Crowther, in English, Swahili and Luganda.',
+		primary: { href: '#languages', label: 'Read in your language' },
+		secondary: { href: '#shelves', label: 'Africa’s own story' },
+		pointsHeading: 'Why African churches use Ochorus',
+		points: [
+			{
+				icon: 'globe',
+				title: 'In the languages your people speak',
+				body: `Full editions in ${listOf(OTHER_LANGUAGES, 'and')} as well as English, with more languages on the way.`,
+				link: { href: '#languages', label: 'See each language' }
+			},
+			{
+				icon: 'flame',
+				title: 'The East African Revival',
+				body: 'Tukutendereza and A Hidden Fire tell the story of the Balokole revival that began in Uganda in 1929 and spread through six countries.',
+				link: { href: '/topics', label: 'Browse the topics' }
+			},
+			{
+				icon: 'book',
+				title: 'Africa’s church fathers',
+				body: 'Augustine of Hippo, Athanasius of Alexandria, Cyprian of Carthage and Antony of Egypt shaped the faith of the whole church. Their books are here in full.',
+				link: { href: '#shelves', label: 'See the books' }
+			},
+			{
+				icon: 'heart',
+				title: 'Free, and printed too',
+				body: 'Every book is free to read with no account. Ochorus also prints books and gives them away at pastors’ conferences and in churches, schools and prisons across East Africa.',
+				link: { href: '/about', label: 'About the work' }
+			}
+		],
+		ideasHeading: 'Ways to use it in your church',
+		ideas: [
+			{
+				title: 'Read in Swahili or Luganda',
+				body: 'Point each member to the library in their own language: the whole site reads in it.'
+			},
+			{
+				title: 'Tell the revival story',
+				body: 'Read Tukutendereza with your fellowship and ask what that revival asks of you today.'
+			},
+			{
+				title: 'Africa’s fathers for students',
+				body: 'Give Bible-school students Augustine’s Confessions and Athanasius On the Incarnation, written on African soil.'
+			},
+			{
+				title: 'Heroes for children',
+				body: 'Read the life of Samuel Ajayi Crowther with children: the boy from Osogun who became a bishop.'
+			}
+		],
+		shelves: [
+			{
+				title: 'The church in Africa',
+				note: 'Revival, mission, and the first African Anglican bishop.',
+				picks: [
+					'tukutendereza',
+					'a-hidden-fire',
+					'samuel-ajayi-crowther-a-life',
+					'journal-of-an-expedition-up-the-niger',
+					'mary-slessor-a-life',
+					'amanda-smith-autobiography',
+					'david-livingstone-a-life'
+				]
+			},
+			{
+				title: 'Africa’s church fathers',
+				note: 'From Hippo, Alexandria, Carthage and the Egyptian desert.',
+				picks: [
+					'confessions',
+					'on-the-incarnation',
+					'life-of-antony',
+					'treatises-of-cyprian',
+					'enchiridion',
+					'key-teachings-of-augustine-of-hippo',
+					'key-teachings-of-athanasius-of-alexandria'
+				]
+			},
+			{
+				title: 'For children and teens',
+				note: 'The same lives, told for young readers.',
+				picks: [
+					'samuel-ajayi-crowther-a-life-children',
+					'samuel-ajayi-crowther-a-life-teens',
+					'mary-slessor-a-life-children',
+					'mary-slessor-a-life-teens',
+					'life-of-antony-teens',
+					'confessions-teens',
+					'david-livingstone-a-life-teens'
+				]
+			}
+		],
+		plans: ['family-devotions-boy-from-osogun', 'voices-of-the-early-church', 'grace-for-every-sinner', 'new-to-the-faith', 'faith-in-the-fire'],
+		quote: 'augustine-of-hippo-71005631',
+		authors: [
+			'augustine-of-hippo',
+			'athanasius-of-alexandria',
+			'cyprian-of-carthage',
+			'samuel-ajayi-crowther',
+			'simeon-nsibambi',
+			'mary-slessor',
+			'amanda-berry-smith'
+		],
+		languages: true,
+		invite: {
+			text: 'Free Christian classics in English, Swahili and Luganda, from Augustine to the East African Revival, on Ochorus. No account needed.',
+			href: '/books'
+		},
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Which African languages are there?',
+				a: `Books are published as full editions in ${listOf(OTHER_LANGUAGES, 'and')} as well as English, and more languages are on the way. Each language has its own library.`
+			},
+			{
+				q: 'Can we get printed books?',
+				a: 'Ochorus prints books and gives them away at pastors’ conferences and in churches, schools and prisons across East Africa. If your church would like to take part, please contact us.'
+			}
+		],
+		closeHeading: 'Africa’s story, in Africa’s languages',
+		closeBody: 'Open the library in your language, or start with the story of the East African Revival.'
+	},
+	{
 		slug: 'chaplains',
 		title: 'Free Christian classics for prison, hospital and military chaplains',
 		lead: 'Books and sermons for people facing confinement, illness, grief and danger, free to read with no account needed. Bunyan wrote in prison; Corrie ten Boom survived a concentration camp; Hannah Whitall Smith wrote of the God of all comfort.',
@@ -907,6 +2031,164 @@ export const FOR_PAGES: ForPage[] = [
 		],
 		closeHeading: 'Bring the classics to the people you serve',
 		closeBody: 'Browse the library, or start with a short sermon you can read in one visit.'
+	},
+	{
+		slug: 'prison-ministry',
+		title: 'Books of hope for prison ministry',
+		lead: 'Bunyan wrote The Pilgrim’s Progress in a prison cell. Ignatius wrote his letters on the way to execution, and Corrie ten Boom survived a concentration camp. Their books, free to read and to download as PDFs, for the volunteers, chaplains and families who carry hope inside.',
+		seoTitle: 'Free Christian Books for Prison Ministry',
+		seoDescription:
+			'Free Christian classics for prison ministry: books written behind bars, plain-language editions and PDFs to download. No account needed.',
+		primary: { href: '#offline', label: 'Get the books to download' },
+		secondary: { href: '#series', label: 'A six-week study' },
+		pointsHeading: 'Why prison ministries use Ochorus',
+		points: [
+			{
+				icon: 'download',
+				title: 'Free to download',
+				body: 'Many books can be downloaded as free PDF and EPUB files, for a facility with no internet. If you would like to print copies to give away, please contact us first.',
+				link: { href: '#offline', label: 'See the downloads' }
+			},
+			{
+				icon: 'heart',
+				title: 'Written by people who knew prison',
+				body: 'Bunyan, Ignatius, Watchman Nee, Dietrich Bonhoeffer and Corrie ten Boom all wrote or suffered behind bars. Their words carry weight with readers who are there now.',
+				link: { href: '#shelves', label: 'See the books' }
+			},
+			{
+				icon: 'mic',
+				title: 'A study for a weekly visit',
+				body: 'Six sermons on forgiveness, a fresh start and the dying thief, each with study questions and answers, short enough to read and discuss in one visit.',
+				link: { href: '#series', label: 'See the six weeks' }
+			},
+			{
+				icon: 'layers',
+				title: 'Plain words for every reader',
+				body: 'Many classics are retold in simpler language, and The Pilgrim’s Progress even comes in words of one syllable, for readers who find the originals hard going.',
+				link: { href: '/young-readers', label: 'See the simpler editions' }
+			}
+		],
+		ideasHeading: 'Ways to use it in your prison ministry',
+		ideas: [
+			{
+				title: 'A weekly Bible study',
+				body: 'Read one of the six sermons together each week and talk through its questions.'
+			},
+			{
+				title: 'A book to leave behind',
+				body: 'Download a book as a PDF to print for someone inside, if the facility allows it. Please contact us first if you plan to print copies to give away.'
+			},
+			{
+				title: 'For families on the outside',
+				body: 'Send the same book to a family member, so they can read it alongside the one they visit.'
+			},
+			{
+				title: 'After release',
+				body: 'Give a link to a reading plan for the first weeks outside. It costs nothing and works on any phone.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Written behind bars',
+				note: 'Books written in prison, or by those who suffered there.',
+				picks: [
+					'pilgrims-progress',
+					'grace-abounding',
+					'epistles-of-ignatius',
+					'corrie-ten-boom-a-life',
+					'watchman-nee-a-life',
+					'key-teachings-of-dietrich-bonhoeffer',
+					'foxes-book-of-martyrs'
+				]
+			},
+			{
+				title: 'A fresh start',
+				note: 'Grace for the worst of sinners, and a way to begin again.',
+				picks: [
+					'the-way-to-god',
+					'all-of-grace',
+					'around-the-wicket-gate',
+					'a-call-to-the-unconverted',
+					'the-bruised-reed',
+					'cheque-book',
+					'how-to-succeed-in-the-christian-life'
+				]
+			},
+			{
+				title: 'In plain words',
+				note: 'Retellings for readers who find the originals hard going.',
+				picks: [
+					'pilgrims-progress-words-of-one-syllable',
+					'pilgrims-progress-teens',
+					'all-of-grace-teens',
+					'the-way-to-god-teens',
+					'grace-abounding-teens',
+					'corrie-ten-boom-a-life-teens',
+					'the-bruised-reed-teens'
+				]
+			}
+		],
+		plans: ['grace-for-every-sinner', 'new-to-the-faith', 'the-pilgrims-way', 'faith-in-the-fire', 'waiting-on-god-trust'],
+		offline: {
+			note: 'For a facility with no internet. Download each book as a PDF to print or an EPUB for an e-reader, or save them all to this device to read in the app. If you would like to print copies to give away, please contact us first.',
+			picks: [
+				'pilgrims-progress',
+				'grace-abounding',
+				'all-of-grace',
+				'the-way-to-god',
+				'the-bruised-reed',
+				'cheque-book',
+				'corrie-ten-boom-a-life',
+				'he-holds-my-tomorrows'
+			]
+		},
+		quote: 'george-muller-7716c8c8',
+		authors: [
+			'john-bunyan',
+			'corrie-ten-boom',
+			'watchman-nee',
+			'dietrich-bonhoeffer',
+			'ignatius-of-antioch',
+			'charles-h-spurgeon',
+			'dwight-l-moody'
+		],
+		series: [
+			{
+				title: 'Six weeks of hope',
+				note: 'Forgiveness, a fresh start and the thief on the cross: one sermon a week, short enough to read and discuss in a single visit.',
+				picks: [
+					'the-dying-thief',
+					'lord-remember-me',
+					'the-sinners-friend',
+					'are-you-forgiven',
+					'how-to-forgive',
+					'every-mans-need-of-a-refuge',
+					'come-unto-him',
+					'rest'
+				]
+			}
+		],
+		invite: {
+			text: 'Free Christian books of hope, many written behind bars, on Ochorus. Read online or download them as PDFs. No account needed.',
+			href: '/books'
+		},
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Can we print books for people in prison?',
+				a: 'Many books can be downloaded as free PDF files from this page or the book’s page. If you would like to print copies to give away, please contact us first. Ochorus already prints books and gives them away in prisons in East Africa, and we would be glad to talk it through.'
+			},
+			{
+				q: 'What about readers who struggle with older English?',
+				a: 'Many classics come in editions that retell them in plain words, and The Pilgrim’s Progress comes in words of one syllable. Online, any chapter can also be read aloud with Listen.'
+			},
+			{
+				q: 'Is there a page for prison chaplains?',
+				a: 'Yes. The page for chaplains covers prison, hospital and military chaplaincy together, with books for suffering and grief.'
+			}
+		],
+		closeHeading: 'Carry hope inside',
+		closeBody: 'Download a book to print, or start the six-week study on your next visit.'
 	},
 	{
 		slug: 'bible-colleges',

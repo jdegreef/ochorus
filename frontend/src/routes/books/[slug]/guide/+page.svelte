@@ -7,6 +7,7 @@
 	import { contentLang } from '$lib/reading';
 	import { authorPath } from '$lib/originals';
 	import { guideWeekHeading } from '$lib/leaderGuide';
+	import ForPromo from '$lib/components/ForPromo.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
@@ -78,6 +79,7 @@
 					{t('guide.backToBook')}
 				</a>
 			</div>
+			<div class="screen-only mt-3"><ForPromo place="guide" /></div>
 		</div>
 		<div class="guide-cover screen-only">
 			<BookCover {book} />

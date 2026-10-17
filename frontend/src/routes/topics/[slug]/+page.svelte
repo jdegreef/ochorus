@@ -1,4 +1,6 @@
 <script lang="ts">
+	import ForPromo from '$lib/components/ForPromo.svelte';
+	import { TOPIC_FOR } from '$lib/forPromos';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount } from 'svelte';
 	import { authorPath } from '$lib/originals';
@@ -272,6 +274,9 @@
 						{/if}
 					</span>
 				</div>
+				{#if TOPIC_FOR[topic.slug]}
+					<ForPromo place="topic" slugs={[TOPIC_FOR[topic.slug]]} class="mt-3" />
+				{/if}
 			</div>
 			{#if topic.scripture_text}
 				<figure class="verse hero-verse">

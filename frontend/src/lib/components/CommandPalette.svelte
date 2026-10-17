@@ -10,6 +10,8 @@
 		AZ_INDEX_DEST
 	} from '$lib/contentNav';
 	import { getLang } from '$lib/lang.svelte';
+	import { FOR_EYEBROW, FOR_LINKS, forInline } from '$lib/forLinks';
+	import { promoLocale } from '$lib/forPromos';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { focusTrap } from '$lib/actions/focusTrap';
@@ -46,8 +48,19 @@
 		{ href: '/notebook', label: t('notebook.title') },
 		{ href: '/settings', label: t('settings.title') },
 		{ href: '/about', label: t('nav.about') },
-		{ href: '/contact', label: t('nav.contact') }
+		{ href: '/contact', label: t('nav.contact') },
+		// The "Ochorus for …" pages, where they are written (English, French):
+		// "homeschool" or "chaplains" typed here finds the page for them.
+		...forCommands(promoLocale(getLang()))
 	]);
+
+	function forCommands(loc: ReturnType<typeof promoLocale>) {
+		if (!loc) return [];
+		return [
+			{ href: '/for', label: `${FOR_EYEBROW[loc]}…` },
+			...FOR_LINKS.map((l) => ({ href: `/for/${l.slug}`, label: `${FOR_EYEBROW[loc]} ${forInline(l, loc)}` }))
+		];
+	}
 
 	type Item = { key: string; kind: 'cmd' | 'hit'; label: string; title: string; meta: string; href: string };
 
