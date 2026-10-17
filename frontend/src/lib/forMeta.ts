@@ -89,6 +89,36 @@ export const FOR_META: Record<string, ForMeta> = {
 		phrase: 'parents',
 		tagline: 'True stories, classic tales and five-minute family devotions',
 		fr: { phrase: 'les parents', tagline: 'Histoires vraies, récits classiques et dévotions de cinq minutes' }
+	},
+	pastors: {
+		accent: '#8a3f4f',
+		emblem: 'shepherds-crook', // feed the flock of God which is among you
+		phrase: 'pastors and preachers',
+		tagline: 'The great preachers on preaching, prayer and the care of souls',
+		fr: {
+			phrase: 'les pasteurs et les prédicateurs',
+			tagline: 'Les grands prédicateurs sur la prédication, la prière et le soin des âmes'
+		}
+	},
+	'new-believers': {
+		accent: '#4f86b8',
+		emblem: 'open-gate', // I am the door
+		phrase: 'new believers',
+		tagline: 'Clear, warm first books and short plans for the first months of faith',
+		fr: {
+			phrase: 'les nouveaux croyants',
+			tagline: 'Des premiers livres clairs et chaleureux pour les premiers mois de la foi'
+		}
+	},
+	'prison-ministry': {
+		accent: '#55606e',
+		emblem: 'dove-at-the-bars', // to proclaim liberty to the captives
+		phrase: 'prison ministry',
+		tagline: 'Books of hope from those who wrote behind bars, free to print and pass on',
+		fr: {
+			phrase: 'l’aumônerie de prison',
+			tagline: 'Des livres d’espérance écrits derrière les barreaux, à lire et à transmettre'
+		}
 	}
 };
 

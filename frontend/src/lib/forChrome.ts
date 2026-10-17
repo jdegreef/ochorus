@@ -229,7 +229,10 @@ export const FOR_CHROME: Record<ForLocale, ForChrome> = {
 				'bible-colleges': 'Bible college students',
 				schools: 'A class at school',
 				homeschool: 'My homeschool',
-				parents: 'My children'
+				parents: 'My children',
+				pastors: 'The people I preach to',
+				'new-believers': 'Someone new to the faith',
+				'prison-ministry': 'People in prison'
 			},
 			goals: {
 				together: 'Read a plan together',
@@ -358,7 +361,10 @@ export const FOR_CHROME: Record<ForLocale, ForChrome> = {
 				'bible-colleges': 'Des étudiants d’institut biblique',
 				schools: 'Une classe',
 				homeschool: 'L’école à la maison',
-				parents: 'Mes enfants'
+				parents: 'Mes enfants',
+				pastors: 'Ceux à qui je prêche',
+				'new-believers': 'Quelqu’un de nouveau dans la foi',
+				'prison-ministry': 'Des personnes en prison'
 			},
 			goals: {
 				together: 'Lire un plan ensemble',

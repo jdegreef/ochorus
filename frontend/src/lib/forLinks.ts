@@ -35,10 +35,13 @@ export const forLocale = (locale: string): ForLocale =>
 /** Left to right, as the footer row shows them. */
 export const FOR_LINKS: ForLinkDest[] = [
 	{ slug: 'churches', label: 'Churches', fr: 'Églises', inline: 'churches', frInline: 'les Églises' },
+	{ slug: 'pastors', label: 'Pastors', fr: 'Pasteurs', inline: 'pastors', frInline: 'les pasteurs' },
 	{ slug: 'small-groups', label: 'Small groups', fr: 'Petits groupes', inline: 'small groups', frInline: 'les petits groupes' },
+	{ slug: 'new-believers', label: 'New believers', fr: 'Nouveaux croyants', inline: 'new believers', frInline: 'les nouveaux croyants' },
 	{ slug: 'youth', label: 'Youth ministries', fr: 'Pastorale des jeunes', inline: 'youth ministries', frInline: 'la pastorale des jeunes' },
 	{ slug: 'missionaries', label: 'Missionaries', fr: 'Missionnaires', inline: 'missionaries', frInline: 'les missionnaires' },
 	{ slug: 'chaplains', label: 'Chaplains', fr: 'Aumôniers', inline: 'chaplains', frInline: 'les aumôniers' },
+	{ slug: 'prison-ministry', label: 'Prison ministry', fr: 'Prisons', inline: 'prison ministry', frInline: 'les prisons' },
 	{ slug: 'bible-colleges', label: 'Bible colleges', fr: 'Instituts bibliques', inline: 'Bible colleges', frInline: 'les instituts bibliques' },
 	{ slug: 'schools', label: 'Schools', fr: 'Écoles', inline: 'schools', frInline: 'les écoles' },
 	{ slug: 'homeschool', label: 'Homeschool families', fr: 'École à la maison', inline: 'homeschool families', frInline: 'l’école à la maison' },
