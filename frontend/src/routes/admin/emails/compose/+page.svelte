@@ -401,7 +401,9 @@
 	let tagTarget: HTMLInputElement | HTMLTextAreaElement | null = null;
 	function trackTagTarget(e: FocusEvent) {
 		const el = e.target;
-		if (el instanceof HTMLTextAreaElement || (el instanceof HTMLInputElement && (el.type === 'text' || el.type === ''))) {
+		// Only fields whose words are filled per reader (marked data-tags) — never
+		// a link path or a picture address.
+		if ((el instanceof HTMLTextAreaElement || el instanceof HTMLInputElement) && el.dataset.tags !== undefined) {
 			tagTarget = el;
 		}
 	}
@@ -636,11 +638,11 @@
 				<div class="mb-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
 					<label class="block">
 						<span class="mb-1 block text-micro text-muted">Subject line</span>
-						<input class="w-full rounded-md border border-border bg-surface p-2 text-body" bind:value={draft.subject[editLocale]} disabled={readOnly} />
+						<input class="w-full rounded-md border border-border bg-surface p-2 text-body" bind:value={draft.subject[editLocale]} disabled={readOnly} data-tags />
 					</label>
 					<label class="block">
 						<span class="mb-1 block text-micro text-muted">Inbox preview text (optional)</span>
-						<input class="w-full rounded-md border border-border bg-surface p-2 text-body" bind:value={draft.content[editLocale].preheader} disabled={readOnly} placeholder="Shown after the subject in most inboxes" />
+						<input class="w-full rounded-md border border-border bg-surface p-2 text-body" bind:value={draft.content[editLocale].preheader} disabled={readOnly} data-tags placeholder="Shown after the subject in most inboxes" />
 					</label>
 				</div>
 				<div class="grid grid-cols-1 gap-5 lg:grid-cols-2">

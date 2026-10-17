@@ -115,18 +115,38 @@ def _content_checks(broadcast) -> list[dict]:
                     f"The tags are {', '.join('{' + k + '}' for k in merge_tags.TAGS)}.",
                 )
             )
-        vanishing = [
-            m.group(0)
-            for m in merge_tags.TAG.finditer(subject)
-            if m.group(2) is None and merge_tags.tag_key(m.group(1)) in merge_tags.READER_FACT_TAGS
-        ]
-        if vanishing:
+        def vanishing(text: str) -> list[str]:
+            return [
+                m.group(0)
+                for m in merge_tags.TAG.finditer(text or "")
+                if m.group(2) is None and merge_tags.tag_key(m.group(1)) in merge_tags.READER_FACT_TAGS
+            ]
+
+        if vanishing(subject) or vanishing(preheader):
+            tags = ", ".join(vanishing(subject) + vanishing(preheader))
             out.append(
                 _check(
                     f"subject-tags:{code}",
                     WARNING,
-                    f"{name}: readers with nothing for {', '.join(vanishing)} get the subject without it — "
+                    f"{name}: readers with nothing for {tags} get the subject or inbox text without it — "
                     "give it a fallback, like {last_book|a classic}.",
+                )
+            )
+        whole = sorted(
+            {
+                t
+                for b in blocks
+                if b["type"] in (blocks_mod.BlockType.HEADING, blocks_mod.BlockType.BUTTON)
+                for t in vanishing(b.get("text", "") if b["type"] == blocks_mod.BlockType.HEADING else b.get("label", ""))
+            }
+        )
+        if whole:
+            out.append(
+                _check(
+                    f"block-tags:{code}",
+                    WARNING,
+                    f"{name}: a heading or button with {', '.join(whole)} is left out for readers with nothing "
+                    "for it — give it a fallback if it should always show.",
                 )
             )
         if not blocks_mod.has_body(blocks, reaches):

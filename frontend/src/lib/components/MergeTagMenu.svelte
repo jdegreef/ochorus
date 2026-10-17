@@ -29,7 +29,7 @@
 	function insert(tag: MergeTag) {
 		const el = getTarget();
 		if (!el || !el.isConnected) {
-			hint = 'Click into a subject, heading or text first, then choose a tag.';
+			hint = 'Click into a subject, heading, text or label first, then choose a tag.';
 			return;
 		}
 		const token = `{${tag.key}}`;

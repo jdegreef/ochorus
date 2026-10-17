@@ -28,14 +28,22 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from datetime import timedelta
+
+from django.utils import timezone
 
 from . import copy as copy_mod
 
 #: ``{tag}`` or ``{tag|fallback}``.
 TAG = re.compile(r"\{([a-z_]+)(?:\|([^{}\n]*))?\}")
-#: A sentence with whatever space follows it, in the scripts the site is
-#: written in (Chinese and Japanese stops need no space after them).
-_SENTENCE = re.compile(r".*?(?:[.!?…。！？؟।።]+\s*|$)", re.S)
+#: A sentence (or a line) with whatever space follows it, in the scripts the
+#: site is written in (Chinese and Japanese stops need no space after them).
+#: Run on text whose tags are masked, so a "." inside a fallback can't split it.
+_SENTENCE = re.compile(r".*?(?:[.!?…]+(?=\s|$)\s*|[。！？؟।።]+\s*|\n|$)", re.S)
+#: A stop after one of these doesn't end the sentence ("St. Augustine").
+_ABBREVIATIONS = frozenset({"st", "dr", "mr", "mrs", "ms", "rev", "fr", "sr", "jr", "vs", "cf", "no", "e.g", "i.e", "etc"})
+#: ``{words}`` filled by a block itself rather than as merge tags.
+BLOCK_PLACEHOLDERS = frozenset({"chapter"})
 
 
 @dataclass(frozen=True)
@@ -52,11 +60,13 @@ TAGS: dict[str, Tag] = {
         Tag("first_name", "First name", "Sarah", "Their first name — “friend” in their language when we don’t know it."),
         Tag("last_book", "Last book", "Absolute Surrender", "The book they read most recently."),
         Tag("plan_name", "Plan name", "Thirty days of prayer", "The reading plan they are following."),
-        Tag("plan_day", "Plan day", "12", "The next day of that plan."),
+        Tag("plan_day", "Plan day", "12", "The next day of that plan they haven’t read."),
         Tag("books_finished", "Books finished", "5", "How many books they have finished (none ⇒ missing)."),
         Tag("language", "Their language", "English", "The name of the language their email is in."),
     )
 }
+#: A plan touched longer ago than this isn't "the plan they are following".
+PLAN_RECENT = timedelta(days=90)
 #: The tags that need a lookup of the reader's reading (the rest are free).
 READER_FACT_TAGS = frozenset({"last_book", "plan_name", "plan_day", "books_finished"})
 #: Old spellings that still work.
@@ -82,7 +92,12 @@ def tag_names(text: str) -> list[str]:
 
 def unknown_in(*texts: str) -> set[str]:
     """``{words}`` in ``texts`` that look like tags but aren't."""
-    return {m.group(0) for text in texts for m in TAG.finditer(text or "") if tag_key(m.group(1)) is None}
+    return {
+        m.group(0)
+        for text in texts
+        for m in TAG.finditer(text or "")
+        if tag_key(m.group(1)) is None and m.group(1) not in BLOCK_PLACEHOLDERS
+    }
 
 
 # --- Values ----------------------------------------------------------------------
@@ -114,10 +129,12 @@ def _facts(profile_ids) -> dict[int, dict]:
     plans = (
         PlanProgress.objects.filter(profile_id__in=profile_ids)
         .order_by("profile_id", "-updated_at")
+        .filter(updated_at__gte=timezone.now() - PLAN_RECENT)
         .values("profile_id", "plan_slug", "done")
     )
     for row in plans:
-        facts[row["profile_id"]].setdefault("plan", (row["plan_slug"], len(row["done"] or [])))
+        done = {d for d in (row["done"] or []) if isinstance(d, int)}
+        facts[row["profile_id"]].setdefault("plan", (row["plan_slug"], done))
     return facts
 
 
@@ -185,8 +202,10 @@ def values_for(profile, lang: str, *, first_name: str, needed: set[str], cache: 
         if title:
             values["plan_name"] = title
             total = _plan_length(cache, slug, lang)
-            if done < total:
-                values["plan_day"] = str(done + 1)
+            # The first day they haven't read — a reader can skip ahead.
+            unread = next((d for d in range(1, total + 1) if d not in done), None)
+            if unread is not None:
+                values["plan_day"] = str(unread)
     return values
 
 
@@ -246,11 +265,34 @@ def fill_paragraph(text: str, values: dict, lang: str) -> str:
     if not TAG.search(text):
         return text
     kept = []
-    for sentence in _SENTENCE.findall(text):
+    for sentence in _sentences(text):
         filled = fill_line(sentence, values, lang)
         if filled is not None:
             kept.append(filled)
     return "".join(kept).strip()
+
+
+def _sentences(text: str) -> list[str]:
+    """``text`` cut into sentences and lines, each with its trailing space, so
+    that joining them gives ``text`` back. Tags are masked while cutting."""
+    tags: list[str] = []
+
+    def mask(m: re.Match) -> str:
+        tags.append(m.group(0))
+        return f"\x00{len(tags) - 1}\x00"
+
+    masked = TAG.sub(mask, text)
+    pieces: list[str] = []
+    for piece in _SENTENCE.findall(masked):
+        if not piece:
+            continue
+        previous = pieces[-1] if pieces else ""
+        last_word = previous.rstrip().rstrip(".").rsplit(None, 1)[-1].lower() if previous.strip() else ""
+        if previous and previous.rstrip().endswith(".") and not previous.endswith("\n") and last_word in _ABBREVIATIONS:
+            pieces[-1] = previous + piece  # "St." didn't end it
+        else:
+            pieces.append(piece)
+    return [re.sub("\x00(\\d+)\x00", lambda m: tags[int(m.group(1))], p) for p in pieces]
 
 
 def fill_subject(text: str, values: dict, lang: str) -> str:
@@ -259,13 +301,19 @@ def fill_subject(text: str, values: dict, lang: str) -> str:
     if not TAG.search(text):
         return text
 
+    dropped = False
+
     def sub(m: re.Match) -> str:
+        nonlocal dropped
         try:
             return _fill_one(m.group(0), values, lang)
         except _Missing:
+            dropped = True
             return ""
 
     out = TAG.sub(sub, text)
+    if not dropped:
+        return out  # the admin's own punctuation stays as written
     out = re.sub(r"\s+([,.!?:;])", r"\1", out)  # "going ," → "going,"
     out = re.sub(r"[,;:]+([.!?])", r"\1", out)  # "going,!" → "going!"
     out = re.sub(r"^[\s,.:;–—-]+|[\s,;:–—-]+$", "", out)

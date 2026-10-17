@@ -183,3 +183,52 @@ class ApiTests(TestCase):
         new = preview("new")
         self.assertEqual(new["subject"], "friend")
         self.assertNotIn("Day", new["html"])
+
+
+class ReviewFixTests(SimpleTestCase):
+    def test_punctuation_inside_a_fallback_doesnt_split_it(self):
+        text = "Pick up {last_book|Dr. Murray's classic} today."
+        self.assertEqual(merge_tags.fill_paragraph(text, {**V, "last_book": None}, "en"), "Pick up Dr. Murray's classic today.")
+
+    def test_a_line_is_dropped_not_the_paragraph(self):
+        text = "Your plan: {plan_name}\nDay two reading\nThird line"
+        self.assertEqual(merge_tags.fill_paragraph(text, V, "en"), "Day two reading\nThird line")
+
+    def test_an_abbreviation_isnt_a_sentence_end(self):
+        text = "Read St. Augustine with {plan_name} now. Bye."
+        self.assertEqual(merge_tags.fill_paragraph(text, V, "en"), "Bye.")
+
+    def test_subject_punctuation_kept_when_nothing_dropped(self):
+        self.assertEqual(merge_tags.fill_subject("Bonjour {first_name}, une question ?", V, "fr"), "Bonjour Ana, une question ?")
+
+    def test_chapter_is_not_an_unknown_tag(self):
+        self.assertEqual(merge_tags.unknown_in("Pick up at chapter {chapter}"), set())
+
+
+class PlanDayTests(TestCase):
+    def test_the_first_unread_day_and_a_stale_plan(self):
+        from datetime import timedelta
+
+        murray = Author.objects.create(slug="murray", name="Andrew Murray")
+        Book.objects.create(author=murray, slug="b", language="en", title="B")
+        plan = Plan.objects.create(slug="p", language="en", title="P")
+        for day in range(1, 6):
+            PlanDay.objects.create(plan=plan, day=day, book_slug="b", chapter_order=day)
+        reader = _make_profile()
+        PlanProgress.objects.create(profile=reader, plan_slug="p", started_at=timezone.now(), done=[1, 2, 5])
+        v = merge_tags.values_for(reader, "en", first_name="Ana", needed={"plan_day"})
+        self.assertEqual(v["plan_day"], "3")
+        PlanProgress.objects.filter(profile=reader).update(updated_at=timezone.now() - timedelta(days=200))
+        v = merge_tags.values_for(reader, "en", first_name="Ana", needed={"plan_day"})
+        self.assertIsNone(v["plan_name"])
+
+
+@SENDING
+class LabelTests(TestCase):
+    def test_card_labels_take_tags(self):
+        murray = Author.objects.create(slug="murray", name="Andrew Murray")
+        Book.objects.create(author=murray, slug="humility", language="en", title="Humility")
+        reader = _make_profile(name="Ana Reader")
+        sub = EmailSubscription.objects.create(profile=reader)
+        b = _broadcast(subject={"en": "Hi"}, content={"en": {"blocks": [{"type": "book", "slug": "humility", "label": "For you, {first_name}"}]}})
+        self.assertIn("For you, Ana", render_broadcast(b, reader, sub).html)

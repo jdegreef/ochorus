@@ -201,7 +201,7 @@ def render_blocks(
         "blocks": blocks_mod.resolve(
             blocks,
             lang,
-            name=values.get("first_name") or _display_name(profile, lang),
+            name=values["first_name"],
             cards=cards,
             localize_buttons=localize_buttons,
             profile=profile,

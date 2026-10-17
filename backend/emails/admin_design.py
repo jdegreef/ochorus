@@ -20,7 +20,6 @@ from library.audit import AdminAudited, AdminNotAudited, actor_email
 from library.models import AdminAction
 
 from . import blocks as blocks_mod
-from . import copy as copy_mod
 from . import images, library_search, merge_tags, starter_templates, translation_jobs
 from .admin_views import _serialize_broadcast
 from .models import Broadcast, EmailSubscription, EmailTemplate, TemplateCategory
@@ -129,7 +128,6 @@ class AdminEmailMergeTagsView(AdminNotAudited, APIView):
                     {"key": t.key, "label": t.label, "sample": t.sample, "description": t.description}
                     for t in merge_tags.TAGS.values()
                 ],
-                "friend": copy_mod.FRIEND,
             }
         )
 

@@ -559,11 +559,12 @@ def resolve(
             card = cards.get((kind, lang, b.get("slug", "")))
             if card is None:
                 continue
-            out.append({"type": kind, "label": b.get("label", ""), **card})
+            out.append({"type": kind, "label": line(b.get("label", "")) or "", **card})
         elif kind == BlockType.BOOK_ROW:
             row = [c for s in row_slugs(b) if (c := cards.get((BlockType.BOOK, lang, s)))]
             if row:
-                out.append({"type": kind, "label": b.get("label", ""), "books": row, "width": 100 // len(row)})
+                label = line(b.get("label", "")) or ""
+                out.append({"type": kind, "label": label, "books": row, "width": 100 // len(row)})
         elif kind == BlockType.IMAGE:
             src = image_url(b.get("url", ""))
             if src:
@@ -594,8 +595,8 @@ def resolve(
             card = _continue_card(profile, cards)
             if card is not None:
                 # ``{chapter}`` in the label becomes the chapter they reached.
-                label = b.get("label", "").replace("{chapter}", str(card["chapter"]))
-                out.append({"type": kind, "heading": b.get("heading", ""), "label": label, **card})
+                label = (line(b.get("label", "")) or "").replace("{chapter}", str(card["chapter"]))
+                out.append({"type": kind, "heading": line(b.get("heading", "")) or "", "label": label, **card})
         elif kind == BlockType.BUTTON:
             label = line(b.get("label", ""))
             if label:
