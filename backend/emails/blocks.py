@@ -291,6 +291,43 @@ def editions(kind: str, slugs) -> dict[str, set[str]]:
     return out
 
 
+def works_by_slug(kind: str, rows, slugs: list[str]) -> dict[str, dict]:
+    """One entry per work for the admin's pickers — ``{slug: {"slug", "title",
+    "author", "languages", "cover"}}`` over ``rows`` (a published queryset of a
+    per-language ``kind``). A work is named by its English title when it has
+    one, and a book shows the cover of that same edition."""
+    _, _, _, title_field = LIBRARY[kind]
+    fields = ["slug", "language", title_field]
+    if has_author(kind):
+        fields.append("author__name")
+    if kind == BlockType.BOOK:
+        fields.append("cover_url")
+    editions_by_slug: dict[str, list[dict]] = {}
+    for row in rows.filter(slug__in=slugs).order_by("slug", "language").values(*fields):
+        editions_by_slug.setdefault(row["slug"], []).append(row)
+    out = {}
+    for slug, rows_ in editions_by_slug.items():
+        named = next((r for r in rows_ if r["language"] == "en"), rows_[0])
+        cover = ""
+        if kind == BlockType.BOOK:
+            from library.book_export import cover_image_url
+
+            cover = cover_image_url(SimpleNamespace(slug=slug, language=named["language"], cover_url=named["cover_url"]))
+        out[slug] = {
+            "slug": slug,
+            "title": named[title_field],
+            "author": named.get("author__name", ""),
+            "languages": [r["language"] for r in rows_],
+            "cover": cover,
+        }
+    return out
+
+
+def life_years(birth: int | None, death: int | None) -> str:
+    """An author's years as shown on a card, e.g. ``1828–1917``."""
+    return "–".join(str(y) for y in (birth, death) if y)
+
+
 def _blurb(text: str) -> str:
     text = (text or "").strip()
     return text if len(text) <= 220 else text[:217].rsplit(" ", 1)[0] + "…"
@@ -355,7 +392,7 @@ def _entity_cards(kind: str, slugs, lang: str) -> dict[str, dict]:
             )
         for row in rows:
             bio = row["bio"] if lang == "en" else bios.get(row["slug"], "")
-            years = "–".join(str(y) for y in (row["birth_year"], row["death_year"]) if y)
+            years = life_years(row["birth_year"], row["death_year"])
             photo = row["photo_url"] or ""
             cards[row["slug"]] = {
                 "title": row["name"],
