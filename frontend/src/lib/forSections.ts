@@ -44,7 +44,10 @@ export const FOR_LEAD: Record<string, ForSection[]> = {
 	parents: ['levels', 'plans', 'guides', 'why', 'shelves'],
 	pastors: ['series', 'shelves', 'why', 'writers', 'plans'],
 	'new-believers': ['shelves', 'plans', 'series', 'why'],
-	'prison-ministry': ['offline', 'series', 'why', 'shelves', 'plans']
+	'prison-ministry': ['offline', 'series', 'why', 'shelves', 'plans'],
+	'prayer-groups': ['plans', 'shelves', 'quote', 'series', 'why'],
+	'womens-ministry': ['shelves', 'series', 'plans', 'why'],
+	'mens-ministry': ['writers', 'shelves', 'plans', 'series', 'why']
 };
 
 /** Does this page have anything to draw for the section? The copy-only

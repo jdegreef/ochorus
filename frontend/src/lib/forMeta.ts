@@ -119,6 +119,36 @@ export const FOR_META: Record<string, ForMeta> = {
 			phrase: 'l’aumônerie de prison',
 			tagline: 'Des livres d’espérance écrits derrière les barreaux, à lire et à transmettre'
 		}
+	},
+	'womens-ministry': {
+		accent: '#a8457e',
+		emblem: 'lamp-and-distaff', // her lamp does not go out by night
+		phrase: 'women’s ministry',
+		tagline: 'The lives and writings of women of faith, with plans to read together',
+		fr: {
+			phrase: 'les groupes de femmes',
+			tagline: 'Les vies et les écrits de femmes de foi, à lire ensemble'
+		}
+	},
+	'mens-ministry': {
+		accent: '#3e6a8a',
+		emblem: 'iron-sharpens-iron', // as iron sharpens iron
+		phrase: 'men’s ministry',
+		tagline: 'Lives of courage and books on prayer and holiness for men',
+		fr: {
+			phrase: 'les groupes d’hommes',
+			tagline: 'Des vies de courage et des livres sur la prière et la sainteté'
+		}
+	},
+	'prayer-groups': {
+		accent: '#7451a8',
+		emblem: 'golden-censer', // let my prayer be set forth as incense
+		phrase: 'prayer groups',
+		tagline: 'The great books on prayer and the stories of answered prayer',
+		fr: {
+			phrase: 'les groupes de prière',
+			tagline: 'Les grands livres sur la prière et les récits de prières exaucées'
+		}
 	}
 };
 

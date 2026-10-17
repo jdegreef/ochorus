@@ -62,7 +62,10 @@ export const PICKER_GOALS: Record<string, Record<ForLocale, ForGoal[]>> = {
 	},
 	pastors: { en: ['books', 'series', 'together'], fr: ['books', 'series', 'together'] },
 	'new-believers': { en: ['together', 'books', 'series'], fr: ['series', 'books', 'together'] },
-	'prison-ministry': { en: ['offline', 'series', 'books', 'together'], fr: ['series', 'books', 'together'] }
+	'prison-ministry': { en: ['offline', 'series', 'books', 'together'], fr: ['series', 'books', 'together'] },
+	'prayer-groups': { en: ['together', 'series', 'books'], fr: ['together', 'series', 'books'] },
+	'womens-ministry': { en: ['together', 'series', 'books'], fr: ['books', 'together'] },
+	'mens-ministry': { en: ['together', 'series', 'books'], fr: ['books', 'series', 'together'] }
 };
 
 /** Where a choice leads: the group's page, at the goal's section. */

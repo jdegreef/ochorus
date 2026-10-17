@@ -55,7 +55,9 @@ export const TOPIC_FOR: Record<string, string> = {
 	'the-east-african-revival': 'missionaries',
 	'for-young-readers': 'parents',
 	'for-teens': 'youth',
-	prayer: 'small-groups',
+	prayer: 'prayer-groups',
+	'women-of-faith': 'womens-ministry',
+	'men-of-valour': 'mens-ministry',
 	'voices-of-the-early-church': 'bible-colleges',
 	'the-puritans': 'bible-colleges',
 	'foundations-of-the-faith': 'new-believers',
@@ -103,7 +105,17 @@ export const SEARCH_FOR: Record<string, string> = {
 	homeschooling: 'homeschool',
 	parents: 'parents',
 	children: 'parents',
-	kids: 'parents'
+	kids: 'parents',
+	'prayer group': 'prayer-groups',
+	'prayer groups': 'prayer-groups',
+	'prayer meeting': 'prayer-groups',
+	intercession: 'prayer-groups',
+	'women s ministry': 'womens-ministry',
+	'womens ministry': 'womens-ministry',
+	'women s group': 'womens-ministry',
+	'men s ministry': 'mens-ministry',
+	'mens ministry': 'mens-ministry',
+	'men s group': 'mens-ministry'
 };
 
 /** The group page a search names, if any: the longest phrase it contains. */

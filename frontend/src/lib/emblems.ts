@@ -828,7 +828,37 @@ export const EMBLEM_ART = {
 		<path d="M44.5 16l2.4.6-2.4 1z" fill="${G}"/>
 		<circle cx="42.9" cy="15.7" r=".55" fill="${BRD}"/>
 		<path d="M45 17.6c-.4 2.4-1.6 4-3.6 5" stroke="${GRD}" stroke-width="1" fill="none"/>
-		<path d="M43.6 20.2c1.3.1 2 .8 2.1 1.9-1.3-.1-2-.8-2.1-1.9zM42 22c1.2.3 1.8 1.1 1.7 2.2-1.2-.3-1.8-1.1-1.7-2.2z" fill="${GR}"/>`
+		<path d="M43.6 20.2c1.3.1 2 .8 2.1 1.9-1.3-.1-2-.8-2.1-1.9zM42 22c1.2.3 1.8 1.1 1.7 2.2-1.2-.3-1.8-1.1-1.7-2.2z" fill="${GR}"/>`,
+	'lamp-and-distaff': `
+		<circle cx="24" cy="22" r="17" fill="${RO}" fill-opacity=".16"/>
+		<path d="M36 6v34" stroke="${BR}" stroke-width="2.2" stroke-linecap="round"/>
+		<ellipse cx="36" cy="13" rx="4.2" ry="6" fill="${CRD}"/>
+		<path d="M32.4 10.5c2.4 1 4.8 1 7.2 0M32.2 14c2.5 1 5 1 7.6 0" stroke="${BR}" stroke-width=".9" stroke-opacity=".5" fill="none"/>
+		<path d="M24 22c-3.6-4.2-2.4-8.8.9-11.4-.4 2.8.7 4.3 1.9 5.3 1.4 1.1 2.4 2.7 2.4 4.4A5.3 5.3 0 0 1 24 22z" fill="${R}"/>
+		<path d="M24 21c-1.8-2.2-1.1-4.4.5-5.6-.2 1.4.4 2.2 1 2.7.7.6 1.2 1.4 1.2 2.2A2.7 2.7 0 0 1 24 21z" fill="${G}"/>
+		<path d="M10 28h22c0 6-5 10-11 10s-11-4-11-10z" fill="${GD}"/>
+		<path d="M30 30c4 0 6 2.4 6 4.6" stroke="${GD}" stroke-width="2" fill="none" stroke-linecap="round"/>
+		<path d="M16 24.5c2-1.5 8-1.5 10 0v3.5H16z" fill="${G}"/>
+		<path d="M8 42h32" stroke="${BRD}" stroke-width="2.4" stroke-linecap="round"/>`,
+	'iron-sharpens-iron': `
+		<circle cx="24" cy="23" r="17" fill="${B}" fill-opacity=".16"/>
+		<path d="M9 37L30 16" stroke="${SL}" stroke-width="5" stroke-linecap="round"/>
+		<path d="M39 37L18 16" stroke="${SLD}" stroke-width="5" stroke-linecap="round"/>
+		<path d="M30 16l4-4 2 2-4 4z" fill="${BR}"/>
+		<path d="M18 16l-4-4-2 2 4 4z" fill="${BRD}"/>
+		<path d="M7 39l3-3M41 39l-3-3" stroke="${BR}" stroke-width="3" stroke-linecap="round"/>
+		<path d="M24 22l1.4-4 1.4 4 4-1.4-4 1.4z" fill="${G}"/>
+		<path d="M24 10v4M17.5 12.5l2 3M30.5 12.5l-2 3" stroke="${G}" stroke-width="1.8" stroke-linecap="round"/>
+		<circle cx="24" cy="26.5" r="1.6" fill="${R}"/>`,
+	'golden-censer': `
+		<circle cx="24" cy="20" r="17" fill="${P}" fill-opacity=".16"/>
+		<path d="M24 26c-4-4 4-6 0-10s4-6 0-10" stroke="${SK}" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+		<path d="M18.5 25c-3-3 3-4.5 0-7.5M29.5 25c3-3-3-4.5 0-7.5" stroke="${SK}" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".75"/>
+		<path d="M13 28h22l-3 9H16z" fill="${G}"/>
+		<path d="M13 28h22" stroke="${GD}" stroke-width="2" stroke-linecap="round"/>
+		<path d="M20 37h8l1.5 5h-11z" fill="${GD}"/>
+		<circle cx="24" cy="32" r="1.8" fill="${R}"/>
+		<path d="M14 42.5h20" stroke="${PD}" stroke-width="2.4" stroke-linecap="round"/>`
 } as const;
 
 export type EmblemName = keyof typeof EMBLEM_ART;

@@ -769,6 +769,418 @@ export const FOR_PAGES: ForPage[] = [
 		closeBody: 'Send them a first book, or start a reading plan together this week.'
 	},
 	{
+		slug: 'prayer-groups',
+		title: 'Free classics for prayer groups and intercessors',
+		lead: 'Andrew Murray, E. M. Bounds, George Müller, Praying Hyde and Spurgeon on prayer: the great books on prayer and the stories of answered prayer, free on any phone, with plans and sermons to pray through together.',
+		seoTitle: 'Free Christian Books on Prayer for Prayer Groups',
+		seoDescription:
+			'Free classics on prayer by Andrew Murray, E. M. Bounds, George Müller and Spurgeon, with reading plans and sermons for prayer groups. No account needed.',
+		primary: { href: '#plans', label: 'Pray through a plan together' },
+		secondary: { href: '#series', label: 'Six weeks on prayer' },
+		pointsHeading: 'Why prayer groups use Ochorus',
+		points: [
+			{
+				icon: 'book',
+				title: 'The great books on prayer',
+				body: 'With Christ in the School of Prayer, Power Through Prayer, The Ministry of Intercession and A Short and Easy Method of Prayer, read by praying people for generations.',
+				link: { href: '#shelves', label: 'See the books' }
+			},
+			{
+				icon: 'sparkle',
+				title: 'Stories of answered prayer',
+				body: 'George Müller kept a record of answers to prayer for the orphans in his care. Praying Hyde, Men Who Moved Heaven and Women Who Moved Heaven tell more.',
+				link: { href: '#shelves', label: 'Read the stories' }
+			},
+			{
+				icon: 'calendar',
+				title: 'A school of prayer in 31 days',
+				body: 'Reading plans walk a group through Murray’s school of prayer and The Inner Chamber one short reading a day, so you come to the meeting already praying.',
+				link: { href: '#plans', label: 'See the plans' }
+			},
+			{
+				icon: 'mic',
+				title: 'Six weeks on prayer',
+				body: 'Six preachers on the life of prayer, one sermon a week, each with study questions and their answers.',
+				link: { href: '#series', label: 'See the six weeks' }
+			}
+		],
+		ideasHeading: 'Ways to use it in your prayer group',
+		ideas: [
+			{
+				title: 'Read, then pray',
+				body: 'Open the meeting with a short reading from the day’s plan, then pray out of it.'
+			},
+			{
+				title: 'A month in the school of prayer',
+				body: 'Take the 31-day School of Prayer plan together, a lesson a day, and meet weekly to share what you are learning.'
+			},
+			{
+				title: 'Stories to stir faith',
+				body: 'Read an answer to prayer from Müller or Praying Hyde aloud before you begin.'
+			},
+			{
+				title: 'Before a season of prayer',
+				body: 'Prepare a week of prayer or a revival meeting with Send the Fire, Finney and Bounds on praying for revival.'
+			}
+		],
+		shelves: [
+			{
+				title: 'The classics of prayer',
+				note: 'Books praying people have read for generations.',
+				picks: [
+					'school-of-prayer',
+					'power-through-prayer',
+					'necessity-of-prayer',
+					'essentials-of-prayer',
+					'purpose-in-prayer',
+					'possibilities-of-prayer',
+					'reality-of-prayer',
+					'prevailing-prayer'
+				]
+			},
+			{
+				title: 'Answered prayer',
+				note: 'True stories of men and women who prayed.',
+				picks: [
+					'answers-to-prayer',
+					'john-hyde-a-life',
+					'men-who-moved-heaven',
+					'women-who-moved-heaven-2',
+					'george-muller-of-bristol',
+					'prayer-and-praying-men',
+					'men-of-prayer-2'
+				]
+			},
+			{
+				title: 'The inner life of prayer',
+				note: 'Prayer as communion with God.',
+				picks: [
+					'ministry-of-intercession',
+					'a-short-and-easy-method-of-prayer',
+					'the-practice-of-the-presence-of-god',
+					'the-inner-chamber',
+					'waiting-on-god',
+					'lord-teach-us-to-pray-2',
+					'spurgeon-on-prayer'
+				]
+			}
+		],
+		plans: ['school-of-prayer-31-days', 'school-of-prayer', 'the-inner-chamber-month', 'praying-men', 'send-the-fire', 'waiting-on-god-trust'],
+		quote: 'e-m-bounds-49d3b925',
+		authors: [
+			'andrew-murray',
+			'e-m-bounds',
+			'george-muller',
+			'charles-h-spurgeon',
+			'jeanne-guyon',
+			'brother-lawrence',
+			'dwight-l-moody'
+		],
+		series: [PRAYER_SERIES],
+		invite: {
+			text: 'Our prayer group is reading the great books on prayer together on Ochorus: Murray, Bounds, Müller and Spurgeon, free on any phone with no sign-up.',
+			href: '/plans'
+		},
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Where should a prayer group begin?',
+				a: 'Many begin with Andrew Murray’s With Christ in the School of Prayer, as a 31-day reading plan, or with E. M. Bounds’ Power Through Prayer.'
+			},
+			{
+				q: 'Can we read the same thing on the same day?',
+				a: 'Yes. Start a reading plan together and share the link: everyone who opens it is on the same day’s reading. Nobody needs an account.'
+			}
+		],
+		closeHeading: 'Learn to pray with the great intercessors',
+		closeBody: 'Start a plan on prayer together, or read one answer to prayer before your next meeting.'
+	},
+	{
+		slug: 'womens-ministry',
+		title: 'Free Christian classics for women’s ministry',
+		lead: 'Amanda Smith, Hannah Whitall Smith, Catherine Booth, Amy Carmichael, Corrie ten Boom and Elisabeth Elliot: women who preached, wrote, prayed and gave their lives, with books, sermons and reading plans free on any phone.',
+		seoTitle: 'Free Christian Books for Women’s Ministry',
+		seoDescription:
+			'Free Christian classics, sermons and reading plans for women’s ministry and Bible studies, by women of faith from Catherine Booth to Elisabeth Elliot.',
+		primary: { href: '#plans', label: 'Choose a plan to read together' },
+		secondary: { href: '#series', label: 'Six weeks with women who preached' },
+		pointsHeading: 'Why women’s ministries use Ochorus',
+		points: [
+			{
+				icon: 'heart',
+				title: 'Women who lived it',
+				body: 'Autobiographies and lives of women who preached, nursed, rescued children and survived the camps: Amanda Smith, Mary Slessor, Pandita Ramabai and Corrie ten Boom.',
+				link: { href: '#shelves', label: 'See the books' }
+			},
+			{
+				icon: 'calendar',
+				title: 'Plans to read together',
+				body: 'Women of Faith walks through the lives of godly women one reading a day, and Daughters of the King gives teenage girls three months of daily devotions.',
+				link: { href: '#plans', label: 'See the plans' }
+			},
+			{
+				icon: 'mic',
+				title: 'Sermons by women',
+				body: 'Catherine Booth, Corrie ten Boom and Elisabeth Elliot on faith, forgiveness and a quiet heart, each with study questions to talk through.',
+				link: { href: '#series', label: 'See the six weeks' }
+			},
+			{
+				icon: 'book',
+				title: 'Free for every woman in the group',
+				body: 'Nobody needs to buy a copy or make an account. Share one link and everyone can start reading that day.',
+				link: { href: '/books', label: 'Browse the books' }
+			}
+		],
+		ideasHeading: 'Ways to use it in your women’s ministry',
+		ideas: [
+			{
+				title: 'A book for the term',
+				body: 'Read The Christian’s Secret of a Happy Life or Clothed with Strength and Dignity together, a chapter a week.'
+			},
+			{
+				title: 'A life a month',
+				body: 'Read the life of one woman of faith each month and talk about what her story asks of you.'
+			},
+			{
+				title: 'Mothers and daughters',
+				body: 'Read Daughters of the King alongside a daughter or a young woman you mentor, the same day’s reading for each of you.'
+			},
+			{
+				title: 'A study through a hard season',
+				body: 'Turn to The God of All Comfort or the sermons of Corrie ten Boom when the group is carrying grief.'
+			}
+		],
+		shelves: [
+			{
+				title: 'Women who wrote and preached',
+				note: 'In their own words.',
+				picks: [
+					'the-christians-secret-of-a-happy-life-4',
+					'amanda-smith-autobiography',
+					'godliness',
+					'a-brand-plucked-from-the-fire',
+					'religious-experience-and-journal',
+					'things-as-they-are',
+					'revelations-of-divine-love',
+					'the-god-of-all-comfort'
+				]
+			},
+			{
+				title: 'Lives of courage',
+				note: 'Women who gave everything, told for today.',
+				picks: [
+					'women-who-moved-heaven-2',
+					'corrie-ten-boom-a-life',
+					'amy-carmichael-a-life',
+					'mary-slessor-a-life',
+					'pandita-ramabai-a-life',
+					'elisabeth-elliot-a-life',
+					'susanna-wesley-clarke'
+				]
+			},
+			{
+				title: 'For daily devotion',
+				note: 'Short readings for every day.',
+				picks: [
+					'clothed-with-strength-and-dignity',
+					'daughters-of-the-king-1',
+					'daughters-of-the-king-2',
+					'daughters-of-the-king-3',
+					'a-short-and-easy-method-of-prayer',
+					'prayer-the-pulse-of-life',
+					'the-unselfishness-of-god'
+				]
+			}
+		],
+		plans: ['women-of-faith', 'daughters-of-the-king-three-months', 'waiting-on-god-trust', 'deeper-life-in-christ', 'school-of-prayer-31-days'],
+		quote: 'amanda-berry-smith-d3999568',
+		authors: [
+			'amanda-berry-smith',
+			'hannah-whitall-smith',
+			'catherine-booth',
+			'amy-carmichael',
+			'corrie-ten-boom',
+			'elisabeth-elliot',
+			'julia-foote',
+			'susanna-wesley'
+		],
+		series: [
+			{
+				title: 'Six weeks with women who preached',
+				note: 'Catherine Booth, Corrie ten Boom and Elisabeth Elliot: one sermon a week, read at home and talked through together.',
+				picks: [
+					'women-that-make-a-difference',
+					'i-keep-a-quiet-heart',
+					'a-true-and-a-false-faith',
+					'how-to-forgive',
+					'the-greatest-of-these-is-love',
+					'hearts-set-on-pilgrimage',
+					'christ-lives-in-me',
+					'how-to-find-rest'
+				]
+			}
+		],
+		invite: {
+			text: 'Our women’s group is reading the lives and writings of women of faith on Ochorus: free books, sermons and reading plans on any phone, with no sign-up.',
+			href: '/plans'
+		},
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Do the women in our group need an account?',
+				a: 'No. Anyone can read without signing up. A free account is optional: it keeps progress, notes and saved books in step across devices.'
+			},
+			{
+				q: 'Is there something for teenage girls?',
+				a: 'Yes. Daughters of the King is a three-month devotional for girls, and the lives of Amy Carmichael, Mary Slessor and Corrie ten Boom come in editions for teens and children.'
+			}
+		],
+		closeHeading: 'Read with the women who went before',
+		closeBody: 'Start a reading plan together, or choose one woman’s story to read this month.'
+	},
+	{
+		slug: 'mens-ministry',
+		title: 'Free Christian classics for men’s ministry',
+		lead: 'Hudson Taylor, George Müller, C. T. Studd, David Livingstone and the praying men of revival: lives that call men to faith, prayer and courage, with books and reading plans free on any phone.',
+		seoTitle: 'Free Christian Books for Men’s Ministry',
+		seoDescription:
+			'Free Christian classics, sermons and reading plans for men’s groups: lives of courage, books on prayer and holiness, and a three-month plan for young men.',
+		primary: { href: '#plans', label: 'Choose a plan to read together' },
+		secondary: { href: '#shelves', label: 'Books for men' },
+		pointsHeading: 'Why men’s groups use Ochorus',
+		points: [
+			{
+				icon: 'heart',
+				title: 'Lives that call men higher',
+				body: 'Studd gave away a fortune, Müller fed thousands of orphans by prayer, Livingstone crossed Africa and Watchman Nee died in prison. Their stories are told in full.',
+				link: { href: '#shelves', label: 'See the books' }
+			},
+			{
+				icon: 'calendar',
+				title: 'A plan for the group',
+				body: 'Praying Men, Everything for Christ and The Pursuit of Holiness give a group one short reading a day to talk about when you meet.',
+				link: { href: '#plans', label: 'See the plans' }
+			},
+			{
+				icon: 'users',
+				title: 'For fathers and sons',
+				body: 'Sons of the King gives young men three months of daily devotions, and many of the lives come in editions for teens.',
+				link: { href: '/teens', label: 'See the teen editions' }
+			},
+			{
+				icon: 'book',
+				title: 'Free, with nothing to sign up for',
+				body: 'Nobody needs to buy a copy or make an account. Share one link in the group chat and every man can start that night.',
+				link: { href: '/books', label: 'Browse the books' }
+			}
+		],
+		ideasHeading: 'Ways to use it in your men’s ministry',
+		ideas: [
+			{
+				title: 'A breakfast book',
+				body: 'Read a chapter of Rise Up, Men of God before each breakfast and talk it through over coffee.'
+			},
+			{
+				title: 'A life a month',
+				body: 'Read the life of one man of faith each month: what did he give up, and what did he gain?'
+			},
+			{
+				title: 'Fathers and sons',
+				body: 'Read Sons of the King alongside a son or a young man you mentor, the same reading each day.'
+			},
+			{
+				title: 'Six weeks on faith',
+				body: 'Read one sermon a week on faith that holds, and talk through its study questions.'
+			}
+		],
+		shelves: [
+			{
+				title: 'For men',
+				note: 'Books written to call men to Christ and to courage.',
+				picks: [
+					'rise-up-men-of-god-2',
+					'men-who-moved-heaven',
+					'men-of-prayer-2',
+					'men-who-tended-the-flock-2',
+					'prayer-and-praying-men',
+					'mortification-of-sin',
+					'orthodoxy'
+				]
+			},
+			{
+				title: 'Lives of courage',
+				note: 'Men who gave everything, in their own words and in ours.',
+				picks: [
+					'a-retrospect',
+					'the-life-of-trust',
+					'c-t-studd-a-life',
+					'david-livingstone-a-life',
+					'john-hyde-a-life',
+					'samuel-ajayi-crowther-a-life',
+					'watchman-nee-a-life',
+					'life-and-diary-of-david-brainerd'
+				]
+			},
+			{
+				title: 'For young men',
+				note: 'Daily devotions and true stories for the next generation.',
+				picks: [
+					'sons-of-the-king-1',
+					'sons-of-the-king-2',
+					'sons-of-the-king-3',
+					'c-t-studd-a-life-teens',
+					'david-livingstone-a-life-teens',
+					'mortification-of-sin-teens',
+					'c-s-lewis-a-life-teens'
+				]
+			}
+		],
+		plans: ['praying-men', 'sons-of-the-king-three-months', 'everything-for-christ', 'pursuit-of-holiness', 'faith-in-the-fire'],
+		quote: 'hudson-taylor-d8fd45a2',
+		authors: [
+			'hudson-taylor',
+			'george-muller',
+			'e-m-bounds',
+			'john-owen',
+			'david-brainerd',
+			'c-s-lewis',
+			'charles-h-spurgeon'
+		],
+		series: [
+			{
+				title: 'Six weeks on faith that holds',
+				note: 'Simpson, Spurgeon, Tozer and Maclaren on faith under pressure: one sermon a week, read at home and talked through together.',
+				picks: [
+					'jephthah-or-the-faith-that-leads-to-faithfulness',
+					'the-school-of-faith',
+					'the-power-of-feeble-faith',
+					'faith',
+					'the-hidden-life-of-faith',
+					'the-possibilities-of-faith',
+					'working-out-our-own-salvation',
+					'under-the-shepherds-care'
+				]
+			}
+		],
+		invite: {
+			text: 'Our men’s group is reading the great Christian classics together on Ochorus: free books and reading plans on any phone, with no sign-up.',
+			href: '/plans'
+		},
+		questions: [
+			{ q: 'Is Ochorus really free?', a: FREE_ANSWER },
+			{
+				q: 'Do the men in our group need an account?',
+				a: 'No. Anyone can read without signing up. A free account is optional: it keeps progress, notes and saved books in step across devices.'
+			},
+			{
+				q: 'Is there something for teenage boys?',
+				a: 'Yes. Sons of the King is a three-month devotional for young men, and the lives of C. T. Studd, David Livingstone and C. S. Lewis come in editions for teens.'
+			}
+		],
+		closeHeading: 'Read with the men who went before',
+		closeBody: 'Start a reading plan together, or choose one man’s story to read this month.'
+	},
+	{
 		slug: 'youth',
 		title: 'Free books your teenagers will actually read',
 		lead: 'The great classics retold for teens, true stories of people who met God before they were grown, and thirty-day devotionals written for young people. Free on their own phone, with no ads and no account needed.',
