@@ -1,10 +1,8 @@
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
 	import PrintFlyer, { type Flyer } from '$lib/components/PrintFlyer.svelte';
-	import QrCode from '$lib/components/QrCode.svelte';
-	import { downloadFile } from '$lib/dataExport';
+	import QrPanel from '$lib/components/QrPanel.svelte';
 	import type { ForChrome } from '$lib/forChrome';
-	import { qrSvg } from '$lib/qr';
 	import { messageShareLinks } from '$lib/share';
 
 	/**
@@ -36,7 +34,6 @@
 		/** Reports what the leader did, for the page's analytics. */
 		onaction?: (action: string) => void;
 	} = $props();
-	let showQr = $state(false);
 
 	const [whatsapp, email] = $derived(messageShareLinks(subject, message, words.email));
 	let text = $state<HTMLElement>();
@@ -82,11 +79,14 @@
 		<a class="btn btn-sm" href={email.href} onclick={() => onaction?.('invite-email')}
 			><Icon name="mail" size={15} /> {email.name}</a
 		>
-		<button type="button" class="btn btn-sm" aria-expanded={showQr} onclick={() => (showQr = !showQr)}>
-			<Icon name="qr" size={15} />
-			{showQr ? chrome.qr.hide : chrome.qr.show}
-		</button>
 		<PrintFlyer label={chrome.flyer.print} {flyer} onprint={() => onaction?.('invite-flyer')} />
+		<QrPanel
+			value={link}
+			label={flyer.title}
+			filename="ochorus-qr.svg"
+			words={chrome.qr}
+			ondownload={() => onaction?.('invite-qr-download')}
+		/>
 		<!-- The copy's outcome, announced apart from the button that caused it. -->
 		<span class="text-small text-muted" role="status"
 			>{#if copied === 'select'}{words.selected}{:else if copied === 'yes'}<span class="sr-only"
@@ -94,31 +94,9 @@
 				>{/if}</span
 		>
 	</div>
-	{#if showQr}
-		<div class="qr-box mt-4">
-			<QrCode value={link} label={flyer.qrLabel} class="w-40" />
-			<button
-				type="button"
-				class="btn btn-sm btn-ghost"
-				onclick={() => {
-					downloadFile('ochorus-qr.svg', 'image/svg+xml', qrSvg(link, flyer.title));
-					onaction?.('invite-qr-download');
-				}}
-			>
-				<Icon name="download" size={15} />
-				{chrome.qr.download}
-			</button>
-		</div>
-	{/if}
 </div>
 
 <style>
-	.qr-box {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: end;
-		gap: 0.75rem;
-	}
 	.message {
 		white-space: pre-line;
 		border-inline-start: 3px solid color-mix(in srgb, var(--group, var(--color-accent)) 60%, transparent);

@@ -6,7 +6,8 @@
 	import type { ForChrome } from '$lib/forChrome';
 	import type { ForSermon } from '$lib/forPages';
 	import { seriesDates, seriesICS } from '$lib/forSeries';
-	import { localizeHref } from '$lib/href';
+	import { hrefInLocale } from '$lib/editionHref';
+	import { IS_APP } from '$lib/platform';
 	import { nextMonday } from '$lib/planTogether';
 	import { readingTime } from '$lib/reading';
 	import { absUrl } from '$lib/seo';
@@ -18,7 +19,9 @@
 	 * stops on a line (across on a wide screen, down on a phone). Once the
 	 * leader picks the first meeting, each stop carries its date, and the whole
 	 * series goes onto their calendar as a file they can pass to the group
-	 * ($lib/forSeries).
+	 * ($lib/forSeries). Links are in the page's language, not the reader's UI
+	 * one: the series is that language's sermons. The phone apps' WebView
+	 * can't save a file, so there the dates show without the download.
 	 */
 	let {
 		series,
@@ -47,7 +50,7 @@
 		const ics = seriesICS(series, first, {
 			now: new Date(),
 			week: words.week,
-			sermonUrl: (slug) => absUrl(localizeHref(`/sermons/${slug}`))
+			sermonUrl: (slug) => absUrl(hrefInLocale(`/sermons/${slug}`, locale))
 		});
 		downloadFile('ochorus-series.ics', 'text/calendar;charset=utf-8', ics);
 		onaction?.('series-calendar');
@@ -64,7 +67,7 @@
 					<p class="text-eyebrow group-ink">
 						{words.week(i + 1)}{#if dates[i]}{' '}<span class="text-muted"><span aria-hidden="true">·</span> {fmt.format(dates[i])}</span>{/if}
 					</p>
-					<a class="mt-1 block font-semibold text-text hover:underline" href={localizeHref(`/sermons/${w.slug}`)}>{w.title}</a>
+					<a class="mt-1 block font-semibold text-text hover:underline" href={hrefInLocale(`/sermons/${w.slug}`, locale)}>{w.title}</a>
 					<p class="mt-1 text-small text-muted">
 						{w.author.name}{#if w.scripture_ref},{' '}{w.scripture_ref}{/if}
 					</p>
@@ -75,6 +78,7 @@
 			</li>
 		{/each}
 	</ol>
+	{#if !IS_APP}
 	<div class="cal mt-6 rounded-card border border-border bg-surface p-4">
 		<label class="block" for={id}>
 			<span class="text-eyebrow text-muted">{words.seriesCalendar.first}</span>
@@ -86,14 +90,19 @@
 		</button>
 		<p class="cal-note text-small text-muted">{words.seriesCalendar.note}</p>
 	</div>
+	{/if}
 </div>
 
 <style>
 	/* A line through numbered stops: across on a wide screen, down on a phone. */
+	/* One row from 1024px (a series is SERIES_WEEKS stops, so it never wraps
+	   — a wrapped row would leave its last line pointing at nothing), a
+	   column below. */
 	.track {
 		--dot: 2.25rem;
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+		grid-auto-flow: column;
+		grid-auto-columns: minmax(0, 1fr);
 		gap: 1.25rem 1rem;
 		margin-top: 1.25rem;
 	}
@@ -134,8 +143,9 @@
 	.cal-note {
 		flex: 1 1 18rem;
 	}
-	@media (max-width: 639.98px) {
+	@media (max-width: 1023.98px) {
 		.track {
+			grid-auto-flow: row;
 			grid-template-columns: minmax(0, 1fr);
 			gap: 0;
 		}

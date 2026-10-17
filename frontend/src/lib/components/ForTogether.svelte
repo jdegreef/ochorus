@@ -1,12 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import Icon from '$lib/components/Icon.svelte';
 	import PrintFlyer from '$lib/components/PrintFlyer.svelte';
-	import QrCode from '$lib/components/QrCode.svelte';
+	import QrPanel from '$lib/components/QrPanel.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
 	import { page } from '$app/state';
 	import { auth } from '$lib/auth.svelte';
-	import { downloadFile } from '$lib/dataExport';
 	import { hrefInLocale } from '$lib/editionHref';
 	import type { ForChrome } from '$lib/forChrome';
 	import type { ForLocale } from '$lib/forLinks';
@@ -15,7 +13,6 @@
 	import { loginHref } from '$lib/loginHref';
 	import { READING_DAYS, parseIsoDay, type ReadingDays } from '$lib/planSchedule';
 	import { groupDateFormat, nextMonday, togetherQuery } from '$lib/planTogether';
-	import { qrSvg } from '$lib/qr';
 	import { MIN_COUNTED, createGroup } from '$lib/readingGroups';
 	import { absUrl } from '$lib/seo';
 	import { localToday } from '$lib/streak';
@@ -50,7 +47,6 @@
 	let slug = $state('');
 	let start = $state('');
 	let rule = $state<ReadingDays>('daily');
-	let showQr = $state(false);
 	// Today is the reader's, not the build's: the prerendered page leaves the
 	// date empty and the browser fills in the coming Monday.
 	let todayIso = $state('');
@@ -88,12 +84,6 @@
 		} finally {
 			making = false;
 		}
-	}
-
-	function downloadQr() {
-		if (!plan || !link) return;
-		downloadFile(`${plan.slug}-qr.svg`, 'image/svg+xml', qrSvg(link, plan.title));
-		onaction?.('together-qr-download');
 	}
 </script>
 
@@ -134,10 +124,6 @@
 				<p class="link mt-1 text-small">{link}</p>
 				<div class="mt-3 flex flex-wrap gap-2">
 					<ShareButton url={link} title={message} label={w.share} showLabel onshare={() => onaction?.('together-share')} />
-					<button type="button" class="btn btn-sm" aria-expanded={showQr} onclick={() => (showQr = !showQr)}>
-						<Icon name="qr" size={15} />
-						{showQr ? words.qr.hide : words.qr.show}
-					</button>
 					<PrintFlyer
 						label={words.flyer.print}
 						onprint={() => onaction?.('together-flyer')}
@@ -151,16 +137,14 @@
 							qrLabel: words.qr.alt(plan.title)
 						}}
 					/>
+					<QrPanel
+						value={link}
+						label={plan.title}
+						filename="{plan.slug}-qr.svg"
+						words={words.qr}
+						ondownload={() => onaction?.('together-qr-download')}
+					/>
 				</div>
-				{#if showQr}
-					<div class="qr-box mt-4">
-						<QrCode value={link} label={words.qr.alt(plan.title)} class="w-40" />
-						<button type="button" class="btn btn-sm btn-ghost" onclick={downloadQr}>
-							<Icon name="download" size={15} />
-							{words.qr.download}
-						</button>
-					</div>
-				{/if}
 				<!-- Totals are opt-in twice: the leader turns them on here, and each
 				     reader chooses to be counted (PlanTogetherBanner). -->
 				{#if auth.enabled}
@@ -202,12 +186,6 @@
 	.link {
 		overflow-wrap: anywhere;
 		color: var(--color-text);
-	}
-	.qr-box {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: end;
-		gap: 0.75rem;
 	}
 	@media (max-width: 767.98px) {
 		.together,

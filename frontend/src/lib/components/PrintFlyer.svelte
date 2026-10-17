@@ -18,6 +18,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import QrCode from '$lib/components/QrCode.svelte';
 	import { portal } from '$lib/actions/portal';
+	import { IS_APP } from '$lib/platform';
 
 	/**
 	 * A bulletin insert, printed: the button prints a sheet holding two copies
@@ -26,6 +27,7 @@
 	 * thing out on a Sunday. Nothing is generated server-side: the notice is
 	 * drawn into the page only while printing, portalled to <body> so the print
 	 * rule can hide everything else (`html.print-flyer`), and taken away after.
+	 * The phone apps' WebView has no print(), so there the button isn't shown.
 	 */
 
 	let { label, flyer, onprint }: { label: string; flyer: Flyer; onprint?: () => void } = $props();
@@ -37,6 +39,9 @@
 	async function print() {
 		printing = true;
 		await tick();
+		// The code draws once its encoder has loaded (QrCode); let it land.
+		await import('$lib/qr');
+		await tick();
 		const html = document.documentElement;
 		html.classList.add('print-flyer');
 		const done = () => {
@@ -46,20 +51,18 @@
 		};
 		addEventListener('afterprint', done);
 		onprint?.();
+		// The flyer stays until the print is done with it: a phone's print sheet
+		// can take seconds to lay out the preview, so no timer takes it away.
 		window.print();
-		// Browsers whose print() returns only once the dialog closes have fired
-		// afterprint by now; a listener left behind is harmless.
-		if (!html.classList.contains('print-flyer')) return;
-		setTimeout(() => {
-			if (!matchMedia('print').matches) done();
-		}, 1000);
 	}
 </script>
 
-<button type="button" class="btn btn-sm" onclick={print}>
-	<Icon name="print" size={15} />
-	{label}
-</button>
+{#if !IS_APP}
+	<button type="button" class="btn btn-sm" onclick={print}>
+		<Icon name="print" size={15} />
+		{label}
+	</button>
+{/if}
 
 {#if printing}
 	<div class="for-flyer" use:portal aria-hidden="true">
@@ -84,9 +87,6 @@
 		display: none;
 	}
 	@media print {
-		@page {
-			margin: 0;
-		}
 		/* While a flyer prints, it is the only thing on the paper. */
 		:global(html.print-flyer body > *:not(.for-flyer)) {
 			display: none !important;
@@ -100,8 +100,11 @@
 		.half {
 			position: relative;
 			box-sizing: border-box;
-			height: 148mm; /* half an A5-folded A4; a Letter sheet leaves a margin */
-			padding: 16mm 18mm;
+			/* Two to a sheet inside the browser's default margins on A4 and on
+			   US Letter (the shorter): 2 × 125mm fits Letter's ~259mm. No @page
+			   rule — it would reach every other print on the site. */
+			height: 125mm;
+			padding: 10mm 12mm;
 			display: grid;
 			grid-template-columns: minmax(0, 1fr) 46mm;
 			gap: 10mm;
@@ -143,8 +146,8 @@
 		}
 		.brand {
 			position: absolute;
-			inset-inline-end: 18mm;
-			bottom: 10mm;
+			inset-inline-end: 12mm;
+			bottom: 8mm;
 			font-size: 11pt;
 			font-weight: 600;
 			letter-spacing: 0.06em;
