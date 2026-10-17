@@ -138,5 +138,36 @@
   "cta_path": "",
   "signoff": "Ekisa n’emirembe,",
   "signature": "Ttiimu ya Ochorus"
+ },
+ "digest": {
+  "subject": "Omwezi gwo ku Ochorus",
+  "preheader": "Ebipya mu tterekero ly’ebitabo, n’ebitabo bitono eby’okusoma oluvannyuma.",
+  "heading": "Omwezi gwo ku Ochorus",
+  "greeting": "Oli otya, {name},",
+  "paragraphs": [
+   "Bino bye bipya mu tterekero ly’ebitabo omwezi guno, n’ebitabo bitono ebisaana okusomebwa oluvannyuma."
+  ],
+  "cta_label": "Noonya mu tterekero",
+  "cta_path": "books",
+  "signoff": "Ekisa n’emirembe,",
+  "signature": "Ttiimu ya Ochorus",
+  "continue_heading": "Weeyongere okusoma",
+  "continue_label": "Ddamu okusoma ku ssuula {chapter}",
+  "new_heading": "Ebipya omwezi guno",
+  "quote_heading": "Ekigambo eky’okujjukira",
+  "plan_heading": "Enteekateeka ey’okutandika"
+ },
+ "new_in_language": {
+  "subject": "Ebipya mu {language} ku Ochorus",
+  "preheader": "Bifulumiziddwa kaakano mu lulimi lwo.",
+  "heading": "Ebipya mu {language}",
+  "greeting": "Oli otya, {name},",
+  "paragraphs": [
+   "Ebitabo bino eby’edda bifulumiziddwa kaakano mu {language} ku Ochorus. Buli kimu kisomebwa bwereere, leero."
+  ],
+  "cta_label": "Laba ebitabo byonna",
+  "cta_path": "books",
+  "signoff": "Ekisa n’emirembe,",
+  "signature": "Ttiimu ya Ochorus"
  }
 }

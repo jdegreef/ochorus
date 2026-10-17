@@ -229,7 +229,16 @@ def _audience_checks(broadcast) -> list[dict]:
     out = [_check("audience", OK, f"{total:,} readers match the audience.")]
     for lang, n in sorted(by_lang.items(), key=lambda kv: -kv[1]):
         got = resolve_broadcast_locale(broadcast, lang)
-        if got and got != lang:
+        if got is None and broadcast.strict_locale and sendable_locales(broadcast):
+            out.append(
+                _check(
+                    f"coverage:{lang}",
+                    WARNING,
+                    f"{n:,} reader{'s' if n != 1 else ''} get email in {_lang_name(lang)}, which "
+                    "this email isn't written in; they won't get it.",
+                )
+            )
+        elif got and got != lang:
             out.append(
                 _check(
                     f"coverage:{lang}",

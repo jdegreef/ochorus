@@ -24,6 +24,8 @@ import secrets
 from django.db import models
 from django.utils import timezone
 
+from .streams import STREAMS
+
 
 def _new_token() -> str:
     """An unguessable, URL-safe unsubscribe token stored per subscription.
@@ -209,6 +211,10 @@ class EmailSubscription(models.Model):
             self.save(update_fields=["unsubscribed_all", "updated_at"])
 
 
+#: The preference-center streams (emails/streams.py), as field choices.
+STREAM_CHOICES = [(s["key"], s["label"]) for s in STREAMS]
+
+
 class Broadcast(models.Model):
     """An admin-composed campaign, localized per language.
 
@@ -259,12 +265,32 @@ class Broadcast(models.Model):
     # {lang: {"state": requested|draft|approved, "issue", "url", "source_locale",
     # "source_digest", ...}}. Admin-only review state — never shown to readers.
     translations = models.JSONField(default=dict, blank=True)
+    # The preference-center stream whose consent this campaign obeys. A hand-made
+    # broadcast is an announcement; one the system builds (the monthly digest,
+    # "new in your language") carries its own stream, so a reader who silenced
+    # announcements still gets the digest they asked for, and the reverse.
+    stream = models.CharField(max_length=40, choices=STREAM_CHOICES, default="announcements")
+    # When set, a reader whose email language this campaign isn't written in is
+    # skipped rather than sent another language's version — what an email built
+    # from one language's library needs (there is no English fallback).
+    strict_locale = models.BooleanField(default=False)
+    # For a campaign the system built: which one, e.g. ``digest:2026-11`` or
+    # ``new_in_language:fr:2026-10-20``. Unique, so a build that runs twice makes
+    # one campaign. Blank for a broadcast an admin made.
+    auto_key = models.CharField(max_length=80, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ["-created_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["auto_key"],
+                condition=~models.Q(auto_key=""),
+                name="uniq_broadcast_auto_key",
+            ),
+        ]
 
     def __str__(self) -> str:  # pragma: no cover - repr only
         return f"broadcast<{self.name}>"
@@ -450,3 +476,40 @@ class EmailTemplate(models.Model):
 
     def __str__(self) -> str:  # pragma: no cover - repr only
         return f"template<{self.name}>"
+
+
+class AutoEmail(models.TextChoices):
+    """The campaigns the system builds on its own (emails/auto_emails.py)."""
+
+    DIGEST = "digest", "Monthly digest"
+    NEW_IN_LANGUAGE = "new_in_language", "New in your language"
+
+
+class AutoEmailConfig(models.Model):
+    """The admin's switch and settings for one system-built campaign.
+
+    Off until an admin turns it on. ``enabled_at`` is the baseline: "new in your
+    language" never announces a work published before it was switched on, so
+    turning it on doesn't mail the whole back catalogue."""
+
+    key = models.CharField(max_length=40, primary_key=True, choices=AutoEmail.choices)
+    enabled = models.BooleanField(default=False)
+    enabled_at = models.DateTimeField(null=True, blank=True)
+    # Built as a draft that waits for an admin (True), or scheduled at once.
+    require_approval = models.BooleanField(default=True)
+    # The digest's sections, {section: bool}; absent ⇒ on (auto_emails.SECTIONS).
+    sections = models.JSONField(default=dict, blank=True)
+    # "New in your language" only: per language, the publication time of the
+    # last work announced, {code: iso datetime} — the next email starts after it,
+    # so a batch longer than one email carries over instead of being dropped.
+    cursor = models.JSONField(default=dict, blank=True)
+    updated_by = models.CharField(max_length=254, blank=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self) -> str:  # pragma: no cover - repr only
+        return f"auto-email<{self.key}>"
+
+    @classmethod
+    def get(cls, key: str) -> AutoEmailConfig:
+        config, _ = cls.objects.get_or_create(key=key)
+        return config

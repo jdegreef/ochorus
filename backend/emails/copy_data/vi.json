@@ -138,5 +138,36 @@
   "cta_path": "",
   "signoff": "Ân điển và bình an,",
   "signature": "Đội ngũ Ochorus"
+ },
+ "digest": {
+  "subject": "Tháng của bạn trên Ochorus",
+  "preheader": "Những gì mới trong thư viện, và vài cuốn sách để đọc tiếp.",
+  "heading": "Tháng của bạn trên Ochorus",
+  "greeting": "Chào {name},",
+  "paragraphs": [
+   "Đây là những gì mới trong thư viện tháng này, cùng vài cuốn sách đáng để bắt đầu."
+  ],
+  "cta_label": "Khám phá thư viện",
+  "cta_path": "books",
+  "signoff": "Ân điển và bình an,",
+  "signature": "Đội ngũ Ochorus",
+  "continue_heading": "Đọc tiếp",
+  "continue_label": "Đọc tiếp từ chương {chapter}",
+  "new_heading": "Mới trong tháng này",
+  "quote_heading": "Một câu đáng ghi nhớ",
+  "plan_heading": "Một kế hoạch để bắt đầu"
+ },
+ "new_in_language": {
+  "subject": "Mới bằng {language} trên Ochorus",
+  "preheader": "Vừa được xuất bản bằng ngôn ngữ của bạn.",
+  "heading": "Mới bằng {language}",
+  "greeting": "Chào {name},",
+  "paragraphs": [
+   "Những tác phẩm kinh điển này vừa được xuất bản bằng {language} trên Ochorus. Tất cả đều miễn phí để đọc, ngay hôm nay."
+  ],
+  "cta_label": "Xem toàn bộ thư viện",
+  "cta_path": "books",
+  "signoff": "Ân điển và bình an,",
+  "signature": "Đội ngũ Ochorus"
  }
 }

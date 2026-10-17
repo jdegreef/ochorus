@@ -138,5 +138,36 @@
   "cta_path": "",
   "signoff": "은혜와 평강을 빌며,",
   "signature": "Ochorus 드림"
+ },
+ "digest": {
+  "subject": "Ochorus에서 보낸 이번 달",
+  "preheader": "도서관의 새 소식과 다음에 읽을 만한 책 몇 권.",
+  "heading": "Ochorus에서 보낸 이번 달",
+  "greeting": "{name}님, 안녕하세요.",
+  "paragraphs": [
+   "이번 달 도서관에 새로 들어온 책과 함께, 다음에 읽어 볼 만한 책 몇 권을 소개합니다."
+  ],
+  "cta_label": "도서관 둘러보기",
+  "cta_path": "books",
+  "signoff": "은혜와 평강을 빌며,",
+  "signature": "Ochorus 드림",
+  "continue_heading": "이어 읽기",
+  "continue_label": "{chapter}장부터 이어 읽기",
+  "new_heading": "이번 달 새로 나온 책",
+  "quote_heading": "간직할 만한 한 문장",
+  "plan_heading": "시작하기 좋은 읽기 계획"
+ },
+ "new_in_language": {
+  "subject": "Ochorus에 {language}로 새로 나온 책",
+  "preheader": "방금 당신의 언어로 출간되었습니다.",
+  "heading": "{language}로 새로 나온 책",
+  "greeting": "{name}님, 안녕하세요.",
+  "paragraphs": [
+   "이 고전들이 방금 Ochorus에 {language}로 출간되었습니다. 모두 오늘부터 무료로 읽을 수 있습니다."
+  ],
+  "cta_label": "도서관 전체 보기",
+  "cta_path": "books",
+  "signoff": "은혜와 평강을 빌며,",
+  "signature": "Ochorus 드림"
  }
 }

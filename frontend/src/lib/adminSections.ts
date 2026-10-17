@@ -44,6 +44,7 @@ export const ADMIN_SECTIONS: AdminSection[] = [
 	{ href: '/admin/engagement', label: 'Engagement', capability: 'reporting' },
 	{ href: '/admin/emails', label: 'Emails', superOnly: true, exact: true },
 	{ href: '/admin/emails/compose', label: 'Compose email', superOnly: true },
+	{ href: '/admin/emails/automations', label: 'Automated emails', superOnly: true },
 	{ href: '/admin/search', label: 'Search', capability: 'reporting' },
 	{ href: '/admin/users', label: 'Users', capability: 'users' },
 	// Managing access is undelegated — super admins only (auth.isAdmin is the

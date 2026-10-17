@@ -6,6 +6,9 @@ template escapes all of it, so there is still nothing to sanitize.
 
 * Layout blocks carry their own words: ``heading``, ``text`` (blank lines split
   paragraphs), ``button`` (label + a reader-site path), ``divider``, ``quote``.
+* ``continue_reading`` is the reader's OWN book in progress — their most recent
+  unfinished book, at the chapter they reached — so it differs per recipient and
+  is left out for a reader with nothing in progress.
 * Library blocks point at a work by slug — ``book``, ``sermon``, ``plan`` — and
   are resolved at render time to the edition in the email's language: its title,
   author, cover and link. Content is per-language rows with **no English
@@ -38,6 +41,7 @@ class BlockType(models.TextChoices):
     BOOK = "book", "Book"
     SERMON = "sermon", "Sermon"
     PLAN = "plan", "Reading plan"
+    CONTINUE = "continue_reading", "Continue reading"
 
 
 #: The fields each block type keeps (all strings); anything else is dropped.
@@ -50,6 +54,7 @@ FIELDS: dict[str, tuple[str, ...]] = {
     BlockType.BOOK: ("slug", "label"),
     BlockType.SERMON: ("slug", "label"),
     BlockType.PLAN: ("slug", "label"),
+    BlockType.CONTINUE: ("heading", "label"),
 }
 
 LIBRARY_TYPES = (BlockType.BOOK, BlockType.SERMON, BlockType.PLAN)
@@ -131,7 +136,7 @@ def as_blocks(content: dict) -> dict:
 
 
 #: The fields that carry an admin's own words (what a translation changes).
-WORD_FIELDS = ("text", "label", "attribution")
+WORD_FIELDS = ("text", "label", "attribution", "heading")
 
 
 def has_body(blocks: list[dict], reaches=None) -> bool:
@@ -139,6 +144,8 @@ def has_body(blocks: list[dict], reaches=None) -> bool:
     ``reaches(block)`` says whether a library block will actually render (has an
     edition in the email's language); by default any chosen work counts."""
     for b in blocks:
+        if b["type"] == BlockType.CONTINUE:
+            continue  # per reader, and absent for anyone with nothing in progress
         if b["type"] in LIBRARY_TYPES:
             if b.get("slug") and (reaches is None or reaches(b)):
                 return True
@@ -229,6 +236,57 @@ def _cards(kind: str, slugs, lang: str) -> dict[str, dict]:
     return cards
 
 
+def _latest_progress(profile_ids) -> dict:
+    """``{profile_id: progress}`` — each reader's most recent unfinished book."""
+    from reading.models import ReadingProgress, WorkKind
+
+    latest: dict = {}
+    rows = (
+        ReadingProgress.objects.filter(
+            profile_id__in=profile_ids, kind=WorkKind.BOOK, finished_at__isnull=True
+        )
+        .order_by("profile_id", "-updated_at")
+        .values("profile_id", "book_slug", "language", "chapter_order")
+    )
+    for row in rows:
+        latest.setdefault(row["profile_id"], row)
+    return latest
+
+
+def prefetch_progress(profile_ids, cards: dict) -> None:
+    """Look up a whole batch's books in progress in one query, into the send's
+    ``cards`` cache, so ``continue_reading`` costs no query per reader."""
+    latest = _latest_progress(profile_ids)
+    for pk in profile_ids:
+        cards[("progress", pk)] = latest.get(pk)
+
+
+def _continue_card(profile, cards: dict) -> dict | None:
+    """The reader's most recent unfinished book, as a card pointing at the
+    chapter they reached — in the edition they are reading, which may not be the
+    email's language. ``None`` when nothing is in progress (or the edition is no
+    longer published)."""
+    if profile is None or profile.pk is None:
+        return None
+    key = ("progress", profile.pk)
+    progress = cards[key] if key in cards else _latest_progress([profile.pk]).get(profile.pk)
+    if progress is None:
+        return None
+    lang, slug = progress["language"], progress["book_slug"]
+    key = (BlockType.BOOK, lang, slug)
+    if key not in cards:
+        cards[key] = _cards(BlockType.BOOK, {slug}, lang).get(slug)
+    card = cards[key]
+    if card is None:
+        return None
+    chapter = max(progress["chapter_order"] or 1, 1)
+    return {
+        **card,
+        "chapter": chapter,
+        "url": links.site_url(links.localized(f"books/{slug}/{chapter}/", lang)),
+    }
+
+
 def _button_path(path: str, lang: str) -> str:
     """An admin-written button path in ``lang``'s pages, so a layout copied from
     English into Spanish doesn't send Spanish readers to English pages. A path
@@ -248,6 +306,7 @@ def resolve(
     name: str,
     cards=None,
     localize_buttons: bool = True,
+    profile=None,
 ) -> list[dict]:
     """Render-ready blocks for one email in ``lang``: ``{name}`` filled in,
     button paths made absolute, library blocks looked up in ``lang`` — and those
@@ -257,6 +316,9 @@ def resolve(
     The fixed-copy emails pass False: their paths are built by code that already
     chose the right edition (a series nudge may point an English series at a
     reader whose email is Spanish), and English pages are unprefixed.
+
+    ``profile`` is the recipient, for the blocks that differ per reader
+    (``continue_reading``); without one those blocks are left out.
 
     ``cards`` is an optional cache owned by the caller, ``{(kind, lang, slug):
     card or None}``: a send renders the same blocks for thousands of readers, so
@@ -279,6 +341,12 @@ def resolve(
             if card is None:
                 continue
             out.append({"type": kind, "label": b.get("label", ""), **card})
+        elif kind == BlockType.CONTINUE:
+            card = _continue_card(profile, cards)
+            if card is not None:
+                # ``{chapter}`` in the label becomes the chapter they reached.
+                label = b.get("label", "").replace("{chapter}", str(card["chapter"]))
+                out.append({"type": kind, "heading": b.get("heading", ""), "label": label, **card})
         elif kind == BlockType.BUTTON:
             if b.get("label"):
                 path = b.get("path", "")

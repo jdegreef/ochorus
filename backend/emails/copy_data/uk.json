@@ -138,5 +138,36 @@
   "cta_path": "",
   "signoff": "Благодать і мир вам,",
   "signature": "Команда Ochorus"
+ },
+ "digest": {
+  "subject": "Ваш місяць на Ochorus",
+  "preheader": "Новинки бібліотеки та кілька книжок, які варто прочитати далі.",
+  "heading": "Ваш місяць на Ochorus",
+  "greeting": "Вітаємо, {name}!",
+  "paragraphs": [
+   "Ось що нового з’явилося в бібліотеці цього місяця, а також кілька книжок, які варто почати."
+  ],
+  "cta_label": "Переглянути бібліотеку",
+  "cta_path": "books",
+  "signoff": "Благодать і мир вам,",
+  "signature": "Команда Ochorus",
+  "continue_heading": "Продовжити читання",
+  "continue_label": "Продовжити з розділу {chapter}",
+  "new_heading": "Нове цього місяця",
+  "quote_heading": "Слова, які варто зберегти",
+  "plan_heading": "План для початку"
+ },
+ "new_in_language": {
+  "subject": "Нове мовою «{language}» на Ochorus",
+  "preheader": "Щойно опубліковано вашою мовою.",
+  "heading": "Нове мовою «{language}»",
+  "greeting": "Вітаємо, {name}!",
+  "paragraphs": [
+   "Ці класичні твори щойно опубліковано мовою «{language}» на Ochorus. Кожен можна прочитати безкоштовно вже сьогодні."
+  ],
+  "cta_label": "Уся бібліотека",
+  "cta_path": "books",
+  "signoff": "Благодать і мир вам,",
+  "signature": "Команда Ochorus"
  }
 }

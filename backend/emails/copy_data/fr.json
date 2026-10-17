@@ -138,5 +138,36 @@
   "cta_path": "",
   "signoff": "Grâce et paix,",
   "signature": "L’équipe Ochorus"
+ },
+ "digest": {
+  "subject": "Votre mois sur Ochorus",
+  "preheader": "Les nouveautés de la bibliothèque, et quelques lectures pour la suite.",
+  "heading": "Votre mois sur Ochorus",
+  "greeting": "Bonjour {name},",
+  "paragraphs": [
+   "Voici les nouveautés de la bibliothèque ce mois-ci, avec quelques lectures qui valent la peine d’être commencées."
+  ],
+  "cta_label": "Explorer la bibliothèque",
+  "cta_path": "books",
+  "signoff": "Grâce et paix,",
+  "signature": "L’équipe Ochorus",
+  "continue_heading": "Continuer la lecture",
+  "continue_label": "Reprendre au chapitre {chapter}",
+  "new_heading": "Nouveau ce mois-ci",
+  "quote_heading": "Une phrase à garder",
+  "plan_heading": "Un plan pour commencer"
+ },
+ "new_in_language": {
+  "subject": "Nouveau en {language} sur Ochorus",
+  "preheader": "Tout juste publié dans votre langue.",
+  "heading": "Nouveau en {language}",
+  "greeting": "Bonjour {name},",
+  "paragraphs": [
+   "Ces classiques viennent d’être publiés en {language} sur Ochorus. Tous se lisent gratuitement, dès aujourd’hui."
+  ],
+  "cta_label": "Voir toute la bibliothèque",
+  "cta_path": "books",
+  "signoff": "Grâce et paix,",
+  "signature": "L’équipe Ochorus"
  }
 }

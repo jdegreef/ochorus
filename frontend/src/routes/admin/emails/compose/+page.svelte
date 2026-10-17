@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { untrack } from 'svelte';
+	import { page } from '$app/state';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import EmailBlocksEditor from '$lib/components/EmailBlocksEditor.svelte';
@@ -46,6 +48,7 @@
 		subject: Record<string, string>;
 		content: Record<string, BroadcastBlock>;
 		scheduled_at: string | null;
+		auto_key: string;
 		// Server-computed, read-only here: the pre-send checklist and send progress.
 		checks: BroadcastCheck[];
 		progress: AdminBroadcast['progress'];
@@ -88,6 +91,7 @@
 			subject: { ...b.subject },
 			content: structuredClone(b.content ?? {}),
 			scheduled_at: b.scheduled_at,
+			auto_key: b.auto_key,
 			checks: b.checks ?? [],
 			progress: b.progress,
 			status_reason: b.status_reason,
@@ -258,9 +262,46 @@
 		return () => clearInterval(timer);
 	});
 
+	// `?id=` opens that broadcast straight away — how the Automated emails page
+	// links to a campaign it built.
+	let openedFromLink = false;
+	$effect(() => {
+		const id = Number(page.url.searchParams.get('id'));
+		if (!id || openedFromLink || !list.data) return;
+		openedFromLink = true;
+		untrack(() => openEditor(id));
+	});
+
+	/** Approve a campaign the system built: schedule it for the time it was
+	 *  built for (or now, if that has passed). */
+	async function approveBuilt() {
+		if (!draft) return;
+		const meant = draft.scheduled_at ? new Date(draft.scheduled_at) : new Date();
+		const at = meant.getTime() > Date.now() ? meant : new Date(Date.now() + 60_000);
+		if (!confirm(`Approve and send it ${at.toLocaleString()}?`)) return;
+		busy = true;
+		error = '';
+		notice = '';
+		try {
+			if (!readOnly) await persist();
+			draft = toDraft(await broadcastAction(draft.id, 'schedule', { scheduled_at: at.toISOString() }));
+			notice = 'Approved. It goes out at the scheduled time.';
+			await list.load();
+		} catch (e) {
+			const body = e instanceof ApiError ? (e.body as { checks?: BroadcastCheck[] }) : undefined;
+			if (body?.checks && draft) draft.checks = body.checks;
+			error = apiErrorDetail(e);
+		} finally {
+			busy = false;
+		}
+	}
+
 	async function removeBroadcast() {
 		if (!draft) return;
-		if (!confirm('Delete this draft? This cannot be undone.')) return;
+		const prompt = draft.auto_key
+			? 'Skip this one? It is kept as canceled, so it isn’t built again.'
+			: 'Delete this draft? This cannot be undone.';
+		if (!confirm(prompt)) return;
 		busy = true;
 		try {
 			await deleteBroadcast(draft.id);
@@ -431,6 +472,17 @@
 					? 'Sending has started, so the email and its audience are locked.'
 					: 'This broadcast has been sent and is read-only.'}
 			</p>
+		{:else if draft.auto_key && draft.status === 'draft'}
+			<div class="mb-4 flex flex-wrap items-center justify-between gap-2 rounded-md bg-warning/10 p-3 text-small">
+				<span class="text-warning">
+					Built automatically{draft.scheduled_at ? ` for ${new Date(draft.scheduled_at).toLocaleString()}` : ''}. Read it, edit
+					anything you like, then approve it — nothing is sent until you do.
+					{#if draft.status_reason && !draft.status_reason.startsWith('Built automatically')}
+						<span class="mt-1 block font-semibold">{draft.status_reason}</span>
+					{/if}
+				</span>
+				<button class="btn btn-primary btn-sm" onclick={approveBuilt} disabled={busy}>Approve</button>
+			</div>
 		{:else if draft.status_reason}
 			<p class="mb-4 rounded-md bg-warning/10 p-2 text-small text-warning">{draft.status_reason}</p>
 		{/if}
