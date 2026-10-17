@@ -533,3 +533,56 @@ class AutoEmailConfig(models.Model):
     def get(cls, key: str) -> AutoEmailConfig:
         config, _ = cls.objects.get_or_create(key=key)
         return config
+
+
+class LifecycleCopy(models.Model):
+    """An admin's edit of one automated email (emails/lifecycle_copy.py).
+
+    The words every automated email starts with live in code (``emails/copy.py``
+    — the original, and the fallback). An admin who edits one gets a row here:
+
+    * ``subject`` / ``content`` — the working copy, per language, in the block
+      shape the designer edits (``{lang: {"preheader", "blocks"}}``). Saving
+      changes nothing a reader sees.
+    * ``live`` — what is sent, per language: the working copy as it was last
+      published. A language with no ``live`` entry still sends the code's words.
+    * ``translations`` — AI drafts of the working copy, exactly as on a broadcast
+      (emails/translation_jobs.py): a draft can't be published until approved.
+
+    Each publish is kept as a :class:`LifecycleCopyVersion`.
+    """
+
+    step = models.CharField(max_length=60, primary_key=True)
+    subject = models.JSONField(default=dict, blank=True)
+    content = models.JSONField(default=dict, blank=True)
+    live = models.JSONField(default=dict, blank=True)
+    translations = models.JSONField(default=dict, blank=True)
+    updated_by = models.CharField(max_length=254, blank=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    #: An automated email is never "mid-send": it can always be edited.
+    is_locked = False
+
+    def __str__(self) -> str:  # pragma: no cover - repr only
+        return f"lifecycle-copy<{self.step}>"
+
+    @property
+    def job_ref(self) -> str:
+        """How a translation job names it (emails/translation_jobs.py)."""
+        return f"lifecycle-{self.step}"
+
+
+class LifecycleCopyVersion(models.Model):
+    """One publish of an automated email's words — the version history."""
+
+    copy = models.ForeignKey(LifecycleCopy, on_delete=models.CASCADE, related_name="versions")
+    live = models.JSONField(default=dict)
+    languages = models.JSONField(default=list)
+    published_by = models.CharField(max_length=254, blank=True)
+    published_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-published_at", "-id"]
+
+    def __str__(self) -> str:  # pragma: no cover - repr only
+        return f"lifecycle-copy-version<{self.copy_id} {self.published_at:%Y-%m-%d}>"

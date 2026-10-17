@@ -67,11 +67,45 @@ def email_language(profile, subscription) -> str:
     return copy_mod.base_lang(override or getattr(profile, "locale", "") or "en")
 
 
+def _render_step(
+    step: str, profile, subscription, lang: str, *, mapping: dict | None = None, cta_path: str | None = None
+) -> RenderedEmail:
+    """Render an automated email: the admin's published edit in ``lang`` when
+    there is one (emails/lifecycle_copy.py), else the code's words. ``mapping``
+    fills the step's own placeholders ({next}, {plan}…); ``cta_path`` is where
+    a per-reader button goes."""
+    from . import lifecycle_copy
+
+    mapping = mapping or {}
+    edited = lifecycle_copy.live_email(step, lang)
+    if edited is None and lang not in copy_mod.LIFECYCLE[step]:
+        # A language with no words of its own gets the English — the edited
+        # English when there is one, as it would get the original.
+        edited = lifecycle_copy.live_email(step, copy_mod.DEFAULT_LOCALE)
+    if edited is not None:
+        blocks = [
+            {k: _fill(v, mapping) if k in blocks_mod.WORD_FIELDS else v for k, v in b.items()}
+            for b in edited["blocks"]
+        ]
+        return render_blocks(
+            subject=_fill(edited["subject"], mapping),
+            content={"preheader": _fill(edited["preheader"], mapping), "blocks": blocks},
+            profile=profile,
+            subscription=subscription,
+            lang=lang,
+            link=cta_path or "",
+            # Like the original: its fixed paths were written for every language.
+            localize_buttons=False,
+        )
+    text = {key: _fill(value, mapping) for key, value in copy_mod.step_copy(step, lang).items()}
+    if cta_path is not None:
+        text["cta_path"] = cta_path
+    return _render(text, profile, subscription, lang)
+
+
 def render_step(step: str, profile, subscription) -> RenderedEmail:
     """Render lifecycle ``step`` for ``profile`` in their language."""
-    lang = email_language(profile, subscription)
-    text = copy_mod.step_copy(step, lang)
-    return _render(text, profile, subscription, lang)
+    return _render_step(step, profile, subscription, email_language(profile, subscription))
 
 
 def render_welcome(profile, subscription) -> RenderedEmail:
@@ -102,12 +136,7 @@ def render_series_nudge(
     is resolved per reader by the caller)."""
     lang = email_language(profile, subscription)
     mapping = {"{finished}": finished_title, "{next}": next_title}
-    text = {
-        key: _fill(value, mapping)
-        for key, value in copy_mod.step_copy("finish_series", lang).items()
-    }
-    text["cta_path"] = cta_path
-    return _render(text, profile, subscription, lang)
+    return _render_step("finish_series", profile, subscription, lang, mapping=mapping, cta_path=cta_path)
 
 
 def render_plan_reminder(
@@ -131,20 +160,13 @@ def render_plan_reminder(
         "{total}": str(total),
         "{reading}": reading_title or plan_title,
     }
-    text = {key: _fill(value, mapping) for key, value in copy_mod.step_copy(step, lang).items()}
-    text["cta_path"] = cta_path
-    return _render(text, profile, subscription, lang)
+    return _render_step(step, profile, subscription, lang, mapping=mapping, cta_path=cta_path)
 
 
 def render_milestone(profile, subscription, *, milestone: int) -> RenderedEmail:
     """Render the reading-milestone card for ``profile``, filling in the count."""
     lang = email_language(profile, subscription)
-    mapping = {"{count}": str(milestone)}
-    text = {
-        key: _fill(value, mapping)
-        for key, value in copy_mod.step_copy("milestone", lang).items()
-    }
-    return _render(text, profile, subscription, lang)
+    return _render_step("milestone", profile, subscription, lang, mapping={"{count}": str(milestone)})
 
 
 def render_broadcast(
@@ -179,12 +201,14 @@ def render_blocks(
     cards=None,
     localize_buttons: bool = True,
     values: dict | None = None,
+    link: str | None = None,
 ) -> RenderedEmail:
     """Render one language's block content (emails/blocks.py) for ``profile``.
     Shared by every send and the admin's live preview, so the preview is the
     email. ``cards`` is the caller's library-card cache (``blocks.resolve``),
     which also holds the merge-tag lookups. ``values`` overrides the merge-tag
-    values — a preview "as a sample reader"."""
+    values — a preview "as a sample reader". ``link`` is where a button whose
+    path is ``{link}`` goes (an automated email's per-reader link)."""
     blocks = blocks_mod.blocks_for(content)
     preheader = content.get("preheader", "")
     if values is None:
@@ -206,6 +230,7 @@ def render_blocks(
             localize_buttons=localize_buttons,
             profile=profile,
             values=values,
+            link=link,
         ),
         **_base_context(subscription, lang),
     }

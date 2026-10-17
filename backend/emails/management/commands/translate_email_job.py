@@ -3,7 +3,7 @@
     manage.py translate_email_job issue.md --answer answer.json
 
 ``issue.md`` is the body of a ``[translation] email:broadcast-<id> -> <lang>``
-job filed from the admin email designer (or just its JSON block). The worker
+(or ``email:lifecycle-<step>``) job filed from the admin email designer (or just its JSON block). The worker
 translates the job's ``subject``, ``preheader`` and ``texts`` in-session, writes
 ``{"subject", "preheader", "texts": [...]}`` to a file and passes it as
 ``--answer``; the command checks it against the job and prints the reply. Post
