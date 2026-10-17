@@ -27,6 +27,7 @@ from django.db.models import F, Q, Value
 from django.db.models.functions import Coalesce
 from django.utils import timezone
 
+from . import blocks as blocks_mod
 from . import health, preflight
 from .audience import resolve
 from .models import (
@@ -244,6 +245,12 @@ def run_send(broadcast, *, deadline: float | None = None, rate: float | None = N
     pacer = _Pacer(settings.EMAIL_SEND_RATE if rate is None else rate)
     # Library cards per language, looked up once for the whole run, not per reader.
     cards: dict = {}
+    has_continue = any(
+        b["type"] == blocks_mod.BlockType.CONTINUE
+        for content in broadcast.content.values()
+        if isinstance(content, dict)
+        for b in blocks_mod.blocks_for(content)
+    )
     batches = 0
     try:
         while True:
@@ -283,6 +290,8 @@ def run_send(broadcast, *, deadline: float | None = None, rate: float | None = N
 
             tally = broadcast.progress
             subscriptions = _subscriptions_for(batch)
+            if has_continue:
+                blocks_mod.prefetch_progress([p.pk for p in batch], cards)
             for profile in batch:
                 if deadline is not None and time.monotonic() >= deadline:
                     break
@@ -330,7 +339,7 @@ def send_test(broadcast, profile) -> bool:
     to_email = verified_email(profile)
     if not to_email:
         return False
-    rendered = render_broadcast(broadcast, profile, subscription)
+    rendered = render_broadcast(broadcast, profile, subscription, any_locale=True)
     if rendered is None:
         return False
     message = deliver(

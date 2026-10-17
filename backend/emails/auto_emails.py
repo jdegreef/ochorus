@@ -15,7 +15,8 @@ unique, so a build that runs twice makes one).
   with nothing to say that month is left out.
 * **New in your language** (stream ``new_in_language``) — per language, once a
   work has been published there for :data:`NEW_BATCH_WAIT` (so a run of uploads
-  goes out as one email), at most one every :data:`NEW_MIN_GAP`. Only works
+  goes out as one email), at most one every :data:`NEW_MIN_GAP`, oldest work
+  first; a batch longer than one email carries over to the next. Only works
   published after it was switched on are announced, so turning it on doesn't
   mail the back catalogue.
 
@@ -96,41 +97,38 @@ def digest_key(send_at: datetime) -> str:
 # --- What --------------------------------------------------------------------
 
 
-def _new_works(code: str, since: datetime, until: datetime, limit: int) -> list[dict]:
-    """Books then sermons published in ``code`` in [since, until], newest first,
-    as library blocks."""
+_WORK_MODELS = ((BlockType.BOOK, "Book"), (BlockType.SERMON, "Sermon"))
+
+
+def _published_after(code: str, since: datetime, until: datetime, limit: int) -> list[tuple]:
+    """``(created_at, kind, slug)`` for the books and sermons published in
+    ``code`` after ``since`` and up to ``until``, oldest first, at most ``limit``.
+
+    A row's ``created_at`` stands for its publication: the seeds create a work
+    when it ships."""
     from django.apps import apps
 
-    blocks: list[dict] = []
-    for kind, model_name in ((BlockType.BOOK, "Book"), (BlockType.SERMON, "Sermon")):
+    rows: list[tuple] = []
+    for kind, model_name in _WORK_MODELS:
         model = apps.get_model("library", model_name)
-        slugs = (
-            model.objects.filter(
-                language=code, is_published=True, created_at__gte=since, created_at__lte=until
+        rows += [
+            (created, kind, slug)
+            for created, slug in model.objects.filter(
+                language=code, is_published=True, created_at__gt=since, created_at__lte=until
             )
-            .order_by("-created_at", "slug")
-            .values_list("slug", flat=True)[: limit - len(blocks)]
-        )
-        blocks.extend({"type": kind, "slug": slug, "label": ""} for slug in slugs)
-        if len(blocks) >= limit:
-            break
-    return blocks
+            .order_by("created_at", "slug")
+            .values_list("created_at", "slug")[:limit]
+        ]
+    return sorted(rows)[:limit]
 
 
-def _oldest_new_work(code: str, since: datetime) -> datetime | None:
-    """When the earliest work published in ``code`` after ``since`` appeared."""
-    from django.apps import apps
-
-    times = [
-        apps.get_model("library", name)
-        .objects.filter(language=code, is_published=True, created_at__gt=since)
-        .order_by("created_at")
-        .values_list("created_at", flat=True)
-        .first()
-        for name in ("Book", "Sermon")
-    ]
-    times = [t for t in times if t is not None]
-    return min(times) if times else None
+def _new_works(code: str, since: datetime, until: datetime, limit: int) -> list[dict]:
+    """Library blocks for the works published in ``code`` after ``since``, books
+    first, oldest first."""
+    rows = _published_after(code, since, until, limit)
+    order = {kind: i for i, (kind, _) in enumerate(_WORK_MODELS)}
+    rows.sort(key=lambda r: (order[r[1]], r[0], r[2]))
+    return [{"type": kind, "slug": slug, "label": ""} for _, kind, slug in rows]
 
 
 def _quote(code: str, turn: int) -> dict | None:
@@ -281,6 +279,19 @@ def _status_fields(config: AutoEmailConfig, send_at: datetime) -> dict:
     return {"status": status, "scheduled_at": send_at, "status_reason": reason}
 
 
+def _digest_since(send_at: datetime) -> datetime:
+    """Where this issue's "new this month" starts: when the last issue was built
+    (its own window ended there), else the previous issue's build time."""
+    last = (
+        Broadcast.objects.filter(auto_key__startswith=f"{AutoEmail.DIGEST}:")
+        .exclude(auto_key=digest_key(send_at))
+        .order_by("-created_at")
+        .values_list("created_at", flat=True)
+        .first()
+    )
+    return last or issue_date(*_month_before(send_at.year, send_at.month)) - DRAFT_LEAD
+
+
 def build_digest(now: datetime | None = None, *, force: bool = False) -> Broadcast | None:
     """Build the next digest if it is due and not built yet.
 
@@ -297,7 +308,7 @@ def build_digest(now: datetime | None = None, *, force: bool = False) -> Broadca
     if Broadcast.objects.filter(auto_key=key).exists():
         return None
 
-    since = issue_date(*_month_before(send_at.year, send_at.month))
+    since = _digest_since(send_at)
     turn = send_at.year * 12 + send_at.month
     subject, content = {}, {}
     for code in live_codes():
@@ -338,20 +349,26 @@ def build_new_in_language(now: datetime | None = None) -> list[Broadcast]:
     if not config.enabled or config.enabled_at is None:
         return []
     built = []
+    cursor = dict(config.cursor or {})
     for code in live_codes():
         if _copy(AutoEmail.NEW_IN_LANGUAGE, code) is None:
             continue
         last = _last_new_in_language(code)
         if last is not None and now - last.created_at < NEW_MIN_GAP:
             continue
-        since = max(config.enabled_at, last.created_at) if last else config.enabled_at
-        oldest = _oldest_new_work(code, since)
-        if oldest is None or now - oldest < NEW_BATCH_WAIT:
+        since = config.enabled_at
+        if code in cursor:
+            since = max(since, datetime.fromisoformat(cursor[code]))
+        rows = _published_after(code, since, now, NEW_IN_LANGUAGE_LIMIT)
+        if not rows or now - rows[0][0] < NEW_BATCH_WAIT:
             continue
-        works = _new_works(code, since + timedelta(microseconds=1), now, NEW_IN_LANGUAGE_LIMIT)
+        works = [{"type": kind, "slug": slug, "label": ""} for _, kind, slug in rows]
         email = new_in_language_content(code, works)
         if email is None:
             continue
+        # The next email starts after the last work this one lists — a batch
+        # too long for one email carries over to the next.
+        cursor[code] = rows[-1][0].isoformat()
         broadcast = _create(
             name=f"New in {language_entry(code).get('name') or code} · {now:%d %b %Y}",
             subject={code: email["subject"]},
@@ -364,6 +381,8 @@ def build_new_in_language(now: datetime | None = None) -> list[Broadcast]:
         )
         if broadcast is not None:
             built.append(broadcast)
+    if cursor != (config.cursor or {}):
+        AutoEmailConfig.objects.filter(pk=config.pk).update(cursor=cursor)
     return built
 
 

@@ -73,6 +73,12 @@ class AdminAutoEmailsView(AdminAudited, APIView):
                 {"detail": f"key must be one of {', '.join(AutoEmail.values)}"},
                 status=http_status.HTTP_400_BAD_REQUEST,
             )
+        for flag in ("enabled", "require_approval"):
+            if flag in request.data and not isinstance(request.data[flag], bool):
+                return Response(
+                    {"detail": f"{flag} must be true or false"},
+                    status=http_status.HTTP_400_BAD_REQUEST,
+                )
         config = AutoEmailConfig.get(key)
         if "enabled" in request.data:
             auto_emails.set_enabled(config, bool(request.data["enabled"]))
@@ -89,8 +95,9 @@ class AdminAutoEmailsView(AdminAudited, APIView):
 
 
 class AdminAutoEmailBuildView(AdminAudited, APIView):
-    """``POST {"key": "digest"}`` builds this month's digest now, as a draft that
-    waits for approval — to see it before its date, or to send one early."""
+    """``POST {"key": "digest"}`` builds the next digest now, as a draft that
+    waits for approval — to see it before its date, or to send one early. It
+    holds only what is published so far, and the cron won't rebuild it."""
 
     permission_classes = [IsAdminEmail]
     audit_action = AdminAction.Action.EMAIL_AUTO_BUILD
@@ -108,7 +115,7 @@ class AdminAutoEmailBuildView(AdminAudited, APIView):
         if broadcast is None:
             return Response(
                 {
-                    "detail": "Nothing was built: this month's digest already exists, or no "
+                    "detail": "Nothing was built: the next digest already exists, or no "
                     "language has anything new, a quote or a plan to show.",
                 },
                 status=http_status.HTTP_409_CONFLICT,

@@ -147,11 +147,16 @@ def render_milestone(profile, subscription, *, milestone: int) -> RenderedEmail:
     return _render(text, profile, subscription, lang)
 
 
-def render_broadcast(broadcast, profile, subscription, *, cards=None) -> RenderedEmail | None:
+def render_broadcast(
+    broadcast, profile, subscription, *, cards=None, any_locale: bool = False
+) -> RenderedEmail | None:
     """Render ``broadcast`` for ``profile``, or ``None`` when the campaign has no
-    content in the reader's language (nor a usable fallback)."""
+    content in the reader's language (nor a usable fallback).
+
+    ``any_locale`` ignores ``strict_locale`` — an admin's test send of a
+    campaign written only in a language that isn't their own."""
     lang = email_language(profile, subscription)
-    resolved = resolve_broadcast_locale(broadcast, lang)
+    resolved = resolve_broadcast_locale(broadcast, lang, strict=broadcast.strict_locale and not any_locale)
     if resolved is None:
         return None
     return render_blocks(
@@ -206,12 +211,12 @@ def sendable_locales(broadcast) -> list[str]:
     return sorted(set(broadcast.subject) & set(broadcast.content))
 
 
-def resolve_broadcast_locale(broadcast, lang: str) -> str | None:
+def resolve_broadcast_locale(broadcast, lang: str, *, strict: bool | None = None) -> str | None:
     """The locale to actually render: the reader's language, else English, else
     the first locale the broadcast can be sent in — or, for a ``strict_locale``
-    campaign, the reader's language or nothing."""
+    campaign (``strict`` overrides it), the reader's language or nothing."""
     locales = sendable_locales(broadcast)
-    if broadcast.strict_locale:
+    if broadcast.strict_locale if strict is None else strict:
         return lang if lang in locales else None
     for candidate in (lang, "en"):
         if candidate in locales:

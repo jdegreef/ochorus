@@ -152,7 +152,11 @@
 									</label>
 								{/each}
 							</fieldset>
-							<button class="btn btn-ghost btn-sm" onclick={buildNow} disabled={busy}>Build this month’s draft now</button>
+							<button class="btn btn-ghost btn-sm" onclick={buildNow} disabled={busy}>Build the next issue now</button>
+							<p class="mt-1 text-micro text-muted">
+								For a look before its date, or to send early. It holds only what is published so far, and it
+								won’t be rebuilt later.
+							</p>
 						{/if}
 					</section>
 				{/each}

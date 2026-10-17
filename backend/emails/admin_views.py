@@ -285,6 +285,11 @@ class AdminBroadcastDetailView(AdminAudited, APIView):
                 {"detail": "a broadcast that has started sending can't be deleted"},
                 status=http_status.HTTP_409_CONFLICT,
             )
+        if broadcast.auto_key:
+            # A campaign the system built keeps its row as a canceled tombstone:
+            # its auto_key is what stops the next cron run building it again.
+            broadcasts_mod.transition(broadcast, Broadcast.CANCELABLE, BroadcastStatus.CANCELED)
+            return Response(_serialize_broadcast(broadcast, detail=True))
         broadcast.delete()
         return Response(status=http_status.HTTP_204_NO_CONTENT)
 

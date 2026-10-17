@@ -298,7 +298,10 @@
 
 	async function removeBroadcast() {
 		if (!draft) return;
-		if (!confirm('Delete this draft? This cannot be undone.')) return;
+		const prompt = draft.auto_key
+			? 'Skip this one? It is kept as canceled, so it isn’t built again.'
+			: 'Delete this draft? This cannot be undone.';
+		if (!confirm(prompt)) return;
 		busy = true;
 		try {
 			await deleteBroadcast(draft.id);
@@ -474,6 +477,9 @@
 				<span class="text-warning">
 					Built automatically{draft.scheduled_at ? ` for ${new Date(draft.scheduled_at).toLocaleString()}` : ''}. Read it, edit
 					anything you like, then approve it — nothing is sent until you do.
+					{#if draft.status_reason && !draft.status_reason.startsWith('Built automatically')}
+						<span class="mt-1 block font-semibold">{draft.status_reason}</span>
+					{/if}
 				</span>
 				<button class="btn btn-primary btn-sm" onclick={approveBuilt} disabled={busy}>Approve</button>
 			</div>

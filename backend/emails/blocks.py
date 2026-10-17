@@ -236,21 +236,40 @@ def _cards(kind: str, slugs, lang: str) -> dict[str, dict]:
     return cards
 
 
+def _latest_progress(profile_ids) -> dict:
+    """``{profile_id: progress}`` — each reader's most recent unfinished book."""
+    from reading.models import ReadingProgress, WorkKind
+
+    latest: dict = {}
+    rows = (
+        ReadingProgress.objects.filter(
+            profile_id__in=profile_ids, kind=WorkKind.BOOK, finished_at__isnull=True
+        )
+        .order_by("profile_id", "-updated_at")
+        .values("profile_id", "book_slug", "language", "chapter_order")
+    )
+    for row in rows:
+        latest.setdefault(row["profile_id"], row)
+    return latest
+
+
+def prefetch_progress(profile_ids, cards: dict) -> None:
+    """Look up a whole batch's books in progress in one query, into the send's
+    ``cards`` cache, so ``continue_reading`` costs no query per reader."""
+    latest = _latest_progress(profile_ids)
+    for pk in profile_ids:
+        cards[("progress", pk)] = latest.get(pk)
+
+
 def _continue_card(profile, cards: dict) -> dict | None:
     """The reader's most recent unfinished book, as a card pointing at the
     chapter they reached — in the edition they are reading, which may not be the
     email's language. ``None`` when nothing is in progress (or the edition is no
     longer published)."""
-    from reading.models import ReadingProgress, WorkKind
-
     if profile is None or profile.pk is None:
         return None
-    progress = (
-        ReadingProgress.objects.filter(profile=profile, kind=WorkKind.BOOK, finished_at__isnull=True)
-        .order_by("-updated_at")
-        .values("book_slug", "language", "chapter_order")
-        .first()
-    )
+    key = ("progress", profile.pk)
+    progress = cards[key] if key in cards else _latest_progress([profile.pk]).get(profile.pk)
     if progress is None:
         return None
     lang, slug = progress["language"], progress["book_slug"]

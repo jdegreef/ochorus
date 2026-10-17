@@ -24,6 +24,8 @@ import secrets
 from django.db import models
 from django.utils import timezone
 
+from .streams import STREAMS
+
 
 def _new_token() -> str:
     """An unguessable, URL-safe unsubscribe token stored per subscription.
@@ -209,6 +211,10 @@ class EmailSubscription(models.Model):
             self.save(update_fields=["unsubscribed_all", "updated_at"])
 
 
+#: The preference-center streams (emails/streams.py), as field choices.
+STREAM_CHOICES = [(s["key"], s["label"]) for s in STREAMS]
+
+
 class Broadcast(models.Model):
     """An admin-composed campaign, localized per language.
 
@@ -263,7 +269,7 @@ class Broadcast(models.Model):
     # broadcast is an announcement; one the system builds (the monthly digest,
     # "new in your language") carries its own stream, so a reader who silenced
     # announcements still gets the digest they asked for, and the reverse.
-    stream = models.CharField(max_length=40, default="announcements")
+    stream = models.CharField(max_length=40, choices=STREAM_CHOICES, default="announcements")
     # When set, a reader whose email language this campaign isn't written in is
     # skipped rather than sent another language's version — what an email built
     # from one language's library needs (there is no English fallback).
@@ -493,6 +499,10 @@ class AutoEmailConfig(models.Model):
     require_approval = models.BooleanField(default=True)
     # The digest's sections, {section: bool}; absent ⇒ on (auto_emails.SECTIONS).
     sections = models.JSONField(default=dict, blank=True)
+    # "New in your language" only: per language, the publication time of the
+    # last work announced, {code: iso datetime} — the next email starts after it,
+    # so a batch longer than one email carries over instead of being dropped.
+    cursor = models.JSONField(default=dict, blank=True)
     updated_by = models.CharField(max_length=254, blank=True)
     updated_at = models.DateTimeField(auto_now=True)
 

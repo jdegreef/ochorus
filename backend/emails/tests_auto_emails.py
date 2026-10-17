@@ -345,3 +345,93 @@ class SermonWorksTests(TestCase):
         Sermon.objects.create(author=author, slug="a-sermon", language="en", title="A sermon")
         works = auto_emails._new_works("en", now - timedelta(days=1), now + timedelta(days=1), 6)
         self.assertEqual([w["type"] for w in works], ["book", "sermon"])
+
+
+class ReviewFixTests(TestCase):
+    """The edges a review found: windows that must not leave gaps, a skipped
+    campaign that must stay skipped, and test sends of single-language mail."""
+
+    def setUp(self):
+        _live("en", "fr")
+        self.author = Author.objects.create(slug="spurgeon", name="C. H. Spurgeon")
+        self.now = datetime(2026, 10, 17, 12, tzinfo=UTC)
+
+    def test_a_long_batch_carries_over_instead_of_being_dropped(self):
+        _enable(AutoEmail.NEW_IN_LANGUAGE, approval=False, at=self.now - timedelta(days=30))
+        for i in range(auto_emails.NEW_IN_LANGUAGE_LIMIT + 2):
+            _book(f"book-{i:02d}", "fr", author=self.author, created=self.now - timedelta(days=10, minutes=-i))
+        first = auto_emails.build_new_in_language(self.now)[0]
+        listed = [x["slug"] for x in first.content["fr"]["blocks"] if x.get("slug")]
+        self.assertEqual(listed, [f"book-{i:02d}" for i in range(auto_emails.NEW_IN_LANGUAGE_LIMIT)])
+        Broadcast.objects.filter(pk=first.pk).update(created_at=self.now)
+        second = auto_emails.build_new_in_language(self.now + timedelta(days=8))[0]
+        listed = [x["slug"] for x in second.content["fr"]["blocks"] if x.get("slug")]
+        self.assertEqual(listed, ["book-08", "book-09"])
+
+    def test_the_digest_window_starts_where_the_last_one_was_built(self):
+        _enable(AutoEmail.DIGEST)
+        Plan.objects.create(slug="p", language="en", title="P")
+        oct_build = datetime(2026, 10, 2, 9, tzinfo=UTC)
+        Broadcast.objects.create(name="Oct", auto_key="digest:2026-10", status=BroadcastStatus.SENT)
+        Broadcast.objects.filter(auto_key="digest:2026-10").update(created_at=oct_build)
+        # Published after October's build but before October's send.
+        _book("in-the-gap", "en", author=self.author, created=oct_build + timedelta(days=1))
+        b = auto_emails.build_digest(NOV_ISSUE - timedelta(days=2))
+        self.assertIn("in-the-gap", [x.get("slug") for x in b.content["en"]["blocks"]])
+
+    @override_settings(DEBUG=True)
+    def test_deleting_a_built_campaign_cancels_it_so_it_is_not_rebuilt(self):
+        _enable(AutoEmail.DIGEST)
+        Plan.objects.create(slug="p", language="en", title="P")
+        b = auto_emails.build_digest(NOV_ISSUE - timedelta(days=2))
+        res = self.client.delete(f"/api/admin/broadcasts/{b.pk}/")
+        self.assertEqual(res.status_code, 200)
+        b.refresh_from_db()
+        self.assertEqual(b.status, BroadcastStatus.CANCELED)
+        self.assertIsNone(auto_emails.build_digest(NOV_ISSUE - timedelta(days=1)))
+
+    @override_settings(DEBUG=True)
+    def test_flags_must_be_booleans(self):
+        res = self.client.patch(
+            "/api/admin/emails/auto/",
+            data=json.dumps({"key": "digest", "enabled": "false"}),
+            content_type="application/json",
+        )
+        self.assertEqual(res.status_code, 400)
+        self.assertFalse(AutoEmailConfig.get("digest").enabled)
+
+    @SENDING
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_an_admin_can_test_a_campaign_in_another_language(self, send):
+        from .broadcasts import send_test
+
+        admin = _make_profile(email="admin@example.com", locale="en")
+        b = Broadcast.objects.create(
+            name="Nouveau",
+            subject={"fr": "Nouveau"},
+            content={"fr": {"blocks": [{"type": "text", "text": "Bonjour"}]}},
+            strict_locale=True,
+            stream="new_in_language",
+        )
+        self.assertTrue(send_test(b, admin))
+        self.assertIn("Bonjour", send.call_args.kwargs["html"])
+
+    @SENDING
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_a_batch_send_fills_each_readers_own_book(self, send):
+        _book("all-of-grace", "en", author=self.author)
+        _book("morning", "en", author=self.author)
+        a = _make_profile(email="a@example.com")
+        b = _make_profile(email="b@example.com")
+        ReadingProgress.objects.create(profile=a, kind=WorkKind.BOOK, book_slug="all-of-grace", language="en", chapter_order=2)
+        ReadingProgress.objects.create(profile=b, kind=WorkKind.BOOK, book_slug="morning", language="en", chapter_order=5)
+        campaign = Broadcast.objects.create(
+            name="D",
+            subject={"en": "D"},
+            content={"en": {"blocks": [{"type": "text", "text": "Hi"}, {"type": "continue_reading", "heading": "", "label": "ch {chapter}"}]}},
+            stream="digest",
+        )
+        send_broadcast(campaign)
+        html = {c.kwargs["to"]: c.kwargs["html"] for c in send.call_args_list}
+        self.assertIn("books/all-of-grace/2/", html["a@example.com"])
+        self.assertIn("books/morning/5/", html["b@example.com"])
