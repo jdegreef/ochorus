@@ -36,6 +36,9 @@ class Command(BaseCommand):
         call_command("send_plan_reminders")
         call_command("send_series_nudges")
         call_command("send_milestone_cards")
+        # Admin-built automations share the 20h gap too, so they come after the
+        # built-in emails have had their turn.
+        call_command("run_automations")
         # The digest and "new in your language" are built as broadcasts, so they
         # go first: one built without approval is then sent on this same pass.
         call_command("build_auto_emails")

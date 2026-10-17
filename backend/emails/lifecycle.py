@@ -163,7 +163,7 @@ UNGATED_STEPS = frozenset({"plan_reminder", "plan_paused"})
 def last_lifecycle_sent_at(profile):
     return (
         EmailMessage.objects.filter(
-            recipient=profile, kind=EmailKind.LIFECYCLE, status=SendStatus.SENT
+            recipient=profile, kind=EmailKind.LIFECYCLE, status=SendStatus.SENT, is_test=False
         )
         .exclude(lifecycle_step__in=UNGATED_STEPS)
         .order_by("-sent_at")

@@ -1996,6 +1996,124 @@ export const lifecycleEmailAction = (
 		body: JSON.stringify({ action, ...extra })
 	});
 
+// --- Automations (backend `emails/automations.py`) --------------------------
+
+export interface AutomationParam {
+	key: string;
+	label: string;
+	/** 'book' | 'author' | 'plan' (a library slug) or 'number'. */
+	kind: 'book' | 'author' | 'plan' | 'number';
+	required: boolean;
+	default: number | null;
+}
+
+export interface AutomationKind {
+	key: string;
+	label: string;
+	params: AutomationParam[];
+}
+
+export interface AutomationVocabulary {
+	triggers: AutomationKind[];
+	checks: AutomationKind[];
+	streams: { key: string; label: string }[];
+}
+
+/** A condition: one of the vocabulary's checks (or its opposite), with params. */
+export type AutomationCondition = { check: string; negate: boolean } & Record<string, string | number | boolean>;
+
+export type AutomationStep =
+	| { id: string; type: 'wait'; days: number; hours: number }
+	| ({ id: string; type: 'condition' } & AutomationCondition)
+	| { id: string; type: 'email'; email: number | null };
+
+export interface AutomationEmailRow {
+	id: number;
+	subject: Record<string, string>;
+	content: Record<string, BroadcastBlock>;
+	locales: string[];
+	/** Languages it can go out in (written, not an AI draft waiting). */
+	ready: string[];
+	translations: Record<string, EmailTranslation>;
+}
+
+export interface AutomationRow {
+	id: number;
+	name: string;
+	trigger: { type?: string } & Record<string, string | number>;
+	stream: string;
+	enabled: boolean;
+	enabled_at: string | null;
+	steps: number;
+	emails: number;
+	runs: Partial<Record<'active' | 'done' | 'exited', number>>;
+	stats: EmailMetricRow;
+}
+
+export interface AutomationDetail extends Omit<AutomationRow, 'steps'> {
+	steps: AutomationStep[];
+	exit: AutomationCondition[];
+	email_list: AutomationEmailRow[];
+	/** What stops it being switched on. */
+	problems: string[];
+	updated_by: string;
+	sent?: number;
+}
+
+export const listAutomations = () =>
+	apiFetch<{ automations: AutomationRow[]; vocabulary: AutomationVocabulary }>('/api/admin/automations/');
+
+export const createAutomation = (name: string) =>
+	apiFetch<AutomationDetail>('/api/admin/automations/', { method: 'POST', body: JSON.stringify({ name }) });
+
+export const getAutomation = (id: number) => apiFetch<AutomationDetail>(`/api/admin/automations/${id}/`);
+
+export const getAutomationVocabulary = () => apiFetch<AutomationVocabulary>('/api/admin/automations/vocabulary/');
+
+export const saveAutomation = (
+	id: number,
+	payload: Partial<Pick<AutomationDetail, 'name' | 'trigger' | 'steps' | 'exit' | 'stream'>> & {
+		/** Confirm that changing the steps ends the runs of readers part-way through. */
+		end_runs?: boolean;
+	}
+) =>
+	apiFetch<AutomationDetail>(`/api/admin/automations/${id}/`, { method: 'PATCH', body: JSON.stringify(payload) });
+
+export const deleteAutomation = (id: number) =>
+	apiFetch<null>(`/api/admin/automations/${id}/`, { method: 'DELETE' });
+
+export const automationAction = (id: number, action: 'enable' | 'disable' | 'test') =>
+	apiFetch<AutomationDetail & { sent_to?: string }>(`/api/admin/automations/${id}/action/`, {
+		method: 'POST',
+		body: JSON.stringify({ action })
+	});
+
+export const addAutomationEmail = (id: number, template?: string | number) =>
+	apiFetch<AutomationEmailRow>(`/api/admin/automations/${id}/emails/`, {
+		method: 'POST',
+		body: JSON.stringify({ template })
+	});
+
+export const saveAutomationEmail = (
+	id: number,
+	payload: { subject: Record<string, string>; content: Record<string, BroadcastBlock> }
+) =>
+	apiFetch<AutomationEmailRow>(`/api/admin/automation-emails/${id}/`, {
+		method: 'PATCH',
+		body: JSON.stringify(payload)
+	});
+
+export const automationEmailTranslation = (
+	id: number,
+	action: 'request' | 'fetch' | 'approve',
+	language: string,
+	source = 'en'
+) =>
+	apiFetch<AutomationEmailRow>(`/api/admin/automation-emails/${id}/translations/`, {
+		method: 'POST',
+		body: JSON.stringify({ action, language, source })
+	});
+
 export const getAutoEmails = () => apiFetch<AutoEmails>('/api/admin/emails/auto/');
 
 export const updateAutoEmail = (

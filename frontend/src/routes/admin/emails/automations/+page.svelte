@@ -1,10 +1,13 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { apiErrorDetail } from '$lib/api';
 	import {
 		getAutoEmails,
 		listLifecycleEmails,
+		listAutomations,
+		createAutomation,
 		updateAutoEmail,
 		buildDigestNow,
 		type AutoEmailConfig,
@@ -16,6 +19,23 @@
 
 	const auto = adminResource(getAutoEmails, "Couldn't load the automated emails.");
 	const lifecycle = adminResource(listLifecycleEmails, "Couldn't load the onboarding emails.");
+	const flows = adminResource(listAutomations, "Couldn't load your automations.");
+
+	async function newFlow() {
+		const name = prompt('Name the automation', 'Finished a Murray book → suggest Humility')?.trim();
+		if (!name) return;
+		busy = true;
+		try {
+			const created = await createAutomation(name);
+			await goto(`/admin/emails/flows/${created.id}`);
+		} catch (e) {
+			error = apiErrorDetail(e);
+		} finally {
+			busy = false;
+		}
+	}
+	const triggerLabel = (key: string | undefined) =>
+		flows.data?.vocabulary.triggers.find((t) => t.key === key)?.label ?? 'No trigger yet';
 
 	let busy = $state(false);
 	let error = $state('');
@@ -101,6 +121,54 @@
 	{#if notice}
 		<div class="mb-4 rounded-card border border-border bg-surface-2 p-3 text-small text-text" aria-live="polite">{notice}</div>
 	{/if}
+
+	<section class="mb-6 rounded-card border border-border bg-surface p-4" aria-labelledby="flows-title">
+		<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+			<div>
+				<h2 id="flows-title" class="text-h3">Your automations</h2>
+				<p class="text-small text-muted">“When a reader does this, wait, check that, send this” — built here, without a developer.</p>
+			</div>
+			<button class="btn btn-primary btn-sm" onclick={newFlow} disabled={busy}>New automation</button>
+		</div>
+		<AdminGate resource={flows} errorTitle="Couldn't load your automations">
+			{#snippet children(f)}
+				{#if f.automations.length === 0}
+					<p class="text-small text-muted">None yet.</p>
+				{:else}
+					<div class="overflow-x-auto">
+						<table class="w-full text-small">
+							<thead>
+								<tr class="border-b border-border text-left text-muted">
+									<th class="p-2 font-semibold">Automation</th>
+									<th class="p-2 font-semibold">Starts when</th>
+									<th class="p-2 text-right font-semibold">Emails</th>
+									<th class="p-2 text-right font-semibold">In progress</th>
+									<th class="p-2 text-right font-semibold">Sent</th>
+									<th class="p-2 text-right font-semibold">Click rate</th>
+									<th class="p-2 font-semibold">Status</th>
+									<th class="p-2"></th>
+								</tr>
+							</thead>
+							<tbody>
+								{#each f.automations as a (a.id)}
+									<tr class="border-b border-border/50">
+										<td class="p-2 font-medium text-text">{a.name}</td>
+										<td class="p-2 text-muted">{triggerLabel(a.trigger.type)}</td>
+										<td class="p-2 text-right tabular-nums">{a.emails}</td>
+										<td class="p-2 text-right tabular-nums">{a.runs.active ?? 0}</td>
+										<td class="p-2 text-right tabular-nums">{a.stats.sent}</td>
+										<td class="p-2 text-right tabular-nums">{a.stats.sent ? `${(a.stats.click_rate * 100).toFixed(1)}%` : '—'}</td>
+										<td class="p-2"><span class="rounded-full px-2 py-0.5 text-micro {a.enabled ? 'bg-accent-soft text-accent' : 'bg-surface-2 text-muted'}">{a.enabled ? 'On' : 'Off'}</span></td>
+										<td class="p-2 text-right"><a class="btn btn-ghost btn-sm" href="/admin/emails/flows/{a.id}">Open</a></td>
+									</tr>
+								{/each}
+							</tbody>
+						</table>
+					</div>
+				{/if}
+			{/snippet}
+		</AdminGate>
+	</section>
 
 	<section class="mb-6 rounded-card border border-border bg-surface p-4" aria-labelledby="words-title">
 		<h2 id="words-title" class="text-h3">Onboarding and reading emails</h2>
