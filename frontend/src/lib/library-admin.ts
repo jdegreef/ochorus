@@ -1561,12 +1561,12 @@ export type EmailBlock =
 /** A hero banner's background (backend `blocks.HERO_COLORS`). */
 export type HeroColor = 'navy' | 'cypress' | 'indigo' | 'plum' | 'oxblood' | 'ochre' | '';
 export const HERO_COLORS: Record<Exclude<HeroColor, ''>, string> = {
-	navy: '#1f3a6e',
-	cypress: '#2c594d',
-	indigo: '#3b438f',
-	plum: '#613f64',
-	oxblood: '#833731',
-	ochre: '#795725'
+	navy: '#1f3a6e', // hex-ok: an email's fixed colours (backend blocks.HERO_COLORS)
+	cypress: '#2c594d', // hex-ok: an email's fixed colours (backend blocks.HERO_COLORS)
+	indigo: '#3b438f', // hex-ok: an email's fixed colours (backend blocks.HERO_COLORS)
+	plum: '#613f64', // hex-ok: an email's fixed colours (backend blocks.HERO_COLORS)
+	oxblood: '#833731', // hex-ok: an email's fixed colours (backend blocks.HERO_COLORS)
+	ochre: '#795725' // hex-ok: an email's fixed colours (backend blocks.HERO_COLORS)
 };
 
 export type EmailBlockType = EmailBlock['type'];
