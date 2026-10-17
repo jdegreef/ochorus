@@ -30,7 +30,72 @@
     </td>
   </tr>
 </table>
-{% else %}{# book / sermon / plan / continue-reading card #}
+{% elif b.type == "image" %}
+<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:6px 0 18px 0;">
+  <tr>
+    <td align="center">
+      {% if b.url %}<a href="{{ b.url }}">{% endif %}<img src="{{ b.src }}" width="536" alt="{{ b.alt }}" style="display:block; width:100%; max-width:536px; height:auto; border:0; border-radius:6px;">{% if b.url %}</a>{% endif %}
+      {% if b.caption %}<p style="margin:8px 0 0 0; font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif; font-size:13px; color:#8a8175;">{{ b.caption }}</p>{% endif %}
+    </td>
+  </tr>
+</table>
+{% elif b.type == "hero" %}
+<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:0 0 22px 0; background:{{ b.bg }}; border-radius:10px;">
+  {% if b.src %}<tr><td style="padding:0;"><img src="{{ b.src }}" width="536" alt="" style="display:block; width:100%; max-width:536px; height:auto; border:0; border-radius:10px 10px 0 0;"></td></tr>{% endif %}
+  <tr>
+    <td style="padding:26px 28px;">
+      {% if b.eyebrow %}<p style="margin:0 0 8px 0; font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; font-weight:600; color:#d9e0ee;">{{ b.eyebrow }}</p>{% endif %}
+      {% if b.title %}<h1 style="margin:0 0 10px 0; font-size:28px; line-height:1.2; color:#ffffff;">{{ b.title }}</h1>{% endif %}
+      {% if b.text %}<p style="margin:0 0 14px 0; font-size:16px; line-height:1.6; color:#eef1f7; white-space:pre-line;">{{ b.text }}</p>{% endif %}
+      {% if b.url %}
+      <table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="border-radius:8px; background:#ffffff;">
+        <a href="{{ b.url }}" style="display:inline-block; padding:11px 22px; font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif; font-size:15px; font-weight:600; color:{{ b.bg }}; text-decoration:none; border-radius:8px;">{{ b.label }}</a>
+      </td></tr></table>
+      {% endif %}
+    </td>
+  </tr>
+</table>
+{% elif b.type == "book_row" %}
+<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:6px 0 20px 0;">
+  <tr>
+    {% for book in b.books %}
+    <td width="{{ b.width }}%" valign="top" align="center" style="padding:0 6px;">
+      <a href="{{ book.url }}">{% if book.cover_url %}<img src="{{ book.cover_url }}" width="140" alt="" style="display:block; width:100%; max-width:140px; height:auto; border:0; border-radius:4px;">{% endif %}</a>
+      <p style="margin:8px 0 2px 0; font-size:15px; line-height:1.3; font-weight:bold;"><a href="{{ book.url }}" style="color:#3a3226; text-decoration:none;">{{ book.title }}</a></p>
+      {% if book.author %}<p style="margin:0; font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif; font-size:12px; color:#8a8175;">{{ book.author }}</p>{% endif %}
+      {% if b.label %}<p style="margin:6px 0 0 0;"><a href="{{ book.url }}" style="font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif; font-size:13px; font-weight:600; color:#6b5b3e;">{{ b.label }}</a></p>{% endif %}
+    </td>
+    {% endfor %}
+  </tr>
+</table>
+{% elif b.type == "spacer" %}
+<div style="height:{{ b.height }}px; line-height:{{ b.height }}px; font-size:1px;">&nbsp;</div>
+{% elif b.type == "scripture" %}
+<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:6px 0 20px 0; background:#f7ebdc; border-radius:10px;">
+  <tr>
+    <td align="center" style="padding:22px 26px;">
+      <p style="margin:0; font-size:19px; line-height:1.5; font-style:italic; color:#3a3226;">{{ b.text }}</p>
+      {% if b.reference %}<p style="margin:10px 0 0 0; font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif; font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#795725;">{{ b.reference }}</p>{% endif %}
+    </td>
+  </tr>
+</table>
+{% elif b.type == "author" %}
+<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:6px 0 20px 0; border-top:1px solid #efe9dd; border-bottom:1px solid #efe9dd;">
+  <tr>
+    {% if b.cover_url %}
+    <td width="88" valign="top" style="{% if dir == 'rtl' %}padding:16px 0 16px 14px;{% else %}padding:16px 14px 16px 0;{% endif %}">
+      <a href="{{ b.url }}"><img src="{{ b.cover_url }}" width="76" height="76" alt="" style="display:block; width:76px; height:76px; object-fit:cover; border-radius:50%; border:0;"></a>
+    </td>
+    {% endif %}
+    <td valign="top" style="padding:16px 0;">
+      <p style="margin:0 0 2px 0; font-size:20px; line-height:1.3; font-weight:bold;"><a href="{{ b.url }}" style="color:#3a3226; text-decoration:none;">{{ b.title }}</a></p>
+      {% if b.author %}<p style="margin:0 0 6px 0; font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif; font-size:12px; color:#8a8175;">{{ b.author }}</p>{% endif %}
+      {% if b.description %}<p style="margin:0 0 8px 0; font-size:14px; line-height:1.5; color:#5c5347;">{{ b.description }}</p>{% endif %}
+      {% if b.label %}<a href="{{ b.url }}" style="font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif; font-size:14px; font-weight:600; color:#6b5b3e;">{{ b.label }}</a>{% endif %}
+    </td>
+  </tr>
+</table>
+{% else %}{# book / sermon / plan / article / topic / continue-reading card #}
 {% if b.heading %}<p style="margin:10px 0 6px 0; font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif; font-size:12px; letter-spacing:1px; text-transform:uppercase; font-weight:600; color:#6b5b3e;">{{ b.heading }}</p>{% endif %}
 <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:6px 0 20px 0; border:1px solid #efe9dd; border-radius:10px;">
   <tr>

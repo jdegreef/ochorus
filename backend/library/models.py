@@ -2312,6 +2312,7 @@ class AdminAction(models.Model):
         EMAIL_TRANSLATION_APPROVE = "email.translation_approve", "Email translation approved"
         EMAIL_AUTO_SETTINGS = "email.auto_settings", "Automatic email settings changed"
         EMAIL_AUTO_BUILD = "email.auto_build", "Automatic email built by hand"
+        EMAIL_IMAGE_UPLOAD = "email.image_upload", "Email image uploaded"
         FEEDBACK_TRIAGE = "feedback.triage", "Reader feedback triaged"
         SEARCH_DECIDE = "search.decide", "Unanswered search triaged"
         SEARCH_UNDO = "search.undo", "Search triage undone"

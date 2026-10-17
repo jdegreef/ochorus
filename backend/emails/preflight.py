@@ -231,10 +231,79 @@ def _block_checks(block: dict, key: str, name: str, code: str, library) -> list[
                 )
             ]
         return []
-    if kind not in blocks_mod.LIBRARY_TYPES:
+    if kind == blocks_mod.BlockType.IMAGE:
+        return _image_checks(block, key, name)
+    if kind == blocks_mod.BlockType.HERO:
+        return _hero_checks(block, key, name)
+    if kind == blocks_mod.BlockType.SCRIPTURE and not block.get("text"):
+        return [_check(f"scripture:{key}", WARNING, f"{name}: a Scripture block has no verse, so it won't show.")]
+    if kind == blocks_mod.BlockType.BOOK_ROW:
+        slugs = blocks_mod.row_slugs(block)
+        if not slugs:
+            return [_check(f"library:{key}", ERROR, f"{name}: a book row has no books chosen.")]
+        out = []
+        for i, slug in enumerate(slugs):
+            out += _slug_check(blocks_mod.BlockType.BOOK, slug, f"{key}:{i}", name, code, library)
+        return out
+    if kind not in blocks_mod.SLUG_TYPES:
         return []
+    return _slug_check(kind, block.get("slug", ""), key, name, code, library)
+
+
+def _image_problem(url: str) -> str | None:
+    """Why an image address won't show in an email, or ``None``."""
+    if not url:
+        return "has no picture"
+    if not blocks_mod.image_url(url):
+        return "needs an https:// address or a path on the site (like /covers/humility-2.png)"
+    return None
+
+
+def _image_checks(block: dict, key: str, name: str) -> list[dict]:
+    bad = _image_problem(block.get("url", ""))
+    if bad:
+        return [_check(f"image:{key}", ERROR, f"{name}: an image block {bad}.")]
+    out = []
+    link = cta_path_problem(block.get("path", ""))
+    if link:
+        out.append(_check(f"image:{key}", ERROR, f"{name}: an image's link {link}."))
+    if not block.get("alt"):
+        out.append(
+            _check(
+                f"image-alt:{key}",
+                WARNING,
+                f"{name}: an image has no description — readers whose mail hides images see nothing in its place.",
+            )
+        )
+    return out
+
+
+def _hero_checks(block: dict, key: str, name: str) -> list[dict]:
+    out = []
+    if not (block.get("title") or block.get("text")):
+        out.append(_check(f"hero:{key}", WARNING, f"{name}: a hero banner has no title or text, so it won't show."))
+    if block.get("image"):
+        bad = _image_problem(block["image"])
+        if bad:
+            out.append(_check(f"hero:{key}", ERROR, f"{name}: a hero banner's picture {bad}."))
+    if block.get("label"):
+        link = cta_path_problem(block.get("path", ""))
+        if link:
+            out.append(_check(f"hero-cta:{key}", ERROR, f"{name}: a hero banner's button link {link}."))
+        elif not block.get("path"):
+            out.append(
+                _check(
+                    f"hero-cta:{key}",
+                    WARNING,
+                    f"{name}: a hero banner's button has no link path, so it opens the home page.",
+                )
+            )
+    return out
+
+
+def _slug_check(kind: str, slug: str, key: str, name: str, code: str, library) -> list[dict]:
+    """A block that names a work, author or topic: chosen, real, and in ``code``."""
     label = blocks_mod.BlockType(kind).label.lower()
-    slug = block.get("slug", "")
     if not slug:
         return [_check(f"library:{key}", ERROR, f"{name}: a {label} block has no {label} chosen.")]
     languages = library.get(kind, {}).get(slug)
