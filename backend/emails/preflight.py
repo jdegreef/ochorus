@@ -9,6 +9,8 @@ campaign with an empty subject line or a broken button link can't go out.
 
 from __future__ import annotations
 
+import re
+
 from django.conf import settings
 from django.db.models import Count, F, Value
 from django.db.models.functions import Coalesce, NullIf
@@ -81,6 +83,15 @@ def _content_checks(broadcast) -> list[dict]:
         def reaches(block, code=code):
             return code in library.get(block["type"], {}).get(block["slug"], set())
 
+        hint = _placeholder([subject, *(b.get(f, "") for b in blocks for f in blocks_mod.WORD_FIELDS)])
+        if hint:
+            out.append(
+                _check(
+                    f"placeholder:{code}",
+                    ERROR,
+                    f"{name}: “{hint}” is a template hint — replace it with your own words.",
+                )
+            )
         if not blocks_mod.has_body(blocks, reaches):
             out.append(_check(f"body:{code}", ERROR, f"{name}: the email has no content yet."))
         for i, block in enumerate(blocks):
@@ -105,6 +116,20 @@ def _content_checks(broadcast) -> list[dict]:
             )
         )
     return out
+
+
+#: A template's "write your own here" hint: a capitalised phrase in square
+#: brackets, e.g. ``[Book title]`` (emails/starter_templates.py).
+PLACEHOLDER = re.compile(r"\[[A-Z][^\[\]\n]{2,}\]")
+
+
+def _placeholder(texts) -> str | None:
+    """The first template hint left in ``texts``, or ``None``."""
+    for text in texts:
+        match = PLACEHOLDER.search(text or "")
+        if match:
+            return match.group(0)
+    return None
 
 
 def _words(blocks: list[dict]) -> set[str]:

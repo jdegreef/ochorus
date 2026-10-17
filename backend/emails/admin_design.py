@@ -19,9 +19,9 @@ from library.audit import AdminAudited, AdminNotAudited, actor_email
 from library.models import AdminAction
 
 from . import blocks as blocks_mod
-from . import translation_jobs
+from . import starter_templates, translation_jobs
 from .admin_views import _serialize_broadcast
-from .models import Broadcast, EmailSubscription, EmailTemplate
+from .models import Broadcast, EmailSubscription, EmailTemplate, TemplateCategory
 from .rendering import render_blocks
 
 #: How many works the library picker returns per search.
@@ -113,6 +113,9 @@ def _serialize_template(t: EmailTemplate) -> dict:
     return {
         "id": t.id,
         "name": t.name,
+        "category": t.category,
+        "description": t.description,
+        "created_by": t.created_by,
         "subject": t.subject,
         "content": blocks_mod.as_blocks(t.content),
         "locales": sorted(t.content),
@@ -120,8 +123,8 @@ def _serialize_template(t: EmailTemplate) -> dict:
 
 
 class AdminEmailTemplatesView(AdminAudited, APIView):
-    """List saved templates, or save a broadcast as one
-    (``{"name": ..., "from_broadcast": id}``)."""
+    """List the starter templates and the team's saved ones, or save a broadcast
+    as one (``{"name", "from_broadcast": id, "category"?, "description"?}``)."""
 
     permission_classes = [IsAdminEmail]
     audit_action = AdminAction.Action.EMAIL_TEMPLATE_SAVE
@@ -130,7 +133,13 @@ class AdminEmailTemplatesView(AdminAudited, APIView):
         return (f"email-template:{response.data.get('id')}", {"name": response.data.get("name", "")})
 
     def get(self, request):
-        return Response({"templates": [_serialize_template(t) for t in EmailTemplate.objects.all()]})
+        return Response(
+            {
+                "templates": [_serialize_template(t) for t in EmailTemplate.objects.all()],
+                "starters": [starter_templates.serialize(t) for t in starter_templates.STARTERS],
+                "categories": [{"key": k, "label": label} for k, label in TemplateCategory.choices],
+            }
+        )
 
     def post(self, request):
         name = str(request.data.get("name") or "").strip()[:200]
@@ -148,18 +157,49 @@ class AdminEmailTemplatesView(AdminAudited, APIView):
             subject=broadcast.subject,
             content=broadcast.content,
             created_by=actor_email(request),
+            **_described(request.data),
         )
         return Response(_serialize_template(template), status=http_status.HTTP_201_CREATED)
 
 
+def _described(data) -> dict:
+    """The category and description fields from request data, cleaned."""
+    out = {}
+    if data.get("category") in TemplateCategory.values:
+        out["category"] = data["category"]
+    if "description" in data:
+        out["description"] = str(data.get("description") or "").strip()[:300]
+    return out
+
+
 class AdminEmailTemplateDetailView(AdminAudited, APIView):
-    """Delete a saved template (broadcasts made from it are copies, unaffected)."""
+    """Rename or re-describe a saved template (``PATCH {"name"?, "category"?,
+    "description"?}``), or delete it — broadcasts made from it are copies,
+    unaffected either way."""
 
     permission_classes = [IsAdminEmail]
-    audit_action = AdminAction.Action.EMAIL_TEMPLATE_DELETE
+
+    def audit_action_for(self, request):
+        if request.method == "DELETE":
+            return AdminAction.Action.EMAIL_TEMPLATE_DELETE
+        return AdminAction.Action.EMAIL_TEMPLATE_SAVE
 
     def audit_entry(self, request, response):
         return (f"email-template:{self.kwargs.get('pk')}", {})
+
+    def patch(self, request, pk):
+        template = EmailTemplate.objects.filter(pk=pk).first()
+        if template is None:
+            return Response(status=http_status.HTTP_404_NOT_FOUND)
+        if "name" in request.data:
+            name = str(request.data.get("name") or "").strip()[:200]
+            if not name:
+                return Response({"detail": "name can't be empty"}, status=http_status.HTTP_400_BAD_REQUEST)
+            template.name = name
+        for field, value in _described(request.data).items():
+            setattr(template, field, value)
+        template.save()
+        return Response(_serialize_template(template))
 
     def delete(self, request, pk):
         deleted, _ = EmailTemplate.objects.filter(pk=pk).delete()

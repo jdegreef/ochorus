@@ -458,6 +458,16 @@ class EmailEvent(models.Model):
         return f"event<{self.type} {self.message_id}>"
 
 
+class TemplateCategory(models.TextChoices):
+    """What kind of email a template is for — the gallery's filter."""
+
+    NEWSLETTER = "newsletter", "Newsletter"
+    ANNOUNCEMENT = "announcement", "Announcement"
+    AUTOMATION = "automation", "Automation"
+    SEASONAL = "seasonal", "Seasonal"
+    OTHER = "other", "Other"
+
+
 class EmailTemplate(models.Model):
     """A reusable campaign design: block content (and subjects) per language,
     the same shape as :attr:`Broadcast.content`. A new broadcast can start from
@@ -465,6 +475,10 @@ class EmailTemplate(models.Model):
     template doesn't change broadcasts made from it."""
 
     name = models.CharField(max_length=200)
+    category = models.CharField(
+        max_length=20, choices=TemplateCategory.choices, default=TemplateCategory.OTHER
+    )
+    description = models.CharField(max_length=300, blank=True)
     subject = models.JSONField(default=dict, blank=True)
     content = models.JSONField(default=dict, blank=True)
     created_by = models.CharField(max_length=254, blank=True)

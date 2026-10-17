@@ -1740,21 +1740,54 @@ export const searchEmailLibrary = (
 		{ signal: init?.signal }
 	);
 
-export interface EmailTemplate {
-	id: number;
+export type TemplateCategory = 'newsletter' | 'announcement' | 'automation' | 'seasonal' | 'other';
+
+/** A design to start a broadcast from: a starter shipped with the site
+ *  (`key`), or one the team saved (`id`). Copied, never linked. */
+export interface EmailTemplateBase {
 	name: string;
+	category: TemplateCategory;
+	description: string;
 	subject: Record<string, string>;
 	content: Record<string, BroadcastBlock>;
 	locales: string[];
 }
 
-export const listEmailTemplates = () =>
-	apiFetch<{ templates: EmailTemplate[] }>('/api/admin/emails/templates/');
+export interface EmailTemplate extends EmailTemplateBase {
+	id: number;
+	created_by: string;
+}
+
+export interface StarterTemplate extends EmailTemplateBase {
+	key: string;
+}
+
+export interface EmailTemplates {
+	templates: EmailTemplate[];
+	starters: StarterTemplate[];
+	categories: { key: TemplateCategory; label: string }[];
+}
+
+export const listEmailTemplates = () => apiFetch<EmailTemplates>('/api/admin/emails/templates/');
 
 /** Save a broadcast's design (as last saved) as a template. */
-export const saveEmailTemplate = (payload: { name: string; from_broadcast: number }) =>
+export const saveEmailTemplate = (payload: {
+	name: string;
+	from_broadcast: number;
+	category?: TemplateCategory;
+	description?: string;
+}) =>
 	apiFetch<EmailTemplate>('/api/admin/emails/templates/', {
 		method: 'POST',
+		body: JSON.stringify(payload)
+	});
+
+export const updateEmailTemplate = (
+	id: number,
+	payload: Partial<Pick<EmailTemplate, 'name' | 'category' | 'description'>>
+) =>
+	apiFetch<EmailTemplate>(`/api/admin/emails/templates/${id}/`, {
+		method: 'PATCH',
 		body: JSON.stringify(payload)
 	});
 
