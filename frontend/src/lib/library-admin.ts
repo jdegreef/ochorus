@@ -1682,9 +1682,13 @@ export interface LanguageRow {
 	gaps: { type: string; slug: string }[];
 	/** Ready to go out (source, approved, or written by hand). */
 	sendable: boolean;
+	/** For an AI translation: the language it was made from. */
+	source_locale: string;
 }
 
 export interface LanguagesOverview {
+	/** The fields that carry words (backend `blocks.WORD_FIELDS`). */
+	word_fields: string[];
 	source: string | null;
 	strict_locale: boolean;
 	rows: LanguageRow[];

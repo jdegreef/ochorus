@@ -41,8 +41,13 @@ def resolve(audience: dict):
 
     email_language = audience.get("email_language")
     if email_language:
-        codes = [email_language] if isinstance(email_language, str) else list(email_language)
-        match = Q()
+        if isinstance(email_language, str):
+            codes = [email_language]
+        elif isinstance(email_language, list | tuple):
+            codes = [str(c) for c in email_language]
+        else:
+            codes = []  # a malformed filter matches nobody rather than raising
+        match = Q(pk__in=[])
         for code in codes:
             match |= _email_language_q(str(code))
         qs = qs.filter(match)

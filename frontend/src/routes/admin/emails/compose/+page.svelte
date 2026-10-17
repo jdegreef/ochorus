@@ -116,6 +116,7 @@
 	}
 
 	async function openEditor(id: number) {
+		reviewing = null;
 		error = '';
 		notice = '';
 		try {
@@ -377,7 +378,7 @@
 			.map(([code]) => code)
 	);
 
-	async function translation(action: 'request' | 'fetch' | 'approve', code: string) {
+	async function translation(action: 'request' | 'fetch' | 'approve', code: string, from?: string) {
 		if (!draft) return;
 		if (action === 'request' && !confirm(`Ask for ${translationOf(code)?.state === 'requested' ? 'a new' : 'an'} AI draft in ${localeLabel(code)}? It goes to the translation queue (replacing any open request); check back once a worker has run.`)) return;
 		busy = true;
@@ -387,7 +388,7 @@
 			// Save first: a request is made from what is saved, and the reply
 			// replaces this page's copy (unsaved edits would be lost).
 			if (!readOnly) await persist();
-			const source = editLocale in draft.content && !translationOf(editLocale) ? editLocale : 'en';
+			const source = from ?? (editLocale in draft.content && !translationOf(editLocale) ? editLocale : 'en');
 			const b = await broadcastTranslation(draft.id, action, code, action === 'request' ? source : undefined);
 			draft = toDraft(b);
 			const state = draft.translations[code]?.state;
@@ -436,16 +437,26 @@
 
 	async function setStrict(strict: boolean) {
 		if (!draft || readOnly) return;
+		const was = draft.strict_locale;
 		draft.strict_locale = strict;
 		busy = true;
+		error = '';
+		notice = '';
 		try {
-			await persist();
+			await persist(); // saves the rest of the email too, like Save
+			notice = strict ? 'Readers whose language isn’t ready won’t get it.' : 'Readers whose language isn’t ready get the English version.';
 		} catch (e) {
+			if (draft) draft.strict_locale = was;
 			error = apiErrorDetail(e);
 		} finally {
 			busy = false;
 		}
 	}
+
+	/** The language a reviewed draft was translated from (its left column). */
+	const reviewSource = $derived(
+		reviewing ? (draft?.translations[reviewing]?.source_locale ?? draft?.languages?.source ?? null) : null
+	);
 
 	async function approveReviewed() {
 		if (!reviewing) return;
@@ -657,21 +668,26 @@
 				{readOnly}
 				onRequestAll={() => allLanguages('request_all')}
 				onFetchAll={() => allLanguages('fetch_all')}
-				onRequest={(code) => translation('request', code)}
+				onRequest={(code) => translation('request', code, draft?.languages?.source ?? undefined)}
 				onReview={(code) => (reviewing = code)}
 				onOpen={(code) => { reviewing = null; editLocale = code; }}
 				onStrict={setStrict}
 			/>
 		{/if}
 
-		{#if reviewing && draft.languages?.source && draft.content[reviewing] && draft.content[draft.languages.source]}
+		{#if reviewing && reviewSource && draft.content[reviewing] && draft.content[reviewSource]}
+			{@const code = reviewing}
 			<EmailTranslationReview
-				sourceName={localeLabel(draft.languages.source)}
-				targetName={localeLabel(reviewing)}
-				sourceSubject={draft.subject[draft.languages.source] ?? ''}
-				source={draft.content[draft.languages.source]}
-				bind:subject={draft.subject[reviewing]}
-				bind:target={draft.content[reviewing]}
+				sourceName={localeLabel(reviewSource)}
+				targetName={localeLabel(code)}
+				sourceSubject={draft.subject[reviewSource] ?? ''}
+				source={draft.content[reviewSource]}
+				subject={draft.subject[code] ?? ''}
+				target={draft.content[code]}
+				wordFields={draft.languages?.word_fields ?? []}
+				onSubject={(v) => (draft!.subject[code] = v)}
+				onPreheader={(v) => (draft!.content[code].preheader = v)}
+				onWord={(i, f, v) => (draft!.content[code].blocks[i] = { ...draft!.content[code].blocks[i], [f]: v } as EmailBlock)}
 				{busy}
 				onApprove={approveReviewed}
 				onClose={() => { editLocale = reviewing!; reviewing = null; }}

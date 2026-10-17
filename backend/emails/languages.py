@@ -38,26 +38,40 @@ class Status:
     MISSING = "missing"  # nothing yet
 
 
-def source_locale(broadcast) -> str | None:
-    """The language the others are translated from: English when the email is
-    written in it, else the first complete language."""
+def source_locale(broadcast, states: dict | None = None) -> str | None:
+    """The language the others are translated from: one an admin wrote (not an
+    AI draft — an unreviewed draft must never become the source), English when
+    there is one; failing that, an approved translation."""
+    states = translation_jobs.states(broadcast) if states is None else states
     locales = sendable_locales(broadcast)
-    if "en" in locales:
-        return "en"
-    return locales[0] if locales else None
+    written = [c for c in locales if c not in states]
+    approved = [c for c in locales if states.get(c, {}).get("state") == Status.APPROVED]
+    for pool in (written, approved):
+        if "en" in pool:
+            return "en"
+        if pool:
+            return pool[0]
+    return None
 
 
 def _status(code: str, broadcast, source: str | None, states: dict) -> str:
+    entry = states.get(code)
+    if entry and entry["state"] in (Status.DRAFT, Status.REQUESTED):
+        return entry["state"]  # whatever else is true, it isn't reviewed yet
     if code == source:
         return Status.SOURCE
-    entry = states.get(code)
-    if entry and entry["state"] in (Status.APPROVED, Status.DRAFT, Status.REQUESTED):
-        return entry["state"]
+    if entry and entry["state"] == Status.APPROVED:
+        return Status.APPROVED
     if code in sendable_locales(broadcast):
         return Status.WRITTEN
     if code in broadcast.subject or code in broadcast.content:
         return Status.INCOMPLETE
     return Status.MISSING
+
+
+def _missing(broadcast, source: str | None, states: dict) -> list[str]:
+    """The live languages with nothing yet."""
+    return [c for c in live_codes() if _status(c, broadcast, source, states) == Status.MISSING]
 
 
 def _gaps(blocks: list[dict], library: dict, code: str) -> list[dict]:
@@ -72,27 +86,26 @@ def _gaps(blocks: list[dict], library: dict, code: str) -> list[dict]:
 
 def overview(broadcast) -> dict:
     """Every language's row for the Languages panel."""
-    source = source_locale(broadcast)
     states = translation_jobs.states(broadcast)
+    source = source_locale(broadcast, states)
     readers = by_email_language(broadcast.audience)
     codes = list(live_codes())
-    for code in [*broadcast.content, *broadcast.subject, *states]:
+    # Every language the email is in, or a reader in the audience gets email in.
+    for code in [*broadcast.content, *broadcast.subject, *states, *(c for c, n in readers.items() if n)]:
         if code not in codes:
             codes.append(code)
 
     source_blocks = blocks_mod.blocks_for(broadcast.content.get(source) or {}) if source else []
-    wanted: dict[str, set[str]] = {}
-    for code in codes:
-        blocks = blocks_mod.blocks_for(broadcast.content.get(code) or {}) or source_blocks
-        for kind, slugs in blocks_mod.library_refs(blocks).items():
-            wanted.setdefault(kind, set()).update(slugs)
-    library = {kind: blocks_mod.editions(kind, slugs) for kind, slugs in wanted.items()}
+    blocks_by_code = {
+        code: blocks_mod.blocks_for(broadcast.content.get(code) or {}) or source_blocks for code in codes
+    }
+    library = blocks_mod.library_editions(blocks_by_code)
 
     rows = []
     for code in codes:
         entry = language_entry(code)
         status = _status(code, broadcast, source, states)
-        blocks = blocks_mod.blocks_for(broadcast.content.get(code) or {}) or source_blocks
+        blocks = blocks_by_code[code]
         rows.append(
             {
                 "code": code,
@@ -105,9 +118,11 @@ def overview(broadcast) -> dict:
                 "readers": readers.get(code, 0),
                 "gaps": _gaps(blocks, library, code),
                 "sendable": status in (Status.SOURCE, Status.APPROVED, Status.WRITTEN),
+                "source_locale": states.get(code, {}).get("source_locale", ""),
             }
         )
     return {
+        "word_fields": list(blocks_mod.WORD_FIELDS),
         "source": source,
         "strict_locale": broadcast.strict_locale,
         "rows": rows,
@@ -118,19 +133,23 @@ def overview(broadcast) -> dict:
 def request_all(broadcast, source: str | None = None) -> dict[str, str]:
     """Ask for an AI draft of every missing live language. Returns
     ``{language: "requested" or why not}`` — one failure doesn't stop the rest."""
-    source = source or source_locale(broadcast)
+    states = translation_jobs.states(broadcast)
+    source = source or source_locale(broadcast, states)
     if source is None:
         raise translation_jobs.TranslationJobError("Write the email in one language first.")
     outcome: dict[str, str] = {}
-    for code in overview(broadcast)["missing"]:
+    missing = _missing(broadcast, source, states)
+    for i, code in enumerate(missing):
         try:
-            translation_jobs.request(broadcast, source, code)
+            translation_jobs.request(broadcast, source, code)  # keeps ``broadcast`` current
             outcome[code] = Status.REQUESTED
         except translation_jobs.TranslationJobError as exc:
             outcome[code] = str(exc)
         except requests.RequestException:
-            outcome[code] = "GitHub didn't answer — try again shortly."
-        broadcast.refresh_from_db()
+            # GitHub is down: stop rather than wait out a timeout per language.
+            for rest in missing[i:]:
+                outcome[rest] = "GitHub didn't answer — try again shortly."
+            break
     return outcome
 
 
@@ -141,10 +160,10 @@ def fetch_all(broadcast) -> dict[str, str]:
         if entry.get("state") != Status.REQUESTED:
             continue
         try:
-            outcome[code] = translation_jobs.fetch(broadcast, code)["state"]
+            outcome[code] = translation_jobs.fetch(broadcast, code)["state"]  # keeps ``broadcast`` current
         except translation_jobs.TranslationJobError as exc:
             outcome[code] = str(exc)
         except requests.RequestException:
             outcome[code] = "GitHub didn't answer — try again shortly."
-        broadcast.refresh_from_db()
+            break
     return outcome

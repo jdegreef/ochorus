@@ -124,3 +124,50 @@ def _spanish_for(payload):
     texts = ["Hola", "Un nuevo clásico está disponible."]
     return {**jobs.check_answer(payload, {"subject": "Hola", "preheader": "", "texts": texts})}
 
+
+
+class ReviewFixTests(TestCase):
+    def setUp(self):
+        _live("en", "es", "fr")
+        self.addCleanup(registry.invalidate)
+
+    def test_an_unreviewed_ai_draft_is_never_the_source(self):
+        from . import languages
+
+        b = _broadcast(
+            subject={"es": "Hola", "en": "Hello"},
+            content={"es": {"blocks": [{"type": "text", "text": "Hola a todos"}]}, "en": {"blocks": [{"type": "text", "text": "Hello all"}]}},
+        )
+        b.translations = {"en": {"state": "draft", "issue": 1, "url": "", "source_locale": "es", "source_digest": "x"}}
+        b.save()
+        overview = languages.overview(b)
+        rows = {r["code"]: r for r in overview["rows"]}
+        self.assertEqual(overview["source"], "es")
+        self.assertEqual(rows["en"]["status"], "draft")
+        self.assertFalse(rows["en"]["sendable"])
+        self.assertEqual(rows["es"]["status"], "source")
+
+    @override_settings(GITHUB_TRANSLATION_TOKEN="t", GITHUB_TRANSLATION_REPO="x/y")
+    def test_request_all_stops_when_github_is_down(self):
+        import requests
+
+        from . import languages
+
+        b = _broadcast(subject={"en": "Hello"}, content={"en": {"blocks": [{"type": "text", "text": "Hello all"}]}})
+        with mock.patch("emails.translation_jobs.file_issue", side_effect=requests.ConnectionError) as filed:
+            outcome = languages.request_all(b)
+        self.assertEqual(filed.call_count, 1)
+        self.assertEqual(set(outcome), {"es", "fr"})
+
+    def test_a_malformed_email_language_matches_nobody(self):
+        _make_profile(email="a@example.com")
+        self.assertEqual(list(resolve({"email_language": 5})), [])
+
+    def test_readers_in_a_language_that_isnt_live_get_a_row(self):
+        from . import languages
+
+        de = _make_profile(email="de@example.com", locale="en")
+        EmailSubscription.objects.create(profile=de, email_locale="de")
+        b = _broadcast(subject={"en": "Hello"}, content={"en": {"blocks": [{"type": "text", "text": "Hello"}]}})
+        rows = {r["code"]: r for r in languages.overview(b)["rows"]}
+        self.assertEqual(rows["de"]["readers"], 1)
