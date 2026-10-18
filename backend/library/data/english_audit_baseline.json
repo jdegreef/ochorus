@@ -123,6 +123,11 @@
   "himself": {
    "space-before-punct": 1
   },
+  "holiness": {
+   "orphan-close-quote": 2,
+   "space-before-punct": 4,
+   "word-fusion": 1
+  },
   "homily-on-the-paralytic": {
    "lost-paragraphing": 1
   },

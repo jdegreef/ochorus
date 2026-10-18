@@ -51,6 +51,35 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "holiness": {
+        # CCEL's TOC is Title Case with Ryle's own roman numerals ("I. Sin"),
+        # which clean_title keeps on mixed-case titles — and the reader prints
+        # the chapter number itself, so they would read "2. I. Sin". Lot takes
+        # the subtitle his paper carries in print ("A Beacon"), matching Moses.
+        "chapter_titles": {
+            2: "Sin",
+            3: "Sanctification",
+            4: "Holiness",
+            5: "The Fight",
+            6: "The Cost",
+            7: "Growth",
+            8: "Assurance",
+            9: "Moses — An Example",
+            10: "Lot — A Beacon",
+            11: "A Woman to Be Remembered",
+            12: "Christ’s Greatest Trophy",
+            13: "The Ruler of the Waves",
+            14: "The Church Which Christ Builds",
+            15: "Visible Churches Warned",
+            16: "Lovest Thou Me?",
+            17: "Without Christ",
+            18: "Thirst Relieved",
+            19: "Unsearchable Riches",
+            20: "Wants of the Times",
+            21: "Christ Is All",
+            22: "Extracts from Old Writers",
+        },
+    },
     "at-the-masters-feet": {
         # CCEL's TOC numbers the six dialogues "I. The Manifestation…", a
         # mixed-case roman prefix clean_title keeps, which would double the
@@ -16877,4 +16906,19 @@ BODY_CORRECTIONS.setdefault("brave-for-god-4", {}).setdefault("replacements", []
     # [en]
     ("Ida offered to come at once and help",
      "Ida offered to send her father, a doctor, at once"),
+])
+
+# Ryle's Holiness (CCEL): two papers open by restating their heading above the
+# epigraph, and a handful of CCEL transcription slips around quotation marks.
+BODY_CORRECTIONS.setdefault("holiness", {}).setdefault("replacements", []).extend([
+    ("<h2>VIII. <br/>MOSES </h2> <h3>AN EXAMPLE</h3> ", ""),
+    ("<h3>A BEACON </h3> ", ""),
+    ("—Gen. xix. 16.” </p>", "—Gen. xix. 16. </p>"),
+    ("<p><i>Men that had understanding of the times</i>.”",
+     "<p>“<i>Men that had understanding of the times</i>.”"),
+    ("when he said,”I delight", "when he said, “I delight"),
+    ("comfortable home for life.There needs", "comfortable home for life. There needs"),
+    ("the plainest” command", "the plainest command"),
+    ("Take care: Remember Lot’s wife.”", "Take care: “Remember Lot’s wife.”"),
+    ("Robert Trail, s<i>ometime Minister", "Robert Trail, <i>sometime Minister"),
 ])
