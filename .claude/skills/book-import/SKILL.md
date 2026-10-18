@@ -2313,14 +2313,14 @@ your book's block. *(holiness, 2026-10)*
 
 **A Gutenberg POETRY book sets each poem as a `<pre>` block → write a
 `build_<name>` command.** Wheatley's *Poems* (#409) has hard line breaks, verse
-paragraphs marked only by a 3–5-space indent, the author's footnotes inside the
+paragraphs marked only by an indent of 3 to 7 spaces (the first cut used 3–5 and silently merged seven paragraphs, which only code review caught; rejoin wrapped lines BEFORE testing indent), the author's footnotes inside the
 `<pre>` as `*`-led blocks, and stanza numerals (`I.`) on lines of their own.
 `import_gutenberg` would flatten all of that into prose and drop the short
 poems. `build_wheatley_poems` is the model: one chapter per poem, verse lines
 joined with `<br/>`, notes in italics where they fall, a line the transcription
 wrapped rejoined to the one before, and the poem titles hand-listed with a
 heading-key check so a re-flowed source fails the build instead of shifting
-every title. *(poems-on-various-subjects, 2026-10)*
+every title. A one- or two-line block that opens a poem is a printed subtitle or text reference ("1 SAMUEL, Chap. xvii."), so set it in italics, not as verse. *(poems-on-various-subjects, 2026-10)*
 
 **A clean new book can still fail the English-audit ratchet in OTHER works.**
 `word-fusion` scores against corpus-wide word frequencies, so adding ~14k words
