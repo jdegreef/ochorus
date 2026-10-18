@@ -2351,6 +2351,15 @@ closes_with_the_wrong_mark`). Convert single quotes in the DB rows, then
 re-serialize, and set each pair's RIGHT side in the same curly form, or
 `CorrectionsHygieneTests` calls every pair dead. *(a-body-of-divinity, 2026-10)*
 
+**A CCEL "Preface" or "Postscript" can be someone else's text. Read the
+front and back sections before keeping them.** Torrey's *How to Pray*
+(`torrey/pray`) has a "Preface" that is a paperback's back-cover copy and a
+"Postscript" that is a 1990s keyer's note, with his phone number. Leave them out
+with `BookEntry(skip=("Preface", "Postscript"))`, matched against the raw CCEL
+TOC title. It is per book because those titles are the author's own elsewhere.
+A keyer's "[End of …]" line after the last paragraph goes as a `back_matter`
+seam. *(how-to-pray, 2026-10)*
+
 **`import_ccel` leaves `source_url` empty and can reuse a `sort_order` that is
 already taken.** Holiness came in at 68, the same as `our-daily-walk`. Before
 serializing, set `source_url`, `sort_order` (fixture max + 1), `attribution`,
