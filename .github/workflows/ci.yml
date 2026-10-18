@@ -483,6 +483,15 @@ jobs:
           PARALLEL_CARDS: '1'
         run: npm run build
 
+      # The bytes every page parses before it can answer a tap (entry + root
+      # layout closure, biggest chunk, biggest locale catalogue, global CSS)
+      # against frontend/bundle-budget.json — a 1.4 MB i18n chunk on every page
+      # once put all 578 URLs at "poor" mobile INP. Raise a budget only with a
+      # reason in the PR.
+      - name: Frontend — bundle budget
+        working-directory: frontend
+        run: node scripts/check-bundle-budget.mjs build/_app/immutable
+
       # These guards assert on BUILT html, so they run after the build.
       # prerenderCoverage catches a page the sitemap advertises and the build
       # never produced: the static adapter serves the noindex 200.html shell for

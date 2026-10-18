@@ -4,6 +4,7 @@ import { env } from '$env/dynamic/public';
 import { canonicalRedirect } from '$lib/canonicalRedirect';
 import { SITE_URL } from '$lib/config';
 import { loadUiCatalog } from '$lib/i18n.svelte';
+import { afterLoadWhenIdle } from '$lib/idle';
 import { getLocale } from '$lib/paraglide/runtime';
 
 // A duplicate URL (no trailing slash, or the Render host) moves to the real one
@@ -74,15 +75,6 @@ function loadSentry(): Promise<SentryModule> {
 // that waits on a parse is what mobile INP measures. An error before then
 // still reaches Sentry: handleError below loads the SDK on demand.
 if (env.PUBLIC_SENTRY_DSN) afterLoadWhenIdle(() => void loadSentry());
-
-function afterLoadWhenIdle(run: () => void): void {
-	const idle = () =>
-		'requestIdleCallback' in window
-			? requestIdleCallback(run, { timeout: 10_000 })
-			: setTimeout(run, 3_000);
-	if (document.readyState === 'complete') idle();
-	else addEventListener('load', idle, { once: true });
-}
 
 // Report any uncaught load/render error (to Sentry when configured) and always
 // leave a console trace for local debugging. The returned shape is what the
