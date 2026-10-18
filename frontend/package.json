@@ -19,6 +19,7 @@
 		"lint": "npm run paraglide && eslint .",
 		"check:slashes": "node scripts/check-slashes.mjs",
 		"check:prerendered": "node scripts/check-content-prerendered.mjs",
+		"check:budget": "node scripts/check-bundle-budget.mjs",
 		"emblem:hues": "node scripts/generate-emblem-hues.mjs",
 		"emblem:art": "node scripts/generate-emblem-art.mjs",
 		"og:covers": "node scripts/generate-cover-og.mjs",
@@ -96,6 +97,7 @@
 		"@fontsource/tiro-devanagari-hindi": "^5.3.0",
 		"@sentry/sveltekit": "^11.6.0",
 		"@supabase/supabase-js": "^2.117.3",
-		"qrcode-generator": "^2.0.4"
+		"qrcode-generator": "^2.0.4",
+		"web-vitals": "^6.2.3"
 	}
 }

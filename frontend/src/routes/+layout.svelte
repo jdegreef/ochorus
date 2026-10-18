@@ -19,6 +19,7 @@
 	import { auth } from '$lib/auth.svelte';
 	import { pwa } from '$lib/pwa.svelte';
 	import { initAnalytics } from '$lib/analytics';
+	import { initWebVitals, notePageView } from '$lib/webVitals';
 	import { install } from '$lib/install.svelte';
 	import { localizeHref, getLocale, getTextDirection } from '$lib/paraglide/runtime';
 	import AccountMenu from '$lib/components/AccountMenu.svelte';
@@ -105,6 +106,9 @@
 		// Cookieless pageview analytics; no-ops unless PUBLIC_PLAUSIBLE_DOMAIN is
 		// set. The script self-tracks SPA route changes from here on.
 		initAnalytics();
+		// Field INP attribution (`Slow tap` events); loads after idle, off
+		// with analytics — see $lib/webVitals.
+		initWebVitals(getLocale());
 		install.init();
 	});
 
@@ -132,6 +136,7 @@
 	// Leaving a chapter is the safe moment to take a waiting app update.
 	afterNavigate(({ from, to }) => {
 		pwa.navigated();
+		notePageView(to?.route.id);
 		// Focus mode hides this layout's nav and footer, and only the reading
 		// surfaces carry a way out of it (FocusExit, Escape). It was never reset,
 		// so any link out of the text — breadcrumb, scripture chip, colophon, the
