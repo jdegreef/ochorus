@@ -1880,6 +1880,39 @@
 	}
 }
 
+/* The home page for a returning or signed-in reader (`data-home-for`, set by
+   the app.html boot script) is not the prerendered newcomer page: the app
+   swaps in the dashboard or adds "Continue reading" above the hero once it
+   runs. Held invisible until the page says it has settled
+   (`data-home-ready`), with a parchment placeholder in its place, so the
+   reader sees it once, in place, instead of watching it jump. The animation
+   is the safety net: if the app never signals (a script error, a dead
+   network), the content shows anyway after 4 s. */
+html[data-home-for]:not([data-home-ready]) .home-root > :not(.home-wait) {
+	visibility: hidden;
+	animation: home-reveal 0s 4s forwards;
+}
+@keyframes home-reveal {
+	to {
+		visibility: visible;
+	}
+}
+.home-wait {
+	display: none;
+}
+html[data-home-for]:not([data-home-ready]) .home-wait {
+	display: block;
+	position: absolute;
+	inset-inline: 0;
+	top: 0;
+	animation: home-wait-end 0s 4s forwards;
+}
+@keyframes home-wait-end {
+	to {
+		visibility: hidden;
+	}
+}
+
 /* ── Reading view ───────────────────────────────────────────────────────────
    Long-form prose set like a printed devotional page. Typeface, size, leading
    and measure are all driven by reader controls (see readerPrefs) via custom
