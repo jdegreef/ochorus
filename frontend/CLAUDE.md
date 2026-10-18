@@ -63,6 +63,11 @@ API. Public content routes are prerendered for SEO (`prerender = true` + an
 - `npm run check` must be 0 errors, and `npm run test` (vitest, jsdom) must be
   green — it runs locally and gates every PR in CI. Keep pure reader logic and
   the localStorage stores covered by a `*.test.ts` beside them.
+- Bundle budget (`npm run check:budget`, CI after the web build): the entry +
+  root-layout static-import closure, biggest chunk, biggest locale catalogue
+  and global CSS vs `bundle-budget.json` — a 1.4 MB i18n chunk on every page
+  once made all 578 URLs "poor" mobile INP. Raising a budget needs a reason in
+  the PR. Field INP lands in Plausible as `Slow tap` (`$lib/webVitals`).
 - Verify user-visible changes in the browser (`verify-local` skill). Beware the
   localized-page trap: a persistent session's stored `en` preference
   de-localizes `/lg` URLs — wipe storage or use `curl` for ground truth.
