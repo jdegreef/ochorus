@@ -38,6 +38,7 @@ TOPICS = [
             "a-short-and-easy-method-of-prayer",
             "lord-teach-us-to-pray-2",
             "prevailing-prayer",
+            "how-to-pray",
             "answers-to-prayer",
             "men-of-prayer-2",
             "possibilities-of-prayer",
