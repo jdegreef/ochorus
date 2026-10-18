@@ -206,13 +206,10 @@
 		close();
 	}
 
+	// ⌘K itself is the root layout's: it has to work before this component's
+	// code has loaded (the layout mounts it on first open).
 	function onWindowKeydown(e: KeyboardEvent) {
-		if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
-			e.preventDefault();
-			paletteUi.toggle();
-		} else if (e.key === 'Escape' && paletteUi.open) {
-			close();
-		}
+		if (e.key === 'Escape' && paletteUi.open) close();
 	}
 
 	function onFieldKeydown(e: KeyboardEvent) {

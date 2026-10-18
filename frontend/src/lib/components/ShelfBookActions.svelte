@@ -18,6 +18,7 @@
 	import Icon, { type IconName } from './Icon.svelte';
 	import ShelfPicker from './ShelfPicker.svelte';
 	import { moveBetweenShelves, moveToToRead } from '$lib/shelfMoves';
+	import { afterPaint } from '$lib/yieldToMain';
 
 	/**
 	 * What you can do with a book on the Bookshelf, as a list of `.account-item`
@@ -83,9 +84,13 @@
 		undo.offer({ restore: () => customShelves.setBook(id, slug, true) });
 	}
 
+	// Close the menu first and do the shelf work after that frame has painted:
+	// a finish, a move or a removal re-derives every shelf on the page (and
+	// re-packs its rows), which used to hold the tap's feedback until it was
+	// all done. The book moves, and its Undo appears, a frame later.
 	function act(fn: () => void) {
-		fn();
 		onDone();
+		afterPaint(fn);
 	}
 
 	async function download() {

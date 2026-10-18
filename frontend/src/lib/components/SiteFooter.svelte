@@ -29,7 +29,6 @@
 	// The slash-correct builder: /originals prerenders to originals/index.html.
 	import { localizeHref as pageHref } from '$lib/href';
 	import BrandMark from '$lib/components/BrandMark.svelte';
-	import FeedbackDialog from '$lib/components/FeedbackDialog.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
 	import { currentBook } from '$lib/currentBook.svelte';
@@ -522,7 +521,10 @@
      dropdown mounts its own). FeedbackDialog is signed-in only, and feedbackOpen
      is only ever set from the signed-in branch above. -->
 {#if feedbackOpen}
-	<FeedbackDialog onClose={() => (feedbackOpen = false)} />
+	<!-- Loaded on first open: most visits never send feedback. -->
+	{#await import('$lib/components/FeedbackDialog.svelte') then { default: FeedbackDialog }}
+		<FeedbackDialog onClose={() => (feedbackOpen = false)} />
+	{/await}
 {/if}
 
 <style>
