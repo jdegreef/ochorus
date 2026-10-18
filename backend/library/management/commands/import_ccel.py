@@ -227,14 +227,6 @@ def toc_parts(ref: str, part: str = "") -> list[tuple[str, list[tuple[str, str]]
     return list(groups.values())
 
 
-def _restates(title: str, book_title: str) -> bool:
-    """Whether a TOC title is just the work's own title (case and punctuation aside)."""
-    def norm(t: str) -> str:
-        return re.sub(r"[^a-z0-9]", "", t.lower())
-
-    return bool(norm(title)) and norm(title) == norm(book_title)
-
-
 def toc_sections(ref: str, part: str = "") -> list[tuple[str, str]]:
     """Return [(absolute_section_url, title), ...] from the work's TOC page.
 
@@ -537,7 +529,7 @@ class Command(BaseCommand):
                     # A title page CCEL lists under the work's own name ("A Body of
                     # Divinity" → subtitle and byline, 11 words): the heading strip
                     # takes the title, and what is left is too short to be prose.
-                    if _restates(leaf_title, entry.title) and word_count(body) < 40:
+                    if restates_title(leaf_title, entry.title) and word_count(body) < 40:
                         continue
                     # A single-leaf part is the whole chapter — no subheading needed.
                     # Multi-leaf parts keep each leaf's heading, so the work's own
