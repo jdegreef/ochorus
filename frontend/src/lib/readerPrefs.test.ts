@@ -234,3 +234,28 @@ describe('the young-reader layout', () => {
 		expect(readerPrefs.own.scale).toBe(1.6);
 	});
 });
+
+describe('load(): the device default asks media queries, not innerWidth', () => {
+	// innerWidth forces a layout of the half-built page at startup (mobile INP);
+	// a min-width query answers the same question without one.
+	afterEach(() => {
+		delete (window as { matchMedia?: unknown }).matchMedia;
+	});
+	const viewport = (w: number) => {
+		window.matchMedia = ((q: string) => ({
+			matches: w >= Number(/min-width:\s*(\d+)px/.exec(q)?.[1])
+		})) as unknown as typeof window.matchMedia;
+		// Poisoned: a read of innerWidth would pick the wrong class.
+		Object.defineProperty(window, 'innerWidth', { value: w >= 1024 ? 320 : 1600, configurable: true, writable: true });
+	};
+
+	it.each([
+		[390, 'normal', false],
+		[800, 'wide', false],
+		[1280, 'normal', true]
+	])('a %ipx viewport gets measure %s, paged %s', (w, measure, paged) => {
+		viewport(w);
+		localStorage.removeItem(KEY);
+		expect(load()).toMatchObject({ measure, paged });
+	});
+});
