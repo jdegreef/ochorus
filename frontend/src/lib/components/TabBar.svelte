@@ -2,8 +2,6 @@
 	import { page } from '$app/stores';
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
-	import MoreSheet from '$lib/components/MoreSheet.svelte';
-	import FeedbackDialog from '$lib/components/FeedbackDialog.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
@@ -111,9 +109,18 @@
 	</button>
 </nav>
 
-<MoreSheet bind:open={moreOpen} />
+<!-- Both sheets load on first open; neither shows until a tap asks. The More
+     sheet unmounts with its drawer (DrawerShell renders nothing while closed),
+     so mounting it only while open changes nothing on screen. -->
+{#if moreOpen}
+	{#await import('$lib/components/MoreSheet.svelte') then { default: MoreSheet }}
+		<MoreSheet bind:open={moreOpen} />
+	{/await}
+{/if}
 {#if feedbackOpen}
-	<FeedbackDialog source="fab" onClose={() => (feedbackOpen = false)} />
+	{#await import('$lib/components/FeedbackDialog.svelte') then { default: FeedbackDialog }}
+		<FeedbackDialog source="fab" onClose={() => (feedbackOpen = false)} />
+	{/await}
 {/if}
 
 <style>

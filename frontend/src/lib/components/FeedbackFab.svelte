@@ -21,7 +21,6 @@
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { pageWidth } from '$lib/pageWidth.svelte';
-	import FeedbackDialog from '$lib/components/FeedbackDialog.svelte';
 	import { footerFeedback } from '$lib/footerFeedback.svelte';
 
 	const t = i18n.t;
@@ -57,7 +56,10 @@
 {/if}
 
 {#if open}
-	<FeedbackDialog source="fab" onClose={() => (open = false)} />
+	<!-- The button paints with the page; the dialog's code loads on first open. -->
+	{#await import('$lib/components/FeedbackDialog.svelte') then { default: FeedbackDialog }}
+		<FeedbackDialog source="fab" onClose={() => (open = false)} />
+	{/await}
 {/if}
 
 <style>

@@ -28,11 +28,8 @@
 	import { MEASURE } from '$lib/readerPrefs.svelte';
 	import { pageWidth } from '$lib/pageWidth.svelte';
 	import { isReaderRoute } from '$lib/readerRoutes';
-	import CommandPalette from '$lib/components/CommandPalette.svelte';
-	import UnsyncedSignOutDialog from '$lib/components/UnsyncedSignOutDialog.svelte';
-	import PwaToasts from '$lib/components/PwaToasts.svelte';
-	import SignInSheet from '$lib/components/SignInSheet.svelte';
-	import OneTap from '$lib/components/OneTap.svelte';
+	import { lazyComponent, onIdle } from '$lib/lazyComponent.svelte';
+	import { signInSheet } from '$lib/signInSheet.svelte';
 	import { ONE_TAP_ENABLED } from '$lib/oneTap';
 	import { applyHeldPlanEmail } from '$lib/planEmail';
 	import TabBar from '$lib/components/TabBar.svelte';
@@ -63,6 +60,39 @@
 
 	let { children } = $props();
 	const t = i18n.t;
+
+	// The rarely-used global overlays load on first use, not with every page
+	// ($lib/lazyComponent): the triggers stay here, the code comes when one fires.
+	// ⌘K palette — on the shortcut or the nav's search button (paletteUi.open).
+	const commandPalette = lazyComponent(() => import('$lib/components/CommandPalette.svelte'));
+	// The sign-up sheet — when a prompt opens it (signInSheet.open).
+	const signInSheetUi = lazyComponent(() => import('$lib/components/SignInSheet.svelte'));
+	// The toast stack (an aria-live region, so mounted before its first message)
+	// and One Tap (which waits seconds before asking anyway) — on idle after load.
+	const pwaToasts = lazyComponent(() => import('$lib/components/PwaToasts.svelte'));
+	const oneTap = lazyComponent(() => import('$lib/components/OneTap.svelte'));
+	$effect(() => {
+		if (paletteUi.open) commandPalette.load();
+	});
+	$effect(() => {
+		if (auth.enabled && signInSheet.open) signInSheetUi.load();
+	});
+	onMount(() =>
+		onIdle(() => {
+			pwaToasts.load();
+			if (auth.enabled && ONE_TAP_ENABLED) oneTap.load();
+		})
+	);
+
+	// ⌘K / Ctrl+K toggles the palette from anywhere. It lives here rather than
+	// in CommandPalette so the very first press works before the palette's code
+	// has loaded; flipping the flag is what loads it.
+	function onWindowKeydown(e: KeyboardEvent) {
+		if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+			e.preventDefault();
+			paletteUi.toggle();
+		}
+	}
 
 	onMount(() => {
 		theme.init();
@@ -254,6 +284,8 @@
 	<link rel="alternate" type="application/atom+xml" title="Ochorus — New in the Library" href="/feed.xml" />
 </svelte:head>
 
+<svelte:window onkeydown={onWindowKeydown} />
+
 <div
 	class="app-root flex min-h-screen flex-col"
 	style="--reading-scale: {readerPrefs.own.scale}; --reading-measure: {MEASURE[
@@ -330,6 +362,8 @@
 					<button
 						class="navsearch"
 						onclick={() => paletteUi.openPalette()}
+						onpointerenter={() => commandPalette.load()}
+						onfocus={() => commandPalette.load()}
 						aria-label={t('nav.search')}
 						title={t('nav.search')}
 					>
@@ -370,10 +404,10 @@
 {#if withTabBar}
 	<TabBar />
 {/if}
-<CommandPalette />
-<PwaToasts />
-{#if auth.enabled}<SignInSheet />{/if}
-{#if auth.enabled && ONE_TAP_ENABLED}<OneTap />{/if}
+{#if commandPalette.component}<commandPalette.component />{/if}
+{#if pwaToasts.component}<pwaToasts.component />{/if}
+{#if auth.enabled && signInSheetUi.component}<signInSheetUi.component />{/if}
+{#if auth.enabled && ONE_TAP_ENABLED && oneTap.component}<oneTap.component />{/if}
 
 <!-- The floating feedback button — signed-in only, hidden in focus mode and over
      the admin console (it self-gates). Opens its own FeedbackDialog. -->
@@ -382,5 +416,7 @@
 <!-- Sign-out asked for with changes still on this device only (both the
      account dropdown and settings route through auth.signOut). -->
 {#if auth.signOutBlocked}
-	<UnsyncedSignOutDialog />
+	{#await import('$lib/components/UnsyncedSignOutDialog.svelte') then { default: UnsyncedSignOutDialog }}
+		<UnsyncedSignOutDialog />
+	{/await}
 {/if}

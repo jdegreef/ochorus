@@ -1,5 +1,6 @@
 import { browser } from '$app/environment';
 import { env } from '$env/dynamic/public';
+import { afterPaint } from './yieldToMain';
 
 /**
  * Privacy-friendly, cookieless web analytics via Plausible.
@@ -75,9 +76,17 @@ export function initAnalytics(): void {
  */
 export function track(event: string, props?: Record<string, string>): void {
 	if (!ANALYTICS_ENABLED || !browser) return;
-	try {
-		plausible()(event, props ? { props } : undefined);
-	} catch {
-		/* analytics must never break the page */
-	}
+	const send = () => {
+		try {
+			plausible()(event, props ? { props } : undefined);
+		} catch {
+			/* analytics must never break the page */
+		}
+	};
+	// Most events are reported from a tap handler; the beacon (payload, request)
+	// is nothing the reader sees, so it goes after the tap's frame (INP). Not
+	// from a page being hidden, though (a report on visibilitychange): it may be
+	// closing, and a deferred send would never leave.
+	if (document.visibilityState === 'hidden') send();
+	else afterPaint(send);
 }
