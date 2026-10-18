@@ -5,8 +5,6 @@
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { loginHref as buildLoginHref } from '$lib/loginHref';
 	import { seenOnView, withSource } from '$lib/signupSource';
-	import { fetchAdminManualUrl, fetchLanguageAdminManualUrl } from '$lib/library-admin';
-	import FeedbackDialog from '$lib/components/FeedbackDialog.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
 
 	const t = i18n.t;
@@ -20,6 +18,11 @@
 	// isn't blocked, then pointed at the PDF once it downloads. One in flight at a
 	// time (`manualLoading`), so the two buttons can't overlap.
 	let manualLoading = $state(false);
+	// The admin API client loads only when a manual is asked for: every page
+	// mounts this menu, and almost no reader is an admin.
+	const adminManual = () => import('$lib/library-admin').then((m) => m.fetchAdminManualUrl());
+	const languageAdminManual = () =>
+		import('$lib/library-admin').then((m) => m.fetchLanguageAdminManualUrl());
 	async function openManual(fetchUrl: () => Promise<string>) {
 		if (manualLoading) return;
 		const tab = window.open('', '_blank');
@@ -85,7 +88,7 @@
 					{#if auth.isAdmin}
 						<!-- Super admins only (auth.isAdmin is the super-admin flag). The
 						     manual PDF is bearer-gated, so this fetches it and opens the blob. -->
-						<button class="account-item" onclick={() => openManual(fetchAdminManualUrl)} disabled={manualLoading}>
+						<button class="account-item" onclick={() => openManual(adminManual)} disabled={manualLoading}>
 							{manualLoading ? 'Opening…' : 'Admin Manual PDF'}
 						</button>
 					{:else if auth.isLanguageAdmin && auth.can('reporting')}
@@ -94,7 +97,7 @@
 						     on `reporting` to match the endpoint (REPORTING/view), so the
 						     button never shows to a grantee whose fetch would 403. Every role
 						     preset holds reporting, so real language admins always see it. -->
-						<button class="account-item" onclick={() => openManual(fetchLanguageAdminManualUrl)} disabled={manualLoading}>
+						<button class="account-item" onclick={() => openManual(languageAdminManual)} disabled={manualLoading}>
 							{manualLoading ? 'Opening…' : 'Language Admin Manual PDF'}
 						</button>
 					{/if}
@@ -125,7 +128,10 @@
 				</div>
 			{/if}
 			{#if feedbackOpen}
-				<FeedbackDialog onClose={() => (feedbackOpen = false)} />
+				<!-- Loaded on first open: most visits never send feedback. -->
+				{#await import('$lib/components/FeedbackDialog.svelte') then { default: FeedbackDialog }}
+					<FeedbackDialog onClose={() => (feedbackOpen = false)} />
+				{/await}
 			{/if}
 		</div>
 	{:else}
