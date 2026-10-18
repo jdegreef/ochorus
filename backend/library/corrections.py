@@ -51,6 +51,17 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "how-to-pray": {
+        # CCEL's TOC misspells the last chapter "Chatper XII.", so clean_title
+        # cannot strip the numbering and the reader would print it twice.
+        # The rest only take the house title case.
+        "chapter_titles": {
+            2: "Praying unto God",
+            8: "Praying with Thanksgiving",
+            10: "When to Pray",
+            12: "The Place of Prayer Before and During Revivals",
+        },
+    },
     "holiness": {
         # CCEL's TOC is Title Case with Ryle's own roman numerals ("I. Sin"),
         # which clean_title keeps on mixed-case titles — and the reader prints
@@ -729,6 +740,18 @@ def chapter_title_overrides(slug: str) -> dict[int, str]:
 # `apply_body_corrections`, plus a data migration for prod).
 
 BODY_CORRECTIONS: dict[str, dict] = {
+    "how-to-pray": {
+        # The misspelt TOC title ("Chatper XII.") kept extract_body from
+        # recognising the chapter's restated heading, so it leads the body.
+        "replacements": [
+            ("<h2>THE PLACE OF PRAYER BEFORE AND DURING REVIVALS </h2>  ", ""),
+            # Two quoted readings of Acts open with a closing mark.
+            ("<p> ”‘And when they had prayed", "<p> “‘And when they had prayed"),
+            ("<p> ”‘Who, when they were come down", "<p> “‘Who, when they were come down"),
+        ],
+        # The keyer's end-of-file marker after Torrey's last words.
+        "back_matter": [("LET US PRAY</p>", "<p>[End of HOW TO PRAY, by R.A.Torrey]</p>")],
+    },
     "at-the-masters-feet": {
         # CCEL's transcription checked word-for-word against the 1922 Revell
         # printing (archive.org `atmastersfeet0000sing`): the note's heading

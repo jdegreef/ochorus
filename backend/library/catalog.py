@@ -71,6 +71,12 @@ class BookEntry:
     # `import_ccel.summary_title`. Opt-in, because a work whose titles are real
     # titles must not have them cut at their first full stop.
     summary_titles: bool = False
+    # CCEL only: TOC titles (as CCEL lists them) to leave out — sections that
+    # are someone else's text in the transcription, not the author's: How to
+    # Pray's "Preface" is a paperback's back-cover copy and its "Postscript" a
+    # 1990s keyer's note. Named one by one, because "Preface" and "Postscript"
+    # are the author's own in other works.
+    skip: tuple[str, ...] = ()
 
 
 AUTHORS: dict[str, AuthorEntry] = {
@@ -834,6 +840,9 @@ BOOKS: list[BookEntry] = [
     BookEntry("the-fundamental-doctrines-of-the-christian-faith",
               "The Fundamental Doctrines of the Christian Faith", "r-a-torrey",
               "gutenberg", "52648", cover_color="#6a4c93"),
+    # How to Pray (1900), CCEL torrey/pray: twelve chapters and a postscript.
+    BookEntry("how-to-pray", "How to Pray", "r-a-torrey", "ccel", "torrey/pray",
+              cover_color="#4a3f8f", skip=("Preface", "Postscript")),
     # Hurlbut's Life of Christ for Young and Old (1915, Gutenberg #40460) — the
     # life of Jesus told as ~104 short story-chapters from the four Gospels, for
     # the young-readers shelf. (His whole-Bible Story of the Bible is OCR-only.)

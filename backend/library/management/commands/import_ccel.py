@@ -512,7 +512,7 @@ class Command(BaseCommand):
                     continue
                 pieces: list[str] = []
                 for url, leaf_title in leaves:
-                    if is_front_matter(leaf_title):
+                    if is_front_matter(leaf_title) or leaf_title in entry.skip:
                         continue
                     leaf_title = clean_title(leaf_title)
                     # Match the body's restated heading against the FULL title —
