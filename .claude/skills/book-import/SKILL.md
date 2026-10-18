@@ -2311,6 +2311,23 @@ fonts, so a Mac run changes a dozen ko entries along with yours, even though
 it says "wrote 1". Take `git show HEAD:` of the manifest and splice in only
 your book's block. *(holiness, 2026-10)*
 
+**A Gutenberg POETRY book sets each poem as a `<pre>` block → write a
+`build_<name>` command.** Wheatley's *Poems* (#409) has hard line breaks, verse
+paragraphs marked only by an indent of 3 to 7 spaces (the first cut used 3–5 and silently merged seven paragraphs, which only code review caught; rejoin wrapped lines BEFORE testing indent), the author's footnotes inside the
+`<pre>` as `*`-led blocks, and stanza numerals (`I.`) on lines of their own.
+`import_gutenberg` would flatten all of that into prose and drop the short
+poems. `build_wheatley_poems` is the model: one chapter per poem, verse lines
+joined with `<br/>`, notes in italics where they fall, a line the transcription
+wrapped rejoined to the one before, and the poem titles hand-listed with a
+heading-key check so a re-flowed source fails the build instead of shifting
+every title. A one- or two-line block that opens a poem is a printed subtitle or text reference ("1 SAMUEL, Chap. xvii."), so set it in italics, not as verse. *(poems-on-various-subjects, 2026-10)*
+
+**A clean new book can still fail the English-audit ratchet in OTHER works.**
+`word-fusion` scores against corpus-wide word frequencies, so adding ~14k words
+moved "toning" in two Moody/Spurgeon texts over the line. `--update-baseline`
+refuses that as loosening. Confirm each new flag is faithful, then use
+`--absorb` and say why in the commit message. *(2026-10)*
+
 **`import_ccel` leaves `source_url` empty and can reuse a `sort_order` that is
 already taken.** Holiness came in at 68, the same as `our-daily-walk`. Before
 serializing, set `source_url`, `sort_order` (fixture max + 1), `attribution`,
