@@ -687,7 +687,7 @@
 
 	<!-- Books -->
 	{#if author.books.length}
-		<section id="books" class="jump-anchor mx-auto mt-12 max-w-[40rem]">
+		<section id="books" class="jump-anchor deferred mx-auto mt-12 max-w-[40rem]">
 			<h2 class="section-heading">
 				{t('author.booksBy')} {author.name}
 				<span class="text-small font-normal count">({author.books.length})</span>
@@ -704,7 +704,7 @@
 
 	<!-- Sermons -->
 	{#if author.sermons.length}
-		<section id="sermons" class="jump-anchor mx-auto mt-12 max-w-[40rem]">
+		<section id="sermons" class="jump-anchor deferred mx-auto mt-12 max-w-[40rem]">
 			<h2 class="section-heading">
 				{t('author.sermonsBy')} {author.name}
 				<span class="text-small font-normal count">({author.sermons.length})</span>
@@ -726,7 +726,7 @@
 	     thing a reader of their page wants, so it follows their own work rather
 	     than waiting among the anthologies below. -->
 	{#if booksAbout.length}
-		<section id="about-them" class="jump-anchor mx-auto mt-12 max-w-[40rem]">
+		<section id="about-them" class="jump-anchor deferred mx-auto mt-12 max-w-[40rem]">
 			<h2 class="section-heading">
 				{t('author.booksAbout')} {author.name}
 				<span class="text-small font-normal count">({booksAbout.length})</span>
@@ -743,7 +743,7 @@
 	     (BookPerson) — an anthology that features them. Book cards, not person
 	     cards, and showAuthor so it's clear whose work it is. -->
 	{#if appearsIn.length}
-		<section class="mx-auto mt-12 max-w-[40rem]">
+		<section class="deferred mx-auto mt-12 max-w-[40rem]">
 			<h2 class="section-heading">{t('author.appearsIn')}</h2>
 			<div class="grid grid-cols-2 gap-5 sm:grid-cols-3">
 				{#each appearsIn as book (book.slug)}
@@ -765,7 +765,7 @@
 	     empty list and no section at all. Below the works, because these are
 	     writing ABOUT this person, not BY them. -->
 	{#if author.articles?.length}
-		<section id="articles" class="jump-anchor mx-auto mt-12 max-w-[40rem]">
+		<section id="articles" class="jump-anchor deferred mx-auto mt-12 max-w-[40rem]">
 			<h2 class="section-heading">
 				{t('author.articlesAbout')}
 				{author.name}
@@ -802,7 +802,7 @@
 	     accordion and the FAQPage JSON-LD are built from one array, so they cannot
 	     disagree. -->
 	{#if showFaq}
-		<section id="faq" class="jump-anchor mx-auto mt-12 max-w-[40rem]">
+		<section id="faq" class="jump-anchor deferred mx-auto mt-12 max-w-[40rem]">
 			<!-- Localized: the API serves the Q&A per locale (AuthorTranslation.faq),
 			     so the heading follows the reader's language too. Reuses the same
 			     `qa.sectionTitle` key the book Q&A section uses, so the two read
@@ -821,7 +821,7 @@
 
 	<!-- More lives to explore: nearest contemporaries by era. -->
 	{#if contemporaries.length}
-		<section class="mx-auto mt-12 max-w-[40rem] border-t border-border pt-8">
+		<section class="deferred mx-auto mt-12 max-w-[40rem] border-t border-border pt-8">
 			<h2 class="section-heading">{t('author.moreLives')}</h2>
 			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
 				{#each contemporaries as c (c.slug)}
@@ -918,6 +918,31 @@
 	   contract the biographies index's group headings use. */
 	.jump-anchor {
 		scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem);
+	}
+
+	/* The shelves below the biography (books, sermons, articles, Q&A, more
+	   lives) skip style, layout and paint until they near the viewport: a
+	   prolific writer's page runs to hundreds of cards, and every state change
+	   on it (a tap that opens a brief, the sub-nav lighting a tab) otherwise
+	   recalcs all of them (INP). `auto` remembers each section's real height
+	   once it has rendered; the figure is only a first guess. Jumps still land:
+	   the jump-bar's targets were checked in Chromium, smooth and cold `#id`,
+	   with guesses a third of the real height. None holds anything sticky.
+	   Paint containment would clip the cards' hover shadows at the section's
+	   edges, so the clip edge is pushed out — and where the browser can't do
+	   that (overflow-clip-margin), the sections simply render as before. */
+	@supports (overflow-clip-margin: 1px) {
+		.deferred {
+			content-visibility: auto;
+			contain-intrinsic-block-size: auto 30rem;
+			overflow-clip-margin: 2rem;
+		}
+		#books.deferred {
+			contain-intrinsic-block-size: auto 50rem;
+		}
+		#sermons.deferred {
+			contain-intrinsic-block-size: auto 60rem;
+		}
 	}
 
 	/* On-page jump bar. Sits in the flow after the hero, then pins under the app
