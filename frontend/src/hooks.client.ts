@@ -3,13 +3,17 @@ import { dev } from '$app/environment';
 import { env } from '$env/dynamic/public';
 import { canonicalRedirect } from '$lib/canonicalRedirect';
 import { SITE_URL } from '$lib/config';
+import { loadUiCatalog } from '$lib/i18n.svelte';
+import { getLocale } from '$lib/paraglide/runtime';
 
 // A duplicate URL (no trailing slash, or the Render host) moves to the real one
 // before anything renders — see $lib/canonicalRedirect. The pending promise
 // holds hydration so the wrong page never flashes while the browser leaves.
+// Otherwise this document's UI strings load first: `t()` reads them while the
+// first page renders ($lib/i18n).
 export const init: ClientInit = () => {
 	const to = canonicalRedirect(location, SITE_URL);
-	if (!to) return;
+	if (!to) return loadUiCatalog(getLocale());
 	location.replace(to);
 	return new Promise<void>(() => {});
 };
@@ -64,10 +68,21 @@ function loadSentry(): Promise<SentryModule> {
 	return sentry;
 }
 
-// Start loading as soon as the app boots when monitoring is on, so the SDK is
-// ready before the first error rather than being fetched during one — but
-// off the critical path, since nothing awaits this.
-if (env.PUBLIC_SENTRY_DSN) void loadSentry();
+// When monitoring is on, load the SDK once the page has finished loading and
+// the main thread is idle. It is ~430 KB of JavaScript; parsing it at boot
+// (as this once did) landed exactly when a reader's first taps do, and a tap
+// that waits on a parse is what mobile INP measures. An error before then
+// still reaches Sentry: handleError below loads the SDK on demand.
+if (env.PUBLIC_SENTRY_DSN) afterLoadWhenIdle(() => void loadSentry());
+
+function afterLoadWhenIdle(run: () => void): void {
+	const idle = () =>
+		'requestIdleCallback' in window
+			? requestIdleCallback(run, { timeout: 10_000 })
+			: setTimeout(run, 3_000);
+	if (document.readyState === 'complete') idle();
+	else addEventListener('load', idle, { once: true });
+}
 
 // Report any uncaught load/render error (to Sentry when configured) and always
 // leave a console trace for local debugging. The returned shape is what the
