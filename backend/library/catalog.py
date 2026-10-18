@@ -861,6 +861,18 @@ BOOKS: list[BookEntry] = [
     BookEntry("holiness", "Holiness", "j-c-ryle", "ccel", "ryle/holiness",
               subtitle="Its Nature, Hindrances, Difficulties, and Roots",
               cover_color="#6b2d3a"),
+    # Thomas Watson's A Body of Divinity (1692), sermons on the Westminster
+    # Shorter Catechism, with the memoir C. H. Spurgeon compiled for his
+    # edition (CCEL). Its companions, The Ten Commandments and The Lord's
+    # Prayer, are separate books. The CCEL text is OCR with damaged Scripture
+    # references; corrections.py re-points them. CCEL also closes Watson's
+    # quotations with a straight ': the committed fixture sets them as ’, so
+    # after a re-import convert the book's single quotes again before writing
+    # the fixture (QuoteStyleTests.test_no_quotation_closes_with_the_wrong_mark).
+    BookEntry("a-body-of-divinity", "A Body of Divinity", "thomas-watson",
+              "ccel", "watson/divinity",
+              subtitle="Contained in Sermons upon the Westminster Assembly’s Catechism",
+              cover_color="#3f4a2b"),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an
