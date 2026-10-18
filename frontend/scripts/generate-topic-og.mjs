@@ -124,6 +124,7 @@ function card({ title, tagline, scripture_ref, emblem, accent }) {
 				flexDirection: 'column',
 				justifyContent: 'space-between',
 				padding: '72px',
+				boxSizing: 'border-box',
 				background: BACKGROUND,
 				fontFamily: 'sans'
 			},
@@ -155,6 +156,7 @@ function card({ title, tagline, scripture_ref, emblem, accent }) {
 							justifyContent: 'center',
 							flexShrink: 0,
 							width: '290px',
+							boxSizing: 'border-box',
 							height: '290px',
 							borderRadius: '999px',
 							// The app's emblem-chip recipe (app.css `.emblem-chip`): a wash of

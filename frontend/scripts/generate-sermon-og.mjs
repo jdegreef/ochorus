@@ -181,6 +181,7 @@ function card({ title, scripture, author, year, accent }) {
 				flexDirection: 'column',
 				justifyContent: 'space-between',
 				padding: '72px',
+				boxSizing: 'border-box',
 				background: BACKGROUND,
 				fontFamily: 'sans'
 			},
@@ -220,6 +221,7 @@ function card({ title, scripture, author, year, accent }) {
 							justifyContent: 'center',
 							flexShrink: 0,
 							width: '290px',
+							boxSizing: 'border-box',
 							height: '290px',
 							borderRadius: '999px',
 							flexDirection: 'column',

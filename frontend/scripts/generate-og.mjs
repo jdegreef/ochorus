@@ -34,6 +34,7 @@ function card(title, subtitle) {
 				flexDirection: 'column',
 				justifyContent: 'space-between',
 				padding: '80px',
+				boxSizing: 'border-box',
 				background: BACKGROUND,
 				fontFamily: 'sans'
 			},
