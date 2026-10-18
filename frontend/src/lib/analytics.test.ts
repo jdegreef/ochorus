@@ -60,4 +60,18 @@ describe('analytics (Plausible)', () => {
 		initAnalytics();
 		expect(plausibleScripts()).toHaveLength(1);
 	});
+
+	it('sends at once from a hidden page, which may never paint again', async () => {
+		const { track } = await loadAnalytics({ PUBLIC_PLAUSIBLE_DOMAIN: 'ochorus.com' });
+		const plausible = vi.fn();
+		(window as unknown as { plausible: unknown }).plausible = plausible;
+		const visibility = vi.spyOn(document, 'visibilityState', 'get').mockReturnValue('hidden');
+		try {
+			track('Slow tap', { route: '/books' });
+			expect(plausible).toHaveBeenCalledWith('Slow tap', { props: { route: '/books' } });
+		} finally {
+			visibility.mockRestore();
+			delete (window as unknown as { plausible?: unknown }).plausible;
+		}
+	});
 });
