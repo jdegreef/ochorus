@@ -503,6 +503,16 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Tibet, and around the world."
         ),
     ),
+    "j-c-ryle": AuthorEntry(
+        slug="j-c-ryle",
+        name="J. C. Ryle",
+        birth_year=1816,
+        death_year=1900,
+        bio=(
+            "First Bishop of Liverpool and a plain-spoken leader of Victorian "
+            "evangelicals."
+        ),
+    ),
 }
 
 # Shelf order. Small, clean books first.
@@ -839,6 +849,12 @@ BOOKS: list[BookEntry] = [
               "sadhu-sundar-singh", "ccel", "singh/feet",
               subtitle="Translated from the Urdu by Rev. Arthur and Mrs. Parker",
               cover_color="#8a4b1f", group_parts=True),
+    # J. C. Ryle's Holiness in the enlarged 1879 edition (Introduction + 21
+    # papers; CCEL). Its last paper, "Christ Is All", is also on the sermon
+    # shelf as christ-is-all — kept in both places on purpose.
+    BookEntry("holiness", "Holiness", "j-c-ryle", "ccel", "ryle/holiness",
+              subtitle="Its Nature, Hindrances, Difficulties, and Roots",
+              cover_color="#6b2d3a"),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an

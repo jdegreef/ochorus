@@ -2305,6 +2305,17 @@ twin (`wrote 0 of N twins`) — and `tests_fixture` then reds on the missing ras
 twin. Order: import → `generate_covers` → write fixture → `npm run og:covers`.
 *(2026-09)*
 
+**`npm run og:covers` on macOS also rewrites unrelated `og-manifest.json`
+entries.** The `fonts` digests of the Korean covers depend on the machine's
+fonts, so a Mac run changes a dozen ko entries along with yours, even though
+it says "wrote 1". Take `git show HEAD:` of the manifest and splice in only
+your book's block. *(holiness, 2026-10)*
+
+**`import_ccel` leaves `source_url` empty and can reuse a `sort_order` that is
+already taken.** Holiness came in at 68, the same as `our-daily-walk`. Before
+serializing, set `source_url`, `sort_order` (fixture max + 1), `attribution`,
+`description` and `publication_year`. *(holiness, 2026-10)*
+
 **`npm run og:covers` on a FRESH worktree dies until Playwright's browser is
 installed.** The twin generator renders with Playwright's chromium, which a
 fresh `npm install` does NOT download; it fails with a Playwright banner

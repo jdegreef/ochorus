@@ -207,6 +207,7 @@ TOPICS = [
         [
             "plain-account-christian-perfection",
             "godliness",
+            "holiness",
             "religious-affections",
             "key-teachings-of-jonathan-edwards",
             "ten-commandments",
