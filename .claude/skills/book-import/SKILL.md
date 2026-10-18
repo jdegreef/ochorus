@@ -2328,6 +2328,29 @@ moved "toning" in two Moody/Spurgeon texts over the line. `--update-baseline`
 refuses that as loosening. Confirm each new flag is faithful, then use
 `--absorb` and say why in the commit message. *(2026-10)*
 
+**A CCEL text can be OCR, and its Scripture references are where it shows.**
+Watson's *A Body of Divinity* (`watson/divinity`) reads cleanly as prose, but
+355 of its ~2,000 references named verses that don't exist ("Gal 5:52",
+"Matt 16:66", "Phil 1:1I"), and hundreds more pointed at the wrong real verse.
+`english_audit` sees none of it. Before trusting any CCEL Puritan text, check
+every reference against a KJV verse table: parse `Book ch:vs` and ask whether
+the verse exists. The repair that worked:
+- match each reference's adjacent quotation (before OR after it) against the
+  verses of the cited chapter;
+- prefer the verse where a multi-verse quote begins;
+- leave a cited range ("Ruth 1:20, 21") alone when the quote falls inside it;
+- where there is no quote, try only verses that keep the units digit (this
+  OCR misread the tens digit) and score them against the surrounding sentence;
+- settle the rest by hand.
+
+Ship as `BODY_CORRECTIONS` pairs with left context until unique, **plus the
+next character**. Without it, "4:1" → "4:11" matches its own output and grows
+a digit on every deploy, which `SettledBodyIdempotenceTests` catches. CCEL also
+closed the quotations with a straight ' (`QuoteStyleTests.test_no_quotation_
+closes_with_the_wrong_mark`). Convert single quotes in the DB rows, then
+re-serialize, and set each pair's RIGHT side in the same curly form, or
+`CorrectionsHygieneTests` calls every pair dead. *(a-body-of-divinity, 2026-10)*
+
 **`import_ccel` leaves `source_url` empty and can reuse a `sort_order` that is
 already taken.** Holiness came in at 68, the same as `our-daily-walk`. Before
 serializing, set `source_url`, `sort_order` (fixture max + 1), `attribution`,
