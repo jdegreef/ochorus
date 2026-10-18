@@ -32,6 +32,7 @@ from __future__ import annotations
 import html
 import re
 
+from bs4 import Tag
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
@@ -44,7 +45,6 @@ from library.models import Author, Book, Chapter
 
 SLUG = "poems-on-various-subjects"
 TITLE = "Poems on Various Subjects, Religious and Moral"
-SUBTITLE = ""
 AUTHOR_SLUG = "phillis-wheatley"
 GUTENBERG_ID = "409"
 COVER_COLOR = covers.ink_safe("#2f5d50")
@@ -181,7 +181,7 @@ def _render_verse(text: str, stanzaic: bool) -> list[str]:
             out.append(f"<p>{first}</p>")
             continue
         paras: list[list[str]] = [[]]
-        for i, raw in enumerate(lines):
+        for raw in lines:
             line = raw.strip()
             prev = paras[-1][-1] if paras[-1] else ""
             # A transcription wrap: the previous line ran on without
@@ -191,7 +191,7 @@ def _render_verse(text: str, stanzaic: bool) -> list[str]:
                 continue
             # A deeper indent opens a verse paragraph in couplet poems; in
             # stanzaic ones the indent only staggers the short lines.
-            if not stanzaic and i > 0 and _indent(raw) >= 3 and _indent(raw) <= 5 and paras[-1]:
+            if not stanzaic and paras[-1] and 3 <= _indent(raw) <= 5:
                 paras.append([])
             paras[-1].append(line)
         out.extend("<p>" + "<br/>".join(_esc(ln) for ln in p) + "</p>" for p in paras if p)
@@ -199,7 +199,7 @@ def _render_verse(text: str, stanzaic: bool) -> list[str]:
 
 
 def _poem_body(pres: list, lead: str) -> str:
-    texts = [p.get_text() for p in pres if p.get_text().strip() and _key(p.get_text()) != "FINIS"]
+    texts = [t for t in (p.get_text() for p in pres) if t.strip() and _key(t) != "FINIS"]
     stanzaic = any(_NUMERAL.match(ln.strip()) for t in texts for ln in t.split("\n"))
     parts = [f"<p><i>{_esc(lead)}</i></p>"] if lead else []
     for t in texts:
@@ -210,8 +210,10 @@ def _poem_body(pres: list, lead: str) -> str:
 def _section(h) -> list:
     """The siblings after heading ``h`` up to the next h1/h2 or the PG footer."""
     nodes = []
-    for sib in h.find_next_siblings():
-        if sib.name in ("h1", "h2") or sib.name == "footer":
+    for sib in h.next_siblings:
+        if not isinstance(sib, Tag):
+            continue
+        if sib.name in ("h1", "h2", "footer"):
             break
         nodes.append(sib)
     return nodes
@@ -225,15 +227,21 @@ def _prose(nodes) -> list[str]:
     ]
 
 
-def _preface(heads: dict) -> str:
-    pref = _section(heads["PREFACE"])
+def _preface(order: list) -> str:
+    def head(key):
+        h = next((h for k, h in order if k == key), None)
+        if h is None:
+            raise CommandError(f"{key!r} heading not found — the edition changed.")
+        return h
+
+    pref = _section(head("PREFACE"))
     parts = _prose(pref)
     sig = next(n for n in pref if n.name == "h3")
     # John Wheatley's signature sits between the letter and its date line.
     date = parts.pop()
     parts += [f"<p>{_esc(sig.get_text(' ', strip=True).title())}</p>", date]
 
-    public = _section(heads["TOTHEPUBLIC"])
+    public = _section(head("TOTHEPUBLIC"))
     parts.append("<h3>To the Public</h3>")
     parts += _prose(public)
     pre = next(n for n in public if n.name == "pre").get_text()
@@ -254,20 +262,17 @@ def _preface(heads: dict) -> str:
                 right.append(other.strip())
     parts.append("<p>" + "<br/>".join(_esc(n) for n in names + right) + "</p>")
     parts += [f"<p><i>{_esc(re.sub(r' +', ' ', n))}</i></p>" for n in notes]
-    return "".join(parts)
+    out = "".join(parts)
+    for old, new in _FIXES:
+        if out.count(old) != 1:
+            raise CommandError(f"fix {old!r} matched {out.count(old)} times, not once — the edition changed.")
+        out = out.replace(old, new)
+    return out
 
 
 def _chapters() -> list[tuple[str, str]]:
     root = content_root(fetch_html(GUTENBERG_ID))
-    heads = {}
-    order: list = []
-    for h in root.find_all("h2"):
-        key = _key(h.get_text())
-        heads.setdefault(key, h)
-        order.append((key, h))
-    for need in ("PREFACE", "TOTHEPUBLIC"):
-        if need not in heads:
-            raise CommandError(f"{need!r} heading not found — the edition changed.")
+    order = [(_key(h.get_text()), h) for h in root.find_all("h2")]
 
     # The poems follow the "P O E M S / O N / V A R I O U S S U B J E C T S"
     # half-title; every h2 after it is one poem.
@@ -276,7 +281,7 @@ def _chapters() -> list[tuple[str, str]]:
     if len(poems) != len(POEMS):
         raise CommandError(f"expected {len(POEMS)} poems, found {len(poems)}.")
 
-    chapters = [("Preface", _preface(heads))]
+    chapters = [("Preface", _preface(order))]
     for (title, check, lead), (key, h) in zip(POEMS, poems, strict=True):
         if not key.startswith(check):
             raise CommandError(f"poem {title!r}: source heading is {key!r}, expected {check!r}…")
@@ -299,7 +304,7 @@ class Command(BaseCommand):
         content = {
             "author": author,
             "title": TITLE,
-            "subtitle": SUBTITLE,
+            "subtitle": "",
             "description": DESCRIPTION,
             "attribution": ATTRIBUTION,
             "cover_color": COVER_COLOR,
@@ -321,8 +326,6 @@ class Command(BaseCommand):
 
         total = 0
         for order, (title, body) in enumerate(chapters, start=1):
-            for old, new in _FIXES:
-                body = body.replace(old, new)
             body = settled_chapter_body(SLUG, order, clean_fragment(body))
             wc = word_count(body)
             if wc < 40:
