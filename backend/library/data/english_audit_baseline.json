@@ -25,7 +25,8 @@
    "space-before-punct": 2
   },
   "an-all-round-ministry": {
-   "space-before-punct": 2
+   "space-before-punct": 2,
+   "word-fusion": 1
   },
   "are-you-forgiven": {
    "orphan-close-quote": 2
@@ -342,6 +343,9 @@
   },
   "the-cloud-of-witnesses": {
    "space-before-punct": 12
+  },
+  "the-dying-thief": {
+   "word-fusion": 1
   },
   "the-everlasting-man": {
    "lost-paragraphing": 3,

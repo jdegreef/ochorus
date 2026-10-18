@@ -291,6 +291,7 @@ TOPICS = [
         [
             "a-brand-plucked-from-the-fire",
             "memoirs-of-mrs-zilpha-elaw",
+            "poems-on-various-subjects",
             "amanda-smith-autobiography",
             "religious-experience-and-journal",
             "meditations-maria-w-stewart",
@@ -498,6 +499,7 @@ TOPICS = [
             "religious-experience-and-journal",
             "a-brand-plucked-from-the-fire",
             "memoirs-of-mrs-zilpha-elaw",
+            "poems-on-various-subjects",
             "amanda-smith-autobiography",
             "meditations-maria-w-stewart",
             "journal-of-an-expedition-up-the-niger",

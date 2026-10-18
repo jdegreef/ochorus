@@ -16082,6 +16082,17 @@
 			"layout": "split/mauve",
 			"bar": 0
 		},
+		"poems-on-various-subjects": {
+			"ground": "cf330738016e176cbc65885d24611dd954898ff52b561bb5547a261f8d45eb38",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"possibilities-of-prayer": {
 			"ground": "cae7de009a1255af4caee1c90e403b77b4152d7dcec1134f9058beb91b63c45b",
 			"style": "devotional",
