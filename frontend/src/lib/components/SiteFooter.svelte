@@ -532,6 +532,21 @@
 	   top edge. Purely decorative, so it stays a 2px rule. */
 	.site-footer {
 		position: relative;
+		/* Under every page and almost always below the fold: skip its style,
+		   layout and paint until it nears the viewport, so a long page's
+		   recalcs (every tap that changes state) don't pay for ~1,200px of
+		   footer nobody is looking at (INP). `auto` remembers the real height
+		   once rendered; the figure is the measured footer (≈1,500px on a
+		   phone, ≈1,150–1,300px wider). Nothing in it is sticky or overflows
+		   its box (paint containment would clip it), and its IntersectionObservers
+		   (the resume card's 600px prefetch, the feedback hand-off) fire as before. */
+		content-visibility: auto;
+		contain-intrinsic-block-size: auto 1500px;
+	}
+	@media (min-width: 640px) {
+		.site-footer {
+			contain-intrinsic-block-size: auto 1250px;
+		}
 	}
 	.site-footer::before {
 		content: '';

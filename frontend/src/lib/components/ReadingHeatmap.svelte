@@ -127,3 +127,35 @@
 	</div>
 </div>
 
+<style>
+	/* Moved out of app.css (only this component uses .heat / .heat-swatch),
+	   so the site-wide sheet stays smaller (INP). :global keeps the selectors. */
+	:global {
+		/* THE READING CALENDAR'S GOLDS (ReadingHeatmap). A read day is never paler
+		   than full --gold, so even a reader of scattered single days sees every one
+		   clearly against an unread --surface-2. A longer run goes deeper, mixing the
+		   gold toward the theme's own ink, one step per streak tier (streak.ts,
+		   runLevel): darker on paper and sepia, brighter on lamplight. Rules rather
+		   than tokens, so the mix resolves against the --gold where the calendar is. */
+		.heat[data-level='0'] {
+			background: var(--surface-2);
+		}
+		.heat[data-level='1'] {
+			background: var(--gold);
+		}
+		.heat[data-level='2'] {
+			background: color-mix(in srgb, var(--gold) 80%, var(--text));
+		}
+		.heat[data-level='3'] {
+			background: color-mix(in srgb, var(--gold) 62%, var(--text));
+		}
+		.heat[data-level='4'] {
+			background: color-mix(in srgb, var(--gold) 45%, var(--text));
+		}
+		.heat-swatch {
+			display: inline-block;
+			width: 0.66rem;
+			height: 0.66rem;
+		}
+	}
+</style>

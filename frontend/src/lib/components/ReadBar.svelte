@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { portal } from '$lib/actions/portal';
 	import { publishHeight } from '$lib/actions/publishHeight';
+	import { holdFlag } from '$lib/presenceFlag';
 
 	/**
 	 * The read verb pinned to the foot of a phone screen, once the page's own
@@ -37,6 +38,16 @@
 		onread?: () => void;
 		hideFrom?: 'sm' | 'lg';
 	} = $props();
+
+	// <body data-read-bar> (and data-read-bar-until-sm) while the bar is up, for
+	// the foot clearance below: a flag rather than `body:has(.read-bar)`, which
+	// restyled the whole page each time the bar came or went on scroll (INP).
+	$effect(() => {
+		if (!show) return;
+		const releases = [holdFlag(document.body, 'data-read-bar')];
+		if (hideFrom === 'sm') releases.push(holdFlag(document.body, 'data-read-bar-until-sm'));
+		return () => releases.forEach((release) => release());
+	});
 </script>
 
 {#if show}
@@ -68,14 +79,14 @@
 	}
 	/* While the bar is up, the page's foot scrolls clear of it. First, so the
 	   resets below win wherever the bar steps aside. */
-	:global(body:has(.read-bar)) {
+	:global(body[data-read-bar]) {
 		padding-bottom: 4.5rem;
 	}
 	@media (min-width: 1024px) {
 		.read-bar {
 			display: none;
 		}
-		:global(body:has(.read-bar)) {
+		:global(body[data-read-bar]) {
 			padding-bottom: 0;
 		}
 	}
@@ -83,7 +94,7 @@
 		.read-bar.until-sm {
 			display: none;
 		}
-		:global(body:has(.read-bar.until-sm)) {
+		:global(body[data-read-bar-until-sm]) {
 			padding-bottom: 0;
 		}
 	}

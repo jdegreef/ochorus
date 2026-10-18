@@ -6,11 +6,13 @@ import { markUnadvertisedNoindex } from '$lib/advertised-locales';
 import { API_BASE_URL } from '$lib/config';
 import { paraglideMiddleware } from '$lib/paraglide/server';
 import { getTextDirection } from '$lib/paraglide/runtime';
+import { markTabBar } from '$lib/presenceFlag';
 import { loadUiCatalog } from '$lib/i18n.svelte';
 
 // Runs during prerendering: sets the request-scoped locale (from the URL) and
 // writes the correct <html lang="…" dir="…"> into each localized static page,
-// marks the 200.html fallback shell noindex ($lib/fallbackShell), and every
+// flags <html data-tabbar> on a page that renders the phone tab bar, marks
+// the 200.html fallback shell noindex ($lib/fallbackShell), and every
 // page of a locale that isn't live yet ($lib/advertised-locales).
 //
 // `dir` has to be baked in here, not only set on hydration. The root layout does
@@ -28,9 +30,13 @@ export const handle: Handle = ({ event, resolve }) =>
 			transformPageChunk: ({ html }) =>
 				markUnadvertisedNoindex(
 					markFallbackNoindex(
-						html
-							.replace('%paraglide.lang%', locale)
-							.replace('%paraglide.dir%', getTextDirection(locale)),
+						// <html data-tabbar> where the page carries the phone tab bar,
+						// so the first paint already keys on it ($lib/presenceFlag).
+						markTabBar(
+							html
+								.replace('%paraglide.lang%', locale)
+								.replace('%paraglide.dir%', getTextDirection(locale))
+						),
 						// The 200/404 shell answers every unbuilt path — see fallbackShell.
 						event.url.pathname
 					),

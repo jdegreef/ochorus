@@ -401,14 +401,20 @@
 	   (the discrete alpha table keeps only the top of the noise), light on
 	   lamplight, warm brown on paper and sepia. Sparse rather than a uniform
 	   wash, so it reads as paper without moving the ground's average colour
-	   (a wash darkened paper visibly and showed no texture at all). An inline
-	   SVG data: URI (img-src allows data:), one 180px tile, no request.
+	   (a wash darkened paper visibly and showed no texture at all). One 180px
+	   tile, pre-rendered from an feTurbulence SVG by scripts/generate-grain.mjs
+	   (which holds the recipe; change it there and re-run). It used to BE that
+	   SVG, as a data: URI, and a browser re-runs the filter each time it
+	   rasterises the tile — paint cost under every page, worst on a phone. The
+	   image-set serves the tile drawn at the screen's own density, so specks
+	   stay one CSS pixel sharp as the SVG's were. -webkit-image-set() because
+	   Safari before 17 knows only the prefixed form; every engine accepts it.
 	   --band is the contrasting ground of a .page-band section, a step off
 	   --bg (lighter on lamplight, deeper on paper and sepia); every text and
 	   hue token clears 4.5:1 on it (libraryPalette.test.ts). Lamplight's grain
 	   is named (--grain-light-specks) because .night-band reuses it in every
 	   theme; paper and sepia override --grain, never this. */
-	--grain-light-specks: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .96 0 0 0 0 .9 0 0 0 0 .8 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 .10 .10'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	--grain-light-specks: -webkit-image-set(url('/textures/grain-light.png') 1x, url('/textures/grain-light@2x.png') 2x, url('/textures/grain-light@3x.png') 3x);
 	--grain: var(--grain-light-specks);
 	--band: #1d1914;
 	/* How much of a book's own cover_color tints its card (.book-card): the
@@ -496,7 +502,7 @@
 	--shelf-back: #f1e8d8;
 	--shelf-wood: #b98a5c;
 	--shelf-wood-edge: #8a6440;
-	--grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .32 0 0 0 0 .18 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 .16 .16'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	--grain: -webkit-image-set(url('/textures/grain-paper.png') 1x, url('/textures/grain-paper@2x.png') 2x, url('/textures/grain-paper@3x.png') 3x);
 	--band: #f1e8d8;
 	--cover-tint-amount: 8%;
 	--hue-indigo: #3f3d9a;
@@ -541,7 +547,7 @@
 	--shelf-back: #e8dbbf;
 	--shelf-wood: #a97b4d;
 	--shelf-wood-edge: #7a5634;
-	--grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .3 0 0 0 0 .14 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 .18 .18'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	--grain: -webkit-image-set(url('/textures/grain-sepia.png') 1x, url('/textures/grain-sepia@2x.png') 2x, url('/textures/grain-sepia@3x.png') 3x);
 	--band: #ece1c9;
 	--cover-tint-amount: 7%;
 	--hue-indigo: #3f3d9a;
@@ -1609,6 +1615,16 @@
 		background: color-mix(in srgb, var(--surface) 92%, transparent);
 		backdrop-filter: blur(8px);
 	}
+	/* Phones: no blur. A backdrop-filter re-samples and blurs everything
+	   under a fixed bar on every scroll frame — the costliest paint a phone
+	   does while reading — so the bar goes near-opaque instead, which keeps
+	   its controls as legible over the text as the glass did. */
+	@media (max-width: 639.98px) {
+		.reader-dock {
+			background: color-mix(in srgb, var(--surface) 97%, transparent);
+			backdrop-filter: none;
+		}
+	}
 	/* A soft, devotional button. */
 	.btn {
 		display: inline-flex;
@@ -2422,9 +2438,11 @@ nav.appnav .navmore-menu {
    500px tall) its "More" sheet holds the links, the theme switch and sign-in,
    so the top bar is brand + search (+ a signed-in reader's avatar, whose menu
    keeps the admin and feedback entries). Keep the query list in step with
-   TabBar's. */
+   TabBar's. Keyed on the [data-tabbar] flag TabBar holds on <html>
+   ($lib/presenceFlag), not `:root:has(.tabbar)`: a root-anchored :has()
+   restyles the whole document whenever the bar comes or goes (INP). */
 @media (max-width: 639.98px), (max-height: 499.98px) and (pointer: coarse) {
-	:root:has(.tabbar) nav.appnav :is(.prefs, .navtoggle, .navmenu, .account-signin) {
+	:root[data-tabbar] nav.appnav :is(.prefs, .navtoggle, .navmenu, .account-signin) {
 		display: none;
 	}
 }
@@ -2857,43 +2875,6 @@ nav.appnav .navsearch:hover {
 	border-color: color-mix(in srgb, var(--shelf-hue) 55%, var(--border));
 	box-shadow: 0 6px 20px -12px color-mix(in srgb, var(--shelf-hue) 70%, transparent);
 }
-/* A shelf card with its own action link (ShelfCard `action`): the box is the
-   card, its band + body are one link, and the action sits in a foot below. */
-.shelf-card-main {
-	display: flex;
-	flex-direction: column;
-	flex: 1;
-	color: inherit;
-	text-decoration: none;
-}
-.shelf-card-main:hover {
-	text-decoration: none;
-}
-/* The link fills the clipped box (overflow: hidden), so its focus ring goes
-   inside it — drawn outside, it was cut off on every edge. */
-.shelf-card-main:focus-visible {
-	outline-offset: -2px;
-}
-/* Hovering the foot's own link must not light the card as if the card link
-   were the target: the box rests while the pointer is on the action. */
-.shelf-card--action:has(.shelf-card-foot:hover) {
-	border-color: var(--border);
-	box-shadow: none;
-	transform: none;
-}
-.shelf-card--action:has(.shelf-card-foot:hover) .shelf-card-title {
-	color: var(--text);
-}
-.shelf-card--action .shelf-card-body {
-	padding-bottom: 0.75rem;
-}
-.shelf-card-foot {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 0.6rem;
-	padding: 0 1.1rem 1.15rem;
-}
 /* ── Hue bands ─────────────────────────────────────────────────────────────
    The colour-washed ground an item's own hue is allowed to tint: a wash from
    the top-inline-start corner over a barely-tinted surface, with a hairline at
@@ -2922,16 +2903,6 @@ nav.appnav .navsearch:hover {
 		),
 		color-mix(in srgb, var(--band-hue) 9%, var(--surface-2));
 	border-bottom: 1px solid var(--band-line);
-}
-/* The coloured header band. Pair with .hue-band, which carries the wash. */
-.shelf-card-band {
-	--band-hue: var(--shelf-hue);
-	position: relative;
-	display: flex;
-	align-items: flex-end;
-	gap: 0.6rem;
-	min-height: 5.75rem;
-	padding: 1rem 1.1rem 0.9rem;
 }
 /* ── The bookshelf plank ────────────────────────────────────────────────────
    One board for both Bookshelf views (ShelfBook's per-cell length, the spines
@@ -3072,41 +3043,6 @@ nav.appnav .navsearch:hover {
 	width: 66%;
 	height: 66%;
 }
-/* The shelf card's badge: an emblem chip in the card's hue. */
-.shelf-card-badge {
-	--chip-size: 3.5rem;
-	--chip-hue: var(--shelf-hue);
-}
-/* A portrait can sit in the chip instead of an icon (the sermons shelf). */
-.shelf-card-badge img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-.shelf-card-body {
-	display: flex;
-	flex-direction: column;
-	flex: 1; /* with .shelf-card{height:100%}, this is what levels the cards */
-	padding: 0.9rem 1.1rem 1.15rem;
-}
-.shelf-card-title {
-	font-family: var(--font-display);
-	font-size: var(--fs-h3);
-	font-weight: 600;
-	color: var(--text);
-	transition: color var(--duration-fast);
-}
-.shelf-card-subtitle {
-	display: block;
-	margin-top: 0.125rem;
-	font-family: var(--font-sans);
-	font-size: var(--fs-small);
-	font-weight: 400;
-	color: var(--muted);
-}
-.shelf-card:hover .shelf-card-title {
-	color: color-mix(in srgb, var(--shelf-hue) 78%, var(--text));
-}
 /* Descriptions are clamped so one long blurb can't set the height of a whole
    grid row. Pair with .shelf-card-body{flex:1} for level bottoms. */
 .shelf-card-desc {
@@ -3139,13 +3075,10 @@ nav.appnav .navsearch:hover {
 	/* Hover (lift + shadow + accent border) is the neutral .card-lift recipe,
 	   worn in the markup. */
 }
-/* Horizontal variant — cover beside the text, for the single "Continue
-   reading" resume card.
-
-   This has to be a modifier here rather than a `flex-row` utility on the
-   element: `.book-card` is UNLAYERED, Tailwind's utilities live in
-   `@layer utilities`, and unlayered CSS beats layered CSS whatever the
-   specificity. So `class="book-card flex-row"` silently keeps column. (An
+/* A variant of .book-card (a horizontal one, say) has to be a modifier
+   class here rather than a `flex-row` utility on the element: `.book-card`
+   is UNLAYERED, Tailwind's utilities live in `@layer utilities`, and
+   unlayered CSS beats layered CSS whatever the specificity. So `class="book-card flex-row"` silently keeps column. (An
    `!important` utility like `!p-4` does win — which makes the failure worse,
    because some of the overrides on the same element appear to work.)
 
@@ -3158,11 +3091,6 @@ nav.appnav .navsearch:hover {
        variants, .tag, .text-display.
    The button family being layered is why the `!` on `!py-1` / `!text-small`
    was never doing anything a plain `py-1` wouldn't. */
-.book-card--row {
-	flex-direction: row;
-	align-items: center;
-	gap: 1rem;
-}
 
 /* The shelf grid the book cards sit in.
 
@@ -3255,91 +3183,6 @@ nav.appnav .navsearch:hover {
 	}
 }
 
-/* The fan of covers in the band. Overlapped (and upright: a book is never
-   drawn on a slant — coverStraight.test.ts) so a shelf reads as books rather
-   than thumbnails. `margin-inline-start:auto` pushes it
-   to the far end; under RTL that is the left, which is correct. */
-/* The band's far end. The band does the pushing, so an occupant only styles
-   itself. */
-.shelf-card-band > :not(.shelf-card-badge) {
-	margin-inline-start: auto;
-	padding-inline-start: 0.5rem;
-	/* Content used to run off the right edge at 375px (it was the one thing
-	   wrong with the Topics page on a phone). Clipping it to the band keeps the
-	   peek without the overflow. */
-	max-width: 62%;
-}
-
-.cover-fan {
-	display: flex;
-	overflow: hidden;
-}
-/* The fan's geometry, shared by both tile kinds: the overlap that makes it read
-   as one fanned object, and the lift off the band. */
-.cover-fan > * {
-	margin-inline-start: -0.7rem;
-	box-shadow: var(--shadow-card);
-	flex-shrink: 0;
-}
-.cover-fan .cover {
-	width: 2.5rem;
-	aspect-ratio: 3 / 4;
-	border-radius: 0.25rem;
-	overflow: hidden;
-	background: var(--surface);
-}
-/* A sermon in the fan: the emblem chip, sized to the tile height. Round rather
-   than 3:4 on purpose — see ShelfCard.
-
-   The shadow re-states the chip's inset ring alongside the fan's drop shadow.
-   `box-shadow` replaces rather than merges, so setting only the drop shadow
-   here stripped the hairline every other emblem chip in the app wears.
-
-   And it does NOT take the leading tile's clip. `.cover-fan` hides overflow, so
-   a first tile carrying the -0.7rem pull loses its leading 28% — unnoticeable
-   on a rectangle, which is why covers have always done it, and plainly broken
-   on a circle. A fan that starts with a sermon starts flush instead. */
-.cover-fan .sermon-tile {
-	--chip-size: 2.9rem;
-	align-self: center;
-	box-shadow:
-		var(--shadow-card),
-		inset 0 0 0 var(--chip-ring, 1px)
-			color-mix(in srgb, var(--chip-hue) var(--chip-ring-mix, 33%), transparent);
-}
-.cover-fan .sermon-tile:first-child {
-	margin-inline-start: 0;
-}
-/* The large fan (ShelfCard fan="lg", the series index): covers at a width
-   their titles can be read at, centred in a taller band with no badge. The
-   fan pads its block and end edges so the bigger tiles' shadows aren't sliced
-   by its overflow clip. */
-.shelf-card-band.fan-lg {
-	justify-content: center;
-	min-height: 8.75rem;
-	padding-block: 1rem 0.7rem;
-}
-.shelf-card-band.fan-lg > .cover-fan {
-	margin-inline-start: 0;
-	padding-block: 0.35rem;
-	padding-inline: 1.1rem 0.5rem; /* the first tile's pull; the last's shadow */
-	max-width: 100%;
-}
-.fan-lg .cover-fan > * {
-	margin-inline-start: -1.1rem;
-}
-.fan-lg .cover-fan .cover {
-	width: 4.25rem;
-}
-/* The bare-ground fallback only (`> img`): a drawn BookCover inside `.cover`
-   sizes its own images, and this rule would crop its mat. */
-.cover-fan .cover > img,
-.cover-fan .cover-fallback {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-
 /* A sermon on the shelf — one per line, under its preacher.
 
    Not a card in a grid: a sermon's "In brief" is 300–400 characters, and a
@@ -3365,12 +3208,6 @@ nav.appnav .navsearch:hover {
 	/* Tint recipe (motion + text-decoration) comes from .card-tint in the
 	   markup; only the hue-mixed border and ground below are the row's own. */
 }
-/* The sermon's passage monogram (SermonMonogram), in the writer's era tint, so
-   each row opens with its own mark rather than a wall of prose. */
-.sermon-row-monogram {
-	--chip-size: 3.25rem;
-	--chip-hue: var(--row-hue);
-}
 /* The era rail down the leading edge. Inside the border radius, so it reads as
    part of the row rather than a stripe stuck to it. */
 .sermon-row::before {
@@ -3390,117 +3227,6 @@ nav.appnav .navsearch:hover {
 }
 .sermon-row:hover::before {
 	background: var(--row-hue);
-}
-/* The passage the sermon expounds — an eyebrow, in the era tint. */
-.sermon-row-ref {
-	font-size: var(--fs-eyebrow);
-	font-weight: 600;
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
-	color: color-mix(in srgb, var(--row-hue) 42%, var(--text));
-}
-.sermon-row-title {
-	font-family: var(--font-display);
-	font-size: var(--fs-h3);
-	font-weight: 600;
-	line-height: 1.3;
-	color: var(--text);
-	transition: color var(--duration-fast);
-}
-.sermon-row:hover .sermon-row-title {
-	color: color-mix(in srgb, var(--row-hue) 70%, var(--text));
-}
-/* ── Sermon index: table-of-contents row ─────────────────────────────────────
-   The row reads like a book's contents: one line per sermon (title · passage ·
-   a dotted leader · length), then a two-line preview of the brief that the
-   chevron opens in full. The emblem + content flex layout of `.sermon-row`
-   above is unchanged; what follows styles the one-line entry and the brief. */
-
-/* Heading wraps the toggle (WAI accordion pattern); it carries no visual weight
-   of its own — the title span inside does. */
-.sermon-row-heading {
-	margin: 0;
-	font-size: inherit;
-	font-weight: inherit;
-}
-/* The title is the link to the sermon — a real, crawlable anchor on every row.
-   Row-hover already recolours it (rule above); a direct hover underlines. */
-a.sermon-row-title {
-	text-decoration: none;
-}
-a.sermon-row-title:hover {
-	text-decoration: underline;
-}
-/* Title, passage, leader and length on one baseline; wraps gracefully when the
-   title is long. */
-.sermon-row-line {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: baseline;
-	gap: 0.25rem 0.75rem;
-}
-/* The dotted leader carrying the eye from the title to the length, as in a
-   printed table of contents — purely decorative, and it simply collapses to its
-   min width when the line wraps. */
-.sermon-row-leader {
-	flex: 1 1 1.5rem;
-	min-width: 1.5rem;
-	align-self: baseline;
-	border-bottom: 1.5px dotted color-mix(in srgb, var(--row-hue) 32%, var(--border-strong));
-	transform: translateY(-0.3em);
-}
-.sermon-row-meta {
-	flex: none;
-	font-size: var(--fs-small);
-	color: var(--muted);
-	font-variant-numeric: tabular-nums;
-}
-/* The disclosure control for the brief — a chevron button beside the length,
-   kept separate from the title link so each control has a single job. */
-.sermon-row-toggle {
-	flex: none;
-	align-self: center;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	/* A 32px target with a visible ring on hover, so it reads as a control and
-	   not a stray mark at the end of the leader (QA, 2026-10); coarse pointers
-	   still grow to 44px below. */
-	min-width: 2rem;
-	min-height: 2rem;
-	padding: 0.2rem;
-	border: 0;
-	background: none;
-	color: var(--muted);
-	cursor: pointer;
-	border-radius: var(--radius-sm);
-}
-.sermon-row-toggle:hover {
-	color: var(--text);
-	background: var(--surface-2);
-}
-.sermon-row-toggle:focus-visible {
-	outline: 2px solid var(--accent);
-	outline-offset: 1px;
-}
-/* The shared chevron-right, turned down (closed) / up (open) like QandA's —
-   a rotation, so it needs no RTL flip. */
-.sermon-row-chevron {
-	display: block;
-	transform: rotate(90deg);
-	transition: transform var(--duration-fast);
-}
-.sermon-row.is-open .sermon-row-chevron {
-	transform: rotate(-90deg);
-}
-/* The brief under the entry: always there as a two-line preview (what a reader
-   chooses by; the clamp is `line-clamp-2` in the markup, lifted while open). It
-   hangs in the content column (already inset past the emblem) at a reading
-   measure, not the full row width. */
-.sermon-row-brief {
-	margin: 0.4rem 0 0;
-	max-width: 64ch;
-	color: var(--muted);
 }
 
 /* ── Browse-page filter furniture ──────────────────────────────────────────
@@ -3860,44 +3586,6 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	font-weight: 600;
 }
 
-/* A currently-applied filter, surfaced so it can be seen and lifted one at a
-   time — the book scope and length live in <select>s that show their own value,
-   but the free-text query and the topic did not read back anywhere. Tinted like
-   an active .chip; the × removes just this one, while "Clear filters" still
-   drops them all. */
-.active-filter {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.15rem;
-	border: 1px solid var(--accent-soft-border);
-	border-radius: 999px;
-	background: var(--accent-soft);
-	padding-block: 0.2rem;
-	padding-inline: 0.7rem 0.35rem;
-	font-size: var(--fs-small);
-	line-height: 1.4;
-	color: var(--accent);
-}
-.active-filter button {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	width: 1.35rem;
-	height: 1.35rem;
-	border: none;
-	border-radius: 999px;
-	background: none;
-	color: inherit;
-	font-size: var(--fs-body);
-	line-height: 1;
-	cursor: pointer;
-	opacity: 0.65;
-}
-.active-filter button:hover {
-	opacity: 1;
-	background: color-mix(in srgb, var(--accent) 16%, transparent);
-}
-
 /* Related-tag pill — a navigational LINK pill: a book's topics, "more by this
    author", the related sermons. Distinct from .chip, which is a filter toggle
    that stays put; a .tag is an anchor that goes somewhere. It was hand-rolled
@@ -4135,54 +3823,6 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		--col-w: 100vw;
 	}
 }
-/* THE DASHBOARD'S PAIRS. Two home sections side by side where there is room
-   (two columns of at least 26rem: from about lg up), stacked below. Each
-   section keeps its own markup — a `page-col px-5` section — and the pair
-   takes its column and gutter instead, so nothing inside has to know. A
-   section that renders nothing simply leaves the other the whole width:
-   auto-fit collapses the empty track. */
-.dash-pair {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
-	column-gap: 2rem;
-	align-items: start;
-}
-.dash-pair > .page-col {
-	width: auto;
-	margin-inline-start: 0;
-	padding-inline: 0;
-}
-.dash-pair:not(:has(> *)) {
-	display: none;
-}
-/* THE DASHBOARD'S RHYTHM. Under the signed-in home's hero, every section
-   stands 2.5rem below the last rather than each component's own 3.5rem
-   (pt-14), so the page reads as one composed column, not a stack of
-   separate pages. Scoped here, not changed in the components, which also
-   serve the signed-out home and other pages at their own spacing.
-
-   And each section fades in as it scrolls into view — opacity only, never a
-   transform, because a transform would make the page column a containing
-   block for anything `position: fixed` inside it (see .page-col). Pure CSS
-   on a scroll timeline, so it costs nothing where unsupported (the section
-   is simply there) and is off under reduced motion. */
-.home-dash section.page-col {
-	padding-top: 2.5rem;
-}
-@supports (animation-timeline: view()) {
-	@media (prefers-reduced-motion: no-preference) {
-		.home-dash section.page-col {
-			animation: dash-arrive linear both;
-			animation-timeline: view();
-			animation-range: entry 0% entry 45%;
-		}
-	}
-}
-@keyframes dash-arrive {
-	from {
-		opacity: 0.4;
-	}
-}
 /* The site chrome's column: the header bar and the footer rows share the page
    column's edges from sm up (they sat at 88rem / 64rem around a 76rem body),
    never narrower than 64rem — the nav's six links and controls need that.
@@ -4272,6 +3912,14 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	color: var(--muted);
 	pointer-events: none;
 }
+/* Phones: near-opaque instead of blurred, as .reader-dock (the blur repaints
+   under the pill on every scroll frame). */
+@media (max-width: 639.98px) {
+	.min-left {
+		background: color-mix(in srgb, var(--bg) 97%, transparent);
+		backdrop-filter: none;
+	}
+}
 
 /* A PAGE BAND: a full-width section on the deeper --band ground, so a long page
    reads as chapters (cream, parchment, cream) rather than one scroll. Wraps
@@ -4316,13 +3964,6 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	.section-band {
 		background: none;
 	}
-}
-/* The home hero's band rule above, kept under the dashboard's wrapper: the
-   first band below the hero meets it with no strip of bare page between —
-   the first child that rendered a section, since a band whose section hid
-   itself is still in the DOM (display: none). */
-.home-hero + .home-dash > :is(.page-band, .section-band):nth-child(1 of :has(section)) {
-	margin-block-start: 0;
 }
 
 /* A NIGHT BAND: one deep-indigo band per page, for the feature it most wants
@@ -4375,63 +4016,6 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 }
 .night-band:not(:has(section)) {
 	display: none;
-}
-
-/* THE READING CALENDAR'S GOLDS (ReadingHeatmap). A read day is never paler
-   than full --gold, so even a reader of scattered single days sees every one
-   clearly against an unread --surface-2. A longer run goes deeper, mixing the
-   gold toward the theme's own ink, one step per streak tier (streak.ts,
-   runLevel): darker on paper and sepia, brighter on lamplight. Rules rather
-   than tokens, so the mix resolves against the --gold where the calendar is. */
-.heat[data-level='0'] {
-	background: var(--surface-2);
-}
-.heat[data-level='1'] {
-	background: var(--gold);
-}
-.heat[data-level='2'] {
-	background: color-mix(in srgb, var(--gold) 80%, var(--text));
-}
-.heat[data-level='3'] {
-	background: color-mix(in srgb, var(--gold) 62%, var(--text));
-}
-.heat[data-level='4'] {
-	background: color-mix(in srgb, var(--gold) 45%, var(--text));
-}
-.heat-swatch {
-	display: inline-block;
-	width: 0.66rem;
-	height: 0.66rem;
-}
-
-/* The streak's flame by tier (DashboardStats; streak.ts, streakTier): a bare
-   gold spark under a week; a soft halo from a week; a lit, filled blaze from
-   a month; and from a hundred days a crown ring in the library's plum.
-   Ornament, so gold (STYLE_GUIDE §1): the number beside it carries the
-   meaning. The spark takes no halo box, so the common case keeps its old
-   footprint. */
-.streak-flame {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	color: var(--gold);
-}
-.streak-flame:not([data-tier='spark']) {
-	width: 3rem;
-	height: 3rem;
-	border-radius: 999px;
-	background: color-mix(in srgb, var(--gold) 14%, transparent);
-}
-.streak-flame[data-tier='blaze'],
-.streak-flame[data-tier='crown'] {
-	background: color-mix(in srgb, var(--gold) 22%, transparent);
-}
-.streak-flame[data-tier='blaze'] path,
-.streak-flame[data-tier='crown'] path {
-	fill: color-mix(in srgb, var(--gold) 40%, transparent);
-}
-.streak-flame[data-tier='crown'] {
-	box-shadow: 0 0 0 2px var(--hue-plum);
 }
 
 /* Forced colors (Windows High Contrast) drop box-shadows and repaint fills and

@@ -67,3 +67,47 @@
 		</button>
 	{/if}
 </div>
+
+<style>
+	/* Moved out of app.css (only this component uses it), so the site-wide
+	   sheet stays smaller (INP). :global keeps the selector as it was. */
+	:global {
+		/* A currently-applied filter, surfaced so it can be seen and lifted one at a
+		   time — the book scope and length live in <select>s that show their own value,
+		   but the free-text query and the topic did not read back anywhere. Tinted like
+		   an active .chip; the × removes just this one, while "Clear filters" still
+		   drops them all. */
+		.active-filter {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.15rem;
+			border: 1px solid var(--accent-soft-border);
+			border-radius: 999px;
+			background: var(--accent-soft);
+			padding-block: 0.2rem;
+			padding-inline: 0.7rem 0.35rem;
+			font-size: var(--fs-small);
+			line-height: 1.4;
+			color: var(--accent);
+		}
+		.active-filter button {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 1.35rem;
+			height: 1.35rem;
+			border: none;
+			border-radius: 999px;
+			background: none;
+			color: inherit;
+			font-size: var(--fs-body);
+			line-height: 1;
+			cursor: pointer;
+			opacity: 0.65;
+		}
+		.active-filter button:hover {
+			opacity: 1;
+			background: color-mix(in srgb, var(--accent) 16%, transparent);
+		}
+	}
+</style>

@@ -156,3 +156,67 @@
 	<TopicChips {topics} />
 </div>
 </div>
+
+<style>
+	/* The dashboard's layout rules, moved out of app.css: they only ever match
+	   inside this component, so the site-wide sheet stays smaller (INP).
+	   :global keeps selectors and specificity as they were (the .page-col /
+	   .page-band / .section-band they refine stay in app.css). */
+	:global {
+		/* THE DASHBOARD'S PAIRS. Two home sections side by side where there is room
+		   (two columns of at least 26rem: from about lg up), stacked below. Each
+		   section keeps its own markup — a `page-col px-5` section — and the pair
+		   takes its column and gutter instead, so nothing inside has to know. A
+		   section that renders nothing simply leaves the other the whole width:
+		   auto-fit collapses the empty track. */
+		.dash-pair {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+			column-gap: 2rem;
+			align-items: start;
+		}
+		.dash-pair > .page-col {
+			width: auto;
+			margin-inline-start: 0;
+			padding-inline: 0;
+		}
+		.dash-pair:not(:has(> *)) {
+			display: none;
+		}
+		/* THE DASHBOARD'S RHYTHM. Under the signed-in home's hero, every section
+		   stands 2.5rem below the last rather than each component's own 3.5rem
+		   (pt-14), so the page reads as one composed column, not a stack of
+		   separate pages. Scoped here, not changed in the components, which also
+		   serve the signed-out home and other pages at their own spacing.
+
+		   And each section fades in as it scrolls into view — opacity only, never a
+		   transform, because a transform would make the page column a containing
+		   block for anything `position: fixed` inside it (see .page-col). Pure CSS
+		   on a scroll timeline, so it costs nothing where unsupported (the section
+		   is simply there) and is off under reduced motion. */
+		.home-dash section.page-col {
+			padding-top: 2.5rem;
+		}
+		@supports (animation-timeline: view()) {
+			@media (prefers-reduced-motion: no-preference) {
+				.home-dash section.page-col {
+					animation: dash-arrive linear both;
+					animation-timeline: view();
+					animation-range: entry 0% entry 45%;
+				}
+			}
+		}
+		@keyframes dash-arrive {
+			from {
+				opacity: 0.4;
+			}
+		}
+		/* The home hero's band rule above, kept under the dashboard's wrapper: the
+		   first band below the hero meets it with no strip of bare page between —
+		   the first child that rendered a section, since a band whose section hid
+		   itself is still in the DOM (display: none). */
+		.home-hero + .home-dash > :is(.page-band, .section-band):nth-child(1 of :has(section)) {
+			margin-block-start: 0;
+		}
+	}
+</style>

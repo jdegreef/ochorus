@@ -144,12 +144,12 @@
 	   footer's "+" only below 640px — so a sideways phone in a reader keeps this
 	   button, the one feedback control it has. */
 	@media (max-width: 639.98px), (max-height: 499.98px) and (pointer: coarse) {
-		:global(:root:has(.tabbar)) .fb-fab {
+		:global(:root[data-tabbar]) .fb-fab {
 			display: none;
 		}
 	}
 	@media (max-width: 639.98px) {
-		:global(:root:has(.foot-actions)) .fb-fab {
+		:global(:root[data-foot-actions]) .fb-fab {
 			display: none;
 		}
 	}

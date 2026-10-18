@@ -63,6 +63,14 @@
 		backdrop-filter: blur(6px);
 		color: var(--muted);
 	}
+	/* Phones: near-opaque instead of blurred, as `.min-left` (a backdrop blur
+	   repaints under the button on every scroll frame). */
+	@media (max-width: 639.98px) {
+		.float-bookmark {
+			background: color-mix(in srgb, var(--bg) 97%, transparent);
+			backdrop-filter: none;
+		}
+	}
 	.float-bookmark:hover {
 		color: var(--text);
 	}

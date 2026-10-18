@@ -153,8 +153,13 @@ describe('a floating reader control clears the bottom bars', () => {
 		const row = src.slice(src.indexOf('<div class="foot-actions"'));
 		expect(src).toMatch(/class="scrubber"/);
 		expect(row).toMatch(/sermon\.prev\.slug[\s\S]*<FootFeedback \/>[\s\S]*sermon\.next\.slug/);
+		// FootFeedback (always inside the row) flags <html> while it is mounted,
+		// and the floating "+" steps aside on that flag.
+		expect(read('lib/components/FootFeedback.svelte')).toMatch(
+			/holdFlag\(document\.documentElement, 'data-foot-actions'\)/
+		);
 		expect(read('lib/components/FeedbackFab.svelte')).toMatch(
-			/:root:has\(\.foot-actions\)\) \.fb-fab/
+			/:root\[data-foot-actions\]\) \.fb-fab/
 		);
 	});
 
