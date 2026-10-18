@@ -6,6 +6,7 @@ import { markUnadvertisedNoindex } from '$lib/advertised-locales';
 import { API_BASE_URL } from '$lib/config';
 import { paraglideMiddleware } from '$lib/paraglide/server';
 import { getTextDirection } from '$lib/paraglide/runtime';
+import { loadUiCatalog } from '$lib/i18n.svelte';
 
 // Runs during prerendering: sets the request-scoped locale (from the URL) and
 // writes the correct <html lang="…" dir="…"> into each localized static page,
@@ -19,8 +20,10 @@ import { getTextDirection } from '$lib/paraglide/runtime';
 // connection, sees only that. Direction is part of the document, not a
 // client-side enhancement.
 export const handle: Handle = ({ event, resolve }) =>
-	paraglideMiddleware(event.request, ({ request, locale }) => {
+	paraglideMiddleware(event.request, async ({ request, locale }) => {
 		event.request = request;
+		// `t()` reads this locale's UI strings while the page renders ($lib/i18n).
+		await loadUiCatalog(locale);
 		return resolve(event, {
 			transformPageChunk: ({ html }) =>
 				markUnadvertisedNoindex(
