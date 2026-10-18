@@ -76,6 +76,21 @@
 				if (sf === 'classic' || sf === 'hyperlegible')
 					document.documentElement.setAttribute('data-site-font', sf);
 			} catch (e) {}
+			try {
+				// Whose home page this is, before first paint. The home page is
+				// prerendered for a newcomer; a signed-in reader (a Supabase session
+				// in storage) is swapped to their dashboard, and a returning one gets
+				// "Continue reading" above the hero — both only once the app runs,
+				// which moved the whole page down a screen on a phone. Flagged here,
+				// the home page holds its content back until it has settled
+				// (src/routes/+page.svelte, .home-root in app.css). Mirrors the
+				// supabase-js session key and $lib/reading-schema PROGRESS_KEY.
+				var hf = '';
+				for (var j = 0; j < localStorage.length; j++)
+					if (/^sb-.+-auth-token$/.test(localStorage.key(j) || '')) hf = 'member';
+				if (!hf && /^\{"/.test(localStorage.getItem('ochorus:progress') || '')) hf = 'reader';
+				if (hf) document.documentElement.setAttribute('data-home-for', hf);
+			} catch (e) {}
 			// Chrome fires its install offer once, early — often before the app has
 			// mounted. Hold it for $lib/install.svelte.ts so it isn't missed, and so
 			// Chrome's own mini-infobar doesn't appear at a random moment.

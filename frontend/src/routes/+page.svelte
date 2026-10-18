@@ -65,6 +65,18 @@
 	// flashing the dashboard to a reader who turns out to be logged out.
 	const showDashboard = $derived(auth.enabled && auth.initialized && !!auth.user);
 
+	// Settled: the session has resolved (or there is no sign-in to wait for), so
+	// the page now shows what it will keep showing. Tell the boot flag's CSS to
+	// reveal it — a frame later, once this render is on the page.
+	$effect(() => {
+		if (auth.enabled && !auth.initialized) return;
+		void showDashboard;
+		const id = requestAnimationFrame(() =>
+			document.documentElement.setAttribute('data-home-ready', '')
+		);
+		return () => cancelAnimationFrame(id);
+	});
+
 	// The head is identical for both views — the canonical home metadata is the
 	// marketing page's, and the dashboard is a private, noindex-by-nature surface
 	// rendered over the same URL.
@@ -108,8 +120,18 @@
 	{@html siteLd}
 </svelte:head>
 
-{#if showDashboard}
-	<HomeDashboard {data} />
-{:else}
-	<HomeMarketing {data} />
-{/if}
+<!-- A returning or signed-in reader's home is decided only once the app runs
+     (the session, the reading history); until then app.html's boot flag keeps
+     this hidden behind .home-wait (app.css), so it appears once, in place. -->
+<div class="home-root relative">
+	<div class="home-wait page-col px-5 pt-14" aria-hidden="true">
+		<div class="skeleton mb-6 h-8 w-56 rounded-md"></div>
+		<div class="skeleton mb-4 h-32 rounded-xl"></div>
+		<div class="skeleton h-32 rounded-xl"></div>
+	</div>
+	{#if showDashboard}
+		<HomeDashboard {data} />
+	{:else}
+		<HomeMarketing {data} />
+	{/if}
+</div>
