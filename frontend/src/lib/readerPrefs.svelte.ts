@@ -243,7 +243,7 @@ function chosenFrom(
  * fallbacks, reset() and the `chosen` migration all read it.
  */
 function firstRunDefaults(): YoungValues {
-	const width = browser ? window.innerWidth : 0;
+	const width = browser ? viewportClassWidth() : 0;
 	return {
 		scale: DEFAULTS.scale,
 		leading: DEFAULTS.leading,
@@ -251,6 +251,24 @@ function firstRunDefaults(): YoungValues {
 		font: DEFAULTS.font,
 		paged: browser && width >= WIDE_SCREEN_MIN
 	};
+}
+
+/**
+ * The viewport width rounded down to the breakpoint it clears (0, TABLET_MIN or
+ * WIDE_SCREEN_MIN) — all firstRunDefaults needs. Asked of media queries, not
+ * `window.innerWidth`: init() runs while the first page is being built, and
+ * reading innerWidth then forces the browser to lay out the whole half-built
+ * page (~400 ms on a mid-range phone, inside the startup task a reader's first
+ * tap waits behind — mobile INP). A `min-width` query uses the same width
+ * innerWidth reports (scrollbar included) and needs no layout.
+ */
+function viewportClassWidth(): number {
+	// No matchMedia (jsdom): innerWidth, which there costs nothing.
+	const atLeast = (px: number) =>
+		typeof matchMedia === 'function'
+			? matchMedia(`(min-width: ${px}px)`).matches
+			: window.innerWidth >= px;
+	return atLeast(WIDE_SCREEN_MIN) ? WIDE_SCREEN_MIN : atLeast(TABLET_MIN) ? TABLET_MIN : 0;
 }
 
 const ALIGNS: readonly Align[] = ['left', 'justify'];

@@ -239,12 +239,16 @@
 	let navH = $state(0);
 	$effect(() => {
 		if (!navEl) return;
-		// Measure once, synchronously, BEFORE observing. A ResizeObserver's first
-		// callback lands a frame late, so the reader's page-turn bar — which now
-		// starts at var(--appnav-h) — spent that frame at 0, drawn underneath the
-		// nav, and then jumped 56px down. Nobody sees a stale height here: an
-		// element that just rendered has its real one.
-		navH = Math.round(navEl.getBoundingClientRect().height);
+		// On a reading surface, measure once, synchronously, BEFORE observing. A
+		// ResizeObserver's first callback lands a frame late, so the reader's
+		// page-turn bar — which now starts at var(--appnav-h) — spent that frame
+		// at 0, drawn underneath the nav, and then jumped 56px down. Nobody sees a
+		// stale height here: an element that just rendered has its real one.
+		// Elsewhere nothing pins to the nav that first frame (the per-breakpoint
+		// estimate on `.app-root` covers it), and the synchronous read forces a
+		// layout of the half-built page inside the startup task a first tap waits
+		// behind (mobile INP) — so leave it to the observer.
+		if (untrack(() => inReader)) navH = Math.round(navEl.getBoundingClientRect().height);
 		const ro = new ResizeObserver(([entry]) => {
 			navH = Math.round(entry.target.getBoundingClientRect().height);
 		});
