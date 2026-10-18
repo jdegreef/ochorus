@@ -61,6 +61,10 @@ export default defineConfig({
 		// jsdom localStorage otherwise surfaces as ~99 unrelated-looking failures
 		// in files nobody touched — noise that reads as "broken here" and hides
 		// any real regression underneath it. See the file for the mechanism.
-		setupFiles: [fileURLToPath(new URL('./src/test/dom-environment-guard.ts', import.meta.url))]
+		// ui-catalogs loads the strings `t()` serves (in the app, a hook does).
+		setupFiles: [
+			fileURLToPath(new URL('./src/test/dom-environment-guard.ts', import.meta.url)),
+			fileURLToPath(new URL('./src/test/ui-catalogs.ts', import.meta.url))
+		]
 	}
 });
