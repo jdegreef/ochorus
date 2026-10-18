@@ -3,6 +3,17 @@
 	"css": "215f7d08b23b071a7d45d189bb8603cd9d05228445c234de0bf65dcb6120cf30",
 	"markup": "1dcfb7f5dfb9b689f5942ae17dbf83071eb8a0df7144b584e3e1c1796010694c",
 	"twins": {
+		"a-body-of-divinity": {
+			"ground": "e13b05338dd88ca56a7c6e1c0f4f9c4cf24f915673aed2c4c15235df0cf696d9",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"a-brand-plucked-from-the-fire": {
 			"ground": "f3b7562829d74b0dcc42559133d13b3d1199aa6e9c9c915bcac80c2793d3484d",
 			"style": "revival",

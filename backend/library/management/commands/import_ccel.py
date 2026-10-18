@@ -29,6 +29,7 @@ from library.ingest import (
     restates_title,
     soup,
     upsert_book,
+    word_count,
 )
 from library.sanitize import drop_furniture
 
@@ -524,6 +525,11 @@ class Command(BaseCommand):
                     if is_contents_body(body):
                         continue
                     if not body:
+                        continue
+                    # A title page CCEL lists under the work's own name ("A Body of
+                    # Divinity" → subtitle and byline, 11 words): the heading strip
+                    # takes the title, and what is left is too short to be prose.
+                    if restates_title(leaf_title, entry.title) and word_count(body) < 40:
                         continue
                     # A single-leaf part is the whole chapter — no subheading needed.
                     # Multi-leaf parts keep each leaf's heading, so the work's own
