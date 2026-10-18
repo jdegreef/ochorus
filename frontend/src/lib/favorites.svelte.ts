@@ -1,5 +1,5 @@
 import { browser } from '$app/environment';
-import { readJSON, writeJSON } from './persisted';
+import { writeJSON } from './persisted';
 import { FAVORITES_KEY as KEY } from './reading-schema';
 import { readingSync } from './readingSync';
 import { addPending, clearPending } from './removals';
@@ -36,7 +36,33 @@ type Store = Record<string, number>;
 
 const favKey = (kind: FavoriteKind, slug: string) => `${kind}:${slug}`;
 
-const readAll = (): Store => readJSON<Store>(KEY, {});
+/**
+ * The stored favorites, parsed once per distinct stored value. Every heart on
+ * a page asks `has()` again whenever `ticks` moves, so a tap on one of a quote
+ * page's fifty hearts JSON-parsed the whole store fifty times before the frame
+ * could paint. Keyed on the raw string, so it is never stale — a write from
+ * the sync merge or another tab is a new string, and is parsed fresh. Callers
+ * must not mutate the result (toggle copies it).
+ */
+let cache: { raw: string | null; store: Store } | undefined;
+function readAll(): Store {
+	if (!browser) return {};
+	let raw: string | null;
+	try {
+		raw = localStorage.getItem(KEY);
+	} catch {
+		return {};
+	}
+	if (cache?.raw === raw) return cache.store;
+	let store: Store = {};
+	try {
+		if (raw !== null) store = JSON.parse(raw) as Store;
+	} catch {
+		/* a corrupt cache reads as empty, as readJSON does */
+	}
+	cache = { raw, store };
+	return store;
+}
 
 class Favorites {
 	/** Bumped on every mutation so `$derived` consumers refresh. */
@@ -60,7 +86,7 @@ class Favorites {
 
 	/** Flip a favorite; mirrors the change to the account when signed in. */
 	toggle(kind: FavoriteKind, slug: string) {
-		const store = readAll();
+		const store = { ...readAll() };
 		const key = favKey(kind, slug);
 		const active = !(key in store);
 		if (active) store[key] = Date.now();
