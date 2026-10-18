@@ -16922,3 +16922,16 @@ BODY_CORRECTIONS.setdefault("holiness", {}).setdefault("replacements", []).exten
     ("Take care: Remember Lot’s wife.”", "Take care: “Remember Lot’s wife.”"),
     ("Robert Trail, s<i>ometime Minister", "Robert Trail, <i>sometime Minister"),
 ])
+
+# Moody's Secret Power (Gutenberg #33341): the printing ends with eight pages of
+# Fleming H. Revell's catalogue, which the importer carried into ch5 after
+# Moody's closing quotation of 1 Cor. 2:4–5; and one OCR slip ("bairn").
+BODY_CORRECTIONS.setdefault("secret-power", {}).setdefault("replacements", []).extend([
+    ("anointed with a bairn to heal", "anointed with a balm to heal"),
+])
+# Ch2 is printed POWER "IN" AND "UPON."; clean_title drops the quotes and the
+# title-case rule then lowers "In", so the colon carries the contrast instead.
+CORRECTIONS["secret-power"] = {"chapter_titles": {2: "Power: In and Upon"}}
+BODY_CORRECTIONS["secret-power"]["back_matter"] = [
+    ("but in the power of God.”</p>", "<hr/> <p> WORKS BY D. L. MOODY</p>"),
+]

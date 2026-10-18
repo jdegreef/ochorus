@@ -18072,6 +18072,17 @@
 			"layout": "wash/sage",
 			"bar": 0.04
 		},
+		"secret-power": {
+			"ground": "f7be742b6939ca12e249b4ff97b195956a021f9754e4c984d37dd79a6af097ba",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"selected-sermons-edwards": {
 			"ground": "78121e68911d16aba053efc9f3ab6c3a15667b430381e017a9803f1f6a2c4e49",
 			"style": "enlightenment",
