@@ -189,9 +189,10 @@ def _render_verse(text: str, stanzaic: bool) -> list[str]:
             if prev and not re.search(r"[.,;:!?’”—)-]$", prev) and re.match(r"^[“‘]?[a-z]", line):
                 paras[-1][-1] = f"{prev} {line.lstrip('“‘')}"
                 continue
-            # A deeper indent opens a verse paragraph in couplet poems; in
-            # stanzaic ones the indent only staggers the short lines.
-            if not stanzaic and paras[-1] and 3 <= _indent(raw) <= 5:
+            # A deeper indent (3–7 spaces in this transcription) opens a verse
+            # paragraph in couplet poems; in stanzaic ones it only staggers the
+            # short lines. Wrapped lines were rejoined above, so never reach here.
+            if not stanzaic and paras[-1] and _indent(raw) >= 3:
                 paras.append([])
             paras[-1].append(line)
         out.extend("<p>" + "<br/>".join(_esc(ln) for ln in p) + "</p>" for p in paras if p)
@@ -202,6 +203,14 @@ def _poem_body(pres: list, lead: str) -> str:
     texts = [t for t in (p.get_text() for p in pres) if t.strip() and _key(t) != "FINIS"]
     stanzaic = any(_NUMERAL.match(ln.strip()) for t in texts for ln in t.split("\n"))
     parts = [f"<p><i>{_esc(lead)}</i></p>"] if lead else []
+    # A poem can open on a one- or two-line printed subtitle or text reference
+    # ("His Majesty’s Principal / Secretary of State…", "1 SAMUEL, Chap. xvii.")
+    # set apart from the verse by a blank line: italicise it like a lead-in.
+    head, _, rest = texts[0].strip("\n").partition("\n\n") if texts else ("", "", "")
+    head_lines = [ln.strip() for ln in head.split("\n") if ln.strip()]
+    if head_lines and len(head_lines) <= 2 and not _NUMERAL.match(head_lines[0]) and (rest.strip() or len(texts) > 1):
+        parts.append(f"<p><i>{_esc(' '.join(head_lines))}</i></p>")
+        texts = [rest, *texts[1:]] if rest.strip() else texts[1:]
     for t in texts:
         parts.extend(_render_verse(t, stanzaic))
     return "".join(parts)
@@ -227,24 +236,30 @@ def _prose(nodes) -> list[str]:
     ]
 
 
+def _first(items, what: str):
+    found = next(iter(items), None)
+    if found is None:
+        raise CommandError(f"{what} not found — the edition changed.")
+    return found
+
+
 def _preface(order: list) -> str:
     def head(key):
-        h = next((h for k, h in order if k == key), None)
-        if h is None:
-            raise CommandError(f"{key!r} heading not found — the edition changed.")
-        return h
+        return _first((h for k, h in order if k == key), f"{key!r} heading")
 
     pref = _section(head("PREFACE"))
     parts = _prose(pref)
-    sig = next(n for n in pref if n.name == "h3")
+    sig = _first((n for n in pref if n.name == "h3"), "John Wheatley's signature")
     # John Wheatley's signature sits between the letter and its date line.
     date = parts.pop()
+    if not date.startswith("<p>Boston,"):
+        raise CommandError(f"expected the letter's date line last, found {date[:60]!r}.")
     parts += [f"<p>{_esc(sig.get_text(' ', strip=True).title())}</p>", date]
 
     public = _section(head("TOTHEPUBLIC"))
     parts.append("<h3>To the Public</h3>")
     parts += _prose(public)
-    pre = next(n for n in public if n.name == "pre").get_text()
+    pre = _first((n for n in public if n.name == "pre"), "the attestation's signatures").get_text()
     # The signatures are printed in two columns (laymen | clergy); read them
     # column by column, not across the rows.
     names, right, notes = [], [], []
@@ -276,7 +291,7 @@ def _chapters() -> list[tuple[str, str]]:
 
     # The poems follow the "P O E M S / O N / V A R I O U S S U B J E C T S"
     # half-title; every h2 after it is one poem.
-    start = next(i for i, (k, _) in enumerate(order) if k == "VARIOUSSUBJECTS") + 1
+    start = _first((i for i, (k, _) in enumerate(order) if k == "VARIOUSSUBJECTS"), "the half-title") + 1
     poems = [(k, h) for k, h in order[start:] if "PROJECTGUTENBERG" not in k]
     if len(poems) != len(POEMS):
         raise CommandError(f"expected {len(POEMS)} poems, found {len(poems)}.")
