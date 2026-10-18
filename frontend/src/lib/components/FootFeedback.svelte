@@ -10,9 +10,14 @@
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import FeedbackDialog from '$lib/components/FeedbackDialog.svelte';
+	import { holdFlag } from '$lib/presenceFlag';
 
 	const t = i18n.t;
 	let open = $state(false);
+	// Always inside a `.foot-actions` row, so mounted exactly while one is up:
+	// <html data-foot-actions> tells FeedbackFab to step aside (a flag, not a
+	// document-wide `:root:has(.foot-actions)`, which restyles the whole page).
+	$effect(() => holdFlag(document.documentElement, 'data-foot-actions'));
 </script>
 
 {#if auth.enabled && auth.user}

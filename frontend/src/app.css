@@ -2422,9 +2422,11 @@ nav.appnav .navmore-menu {
    500px tall) its "More" sheet holds the links, the theme switch and sign-in,
    so the top bar is brand + search (+ a signed-in reader's avatar, whose menu
    keeps the admin and feedback entries). Keep the query list in step with
-   TabBar's. */
+   TabBar's. Keyed on the [data-tabbar] flag TabBar holds on <html>
+   ($lib/presenceFlag), not `:root:has(.tabbar)`: a root-anchored :has()
+   restyles the whole document whenever the bar comes or goes (INP). */
 @media (max-width: 639.98px), (max-height: 499.98px) and (pointer: coarse) {
-	:root:has(.tabbar) nav.appnav :is(.prefs, .navtoggle, .navmenu, .account-signin) {
+	:root[data-tabbar] nav.appnav :is(.prefs, .navtoggle, .navmenu, .account-signin) {
 		display: none;
 	}
 }

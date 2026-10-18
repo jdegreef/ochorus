@@ -16,6 +16,7 @@
 		ORIGINALS_DEST,
 		AZ_INDEX_DEST
 	} from '$lib/contentNav';
+	import { holdFlag, TABBAR_FLAG } from '$lib/presenceFlag';
 
 	/**
 	 * The phone app bar, in thumb reach; the layout decides where it shows.
@@ -26,6 +27,10 @@
 	 * the top bar's search pill is always one tap away.
 	 */
 	const t = i18n.t;
+	// <html data-tabbar> while the bar is mounted: the top bar sheds what the
+	// bar carries, and --tabbar-h is published (both keyed on it, not on a
+	// document-wide :has()). hooks.server bakes it into a prerendered page.
+	$effect(() => holdFlag(document.documentElement, TABBAR_FLAG));
 	let moreOpen = $state(false);
 	let feedbackOpen = $state(false);
 
@@ -132,7 +137,7 @@
 		}
 		/* Published for fixed bottom UI (the PWA toasts, the layout's clearance)
 		   so nothing sits underneath the bar. */
-		:global(:root:has(.tabbar)) {
+		:global(:root[data-tabbar]) {
 			/* .tab's min-height + the 1px top border + the home-indicator strip. */
 			--tabbar-h: calc(3.6rem + 1px + env(safe-area-inset-bottom));
 		}
@@ -219,7 +224,7 @@
 		.tabbar {
 			padding-inline: env(safe-area-inset-left) env(safe-area-inset-right);
 		}
-		:global(:root:has(.tabbar)) {
+		:global(:root[data-tabbar]) {
 			--tabbar-h: calc(3rem + 1px + env(safe-area-inset-bottom));
 		}
 		.tab {
