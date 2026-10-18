@@ -1842,7 +1842,7 @@
 	     away, and 0 is right. -->
 	<div
 		bind:this={chromeEl}
-		class="reader-chrome top-0 inset-x-0 z-(--z-pinned) border-b border-border bg-bg/90 backdrop-blur"
+		class="reader-chrome top-0 inset-x-0 z-(--z-pinned) border-b border-border bg-bg/90 backdrop-blur max-sm:bg-bg/97 max-sm:backdrop-blur-none"
 		class:fixed={paged || showPeek}
 		class:sticky={!paged && !showPeek}
 		class:peeking={showPeek}
@@ -2950,6 +2950,14 @@
 		color: var(--muted);
 		background: color-mix(in srgb, var(--bg) 82%, transparent);
 		backdrop-filter: blur(6px);
+	}
+	/* Phones: near-opaque instead of blurred — a backdrop blur repaints under
+	   a fixed bar on every scroll frame, the costliest paint while reading. */
+	@media (max-width: 639.98px) {
+		.progress-foot {
+			background: color-mix(in srgb, var(--bg) 97%, transparent);
+			backdrop-filter: none;
+		}
 	}
 	/* A short fade above the bar so a line of body text scrolling under it
 	   dissolves into the page instead of being sliced at the bar's hard top edge.

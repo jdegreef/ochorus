@@ -438,7 +438,7 @@
 
 <!-- Reader top bar -->
 {#if !readerUi.focus}
-	<div class="reader-chrome sticky top-0 z-(--z-pinned) border-b border-border bg-bg/90 backdrop-blur">
+	<div class="reader-chrome sticky top-0 z-(--z-pinned) border-b border-border bg-bg/90 backdrop-blur max-sm:bg-bg/97 max-sm:backdrop-blur-none">
 		<!-- Tracks the article below it (same `--reading-measure`, same `px-5`)
 		     rather than sitting at a flat 48rem, which was wider than the text at
 		     small settings and far narrower at large ones. The floor keeps the
@@ -1001,8 +1001,9 @@
 			text-align: center;
 			font-size: var(--fs-micro);
 			color: var(--muted);
-			background: color-mix(in srgb, var(--bg) 82%, transparent);
-			backdrop-filter: blur(6px);
+			/* Near-opaque rather than blurred glass: this bar only shows on a
+			   phone, where a backdrop blur repaints under it every scroll frame. */
+			background: color-mix(in srgb, var(--bg) 97%, transparent);
 		}
 		/* In-flow clearance, so the page's last lines scroll clear of the footer.
 		   The measured unfolded height; the fallback covers the first frame. */

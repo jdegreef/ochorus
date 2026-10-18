@@ -401,14 +401,20 @@
 	   (the discrete alpha table keeps only the top of the noise), light on
 	   lamplight, warm brown on paper and sepia. Sparse rather than a uniform
 	   wash, so it reads as paper without moving the ground's average colour
-	   (a wash darkened paper visibly and showed no texture at all). An inline
-	   SVG data: URI (img-src allows data:), one 180px tile, no request.
+	   (a wash darkened paper visibly and showed no texture at all). One 180px
+	   tile, pre-rendered from an feTurbulence SVG by scripts/generate-grain.mjs
+	   (which holds the recipe; change it there and re-run). It used to BE that
+	   SVG, as a data: URI, and a browser re-runs the filter each time it
+	   rasterises the tile — paint cost under every page, worst on a phone. The
+	   image-set serves the tile drawn at the screen's own density, so specks
+	   stay one CSS pixel sharp as the SVG's were. -webkit-image-set() because
+	   Safari before 17 knows only the prefixed form; every engine accepts it.
 	   --band is the contrasting ground of a .page-band section, a step off
 	   --bg (lighter on lamplight, deeper on paper and sepia); every text and
 	   hue token clears 4.5:1 on it (libraryPalette.test.ts). Lamplight's grain
 	   is named (--grain-light-specks) because .night-band reuses it in every
 	   theme; paper and sepia override --grain, never this. */
-	--grain-light-specks: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .96 0 0 0 0 .9 0 0 0 0 .8 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 .10 .10'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	--grain-light-specks: -webkit-image-set(url('/textures/grain-light.png') 1x, url('/textures/grain-light@2x.png') 2x, url('/textures/grain-light@3x.png') 3x);
 	--grain: var(--grain-light-specks);
 	--band: #1d1914;
 	/* How much of a book's own cover_color tints its card (.book-card): the
@@ -496,7 +502,7 @@
 	--shelf-back: #f1e8d8;
 	--shelf-wood: #b98a5c;
 	--shelf-wood-edge: #8a6440;
-	--grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .32 0 0 0 0 .18 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 .16 .16'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	--grain: -webkit-image-set(url('/textures/grain-paper.png') 1x, url('/textures/grain-paper@2x.png') 2x, url('/textures/grain-paper@3x.png') 3x);
 	--band: #f1e8d8;
 	--cover-tint-amount: 8%;
 	--hue-indigo: #3f3d9a;
@@ -541,7 +547,7 @@
 	--shelf-back: #e8dbbf;
 	--shelf-wood: #a97b4d;
 	--shelf-wood-edge: #7a5634;
-	--grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .3 0 0 0 0 .14 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 .18 .18'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	--grain: -webkit-image-set(url('/textures/grain-sepia.png') 1x, url('/textures/grain-sepia@2x.png') 2x, url('/textures/grain-sepia@3x.png') 3x);
 	--band: #ece1c9;
 	--cover-tint-amount: 7%;
 	--hue-indigo: #3f3d9a;
@@ -1608,6 +1614,16 @@
 		border-top: 1px solid var(--border);
 		background: color-mix(in srgb, var(--surface) 92%, transparent);
 		backdrop-filter: blur(8px);
+	}
+	/* Phones: no blur. A backdrop-filter re-samples and blurs everything
+	   under a fixed bar on every scroll frame — the costliest paint a phone
+	   does while reading — so the bar goes near-opaque instead, which keeps
+	   its controls as legible over the text as the glass did. */
+	@media (max-width: 639.98px) {
+		.reader-dock {
+			background: color-mix(in srgb, var(--surface) 97%, transparent);
+			backdrop-filter: none;
+		}
 	}
 	/* A soft, devotional button. */
 	.btn {
@@ -3895,6 +3911,14 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	font-size: var(--fs-micro);
 	color: var(--muted);
 	pointer-events: none;
+}
+/* Phones: near-opaque instead of blurred, as .reader-dock (the blur repaints
+   under the pill on every scroll frame). */
+@media (max-width: 639.98px) {
+	.min-left {
+		background: color-mix(in srgb, var(--bg) 97%, transparent);
+		backdrop-filter: none;
+	}
 }
 
 /* A PAGE BAND: a full-width section on the deeper --band ground, so a long page
