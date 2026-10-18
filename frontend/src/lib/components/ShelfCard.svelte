@@ -167,3 +167,179 @@
 {:else}
 	<a class="shelf-card card-lift" style="--shelf-hue: {hue}" {href}>{@render content()}</a>
 {/if}
+
+<style>
+	/* The shelf card's own parts (band, badge, body, cover fan), moved out of
+	   app.css: only this component wears these classes, so the site-wide sheet
+	   every page parses and matches against no longer carries them (INP).
+	   :global keeps each selector — and its specificity — exactly as it was;
+	   the shared .shelf-card / .hue-band recipes stay in app.css. */
+	:global {
+		/* A shelf card with its own action link (ShelfCard `action`): the box is the
+		   card, its band + body are one link, and the action sits in a foot below. */
+		.shelf-card-main {
+			display: flex;
+			flex-direction: column;
+			flex: 1;
+			color: inherit;
+			text-decoration: none;
+		}
+		.shelf-card-main:hover {
+			text-decoration: none;
+		}
+		/* The link fills the clipped box (overflow: hidden), so its focus ring goes
+		   inside it — drawn outside, it was cut off on every edge. */
+		.shelf-card-main:focus-visible {
+			outline-offset: -2px;
+		}
+		/* Hovering the foot's own link must not light the card as if the card link
+		   were the target: the box rests while the pointer is on the action. */
+		.shelf-card--action:has(.shelf-card-foot:hover) {
+			border-color: var(--border);
+			box-shadow: none;
+			transform: none;
+		}
+		.shelf-card--action:has(.shelf-card-foot:hover) .shelf-card-title {
+			color: var(--text);
+		}
+		.shelf-card--action .shelf-card-body {
+			padding-bottom: 0.75rem;
+		}
+		.shelf-card-foot {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.6rem;
+			padding: 0 1.1rem 1.15rem;
+		}
+		/* The coloured header band. Pair with .hue-band, which carries the wash. */
+		.shelf-card-band {
+			--band-hue: var(--shelf-hue);
+			position: relative;
+			display: flex;
+			align-items: flex-end;
+			gap: 0.6rem;
+			min-height: 5.75rem;
+			padding: 1rem 1.1rem 0.9rem;
+		}
+		/* The shelf card's badge: an emblem chip in the card's hue. */
+		.shelf-card-badge {
+			--chip-size: 3.5rem;
+			--chip-hue: var(--shelf-hue);
+		}
+		/* A portrait can sit in the chip instead of an icon (the sermons shelf). */
+		.shelf-card-badge img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		.shelf-card-body {
+			display: flex;
+			flex-direction: column;
+			flex: 1; /* with .shelf-card{height:100%}, this is what levels the cards */
+			padding: 0.9rem 1.1rem 1.15rem;
+		}
+		.shelf-card-title {
+			font-family: var(--font-display);
+			font-size: var(--fs-h3);
+			font-weight: 600;
+			color: var(--text);
+			transition: color var(--duration-fast);
+		}
+		.shelf-card-subtitle {
+			display: block;
+			margin-top: 0.125rem;
+			font-family: var(--font-sans);
+			font-size: var(--fs-small);
+			font-weight: 400;
+			color: var(--muted);
+		}
+		.shelf-card:hover .shelf-card-title {
+			color: color-mix(in srgb, var(--shelf-hue) 78%, var(--text));
+		}
+		/* The fan of covers in the band. Overlapped (and upright: a book is never
+		   drawn on a slant — coverStraight.test.ts) so a shelf reads as books rather
+		   than thumbnails. `margin-inline-start:auto` pushes it
+		   to the far end; under RTL that is the left, which is correct. */
+		/* The band's far end. The band does the pushing, so an occupant only styles
+		   itself. */
+		.shelf-card-band > :not(.shelf-card-badge) {
+			margin-inline-start: auto;
+			padding-inline-start: 0.5rem;
+			/* Content used to run off the right edge at 375px (it was the one thing
+			   wrong with the Topics page on a phone). Clipping it to the band keeps the
+			   peek without the overflow. */
+			max-width: 62%;
+		}
+
+		.cover-fan {
+			display: flex;
+			overflow: hidden;
+		}
+		/* The fan's geometry, shared by both tile kinds: the overlap that makes it read
+		   as one fanned object, and the lift off the band. */
+		.cover-fan > * {
+			margin-inline-start: -0.7rem;
+			box-shadow: var(--shadow-card);
+			flex-shrink: 0;
+		}
+		.cover-fan .cover {
+			width: 2.5rem;
+			aspect-ratio: 3 / 4;
+			border-radius: 0.25rem;
+			overflow: hidden;
+			background: var(--surface);
+		}
+		/* A sermon in the fan: the emblem chip, sized to the tile height. Round rather
+		   than 3:4 on purpose — see ShelfCard.
+
+		   The shadow re-states the chip's inset ring alongside the fan's drop shadow.
+		   `box-shadow` replaces rather than merges, so setting only the drop shadow
+		   here stripped the hairline every other emblem chip in the app wears.
+
+		   And it does NOT take the leading tile's clip. `.cover-fan` hides overflow, so
+		   a first tile carrying the -0.7rem pull loses its leading 28% — unnoticeable
+		   on a rectangle, which is why covers have always done it, and plainly broken
+		   on a circle. A fan that starts with a sermon starts flush instead. */
+		.cover-fan .sermon-tile {
+			--chip-size: 2.9rem;
+			align-self: center;
+			box-shadow:
+				var(--shadow-card),
+				inset 0 0 0 var(--chip-ring, 1px)
+					color-mix(in srgb, var(--chip-hue) var(--chip-ring-mix, 33%), transparent);
+		}
+		.cover-fan .sermon-tile:first-child {
+			margin-inline-start: 0;
+		}
+		/* The large fan (ShelfCard fan="lg", the series index): covers at a width
+		   their titles can be read at, centred in a taller band with no badge. The
+		   fan pads its block and end edges so the bigger tiles' shadows aren't sliced
+		   by its overflow clip. */
+		.shelf-card-band.fan-lg {
+			justify-content: center;
+			min-height: 8.75rem;
+			padding-block: 1rem 0.7rem;
+		}
+		.shelf-card-band.fan-lg > .cover-fan {
+			margin-inline-start: 0;
+			padding-block: 0.35rem;
+			padding-inline: 1.1rem 0.5rem; /* the first tile's pull; the last's shadow */
+			max-width: 100%;
+		}
+		.fan-lg .cover-fan > * {
+			margin-inline-start: -1.1rem;
+		}
+		.fan-lg .cover-fan .cover {
+			width: 4.25rem;
+		}
+		/* The bare-ground fallback only (`> img`): a drawn BookCover inside `.cover`
+		   sizes its own images, and this rule would crop its mat. */
+		.cover-fan .cover > img,
+		.cover-fan .cover-fallback {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+</style>

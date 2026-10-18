@@ -188,6 +188,130 @@
 {/if}
 
 <style>
+	/* The sermon row's parts (monogram, passage, title, leader, toggle, brief),
+	   moved out of app.css: only this component wears them (INP — a smaller
+	   site-wide sheet). :global keeps selectors and specificity as they were;
+	   the shared .sermon-row box (the /quotes card borrows it) stays in app.css. */
+	:global {
+		/* The sermon's passage monogram (SermonMonogram), in the writer's era tint, so
+		   each row opens with its own mark rather than a wall of prose. */
+		.sermon-row-monogram {
+			--chip-size: 3.25rem;
+			--chip-hue: var(--row-hue);
+		}
+		/* The passage the sermon expounds — an eyebrow, in the era tint. */
+		.sermon-row-ref {
+			font-size: var(--fs-eyebrow);
+			font-weight: 600;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: color-mix(in srgb, var(--row-hue) 42%, var(--text));
+		}
+		.sermon-row-title {
+			font-family: var(--font-display);
+			font-size: var(--fs-h3);
+			font-weight: 600;
+			line-height: 1.3;
+			color: var(--text);
+			transition: color var(--duration-fast);
+		}
+		.sermon-row:hover .sermon-row-title {
+			color: color-mix(in srgb, var(--row-hue) 70%, var(--text));
+		}
+		/* ── Sermon index: table-of-contents row ─────────────────────────────────────
+		   The row reads like a book's contents: one line per sermon (title · passage ·
+		   a dotted leader · length), then a two-line preview of the brief that the
+		   chevron opens in full. The emblem + content flex layout of `.sermon-row`
+		   above is unchanged; what follows styles the one-line entry and the brief. */
+
+		/* Heading wraps the toggle (WAI accordion pattern); it carries no visual weight
+		   of its own — the title span inside does. */
+		.sermon-row-heading {
+			margin: 0;
+			font-size: inherit;
+			font-weight: inherit;
+		}
+		/* The title is the link to the sermon — a real, crawlable anchor on every row.
+		   Row-hover already recolours it (rule above); a direct hover underlines. */
+		a.sermon-row-title {
+			text-decoration: none;
+		}
+		a.sermon-row-title:hover {
+			text-decoration: underline;
+		}
+		/* Title, passage, leader and length on one baseline; wraps gracefully when the
+		   title is long. */
+		.sermon-row-line {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: baseline;
+			gap: 0.25rem 0.75rem;
+		}
+		/* The dotted leader carrying the eye from the title to the length, as in a
+		   printed table of contents — purely decorative, and it simply collapses to its
+		   min width when the line wraps. */
+		.sermon-row-leader {
+			flex: 1 1 1.5rem;
+			min-width: 1.5rem;
+			align-self: baseline;
+			border-bottom: 1.5px dotted color-mix(in srgb, var(--row-hue) 32%, var(--border-strong));
+			transform: translateY(-0.3em);
+		}
+		.sermon-row-meta {
+			flex: none;
+			font-size: var(--fs-small);
+			color: var(--muted);
+			font-variant-numeric: tabular-nums;
+		}
+		/* The disclosure control for the brief — a chevron button beside the length,
+		   kept separate from the title link so each control has a single job. */
+		.sermon-row-toggle {
+			flex: none;
+			align-self: center;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			/* A 32px target with a visible ring on hover, so it reads as a control and
+			   not a stray mark at the end of the leader (QA, 2026-10); coarse pointers
+			   still grow to 44px below. */
+			min-width: 2rem;
+			min-height: 2rem;
+			padding: 0.2rem;
+			border: 0;
+			background: none;
+			color: var(--muted);
+			cursor: pointer;
+			border-radius: var(--radius-sm);
+		}
+		.sermon-row-toggle:hover {
+			color: var(--text);
+			background: var(--surface-2);
+		}
+		.sermon-row-toggle:focus-visible {
+			outline: 2px solid var(--accent);
+			outline-offset: 1px;
+		}
+		/* The shared chevron-right, turned down (closed) / up (open) like QandA's —
+		   a rotation, so it needs no RTL flip. */
+		.sermon-row-chevron {
+			display: block;
+			transform: rotate(90deg);
+			transition: transform var(--duration-fast);
+		}
+		.sermon-row.is-open .sermon-row-chevron {
+			transform: rotate(-90deg);
+		}
+		/* The brief under the entry: always there as a two-line preview (what a reader
+		   chooses by; the clamp is `line-clamp-2` in the markup, lifted while open). It
+		   hangs in the content column (already inset past the emblem) at a reading
+		   measure, not the full row width. */
+		.sermon-row-brief {
+			margin: 0.4rem 0 0;
+			max-width: 64ch;
+			color: var(--muted);
+		}
+	}
+
 	/* Row card. Only layout + padding are scoped; the resting frame (border,
 	   radius, ground) rides on layered Tailwind utilities in the markup and the
 	   hover (border→accent, ground→surface-2, no lift) on the shared .card-tint

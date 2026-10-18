@@ -135,3 +135,38 @@
 	</section>
 {/if}
 
+<style>
+	/* Moved out of app.css (only this component uses .streak-flame), so the
+	   site-wide sheet stays smaller (INP). :global keeps the selectors. */
+	:global {
+		/* The streak's flame by tier (DashboardStats; streak.ts, streakTier): a bare
+		   gold spark under a week; a soft halo from a week; a lit, filled blaze from
+		   a month; and from a hundred days a crown ring in the library's plum.
+		   Ornament, so gold (STYLE_GUIDE §1): the number beside it carries the
+		   meaning. The spark takes no halo box, so the common case keeps its old
+		   footprint. */
+		.streak-flame {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			color: var(--gold);
+		}
+		.streak-flame:not([data-tier='spark']) {
+			width: 3rem;
+			height: 3rem;
+			border-radius: 999px;
+			background: color-mix(in srgb, var(--gold) 14%, transparent);
+		}
+		.streak-flame[data-tier='blaze'],
+		.streak-flame[data-tier='crown'] {
+			background: color-mix(in srgb, var(--gold) 22%, transparent);
+		}
+		.streak-flame[data-tier='blaze'] path,
+		.streak-flame[data-tier='crown'] path {
+			fill: color-mix(in srgb, var(--gold) 40%, transparent);
+		}
+		.streak-flame[data-tier='crown'] {
+			box-shadow: 0 0 0 2px var(--hue-plum);
+		}
+	}
+</style>
