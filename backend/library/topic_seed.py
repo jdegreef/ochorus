@@ -55,6 +55,7 @@ TOPICS = [
         [
             "baptism-with-the-holy-spirit",
             "the-person-and-work-of-the-holy-spirit",
+            "secret-power",
             "the-masters-indwelling",
             "jesus-himself-2",
             "key-teachings-of-r-a-torrey",

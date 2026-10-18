@@ -563,6 +563,12 @@ BOOKS: list[BookEntry] = [
     BookEntry("prevailing-prayer", "Prevailing Prayer", "dwight-l-moody",
               "gutenberg", "61883",
               subtitle="What Hinders It?", cover_color="#365314"),
+    # Secret Power (1881, Gutenberg #33341): Moody's five addresses on the
+    # Holy Spirit's power for service, with his preface.
+    BookEntry("secret-power", "Secret Power", "dwight-l-moody",
+              "gutenberg", "33341",
+              subtitle="The Secret of Success in Christian Life and Work",
+              cover_color="#7c2d12"),
     BookEntry("the-fourfold-gospel", "The Fourfold Gospel", "a-b-simpson",
               "web", "https://online.ambrose.edu/alliancestudies/simpson/4fold.html",
               subtitle="Christ Our Saviour, Sanctifier, Healer, and Coming King",
