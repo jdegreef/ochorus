@@ -256,6 +256,7 @@ TOPICS = [
             "grace-abounding",
             "the-bruised-reed",
             "mortification-of-sin",
+            "communion-with-god",
             "all-things-for-good",
             "ten-commandments",
             "a-body-of-divinity",
