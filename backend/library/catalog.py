@@ -77,6 +77,10 @@ class BookEntry:
     # 1990s keyer's note. Named one by one, because "Preface" and "Postscript"
     # are the author's own in other works.
     skip: tuple[str, ...] = ()
+    # CCEL only: section stems (as in "<work>.i.vii.iii.html" → "i.vii.iii")
+    # of PARENT pages that carry prose of their own. A page with children is
+    # otherwise taken for a part divider and dropped — see import_ccel.toc_parts.
+    keep: tuple[str, ...] = ()
 
 
 AUTHORS: dict[str, AuthorEntry] = {
@@ -819,6 +823,16 @@ BOOKS: list[BookEntry] = [
               "john-owen", "ccel", "owen/mort",
               subtitle="On Killing Sin by the Spirit",
               cover_color="#5b2333"),
+    # Of Communion with God the Father, Son, and Holy Ghost (1657), in Goold's
+    # edition of the Works (CCEL owen/communion). part="i" leaves out the
+    # separate Vindication that follows it; Goold's prefatory note and analysis
+    # are the editor's, not Owen's.
+    BookEntry("communion-with-god", "Communion with God", "john-owen",
+              "ccel", "owen/communion", part="i",
+              subtitle="With the Father, Son, and Holy Ghost",
+              cover_color="#2f4f6f",
+              skip=("Title Page.", "Prefatory note.", "Analysis.", "Title."),
+              keep=("i.vii.iii",)),
     # Two early African-American spiritual autobiographies, keyed (not OCR'd) by
     # UNC's Documenting the American South. Both first published pre-1929, US
     # public domain. See `import_docsouth`. Amanda Smith's per-chapter titles are

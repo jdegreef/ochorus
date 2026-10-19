@@ -16931,6 +16931,43 @@ BODY_CORRECTIONS.setdefault("brave-for-god-4", {}).setdefault("replacements", []
      "Ida offered to send her father, a doctor, at once"),
 ])
 
+# Owen's Communion with God (CCEL, Goold's edition): the TOC titles every
+# chapter "Chapter I." … per Part, which the numbering cleanup leaves blank, and
+# the Parts restart the count. As for The Mortification of Sin, each title is
+# the lead clause of Owen's own chapter summary, which opens the chapter.
+CORRECTIONS["communion-with-god"] = {"chapter_titles": {
+    2: 'To the Reader',
+    3: 'That the saints have communion with God',
+    4: 'That this communion is distinctly with the Father, Son, and Spirit',
+    5: 'Of the peculiar and distinct communion which the saints have with the Father',
+    6: 'Inferences on communion with the Father in love',
+    7: 'Of the fellowship which the saints have with Jesus Christ the Son of God',
+    8: 'What it is wherein we have peculiar fellowship with the Lord Christ',
+    9: 'Of the way the saints hold communion with Christ as to personal grace',
+    10: 'Digression I: some excellencies of Christ proposed to consideration',
+    11: 'Digression II: all solid wisdom laid up in Christ',
+    12: 'Of communion with Christ in a conjugal relation, in its consequential affections',
+    13: 'Other consequential affections',
+    14: 'Of communion with Christ in purchased grace',
+    15: 'The nature of purchased grace',
+    16: 'How the saints hold communion with Christ as to their acceptation with God',
+    17: 'Of communion with Christ in holiness',
+    18: 'Of communion with Christ in privileges',
+    19: 'The foundation of our communion with the Holy Ghost',
+    20: 'Of the actings of the Holy Ghost in us',
+    21: 'Of the things wherein we have communion with the Holy Ghost',
+    22: "The general consequences of the Holy Ghost's work in believers",
+    23: 'Observations and inferences concerning the Spirit',
+    24: 'Of particular communion with the Holy Ghost',
+    25: "The general ways of the saints' acting in communion with the Holy Ghost",
+    26: 'Particular directions for communion with the Holy Ghost',
+}}
+BODY_CORRECTIONS.setdefault("communion-with-god", {}).setdefault("replacements", []).extend([
+    ("any thing in us that is lovely.Rom. v. 8,", "any thing in us that is lovely. Rom. v. 8,"),
+    # The English of John 16:7 lost its opening mark after the Greek.
+    ("ἀπέλθω, — It is expedient for you", "ἀπέλθω, — “It is expedient for you"),
+])
+
 # Bunyan's The Holy War (CCEL): a word run together twice, and a space before
 # a semicolon.
 BODY_CORRECTIONS.setdefault("the-holy-war", {}).setdefault("replacements", []).extend([

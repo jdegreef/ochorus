@@ -2360,6 +2360,15 @@ TOC title. It is per book because those titles are the author's own elsewhere.
 A keyer's "[End of …]" line after the last paragraph goes as a `back_matter`
 seam. *(how-to-pray, 2026-10)*
 
+**A CCEL page with children can hold real prose, and the importer drops it
+silently.** `toc_parts` treats any section whose stem prefixes another's as a
+part divider. In Owen's *Communion with God*, Part II Chapter III
+(`i.vii.iii`) has its two Digressions as children, so that chapter vanished
+while the import reported "✓ 25 chapters". Count chapters against the TOC
+whenever a leaf has sub-leaves, and name such pages in
+`BookEntry(keep=("i.vii.iii",))`. It is opt-in because measuring every parent
+would change what existing books import. *(communion-with-god, 2026-10)*
+
 **`import_ccel` leaves `source_url` empty and can reuse a `sort_order` that is
 already taken.** Holiness came in at 68, the same as `our-daily-walk`. Before
 serializing, set `source_url`, `sort_order` (fixture max + 1), `attribution`,

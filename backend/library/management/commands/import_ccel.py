@@ -173,7 +173,9 @@ def summary_title(title: str) -> str:
     return lead.rstrip(" .,;:-").strip() or title
 
 
-def toc_parts(ref: str, part: str = "") -> list[tuple[str, list[tuple[str, str]]]]:
+def toc_parts(
+    ref: str, part: str = "", keep: tuple[str, ...] = ()
+) -> list[tuple[str, list[tuple[str, str]]]]:
     """Group a two-level work by its parts: [(part_title, [(url, title), …]), …].
 
     ``part`` narrows the crawl to ONE work inside a multi-work volume, named by
@@ -194,6 +196,13 @@ def toc_parts(ref: str, part: str = "") -> list[tuple[str, list[tuple[str, str]]
     Leaf sections with no parent (front matter, a lone appendix) come back as
     their own single-child part, so nothing is silently dropped.
 
+    ``keep`` names parent stems that carry prose of their own and must stay a
+    section rather than be treated as a divider: Owen's Communion with God puts
+    Part II's Chapter III on its own page (``i.vii.iii``) with its two
+    Digressions as children, and dropping it lost the chapter. Opt-in per book
+    (``BookEntry.keep``), because fetching every parent to measure it would
+    change what an existing book imports.
+
     Note for later: under ``group_parts`` a leaf title becomes an ``<h3>``
     inside the chapter body, so ``corrections.chapter_titles`` — which is keyed
     by chapter order — can no longer address it. A leaf-title fix in a grouped
@@ -209,7 +218,7 @@ def toc_parts(ref: str, part: str = "") -> list[tuple[str, list[tuple[str, str]]
         # Restrict the parent test to the subtree too: a page is only a divider
         # relative to what is actually being imported.
         stems = {u: stems[u] for u in order}
-    parents = _parent_urls(stems)
+    parents = {u for u in _parent_urls(stems) if stems[u] not in keep}
     # Stem → its divider page, so the part can take that page's real title
     # ("Book I") instead of its first leaf's ("Chapter I").
     divider = {stems[p]: p for p in parents}
@@ -227,14 +236,14 @@ def toc_parts(ref: str, part: str = "") -> list[tuple[str, list[tuple[str, str]]
     return list(groups.values())
 
 
-def toc_sections(ref: str, part: str = "") -> list[tuple[str, str]]:
+def toc_sections(ref: str, part: str = "", keep: tuple[str, ...] = ()) -> list[tuple[str, str]]:
     """Return [(absolute_section_url, title), ...] from the work's TOC page.
 
     The flat view: ``toc_parts`` with its grouping discarded. Defined in terms
     of it so the two views can never disagree about what counts as a part
     divider or about section order.
     """
-    return [leaf for _, leaves in toc_parts(ref, part) for leaf in leaves]
+    return [leaf for _, leaves in toc_parts(ref, part, keep) for leaf in leaves]
 
 
 _LEADING_P = re.compile(r"\s*<p>(.*?)</p>", re.S)
@@ -472,7 +481,7 @@ class Command(BaseCommand):
         ref = f"{entry.source_ref}#{entry.part}" if entry.part else entry.source_ref
         self.stdout.write(f"→ {entry.title}  (ccel:{ref})")
         try:
-            parts = toc_parts(entry.source_ref, entry.part)
+            parts = toc_parts(entry.source_ref, entry.part, entry.keep)
         except requests.RequestException as exc:
             self.stderr.write(self.style.ERROR(f"  TOC fetch failed: {exc}"))
             return
