@@ -21757,6 +21757,17 @@
 			"layout": "wash/indigo",
 			"bar": 0.11
 		},
+		"vi/humility-2": {
+			"ground": "7f9f67a0f3602c9625ff98442e4bf946497fc6bb75d52d17d5ca0e3021943a7e",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"vi/school-of-prayer": {
 			"ground": "b9c8703ebc49141609f1e7e8dbbea1029d26b02a76fb94b57afd044fea33753e",
 			"style": "devotional",
