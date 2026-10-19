@@ -1,0 +1,9 @@
+{
+ "school-of-prayer-31-days": {
+  "title": "31 ngày trong trường cầu nguyện",
+  "description": "Một tháng cùng Andrew Murray dưới chân Thầy duy nhất. Mỗi ngày mở ra một lời của chính Chúa Giê-xu về sự cầu nguyện, từ “Lạy Chúa, xin dạy chúng tôi cầu nguyện” cho đến những lời hứa trong đêm cuối cùng, và khép lại bằng một lời cầu nguyện. Mỗi ngày một bài học, khoảng mười phút, dần dần dẫn đến sự cầu thay và một đời sống cầu nguyện.",
+  "note": [
+   "Single-book LAUNCH plan backed by the vi edition of school-of-prayer (queue job #6167; book title «Cùng Đấng Christ trong trường cầu nguyện»), shipped in the same PR so seed_plans does not publish an English-titled card in Vietnamese. “Lạy Chúa, xin dạy chúng tôi cầu nguyện” is Cadman's Luke 11:1. AI-drafted; awaiting native review."
+  ]
+ }
+}
