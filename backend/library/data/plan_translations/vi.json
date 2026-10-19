@@ -5,5 +5,12 @@
   "note": [
    "Single-book LAUNCH plan backed by the vi edition of school-of-prayer (queue job #6167; book title «Cùng Đấng Christ trong trường cầu nguyện»), shipped in the same PR so seed_plans does not publish an English-titled card in Vietnamese. “Lạy Chúa, xin dạy chúng tôi cầu nguyện” is Cadman's Luke 11:1. AI-drafted; awaiting native review."
   ]
+ },
+ "the-inner-chamber-month": {
+  "title": "Một tháng trong phòng cầu nguyện kín",
+  "description": "Hãy tập một thói quen hằng ngày về sự cầu nguyện và Lời Đức Chúa Trời: ba mươi sáu buổi sáng cùng Andrew Murray, mỗi ngày một chương.",
+  "note": [
+   "Single-book LAUNCH plan backed by the vi edition of the-inner-chamber (queue job #6168; book title «Phòng cầu nguyện kín», from Cadman's Matthew 6:6 “hãy vào phòng riêng … ở nơi kín nhiệm đó”), shipped in the same PR so seed_plans does not publish a vi plan row with no prose. The title opens with the edition's own title so the plan card and the book agree. AI-drafted; awaiting native review."
+  ]
  }
 }

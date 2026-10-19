@@ -1,0 +1,2011 @@
+{
+ "kind": "book",
+ "slug": "the-inner-chamber",
+ "language": "vi",
+ "job_issue": 6168,
+ "pull_request": 6429,
+ "note": [
+  "Scripture follows the Kinh Thánh (Cadman, 1925; public domain), built with scripts/bible_mirror.py from the ebible mirror vie_kt (Take Root unreachable from this session); the script's repairs are typography only. Rows were derived by measurement: `mined` only when the translator claimed Cadman wording AND the block contains either a quoted span that is a verbatim Cadman substring or a run of six consecutive Cadman words. Everything else is `self_rendered` with the translator's reason. `block_index` is work-level.",
+  "This English edition is a modernised text that quotes an ESV/NIV-style Bible; Cadman's 1925 wording sits inside the quotation marks and the author's point is carried in the prose where Cadman lacks a word (e.g. James 5:17 'nature'). The English has many broken quotation marks (epigraphs without an opening “, quotes closed with two straight apostrophes, reversed marks); the Vietnamese pairs them correctly and the English defects are listed in the PR for a source fix. AI-drafted, awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Psalms 5:3",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Isaiah 50:4",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 1,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 5:3",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 3,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 89:16",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 8,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Isaiah 27:3",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 8,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 15,
+   "why": "not in quotation marks in English; rendered as prose echo, wording borrows Cadman's \"nhờ Đấng yêu thương mình mà thắng hơn bội phần\""
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 16,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 19,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 16:32",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "why": "\"The Father is always with me\" is not in quotation marks; rendered as prose (\"Cha luôn ở cùng tôi\")"
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 19,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 24,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Matthew 6:17",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 26,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Matthew 6:18",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 26,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Acts 4:13",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 27,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Exodus 34:29",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 28,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Exodus 34:30",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 28,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Exodus 34:31",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 28,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Exodus 34:32",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 28,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Proverbs 23:17",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 36,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Numbers 7:89",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 38,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Numbers 7:89",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 40,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Isaiah 66:2",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 44,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Deuteronomy 33:1",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 65,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "2 Timothy 3:17",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 70,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "2 Timothy 3:16",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 71,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "2 Timothy 3:17",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 71,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "2 Kings 1:10",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 74,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 2:13",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 78,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 33:6",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 79,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 2:13",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 81,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 29:4",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 81,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Romans 4:17",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 82,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "1 Peter 1:23",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 81,
+   "why": "unquoted echo (“born of incorruptible seed … word of God that lives and abides forever”) rendered in prose with Cadman's phrasing “giống chẳng hư nát … Lời hằng sống và bền vững”"
+  },
+  {
+   "reference": "Romans 1:16",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 84,
+   "why": "unquoted echo “the power of God unto salvation” → prose “quyền phép của Đức Chúa Trời để cứu rỗi”"
+  },
+  {
+   "reference": "John 16:13",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "why": "unquoted echo “lead us into all truth” → prose “dẫn chúng ta vào mọi lẽ thật”"
+  },
+  {
+   "reference": "Matthew 13:31",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 95,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Galatians 6:9",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 93,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "James 5:7",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "unquoted echo “the long patience of the husbandman” → prose “sự nhịn nhục lâu dài của người làm ruộng”"
+  },
+  {
+   "reference": "Psalms 119:11",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "unquoted echo “hide the word in our heart” → prose “giấu Lời trong lòng mình”"
+  },
+  {
+   "reference": "John 15:7",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "unquoted echo “Christ's words must abide in us” → prose “lời của Đấng Christ phải ở trong chúng ta”"
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 95,
+   "why": "unquoted echo “the love of God shed abroad in the heart” → prose with Cadman's “rải khắp trong lòng”"
+  },
+  {
+   "reference": "Ephesians 1:19",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "unquoted echo “the exceeding greatness of the power” → prose “quyền năng lớn lao vô hạn”"
+  },
+  {
+   "reference": "Isaiah 53:2",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 95,
+   "why": "unquoted echo “without form or comeliness” → prose with Cadman's “chẳng có hình dung, chẳng có sự đẹp đẽ”"
+  },
+  {
+   "reference": "1 Corinthians 3:6",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "why": "unquoted echoes “give the increase” / “above what we can ask or think” → prose “làm cho lớn lên … trổi hơn mọi điều chúng ta cầu xin hoặc suy tưởng”"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 96,
+   "why": "unquoted echoes “give the increase” / “above what we can ask or think” → prose “làm cho lớn lên … trổi hơn mọi điều chúng ta cầu xin hoặc suy tưởng”"
+  },
+  {
+   "reference": "Luke 11:28",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 97,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 7:17",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 98,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Luke 11:28",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 102,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 7:17",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 102,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 2:5",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 103,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "2 Samuel 7:25",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 104,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "2 Chronicles 6:4",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 104,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "2 Chronicles 6:10",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 104,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "2 Chronicles 6:15",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 104,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "2 Chronicles 6:17",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 104,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ezekiel 36:36",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 104,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Jeremiah 32:24",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 104,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Colossians 1:10",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 106,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Exodus 23:22",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 107,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Genesis 12:4",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 107,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Exodus 40:16",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 107,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Acts 13:22",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 107,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 7:17",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 110,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "James 1:22",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 111,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "James 1:23",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 111,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "James 1:24",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 111,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "James 1:25",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 111,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "James 1:22",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 114,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 7:17",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 115,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 118,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 13:17",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 122,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 14:15",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 124,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 14:16",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 124,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 14:21",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 125,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 14:23",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 125,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 125,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 15:10",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 125,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 15:14",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 125,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "1 John 2:3",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 130,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "1 John 2:4",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 130,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "1 John 2:5",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 130,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "1 John 3:21",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 131,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "1 John 3:22",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 131,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "1 John 3:24",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 131,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "1 John 5:3",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 132,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "1 John 5:4",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 132,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 10:18",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 134,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 13:34",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 136,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 13:14",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 136,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 13:15",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 136,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "why": "unmarked echo (\"work in you both to will and to do\"), translated as prose \"làm cho bạn vừa muốn vừa làm\" (close to Cadman's \"vừa muốn vừa làm\")"
+  },
+  {
+   "reference": "Genesis 2:9",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 139,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 141,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 17:3",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "why": "unmarked echo (\"The knowledge of God is life eternal\"), prose \"Sự nhận biết Đức Chúa Trời là sự sống đời đời\""
+  },
+  {
+   "reference": "Proverbs 4:23",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 142,
+   "why": "unmarked echo (\"Out of the heart are the issues of life\"), prose modelled on Cadman: \"Các nguồn sự sống do nơi lòng mà ra\""
+  },
+  {
+   "reference": "Genesis 3:6",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 144,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 13:2",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 145,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Proverbs 3:5",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 146,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Proverbs 3:5",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 152,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Proverbs 3:5",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 153,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 25:9",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 156,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Proverbs 9:10",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 156,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Isaiah 55:9",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 158,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Isaiah 55:9",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 161,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Matthew 11:25",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 163,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 2:11",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 163,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 2:12",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 163,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Isaiah 54:13",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 164,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 1:1",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 166,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 1:2",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 166,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 19:14",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 167,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 119:15",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 171,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 119:97",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 171,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 51:6",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 174,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Luke 2:19",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 174,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Colossians 4:12",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 175,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 1:2",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 179,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Joshua 1:5",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 180,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Joshua 1:7",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 180,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Joshua 1:8",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 180,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Joshua 1:9",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 180,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 19:14",
+   "status": "mined",
+   "chapter_order": 15,
+   "block_index": 181,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Matthew 11:25",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 182,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 191,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 198,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "chapter_order": 17,
+   "block_index": 202,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 212,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 216,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Colossians 2:9",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 219,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 14:26",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 219,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Luke 14:11",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 222,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "James 4:6",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 222,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "chapter_order": 18,
+   "block_index": 223,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 1:1",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 224,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 1:4",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 224,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 8:12",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 225,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Genesis 1:11",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 231,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Genesis 1:12",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 231,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 46:10",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 234,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Zephaniah 1:7",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 234,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Zechariah 2:13",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 234,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Habakkuk 2:20",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 234,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 1:4",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 234,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 8:12",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 234,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Philippians 3:1",
+   "status": "mined",
+   "chapter_order": 19,
+   "block_index": 236,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 1:2",
+   "status": "mined",
+   "chapter_order": 20,
+   "block_index": 240,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Colossians 3:2",
+   "status": "mined",
+   "chapter_order": 21,
+   "block_index": 249,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "mined",
+   "chapter_order": 21,
+   "block_index": 249,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "chapter_order": 22,
+   "block_index": 263,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Revelation 4:9",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 264,
+   "why": "two Cadman pieces joined with \"…\": REV 4:9 from \"các sanh vật\" to \"đời đời\" (initial capitalised), then REV 4:11 from \"vì Chúa đã dựng nên\" to the end; each piece verbatim Cadman. The English merges the two verses the same way"
+  },
+  {
+   "reference": "Revelation 4:11",
+   "status": "self_rendered",
+   "chapter_order": 22,
+   "block_index": 264,
+   "why": "two Cadman pieces joined with \"…\": REV 4:9 from \"các sanh vật\" to \"đời đời\" (initial capitalised), then REV 4:11 from \"vì Chúa đã dựng nên\" to the end; each piece verbatim Cadman. The English merges the two verses the same way"
+  },
+  {
+   "reference": "Hebrews 13:21",
+   "status": "mined",
+   "chapter_order": 22,
+   "block_index": 268,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "chapter_order": 22,
+   "block_index": 268,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 40:8",
+   "status": "mined",
+   "chapter_order": 22,
+   "block_index": 272,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Jeremiah 15:16",
+   "status": "mined",
+   "chapter_order": 23,
+   "block_index": 273,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Matthew 4:4",
+   "status": "mined",
+   "chapter_order": 23,
+   "block_index": 274,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Matthew 13:44",
+   "status": "mined",
+   "chapter_order": 23,
+   "block_index": 274,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Jeremiah 15:16",
+   "status": "mined",
+   "chapter_order": 23,
+   "block_index": 274,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Jeremiah 15:16",
+   "status": "mined",
+   "chapter_order": 23,
+   "block_index": 278,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 4:34",
+   "status": "mined",
+   "chapter_order": 23,
+   "block_index": 279,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Jeremiah 15:16",
+   "status": "mined",
+   "chapter_order": 23,
+   "block_index": 283,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Luke 12:39",
+   "status": "mined",
+   "chapter_order": 24,
+   "block_index": 284,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Job 23:12",
+   "status": "mined",
+   "chapter_order": 24,
+   "block_index": 288,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Luke 12:39",
+   "status": "self_rendered",
+   "chapter_order": 24,
+   "why": "unquoted echo “We do not know at what hour the thief comes”, rendered as prose"
+  },
+  {
+   "reference": "Luke 11:40",
+   "status": "mined",
+   "chapter_order": 25,
+   "block_index": 298,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 15:46",
+   "status": "mined",
+   "chapter_order": 25,
+   "block_index": 299,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Jeremiah 31:33",
+   "status": "mined",
+   "chapter_order": 25,
+   "block_index": 302,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ezekiel 36:26",
+   "status": "mined",
+   "chapter_order": 25,
+   "block_index": 302,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 14:20",
+   "status": "mined",
+   "chapter_order": 25,
+   "block_index": 302,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 308,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Titus 3:4",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 309,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Titus 3:5",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 309,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Titus 3:4",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 312,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Titus 3:5",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 312,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 313,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:22",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 313,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:23",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 313,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Colossians 3:10",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 313,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Galatians 4:6",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 314,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "mined",
+   "chapter_order": 26,
+   "block_index": 316,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Colossians 3:9",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 320,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Colossians 3:10",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 320,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:21",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 321,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:23",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 321,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:24",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 321,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Colossians 3:10",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 323,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 323,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Colossians 3:10",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 324,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:23",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 324,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Colossians 3:10",
+   "status": "self_rendered",
+   "chapter_order": 27,
+   "block_index": 325,
+   "why": "unmarked in English (title-cased emphasis); given in Cadman's wording, reordered, without marks"
+  },
+  {
+   "reference": "Genesis 1:26",
+   "status": "mined",
+   "chapter_order": 27,
+   "block_index": 326,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Romans 8:29",
+   "status": "self_rendered",
+   "chapter_order": 27,
+   "block_index": 326,
+   "why": "echoes inside Murray's own (spuriously quoted) sentence — see ENGLISH-ERROR; Rom 8:29 echoed with Cadman's “nên giống như hình bóng Con Ngài”, Eph 5:1 with “kẻ bắt chước Đức Chúa Trời”"
+  },
+  {
+   "reference": "Ephesians 5:1",
+   "status": "self_rendered",
+   "chapter_order": 27,
+   "block_index": 326,
+   "why": "echoes inside Murray's own (spuriously quoted) sentence — see ENGLISH-ERROR; Rom 8:29 echoed with Cadman's “nên giống như hình bóng Con Ngài”, Eph 5:1 with “kẻ bắt chước Đức Chúa Trời”"
+  },
+  {
+   "reference": "1 John 2:6",
+   "status": "self_rendered",
+   "chapter_order": 27,
+   "why": "echoes inside Murray's own (spuriously quoted) sentence — see ENGLISH-ERROR; Rom 8:29 echoed with Cadman's “nên giống như hình bóng Con Ngài”, Eph 5:1 with “kẻ bắt chước Đức Chúa Trời”"
+  },
+  {
+   "reference": "Colossians 3:10",
+   "status": "self_rendered",
+   "chapter_order": 27,
+   "block_index": 326,
+   "why": "unmarked title-case tail “The New Man Being Renewed…”, given as prose in Cadman's vocabulary"
+  },
+  {
+   "reference": "Ephesians 4:23",
+   "status": "self_rendered",
+   "chapter_order": 27,
+   "block_index": 327,
+   "why": "unmarked (KJV-style) paraphrase; given in Cadman's wording without marks; “holiness of truth” = Cadman “sự thánh sạch của lẽ thật” (prose “holiness” elsewhere = sự thánh khiết per CONVENTIONS)"
+  },
+  {
+   "reference": "Ephesians 4:24",
+   "status": "self_rendered",
+   "chapter_order": 27,
+   "block_index": 327,
+   "why": "unmarked (KJV-style) paraphrase; given in Cadman's wording without marks; “holiness of truth” = Cadman “sự thánh sạch của lẽ thật” (prose “holiness” elsewhere = sự thánh khiết per CONVENTIONS)"
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "self_rendered",
+   "chapter_order": 27,
+   "block_index": 328,
+   "why": "unmarked echoes, Cadman vocabulary (càng ngày càng hơn; hóa nên cũng một ảnh tượng Ngài, như bởi Chúa, là Thánh Linh)"
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "self_rendered",
+   "chapter_order": 27,
+   "block_index": 328,
+   "why": "unmarked echoes, Cadman vocabulary (càng ngày càng hơn; hóa nên cũng một ảnh tượng Ngài, như bởi Chúa, là Thánh Linh)"
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "mined",
+   "chapter_order": 28,
+   "block_index": 330,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "mined",
+   "chapter_order": 28,
+   "block_index": 331,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Hebrews 7:16",
+   "status": "mined",
+   "chapter_order": 28,
+   "block_index": 334,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "why": "unmarked echoes, translated as prose in Cadman's vocabulary (tự bỏ mình, vác thập tự giá, móc con mắt, chặt tay, ghét sự sống mình)"
+  },
+  {
+   "reference": "Luke 14:33",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "why": "unmarked echoes, translated as prose in Cadman's vocabulary (tự bỏ mình, vác thập tự giá, móc con mắt, chặt tay, ghét sự sống mình)"
+  },
+  {
+   "reference": "Matthew 5:29",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "why": "unmarked echoes, translated as prose in Cadman's vocabulary (tự bỏ mình, vác thập tự giá, móc con mắt, chặt tay, ghét sự sống mình)"
+  },
+  {
+   "reference": "Matthew 5:30",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "why": "unmarked echoes, translated as prose in Cadman's vocabulary (tự bỏ mình, vác thập tự giá, móc con mắt, chặt tay, ghét sự sống mình)"
+  },
+  {
+   "reference": "Luke 14:26",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "why": "unmarked echoes, translated as prose in Cadman's vocabulary (tự bỏ mình, vác thập tự giá, móc con mắt, chặt tay, ghét sự sống mình)"
+  },
+  {
+   "reference": "John 12:25",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "why": "unmarked echoes, translated as prose in Cadman's vocabulary (tự bỏ mình, vác thập tự giá, móc con mắt, chặt tay, ghét sự sống mình)"
+  },
+  {
+   "reference": "Matthew 13:46",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "why": "unmarked echo “pearl of great price” = Cadman “hột châu quí giá”"
+  },
+  {
+   "reference": "Philippians 3:10",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "block_index": 335,
+   "why": "unmarked echo in Cadman's wording (sự thông công thương khó…, nên giống như Ngài trong sự chết Ngài)"
+  },
+  {
+   "reference": "2 Corinthians 4:10",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "block_index": 335,
+   "why": "unmarked in English (KJV wording run into the prose); given as verbatim Cadman v.10-12 without marks, so Cadman's “Đức Chúa Jêsus” appears in prose here — flag in case reviewers prefer marks"
+  },
+  {
+   "reference": "2 Corinthians 4:11",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "block_index": 335,
+   "why": "unmarked in English (KJV wording run into the prose); given as verbatim Cadman v.10-12 without marks, so Cadman's “Đức Chúa Jêsus” appears in prose here — flag in case reviewers prefer marks"
+  },
+  {
+   "reference": "2 Corinthians 4:12",
+   "status": "self_rendered",
+   "chapter_order": 28,
+   "block_index": 335,
+   "why": "unmarked in English (KJV wording run into the prose); given as verbatim Cadman v.10-12 without marks, so Cadman's “Đức Chúa Jêsus” appears in prose here — flag in case reviewers prefer marks"
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "mined",
+   "chapter_order": 28,
+   "block_index": 337,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Colossians 1:9",
+   "status": "mined",
+   "chapter_order": 28,
+   "block_index": 337,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "mined",
+   "chapter_order": 28,
+   "block_index": 339,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 7:38",
+   "status": "mined",
+   "chapter_order": 28,
+   "block_index": 341,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 17:17",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 342,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 14:6",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 344,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 6:63",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 345,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 17:19",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 346,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 17:17",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 347,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "2 Thessalonians 2:13",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 347,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 17:17",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 349,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 17:17",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 350,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "1 Samuel 2:2",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 350,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 17:17",
+   "status": "mined",
+   "chapter_order": 29,
+   "block_index": 351,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 17:17",
+   "status": "self_rendered",
+   "chapter_order": 29,
+   "block_index": 352,
+   "why": "the closing prayer, re-personed \"them\" → \"me\": “Xin Cha lấy lẽ thật khiến con nên thánh.” (Cadman \"họ\" → \"con\"; \"your word is truth\" not part of the English prayer)"
+  },
+  {
+   "reference": "Psalms 119:97",
+   "status": "mined",
+   "chapter_order": 30,
+   "block_index": 353,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 119:33",
+   "status": "mined",
+   "chapter_order": 30,
+   "block_index": 360,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 119:34",
+   "status": "mined",
+   "chapter_order": 30,
+   "block_index": 360,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 119:25",
+   "status": "mined",
+   "chapter_order": 30,
+   "block_index": 360,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 119:86",
+   "status": "self_rendered",
+   "chapter_order": 30,
+   "why": "English “to help him” is re-personed (the psalm says \"help me\"); the marks hold only \"giúp đỡ\" (Cadman 119:86 / 173 \"giúp đỡ tôi\"), \"ông\" sits outside them"
+  },
+  {
+   "reference": "Psalms 119:26",
+   "status": "mined",
+   "chapter_order": 30,
+   "block_index": 362,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 119:40",
+   "status": "mined",
+   "chapter_order": 30,
+   "block_index": 362,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 119:106",
+   "status": "mined",
+   "chapter_order": 30,
+   "block_index": 364,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Psalms 119:97",
+   "status": "mined",
+   "chapter_order": 30,
+   "block_index": 364,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 3:14",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 366,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 3:15",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 366,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 3:16",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 366,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 3:17",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 366,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 3:16",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 371,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 372,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 1:3",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 377,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 1:12",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 378,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 1:13",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 378,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 1:17",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 379,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:18",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 380,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:22",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 381,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 3:4",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 382,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 3:5",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 382,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 3:6",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 382,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 3:7",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 382,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:4",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 383,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:5",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 383,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 4:6",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 383,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "self_rendered",
+   "chapter_order": 31,
+   "why": "\"5. Đầy dẫy Đức Thánh Linh, tạ ơn Đức Chúa Trời, nhân danh Đấng Christ.\" — Murray's compressed summary; built from Cadman phrases (đầy dẫy Đức Thánh Linh; tạ ơn Đức Chúa Trời) with \"Đấng Christ\" for Cadman's \"Đức Chúa Jêsus Christ\""
+  },
+  {
+   "reference": "Ephesians 5:19",
+   "status": "self_rendered",
+   "chapter_order": 31,
+   "why": "\"5. Đầy dẫy Đức Thánh Linh, tạ ơn Đức Chúa Trời, nhân danh Đấng Christ.\" — Murray's compressed summary; built from Cadman phrases (đầy dẫy Đức Thánh Linh; tạ ơn Đức Chúa Trời) with \"Đấng Christ\" for Cadman's \"Đức Chúa Jêsus Christ\""
+  },
+  {
+   "reference": "Ephesians 5:20",
+   "status": "self_rendered",
+   "chapter_order": 31,
+   "why": "\"5. Đầy dẫy Đức Thánh Linh, tạ ơn Đức Chúa Trời, nhân danh Đấng Christ.\" — Murray's compressed summary; built from Cadman phrases (đầy dẫy Đức Thánh Linh; tạ ơn Đức Chúa Trời) with \"Đấng Christ\" for Cadman's \"Đức Chúa Jêsus Christ\""
+  },
+  {
+   "reference": "Ephesians 6:10",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 384,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 6:11",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 384,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 385,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 6:13",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 385,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 6:14",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 385,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 6:15",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 385,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 6:16",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 386,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 6:17",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 386,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "chapter_order": 31,
+   "block_index": 386,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "chapter_order": 32,
+   "block_index": 388,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "chapter_order": 32,
+   "why": "\"Đấng Christ sống trong tôi\" — no quotation marks in English either; verbatim Cadman substring"
+  },
+  {
+   "reference": "John 6:15",
+   "status": "mined",
+   "chapter_order": 33,
+   "block_index": 400,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Mark 1:35",
+   "status": "mined",
+   "chapter_order": 33,
+   "block_index": 401,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Luke 6:12",
+   "status": "mined",
+   "chapter_order": 33,
+   "block_index": 401,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 6:15",
+   "status": "mined",
+   "chapter_order": 33,
+   "block_index": 401,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Matthew 14:23",
+   "status": "mined",
+   "chapter_order": 33,
+   "block_index": 401,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 5:19",
+   "status": "mined",
+   "chapter_order": 33,
+   "block_index": 405,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "John 8:26",
+   "status": "mined",
+   "chapter_order": 33,
+   "block_index": 405,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Proverbs 11:30",
+   "status": "mined",
+   "chapter_order": 34,
+   "block_index": 410,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Luke 13:7",
+   "status": "self_rendered",
+   "chapter_order": 34,
+   "why": "not a marked quotation of its own: Holland's \"cumberers of the ground\" (inside his quoted paragraph) echoes the barren fig tree; rendered \"kẻ choán đất vô ích\", which uses Cadman's \"choán đất vô ích\""
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "self_rendered",
+   "chapter_order": 34,
+   "why": "unmarked echo (\"the Father who sees in secret will reward openly\") translated as prose with Cadman's \"chỗ kín nhiệm\"; \"openly\" is not in Cadman 6:6, kept in prose as \"cách công khai\""
+  },
+  {
+   "reference": "Judges 16:6",
+   "status": "mined",
+   "chapter_order": 35,
+   "block_index": 423,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Isaiah 53:12",
+   "status": "mined",
+   "chapter_order": 35,
+   "block_index": 425,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "mined",
+   "chapter_order": 35,
+   "block_index": 428,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "chapter_order": 36,
+   "block_index": 436,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "James 5:17",
+   "status": "mined",
+   "chapter_order": 36,
+   "block_index": 436,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "James 5:17",
+   "status": "mined",
+   "chapter_order": 36,
+   "block_index": 438,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "1 Kings 17:1",
+   "status": "mined",
+   "chapter_order": 36,
+   "block_index": 440,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "1 Kings 17:24",
+   "status": "mined",
+   "chapter_order": 36,
+   "block_index": 441,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  },
+  {
+   "reference": "1 Kings 18:43",
+   "status": "mined",
+   "chapter_order": 36,
+   "block_index": 444,
+   "source_file": "Kinh Thánh (Cadman, 1925) Bible text"
+  }
+ ]
+}

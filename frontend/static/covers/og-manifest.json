@@ -21768,6 +21768,17 @@
 			"layout": "wash/sage",
 			"bar": 0.04
 		},
+		"vi/the-inner-chamber": {
+			"ground": "3a51ca755979800f18d12469a158f97a5cd432a0d75f78f18e9279e4f4276bc7",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"waiting-on-god": {
 			"ground": "4953e3a74672ccc0d17902faaf8abbf55cef0962b5c9939cea1a6504a6b307b9",
 			"style": "devotional",
