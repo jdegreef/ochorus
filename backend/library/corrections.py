@@ -16931,6 +16931,48 @@ BODY_CORRECTIONS.setdefault("brave-for-god-4", {}).setdefault("replacements", []
      "Ida offered to send her father, a doctor, at once"),
 ])
 
+# Bunyan's The Holy War (CCEL): a word run together twice, and a space before
+# a semicolon.
+BODY_CORRECTIONS.setdefault("the-holy-war", {}).setdefault("replacements", []).extend([
+    ("must first be laid tothy root before", "must first be laid to thy root before"),
+    ("must first be laid tothy root in a way", "must first be laid to thy root in a way"),
+    ("His were the blue colours ; his", "His were the blue colours; his"),
+    # A speech closed with an opening mark, or closed with no space after it.
+    ("‘Do thou reign over us.‘So he", "‘Do thou reign over us.’ So he"),
+    ("two of the vilest of all the town of Mansoul.‘This", "two of the vilest of all the town of Mansoul.’ This"),
+    ("How went matters betwixt you to-day?’So the", "How went matters betwixt you to-day?’ So the"),
+    ("‘Here am I, my Father.‘Then said", "‘Here am I, my Father.’ Then said"),
+    ("from the hand of her enemy.’And with", "from the hand of her enemy.’ And with"),
+    ("and do forgive you accordingly.’And having", "and do forgive you accordingly.’ And having"),
+    ("and bid him come hither to me.’So the", "and bid him come hither to me.’ So the"),
+    ("surely this can be no harm to us.’Then said", "surely this can be no harm to us.’ Then said"),
+])
+
+# Bunyan's nineteen chapters carry no titles beyond the first ("Relation of the
+# Holy War"), so the rest take short ones from their events, as Pilgrim's
+# Progress takes its stages. Orders 1-2 are his verse addresses to the reader.
+CORRECTIONS["the-holy-war"] = {"chapter_titles": {
+    1: "To the Reader",
+    4: "Diabolus Fortifies Mansoul",
+    5: "The Four Captains Come to Mansoul",
+    6: "The Siege, and Emmanuel Sent",
+    7: "Emmanuel Takes Mansoul",
+    8: "Mansoul Petitions the Prince",
+    9: "The General Pardon",
+    10: "The Trial of the Diabolonians",
+    11: "The Prince Sets Mansoul in Order",
+    12: "Mr. Carnal-Security and the Prince's Departure",
+    13: "The Diabolonians' Plot",
+    14: "Petitions Unanswered",
+    15: "The Army of Doubters",
+    16: "Diabolus Retakes the Town",
+    17: "Captain Credence",
+    18: "Emmanuel Returns",
+    19: "The Doubters and the Blood-men",
+    20: "The Doubters in Mansoul",
+    21: "Emmanuel's Charge to Mansoul",
+}}
+
 # Ryle's Holiness (CCEL): two papers open by restating their heading above the
 # epigraph, and a handful of CCEL transcription slips around quotation marks.
 BODY_CORRECTIONS.setdefault("holiness", {}).setdefault("replacements", []).extend([

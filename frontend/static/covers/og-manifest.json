@@ -20532,6 +20532,17 @@
 			"layout": "box/teal",
 			"bar": 0
 		},
+		"the-holy-war": {
+			"ground": "ab2ce1598a646a4de1c2b336acf98746d0053ebcdc364d73481e50a073b64e24",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-imitation-of-christ": {
 			"ground": "6a70cd9985a4ad6de6e946a0aacf9740b431aa940bc84cfc49d70b38912fbf8a",
 			"style": "devotional",

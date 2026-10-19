@@ -252,6 +252,7 @@ TOPICS = [
         "pressed home upon the heart.",
         [
             "pilgrims-progress",
+            "the-holy-war",
             "grace-abounding",
             "the-bruised-reed",
             "mortification-of-sin",
