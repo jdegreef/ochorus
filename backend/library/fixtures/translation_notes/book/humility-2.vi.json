@@ -3,7 +3,7 @@
  "slug": "humility-2",
  "language": "vi",
  "job_issue": 6170,
- "pull_request": null,
+ "pull_request": 6430,
  "note": [
   "Scripture follows the Kinh Thánh (Cadman, 1925; public domain), built with scripts/bible_mirror.py from the ebible mirror vie_kt (Take Root unreachable from this session); the script's repairs are typography only. Rows were derived by measurement: `mined` only when the translator claimed Cadman wording AND the block contains either a quoted span that is a verbatim Cadman substring or a run of six consecutive Cadman words. Everything else is `self_rendered` with the translator's reason. `block_index` is work-level.",
   "This English edition is a modernised text that quotes an ESV-style Bible; Cadman's 1925 wording sits inside the quotation marks. Where the English drops a word the verse needs (Romans 5:20 'sin', John 6:38 'will'), the Cadman verse supplies it. Broken English quotation marks are paired correctly in the Vietnamese; the English defects are listed in the PR. AI-drafted, awaiting native review."
