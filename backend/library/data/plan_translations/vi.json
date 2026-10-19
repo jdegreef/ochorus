@@ -12,5 +12,12 @@
   "note": [
    "Single-book LAUNCH plan backed by the vi edition of the-inner-chamber (queue job #6168; book title «Phòng cầu nguyện kín», from Cadman's Matthew 6:6 “hãy vào phòng riêng … ở nơi kín nhiệm đó”), shipped in the same PR so seed_plans does not publish a vi plan row with no prose. The title opens with the edition's own title so the plan card and the book agree. AI-drafted; awaiting native review."
   ]
+ },
+ "humility-12-days": {
+  "title": "Sự khiêm nhường trong 12 ngày",
+  "description": "Tác phẩm kinh điển của Andrew Murray về cội rễ của mọi đức tính — mỗi ngày một chương ngắn, trong mười hai ngày.",
+  "note": [
+   "Single-book LAUNCH plan backed by the vi edition of humility-2 (queue job #6170; book title «Sự khiêm nhường»), shipped in the same PR so seed_plans does not publish a vi plan row with no prose. The title opens with the edition's own title so the plan card and the book agree. AI-drafted; awaiting native review."
+  ]
  }
 }
