@@ -672,6 +672,12 @@ BOOKS: list[BookEntry] = [
     BookEntry("grace-abounding", "Grace Abounding to the Chief of Sinners", "john-bunyan",
               "ccel", "bunyan/grace",
               subtitle="The Mercy of God in Christ to His Servant", cover_color="#4a2c1a"),
+    # The Holy War (1682), CCEL bunyan/holy_war: Bunyan's allegory of the
+    # siege of the town of Mansoul, with his verse address to the reader.
+    BookEntry("the-holy-war", "The Holy War", "john-bunyan", "ccel",
+              "bunyan/holy_war",
+              subtitle="The Losing and Taking Again of the Town of Mansoul",
+              cover_color="#7a2e1f"),
     BookEntry("all-things-for-good", "All Things for Good", "thomas-watson",
               "ccel", "watson/cordial",
               subtitle="A Divine Cordial", cover_color="#2b6b4f"),
