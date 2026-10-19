@@ -3,7 +3,7 @@
  "slug": "the-inner-chamber",
  "language": "vi",
  "job_issue": 6168,
- "pull_request": null,
+ "pull_request": 6429,
  "note": [
   "Scripture follows the Kinh Thánh (Cadman, 1925; public domain), built with scripts/bible_mirror.py from the ebible mirror vie_kt (Take Root unreachable from this session); the script's repairs are typography only. Rows were derived by measurement: `mined` only when the translator claimed Cadman wording AND the block contains either a quoted span that is a verbatim Cadman substring or a run of six consecutive Cadman words. Everything else is `self_rendered` with the translator's reason. `block_index` is work-level.",
   "This English edition is a modernised text that quotes an ESV/NIV-style Bible; Cadman's 1925 wording sits inside the quotation marks and the author's point is carried in the prose where Cadman lacks a word (e.g. James 5:17 'nature'). The English has many broken quotation marks (epigraphs without an opening “, quotes closed with two straight apostrophes, reversed marks); the Vietnamese pairs them correctly and the English defects are listed in the PR for a source fix. AI-drafted, awaiting native review."
