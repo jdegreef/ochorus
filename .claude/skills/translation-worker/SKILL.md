@@ -2786,7 +2786,17 @@ archaic spelling and period punctuation are the text, not defects in it.
   — the shipped ko books quote 개역 without them.
   Build ONE cleaned `BOOK C:V<TAB>text` index per language and hand it to every
   translator, so a fan-out quotes one text; a substring check against it is then the
-  `mined` gate.
+  `mined` gate. **For vi this is a script now:**
+  `cd backend && uv run python scripts/bible_mirror.py vie_kt <dir>` fetches all 66 books
+  and writes `<dir>/verses.json` + `verses.tsv` with (1) and (2) repaired, plus three
+  more found shipping *School of Prayer* (#6427): (5) `ỳ` after k/K/hu arrives as a
+  closing quote — `k”` for `kỳ` (~180 verses); (6) four verses are cp1258 mojibake (Gen
+  40:12, 40:18, Isa 55:8, Matt 6:10 — the last three also lost a leading `Ý`), restored
+  whole; (7) Ps 2:8 ends with a stray ` vãi`. Typography only, no word changed;
+  `library.tests_bible_mirror` pins each case. Its `book_names.json` is the mirror's
+  MODERNISED `\toc1` heads (La-mã, Khải thị) — cite with Cadman's traditional names
+  (Rô-ma, Khải Huyền, 1 Cô-rinh-tô), which the verse text itself uses. Add a cleaner to
+  its `CLEANERS` when another collection turns out damaged (ko's (4) is not in it yet).
 - **Batch-wide naming needs a table in the brief, not a rule** (same batch). Fifty
   parallel ko translators each transliterate the OTHER people a bio mentions; without a
   mandatory name table the same person comes out three ways. Coined forms that a native
