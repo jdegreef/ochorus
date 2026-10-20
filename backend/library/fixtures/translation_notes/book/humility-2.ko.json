@@ -3,7 +3,7 @@
  "slug": "humility-2",
  "language": "ko",
  "job_issue": 6169,
- "pull_request": null,
+ "pull_request": 6431,
  "note": [
   "Scripture follows the 개역 (public domain) from the ebible mirror kor_old (Take Root unreachable from this session), built with scripts/bible_mirror.py and cleaned as typography only: the mirror's backtick/apostrophe quote marks and spaced ! ? dropped, and one missing space restored in 2 Corinthians 12:9 (기뻐함으로 나의). Rows were derived by measurement: `mined` only when the translator claimed 개역 wording AND the block contains either a quoted span that is a verbatim 개역 substring or a run of six consecutive 개역 words. Everything else is `self_rendered` with the translator's reason. `block_index` is work-level.",
   "kor_old is truncated: 1 Peter stops at 4:14, so 1 Peter 5:5-6 (central to this book) are self_rendered from the English, never filled from 개역개정 (licensed). Broken English quotation marks are paired correctly in the Korean; the English defects are listed in the PR. AI-drafted, awaiting native review."
