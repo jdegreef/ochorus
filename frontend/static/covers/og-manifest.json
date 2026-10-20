@@ -14328,6 +14328,17 @@
 				481
 			]
 		},
+		"ko/humility-2": {
+			"ground": "d8835e96aba3a1db15f51ed6d28c814c12f9b5a10f24de969237d0b25f8a306f",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "c0027e462285b591cf92a15784388e32614b464e52204b6372594738d0efd4c8",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"ko/school-of-prayer": {
 			"ground": "06d0d9789cc78677648d024e6d2350469e922c3ab3193e275ae01d262f401b94",
 			"style": "devotional",
