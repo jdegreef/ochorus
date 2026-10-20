@@ -22,5 +22,12 @@
    "CURATED multi-book plan; written with the school-of-prayer ko job (#5869) because that book is one of its sources. It stays dormant in Korean until the Moody and Buyinza source books ship in ko — the prose ships ahead so their arrival cannot publish an English-titled plan.",
    "Names follow the shipped ko bios (앤드류 머레이, D. L. 무디); Hannah Buyinza has no ko bio yet — 한나 부인자 is a transliteration to align when one ships. “이기는 기도” = prevailing prayer, as in the ko school-of-prayer edition."
   ]
+ },
+ "humility-12-days": {
+  "title": "12일 동안 읽는 『겸손』",
+  "description": "모든 덕의 뿌리를 다룬 앤드류 머레이의 고전입니다. 열이틀 동안 하루에 짧은 장 하나씩 읽으십시오.",
+  "note": [
+   "Single-book LAUNCH plan backed by the ko edition of humility-2 (queue job #6169; book title 『겸손』, the form the shipped ko bios already use), shipped in the same PR so seed_plans does not publish a ko plan row with no prose. 합니다체 imperative (읽으십시오), the ko house register. AI-drafted; awaiting native review."
+  ]
  }
 }
