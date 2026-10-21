@@ -28,7 +28,8 @@
  *    downloads), else stale-while-revalidate into the versioned cache (so any
  *    chapter you've merely opened is also readable offline).
  *  - Cover images (often cross-origin) → durable downloads cache first; then
- *    same-origin ones stale-while-revalidate from `ochorus-images`, and
+ *    same-origin ones from `ochorus-images`, refreshed in the background once
+ *    a copy is a day old, and
  *    cross-origin ones straight from the network.
  *  - Other same-origin assets → cache-first, filled on demand.
  *
@@ -54,6 +55,10 @@ const IMAGES = 'ochorus-images';
  */
 const PAGE_LIMIT = 60;
 const IMAGE_LIMIT = 300;
+
+/** How long a cached image is used without asking the network (see imageSWR). */
+const IMAGE_FRESH_MS = 24 * 60 * 60 * 1000;
+const FETCHED_AT = 'x-ochorus-fetched-at';
 
 /**
  * How long a navigation waits on the network before settling for this page's
@@ -100,12 +105,13 @@ const SPA_SHELL = '/200.html';
  * actually opened, and a font is fetched when it is first chosen rather than
  * ahead of a choice nobody made.
  */
-// Not Korean's font sheet: ~100 KB of @font-face rules linked only on Korean
-// pages (see $lib/fonts-ko.css). Precaching it would charge every reader who
+// Not the per-locale font sheets: Korean's alone is ~100 KB of @font-face rules
+// linked only on Korean pages (see $lib/fonts-ko.css), and every `fonts-*.css`
+// is split out the same way. Precaching one would charge every reader who
 // installs the worker for the very cost it was split out of app.css to avoid;
-// a Korean reader gets it on the first Korean page, like any other asset.
+// a reader gets their locale's sheet on its first page, like any other asset.
 const isCritical = (path: string) =>
-	(path.endsWith('.css') && !path.includes('/fonts-ko')) ||
+	(path.endsWith('.css') && !/\/fonts-[^/]*$/.test(path)) ||
 	path.includes('/entry/') ||
 	path.includes('/chunks/');
 
@@ -182,10 +188,10 @@ sw.addEventListener('fetch', (event) => {
 	// client's recovery from a route chunk a redeploy removed (reload onto the
 	// new build) could never fire. Straight to the network.
 	if (url.origin === sw.location.origin && url.pathname === '/_app/version.json') return;
-	// Hashed build images (`/_app/immutable/…`) are named by their bytes, so the
-	// versioned cache-first path below is right for them; only content images
-	// can change under one URL and need revalidating.
-	if (isImage(url) && !url.pathname.startsWith('/_app/immutable/')) {
+	// Build images (`/_app/immutable/…`, named by their bytes) and the precached
+	// icon live in the versioned cache, so the cache-first path below is right
+	// for them; only content images can change under one URL and need refreshing.
+	if (isImage(url) && !isPrecached(url)) {
 		event.respondWith(offlineThenImage(event));
 		return;
 	}
@@ -236,31 +242,58 @@ async function offlineThenImage(event: FetchEvent): Promise<Response> {
 }
 
 /**
- * Same-origin content images: durable, capped, stale-while-revalidate. Durable
+ * Same-origin content images: durable, capped, refreshed at most daily. Durable
  * because they don't change with a deploy, so dropping them with the versioned
  * cache made every returning reader re-fetch every cover several times a day.
- * Revalidated because they CAN change under one URL (a regenerated cover), so a
- * cache-first copy could be stale for good; this one is stale for one view.
+ * Refreshed because they CAN change under one URL (a regenerated cover), so a
+ * plain cache-first copy could be stale for good — but only once a copy is a
+ * day old, so a shelf of covers costs no requests at all on a repeat visit.
+ * A stale copy still answers at once; the refresh is for the next view.
  */
 async function imageSWR(event: FetchEvent): Promise<Response> {
 	const { request } = event;
-	const cache = await caches.open(IMAGES);
-	const cached = await cache.match(request);
-	const network = fetch(request).then((res) => {
-		if (res.ok && res.type === 'basic') {
-			event.waitUntil(cache.put(request, res.clone()).then(() => trim(cache, IMAGE_LIMIT)));
-		}
-		return res;
-	});
-	if (cached) {
-		event.waitUntil(network.catch(() => {}));
+	const cached = await (await caches.open(IMAGES)).match(request);
+	if (cached && Date.now() - Number(cached.headers.get(FETCHED_AT)) < IMAGE_FRESH_MS) {
 		return cached;
 	}
-	return network.catch(() => Response.error());
+	const network = fetch(request);
+	// The page never reads a refresh it isn't shown, so that one is stored
+	// as is; a response the page DOES read is copied before it can.
+	event.waitUntil(
+		network.then((res) => keepImage(request, cached ? res : res.clone())).catch(() => {})
+	);
+	return cached ?? network.catch(() => Response.error());
 }
 
-/** Drop the oldest entries beyond `limit` (insertion order; see PAGE_LIMIT). */
-async function trim(cache: Cache, limit: number): Promise<void> {
+/**
+ * Store an image stamped with when it was fetched — our own clock, not its
+ * `Date` header, which on a copy from the browser's HTTP cache is the date the
+ * server first sent it and would make a refreshed copy look stale at once.
+ */
+async function keepImage(request: Request, res: Response): Promise<void> {
+	if (!res.ok || res.type !== 'basic') return;
+	const headers = new Headers(res.headers);
+	headers.set(FETCHED_AT, String(Date.now()));
+	const stamped = new Response(res.body, {
+		status: res.status,
+		statusText: res.statusText,
+		headers
+	});
+	await putCapped(IMAGES, request, stamped, IMAGE_LIMIT);
+}
+
+/**
+ * Store a response in a capped cache, dropping the oldest entries beyond
+ * `limit` (insertion order; see PAGE_LIMIT). Only a NEW key can grow the cache,
+ * so a refresh of one already held skips the `keys()` walk — which on the image
+ * cache would otherwise run on every cover shown.
+ */
+async function putCapped(name: string, request: Request, res: Response, limit: number) {
+	const cache = await caches.open(name);
+	// Without ignoreVary: exactly the entry `put` would replace, if any.
+	const grows = !(await cache.match(request));
+	await cache.put(request, res);
+	if (!grows) return;
 	const keys = await cache.keys();
 	await Promise.all(keys.slice(0, Math.max(0, keys.length - limit)).map((k) => cache.delete(k)));
 }
@@ -328,9 +361,7 @@ async function rememberPage(request: Request, res: Response): Promise<void> {
 	if (!res.ok || res.type !== 'basic' || res.redirected) return;
 	if (new URL(request.url).search) return;
 	if (!res.headers.get('content-type')?.includes('text/html')) return;
-	const cache = await caches.open(PAGES);
-	await cache.put(request, res);
-	await trim(cache, PAGE_LIMIT);
+	await putCapped(PAGES, request, res, PAGE_LIMIT);
 }
 
 /**
@@ -340,6 +371,12 @@ async function rememberPage(request: Request, res: Response): Promise<void> {
  * whatever build the server now holds, and one missing any (its tab closed
  * before they loaded, or a newer build's page stored but never rendered here)
  * is passed over rather than served as markup that can't come alive.
+ *
+ * What the HTML doesn't name, it can't check — a chunk imported later. A lazy
+ * component's is under `/chunks/`, which install precaches whole (`isCritical`),
+ * so it is on hand too. The next route's `/nodes/` file may not be; if a
+ * redeploy took it, SvelteKit's router sees the new `version.json` (never
+ * cached, see the fetch handler) and reloads onto the new build instead.
  */
 async function completePage(request: Request): Promise<Response | undefined> {
 	const page = await (await caches.open(PAGES)).match(request, { ignoreVary: true });
@@ -364,10 +401,14 @@ async function networkThenShell(event: FetchEvent): Promise<Response> {
 	// on, silently and only for readers who first loaded offline.
 	event.waitUntil(
 		network
-			.then(async (res) => {
-				await rememberPage(request, res.clone());
-				await ensureShells(await caches.open(CACHE));
-			})
+			// Independent: a page that can't be stored (a full disk) must not cost
+			// the shell repair.
+			.then((res) =>
+				Promise.allSettled([
+					rememberPage(request, res.clone()),
+					caches.open(CACHE).then(ensureShells)
+				])
+			)
 			.catch(() => {})
 	);
 	// A slow network loses to this page's own complete cached copy; with no such
