@@ -237,13 +237,16 @@
 {/snippet}
 
 <!-- A run of books in the chosen view — the flat shelf, or one by-series
-     group. `eager` marks a run whose first covers are above the fold;
+     group. `eager` marks a run whose first row is the shelf's first row: its
+     covers load at once, not from the lazy queue — but not at high priority,
+     because the controls above put that row a screen down on a phone (the
+     page's LCP there is the tagline, not a cover);
      `showSeries` is off under a series heading, which already names it. -->
 {#snippet shelfBooks(list: BookSummary[], eager: boolean, showSeries: boolean)}
 	{#if view === 'grid'}
 		<div class="book-grid book-grid--library">
 			{#each list as book, i (book.slug)}
-				<BookCard {book} showAuthor {showSeries} priority={eager && i < 7} />
+				<BookCard {book} showAuthor {showSeries} eager={eager && i < 7} />
 			{/each}
 		</div>
 	{:else}
@@ -475,7 +478,7 @@
 				{#if view === 'grid'}
 					<div class="book-grid book-grid--library">
 						{#each authorFlat as book, i (book.slug)}
-							<BookCard {book} showAuthor priority={i < 7} anchor={authorAnchor.get(book.slug)} />
+							<BookCard {book} showAuthor eager={i < 7} anchor={authorAnchor.get(book.slug)} />
 						{/each}
 					</div>
 				{:else}

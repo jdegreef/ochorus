@@ -104,9 +104,12 @@
 	// The cover's painting, blurred and veiled behind the hero as its colour
 	// (app.css --wash-veil) — a raster cover only: a plate is the house's own
 	// drawing, not a painting, and a file that fails to load leaves the plain page.
-	// Its smallest webp (the cover's own 1x file), fetched at low priority:
-	// blurred to a colour, the full-size original (up to ~400 KB) would race
-	// the cover for nothing.
+	// Its smallest webp (the cover's own 1x file): blurred to a colour, the
+	// full-size original (up to ~400 KB) would race the cover for nothing.
+	// Fetched HIGH, beside the cover, not low as it once was: the band is the
+	// largest image on the page, so it is what the browser times as the LCP
+	// (measured on phone and desktop alike), and `low` held exactly that paint
+	// back. On a 1x screen it is the cover's own file — one request for both.
 	let washBroken = $state<string | null>(null);
 	const washSrc = $derived(
 		book.cover_url && !isPlateCover(book.cover_url) ? (coverVariants(book.cover_url)[0] ?? book.cover_url) : null
@@ -528,7 +531,7 @@
 				src={wash}
 				alt=""
 				class="book-band-wash"
-				fetchpriority="low"
+				fetchpriority="high"
 				decoding="async"
 				use:hydrateSrc={{ src: wash }}
 				onerror={() => (washBroken = wash)}
@@ -549,7 +552,9 @@
 			     cover_url itself and paint its own gradient box in the else, so the
 			     same cover-less book looked one way on a shelf and another here — and
 			     a cover file that 404s showed a broken image here while every shelf
-			     fell back to the plate. `priority` marks it as the page's LCP image. -->
+			     fell back to the plate. `priority`: it is the page's main image, fetched
+			     high beside the wash above (which, being larger, is what the browser
+			     times as the LCP). -->
 			<!-- A1: a larger cover raised off the page. `hero-cover` adds a layered
 			     drop-shadow that hugs the cover's rounded shape (via `filter`, so it
 			     follows any cover — painting, plate or designed raster — without a fake

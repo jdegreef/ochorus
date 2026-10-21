@@ -1,4 +1,4 @@
-import { getSermon, listSermons } from '$lib/library-public';
+import { getPreachingText, getSermon, listSermons } from '$lib/library-public';
 import { getLang } from '$lib/lang.svelte';
 import { orNotFound } from '$lib/loadHelpers';
 import type { EntryGenerator, PageLoad } from './$types';
@@ -30,7 +30,10 @@ export const entries: EntryGenerator = async () => {
 
 export const load: PageLoad = async ({ params, fetch }) => {
 	const sermon = await orNotFound(() => getSermon(params.slug, getLang(), fetch));
-	return { sermon };
+	// Its preaching text, here rather than after hydration so the verses are in
+	// the prerendered page (see getPreachingText). Never fails the page.
+	const preachingText = sermon.scripture_ref ? await getPreachingText(sermon.scripture_ref, fetch) : null;
+	return { sermon, preachingText };
 };
 
 // NOTE: prerendered per locale — the Spanish sermon translations (es) must be

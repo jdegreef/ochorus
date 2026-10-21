@@ -302,7 +302,7 @@
 					<!-- The page's actions, under the title rather than beside it: four
 					     controls in the H1's row crushed it to a column on a phone. -->
 					<div class="mt-4 flex flex-wrap items-center gap-2">
-						{#if listen.supported}
+						{#if listen.offered}
 							<button
 								class="btn btn-sm"
 								class:btn-ghost={!listening}

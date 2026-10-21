@@ -45,10 +45,14 @@
 			                bottom-aligned beside it. -->
 			<div class="discover-rail">
 				{#each books as book, i (book.slug)}
-					<!-- The first row is above the fold at every breakpoint; three
+					<!-- The first row starts above the fold at every breakpoint; three
 					     covers the common cases without eagerly loading a shelf
-					     nobody has scrolled to. -->
-					<BookCard {book} showAuthor priority={i < 3} />
+					     nobody has scrolled to. Only the lead is fetched HIGH: it is
+					     the one set large on a desktop, and so the only one that can
+					     be the page's LCP — on a phone the row starts at the very
+					     foot of the first screen (y≈800 of 844, measured), where
+					     three high fetches only raced the fonts. -->
+					<BookCard {book} showAuthor priority={i === 0} eager={i < 3} />
 				{/each}
 			</div>
 		</section>
