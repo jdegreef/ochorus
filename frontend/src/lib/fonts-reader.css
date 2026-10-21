@@ -1,0 +1,25 @@
+/* The reader's optional faces (FONT_STACK in readerPrefs), upright and italic
+   — they set whole books, and prose has emphasis. Linked by the root layout
+   once a reader has chosen one of them, and by the reader's typeface panel,
+   which previews every face in itself — see $lib/fontSheets.ts. Not in
+   app.css: ~20 KB of declarations every page paid for before first paint, for
+   a choice most readers never make — and `--reading-font` is set only after
+   hydration anyway, so the sheet arrives with the choice.
+
+   Libre Baskerville's 400 is not repeated: app.css has it as a cover face.
+   EB Garamond (upright AND italic) and Atkinson Hyperlegible stay there
+   whole — each is also a site style ("classic", "hyperlegible"), which
+   app.html applies before first paint (see app.css). */
+@import '@fontsource-variable/literata/wght.css';
+@import '@fontsource-variable/literata/wght-italic.css';
+@import '@fontsource-variable/source-serif-4/wght.css';
+@import '@fontsource-variable/source-serif-4/wght-italic.css';
+@import '@fontsource-variable/lora/wght.css';
+@import '@fontsource-variable/lora/wght-italic.css';
+@import '@fontsource-variable/merriweather/wght.css';
+@import '@fontsource-variable/merriweather/wght-italic.css';
+@import '@fontsource/libre-baskerville/400-italic.css';
+@import '@fontsource/libre-baskerville/700.css';
+/* Dyslexia-friendly reading option. Ships no italic. */
+@import '@fontsource/opendyslexic/400.css';
+@import '@fontsource/opendyslexic/700.css';

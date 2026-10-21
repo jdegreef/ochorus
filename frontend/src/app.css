@@ -1,9 +1,30 @@
 @import 'tailwindcss';
 @import '@fontsource-variable/fraunces';
 @import '@fontsource-variable/hanken-grotesk';
-/* Dyslexia-friendly reading option (see readerPrefs). */
-@import '@fontsource/opendyslexic/400.css';
-@import '@fontsource/opendyslexic/700.css';
+
+/* WHAT IS NOT IMPORTED HERE, and why. This file is render-blocking on every
+   page in every language, and an @font-face costs CSS bytes whether or not its
+   font is ever fetched — the woff2 is unicode-range gated, the declaration is
+   not. So only faces a page can need BEFORE THE APP RUNS live here: the house
+   pair, the cover faces (any shelf), and the two site styles' faces, which
+   app.html applies before first paint. The rest load as their own sheets
+   ($lib/fontSheets.ts has the map):
+
+   * Each non-Latin script's faces — fonts-ar / -hi / -uk / -am / -ko.css —
+     linked by the root layout on that locale's documents (the locale is fixed
+     per document; a locale switch is a full load). The stacks below still NAME
+     every family: off its locale a family is undeclared and the browser skips
+     it, exactly as it already did for a glyph outside a declared range.
+     A page that draws other scripts' content links their sheets itself: /for's
+     languages band (every language's covers), and admin (every language's
+     text), which takes all of them.
+   * The reader's optional faces — fonts-reader.css — linked once a reader
+     picks one, or opens the typeface panel that previews them. `--reading-font` is set
+     from JS after hydration anyway, so the sheet arrives with the choice.
+
+   fontStacks.test.ts and coverStyles.test.ts read every one of these sheets as
+   the app's own imports, so the coverage and weight gates hold across the
+   split. */
 
 /* The book-cover faces (see $lib/coverStyles.ts). Upright weights only: a
    cover's title takes the style, its byline and subtitle stay in the house
@@ -14,7 +35,8 @@
    these sit here with the house faces rather than behind a route-level import
    that would have to know which authors a page happens to show. Each package
    ships one @font-face per subset, unicode-range-gated, so an English shelf
-   pulls the latin file and nothing else. */
+   pulls the latin file and nothing else. (Libre Baskerville's 400 doubles as
+   the reader's Baskerville; EB Garamond's upright as a site style, below.) */
 @import '@fontsource-variable/cinzel/wght.css';
 @import '@fontsource-variable/eb-garamond/wght.css';
 @import '@fontsource-variable/playfair-display/wght.css';
@@ -35,99 +57,22 @@
    face on every phone, chosen by nobody.
 
    PICKED FOR REGISTER, NOT FOR PERIOD. There was no Fell type for Devanagari
-   and no Baskerville for Arabic, so a face here answers "what does this script
+   and no Baskerville for Arabic, so a face there answers "what does this script
    use for a monument, and what does it use for a book" rather than pretending
-   to a century it never had:
+   to a century it never had. Each script's sheet (fonts-ar.css, …) says which
+   face it chose and why, and carries the note on importing the WEIGHT
+   entrypoints rather than the per-subset ones — load-bearing, see there. */
 
-   * Amiri carries ALL of Arabic: a revival of the Bulaq press Naskh, so
-     choosing it is the same act as reviving Fell or Baskerville. Arabic gets
-     its loud-and-quiet distinction from Amiri's two weights rather than from
-     two faces, which is less than the six the Latin recipes have and is said
-     plainly rather than faked.
-
-     Reem Kufi was tried for `inscriptional` first, and the argument for it was
-     good — Kufic is the angular, architectural hand Arabic CUTS, which is what
-     Cinzel is for Latin. It was rejected on the rendering: its letterforms
-     interlock by design, and at title length the words overlap into each other
-     at every weight from 400 to 700, with or without word-spacing. Checked in
-     Chromium against real titles before it was dropped. A face that looks
-     broken on the shelf is worse than a face that carries less meaning.
-   * Tiro Devanagari Hindi was drawn to set Devanagari beside classical Latin
-     book faces, which is what a cover here does.
-   * Martel takes the two loud recipes in Devanagari, where Tiro has one weight
-     and a title page wants more.
-   * Old Standard TT and PT Serif fill the Cyrillic that EB Garamond and
-     Playfair — which ship Cyrillic already — leave uncovered.
-
-   Unicode-range gated like the faces above, so a Latin shelf pulls none of
-   these — measured, not assumed; see the note on entrypoints below. */
-/* THE WEIGHT ENTRYPOINTS, not the per-subset ones, and this is load-bearing.
-   Fontsource's subset files (`amiri/arabic-400.css`) declare their @font-face
-   with NO `unicode-range` — only the weight files carry it. Without that
-   descriptor a family matches every codepoint, so the browser fetches it the
-   moment a stack reaches it, before discovering it has no glyph. Measured in
-   Chromium: on the subset imports a HINDI cover downloaded both Amiri Arabic
-   files (~108 KB of a script it does not use); on these it downloads none.
-
-   The cost is real and much smaller: these files also declare latin and
-   latin-ext faces that can never match, because five of the six stacks lead
-   with a face that already covers both — about 11 KB of extra CSS, gzipping to
-   ~570 B. Paying that to keep the unicode-range gating is the right way round.
-
-   PT SERIF NEEDS BOTH WEIGHTS, and it used to need only 700. That was true
-   while it was named by `--cover-face-house` alone, where the one recipe that
-   reaches it asks for 700. `--font-display` now names it for BODY PROSE, which
-   is 400 — and a family with no 400 face does not fall through to the next
-   family, it renders in the nearest weight it has. Ukrainian prose would have
-   come out bold. `fontStacks.test.ts` fails now if a family in --font-display
-   has no @font-face for the weight prose sets. */
-@import '@fontsource/amiri/400.css';
-@import '@fontsource/amiri/700.css';
-@import '@fontsource/tiro-devanagari-hindi/400.css';
-@import '@fontsource/martel/600.css';
-@import '@fontsource/old-standard-tt/400.css';
-@import '@fontsource/old-standard-tt/700.css';
-@import '@fontsource/pt-serif/400.css';
-@import '@fontsource/pt-serif/700.css';
-/* And the SANS side of the same problem. `--font-sans` named one Latin family
-   and three generics, so a reader who picks "sans" in Arabic, Hindi or
-   Ukrainian got whatever their device chose — on the app's chrome and, through
-   the reading preference, on its most-read surface. Hanken is not a partial
-   answer for Cyrillic either: it ships `cyrillic-ext` (U+0460-052F) and NOT the
-   base block, so every ordinary letter — Б, і, ї, є — fell through it. Only ґ
-   did not. PT Sans rather than another neutral because `--font-display` already
-   sets Cyrillic in PT Serif, and the two are one superfamily. */
-/* Ethiopic, for Amharic (added with the first Amharic book, 2026-09-25). Same
-   unicode-range gating: a page with no Ge'ez glyph downloads none of these.
-   Noto rather than Abyssinica SIL because it ships the 700 the display stack's
-   headings reach and a sans twin for --font-sans; one superfamily, as with the
-   Arabic and Devanagari pairs above. */
-@import '@fontsource/noto-serif-ethiopic/400.css';
-@import '@fontsource/noto-serif-ethiopic/700.css';
-@import '@fontsource/noto-sans-ethiopic/400.css';
-@import '@fontsource/noto-sans-arabic/400.css';
-@import '@fontsource/noto-sans-arabic/700.css';
-@import '@fontsource/noto-sans-devanagari/400.css';
-@import '@fontsource/noto-sans-devanagari/700.css';
-@import '@fontsource/pt-sans/400.css';
-@import '@fontsource/pt-sans/700.css';
-
-/* The reader's other faces (FONT_STACK in readerPrefs), upright and italic —
-   they set whole books, and prose has emphasis. Fetched only once chosen, like
-   the covers. EB Garamond's upright is already imported above. */
+/* The site styles' faces, whole: EB Garamond ("classic", whose upright is
+   imported above) and Atkinson Hyperlegible Next ("hyperlegible"). Both are
+   reader faces too (FONT_STACK), but a site style is applied by app.html's boot
+   script before first paint — so its faces are declared here, where that first
+   paint can see them, not in fonts-reader.css, which only the running app can
+   link (its URL is content-hashed; the boot script cannot know it). ~5 KB of
+   CSS for no new flash, on choices made for legibility and voice. */
 @import '@fontsource-variable/eb-garamond/wght-italic.css';
-@import '@fontsource-variable/literata/wght.css';
-@import '@fontsource-variable/literata/wght-italic.css';
-@import '@fontsource-variable/source-serif-4/wght.css';
-@import '@fontsource-variable/source-serif-4/wght-italic.css';
-@import '@fontsource-variable/lora/wght.css';
-@import '@fontsource-variable/lora/wght-italic.css';
-@import '@fontsource-variable/merriweather/wght.css';
-@import '@fontsource-variable/merriweather/wght-italic.css';
 @import '@fontsource-variable/atkinson-hyperlegible-next/wght.css';
 @import '@fontsource-variable/atkinson-hyperlegible-next/wght-italic.css';
-@import '@fontsource/libre-baskerville/400-italic.css';
-@import '@fontsource/libre-baskerville/700.css';
 
 /* The site styles. Their own file so the share-card script and the stack
    gates, which read this file's --font-* declarations as the house stack,

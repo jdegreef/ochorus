@@ -1,0 +1,39 @@
+/* Arabic — linked ONLY on Arabic documents by the root layout (and by the pages
+   that draw every language's content: /for's languages band, admin; see
+   $lib/fontSheets.ts), not @imported from app.css, which every reader in every
+   language waits on.
+   The families stay NAMED in app.css's stacks; off an Arabic page they are
+   simply undeclared and the browser skips them.
+
+   * Amiri carries ALL of Arabic: a revival of the Bulaq press Naskh, so
+     choosing it is the same act as reviving Fell or Baskerville. Arabic gets
+     its loud-and-quiet distinction from Amiri's two weights rather than from
+     two faces, which is less than the six the Latin recipes have and is said
+     plainly rather than faked.
+
+     Reem Kufi was tried for `inscriptional` first, and the argument for it was
+     good — Kufic is the angular, architectural hand Arabic CUTS, which is what
+     Cinzel is for Latin. It was rejected on the rendering: its letterforms
+     interlock by design, and at title length the words overlap into each other
+     at every weight from 400 to 700, with or without word-spacing. Checked in
+     Chromium against real titles before it was dropped. A face that looks
+     broken on the shelf is worse than a face that carries less meaning.
+   * Noto Sans Arabic is --font-sans's Arabic: the chrome, and the reader's
+     "sans". Without it a reader who picks "sans" in Arabic got whatever their
+     device chose.
+
+   THE WEIGHT ENTRYPOINTS, not the per-subset ones, and this is load-bearing
+   (in every fonts-<locale>.css). Fontsource's subset files
+   (`amiri/arabic-400.css`) declare their @font-face with NO `unicode-range` —
+   only the weight files carry it. Without that descriptor a family matches
+   every codepoint, so the browser fetches it the moment a stack reaches it,
+   before discovering it has no glyph. Measured in Chromium: on the subset
+   imports a HINDI cover downloaded both Amiri Arabic files (~108 KB of a script
+   it does not use); on these it downloads none. The weight files also declare
+   latin and latin-ext faces that can never match, because the stacks lead with
+   a face that already covers both — a few hundred bytes gzipped, and the right
+   price for keeping the gating. */
+@import '@fontsource/amiri/400.css';
+@import '@fontsource/amiri/700.css';
+@import '@fontsource/noto-sans-arabic/400.css';
+@import '@fontsource/noto-sans-arabic/700.css';

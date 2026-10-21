@@ -54,9 +54,10 @@
 	// Latin-ext / Vietnamese / Cyrillic subsets stay lazy (rare glyphs).
 	import frauncesLatin from '@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2?url';
 	import hankenLatin from '@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-wght-normal.woff2?url';
-	// Korean's faces, as their own stylesheet: ~100 KB of @font-face rules that
-	// only a Korean page should pay for (see fonts-ko.css).
-	import koFonts from '$lib/fonts-ko.css?url';
+	// Each non-Latin script's faces, and the reader's optional ones, as their own
+	// stylesheets: @font-face rules only the pages that draw them should wait on
+	// (see app.css's header and $lib/fontSheets).
+	import { SCRIPT_FONTS, READER_FONTS_SHEET, READER_SHEET_FONTS, linkSheet } from '$lib/fontSheets';
 
 	let { children } = $props();
 	const t = i18n.t;
@@ -144,6 +145,13 @@
 		// across chapter-to-chapter turns (same route), drop it on anything else.
 		if (from?.route.id !== to?.route.id) readerUi.exitFocus();
 		install.touch();
+	});
+
+	// The reader's optional faces, once the reader has picked one:
+	// --reading-font is applied after hydration too, so the sheet lands with the
+	// choice.
+	$effect(() => {
+		if (READER_SHEET_FONTS.includes(readerPrefs.font)) linkSheet(READER_FONTS_SHEET);
 	});
 
 	// Reflect the URL locale on <html> for accessibility + correct hyphenation.
@@ -281,8 +289,9 @@
 	{/if}
 	<link rel="preload" href={frauncesLatin} as="font" type="font/woff2" crossorigin="anonymous" />
 	<link rel="preload" href={hankenLatin} as="font" type="font/woff2" crossorigin="anonymous" />
-	{#if getLocale() === 'ko'}
-		<link rel="stylesheet" href={koFonts} />
+	<!-- This document's script faces, before first paint (none for Latin). -->
+	{#if SCRIPT_FONTS[getLocale()]}
+		<link rel="stylesheet" href={SCRIPT_FONTS[getLocale()]} />
 	{/if}
 	<!-- Feed autodiscovery: browsers and readers surface the "new works" Atom feed. -->
 	<link rel="alternate" type="application/atom+xml" title="Ochorus — New in the Library" href="/feed.xml" />

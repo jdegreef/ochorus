@@ -22,6 +22,7 @@
 	import { FOR_EYEBROW, FOR_LINKS, FOR_LOCALES, forIndexPath, forLabel, forPath } from '$lib/forLinks';
 	import { FOR_META, forPhrase } from '$lib/forMeta';
 	import { localizeHref } from '$lib/href';
+	import { linkScriptFonts } from '$lib/fontSheets';
 	import { countsLine, forHref, inviteMessage } from '$lib/forPages';
 	import { FOR_EVENT, FOR_SECTIONS, forSectionOrder, navSections } from '$lib/forSections';
 	import { track } from '$lib/analytics';
@@ -74,6 +75,13 @@
 	 *  still lands, at the top of the sections, rather than nowhere. */
 	const absent = $derived(navSections([...FOR_SECTIONS]).filter((s) => !order.includes(s)));
 	const report = (action: string) => track(FOR_EVENT, { group: page.slug, action });
+	// The languages band shows each language's covers on one page, and a
+	// script's faces load only on its own locale's documents ($lib/fontSheets):
+	// link those this band draws, or an Arabic cover here falls to a device font.
+	$effect(() => {
+		if (!order.includes('languages')) return;
+		for (const l of shelf.languages) if (l.covers.length) linkScriptFonts(l.code);
+	});
 	/** The numbers strip: the library in the page's language, and every
 	 *  language it serves. */
 	const counts = $derived(
