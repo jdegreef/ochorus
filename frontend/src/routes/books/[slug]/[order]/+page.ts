@@ -5,6 +5,7 @@ import { getLang } from '$lib/lang.svelte';
 import { localizeHref } from '$lib/href';
 import { modernChapterPath } from '$lib/reading-schema';
 import { chapterEntries, orNotFound } from '$lib/loadHelpers';
+import { chapterFetch, takeChapterSeed } from '$lib/chapterSeed';
 import type { EntryGenerator, PageLoad } from './$types';
 
 // Prerendered like the book pages: the chapter text is the site's core
@@ -70,9 +71,15 @@ export const load: PageLoad = async ({ params, url, fetch }) => {
 	// back to English on a 404, so a book with no Arabic copy read under /ar
 	// returns English prose. Labelling that `lang="ar"` is worse than saying
 	// nothing — a wrong value actively misleads where a missing one abstains.
-	const { data: chapter, language } = await orNotFound(() =>
-		getChapterWithLang(params.slug, Number(params.order), getLang(), fetch)
-	);
+	//
+	// Hydrating a prerendered page, both come from the page itself — its seed
+	// and the prose it already shows — and the build reads the chapter without
+	// inlining it, so the body ships once ($lib/chapterSeed).
+	const { data: chapter, language } =
+		takeChapterSeed(url.pathname) ??
+		(await orNotFound(() =>
+			getChapterWithLang(params.slug, Number(params.order), getLang(), chapterFetch(fetch))
+		));
 	// The shared reader component's prop shape: the modern route sets 'modern'.
 	return { chapter, slug: params.slug, language, edition: null as 'modern' | null };
 };

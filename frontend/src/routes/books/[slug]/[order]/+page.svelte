@@ -10,6 +10,7 @@
 	import { onMount, onDestroy, tick, untrack } from 'svelte';
 	import { authorLdType, authorPath } from '$lib/originals';
 	import { browser } from '$app/environment';
+	import { chapterSeedTag } from '$lib/chapterSeed';
 	import { page } from '$app/stores';
 	import { goto, invalidateAll } from '$app/navigation';
 	import { getBook, getPlan, type BookDetail, type Chapter, type PlanDetail } from '$lib/library-public';
@@ -1798,6 +1799,11 @@
 	{#if edition === 'modern' && chapter.source_type !== 'ai_reviewed'}
 		<meta name="robots" content="noindex" />
 	{/if}
+	<!-- The payload minus its body, for the hydration load: the body is read back
+	     from the prose below instead of shipping twice ($lib/chapterSeed). A data
+	     block, not markup: JSON, `<`-escaped, as $lib/seo's jsonLd() is. -->
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+	{@html chapterSeedTag(chapter, language, $page.url.pathname)}
 </svelte:head>
 <Seo
 	title={titleTag}
@@ -2119,7 +2125,7 @@
 
 		<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		<div class="reading" class:story={childrens} bind:this={body} dir="auto" lang={contentLang(language)}>{@html chapter.body_html}</div>
+		<div class="reading" class:story={childrens} bind:this={body} dir="auto" lang={contentLang(language)} data-chapter-body>{@html chapter.body_html}</div>
 		<!-- Parsed straight after the body, so it can put a returning reader at
 		     their paragraph before first paint (see $lib/earlyResume). Runs from
 		     the prerendered HTML only: on hydration and client navigation an

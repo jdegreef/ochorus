@@ -4,10 +4,11 @@
  * request (`/api/library/books/<slug>/chapters/?from=&limit=`).
  *
  * The page still asks for its own URL through load's `fetch` and gets the same
- * JSON the API would send. That matters: SvelteKit inlines the response into
- * the page and hydration replays it by URL, so the reader's browser makes no
- * request the old page didn't. Anything unexpected — a failed or 404 batch, a
- * chapter missing from its run — falls through to the real request.
+ * JSON the API would send, so it renders exactly what a per-chapter request
+ * would. (The chapter routes read it without inlining it — hydration takes the
+ * chapter from the page's own seed and prose, see $lib/chapterSeed.) Anything
+ * unexpected — a failed or 404 batch, a chapter missing from its run — falls
+ * through to the real request.
  */
 
 import { isAnonymousApiGet, type Fetch } from './api';

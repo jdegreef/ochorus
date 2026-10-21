@@ -58,10 +58,12 @@ async function errorBody(res: Response): Promise<unknown> {
  * +error.svelte, and Google indexed its noindex. SvelteKit's own `fetch` instead
  * inlines each response into the prerendered HTML (`<script
  * data-sveltekit-fetched>`) and replays it on hydration, so the API is not asked
- * at all. A request that does not match what the prerender recorded (a signed-in
- * reader's Authorization header, a different language) just goes to the network
- * as before. Build-side CORS for these fetches: see `handleFetch` in
- * hooks.server.ts.
+ * at all. (The chapter routes are the one exception: their response is nearly
+ * all prose the page already shows, so they hydrate from a seed plus the DOM
+ * instead — $lib/chapterSeed.) A request that does not match what the
+ * prerender recorded (a signed-in reader's Authorization header, a different
+ * language) just goes to the network as before. Build-side CORS for these
+ * fetches: see `handleFetch` in hooks.server.ts.
  */
 export type Fetch = typeof fetch;
 
