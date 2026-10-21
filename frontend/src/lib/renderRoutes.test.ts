@@ -12,7 +12,8 @@
  * narrow line scanner rather than pulling in a YAML dependency: the block is
  * uniform `- type: / source: / destination:` triples, and the first assertion
  * below fails loudly if that ever stops being true, instead of silently
- * matching nothing and passing.
+ * matching nothing and passing. The Cache-Control headers get the same
+ * treatment at the end of the file, with their own shape guard.
  */
 import { describe, expect, it } from 'vitest';
 import { existsSync, readFileSync } from 'node:fs';
@@ -20,6 +21,7 @@ import { join } from 'node:path';
 import { SHELL_ROUTES } from './shellRoutes';
 
 const REPO = join(process.cwd(), '..');
+const LINES = readFileSync(join(REPO, 'render.yaml'), 'utf-8').split('\n');
 
 interface Rule {
 	type: string;
@@ -29,13 +31,12 @@ interface Rule {
 }
 
 function rules(): Rule[] {
-	const lines = readFileSync(join(REPO, 'render.yaml'), 'utf-8').split('\n');
 	const out: Rule[] = [];
-	for (let i = 0; i < lines.length; i++) {
-		const type = /^\s*-\s*type:\s*(\S+)\s*$/.exec(lines[i]);
+	for (let i = 0; i < LINES.length; i++) {
+		const type = /^\s*-\s*type:\s*(\S+)\s*$/.exec(LINES[i]);
 		if (!type) continue;
-		const source = /^\s*source:\s*(\S+)\s*$/.exec(lines[i + 1] ?? '');
-		const destination = /^\s*destination:\s*(\S+)\s*$/.exec(lines[i + 2] ?? '');
+		const source = /^\s*source:\s*(\S+)\s*$/.exec(LINES[i + 1] ?? '');
+		const destination = /^\s*destination:\s*(\S+)\s*$/.exec(LINES[i + 2] ?? '');
 		if (!source || !destination) continue;
 		out.push({ type: type[1], source: source[1], destination: destination[1], line: i + 1 });
 	}
@@ -129,5 +130,71 @@ describe('render.yaml routing rules', () => {
 				!localeIndex(r)
 		);
 		expect(leaks.map((r) => `${r.source} -> ${r.destination} (line ${r.line})`)).toEqual([]);
+	});
+});
+
+describe('render.yaml cache headers', () => {
+	interface Header {
+		path: string;
+		value: string;
+		line: number;
+	}
+
+	/**
+	 * Every `- path:` entry whose next two lines hold `name: Cache-Control` and
+	 * a `value:`, in either order, any case, quoted or not — a spelling the
+	 * scanner skipped would let a pinned rule through unseen.
+	 */
+	function cacheRules(): Header[] {
+		const out: Header[] = [];
+		for (let i = 0; i < LINES.length; i++) {
+			const path = /^\s*-\s*path:\s*(\S+)\s*$/.exec(LINES[i]);
+			if (!path) continue;
+			const next = LINES.slice(i + 1, i + 3);
+			if (!next.some((l) => /^\s*name:\s*["']?cache-control["']?\s*$/i.test(l))) continue;
+			const value = next.map((l) => /^\s*value:\s*["']?(.*?)["']?\s*$/.exec(l)).find(Boolean);
+			out.push({ path: path[1], value: value?.[1] ?? '', line: i + 1 });
+		}
+		return out;
+	}
+
+	const all = cacheRules();
+
+	it('parses every Cache-Control rule', () => {
+		// Guards the guard: each non-comment mention of the header is a rule
+		// the scanner read, or the assertions below would pass vacuously.
+		const mentions = LINES.filter((l) => !/^\s*#/.test(l) && /cache-control/i.test(l));
+		expect(all.length).toBe(mentions.length);
+		expect(all.every((h) => h.value)).toBe(true);
+	});
+
+	it('declares each path once', () => {
+		// Two rules for one path: which header Render sends depends on ordering,
+		// and a pinned one could hide behind a modest one.
+		const paths = all.map((h) => h.path);
+		expect(paths.filter((p, i) => paths.indexOf(p) !== i)).toEqual([]);
+	});
+
+	it('keeps the image tier', () => {
+		// Without these, covers fall back to the blanket max-age=0 and a shelf
+		// revalidates ~110 images per view again.
+		const cached = all.filter((h) => Number(/max-age=(\d+)/.exec(h.value)?.[1] ?? 0) > 0);
+		const paths = cached.map((h) => h.path);
+		for (const p of ['/covers/*', '/portraits/*', '/illustrations/*']) expect(paths).toContain(p);
+	});
+
+	it('pins only content-hashed names', () => {
+		// Header rules match the PATH, never the query string, and a browser told
+		// `immutable` (or a months-long max-age) keeps the file with no way to
+		// purge it. Only Vite's /_app/immutable/ renames a file when its bytes
+		// change; /covers, /portraits and the rest keep their names across a
+		// redraw, so pinning them freezes the old art for everyone who saw it.
+		// render.yaml's cache comment says why `?v=` URLs were not enough.
+		const pinned = all.filter(
+			(h) => /immutable/i.test(h.value) || Number(/max-age=(\d+)/.exec(h.value)?.[1] ?? 0) > 604800
+		);
+		expect(pinned.map((h) => `${h.path} (line ${h.line})`)).toEqual([
+			expect.stringMatching(/^\/_app\/immutable\/\* /)
+		]);
 	});
 });
