@@ -27,9 +27,12 @@ const pkgSlug = (family: string) =>
 		.toLowerCase()
 		.replace(/ /g, '-');
 const APP_CSS = readFileSync(join(process.cwd(), 'src/app.css'), 'utf-8');
-/** Korean's faces: linked only on Korean pages, not @imported by app.css (see
- *  the file), but an import there is an import for the gates below. */
-const KO_CSS = readFileSync(join(process.cwd(), 'src/lib/fonts-ko.css'), 'utf-8');
+/** Each non-Latin script's faces: linked only on that locale's pages, not
+ *  @imported by app.css ($lib/fontSheets), but an import there is an import for
+ *  the gates below. */
+const SCRIPT_CSS = ['ar', 'hi', 'uk', 'am', 'ko']
+	.map((l) => readFileSync(join(process.cwd(), `src/lib/fonts-${l}.css`), 'utf-8'))
+	.join('\n');
 
 
 /**
@@ -399,7 +402,7 @@ describe('cover scripts', () => {
 		for (const style of COVER_STYLE_IDS) {
 			for (const family of stackOf(style)) {
 				const pkg = pkgSlug(family);
-				expect(APP_CSS + KO_CSS, `nothing @imports ${family}, named by --cover-face-${style}`).toMatch(
+				expect(APP_CSS + SCRIPT_CSS, `nothing @imports ${family}, named by --cover-face-${style}`).toMatch(
 					new RegExp(`@import '@fontsource[^']*/${pkg}[/']`)
 				);
 			}

@@ -15,6 +15,7 @@
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { theme, THEME_OPTIONS } from '$lib/theme.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
+	import { READER_FONTS_SHEET, linkSheet } from '$lib/fontSheets';
 	import DrawerShell from '$lib/components/DrawerShell.svelte';
 
 	let {
@@ -91,6 +92,12 @@
 	// Otherwise a back-swipe with the panel open leaves the next chapter mounting
 	// with it "open" and the arrow keys swallowed.
 	onDestroy(() => (readerUi.panelOpen = false));
+
+	// The typeface buttons are each set in their own face, and most of those
+	// faces load as their own sheet ($lib/fontSheets): link it as the panel opens.
+	$effect(() => {
+		if (readerUi.panelOpen) linkSheet(READER_FONTS_SHEET);
+	});
 
 	/** Paper / Sepia / Lamplight — the fixed looks; the reader picks what it
 	 *  sees, so no System here. */

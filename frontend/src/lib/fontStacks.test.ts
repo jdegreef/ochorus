@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 import { FONT_STACK, READER_FONTS } from './readerPrefs.svelte';
+import { READER_SHEET_FONTS, SCRIPT_FONTS } from './fontSheets';
 import { SITE_FONTS } from './siteFont.svelte';
 
 /** app.css with comments stripped: the prose in this file says `--font-display:`
@@ -13,12 +14,18 @@ const APP_CSS = stripComments(readFileSync(join(process.cwd(), 'src/app.css'), '
 /** The site styles. Their own file, so nothing reading app.css's declarations
  *  as THE house stack (the share-card script, the gates here) sees a style. */
 const SITE_CSS = stripComments(readFileSync(join(process.cwd(), 'src/lib/site-fonts.css'), 'utf-8'));
-/** Korean's faces, linked only on Korean pages rather than imported from
- *  app.css (see the file for why). Its imports count as the app's own: a stack
- *  that names Noto Serif KR is satisfied by them on the pages that draw Hangul. */
-const KO_CSS = stripComments(readFileSync(join(process.cwd(), 'src/lib/fonts-ko.css'), 'utf-8'));
-/** Every `@import '@fontsource…'` in app.css and fonts-ko.css, as written. */
-const IMPORTS = [...(APP_CSS + KO_CSS).matchAll(/@import '(@fontsource[^']+)'/g)].map(([, i]) => i);
+/** The font sheets app.css leaves out ($lib/fontSheets): each non-Latin
+ *  script's, linked on its locale's pages, and the reader's optional faces,
+ *  linked once chosen (see app.css's header for why). Their imports count as
+ *  the app's own: a stack that names Amiri is satisfied by fonts-ar.css on the
+ *  pages that draw Arabic. */
+const SHEET_FILES = readdirSync(join(process.cwd(), 'src/lib')).filter((f) => /^fonts-[a-z]+\.css$/.test(f));
+const SHEET_CSS = Object.fromEntries(
+	SHEET_FILES.map((f) => [f, stripComments(readFileSync(join(process.cwd(), 'src/lib', f), 'utf-8'))])
+);
+const importsOf = (css: string) => [...css.matchAll(/@import '(@fontsource[^']+)'/g)].map(([, i]) => i);
+/** Every `@import '@fontsource…'` in app.css and the font sheets, as written. */
+const IMPORTS = [APP_CSS, ...Object.values(SHEET_CSS)].flatMap(importsOf);
 /** The quoted family names in a font-family value, in order. */
 const familiesIn = (value: string) => [...value.matchAll(/'([^']+)'/g)].map(([, f]) => f);
 
@@ -293,6 +300,55 @@ describe('font stacks', () => {
 			expect(IMPORTS, `${family} (${pref}) is never imported upright`).toContain(`${pkg}/${up}.css`);
 			expect(IMPORTS, `${family} (${pref}) is never imported in italic`).toContain(`${pkg}/${it}.css`);
 		}
+	});
+
+	describe('font sheets', () => {
+		// The split only works if each sheet is linked where its faces are drawn.
+		// A script sheet no locale links is a script no page can draw; a reader
+		// face in fonts-reader.css that READER_SHEET_FONTS leaves out is a choice
+		// that silently does nothing.
+		it('links every script sheet from its locale', () => {
+			const scripts = SHEET_FILES.filter((f) => f !== 'fonts-reader.css');
+			expect(new Set(scripts)).toEqual(new Set(Object.keys(SCRIPT_FONTS).map((l) => `fonts-${l}.css`)));
+			// The values are `?url` imports, which vitest resolves to '' — so the
+			// pairing is read from the module's source.
+			const src = readFileSync(join(process.cwd(), 'src/lib/fontSheets.ts'), 'utf-8');
+			const fileOf = Object.fromEntries(
+				[...src.matchAll(/^import (\w+) from '\.\/(fonts-[a-z]+\.css)\?url';$/gm)].map(([, id, f]) => [id, f])
+			);
+			for (const locale of Object.keys(SCRIPT_FONTS)) {
+				const id = new RegExp(`^\\s*${locale}: (\\w+),?$`, 'm').exec(src)?.[1] ?? '';
+				expect(fileOf[id], `SCRIPT_FONTS.${locale} is not fonts-${locale}.css`).toBe(`fonts-${locale}.css`);
+			}
+		});
+
+		it('keeps app.css free of the script faces it hands off', () => {
+			// The point of the split: app.css is render-blocking everywhere.
+			const app = new Set(importsOf(APP_CSS));
+			for (const [file, css] of Object.entries(SHEET_CSS)) {
+				for (const i of importsOf(css)) expect(app.has(i), `${i} is in app.css and ${file}`).toBe(false);
+			}
+		});
+
+		it('links fonts-reader.css for exactly the faces it declares', () => {
+			const reader = importsOf(SHEET_CSS['fonts-reader.css']);
+			const app = importsOf(APP_CSS);
+			for (const pref of READER_FONTS) {
+				const [family] = familiesIn(FONT_STACK[pref]);
+				if (!family) continue;
+				const pkg = `/${pkgSlug(family)}/`;
+				// A face wholly in app.css needs no sheet; one with any file in
+				// fonts-reader.css (Garamond's italic, Baskerville's bold) does.
+				const inSheet = reader.some((i) => i.includes(pkg));
+				expect(
+					READER_SHEET_FONTS.includes(pref),
+					inSheet
+						? `${pref}'s files are in fonts-reader.css but READER_SHEET_FONTS omits it`
+						: `${pref} is in READER_SHEET_FONTS but fonts-reader.css has none of its files`
+				).toBe(inSheet);
+				if (!inSheet) expect(app.some((i) => i.includes(pkg)), `${family} is imported nowhere`).toBe(true);
+			}
+		});
 	});
 
 	describe('site styles', () => {

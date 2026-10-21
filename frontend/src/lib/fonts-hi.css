@@ -1,0 +1,16 @@
+/* Devanagari, for Hindi — linked ONLY on Hindi documents by the root layout
+   (and by the pages that draw every language's content: /for, admin; see
+   $lib/fontSheets.ts). Why not app.css, and why the weight entrypoints: see
+   fonts-ar.css.
+
+   * Tiro Devanagari Hindi was drawn to set Devanagari beside classical Latin
+     book faces, which is what a cover here does — and it is --font-display's
+     Devanagari, so it sets Hindi prose too.
+   * Martel takes the two loud cover recipes in Devanagari, where Tiro has one
+     weight and a title page wants more.
+   * Noto Sans Devanagari is --font-sans's Devanagari (the chrome, and the
+     reader's "sans"). */
+@import '@fontsource/tiro-devanagari-hindi/400.css';
+@import '@fontsource/martel/600.css';
+@import '@fontsource/noto-sans-devanagari/400.css';
+@import '@fontsource/noto-sans-devanagari/700.css';

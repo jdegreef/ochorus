@@ -1,0 +1,11 @@
+/* Ethiopic, for Amharic (added with the first Amharic book, 2026-09-25) —
+   linked ONLY on Amharic documents by the root layout (and by the pages that
+   draw every language's content: /for, admin; see $lib/fontSheets.ts). Why
+   not app.css, and why the weight entrypoints: see fonts-ar.css.
+
+   Noto rather than Abyssinica SIL because it ships the 700 the display stack's
+   headings reach and a sans twin for --font-sans; one superfamily, as with the
+   Arabic and Devanagari pairs. */
+@import '@fontsource/noto-serif-ethiopic/400.css';
+@import '@fontsource/noto-serif-ethiopic/700.css';
+@import '@fontsource/noto-sans-ethiopic/400.css';

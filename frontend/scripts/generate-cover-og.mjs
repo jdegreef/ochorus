@@ -138,6 +138,13 @@ const APP_CSS = readFileSync(resolve(HERE, '../src/app.css'), 'utf8');
 // pages only (it is ~100 KB of declarations; see its header). So a Korean card
 // reads its faces from here, as the page it stands in for does.
 const KO_CSS = readFileSync(resolve(HERE, '../src/lib/fonts-ko.css'), 'utf8');
+// The other non-Latin scripts' faces moved out of app.css the same way (each is
+// linked on its own locale's pages; see $lib/fontSheets.ts) — but they are a
+// few KB, not Korean's 124 slices a weight, so they join app.css's imports
+// below rather than taking Korean's separate path.
+const SCRIPT_CSS = ['ar', 'hi', 'uk', 'am']
+	.map((l) => readFileSync(resolve(HERE, `../src/lib/fonts-${l}.css`), 'utf8'))
+	.join('\n');
 // Stripped of comments ONCE, here, rather than inlined whole into every card.
 // `cover-type.css` is deliberately more than half prose — it is where the two
 // renderers' shared reasoning lives — and that prose is ~24 KB that Chromium
@@ -352,7 +359,7 @@ function buildFontCss(face) {
 	// on a run where all of them did.
 	const subsetsSeen = new Set();
 
-	const faces = [...APP_CSS.matchAll(/@import '(@fontsource[^']+)'/g)].flatMap(([, spec]) => {
+	const faces = [...(APP_CSS + SCRIPT_CSS).matchAll(/@import '(@fontsource[^']+)'/g)].flatMap(([, spec]) => {
 		const file = sheetFile(spec);
 		const dir = dirname(file);
 		return readFileSync(file, 'utf8')
@@ -404,7 +411,7 @@ function buildFontCss(face) {
 			`no @font-face for ${face} reached the card — every ${face} twin would ` +
 				`render in whatever font the machine drawing it happens to have, and look ` +
 				`deliberate. Check that a --cover-face-* or --font-display token names a ` +
-				`family with a ${face} subset, and that app.css @imports it.`
+				`family with a ${face} subset, and that app.css or its fonts-<locale>.css @imports it.`
 		);
 	}
 	return `${faces.join('')}:root{${tokens.join(';')}}`;
