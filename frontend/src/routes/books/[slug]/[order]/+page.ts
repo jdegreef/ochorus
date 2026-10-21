@@ -1,11 +1,11 @@
 import { redirect } from '@sveltejs/kit';
-import { browser, building, dev } from '$app/environment';
+import { building } from '$app/environment';
 import { getChapterWithLang, listBooks } from '$lib/library-public';
 import { getLang } from '$lib/lang.svelte';
 import { localizeHref } from '$lib/href';
 import { modernChapterPath } from '$lib/reading-schema';
 import { chapterEntries, orNotFound } from '$lib/loadHelpers';
-import { takeChapterSeed, unrecorded } from '$lib/chapterSeed';
+import { chapterFetch, takeChapterSeed } from '$lib/chapterSeed';
 import type { EntryGenerator, PageLoad } from './$types';
 
 // Prerendered like the book pages: the chapter text is the site's core
@@ -76,9 +76,9 @@ export const load: PageLoad = async ({ params, url, fetch }) => {
 	// and the prose it already shows — and the build reads the chapter without
 	// inlining it, so the body ships once ($lib/chapterSeed).
 	const { data: chapter, language } =
-		(browser && !dev && takeChapterSeed(url.pathname)) ||
+		takeChapterSeed(url.pathname) ??
 		(await orNotFound(() =>
-			getChapterWithLang(params.slug, Number(params.order), getLang(), building ? unrecorded(fetch) : fetch)
+			getChapterWithLang(params.slug, Number(params.order), getLang(), chapterFetch(fetch))
 		));
 	// The shared reader component's prop shape: the modern route sets 'modern'.
 	return { chapter, slug: params.slug, language, edition: null as 'modern' | null };

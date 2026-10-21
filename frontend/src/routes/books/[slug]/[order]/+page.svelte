@@ -1800,8 +1800,8 @@
 		<meta name="robots" content="noindex" />
 	{/if}
 	<!-- The payload minus its body, for the hydration load: the body is read back
-	     from the prose below instead of shipping twice ($lib/chapterSeed). JSON,
-	     `<`-escaped, built from the API's own fields. -->
+	     from the prose below instead of shipping twice ($lib/chapterSeed). A data
+	     block, not markup: JSON, `<`-escaped, as $lib/seo's jsonLd() is. -->
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html chapterSeedTag(chapter, language, $page.url.pathname)}
 </svelte:head>

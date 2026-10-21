@@ -22,15 +22,17 @@
  * prose — the same nodes, but `&quot;` reads `"`, `<br/>` reads `<br>`. Svelte
  * adopts the server's nodes on hydration rather than re-rendering an {@html}
  * block, so nothing on the page moves; dev mode, which hash-checks that block
- * and would warn, keeps the old inlined path (the load gates on `dev`).
+ * and would warn, keeps the old inlined path.
  *
  * Anything unexpected — no seed (the SPA fallback, the phone app, a page built
  * before this), a seed for another URL, a seed that won't parse — returns null
  * and the load fetches as it always did.
  */
 
+import { browser, building, dev } from '$app/environment';
 import type { Fetch } from './api';
 import type { Chapter } from './library-public';
+import { CHAPTER_FIELDS, requireFields } from './payloadGuards';
 
 /** The seed `<script>`'s id, and the attribute marking the prose container. */
 export const CHAPTER_SEED_ID = 'chapter-seed';
@@ -51,12 +53,18 @@ const pathKey = (pathname: string) => pathname.replace(/\/+$/, '');
  * response when the body is read through `text`/`json`/`arrayBuffer`/`body`;
  * a `clone()` is a plain Response it never sees read. Should SvelteKit start
  * recording clones, the only effect is the old duplicate coming back — the
- * hydration load still prefers the seed.
+ * hydration load still prefers the seed — and chapterSeed.test.ts, which runs
+ * this through SvelteKit's own load fetch, fails first. The unread original
+ * holds a second copy of the body only until the page's load returns.
  */
 export const unrecorded =
 	(f: Fetch): Fetch =>
 	async (input, init) =>
 		(await f(input, init)).clone();
+
+/** The fetch a chapter load reads its chapter with: unrecorded in the build,
+ *  where the page carries the seed instead; the load's own everywhere else. */
+export const chapterFetch = (f: Fetch): Fetch => (building ? unrecorded(f) : f);
 
 /** The seed for `<svelte:head>`, via {@html}: the payload minus the body.
  *  `<` is escaped so chapter text can never close the script early. */
@@ -75,24 +83,45 @@ export function chapterSeedTag(chapter: Chapter, language: string, pathname: str
 export const proseHtml = (container: Element) =>
 	container.innerHTML.replace(/^<!--[^>]*?-->/, '').replace(/<!---->$/, '');
 
-let taken = false;
+type Seeded = { data: Chapter; language: string };
+
+/** The first call's answer: undefined until it is made, null when there was
+ *  no usable seed. */
+let first: { path: string; seeded: Seeded | null } | undefined;
 
 /**
- * The chapter the prerendered page was built from — only on the document's
- * FIRST call (the hydration load; after it the DOM is the app's, and another
- * chapter's seed may still be in it), and only when the seed names this page.
+ * The chapter the prerendered page was built from, when the seed names this
+ * page. Read from the DOM on the document's FIRST call only — the hydration
+ * load; after it the DOM is the app's, and another chapter's seed may be in it.
+ *
+ * A later load of the SAME page (the reader's own `?p=` jump re-runs it, as the
+ * load reads the query) gets that first answer again rather than a refetch: the
+ * API's string for the body differs from the browser's serialization of it, so
+ * a fetched copy would make Svelte tear down and redraw the prose being read.
  */
-export function takeChapterSeed(
-	pathname: string,
-	doc: Document = document
-): { data: Chapter; language: string } | null {
-	if (taken) return null;
-	taken = true;
+export function takeChapterSeed(pathname: string, doc?: Document): Seeded | null {
+	// Dev hash-checks the {@html} body on hydration and would warn about the
+	// browser's re-serialization, so it keeps the inlined path. Checked before
+	// `document` is touched: the prerender calls this in Node.
+	if (!browser || dev) return null;
+	const path = pathKey(pathname);
+	first ??= { path, seeded: readSeed(path, doc ?? document) };
+	return first.path === path ? first.seeded : null;
+}
+
+function readSeed(path: string, doc: Document): Seeded | null {
 	try {
 		const seed = JSON.parse(doc.getElementById(CHAPTER_SEED_ID)?.textContent ?? 'null') as Seed | null;
 		const body = doc.querySelector(`[${CHAPTER_BODY_ATTR}]`);
-		if (!seed || !body || seed.path !== pathKey(pathname)) return null;
-		return { data: { ...seed.chapter, body_html: proseHtml(body) } as Chapter, language: seed.language };
+		if (!seed || !body || seed.path !== path) return null;
+		// The same guard the fetched chapter passes (getChapterWithLang); a seed
+		// that fails it throws here and the load fetches instead.
+		const data = requireFields<Chapter>(
+			`chapter seed ${path}`,
+			{ ...seed.chapter, body_html: proseHtml(body) } as Chapter,
+			CHAPTER_FIELDS
+		);
+		return { data, language: seed.language };
 	} catch {
 		return null;
 	}
@@ -100,5 +129,5 @@ export function takeChapterSeed(
 
 /** Tests only: forget that the first call happened. */
 export function resetChapterSeed() {
-	taken = false;
+	first = undefined;
 }

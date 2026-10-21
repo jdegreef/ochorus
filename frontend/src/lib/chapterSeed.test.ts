@@ -72,10 +72,21 @@ describe('chapter seed', () => {
 		expect(takeChapterSeed('/books/absolute-surrender/2')).not.toBeNull();
 	});
 
-	it('answers only the first load: later navigations fetch', () => {
+	it('reads the DOM once: the same page gets that answer again, any other page fetches', () => {
 		prerendered('/books/absolute-surrender/2/');
-		expect(takeChapterSeed('/books/absolute-surrender/2/')).not.toBeNull();
-		// The DOM still holds a seed, but it is the app's now, not the prerender's.
+		const seeded = takeChapterSeed('/books/absolute-surrender/2/');
+		expect(seeded).not.toBeNull();
+		// A `?p=` jump re-runs the load: the same body string, so no redraw.
+		document.body.innerHTML = '';
+		expect(takeChapterSeed('/books/absolute-surrender/2/')).toBe(seeded);
+		// The DOM may hold another chapter's seed now; it is the app's, not the prerender's.
+		prerendered('/books/absolute-surrender/3/');
+		expect(takeChapterSeed('/books/absolute-surrender/3/')).toBeNull();
+	});
+
+	it('falls back to fetching when the seed lacks a field the reader needs', () => {
+		const { title: _t, ...untitled } = chapter;
+		prerendered('/books/absolute-surrender/2/', untitled as Chapter);
 		expect(takeChapterSeed('/books/absolute-surrender/2/')).toBeNull();
 	});
 
