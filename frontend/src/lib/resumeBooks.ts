@@ -59,7 +59,7 @@ export function currentBookSlug(absent: Set<string>, progress = allProgress()): 
 }
 
 /** Bump when the stored shape changes; a cache of another shape is ignored. */
-const SCHEMA = 3;
+export const SCHEMA = 3;
 
 /**
  * Per-language in-progress books, and the in-progress WORKS (keyed as progress

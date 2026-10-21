@@ -82,14 +82,51 @@
 				// in storage) is swapped to their dashboard, and a returning one gets
 				// "Continue reading" above the hero — both only once the app runs,
 				// which moved the whole page down a screen on a phone. Flagged here,
-				// the home page holds its content back until it has settled
-				// (src/routes/+page.svelte, .home-root in app.css). Mirrors the
-				// supabase-js session key and $lib/reading-schema PROGRESS_KEY.
+				// the home page shows a member the dashboard's skeleton until the app
+				// has mounted, and keeps a returning reader's page visible with the
+				// strip's space already held (src/routes/+page.svelte, app.css
+				// .home-root, HomeMarketing .home-hold). Mirrors the supabase-js
+				// session key and $lib/reading-schema's PROGRESS_KEY, ACTIVITY_KEY
+				// and RESUME_BOOKS_KEY.
+				var de = document.documentElement;
 				var hf = '';
 				for (var j = 0; j < localStorage.length; j++)
 					if (/^sb-.+-auth-token$/.test(localStorage.key(j) || '')) hf = 'member';
-				if (!hf && /^\{"/.test(localStorage.getItem('ochorus:progress') || '')) hf = 'reader';
-				if (hf) document.documentElement.setAttribute('data-home-for', hf);
+				if (hf) de.setAttribute('data-home-for', hf);
+				else {
+					// What the strip will draw at mount, so the hold is its size:
+					// ContinueReading's slots (unfinished books and sermons, less
+					// those this language's last lists lacked — $lib/resumeBooks, at
+					// its SCHEMA — at most four), and
+					// whether ReadingNudge shows (any reading day), with a streak
+					// (read today or yesterday) and read today. The language is the
+					// URL's: Paraglide routes by prefix.
+					var pr = JSON.parse(localStorage.getItem('ochorus:progress') || '{}') || {};
+					var lm = /^\/([a-z]{2,3})(\/|$)/.exec(location.pathname);
+					var rb = JSON.parse(localStorage.getItem('ochorus:resume-books') || '{}') || {};
+					var ab = ((rb.schema === 3 && rb.absent) || {})[lm ? lm[1] : 'en'] || [];
+					var n = 0;
+					for (var k in pr)
+						if (pr[k] && pr[k].finished_at == null && !/^(bio|article):/.test(k) && ab.indexOf(k) < 0) n++;
+					var ds = JSON.parse(localStorage.getItem('ochorus:activity') || '[]');
+					var day = function (back) {
+						var d = new Date();
+						d.setDate(d.getDate() - back);
+						var m = d.getMonth() + 1, dd = d.getDate();
+						return d.getFullYear() + (m < 10 ? '-0' : '-') + m + (dd < 10 ? '-0' : '-') + dd;
+					};
+					var nudge = '';
+					if (ds && ds.length) {
+						nudge = 'on';
+						if (ds.indexOf(day(0)) >= 0) nudge += ' streak today';
+						else if (ds.indexOf(day(1)) >= 0) nudge += ' streak';
+					}
+					if (n || nudge) {
+						de.setAttribute('data-home-for', 'reader');
+						de.setAttribute('data-home-cards', String(Math.min(n, 4)));
+						if (nudge) de.setAttribute('data-home-nudge', nudge);
+					}
+				}
 			} catch (e) {}
 			// Chrome fires its install offer once, early — often before the app has
 			// mounted. Hold it for $lib/install.svelte.ts so it isn't missed, and so

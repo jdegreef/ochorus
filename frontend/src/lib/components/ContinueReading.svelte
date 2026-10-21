@@ -1,3 +1,21 @@
+<script lang="ts" module>
+	import { placeholder as cardHold } from '$lib/components/WorkCard.svelte';
+
+	/**
+	 * The strip's space, held before the app runs. This page's strip is drawn
+	 * only once the app mounts — the home page is prerendered — so a returning
+	 * reader's front page used to drop by a screen at hydration. The home page
+	 * renders this in the baked HTML (HomeMarketing), hidden unless app.html's
+	 * boot script flagged a returning reader, and shows the strip's frame at
+	 * once: the section, a heading-line box and four card placeholders, of
+	 * which the boot flag's count (`data-home-cards`) are shown — the same
+	 * slots the strip draws at mount, so the page around it does not move when
+	 * the real strip takes its place. Drawn here, beside the strip, from its
+	 * own classes, so it is the strip's size by construction.
+	 */
+	export { hold };
+</script>
+
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { listSermons, type CoverBook, type SermonSummary } from '$lib/library-public';
@@ -135,6 +153,18 @@
 	const busy = $derived(slots.some((s) => 'pending' in s));
 </script>
 
+{#snippet hold()}
+	<section class="cr-hold page-col px-5 pt-14" aria-hidden="true">
+		<!-- SectionHeader's row: one text-h2 line, mb-6. -->
+		<div class="mb-6 text-h2"><span class="inline-block w-56 max-w-full skeleton rounded-md">&nbsp;</span></div>
+		<div class="cr-hold-cards grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+			{#each ['a', 'b', 'c', 'd'] as k (k)}
+				{@render cardHold('book')}
+			{/each}
+		</div>
+	</section>
+{/snippet}
+
 {#if slots.length}
 	<!-- `aria-busy` while any card is still a placeholder: the heading is real,
 	     the cards under it are coming, and a screen reader should say so rather
@@ -154,3 +184,13 @@
 		</div>
 	</section>
 {/if}
+
+<style>
+	/* The hold shows the boot flag's count of cards (see `hold` above). */
+	:global(html[data-home-cards='0']) .cr-hold,
+	:global(html[data-home-cards='1']) .cr-hold-cards > :global(:nth-child(n + 2)),
+	:global(html[data-home-cards='2']) .cr-hold-cards > :global(:nth-child(n + 3)),
+	:global(html[data-home-cards='3']) .cr-hold-cards > :global(:nth-child(n + 4)) {
+		display: none;
+	}
+</style>

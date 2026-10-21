@@ -78,6 +78,32 @@ function signupMetadata(): { data?: { signup_variant: string } } {
 }
 
 /**
+ * Who the supabase-js session in this browser's storage belongs to, read
+ * synchronously — no client, no network — or null when there is none (or it is
+ * unreadable, as supabase-js would find it). Not a signed-in user: the token in
+ * it may be stale until the client has refreshed it, and the client may yet
+ * find it revoked. It is what the session will most likely restore to, for a
+ * page that must decide what to DRAW before `init()` has resolved (the home
+ * page's dashboard), never for whether to make an authenticated request. The
+ * key is supabase-js's default `sb-<project>-auth-token`, as app.html's boot
+ * flag matches it.
+ */
+export function storedSessionUser(): { email: string } | null {
+	if (!browser) return null;
+	try {
+		for (let i = 0; i < localStorage.length; i++) {
+			const key = localStorage.key(i) ?? '';
+			if (!/^sb-.+-auth-token$/.test(key)) continue;
+			const s = JSON.parse(localStorage.getItem(key) ?? 'null');
+			if (s && typeof s.refresh_token === 'string' && s.user) return { email: s.user.email ?? '' };
+		}
+	} catch {
+		/* storage blocked or corrupt: no stored session to go on */
+	}
+	return null;
+}
+
+/**
  * Auth + cross-device preference sync. Supabase owns the credentials; on sign-in
  * we pull the Django-side profile (reading prefs) and apply it, and we push prefs
  * back when they change. Everything degrades gracefully when auth is unconfigured.
@@ -116,6 +142,11 @@ class Auth {
 	// so callers can wait before making authenticated requests rather than firing
 	// a premature unauthenticated one on a fresh page load.
 	initialized = $state(false);
+	// The account this browser's stored session names, read once at load
+	// (storedSessionUser): what `user` will most likely be once `init()` has
+	// resolved — which waits on the supabase-js download and, for a token past
+	// its hour, a refresh round-trip. For drawing only; see storedSessionUser.
+	readonly storedUser = authEnabled ? storedSessionUser() : null;
 	#token: string | null = null;
 	#ready = false;
 	#pushTimer: ReturnType<typeof setTimeout> | undefined;
