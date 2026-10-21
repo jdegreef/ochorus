@@ -417,11 +417,13 @@
 				     /books shelf shows. The author rides each card since no heading
 				     names it. Its first row (six, the grid's widest) loads at once
 				     rather than from the lazy queue: on a desktop a cover there is
-				     the page's LCP (measured). Not high — on a phone that row is a
-				     screen down, under the topic's own header. -->
+				     the page's LCP (measured). Only the lead is fetched high, as on
+				     the home page's Discover strip — on a phone that row is a screen
+				     down, under the topic's own header, and six high fetches there
+				     would race the fonts for images nobody can see yet. -->
 				<div class="book-grid">
 					{#each flatBooks as book, i (book.slug)}
-						<BookCard {book} showAuthor eager={i < 6} />
+						<BookCard {book} showAuthor priority={i === 0} eager={i < 6} />
 					{/each}
 				</div>
 			{/if}

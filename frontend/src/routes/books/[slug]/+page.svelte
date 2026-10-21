@@ -552,7 +552,9 @@
 			     cover_url itself and paint its own gradient box in the else, so the
 			     same cover-less book looked one way on a shelf and another here — and
 			     a cover file that 404s showed a broken image here while every shelf
-			     fell back to the plate. `priority` marks it as the page's LCP image. -->
+			     fell back to the plate. `priority`: it is the page's main image, fetched
+			     high beside the wash above (which, being larger, is what the browser
+			     times as the LCP). -->
 			<!-- A1: a larger cover raised off the page. `hero-cover` adds a layered
 			     drop-shadow that hugs the cover's rounded shape (via `filter`, so it
 			     follows any cover — painting, plate or designed raster — without a fake

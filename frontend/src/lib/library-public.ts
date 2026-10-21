@@ -1,3 +1,4 @@
+import { building } from '$app/environment';
 import { apiFetch, ApiError, type Fetch } from './api';
 import type { ScriptureResult } from './scripture.svelte';
 import { SITE_URL } from './config';
@@ -995,11 +996,29 @@ export const getSermon = async (slug: string, language = 'en', f?: Fetch) =>
  * their own height (measured: CLS 0.07 on a desktop against a local API, and
  * 0.38 on a phone in dev — a real network only widens the gap). One cheap
  * local lookup per sermon page at build time (the ASV is in the API).
+ *
+ * It is decoration, so it may cost the page nothing it needs:
+ *   - In the BUILD, a failure that is not a plain 404 switches the lookup off
+ *     for the rest of the crawl. The prerender runs at concurrency 1 against
+ *     the live API and retries a 5xx for 15s (api.ts), so an endpoint that is
+ *     down would otherwise add 15s to every one of ~900 sermon pages; this way
+ *     it costs the first one, and the rest ship the reference alone.
+ *   - In the BROWSER — a client-side navigation, or the phone app, which
+ *     prerenders nothing — the sermon must not wait on it: past ~1.2s it is
+ *     dropped and the card shows the reference. Hydrating a prerendered page
+ *     is unaffected: SvelteKit replays the response baked into the page.
  */
-export const getPreachingText = (ref: string, f?: Fetch) =>
-	apiFetch<ScriptureResult>(`/api/library/scripture/?ref=${encodeURIComponent(ref)}`, {}, f).catch(
-		() => null
-	);
+let preachingTextOff = false;
+export async function getPreachingText(ref: string, f?: Fetch): Promise<ScriptureResult | null> {
+	if (preachingTextOff) return null;
+	const init: RequestInit = building ? {} : { signal: AbortSignal.timeout?.(1200) };
+	try {
+		return await apiFetch<ScriptureResult>(`/api/library/scripture/?ref=${encodeURIComponent(ref)}`, init, f);
+	} catch (e) {
+		if (building && !(e instanceof ApiError && e.status === 404)) preachingTextOff = true;
+		return null;
+	}
+}
 
 // --- Articles ----------------------------------------------------------------
 // Original devotional/theological writing — no author, no chapters. Per-language

@@ -158,6 +158,8 @@
 	 *  that keeps them on this book (see `$lib/hydrateSrc`). */
 	const source = $derived({ src: book.cover_url, srcset: coverSrcset(book.cover_url) || undefined });
 	const label = $derived(`${t('a11y.coverOf')} ${book.title}`);
+	/** Eager for the page's LCP image and a shelf's first row; lazy otherwise. */
+	const loading = $derived<'eager' | 'lazy'>(priority || eager ? 'eager' : 'lazy');
 	const setTitle = $derived(coverTitle(book));
 
 	/** The author's house style — a class name; `cover-type.css` holds the rest. */
@@ -272,7 +274,7 @@
 			src={source.src}
 			srcset={source.srcset}
 			alt={overFile ? '' : label}
-			loading={priority || eager ? 'eager' : 'lazy'}
+			{loading}
 			fetchpriority={priority ? 'high' : undefined}
 			width={priority ? 300 : undefined}
 			height={priority ? 400 : undefined}
@@ -298,7 +300,7 @@
 				use:hydrateSrc={source}
 				alt=""
 				aria-hidden="true"
-				loading={priority || eager ? 'eager' : 'lazy'}
+				{loading}
 				class="absolute inset-0 -z-10 h-full w-full scale-110 object-cover blur-xl brightness-[.82]"
 			/>
 		{/if}
