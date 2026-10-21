@@ -232,11 +232,11 @@ describe('SvelteKit version check', () => {
 });
 
 describe('images', () => {
-	it('answers a day-old copy at once and refreshes it for next time', async () => {
-		const dayOld = String(Date.now() - 25 * 60 * 60 * 1000);
+	it('answers an hour-old copy at once and refreshes it for next time', async () => {
+		const hourOld = String(Date.now() - 61 * 60 * 1000);
 		await fakeCache('ochorus-images').put(
 			'/covers/humility.webp',
-			new BasicResponse('old', { headers: { 'x-ochorus-fetched-at': dayOld } })
+			new BasicResponse('old', { headers: { 'x-ochorus-fetched-at': hourOld } })
 		);
 		fetchMock.mockImplementation(async () => new BasicResponse('new'));
 		const { response, settled } = dispatch('/covers/humility.webp');
@@ -246,7 +246,7 @@ describe('images', () => {
 		expect(await again!.text()).toBe('new');
 	});
 
-	it('asks the network nothing for a copy fetched today', async () => {
+	it('asks the network nothing for a copy fetched within the hour', async () => {
 		fetchMock.mockImplementation(async () => new BasicResponse('cover'));
 		await dispatch('/covers/humility.webp').settled();
 		fetchMock.mockClear();

@@ -29,8 +29,7 @@
  *    chapter you've merely opened is also readable offline).
  *  - Cover images (often cross-origin) → durable downloads cache first; then
  *    same-origin ones from `ochorus-images`, refreshed in the background once
- *    a copy is a day old, and
- *    cross-origin ones straight from the network.
+ *    a copy is an hour old, and cross-origin ones straight from the network.
  *  - Other same-origin assets → cache-first, filled on demand.
  *
  * Registered manually from lib/pwa.svelte.ts (kit.serviceWorker.register=false)
@@ -56,8 +55,14 @@ const IMAGES = 'ochorus-images';
 const PAGE_LIMIT = 60;
 const IMAGE_LIMIT = 300;
 
-/** How long a cached image is used without asking the network (see imageSWR). */
-const IMAGE_FRESH_MS = 24 * 60 * 60 * 1000;
+/**
+ * How long a cached image is used without asking the network (see imageSWR).
+ * The same hour render.yaml gives /covers, /portraits and /illustrations
+ * (`max-age=3600`): the promise that a redrawn cover reaches a returning reader
+ * within about an hour. Change the two together — a longer window here would
+ * quietly override that header for every reader with the worker installed.
+ */
+const IMAGE_FRESH_MS = 3600 * 1000;
 const FETCHED_AT = 'x-ochorus-fetched-at';
 
 /**
@@ -242,12 +247,12 @@ async function offlineThenImage(event: FetchEvent): Promise<Response> {
 }
 
 /**
- * Same-origin content images: durable, capped, refreshed at most daily. Durable
+ * Same-origin content images: durable, capped, refreshed at most hourly. Durable
  * because they don't change with a deploy, so dropping them with the versioned
  * cache made every returning reader re-fetch every cover several times a day.
  * Refreshed because they CAN change under one URL (a regenerated cover), so a
- * plain cache-first copy could be stale for good — but only once a copy is a
- * day old, so a shelf of covers costs no requests at all on a repeat visit.
+ * plain cache-first copy could be stale for good — but only once a copy is an
+ * hour old, so a shelf of covers costs no requests on a same-session revisit.
  * A stale copy still answers at once; the refresh is for the next view.
  */
 async function imageSWR(event: FetchEvent): Promise<Response> {
