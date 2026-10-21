@@ -142,11 +142,24 @@ class Auth {
 	// so callers can wait before making authenticated requests rather than firing
 	// a premature unauthenticated one on a fresh page load.
 	initialized = $state(false);
-	// The account this browser's stored session names, read once at load
-	// (storedSessionUser): what `user` will most likely be once `init()` has
-	// resolved — which waits on the supabase-js download and, for a token past
-	// its hour, a refresh round-trip. For drawing only; see storedSessionUser.
-	readonly storedUser = authEnabled ? storedSessionUser() : null;
+	#stored: { email: string } | null | undefined;
+	/**
+	 * Who to DRAW the page for: `user` once `init()` has resolved, and until
+	 * then the account this browser's stored session names (storedSessionUser,
+	 * read once, on first ask) — what `user` will most likely be, without
+	 * waiting on the supabase-js download and, for a token past its hour, a
+	 * refresh round-trip. For drawing only: never a reason to make, or to
+	 * skip, an authenticated request — that is `initialized` and `user`.
+	 *
+	 * The stored half is a once-per-page snapshot, deliberately not `$state`:
+	 * it stands for what the boot flag saw at first paint, and is consulted
+	 * only until `initialized` flips (reactive), after which `user` decides.
+	 */
+	get expectedUser(): { email: string } | null {
+		if (this.initialized) return this.user;
+		if (this.#stored === undefined) this.#stored = authEnabled ? storedSessionUser() : null;
+		return this.#stored;
+	}
 	#token: string | null = null;
 	#ready = false;
 	#pushTimer: ReturnType<typeof setTimeout> | undefined;

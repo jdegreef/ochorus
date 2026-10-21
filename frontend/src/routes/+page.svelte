@@ -64,7 +64,7 @@
 	// page already made (`mounted`, so hydration meets the HTML it was baked
 	// with).
 	//
-	// It swaps in at MOUNT, from the session in storage (`auth.storedUser`),
+	// It swaps in at MOUNT, from the session in storage (`auth.expectedUser`),
 	// not once `auth.init()` has resolved: that waits on the supabase-js chunk
 	// and, for a token past its hour, a refresh round-trip — seconds on a phone,
 	// all of it spent behind the dashboard's skeleton. Nothing the dashboard
@@ -75,8 +75,7 @@
 	// swap the page made for every signed-in reader before.
 	let mounted = $state(false);
 	onMount(() => (mounted = true));
-	const user = $derived(auth.initialized ? auth.user : auth.storedUser);
-	const showDashboard = $derived(auth.enabled && mounted && !!user);
+	const showDashboard = $derived(auth.enabled && mounted && !!auth.expectedUser);
 
 	// Settled: mounted, so the page now shows what it will keep showing. Tell
 	// the boot flag's CSS to reveal it — a frame later, once this render is on

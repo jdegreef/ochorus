@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import { ACTIVITY_KEY, PROGRESS_KEY, RESUME_BOOKS_KEY } from './reading-schema';
 import { SCHEMA as RESUME_SCHEMA } from './resumeBooks';
-import { localToday } from './streak';
+import { localToday, shiftDay } from './streak';
 import { storedSessionUser } from './auth.svelte';
 
 /**
@@ -16,7 +16,8 @@ import { storedSessionUser } from './auth.svelte';
 const html = readFileSync(join(process.cwd(), 'src/app.html'), 'utf-8');
 const block = /try \{\s*\/\/ Whose home page this is[\s\S]*?\} catch \(e\) \{\}/.exec(html)?.[0];
 
-const ATTRS = ['data-home-for', 'data-home-cards', 'data-home-nudge'];
+const SESSION = { access_token: 'x', refresh_token: 'y', user: { email: 'a@b.c' } };
+const ATTRS =['data-home-for', 'data-home-cards', 'data-home-nudge'];
 const root = () => document.documentElement;
 
 function flag(): string | null {
@@ -25,11 +26,7 @@ function flag(): string | null {
 	return root().getAttribute('data-home-for');
 }
 
-const at = (back: number) => {
-	const d = new Date();
-	d.setDate(d.getDate() - back);
-	return localToday(d);
-};
+const at = (back: number) => shiftDay(localToday(), -back);
 
 describe('the home boot flag', () => {
 	afterEach(() => localStorage.clear());
@@ -96,9 +93,17 @@ describe('the home boot flag', () => {
 
 	it('marks a signed-in reader by the supabase-js session key, ahead of reading history', () => {
 		localStorage.setItem(PROGRESS_KEY, JSON.stringify({ 'some-book': { order: 2, at: 1 } }));
-		localStorage.setItem('sb-abcdefgh-auth-token', '{}');
+		localStorage.setItem('sb-abcdefgh-auth-token', JSON.stringify(SESSION));
 		expect(flag()).toBe('member');
 		expect(root().getAttribute('data-home-cards')).toBeNull();
+	});
+
+	it('agrees with storedSessionUser on what counts as a session', () => {
+		localStorage.setItem(PROGRESS_KEY, JSON.stringify({ 'some-book': { order: 2, at: 1 } }));
+		for (const value of ['{}', '{not json', JSON.stringify(SESSION)]) {
+			localStorage.setItem('sb-abcdefgh-auth-token', value);
+			expect(flag()).toBe(storedSessionUser() ? 'member' : 'reader');
+		}
 	});
 });
 

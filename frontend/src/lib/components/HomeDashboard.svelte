@@ -52,7 +52,7 @@
 	// The reader's first name (or their email's local part — never the full
 	// address); HomeHero greets it for the time of their day. The stored
 	// session's until the restored one lands: the page draws before it does.
-	const name = $derived(greetingName(auth.displayName, (auth.user ?? auth.storedUser)?.email));
+	const name = $derived(greetingName(auth.displayName, auth.expectedUser?.email));
 
 	// Every sign-up path (password, emailed code, Google) ends on this page, so
 	// this is where a brand-new account is sent on to /welcome — once, and only

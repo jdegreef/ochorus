@@ -87,11 +87,19 @@
 				// strip's space already held (src/routes/+page.svelte, app.css
 				// .home-root, HomeMarketing .home-hold). Mirrors the supabase-js
 				// session key and $lib/reading-schema's PROGRESS_KEY, ACTIVITY_KEY
-				// and RESUME_BOOKS_KEY.
+				// and RESUME_BOOKS_KEY. A session counts only when it is one the
+				// page will draw the dashboard for ($lib/auth storedSessionUser:
+				// a refresh token and a user), or the two disagree.
 				var de = document.documentElement;
 				var hf = '';
-				for (var j = 0; j < localStorage.length; j++)
-					if (/^sb-.+-auth-token$/.test(localStorage.key(j) || '')) hf = 'member';
+				for (var j = 0; j < localStorage.length; j++) {
+					var sk = localStorage.key(j) || '';
+					if (!/^sb-.+-auth-token$/.test(sk)) continue;
+					try {
+						var ss = JSON.parse(localStorage.getItem(sk) || 'null');
+						if (ss && typeof ss.refresh_token === 'string' && ss.user) hf = 'member';
+					} catch (se) {}
+				}
 				if (hf) de.setAttribute('data-home-for', hf);
 				else {
 					// What the strip will draw at mount, so the hold is its size:
