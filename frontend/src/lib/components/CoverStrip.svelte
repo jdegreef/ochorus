@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetSrcset, assetUrl } from '$lib/assetUrl';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { coverGradient, coverSrcset } from '$lib/coverArt';
 	import { tileFace, type BookTile } from '$lib/library-public';
@@ -49,7 +50,7 @@
 					<!-- Drawn, not a bare image: a plate ground has no words. -->
 					<BookCover book={face} rounded="" priority={eager} />
 				{:else if cover.cover_url}
-					{@const source = { src: cover.cover_url, srcset: coverSrcset(cover.cover_url) || undefined }}
+					{@const source = { src: assetUrl(cover.cover_url), srcset: assetSrcset(coverSrcset(cover.cover_url)) || undefined }}
 					<img
 						src={source.src}
 						srcset={source.srcset}

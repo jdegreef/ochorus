@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetUrl } from '$lib/assetUrl';
 	import type { Snippet } from 'svelte';
 	import { ERA_HUE, eraById, eraOf } from '$lib/eras';
 	import { hydrateSrc } from '$lib/hydrateSrc';
@@ -56,8 +57,8 @@
 		{#if photoUrl}
 			<span class="author-hero-print duotone">
 				<img
-					src={photoUrl}
-					use:hydrateSrc={{ src: photoUrl }}
+					src={assetUrl(photoUrl)}
+					use:hydrateSrc={{ src: assetUrl(photoUrl) }}
 					alt=""
 					loading="eager"
 					fetchpriority="high"

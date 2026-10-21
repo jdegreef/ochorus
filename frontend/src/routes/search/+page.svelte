@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetSrcset, assetUrl } from '$lib/assetUrl';
 	import ForPromo from '$lib/components/ForPromo.svelte';
 	import { searchFor } from '$lib/forPromos';
 	import Arrow from '$lib/components/Arrow.svelte';
@@ -722,7 +723,7 @@
 			<BookCover book={row.face} rounded="rounded-sm" />
 		</div>
 	{:else if row.image}
-		{@const source = { src: row.image, srcset: coverSrcset(row.image) || undefined }}
+		{@const source = { src: assetUrl(row.image), srcset: assetSrcset(coverSrcset(row.image)) || undefined }}
 		{@const boxStyle = [
 			row.color ? `background-color:${row.color}` : '',
 			row.focus ? `object-position:${row.focus}` : ''

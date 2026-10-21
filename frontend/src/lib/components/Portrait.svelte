@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetSrcset, assetUrl } from '$lib/assetUrl';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { i18n } from '$lib/i18n.svelte';
 	import { initials, portraitPosition, portraitSrcset } from '$lib/portraits';
@@ -58,7 +59,7 @@
 </script>
 
 {#if url}
-	{@const source = { src: url, srcset: portraitSrcset(url) }}
+	{@const source = { src: assetUrl(url), srcset: assetSrcset(portraitSrcset(url)) }}
 	<img
 		src={source.src}
 		srcset={source.srcset}

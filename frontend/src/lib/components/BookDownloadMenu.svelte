@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetUrl } from '$lib/assetUrl';
 	import { i18n } from '$lib/i18n.svelte';
 	import { API_BASE_URL } from '$lib/config';
 	import type { BookDetail } from '$lib/library-public';
@@ -123,7 +124,7 @@
 		</a>
 	{/if}
 	{#if book.pdf_url}
-		<a href={book.pdf_url} class="account-item dl-item" download onclick={() => (open = false)}>
+		<a href={assetUrl(book.pdf_url)} class="account-item dl-item" download onclick={() => (open = false)}>
 			<Icon name="list" size={15} />
 			<span class="dl-text">
 				<span class="dl-label">PDF</span>

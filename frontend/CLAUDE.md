@@ -13,6 +13,9 @@ API. Public content routes are prerendered for SEO (`prerender = true` + an
   enforces it). Anything that assumes a web origin — `window.location.origin`,
   a service worker, a prerendered page — needs an app path too.
   See `MOBILE.md`.
+- The app does not bundle `static/covers`, `portraits`, `illustrations`, …
+  (`app-assets.js`): an `<img>` `src`/`srcset` built from one of those paths
+  goes through `$lib/assetUrl`, which loads it from the website in the app.
 
 ## Data & API
 

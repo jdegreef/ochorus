@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetSrcset, assetUrl } from '$lib/assetUrl';
 	import { coverGradient, coverSrcset, isArtCover, isPlateCover } from '$lib/coverArt';
 	import { isLongTitle } from '$lib/coverCardMarkup';
 	import { coverTitle } from '$lib/coverTitle';
@@ -156,7 +157,10 @@
 	);
 	/** The cover's `src`/`srcset`, stated once for the markup and the action
 	 *  that keeps them on this book (see `$lib/hydrateSrc`). */
-	const source = $derived({ src: book.cover_url, srcset: coverSrcset(book.cover_url) || undefined });
+	const source = $derived({
+		src: assetUrl(book.cover_url),
+		srcset: assetSrcset(coverSrcset(book.cover_url)) || undefined
+	});
 	const label = $derived(`${t('a11y.coverOf')} ${book.title}`);
 	/** Eager for the page's LCP image and a shelf's first row; lazy otherwise. */
 	const loading = $derived<'eager' | 'lazy'>(priority || eager ? 'eager' : 'lazy');

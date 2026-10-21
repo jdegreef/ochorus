@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetUrl } from '$lib/assetUrl';
 	import ForPromo from '$lib/components/ForPromo.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import ReadBar from '$lib/components/ReadBar.svelte';
@@ -528,12 +529,12 @@
 	{#if wash}
 		<div class="book-band-art" aria-hidden="true">
 			<img
-				src={wash}
+				src={assetUrl(wash)}
 				alt=""
 				class="book-band-wash"
 				fetchpriority="high"
 				decoding="async"
-				use:hydrateSrc={{ src: wash }}
+				use:hydrateSrc={{ src: assetUrl(wash) }}
 				onerror={() => (washBroken = wash)}
 			/>
 		</div>

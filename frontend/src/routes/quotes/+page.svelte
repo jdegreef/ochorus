@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetUrl } from '$lib/assetUrl';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import type { QuoteAuthorSummary, QuoteTopicSummary, SavedQuote } from '$lib/library-public';
@@ -121,8 +122,8 @@
 					<span class="era-bar" aria-hidden="true"></span>
 					{#if a.photo_url}
 						<img
-							src={a.photo_url}
-							use:hydrateSrc={{ src: a.photo_url }}
+							src={assetUrl(a.photo_url)}
+							use:hydrateSrc={{ src: assetUrl(a.photo_url) }}
 							alt=""
 							loading="lazy"
 							width="96"

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetUrl } from '$lib/assetUrl';
 	import { onMount } from 'svelte';
 	import { isArtCover } from '$lib/coverArt';
 	import { isPaleGround } from '$lib/groundBars';
@@ -155,10 +156,10 @@
 	{#if !pale}
 		<div class="home-hero-drift">
 			<img
-				src={art}
+				src={assetUrl(art)}
 				alt=""
 				class="home-hero-wash"
-				use:hydrateSrc={{ src: art }}
+				use:hydrateSrc={{ src: assetUrl(art) }}
 				onerror={() => (broken = bookArt)}
 			/>
 		</div>
@@ -220,7 +221,7 @@
 			</a>
 		{:else}
 			<span class="home-hero-frame">
-				<img src={seasonArt} alt="" class="home-hero-plate" use:hydrateSrc={{ src: seasonArt }} />
+				<img src={assetUrl(seasonArt)} alt="" class="home-hero-plate" use:hydrateSrc={{ src: assetUrl(seasonArt) }} />
 				{#if label}
 					<span class="home-hero-label" title={label.credit}
 						>{label.artist}<br /><i>{label.title}</i>{label.year ? `, ${label.year}` : ''}</span
