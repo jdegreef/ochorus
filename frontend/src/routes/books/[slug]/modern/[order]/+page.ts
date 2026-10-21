@@ -1,10 +1,11 @@
 import { redirect } from '@sveltejs/kit';
-import { building } from '$app/environment';
+import { browser, building, dev } from '$app/environment';
 import { ApiError } from '$lib/api';
 import { getChapterExact, listBooks, MODERN_EDITION } from '$lib/library-public';
 import { localizeHref } from '$lib/href';
 import { bookChapterPath } from '$lib/reading-schema';
 import { chapterEntries } from '$lib/loadHelpers';
+import { takeChapterSeed, unrecorded } from '$lib/chapterSeed';
 import type { EntryGenerator, PageLoad } from './$types';
 
 // The Modern English edition at its own address. It used to exist only as
@@ -22,8 +23,12 @@ export const entries: EntryGenerator = async () => chapterEntries(await listBook
 
 export const load: PageLoad = async ({ params, url, fetch }) => {
 	const order = Number(params.order);
+	// Hydrating, from the page's own seed and prose, as the original route does
+	// ($lib/chapterSeed) — the build reads the chapter without inlining it.
+	const seeded = browser && !dev && takeChapterSeed(url.pathname);
+	if (seeded) return { chapter: seeded.data, slug: params.slug, language: MODERN_EDITION, edition: 'modern' as const };
 	try {
-		const chapter = await getChapterExact(params.slug, order, MODERN_EDITION, fetch);
+		const chapter = await getChapterExact(params.slug, order, MODERN_EDITION, building ? unrecorded(fetch) : fetch);
 		return { chapter, slug: params.slug, language: MODERN_EDITION, edition: 'modern' as const };
 	} catch (e) {
 		if (!(e instanceof ApiError && e.status === 404)) throw e;
