@@ -2,8 +2,14 @@
 	import { page } from '$app/stores';
 	import { auth } from '$lib/auth.svelte';
 	import { ADMIN_SECTIONS, opensSection } from '$lib/adminSections';
+	import { SCRIPT_FONTS, linkSheet } from '$lib/fontSheets';
+	import { onMount } from 'svelte';
 
 	let { children } = $props();
+
+	// Admin reviews every language's text on English pages, and each script's
+	// faces load only on its own locale's pages ($lib/fontSheets) — so take all.
+	onMount(() => Object.values(SCRIPT_FONTS).forEach(linkSheet));
 
 	// Only the sections the signed-in user can reach (the list and the rule live
 	// in $lib/adminSections, shared with the Help page's "Where things live").

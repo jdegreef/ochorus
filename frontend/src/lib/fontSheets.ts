@@ -1,6 +1,5 @@
 import { browser } from '$app/environment';
 import type { ReaderFont } from './readerPrefs.svelte';
-import type { SiteFont } from './siteFont.svelte';
 import amFonts from './fonts-am.css?url';
 import arFonts from './fonts-ar.css?url';
 import hiFonts from './fonts-hi.css?url';
@@ -29,22 +28,17 @@ export const SCRIPT_FONTS: Readonly<Record<string, string>> = {
 export const READER_FONTS_SHEET = readerFonts;
 
 /** Reader faces whose files live in fonts-reader.css. The others are the house
- *  tokens or a face app.css declares for its own reasons (Atkinson is also a
- *  site style). fontStacks.test.ts holds this list to the two files. */
+ *  tokens or faces app.css declares for its own reasons — EB Garamond (a cover
+ *  face, and the "classic" site style, upright and italic) and Atkinson (the
+ *  "hyperlegible" site style). fontStacks.test.ts holds this list to the files. */
 export const READER_SHEET_FONTS: readonly ReaderFont[] = [
 	'literata',
-	'garamond',
 	'sourceSerif',
 	'lora',
 	'baskerville',
 	'merriweather',
 	'dyslexic'
 ];
-
-/** Does this choice need fonts-reader.css? "classic" sets headings in EB
- *  Garamond, whose upright app.css has (a cover face) and whose italic is here. */
-export const needsReaderSheet = (font: ReaderFont, site: SiteFont) =>
-	READER_SHEET_FONTS.includes(font) || site === 'classic';
 
 /**
  * Link a stylesheet into <head>, once. Client-only and never removed: a sheet
@@ -65,7 +59,7 @@ export function linkSheet(href: string): void {
 
 /** Link a content language's script faces when it has its own sheet — for a
  *  page that draws covers in other scripts than its own (/for's languages
- *  band). A Latin language is a no-op. */
+ *  band; admin takes them all). A Latin language is a no-op. */
 export function linkScriptFonts(language: string): void {
 	const href = SCRIPT_FONTS[language];
 	if (href) linkSheet(href);

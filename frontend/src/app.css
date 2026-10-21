@@ -6,9 +6,9 @@
    page in every language, and an @font-face costs CSS bytes whether or not its
    font is ever fetched — the woff2 is unicode-range gated, the declaration is
    not. So only faces a page can need BEFORE THE APP RUNS live here: the house
-   pair, the cover faces (any shelf), and Atkinson (the hyperlegible site style,
-   which app.html applies before first paint). The rest load as their own
-   sheets ($lib/fontSheets.ts has the map):
+   pair, the cover faces (any shelf), and the two site styles' faces, which
+   app.html applies before first paint. The rest load as their own sheets
+   ($lib/fontSheets.ts has the map):
 
    * Each non-Latin script's faces — fonts-ar / -hi / -uk / -am / -ko.css —
      linked by the root layout on that locale's documents (the locale is fixed
@@ -17,9 +17,9 @@
      it, exactly as it already did for a glyph outside a declared range.
      A page that draws other scripts' content links their sheets itself: /for's
      languages band (every language's covers), and admin (every language's
-     text). Admin takes all of them.
+     text), which takes all of them.
    * The reader's optional faces — fonts-reader.css — linked once a reader
-     picks one, or opens a picker that previews them. `--reading-font` is set
+     picks one, or opens the typeface panel that previews them. `--reading-font` is set
      from JS after hydration anyway, so the sheet arrives with the choice.
 
    fontStacks.test.ts and coverStyles.test.ts read every one of these sheets as
@@ -35,8 +35,8 @@
    these sit here with the house faces rather than behind a route-level import
    that would have to know which authors a page happens to show. Each package
    ships one @font-face per subset, unicode-range-gated, so an English shelf
-   pulls the latin file and nothing else. (EB Garamond's upright doubles as the
-   "classic" site style's face, and Libre Baskerville's 400 as the reader's.) */
+   pulls the latin file and nothing else. (Libre Baskerville's 400 doubles as
+   the reader's Baskerville; EB Garamond's upright as a site style, below.) */
 @import '@fontsource-variable/cinzel/wght.css';
 @import '@fontsource-variable/eb-garamond/wght.css';
 @import '@fontsource-variable/playfair-display/wght.css';
@@ -63,12 +63,14 @@
    face it chose and why, and carries the note on importing the WEIGHT
    entrypoints rather than the per-subset ones — load-bearing, see there. */
 
-/* Atkinson Hyperlegible Next, upright and italic: a reader face (FONT_STACK)
-   AND the "hyperlegible" site style, which app.html's boot script applies
-   before first paint — so it is declared here, where that first paint can see
-   it, not in fonts-reader.css, which only the running app can link (its URL is
-   content-hashed; the boot script cannot know it). ~2 KB of CSS for no new
-   flash on a choice that exists for legibility. */
+/* The site styles' faces, whole: EB Garamond ("classic", whose upright is
+   imported above) and Atkinson Hyperlegible Next ("hyperlegible"). Both are
+   reader faces too (FONT_STACK), but a site style is applied by app.html's boot
+   script before first paint — so its faces are declared here, where that first
+   paint can see them, not in fonts-reader.css, which only the running app can
+   link (its URL is content-hashed; the boot script cannot know it). ~5 KB of
+   CSS for no new flash, on choices made for legibility and voice. */
+@import '@fontsource-variable/eb-garamond/wght-italic.css';
 @import '@fontsource-variable/atkinson-hyperlegible-next/wght.css';
 @import '@fontsource-variable/atkinson-hyperlegible-next/wght-italic.css';
 

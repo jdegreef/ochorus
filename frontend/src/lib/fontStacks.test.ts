@@ -19,7 +19,7 @@ const SITE_CSS = stripComments(readFileSync(join(process.cwd(), 'src/lib/site-fo
  *  linked once chosen (see app.css's header for why). Their imports count as
  *  the app's own: a stack that names Amiri is satisfied by fonts-ar.css on the
  *  pages that draw Arabic. */
-const SHEET_FILES = readdirSync(join(process.cwd(), 'src/lib')).filter((f) => /^fonts-[a-z]+\.css$/.test(f));
+const SHEET_FILES = readdirSync(join(process.cwd(), 'src/lib')).filter((f) => /^fonts-[a-z-]+\.css$/.test(f));
 const SHEET_CSS = Object.fromEntries(
 	SHEET_FILES.map((f) => [f, stripComments(readFileSync(join(process.cwd(), 'src/lib', f), 'utf-8'))])
 );
@@ -314,7 +314,7 @@ describe('font stacks', () => {
 			// pairing is read from the module's source.
 			const src = readFileSync(join(process.cwd(), 'src/lib/fontSheets.ts'), 'utf-8');
 			const fileOf = Object.fromEntries(
-				[...src.matchAll(/^import (\w+) from '\.\/(fonts-[a-z]+\.css)\?url';$/gm)].map(([, id, f]) => [id, f])
+				[...src.matchAll(/^import (\w+) from '\.\/(fonts-[a-z-]+\.css)\?url';$/gm)].map(([, id, f]) => [id, f])
 			);
 			for (const locale of Object.keys(SCRIPT_FONTS)) {
 				const id = new RegExp(`^\\s*${locale}: (\\w+),?$`, 'm').exec(src)?.[1] ?? '';
@@ -397,9 +397,11 @@ describe('font stacks', () => {
 							`${sel} sets --${token} with no ${script} face`
 						).toBeTruthy();
 					}
+					// In app.css itself: app.html applies a style before first paint,
+					// and the on-demand sheets only arrive once the app has run.
 					expect(
-						IMPORTS.some((i) => i.includes(`/${pkgSlug(stack[0])}/`)),
-						`${sel}: ${stack[0]} is never imported`
+						importsOf(APP_CSS).some((i) => i.includes(`/${pkgSlug(stack[0])}/`)),
+						`${sel}: ${stack[0]} is not imported by app.css`
 					).toBe(true);
 				}
 			}

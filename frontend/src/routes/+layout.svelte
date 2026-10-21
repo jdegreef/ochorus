@@ -57,7 +57,7 @@
 	// Each non-Latin script's faces, and the reader's optional ones, as their own
 	// stylesheets: @font-face rules only the pages that draw them should wait on
 	// (see app.css's header and $lib/fontSheets).
-	import { SCRIPT_FONTS, READER_FONTS_SHEET, linkSheet, needsReaderSheet } from '$lib/fontSheets';
+	import { SCRIPT_FONTS, READER_FONTS_SHEET, READER_SHEET_FONTS, linkSheet } from '$lib/fontSheets';
 
 	let { children } = $props();
 	const t = i18n.t;
@@ -147,15 +147,11 @@
 		install.touch();
 	});
 
-	// The reader's optional faces, once the reader has picked one (or the
-	// "classic" site style): --reading-font is applied after hydration too, so
-	// the sheet lands with the choice. Admin reviews every language's text on
-	// one English page, so it takes every script's sheet.
+	// The reader's optional faces, once the reader has picked one:
+	// --reading-font is applied after hydration too, so the sheet lands with the
+	// choice.
 	$effect(() => {
-		if (needsReaderSheet(readerPrefs.font, siteFont.current)) linkSheet(READER_FONTS_SHEET);
-	});
-	$effect(() => {
-		if ($page.route.id?.startsWith('/admin')) Object.values(SCRIPT_FONTS).forEach(linkSheet);
+		if (READER_SHEET_FONTS.includes(readerPrefs.font)) linkSheet(READER_FONTS_SHEET);
 	});
 
 	// Reflect the URL locale on <html> for accessibility + correct hyphenation.

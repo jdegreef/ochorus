@@ -1,16 +1,15 @@
 /* The reader's optional faces (FONT_STACK in readerPrefs), upright and italic
    — they set whole books, and prose has emphasis. Linked by the root layout
-   once a reader has chosen one of them (or the "classic" site style, for EB
-   Garamond's italic), and by the pickers that preview every face in itself —
-   see $lib/fontSheets.ts. Not in app.css: ~25 KB of declarations every page
-   paid for before first paint, for a choice most readers never make — and
-   `--reading-font` is set only after hydration anyway, so the sheet arrives
-   with the choice.
+   once a reader has chosen one of them, and by the reader's typeface panel,
+   which previews every face in itself — see $lib/fontSheets.ts. Not in
+   app.css: ~20 KB of declarations every page paid for before first paint, for
+   a choice most readers never make — and `--reading-font` is set only after
+   hydration anyway, so the sheet arrives with the choice.
 
-   Uprights already in app.css as cover faces are not repeated: EB Garamond and
-   Libre Baskerville 400. Atkinson Hyperlegible stays there too — it is also a
-   site style, which must be declared before first paint (see app.css). */
-@import '@fontsource-variable/eb-garamond/wght-italic.css';
+   Libre Baskerville's 400 is not repeated: app.css has it as a cover face.
+   EB Garamond (upright AND italic) and Atkinson Hyperlegible stay there
+   whole — each is also a site style ("classic", "hyperlegible"), which
+   app.html applies before first paint (see app.css). */
 @import '@fontsource-variable/literata/wght.css';
 @import '@fontsource-variable/literata/wght-italic.css';
 @import '@fontsource-variable/source-serif-4/wght.css';

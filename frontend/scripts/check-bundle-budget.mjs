@@ -20,8 +20,7 @@
  *                     import map), plus anything it pulls in that the entry
  *                     closure doesn't already hold.
  *   globalCss         the CSS the layout node preloads (every page), minus
- *                     the on-demand font sheets ($lib/fonts-<locale>.css,
- *                     fonts-reader.css), which load only where they are drawn.
+ *                     fonts-ko CSS, which only Korean pages load.
  *
  * Raising a budget is allowed — deliberately: edit bundle-budget.json and say
  * in the PR why the bytes are worth it.
@@ -194,7 +193,7 @@ export function measure(root) {
 			.map((f) => `assets/${f}`);
 	const globalCss = sumFiles(
 		root,
-		css.filter((f) => !/\/fonts-[a-z]+\./.test(f) && existsSync(join(root, f)))
+		css.filter((f) => !/fonts-ko/.test(f) && existsSync(join(root, f)))
 	);
 
 	return { entryClosure, largestChunk, largestCatalogue, globalCss };

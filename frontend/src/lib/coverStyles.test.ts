@@ -30,8 +30,9 @@ const APP_CSS = readFileSync(join(process.cwd(), 'src/app.css'), 'utf-8');
 /** Each non-Latin script's faces: linked only on that locale's pages, not
  *  @imported by app.css ($lib/fontSheets), but an import there is an import for
  *  the gates below. */
-const SCRIPT_CSS = ['ar', 'hi', 'uk', 'am', 'ko']
-	.map((l) => readFileSync(join(process.cwd(), `src/lib/fonts-${l}.css`), 'utf-8'))
+const SCRIPT_CSS = readdirSync(join(process.cwd(), 'src/lib'))
+	.filter((f) => /^fonts-[a-z-]+\.css$/.test(f) && f !== 'fonts-reader.css')
+	.map((f) => readFileSync(join(process.cwd(), 'src/lib', f), 'utf-8'))
 	.join('\n');
 
 
