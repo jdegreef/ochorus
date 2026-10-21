@@ -1948,7 +1948,7 @@
 							>{t('reader.bookmark')}</span
 						></button
 					>
-					{#if listen.supported}
+					{#if listen.offered}
 						<button
 							class="btn btn-icon btn-ghost md:px-2.5"
 							class:text-accent={listen.status !== 'idle'}
@@ -2099,7 +2099,7 @@
 
 		<p class="eyebrow chapter-kicker mb-1 text-muted">
 			{t('continue.chapter')} {chapter.order} · {readingTime(chapter.word_count)}
-			{#if listen.supported}
+			{#if listen.offered}
 				· {listenTime(chapter.word_count, listen.rate)}
 			{/if}
 			{#if chapter.is_modern_edition}
@@ -2110,7 +2110,7 @@
 
 		<!-- A children's chapter offers the read-aloud up front, where a parent
 		     looks first — on a phone the footer's Listen is easy to miss. -->
-		{#if childrens && listen.supported && listen.status === 'idle'}
+		{#if childrens && listen.offered && listen.status === 'idle'}
 			<button class="btn btn-primary listen-story mb-8" onclick={() => reader.startListening(0)}>
 				<Icon name="headphones" size={20} />
 				<span>{t('reader.listenStory')}</span>
@@ -2512,7 +2512,7 @@
 			{:else}
 				<span class="foot-btn" aria-hidden="true"></span>
 			{/if}
-			{#if listen.supported}
+			{#if listen.offered}
 				<button
 					class="foot-btn"
 					onclick={() => reader.startListening()}

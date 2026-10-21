@@ -379,7 +379,7 @@
 				<!-- Grouped by author. The heading names the author, so the cards below
 				     it don't repeat it (list rows drop their author for the same reason). -->
 				<div class="flex flex-col gap-8">
-					{#each displayGroups ?? [] as g (g.slug)}
+					{#each displayGroups ?? [] as g, gi (g.slug)}
 						<div>
 							<GroupHeading
 								as="h3"
@@ -397,8 +397,8 @@
 								</div>
 							{:else}
 								<div class="book-grid">
-									{#each g.items as book (book.slug)}
-										<BookCard {book} />
+									{#each g.items as book, i (book.slug)}
+										<BookCard {book} eager={gi === 0 && i < 6} />
 									{/each}
 								</div>
 							{/if}
@@ -415,10 +415,13 @@
 			{:else}
 				<!-- One flat cover grid — the default, and the same dense grid the
 				     /books shelf shows. The author rides each card since no heading
-				     names it. -->
+				     names it. Its first row (six, the grid's widest) loads at once
+				     rather than from the lazy queue: on a desktop a cover there is
+				     the page's LCP (measured). Not high — on a phone that row is a
+				     screen down, under the topic's own header. -->
 				<div class="book-grid">
-					{#each flatBooks as book (book.slug)}
-						<BookCard {book} showAuthor />
+					{#each flatBooks as book, i (book.slug)}
+						<BookCard {book} showAuthor eager={i < 6} />
 					{/each}
 				</div>
 			{/if}

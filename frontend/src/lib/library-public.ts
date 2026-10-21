@@ -1,4 +1,5 @@
 import { apiFetch, ApiError, type Fetch } from './api';
+import type { ScriptureResult } from './scripture.svelte';
 import { SITE_URL } from './config';
 import { absUrl } from './seo';
 import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from './coverArt';
@@ -983,6 +984,21 @@ export const getSermon = async (slug: string, language = 'en', f?: Fetch) =>
 		`sermon ${slug}`,
 		await localized<Sermon>((l) => `/api/library/sermons/${slug}/?language=${l}`, language, f),
 		SERMON_FIELDS
+	);
+
+/**
+ * A sermon's preaching text — its verse(s), for the card at the head of its
+ * page — or null when the reference resolves to none or can't be fetched (the
+ * card then shows the reference alone). Fetched in the page's load, so it is
+ * baked into the prerendered HTML: fetched after hydration, the verses landed
+ * after first paint and pushed "In brief" and the opening of the sermon down by
+ * their own height (measured: CLS 0.07 on a desktop against a local API, and
+ * 0.38 on a phone in dev — a real network only widens the gap). One cheap
+ * local lookup per sermon page at build time (the ASV is in the API).
+ */
+export const getPreachingText = (ref: string, f?: Fetch) =>
+	apiFetch<ScriptureResult>(`/api/library/scripture/?ref=${encodeURIComponent(ref)}`, {}, f).catch(
+		() => null
 	);
 
 // --- Articles ----------------------------------------------------------------

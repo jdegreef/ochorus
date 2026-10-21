@@ -43,7 +43,7 @@ const book = (over: Partial<BookSummary> = {}): BookSummary =>
 let target: HTMLElement;
 let component: Record<string, unknown> | undefined;
 
-const render = (props: { book: BookSummary; priority?: boolean }): HTMLElement => {
+const render = (props: { book: BookSummary; priority?: boolean; eager?: boolean }): HTMLElement => {
 	teardown(); // a test that renders twice must not leave the first in the body
 	target = document.createElement('div');
 	document.body.appendChild(target);
@@ -246,6 +246,22 @@ describe('BookCover falls back to a plate', () => {
 		loadWith(threeFour.querySelector('img')!, 600, 800);
 		expect(threeFour.querySelectorAll('img')).toHaveLength(1);
 		expect(threeFour.querySelector('img')?.className).toContain('object-cover');
+	});
+
+	it('fetches only a priority cover high; a first-row cover is eager at normal priority', () => {
+		// A shelf's first row is a screen down on a phone: loaded at once, but a
+		// high fetch there would race the fonts and the page's real LCP.
+		const cover = { cover_url: '/covers/art/waiting-on-god.jpg' };
+		const shelf = render({ book: book(cover) }).querySelector('img')!;
+		expect(shelf.getAttribute('loading')).toBe('lazy');
+		expect(shelf.hasAttribute('fetchpriority')).toBe(false);
+		const firstRow = render({ book: book(cover), eager: true }).querySelector('img')!;
+		expect(firstRow.getAttribute('loading')).toBe('eager');
+		expect(firstRow.hasAttribute('fetchpriority')).toBe(false);
+		const lcp = render({ book: book(cover), priority: true }).querySelector('img')!;
+		expect(lcp.getAttribute('loading')).toBe('eager');
+		expect(lcp.getAttribute('fetchpriority')).toBe('high');
+		expect([lcp.getAttribute('width'), lcp.getAttribute('height')]).toEqual(['300', '400']);
 	});
 
 	it('never mats a ground — a painting or plate is drawn at 3:4 to be covered', () => {

@@ -83,6 +83,19 @@ function loadPrefs(): Stored {
 
 class Listen {
 	readonly supported = browser && 'speechSynthesis' in window;
+	/**
+	 * Whether to DRAW the Listen controls — `supported`, except in the
+	 * prerender, which assumes it. Every browser the site targets has speech
+	 * synthesis, but a page built without a window can't know that, so keyed on
+	 * `supported` the button was missing from the baked HTML and inserted at
+	 * hydration: the chapter's phone footer re-spaced all five buttons and the
+	 * top bars' tool groups grew sideways (both measured as layout shifts), and
+	 * a children's chapter pushed its whole text down by the "Listen to the
+	 * story" button. Now only
+	 * the rare browser without it sees a change, and that one removes a button.
+	 * Logic still asks `supported`.
+	 */
+	readonly offered = !browser || this.supported;
 
 	status = $state<'idle' | 'playing' | 'paused'>('idle');
 	/** Index of the paragraph being spoken; -1 when idle. */

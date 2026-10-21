@@ -21,6 +21,8 @@
 		 * scanner and makes some LCP implementations discount it entirely.
 		 */
 		priority = false,
+		/** In a shelf's first row: load at once, at normal priority (BookCover). */
+		eager = false,
 		/**
 		 * When set, this card is the first of its author's run in the by-author
 		 * shelf and carries the `#author-<slug>` target the quick-nav jumps to.
@@ -60,6 +62,7 @@
 		book: CoverBook;
 		showAuthor?: boolean;
 		priority?: boolean;
+		eager?: boolean;
 		anchor?: string;
 		showSeries?: boolean;
 		perChapter?: boolean;
@@ -110,7 +113,7 @@
 	<!-- The whole cover block (the cover, its hover overlay and the ribbon)
 	     tips together on hover, so the overlay stays on the cover. -->
 	<div class="book-card-cover relative">
-		<BookCover {book} {priority} />
+		<BookCover {book} {priority} {eager} />
 		{#if edition}
 			<!-- The audience as a ribbon on the cover, so a teens or children's
 			     edition is told apart at a glance across a shelf. Its words are the

@@ -25,8 +25,7 @@
 	import { getLang } from '$lib/lang.svelte';
 	import { hasLocalizedSermonCard } from '$lib/sermonOgLocales';
 	import { listen } from '$lib/listen.svelte';
-	import { scripture, type ScriptureResult } from '$lib/scripture.svelte';
-	import { apiFetch } from '$lib/api';
+	import { scripture } from '$lib/scripture.svelte';
 	import { page } from '$app/stores';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
 	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
@@ -236,17 +235,9 @@
 			.toUpperCase();
 
 	// The sermon's preaching text — the verse(s) it's built on — for the header
-	// card. Fetched client-side (the page is prerendered); absent = card shows
-	// just the reference.
-	let preachingText = $state<ScriptureResult | null>(null);
-	$effect(() => {
-		const ref = sermon.scripture_ref;
-		preachingText = null;
-		if (!ref) return;
-		apiFetch<ScriptureResult>(`/api/library/scripture/?ref=${encodeURIComponent(ref)}`)
-			.then((v) => (preachingText = v))
-			.catch(() => (preachingText = null));
-	});
+	// card, from the load so it is in the prerendered page (getPreachingText);
+	// absent = card shows just the reference.
+	const preachingText = $derived(data.preachingText);
 
 	/** "1 Peter 2:7" -> "1 Peter"; "Matthew 11:28" -> "Matthew". */
 	const refBook = (ref: string) => ref.match(/^(\d?\s?[A-Za-z]+)/)?.[1]?.trim() ?? '';
@@ -511,7 +502,7 @@
 							>{t('reader.bookmark')}</span
 						></button
 					>
-					{#if listen.supported && !isPhone}
+					{#if listen.offered && !isPhone}
 						<button
 							class="btn btn-icon btn-ghost md:px-2.5"
 							class:text-accent={listen.status !== 'idle'}
@@ -953,7 +944,7 @@
 			{:else}
 				<span class="foot-btn" aria-hidden="true"></span>
 			{/if}
-			{#if listen.supported}
+			{#if listen.offered}
 				<button class="foot-btn" onclick={() => reader?.startListening()}
 					><Icon name="headphones" size={22} /><span>{t('reader.listen')}</span></button
 				>

@@ -594,7 +594,7 @@
 			<h2 class="font-display text-h2 font-semibold">{t('articles.kindBiography')}</h2>
 			{#if author.bio_html}
 				<div class="reader-tools ms-auto shrink-0">
-					{#if listen.supported}
+					{#if listen.offered}
 						<button
 							class="btn btn-icon btn-ghost"
 							class:text-accent={listen.status !== 'idle'}

@@ -21,6 +21,10 @@
 	 * No free image: the mat carries the writer's initials in the era hue rather
 	 * than an empty frame. The frame and the hue are decoration (the name is the
 	 * heading beside it), so the image's alt is empty.
+	 *
+	 * The portrait is the page's LCP on a desktop, so it is fetched eagerly and
+	 * high, and states the print's 4:5 as its intrinsic size (the scoped CSS
+	 * sizes the box; the attributes only hold it before that sheet applies).
 	 */
 	let {
 		slug,
@@ -57,6 +61,8 @@
 					alt=""
 					loading="eager"
 					fetchpriority="high"
+					width="200"
+					height="250"
 					style:object-position={portraitPosition(slug)}
 				/>
 			</span>

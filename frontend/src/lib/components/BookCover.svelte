@@ -71,7 +71,8 @@
 	let {
 		book,
 		rounded = 'rounded-card',
-		priority = false
+		priority = false,
+		eager = false
 	}: {
 		/** Any `CoverBook` fits; a tile or search hit carries just these fields. */
 		book: CoverFace;
@@ -80,6 +81,12 @@
 		 * intrinsic size so space is reserved before app.css lands, and skip the
 		 * skeleton — an LCP image should not wait for a lazy queue or fade in. */
 		priority?: boolean;
+		/** A shelf's first row: fetched at once rather than from the lazy queue,
+		 * but at the browser's own priority. The same row is above the fold on a
+		 * desktop and a screen down on a phone (/books: y≈864 of 844, measured),
+		 * where `priority`'s high fetch would race the fonts and the page's real
+		 * LCP for an image nobody can see yet. Implied by `priority`. */
+		eager?: boolean;
 	} = $props();
 
 	// Keyed by the URL they describe, not free-floating: the book page renders
@@ -265,7 +272,7 @@
 			src={source.src}
 			srcset={source.srcset}
 			alt={overFile ? '' : label}
-			loading={priority ? 'eager' : 'lazy'}
+			loading={priority || eager ? 'eager' : 'lazy'}
 			fetchpriority={priority ? 'high' : undefined}
 			width={priority ? 300 : undefined}
 			height={priority ? 400 : undefined}
@@ -291,7 +298,7 @@
 				use:hydrateSrc={source}
 				alt=""
 				aria-hidden="true"
-				loading={priority ? 'eager' : 'lazy'}
+				loading={priority || eager ? 'eager' : 'lazy'}
 				class="absolute inset-0 -z-10 h-full w-full scale-110 object-cover blur-xl brightness-[.82]"
 			/>
 		{/if}
