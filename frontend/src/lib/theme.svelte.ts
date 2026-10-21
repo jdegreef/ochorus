@@ -2,6 +2,7 @@ import { browser } from '$app/environment';
 import { normalizeApplied, PALETTE_COLORS } from './palettes';
 import type { IconName } from './components/Icon.svelte';
 import { crossfade } from './crossfade';
+import { setStatusBar } from './platform';
 
 /**
  * Theme preference and the concrete theme it resolves to.
@@ -95,8 +96,9 @@ class Theme {
 		this.refreshChrome();
 	}
 
-	/** Re-colour the browser chrome for the applied theme AND palette — the
-	 *  palette store calls this when only the palette changes. Sepia keeps its
+	/** Re-colour the browser chrome (in the app, the status bar) for the
+	 *  applied theme AND palette — the palette store calls this when only the
+	 *  palette changes. Sepia keeps its
 	 *  own ground under every palette (app.css), so its colour is the theme's. */
 	refreshChrome() {
 		if (!browser) return;
@@ -109,6 +111,8 @@ class Theme {
 			tc.removeAttribute('media');
 			tc.setAttribute('content', color);
 		}
+		// The app has no browser chrome: its status bar is the equivalent.
+		void setStatusBar(color, this.current === 'dark');
 	}
 }
 

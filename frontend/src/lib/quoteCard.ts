@@ -11,6 +11,7 @@
 import markSvg from '$lib/brand/ochorus-mark.svg?raw';
 
 import { scriptOf } from '$lib/coverStyles';
+import { IS_APP, shareFile } from '$lib/platform';
 
 export interface QuoteCardOptions {
 	quote: string;
@@ -298,29 +299,29 @@ export async function renderQuoteCard(opts: QuoteCardOptions): Promise<Blob> {
  * where supported (mobile), otherwise a PNG download. Returns 'shared' |
  * 'downloaded' so the caller can reflect what happened.
  */
-export async function shareQuoteCard(opts: QuoteCardOptions): Promise<'shared' | 'downloaded'> {
+export async function shareQuoteCard(opts: QuoteCardOptions): Promise<'shared' | 'downloaded' | 'dismissed'> {
 	const blob = await renderQuoteCard(opts);
 	return shareCardImage(blob, 'ochorus-quote.png', `"${trimQuote(opts.quote)}" — ${opts.author}`);
 }
 
 /**
  * Hand a rendered card off: the native share sheet with the image file where
- * supported (mobile), otherwise a PNG download. Returns 'shared' |
- * 'downloaded' so the caller can reflect what happened.
+ * supported (mobile, and always in the app), otherwise a PNG download. Returns
+ * 'shared' | 'downloaded' — or 'dismissed', in the app, whose web view cannot
+ * download — so the caller can reflect what happened.
  */
-export async function shareCardImage(blob: Blob, filename: string, text: string): Promise<'shared' | 'downloaded'> {
-	const file = new File([blob], filename, { type: 'image/png' });
-	const nav = navigator as Navigator & {
-		canShare?: (data?: ShareData) => boolean;
-	};
-	if (nav.canShare && nav.canShare({ files: [file] })) {
-		try {
-			await navigator.share({ files: [file], text });
-			return 'shared';
-		} catch {
-			/* user dismissed, or share failed — fall through to download */
-		}
-	}
+export async function shareCardImage(
+	blob: Blob,
+	filename: string,
+	text: string
+): Promise<'shared' | 'downloaded' | 'dismissed'> {
+	// The app's native sheet, or the browser's where it takes files. Dismissed
+	// or failed, it falls through to a download, as it always has.
+	const shared = await shareFile(blob, filename, text);
+	if (shared === 'shared') return 'shared';
+	// The app's web view cannot save a blob download: its sheet (which carries
+	// "Save Image") is the only way out, so a dismissed one just closes.
+	if (IS_APP) return 'dismissed';
 	const url = URL.createObjectURL(blob);
 	const a = document.createElement('a');
 	a.href = url;

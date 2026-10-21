@@ -181,6 +181,8 @@
      backdrop / sheet   a drawer's dim layer and the drawer itself
      menu / modal       header menus and dialogs (never shown together)
      toast, skip        PWA toasts; the skip link above everything
+     statusbar          the app's status-bar strip, over all of it (it is
+                        the phone's, not the page's)
    Local stacking inside one component (1–10) can stay numeric. */
 :root {
 	--z-pinned: 20;
@@ -193,6 +195,7 @@
 	--z-modal: 50;
 	--z-toast: 60;
 	--z-skip: 100;
+	--z-statusbar: 110;
 }
 
 /* Type scale — modular ratio 1.25, anchored at 1rem body. (Shared with Take Root;
@@ -2167,6 +2170,46 @@ nav.appnav {
    height for the whole chapter and stack two bars over the text. */
 nav.appnav.appnav-static {
 	position: static;
+}
+/* The phone app (<html data-app>, set by $lib/platform's startAppShell).
+   Unlayered, so it outranks the scoped and utility `top: 0` it adjusts.
+   Capacitor 8 runs the web view edge to edge on iOS and Android, so the
+   status bar is drawn OVER the page: nothing in the page may start under
+   it, and what scrolls up must pass beneath a strip of the page's own
+   ground rather than behind the clock. The website never gets data-app —
+   in a browser the top inset is the browser's, and 0 to the page. */
+:root[data-app] {
+	--safe-top: env(safe-area-inset-top, 0px);
+}
+:root[data-app] body::after {
+	content: '';
+	position: fixed;
+	inset-inline: 0;
+	top: 0;
+	height: var(--safe-top);
+	z-index: var(--z-statusbar);
+	background: var(--bg);
+	pointer-events: none;
+}
+/* The nav takes the strip into itself, so its measured height (published
+   as --appnav-h) already clears it for everything pinned beneath. */
+:root[data-app] nav.appnav {
+	padding-top: var(--safe-top);
+}
+:root[data-app] .app-root {
+	--appnav-h: calc(3.5rem + var(--safe-top));
+}
+/* Focus mode draws no nav: the page itself starts below the strip. */
+:root[data-app] .app-root:not(:has(> nav.appnav)) {
+	padding-top: var(--safe-top);
+}
+/* What pins to the very top of the viewport pins below the strip. */
+:root[data-app] .reader-chrome.sticky,
+:root[data-app] .reader-chrome.peeking,
+:root[data-app] .read-progress,
+:root[data-app] article.paged.focus,
+:root[data-app] .drawer-panel:not(.bottom) {
+	top: var(--safe-top);
 }
 /* The bar's content sits in a centred container (like Take Root's live nav),
    so the brand and controls are inset from the viewport edges and align with

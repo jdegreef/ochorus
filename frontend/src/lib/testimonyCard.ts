@@ -134,6 +134,9 @@ export async function renderTestimonyCard(text: TestimonyText, answeredLabel: st
 	});
 }
 
-export async function shareTestimonyCard(blob: Blob, text: TestimonyText): Promise<'shared' | 'downloaded'> {
+export async function shareTestimonyCard(
+	blob: Blob,
+	text: TestimonyText
+): Promise<'shared' | 'downloaded' | 'dismissed'> {
 	return shareCardImage(blob, 'ochorus-answered-prayer.png', `${text.heading}: ${text.answer}`);
 }

@@ -4,6 +4,7 @@
 	import { localizeHref } from '$lib/href';
 	import { getLang } from '$lib/lang.svelte';
 	import { SITE_URL } from '$lib/config';
+	import { share as shareSheet } from '$lib/platform';
 	import { readingActivity } from '$lib/readingActivity.svelte';
 	import { readingGoal, BOOKS_GOAL_MAX, BOOKS_GOAL_MIN } from '$lib/readingGoal.svelte';
 	import { readingPace } from '$lib/readingPace.svelte';
@@ -85,14 +86,7 @@
 			.replace('%h%', hours)
 			.replace('%d%', String(stats.daysRead));
 		const url = SITE_URL;
-		if (typeof navigator.share === 'function') {
-			try {
-				await navigator.share({ text, url });
-				return;
-			} catch (err) {
-				if ((err as Error)?.name === 'AbortError') return;
-			}
-		}
+		if ((await shareSheet({ text, url })) !== 'unavailable') return;
 		try {
 			await navigator.clipboard.writeText(`${text} ${url}`);
 			copied = true;

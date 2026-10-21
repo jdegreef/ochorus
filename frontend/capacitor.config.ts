@@ -15,7 +15,18 @@ const config: CapacitorConfig = {
 	webDir: 'build-app',
 	// The reader's cream paper, so the frame behind the web view never flashes
 	// white on launch or overscroll (manifest.json's background_color).
-	backgroundColor: '#faf6ef'
+	backgroundColor: '#faf6ef',
+	plugins: {
+		SplashScreen: {
+			// $lib/platform's startAppShell hides the splash on the reader's first
+			// frame, so it never gives way to a blank web view. This is only the
+			// safety net: if the bundle fails to start, the splash still lifts.
+			launchAutoHide: true,
+			launchShowDuration: 3000,
+			backgroundColor: '#faf6ef',
+			showSpinner: false
+		}
+	}
 };
 
 export default config;
