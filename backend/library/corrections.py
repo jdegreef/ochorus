@@ -2171,6 +2171,20 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("and to, Thy Spirit moved upon the waters", "and lo, Thy Spirit moved upon the waters"),
             ("who created created us", "who created us"),
             ("discoursing disputing", "discoursing, disputing"),
+            # Found translating the book to Portuguese (job #2803): dropped
+            # words, a misread letter and Pusey's "art"/"hast" set as "are"/"has".
+            ("from Latinum turn", "from Latium turn"),
+            ("when on one whatever is with them", "when no one whatever is with them"),
+            ("which yet himself would no means suffer", "which yet himself would by no means suffer"),
+            ("Thus much has Thou allotted them", "Thus much hast Thou allotted them"),
+            ("to be known; when to, I found", "to be known; when lo, I found"),
+            ("this being the law my confession", "this being the law of my confession"),
+            ("whereof we imbibe nor the images", "whereof we imbibe not the images"),
+            ("For some how I am not praised", "For somehow I am not praised"),
+            ("inasmuch as I unlike it", "inasmuch as I am unlike it"),
+            ("O Lord my god, give ear", "O Lord my God, give ear"),
+            ("Thou, Almighty, Who are with me", "Thou, Almighty, Who art with me"),
+            ("but first Thou justifieth him when ungodly", "but first Thou justifiest him when ungodly"),
         ],
     },
     "grace-for-grace-2": {
