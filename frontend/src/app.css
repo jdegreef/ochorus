@@ -1880,17 +1880,20 @@
 	}
 }
 
-/* The home page for a returning or signed-in reader (`data-home-for`, set by
-   the app.html boot script) is not the prerendered newcomer page: the app
-   swaps in the dashboard or adds "Continue reading" above the hero once it
-   runs. Held invisible until the page says it has settled
-   (`data-home-ready`), with a parchment placeholder in its place, so the
-   reader sees it once, in place, instead of watching it jump. The animation
-   is the safety net: if the app never signals (a script error, a dead
-   network), the content shows anyway after 4 s. */
-html[data-home-for]:not([data-home-ready]) .home-root > :not(.home-wait) {
+/* The home page for a signed-in reader (`data-home-for="member"`, set by the
+   app.html boot script) is not the prerendered newcomer page: the app swaps
+   in the dashboard once it mounts. Held invisible until the page says it has
+   (`data-home-ready`), with a dashboard-shaped placeholder in its place, so
+   the reader sees it once, in place, instead of watching it jump. That is
+   hydration and no more — the dashboard draws from the stored session, not
+   the restored one (src/routes/+page.svelte). The animation is the safety
+   net: if the app never signals (a script error, a dead network), the
+   content shows anyway after 3 s. A returning reader who is not signed in
+   (`"reader"`) is not held at all: the prerendered page is theirs, and only
+   the strip's space is reserved (HomeMarketing .home-hold). */
+html[data-home-for='member']:not([data-home-ready]) .home-root > :not(.home-wait) {
 	visibility: hidden;
-	animation: home-reveal 0s 4s forwards;
+	animation: home-reveal 0s 3s forwards;
 }
 @keyframes home-reveal {
 	to {
@@ -1900,12 +1903,12 @@ html[data-home-for]:not([data-home-ready]) .home-root > :not(.home-wait) {
 .home-wait {
 	display: none;
 }
-html[data-home-for]:not([data-home-ready]) .home-wait {
+html[data-home-for='member']:not([data-home-ready]) .home-wait {
 	display: block;
 	position: absolute;
 	inset-inline: 0;
 	top: 0;
-	animation: home-wait-end 0s 4s forwards;
+	animation: home-wait-end 0s 3s forwards;
 }
 @keyframes home-wait-end {
 	to {

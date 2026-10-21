@@ -3,8 +3,8 @@
 	import { goto } from '$app/navigation';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
-	import ContinueReading from '$lib/components/ContinueReading.svelte';
-	import ReadingNudge from '$lib/components/ReadingNudge.svelte';
+	import ContinueReading, { hold as continueHold } from '$lib/components/ContinueReading.svelte';
+	import ReadingNudge, { hold as nudgeHold } from '$lib/components/ReadingNudge.svelte';
 	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
 	import HomeArticles from '$lib/components/HomeArticles.svelte';
 	import DiscoverStrip from '$lib/components/DiscoverStrip.svelte';
@@ -153,7 +153,14 @@
 			</div>
 		</div>
 	</section>
+	<!-- The strip's space before the app runs, for a reader app.html's boot
+	     flag knows is returning: the rest of the page shows at once, below the
+	     strip's frame, and the real strip takes the frame's place at mount
+	     without moving it. After `.personal`, so CSS can drop the hold the
+	     moment `.personal` fills (sibling selector, no :has). In the baked HTML
+	     for everyone, shown to no one else (display: none). -->
 	<div class="personal order-1"><ContinueReading /><ReadingNudge /></div>
+	<div class="home-hold order-1">{@render continueHold()}{@render nudgeHold()}</div>
 </div>
 
 <!-- Discover Your Next Book — above the plan/sermon blocks -->
@@ -265,8 +272,19 @@
 		line-height: 1.1;
 		color: var(--accent);
 	}
-	.personal:not(:empty) {
+	.personal:not(:empty),
+	.home-hold {
 		padding-bottom: 3.5rem;
 		border-bottom: 1px solid var(--border);
+	}
+	/* The boot flag only names a returning reader when the strip will draw
+	   something, so the hold is the strip's whole box, rule and all. */
+	.home-hold {
+		display: none;
+	}
+	/* Gone in the same frame the strip draws (`.personal` no longer empty),
+	   not a frame later at `data-home-ready`, or that frame shows both. */
+	:global(html[data-home-for='reader']:not([data-home-ready])) .personal:empty + .home-hold {
+		display: block;
 	}
 </style>

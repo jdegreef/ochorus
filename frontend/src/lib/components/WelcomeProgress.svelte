@@ -41,7 +41,7 @@
 	const view = $derived.by(() => {
 		if (!ticks) return null;
 		const activity = readerActivity(getLang());
-		const checklist = welcomeSteps({ signedIn: !!auth.user, ...activity });
+		const checklist = welcomeSteps({ signedIn: !!auth.expectedUser, ...activity });
 		return { started: hasStarted(activity), ...checklist };
 	});
 	const complete = $derived(!!view && view.done === view.steps.length);

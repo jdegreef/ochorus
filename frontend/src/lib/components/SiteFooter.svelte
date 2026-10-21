@@ -75,8 +75,10 @@
 	);
 
 	// Footer "Before you go" cards: the invitation (signed out), else the
-	// signed-in reader's current book, else a way into the library.
-	const showInvite = $derived(auth.enabled && !auth.user && !onLogin);
+	// signed-in reader's current book, else a way into the library. The invite
+	// goes by `expectedUser` (drawing only): a member's stored session keeps it
+	// off the dashboard the home page draws before the session restores.
+	const showInvite = $derived(auth.enabled && !auth.expectedUser && !onLogin);
 	const path = $derived(deLocalizeHref($page.url.pathname));
 	// Home's hero always shows it, so home never even resolves it.
 	const wantResume = $derived(!!auth.user && path !== '/');
