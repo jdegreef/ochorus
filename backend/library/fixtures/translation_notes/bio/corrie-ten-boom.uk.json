@@ -1,0 +1,12 @@
+{
+ "kind": "bio",
+ "slug": "corrie-ten-boom",
+ "language": "uk",
+ "job_issue": 2939,
+ "pull_request": 6440,
+ "references": [],
+ "note": [
+  "The English bio quotes no scripture verbatim and carries no Book C:V citations (0 in en, 0 in uk); every quotation in it is Corrie's or Betsie's own words. The widow of Zarephath (1 Kings 17) is an allusion only, rendered with the Kulish names (вдова з Сарепти, Ілля).",
+  "Names and titles follow the shipped uk corpus (women-who-moved-heaven-2.uk): Коррі тен Бом, Бетсі, Равенсбрюк, Гарлем, <em>Схованка</em> for The Hiding Place; Tramp for the Lord is rendered «Мандрівниця Господня» (no shipped precedent)."
+ ]
+}
