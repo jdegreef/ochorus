@@ -1,6 +1,7 @@
 import { browser } from '$app/environment';
 import type { Language } from './library-public';
 import { LIVE_LOCALE_NAMES } from '$lib/live-locales.generated';
+import { nameOfLanguage } from './languageNames';
 import { getLocale, setLocale, locales } from '$lib/paraglide/runtime';
 
 // Set when the reader explicitly picks a language on this device, so a synced
@@ -61,15 +62,8 @@ export const localeName = (code: string): string =>
  * on a language pill but reads as untranslated mid-sentence. Falls back to the
  * autonym where the runtime has no name for it in that locale.
  */
-export function languageNameIn(code: string, uiLocale: string): string {
-	try {
-		const name = new Intl.DisplayNames([uiLocale], { type: 'language', fallback: 'none' }).of(code);
-		if (name && Intl.DisplayNames.supportedLocalesOf([uiLocale]).length) return name;
-	} catch {
-		// An unknown tag throws: the autonym below is still right.
-	}
-	return localeName(code);
-}
+export const languageNameIn = (code: string, uiLocale: string): string =>
+	nameOfLanguage(code, uiLocale) ?? localeName(code);
 
 export function getLang(): string {
 	return getLocale();

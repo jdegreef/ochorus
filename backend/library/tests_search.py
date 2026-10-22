@@ -1549,3 +1549,22 @@ class FallbackSnippetTests(SimpleTestCase):
     def test_short_text_is_returned_whole(self):
         snippet = search_module.fallback_snippet("Grace abounding", "zzz")
         self.assertEqual(snippet, "Grace abounding")
+
+    def test_the_space_right_after_the_match_is_a_boundary(self):
+        text = "a " * 50 + "prayer " + "x" * 100 + " tail"
+        snippet = search_module.fallback_snippet(text, "prayer", radius=40)
+        self.assertTrue(snippet.endswith("⟦prayer⟧…"), snippet)
+
+    def test_a_newline_is_a_word_boundary(self):
+        text = "x" * 30 + "\nalpha beta\nprayer\ngamma\n" + "y" * 30
+        snippet = search_module.fallback_snippet(text, "prayer", radius=15)
+        self.assertEqual(snippet, "…alpha beta\n⟦prayer⟧\ngamma…")
+
+    def test_no_dangling_punctuation_or_space_before_the_ellipsis(self):
+        fr = "Il faut prier toujours ; demain encore et encore, sans cesse."
+        self.assertEqual(
+            search_module.fallback_snippet(fr, "prier", radius=17),
+            "Il faut ⟦prier⟧ toujours…",
+        )
+        head = search_module.fallback_snippet("Grace, mercy, and peace from God.", "zzz", radius=7)
+        self.assertEqual(head, "Grace, mercy…")

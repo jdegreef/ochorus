@@ -82,12 +82,17 @@ HL_START = "⟦"
 HL_END = "⟧"
 
 
+_SPACE = re.compile(r"\s")
+
+
 def _to_word_end(text: str, end: int, floor: int) -> str:
-    """``text[:end]`` backed off to the last whole word, never below ``floor``."""
-    if end >= len(text) or text[end].isspace():
-        return text[:end].rstrip()
-    space = text.rfind(" ", floor, end)
-    return text[: space if space > floor else end].rstrip()
+    """``text[:end]`` backed off to the last whole word (never below ``floor``),
+    without a trailing ",;:" or space before the "…" that follows it."""
+    if end < len(text) and not text[end].isspace():
+        cut = max((m.start() for m in _SPACE.finditer(text, floor, end)), default=-1)
+        if cut >= floor and cut > 0:
+            end = cut
+    return text[:end].rstrip().rstrip(",;:").rstrip()
 
 
 def fallback_snippet(text: str, query: str, radius: int = 90) -> str:
@@ -108,15 +113,11 @@ def fallback_snippet(text: str, query: str, radius: int = 90) -> str:
     end = min(len(text), idx + len(query) + radius)
     # Cut on word boundaries: "…erywhere who desire" reads as a typo.
     if start > 0 and not text[start - 1].isspace():
-        space = text.find(" ", start, idx)
-        start = space + 1 if space != -1 else idx
-    if end < len(text):
-        end = len(_to_word_end(text, end, idx + len(query)))
+        space = _SPACE.search(text, start, idx)
+        start = space.end() if space else idx
     prefix = "…" if start > 0 else ""
     suffix = "…" if end < len(text) else ""
-    excerpt = text[start:end]
-    if suffix:
-        excerpt = excerpt.rstrip(",;:")
+    excerpt = _to_word_end(text, end, idx + len(query))[start:] if suffix else text[start:end]
     pattern = re.compile(re.escape(query), re.IGNORECASE)
     excerpt = pattern.sub(lambda m: f"{HL_START}{m.group(0)}{HL_END}", excerpt)
     return f"{prefix}{excerpt}{suffix}"

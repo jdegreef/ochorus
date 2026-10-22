@@ -85,6 +85,11 @@ describe('languageNameIn', () => {
 		expect(languageNameIn('en', 'en')).toBe('English');
 	});
 
+	it('calls Luganda by its own name, never ICU\'s "Ganda"', () => {
+		expect(languageNameIn('lg', 'en')).toBe('Luganda');
+		expect(languageNameIn('lg', 'fr')).toBe('luganda');
+	});
+
 	it('falls back to the autonym for a tag the runtime cannot name', () => {
 		expect(languageNameIn('en', 'not a tag')).toBe(localeName('en'));
 	});
