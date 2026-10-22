@@ -1500,6 +1500,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # pt
             ("<p>Nesta interessante narrati",
              '<blockquote><em>"Bem se me contou tudo quanto tens feito ... e como deixaste teu pai e tua mãe, e a terra onde nasceste, e vieste para um povo que dantes não conhecias. O Senhor galardoe o teu feito, e seja cheio o teu galardão da parte do Senhor Deus de Israel, sob cujas asas te vieste abrigar" (Rute ii. 11, 12).</em></blockquote>'),
+            # lg
+            ("<p>Mu lugero luno olunyuvu",
+             '<blockquote><em>"By’okoledde ... ne bwe waleka kitaawo ne nnyoko era n’abantu bo n’ojja mu nsi ey’abantu botomanyi, babintegezezza byonna. Mukama Katonda wa Isirayiri gwe weeyuna wansi w’ebiwaawaatiro bye, akusasule olw’ebyo by’okoze. Mukama Katonda wa Isirayiri, oyo gwe weewagamye wansi w’ebiwawaatiro bye, akuwe empeera ennene ddala." (Luusi 2:11-12).</em></blockquote>'),
         ],
     },
     "self-denial-versus-self-assertion": {
