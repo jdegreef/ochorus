@@ -1,0 +1,31 @@
+{
+ "kind": "bio",
+ "slug": "john-hyde",
+ "language": "lg",
+ "job_issue": 2954,
+ "pull_request": 6447,
+ "references": [
+  {
+   "reference": "Matthew 9:38",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa"
+  },
+  {
+   "reference": "Zechariah 2:8",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Revelation 12:10",
+   "status": "self_rendered",
+   "block_index": 16
+  }
+ ],
+ "note": [
+  "Matthew 9:38: the father's prayer 'that God would send out labourers into the harvest' uses OLCB's own words «aweereze abakozi mu nnimiro ye» verbatim.",
+  "Zechariah 2:8: OLCB reads «anaabakwatako anaaba akutte ku mmunye ya liiso lye» (his eye, plural object); Hyde hears God say 'Mine eye' of one man, so the line is re-personed to «Amukwatako, aba akutte ku mmunye ya liiso lyange» — self_rendered, as in the es/fr/pt editions.",
+  "Revelation 12:10: OLCB has «omuloopi eyaloopanga baganda baffe»; the heading «Omuloopi wa baganda baffe» and Hyde's prayer «mbadde muloopi wa baganda bange» adapt the phrase, so self_rendered.",
+  "Quote style mirrors each English file: the long bio and short bio are curly (“ ” ’), the Q&A straight, as its English is and as 47 of 50 shipped lg Q&A files are."
+ ]
+}
