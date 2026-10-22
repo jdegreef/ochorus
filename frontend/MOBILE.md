@@ -28,6 +28,13 @@ The app bundle is copied into two native projects, which are committed:
 - The app bundle keeps the website's paths (`/books/humility/`,
   `/es/books`), so a link to ochorus.com can open the same page in the app
   once Universal Links / App Links are set up.
+- `$lib/platform` today: `canShare` / `share` / `shareFile` (the OS share
+  sheet — every share action, quote and testimony cards included), `onBack`
+  (what Android's Back closes first), `openExternal` (the
+  system browser), `setStatusBar` (called by `$lib/theme` beside
+  `<meta name="theme-color">`) and `startAppShell` (once, from the root
+  layout). Their app side is `native.ts`, loaded by a dynamic import behind
+  `IS_APP`, so the website's JavaScript has none of it.
 - The API allows the app's origins (`capacitor://localhost` on iOS,
   `https://localhost` on Android) in `backend/config/settings.py`, whatever
   production's `CORS_ALLOWED_ORIGINS` says.
@@ -142,12 +149,51 @@ the Android debug build when `android/`, `ios/`, `resources/`, the Capacitor
 config or the npm lockfile change (and always on `main`). iOS builds need macOS
 and happen on the Mac for now.
 
+## The native shell
+
+What `startAppShell` and the plugins (`@capacitor/app`, `browser`,
+`filesystem`, `share`, `splash-screen`, `status-bar` — exact-pinned; plugin
+versions are their own, the core packages stay on one version) do:
+
+- **Safe areas.** Capacitor 8 runs the web view edge to edge, so the status
+  bar sits over the page. `startAppShell` sets `<html data-app>`, and app.css's
+  `:root[data-app]` block keeps the page clear of it: the nav takes the top
+  inset (`--safe-top`: Android's injected `--safe-area-inset-top`, else
+  `env(safe-area-inset-top)`) as top padding, so `--appnav-h` already includes
+  it; a strip in the nav's colour (the page ground on the reading routes) stays
+  over the inset as the page scrolls under it, below any sheet's scrim; dialogs
+  and the search palette pad their own tops; and what pins to the very top (the reader's bars, the progress
+  line, side drawers) pins below it. The sides and the home bar were already
+  handled by the website's own `env(safe-area-inset-*)` rules (`viewport-fit=cover`
+  is in `app.html` for both builds).
+- **Status bar** icons follow the theme (light text on lamplight/dark, dark
+  on light/sepia); on an Android that still draws an opaque bar it takes the
+  nav's colour too.
+- **Android Back** first closes the topmost open overlay, else goes back in
+  history, and leaves the app from the home page or when there is nothing to
+  go back to. Overlays register a close callback with `onBack` while open
+  (`$lib/platform/back.ts`): `focusTrap` (sheets, dialogs, the palette,
+  scripture/define popovers) and `dismissable` (menus, the hamburger nav,
+  the Aa panel) do it for every user, and the selection bar does its own. A
+  new kind of overlay built on neither should call `onBack` too.
+- **Links.** A tap on another origin opens the system's in-app browser
+  (Safari View Controller / Chrome Custom Tab). A link to a file the website
+  serves (`feed.xml`, sitemaps, `robots.txt`, a PDF) or any `download` link —
+  PDF and EPUB — opens the same path on `ochorus.com` there, which views or
+  saves it; the app's web view can do neither. An absolute ochorus.com link to
+  a reader page stays in the app, and so does an app page linked with
+  `target="_blank"` (a `data-sveltekit-reload` link gets a full load).
+  `mailto:` / `tel:` are left to the system.
+  The rule is `$lib/platform/links.ts` (`linkTarget`), unit-tested.
+- **Share.** Every share action opens the native share sheet. Image cards are
+  written to the app's cache (`@capacitor/filesystem`) and shared as files;
+  if the image cannot go, the card's words go through the sheet instead.
+- **Splash** lifts on the reader's first frame; `capacitor.config.ts` keeps a
+  3-second auto-hide as the safety net.
+
 ## What the app does not do yet (the roadmap)
 
-1. **Native shell polish:** safe areas around the notch and home bar, status
-   bar colour, Android's back button, outside links (and the website-only
-   files: the RSS feed, sitemaps) in the system browser, the
-   native share sheet, PDF/EPUB downloads through the system.
+1. ~~**Native shell polish**~~ — done; see **The native shell** above.
 2. **Offline books on the phone's own storage.** The "Download for offline"
    option is hidden in the app (`offlineBooks.supported`) until then.
 3. **Sign-in:** the website's flows return to `window.location.origin`, which

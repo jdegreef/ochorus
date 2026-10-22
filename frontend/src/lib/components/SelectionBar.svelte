@@ -5,6 +5,7 @@
 	import { readerProse } from '$lib/listenText';
 	import { HIGHLIGHT_COLORS } from '$lib/reading-schema';
 	import { shareQuoteCard } from '$lib/quoteCard';
+	import { onBack, share as shareSheet } from '$lib/platform';
 	import { clampPopoverLeft, HEADER_OFFSET } from '$lib/reading';
 	import type { Segment } from '$lib/marks.svelte';
 	import { portal } from '$lib/actions/portal';
@@ -216,15 +217,9 @@
 
 	async function share() {
 		const data = { title: cite.book, text: `“${selectedText}” — ${cite.author}`, url: cite.url };
-		if (navigator.share) {
-			try {
-				await navigator.share(data);
-			} catch {
-				/* user dismissed */
-			}
-		} else {
-			await copy();
-		}
+		// The OS sheet (the app's native one, or the browser's); a dismissed
+		// sheet does nothing, no sheet at all copies instead.
+		if ((await shareSheet(data)) === 'unavailable') await copy();
 	}
 
 	async function quoteCard() {
@@ -285,6 +280,15 @@
 	const activeColor = $derived(
 		highlightColor && segments.length > 0 ? highlightColor(segments) : null
 	);
+
+	// In the phone app, Android's Back puts the selection down too, like Escape.
+	$effect(() => {
+		if (!visible) return;
+		return onBack(() => {
+			window.getSelection()?.removeAllRanges();
+			visible = false;
+		});
+	});
 </script>
 
 <svelte:document

@@ -2,7 +2,7 @@
 	import '../app.css';
 	import { onMount, untrack } from 'svelte';
 	import { page } from '$app/stores';
-	import { afterNavigate, beforeNavigate } from '$app/navigation';
+	import { afterNavigate, beforeNavigate, goto } from '$app/navigation';
 	import { midBook } from '$lib/midBook.svelte';
 	import { crossesLocale } from '$lib/localeNavigation';
 	import { theme } from '$lib/theme.svelte';
@@ -13,7 +13,8 @@
 	import { palette } from '$lib/palette.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { browser } from '$app/environment';
-	import { API_BASE_URL } from '$lib/config';
+	import { API_BASE_URL, SITE_URL } from '$lib/config';
+	import { IS_APP, startAppShell } from '$lib/platform';
 	import { lang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { auth } from '$lib/auth.svelte';
@@ -61,6 +62,17 @@
 
 	let { children } = $props();
 	const t = i18n.t;
+
+	// The phone app's native shell (safe areas, outside links, Android's Back,
+	// the splash) — before the first render, so <html data-app> is on when the
+	// page first paints. Compiled out of the website (IS_APP is a constant).
+	if (IS_APP && browser) {
+		startAppShell({
+			navigate: (path) => goto(path),
+			isRoot: () => $page.route.id === '/',
+			siteUrl: SITE_URL
+		});
+	}
 
 	// The rarely-used global overlays load on first use, not with every page
 	// ($lib/lazyComponent): the triggers stay here, the code comes when one fires.
@@ -224,6 +236,11 @@
 
 	/** Reading surfaces pin their OWN bar to the top; see .appnav-static. */
 	const inReader = $derived(isReaderRoute($page.route.id));
+	// The app's status-bar strip matches what sits under it (app.css,
+	// `data-app-top`): the pinned nav, the reader's ground, or no nav at all.
+	$effect(() => {
+		if (IS_APP) document.documentElement.dataset.appTop = readerUi.focus ? 'none' : inReader ? 'static' : 'nav';
+	});
 	// The phone tab bar (TabBar; phones only, by its CSS). Not on the reading
 	// surfaces, whose own bottom bar holds that edge; not in focus mode; not
 	// while the Listen bar holds it. Where it shows (TabBar publishes

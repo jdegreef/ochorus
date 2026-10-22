@@ -11,6 +11,7 @@
 import markSvg from '$lib/brand/ochorus-mark.svg?raw';
 
 import { scriptOf } from '$lib/coverStyles';
+import { IS_APP, share, shareFile } from '$lib/platform';
 
 export interface QuoteCardOptions {
 	quote: string;
@@ -293,33 +294,43 @@ export async function renderQuoteCard(opts: QuoteCardOptions): Promise<Blob> {
 	});
 }
 
+/** What became of a card: shared, saved as a download (website), closed by
+ *  the reader, or (app only) not handed over at all. */
+export type CardShareResult = 'shared' | 'downloaded' | 'dismissed' | 'unavailable';
+
 /**
  * Produce the card and hand it off: the native share sheet with the image file
  * where supported (mobile), otherwise a PNG download. Returns 'shared' |
  * 'downloaded' so the caller can reflect what happened.
  */
-export async function shareQuoteCard(opts: QuoteCardOptions): Promise<'shared' | 'downloaded'> {
+export async function shareQuoteCard(opts: QuoteCardOptions): Promise<CardShareResult> {
 	const blob = await renderQuoteCard(opts);
 	return shareCardImage(blob, 'ochorus-quote.png', `"${trimQuote(opts.quote)}" — ${opts.author}`);
 }
 
 /**
  * Hand a rendered card off: the native share sheet with the image file where
- * supported (mobile), otherwise a PNG download. Returns 'shared' |
- * 'downloaded' so the caller can reflect what happened.
+ * supported (mobile, and always in the app), otherwise a PNG download. Returns
+ * 'shared' | 'downloaded' so the caller can reflect what happened. The app's
+ * web view cannot download, so there it is the sheet or nothing: 'dismissed'
+ * when the reader closed it, and when the image could not be handed over, the
+ * card's words through the sheet instead — 'unavailable' only if even that
+ * fails.
  */
-export async function shareCardImage(blob: Blob, filename: string, text: string): Promise<'shared' | 'downloaded'> {
-	const file = new File([blob], filename, { type: 'image/png' });
-	const nav = navigator as Navigator & {
-		canShare?: (data?: ShareData) => boolean;
-	};
-	if (nav.canShare && nav.canShare({ files: [file] })) {
-		try {
-			await navigator.share({ files: [file], text });
-			return 'shared';
-		} catch {
-			/* user dismissed, or share failed — fall through to download */
-		}
+export async function shareCardImage(
+	blob: Blob,
+	filename: string,
+	text: string
+): Promise<CardShareResult> {
+	// The app's native sheet, or the browser's where it takes files. On the
+	// website, dismissed or failed, it falls through to a download, as it
+	// always has.
+	const shared = await shareFile(blob, filename, text);
+	if (shared === 'shared') return 'shared';
+	if (IS_APP) {
+		if (shared === 'aborted') return 'dismissed';
+		const words = await share({ text });
+		return words === 'shared' ? 'shared' : words === 'aborted' ? 'dismissed' : 'unavailable';
 	}
 	const url = URL.createObjectURL(blob);
 	const a = document.createElement('a');

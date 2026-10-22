@@ -1,4 +1,4 @@
-import { isCoarsePointer } from '$lib/reading';
+import { canShare, share } from '$lib/platform';
 
 /**
  * Sharing a page, in one place — ShareButton and the readers' "⋯" menus both
@@ -31,27 +31,13 @@ export function messageShareLinks(subject: string, message: string, emailLabel: 
 }
 
 /** Whether `nativeShare` will try the OS sheet here (decides the menu's
- *  first row before any click). */
-export function hasNativeShare(): boolean {
-	return (
-		typeof navigator !== 'undefined' &&
-		typeof navigator.share === 'function' &&
-		!('userAgentData' in navigator && !isCoarsePointer())
-	);
-}
+ *  first row before any click): always in the app, and in a browser whose
+ *  sheet works ($lib/platform `canShare`, which leaves out desktop Chromium). */
+export const hasNativeShare = canShare;
 
 /** Try the OS share sheet. `aborted` = the reader dismissed it (do nothing);
  *  `unavailable` = no sheet, or it failed for any other reason (show the
  *  fallback targets). */
 export async function nativeShare(title: string, url: string): Promise<'shared' | 'aborted' | 'unavailable'> {
-	// Not on desktop Chromium (the only engine with `userAgentData`): Chrome
-	// and Edge there hand off to a system dialog that often shows nothing —
-	// a click that "does nothing". Phones and Safari keep the OS sheet.
-	if (!hasNativeShare()) return 'unavailable';
-	try {
-		await navigator.share({ title, url });
-		return 'shared';
-	} catch (err) {
-		return (err as Error)?.name === 'AbortError' ? 'aborted' : 'unavailable';
-	}
+	return share({ title, url });
 }

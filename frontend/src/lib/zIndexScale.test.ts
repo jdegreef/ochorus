@@ -58,6 +58,9 @@ describe('stacking order', () => {
 		expect(z('popover')).toBeLessThan(z('chrome'));
 		expect(z('chrome')).toBeLessThan(z('floating'));
 		expect(z('floating')).toBeLessThan(z('sheet'));
+		// The app's status-bar strip covers the chrome, but a scrim dims it.
+		expect(z('floating')).toBeLessThan(z('statusbar'));
+		expect(z('statusbar')).toBeLessThan(z('backdrop'));
 		expect(z('sheet')).toBeLessThan(z('modal'));
 		expect(z('modal')).toBeLessThan(z('toast'));
 		expect(z('toast')).toBeLessThan(z('skip'));
