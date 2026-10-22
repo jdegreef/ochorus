@@ -2,20 +2,44 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
-import { dirBytes, fallbackWoffs, listFiles, prunable, prune } from '../../scripts/app-bundle.mjs';
+import { dirBytes, fallbackWoffs, listFiles, prunable, prune, resolveCssUrl } from '../../scripts/app-bundle.mjs';
+
+describe('resolveCssUrl', () => {
+	it('resolves root-relative and sheet-relative urls to build paths', () => {
+		expect(resolveCssUrl('/_app/immutable/assets/a.woff', '_app/immutable/assets/0.css')).toBe(
+			'_app/immutable/assets/a.woff'
+		);
+		expect(resolveCssUrl('./a.woff?v=1', '_app/immutable/assets/0.css')).toBe('_app/immutable/assets/a.woff');
+		expect(resolveCssUrl('../fonts/a.woff', '_app/immutable/assets/0.css')).toBe('_app/immutable/fonts/a.woff');
+	});
+
+	it('returns null for a url outside the build', () => {
+		expect(resolveCssUrl('https://fonts.example/a.woff', 'x.css')).toBeNull();
+		expect(resolveCssUrl('//fonts.example/a.woff', 'x.css')).toBeNull();
+		expect(resolveCssUrl('data:font/woff;base64,AA', 'x.css')).toBeNull();
+		expect(resolveCssUrl('../a.woff', 'x.css')).toBeNull();
+	});
+});
 
 describe('fallbackWoffs', () => {
+	const sheet = (css: string, file = '_app/immutable/assets/0.css') => ({ file, css });
+
 	it('drops a .woff only where a .woff2 sits beside it', () => {
 		const css =
 			'@font-face{font-family:A;src:url(/_app/immutable/assets/a.X1.woff2)format("woff2"),url(/_app/immutable/assets/a.X2.woff)format("woff")}' +
 			'@font-face{font-family:B;src:url("/_app/immutable/assets/b.Y.woff") format("woff")}';
-		expect([...fallbackWoffs([css])]).toEqual(['a.X2.woff']);
+		expect([...fallbackWoffs([sheet(css)])]).toEqual(['_app/immutable/assets/a.X2.woff']);
 	});
 
 	it('keeps a .woff that any rule needs on its own', () => {
 		const withTwin = '@font-face{src:url(/a/c.Z.woff2)format("woff2"),url(/a/c.Z.woff)format("woff")}';
 		const alone = '@font-face{src:url(/a/c.Z.woff)format("woff")}';
-		expect(fallbackWoffs([withTwin, alone]).size).toBe(0);
+		expect(fallbackWoffs([sheet(withTwin), sheet(alone)]).size).toBe(0);
+	});
+
+	it('matches by path, so a same-named file elsewhere is not a fallback', () => {
+		const css = '@font-face{src:url(./c.woff2)format("woff2"),url(./c.woff)format("woff")}';
+		expect([...fallbackWoffs([sheet(css, 'fonts/a.css')])]).toEqual(['fonts/c.woff']);
 	});
 });
 
@@ -38,6 +62,8 @@ describe('prune', () => {
 		put('marks/leaf.svg');
 		put('_app/immutable/assets/a.X.woff2');
 		put('_app/immutable/assets/a.X.woff', 30);
+		// Same file name, different folder, named by no stylesheet: kept.
+		put('fonts/a.X.woff', 7);
 		writeFileSync(
 			join(out, '_app/immutable/assets/0.css'),
 			'@font-face{src:url(/_app/immutable/assets/a.X.woff2)format("woff2"),url(/_app/immutable/assets/a.X.woff)format("woff")}'
@@ -69,6 +95,7 @@ describe('prune', () => {
 			'_app/immutable/assets/0.css',
 			'_app/immutable/assets/a.X.woff2',
 			'covers/art/credits.json',
+			'fonts/a.X.woff',
 			'index.html',
 			'marks/leaf.svg'
 		]);

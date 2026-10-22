@@ -678,9 +678,10 @@
 			class="group mb-1 inline-flex items-center gap-2.5 hover:no-underline"
 		>
 			{#if sermon.author_photo}
+				{@const src = assetUrl(sermon.author_photo)}
 				<img
-					src={assetUrl(sermon.author_photo)}
-					use:hydrateSrc={{ src: assetUrl(sermon.author_photo) }}
+					{src}
+					use:hydrateSrc={{ src }}
 					alt="{t('a11y.portraitOf')} {sermon.author_name}"
 					class="h-9 w-9 shrink-0 rounded-full border border-border object-cover"
 					style="filter: grayscale(1); object-position: {portraitPosition(sermon.author_slug)}"

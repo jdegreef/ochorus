@@ -55,10 +55,11 @@
 <section class="author-hero" style:--era={hue}>
 	<figure class="author-hero-frame">
 		{#if photoUrl}
+			{@const src = assetUrl(photoUrl)}
 			<span class="author-hero-print duotone">
 				<img
-					src={assetUrl(photoUrl)}
-					use:hydrateSrc={{ src: assetUrl(photoUrl) }}
+					{src}
+					use:hydrateSrc={{ src }}
 					alt=""
 					loading="eager"
 					fetchpriority="high"

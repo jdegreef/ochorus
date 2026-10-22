@@ -94,7 +94,8 @@
 		{:else}
 			<span class="shelf-card-badge emblem-chip">
 				{#if portrait}
-					<img src={assetUrl(portrait)} use:hydrateSrc={{ src: assetUrl(portrait) }} alt="" loading="lazy" />
+					{@const src = assetUrl(portrait)}
+					<img {src} use:hydrateSrc={{ src }} alt="" loading="lazy" />
 				{:else if emblem}
 					<Emblem name={emblem} />
 				{/if}

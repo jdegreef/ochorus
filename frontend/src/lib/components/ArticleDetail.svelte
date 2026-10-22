@@ -422,10 +422,11 @@
 							<li>
 								<a href={r.url} class="rel-link">
 									{#if r.type === 'book' && r.cover_url}
+										{@const src = assetUrl(r.cover_url)}
 										<img
 											class="rel-cover"
-											src={assetUrl(r.cover_url)}
-											use:hydrateSrc={{ src: assetUrl(r.cover_url) }}
+											{src}
+											use:hydrateSrc={{ src }}
 											alt=""
 											loading="lazy"
 											style:background={r.cover_color || undefined}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetUrl } from '$lib/assetUrl';
 	/**
 	 * "Insert from the library": one search across books, sermons, plans,
 	 * articles, authors, topics and sourced quotes. Each result arrives with the
@@ -127,7 +128,8 @@
 				{#each shown as r (r.key)}
 					<li class="flex items-start gap-3 rounded-md border border-border bg-surface p-2">
 						{#if r.image}
-							<img src={r.image} alt="" use:hydrateSrc={{ src: r.image }} class="w-10 shrink-0 object-cover {r.kind === 'author' ? 'h-10 rounded-full' : 'h-14 rounded-sm'}" />
+							{@const src = assetUrl(r.image)}
+							<img {src} alt="" use:hydrateSrc={{ src }} class="w-10 shrink-0 object-cover {r.kind === 'author' ? 'h-10 rounded-full' : 'h-14 rounded-sm'}" />
 						{/if}
 						<div class="min-w-0 flex-1">
 							<p class="text-micro font-semibold uppercase tracking-wide text-muted">{KIND_LABELS[r.kind].replace(/s$/, '')}</p>

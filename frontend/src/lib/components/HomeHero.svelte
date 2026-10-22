@@ -154,12 +154,13 @@
 	     sharp and framed beside the greeting, where it is seen at its own size.
 	     A pale ground is not washed at all: the band is the tint (.pale). -->
 	{#if !pale}
+		{@const src = assetUrl(art)}
 		<div class="home-hero-drift">
 			<img
-				src={assetUrl(art)}
+				{src}
 				alt=""
 				class="home-hero-wash"
-				use:hydrateSrc={{ src: assetUrl(art) }}
+				use:hydrateSrc={{ src }}
 				onerror={() => (broken = bookArt)}
 			/>
 		</div>
@@ -220,8 +221,9 @@
 				<BookCover book={current.book} rounded="rounded-sm" />
 			</a>
 		{:else}
+			{@const plate = assetUrl(seasonArt)}
 			<span class="home-hero-frame">
-				<img src={assetUrl(seasonArt)} alt="" class="home-hero-plate" use:hydrateSrc={{ src: assetUrl(seasonArt) }} />
+				<img src={plate} alt="" class="home-hero-plate" use:hydrateSrc={{ src: plate }} />
 				{#if label}
 					<span class="home-hero-label" title={label.credit}
 						>{label.artist}<br /><i>{label.title}</i>{label.year ? `, ${label.year}` : ''}</span

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetUrl } from '$lib/assetUrl';
 	/**
 	 * The campaign designer's block list for one language: add, reorder,
 	 * duplicate, edit and remove blocks. Blocks that name something in the
@@ -248,8 +249,9 @@
 {#snippet imageField(i: number, field: 'url' | 'image', value: string, label: string)}
 	<div class="flex flex-wrap items-center gap-2">
 		{#if value}
+			{@const src = assetUrl(value)}
 			<!-- An admin-chosen https URL or site path, shown as a thumbnail only. -->
-			<img src={value} alt="" use:hydrateSrc={{ src: value }} class="h-14 w-20 rounded border border-border object-cover" />
+			<img {src} alt="" use:hydrateSrc={{ src }} class="h-14 w-20 rounded border border-border object-cover" />
 		{/if}
 		<input class="min-w-0 flex-1 rounded-md border border-border bg-surface p-2 text-small" aria-label={label} value={value} oninput={(e) => (blocks[i] = { ...blocks[i], [field]: (e.currentTarget as HTMLInputElement).value } as EmailBlock)} {disabled} placeholder="https://… or a site path like /covers/humility-2.png" />
 		{#if !disabled}

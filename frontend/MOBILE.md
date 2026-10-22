@@ -54,12 +54,24 @@ heavy stays on the website:
   the website `IS_APP` is false and each returns its input. Use it wherever an
   `<img>`'s `src`/`srcset` is built — not inside the pure helpers (`coverArt`,
   `portraits`) that also feed scripts, share cards and the offline cache,
-  which want the site path.
-- The app's CSP adds exactly that origin to `img-src` (`svelte.config.js`
-  `withAppImages`); the website's stays `self`.
+  which want the site path. `assetUrl.test.ts` fails the build on a
+  data-driven `<img>` that skips it.
+- The origin is read once, at build time, by `appAssetOrigin()`
+  (`app-target.js`): vite.config.ts bakes it into the bundle
+  (`APP_ASSET_ORIGIN` in `$lib/platform`) and svelte.config.js adds exactly
+  that origin to the app's CSP `img-src`, so the two cannot disagree. An app
+  build without a valid `PUBLIC_SITE_URL` fails. The website's `img-src` stays
+  `self`.
 - `bundle-budget.json`'s `appBundle` caps the whole `build-app/` folder, and
   the app build fails above it. A new heavy folder under `static/` belongs in
   `REMOTE_DIRS`, not in a bigger budget.
+
+**Never rename or delete a public asset path that a shipped app might still
+ask for.** An installed app keeps asking for the paths it was built with — the
+season paintings (`heroArt.ts`), the home quote's paintings, the About photos,
+the `-320`/`-640` cover and `-96`/`-224` portrait variant names — for as long
+as people keep that version, which can be years. Add the new file and keep the
+old one.
 
 So covers and portraits need the network in the app (the web view's HTTP
 cache keeps the ones already seen). Offline books on the phone's storage

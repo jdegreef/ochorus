@@ -2,8 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 // This file runs assetUrl as the native app's bundle sees it. The rest of the
 // suite runs the website's (vitest.config.ts pins `__APP__` to false).
-vi.mock('./platform', () => ({ IS_APP: true }));
-vi.mock('./config', () => ({ SITE_URL: 'https://ochorus.com' }));
+vi.mock('./platform', () => ({ IS_APP: true, APP_ASSET_ORIGIN: 'https://ochorus.com' }));
 
 const { assetHtml, assetSrcset, assetUrl } = await import('./assetUrl');
 

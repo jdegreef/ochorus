@@ -17,7 +17,7 @@
  */
 
 import { existsSync, readdirSync, readFileSync, rmSync, statSync } from 'node:fs';
-import { basename, join, relative, sep } from 'node:path';
+import { join, posix, relative, sep } from 'node:path';
 
 /**
  * Every file under `dir`, as paths relative to it with forward slashes.
@@ -44,20 +44,39 @@ export function dirBytes(dir) {
 }
 
 /**
- * The `.woff` file names (basename) that are only a fallback: named by an
- * `@font-face` that also names a `.woff2`, and by no `@font-face` without one.
- * @param {string[]} cssTexts
+ * Where a CSS `url()` points, as a path relative to the build root: a
+ * root-relative URL from the root, anything else from the stylesheet's own
+ * folder. Null for one that leaves the build (`https:`, `data:`, `//host`).
+ * @param {string} url
+ * @param {string} cssFile the stylesheet, relative to the build root
+ * @returns {string | null}
+ */
+export function resolveCssUrl(url, cssFile) {
+	const path = url.replace(/[?#].*$/, '');
+	if (/^[a-z][a-z0-9+.-]*:/i.test(path) || path.startsWith('//')) return null;
+	const resolved = path.startsWith('/')
+		? posix.normalize(path.slice(1))
+		: posix.join(posix.dirname(cssFile), path);
+	return resolved.startsWith('../') ? null : resolved;
+}
+
+/**
+ * The `.woff` files (paths relative to the build root) that are only a
+ * fallback: named by an `@font-face` that also names a `.woff2`, and by no
+ * `@font-face` without one. Matched by resolved path, never by file name, so
+ * a same-named file elsewhere in the build is never caught up in it.
+ * @param {{ file: string, css: string }[]} sheets each stylesheet, relative to the build root
  * @returns {Set<string>}
  */
-export function fallbackWoffs(cssTexts) {
+export function fallbackWoffs(sheets) {
 	const fallback = new Set();
 	const needed = new Set();
-	for (const css of cssTexts) {
+	for (const { file, css } of sheets) {
 		for (const [block] of css.matchAll(/@font-face\s*\{[^}]*\}/g)) {
-			const woffs = [...block.matchAll(/url\(\s*["']?([^"')]+\.woff)["']?\s*\)/g)].map((m) =>
-				basename(m[1])
-			);
-			const hasWoff2 = /\.woff2["')\s]/.test(block);
+			const woffs = [...block.matchAll(/url\(\s*["']?([^"')]+\.woff(?:[?#][^"')]*)?)["']?\s*\)/g)]
+				.map((m) => resolveCssUrl(m[1], file))
+				.filter((p) => p !== null);
+			const hasWoff2 = /\.woff2[?#"')\s]/.test(block);
 			for (const w of woffs) (hasWoff2 ? fallback : needed).add(w);
 		}
 	}
@@ -75,9 +94,11 @@ export function prunable(out, { remoteDirs, keepLocal }) {
 	const files = listFiles(out);
 	const keep = new Set(keepLocal);
 	const remote = files.filter((f) => remoteDirs.includes(f.split('/')[0]) && !keep.has(f));
-	const css = files.filter((f) => f.endsWith('.css')).map((f) => readFileSync(join(out, f), 'utf8'));
-	const woffs = fallbackWoffs(css);
-	const fonts = files.filter((f) => f.endsWith('.woff') && woffs.has(basename(f)));
+	const sheets = files
+		.filter((f) => f.endsWith('.css'))
+		.map((file) => ({ file, css: readFileSync(join(out, file), 'utf8') }));
+	const woffs = fallbackWoffs(sheets);
+	const fonts = files.filter((f) => woffs.has(f));
 	const worker = files.filter((f) => f === 'service-worker.js');
 	return [...remote, ...fonts, ...worker];
 }

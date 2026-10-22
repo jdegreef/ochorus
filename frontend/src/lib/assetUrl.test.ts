@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { readdirSync } from 'node:fs';
-import { join } from 'node:path';
+import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { join, relative } from 'node:path';
 import { assetHtml, assetSrcset, assetUrl, remoteAsset, remoteHtml, remoteSrcset } from './assetUrl';
 import { KEEP_LOCAL, REMOTE_DIRS } from '../../app-assets.js';
 
@@ -18,10 +18,6 @@ describe('remoteAsset', () => {
 			'https://ochorus.com/illustrations/pilgrims-progress/1.jpg'
 		);
 		expect(remoteAsset('/pdfs/humility.pdf', SITE)).toBe('https://ochorus.com/pdfs/humility.pdf');
-	});
-
-	it('does not double a trailing slash on the origin', () => {
-		expect(remoteAsset('/covers/x.png', 'https://ochorus.com/')).toBe('https://ochorus.com/covers/x.png');
 	});
 
 	it('leaves what the bundle keeps alone', () => {
@@ -97,5 +93,68 @@ describe('app-assets.js', () => {
 
 	it('keeps only files under a remote folder', () => {
 		for (const file of KEEP_LOCAL) expect(REMOTE_DIRS).toContain(file.split('/')[0]);
+	});
+});
+
+/**
+ * Forgetting `assetUrl` is invisible on the website — the path works there —
+ * and a broken image in the app, which bundles none of `REMOTE_DIRS`. So, like
+ * hydrateSrc.test.ts, a source-text check: every `<img>` whose `src`/`srcset`
+ * comes from data must build it with `assetUrl`/`assetSrcset`, either in the
+ * attribute itself or where the variable it names is defined (`{@const src =
+ * assetUrl(x)}`, `const source = $derived({ src: assetUrl(…) })`). An
+ * interpolated literal is fine unless it starts in a remote folder.
+ */
+describe('every data-driven <img> goes through assetUrl', () => {
+	const SRC = join(__dirname, '..');
+	/** `file:variable` pairs whose value is never a site path. */
+	const EXEMPT = new Set([
+		// A blob: URL of the card drawn in the browser.
+		'lib/components/notebook/TestimonyDialog.svelte:preview',
+		// Set by openLightbox() from a src that already went through assetUrl.
+		'routes/about/+page.svelte:lightbox'
+	]);
+	const svelteFiles = (dir: string, out: string[] = []): string[] => {
+		for (const name of readdirSync(dir)) {
+			const path = join(dir, name);
+			if (statSync(path).isDirectory()) {
+				if (name !== 'paraglide') svelteFiles(path, out);
+			} else if (name.endsWith('.svelte')) out.push(path);
+		}
+		return out;
+	};
+	const REMOTE_LITERAL = new RegExp(`^/(?:${REMOTE_DIRS.join('|')})/`);
+	const WRAPPED = /\bassetUrl\(|\bassetSrcset\(/;
+
+	/** Is the variable `name` defined (const/let/@const) by a wrapped expression? */
+	const definedWrapped = (text: string, name: string) =>
+		[...text.matchAll(new RegExp(`(?:@const|const|let)\\s+${name}\\s*=`, 'g'))].some((m) =>
+			WRAPPED.test(text.slice(m.index, m.index + 400).split('\n').slice(0, 4).join('\n'))
+		);
+
+	it('builds its src and srcset with assetUrl / assetSrcset', () => {
+		const missing: string[] = [];
+		for (const path of svelteFiles(SRC)) {
+			const file = relative(SRC, path);
+			const text = readFileSync(path, 'utf8');
+			for (const m of text.matchAll(/<img\s[\s\S]*?\/>/g)) {
+				const tag = m[0];
+				const line = text.slice(0, m.index).split('\n').length;
+				const values: string[] = [];
+				for (const a of tag.matchAll(/\s(?:src|srcset)=\{([^}]*)\}/g)) values.push(a[1].trim());
+				for (const a of tag.matchAll(/\s\{(src|srcset)\}/g)) values.push(a[1]);
+				for (const a of tag.matchAll(/\s(?:src|srcset)="([^"]*\{[^"]*)"/g)) {
+					if (REMOTE_LITERAL.test(a[1])) missing.push(`${file}:${line} ${a[1]}`);
+				}
+				for (const value of values) {
+					if (WRAPPED.test(value)) continue;
+					// `source.src`, `hero.srcset`, `src`: judge the variable's definition.
+					const root = /^([A-Za-z_$][\w$]*)(?:\.[\w$]+)*$/.exec(value)?.[1];
+					if (root && (EXEMPT.has(`${file}:${root}`) || definedWrapped(text, root))) continue;
+					missing.push(`${file}:${line} ${value}`);
+				}
+			}
+		}
+		expect(missing).toEqual([]);
 	});
 });

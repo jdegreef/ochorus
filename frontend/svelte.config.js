@@ -1,10 +1,8 @@
 import adapter from '@sveltejs/adapter-static';
 
 import { readFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
-import { loadEnv } from 'vite';
 
-import { APP } from './app-target.js';
+import { APP, appAssetOrigin } from './app-target.js';
 import { cspDirectives } from './csp.config.js';
 
 /** The origin of a URL-shaped build env var, or '' when unset/unparseable. */
@@ -48,15 +46,14 @@ function directivesForThisBuild() {
 
 /**
  * The app bundles no covers or portraits: `$lib/assetUrl` points them at the
- * website (app-env's PUBLIC_SITE_URL), which is not the app's own origin
- * (`capacitor://localhost` / `https://localhost`), so img-src must name it.
- * That one origin only — never a blanket `https:` (see csp.config.js). The
- * website needs nothing: there those images are same-origin (`self`).
+ * website (`appAssetOrigin`, the same reading vite.config.ts bakes into the
+ * bundle), which is not the app's own origin (`capacitor://localhost` /
+ * `https://localhost`), so img-src must name it. That one origin only — never
+ * a blanket `https:` (see csp.config.js). The website needs nothing: there
+ * those images are same-origin (`self`).
  */
 function withAppImages(directives) {
-	const site = originOf(loadEnv('production', fileURLToPath(new URL('./app-env', import.meta.url)), 'PUBLIC_').PUBLIC_SITE_URL);
-	if (!site) throw new Error('app build: app-env/.env must set PUBLIC_SITE_URL (images load from it)');
-	return { ...directives, 'img-src': [...directives['img-src'], site] };
+	return { ...directives, 'img-src': [...directives['img-src'], appAssetOrigin()] };
 }
 
 /** Non-English UI locales, read from the inlang project (the source of truth). */

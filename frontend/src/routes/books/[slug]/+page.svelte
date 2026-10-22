@@ -527,14 +527,15 @@
      Outside the column, so the colour runs edge to edge. -->
 <div class="book-band" class:washed={!!wash}>
 	{#if wash}
+		{@const src = assetUrl(wash)}
 		<div class="book-band-art" aria-hidden="true">
 			<img
-				src={assetUrl(wash)}
+				{src}
 				alt=""
 				class="book-band-wash"
 				fetchpriority="high"
 				decoding="async"
-				use:hydrateSrc={{ src: assetUrl(wash) }}
+				use:hydrateSrc={{ src }}
 				onerror={() => (washBroken = wash)}
 			/>
 		</div>

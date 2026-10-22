@@ -89,9 +89,10 @@
 	<header class="mb-6">
 		<div class="mb-1 flex items-center gap-4">
 			{#if page.author.photo_url}
+				{@const src = assetUrl(page.author.photo_url)}
 				<img
-					src={assetUrl(page.author.photo_url)}
-					use:hydrateSrc={{ src: assetUrl(page.author.photo_url) }}
+					{src}
+					use:hydrateSrc={{ src }}
 					alt="Portrait of {page.author.name}"
 					loading="lazy"
 					width="112"

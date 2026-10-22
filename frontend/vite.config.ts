@@ -4,7 +4,7 @@ import { paraglideVitePlugin } from '@inlang/paraglide-js';
 import { sveltekit } from '@sveltejs/kit/vite';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig, type Plugin } from 'vite';
-import { APP } from './app-target.js';
+import { APP, appAssetOrigin } from './app-target.js';
 
 /**
  * Force absolute `/_app/immutable/…` URLs in client JS chunks.
@@ -115,6 +115,14 @@ export default defineConfig(({ isSsrBuild }) => ({
 		 * `IS_APP` in $lib/platform, never directly. A build-time constant so the
 		 * web bundle drops the app-only branches entirely.
 		 */
-		__APP__: JSON.stringify(APP)
+		__APP__: JSON.stringify(APP),
+		/**
+		 * The website origin the app loads its unbundled images from (read as
+		 * `APP_ASSET_ORIGIN` from $lib/platform). Baked in from the same
+		 * `appAssetOrigin()` that admits it in the app's CSP img-src
+		 * (svelte.config.js), so the two cannot disagree; '' on the website,
+		 * which needs none.
+		 */
+		__APP_ASSET_ORIGIN__: JSON.stringify(APP ? appAssetOrigin() : '')
 	}
 }));

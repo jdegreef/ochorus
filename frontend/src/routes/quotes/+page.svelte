@@ -121,9 +121,10 @@
 				>
 					<span class="era-bar" aria-hidden="true"></span>
 					{#if a.photo_url}
+						{@const src = assetUrl(a.photo_url)}
 						<img
-							src={assetUrl(a.photo_url)}
-							use:hydrateSrc={{ src: assetUrl(a.photo_url) }}
+							{src}
+							use:hydrateSrc={{ src }}
 							alt=""
 							loading="lazy"
 							width="96"

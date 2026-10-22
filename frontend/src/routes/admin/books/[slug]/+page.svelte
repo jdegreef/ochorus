@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetUrl } from '$lib/assetUrl';
 	import { ApiError } from '$lib/api';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
@@ -107,7 +108,7 @@
 									}}
 								/>
 								{#if l.source_url}<a href={l.source_url} class="text-muted hover:text-accent" target="_blank" rel="noopener">source ↗</a>{/if}
-								{#if l.pdf_url}<a href={l.pdf_url} class="text-muted hover:text-accent" target="_blank" rel="noopener">PDF ↗</a>{/if}
+								{#if l.pdf_url}<a href={assetUrl(l.pdf_url)} class="text-muted hover:text-accent" target="_blank" rel="noopener">PDF ↗</a>{/if}
 							</div>
 						</div>
 
