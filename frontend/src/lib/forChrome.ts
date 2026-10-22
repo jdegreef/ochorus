@@ -1,4 +1,5 @@
 import type { ForLocale } from './forLinks';
+import { nameOfLanguage } from './languageNames';
 import type { ForGoal } from './forPicker';
 import type { ForSection } from './forSections';
 import type { ReadingDays } from './planSchedule';
@@ -103,17 +104,9 @@ export interface ForChrome {
 export const listOf = (xs: string[], and: string): string =>
 	xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} ${and} ${xs.at(-1)}`;
 
-const NAMERS = new Map<ForLocale, Intl.DisplayNames>();
-
 /** A language's name in the page's language (lower case in French, as French
- *  writes it mid-sentence). ICU calls Luganda "Ganda"; Ochorus uses the name
- *  its readers use. */
-export function languageName(code: string, locale: ForLocale): string {
-	if (code === 'lg') return locale === 'en' ? 'Luganda' : 'luganda';
-	let namer = NAMERS.get(locale);
-	if (!namer) NAMERS.set(locale, (namer = new Intl.DisplayNames([locale], { type: 'language' })));
-	return namer.of(code) ?? code;
-}
+ *  writes it mid-sentence; "Luganda", never ICU's "Ganda"). */
+export const languageName = (code: string, locale: ForLocale): string => nameOfLanguage(code, locale) ?? code;
 
 export const FOR_CHROME: Record<ForLocale, ForChrome> = {
 	en: {

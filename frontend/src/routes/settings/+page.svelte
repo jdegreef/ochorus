@@ -44,7 +44,7 @@
 
 	type Section = 'profile' | 'reading' | 'appearance' | 'activity';
 	const SECTIONS: { id: Section; label: string; icon: IconName }[] = [
-		{ id: 'profile', label: t('settings.navProfile'), icon: 'users' },
+		{ id: 'profile', label: t('settings.profileTitle'), icon: 'users' },
 		{ id: 'reading', label: t('settings.navReading'), icon: 'book' },
 		{ id: 'appearance', label: t('settings.navAppearance'), icon: 'sun' },
 		{ id: 'activity', label: t('settings.navActivity'), icon: 'compass' }

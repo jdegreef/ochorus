@@ -1,6 +1,7 @@
 import { browser } from '$app/environment';
 import type { Language } from './library-public';
 import { LIVE_LOCALE_NAMES } from '$lib/live-locales.generated';
+import { nameOfLanguage } from './languageNames';
 import { getLocale, setLocale, locales } from '$lib/paraglide/runtime';
 
 // Set when the reader explicitly picks a language on this device, so a synced
@@ -54,6 +55,15 @@ export const LOCALE_NAMES: Record<string, string> = {
 /** The registry's autonym if it has one, else the map above, else the code. */
 export const localeName = (code: string): string =>
 	LIVE_LOCALE_NAMES[code] ?? LOCALE_NAMES[code] ?? code;
+
+/**
+ * A language's name as a word in a sentence of `uiLocale`: "inglés" in
+ * "Estás leyendo la edición en inglés", where the autonym ("English") is right
+ * on a language pill but reads as untranslated mid-sentence. Falls back to the
+ * autonym where the runtime has no name for it in that locale.
+ */
+export const languageNameIn = (code: string, uiLocale: string): string =>
+	nameOfLanguage(code, uiLocale) ?? localeName(code);
 
 export function getLang(): string {
 	return getLocale();

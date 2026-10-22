@@ -110,10 +110,13 @@
 				method="GET"
 				action={localizeHref('/search')}
 				role="search"
-				class="mx-auto mb-6 flex max-w-lg items-center gap-2 rounded-full border border-border bg-surface px-2 py-1.5 shadow-sm focus-within:border-accent"
+				class="mx-auto mb-6 flex max-w-lg items-center gap-2 rounded-full border border-border bg-surface px-2 py-1.5 shadow-sm focus-within:border-accent max-sm:gap-1"
 			>
+				<!-- On a phone the glass moves into the submit button, so the hint
+				     ("Search books, authors, text…") has the width to be read whole
+				     rather than cut at "tex". -->
 				<svg
-					class="ms-2 h-5 w-5 shrink-0 text-muted"
+					class="ms-2 h-5 w-5 shrink-0 text-muted max-sm:hidden"
 					viewBox="0 0 24 24"
 					fill="none"
 					stroke="currentColor"
@@ -131,9 +134,12 @@
 					enterkeyhint="search"
 					placeholder={t('search.placeholder')}
 					aria-label={t('nav.search')}
-					class="min-w-0 flex-1 bg-transparent py-1 text-body text-text placeholder:text-muted focus-visible:-outline-offset-2"
+					class="min-w-0 flex-1 bg-transparent py-1 text-body text-text placeholder:text-muted focus-visible:-outline-offset-2 max-sm:ps-3 max-sm:placeholder:text-small"
 				/>
-				<button type="submit" class="btn btn-primary shrink-0 rounded-full">{t('nav.search')}</button>
+				<button type="submit" class="btn btn-primary shrink-0 rounded-full max-sm:px-3">
+					<Icon name="search" size={18} class="sm:hidden" />
+					<span class="max-sm:sr-only">{t('nav.search')}</span>
+				</button>
 			</form>
 			<!-- One primary per view: the search submit above. These two are the
 			     alternative routes into the same library, not competing calls to

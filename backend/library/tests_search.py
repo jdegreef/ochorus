@@ -1516,3 +1516,55 @@ class KoreanParticleParityTests(SimpleTestCase):
             "frontend/src/lib/koParticles.ts and fts.KO_PARTICLES have drifted: a "
             "search would match words the reader's highlight then fails to find",
         )
+
+
+class FallbackSnippetTests(SimpleTestCase):
+    """Excerpts are cut on word boundaries, never through a word."""
+
+    TEXT = (
+        "What does a holy life look like? Discover the transforming power of "
+        "genuine repentance, living faith, fervent prayer, holy love, and "
+        "wholehearted surrender to God. Confront counterfeit Christianity."
+    )
+
+    def _words(self, snippet):
+        plain = snippet.strip("…")
+        plain = plain.replace(search_module.HL_START, "").replace(search_module.HL_END, "")
+        return plain.split()
+
+    def test_both_ends_are_whole_words(self):
+        snippet = search_module.fallback_snippet(self.TEXT, "prayer", radius=40)
+        self.assertTrue(snippet.startswith("…") and snippet.endswith("…"))
+        whole = self.TEXT.split()
+        words = self._words(snippet)
+        self.assertIn(words[0], whole)
+        self.assertIn(words[-1].rstrip(","), [w.rstrip(",") for w in whole])
+        self.assertIn("⟦prayer⟧", snippet)
+
+    def test_head_without_a_match_ends_on_a_whole_word(self):
+        snippet = search_module.fallback_snippet(self.TEXT, "zzz", radius=30)
+        self.assertTrue(snippet.endswith("…"))
+        self.assertIn(self._words(snippet)[-1], self.TEXT.split())
+
+    def test_short_text_is_returned_whole(self):
+        snippet = search_module.fallback_snippet("Grace abounding", "zzz")
+        self.assertEqual(snippet, "Grace abounding")
+
+    def test_the_space_right_after_the_match_is_a_boundary(self):
+        text = "a " * 50 + "prayer " + "x" * 100 + " tail"
+        snippet = search_module.fallback_snippet(text, "prayer", radius=40)
+        self.assertTrue(snippet.endswith("⟦prayer⟧…"), snippet)
+
+    def test_a_newline_is_a_word_boundary(self):
+        text = "x" * 30 + "\nalpha beta\nprayer\ngamma\n" + "y" * 30
+        snippet = search_module.fallback_snippet(text, "prayer", radius=15)
+        self.assertEqual(snippet, "…alpha beta\n⟦prayer⟧\ngamma…")
+
+    def test_no_dangling_punctuation_or_space_before_the_ellipsis(self):
+        fr = "Il faut prier toujours ; demain encore et encore, sans cesse."
+        self.assertEqual(
+            search_module.fallback_snippet(fr, "prier", radius=17),
+            "Il faut ⟦prier⟧ toujours…",
+        )
+        head = search_module.fallback_snippet("Grace, mercy, and peace from God.", "zzz", radius=7)
+        self.assertEqual(head, "Grace, mercy…")

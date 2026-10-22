@@ -42,6 +42,17 @@ describe('filingName', () => {
 		expect(filingName('John Of God')).toBe('John Of God');
 		expect(filingName('Athanasius')).toBe('Athanasius');
 	});
+
+	it('files a shared credit under its first person, keeping the co-author', () => {
+		expect(filingName('James DeGreef and Ochorus')).toBe('DeGreef, James and Ochorus');
+		expect(filingName('John Wesley & Charles Wesley')).toBe('Wesley, John & Charles Wesley');
+		expect(filingKey('James DeGreef and Ochorus').startsWith('DeGreef, ')).toBe(true);
+	});
+
+	it('files a shared surname under the surname', () => {
+		expect(filingName('Charles and John Wesley')).toBe('Wesley, Charles and John');
+		expect(filingName('Catherine & William Booth')).toBe('Booth, Catherine & William');
+	});
 });
 
 describe('filingKey', () => {

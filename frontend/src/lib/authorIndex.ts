@@ -59,15 +59,29 @@ const EPITHET = new Set(['of', 'the', 'à', 'a']);
  *  - a lowercase particle stays with it ("Corrie ten Boom" → "ten Boom, Corrie");
  *  - a generational suffix is skipped ("… Jr." files under the surname);
  *  - an epithet name, or a single name, files as written
- *    ("Augustine of Hippo", "Athanasius").
+ *    ("Augustine of Hippo", "Athanasius");
+ *  - a shared credit files under its first person, the rest kept as written
+ *    ("James DeGreef and Ochorus" → "DeGreef, James and Ochorus"; citations
+ *    print this, so the co-author stays) — else "and" reads as a particle and
+ *    the credit files under A. A shared surname ("Charles and John Wesley")
+ *    files under it, as before.
  */
 export function filingName(name: string): string {
-	const words = name.trim().split(/\s+/);
-	if (words.length < 2 || words.slice(1).some((w) => EPITHET.has(w.toLowerCase()))) return name.trim();
+	const whole = name.trim();
+	const [head] = whole.split(/\s+(?:and|&)\s+/i);
+	if (head === whole || !/\s/.test(head)) return fileOne(whole);
+	const filed = fileOne(head);
+	const rest = whole.slice(head.length).trim();
+	return filed === head ? whole : `${filed} ${rest}`;
+}
+
+function fileOne(name: string): string {
+	const words = name.split(/\s+/);
+	if (words.length < 2 || words.slice(1).some((w) => EPITHET.has(w.toLowerCase()))) return name;
 	const parts = words.filter((w) => !GENERATIONAL.test(w));
 	let i = parts.length - 1;
 	while (i > 1 && /^\p{Ll}/u.test(parts[i - 1])) i--;
-	if (i < 1) return name.trim();
+	if (i < 1) return name;
 	return `${parts.slice(i).join(' ')}, ${parts.slice(0, i).join(' ')}`;
 }
 
