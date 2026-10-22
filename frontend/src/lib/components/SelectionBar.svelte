@@ -5,7 +5,7 @@
 	import { readerProse } from '$lib/listenText';
 	import { HIGHLIGHT_COLORS } from '$lib/reading-schema';
 	import { shareQuoteCard } from '$lib/quoteCard';
-	import { share as shareSheet } from '$lib/platform';
+	import { onBack, share as shareSheet } from '$lib/platform';
 	import { clampPopoverLeft, HEADER_OFFSET } from '$lib/reading';
 	import type { Segment } from '$lib/marks.svelte';
 	import { portal } from '$lib/actions/portal';
@@ -280,6 +280,15 @@
 	const activeColor = $derived(
 		highlightColor && segments.length > 0 ? highlightColor(segments) : null
 	);
+
+	// In the phone app, Android's Back puts the selection down too, like Escape.
+	$effect(() => {
+		if (!visible) return;
+		return onBack(() => {
+			window.getSelection()?.removeAllRanges();
+			visible = false;
+		});
+	});
 </script>
 
 <svelte:document

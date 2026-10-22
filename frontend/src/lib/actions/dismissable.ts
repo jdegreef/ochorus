@@ -14,7 +14,12 @@
  * The document listeners are attached only while the menu is open, so a page
  * of closed menus (a shelf of books, each with its own) costs nothing. For a
  * full overlay that traps focus, use `focusTrap` instead.
+ *
+ * In the phone app an open menu also answers Android's Back
+ * ($lib/platform `onBack`), which closes it before any navigation.
  */
+import { onBack } from '$lib/platform';
+
 export interface DismissableOptions {
 	open: boolean;
 	onDismiss: () => void;
@@ -36,15 +41,19 @@ export function dismissable(node: HTMLElement, options: DismissableOptions) {
 	}
 
 	let listening = false;
+	let offBack: (() => void) | undefined;
 	function listen(on: boolean) {
 		if (on === listening) return;
 		listening = on;
 		if (on) {
 			document.addEventListener('click', onClick);
 			document.addEventListener('keydown', onKeydown);
+			offBack = onBack(() => options.onDismiss());
 		} else {
 			document.removeEventListener('click', onClick);
 			document.removeEventListener('keydown', onKeydown);
+			offBack?.();
+			offBack = undefined;
 		}
 	}
 

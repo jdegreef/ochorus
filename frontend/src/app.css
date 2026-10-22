@@ -178,24 +178,24 @@
      popover  a menu or popover inside page content
      chrome   site nav, tab bar, reading dock, progress line, feedback button
      floating reader overlays above chrome (scripture/define popovers)
+     statusbar the phone app's status-bar strip: over the page and its chrome,
+               under a sheet's or dialog's scrim, which dims it with the page
      backdrop / sheet   a drawer's dim layer and the drawer itself
      menu / modal       header menus and dialogs (never shown together)
      toast, skip        PWA toasts; the skip link above everything
-     statusbar          the app's status-bar strip, over all of it (it is
-                        the phone's, not the page's)
    Local stacking inside one component (1–10) can stay numeric. */
 :root {
 	--z-pinned: 20;
 	--z-popover: 30;
 	--z-chrome: 40;
 	--z-floating: 45;
+	--z-statusbar: 46;
 	--z-backdrop: 48;
 	--z-sheet: 49;
 	--z-menu: 50;
 	--z-modal: 50;
 	--z-toast: 60;
 	--z-skip: 100;
-	--z-statusbar: 110;
 }
 
 /* Type scale — modular ratio 1.25, anchored at 1rem body. (Shared with Take Root;
@@ -2178,9 +2178,17 @@ nav.appnav.appnav-static {
    it, and what scrolls up must pass beneath a strip of the page's own
    ground rather than behind the clock. The website never gets data-app —
    in a browser the top inset is the browser's, and 0 to the page. */
+/* Capacitor's Android SystemBars (insetsHandling 'css', the default) also
+   publishes the inset as --safe-area-inset-top on <html>, which is the one to
+   trust where it is set; env() everywhere else (iOS). */
 :root[data-app] {
-	--safe-top: env(safe-area-inset-top, 0px);
+	--safe-top: var(--safe-area-inset-top, env(safe-area-inset-top, 0px));
 }
+/* The strip wears the nav's colour, so the nav reads as running up under the
+   clock; on the reading routes, where the nav rides away and the reader's own
+   bar (the page ground) pins beneath, it wears the ground. It sits above the
+   chrome but below a sheet's or dialog's scrim, which dims it with the rest of
+   the page — those overlays keep their own content clear of the inset. */
 :root[data-app] body::after {
 	content: '';
 	position: fixed;
@@ -2188,8 +2196,24 @@ nav.appnav.appnav-static {
 	top: 0;
 	height: var(--safe-top);
 	z-index: var(--z-statusbar);
-	background: var(--bg);
+	background: var(--surface-2);
 	pointer-events: none;
+}
+/* data-app-top (the root layout, app only): 'nav' while the nav is pinned,
+   'static' on the reading routes, 'none' in focus mode. A flag, not
+   body:has(), which would restyle the page each time the nav came or went. */
+:root[data-app][data-app-top='static'] body::after,
+:root[data-app][data-app-top='none'] body::after {
+	background: var(--bg);
+}
+:root[data-app] .modal-overlay {
+	padding-top: calc(1rem + var(--safe-top));
+}
+:root[data-app] .modal-card {
+	max-height: calc(100dvh - 2rem - var(--safe-top));
+}
+:root[data-app] .palette-overlay {
+	padding-top: max(12dvh, calc(1rem + var(--safe-top)));
 }
 /* The nav takes the strip into itself, so its measured height (published
    as --appnav-h) already clears it for everything pinned beneath. */
@@ -2200,7 +2224,7 @@ nav.appnav.appnav-static {
 	--appnav-h: calc(3.5rem + var(--safe-top));
 }
 /* Focus mode draws no nav: the page itself starts below the strip. */
-:root[data-app] .app-root:not(:has(> nav.appnav)) {
+:root[data-app][data-app-top='none'] .app-root {
 	padding-top: var(--safe-top);
 }
 /* What pins to the very top of the viewport pins below the strip. */

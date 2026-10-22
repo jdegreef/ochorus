@@ -236,6 +236,11 @@
 
 	/** Reading surfaces pin their OWN bar to the top; see .appnav-static. */
 	const inReader = $derived(isReaderRoute($page.route.id));
+	// The app's status-bar strip matches what sits under it (app.css,
+	// `data-app-top`): the pinned nav, the reader's ground, or no nav at all.
+	$effect(() => {
+		if (IS_APP) document.documentElement.dataset.appTop = readerUi.focus ? 'none' : inReader ? 'static' : 'nav';
+	});
 	// The phone tab bar (TabBar; phones only, by its CSS). Not on the reading
 	// surfaces, whose own bottom bar holds that edge; not in focus mode; not
 	// while the Listen bar holds it. Where it shows (TabBar publishes

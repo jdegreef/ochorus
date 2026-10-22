@@ -12,6 +12,8 @@
  * overlay (CommandPalette, ScripturePopover, the reader note editor) consistent
  * instead of each re-solving keyboard access — or, as several did, not at all.
  */
+import { onBack } from '$lib/platform';
+
 const FOCUSABLE =
 	'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
@@ -66,6 +68,9 @@ export function focusTrap(node: HTMLElement, options: FocusTrapOptions = {}) {
 	}
 
 	node.addEventListener('keydown', onKeydown);
+	// In the phone app, Android's Back closes the overlay the way Escape does
+	// ($lib/platform `onBack`) — wherever focus happens to be.
+	const offBack = onBack(() => opts.onEscape?.());
 
 	return {
 		update(next: FocusTrapOptions = {}) {
@@ -73,6 +78,7 @@ export function focusTrap(node: HTMLElement, options: FocusTrapOptions = {}) {
 		},
 		destroy() {
 			node.removeEventListener('keydown', onKeydown);
+			offBack();
 			// Return focus to whatever opened the overlay. (By destroy time the
 			// overlay's focused child is already being removed, so activeElement
 			// has fallen to <body> — an "is focus still inside?" guard would wrongly

@@ -12,6 +12,7 @@ import { Directory, Filesystem } from '@capacitor/filesystem';
 import { Share } from '@capacitor/share';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { StatusBar, Style } from '@capacitor/status-bar';
+import { backStack } from './back';
 import { linkTarget } from './links';
 import type { ShareData, ShareResult } from './web';
 
@@ -66,13 +67,17 @@ export async function openExternal(url: string): Promise<void> {
 	await Browser.open({ url });
 }
 
-/** Status bar icons readable on the theme's ground. The ground itself is the
- *  page's own (the web view runs under the bar — app.css's status-bar strip);
- *  only an Android that still draws an opaque bar takes the colour too. */
+/** Status bar icons readable on the theme's ground. The ground under them is
+ *  the page's own (the web view runs under the bar, and app.css paints the
+ *  strip the nav's colour); only an Android that still draws an opaque bar
+ *  takes a colour, the nav's (`--surface-2`, a hex per theme and palette),
+ *  falling back to the theme's ground. */
 export async function setStatusBar(color: string, dark: boolean): Promise<void> {
 	try {
 		await StatusBar.setStyle({ style: dark ? Style.Dark : Style.Light });
-		if (Capacitor.getPlatform() === 'android') await StatusBar.setBackgroundColor({ color });
+		if (Capacitor.getPlatform() !== 'android') return;
+		const nav = getComputedStyle(document.documentElement).getPropertyValue('--surface-2').trim();
+		await StatusBar.setBackgroundColor({ color: /^#[0-9a-f]{6}$/i.test(nav) ? nav : color });
 	} catch {
 		/* Not available here (Android 15+ is edge to edge): the strip covers it. */
 	}
@@ -86,46 +91,50 @@ export type AppShellHooks = {
 	siteUrl: string;
 };
 
-/** The open sheet / dialog / palette, if any — Back closes it first. */
-const openOverlay = () => document.querySelector<HTMLElement>('[aria-modal="true"]');
+/** SvelteKit's `data-sveltekit-reload` on the link or an ancestor (the
+ *  cross-locale links): that page wants a full document load. */
+const wantsReload = (a: Element) => {
+	const v = a.closest('[data-sveltekit-reload]')?.getAttribute('data-sveltekit-reload');
+	return v != null && v !== 'off';
+};
+
+let started = false;
 
 export function startAppShell(hooks: AppShellHooks): void {
-	// Links: decided before SvelteKit's router sees the click (capture phase);
-	// preventDefault is what tells the router to leave it alone.
-	document.addEventListener(
-		'click',
-		(e) => {
-			if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-			const a = (e.target as Element | null)?.closest?.('a[href]');
-			if (!(a instanceof HTMLAnchorElement)) return;
-			const to = linkTarget(a.getAttribute('href')!, location.href, hooks.siteUrl, a.hasAttribute('download'));
-			if (!to) return;
-			e.preventDefault();
-			if (to.kind === 'internal') hooks.navigate(to.path);
-			else void openExternal(to.url);
-		},
-		{ capture: true }
-	);
+	if (started) return;
+	started = true;
 
-	// Android's Back: close what is open, else go back, else (home page, or
-	// nothing to go back to) leave the app. An overlay that ignores Escape
-	// gets one press, then Back navigates as usual.
-	let lastOverlay: HTMLElement | null = null;
+	// Links. On <body>, bubbling: after the components' own click handlers
+	// (Svelte delegates them to the app's root element, inside <body>), so a
+	// handler's preventDefault is respected here; and before SvelteKit's
+	// router (on <html>), which leaves alone a click this has claimed.
+	document.body.addEventListener('click', (e) => {
+		if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+		const a = (e.target as Element | null)?.closest?.('a[href]');
+		if (!(a instanceof HTMLAnchorElement)) return;
+		const to = linkTarget(a.getAttribute('href')!, location.href, hooks.siteUrl, {
+			download: a.hasAttribute('download'),
+			newTab: !!a.target && a.target !== '_self'
+		});
+		if (!to) return;
+		e.preventDefault();
+		if (to.kind === 'external') void openExternal(to.url);
+		else if (wantsReload(a)) location.assign(to.path);
+		else hooks.navigate(to.path);
+	});
+
+	// Android's Back: close the topmost open overlay (each registers through
+	// $lib/platform's onBack while open), else go back, else (home page, or
+	// nothing to go back to) leave the app.
 	void App.addListener('backButton', ({ canGoBack }) => {
-		const overlay = openOverlay();
-		if (overlay && overlay !== lastOverlay) {
-			lastOverlay = overlay;
-			(document.activeElement ?? document.body).dispatchEvent(
-				new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true })
-			);
-			return;
-		}
-		lastOverlay = null;
+		if (backStack.pop()) return;
 		if (canGoBack && !hooks.isRoot()) history.back();
 		else void App.exitApp();
 	});
 
 	// The launch splash stays up until the first frame of the reader is drawn
 	// (capacitor.config.ts keeps a time limit as a safety net).
-	requestAnimationFrame(() => void SplashScreen.hide().catch(() => {}));
+	requestAnimationFrame(() => {
+		SplashScreen.hide().catch(() => {});
+	});
 }

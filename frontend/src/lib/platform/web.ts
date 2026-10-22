@@ -6,10 +6,22 @@
 export type ShareResult = 'shared' | 'aborted' | 'unavailable';
 export type ShareData = { title?: string; text?: string; url?: string };
 
+/** Whether the browser has a share sheet worth opening. Not on desktop
+ *  Chromium (the only engine with `userAgentData`, here with a fine pointer):
+ *  Chrome and Edge there hand off to a system dialog that often shows nothing
+ *  — a click that "does nothing". Phones and Safari keep the OS sheet. */
+export function canShare(): boolean {
+	return (
+		typeof navigator !== 'undefined' &&
+		typeof navigator.share === 'function' &&
+		!('userAgentData' in navigator && !window.matchMedia?.('(pointer: coarse)').matches)
+	);
+}
+
 /** The OS share sheet via the Web Share API. `aborted` = dismissed by the
  *  reader; `unavailable` = no sheet here, or it failed for another reason. */
 export async function share(data: ShareData): Promise<ShareResult> {
-	if (typeof navigator === 'undefined' || typeof navigator.share !== 'function') return 'unavailable';
+	if (!canShare()) return 'unavailable';
 	try {
 		await navigator.share(data);
 		return 'shared';

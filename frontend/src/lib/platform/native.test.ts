@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 
 // The app's side, with the Capacitor plugins stood in for: what each platform
 // function asks of the phone.
@@ -10,7 +10,8 @@ const m = vi.hoisted(() => ({
 	exitApp: vi.fn(),
 	setStyle: vi.fn(),
 	setBackgroundColor: vi.fn(),
-	hide: vi.fn(),
+	// Never reset: the splash is hidden on a frame, which can land at any point.
+	hide: vi.fn(() => Promise.resolve()),
 	platform: 'ios'
 }));
 
@@ -36,13 +37,13 @@ vi.mock('@capacitor/status-bar', () => ({
 vi.mock('@capacitor/splash-screen', () => ({ SplashScreen: { hide: m.hide } }));
 vi.mock('@capacitor/core', () => ({ Capacitor: { getPlatform: () => m.platform } }));
 
+import { backStack } from './back';
 import { openExternal, setStatusBar, share, shareFile, startAppShell } from './native';
 
 beforeEach(() => {
-	for (const f of [m.share, m.writeFile, m.browserOpen, m.exitApp, m.setStyle, m.setBackgroundColor, m.hide]) {
+	for (const f of [m.share, m.writeFile, m.browserOpen, m.exitApp, m.setStyle, m.setBackgroundColor]) {
 		f.mockReset();
 	}
-	m.hide.mockResolvedValue(undefined);
 	m.platform = 'ios';
 });
 
@@ -81,14 +82,19 @@ describe('native openExternal / setStatusBar', () => {
 		await openExternal('https://example.org/');
 		expect(m.browserOpen).toHaveBeenCalledWith({ url: 'https://example.org/' });
 	});
-	it('styles the bar for the theme; colours it only on Android', async () => {
+	it('styles the bar for the theme; colours it only on Android, in the nav’s colour', async () => {
 		await setStatusBar('#16130f', true);
 		expect(m.setStyle).toHaveBeenCalledWith({ style: 'DARK' });
 		expect(m.setBackgroundColor).not.toHaveBeenCalled();
 		m.platform = 'android';
 		await setStatusBar('#faf6ef', false);
 		expect(m.setStyle).toHaveBeenLastCalledWith({ style: 'LIGHT' });
-		expect(m.setBackgroundColor).toHaveBeenCalledWith({ color: '#faf6ef' });
+		// No nav colour to read: the theme's ground.
+		expect(m.setBackgroundColor).toHaveBeenLastCalledWith({ color: '#faf6ef' });
+		document.documentElement.style.setProperty('--surface-2', '#f4eee3');
+		await setStatusBar('#faf6ef', false);
+		expect(m.setBackgroundColor).toHaveBeenLastCalledWith({ color: '#f4eee3' });
+		document.documentElement.style.removeProperty('--surface-2');
 	});
 	it('never throws where the bar cannot be changed', async () => {
 		m.platform = 'android';
@@ -101,22 +107,27 @@ describe('startAppShell', () => {
 	const navigate = vi.fn();
 	let root = false;
 	let routerSaw: boolean[] = [];
-	// Stands in for SvelteKit's router: notes whether the shell claimed the
-	// click, then keeps jsdom from following the link.
+	// Stands in for SvelteKit's router (on <html>, after <body>): notes whether
+	// the shell claimed the click, then keeps jsdom from following the link.
 	const routerSpy = (e: Event) => {
 		routerSaw.push(e.defaultPrevented);
 		e.preventDefault();
 	};
+	const hooks = { navigate, isRoot: () => root, siteUrl: 'https://ochorus.com' };
 
-	// Once: it installs document-wide listeners.
-	startAppShell({ navigate, isRoot: () => root, siteUrl: 'https://ochorus.com' });
-	document.addEventListener('click', routerSpy);
+	beforeAll(() => {
+		startAppShell(hooks);
+		startAppShell(hooks); // idempotent: one set of listeners, one splash hide
+		document.documentElement.addEventListener('click', routerSpy);
+	});
 
 	afterEach(() => {
 		document.body.innerHTML = '';
 		navigate.mockReset();
 		routerSaw = [];
 		root = false;
+		while (backStack.size) backStack.pop();
+		vi.restoreAllMocks();
 	});
 
 	const tap = (html: string, init: MouseEventInit = {}) => {
@@ -124,15 +135,24 @@ describe('startAppShell', () => {
 		document.querySelector('a')!.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, ...init }));
 	};
 
+	it('hides the splash once, on the first frame', async () => {
+		await new Promise((r) => requestAnimationFrame(() => r(null)));
+		expect(m.hide).toHaveBeenCalledTimes(1);
+		expect(m.backButton).toBeTypeOf('function');
+	});
+
 	it('opens another origin in the system browser and keeps the router out', () => {
 		tap('<a href="https://en.wikipedia.org/wiki/Prayer">w</a>');
+		expect(m.browserOpen).toHaveBeenCalledTimes(1);
 		expect(m.browserOpen).toHaveBeenCalledWith({ url: 'https://en.wikipedia.org/wiki/Prayer' });
 		expect(routerSaw).toEqual([true]);
 	});
 
-	it('opens a website-only file on the website', () => {
+	it('opens a website-only file, and a download, on the website', () => {
 		tap('<a href="/feed.xml">feed</a>');
-		expect(m.browserOpen).toHaveBeenCalledWith({ url: 'https://ochorus.com/feed.xml' });
+		expect(m.browserOpen).toHaveBeenLastCalledWith({ url: 'https://ochorus.com/feed.xml' });
+		tap('<a href="/pdfs/humility.pdf" download>pdf</a>');
+		expect(m.browserOpen).toHaveBeenLastCalledWith({ url: 'https://ochorus.com/pdfs/humility.pdf' });
 	});
 
 	it('routes an absolute ochorus.com page link inside the app', () => {
@@ -141,25 +161,46 @@ describe('startAppShell', () => {
 		expect(m.browserOpen).not.toHaveBeenCalled();
 	});
 
-	it('leaves in-app links and modified clicks to the router', () => {
-		tap('<a href="/books/">b</a>');
-		tap('<a href="https://example.org/">x</a>', { metaKey: true });
-		expect(m.browserOpen).not.toHaveBeenCalled();
-		expect(routerSaw).toEqual([false, false]);
+	it('opens an app page asked for in a new tab here', () => {
+		tap('<a href="/books/humility/" target="_blank">h</a>');
+		expect(navigate).toHaveBeenCalledWith('/books/humility/');
+		expect(routerSaw).toEqual([true]);
 	});
 
-	it('Back closes an open sheet first', () => {
-		document.body.innerHTML = '<div aria-modal="true"><button>x</button></div>';
-		const esc = vi.fn();
-		document.addEventListener('keydown', esc);
-		m.backButton!({ canGoBack: true });
-		expect(esc).toHaveBeenCalledTimes(1);
-		expect((esc.mock.calls[0][0] as KeyboardEvent).key).toBe('Escape');
-		// …and if that sheet ignores Escape, the next press navigates.
+	it('gives a data-sveltekit-reload link a full load', () => {
+		const assign = vi.fn();
+		vi.spyOn(window, 'location', 'get').mockReturnValue({ ...window.location, href: location.href, assign });
+		tap('<div data-sveltekit-reload><a href="https://ochorus.com/ar/books/">ar</a></div>');
+		expect(assign).toHaveBeenCalledWith('/ar/books/');
+		expect(navigate).not.toHaveBeenCalled();
+	});
+
+	it('leaves in-app links, modified clicks and handled clicks alone', () => {
+		tap('<a href="/books/">b</a>');
+		tap('<a href="https://example.org/">x</a>', { metaKey: true });
+		// A component that handled the click itself (Svelte delegates to the
+		// app's root element, inside <body>).
+		document.body.innerHTML = '<div id="root"><a href="https://example.org/">x</a></div>';
+		document.getElementById('root')!.addEventListener('click', (e) => e.preventDefault());
+		document.querySelector('a')!.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+		expect(m.browserOpen).not.toHaveBeenCalled();
+		expect(navigate).not.toHaveBeenCalled();
+	});
+
+	it('Back closes the topmost open overlay first, one per press', () => {
+		const sheet = vi.fn();
+		const menuInSheet = vi.fn();
+		backStack.push(sheet);
+		backStack.push(menuInSheet);
 		const back = vi.spyOn(history, 'back').mockImplementation(() => {});
 		m.backButton!({ canGoBack: true });
-		expect(back).toHaveBeenCalled();
-		document.removeEventListener('keydown', esc);
+		expect(menuInSheet).toHaveBeenCalledTimes(1);
+		expect(sheet).not.toHaveBeenCalled();
+		m.backButton!({ canGoBack: true });
+		expect(sheet).toHaveBeenCalledTimes(1);
+		expect(back).not.toHaveBeenCalled();
+		m.backButton!({ canGoBack: true });
+		expect(back).toHaveBeenCalledTimes(1);
 	});
 
 	it('Back goes back in history, and leaves the app at the root or with no history', () => {
@@ -172,11 +213,5 @@ describe('startAppShell', () => {
 		m.backButton!({ canGoBack: true });
 		expect(m.exitApp).toHaveBeenCalledTimes(2);
 		expect(back).toHaveBeenCalledTimes(1);
-	});
-
-	it('hides the splash on the first frame', async () => {
-		startAppShell({ navigate, isRoot: () => root, siteUrl: 'https://ochorus.com' });
-		await new Promise((r) => requestAnimationFrame(() => r(null)));
-		expect(m.hide).toHaveBeenCalled();
 	});
 });

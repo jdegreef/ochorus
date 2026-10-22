@@ -14,6 +14,7 @@
  */
 
 import * as web from './web';
+import { backStack } from './back';
 import type { AppShellHooks } from './native';
 import type { ShareData, ShareResult } from './web';
 
@@ -28,9 +29,20 @@ export const IS_APP: boolean = __APP__;
 
 const native = () => import('./native');
 
-/** Whether `share` opens an OS share sheet here (the app always has one). */
+/** Whether `share` opens an OS share sheet here: always in the app, and in
+ *  a browser whose sheet works (not desktop Chromium — see web.ts). */
 export function canShare(): boolean {
-	return IS_APP || (typeof navigator !== 'undefined' && typeof navigator.share === 'function');
+	return IS_APP || web.canShare();
+}
+
+/**
+ * Register what Android's Back button should close while an overlay (sheet,
+ * dialog, menu, popover) is open; returns the unregister, to call on close.
+ * Back closes the most recently opened one before it navigates. Nothing on
+ * the website, which has no Back button to answer.
+ */
+export function onBack(close: () => void): () => void {
+	return IS_APP ? backStack.push(close) : () => {};
 }
 
 /** The OS share sheet. `aborted` = the reader dismissed it (do nothing);

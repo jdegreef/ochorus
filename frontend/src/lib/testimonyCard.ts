@@ -20,7 +20,8 @@ import {
 	quoteStyle,
 	shareCardImage,
 	trimQuote,
-	wrapLines
+	wrapLines,
+	type CardShareResult
 } from '$lib/quoteCard';
 
 /** Words the card sets, in the reader's language (the caller translates). */
@@ -137,6 +138,6 @@ export async function renderTestimonyCard(text: TestimonyText, answeredLabel: st
 export async function shareTestimonyCard(
 	blob: Blob,
 	text: TestimonyText
-): Promise<'shared' | 'downloaded' | 'dismissed'> {
+): Promise<CardShareResult> {
 	return shareCardImage(blob, 'ochorus-answered-prayer.png', `${text.heading}: ${text.answer}`);
 }
