@@ -51,7 +51,7 @@ export default defineConfig({
 		]
 	},
 	// Tests run the website's code paths (see `__APP__` in vite.config.ts).
-	define: { __APP__: 'false' },
+	define: { __APP__: 'false', __APP_ASSET_ORIGIN__: "''" },
 	test: {
 		environment: 'jsdom',
 		include: ['src/**/*.test.ts'],

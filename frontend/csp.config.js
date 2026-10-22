@@ -75,7 +75,9 @@ export const cspDirectives = {
 	// `<img>` beacon to any host on the internet, and nothing the reader sees
 	// needs it. The one path that used to lean on it (an admin pasting an
 	// external cover URL at import) was removed: covers are repo assets, so
-	// import no longer stores a cover_url at all.
+	// import no longer stores a cover_url at all. The native app's build adds
+	// exactly one origin, the website's (svelte.config.js `withAppImages`): it
+	// bundles no covers and loads them from there ($lib/assetUrl).
 	'img-src': ['self', 'data:', 'blob:'],
 	// `data:` because Vite inlines small font subsets as data:font/woff2 URIs
 	// under its assetsInlineLimit; without it the face is blocked at runtime.

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetUrl } from '$lib/assetUrl';
 	import { define } from '$lib/define.svelte';
 	import { mediaFlag } from '$lib/mediaFlag.svelte';
 	import { PHONE } from '$lib/breakpoints';
@@ -677,9 +678,10 @@
 			class="group mb-1 inline-flex items-center gap-2.5 hover:no-underline"
 		>
 			{#if sermon.author_photo}
+				{@const src = assetUrl(sermon.author_photo)}
 				<img
-					src={sermon.author_photo}
-					use:hydrateSrc={{ src: sermon.author_photo }}
+					{src}
+					use:hydrateSrc={{ src }}
 					alt="{t('a11y.portraitOf')} {sermon.author_name}"
 					class="h-9 w-9 shrink-0 rounded-full border border-border object-cover"
 					style="filter: grayscale(1); object-position: {portraitPosition(sermon.author_slug)}"

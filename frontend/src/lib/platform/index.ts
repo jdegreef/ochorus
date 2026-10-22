@@ -27,6 +27,14 @@ export type { ShareData, ShareResult, AppShellHooks };
  */
 export const IS_APP: boolean = __APP__;
 
+/**
+ * The website origin (e.g. `https://ochorus.com`) the app loads the images it
+ * does not bundle from — read only by `$lib/assetUrl`. '' on the website. A
+ * build-time constant (`__APP_ASSET_ORIGIN__`, vite.config.ts) from the same
+ * reading of PUBLIC_SITE_URL that the app's CSP img-src admits.
+ */
+export const APP_ASSET_ORIGIN: string = __APP_ASSET_ORIGIN__;
+
 const native = () => import('./native');
 
 /** Whether `share` opens an OS share sheet here: always in the app, and in

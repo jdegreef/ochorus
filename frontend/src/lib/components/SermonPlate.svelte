@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetUrl } from '$lib/assetUrl';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import type { Snippet } from 'svelte';
 	import { sermonArt } from '$lib/sermonArt';
@@ -74,8 +75,9 @@
 	     have a screen reader say it twice. SermonMonogram is aria-hidden; the
 	     portrait carries an empty alt for the same reason. -->
 	{#if portrait}
+		{@const src = assetUrl(portrait.src)}
 		<span class="emblem-chip portrait-chip duotone">
-			<img src={portrait.src} use:hydrateSrc={{ src: portrait.src }} alt="" loading="lazy" style="object-position: {portrait.pos ?? '50% 0%'}" />
+			<img {src} use:hydrateSrc={{ src }} alt="" loading="lazy" style="object-position: {portrait.pos ?? '50% 0%'}" />
 		</span>
 	{:else}
 		<SermonMonogram {scriptureRef} {title} />

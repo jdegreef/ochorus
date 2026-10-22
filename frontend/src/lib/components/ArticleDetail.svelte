@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetSrcset, assetUrl } from '$lib/assetUrl';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { hydrateSrc } from '$lib/hydrateSrc';
@@ -421,16 +422,17 @@
 							<li>
 								<a href={r.url} class="rel-link">
 									{#if r.type === 'book' && r.cover_url}
+										{@const src = assetUrl(r.cover_url)}
 										<img
 											class="rel-cover"
-											src={r.cover_url}
-											use:hydrateSrc={{ src: r.cover_url }}
+											{src}
+											use:hydrateSrc={{ src }}
 											alt=""
 											loading="lazy"
 											style:background={r.cover_color || undefined}
 										/>
 									{:else if r.type === 'author' && r.photo_url}
-										{@const source = { src: r.photo_url, srcset: portraitSrcset(r.photo_url) }}
+										{@const source = { src: assetUrl(r.photo_url), srcset: assetSrcset(portraitSrcset(r.photo_url)) }}
 										<img
 											class="rel-portrait"
 											src={source.src}

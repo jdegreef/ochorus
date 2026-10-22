@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetUrl } from '$lib/assetUrl';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
@@ -346,7 +347,7 @@
 							<p class="text-small text-muted">{o.book.author.name}</p>
 							<p class="mt-2 flex flex-wrap gap-2">
 								{#if o.pdf_url}
-									<a class="btn btn-sm" href={o.pdf_url} download
+									<a class="btn btn-sm" href={assetUrl(o.pdf_url)} download
 										><Icon name="download" size={14} /> PDF<span class="sr-only"> {c.fileOf} {o.book.title}</span></a
 									>
 								{/if}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetUrl } from '$lib/assetUrl';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { shareImage } from '$lib/coverArt';
@@ -165,7 +166,8 @@
 												: ''}{fs.length ? ` · ${fs.map((f) => FLAG_LABEL[f]).join(', ')}` : ''}"
 										>
 											{#if img}
-												<img src={img.url} use:hydrateSrc={{ src: img.url }} alt="{c.title} — {c.author.name}" loading="lazy" decoding="async" width="600" height="800" onload={(e) => measure(e, c)} />
+												{@const src = assetUrl(img.url)}
+												<img {src} use:hydrateSrc={{ src }} alt="{c.title} — {c.author.name}" loading="lazy" decoding="async" width="600" height="800" onload={(e) => measure(e, c)} />
 											{:else}
 												<span class="tile-empty">{c.title}</span>
 											{/if}
