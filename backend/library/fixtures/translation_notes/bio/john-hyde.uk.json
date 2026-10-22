@@ -1,0 +1,30 @@
+{
+ "kind": "bio",
+ "slug": "john-hyde",
+ "language": "uk",
+ "job_issue": 2957,
+ "references": [
+  {
+   "reference": "Matthew 9:38",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Zechariah 2:8",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Revelation 12:10",
+   "status": "self_rendered",
+   "block_index": 18
+  }
+ ],
+ "note": [
+  "The English bio carries no Book C:V citations; these three are allusions recorded the way the es edition notes them.",
+  "Matthew 9:38: the father's prayer is reported indirectly («щоб Бог вислав робітників на Своє жниво»), not quoted, so it does not use Kulish's «щоб вислав женцїв на жниво своє» wording and is self_rendered.",
+  "Zechariah 2:8: Kulish reads «хто бо торкається до вас, торкається об зїницю ока мого»; Hyde heard it re-personed to «him», so the line is «Хто торкається до нього, торкається об зїницю ока мого» (Kulish wording, pronoun shifted), which makes it self_rendered per the skill's re-personing rule.",
+  "Revelation 12:10: «винувателем братів» echoes Kulish's «винувателя братів наших», inflected into Hyde's own prayer, so self_rendered.",
+  "Names: Джон Гайд (as in the shipped uk corpus), Френсіс Мак-Гоу, Сіялкот, Фірозпур, Лудхіана, Мога, Дж. Вілбур Чепмен, В. Б. Андерсон; McGaw's book is cited as <em>Praying Hyde</em> with «Молитовний Гайд» glossed once. Quotations in « », as in the shipped uk bios."
+ ]
+}
