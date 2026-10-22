@@ -18,6 +18,12 @@ declare global {
 	 * `define` in vite.config.ts. Read it as `IS_APP` from $lib/platform.
 	 */
 	const __APP__: boolean;
+	/**
+	 * The website origin the app loads its unbundled images from ('' on the
+	 * website) — injected by `define` in vite.config.ts. Read it as
+	 * `APP_ASSET_ORIGIN` from $lib/platform.
+	 */
+	const __APP_ASSET_ORIGIN__: string;
 }
 
 export {};

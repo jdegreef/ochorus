@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetSrcset, assetUrl } from '$lib/assetUrl';
 	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { initials } from '$lib/strings';
@@ -36,7 +37,7 @@
 		<a href={href(w.slug)} class="writer-jump">
 			<span class="writer-face" aria-hidden="true">
 				{#if w.photo_url}
-					{@const source = { src: w.photo_url, srcset: portraitSrcset(w.photo_url) }}
+					{@const source = { src: assetUrl(w.photo_url), srcset: assetSrcset(portraitSrcset(w.photo_url)) }}
 					<img
 						src={source.src}
 						srcset={source.srcset}

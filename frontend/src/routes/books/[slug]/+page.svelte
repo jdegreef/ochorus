@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetUrl } from '$lib/assetUrl';
 	import ForPromo from '$lib/components/ForPromo.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import ReadBar from '$lib/components/ReadBar.svelte';
@@ -526,14 +527,15 @@
      Outside the column, so the colour runs edge to edge. -->
 <div class="book-band" class:washed={!!wash}>
 	{#if wash}
+		{@const src = assetUrl(wash)}
 		<div class="book-band-art" aria-hidden="true">
 			<img
-				src={wash}
+				{src}
 				alt=""
 				class="book-band-wash"
 				fetchpriority="high"
 				decoding="async"
-				use:hydrateSrc={{ src: wash }}
+				use:hydrateSrc={{ src }}
 				onerror={() => (washBroken = wash)}
 			/>
 		</div>

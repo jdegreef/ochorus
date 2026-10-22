@@ -15,6 +15,7 @@
 </script>
 
 <script lang="ts">
+	import { assetUrl } from '$lib/assetUrl';
 	import { onMount } from 'svelte';
 	import { citeLine, quoteHref, type SavedQuote } from '$lib/library-public';
 	import { dayIndex } from '$lib/quoteText';
@@ -48,7 +49,7 @@
 	];
 
 	let quote = $state<SavedQuote | null>(null);
-	const painting = PAINTINGS[dayIndex(new Date(), PAINTINGS.length)];
+	const painting = assetUrl(PAINTINGS[dayIndex(new Date(), PAINTINGS.length)]);
 
 	onMount(() => {
 		if (getLang() !== 'en') return;

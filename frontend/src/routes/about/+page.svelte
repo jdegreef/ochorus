@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetSrcset, assetUrl } from '$lib/assetUrl';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { SITE_URL } from '$lib/config';
 	import { hreflangAll, jsonLd } from '$lib/seo';
@@ -9,6 +10,13 @@
 	import Seo from '$lib/components/Seo.svelte';
 
 	const t = i18n.t;
+
+	// The hero's crops, through $lib/assetUrl (the app loads /about/ from the site).
+	const heroWide = assetSrcset('/about/hero-wide-1000.jpg 1000w, /about/hero-wide.jpg 1600w');
+	const hero = {
+		src: assetUrl('/about/hero-tall.jpg'),
+		srcset: assetSrcset('/about/hero-tall-800.jpg 800w, /about/hero-tall.jpg 1600w')
+	};
 
 	const path = '/about';
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
@@ -136,12 +144,13 @@
 	<picture>
 		<source
 			media="(min-width: 768px)"
-			srcset="/about/hero-wide-1000.jpg 1000w, /about/hero-wide.jpg 1600w"
+			srcset={heroWide}
 			sizes="100vw"
 		/>
 		<img
-			src="/about/hero-tall.jpg"
-			srcset="/about/hero-tall-800.jpg 800w, /about/hero-tall.jpg 1600w"
+			src={hero.src}
+			srcset={hero.srcset}
+			use:hydrateSrc={hero}
 			sizes="100vw"
 			alt={t('about.heroAlt')}
 			fetchpriority="high"
@@ -235,11 +244,11 @@
 		</div>
 		<div class="grid grid-cols-2 gap-4 sm:grid-cols-6">
 			{#each field as f (f.img)}
-				{@const src = `/about/${f.img}.jpg`}
+				{@const src = assetUrl(`/about/${f.img}.jpg`)}
 				<figure class={f.span}>
 					<button
 						type="button"
-						onclick={() => openLightbox(`/about/${f.img}.jpg`, t(f.cap))}
+						onclick={() => openLightbox(src, t(f.cap))}
 						class="group block w-full cursor-zoom-in overflow-hidden rounded-card border border-border bg-surface-2 {f.aspect} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
 					>
 						<img
@@ -262,10 +271,10 @@
 	<div class="mx-auto grid max-w-5xl items-center gap-10 px-5 py-16 sm:py-20 md:grid-cols-2 md:gap-14">
 		<div class="grid grid-cols-2 gap-4">
 			{#each featureShots as s (s.img)}
-				{@const src = `/about/${s.img}.jpg`}
+				{@const src = assetUrl(`/about/${s.img}.jpg`)}
 				<button
 					type="button"
-					onclick={() => openLightbox(`/about/${s.img}.jpg`, t(s.alt))}
+					onclick={() => openLightbox(src, t(s.alt))}
 					class="group block w-full cursor-zoom-in overflow-hidden rounded-card border border-border bg-surface-2 {s.cls} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
 				>
 					<img

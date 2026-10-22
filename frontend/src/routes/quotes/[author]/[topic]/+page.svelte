@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetUrl } from '$lib/assetUrl';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import type { QuoteAuthorTopicPage } from '$lib/library-public';
 	import { groupQuotes, onPhrase, citeChapter, quoteCollectionLd } from '$lib/library-public';
@@ -88,9 +89,10 @@
 	<header class="mb-6">
 		<div class="mb-1 flex items-center gap-4">
 			{#if page.author.photo_url}
+				{@const src = assetUrl(page.author.photo_url)}
 				<img
-					src={page.author.photo_url}
-					use:hydrateSrc={{ src: page.author.photo_url }}
+					{src}
+					use:hydrateSrc={{ src }}
 					alt="Portrait of {page.author.name}"
 					loading="lazy"
 					width="112"

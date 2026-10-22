@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetSrcset, assetUrl } from '$lib/assetUrl';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { coverGradient, coverSrcset } from '$lib/coverArt';
 	import type { Snippet } from 'svelte';
@@ -93,7 +94,8 @@
 		{:else}
 			<span class="shelf-card-badge emblem-chip">
 				{#if portrait}
-					<img src={portrait} use:hydrateSrc={{ src: portrait }} alt="" loading="lazy" />
+					{@const src = assetUrl(portrait)}
+					<img {src} use:hydrateSrc={{ src }} alt="" loading="lazy" />
 				{:else if emblem}
 					<Emblem name={emblem} />
 				{/if}
@@ -121,7 +123,7 @@
 								     it read as a blank block (mobile review #3). -->
 								<BookCover book={face} rounded="" />
 							{:else if cover.cover_url}
-								{@const source = { src: cover.cover_url, srcset: coverSrcset(cover.cover_url) || undefined }}
+								{@const source = { src: assetUrl(cover.cover_url), srcset: assetSrcset(coverSrcset(cover.cover_url)) || undefined }}
 								<img
 									src={source.src}
 									srcset={source.srcset}

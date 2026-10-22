@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { assetHtml } from '$lib/assetUrl';
 	import { onPageHidden } from '$lib/pageHidden';
 	import { readingSync } from '$lib/readingSync';
 	/**
@@ -258,7 +259,7 @@
      references are wrapped as tappable spans (scripture popover). -->
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions, a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
 <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-<div class="reading {className}" bind:this={body} onclick={reader.onScriptureClick} dir="auto" lang={contentLang(language)}>{@html html}</div>
+<div class="reading {className}" bind:this={body} onclick={reader.onScriptureClick} dir="auto" lang={contentLang(language)}>{@html assetHtml(html)}</div>
 
 <ReaderOverlays {reader} container={body} {language} />
 

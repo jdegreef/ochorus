@@ -2,7 +2,7 @@ import adapter from '@sveltejs/adapter-static';
 
 import { readFileSync } from 'node:fs';
 
-import { APP } from './app-target.js';
+import { APP, appAssetOrigin } from './app-target.js';
 import { cspDirectives } from './csp.config.js';
 
 /** The origin of a URL-shaped build env var, or '' when unset/unparseable. */
@@ -38,8 +38,22 @@ function directivesForThisBuild() {
 		originOf(process.env.PUBLIC_API_BASE_URL),
 		originOf(process.env.PUBLIC_SENTRY_DSN)
 	].filter((origin, i, all) => origin && !connect.includes(origin) && all.indexOf(origin) === i);
-	if (!extra.length) return cspDirectives;
-	return { ...cspDirectives, 'connect-src': [...connect, ...extra] };
+	const directives = extra.length
+		? { ...cspDirectives, 'connect-src': [...connect, ...extra] }
+		: cspDirectives;
+	return APP ? withAppImages(directives) : directives;
+}
+
+/**
+ * The app bundles no covers or portraits: `$lib/assetUrl` points them at the
+ * website (`appAssetOrigin`, the same reading vite.config.ts bakes into the
+ * bundle), which is not the app's own origin (`capacitor://localhost` /
+ * `https://localhost`), so img-src must name it. That one origin only — never
+ * a blanket `https:` (see csp.config.js). The website needs nothing: there
+ * those images are same-origin (`self`).
+ */
+function withAppImages(directives) {
+	return { ...directives, 'img-src': [...directives['img-src'], appAssetOrigin()] };
 }
 
 /** Non-English UI locales, read from the inlang project (the source of truth). */

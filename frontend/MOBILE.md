@@ -7,6 +7,8 @@ The phone apps are the same SvelteKit reader as the website, wrapped by
 |---|---|---|
 | Output | `build/` — every public page prerendered for SEO, plus a `200.html` shell | `build-app/` — one `index.html` shell, nothing prerendered |
 | Content | baked in at build + live API | live API (`https://api.ochorus.com`) |
+| Images | served by the site itself | loaded from `https://ochorus.com`, not bundled (see below) |
+| Size | everything under `static/` | ~20 MB, capped at 24 MB (`bundle-budget.json` `appBundle`) |
 | Offline | service worker + Cache API | not yet: no service worker in iOS app web views (see roadmap) |
 | Sign-in | Supabase | off for now (see roadmap); the app reads signed-out |
 | Needs the API to build | yes (prerender) | no |
@@ -29,6 +31,51 @@ The app bundle is copied into two native projects, which are committed:
 - The API allows the app's origins (`capacitor://localhost` on iOS,
   `https://localhost` on Android) in `backend/config/settings.py`, whatever
   production's `CORS_ALLOWED_ORIGINS` says.
+
+## How the app loads images
+
+The app bundle holds the reader's shell and nothing it can fetch instead: JS,
+CSS, the woff2 webfonts, icons, and the small marks, emblems and paper
+textures the chrome paints before any network (a few hundred KB). Everything
+heavy stays on the website:
+
+- `app-assets.js` lists the `static/` folders the app does not bundle
+  (`REMOTE_DIRS`: `covers/`, `portraits/`, `illustrations/`, `about/`, `og/`,
+  `pdfs/`) and the few files under them it keeps anyway (`KEEP_LOCAL`:
+  `covers/art/credits.json`, which is `fetch`ed — a cross-origin fetch would
+  need CORS headers the static site does not send; an `<img>` needs none).
+- `scripts/build-app.mjs` deletes those folders from `build-app/` (helpers in
+  `scripts/app-bundle.mjs`), plus the website's service worker and the legacy
+  `.woff` twin of every font that also ships a `.woff2` (every app web view
+  takes woff2).
+- `$lib/assetUrl` is the one helper that points a path under those folders at
+  `PUBLIC_SITE_URL` (`app-env/.env`): `assetUrl` for a `src`, `assetSrcset`
+  for a `srcset`, `assetHtml` for a chapter or sermon body's illustrations. On
+  the website `IS_APP` is false and each returns its input. Use it wherever an
+  `<img>`'s `src`/`srcset` is built — not inside the pure helpers (`coverArt`,
+  `portraits`) that also feed scripts, share cards and the offline cache,
+  which want the site path. `assetUrl.test.ts` fails the build on a
+  data-driven `<img>` that skips it.
+- The origin is read once, at build time, by `appAssetOrigin()`
+  (`app-target.js`): vite.config.ts bakes it into the bundle
+  (`APP_ASSET_ORIGIN` in `$lib/platform`) and svelte.config.js adds exactly
+  that origin to the app's CSP `img-src`, so the two cannot disagree. An app
+  build without a valid `PUBLIC_SITE_URL` fails. The website's `img-src` stays
+  `self`.
+- `bundle-budget.json`'s `appBundle` caps the whole `build-app/` folder, and
+  the app build fails above it. A new heavy folder under `static/` belongs in
+  `REMOTE_DIRS`, not in a bigger budget.
+
+**Never rename or delete a public asset path that a shipped app might still
+ask for.** An installed app keeps asking for the paths it was built with — the
+season paintings (`heroArt.ts`), the home quote's paintings, the About photos,
+the `-320`/`-640` cover and `-96`/`-224` portrait variant names — for as long
+as people keep that version, which can be years. Add the new file and keep the
+old one.
+
+So covers and portraits need the network in the app (the web view's HTTP
+cache keeps the ones already seen). Offline books on the phone's storage
+(roadmap 2) should save a book's cover and illustrations with its text.
 
 ## One-time setup on the Mac
 
@@ -89,7 +136,8 @@ Press **Run** with an emulator or a USB-debugging phone selected.
 
 ## CI
 
-`ci.yml`'s `native-app` job builds the app bundle on every frontend PR, and
+`ci.yml`'s frontend checks build the app bundle on every frontend PR (and fail
+it over the `appBundle` size budget), and
 the Android debug build when `android/`, `ios/`, `resources/`, the Capacitor
 config or the npm lockfile change (and always on `main`). iOS builds need macOS
 and happen on the Mac for now.
@@ -108,8 +156,8 @@ and happen on the Mac for now.
    ochorus.com), email one-time codes, native Google sign-in and Sign in with
    Apple. Until then `authEnabled` is off in the app (`$lib/supabase`), so it
    shows no sign-in UI and reads signed-out.
-4. **Lighter bundle:** the app bundles every cover and portrait from
-   `static/` (~165 MB, most of it the PNG share-card twins under `covers/`).
-   Images should load from ochorus.com instead.
+4. ~~**Lighter bundle**~~ — done (Oct 2026): `build-app/` went from 245 MB
+   to ~20 MB. Covers, portraits and illustrations load from ochorus.com; see
+   "How the app loads images".
 5. **Store release:** TestFlight and Play internal testing uploads from CI
    (fastlane), privacy labels, store listings, screenshots.
