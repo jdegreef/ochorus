@@ -1,0 +1,19 @@
+{
+ "kind": "bio",
+ "slug": "john-calvin",
+ "language": "uk",
+ "job_issue": 2949,
+ "pull_request": 6444,
+ "references": [
+  {
+   "reference": "Psalm 13:1",
+   "status": "self_rendered",
+   "block_index": 26
+  }
+ ],
+ "note": [
+  "The English bio carries no Book C:V citations (0 in en, 0 in uk) and quotes no verse with a reference; its quotations are Calvin's own words (motto, Psalms-commentary preface, a lecture prayer, the 1549 letter to Viret) and Knox's phrase, all translated.",
+  "Calvin's last words, the psalmist's «How long, O Lord» (Psalm 13:1, as the es/ar/sw/lg editions record it), are rendered «Доки, Господи» in the closing <h2> and final paragraph — Kulish opens Psalm 13 with «Доки Господи»; the comma is modern punctuation, so the row is self_rendered, not mined.",
+  "Names and titles: Жан Кальвін (as in the shipped uk corpus), Гійом Фарель, Мартін Буцер, Іделетта де Бюр, Мішель Сервет, П’єр Віре, Джон Нокс; the Institutes as «Настанови в християнській вірі» (no shipped uk precedent for the title)."
+ ]
+}
