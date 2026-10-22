@@ -55,6 +55,22 @@ export const LOCALE_NAMES: Record<string, string> = {
 export const localeName = (code: string): string =>
 	LIVE_LOCALE_NAMES[code] ?? LOCALE_NAMES[code] ?? code;
 
+/**
+ * A language's name as a word in a sentence of `uiLocale`: "inglés" in
+ * "Estás leyendo la edición en inglés", where the autonym ("English") is right
+ * on a language pill but reads as untranslated mid-sentence. Falls back to the
+ * autonym where the runtime has no name for it in that locale.
+ */
+export function languageNameIn(code: string, uiLocale: string): string {
+	try {
+		const name = new Intl.DisplayNames([uiLocale], { type: 'language', fallback: 'none' }).of(code);
+		if (name && Intl.DisplayNames.supportedLocalesOf([uiLocale]).length) return name;
+	} catch {
+		// An unknown tag throws: the autonym below is still right.
+	}
+	return localeName(code);
+}
+
 export function getLang(): string {
 	return getLocale();
 }

@@ -42,6 +42,11 @@ describe('filingName', () => {
 		expect(filingName('John Of God')).toBe('John Of God');
 		expect(filingName('Athanasius')).toBe('Athanasius');
 	});
+
+	it('files a shared credit under its first name, not under "and"', () => {
+		expect(filingName('James DeGreef and Ochorus')).toBe('DeGreef, James');
+		expect(filingName('John Wesley & Charles Wesley')).toBe('Wesley, John');
+	});
 });
 
 describe('filingKey', () => {

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { i18n } from '$lib/i18n.svelte';
-	import { localeName } from '$lib/lang.svelte';
+	import { languageNameIn, localeName } from '$lib/lang.svelte';
 	import { localizeHref } from '$lib/href';
 	import type { LanguageFallback } from '$lib/languageFallback';
 	import type { Hreflang } from '$lib/seo';
@@ -37,7 +37,7 @@
 </script>
 
 {#if fallback && !dismissed}
-	{@const want = localeName(fallback.requested)}
+	{@const want = languageNameIn(fallback.requested, fallback.requested)}
 	<section
 		class="fallback-notice relative rounded-card border border-border bg-surface-2 px-4 py-3 pe-12 {cls}"
 		role="status"
@@ -48,7 +48,7 @@
 			{t('fallback.title').replace('%lang%', want)}
 		</p>
 		<p class="mt-1 text-small text-muted">
-			{t('fallback.body').replace('%lang%', localeName(fallback.shown))}
+			{t('fallback.body').replace('%lang%', languageNameIn(fallback.shown, fallback.requested))}
 		</p>
 		{#if alternates.length > 1}
 			<div class="mt-3 flex flex-wrap items-center gap-2">

@@ -180,10 +180,18 @@
 	// The <title> names the chapter, then the book AND its author — people search
 	// "<author> <book> chapter 1", and the author was missing. Localized via
 	// chapter_title_tag (mirrors book_title_tag), so each locale's "by" is right.
+	// `chapterNameIn`: a chapter named after its book is "Chapter 1", not
+	// "Absolute Surrender — Absolute Surrender by …"; and the Modern English
+	// edition says so, or its tab, bookmark and result read as the original's.
 	const titleTag = $derived(
 		t('chapter.titleTag')
-			.replace('%chapter%', chapterName(chapter.order, chapter.title))
-			.replace('%title%', chapter.book_title)
+			.replace('%chapter%', chapterNameIn(chapter.order, chapter.title, chapter.book_title))
+			.replace(
+				'%title%',
+				edition === 'modern'
+					? `${chapter.book_title} (${t('reader.modernEdition')})`
+					: chapter.book_title
+			)
 			.replace('%name%', chapter.author_name)
 	);
 	// The chapter shares its BOOK's card — the cover on its own landscape ground,

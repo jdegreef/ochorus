@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { locales } from '$lib/paraglide/runtime';
 import { LIVE_LOCALES, LIVE_LOCALE_NAMES } from '$lib/live-locales.generated';
-import { LOCALE_NAMES, localeName } from './lang.svelte';
+import { LOCALE_NAMES, languageNameIn, localeName } from './lang.svelte';
 
 /**
  * Where a language's name in the reader comes from.
@@ -75,5 +75,17 @@ describe('locale names', () => {
 			if (!(locales as readonly string[]).includes(code)) continue;
 			expect(localeName(code), `${code} should be an autonym`).not.toBe(english);
 		}
+	});
+});
+
+describe('languageNameIn', () => {
+	it("names a language in the reader's own language, for use mid-sentence", () => {
+		expect(languageNameIn('en', 'es')).toBe('inglés');
+		expect(languageNameIn('es', 'es')).toBe('español');
+		expect(languageNameIn('en', 'en')).toBe('English');
+	});
+
+	it('falls back to the autonym for a tag the runtime cannot name', () => {
+		expect(languageNameIn('en', 'not a tag')).toBe(localeName('en'));
 	});
 });
