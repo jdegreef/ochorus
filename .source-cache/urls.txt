@@ -1,9 +1,6 @@
-https://ccel.org/ccel/luther/bondage/bondage.iii.html
-https://ccel.org/ccel/luther/bondage/bondage.iv.html
-https://ccel.org/ccel/luther/bondage/bondage.v.html
-https://ccel.org/ccel/luther/bondage/bondage.vi.html
-https://ccel.org/ccel/luther/bondage/bondage.ix.html
-https://archive.org/metadata/martinlutheronth00luthuoft
-https://archive.org/download/martinlutheronth00luthuoft/martinlutheronth00luthuoft_djvu.txt
-https://archive.org/metadata/martinlutheronbo00luth
-https://archive.org/download/martinlutheronbo00luth/martinlutheronbo00luth_djvu.txt
+https://ccel.org/ccel/luther/bondage/bondage.vii.i.html
+https://ccel.org/ccel/luther/bondage/bondage.ix.v.html
+https://archive.org/metadata/bondagewill00colegoog
+https://archive.org/download/bondagewill00colegoog/bondagewill00colegoog_djvu.txt
+https://archive.org/metadata/martinlutheronb00colegoog
+https://archive.org/download/martinlutheronb00colegoog/martinlutheronb00colegoog_djvu.txt
