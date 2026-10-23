@@ -46,7 +46,8 @@ const SHELF_OF: Record<string, Exclude<ShelfKey, 'more'>> = {
 	'men-who-tended-the-flock-2': 'lives',
 	'clothed-with-strength-and-dignity': 'life',
 	'rise-up-men-of-god-2': 'life',
-	'growing-in-wisdom': 'life'
+	'growing-in-wisdom': 'life',
+	'faithful-with-little': 'life'
 };
 
 const SHELF_ORDER: ShelfKey[] = ['lives', 'life', 'more'];

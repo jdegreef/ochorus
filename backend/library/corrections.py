@@ -18555,3 +18555,10 @@ BODY_CORRECTIONS.setdefault("witnessing-for-christ", {}).setdefault("replacement
     ("but they say, 6 There is no health", "but they say, `There is no health"),
     ("mas dizem: 6 Não há saúde", "mas dizem: `Não há saúde"),
 ])
+
+# Line-break hyphen left in the sermon's English (found porting the uk
+# edition, job #5242): the same sermon as Spurgeon on Prayer ch3, which reads
+# "Sisters" — the two texts otherwise match exactly.
+BODY_CORRECTIONS.setdefault("the-golden-key-of-prayer", {}).setdefault("replacements", []).extend([
+    ("my Brothers and Sis-ters,", "my Brothers and Sisters,"),
+])
