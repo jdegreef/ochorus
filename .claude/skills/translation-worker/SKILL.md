@@ -2852,3 +2852,14 @@ archaic spelling and period punctuation are the text, not defects in it.
   (5) Reviewers repaired evident English slips forward in the translation (Torrey's
   "streets of Jordan" = London; a "Thirdly … power of sin" paragraph under the
   sermon's own heading III on the Devil); the PR lists every one for `english-qa`.
+- **A new edition of a sermon with `restored_blocks` needs its OWN pairs in
+  `corrections.py`** (same batch): `a-full-reward`, `blessed-adversity` (Gutenberg
+  #23438) and `unfailing-springs` (#57109) are gated per edition by
+  `tests_english_audit` (`RibbandOfBlueDisplayLineTests`,
+  `UnfailingSpringsDisplayLineTests` — the latter also pins its LANGUAGES set). Translate
+  from the SETTLED English (`corrections.settled_sermon_body`) so the display lines are in
+  your body, then add one `(anchor, block)` per line under a `# <lang>` comment:
+  `block` is your translated element verbatim, `anchor` the opening of the element the
+  ENGLISH pair anchors on (back-to-back display lines anchor on each other, so mirror
+  the English list order). Prove it: strip every block, `restore_dropped_blocks`, and
+  compare to your body byte for byte.
