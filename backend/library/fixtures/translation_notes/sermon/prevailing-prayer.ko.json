@@ -1,0 +1,157 @@
+{
+ "kind": "sermon",
+ "slug": "prevailing-prayer",
+ "language": "ko",
+ "references": [
+  {
+   "reference": "James 5:16b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 8:26a",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 8:26b",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 8:27a",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Samuel 12:22",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Samuel 12:23",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Deuteronomy 9:14",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Exodus 32:12",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Revelation 12:2",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 119:53",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Psalm 119:136",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Jeremiah 4:19",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Esther 4:1",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Isaiah 66:8",
+   "status": "mined",
+   "block_index": 45,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "block_index": 48,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Colossians 1:27",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Isaiah 8:18",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Ezekiel 36:37",
+   "status": "mined",
+   "block_index": 65,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}

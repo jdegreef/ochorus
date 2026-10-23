@@ -2834,3 +2834,21 @@ archaic spelling and period punctuation are the text, not defects in it.
   rest, quoted as an example of waiting), the verse stays verbatim and the article's
   own sentence carries the point. ko still lacks 1 Peter 4:15–5:14 in the mirror, so
   1 Pet 5:7 is self_rendered in every ko article that quotes it.
+- **Level 1 sermon batch, vi/ko (150 sermons, 2026-10-23) — what bit.**
+  (1) A `scripture_ref` digit check must compare chapter:verse only: ko writes the book
+  number INTO the name (`고린도전서 1:23` for `1 Corinthians 1:23`), so a raw digit diff
+  failed every ko sermon on a numbered book until the validator was fixed.
+  (2) Some English sermon bodies carry stray `</blockquote>` closers (are-you-born-again,
+  aggressive-christianity, gods-love-for-a-sinning-world) that `clean_fragment` drops;
+  a translation mirroring the English markup inherits them. Gate "sanitizes the same as
+  its English", not "sanitizer-stable".
+  (3) More mirror damage, isolated: vi ISA 55:8 (and one more verse) carries a second
+  encoding garble (`týõÒng`); ko PRO 1 is numbered one verse off from 1:26 (the
+  "laugh … mock" verse sits at 1:27). Neither reached shipped text.
+  (4) Two halves of one verse quoted in two works (ko John 5:23) read to
+  `audit_verse_consistency` as a conflict; both were verbatim 개역, so it was absorbed
+  with that reason. Mined counts: 4,315 verbatim, 1,159 self-rendered — preachers
+  re-person the KJV constantly, so sermons run far more self-rendered than articles.
+  (5) Reviewers repaired evident English slips forward in the translation (Torrey's
+  "streets of Jordan" = London; a "Thirdly … power of sin" paragraph under the
+  sermon's own heading III on the Devil); the PR lists every one for `english-qa`.

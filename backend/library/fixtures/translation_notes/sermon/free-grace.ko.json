@@ -1,0 +1,197 @@
+{
+ "kind": "sermon",
+ "slug": "free-grace",
+ "language": "ko",
+ "references": [
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Galatians 4:30",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Ezekiel 36:24",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Ezekiel 36:25",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Ezekiel 36:26",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Ezekiel 36:27",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Peter 1:5",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalms 115:1",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Romans 3:4",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Galatians 1:1",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 1:13",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Isaiah 1:18",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Romans 13:4",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Ezekiel 33:11",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Ezekiel 18:32",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Song of Solomon 5:2",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Ezekiel 36:32",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 5:32",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 9:12",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 9:12",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Revelation 1:5",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Revelation 1:6",
+   "status": "self_rendered",
+   "block_index": 34
+  }
+ ]
+}

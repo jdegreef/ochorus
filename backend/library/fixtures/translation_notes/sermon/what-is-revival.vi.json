@@ -1,0 +1,42 @@
+{
+ "kind": "sermon",
+ "slug": "what-is-revival",
+ "language": "vi",
+ "references": [
+  {
+   "reference": "Isaiah 6:5",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Deuteronomy 11:21",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Acts 2:12",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Acts 2:2",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  }
+ ]
+}

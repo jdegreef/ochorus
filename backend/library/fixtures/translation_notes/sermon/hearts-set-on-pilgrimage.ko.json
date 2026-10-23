@@ -1,0 +1,89 @@
+{
+ "kind": "sermon",
+ "slug": "hearts-set-on-pilgrimage",
+ "language": "ko",
+ "references": [
+  {
+   "reference": "Romans 8:28",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 8:29",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Hebrews 11:13",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Job 10:8",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Job 10:9",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 77:8",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 77:9",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Peter 4:12",
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Peter 4:12",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Psalm 84:6a",
+   "status": "mined",
+   "block_index": 50,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 29:3",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "Hebrews 5:8",
+   "status": "mined",
+   "block_index": 77,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 126:5",
+   "status": "mined",
+   "block_index": 93,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "mined",
+   "block_index": 98,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}

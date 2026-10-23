@@ -1,0 +1,329 @@
+{
+ "kind": "sermon",
+ "slug": "walking-with-god",
+ "language": "ko",
+ "references": [
+  {
+   "reference": "Genesis 5:24",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 25:24",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Genesis 5:24a",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Genesis 5:24b",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Jude 1:14",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Jude 1:15",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Hebrews 11:5",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Genesis 3:12",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 7:21",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Amos 3:3",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Timothy 1:14",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 14:17",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "1 John 2:6",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Psalms 84:7",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Timothy 4:15",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Peter 3:18",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 5:39",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalms 119:105",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalms 1:2",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Timothy 4:13",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Joshua 1:8",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 4:4",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Ephesians 6:17",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Samuel 21:9",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Peter 1:18",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Peter 1:19",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 26:41",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalms 39:3",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Timothy 3:16",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Matthew 10:30",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Matthew 10:29",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "1 John 5:21",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Proverbs 23:26",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 1:6",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalms 122:1",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalms 16:3",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Proverbs 27:17",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Esther 5:11",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Esther 5:12",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Esther 6:6",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Esther 6:8",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Esther 6:9",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 15:15",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Psalms 84:10",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Proverbs 3:17",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 3:9",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Acts 9:2",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 5:11",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Matthew 5:12",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalms 42:2",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Isaiah 57:15",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Isaiah 66:2",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Revelation 3:16",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}

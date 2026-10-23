@@ -1,0 +1,114 @@
+{
+ "kind": "sermon",
+ "slug": "the-new-birth",
+ "language": "vi",
+ "job_issue": 6395,
+ "references": [
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 4:24",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 3:3",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 3:4",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "John 3:5",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 3:8a",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Luke 7:14b",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Romans 6:23a",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 3:14",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 3:15",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 1:29b",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 3:14",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 3:15",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 3:14",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 3:15",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  }
+ ]
+}

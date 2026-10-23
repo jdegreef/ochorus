@@ -1,0 +1,80 @@
+{
+ "kind": "sermon",
+ "slug": "of-christs-resurrection",
+ "language": "vi",
+ "job_issue": 6412,
+ "references": [
+  {
+   "reference": "Mark 16:1",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Genesis 1:5",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Genesis 1:8",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Genesis 1:13",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 4:25",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 4:25b",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Genesis 3:15",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Genesis 22:18",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 4:25b",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 15:55",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  }
+ ]
+}

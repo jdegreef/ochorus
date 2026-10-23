@@ -1,0 +1,25 @@
+{
+ "kind": "sermon",
+ "slug": "breaking-up-the-fallow-ground",
+ "language": "ko",
+ "references": [
+  {
+   "reference": "Hosea 10:12",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 7:12",
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 7:12",
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}
