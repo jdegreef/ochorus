@@ -2808,3 +2808,29 @@ archaic spelling and period punctuation are the text, not defects in it.
   `author_bios_vi/<slug>.short.txt` was a bare newline). Nothing failed — the seed only
   writes non-empty fields — so the author cards simply had no Vietnamese summary. The
   Level 1 batch filled them. Check `wc -c` on the `.short.txt` files you ship.
+- **More vi mirror damage: `k”` is `kỳ`** (Level 1 article batch, 2026-10-23). After the
+  VNI-capital and vocative-`Ớ` repairs above, `vie_kt` still carries `k”` for `kỳ` (179
+  verses, e.g. Rom 8:38 `bất k”` = `bất kỳ`), `K”` for `Kỳ` (4) and `hu”nh` for `huỳnh`
+  (4). A reviewer caught it because the verbatim check refused the damaged verse; scan a
+  cleaned index for a letter glued to `”` before trusting it (genuine closing quotes
+  follow a whole word).
+- **Fan-out batches need a SHARED TITLE + TERM TABLE built first — one agent per
+  language, then the translators** (same batch, 40 articles × vi/ko). Articles name the
+  same books over and over (Pilgrim's Progress, All of Grace, the Imitation), most with
+  no edition in the language yet; forty parallel translators would coin forty titles.
+  The table agent took edition titles verbatim, reused titles the shipped bios had
+  already coined, and coined the rest ONCE (~100 titles, ~150 people, ~150–220 terms
+  per language). Reviewers then checked consistency against it. Open questions it
+  raised, for the first native reviewer: ko sermon titles in 「」 (the bios' usage) vs
+  『』 for books; vi `Cây Sậy Bị Giập` vs the Baxter bio's `Cây sậy đã giập`.
+- **The brand is Latin `Ochorus` in ko (and vi) prose**, as in every UI string
+  (`frontend/messages/ko.json`, 60 uses, no 오코러스). Translators transliterate it
+  unprompted; put it in the brief. 오코러스 ends in a vowel, so the particles that
+  followed it (는/가/를) stay right after the swap.
+- **Articles at clause level vs Cadman / 개역** (same batch: 1,003 verses verbatim, 8
+  self-rendered). Where a verbatim verse says MORE than the English quote (Acts 11:18
+  "to the Gentiles", Heb 10:25 "as is the habit of some"), reviewers kept the verse —
+  verbatim beats trimmed. Where it says something DIFFERENT (Ps 62:1 vi "nghỉ an",
+  rest, quoted as an example of waiting), the verse stays verbatim and the article's
+  own sentence carries the point. ko still lacks 1 Peter 4:15–5:14 in the mirror, so
+  1 Pet 5:7 is self_rendered in every ko article that quotes it.
