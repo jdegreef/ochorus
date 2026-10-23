@@ -18571,3 +18571,10 @@ BODY_CORRECTIONS.setdefault("the-possibilities-of-faith", {}).setdefault("replac
     # OCR slip for 'Alleluia' (Rev 19:6, quoted)
     ("Christ. Allelnia! The Lord", "Christ. Alleluia! The Lord"),
 ])
+
+# English slips found translating the sermon to Ukrainian (job #5246); each
+# is an extraction slip with a single evident reading.
+BODY_CORRECTIONS.setdefault("the-joy-of-the-lord", {}).setdefault("replacements", []).extend([
+    # stray full stop mid-phrase
+    ("glad face, as bright. as heaven,", "glad face, as bright as heaven,"),
+])
