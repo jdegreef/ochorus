@@ -18562,3 +18562,26 @@ BODY_CORRECTIONS.setdefault("witnessing-for-christ", {}).setdefault("replacement
 BODY_CORRECTIONS.setdefault("the-golden-key-of-prayer", {}).setdefault("replacements", []).extend([
     ("my Brothers and Sis-ters,", "my Brothers and Sisters,"),
 ])
+
+# English slips found translating the sermon to Ukrainian (job #5245); each
+# is an extraction slip with a single evident reading.
+BODY_CORRECTIONS.setdefault("the-possibilities-of-faith", {}).setdefault("replacements", []).extend([
+    # line-break hyphen left mid-word
+    ("beneficent minis-try is", "beneficent ministry is"),
+    # OCR slip for 'Alleluia' (Rev 19:6, quoted)
+    ("Christ. Allelnia! The Lord", "Christ. Alleluia! The Lord"),
+])
+
+# English slips found translating the sermon to Ukrainian (job #5246); each
+# is an extraction slip with a single evident reading.
+BODY_CORRECTIONS.setdefault("the-joy-of-the-lord", {}).setdefault("replacements", []).extend([
+    # stray full stop mid-phrase
+    ("glad face, as bright. as heaven,", "glad face, as bright as heaven,"),
+])
+
+# English slips found translating the sermon to Ukrainian (job #5299); each
+# is an extraction slip with a single evident reading.
+BODY_CORRECTIONS.setdefault("walking-with-god", {}).setdefault("replacements", []).extend([
+    # OCR slip ('hears' for 'years')
+    ("several hundred hears before", "several hundred years before"),
+])

@@ -1,0 +1,70 @@
+{
+  "kind": "sermon",
+  "slug": "a-ribband-of-blue",
+  "language": "lg",
+  "job_issue": 3043,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Luke 22:42",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+      "block_index": 1
+    },
+    {
+      "reference": "Numbers 15:31",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+      "block_index": 5
+    },
+    {
+      "reference": "1 John 1:9",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+      "block_index": 6
+    },
+    {
+      "reference": "1 John 1:7",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+      "block_index": 6
+    },
+    {
+      "reference": "Ephesians 4:30",
+      "status": "self_rendered",
+      "block_index": 7
+    },
+    {
+      "reference": "Acts 7:51",
+      "status": "self_rendered",
+      "block_index": 7
+    },
+    {
+      "reference": "1 Thessalonians 5:19",
+      "status": "self_rendered",
+      "block_index": 7
+    },
+    {
+      "reference": "Ephesians 5:1",
+      "status": "self_rendered",
+      "block_index": 13
+    },
+    {
+      "reference": "Ephesians 5:2",
+      "status": "self_rendered",
+      "block_index": 13
+    },
+    {
+      "reference": "Matthew 5:48",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+      "block_index": 13
+    },
+    {
+      "reference": "Numbers 15:39",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+      "block_index": 17
+    }
+  ]
+}
