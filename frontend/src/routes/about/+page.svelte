@@ -35,11 +35,11 @@
 	// (countUp keeps a grouped figure grouped). The rest are field facts.
 	const library = $derived(
 		[
-			{ n: data.counts?.books ?? 0, label: 'about.statTitles' },
-			{ n: data.counts?.sermons ?? 0, label: 'about.statSermons' }
+			{ n: data.counts?.books ?? 0, key: 'about.statTitles' },
+			{ n: data.counts?.sermons ?? 0, key: 'about.statSermons' }
 		]
 			.filter((x) => x.n > 0)
-			.map((x) => [x.n.toLocaleString('en-US'), x.label])
+			.map((x) => [x.n.toLocaleString('en-US'), x.key])
 	);
 	const stats = $derived([
 		['7', 'about.statContinents'],
