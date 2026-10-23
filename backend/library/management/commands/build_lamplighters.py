@@ -665,7 +665,7 @@ VOLUMES: dict[int, dict[str, object]] = {
             "© James DeGreef and Ochorus. An Ochorus Original, written for young "
             "readers, free to read and share. Book 3 of The Lamplighters of Gloamhaven."
         ),
-        "cover_url": "/covers/the-glowstone-bargain.svg",
+        "cover_url": "/covers/art/the-glowstone-bargain.jpg",  # ORIGINAL_GROUND
         "cover_color": covers.ink_safe("#7a8a94"),  # cold glowstone grey
         "description": (
             "Wren, Tobin, Mira, Old Ash and Cinder come at last to Vaelport, a "

@@ -2,7 +2,7 @@
 	import { sealsPref } from '$lib/sealsPref.svelte';
 	import { onMount } from 'svelte';
 	import GoalPips from '$lib/components/GoalPips.svelte';
-	import { workPath } from '$lib/editionHref';
+	import { editionHref, workPath } from '$lib/editionHref';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { localizeHref } from '$lib/href';
@@ -722,7 +722,9 @@
 					<ol class="divide-y divide-border">
 						{#each offlineList as b (`${b.slug}:${b.language}`)}
 							<li class="flex items-baseline gap-3 py-2.5">
-								<a href={localizeHref(`/books/${b.slug}`)} class="min-w-0 flex-1 hover:no-underline">
+								<!-- The downloaded EDITION's page (its language's), not the
+								     interface locale's: offline, that is the one this device holds. -->
+								<a href={editionHref(`/books/${b.slug}`, b.language)} class="min-w-0 flex-1 hover:no-underline">
 									<span class="block truncate text-body text-text">{b.title}</span>
 									<!-- The language is named because a book downloaded in two of
 									     them is now two rows, and without it they read as duplicates. -->

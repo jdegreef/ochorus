@@ -78,6 +78,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'the-black-stair': 0.110,
 	'the-bruised-reed-teens': 0.110,
 	'the-everlasting-man': 0.110,
+	'the-glowstone-bargain': 0.110,
 	'the-imitation-of-christ-teens': 0.110,
 	'the-practice-of-the-presence-of-god-teens': 0.110,
 	'the-practice-of-the-presence-of-god': 0.110,

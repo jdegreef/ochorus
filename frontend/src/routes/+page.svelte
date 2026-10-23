@@ -10,6 +10,9 @@
 	import { auth } from '$lib/auth.svelte';
 	import HomeMarketing from '$lib/components/HomeMarketing.svelte';
 	import HomeDashboard from '$lib/components/HomeDashboard.svelte';
+	import { editionHref } from '$lib/editionHref';
+	import { newestFirst, readOfflineList } from '$lib/offlineList';
+	import { pwa } from '$lib/pwa.svelte';
 
 	let { data } = $props();
 
@@ -76,6 +79,14 @@
 	let mounted = $state(false);
 	onMount(() => (mounted = true));
 	const showDashboard = $derived(auth.enabled && mounted && !!auth.expectedUser);
+
+	// Offline, home's shelves come back empty (they need the network — the
+	// app's always do), so the books this device holds go first: one tap to a
+	// downloaded book, with no detour through Settings to find it. After mount
+	// only, so the prerendered page never carries it.
+	const downloads = $derived(
+		mounted && !pwa.online ? newestFirst(readOfflineList()) : []
+	);
 
 	// Settled: mounted, so the page now shows what it will keep showing. Tell
 	// the boot flag's CSS to reveal it — a frame later, once this render is on
@@ -160,6 +171,21 @@
 			</div>
 		</div>
 	</div>
+	{#if downloads.length}
+		<section class="page-col px-5 pt-8" aria-labelledby="home-downloads">
+			<h2 id="home-downloads" class="text-h3 mb-3">{t('settings.downloadsTitle')}</h2>
+			<ol class="divide-y divide-border">
+				{#each downloads as b (`${b.slug}:${b.language}`)}
+					<li>
+						<a href={editionHref(`/books/${b.slug}`, b.language)} class="block py-2.5 hover:no-underline">
+							<span class="block truncate text-body text-text">{b.title}</span>
+							{#if b.author}<span class="block truncate text-small text-muted">{b.author}</span>{/if}
+						</a>
+					</li>
+				{/each}
+			</ol>
+		</section>
+	{/if}
 	{#if showDashboard}
 		<HomeDashboard {data} />
 	{:else}

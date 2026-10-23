@@ -9,7 +9,7 @@ The phone apps are the same SvelteKit reader as the website, wrapped by
 | Content | baked in at build + live API | live API (`https://api.ochorus.com`) |
 | Images | served by the site itself | loaded from `https://ochorus.com`, not bundled (see below) |
 | Size | everything under `static/` | ~20 MB, capped at 24 MB (`bundle-budget.json` `appBundle`) |
-| Offline | service worker + Cache API | not yet: no service worker in iOS app web views (see roadmap) |
+| Offline | service worker + Cache API | downloaded books on the phone's own storage (see "Offline books in the app") |
 | Sign-in | Supabase | off for now (see roadmap); the app reads signed-out |
 | Needs the API to build | yes (prerender) | no |
 
@@ -33,7 +33,10 @@ The app bundle is copied into two native projects, which are committed:
   (what Android's Back closes first), `openExternal` (the
   system browser), `setStatusBar` (called by `$lib/theme` beside
   `<meta name="theme-color">`) and `startAppShell` (once, from the root
-  layout). Their app side is `native.ts`, loaded by a dynamic import behind
+  layout), plus the offline-files functions behind downloaded books
+  (`offlineReadText` / `offlineWriteText` / `offlineSaveFile` /
+  `offlineDelete` / `offlineFileBase`, see "Offline books in the app"). Their
+  app side is `native.ts`, loaded by a dynamic import behind
   `IS_APP`, so the website's JavaScript has none of it.
 - The API allows the app's origins (`capacitor://localhost` on iOS,
   `https://localhost` on Android) in `backend/config/settings.py`, whatever
@@ -81,8 +84,63 @@ as people keep that version, which can be years. Add the new file and keep the
 old one.
 
 So covers and portraits need the network in the app (the web view's HTTP
-cache keeps the ones already seen). Offline books on the phone's storage
-(roadmap 2) should save a book's cover and illustrations with its text.
+cache keeps the ones already seen) — except a downloaded book's cover and
+illustrations, which are saved with its text (next section).
+
+## Offline books in the app
+
+"Download for offline" works in the app as on the website — the book page's
+Download menu, the shelf menus, Settings → Activity's list — but the app runs
+no service worker (iOS's app web view has none), so a download cannot live in
+the Cache API. It goes to the phone's own storage instead:
+
+- **Where.** `offline/` in the app's Library/NoCloud on iOS (persistent, not a
+  cache the OS clears, and excluded from iCloud backups, as Apple asks of
+  content that can be downloaded again); the app's private files directory on
+  Android. `$lib/platform` (`native.ts`) is the only code that touches it.
+- **What.** `$lib/offlineBooks` fetches the edition's book response and every
+  chapter's (`bookApiPath` / `chapterApiPath` from `library-public.ts` — the
+  very paths `getBook` / `getChapterWithLang` request) and writes each as text
+  under `api/<encodeURIComponent(path)>.json`. Then the cover, its `-320` /
+  `-640` variants and the chapters' illustrations are downloaded natively
+  (`Filesystem.downloadFile`, so the website's images need no CORS headers)
+  into `img/<site path>`. The metadata entry in localStorage
+  (`ochorus:offline-books`) records the stored API paths (`apiKeys`) and image
+  paths (`images`) — relative keys only: the folder's absolute location changes
+  across iOS app updates, so it is resolved at each launch, never stored
+  (`$lib/platform/offlineFiles.ts` has the naming rule).
+- **Reading.** `$lib/api`'s `requestJSON` asks `$lib/appOffline` first for a
+  public library GET (no `Authorization`): a path in the downloaded set (a Set
+  indexed synchronously from the metadata) is answered from its stored text,
+  which is refreshed in the background when online — the service worker's
+  offlineThenSWR. Anything else goes to the network as before — except,
+  offline, a request in a language whose English twin was downloaded (an
+  edition saved through the English fallback, because the page's language has
+  no row): that is answered with the 404 the API gave, so the loaders' own
+  fallback finds the stored English and labels it English.
+- **Images.** `$lib/assetUrl` in the app returns a saved image's local URL
+  (`Capacitor.convertFileSrc` of the folder: `capacitor://localhost/_capacitor_file_/…`
+  on iOS, `https://localhost/_capacitor_file_/…` on Android — same origin, so
+  the CSP's `img-src 'self'` admits it), else the website's. The map is
+  reactive `$state`, filled by the root layout's load before the first render
+  (`appOfflineReady`, capped at 1.5 s) and updated on every download and
+  removal.
+- **Removal** deletes the edition's files, except images another kept edition
+  also recorded (a wordless `/covers/art/` ground every language wears, a
+  work's illustrations). Downloading an edition again drops what the book no
+  longer has, and keeps the earlier copy of any piece that fails this time.
+  Requests go through `$lib/api` (`apiFetchText`: its retries and 15 s
+  timeout), and the native image download has its own timeouts, so one silent
+  server cannot leave a download "in progress" for good.
+- **Getting there offline.** Home's shelves need the network, so offline it
+  lists the downloaded books first (Settings' "Downloaded for offline" list
+  does too); both link to each download's own edition (`editionHref`). The
+  book and chapter pages load only their book / chapter, so a downloaded
+  edition opens with no connection.
+
+The website bundle carries none of this: every entry point checks `IS_APP`,
+a build-time constant, and the Capacitor calls stay behind `native.ts`'s
+dynamic import.
 
 ## One-time setup on the Mac
 
@@ -194,8 +252,8 @@ versions are their own, the core packages stay on one version) do:
 ## What the app does not do yet (the roadmap)
 
 1. ~~**Native shell polish**~~ — done; see **The native shell** above.
-2. **Offline books on the phone's own storage.** The "Download for offline"
-   option is hidden in the app (`offlineBooks.supported`) until then.
+2. ~~**Offline books on the phone's own storage**~~ — done (Oct 2026); see
+   "Offline books in the app".
 3. **Sign-in:** the website's flows return to `window.location.origin`, which
    in the app is not a web address. Needs Universal Links / App Links (with
    `/.well-known/apple-app-site-association` and `assetlinks.json` on
