@@ -32,6 +32,9 @@ jobs:
               path = root / u.netloc / u.path.lstrip("/")
               if not path.suffix:
                   path = path / "index.html"
+              if u.query:
+                  import hashlib
+                  path = path.with_name(path.name + "." + hashlib.sha1(u.query.encode()).hexdigest()[:10] + ".html")
               try:
                   req = urllib.request.Request(url, headers={"User-Agent": ua})
                   with urllib.request.urlopen(req, timeout=120) as resp:
