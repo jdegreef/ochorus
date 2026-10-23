@@ -132,14 +132,35 @@ let downloads = 0;
 export async function offlineSaveFile(file: string, url: string): Promise<boolean> {
 	const tmp = `offline-incoming/${Date.now()}-${downloads++}`;
 	try {
-		await Filesystem.downloadFile({ url, path: tmp, directory: Directory.Cache, recursive: true });
-		const dir = at(file).split('/').slice(0, -1).join('/');
+		// Timeouts (ms), so one silent server cannot hold a download open.
+		await Filesystem.downloadFile({
+			url,
+			path: tmp,
+			directory: Directory.Cache,
+			recursive: true,
+			connectTimeout: 15_000,
+			readTimeout: 30_000
+		});
+		const dest = at(file);
 		// mkdir rejects a folder that is already there; the move below is the test.
-		await Filesystem.mkdir({ path: dir, directory: OFFLINE, recursive: true }).catch(() => {});
-		// A move does not overwrite: a file saved before (another edition's
-		// download of the same cover) is replaced by the fresh one.
-		await Filesystem.deleteFile({ path: at(file), directory: OFFLINE }).catch(() => {});
-		await Filesystem.rename({ from: tmp, directory: Directory.Cache, to: at(file), toDirectory: OFFLINE });
+		await Filesystem.mkdir({ path: dest.split('/').slice(0, -1).join('/'), directory: OFFLINE, recursive: true }).catch(
+			() => {}
+		);
+		// A move does not overwrite, and a file already here (the same cover,
+		// saved by another edition) may be one a kept download still shows: set
+		// it aside, and put it back if the new one cannot take its place.
+		const aside = `${dest}.old`;
+		const hadOne = await Filesystem.rename({ from: dest, to: aside, directory: OFFLINE }).then(
+			() => true,
+			() => false
+		);
+		try {
+			await Filesystem.rename({ from: tmp, directory: Directory.Cache, to: dest, toDirectory: OFFLINE });
+		} catch (err) {
+			if (hadOne) await Filesystem.rename({ from: aside, to: dest, directory: OFFLINE }).catch(() => {});
+			throw err;
+		}
+		if (hadOne) await Filesystem.deleteFile({ path: aside, directory: OFFLINE }).catch(() => {});
 		return true;
 	} catch {
 		await Filesystem.deleteFile({ path: tmp, directory: Directory.Cache }).catch(() => {});

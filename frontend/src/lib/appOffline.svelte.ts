@@ -26,7 +26,6 @@
  * website: every entry point checks `IS_APP`, a build-time constant.
  */
 import { browser } from '$app/environment';
-import { API_BASE_URL } from './config';
 import { readOfflineList, type OfflineBook } from './offlineList';
 import { IS_APP, offlineFileBase, offlineReadText, offlineWriteText } from './platform';
 import { apiFile, imageFile, offlineFileUrl } from './platform/offlineFiles';
@@ -87,32 +86,38 @@ export function localAsset(path: string): string | undefined {
 /**
  * A downloaded API response for `path` (path + query, as $lib/api requests
  * it), parsed — or undefined, and the caller asks the network as usual. The
- * caller only asks for public library GETs.
+ * caller only asks for public library GETs, and refreshes a hit itself.
  */
 export async function readDownloaded(path: string): Promise<unknown> {
 	if (!IS_APP || !downloadedApi().has(path)) return undefined;
 	const text = await offlineReadText(apiFile(path));
 	if (text == null) return undefined;
-	let data: unknown;
 	try {
-		data = JSON.parse(text);
+		return JSON.parse(text);
 	} catch {
 		return undefined;
 	}
-	if (navigator.onLine) void refresh(path);
-	return data;
 }
 
-/** Bring a stored copy up to date; never fatal, and never re-stores a path
- *  whose edition was removed while the request was out. */
-async function refresh(path: string): Promise<void> {
-	try {
-		const res = await fetch(`${API_BASE_URL}${path}`);
-		if (!res.ok) return;
-		const text = await res.text();
-		JSON.parse(text);
-		if (downloadedApi().has(path)) await offlineWriteText(apiFile(path), text);
-	} catch {
-		/* offline after all, or a bad body — keep the copy we have */
-	}
+/** Replace the stored copy of `path` with a fresh response — unless its
+ *  edition was removed while the request was out, or the body is not JSON. */
+export async function storeDownloaded(path: string, text: string): Promise<void> {
+	if (!IS_APP) return;
+	JSON.parse(text);
+	if (downloadedApi().has(path)) await offlineWriteText(apiFile(path), text);
+}
+
+/**
+ * Offline, with `path` (in a language other than English) not downloaded but
+ * its English twin is: the edition was downloaded through the English
+ * fallback (the page's language had no row, so the API served English). The
+ * caller answers it as the API did — a 404 — so the fallback finds the stored
+ * English and labels it English.
+ */
+export function englishDownloadedOffline(path: string): boolean {
+	if (!IS_APP || navigator.onLine) return false;
+	const m = /([?&]language=)([^&]+)/.exec(path);
+	if (!m || m[2] === 'en') return false;
+	const english = path.replace(m[0], `${m[1]}en`);
+	return downloadedApi().has(english);
 }

@@ -113,7 +113,11 @@ the Cache API. It goes to the phone's own storage instead:
   public library GET (no `Authorization`): a path in the downloaded set (a Set
   indexed synchronously from the metadata) is answered from its stored text,
   which is refreshed in the background when online — the service worker's
-  offlineThenSWR. Anything else goes to the network as before.
+  offlineThenSWR. Anything else goes to the network as before — except,
+  offline, a request in a language whose English twin was downloaded (an
+  edition saved through the English fallback, because the page's language has
+  no row): that is answered with the 404 the API gave, so the loaders' own
+  fallback finds the stored English and labels it English.
 - **Images.** `$lib/assetUrl` in the app returns a saved image's local URL
   (`Capacitor.convertFileSrc` of the folder: `capacitor://localhost/_capacitor_file_/…`
   on iOS, `https://localhost/_capacitor_file_/…` on Android — same origin, so
@@ -123,8 +127,11 @@ the Cache API. It goes to the phone's own storage instead:
   removal.
 - **Removal** deletes the edition's files, except images another kept edition
   also recorded (a wordless `/covers/art/` ground every language wears, a
-  work's illustrations). Downloading an edition again drops what the old copy
-  stored and the new one did not.
+  work's illustrations). Downloading an edition again drops what the book no
+  longer has, and keeps the earlier copy of any piece that fails this time.
+  Requests go through `$lib/api` (`apiFetchText`: its retries and 15 s
+  timeout), and the native image download has its own timeouts, so one silent
+  server cannot leave a download "in progress" for good.
 - **Getting there offline.** Home's shelves need the network, so offline it
   lists the downloaded books first (Settings' "Downloaded for offline" list
   does too); both link to each download's own edition (`editionHref`). The

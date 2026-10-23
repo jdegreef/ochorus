@@ -137,6 +137,18 @@ describe('native offline files', () => {
 			toDirectory: NC
 		});
 	});
+	it('puts back the file already there when the new one cannot take its place', async () => {
+		// The same cover saved by another edition: a kept download still shows it.
+		m.fs.rename
+			.mockResolvedValueOnce({}) // set aside
+			.mockRejectedValueOnce(new Error('move failed')) // the new one in
+			.mockResolvedValueOnce({}); // put back
+		expect(await offlineSaveFile('img/covers/a.webp', 'https://ochorus.com/covers/a.webp')).toBe(false);
+		const dest = 'offline/img/covers/a.webp';
+		expect(m.fs.rename).toHaveBeenNthCalledWith(1, { from: dest, to: `${dest}.old`, directory: NC });
+		expect(m.fs.rename).toHaveBeenNthCalledWith(3, { from: `${dest}.old`, to: dest, directory: NC });
+		expect(m.fs.deleteFile).not.toHaveBeenCalledWith({ path: dest, directory: NC });
+	});
 	it('reports a failed download and leaves nothing in the cache', async () => {
 		m.fs.downloadFile.mockRejectedValue(new Error('offline'));
 		expect(await offlineSaveFile('img/covers/a.webp', 'https://ochorus.com/covers/a.webp')).toBe(false);

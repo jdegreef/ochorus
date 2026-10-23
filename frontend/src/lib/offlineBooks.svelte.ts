@@ -1,12 +1,13 @@
 import { browser } from '$app/environment';
 import { preloadCode } from '$app/navigation';
 import { reindexOffline } from './appOffline.svelte';
+import { apiFetchText } from './api';
 import { remoteAsset } from './assetUrl';
 import { API_BASE_URL } from './config';
 import { coverVariants } from './coverArt';
 import { illustrationSrcs } from './illustrations';
 import { bookApiPath, chapterApiPath } from './library-public';
-import { OFFLINE_BOOKS_KEY, readOfflineList, type OfflineBook } from './offlineList';
+import { newestFirst, OFFLINE_BOOKS_KEY, readOfflineList, type OfflineBook } from './offlineList';
 import { writeJSON } from './persisted';
 import { APP_ASSET_ORIGIN, IS_APP, offlineDelete, offlineSaveFile, offlineWriteText } from './platform';
 import { apiFile, imageFile } from './platform/offlineFiles';
@@ -73,12 +74,12 @@ function chapterPictures(text: string): string[] {
 	return typeof body === 'string' ? illustrationSrcs(body) : [];
 }
 
-/** What the app saves of a picture: a site path it would otherwise load from
- *  the website (`$lib/assetUrl`), with a safe file name. Bundled marks and
- *  absolute URLs are left alone. */
 /** What a download recorded it stored (app only; see OfflineBook). */
 type Stored = Pick<OfflineBook, 'apiKeys' | 'images'>;
 
+/** What the app saves of a picture: a site path it would otherwise load from
+ *  the website (`$lib/assetUrl`), with a safe file name. Bundled marks and
+ *  absolute URLs are left alone. */
 const appSavesImage = (path: string) =>
 	!!path && remoteAsset(path, APP_ASSET_ORIGIN) !== path && imageFile(path) !== null;
 
@@ -88,6 +89,15 @@ const appSavesImage = (path: string) =>
  * the module is the same one whatever locale prefixes the URL.
  */
 const chapterPath = (slug: string, order: number) => `/books/${slug}/${order}/`;
+
+/** `fn` over `items`, `n` at a time. */
+async function inPool<T>(items: T[], n: number, fn: (item: T) => Promise<void>): Promise<void> {
+	const queue = [...items];
+	const worker = async () => {
+		while (queue.length) await fn(queue.shift()!);
+	};
+	await Promise.all(Array.from({ length: Math.min(n, queue.length) }, worker));
+}
 
 class OfflineBooks {
 	/** Bumped on any change so `list()` / `has()` re-derive. */
@@ -118,36 +128,36 @@ class OfflineBooks {
 	 * path, then the cover, its variants and the chapters' pictures saved there
 	 * by site path. Returns what was stored, for the metadata entry. Best-effort
 	 * per piece, as on the website: a chapter or picture that fails leaves the
-	 * rest downloaded.
+	 * rest downloaded — and, downloading an edition AGAIN, keeps the copy the
+	 * last download stored (`old`) rather than losing it to a flaky network.
+	 * A few requests at a time; an illustrated book has dozens of files.
 	 */
-	async #saveToDevice(book: DownloadableBook, paths: string[]): Promise<Stored> {
-		const apiKeys: string[] = [];
+	async #saveToDevice(book: DownloadableBook, paths: string[], old?: OfflineBook): Promise<Stored> {
+		const stored = new Set<string>();
 		const pictures = new Set<string>();
-		for (const [i, path] of paths.entries()) {
+		await inPool(paths, 4, async (path) => {
 			try {
-				const res = await fetch(`${API_BASE_URL}${path}`);
-				if (res.ok) {
-					const text = await res.text();
-					if (await offlineWriteText(apiFile(path), text)) apiKeys.push(path);
-					// paths[0] is the book itself; only chapters carry a body.
-					if (i > 0) for (const src of chapterPictures(text)) pictures.add(src);
-				}
+				const text = await apiFetchText(path);
+				if (await offlineWriteText(apiFile(path), text)) stored.add(path);
+				// paths[0] is the book itself; only chapters carry a body.
+				if (path !== paths[0]) for (const src of chapterPictures(text)) pictures.add(src);
 			} catch {
 				/* one chapter failed — keep going; the rest still download */
 			}
 			this.#progress(book, paths.length);
-		}
-		const wanted = [book.cover_url, ...coverVariants(book.cover_url), ...pictures].filter(appSavesImage);
-		// A few at a time: an illustrated book can have dozens.
-		const queue = [...new Set(wanted)];
-		const images: string[] = [];
-		const worker = async () => {
-			for (let path = queue.shift(); path; path = queue.shift()) {
-				if (await offlineSaveFile(imageFile(path)!, `${APP_ASSET_ORIGIN}${path}`)) images.push(path);
-			}
-		};
-		await Promise.all(Array.from({ length: 4 }, worker));
-		return { apiKeys, images };
+		});
+		const wanted = [...new Set([book.cover_url, ...coverVariants(book.cover_url), ...pictures])].filter(
+			appSavesImage
+		);
+		const saved = new Set<string>();
+		await inPool(wanted, 4, async (path) => {
+			if (await offlineSaveFile(imageFile(path)!, `${APP_ASSET_ORIGIN}${path}`)) saved.add(path);
+		});
+		// A failed piece the last download had: its file is still there.
+		for (const k of old?.apiKeys ?? []) if (paths.includes(k)) stored.add(k);
+		for (const p of old?.images ?? []) if (wanted.includes(p)) saved.add(p);
+		// In the order the book has them, not the order they arrived in.
+		return { apiKeys: paths.filter((p) => stored.has(p)), images: wanted.filter((p) => saved.has(p)) };
 	}
 
 	/**
@@ -168,7 +178,7 @@ class OfflineBooks {
 	/** All downloaded books, newest first. Reads `ticks` so callers stay reactive. */
 	list(): OfflineBook[] {
 		this.ticks;
-		return [...this.#load()].sort((a, b) => b.at - a.at);
+		return newestFirst(this.#load());
 	}
 
 	/** Whether this device can save a book for offline reading at all. */
@@ -193,20 +203,17 @@ class OfflineBooks {
 		];
 		this.active = { slug: book.slug, language: book.language, done: 0, total: paths.length };
 		try {
+			const old = this.#load().find((b) => sameEdition(b, book.slug, book.language));
 			// No `preloadCode` in the app: its code is all in the bundle.
-			const stored = IS_APP ? await this.#saveToDevice(book, paths) : await this.#saveToCache(book, paths);
+			const stored = IS_APP ? await this.#saveToDevice(book, paths, old) : await this.#saveToCache(book, paths);
 			// Replace only THIS edition's entry. Filtering on slug alone discarded
 			// the other language's metadata while its cached bytes stayed behind —
 			// an untracked download that nothing could then remove.
-			const before = this.#load();
-			const list = before.filter((b) => !sameEdition(b, book.slug, book.language));
-			if (IS_APP) {
-				// Downloading an edition again: what the old copy stored and the new
-				// one did not (a chapter since dropped, a redrawn cover's old name)
-				// would otherwise stay on the phone with nothing to remove it.
-				const old = before.find((b) => sameEdition(b, book.slug, book.language));
-				if (old) await this.#deleteFiles(old, [...list, { ...old, ...stored }]);
-			}
+			const list = this.#load().filter((b) => !sameEdition(b, book.slug, book.language));
+			// Downloading an edition again (app): what the old copy stored and the
+			// book no longer has (a chapter since dropped, a redrawn cover's old
+			// name) would otherwise stay on the phone with nothing to remove it.
+			if (IS_APP && old) await this.#deleteFiles(old, [...list, { ...old, ...stored }]);
 			list.push({
 				slug: book.slug,
 				title: book.title,

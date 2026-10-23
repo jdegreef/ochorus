@@ -31,3 +31,6 @@ export function readOfflineList(): OfflineBook[] {
 	const raw = readJSON<OfflineBook[]>(OFFLINE_BOOKS_KEY, []);
 	return Array.isArray(raw) ? raw : [];
 }
+
+/** The downloads as the reader sees them listed: newest first. */
+export const newestFirst = (list: OfflineBook[]): OfflineBook[] => [...list].sort((a, b) => b.at - a.at);

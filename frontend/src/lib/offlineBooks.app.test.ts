@@ -125,6 +125,33 @@ describe('downloading in the app', () => {
 		expect(entry.apiKeys).toHaveLength(2);
 	});
 
+	it('downloading again keeps what the last download stored when a piece fails this time', async () => {
+		stubApi();
+		await offlineBooks.download(book('en'));
+		const first = readOfflineList()[0];
+		p.del.mockClear();
+		// A flaky network the second time: chapter 2 and the plate do not arrive.
+		p.saveFile.mockImplementation(async (file: string) => !file.includes('plate'));
+		p.writeText.mockImplementation(async (f: string) => !f.includes(encodeURIComponent('/chapters/2/')));
+		await offlineBooks.download(book('en'));
+		const [entry] = readOfflineList();
+		expect(entry.apiKeys).toEqual(first.apiKeys);
+		expect(entry.images).toEqual(first.images);
+		expect(p.del.mock.calls.flat(2)).toEqual([]);
+	});
+
+	it('downloading again drops what the book no longer has', async () => {
+		stubApi();
+		await offlineBooks.download(book('en'));
+		p.del.mockClear();
+		await offlineBooks.download(book('en', { chapters: [{ order: 1 }] }));
+		const gone = p.del.mock.calls.flat(2);
+		expect(gone).toContain(apiFile(chapterApiPath('humility', 2, 'en')));
+		expect(gone).toContain('img/illustrations/humility/plate.jpg');
+		expect(gone).not.toContain(apiFile(chapterApiPath('humility', 1, 'en')));
+		expect(readOfflineList()[0].apiKeys).toHaveLength(2);
+	});
+
 	it('removes an edition’s files but keeps the pictures another edition still shows', async () => {
 		stubApi();
 		await offlineBooks.download(book('en'));
@@ -194,6 +221,38 @@ describe('reading a download in the app ($lib/api)', () => {
 		await apiFetch(key, { method: 'POST', body: '{}' });
 		expect(p.readText).not.toHaveBeenCalled();
 		expect(fetch).toHaveBeenCalledTimes(3);
+	});
+
+	it('offline, finds an edition downloaded through the English fallback', async () => {
+		// No Spanish row, so on /es the API answered in English and that is what
+		// was stored; offline, the /es page's own request must reach it.
+		await downloaded();
+		const fetch = stubApi();
+		online(false);
+		const { getChapterWithLang } = await import('./library-public');
+		// Answered as the API would: a 404, which the loaders fall back on…
+		await expect(apiFetch(bookApiPath('humility', 'es'))).rejects.toMatchObject({ status: 404 });
+		// …to the stored English, labelled English (the prose's `lang`).
+		const chapter = {
+			order: 1,
+			title: 'I',
+			body_html: '<p>x</p>',
+			book_title: 'Humility',
+			book_slug: 'humility',
+			author_name: 'Andrew Murray'
+		};
+		p.files.set(apiFile(chapterApiPath('humility', 1, 'en')), JSON.stringify(chapter));
+		const res = await getChapterWithLang('humility', 1, 'es');
+		expect(res.language).toBe('en');
+		expect(res.data.title).toBe('I');
+		expect(fetch).not.toHaveBeenCalled();
+	});
+
+	it('online, a language nobody downloaded still asks the API', async () => {
+		await downloaded();
+		const fetch = stubApi();
+		await apiFetch(bookApiPath('humility', 'es'));
+		expect(fetch).toHaveBeenCalledTimes(1);
 	});
 
 	it('falls back to the network when the stored copy is missing', async () => {

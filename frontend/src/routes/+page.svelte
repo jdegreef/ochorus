@@ -11,7 +11,7 @@
 	import HomeMarketing from '$lib/components/HomeMarketing.svelte';
 	import HomeDashboard from '$lib/components/HomeDashboard.svelte';
 	import { editionHref } from '$lib/editionHref';
-	import { readOfflineList } from '$lib/offlineList';
+	import { newestFirst, readOfflineList } from '$lib/offlineList';
 	import { pwa } from '$lib/pwa.svelte';
 
 	let { data } = $props();
@@ -85,7 +85,7 @@
 	// downloaded book, with no detour through Settings to find it. After mount
 	// only, so the prerendered page never carries it.
 	const downloads = $derived(
-		mounted && !pwa.online ? readOfflineList().sort((a, b) => b.at - a.at) : []
+		mounted && !pwa.online ? newestFirst(readOfflineList()) : []
 	);
 
 	// Settled: mounted, so the page now shows what it will keep showing. Tell

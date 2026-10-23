@@ -1,5 +1,5 @@
 import { building } from '$app/environment';
-import { readDownloaded } from './appOffline.svelte';
+import { englishDownloadedOffline, readDownloaded, storeDownloaded } from './appOffline.svelte';
 import { API_BASE_URL } from './config';
 import { IS_APP } from './platform';
 
@@ -177,7 +177,15 @@ async function requestJSON<T>(path: string, init: RequestInit, f?: Fetch): Promi
 	// build-time constant, so the website has none of this. See $lib/appOffline.
 	if (IS_APP && isPublicLibraryRead(path, init) && !headers.has('Authorization')) {
 		const stored = await readDownloaded(path);
-		if (stored !== undefined) return stored as T;
+		if (stored !== undefined) {
+			if (navigator.onLine) void refreshDownloaded(path);
+			return stored as T;
+		}
+		// Offline, an edition downloaded through the English fallback (no row in
+		// the page's language, so the API served English and that is what was
+		// stored): answer as the API would — a 404 — so `localized` /
+		// `localizedWithLang` fall back to the stored English, labelled English.
+		if (englishDownloadedOffline(path)) throw new ApiError(404, null);
 	}
 	if (init.body && !headers.has('Content-Type')) {
 		headers.set('Content-Type', 'application/json');
@@ -204,6 +212,28 @@ async function requestJSON<T>(path: string, init: RequestInit, f?: Fetch): Promi
 	}
 	if (res.status === 204) return null as T;
 	return (await res.json()) as T;
+}
+
+/**
+ * A public library read as TEXT, from the network only: never the app's
+ * downloaded copy, never with the reader's token. What a download stores
+ * ($lib/offlineBooks in the app) — the same retries and timeout as every other
+ * read, so one hung request cannot leave a download in progress for good.
+ */
+export async function apiFetchText(path: string): Promise<string> {
+	const res = await robustFetch(`${API_BASE_URL}${path}`, { signal: withTimeout(undefined) });
+	if (!res.ok) throw new ApiError(res.status, await errorBody(res));
+	return res.text();
+}
+
+/** Bring the app's stored copy of `path` up to date (the service worker's
+ *  stale-while-revalidate, for the app); never fatal. */
+async function refreshDownloaded(path: string): Promise<void> {
+	try {
+		await storeDownloaded(path, await apiFetchText(path));
+	} catch {
+		/* offline after all, or the API is down — keep the copy we have */
+	}
 }
 
 /**
