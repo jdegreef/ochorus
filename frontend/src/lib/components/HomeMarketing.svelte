@@ -5,7 +5,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import ContinueReading, { hold as continueHold } from '$lib/components/ContinueReading.svelte';
 	import ReadingNudge, { hold as nudgeHold } from '$lib/components/ReadingNudge.svelte';
-	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
+	import SermonOfTheDay from '$lib/components/SermonOfTheDay.svelte';
 	import HomeArticles from '$lib/components/HomeArticles.svelte';
 	import DiscoverStrip from '$lib/components/DiscoverStrip.svelte';
 	import TopicChips from '$lib/components/TopicChips.svelte';
@@ -199,9 +199,9 @@
      into the prerendered HTML. See SignupBand. -->
 <SignupBand />
 
-<!-- Sermon of the week — editorial content discovery, not personal. Renders
+<!-- Sermon of the day — editorial content discovery, not personal. Renders
      nothing when there is no featured sermon in the current language. -->
-<SermonOfTheWeek />
+<SermonOfTheDay />
 
 <!-- Eight articles for today — turns over daily; renders nothing in a language
      with fewer than eight articles. -->

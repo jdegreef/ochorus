@@ -856,7 +856,7 @@
   "common_min_listen": "%n%분 듣기",
   "common_hr_listen": "%h%시간 듣기",
   "common_hr_min_listen": "%h%시간 %m%분 듣기",
-  "home_sermon_of_week": "이번 주의 설교",
+  "home_sermon_of_day": "오늘의 설교",
   "home_sermon_read_or_listen": "읽거나, 다음으로 듣기:",
   "home_articles_title": "오늘의 여덟 편",
   "home_articles_subtitle": "매일 아침 새로운 목록",

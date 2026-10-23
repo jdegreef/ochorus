@@ -7,7 +7,7 @@
 
 	/**
 	 * A sermon's plate: the hue-washed band it wears at the head of its own page
-	 * and in the Sermon of the week panel. The sermon's words sit in the band and
+	 * and in the Sermon of the day panel. The sermon's words sit in the band and
 	 * its passage monogram (MAT over 11, as on every sermon shelf) anchors the
 	 * far end. Its share card (`scripts/generate-sermon-og.mjs`) keeps the same
 	 * composition and hue, with the illustrated emblem in the chip.
@@ -38,7 +38,7 @@
 		scriptureRef: string | null | undefined;
 		title: string;
 		/**
-		 * Smaller chip and tighter band, for the Sermon of the week panel — it
+		 * Smaller chip and tighter band, for the Sermon of the day panel — it
 		 * sits inside a page column rather than heading one.
 		 *
 		 * A variant, not a CSS length: the size has to come from the stylesheet
@@ -50,7 +50,7 @@
 		compact?: boolean;
 		/**
 		 * An author portrait to stand in the chip in place of the monogram,
-		 * so the preacher has a face — used by the Sermon of the week panel. Left
+		 * so the preacher has a face — used by the Sermon of the day panel. Left
 		 * null (the sermon's own page) keeps the monogram, so this is purely
 		 * additive and the page header is unchanged. `pos` is the `object-position`
 		 * from `$lib/portraits`, which lands the crop on the face; the face is

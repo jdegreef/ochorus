@@ -48,7 +48,7 @@ export const ERAS: Era[] = [
  *
  * Not across every surface, though — see STYLE_GUIDE §Cards. A shelf tints by
  * what the shelf is sorted by; an item standing on its own wears the hue of its
- * own art (a sermon's page and its Sermon-of-the-week panel tint from its
+ * own art (a sermon's page and its Sermon-of-the-day panel tint from its
  * emblem, via `emblemHue`). So one sermon really does show two tints a click
  * apart, and that is the rule rather than a slip.
  *

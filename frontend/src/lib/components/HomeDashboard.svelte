@@ -18,7 +18,7 @@
 	import PlansProgress from '$lib/components/PlansProgress.svelte';
 	import RecommendedNext from '$lib/components/RecommendedNext.svelte';
 	import FavoritesShelf from '$lib/components/FavoritesShelf.svelte';
-	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
+	import SermonOfTheDay from '$lib/components/SermonOfTheDay.svelte';
 	import HomeHighlight from '$lib/components/HomeHighlight.svelte';
 	import HomeArticles from '$lib/components/HomeArticles.svelte';
 	import DiscoverStrip from '$lib/components/DiscoverStrip.svelte';
@@ -127,11 +127,11 @@
 </div>
 
 <!-- Today's word: a line from the library over a painting (English only),
-     beside the sermon of the week. -->
+     beside the sermon of the day. -->
 <div class="section-band" data-section="sermons">
 	<div class="dash-pair page-col px-5">
 		<HomeQuote />
-		<SermonOfTheWeek />
+		<SermonOfTheDay />
 	</div>
 </div>
 

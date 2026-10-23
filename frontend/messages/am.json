@@ -856,7 +856,7 @@
   "common_min_listen": "%n% ደቂቃ ማዳመጥ",
   "common_hr_listen": "%h% ሰዓት ማዳመጥ",
   "common_hr_min_listen": "%h% ሰዓት %m% ደቂቃ ማዳመጥ",
-  "home_sermon_of_week": "የሳምንቱ ስብከት",
+  "home_sermon_of_day": "የዕለቱ ስብከት",
   "home_sermon_read_or_listen": "ያንብቡት፣ ወይም ያዳምጡት በ",
   "home_articles_title": "ለዛሬ ስምንት",
   "home_articles_subtitle": "በየማለዳው አዲስ ዝርዝር",

@@ -14,7 +14,7 @@
 	 * A sermon on a SHELF — the one card for "here is a sermon, go read it".
 	 *
 	 * Not every mention of a sermon: the resume tile in Continue reading is a
-	 * progress row, Sermon of the week is a feature panel, and prev/next on a
+	 * progress row, Sermon of the day is a feature panel, and prev/next on a
 	 * sermon page is navigation. Those are different jobs. This is the one that
 	 * lists sermons to choose between.
 	 *

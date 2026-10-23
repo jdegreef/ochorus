@@ -1,8 +1,8 @@
 // "Eight for today" — the home page's daily article pick.
 //
 // Deterministic, so every visitor sees the same eight on the same day and the
-// set turns over at local midnight with no manual step (the daily sibling of
-// SermonOfTheWeek's weekly pick). Picked CLIENT-SIDE by the caller: the home
+// set turns over at local midnight with no manual step (the sibling of
+// SermonOfTheDay's preacher rotation). Picked CLIENT-SIDE by the caller: the home
 // page is prerendered, and choosing at build time would freeze the set on
 // whatever day the site last deployed.
 //
@@ -20,7 +20,7 @@
  * poorly that the same few articles won day after day — measured, a month of
  * picks reached 34 of 130 articles; with the finalizer, ~113 (a fair draw).
  */
-function hash(s: string): number {
+export function hash(s: string): number {
 	let h = 0x811c9dc5;
 	for (let i = 0; i < s.length; i++) {
 		h ^= s.charCodeAt(i);

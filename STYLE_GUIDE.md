@@ -369,7 +369,7 @@ Four surfaces, all `--border` and `--radius-card` (12px). Three are a
 **in a list, the hue tracks what the list is sorted or grouped by; standing
 alone, an item wears the hue of its own art.** So the sermons index tints by
 the preacher's era (that shelf reads as a timeline) while the same sermon's own
-page and its Sermon-of-the-week panel tint from its emblem. That is why one
+page and its Sermon-of-the-day panel tint from its emblem. That is why one
 emblem can appear in two tints a click apart — it is the shelf's colour there
 and its own colour here.
 
@@ -435,7 +435,7 @@ that line, and neither side measures anything.
 than useless: they do share the topic, and that shelf is tinted for it anyway.)
 
 **Sermon plate** (`<SermonPlate>`) — a sermon's head, on its own page and in
-Sermon of the week: the eyebrow/title/byline in a hue wash with the sermon's
+Sermon of the day: the eyebrow/title/byline in a hue wash with the sermon's
 emblem anchoring the far end, the same composition as its share card. Sermons
 are **not** given 3:4 covers on a browse shelf: that silhouette says *volume*,
 and differing silhouettes are what tell a book from a sermon at a glance there.
