@@ -8,6 +8,9 @@
 	import { LIVE_LOCALES } from '$lib/live-locales.generated';
 	import ForPromo from '$lib/components/ForPromo.svelte';
 	import Seo from '$lib/components/Seo.svelte';
+	import type { PageProps } from './$types';
+
+	let { data }: PageProps = $props();
 
 	const t = i18n.t;
 
@@ -24,6 +27,27 @@
 	// The number of languages a reader can actually read Ochorus in — the LIVE
 	// (advertised) locales, so the stat is always true and never hand-counted.
 	const languageCount = LIVE_LOCALES.length;
+
+	// The band's figures. Titles and sermons are the library's own totals — the
+	// home page's snapshot (+page.ts), exact, so About never states a number the
+	// home page contradicts; one with no count (the read failed, or a language
+	// has no sermons) drops out, as on home. Grouped like "1,000+" beside them
+	// (countUp keeps a grouped figure grouped). The rest are field facts.
+	const library = $derived(
+		[
+			{ n: data.counts?.books ?? 0, label: 'about.statTitles' },
+			{ n: data.counts?.sermons ?? 0, label: 'about.statSermons' }
+		]
+			.filter((x) => x.n > 0)
+			.map((x) => [x.n.toLocaleString('en-US'), x.label])
+	);
+	const stats = $derived([
+		['7', 'about.statContinents'],
+		[String(languageCount), 'about.statLanguages'],
+		...library,
+		['1,000+', 'about.statPrinted'],
+		['$0', 'about.statFree']
+	]);
 
 	// The "from the page to the field" gallery. Captions double as each image's
 	// accessible name — the figure describes the photo, so alt repeats it rather
@@ -215,13 +239,12 @@
 			<h2 class="text-h2 text-text">{t('about.statsHeading')}</h2>
 			<p class="mt-3 text-body text-muted">{t('about.statsIntro')}</p>
 		</div>
-		<!-- Rounded floors, not hand-counted exacts: the library only grows, so
-		     "100+" / "90+" / "1,000+" stay true between deploys without a recount.
-		     Languages alone is exact and dynamic (the LIVE-locale registry). -->
+		<!-- "1,000+" printed stays a rounded floor (no data behind it); titles,
+		     sermons and languages are exact and dynamic (`stats`). -->
 		<dl
 			class="grid grid-cols-2 gap-px overflow-hidden rounded-card border border-border bg-border sm:grid-cols-3 lg:grid-cols-6"
 		>
-			{#each [['7', 'about.statContinents'], [String(languageCount), 'about.statLanguages'], ['100+', 'about.statTitles'], ['90+', 'about.statSermons'], ['1,000+', 'about.statPrinted'], ['$0', 'about.statFree']] as [n, label] (label)}
+			{#each stats as [n, label] (label)}
 				<div class="bg-surface p-6">
 					<div class="mb-3.5 h-[3px] w-7 rounded bg-gold/80" aria-hidden="true"></div>
 					<dd class="text-h2 font-display leading-none text-gold tabular-nums" use:countUp={n}>{n}</dd>
