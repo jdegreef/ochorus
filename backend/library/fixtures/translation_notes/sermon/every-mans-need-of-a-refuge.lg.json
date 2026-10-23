@@ -1,0 +1,89 @@
+{
+ "kind": "sermon",
+ "slug": "every-mans-need-of-a-refuge",
+ "language": "lg",
+ "job_issue": 2999,
+ "pull_request": 6457,
+ "references": [
+  {
+   "reference": "Isaiah 32:2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "why": "OLCB wording adapted: \"Buli muntu aliba\" (every man) changed to \"Omuntu aliba\" (a man), which Torrey's argument needs; the rest is OLCB verbatim"
+  },
+  {
+   "reference": "Isaiah 32:2",
+   "status": "self_rendered",
+   "block_index": 1,
+   "why": "OLCB wording adapted: \"Buli muntu aliba\" (every man) changed to \"Omuntu aliba\" (a man), which Torrey's argument needs; the rest is OLCB verbatim"
+  },
+  {
+   "reference": "Isaiah 32:2",
+   "status": "self_rendered",
+   "block_index": 35,
+   "why": "OLCB wording adapted: \"Buli muntu aliba\" (every man) changed to \"Omuntu aliba\" (a man), which Torrey's argument needs; the rest is OLCB verbatim"
+  },
+  {
+   "reference": "Isaiah 53:6",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 35
+  },
+  {
+   "reference": "1 Peter 5:8",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 32
+  },
+  {
+   "reference": "Ephesians 6:11",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 32
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 32
+  },
+  {
+   "reference": "Acts 17:31",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 33
+  },
+  {
+   "reference": "Romans 2:5",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 33
+  },
+  {
+   "reference": "Romans 3:23",
+   "status": "mined",
+   "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+   "block_index": 34
+  },
+  {
+   "reference": "Luke 3:7",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Luke 3:7",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Luke 3:7",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Hebrews 10:29",
+   "status": "self_rendered",
+   "block_index": 34
+  }
+ ]
+}
