@@ -241,4 +241,18 @@
 	.work-author:hover {
 		text-decoration: underline;
 	}
+	/* Two links 8px apart on one line: on touch, the writer takes its own line,
+	   and both a 32px row. */
+	@media (pointer: coarse) {
+		.work-title,
+		.work-author {
+			display: flex;
+			align-items: center;
+			min-height: 2rem;
+			width: fit-content;
+		}
+		.work-author {
+			margin-inline-start: 0;
+		}
+	}
 </style>

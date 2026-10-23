@@ -273,6 +273,24 @@
 	.companion:hover {
 		color: var(--accent);
 	}
+	/* On touch these were 21px rows 4px apart — a finger hit the neighbour.
+	   The disclosure gets the 44px of every other control (padded, not flexed,
+	   so its marker stays); the bare title links get the 32px of the Scripture
+	   index's verse links. */
+	@media (pointer: coarse) {
+		.book-list summary {
+			padding-block: calc((2.75rem - 1lh) / 2);
+		}
+		.book-list a,
+		.companion {
+			display: inline-flex;
+			align-items: center;
+			min-height: 2rem;
+		}
+		.book-list li {
+			align-items: center;
+		}
+	}
 	/* A language code: a quiet bordered tag, not a link (the card is one). */
 	.lang-code {
 		border: 1px solid var(--border);

@@ -238,7 +238,7 @@
 								>
 								{#if life}<span class="text-small text-muted"> · {life}</span>{/if}
 								{#if rows.length}
-									<ul id="books-{author.slug}" class="mt-1 space-y-0.5 text-small">
+									<ul id="books-{author.slug}" class="az-books mt-1 space-y-0.5 text-small">
 										{#each rows as { book: b, editions }, i (b.slug)}
 											<li hidden={collapsed && i >= ROWS_SHOWN}>
 												<a class="text-muted hover:text-accent" href={localizeHref(`/books/${b.slug}`)}
@@ -336,5 +336,14 @@
 	/* Jumps land the letter heading below the app nav AND the pinned controls. */
 	.az-group {
 		scroll-margin-top: calc(var(--pinned-offset, var(--appnav-h, 0px)) + 1rem);
+	}
+	/* A writer's titles were 18px rows 2px apart — a finger took the next one.
+	   On touch each title is a 24px target, the minimum with nothing crowding it. */
+	@media (pointer: coarse) {
+		.az-books > li > a:first-child {
+			display: inline-block;
+			min-height: 1.5rem;
+			padding-block: 0.15rem;
+		}
 	}
 </style>
