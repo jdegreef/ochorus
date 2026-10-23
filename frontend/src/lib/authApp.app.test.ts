@@ -22,6 +22,7 @@ vi.mock('./supabase', () => ({
 }));
 
 const { auth } = await import('./auth.svelte');
+const { authErrorKey } = await import('./authErrors');
 
 beforeEach(() => {
 	localStorage.clear();
@@ -83,5 +84,15 @@ describe('auth in the app', () => {
 		expect(await auth.verifyEmailCode('grace@example.org', '000000', 'email')).toBe('otp_expired');
 		sb.verifyOtp.mockResolvedValue({ error: { code: '' } });
 		expect(await auth.verifyEmailCode('grace@example.org', '000000', 'email')).toBe('unexpected_failure');
+	});
+
+	it('calls a blank or non-numeric code wrong without asking Supabase', async () => {
+		expect(await auth.verifyEmailCode('grace@example.org', '      ', 'email')).toBe('otp_expired');
+		expect(await auth.verifyEmailCode('grace@example.org', '12ab56', 'signup')).toBe('otp_expired');
+		expect(sb.verifyOtp).not.toHaveBeenCalled();
+	});
+
+	it('points an unconfirmed account at a code, not at a link', () => {
+		expect(authErrorKey('email_not_confirmed')).toBe('authErr.emailNotConfirmedApp');
 	});
 });

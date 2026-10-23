@@ -336,6 +336,7 @@
   "auth_err_generic": "የሆነ ችግር ተፈጥሯል። እባክዎ እንደገና ይሞክሩ።",
   "auth_err_invalid_credentials": "ያ ኢሜይልና የይለፍ ቃል አይዛመዱም። ያረጋግጡና እንደገና ይሞክሩ።",
   "auth_err_email_not_confirmed": "መጀመሪያ ኢሜይልዎን ይመልከቱና የማረጋገጫ ማገናኛውን ይክፈቱ።",
+  "auth_err_email_not_confirmed_app": "መለያዎ ገና አልተረጋገጠም። “የመግቢያ ኮድ በኢሜይል ይላክልኝ” የሚለውን ይንኩና ለማረጋገጥ ኮዱን ያስገቡ።",
   "auth_err_email_exists": "በዚያ ኢሜይል የተከፈተ መለያ አስቀድሞ አለ። በምትኩ ይግቡ።",
   "auth_err_weak_password": "የይለፍ ቃልዎ ቢያንስ 6 ቁምፊዎች ሊኖሩት ይገባል።",
   "auth_err_same_password": "ያ አሁን ያለዎት የይለፍ ቃል ነው። የተለየ ይምረጡ።",

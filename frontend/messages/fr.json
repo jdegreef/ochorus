@@ -336,6 +336,7 @@
   "auth_err_generic": "Une erreur est survenue. Veuillez réessayer.",
   "auth_err_invalid_credentials": "Ce courriel et ce mot de passe ne correspondent pas. Vérifiez-les et réessayez.",
   "auth_err_email_not_confirmed": "Vérifiez d’abord votre courriel et ouvrez le lien de confirmation.",
+  "auth_err_email_not_confirmed_app": "Votre compte n’est pas encore confirmé. Touchez « Envoyez-moi un code de connexion » et saisissez le code pour le confirmer.",
   "auth_err_email_exists": "Un compte avec ce courriel existe déjà. Connectez-vous plutôt.",
   "auth_err_weak_password": "Votre mot de passe doit comporter au moins 6 caractères.",
   "auth_err_same_password": "C’est déjà votre mot de passe. Choisissez-en un autre.",

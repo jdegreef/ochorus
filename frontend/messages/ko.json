@@ -336,6 +336,7 @@
   "auth_err_generic": "문제가 발생했습니다. 다시 시도해 주십시오.",
   "auth_err_invalid_credentials": "이메일과 비밀번호가 일치하지 않습니다. 확인 후 다시 시도해 주십시오.",
   "auth_err_email_not_confirmed": "먼저 이메일을 확인하고 인증 링크를 열어 주십시오.",
+  "auth_err_email_not_confirmed_app": "계정이 아직 인증되지 않았습니다. ‘로그인 코드를 이메일로 받기’를 누르고 코드를 입력하여 인증하십시오.",
   "auth_err_email_exists": "이미 이 이메일로 가입된 계정이 있습니다. 로그인해 주십시오.",
   "auth_err_weak_password": "비밀번호는 6자 이상이어야 합니다.",
   "auth_err_same_password": "현재 사용 중인 비밀번호입니다. 다른 비밀번호를 선택해 주십시오.",

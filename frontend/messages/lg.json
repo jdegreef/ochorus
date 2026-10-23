@@ -336,6 +336,7 @@
   "auth_err_generic": "Waliwo ekizibu. Ddamu ogezeeko.",
   "auth_err_invalid_credentials": "Email n'ekigambo eky'ekyama tebituukagana. Bikebere oddemu ogezeeko.",
   "auth_err_email_not_confirmed": "Kebera email yo osooke oggulewo akayungo ak'okukakasa.",
+  "auth_err_email_not_confirmed_app": "Akawunti yo tennakakasibwa. Nyiga “Mpeereze ennamba ey’okuyingira” owandiike ennamba okugikakasa.",
   "auth_err_email_exists": "Waliwo akawunti erina email eyo dda. Yingira mu kifo ky'ekyo.",
   "auth_err_weak_password": "Ekigambo kyo eky'ekyama kyetaaga waakiri ennukuta 6.",
   "auth_err_same_password": "Ekyo kye kigambo kyo eky'ekyama dda. Londa ekirala.",

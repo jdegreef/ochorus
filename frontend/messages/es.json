@@ -336,6 +336,7 @@
   "auth_err_generic": "Algo salió mal. Inténtalo de nuevo.",
   "auth_err_invalid_credentials": "Ese correo y esa contraseña no coinciden. Revísalos e inténtalo de nuevo.",
   "auth_err_email_not_confirmed": "Revisa tu correo y abre primero el enlace de confirmación.",
+  "auth_err_email_not_confirmed_app": "Tu cuenta aún no está confirmada. Toca «Envíame un código de acceso» y escribe el código para confirmarla.",
   "auth_err_email_exists": "Ya existe una cuenta con ese correo. Inicia sesión.",
   "auth_err_weak_password": "Tu contraseña necesita al menos 6 caracteres.",
   "auth_err_same_password": "Esa ya es tu contraseña. Elige otra distinta.",

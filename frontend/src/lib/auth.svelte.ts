@@ -65,9 +65,12 @@ const origin = () => (browser ? (IS_APP ? SITE_URL : window.location.origin) : u
 function returnUrl(returnTo?: string): string | undefined {
 	if (!browser || !returnTo) return origin();
 	try {
-		const u = new URL(returnTo, window.location.origin);
-		if (u.origin !== window.location.origin) return origin();
-		return IS_APP ? `${SITE_URL}${u.pathname}${u.search}${u.hash}` : u.href;
+		const here = window.location;
+		const u = new URL(returnTo, `${here.protocol}//${here.host}/`);
+		// Scheme + host, not `URL.origin`: the iOS app's `capacitor:` is not a
+		// special scheme, and the URL spec gives such a URL an opaque "null" origin.
+		if (u.protocol !== here.protocol || u.host !== here.host) return origin();
+		return new URL(u.pathname + u.search + u.hash, origin()).href;
 	} catch {
 		return origin();
 	}
@@ -406,7 +409,12 @@ class Auth {
 	async verifyEmailCode(email: string, token: string, type: 'email' | 'signup'): Promise<string | null> {
 		const sb = await supabase();
 		if (!sb) return NOT_CONFIGURED;
-		const { error } = await sb.auth.verifyOtp({ email, token: token.replace(/\s+/g, ''), type });
+		// Spaces are how a code gets pasted ("123 456"); anything else that is not
+		// a 6–10 digit code is wrong without asking Supabase, whose answer to an
+		// empty token (validation_failed) would read as a bad EMAIL address.
+		const clean = token.replace(/\s+/g, '');
+		if (!/^\d{6,10}$/.test(clean)) return 'otp_expired';
+		const { error } = await sb.auth.verifyOtp({ email, token: clean, type });
 		// `||`, not `??`: see signIn.
 		return error ? error.code || 'unexpected_failure' : null;
 	}

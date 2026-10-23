@@ -336,6 +336,7 @@
   "auth_err_generic": "Hitilafu imetokea. Tafadhali jaribu tena.",
   "auth_err_invalid_credentials": "Barua pepe na nenosiri hilo havilingani. Vikague na ujaribu tena.",
   "auth_err_email_not_confirmed": "Angalia barua pepe yako na ufungue kiungo cha uthibitisho kwanza.",
+  "auth_err_email_not_confirmed_app": "Akaunti yako bado haijathibitishwa. Gusa “Nitumie msimbo wa kuingia” kisha uandike msimbo ili kuithibitisha.",
   "auth_err_email_exists": "Tayari kuna akaunti yenye barua pepe hiyo. Ingia badala yake.",
   "auth_err_weak_password": "Nenosiri lako linahitaji angalau herufi 6.",
   "auth_err_same_password": "Hilo tayari ndilo nenosiri lako. Chagua tofauti.",

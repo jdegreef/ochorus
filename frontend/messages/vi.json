@@ -336,6 +336,7 @@
   "auth_err_generic": "Đã xảy ra lỗi. Vui lòng thử lại.",
   "auth_err_invalid_credentials": "Email và mật khẩu không khớp. Hãy kiểm tra rồi thử lại.",
   "auth_err_email_not_confirmed": "Hãy kiểm tra email và mở liên kết xác nhận trước.",
+  "auth_err_email_not_confirmed_app": "Tài khoản của bạn chưa được xác nhận. Hãy chạm vào “Gửi cho tôi mã đăng nhập” và nhập mã để xác nhận.",
   "auth_err_email_exists": "Đã có tài khoản dùng email này. Hãy đăng nhập.",
   "auth_err_weak_password": "Mật khẩu cần có ít nhất 6 ký tự.",
   "auth_err_same_password": "Đây đã là mật khẩu hiện tại của bạn. Hãy chọn mật khẩu khác.",

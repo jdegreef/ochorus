@@ -45,8 +45,7 @@
 		type="text"
 		inputmode="numeric"
 		autocomplete="one-time-code"
-		pattern={'[0-9 ]{6,12}'}
-		maxlength="12"
+		maxlength="16"
 		required
 		bind:value={code}
 		aria-invalid={error ? 'true' : undefined}

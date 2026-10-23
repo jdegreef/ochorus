@@ -336,6 +336,7 @@
   "auth_err_generic": "Something went wrong. Please try again.",
   "auth_err_invalid_credentials": "That email and password don't match. Check them and try again.",
   "auth_err_email_not_confirmed": "Check your email and open the confirmation link first.",
+  "auth_err_email_not_confirmed_app": "Your account isn’t confirmed yet. Tap “Email me a sign-in code” and enter the code to confirm it.",
   "auth_err_email_exists": "An account with that email already exists. Sign in instead.",
   "auth_err_weak_password": "Your password needs at least 6 characters.",
   "auth_err_same_password": "That is already your password. Choose a different one.",
