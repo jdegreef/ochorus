@@ -1,0 +1,74 @@
+name: TEMP fetch CCEL source (abide-in-christ)
+
+# Throwaway: the session drafting this book cannot reach ccel.org, so this runs
+# the real import_ccel once on a runner, records every page it fetched under
+# .ccel-cache/, and commits that cache back to the branch. The session replays
+# the import locally from the cache. Removed (with the cache) before review.
+
+on:
+  push:
+    branches: [claude/ochorus-dev-4c45eff4-abide-in-christ]
+    paths: [.github/workflows/temp-fetch-ccel.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: astral-sh/setup-uv@v7
+
+      - name: Install (frozen)
+        working-directory: backend
+        run: uv sync --frozen
+
+      - name: Import from CCEL, recording every fetched page
+        working-directory: backend
+        env:
+          DJANGO_DEBUG: "true"
+        run: |
+          uv run python manage.py migrate -v0
+          uv run python - <<'EOF'
+          import os, pathlib, django
+          os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
+          django.setup()
+          from urllib.parse import urlparse
+          from django.core.management import call_command
+          from library.management.commands import import_ccel
+
+          cache = pathlib.Path("../.ccel-cache")
+          real = import_ccel.fetch
+
+          def recording_fetch(url):
+              html = real(url)
+              path = cache / urlparse(url).path.lstrip("/")
+              if not path.suffix:
+                  path = path / "index.html"
+              path.parent.mkdir(parents=True, exist_ok=True)
+              path.write_text(html, encoding="utf-8")
+              return html
+
+          import_ccel.fetch = recording_fetch
+          # The author's CCEL index too, in case the work slug needs correcting.
+          for probe in ["https://ccel.org/ccel/murray", "https://ccel.org/ccel/murray/abide"]:
+              try:
+                  recording_fetch(probe)
+              except Exception as exc:
+                  print("probe failed:", probe, exc)
+          try:
+              call_command("import_ccel", "abide-in-christ")
+          except Exception as exc:
+              print("import failed:", exc)
+          EOF
+          find ../.ccel-cache -type f | sort
+
+      - name: Commit the cache back to the branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add .ccel-cache
+          git commit -m "TEMP: CCEL source pages for abide-in-christ" || echo "nothing fetched"
+          git push

@@ -902,6 +902,12 @@ BOOKS: list[BookEntry] = [
               "ccel", "watson/divinity",
               subtitle="Contained in Sermons upon the Westminster Assembly’s Catechism",
               cover_color="#3f4a2b"),
+    # Andrew Murray's Abide in Christ (1882), thirty-one daily readings on
+    # John 15, the same shape as Waiting on God and The True Vine (CCEL).
+    BookEntry("abide-in-christ", "Abide in Christ", "andrew-murray",
+              "ccel", "murray/abide",
+              subtitle="Thoughts on the Blessed Life of Fellowship with the Son of God",
+              cover_color="#2b5f4a"),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an
