@@ -1,0 +1,17 @@
+{
+ "kind": "bio",
+ "slug": "george-muller",
+ "language": "uk",
+ "job_issue": 5302,
+ "references": [
+  {
+   "reference": "Psalm 119:68",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 21
+  }
+ ],
+ "note": [
+  "The bio's one verse, Müller's 'Thou art good, and doest good' (Psalm 119:68, first clause), is pasted verbatim from Kulish («Ти благий і благотворящий»); the English cites the psalm by chapter only, and so does the Ukrainian."
+ ]
+}
