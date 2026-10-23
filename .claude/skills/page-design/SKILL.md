@@ -37,7 +37,13 @@ In this order, and nothing else at the top level:
    not jump vertically on navigation.)
 2. **`<PageHeader>`** — always. `title` is the **nav word** (`Books`, `Topics`,
    `Reading Plans`); `tagline` is one sentence; `meta` is the total, formatted
-   `N books · M authors`. `eyebrow` is only for a page whose h1 is *not* the nav
+   `N books · M authors`. **One library number per word:** "books" is every
+   book row (editions included — what the Books shelf shows), "authors" is
+   `countWriters` (`lib/authorIndex.ts`: people, never an imprint), shown by
+   the home page and the A–Z. A shelf whose own count would differ (Books'
+   book writers, Biographies' listed writers) shows no authors figure rather
+   than a second, smaller one (2026-10-23: home read 128, Books 63, A–Z 130).
+   `eyebrow` is only for a page whose h1 is *not* the nav
    word (Sermons: eyebrow `Sermons`, title `The Preached Word`). Pick one
    register per page and keep `<title>` = the nav word either way.
 3. **`<CatalogLanguageNudge kind=…>`** — _(gone from `main` by 2026-09-26: the component no longer exists; a new shelf's empty-language state is just `<EmptyState message>` — the Topics model)_ when the current language has fewer

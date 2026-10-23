@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { authorIndex, filingKey, filingName, filterIndex, foldEditions, indexRows, initialOf } from './authorIndex';
+import { authorIndex, countWriters, filingKey, filingName, filterIndex, foldEditions, indexRows, initialOf } from './authorIndex';
 
 const author = (slug: string, name: string) => ({
 	slug,
@@ -182,5 +182,19 @@ describe('filterIndex', () => {
 
 	it('returns no groups when nothing matches', () => {
 		expect(filterIndex(groups, 'zzz')).toEqual([]);
+	});
+});
+
+describe('countWriters', () => {
+	const person = (slug: string) => ({ slug });
+	const book = (slug: string, is_imprint?: boolean) => ({ author: { slug, is_imprint } });
+
+	it("counts the writers list and any book's writer it left out, once each", () => {
+		// "b" wrote a book but is withheld from Biographies, so the list misses her.
+		expect(countWriters([person('a'), person('c')], [book('a'), book('a'), book('b')])).toBe(3);
+	});
+
+	it('never counts a house byline as a person', () => {
+		expect(countWriters([person('a')], [book('house', true), book('ochorus-originals')])).toBe(1);
 	});
 });

@@ -2,6 +2,7 @@ import { building } from '$app/environment';
 import { listAuthors, listBooks } from '$lib/library-public';
 import { getLang } from '$lib/lang.svelte';
 import { ERAS, eraOf } from '$lib/eras';
+import { countWriters } from '$lib/authorIndex';
 import type { PageLoad } from './$types';
 
 // Prerenders to authors/index.html, which the static host serves natively for
@@ -61,9 +62,13 @@ export const load: PageLoad = async ({ fetch }) => {
 				}
 			])
 		);
-		return { authors: roster, books, works, eras: ERAS.filter((e) => present.has(e.id)), loadError: false };
+		// The header's authors number: THIS language's writers, as the home page
+		// counts them (`countWriters` over the same two lists) — not the English
+		// roster the index lists, which would read ~130 on a ~30-writer locale.
+		const people = countWriters(local ?? authors, books);
+		return { authors: roster, books, works, people, eras: ERAS.filter((e) => present.has(e.id)), loadError: false };
 	} catch (e) {
 		if (building) throw e;
-		return { authors: [], books: [], works: {}, eras: [], loadError: true };
+		return { authors: [], books: [], works: {}, people: 0, eras: [], loadError: true };
 	}
 };

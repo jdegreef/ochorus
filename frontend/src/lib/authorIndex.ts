@@ -13,6 +13,7 @@
  */
 
 import { splitEdition } from './edition';
+import { isImprint } from './originals';
 import { foldText } from './searchNormalize';
 
 export interface IndexAuthor {
@@ -92,6 +93,22 @@ function fileOne(name: string): string {
  * after "Smithers, Al".
  */
 export const filingKey = (name: string): string => filingName(name).replace(/[’'ʼ]/g, '');
+
+/**
+ * How many people the library credits — THE "authors" number, so no two pages
+ * can disagree on it (home said 128, the Books shelf 63, the A–Z 130, for one
+ * library). The writers list (everyone with a book, sermon or bio in the
+ * language) plus any book's writer it leaves out — someone withheld from
+ * Biographies — and never a house byline, which is not a person.
+ */
+export function countWriters(
+	authors: { slug: string }[],
+	books: { author: { slug: string; is_imprint?: boolean } }[]
+): number {
+	const people = new Set(authors.map((a) => a.slug));
+	for (const { author } of books) if (!isImprint(author)) people.add(author.slug);
+	return people.size;
+}
 
 /**
  * Writers grouped by the initial of their filing name (`filingName`) and
