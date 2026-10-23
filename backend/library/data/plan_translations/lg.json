@@ -74,5 +74,12 @@
       "Job #3047, shipped with #1691 (the-gospel-of-healing.lg, «Enjiri y’Okuwonya»): that book completes the curated christ-our-healer set in lg, so seed_plans creates the (christ-our-healer, lg) row on this deploy. The other two source books were already Luganda: the-fourfold-gospel.lg («Enjiri ey’Ebitundu Ebina») and divine-healing.lg («Okuwonya kwa Katonda»).",
       "«Kristo Omuwonya Waffe» is the-fourfold-gospel.lg's own chapter 3 title, and «Omulokozi, Omutukuza, Omuwonya, era Kabaka Ajja» is that edition's subtitle, so the card quotes the book it opens. AI-drafted; awaiting native review."
     ]
+  },
+  "school-of-prayer-31-days": {
+    "title": "Ennaku 31 mu Ssomero ly’Okusaba",
+    "description": "Omwezi gumu ne Andrew Murray ku bigere by’Omuyigiriza yekka. Buli lunaku lubikkula ekimu ku bigambo bya Yesu yennyini ku kusaba, okuva ku “Mukama, tuyigirize okusaba” okutuuka ku bisuubizo by’ekiro ekyasembayo, era lukomekkerezebwa n’okusaba kwalwo. Essomo limu buli lunaku, nga eddakiika kkumi, nga lizimba okutuuka ku kwegayiririra abalala n’obulamu obw’okusaba.",
+    "note": [
+      "Job #3149 (book:school-of-prayer -> lg) adds the plan's only source book, so its prose ships in the same PR (PlanTranslationCoverageTests); this also covers job #5291. The title quotes the shipped book title «Wamu ne Kristo mu Ssomero ly’Okusaba» (as cited in ministry-of-intercession.lg) and the lessons' refrain ‘Mukama, tuyigirize okusaba’. AI-drafted, unreviewed."
+    ]
   }
 }
