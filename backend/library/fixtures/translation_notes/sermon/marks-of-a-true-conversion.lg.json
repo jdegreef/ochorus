@@ -1,0 +1,436 @@
+{
+ "kind": "sermon",
+ "slug": "marks-of-a-true-conversion",
+ "language": "lg",
+ "job_issue": 3046,
+ "pull_request": 6485,
+ "note": [
+  "Scripture is OLCB (lug_bib, the ebible mirror's USX), pasted by script. A row is 'mined' only when it was reported verbatim AND the block holds at least 45 characters (or the whole verse) of that verse's OLCB wording, quote marks aside; Whitefield's loose KJV wording, re-personed or partial quotations and allusions are 'self_rendered'.",
+  "The English writes straight apostrophes and curly double quotes; the Luganda mirrors the double quotes exactly and writes in-word apostrophes as curly ’.",
+  "AI-translated (job #3046); tag sequence identical to the English; translated sermons omit study_questions; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Matthew 18:3",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Hebrews 9:27",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Jude 1:13",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Romans 10:1",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 7:20",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Philippians 4:3",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa"
+  },
+  {
+   "reference": "Psalm 73:4",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Micah 6:8",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Jeremiah 17:9",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Matthew 25:12",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "John 3:3",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "John 3:5",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Matthew 18:1",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa"
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa"
+  },
+  {
+   "reference": "Psalm 51:5",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Acts 13:22",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Jeremiah 17:9",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa"
+  },
+  {
+   "reference": "Romans 3:12",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Psalm 14:3",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Ephesians 2:3",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 18:1",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa"
+  },
+  {
+   "reference": "Matthew 18:2",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Revelation 3:17",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "1 John 2:12",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Luke 12:32",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Acts 9:15",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Ephesians 3:8",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa"
+  },
+  {
+   "reference": "John 1:47",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 10:16",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa"
+  },
+  {
+   "reference": "Daniel 6:8",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa"
+  },
+  {
+   "reference": "Matthew 11:15",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa"
+  },
+  {
+   "reference": "Isaiah 33:14",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Psalm 139:23",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Psalm 26:2",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Psalm 73:25",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Revelation 3:17",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Job 33:24",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Mark 12:30",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Thessalonians 2:12",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Peter 2:2",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "2 Peter 3:18",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa"
+  },
+  {
+   "reference": "Philippians 3:14",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalm 103:13",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa"
+  },
+  {
+   "reference": "Romans 8:15",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Song of Songs 1:6",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Hebrews 12:7",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Hebrews 12:8",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa"
+  },
+  {
+   "reference": "Exodus 20:5",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Isaiah 63:9",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa"
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "1 Thessalonians 4:17",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hebrews 10:37",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Luke 15:17",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Luke 16:25",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Luke 16:22",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "1 John 4:16",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa"
+  },
+  {
+   "reference": "Genesis 45:24",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Ephesians 5:2",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "1 John 3:18",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Matthew 7:6",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Genesis 3:24",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa"
+  },
+  {
+   "reference": "John 6:35",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa"
+  },
+  {
+   "reference": "Jude 1:13",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Mark 9:48",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Proverbs 28:13",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Jeremiah 31:18",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "John 15:25",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Jeremiah 9:1",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "OLCB (lug_bib) Bible text — ebible mirror, Biblica cc-by-sa"
+  },
+  {
+   "reference": "Matthew 22:12",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Isaiah 33:14",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "John 11:25",
+   "status": "self_rendered",
+   "block_index": 20
+  }
+ ]
+}
