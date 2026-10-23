@@ -5792,6 +5792,17 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"es/faithful-with-little": {
+			"ground": "b67864056ba8a92dcbc527fd052c2adbfbf9dc0797af94701ebb913c879d8cc0",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"es/feasting-at-the-table": {
 			"ground": "ca3f76b4cb6f73df54f65066da267dc24df12fb2daf0abf371049c92a4841e82",
 			"style": "lettered",
@@ -9235,6 +9246,17 @@
 			"scrim": 1,
 			"layout": "split/navy",
 			"bar": 0.04
+		},
+		"fr/faithful-with-little": {
+			"ground": "8fa8c6e470eb7b498e0e972df18512394853d043516e6203c3e5f4cc0e4aa760",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"fr/feasting-at-the-table": {
 			"ground": "6e0eeb78b81466700d36d3c4bd910186a8ac00efbe55b57b93792ce7912394ad",
@@ -16598,6 +16620,17 @@
 				478
 			]
 		},
+		"pt/faithful-with-little": {
+			"ground": "b304ae9f126101122efbebe8bce2e3047460d3649129c04c226d9b5f916f2389",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"pt/feasting-at-the-table": {
 			"ground": "6dda8fede6c88612a0558cfba72899da0e536239b5309f39e64faf84eb830672",
 			"style": "lettered",
@@ -18849,6 +18882,17 @@
 				317,
 				478
 			]
+		},
+		"sw/faithful-with-little": {
+			"ground": "1024ee4018b1d2e5be14680b41e3b008c6630196b37e6ae718247cb7fc912388",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"sw/feasting-at-the-table": {
 			"ground": "0a9538b84989b2136d659baeb822f7b87cdaa94c95d542f020400bd6c94abb70",
