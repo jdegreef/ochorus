@@ -655,6 +655,108 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
         ],
     },
+    3: {
+        "slug": "the-glowstone-bargain",
+        "publication_year": 2026,
+        "title": "The Glowstone Bargain",
+        "subtitle": "The Lamplighters of Gloamhaven, Book Three",
+        "cover_byline": "James DeGreef",
+        "attribution": (
+            "© James DeGreef and Ochorus. An Ochorus Original, written for young "
+            "readers, free to read and share. Book 3 of The Lamplighters of Gloamhaven."
+        ),
+        "cover_url": "/covers/the-glowstone-bargain.svg",
+        "cover_color": covers.ink_safe("#7a8a94"),  # cold glowstone grey
+        "description": (
+            "Wren, Tobin, Mira, Old Ash and Cinder come at last to Vaelport, a "
+            "harbour city that is never dark. Every street and ship is lit by "
+            "glowstones that need no flame, no oil and no Lamplighter; there is no "
+            "Ring, and no one there has ever been greyed. The merchant-prince Oskar "
+            "Venn welcomes them with gifts. Mira is cheered on a stage as the Girl "
+            "Who Sees, Wren is offered the home she has always wanted, and Tobin is "
+            "offered his father's freedom. But the street children of Vaelport never "
+            "laugh, and Old Ash says the city's light shines without warming. Each "
+            "of them must learn what a good thing costs when it is offered the wrong way."
+        ),
+        "about_html": (
+            "<p>The Glowstone Bargain is the third book of The Lamplighters of "
+            "Gloamhaven, an adventure series by James DeGreef and Ochorus for readers "
+            "aged nine to twelve. It follows on from The Black Stair, and is best "
+            "read after the first two books.</p>"
+            "<p>This is a book about false light: the kind that dazzles and comforts "
+            "and asks nothing of you, and slowly takes everything. Each of the "
+            "travellers is tempted by something truly good, offered on the wrong "
+            "terms: to be special, to have a home, to rescue someone they love. It is "
+            "the darkest book of the series so far, with a real loss at its heart, "
+            "and it ends in grief and in hope. Like the books before it, it never "
+            "preaches; it lets a story of temptation, failure, sacrifice and a gift "
+            "that belongs to no one speak for itself, for children to discover and "
+            "for parents to talk about.</p>"
+            "<p>The book has fifteen chapters, about the length of a classic "
+            "children's fantasy, each one a good evening's reading.</p>"
+            "<p>© James DeGreef and Ochorus. An Ochorus Original, free to read and share.</p>"
+        ),
+        "qa": [
+            {
+                "question": "Do I need to read the first two books first?",
+                "answer": (
+                    "Yes, ideally. The Glowstone Bargain carries straight on from The "
+                    "Black Stair, and its turns land hardest on readers who already "
+                    "know Wren, Tobin, Mira, Old Ash and Cinder."
+                ),
+            },
+            {
+                "question": "What age is The Glowstone Bargain for?",
+                "answer": (
+                    "Readers aged nine to twelve. It is the darkest book of the "
+                    "series so far, with a loss that will move readers, told gently "
+                    "and without anything gory. Parents of younger or sensitive "
+                    "children may like to read it with them."
+                ),
+            },
+            {
+                "question": "What are glowstones?",
+                "answer": (
+                    "Cold white crystals that light the whole city of Vaelport without "
+                    "flame or oil and never go out. They seem like the answer to every "
+                    "failing Ring, until the travellers find out what they are made of."
+                ),
+            },
+            {
+                "question": "Who is Oskar Venn?",
+                "answer": (
+                    "The charming merchant-prince of Vaelport, who gives the city its "
+                    "glowstones and the travellers their gifts. He truly believes he is "
+                    "making a world that will never need a Flame again."
+                ),
+            },
+            {
+                "question": "What happens to the lamp in this book?",
+                "answer": (
+                    "It still cannot be bought, stolen or earned, only given, and in "
+                    "Vaelport, beside the glowstones, it looks small and dim. This is "
+                    "the book where the travellers learn that the lamp has never "
+                    "belonged to any of them."
+                ),
+            },
+            {
+                "question": "Is it a Christian book?",
+                "answer": (
+                    "Yes. Like the classic Christian fantasies, it tells its truths as "
+                    "story rather than sermon: the dark that dresses itself as light, "
+                    "temptation and failure, love that lays down its life, and a call "
+                    "to come back. It never names God or quotes Scripture directly."
+                ),
+            },
+            {
+                "question": "How long is the book?",
+                "answer": (
+                    "Fifteen chapters and about forty-eight thousand words, much the "
+                    "length of a classic children's fantasy."
+                ),
+            },
+        ],
+    },
 }
 
 
