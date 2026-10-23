@@ -103,6 +103,16 @@ describe('readerPrefs store', () => {
 		expect(readerPrefs.style).toContain('--reading-align:start');
 	});
 
+	it('reads left-ragged in page mode until the reader picks Justified', () => {
+		// The desktop spread's narrow columns opened rivers between words.
+		readerPrefs.reset();
+		expect(readerPrefs.effectiveAlign(true)).toBe('left');
+		expect(readerPrefs.styleFor(true)).toContain('--reading-align:start');
+		readerPrefs.setAlign('justify');
+		expect(readerPrefs.effectiveAlign(true)).toBe('justify');
+		expect(readerPrefs.styleFor(true)).toContain('--reading-hyphens:auto');
+	});
+
 	it('builds a CSS custom-property string the reader can consume', () => {
 		readerPrefs.setLeading('relaxed');
 		readerPrefs.setMeasure('wide');

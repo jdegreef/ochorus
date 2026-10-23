@@ -187,9 +187,8 @@ interface Stored {
 	measure: Measure;
 	font: ReaderFont;
 	align: Align;
-	// Whether the reader has explicitly picked an alignment. Until they do, the
-	// effective alignment is chosen per layout — paged reads justified (like a
-	// printed page / Kindle), scroll stays left-ragged — see `effectiveAlign`.
+	// Whether the reader has explicitly picked an alignment. Until they do,
+	// `effectiveAlign` picks it per layout (today left-ragged in both).
 	alignChosen: boolean;
 	margin: Margin;
 	paged: boolean;
@@ -483,21 +482,21 @@ class ReaderPrefs {
 
 	/**
 	 * The alignment actually in force for a given layout. An explicit choice wins
-	 * everywhere; until the reader makes one, paged mode reads justified (a
-	 * printed-page / Kindle look) while scroll stays left-ragged. `get style()`
-	 * already emits the scroll answer (it equals this for paged === false), so the
-	 * page reader only overrides the paged, still-unchosen case.
+	 * everywhere; until the reader makes one, both layouts read left-ragged.
+	 * Paged mode used to justify by default (a printed-page look), but the
+	 * desktop spread's narrow columns opened rivers of space between words
+	 * ("be   the   need   of") — so justified is now the reader's choice, in Text
+	 * settings. The layout stays a parameter: a per-layout default is one line.
 	 */
-	effectiveAlign(paged: boolean): Align {
-		return this.alignChosen ? this.align : paged ? 'justify' : 'left';
+	effectiveAlign(_paged: boolean): Align {
+		return this.alignChosen ? this.align : 'left';
 	}
 
 	/**
 	 * Inline `style` string for the reading <article>, with alignment resolved for
-	 * a given layout — the one place align/hyphens become CSS. `paged` reads
-	 * justified (a printed-page look) until the reader chooses; scroll stays
-	 * left-ragged. The paged chapter reader calls `styleFor(true)`; everything
-	 * else uses `style` (= `styleFor(false)`), whose output is unchanged.
+	 * a given layout (`effectiveAlign`) — the one place align/hyphens become CSS.
+	 * The paged chapter reader calls `styleFor(true)`; everything else uses
+	 * `style` (= `styleFor(false)`).
 	 */
 	styleFor(paged = false): string {
 		const align = this.effectiveAlign(paged);
