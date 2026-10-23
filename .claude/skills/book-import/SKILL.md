@@ -2210,6 +2210,13 @@ Chapter bodies may carry `<figure><img><figcaption></figure>` (sanitizer
    `PLATES_n` entries `(chapter, paragraph-opening, file, alt, caption)` are set
    after the paragraph whose opening matches (the build fails unless exactly one
    matches). Use curly apostrophes in alt/caption text if the book's quotes are curly.
+   A caption must be a CONTIGUOUS quote: dialogue split by "he said" (`"Father?" he
+   said. "Why is it warm?"`) isn't, so quote one side or keep the tag. Check each
+   with a substring search of the chapter (italics `*` stripped) before building.
+   Re-serialize the volume's fixture with `indent=1` (the content files' format —
+   `indent=2` rewrites every line) and keep its trailing bytes. A volume after the
+   first gets only the maps its story needs (shared `LAND_MAP`); the build copies
+   nothing — put each map in `static/illustrations/<that-volume-slug>/`.
 
 ## Two kinds of fix
 

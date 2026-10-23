@@ -465,6 +465,10 @@ y150–265, or it collides with the byline. A light low sky behind the mid-cover
 type costs a 0.95× scrim; hold the dark until ~60% down. Covers of export-pilot
 editions also need `library/export_covers/<slug>.<lang>.png` re-copied from the
 new twin, or `tests_book_export` fails.
+**`npm run og:covers` reads the FIXTURES**: run it after the book's fixture file exists, or it
+reports "wrote 0" and skips the new book silently. If it dies with "Executable doesn't exist …
+chromium_headless_shell-NNNN", Playwright was bumped on main: `npx playwright install
+chromium-headless-shell` (from `frontend/`), then rerun. *(the-glowstone-bargain, 2026-10-23)*
 **zsh does not word-split `$VAR`**: `tune_art_scrim.py $SLUGS` passes ONE
 argument and silently tunes nothing — spell the slugs out.
 Headless Chrome can exit NON-ZERO after writing the screenshot ("Teardown watchdog
