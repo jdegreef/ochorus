@@ -1,7 +1,0 @@
-https://en.wikisource.org/w/api.php?action=query&list=search&srsearch=%22Abide+in+Christ%22+Murray&format=json&srlimit=20
-https://html.duckduckgo.com/html/?q=%22Abide+in+Christ%22+Murray+%22All+ye+who+have+come+to+Him%22+%22Come+unto+me%22+full+text
-https://www.bing.com/search?q=%22Abide+in+Christ%22+Andrew+Murray+%22All+ye+who+have+come+to+Him%22+full+text
-https://www.worldinvisible.com/library/murray/abide/abide.htm
-https://www.worldinvisible.com/library/murray/5f00.0547/5f00.0547.c.htm
-https://www.ccel.org/ccel/murray/abide.html
-https://www.jesus.org.uk/vault/library/murray_abide_in_christ.pdf

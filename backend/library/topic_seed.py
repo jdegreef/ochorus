@@ -275,6 +275,7 @@ TOPICS = [
         "The branch in the Vine \u2014 union and communion with the Lord Jesus, and "
         "the life that flows from no other source than staying near him.",
         [
+            "abide-in-christ",
             "true-vine",
             "holy-in-christ",
             "absolute-surrender",
