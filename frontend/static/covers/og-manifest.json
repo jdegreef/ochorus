@@ -14974,6 +14974,17 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"lg/pilgrims-progress": {
+			"ground": "70a60aa20638bb200073879645130b7856329ee0c52ea24d17f71965158d71b3",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"lg/pilgrims-progress-words-of-one-syllable": {
 			"ground": "e7a5caf5b7386b46154377fb6492c2d52b679ffa68b061f112ce550f4c794c34",
 			"style": "young",
