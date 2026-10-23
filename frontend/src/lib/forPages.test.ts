@@ -6,7 +6,6 @@ import { FOR_META } from './forMeta';
 import { messageShareLinks } from './share';
 import {
 	AUTHORS_SHOWN,
-	countWorks,
 	EMPTY_SHELF_DATA,
 	forQuote,
 	inviteMessage,
@@ -257,11 +256,6 @@ describe('the "Ochorus for …" pages', () => {
 		expect(forQuote(page, 'a-00000000')).toBeNull();
 	});
 
-	it('counts works, not their young-reader editions', () => {
-		const slugs = ['pilgrims-progress', 'pilgrims-progress-teens', 'pilgrims-progress-children', 'confessions'];
-		expect(countWorks(slugs.map((slug) => ({ slug })))).toBe(2);
-	});
-
 	it('builds each sermon series from sermons with study questions, with backups', () => {
 		for (const p of FOR_PAGES) {
 			for (const series of p.series ?? []) {
@@ -314,9 +308,9 @@ describe('the "Ochorus for …" pages', () => {
 		);
 		const row = forLanguage('sw', { books, sermons: 3, plans: 0 }, ['p1', 'p1-teens', 'missing', 'p2', 'p1']);
 		expect(row).toMatchObject({ code: 'sw', name: 'Swahili', native: 'Kiswahili' });
-		expect(countsLine(row.counts)).toBe('5 books · 3 sermons');
+		expect(countsLine(row.counts)).toBe('7 books · 3 sermons');
 		expect(countsLine({ books: 1, sermons: 1, plans: 2 })).toBe('1 book · 1 sermon · 2 reading plans');
-		expect(row.counts).toEqual({ books: 5, sermons: 3, plans: 0 });
+		expect(row.counts).toEqual({ books: 7, sermons: 3, plans: 0 });
 		expect(row.covers.map((b) => b.slug)).toEqual(['p1', 'p2', 'z', 'x']);
 		expect(row.covers.length).toBe(LANGUAGE_COVERS);
 		expect(forLanguage('lg', { books: [], sermons: 0, plans: 0 }, []).name).toBe('Luganda');

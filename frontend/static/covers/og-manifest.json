@@ -5803,6 +5803,17 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"es/faithful-with-little": {
+			"ground": "b67864056ba8a92dcbc527fd052c2adbfbf9dc0797af94701ebb913c879d8cc0",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"es/feasting-at-the-table": {
 			"ground": "ca3f76b4cb6f73df54f65066da267dc24df12fb2daf0abf371049c92a4841e82",
 			"style": "lettered",
@@ -8105,6 +8116,17 @@
 				519
 			]
 		},
+		"faithful-with-little": {
+			"ground": "4f380574d4d4a4728d73d99d1f14f96c8d734f46254c11eec40c175bf36992d6",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"finney-memoirs": {
 			"ground": "7e00273a41f573d20d8202b37b0c6d82affbd4512032520c4db8d486e297af71",
 			"style": "revival",
@@ -9235,6 +9257,17 @@
 			"scrim": 1,
 			"layout": "split/navy",
 			"bar": 0.04
+		},
+		"fr/faithful-with-little": {
+			"ground": "8fa8c6e470eb7b498e0e972df18512394853d043516e6203c3e5f4cc0e4aa760",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"fr/feasting-at-the-table": {
 			"ground": "6e0eeb78b81466700d36d3c4bd910186a8ac00efbe55b57b93792ce7912394ad",
@@ -15030,6 +15063,17 @@
 				519
 			]
 		},
+		"lg/school-of-prayer": {
+			"ground": "f1f90e1c3d2fcbc594b853b5a657dac84375ff48c510cbe3f4f0ace92819c782",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0.04
+		},
 		"lg/soar-like-the-eagle-3": {
 			"ground": "c687af707ddb1610c2aea34d3b97362913cc107235488a0d9b03980d0537c802",
 			"style": "lettered",
@@ -16597,6 +16641,17 @@
 				317,
 				478
 			]
+		},
+		"pt/faithful-with-little": {
+			"ground": "b304ae9f126101122efbebe8bce2e3047460d3649129c04c226d9b5f916f2389",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"pt/feasting-at-the-table": {
 			"ground": "6dda8fede6c88612a0558cfba72899da0e536239b5309f39e64faf84eb830672",
@@ -18849,6 +18904,17 @@
 				317,
 				478
 			]
+		},
+		"sw/faithful-with-little": {
+			"ground": "1024ee4018b1d2e5be14680b41e3b008c6630196b37e6ae718247cb7fc912388",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"sw/feasting-at-the-table": {
 			"ground": "0a9538b84989b2136d659baeb822f7b87cdaa94c95d542f020400bd6c94abb70",
@@ -21530,6 +21596,37 @@
 			"middle": [
 				313,
 				482
+			]
+		},
+		"uk/rooted-1": {
+			"ground": "93c66803ca327dcc5452be80573ce5a91f37252ed431246b6cea846223d82f06",
+			"style": "young",
+			"volume": "1",
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.4,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 272, 308, 316],
+					[181, 347, 419, 422]
+				],
+				"subtitle": [
+					[117, 478, 483, 506],
+					[160, 507, 440, 535]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				260,
+				535
 			]
 		},
 		"uk/school-of-prayer": {

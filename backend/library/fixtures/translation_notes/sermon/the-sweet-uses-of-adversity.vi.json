@@ -1,0 +1,94 @@
+{
+ "kind": "sermon",
+ "slug": "the-sweet-uses-of-adversity",
+ "language": "vi",
+ "job_issue": 6373,
+ "references": [
+  {
+   "reference": "Job 10:2",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Samuel 24:14",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Job 10:1",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Job 10:2",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Micah 7:8",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Exodus 4:24",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Luke 21:18",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalm 107:30",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "1 Corinthians 15:49",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 26:38",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 27:46",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Job 13:15",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 27:46",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Luke 19:10",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "self_rendered",
+   "block_index": 29
+  }
+ ]
+}

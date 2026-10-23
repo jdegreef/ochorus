@@ -1,0 +1,230 @@
+{
+ "kind": "sermon",
+ "slug": "the-greatest-of-these-is-love",
+ "language": "vi",
+ "references": [
+  {
+   "reference": "Micah 7:19",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 5:44",
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 5:44",
+   "status": "mined",
+   "block_index": 43,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 13:13",
+   "status": "mined",
+   "block_index": 43,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "mined",
+   "block_index": 45,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 13:1",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "1 Corinthians 13:2",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "1 Corinthians 13:2",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "1 Corinthians 13:3",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "1 Corinthians 13:4",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "1 Corinthians 13:4",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "1 Corinthians 13:5",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "1 Corinthians 13:6",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "1 Corinthians 13:7",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "1 Corinthians 13:8",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "Psalms 103:11",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "John 12:46",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "John 12:46",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Colossians 2:14",
+   "status": "mined",
+   "block_index": 70,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Hebrews 1:14",
+   "status": "mined",
+   "block_index": 78,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Kings 6:16",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Jeremiah 1:12",
+   "status": "mined",
+   "block_index": 103,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Kings 6:16",
+   "status": "self_rendered",
+   "block_index": 106
+  },
+  {
+   "reference": "2 Corinthians 1:20",
+   "status": "self_rendered",
+   "block_index": 109
+  },
+  {
+   "reference": "Matthew 6:15",
+   "status": "mined",
+   "block_index": 113,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "self_rendered",
+   "block_index": 119
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "mined",
+   "block_index": 120,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 16:7",
+   "status": "self_rendered",
+   "block_index": 150
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "mined",
+   "block_index": 150,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalms 139:23",
+   "status": "mined",
+   "block_index": 154,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "John 8:11",
+   "status": "mined",
+   "block_index": 160,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "self_rendered",
+   "block_index": 162
+  },
+  {
+   "reference": "Galatians 5:23",
+   "status": "self_rendered",
+   "block_index": 162
+  },
+  {
+   "reference": "Romans 8:18",
+   "status": "mined",
+   "block_index": 174,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Revelation 7:17",
+   "status": "mined",
+   "block_index": 174,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Isaiah 11:9",
+   "status": "mined",
+   "block_index": 174,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Deuteronomy 33:27",
+   "status": "mined",
+   "block_index": 175,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 186,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "self_rendered",
+   "block_index": 184
+  },
+  {
+   "reference": "2 Timothy 1:7",
+   "status": "self_rendered",
+   "block_index": 190
+  }
+ ]
+}

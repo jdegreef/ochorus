@@ -2874,11 +2874,6 @@ export function forQuote(page: QuotePage, slug: string): SavedQuote | null {
 	return q ? { ...q, author: { slug: page.author.slug, name: page.author.name } } : null;
 }
 
-/** How many works a book list holds: its young-reader editions are the same
- *  works retold (the slug convention is the link — root CLAUDE.md). */
-export const countWorks = (books: Pick<BookSummary, 'slug'>[]): number =>
-	books.filter((b) => !editionKind(b.slug)).length;
-
 /** The message a leader passes on: the page's line and the link it promises. */
 export const inviteMessage = (invite: ForPage['invite'], siteUrl: string): string =>
 	`${invite.text}\n${siteUrl}${withTrailingSlash(invite.href)}`;
@@ -2981,7 +2976,9 @@ export function forLanguage(
 	picks: string[],
 	locale: ForLocale = 'en'
 ): ForLanguage {
-	// Works only, like the count beside them; each pick once (shelves may share one).
+	// Covers show works only (a retelling would repeat its book's cover); each
+	// pick once (shelves may share one). The count beside them is every book,
+	// the number the language's Books shelf shows.
 	const works = lists.books.filter((b) => !editionKind(b.slug));
 	const own = new Set(picks);
 	const covers = [
@@ -2992,7 +2989,7 @@ export function forLanguage(
 		code,
 		name: languageName(code, locale),
 		native: localeName(code),
-		counts: { books: countWorks(lists.books), sermons: lists.sermons, plans: lists.plans },
+		counts: { books: lists.books.length, sermons: lists.sermons, plans: lists.plans },
 		covers: covers.map(toCoverBook)
 	};
 }

@@ -1,0 +1,152 @@
+{
+ "kind": "sermon",
+ "slug": "i-keep-a-quiet-heart",
+ "language": "vi",
+ "references": [
+  {
+   "reference": "Psalm 19:14",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Mark 4:35",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Mark 4:36",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Mark 4:37",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Mark 4:38a",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Mark 4:38b",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Mark 4:39a",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Mark 4:39b",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Mark 4:40",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Mark 4:41",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Mark 4:41",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Mark 4:38b",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "block_index": 49,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 6:34",
+   "status": "mined",
+   "block_index": 49,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "block_index": 50,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "1 Kings 19:12",
+   "status": "mined",
+   "block_index": 57,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "mined",
+   "block_index": 68,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Jeremiah 31:3",
+   "status": "mined",
+   "block_index": 68,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Deuteronomy 33:27",
+   "status": "mined",
+   "block_index": 69,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Genesis 50:20",
+   "status": "mined",
+   "block_index": 75,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Daniel 3:18",
+   "status": "self_rendered",
+   "block_index": 78
+  },
+  {
+   "reference": "Luke 11:2",
+   "status": "mined",
+   "block_index": 87,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "block_index": 87,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalm 16:5",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "Psalm 16:5",
+   "status": "self_rendered",
+   "block_index": 103
+  }
+ ]
+}

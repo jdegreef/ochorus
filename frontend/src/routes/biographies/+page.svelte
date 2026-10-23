@@ -336,10 +336,6 @@
 	// counts every real filter; add the query.
 	const isFiltered = $derived(sheetCount > 0 || filters.values.q.trim() !== '');
 
-	// How much is on the shelf, for the header's count line — the whole roster,
-	// not the current filter (it describes the library, like the Books header).
-	const bookTotal = $derived(authors.reduce((n, a) => n + a.book_count, 0));
-
 	/** Reveal the page holding `slug`, then scroll to it once it has painted. */
 	function jumpTo(slug: string) {
 		const i = sorted.findIndex((a) => a.slug === slug);
@@ -557,15 +553,10 @@
 		section="biographies"
 		title={t('nav.biographies')}
 		tagline={t('bios.tagline')}
-		meta={authors.length ? bioCounts : undefined}
 	/>
-	{#snippet bioCounts()}
-		{authors.length}
-		{authors.length === 1 ? t('common.writerOne') : t('common.writerMany')}
-		<span class="opacity-50">·</span>
-		{bookTotal}
-		{bookTotal === 1 ? t('common.bookOne') : t('common.bookMany')}
-	{/snippet}
+	<!-- No count in the head: this shelf leaves out writers withheld from
+	     Biographies (`list_in_biographies`), so its own "N writers · M books"
+	     ran short of the library's one authors number (home, A–Z). -->
 
 	<!-- The page's visual way in: the eras, the traditions or the places as
 	     cards, one lens at a time (eras by default). Each card ticks that value

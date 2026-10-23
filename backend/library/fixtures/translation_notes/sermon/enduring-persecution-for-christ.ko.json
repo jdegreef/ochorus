@@ -1,0 +1,90 @@
+{
+ "kind": "sermon",
+ "slug": "enduring-persecution-for-christ",
+ "language": "ko",
+ "references": [
+  {
+   "reference": "Hebrews 13:13",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Hebrews 13:13",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 21:18",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 5:10",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 129:1",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Romans 8:36",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 44:22",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 129:4",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 125:3",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Psalm 7:15",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 21:15",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 24:44",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Zechariah 2:8",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "1 Peter 1:7",
+   "status": "mined",
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}
