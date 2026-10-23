@@ -1,0 +1,184 @@
+{
+ "kind": "sermon",
+ "slug": "how-to-forgive",
+ "language": "ko",
+ "references": [
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Philippians 3:20",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Revelation 21:5",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Isaiah 11:9",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Habakkuk 2:14",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Luke 21:36",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "John 16:33",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 16:33",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 19:23",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "2 Peter 3:14",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 45,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 1:7",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "mined",
+   "block_index": 49,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Hebrews 12:15",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "Isaiah 65:5",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Corinthians 7:17",
+   "status": "mined",
+   "block_index": 54,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 14:4",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "1 Samuel 15:23",
+   "status": "mined",
+   "block_index": 63,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Proverbs 28:13",
+   "status": "self_rendered",
+   "block_index": 66
+  },
+  {
+   "reference": "Revelation 12:11",
+   "status": "self_rendered",
+   "block_index": 70
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "self_rendered",
+   "block_index": 70
+  },
+  {
+   "reference": "Matthew 6:15",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "self_rendered",
+   "block_index": 83
+  },
+  {
+   "reference": "Psalm 103:11",
+   "status": "mined",
+   "block_index": 96,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Revelation 22:11",
+   "status": "self_rendered",
+   "block_index": 114
+  },
+  {
+   "reference": "1 Peter 4:12",
+   "status": "mined",
+   "block_index": 122,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Peter 4:13",
+   "status": "mined",
+   "block_index": 123,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Peter 4:14a",
+   "status": "mined",
+   "block_index": 123,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Peter 4:14b",
+   "status": "mined",
+   "block_index": 124,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Philippians 3:20",
+   "status": "self_rendered",
+   "block_index": 132
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "mined",
+   "block_index": 133,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "1 Thessalonians 5:24",
+   "status": "mined",
+   "block_index": 134,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  }
+ ]
+}

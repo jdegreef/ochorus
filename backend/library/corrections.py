@@ -1506,6 +1506,12 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # uk
             ("<p>У цій цікавій розповіді",
              '<blockquote><em>«Менї розказано про все, що ти зробила ... покинувши батька твого і матїр твою, і отчину твою та прийшла до народа, котрого ти не знала нї позавчора нї вчора. Бог прийми це твоє дїло! І нехай тобі буде повна нагорода від Господа, Бога Ізрайлевого, до котрого ти прийшла, щоб під його крилами захистити себе!» (Рути 2:11, 12).</em></blockquote>'),
+            # vi
+            ('<p>Trong câu chuyện đầy lý thú này, chún',
+             '<blockquote><em>“Người ta có thuật cho ta nghe mọi điều nàng đã làm ... và cách nào nàng đã lìa cha mẹ, xứ sở sanh của nàng, đặng đi đến một dân tộc mà nàng không biết trước. Nguyện Đức Giê-hô-va báo đáp điều nàng đã làm; nàng đã đến núp dưới cánh Giê-hô-va Đức Chúa Trời của Y-sơ-ra-ên; cầu xin Ngài thưởng cho nàng cách trọn vẹn” (Ru-tơ 2:11, 12).</em></blockquote>'),
+            # ko
+            ('<p>이 흥미로운 이야기에서 우리는 성령께서 모형이 되는 생애들을 통하여',
+             '<blockquote><em>“네가 시모에게 행한 모든 것과 네 부모와 고국을 떠나 전에 알지 못하던 백성에게로 온 일이 내게 분명히 들렸느니라 여호와께서 네 행한 일을 보응하시기를 원하며 이스라엘의 하나님 여호와께서 그 날개 아래 보호를 받으러 온 네게 온전한 상 주시기를 원하노라”(룻기 2:11, 12).</em></blockquote>'),
         ],
     },
     "self-denial-versus-self-assertion": {
@@ -1741,6 +1747,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # ko
             ("<p>기독교의 가장 좋은 증거는",
              "<p>“원하는 자는 값없이 생명수를 받으라”<br/> (요한계시록 22:17)</p>"),
+            # vi
+            ('<p>BẰNG chứng tốt nhất của Cơ Đốc giáo l',
+             '<p>“Kẻ nào muốn, khá nhận lấy nước sự sống cách nhưng không”<br/> (Khải Huyền 22:17)</p>'),
         ],
     },
     "essentials-of-prayer": {
@@ -4249,6 +4258,44 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("<p>ነገር ግን ፈተናውን የላከው", "<h3>በቂ ጸጋ</h3>"),
             ("<p>ነገር ግን ቀደም ብለን እንዳየነው", "<h3>ጥልቅ ፈተናዎች</h3>"),
             ("<p>እግዚአብሔር ለባሪያው የሰጠው", "<h3>የጌታ ቸርነት</h3>"),
+            # vi
+            ('<p>Trong những bài suy gẫm về Thi Thiên ',
+             '<h3>MỞ ĐẦU.</h3>'),
+            ('<p>Trong câu 8 của chương 1, chính Đức C',
+             '<h3>LỜI CHỨNG VÀ LỜI THÁCH THỨC CỦA ĐỨC CHÚA TRỜI.</h3>'),
+            ('<p>Trong câu 8 của chương 1, chính Đức C',
+             '<p><em>“Đức Giê-hô-va đã ban cho, Đức Giê-hô-va lại cất đi; đáng ngợi khen danh Đức Giê-hô-va</em>.”—Gióp 1:21.</p>'),
+            ('<p>Lời đáp của Sa-tan thật đáng chú ý. N',
+             '<h3>HÀNG RÀO VÔ HÌNH.</h3>'),
+            ('<p>Trở lại với câu chuyện về Gióp: kẻ ki',
+             '<h3>GIÓP BỊ THỬ THÁCH</h3>'),
+            ('<p>Chẳng bao lâu, Sa-tan bày tỏ bản chất',
+             '<h3>SỰ HIỂM ĐỘC CỦA SA-TAN.</h3>'),
+            ('<p>Nhưng Đấng đã sai sự thử thách đến cũ',
+             '<h3>ÂN ĐIỂN ĐẦY ĐỦ.</h3>'),
+            ('<p>Tuy vậy, như chúng ta đã thấy, sự thử',
+             '<h3>NHỮNG THỬ THÁCH SÂU XA HƠN.</h3>'),
+            ('<p>Phước hạnh Đức Chúa Trời ban cho tôi ',
+             '<h3>LÒNG NHÂN TỪ CỦA CHÚA.</h3>'),
+            # ko
+            ('<p>첫째 시편을 묵상하면서 우리는 “복된 형통”에 대하여 오래 생각해 ',
+             '<h3>들어가는 말</h3>'),
+            ('<p>1장 8절에서 하나님께서는 친히 자기 종에 대하여 증언하십니다. “',
+             '<h3>하나님의 증언과 도전</h3>'),
+            ('<p>1장 8절에서 하나님께서는 친히 자기 종에 대하여 증언하십니다. “',
+             '<p><em>“주신 자도 여호와시요 취하신 자도 여호와시오니 여호와의 이름이 찬송을 받으실지니이다</em>.”—욥기 1:21.</p>'),
+            ('<p>사탄의 대답은 눈여겨볼 만합니다. 그는 “어느 욥 말입니까?” 하거',
+             '<h3>보이지 않는 울타리</h3>'),
+            ('<p>다시 욥의 이야기로 돌아가 봅시다. 그 큰 참소자는 욥의 성품이나 ',
+             '<h3>욥의 시험</h3>'),
+            ('<p>그리고 곧 사탄은 그 헌신된 사람에게 재앙에 재앙을 연달아 내림으로',
+             '<h3>사탄의 악의</h3>'),
+            ('<p>그러나 시련을 보내신 그분께서 필요한 은혜도 주셨습니다. 그리하여 ',
+             '<h3>족한 은혜</h3>'),
+            ('<p>그러나 앞에서 보았듯이, 욥의 시련은 그의 재산이 없어졌을 때 끝난',
+             '<h3>더 깊은 시련</h3>'),
+            ('<p>하나님께서 자기 종에게 주신 복은 결코 작은 것이 아니었습니다. 어',
+             '<h3>여호와의 인자하심</h3>'),
         ],
     },
     # --- Drop caps that lost the space after them -----------------------------

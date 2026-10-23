@@ -1,0 +1,81 @@
+{
+ "kind": "sermon",
+ "slug": "the-parable-of-the-prodigal-son",
+ "language": "ko",
+ "references": [
+  {
+   "reference": "Luke 15:1",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 15:2",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 15:1",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 15:17",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 15:16",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 15:16",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Luke 15:12",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 15:12",
+   "status": "mined",
+   "block_index": 34,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 15:19",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Luke 15:12",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 48,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 15:27",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Luke 15:30",
+   "status": "self_rendered",
+   "block_index": 56
+  }
+ ]
+}

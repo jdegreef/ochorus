@@ -1,0 +1,238 @@
+{
+ "kind": "sermon",
+ "slug": "the-method-of-grace",
+ "language": "ko",
+ "references": [
+  {
+   "reference": "Jeremiah 6:14",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Jeremiah 6:13",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Jeremiah 6:11",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Jeremiah 6:12",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Ezekiel 18:4",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 38:4",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 8:8",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 14:23",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 16:9",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 28:9",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 28:5",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Romans 10:4",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 20:19",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Psalm 119:165",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Isaiah 57:21",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Galatians 6:7",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "John 18:6",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Matthew 25:41",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "개역 (Take Root korean / ebible kor_old) Bible text"
+  },
+  {
+   "reference": "Luke 17:21",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Romans 2:28",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Romans 2:29",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Galatians 3:10",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Isaiah 64:6",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "John 20:28",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "1 Corinthians 3:22",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Corinthians 3:23",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Romans 8:28",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 10:30",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Revelation 3:17",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Revelation 3:18",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "John 20:17",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Mark 16:7",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "John 14:27",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Ezekiel 36:26",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Isaiah 33:14",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "2 Corinthians 5:20",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 10:31",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Revelation 6:16",
+   "status": "self_rendered",
+   "block_index": 9
+  }
+ ]
+}
