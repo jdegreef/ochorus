@@ -408,7 +408,7 @@ Solomon knew this from the inside. He was the richest man of his age, and he wro
 
 > "Whoever loves money never has enough money, and whoever loves wealth is never satisfied with what comes in. This too is a breath." (Ecclesiastes 5:10)
 
-The word translated "breath" is the famous word of Ecclesiastes, often rendered "vanity" or "meaningless." It means something that vanishes like your breath on a cold morning. Love of money is a hunger that grows the more you feed it. Bernard of Clairvaux saw the same thing six hundred years ago: "whatever riches he may have, his nature is to want more."
+The word translated "breath" is the famous word of Ecclesiastes, often rendered "vanity" or "meaningless." It means something that vanishes like your breath on a cold morning. Love of money is a hunger that grows the more you feed it. Bernard of Clairvaux saw the same thing nine hundred years ago: "whatever riches he may have, his nature is to want more."
 
 ### Life is not things
 
