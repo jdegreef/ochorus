@@ -21,6 +21,7 @@ const homeShelves = vi.hoisted(() => vi.fn());
 vi.mock('$lib/homeShelves', () => ({ homeShelves }));
 
 const { load } = await import('./+page');
+const { load: aboutLoad } = await import('./about/+page');
 const { GET } = await import('./home-shelves/[lang].json/+server');
 
 const SNAPSHOT: HomeShelves = {
@@ -76,5 +77,31 @@ describe('home-shelves endpoint', () => {
 		await expect(GET({ params: { lang: 'xx' } } as Parameters<typeof GET>[0])).rejects.toMatchObject({
 			status: 404
 		});
+	});
+});
+
+describe('about load', () => {
+	const runAbout = (fetch: typeof globalThis.fetch) =>
+		(aboutLoad as unknown as (e: { fetch: typeof fetch }) => Promise<{ counts: HomeShelves['counts'] | null }>)({
+			fetch
+		});
+
+	beforeEach(() => {
+		env.building = false;
+	});
+
+	it("shows the home snapshot's own counts, so the two pages agree", async () => {
+		const fetch = vi.fn(async () => Response.json(SNAPSHOT));
+		expect(await runAbout(fetch)).toEqual({ counts: SNAPSHOT.counts });
+		expect(fetch).toHaveBeenCalledWith('/home-shelves/fr.json');
+	});
+
+	it('drops the library figures at runtime when the snapshot is unreadable', async () => {
+		expect(await runAbout(async () => new Response('', { status: 404 }))).toEqual({ counts: null });
+	});
+
+	it('fails the build rather than prerender About without them', async () => {
+		env.building = true;
+		await expect(runAbout(async () => new Response('', { status: 500 }))).rejects.toThrow(/500/);
 	});
 });
