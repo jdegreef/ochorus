@@ -856,7 +856,7 @@
   "common_min_listen": "%n% хв слухання",
   "common_hr_listen": "%h% год слухання",
   "common_hr_min_listen": "%h% год %m% хв слухання",
-  "home_sermon_of_week": "Проповідь тижня",
+  "home_sermon_of_day": "Проповідь дня",
   "home_sermon_read_or_listen": "прочитайте або послухайте з",
   "home_articles_title": "Вісім на сьогодні",
   "home_articles_subtitle": "новий список щоранку",

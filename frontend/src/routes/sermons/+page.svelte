@@ -11,7 +11,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { readJSON, writeJSON } from '$lib/persisted';
 	import SermonCard from '$lib/components/SermonCard.svelte';
-	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
+	import SermonOfTheDay from '$lib/components/SermonOfTheDay.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
@@ -402,7 +402,7 @@
 	     reader's typing. `reserve` holds its height until the pick lands. -->
 	{#if !filtering && !loadError && sermons.length}
 		<div class="mb-8">
-			<SermonOfTheWeek embedded reserve />
+			<SermonOfTheDay embedded reserve />
 		</div>
 	{/if}
 

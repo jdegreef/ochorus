@@ -49,7 +49,7 @@ In this order, and nothing else at the top level:
 3. **`<CatalogLanguageNudge kind=…>`** — _(gone from `main` by 2026-09-26: the component no longer exists; a new shelf's empty-language state is just `<EmptyState message>` — the Topics model)_ when the current language has fewer
    rows than English. Extend its `kind` union rather than skipping it.
 4. **Secondary section** (optional) — `h2.section-label` above it (`Continue
-   reading`, `Sermon of the week`), hidden while the reader is filtering.
+   reading`, `Sermon of the day`), hidden while the reader is filtering.
 5. **`.filter-row`** — controls in this order: free-text `.filter-field.grow`
    (placeholder `Filter by …`) · scope `<select class="filter-field">` · sort
    `<select>` · group `.seg` · then a `.chip` row underneath for taxonomy. No

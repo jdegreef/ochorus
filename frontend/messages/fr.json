@@ -856,7 +856,7 @@
   "common_min_listen": "%n% min d’écoute",
   "common_hr_listen": "%h% h d’écoute",
   "common_hr_min_listen": "%h% h %m% min d’écoute",
-  "home_sermon_of_week": "Sermon de la semaine",
+  "home_sermon_of_day": "Sermon du jour",
   "home_sermon_read_or_listen": "lisez-le, ou écoutez-le avec",
   "home_articles_title": "Huit pour aujourd’hui",
   "home_articles_subtitle": "une nouvelle liste chaque matin",

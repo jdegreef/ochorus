@@ -14,7 +14,7 @@
 	/**
 	 * "Eight for today" — a numbered two-column list of eight articles that
 	 * turns over every day (see $lib/dailyArticles for the pick). Fetched
-	 * CLIENT-SIDE, like SermonOfTheWeek: the home page is prerendered, and a
+	 * CLIENT-SIDE, like SermonOfTheDay: the home page is prerendered, and a
 	 * build-time pick would freeze on the day of the last deploy.
 	 *
 	 * Articles are per-language rows with no English fallback, so the list is

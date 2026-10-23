@@ -856,7 +856,7 @@
   "common_min_listen": "%n% मिनट का श्रवण",
   "common_hr_listen": "%h% घंटे का श्रवण",
   "common_hr_min_listen": "%h% घंटे %m% मिनट का श्रवण",
-  "home_sermon_of_week": "सप्ताह का उपदेश",
+  "home_sermon_of_day": "आज का उपदेश",
   "home_sermon_read_or_listen": "पढ़ें, या इससे सुनें",
   "home_articles_title": "आज के आठ",
   "home_articles_subtitle": "हर सुबह एक नई सूची",

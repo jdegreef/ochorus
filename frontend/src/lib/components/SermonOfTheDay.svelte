@@ -6,16 +6,17 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { portraitPosition } from '$lib/portraits';
+	import { pickDailySermon } from '$lib/dailySermon';
 	import SermonPlate from '$lib/components/SermonPlate.svelte';
 
 	const t = i18n.t;
 
 	/**
-	 * "Sermon of the week" — a weekly rotating pick from the sermon shelf.
-	 * Deterministic (ISO week number modulo shelf size), so every visitor sees
-	 * the same sermon all week and it advances with no manual step. Fetched
+	 * "Sermon of the day" — a daily pick from the sermon shelf, a different
+	 * preacher each day (see $lib/dailySermon). Every visitor sees the same
+	 * sermon all day and it advances at midnight with no manual step. Fetched
 	 * CLIENT-SIDE: the homepage is prerendered, and baking the pick at build
-	 * time would freeze it on whatever week the site last deployed.
+	 * time would freeze it on whatever day the site last deployed.
 	 */
 	// `embedded` drops the home-page section chrome (own max-width + top
 	// padding) so the card can sit inside another page's column (e.g. the
@@ -24,28 +25,15 @@
 	// with it (the sermons shelf), so the content below doesn't jump. The list
 	// is always fetched fresh, even there: the shelf's own copy is the
 	// prerendered snapshot, and picking from a list of a different length
-	// than the home page's would show two different sermons of the week.
+	// than the home page's would show two different sermons of the day.
 	let { embedded = false, reserve = false }: { embedded?: boolean; reserve?: boolean } =
 		$props();
 
 	let pick = $state<SermonSummary | null>(null);
 
-	function isoWeek(d: Date): { year: number; week: number } {
-		const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-		const day = date.getUTCDay() || 7;
-		date.setUTCDate(date.getUTCDate() + 4 - day);
-		const year = date.getUTCFullYear();
-		const start = new Date(Date.UTC(year, 0, 1));
-		const week = Math.ceil(((date.getTime() - start.getTime()) / 86400000 + 1) / 7);
-		return { year, week };
-	}
-
 	onMount(async () => {
 		try {
-			const sermons = await listSermons(getLang());
-			if (!sermons.length) return;
-			const { year, week } = isoWeek(new Date());
-			pick = sermons[(year * 53 + week) % sermons.length];
+			pick = pickDailySermon(await listSermons(getLang()), new Date());
 		} catch {
 			pick = null;
 		}
@@ -69,7 +57,7 @@
 					: null}
 			>
 				<p class="eyebrow mb-2 text-accent">
-					{t('home.sermonOfWeek')}
+					{t('home.sermonOfDay')}
 				</p>
 				<h2 class="text-h2 mb-1">{pick.title}</h2>
 				<p class="text-small text-muted">
