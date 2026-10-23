@@ -18544,3 +18544,14 @@ BODY_CORRECTIONS.setdefault("a-body-of-divinity", {}).setdefault("replacements",
     ('their enemies, Lev 26:6 - 6, but',
      'their enemies, Lev 26:4-6, but'),
 ])
+
+# OCR slip found while translating the sermon to Ukrainian (#2965 batch,
+# job #2986): the opening quotation mark of the hopeless sinners' lament
+# ("There is no health in us ... no hope in us.'") was scanned as the digit
+# "6". Every other quotation in the paragraph opens with a backtick, and six
+# of the seven shipped editions (es/fr/ar/sw/hi/am) already dropped the digit;
+# pt carried it through, so its pair is repaired too.
+BODY_CORRECTIONS.setdefault("witnessing-for-christ", {}).setdefault("replacements", []).extend([
+    ("but they say, 6 There is no health", "but they say, `There is no health"),
+    ("mas dizem: 6 Não há saúde", "mas dizem: `Não há saúde"),
+])
