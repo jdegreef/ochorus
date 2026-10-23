@@ -1,0 +1,24 @@
+{
+ "kind": "bio",
+ "slug": "athanasius-of-alexandria",
+ "language": "uk",
+ "job_issue": 5301,
+ "references": [
+  {
+   "reference": "Psalm 136:4",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "self_rendered",
+   "block_index": 19
+  }
+ ],
+ "note": [
+  "The prayer refrain «бо милість його вічна» (Psalm 136, Kulish numbering = Hebrew) is pasted verbatim from Kulish; 136:4 is the first verse carrying exactly that wording.",
+  "Antony's «окаянний я чоловік» echoes Romans 7:24 inside his own words, so it is self_rendered.",
+  "The Festal Letter quotation echoes Deuteronomy 4:2 and Revelation 22:18-19 but is Athanasius's own wording, translated, not recorded as scripture."
+ ]
+}
