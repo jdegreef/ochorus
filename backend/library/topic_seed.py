@@ -149,6 +149,7 @@ TOPICS = [
             "waiting-on-god",
             "christ-the-healer",
             "key-teachings-of-frederick-brotherton-meyer",
+            "faithful-with-little",
         ],
     ),
     (
