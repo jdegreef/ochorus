@@ -25,12 +25,11 @@ export function pickDailySermon<T extends { slug: string; author: { slug: string
 		if (own) own.push(s);
 		else byPreacher.set(s.author.slug, [s]);
 	}
-	const shuffled = (slugs: string[]) =>
-		slugs.sort((a, b) => hash(a) - hash(b) || a.localeCompare(b));
-	const preachers = shuffled([...byPreacher.keys()]);
+	const shuffle = (a: string, b: string) => hash(a) - hash(b) || a.localeCompare(b);
+	const preachers = [...byPreacher.keys()].sort(shuffle);
 	const day = localDayNumber(date);
-	const own = byPreacher.get(preachers[day % preachers.length])!;
-	const order = shuffled(own.map((s) => s.slug));
-	const slug = order[Math.floor(day / preachers.length) % order.length];
-	return own.find((s) => s.slug === slug)!;
+	const own = byPreacher.get(preachers[day % preachers.length])!.sort((a, b) =>
+		shuffle(a.slug, b.slug)
+	);
+	return own[Math.floor(day / preachers.length) % own.length];
 }
