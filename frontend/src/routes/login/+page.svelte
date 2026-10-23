@@ -9,6 +9,7 @@
 	import { safeRedirect } from '$lib/safeRedirect';
 	import BrandMark from '$lib/components/BrandMark.svelte';
 	import GoogleButton from '$lib/components/GoogleButton.svelte';
+	import EmailCodeForm from '$lib/components/EmailCodeForm.svelte';
 	import LoginPitch, { type PitchKind } from '$lib/components/LoginPitch.svelte';
 	import { isSignupSource, noteSignupSource, promptSeen, signupStarted } from '$lib/signupSource';
 	import { readSavedSummary, type SavedSummary } from '$lib/savedSummary';
@@ -218,12 +219,14 @@
 		else resentMsg = t('login.sentAgain');
 	}
 
+	// The app's emails are answered with a code typed in here (EmailCodeForm),
+	// and its reset link finishes on the website — so it says so instead.
 	const sentBody = $derived(
 		(sent === 'signup'
-			? t('login.sentSignup')
+			? t(auth.emailCodes ? 'login.sentSignupCode' : 'login.sentSignup')
 			: sent === 'reset'
-				? t('login.sentReset')
-				: t('login.sentMagic')
+				? t(auth.emailCodes ? 'login.sentResetApp' : 'login.sentReset')
+				: t(auth.emailCodes ? 'login.sentCode' : 'login.sentMagic')
 		).replace('%email%', email)
 	);
 </script>
@@ -249,6 +252,9 @@
 			<div class="mail-badge mx-auto mb-3">✉</div>
 			<h1 class="text-h2 mb-2">{t('login.checkEmail')}</h1>
 			<p class="mb-4 text-body text-muted">{sentBody}</p>
+			{#if auth.emailCodes && sent !== 'reset'}
+				<div class="mb-4"><EmailCodeForm {email} type={sent === 'signup' ? 'signup' : 'email'} /></div>
+			{/if}
 			<div class="border-t border-border pt-4">
 				<p class="mb-2 text-small text-muted">{t('login.didntGet')}</p>
 				<button class="btn btn-ghost" onclick={resend} disabled={resendIn > 0}>
@@ -282,7 +288,7 @@
 					<p class="mt-1 mb-4 text-small text-muted">
 						{mode === 'signup' ? t('login.pitchFree') : t('login.syncNote')}
 					</p>
-					{#if mode !== 'reset'}
+					{#if mode !== 'reset' && auth.googleEnabled}
 						<!-- Google first here: one tap is the shortest way from "that sounds
 						     good" to an account, which is this layout's whole job. -->
 						{@render googleButton()}
@@ -365,10 +371,10 @@
 						onclick={magicLink}
 						disabled={busy || !auth.enabled}
 					>
-						{t('login.magicLink')}
+						{auth.emailCodes ? t('login.emailMeCode') : t('login.magicLink')}
 					</button>
 
-					{#if !pitch}
+					{#if !pitch && auth.googleEnabled}
 						<div class="or-divider text-small text-muted" aria-hidden="true">{t('login.or')}</div>
 						{@render googleButton()}
 					{/if}

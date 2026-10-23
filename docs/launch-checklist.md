@@ -129,10 +129,11 @@ Then raise the email rate limit under **Authentication → Rate Limits**.
 
 ## 2. Phone apps (iOS + Android)
 
-The app is the same reader, wrapped by Capacitor (`frontend/MOBILE.md`). It
-reads signed-out until in-app sign-in ships (MOBILE.md roadmap 3). It can still
-ship to the stores that way: no account means no Sign in with Apple
-requirement.
+The app is the same reader, wrapped by Capacitor (`frontend/MOBILE.md`).
+Sign-in in the app is email + password and emailed one-time codes (MOBILE.md,
+"Sign-in in the app"; set it up in §2.6). It offers no Google sign-in, which
+is what keeps it clear of Apple's Sign in with Apple requirement (guideline
+4.8). Until §2.6 is done the app reads signed-out, which can also ship.
 
 ### 2.1 Apple Developer Program (start today)
 
@@ -162,11 +163,20 @@ requirement.
   and what the app collects — signed-out reading sends page views to the API
   and errors to Sentry).
 - **Support URL**: `https://ochorus.com/contact`.
-- **Account deletion URL** (Google requires one if the app ever has accounts):
-  the web settings page already deletes an account.
+- **Account deletion**: Apple 5.1.1(v) wants it inside the app — it is
+  (Settings → Account → Danger zone → Delete my account, as on the website). Google
+  also wants a URL: `https://ochorus.com/settings` (sign in, then Delete my
+  account).
 - **Privacy labels / Data safety form**: answered from what the app actually
   sends. Signed-out: diagnostics (Sentry crash data) and usage analytics only
-  if engagement events fire in the app; no contact info, no tracking, no ads.
+  if engagement events fire in the app; no tracking, no ads. With sign-in on:
+  the email address (account), and reading progress / highlights / notes
+  (synced to the account, linked to it, not used for tracking).
+- **iOS privacy manifest** (`PrivacyInfo.xcprivacy`, required for upload):
+  declare UserDefaults, reason `CA92.1` (`@capacitor/preferences` keeps the
+  sign-in session there) and file timestamps, reason `C617.1`
+  (`@capacitor/filesystem`, offline books). Add it in Xcode (File → New →
+  App Privacy) so it lands in the App target.
 - **Screenshots**: iPhone 6.9" (1320×2868) and 6.5", iPad 13" if iPad is
   supported; Android phone (min 2), plus a 1024×500 feature graphic.
 - **Icon**: 1024×1024 (from `frontend/resources/`, already generated).
@@ -198,5 +208,33 @@ the Android upload keystore + passwords. Create those once the accounts exist.
   wrapper can be rejected. Ochorus's native polish (share sheet, system
   browser for outside links, back button, safe areas) and offline reading
   (roadmap 2) are the answers; mention them in the review notes.
-- Give reviewers a note that no login is needed to use the app.
+- Give reviewers a note that no login is needed to use the app, and a demo
+  account (email + password) for the signed-in features — Apple asks for one
+  whenever an app has sign-in.
 - Every upload needs a higher build number than the last.
+
+### 2.6 Sign-in in the app (Supabase settings)
+
+The app signs in with email + password, or with a one-time **code** from an
+email (it cannot open a sign-in link: no Universal Links yet). Supabase's
+emails carry only a link until their templates add the code:
+
+1. Supabase → **Authentication → Email Templates**:
+   - **Magic Link**: add a line such as
+     `Or enter this code in the app: {{ .Token }}` beside the link.
+   - **Confirm signup**: the same line. (A brand-new address that asks the
+     app for a code gets this email, not the Magic Link one.)
+   Keep the existing `{{ .ConfirmationURL }}` links — the website still uses
+   them, and a reader who taps one from the app's email lands on ochorus.com.
+2. Supabase → **Authentication → URL Configuration → Redirect URLs**: make
+   sure `https://ochorus.com/**` is listed. The app's emailed links (and its
+   password-reset link) point at the website's pages; a URL not on the list
+   falls back to the Site URL.
+3. `frontend/app-env/.env`: set `PUBLIC_SUPABASE_ANON_KEY` to the project's
+   anon / publishable key (the same public value as the website's on Render;
+   Supabase → Project Settings → API keys). `PUBLIC_SUPABASE_URL` is already
+   there. With the key empty the app builds signed-out.
+4. Try it on a phone: create an account (enter the emailed code), sign out,
+   sign in with the password, sign in with an emailed code, "Forgot your
+   password?" (the link opens the website; sign in back in the app), and
+   Settings → Account → Delete my account.

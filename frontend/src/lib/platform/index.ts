@@ -15,10 +15,11 @@
 
 import * as web from './web';
 import { backStack } from './back';
+import { makeAuthStorage, type AuthStorage } from './authStorage';
 import type { AppShellHooks } from './native';
 import type { ShareData, ShareResult } from './web';
 
-export type { ShareData, ShareResult, AppShellHooks };
+export type { ShareData, ShareResult, AppShellHooks, AuthStorage };
 
 /**
  * True in the app's bundle, false on the website. A build-time constant
@@ -36,6 +37,14 @@ export const IS_APP: boolean = __APP__;
 export const APP_ASSET_ORIGIN: string = __APP_ASSET_ORIGIN__;
 
 const native = () => import('./native');
+
+/**
+ * Where supabase-js keeps the reader's session: the phone's own key-value
+ * store in the app (iOS may purge a web view's localStorage — see
+ * ./authStorage.ts), and `undefined` on the website, which keeps supabase-js's
+ * default, localStorage.
+ */
+export const authStorage: AuthStorage | undefined = IS_APP ? makeAuthStorage(native) : undefined;
 
 /** Whether `share` opens an OS share sheet here: always in the app, and in
  *  a browser whose sheet works (not desktop Chromium — see web.ts). */

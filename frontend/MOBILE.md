@@ -10,7 +10,7 @@ The phone apps are the same SvelteKit reader as the website, wrapped by
 | Images | served by the site itself | loaded from `https://ochorus.com`, not bundled (see below) |
 | Size | everything under `static/` | ~20 MB, capped at 24 MB (`bundle-budget.json` `appBundle`) |
 | Offline | service worker + Cache API | downloaded books on the phone's own storage (see "Offline books in the app") |
-| Sign-in | Supabase | off for now (see roadmap); the app reads signed-out |
+| Sign-in | Supabase: password, magic link, Google | Supabase: password and emailed one-time codes (see "Sign-in in the app") |
 | Needs the API to build | yes (prerender) | no |
 
 The app bundle is copied into two native projects, which are committed:
@@ -29,7 +29,8 @@ The app bundle is copied into two native projects, which are committed:
   `/es/books`), so a link to ochorus.com can open the same page in the app
   once Universal Links / App Links are set up.
 - `$lib/platform` today: `canShare` / `share` / `shareFile` (the OS share
-  sheet — every share action, quote and testimony cards included), `onBack`
+  sheet — every share action, quote and testimony cards included), `authStorage`
+  (where supabase-js keeps the session, see "Sign-in in the app"), `onBack`
   (what Android's Back closes first), `openExternal` (the
   system browser), `setStatusBar` (called by `$lib/theme` beside
   `<meta name="theme-color">`) and `startAppShell` (once, from the root
@@ -142,6 +143,40 @@ The website bundle carries none of this: every entry point checks `IS_APP`,
 a build-time constant, and the Capacitor calls stay behind `native.ts`'s
 dynamic import.
 
+## Sign-in in the app
+
+The app signs in with the website's Supabase project, by **email + password**
+or by a **one-time code** from an email. A link in an email cannot come back
+to the app (its pages live at `capacitor://localhost` / `https://localhost`,
+and there are no Universal Links / App Links yet), so the app never waits for
+one:
+
+- **On when configured.** `authEnabled` (`$lib/supabase`) needs
+  `PUBLIC_SUPABASE_URL` and `PUBLIC_SUPABASE_ANON_KEY` in `app-env/.env`;
+  with either empty the app shows no sign-in and reads signed-out.
+  `detectSessionInUrl` is off in the app — nothing ever lands back on it.
+- **Session storage.** supabase-js keeps the session in the phone's own
+  key-value store (`@capacitor/preferences`: UserDefaults / SharedPreferences),
+  not in the web view's localStorage, which iOS may purge.
+  `$lib/platform/authStorage.ts` writes a copy to localStorage too, only for
+  the two synchronous first-paint readers (app.html's boot flag, `$lib/auth`'s
+  `storedSessionUser`); the store is the truth. Token refresh, sign-out and the
+  API's Bearer token all go through supabase-js, so they use it unchanged.
+- **Codes instead of links** (`auth.emailCodes`). "Email me a sign-in code"
+  (the website's magic-link button) and a sign-up that needs confirming both
+  show `EmailCodeForm`, which calls `verifyOtp` (`email` / `signup`). The
+  same emails still carry their link; in the app's emails it points at the same
+  page on **ochorus.com** (`SITE_URL`), never at the app's origin.
+- **Password reset** sends the website's link (`https://ochorus.com/reset-password`):
+  the new password is chosen there and the reader signs in back in the app.
+- **No Google** (`auth.googleEnabled`, `ONE_TAP_ENABLED`): see the roadmap.
+- **Account deletion** (App Store 5.1.1(v)) is Settings → Account → Delete my
+  account, the same API call and sign-out as on the website.
+
+Founder setup (Supabase email templates must carry `{{ .Token }}`, the
+redirect allow-list, the anon key in `app-env/.env`):
+`docs/launch-checklist.md` §2.6.
+
 ## One-time setup on the Mac
 
 1. **Xcode** from the App Store (the current release), opened once to install
@@ -210,7 +245,8 @@ and happen on the Mac for now.
 ## The native shell
 
 What `startAppShell` and the plugins (`@capacitor/app`, `browser`,
-`filesystem`, `share`, `splash-screen`, `status-bar` — exact-pinned; plugin
+`filesystem`, `preferences` (the sign-in session), `share`, `splash-screen`,
+`status-bar` — exact-pinned; plugin
 versions are their own, the core packages stay on one version) do:
 
 - **Safe areas.** Capacitor 8 runs the web view edge to edge, so the status
@@ -254,14 +290,26 @@ versions are their own, the core packages stay on one version) do:
 1. ~~**Native shell polish**~~ — done; see **The native shell** above.
 2. ~~**Offline books on the phone's own storage**~~ — done (Oct 2026); see
    "Offline books in the app".
-3. **Sign-in:** the website's flows return to `window.location.origin`, which
-   in the app is not a web address. Needs Universal Links / App Links (with
-   `/.well-known/apple-app-site-association` and `assetlinks.json` on
-   ochorus.com), email one-time codes, native Google sign-in and Sign in with
-   Apple. Until then `authEnabled` is off in the app (`$lib/supabase`), so it
-   shows no sign-in UI and reads signed-out.
+3. **Sign-in:** ~~email + password and emailed codes~~ — done (Oct 2026);
+   see "Sign-in in the app". Still to do:
+   - **Google and Apple.** Native Google sign-in (Google refuses OAuth in an
+     embedded web view) needs Google Cloud OAuth clients for iOS and Android
+     and a plugin that hands Supabase an ID token (`signInWithIdToken`, as
+     One Tap already does on the website). Offering Google on iOS then
+     requires **Sign in with Apple** too (guideline 4.8), which needs the paid
+     Apple Developer account. The seam: `auth.googleEnabled` in
+     `$lib/auth.svelte` and `ONE_TAP_ENABLED` in `$lib/oneTap`, both off
+     in the app; a native sign-in gets a function in `$lib/platform`.
+   - **Universal Links / App Links**, so an email's link opens the app:
+     `/.well-known/apple-app-site-association` (needs the Apple Team ID) and
+     `assetlinks.json` (needs the Play signing key's SHA-256) on ochorus.com,
+     plus the app's associated-domains entitlement. Then the magic link and
+     the password reset can finish in the app.
 4. ~~**Lighter bundle**~~ — done (Oct 2026): `build-app/` went from 245 MB
    to ~20 MB. Covers, portraits and illustrations load from ochorus.com; see
    "How the app loads images".
 5. **Store release:** TestFlight and Play internal testing uploads from CI
-   (fastlane), privacy labels, store listings, screenshots.
+   (fastlane), privacy labels, store listings, screenshots, and the iOS
+   privacy manifest (`PrivacyInfo.xcprivacy`: UserDefaults `CA92.1` for
+   `preferences`, file timestamps `C617.1` for `filesystem` —
+   docs/launch-checklist.md §2.3).

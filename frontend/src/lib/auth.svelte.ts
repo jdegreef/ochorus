@@ -2,6 +2,8 @@ import { browser } from '$app/environment';
 import { AUTH_NOT_CONFIGURED } from './authErrors';
 import { apiFetch, setAuthTokenProvider } from './api';
 import { authEnabled, supabase } from './supabase';
+import { IS_APP } from './platform';
+import { SITE_URL } from './config';
 import { readerPrefs } from './readerPrefs.svelte';
 import { listen } from './listen.svelte';
 import { theme, normalizePref } from './theme.svelte';
@@ -43,21 +45,29 @@ function deviceTimezone(): string {
 // A CODE, not a sentence: the page localizes it (see $lib/authErrors).
 const NOT_CONFIGURED = AUTH_NOT_CONFIGURED;
 
-/** Absolute app origin for redirect URLs (magic link / OAuth land back here). */
-const origin = () => (browser ? window.location.origin : undefined);
+/**
+ * The web address an emailed link (or Google) brings the reader back to: this
+ * page's origin on the website. In the phone app that origin is
+ * `capacitor://localhost` / `https://localhost` — not a web address, and dead
+ * in an email — so there it is the website (SITE_URL): a reader who taps the
+ * link instead of typing the code lands on ochorus.com, not on nothing.
+ */
+const origin = () => (browser ? (IS_APP ? SITE_URL : window.location.origin) : undefined);
 
 /**
  * Where a confirmation link or Google should bring the reader back to: `returnTo`
  * when it is a page on this site (the sign-up panel passes the page it sits
  * over), else the site root as before. Supabase only honours URLs on the
  * project's redirect allow-list and falls back to its Site URL otherwise, so
- * this can never send anyone off-site.
+ * this can never send anyone off-site. In the app, the same page on the
+ * website (see `origin`).
  */
 function returnUrl(returnTo?: string): string | undefined {
 	if (!browser || !returnTo) return origin();
 	try {
 		const u = new URL(returnTo, window.location.origin);
-		return u.origin === window.location.origin ? u.href : origin();
+		if (u.origin !== window.location.origin) return origin();
+		return IS_APP ? `${SITE_URL}${u.pathname}${u.search}${u.hash}` : u.href;
 	} catch {
 		return origin();
 	}
@@ -86,7 +96,9 @@ function signupMetadata(): { data?: { signup_variant: string } } {
  * page that must decide what to DRAW before `init()` has resolved (the home
  * page's dashboard), never for whether to make an authenticated request. The
  * key is supabase-js's default `sb-<project>-auth-token`, as app.html's boot
- * flag matches it.
+ * flag matches it. In the app the session lives in the phone's own store, and
+ * localStorage holds a write-through copy for exactly this read and that flag
+ * ($lib/platform/authStorage.ts).
  */
 export function storedSessionUser(): { email: string } | null {
 	if (!browser) return null;
@@ -110,6 +122,21 @@ export function storedSessionUser(): { email: string } | null {
  */
 class Auth {
 	enabled = authEnabled;
+	/**
+	 * Google sign-in (the button; One Tap is gated in $lib/oneTap). Not in the
+	 * phone app: Google refuses OAuth in an embedded web view, native Google
+	 * sign-in needs its own iOS / Android OAuth clients, and offering it there
+	 * obliges Sign in with Apple too (App Store guideline 4.8) — see
+	 * frontend/MOBILE.md, roadmap item 3.
+	 */
+	googleEnabled = !IS_APP;
+	/**
+	 * The app signs in by an emailed one-time CODE, typed in: a link in an
+	 * email cannot come back to the app (no Universal Links yet), so the magic
+	 * link and the sign-up confirmation become "enter the code we sent". The
+	 * website keeps its links.
+	 */
+	emailCodes = IS_APP;
 	user = $state<{ email: string } | null>(null);
 	// The reader's chosen display name (from the profile); '' when unset — callers
 	// fall back to the email. Kept separate from `user` (which mirrors the session).
@@ -300,7 +327,11 @@ class Auth {
 		return error ? error.code || 'unexpected_failure' : null;
 	}
 
-	/** Passwordless: email the user a one-time sign-in link back to `returnTo`. */
+	/**
+	 * Passwordless: email the user a one-time sign-in link back to `returnTo`.
+	 * The same email carries a one-time code (`{{ .Token }}`), which is how the
+	 * app signs in with it (`verifyEmailCode`); its link opens the website.
+	 */
 	async signInWithMagicLink(email: string, returnTo?: string): Promise<string | null> {
 		const sb = await supabase();
 		if (!sb) return NOT_CONFIGURED;
@@ -347,15 +378,36 @@ class Auth {
 		return error ? error.code || 'unexpected_failure' : null;
 	}
 
-	/** Email a password-reset link that lands on /reset-password. */
+	/**
+	 * Email a password-reset link that lands on /reset-password — on the
+	 * website, in the app too (`origin`): the new password is chosen there and
+	 * the reader comes back to the app to sign in with it.
+	 */
 	async sendPasswordReset(email: string): Promise<string | null> {
 		const sb = await supabase();
 		if (!sb) return NOT_CONFIGURED;
-		const redirectTo = browser ? `${window.location.origin}/reset-password` : undefined;
+		const base = origin();
+		const redirectTo = base ? `${base}/reset-password` : undefined;
 		const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo });
 		// `||`, not `??`: an AuthError with an empty-string code would otherwise
 		// return '' — which every caller's `if (err)` reads as SUCCESS, silently
 		// clearing the password field and showing nothing.
+		return error ? error.code || 'unexpected_failure' : null;
+	}
+
+	/**
+	 * Sign in with the one-time code from an email (`emailCodes`, the app): the
+	 * magic-link email's (`email` — also what a brand-new address gets from
+	 * signInWithMagicLink, Supabase's "Confirm signup" email) or the sign-up
+	 * confirmation's (`signup`). Success raises SIGNED_IN through the auth
+	 * listener, as any sign-in does. Both email templates must carry
+	 * `{{ .Token }}` (docs/launch-checklist.md).
+	 */
+	async verifyEmailCode(email: string, token: string, type: 'email' | 'signup'): Promise<string | null> {
+		const sb = await supabase();
+		if (!sb) return NOT_CONFIGURED;
+		const { error } = await sb.auth.verifyOtp({ email, token: token.replace(/\s+/g, ''), type });
+		// `||`, not `??`: see signIn.
 		return error ? error.code || 'unexpected_failure' : null;
 	}
 

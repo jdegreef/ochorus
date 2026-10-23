@@ -3,6 +3,7 @@ import { deLocalizeHref } from '$lib/paraglide/runtime';
 import { auth } from '$lib/auth.svelte';
 import { noteSignupSourceUndoable } from '$lib/signupSource';
 import { signInSheet } from '$lib/signInSheet.svelte';
+import { IS_APP } from '$lib/platform';
 
 /**
  * Google One Tap: the "Continue as Grace" prompt Google shows a reader who is
@@ -24,8 +25,12 @@ import { signInSheet } from '$lib/signInSheet.svelte';
 
 const CLIENT_ID = env.PUBLIC_GOOGLE_CLIENT_ID?.trim() || '';
 
-/** True only when this deploy has a Google client ID. */
-export const ONE_TAP_ENABLED = CLIENT_ID !== '';
+/**
+ * True only when this deploy has a Google client ID — and never in the phone
+ * app: Google's script does not run in an app web view, and Google sign-in
+ * there needs the native SDK and its own OAuth clients (frontend/MOBILE.md).
+ */
+export const ONE_TAP_ENABLED = !IS_APP && CLIENT_ID !== '';
 
 const GSI_SRC = 'https://accounts.google.com/gsi/client';
 
