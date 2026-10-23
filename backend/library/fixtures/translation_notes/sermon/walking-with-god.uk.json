@@ -1,0 +1,315 @@
+{
+ "kind": "sermon",
+ "slug": "walking-with-god",
+ "language": "uk",
+ "job_issue": 5299,
+ "references": [
+  {
+   "reference": "Genesis 5:24",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Genesis 5:24",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Jude 1:15",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 25:24",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 17:28",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Genesis 3:11",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 7:21",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 8:7",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Amos 3:3",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 8
+  },
+  {
+   "reference": "Ephesians 2:14",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 John 2:6",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "John 14:17",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "1 Timothy 4:15",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "2 Peter 3:18",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Psalm 84:7",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Revelation 2:4",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "1 Samuel 21:9",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "2 Peter 1:18",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "2 Peter 1:19",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Acts 7:38",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "John 5:39",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Joshua 1:8",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Psalm 119:105",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Psalm 119:24",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Psalm 1:2",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 13
+  },
+  {
+   "reference": "Romans 15:4",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Zechariah 12:10",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Timothy 3:16",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalm 39:3",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "1 John 5:21",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Matthew 10:30",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 16
+  },
+  {
+   "reference": "Proverbs 23:26",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 16
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "Luke 1:6",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "Psalm 122:1",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "Proverbs 27:17",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 19
+  },
+  {
+   "reference": "Esther 5:11",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Esther 5:12",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Esther 6:6",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Esther 6:9",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "John 15:15",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Psalm 25:14",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Psalm 84:10",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 21
+  },
+  {
+   "reference": "Proverbs 3:17",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Matthew 5:11",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Matthew 5:12",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 23
+  },
+  {
+   "reference": "Psalm 42:2",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "Isaiah 57:15",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 25
+  },
+  {
+   "reference": "Isaiah 66:2",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 25
+  },
+  {
+   "reference": "Revelation 3:16",
+   "status": "mined",
+   "source_file": "Kulish (1905) Bible text",
+   "block_index": 26
+  }
+ ],
+ "note": [
+  "Rows derived by measurement against Kulish (1905): 'mined' = a «…» span that is a byte-exact substring of exactly one verse; 'self_rendered' = an adapted quotation sharing most of its words with one verse, plus the quotations each translator reported as re-personed, partial or from a modern version."
+ ]
+}
