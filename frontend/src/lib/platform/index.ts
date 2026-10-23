@@ -88,3 +88,37 @@ export function startAppShell(hooks: AppShellHooks): void {
 	document.documentElement.setAttribute('data-app', '');
 	void native().then((n) => n.startAppShell(hooks));
 }
+
+/*
+ * The app's downloaded books ("Download for offline") on the phone's own
+ * storage — the app runs no service worker, so its downloads cannot live in
+ * the Cache API as the website's do. `file` is a path inside the app's
+ * offline folder (./offlineFiles.ts says which); $lib/offlineBooks writes
+ * them, $lib/appOffline reads them. Nothing is stored on the website.
+ */
+
+/** A downloaded API response, or null when there is none. */
+export async function offlineReadText(file: string): Promise<string | null> {
+	return IS_APP ? (await native()).offlineReadText(file) : web.offlineReadText(file);
+}
+
+/** Store a downloaded API response; whether it was written. */
+export async function offlineWriteText(file: string, text: string): Promise<boolean> {
+	return IS_APP ? (await native()).offlineWriteText(file, text) : web.offlineWriteText(file, text);
+}
+
+/** Download `url` (an image on the website) into `file`; whether it arrived. */
+export async function offlineSaveFile(file: string, url: string): Promise<boolean> {
+	return IS_APP ? (await native()).offlineSaveFile(file, url) : web.offlineSaveFile(file, url);
+}
+
+/** Delete downloaded files. */
+export async function offlineDelete(files: string[]): Promise<void> {
+	return IS_APP ? (await native()).offlineDelete(files) : web.offlineDelete(files);
+}
+
+/** The URL the stored files are served under this launch (see
+ *  ./offlineFiles.ts — resolved each time, never persisted). */
+export async function offlineFileBase(): Promise<string | null> {
+	return IS_APP ? (await native()).offlineFileBase() : web.offlineFileBase();
+}

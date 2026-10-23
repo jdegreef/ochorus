@@ -15,7 +15,14 @@
  * Apply it where an `<img>`'s `src`/`srcset` is built, never inside the pure
  * helpers (`coverArt`, `portraits`) that also feed scripts, the share cards and
  * the offline cache, which all want the site path.
+ *
+ * One exception in the app: an image saved with a downloaded book (its cover,
+ * the cover's variants, its illustrations) loads from the phone's copy —
+ * `localAsset`, $lib/appOffline — so the book reads with its pictures offline.
+ * That map is reactive, so a picture switches over when its book is
+ * downloaded or removed.
  */
+import { localAsset } from '$lib/appOffline.svelte';
 import { APP_ASSET_ORIGIN, IS_APP } from '$lib/platform';
 import { KEEP_LOCAL, REMOTE_DIRS } from '../../app-assets.js';
 
@@ -31,35 +38,48 @@ export function remoteAsset(path: string, origin: string): string {
 	return origin + path;
 }
 
-/** A `srcset`'s every candidate through `remoteAsset`, descriptors kept. */
-export function remoteSrcset(srcset: string, origin: string): string {
+/** A `srcset`'s every candidate through `map`, descriptors kept. */
+function mapSrcset(srcset: string, map: (url: string) => string): string {
 	return srcset
 		.split(',')
 		.map((candidate) => {
 			const [url, ...descriptors] = candidate.trim().split(/\s+/);
-			return [remoteAsset(url, origin), ...descriptors].join(' ');
+			return [map(url), ...descriptors].join(' ');
 		})
 		.join(', ');
 }
 
-/** Server-sanitized body HTML with its `<img src>`s (in-chapter illustrations)
- *  through `remoteAsset`. The sanitizer admits only `src="/illustrations/…"`
- *  (library/sanitize.py), so a pattern finds every one. */
-export function remoteHtml(html: string, origin: string): string {
-	return html.replace(/(<img\b[^>]*?\ssrc=")([^"]+)"/gi, (_, head, src) => `${head}${remoteAsset(src, origin)}"`);
+/** Body HTML's `<img src>`s through `map`. The sanitizer admits only
+ *  `src="/illustrations/…"` (library/sanitize.py), so a pattern finds every one. */
+function mapHtml(html: string, map: (url: string) => string): string {
+	return html.replace(/(<img\b[^>]*?\ssrc=")([^"]+)"/gi, (_, head, src) => `${head}${map(src)}"`);
 }
+
+/** A `srcset`'s every candidate through `remoteAsset`, descriptors kept. */
+export function remoteSrcset(srcset: string, origin: string): string {
+	return mapSrcset(srcset, (url) => remoteAsset(url, origin));
+}
+
+/** Server-sanitized body HTML with its `<img src>`s (in-chapter illustrations)
+ *  through `remoteAsset`. */
+export function remoteHtml(html: string, origin: string): string {
+	return mapHtml(html, (src) => remoteAsset(src, origin));
+}
+
+/** In the app: the downloaded copy when there is one, else the website's. */
+const appAsset = (path: string) => localAsset(path) ?? remoteAsset(path, APP_ASSET_ORIGIN);
 
 /** An image path as this build should fetch it (see the header). */
 export function assetUrl<T extends string | null | undefined>(path: T): T {
-	return (IS_APP && path ? remoteAsset(path, APP_ASSET_ORIGIN) : path) as T;
+	return (IS_APP && path ? appAsset(path) : path) as T;
 }
 
 /** A `srcset` as this build should fetch it. */
 export function assetSrcset<T extends string | null | undefined>(srcset: T): T {
-	return (IS_APP && srcset ? remoteSrcset(srcset, APP_ASSET_ORIGIN) : srcset) as T;
+	return (IS_APP && srcset ? mapSrcset(srcset, appAsset) : srcset) as T;
 }
 
 /** Body HTML whose images this build should fetch from where `assetUrl` says. */
 export function assetHtml(html: string): string {
-	return IS_APP && html ? remoteHtml(html, APP_ASSET_ORIGIN) : html;
+	return IS_APP && html ? mapHtml(html, appAsset) : html;
 }

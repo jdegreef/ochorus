@@ -892,15 +892,21 @@ export const getAuthorWithLang = (slug: string, language = 'en', f?: Fetch) =>
 		f
 	);
 
+/** A book edition's API path — also what a download stores it under
+ * ($lib/offlineBooks), so the two must stay one function. */
+export const bookApiPath = (slug: string, language: string) =>
+	`/api/library/books/${slug}/?language=${language}`;
+
 export const getBook = async (slug: string, language = 'en', f?: Fetch) =>
 	requireFields<BookDetail>(
 		`book ${slug}`,
-		await localized<BookDetail>((l) => `/api/library/books/${slug}/?language=${l}`, language, f),
+		await localized<BookDetail>((l) => bookApiPath(slug, l), language, f),
 		BOOK_FIELDS
 	);
 
 /** A chapter's API path. The build's chapter batcher ($lib/chapterBatch) must
- * recognise exactly this shape, so its test builds requests with it. */
+ * recognise exactly this shape, so its test builds requests with it; a
+ * download ($lib/offlineBooks) stores each chapter under it. */
 export const chapterApiPath = (slug: string, order: number, language: string) =>
 	`/api/library/books/${slug}/chapters/${order}/?language=${language}`;
 

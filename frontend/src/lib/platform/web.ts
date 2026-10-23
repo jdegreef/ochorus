@@ -48,3 +48,22 @@ export async function shareFile(blob: Blob, filename: string, text: string): Pro
 export async function openExternal(url: string): Promise<void> {
 	window.open(url, '_blank', 'noopener,noreferrer');
 }
+
+/*
+ * Downloaded books' files on the phone (native.ts). The website keeps its
+ * downloads in the Cache API, served by the service worker
+ * ($lib/offlineBooks), so it stores nothing here.
+ */
+export async function offlineReadText(_file: string): Promise<string | null> {
+	return null;
+}
+export async function offlineWriteText(_file: string, _text: string): Promise<boolean> {
+	return false;
+}
+export async function offlineSaveFile(_file: string, _url: string): Promise<boolean> {
+	return false;
+}
+export async function offlineDelete(_files: string[]): Promise<void> {}
+export async function offlineFileBase(): Promise<string | null> {
+	return null;
+}
