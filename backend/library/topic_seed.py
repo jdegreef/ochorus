@@ -696,6 +696,7 @@ TOPICS = [
             "tell-me-the-story-9",
             "fire-against-the-dark",
             "the-black-stair",
+            "the-glowstone-bargain",
             "hurlbuts-life-of-christ",
             "rooted-1",
             "rooted-2",
