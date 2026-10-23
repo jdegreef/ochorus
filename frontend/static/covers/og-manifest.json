@@ -20621,15 +20621,35 @@
 			"bar": 0
 		},
 		"the-glowstone-bargain": {
-			"ground": "ae9953e30fa8b44d7645deb5bb50360b3d9a957cdd69d7b66f3fa9f7d9fb2c91",
+			"ground": "10625131f4aecd3030be5843e2928c523f8539dec798637ed1759bea56942919",
 			"style": "young",
 			"volume": "3",
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[160, 102, 440, 131]
+				],
+				"title": [
+					[290, 257, 310, 301],
+					[110, 332, 490, 407],
+					[203, 393, 397, 468]
+				],
+				"subtitle": [
+					[60, 522, 540, 550]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				245,
+				550
+			]
 		},
 		"the-gospel-of-healing": {
 			"ground": "05fbf49fb1b67d63712dabaca8c8586877422f76d1165904f7f34c1aa8e54b3c",

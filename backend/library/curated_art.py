@@ -1110,6 +1110,15 @@ ORIGINAL_GROUND: dict[str, Original] = {
     # with the lamp held up and a short line of Delvers on the rope behind him;
     # faint step-slabs climb the left edge into blackness. Upper two-thirds
     # stays cavern-dark for the white title; the subject sits wholly below it.
+    # The Lamplighters of Gloamhaven, Book 3: one small warm light against a huge cold
+    # one — Wren on the end of a harbour wall, low left, with the lamp; across the
+    # water, low right, the glowstone city of Vaelport in hard blue-white light.
+    "the-glowstone-bargain": Original(
+        "ec5545b12ddd6c6ff05af6c66752199304ff00c13059e8f3922bd73b689b986a",
+        "Book 3's own image, paired with Books 1–2: the Flame's gold beside the "
+        "glowstones' cold white. Drawn as SVG and rendered with Chrome; generator "
+        "scripts/original_grounds/lamplighters_3.py reproduces it byte-for-byte.",
+    ),
     "the-black-stair": Original(
         "2e45be614b5546455b40045df3cf2f099798c3de82483ff6967c5860aa667296",
         "Book 2's own image, paired with Book 1's: one small gold light carried "
