@@ -2966,11 +2966,12 @@
 		background: color-mix(in srgb, var(--bg) 82%, transparent);
 		backdrop-filter: blur(6px);
 	}
-	/* Phones: near-opaque instead of blurred — a backdrop blur repaints under
-	   a fixed bar on every scroll frame, the costliest paint while reading. */
+	/* Phones: opaque instead of blurred — a backdrop blur repaints under a fixed
+	   bar on every scroll frame, the costliest paint while reading — and without
+	   the blur even 3% see-through left the lines behind the buttons as ghosts. */
 	@media (max-width: 639.98px) {
 		.progress-foot {
-			background: color-mix(in srgb, var(--bg) 97%, transparent);
+			background: var(--bg);
 			backdrop-filter: none;
 		}
 	}

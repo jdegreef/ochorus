@@ -55,7 +55,7 @@
 		 * The alignment to show as active. Defaults to the stored `align`, which is
 		 * right for scroll surfaces; the paged chapter reader passes its layout-
 		 * derived value (`effectiveAlign`) so the highlight matches what's on the
-		 * page when paged mode is justifying by default. Clicking still records an
+		 * page whatever that layout's default is. Clicking still records an
 		 * explicit choice via `setAlign`.
 		 */
 		align = undefined,
