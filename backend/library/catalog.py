@@ -522,6 +522,15 @@ AUTHORS: dict[str, AuthorEntry] = {
             "First Bishop of Liverpool and a plain-spoken leader of Victorian "
             "evangelicals."
         ),
+    ),    "martin-luther": AuthorEntry(
+        slug="martin-luther",
+        name="Martin Luther",
+        birth_year=1483,
+        death_year=1546,
+        bio=(
+            "German monk and professor whose Ninety-Five Theses began the "
+            "Protestant Reformation."
+        ),
     ),
 }
 
@@ -902,6 +911,16 @@ BOOKS: list[BookEntry] = [
               "ccel", "watson/divinity",
               subtitle="Contained in Sermons upon the Westminster Assembly’s Catechism",
               cover_color="#3f4a2b"),
+    # Luther's reply to Erasmus (1525) in Henry Cole's translation of 1823, as CCEL
+    # carries it from the 1931 Atherton reprint. Atherton's own preface is 1931
+    # and left out; the rest is Cole's 1823 text (with Atherton's "slight
+    # alterations from Vaughan", whose translation is also 1823). Cole numbers
+    # the treatise in Sections, which CCEL sets as leaves under its parts.
+    BookEntry("bondage-of-the-will", "The Bondage of the Will", "martin-luther",
+              "ccel", "luther/bondage",
+              subtitle="Translated by Henry Cole",
+              cover_color="#4a3328", group_parts=True,
+              skip=("Preface by Henry Atherton",)),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an
