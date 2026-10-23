@@ -1,0 +1,320 @@
+{
+ "kind": "sermon",
+ "slug": "walking-with-god",
+ "language": "am",
+ "job_issue": 4203,
+ "references": [
+  {
+   "reference": "Genesis 5:24",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Genesis 5:24",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Hebrews 11:5",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 1
+  },
+  {
+   "reference": "Jude 1:14-15",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 25:24",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 1
+  },
+  {
+   "reference": "Genesis 5:24",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Genesis 3:12",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 7:21",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 7
+  },
+  {
+   "reference": "Amos 3:3",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 John 2:6",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "1 John 2:6",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 9
+  },
+  {
+   "reference": "2 Timothy 1:14",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 9
+  },
+  {
+   "reference": "Genesis 5:24",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "John 14:17",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 9
+  },
+  {
+   "reference": "1 Timothy 4:15",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 10
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 10
+  },
+  {
+   "reference": "2 Peter 3:18",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 10
+  },
+  {
+   "reference": "Psalm 84:7",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Genesis 5:24",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "1 Samuel 21:9",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "1 Timothy 4:13",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "2 Peter 1:18",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 13
+  },
+  {
+   "reference": "2 Peter 1:19",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 13
+  },
+  {
+   "reference": "Ephesians 6:17",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "John 5:39",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 13
+  },
+  {
+   "reference": "Joshua 1:8",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 4:4",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Psalm 119:105",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Psalm 1:2",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 26:41",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Timothy 3:16",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalm 39:3",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 John 5:21",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Matthew 10:29",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 16
+  },
+  {
+   "reference": "Matthew 10:30",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 16
+  },
+  {
+   "reference": "Proverbs 23:26",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Luke 1:6",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 18
+  },
+  {
+   "reference": "Psalm 122:1",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Proverbs 27:17",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Psalm 16:3",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Esther 5:11",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Esther 5:12",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Esther 6:6",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Esther 6:8-9",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "John 15:15",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Psalm 84:10",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Proverbs 3:17",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Acts 9:2",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 23
+  },
+  {
+   "reference": "John 3:9",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 23
+  },
+  {
+   "reference": "Matthew 5:11",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 23
+  },
+  {
+   "reference": "Matthew 5:11",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Matthew 5:12",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 23
+  },
+  {
+   "reference": "Psalm 42:2",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Isaiah 57:15",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Revelation 3:16",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 26
+  }
+ ],
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). NT verses are pasted from the ebible mirror (amh_amh); the mirror has no OT, so OT quotations are self_rendered in the 1962 register unless a shipped Amharic work already quotes the verse (source_file names it).",
+  "Rows come from the translators' reports and every 'mined' claim was re-verified: each quoted fragment must be a byte-exact substring both of this body and of the NT file (or of the cited shipped work); a claim that fails is recorded as self_rendered. Some mirror entries are merged verse ranges holding only part of the text, so verses inside them are self_rendered."
+ ]
+}
