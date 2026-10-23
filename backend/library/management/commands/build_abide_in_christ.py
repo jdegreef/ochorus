@@ -54,12 +54,12 @@ from library.corrections import settled_chapter_body
 from library.ingest import clean_fragment, word_count
 from library.management.commands.import_archive import (
     _BARE_NUM,
-    PD_THROUGH_YEAR,
+    _THE_END,
     _is_header,
     _reflow,
     fetch_text,
     metadata,
-    printing_year,
+    public_domain_reason,
 )
 from library.models import Author, Book, Chapter
 
@@ -146,7 +146,6 @@ _REFERENCE_WRAPS = re.compile(r"['’*]\s*[—-]+\s*$")
 _REFERENCE_TAIL = re.compile(r"^(?=.{1,24}$)[^']*?(?:\d|\b[ivxlcIVXLC]+\.)[^']*\.\*?$")
 #: A line that opens a further epigraph, which some days set two of.
 _QUOTE_OPEN = re.compile(r"^\s*['‘*]")
-_THE_END = re.compile(r"^\s*THE\s+END\.?\s*$")
 
 #: The text the printer set after the last day, before THE END, in display caps
 #: the scanner mangled (">ND -NOW, LITTLE CHILDREN, ABIDE IN HIM, THAI, …").
@@ -203,7 +202,9 @@ FOOTNOTES: dict[int, list[str]] = {
 #: Spelling that differs between the printings ("labor"/"labour") is left as
 #: this printing has it. Every pair must apply, so a changed scan fails loud.
 OCR_FIXES = pathlib.Path(__file__).parent / "data" / SLUG / "ocr_fixes.json"
-NOTE_MARK = "[*]"
+#: In-text footnote marks as the fixes place them, and as they print: a day's
+#: first note is "*", its second "†" (day 9 has two).
+NOTE_MARKS = {"[*]": "*", "[†]": "†"}
 
 #: What the scanner does everywhere, after OCR_FIXES: the vocative O read as a
 #: zero ("0 my soul"), and a comma for the full stop in a reference ("Matt, v,
@@ -214,17 +215,31 @@ PATTERNS = [
                 r"Ex|Sam|Ps|Isa|Jer|Ezek|comp|chap|ver|marg),(?=[ )])"), r"\1."),
     (re.compile(r"\b([ivxlc]+), (?=\d)"), r"\1. "),
     # Quotation marks: a space the scanner set inside an opening mark ("‘ Come"),
-    # and a doubled close run into the next sentence ("‘Abide,’’As mighty").
+    # and a doubled close: run into the next sentence ("‘Abide,’’As mighty"),
+    # split from its "s" ("Father’’ s"), or just doubled ("moment!’’ Oh").
     (re.compile(r"‘ (?=\w)"), "‘"),
     (re.compile(r"’’(?=[A-Z])"), "’ "),
+    (re.compile(r"’’ s\b"), "’s"),  # "the Father’’ s object"
+    (re.compile(r"’’"), "’"),
 ]
 
 
+#: The Library of Congress's own wording on its scans: no known restriction,
+#: which the importer's gate reads as "a status other than NOT_IN_COPYRIGHT".
+_LOC_UNRESTRICTED = "The Library of Congress is unaware of any copyright restrictions"
+
+
 def _public_domain(meta: dict) -> str:
-    year = printing_year(meta)
-    if year is None or year > PD_THROUGH_YEAR:
-        raise CommandError(f"{ITEM}: printed {year}, not provably public domain.")
-    return f"printed {year}, US public domain"
+    """The importer's licence gate, except that the LoC's no-known-restriction
+    wording counts as no status — so the printing year decides, as it does for
+    an item with none. Any other status still refuses."""
+    status = str(meta.get("possible-copyright-status", "")).strip()
+    if status.startswith(_LOC_UNRESTRICTED):
+        meta = {**meta, "possible-copyright-status": ""}
+    ok, why = public_domain_reason(meta)
+    if not ok:
+        raise CommandError(f"{ITEM}: {why}")
+    return why
 
 
 def _norm(text: str) -> str:
@@ -396,11 +411,19 @@ def _day(lines: list[str], order: int) -> list[Block]:
     return blocks
 
 
+def _line(lines: list[str], test, what: str) -> int:
+    """Index of the first line passing `test`, or a CommandError naming it."""
+    i = next((i for i, line in enumerate(lines) if test(line)), None)
+    if i is None:
+        raise CommandError(f"no {what} line in the scan")
+    return i
+
+
 def _preface(lines: list[str]) -> list[Block]:
     """The Preface, then the John 15:1–12 page set before the first day."""
-    start = next(i for i, line in enumerate(lines) if line.strip().startswith("PREFACE"))
-    contents = next(i for i, line in enumerate(lines) if line.strip().startswith("CONTENTS"))
-    passage = next(i for i, line in enumerate(lines) if _norm(line).startswith("JOHN XV."))
+    start = _line(lines, lambda line: line.strip().startswith("PREFACE"), "PREFACE")
+    contents = _line(lines, lambda line: line.strip().startswith("CONTENTS"), "CONTENTS")
+    passage = _line(lines, lambda line: _norm(line).startswith("JOHN XV."), "JOHN XV.")
     preface = _paragraphs(lines[start + 1 : contents])
     preface[0] = _opening(preface[0], 0)  # "DURING the life" → "During the life"
     return (
@@ -422,11 +445,10 @@ def _chapters(text: str) -> list[tuple[str, list[Block]]]:
         block = lines[start + 1 : stop]
         if n + 1 == len(marks):
             # Cut the display-caps closing verse; it is set back cleanly below.
-            verse = next(
-                (j for j, line in enumerate(block) if "LITTLE" in line and "CHILDREN" in line),
-                len(block),
+            verse = _line(
+                block, lambda line: "LITTLE" in line and "CHILDREN" in line, "closing-verse"
             )
-            block = block[: max(verse - 1, 0)]
+            block = block[: verse - 1]
         blocks = _day(block, n + 1)
         if n + 1 == len(marks):
             blocks.append(("i", CLOSING_VERSE))
@@ -434,12 +456,23 @@ def _chapters(text: str) -> list[tuple[str, list[Block]]]:
     return out
 
 
+#: Headings the book sets in capitals inside a day: the NOTE that some days
+#: close with, and the question day 27's note takes up.
+HEADINGS = {
+    "NOTE.": "Note",
+    "IS DAILY SINNING AN INEVITABLE NECESSITY?": "Is Daily Sinning an Inevitable Necessity?",
+}
+
+
 def _fixed(chapters: list[tuple[str, list[Block]]]) -> list[tuple[str, list[Block]]]:
-    """Apply OCR_FIXES (every pair must change its chapter), then PATTERNS."""
+    """Apply OCR_FIXES (every pair must change its day), then PATTERNS, and
+    set the capitalised headings as headings. The fixes are keyed "preface",
+    then by day, "1" to "31"."""
     fixes = json.loads(OCR_FIXES.read_text(encoding="utf-8"))
     out = []
-    for order, (title, blocks) in enumerate(chapters, start=1):
-        pairs = fixes.get(str(order), [])
+    for order, (title, blocks) in enumerate(chapters):
+        key = str(order) if order else "preface"
+        pairs = fixes.get(key, [])
         used = [False] * len(pairs)
         mended = []
         for kind, text in blocks:
@@ -449,17 +482,23 @@ def _fixed(chapters: list[tuple[str, list[Block]]]) -> list[tuple[str, list[Bloc
             text = _quotes(text)  # a fix can bring in a straight mark
             for pattern, repl in PATTERNS:
                 text = pattern.sub(repl, text)
+            if kind == "p" and text in HEADINGS:
+                kind, text = "h3", HEADINGS[text]
             mended.append((kind, text))
         unused = [pairs[k][0] for k, u in enumerate(used) if not u]
         if unused:
-            raise CommandError(f"ch {order}: OCR fixes that no longer match: {unused[:5]!r}")
+            raise CommandError(f"{key}: OCR fixes that no longer match: {unused[:5]!r}")
         out.append((title, mended))
     return out
 
 
 def _html_body(blocks: list[Block]) -> str:
     def mark(text: str) -> str:
-        return _esc(text).replace(NOTE_MARK, "<sup>*</sup>")
+        text = _esc(text)
+        for placed, printed in NOTE_MARKS.items():
+            text = text.replace(placed, f"<sup>{printed}</sup>")
+        return text
+    symbols = iter(NOTE_MARKS.values())
     parts = []
     for kind, text in blocks:
         if kind == "h3":
@@ -467,7 +506,7 @@ def _html_body(blocks: list[Block]) -> str:
         elif kind == "i":
             parts.append(f"<p><i>{mark(text)}</i></p>")
         elif kind == "note":
-            parts.append(f"<p><sup>*</sup> {mark(text)}</p>")
+            parts.append(f"<p><sup>{next(symbols)}</sup> {mark(text)}</p>")
         else:
             parts.append(f"<p>{mark(text)}</p>")
     return "".join(parts)
