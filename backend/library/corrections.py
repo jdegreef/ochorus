@@ -18602,3 +18602,19 @@ BODY_CORRECTIONS.setdefault("witnessing-for-christ", {}).setdefault("replacement
     ("but they say, 6 There is no health", "but they say, `There is no health"),
     ("mas dizem: 6 Não há saúde", "mas dizem: `Não há saúde"),
 ])
+
+# Line-break hyphen left in the sermon's English (found porting the uk
+# edition, job #5242): the same sermon as Spurgeon on Prayer ch3, which reads
+# "Sisters" — the two texts otherwise match exactly.
+BODY_CORRECTIONS.setdefault("the-golden-key-of-prayer", {}).setdefault("replacements", []).extend([
+    ("my Brothers and Sis-ters,", "my Brothers and Sisters,"),
+])
+
+# English slips found translating the sermon to Ukrainian (job #5245); each
+# is an extraction slip with a single evident reading.
+BODY_CORRECTIONS.setdefault("the-possibilities-of-faith", {}).setdefault("replacements", []).extend([
+    # line-break hyphen left mid-word
+    ("beneficent minis-try is", "beneficent ministry is"),
+    # OCR slip for 'Alleluia' (Rev 19:6, quoted)
+    ("Christ. Allelnia! The Lord", "Christ. Alleluia! The Lord"),
+])

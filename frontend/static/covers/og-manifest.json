@@ -8094,6 +8094,17 @@
 				519
 			]
 		},
+		"faithful-with-little": {
+			"ground": "4f380574d4d4a4728d73d99d1f14f96c8d734f46254c11eec40c175bf36992d6",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"finney-memoirs": {
 			"ground": "7e00273a41f573d20d8202b37b0c6d82affbd4512032520c4db8d486e297af71",
 			"style": "revival",
@@ -15018,6 +15029,17 @@
 				275,
 				519
 			]
+		},
+		"lg/school-of-prayer": {
+			"ground": "f1f90e1c3d2fcbc594b853b5a657dac84375ff48c510cbe3f4f0ace92819c782",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0.04
 		},
 		"lg/soar-like-the-eagle-3": {
 			"ground": "c687af707ddb1610c2aea34d3b97362913cc107235488a0d9b03980d0537c802",
