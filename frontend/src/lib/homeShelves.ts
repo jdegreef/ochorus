@@ -18,6 +18,7 @@ import {
 } from '$lib/library-public';
 import { pickByDay, dayNumber } from '$lib/dailyPicks';
 import { isPlateCover } from '$lib/coverArt';
+import { countWriters } from '$lib/authorIndex';
 import { AUDIENCE_HUBS } from '$lib/audienceHub';
 import { hubLanguages } from '$lib/audienceHubData';
 
@@ -144,7 +145,9 @@ export function deriveHomeShelves(
 		// Library breadth for the hero's social-proof line. Counts of what this
 		// LANGUAGE actually has (the lists are already per-locale), so a locale
 		// with fewer works advertises its own honest numbers, not English's.
-		counts: { books: books.length, authors: authors.length, sermons: sermons.length },
+		// Authors is `countWriters`, the A–Z's number: the writers list alone
+		// misses anyone withheld from Biographies.
+		counts: { books: books.length, authors: countWriters(authors, books), sermons: sermons.length },
 		audiences
 	};
 }

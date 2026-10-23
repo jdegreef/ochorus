@@ -11,7 +11,6 @@ import { error } from '@sveltejs/kit';
 import type { ForLocale } from './forLinks';
 import {
 	SERIES_WEEKS,
-	countWorks,
 	forAuthors,
 	forLanguage,
 	forLevels,
@@ -113,7 +112,8 @@ async function languageRows(page: ForPage, locale: ForLocale, fetch: Fetch) {
 			]);
 			if (!books) return null;
 			const row = forLanguage(code, { books, sermons: sermons?.length ?? 0, plans: plans?.length ?? 0 }, picks, locale);
-			return row.counts.books ? row : null;
+			// Its covers are its works: none (only retellings, or nothing) → no row.
+			return row.covers.length ? row : null;
 		})
 	);
 	return rows.filter((r) => r !== null);
@@ -154,7 +154,8 @@ export async function buildForShelf(page: ForPage, locale: ForLocale, fetch: Fet
 		offline,
 		authors: authors ? forAuthors(authors, page.authors) : [],
 		quote,
-		counts: { books: countWorks(own), sermons: sermons?.length ?? 0, plans: allPlans.length },
+		// Every book, as the home page and the Books shelf count them.
+		counts: { books: own.length, sermons: sermons?.length ?? 0, plans: allPlans.length },
 		series: series.filter((s) => s.sermons.length),
 		levels: forLevels(own, page.levels ?? []),
 		languages

@@ -404,13 +404,15 @@ class AuthorSerializer(LocalizedMixin, serializers.ModelSerializer):
     """The author of a book/sermon card — name, portrait, and short bio.
 
     The bio is localized (``AuthorTranslation``), like the biographies page's.
+    ``is_imprint`` lets a page that counts people leave a house byline out —
+    the shelves meet every imprint here, and the writers list never does.
     """
 
     bio = serializers.SerializerMethodField()
 
     class Meta:
         model = Author
-        fields = ["slug", "name", "bio", "photo_url", "birth_year", "death_year"]
+        fields = ["slug", "name", "bio", "photo_url", "birth_year", "death_year", "is_imprint"]
 
     def get_bio(self, obj):
         return obj.bio_for(self._language())

@@ -107,7 +107,6 @@
 		for (const b of books) for (const tc of b.topics ?? []) m.set(tc.slug, tc.title);
 		return [...m].map(([slug, title]) => ({ slug, title })).sort((a, b) => a.title.localeCompare(b.title));
 	});
-	const authorCount = $derived(new Set(books.map((b) => b.author.slug)).size);
 	const isEnglish = $derived(getLang() === 'en');
 
 	// The filters currently narrowing the shelf, each liftable on its own
@@ -295,8 +294,9 @@
 	{#snippet bookCounts()}
 		{books.length}
 		{books.length === 1 ? t('common.bookOne') : t('common.bookMany')}
-		<span class="opacity-50">·</span>
-		{authorCount} {t('books.authorsWord')}
+		<!-- No author count: its own (book writers, the imprint among them) ran
+		     beside the library's on the home page and the A–Z as a second,
+		     smaller number. The library has one, `countWriters`. -->
 		{#if series.length}
 			<span class="opacity-50">·</span>
 			<a href={localizeHref('/series/')}>

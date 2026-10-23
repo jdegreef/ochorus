@@ -22,6 +22,9 @@ export interface Author {
 	photo_url: string;
 	birth_year: number | null;
 	death_year: number | null;
+	/** A house byline (Ochorus Originals), not a person. Optional: only the card
+	 *  serializer sends it, and the writers list never holds an imprint. */
+	is_imprint?: boolean;
 }
 
 export type SourceType = 'public_domain' | 'ai_reviewed' | 'ai_unreviewed';

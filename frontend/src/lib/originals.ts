@@ -10,6 +10,11 @@ import type { BookSummary, OriginalsSeries } from './library-public';
  * than on a monogram with nothing to say about a life.
  */
 export const ORIGINALS_SLUG = 'ochorus-originals';
+
+/** A house byline rather than a person: the API's flag, or the Originals slug
+ *  for a payload that predates the flag (the app can meet an older API). */
+export const isImprint = (a: { slug: string; is_imprint?: boolean }): boolean =>
+	a.is_imprint === true || a.slug === ORIGINALS_SLUG;
 export const ORIGINALS_PATH = '/originals';
 
 /** The page a writer's name links to: their author page, or /originals for

@@ -379,6 +379,14 @@ class AuthorListTests(TestCase):
         # ItemList of Person it emits — is about people.
         self.assertNotIn("house", self.slugs())
 
+    def test_book_cards_say_whether_the_author_is_an_imprint(self):
+        # The shelves meet the imprint on book cards, which is how a page that
+        # counts people (the frontend's countWriters) can leave it out.
+        res = self.client.get("/api/library/books/?language=en")
+        flags = {b["author"]["slug"]: b["author"]["is_imprint"] for b in res.data}
+        self.assertIs(flags["house"], True)
+        self.assertIs(flags["torrey"], False)
+
     def test_fixture_flags_the_house_imprint(self):
         # The migration flags prod, but a fresh DB is loaded from the fixture
         # *after* migrate runs — so the flag has to ship in the fixture too.

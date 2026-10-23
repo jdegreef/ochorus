@@ -35,7 +35,6 @@
 	const groups = $derived(authorIndex(data.authors, data.books, lang.current, [ORIGINALS_SLUG]));
 	const rowGroups = $derived(indexRows(groups));
 	const writerCount = $derived(groups.reduce((n, g) => n + g.entries.length, 0));
-	const bookCount = $derived(groups.reduce((n, g) => n + g.entries.reduce((m, e) => m + e.books.length, 0), 0));
 
 	// The filter only narrows what is SHOWN, after hydration: the prerendered
 	// HTML is always the full, unfiltered index (the query starts blank).
@@ -146,12 +145,14 @@
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {pinnedH}px)">
 	<LibraryTabs current="az" />
 	<PageHeader {title} tagline={t('authors.indexTagline')} meta={groups.length ? counts : undefined} />
+	<!-- The library's people in this language (`countWriters`, the home page's
+	     number), not the rows below: the rows are the English roster off
+	     English, and "James DeGreef and Ochorus" — an imprint, not a person —
+	     keeps a row so its series stays indexed. No book count: the Originals
+	     live on /originals, so any count here fell short of the library's. -->
 	{#snippet counts()}
-		{writerCount}
-		{writerCount === 1 ? t('common.authorOne') : t('common.authorMany')}
-		<span class="opacity-50">·</span>
-		{bookCount}
-		{bookCount === 1 ? t('common.bookOne') : t('common.bookMany')}
+		{data.people}
+		{data.people === 1 ? t('common.authorOne') : t('common.authorMany')}
 	{/snippet}
 
 	<!-- Empty only when the fetch failed (the build throws instead; see +page.ts). -->
