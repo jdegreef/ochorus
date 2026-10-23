@@ -170,6 +170,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'the-bruised-reed': 0.85,
 	'the-bruised-reed-teens': 0.30,
 	'the-christians-secret-of-a-happy-life-4': 0.45,
+	'the-glowstone-bargain': 0.30,
 	'the-god-of-all-comfort': 0.90,
 	'the-imitation-of-christ': 0.75,
 	'the-imitation-of-christ-teens': 0.30,
