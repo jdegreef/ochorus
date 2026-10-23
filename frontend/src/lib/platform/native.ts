@@ -9,6 +9,7 @@ import { App } from '@capacitor/app';
 import { Browser } from '@capacitor/browser';
 import { Capacitor } from '@capacitor/core';
 import { Directory, Encoding, Filesystem } from '@capacitor/filesystem';
+import { Preferences } from '@capacitor/preferences';
 import { Share } from '@capacitor/share';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { StatusBar, Style } from '@capacitor/status-bar';
@@ -65,6 +66,23 @@ export async function shareFile(blob: Blob, filename: string, text: string): Pro
  *  web view cannot. */
 export async function openExternal(url: string): Promise<void> {
 	await Browser.open({ url });
+}
+
+/*
+ * The phone's key-value store, for the reader's sign-in session
+ * (./authStorage.ts): UserDefaults on iOS, SharedPreferences on Android —
+ * kept across launches and app updates, unlike a web view's localStorage.
+ */
+export async function prefsGet(key: string): Promise<string | null> {
+	return (await Preferences.get({ key })).value;
+}
+
+export async function prefsSet(key: string, value: string): Promise<void> {
+	await Preferences.set({ key, value });
+}
+
+export async function prefsRemove(key: string): Promise<void> {
+	await Preferences.remove({ key });
 }
 
 /** Status bar icons readable on the theme's ground. The ground under them is

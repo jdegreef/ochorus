@@ -4,6 +4,7 @@
 	import { authErrorKey } from '$lib/authErrors';
 	import { signupStarted } from '$lib/signupSource';
 	import GoogleButton from '$lib/components/GoogleButton.svelte';
+	import EmailCodeForm from '$lib/components/EmailCodeForm.svelte';
 
 	/**
 	 * Create an account in the sign-up panel (SignInSheet): Google, or an email
@@ -95,7 +96,11 @@
 {#if sent}
 	<div class="suf">
 		<h3 class="text-h3">{t('login.checkEmail')}</h3>
-		<p class="text-body text-muted">{t('login.sentSignup').replace('%email%', email)}</p>
+		<!-- The app confirms with the email's code, typed in (auth.emailCodes). -->
+		<p class="text-body text-muted">
+			{t(auth.emailCodes ? 'login.sentSignupCode' : 'login.sentSignup').replace('%email%', email)}
+		</p>
+		{#if auth.emailCodes}<EmailCodeForm {email} type="signup" />{/if}
 		<p class="text-center text-small text-muted">
 			{t('login.didntGet')}
 			<button type="button" class="text-accent" onclick={resend} disabled={resendIn > 0}>
@@ -106,8 +111,10 @@
 	</div>
 {:else}
 	<form class="suf" onsubmit={submit}>
-		<GoogleButton onclick={google} disabled={busy || !auth.enabled} />
-		<div class="or-divider text-small text-muted" aria-hidden="true">{t('login.or')}</div>
+		{#if auth.googleEnabled}
+			<GoogleButton onclick={google} disabled={busy || !auth.enabled} />
+			<div class="or-divider text-small text-muted" aria-hidden="true">{t('login.or')}</div>
+		{/if}
 		<label class="text-small font-medium text-muted" for="{uid}-email">{t('login.email')}</label>
 		<input
 			id="{uid}-email"

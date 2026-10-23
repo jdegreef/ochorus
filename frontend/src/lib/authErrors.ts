@@ -17,6 +17,8 @@
  * lands on the generic key rather than leaking a raw string.
  */
 
+import { IS_APP } from './platform';
+
 /** Our own codes, for failures that never reach Supabase. */
 export const AUTH_NOT_CONFIGURED = 'not_configured';
 
@@ -49,10 +51,10 @@ const KEYS: Record<string, string> = {
 	over_request_rate_limit: 'authErr.rateLimited',
 	over_sms_send_rate_limit: 'authErr.rateLimited',
 
-	// NOTE: no `otp_expired`. An expired magic/reset link never reaches these
-	// functions — Supabase reports it on the redirect back, and the recovery
-	// session simply comes up missing (AuthSessionMissingError, no `code`). A
-	// mapping for it would be a string nothing can ever render.
+	// A wrong or expired one-time code, typed into the app (verifyEmailCode).
+	// Supabase gives both the one code. (An expired magic/reset LINK never
+	// reaches these functions — it is reported on the redirect back.)
+	otp_expired: 'authErr.codeInvalid',
 
 	// Sign-up is switched off for this project.
 	signup_disabled: 'authErr.signupDisabled',
@@ -68,5 +70,8 @@ const KEYS: Record<string, string> = {
  * mapping can be tested without a locale loaded.
  */
 export function authErrorKey(code: string | null | undefined): string {
+	// The app has no confirmation link to open (it cannot come back to the
+	// app): an unconfirmed account is confirmed there by asking for a code.
+	if (IS_APP && code === 'email_not_confirmed') return 'authErr.emailNotConfirmedApp';
 	return (code && KEYS[code]) || 'authErr.generic';
 }

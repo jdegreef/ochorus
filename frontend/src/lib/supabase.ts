@@ -1,7 +1,7 @@
 import { browser } from '$app/environment';
 import { env } from '$env/dynamic/public';
 import type { SupabaseClient } from '@supabase/supabase-js';
-import { IS_APP } from './platform';
+import { IS_APP, authStorage } from './platform';
 
 /**
  * Supabase browser client, loaded and created lazily, and only when both env
@@ -24,10 +24,10 @@ const url = env.PUBLIC_SUPABASE_URL;
 const anonKey = env.PUBLIC_SUPABASE_ANON_KEY;
 
 /** Synchronous, because callers use it to decide whether to render login UI. */
-// Off in the native app until it has its own sign-in: the website's flows
-// return to `window.location.origin`, which in the app is not a web address
-// (frontend/MOBILE.md). The app reads signed-out — the whole library is public.
-export const authEnabled = Boolean(browser && !IS_APP && url && anonKey);
+// On in the app too (frontend/MOBILE.md, "Sign-in in the app"): email + password
+// and emailed one-time codes, which never need the reader to come back through
+// a link — the app's origin (capacitor://localhost) is not a web address.
+export const authEnabled = Boolean(browser && url && anonKey);
 
 let client: SupabaseClient | null = null;
 /** The in-flight load, so concurrent callers share one import and one client. */
@@ -41,8 +41,17 @@ export function supabase(): Promise<SupabaseClient | null> {
 			client = createClient(url!, anonKey!, {
 				// detectSessionInUrl lets the client complete the Google OAuth and
 				// magic-link redirects automatically when the user lands back on the
-				// app, so no dedicated /auth/callback route is needed.
-				auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+				// website, so no dedicated /auth/callback route is needed. The app is
+				// never landed back on (its emails' links open the website; it signs
+				// in with a code instead), so it has no URL to read a session from.
+				// `storage`: the phone's own store in the app ($lib/platform
+				// authStorage); undefined on the website = supabase-js's localStorage.
+				auth: {
+					persistSession: true,
+					autoRefreshToken: true,
+					detectSessionInUrl: !IS_APP,
+					storage: authStorage
+				}
 			});
 			return client;
 		});

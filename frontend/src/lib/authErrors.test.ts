@@ -14,6 +14,8 @@ describe('authErrorKey', () => {
 		expect(authErrorKey('email_not_confirmed')).toBe('authErr.emailNotConfirmed');
 		expect(authErrorKey('user_already_exists')).toBe('authErr.emailExists');
 		expect(authErrorKey('weak_password')).toBe('authErr.weakPassword');
+		// A wrong or expired code typed into the app.
+		expect(authErrorKey('otp_expired')).toBe('authErr.codeInvalid');
 	});
 
 	it('keeps a bad address apart from a bad password', () => {

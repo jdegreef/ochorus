@@ -6,6 +6,9 @@ import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } 
  */
 const auth = vi.hoisted(() => ({
 	enabled: true,
+	// The website: Google offered, emailed links (not codes).
+	googleEnabled: true,
+	emailCodes: false,
 	initialized: true,
 	user: null as { email: string } | null,
 	signUp: vi.fn(),
@@ -68,6 +71,7 @@ afterEach(() => {
 describe('SignUpForm', () => {
 	it('asks for a password, not a code', () => {
 		expect(target.querySelector('input[autocomplete=new-password]')).not.toBeNull();
+		expect(target.querySelector('.google-btn')).not.toBeNull();
 		expect(target.querySelector('input[autocomplete=one-time-code]')).toBeNull();
 	});
 

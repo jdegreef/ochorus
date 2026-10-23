@@ -15,6 +15,7 @@ const m = vi.hoisted(() => ({
 		getUri: vi.fn()
 	},
 	browserOpen: vi.fn(),
+	prefs: { get: vi.fn(), set: vi.fn(), remove: vi.fn() },
 	exitApp: vi.fn(),
 	setStyle: vi.fn(),
 	setBackgroundColor: vi.fn(),
@@ -29,6 +30,7 @@ vi.mock('@capacitor/filesystem', () => ({
 	Encoding: { UTF8: 'utf8' },
 	Filesystem: { writeFile: m.writeFile, ...m.fs }
 }));
+vi.mock('@capacitor/preferences', () => ({ Preferences: m.prefs }));
 vi.mock('@capacitor/browser', () => ({ Browser: { open: m.browserOpen } }));
 vi.mock('@capacitor/app', () => ({
 	App: {
@@ -59,6 +61,9 @@ import {
 	offlineSaveFile,
 	offlineWriteText,
 	openExternal,
+	prefsGet,
+	prefsRemove,
+	prefsSet,
 	setStatusBar,
 	share,
 	shareFile,
@@ -165,6 +170,20 @@ describe('native offline files', () => {
 		expect(await offlineFileBase()).toBe('capacitor://localhost/_capacitor_file_/var/app/Library/NoCloud/offline');
 		m.fs.getUri.mockRejectedValue(new Error('no'));
 		expect(await offlineFileBase()).toBeNull();
+	});
+});
+
+describe('native key-value store (the sign-in session)', () => {
+	it('reads, writes and removes through Preferences', async () => {
+		m.prefs.get.mockResolvedValue({ value: 'v' });
+		expect(await prefsGet('k')).toBe('v');
+		expect(m.prefs.get).toHaveBeenCalledWith({ key: 'k' });
+		m.prefs.get.mockResolvedValue({ value: null });
+		expect(await prefsGet('k')).toBeNull();
+		await prefsSet('k', 'v');
+		expect(m.prefs.set).toHaveBeenCalledWith({ key: 'k', value: 'v' });
+		await prefsRemove('k');
+		expect(m.prefs.remove).toHaveBeenCalledWith({ key: 'k' });
 	});
 });
 
