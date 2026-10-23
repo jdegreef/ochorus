@@ -21543,6 +21543,37 @@
 				482
 			]
 		},
+		"uk/rooted-1": {
+			"ground": "93c66803ca327dcc5452be80573ce5a91f37252ed431246b6cea846223d82f06",
+			"style": "young",
+			"volume": "1",
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.4,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 272, 308, 316],
+					[181, 347, 419, 422]
+				],
+				"subtitle": [
+					[117, 478, 483, 506],
+					[160, 507, 440, 535]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				260,
+				535
+			]
+		},
 		"uk/school-of-prayer": {
 			"ground": "437514ce439c4090485b004f961906c5212a7d084f523c7214ef9b91767faff4",
 			"style": "devotional",
