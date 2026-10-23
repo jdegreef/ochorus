@@ -15295,6 +15295,33 @@
 			"layout": "diagonal/ochre",
 			"bar": 0
 		},
+		"lg/the-secret-of-guidance": {
+			"ground": "f6c5053e973bd775263547c50e2b86f28bb5e1a6a3782128ae55ce6efc5e5c80",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[197, 102, 403, 131]
+				],
+				"title": [
+					[201, 290, 399, 372],
+					[42, 362, 585, 444]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				295,
+				500
+			]
+		},
 		"lg/the-unselfishness-of-god": {
 			"ground": "76e9947bdf3f6ad142c78c16d1b527c9cc1d1b7d00df8963f2d695f5e03da84c",
 			"style": "devotional",
