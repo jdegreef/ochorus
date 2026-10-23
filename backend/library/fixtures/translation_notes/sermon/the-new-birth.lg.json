@@ -1,0 +1,68 @@
+{
+  "kind": "sermon",
+  "slug": "the-new-birth",
+  "language": "lg",
+  "job_issue": 3042,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "John 3:3",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+      "block_index": 0
+    },
+    {
+      "reference": "John 4:24",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+      "block_index": 13
+    },
+    {
+      "reference": "John 3:4",
+      "status": "self_rendered",
+      "block_index": 16
+    },
+    {
+      "reference": "John 3:5",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+      "block_index": 16
+    },
+    {
+      "reference": "John 3:8",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+      "block_index": 20
+    },
+    {
+      "reference": "Luke 7:14",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+      "block_index": 33
+    },
+    {
+      "reference": "Romans 6:23",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+      "block_index": 35
+    },
+    {
+      "reference": "John 3:14",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+      "block_index": 37
+    },
+    {
+      "reference": "John 3:15",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+      "block_index": 37
+    },
+    {
+      "reference": "John 1:29",
+      "status": "mined",
+      "source_file": "Open Luganda Contemporary Bible (lug_bib)",
+      "block_index": 37
+    }
+  ]
+}
