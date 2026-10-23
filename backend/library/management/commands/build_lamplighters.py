@@ -383,6 +383,167 @@ PLATES_2: tuple[tuple[int, str, str, str, str], ...] = (
     ),
 )
 
+#: Book 3's plates, in the same hand as Books 1–2 (2026-10-23).
+PLATES_3: tuple[tuple[int, str, str, str, str], ...] = (
+    (
+        1,
+        "So there they sat, the three of them, under",
+        "b3-plate-01-the-city-that-never-dims.jpg",
+        "In a white room flooded with cold light from a stone on the "
+        "windowsill, three children sit under a blanket around a small gold"
+        " lamp, with a fox squeezing in. An old man lying on a nearby bed "
+        "turns his head to watch the glow.",
+        "…the only warm light in all of Vaelport.",
+    ),
+    (
+        2,
+        "“Thank you, sir,” he said. “It’s very handsomely meant.",
+        "b3-plate-02-oskar-venns-welcome.jpg",
+        "In a white hall under a glowing ceiling, a tall elegant man holds "
+        "out a glowing pendant to a seated old man with a long beard, who "
+        "raises a hand to refuse it politely. Three children wearing "
+        "pendants watch from the table, and a fox sits by the old man’s "
+        "chair.",
+        "“I’ve a lamp of my own, and I’m used to it.”",
+    ),
+    (
+        3,
+        "It burst out of her. It was loud",
+        "b3-plate-03-the-children-who-dont-laugh.jpg",
+        "Under the hull of an upturned boat, a girl cups a small lamp in "
+        "her hands and warm gold light fills the dim space. A girl in a "
+        "huge green coat throws her head back laughing, while a small child"
+        " points and giggles and the other children look on.",
+        "…a great, startled, honking laugh, and Pim’s sharp face cracked "
+        "right across with it.",
+    ),
+    (
+        4,
+        "“I have wondered,” said Mira slowly, “whether it",
+        "b3-plate-04-the-girl-who-sees.jpg",
+        "A girl with long beaded braids and a ring of shining stones on her"
+        " head stands on a bright stage beside a tall, elegant man whose "
+        "hand rests on her shoulder. A huge crowd fills the tiers beneath a"
+        " glowing dome, and in the wings a small girl clutches the curtain.",
+        "“Perhaps it was the light of Vaelport that was calling me all "
+        "along”",
+    ),
+    (
+        5,
+        "It did not go out. A thin line of",
+        "b3-plate-05-a-house-for-wren.jpg",
+        "In a dark attic bedroom, a girl lies in bed with her back to a "
+        "bedside table. A thin line of golden light leaks from its drawer "
+        "and brings faint colours into the patchwork quilt.",
+        "…like a finger laid on a page to keep the place.",
+    ),
+    (
+        6,
+        "Beside Tobin, Old Ash had pushed his hat back.",
+        "b3-plate-06-the-mines-beneath-the-harbour.jpg",
+        "Two figures, a stooped old man and a gangly boy with one darkened "
+        "spectacle lens, grip an iron rail high above a blazing white "
+        "cavern. Far below, a black pit pours out grey smoke, and pale "
+        "hammers stand ready to strike a smoky human shape.",
+        "“That’s the Queen’s own dark.”",
+    ),
+    (
+        7,
+        "“I know.” Venn’s voice was full of kindness.",
+        "b3-plate-07-ashs-warning.jpg",
+        "A tall, bearded old man on two poles stands on the rim of a "
+        "glittering fountain in a white city square, holding up a small "
+        "candle flame to a crowd. A gracious man in a long coat reaches "
+        "toward him, white-coated guards step forward, and a grey figure "
+        "watches from the shadow of an alley.",
+        "“It shines. But it does not warm.”",
+    ),
+    (
+        8,
+        "He held out his right hand. It was bare",
+        "b3-plate-08-the-offer.jpg",
+        "At the top of a lighthouse, under a huge glowing white crystal, a "
+        "tall man in a grey cloak holds out a ring on his open palm to a "
+        "gangly boy in spectacles. Far below the windows, a line of lights "
+        "runs along a harbour wall to a shining white city.",
+        "“Put it in my hand. And your father goes free that same night…”",
+    ),
+    (
+        9,
+        "She put her hand flat on the handkerchief, and",
+        "b3-plate-09-the-empty-drawer.jpg",
+        "In a pale, bright attic bedroom, a small spiky-haired girl kneels "
+        "at a bedside table with its drawer pulled open, her hand pressed "
+        "flat on an empty white handkerchief.",
+        "There was nothing on it at all.",
+    ),
+    (
+        10,
+        "Tobin sank down on the cold floor of the lighthouse",
+        "b3-plate-10-the-night-of-the-theft.jpg",
+        "A boy sits on the floor of a lighthouse gallery with his knees up "
+        "and his face buried in his hands, one cracked spectacle lens "
+        "showing. Above him a huge white crystal blazes behind glass, an "
+        "empty coat lies on the floor, and a gull flies over the grey sea.",
+        "…it was the kind of weeping that is not the end of a person.",
+    ),
+    (
+        11,
+        "It was the strangest walk of Wren’s life",
+        "b3-plate-11-into-the-glowstone-mines.jpg",
+        "Two girls walk hand in hand through a blinding white tunnel. The "
+        "taller girl, with beaded braids, has her face tilted up and "
+        "sound-rings spread from her, while a small grey fox with a glowing"
+        " tail leads the way and faint grey miners trudge behind.",
+        "Mira went first, clicking softly, and Wren came behind with her "
+        "eyes shut",
+    ),
+    (
+        12,
+        "Then he let go of her hands, and set his back",
+        "b3-plate-12-old-ashs-last-lamp.jpg",
+        "In a tunnel flooded with golden light, a very tall old man with a "
+        "long beard, his back against a frosted iron-and-glass door, bends "
+        "to fold a glowing lamp into a small girl’s hands. Behind her "
+        "another girl pulls at her arm, and a little fox watches from the "
+        "slope.",
+        "“It was never mine,” he said. “It’s never been anyone’s. Give it.”",
+    ),
+    (
+        13,
+        "“Wren—” said Mira, through her hands. She had",
+        "b3-plate-13-broken.jpg",
+        "On a dark harbour wall at night, a small girl holds out a dimly "
+        "glowing red lamp toward a tall boy who holds out his burned hands."
+        " A girl with long braids stands between them with her arms spread,"
+        " and a small grey fox stands nearby. Across the water the city’s "
+        "lights are all dark.",
+        "as though she were trying to keep two doors from slamming at once",
+    ),
+    (
+        14,
+        "Cinder did not get off. She sneezed — a small,",
+        "b3-plate-14-the-docks-at-low-tide.jpg",
+        "A boy without a coat lies on his back on wet dock planks, one knee "
+        "raised and one spectacle lens cracked. A small grey fox lies on his "
+        "chest with her chin on a heel of bread while he reaches up to break "
+        "off a corner, and a tiny orange spark falls by his ear under a grey "
+        "sky full of gulls.",
+        "“Cinder,” said Tobin. “Get off.”",
+    ),
+    (
+        15,
+        "But the fox could see what they could not:",
+        "b3-plate-15-go-to-the-hill.jpg",
+        "At dawn a small grey fox sits on a harbour wall, seen from behind,"
+        " looking out over mud-flats and a pale town. Three children walk "
+        "alone on three separate roads that all wind toward the same low "
+        "hill, where the sun is rising.",
+        "…the three roads, though they began so far apart, all bent the "
+        "same way.",
+    ),
+)
+
 #: The whole land, shared by every volume's endpapers (the map is the series').
 LAND_MAP = (
     "land-of-gloamhaven.jpg",
@@ -665,6 +826,13 @@ VOLUMES: dict[int, dict[str, object]] = {
             "© James DeGreef and Ochorus. An Ochorus Original, written for young "
             "readers, free to read and share. Book 3 of The Lamplighters of Gloamhaven."
         ),
+        # Downloadable (export_policy): book-pdfs.yml builds and uploads the PDF on merge.
+        "pdf_url": (
+            "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/"
+            "book-pdfs/the-glowstone-bargain.pdf?download=the-glowstone-bargain.pdf"
+        ),
+        "maps": (LAND_MAP,),
+        "plates": PLATES_3,
         "cover_url": "/covers/art/the-glowstone-bargain.jpg",  # ORIGINAL_GROUND
         "cover_color": covers.ink_safe("#7a8a94"),  # cold glowstone grey
         "description": (
