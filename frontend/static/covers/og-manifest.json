@@ -16225,6 +16225,17 @@
 			"layout": "split/navy",
 			"bar": 0.04
 		},
+		"practical-religion": {
+			"ground": "09583c1e5e1913528e2f0043d76307267ba660a6b0be0aa5138671805cfb8470",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"prayer-and-praying-men": {
 			"ground": "908bbf1a6b4d414810ed49d0d2164df6edb094b0a882d3a5285c898d968e64fc",
 			"style": "devotional",
