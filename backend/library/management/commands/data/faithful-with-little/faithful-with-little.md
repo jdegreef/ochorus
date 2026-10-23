@@ -211,7 +211,7 @@ God built a day of rest into the week right from creation. Rest is a weekly remi
 
 ### A voice from the past
 
-The Puritan William Law asked his readers to look honestly at how they spent their money, as plainly as a farmer can tell you where his fields are:
+The eighteenth-century writer William Law asked his readers to look honestly at how they spent their money, as plainly as a farmer can tell you where his fields are:
 
 > "Every one also can as easily tell how he lays out his money, and whether he considers how to please God in it, as he can tell where his estate is, and whether it be in money or land."
 > William Law, *A Serious Call to a Devout and Holy Life*
