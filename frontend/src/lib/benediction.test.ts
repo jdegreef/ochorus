@@ -25,7 +25,7 @@ describe('benediction', () => {
 		expect(at(2026, 3, 1)).toBe('24–25'); // Lent — Jude
 		expect(at(2026, 4, 1)).toBe('24–25'); // Holy Week
 		expect(at(2026, 4, 5)).toBe('13:20–21'); // Easter Day — Hebrews
-		expect(at(2026, 5, 24)).toBe('13:14'); // Pentecost — 2 Corinthians
+		expect(at(2026, 5, 24)).toBe('13:13'); // Pentecost — 2 Corinthians (OWB keeps the Greek's number; KJV 13:14)
 		expect(at(2026, 7, 14)).toBe('6:24–26'); // ordinary time — Numbers
 		expect(at(2026, 12, 25)).toBe('6:24–26'); // Christmas
 		expect(new Set(Object.values(SEASON_BLESSING))).toEqual(new Set(KEYS));

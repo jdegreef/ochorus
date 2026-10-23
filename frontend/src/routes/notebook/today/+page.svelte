@@ -55,7 +55,7 @@
 	const dayNumber = $derived(streak.doneToday ? streak.streak : streak.streak + 1);
 
 	// The verse's words come from the Scripture API, which serves one English
-	// text (the ASV); in any other language the reference alone is shown.
+	// text (the Open Word Bible); in any other language the reference alone is shown.
 	const ref = $derived(dailyVerse(step, today));
 	let verse = $state<ScriptureResult | null>(null);
 	$effect(() => {

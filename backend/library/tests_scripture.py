@@ -46,13 +46,32 @@ class ScriptureTests(TestCase):
         self.assertEqual(annotate_references(html).count("<a"), 1)
         self.assertEqual(annotate_references(""), "")
 
-    def test_lookup_endpoint_returns_asv_text(self):
+    def test_lookup_endpoint_returns_open_word_bible_text(self):
         res = self.client.get("/api/library/scripture/?ref=John 3:16")
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.data["reference"], "John 3:16")
         self.assertEqual(res.data["verses"][0]["number"], 16)
-        self.assertIn("God so loved the world", res.data["verses"][0]["text"])
-        self.assertEqual(res.data["version"], "American Standard Version")
+        self.assertIn("one and only Son", res.data["verses"][0]["text"])
+        self.assertEqual(res.data["version"], "Open Word Bible")
+
+    def test_lookup_prints_a_joined_verse_once(self):
+        # OWB prints Psalm 13:5-6 as one verse: the popover must not repeat it.
+        from library.scripture import lookup
+
+        data = lookup("Psalm 13:5-6")
+        self.assertEqual([v["number"] for v in data["verses"]], [5])
+        self.assertEqual(lookup("Psalm 13:6")["verses"][0]["number"], 5)
+
+    def test_lookup_falls_back_to_the_asv_and_says_so(self):
+        # The Greek numbers 2 Corinthians 13:14 as 13:13, and OWB keeps the
+        # Greek numbers in the New Testament: no OWB verse 14. The reader still
+        # gets the verse, under the label of the Bible it actually came from.
+        from library.scripture import lookup, verse_text
+
+        self.assertEqual(verse_text(47013014), "")
+        data = lookup("2 Corinthians 13:14")
+        self.assertEqual(data["version"], "American Standard Version")
+        self.assertTrue(data["verses"][0]["text"])
 
     def test_lookup_endpoint_range(self):
         res = self.client.get("/api/library/scripture/?ref=Romans 8:28-29")

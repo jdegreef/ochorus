@@ -61,7 +61,7 @@ export const TOP_VERSES_PER_BOOK = 5;
 /**
  * Group the page list into canonical sections, dropping sections with no pages.
  * A book outside the 66 (the API filters the apocrypha today, since the bundled
- * ASV can't render it) lands in a trailing `other` section rather than vanishing.
+ * Bible can't render it) lands in a trailing `other` section rather than vanishing.
  */
 export function groupScripture(pages: ScripturePageEntry[]): IndexSection[] {
 	const books = new Map<string, IndexBook & { verses: IndexVerse[] }>();

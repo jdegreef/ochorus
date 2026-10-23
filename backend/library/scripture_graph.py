@@ -30,7 +30,8 @@ from functools import lru_cache
 import pythonbible as bible
 
 from .models import Chapter, ChapterCitation
-from .scripture import VERSION, reference_verse_ids
+from .scripture import reference_verse_ids
+from .scripture import verse_text as _verse_text
 
 #: A page needs this many DISTINCT citing chapters to exist. Measured over the
 #: English corpus (9,318 citations across 904 of 1,264 chapters): at 3+, 609
@@ -94,11 +95,9 @@ def _last_verse(book: bible.Book, chapter: int) -> int:
 
 
 def verse_text(verse_id: int) -> str:
-    """ASV text for one verse id, or "" — bundled, so this needs no network."""
-    try:
-        return bible.get_verse_text(verse_id, version=VERSION) or ""
-    except Exception:
-        return ""
+    """Open Word Bible text for one verse id, or "" — bundled, so this needs no
+    network. "" is also how a page tells it has no text to show."""
+    return _verse_text(verse_id)
 
 
 def reference_label(book: bible.Book, chapter: int, verse: int | None) -> str:
@@ -237,7 +236,7 @@ def qualifying_pages() -> list[dict]:
         page = _page(key, verse=False)
         if page is None:
             continue
-        # A chapter page's verse text comes from the bundled ASV; a book it
+        # A chapter page's verse text comes from the bundled OWB; a book it
         # doesn't carry (the apocrypha) can be cited but cannot be rendered.
         if not verse_text(key * 1000 + 1):
             continue
