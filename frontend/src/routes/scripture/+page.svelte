@@ -535,12 +535,15 @@
 	.verses a:hover {
 		text-decoration: underline;
 	}
-	/* Bare text links ~20px tall: on touch, pad them to a 32px target. */
+	/* Bare text links ~20px tall: on touch, pad them to a 32px target — wide as
+	   well as tall, or a one-digit "2:7" is a 24px sliver beside its neighbours. */
 	@media (pointer: coarse) {
 		.verses a {
 			display: inline-flex;
 			align-items: center;
+			justify-content: center;
 			min-height: 2rem;
+			min-width: 2rem;
 			padding-inline: 0.15rem;
 		}
 	}
