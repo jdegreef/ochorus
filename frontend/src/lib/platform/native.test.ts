@@ -6,6 +6,14 @@ const m = vi.hoisted(() => ({
 	backButton: undefined as undefined | ((e: { canGoBack: boolean }) => void),
 	share: vi.fn(),
 	writeFile: vi.fn(),
+	fs: {
+		readFile: vi.fn(),
+		downloadFile: vi.fn(),
+		mkdir: vi.fn(),
+		deleteFile: vi.fn(),
+		rename: vi.fn(),
+		getUri: vi.fn()
+	},
 	browserOpen: vi.fn(),
 	exitApp: vi.fn(),
 	setStyle: vi.fn(),
@@ -17,8 +25,9 @@ const m = vi.hoisted(() => ({
 
 vi.mock('@capacitor/share', () => ({ Share: { share: m.share } }));
 vi.mock('@capacitor/filesystem', () => ({
-	Directory: { Cache: 'CACHE' },
-	Filesystem: { writeFile: m.writeFile }
+	Directory: { Cache: 'CACHE', LibraryNoCloud: 'LIBRARY_NO_CLOUD' },
+	Encoding: { UTF8: 'utf8' },
+	Filesystem: { writeFile: m.writeFile, ...m.fs }
 }));
 vi.mock('@capacitor/browser', () => ({ Browser: { open: m.browserOpen } }));
 vi.mock('@capacitor/app', () => ({
@@ -35,16 +44,33 @@ vi.mock('@capacitor/status-bar', () => ({
 	StatusBar: { setStyle: m.setStyle, setBackgroundColor: m.setBackgroundColor }
 }));
 vi.mock('@capacitor/splash-screen', () => ({ SplashScreen: { hide: m.hide } }));
-vi.mock('@capacitor/core', () => ({ Capacitor: { getPlatform: () => m.platform } }));
+vi.mock('@capacitor/core', () => ({
+	Capacitor: {
+		getPlatform: () => m.platform,
+		convertFileSrc: (uri: string) => uri.replace('file://', 'capacitor://localhost/_capacitor_file_')
+	}
+}));
 
 import { backStack } from './back';
-import { openExternal, setStatusBar, share, shareFile, startAppShell } from './native';
+import {
+	offlineDelete,
+	offlineFileBase,
+	offlineReadText,
+	offlineSaveFile,
+	offlineWriteText,
+	openExternal,
+	setStatusBar,
+	share,
+	shareFile,
+	startAppShell
+} from './native';
 
 beforeEach(() => {
 	for (const f of [m.share, m.writeFile, m.browserOpen, m.exitApp, m.setStyle, m.setBackgroundColor]) {
 		f.mockReset();
 	}
 	m.platform = 'ios';
+	for (const f of Object.values(m.fs)) f.mockReset().mockResolvedValue({});
 });
 
 describe('native share', () => {
@@ -74,6 +100,59 @@ describe('native shareFile', () => {
 		m.writeFile.mockRejectedValue(new Error('disk'));
 		expect(await shareFile(new Blob(['x']), 'c.png', '')).toBe('unavailable');
 		expect(m.share).not.toHaveBeenCalled();
+	});
+});
+
+describe('native offline files', () => {
+	const NC = 'LIBRARY_NO_CLOUD';
+	it('reads and writes texts under offline/, kept out of iCloud backups', async () => {
+		m.writeFile.mockResolvedValue({ uri: 'x' });
+		expect(await offlineWriteText('api/k.json', '{"a":1}')).toBe(true);
+		expect(m.writeFile).toHaveBeenCalledWith({
+			path: 'offline/api/k.json',
+			data: '{"a":1}',
+			directory: NC,
+			encoding: 'utf8',
+			recursive: true
+		});
+		m.fs.readFile.mockResolvedValue({ data: '{"a":1}' });
+		expect(await offlineReadText('api/k.json')).toBe('{"a":1}');
+		expect(m.fs.readFile).toHaveBeenCalledWith({ path: 'offline/api/k.json', directory: NC, encoding: 'utf8' });
+	});
+	it('reads a missing file as null and a failed write as false', async () => {
+		m.fs.readFile.mockRejectedValue(new Error('File does not exist'));
+		expect(await offlineReadText('api/none.json')).toBeNull();
+		m.writeFile.mockRejectedValue(new Error('disk full'));
+		expect(await offlineWriteText('api/k.json', '')).toBe(false);
+	});
+	it('downloads an image natively into the cache, then moves it into place', async () => {
+		expect(await offlineSaveFile('img/covers/a.webp', 'https://ochorus.com/covers/a.webp')).toBe(true);
+		const [dl] = m.fs.downloadFile.mock.calls[0];
+		expect(dl).toMatchObject({ url: 'https://ochorus.com/covers/a.webp', directory: 'CACHE', recursive: true });
+		expect(m.fs.mkdir).toHaveBeenCalledWith({ path: 'offline/img/covers', directory: NC, recursive: true });
+		expect(m.fs.rename).toHaveBeenCalledWith({
+			from: dl.path,
+			directory: 'CACHE',
+			to: 'offline/img/covers/a.webp',
+			toDirectory: NC
+		});
+	});
+	it('reports a failed download and leaves nothing in the cache', async () => {
+		m.fs.downloadFile.mockRejectedValue(new Error('offline'));
+		expect(await offlineSaveFile('img/covers/a.webp', 'https://ochorus.com/covers/a.webp')).toBe(false);
+		expect(m.fs.rename).not.toHaveBeenCalled();
+		expect(m.fs.deleteFile).toHaveBeenLastCalledWith(expect.objectContaining({ directory: 'CACHE' }));
+	});
+	it('deletes each file, a missing one included', async () => {
+		m.fs.deleteFile.mockRejectedValueOnce(new Error('gone'));
+		await expect(offlineDelete(['api/a.json', 'img/covers/a.webp'])).resolves.toBeUndefined();
+		expect(m.fs.deleteFile).toHaveBeenCalledWith({ path: 'offline/img/covers/a.webp', directory: NC });
+	});
+	it('serves the folder from the app’s own origin, resolved each time', async () => {
+		m.fs.getUri.mockResolvedValue({ uri: 'file:///var/app/Library/NoCloud/offline/' });
+		expect(await offlineFileBase()).toBe('capacitor://localhost/_capacitor_file_/var/app/Library/NoCloud/offline');
+		m.fs.getUri.mockRejectedValue(new Error('no'));
+		expect(await offlineFileBase()).toBeNull();
 	});
 });
 

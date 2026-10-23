@@ -8,7 +8,7 @@
 import { App } from '@capacitor/app';
 import { Browser } from '@capacitor/browser';
 import { Capacitor } from '@capacitor/core';
-import { Directory, Filesystem } from '@capacitor/filesystem';
+import { Directory, Encoding, Filesystem } from '@capacitor/filesystem';
 import { Share } from '@capacitor/share';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { StatusBar, Style } from '@capacitor/status-bar';
@@ -80,6 +80,89 @@ export async function setStatusBar(color: string, dark: boolean): Promise<void> 
 		await StatusBar.setBackgroundColor({ color: /^#[0-9a-f]{6}$/i.test(nav) ? nav : color });
 	} catch {
 		/* Not available here (Android 15+ is edge to edge): the strip covers it. */
+	}
+}
+
+/*
+ * Downloaded books ("Download for offline"), under `offline/` in the app's
+ * Library/NoCloud on iOS — kept until the reader removes them (not a cache the
+ * OS may clear), and marked not to go into iCloud backups, as Apple asks of
+ * content that can be downloaded again. On Android it is the app's private
+ * files directory. `file` is a path inside `offline/` (./offlineFiles.ts).
+ *
+ * Images arrive through `Filesystem.downloadFile`: the request is native, so
+ * the website's images need no CORS headers (a web view `fetch` of them would).
+ * Its iOS side knows only CACHE / LIBRARY / Documents, though — it would put a
+ * NoCloud download in Documents — so it downloads into the cache and the file
+ * is then moved into place.
+ */
+const OFFLINE = Directory.LibraryNoCloud;
+const ROOT = 'offline';
+const at = (file: string) => `${ROOT}/${file}`;
+
+/** A stored text, or null when there is none (or it cannot be read). */
+export async function offlineReadText(file: string): Promise<string | null> {
+	try {
+		const { data } = await Filesystem.readFile({ path: at(file), directory: OFFLINE, encoding: Encoding.UTF8 });
+		return typeof data === 'string' ? data : null;
+	} catch {
+		return null;
+	}
+}
+
+/** Store a text; whether it was written. */
+export async function offlineWriteText(file: string, text: string): Promise<boolean> {
+	try {
+		await Filesystem.writeFile({
+			path: at(file),
+			data: text,
+			directory: OFFLINE,
+			encoding: Encoding.UTF8,
+			recursive: true
+		});
+		return true;
+	} catch {
+		return false;
+	}
+}
+
+let downloads = 0;
+
+/** Download `url` into `file`; whether it arrived. */
+export async function offlineSaveFile(file: string, url: string): Promise<boolean> {
+	const tmp = `offline-incoming/${Date.now()}-${downloads++}`;
+	try {
+		await Filesystem.downloadFile({ url, path: tmp, directory: Directory.Cache, recursive: true });
+		const dir = at(file).split('/').slice(0, -1).join('/');
+		// mkdir rejects a folder that is already there; the move below is the test.
+		await Filesystem.mkdir({ path: dir, directory: OFFLINE, recursive: true }).catch(() => {});
+		// A move does not overwrite: a file saved before (another edition's
+		// download of the same cover) is replaced by the fresh one.
+		await Filesystem.deleteFile({ path: at(file), directory: OFFLINE }).catch(() => {});
+		await Filesystem.rename({ from: tmp, directory: Directory.Cache, to: at(file), toDirectory: OFFLINE });
+		return true;
+	} catch {
+		await Filesystem.deleteFile({ path: tmp, directory: Directory.Cache }).catch(() => {});
+		return false;
+	}
+}
+
+/** Delete stored files; a file already gone is not an error. */
+export async function offlineDelete(files: string[]): Promise<void> {
+	await Promise.allSettled(files.map((file) => Filesystem.deleteFile({ path: at(file), directory: OFFLINE })));
+}
+
+/** The URL prefix the web view loads stored files from (same origin as the
+ *  app: `capacitor://localhost/_capacitor_file_/…` on iOS,
+ *  `https://localhost/_capacitor_file_/…` on Android, so CSP img-src 'self'
+ *  admits it). Asked for at every launch — never persisted (see
+ *  ./offlineFiles.ts). Null when the plugin cannot say. */
+export async function offlineFileBase(): Promise<string | null> {
+	try {
+		const { uri } = await Filesystem.getUri({ path: ROOT, directory: OFFLINE });
+		return Capacitor.convertFileSrc(uri).replace(/\/+$/, '');
+	} catch {
+		return null;
 	}
 }
 

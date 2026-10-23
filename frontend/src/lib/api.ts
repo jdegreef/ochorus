@@ -1,5 +1,7 @@
 import { building } from '$app/environment';
+import { readDownloaded } from './appOffline.svelte';
 import { API_BASE_URL } from './config';
+import { IS_APP } from './platform';
 
 export class ApiError extends Error {
 	status: number;
@@ -168,6 +170,15 @@ const isPublicLibraryRead = (path: string, init: RequestInit) =>
  */
 async function requestJSON<T>(path: string, init: RequestInit, f?: Fetch): Promise<T> {
 	const headers = new Headers(init.headers);
+	// The app's downloaded books: a public library read of a downloaded
+	// edition's book or chapter answers from the phone's copy first (refreshed
+	// in the background when online) — what the service worker does for the
+	// website. Never an authenticated or non-library request. `IS_APP` is a
+	// build-time constant, so the website has none of this. See $lib/appOffline.
+	if (IS_APP && isPublicLibraryRead(path, init) && !headers.has('Authorization')) {
+		const stored = await readDownloaded(path);
+		if (stored !== undefined) return stored as T;
+	}
 	if (init.body && !headers.has('Content-Type')) {
 		headers.set('Content-Type', 'application/json');
 	}
