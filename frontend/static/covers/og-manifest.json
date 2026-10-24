@@ -797,6 +797,17 @@
 				482
 			]
 		},
+		"am/confessions": {
+			"ground": "0515672ff43e65f7e0db679443169705eb695a5ce0958b6a57fa4b2071c9e895",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/rust",
+			"bar": 0
+		},
 		"am/corrie-ten-boom-a-life-children": {
 			"ground": "8877bce0a06021fcab9e0b7e2238b010f8f3e49815f1e4abce45b515e8526af7",
 			"style": "young",
