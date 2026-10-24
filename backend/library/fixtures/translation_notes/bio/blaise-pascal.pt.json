@@ -1,0 +1,23 @@
+{
+ "kind": "bio",
+ "slug": "blaise-pascal",
+ "language": "pt",
+ "job_issue": 5684,
+ "references": [
+  {
+   "reference": "Psalm 119:16",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 17
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 26
+  }
+ ],
+ "note": [
+  "Scripture is the Bíblia Livre para o Mundo (porbrbsl, public domain), pasted by script from the ebible mirror por_bpm; each mined phrase was re-checked byte for byte."
+ ]
+}
