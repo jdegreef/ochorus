@@ -2217,6 +2217,10 @@ Chapter bodies may carry `<figure><img><figcaption></figure>` (sanitizer
    `indent=2` rewrites every line) and keep its trailing bytes. A volume after the
    first gets only the maps its story needs (shared `LAND_MAP`); the build copies
    nothing — put each map in `static/illustrations/<that-volume-slug>/`.
+   **Anchor a plate AFTER the paragraph its caption quotes**, never before it: a plate
+   anchored one paragraph early prints its caption and then the same line again
+   straight below it (the-glowstone-bargain Plate 12, caught only by rendering the PDF
+   spread — render the pages around each dialogue-captioned plate before shipping).
 
 ## Two kinds of fix
 
