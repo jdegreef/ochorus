@@ -102,5 +102,12 @@
   "note": [
    "Job #5701, shipped in the same PR as men-and-women-who-gave-everything-2.pt (job #2787): that book completes this plan's book set in Portuguese (around-the-wicket-gate.pt, «Junto à Porta Estreita», already shipped), so seed_plans would otherwise create the pt row with English prose. The two titles quoted are the shipped pt book titles."
   ]
+ },
+ "voices-of-the-early-church": {
+  "description": "Os primeiros séculos cristãos em suas próprias palavras. Clemente de Roma escreve em nome da igreja de Roma quando a geração dos próprios apóstolos ainda vivia, Inácio de Antioquia envia suas cartas no caminho do martírio, e Atanásio de Alexandria expõe o coração da fé — por que o próprio Deus se fez homem — em A Encarnação do Verbo. Leituras diárias breves ao longo de cerca de quatro meses.",
+  "note": [
+   "Job #5238 (epistles-of-ignatius → pt) adds this prose because the book backs the plan. Inácio de Antioquia and «no caminho do martírio» match the shipped pt edition of Ignatius (title «As Epístolas de Inácio e a história de sua vida», subtitle «Sete cartas no caminho do martírio»). The row cannot appear yet: first-epistle-of-clement and on-the-incarnation are not in Portuguese; whichever lands last brings the card live, and its translator should check that «A Encarnação do Verbo» matches that edition's title."
+  ],
+  "title": "Vozes da Igreja primitiva"
  }
 }
