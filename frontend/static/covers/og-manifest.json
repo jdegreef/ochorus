@@ -11394,6 +11394,36 @@
 			"layout": "diagonal/ochre",
 			"bar": 0
 		},
+		"fr/the-practice-of-the-presence-of-god": {
+			"ground": "f0b6d6ce741089911a956bf145ebd36f6cc879d82d37c28790a4e2941a69679c",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[102, 307, 498, 380],
+					[99, 367, 501, 440]
+				],
+				"subtitle": [
+					[68, 492, 532, 513]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				281,
+				513
+			]
+		},
 		"fr/the-practice-of-the-presence-of-god-children": {
 			"ground": "3054ae61c1dc370b881658418e8972b0fabd7ee7567a3a095bf5aedcf0191437",
 			"style": "young",
