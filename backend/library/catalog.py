@@ -933,6 +933,7 @@ BOOKS: list[BookEntry] = [
               skip=("Preface by Henry Atherton",)),
     # Calvin's Institutes (1559) in Henry Beveridge's translation (1845), from
     # CCEL. Each leaf is one of Calvin's chapters, so the import is flat.
+    # corrections.py restores the Greek CCEL carries in a legacy font encoding.
     BookEntry("institutes-of-the-christian-religion", "Institutes of the Christian Religion",
               "john-calvin", "ccel", "calvin/institutes",
               subtitle="Translated by Henry Beveridge",

@@ -18772,9 +18772,26 @@ BODY_CORRECTIONS.setdefault("bondage-of-the-will", {}).setdefault("replacements"
     ]
 )
 
-# Calvin's Institutes (CCEL): Book 4, chapter 18's heading lost its number.
+# Calvin's Institutes (CCEL): Book 4, chapter 18's heading lost its number, and
+# a dozen Greek words reach CCEL in a legacy Greek-font encoding ("pavtho"" for
+# πάθος, where `"` is final sigma and `v` the acute), which reads as noise and
+# whose `"` the quote normaliser takes for a closing mark. Each is set back in
+# Greek: the terms as Calvin uses them (Book 2 ch. 2, 14, 16, 17) and, in Book 2
+# ch. 2, the Odyssey's "οἷον ἐπ’ ἦμαρ ἄγῃσι" (18.137) that CCEL garbles.
 BODY_CORRECTIONS.setdefault("institutes-of-the-christian-religion", {}).setdefault(
     "replacements", []
 ).extend([
     ("<h3>CHAPTER </h3> ", ""),
+    ("viz. aujtexouvsion, as if", "viz. αὐτεξούσιον, as if"),
+    ("ejthelodou'lo\" (a voluntary slave)", "ἐθελόδουλος (a voluntary slave)"),
+    ("oJion ejp e\\ma\" a[geisi.", "οἷον ἐπ’ ἦμαρ ἄγῃσι."),
+    ("(ajkrasiva)", "(ἀκρασία)"),
+    ("(pavtho\")", "(πάθος)"),
+    ("(ajkolasiva)", "(ἀκολασία)"),
+    ("ijdiwmavtwn koinoniva", "ἰδιωμάτων κοινωνία"),
+    ("of ijdiwvmata, or properties", "of ἰδιώματα, or properties"),
+    ("ajpoluvtrwsi\", ajntivlutron, kai; iJlasthvrion,", "ἀπολύτρωσις, ἀντίλυτρον, καὶ ἱλαστήριον,"),
+    ("(aujtov\")", "(αὐτός)"),
+    ("flesh is oJmoouvsion, of", "flesh is ὁμοούσιον, of"),
+    ("and other \"passages to the same", "and other passages to the same"),
 ])
