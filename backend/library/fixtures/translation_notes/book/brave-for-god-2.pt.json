@@ -1,0 +1,21 @@
+{
+ "kind": "book",
+ "slug": "brave-for-god-2",
+ "language": "pt",
+ "job_issue": 3599,
+ "references": [
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Samuel 2:30",
+   "status": "self_rendered",
+   "block_index": 30,
+   "why": "Reported speech (the note handed to Liddell), third person, rendered as prose; Bíblia Livre: “eu honrarei aos que me honram”."
+  }
+ ],
+ "note": "young-readers book. The only verbatim scripture is “Pai, perdoa-lhes” (Bíblia Livre Luke 23:34). Quotation marks mirror the English (curly “ ”). Names follow the shipped pt corpus (William Carey, David Livingstone, Festo Kivengere, Billy Graham, Pandita Ramabai, Mukti, marati, Corrie ten Boom, Betsie); Eric Liddell, Idi Amin and Janani Luwum keep their usual spellings. Carey's motto is rendered “Espere grandes coisas de Deus; tente grandes coisas para Deus”."
+}
