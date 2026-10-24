@@ -11,7 +11,20 @@
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { footerLocales } from '$lib/footerLocales';
-	import { FOR_EYEBROW, forIndexPath, forLocale, forPath, forSentence } from '$lib/forLinks';
+	import {
+		FOR_EYEBROW,
+		FOR_FAMILIES,
+		FOR_FOOTER,
+		forFamilyLinks,
+		forIndexPath,
+		forInline,
+		forLabel,
+		forLocale,
+		forOfTheWeek,
+		forPath
+	} from '$lib/forLinks';
+	import { SITE_URL } from '$lib/config';
+	import { nativeShare } from '$lib/share';
 	import { loginHref, withSignup } from '$lib/loginHref';
 	import { seenOnView, withSource } from '$lib/signupSource';
 	import { bibleCredit, creditParts } from '$lib/bibleCredit';
@@ -61,6 +74,36 @@
 	const footerLangs = $derived(footerLocales(lang.available, lang.current));
 	/** The "Ochorus for …" row's language — shown only where it is the reader's. */
 	const forLang = $derived(forLocale(lang.current));
+	const forWords = $derived(FOR_FOOTER[forLang]);
+
+	// The row's colour and its "This week" line come from $lib/forMeta (each
+	// group's accent and tagline), which is too big to ride in the layout every
+	// page loads: fetched once the row is within reach, as the resume card is.
+	// Until then the links are all there (and prerendered), with plain dots.
+	let forNav = $state<HTMLElement>();
+	const forNear = elementVisible(() => forNav, { rootMargin: '600px 0px' });
+	let forMeta = $state<typeof import('$lib/forMeta')>();
+	$effect(() => {
+		if (forNear.visible && !forMeta) void import('$lib/forMeta').then((m) => (forMeta = m));
+	});
+	const featured = $derived(forMeta ? forOfTheWeek() : null);
+
+	// "Pass it on": the pastors' page through the OS share sheet, else onto the
+	// clipboard; with neither (or no script yet) the link just opens the page.
+	let forCopied = $state(false);
+	async function passItOn(e: MouseEvent) {
+		e.preventDefault();
+		const url = `${SITE_URL}${forPath('pastors', forLang)}`;
+		const r = await nativeShare(forWords.shareTitle, url);
+		if (r !== 'unavailable') return;
+		try {
+			await navigator.clipboard.writeText(url);
+			forCopied = true;
+			setTimeout(() => (forCopied = false), 4000);
+		} catch {
+			location.href = forPath('pastors', forLang);
+		}
+	}
 
 	// Footer sign-up CTA target. Reuses loginHref's guard (which keeps a reader
 	// who is already on /login from being redirected back to it — see loginHref)
@@ -497,24 +540,59 @@
 		</div>
 	</div>
 	<!-- "Ochorus for …" — the landing pages for churches, homeschool
-	     families, parents ($lib/forLinks), as the footer's closing sentence:
-	     the eyebrow opens it ("OCHORUS FOR churches, small groups, … and
-	     parents."), each audience a link, the list punctuation the language's
-	     own (forSentence). Only for readers of a language the pages are
-	     written in (English, French): a reader of any other is not sent to
-	     copy they can't read, and the words are the pages' own ($lib/forLinks),
-	     not catalogue keys. -->
+	     families, parents ($lib/forLinks), as the footer's closing invitation:
+	     a heading, the eighteen pages in four short columns (each link's dot in
+	     its group's colour), this week's featured group and a way to pass the
+	     site to a pastor. Only for readers of a language the pages are written
+	     in (English, French): a reader of any other is not sent to copy they
+	     can't read, and the words are the pages' own ($lib/forLinks), not
+	     catalogue keys. -->
 	{#if forLang === lang.current}
-		<nav class="border-t border-border" aria-label={FOR_EYEBROW[forLang]}>
-			<p class="footer-for chrome-col px-5 py-4 text-small text-muted">
-				<a class="eyebrow text-text hover:underline" href={forIndexPath(forLang)}
-					>{FOR_EYEBROW[forLang]}</a
-				>
-				{#each forSentence(forLang) as part, i (i)}{#if part.slug}<a
-							class="text-text hover:underline"
-							href={forPath(part.slug, forLang)}>{part.text}</a
-						>{:else}{part.text}{/if}{/each}.
-			</p>
+		<nav bind:this={forNav} class="border-t border-border" aria-labelledby="footer-for-heading">
+			<div class="footer-for chrome-col px-5 pt-10">
+				<div>
+					<a class="eyebrow footer-for-eyebrow hover:underline" href={forIndexPath(forLang)}
+						>{FOR_EYEBROW[forLang]}</a
+					>
+					<h2 id="footer-for-heading" class="footer-for-title">{forWords.title}</h2>
+					<p class="mt-2 text-small text-muted">{forWords.body}</p>
+				</div>
+				<div class="footer-for-families">
+					{#each FOR_FAMILIES as fam (fam.id)}
+						<div class="footer-for-family">
+							<h3 class="footer-for-family-name">{fam[forLang]}</h3>
+							<ul>
+								{#each forFamilyLinks(fam.id) as l (l.slug)}
+									<li>
+										<a class="footer-for-link" href={forPath(l.slug, forLang)}
+											><span
+												class="footer-for-dot"
+												style:--group={forMeta?.FOR_META[l.slug].accent}
+												aria-hidden="true"
+											></span>{forLabel(l, forLang)}</a
+										>
+									</li>
+								{/each}
+							</ul>
+						</div>
+					{/each}
+				</div>
+			</div>
+			<div class="footer-for-foot chrome-col px-5">
+				<p class="footer-for-week text-small text-muted">
+					{#if featured && forMeta}
+						{forWords.thisWeek}
+						<a class="footer-for-week-link hover:underline" href={forPath(featured.slug, forLang)}
+							>{FOR_EYEBROW[forLang]} {forInline(featured, forLang)}</a
+						>
+						— {forMeta.forTagline(featured.slug, forLang)}.
+					{/if}
+				</p>
+				<a class="footer-for-share" href={forPath('pastors', forLang)} onclick={passItOn}>
+					<Icon name="share" size={16} />
+					<span aria-live="polite">{forCopied ? forWords.copied : forWords.share}</span>
+				</a>
+			</div>
 		</nav>
 	{/if}
 </footer>
@@ -559,10 +637,119 @@
 		background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 55%, var(--gold) 100%);
 	}
 
-	/* The "Ochorus for" sentence: wrapped prose, so its links get the touch
-	   rows' extra line height rather than padding. */
+	/* "Ochorus for …": the invitation beside four columns on a wide screen,
+	   above them on a narrow one; two columns on a phone. */
 	.footer-for {
-		line-height: 2;
+		display: grid;
+		gap: 1.75rem 3.5rem;
+	}
+	@media (min-width: 1024px) {
+		.footer-for {
+			grid-template-columns: 18rem minmax(0, 1fr);
+		}
+	}
+	/* Gold, deepened toward the ink so a 12px label still reads (4.5:1). */
+	.footer-for-eyebrow {
+		color: color-mix(in srgb, var(--gold) 70%, var(--text));
+	}
+	.footer-for-title {
+		margin-top: 0.5rem;
+		font-family: var(--font-display);
+		font-size: var(--fs-h2);
+		font-weight: 600;
+		line-height: 1.15;
+		color: var(--text);
+	}
+	.footer-for-families {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.5rem;
+	}
+	@media (min-width: 768px) {
+		.footer-for-families {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+	}
+	.footer-for-family {
+		border-top: 2px solid var(--text);
+		padding-top: 0.75rem;
+	}
+	.footer-for-family-name {
+		margin-bottom: 0.25rem;
+		font-family: var(--font-display);
+		font-size: var(--fs-body);
+		font-weight: 600;
+		color: var(--text);
+	}
+	/* Each link a touch row: 44px on a phone, a tighter list once there's a
+	   pointer to aim. */
+	.footer-for-link {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		min-block-size: 2.75rem;
+		font-size: var(--fs-small);
+		color: var(--text);
+	}
+	@media (min-width: 768px) and (pointer: fine) {
+		.footer-for-link {
+			min-block-size: 1.9rem;
+		}
+	}
+	.footer-for-link:hover {
+		color: var(--accent);
+		text-decoration: underline;
+	}
+	/* The group's colour as a dot in a soft ring of itself (its page's
+	   accent, $lib/forMeta); a plain muted dot until that has loaded. The
+	   accents are tuned for paper, so each leans a quarter toward the ink:
+	   a shade darker in light, light enough to see in dark. */
+	.footer-for-dot {
+		--dot: color-mix(in srgb, var(--group, var(--border-strong)) 75%, var(--text));
+		flex: none;
+		inline-size: 0.5rem;
+		block-size: 0.5rem;
+		border-radius: 50%;
+		background: var(--dot);
+		box-shadow: 0 0 0 0.3rem color-mix(in srgb, var(--dot) 18%, transparent);
+		margin-inline: 0.3rem;
+	}
+	.footer-for-foot {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem 1.5rem;
+		margin-top: 1.75rem;
+		padding-block: 1.1rem 1.5rem;
+		border-top: 1px solid var(--border);
+	}
+	/* Filled in once forMeta loads (off screen): its room held so nothing
+	   below it moves. */
+	.footer-for-week {
+		flex: 1 1 24rem;
+		min-block-size: 1.5em;
+	}
+	.footer-for-week-link {
+		font-weight: 600;
+		color: var(--text);
+	}
+	.footer-for-share {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		min-block-size: 2.75rem;
+		padding-inline: 1.1rem;
+		border: 1px solid var(--accent-soft-border);
+		border-radius: 999px;
+		background: var(--accent-soft);
+		color: var(--accent);
+		font-size: var(--fs-small);
+		font-weight: 600;
+	}
+	.footer-for-share:hover {
+		border-color: var(--accent);
+		text-decoration: none;
 	}
 
 	/* Language tiles: autonym over its book count. Auto-fill columns, so a

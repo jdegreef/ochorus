@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { FOR_LINKS, forIndexPath, forLocale, forPath, forSentence } from './forLinks';
+import { FOR_FAMILIES, FOR_LINKS, forFamilyLinks, forIndexPath, forLocale, forOfTheWeek, forPath } from './forLinks';
 import { FOR_META } from './forMeta';
 import { messageShareLinks } from './share';
 import {
@@ -419,17 +419,18 @@ describe('the French "Ochorus pour …" pages', () => {
 	});
 });
 
-describe('the footer sentence', () => {
-	it('reads as prose in each page language, every audience linked once', () => {
-		const join = (l: 'en' | 'fr') => forSentence(l).map((p) => p.text).join('');
-		expect(join('en')).toBe(
-			'churches, pastors, small groups, new believers, evangelism, prayer groups, women’s ministry, men’s ministry, youth ministries, campus ministries, missionaries, African churches, chaplains, prison ministry, Bible colleges, schools, homeschool families, and parents'
-		);
-		expect(join('fr')).toBe(
-			'les Églises, les pasteurs, les petits groupes, les nouveaux croyants, l’évangélisation, les groupes de prière, les femmes, les hommes, la pastorale des jeunes, les étudiants, les missionnaires, les Églises d’Afrique, les aumôniers, les prisons, les instituts bibliques, les écoles, l’école à la maison et les parents'
-		);
-		for (const l of ['en', 'fr'] as const) {
-			expect(forSentence(l).filter((p) => p.slug).map((p) => p.slug)).toEqual(FOR_LINKS.map((d) => d.slug));
-		}
+describe('the footer families', () => {
+	it('link every audience exactly once, none in an empty column', () => {
+		const linked = FOR_FAMILIES.flatMap((f) => forFamilyLinks(f.id).map((l) => l.slug));
+		expect([...linked].sort()).toEqual(FOR_LINKS.map((l) => l.slug).sort());
+		for (const f of FOR_FAMILIES) expect(forFamilyLinks(f.id).length).toBeGreaterThan(0);
+	});
+
+	it('feature each group in turn, one per week from Monday', () => {
+		const monday = Date.UTC(2026, 9, 19);
+		const sunday = monday + 6 * 86_400_000 + 86_399_000;
+		expect(forOfTheWeek(sunday)).toBe(forOfTheWeek(monday));
+		const weeks = Array.from({ length: FOR_LINKS.length }, (_, i) => forOfTheWeek(monday + i * 7 * 86_400_000).slug);
+		expect(new Set(weeks).size).toBe(FOR_LINKS.length);
 	});
 });
