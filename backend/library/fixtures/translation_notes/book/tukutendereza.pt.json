@@ -1,0 +1,93 @@
+{
+ "kind": "book",
+ "slug": "tukutendereza",
+ "language": "pt",
+ "job_issue": 5125,
+ "pull_request": null,
+ "note": [
+  "Scripture follows the Bíblia Livre (porbrbsl, ebible por_bpm), pasted by script. A row is mined only when it was reported verbatim AND the block holds at least 45 characters (or the whole verse) of that verse's porbrbsl wording, quote marks aside; everything else is self_rendered.",
+  "AI-translated (job #5125) in parallel chapters; tag sequence identical to the English; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Galatians 3:28",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "Ephesians 5:14",
+   "status": "self_rendered",
+   "block_index": 101
+  },
+  {
+   "reference": "Romans 1:16",
+   "status": "self_rendered",
+   "block_index": 127
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "block_index": 156
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "self_rendered",
+   "block_index": 176
+  },
+  {
+   "reference": "Matthew 5:44",
+   "status": "self_rendered",
+   "block_index": 200
+  },
+  {
+   "reference": "Revelation 12:11",
+   "status": "self_rendered",
+   "block_index": 224
+  },
+  {
+   "reference": "1 Timothy 4:12",
+   "status": "self_rendered",
+   "block_index": 248
+  },
+  {
+   "reference": "Galatians 3:28",
+   "status": "self_rendered",
+   "block_index": 270
+  },
+  {
+   "reference": "John 1:29",
+   "status": "self_rendered",
+   "block_index": 294
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "block_index": 294
+  },
+  {
+   "reference": "Galatians 3:28",
+   "status": "self_rendered",
+   "block_index": 288
+  },
+  {
+   "reference": "1 John 1:7",
+   "status": "self_rendered",
+   "block_index": 321
+  }
+ ]
+}
