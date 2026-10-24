@@ -5,10 +5,9 @@ import { signInSheet } from './signInSheet.svelte';
 import type { SignupSource } from './signupSource';
 
 /**
- * Turning on a plan's daily reminder email, wherever it's offered: the sheet
- * shown when a plan starts (PlanStartSheet), the end of a plan day
- * (PlanDayRemind signed in, ChapterEndAsk signed out) and the plan's calendar
- * view. The email is sent by the account (emails.plan_reminders) from the
+ * Turning on a plan's daily reminder email, wherever it's offered: the end of
+ * a plan day (PlanDayRemind signed in, ChapterEndAsk signed out) and the
+ * plan's calendar view. The email is sent by the account (emails.plan_reminders) from the
  * plan's synced schedule, so a signed-out reader is asked for an account
  * first and the choice is HELD until one exists.
  *

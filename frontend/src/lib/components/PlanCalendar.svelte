@@ -8,6 +8,7 @@
 	import { askForPlanEmail, turnOffPlanEmail, turnOnPlanEmail } from '$lib/planEmail';
 	import { buildScheduleICS, googleCalendarUrl, readReminderTime } from '$lib/reminder';
 	import { localizeHref } from '$lib/href';
+	import { seenOnView } from '$lib/signupSource';
 	import { localToday } from '$lib/streak';
 	import {
 		READING_DAYS,
@@ -266,9 +267,12 @@
 						</span>
 					</label>
 				{:else if auth.enabled}
+					<!-- Counted as seen, so the admin funnel's 'plan_start' row — the
+					     plan page's own email ask — has views beside its sign-ups. -->
 					<button
 						type="button"
 						class="btn btn-ghost btn-sm mt-2 w-full"
+						use:seenOnView={'plan_start'}
 						onclick={() => askForPlanEmail(plan.slug, 'plan_start', time)}
 					>
 						<Icon name="mail" size={16} />{t('plans.emailSignin')}
