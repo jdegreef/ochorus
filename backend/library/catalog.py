@@ -936,7 +936,18 @@ BOOKS: list[BookEntry] = [
     BookEntry("institutes-of-the-christian-religion", "Institutes of the Christian Religion",
               "john-calvin", "ccel", "calvin/institutes",
               subtitle="Translated by Henry Beveridge",
-              cover_color="#2f3e57"),
+              cover_color="#2f3e57",
+              # John Murray's Introduction is from the 1949 Eerdmans reprint and
+              # still in copyright; the Printers' note (1599) and Thomas
+              # Norton's preface (1581) introduce Norton's translation, not this
+              # one; the tables are empty and the index of chapters repeats the
+              # contents.
+              skip=("Introduction", "The Printers to the Readers.",
+                    "The Original Translator’s Preface.",
+                    "Table I. Of Passages from the Holy Scriptures",
+                    "Table II. Of Hebrew Words Explained.",
+                    "Table III. Of Greek Words Explained.",
+                    "General Index of Chapters.")),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an

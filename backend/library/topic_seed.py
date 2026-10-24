@@ -487,6 +487,7 @@ TOPICS = [
             "on-the-incarnation",
             "freedom-of-the-will",
             "bondage-of-the-will",
+            "institutes-of-the-christian-religion",
             "ten-commandments",
             "a-body-of-divinity",
             "key-teachings-of-athanasius-of-alexandria",

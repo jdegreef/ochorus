@@ -13041,6 +13041,17 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"institutes-of-the-christian-religion": {
+			"ground": "1031b2e4265c202243f1c4932f5a95a9d1233285ce019985ef4a55cfe92a9a93",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"john-hyde-a-life": {
 			"ground": "49499e4fe5ba45d69f5751397a0ca062d2c8913bd693337d50819ff8610e14a6",
 			"style": "house",
