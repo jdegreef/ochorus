@@ -17179,6 +17179,37 @@
 				487
 			]
 		},
+		"pt/rooted-1": {
+			"ground": "73054fbcf3ee139184146e36028b1920a36a1b97c24511b9a0010cf881d71c45",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.4,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 273, 308, 317],
+					[160, 348, 440, 423]
+				],
+				"subtitle": [
+					[155, 478, 446, 506],
+					[122, 506, 478, 534]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				261,
+				534
+			]
+		},
 		"pt/school-of-prayer": {
 			"ground": "f338063ad6f7c108b18ec198afb321202e8984d47b1e76f6f197814933e88f4a",
 			"style": "devotional",

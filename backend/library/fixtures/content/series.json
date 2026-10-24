@@ -650,5 +650,18 @@
   "created_at": "2026-10-23T00:00:00Z",
   "updated_at": "2026-10-23T00:00:00Z"
  }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "rooted"
+  ],
+  "language": "pt",
+  "title": "Enraizados – 30 Dias com Deus para Jovens",
+  "description": "Devocionais de trinta dias para leitores de 9 a 12 anos, um livro de cada vez: um versículo, o que ele significa, uma pergunta para pensar, uma coisa para experimentar e uma oração.",
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
+ }
 }
 ]
