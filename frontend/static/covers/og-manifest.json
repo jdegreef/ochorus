@@ -20753,6 +20753,17 @@
 			"layout": "box/teal",
 			"bar": 0
 		},
+		"the-hill-of-cinders": {
+			"ground": "0c21ba95a83fa3a8af74813e49af1cd587ae85a93e92d0f647e73476395dbdc8",
+			"style": "young",
+			"volume": "4",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-holy-war": {
 			"ground": "ab2ce1598a646a4de1c2b336acf98746d0053ebcdc364d73481e50a073b64e24",
 			"style": "press",

@@ -699,6 +699,7 @@ TOPICS = [
             "fire-against-the-dark",
             "the-black-stair",
             "the-glowstone-bargain",
+            "the-hill-of-cinders",
             "hurlbuts-life-of-christ",
             "rooted-1",
             "rooted-2",

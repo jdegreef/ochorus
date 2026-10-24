@@ -925,6 +925,105 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
         ],
     },
+    4: {
+        "slug": "the-hill-of-cinders",
+        "publication_year": 2026,
+        "title": "The Hill of Cinders",
+        "subtitle": "The Lamplighters of Gloamhaven, Book Four",
+        "cover_byline": "James DeGreef",
+        "attribution": (
+            "© James DeGreef and Ochorus. An Ochorus Original, written for young "
+            "readers, free to read and share. Book 4 of The Lamplighters of Gloamhaven."
+        ),
+        "cover_url": "/covers/the-hill-of-cinders.svg",
+        "cover_color": covers.ink_safe("#6b4a3a"),  # warm ash over a banked fire
+        "description": (
+            "Old Ash is gone, the false light of Vaelport is broken, and the "
+            "company is broken with it. Wren, Tobin and Mira each walk inland "
+            "alone, sent by the same three words: Go to the Hill. Wren carries "
+            "a lamp that barely glows and cannot forgive Tobin. Mira falls in "
+            "with the Remnant, a hidden people who have kept the old songs for "
+            "three hundred years. Tobin walks with no food and no hope. All "
+            "three roads lead across the Burned Country to Cinder Hill, where the "
+            "Lampwright was snuffed out long ago, and where the Umbral Queen is "
+            "waiting for them."
+        ),
+        "about_html": (
+            "<p>The Hill of Cinders is the fourth book of The Lamplighters of "
+            "Gloamhaven, an adventure series by James DeGreef and Ochorus for "
+            "readers aged nine to twelve. It follows on from The Glowstone "
+            "Bargain, and is best read after the first three books.</p>"
+            "<p>This is the turning of the whole series: a book about a hill where "
+            "the light was put out, an old book that tells what really happened "
+            "there, and a friendship that seems past mending. It is about "
+            "betrayal and forgiveness, about a love that lays down its life, and "
+            "about being given your work back after you have failed at it. It "
+            "begins in the deepest grey of the series and ends in morning. Like "
+            "the books before it, it never preaches; it lets the story speak for "
+            "itself, for children to discover and for parents to talk about.</p>"
+            "<p>The book has fifteen chapters, about the length of a classic "
+            "children's fantasy, each one a good evening's reading.</p>"
+            "<p>© James DeGreef and Ochorus. An Ochorus Original, free to read and share.</p>"
+        ),
+        "qa": [
+            {
+                "question": "Do I need to read the first three books first?",
+                "answer": (
+                    "Yes. The Hill of Cinders carries straight on from The Glowstone "
+                    "Bargain, and its biggest moments answer questions the first "
+                    "three books ask."
+                ),
+            },
+            {
+                "question": "What age is The Hill of Cinders for?",
+                "answer": (
+                    "Readers aged nine to twelve. It opens in grief after the loss at "
+                    "the end of Book Three and has real danger, told without anything "
+                    "gory, and it ends in joy."
+                ),
+            },
+            {
+                "question": "What is Cinder Hill?",
+                "answer": (
+                    "A black, bare hill in the Burned Country where, in the old "
+                    "story Old Ash told in Book One, the Queen's darkness put out "
+                    "the Lampwright's light. A ruined workshop stands on top."
+                ),
+            },
+            {
+                "question": "Who are the Remnant?",
+                "answer": (
+                    "A hidden fellowship of ordinary people who have kept the "
+                    "Lampwright's stories and songs alive for three hundred years, "
+                    "meeting in barns and cellars, led by joyful old Sister Hale."
+                ),
+            },
+            {
+                "question": "What is the Chronicle?",
+                "answer": (
+                    "An old book locked behind an iron door on Cinder Hill. It tells "
+                    "how the world was made, how the curse began, and what really "
+                    "happened on the Lampwright's last night."
+                ),
+            },
+            {
+                "question": "Is it a Christian book?",
+                "answer": (
+                    "Yes. Like the classic Christian fantasies, it tells its truths "
+                    "as story rather than sermon: a death chosen out of love, a "
+                    "morning no one expected, and forgiveness that restores a friend "
+                    "who failed. It never names God or preaches."
+                ),
+            },
+            {
+                "question": "How long is the book?",
+                "answer": (
+                    "Fifteen chapters and about forty-eight thousand words, much the "
+                    "length of a classic children's fantasy."
+                ),
+            },
+        ],
+    },
 }
 
 

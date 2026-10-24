@@ -1,0 +1,3077 @@
+# The Hill of Cinders
+
+## Three Roads Inland
+
+"You'd have said *hm*," said Wren. "Wouldn't you."
+
+The lamp did not answer. It lay inside her coat, against her ribs, where it had lain all morning, small and low and steady; and if you had put your hand flat on the outside of her coat, the way she kept doing, you would have felt it there like a cat that has gone to sleep on you and does not mean to get up.
+
+"You'd have said *hm*," Wren told it, "and then you'd have said *mind the step*, and then you'd have walked off up this hill on your two poles as if it was nothing, and I'd have had to wait for you at the top. That's what you'd have done."
+
+The hill went on. It was the third hill since breakfast, though there had not been any breakfast, and it was very like the other two: a long grey slope of tussocky grass, with a cart-track worn into it and a broken wall running alongside, and at the top, when you got there, nothing but the next hill. Behind her, if she had turned round, she would have seen the sea for the last time — a flat dull sheet the colour of a knife, with Vaelport on its edge like a heap of white crockery. She did not turn round.
+
+She had been walking since the mud-flats, three days ago now, or perhaps four. The coast road had gone east along the cliffs, and then grown tired of the cliffs and turned inland, and Wren had gone with it, because the lamp leaned that way. She had slept one night in a cow-shed with no cow in it, and the next under a haystack that turned out to be mostly rat. She had eaten one raw turnip.
+
+She was hungry. That was the odd thing. For three whole days in Vaelport, after the mine, she had not been hungry at all, and it had frightened her more than she let on; because Wren Ashby had been hungry every day of her life since she was four, and a Wren who was not hungry did not feel like anybody she knew. But somewhere on the second morning, chewing the turnip, her stomach had woken up and growled at her like a dog behind a gate. And she had stood in the road with the turnip in her hand and felt something that was very nearly glad.
+
+"Don't you go thinking that's on account of you," she told the lamp. "That's just turnip."
+
+She had Tobin's scarf round her neck. It went twice round her and still had ends left over, and it smelt of ink and machine-oil, which was a smell she did not want to think about. Every so often she put her hand up to pull it off and throw it in a ditch. Every so often her hand came down again without doing it. It was cold, that was all. You did not throw away a perfectly good scarf in the cold just because of whose it was.
+
+The singing-stone sat in her pocket, a smooth round weight against her leg. It had not hummed once since the harbour.
+
+And all the way, up one grey hill and down the next, she talked.
+
+She had never been a talker. In Soot Lane the girl who talked was the girl who got caught. But the hills were very wide and very quiet, and the silence pressed on her ears. So she talked to the lamp. And because the lamp was small and warm and steady, and had once been carried by somebody who was steady in exactly the same way, she found that she talked to it as if it were him.
+
+"This road's rubbish," she said. "You'd have known a better one. You always knew a better one, and you never said till we'd gone the long way round."
+
+"You'd have made tea by now. Out of some leaf you found in a hedge. And it'd be awful, and you'd drink it anyway, and say it was bracing."
+
+She stopped in the road.
+
+"I'd drink it," she said. Her voice had gone small and strange. "If you made some. I'd drink the whole pot. I wouldn't even say anything."
+
+The grey grass hissed in the wind. Far off, a crow said something rude and flew away.
+
+Wren wiped her nose on the end of Tobin's scarf, and was furious with herself for doing it, and walked on.
+
+---
+
+That same afternoon, on another road a good deal further north, Mira was carrying a baby.
+
+It was not her baby. It belonged to a thin young woman called Jessamy, who had been walking since before dawn with the baby on one hip and a bundle on the other and a small boy hanging on the back of her skirt, and who had sat down at the edge of the road an hour ago, quite suddenly, as if her legs had decided it for her. Mira had stopped beside her. And then Mira had held out her arms without saying anything, the way you hold out your hands for a bowl, and after a moment Jessamy had given her the baby.
+
+It was heavier than Mira had expected. It was warm, and damp in places, and it smelt of milk and wool, and it had gone to sleep almost at once with its fist wound tight in one of her braids. Every time she took a step, the beads at the end of the braid clicked softly against each other, and the baby's fingers tightened, and its mouth moved.
+
+"It likes the beads," said Mira, delighted.
+
+"It likes anything that makes a noise," said Jessamy wearily. "Its name's Robin. When it's awake it's the loudest thing in Vaelport."
+
+"Not any more," said Mira. "Vaelport is very quiet now."
+
+Nobody answered that. There was not much to say.
+
+There were twenty-three of them on the road — she had counted them by their footsteps the first night, with her eyes shut, and then again with her eyes open, to be sure. They had come out of Vaelport in ones and twos after the lights went out, and found each other the way drops of rain find each other on a window: an old cooper called Abner, with a handcart and a hip that clicked louder than Mira did; two sisters who still wore their good gloves, though the gloves were filthy now; a family with a goat; and more besides, all with the same pale, puzzled faces, like people who have been asleep a long time and are not sure yet whether they are awake.
+
+They were going inland, to cousins, or to a sister in some Ring-town, or simply away, because Vaelport had been their home for a hundred years and it had turned out to be eating them.
+
+Mira had fallen in with them on the first evening, and had not fallen out again. She had meant to walk alone. But the old cooper's handcart had got its wheel stuck in a rut, and she had stopped to help; and then the glove-sisters could not get their fire to light, and she had shown them Mr Pellow's way, with the tow and the gentle breathing; and then it was dark, and somebody had to keep the fire going.
+
+She was not afraid of the dark. That was what they could not get over. When the hills turned to black shapes against a grey sky, the others huddled round their poor fire and jumped at every sound. Mira simply shut her eyes, and clicked her tongue, and listened.
+
+"That is only a sheep," she would say. "It is chewing. Sheep are very rude eaters." Or: "No, nothing is following us. I would hear it."
+
+They had begun, she noticed, to sit closer to her than to the fire.
+
+She had Mrs Pellow's currant bread in the bundle on her back. On the first night she had broken off a piece for each of the children, and on the second a piece for each of the grown-ups. Now the half-loaf was a quarter, and she had not eaten any of it herself. She thought she probably ought to feel noble. Mostly she felt hungry.
+
+"You're a strange one," said old Abner that evening, as she sat down beside him with Robin asleep against her shoulder. He said it kindly. "Where are you bound, then? A girl your age."
+
+"East," said Mira. "To a hill."
+
+"What hill?"
+
+Mira found that she did not want to say the name out loud. It was the darkest part of the story — the part where the tea-cosy went over the lamp. Wren had told it to her once in the Deeps, very fast and not looking at her, and Mira had known even then that Wren was frightened of it.
+
+"Only a hill," she said.
+
+Abner nodded slowly. Then he said, in a lower voice, "You want to watch yourself, going east. Farms gone sour out there. My brother wrote once that the crops were coming up grey, and the folk with them. He never wrote again." He poked the fire. "And there's lights on the roads at night. Little shuttered lights, going about the fields where there's no house. Folk say there's people out there who'll hide you, if you're running, and ask nothing for it." He shook his head. "Cranks, the Guild calls them. Nobody gives anything for nothing."
+
+Mira thought of a dark boat on a misty river, and a voice like mist on water, and a pair of warm thumbs laid on her eyes.
+
+"Some people do," she said.
+
+---
+
+I must tell you now about the fox, because none of the three of them ever knew the whole of it until afterwards.
+
+Cinder had left the harbour wall at Vaelport with her nose to the ground and her mind made up. The trouble was that she had made it up three ways at once. Three roads went east, and on each of them was somebody she would not let go; and a fox, however clever, has only four legs and one nose and cannot be on three roads at a time.
+
+So she did not try to be. She ran between them.
+
+She ran across country, as foxes do, over the high bare backs of the hills where no road went; and every so often she came down onto one of the roads, and looked, and made sure, and went away again before anybody could catch her.
+
+Wren saw her on the first evening.
+
+She was sitting under the broken wall with her knees drawn up, trying not to think about supper, when she felt somebody looking at her. She turned her head. On the top of the wall, not ten feet away, sat a small grey fox with her tail curled round her feet, watching her with bright eyes.
+
+"Cinder," said Wren. She did not shout it. She was afraid to.
+
+Cinder looked at her a long moment. Then she sneezed — one small, very nearly orange spark — and dropped down on the far side of the wall, and was gone.
+
+Wren sat very still. The spark had landed on the coping-stone, and she watched it until it went out.
+
+*She came for me,* she thought. *Out of all of them. She came all this way.* And she put her face down on her knees for a while, and when she lifted it again she felt stronger than she had for days.
+
+Mira saw her on the third night, when old Abner had gone to sleep.
+
+She was minding the fire, with the others asleep round her like puppies, when she heard a soft small sound that was not a sheep. She shut her eyes and clicked. There was something low and light on the far side of the fire, warm in a very particular, very familiar way. When she opened her eyes again, there was Cinder, sitting on the old cooper's handcart, delicately eating the last of the currant bread out of Mira's bundle.
+
+"Oh, you *thief*," said Mira, under her breath, and began to laugh, and could not stop. Cinder finished the bread, licked her lips, looked at Mira as if to say that she had been waiting all evening for somebody to offer, and jumped down into the dark.
+
+*She came to find me,* thought Mira, with her hand pressed over her mouth so as not to wake the others. *Of course she did. She knew I would be worried.* And she did not mind about the bread at all.
+
+And Tobin saw her on the fourth morning.
+
+---
+
+Tobin had not been on a road, exactly. He had been on one at first. He had walked out of Vaelport by the coast road with his burned hands held in front of him, and he had gone wherever it went; but on the second day it had forked, and he had stood at the fork for a long time without being able to choose, and in the end he had simply gone on walking straight ahead across the grass, because choosing was a thing that belonged to people who had a right to want anything, and he did not.
+
+So he walked. That was all he did.
+
+He had no coat. He had left it on the floor of the lighthouse at Vaelport, and he did not want it back. He had no food, and no money, and no plan. In the night the cold came up out of the ground and into his bones, and he lay in ditches with his knees pulled up to his chest and shook until the grey morning came. He did not mind very much. He thought, in a dull distant way, that whatever happened to him from now on would be what ought to happen, and that this was a sort of comfort, because it meant there was nothing he needed to decide.
+
+Once a woman at a farm gate called out to ask if he wanted a bite of something. He said, "No, thank you," very politely, and kept walking.
+
+Once he caught himself thinking, *Technically speaking, a person can go three weeks without food, provided he has water—* and he stopped, because it was the kind of thing he used to think, and he was not that person any more.
+
+He had the compass in his fist. He did not open it. Inside the lid were five words he could not bear to read; so he kept it shut, and held on to it the way you hold the rail of a ship in a storm, and walked east because that was where it had pointed the last time he looked.
+
+A beggar on a dock had said his name, and said *Go to the Hill*; and Tobin had got up and gone. If anybody had asked him what he expected to find there, he could not have said. He was not sure there was anything he was allowed to expect.
+
+On the fourth morning he woke in a hollow under a thorn bush with frost on his sleeves, and found a fox watching him.
+
+She was sitting on the far side of a little frozen ditch, perhaps two yards off, very upright, with her tail round her feet. Her coat was grey with dust. Her tail-spark was so small that he would not have seen it at all if the morning had been any lighter.
+
+Tobin did not move. He did not say her name. He thought that if he said it she would go.
+
+They looked at each other across the ditch for a long time.
+
+"You shouldn't be here," said Tobin at last. His voice came out cracked; he had not used it since the woman at the gate. "Go back. Go and find Wren. She needs you more than — she's on her own. She hasn't got anybody." He swallowed. "And it was *his*, you know. You were his. You shouldn't — you of all people shouldn't come anywhere near me."
+
+Cinder put her head on one side.
+
+"Go on," said Tobin. "Please."
+
+And Cinder, after a moment, got up, and turned round, and trotted away over the frosty grass towards the south; and Tobin watched her go until she was a grey speck, and then not even that.
+
+He lay back under the thorn bush and looked at the sky. He did not understand it. Of all of them — Wren, who had carried the lamp, and Mira, who had never done anything wrong in her life — the fox had come to *him*, as if she had come a long way on purpose.
+
+He did not know what to do with that. But when he got up, a little while later, and went on walking, he found that he was walking a little faster than before; and he did not notice, because he was not looking, that his fist round the compass had loosened just enough to let the warmth of it into his palm.
+
+---
+
+Late on the fourth afternoon Wren came to the top of the last hill.
+
+She did not know it was the last. She had stopped talking to the lamp at about noon, because the last thing she had said was *Why did you have to go and do it?*, and after that there did not seem to be anything else worth saying.
+
+She climbed. And at the top, where she had expected one more grey hill, there was only a great width of air, and the land falling away below her in long dun slopes towards a flat country that went on until it disappeared into a brownish haze.
+
+It was farmland. Even Wren, who had been born on cobbles, could see that. There were hedges cutting it into squares, and here and there a roof with no smoke above it; and in the squares there were crops — or there had been, once. They were the colour of dust. They lay over in long tired waves, as if something heavy had been laid on them and never taken off.
+
+And standing in the fields, here and there, far off and very still, there were figures.
+
+Scarecrows, she thought. They had scarecrows in the market-gardens outside Emberwick's wall: old coats on a cross of sticks, with a turnip for a head. *Rot. Scarecrows.* Only she had never seen a scarecrow stand quite like that — not stuck up stiff and straight on a pole, but standing, the way a person stands when they have stopped in the middle of something and forgotten what it was.
+
+Wren did not like it. She did not like it at all. The back of her neck had gone cold, the way it used to go cold on a roof when a slate shifted under her foot.
+
+"Well, I'm not going down *there*," she said to the lamp.
+
+And the lamp moved.
+
+She felt it before she understood it. Inside her coat, against her ribs, the little brass weight that had lain so still for so many days gave a kind of tug — the way a dog on a lead tugs when it has smelt something on the wind. She put her hand flat on her coat, startled. She could feel it there, through the cloth. It was not just warm. It was *leaning*. It was leaning so hard, out and away from her, that her coat was pulled crooked over her ribs, as if something on the far side of that grey flat country had called it by name, and it had heard.
+
+It was leaning east. Straight east. Down the hill, and across the dead fields, and past the standing figures, towards the brown haze at the end of the world.
+
+Wren stood on the top of the hill with her hand pressed over it, and her heart going very fast, and the wind tugging at the long ends of Tobin's scarf.
+
+"All right," she whispered. "All right. I heard you. You don't have to *pull*."
+
+But it did not stop pulling. And after a while, because there was nothing else to be done and nobody else to do it, Wren took a deep breath, and started down.
+
+## The Scarecrow Farms
+
+The first one stood by a gate.
+
+Wren saw it from a long way off: a dark upright shape at the corner of a square of dead barley, with its arms hanging down. She thought it was a post. Then she thought it was a scarecrow, a poor one, without a hat. Then she came close enough to see its boots, and she stopped in the road.
+
+It was a man.
+
+He stood in the barley up to his knees, quite still, with a hoe held loosely in one hand, the way you hold a thing you have forgotten you are holding. He was grey. Not grey the way an old man's hair goes grey, but grey all over — face and hands and smock and boots — as if the colour had not faded out of him so much as been poured out, all at once, and nothing poured back. His eyes were open. And as Wren stood there with her heart thumping, she saw his chest rise, very slowly, and fall again.
+
+He was breathing.
+
+In her pocket the singing-stone gave the smallest of hums, so faint that she felt it in her fingers rather than heard it, and was still.
+
+Wren did not go any nearer. I would not have either, and I do not think you would. She went past on the far side of the road, as quickly as she could without running, and did not look back.
+
+After that there were more of them. A woman in a shawl by a patch of split grey cabbages. A boy beside a wall, with a stone still in his two hands. An old man in an orchard whose apples hung small and hard and grey as pebbles, and did not fall. They all stood the same way: as if each of them had been called, one ordinary evening, from the middle of an ordinary job — and had stopped, and listened, and never come in.
+
+"Scarecrows," Wren muttered, pulling Tobin's scarf up over her chin. "You'd have known what to *do*." The lamp lay low against her ribs, and did not tell her.
+
+The dusk came down grey on grey. And then, in a thin, cold, half-hearted way, it began to rain.
+
+---
+
+The barn was the first roof she came to. Its door hung open on one hinge. Wren did not knock at the farmhouse beside it. She had never knocked at a house in her life to ask for anything; in Soot Lane, if you knocked, you got either a clip round the ear or a bill. She slid in at the barn door and sat down in a corner with her knees up, dripping.
+
+She had been there perhaps five minutes when the lantern came round the door.
+
+"If you're after the eggs," said a voice behind it, "there aren't any. The hen's not laid since midsummer. You're welcome to try her, but she bites."
+
+It was a quick, sharp, scraped sort of voice, like a knife on a pot. Behind the lantern was a thin woman with a sack over her head against the rain, and a face that was all bones and frown.
+
+"I'm not after anything," said Wren. "I'm just sat here."
+
+"Well, you can't be. You'll catch your death, and then I'll have to dig a hole for you, and I've enough to do. Come in, then. Supper's soup. It's not much soup. Don't expect anything."
+
+And she went back across the yard with the lantern, as if it were all settled; and Wren, who had been going to say something cutting, found that her legs had followed the light without asking her.
+
+The kitchen was small and very clean and very cold, with a scrubbed table, a dresser with three plates on it, and a black pot over a handful of turf that gave off more smoke than heat. By the hearth sat a tall, stooped man, lean as a rake, who looked at Wren for a moment with mild grey-brown eyes, and then got up off the only stool and pushed it towards her with his foot. He did not say anything.
+
+"That's Will," said the woman. "Will Hesketh. He doesn't talk. I talk. I'm Mag. That's Hal, and that's Bess, and they can both stop staring and lay another place." A boy of about ten and a girl a little younger, both thin as their father, stopped staring and did it. "And that's Posy."
+
+She did not point. She did not need to.
+
+In a box-bed in the corner, under a heap of blankets and an old coat, a very small girl lay on her side, looking at the fire. She had a round face that ought to have been a fat, cheerful sort of face, and a mop of curls that ought to have been some colour or other. But the curls were the colour of dust, and her face was the colour of the ash under the turf, and her eyes did not move when Wren came in. Her hand lay outside the blanket. It was grey to the wrist.
+
+"Grey-fever," said Mag, quite flatly, ladling out the soup. "Since back-end. You won't catch it. Nobody catches it. It just comes." She set a bowl down in front of Wren with a little bang. "It comes on the little ones slow. Takes their colour, then their appetite, then their talk. She's not said a word in nine days. Then one evening they get up out of bed, and go out to the field, and stand." Another bang. "Like Will's dad. That's him in the near field, with the crook. Went out to see to the sheep last winter, and never came in." She sat down. "Eat your soup."
+
+Will Hesketh looked into the fire.
+
+---
+
+It was very thin soup, mostly water and grey turnip. Wren, who had grown up noticing exactly how much of everything there was and who had it, noticed that by the time Mag came to her own bowl there was nothing left in the pot but steam; and that Will broke the one crust into five pieces, not six, and kept none for himself. And she noticed that Mag took her bowl first to the box-bed and knelt there, trying to get a spoonful between Posy's lips.
+
+"Come on, my lamb," Mag said, very low, in quite a different voice. "One for your mam."
+
+Posy did not open her mouth.
+
+Mag got up after a while, and came back to the table, and drank her soup out of the bowl in three swallows, as if she were cross with it.
+
+"Where are you going, then?" she said. "On your own in the wet, a girl your size."
+
+"East," said Wren.
+
+Mag's spoon stopped. "There's nothing east but more of this, and then the Burned Country, and nothing in that but ash and the Queen's grey soldiers riding up and down. Folk that go east don't come back." She looked at Wren hard. "What've you got to go east for?"
+
+"Somebody told me to," said Wren.
+
+Mag made a noise through her nose that said exactly what she thought of that. But she asked no more; and after supper she made Wren a bed of sacks by the hearth, near the box-bed, because it was the warmest place in the house, and that wasn't saying much.
+
+"We let the turf go out at night," she said. "We can't spare it else." She looked at the small heap in the box-bed. "Sleep, then. If you can."
+
+Then she blew out the lantern, and the Heskeths went up the ladder to the loft, and the kitchen was dark except for the red eye of the turf, going out.
+
+---
+
+I want to tell you about the next part carefully, because Wren never did.
+
+She lay on the sacks with her coat on, and did not sleep. The rain ticked on the window. The turf went from red to brown to grey. And from the box-bed, a yard away, came the sound of a very small child breathing — so slow and so shallow that between each breath Wren found she was holding her own, waiting to be sure there would be another.
+
+She knew what she ought to do. Of course she did.
+
+She had done it for Nettle in Soot Lane, and on top of the Beacon, and for Pim in the bottom of an upturned boat only days ago. *Here. It's for you. You don't have to do anything.* She knew the words by heart.
+
+And she did not want to say them.
+
+That is the plain truth of it, and I will not pretend otherwise. She was tired all the way down, the way you are tired when somebody asks for just one more small thing, and any other night you would do it gladly, and tonight you simply cannot.
+
+*Everything costs*, she thought. *That's what I always said. And everybody told me I was wrong. And I gave it, and gave it, and gave it — and look.*
+
+She thought of the forge-door in the mine, and the dust, and the dark coming down between, and the silence after.
+
+*He gave everything. And it didn't save him.*
+
+The lamp was so small now, like the last coal in a grate nobody has fed. And it was all she had left of him. Not his poles; they were under the rock. Only this little flame he had put into her hands at the very end, still warm from his. If she gave it now, to a child she did not even know, and it spent itself there, and guttered, and went out —
+
+*It relights itself*, said something sensible at the back of her mind.
+
+But she did not know that any more. Ash had known things, and Ash was gone.
+
+She turned over, with her back to the box-bed, and shut her eyes tight.
+
+*In the morning*, she thought. *Before I go. When I'm not so tired. I'll just—*
+
+"Is it morning?"
+
+It was the smallest voice Wren had ever heard — so dry and so far away that at first she thought she had dreamed it.
+
+"Is it morning yet?" said the voice again. "I'm cold."
+
+Wren turned over.
+
+Posy had not moved. But her eyes had come round, very slowly, from the dead fire, and they were looking at Wren. In the dark they were the only part of her that did not seem grey.
+
+*She's not said a word in nine days.*
+
+And Wren thought, all at once, of a cold garret in Soot Lane, and a much smaller Wren lying awake in it, asking the dark whether it was morning yet, and nobody answering, for years and years. She thought of an old man who always divided the last of the food and then said he was not hungry.
+
+And then she thought something else, and it went through her like cold water.
+
+*I was going to give it to her to make it bigger.*
+
+It was true. All the long way from the sea, a small sly part of her had been waiting for somebody grey enough and sad enough, so that she could hold the lamp out and watch it blaze up the way it used to, and know that Ash had not been wrong. She had been going to give it the way you put a coin in a slot. To get something back.
+
+That was not giving. That was a bargain. Wren had known bargains all her life, and she knew one when she saw it, even in her own heart.
+
+She sat up.
+
+She took the lamp out of her coat. Her hands were shaking. It lay in her palms, dented, with the crack in its chimney and the little hook on top, and the flame inside was low and red, hardly more than a glow — a coal under ash.
+
+"I don't care," she whispered to it. "D'you hear? I don't care if you don't get any bigger. I don't care if you go out. If it's the last of you." Her throat had closed up. She made it open again. "It's not for me. It's for her."
+
+She got up on her knees beside the box-bed. She did not hold the lamp up high, like something wonderful. She only held it near, the way you hold a cup for somebody too weak to hold it themselves.
+
+"Here," she said to Posy. "It's for you. You don't have to do anything."
+
+And then, because it was true, though she had not known she was going to say it:
+
+"It's nearly morning. It's coming. I promise."
+
+---
+
+For a moment nothing happened at all.
+
+Then the flame stood up.
+
+It stood up the way a person stands who has been sitting a long time — slowly, and then all at once. It went gold, and brighter than gold, and the crack in the chimney shone like a thread; and it leaned out towards the small grey face, and the light came off it and filled the bed, and the corner, and the room.
+
+Wren had forgotten what the lamp's light was like when it was given: how it was not like a candle, or a glowstone, or anything else in the whole grey world; how it was *warm*, the way summer is warm on a wall, and a hand is warm on your shoulder in the dark. The cold kitchen filled up with it the way a cup fills from a jug, and it smelt of bread and summer; and on Wren's left wrist her mother's ribbon, which had been grey for days, went red, red, red.
+
+And Posy's face changed.
+
+It came up slowly, the way colour comes into the sky before the sun: a faint warmth along her cheek, then a pinkness at her lips; and then the dusty curls on the pillow began, from the roots outward, to turn a colour. It was ginger — the bright, astonishing, impossible ginger of a marigold. Posy's grey hand went pink to the fingertips, and curled, and uncurled.
+
+Posy sat up.
+
+She sat straight up with the blankets falling off her and her ginger curls on end, and looked about the gold room with great round eyes. She looked at Wren. She looked at the lamp.
+
+"That's a fire," she said, very decidedly, in a hoarse little voice. "It's a little fire." And then, in exactly the tone of a child who has not eaten for nine days and has only just noticed: "I want some *bread*."
+
+There was a thump overhead, and Mag Hesketh came down the loft ladder so fast that she missed the last three rungs and landed on her knees; and she stayed there in her nightgown, and stared at her daughter, with both hands over her mouth.
+
+"Mam," said Posy crossly. "I *said*. Bread."
+
+Mag made a sound that was not a word. Then she had Posy out of the box-bed and up against her chest, blankets and all, and was rocking her and saying "Oh, my lamb, oh, my lamb," into her ginger hair, and crying the way people cry who have not let themselves cry for a long time.
+
+Will Hesketh stood at the foot of the ladder, with Hal and Bess peering round his legs. His long face did not change, but his eyes filled and spilled over. Then, still without a word, he took down from the back of the top shelf a heel of bread in a cloth — the last bread in the house, Wren understood, kept back for some worse day than this. He broke it in half. He gave one half to Posy, and the other to Wren.
+
+Posy ate hers in four bites and asked for more.
+
+"There isn't any more, greedy," said Mag, her voice gone back to sharp, but wobbling badly round the edges. "Nine days you won't take a spoonful, and now you'd eat the table." And she hugged Posy so hard that Posy squeaked.
+
+Wren sat back on her heels with the lamp in her lap.
+
+It had not gone back down. That was what she could not stop looking at. It was not the great roaring gold of the Beacon; but it was steady and bright and upright, and warm all through, as it had not been since the night the tunnel fell. It was brighter than it had been since Ash died.
+
+And she had not given it to make it brighter. She had given it so that it could go out, if it had to. That was the joke of it. That was the whole entire joke.
+
+*It was never mine*, said a voice she knew, very dry and very quiet, at the back of her mind. *It's never been anyone's. Give it.*
+
+"Hm," said Wren, under her breath, to nobody. And she did not know whether she was laughing or crying, and found it did not matter much.
+
+---
+
+In the morning the rain had stopped, and the pale sun came up over the dead fields like a coin at the bottom of a well.
+
+Wren meant to slip away before anyone was up. But Mag was up before her, sitting at the table with Posy asleep in her lap, and she only looked at Wren over Posy's head for a long while, with her bony, frowning, wet-eyed face, as if she were trying to learn her by heart.
+
+The hearth was cold. Last night's turf was a heap of grey dust, and the small pile for the morning sat beside it, damp.
+
+Wren knelt on the hearthstone and set three bits of the damp turf together, the way Mr Pellow did with driftwood. She did not ask whether she might. She took out the lamp, and tipped it, so that the flame leaned down and touched.
+
+The turf caught.
+
+It did not smoulder and smoke, the way turf does. It caught gold, as clean as dry straw; and the flame in the lamp was not one bit smaller for it. Mag let out her breath. Will, coming down the ladder with his boots in his hand, stopped where he was.
+
+"That'll want feeding," said Wren gruffly, getting up. "Same as any fire. But it'll not go out on you. Not that one." She did not know how she knew it. She knew it.
+
+Mag got up with Posy in her arms and fetched the other half of Will's heel of bread, which Wren had left on the table in the night.
+
+"You'll take that," she said. "And don't argue with me, because I'm not in the mood."
+
+Wren opened her mouth to argue. Then she shut it again, and took the bread.
+
+"Thanks," she said. And she said it the way she had once said it to Nettle at the Grey Gate, without stopping to wonder what it would cost.
+
+She went out across the yard into the cold. At the gate, for no reason at all, she turned and looked back.
+
+Out of the farmhouse chimney, for the first time in a long time, there was going up a thin blue thread of smoke. And out in the near field, in the grey barley, stood Will's father, in his smock, with his crook in his hand.
+
+Last night he had been standing with his face to the hills. Wren was quite sure of it. Now his grey face had come round — slowly, stiffly — towards the farmhouse, towards the thin blue smoke going up from the chimney, the way a sleeper turns towards a window when the light begins to come in.
+
+He did not move again. He only stood there in the dead field, with his face towards the fire.
+
+Wren held on to the top bar of the gate for a long time.
+
+Then she turned east, and went on; and the lamp in her coat leaned east with her, warm and steady and bright, as if it had remembered something, and was glad.
+
+## The Remnant
+
+The curlew was wrong.
+
+Mira heard it first, of course. She heard most things first. It came out of the dark on the left of the road, two notes, rising — *coo-lee* — and it was very nearly a curlew. But a curlew does not breathe in before it calls. And this one did.
+
+She stopped walking. The others, strung out behind her along the road in the dark, bumped gently into each other and stopped too.
+
+"What is it?" whispered Jessamy. "Is it them?"
+
+*Them* meant the Guild hunters. The band had seen them that afternoon: six men on horses on the high road, with two long grey dogs and the Lamp Guild's gilded lamp stitched on their coats, looking at the hedges. So they had walked by night. And now here was a curlew that breathed.
+
+"No," said Mira slowly, with her head on one side. "Not them. They would have horses."
+
+The curlew called again, nearer. And then, low down in the field beside the road, a light opened.
+
+It was a shuttered lantern, opened the width of a finger, so that one thin yellow blade of light lay across the wet grass and went out again. Then another opened, further along the hedge. Then a third.
+
+"Vaelport folk?" said a voice from behind the first one. It was a man's voice, slow and deep and hoarse, and the man behind it smelt — Mira could smell him from the road — of hay and sheep and pipe-smoke. "You'll be the Vaelport lot. There's Guild hunters on the high road with dogs, and they'll be down this way inside the hour. Come with us, if you like. Quiet, now. Mind the ditch."
+
+Nobody moved. Old Abner put himself, creaking, in front of his handcart.
+
+"And what'll it cost?" he said. "Come on. What d'you want for it?"
+
+There was a pause in the dark. Then the man laughed — a short, surprised, not unkind laugh, as though somebody had asked him the price of rain.
+
+"Nothing, grandad," he said. "We don't do it for anything. Mind the ditch, I said. It's deep at this end."
+
+Abner did not move. He had lived all his life in a city where the light was free and the price was everything, and he was not going to unlearn that on a dark road.
+
+So Mira listened: to the voices along the hedge, and their breathing, and to the thing underneath, which she had never been able to explain to anybody who was not a Delver — the shape a person makes in the dark, which does not lie, because it does not know how.
+
+"It is all right," she said. "They mean it." And she took Jessamy's arm in one hand and Abner's sleeve in the other and stepped down off the road towards the light, and minded the ditch, which was deep at that end, exactly as he had said.
+
+---
+
+The barn stood in the hollow of three fields, smelling enormously of hay. The men took the band up a ladder into the loft; and there, where you would have expected a few bales and a cat, there was a wall of hay stacked to the rafters. The deep-voiced farmer put his shoulder to one bale at the bottom, and it swung inward like a door. It *was* a door, built of bales round a wooden frame; and behind it was a long, low, hidden room under the slope of the roof, with straw on the floor and sacks to sit on.
+
+"In you go," said the man. "Mind your heads."
+
+They went in, all twenty-three of them, and the goat; and the hay door swung shut behind them, and the lanterns were opened all the way. And Mira, blinking in the light, saw that they were not alone.
+
+There were people already there, twenty or so, on the sacks along the walls: a broad red-armed washerwoman who smelt of soap, a cobbler in his leather apron, a dry little man in a frayed black coat and spectacles who had been a clerk to the Guild for forty years, a farmer's wife, and a boy with a sling in his belt who kept getting up to put his eye to a crack in the boards. They looked tired, and poor, and cold, the way everybody in Gloamhaven looked. But underneath that they looked like people who had a secret, and it was a good one.
+
+Nobody asked the Vaelport folk any questions. The washerwoman went round with milk and oatcakes hard as roof-slates. Abner looked at his oatcake for a long time, as if he expected it to bite him. Then he ate it.
+
+At midnight they sang.
+
+The washerwoman began it, humming under her breath. Then the cobbler took it up, and the dry little clerk in a thin, true, surprising tenor, and then the whole hidden room, very low, with their heads bent close so that the sound would not carry past the hay:
+
+*Knock at the door when the lamp burns low,*
+*Knock at the door in the cold;*
+*He'll light it for nothing, and on he'll go,*
+*For the Flame was never sold.*
+
+*Rich man, poor man, kind and cruel,*
+*Every door on the street;*
+*He never once asked who deserved it,*
+*He never once asked to eat.*
+
+Mira sat very still with the baby in her lap.
+
+She knew that story. Wren had told it to her in the Deeps, scowling, as if she did not want to be caught believing it. And here were twenty strangers in a hay-loft, singing it at midnight as if it were the most precious thing they owned.
+
+The song ended. In the hush after it, somebody far down the ladder laughed.
+
+It was a great, cracked, cackling laugh, like a hen that has laid an egg and wants everybody to know. Then came a slow, uneven rhythm, *step* and *thud* and *step*, up the ladder.
+
+"Now then," said a voice. "Now then, ducks. You started without me."
+
+---
+
+The hay door swung open, and in came Sister Hale.
+
+She was the smallest grown-up Mira had ever seen, brown and wrinkled all over like a walnut, with a crutch of black wood worn shiny at the top and a great many skirts. One of her eyes was milky-white and saw nothing. The other was black and bright and quick as a blackbird's, and it went round the whole room in one sweep and took in everything — the Vaelport folk, and the goat, and Abner's handcart, and Mira — and crinkled up at the corners as if all of it pleased her very much.
+
+"Sister," said the washerwoman, getting up. "You never walked from the mill in this wet."
+
+"I did, duck, and it didn't kill me. Sit down." Sister Hale lowered herself onto a bale with a great many creaks and beamed round at them all. "Well! Vaelport folk. Out of that dreadful white town at last, with your own faces on." She looked at each of them in turn, as if she were counting them and was glad of every one. "There now. You're with us. We'll see you on your road."
+
+"Why?" said Abner abruptly. His voice cracked. "Why would you?"
+
+Sister Hale looked at him with her one bright eye for a long moment.
+
+"Because somebody once did it for us, duck," she said. "And it would be a poor sort of thank-you to keep it to ourselves."
+
+Mira, without meaning to, clicked her tongue.
+
+It was only a small sound, *tk* — but the old woman's head came round at once, sharp as a bird's.
+
+"Who did that? Who's clicking like a beetle in a teacup?"
+
+"I am," said Mira. "I'm sorry. I do it when I am listening. It is how we see, where I come from."
+
+Sister Hale looked at her. Then she put out one small brown hand, like a root, and beckoned; and Mira got up, and gave Robin back to Jessamy, and went and sat on the straw at the old woman's feet.
+
+"Where you come from," said Sister Hale softly. "And where's that, duck?"
+
+"Under the Greywaste," said Mira. "In the Deeps. I am a Delver."
+
+There was a silence in the loft. Mira heard the washerwoman draw in her breath.
+
+"A Delver," said Sister Hale. "Out of the old deep places. Well, I never." She took Mira's chin in her hand, very gently, and turned her face to the lantern, and looked into her eyes. "But you can *see*, duck. You're looking at me. I can tell."
+
+"I could not, before," said Mira. "And then there was a ferryman on a river, and he put his thumbs on my eyes, and—" She stopped. It was too big to tell quickly. "And now I can."
+
+Sister Hale did not say anything at all. But she let go of Mira's chin; and then she turned to the room, and her old cracked face was lit up from the inside as if somebody had opened a shutter in it.
+
+"Ducks," she said. "Sing her the Deep Song."
+
+---
+
+They sang it softer than the first. It had a different tune — older, slower, going down and down like steps cut in stone.
+
+*Down he went where the deep folk dwell,*
+*In the dark beneath the stone,*
+*And he did not stumble, and he did not fall,*
+*For he walked as one who'd known.*
+
+*He laid his hands on the children's eyes,*
+*And he told them a thing untold:*
+*There's a light that's coming, you'll see it yet —*
+*And the stone was warm, not cold.*
+
+Mira could not breathe.
+
+The song went through her and down into the place under her ribs where she kept the things she was surest of. *He did not click and he did not stumble*, said the Story-Wall, under her fingertips, in the little round room in Deepholm where she had sat alone for six years. *He walked as one who knows the way. He laid his hands on the eyes of the children, and said: Here is a thing you have never heard of.*
+
+She had read those words with her fingers ten thousand times, and been laughed at for it, and then pitied for it, which was worse. And all those years, up here in barns and cellars and hay-lofts, among people who had never heard of Deepholm, somebody had been singing the very same thing.
+
+The same man. The same hands. The same promise.
+
+It was not two stories. It had never been two stories. It was one.
+
+She did not know she was crying until Sister Hale's hand came down on her braided head and stayed there. It was not the sort of crying she had done in Vaelport, for Ash. It came up out of somewhere much deeper than that, and it was warm, and she could not stop it, and she did not want to.
+
+"I *knew*," she said. Her voice came out in pieces. "I always — they told me it was a story to frighten children. And I *knew*. And I thought I was the only one in the world."
+
+"Oh, duck," said Sister Hale. "Oh, my duck. Nobody's ever the only one. That's the first thing he'd want you to know." She stroked the braids, and the beads clicked softly under her fingers. "There's only ever been the one story. It's just that it's been told in a great many places, by people who didn't know about each other. And it's been kept, all this while, by people who were told to stop."
+
+---
+
+Afterwards, when the crying had stopped and Mira had wiped her face on her sleeve and been given a second oatcake for her trouble, they said the Psalm.
+
+Mira knew it. She had heard Tobin say it on the Black Stair, with the whole of Deepholm holding a rope behind him, his voice cracking on every other word, and she had learned it the way you learn a stair by climbing it. So when the old woman began it in her cracked, strong voice — not singing, only saying — Mira said it with her:
+
+*"Though I walk through the gloaming, I will fear no dark, for the Flame is with me. It goes before me on the road; it keeps the watch while I am sleeping. The night is long, but it is not for ever. My light was lit by another's hand, and no dark can take it from me. So I will walk in the Flame's keeping, all my days, until morning comes."*
+
+She stopped there, because that was where it ended.
+
+But the others did not stop. They went straight on, all together, in a murmur so low it was hardly more than breath:
+
+*"There is a hill where the dark came down, and the ground is warm there still. The dark took him, but it could not keep him; it closed over him like water, and the fire went through. So I will keep my lamp trimmed in the long night, for the hand that lit it is not cold."*
+
+Mira sat up very straight.
+
+*It could not keep him.* Something in the words caught at her, the way a burr catches on wool. She had heard something like it before — somewhere deep down, in stone, under her fingers — and for a moment she almost had it. *And the dark shall not keep us.* The Wall-song, the Waking Song, the one line that was left of it. Then the murmur ended, and the hay-loft was quiet, and the thought slipped away from her like a fish.
+
+"I never heard that part," she said. "The hill. Old Ash never said it."
+
+Sister Hale's one bright eye turned to her.
+
+"Old Ash?" she said. "Old Ash of *Emberwick*? The one who wouldn't charge?"
+
+Mira nodded. And then, because the old woman was waiting, she told her. Not all of it. But the long road, and the mine under Vaelport, and the forge-door, and the dark coming down.
+
+Sister Hale did not interrupt. When it was done she sat for a long while with both hands folded on the top of her crutch.
+
+"Oh, duck," she said at last, very quietly. "We heard of him, you know. Even out here. Thirty years back, word came down the roads of a Master Lamplighter in a northern city, thrown out of the Guild for lighting lamps for nothing. I told every duck I knew. I said, *There, you see? There's still one.*" She wiped her good eye with the back of her hand. "There's still one. And now there's not."
+
+"There is the lamp," said Mira. "Wren has it. And the fox." She swallowed. "And we were told to go to the Hill. I don't know why. A fisherman told me. I am going there."
+
+The loft went still.
+
+"Cinder Hill?" whispered the farmer's wife. "Oh, no, love. Not there. It's past the Burned Country. It's the Queen's own ground. There's grey soldiers all round it. Nobody goes there. It's the place where he—" She stopped.
+
+"Where he died," said Mira.
+
+And Sister Hale laughed.
+
+It was not an unkind laugh. It was a great, cracked, delighted cackle, and it made the farmer's wife jump, and woke Robin, and set the goat bleating.
+
+"*Died*," she said. "Is that what they told you? Oh, duck. It isn't where he died." She leaned forward on her crutch until her walnut face was close to Mira's, and her one black eye was shining. "It's where the morning began."
+
+---
+
+The lookout boy whistled.
+
+It was the curlew whistle — two notes, rising — and it was short and sharp, and the whole loft moved before it had finished. The lanterns were shuttered. The washerwoman had a hatch open in the floor at the far end that Mira had not known was there, and a rope going down through it into the dark. And outside, close now, very close, there came the deep baying of a dog, and then another, and the jingle of harness, and a man's voice shouting:
+
+"Open in the name of the Lamp Guild! We know you're in there, you cranks! Open up!"
+
+Light blazed through the cracks in the boards — hard, yellow, oily lantern-light, a great deal of it.
+
+"Out the back," said the deep-voiced farmer, quite calmly. "Down the rope and along the ditch. Ten by ten. Tom takes the first lot to the mill, Agnes takes the next to the wood. Don't run till you're out of the light. Go."
+
+They went down the rope in tens, the Remnant handing the Vaelport folk from one to another as if they had done it all their lives; and Mira understood that they had. Jessamy went, with Robin bundled against her. Abner went, without his handcart; and at the hatch he looked back at Mira, as though there was something he wanted to say, and went down without saying it.
+
+Somebody was hammering on the barn door below. Wood splintered.
+
+A small brown hand closed on Mira's wrist like a root.
+
+"You're with me, duck," said Sister Hale. "We're not going to the mill. We're going east." Her eye glittered in the dark. "I know the way. You can see in the dark. Between us we'll make one whole person."
+
+They went down the rope last. Mira went first, so that she could take the crutch; and Sister Hale came down after her, hand under hand, skirts and all, laughing silently the whole way.
+
+At the bottom there was mud and a ditch and the dark. Behind them the barn was full of shouting and light. The dogs had found the hay door and were baying at it. Mira shut her eyes.
+
+*Tk.*
+
+Ditch. Hedge. A gap in the hedge, low down, on the right. Beyond it, open ground, and a long slope, rising. Nothing on the slope. Nothing breathing.
+
+"This way," she whispered. "Hold my shoulder."
+
+I wish you could have seen them: a girl with her eyes shut and her tongue clicking, and an old half-blind woman with one hand on her shoulder and a crutch in the other, going up a black field in the rain, away from the dogs; and the old woman laughing under her breath the whole way, as if it were the best night she had had in years.
+
+At the top of the slope they looked back. The barn was small and far off, ringed with yellow light. Nobody was coming after them.
+
+"Ha!" said Sister Hale, breathless and triumphant. "They'll find a goat and a handcart. Serve them right. The rest of our lot will come on after us, the ones that can — they know where I'm bound." She turned round, leaning on her crutch, to face the other way, where the land ran on into darkness. "Now. East, duck. Two days to the edge of the Burned Country, if my leg holds. And there's one more thing I meant to tell you, before those great lumps came banging on the door."
+
+"What?"
+
+"Word came over the fields tonight," said Sister Hale, "from a farm out by the coast hills. Hesketh's farm. The youngest girl there had the grey-fever, bad — nine days without a word. And last night a stranger came in out of the rain. A girl. Cropped black hair, and a tongue like a knife, and a long knitted scarf wound twice round her neck." The bright eye glinted. "And a little light in her coat, that she gave to the child for nothing. And the child sat up and asked for bread."
+
+Mira's heart turned over.
+
+"Wren," she said. "That's *Wren*." And then, a moment later, because it had only just reached her: "A long scarf? Twice round?"
+
+"So they say."
+
+Mira stood on the hilltop in the rain and thought about a long, lumpy, knitted scarf that smelt of ink and machine-oil, and a boy sitting alone on the end of a dock. And in the middle of the wet and the dark and the dogs, she began to smile.
+
+"Which way did she go?" she said.
+
+Sister Hale pointed with her crutch, straight out into the dark.
+
+"Same way as us, duck," she said. "Same way as everybody, in the end."
+
+## Tobin's Long Walk
+
+The grass at the edge of the Greywaste is the colour of a dish-cloth that has been used for a very long time and then left out in the rain. It grows in tussocks as high as your knee, and it hisses when the wind goes through it, and if you walk through it all day you begin to feel that it has got into your thoughts.
+
+Tobin had been walking through it for five days.
+
+It might have been six. Somewhere along the road he had stopped counting, which had never happened to him before in his life. At home in the Warden's Hall he had once counted the rivets on the attic stove, for something to do. There were three hundred and twelve.
+
+He did not count anything now.
+
+He walked. When the pale sun came up ahead of him, he walked towards it, and when it had gone down behind him he went on until he could not see the road, and then he sat down wherever he was. He had no coat. He had left it lying on the floor of the lighthouse in Vaelport, and the wind off the Greywaste found that out on the first morning and never forgot it. He had a shirt, a thin grey waistcoat with two buttons missing, and his spectacles, with one lens cracked right across.
+
+And he had the compass.
+
+He kept it shut in his fist, with the little hinge pressing into the round scar on his palm. He did not open it, because he knew what it said inside the lid, and he could not bear to read it. *Home is where the light is.* There was no home. There was hardly any light. And whose fault was that?
+
+If you have ever been hungry for days — not hungry the way you are when supper is late — you will know that after a while it stops feeling like hunger. It feels like being made of paper. Tobin felt as if the wind might pick him up and post him somewhere. He drank from ditches. Once he found a crab-apple tree, dead and grey, with three small wrinkled apples still hanging on it, and ate all three, cores and all, and they were so sour that his eyes watered.
+
+The old Tobin would have known the proper name for that tree, and which of the grey plants by the road could be eaten, and why, and he would have explained it to anybody who stood still long enough, with diagrams. He could feel the place in his head where all that used to live. But he could not make himself go into it. It was like a room in a house where something dreadful has happened, and you walk past the door and do not open it.
+
+---
+
+The Hollows came on the fifth evening, or the sixth.
+
+He saw them first as a thickening in the dusk, low over the grass to the north. Then the wind dropped, and the cold came rolling ahead of them, and his breath began to smoke.
+
+Tobin stopped in the middle of the road.
+
+He had met Hollows before: in Soot Lane, and on the Beacon stair, and out on the open Greywaste, where they hunted low and fast across the grass. And every single time he had been so frightened of them that he could not move his legs.
+
+He waited to be frightened now.
+
+There were seven of them, in a long loose line, with the shape of people and no faces at all. The grass went silent where they passed. They crossed the road a stone's throw ahead of him, and the nearest one turned — slowly, the way a head turns that has heard its name — and came towards him.
+
+Tobin did not run. He did not even step back.
+
+The Hollow came right up to him, so close that he could have touched the grey nothing of it. Its cold went straight through his shirt and settled in his bones. It hung there in front of him, where a face should have been, and it seemed to look at him: up and down, slowly, the way Silas Grubb in Crookback Market used to look at a coat somebody had brought in to pawn, feeling the cloth and turning out the pockets and working out what it was worth.
+
+Then it turned away.
+
+It drifted off after the others into the grass, and the cold went with it. Not one of them had touched him.
+
+I would like to be able to tell you that he was glad.
+
+But Tobin had always been good at working things out. That was the trouble. Even with the room in his head shut up, some small cold part of him went on working, the way a clock goes on ticking in an empty house. And it worked this out.
+
+Hollows drink. That is what they are for. They drink colour, and memory, and most of all they drink hope — the warm part of a person that wakes up in the morning thinking that today might be better. That is the only thing they come for.
+
+And the Hollow had looked him over, and turned out his pockets, and found that there was nothing in him worth taking.
+
+He sat down on the road, because his legs stopped. He sat in the dust with his arms round his knees, and the night came down over the Greywaste, black and enormous and quiet; and the strangest thing of all, the thing that frightened him more than any Hollow ever had, was that he was not afraid of it.
+
+All his life he had been afraid of the dark. Now he sat in the middle of the biggest dark he had ever seen, with no lamp and no fire and nobody for twenty miles, and he felt nothing at all. It was as if the part of him that used to be frightened had been the same part that used to hope, and they had both gone out together, like two candles on one draught.
+
+---
+
+The voice came that night, as it had come every night since Vaelport.
+
+It never came in the day. It waited until the dark had closed in round him; and then it was there, close behind his ear, soft and warm and reasonable, like somebody who had known him all his life.
+
+*Poor Tobin,* it said. *Poor boy. You're so tired.*
+
+He did not answer. He never answered.
+
+*You're just like your father, you know,* said the voice, very kindly, the way you might tell somebody they have their mother's eyes. *He had a city, and people who trusted him, and he sold them for a crown. You had friends, and a lamp, and an old man who loved you, and you sold them for a letter. It's the same thing, really. It runs in families. It isn't your fault.*
+
+Tobin put his forehead down on his knees.
+
+*And they'll never forgive you,* the voice went on, so gently. *Why should they? You heard her. You heard what she said on the harbour wall. And she was right, wasn't she? You said so yourself.* There was a little pause, a sorrowful one. *You told the man with the crab-pot you didn't know him. Do you remember? And the landlady. Twice. He was lying in a cell, and you said you didn't know him. You can't take that back. Nobody can take a thing like that back.*
+
+"I know," said Tobin into his knees.
+
+*Then why keep walking? To a hill in an old man's story, where it all went dark? And what will you do when you get there, Tobin? Say sorry to a heap of cinders?* It laughed, very softly, not unkindly. *Lie down. Lie down in the grass. Nobody's looking for you. Nobody will come. It is easier in the grey.*
+
+That was the worst of the voice. It was not that it was cruel. It was that it was right. Everything it said, Tobin had already said to himself, and said worse.
+
+He did not lie down. Not that night. In the iron-grey morning he got up, stiff as an old gate, and walked on east, because he could not think of a reason to stop.
+
+The voice came the next night, and the next, the way the sea says the same thing over and over on the same shore. *You're just like your father. They'll never forgive you. Why should they?* And each night, Tobin found, it was a little harder to think of anything to say back.
+
+---
+
+On the morning of the eighth day — or the ninth — he found the pole.
+
+The road had dipped down that morning into a shallow valley, where a stream had once run and run no longer, and a little stone bridge crossed the dry bed of it with grey weeds growing out of the cracks. On the far side the road went up again between two dead hawthorns. And between the hawthorns, lying right across the road from one rut to the other, as neatly as a bar across a gate, there was a long pole.
+
+Tobin stopped on the bridge.
+
+He knew it at once. He would have known it anywhere. It was as long as a tall man and a half, of dark wood gone almost black with handling, and at one end there was a brass hook, curved like the neck of a swan, for lifting the little doors of Ring-lamps. The brass was not dull. It gleamed in that grey morning as though somebody had just finished polishing it with the corner of a coat.
+
+And round the other end, where a hand would go, there was a strip of cloth wound round and round and tied off, to make a grip. It had been blue once. It had been torn, long ago, off the hem of an old coat that had been the Lamplighters' blue before Tobin was born. It had faded to the colour of a winter sky, and it was worn shiny and dark along one side, in the exact shape of the inside of a large, bony, old man's hand.
+
+It was Ash's pole. It was the right-hand one: the one he hung the lamp on.
+
+Tobin walked off the bridge and up the slope and stood over it. He did not touch it.
+
+It could not be here. That was the first thing his mind said, very clearly, the way it used to say *actually*. He knew how it had been. He had heard it on the harbour wall in Vaelport, in the dark, in Mira's sobbing and in every word Wren had flung at him: Ash at the forge-door, holding it, with the dark coming. The tunnel coming down, the whole roof of the mine, and the door under it, and the poles under it — Ash never let those poles out of his hands — and everything else under it. A hundred miles behind him to the west.
+
+And here it was, lying across the road in the Greywaste. Dry. Whole. Not a scratch on it. Not a speck of dust on the brass.
+
+Tobin looked round. The valley was empty; there was not even a bird. In the dust between the ruts there were no footprints at all, except his own, coming up from the bridge and stopping where he stood.
+
+He tried to explain it.
+
+He went into the shut-up room in his head, for the first time in days, and pulled open drawers. Somebody had dug it out. But nobody could have; the whole mine had fallen. Somebody had carried it here. But who, and why lay it across the road like a thing put out for somebody to find? It was another pole, then. But it was not. He knew that faded blue, and the shiny place where the thumb went. He had watched it every day for months, swinging along in front of him, *tock* and *tock*, up a mountain, along a beach, across a white square in Vaelport with everybody laughing.
+
+There was no explanation. He had looked in every drawer, and there was not one.
+
+And Tobin Harrowgate, who had explained the Orrery of the Ring to anyone who would listen and plenty who would not, who had explained flame-pipes and clockwork locks and the reason shadows are bigger when your hand is near the light, sat down in the road beside Ash's pole and put his face in his scarred hands and cried.
+
+He had not cried in Vaelport, or on the long road east. He had thought that perhaps the part of a person that cries had been burned out of him along with everything else. It had not. It had only been waiting. It came up out of him in great sobs that hurt his chest, so that his cracked spectacles fogged and he had to take them off.
+
+He cried for Ash. He cried for the tea, which had been terrible, and the list of *hms* he had once tried to make, and got to eleven, and never finished. He cried for the dry stream-bed on the Greywaste, where an old man had stepped in front of him and taken the blow that was meant for him and said afterwards that being afraid was not the same thing as being a coward. He cried for a harbour wall in Vaelport, and a man mending a crab-pot, and his own voice saying, quite clearly, *I don't know him.* And he cried, though he did not understand why, because the pole was lying there whole, with its hook shining, when everything else in the world was broken.
+
+I will not tell you any more about it. It was his, and it went on for a long time. But I will tell you that the valley was very quiet while it did, as if it were listening; and that when it was over, the brass hook of the pole was lying just beside his hand, the only bright thing in that whole grey place.
+
+He did not pick it up. He did not think it was his to pick up.
+
+---
+
+He sat there all that day. He meant to get up and go on, and somehow he did not. The pale sun went over. Once, far off, a long grey shape drifted along a ridge, and he watched it without interest until it was gone.
+
+When the dusk came, he lay down.
+
+He lay on his back in the grey grass at the side of the road, with the pole beside him and the compass in his fist on his chest. The grass closed round him. It was softer than anything had been for days.
+
+*There,* said the voice. It sounded pleased, and tender, and very close. *There. That's better, isn't it? You've walked so far. You don't have to walk any more.*
+
+"No," said Tobin.
+
+*Close your eyes. Nobody will come. Nobody is looking for you, Tobin. Let go of that silly compass. Let it all go. It is so much easier in the grey.*
+
+His fingers loosened round the compass. His eyes closed. The cold was coming up out of the ground into his back, and it did not feel cold any more; it felt like a heavy quilt being drawn up over him. He thought, a long way off, that this was what Mrs Fenn must have felt, sitting down on her doorstep in Soot Lane. It was not so bad. It was only like being very tired, and being allowed to stop.
+
+Something landed on his chest.
+
+It landed hard, with four sharp feet, so that all the breath went out of him in a *whoof*. Tobin opened his eyes. A pair of yellow eyes were glaring down into his own from three inches away, and two grey ears were laid flat with fury.
+
+"Cinder," he said. His voice was a croak.
+
+Cinder said nothing. Cinder never said anything. She simply turned round once on his chest, the way a dog turns before it lies down, and lay down on it — heavily, deliberately, the whole of her, with her chin on his collarbone and her tail across his face.
+
+"Go away," said Tobin. "Go to Wren." He tried to push her off, but his arms felt full of sand. "Just let me sleep."
+
+Cinder sneezed in his face.
+
+It was a large, cross, deliberate sneeze, and a shower of sparks came out of it — orange and gold, the brightest thing Tobin had seen since Vaelport — and they stung his nose and made him yelp.
+
+"*Ow* — Cinder—"
+
+He shut his eyes again, and turned his head away. Cinder leaned down and nipped his ear.
+
+It was not a hard nip. But it was a sharp one, and it was exactly on the soft part at the bottom, and it was so like being told off by Ash — so exactly like a dry old voice saying *Hm. None of that, lad* — that Tobin's eyes flew open of their own accord.
+
+"All right," he said. "All *right*."
+
+He could not sit up; she was sitting on him. And every time his eyes began to close she shifted her weight, or put a cold nose in his ear, or sneezed again, smaller, just enough to sting. The voice tried to speak to him once more — *lie still, poor boy, she's only a fox, she doesn't understand* — and Cinder's ears went up, and she growled. It was a low growl, deep in her chest, the growl she used to save for Hollows; and she was not growling at Tobin. She was growling at the dark just behind his ear, where the voice was.
+
+The voice stopped.
+
+It did not go away, quite. But it stopped.
+
+And it was then, lying there with a fox on his chest in the black grass, that Tobin noticed the end of Cinder's tail, which was lying across his chin. The spark was there. On the harbour wall at Vaelport it had been the faintest pin-prick, and he had thought it was going out, the way everything was going out. It was not a pin-prick now. It was small still, as small as a coal on a hearth; but it was steady, and orange, and alive, and when he breathed out it glowed a little brighter, and when he breathed in it seemed to lean towards him.
+
+He did not know what it meant. But some small part of him — not the clock-part, that worked things out, but another part, further in, that he had thought was gone — sat up and took notice.
+
+At last, when the sky in the east had gone the colour of old pewter, Cinder got off him. She shook herself, and went and stood beside Ash's pole. Then she put her nose under the end of it — under the faded blue grip — and pushed, so that it rolled, a quarter-turn, across the dust towards his hand.
+
+Tobin sat up.
+
+He looked at the pole for a long time. Then, slowly, as if it might burn him, he put out his hand and took hold of the grip.
+
+It did not burn him. It was warmer than he expected, as if somebody had been holding it only a moment before. His scarred palm closed round the faded cloth, and found the shiny place, and fitted into it — not well, because Ash's hand had been much bigger than his, and the shape was worn for long old fingers. But it fitted well enough.
+
+He stood up, leaning on it. His legs shook, and he waited until they stopped. Then he put the compass in his waistcoat pocket, still shut, and turned his face to the east, where the sky was greying up over a low dark line of hills that looked, in that light, almost as if they had been burned.
+
+He walked. *Tock*, went the pole on the road. Step. *Tock*.
+
+Cinder trotted ahead of him, with her tail held high, and did not look back to see whether he was following. She did not need to. She knew the sound.
+
+## The Burned Country
+
+The grass stopped all at once, as if somebody had drawn a line.
+
+Wren came over the top of the last grey hill in the middle of the morning, and there it was below her: the end of the grass, and then nothing. It was ash: grey ash, soft and fine as flour, lying over the whole land as far as she could see, in long low swells like a sea that had been asleep for three hundred years. There were no trees, no walls, no birds. There was not one single growing thing.
+
+"Well," said Wren at last. "That's cheerful."
+
+She said it to the lamp, which lay inside her coat against her ribs, under the end of the long knitted scarf. Ever since the farm, and the little girl with the grey face, it had burned a little higher and a little steadier, and leaned east a little harder.
+
+"I suppose you want to go across that," she said.
+
+The lamp, being a lamp, said nothing.
+
+"You'd have walked straight into it on your two poles without even looking," said Wren, "and I'd have had to come after you." She swallowed. "Rot. Come on, then."
+
+She went down off the grass and stepped out onto the ash.
+
+Her boot went in to the ankle, and the ash puffed up round it and settled again, slowly, the way snow settles. And it was warm. Not hot — not like walking on a hearth — but warm, the way a bed is warm when somebody has just got out of it. Wren felt the warmth come up through her worn-out boot-sole into her cold toes, and something in her stomach turned over.
+
+She remembered a voice in a tower, and shadows on a sheet. *Nothing grows on it now. They say the ground there is still warm.*
+
+"That's the Hill," she told the lamp. "He said the Hill. Not all of this."
+
+But she was not sure, and the lamp did not tell her.
+
+---
+
+The first stone was standing by itself in the middle of the ash about a mile out, like somebody waiting at a corner.
+
+It was not much taller than Wren, and the years had worn it smooth at the edges, like a bar of soap that has been used a long time. On the side that faced west, back the way she had come, there was a carving: a small flame, the shape of a teardrop standing on its point, cut deep into the stone.
+
+Or there had been. Somebody had taken a chisel to it.
+
+They had done it badly, in a hurry, so that the flame was half gone and the stone round it was scarred with little white bites. But the bottom of the flame was still there, and if you ran your finger round it, as Wren did without thinking, you could feel how it had gone.
+
+"Guild," said Wren. She did not know how she knew. But she knew that kind of work. It was the work of people who were paid to make a thing stop meaning what it meant, and could not be bothered to do it properly. "Wouldn't you know. Come all the way out here with a hammer, just to spoil a picture nobody looks at."
+
+She stood up and looked east. And there, a long way off, small as a tooth on the grey, was another stone.
+
+There was another beyond that one, and another beyond that. They went away across the ash in a line, not quite straight, the way a road goes that has been walked by feet rather than measured out by men with chains. Every one of them had its flame cut into the western side; and some had been chipped away to nothing, and some had been only scratched at, and one — she stopped a long time at that one — had been left quite whole, as if whoever came with the chisel had stood in front of it and could not, in the end, make his hand do it.
+
+She did not know whose road it was. She told herself she did not know.
+
+But she walked beside the stones all morning, and when she came to each one she put her hand on the flame, or on the place where the flame had been. She did not know why she did that, either.
+
+The crows found her a little after noon.
+
+There were three of them, grey — not black, like proper crows, but the dead grey of the ash itself — and they came flapping out of nowhere and landed on the next stone ahead, all in a row, and looked at her.
+
+"Shoo," said Wren.
+
+The crows looked at her.
+
+She picked up a clod of grey stuff and threw it, and it burst in a puff of ash against the stone, and the crows lifted off with a few lazy flaps and came down again on the stone behind her. They did not caw. Crows in Soot Lane were always making rude remarks to each other from the chimney-pots. These ones made no sound at all. They only sat, and watched, with little round eyes like beads of wet slate.
+
+Wren did not like it. She walked on faster, and did not look back, and every time she did look back they were there, three grey lumps on a grey stone, turning their heads to follow her.
+
+---
+
+She saw the first patrol from the top of a long swell of ash, an hour after the crows came, and went down flat on her face so fast that she got a mouthful of the stuff.
+
+It was a line of men, walking slowly across the ash in front of her, a hundred paces apart, so that the last of them was only a grey speck. They wore grey armour and carried grey spears. They did not talk, or look at one another, or swing their arms as men do when they walk. They only went forward, step after step, at exactly the same pace, as if somebody somewhere were turning a handle.
+
+Wren knew what they were. Hollow Knights: men who had been men once, before the Queen hollowed them out and filled them with her orders instead.
+
+And in her pocket, the singing-stone began to hum.
+
+It was very faint. A low, thin note, like a wet finger going round the rim of a glass. But in that enormous silence it sounded to Wren as loud as a bell in a tower — and she clapped her hand over her pocket so hard it hurt.
+
+*Not now,* she thought at it. *Not now, you daft thing. Shut up.*
+
+The stone did not shut up. It could not; it had been cut to hear the cold and say so. Wren thought fast.
+
+She dragged the end of Tobin's scarf round and wound it over the stone in her pocket, once, twice, three times, and held the bundle in her fist. The hum went small and muffled. She could not hear it any more. But she could feel it — buzzing faintly against the inside of her fingers, like a bee shut up in a glove.
+
+"Good," she whispered. "That's better. Now you tell me, and nobody else."
+
+She looked at the scarf wound round her fist. It was the first useful thing that scarf had ever done. It was the first useful thing *he* had ever —
+
+She stopped thinking that, quickly, the way you take your hand off a hot pan.
+
+When the line had gone by, she lifted her head an inch and looked further out. And her heart sank right down into her boots.
+
+There was another line beyond the first, and another beyond that, walking the other way, and away off to the north more grey figures stood at even spaces, like posts in a fence. They went up and down and across the plain in slow crossing lines, like the threads in a piece of cloth, so that there was hardly a place on all that grey sea where you could stand for long without one of them passing.
+
+"She knows," said Wren under her breath. "She knows somebody's coming. She's waiting for them."
+
+She did not say *waiting for me*. But she thought it.
+
+I should tell you that there is no proper way to sneak across a desert. There is nothing to hide behind and nothing to climb. Anybody with any sense would have turned round and gone back.
+
+But Wren was a sweep from Soot Lane, and a thief, and she had spent her whole life getting into places where she was not wanted and out again before anybody noticed. And lying there in the ash, she began, very slowly and carefully, to think like one.
+
+*Rule one,* she thought. *Look like what's there.*
+
+Nobody in Crookback Market ever caught the best pickpockets. That was because the best pickpockets did not look like pickpockets. They looked like a bit of the crowd. And this crowd was grey.
+
+She scooped up the warm ash and rubbed it into her face, her neck, the backs of her hands, and through her cropped black hair until it was the colour of an old woman's. She rolled in it, coat and all, until she was grey from head to foot, like something left out in a fire. It got up her nose and made her eyes stream. She did not sneeze. She had learned not to sneeze in chimneys before she was six.
+
+Then she looked down at her left wrist.
+
+The ribbon was red. Not bright — she had the lamp well hidden — but red all the same, a deep dark red like the inside of a rose; the only coloured thing in the whole Burned Country. If anything was going to give her away, it would be that. She pulled her sleeve down over it and tucked the end into her cuff. She tucked the lamp deeper into her coat, under the scarf, and fastened the coat to her chin. It lay against her ribs, warm and patient.
+
+"You keep small," she told it. "Just for a bit. I'm not asking you to go out. Just keep small."
+
+*Rule two,* she thought. *Move when they move.*
+
+---
+
+The wind was coming from the east, from the direction she wanted to go. Every few minutes it gusted, and when it gusted the ash lifted off the tops of the swells and blew across the plain in long low drifting veils, the way chimney-smoke blows across rooftops on a windy day. While a veil was blowing you could not see a hundred paces through it. Then it settled, and you could see for miles.
+
+Wren counted. The gusts came every forty breaths, or fifty, and lasted about twenty.
+
+She waited for the next one, and when the ash lifted, she went.
+
+She did not run. *Rule three: never run where you can be seen running.* She went low and quick inside the blowing grey, and when she felt the wind begin to drop she went down flat wherever she was, a grey lump on grey ash, and let it settle on her. Then she waited, counting, for the next.
+
+It was horribly slow. Her eyes were sore and her mouth was dry as a chimney-brush. Once a line of Knights went by not two hundred paces away while she lay in the open, and she could feel the cold of them through the ground. They did not turn their heads.
+
+And then she noticed something.
+
+The Knights did not walk in straight lines. Not quite. Every so often, a Knight would bend his path — just a little, a few paces to one side — and then go back to his line again, the way you step round a puddle.
+
+But there were no puddles. There was nothing out there at all.
+
+Wren watched the next Knight go by, and the place where he stepped aside, and then she wriggled forward on her belly, very slowly, and put her bare hand down flat on the ash where he had not walked.
+
+It was warm. Much warmer than the ash round about, warm as a hearth-brick at bedtime.
+
+She lay there with her hand on it, and slowly — like the sun coming up, if the sun in Gloamhaven had been worth watching — she began to grin.
+
+"They don't like it," she breathed. "They don't like the warm."
+
+Of course they didn't. They were all cold inside. They would walk over warm ground if they were made to, she supposed; but they did not want to, any more than you would put your bare foot in a bath that was too hot, and so they stepped round it without thinking.
+
+And once she knew to look for it, she could see the warm places everywhere. The ash lay a little differently on them: smoother, and a shade paler, and if you looked very hard the air above them shimmered faintly, the way air shimmers above a road in summer. They lay scattered across the plain like stepping-stones across a river. And they went east. Not in a line, but more or less: a long, broken, wandering path of warm places, running among the memorial stones, all the way towards the Hill.
+
+"Oh, you clever thing," said Wren — and she did not know, quite, whom she was saying it to.
+
+---
+
+After that it went quicker. She went from warm place to warm place, inside the blowing ash, lying flat in the warmth when the wind dropped; and the Knights went up and down around her like weavers at a loom, and stepped round her hiding-places without a glance, and did not see her.
+
+She had nearly done it when the gusts stopped.
+
+The wind simply died. One moment it was gusting and drifting as it had all afternoon; the next the ash lay still, and the air went clear and hard, and Wren was lying in the open on a warm patch beside one of the old stones, with the next warm place a long twenty paces ahead across plain cold ash, and nothing whatever to hide in.
+
+And a Knight was coming.
+
+He was not on his line. Perhaps the crows had told him something. But he had left it, and he was coming across the ash straight towards her stone, step and step and step, and he was coming on the cold side, where there was nothing to make him step aside.
+
+Wren lay as flat as a dropped coat.
+
+The stone in her fist was buzzing like a hive. The cold came ahead of him over the ash, and her breath began to smoke, and she stopped breathing so that it would not. She felt frost come on her eyelashes. Inside her coat, against her ribs, the lamp gave a little anxious flicker of warmth, the way your heart does when you are frightened.
+
+*Keep small,* she begged it. *Please. Please keep small.*
+
+The Knight's boots stopped on the other side of the stone.
+
+She could see them under the edge of it: grey iron, with grey ash on them. She could hear nothing at all. Hollow Knights do not breathe, or not so that you would notice. He stood there, and she lay there, and the stone between them had a flame carved into its face that somebody had tried to chip away and had not quite managed.
+
+Very slowly, a grey hand came round the edge of the stone and rested on the top of it.
+
+Wren did not move. She thought of all the hundred times she had stood quite still in a crowd with somebody else's purse up her sleeve while the watchman looked straight at her. And she thought of the oldest rule of all, the one every thief in Crookback Market learns before they learn to walk.
+
+*Make them look at your other hand.*
+
+Beside her right hand, half-buried in the ash, there was a lump of black clinker the size of a walnut. She closed her fingers round it. She did not lift her arm — that would have been movement, and movement is what gets seen. She only flicked her wrist, low and sideways, the way she had once flicked a stolen button across a whole market square into the canal.
+
+The clinker sailed out over the ash, a long way, and came down far off to the left — *clack!* — against the side of another stone.
+
+In all that silence it was like a door slamming.
+
+The grey hand lifted from the top of the stone. The boots turned. And not only this Knight's: all across the plain, Wren saw from the corner of her eye, the grey figures had stopped where they stood, and turned their heads together, slowly, all the same way, like weathercocks in one wind. Towards the sound.
+
+Wren went.
+
+She went across those twenty paces of cold ash on her belly like a lizard over a wall, and rolled into the warm place beyond, and lay still. And when at last she dared to lift her eyes, the Knight was walking away from her, towards the far stone, step and step and step; and the wind, as though it had only been waiting to see what she would do, began very softly to blow again.
+
+---
+
+The sun was going down when she came to the ridge.
+
+It was a long, low rise of ash, higher than the others, and on the far side of it there were no more patrols; or none that she could see. She climbed it on her hands and knees, the last few yards, and lay at the top with her chin on her grey arms, and looked.
+
+The plain went on below her, dim and grey in the dusk. And out of the middle of it, a few miles off, rose a hill.
+
+It was round and black and bare, like the top of a great bald head pushing up out of the ash, and it was quite alone, with nothing near it. Nothing grew on it. Nothing moved on it. And at its very top, small and dark against the last grey light of the evening, there was a building: long and low, of stone, with half its roof fallen in, and a single broken chimney standing up at one end like a finger raised for silence.
+
+Wren knew what it was. She had known since the first warm step.
+
+She lay on the ridge and looked at Cinder Hill, where the dark had come up like a tide in an old man's story, and the hair stood up on the back of her neck.
+
+And against her ribs, inside her coat, the lamp was warm.
+
+Not the small steady warmth of the road, like a cup somebody has forgotten to drink. It was warm the way it had been in her garret in Soot Lane, on the very first night of all: warm all the way through, warm as a hand laid flat against her heart. She had not felt it like that for weeks. She had almost forgotten that it could be.
+
+She put her own hand over it, through the coat, and held it there.
+
+"All right," she whispered. "All right. I'm coming."
+
+She was so busy looking at the Hill that she did not look behind her. If she had, she would have seen, on the last of the old stones at the bottom of the ridge, a single grey crow, sitting quite still in the dusk with its head on one side, watching her go.
+
+I wish she had looked. But she did not; and the crow, after a while, lifted off the stone without a sound and flew away low over the ash into the gathering dark, quickly, like somebody who has news to carry and knows who wants it.
+
+## The Workshop on the Hill
+
+The Hill was made of cinders.
+
+Wren had thought, from the ridge, that it was rock. But when she came to the foot of it in the last grey glimmer of the dusk and put her hand on the slope, the ground crunched under her palm like a heap of clinker in a sweep's yard: little black lumps, rough and light, the kind of thing that is left in a grate when a very great fire has burned out. The whole round black hill was made of it.
+
+And it was warm.
+
+Out on the plain the warm places had been like hearth-bricks at bedtime. This was more like the inside of the oven itself. The warmth came up through the cinders into her hands and knees as she climbed, into all the cold places she had stopped noticing, until she felt like a loaf herself, set to rise.
+
+There were no Knights on the Hill. She had watched from the ridge until dark to be sure: they walked round the foot of it, a long way out, the way they had stepped round the warm places on the plain. And in her pocket, inside its wrapping of scarf, the singing-stone had gone quiet for the first time since noon.
+
+"Well, that's something," said Wren to the lamp. "Can't say much for the scenery. But it's something."
+
+She climbed. Twice the cinders slid and she went down on her face; and the sky went black above her, with no stars. She did not take the lamp out. She did not need it. Wren had grown up in chimneys, and a hill is only a very wide chimney, lying down.
+
+At the top the ground went flat, and there was a wall in front of her, and a doorway in the wall, and no door.
+
+She stood in the doorway in the dark, breathing hard, and listened.
+
+Nothing. No wind; no sound of any kind. And yet it was not the silence of an empty place. Wren knew empty places. She had slept in a good many of them, and she knew the flat dead way emptiness hangs about, as if nothing will ever happen there again. This was not like that. This was the quiet of a house in the early morning, when everybody is still asleep upstairs, and the clock is ticking in the kitchen, and the whole house is waiting for the day to begin.
+
+It was a quiet with somebody in it.
+
+"Hello?" said Wren, before she could stop herself.
+
+Nobody answered. Of course nobody answered. She felt her cheeks go hot in the dark, and was glad there was no one to see.
+
+Then she undid the top of her coat, and took out the lamp.
+
+---
+
+The light came up gold.
+
+It was burning better than she had seen it burn since before the mine — not a blaze, but a good, clear, steady flame, like a candle on a table where there is supper. On her wrist the ribbon came up red, deep red, all the way red, as if somebody had poured it fresh. And all round her, for the first time in days, there was colour: the brown of her own coat under its grey ash, and the warm yellow of the brass in her hand.
+
+She held it up, and looked.
+
+It was a long, low room of rough black stone. At this end, by the doorway, the roof had fallen in, and the rafters lay across one another on the floor, half-buried in drifted ash. But beyond that the roof held, beam after beam, like the ribs of some enormous animal; and as she walked slowly in with the lamp held high, the workshop came out of the shadows to meet her one piece at a time.
+
+There were the forges, at the far end. There were two of them, side by side, under one great hood of black stone that went up into the broken chimney she had seen from the ridge. They were cold. Their hearths were full of old grey ash, the leather of their bellows had gone hard and cracked, and the two anvils in front of them stood like a pair of black dogs that have been told to stay, and will go on staying for as long as it takes.
+
+There were the tools. They hung all along the walls on wooden pegs: hammers and tongs, files and chisels, and a great many small strange things whose names Wren did not know — little bent rods, and tiny shears, and something like a spoon with holes in it. They hung in order, the biggest hammer at one end and the smallest at the other, each one exactly in its place; and round each, painted on the stone behind it in faint white paint, there was its outline, so that if you took a tool down you would always know exactly where it went back.
+
+Wren had swept the chimneys of plenty of workshops, and in every one the tools were in heaps, and the man who owned them was shouting at the boy about where the blasted pincers had got to now. These looked as if they had been hung up by someone who loved them, at the end of a long day, one by one; and as if he had only just stepped out, and would be back in the morning, and would want them.
+
+They should have been rusted to nothing. She knew enough about iron to know that. They should have been red with rust, three hundred years of it, crumbling off their pegs.
+
+They were not.
+
+Wren put out her hand towards the nearest hammer, and then took it back again, and did not touch it.
+
+---
+
+The bench was in the middle of the room. It was very old, scarred all over with burns and the rings of hot things set down on it; and right in the middle, in the full light of her lamp, there was a lamp.
+
+It was not finished. It was a small brass body, round-bellied, with a little hook on top — and Wren caught her breath, because it was almost exactly the shape of her own. Almost exactly. Only it had no dents in it, and no scratches, and no chimney; and there was no wick in it, and no flame. It sat on the bench with a tiny file lying beside it, and a scrap of soft cloth, as if whoever had been working on it had put down the file in the middle of a stroke, meaning to come back to it in a moment.
+
+"Look at that," she whispered to the lamp in her hand. "That's you. That's you, that is, before you got knocked about."
+
+The lamp in her hand burned on, small and gold. It did not lean towards the one on the bench. But Wren thought — she could not have said why — that if it had been a dog it would have wagged.
+
+And then she lifted the light higher, and saw the racks.
+
+They ran along both the long walls, under the tools: tall wooden racks, shelf above shelf, like the racks in a baker's where the loaves are set to cool. And on every shelf, in a row, there were lamps.
+
+Wren walked along them slowly, holding up her own. They were all the same, and all different. Some were tall and some were squat; some had long thin necks and some had none; one was hardly bigger than an egg, and one was as big as a bucket. They were all brass. And not one of them was finished. None had a chimney; none had a wick. They stood on their shelves in the dark with their little round mouths open at the top, empty, like a row of fledglings in a nest, waiting to be fed.
+
+She counted them. She had counted chimney-pots on the roofs of Emberwick since before she could read, and it was a habit. There were ten racks. There were ten lamps on each.
+
+"A hundred," she said aloud. Her voice sounded very small among the beams. "A hundred lamps, and not one of them done. Somebody had a lot of orders in, and never got paid—"
+
+She stopped. She thought of a story told with shadows on a sheet. *He never asked a penny.*
+
+"All right," she said to the lamp. "All right. I know. You needn't look at me like that."
+
+The lamp, which had no face, did not look at her like anything. But she felt that it had.
+
+---
+
+The iron door was at the very back, between the two forges.
+
+She had not seen it at first, because it was set deep into the end wall under the great stone hood, as black as the stone round it. It was not much taller than a man, and narrow, and rounded at the top: one sheet of iron, with great square-headed nails round its edge.
+
+It had no handle. It had no keyhole. There were no hinges, or none that she could see; and when she ran her fingers round the edges, the crack between the iron and the stone was so fine that she could not have slid a hair into it.
+
+In the middle of the door, at about the height of Wren's chin, there was a round plate of brass.
+
+It was about the size of the palm of her hand, and it was set flush into the iron, and it was engraved all over with fine lines. Wren held the lamp close. The lines made a compass rose, like the ones in the corners of old maps, four long points and four short; only where the north point should have been there was a little curl of flame. And in the very middle of the rose, where all the points met, the brass had been hollowed out into a shallow round dip, perfectly smooth, with a tiny notch cut in its rim at the top, as if something round had been pressed into it once, like a seal into wax, and taken away again.
+
+Wren looked at it for a long time.
+
+It reminded her of something. She did not know what. She was too tired to think, and the thought went up and away like a spark up a flue, and she let it go.
+
+"Right," she said, and put the lamp down carefully on the edge of the nearer forge, and rolled up her sleeves.
+
+She tried pushing, until her boots slid on the floor. She tried pulling, with her nails in the crack, and broke two of them. Then she stood back and took a run at it, the whole length of the bench, and hit it with her shoulder as hard as she could — the way she had once broken into the coal-shed behind the Tallow Bridge tavern, which had a door that looked much stronger than this one.
+
+The coal-shed door had been wood. This one was not. It did not even shiver. Wren bounced off it and sat down hard on the floor, and her whole left shoulder went first numb and then hot and then blazing, and she said "*Blast*" so loudly that the word went echoing away among the beams and came back to her from the far end of the room: *blast — blast — last.*
+
+She sat there holding her shoulder and blinking hard until the stinging went out of her eyes.
+
+"Fine," she said through her teeth. "*Fine*. Be like that."
+
+If a thing will not open for force, a thief tries cunning. Wren had picked a good many locks in her time; mostly cheap ones, it is true, on poor people's doors, which I am sorry to tell you and which she was not proud of now. But a lock is a lock. She went to the bench and hunted among the scraps on it until she found a long iron nail, square and sharp; and she sat down on the floor in front of the door with the lamp beside her, and set to work.
+
+She picked at the edge of the brass plate, feeling for a catch. She picked at the crack round the door, inch by inch, as high as she could reach. She scraped round the rim of the hollow in the middle of the rose, in case there was a spring hidden there, or a pin. She tapped all over the iron, listening for the place where a bolt might be. And she talked to the lamp while she did it.
+
+"You'd have known," she told it. "You'd have known how to do it. You'd have come in here and looked at it and said *hm*, and then you'd have just — *done* something, and it'd have opened, and you'd have made me feel stupid for not seeing." Scrape, scrape, went the nail. "And then you'd have made tea. Out of this ash, probably. And it'd have been better than your usual."
+
+She did not laugh. But she nearly did, and that was something.
+
+She worked at it for an hour, or more. I do not think there was a single inch of that door that Wren did not try. And at the end of it the nail was bent nearly double, and her fingers were sore, and her shoulder throbbed like a second heart; and the iron door stood exactly as it had stood when she came in, black and blank and patient, with its little brass rose shining in the lamplight.
+
+At the very last, she put her hand flat into the round hollow in the middle of the rose. She did not know why. It was too big for one finger and too small for her palm.
+
+It was cold. In all that warm room, it was the only cold thing.
+
+Wren took her hand away and sat back on her heels.
+
+"Right," she said to the door, quite quietly. "You win. For now."
+
+---
+
+She did not mean to sleep there.
+
+She meant to find somewhere to hide in case anybody came. But she was so tired. She had crossed the Burned Country on her belly, and fought a door and lost; and the floor in front of the nearer forge was warm, and the big black hood above her made it feel like being in a room inside a room.
+
+She lay down on the stone beside the cold forge, with her sore shoulder uppermost and the scarf under her cheek. She did not put the lamp away. She curled round it instead, the way Nettle used to curl round a hot brick in winter, and held it against her chest with both arms, and watched its little gold flame through her eyelashes.
+
+"Just for a bit," she told it. "Just till it's light."
+
+She was asleep before she had finished saying it.
+
+And she dreamed.
+
+She dreamed that she was lying exactly where she was, by the forge, with the lamp in her arms. Only the forge was not cold. It was lit. The fire in it was red and gold and roaring softly, the way a forge-fire roars when the bellows are working, and the whole hood above was full of moving light, and the warmth of it lay on her face like a hand.
+
+And there was a man at the anvil.
+
+She could not see his face. That was the strange thing. He was right there, not three steps from her, working at the anvil with his back half turned and his sleeves rolled up; but every time she tried to look at his face, the glow of the forge was in her eyes, golden and dazzling, and she could not see past it. She could see his hands, brown and strong and careful, holding a small hammer and something bright on the anvil, working without hurry, *tap* and *tap* and turn, the way a person works who has done a thing a thousand times and still likes doing it.
+
+And he was humming.
+
+He hummed as he worked, low and easy, in time with the hammer; and for a moment she did not know the tune. And then she did. It went into her like warm water into cold hands, and she lay quite still in the dream and listened, and did not dare to breathe.
+
+It was her mother's song.
+
+It was *Morning comes*: the song she had carried all her life without the rest of it, like a key without a door. The man at the anvil was humming it, *tap* and *tap*, as if it were the most ordinary thing in the world — as if he had always known it, as if it were his.
+
+Wren found that her own mouth was humming with him. She did not decide to. *Morning comes, morning comes* — and the next part, and the next, the part she knew, the part that ended *and the dark shall not keep us* — and she came to the place where it always stopped.
+
+He did not stop.
+
+He went on. Past the end. Past the place where her mother's voice had always gone quiet, all her life, like a lamp going out. The tune went on up, and round, and further, into notes she had never heard — and yet the moment she heard each one, she knew it, the way you know a step in your own house in the dark. It was like finding a door in her own garret that she had never seen before, and opening it, and finding a room behind it that had been there all along, with a fire lit, and a chair drawn up, waiting.
+
+She tried to hold on to it, harder than she had tried at the door, to catch those notes and keep them for when she woke. She opened her mouth to ask him — to ask him *what*, she did not know; his name, or the words, or how he knew—
+
+And she woke up.
+
+---
+
+It was morning. A thin grey light was coming in through the broken roof at the far end of the workshop. The lamp was in her arms, burning gold.
+
+The forge beside her was cold. Its hearth was full of old grey ash, exactly as it had been. The bellows were cracked. The anvil stood where it had always stood, black and bare, with nothing on it at all. There was no fire, and no hammer, and no man.
+
+Wren lay very still.
+
+She tried to find the tune. She went after it in her head the way you go after a dream, quickly, before it can get away. *Morning comes, morning comes* — that part was there, as it always was — *and the dark shall not keep us* —
+
+And then nothing. The door was shut again. She hummed the part she knew, twice, three times, and each time it simply stopped, as it had always stopped, and there was nothing after it but the grey light and the silence.
+
+She sat up, slowly, with the lamp in her lap, and put the back of her wrist hard against her eyes.
+
+"Rot," she whispered. "Rot, rot, *rot*."
+
+But even as she said it, she noticed something, and she took her wrist away from her eyes and looked round.
+
+The forge was cold. Nobody had lit anything in that place for three hundred years. And yet the workshop was warmer than it had been when she lay down — a great deal warmer. The chill had gone out of the stone floor under her, and out of the long dark corners under the racks. It was warm the way a kitchen is warm in the morning, when somebody has been up before you and banked the fire and gone out, and the warmth of them is still in the room.
+
+On the anvil there was nothing. On the bench the little unfinished lamp sat where it had sat, with the file beside it.
+
+But the quiet was still there: the kind of quiet with somebody in it. Only now — and Wren could not have told you how she knew this, any more than she could have told you how she knew the tune — it did not feel like a house where everybody is still asleep upstairs.
+
+It felt like a house where somebody has just woken up.
+
+## Together, Almost
+
+The footsteps came up the Hill a little after the pale sun did.
+
+Wren heard them long before she saw anything. She was sitting by the cold forge with the lamp in her lap, trying to remember a dream and not managing it; and through the broken end of the roof came the small sounds that do not belong on an empty hill. A stone turning over. A cough, quickly stifled. The soft *tock* of a stick set down on hard ground, and then another, slow and regular, like a clock in no hurry.
+
+More than one person. More than two.
+
+She pushed the lamp inside her coat and went up the end wall of the workshop the way she had gone up a hundred chimney-breasts in Soot Lane: knees, elbows, fingertips, a toe in a crack where the mortar had fallen out. In a moment she was lying flat along a roof-beam in the shadows, with a long iron poker in her fist that she had taken off its hook on the way past. It was the first thing she had stolen in weeks, and she was rather pleased with it.
+
+But Hollow Knights do not cough. And they do not, so far as Wren had ever heard, walk with a stick.
+
+The footsteps stopped at the doorway. Somebody whispered, "Is this it? Oh, my word." Somebody else said, "Hush." And then there came a sound that Wren had not heard for so long that for a moment she did not know what it was: a small, sharp, clever little sound, like a twig snapped between two fingers.
+
+*Tk.*
+
+Wren lay on the beam and could not breathe.
+
+*Tk,* it went again; and a voice she knew better than her own, careful and precise and a little bit pleased with itself, said into the dim:
+
+"There is somebody on the roof-beam. On the left. About so big. Lying very still, the way people do when they think it makes them invisible." A pause. "It doesn't."
+
+The poker fell out of Wren's hand and clanged on the floor.
+
+---
+
+I cannot tell you properly what the next few minutes were like, because neither girl could ever tell it straight afterwards. Wren said she climbed down. Mira said she fell off. Both agreed that somebody shrieked, and that it was not Mira; and that after that there was a great deal of holding on, and crying, and laughing in the middle of the crying, which comes out sounding like hiccups and is not at all dignified.
+
+Mira was thinner, and her boots were held together with string. But it was her, holding Wren's face in both hands and looking at it — hard and on purpose, the way she still looked at everything, as if she might never be allowed to again.
+
+"Your voice," she said, "is so much smaller than it was. What have you been *doing* to it?"
+
+"Nothing," said Wren. "Walking. Rot. I don't know." And then, because it was Mira: "Not talking to anyone, mostly."
+
+"Well, stop," said Mira. "It doesn't suit you." She took Wren's left wrist and turned it to the light. "Oh. It's grey. I'd forgotten it went grey without the lamp. I've been thinking of it red for weeks."
+
+So Wren took the lamp out of her coat and held it up between them. The little flame stood up out of the brass, gold and steady — bigger than it had been in the boat at Vaelport, though still no bigger than a thumb — and the ribbon at her wrist went red at once, and the brown of Mira's skin came up warm out of the dust, and the beads in her braids turned, one by one, green and yellow and a deep blue that Wren had once been told was called *indigo*.
+
+"Red," said Mira. "Yes. There it is." Then her face crumpled, and she said, "Oh, Wren. I knew you were ahead of us. I *knew*. And I was frightened all the way here anyway," and they had to start the whole business again from the beginning.
+
+It was while they were doing this that the clock-in-no-hurry came through the door.
+
+It was a crutch of black wood with sheepskin tied round the top, and leaning on it was the smallest old woman Wren had ever seen, with a face creased in every direction at once. One of her eyes looked at nothing. The other looked at everything — the forges, the beams, the two girls on the floor, and the lamp.
+
+When it reached the lamp, it stopped.
+
+"Well," said the old woman. Her voice was cracked, and much bigger than she was. "Well, well. Oh, my *ducks*."
+
+Behind her came the others, crowding in and then stopping short, the way you stop on the threshold of a room where somebody is asleep: a cobbler with enormous hands, a thin anxious old man in a clerk's black coat gone green at the seams, a washerwoman with red forearms, two farm-lads not much older than Tobin, a farmer with a sleepy child on his back, and a few more behind them in the doorway — a dozen in all. Every one of them was staring at the little brass lamp in Wren's hand as though it were the sun come down to sit on the floor.
+
+"This is Sister Hale," said Mira, wiping her face with the heel of her hand. "And these are the Remnant — some of them. They caught us up on the road, in ones and twos. I'll tell you all of it. It's a lot."
+
+"I know who *this* is, duck," said Sister Hale. "I've heard of nothing else since the coast hills." She stumped across on her crutch, and Wren, who had never liked being looked at, found herself standing quite still to be looked at, the way you stand for a doctor.
+
+The old woman did not touch the lamp, or ask to hold it. She looked at it a long time with her one bright eye; then she looked at Wren, and her face went soft.
+
+"You're the sweep," she said. "And you carried it all this way on your own." She patted Wren's cheek with a hand as knobbly as a root, twice, quite hard. "And your old man. Mira's told me all of it, on the road." She was quiet a moment. "I'd have liked to shake his hand, duck. I'd have liked that more than I can say."
+
+Wren could not say anything at all. So she held the lamp higher, so that the Remnant could see where they were.
+
+They saw. The cobbler took off his cap. The old clerk sat down rather suddenly on an upturned bucket and polished his spectacles and said "Oh dear," several times. For in the lamp's light the workshop came up out of the grey: the cold forges, the scarred bench, the tools each on its own peg, and the racks, shelf after shelf, of little brass lamps with no flames, waiting.
+
+Sister Hale stood in the middle of it and laughed — the laugh of somebody who has been told a piece of news so good it will take her the rest of her life to finish hearing it. Then she wiped her one good eye.
+
+"He kept his tools *tidy*," she said. "Would you look at that. I always thought he would."
+
+---
+
+The Remnant made themselves at home the way people do who have slept in a great many barns.
+
+They did not touch the forges. The cobbler started towards the biggest with an armful of thornwood, and Sister Hale said, "Not that one, duck," quite gently, and he stopped, and looked at it, and nodded, and built his fire on the floor instead, in a ring of stones by the door. Then he struck at his tinder-box for a long time and nothing caught; the ash got into everything, the clerk said. In the end Wren knelt and held the lamp to the thornwood. She did not think about it. Somewhere on the road, between the Heskeths' cold hearth and this one, it had stopped being a thing you had to decide.
+
+The fire went up gold and crackling, and the washerwoman said "*Oh*," and held out her red hands to it; and the lamp in Wren's fingers was not one bit the smaller.
+
+She showed Sister Hale the iron door.
+
+It stood at the far end of the workshop, set deep into the stone of the Hill itself, as if the long room had been built in front of it to keep it company. No handle. No keyhole. Only, at about the height of Wren's chin, a round plate of brass set flush with the iron, engraved with a compass rose — four long points and four short, and a little curl of flame at the top where north should be. In the middle of the rose was a shallow round hollow, polished smooth.
+
+"I've tried everything," said Wren, rubbing her shoulder, which still hurt. "I picked at that hole with a nail for an hour. It doesn't even rattle. It's not locked, it's just — *shut*. Like it's thinking about something else."
+
+Sister Hale ran her old fingers round the edge of the brass, slowly, the way Mira read the Story-Wall.
+
+"I don't know it," she said, and sounded surprised and not altogether displeased. "All my life I've had the songs, duck, and there's not a door in any of them. Workshop, yes. Tools on the wall, yes. But not this." She rapped the iron with her knuckle, and it gave back no sound at all. "Well. It'll open when it means to, I expect. Most things do."
+
+"That's not how doors work," said Wren.
+
+"Isn't it?" said Sister Hale, and grinned, and Wren saw that she had about four teeth. "You're twelve, duck. You've plenty of time to find out."
+
+It was exactly the sort of thing Ash would have said. Wren went and sat down by the fire quickly, and took the lamp into her lap, and did not say anything to it at all.
+
+---
+
+Tobin came at dusk.
+
+Cinder came first. Wren was in the doorway, watching the light go out of the Burned Country — the long plain below the Hill going from pale grey to dark grey to no colour at all, with the old waystones standing about on it like people who have forgotten why they came — when something small and quick came streaking up the black slope with its tail held high.
+
+"*Cinder!*"
+
+She was on her knees in the ash, and the fox was in her arms, all fur and bones and cold nose, licking her chin and her ear. The spark at the end of her tail was brighter than Wren had seen it since the mine, and when it came near the lamp inside Wren's coat it flared up like a coal when you blow on it.
+
+"Where've you *been*, you great lump? I thought you'd gone off and—"
+
+Cinder wriggled free. She did not run off. She sat down in the ash just out of reach, very upright, and looked back down the slope, the way she sat when she was waiting for someone and did not intend to be hurried.
+
+Somebody was coming up the Hill.
+
+He came very slowly, a step at a time, the way a person climbs who has walked a long way on not enough food and has stopped expecting to arrive anywhere. He had no coat. His shirt was grey with ash and torn at one shoulder. His fair hair had grown long and filthy and hung in his eyes, and one lens of his spectacles was cracked right across, so that the last of the light caught in it in a bright white line.
+
+He was leaning on a pole.
+
+It was a long pole of dark wood, with a grip of faded blue cloth worn shiny by an old man's hand, and a brass hook at the top for lifting the little doors of Ring-lamps. Wren knew it the way she would have known her own hand. The last time she had seen it, it had been lying on a stone floor at the foot of a forge-door, at the bottom of a dark tunnel under Vaelport, where an old man in a blue coat had let it fall so that he could hold the door shut with his back. She had heard the tunnel come down on it.
+
+All the blood went out of her face. She felt it go, cold, like water out of a basin.
+
+Tobin had stopped below the door. He had seen her see the pole.
+
+"It was on the road," he said. His voice was hoarse and very quiet. There was no *actually* in it, and no *technically*, and none of the hundred things he would once have rushed to explain. "Lying across the road. At the edge of the Greywaste. I don't know how." He stopped. "I don't know how," he said again.
+
+Wren did not answer. She did not look at him. She looked at the pole a moment longer, as though if she looked hard enough it would turn back into something else. Then she turned round and went back into the workshop, past the fire and the Remnant and Sister Hale on her bucket, all the way down the long room to the iron door; and sat down there with her back to everybody, and put her face on her knees.
+
+Her hand had gone up, without her noticing, to the long knitted scarf wound twice round her neck. It smelt of ink and machine-oil. She held on to it. She did not take it off.
+
+---
+
+It was Mira who went out to him. She went straight down the slope and put her arms round him, pole and ash and all; and Tobin stood stiff as a post for a long moment, as if he did not know whether he was allowed. Then something in his thin shoulders gave way, and he put his head down on top of hers.
+
+"You are very dirty," said Mira into his shirt, "and very thin, and you smell like a bonfire somebody has been sick on. I am so glad you are here."
+
+"Mira," said Tobin. Just that, as if it were the only word he had left.
+
+The Remnant took him in without a single question. They had been taking grey, starving people off the roads most of their lives, and they had found that questions could wait and soup could not. The cobbler took off his own jacket and put it round Tobin's shoulders, where it hung like a tent. Somebody put a cup into his hands. And Sister Hale leaned forward on her crutch and looked at him a long time with her one black eye — at his cracked spectacles, and the pole lying in the ash beside him, and then at his hands, which held the cup carefully, because of the scars: a round shiny mark in the middle of each palm, the size and shape of the bottom of a little brass lamp.
+
+She did not say anything. But her old face was very thoughtful.
+
+Wren, at the far end of the room, heard it all without looking. She heard the cobbler say *there now, lad*. She heard Tobin say "Thank you," three times, very quietly, to three different people, and nothing else. And she heard him not come anywhere near her, which was worse.
+
+---
+
+Mira tried. I will say that for her. She tried harder than anyone could have asked.
+
+She carried two bowls of the cobbler's soup down the long room, and put one in Wren's hands, and sat down with the other. "Come and eat it by the fire. Your nose is blue. I know what blue is now, Wren. You can't fool me with blue."
+
+"Then I'll have a blue nose."
+
+Mira went back up the room. Wren heard her voice drop low by the fire, talking to someone; and after a while she came back.
+
+"He says he is sorry."
+
+Wren said nothing.
+
+"Actually, that is all he said. The rest I could hear him *not* saying. It's very loud, the things he isn't saying. It's like sitting next to a waterfall." Mira's voice went small. "He walked here all on his own, Wren, the same as you. He thought he deserved whatever happened to him."
+
+"Good," said Wren.
+
+She did not know she was going to say it until it was out. It came out hard and flat, like a stone dropped on a step. It was not true, and she knew it as soon as it was in the air; but it was out now, and she would not have taken it back for anything.
+
+Mira stood up. Her face had gone very still.
+
+"You are both," she said, "being stupid in exactly the same shape. If I put you side by side you would fit together like two halves of a broken plate." Her voice wobbled. "I have only just got you back. I don't want you back in *pieces*."
+
+She went away up the room, and sat down hard by the fire, and the washerwoman said *oh, my love*, and put an arm round her.
+
+Sister Hale had watched the whole thing from her bucket, with her chin on her crutch. She had watched Mira go down the room and come back, and go down and come back. She had watched Tobin turn his cup round and round in his scarred hands and not drink from it. She had watched the small hunched shape by the iron door with its hand on a long knitted scarf.
+
+She said nothing at all. Not yet. She only hummed a little under her breath, a tune Wren did not know, and went on watching, the way an old woman watches a pot that she knows will boil sooner or later, if she leaves it on the fire.
+
+---
+
+They slept where they were, because there was nowhere else.
+
+The Remnant rolled themselves in their blankets round the fire, close together, as people do who are used to cold barns. And at last, when the fire had sunk to red, Wren came up the long room very quietly, because her feet had gone dead, and lay down on the far side of the fire from Tobin, as far from him as the warmth would let her, with her back to him and the lamp against her chest. She did not look. She knew where he was the way you know where a stove is in a dark room.
+
+Then there was a click of claws on stone, and a soft weight settled in the ash between them.
+
+It was Cinder. She had spent the evening going round the fire stealing crusts, and sneezing one bright, annoyed spark at the cobbler's boots when he trod on her tail. Now she had finished. She turned round three times in the exact middle of the space between Wren's back and Tobin's, and lay down with her nose on her paws.
+
+Wren shifted away from the fox's tail. Cinder shifted too, and lay down again, still exactly in the middle. Wren shifted back. So did Cinder.
+
+"Oh, *rot* you," whispered Wren, and gave up.
+
+So the fox lay there all night between the two of them, touching neither, with her tail-spark glowing in the dark like a small red coal; and every time Wren opened her eyes, which was often, it was the first thing she saw.
+
+It was very late when she noticed the other thing. Everybody else was breathing slow. She opened her eyes once more and saw Cinder's spark, as usual; and past it, over the fox's grey back, two small pale glints in the dark where no lights ought to be.
+
+It was the last of the firelight in a pair of spectacles. One lens whole, and one cracked across.
+
+Tobin was not asleep. He was lying on his side with his head propped on his arm. And he was not looking at the fire, or at Cinder, or at her.
+
+He was looking past all of them, down the long dark room, at the iron door.
+
+## The Chronicle
+
+Tobin had not slept properly since Vaelport, and he did not expect to start now.
+
+Whenever he closed his eyes he saw the same few things, in the same order, like the pictures on a magic-lantern slide going round and round: a drawer in the Pellows' cottage; a stair in a lighthouse; a grey gauntlet closing on a little brass lamp; a girl on a harbour wall with her face white and her fists clenched, saying *I wish it had been you*.
+
+She was lying on the other side of the fire now. He could see the shape of her back. Between them, exactly between, a grey fox was curled in the ash with her nose on her paws and her spark glowing.
+
+So he did not close his eyes. He looked at the door instead.
+
+It was the only thing in that long room that he understood the shape of. Everything else — the tidy tools, the hundred dark lamps on their racks, the old woman who had looked at his hands as if she were reading them — was too large and too quiet, like a story he had no right to be in. But a door was a door. A door was a mechanism. And there had been a time, not very long ago, when Tobin Harrowgate could not walk past a mechanism without wanting to know how it worked.
+
+He found, lying there, that he still wanted to. It was the first thing he had wanted in a long time. It surprised him so much that he sat up.
+
+Cinder lifted her head and looked at him. He looked back at her. Then, very carefully, so as not to wake anyone, he got up, and took a stick of thornwood out of the fire with its end still glowing, and went down the long dark room on his bare feet, past the forges and the racks of empty lamps, to the far end.
+
+Cinder watched him go. She did not follow. But she did not put her head down again, either.
+
+---
+
+The thornwood gave only a little red light, and it shook, because his hand did. Tobin held it close to the brass plate and looked.
+
+A compass rose. Four long points and four short, cut deep and clean, with a tiny curl of flame at the top in place of the north. And in the middle, the hollow. Round and shallow and polished smooth, like the inside of a spoon.
+
+He put his finger into it, and ran it round the edge. Then — without quite meaning to, the way his hands used to do things before he had told them to — he spread his thumb and forefinger across it, and measured.
+
+Two inches and a quarter. A little less. And a notch at the top edge, very small, no wider than a fingernail, as if something with a hinge was meant to sit there.
+
+Tobin stood very still.
+
+He did not want to think the next thought. It was the sort of thing a boy thinks when he has been alone in the Greywaste too long, and sees patterns in everything, like faces in a fire. But his hand had already gone to his pocket, and closed round the thing that lived there; the thing he had carried every day since he was five years old, and had not been able to look at properly since the night he took the lamp out of a drawer.
+
+He took it out. Small and brass and dented on one side, with a little hinge.
+
+He held it up beside the hollow in the lock-plate. He did not need to measure. He knew the size of it the way he knew the size of his own palm.
+
+"No," he said aloud, very quietly, to nobody. "That's — no. That's not—"
+
+He fitted the compass into the hollow.
+
+It went in as if it had been poured there. The hinge sat in the little notch at the top. And there was a click — not loud, but deep, a click that seemed to come from a long way inside the iron, and then from further in, and then further, like a row of small doors opening one after another down a long passage.
+
+If you have ever turned a key in a lock that has not been opened for a very long time, you will know that feeling: as if the lock had been waiting, and is glad.
+
+Through the glass of the compass, the needle began to swing.
+
+It went round once, slowly. Then faster. It spun like a top, so fast it was only a blur — and then, all at once, it stopped. It did not point north. It did not point east, or at the Mountain, or at anything Tobin could see. It stood straight up, quivering, towards the little carved flame at the top of the rose.
+
+And the iron door, which had no handle and no hinges that he could see, sighed, and moved, and swung back into the dark.
+
+---
+
+The noise woke the room. It was not loud, but it was heavy — a great weight of iron shifting on stone after a very long time — and behind him Tobin heard the old clerk cry "The Guild! It's the Guild!" and dive head-first under his blanket, and the cobbler say, "It's a door, man. Doors don't arrest people," and the soft *tock* of a crutch.
+
+He heard, too, a quicker sound: light feet, running. And then she was there beside him, a little way off, with her hair standing up from sleep and the lamp held out in her hand, and its gold light went past him into the doorway.
+
+He did not look at her. He did not dare. He looked at the compass in the lock-plate, with its needle standing straight up.
+
+"It's a key," he said.
+
+He had not spoken ten words together since Vaelport, and he had not meant to speak to her at all; but the words were coming now, tumbling over one another the way they always used to when he was nervous, and he could not have stopped them if he had tried.
+
+"It's a *key*. It was always — no. It wasn't always. It was an ordinary compass when Mother gave it to me, it pointed north, I took it apart once when I was eight and there wasn't anything in it but a needle and a card. And then the night before we left Emberwick — you remember — he borrowed it. Overnight. He didn't say why. And in the morning he gave it back and said it was *tuned*, and the needle pointed at the Mountain, and I thought that was what he meant. I thought that was all he'd done. I thought it was a — a sort of present. A trick." He took a breath that shook. "But it wasn't pointing at the Mountain. Not really. It was pointing at the *way*. And when it was time, it turned round and pointed here, and it fits, Wren, it *fits*, the hinge goes in the notch, you couldn't make that by accident, you'd need the compass in your hand to cut it, you'd need—"
+
+He stopped.
+
+Because he had got there. He had got to the end of it, the way you get to the end of a sum and see what the answer is; and the answer was so large that for a moment he could not breathe round it.
+
+Ash had made a key.
+
+He had sat up all night in the Leaning Tower, a whole world ago, with a boy's compass in his long old fingers, and made it into a key for a door on a hill that none of them had ever seen. And he had given it back, and said nothing — only *tuned* — and let the boy carry it. Across the Greywaste. Down a thousand black steps. Into Vaelport, and out of it.
+
+He had known they would come here.
+
+And he had known — Tobin's knees went weak, and he put his hand flat on the cold iron to hold himself up — he had known that when they did, he would not be with them. Or why make a key at all? Why not simply bring them, and open the door himself?
+
+*A compass ought to know the way home.*
+
+It was Wren who said it. Not to him. To the doorway, in a small flat voice, as though she were reading the words off a wall. Tobin turned his head, and saw her face in the light of the lamp; and it was white, and it was wet, and it was the face of somebody who has just been handed something by a person who is not there to be thanked.
+
+"He knew," said Wren. "All that time. He *knew*."
+
+She put the lamp down on the stone floor at the threshold, carefully, so that its light fell through the door. She did not look at Tobin while she did it. Then she turned and went away up the long room, fast, past the Remnant sitting up in their blankets, and out of the far door into the dark; and Tobin heard her feet go away over the ash, and stop.
+
+Cinder got up from the fire and trotted after her without a sound.
+
+Tobin did not follow. He had no right to. He stood by the door with his hand on the iron, and the lamp she had left for him burned at his feet; and it seemed to him that it was the first thing she had given him since Vaelport, and that she had given it without a word, and that she had not had to.
+
+---
+
+The room behind the door was small and round and cut out of the rock of the Hill, like the inside of an egg. The air in it was dry and still, and — this was the strange thing — it was warm. Not warm like a fire. Warm like a stone wall at the end of a summer day, in the summers nobody in Gloamhaven could remember.
+
+There was nothing in it but a stool, a plain table of dark wood, an ink-pot gone dry, a pen worn down to the quill. And a book.
+
+It was very large, bound in leather that had once been brown and was now the colour of an old saddle, worn pale at the corners where hands had held it. There was no title on the front. There was only, pressed into the leather, the same small curl of flame that was carved on the lock-plate.
+
+Tobin picked up the lamp from the threshold — gently, the way you pick up something that has been lent to you — and carried it in, and set it on the table. Then he stood looking at the book, and did not touch it.
+
+"Go on, duck," said a cracked voice behind him.
+
+Sister Hale had come down the room on her crutch. Mira was at her elbow with her braids all over her face, and the cobbler and the clerk and the washerwoman behind, crowding in the doorway and not quite coming through. The old woman's one bright eye went from the book to Tobin and back again.
+
+"Go on," she said. "You opened the door. You've the right. Read it to us."
+
+So Tobin opened the book.
+
+The pages were thick and creamy and a little stiff. The writing was a clear hand, strong and unhurried — the hand of somebody who had never in his life written anything in a rush, or crossed anything out, or been afraid of being wrong. And at the top of the page there was a great capital letter, painted inside a little square; and as the lamplight touched it, the paint came up out of the grey the way Mira's beads had done. Gold. A sun, round and gold and blazing, with the first word of the book curled inside it.
+
+Mira made a small sound.
+
+Tobin pushed his cracked spectacles up his nose with one scarred finger, and began to read.
+
+---
+
+*"Before the first morning there was the Maker, and the Maker was glad.*
+
+*"Let whoever reads this begin there, for everything else begins there. Before there was any land there was gladness, and the land was made out of it, the way a song is made out of breath. He made the hills to be stood upon, and the rivers to be listened to. He made the sea and was pleased with the noise of it. He made the creatures one by one, and laughed at some of them, and named them all. He made people last, and loved them best, and gave them hands to make things of their own.*
+
+*"And when all was made, he lit the sun, and hung it over the world like a lamp over a table where the bread is set out, so that everyone might see to eat.*
+
+*"The sun was gold. Remember that, whoever you are. It was gold, and it was warm, and it rose every morning over rich and poor alike, and no one ever paid a penny for it."*
+
+Tobin stopped. Not because he could not go on, but because the room had gone so quiet.
+
+The washerwoman was crying silently into her red hands. And Mira was sitting on the floor with her arms round her knees, staring at the painted sun, and her lips were moving. Tobin did not need to hear to know what she was saying. She was saying *gold*, over and over, like somebody learning a word by heart.
+
+He turned the page.
+
+*"There was a king called Ardric, who had everything the sun could give, and wanted the one thing it could not. He did not want to die.*
+
+*"So he climbed the Bright Mountain in the night, and there the Queen of the dark was waiting for him, for she knows the roads that frightened people walk. And she said to him, I can give you a crown that never fails and a life that never ends. And he said, What is the price? And she said, Only the sun.*
+
+*"He paid it. The fire went out of the sun and into his crown, and the curse fell on everyone. Not on Ardric only. On the farmer in his field and the child in her cradle and the old man by his door, who had made no bargain and had never heard of the Queen. That is the way of her bargains: one man signs, and the whole world pays."*
+
+Tobin's voice faltered.
+
+He knew about one man signing and other people paying. He had read his father's letter to the Queen. And he had made a bargain of his own, on the stair of a lighthouse, with a man in grey, and somebody else had paid for it. For a moment he could not make the next word come.
+
+"Go on, duck," said Sister Hale, very gently. "I know. Go on anyway."
+
+He went on.
+
+*"Since that night many have tried to break the curse, and many more will try.*
+
+*"They will make lamps, and the lamps will burn grey. They will make crowns, and the crowns will go cold on their heads. They will write treaties with the Queen, and she will keep each one exactly as long as it pleases her, and not one hour longer. And some day, I think, they will make a guild, and sell little fires at a price, and call it kindness.*
+
+*"None of these will do it.*
+
+*"For a thing that was stolen cannot be bought back. No one can buy back the sun. The fire must be given back, freely, by one who has it to give.*
+
+*"And the curse that was bargained for cannot be bargained away. It must be carried. And it must be carried by one who owes it nothing."*
+
+That was the end of the page.
+
+Tobin did not turn it. He stood with his hand flat on the book, and the words went on sounding in the little warm room after he had stopped saying them, the way a bell goes on sounding after it has been struck.
+
+*They will make a guild.* He thought of Prowle in his gold chain, and the tin Flame tokens sold in Soot Lane for pennies nobody had. *They will write treaties.* He thought of his father. *It must be carried by one who owes it nothing.*
+
+He did not understand that last part. He found he was afraid to.
+
+---
+
+It was Sister Hale who moved first.
+
+She put her crutch against the wall and came to the table, and Tobin stood back without being asked. The old woman lifted the great book in both knobbly hands — it was very heavy, and she was very small, and she would not let the cobbler help — and held it against her chest, the way you might hold a baby, or a loaf, or a letter you have waited for all your life.
+
+She was weeping. Tears were running out of both her eyes, the blind one and the bright one, down into all the wrinkles of her face. And she was laughing, too, at the same time — the same great cracked laugh she had laughed among the tools — so that it was hard to tell which was which, and Tobin thought it did not matter.
+
+"Seventy years," she said. "Seventy years I've sung it in barns, duck. In cellars. In ditches, with the Guild's men going by on the road. My mother sang it to me and her mother sang it to her, and we had it all in bits — a verse here and a verse there, and half of them wrong, I don't doubt, and the tune wandering off like a goat." She laughed again and wiped her face on her sleeve, book and all. "And all the time it was here. Written down. In his own—" She stopped, and pressed her lips together, and did not finish. "We only ever had the songs," she said. "We only ever had the songs."
+
+Then Mira put her hand very lightly on the edge of the book, and let the pages fall back one by one under her thumb. Page after page went by in that same clear, unhurried hand.
+
+Then they changed.
+
+Mira's thumb stopped. Tobin, looking over her shoulder, saw it too.
+
+Somewhere past the middle of the book, the clear strong hand came to an end, halfway down a page, as though the writer had set down his pen to answer a knock at the door and had not come back to pick it up. And below it, after a space, there was another hand. It was small and cramped and crooked, the letters jammed close together as if they were huddling for warmth; and it shook. Even in the lamplight, even upside down, you could see how it shook. In places the pen had dug so hard into the paper that it had nearly gone through.
+
+"Somebody else wrote the end," said Mira softly.
+
+Sister Hale looked down at the page. All the laughter went quietly out of her face, and only the tears were left.
+
+"Yes," she said. "Somebody would have had to." She closed the book, gently, over Mira's hand. "Not tonight, duck. Not in bits, at the back of the night, with half of us asleep. That part wants everyone."
+
+She lifted her head and looked past Tobin, past the little round room, down the long dark workshop to the door at the far end.
+
+Tobin turned.
+
+The sky outside had gone from black to the colour of a dirty slate, the way it did in that country instead of dawn. And in the far doorway, against it, there was a small dark shape, with a long knitted scarf wound twice round its neck and a fox sitting at its feet.
+
+She had not gone very far after all. She had been standing there, he thought, for a long time. Long enough to hear about the gold sun. Long enough to hear about the king who paid with everybody else's light.
+
+Long enough to hear the part about the one who owed it nothing.
+
+She did not come in. But she did not go away.
+
+## The Night He Chose
+
+They read all that day, in turns, by the fire at the door of the workshop.
+
+Tobin read first, because he read fastest, and then Mira, because she wanted to so badly that nobody could have stopped her. Mira read slowly, with her finger under the line and her lips moving, and when she came to a long word she stopped and took a run at it, like a pony at a ditch, and sometimes fell in. "*Un-con-quer-able*," she said, and then, triumphantly, "*unconquerable*," and the cobbler said "Well jumped, miss," and Mira went pink to the ends of her braids.
+
+Wren would not take a turn.
+
+"I read like a cart with a square wheel," she said, which was true, more or less. She did not say the other thing, which was that she would have had to take the book out of Tobin's hands to do it. She sat on the threshold with her back against the doorpost, half in and half out, pretending to mend her boot with a bit of string, and listened to every word.
+
+So the Remnant heard the Chronicle the way they had always heard the old stories: out loud, by a fire, in a voice that was not quite sure of itself.
+
+And it was all there. That was what undid them. Every scrap they had carried in their songs for three hundred years was there in the clear strong hand, whole and plain. The man coming down the Mountain with a small brass lamp. The first door he knocked at — *"Your lamp's gone out,"* read Tobin, *"may I light it?"* — and Sister Hale slapping her knee with a crack like a snapped stick and crying, "*That's in the song! That's the second verse!*" The blind who were touched and saw. The grey who were touched and flushed with colour, and remembered names they had forgotten for twenty years. Mira read that part herself, very slowly, and when she had finished it she put her fingers up to her own eyes for a moment, and nobody said anything.
+
+There were funny parts, too, which none of them had expected. There was a woman in a town called Brackwater who would not let him light her lamp until he had wiped his boots, and made him wipe them twice. There was a goose. Sister Hale laughed at the goose until she had to be thumped on the back.
+
+"*Goose,*" she said, wiping her eye. "Seventy years we've been singing *goat*. I *knew* it never scanned."
+
+And there was the Queen. She came into the story the way she always did, softly, from the edge. First she offered him a crown, like Ardric's, and a city of his own, and a sun that would shine on him alone; and he said no. Then she offered to leave every city in peace, if he would only put out his lamp and go home. And he said no to that too.
+
+*"For I know what her peace is,"* read Tobin, in a voice that had grown steadier as the day went on, as if reading aloud were a thing his throat was remembering how to do. *"It is the peace of a room where the fire has gone out, and everyone has stopped shivering because they have stopped feeling the cold."*
+
+Wren pulled the string tight on her boot and did not look up.
+
+The pale sun went over. The farm-lads took turns at the brow of the Hill, and came back and said there was nothing moving out there but, once, a ragged line of grey birds that circled the Hill twice and went away. Cinder ate the end of the clerk's loaf while he was listening to the goose, and was not sorry. And all the time the pile of read pages on the left of the book grew thicker, and the pile on the right grew thinner, and everybody knew where it was going, and nobody said so.
+
+By the time the light went out of the sky, there was only a little of the clear strong hand left.
+
+---
+
+They built the fire up high before they went on. It seemed important, though nobody said why. The cobbler fetched more thornwood, and the washerwoman shook out the blankets, and the Remnant drew in close round the ring of stones, shoulder to shoulder, the way Wren supposed they had sat in a great many barns. Sister Hale sat on her bucket with her crutch across her knees. Mira sat on one side of the book, on the floor, and Tobin on the other.
+
+Wren set the lamp on a flat stone beside the book, where the light would fall on the pages. Then she went back to her doorpost.
+
+It was Tobin's turn.
+
+He read the last of the clear hand. It was only a few lines, about the road to the Hill, and the Hill itself, and the workshop at the top of it where he had made his lamps; and it ended in the middle of a page, in the middle of a sentence — *"and tonight, if there is time, I mean to finish the"* — and then nothing. A space. As if somebody had knocked at the door.
+
+Tobin looked at the empty half-line for a long time. Then he looked, without meaning to, along the workshop to the long bench in the shadows, where a little brass lamp lay half-made among the tools, with no chimney on it and no flame. Wren saw him look. She looked too. She had slept two nights in that room, and had never once wondered why it had been left.
+
+Tobin turned the page and began the other hand.
+
+It was harder to read. The letters were small and cramped and crooked, and they leaned against one another like tired people, and the lines went downhill. He had to hold the page close to the lamp, and push his cracked spectacles up, and go slowly.
+
+*"I am not the one who should write this,"* he read.
+
+*"The one who should is gone. But the others will not write it, and somebody must, and so it falls to me, who ran.*
+
+*"This is the last night, as I saw it. I will not make it better than it was. I will not make myself better than I was.*
+
+*"We came up the Hill in the evening, the few of us who were with him then, and he was glad to be home. He lit the forge, and set the kettle on it, and sat down at his bench and took up a lamp he was making, and worked at it while we talked.*
+
+*"And while he worked he told us that she was coming. He said it quite plainly, between one tap of the hammer and the next, the way a man says it will rain. She was coming that night, with all her dark, and she knew where to find him.*
+
+*"We begged him to go. The far side of the Hill was open. He could have been over the river by morning and away into the hills, and she would never have found him; he knew the roads better than anyone living. I want whoever reads this to know that. He could have gone.*
+
+*"He did not go.*
+
+*"One of us was not there that night. He had gone down the Hill at noon and had not come back, and we had wondered at it, a little, and then forgotten. I will write it plain, because it was plain.*
+
+*"He was betrayed by the friend he loved best—"*
+
+Tobin stopped.
+
+He did not stop the way you stop for breath. He stopped the way a clock stops: all at once, in the middle of a tick. His finger was still under the line. His mouth was still a little open on the next word. And the hand that was holding the edge of the page — the long thin ink-stained hand with the round shiny scar in the middle of the palm — had begun to shake, so that the page shook with it, and the lamplight went trembling across the cramped black letters.
+
+He did not make a sound. That was the worst of it. He only sat there, with the fire on one side of his face and the dark on the other, looking at the words as though they had been written about him; and the silence round the fire went on, and on, and nobody moved.
+
+Wren did not look at him. She had not looked at him once since Vaelport, and she did not now. But she did not need to. She could see the page shaking out of the corner of her eye, and she could hear him not breathing; and she could hear, very clearly, as if somebody had said it in her ear, her own voice on a harbour wall. *You sold him. You sold Ash for a letter.*
+
+Something in her chest twisted up hard and tight, like a rag being wrung. She held on to her boot.
+
+Then Mira leaned across.
+
+She did not say anything. She put her hand over Tobin's shaking hand on the page, quite lightly, and held it there a moment. Then she slid the great book gently out from under his fingers, and drew it across the floor to herself, into her own lap.
+
+Tobin let it go. He put his hands down flat on his knees, palms down, so that nobody could see the scars, and looked at the fire.
+
+Mira bent over the page. The cramped letters were too small and too crooked for her slow new eyes; Wren saw her try, and frown, and try again. Then she did a thing that nobody but Mira would have thought of. She shut her eyes. And she laid her fingertips on the page, very lightly, the way she used to lay them on the Story-Wall in the dark under the earth, and began to move them along the line.
+
+"He pressed so hard," she said softly, to no one. "You can feel every letter. He must have been holding the pen like a knife." Her fingers went back to the beginning of the sentence. Her voice, when it came, was low and careful and quite steady.
+
+*"He was betrayed by the friend he loved best, for a promise of power. She had promised him a city of his own to rule, and a crown that would not fail, and that the dark would never touch him. And for that he told her the road up the Hill, and the hour, and that the Master would be all but alone, and that the rest of us would run.*
+
+*"He was right about that."*
+
+---
+
+I am going to give you the rest of it the way Mira read it, without stopping, because that is how they heard it, round the fire on the Hill, with the dark outside the door.
+
+*"The Master knew. He knew before any of us. When the cold began to come up the Hill, and the flame in the forge lay down flat as if a wind were on it, he set down his hammer, and the lamp he was making, unfinished, and stood up.*
+
+*"'Somebody has to carry it,' he said.*
+
+*"We did not understand him. So he said it again, more gently, the way you say a hard thing twice to a child. The curse could not be broken from outside, he said, by any lamp or any crown; and it could not be run from, for it was everywhere. It would have to be carried through. 'The fire has to go through the dark,' he said, 'and out the other side. There is no road round. So I will carry it.'*
+
+*"Then he took his own lamp down off its hook — the little brass one, that he had carried down from the Mountain — and he put it into my hands, and folded my fingers round it, and held them there with his own. His hands were very warm. And he said: 'Keep it. It will not go out. Give it.'"*
+
+Wren's hand went to her coat.
+
+She did not mean it to. It went by itself, and pressed flat against her ribs, where the lamp had lain warm all the long road from the sea; only the lamp was not there, it was on the flat stone by the book, burning; and her hand stayed pressed there anyway, over nothing, as if it were holding something in. She could feel two old hands round hers, in a tunnel under Vaelport, folding her fingers shut. *It was never mine. It's never been anyone's. Give it.*
+
+She had thought those were Ash's words. She had carried them across the whole of the Burned Country thinking they were his. And they were — they *were* his. But somebody had said them first.
+
+Mira's fingers went on along the line.
+
+*"Then he went out of the door, and up on to the top of the Hill, where nothing grows. Alone. Without any light at all.*
+
+*"And the dark came.*
+
+*"It came up round him like a tide coming in over the sand. It was cold. It was all the cold there has ever been. I saw it from the door of the workshop, by the light of the lamp in my hands, and I could not move.*
+
+*"He did not fight it. He did not run from it. He opened his arms to it, the way you open a door to somebody standing out in the rain; and it went into him. All of it. Ardric's bargain, and every grey year since, and every cold thing there ever was or will be. He took it into himself, as a wick takes in oil. Nobody made him. He chose to carry it, so that the fire could go through the dark and out the other side.*
+
+*"It covered him. And it put out his light.*
+
+*"And we ran."*
+
+Mira's voice cracked, just there, on the short word. She stopped, and swallowed, and kept her eyes shut, and went on.
+
+*"I ran with his lamp in my two hands, down the far side of the Hill in the dark, and I did not look back, and I did not stop until I could not run any more. The others ran too. We went home, those of us who had homes, and shut our doors. We said: it is over. We said: we were fools to hope. We said: she was right; the grey is easier.*
+
+*"It was dark on the first day.*
+
+*"It was dark on the second day. I sat in my house with the shutters closed and the lamp in my lap. It burned no bigger than a coal under ash. I could not look at it, and I could not put it down."*
+
+Wren made a sound. It was very small, and she turned it into a cough, and nobody looked at her.
+
+*No bigger than a coal under ash.* She knew exactly how big that was. She had carried it in a boat under the fish-market, and down the long grey roads from the sea. She had sat with it in her lap and not been able to look at it, and not been able to put it down.
+
+Mira's fingers moved to the next line. There was only one.
+
+*"On the third morning, the fire woke."*
+
+---
+
+Mira opened her eyes.
+
+She turned the page. It was blank. She turned the next. That was blank too: thick, creamy, empty paper, with nothing on it at all. She turned another, and another, faster, and then she lifted the whole back half of the book on her thumb and let it fall, page after page after page, and every one of them was blank, all the way to the end.
+
+That was all. There was no more.
+
+Nobody said anything.
+
+The fire cracked, and settled. Out on the Hill the night wind went over the ash with a sound like somebody breathing out. The washerwoman had her face in her apron. The cobbler was sitting with his big hands hanging between his knees and his cap crushed in one of them. Sister Hale had not moved since the change of hand. She sat on her bucket with her crutch across her knees and her one bright eye shut, and her lips were moving, though no sound came out; and Wren thought she was not singing, but simply saying it over to herself, the last line, so as to have it by heart before she slept. *On the third morning.*
+
+The lamp burned on the flat stone beside the empty pages. It did not flare. It did not do anything at all. It only stood up very straight and still, the way a candle does in a room where nobody is breathing.
+
+And Wren looked at Tobin.
+
+She had not meant to. She had not looked at him once — not on the slope with the pole in his hand, not by the iron door, not all that long day while his voice went on reading; not since the harbour wall at Vaelport, when she had said the worst thing she had ever said to anyone and watched it land. But she looked at him now, across the fire, before she could stop herself.
+
+He was sitting where Mira had left him, with his scarred hands flat on his knees. He was not crying. He looked as though he had gone past the place where people cry and come out somewhere colder on the other side. The firelight lay along one side of his thin face and caught the crack in his spectacles. He was looking at the blank pages in Mira's lap as though they were a door that had been shut on him.
+
+He looked so much like someone who had run.
+
+Wren looked at him for as long as it takes to draw one breath. Then she looked away, quickly, down at her boot, and the string, and the knot she had tied in it and could no longer see.
+
+It was then that the roof creaked.
+
+It was a small sound, high up in the dark over their heads, where the slates were: a scrape, and a shuffle, and a click of something hard on stone. Then another, further along. Then a great many, all at once, all down the length of the workshop roof — the sound of a crowd of something settling, and folding itself, and going still.
+
+Cinder was on her feet. Every hair along her back stood up stiff. She did not growl. She stood stock-still in the middle of the firelight with her nose pointed up at the broken end of the roof, and the spark at the end of her tail burned small and hard and red.
+
+Wren looked up.
+
+Through the hole in the roof, against the dark sky, a row of shapes sat along the ridge. Ash-crows. Grey birds with grey beaks, packed close together, wing to wing, all down the line of the roof and out of sight. None of them made a sound. And the nearest one, right above the hole, had put its head on one side, and was looking down into the warm room with one pale eye: at the fire, and the old woman, and the children, and the book.
+
+And at the little brass lamp, burning beside it.
+
+## The Trap
+
+The singing-stone woke Wren a little before dawn.
+
+It lay in the pocket of her coat, against her hip, and it began to hum: a thin, high, steady note, like a wet finger going round the rim of a glass. Wren felt it before she heard it, and she was sitting up with her hand over the pocket before she knew she was awake.
+
+The workshop was dark. The Remnant's fire had burned down to a red eye, and round it lay the shapes of sleepers. The great book lay on the bench where Mira had closed it, with her hand still resting on the cover. Up through the broken roof, the sky was the colour of a dirty slate.
+
+Cinder was standing in the doorway.
+
+She stood stiff-legged, with her nose pointed out into the dark and every hair along her back standing up, and from deep in her chest came a low, rattling growl. Her tail-spark had gone very small and very hard, like a nail-head in a fire.
+
+"Hollows?" whispered Wren.
+
+Cinder did not look round.
+
+Wren got up without a sound; Gristle Mott had had a temper in the mornings. She stepped over a snoring farmer, and over the old clerk, who slept with his spectacles on, and knelt beside Mira.
+
+Mira opened her eyes at once. She did not ask what was wrong. She tilted her head, and listened, and then, very softly, she clicked her tongue — *tk* — twice, out towards the door.
+
+Her face changed.
+
+"There are a great many of them," she breathed. "All round. On every side of the hill." She clicked again. "The ash is eating the sound. But not all of it. They are walking the way the hollowed walk in the mines. All at once. Like one person with a hundred feet."
+
+The singing-stone hummed louder.
+
+I should like to tell you that Wren was surprised. She was not. The ash-crows had sat on the workshop roof all night, listening the way a pawnbroker listens to you telling him what a thing is worth.
+
+"Course," said Wren under her breath. "Course they let us get here. Came all this way and walked straight into the bag." Then, to Mira: "Wake them. Quiet as you can. I'll find the old girl."
+
+Sister Hale was already awake. She was sitting up against the cold forge with her crutch across her knees and her one bright black eye wide open, and she did not look in the least surprised either.
+
+"Morning, duck," she said. "Is it the knights?"
+
+"All round," said Wren. "Mira says."
+
+"Then Mira's right. She's got ears like a bat in a bell-tower, that one." Sister Hale hauled herself up, crutch and all, with a grunt like a gate opening. "Well. I did wonder. You don't walk this many of us up a bare hill in the Queen's own country without somebody noticing."
+
+Wren glanced at the far side of the fire. The place where Tobin had lain down last night, as far from her as the walls allowed, was empty, and Ash's pole was gone from where it had leaned. *Course,* she thought, and did not let herself think anything else.
+
+The Remnant were waking now, all round the workshop, in a hush of whispers and creaking boots. Nobody cried out. Not one of them was a soldier; but they had been hiding from the Guild all their lives, and they knew how to wake quietly in the dark and reach for their boots.
+
+Wren went to the doorway, beside Cinder, and looked out.
+
+The sky in the east was going from slate to the colour of old dishwater. Below the brow of the Hill the slopes fell away, black and bare and round, into the great grey plain of the Burned Country. And all the way round the Hill, about halfway down — so still that at first Wren took them for a line of the old memorial stones — stood grey figures.
+
+They stood a few yards apart, in grey armour and grey cloaks, and did not move at all. Their faces, under their open helms, were the colour of wet ash, and their eyes did not look at anything. Hollow Knights. Dozens of them. More. The ring went right round the Hill and out of sight.
+
+Down on the plain beyond them there were tents: grey tents, a great many, with grey smoke going up from them in thin straight threads. They had not been there at dusk.
+
+"Rot," said Wren softly. "Oh, rot and *blast*."
+
+"Language, duck," said Sister Hale, coming up beside her. She looked out at the ring of knights for a long moment with her good eye. Then she said, "*Bother*," with such tremendous feeling, as if it were the worst word in the world, that Wren was astonished into very nearly laughing.
+
+"There," said Sister Hale. "Now we've both said something. Listen to me." She put a small brown hand, dry and strong as a root, on Wren's arm. "The north side. Behind the workshop, where the old wall's come down. There's a gully runs off that way, deep enough to hide a cow in. I saw it coming up. If it isn't stopped at the bottom, we can get most of them down it before the light's full."
+
+"And if it is stopped?"
+
+"Then it's stopped, and we'll think of something else." She smiled at Wren. It was a real smile, wrinkled right up to the milky eye. "We've been running from the Guild for sixty years, duck. We're very good at it. They've only caught us twice."
+
+---
+
+They went out through the gap in the back wall, a few at a time, bent double. The ash was warm underfoot and swallowed the sound of their boots, but it went up in little puffs at every step and hung in the still air behind them.
+
+The gully ran down off the north shoulder of the Hill, steep and narrow, choked with ash and crumbled black rock. At the bottom, where it opened onto the plain, two of the grey figures stood a stone's throw apart, staring at nothing.
+
+"They're not looking," whispered the cobbler. "They're not even looking."
+
+"They don't need to," said Mira. Her face was very pale. "I don't think they look with their eyes. I think they — feel. The way the cold feels for a crack under a door."
+
+The Remnant went down the gully in a long, crouching, scrambling line. Wren stood at the top of it, by the broken wall, with the lamp hidden under her coat and her heart going like a trapped bird, and counted them past. Four. Seven. The farmer, with a child on his back. The old clerk, with his spectacles in his fist. Ten. Eleven.
+
+At the very end came Mira, with the Chronicle in her arms.
+
+She had wrapped it in her shawl and tied the ends round her neck, so that it hung against her chest like a baby in a sling. It was so heavy it made her stagger.
+
+Behind her came Sister Hale, last of all, with her crutch.
+
+And it was then — just as Sister Hale reached the lip of the gully, and Wren began to let out the breath she had been holding — that the ring of knights turned round.
+
+All of them. At once. Like one person with a hundred feet.
+
+There was no shout and no horn; only a sound like a great many people breathing in. Then they were coming up the slope. They did not run. Hollow Knights never run. They walked, the way the tide comes in over flat sand: you look away, and look back, and it is nearer.
+
+"*Go!*" shrieked Sister Hale down the gully. "Down! Run, the lot of you! Run for the rocks!"
+
+The line of the Remnant broke and ran, slithering and stumbling down towards the plain. The two knights at the bottom of the gully turned to meet them, slowly, with their grey hands opening. And Wren, at the top, saw what was going to happen as clearly as if it had already happened, and she did the only thing she could think of.
+
+She pulled out the lamp and held it up over her head.
+
+It was not much of a light. But on that bare black hill it was the only warm-coloured thing for a hundred miles; and every grey head on the slope swung round towards it, slow and heavy, the way hounds lift their heads at a scent.
+
+"Here!" yelled Wren. "Here! This is what you want, isn't it? *Come and get it, then!*"
+
+And she turned and ran the other way, along the brow of the Hill, away from the gully, with the lamp held high.
+
+---
+
+I will not tell you every step of that run, because Wren could never remember most of it afterwards. She remembered the ash dragging at her boots like wet sand, and Cinder streaking along beside her, and the knights turning to follow. She remembered, once, looking back.
+
+You should never look back when you are running from something; any sweep could have told you that. But she did, and so she saw.
+
+She saw the Remnant scattering out across the plain towards a tumble of black rocks, and Mira, with the great book bumping on her chest, nearly at the bottom of the gully.
+
+And she saw Sister Hale.
+
+The old woman had turned round on the narrow path and planted herself, small and crooked, in the way of the last knight coming down behind the others. Wren saw her lift the crutch. She saw the grey arm swing. She saw Sister Hale go down sideways into the ash, all at once, like a coat falling off a peg.
+
+"*No!*" Wren heard herself scream it. "No — Hale—"
+
+Mira had heard. Mira had stopped at the bottom of the gully and turned, and was starting back up.
+
+But Sister Hale was getting up — slowly, one-armed, holding the other arm tight against her side. And her voice came up the slope cracked and loud and, astonishingly, very nearly laughing.
+
+"Go *on*, duck! It's nothing — it's my shoulder, that's all. Go on! I've had worse from a goose!"
+
+And the knight who had struck her did not strike again. He turned his grey head away from her, uphill, towards the gold light on the brow; and he walked past her, as if she had stopped being there.
+
+He was coming for the lamp. They all were. That was all they wanted.
+
+They would walk straight past an old woman in the dirt, and a girl with a book, and a dozen frightened farmers, to get to one small flame.
+
+"Mira!" she yelled. "*Mira!* Don't come back! Get her up and *go*!"
+
+Mira was halfway up the gully to Sister Hale. She stopped, and looked up at Wren across all that grey slope, and Wren saw her face, white and wet.
+
+"Wren — I can't — you can't hold them all—"
+
+"I'm not holding anything! I'm running! I'm good at running!" Wren's voice cracked. "That book's the only one there is! The only one in the whole world! If they get it, it's gone, and his last night's gone with it, and nobody'll ever — *go!* Mira, please! It's the only one! *Go!*"
+
+For a moment Mira did not move.
+
+Then she turned. She got her shoulder under Sister Hale's good arm, and the two of them went down the gully together, lurching, the old woman leaning on the girl and the girl leaning on the book, and out across the plain towards the rocks. Mira was crying. She did not look back again.
+
+*Good,* thought Wren. *Good girl.* And she found that her own face was wet, and she did not have time to wonder why.
+
+They caught her at the workshop.
+
+She had gone right round the brow of the Hill, thinking that if she could only get inside, among the forges and the racks of lamps, there would be roof-beams to climb. She was a sweep. She could climb anything. But when she came round the end of the long low building there were knights in the doorway, and knights behind her, and knights on the slope below, standing as still as stones in a burial ground.
+
+Wren put her back against the workshop wall. Cinder stood in front of her with her lips drawn back and her spark burning hard and red, and growled at the whole grey army as if she could eat every one of them.
+
+The nearest knight reached for the lamp.
+
+He did not reach for Wren. He reached past her face, with a grey hand, and closed his fingers round the little brass body of it, where she held it against her chest.
+
+And snatched them back.
+
+He did not cry out. But his whole arm jerked, the way your hand jerks off a hot stove, and he stood there holding up his grey fingers; and where they had touched the brass there was a mark across them, red and raw — the only colour anywhere about him.
+
+The next knight reached. The same. And the next.
+
+They stood round her in a half-ring, a dozen grey men, and none of them would come closer than an arm's length. And Wren, with her back to the wall and the lamp held tight against her chest, began — she could not help it — to laugh. It was high and wild and wobbly, and it hurt.
+
+"Go on, then," she said. "Have another go. Who's next? Bit hot for you, is it? Should've brought your gloves."
+
+"I did," said a voice.
+
+The grey ring parted.
+
+Captain Varrick came through it on foot, in grey armour, with the ash of the Burned Country all down the skirts of his grey cloak. He looked exactly as he had looked on the lighthouse at Vaelport, and in the dark of the Forge: tall and pale and tidy, with grey eyes and a voice as smooth as oiled iron. He was drawing a grey gauntlet onto his right hand as he walked, finger by finger.
+
+"Good morning, Miss Ashby," he said. "You've led my men a very pretty dance. I'm told the others got away. All of them, with the book. That was well done." He seemed to mean it. "But you knew we'd let them go, I think. We don't want them. We never did."
+
+"You killed him," said Wren.
+
+She had not meant to say it. It came up out of her like the laugh had, from somewhere underneath.
+
+Varrick stopped pulling on the gauntlet. For one moment — no more — his left hand went to his right palm, under the grey leather, and pressed it, as though it ached. His face did not change at all.
+
+"The roof killed him," he said. "Or the dark did. Or the old fool did it himself, standing in a doorway where he'd no business to be." He finished with the gauntlet and flexed his fingers. "Her Majesty sends her greetings. She has been looking forward to meeting you."
+
+"Tell her she can come and get it," said Wren. "Same as these."
+
+Varrick smiled a little.
+
+"Her Majesty," he said, "doesn't want it."
+
+Wren stared at him.
+
+"Oh, she wants it gone. Make no mistake about that. But she has no wish to take it from you. Nobody can take it from you, Miss Ashby. You've seen that this very morning." He nodded at the knights and their burned grey hands. "Drop it down a well, and it finds its way back. It knows who it was given to." His grey eyes rested on the little flame. "But a gift can be given up. That's the one thing that can be done to it. And it can only be done by one person."
+
+He took a step forward, and reached out with the gauntlet, and took Wren by the collar of her coat.
+
+He did not touch the lamp. He did not even look at it again. He simply took a handful of her collar, and Tobin's long scarf with it, the way you might pick up a kitten by the scruff, and turned her round towards the slope and the grey tents.
+
+"Keep it," he said. "Hold it as tight as you like. Her Majesty wants you to put it out yourself."
+
+---
+
+Tobin watched them go.
+
+He was lying in the ash under the workshop wall, on the south side, where it had drifted against the stones in a long soft heap. He had been sitting there since long before dawn, with Ash's pole across his knees, because he could not bear to lie by the fire with his eyes open while she slept on the other side of it. He had felt the knights before anyone — the cold of them, like a door opening somewhere behind him in a winter house.
+
+And he had not called out.
+
+He had meant to. He had opened his mouth. And then his hands had begun to shake, and his breath had gone small and high the way it went in the dark, and he had slid down into the ash until it was over his legs and his chest and Ash's pole, and he had lain there, grey in the grey, and not made a sound.
+
+He had heard Wren shout *Come and get it, then!* He had heard her running. He had heard the old woman scream *Go!* and the scuffle on the gully path. And he had lain there.
+
+Now he watched through a gap between two stones as Varrick walked Wren down the slope by the collar.
+
+She was not struggling. She was walking quite straight, with her chin up, the way she always walked when somebody was hurting her and she did not want them to know, and the lamp's small gold light went down the hill with her, getting smaller.
+
+Halfway down the slope, she turned her head.
+
+Tobin never knew what made her do it. But she looked straight back up the hill at the workshop wall; and for one heartbeat, through the gap in the stones, her eyes met his.
+
+She did not call out. She did not look angry. She did not look surprised.
+
+She looked at him the way you look at a thing you always knew would happen, and are only tired of being right about. Then she turned her face away again, and went on down the hill.
+
+*Course,* that look said. *Course you didn't.*
+
+Tobin lay in the ash and watched until the little gold light had gone in among the grey tents and he could not see it any more.
+
+He did not cry. He could not. He lay there with his face in the dust and his hands, with their round scars, flat in the ash on either side of him, and he thought: *You did it again. You did it again. Just like before. Just like the Chronicle. Just like him — the friend he loved best.* He thought it over and over, in time with his heartbeat.
+
+Something warm pressed against his side.
+
+It was Cinder, grey with ash from ears to tail. She did not sneeze sparks in his face, or nip his ear, or sit on him, the way she had in the Greywaste when he had wanted to lie down and stop. She only lay down beside him in the warm dust, close, with her back against his ribs; and she put her chin on her paws, and looked down the hill at the grey tents, where the light had gone.
+
+Her spark was very small. But it did not go out.
+
+And the two of them lay there together, the boy and the fox, under the wall of the Lampwright's workshop, while the pale sun came up over the Burned Country and laid its thin, cold light on everything, and warmed nothing at all.
+
+## The Dark Mirror
+
+The braziers in the Queen's camp burned all day, and Wren, who had cleaned more fireplaces than anyone else in this story, thought they were the worst fires she had ever seen.
+
+There was one in front of her now. It stood on three iron legs in the ash, a wide black bowl as big as a cartwheel, and in it there was a fire: you could see the flames moving, tall and pale, the colour of moonlight on a puddle. But there was no smoke, and no crackle, and no smell. And there was no heat. Wren had held her hands out to it when they first sat her down, out of plain habit, and had kept them there for a long time before she believed it. It was like holding your hands out to a picture of a fire.
+
+"That wouldn't draw a fly," she told the nearest knight. "Whoever laid that wants sacking. Mott'd have had the skin off your back for a fire like that."
+
+The knight did not answer. None of them had answered all day. There were six of them, standing round her in a ring at the edge of the camp, and they had not moved since morning except, very slowly, to turn their grey faces as the light went round.
+
+On the pole of the nearest tent sat an ash-crow, watching her with its head on one side.
+
+"And you can stop that," said Wren. "I know what you are. You're a pawnbroker with feathers on. I'm calling you Grubb."
+
+The crow went on watching. After a while another one came and sat beside it, and then a third, and they all three looked at her, and Wren found she did not feel like naming the others.
+
+She was sitting on the ash with her knees drawn up and the lamp in her lap, inside her coat, where she could feel it. They had not tied her. They had not needed to. She had tried once, about noon, to walk out of the ring of knights, quite casually, as if she were going to look at something; and they had closed in front of her without a sound, shoulder to grey shoulder, and simply stood there, cold coming off them like the breath of a cellar. She had sat down again.
+
+The singing-stone had hummed all day. In the end she had wrapped it in the end of Tobin's scarf to muffle it, and it went on humming through the wool, thin and steady, like a tune somebody has forgotten to stop.
+
+Every so often, when the knights were not looking — which was always, and never — she opened her coat a crack and looked at the lamp.
+
+It was burning, small and gold and steady. It had not gone out, or dimmed. It only burned, the way it had burned ever since the Heskeths' kitchen; and when she looked at it, the little circle of ash in her lap turned from grey to a warm dark brown, and the ribbon at her wrist was red.
+
+"They said they don't want you," said Wren. "They said she wants me to do it. Blow you out. Myself." She gave a short laugh. "As if. I've carried you from Emberwick to the sea and up this blasted hill. I've carried you out of a mine. I'm not blowing you out for a lot of grey tin men and a crow called Grubb."
+
+But she did not sound as sure as she wanted to, even to herself. And when she closed her coat again she sat for a long time staring at the pale fire, thinking about a face she had seen through a gap in some stones, and about how she had known — before she even turned her head — exactly what she would see.
+
+*Course you didn't,* she thought. *Course.*
+
+And then, because she was honest, which is not at all the same thing as being kind: *You said you wished it had been him. Remember? On the harbour wall. You said it to his face.*
+
+She remembered.
+
+She put her forehead down on her knees, and stayed like that, while the pale sun went over.
+
+---
+
+Varrick came for her at the gloaming.
+
+He did not take her by the collar this time. He only stood at the edge of the ring and said, "Miss Ashby," quite politely, and waited; and after a moment Wren got up, and the knights stood back, and she followed him through the camp.
+
+It was a large camp, and a very quiet one. Grey tents stood in rows across the ash. Hollow Knights stood between them, and did not talk, or eat, or sleep, or play at dice the way the Warden's guards used to in Emberwick; they only stood. Ash-crows sat on every tent-pole. The pale braziers burned without a sound. And at the heart of the camp, where the ash began to rise towards the foot of the Hill, there was a tent bigger than all the others: tall and round and grey, with its door-flap tied back.
+
+Varrick stopped beside it.
+
+"I'll leave you here," he said. He was rubbing his right palm with his left thumb, slowly, under the gauntlet; Wren did not think he knew he was doing it. "A word of advice, Miss Ashby. You won't take it, but I'll give it anyway." He looked down at her with his grey eyes. "Don't argue with her. Everybody argues with her. It doesn't help."
+
+"Did you?" said Wren. "Argue?"
+
+Varrick did not answer that. He only stood aside for her to go in.
+
+---
+
+The inside of the tent was grey, and very large, and very cold, and at first it seemed to be quite empty.
+
+There was a brazier in the middle of it, burning pale. There were grey hangings on the walls, and a grey carpet on the ash, soft as moss. There was a tall thing at the back of the tent covered with a grey cloth, about the height and shape of a person standing still. And there was a chair, high-backed and grey, with someone sitting in it.
+
+Wren had thought — she did not know quite what she had thought. That the Queen would be enormous, perhaps, like the shadow of the long paper hand on Ash's sheet. Or that she would be ugly, and old, and cruel, with a voice like a crow. She had heard the voice. She knew better than that. But she had still, somehow, expected something she could hate on sight.
+
+The woman in the chair was beautiful.
+
+She was very tall, even sitting down, and she was grey from head to foot — but not the grey of ash, or of old dishwater, or of the knights' faces. She was the grey of frost on a window in the early morning, when the sun is just about to touch it. Her hair was silver-grey and fell to her waist. Her skin was silver-grey and smooth as a pearl. Her gown was grey, and seemed to have been made of mist that had decided to stay. She looked, Wren thought, like a statue somebody had carved out of frost, and then — out of pity, or loneliness — had asked to come alive.
+
+Only her eyes were dark. Not grey, but dark: wholly dark, all the way through, like the inside of a sealed flue.
+
+She smiled when she saw Wren. It was a sad, kind, tired smile, the way a grown-up smiles at a child who has stayed up far too late.
+
+"Wren," she said. "Come in, child. Come and sit by the fire. I'm so sorry about the cold. I know you feel it."
+
+It was the voice. Of course it was. Sweet and low and reasonable, like warm milk — and somewhere underneath the sweetness, the milk going cold.
+
+"We've spoken before, haven't we?" said the Queen. "In a boat. You were crying. I'm afraid I wasn't much comfort to you then. I hope I can do better now."
+
+Wren did not sit down. She stood just inside the door, with her coat held shut over the lamp and her chin up, and said the first thing that came into her head, which was: "You look like a nob."
+
+The Queen laughed. It was a lovely laugh, low and delighted, and it was the worst thing Wren had heard all day.
+
+"Oh, I like you," she said. "I always did. Do you know, I have been watching you since you were very small? A little thing on the roofs of Soot Lane, with your knife and your brushes, cutting your own hair, stealing your own bread, owing that dreadful man money you could never pay. And never once asking anyone for anything." She shook her head slowly. "Everything costs. That's what you always said. If it doesn't cost you now, it'll cost you later. You knew that at four years old."
+
+Wren said nothing.
+
+"You were right," said the Queen gently. "That's all I wanted to say. You were right, and they told you you were wrong. The old man told you. *Only given,* he said, and *what is given, grows.*" She looked at Wren with her dark eyes, and there was nothing in them but sorrow. "And what did it cost him, Wren? His tower. His city. His good leg. And then, at the very end, a door, in the dark, under a mountain. That was the price of his gift. He paid it. And now you are paying it." Her voice went softer still. "And the boy. Poor boy. You said a hard thing to him, on the harbour wall."
+
+"Don't," said Wren. Her voice came out much smaller than she meant.
+
+"I don't blame you. Who could? He sold your friend. But you've thought about it since, haven't you? Every night." The Queen sighed. "That's what the lamp does, child. It's very beautiful, and it's very warm, and everyone it touches loses something. You've seen it. You've been carrying a debt in your coat for so long, and you can never, ever pay it off."
+
+Wren's hand had tightened on the lamp through her coat. She could feel it, small and warm against her ribs.
+
+"You want it," she said. "That's all this is. You want it, and you can't have it, because it burns. Your tin men tried. I watched them."
+
+"I don't want it," said the Queen. "I couldn't take it if I did. Nobody can. You know that better than anyone." She turned her lovely head a little, towards the cloth-covered thing at the back of the tent. "I only want to give you something. That's all. For once. Will you let me?"
+
+---
+
+This is the part of the story that Wren never liked to tell, and I shall tell it as quickly as I can.
+
+The Queen rose from her chair. She was taller standing than any man Wren had ever seen, and she moved without a sound, and the frost-grey gown made no rustle on the carpet. She went to the tall covered shape at the back of the tent and drew the cloth off it.
+
+It was a mirror. An oval of black glass, taller than Wren, in a plain grey frame. It did not shine. It did not reflect the brazier, or the tent, or the Queen. It was dark all the way down, like deep water at night.
+
+"Look," said the Queen. "Only look. You needn't do anything else."
+
+Wren did not want to look. But she was twelve, and somebody had said *don't*, in a way; and so she looked.
+
+At first she only saw herself. A thin girl in a too-big coat, with cropped black hair and a sharp chin and a long knitted scarf, very small in the black glass. Then the black began to move behind her reflection, like smoke clearing from a chimney; and then it was not black.
+
+It was a room.
+
+A small room, low and warm, with a fire in the grate — a real fire, red and orange and crackling, the colours so bright and so sudden after the long grey day that Wren's eyes stung. There was a table with a cloth on it, and a loaf, and two cups. There was a window, and through it a sky — a blue sky, bluer than Ash's coat had ever been. And in the room there were two people.
+
+One of them was a man. He was sitting by the fire with his sleeves rolled up, and he had big hands, and he was laughing at something. The other was a woman, standing at the window with her back to the light. She had dark hair, like Wren's, and a sharp chin, like Wren's, and when she turned round from the window and looked out of the glass — straight out, as though she could see Wren standing there in the grey tent — her face was the face Wren had never been able to remember, not once, in all the years of trying.
+
+And it was exactly right. That was the terrible thing. Wren had not known she had forgotten it until she saw it, and then she knew she had never forgotten it at all.
+
+"Wren," said the woman in the glass. She held out her arms. "Oh, Wren. There you are."
+
+"Wren!" said the man, and got up from the fire, and his laugh was warm and deep and full of welcome. "Look at her. Look how big she's got."
+
+Wren could not move. She could not breathe. Her hand had come up of its own accord, and was touching the black glass, and the glass was cold.
+
+And then the woman in the mirror began to sing.
+
+She sang very softly, rocking a little where she stood, the way you rock a baby without thinking about it. And the tune went into Wren like a key into a lock. She knew it. She had always known it. It was the oldest thing she had.
+
+*"Morning comes, morning comes,"* sang her mother, *"and the dark shall not keep us…"*
+
+And there she stopped.
+
+She did not falter. She only stopped, and smiled out of the glass, and drew a breath. And then she went back to the beginning, and sang it again, exactly the same, in exactly the same voice: *"Morning comes, morning comes, and the dark shall not keep us…"* And stopped. And smiled. And began again.
+
+Something about it caught in Wren, like a sleeve on a nail; and then let go.
+
+She did not think about it. She could not think about anything. Her mother was singing to her, and her father was laughing, and the fire was red, and the sky through the window was blue, and her eyes were so full that the whole bright room in the glass swam and ran together like paint in the rain.
+
+"Are they real?" she whispered. "Are they — is it really them? Are they alive?"
+
+"What a question," said the Queen's voice behind her, very gently. "Look at them, child. Do they look like a lie to you?"
+
+They did not. They looked like the only true thing she had ever seen.
+
+"Then I'll go," said Wren. Her voice was shaking. "I'll go there. Tell me where it is. I'll walk. I don't care how far—"
+
+"There's no road, Wren. Not one you could walk." The Queen came and stood beside her. She did not touch her. She only stood there, tall and grey and sorrowful, and looked into the mirror too, as if the room in it made her sad as well. "But you can be there tonight. Now. For ever. With them, in the warm, and nobody will ever make you pay for anything again. All it costs —" and she smiled, a little ruefully, as if it were a joke between them — "is nothing. Nothing at all. Isn't that funny? After all this time. It costs one breath."
+
+Wren's hands had found the lamp inside her coat. She did not remember taking it out. But it was out now, in her two hands, small and gold, and in its light the grey carpet was a dull deep blue.
+
+"You blew it out once, I think," said the Queen. "In a chimney, the first night. And it came back. That was only a sweep hiding a light; it didn't mind that." Her voice was like a hand stroking hair. "And once, in the Warden's Hall, you threw it away, and it went cold and dark, and it would have stayed so. But a boy went down in the dark and carried it back to you." She sighed. "There's no one to carry it back this time. That boy lay in the ash this morning and watched you go. And this time, you would mean it."
+
+In the glass, her mother sang. *Morning comes, morning comes, and the dark shall not keep us…*
+
+"Only breathe out, little sweep," said the Queen. "That is all. You have carried it so far, and it has cost you so much. Let me give you something, for once, that costs you nothing."
+
+Wren looked at the lamp.
+
+She thought of Ash, and the door in the dark. She thought of Sister Hale going down sideways in the ash, and Mira's wet white face, and Tobin's spectacles in a gap between two stones. She thought of every place the lamp had ever taken her, and what each one had cost, and who had paid. She was so tired. She had been tired since Vaelport. She had been tired, if she was honest, since she was four.
+
+She could no longer tell whether the mirror was a lie. She was no longer sure it mattered.
+
+Slowly — as slowly as somebody walking in their sleep — she lifted the lamp, until the little brass rim of the chimney was almost touching her lips. The warmth of it was on her mouth. It smelt of bread, and summer.
+
+The flame bowed towards her.
+
+It did not flicker, or shrink, or try to get away. It only leaned in towards her face, the way it had always leaned towards anyone it wanted to reach, small and gold and patient, as if it were listening.
+
+In the black glass her mother smiled, and held out her arms, and began the song again from the beginning.
+
+And Wren breathed in.
+
+## The Coward's Offer
+
+All that day, Tobin could see the light.
+
+From where he lay in the drift of ash under the workshop wall, the whole camp was spread out below him on the plain like a grey map: rows of grey tents, grey knights standing between them, pale braziers that did not smoke. Nothing moved down there except the crows. And at the near edge of it, inside a little ring of grey figures, there was one small speck of gold.
+
+It was hardly anything. A pin-head. But Tobin watched it all day long, the way you watch the one lit window in a dark street when you are outside in the cold.
+
+He did not move. Cinder lay pressed against his ribs and did not move either.
+
+*You could go,* he kept thinking. *You could get up and go down there.*
+
+And then: *And do what?*
+
+He had nothing. No sword; he had never been able to hold one properly, which his father had found more shameful than anything else about him. No plan. He had Ash's pole, and a cobbler's borrowed jacket, and two round scars on the palms of his hands.
+
+Of all that Mira had read last night, after he could not go on, one line would not leave him alone, because it made no sense to him: that the Lampwright had chosen to let the dark take him *so that the fire could go through the dark and out the other side.*
+
+*Chose,* thought Tobin. *He chose it.*
+
+He thought of Ash, in the mine at Vaelport, with his back to the forge-door. Ash had chosen too. He had held the door, so that the rest of them could get out, and the dark had come down between. And the last thing he had said was *Give it.*
+
+*Give what?* Tobin had wanted to shout, then, and ever since. *I haven't got anything. I sold the only thing I ever had that was worth giving. I sold it and I sold him with it.*
+
+The pale sun went over. The speck of gold sat in its ring of grey.
+
+Once, in the afternoon, the voice came. It did not bother being kind. It only said, softly, close to his ear, as if it were telling him something he already knew: *Stay where you are, Tobin. You're good at it.*
+
+He put his face down in the ash.
+
+And it was then, lying there with his eyes shut and his mouth full of grey dust, that he understood something — not all at once, but slowly, the way you understand a machine by turning it over in your hands.
+
+He had nothing to give. That was true. No lamp, no sword, no letter, no father. But there was one thing left that nobody had taken from him, because nobody had wanted it.
+
+There was him.
+
+His hands began to shake. They shook so hard that the ash on his fingers trembled off in little drifts. He knew that shaking. It was the shaking of the strongroom stair in Emberwick, sixty-one steps down, when his night-lamp had gone out and the black had closed over him like water.
+
+"I can't," he whispered into the ash. "I *can't*. You know I can't."
+
+He did not know whom he was saying it to. He had said something like it once before, on the strongroom stair. *If you're there — whoever lit the first lamp — I can't do this. Please.*
+
+Nobody answered. Nobody had answered then, either. But he had gone down the stair.
+
+Below him, in the gloaming, the speck of gold began to move.
+
+It went slowly in among the tents, towards the great grey one at the foot of the Hill, and in at the door; and the door-flap fell, and the light was gone.
+
+He dug Ash's pole out of the ash and stood up, unsteadily, the way he had stood up on the end of the fish-dock in Vaelport. Cinder stood up too, and shook herself, and looked up at him. Her spark was very small and very bright.
+
+"Yes," said Tobin. His voice was hardly there. "I know. I know. Come on."
+
+---
+
+He walked down Cinder Hill into the Queen's camp in the last grey light of the day, with no weapon, holding an old man's pole in both his scarred hands, and shaking from head to foot.
+
+I want you to understand that he was not brave — not with his chin up and his eyes flashing. His teeth were chattering. Twice he stumbled in the deep ash. He was more frightened than he had ever been in his life, and he had been frightened for most of it.
+
+But he did not stop walking. That was the only difference. And sometimes, I think, that is all bravery is.
+
+The knights at the edge of the camp turned their grey faces towards him as he came. He waited for them to close in. They did not. They stood aside and let him through, the way a door is held open for someone who is expected; and the next pair did the same, and the next, all the way through the camp, a long silent corridor of grey.
+
+*She knows,* thought Tobin. *She knew I'd come. Of course she did.*
+
+He walked on anyway.
+
+Varrick was standing by the door of the great tent. He watched Tobin come all the way up the last of the corridor, and his grey eyes went from the boy's white face, to the scarred hands, to the old brass-hooked pole that he must have known as well as he knew his own name. Something moved in his face. It was there and gone so fast that Tobin was never sure afterwards whether he had seen it.
+
+"You," said Varrick.
+
+Tobin could not answer. His jaw was shaking too much.
+
+Varrick looked at him a moment longer. Then — without a word, without even a smile — he reached out and drew back the flap of the tent, and stood aside to let him in.
+
+The tent was cold, and grey, and full of a song.
+
+Tobin saw it all at once, the way you see a room by lightning. A pale brazier. A grey carpet. A tall woman made of frost, standing very still. A great black mirror at the back of the tent, with a warm room in it, and a fire, and a woman with dark hair holding out her arms and singing — *Morning comes, morning comes* — in a voice that made his chest ache, though he had never heard it before.
+
+And in front of the mirror, Wren.
+
+She was standing with her back to him. She had the lamp in both her hands, raised up to her face, and her head was bent over it, so close that the light was all over her chin and her mouth. Her shoulders were drawn up high and stiff. She was holding her breath. He could see it in the line of her back. And the little flame had bowed right over towards her lips, small and gold and leaning, the way a sleepy dog leans when someone it loves comes into the room.
+
+"Wren," said Tobin.
+
+It was hardly a word. It came out of him cracked and hoarse and much too small. But she heard it.
+
+She turned her head.
+
+And the breath she had drawn — the great, deep, aching breath that she had been holding at the very edge of the flame — came out of her all at once. But it did not go onto the lamp. She had turned her face away, towards the door; and it went out of her into the cold grey air of the tent as a sob, and a word, and the word was his name.
+
+The little flame stood up straight again, steady and gold, and burned.
+
+They stared at each other.
+
+"*You*," said Wren. Her face was wet and white. "You — what are you — you were in the *ash*, I *saw* you—"
+
+"Tobin Harrowgate," said the Queen.
+
+She said it as though he were a present she had been hoping for. She turned to him, tall and grey and lovely, and smiled with real delight, and her dark eyes looked him over from his ash-grey hair to his broken boots. "I did wonder," she said. "I confess I did wonder whether you would. How very kind of you to come. Are you cold? Of course you are. Come in."
+
+Tobin came in. He did not know how. His legs did it.
+
+He stood in the middle of the grey carpet, holding Ash's pole in front of him with both hands, not like a weapon, only like something to hold on to. He looked at the Queen. He tried to say the thing he had come to say, and his voice would not work. He swallowed. He tried again.
+
+"Take me," he said.
+
+The Queen raised her silver eyebrows a little.
+
+"I'm—" His voice cracked. He pushed his cracked spectacles up his nose with a shaking finger and went on. "I'm the traitor. Not her. It was me. I took the lamp. I sold it. I sold — I sold *him*. And this morning I lay in the ash and watched you take her and I didn't—" He stopped. He made himself go on. "She's done nothing. She's never done anything except carry it. So let her go. Let her go, and take me instead."
+
+The tent was very quiet. In the mirror, the woman with the dark hair sang, *and the dark shall not keep us*, and stopped, and began again.
+
+"Tobin, *no*—" said Wren.
+
+The Queen laughed.
+
+It was a soft, warm, wondering laugh, and it was full of pleasure. "Oh," she said. "Oh, my dear. One Harrowgate after another. Your father came to me with a lamp, you know. And now his son comes to me with himself." She looked at him for a long, tender moment, with her head a little on one side. "I accept."
+
+"No!" said Wren. "No, you can't — he's not — *Tobin*, you great lump, what are you *doing*—"
+
+"The girl may go," said the Queen, quite pleasantly, without looking at her. "Wherever she likes. With whatever she likes. Nobody will stop her." Then she did look at Wren, for a moment; and her smile was very kind indeed. "And if, at any time tonight, you should decide that you want him back, little sweep — well. You know what it costs. It hasn't changed."
+
+---
+
+They took him outside.
+
+It was nearly dark. The pale braziers burned in a ring round the open ash in front of the great tent, with a light the colour of skimmed milk. The knights did not drag him. They did not have to. He walked out into the middle of the ring by himself, and stood there, holding Ash's pole.
+
+And the knights closed round him.
+
+They did not strike him. They put their hands on him. That was all. Grey hands, on his shoulders, on his arms, on the back of his neck, the way you might lay your hands on a horse to quiet it. And where they touched, the colour began to go.
+
+It was very quiet. That was the worst of it. It did not look as if it hurt. It looked like a fire being let go out.
+
+It began in his hair. Tobin's hair had always been fair and untidy, sticking up in tufts like hay. Now, from the roots outwards, it went the colour of ash; not white, like an old man's, but grey, flat and dull, the way grass goes under frost. Then his face. The pink went out of his cheeks, and he was grey, and his spectacles misted over with cold and did not clear. Then his hands, round the pole: the ink-stains on his fingers faded and were gone, and the two round scars on his palms, which had been red and angry for weeks, went pale, and paler, and grey.
+
+He did not run. He did not even try to pull away. He stood there in the middle of the ring with his eyes open and his shoulders shaking, and let them.
+
+Out in the Greywaste, Tobin had walked among Hollows, and they had drifted past him and left him alone, because there had been nothing left in him worth taking. There was something now. Wren could see it going.
+
+"*Stop it!*" she screamed.
+
+"Stop it! Tobin! *Run*, you idiot! Run! You great stupid *lump*, what are you standing there for? Come *back*! Come back *here*!"
+
+She ran at the ring of knights with the lamp held out in front of her. Not to strike them; she did not think of that. Only to get to him. Only to put the light where he was.
+
+The knights did not turn round. They only stood, shoulder to grey shoulder, an unbroken wall of cold, with their backs to her and their hands on him; and she could not get past. She tried to squeeze between two of them, and a grey arm moved, and she was pushed back into the ash. She got up and tried again.
+
+A hand closed on her collar.
+
+It was a grey gauntlet. Varrick's. He did not pull her away hard. He only held her, at arm's length from the ring, so that she could see, and could not reach.
+
+"You can't help him that way," he said. His voice sounded odd. "Not by fighting."
+
+"Let *go* of me!"
+
+But he did not let go. He held her, and he watched Tobin, and his other hand had gone to his own right palm and was pressing it, hard, the way you press a wound.
+
+The lamp in Wren's hands was leaning out towards the ring as far as a flame can lean, trying, straining. In its little circle the ash at her feet was brown. Tobin was standing a few yards beyond it, in the grey.
+
+"Tobin," said Wren. Her voice broke. "Tobin, *please*. Come back. Come back, and I'll — I'll never say another word, I'll never be horrible to you again, I swear, I'll—"
+
+And that was when she found out that she was crying.
+
+Not the way she had cried in the bottom of the boat at Vaelport, for Ash. She was crying for *him*. For Tobin Harrowgate, with his elbows and his long words and his stupid broken spectacles. For the boy who had crept down sixty-one steps in the dark to carry a lamp back to a sweep who had thrown it away. For the boy who had walked into the Queen's own camp, with nothing, to stand where she was standing.
+
+On the harbour wall at Vaelport she had said to him, *I wish it had been you.*
+
+It was him, now. It was him in Ash's place. And Wren Ashby found that she had never in all her life wished anything less.
+
+"I didn't mean it," she said. She was not shouting now. She did not think he could hear her. "On the wall. I didn't mean it. I never meant it. Do you hear me? *I didn't mean it.*"
+
+Inside the ring, Tobin turned his head.
+
+It was very slow. His face was almost all grey now, grey as the ash, and his eyes behind the misted spectacles had gone dim and far away, like windows in an empty house. But he turned his head until he found her, and the lamp in her hands; and his lips moved. They were the only colour left in him.
+
+His voice was hardly there at all. It was thin and faint and colourless, the voice of somebody speaking from the bottom of a well. But she heard it.
+
+"Don't," said Tobin. "Wren. Don't. Not for me." He took a breath that seemed to cost him everything. "Keep it lit."
+
+Behind her, at the door of the great tent, the Queen was standing, tall and grey and patient, watching. She did not say anything. She did not need to. In the tent behind her, very faintly, the song went on: *Morning comes, morning comes…*
+
+Wren looked down at the lamp in her hands. It would be so easy. One breath. That was all it cost.
+
+She held it tighter, against her chest, and did not breathe on it.
+
+---
+
+Night came down over the Burned Country, black and starless.
+
+Some time in it, the knights stepped back from Tobin, and he sank down into the ash, slowly, the way a candle-flame sinks when the wick is spent, and lay there on his back with Ash's pole beside him where it had fallen out of his hand.
+
+Varrick let go of Wren's collar without a word, and walked away into the dark.
+
+Wren went for Tobin at once. She got three steps. Then the knights were round her — not touching her, not touching the lamp, only standing, a ring of grey armour just outside the edge of its light — and when she tried to push through them they closed, and she fell back into the ash on her knees.
+
+"You may go wherever you like, little sweep," said the Queen from the door of her tent. "I did say so. Only not there."
+
+They had brought a low grey chair out for her, and she sat in it at the mouth of the tent with her hands folded, and the dark mirror on its stand beside her, still singing very softly to itself. She did not seem to need to sleep.
+
+So Wren knelt where she had fallen, a few yards from him, and could not get any nearer.
+
+Cinder was nearer. Nobody stopped a fox. She had climbed up onto Tobin's chest and lay along him with her chin tucked under his jaw, the whole small warm weight of her, the way she had lain on him on the fish-dock at Vaelport so that he could not get up and could not go to sleep. Her spark was a tiny red point, like a pin-prick of fire in tinder.
+
+For a while Tobin talked. Not to anybody. His voice was thin and grey and wandering, and Wren had to hold her breath to hear it: something about beads, and copper wires, and a bright one moving down Soot Lane where there oughtn't to be any lamp at all. The Orrery, she realised. He was talking about the Orrery in his attic, a whole world away. Then, near midnight, he stopped talking, and only breathed.
+
+Wren held the lamp out towards him, as far as her arms would reach.
+
+It did not reach. The little gold circle fell short of him by a yard of grey ash. But she did not put it down. She knelt there all night, I am told, with her arms aching and her eyes stinging, holding it out the way you hold out a cup to someone who is too ill to take it. Once she sang to him, very low, the only song she knew — *Morning comes, morning comes, and the dark shall not keep us* — and stopped where it always stopped, and could not go on.
+
+And sometime in the deepest part of the night, when the dark was thickest and the cold was worst and even the ash-crows had stopped shuffling on their poles, the little flame in her hands did a strange thing.
+
+It leaned.
+
+Not towards Tobin. Not towards her. It leaned away from both of them — slowly, steadily, as if something were drawing it — out over the dark plain, towards the east, where there was nothing at all to see; where, if there was ever going to be a morning again, the morning would come from.
+
+## Scarred Hands
+
+The last hour of the night is the coldest. Anyone who has sat up with somebody ill will tell you so. It is the hour when the fire is lowest and the clock seems to have stopped, and you begin to believe, though you know better, that the morning has forgotten to come.
+
+Wren had been sitting up with somebody ill for a very long time.
+
+The Knights still stood round the edge of the lamp's light, and every time she got up, they closed. Every time she sat down, they waited, the way the cold waits outside a window. A few yards beyond them Tobin lay on his back in the ash, with Ash's pole where it had fallen and Cinder along his chest. The spark at the end of her tail was so small that twice in the night Wren had thought it was out.
+
+His hair was the colour of the ash it lay in. There was a little grey frost on the cracked lens of his spectacles. Only his lips had any colour left, and that was hardly any.
+
+"Tobin," she said. Her voice came out cracked. She had shouted most of it away in the night. "Tobin. You great lump. Wake up."
+
+He did not wake up.
+
+In her pocket the singing-stone hummed its long low note, the note that meant cold.
+
+---
+
+The Queen had not gone to bed. Now and then, from her grey chair at the mouth of the tent, she looked at the boy in the ash, and her lovely silver face was full of sorrow, as though she were watching a sad play and wished it could have ended differently.
+
+"It will not be long now," she said gently. "You should rest, little sweep. It is a dreadful thing to watch, I know."
+
+"Then let him go," said Wren.
+
+"But he gave himself, child." The Queen's voice was soft and terribly reasonable. "Nobody made him. He walked in here on his own two feet and offered. You heard him. I would not dream of refusing a gift so freely given." She smiled a little. "Isn't that what your old lamplighter used to say? Give it?"
+
+Wren did not answer. If she had opened her mouth, she would have been sick.
+
+"He has been so unhappy, poor boy," said the Queen. "In a little while he will not be unhappy. He will not be anything at all." She turned her dark eyes on the lamp. "Of course, you need only breathe out. One breath, and he can have his colour back. I am not unkind. I would let him go home."
+
+Wren looked down at the lamp.
+
+She did not believe her. She had not been sure, earlier, with the mirror in front of her and her mother's voice coming out of it. But she had watched the Queen's face all night as the colour went out of Tobin's hair — the small, quiet, pleased look on it, like a cat's — and she knew the Queen would never let anybody go home.
+
+Only, knowing it did not help. Tobin did not wake. And the lamp, though it burned, could not reach him.
+
+Wren bent her head over it, so that the Queen could not see her face.
+
+"Ash," she whispered. "What do I do?"
+
+The lamp had never once answered. But she knew what he would have done: something quietly — held a door, or walked into the dark first — and said afterwards that it was nothing.
+
+"I can't," she told the lamp. "They won't let me through. I can't do *anything*."
+
+And then the flame, which had leaned east since the dead middle of the night, began to lean harder.
+
+---
+
+It had leaned east all the way across the Scarecrow Farms and over the Burned Country. Now it leaned harder than it ever had, so hard that the flame lay almost flat against the glass, pointing away from the Queen's tent, out over the plain of ash towards the place where the sky was getting light.
+
+Wren turned her head and looked.
+
+The morning was coming. It came the way it always came in Gloamhaven, thin and grey, a paler grey along the bottom of the sky, like the line of light under a door. The Burned Country lay below the Hill, flat and dim and endless. Nothing moved on it. Nothing ever did.
+
+Something moved on it.
+
+Far off, at the bottom of the sky, where the grey was palest, there was a man walking.
+
+He was very small, and the pale sun was coming up behind him, so that he was a dark shape against it, no bigger than one of Ash's paper puppets. He was walking towards the Hill. He was not hurrying. He walked the way people walk who have come a long way and know exactly where they are going.
+
+Cinder lifted her head.
+
+Her ears went up, and her nose, and she looked out over the ash towards the walking man. Her whole small body went still — not the stillness of a frightened fox, but of a fox that has heard, a long way off, a voice it knows.
+
+Then Cinder was up and gone.
+
+She went off Tobin's chest in one bound and straight through the ring of Knights, between their grey legs, and down the slope of the Hill faster than Wren had ever seen her go, with her ears flat and her tail straight out behind her. And the spark at the end of her tail, which had been hardly anything for weeks, *blazed*. It went up like a torch. It streamed out behind her, so that she went down Cinder Hill like a little comet, a long gold streak across the grey ash; and Wren could hear her yelping as she went — not a fighting sound, but a high, glad, silly, puppyish sound, the sound a dog makes when somebody it loves comes home.
+
+She reached him at the foot of the Hill and threw herself at him.
+
+He bent and caught her up in both arms, the whole wriggling, yelping, blazing armful of her, and she licked his face and climbed onto his shoulder and nearly fell off the other side; and across the whole width of the Queen's silent camp, Wren heard him laugh.
+
+It was a short laugh, not loud: the laugh of somebody who has been licked on the ear by a fox and does not mind. But every Hollow Knight on the Hill turned its head towards it at once, the way grass turns in a wind.
+
+He put Cinder down. And then he began to walk up the Hill.
+
+---
+
+I have to tell you what he looked like, and I find that I cannot do it very well. This is not because he was too splendid to describe. It is because he was not splendid at all.
+
+He was a man, not especially tall and not especially broad. He wore a plain brown coat that had been travelled in a good deal, and mended boots, and there was dust on him to the knees. His face was brown and weathered, with a short beard going grey and lines at the corners of his eyes that came from laughing. He carried nothing. No lamp, no staff, no sword. His hands were empty at his sides.
+
+That was all. If you had passed him on the road you might not have looked at him twice — unless he had looked at you first. Then, I think, you would have remembered it all your life.
+
+But nobody was looking at him, just at first. They were looking at the ground.
+
+Because where he walked, the colour came back.
+
+It came up out of the ash behind his heels, the way water comes up into a footprint on a beach. Where he lifted his foot the ground was not grey. It was dark and rich and brown, the brown of new earth turned with a spade — and as Wren watched, in the very first footprint, a little thread of green came up and unrolled itself and stood there, trembling, in the cold dawn air.
+
+Then the next footprint, and the next. Behind him came a path of colour, brown and green and the warm red of the rock beneath, widening as it came, the way light widens across a floor when somebody opens a shutter.
+
+And the ground was warm. Wren felt it come up the slope towards her, under her knees, like a hearthstone. *They say the ground there is still warm.* She had heard that once, in a tower, by the light of a little lamp behind a sheet.
+
+He came to the edge of the Queen's camp, and he did not stop.
+
+The Hollow Knights fell back.
+
+They did not shriek, the way the Hollows shrieked in Soot Lane. They simply went back from him as he came on, the way shadows go back from somebody walking into a room with a candle. He did not look at them. He did not lift a hand. Wherever he walked there was no room for them, and so they were not there. The ring of grey armour round Wren opened like a door. Some of the Knights sat down suddenly in the ash, like men who have been walking in their sleep and woken in a strange place. On the tent-poles the ash-crows went up all together in a grey clatter of wings, and flew away west, crying, and did not come back.
+
+The braziers that burned with no heat went out, one after another, as he passed them: not blown out, but simply finished, as though somebody had told them they could stop.
+
+And the lamp in Wren's hands blazed.
+
+She had seen it blaze at the top of the Beacon, and at the foot of the Black Stair. She had never seen it do this. The flame went up inside its cracked chimney, gold and white and gold again, so bright that it filled the whole Hill; and it was not leaning any more, it was *reaching*. It reached towards the man coming up through the camp the way a flower in a window turns towards the sun, with its whole self, as though it had been growing that way all its life and had only just found out why.
+
+And the colour flooded. It ran out across the Hill from the lamp and from the man together, and met in the middle. The tents went the creamy, stained colour of old canvas. The ash went brown and black and rust-red. The stones of the workshop above them, grey for three hundred years, were suddenly a warm grey-gold, like a cat's back in sunshine. The ribbon on Wren's wrist went red — red as a coal, red as a berry, redder than she had ever seen it — and Tobin's scarf round her own neck, which had never in all the grey been any colour she could have named, turned out to be striped. Green and blue. Green and blue, all the way down.
+
+She had been wearing it for weeks and never known.
+
+---
+
+The Queen stood up.
+
+She was tall and slender and silver from head to foot, and she looked at the man coming up the Hill.
+
+Beside her, on its stand, the dark mirror cracked.
+
+Nobody touched it. It cracked of its own accord, with a small sharp sound like ice on a pond, one long crack from the top of the oval to the bottom; and whatever had been moving in it stopped moving, and it was only a piece of black glass with a crack in it.
+
+The Queen did not look at it. She was looking at him.
+
+She looked at him once. Only once. Wren saw her face as she did it, and I am not going to tell you what was in it, because Wren never would, not even to Mira, not even years afterwards. I will only say this. In all the time Wren had known that voice — in the dark at Emberwick, in the bottom of the boat at Vaelport, in the grey tent — it had never once been raised. It had never needed to be.
+
+The Queen screamed.
+
+It was a long, thin, terrible sound, like wind in a broken flue, and it was not a word. While it was still going on she turned in a whirl of silver and fled — away from the morning, out across the Burned Country towards the west, where the last of the night still lay low along the edge of the sky. She seemed to pour rather than run. The night took her in, and the scream went on a long time after Wren could no longer see her, smaller and smaller, until at last it stopped.
+
+The Hill was very quiet.
+
+Only one man in the camp had not fallen back.
+
+Captain Varrick stood alone in the trodden ash in front of the empty tent, in his grey armour and grey cloak, with his sword drawn. He did not lift it as the man came up. He only stood, and stared.
+
+He was staring at the man's hands.
+
+Wren looked, and saw what he saw.
+
+They hung empty at his sides, brown and broad, working hands. And on the back of each there was a scar, round and deep and old, puckered at the edges, the shape a burn makes when something very hot has been held against the skin for a very long time. When he turned one hand a little, Wren saw the same scar on the palm. On both hands. As if, a long time ago, something had gone right through them.
+
+He was not a beggar this time, nor a ferryman, nor a voice in a chimney. It was the Lampwright himself, come up out of the Burned Country in the morning; and he had scars on his hands.
+
+Varrick looked at the scarred hands. Then, slowly, as if somebody else were moving his arm for him, he turned up his own right hand and looked at his palm, where the old pale mark of the Lamplighters' oath-flame ran across it.
+
+He looked at it for a long time.
+
+The man said nothing to him. He only looked at Varrick, a few steps off, and his face was not angry. It was the look Old Ash used to have when he said *lad*, only more so — as if all the sorrow in Ash's *lad* had been poured into one cup, and the cup were full to the brim and not spilling.
+
+Varrick's sword fell out of his hand. It dropped into the ash with a soft thump and lay there.
+
+And then Captain Varrick turned and ran.
+
+He ran like a boy, clumsily, stumbling in the ash with his grey cloak tangling round his legs, and he did not look back. Down the slope he went and away across the plain, and the Hollow Knights went after him, drifting and stumbling, until the Queen's camp was empty but for its tents, and its dead braziers, and a sword lying in the ash.
+
+---
+
+Wren did not see them go. She was already running.
+
+There was nothing between her and Tobin now but a few yards of ash. She ran across it with the lamp blazing in her hands and dropped on her knees beside him.
+
+The colour had come back to everything on the hilltop, and not to him. He lay in the middle of it like a drawing in pencil on a painted page.
+
+"Tobin," said Wren. "Tobin. *Tobin.*" She held the lamp out over him, close, as close as she dared. "Here. It's for you. You don't have to do anything. *Please.*"
+
+The lamp blazed. It blazed till her eyes watered. But it leaned away from Tobin, over her shoulder, towards somebody behind her; and Tobin did not move.
+
+Then the somebody behind her knelt down in the ash.
+
+He knelt on the other side of Tobin, and Wren did not look up at him. She could not. She saw a brown hand come down into the circle of the lamplight — a working hand, with a round old scar across the back of it — and lay itself, very gently, on Tobin's grey head.
+
+It lay there, warm, the way a hand lies on the head of a child who is asleep and is not to be woken.
+
+"Tobin," said the man.
+
+That was all he said. Only the name. He said it the way you say the name of somebody who has been lost a long time and has just this minute been found.
+
+Nothing happened.
+
+Then something did.
+
+It began at the top, in Tobin's hair, under the man's hand: a faint warmth coming up into the grey, like the first light of a fire in a cold room. It was gold — the untidy, ordinary, sticking-up-at-the-back gold of Tobin's hair, coming back strand by strand under the scarred brown fingers, slowly, as if it were being poured. It came down over his forehead and into his eyebrows, which were fair and ridiculous and always looked surprised. It came into his face — the grey went out of his cheeks the way frost goes off a window when the sun gets to it — and pink came after. It came down his neck, and down his arms, all the way to his hands; and his hands, lying in the ash, were pink and ink-stained and ordinary, and in each palm was the round scar the size of the bottom of a little brass lamp.
+
+The frost went off his spectacles.
+
+Tobin breathed in — a long breath that caught in the middle, the way a breath catches when you have been under water a long time.
+
+He opened his eyes.
+
+He looked up — not at Wren; past her — at the man kneeling over him with one hand on his head. He looked for a long moment, blinking, the way you look at something very bright. His lips moved, and no sound came out of them.
+
+Wren found that she was crying. She had not noticed starting. Tears were running down her face and dripping off her chin onto Tobin's shirt, and she did not care who saw, and she did not wipe them away.
+
+Cinder came trotting back up the slope, her tail blazing like a torch, and sat down beside the man as if she had always sat there, and looked from one of them to the other with her tongue out.
+
+The man looked at her.
+
+"Yes," he said. "Well done. You've been very good. You can stop sitting on people now." Cinder sneezed, a great shower of gold sparks, all over his sleeve. He brushed them off and did not seem to mind. "Mostly," he said.
+
+Then he took his hand from Tobin's head, and sat back on his heels, and looked across Tobin at Wren.
+
+He had kind eyes.
+
+That was the first thing she noticed, and afterwards it was the thing she remembered best. Not the colour of them. Only that they were kind, deep-set, with lines at the corners from laughing; and that they looked at her — at her cropped hair and her ash-black face and her red, wet, furious eyes — as if she were somebody worth looking at.
+
+Something tugged at her memory, hard, the way a fish tugs on a line. A smell of bread. A canal wall. A crate.
+
+"Wren," he said.
+
+Nobody had said her name like that since a tower on a wall, and a pot of dreadful tea.
+
+She opened her mouth. Nothing came out of it.
+
+The man smiled. It began in his eyes and ended up somewhere in his beard; and he looked from her to Tobin, who was trying to sit up and could not quite manage it, and back again.
+
+"You two look half starved," he said. "Hungry?"
+
+## Breakfast by the Fire
+
+The first piece of toast was black.
+
+It was not a little brown at the edges. It was black all the way through, as black as the inside of a chimney, and when the man lifted it off the toasting-fork it was still smoking gently, like a small wet bonfire. He turned it over and looked at the other side, which was blacker.
+
+Then he laughed.
+
+He laughed out loud, sitting on his heels by the fire — a real laugh, a helpless one, the kind that comes up from under the ribs and will not be stopped — and Wren, on a stone across the fire with her arms round her knees, heard a sound come out of her own mouth that she did not recognise.
+
+It was a laugh. A small cracked one, like a door that has not been opened all winter. She clapped her hand over her mouth, but it was too late. It was out.
+
+"Well," said the man, "that one's yours, Cinder."
+
+Cinder took it from his fingers with great delicacy, carried it three steps away, and ate it, crunching loudly and looking at nobody, as if burnt toast were exactly what she had wanted all along.
+
+---
+
+They had come up to the top of the Hill together, slowly, in the cold bright morning.
+
+Tobin could hardly walk. He leaned on Ash's pole, and on the man's arm; and Wren walked a little behind with the lamp, not helping and not going away, and not taking her eyes off him once.
+
+At the top, by the workshop wall, was the little ring of stones where the Remnant had made their fire. The ashes were long cold. The man knelt down by them and raked them together with his fingers, and blew on them, once, quite gently, the way you blow on a spark you want to keep.
+
+They caught.
+
+I am not able to tell you where the basket came from. Wren never found out, and I do not think she ever asked. It was simply there by the fire when she next looked: a wide, flat basket with a cloth over it, and from under the cloth came a smell of new bread and a little drift of steam. Beside it was a heap of apples, so red in the morning light that Wren stared at them as if she had never seen an apple before, which in a way she had not.
+
+The man went into the workshop and came out with a long iron toasting-fork from the wall. He had not looked for it. He had gone straight to it.
+
+Now the second piece of toast was golden, and the apples were roasting in the edge of the fire, splitting their skins and hissing; and he held the toast out across the fire to Wren.
+
+She looked at it. She looked at the hand holding it.
+
+"How much?" she said.
+
+It came out by itself, from Soot Lane and Mott's yard. It was the oldest thing she knew how to say.
+
+"No charge," said the man.
+
+"Everything's got a charge."
+
+"Not this," he said. "It's given."
+
+Wren did not take the toast. She was looking at his face. At the lines at the corners of his eyes. At the eyes themselves, deep-set and kind, looking at her — at her tufty cropped hair and her sharp chin and her ash-black hands — as if she were somebody worth looking at. She had been hungry, once, outside a pawnshop in Crookback Market, and somebody with kind eyes had put a warm loaf into her hands and said those very words; and she had gone three steps, and thought of something cheeky to say, and turned round.
+
+And he had not been there.
+
+He was here.
+
+Wren took the toast. She did not eat it, and she did not say anything at all, because her throat had closed up altogether. The man did not seem to need her to.
+
+---
+
+It was Cinder who heard them coming.
+
+She sat up with her ears pricked and her mouth full of crust, and stared down the far slope of the Hill; and a moment later Wren heard it too — feet in the ash, and voices, and somebody laughing and crying at the same time, very loudly.
+
+Then over the brow of the Hill came Mira, running.
+
+She had the Chronicle clutched to her chest in both arms, which is not a good way to run uphill; and behind her, more slowly, came the Remnant, grimy and scratched, staring at the colour coming up out of the ground as if they were walking into a dream. In the middle of them, on her crutch, with her left arm strapped up in a sling made of somebody's shawl, came Sister Hale. She was laughing and crying so hard that two people had to hold her up.
+
+Mira did not stop running until she got to Wren. Then she dropped the Chronicle in the ash, which she would never have done in her right mind, and threw both arms round her.
+
+"I *heard* it," she said into Wren's neck. "At dawn it sounded like the whole Hill breathing out. And then the colour came down the slope towards us like water, and we *ran*—" She pulled back and held Wren at arm's length and stared at her. "Your ribbon," she said. "Wren, your ribbon. I didn't know red could go as far as *that*."
+
+"Nor did I," said Wren. Her voice was thick.
+
+"And Tobin—" Mira had seen him, sitting by the fire with Ash's pole across his knees and his toast in his hand, pink and ink-stained and blinking. Her face crumpled up again. "Oh, Tobin. Oh, you *idiot*. We thought—"
+
+"I know," said Tobin. "I'm sorry. I'm — I'm all right, I think. Mostly."
+
+"There's room by the fire," said the man, behind them. "Come and sit down, all of you. There's plenty. There is always room."
+
+Mira went quite still.
+
+She did not turn round. She shut her eyes and tipped her head a little on one side, and Wren knew that she was not hearing the words at all. She was hearing the voice underneath them: low and warm and a little rough, like mist lying on a slow river.
+
+Mira opened her eyes, and turned round, and looked at him.
+
+He was sitting by the fire, turning an apple with the end of the toasting-fork. His hands were busy. She looked at them for a long moment — at the round old scar across the back of the one nearest her — and Wren saw her lips move, very slightly, as if she were counting.
+
+"Your oar," said Mira, in a small voice. "It creaks on the left."
+
+The man looked up at her and smiled.
+
+"It always has," he said.
+
+Mira sat down in the ash where she was, quite suddenly, as though her knees had given way, and looked at him; and her face was so full of light that Wren had to look away.
+
+Sister Hale had got to the fire by now. She stood leaning on her crutch, her old face working, and said, quite helplessly:
+
+"Oh, *duck*—"
+
+And stopped, with her good hand over her mouth, appalled.
+
+The man laughed. It was the same laugh as at the toast: the real one, from under the ribs.
+
+"*Duck* will do very well," he said. "Sit down, Sister, before you fall down. Here. Mind the arm. You've been very brave, and you've been hurt, and you've not had any breakfast. Have an apple."
+
+Sister Hale sat down. She took the apple. She held it in her good hand and looked at it, and then at him, and two great tears ran down into the wrinkles of her face, one from the bright eye and one from the milky one.
+
+"We only ever had the songs, Master," she said. "All my life. Only ever the songs."
+
+"I know," said the man. "I heard them. You sang them very well." He paused. "Rather loud, some of them."
+
+And Sister Hale threw her head back and laughed her great cracked laugh, and the whole Remnant laughed with her, with their mouths full of toast; and the sound went up off the top of Cinder Hill, where, so far as anybody knew, nobody had laughed for three hundred years.
+
+---
+
+Tobin had not eaten his toast.
+
+He sat a little apart from the others, at the edge of the firelight, with Ash's pole across his knees and the toast going cold in his hand. He had not said anything since Mira. He was looking at his hands.
+
+After a while the Lampwright came and sat down beside him.
+
+He only sat there at first, with his elbows on his knees, looking out over the Burned Country; and Tobin, who had been waiting for something — a reckoning, a list — found that his heart had begun to thump.
+
+Then the man reached across and laid his hand for a moment over Tobin's — very lightly, so that it did not hurt.
+
+It was warm, as it had been warm on the end of a cold dock, with the gulls going over and the tide gone out. And on the back of it was an old scar, pale and puckered, running right across it from side to side.
+
+Tobin looked at the scar, and his breath caught, exactly as it had caught then. He did not say anything. He did not need to. He knew.
+
+"Eat your toast," said the man.
+
+Tobin ate his toast, very slowly, because his hands were shaking; and when he had finished, the man said:
+
+"Tobin, do you love me?"
+
+Tobin looked up. He had thought there would be a great deal more to it than that. He found that the answer was there already, and had been for a long time, and was not at all difficult to say.
+
+"Yes," he said.
+
+"Then keep my lamps," said the man.
+
+Tobin's hand closed on Ash's pole across his knees. He did not say anything. He only nodded.
+
+They sat for a while. Over by the fire Mira was showing Sister Hale the colour of an apple — *red*, she was saying, *but a different red from the ribbon, Sister; how many reds are there?* — and the cobbler was trying to get a burnt crust back from Cinder, and failing.
+
+"Tobin, do you love me?" said the man.
+
+"Yes," said Tobin. More quietly.
+
+"Then look after the small ones."
+
+Tobin nodded again. He was looking at the ground now. Something was happening in his chest that he did not understand, a kind of tightening, the way a rope tightens when somebody begins to take up the slack.
+
+And the man said, the third time, gently, "Tobin, do you love me?"
+
+It hurt.
+
+It was not a cruel question, or asked in a cruel way. But the third time it went straight in, under all the places he had been keeping safe, and found the sore place, and pressed on it; and Tobin, who had not cried on the end of the fish-dock, or on the road, or in the Queen's camp with the grey coming up through his hands, put his face down and cried as if he would never stop.
+
+"You know everything," he said. It came out in pieces. "You *know* everything. You know I do."
+
+"Then follow me," said the man.
+
+He took Tobin's hands. He took both of them, and turned them over, palm up, in his own; and Tobin, looking down through the tears and the one cracked lens, saw the two round scars on his own palms, the shape of the bottom of a little brass lamp. And round them, holding them, he saw the scars on the man's palms.
+
+They were the same shape.
+
+The very same: round, and deep, and puckered at the edge, the shape a burn makes when you hold something very hot for a long time and do not let go. Only bigger, and older, and deeper, so that his own, lying inside them, looked like a child's drawing of the real thing.
+
+Tobin stared at them.
+
+"They're the same," he said. His voice had gone odd. "Exactly the same shape. Only yours are — I'd say about half as big again — no, more, the diameter's nearer twice—" He stopped. He looked up. "Sorry. I'm — sorry. I don't know why I'm measuring them."
+
+The man laughed. He did not let go of Tobin's hands.
+
+"I'd be worried if you didn't," he said.
+
+---
+
+Wren waited until the Lampwright had gone back to the fire. Then she got up and went and stood in front of Tobin, and Tobin looked up at her. His eyes were red. Hers were too, probably. She did not care.
+
+She had thought all night of ways round it: a joke, or just giving him back the scarf and walking off, so that nobody would have to say anything.
+
+If you have ever had to say sorry for something truly bad — not *sorry I trod on your foot*, but the other kind — you will know that it is one of the hardest things there is. It is harder than a fight. In a fight you can be angry, and anger is warm, and it holds you up. Saying sorry is like taking your coat off in the snow.
+
+Wren had never taken her coat off for anybody in her life.
+
+"I said I wished it had been you," she said.
+
+Her voice came out flat and hard, like a stone. Tobin did not say anything.
+
+"In Vaelport. On the harbour wall. I said you sold him. I said I wished it had been you instead of him." She swallowed. "And I've thought it was true ever since. I've walked all this way thinking it. Only then last night they were — you were going grey, and I was — and I didn't. I don't." She stopped. Her face was burning. This was the worst part, and she knew it was coming, and she could not get round it. "It was the worst thing I ever said to anybody. And I've said some things. I'm sorry. I'm sorry, Tobin. Will you—"
+
+She could not get the last bit out. It stuck.
+
+She stood there with her fists clenched and her chin up and her eyes stinging, and it was a very long moment, and Cinder came and sat down exactly between their feet, the way she had sat by the fire on the night they all came, and looked up at both of them.
+
+"Will you forgive me," said Wren. "For it."
+
+"Yes," said Tobin.
+
+He did not make her wait for it. That was what she remembered afterwards. Not for one heartbeat, the way she would have made him wait. He said it at once, as if it had been ready in his mouth for days.
+
+"Yes," he said again. "Of course. Wren, I — it *was* true. I did sell him. I'm the one who—"
+
+"Shut up," said Wren. "I'm not finished."
+
+She took off the scarf. She unwound it from round her neck — twice round, the way it had been all the way from Vaelport — and held it out to him, all of it, in both hands.
+
+"Here," she said. "It's yours. I never gave it back."
+
+Tobin looked at the scarf. He looked at her. Then he got up, slowly, leaning on Ash's pole, and took it from her; and instead of putting it on, he put it round her neck again, twice round, carefully, the way you would wrap up somebody smaller than you who was going out in the cold. He tucked the end in.
+
+Wren let him.
+
+"It's striped," she said, after a moment. Her voice had gone wobbly. "Did you know it was striped?"
+
+"Of course it's striped," said Tobin. "Green and blue. What did you think it was?"
+
+"Grey," said Wren. And then, because she was Wren, and could not help it: "If you tell anybody I said sorry, I'll push you off this hill."
+
+Tobin considered the slope.
+
+"Technically," he said, "it's a fairly gentle gradient on this side. You'd have to push quite hard."
+
+Wren hit him on the arm. Not very hard. And then — she was never sure afterwards which of them started it — she put her face against his shirt, and he put his arms round her, and they stood there on the top of Cinder Hill holding on to each other like two people on a roof in a high wind, while Cinder sat between their feet and looked pleased with herself, and nobody round the fire said a single word about it.
+
+---
+
+Later, when the Remnant were lying about in the warm ash like cats, Wren went and sat by the fire. The Lampwright was turning the last of the apples with the end of the toasting-fork, slowly, so that they did not burn. Wren watched his hands.
+
+"Old Ash," she said at last.
+
+The man did not look up.
+
+"He's under the rock," said Wren. "In Vaelport. At the bottom of the mine. There's a whole mountain on top of him, and nobody even — there's nothing. Nobody even got to say anything." She stared at the fire. "He held the door. He held it so we could get out, and then it all came down, and he's just *gone*. Lost. And I never even—"
+
+"Wren," said the man.
+
+She stopped.
+
+He said, "Old Ash isn't lost. He's waiting."
+
+He did not explain it. He did not say *waiting for what*, or *where*, and Wren did not ask him. She sat there with the words in her lap, turning them over like a smooth stone picked up on a beach; and they were warm, the way the ground was warm, all the way through.
+
+After a long time she said, "And my mum and dad?"
+
+She had never asked anybody that. Not Ash. Not anybody. She did not know she was going to ask it until it was out.
+
+The man turned an apple over. He looked at her then, across the fire, with those kind deep-set eyes, and she saw that he knew exactly what she was asking, all of it — everything she did not know, and had never known, and was frightened to know.
+
+"Trust me with them."
+
+Nothing more. And Wren, who had never trusted anybody with anything in her life, found that she could.
+
+He went back to the apples.
+
+And as he turned them, very softly, under his breath, the way a man hums who is busy with his hands and has forgotten anybody is listening, he began to hum a tune.
+
+Wren knew it before the third note. She would have known it anywhere. She had known it all her life. *Morning comes, morning comes* — the old Lamplighter song, sung on the walls at the turning of the night, sung by more than one mother. Her mother's song.
+
+He hummed it slowly. He hummed it past the place where it always stopped for her, past *and the dark shall not keep us*, on into the part she did not have, the part nobody had ever been able to give her. She had heard it go that far once before, in a dream, by a cold forge, and woken too soon. It was only a hum. There were no words in it. But the tune went on, and climbed, and turned, and she sat absolutely still and held her breath and listened to it as she had never listened to anything —
+
+And then he took an apple off the fire, and blew on it, and the tune stopped. Not at an ending. In the middle, the way a tune stops when somebody has simply put it down for a while and means to pick it up again later.
+
+Wren did not ask him to finish it.
+
+She never quite knew why — except that it seemed to her that it was not a song to be handed across a campfire like an apple. Not yet.
+
+He held out the apple to her.
+
+"Careful," he said. "It's hot."
+
+She took it.
+
+Then he stood up, and stretched, and brushed the ash off his knees, and looked over his shoulder at the long low ruined building at the top of the Hill, where the doorway stood open and the tools hung waiting on the walls.
+
+"Now," he said. "Let's go and see what you lot have been doing to my workshop."
+
+## Carry My Flame
+
+He went into the workshop the way a man goes into his own kitchen after a long time away: not slowly, not solemnly, but looking about him, noticing things.
+
+The Remnant crowded in the doorway behind him and did not dare come further. Wren and Mira and Tobin came in, because nobody stopped them; and Cinder came in first of all, because nobody ever stopped Cinder.
+
+It was the same long low room that Wren had found alone, days ago, with the dark coming down. The cold forges. The workbench. The tools hung neatly along the walls, each on its own peg, as if somebody had tidied up one evening meaning to start again in the morning. But it did not feel the same. It had felt, that first night, like a room holding its breath. Now it felt like a room that had let it out.
+
+He hung the toasting-fork back on its peg, between the tongs and the little hammer. It fitted exactly.
+
+Then he walked along the wall, slowly, and touched the tools as he passed them — not taking any down, only touching them, a fingertip on a handle here, a palm flat on the head of a mallet there, the way you might touch the heads of children in a row. He stopped at the bench and looked at the half-finished lamp lying on it, with its brass body and its empty top where the chimney should have gone. He picked it up and turned it over in his scarred hands, and set it down again, very gently, exactly where it had been.
+
+And then he turned round and looked at the racks.
+
+A hundred small brass lamps, row on row, every one of them finished except for the last part: no chimney, no wick, no flame. They stood on their shelves in the grey light from the doorway like a choir that has been waiting a very long time for somebody to give it the note.
+
+The Lampwright looked at them.
+
+He did not say anything. He stood in the middle of his workshop with his hands at his sides and looked at the hundred unfinished lamps for a long, long time; and then, slowly, he smiled. It was not the laugh from the toast. It was quieter than that, and it went deeper, and it was the kind of smile a person smiles when he is looking at something he has been looking forward to for years and years, and it is nearly here.
+
+Tobin opened his mouth.
+
+Mira put her hand on his arm, very lightly, and he shut it again.
+
+I have often wondered what he was thinking, standing there among his lamps. I believe I know, now. But this is not the place to tell it; the children only knew that whatever it was, it made him glad.
+
+---
+
+The iron door at the back of the workshop stood open, the way Tobin had left it the night he fitted his mother's compass into the lock. Mira went to the Lampwright with the Chronicle in her arms. She had wiped the ash off its cover with her sleeve.
+
+"This is yours, I think," she said.
+
+He took it from her. He did not open it at the beginning. He opened it near the end, as if he knew exactly where to look, and found the last written page, and read the last written line. Wren could not see it from where she stood. She did not need to. She knew it by heart, and so did all of them. *On the third morning, the fire woke.*
+
+He read it. He smiled at it, the same smile as at the lamps. Then he closed the book and put it back into Mira's arms.
+
+"Look after it," he said.
+
+Mira held it tight against her chest and nodded, and could not say anything.
+
+Wren had been standing by the cold forge with the lamp in her hands, working up to something, the way she had worked up to Tobin. It was no easier the second time.
+
+She went to him and held it out.
+
+"Here," she said. "It's yours. It always was. It's your own lamp — Ash said so, the one you carried down the Mountain. You should have it back. You can do far more with it than I can. I nearly—" Her voice wobbled. "I nearly let it go out. In the tent. I had it right up to my mouth."
+
+"I know," said the Lampwright.
+
+"So you should have it."
+
+He did not take it. He put out his hands and folded them round hers — round her hands, and the lamp inside them, both together — so that she could feel the scars, warm and rough, against her knuckles.
+
+"It was given, Wren. Not lost."
+
+Wren stood very still.
+
+She was in her garret in Soot Lane, on a night a very long time ago, with the grate cold and the lamp sitting on her windowsill where it had come back to her yet again, and she was telling it off for following her about. And a voice had come down the chimney. Low and kind. *It was given, child. Not lost.* She had been frightened then, for the first time she could remember, and comforted at the same time, and she had never told anyone, not even Ash.
+
+She looked up at him.
+
+He let go of her hands. The lamp stayed in them, burning gold, leaning a little towards him the way it always would now, and warm against her fingers as it had been the very first night, when she had stuffed it inside her coat in a sealed-up flue and run.
+
+"Keep it," he said. "You'll want it. You've a long way to carry it yet."
+
+---
+
+They stayed on the Hill that day, and that night.
+
+It was a quiet sort of day, and quiet days are hard to tell. The Lampwright mended Sister Hale's crutch, which had cracked in the scramble down the Hill, with a strip of brass from his own bench, and told her it would now outlast her, and she told him that was not saying much. He walked round the top of the Hill with the smallest of the Remnant's children holding on to two of his fingers, and showed her where the green things were coming up out of the ash, and let her give them names. Cinder followed him everywhere. If he sat down, she sat on his feet. If he stood up, she stood up. Once he stepped over her, and she was so offended that she sneezed a shower of gold sparks onto his boots, and he apologised to her very gravely, and she forgave him at once.
+
+And the colour went on coming back. All day it spread down the sides of the Hill from the top, slowly, the way warmth spreads through a cold room from a fire: brown and black and rust and green, and the red of the rock showing through. By evening it had reached the empty grey tents of the Queen's camp below, and gone round them, and on.
+
+Night came.
+
+It came the way nights always came in Gloamhaven, quickly and very dark; and the Remnant settled in heaps round the fire, and Sister Hale sang them something old and quiet in her cracked strong voice, and one by one they went to sleep.
+
+Tobin woke in the middle of it.
+
+He did not know what had woken him. He lay in the warm ash with his head on his arm and looked up at the dark — the real, thick, black dark of the Burned Country at midnight, with no moon and no Ring-lamp for a hundred miles — and waited for his hands to start shaking.
+
+They did not shake.
+
+He thought of his mother's little night-lamp, and found he could not remember the last time he had wanted it. He had been afraid of the dark every night of his life since he was five years old. And now here he was, lying in the very middle of it, on the hill where the dark had come up like a tide —
+
+And it was only dark. That was all. It was only the night, and the night was warm.
+
+He sat up. The fire had burned down to red, and somebody was sitting beside it, feeding it a stick at a time.
+
+Tobin went and sat down next to him. Neither of them said anything for a while.
+
+"May I ask you something?" said Tobin at last.
+
+"You may."
+
+"It's a question I asked Old Ash, in the Leaning Tower, the night he told us about you with shadows on a sheet." Tobin took a breath. "If you lit a thousand lamps from one flame — and you did, in the story, every lamp in every city — then by the end there ought to be nothing left. That's just arithmetic. Only there was. There always is. Wren gave it to the whole Beacon in Emberwick and it was no smaller after. And I've never been able to make it come out. Ash said to hold the question. To keep it in my pocket. He said it was a good one."
+
+The Lampwright put another stick on the fire, and watched it catch.
+
+"And have you kept it?"
+
+"Yes. All this time."
+
+"Then keep it a little longer," said the Lampwright. "It's nearly ripe."
+
+Tobin thought about this. He found, rather to his own surprise, that it was a perfectly good answer, and that he did not mind at all.
+
+They sat by the fire together until Tobin's head began to nod, and then he lay down again, beside it this time, in the warm, and went to sleep with the dark all round him; and he did not dream of anything at all.
+
+---
+
+The Lampwright woke them before the sun was up.
+
+He did not shake anybody. He simply stood up by the fire, and somehow everybody on the Hill was awake at once and sitting up, rubbing their eyes, looking at him. The sky in the east was going grey. It was cold, the way mornings were always cold. But the ground under them was warm.
+
+"Come and see," he said.
+
+He took them to the eastern brow of the Hill, where it sloped away down into the Burned Country. They stood in a ragged line in the half-light — Sister Hale on her mended crutch, the Remnant in their heaps of shawls, Mira with the Chronicle, Tobin with Ash's pole, Wren with the lamp, and Cinder sitting on the Lampwright's left boot — and looked out.
+
+The whole of Gloamhaven lay round them, if you could have seen far enough. The plains of ash. The Scarecrow Farms, where grey people stood in grey fields and did not come in. The coast hills, and Vaelport on the far side of them, with its dead stones. Emberwick, and the Greywaste, and Deepholm under the ground. And other cities that none of them had ever seen, each with its Ring of lamps on its walls, burning dimmer every year; and between the cities, all the miles and miles of places that had no Ring at all.
+
+"Carry my Flame," said the Lampwright, "to every Ring. And past them."
+
+Nobody said anything for a moment.
+
+"Past them?" said Mira.
+
+"Past the walls," said the Lampwright. "Into the farms, and the mines, and the boats, and the places nobody has bothered to put a lamp. Anywhere a door is shut. Anywhere anybody is sitting in the grey." He looked along the line at them, one by one: at the Remnant, and Sister Hale, and Mira, and Tobin, and Wren. "Anyone who asks. Rich and poor. Kind and unkind. And never charge a penny."
+
+Wren thought of the Heskeths' kitchen, and the thin soup, and Posy sitting up in bed asking for bread. She thought of the grey man in the field who had turned his head towards the house.
+
+"With *one* lamp?" she said. It came out sharper than she meant. It always did. "There's hundreds of people out there. Thousands. There's one lamp. And there's—" she looked along the line — "not twenty of us. Counting the fox."
+
+The Lampwright looked at her, and his eyes were laughing.
+
+"What is given—" he said.
+
+And Wren, who had first heard that in a tower on a wall and not believed a word of it, heard herself finish it.
+
+"—grows," she said.
+
+"Well, then," said the Lampwright.
+
+He turned and looked out to the east, where the grey was getting paler.
+
+"At Midsummer," he said, "there will be a gift. For all of you. Wait for it." He looked back at them, and at Wren last of all. "You won't carry it alone."
+
+"What gift?" said Tobin at once. "What kind of — how will we know when—"
+
+"You'll know," said the Lampwright, and Tobin, for the second time in two days, found that this was a perfectly good answer.
+
+Then the Lampwright bent down and scratched Cinder between the ears, and said something to her that nobody else could hear, and she sat back on her haunches and looked up at him with her tail curled round her feet and her spark burning bright and steady. And he walked away from them, down the eastern slope of Cinder Hill, towards the morning.
+
+---
+
+Wren ran after him.
+
+She had not meant to. Her feet did it before the rest of her had decided. She ran down the slope in the warm ash, with the lamp in her hand and the striped scarf flying, and she was thinking, the whole way, of a market and a crate and three steps; of a river and a mist and a boat that was not there; of all the times she had turned round to say something and found nobody to say it to.
+
+"Wait," she said. "*Wait*—"
+
+He stopped. He turned round. He waited for her.
+
+She stopped in front of him, out of breath, and found that she did not know what to say after all. She had never been any good at it. She had said *rot* and *blast* and *you great lump* all her life, and *how much*, and *everything costs*. She had hardly ever said the other thing. It was not a Soot Lane word.
+
+She said it anyway.
+
+"Thank you," said Wren.
+
+He smiled at her. It started in his eyes, and went down into the lines at the corners of them, and ended up in his beard.
+
+"You're welcome, Wren," he said.
+
+Then he turned and went on down the hill, and she stood and watched him. She watched him all the way down the slope, and out onto the edge of the plain, where the ash ran out to meet the sky; and the colour came up behind him in his footprints, brown and green, a thin bright path going east. Behind her the others had come to the brow. She heard them come. She heard Mira catch her breath, and Tobin say *oh* very quietly, and Sister Hale begin, under her breath, to sing.
+
+The sun came up.
+
+It came up right in front of him, over the far edge of the Burned Country, and for a moment he was a dark shape against it, walking — no bigger than one of Ash's paper puppets on a sheet, a little figure of a man going on through the towns.
+
+And then he was not there.
+
+Wren blinked. She looked along the line of the plain, and up and down it, and back again. There was nothing on it. There was only the path of colour going out from the foot of the Hill, brown and green, as far as she could see — and then the plain, and the sun.
+
+She did not feel the way she had felt at the canal wall in Crookback Market, with her mouth open and the crate empty. She did not feel the way she had felt on the bank of the Gloam River. She stood there in the warm ash, and she found that she was not frightened, and not cheated, and not even very sad. He was not gone the way Ash had seemed gone. He was gone the way somebody goes into the next room. You know he is there. You can hear him moving about.
+
+Cinder came down the slope and sat beside her, and looked out after him.
+
+She did not whine. She did not run after him. She sat very upright with her tail round her feet, the way she had sat on the harbour wall at Vaelport watching three roads, and the spark at the end of her tail was burning bright and gold and steady, like a lamp in a window that somebody has lit and means to keep lit, for as long as it takes.
+
+---
+
+They stood on the brow of Cinder Hill for a long time after that, all of them together.
+
+Nobody said very much. There did not seem to be any need. They knew now, every one of them, what Old Ash had known that day on the bank of the Gloam River, when he leaned on his two poles and smiled and would not say why. And they knew, too, where he had been: in the market, and in the chimney, and in the boat, and on the dock — never more than a step or two out of sight.
+
+Tobin was leaning on Ash's pole. Mira was holding the Chronicle. Wren was holding the lamp. Sister Hale had stopped singing and was simply standing, with her good arm round as many of the Remnant as she could reach, and her one bright eye shining.
+
+And the sun went on coming up.
+
+It came up over the Burned Country, and over the black round Hill, and over the long low workshop with its hundred lamps waiting on their shelves; and I will not tell you it was golden, because it was not. Not yet. It was still the pale cursed sun of Gloamhaven, like a coin seen through dirty water, the same sun it had been for three hundred years.
+
+Wren, who had never in her life liked beginnings, because in her experience they always cost you something later, tucked the lamp inside her coat against her ribs, and wound the striped scarf twice round her neck, and turned to the others, and grinned.
+
+"Well," she said. "Come on, then. It's a long way to everywhere."
+
+Nobody moved, quite yet. Because Mira had lifted her face to the east, and then Tobin, and then Sister Hale and all the Remnant, one by one, and last of all Wren — as if they had all felt the same thing at the same moment, and could not quite believe it, and did not want to be the first to say so.
+
+It was only a little. You might not have noticed it, if you had not been standing there. But it was there, and it was true, and it was a beginning.
+
+For the first time in three hundred years, the sun over Cinder Hill looked a little warmer.
