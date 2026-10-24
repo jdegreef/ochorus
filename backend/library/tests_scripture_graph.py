@@ -266,7 +266,7 @@ class GraphViewTests(TestCase):
         res = self.client.get("/api/library/scripture/romans/8/28/")
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.data["reference"], "Romans 8:28")
-        self.assertIn("work together for good", res.data["text"])
+        self.assertIn("all things work together and lead to good", res.data["text"])
         self.assertEqual(len(res.data["passages"]), VERSE_FLOOR + 1)
         self.assertEqual(res.data["passages"][0]["author_name"], "A Writer")
 
@@ -507,7 +507,7 @@ class BookViewTests(TestCase):
     def test_verses_carry_their_text_and_only_pages_that_exist(self):
         verses = self.get("romans").data["verses"]
         self.assertEqual([(v["chapter"], v["verse"]) for v in verses], [(8, 28)])
-        self.assertIn("work together for good", verses[0]["text"])
+        self.assertIn("all things work together and lead to good", verses[0]["text"])
 
     def test_a_book_without_chapter_pages_404s(self):
         self.assertEqual(self.get("nahum").status_code, 404)

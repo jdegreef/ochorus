@@ -8,8 +8,11 @@ Two jobs:
   in the HTML) and ``pythonbible`` validates each one, so a capitalised word that
   merely looks like a book (``Room 3:16``) is left alone.
 * :func:`lookup` resolves a reference to its verse text for the popover, from the
-  public-domain **American Standard Version** bundled by ``pythonbible-asv`` —
-  no network, so it works offline and needs no external Bible API.
+  **Open Word Bible**, English Balanced (OWB-B, CC0, openwordbible.org), bundled
+  as ``data/bible/owb-en-b.json.gz`` (``scripts/build_owb_bible.py``) — no
+  network, so it works offline and needs no external Bible API. A reference OWB
+  has no verse for (the Romans doxology, which its Greek text lacks) falls back to
+  the bundled public-domain **American Standard Version**, labelled as such.
 
 Two candidate vocabularies, on purpose. Display and linking
 (``annotate_references`` / ``reference_candidates``) read ``_LINKABLE``: verse
@@ -18,19 +21,75 @@ citations plus whole-chapter ones ("Romans 8"). Indexing and the chip rows
 citation is not a verse citation and must not count toward the scripture-page
 floors.
 
-English (ASV) only for now; a target-language edition can layer on later.
+English only for now; a target-language edition can layer on later. The
+citation audits (:func:`misattributed` and friends) still read the ASV: they
+compare an author's KJV-era quotation with the verse it cites, and the ASV is
+the older wording's nearest neighbour.
 """
 
 from __future__ import annotations
 
+import gzip
+import json
 import re
 from functools import lru_cache
+from pathlib import Path
 
 import pythonbible as bible
 from pythonbible.versions import Version
 
 VERSION = Version.AMERICAN_STANDARD
-VERSION_LABEL = "American Standard Version"
+ASV_LABEL = "American Standard Version"
+#: The Bible readers see: the popover, the /scripture/ pages, the daily verse.
+VERSION_LABEL = "Open Word Bible"
+_OWB_PATH = Path(__file__).resolve().parent / "data" / "bible" / "owb-en-b.json.gz"
+
+
+@lru_cache(maxsize=1)
+def _owb() -> tuple[dict[int, str], dict[int, int]]:
+    """(verse id -> text, joined verse id -> the id holding its text)."""
+    with gzip.open(_OWB_PATH, "rt", encoding="utf-8") as fh:
+        data = json.load(fh)
+    verses = {int(k): v for k, v in data["verses"].items()}
+    joined = {int(k): int(v) for k, v in data["joined"].items()}
+    return verses, joined
+
+
+def owb_verse(verse_id: int) -> tuple[int, str] | None:
+    """(id the text is printed under, text) for one verse id, or None.
+
+    Where OWB prints two verses as one (Psalm 13:5-6) both ids answer with the
+    first's id, so a caller walking a range can print the text once.
+    """
+    verses, joined = _owb()
+    first = joined.get(verse_id, verse_id)
+    text = verses.get(first)
+    return (first, text) if text else None
+
+
+def _asv_text(verse_id: int) -> str:
+    try:
+        return bible.get_verse_text(verse_id, version=VERSION) or ""
+    except Exception:
+        return ""
+
+
+def verse_text(verse_id: int) -> str:
+    """The reader's text for one verse id (OWB), or ""."""
+    found = owb_verse(verse_id)
+    return found[1] if found else ""
+
+
+def reader_verse(verse_id: int) -> tuple[str, str]:
+    """(text, Bible label) for a page about one verse: OWB, else the ASV for a
+    verse OWB's Greek or Hebrew lacks (the Romans doxology), so a page that
+    existed before OWB keeps existing, under the label of what it shows.
+    ("", "") when neither has it."""
+    if text := verse_text(verse_id):
+        return text, VERSION_LABEL
+    if text := _asv_text(verse_id):
+        return text, ASV_LABEL
+    return "", ""
 
 # The chapter, Arabic ("3") or ROMAN ("iii"). Victorian devotional prose writes
 # the chapter in roman numerals — "Colossians iii. 11", "Luke ii. 10" — and 690
@@ -270,26 +329,38 @@ def reference_verse_ids(text: str) -> frozenset:
 
 @lru_cache(maxsize=4096)
 def lookup(ref_text: str) -> dict | None:
-    """Resolve a reference to ASV verse text for the popover, or None."""
+    """Resolve a reference to verse text for the popover, or None.
+
+    The Open Word Bible; the ASV, whole, when it has a verse OWB lacks
+    (Romans 16:20-27 runs into the doxology OWB's Greek ends before), so one
+    popover never mixes two Bibles under one label nor drops a verse unsaid.
+    """
     ref = _first_reference(ref_text)
     if ref is None:
         return None
     all_ids = bible.convert_reference_to_verse_ids(ref)
     verse_ids = all_ids[:_MAX_VERSES]
-    verses = []
-    for vid in verse_ids:
-        try:
-            text = bible.get_verse_text(vid, version=VERSION)
-        except Exception:
-            continue
-        if text:
-            verses.append({"number": vid % 1000, "text": text})
+    verses, version = [], VERSION_LABEL
+    if any(owb_verse(v) is None and _asv_text(v) for v in verse_ids):
+        version = ASV_LABEL
+        verses = [{"number": v % 1000, "text": t} for v in verse_ids if (t := _asv_text(v))]
+    else:
+        seen = set()
+        for vid in verse_ids:
+            found = owb_verse(vid)
+            if found is None or found[0] in seen:
+                continue
+            seen.add(found[0])
+            # Numbered as printed, unless OWB joined it to the previous
+            # chapter's last verse (Isaiah 64:1 into 63:19).
+            same_chapter = found[0] // 1000 == vid // 1000
+            verses.append({"number": (found[0] if same_chapter else vid) % 1000, "text": found[1]})
     if not verses:
         return None
     return {
         "reference": bible.format_scripture_references([ref]),
         "verses": verses,
-        "version": VERSION_LABEL,
+        "version": version,
         # A whole chapter ("Psalm 119") is cut to the first verses; say so, or
         # the popover passes off a fragment as the chapter.
         "truncated": len(all_ids) > _MAX_VERSES,
