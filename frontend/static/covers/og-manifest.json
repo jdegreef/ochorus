@@ -21409,6 +21409,37 @@
 				520
 			]
 		},
+		"uk/brave-for-god-2": {
+			"ground": "a2fd0f53e9076d951d428d352987159e073bc01ba15908952e55c7d18cacd00c",
+			"style": "young",
+			"volume": "2",
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.4,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 256, 311, 300],
+					[69, 331, 531, 406],
+					[130, 393, 470, 468]
+				],
+				"subtitle": [
+					[52, 523, 548, 551]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				244,
+				551
+			]
+		},
 		"uk/clothed-with-strength-and-dignity": {
 			"ground": "73c5d08a9d575054d8815b03d5a9d15c9a2bc371df277d91ff6569377a92c7bb",
 			"style": "originals",
