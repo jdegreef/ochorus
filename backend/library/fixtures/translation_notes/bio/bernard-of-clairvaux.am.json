@@ -1,0 +1,17 @@
+{
+ "kind": "bio",
+ "slug": "bernard-of-clairvaux",
+ "language": "am",
+ "job_issue": 4235,
+ "references": [
+  {
+   "reference": "Romans 1:14",
+   "status": "mined",
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh",
+   "block_index": 7
+  }
+ ],
+ "note": [
+  "The one scriptural phrase, 'debtor to the unwise also' (Romans 1:14), is a byte-exact fragment of the 1962 NT verse."
+ ]
+}
