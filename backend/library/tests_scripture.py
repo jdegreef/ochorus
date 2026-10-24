@@ -63,15 +63,38 @@ class ScriptureTests(TestCase):
         self.assertEqual(lookup("Psalm 13:6")["verses"][0]["number"], 5)
 
     def test_lookup_falls_back_to_the_asv_and_says_so(self):
-        # The Greek numbers 2 Corinthians 13:14 as 13:13, and OWB keeps the
-        # Greek numbers in the New Testament: no OWB verse 14. The reader still
-        # gets the verse, under the label of the Bible it actually came from.
-        from library.scripture import lookup, verse_text
+        # OWB's Greek ends Romans at 16:24; the reader still gets the
+        # doxology, under the label of the Bible it actually came from, and a
+        # range running into it is the ASV's whole rather than cut short.
+        from library.scripture import lookup, reader_verse, verse_text
 
-        self.assertEqual(verse_text(47013014), "")
-        data = lookup("2 Corinthians 13:14")
+        self.assertEqual(verse_text(45016025), "")
+        data = lookup("Romans 16:25")
         self.assertEqual(data["version"], "American Standard Version")
         self.assertTrue(data["verses"][0]["text"])
+        data = lookup("Romans 16:20-27")
+        self.assertEqual(data["version"], "American Standard Version")
+        # (The ASV, in its turn, leaves out 16:24.)
+        self.assertEqual([v["number"] for v in data["verses"]], [20, 21, 22, 23, 25, 26, 27])
+        self.assertEqual(reader_verse(45016025)[1], "American Standard Version")
+        self.assertEqual(reader_verse(43003016)[1], "Open Word Bible")
+
+    def test_lookup_skips_a_verse_neither_bible_has(self):
+        # Matthew 17:21 is in neither text: the range is OWB's, without it.
+        from library.scripture import lookup
+
+        data = lookup("Matthew 17:20-22")
+        self.assertEqual(data["version"], "Open Word Bible")
+        self.assertEqual([v["number"] for v in data["verses"]], [20, 22])
+
+    def test_a_verse_joined_across_chapters_keeps_its_own_number(self):
+        # OWB prints Isaiah 64:1 inside 63:19 (the Hebrew's numbering).
+        from library.scripture import lookup
+
+        self.assertEqual([v["number"] for v in lookup("Isaiah 64:1")["verses"]], [1])
+        self.assertEqual(
+            [v["number"] for v in lookup("Isaiah 63:19-64:1")["verses"]], [19]
+        )
 
     def test_lookup_endpoint_range(self):
         res = self.client.get("/api/library/scripture/?ref=Romans 8:28-29")

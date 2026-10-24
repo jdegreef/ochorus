@@ -25,7 +25,7 @@ export const BLESSINGS = {
 		},
 		"grace": {
 			"book": "2 Corinthians",
-			"passage": "13:13",
+			"passage": "13:14",
 			"text": "May the grace of the Lord Jesus Christ, the love of God, and the fellowship of the Holy Spirit be with every one of you."
 		}
 	},

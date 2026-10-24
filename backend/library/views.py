@@ -2320,13 +2320,14 @@ class ScriptureGraphView(APIView):
     has been able to do this since citations were indexed; this gives it a URL.
 
     404 for a reference no page exists for — an unreal one (Romans 99), one the
-    bundled Open Word Bible has no text for, or one under the citation floor. The floor
+    bundled Bibles have no text for, or one under the citation floor. The floor
     lives in ``scripture_graph.qualifying_pages`` and is checked HERE too, so a
     URL guessed by hand cannot reach a page the sitemap never advertised.
     """
 
     def get(self, request, book, chapter, verse=None):
-        from .scripture import VERSION_LABEL
+        from .scripture import VERSION_LABEL, reader_verse
+        from .scripture import verse_text as owb_text
         from .scripture_graph import (
             MAX_PASSAGES,
             VERSE_SPAN_CAP,
@@ -2335,7 +2336,6 @@ class ScriptureGraphView(APIView):
             english_chapters,
             reference_label,
             verse_ids_for,
-            verse_text,
         )
         from .search import fallback_snippet
 
@@ -2395,7 +2395,7 @@ class ScriptureGraphView(APIView):
             "passages_shown": len(passages),
         }
         if verse is not None:
-            data["text"] = verse_text(ids[0])
+            data["text"], data["version"] = reader_verse(ids[0])
         else:
             # A chapter page shows the verses the library ACTUALLY treats, not
             # the whole chapter: the full Bible text is the one part of this page
@@ -2424,25 +2424,19 @@ class ScriptureGraphView(APIView):
             # before this, and the build died on /scripture/genesis/1/27/, a
             # verse cited but under the floor. The reader must never be handed a
             # link to a page the floor deliberately withheld.
-            from .scripture import owb_verse
             from .scripture_graph import VERSE_FLOOR
 
-            # A verse OWB prints joined to the one before (Psalm 13:5-6) is
-            # listed once, under the number its text is printed at.
-            by_first: dict[int, set[int]] = {}
-            for vid, cids in per_verse.items():
-                if found := owb_verse(vid):
-                    by_first.setdefault(found[0], set()).update(cids)
+            # Only the verses the page's label covers: a verse OWB lacks has
+            # its own page, under the ASV's label, but no line here.
             cited = [
                 {
                     "number": vid % 1000,
-                    "text": verse_text(vid),
+                    "text": text,
                     "citing_count": len(cids),
-                    # The page at THIS id clears the floor on its own count,
-                    # never on the merged one: a link must not reach a 404.
-                    "has_page": len(per_verse.get(vid, ())) >= VERSE_FLOOR,
+                    "has_page": len(cids) >= VERSE_FLOOR,
                 }
-                for vid, cids in by_first.items()
+                for vid, cids in per_verse.items()
+                if (text := owb_text(vid))
             ]
             data["verses"] = sorted(
                 cited, key=lambda v: (-v["citing_count"], v["number"])

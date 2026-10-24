@@ -11,7 +11,7 @@ Two jobs:
   **Open Word Bible**, English Balanced (OWB-B, CC0, openwordbible.org), bundled
   as ``data/bible/owb-en-b.json.gz`` (``scripts/build_owb_bible.py``) — no
   network, so it works offline and needs no external Bible API. A reference OWB
-  has no verse for (a verse its Greek text omits, Matthew 17:21) falls back to
+  has no verse for (the Romans doxology, which its Greek text lacks) falls back to
   the bundled public-domain **American Standard Version**, labelled as such.
 
 Two candidate vocabularies, on purpose. Display and linking
@@ -67,10 +67,29 @@ def owb_verse(verse_id: int) -> tuple[int, str] | None:
     return (first, text) if text else None
 
 
+def _asv_text(verse_id: int) -> str:
+    try:
+        return bible.get_verse_text(verse_id, version=VERSION) or ""
+    except Exception:
+        return ""
+
+
 def verse_text(verse_id: int) -> str:
     """The reader's text for one verse id (OWB), or ""."""
     found = owb_verse(verse_id)
     return found[1] if found else ""
+
+
+def reader_verse(verse_id: int) -> tuple[str, str]:
+    """(text, Bible label) for a page about one verse: OWB, else the ASV for a
+    verse OWB's Greek or Hebrew lacks (the Romans doxology), so a page that
+    existed before OWB keeps existing, under the label of what it shows.
+    ("", "") when neither has it."""
+    if text := verse_text(verse_id):
+        return text, VERSION_LABEL
+    if text := _asv_text(verse_id):
+        return text, ASV_LABEL
+    return "", ""
 
 # The chapter, Arabic ("3") or ROMAN ("iii"). Victorian devotional prose writes
 # the chapter in roman numerals — "Colossians iii. 11", "Luke ii. 10" — and 690
@@ -312,30 +331,30 @@ def reference_verse_ids(text: str) -> frozenset:
 def lookup(ref_text: str) -> dict | None:
     """Resolve a reference to verse text for the popover, or None.
 
-    The Open Word Bible; the ASV only when OWB has none of the verses, so one
-    popover never mixes two Bibles under one label.
+    The Open Word Bible; the ASV, whole, when it has a verse OWB lacks
+    (Romans 16:20-27 runs into the doxology OWB's Greek ends before), so one
+    popover never mixes two Bibles under one label nor drops a verse unsaid.
     """
     ref = _first_reference(ref_text)
     if ref is None:
         return None
     all_ids = bible.convert_reference_to_verse_ids(ref)
     verse_ids = all_ids[:_MAX_VERSES]
-    verses, seen = [], set()
-    for vid in verse_ids:
-        found = owb_verse(vid)
-        if found and found[0] not in seen:
-            seen.add(found[0])
-            verses.append({"number": found[0] % 1000, "text": found[1]})
-    version = VERSION_LABEL
-    if not verses:
+    verses, version = [], VERSION_LABEL
+    if any(owb_verse(v) is None and _asv_text(v) for v in verse_ids):
         version = ASV_LABEL
+        verses = [{"number": v % 1000, "text": t} for v in verse_ids if (t := _asv_text(v))]
+    else:
+        seen = set()
         for vid in verse_ids:
-            try:
-                text = bible.get_verse_text(vid, version=VERSION)
-            except Exception:
+            found = owb_verse(vid)
+            if found is None or found[0] in seen:
                 continue
-            if text:
-                verses.append({"number": vid % 1000, "text": text})
+            seen.add(found[0])
+            # Numbered as printed, unless OWB joined it to the previous
+            # chapter's last verse (Isaiah 64:1 into 63:19).
+            same_chapter = found[0] // 1000 == vid // 1000
+            verses.append({"number": (found[0] if same_chapter else vid) % 1000, "text": found[1]})
     if not verses:
         return None
     return {

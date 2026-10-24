@@ -58,11 +58,13 @@ const PASSAGES = {
 	grace: { usfm: '2CO', chapter: 13, last: 1 }
 };
 
-// Straight ' too: OWB closes Numbers 6:26 on ."' (the Lord's speech, then Moses').
-const QUOTES = /^[\s“”‘’"']+|[\s“”‘’"']+$/g;
+const QUOTES = /^[\s“”‘’"]+|[\s“”‘’"]+$/g;
+// OWB English quotes with straight marks: Numbers 6:26 closes on ."' (the
+// Lord's speech, then Moses').
+const STRAIGHT = /^[\s“”‘’"']+|[\s“”‘’"']+$/g;
 
 function clean(text, locale) {
-	let s = text.replace(QUOTES, '');
+	let s = text.replace(locale === 'en' ? STRAIGHT : QUOTES, '');
 	if (locale === 'fr') s = s.replace(/’ /g, '’').replace(/ ’/g, '’');
 	if (locale === 'vi') s = s.replace(/Ð/g, 'Đ');
 	return s.replace(/\s{2,}/g, ' ');
@@ -75,8 +77,13 @@ function owbChapter(usfm, ch) {
 	owb ??= JSON.parse(gunzipSync(readFileSync(OWB)).toString('utf-8')).verses;
 	const [number, name] = OWB_BOOKS[usfm];
 	const base = number * 1_000_000 + ch * 1000;
-	const verses = [];
-	for (let n = 1; owb[base + n]; n++) verses.push({ number: n, text: owb[base + n] });
+	// Every verse of the chapter, past any OWB lacks; a verse it prints joined
+	// to the one before (Psalm 13:5-6) is that one's entry, as Take Root gives it.
+	const verses = Object.keys(owb)
+		.map(Number)
+		.filter((id) => Math.floor(id / 1000) === base / 1000)
+		.sort((a, b) => a - b)
+		.map((id) => ({ number: id % 1000, text: owb[id] }));
 	return { book_name: name, verses };
 }
 
