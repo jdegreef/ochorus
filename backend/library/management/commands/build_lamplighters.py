@@ -935,7 +935,7 @@ VOLUMES: dict[int, dict[str, object]] = {
             "© James DeGreef and Ochorus. An Ochorus Original, written for young "
             "readers, free to read and share. Book 4 of The Lamplighters of Gloamhaven."
         ),
-        "cover_url": "/covers/the-hill-of-cinders.svg",
+        "cover_url": "/covers/art/the-hill-of-cinders.jpg",  # ORIGINAL_GROUND
         "cover_color": covers.ink_safe("#6b4a3a"),  # warm ash over a banked fire
         "description": (
             "Old Ash is gone, the false light of Vaelport is broken, and the "
