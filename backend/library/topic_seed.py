@@ -488,6 +488,7 @@ TOPICS = [
             "freedom-of-the-will",
             "bondage-of-the-will",
             "institutes-of-the-christian-religion",
+            "old-paths",
             "ten-commandments",
             "a-body-of-divinity",
             "key-teachings-of-athanasius-of-alexandria",
