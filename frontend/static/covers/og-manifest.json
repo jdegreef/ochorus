@@ -22145,6 +22145,35 @@
 			"layout": "wash/ochre",
 			"bar": 0
 		},
+		"uk/tukutendereza": {
+			"ground": "8ee928abd94a729556dffcb3aed1b077b764a3bb743466ff8c3ccd31512637e1",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[72, 313, 528, 389]
+				],
+				"subtitle": [
+					[66, 449, 534, 477]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				318,
+				477
+			]
+		},
 		"uk/waiting-on-god": {
 			"ground": "2a48ba8503d4f5b382e666f943146d9ee15fa6320016a0663c1827f77c7cd8ae",
 			"style": "devotional",
