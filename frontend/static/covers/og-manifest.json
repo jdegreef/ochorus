@@ -1760,6 +1760,17 @@
 				447
 			]
 		},
+		"am/pilgrims-progress": {
+			"ground": "6b94bd42e5b82ef3462f3a942c03ccced08dd6edf311006de63a27309cd74a53",
+			"style": "press",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"am/pilgrims-progress-children": {
 			"ground": "8e613687910ef239e57c915726d5a43dbe681a6db3e7d1b9bea9189d0fc6357d",
 			"style": "press",
