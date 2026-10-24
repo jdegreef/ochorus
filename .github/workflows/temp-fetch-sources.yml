@@ -1,0 +1,55 @@
+name: TEMP fetch source pages (calvin-institutes)
+
+# Throwaway: the session drafting this book cannot reach ccel.org, gutenberg.org
+# or archive.org. This downloads each URL in .source-cache/urls.txt on a runner
+# and commits the responses back under .source-cache/<host>/<path>, so the
+# session can run the repo's importers locally against them. Removed, with the
+# cache, before the PR is reviewed.
+
+on:
+  push:
+    branches: [claude/ochorus-dev-4c45eff4-calvin-institutes]
+    paths: [.source-cache/urls.txt]
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Download every listed URL
+        run: |
+          python3 - <<'PY'
+          import pathlib, urllib.request
+          from urllib.parse import urlparse
+          root = pathlib.Path(".source-cache")
+          ua = "OchorusBot/0.1 (+https://ochorus.org; public-domain book reader)"
+          for url in root.joinpath("urls.txt").read_text().split():
+              u = urlparse(url)
+              path = root / u.netloc / u.path.lstrip("/")
+              if not path.suffix:
+                  path = path / "index.html"
+              if u.query:
+                  import hashlib
+                  path = path.with_name(path.name + "." + hashlib.sha1(u.query.encode()).hexdigest()[:10] + ".html")
+              try:
+                  req = urllib.request.Request(url, headers={"User-Agent": ua})
+                  with urllib.request.urlopen(req, timeout=120) as resp:
+                      body = resp.read()
+                  path.parent.mkdir(parents=True, exist_ok=True)
+                  path.write_bytes(body)
+                  print("ok  ", len(body), url)
+              except Exception as exc:
+                  print("FAIL", url, exc)
+          PY
+
+      - name: Commit the downloads back to the branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add .source-cache
+          git commit -m "TEMP: downloaded source pages" || echo "nothing downloaded"
+          git push
