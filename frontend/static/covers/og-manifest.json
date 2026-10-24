@@ -12362,6 +12362,32 @@
 				498
 			]
 		},
+		"hi/men-of-prayer-2": {
+			"ground": "2100cd83a5e260ea1ba8c42c32e669a4f6750d208d8126a114e13e83459adbfb",
+			"style": "originals",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[172, 346, 428, 411]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				338,
+				457
+			]
+		},
 		"hi/men-who-tended-the-flock-2": {
 			"ground": "56d062fddade2b7dedfbb74c169e7b7d1cbb55dd4a5d0675194e8ab4678ca2ea",
 			"style": "originals",
