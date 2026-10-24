@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { planCalendarHref } from '$lib/planView';
 	import { planSchedules } from '$lib/planSchedules.svelte';
 	import {
 		declinePlanEmail,
@@ -14,9 +15,9 @@
 	/**
 	 * The end of a plan day, for a SIGNED-IN reader whose plan doesn't email
 	 * them yet: the plan's own email switch, the one its calendar view has,
-	 * brought to where plan readers spend their time. That covers everyone who
-	 * started before the plan-start question existed, chose "No reminder", or
-	 * arrived on a day from a link. Ticking it turns the email on, and the ticked
+	 * brought to where plan readers spend their time. This is where a plan's
+	 * reminder is offered: at the end of each day before the last, day 1
+	 * included, so a reader is asked once they have read something. Ticking it turns the email on, and the ticked
 	 * switch stays as the confirmation (and the way back off).
 	 *
 	 * Signed out, the end-of-chapter card (`otherwise`, ChapterEndAsk) makes
@@ -85,10 +86,14 @@
 				<span>{t('plans.remindAt')}</span>
 				<input type="time" value={time} onchange={(e) => setTime(e.currentTarget.value)} class="field" />
 			</label>
-			{#if !prefs.email}
-				<button type="button" class="btn btn-ghost btn-sm" onclick={notNow}>{t('reader.askLater')}</button>
-			{/if}
 		</div>
+		{#if !prefs.email}
+			<!-- Or a calendar reminder: the plan page's calendar view makes them. -->
+			<div class="ask-row">
+				<a class="text-small" href={planCalendarHref(slug)}>{t('plans.remindCalendar')}</a>
+				<button type="button" class="btn btn-ghost btn-sm" onclick={notNow}>{t('reader.askLater')}</button>
+			</div>
+		{/if}
 	</aside>
 {:else}
 	{@render otherwise()}

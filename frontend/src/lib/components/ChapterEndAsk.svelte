@@ -2,13 +2,14 @@
 	import { page } from '$app/stores';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
-	import { noteChapterEnd, shouldAsk, snoozeAsk } from '$lib/chapterAsk';
+	import { ENDS_BEFORE_ASK, noteChapterEnd, shouldAsk, snoozeAsk } from '$lib/chapterAsk';
 	import { localizeHref } from '$lib/href';
 	import { loginHref, withSignup } from '$lib/loginHref';
 	import { seenOnView, withSource } from '$lib/signupSource';
 	import { openFrom, plainClick } from '$lib/signInSheet.svelte';
 	import { planSchedules } from '$lib/planSchedules.svelte';
-	import { askForPlanEmail } from '$lib/planEmail';
+	import { askForPlanEmail, declinePlanEmail, planEmailDeclined } from '$lib/planEmail';
+	import { planCalendarHref } from '$lib/planView';
 
 	/**
 	 * Under the Next button at the end of a chapter, for a signed-out reader:
@@ -19,7 +20,11 @@
 	 * On a plan day with a tomorrow (`planSlug`), the same card offers the
 	 * plan's daily email instead, which is the account's most concrete use:
 	 * the choice is held and the sign-up panel opens (source `plan_day`); the
-	 * email is turned on once the account exists ($lib/planEmail).
+	 * email is turned on once the account exists ($lib/planEmail). Or a
+	 * calendar reminder, which needs no account. This is where a plan's
+	 * reminder is offered, from the end of day 1, so it keeps its own pacing:
+	 * the account ask's snooze doesn't silence it, and its "Not now" stops this
+	 * plan offering, as the signed-in card's does (PlanDayRemind).
 	 */
 	let {
 		title,
@@ -56,15 +61,20 @@
 		return () => io.disconnect();
 	});
 
-	const show = $derived(signedOut && !dismissed && shouldAsk(ends));
+	/** The plan whose email this card offers, or null for the account ask. */
+	const planOffer = $derived(
+		planSlug && !planSchedules.get(planSlug).email && !planEmailDeclined(planSlug) ? planSlug : null
+	);
+	// A plan offer is paced by its own "Not now" (above), not the account ask's.
+	const show = $derived(
+		signedOut && !dismissed && (planOffer ? ends >= ENDS_BEFORE_ASK : shouldAsk(ends))
+	);
 	// Read only inside {#if show}, i.e. in the browser: the chapter page is
 	// prerendered, and SvelteKit forbids reading the query string there.
 	const href = $derived(
 		localizeHref(withSource(withSignup(loginHref($page.url.pathname, $page.url.search)), 'chapter_end'))
 	);
 
-	/** The plan whose email this card offers, or null for the account ask. */
-	const planOffer = $derived(planSlug && !planSchedules.get(planSlug).email ? planSlug : null);
 	// Read only inside {#if show}, like `href`.
 	const planHref = $derived(
 		localizeHref(withSource(withSignup(loginHref($page.url.pathname, $page.url.search)), 'plan_day'))
@@ -82,7 +92,8 @@
 	}
 
 	function later() {
-		snoozeAsk();
+		if (planOffer) declinePlanEmail(planOffer);
+		else snoozeAsk();
 		dismissed = true;
 	}
 </script>
@@ -103,6 +114,7 @@
 				<a class="btn btn-primary btn-sm" href={planHref} use:seenOnView={'plan_day'} onclick={(e) => askPlan(e, slug)}
 					>{t('plans.remindEmail')}</a
 				>
+				<a class="btn btn-ghost btn-sm" href={planCalendarHref(slug)}>{t('plans.remindCalendar')}</a>
 			{:else}
 				<a class="btn btn-primary btn-sm" {href} use:seenOnView={'chapter_end'} onclick={(e) => openFrom(e, 'chapter_end')}
 					>{t('reader.askCta')}</a

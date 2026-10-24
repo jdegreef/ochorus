@@ -70,6 +70,12 @@ describe('PlanDayRemind', () => {
 		expect(schedules.store.humility).toMatchObject({ email: false });
 	});
 
+	it('offers a calendar reminder too, from the end of day 1', () => {
+		render({ day: 1 });
+		const link = target.querySelector<HTMLAnchorElement>('aside a');
+		expect(link?.getAttribute('href')).toContain('/plans/humility/?view=calendar');
+	});
+
 	it('"Not now" works after the switch has been tried on and off', () => {
 		render();
 		tick(box(), true);
