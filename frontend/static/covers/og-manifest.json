@@ -17250,6 +17250,36 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"pt/on-loving-god": {
+			"ground": "e572e1e5073577f43902e102d301bfe632d2e49b098e3ab4a2654e8d96dca6de",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[85, 102, 515, 131]
+				],
+				"title": [
+					[184, 314, 416, 376],
+					[111, 360, 489, 422]
+				],
+				"subtitle": [
+					[188, 451, 412, 472]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				323,
+				472
+			]
+		},
 		"pt/pandita-ramabai-a-life-children": {
 			"ground": "d52cd99a2a84c20704589dd87da7d7f4ad2b215725ec0e0398529dc6e971c00b",
 			"style": "young",
