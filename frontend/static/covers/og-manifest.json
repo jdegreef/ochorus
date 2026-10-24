@@ -22112,6 +22112,17 @@
 				500
 			]
 		},
+		"uk/the-way-to-god": {
+			"ground": "cb7bee4a20b60d19a4c370d3d0602a16f1f9b4faece0d8a7b7c2e032fceb4223",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/ochre",
+			"bar": 0
+		},
 		"uk/thoughts-for-the-quiet-hour": {
 			"ground": "32694994fedd7808778e5bdefdb692a7d5cbbadad11ba51eb6b0d3987a69579b",
 			"style": "revival",
