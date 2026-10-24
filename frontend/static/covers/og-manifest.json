@@ -21928,6 +21928,32 @@
 				515
 			]
 		},
+		"uk/men-of-prayer-2": {
+			"ground": "7dc4f7454a0b2d7c52f4834fd23a28943e1d33c88db6e9ab112593b7ecec031a",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[76, 341, 524, 417]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				346,
+				449
+			]
+		},
 		"uk/men-who-tended-the-flock-2": {
 			"ground": "16abef75054bd92064da50283b3357e260fc5ef6507837c37f43e5965f3abd26",
 			"style": "originals",
