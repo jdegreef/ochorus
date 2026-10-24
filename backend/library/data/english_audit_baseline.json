@@ -155,6 +155,11 @@
   "if": {
    "space-before-punct": 5
   },
+  "institutes-of-the-christian-religion": {
+   "orphan-close-quote": 1,
+   "space-before-punct": 5,
+   "stray-parens": 1
+  },
   "jesus-himself-2": {
    "space-before-punct": 2
   },
