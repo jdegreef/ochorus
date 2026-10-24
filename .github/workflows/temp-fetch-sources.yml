@@ -9,7 +9,7 @@ name: TEMP fetch source pages (old-paths)
 on:
   push:
     branches: [claude/ochorus-dev-4c45eff4-old-paths]
-    paths: [.source-cache/urls.txt]
+    paths: [.source-cache/urls.txt, .source-cache/ocr.txt]
 
 permissions:
   contents: write
@@ -45,6 +45,24 @@ jobs:
               except Exception as exc:
                   print("FAIL", url, exc)
           PY
+
+      - name: OCR the scan with Tesseract (a second witness to ABBYY's text)
+        if: hashFiles('.source-cache/ocr.txt') != ''
+        run: |
+          sudo apt-get -qq update && sudo apt-get -qq install -y tesseract-ocr libopenjp2-tools > /dev/null
+          id=$(cat .source-cache/ocr.txt)
+          mkdir -p /tmp/ocr && cd /tmp/ocr
+          curl -sSL -A "OchorusBot/0.1" -o jp2.zip "https://archive.org/download/$id/${id}_jp2.zip"
+          unzip -q jp2.zip
+          find . -name '*.jp2' | sort > list
+          wc -l list
+          ocr() { b=$(basename "$1" .jp2); opj_decompress -quiet -i "$1" -o "/tmp/ocr/$b.png" > /dev/null && tesseract "/tmp/ocr/$b.png" "/tmp/ocr/$b" -l eng quiet && rm "/tmp/ocr/$b.png"; }
+          export -f ocr
+          xargs -a list -P 4 -I{} bash -c 'ocr {}'
+          out="$GITHUB_WORKSPACE/.source-cache/tesseract/$id"
+          mkdir -p "$out" && cp /tmp/ocr/*.txt "$out/"
+          ls "$out" | wc -l
+          cd "$GITHUB_WORKSPACE" && rm .source-cache/ocr.txt
 
       - name: Commit the downloads back to the branch
         run: |
