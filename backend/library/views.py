@@ -2320,13 +2320,14 @@ class ScriptureGraphView(APIView):
     has been able to do this since citations were indexed; this gives it a URL.
 
     404 for a reference no page exists for — an unreal one (Romans 99), one the
-    bundled ASV has no text for, or one under the citation floor. The floor
+    bundled Bibles have no text for, or one under the citation floor. The floor
     lives in ``scripture_graph.qualifying_pages`` and is checked HERE too, so a
     URL guessed by hand cannot reach a page the sitemap never advertised.
     """
 
     def get(self, request, book, chapter, verse=None):
-        from .scripture import VERSION_LABEL
+        from .scripture import VERSION_LABEL, reader_verse
+        from .scripture import verse_text as owb_text
         from .scripture_graph import (
             MAX_PASSAGES,
             VERSE_SPAN_CAP,
@@ -2335,7 +2336,6 @@ class ScriptureGraphView(APIView):
             english_chapters,
             reference_label,
             verse_ids_for,
-            verse_text,
         )
         from .search import fallback_snippet
 
@@ -2395,10 +2395,10 @@ class ScriptureGraphView(APIView):
             "passages_shown": len(passages),
         }
         if verse is not None:
-            data["text"] = verse_text(ids[0])
+            data["text"], data["version"] = reader_verse(ids[0])
         else:
             # A chapter page shows the verses the library ACTUALLY treats, not
-            # the whole chapter: the full ASV text is the one part of this page
+            # the whole chapter: the full Bible text is the one part of this page
             # that is not ours and that every other site already has. What makes
             # it worth a visit is which verses these writers stopped at.
             #
@@ -2426,15 +2426,17 @@ class ScriptureGraphView(APIView):
             # link to a page the floor deliberately withheld.
             from .scripture_graph import VERSE_FLOOR
 
+            # Only the verses the page's label covers: a verse OWB lacks has
+            # its own page, under the ASV's label, but no line here.
             cited = [
                 {
                     "number": vid % 1000,
-                    "text": verse_text(vid),
+                    "text": text,
                     "citing_count": len(cids),
                     "has_page": len(cids) >= VERSE_FLOOR,
                 }
                 for vid, cids in per_verse.items()
-                if verse_text(vid)
+                if (text := owb_text(vid))
             ]
             data["verses"] = sorted(
                 cited, key=lambda v: (-v["citing_count"], v["number"])
@@ -2455,7 +2457,7 @@ class ScriptureBookView(APIView):
     server can: how many library passages treat the book at all (distinct
     citing chapters, across every chapter of it, not a sum of per-chapter
     counts, which would count a passage citing Romans 5 and 8 twice), which
-    library books return to it most, the ASV text of its most-quoted verses,
+    library books return to it most, the Bible text of its most-quoted verses,
     one excerpt from each of those books, and a short house overview of the
     book itself (``bible_book_intros``).
 
@@ -2637,8 +2639,8 @@ def _scripture_floor(verse):
 class ScriptureView(APIView):
     """Verse text for a Bible reference — the reader's cross-reference popover.
 
-    Public-domain American Standard Version, resolved locally (no external Bible
-    API, so it works offline). ``?ref=John 3:16`` — ranges and common
+    The Open Word Bible (CC0), resolved locally (no external Bible API, so it
+    works offline); see ``scripture.lookup``. ``?ref=John 3:16`` — ranges and common
     abbreviations are accepted.
     """
 
