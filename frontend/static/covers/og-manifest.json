@@ -14631,6 +14631,17 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"ko/waiting-on-god": {
+			"ground": "54b00b6b194c0762b341256892c7869cdd2dd68ba2369ea7de34618853560196",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "b4567341479b65f2f109cd212c9e5c3fd904239b112eb9370a7635e6124e01fb",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"lectures-to-my-students": {
 			"ground": "37427d61536e130bbc8758ffd215417b5fd83a18d2235b959f50e85cfb657284",
 			"style": "revival",

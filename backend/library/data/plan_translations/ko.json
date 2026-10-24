@@ -29,5 +29,12 @@
   "note": [
    "Single-book LAUNCH plan backed by the ko edition of humility-2 (queue job #6169; book title 『겸손』, the form the shipped ko bios already use), shipped in the same PR so seed_plans does not publish a ko plan row with no prose. 합니다체 imperative (읽으십시오), the ko house register. AI-drafted; awaiting native review."
   ]
+ },
+ "waiting-on-god-trust": {
+  "description": "신뢰의 학교에서 보내는 열 주간. 앤드류 머리는 날마다 하나님을 기다리는 훈련을 가르치고, F. B. 마이어는 그분의 인도를 받는 비결을 열어 보이며, 조지 뮐러의 놀라운 믿음의 생애는 그러한 신뢰가 무엇을 받는지 보여 줍니다.",
+  "note": [
+   "Job #6186 (waiting-on-god → ko) adds this prose because the book backs the plan. «하나님을 기다림» is the shipped ko title of waiting-on-god (same job). The row cannot appear yet: the-secret-of-guidance and the-life-of-trust are not in Korean; whichever lands last brings the card live, and its translator should check the title here against that edition."
+  ],
+  "title": "하나님을 기다림: 신뢰의 삶"
  }
 }
