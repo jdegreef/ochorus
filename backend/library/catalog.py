@@ -522,7 +522,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "First Bishop of Liverpool and a plain-spoken leader of Victorian "
             "evangelicals."
         ),
-    ),    "martin-luther": AuthorEntry(
+    ),    "john-calvin": AuthorEntry(
+        slug="john-calvin",
+        name="John Calvin",
+        birth_year=1509,
+        death_year=1564,
+        bio=(
+            "French reformer and pastor of Geneva, whose Institutes shaped "
+            "Reformed theology."
+        ),
+    ),
+    "martin-luther": AuthorEntry(
         slug="martin-luther",
         name="Martin Luther",
         birth_year=1483,
@@ -921,6 +931,12 @@ BOOKS: list[BookEntry] = [
               subtitle="Translated by Henry Cole",
               cover_color="#4a3328", group_parts=True,
               skip=("Preface by Henry Atherton",)),
+    # Calvin's Institutes (1559) in Henry Beveridge's translation (1845), from
+    # CCEL. Each leaf is one of Calvin's chapters, so the import is flat.
+    BookEntry("institutes-of-the-christian-religion", "Institutes of the Christian Religion",
+              "john-calvin", "ccel", "calvin/institutes",
+              subtitle="Translated by Henry Beveridge",
+              cover_color="#2f3e57"),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an
