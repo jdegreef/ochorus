@@ -486,6 +486,7 @@ TOPICS = [
             "enchiridion",
             "on-the-incarnation",
             "freedom-of-the-will",
+            "bondage-of-the-will",
             "ten-commandments",
             "a-body-of-divinity",
             "key-teachings-of-athanasius-of-alexandria",

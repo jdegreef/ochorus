@@ -51,6 +51,26 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "bondage-of-the-will": {
+        # Henry Cole's own divisions of the treatise (his Translator's Preface
+        # names them), not CCEL's topical part titles. His "Preface" — Luther's
+        # answer to Erasmus's preface, Sections I–XXVII — is four CCEL parts.
+        "chapter_titles": {
+            1: "Translator’s Preface",
+            2: "Introduction",
+            3: "Preface: Section I",
+            4: "Preface: Sections II–VI",
+            5: "Preface: Sections VII–VIII",
+            6: "Preface: Sections IX–XXVII",
+            7: "Exordium",
+            8: "Discussion: Part the First",
+            9: "Discussion: Part the Second",
+            10: "Discussion: Part the Third",
+            11: "Conclusion",
+            12: "Luther’s Judgment of Erasmus",
+            13: "Luther to Nicolas Armsdorff, Concerning Erasmus",
+        },
+    },
     "how-to-pray": {
         # CCEL's TOC misspells the last chapter "Chatper XII.", so clean_title
         # cannot strip the numbering and the reader would print it twice.
@@ -18632,3 +18652,21 @@ BODY_CORRECTIONS.setdefault("walking-with-god", {}).setdefault("replacements", [
     # OCR slip ('hears' for 'years')
     ("several hundred hears before", "several hundred years before"),
 ])
+
+# Luther's Bondage of the Will (CCEL): each of Cole's Sections opens "Sect. II. —"
+# in the text itself, so CCEL's "Section II" subheading above it only repeats the
+# number (and mislabels two: CXL is headed "CXI", CXXIX has none). The headings
+# split over several tags at the top of the Translator's Preface and of the two
+# appendices restate their chapter titles.
+BODY_CORRECTIONS.setdefault("bondage-of-the-will", {}).setdefault("replacements", []).extend(
+    [(f"<h3>Section {n}</h3>", "") for n in (
+        "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII", "XXVIII", "XXIX", "XXX", "XXXI", "XXXII", "XXXIII", "XXXIV", "XXXV", "XXXVI", "XXXVII", "XXXVIII", "XXXIX", "XL", "XLI", "XLII", "XLIII", "XLIV", "XLV", "XLVI", "XLVII", "XLVIII", "XLIX", "L", "LI", "LII", "LIII", "LIV", "LV", "LVI", "LVII", "LVIII", "LIX", "LX", "LXI", "LXII", "LXIII", "LXIV", "LXV", "LXVI", "LXVII", "LXVIII", "LXIX", "LXX", "LXXI", "LXXII", "LXXIII", "LXXIV", "LXXV", "LXXVI", "LXXVII", "LXXVIII", "LXXIX", "LXXX", "LXXXI", "LXXXII", "LXXXIII", "LXXXIV", "LXXXV", "LXXXVI", "LXXXVII", "LXXXVIII", "LXXXIX", "XC", "XCI", "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII", "XCVIII", "XCIX", "C", "CI", "CII", "CIII", "CIV", "CV", "CVI", "CVII", "CVIII", "CIX", "CX", "CXI", "CXII", "CXIII", "CXIV", "CXV", "CXVI", "CXVII", "CXVIII", "CXIX", "CXX", "CXXI", "CXXII", "CXXIII", "CXXIV", "CXXV", "CXXVI", "CXXVII", "CXXVIII", "CXXX", "CXXXI", "CXXXII", "CXXXIII", "CXXXIV", "CXXXV", "CXXXVI", "CXXXVII", "CXXXVIII", "CXXXIX", "CXLI", "CXLII", "CXLIII", "CXLIV", "CXLV", "CXLVI", "CXLVII", "CXLVIII", "CXLIX", "CL", "CLI", "CLII", "CLIII", "CLIV", "CLV", "CLVI", "CLVII", "CLVIII", "CLIX", "CLX", "CLXI", "CLXII", "CLXIII", "CLXIV", "CLXV", "CLXVI", "CLXVII", "CLXVIII"
+    )]
+    + [
+        ("<h2>PREFACE</h2> <h4>BY</h4> <h3>THE TRANSLATOR.</h3> ", ""),
+        ("<h2>MARTIN LUTHER’S JUDGMENT</h2> <h3>OF</h3> ERASMUS OF ROTTERDAM. "
+         "<h3>TO A CERTAIN FRIEND.</h3> ", ""),
+        ("MARTIN LUTHER TO NICOLAS ARMSDOFF <h3>CONCERNING</h3> ERASMUS OF ROTTERDAM. ", ""),
+        ("<i>Grace and peace in Christ.</i> . </p>", "<i>Grace and peace in Christ.</i></p>"),
+    ]
+)
