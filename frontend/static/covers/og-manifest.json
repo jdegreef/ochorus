@@ -797,6 +797,17 @@
 				482
 			]
 		},
+		"am/confessions": {
+			"ground": "0515672ff43e65f7e0db679443169705eb695a5ce0958b6a57fa4b2071c9e895",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/rust",
+			"bar": 0
+		},
 		"am/corrie-ten-boom-a-life-children": {
 			"ground": "8877bce0a06021fcab9e0b7e2238b010f8f3e49815f1e4abce45b515e8526af7",
 			"style": "young",
@@ -1759,6 +1770,17 @@
 				348,
 				447
 			]
+		},
+		"am/pilgrims-progress": {
+			"ground": "6b94bd42e5b82ef3462f3a942c03ccced08dd6edf311006de63a27309cd74a53",
+			"style": "press",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
 		},
 		"am/pilgrims-progress-children": {
 			"ground": "8e613687910ef239e57c915726d5a43dbe681a6db3e7d1b9bea9189d0fc6357d",
@@ -4141,6 +4163,35 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0
+		},
+		"ar/tukutendereza": {
+			"ground": "8894331b2237cd0ba361e7d85159bdbe81e7122ff3a9b206da4f566bd0b48634",
+			"style": "originals",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[63, 310, 537, 387]
+				],
+				"subtitle": [
+					[205, 456, 395, 495]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				302,
+				493
+			]
 		},
 		"ar/union-and-communion": {
 			"ground": "689326febad4304a18305f45444b48172aad1552d9a10ab74fd78b6fccb9b400",
@@ -12311,6 +12362,32 @@
 				498
 			]
 		},
+		"hi/men-of-prayer-2": {
+			"ground": "2100cd83a5e260ea1ba8c42c32e669a4f6750d208d8126a114e13e83459adbfb",
+			"style": "originals",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[172, 346, 428, 411]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				338,
+				457
+			]
+		},
 		"hi/men-who-tended-the-flock-2": {
 			"ground": "56d062fddade2b7dedfbb74c169e7b7d1cbb55dd4a5d0675194e8ab4678ca2ea",
 			"style": "originals",
@@ -12817,6 +12894,35 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0
+		},
+		"hi/tukutendereza": {
+			"ground": "975658806c16164aba6fc044aee81a47d4bebfdf94c846eba7893149e1d7b42f",
+			"style": "originals",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[113, 316, 487, 381]
+				],
+				"subtitle": [
+					[138, 458, 462, 480]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				308,
+				487
+			]
 		},
 		"hi/waiting-on-god": {
 			"ground": "c9ecae20e6c796d9a10b26118f9766d40b814f25507e06716c37c393f7514bfa",
@@ -14985,6 +15091,33 @@
 				548
 			]
 		},
+		"lg/men-of-prayer-2": {
+			"ground": "22c72c7b2347fe0a9f6cb325c5b5c631234bbf246d399a1afeaf0bfad6e229a7",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[171, 308, 429, 384],
+					[141, 374, 459, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"lg/ministry-of-intercession": {
 			"ground": "b1e9f304dbe6fc532c20b7df7b3402943c7d48b7f6d1f32b968870a77a566e14",
 			"style": "devotional",
@@ -15117,6 +15250,37 @@
 				"subtitle": [
 					[119, 478, 481, 506],
 					[129, 506, 471, 534]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				261,
+				534
+			]
+		},
+		"lg/rooted-2": {
+			"ground": "310cd19c4ebadd43f150281b05e79e78e018ebfa832903104ad4cccc2fcf3070",
+			"style": "young",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 273, 311, 317],
+					[160, 348, 440, 423]
+				],
+				"subtitle": [
+					[94, 478, 506, 506],
+					[65, 506, 535, 534]
 				],
 				"mark": [
 					[232, 664, 368, 746]
@@ -17739,6 +17903,35 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0
+		},
+		"pt/tukutendereza": {
+			"ground": "54e2fed58a1bd2315052b54d94ac84998f969142385a412ff0713ef8d02f9967",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[72, 314, 528, 390]
+				],
+				"subtitle": [
+					[96, 448, 504, 476]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				319,
+				476
+			]
 		},
 		"pt/union-and-communion": {
 			"ground": "3f8ea44819a8f7cb408f2cec2a25f4641488ef74731807b40e963e7c13246500",
@@ -21482,6 +21675,17 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"uk/all-of-grace": {
+			"ground": "45b917a0c4bba682a226c7b1681534ea1066fd315455d7c8022fd1d10681023d",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"uk/baptism-with-the-holy-spirit": {
 			"ground": "a562b4836e2431fd420dac71ef9e83d726ec511d479f56384cb88672a0dcc8b9",
 			"style": "revival",
@@ -21751,6 +21955,32 @@
 				515
 			]
 		},
+		"uk/men-of-prayer-2": {
+			"ground": "7dc4f7454a0b2d7c52f4834fd23a28943e1d33c88db6e9ab112593b7ecec031a",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[76, 341, 524, 417]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				346,
+				449
+			]
+		},
 		"uk/men-who-tended-the-flock-2": {
 			"ground": "16abef75054bd92064da50283b3357e260fc5ef6507837c37f43e5965f3abd26",
 			"style": "originals",
@@ -21875,6 +22105,37 @@
 				"subtitle": [
 					[117, 478, 483, 506],
 					[160, 507, 440, 535]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				260,
+				535
+			]
+		},
+		"uk/rooted-2": {
+			"ground": "8afc82917c462492a4835b7f0ea84acd863cc61d416a3ed1fe08983497f2953f",
+			"style": "young",
+			"volume": "2",
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 272, 311, 316],
+					[181, 347, 419, 422]
+				],
+				"subtitle": [
+					[169, 478, 431, 506],
+					[155, 507, 445, 535]
 				],
 				"mark": [
 					[232, 664, 368, 746]
@@ -22041,6 +22302,17 @@
 				500
 			]
 		},
+		"uk/the-way-to-god": {
+			"ground": "cb7bee4a20b60d19a4c370d3d0602a16f1f9b4faece0d8a7b7c2e032fceb4223",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/ochre",
+			"bar": 0
+		},
 		"uk/thoughts-for-the-quiet-hour": {
 			"ground": "32694994fedd7808778e5bdefdb692a7d5cbbadad11ba51eb6b0d3987a69579b",
 			"style": "revival",
@@ -22051,6 +22323,35 @@
 			"scrim": 1,
 			"layout": "wash/ochre",
 			"bar": 0
+		},
+		"uk/tukutendereza": {
+			"ground": "8ee928abd94a729556dffcb3aed1b077b764a3bb743466ff8c3ccd31512637e1",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[72, 313, 528, 389]
+				],
+				"subtitle": [
+					[66, 449, 534, 477]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				318,
+				477
+			]
 		},
 		"uk/waiting-on-god": {
 			"ground": "2a48ba8503d4f5b382e666f943146d9ee15fa6320016a0663c1827f77c7cd8ae",
