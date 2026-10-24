@@ -1,4 +1,6 @@
-https://archive.org/metadata/oldpathsbeingpla00ryle
-https://archive.org/download/oldpathsbeingpla00ryle/oldpathsbeingpla00ryle_djvu.txt
-https://archive.org/advancedsearch.php?q=ryle+AND+%22old+paths%22+AND+mediatype%3Atexts&fl%5B%5D=identifier&fl%5B%5D=title&fl%5B%5D=year&fl%5B%5D=publisher&rows=50&output=json
-https://archive.org/advancedsearch.php?q=creator%3A%28ryle%29+AND+mediatype%3Atexts&fl%5B%5D=identifier&fl%5B%5D=title&fl%5B%5D=year&rows=300&output=json
+https://archive.org/download/oldpathsbeingpla00ryle/oldpathsbeingpla00ryle_hocr.html
+https://archive.org/download/oldpathsbeingpla00ryle/oldpathsbeingpla00ryle_page_numbers.json
+https://archive.org/metadata/oldpathsbeingpla0000jcry
+https://archive.org/metadata/bwb_KU-998-274
+https://archive.org/download/oldpathsbeingpla0000jcry/oldpathsbeingpla0000jcry_hocr_searchtext.txt.gz
+https://archive.org/download/bwb_KU-998-274/bwb_KU-998-274_hocr_searchtext.txt.gz
