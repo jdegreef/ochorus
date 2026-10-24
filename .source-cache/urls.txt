@@ -1,2 +1,2 @@
-https://archive.org/download/oldpathsbeingpla00ryle/oldpathsbeingpla00ryle_abbyy.gz
-# retry
+https://github.com/tesseract-ocr/tessdata_best/raw/main/eng.traineddata
+https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/main/eng.traineddata
