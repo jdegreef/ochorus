@@ -8759,6 +8759,37 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"fr/at-the-masters-feet": {
+			"ground": "6f8bba4ae1d0418a4220f69ded191445a7ffc3bbd516698ec5b047fb604cdac9",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[104, 102, 496, 131]
+				],
+				"title": [
+					[174, 294, 426, 370],
+					[173, 360, 427, 436]
+				],
+				"subtitle": [
+					[58, 509, 542, 530],
+					[107, 530, 493, 551]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				244,
+				551
+			]
+		},
 		"fr/baptism-with-the-holy-spirit": {
 			"ground": "cd16ebc85eb23aaaa57375b11b440e23a74ba2a42d88b6a1b5b6b4c6239354a0",
 			"style": "revival",
