@@ -15091,6 +15091,33 @@
 				548
 			]
 		},
+		"lg/men-of-prayer-2": {
+			"ground": "22c72c7b2347fe0a9f6cb325c5b5c631234bbf246d399a1afeaf0bfad6e229a7",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[171, 308, 429, 384],
+					[141, 374, 459, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"lg/ministry-of-intercession": {
 			"ground": "b1e9f304dbe6fc532c20b7df7b3402943c7d48b7f6d1f32b968870a77a566e14",
 			"style": "devotional",
