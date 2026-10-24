@@ -62,18 +62,19 @@ jobs:
       - name: Render pages
         if: hashFiles('.source-cache/ocr.txt') != ''
         timeout-minutes: 20
-        run: |
-          id=$(head -1 .source-cache/ocr.txt); img="$GITHUB_WORKSPACE/.source-cache/pages/$id"; mkdir -p "$img"
-          cd /tmp/ocr && pdftoppm -r 300 -gray -png book.pdf pg && ls pg-*.png | wc -l
-          pdftoppm -r 110 -gray -jpeg -jpegopt quality=70 book.pdf "$img/p" && du -sh "$img"
+        run: cd /tmp/ocr && pdftoppm -r 300 -gray -png book.pdf pg && ls pg-*.png | wc -l && file pg-0031.png
 
       - name: Tesseract every page
         if: hashFiles('.source-cache/ocr.txt') != ''
-        timeout-minutes: 40
+        timeout-minutes: 50
+        env:
+          OMP_THREAD_LIMIT: "1"
         run: |
           id=$(head -1 .source-cache/ocr.txt); out="$GITHUB_WORKSPACE/.source-cache/tesseract/$id"; mkdir -p "$out"
-          cd /tmp/ocr && ls pg-*.png | xargs -P 4 -I{} sh -c 'tesseract {} "$(basename {} .png)" -l eng quiet'
-          cp pg-*.txt "$out/" && ls "$out" | wc -l
+          cd /tmp/ocr
+          time tesseract pg-0031.png - -l eng quiet | head -5
+          ls pg-*.png | xargs -P 4 -I{} sh -c 'timeout 300 tesseract {} "$(basename {} .png)" -l eng quiet; echo {}'
+          cp pg-*.txt "$out/"; ls "$out" | wc -l
           cd "$GITHUB_WORKSPACE" && rm .source-cache/ocr.txt
 
       - name: Commit the downloads back to the branch
