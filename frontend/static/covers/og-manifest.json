@@ -22567,6 +22567,33 @@
 			"layout": "wash/indigo",
 			"bar": 0.11
 		},
+		"vi/clothed-with-strength-and-dignity": {
+			"ground": "cd1b81541ffc096749f870408667060443f500932a116d38f89ac878e8269a4a",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[85, 308, 515, 384],
+					[112, 374, 488, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"vi/humility-2": {
 			"ground": "7f9f67a0f3602c9625ff98442e4bf946497fc6bb75d52d17d5ca0e3021943a7e",
 			"style": "devotional",
