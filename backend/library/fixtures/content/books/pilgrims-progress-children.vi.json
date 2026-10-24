@@ -1,0 +1,394 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "john-bunyan"
+  ],
+  "slug": "pilgrims-progress-children",
+  "language": "vi",
+  "title": "Thiên Lộ Lịch Trình (Cho thiếu nhi)",
+  "subtitle": "",
+  "cover_title": "",
+  "cover_byline": "",
+  "description": "Câu chuyện nổi tiếng của John Bunyan về một người lữ khách tên là Cơ Đốc Nhân, người đã rời bỏ thành phố của mình với một gánh nặng trĩu trên lưng và đi suốt chặng đường đến Thành Thiên Quốc. Ấn bản dành cho thiếu nhi này kể lại cuộc phiêu lưu của ông qua những chương ngắn, để đọc to cho các em nghe: một câu Kinh Thánh, một cảnh trong cuộc hành trình, một điều cảnh ấy có ý nghĩa cho con, và một lời cầu nguyện ngắn.",
+  "hook": "",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Sách Thiên Lộ Lịch Trình (Cho thiếu nhi) nói về điều gì?",
+    "answer": "Đây là phiên bản dành cho thiếu nhi của câu chuyện nổi tiếng do John Bunyan viết. Một người tên là Cơ Đốc Nhân rời nhà ra đi với một gánh nặng trĩu trên lưng, và trải qua một con đường dài đầy phiêu lưu để đến Thành Thiên Quốc. Dọc đường, ông gặp những tên khổng lồ, những con quái vật, những người bạn và những hiểm nguy — và mỗi phần của cuộc hành trình đều lặng lẽ vẽ nên hình ảnh của việc theo Đức Chúa Trời."
+   },
+   {
+    "question": "John Bunyan là ai?",
+    "answer": "Ông là một nhà truyền đạo người Anh sống cách đây đã lâu, và đã phải ở tù nhiều năm vì đức tin của mình. Trong thời gian ở tù, ông viết cuốn Thiên Lộ Lịch Trình (The Pilgrim’s Progress), cuốn sách đã trở thành một trong những câu chuyện được yêu mến nhất trên thế giới — một cuộc phiêu lưu dạy về Đức Chúa Trời qua câu chuyện của một người lữ khách tên là Cơ Đốc Nhân."
+   },
+   {
+    "question": "Mỗi chương được sắp xếp như thế nào?",
+    "answer": "Chương nào cũng ngắn và được viết để đọc to. Mỗi chương bắt đầu bằng một câu Kinh Thánh, kể một cảnh trong cuộc hành trình của Cơ Đốc Nhân, cho thấy một điều đơn giản mà cảnh ấy có ý nghĩa cho con, và kết thúc bằng một lời cầu nguyện ngắn."
+   },
+   {
+    "question": "Sách này dành cho ai?",
+    "answer": "Sách dành cho thiếu nhi — để người lớn đọc to cho các em nghe, hoặc để các em lớn hơn một chút tự đọc. Bản Thiên Lộ Lịch Trình đầy đủ hơn của Bunyan cũng có sẵn cho những bạn đọc lớn tuổi hơn, cùng với một bản kể lại bằng tiếng Anh dễ hiểu."
+   },
+   {
+    "question": "Vì sao câu chuyện lại có nhiều quái vật và khổng lồ như vậy?",
+    "answer": "Vì Bunyan đã viết nó thành một câu chuyện bằng hình ảnh. Con đường của Cơ Đốc Nhân tượng trưng cho cuộc đời theo Đức Chúa Trời, và những hiểm nguy trên đường — một đầm lầy, một tên khổng lồ, một thung lũng tối tăm — tượng trưng cho những khó khăn và cám dỗ thật mà chúng ta gặp phải. Kể lại như một cuộc phiêu lưu giúp các em dễ nhớ những bài học ấy."
+   },
+   {
+    "question": "Những cái tên trong câu chuyện cố ý được đặt khác thường phải không?",
+    "answer": "Đúng vậy. Bunyan đặt cho các nhân vật và các nơi chốn những cái tên mô tả chính họ — Cơ Đốc Nhân, Trung Tín, Hy Vọng, Vũng Lầy Thất Vọng, Đồi Gian Nan, Gã Khổng Lồ Tuyệt Vọng. Cái tên cho con biết mỗi nhân vật hay nơi chốn như thế nào, và điều đó giúp các bạn đọc nhỏ tuổi theo kịp ý nghĩa của câu chuyện."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Một bản kể lại của Ochorus dành cho bạn đọc nhỏ tuổi, dựa trên cuốn The Pilgrim's Progress (Thiên Lộ Lịch Trình) của John Bunyan, là tác phẩm thuộc phạm vi công cộng. Lời kể là của chúng tôi, được tự do đọc và chia sẻ.",
+  "cover_url": "/covers/art/pilgrims-progress-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "series": null,
+  "series_position": null,
+  "sort_order": 23,
+  "is_published": true,
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "vi"
+  ],
+  "order": 1,
+  "title": "Người kêu lên: \"Tôi phải làm sao?\"",
+  "body_html": "<blockquote>“Tôi phải làm chi cho được cứu rỗi?” — trích Công Vụ Các Sứ Đồ 16</blockquote> <p>Ở một nơi gọi là Thành Hủy Diệt, có một người tên là Cơ Đốc Nhân. Một hôm, ông đang đọc một cuốn sách, và điều ông đọc được làm ông sợ hãi vô cùng. Ông biết rằng thành phố của mình sắp bị hủy diệt — và tệ nhất là ông cảm thấy trên lưng mình có một gánh nặng to lớn, nặng trĩu, mà ông không sao gỡ ra được, dù đã cố gắng thế nào đi nữa.</p> <p>Ông bắt đầu kêu lên: “Tôi phải làm sao đây? Tôi phải làm chi cho được cứu rỗi?” Gia đình ông tưởng ông bị điên. Nhưng Cơ Đốc Nhân không thể thôi lo lắng về cái gánh nặng ấy.</p> <p>Rồi một người được gọi là Người Truyền Đạo đến gặp ông và hỏi vì sao ông khóc. Cơ Đốc Nhân kể cho ông ấy nghe về gánh nặng và nỗi sợ của mình. Người Truyền Đạo chỉ tay về phía xa, bên kia một cánh đồng rộng, và hỏi: “Anh có thấy cánh cổng nhỏ đằng kia không?” Cơ Đốc Nhân không thấy. Người Truyền Đạo lại hỏi: “Anh có thấy ánh sáng đang chiếu kia không?” Cơ Đốc Nhân đáp: “Có, hình như tôi thấy.” “Hãy giữ ánh sáng ấy trước mắt anh, và đi thẳng tới đó.”</p> <p>Thế là Cơ Đốc Nhân bắt đầu chạy — chạy về phía cánh cổng nhỏ và ánh sáng chói lọi — hai ngón tay bịt chặt tai để không gì có thể giữ ông lại, vừa chạy vừa kêu: “Sự sống! Sự sống! Sự sống đời đời!”</p> <p>Mọi cuộc hành trình lớn với Đức Chúa Trời đều bắt đầu như thế: nhận ra có điều gì đó không ổn, và chạy về phía ánh sáng. Nếu con thấy lòng mình nặng trĩu vì những điều sai trái con đã làm, con không phải mang nó một mình đâu. Có một Ánh Sáng để con chạy đến. Tên Ngài là Chúa Giê-xu.</p> <p><em>Lạy Đức Chúa Trời, khi con thấy nặng lòng vì những điều sai trái con đã làm, xin giúp con chạy đến với Ngài, là Ánh Sáng thật. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Cơ Đốc Nhân kêu lên: “Tôi phải làm sao đây?”",
+    "answer": "Ông đọc trong một cuốn sách rằng thành phố của ông sẽ bị hủy diệt, và ông cảm thấy trên lưng mình có một gánh nặng to lớn, nặng trĩu, mà ông không gỡ ra được."
+   },
+   {
+    "question": "Vì sao Cơ Đốc Nhân vừa chạy vừa lấy ngón tay bịt tai?",
+    "answer": "Để không gì có thể giữ ông lại khi ông chạy về phía cánh cổng nhỏ và ánh sáng chói lọi, vừa chạy vừa kêu: “Sự sống! Sự sống! Sự sống đời đời!”"
+   },
+   {
+    "question": "Con đã bao giờ thấy lòng nặng trĩu vì một điều sai trái mình đã làm chưa? Câu chuyện nói con hãy chạy đến đâu?",
+    "answer": "Ý chính của chương này: con không phải mang gánh nặng của những điều sai trái một mình — có một Ánh Sáng để con chạy đến, và tên Ngài là Chúa Giê-xu."
+   }
+  ],
+  "body_text": "“Tôi phải làm chi cho được cứu rỗi?” — trích Công Vụ Các Sứ Đồ 16 Ở một nơi gọi là Thành Hủy Diệt, có một người tên là Cơ Đốc Nhân. Một hôm, ông đang đọc một cuốn sách, và điều ông đọc được làm ông sợ hãi vô cùng. Ông biết rằng thành phố của mình sắp bị hủy diệt — và tệ nhất là ông cảm thấy trên lưng mình có một gánh nặng to lớn, nặng trĩu, mà ông không sao gỡ ra được, dù đã cố gắng thế nào đi nữa. Ông bắt đầu kêu lên: “Tôi phải làm sao đây? Tôi phải làm chi cho được cứu rỗi?” Gia đình ông tưởng ông bị điên. Nhưng Cơ Đốc Nhân không thể thôi lo lắng về cái gánh nặng ấy. Rồi một người được gọi là Người Truyền Đạo đến gặp ông và hỏi vì sao ông khóc. Cơ Đốc Nhân kể cho ông ấy nghe về gánh nặng và nỗi sợ của mình. Người Truyền Đạo chỉ tay về phía xa, bên kia một cánh đồng rộng, và hỏi: “Anh có thấy cánh cổng nhỏ đằng kia không?” Cơ Đốc Nhân không thấy. Người Truyền Đạo lại hỏi: “Anh có thấy ánh sáng đang chiếu kia không?” Cơ Đốc Nhân đáp: “Có, hình như tôi thấy.” “Hãy giữ ánh sáng ấy trước mắt anh, và đi thẳng tới đó.” Thế là Cơ Đốc Nhân bắt đầu chạy — chạy về phía cánh cổng nhỏ và ánh sáng chói lọi — hai ngón tay bịt chặt tai để không gì có thể giữ ông lại, vừa chạy vừa kêu: “Sự sống! Sự sống! Sự sống đời đời!” Mọi cuộc hành trình lớn với Đức Chúa Trời đều bắt đầu như thế: nhận ra có điều gì đó không ổn, và chạy về phía ánh sáng. Nếu con thấy lòng mình nặng trĩu vì những điều sai trái con đã làm, con không phải mang nó một mình đâu. Có một Ánh Sáng để con chạy đến. Tên Ngài là Chúa Giê-xu. Lạy Đức Chúa Trời, khi con thấy nặng lòng vì những điều sai trái con đã làm, xin giúp con chạy đến với Ngài, là Ánh Sáng thật. A-men.",
+  "word_count": 375
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "vi"
+  ],
+  "order": 2,
+  "title": "Mắc kẹt trong đầm lầy",
+  "body_html": "<blockquote>“Ngài cũng đem tôi lên khỏi hầm gớm ghê” và đặt chân tôi trên đất vững — trích Thi Thiên 40</blockquote> <p>Cơ Đốc Nhân vội vã băng qua cánh đồng về phía ánh sáng chói lọi. Nhưng ông không để ý chỗ mình bước — và bỗng nhiên, <em>tõm!</em> — ông ngã nhào xuống một vũng bùn sâu hoắm.</p> <p>Đây đâu phải một vũng nước bình thường. Nó có tên hẳn hoi: Vũng Lầy Thất Vọng, tức là cái đầm của cảm giác chẳng còn chút hy vọng nào. Cơ Đốc Nhân càng vùng vẫy thì càng lún sâu, vì cái gánh nặng trên lưng kéo ông chìm xuống bùn.</p> <p>Một người hàng xóm tên là Dễ Dãi vẫn đi theo ông. Nhưng khi bị bùn bắn tung tóe khắp người, Dễ Dãi càu nhàu, bò lên bờ phía gần nhà, rồi giậm chân bỏ về. Tội nghiệp Cơ Đốc Nhân bị bỏ lại một mình, đang chìm dần, cứ cố mãi, cố mãi để tới được bờ bên kia.</p> <p>Rồi có một người đi ngang qua. Tên ông là Giúp Đỡ. Ông hỏi: “Anh làm gì dưới đó vậy?” Rồi ông đưa tay ra và nói: “Đưa tay cho tôi nào.” Ông kéo Cơ Đốc Nhân ra khỏi vũng lầy và đặt ông đứng lại trên đất tốt, vững chắc.</p> <p>Đôi khi, lúc mới bắt đầu theo Đức Chúa Trời, chúng ta gặp một đoạn đường mà mọi thứ đều có vẻ vô vọng và nặng nề, và chúng ta bắt đầu lún xuống. Chuyện đó là bình thường. Ngay cả Cơ Đốc Nhân cũng gặp như vậy. Nhưng chúng ta không cần phải tự mình leo ra.</p> <p>Khi con thấy mình như đang chìm xuống, hãy làm như Cơ Đốc Nhân — nắm lấy bàn tay đang đưa ra cho con. Đức Chúa Trời sai người đến giúp.</p> <p><em>Lạy Đức Chúa Trời, khi con thấy mình mắc kẹt và chẳng còn hy vọng, cảm ơn Ngài vì Ngài đưa tay ra cho con. Xin giúp con nắm lấy tay Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Chuyện gì đã xảy ra với Cơ Đốc Nhân ở Vũng Lầy Thất Vọng?",
+    "answer": "Ông ngã xuống một vũng bùn sâu, và gánh nặng trên lưng làm ông càng vùng vẫy thì càng lún sâu hơn."
+   },
+   {
+    "question": "Dễ Dãi đã làm gì, và ai đã đến giúp Cơ Đốc Nhân?",
+    "answer": "Dễ Dãi càu nhàu, bò lên bờ phía gần nhà rồi bỏ về. Sau đó một người tên là Giúp Đỡ đưa tay ra và kéo Cơ Đốc Nhân lên đất vững chắc."
+   },
+   {
+    "question": "Có khi nào con thấy mình mắc kẹt hay chẳng còn hy vọng không? Khi đó con có thể làm gì?",
+    "answer": "Ý chính của chương này: ngay cả Cơ Đốc Nhân cũng có lúc thấy mình mắc kẹt, và chúng ta không phải tự leo ra một mình — hãy nắm lấy bàn tay đang đưa ra cho con, vì Đức Chúa Trời sai người đến giúp."
+   }
+  ],
+  "body_text": "“Ngài cũng đem tôi lên khỏi hầm gớm ghê” và đặt chân tôi trên đất vững — trích Thi Thiên 40 Cơ Đốc Nhân vội vã băng qua cánh đồng về phía ánh sáng chói lọi. Nhưng ông không để ý chỗ mình bước — và bỗng nhiên, tõm! — ông ngã nhào xuống một vũng bùn sâu hoắm. Đây đâu phải một vũng nước bình thường. Nó có tên hẳn hoi: Vũng Lầy Thất Vọng, tức là cái đầm của cảm giác chẳng còn chút hy vọng nào. Cơ Đốc Nhân càng vùng vẫy thì càng lún sâu, vì cái gánh nặng trên lưng kéo ông chìm xuống bùn. Một người hàng xóm tên là Dễ Dãi vẫn đi theo ông. Nhưng khi bị bùn bắn tung tóe khắp người, Dễ Dãi càu nhàu, bò lên bờ phía gần nhà, rồi giậm chân bỏ về. Tội nghiệp Cơ Đốc Nhân bị bỏ lại một mình, đang chìm dần, cứ cố mãi, cố mãi để tới được bờ bên kia. Rồi có một người đi ngang qua. Tên ông là Giúp Đỡ. Ông hỏi: “Anh làm gì dưới đó vậy?” Rồi ông đưa tay ra và nói: “Đưa tay cho tôi nào.” Ông kéo Cơ Đốc Nhân ra khỏi vũng lầy và đặt ông đứng lại trên đất tốt, vững chắc. Đôi khi, lúc mới bắt đầu theo Đức Chúa Trời, chúng ta gặp một đoạn đường mà mọi thứ đều có vẻ vô vọng và nặng nề, và chúng ta bắt đầu lún xuống. Chuyện đó là bình thường. Ngay cả Cơ Đốc Nhân cũng gặp như vậy. Nhưng chúng ta không cần phải tự mình leo ra. Khi con thấy mình như đang chìm xuống, hãy làm như Cơ Đốc Nhân — nắm lấy bàn tay đang đưa ra cho con. Đức Chúa Trời sai người đến giúp. Lạy Đức Chúa Trời, khi con thấy mình mắc kẹt và chẳng còn hy vọng, cảm ơn Ngài vì Ngài đưa tay ra cho con. Xin giúp con nắm lấy tay Ngài. A-men.",
+  "word_count": 343
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "vi"
+  ],
+  "order": 3,
+  "title": "Cánh cổng nhỏ mở ra",
+  "body_html": "<blockquote>“Hãy gõ cửa, sẽ mở cho” — trích Ma-thi-ơ 7</blockquote> <p>Cuối cùng Cơ Đốc Nhân cũng đến được cánh cổng nhỏ — chính cánh cổng mà Người Truyền Đạo đã chỉ cho ông. Phía trên cổng có viết mấy chữ này: “Hãy gõ cửa, sẽ mở cho.”</p> <p>Thế là Cơ Đốc Nhân gõ cửa. Rồi gõ thêm lần nữa. Ông không chắc có ai ra mở không. Lỡ cánh cổng cứ đóng mãi thì sao? Lỡ ông không đủ tốt để được vào thì sao?</p> <p>Nhưng cánh cổng đã mở ra! Một người tử tế tên là Thiện Chí đứng ở đó. Ông hỏi: “Ai đó? Anh từ đâu đến, và anh muốn gì?”</p> <p>Cơ Đốc Nhân đáp: “Tôi là một kẻ có tội đáng thương, mang một gánh nặng nặng trĩu. Tôi đã đi suốt từ Thành Hủy Diệt đến đây, và tôi muốn đến Thành tuyệt vời trên đồi kia.”</p> <p>Thiện Chí nói: “Tôi hết lòng vui mừng cho anh vào!” — rồi ông mở toang cánh cổng và kéo Cơ Đốc Nhân vào bên trong an toàn. Cơ Đốc Nhân hỏi bây giờ ông đã có thể tháo gánh nặng xuống được chưa. Thiện Chí nói: “Hãy kiên nhẫn. Cứ đi tiếp, đến đúng chỗ thì nó sẽ tự rơi xuống.”</p> <p>Rồi Thiện Chí chỉ cho ông con đường hẹp và tiễn ông lên đường.</p> <p>Đây là một điều tuyệt vời về Đức Chúa Trời: Ngài không bao giờ từ chối bất cứ ai đến với Ngài. Con không cần phải đủ tốt trước đã. Con chỉ cần gõ cửa thôi. Hãy đến với Đức Chúa Trời, và Ngài sẽ mở cửa, hết lòng đón con vào.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì khi con đến với Ngài, Ngài không bao giờ từ chối con. Con đang gõ cửa đây — xin cho con vào. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Phía trên cánh cổng nhỏ có viết những chữ gì?",
+    "answer": "“Hãy gõ cửa, sẽ mở cho.”"
+   },
+   {
+    "question": "Thiện Chí đã nói gì khi Cơ Đốc Nhân hỏi bây giờ ông đã có thể tháo gánh nặng xuống được chưa?",
+    "answer": "“Hãy kiên nhẫn” — cứ đi tiếp, đến đúng chỗ thì nó sẽ tự rơi xuống."
+   },
+   {
+    "question": "Con có nghĩ mình phải đủ tốt thì Đức Chúa Trời mới cho con vào không?",
+    "answer": "Ý chính của chương này: Đức Chúa Trời không bao giờ từ chối bất cứ ai đến với Ngài. Con không cần phải đủ tốt trước đã — con chỉ cần gõ cửa, và Ngài hết lòng đón con vào."
+   }
+  ],
+  "body_text": "“Hãy gõ cửa, sẽ mở cho” — trích Ma-thi-ơ 7 Cuối cùng Cơ Đốc Nhân cũng đến được cánh cổng nhỏ — chính cánh cổng mà Người Truyền Đạo đã chỉ cho ông. Phía trên cổng có viết mấy chữ này: “Hãy gõ cửa, sẽ mở cho.” Thế là Cơ Đốc Nhân gõ cửa. Rồi gõ thêm lần nữa. Ông không chắc có ai ra mở không. Lỡ cánh cổng cứ đóng mãi thì sao? Lỡ ông không đủ tốt để được vào thì sao? Nhưng cánh cổng đã mở ra! Một người tử tế tên là Thiện Chí đứng ở đó. Ông hỏi: “Ai đó? Anh từ đâu đến, và anh muốn gì?” Cơ Đốc Nhân đáp: “Tôi là một kẻ có tội đáng thương, mang một gánh nặng nặng trĩu. Tôi đã đi suốt từ Thành Hủy Diệt đến đây, và tôi muốn đến Thành tuyệt vời trên đồi kia.” Thiện Chí nói: “Tôi hết lòng vui mừng cho anh vào!” — rồi ông mở toang cánh cổng và kéo Cơ Đốc Nhân vào bên trong an toàn. Cơ Đốc Nhân hỏi bây giờ ông đã có thể tháo gánh nặng xuống được chưa. Thiện Chí nói: “Hãy kiên nhẫn. Cứ đi tiếp, đến đúng chỗ thì nó sẽ tự rơi xuống.” Rồi Thiện Chí chỉ cho ông con đường hẹp và tiễn ông lên đường. Đây là một điều tuyệt vời về Đức Chúa Trời: Ngài không bao giờ từ chối bất cứ ai đến với Ngài. Con không cần phải đủ tốt trước đã. Con chỉ cần gõ cửa thôi. Hãy đến với Đức Chúa Trời, và Ngài sẽ mở cửa, hết lòng đón con vào. Lạy Đức Chúa Trời, cảm ơn Ngài vì khi con đến với Ngài, Ngài không bao giờ từ chối con. Con đang gõ cửa đây — xin cho con vào. A-men.",
+  "word_count": 311
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "vi"
+  ],
+  "order": 4,
+  "title": "Ngôi nhà có những căn phòng kỳ diệu",
+  "body_html": "<blockquote>“Xin Chúa mở mắt tôi, để tôi thấy” những điều lạ lùng — trích Thi Thiên 119</blockquote> <p>Đi dọc con đường, Cơ Đốc Nhân đến nhà của một người gọi là Người Giải Nghĩa, công việc của ông là giúp người ta hiểu những điều quan trọng. Người Giải Nghĩa thắp một ngọn nến và nói: “Hãy đến đây, để tôi cho anh xem vài điều kỳ diệu.” Rồi ông dẫn Cơ Đốc Nhân đi hết phòng này đến phòng khác.</p> <p>Một trong những căn phòng ấy là một phòng khách lớn, bụi bặm đến nỗi không ai thở được. Một người bắt đầu quét — nhưng bụi bay mù mịt thành từng đám dày, làm Cơ Đốc Nhân ho sặc sụa và nghẹt thở! Rồi một cô gái đến, nhẹ nhàng rảy nước khắp sàn nhà, và bỗng nhiên căn phòng có thể quét sạch sẽ, xinh xắn.</p> <p>Người Giải Nghĩa giải thích: “Bụi là tội lỗi. Chỉ nói cho người ta biết luật lệ thôi thì chỉ làm tội lỗi bay tung lên, giống như quét bụi khô vậy. Nhưng tin lành về Chúa Giê-xu giống như nước — nó làm bụi lắng xuống và làm cho lòng người được sạch thật sự.”</p> <p>Trong một phòng khác, có một ngọn lửa cháy sát bức tường. Một người cứ hắt nước vào để dập tắt nó — vậy mà ngọn lửa lại càng cháy cao hơn, nóng hơn! Cơ Đốc Nhân thấy thật khó hiểu. Rồi Người Giải Nghĩa dẫn ông ra phía sau bức tường, nơi có một người khác đang lén đổ dầu vào lửa để giữ cho nó cháy mãi. Ông nói: “Đó là Chúa Giê-xu, Ngài giữ cho ngọn lửa đức tin cứ cháy trong lòng anh, ngay cả khi có những điều tìm cách dập tắt nó.”</p> <p>Đức Chúa Trời rất thích dạy chúng ta biết mọi điều thật sự diễn ra thế nào ở bên trong. Hãy xin Ngài mở mắt con, và Ngài sẽ cho con thấy những điều kỳ diệu.</p> <p><em>Lạy Đức Chúa Trời, xin mở mắt con để con hiểu biết Ngài. Xin giữ cho ngọn lửa tình yêu của Ngài luôn cháy trong con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Chuyện gì đã xảy ra khi người ấy quét căn phòng đầy bụi, và điều gì đã làm cho phòng sạch?",
+    "answer": "Bụi bay tung lên làm Cơ Đốc Nhân nghẹt thở. Khi một cô gái rảy nước lên sàn nhà, căn phòng có thể quét sạch sẽ, xinh xắn."
+   },
+   {
+    "question": "Vì sao ngọn lửa vẫn cháy dù có người hắt nước vào?",
+    "answer": "Phía sau bức tường có một người khác đang lén đổ dầu vào lửa. Người Giải Nghĩa nói đó là Chúa Giê-xu, Ngài giữ cho ngọn lửa đức tin cứ cháy trong lòng anh."
+   },
+   {
+    "question": "Có điều gì về Đức Chúa Trời mà con muốn hiểu rõ hơn không? Con có thể xin Ngài thế nào?",
+    "answer": "Ý chính của chương này: Đức Chúa Trời rất thích dạy chúng ta biết mọi điều thật sự diễn ra thế nào ở bên trong — hãy xin Ngài mở mắt con, và Ngài sẽ cho con thấy những điều kỳ diệu."
+   }
+  ],
+  "body_text": "“Xin Chúa mở mắt tôi, để tôi thấy” những điều lạ lùng — trích Thi Thiên 119 Đi dọc con đường, Cơ Đốc Nhân đến nhà của một người gọi là Người Giải Nghĩa, công việc của ông là giúp người ta hiểu những điều quan trọng. Người Giải Nghĩa thắp một ngọn nến và nói: “Hãy đến đây, để tôi cho anh xem vài điều kỳ diệu.” Rồi ông dẫn Cơ Đốc Nhân đi hết phòng này đến phòng khác. Một trong những căn phòng ấy là một phòng khách lớn, bụi bặm đến nỗi không ai thở được. Một người bắt đầu quét — nhưng bụi bay mù mịt thành từng đám dày, làm Cơ Đốc Nhân ho sặc sụa và nghẹt thở! Rồi một cô gái đến, nhẹ nhàng rảy nước khắp sàn nhà, và bỗng nhiên căn phòng có thể quét sạch sẽ, xinh xắn. Người Giải Nghĩa giải thích: “Bụi là tội lỗi. Chỉ nói cho người ta biết luật lệ thôi thì chỉ làm tội lỗi bay tung lên, giống như quét bụi khô vậy. Nhưng tin lành về Chúa Giê-xu giống như nước — nó làm bụi lắng xuống và làm cho lòng người được sạch thật sự.” Trong một phòng khác, có một ngọn lửa cháy sát bức tường. Một người cứ hắt nước vào để dập tắt nó — vậy mà ngọn lửa lại càng cháy cao hơn, nóng hơn! Cơ Đốc Nhân thấy thật khó hiểu. Rồi Người Giải Nghĩa dẫn ông ra phía sau bức tường, nơi có một người khác đang lén đổ dầu vào lửa để giữ cho nó cháy mãi. Ông nói: “Đó là Chúa Giê-xu, Ngài giữ cho ngọn lửa đức tin cứ cháy trong lòng anh, ngay cả khi có những điều tìm cách dập tắt nó.” Đức Chúa Trời rất thích dạy chúng ta biết mọi điều thật sự diễn ra thế nào ở bên trong. Hãy xin Ngài mở mắt con, và Ngài sẽ cho con thấy những điều kỳ diệu. Lạy Đức Chúa Trời, xin mở mắt con để con hiểu biết Ngài. Xin giữ cho ngọn lửa tình yêu của Ngài luôn cháy trong con. A-men.",
+  "word_count": 366
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "vi"
+  ],
+  "order": 5,
+  "title": "Gánh nặng lăn đi mất",
+  "body_html": "<blockquote>“Hỡi những kẻ mệt mỏi và gánh nặng, hãy đến cùng ta, ta sẽ cho các ngươi được yên nghỉ.” — trích Ma-thi-ơ 11</blockquote> <p>Đây là phần hay nhất của cả câu chuyện.</p> <p>Cơ Đốc Nhân đến một nơi có một Cây Thập Tự dựng đứng, và cách đó một quãng ngắn, phía dưới, là một ngôi mộ để ngỏ. Con còn nhớ cái gánh nặng ông đã mang suốt chặng đường dài không — cái gánh mà ông không sao gỡ ra được, dù đã cố gắng hết sức?</p> <p>Ngay lúc Cơ Đốc Nhân đến bên Cây Thập Tự, gánh nặng tuột khỏi vai ông. Nó lăn khỏi lưng ông, rồi lăn xuống, xuống, xuống tận chân đồi — rơi thẳng vào ngôi mộ để ngỏ — và biến mất. Biến mất luôn! Ông không bao giờ thấy nó nữa.</p> <p>Cơ Đốc Nhân vui mừng đến nỗi chẳng biết phải làm gì. Nước mắt vui sướng chảy dài trên mặt ông, và ông nói: “Ngài đã cho tôi được yên nghỉ bởi sự đau khổ của Ngài, và được sự sống bởi sự chết của Ngài.” Rồi ông nhảy lên ba lần thật cao vì vui mừng!</p> <p>Bấy giờ có ba Đấng Sáng Láng đến với ông. Đấng thứ nhất nói: “Tội lỗi anh đã được tha.” Đấng thứ hai cởi bỏ bộ quần áo cũ rách rưới của ông và mặc cho ông bộ áo mới thật đẹp. Còn Đấng thứ ba đóng một dấu trên trán ông và trao cho ông một cuộn thư, để đọc dọc đường và để nộp tại cổng của Thành lớn.</p> <p>Gánh nặng ấy chính là tội lỗi, và chỉ có Chúa Giê-xu, Đấng đã chết trên Cây Thập Tự, mới có thể cất nó đi. Con không thể tự nhấc gánh nặng của những điều sai trái ra khỏi lưng mình — nhưng Chúa Giê-xu thì có thể, và Ngài thật sự làm điều đó. Đó là tin vui tuyệt vời nhất.</p> <p><em>Lạy Chúa Giê-xu, cảm ơn Ngài đã cất đi gánh nặng tội lỗi của con tại Cây Thập Tự. Cảm ơn Ngài đã cho con được yên nghỉ. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Chuyện gì đã xảy ra với gánh nặng của Cơ Đốc Nhân khi ông đến bên Cây Thập Tự?",
+    "answer": "Nó tuột ra, lăn xuống đồi, rơi vào ngôi mộ để ngỏ và biến mất — ông không bao giờ thấy nó nữa."
+   },
+   {
+    "question": "Ba Đấng Sáng Láng đã ban cho Cơ Đốc Nhân những gì?",
+    "answer": "Một Đấng nói tội lỗi ông đã được tha, một Đấng mặc cho ông bộ áo mới thật đẹp, và một Đấng đóng dấu trên trán ông rồi trao cho ông một cuộn thư."
+   },
+   {
+    "question": "Chúng ta có thể tự cất bỏ những điều sai trái của mình bằng cách cố gắng thật nhiều không? Câu chuyện nói ai có thể làm điều đó?",
+    "answer": "Ý chính của chương này: gánh nặng ấy là tội lỗi, và chúng ta không thể tự nhấc nó ra — nhưng Chúa Giê-xu, Đấng đã chết trên Cây Thập Tự, có thể, và Ngài thật sự làm điều đó. Đó là tin vui tuyệt vời nhất."
+   }
+  ],
+  "body_text": "“Hỡi những kẻ mệt mỏi và gánh nặng, hãy đến cùng ta, ta sẽ cho các ngươi được yên nghỉ.” — trích Ma-thi-ơ 11 Đây là phần hay nhất của cả câu chuyện. Cơ Đốc Nhân đến một nơi có một Cây Thập Tự dựng đứng, và cách đó một quãng ngắn, phía dưới, là một ngôi mộ để ngỏ. Con còn nhớ cái gánh nặng ông đã mang suốt chặng đường dài không — cái gánh mà ông không sao gỡ ra được, dù đã cố gắng hết sức? Ngay lúc Cơ Đốc Nhân đến bên Cây Thập Tự, gánh nặng tuột khỏi vai ông. Nó lăn khỏi lưng ông, rồi lăn xuống, xuống, xuống tận chân đồi — rơi thẳng vào ngôi mộ để ngỏ — và biến mất. Biến mất luôn! Ông không bao giờ thấy nó nữa. Cơ Đốc Nhân vui mừng đến nỗi chẳng biết phải làm gì. Nước mắt vui sướng chảy dài trên mặt ông, và ông nói: “Ngài đã cho tôi được yên nghỉ bởi sự đau khổ của Ngài, và được sự sống bởi sự chết của Ngài.” Rồi ông nhảy lên ba lần thật cao vì vui mừng! Bấy giờ có ba Đấng Sáng Láng đến với ông. Đấng thứ nhất nói: “Tội lỗi anh đã được tha.” Đấng thứ hai cởi bỏ bộ quần áo cũ rách rưới của ông và mặc cho ông bộ áo mới thật đẹp. Còn Đấng thứ ba đóng một dấu trên trán ông và trao cho ông một cuộn thư, để đọc dọc đường và để nộp tại cổng của Thành lớn. Gánh nặng ấy chính là tội lỗi, và chỉ có Chúa Giê-xu, Đấng đã chết trên Cây Thập Tự, mới có thể cất nó đi. Con không thể tự nhấc gánh nặng của những điều sai trái ra khỏi lưng mình — nhưng Chúa Giê-xu thì có thể, và Ngài thật sự làm điều đó. Đó là tin vui tuyệt vời nhất. Lạy Chúa Giê-xu, cảm ơn Ngài đã cất đi gánh nặng tội lỗi của con tại Cây Thập Tự. Cảm ơn Ngài đã cho con được yên nghỉ. A-men.",
+  "word_count": 360
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "vi"
+  ],
+  "order": 6,
+  "title": "Ngọn đồi khó leo và Lâu Đài Mỹ Lệ",
+  "body_html": "<blockquote>“Hãy mang lấy mọi khí giới của Đức Chúa Trời” — trích Ê-phê-sô 6</blockquote> <p>Chẳng bao lâu, con đường dẫn tới một ngọn đồi dốc đứng tên là Gian Nan. Đồi dốc đến nỗi Cơ Đốc Nhân phải bò lên bằng tay và đầu gối! Ở lưng chừng đồi có một cái chòi nhỏ để nghỉ chân, và Cơ Đốc Nhân ngồi xuống — nhưng ông mệt quá nên ngủ thiếp đi, và cuộn thư quý giá tuột khỏi tay ông.</p> <p>Khi tỉnh dậy và vội vã đi tiếp, ông bỗng nhận ra cuộn thư đã mất! Ôi, ông buồn biết bao. Ông phải đi bộ quay ngược xuống tận nơi cũ để tìm. Kìa, nó vẫn nằm ngay chỗ ông đã ngủ. Ông nhặt nó lên, cảm tạ Đức Chúa Trời, rồi tiếp tục leo lên.</p> <p>Gần đỉnh đồi có hai con sư tử, và chúng gầm lên! Hai người lữ khách vừa sợ hãi bỏ chạy. Nhưng một người canh gác gọi to: “Đừng sợ mấy con sư tử — chúng bị xích đấy! Cứ đi chính giữa đường là được.” Thế là Cơ Đốc Nhân can đảm bước đi giữa hai con sư tử, và chúng không đụng được đến ông.</p> <p>Trên đỉnh đồi là một ngôi nhà nguy nga tên là Lâu Đài Mỹ Lệ, được xây để giúp những người lữ khách mệt mỏi. Những người phụ nữ tử tế tên là Suy Xét, Khôn Ngoan, Tin Kính và Bác Ái đón tiếp ông, cho ông ăn và cho ông nghỉ ngơi. Trước khi ông ra đi, họ mặc cho ông từ đầu đến chân một bộ áo giáp chắc chắn, sáng loáng — để dùng cho chặng đường phía trước.</p> <p>Theo Đức Chúa Trời có thể giống như leo một ngọn đồi dốc và mệt nhọc, và đôi khi những điều làm chúng ta sợ hãi thật ra đã bị xích lại, không thể làm hại chúng ta được. Đức Chúa Trời ban cho chúng ta sự nghỉ ngơi, những người bạn tốt, và áo giáp cho cuộc hành trình. Hãy cứ leo tiếp — và đừng rời khỏi con đường.</p> <p><em>Lạy Đức Chúa Trời, khi đường đi khó khăn và dốc đứng, xin cho con được nghỉ ngơi, và xin mặc cho con áo giáp của Ngài để con tiếp tục bước đi. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Cơ Đốc Nhân phải đi ngược xuống Đồi Gian Nan?",
+    "answer": "Ông ngủ thiếp đi trong cái chòi nghỉ chân và cuộn thư quý giá tuột khỏi tay ông, nên ông phải quay lại tìm."
+   },
+   {
+    "question": "Vì sao những con sư tử đang gầm lại không thể làm hại Cơ Đốc Nhân?",
+    "answer": "Chúng bị xích. Người canh gác bảo ông cứ đi chính giữa đường, nên ông can đảm bước đi giữa chúng."
+   },
+   {
+    "question": "Có điều gì làm con sợ mà thật ra có thể chỉ là một “con sư tử bị xích” không? Ai giúp con khi mọi chuyện trở nên khó khăn?",
+    "answer": "Ý chính của chương này: theo Đức Chúa Trời có thể giống như leo một ngọn đồi dốc, và có những điều làm chúng ta sợ nhưng thật ra không thể làm hại chúng ta. Đức Chúa Trời ban sự nghỉ ngơi, những người bạn tốt và áo giáp — hãy cứ leo tiếp và đừng rời khỏi con đường."
+   }
+  ],
+  "body_text": "“Hãy mang lấy mọi khí giới của Đức Chúa Trời” — trích Ê-phê-sô 6 Chẳng bao lâu, con đường dẫn tới một ngọn đồi dốc đứng tên là Gian Nan. Đồi dốc đến nỗi Cơ Đốc Nhân phải bò lên bằng tay và đầu gối! Ở lưng chừng đồi có một cái chòi nhỏ để nghỉ chân, và Cơ Đốc Nhân ngồi xuống — nhưng ông mệt quá nên ngủ thiếp đi, và cuộn thư quý giá tuột khỏi tay ông. Khi tỉnh dậy và vội vã đi tiếp, ông bỗng nhận ra cuộn thư đã mất! Ôi, ông buồn biết bao. Ông phải đi bộ quay ngược xuống tận nơi cũ để tìm. Kìa, nó vẫn nằm ngay chỗ ông đã ngủ. Ông nhặt nó lên, cảm tạ Đức Chúa Trời, rồi tiếp tục leo lên. Gần đỉnh đồi có hai con sư tử, và chúng gầm lên! Hai người lữ khách vừa sợ hãi bỏ chạy. Nhưng một người canh gác gọi to: “Đừng sợ mấy con sư tử — chúng bị xích đấy! Cứ đi chính giữa đường là được.” Thế là Cơ Đốc Nhân can đảm bước đi giữa hai con sư tử, và chúng không đụng được đến ông. Trên đỉnh đồi là một ngôi nhà nguy nga tên là Lâu Đài Mỹ Lệ, được xây để giúp những người lữ khách mệt mỏi. Những người phụ nữ tử tế tên là Suy Xét, Khôn Ngoan, Tin Kính và Bác Ái đón tiếp ông, cho ông ăn và cho ông nghỉ ngơi. Trước khi ông ra đi, họ mặc cho ông từ đầu đến chân một bộ áo giáp chắc chắn, sáng loáng — để dùng cho chặng đường phía trước. Theo Đức Chúa Trời có thể giống như leo một ngọn đồi dốc và mệt nhọc, và đôi khi những điều làm chúng ta sợ hãi thật ra đã bị xích lại, không thể làm hại chúng ta được. Đức Chúa Trời ban cho chúng ta sự nghỉ ngơi, những người bạn tốt, và áo giáp cho cuộc hành trình. Hãy cứ leo tiếp — và đừng rời khỏi con đường. Lạy Đức Chúa Trời, khi đường đi khó khăn và dốc đứng, xin cho con được nghỉ ngơi, và xin mặc cho con áo giáp của Ngài để con tiếp tục bước đi. A-men.",
+  "word_count": 391
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "vi"
+  ],
+  "order": 7,
+  "title": "Cơ Đốc Nhân chiến đấu với con rồng",
+  "body_html": "<blockquote>“Hãy chống trả ma quỉ, thì nó sẽ lánh xa anh em.” — trích Gia-cơ 4</blockquote> <p>Dưới một thung lũng thấp, có một con quái vật khủng khiếp giậm chân rầm rầm đi tới gặp Cơ Đốc Nhân. Tên nó là A-bô-ly-ôn. Mình nó phủ đầy vảy như vảy cá, nó có cánh như cánh rồng và chân như chân gấu, và lửa với khói phun ra từ người nó. Trông nó thật đáng sợ!</p> <p>A-bô-ly-ôn gầm lên: “Ngươi thuộc về ta, và ta sẽ không để ngươi đi đến Thành ấy đâu.” Cơ Đốc Nhân nói không — bây giờ ông phục vụ Vua rồi. Thế là con quái vật phóng một mũi tên lửa vào ông, rồi một mũi nữa, rồi một mũi nữa, dày đặc như mưa đá. Cơ Đốc Nhân giơ khiên lên đỡ, nhưng ông vẫn bị thương ở đầu, ở tay và ở chân.</p> <p>Trận đánh kéo dài mãi — suốt nửa ngày! Cuối cùng Cơ Đốc Nhân yếu sức đến nỗi thanh gươm văng khỏi tay ông, và A-bô-ly-ôn lao tới để kết liễu ông. Tưởng như thế là hết.</p> <p>Nhưng Cơ Đốc Nhân vươn người ra, chụp lại được thanh gươm, và kêu lên: “Kẻ thù của ta ơi, đừng vội mừng — khi ta ngã, ta sẽ đứng dậy!” Ông đâm một nhát thật mạnh và hô to: “Trong mọi sự đó, chúng ta nhờ Đấng yêu thương mình mà thắng hơn bội phần!” Bấy giờ A-bô-ly-ôn giương đôi cánh rồng ra và bay mất. Cơ Đốc Nhân đã thắng — và lá của cây sự sống đã chữa lành các vết thương của ông.</p> <p>Ma quỉ là có thật, nhưng con không phải đánh bại nó bằng sức riêng của mình. Cơ Đốc Nhân đã chiến thắng nhờ Lời Đức Chúa Trời và nhờ chiến thắng của Chúa Giê-xu. Khi con nói “không” với điều sai trái và bám chặt lấy Đức Chúa Trời, kẻ thù sẽ bỏ chạy.</p> <p><em>Lạy Đức Chúa Trời, xin làm cho con can đảm. Xin giúp con nói “không” với điều sai trái, và chiến thắng nhờ tin cậy Chúa Giê-xu. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "A-bô-ly-ôn muốn gì, và Cơ Đốc Nhân đã nói gì với nó?",
+    "answer": "A-bô-ly-ôn nói Cơ Đốc Nhân thuộc về nó và nó sẽ không để ông đi đến Thành ấy. Cơ Đốc Nhân nói không — bây giờ ông phục vụ Vua rồi."
+   },
+   {
+    "question": "Cơ Đốc Nhân đã làm gì khi thanh gươm văng khỏi tay ông?",
+    "answer": "Ông chụp lại thanh gươm, nói: “Khi ta ngã, ta sẽ đứng dậy!”, rồi đâm một nhát thật mạnh — và A-bô-ly-ôn bay mất."
+   },
+   {
+    "question": "Điều gì giúp con nói “không” với một việc mà con biết là sai?",
+    "answer": "Ý chính của chương này: chúng ta không đánh bại kẻ thù bằng sức riêng của mình. Cơ Đốc Nhân đã chiến thắng nhờ Lời Đức Chúa Trời và nhờ chiến thắng của Chúa Giê-xu — hãy nói “không” với điều sai trái, bám chặt lấy Đức Chúa Trời, và kẻ thù sẽ bỏ chạy."
+   }
+  ],
+  "body_text": "“Hãy chống trả ma quỉ, thì nó sẽ lánh xa anh em.” — trích Gia-cơ 4 Dưới một thung lũng thấp, có một con quái vật khủng khiếp giậm chân rầm rầm đi tới gặp Cơ Đốc Nhân. Tên nó là A-bô-ly-ôn. Mình nó phủ đầy vảy như vảy cá, nó có cánh như cánh rồng và chân như chân gấu, và lửa với khói phun ra từ người nó. Trông nó thật đáng sợ! A-bô-ly-ôn gầm lên: “Ngươi thuộc về ta, và ta sẽ không để ngươi đi đến Thành ấy đâu.” Cơ Đốc Nhân nói không — bây giờ ông phục vụ Vua rồi. Thế là con quái vật phóng một mũi tên lửa vào ông, rồi một mũi nữa, rồi một mũi nữa, dày đặc như mưa đá. Cơ Đốc Nhân giơ khiên lên đỡ, nhưng ông vẫn bị thương ở đầu, ở tay và ở chân. Trận đánh kéo dài mãi — suốt nửa ngày! Cuối cùng Cơ Đốc Nhân yếu sức đến nỗi thanh gươm văng khỏi tay ông, và A-bô-ly-ôn lao tới để kết liễu ông. Tưởng như thế là hết. Nhưng Cơ Đốc Nhân vươn người ra, chụp lại được thanh gươm, và kêu lên: “Kẻ thù của ta ơi, đừng vội mừng — khi ta ngã, ta sẽ đứng dậy!” Ông đâm một nhát thật mạnh và hô to: “Trong mọi sự đó, chúng ta nhờ Đấng yêu thương mình mà thắng hơn bội phần!” Bấy giờ A-bô-ly-ôn giương đôi cánh rồng ra và bay mất. Cơ Đốc Nhân đã thắng — và lá của cây sự sống đã chữa lành các vết thương của ông. Ma quỉ là có thật, nhưng con không phải đánh bại nó bằng sức riêng của mình. Cơ Đốc Nhân đã chiến thắng nhờ Lời Đức Chúa Trời và nhờ chiến thắng của Chúa Giê-xu. Khi con nói “không” với điều sai trái và bám chặt lấy Đức Chúa Trời, kẻ thù sẽ bỏ chạy. Lạy Đức Chúa Trời, xin làm cho con can đảm. Xin giúp con nói “không” với điều sai trái, và chiến thắng nhờ tin cậy Chúa Giê-xu. A-men.",
+  "word_count": 357
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "vi"
+  ],
+  "order": 8,
+  "title": "Đi qua thung lũng tối tăm",
+  "body_html": "<blockquote>“Dầu khi tôi đi trong trũng bóng chết” tôi cũng chẳng sợ tai họa nào, vì Chúa ở cùng tôi — trích Thi Thiên 23</blockquote> <p>Chặng đường tiếp theo là đáng sợ nhất: một nơi gọi là Trũng Bóng Chết. Ở đó tối đến nỗi nhiều lúc Cơ Đốc Nhân không biết phải đặt chân vào đâu. Một bên là cái hào sâu, bên kia là một đầm lầy nguy hiểm, và từ trong bóng tối vọng ra những tiếng động rùng rợn.</p> <p>Thanh gươm của ông chẳng có ích gì trước bóng tối này. Vì vậy Cơ Đốc Nhân dùng đến một vũ khí khác — vũ khí tốt nhất trong tất cả. Nó có tên là Mọi Lời Cầu Nguyện. Ông chỉ đơn sơ kêu lên: “Lạy Chúa, con nài xin Ngài, xin cứu con!”</p> <p>Một con quỷ độc ác rón rén bò tới sát sau lưng ông và thì thầm vào tai ông những ý nghĩ xấu xa, khẽ đến nỗi Cơ Đốc Nhân sợ rằng những ý nghĩ xấu ấy đến từ chính trong đầu mình. Điều đó làm ông càng sợ hơn.</p> <p>Nhưng rồi — xuyên qua bóng tối — ông nghe có tiếng nói phía trước. Có một người khác cũng đang đi qua trũng ấy, và người ấy nói lớn: “Dầu khi tôi đi trong trũng bóng chết, tôi sẽ chẳng sợ tai họa nào, vì Chúa ở cùng tôi.” Lòng Cơ Đốc Nhân phấn chấn hẳn lên. Hóa ra ông không hề một mình! Và khi trời sáng, ông đã đi ra an toàn ở phía bên kia.</p> <p>Đôi khi cuộc sống có vẻ tối tăm và đáng sợ, và chúng ta không nhìn thấy đường đi. Đó chính là lúc điều tốt nhất nên làm lại là điều đơn giản nhất: cầu nguyện. Đức Chúa Trời ở cùng con trong bóng tối, ngay cả khi con không thấy Ngài, và buổi sáng thế nào cũng đến.</p> <p><em>Lạy Đức Chúa Trời, khi mọi điều tối tăm và đáng sợ, xin giúp con cầu nguyện. Cảm ơn Ngài vì Ngài ở cùng con, và con không cần phải sợ hãi. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Trong thung lũng tối tăm, vì thanh gươm chẳng có ích gì, Cơ Đốc Nhân đã dùng vũ khí nào?",
+    "answer": "Một vũ khí tên là Mọi Lời Cầu Nguyện. Ông chỉ đơn sơ kêu lên: “Lạy Chúa, con nài xin Ngài, xin cứu con!”"
+   },
+   {
+    "question": "Vì sao lòng Cơ Đốc Nhân phấn chấn lên giữa bóng tối?",
+    "answer": "Ông nghe có người ở phía trước nói: “Tôi sẽ chẳng sợ tai họa nào, vì Chúa ở cùng tôi,” và ông biết mình không hề một mình."
+   },
+   {
+    "question": "Con sợ điều gì trong bóng tối hay trong những lúc khó khăn? Khi đó con có thể làm gì?",
+    "answer": "Ý chính của chương này: khi mọi điều có vẻ tối tăm và chúng ta không thấy đường đi, điều tốt nhất lại là điều đơn giản nhất — cầu nguyện. Đức Chúa Trời ở cùng con trong bóng tối, và buổi sáng thế nào cũng đến."
+   }
+  ],
+  "body_text": "“Dầu khi tôi đi trong trũng bóng chết” tôi cũng chẳng sợ tai họa nào, vì Chúa ở cùng tôi — trích Thi Thiên 23 Chặng đường tiếp theo là đáng sợ nhất: một nơi gọi là Trũng Bóng Chết. Ở đó tối đến nỗi nhiều lúc Cơ Đốc Nhân không biết phải đặt chân vào đâu. Một bên là cái hào sâu, bên kia là một đầm lầy nguy hiểm, và từ trong bóng tối vọng ra những tiếng động rùng rợn. Thanh gươm của ông chẳng có ích gì trước bóng tối này. Vì vậy Cơ Đốc Nhân dùng đến một vũ khí khác — vũ khí tốt nhất trong tất cả. Nó có tên là Mọi Lời Cầu Nguyện. Ông chỉ đơn sơ kêu lên: “Lạy Chúa, con nài xin Ngài, xin cứu con!” Một con quỷ độc ác rón rén bò tới sát sau lưng ông và thì thầm vào tai ông những ý nghĩ xấu xa, khẽ đến nỗi Cơ Đốc Nhân sợ rằng những ý nghĩ xấu ấy đến từ chính trong đầu mình. Điều đó làm ông càng sợ hơn. Nhưng rồi — xuyên qua bóng tối — ông nghe có tiếng nói phía trước. Có một người khác cũng đang đi qua trũng ấy, và người ấy nói lớn: “Dầu khi tôi đi trong trũng bóng chết, tôi sẽ chẳng sợ tai họa nào, vì Chúa ở cùng tôi.” Lòng Cơ Đốc Nhân phấn chấn hẳn lên. Hóa ra ông không hề một mình! Và khi trời sáng, ông đã đi ra an toàn ở phía bên kia. Đôi khi cuộc sống có vẻ tối tăm và đáng sợ, và chúng ta không nhìn thấy đường đi. Đó chính là lúc điều tốt nhất nên làm lại là điều đơn giản nhất: cầu nguyện. Đức Chúa Trời ở cùng con trong bóng tối, ngay cả khi con không thấy Ngài, và buổi sáng thế nào cũng đến. Lạy Đức Chúa Trời, khi mọi điều tối tăm và đáng sợ, xin giúp con cầu nguyện. Cảm ơn Ngài vì Ngài ở cùng con, và con không cần phải sợ hãi. A-men.",
+  "word_count": 358
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "vi"
+  ],
+  "order": 9,
+  "title": "Hội Chợ Phù Hoa và người bạn trung tín",
+  "body_html": "<blockquote>“Khá giữ trung tín cho đến chết, rồi ta sẽ ban cho ngươi mão triều thiên của sự sống.” — trích Khải Huyền 2</blockquote> <p>Lúc này Cơ Đốc Nhân đã có một người bạn đồng hành — một người bạn tốt bụng, can đảm tên là Trung Tín. Hai người cùng nhau đến một thị trấn đông đúc có một hội chợ khổng lồ gọi là Hội Chợ Phù Hoa, nơi người ta bày bán đủ mọi thứ lấp lánh mà con có thể tưởng tượng ra, và họ chẳng quan tâm đến điều gì khác.</p> <p>Hai người hành hương thậm chí không thèm nhìn tới đống đồ lấp lánh ấy. Những người bán hàng la lớn: “Các anh mua gì nào?” Họ đáp: “Chúng tôi mua lẽ thật.” Đó là tất cả những gì họ muốn.</p> <p>Điều đó làm đám đông vô cùng giận dữ. Họ chế nhạo hai người bạn, ném đất bẩn đầy người họ, rồi nhốt họ vào một cái lồng. Sau đó họ đem Trung Tín can đảm ra xét xử, với một ông quan tòa độc ác và những nhân chứng nói dối, và họ đối xử với ông vô cùng tàn tệ — nhưng Trung Tín chưa bao giờ thôi tin cậy Đức Chúa Trời.</p> <p>Và đây là điều bí mật tuyệt vời mà Bunyan muốn các em nhỏ biết: ngay khi cuộc đời của Trung Tín trên đất kết thúc, một cỗ xe có ngựa kéo lao xuống và đưa ông bay lên xuyên qua những đám mây, thẳng tới các cổng của Thành lớn. Ông đã đến đó trước tiên! Cơ Đốc Nhân thoát ra khỏi thị trấn — và chẳng bao lâu có một người bạn mới tên là Hy Vọng nhập đoàn với ông, vì Hy Vọng đã thấy Cơ Đốc Nhân và Trung Tín yêu mến Đức Chúa Trời can đảm biết bao.</p> <p>Thế gian không phải lúc nào cũng ưa những người yêu mến Đức Chúa Trời, và sống trung tín có thể phải trả giá. Nhưng Đức Chúa Trời thấy, Đức Chúa Trời ghi nhớ, và phần thưởng của Ngài lớn hơn bất cứ thứ gì hội chợ kia có thể bán.</p> <p><em>Lạy Đức Chúa Trời, xin giúp con yêu lẽ thật hơn những thứ lấp lánh, và luôn trung tín với Ngài dù có chuyện gì xảy ra. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Cơ Đốc Nhân và Trung Tín đã nói gì khi những người bán hàng la lớn: “Các anh mua gì nào?”",
+    "answer": "“Chúng tôi mua lẽ thật.” Họ thậm chí không thèm nhìn tới những thứ lấp lánh."
+   },
+   {
+    "question": "Chuyện gì đã xảy ra với Trung Tín khi cuộc đời ông trên đất kết thúc?",
+    "answer": "Một cỗ xe có ngựa kéo lao xuống và đưa ông bay lên xuyên qua những đám mây, tới các cổng của Thành lớn — ông đã đến đó trước tiên."
+   },
+   {
+    "question": "Có khi nào con thấy khó làm điều đúng khi người khác cười nhạo, hoặc khi người khác chỉ muốn những thứ lấp lánh không? Điều gì giúp con?",
+    "answer": "Ý chính của chương này: thế gian không phải lúc nào cũng ưa những người yêu mến Đức Chúa Trời, và sống trung tín có thể phải trả giá — nhưng Đức Chúa Trời thấy và ghi nhớ, và phần thưởng của Ngài lớn hơn bất cứ thứ gì hội chợ kia có thể bán."
+   }
+  ],
+  "body_text": "“Khá giữ trung tín cho đến chết, rồi ta sẽ ban cho ngươi mão triều thiên của sự sống.” — trích Khải Huyền 2 Lúc này Cơ Đốc Nhân đã có một người bạn đồng hành — một người bạn tốt bụng, can đảm tên là Trung Tín. Hai người cùng nhau đến một thị trấn đông đúc có một hội chợ khổng lồ gọi là Hội Chợ Phù Hoa, nơi người ta bày bán đủ mọi thứ lấp lánh mà con có thể tưởng tượng ra, và họ chẳng quan tâm đến điều gì khác. Hai người hành hương thậm chí không thèm nhìn tới đống đồ lấp lánh ấy. Những người bán hàng la lớn: “Các anh mua gì nào?” Họ đáp: “Chúng tôi mua lẽ thật.” Đó là tất cả những gì họ muốn. Điều đó làm đám đông vô cùng giận dữ. Họ chế nhạo hai người bạn, ném đất bẩn đầy người họ, rồi nhốt họ vào một cái lồng. Sau đó họ đem Trung Tín can đảm ra xét xử, với một ông quan tòa độc ác và những nhân chứng nói dối, và họ đối xử với ông vô cùng tàn tệ — nhưng Trung Tín chưa bao giờ thôi tin cậy Đức Chúa Trời. Và đây là điều bí mật tuyệt vời mà Bunyan muốn các em nhỏ biết: ngay khi cuộc đời của Trung Tín trên đất kết thúc, một cỗ xe có ngựa kéo lao xuống và đưa ông bay lên xuyên qua những đám mây, thẳng tới các cổng của Thành lớn. Ông đã đến đó trước tiên! Cơ Đốc Nhân thoát ra khỏi thị trấn — và chẳng bao lâu có một người bạn mới tên là Hy Vọng nhập đoàn với ông, vì Hy Vọng đã thấy Cơ Đốc Nhân và Trung Tín yêu mến Đức Chúa Trời can đảm biết bao. Thế gian không phải lúc nào cũng ưa những người yêu mến Đức Chúa Trời, và sống trung tín có thể phải trả giá. Nhưng Đức Chúa Trời thấy, Đức Chúa Trời ghi nhớ, và phần thưởng của Ngài lớn hơn bất cứ thứ gì hội chợ kia có thể bán. Lạy Đức Chúa Trời, xin giúp con yêu lẽ thật hơn những thứ lấp lánh, và luôn trung tín với Ngài dù có chuyện gì xảy ra. A-men.",
+  "word_count": 394
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "vi"
+  ],
+  "order": 10,
+  "title": "Thoát khỏi Gã Khổng Lồ Tuyệt Vọng",
+  "body_html": "<blockquote>“Ngài lại ban lời hứa rất quí rất lớn cho chúng ta” — trích 2 Phi-e-rơ 1</blockquote> <p>Một hôm, để đi cho đỡ vất vả, Cơ Đốc Nhân và Hy Vọng rời con đường hẹp, bước sang một bãi cỏ trông dễ chịu hơn. Thật là một sai lầm lớn! Một cơn bão ập đến, họ bị lạc, và ngủ thiếp đi trên một cánh đồng không phải của mình.</p> <p>Lúc rạng đông, một tên khổng lồ to lớn, độc ác tìm thấy họ. Tên hắn là Gã Khổng Lồ Tuyệt Vọng, và cánh đồng ấy thuộc về nhà hắn là Lâu Đài Nghi Ngờ. Hắn lôi hai người bạn đi và quăng họ vào một hầm ngục tối tăm, hôi hám, không có thức ăn cũng không có ánh sáng, suốt nhiều ngày liền. Tên khổng lồ đối xử với họ thật tệ hại và bảo họ hãy từ bỏ mọi hy vọng.</p> <p>Tội nghiệp Cơ Đốc Nhân và Hy Vọng khổ sở vô cùng. Nhưng Hy Vọng cứ luôn miệng nói: “Can đảm lên — cố chịu đựng — Đức Chúa Trời sẽ giúp chúng ta.” Rồi vào nửa đêm ngày thứ Bảy, họ bắt đầu cầu nguyện.</p> <p>Thế rồi, ngay trước lúc trời sáng, Cơ Đốc Nhân bỗng kêu lên: “Mình thật dại dột biết bao! Mình nằm trong hầm ngục này trong khi lẽ ra đã có thể bước ra tự do! Mình có một chiếc chìa khóa trong túi, tên là Lời Hứa, nó có thể mở bất cứ ổ khóa nào trong Lâu Đài Nghi Ngờ!”</p> <p>Ông lấy chiếc chìa khóa ra. Nó mở được cửa hầm ngục. Nó mở được cửa ngoài. Nó mở được cả cánh cổng sắt nặng nề. Và hai người bạn bước ra tự do, trở lại con đường của vị Vua nhân lành.</p> <p>Khi con thấy mình bị mắc kẹt và chẳng còn hy vọng, hãy nhớ đến chiếc chìa khóa của Cơ Đốc Nhân. Những lời hứa của Đức Chúa Trời — những điều Ngài đã nói với chúng ta trong Kinh Thánh — có thể mở khóa mọi hầm ngục của sự tuyệt vọng. Đừng quên rằng con đang cầm chiếc chìa khóa ấy.</p> <p><em>Lạy Đức Chúa Trời, khi con thấy mình bị mắc kẹt và buồn bã, xin giúp con nhớ đến những lời hứa của Ngài. Cảm ơn Ngài vì những lời hứa ấy giải phóng con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vì sao Cơ Đốc Nhân và Hy Vọng lại bị nhốt trong Lâu Đài Nghi Ngờ?",
+    "answer": "Họ rời con đường hẹp để đi sang một bãi cỏ trông dễ đi hơn, bị lạc trong cơn bão, rồi ngủ thiếp đi trên cánh đồng của Gã Khổng Lồ Tuyệt Vọng."
+   },
+   {
+    "question": "Cuối cùng họ đã thoát ra khỏi hầm ngục bằng cách nào?",
+    "answer": "Sau khi cầu nguyện, Cơ Đốc Nhân nhớ ra mình có một chiếc chìa khóa trong túi tên là Lời Hứa. Nó mở được cửa hầm ngục, cửa ngoài và cánh cổng sắt."
+   },
+   {
+    "question": "Khi con thấy buồn bã hay bị mắc kẹt, con có thể nhớ đến “chiếc chìa khóa” nào?",
+    "answer": "Ý chính của chương này: những lời hứa của Đức Chúa Trời — những điều Ngài nói với chúng ta trong Kinh Thánh — có thể mở khóa mọi hầm ngục của sự tuyệt vọng. Đừng quên rằng con đang cầm chiếc chìa khóa ấy."
+   }
+  ],
+  "body_text": "“Ngài lại ban lời hứa rất quí rất lớn cho chúng ta” — trích 2 Phi-e-rơ 1 Một hôm, để đi cho đỡ vất vả, Cơ Đốc Nhân và Hy Vọng rời con đường hẹp, bước sang một bãi cỏ trông dễ chịu hơn. Thật là một sai lầm lớn! Một cơn bão ập đến, họ bị lạc, và ngủ thiếp đi trên một cánh đồng không phải của mình. Lúc rạng đông, một tên khổng lồ to lớn, độc ác tìm thấy họ. Tên hắn là Gã Khổng Lồ Tuyệt Vọng, và cánh đồng ấy thuộc về nhà hắn là Lâu Đài Nghi Ngờ. Hắn lôi hai người bạn đi và quăng họ vào một hầm ngục tối tăm, hôi hám, không có thức ăn cũng không có ánh sáng, suốt nhiều ngày liền. Tên khổng lồ đối xử với họ thật tệ hại và bảo họ hãy từ bỏ mọi hy vọng. Tội nghiệp Cơ Đốc Nhân và Hy Vọng khổ sở vô cùng. Nhưng Hy Vọng cứ luôn miệng nói: “Can đảm lên — cố chịu đựng — Đức Chúa Trời sẽ giúp chúng ta.” Rồi vào nửa đêm ngày thứ Bảy, họ bắt đầu cầu nguyện. Thế rồi, ngay trước lúc trời sáng, Cơ Đốc Nhân bỗng kêu lên: “Mình thật dại dột biết bao! Mình nằm trong hầm ngục này trong khi lẽ ra đã có thể bước ra tự do! Mình có một chiếc chìa khóa trong túi, tên là Lời Hứa, nó có thể mở bất cứ ổ khóa nào trong Lâu Đài Nghi Ngờ!” Ông lấy chiếc chìa khóa ra. Nó mở được cửa hầm ngục. Nó mở được cửa ngoài. Nó mở được cả cánh cổng sắt nặng nề. Và hai người bạn bước ra tự do, trở lại con đường của vị Vua nhân lành. Khi con thấy mình bị mắc kẹt và chẳng còn hy vọng, hãy nhớ đến chiếc chìa khóa của Cơ Đốc Nhân. Những lời hứa của Đức Chúa Trời — những điều Ngài đã nói với chúng ta trong Kinh Thánh — có thể mở khóa mọi hầm ngục của sự tuyệt vọng. Đừng quên rằng con đang cầm chiếc chìa khóa ấy. Lạy Đức Chúa Trời, khi con thấy mình bị mắc kẹt và buồn bã, xin giúp con nhớ đến những lời hứa của Ngài. Cảm ơn Ngài vì những lời hứa ấy giải phóng con. A-men.",
+  "word_count": 404
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "vi"
+  ],
+  "order": 11,
+  "title": "Những người chăn chiên cho xem điều kỳ diệu",
+  "body_html": "<blockquote>“Đức Giê-hô-va là Đấng chăn giữ tôi; tôi sẽ chẳng thiếu thốn gì.” — trích Thi Thiên 23</blockquote> <p>Sau tất cả những chuyện đó, Cơ Đốc Nhân và Hy Vọng đến một nơi thật đẹp: Dãy Núi Vui Thỏa, gần Thành lớn đến nỗi gần như có thể nhìn thấy Thành. Những ngọn đồi xanh, những khu vườn, những dòng suối — và bốn người chăn chiên tốt bụng đang chăm sóc bầy chiên. Tên của họ là Hiểu Biết, Kinh Nghiệm, Tỉnh Thức và Chân Thành.</p> <p>Những người chăn chiên đón tiếp hai người lữ khách mệt mỏi, cho họ ăn và cho họ nghỉ ngơi. Rồi họ nói: “Hãy đến đây, chúng tôi cho các anh xem vài điều.” Họ dẫn hai người lên các ngọn đồi và cho xem những cảnh vừa tuyệt vời vừa là lời cảnh báo — những nơi mà người lữ khách rời bỏ con đường đúng đã gặp tai họa. Điều đó làm Cơ Đốc Nhân và Hy Vọng thật mừng vì mình đã ở lại trên con đường.</p> <p>Tuyệt vời nhất là những người chăn chiên dẫn họ lên một ngọn đồi cao tên là Trong Sáng và đưa cho họ một chiếc kính viễn vọng đặc biệt. Tay hai người bạn run lên vì háo hức, nhưng qua chiếc kính viễn vọng, họ thoáng thấy — ở xa, xa tít phía trước — chính cánh cổng của Thành Thiên Quốc. Điểm cuối cuộc hành trình của họ đã ở trong tầm mắt!</p> <p>Khi hai người hành hương lại lên đường, những người chăn chiên ân cần dặn dò họ: hãy luôn tỉnh thức, và đừng ngủ quên dọc đường.</p> <p>Đức Chúa Trời giống như những người chăn chiên tốt lành ấy. Ngài cho chúng ta ăn, cho chúng ta nghỉ ngơi, cảnh báo chúng ta về nguy hiểm, và cho chúng ta thoáng thấy ngôi nhà tuyệt vời mà Ngài đang đưa chúng ta về. Chúa là Đấng chăn giữ con — con có thể tin cậy Ngài sẽ dẫn con đi suốt cả chặng đường.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài là Đấng chăn giữ con, Đấng cho con ăn, dẫn dắt con, và chỉ cho con con đường về nhà. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Những người chăn chiên đã làm gì cho Cơ Đốc Nhân và Hy Vọng?",
+    "answer": "Họ đón tiếp hai người, cho ăn và cho nghỉ ngơi, cho xem những lời cảnh báo về việc rời bỏ con đường, và cho họ nhìn qua một chiếc kính viễn vọng."
+   },
+   {
+    "question": "Hai người hành hương đã thấy gì qua chiếc kính viễn vọng trên ngọn đồi tên là Trong Sáng?",
+    "answer": "Họ thoáng thấy, ở xa phía trước, cánh cổng của Thành Thiên Quốc — điểm cuối cuộc hành trình của họ đã ở trong tầm mắt."
+   },
+   {
+    "question": "Đức Chúa Trời giống những người chăn chiên tốt lành trong câu chuyện này như thế nào?",
+    "answer": "Ý chính của chương này: giống như những người chăn chiên, Đức Chúa Trời cho chúng ta ăn, cho chúng ta nghỉ ngơi, cảnh báo chúng ta về nguy hiểm, và cho chúng ta thấy ngôi nhà mà Ngài đang đưa chúng ta về — con có thể tin cậy Ngài sẽ dẫn con đi suốt cả chặng đường."
+   }
+  ],
+  "body_text": "“Đức Giê-hô-va là Đấng chăn giữ tôi; tôi sẽ chẳng thiếu thốn gì.” — trích Thi Thiên 23 Sau tất cả những chuyện đó, Cơ Đốc Nhân và Hy Vọng đến một nơi thật đẹp: Dãy Núi Vui Thỏa, gần Thành lớn đến nỗi gần như có thể nhìn thấy Thành. Những ngọn đồi xanh, những khu vườn, những dòng suối — và bốn người chăn chiên tốt bụng đang chăm sóc bầy chiên. Tên của họ là Hiểu Biết, Kinh Nghiệm, Tỉnh Thức và Chân Thành. Những người chăn chiên đón tiếp hai người lữ khách mệt mỏi, cho họ ăn và cho họ nghỉ ngơi. Rồi họ nói: “Hãy đến đây, chúng tôi cho các anh xem vài điều.” Họ dẫn hai người lên các ngọn đồi và cho xem những cảnh vừa tuyệt vời vừa là lời cảnh báo — những nơi mà người lữ khách rời bỏ con đường đúng đã gặp tai họa. Điều đó làm Cơ Đốc Nhân và Hy Vọng thật mừng vì mình đã ở lại trên con đường. Tuyệt vời nhất là những người chăn chiên dẫn họ lên một ngọn đồi cao tên là Trong Sáng và đưa cho họ một chiếc kính viễn vọng đặc biệt. Tay hai người bạn run lên vì háo hức, nhưng qua chiếc kính viễn vọng, họ thoáng thấy — ở xa, xa tít phía trước — chính cánh cổng của Thành Thiên Quốc. Điểm cuối cuộc hành trình của họ đã ở trong tầm mắt! Khi hai người hành hương lại lên đường, những người chăn chiên ân cần dặn dò họ: hãy luôn tỉnh thức, và đừng ngủ quên dọc đường. Đức Chúa Trời giống như những người chăn chiên tốt lành ấy. Ngài cho chúng ta ăn, cho chúng ta nghỉ ngơi, cảnh báo chúng ta về nguy hiểm, và cho chúng ta thoáng thấy ngôi nhà tuyệt vời mà Ngài đang đưa chúng ta về. Chúa là Đấng chăn giữ con — con có thể tin cậy Ngài sẽ dẫn con đi suốt cả chặng đường. Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài là Đấng chăn giữ con, Đấng cho con ăn, dẫn dắt con, và chỉ cho con con đường về nhà. A-men.",
+  "word_count": 376
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "vi"
+  ],
+  "order": 12,
+  "title": "Qua sông đến Thành Vàng",
+  "body_html": "<blockquote>“Khi ngươi vượt qua các dòng nước, ta sẽ ở cùng” — trích Ê-sai 43</blockquote> <p>Cuối cùng Cơ Đốc Nhân và Hy Vọng đã đến gần điểm cuối của cuộc hành trình dài. Họ có thể thấy Thành Thiên Quốc sáng rực trên ngọn đồi, tường thành và cổng thành lấp lánh như vàng. Nhưng giữa họ và cánh cổng vẫn còn một điều cuối cùng: một dòng sông sâu, không có cây cầu nào bắc qua.</p> <p>Người ta bảo họ: “Các anh phải đi qua dòng sông, nếu không thì không thể tới được cổng.” Thế là hai người bạn bước xuống nước — và nước thật sâu. Cơ Đốc Nhân bắt đầu chìm, và nỗi sợ tràn ngập lòng ông. Ông kêu lên: “Tôi đang chìm! Sóng đang phủ qua đầu tôi!” Mọi nỗi lo cũ của ông ùa trở lại.</p> <p>Nhưng Hy Vọng nâng đầu Cơ Đốc Nhân lên và gọi to: “Vui lên, anh tôi ơi — tôi chạm được đáy rồi, và nó vững chắc lắm!” Bấy giờ Cơ Đốc Nhân nhớ lại lời hứa của Đức Chúa Trời: “Khi ngươi vượt qua các dòng nước, ta sẽ ở cùng.” Lập tức chân ông chạm đất, và hai người cùng nhau sang đến bờ bên kia an toàn.</p> <p>Ở đó, hai Đấng Sáng Láng ra đón họ và dẫn họ lên tới cánh cổng bằng vàng. Họ nộp những cuộn thư của mình, và cánh cổng mở toang. Họ được ban cho áo sáng láng, đàn hạc và mão miện — và khi họ bước vào, mọi tiếng chuông trong Thành đều ngân vang vì vui mừng, và có tiếng phán: “Hãy đến hưởng sự vui mừng của chúa ngươi!”</p> <p>Cuối cùng Cơ Đốc Nhân đã về đến nhà, được an toàn và tràn đầy niềm vui đời đời. Và đó chính là nơi con đường theo Đức Chúa Trời dẫn tới, cho mọi người lữ khách luôn tin cậy Ngài — đi suốt chặng đường về đến nhà.</p> <p><em>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài ở cùng con suốt chặng đường, cho đến tận cuối cùng, và Thành của Ngài là nhà của con. Xin giúp con luôn bước đi với Ngài. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Điều cuối cùng ngăn giữa Cơ Đốc Nhân và Thành Vàng là gì?",
+    "answer": "Một dòng sông sâu không có cây cầu nào. Họ phải đi qua nó mới tới được cổng."
+   },
+   {
+    "question": "Hy Vọng đã giúp Cơ Đốc Nhân thế nào khi ở dưới sông?",
+    "answer": "Ông nâng đầu Cơ Đốc Nhân lên và gọi to: “Vui lên, anh tôi ơi — tôi chạm được đáy rồi, và nó vững chắc lắm!”"
+   },
+   {
+    "question": "Khi con sợ hãi, con có thể nhớ đến lời hứa nào trong câu chuyện này?",
+    "answer": "Ý chính của chương này: Đức Chúa Trời hứa: “Khi ngươi vượt qua các dòng nước, ta sẽ ở cùng.” Ngài ở cùng chúng ta suốt chặng đường, và Thành của Ngài là nhà cho mọi người luôn tin cậy Ngài."
+   }
+  ],
+  "body_text": "“Khi ngươi vượt qua các dòng nước, ta sẽ ở cùng” — trích Ê-sai 43 Cuối cùng Cơ Đốc Nhân và Hy Vọng đã đến gần điểm cuối của cuộc hành trình dài. Họ có thể thấy Thành Thiên Quốc sáng rực trên ngọn đồi, tường thành và cổng thành lấp lánh như vàng. Nhưng giữa họ và cánh cổng vẫn còn một điều cuối cùng: một dòng sông sâu, không có cây cầu nào bắc qua. Người ta bảo họ: “Các anh phải đi qua dòng sông, nếu không thì không thể tới được cổng.” Thế là hai người bạn bước xuống nước — và nước thật sâu. Cơ Đốc Nhân bắt đầu chìm, và nỗi sợ tràn ngập lòng ông. Ông kêu lên: “Tôi đang chìm! Sóng đang phủ qua đầu tôi!” Mọi nỗi lo cũ của ông ùa trở lại. Nhưng Hy Vọng nâng đầu Cơ Đốc Nhân lên và gọi to: “Vui lên, anh tôi ơi — tôi chạm được đáy rồi, và nó vững chắc lắm!” Bấy giờ Cơ Đốc Nhân nhớ lại lời hứa của Đức Chúa Trời: “Khi ngươi vượt qua các dòng nước, ta sẽ ở cùng.” Lập tức chân ông chạm đất, và hai người cùng nhau sang đến bờ bên kia an toàn. Ở đó, hai Đấng Sáng Láng ra đón họ và dẫn họ lên tới cánh cổng bằng vàng. Họ nộp những cuộn thư của mình, và cánh cổng mở toang. Họ được ban cho áo sáng láng, đàn hạc và mão miện — và khi họ bước vào, mọi tiếng chuông trong Thành đều ngân vang vì vui mừng, và có tiếng phán: “Hãy đến hưởng sự vui mừng của chúa ngươi!” Cuối cùng Cơ Đốc Nhân đã về đến nhà, được an toàn và tràn đầy niềm vui đời đời. Và đó chính là nơi con đường theo Đức Chúa Trời dẫn tới, cho mọi người lữ khách luôn tin cậy Ngài — đi suốt chặng đường về đến nhà. Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài ở cùng con suốt chặng đường, cho đến tận cuối cùng, và Thành của Ngài là nhà của con. Xin giúp con luôn bước đi với Ngài. A-men.",
+  "word_count": 371
+ }
+}
+]

@@ -1,0 +1,402 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "amanda-berry-smith"
+  ],
+  "slug": "amanda-smith-autobiography-children",
+  "language": "vi",
+  "title": "Câu Chuyện Của Amanda Smith (Cho thiếu nhi)",
+  "subtitle": "",
+  "cover_title": "",
+  "cover_byline": "",
+  "description": "Hãy cùng làm quen với Amanda Berry Smith, cô bé sinh ra trong cảnh nô lệ ở Maryland từ rất, rất lâu rồi, và lớn lên đã tin cậy Đức Chúa Trời trong mọi việc — kể cả một đôi giày. Qua những câu chuyện có thật do chính bà kể, được kể lại nhẹ nhàng cho thiếu nhi, có một người cha can đảm chuộc cả gia đình được tự do, một người đàn ông trốn tránh được giữ an toàn, và một người phụ nữ giặt thuê đã mang tin lành về Chúa Giê-xu đi khắp nơi, đến tận nước Anh, Ấn Độ và châu Phi.",
+  "hook": "",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Amanda Berry Smith là ai?",
+    "answer": "Bà là một phụ nữ da đen, sinh ra trong cảnh nô lệ ở Maryland vào khoảng năm 1837, và lớn lên trở thành một nhà truyền đạo đi khắp nơi được nhiều người biết đến. Bà tin cậy Đức Chúa Trời trong mọi việc và kể cho người ta nghe về Chúa Giê-xu ở Mỹ, nước Anh, Ấn Độ và châu Phi."
+   },
+   {
+    "question": "Amanda có thật sự sinh ra làm nô lệ không?",
+    "answer": "Có, thật vậy. Nhưng cha bà là ông Samuel Berry đã làm việc hết đêm này qua đêm khác để kiếm tiền chuộc lấy sự tự do — trước hết là cho chính mình, rồi cho vợ và các con. Amanda vẫn còn rất nhỏ khi ông chuộc bà được tự do."
+   },
+   {
+    "question": "Trước khi trở thành nhà truyền đạo, Amanda làm nghề gì?",
+    "answer": "Trong nhiều năm, bà làm nghề giặt thuê. Bà đứng bên chậu giặt, kỳ cọ quần áo cho người khác, có khi suốt cả đêm, để kiếm tiền và lo cho gia đình."
+   },
+   {
+    "question": "Những phép lạ trong các câu chuyện này có phải là bịa ra không?",
+    "answer": "Không. Mọi câu chuyện đều lấy từ cuốn sách Amanda viết về cuộc đời của chính bà. Chúng tôi không thêm vào phép lạ tưởng tượng nào cả — đây là những điều có thật mà bà kể rằng Đức Chúa Trời đã làm cho bà."
+   },
+   {
+    "question": "Tại sao Amanda thưa chuyện với Đức Chúa Trời về cả những điều nhỏ, như đôi giày?",
+    "answer": "Amanda tin rằng Đức Chúa Trời quan tâm đến mọi phần trong cuộc sống của bà, dù lớn hay nhỏ. Khi đôi giày của bà bị mòn thủng, bà chỉ việc cầu xin Đức Chúa Trời, và chẳng bao lâu sau, một người bạn đã trao cho bà đúng số tiền bà cần."
+   },
+   {
+    "question": "Amanda có một cuộc đời hạnh phúc không?",
+    "answer": "Bà biết niềm vui lớn lao trong Đức Chúa Trời, nhưng bà cũng biết nỗi buồn sâu sắc. Có mấy đứa con nhỏ của bà đã qua đời khi còn rất bé, và người ta thường đối xử không tử tế với bà. Thế nhưng bà luôn nói rằng Đức Chúa Trời đã an ủi bà và không bao giờ để bà một mình."
+   },
+   {
+    "question": "Bé Bob là ai?",
+    "answer": "Bob là một cậu bé ở châu Phi, có người cha đã xin Amanda nuôi dạy cậu và dạy cậu biết về Đức Chúa Trời. Amanda yếu ớt và có rất ít tiền, nhưng bà tin cậy Đức Chúa Trời và nhận Bob làm con của chính mình."
+   },
+   {
+    "question": "Trẻ em có thể học được gì từ cuộc đời của Amanda?",
+    "answer": "Rằng chúng ta có thể tin cậy Đức Chúa Trời trong bóng tối cũng như trong ánh sáng, rằng sự ngay thẳng và lòng tử tế quý hơn tiền bạc rất nhiều, và rằng Đức Chúa Trời nghe cả lời cầu nguyện nhỏ bé nhất."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Một bản kể lại của Ochorus dành cho bạn đọc nhỏ tuổi, dựa trên cuốn tự truyện của Amanda Berry Smith, là tác phẩm thuộc phạm vi công cộng. Lời kể là của chúng tôi, được tự do đọc và chia sẻ.",
+  "cover_url": "/covers/art/amanda-smith-autobiography-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "series": null,
+  "series_position": null,
+  "sort_order": 25,
+  "is_published": true,
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "vi"
+  ],
+  "order": 1,
+  "title": "Ngày Cha Chuộc Cả Nhà Được Tự Do",
+  "body_html": "<blockquote><p><em>“Đấng Christ đã buông tha chúng ta cho được tự do; vậy hãy đứng vững”</em> — Ga-la-ti 5:1</p></blockquote> <p>Ngày xưa ngày xưa, ở một nơi tên là Maryland, có một bé gái tên là Amanda chào đời. Vào những ngày buồn thảm ấy, những gia đình người da đen như gia đình em không được tự do. Người ta có thể mua họ rồi bán họ, giống như mua bán một con ngựa hay một bao thóc, và họ bị bắt làm việc mà không được trả đồng nào.</p> <p>Nhưng Amanda có một người cha tuyệt vời tên là Samuel Berry. Ông khỏe mạnh, ông kiên nhẫn, và ông có một ước mơ lớn — làm cho cả gia đình mình được tự do.</p> <p>Vì vậy, ông Samuel làm việc. Suốt cả ngày ông làm việc cho người đàn bà làm chủ ông. Rồi khi mặt trời lặn và mọi người đã đi ngủ, ông lại làm việc thêm nữa. Ông làm chổi. Ông đan chiếu bằng vỏ bắp. Ông nung vôi. Vào mùa gặt, sau khi trời tối, ông đi bộ ba bốn dặm đường để làm việc ngoài đồng cho đến một hai giờ sáng, rồi chỉ ngủ được một tiếng trước khi lại bắt đầu một ngày mới.</p> <p>Từng đồng từng xu, năm này qua năm khác, ông dành dụm. Trước hết, ông chuộc chính mình được tự do. Rồi ông chuộc vợ mình. Rồi ông chuộc từng đứa con một — cho đến cuối cùng, bé Amanda cũng được tự do.</p> <p>Khi ấy em còn nhỏ đến nỗi sau này em không nhớ gì về những ngày làm nô lệ. Nhưng suốt cả cuộc đời về sau, Amanda luôn thích kể rằng Đức Chúa Trời đã buông tha bà cho được tự do.</p> <p>Con có thấy cha của Amanda đã làm việc vất vả biết bao vì những người ông yêu thương không? Cha trên trời của con còn làm nhiều hơn thế nữa để con được tự do — Ngài đã ban chính Con của Ngài là Chúa Giê-xu. Con không làm gì để đáng được điều ấy; đó là món quà Ngài tặng cho con.</p> <p>Lạy Đức Chúa Trời, cảm ơn Ngài đã yêu con nhiều đến nỗi Ngài mở đường cho con được tự do. Xin giúp con biết yêu thương người khác như cha của Amanda đã yêu thương gia đình mình. A-men.</p>",
+  "study_questions": [
+   {
+    "question": "Cha của Amanda là ông Samuel Berry đã làm gì sau khi xong một ngày làm việc dài?",
+    "answer": "Ông vẫn tiếp tục làm việc vào ban đêm — làm chổi, đan chiếu bằng vỏ bắp, nung vôi, và đi bộ nhiều dặm đường để làm việc ngoài đồng cho đến một hai giờ sáng."
+   },
+   {
+    "question": "Tại sao ông Samuel dành dụm từng đồng từng xu trong suốt bao nhiêu năm?",
+    "answer": "Ông muốn làm cho cả gia đình mình được tự do. Trước hết ông chuộc chính mình, rồi chuộc vợ, rồi chuộc từng đứa con một, cho đến khi Amanda cũng được tự do."
+   },
+   {
+    "question": "Cha của Amanda đã làm việc rất vất vả để gia đình được tự do. Còn Đức Chúa Trời đã làm gì để con được tự do?",
+    "answer": "Ý chính của chương này: Cha trên trời của con đã ban chính Con của Ngài là Chúa Giê-xu để con được tự do. Con không làm gì để đáng được điều ấy; đó là món quà Ngài tặng cho con."
+   }
+  ],
+  "body_text": "“Đấng Christ đã buông tha chúng ta cho được tự do; vậy hãy đứng vững” — Ga-la-ti 5:1 Ngày xưa ngày xưa, ở một nơi tên là Maryland, có một bé gái tên là Amanda chào đời. Vào những ngày buồn thảm ấy, những gia đình người da đen như gia đình em không được tự do. Người ta có thể mua họ rồi bán họ, giống như mua bán một con ngựa hay một bao thóc, và họ bị bắt làm việc mà không được trả đồng nào. Nhưng Amanda có một người cha tuyệt vời tên là Samuel Berry. Ông khỏe mạnh, ông kiên nhẫn, và ông có một ước mơ lớn — làm cho cả gia đình mình được tự do. Vì vậy, ông Samuel làm việc. Suốt cả ngày ông làm việc cho người đàn bà làm chủ ông. Rồi khi mặt trời lặn và mọi người đã đi ngủ, ông lại làm việc thêm nữa. Ông làm chổi. Ông đan chiếu bằng vỏ bắp. Ông nung vôi. Vào mùa gặt, sau khi trời tối, ông đi bộ ba bốn dặm đường để làm việc ngoài đồng cho đến một hai giờ sáng, rồi chỉ ngủ được một tiếng trước khi lại bắt đầu một ngày mới. Từng đồng từng xu, năm này qua năm khác, ông dành dụm. Trước hết, ông chuộc chính mình được tự do. Rồi ông chuộc vợ mình. Rồi ông chuộc từng đứa con một — cho đến cuối cùng, bé Amanda cũng được tự do. Khi ấy em còn nhỏ đến nỗi sau này em không nhớ gì về những ngày làm nô lệ. Nhưng suốt cả cuộc đời về sau, Amanda luôn thích kể rằng Đức Chúa Trời đã buông tha bà cho được tự do. Con có thấy cha của Amanda đã làm việc vất vả biết bao vì những người ông yêu thương không? Cha trên trời của con còn làm nhiều hơn thế nữa để con được tự do — Ngài đã ban chính Con của Ngài là Chúa Giê-xu. Con không làm gì để đáng được điều ấy; đó là món quà Ngài tặng cho con. Lạy Đức Chúa Trời, cảm ơn Ngài đã yêu con nhiều đến nỗi Ngài mở đường cho con được tự do. Xin giúp con biết yêu thương người khác như cha của Amanda đã yêu thương gia đình mình. A-men.",
+  "word_count": 401
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "vi"
+  ],
+  "order": 2,
+  "title": "Những Lời Cầu Nguyện Của Bà Ngoại Bên Nhà Làm Sữa",
+  "body_html": "<blockquote><p><em>“người công bình lấy lòng sốt sắng cầu nguyện, thật có linh nghiệm nhiều.”</em> — Gia-cơ 5:16</p></blockquote> <p>Trước khi cha của Amanda có thể chuộc gia đình mình, phải có một điều gì đó thay đổi. Và điều ấy đã thay đổi nhờ một bà cụ biết cầu nguyện — đó là bà ngoại của Amanda.</p> <p>Bà ngoại yêu Đức Chúa Trời hết lòng. Bà cứ xin Ngài hết lần này đến lần khác hãy mở một con đường để các cháu của bà được tự do. Mỗi khi có điều gì quá nặng nề mà bà không mang nổi, bà lặng lẽ đi ra bụi cây và, như lời Amanda kể, chỉ việc “thưa với Chúa Giê-xu” mọi điều.</p> <p>Một ngày kia, có một cô gái trẻ tên là Celie đến một buổi nhóm truyền giảng ngoài trời chỉ để xem cho biết. Nhưng tại đó cô được nghe về Chúa Giê-xu, và cô đã dâng lòng mình cho Ngài. Gia đình cô chẳng vui chút nào. Họ tìm đủ mọi cách để khiến cô đổi ý.</p> <p>Rồi cô Celie bị sốt nặng. Khi nằm hấp hối, cô gọi cả gia đình đến gần và xin họ hứa một điều: họ sẽ để cho ông Samuel chuộc vợ con mình. Cô xin đến ba lần, và cuối cùng họ đã hứa.</p> <p>Mỗi lần cô Celie nói, mẹ của Amanda lại chạy đi kể cho bà ngoại nghe, và mỗi lần như vậy bà ngoại lại vội vã đi ra ngoài để cảm tạ Đức Chúa Trời. Bao nhiêu năm bà cầu nguyện nay đang được nhậm lời.</p> <p>Khi con cầu xin một điều gì đó mà chưa thấy được đáp lời ngay, con đừng bỏ cuộc nhé. Bà ngoại của Amanda đã cầu nguyện trong nhiều năm, và Đức Chúa Trời đã nghe từng lời một. Ngài cũng nghe con nữa.</p> <p>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài không bao giờ mỏi mệt khi lắng nghe con. Xin dạy con cứ tiếp tục cầu nguyện, ngay cả khi phải chờ đợi rất lâu mới thấy câu trả lời. A-men.</p>",
+  "study_questions": [
+   {
+    "question": "Khi có điều gì quá nặng nề mà bà ngoại không mang nổi, bà đã làm gì?",
+    "answer": "Bà lặng lẽ đi ra bụi cây và, như lời Amanda kể, chỉ việc “thưa với Chúa Giê-xu” mọi điều. Bà cầu nguyện hết lần này đến lần khác để các cháu của bà được tự do."
+   },
+   {
+    "question": "Trước khi qua đời, cô Celie đã xin gia đình mình hứa điều gì?",
+    "answer": "Cô xin họ để cho ông Samuel chuộc vợ con mình. Cô xin đến ba lần, và cuối cùng họ đã hứa."
+   },
+   {
+    "question": "Con đã bao giờ cầu xin một điều gì đó mà không thấy xảy ra ngay chưa? Trong lúc chờ đợi, con có thể làm gì?",
+    "answer": "Ý chính của chương này: đừng bỏ cuộc cầu nguyện. Bà ngoại đã cầu nguyện trong nhiều năm, và Đức Chúa Trời đã nghe từng lời một — Ngài cũng nghe con nữa."
+   }
+  ],
+  "body_text": "“người công bình lấy lòng sốt sắng cầu nguyện, thật có linh nghiệm nhiều.” — Gia-cơ 5:16 Trước khi cha của Amanda có thể chuộc gia đình mình, phải có một điều gì đó thay đổi. Và điều ấy đã thay đổi nhờ một bà cụ biết cầu nguyện — đó là bà ngoại của Amanda. Bà ngoại yêu Đức Chúa Trời hết lòng. Bà cứ xin Ngài hết lần này đến lần khác hãy mở một con đường để các cháu của bà được tự do. Mỗi khi có điều gì quá nặng nề mà bà không mang nổi, bà lặng lẽ đi ra bụi cây và, như lời Amanda kể, chỉ việc “thưa với Chúa Giê-xu” mọi điều. Một ngày kia, có một cô gái trẻ tên là Celie đến một buổi nhóm truyền giảng ngoài trời chỉ để xem cho biết. Nhưng tại đó cô được nghe về Chúa Giê-xu, và cô đã dâng lòng mình cho Ngài. Gia đình cô chẳng vui chút nào. Họ tìm đủ mọi cách để khiến cô đổi ý. Rồi cô Celie bị sốt nặng. Khi nằm hấp hối, cô gọi cả gia đình đến gần và xin họ hứa một điều: họ sẽ để cho ông Samuel chuộc vợ con mình. Cô xin đến ba lần, và cuối cùng họ đã hứa. Mỗi lần cô Celie nói, mẹ của Amanda lại chạy đi kể cho bà ngoại nghe, và mỗi lần như vậy bà ngoại lại vội vã đi ra ngoài để cảm tạ Đức Chúa Trời. Bao nhiêu năm bà cầu nguyện nay đang được nhậm lời. Khi con cầu xin một điều gì đó mà chưa thấy được đáp lời ngay, con đừng bỏ cuộc nhé. Bà ngoại của Amanda đã cầu nguyện trong nhiều năm, và Đức Chúa Trời đã nghe từng lời một. Ngài cũng nghe con nữa. Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài không bao giờ mỏi mệt khi lắng nghe con. Xin dạy con cứ tiếp tục cầu nguyện, ngay cả khi phải chờ đợi rất lâu mới thấy câu trả lời. A-men.",
+  "word_count": 352
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "vi"
+  ],
+  "order": 3,
+  "title": "Người Đàn Ông Trốn Trong Chiếc Giường",
+  "body_html": "<blockquote><p><em>“ta là khách lạ, các ngươi tiếp rước ta”</em> — Ma-thi-ơ 25:35</p></blockquote> <p>Sau khi gia đình Amanda được tự do, họ sống trong một nông trại ở Pennsylvania. Ngôi nhà nhỏ của họ trở thành một nơi trú ẩn bí mật. Khi có những người trốn thoát khỏi cảnh nô lệ, mệt lả và sợ hãi, họ tìm đến ông Samuel Berry, và ông giúp họ tiếp tục lên đường đến nơi tự do, thường là trong đêm tối.</p> <p>Đây là một công việc nguy hiểm, và có những kẻ độc ác luôn rình rập ngôi nhà, mong bắt được ai đó.</p> <p>Một buổi sáng, khi trời còn sớm, cha của Amanda đang ở ngoài cho heo ăn. Ngước lên, ông thấy bốn người đàn ông cưỡi ngựa đang tiến về phía ngôi nhà. Không còn kịp chạy vào trong nữa. Vì vậy ông gọi to cho vợ: “Mẹ nó ơi, tôi thấy bốn người đang đến; bà cố gắng hết sức nhé.”</p> <p>Mẹ của Amanda vừa nhanh trí vừa can đảm. Có một người đàn ông trốn thoát đang ẩn trên lầu. Trong nháy mắt, bà đưa ông ấy xuống và giấu ông bên trong chiếc giường, nằm khuất dưới tấm nệm. Rồi bà đặt đứa con trai nhỏ hai tuổi của mình nằm ngủ ngay bên trên.</p> <p>Những người kia lục soát khắp nơi. Họ tìm trên lầu và trong bếp. Họ còn ngó vào đứa bé đang ngủ trên giường — nhưng họ không bao giờ tìm thấy người đàn ông nằm trốn bên dưới. Họ cưỡi ngựa bỏ đi, và chẳng bao lâu sau, người đàn ông ấy đã an toàn tiếp tục lên đường đi về phương bắc.</p> <p>Mẹ của Amanda đã dùng lòng can đảm và sự khôn khéo của mình để bảo vệ một người đang cần được giúp đỡ. Khi Đức Chúa Trời cho con một cơ hội để tử tế với một người đang gặp hoạn nạn, con cũng có thể can đảm và giúp đỡ họ.</p> <p>Lạy Đức Chúa Trời, xin làm cho con can đảm và tử tế như mẹ của Amanda. Xin giúp con biết quan tâm đến bất cứ ai đang cần một người bạn hiền lành để được che chở an toàn. A-men.</p>",
+  "study_questions": [
+   {
+    "question": "Gia đình Amanda đã làm gì để giúp những người trốn thoát khỏi cảnh nô lệ?",
+    "answer": "Ngôi nhà của họ là một nơi trú ẩn bí mật. Ông Samuel Berry giúp những người mệt lả, sợ hãi tiếp tục lên đường đến nơi tự do, thường là trong đêm tối."
+   },
+   {
+    "question": "Khi bốn người đàn ông cưỡi ngựa đến, mẹ của Amanda đã làm thế nào để giữ an toàn cho người đang trốn?",
+    "answer": "Bà giấu ông ấy bên trong chiếc giường, dưới tấm nệm, rồi đặt đứa con trai hai tuổi đang ngủ nằm bên trên. Những người kia lục soát nhưng không bao giờ tìm thấy ông."
+   },
+   {
+    "question": "Con có biết ai đang cần một người bạn tử tế và can đảm không? Con có thể giúp họ thế nào?",
+    "answer": "Ý chính của chương này: mẹ của Amanda đã dùng lòng can đảm và sự khôn khéo để bảo vệ một người đang cần giúp đỡ. Khi Đức Chúa Trời cho chúng ta cơ hội để tử tế với một người gặp hoạn nạn, chúng ta cũng có thể can đảm và giúp đỡ họ."
+   }
+  ],
+  "body_text": "“ta là khách lạ, các ngươi tiếp rước ta” — Ma-thi-ơ 25:35 Sau khi gia đình Amanda được tự do, họ sống trong một nông trại ở Pennsylvania. Ngôi nhà nhỏ của họ trở thành một nơi trú ẩn bí mật. Khi có những người trốn thoát khỏi cảnh nô lệ, mệt lả và sợ hãi, họ tìm đến ông Samuel Berry, và ông giúp họ tiếp tục lên đường đến nơi tự do, thường là trong đêm tối. Đây là một công việc nguy hiểm, và có những kẻ độc ác luôn rình rập ngôi nhà, mong bắt được ai đó. Một buổi sáng, khi trời còn sớm, cha của Amanda đang ở ngoài cho heo ăn. Ngước lên, ông thấy bốn người đàn ông cưỡi ngựa đang tiến về phía ngôi nhà. Không còn kịp chạy vào trong nữa. Vì vậy ông gọi to cho vợ: “Mẹ nó ơi, tôi thấy bốn người đang đến; bà cố gắng hết sức nhé.” Mẹ của Amanda vừa nhanh trí vừa can đảm. Có một người đàn ông trốn thoát đang ẩn trên lầu. Trong nháy mắt, bà đưa ông ấy xuống và giấu ông bên trong chiếc giường, nằm khuất dưới tấm nệm. Rồi bà đặt đứa con trai nhỏ hai tuổi của mình nằm ngủ ngay bên trên. Những người kia lục soát khắp nơi. Họ tìm trên lầu và trong bếp. Họ còn ngó vào đứa bé đang ngủ trên giường — nhưng họ không bao giờ tìm thấy người đàn ông nằm trốn bên dưới. Họ cưỡi ngựa bỏ đi, và chẳng bao lâu sau, người đàn ông ấy đã an toàn tiếp tục lên đường đi về phương bắc. Mẹ của Amanda đã dùng lòng can đảm và sự khôn khéo của mình để bảo vệ một người đang cần được giúp đỡ. Khi Đức Chúa Trời cho con một cơ hội để tử tế với một người đang gặp hoạn nạn, con cũng có thể can đảm và giúp đỡ họ. Lạy Đức Chúa Trời, xin làm cho con can đảm và tử tế như mẹ của Amanda. Xin giúp con biết quan tâm đến bất cứ ai đang cần một người bạn hiền lành để được che chở an toàn. A-men.",
+  "word_count": 377
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "vi"
+  ],
+  "order": 4,
+  "title": "Tập Đọc Bên Khung Cửa Sổ",
+  "body_html": "<blockquote><p><em>“Sự khôn ngoan là điều cần nhứt; vậy, khá cầu lấy sự khôn ngoan”</em> — Châm Ngôn 4:7</p></blockquote> <p>Amanda rất mong được đi học. Nhưng hồi em còn nhỏ, trẻ em da đen hầu như không được phép học hành. Trường học gần nhất thì ở rất xa, mà ngay cả ở đó, em cũng phải ngồi chờ ở cuối lớp trong khi tất cả những đứa trẻ khác được dạy trước. Cả cuộc đời mình, Amanda chỉ được đến trường khoảng ba tháng.</p> <p>Một buổi sáng mùa đông lạnh cóng, em vẫn năn nỉ xin được đi bộ hai dặm rưỡi đường đến trường. Tuyết rơi dày, và em bị lạnh đến nỗi khi cuối cùng đến được cửa lớp, em không nói nổi một lời. Một cậu bé phải mở cửa cho em, và có những bàn tay tốt bụng ủ ấm em bên trong.</p> <p>Nhưng Amanda nhất định không chịu bỏ việc học. Cha em hay mang báo về nhà, và em nghĩ ra một ý rất hay. Em lấy kéo cắt những chữ cái thật to. Rồi em xếp chúng dọc theo bậu cửa sổ và nhờ mẹ giúp ghép các chữ cái lại thành từ.</p> <p>Lòng em vui mừng biết bao vào ngày em đọc được câu đầu tiên của mình: “Ngôi nhà, cái cây, con chó, con bò.” Em hãnh diện lắm! Em gọi những đứa trẻ khác đến quanh mình để cho chúng thấy em đã biết đọc rồi.</p> <p>Amanda muốn học, và em đã chăm chỉ cố gắng, ngay cả khi việc học thật khó khăn. Được học hành là một món quà Đức Chúa Trời ban. Khi có điều gì khó đối với con, con cứ tiếp tục cố gắng nhé — một tấm lòng kiên nhẫn có thể làm được những điều tuyệt vời.</p> <p>Lạy Đức Chúa Trời, cảm ơn Ngài đã ban cho con trí óc và cho con được học biết bao điều tốt đẹp. Xin giúp con đừng bỏ cuộc khi việc học có vẻ khó khăn. A-men.</p>",
+  "study_questions": [
+   {
+    "question": "Điều gì đã xảy ra với Amanda khi em đi bộ đến trường vào buổi sáng mùa đông lạnh cóng?",
+    "answer": "Em bị lạnh trong tuyết dày đến nỗi khi đến cửa lớp, em không nói nổi một lời. Một cậu bé mở cửa cho em, và có những bàn tay tốt bụng ủ ấm em."
+   },
+   {
+    "question": "Amanda đã dùng những tờ báo của cha để tập đọc như thế nào?",
+    "answer": "Em cắt những chữ cái thật to, xếp chúng dọc theo bậu cửa sổ, rồi nhờ mẹ giúp ghép lại thành từ."
+   },
+   {
+    "question": "Bây giờ có điều gì con thấy khó học không? Điều gì sẽ giúp con tiếp tục cố gắng?",
+    "answer": "Ý chính của chương này: được học hành là một món quà Đức Chúa Trời ban, và khi có điều gì khó, con cứ tiếp tục cố gắng — một tấm lòng kiên nhẫn có thể làm được những điều tuyệt vời."
+   }
+  ],
+  "body_text": "“Sự khôn ngoan là điều cần nhứt; vậy, khá cầu lấy sự khôn ngoan” — Châm Ngôn 4:7 Amanda rất mong được đi học. Nhưng hồi em còn nhỏ, trẻ em da đen hầu như không được phép học hành. Trường học gần nhất thì ở rất xa, mà ngay cả ở đó, em cũng phải ngồi chờ ở cuối lớp trong khi tất cả những đứa trẻ khác được dạy trước. Cả cuộc đời mình, Amanda chỉ được đến trường khoảng ba tháng. Một buổi sáng mùa đông lạnh cóng, em vẫn năn nỉ xin được đi bộ hai dặm rưỡi đường đến trường. Tuyết rơi dày, và em bị lạnh đến nỗi khi cuối cùng đến được cửa lớp, em không nói nổi một lời. Một cậu bé phải mở cửa cho em, và có những bàn tay tốt bụng ủ ấm em bên trong. Nhưng Amanda nhất định không chịu bỏ việc học. Cha em hay mang báo về nhà, và em nghĩ ra một ý rất hay. Em lấy kéo cắt những chữ cái thật to. Rồi em xếp chúng dọc theo bậu cửa sổ và nhờ mẹ giúp ghép các chữ cái lại thành từ. Lòng em vui mừng biết bao vào ngày em đọc được câu đầu tiên của mình: “Ngôi nhà, cái cây, con chó, con bò.” Em hãnh diện lắm! Em gọi những đứa trẻ khác đến quanh mình để cho chúng thấy em đã biết đọc rồi. Amanda muốn học, và em đã chăm chỉ cố gắng, ngay cả khi việc học thật khó khăn. Được học hành là một món quà Đức Chúa Trời ban. Khi có điều gì khó đối với con, con cứ tiếp tục cố gắng nhé — một tấm lòng kiên nhẫn có thể làm được những điều tuyệt vời. Lạy Đức Chúa Trời, cảm ơn Ngài đã ban cho con trí óc và cho con được học biết bao điều tốt đẹp. Xin giúp con đừng bỏ cuộc khi việc học có vẻ khó khăn. A-men.",
+  "word_count": 341
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "vi"
+  ],
+  "order": 5,
+  "title": "Cầu Nguyện Dưới Hầm Nhà",
+  "body_html": "<blockquote><p><em>“kẻ đến cùng ta thì ta không bỏ ra ngoài đâu.”</em> — Giăng 6:37</p></blockquote> <p>Khi Amanda lớn lên, điều cô mong muốn hơn hết là được thuộc về Đức Chúa Trời. Nhưng cô có một ý chí mạnh mẽ và kiêu hãnh, và trong một thời gian dài, cô muốn được cứu theo cách riêng của mình, thật lặng lẽ, không ồn ào gì cả.</p> <p>Cô cầu nguyện mãi, cầu nguyện mãi. Trong lòng, cô cảm thấy mình chưa đủ tốt, và có một giọng nói cứ thì thầm với cô: “Đức Chúa Trời sẽ không nghe ngươi đâu.” Cô càng cố gắng, Đức Chúa Trời dường như càng xa hơn.</p> <p>Cuối cùng, vào một buổi chiều khi đang làm việc trong nhà của một gia đình người Quaker tốt bụng, Amanda quyết định dứt khoát. Cô dọn bàn ăn, bắc ấm nước lên bếp, rồi đi xuống hầm nhà để cầu nguyện. “Chiều nay tôi phải được cứu,” cô nói, “nếu không, tôi sẽ cầu nguyện cho đến khi được mới thôi.”</p> <p>Cô dốc hết cả tấm lòng mình ra trước mặt Đức Chúa Trời. Rồi cô cầu nguyện những lời đơn sơ nhất: “Lạy Chúa, nếu Chúa giúp con, con sẽ tin Chúa.” Và ngay giây phút cô nói rằng cô sẽ tin cậy Ngài — thì cô đã tin cậy Ngài thật.</p> <p>Niềm vui tràn ngập linh hồn cô như ánh nắng mặt trời. Gánh nặng trĩu trong lòng cô lăn đi mất. Cô nhìn đôi tay mình và thấy mình hoàn toàn mới mẻ. Cô chạy lên cầu thang hầm nhà, và sau đó cô còn soi vào tấm gương lớn, chắc mẩm rằng ngay cả gương mặt mình hẳn cũng trông khác đi.</p> <p>Amanda đã nghĩ rằng cô phải tự làm cho mình đủ tốt thì mới đến được với Đức Chúa Trời. Nhưng Chúa Giê-xu đón nhận bất cứ ai chỉ cần đến với Ngài và tin cậy Ngài. Con không cần phải đủ tốt trước đã. Con chỉ cần đến mà thôi.</p> <p>Lạy Chúa Giê-xu yêu dấu, cảm ơn Ngài vì Ngài không bao giờ từ chối một ai. Con đây — con đến với Ngài, và con tin cậy Ngài. A-men.</p>",
+  "study_questions": [
+   {
+    "question": "Vào buổi chiều Amanda quyết định dứt khoát, cô đã đi cầu nguyện ở đâu?",
+    "answer": "Cô dọn bàn ăn, bắc ấm nước lên bếp, rồi đi xuống hầm nhà để cầu nguyện, và nói rằng cô sẽ cầu nguyện cho đến khi được cứu mới thôi."
+   },
+   {
+    "question": "Amanda đã cầu nguyện những lời đơn sơ nào, và điều gì đã xảy ra khi cô cầu nguyện như vậy?",
+    "answer": "Cô cầu nguyện: “Lạy Chúa, nếu Chúa giúp con, con sẽ tin Chúa.” Ngay giây phút cô tin cậy Ngài, niềm vui tràn ngập linh hồn cô và gánh nặng của cô lăn đi mất."
+   },
+   {
+    "question": "Con có nghĩ mình phải đủ tốt rồi mới được đến với Chúa Giê-xu không? Vì sao có, hoặc vì sao không?",
+    "answer": "Ý chính của chương này: Chúa Giê-xu đón nhận bất cứ ai chỉ cần đến với Ngài và tin cậy Ngài. Con không cần phải đủ tốt trước đã — con chỉ cần đến mà thôi."
+   }
+  ],
+  "body_text": "“kẻ đến cùng ta thì ta không bỏ ra ngoài đâu.” — Giăng 6:37 Khi Amanda lớn lên, điều cô mong muốn hơn hết là được thuộc về Đức Chúa Trời. Nhưng cô có một ý chí mạnh mẽ và kiêu hãnh, và trong một thời gian dài, cô muốn được cứu theo cách riêng của mình, thật lặng lẽ, không ồn ào gì cả. Cô cầu nguyện mãi, cầu nguyện mãi. Trong lòng, cô cảm thấy mình chưa đủ tốt, và có một giọng nói cứ thì thầm với cô: “Đức Chúa Trời sẽ không nghe ngươi đâu.” Cô càng cố gắng, Đức Chúa Trời dường như càng xa hơn. Cuối cùng, vào một buổi chiều khi đang làm việc trong nhà của một gia đình người Quaker tốt bụng, Amanda quyết định dứt khoát. Cô dọn bàn ăn, bắc ấm nước lên bếp, rồi đi xuống hầm nhà để cầu nguyện. “Chiều nay tôi phải được cứu,” cô nói, “nếu không, tôi sẽ cầu nguyện cho đến khi được mới thôi.” Cô dốc hết cả tấm lòng mình ra trước mặt Đức Chúa Trời. Rồi cô cầu nguyện những lời đơn sơ nhất: “Lạy Chúa, nếu Chúa giúp con, con sẽ tin Chúa.” Và ngay giây phút cô nói rằng cô sẽ tin cậy Ngài — thì cô đã tin cậy Ngài thật. Niềm vui tràn ngập linh hồn cô như ánh nắng mặt trời. Gánh nặng trĩu trong lòng cô lăn đi mất. Cô nhìn đôi tay mình và thấy mình hoàn toàn mới mẻ. Cô chạy lên cầu thang hầm nhà, và sau đó cô còn soi vào tấm gương lớn, chắc mẩm rằng ngay cả gương mặt mình hẳn cũng trông khác đi. Amanda đã nghĩ rằng cô phải tự làm cho mình đủ tốt thì mới đến được với Đức Chúa Trời. Nhưng Chúa Giê-xu đón nhận bất cứ ai chỉ cần đến với Ngài và tin cậy Ngài. Con không cần phải đủ tốt trước đã. Con chỉ cần đến mà thôi. Lạy Chúa Giê-xu yêu dấu, cảm ơn Ngài vì Ngài không bao giờ từ chối một ai. Con đây — con đến với Ngài, và con tin cậy Ngài. A-men.",
+  "word_count": 369
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "vi"
+  ],
+  "order": 6,
+  "title": "Số Tiền Trên Sàn Bếp",
+  "body_html": "<blockquote><p><em>“Ai trung tín trong việc rất nhỏ, cũng trung tín trong việc lớn”</em> — Lu-ca 16:10</p></blockquote> <p>Amanda có một người em gái tên là Frances, và bà thương em mình lắm. Để chuộc em được tự do, Amanda phải trả một số tiền rất lớn — nhiều hơn số tiền bà có. Vì vậy bà đã vay năm mươi đô-la, và giờ đây bà mắc món nợ ấy. Món nợ làm bà lo lắng cả ngày lẫn đêm.</p> <p>Một buổi chiều, có một người đàn ông giàu có và tốt bụng tên là ông Robert đến thăm gia đình. Sau bữa tối, ông nán lại trong bếp chơi đùa, và ông đã đánh rơi một gói giấy nhỏ xoắn lại trên sàn mà không hề hay biết. Trông nó chẳng có gì đặc biệt cả.</p> <p>Lát sau, khi Amanda cúi xuống nhặt nó lên, bà tròn xoe mắt. Đó là tiền — ba trăm đô-la! Mà trong phòng lại chẳng có ai khác.</p> <p>Một ý nghĩ ranh mãnh len lỏi vào lòng bà: “Cứ giữ lấy. Bây giờ ngươi có thể trả hết nợ, mà sẽ chẳng ai biết được đâu.” Nhưng Amanda đáp lại ngay: “Không. Tôi không muốn mang rắc rối gì vào mình vì số tiền này cả.”</p> <p>Khi ông Robert trở lại nhà, tìm kiếm khắp nơi, Amanda lặng lẽ thò tay vào túi và trao lại cho ông đủ từng đồng. Ông mừng rỡ và biết ơn đến nỗi đã tặng bà năm mươi đô-la để cảm ơn — đúng bằng số tiền bà cần để trả hết món nợ!</p> <p>Amanda đã làm điều ngay thẳng, ngay cả khi không ai nhìn thấy và ngay cả khi bà đang rất cần tiền. Đức Chúa Trời đã thấy, và Đức Chúa Trời đã chăm sóc bà. Khi con trung tín trong những việc nhỏ, con có thể tin cậy rằng Ngài cũng sẽ chăm sóc con.</p> <p>Lạy Đức Chúa Trời, xin giúp con sống ngay thẳng ngay cả khi điều đó thật khó, và ngay cả khi không có ai nhìn thấy. Cảm ơn Ngài vì con luôn luôn có thể tin cậy Ngài. A-men.</p>",
+  "study_questions": [
+   {
+    "question": "Tại sao Amanda mắc nợ năm mươi đô-la?",
+    "answer": "Bà đã vay số tiền ấy để góp vào khoản tiền cần có để chuộc em gái Frances được tự do, và món nợ làm bà lo lắng cả ngày lẫn đêm."
+   },
+   {
+    "question": "Amanda đã làm gì với ba trăm đô-la bà tìm thấy trên sàn bếp?",
+    "answer": "Bà không chịu giữ lại mà trao trả đủ từng đồng cho ông Robert. Ông biết ơn đến nỗi đã tặng bà năm mươi đô-la — đúng bằng số tiền bà cần để trả nợ."
+   },
+   {
+    "question": "Sống ngay thẳng khi không có ai nhìn thấy có khó không? Điều gì có thể giúp con làm điều đúng?",
+    "answer": "Ý chính của chương này: Amanda đã sống ngay thẳng ngay cả khi không ai nhìn thấy và khi bà đang rất cần tiền. Đức Chúa Trời đã thấy, và Đức Chúa Trời đã chăm sóc bà — chúng ta cũng có thể tin cậy Ngài."
+   }
+  ],
+  "body_text": "“Ai trung tín trong việc rất nhỏ, cũng trung tín trong việc lớn” — Lu-ca 16:10 Amanda có một người em gái tên là Frances, và bà thương em mình lắm. Để chuộc em được tự do, Amanda phải trả một số tiền rất lớn — nhiều hơn số tiền bà có. Vì vậy bà đã vay năm mươi đô-la, và giờ đây bà mắc món nợ ấy. Món nợ làm bà lo lắng cả ngày lẫn đêm. Một buổi chiều, có một người đàn ông giàu có và tốt bụng tên là ông Robert đến thăm gia đình. Sau bữa tối, ông nán lại trong bếp chơi đùa, và ông đã đánh rơi một gói giấy nhỏ xoắn lại trên sàn mà không hề hay biết. Trông nó chẳng có gì đặc biệt cả. Lát sau, khi Amanda cúi xuống nhặt nó lên, bà tròn xoe mắt. Đó là tiền — ba trăm đô-la! Mà trong phòng lại chẳng có ai khác. Một ý nghĩ ranh mãnh len lỏi vào lòng bà: “Cứ giữ lấy. Bây giờ ngươi có thể trả hết nợ, mà sẽ chẳng ai biết được đâu.” Nhưng Amanda đáp lại ngay: “Không. Tôi không muốn mang rắc rối gì vào mình vì số tiền này cả.” Khi ông Robert trở lại nhà, tìm kiếm khắp nơi, Amanda lặng lẽ thò tay vào túi và trao lại cho ông đủ từng đồng. Ông mừng rỡ và biết ơn đến nỗi đã tặng bà năm mươi đô-la để cảm ơn — đúng bằng số tiền bà cần để trả hết món nợ! Amanda đã làm điều ngay thẳng, ngay cả khi không ai nhìn thấy và ngay cả khi bà đang rất cần tiền. Đức Chúa Trời đã thấy, và Đức Chúa Trời đã chăm sóc bà. Khi con trung tín trong những việc nhỏ, con có thể tin cậy rằng Ngài cũng sẽ chăm sóc con. Lạy Đức Chúa Trời, xin giúp con sống ngay thẳng ngay cả khi điều đó thật khó, và ngay cả khi không có ai nhìn thấy. Cảm ơn Ngài vì con luôn luôn có thể tin cậy Ngài. A-men.",
+  "word_count": 359
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "vi"
+  ],
+  "order": 7,
+  "title": "Tin Cậy Đức Chúa Trời Với Em Bé",
+  "body_html": "<blockquote><p><em>“Trong ngày sợ hãi, Tôi sẽ để lòng nhờ cậy nơi Chúa.”</em> — Thi Thiên 56:3</p></blockquote> <p>Một buổi sáng Chúa Nhật, Amanda rất muốn đi nghe một nhà truyền đạo giảng ở tận bên kia thành phố. Bà tắm cho em bé Will rồi nhẹ nhàng đặt bé vào nôi. Sau đó bà nhờ cô con gái lớn là Mazie trông em. “Nếu em khóc,” bà dặn, “con đừng bế em lên; chỉ cần đưa nôi thôi.”</p> <p>Thế rồi bà đi nhóm. Nhưng trong khi nhà truyền đạo đang giảng, một cảm giác sợ hãi ập đến với bà. Bà tin chắc rằng mình nghe thấy tiếng em bé gào khóc ở đằng xa. Một giọng nói thì thầm: “Mazie đánh rơi em rồi! Có chuyện khủng khiếp xảy ra rồi! Chạy về nhà ngay đi!”</p> <p>Tim Amanda đập thình thịch. Bà suýt nữa đã đứng bật dậy chạy vội về nhà. Nhưng rồi bà nhớ ra — bà đã từng bảo người khác hãy tin cậy Đức Chúa Trời. Chẳng lẽ chính bà lại không tin cậy Ngài được sao?</p> <p>“Tôi sẽ tin cậy Chúa,” bà khẽ nói, “ngay cả với em bé của tôi.” Những ý nghĩ đáng sợ lại kéo đến, và bà lại đáp: “Tôi đã nói là tôi sẽ tin cậy Chúa, và tôi sẽ tin cậy Ngài.” Vậy là bà ở lại, bà lắng nghe, và Đức Chúa Trời đổ đầy lòng bà một sự bình an tuyệt vời.</p> <p>Khi Amanda cuối cùng vội vã về đến nhà và mở cửa ra, bà thấy bé Will đang ngủ say ngon lành trong nôi. Bé chưa hề thức giấc lần nào. Bé hoàn toàn bình an vô sự.</p> <p>Đôi khi trong đầu chúng ta đầy ắp những ý nghĩ đáng sợ kiểu “lỡ như…”. Khi con thấy sợ, con có thể làm như Amanda đã làm: trao nỗi lo ấy cho Đức Chúa Trời và tin cậy Ngài. Ngài yêu thương con, và Ngài luôn luôn chăm sóc con.</p> <p>Lạy Đức Chúa Trời, khi con thấy sợ, xin giúp con nhớ rằng Ngài đang ở gần bên con. Con xin trao cho Ngài mọi nỗi lo của con, vì con biết Ngài chăm sóc con thật chu đáo. A-men.</p>",
+  "study_questions": [
+   {
+    "question": "Trong lúc Amanda đang ở nhà thờ, những ý nghĩ đáng sợ nào đã đến trong trí bà?",
+    "answer": "Bà tin chắc rằng mình nghe thấy tiếng em bé gào khóc, và một giọng nói thì thầm rằng Mazie đã đánh rơi em và bà phải chạy về nhà ngay."
+   },
+   {
+    "question": "Thay vì chạy về nhà, Amanda đã quyết định làm gì, và sau đó bà thấy điều gì?",
+    "answer": "Bà nói: “Tôi sẽ tin cậy Chúa, ngay cả với em bé của tôi,” rồi ở lại. Khi về đến nhà, bà thấy bé Will đang ngủ ngon lành, hoàn toàn bình an vô sự."
+   },
+   {
+    "question": "Những điều “lỡ như” nào đôi khi làm con thấy sợ? Con có thể làm gì với những nỗi lo ấy?",
+    "answer": "Ý chính của chương này: khi con thấy sợ, hãy trao nỗi lo cho Đức Chúa Trời và tin cậy Ngài, như Amanda đã làm. Ngài yêu thương con và luôn luôn chăm sóc con."
+   }
+  ],
+  "body_text": "“Trong ngày sợ hãi, Tôi sẽ để lòng nhờ cậy nơi Chúa.” — Thi Thiên 56:3 Một buổi sáng Chúa Nhật, Amanda rất muốn đi nghe một nhà truyền đạo giảng ở tận bên kia thành phố. Bà tắm cho em bé Will rồi nhẹ nhàng đặt bé vào nôi. Sau đó bà nhờ cô con gái lớn là Mazie trông em. “Nếu em khóc,” bà dặn, “con đừng bế em lên; chỉ cần đưa nôi thôi.” Thế rồi bà đi nhóm. Nhưng trong khi nhà truyền đạo đang giảng, một cảm giác sợ hãi ập đến với bà. Bà tin chắc rằng mình nghe thấy tiếng em bé gào khóc ở đằng xa. Một giọng nói thì thầm: “Mazie đánh rơi em rồi! Có chuyện khủng khiếp xảy ra rồi! Chạy về nhà ngay đi!” Tim Amanda đập thình thịch. Bà suýt nữa đã đứng bật dậy chạy vội về nhà. Nhưng rồi bà nhớ ra — bà đã từng bảo người khác hãy tin cậy Đức Chúa Trời. Chẳng lẽ chính bà lại không tin cậy Ngài được sao? “Tôi sẽ tin cậy Chúa,” bà khẽ nói, “ngay cả với em bé của tôi.” Những ý nghĩ đáng sợ lại kéo đến, và bà lại đáp: “Tôi đã nói là tôi sẽ tin cậy Chúa, và tôi sẽ tin cậy Ngài.” Vậy là bà ở lại, bà lắng nghe, và Đức Chúa Trời đổ đầy lòng bà một sự bình an tuyệt vời. Khi Amanda cuối cùng vội vã về đến nhà và mở cửa ra, bà thấy bé Will đang ngủ say ngon lành trong nôi. Bé chưa hề thức giấc lần nào. Bé hoàn toàn bình an vô sự. Đôi khi trong đầu chúng ta đầy ắp những ý nghĩ đáng sợ kiểu “lỡ như…”. Khi con thấy sợ, con có thể làm như Amanda đã làm: trao nỗi lo ấy cho Đức Chúa Trời và tin cậy Ngài. Ngài yêu thương con, và Ngài luôn luôn chăm sóc con. Lạy Đức Chúa Trời, khi con thấy sợ, xin giúp con nhớ rằng Ngài đang ở gần bên con. Con xin trao cho Ngài mọi nỗi lo của con, vì con biết Ngài chăm sóc con thật chu đáo. A-men.",
+  "word_count": 374
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "vi"
+  ],
+  "order": 8,
+  "title": "Đôi Giày Bà Cầu Xin",
+  "body_html": "<blockquote><p><em>“Mọi điều các ngươi xin trong lúc cầu nguyện, hãy tin đã được”</em> — Mác 11:24</p></blockquote> <p>Một ngày kia, Amanda cảm thấy chắc chắn rằng Đức Chúa Trời muốn bà đi kể cho người ta nghe về Chúa Giê-xu ở một thị trấn tên là Salem. Nơi ấy rất xa, và bà không quen một người nào ở đó. Nhưng bà tin cậy Đức Chúa Trời, và bà bắt đầu chuẩn bị lên đường.</p> <p>Chỉ có một khó khăn. Đôi giày của bà đã mòn thủng — đế giày có những lỗ thủng. Nếu chân bị ướt trên đường đi, bà biết mình sẽ ngã bệnh.</p> <p>Amanda không có tiền mua giày mới. Vì vậy bà làm điều bà vẫn luôn làm: bà thưa với Đức Chúa Trời về chuyện đó. “Lạy Chúa,” bà cầu nguyện, “nếu đó là ý muốn của Chúa, xin ban cho con tiền để mua giày.” Và bà tin rằng Ngài sẽ ban cho.</p> <p>Vài ngày sau, tại một buổi nhóm, có một cụ già đáng mến tên là cụ Brummell bắt tay bà khi chào tạm biệt. Trong lúc bắt tay, cụ lặng lẽ ấn một vật gì đó vào lòng bàn tay bà. Amanda cảm ơn cụ rồi bỏ vật ấy vào túi mà không nhìn xem.</p> <p>Tối hôm đó, ngồi bên bếp lửa, bà sực nhớ ra. Bà lấy nó ra và đếm — một, hai, ba, bốn, năm đô-la! Vừa đúng đủ để mua một đôi giày mới. Bà vui mừng đến nỗi gần như không ngủ được. Đức Chúa Trời đã nhậm lời cầu nguyện của bà.</p> <p>Đức Chúa Trời không bao giờ quá bận rộn đến nỗi không lo đến những điều nhỏ bé trong cuộc sống của con. Bất cứ điều gì con thật sự cần, con đều có thể thưa với Ngài và tin cậy Ngài sẽ giúp đỡ — ngay cả một điều bình thường như một đôi giày.</p> <p>Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài quan tâm đến cả những điều nhỏ bé con cần. Xin giúp con mang mọi điều đến với Ngài và tin cậy Ngài sẽ trả lời. A-men.</p>",
+  "study_questions": [
+   {
+    "question": "Tại sao Amanda cần giày mới trước khi đi Salem?",
+    "answer": "Đế giày của bà đã mòn thủng, và bà biết rằng nếu chân bị ướt trên đường đi, bà sẽ ngã bệnh."
+   },
+   {
+    "question": "Đức Chúa Trời đã nhậm lời cầu nguyện xin giày của Amanda như thế nào?",
+    "answer": "Tại một buổi nhóm, cụ Brummell ấn một vật gì đó vào tay bà. Tối hôm đó bà đếm: năm đô-la, vừa đúng đủ để mua một đôi giày mới."
+   },
+   {
+    "question": "Con có đang cần một điều gì nhỏ không? Con có nghĩ Đức Chúa Trời quan tâm đến điều đó không?",
+    "answer": "Ý chính của chương này: Đức Chúa Trời không bao giờ quá bận rộn đối với những điều nhỏ bé. Bất cứ điều gì chúng ta thật sự cần, chúng ta đều có thể thưa với Ngài và tin cậy Ngài sẽ giúp đỡ — ngay cả một đôi giày."
+   }
+  ],
+  "body_text": "“Mọi điều các ngươi xin trong lúc cầu nguyện, hãy tin đã được” — Mác 11:24 Một ngày kia, Amanda cảm thấy chắc chắn rằng Đức Chúa Trời muốn bà đi kể cho người ta nghe về Chúa Giê-xu ở một thị trấn tên là Salem. Nơi ấy rất xa, và bà không quen một người nào ở đó. Nhưng bà tin cậy Đức Chúa Trời, và bà bắt đầu chuẩn bị lên đường. Chỉ có một khó khăn. Đôi giày của bà đã mòn thủng — đế giày có những lỗ thủng. Nếu chân bị ướt trên đường đi, bà biết mình sẽ ngã bệnh. Amanda không có tiền mua giày mới. Vì vậy bà làm điều bà vẫn luôn làm: bà thưa với Đức Chúa Trời về chuyện đó. “Lạy Chúa,” bà cầu nguyện, “nếu đó là ý muốn của Chúa, xin ban cho con tiền để mua giày.” Và bà tin rằng Ngài sẽ ban cho. Vài ngày sau, tại một buổi nhóm, có một cụ già đáng mến tên là cụ Brummell bắt tay bà khi chào tạm biệt. Trong lúc bắt tay, cụ lặng lẽ ấn một vật gì đó vào lòng bàn tay bà. Amanda cảm ơn cụ rồi bỏ vật ấy vào túi mà không nhìn xem. Tối hôm đó, ngồi bên bếp lửa, bà sực nhớ ra. Bà lấy nó ra và đếm — một, hai, ba, bốn, năm đô-la! Vừa đúng đủ để mua một đôi giày mới. Bà vui mừng đến nỗi gần như không ngủ được. Đức Chúa Trời đã nhậm lời cầu nguyện của bà. Đức Chúa Trời không bao giờ quá bận rộn đến nỗi không lo đến những điều nhỏ bé trong cuộc sống của con. Bất cứ điều gì con thật sự cần, con đều có thể thưa với Ngài và tin cậy Ngài sẽ giúp đỡ — ngay cả một điều bình thường như một đôi giày. Lạy Đức Chúa Trời, cảm ơn Ngài vì Ngài quan tâm đến cả những điều nhỏ bé con cần. Xin giúp con mang mọi điều đến với Ngài và tin cậy Ngài sẽ trả lời. A-men.",
+  "word_count": 359
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "vi"
+  ],
+  "order": 9,
+  "title": "Sợ Biển Sâu",
+  "body_html": "<blockquote><p><em>“Khi ngươi vượt qua các dòng nước, ta sẽ ở cùng”</em> — Ê-sai 43:2</p></blockquote> <p>Đến lúc này, ai cũng biết Amanda là người luôn bảo người khác hãy tin cậy Đức Chúa Trời, dù có chuyện gì xảy ra đi nữa. Rồi một ngày kia, có mấy người bạn nói: “Chị Amanda ơi, chúng tôi tin rằng Đức Chúa Trời muốn chị đi tàu vượt qua đại dương mênh mông sang nước Anh, để kể cho người ta ở đó nghe về Chúa Giê-xu.”</p> <p>Nhưng trong lòng Amanda có một điều bí mật. Bà sợ biển cả sâu thẳm, rộng mênh mông. Bà cứ viện cớ hết lần này đến lần khác. Bà còn viết hẳn một lá thư nói rằng bà sẽ không đi.</p> <p>Tối hôm đó, một nỗi buồn nặng trĩu phủ lấy bà, mà bà không hiểu tại sao. Bà quỳ xuống và thưa: “Lạy Chúa, con sẽ không đi ngủ cho đến khi con biết mình có điều gì không ổn.”</p> <p>Và Đức Chúa Trời đã nhẹ nhàng cho bà thấy sự thật. Như thể có một giọng nói bảo bà: “Con đi khắp nơi bảo người khác hãy tin cậy Chúa trong bóng tối. Nhưng con lại bảo họ làm điều mà chính con không chịu làm. Con sợ, không dám tin cậy Ta mà vượt qua đại dương.”</p> <p>Amanda thấy xấu hổ. “Lạy Chúa, đúng là như vậy,” bà thưa. “Xin tha thứ cho con, và cho con thêm một cơ hội nữa, con sẽ đi.” Và bà đã đi thật — bà vượt biển suốt một chặng đường dài sang tận nước Anh, và Đức Chúa Trời đã đi cùng bà suốt cả chặng đường.</p> <p>Bảo người khác hãy can đảm thì dễ. Tự mình can đảm mới khó hơn! Khi Đức Chúa Trời bảo con tin cậy Ngài trong một điều đáng sợ, con hãy nhớ rằng Ngài đi cùng con băng qua chỗ nước sâu.</p> <p>Lạy Đức Chúa Trời, khi con sợ một điều gì to lớn, xin giúp chính con biết tin cậy Ngài. Cảm ơn Ngài vì Ngài luôn ở ngay bên cạnh con. A-men.</p>",
+  "study_questions": [
+   {
+    "question": "Khi bạn bè nói rằng Đức Chúa Trời muốn Amanda đi sang nước Anh, nỗi sợ bí mật của bà là gì?",
+    "answer": "Bà sợ biển cả sâu thẳm, rộng mênh mông. Bà cứ viện cớ và còn viết hẳn một lá thư nói rằng bà sẽ không đi."
+   },
+   {
+    "question": "Khi Amanda quỳ xuống cầu nguyện tối hôm đó, Đức Chúa Trời đã nhẹ nhàng cho bà thấy điều gì?",
+    "answer": "Rằng bà bảo người khác hãy tin cậy Chúa trong bóng tối, nhưng chính bà lại không chịu làm điều đó — bà sợ, không dám tin cậy Ngài mà vượt qua đại dương."
+   },
+   {
+    "question": "Con đã bao giờ bảo người khác hãy can đảm về một điều mà chính con cũng sợ chưa? Điều gì có thể giúp con can đảm?",
+    "answer": "Ý chính của chương này: bảo người khác hãy can đảm thì dễ hơn tự mình can đảm. Khi Đức Chúa Trời bảo con tin cậy Ngài trong một điều đáng sợ, Ngài đi cùng con băng qua chỗ nước sâu."
+   }
+  ],
+  "body_text": "“Khi ngươi vượt qua các dòng nước, ta sẽ ở cùng” — Ê-sai 43:2 Đến lúc này, ai cũng biết Amanda là người luôn bảo người khác hãy tin cậy Đức Chúa Trời, dù có chuyện gì xảy ra đi nữa. Rồi một ngày kia, có mấy người bạn nói: “Chị Amanda ơi, chúng tôi tin rằng Đức Chúa Trời muốn chị đi tàu vượt qua đại dương mênh mông sang nước Anh, để kể cho người ta ở đó nghe về Chúa Giê-xu.” Nhưng trong lòng Amanda có một điều bí mật. Bà sợ biển cả sâu thẳm, rộng mênh mông. Bà cứ viện cớ hết lần này đến lần khác. Bà còn viết hẳn một lá thư nói rằng bà sẽ không đi. Tối hôm đó, một nỗi buồn nặng trĩu phủ lấy bà, mà bà không hiểu tại sao. Bà quỳ xuống và thưa: “Lạy Chúa, con sẽ không đi ngủ cho đến khi con biết mình có điều gì không ổn.” Và Đức Chúa Trời đã nhẹ nhàng cho bà thấy sự thật. Như thể có một giọng nói bảo bà: “Con đi khắp nơi bảo người khác hãy tin cậy Chúa trong bóng tối. Nhưng con lại bảo họ làm điều mà chính con không chịu làm. Con sợ, không dám tin cậy Ta mà vượt qua đại dương.” Amanda thấy xấu hổ. “Lạy Chúa, đúng là như vậy,” bà thưa. “Xin tha thứ cho con, và cho con thêm một cơ hội nữa, con sẽ đi.” Và bà đã đi thật — bà vượt biển suốt một chặng đường dài sang tận nước Anh, và Đức Chúa Trời đã đi cùng bà suốt cả chặng đường. Bảo người khác hãy can đảm thì dễ. Tự mình can đảm mới khó hơn! Khi Đức Chúa Trời bảo con tin cậy Ngài trong một điều đáng sợ, con hãy nhớ rằng Ngài đi cùng con băng qua chỗ nước sâu. Lạy Đức Chúa Trời, khi con sợ một điều gì to lớn, xin giúp chính con biết tin cậy Ngài. Cảm ơn Ngài vì Ngài luôn ở ngay bên cạnh con. A-men.",
+  "word_count": 356
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "vi"
+  ],
+  "order": 10,
+  "title": "Chiếc Rương Bị Mất Trộm",
+  "body_html": "<blockquote><p><em>“Người chậm nóng giận thắng hơn người dõng sĩ; Và ai cai trị lòng mình thắng hơn kẻ chiếm lấy thành.”</em> — Châm Ngôn 16:32</p></blockquote> <p>Đức Chúa Trời lại dẫn Amanda đi một chuyến đi xa nữa — lần này bằng tàu thủy sang tận châu Phi. Quần áo và đồ đạc của bà được xếp cẩn thận trong chiếc rương để dưới đáy tàu.</p> <p>Nhưng trong lúc người ta đang chất hàng lên tàu, có mấy kẻ đã phá khóa rương của bà và lấy trộm nhiều đồ đạc — kể cả đôi giày của bà. Khi Amanda biết chuyện, bà rất tiếc vì mất những thứ ấy. Có những món bà không bao giờ lấy lại được nữa.</p> <p>Bấy giờ ai cũng nghĩ bà sẽ la hét, giậm chân và nổi giận. Ngay cả ông thuyền trưởng cũng đứng nhìn, kinh ngạc, và nói: “Bà Smith, tôi không hiểu sao bà lại giữ được bình tĩnh như vậy!”</p> <p>Amanda mỉm cười đáp: “Thưa thuyền trưởng, tôi tiếc vì mất đồ lắm. Nhưng nếu nổi nóng và giận dữ mà lấy lại được đồ, thì chắc chắn ông sẽ thấy tôi làm ầm lên! Nhưng vì làm vậy cũng chẳng lấy lại được, thì tôi làm ầm lên để làm gì?” Và Đức Chúa Trời đã giữ cho lòng bà yên lặng và bình tĩnh.</p> <p>Khi có món đồ bị lấy trộm, bị làm hỏng, hoặc khi có điều gì không công bằng, chúng ta rất dễ nổi giận đùng đùng. Nhưng giận dữ không sửa chữa được gì — nó chỉ làm cho chúng ta thấy tệ hơn mà thôi. Đức Chúa Trời có thể giúp con giữ bình tĩnh và hiền hòa, ngay cả khi có chuyện không như ý. Đó mới là sức mạnh thật sự.</p> <p>Lạy Đức Chúa Trời, khi mọi việc không như ý và con thấy giận, xin giúp con giữ bình tĩnh như Amanda. Xin cho sự bình an của Ngài cai trị lòng con. A-men.</p>",
+  "study_questions": [
+   {
+    "question": "Điều gì đã xảy ra với chiếc rương của Amanda trên con tàu đi châu Phi?",
+    "answer": "Có mấy kẻ đã phá khóa và lấy trộm nhiều đồ đạc của bà, kể cả đôi giày. Có những món bà không bao giờ lấy lại được."
+   },
+   {
+    "question": "Tại sao Amanda nói với ông thuyền trưởng rằng bà sẽ không nổi nóng?",
+    "answer": "Bà nói rằng nếu giận dữ mà lấy lại được đồ, thì ông sẽ thấy bà làm ầm lên — nhưng vì làm vậy cũng chẳng lấy lại được, thì bà làm ầm lên để làm gì?"
+   },
+   {
+    "question": "Khi đồ của con bị làm hỏng hay bị lấy mất, con muốn làm gì? Thay vào đó, con có thể làm gì?",
+    "answer": "Ý chính của chương này: giận dữ không sửa chữa được gì và chỉ làm cho chúng ta thấy tệ hơn. Đức Chúa Trời có thể giúp chúng ta giữ bình tĩnh và hiền hòa khi có chuyện không như ý — đó mới là sức mạnh thật sự."
+   }
+  ],
+  "body_text": "“Người chậm nóng giận thắng hơn người dõng sĩ; Và ai cai trị lòng mình thắng hơn kẻ chiếm lấy thành.” — Châm Ngôn 16:32 Đức Chúa Trời lại dẫn Amanda đi một chuyến đi xa nữa — lần này bằng tàu thủy sang tận châu Phi. Quần áo và đồ đạc của bà được xếp cẩn thận trong chiếc rương để dưới đáy tàu. Nhưng trong lúc người ta đang chất hàng lên tàu, có mấy kẻ đã phá khóa rương của bà và lấy trộm nhiều đồ đạc — kể cả đôi giày của bà. Khi Amanda biết chuyện, bà rất tiếc vì mất những thứ ấy. Có những món bà không bao giờ lấy lại được nữa. Bấy giờ ai cũng nghĩ bà sẽ la hét, giậm chân và nổi giận. Ngay cả ông thuyền trưởng cũng đứng nhìn, kinh ngạc, và nói: “Bà Smith, tôi không hiểu sao bà lại giữ được bình tĩnh như vậy!” Amanda mỉm cười đáp: “Thưa thuyền trưởng, tôi tiếc vì mất đồ lắm. Nhưng nếu nổi nóng và giận dữ mà lấy lại được đồ, thì chắc chắn ông sẽ thấy tôi làm ầm lên! Nhưng vì làm vậy cũng chẳng lấy lại được, thì tôi làm ầm lên để làm gì?” Và Đức Chúa Trời đã giữ cho lòng bà yên lặng và bình tĩnh. Khi có món đồ bị lấy trộm, bị làm hỏng, hoặc khi có điều gì không công bằng, chúng ta rất dễ nổi giận đùng đùng. Nhưng giận dữ không sửa chữa được gì — nó chỉ làm cho chúng ta thấy tệ hơn mà thôi. Đức Chúa Trời có thể giúp con giữ bình tĩnh và hiền hòa, ngay cả khi có chuyện không như ý. Đó mới là sức mạnh thật sự. Lạy Đức Chúa Trời, khi mọi việc không như ý và con thấy giận, xin giúp con giữ bình tĩnh như Amanda. Xin cho sự bình an của Ngài cai trị lòng con. A-men.",
+  "word_count": 334
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "vi"
+  ],
+  "order": 11,
+  "title": "Chiếc Xe Không Chịu Đi",
+  "body_html": "<blockquote><p><em>“Vì Ngài sẽ ban lệnh cho thiên sứ Ngài, Bảo gìn giữ ngươi trong các đường lối ngươi.”</em> — Thi Thiên 91:11</p></blockquote> <p>Amanda còn đi xa hơn nữa, đến tận xứ Ấn Độ xa xôi, để kể cho người ta nghe về Chúa Giê-xu. Một đêm nọ, bà và người bạn là cô Frow đang đi trên một con đường quê gồ ghề, ngồi trên một chiếc xe do mấy con bò đực to lớn, chậm chạp kéo.</p> <p>Trời tối lắm, tối đen như mực. Không có đèn đường, cũng chẳng có ánh trăng giúp họ nhìn thấy đường phía trước.</p> <p>Bỗng nhiên, mấy con bò đứng sững lại. Chúng nhất định không chịu bước thêm một bước nào nữa. Người đánh xe bảo chúng đi tiếp, nhưng mấy con vật vẫn không chịu. Amanda và bạn bắt đầu thấy bực mình. “Sao chiếc xe này không chịu đi nhỉ?” họ thắc mắc.</p> <p>Cuối cùng họ trèo xuống để tự mình xem cho biết. Họ chỉ đi vài bước về phía trước trong bóng tối — và tim họ suýt ngừng đập. Ngay trước mặt họ là một con mương sâu và nguy hiểm cắt ngang cả con đường! Nếu mấy con bò cứ đi tiếp, chiếc xe đã lao xuống đó, và mọi người có thể đã bị thương nặng.</p> <p>Lúc ấy họ ngợi khen Đức Chúa Trời biết bao! Những con vật bướng bỉnh ấy hóa ra chẳng bướng bỉnh chút nào. Đức Chúa Trời đã dùng chúng để chặn chiếc xe lại và giữ cho những người đi đường của Ngài được an toàn khỏi một mối nguy hiểm mà họ thậm chí không nhìn thấy.</p> <p>Đôi khi Đức Chúa Trời bảo vệ con theo những cách con không hề để ý, và đôi khi một lời “không” hay một sự chậm trễ thật ra là Ngài đang giữ cho con được an toàn. Con có thể tin chắc rằng Ngài đang trông chừng từng đường lối của con.</p> <p>Lạy Đức Chúa Trời, cảm ơn Ngài đã trông chừng con, ngay cả khi con không nhìn thấy mối nguy hiểm. Xin giúp con tin rằng Ngài luôn luôn giữ con được an toàn. A-men.</p>",
+  "study_questions": [
+   {
+    "question": "Trên con đường tối ở Ấn Độ, mấy con bò đực đã làm gì?",
+    "answer": "Chúng bỗng đứng sững lại và không chịu bước thêm một bước nào nữa, ngay cả khi người đánh xe bảo chúng đi tiếp."
+   },
+   {
+    "question": "Amanda và cô Frow đã thấy gì khi đi bộ về phía trước trong bóng tối?",
+    "answer": "Một con mương sâu và nguy hiểm cắt ngang cả con đường. Nếu mấy con bò cứ đi tiếp, chiếc xe đã lao xuống đó."
+   },
+   {
+    "question": "Con có nhớ lần nào phải chờ đợi hay nghe lời “không” mà hóa ra lại tốt cho con không?",
+    "answer": "Ý chính của chương này: đôi khi Đức Chúa Trời bảo vệ chúng ta theo những cách chúng ta không hề để ý, và một lời “không” hay một sự chậm trễ có thể thật ra là Ngài đang giữ cho chúng ta được an toàn. Ngài trông chừng mọi đường lối của chúng ta."
+   }
+  ],
+  "body_text": "“Vì Ngài sẽ ban lệnh cho thiên sứ Ngài, Bảo gìn giữ ngươi trong các đường lối ngươi.” — Thi Thiên 91:11 Amanda còn đi xa hơn nữa, đến tận xứ Ấn Độ xa xôi, để kể cho người ta nghe về Chúa Giê-xu. Một đêm nọ, bà và người bạn là cô Frow đang đi trên một con đường quê gồ ghề, ngồi trên một chiếc xe do mấy con bò đực to lớn, chậm chạp kéo. Trời tối lắm, tối đen như mực. Không có đèn đường, cũng chẳng có ánh trăng giúp họ nhìn thấy đường phía trước. Bỗng nhiên, mấy con bò đứng sững lại. Chúng nhất định không chịu bước thêm một bước nào nữa. Người đánh xe bảo chúng đi tiếp, nhưng mấy con vật vẫn không chịu. Amanda và bạn bắt đầu thấy bực mình. “Sao chiếc xe này không chịu đi nhỉ?” họ thắc mắc. Cuối cùng họ trèo xuống để tự mình xem cho biết. Họ chỉ đi vài bước về phía trước trong bóng tối — và tim họ suýt ngừng đập. Ngay trước mặt họ là một con mương sâu và nguy hiểm cắt ngang cả con đường! Nếu mấy con bò cứ đi tiếp, chiếc xe đã lao xuống đó, và mọi người có thể đã bị thương nặng. Lúc ấy họ ngợi khen Đức Chúa Trời biết bao! Những con vật bướng bỉnh ấy hóa ra chẳng bướng bỉnh chút nào. Đức Chúa Trời đã dùng chúng để chặn chiếc xe lại và giữ cho những người đi đường của Ngài được an toàn khỏi một mối nguy hiểm mà họ thậm chí không nhìn thấy. Đôi khi Đức Chúa Trời bảo vệ con theo những cách con không hề để ý, và đôi khi một lời “không” hay một sự chậm trễ thật ra là Ngài đang giữ cho con được an toàn. Con có thể tin chắc rằng Ngài đang trông chừng từng đường lối của con. Lạy Đức Chúa Trời, cảm ơn Ngài đã trông chừng con, ngay cả khi con không nhìn thấy mối nguy hiểm. Xin giúp con tin rằng Ngài luôn luôn giữ con được an toàn. A-men.",
+  "word_count": 367
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "vi"
+  ],
+  "order": 12,
+  "title": "Cậu Bé Bên Cổng",
+  "body_html": "<blockquote><p><em>“Hễ ai vì danh ta chịu tiếp một đứa trẻ thể nầy, tức là chịu tiếp ta.”</em> — Ma-thi-ơ 18:5</p></blockquote> <p>Trong thời gian Amanda sống ở châu Phi, có hai cậu bé hay ghé đến thăm bà. Một cậu tên là Bob. Da cậu mịn màng và sậm màu, và cậu có nụ cười rạng rỡ nhất. Amanda thường để dành chút thức ăn cho hai cậu bé, và lần nào các cậu cũng vui lắm. Bà ngày càng thương hai cậu thật nhiều.</p> <p>Một ngày kia, cha của Bob là ông Jack đến gặp Amanda. Ông buồn bã kể với bà rằng chính ông chưa bao giờ được học biết về Đức Chúa Trời. “Tôi không muốn đứa con trai nhỏ của tôi lớn lên mà không biết Đức Chúa Trời, giống như tôi,” ông nói. “Xin bà nhận nó và dạy dỗ nó, được không?”</p> <p>Amanda muốn giúp. Nhưng bà thường yếu ớt và hay bị sốt, mà bà lại có rất ít tiền. “Làm sao mình chăm sóc nổi một đứa trẻ?” bà tự hỏi. Vì vậy bà mang câu hỏi ấy đến với Đức Chúa Trời trong sự cầu nguyện.</p> <p>Và Đức Chúa Trời nhẹ nhàng trả lời lòng bà: “Con hãy làm những gì con có thể làm, và chỗ nào con dừng lại, Đức Chúa Trời sẽ dấy lên một người khác làm nốt phần còn lại.”</p> <p>“Vậy là công bằng,” Amanda nói. “Tôi sẽ tin cậy Chúa mà nhận đứa trẻ, và làm hết sức mình.” Thế là bé Bob trở thành con trai của chính bà, để bà nuôi nấng và yêu thương.</p> <p>Đức Chúa Trời không đòi con phải tự mình làm hết mọi việc. Ngài chỉ muốn con làm những gì con có thể làm, rồi tin cậy Ngài về phần còn lại. Khi con đón nhận và giúp đỡ một em nhỏ, Chúa Giê-xu phán rằng điều đó cũng giống như con đón nhận chính Ngài vậy.</p> <p>Lạy Đức Chúa Trời, xin giúp con làm những việc tốt mà con có thể làm, và tin cậy Ngài về những việc con không làm được. Cảm ơn Ngài vì Ngài yêu thương trẻ em nhiều đến thế. A-men.</p>",
+  "study_questions": [
+   {
+    "question": "Cha của Bob là ông Jack đã xin Amanda làm gì?",
+    "answer": "Ông chưa bao giờ được học biết về Đức Chúa Trời và không muốn Bob lớn lên cũng như vậy, nên ông xin Amanda nhận đứa con trai nhỏ của mình và dạy dỗ cậu."
+   },
+   {
+    "question": "Lúc đầu tại sao Amanda còn đắn đo, và Đức Chúa Trời đã nói gì với bà?",
+    "answer": "Bà thường đau ốm và có ít tiền. Đức Chúa Trời trả lời: “Con hãy làm những gì con có thể làm, và chỗ nào con dừng lại, Đức Chúa Trời sẽ dấy lên một người khác làm nốt phần còn lại.”"
+   },
+   {
+    "question": "Tuần này con có thể làm một việc tốt nào để giúp đỡ một người nào đó, dù chỉ là việc nhỏ?",
+    "answer": "Ý chính của chương này: Đức Chúa Trời không đòi chúng ta phải tự mình làm hết mọi việc — chỉ cần làm những gì mình có thể làm, rồi tin cậy Ngài về phần còn lại. Đón nhận một em nhỏ cũng giống như đón nhận Chúa Giê-xu."
+   }
+  ],
+  "body_text": "“Hễ ai vì danh ta chịu tiếp một đứa trẻ thể nầy, tức là chịu tiếp ta.” — Ma-thi-ơ 18:5 Trong thời gian Amanda sống ở châu Phi, có hai cậu bé hay ghé đến thăm bà. Một cậu tên là Bob. Da cậu mịn màng và sậm màu, và cậu có nụ cười rạng rỡ nhất. Amanda thường để dành chút thức ăn cho hai cậu bé, và lần nào các cậu cũng vui lắm. Bà ngày càng thương hai cậu thật nhiều. Một ngày kia, cha của Bob là ông Jack đến gặp Amanda. Ông buồn bã kể với bà rằng chính ông chưa bao giờ được học biết về Đức Chúa Trời. “Tôi không muốn đứa con trai nhỏ của tôi lớn lên mà không biết Đức Chúa Trời, giống như tôi,” ông nói. “Xin bà nhận nó và dạy dỗ nó, được không?” Amanda muốn giúp. Nhưng bà thường yếu ớt và hay bị sốt, mà bà lại có rất ít tiền. “Làm sao mình chăm sóc nổi một đứa trẻ?” bà tự hỏi. Vì vậy bà mang câu hỏi ấy đến với Đức Chúa Trời trong sự cầu nguyện. Và Đức Chúa Trời nhẹ nhàng trả lời lòng bà: “Con hãy làm những gì con có thể làm, và chỗ nào con dừng lại, Đức Chúa Trời sẽ dấy lên một người khác làm nốt phần còn lại.” “Vậy là công bằng,” Amanda nói. “Tôi sẽ tin cậy Chúa mà nhận đứa trẻ, và làm hết sức mình.” Thế là bé Bob trở thành con trai của chính bà, để bà nuôi nấng và yêu thương. Đức Chúa Trời không đòi con phải tự mình làm hết mọi việc. Ngài chỉ muốn con làm những gì con có thể làm, rồi tin cậy Ngài về phần còn lại. Khi con đón nhận và giúp đỡ một em nhỏ, Chúa Giê-xu phán rằng điều đó cũng giống như con đón nhận chính Ngài vậy. Lạy Đức Chúa Trời, xin giúp con làm những việc tốt mà con có thể làm, và tin cậy Ngài về những việc con không làm được. Cảm ơn Ngài vì Ngài yêu thương trẻ em nhiều đến thế. A-men.",
+  "word_count": 368
+ }
+}
+]
