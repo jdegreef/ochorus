@@ -11511,6 +11511,33 @@
 				515
 			]
 		},
+		"fr/the-pursuit-of-god": {
+			"ground": "7f66893f722b611090b2b8ec8218a6c3fd57c9c68e75d30f3cb85654ff833f67",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[193, 102, 407, 131]
+				],
+				"title": [
+					[119, 326, 481, 402],
+					[200, 391, 400, 467]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				519
+			]
+		},
 		"fr/the-pursuit-of-god-teens": {
 			"ground": "9e3348f6de7fd186ed7aad08a9af785b98b18d6e87bb6d09585a359c37bc55e6",
 			"style": "originals",
