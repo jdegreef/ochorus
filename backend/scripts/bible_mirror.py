@@ -213,15 +213,17 @@ def fetch(collection: str, dest: Path) -> None:
         list(pool.map(one, BOOKS))
 
 
-# Paragraph and poetry markers. A verse that runs past a line break continues on
-# one of these (`\q1 Phép tắc nhân từ ở nơi lưỡi nàng.` is the second half of
-# Prov 31:26), so their text belongs to the open verse. Anything else at the
-# start of a line (`\s`, `\d`, `\r`, `\ms`, `\mt`, `\toc`, `\h`, `\rem`, ...)
-# is a heading or metadata and is skipped.
-_CONTINUATION = re.compile(
-    r"\\(?:q[0-9]?|qm[0-9]?|qc|qr|qd|li[0-9]?|pi[0-9]?|ph[0-9]?|m|mi|p|pm[0-9]?|pmo|pc|pr|nb)"
-    r"(?:\s+(.*))?$"
+# Headings and metadata: skipped wherever they fall. Every other line marker
+# (`\p`, `\q1`, `\m`, `\li`, `\pi`, `\nb`, `\cls`, ...) starts a paragraph or
+# poetry line whose text belongs to the verse it continues —
+# `\q1 Phép tắc nhân từ ở nơi lưỡi nàng.` is the second half of Prov 31:26.
+_HEADING = re.compile(
+    r"\\(?:id|ide|usfm|h|toca?[0-9]*|rem|sts|mte?[0-9]*|ms[0-9]*|mr|s[0-9]*|sr|sd[0-9]*"
+    r"|sp|r|d|b|cl|cd|cp|qa|fp|periph"
+    r"|i(?:b|e|ex|li|m|mi|mq|mt|mte|o|or|ot|p|pi|pq|pr|q|s)[0-9]*)(?:\s|$)"
 )
+# The paragraph marker opening a line (not `\v`, which may follow it).
+_PARAGRAPH = re.compile(r"\\(?!v\s)[a-z]+[0-9]*(?:\s+|$)")
 # Footnotes and cross-references are dropped whole; character markers
 # (`\tl Ma-ra-na-tha.\tl*`, `\qs (Sê-la)\qs*`) keep their text.
 _NOTE = re.compile(r"\\(f|fe|x)\s.*?\\\1\*")
@@ -237,7 +239,7 @@ def parse(usfm_dir: Path) -> tuple[dict[str, str], dict[str, str]]:
 
     A verse's text is its `\\v` line plus any paragraph or poetry lines (`\\q1`,
     `\\p`, `\\m`, ...) that follow it, up to the next `\\v` or `\\c`. Headings
-    in between are skipped.
+    in between are skipped. A verse range (`\\v 15-16`) is keyed by its first verse.
     """
     verses: dict[str, str] = {}
     names: dict[str, str] = {}
@@ -251,13 +253,14 @@ def parse(usfm_dir: Path) -> tuple[dict[str, str], dict[str, str]]:
                 names[book] = m.group(1).strip()
             elif m := re.match(r"\\c (\d+)", line):
                 chapter, key = m.group(1), None
-            elif m := re.match(r"\\v (\d+)\s*(.*)", line):
-                key = f"{book} {chapter}:{m.group(1)}"
-                verses[key] = m.group(2)
-            elif key and (m := _CONTINUATION.match(line)):
-                verses[key] += " " + (m.group(1) or "")
-            elif key and line and not line.startswith("\\"):
-                verses[key] += " " + line
+            elif not _HEADING.match(line):
+                if m := _PARAGRAPH.match(line):
+                    line = line[m.end() :]
+                if m := re.match(r"\\v (\d+)(?:-\d+)?\s*(.*)", line):
+                    key = f"{book} {chapter}:{m.group(1)}"
+                    verses[key] = m.group(2)
+                elif key and line:
+                    verses[key] += " " + line
     for key, text in verses.items():
         # Some mirrors set the capital Đ as U+00D0 (Ð); Vietnamese needs U+0110.
         text = _strip_inline(text).replace("Ð", "Đ")
