@@ -21891,6 +21891,17 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"the-saints-everlasting-rest": {
+			"ground": "689a493620c484c4dc9db999dceedcb39368097318ea875b73ab0fe9fd30ad32",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-secret-of-guidance-teens": {
 			"ground": "5183a2a8d560e6643bf2a30588c54facca422d01cbc7d6efdbde5b76085b503c",
 			"style": "originals",
