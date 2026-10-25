@@ -22447,6 +22447,33 @@
 				449
 			]
 		},
+		"uk/men-who-moved-heaven": {
+			"ground": "fb288dcaf43ee526455e59f7c01457280c1fe6182b26f30aa0b38bc2af9c306c",
+			"style": "originals",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[161, 308, 439, 384],
+					[88, 374, 512, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"uk/men-who-tended-the-flock-2": {
 			"ground": "16abef75054bd92064da50283b3357e260fc5ef6507837c37f43e5965f3abd26",
 			"style": "originals",
