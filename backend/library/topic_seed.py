@@ -436,6 +436,7 @@ TOPICS = [
         [
             "on-the-priesthood",
             "the-reformed-pastor",
+            "knots-untied",
             "first-epistle-of-clement",
             "separation-and-service",
             "key-teachings-of-dietrich-bonhoeffer",

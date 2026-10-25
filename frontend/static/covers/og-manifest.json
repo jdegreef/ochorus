@@ -14475,6 +14475,17 @@
 				376
 			]
 		},
+		"knots-untied": {
+			"ground": "3cc77125de28acd7250475f01682d944dbfe9ad02c13a5af9b64196a1778c9e1",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"ko/absolute-surrender": {
 			"ground": "91125984b699300a36a132503dede33a26c71398f481ab9b6cfd59d176ae634c",
 			"style": "devotional",
