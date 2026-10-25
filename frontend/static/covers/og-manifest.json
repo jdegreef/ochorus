@@ -4958,7 +4958,7 @@
 			]
 		},
 		"days-of-heaven-upon-earth": {
-			"ground": "b1a664f1d52598c64e23cbbd9266dffed4668a23693b0be5fbadb3a98f33e4be",
+			"ground": "a11aa3da4071b7dd7492d5d115dd94b3c3c020c7e4d8d5fb110e77398d54242e",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
@@ -8205,7 +8205,7 @@
 			]
 		},
 		"faithful-with-little": {
-			"ground": "4f380574d4d4a4728d73d99d1f14f96c8d734f46254c11eec40c175bf36992d6",
+			"ground": "30861e05049a1fa229238d5065610a9d101a780fe7f90f0ae67fcb5164a41169",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
@@ -12175,7 +12175,7 @@
 			]
 		},
 		"grace-for-grace-2": {
-			"ground": "bdbb5ca5e1e0e64dde3d1accd097a32e70de1ecff3019b424741a2a82d6162a4",
+			"ground": "055960b4f2c330e574f9552388d323c9760f78e91b05f020648643037cd1039c",
 			"style": "house",
 			"volume": null,
 			"script": "latin",
@@ -23471,7 +23471,7 @@
 			]
 		},
 		"way-into-holiest": {
-			"ground": "4eb25026c8e1354506a7d9c7f63eb4d6eae92a26393667d351898928b3e38636",
+			"ground": "694360d04b3af3fc0df72cbd88fca21d2fdfecdb1b94355ad7bafecd3dabdabd",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -23485,7 +23485,7 @@
 					[197, 102, 403, 131]
 				],
 				"title": [
-					[127, 266, 473, 348],
+					[130, 266, 470, 348],
 					[162, 338, 438, 420]
 				],
 				"subtitle": [
