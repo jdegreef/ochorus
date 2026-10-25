@@ -109,5 +109,12 @@
    "Job #5238 (epistles-of-ignatius → pt) adds this prose because the book backs the plan. Inácio de Antioquia and «no caminho do martírio» match the shipped pt edition of Ignatius (title «As Epístolas de Inácio e a história de sua vida», subtitle «Sete cartas no caminho do martírio»). The row cannot appear yet: first-epistle-of-clement and on-the-incarnation are not in Portuguese; whichever lands last brings the card live, and its translator should check that «A Encarnação do Verbo» matches that edition's title."
   ],
   "title": "Vozes da Igreja primitiva"
+ },
+ "anchored-two-months": {
+  "description": "Dois meses com Deus para leitores de 13 a 17 anos: os dois livros de Ancorados — «É verdade? Quem sou eu?» e «A vida real» —, uma devoção por dia sobre as perguntas sinceras da fé, quem você é em Cristo e como seguir Jesus em meio à preocupação, às telas, às amizades, à vida em casa e ao luto. Cada dia termina com a indicação de um capítulo de um clássico.",
+  "note": [
+   "Job #5695. AI-drafted ahead of the books; awaiting native review. anchored-1 and anchored-2 are not yet in pt, so seed_plans creates the (anchored-two-months, pt) row only once both are published here; their pt book jobs never write this shared file. The series name «Ancorados» and the two book descriptions («É verdade? Quem sou eu?», «A vida real») are translated here, as in the fr prose — align them with the pt editions when those ship."
+  ],
+  "title": "Ancorados: Dois Meses com Deus para Adolescentes"
  }
 }
