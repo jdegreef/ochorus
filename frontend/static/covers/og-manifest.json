@@ -15408,6 +15408,34 @@
 				519
 			]
 		},
+		"lg/rise-up-men-of-god-2": {
+			"ground": "3bdd0b3b0d5f2bbb4ef87c63c4531b3cf4849d31a925f242cec40516c0d89b0a",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[150, 275, 450, 351],
+					[64, 341, 536, 417],
+					[128, 407, 472, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
+		},
 		"lg/rooted-1": {
 			"ground": "f94e1b7927ac5a087a1059eb7ad26921279628e73becac95a767072807571d7c",
 			"style": "young",
