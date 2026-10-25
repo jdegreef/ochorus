@@ -116,5 +116,12 @@
    "Job #5695. AI-drafted ahead of the books; awaiting native review. anchored-1 and anchored-2 are not yet in pt, so seed_plans creates the (anchored-two-months, pt) row only once both are published here; their pt book jobs never write this shared file. The series name «Ancorados» and the two book descriptions («É verdade? Quem sou eu?», «A vida real») are translated here, as in the fr prose — align them with the pt editions when those ship."
   ],
   "title": "Ancorados: Dois Meses com Deus para Adolescentes"
+ },
+ "brave-for-god-24-true-stories": {
+  "description": "Três semanas e meia de histórias verdadeiras para jovens leitores, uma por dia: os quatro livros de Corajosos por Deus, vinte e quatro pessoas comuns de todas as partes do mundo que confiaram em Deus e foram feitas corajosas.",
+  "note": [
+   "Job #5696. AI-drafted ahead of the books; awaiting native review. brave-for-god and brave-for-god-2 are in pt; brave-for-god-3 and brave-for-god-4 are not yet, so seed_plans creates the (brave-for-god-24-true-stories, pt) row only once all four are published here. The series name follows the shipped pt editions («Corajosos por Deus», «Corajosos por Deus: Livro Dois»)."
+  ],
+  "title": "Corajosos por Deus: 24 Histórias Verdadeiras"
  }
 }
