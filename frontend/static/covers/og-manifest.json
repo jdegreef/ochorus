@@ -17557,6 +17557,17 @@
 				487
 			]
 		},
+		"pt/purpose-in-prayer": {
+			"ground": "c6df75b5791848525ee4fcf19e591fdbd3f3f58f87ac18241d9f8b3b813a5489",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0
+		},
 		"pt/rooted-1": {
 			"ground": "73054fbcf3ee139184146e36028b1920a36a1b97c24511b9a0010cf881d71c45",
 			"style": "young",
