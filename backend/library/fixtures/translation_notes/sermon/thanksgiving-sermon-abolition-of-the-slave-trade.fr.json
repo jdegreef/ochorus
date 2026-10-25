@@ -1,0 +1,107 @@
+{
+  "kind": "sermon",
+  "slug": "thanksgiving-sermon-abolition-of-the-slave-trade",
+  "language": "fr",
+  "job_issue": 6285,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Exodus 3:7",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 0
+    },
+    {
+      "reference": "Exodus 3:8",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 0
+    },
+    {
+      "reference": "Psalm 97:2",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 3
+    },
+    {
+      "reference": "Psalm 98:1",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 3
+    },
+    {
+      "reference": "Psalm 98:3",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 3
+    },
+    {
+      "reference": "Hebrews 13:8",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 4
+    },
+    {
+      "reference": "Exodus 3:8",
+      "status": "self_rendered",
+      "block_index": 4
+    },
+    {
+      "reference": "Luke 2:14",
+      "status": "self_rendered",
+      "block_index": 4
+    },
+    {
+      "reference": "Luke 2:14",
+      "status": "self_rendered",
+      "block_index": 4
+    },
+    {
+      "reference": "Psalm 105:1-2",
+      "status": "self_rendered",
+      "block_index": 4
+    },
+    {
+      "reference": "Isaiah 51:1",
+      "status": "self_rendered",
+      "block_index": 8
+    },
+    {
+      "reference": "Deuteronomy 26:5",
+      "status": "self_rendered",
+      "block_index": 8
+    },
+    {
+      "reference": "2 Timothy 3:15",
+      "status": "self_rendered",
+      "block_index": 8
+    },
+    {
+      "reference": "Acts 10:34",
+      "status": "self_rendered",
+      "block_index": 11
+    },
+    {
+      "reference": "Acts 17:26",
+      "status": "self_rendered",
+      "block_index": 11
+    },
+    {
+      "reference": "Isaiah 2:20",
+      "status": "self_rendered",
+      "block_index": 11
+    },
+    {
+      "reference": "Isaiah 11:6",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 11
+    },
+    {
+      "reference": "Isaiah 55:13",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 11
+    }
+  ]
+}
