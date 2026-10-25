@@ -17669,7 +17669,7 @@
 			]
 		},
 		"pt/key-teachings-of-richard-baxter": {
-			"ground": "9648cfa3194bc16397c794c05ddef5776905590ab4e852b6c60417f8490f9b4f",
+			"ground": "47d9636c349004dc278220559beeffbcc448b0c34d9953e13220c1fbd33d57d6",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
@@ -17680,7 +17680,7 @@
 			"bar": 0,
 			"rows": {
 				"byline": [
-					[114, 102, 486, 131]
+					[147, 102, 453, 131]
 				],
 				"title": [
 					[84, 169, 516, 232],
