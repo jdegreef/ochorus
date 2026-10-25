@@ -1,0 +1,206 @@
+{
+  "kind": "sermon",
+  "slug": "the-way-of-salvation-made-plain",
+  "language": "fr",
+  "job_issue": 6274,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Acts 16:29",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 0
+    },
+    {
+      "reference": "Acts 16:30",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 0
+    },
+    {
+      "reference": "Acts 16:31",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 0
+    },
+    {
+      "reference": "Acts 16:31",
+      "status": "self_rendered",
+      "block_index": 1
+    },
+    {
+      "reference": "Acts 10:43",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 1
+    },
+    {
+      "reference": "Acts 16:31",
+      "status": "self_rendered",
+      "block_index": 1
+    },
+    {
+      "reference": "Matthew 20:28",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 5
+    },
+    {
+      "reference": "Isaiah 53:6",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 5
+    },
+    {
+      "reference": "Isaiah 53:6",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 5
+    },
+    {
+      "reference": "1 Peter 2:24",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 5
+    },
+    {
+      "reference": "John 8:34",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 6
+    },
+    {
+      "reference": "John 8:36",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 6
+    },
+    {
+      "reference": "John 14:11",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 7
+    },
+    {
+      "reference": "John 14:10",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 7
+    },
+    {
+      "reference": "John 15:14",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 8
+    },
+    {
+      "reference": "John 8:12",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 9
+    },
+    {
+      "reference": "John 13:13",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 10
+    },
+    {
+      "reference": "John 20:28",
+      "status": "self_rendered",
+      "block_index": 10
+    },
+    {
+      "reference": "John 20:29",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 10
+    },
+    {
+      "reference": "Acts 16:31",
+      "status": "self_rendered",
+      "block_index": 11
+    },
+    {
+      "reference": "John 3:16",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 16
+    },
+    {
+      "reference": "1 Corinthians 15:1",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 16
+    },
+    {
+      "reference": "1 Corinthians 15:2",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 16
+    },
+    {
+      "reference": "1 Corinthians 15:3",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 16
+    },
+    {
+      "reference": "1 Corinthians 15:4",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 16
+    },
+    {
+      "reference": "Matthew 28:18",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 17
+    },
+    {
+      "reference": "Luke 6:46",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 23
+    },
+    {
+      "reference": "Luke 6:46",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 23
+    },
+    {
+      "reference": "1 John 2:6",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 24
+    },
+    {
+      "reference": "Romans 10:9",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 25
+    },
+    {
+      "reference": "Romans 10:10",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 25
+    },
+    {
+      "reference": "Acts 16:30",
+      "status": "self_rendered",
+      "block_index": 1
+    },
+    {
+      "reference": "John 8:12",
+      "status": "self_rendered",
+      "block_index": 24
+    },
+    {
+      "reference": "Matthew 12:34",
+      "status": "self_rendered",
+      "block_index": 26
+    }
+  ]
+}
