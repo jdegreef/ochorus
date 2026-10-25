@@ -14712,6 +14712,17 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"ko/jesus-himself-2": {
+			"ground": "d5edd2448772d1707fbb75bebfa89fb78203a89a506a794122822f9133b42e46",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"ko/lord-teach-us-to-pray-2": {
 			"ground": "783e47b80ee6d44ef7b21b23a53a88817e53b4cf7e33200e88a71fa8ab397ca7",
 			"style": "devotional",
