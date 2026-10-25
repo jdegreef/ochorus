@@ -23203,6 +23203,17 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"vi/jesus-himself-2": {
+			"ground": "bec6fd95d0936e2f01d3b4aa16dddca5c850db83d48859c47749c3723f2b993f",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"vi/lord-teach-us-to-pray-2": {
 			"ground": "fc0dfe4a216d1099f804bba9263ea684521a25f16a2e42b655e7b71aa420c2c6",
 			"style": "devotional",
