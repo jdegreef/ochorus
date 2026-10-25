@@ -1,11 +1,3 @@
-https://www.gutenberg.org/ebooks/search/?query=owen+glory+of+christ
-https://www.gutenberg.org/ebooks/search/?query=saints+everlasting+rest
-https://www.gutenberg.org/ebooks/search/?query=cardiphonia
-https://www.gutenberg.org/ebooks/search/?query=scougal
-https://www.gutenberg.org/ebooks/search/?query=doddridge+rise+progress
-https://ccel.org/ccel/owen/glory
-https://ccel.org/ccel/baxter/saints_rest
-https://ccel.org/ccel/newton/cardiphonia
-https://ccel.org/ccel/scougal/life
-https://ccel.org/ccel/brooks/remedies
-https://ccel.org/ccel/burroughs/contentment
+https://www.gutenberg.org/ebooks/58135
+https://www.gutenberg.org/cache/epub/58135/pg58135-images.html
+https://www.gutenberg.org/cache/epub/58135/pg58135.txt

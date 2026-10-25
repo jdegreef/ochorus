@@ -8,7 +8,7 @@ name: TEMP fetch source pages (next book)
 
 on:
   push:
-    branches: [claude/ochorus-dev-4c45eff4-next]
+    branches: [claude/ochorus-dev-4c45eff4-saints-rest]
     paths: [.source-cache/urls.txt, .source-cache/ocr.txt]
 
 permissions:
