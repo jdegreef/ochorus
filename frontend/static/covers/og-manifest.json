@@ -12507,6 +12507,35 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"hi/key-teachings-of-andrew-murray": {
+			"ground": "52b571b6b56c747efd72008822744bd5b7b621ebc52ce0e73b2edb6ff3abaaed",
+			"style": "originals",
+			"volume": null,
+			"script": "devanagari",
+			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[70, 181, 530, 244]
+				],
+				"subtitle": [
+					[71, 322, 529, 344]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				350
+			]
+		},
 		"hi/lord-teach-us-to-pray-2": {
 			"ground": "1c240ea4c83ea2979c5f656a6238328328c342ba2823b2b0eee6c03151836e21",
 			"style": "devotional",
