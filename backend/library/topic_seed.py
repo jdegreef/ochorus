@@ -264,6 +264,7 @@ TOPICS = [
             "a-body-of-divinity",
             "a-call-to-the-unconverted",
             "the-reformed-pastor",
+            "the-saints-everlasting-rest",
             "religious-affections",
             "freedom-of-the-will",
             "selected-sermons-edwards",
