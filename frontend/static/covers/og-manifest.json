@@ -14760,6 +14760,17 @@
 				463
 			]
 		},
+		"ko/the-way-to-god": {
+			"ground": "8700a95a25525377c58d141817b164bd94dd5bbf08a78065e2bc60b3466cfcf6",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "b4567341479b65f2f109cd212c9e5c3fd904239b112eb9370a7635e6124e01fb",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/ochre",
+			"bar": 0
+		},
 		"ko/true-vine": {
 			"ground": "b7875842ddd499da63400547c79f267ea1402c059e9b58eb89ee18e19d2bab38",
 			"style": "devotional",
