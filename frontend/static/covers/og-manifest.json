@@ -14497,6 +14497,17 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"ko/all-of-grace": {
+			"ground": "8fadfd0408f390a83e96639188b9429ef51d21b280f55aa41e523aa57856fb23",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "9a921c92d3b243e58d8e7723c4a90204717def5fdb3418305df394830e48f5ea",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"ko/baptism-with-the-holy-spirit": {
 			"ground": "b9479745ae2364f4a76040c71c10063d58f26fd40268f5d818fc8a54a057d8ce",
 			"style": "revival",
