@@ -190,5 +190,13 @@
    "NAMES as in the am corpus: «ወንድም ሎረንስ» (men-who-tended-the-flock-2, purpose-in-prayer, the-secret-of-guidance, clothed-with-strength-and-dignity all use it; not ላውረንስ/ሎሬንስ). «ወጥ ቤት» for the kitchen. The «bare winter tree» is a European winter, rendered literally «በክረምት ቅጠሉ ረግፎ የቆመ ዛፍ»; a native reviewer may prefer to avoid ክረምት (the Ethiopian rainy season) — keep the book's chapter 2 wording and this card in step if so.",
    "REGISTER: title «የቤተሰብ አምልኮ፦ …» like the other am family-devotions cards; the description mirrors family-devotions-boy-from-osogun, the other twelve-night single-book card (opening «ለአሥራ ሁለት ምሽቶች የአምስት ደቂቃ የቤተሰብ አምልኮ ከ… ጋር («…»)፤», plural «ጮክ ብላችሁ አንብቡ፦», and its closing sentence verbatim). It PROMISES the prayer and three talk-about-it questions, as the English does, because the English chapters carry Chapter.study_questions and the shipped sw/es/fr/pt editions of this book translate them — the am book job must ship study_questions (3 per chapter) too, or drop that sentence."
   ]
+ },
+ "the-pilgrims-way": {
+  "title": "የመንገደኛው መንገድ",
+  "description": "ወደ ቤት የሚወስደው መንገድ በሦስት ጥንታዊ መጻሕፍት፦ ቻርልስ ስፐርጀን ፈላጊውን «በጠባቧ በር አጠገብ» ያገኘዋል፤ የጆን ባንየን የማይሞተው ምሳሌያዊ ታሪክ «የመንገደኛው ጉዞ» መንገደኛውን እስከ ሰማያዊቱ ከተማ ድረስ በመንገዱ ሁሉ ይከተለዋል፤ የባንየን የገዛ ምስክርነትም «ለኃጢአተኞች አለቃ የበዛ ጸጋ»ን ያሳያል።",
+  "note": [
+   "AI-drafted; awaiting native review. pilgrims-progress.am (queue job #3714) completes this curated plan's three-book set in Amharic (around-the-wicket-gate.am and grace-abounding.am already ship), so seed_plans now creates the am row and PlanTranslationCoverageTests demands this prose; it ships in the same PR as the book.",
+   "The card quotes the three shipped am book titles verbatim: around-the-wicket-gate «በጠባቧ በር አጠገብ» (which also carries the English 'at the wicket gate'), pilgrims-progress «የመንገደኛው ጉዞ», grace-abounding «ለኃጢአተኞች አለቃ የበዛ ጸጋ» (which carries 'the grace that abounded to the chief of sinners'). The title «የመንገደኛው መንገድ» echoes the pilgrims-progress title's «የመንገደኛው». Names as on the am book pages (ቻርልስ ስፐርጀን, ጆን ባንየን); «ሰማያዊቱ ከተማ» as in the am Bunyan editions."
+  ]
  }
 }

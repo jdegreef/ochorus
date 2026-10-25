@@ -162,8 +162,7 @@
 	let contemporaries = $state<AuthorBio[]>([]);
 
 	// A reading plan built from this author's books, if there is one: "Read
-	// Andrew Murray a day at a time". The plan page then asks how to be reminded
-	// (PlanStartSheet). Chosen by the API (AuthorDetailSerializer.get_plan), so
+	// Andrew Murray a day at a time". Chosen by the API (AuthorDetailSerializer.get_plan), so
 	// it is in the prerendered page and never shifts the fold.
 	const authorPlan = $derived(author.plan ?? null);
 	onMount(async () => {

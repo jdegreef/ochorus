@@ -1,0 +1,73 @@
+{
+ "kind": "book",
+ "slug": "the-practice-of-the-presence-of-god",
+ "language": "fr",
+ "job_issue": 6252,
+ "pull_request": null,
+ "note": [
+  "Scripture is Louis Segond 1910 (fra_lsg, the ebible mirror). Brother Lawrence quotes almost no verse as a verse; the echoes (Mark 9:23, Galatians 1:10, Ephesians 6:5-6, Matthew 7:7…) are rendered in his own words and recorded as self_rendered.",
+  "The work was written in French (de Beaufort’s Conversations, 1692; the Letters, 1694). This edition is translated from the Revell English translation that the English edition reproduces, not reconstructed from the 17th-century French; a reviewer may wish to compare well-known sayings with the original. Lawrence addresses God as vous, as classical French prayer does. AI-translated (job #6252); awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Mark 9:23",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Galatians 1:10",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Ephesians 6:5-6",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Psalm 16:8",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Ephesians 5:16",
+   "status": "self_rendered",
+   "block_index": 99
+  },
+  {
+   "reference": "Hebrews 9:27",
+   "status": "self_rendered",
+   "block_index": 99
+  },
+  {
+   "reference": "Luke 10:42",
+   "status": "self_rendered",
+   "block_index": 100
+  },
+  {
+   "reference": "Mark 4:38-39",
+   "status": "self_rendered",
+   "block_index": 100
+  },
+  {
+   "reference": "2 Corinthians 1:3",
+   "status": "self_rendered",
+   "block_index": 131
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "block_index": 131
+  },
+  {
+   "reference": "Matthew 6:21",
+   "status": "self_rendered",
+   "block_index": 132
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "block_index": 156
+  }
+ ]
+}

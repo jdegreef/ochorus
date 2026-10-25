@@ -16,9 +16,12 @@ const schedules = vi.hoisted(() => {
 });
 vi.mock('$lib/planSchedules.svelte', () => ({ planSchedules: schedules }));
 const askForPlanEmail = vi.hoisted(() => vi.fn());
-vi.mock('$lib/planEmail', () => ({ askForPlanEmail }));
+const declinePlanEmail = vi.hoisted(() => vi.fn());
+const planEmailDeclined = vi.hoisted(() => vi.fn(() => false));
+vi.mock('$lib/planEmail', () => ({ askForPlanEmail, declinePlanEmail, planEmailDeclined }));
 
 const { default: ChapterEndAsk } = await import('./ChapterEndAsk.svelte');
+const { snoozeAsk } = await import('$lib/chapterAsk');
 
 // jsdom has no layout: report the chapter end as reached at once.
 beforeAll(() => {
@@ -48,6 +51,8 @@ function render(planSlug?: string) {
 beforeEach(() => {
 	localStorage.clear();
 	askForPlanEmail.mockClear();
+	declinePlanEmail.mockClear();
+	planEmailDeclined.mockReturnValue(false);
 	for (const k of Object.keys(schedules.store)) delete schedules.store[k];
 	target = document.body.appendChild(document.createElement('div'));
 });
@@ -70,6 +75,34 @@ describe('ChapterEndAsk', () => {
 		expect(offer.href).toContain('src=plan_day');
 		offer.click();
 		expect(askForPlanEmail).toHaveBeenCalledWith('humility', 'plan_day');
+	});
+
+	it("offers a plan's reminder even while the account ask is snoozed", () => {
+		// Day 1's end is where a plan's reminder is offered at all.
+		snoozeAsk();
+		render('humility');
+		expect(target.querySelector('aside a.btn-primary')?.getAttribute('href')).toContain('src=plan_day');
+	});
+
+	it('offers a calendar reminder too, which needs no account', () => {
+		render('humility');
+		const calendar = target.querySelector<HTMLAnchorElement>('aside a.btn-ghost')!;
+		expect(calendar.getAttribute('href')).toContain('/plans/humility/?view=calendar');
+	});
+
+	it('"Not now" on a plan offer stops that plan offering, not the account ask', () => {
+		render('humility');
+		target.querySelector<HTMLButtonElement>('aside button')!.click();
+		flushSync();
+		expect(declinePlanEmail).toHaveBeenCalledWith('humility');
+		expect(localStorage.getItem('ochorus:chapter_ask')).toBeNull();
+		expect(target.querySelector('aside')).toBeNull();
+	});
+
+	it('leaves a declined plan to the account ask', () => {
+		planEmailDeclined.mockReturnValue(true);
+		render('humility');
+		expect(target.querySelector('aside a.btn-primary')?.getAttribute('href')).toContain('src=chapter_end');
 	});
 
 	it('a modified click on the plan offer follows the real /login link instead', () => {

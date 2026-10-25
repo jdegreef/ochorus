@@ -1,0 +1,834 @@
+{
+  "kind": "book",
+  "slug": "all-of-grace",
+  "language": "uk",
+  "job_issue": 5175,
+  "pull_request": null,
+  "note": [
+    "Scripture is Kulish (1905), the library's uk Bible, from the ebible mirror (bibles/ukr_pan, USFM), pasted by script. Spurgeon quotes almost entirely without citations, so every quotation was identified and looked up in the whole Bible on disk. A row is `mined` only when the translator reported it verbatim AND the block holds at least 45 characters (or the whole verse) of Kulish's wording, quote marks aside; short fragments, joined spans and re-personed quotations are self_rendered.",
+    "Where Kulish's sense differs from the KJV point Spurgeon makes, Kulish is kept in the quote and Spurgeon's own sentences carry the point: Isaiah 45:22 «Обернїтесь» (turn) for 'Look'; Romans 5:6 «недужими» (weak) for 'without strength'; Isaiah 19:20 «спаса й оборонника» for 'a Saviour, and a great one'; Hebrews 9:12 «відкупленнє». Romans 4:5, the book's key text, is quoted as Kulish's participle «Оправдуючого нечестивого»; unquoted refrains are modern prose «Бог виправдовує нечестивого».",
+    "AI-translated (job #5175) by fan-out over 9 translators against one pinned brief (titles, reader addressed as «ви», house book names, « » outer / „ “ nested); tag sequence identical to the English per chapter; awaiting native review."
+  ],
+  "references": [
+    {
+      "reference": "Hebrews 3:15",
+      "status": "mined",
+      "block_index": 4,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Isaiah 1:18",
+      "status": "self_rendered",
+      "block_index": 6
+    },
+    {
+      "reference": "Romans 4:5",
+      "status": "mined",
+      "block_index": 8,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Isaiah 64:6",
+      "status": "self_rendered",
+      "block_index": 10
+    },
+    {
+      "reference": "Romans 3:10",
+      "status": "self_rendered",
+      "block_index": 10
+    },
+    {
+      "reference": "Romans 3:10",
+      "status": "self_rendered",
+      "block_index": 18
+    },
+    {
+      "reference": "Matthew 9:12",
+      "status": "self_rendered",
+      "block_index": 19
+    },
+    {
+      "reference": "1 Timothy 1:15",
+      "status": "mined",
+      "block_index": 23,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Matthew 3:10",
+      "status": "self_rendered",
+      "block_index": 23
+    },
+    {
+      "reference": "Hosea 14:4",
+      "status": "self_rendered",
+      "block_index": 32
+    },
+    {
+      "reference": "Romans 8:30",
+      "status": "mined",
+      "block_index": 34,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Psalm 51:4",
+      "status": "mined",
+      "block_index": 36,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Isaiah 43:25",
+      "status": "self_rendered",
+      "block_index": 37
+    },
+    {
+      "reference": "Micah 7:18",
+      "status": "mined",
+      "block_index": 37,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Romans 8:33",
+      "status": "mined",
+      "block_index": 39,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Matthew 12:31",
+      "status": "self_rendered",
+      "block_index": 42
+    },
+    {
+      "reference": "Matthew 8:3",
+      "status": "self_rendered",
+      "block_index": 42
+    },
+    {
+      "reference": "Luke 7:48",
+      "status": "self_rendered",
+      "block_index": 44
+    },
+    {
+      "reference": "Luke 7:50",
+      "status": "self_rendered",
+      "block_index": 44
+    },
+    {
+      "reference": "Job 5:9",
+      "status": "self_rendered",
+      "block_index": 45
+    },
+    {
+      "reference": "Isaiah 45:22",
+      "status": "mined",
+      "block_index": 46,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "John 3:18",
+      "status": "self_rendered",
+      "block_index": 46
+    },
+    {
+      "reference": "Romans 3:21",
+      "status": "mined",
+      "block_index": 49,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Romans 3:22",
+      "status": "mined",
+      "block_index": 49,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Romans 3:23",
+      "status": "mined",
+      "block_index": 49,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Romans 3:24",
+      "status": "mined",
+      "block_index": 49,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Romans 3:25",
+      "status": "mined",
+      "block_index": 49,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Romans 3:26",
+      "status": "mined",
+      "block_index": 49,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Matthew 27:46",
+      "status": "self_rendered",
+      "block_index": 53
+    },
+    {
+      "reference": "Psalm 90:11",
+      "status": "self_rendered",
+      "block_index": 53
+    },
+    {
+      "reference": "John 19:30",
+      "status": "self_rendered",
+      "block_index": 56
+    },
+    {
+      "reference": "Romans 4:5",
+      "status": "self_rendered",
+      "block_index": 58
+    },
+    {
+      "reference": "Romans 8:33",
+      "status": "mined",
+      "block_index": 58,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Romans 8:34",
+      "status": "self_rendered",
+      "block_index": 58
+    },
+    {
+      "reference": "Job 40:24",
+      "status": "mined",
+      "block_index": 61,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "1 John 3:5",
+      "status": "mined",
+      "block_index": 63,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Matthew 1:21",
+      "status": "mined",
+      "block_index": 64,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Ezekiel 36:26",
+      "status": "mined",
+      "block_index": 66,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Ezekiel 11:19",
+      "status": "mined",
+      "block_index": 69,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Romans 11:29",
+      "status": "mined",
+      "block_index": 71,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "John 3:7",
+      "status": "self_rendered",
+      "block_index": 72
+    },
+    {
+      "reference": "Ephesians 2:8",
+      "status": "self_rendered",
+      "block_index": 78
+    },
+    {
+      "reference": "1 John 4:16",
+      "status": "self_rendered",
+      "block_index": 80
+    },
+    {
+      "reference": "Lamentations 3:22",
+      "status": "self_rendered",
+      "block_index": 80
+    },
+    {
+      "reference": "Psalm 136:1",
+      "status": "self_rendered",
+      "block_index": 80
+    },
+    {
+      "reference": "Ephesians 2:5",
+      "status": "self_rendered",
+      "block_index": 81
+    },
+    {
+      "reference": "John 6:44",
+      "status": "mined",
+      "block_index": 81,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Hebrews 12:2",
+      "status": "self_rendered",
+      "block_index": 83
+    },
+    {
+      "reference": "Ephesians 2:8",
+      "status": "self_rendered",
+      "block_index": 85
+    },
+    {
+      "reference": "2 Corinthians 5:19",
+      "status": "mined",
+      "block_index": 86,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "2 Corinthians 5:21",
+      "status": "mined",
+      "block_index": 86,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Galatians 3:13",
+      "status": "self_rendered",
+      "block_index": 86
+    },
+    {
+      "reference": "Hebrews 11:6",
+      "status": "mined",
+      "block_index": 86,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Hebrews 7:25",
+      "status": "self_rendered",
+      "block_index": 86
+    },
+    {
+      "reference": "Isaiah 55:3",
+      "status": "mined",
+      "block_index": 86,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Psalm 9:10",
+      "status": "self_rendered",
+      "block_index": 86
+    },
+    {
+      "reference": "Romans 10:14",
+      "status": "self_rendered",
+      "block_index": 86
+    },
+    {
+      "reference": "Romans 10:17",
+      "status": "self_rendered",
+      "block_index": 86
+    },
+    {
+      "reference": "1 John 1:7",
+      "status": "mined",
+      "block_index": 87,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "1 John 5:9",
+      "status": "mined",
+      "block_index": 87,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Acts 17:3",
+      "status": "self_rendered",
+      "block_index": 89
+    },
+    {
+      "reference": "Matthew 17:5",
+      "status": "mined",
+      "block_index": 89,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Psalm 98:9",
+      "status": "self_rendered",
+      "block_index": 89
+    },
+    {
+      "reference": "John 4:14",
+      "status": "mined",
+      "block_index": 90,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Mark 5:36",
+      "status": "self_rendered",
+      "block_index": 92
+    },
+    {
+      "reference": "John 3:36",
+      "status": "self_rendered",
+      "block_index": 93
+    },
+    {
+      "reference": "Revelation 22:17",
+      "status": "self_rendered",
+      "block_index": 96
+    },
+    {
+      "reference": "John 1:12",
+      "status": "mined",
+      "block_index": 97,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Romans 10:8",
+      "status": "self_rendered",
+      "block_index": 97
+    },
+    {
+      "reference": "Genesis 8:22",
+      "status": "mined",
+      "block_index": 98,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "1 Corinthians 1:30",
+      "status": "mined",
+      "block_index": 104,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "2 Corinthians 5:7",
+      "status": "self_rendered",
+      "block_index": 104
+    },
+    {
+      "reference": "John 20:29",
+      "status": "self_rendered",
+      "block_index": 104
+    },
+    {
+      "reference": "John 20:29",
+      "status": "self_rendered",
+      "block_index": 109
+    },
+    {
+      "reference": "Ephesians 2:8",
+      "status": "self_rendered",
+      "block_index": 110
+    },
+    {
+      "reference": "Ephesians 2:9",
+      "status": "mined",
+      "block_index": 113,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Luke 7:50",
+      "status": "self_rendered",
+      "block_index": 113
+    },
+    {
+      "reference": "Psalm 138:6",
+      "status": "self_rendered",
+      "block_index": 113
+    },
+    {
+      "reference": "Romans 10:10",
+      "status": "self_rendered",
+      "block_index": 116
+    },
+    {
+      "reference": "Mark 16:16",
+      "status": "self_rendered",
+      "block_index": 118
+    },
+    {
+      "reference": "Romans 7:18",
+      "status": "mined",
+      "block_index": 119,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Luke 10:33",
+      "status": "self_rendered",
+      "block_index": 121
+    },
+    {
+      "reference": "Psalm 76:5",
+      "status": "self_rendered",
+      "block_index": 122
+    },
+    {
+      "reference": "Romans 5:6",
+      "status": "mined",
+      "block_index": 123,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Ephesians 2:5",
+      "status": "self_rendered",
+      "block_index": 124
+    },
+    {
+      "reference": "John 15:5",
+      "status": "self_rendered",
+      "block_index": 124
+    },
+    {
+      "reference": "John 14:26",
+      "status": "self_rendered",
+      "block_index": 129
+    },
+    {
+      "reference": "Zechariah 12:10",
+      "status": "mined",
+      "block_index": 139,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Romans 5:6",
+      "status": "mined",
+      "block_index": 140,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Matthew 12:31",
+      "status": "self_rendered",
+      "block_index": 142
+    },
+    {
+      "reference": "1 Timothy 1:15",
+      "status": "self_rendered",
+      "block_index": 146
+    },
+    {
+      "reference": "Romans 5:6",
+      "status": "mined",
+      "block_index": 146,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Romans 5:6",
+      "status": "mined",
+      "block_index": 150,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Romans 7:18",
+      "status": "mined",
+      "block_index": 150,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Isaiah 45:22",
+      "status": "self_rendered",
+      "block_index": 151
+    },
+    {
+      "reference": "Romans 5:6",
+      "status": "mined",
+      "block_index": 152,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Acts 16:31",
+      "status": "mined",
+      "block_index": 154,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Job 34:32",
+      "status": "self_rendered",
+      "block_index": 155
+    },
+    {
+      "reference": "Romans 10:17",
+      "status": "self_rendered",
+      "block_index": 156
+    },
+    {
+      "reference": "Matthew 11:28",
+      "status": "mined",
+      "block_index": 158,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "John 5:44",
+      "status": "self_rendered",
+      "block_index": 161
+    },
+    {
+      "reference": "John 3:7",
+      "status": "self_rendered",
+      "block_index": 162
+    },
+    {
+      "reference": "John 3:3",
+      "status": "mined",
+      "block_index": 164,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "John 3:14",
+      "status": "mined",
+      "block_index": 166,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "John 3:15",
+      "status": "mined",
+      "block_index": 166,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "John 3:18",
+      "status": "mined",
+      "block_index": 168,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "John 3:8",
+      "status": "mined",
+      "block_index": 171,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Matthew 13:55",
+      "status": "self_rendered",
+      "block_index": 177
+    },
+    {
+      "reference": "Acts 5:30",
+      "status": "mined",
+      "block_index": 178,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Acts 5:31",
+      "status": "mined",
+      "block_index": 178,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Isaiah 19:20",
+      "status": "self_rendered",
+      "block_index": 179
+    },
+    {
+      "reference": "Acts 5:31",
+      "status": "mined",
+      "block_index": 188,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Psalm 103:3",
+      "status": "self_rendered",
+      "block_index": 190
+    },
+    {
+      "reference": "Romans 7:24",
+      "status": "mined",
+      "block_index": 191,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Ephesians 2:8",
+      "status": "self_rendered",
+      "block_index": 204
+    },
+    {
+      "reference": "Acts 5:31",
+      "status": "mined",
+      "block_index": 205,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Ezekiel 18:20",
+      "status": "self_rendered",
+      "block_index": 206
+    },
+    {
+      "reference": "Matthew 27:25",
+      "status": "self_rendered",
+      "block_index": 210
+    },
+    {
+      "reference": "John 1:11",
+      "status": "mined",
+      "block_index": 211,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Psalm 81:11",
+      "status": "self_rendered",
+      "block_index": 211
+    },
+    {
+      "reference": "Hosea 6:4",
+      "status": "self_rendered",
+      "block_index": 225
+    },
+    {
+      "reference": "1 Corinthians 1:8",
+      "status": "mined",
+      "block_index": 228,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "1 Corinthians 1:9",
+      "status": "mined",
+      "block_index": 228,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "1 Corinthians 1:4",
+      "status": "mined",
+      "block_index": 229,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "1 Corinthians 15:58",
+      "status": "mined",
+      "block_index": 231,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Zechariah 3:8",
+      "status": "self_rendered",
+      "block_index": 233
+    },
+    {
+      "reference": "Joshua 5:13",
+      "status": "self_rendered",
+      "block_index": 235
+    },
+    {
+      "reference": "1 Corinthians 1:8",
+      "status": "mined",
+      "block_index": 237,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "1 John 2:13",
+      "status": "self_rendered",
+      "block_index": 237
+    },
+    {
+      "reference": "1 Corinthians 3:1",
+      "status": "self_rendered",
+      "block_index": 239
+    },
+    {
+      "reference": "Genesis 49:4",
+      "status": "self_rendered",
+      "block_index": 239
+    },
+    {
+      "reference": "Hebrews 9:12",
+      "status": "self_rendered",
+      "block_index": 240
+    },
+    {
+      "reference": "Job 17:9",
+      "status": "self_rendered",
+      "block_index": 240
+    },
+    {
+      "reference": "John 10:28",
+      "status": "mined",
+      "block_index": 240,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "John 14:19",
+      "status": "self_rendered",
+      "block_index": 240
+    },
+    {
+      "reference": "Jude 1:1",
+      "status": "self_rendered",
+      "block_index": 240
+    },
+    {
+      "reference": "Hebrews 12:14",
+      "status": "self_rendered",
+      "block_index": 241
+    },
+    {
+      "reference": "Romans 6:14",
+      "status": "self_rendered",
+      "block_index": 241
+    },
+    {
+      "reference": "1 John 5:18",
+      "status": "mined",
+      "block_index": 242,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Job 1:8",
+      "status": "mined",
+      "block_index": 242,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "1 Corinthians 1:9",
+      "status": "mined",
+      "block_index": 249,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "1 Corinthians 1:9",
+      "status": "mined",
+      "block_index": 253,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Isaiah 41:9",
+      "status": "mined",
+      "block_index": 253,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Matthew 22:14",
+      "status": "mined",
+      "block_index": 253,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Romans 11:29",
+      "status": "mined",
+      "block_index": 253,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Romans 8:30",
+      "status": "mined",
+      "block_index": 253,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Romans 8:35",
+      "status": "self_rendered",
+      "block_index": 257
+    },
+    {
+      "reference": "Romans 8:39",
+      "status": "mined",
+      "block_index": 257,
+      "source_file": "Kulish (ukr-kul) Bible text"
+    },
+    {
+      "reference": "Song of Solomon 8:5",
+      "status": "self_rendered",
+      "block_index": 257
+    },
+    {
+      "reference": "John 4:23",
+      "status": "self_rendered",
+      "block_index": 261
+    }
+  ]
+}
