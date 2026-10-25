@@ -1,0 +1,43 @@
+{
+ "kind": "bio",
+ "slug": "samson-occom",
+ "language": "fr",
+ "job_issue": 6242,
+ "references": [
+  {
+   "reference": "Romans 6:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 22
+  },
+  {
+   "reference": "Genesis 2:23",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Matthew 24:44",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 29
+  },
+  {
+   "reference": "Hebrews 6:18",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Romans 9:3",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "John 3:7",
+   "status": "self_rendered",
+   "block_index": 23
+  }
+ ],
+ "note": [
+  "Scripture is Louis Segond (1910), pasted by script; rows come from the translator's report and each 'mined' phrase was re-checked byte for byte against the Bible text and this bio (an FAQ-only use has no block_index)."
+ ]
+}
