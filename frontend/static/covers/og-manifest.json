@@ -22638,6 +22638,17 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"vi/waiting-on-god": {
+			"ground": "3eb084336c84c393799df18450f7d8b619e15e1e2cbc068006e9867c71e2c08a",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"waiting-on-god": {
 			"ground": "4953e3a74672ccc0d17902faaf8abbf55cef0962b5c9939cea1a6504a6b307b9",
 			"style": "devotional",
