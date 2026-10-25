@@ -10333,6 +10333,17 @@
 			"layout": "box/indigo",
 			"bar": 0
 		},
+		"fr/orthodoxy": {
+			"ground": "0454263061f827c9b1d1c60b2d68b63cda467c877886c70796e18949cef4b3b9",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/rust",
+			"bar": 0.11
+		},
 		"fr/orthodoxy-teens": {
 			"ground": "533f7d5df2d8673b3ca88fadd11cd0abd8e80ca5964c8a16ff869535d5749dff",
 			"style": "originals",
