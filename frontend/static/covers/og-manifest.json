@@ -14712,6 +14712,17 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"ko/lord-teach-us-to-pray-2": {
+			"ground": "783e47b80ee6d44ef7b21b23a53a88817e53b4cf7e33200e88a71fa8ab397ca7",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "8e69a9d97254088d30d2f6c88178d67db92bcf7eaaa4f775261bd6c7858c349d",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0.11
+		},
 		"ko/school-of-prayer": {
 			"ground": "06d0d9789cc78677648d024e6d2350469e922c3ab3193e275ae01d262f401b94",
 			"style": "devotional",
