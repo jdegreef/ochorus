@@ -213,8 +213,32 @@ def fetch(collection: str, dest: Path) -> None:
         list(pool.map(one, BOOKS))
 
 
+# Paragraph and poetry markers. A verse that runs past a line break continues on
+# one of these (`\q1 Phép tắc nhân từ ở nơi lưỡi nàng.` is the second half of
+# Prov 31:26), so their text belongs to the open verse. Anything else at the
+# start of a line (`\s`, `\d`, `\r`, `\ms`, `\mt`, `\toc`, `\h`, `\rem`, ...)
+# is a heading or metadata and is skipped.
+_CONTINUATION = re.compile(
+    r"\\(?:q[0-9]?|qm[0-9]?|qc|qr|qd|li[0-9]?|pi[0-9]?|ph[0-9]?|m|mi|p|pm[0-9]?|pmo|pc|pr|nb)"
+    r"(?:\s+(.*))?$"
+)
+# Footnotes and cross-references are dropped whole; character markers
+# (`\tl Ma-ra-na-tha.\tl*`, `\qs (Sê-la)\qs*`) keep their text.
+_NOTE = re.compile(r"\\(f|fe|x)\s.*?\\\1\*")
+_CHAR_MARKER = re.compile(r"\\\+?[a-z]+[0-9]*\*?")
+
+
+def _strip_inline(text: str) -> str:
+    return _CHAR_MARKER.sub("", _NOTE.sub("", text))
+
+
 def parse(usfm_dir: Path) -> tuple[dict[str, str], dict[str, str]]:
-    """`BOOK C:V -> text` and `BOOK -> \\toc1 name` from plain one-verse-per-line USFM."""
+    """`BOOK C:V -> text` and `BOOK -> \\toc1 name` from the mirror's USFM.
+
+    A verse's text is its `\\v` line plus any paragraph or poetry lines (`\\q1`,
+    `\\p`, `\\m`, ...) that follow it, up to the next `\\v` or `\\c`. Headings
+    in between are skipped.
+    """
     verses: dict[str, str] = {}
     names: dict[str, str] = {}
     for path in sorted(usfm_dir.glob("*.usfm")):
@@ -230,11 +254,14 @@ def parse(usfm_dir: Path) -> tuple[dict[str, str], dict[str, str]]:
             elif m := re.match(r"\\v (\d+)\s*(.*)", line):
                 key = f"{book} {chapter}:{m.group(1)}"
                 verses[key] = m.group(2)
+            elif key and (m := _CONTINUATION.match(line)):
+                verses[key] += " " + (m.group(1) or "")
             elif key and line and not line.startswith("\\"):
                 verses[key] += " " + line
     for key, text in verses.items():
         # Some mirrors set the capital Đ as U+00D0 (Ð); Vietnamese needs U+0110.
-        verses[key] = re.sub(r"\s+", " ", text.replace("Ð", "Đ")).strip()
+        text = _strip_inline(text).replace("Ð", "Đ")
+        verses[key] = re.sub(r"\s+", " ", text).strip()
     return verses, names
 
 

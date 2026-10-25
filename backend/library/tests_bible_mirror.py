@@ -7,6 +7,7 @@ below is a real verse from the mirror.
 """
 
 import importlib.util
+import tempfile
 from pathlib import Path
 
 from django.test import SimpleTestCase
@@ -80,3 +81,72 @@ class VieKtRepairTests(SimpleTestCase):
             index["MAT 6:10"], "Nước Cha được đến; Ý Cha được nên, ở đất như trời!"
         )
         self.assertEqual(index["JHN 3:16"], "Vì")
+
+
+# Two poetic verses as the mirror sets them: the second line of each verse is a
+# `\\q1` line, and headings (`\\s`, `\\d`) sit between verses.
+_POETRY_USFM = r"""\id PRO
+\toc1 Châm-ngôn
+\c 31
+\s Người đàn bà tài đức
+\q1
+\v 25 Nàng mặc lấy sức lực và oai phong,
+\q1 Và khi tưởng đến buổi sau, bèn vui cười.
+\q1
+\v 26 Nàng mở miệng ra cách khôn ngoan,
+\q1 Phép tắc nhân từ ở nơi lưỡi nàng.
+\b
+\s Một tiêu đề
+"""
+
+_PSALM_USFM = r"""\id PSA
+\c 141
+\d Thơ Đa-vít làm
+\q1
+\v 3 Hỡi Đức Giê-hô-va, xin hãy giữ miệng tôi,
+\q1 Và canh cửa môi tôi.
+\q1
+\v 4 Xin chớ để lòng tôi hướng về điều ác, \qs (Sê-la)\qs*
+\p
+\v 5 Nguyện người công bình đánh tôi,\f + \ft chú thích\f*
+\m tiếp theo.
+"""
+
+
+class ParseTests(SimpleTestCase):
+    """A verse's continuation lines carry markers too; their text is the verse."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        usfm = Path(self.tmp.name)
+        (usfm / "pro.usfm").write_text(_POETRY_USFM, encoding="utf-8")
+        (usfm / "psa.usfm").write_text(_PSALM_USFM, encoding="utf-8")
+        self.verses, self.names = _bible_mirror().parse(usfm)
+
+    def test_poetry_lines_continue_the_verse(self):
+        self.assertEqual(
+            self.verses["PRO 31:26"],
+            "Nàng mở miệng ra cách khôn ngoan, Phép tắc nhân từ ở nơi lưỡi nàng.",
+        )
+        self.assertEqual(
+            self.verses["PRO 31:25"],
+            "Nàng mặc lấy sức lực và oai phong, "
+            "Và khi tưởng đến buổi sau, bèn vui cười.",
+        )
+        self.assertEqual(
+            self.verses["PSA 141:3"],
+            "Hỡi Đức Giê-hô-va, xin hãy giữ miệng tôi, Và canh cửa môi tôi.",
+        )
+
+    def test_headings_are_not_verse_text(self):
+        self.assertNotIn("tiêu đề", self.verses["PRO 31:26"])
+        self.assertEqual(self.names, {"PRO": "Châm-ngôn"})
+
+    def test_inline_markers_keep_text_and_notes_are_dropped(self):
+        self.assertEqual(
+            self.verses["PSA 141:4"], "Xin chớ để lòng tôi hướng về điều ác, (Sê-la)"
+        )
+        self.assertEqual(
+            self.verses["PSA 141:5"], "Nguyện người công bình đánh tôi, tiếp theo."
+        )
