@@ -14637,6 +14637,17 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"ko/a-call-to-the-unconverted": {
+			"ground": "c1352c78ff42925aa1d6e245ea0d003d0c9b4a0672ff0fe1f3de35502b031501",
+			"style": "press",
+			"volume": null,
+			"script": "korean",
+			"fonts": "95f26b3f951a918fd07e7b3a416882b468f3a7d109566370d07a5baa8c08c8bc",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/rust",
+			"bar": 0
+		},
 		"ko/absolute-surrender": {
 			"ground": "91125984b699300a36a132503dede33a26c71398f481ab9b6cfd59d176ae634c",
 			"style": "devotional",
