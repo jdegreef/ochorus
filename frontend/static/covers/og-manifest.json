@@ -17538,6 +17538,33 @@
 				482
 			]
 		},
+		"pt/men-who-moved-heaven": {
+			"ground": "71ae28c710b29631355b2b4c823b82bf22ad268c8783f3e45f78a90862a4cbea",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[113, 308, 487, 384],
+					[74, 374, 526, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"pt/ministry-of-intercession": {
 			"ground": "c1fad63f32eaeb37a2ec11401f9a76c668fcacf130b92e1353ae28eb7eb28231",
 			"style": "devotional",
