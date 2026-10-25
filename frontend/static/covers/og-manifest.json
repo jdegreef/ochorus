@@ -22262,6 +22262,17 @@
 				478
 			]
 		},
+		"uk/prevailing-prayer": {
+			"ground": "95b64e419c8efe0bf6cc2883c972672d221856f383001c6699cf7842453393b9",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/ochre",
+			"bar": 0
+		},
 		"uk/rise-up-men-of-god-2": {
 			"ground": "237fd6138cff47600a34b0ba36897467876a5621b625ea9504cd095eec7f2733",
 			"style": "originals",
