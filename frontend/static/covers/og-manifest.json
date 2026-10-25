@@ -14816,6 +14816,35 @@
 			"layout": "wash/sage",
 			"bar": 0.04
 		},
+		"ko/stepping-stones-2": {
+			"ground": "e4c9205cdde3c00af25da7f08cac00290eb96894681d82ae7c2e547ab6e31a71",
+			"style": "lettered",
+			"volume": null,
+			"script": "korean",
+			"fonts": "714131ee247efd0d3c709d54d9e864efb379a4bdbdc2d075870fd1150c566971",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[176, 321, 424, 427]
+				],
+				"subtitle": [
+					[220, 435, 380, 463]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				332,
+				463
+			]
+		},
 		"ko/the-inner-chamber": {
 			"ground": "c7de56895f8b293758df95f953d4a9baf38e7d8d46692e615ab0c57bc08f7c63",
 			"style": "devotional",
