@@ -14733,6 +14733,36 @@
 				524
 			]
 		},
+		"lg/a-hidden-fire": {
+			"ground": "8adbe3250d672c22cc8f02868dd7f51cda30a78b80876639fd60d412ec35ff59",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[173, 281, 427, 357],
+					[123, 347, 477, 423]
+				],
+				"subtitle": [
+					[97, 481, 503, 509]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				286,
+				509
+			]
+		},
 		"lg/absolute-surrender": {
 			"ground": "bf1938c977fbb93897749f1ba73fd4a36cef866e54ac501c009178cd39bb7216",
 			"style": "devotional",
