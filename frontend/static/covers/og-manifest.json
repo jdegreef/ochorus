@@ -17999,6 +17999,17 @@
 			"layout": "split/navy",
 			"bar": 0.04
 		},
+		"pt/prayer-and-praying-men": {
+			"ground": "255d7828f2c1965092faab9d8598b041f56a323d669f5e79619bc617f5cca5e8",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0
+		},
 		"pt/prayer-the-pulse-of-life": {
 			"ground": "c30d5a2e43720ff023e27178fbe750b0f787860c1ef010c52bc8f4b5dc593635",
 			"style": "house",
