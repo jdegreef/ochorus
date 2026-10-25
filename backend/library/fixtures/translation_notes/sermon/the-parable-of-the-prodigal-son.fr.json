@@ -1,0 +1,76 @@
+{
+  "kind": "sermon",
+  "slug": "the-parable-of-the-prodigal-son",
+  "language": "fr",
+  "job_issue": 6279,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Luke 15:1",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 8
+    },
+    {
+      "reference": "Luke 15:2",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 8
+    },
+    {
+      "reference": "Luke 15:1",
+      "status": "self_rendered",
+      "block_index": 13
+    },
+    {
+      "reference": "Luke 15:17",
+      "status": "self_rendered",
+      "block_index": 26
+    },
+    {
+      "reference": "Luke 15:16",
+      "status": "self_rendered",
+      "block_index": 29
+    },
+    {
+      "reference": "Luke 15:16",
+      "status": "self_rendered",
+      "block_index": 31
+    },
+    {
+      "reference": "Luke 15:12",
+      "status": "self_rendered",
+      "block_index": 33
+    },
+    {
+      "reference": "Luke 15:12",
+      "status": "self_rendered",
+      "block_index": 34
+    },
+    {
+      "reference": "Luke 15:19",
+      "status": "self_rendered",
+      "block_index": 34
+    },
+    {
+      "reference": "Luke 15:12",
+      "status": "self_rendered",
+      "block_index": 35
+    },
+    {
+      "reference": "John 3:16",
+      "status": "self_rendered",
+      "block_index": 48
+    },
+    {
+      "reference": "Luke 15:27",
+      "status": "self_rendered",
+      "block_index": 55
+    },
+    {
+      "reference": "Luke 15:30",
+      "status": "self_rendered",
+      "block_index": 56
+    }
+  ]
+}
