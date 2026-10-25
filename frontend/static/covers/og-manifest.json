@@ -16825,6 +16825,17 @@
 				537
 			]
 		},
+		"pt/answers-to-prayer": {
+			"ground": "0334ab4871e88b0f95531fd3407814b12560efd1bc1578a8ef5d43d37a789224",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/oxblood",
+			"bar": 0.105
+		},
 		"pt/around-the-wicket-gate": {
 			"ground": "4360b4473c07cd14c6ff580afe6e8666ad8f8f62111566eba61329083139e456",
 			"style": "revival",
@@ -17578,6 +17589,17 @@
 				308,
 				487
 			]
+		},
+		"pt/purpose-in-prayer": {
+			"ground": "c6df75b5791848525ee4fcf19e591fdbd3f3f58f87ac18241d9f8b3b813a5489",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0
 		},
 		"pt/rooted-1": {
 			"ground": "73054fbcf3ee139184146e36028b1920a36a1b97c24511b9a0010cf881d71c45",
@@ -22250,6 +22272,17 @@
 				316,
 				478
 			]
+		},
+		"uk/prevailing-prayer": {
+			"ground": "95b64e419c8efe0bf6cc2883c972672d221856f383001c6699cf7842453393b9",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/ochre",
+			"bar": 0
 		},
 		"uk/rise-up-men-of-god-2": {
 			"ground": "237fd6138cff47600a34b0ba36897467876a5621b625ea9504cd095eec7f2733",

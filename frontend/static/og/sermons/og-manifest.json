@@ -1245,6 +1245,10 @@
 				"content": "c19273c833c7d944cbe5fc7f3a9592e662e955a5faaad45d89ed551ebbff8bab",
 				"art": "2c447b6367d771db265b11fc73b2b5aff9a0e1ff0cc1d3c070d09a1f3d8ecca7"
 			},
+			"the-precious-atonement": {
+				"content": "c7e7975ab82fb49b2688759a0078571cf0ef98337a11562e85440fc87e6190c8",
+				"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+			},
 			"the-ravens-cry": {
 				"content": "85cc434365334b474e0f4b22b5d8e36f6d04f5d939346d63a275bddd8dd1cfcb",
 				"art": "fc0cc007599bd01896f7ed6cdc044547bd05e5e1041a9c48eab052f8f33d36df"
@@ -1276,6 +1280,10 @@
 			"what-have-i-to-do-any-more-with-idols": {
 				"content": "c95109063758cec152d328ad8df530fdc3b0de161a05ccdd2927b1a9ab350f4c",
 				"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+			},
+			"what-is-revival": {
+				"content": "376f40c3fc169fdc7d37c2ea454d76df64895f5919032bc122dfe34a00d68792",
+				"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 			},
 			"why-is-god-a-stranger-in-the-land": {
 				"content": "472ee74d4faf04af46ff7ae2afa2bb6c034812f05879219a684688bcea0b4c10",
