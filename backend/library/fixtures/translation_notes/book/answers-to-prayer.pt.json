@@ -1,0 +1,353 @@
+{
+ "kind": "book",
+ "slug": "answers-to-prayer",
+ "language": "pt",
+ "job_issue": 5678,
+ "pull_request": null,
+ "note": [
+  "Scripture is the Bíblia Livre (porbrbsl; ebible mirror por_bpm), pasted by script. Müller quotes the KJV; Isaiah 26:4 (Rocha eterna vs everlasting strength) and Proverbs 16:3 are kept as the Bíblia Livre reads and flagged; his own sentences keep his point.",
+  "AI-translated (job #5678) in parallel parts, then reconciled: journal dates read «D de mês de AAAA. — » throughout, institutions have one name (Casa de Órfãos nº N, Instituição de Conhecimento das Escrituras, Fundo de Construção), money amounts are kept exactly. The English leaves multi-paragraph quotations open; the Portuguese closes and reopens each paragraph. Awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "1 Peter 1:7",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 81:10",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 18:19",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 34:22",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Isaiah 28:16",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Psalm 84:11",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Jeremiah 17:9",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Psalm 66:18",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "2 Timothy 2:13",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Psalm 103:13",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "1 Corinthians 12:9",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "1 Corinthians 12:9",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "1 Corinthians 13:2",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "1 John 5:1",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Galatians 3:26",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Acts 10:43",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Romans 10:9-10",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "John 3:16",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "mined",
+   "block_index": 53,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "James 1:17",
+   "status": "mined",
+   "block_index": 54,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Exodus 14:13",
+   "status": "self_rendered",
+   "block_index": 57
+  },
+  {
+   "reference": "James 1:4",
+   "status": "self_rendered",
+   "block_index": 75
+  },
+  {
+   "reference": "Luke 18:1-8",
+   "status": "self_rendered",
+   "block_index": 78
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "self_rendered",
+   "block_index": 78
+  },
+  {
+   "reference": "Psalm 9:9-10",
+   "status": "mined",
+   "block_index": 92,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Nehemiah 4:6",
+   "status": "self_rendered",
+   "block_index": 101
+  },
+  {
+   "reference": "Nehemiah 4:6",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "Nehemiah 6:15",
+   "status": "self_rendered",
+   "block_index": 101
+  },
+  {
+   "reference": "Psalm 66:18",
+   "status": "self_rendered",
+   "block_index": 115
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "self_rendered",
+   "block_index": 136
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "self_rendered",
+   "block_index": 133
+  },
+  {
+   "reference": "Psalm 119:68",
+   "status": "self_rendered",
+   "block_index": 143
+  },
+  {
+   "reference": "Psalm 37:4",
+   "status": "mined",
+   "block_index": 152,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "John 17:20-23",
+   "status": "self_rendered",
+   "block_index": 157
+  },
+  {
+   "reference": "Mark 14:7",
+   "status": "mined",
+   "block_index": 161,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Mark 14:7",
+   "status": "self_rendered",
+   "block_index": 159
+  },
+  {
+   "reference": "Luke 7:1",
+   "status": "self_rendered",
+   "block_index": 169
+  },
+  {
+   "reference": "Exodus 5:6",
+   "status": "self_rendered",
+   "block_index": 176
+  },
+  {
+   "reference": "Proverbs 22:19",
+   "status": "self_rendered",
+   "block_index": 179
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "self_rendered",
+   "block_index": 183
+  },
+  {
+   "reference": "Isaiah 26:4",
+   "status": "self_rendered",
+   "block_index": 192
+  },
+  {
+   "reference": "Isaiah 26:4",
+   "status": "mined",
+   "block_index": 194,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "self_rendered",
+   "block_index": 195
+  },
+  {
+   "reference": "Jeremiah 2:13",
+   "status": "self_rendered",
+   "block_index": 197
+  },
+  {
+   "reference": "Psalm 66:18",
+   "status": "mined",
+   "block_index": 197,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Exodus 3:2",
+   "status": "self_rendered",
+   "block_index": 199
+  },
+  {
+   "reference": "Romans 4:20",
+   "status": "self_rendered",
+   "block_index": 208
+  },
+  {
+   "reference": "Psalm 9:10",
+   "status": "mined",
+   "block_index": 211,
+   "source_file": "Bíblia Livre para o Mundo (por_bpm) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "self_rendered",
+   "block_index": 154
+  },
+  {
+   "reference": "Psalm 81:10",
+   "status": "self_rendered",
+   "block_index": 231
+  },
+  {
+   "reference": "Philippians 1:23",
+   "status": "self_rendered",
+   "block_index": 235
+  },
+  {
+   "reference": "1 Samuel 2:30",
+   "status": "self_rendered",
+   "block_index": 237
+  },
+  {
+   "reference": "Philippians 4:12",
+   "status": "self_rendered",
+   "block_index": 240
+  },
+  {
+   "reference": "John 14:13-14",
+   "status": "self_rendered",
+   "block_index": 247
+  },
+  {
+   "reference": "Psalm 66:18",
+   "status": "self_rendered",
+   "block_index": 250
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "self_rendered",
+   "block_index": 251
+  },
+  {
+   "reference": "1 John 5:14",
+   "status": "self_rendered",
+   "block_index": 252
+  },
+  {
+   "reference": "James 4:3",
+   "status": "self_rendered",
+   "block_index": 252
+  },
+  {
+   "reference": "James 5:7",
+   "status": "self_rendered",
+   "block_index": 253
+  },
+  {
+   "reference": "Luke 18:1-8",
+   "status": "self_rendered",
+   "block_index": 253
+  },
+  {
+   "reference": "John 8:31-32",
+   "status": "self_rendered",
+   "block_index": 256
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "self_rendered",
+   "block_index": 256
+  },
+  {
+   "reference": "Proverbs 3:5-6",
+   "status": "self_rendered",
+   "block_index": 270
+  },
+  {
+   "reference": "Proverbs 11:3",
+   "status": "self_rendered",
+   "block_index": 270
+  },
+  {
+   "reference": "Proverbs 16:3",
+   "status": "self_rendered",
+   "block_index": 270
+  }
+ ]
+}
