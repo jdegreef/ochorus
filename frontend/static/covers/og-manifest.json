@@ -23132,6 +23132,33 @@
 				482
 			]
 		},
+		"vi/he-holds-my-tomorrows": {
+			"ground": "b491ddab97f222411d1c1aafd594957e4f1a68df15f801f3309d50199691d999",
+			"style": "lettered",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[89, 302, 511, 408],
+					[80, 386, 520, 492]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				481
+			]
+		},
 		"vi/humility-2": {
 			"ground": "7f9f67a0f3602c9625ff98442e4bf946497fc6bb75d52d17d5ca0e3021943a7e",
 			"style": "devotional",
