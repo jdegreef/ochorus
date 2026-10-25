@@ -1,0 +1,46 @@
+{
+ "kind": "bio",
+ "slug": "absalom-jones",
+ "language": "fr",
+ "job_issue": 6241,
+ "references": [
+  {
+   "reference": "Exodus 3:7",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Daniel 3:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Acts 10:34",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Acts 17:26",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "2 Timothy 3:15",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "1 Corinthians 7:22",
+   "status": "self_rendered",
+   "block_index": 32
+  }
+ ],
+ "note": [
+  "Scripture is Louis Segond (1910), pasted by script; rows come from the translator's report and each 'mined' phrase was re-checked byte for byte against the Bible text and this bio (an FAQ-only use has no block_index)."
+ ]
+}
