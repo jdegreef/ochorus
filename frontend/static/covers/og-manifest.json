@@ -9351,6 +9351,33 @@
 			"layout": "split/navy",
 			"bar": 0.04
 		},
+		"fr/ever-increasing-faith": {
+			"ground": "c86781970dab97445634de033e09eab0049aad077d20693daa3799b492813f58",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[96, 102, 504, 131]
+				],
+				"title": [
+					[92, 326, 508, 402],
+					[132, 391, 468, 467]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				519
+			]
+		},
 		"fr/faithful-with-little": {
 			"ground": "8fa8c6e470eb7b498e0e972df18512394853d043516e6203c3e5f4cc0e4aa760",
 			"style": "originals",
