@@ -1,0 +1,84 @@
+{
+ "kind": "sermon",
+ "slug": "of-christs-resurrection",
+ "language": "fr",
+ "job_issue": 6264,
+ "references": [
+  {
+   "reference": "Genesis 1:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Genesis 1:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Genesis 1:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Mark 16:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 0
+  },
+  {
+   "reference": "Romans 4:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 6
+  },
+  {
+   "reference": "Genesis 22:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Genesis 3:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 4:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 4:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "1 Corinthians 15:55",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 13
+  }
+ ],
+ "note": [
+  "Scripture authority is Louis Segond (1910, public domain), pasted by script from the ebible mirror fra_lsg (USFM; cross-references and Strong's word markers stripped).",
+  "Rows come from the translators' reports, and every 'mined' claim was re-verified: each quoted fragment must be a byte-exact substring of both this body and the Bible text; a claim that fails is recorded as self_rendered. Several verses are read by the speaker from a modern paraphrase or quoted loosely from memory; only the Bible's own words are presented as the Bible's, so those rows are self_rendered."
+ ]
+}
