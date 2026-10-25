@@ -23308,6 +23308,17 @@
 				482
 			]
 		},
+		"vi/gleanings-among-the-sheaves": {
+			"ground": "955352464308dc8ab46c9dfe3e99dbca83b851b245b15813cda9d9384337962f",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"vi/he-holds-my-tomorrows": {
 			"ground": "b491ddab97f222411d1c1aafd594957e4f1a68df15f801f3309d50199691d999",
 			"style": "lettered",
