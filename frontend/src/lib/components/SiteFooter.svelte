@@ -6,6 +6,7 @@
 	 * component so footer work stops colliding with the root layout's.
 	 */
 	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 	import { untrack } from 'svelte';
 	import { lang } from '$lib/lang.svelte';
 	import { auth } from '$lib/auth.svelte';
@@ -76,32 +77,26 @@
 	const forLang = $derived(forLocale(lang.current));
 	const forWords = $derived(FOR_FOOTER[forLang]);
 
-	// The row's colour and its "This week" line come from $lib/forMeta (each
-	// group's accent and tagline), which is too big to ride in the layout every
-	// page loads: fetched once the row is within reach, as the resume card is.
-	// Until then the links are all there (and prerendered), with plain dots.
-	let forNav = $state<HTMLElement>();
-	const forNear = elementVisible(() => forNav, { rootMargin: '600px 0px' });
-	let forMeta = $state<typeof import('$lib/forMeta')>();
-	$effect(() => {
-		if (forNear.visible && !forMeta) void import('$lib/forMeta').then((m) => (forMeta = m));
-	});
-	const featured = $derived(forMeta ? forOfTheWeek() : null);
-
 	// "Pass it on": the pastors' page through the OS share sheet, else onto the
 	// clipboard; with neither (or no script yet) the link just opens the page.
+	// A link rather than ShareButton for that last case, and because its menu
+	// opens downward, off the bottom of the page here.
+	const pastorsPath = $derived(forPath('pastors', forLang));
 	let forCopied = $state(false);
+	let forCopyTimer: ReturnType<typeof setTimeout> | undefined;
+	$effect(() => () => clearTimeout(forCopyTimer));
 	async function passItOn(e: MouseEvent) {
 		e.preventDefault();
-		const url = `${SITE_URL}${forPath('pastors', forLang)}`;
+		const url = `${SITE_URL}${pastorsPath}`;
 		const r = await nativeShare(forWords.shareTitle, url);
 		if (r !== 'unavailable') return;
 		try {
 			await navigator.clipboard.writeText(url);
 			forCopied = true;
-			setTimeout(() => (forCopied = false), 4000);
+			clearTimeout(forCopyTimer);
+			forCopyTimer = setTimeout(() => (forCopied = false), 4000);
 		} catch {
-			location.href = forPath('pastors', forLang);
+			void goto(pastorsPath);
 		}
 	}
 
@@ -139,6 +134,22 @@
 		void lang.current;
 		untrack(() => currentBook.refresh());
 		return currentBook.watch();
+	});
+
+	// The row's colour and its "This week" line come from $lib/forMeta (each
+	// group's accent and tagline), which is too big to ride in the layout every
+	// page loads: fetched once the footer is within reach (the resume cards'
+	// observer, at the footer's top). Until then the links are all there (and
+	// prerendered), with plain dots.
+	let forMeta = $state<typeof import('$lib/forMeta')>();
+	$effect(() => {
+		// A failed load (offline, a chunk gone after a deploy) leaves the plain
+		// dots; the next time the footer comes into reach tries again.
+		if (cardsNear.visible && !forMeta)
+			import('$lib/forMeta').then(
+				(m) => (forMeta = m),
+				() => {}
+			);
 	});
 
 	const blessing = $derived(blessingFor(lang.current));
@@ -548,7 +559,7 @@
 	     can't read, and the words are the pages' own ($lib/forLinks), not
 	     catalogue keys. -->
 	{#if forLang === lang.current}
-		<nav bind:this={forNav} class="border-t border-border" aria-labelledby="footer-for-heading">
+		<nav class="border-t border-border" aria-labelledby="footer-for-heading">
 			<div class="footer-for chrome-col px-5 pt-10">
 				<div>
 					<a class="eyebrow footer-for-eyebrow hover:underline" href={forIndexPath(forLang)}
@@ -566,7 +577,7 @@
 									<li>
 										<a class="footer-for-link" href={forPath(l.slug, forLang)}
 											><span
-												class="footer-for-dot"
+												class="footer-for-dot group-ink"
 												style:--group={forMeta?.FOR_META[l.slug].accent}
 												aria-hidden="true"
 											></span>{forLabel(l, forLang)}</a
@@ -580,7 +591,8 @@
 			</div>
 			<div class="footer-for-foot chrome-col px-5">
 				<p class="footer-for-week text-small text-muted">
-					{#if featured && forMeta}
+					{#if forMeta}
+						{@const featured = forOfTheWeek()}
 						{forWords.thisWeek}
 						<a class="footer-for-week-link hover:underline" href={forPath(featured.slug, forLang)}
 							>{FOR_EYEBROW[forLang]} {forInline(featured, forLang)}</a
@@ -588,10 +600,11 @@
 						— {forMeta.forTagline(featured.slug, forLang)}.
 					{/if}
 				</p>
-				<a class="footer-for-share" href={forPath('pastors', forLang)} onclick={passItOn}>
+				<a class="btn btn-primary btn-sm footer-for-share" href={pastorsPath} onclick={passItOn}>
 					<Icon name="share" size={16} />
-					<span aria-live="polite">{forCopied ? forWords.copied : forWords.share}</span>
+					{forCopied ? forWords.copied : forWords.share}
 				</a>
+				<span class="sr-only" role="status">{forCopied ? forWords.copied : ''}</span>
 			</div>
 		</nav>
 	{/if}
@@ -652,13 +665,16 @@
 	.footer-for-eyebrow {
 		color: color-mix(in srgb, var(--gold) 70%, var(--text));
 	}
+	.footer-for-title,
+	.footer-for-family-name {
+		font-family: var(--font-display);
+		font-weight: 600;
+		color: var(--text);
+	}
 	.footer-for-title {
 		margin-top: 0.5rem;
-		font-family: var(--font-display);
 		font-size: var(--fs-h2);
-		font-weight: 600;
 		line-height: 1.15;
-		color: var(--text);
 	}
 	.footer-for-families {
 		display: grid;
@@ -676,10 +692,7 @@
 	}
 	.footer-for-family-name {
 		margin-bottom: 0.25rem;
-		font-family: var(--font-display);
 		font-size: var(--fs-body);
-		font-weight: 600;
-		color: var(--text);
 	}
 	/* Each link a touch row: 44px on a phone, a tighter list once there's a
 	   pointer to aim. */
@@ -700,18 +713,17 @@
 		color: var(--accent);
 		text-decoration: underline;
 	}
-	/* The group's colour as a dot in a soft ring of itself (its page's
-	   accent, $lib/forMeta); a plain muted dot until that has loaded. The
-	   accents are tuned for paper, so each leans a quarter toward the ink:
-	   a shade darker in light, light enough to see in dark. */
+	/* The group's colour as a dot in a soft ring of itself: its page's accent
+	   ($lib/forMeta) through .group-ink, which leans it toward the ink so it
+	   reads in either theme; a plain muted dot until that has loaded. */
 	.footer-for-dot {
-		--dot: color-mix(in srgb, var(--group, var(--border-strong)) 75%, var(--text));
+		--group: var(--border-strong);
 		flex: none;
 		inline-size: 0.5rem;
 		block-size: 0.5rem;
 		border-radius: 50%;
-		background: var(--dot);
-		box-shadow: 0 0 0 0.3rem color-mix(in srgb, var(--dot) 18%, transparent);
+		background: currentColor;
+		box-shadow: 0 0 0 0.3rem color-mix(in srgb, currentColor 18%, transparent);
 		margin-inline: 0.3rem;
 	}
 	.footer-for-foot {
@@ -734,22 +746,12 @@
 		font-weight: 600;
 		color: var(--text);
 	}
+	/* .btn-primary, as a pill with a touch row's height and room at its
+	   rounded ends. */
 	.footer-for-share {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
 		min-block-size: 2.75rem;
 		padding-inline: 1.1rem;
-		border: 1px solid var(--accent-soft-border);
 		border-radius: 999px;
-		background: var(--accent-soft);
-		color: var(--accent);
-		font-size: var(--fs-small);
-		font-weight: 600;
-	}
-	.footer-for-share:hover {
-		border-color: var(--accent);
-		text-decoration: none;
 	}
 
 	/* Language tiles: autonym over its book count. Auto-fill columns, so a
