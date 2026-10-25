@@ -8472,6 +8472,37 @@
 				519
 			]
 		},
+		"fr/a-short-and-easy-method-of-prayer": {
+			"ground": "4748dde85993e70804b0bf018469444cdbf34cdb9800fcf998007ac66fe94960",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[139, 230, 461, 312],
+					[117, 302, 483, 384],
+					[145, 374, 455, 456]
+				],
+				"subtitle": [
+					[63, 532, 537, 560]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				235,
+				560
+			]
+		},
 		"fr/absolute-surrender": {
 			"ground": "27a4490e3504475ccb2a4dd793a34abd482bed06f8c4a6cd605541518d1bb793",
 			"style": "devotional",
