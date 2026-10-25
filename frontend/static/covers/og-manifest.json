@@ -17668,6 +17668,37 @@
 				508
 			]
 		},
+		"pt/key-teachings-of-richard-baxter": {
+			"ground": "9648cfa3194bc16397c794c05ddef5776905590ab4e852b6c60417f8490f9b4f",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[84, 169, 516, 232],
+					[137, 225, 463, 288],
+					[107, 280, 493, 343]
+				],
+				"subtitle": [
+					[52, 404, 548, 432]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				432
+			]
+		},
 		"pt/lord-teach-us-to-pray-2": {
 			"ground": "397def9b8982b38f14df95f10721f80ed89838a9baf5187deea2abd21ff5c0b2",
 			"style": "devotional",
