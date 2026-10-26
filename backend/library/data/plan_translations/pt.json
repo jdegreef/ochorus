@@ -144,5 +144,12 @@
   "note": [
    "Job #5697. AI-drafted ahead of the book; awaiting native review. samuel-ajayi-crowther-a-life-children is not yet in Portuguese, so seed_plans creates the (family-devotions-boy-from-osogun, pt) row only once it is published here; its pt book job never needs to write this shared file. The title follows the house pattern of «Devocionais em família: a jornada do peregrino»; Osogun and «iorubá» follow the pt corpus. Like the English, it describes the book rather than quoting its title."
   ]
+ },
+ "they-were-young-two-weeks": {
+  "title": "Eles Eram Jovens: Duas Semanas de Histórias Verdadeiras",
+  "description": "Duas semanas de histórias verdadeiras para leitores de 13 a 17 anos: os dois livros de Eles Eram Jovens — Chamados e Provados —, uma vida por dia, de Spurgeon numa nevasca e Richard Allen em Delaware a Patrício, Perpétua e os Mártires de Uganda, cada uma terminando com perguntas para refletir.",
+  "note": [
+   "Job #5703. AI-drafted ahead of the books; awaiting native review. they-were-young-1 and they-were-young-2 are not yet in Portuguese, so seed_plans creates the (they-were-young-two-weeks, pt) row only once both are published here. The series name «Eles Eram Jovens» and the book names «Chamados» / «Provados» are translated here from the English (Called / Tested) — align them with the pt editions' titles when those ship. Patrício, Perpétua, Richard Allen, «nevasca» and «Mártires de Uganda» follow the pt corpus."
+  ]
  }
 }
