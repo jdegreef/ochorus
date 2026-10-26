@@ -8,6 +8,7 @@ Take Root backend so the two projects stay operationally consistent.
 
 import os
 import sys
+import uuid
 from pathlib import Path
 
 import dj_database_url
@@ -447,20 +448,48 @@ STORAGES = {
 _TESTING = len(sys.argv) > 1 and sys.argv[1] == "test"
 
 CACHES = {
-    # Dummy under test, for the same reason as "throttle" below: LocMemCache
-    # lives for the whole process, so one test's memoised value is served to the
-    # next one and the failure looks like the endpoint returning nothing. Two
-    # existing tests broke exactly that way the moment anything started using
-    # this cache. A test that wants to exercise caching should opt in with
+    # Dummy under test, for the same reason as "throttle" below: a real cache
+    # outlives the test, so one test's memoised value is served to the next one
+    # and the failure looks like the endpoint returning nothing. Two existing
+    # tests broke exactly that way the moment anything started using this
+    # cache. A test that wants to exercise caching should opt in with
     # override_settings rather than every other test having to remember to
     # clear it.
-    "default": {
-        "BACKEND": (
-            "django.core.cache.backends.dummy.DummyCache"
-            if _TESTING
-            else "django.core.cache.backends.locmem.LocMemCache"
-        )
-    },
+    #
+    # Otherwise a Postgres table (accounts/0016), not LocMemCache. The API runs
+    # ONE gunicorn worker recycled every ~500 requests (Dockerfile), and a
+    # per-process cache died with each recycle — so the full-corpus memos
+    # (scripture pages, era presence, the audit scan) were recomputed every few
+    # hundred requests, most often mid-prerender-crawl, which is when they
+    # matter. A table survives the recycle and keeps the memo out of the
+    # worker's RSS, which is what the recycling exists to bound.
+    #
+    # KEY_PREFIX scopes every entry to one release. LocMemCache was emptied by
+    # each deploy, and some memos lean on that: `scripture-pages` keys on the
+    # content revision, which a deploy that changes the citation index doesn't
+    # bump. A new commit is a new namespace, so a deploy still starts cold, and
+    # the old release (serving until the new one is up) can't plant its answers
+    # in the new one's keys. `release` clears the table so dead namespaces don't
+    # pile up. With no commit (local dev) each boot gets its own namespace —
+    # LocMemCache's lifetime, which a dev reseeding fixtures expects.
+    "default": (
+        {"BACKEND": "django.core.cache.backends.dummy.DummyCache"}
+        if _TESTING
+        else {
+            "BACKEND": "django.core.cache.backends.db.DatabaseCache",
+            "LOCATION": "django_cache",
+            "KEY_PREFIX": RELEASE_COMMIT[:12] or f"boot-{uuid.uuid4().hex[:8]}",
+            # Per-quote and per-language keys, a few memos each: well under
+            # this, so a cull (which drops entries in key order, not by age)
+            # only ever trims a pathological growth.
+            "OPTIONS": {"MAX_ENTRIES": 5000},
+        }
+    ),
+    # Throttle buckets stay per-process. A DatabaseCache bucket is a
+    # transactional write (plus a COUNT) on every throttled request — search is
+    # throttled and typed as you go — and these limits are a bound, not an
+    # access control (REST_FRAMEWORK above), so losing a bucket on a recycle
+    # costs a burst of spare quota, not a hole.
     "throttle": {
         "BACKEND": (
             "django.core.cache.backends.dummy.DummyCache"

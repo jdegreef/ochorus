@@ -7,6 +7,7 @@ migrations, then seed the library from the committed fixture if the DB is empty.
 
 from __future__ import annotations
 
+from django.core.cache import caches
 from django.core.management import call_command
 from django.core.management.base import BaseCommand
 
@@ -17,6 +18,12 @@ class Command(BaseCommand):
     def handle(self, *args, **opts):
         self.stdout.write("→ migrate")
         call_command("migrate", interactive=False, verbosity=1)
+        # The default cache is a table namespaced per release (settings.CACHES);
+        # every namespace but the incoming one is dead the moment it serves.
+        # Emptying it here is the "deploy starts cold" LocMemCache gave for
+        # free, and keeps old namespaces from filling MAX_ENTRIES.
+        self.stdout.write("→ clear cache")
+        caches["default"].clear()
         # Before the content seeds: they and the readiness checks both read the
         # registry, and it must exist on a fresh DB. Identity is re-asserted each
         # run; a language's status and thresholds are create-only, so a deploy

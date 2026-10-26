@@ -89,7 +89,12 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
 - Migrations are immutable once deployed — never edit one that ran against prod.
   Parallel sessions cause divergent leaves; resolve with a merge migration,
   don't renumber.
-- `manage.py release` runs the deploy chain: migrate → seed_if_empty →
+- The default cache is a Postgres table (`django_cache`, accounts/0016), keyed
+  per release commit and emptied by `release`, so a memo survives worker
+  recycles but never a deploy. Values are pickled: keep them plain data, and
+  never compare a cached value by identity (`is`) — it comes back a copy.
+  Throttle buckets stay per-process (`settings.CACHES` says why).
+- `manage.py release` runs the deploy chain: migrate → clear cache → seed_if_empty →
   backfill_body_text → apply_body_corrections → seed_books → seed_plans →
   seed_sermons → seed_author_translations → seed_topics →
   backfill_search_vectors → trim_search_log → snapshot_language_health.
