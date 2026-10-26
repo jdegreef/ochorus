@@ -1,0 +1,9 @@
+{
+ "kind": "book",
+ "slug": "brave-for-god-3",
+ "language": "vi",
+ "note": [
+  "Level 1 books batch (vi/ko, 2026-10-24): one translator and one independent reviewer per book. Scripture from the Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text via scripts/bible_mirror.py (Take Root unreachable); `mined` rows were checked as verbatim substrings of that verse. AI-drafted, awaiting native review."
+ ],
+ "references": []
+}

@@ -26,5 +26,40 @@
    "Job #6187 (waiting-on-god → vi) adds this prose because the book backs the plan. «Trông Đợi Đức Chúa Trời» is the shipped vi title of waiting-on-god (same job). The row cannot appear yet: the-secret-of-guidance and the-life-of-trust are not in Vietnamese; whichever lands last brings the card live, and its translator should check the title here against that edition."
   ],
   "title": "Trông Đợi Đức Chúa Trời: Một Đời Sống Tin Cậy"
+ },
+ "growing-in-wisdom-18-days": {
+  "title": "Lớn lên trong sự khôn ngoan qua 18 ngày",
+  "description": "Cẩm nang của James DeGreef dành cho học sinh, sinh viên — mỗi ngày một bài đọc ngắn, trong mười tám ngày. Từ việc khám phá mục đích đời mình cho đến việc xây dựng một khải tượng cho tương lai, mỗi ngày kết hợp lời khuyên thiết thực với một câu Kinh Thánh, một suy ngẫm và một lời cầu nguyện.",
+  "note": [
+   "Single-book plan backed by the vi edition of growing-in-wisdom (book title «Lớn Lên Trong Sự Khôn Ngoan»); ships with the Level 1 books batch (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The title opens with the edition's own title (sentence case, as the shipped vi plan titles are) so the plan card and the book agree; “students” = học sinh, sinh viên (school and university), since the book addresses both."
+  ]
+ },
+ "brave-for-god-24-true-stories": {
+  "title": "Can Đảm Vì Đức Chúa Trời: 24 câu chuyện có thật",
+  "description": "Ba tuần rưỡi với những câu chuyện có thật dành cho bạn đọc nhỏ tuổi, mỗi ngày một chuyện: trọn bốn quyển Can Đảm Vì Đức Chúa Trời, hai mươi bốn con người bình thường từ khắp nơi trên thế giới đã tin cậy Đức Chúa Trời và được Ngài làm cho can đảm.",
+  "note": [
+   "Four-book plan backed by the vi editions of brave-for-god, brave-for-god-2, -3 and -4 (titles «Can Đảm Vì Đức Chúa Trời», «…: Quyển Hai/Ba/Bốn»); ships with the Level 1 books batch (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The series title is quoted exactly as the shipped edition spells it (title case) in both the plan title and the description; “bạn đọc nhỏ tuổi” matches the site's young-readers string."
+  ]
+ },
+ "family-devotions-pilgrims-journey": {
+  "title": "Tĩnh nguyện gia đình: Hành trình của người lữ khách",
+  "description": "Những giờ tĩnh nguyện gia đình dài năm phút dành cho các em và những người lớn đọc cùng các em, khoảng ba tuần rưỡi buổi tối. Hãy đọc to một chương ngắn: trước hết là người lữ khách của Bunyan trên đường đến Thành Thiên Quốc, rồi đến những bức tranh từ nông trại của Spurgeon. Mỗi chương khép lại bằng một lời cầu nguyện và ba câu hỏi để cả nhà cùng trò chuyện.",
+  "note": [
+   "Plan backed by the vi editions of pilgrims-progress-children («Thiên Lộ Lịch Trình (Cho thiếu nhi)») and talks-to-the-farmer-children («Trò Chuyện Với Nhà Nông (Cho thiếu nhi)»); ships with the Level 1 books batch (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card names no book title, only the authors; “lữ khách”, “Thành Thiên Quốc” and “nông trại” are the words those vi editions use. “Family devotions” = tĩnh nguyện gia đình (the site's vi strings use tĩnh nguyện for devotions)."
+  ]
+ },
+ "family-devotions-heroes-who-trusted-god": {
+  "title": "Tĩnh nguyện gia đình: Những người hùng đã tin cậy Đức Chúa Trời",
+  "description": "Năm tuần tĩnh nguyện gia đình, mỗi tối năm phút: những câu chuyện có thật về ba con người đã tin cậy Đức Chúa Trời trong mọi điều, mỗi tối đọc to một chương ngắn — George Müller và các trẻ mồ côi của ông, Hudson Taylor trên đường đến Trung Quốc, và Amanda Smith, sinh ra trong cảnh nô lệ, người đã cầu xin một đôi giày. Mỗi chương khép lại bằng một lời cầu nguyện và ba câu hỏi để cả nhà cùng trò chuyện.",
+  "note": [
+   "Plan backed by the vi editions of the-life-of-trust-children («Cuộc Đời Tin Cậy (Cho thiếu nhi)»), a-retrospect-children («Hồi Tưởng (Cho thiếu nhi)») and amanda-smith-autobiography-children («Câu Chuyện Của Amanda Smith (Cho thiếu nhi)»); ships with the Level 1 books batch (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card names people, not book titles; Trung Quốc, trẻ mồ côi, sinh ra trong cảnh nô lệ and đôi giày follow those editions' wording."
+  ]
+ },
+ "family-devotions-talking-with-god": {
+  "title": "Tĩnh nguyện gia đình: Nói chuyện với Đức Chúa Trời suốt ngày",
+  "description": "Mười hai buổi tối tĩnh nguyện gia đình, mỗi tối năm phút, cùng Thầy Lawrence, người phụ bếp vụng về đã học cách nói chuyện với Đức Chúa Trời giữa nồi niêu xoong chảo. Hãy đọc to một chương ngắn: một cái cây trơ trụi giữa mùa đông đã đưa anh đến với Đức Chúa Trời ra sao, anh đã làm mọi việc vì tình yêu dành cho Đức Chúa Trời thế nào, và anh đã làm gì khi mắc lỗi. Mỗi chương khép lại bằng một lời cầu nguyện và ba câu hỏi để cả nhà cùng trò chuyện.",
+  "note": [
+   "Single-book plan backed by the vi edition of the-practice-of-the-presence-of-god-children («Thực Hành Sự Hiện Diện Của Đức Chúa Trời (Cho thiếu nhi)»); ships with the Level 1 books batch (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card names no book title; “Thầy Lawrence”, “nói chuyện với Đức Chúa Trời”, the bare winter tree (“Cái cây giữa mùa đông”, ch. 2) and the pronoun “anh” for the young Lawrence all follow that edition."
+  ]
  }
 }

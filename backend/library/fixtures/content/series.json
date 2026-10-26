@@ -689,5 +689,57 @@
   "created_at": "2026-10-24T00:00:00Z",
   "updated_at": "2026-10-24T00:00:00Z"
  }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "brave-for-god"
+  ],
+  "language": "vi",
+  "title": "Can Đảm Vì Đức Chúa Trời",
+  "description": "Những câu chuyện có thật về đức tin dành cho bạn đọc nhỏ tuổi: những con người bình thường từ khắp nơi trên thế giới đã tin cậy Đức Chúa Trời và được Ngài làm cho can đảm.",
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "brave-for-god"
+  ],
+  "language": "ko",
+  "title": "하나님을 위해 용감하게",
+  "description": "어린 독자들을 위한 믿음의 실화예요. 세계 곳곳에서 하나님을 신뢰하고 용감해진 평범한 사람들의 이야기를 담았어요.",
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "straight-talk"
+  ],
+  "language": "vi",
+  "title": "Nói Thẳng Nói Thật",
+  "description": "Những tác phẩm kinh điển Cơ Đốc và những cuộc đời có thật được kể lại cho bạn đọc tuổi thiếu niên, thẳng thắn và bằng lời lẽ giản dị: người hành hương của Bunyan trên đường đến Thành Thiên Thượng, những lời nói thẳng của Spurgeon từ nông trại, và những người nam người nữ đã đặt cược tất cả nơi Đức Chúa Trời.",
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "straight-talk"
+  ],
+  "language": "ko",
+  "title": "솔직한 이야기",
+  "description": "청소년 독자를 위해 솔직하고 쉬운 말로 다시 들려주는 기독교 고전과 실제 인물의 삶입니다. 천성을 향해 가는 존 번연의 순례자, 농장에서 들려주는 찰스 스펄전의 솔직한 이야기, 그리고 모든 것을 하나님께 건 남자와 여자들의 이야기를 담았습니다.",
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
+ }
 }
 ]

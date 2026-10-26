@@ -1,0 +1,38 @@
+{
+ "kind": "book",
+ "slug": "the-practice-of-the-presence-of-god",
+ "language": "vi",
+ "note": [
+  "Level 1 books batch (vi/ko, 2026-10-24): one translator and one independent reviewer per book. Scripture from the Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text via scripts/bible_mirror.py (Take Root unreachable); `mined` rows were checked as verbatim substrings of that verse. AI-drafted, awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "chapter_order": 4,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Luke 10:42",
+   "status": "mined",
+   "chapter_order": 8,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "2 Corinthians 1:3",
+   "status": "mined",
+   "chapter_order": 13,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 6:21",
+   "status": "self_rendered",
+   "chapter_order": 13
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "self_rendered",
+   "chapter_order": 18
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+{
+ "kind": "book",
+ "slug": "the-practice-of-the-presence-of-god",
+ "language": "ko",
+ "note": [
+  "Level 1 books batch (vi/ko, 2026-10-24): one translator and one independent reviewer per book. Scripture from the 개역 (Take Root korean / ebible kor_old) Bible text via scripts/bible_mirror.py (Take Root unreachable); `mined` rows were checked as verbatim substrings of that verse. AI-drafted, awaiting native review."
+ ],
+ "references": []
+}

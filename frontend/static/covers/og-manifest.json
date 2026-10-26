@@ -14648,12 +14648,23 @@
 			"layout": "box/rust",
 			"bar": 0
 		},
+		"ko/a-retrospect-children": {
+			"ground": "48b145904c9cbe156f884c26d4c7d500e1d4d2f0f74bd1df497576054cd48d05",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0
+		},
 		"ko/absolute-surrender": {
 			"ground": "91125984b699300a36a132503dede33a26c71398f481ab9b6cfd59d176ae634c",
 			"style": "devotional",
 			"volume": null,
 			"script": "korean",
-			"fonts": "bce8ed7454a054f20de3988b6a43ccc17c1152807277f859703de11f8437005d",
+			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
 			"art": true,
 			"scrim": 1,
 			"layout": "wash/sage",
@@ -14670,23 +14681,174 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"ko/amanda-smith-autobiography-children": {
+			"ground": "3a5605405eae8c3aeac324b8c0d6527c4cb9159b3af29ea9837aa5ba492e070c",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[94, 326, 506, 402],
+					[110, 391, 490, 467]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				519
+			]
+		},
 		"ko/baptism-with-the-holy-spirit": {
 			"ground": "b9479745ae2364f4a76040c71c10063d58f26fd40268f5d818fc8a54a057d8ce",
 			"style": "revival",
 			"volume": null,
 			"script": "korean",
-			"fonts": "c06fc0e871a45a2340a3d8fb182ba9ef25cf8b7e8815e8257a95ab6e509354f8",
+			"fonts": "88a84fc181c001534be5e7307780afaa47811fa85b95325ecb2f3bd516ed915f",
 			"art": true,
 			"scrim": 1,
 			"layout": "diagonal/ochre",
 			"bar": 0.085
+		},
+		"ko/brave-for-god": {
+			"ground": "f92967563b4731c5accfdd61e1645579638a92baee49e1493c68e7e6472f713b",
+			"style": "young",
+			"volume": "1",
+			"script": "korean",
+			"fonts": "96197f2ca6824ff66a617d52d3a937d9ca8a25299e9916852e8cc5221e82ee78",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 255, 308, 299],
+					[163, 330, 437, 405],
+					[163, 391, 437, 466]
+				],
+				"subtitle": [
+					[81, 524, 519, 552]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				243,
+				552
+			]
+		},
+		"ko/brave-for-god-2": {
+			"ground": "292d801ec0ec1f4ec53ded367a05e70a531742991a2b70a0fc0e9009ac4cf035",
+			"style": "young",
+			"volume": "2",
+			"script": "korean",
+			"fonts": "96197f2ca6824ff66a617d52d3a937d9ca8a25299e9916852e8cc5221e82ee78",
+			"art": true,
+			"scrim": 0.4,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 255, 311, 299],
+					[103, 330, 497, 405],
+					[140, 391, 460, 466]
+				],
+				"subtitle": [
+					[44, 524, 556, 552]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				243,
+				552
+			]
+		},
+		"ko/brave-for-god-3": {
+			"ground": "4aa40ff29226fc7c987550c7a2a1b4d3538bc5be5531390232a3dd57e7667d0b",
+			"style": "young",
+			"volume": "3",
+			"script": "korean",
+			"fonts": "96197f2ca6824ff66a617d52d3a937d9ca8a25299e9916852e8cc5221e82ee78",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 255, 310, 299],
+					[103, 330, 497, 405],
+					[140, 391, 460, 466]
+				],
+				"subtitle": [
+					[44, 524, 556, 552]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				243,
+				552
+			]
+		},
+		"ko/brave-for-god-4": {
+			"ground": "731a4aa2738ca611a35df83cae5ba7344af93315914e985b24a6244470b04cf6",
+			"style": "young",
+			"volume": "4",
+			"script": "korean",
+			"fonts": "96197f2ca6824ff66a617d52d3a937d9ca8a25299e9916852e8cc5221e82ee78",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 255, 311, 299],
+					[103, 330, 497, 405],
+					[140, 391, 460, 466]
+				],
+				"subtitle": [
+					[44, 524, 556, 552]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				243,
+				552
+			]
 		},
 		"ko/clothed-with-strength-and-dignity": {
 			"ground": "2529ca642e4205357235bfc13f56ebe31245b91d4d1e27269c3e000d7aaa65d9",
 			"style": "originals",
 			"volume": null,
 			"script": "korean",
-			"fonts": "77fecf5f28da3ab35e95e7eb8f7c1059c889ff52cc6572232d2b84bb2c49f2df",
+			"fonts": "0a572dc4646594b2f51c21a3dd00d7dd755dff7da2caef74cb41eaea0f28ada0",
 			"art": true,
 			"scrim": 0.35,
 			"layout": "framed",
@@ -14713,7 +14875,7 @@
 			"style": "revival",
 			"volume": null,
 			"script": "korean",
-			"fonts": "ed0b162daf4b4ed7689b33b6e2f795f0dd6c10925e87fdf3d978defec33cd45a",
+			"fonts": "ac508e13b059eae322a27324e3dc89b9d5153879282885fe65c5cf4631f63aaf",
 			"art": true,
 			"scrim": 1,
 			"layout": "band/oxblood",
@@ -14724,7 +14886,7 @@
 			"style": "revival",
 			"volume": null,
 			"script": "korean",
-			"fonts": "8cd87ff32926a76e570eda36ccc24ecdb6ab75d13bd7a6224d39e74858edce6a",
+			"fonts": "f647c1f70f76cc4716d26b296a803564369f3ef2fe6efb90c21d83530c070253",
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed",
@@ -14745,12 +14907,41 @@
 				487
 			]
 		},
+		"ko/growing-in-wisdom": {
+			"ground": "3697d1a1cd1b6b10de486d6c3446dc9149d1d2ec2eb4d9702eeb88287cf6c69b",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "2a791de38fbcb7613ea53317a24f3fd5650bec75420c3bf70539d04ec83a460b",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[54, 312, 546, 388]
+				],
+				"subtitle": [
+					[84, 450, 516, 478]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
+		},
 		"ko/he-holds-my-tomorrows": {
 			"ground": "9b964a8144b7314e55bb6adafaf9f39b7f29c5af5f86bc7605032ba5d6d71bcb",
 			"style": "lettered",
 			"volume": null,
 			"script": "korean",
-			"fonts": "d1030488badcb15203403116743bc1efaa59f1d8a853bc5678b816f2cf1d0922",
+			"fonts": "3bacd5ed0b8f77a856411374a7ad876aa84fae2aefab2267d17a8ba778b8fe6c",
 			"art": true,
 			"scrim": 0.7,
 			"layout": "framed",
@@ -14777,7 +14968,7 @@
 			"style": "devotional",
 			"volume": null,
 			"script": "korean",
-			"fonts": "c0027e462285b591cf92a15784388e32614b464e52204b6372594738d0efd4c8",
+			"fonts": "0f43f4330a4d16de77031be642cbf9cc7786fa32bff66752c242b3368dd4b680",
 			"art": true,
 			"scrim": 1,
 			"layout": "wash/sage",
@@ -14805,12 +14996,117 @@
 			"layout": "wash/sage",
 			"bar": 0.11
 		},
+		"ko/men-and-women-who-gave-everything-2": {
+			"ground": "9153ead741e95a71656d43dff688f7d14af6ee7a38580927227d58d691e48e42",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[141, 308, 459, 384],
+					[177, 374, 423, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
+		"ko/on-loving-god": {
+			"ground": "13a9aa86268b5c04b0e888869f2e87d12f79b2c5da988071fd5765eea7e72ab6",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[85, 102, 515, 131]
+				],
+				"title": [
+					[148, 314, 452, 376],
+					[171, 360, 429, 422]
+				],
+				"subtitle": [
+					[188, 451, 412, 472]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				323,
+				472
+			]
+		},
+		"ko/pilgrims-progress-children": {
+			"ground": "dc2bb790112c6e8492fd46e70ff52be72ec57f432201e1e5b1f740d559b919cf",
+			"style": "press",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
+		"ko/pilgrims-progress-teens": {
+			"ground": "0ccd0ac596d52448e9e4f53931d4f22c2a282326ddcf1efef8551939f623676c",
+			"style": "press",
+			"volume": null,
+			"script": "korean",
+			"fonts": "f647c1f70f76cc4716d26b296a803564369f3ef2fe6efb90c21d83530c070253",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
+		"ko/prayer-the-pulse-of-life": {
+			"ground": "ca0cbb21bbbfa52480c9c60e1d0e49cbd2b4943b6384e43dac5d7c7ac3e15cfb",
+			"style": "house",
+			"volume": null,
+			"script": "korean",
+			"fonts": "ce697f9adf688f20273dbd5d8f39369a5c63d5013296f241cc1895b28acd2f9a",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[143, 102, 457, 131]
+				],
+				"title": [
+					[73, 377, 527, 448]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				349,
+				446
+			]
+		},
 		"ko/school-of-prayer": {
 			"ground": "06d0d9789cc78677648d024e6d2350469e922c3ab3193e275ae01d262f401b94",
 			"style": "devotional",
 			"volume": null,
 			"script": "korean",
-			"fonts": "bce8ed7454a054f20de3988b6a43ccc17c1152807277f859703de11f8437005d",
+			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
 			"art": true,
 			"scrim": 1,
 			"layout": "wash/sage",
@@ -14845,23 +15141,101 @@
 				463
 			]
 		},
+		"ko/talks-to-the-farmer-children": {
+			"ground": "6c33550d0708329bd9bc647ee430ff7ced1bea7faeda2c103d826bb4d07178a6",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "ee92bf4a8c67a5d9658d5488e151eb805e22b6e0e5dbf5cd3947921a33c735a7",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"ko/the-inner-chamber": {
 			"ground": "c7de56895f8b293758df95f953d4a9baf38e7d8d46692e615ab0c57bc08f7c63",
 			"style": "devotional",
 			"volume": null,
 			"script": "korean",
-			"fonts": "587389f9d23ee6d27019a16810666293ca7982c3db98d8d857426296c8373c37",
+			"fonts": "fb585e60b471d029785682a3895ea40736934f72a260fc79a5a84d1ff0d13901",
 			"art": true,
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0
+		},
+		"ko/the-life-of-trust-children": {
+			"ground": "e965ff383bf51c9ceb81e360451e7f507a1d0b9a332f6810b971d2dac2e5e08f",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "a901489d782506544bf4bcc953d15c6e0825276e4d887ca73eeccb167ee1d141",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/oxblood",
+			"bar": 0
+		},
+		"ko/the-practice-of-the-presence-of-god": {
+			"ground": "3efccfb766784ea072fed45c8ad916ddef5e7ee0ec4ecbe0fcb7e7f5c1874747",
+			"style": "press",
+			"volume": null,
+			"script": "korean",
+			"fonts": "032e70557184a48e39b1843a09c66f71d079ac50072fab46c7496e9bf076ad8f",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[67, 335, 533, 408]
+				],
+				"subtitle": [
+					[166, 464, 434, 485]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				309,
+				486
+			]
+		},
+		"ko/the-practice-of-the-presence-of-god-children": {
+			"ground": "00968f56cbed55471632823b7aeee16529af790f9d889e0aa2f96119f5555316",
+			"style": "young",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[103, 310, 497, 385],
+					[146, 371, 454, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"ko/the-unselfishness-of-god": {
 			"ground": "8c9582aaa4545dfc8591646debbfb759c1214b5d981de89d0b7e03f90f4b7ec1",
 			"style": "devotional",
 			"volume": null,
 			"script": "korean",
-			"fonts": "bce8ed7454a054f20de3988b6a43ccc17c1152807277f859703de11f8437005d",
+			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
 			"art": true,
 			"scrim": 0.95,
 			"layout": "framed",
@@ -14898,11 +15272,40 @@
 			"style": "devotional",
 			"volume": null,
 			"script": "korean",
-			"fonts": "f4f0efec2db86399a1a8ced57806eca1b8484bbe2b7b54fd0ad2ad263d9d7078",
+			"fonts": "89eef0c82b8f12df61118e68f14ed6ac69840619c2bff27659e0d509e5eeaa24",
 			"art": true,
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0
+		},
+		"ko/tukutendereza": {
+			"ground": "07705356aab85c3144f68dbbc2bf7ae00d392993af1b35c99f313b2fc409175a",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "a1f8cc13a40b42ec80f1377c01e2a9730af58d43c5aceb7338285094da88929f",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[125, 312, 475, 388]
+				],
+				"subtitle": [
+					[164, 450, 436, 478]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"ko/waiting-on-god": {
 			"ground": "54b00b6b194c0762b341256892c7869cdd2dd68ba2369ea7de34618853560196",
@@ -14914,6 +15317,33 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0
+		},
+		"ko/women-who-moved-heaven-2": {
+			"ground": "bfc84ab1db4a6822e20bf5075083b120bae4ada5575eb7868588ca97aab37431",
+			"style": "originals",
+			"volume": null,
+			"script": "korean",
+			"fonts": "231cba589991ea333f65c191e7252525b7b78a9407ccaae1cead9d9c72e9ced5",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[148, 308, 452, 384],
+					[177, 374, 423, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"lectures-to-my-students": {
 			"ground": "37427d61536e130bbc8758ffd215417b5fd83a18d2235b959f50e85cfb657284",
@@ -23363,6 +23793,17 @@
 			"layout": "wash/indigo",
 			"bar": 0.11
 		},
+		"vi/a-retrospect-children": {
+			"ground": "df775fbc4055fd7c05c97b0621a3fa179a72e0151221060599f5f72c74234f54",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0
+		},
 		"vi/all-of-grace": {
 			"ground": "1bf0833cffe0cbd33cca408baad357186151113c2dc3aec0c882ba94b2dda85b",
 			"style": "revival",
@@ -23373,6 +23814,176 @@
 			"scrim": 1,
 			"layout": "band/oxblood",
 			"bar": 0
+		},
+		"vi/amanda-smith-autobiography-children": {
+			"ground": "5a0ad479484269e5bb1e37530939bc15e22c5994b7f83a2efd94578c22133d8c",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[86, 293, 514, 369],
+					[108, 359, 492, 435],
+					[108, 424, 492, 500]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				243,
+				552
+			]
+		},
+		"vi/baptism-with-the-holy-spirit": {
+			"ground": "7361fc3ace46b150b93ac6d0a69a6bcdd96e9e3bb299f6c37fd0b5b2361dccf0",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "diagonal/ochre",
+			"bar": 0.085
+		},
+		"vi/brave-for-god": {
+			"ground": "92e4e3fbb3cfe92129e3cb73af3384049b7f14e3a52b5fd0728d0bb1372c4534",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 243, 308, 287],
+					[149, 318, 451, 393],
+					[115, 379, 485, 454]
+				],
+				"subtitle": [
+					[154, 508, 446, 536],
+					[162, 536, 438, 564]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				231,
+				564
+			]
+		},
+		"vi/brave-for-god-2": {
+			"ground": "153cb7730084c7947ab669fa30d8431e64f27be95ff40d07c383eea1755c36d6",
+			"style": "young",
+			"volume": "2",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.4,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 212, 311, 256],
+					[149, 287, 451, 362],
+					[109, 348, 491, 423],
+					[165, 410, 435, 485]
+				],
+				"subtitle": [
+					[147, 539, 453, 567],
+					[140, 567, 460, 595]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				200,
+				595
+			]
+		},
+		"vi/brave-for-god-3": {
+			"ground": "62ea7a76d677b0116ca676c4aeeb239ce80176a9cfb725d8df2b91198f327b3a",
+			"style": "young",
+			"volume": "3",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 212, 310, 256],
+					[149, 287, 451, 362],
+					[173, 348, 427, 423],
+					[110, 410, 490, 485]
+				],
+				"subtitle": [
+					[147, 539, 453, 567],
+					[140, 567, 460, 595]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				200,
+				595
+			]
+		},
+		"vi/brave-for-god-4": {
+			"ground": "89fe76ecaf3a28b00fb1a340a3522b5935041db5086fec2892f4343e2b3b741b",
+			"style": "young",
+			"volume": "4",
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[289, 212, 311, 256],
+					[149, 287, 451, 362],
+					[109, 348, 491, 423],
+					[156, 410, 444, 485]
+				],
+				"subtitle": [
+					[147, 539, 453, 567],
+					[140, 567, 460, 595]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				200,
+				595
+			]
 		},
 		"vi/clothed-with-strength-and-dignity": {
 			"ground": "cd1b81541ffc096749f870408667060443f500932a116d38f89ac878e8269a4a",
@@ -23411,6 +24022,37 @@
 			"scrim": 1,
 			"layout": "band/oxblood",
 			"bar": 0
+		},
+		"vi/growing-in-wisdom": {
+			"ground": "8a1cd1d5467c2dc5edd491cc3e4fc4c101281480ba6b32e740c036137c24b4fa",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[83, 267, 517, 343],
+					[71, 333, 529, 409]
+				],
+				"subtitle": [
+					[165, 467, 435, 495],
+					[152, 495, 448, 523]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				272,
+				523
+			]
 		},
 		"vi/he-holds-my-tomorrows": {
 			"ground": "b491ddab97f222411d1c1aafd594957e4f1a68df15f801f3309d50199691d999",
@@ -23472,6 +24114,113 @@
 			"layout": "wash/sage",
 			"bar": 0.11
 		},
+		"vi/men-and-women-who-gave-everything-2": {
+			"ground": "b820c4fe0163bdf93df5abc2ce31cbeb3707cbb37e5e08665583d2d5646e44a1",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[107, 275, 493, 351],
+					[90, 341, 510, 417],
+					[46, 407, 554, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
+		},
+		"vi/on-loving-god": {
+			"ground": "417ea900e97c254584b58beb3d2baae81bde8671c6bbb766a738f6f927ac5827",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[85, 102, 515, 131]
+				],
+				"title": [
+					[53, 314, 547, 376],
+					[78, 360, 522, 422]
+				],
+				"subtitle": [
+					[188, 451, 412, 472]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				323,
+				472
+			]
+		},
+		"vi/pilgrims-progress-children": {
+			"ground": "22bb13479dd350f0ccb5edd06b7912749d75f2bd75276b55ebd532b4e47af0d7",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
+		"vi/pilgrims-progress-teens": {
+			"ground": "559f41aa5ce8802fe5b749d722612de679efaa78b2f00b1b4cff6735fb856b97",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
+		"vi/prayer-the-pulse-of-life": {
+			"ground": "8e77923b79ca8b0ad953952b59dffcdb7999756627d555d6ac36e5be35695e77",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[143, 102, 457, 131]
+				],
+				"title": [
+					[44, 344, 556, 415],
+					[74, 410, 526, 481]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				316,
+				478
+			]
+		},
 		"vi/school-of-prayer": {
 			"ground": "b9c8703ebc49141609f1e7e8dbbea1029d26b02a76fb94b57afd044fea33753e",
 			"style": "devotional",
@@ -23513,6 +24262,17 @@
 				503
 			]
 		},
+		"vi/talks-to-the-farmer-children": {
+			"ground": "a9e06352ea5078890754a521c26b4663474ce8e3e3313ef1cfd8eb35f150b55a",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"vi/the-inner-chamber": {
 			"ground": "3a51ca755979800f18d12469a158f97a5cd432a0d75f78f18e9279e4f4276bc7",
 			"style": "devotional",
@@ -23524,6 +24284,106 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"vi/the-life-of-trust-children": {
+			"ground": "ae7b2d87fa4e231f29f341550bbd5ad2a0b2c51dee688c402babc21e78686520",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/oxblood",
+			"bar": 0
+		},
+		"vi/the-practice-of-the-presence-of-god": {
+			"ground": "acf580f7d70970e5e978d63ed62aaad9afb0f12ebf768c203c7028b586dbd828",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[127, 266, 473, 339],
+					[122, 326, 478, 399],
+					[126, 385, 474, 458]
+				],
+				"subtitle": [
+					[159, 510, 441, 531],
+					[132, 532, 468, 553]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				240,
+				554
+			]
+		},
+		"vi/the-practice-of-the-presence-of-god-children": {
+			"ground": "a8941f1b2beae6f6bc3f65b426c3e4cb7bd9116392e144fe035099623492a74c",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[118, 102, 482, 131]
+				],
+				"title": [
+					[93, 295, 507, 358],
+					[89, 346, 511, 409],
+					[96, 397, 504, 460]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				302,
+				493
+			]
+		},
+		"vi/tukutendereza": {
+			"ground": "45374a9247ece9def029dc9d5e66625f17b9dd889d228e964e2f45f370f5d871",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[72, 314, 528, 390]
+				],
+				"subtitle": [
+					[73, 448, 527, 476]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				319,
+				476
+			]
+		},
 		"vi/waiting-on-god": {
 			"ground": "3eb084336c84c393799df18450f7d8b619e15e1e2cbc068006e9867c71e2c08a",
 			"style": "devotional",
@@ -23534,6 +24394,34 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0
+		},
+		"vi/women-who-moved-heaven-2": {
+			"ground": "ddde6fe94cda5385961621d6f09285d5ec109ff89820db515870e26f4a7f9084",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[107, 275, 493, 351],
+					[66, 341, 534, 417],
+					[126, 407, 474, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
 		},
 		"waiting-on-god": {
 			"ground": "4953e3a74672ccc0d17902faaf8abbf55cef0962b5c9939cea1a6504a6b307b9",

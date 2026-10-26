@@ -1,0 +1,110 @@
+{
+ "kind": "book",
+ "slug": "the-life-of-trust-children",
+ "language": "vi",
+ "note": [
+  "Level 1 books batch (vi/ko, 2026-10-24): one translator and one independent reviewer per book. Scripture from the Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text via scripts/bible_mirror.py (Take Root unreachable); `mined` rows were checked as verbatim substrings of that verse. AI-drafted, awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Isaiah 53:6",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 0,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Luke 15:20",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 0,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 0,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 0,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 0,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 6,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalm 81:10b",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 0
+  },
+  {
+   "reference": "Psalm 81:10b",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 2
+  },
+  {
+   "reference": "2 Corinthians 9:7",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 0,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalm 68:5",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 0
+  },
+  {
+   "reference": "Psalm 68:5",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 5
+  },
+  {
+   "reference": "Isaiah 65:24",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 0,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "Psalm 34:10",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 0
+  },
+  {
+   "reference": "Matthew 6:20",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 0,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  },
+  {
+   "reference": "James 1:4",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 0,
+   "source_file": "Kinh Thánh 1925 (Cadman; Take Root vietnamese / ebible vie_kt) Bible text"
+  }
+ ]
+}

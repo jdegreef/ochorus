@@ -1,0 +1,394 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "charles-h-spurgeon"
+  ],
+  "slug": "talks-to-the-farmer-children",
+  "language": "vi",
+  "title": "Trò Chuyện Với Nhà Nông (Cho thiếu nhi)",
+  "subtitle": "",
+  "cover_title": "",
+  "cover_byline": "",
+  "description": "Charles Spurgeon nhìn thấy lẽ thật của Đức Chúa Trời ẩn giấu trong một nông trại bình thường — một thửa ruộng đầy cỏ dại, hạt giống của người gieo, mầm xanh đầu tiên của mùa xuân, những con chiên vào mùa hớt lông, và kho lúa vào mùa gặt. Ấn bản dành cho thiếu nhi này kể lại những bức tranh nhà nông của ông qua những chương ngắn, đơn giản, được viết để đọc to: một câu Kinh Thánh, một câu chuyện nhỏ về nông trại, một điều câu chuyện ấy muốn nói với con, và một lời cầu nguyện ngắn để kết thúc.",
+  "hook": "",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Sách Trò Chuyện Với Nhà Nông (Cho thiếu nhi) nói về điều gì?",
+    "answer": "Đây là phiên bản dành cho thiếu nhi của sách Trò Chuyện Với Nhà Nông của Charles Spurgeon. Mỗi chương ngắn lấy một bức tranh từ đời sống nhà nông — một bức tường rào đổ nát, một người gieo giống, mầm non đầu tiên của mùa xuân, những con chiên được hớt lông, mùa gặt — và nhẹ nhàng cho thấy bức tranh ấy dạy chúng ta điều gì về Đức Chúa Trời, bằng những lời đơn giản dành cho các em nhỏ."
+   },
+   {
+    "question": "Charles Spurgeon là ai?",
+    "answer": "Ông là một nhà giảng đạo nổi tiếng sống ở Luân Đôn từ rất lâu rồi, và ông rất thích giải thích những lẽ thật lớn lao về Đức Chúa Trời bằng những điều quen thuộc hằng ngày như nông trại, thời tiết và mùa gặt. Chính vì vậy mà những câu chuyện nhà nông của ông rất hợp với trẻ em."
+   },
+   {
+    "question": "Mỗi chương được sắp xếp như thế nào?",
+    "answer": "Chương nào cũng ngắn và được viết để đọc to. Mỗi chương bắt đầu bằng một câu Kinh Thánh, kể một câu chuyện nhỏ về nông trại, cho thấy một điều đơn giản mà câu chuyện ấy muốn nói với con, và kết thúc bằng một lời cầu nguyện ngắn."
+   },
+   {
+    "question": "Sách này dành cho ai?",
+    "answer": "Sách dành cho thiếu nhi — để người lớn đọc to cho các em nghe, hoặc để các em lớn hơn một chút tự đọc. Bản đầy đủ, không rút gọn của sách Trò Chuyện Với Nhà Nông của Spurgeon cũng có sẵn cho người lớn, cùng với một phiên bản dành cho thanh thiếu niên."
+   },
+   {
+    "question": "Tại sao sách dùng những câu chuyện nhà nông để dạy về Đức Chúa Trời?",
+    "answer": "Vì Chúa Giê-xu cũng đã làm như vậy — câu chuyện của Ngài về người nông dân gieo giống là một trong những câu chuyện nổi tiếng nhất trong Kinh Thánh. Một bức tranh mà các em có thể nhìn thấy, như một hạt giống, một con chiên hay một mùa gặt, giúp các em nhớ một lẽ thật tốt hơn nhiều so với một lời giải thích dài dòng."
+   },
+   {
+    "question": "Trong sách có những câu chuyện nào?",
+    "answer": "Sách đi theo một năm của nhà nông. Có thửa ruộng đầy cỏ dại mà một người lười biếng bỏ mặc, một bác nông dân gieo giống, sương giá tan dần khi mùa xuân đến, mầm xanh đầu tiên đội lên khỏi mặt đất, những con chiên vào mùa hớt lông, cô Ru-tơ nghèo khó đi mót lúa, và mùa gặt được thâu vào kho an toàn. Mỗi câu chuyện nhỏ dạy một điều đơn giản về Đức Chúa Trời."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Bản kể lại dành cho độc giả nhỏ tuổi của Ochorus, dựa trên sách Talks to the Farmer (Trò Chuyện Với Nhà Nông) của Charles H. Spurgeon, là tác phẩm thuộc phạm vi công cộng. Lời kể là của chúng tôi, được tự do đọc và chia sẻ.",
+  "cover_url": "/covers/art/talks-to-the-farmer-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "series": null,
+  "series_position": null,
+  "sort_order": 21,
+  "is_published": true,
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "vi"
+  ],
+  "order": 1,
+  "title": "Ruộng Của Kẻ Biếng Nhác",
+  "body_html": "<blockquote>“Ta có đi ngang qua gần ruộng kẻ biếng nhác, … thấy cây tật lê mọc khắp cùng.” — trích Châm Ngôn 24</blockquote> <p>Một ngày kia, vua Sa-lô-môn khôn ngoan đi dạo, và vua dừng lại nhìn một thửa ruộng nhỏ. Ôi trời ơi — thửa ruộng ấy bừa bộn biết bao! Cỏ dại đầy gai và cây kế mọc khắp nơi. Con gần như không còn thấy mặt đất nữa.</p> <p>Này con, người chủ của thửa ruộng ấy không phải là người độc ác. Ông chưa từng trồng một cây cỏ dại nào. Vậy tại sao ruộng của ông lại đầy cỏ dại như thế?</p> <p>Câu trả lời đây, và nó hơi bất ngờ một chút. Ông chẳng làm gì cả! Ông lười biếng. Ông không bao giờ nhổ cỏ dại, và cũng không bao giờ gieo hạt giống tốt. Mà con biết không? Một thửa ruộng chẳng bao giờ để trống mãi. Nếu con không trồng cây tốt trong đó, thì cỏ dại sẽ tự mọc lên. Chẳng ai phải trồng cỏ dại cả — tự nó cứ mọc ra thôi.</p> <p>Lòng của con cũng hơi giống thửa ruộng ấy. Những điều tốt con làm — cầu nguyện, tử tế với người khác, nói thật, vâng lời — giống như những cây tốt đang lớn lên. Nhưng nếu con thôi làm những điều tốt và cứ ngồi không, thì những thứ khác sẽ tự mọc lên thay vào. Tính cáu kỉnh. Những lời nói khó nghe. Quên mất Đức Chúa Trời.</p> <p>Vậy thì con đừng chờ đợi! Đừng nói: “Ngày mai con sẽ ngoan.” Người lười biếng kia lúc nào cũng nói “để mai”, và cả thửa ruộng của ông biến thành cỏ dại. Hôm nay con hãy gieo một hạt giống tốt — một lời nói tử tế, một lời cầu nguyện nhỏ — và để nó lớn lên.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, xin giúp con đừng lười biếng. Xin giúp con gieo những điều tốt vào lòng mình ngay hôm nay, chứ không chờ đến ngày mai. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Vua Sa-lô-môn đã thấy gì khi đi ngang qua ruộng của người lười biếng?",
+    "answer": "Một thửa ruộng bừa bộn, đầy cỏ dại có gai và cây kế, rậm đến nỗi gần như không còn thấy mặt đất."
+   },
+   {
+    "question": "Người lười biếng chưa từng trồng cây cỏ dại nào. Vậy tại sao ruộng của ông lại đầy cỏ dại?",
+    "answer": "Vì ông chẳng làm gì cả. Ông không bao giờ nhổ cỏ dại hay gieo hạt giống tốt, mà một thửa ruộng thì chẳng bao giờ để trống mãi — cỏ dại tự mọc lên."
+   },
+   {
+    "question": "Có hạt giống tốt nào con có thể gieo vào lòng mình ngay hôm nay, thay vì chờ đến ngày mai?",
+    "answer": "Điều chương này muốn nói: đừng nói “Ngày mai con sẽ ngoan.” Hôm nay hãy gieo một hạt giống tốt — một lời nói tử tế hay một lời cầu nguyện nhỏ — và để nó lớn lên."
+   }
+  ],
+  "body_text": "“Ta có đi ngang qua gần ruộng kẻ biếng nhác, … thấy cây tật lê mọc khắp cùng.” — trích Châm Ngôn 24 Một ngày kia, vua Sa-lô-môn khôn ngoan đi dạo, và vua dừng lại nhìn một thửa ruộng nhỏ. Ôi trời ơi — thửa ruộng ấy bừa bộn biết bao! Cỏ dại đầy gai và cây kế mọc khắp nơi. Con gần như không còn thấy mặt đất nữa. Này con, người chủ của thửa ruộng ấy không phải là người độc ác. Ông chưa từng trồng một cây cỏ dại nào. Vậy tại sao ruộng của ông lại đầy cỏ dại như thế? Câu trả lời đây, và nó hơi bất ngờ một chút. Ông chẳng làm gì cả! Ông lười biếng. Ông không bao giờ nhổ cỏ dại, và cũng không bao giờ gieo hạt giống tốt. Mà con biết không? Một thửa ruộng chẳng bao giờ để trống mãi. Nếu con không trồng cây tốt trong đó, thì cỏ dại sẽ tự mọc lên. Chẳng ai phải trồng cỏ dại cả — tự nó cứ mọc ra thôi. Lòng của con cũng hơi giống thửa ruộng ấy. Những điều tốt con làm — cầu nguyện, tử tế với người khác, nói thật, vâng lời — giống như những cây tốt đang lớn lên. Nhưng nếu con thôi làm những điều tốt và cứ ngồi không, thì những thứ khác sẽ tự mọc lên thay vào. Tính cáu kỉnh. Những lời nói khó nghe. Quên mất Đức Chúa Trời. Vậy thì con đừng chờ đợi! Đừng nói: “Ngày mai con sẽ ngoan.” Người lười biếng kia lúc nào cũng nói “để mai”, và cả thửa ruộng của ông biến thành cỏ dại. Hôm nay con hãy gieo một hạt giống tốt — một lời nói tử tế, một lời cầu nguyện nhỏ — và để nó lớn lên. Lạy Đức Chúa Trời yêu dấu, xin giúp con đừng lười biếng. Xin giúp con gieo những điều tốt vào lòng mình ngay hôm nay, chứ không chờ đến ngày mai. A-men.",
+  "word_count": 344
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "vi"
+  ],
+  "order": 2,
+  "title": "Bức Tường Rào Đổ Nát",
+  "body_html": "<blockquote>“Ta có đi ngang qua gần ruộng kẻ biếng nhác, … thấy cây tật lê mọc khắp cùng”, và bức tường đá bao quanh đã đổ nát. — trích Châm Ngôn 24</blockquote> <p>Một ngày kia, vua Sa-lô-môn khôn ngoan đi dạo. Vua dừng lại bên một thửa ruộng nhỏ, và đứng nhìn nó rất lâu.</p> <p>Thửa ruộng ấy bừa bộn quá! Cỏ dại và cây kế đầy gai mọc khắp nơi. Còn bức tường đá bao quanh ruộng thì đã đổ xuống, chỗ này chỗ kia hở ra những lỗ lớn.</p> <p>Này con, người chủ của thửa ruộng ấy không phải là người độc ác. Ông chưa bao giờ <em>đập</em> đổ bức tường. Đó mới là điều lạ. Ông chỉ lười biếng thôi. Khi một hòn đá rơi ra, ông nói: “Để mai ta sửa.” Nhưng đến ngày mai, ông lại nói: “Để mai ta sửa” y như cũ. Thế là bức tường cứ hư mãi.</p> <p>Mà con có biết chuyện gì xảy ra cho thửa ruộng khi bức tường bị hư không? Cái gì cũng vào được hết! Chiên và dê đi lang thang qua những lỗ hổng và ăn sạch các cây tốt. Cỏ dại bay vào và mọc tràn lan. Còn khi mưa xuống thật to, chẳng có bức tường nào giữ lại lớp đất tốt, nên đất bị nước cuốn trôi mất.</p> <p>Người lười biếng tội nghiệp ấy mất cả thửa ruộng của mình — không phải vì ông làm điều gì xấu, nhưng vì ông <em>chẳng làm gì cả.</em></p> <p>Lòng của con cũng có một bức tường. Bức tường ấy được xây bằng những điều tốt giữ cho con được an toàn: cầu nguyện, lắng nghe những người dạy con về Đức Chúa Trời, và đủ can đảm để nói “không” khi có điều gì sai trái.</p> <p>Nếu chúng ta trở nên lười biếng và bỏ bê những điều tốt ấy, bức tường sẽ có lỗ hổng. Rồi đủ thứ điều xấu có thể lang thang đi vào.</p> <p>Vậy con hãy giữ cho bức tường của mình thật vững chắc! Và nếu có một hòn đá rơi ra, con không cần phải sửa mọi thứ ngay trong hôm nay. Con chỉ cần nhặt một hòn đá lên và đặt nó trở lại chỗ cũ.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, xin giúp con giữ bức tường tốt bao quanh lòng mình. Khi có một hòn đá rơi ra, xin giúp con đặt nó trở lại ngay. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Bức tường bao quanh ruộng của người lười biếng bị làm sao?",
+    "answer": "Nó đã đổ xuống và có những lỗ hổng lớn, vì mỗi lần một hòn đá rơi ra, ông lại nói: “Để mai ta sửa.”"
+   },
+   {
+    "question": "Chuyện gì đã xảy ra cho thửa ruộng khi bức tường bị hư?",
+    "answer": "Chiên và dê đi vào ăn hết các cây tốt, cỏ dại bay vào, và mưa to cuốn trôi mất lớp đất tốt."
+   },
+   {
+    "question": "Điều gì giúp giữ cho “bức tường” quanh lòng con được vững chắc?",
+    "answer": "Chương này kể ra: cầu nguyện, lắng nghe những người dạy con về Đức Chúa Trời, và đủ can đảm để nói “không” với điều sai trái. Nếu có một hòn đá rơi ra, con chỉ cần đặt lại một hòn thôi."
+   }
+  ],
+  "body_text": "“Ta có đi ngang qua gần ruộng kẻ biếng nhác, … thấy cây tật lê mọc khắp cùng”, và bức tường đá bao quanh đã đổ nát. — trích Châm Ngôn 24 Một ngày kia, vua Sa-lô-môn khôn ngoan đi dạo. Vua dừng lại bên một thửa ruộng nhỏ, và đứng nhìn nó rất lâu. Thửa ruộng ấy bừa bộn quá! Cỏ dại và cây kế đầy gai mọc khắp nơi. Còn bức tường đá bao quanh ruộng thì đã đổ xuống, chỗ này chỗ kia hở ra những lỗ lớn. Này con, người chủ của thửa ruộng ấy không phải là người độc ác. Ông chưa bao giờ đập đổ bức tường. Đó mới là điều lạ. Ông chỉ lười biếng thôi. Khi một hòn đá rơi ra, ông nói: “Để mai ta sửa.” Nhưng đến ngày mai, ông lại nói: “Để mai ta sửa” y như cũ. Thế là bức tường cứ hư mãi. Mà con có biết chuyện gì xảy ra cho thửa ruộng khi bức tường bị hư không? Cái gì cũng vào được hết! Chiên và dê đi lang thang qua những lỗ hổng và ăn sạch các cây tốt. Cỏ dại bay vào và mọc tràn lan. Còn khi mưa xuống thật to, chẳng có bức tường nào giữ lại lớp đất tốt, nên đất bị nước cuốn trôi mất. Người lười biếng tội nghiệp ấy mất cả thửa ruộng của mình — không phải vì ông làm điều gì xấu, nhưng vì ông chẳng làm gì cả. Lòng của con cũng có một bức tường. Bức tường ấy được xây bằng những điều tốt giữ cho con được an toàn: cầu nguyện, lắng nghe những người dạy con về Đức Chúa Trời, và đủ can đảm để nói “không” khi có điều gì sai trái. Nếu chúng ta trở nên lười biếng và bỏ bê những điều tốt ấy, bức tường sẽ có lỗ hổng. Rồi đủ thứ điều xấu có thể lang thang đi vào. Vậy con hãy giữ cho bức tường của mình thật vững chắc! Và nếu có một hòn đá rơi ra, con không cần phải sửa mọi thứ ngay trong hôm nay. Con chỉ cần nhặt một hòn đá lên và đặt nó trở lại chỗ cũ. Lạy Đức Chúa Trời yêu dấu, xin giúp con giữ bức tường tốt bao quanh lòng mình. Khi có một hòn đá rơi ra, xin giúp con đặt nó trở lại ngay. A-men.",
+  "word_count": 412
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "vi"
+  ],
+  "order": 3,
+  "title": "Sương Giá Và Băng Tan",
+  "body_html": "<blockquote>“Ngài cho mưa tuyết như lông chiên” … “Ngài ra lịnh làm cho tuyết giá tan ra.” — trích Thi Thiên 147</blockquote> <p>Con đã bao giờ nhìn thấy cả thế giới vào một buổi sáng mùa đông đầy sương giá chưa? Mọi thứ đều cứng, trắng xóa và đông lạnh. Những vũng nước biến thành băng. Mặt đất cứng như đá.</p> <p>Rồi một lúc sau, một làn gió ấm thổi đến. Mặt trời ló ra. Và chỉ trong vài giờ, tất cả băng và sương giá tan chảy thành nước, như thể chúng chưa từng ở đó!</p> <p>Ai làm điều đó vậy? Kinh Thánh nói chính Đức Chúa Trời làm. Ngài sai sương giá đến, và Ngài cũng sai làn gió ấm làm cho nó tan đi. Cả hai đều đến từ Ngài.</p> <p>Bên trong chúng ta cũng có thể xảy ra điều gì đó giống như vậy. Đôi khi chúng ta làm điều sai, rồi chúng ta cảm thấy điều đó. Lòng chúng ta trở nên lạnh lẽo, buồn bã và ân hận. Cảm giác buồn bã, ân hận ấy hơi giống sương giá.</p> <p>Nhưng câu chuyện chưa kết thúc ở đó đâu! Khi chúng ta thưa với Đức Chúa Trời rằng mình xin lỗi, Ngài sai tình yêu của Ngài đến như một làn gió xuân ấm áp. Tình yêu ấy làm tan đi nỗi buồn lạnh lẽo, Ngài tha thứ cho chúng ta, và lòng chúng ta lại thấy vui vẻ, ấm áp trở lại.</p> <p>Chỉ có Đức Chúa Trời mới làm tan chảy một tấm lòng như vậy. Tự chúng ta không làm được. Vì vậy, nếu có lúc nào con thấy trong lòng lạnh lẽo và ân hận vì một điều con đã làm, thì đừng cứ đông cứng như thế. Hãy thưa với Đức Chúa Trời. Ngài rất vui lòng sai làn gió ấm đến.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, khi lòng con thấy lạnh lẽo và ân hận, xin Ngài sai tình yêu ấm áp của Ngài đến làm tan chảy lòng con, và xin tha thứ cho con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Chuyện gì xảy ra với sương giá khi làn gió ấm thổi đến và mặt trời ló ra?",
+    "answer": "Chỉ trong vài giờ, tất cả băng và sương giá tan chảy thành nước, như thể chúng chưa từng ở đó."
+   },
+   {
+    "question": "Ai sai sương giá đến, và ai sai làn gió ấm làm cho nó tan đi?",
+    "answer": "Đức Chúa Trời. Chương này nói cả hai đều đến từ Ngài."
+   },
+   {
+    "question": "Khi con thấy trong lòng lạnh lẽo và ân hận vì một điều con đã làm, con có thể làm gì?",
+    "answer": "Điều chương này muốn nói: đừng cứ đông cứng như thế — hãy thưa với Đức Chúa Trời rằng con xin lỗi. Ngài rất vui lòng sai tình yêu ấm áp của Ngài đến làm tan nỗi buồn và tha thứ cho con."
+   }
+  ],
+  "body_text": "“Ngài cho mưa tuyết như lông chiên” … “Ngài ra lịnh làm cho tuyết giá tan ra.” — trích Thi Thiên 147 Con đã bao giờ nhìn thấy cả thế giới vào một buổi sáng mùa đông đầy sương giá chưa? Mọi thứ đều cứng, trắng xóa và đông lạnh. Những vũng nước biến thành băng. Mặt đất cứng như đá. Rồi một lúc sau, một làn gió ấm thổi đến. Mặt trời ló ra. Và chỉ trong vài giờ, tất cả băng và sương giá tan chảy thành nước, như thể chúng chưa từng ở đó! Ai làm điều đó vậy? Kinh Thánh nói chính Đức Chúa Trời làm. Ngài sai sương giá đến, và Ngài cũng sai làn gió ấm làm cho nó tan đi. Cả hai đều đến từ Ngài. Bên trong chúng ta cũng có thể xảy ra điều gì đó giống như vậy. Đôi khi chúng ta làm điều sai, rồi chúng ta cảm thấy điều đó. Lòng chúng ta trở nên lạnh lẽo, buồn bã và ân hận. Cảm giác buồn bã, ân hận ấy hơi giống sương giá. Nhưng câu chuyện chưa kết thúc ở đó đâu! Khi chúng ta thưa với Đức Chúa Trời rằng mình xin lỗi, Ngài sai tình yêu của Ngài đến như một làn gió xuân ấm áp. Tình yêu ấy làm tan đi nỗi buồn lạnh lẽo, Ngài tha thứ cho chúng ta, và lòng chúng ta lại thấy vui vẻ, ấm áp trở lại. Chỉ có Đức Chúa Trời mới làm tan chảy một tấm lòng như vậy. Tự chúng ta không làm được. Vì vậy, nếu có lúc nào con thấy trong lòng lạnh lẽo và ân hận vì một điều con đã làm, thì đừng cứ đông cứng như thế. Hãy thưa với Đức Chúa Trời. Ngài rất vui lòng sai làn gió ấm đến. Lạy Đức Chúa Trời yêu dấu, khi lòng con thấy lạnh lẽo và ân hận, xin Ngài sai tình yêu ấm áp của Ngài đến làm tan chảy lòng con, và xin tha thứ cho con. A-men.",
+  "word_count": 348
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "vi"
+  ],
+  "order": 4,
+  "title": "Hạt Lúa Mì Lớn Lên",
+  "body_html": "<blockquote>“Nếu hột giống lúa mì kia, chẳng chết sau khi gieo xuống đất, thì cứ ở một mình; nhưng nếu chết đi, thì kết quả được nhiều.” — trích Giăng 12</blockquote> <p>Con hãy tưởng tượng mình đang cầm một hạt giống nhỏ trong tay. Chỉ một hạt thôi.</p> <p>Bây giờ, nếu con cất nó thật kỹ trong một cái lọ trên kệ, để chẳng có chuyện gì xảy ra cho nó được, thì sau một năm, con sẽ có bao nhiêu hạt? Vẫn chỉ một hạt thôi! Nó sẽ mãi mãi là một hạt giống nhỏ lẻ loi.</p> <p>Nhưng nếu con đem nó gieo xuống đất thì sao? Một điều kỳ diệu xảy ra dưới lớp đất. Hạt giống nhỏ nứt ra và thay đổi — rồi một cây cao mọc lên, trên cây có thật nhiều, thật nhiều hạt mới! Một hạt đã trở thành nhiều hạt, vì nó được gieo xuống.</p> <p>Chúa Giê-xu nói Ngài giống như hạt giống ấy. Ngài sẵn lòng hy sinh chính mạng sống mình, giống như một hạt giống được gieo xuống đất — và vì Ngài đã làm như vậy, nên giờ đây rất, rất nhiều người có thể có sự sống mới với Đức Chúa Trời. Ngài không giữ mạng sống mình an toàn cho riêng mình. Ngài đã ban nó ra, và nó lớn lên thành một mùa gặt lớn gồm những người yêu mến Ngài.</p> <p>Chúa Giê-xu cũng nói chúng ta có thể giống như vậy. Nếu con khư khư giữ mọi thứ cho riêng mình — lúc nào cũng muốn được đứng đầu, chẳng bao giờ chia sẻ — thì con cứ nhỏ bé mãi, giống như một hạt giống nằm trong lọ. Nhưng nếu con biết cho đi, biết chia sẻ và nghĩ đến người khác, thì đời sống con sẽ lớn lên thành một điều gì đó thật lớn lao và tươi đẹp.</p> <p>Cho đi không phải là mất đi. Cho đi chính là cách để những điều tốt lành lớn lên.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, cảm ơn Ngài vì Chúa Giê-xu, Đấng đã hy sinh mạng sống Ngài vì con. Xin giúp con biết cho đi và chia sẻ, để những điều tốt lành được lớn lên. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Nếu con cất kỹ một hạt giống trong lọ, thì sau một năm con sẽ có bao nhiêu hạt?",
+    "answer": "Vẫn chỉ một hạt thôi. Nó sẽ mãi mãi là một hạt giống nhỏ lẻ loi."
+   },
+   {
+    "question": "Tại sao hạt giống được gieo xuống đất lại trở thành nhiều hạt?",
+    "answer": "Vì nó đã được gieo xuống. Nó nứt ra và thay đổi, rồi một cây cao mọc lên với thật nhiều hạt mới."
+   },
+   {
+    "question": "Tuần này, con có thể cho đi hay chia sẻ bằng cách nào?",
+    "answer": "Điều chương này muốn nói: giữ mọi thứ cho riêng mình làm con nhỏ bé như hạt giống trong lọ, còn cho đi và chia sẻ giúp những điều tốt lành lớn lên. “Cho đi không phải là mất đi.”"
+   }
+  ],
+  "body_text": "“Nếu hột giống lúa mì kia, chẳng chết sau khi gieo xuống đất, thì cứ ở một mình; nhưng nếu chết đi, thì kết quả được nhiều.” — trích Giăng 12 Con hãy tưởng tượng mình đang cầm một hạt giống nhỏ trong tay. Chỉ một hạt thôi. Bây giờ, nếu con cất nó thật kỹ trong một cái lọ trên kệ, để chẳng có chuyện gì xảy ra cho nó được, thì sau một năm, con sẽ có bao nhiêu hạt? Vẫn chỉ một hạt thôi! Nó sẽ mãi mãi là một hạt giống nhỏ lẻ loi. Nhưng nếu con đem nó gieo xuống đất thì sao? Một điều kỳ diệu xảy ra dưới lớp đất. Hạt giống nhỏ nứt ra và thay đổi — rồi một cây cao mọc lên, trên cây có thật nhiều, thật nhiều hạt mới! Một hạt đã trở thành nhiều hạt, vì nó được gieo xuống. Chúa Giê-xu nói Ngài giống như hạt giống ấy. Ngài sẵn lòng hy sinh chính mạng sống mình, giống như một hạt giống được gieo xuống đất — và vì Ngài đã làm như vậy, nên giờ đây rất, rất nhiều người có thể có sự sống mới với Đức Chúa Trời. Ngài không giữ mạng sống mình an toàn cho riêng mình. Ngài đã ban nó ra, và nó lớn lên thành một mùa gặt lớn gồm những người yêu mến Ngài. Chúa Giê-xu cũng nói chúng ta có thể giống như vậy. Nếu con khư khư giữ mọi thứ cho riêng mình — lúc nào cũng muốn được đứng đầu, chẳng bao giờ chia sẻ — thì con cứ nhỏ bé mãi, giống như một hạt giống nằm trong lọ. Nhưng nếu con biết cho đi, biết chia sẻ và nghĩ đến người khác, thì đời sống con sẽ lớn lên thành một điều gì đó thật lớn lao và tươi đẹp. Cho đi không phải là mất đi. Cho đi chính là cách để những điều tốt lành lớn lên. Lạy Đức Chúa Trời yêu dấu, cảm ơn Ngài vì Chúa Giê-xu, Đấng đã hy sinh mạng sống Ngài vì con. Xin giúp con biết cho đi và chia sẻ, để những điều tốt lành được lớn lên. A-men.",
+  "word_count": 375
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "vi"
+  ],
+  "order": 5,
+  "title": "Người Gieo Giống",
+  "body_html": "<blockquote>“Người gieo đi ra để gieo giống mình.” — trích Lu-ca 8</blockquote> <p>Ngày xưa có một bác nông dân đi ra gieo giống. Bác thò tay vào túi, bốc ra một nắm thật to, rồi vãi khắp cánh đồng của mình. Chúng ta hãy đi theo những hạt giống ấy để xem chúng rơi xuống đâu nhé!</p> <p>Có những hạt rơi trên <strong>con đường cứng</strong>, nơi mọi người qua lại. Con đường cứng quá, hạt giống không lọt xuống được. Thế là chim chóc sà xuống và — mổ lia mổ lịa — ăn sạch cả.</p> <p>Có những hạt rơi trên <strong>đất đá sỏi</strong>, nơi lớp đất rất mỏng. Những hạt này mọc lên nhanh lắm! Nhưng rễ của chúng không thể đâm sâu xuống được. Nên khi mặt trời nóng gắt chiếu ra, những cây non ấy khô héo rồi chết.</p> <p>Có những hạt rơi vào chỗ có <strong>gai góc và cỏ dại</strong> đang mọc. Hạt giống bắt đầu lớn lên — nhưng cỏ dại lớn nhanh hơn và cao hơn, chen lấn chúng, cho đến khi những cây non chẳng còn chỗ mà cũng chẳng còn ánh nắng.</p> <p>Nhưng có những hạt rơi trên <strong>đất tốt và mềm.</strong> Những hạt này đâm rễ sâu xuống và mọc thật cao lên, và chúng sinh ra thật nhiều, thật nhiều hạt lúa mới. Thật là một mùa gặt tuyệt vời!</p> <p>Chúa Giê-xu đã kể câu chuyện này, rồi Ngài cho chúng ta biết ý nghĩa của nó. Hạt giống là lời của Đức Chúa Trời. Còn những loại đất khác nhau giống như những tấm lòng khác nhau.</p> <p>Lòng con có giống con đường cứng, bận rộn quá nên không chịu lắng nghe không? Hay giống đất đá sỏi, hào hứng được một phút rồi quên mất? Hay giống đất đầy cỏ dại, chứa quá nhiều thứ khác? Hay lòng con giống đất tốt, sẵn sàng lắng nghe và lớn lên?</p> <p>Đây là một bí mật vui lắm: ngay cả đất cứng cũng có thể được xới lên và trở nên mềm và tốt. Nếu con xin Ngài, Đức Chúa Trời sẽ chuẩn bị lòng con, để lời Ngài có thể lớn lên thật to và thật mạnh mẽ bên trong con.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, xin làm cho lòng con giống như đất tốt, sẵn sàng lắng nghe Ngài và lớn lên. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Chuyện gì xảy ra với những hạt giống rơi trên con đường cứng?",
+    "answer": "Con đường cứng quá nên hạt giống không lọt xuống được, và chim chóc sà xuống ăn sạch cả."
+   },
+   {
+    "question": "Chuyện gì xảy ra với những hạt giống rơi trên đất tốt và mềm?",
+    "answer": "Chúng đâm rễ sâu xuống, mọc thật cao lên và sinh ra thật nhiều hạt lúa mới — một mùa gặt lớn."
+   },
+   {
+    "question": "Con muốn lòng mình giống loại đất nào, và lòng con có thể được chuẩn bị bằng cách nào?",
+    "answer": "Điều chương này muốn nói: hạt giống là lời của Đức Chúa Trời, và ngay cả đất cứng cũng có thể trở nên mềm. Nếu chúng ta xin Ngài, Đức Chúa Trời sẽ chuẩn bị lòng chúng ta để lời Ngài có thể lớn lên."
+   }
+  ],
+  "body_text": "“Người gieo đi ra để gieo giống mình.” — trích Lu-ca 8 Ngày xưa có một bác nông dân đi ra gieo giống. Bác thò tay vào túi, bốc ra một nắm thật to, rồi vãi khắp cánh đồng của mình. Chúng ta hãy đi theo những hạt giống ấy để xem chúng rơi xuống đâu nhé! Có những hạt rơi trên con đường cứng, nơi mọi người qua lại. Con đường cứng quá, hạt giống không lọt xuống được. Thế là chim chóc sà xuống và — mổ lia mổ lịa — ăn sạch cả. Có những hạt rơi trên đất đá sỏi, nơi lớp đất rất mỏng. Những hạt này mọc lên nhanh lắm! Nhưng rễ của chúng không thể đâm sâu xuống được. Nên khi mặt trời nóng gắt chiếu ra, những cây non ấy khô héo rồi chết. Có những hạt rơi vào chỗ có gai góc và cỏ dại đang mọc. Hạt giống bắt đầu lớn lên — nhưng cỏ dại lớn nhanh hơn và cao hơn, chen lấn chúng, cho đến khi những cây non chẳng còn chỗ mà cũng chẳng còn ánh nắng. Nhưng có những hạt rơi trên đất tốt và mềm. Những hạt này đâm rễ sâu xuống và mọc thật cao lên, và chúng sinh ra thật nhiều, thật nhiều hạt lúa mới. Thật là một mùa gặt tuyệt vời! Chúa Giê-xu đã kể câu chuyện này, rồi Ngài cho chúng ta biết ý nghĩa của nó. Hạt giống là lời của Đức Chúa Trời. Còn những loại đất khác nhau giống như những tấm lòng khác nhau. Lòng con có giống con đường cứng, bận rộn quá nên không chịu lắng nghe không? Hay giống đất đá sỏi, hào hứng được một phút rồi quên mất? Hay giống đất đầy cỏ dại, chứa quá nhiều thứ khác? Hay lòng con giống đất tốt, sẵn sàng lắng nghe và lớn lên? Đây là một bí mật vui lắm: ngay cả đất cứng cũng có thể được xới lên và trở nên mềm và tốt. Nếu con xin Ngài, Đức Chúa Trời sẽ chuẩn bị lòng con, để lời Ngài có thể lớn lên thật to và thật mạnh mẽ bên trong con. Lạy Đức Chúa Trời yêu dấu, xin làm cho lòng con giống như đất tốt, sẵn sàng lắng nghe Ngài và lớn lên. A-men.",
+  "word_count": 398
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "vi"
+  ],
+  "order": 6,
+  "title": "Mùa Xuân Trong Lòng",
+  "body_html": "<blockquote>“Chúa thăm viếng đất, và tưới ướt nó” — Ngài ban phước cho những cây non đang mọc lên. — trích Thi Thiên 65</blockquote> <p>Mùa đông thật lạnh, và mặt đất trông nâu xám, trơ trụi và trống trơn. Dường như chẳng có gì đang xảy ra cả.</p> <p>Nhưng rồi mùa xuân đến. Và một ngày kia, nếu con nhìn thật kỹ, con sẽ thấy — một mầm xanh bé xíu đang đội lên khỏi lớp đất lạnh và cứng. Nó nhỏ xíu à. Con có thể giẫm lên nó mà chẳng hề hay biết. Nhưng nó đang sống! Và mầm xanh bé xíu ấy chính là khởi đầu của cả một cánh đồng lúa mì.</p> <p>Khi con mới bắt đầu yêu mến Đức Chúa Trời, tình yêu ấy cũng có thể nhỏ bé như vậy. Có thể con nói một lời cầu nguyện nho nhỏ. Có thể con muốn được ngoan ngoãn. Có thể con tin Chúa Giê-xu chỉ một chút xíu thôi. Có thể con thấy điều đó nhỏ quá, chẳng đáng gì.</p> <p>Nhưng điều đó đáng lắm chứ! Đức Chúa Trời thấy mầm xanh bé xíu ấy trong lòng con, và nó làm Ngài rất vui. Một bác nông dân không giẫm nát một mầm non chỉ vì nó chưa phải là một cây lớn — bác chăm sóc nó, tưới nước cho nó và giúp nó lớn lên. Đó chính là điều Đức Chúa Trời làm cho con.</p> <p>Vậy con đừng bao giờ nghĩ rằng tình yêu của con dành cho Đức Chúa Trời quá nhỏ bé, chẳng đáng kể. Cây lúa mì to nhất, cao nhất trên cả cánh đồng cũng đã bắt đầu từ một mầm xanh bé xíu. Con hãy cứ hướng về Đức Chúa Trời, như một cây non hướng về phía mặt trời, và Ngài sẽ giúp con lớn lên.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, cảm ơn Ngài vì ngay cả tình yêu nhỏ bé nhất của con dành cho Ngài cũng có giá trị. Xin giúp tình yêu ấy lớn hơn và mạnh mẽ hơn. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Khi mùa xuân đến, con có thể thấy điều gì bé xíu trên cánh đồng?",
+    "answer": "Một mầm xanh bé xíu đang đội lên khỏi lớp đất lạnh và cứng — khởi đầu của cả một cánh đồng lúa mì."
+   },
+   {
+    "question": "Một bác nông dân tốt làm gì với một mầm non chưa phải là cây lớn?",
+    "answer": "Bác không giẫm nát nó. Bác chăm sóc nó, tưới nước cho nó và giúp nó lớn lên."
+   },
+   {
+    "question": "Có bao giờ con thấy tình yêu của mình dành cho Đức Chúa Trời quá nhỏ bé, chẳng đáng kể không?",
+    "answer": "Điều chương này muốn nói: ngay cả một lời cầu nguyện nho nhỏ hay một chút lòng tin cũng có giá trị và làm Đức Chúa Trời vui. Cây lúa mì cao nhất đã bắt đầu từ một mầm non bé xíu, và Đức Chúa Trời giúp nó lớn lên."
+   }
+  ],
+  "body_text": "“Chúa thăm viếng đất, và tưới ướt nó” — Ngài ban phước cho những cây non đang mọc lên. — trích Thi Thiên 65 Mùa đông thật lạnh, và mặt đất trông nâu xám, trơ trụi và trống trơn. Dường như chẳng có gì đang xảy ra cả. Nhưng rồi mùa xuân đến. Và một ngày kia, nếu con nhìn thật kỹ, con sẽ thấy — một mầm xanh bé xíu đang đội lên khỏi lớp đất lạnh và cứng. Nó nhỏ xíu à. Con có thể giẫm lên nó mà chẳng hề hay biết. Nhưng nó đang sống! Và mầm xanh bé xíu ấy chính là khởi đầu của cả một cánh đồng lúa mì. Khi con mới bắt đầu yêu mến Đức Chúa Trời, tình yêu ấy cũng có thể nhỏ bé như vậy. Có thể con nói một lời cầu nguyện nho nhỏ. Có thể con muốn được ngoan ngoãn. Có thể con tin Chúa Giê-xu chỉ một chút xíu thôi. Có thể con thấy điều đó nhỏ quá, chẳng đáng gì. Nhưng điều đó đáng lắm chứ! Đức Chúa Trời thấy mầm xanh bé xíu ấy trong lòng con, và nó làm Ngài rất vui. Một bác nông dân không giẫm nát một mầm non chỉ vì nó chưa phải là một cây lớn — bác chăm sóc nó, tưới nước cho nó và giúp nó lớn lên. Đó chính là điều Đức Chúa Trời làm cho con. Vậy con đừng bao giờ nghĩ rằng tình yêu của con dành cho Đức Chúa Trời quá nhỏ bé, chẳng đáng kể. Cây lúa mì to nhất, cao nhất trên cả cánh đồng cũng đã bắt đầu từ một mầm xanh bé xíu. Con hãy cứ hướng về Đức Chúa Trời, như một cây non hướng về phía mặt trời, và Ngài sẽ giúp con lớn lên. Lạy Đức Chúa Trời yêu dấu, cảm ơn Ngài vì ngay cả tình yêu nhỏ bé nhất của con dành cho Ngài cũng có giá trị. Xin giúp tình yêu ấy lớn hơn và mạnh mẽ hơn. A-men.",
+  "word_count": 347
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "vi"
+  ],
+  "order": 7,
+  "title": "Chiên Trước Mặt Thợ Hớt Lông",
+  "body_html": "<blockquote>“Như chiên câm ở trước mặt kẻ hớt lông, người chẳng từng mở miệng.” — trích Ê-sai 53</blockquote> <p>Con đã bao giờ thấy một con chiên với bộ lông dày, xù xù chưa? Mỗi năm một lần, bác nông dân cắt tóc cho từng con chiên. Việc đó gọi là hớt lông. Bác cắt hết lớp lông nặng nề để con chiên được mát mẻ, dễ chịu trong mùa hè nóng nực.</p> <p>Này con, một con chiên khôn ngoan làm một điều rất khéo trong lúc được hớt lông. Nó nằm thật, thật <em>yên.</em> Và vì nó nằm yên, nên chiếc kéo sắc chẳng hề làm nó đau chút nào. Nhưng nếu con chiên đá chân, vùng vẫy và chống cự — ui da! — đó là lúc nó có thể bị cắt trúng. Chính sự vùng vẫy làm nó đau, chứ không phải chiếc kéo.</p> <p>Kinh Thánh cho thấy đôi khi Đức Chúa Trời giống như bác nông dân hiền lành ấy, còn chúng ta giống như những con chiên. Đôi khi Đức Chúa Trời lấy đi khỏi chúng ta một điều mà chúng ta yêu thích. Điều đó có thể làm chúng ta rất buồn, giống như bị mất đi bộ lông ấm áp của mình.</p> <p>Nhưng con nghe này — có ba điều con cần nhớ.</p> <p>Đức Chúa Trời chỉ hớt lông khi trời <em>ấm</em>, chẳng bao giờ khi trời lạnh buốt. Nghĩa là Đức Chúa Trời biết lúc nào là đúng lúc, và Ngài sẽ chẳng bao giờ để con phải chịu quá sức mình.</p> <p>Lông chiên lúc nào cũng mọc <em>lại.</em> Đức Chúa Trời chẳng bao giờ lấy đi điều gì mà không có một điều tốt lành khác để ban cho.</p> <p>Và con sẽ ít đau nhất khi con nằm <em>yên</em> và tin cậy Ngài, thay vì đá chân và chống cự.</p> <p>Mà con có biết ai đã nằm yên hoàn toàn, như một con chiên nhỏ không? Đó là Chúa Giê-xu. Khi người ta đối xử tệ với Ngài, Ngài vẫn im lặng và hiền lành, tất cả chỉ vì Ngài yêu chúng ta. Vậy khi có điều khó khăn xảy đến, con có thể can đảm và bình tĩnh, giống như Chúa Giê-xu.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, khi có điều gì làm con buồn, xin giúp con bình tĩnh và tin cậy Ngài, vì con biết Ngài yêu con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Tại sao mỗi năm một lần bác nông dân lại hớt lông chiên?",
+    "answer": "Để con chiên được mát mẻ, dễ chịu trong mùa hè nóng nực mà không phải mang bộ lông nặng nề."
+   },
+   {
+    "question": "Tại sao con chiên khôn ngoan nằm yên trong lúc được hớt lông?",
+    "answer": "Vì nếu nó nằm yên, chiếc kéo chẳng hề làm nó đau. Chính sự vùng vẫy và đá chân mới làm nó đau, chứ không phải chiếc kéo."
+   },
+   {
+    "question": "Khi có chuyện buồn xảy ra và con mất đi một điều con yêu thích, con có thể nhớ điều gì?",
+    "answer": "Điều chương này muốn nói: Đức Chúa Trời biết lúc nào là đúng lúc, lông chiên lúc nào cũng mọc lại, và chúng ta ít đau nhất khi nằm yên và tin cậy Ngài — giống như Chúa Giê-xu, Đấng đã im lặng và hiền lành."
+   }
+  ],
+  "body_text": "“Như chiên câm ở trước mặt kẻ hớt lông, người chẳng từng mở miệng.” — trích Ê-sai 53 Con đã bao giờ thấy một con chiên với bộ lông dày, xù xù chưa? Mỗi năm một lần, bác nông dân cắt tóc cho từng con chiên. Việc đó gọi là hớt lông. Bác cắt hết lớp lông nặng nề để con chiên được mát mẻ, dễ chịu trong mùa hè nóng nực. Này con, một con chiên khôn ngoan làm một điều rất khéo trong lúc được hớt lông. Nó nằm thật, thật yên. Và vì nó nằm yên, nên chiếc kéo sắc chẳng hề làm nó đau chút nào. Nhưng nếu con chiên đá chân, vùng vẫy và chống cự — ui da! — đó là lúc nó có thể bị cắt trúng. Chính sự vùng vẫy làm nó đau, chứ không phải chiếc kéo. Kinh Thánh cho thấy đôi khi Đức Chúa Trời giống như bác nông dân hiền lành ấy, còn chúng ta giống như những con chiên. Đôi khi Đức Chúa Trời lấy đi khỏi chúng ta một điều mà chúng ta yêu thích. Điều đó có thể làm chúng ta rất buồn, giống như bị mất đi bộ lông ấm áp của mình. Nhưng con nghe này — có ba điều con cần nhớ. Đức Chúa Trời chỉ hớt lông khi trời ấm, chẳng bao giờ khi trời lạnh buốt. Nghĩa là Đức Chúa Trời biết lúc nào là đúng lúc, và Ngài sẽ chẳng bao giờ để con phải chịu quá sức mình. Lông chiên lúc nào cũng mọc lại. Đức Chúa Trời chẳng bao giờ lấy đi điều gì mà không có một điều tốt lành khác để ban cho. Và con sẽ ít đau nhất khi con nằm yên và tin cậy Ngài, thay vì đá chân và chống cự. Mà con có biết ai đã nằm yên hoàn toàn, như một con chiên nhỏ không? Đó là Chúa Giê-xu. Khi người ta đối xử tệ với Ngài, Ngài vẫn im lặng và hiền lành, tất cả chỉ vì Ngài yêu chúng ta. Vậy khi có điều khó khăn xảy đến, con có thể can đảm và bình tĩnh, giống như Chúa Giê-xu. Lạy Đức Chúa Trời yêu dấu, khi có điều gì làm con buồn, xin giúp con bình tĩnh và tin cậy Ngài, vì con biết Ngài yêu con. A-men.",
+  "word_count": 401
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "vi"
+  ],
+  "order": 8,
+  "title": "Trên Cánh Đồng Cỏ",
+  "body_html": "<blockquote>“Ngài làm cho cỏ đâm lên cho súc vật.” — trích Thi Thiên 104</blockquote> <p>Con hãy nghĩ về cỏ. Cỏ mọc ở khắp nơi — trên cánh đồng, trong công viên, bên đường. Ngày nào con cũng đi trên cỏ, và có lẽ chẳng bao giờ con nghĩ gì về nó cả.</p> <p>Nhưng đây là một câu hỏi: ai làm cho cỏ mọc lên? Có thể chúng ta sẽ nói: “Ồ, tự nó mọc thôi.” Nhưng thật ra không phải vậy đâu. Đức Chúa Trời làm cho từng ngọn cỏ một mọc lên. Ngài ở gần thế giới này đến thế, và bận rộn chăm sóc nó đến thế.</p> <p>Thế tại sao Ngài lại cho mọc ra nhiều cỏ như vậy? Kinh Thánh nói Ngài làm cho cỏ đâm lên “cho súc vật” — cho bò và chiên, để chúng có thật nhiều thức ăn. Con hãy nghĩ xem. Đức Chúa Trời làm ra thức ăn cho những con vật, là những con chẳng biết nói lời cảm ơn!</p> <p>Vậy đây là một điều tuyệt vời con cần nhớ: nếu Đức Chúa Trời chăm sóc cỏ, bò và chiên chu đáo như thế, thì Ngài còn chăm sóc <em>con</em> nhiều hơn biết bao!</p> <p>Con có biết rằng mỗi ngọn cỏ nhỏ đều nhận được một giọt sương riêng của mình vào buổi sáng không? Không phải một giọt to cho cả cánh đồng — mà là một giọt nhỏ cho từng ngọn cỏ. Đức Chúa Trời ban cho mọi vật điều chúng cần một cách cẩn thận như thế đó. Và Ngài cũng biết rõ con cần gì.</p> <p>Ngay cả khi con thấy mình nhỏ bé, hay nghĩ rằng chẳng ai để ý đến con, Đức Chúa Trời vẫn thấy con. Ngài chưa từng quên con, dù chỉ một lần.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, cảm ơn Ngài vì đã chăm sóc ngay cả cỏ ngoài đồng. Cảm ơn Ngài vì đã chăm sóc con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ai làm cho cỏ mọc lên?",
+    "answer": "Đức Chúa Trời. Chương này nói cỏ không thật sự tự mọc — Đức Chúa Trời làm cho từng ngọn cỏ một mọc lên."
+   },
+   {
+    "question": "Đức Chúa Trời làm cho cỏ mọc lên để cho ai?",
+    "answer": "Cho súc vật — cho bò và chiên — để chúng có thật nhiều thức ăn, dù chúng chẳng biết nói lời cảm ơn."
+   },
+   {
+    "question": "Nếu Đức Chúa Trời ban cho mỗi ngọn cỏ một giọt sương riêng, điều đó cho con biết gì về cách Ngài chăm sóc con?",
+    "answer": "Điều chương này muốn nói: nếu Đức Chúa Trời chăm sóc cỏ và súc vật chu đáo như thế, thì Ngài còn chăm sóc con nhiều hơn biết bao. Ngài thấy con và chưa từng quên con."
+   }
+  ],
+  "body_text": "“Ngài làm cho cỏ đâm lên cho súc vật.” — trích Thi Thiên 104 Con hãy nghĩ về cỏ. Cỏ mọc ở khắp nơi — trên cánh đồng, trong công viên, bên đường. Ngày nào con cũng đi trên cỏ, và có lẽ chẳng bao giờ con nghĩ gì về nó cả. Nhưng đây là một câu hỏi: ai làm cho cỏ mọc lên? Có thể chúng ta sẽ nói: “Ồ, tự nó mọc thôi.” Nhưng thật ra không phải vậy đâu. Đức Chúa Trời làm cho từng ngọn cỏ một mọc lên. Ngài ở gần thế giới này đến thế, và bận rộn chăm sóc nó đến thế. Thế tại sao Ngài lại cho mọc ra nhiều cỏ như vậy? Kinh Thánh nói Ngài làm cho cỏ đâm lên “cho súc vật” — cho bò và chiên, để chúng có thật nhiều thức ăn. Con hãy nghĩ xem. Đức Chúa Trời làm ra thức ăn cho những con vật, là những con chẳng biết nói lời cảm ơn! Vậy đây là một điều tuyệt vời con cần nhớ: nếu Đức Chúa Trời chăm sóc cỏ, bò và chiên chu đáo như thế, thì Ngài còn chăm sóc con nhiều hơn biết bao! Con có biết rằng mỗi ngọn cỏ nhỏ đều nhận được một giọt sương riêng của mình vào buổi sáng không? Không phải một giọt to cho cả cánh đồng — mà là một giọt nhỏ cho từng ngọn cỏ. Đức Chúa Trời ban cho mọi vật điều chúng cần một cách cẩn thận như thế đó. Và Ngài cũng biết rõ con cần gì. Ngay cả khi con thấy mình nhỏ bé, hay nghĩ rằng chẳng ai để ý đến con, Đức Chúa Trời vẫn thấy con. Ngài chưa từng quên con, dù chỉ một lần. Lạy Đức Chúa Trời yêu dấu, cảm ơn Ngài vì đã chăm sóc ngay cả cỏ ngoài đồng. Cảm ơn Ngài vì đã chăm sóc con. A-men.",
+  "word_count": 327
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "vi"
+  ],
+  "order": 9,
+  "title": "Niềm Vui Mùa Gặt",
+  "body_html": "<blockquote>“Mọi người đều vui mừng trước mặt Chúa, như vui mừng trong ngày mùa gặt.” — trích Ê-sai 9</blockquote> <p>Suốt cả mùa hè, bác nông dân làm việc vất vả. Bác gieo hạt giống. Bác nhổ cỏ dại. Bác chờ đợi mãi cho lúa lớn lên. Phải mất một thời gian lâu, thật lâu.</p> <p>Và rồi cuối cùng, ngày tuyệt vời nhất cũng đến — ngày mùa gặt! Lúa đã chín vàng óng. Mọi người cùng phụ nhau gặt lúa đem về. Kho lúa đầy ắp. Và khi công việc xong xuôi, có một bữa tiệc mùa gặt thật lớn, thật vui, và mọi người cùng nhau ăn mừng.</p> <p>Kinh Thánh nói con dân của Đức Chúa Trời có những lúc vui mừng giống như ngày mùa gặt. Mà con có biết lúc vui mừng nhất là lúc nào không? Đó là khi có một người bắt đầu yêu mến Đức Chúa Trời.</p> <p>Người đầu tiên kể những câu chuyện về nhà nông này, ông Spurgeon, đã nói rằng ngày vui nhất trong cả cuộc đời ông là ngày ông giúp được chỉ một người biết đến Chúa Giê-xu. Ông nói ông còn vui hơn cả khi có ai đó cho ông tất cả của cải trên thế giới này!</p> <p>Và có một luật của nhà nông đáng để con biết: <strong>gieo gì thì gặt nấy.</strong> Nếu bác nông dân gieo hạt lúa mì tốt, bác sẽ gặt được lúa mì tốt. Vậy nếu bây giờ con gieo những điều tốt vào đời sống mình — lòng tử tế, những lời cầu nguyện, tình yêu dành cho Đức Chúa Trời — thì một ngày kia con sẽ có một mùa gặt thật tuyệt vời, thật vui.</p> <p>Hôm nay con sẽ gieo điều gì?</p> <p><em>Lạy Đức Chúa Trời yêu dấu, xin giúp con mỗi ngày gieo những điều tốt lành và tử tế, và cảm ơn Ngài vì mùa gặt vui mừng mà Ngài đang làm cho lớn lên trong con. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Chuyện gì xảy ra vào ngày mùa gặt, khi công việc của bác nông dân đã xong?",
+    "answer": "Mọi người cùng phụ nhau gặt lúa vàng óng đem về, kho lúa đầy ắp, và có một bữa tiệc mùa gặt thật lớn, thật vui."
+   },
+   {
+    "question": "Ông Spurgeon nói ngày vui nhất trong cả cuộc đời ông là ngày nào?",
+    "answer": "Là ngày ông giúp được chỉ một người biết đến Chúa Giê-xu. Ông còn vui hơn cả khi được cho tất cả của cải trên thế giới."
+   },
+   {
+    "question": "Hôm nay con có thể gieo những điều tốt nào vào đời sống mình?",
+    "answer": "Điều chương này muốn nói: gieo gì thì gặt nấy. Bây giờ gieo lòng tử tế, những lời cầu nguyện và tình yêu dành cho Đức Chúa Trời thì sẽ có một mùa gặt thật tuyệt vời, thật vui."
+   }
+  ],
+  "body_text": "“Mọi người đều vui mừng trước mặt Chúa, như vui mừng trong ngày mùa gặt.” — trích Ê-sai 9 Suốt cả mùa hè, bác nông dân làm việc vất vả. Bác gieo hạt giống. Bác nhổ cỏ dại. Bác chờ đợi mãi cho lúa lớn lên. Phải mất một thời gian lâu, thật lâu. Và rồi cuối cùng, ngày tuyệt vời nhất cũng đến — ngày mùa gặt! Lúa đã chín vàng óng. Mọi người cùng phụ nhau gặt lúa đem về. Kho lúa đầy ắp. Và khi công việc xong xuôi, có một bữa tiệc mùa gặt thật lớn, thật vui, và mọi người cùng nhau ăn mừng. Kinh Thánh nói con dân của Đức Chúa Trời có những lúc vui mừng giống như ngày mùa gặt. Mà con có biết lúc vui mừng nhất là lúc nào không? Đó là khi có một người bắt đầu yêu mến Đức Chúa Trời. Người đầu tiên kể những câu chuyện về nhà nông này, ông Spurgeon, đã nói rằng ngày vui nhất trong cả cuộc đời ông là ngày ông giúp được chỉ một người biết đến Chúa Giê-xu. Ông nói ông còn vui hơn cả khi có ai đó cho ông tất cả của cải trên thế giới này! Và có một luật của nhà nông đáng để con biết: gieo gì thì gặt nấy. Nếu bác nông dân gieo hạt lúa mì tốt, bác sẽ gặt được lúa mì tốt. Vậy nếu bây giờ con gieo những điều tốt vào đời sống mình — lòng tử tế, những lời cầu nguyện, tình yêu dành cho Đức Chúa Trời — thì một ngày kia con sẽ có một mùa gặt thật tuyệt vời, thật vui. Hôm nay con sẽ gieo điều gì? Lạy Đức Chúa Trời yêu dấu, xin giúp con mỗi ngày gieo những điều tốt lành và tử tế, và cảm ơn Ngài vì mùa gặt vui mừng mà Ngài đang làm cho lớn lên trong con. A-men.",
+  "word_count": 331
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "vi"
+  ],
+  "order": 10,
+  "title": "Mót Lúa",
+  "body_html": "<blockquote>“Hãy để cho nàng mót, dẫu ở giữa các bó lúa, chớ làm xấu hổ nàng.” — trích câu chuyện về Ru-tơ</blockquote> <p>Ngày xưa có một người phụ nữ trẻ tên là Ru-tơ. Cô rất nghèo, và cô chẳng có gì để ăn. Vì vậy cô làm điều mà những người nghèo thời ấy vẫn làm: cô ra đồng để <em>mót lúa.</em></p> <p>Mót lúa nghĩa là đi theo sau những người thợ gặt và nhặt những bông lúa nhỏ mà họ đánh rơi trong lúc làm việc. Những gì còn sót lại. Đó là một việc vất vả, cứ phải cúi xuống hết lần này đến lần khác, chỉ để nhặt được một ít.</p> <p>Thửa ruộng mà Ru-tơ đến mót là của một người đàn ông tốt bụng, nhân hậu tên là Bô-ô. Khi Bô-ô thấy Ru-tơ làm việc chăm chỉ như vậy, ông đã làm một điều thật dễ thương. Ông lặng lẽ dặn những người thợ của mình: “Hãy cố ý để rơi thêm ít lúa, ngay chỗ cô ấy có thể tìm thấy. Và hãy đối xử tử tế với cô ấy.” Ông lo cho cô có thật nhiều lúa — mà ông chẳng hề nói cho cô biết ông đã làm điều đó.</p> <p>Đức Chúa Trời giống như ông Bô-ô nhân hậu. Có thể con thấy mình nhỏ bé, hay nghĩ rằng mình chẳng có được bao nhiêu. Nhưng Đức Chúa Trời có thật nhiều điều tốt lành dành cho con, và Ngài muốn con đến nhặt lấy. Con chỉ cần cúi xuống và nhặt lên thôi — nghĩa là đến với Ngài, lắng nghe Ngài và cầu nguyện.</p> <p>Và đây là một điều thật dễ thương: khi Ru-tơ đã mót đủ, cô mang một phần về nhà để chia sẻ với một người đang đói. Khi Đức Chúa Trời làm cho lòng con đầy dẫy những điều tốt lành, con cũng có thể chia sẻ chúng với người khác.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, cảm ơn Ngài vì đã rất nhân từ và rộng rãi với con. Xin giúp con đến với Ngài, và chia sẻ những món quà tốt lành của Ngài với người khác. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ru-tơ đã làm gì ngoài đồng để có thức ăn?",
+    "answer": "Cô mót lúa — đi theo sau những người thợ gặt và nhặt những bông lúa nhỏ mà họ đánh rơi."
+   },
+   {
+    "question": "Bô-ô đã làm điều tử tế nào cho Ru-tơ?",
+    "answer": "Ông dặn những người thợ của mình cố ý để rơi thêm lúa ở chỗ cô có thể tìm thấy và đối xử tử tế với cô — mà ông chẳng hề nói cho cô biết ông đã làm điều đó."
+   },
+   {
+    "question": "Con có thể “nhặt lấy” những món quà tốt lành của Đức Chúa Trời bằng cách nào, và con có thể chia sẻ chúng với ai?",
+    "answer": "Điều chương này muốn nói: Đức Chúa Trời nhân hậu giống như Bô-ô. Chúng ta nhặt lấy bằng cách đến với Ngài, lắng nghe và cầu nguyện — và giống như Ru-tơ mang thức ăn về nhà, chúng ta có thể chia sẻ những món quà tốt lành của Ngài với người khác."
+   }
+  ],
+  "body_text": "“Hãy để cho nàng mót, dẫu ở giữa các bó lúa, chớ làm xấu hổ nàng.” — trích câu chuyện về Ru-tơ Ngày xưa có một người phụ nữ trẻ tên là Ru-tơ. Cô rất nghèo, và cô chẳng có gì để ăn. Vì vậy cô làm điều mà những người nghèo thời ấy vẫn làm: cô ra đồng để mót lúa. Mót lúa nghĩa là đi theo sau những người thợ gặt và nhặt những bông lúa nhỏ mà họ đánh rơi trong lúc làm việc. Những gì còn sót lại. Đó là một việc vất vả, cứ phải cúi xuống hết lần này đến lần khác, chỉ để nhặt được một ít. Thửa ruộng mà Ru-tơ đến mót là của một người đàn ông tốt bụng, nhân hậu tên là Bô-ô. Khi Bô-ô thấy Ru-tơ làm việc chăm chỉ như vậy, ông đã làm một điều thật dễ thương. Ông lặng lẽ dặn những người thợ của mình: “Hãy cố ý để rơi thêm ít lúa, ngay chỗ cô ấy có thể tìm thấy. Và hãy đối xử tử tế với cô ấy.” Ông lo cho cô có thật nhiều lúa — mà ông chẳng hề nói cho cô biết ông đã làm điều đó. Đức Chúa Trời giống như ông Bô-ô nhân hậu. Có thể con thấy mình nhỏ bé, hay nghĩ rằng mình chẳng có được bao nhiêu. Nhưng Đức Chúa Trời có thật nhiều điều tốt lành dành cho con, và Ngài muốn con đến nhặt lấy. Con chỉ cần cúi xuống và nhặt lên thôi — nghĩa là đến với Ngài, lắng nghe Ngài và cầu nguyện. Và đây là một điều thật dễ thương: khi Ru-tơ đã mót đủ, cô mang một phần về nhà để chia sẻ với một người đang đói. Khi Đức Chúa Trời làm cho lòng con đầy dẫy những điều tốt lành, con cũng có thể chia sẻ chúng với người khác. Lạy Đức Chúa Trời yêu dấu, cảm ơn Ngài vì đã rất nhân từ và rộng rãi với con. Xin giúp con đến với Ngài, và chia sẻ những món quà tốt lành của Ngài với người khác. A-men.",
+  "word_count": 363
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "vi"
+  ],
+  "order": 11,
+  "title": "Đập Lúa",
+  "body_html": "<blockquote>“Người ta vẫn xay lúa mì; nhưng chẳng đập luôn.” — trích Ê-sai 28</blockquote> <p>Khi lúa mì đã được gặt về, còn một việc nữa phải làm, và việc này trông hơi mạnh tay một chút. Con biết không, mỗi hạt lúa mì đều bị kẹt bên trong một lớp vỏ cứng, vô dụng, gọi là vỏ trấu. Để lấy hạt lúa tốt ra, bác nông dân phải đập nó — bịch, bịch, bịch — bằng một cây gậy. Việc này gọi là đập lúa.</p> <p>Trông có vẻ như bác nông dân đang đối xử không tử tế với lúa mì. Nhưng không phải vậy đâu! Bác đang giải phóng hạt lúa tốt khỏi lớp vỏ bám chặt quanh nó. Bác phải làm vậy, nếu không hạt lúa tốt sẽ cứ bị nhốt mãi bên trong.</p> <p>Đôi khi những điều khó khăn hay buồn bã xảy đến với chúng ta, và chúng ta có thể cảm thấy hơi giống như đang bị đập lúa. Nhưng đây là hai điều con cần nhớ, và cả hai đều đầy sự an ủi.</p> <p>Thứ nhất: bác nông dân chỉ mất công đập những hạt lúa <em>tốt</em> mà thôi. Bác để yên cỏ dại. Vậy khi một thời gian khó khăn đến, điều đó không có nghĩa là Đức Chúa Trời đã quên con. Điều đó có nghĩa là con rất quý giá đối với Ngài, như lúa mì tốt vậy.</p> <p>Thứ hai: bác nông dân chẳng bao giờ, chẳng bao giờ đập lúa mãi mãi. Bác luôn luôn dừng lại! Những thời gian khó khăn cũng không kéo dài mãi mãi. Đức Chúa Trời hiền lành và cẩn thận, và Ngài sẽ chẳng bao giờ để con phải chịu quá sức mình. Chẳng bao lâu, tiếng đập sẽ dừng lại, và hạt lúa tốt được an toàn.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, khi có những điều khó khăn xảy đến, xin giúp con nhớ rằng Ngài không quên con, và điều đó sẽ không kéo dài mãi mãi. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Tại sao bác nông dân lại đập lúa mì bằng gậy?",
+    "answer": "Để giải phóng hạt lúa tốt khỏi lớp vỏ cứng, vô dụng (vỏ trấu) bám quanh nó. Việc này gọi là đập lúa."
+   },
+   {
+    "question": "Bác nông dân có đập cả cỏ dại không?",
+    "answer": "Không. Bác chỉ mất công đập những hạt lúa tốt mà thôi, và để yên cỏ dại."
+   },
+   {
+    "question": "Khi một thời gian khó khăn hay buồn bã đến, hai điều nào có thể giúp con thấy khá hơn?",
+    "answer": "Hai điều an ủi trong chương này: thời gian khó khăn không có nghĩa là Đức Chúa Trời đã quên con — con rất quý giá, như lúa mì tốt — và nó sẽ không kéo dài mãi mãi, vì bác nông dân luôn luôn dừng lại."
+   }
+  ],
+  "body_text": "“Người ta vẫn xay lúa mì; nhưng chẳng đập luôn.” — trích Ê-sai 28 Khi lúa mì đã được gặt về, còn một việc nữa phải làm, và việc này trông hơi mạnh tay một chút. Con biết không, mỗi hạt lúa mì đều bị kẹt bên trong một lớp vỏ cứng, vô dụng, gọi là vỏ trấu. Để lấy hạt lúa tốt ra, bác nông dân phải đập nó — bịch, bịch, bịch — bằng một cây gậy. Việc này gọi là đập lúa. Trông có vẻ như bác nông dân đang đối xử không tử tế với lúa mì. Nhưng không phải vậy đâu! Bác đang giải phóng hạt lúa tốt khỏi lớp vỏ bám chặt quanh nó. Bác phải làm vậy, nếu không hạt lúa tốt sẽ cứ bị nhốt mãi bên trong. Đôi khi những điều khó khăn hay buồn bã xảy đến với chúng ta, và chúng ta có thể cảm thấy hơi giống như đang bị đập lúa. Nhưng đây là hai điều con cần nhớ, và cả hai đều đầy sự an ủi. Thứ nhất: bác nông dân chỉ mất công đập những hạt lúa tốt mà thôi. Bác để yên cỏ dại. Vậy khi một thời gian khó khăn đến, điều đó không có nghĩa là Đức Chúa Trời đã quên con. Điều đó có nghĩa là con rất quý giá đối với Ngài, như lúa mì tốt vậy. Thứ hai: bác nông dân chẳng bao giờ, chẳng bao giờ đập lúa mãi mãi. Bác luôn luôn dừng lại! Những thời gian khó khăn cũng không kéo dài mãi mãi. Đức Chúa Trời hiền lành và cẩn thận, và Ngài sẽ chẳng bao giờ để con phải chịu quá sức mình. Chẳng bao lâu, tiếng đập sẽ dừng lại, và hạt lúa tốt được an toàn. Lạy Đức Chúa Trời yêu dấu, khi có những điều khó khăn xảy đến, xin giúp con nhớ rằng Ngài không quên con, và điều đó sẽ không kéo dài mãi mãi. A-men.",
+  "word_count": 337
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "vi"
+  ],
+  "order": 12,
+  "title": "Lúa Mì Trong Kho",
+  "body_html": "<blockquote>“Hãy thâu trữ lúa mì vào kho ta.” — trích Ma-thi-ơ 13</blockquote> <p>Đây là phần cuối cùng của mùa gặt, và đó là phần vui nhất trong tất cả.</p> <p>Khi lúa mì tốt cuối cùng đã sẵn sàng, bác nông dân gom hết lại và mang vào kho lúa một cách an toàn. Và một khi đã ở bên trong, chẳng còn gì có thể làm hại nó nữa. Không mưa. Không sương giá. Không gió lạnh. Nó được an toàn, khô ráo và ấm áp, ngay đúng chỗ của nó.</p> <p>Chúa Giê-xu đã kể một câu chuyện giống hệt như vậy. Ngài nói rằng một ngày kia Đức Chúa Trời sẽ nhóm hết con dân của Ngài lại với nhau — những người đến từ mọi đất nước trên thế giới, người lớn và trẻ nhỏ, người trẻ và người già — và đưa họ về nhà an toàn để ở với Ngài. Giống như lúa mì được thâu vào kho.</p> <p>Ngôi nhà an toàn, vui vẻ và đời đời ấy được gọi là thiên đàng. Đó là nơi không còn khóc lóc và không còn buồn bã — chỉ có được ở với Đức Chúa Trời, và được an toàn, mãi mãi.</p> <p>Vì vậy chúng ta chẳng bao giờ cần phải sợ lúc cuộc đời này kết thúc. Đối với mọi người yêu mến Đức Chúa Trời, lúc kết thúc ấy chẳng phải là điều buồn chút nào. Nó giống như lúa mì cuối cùng được đưa vào kho. Đó là được về nhà.</p> <p>Con có muốn trở thành một phần trong mùa gặt của Đức Chúa Trời không? Con có thể mà! Con chỉ cần thưa với Ngài rằng con muốn thuộc về Ngài. Rồi một ngày kia, con sẽ được nhóm lại và đưa về nhà an toàn.</p> <p><em>Lạy Đức Chúa Trời yêu dấu, cảm ơn Ngài vì Ngài nhóm con dân của Ngài về nhà an toàn. Con muốn thuộc về Ngài. Xin giữ con ở gần Ngài, hôm nay và mãi mãi. A-men.</em></p>",
+  "study_questions": [
+   {
+    "question": "Bác nông dân cất lúa mì tốt ở đâu khi nó đã sẵn sàng?",
+    "answer": "Bác mang nó vào kho lúa một cách an toàn, nơi chẳng có mưa, sương giá hay gió lạnh nào làm hại được nó."
+   },
+   {
+    "question": "Trong câu chuyện của Chúa Giê-xu, Đức Chúa Trời sẽ nhóm ai lại với nhau như lúa mì được thâu vào kho?",
+    "answer": "Hết thảy con dân của Ngài, từ mọi đất nước — người lớn và trẻ nhỏ, người trẻ và người già — được đưa về nhà an toàn để ở với Ngài."
+   },
+   {
+    "question": "Tại sao những người yêu mến Đức Chúa Trời không cần phải sợ lúc cuộc đời này kết thúc?",
+    "answer": "Điều chương này muốn nói: đối với mọi người yêu mến Đức Chúa Trời, lúc cuộc đời kết thúc giống như lúa mì được đưa vào kho — đó là được về nhà trên thiên đàng, an toàn mãi mãi. Bất cứ ai cũng có thể thưa với Đức Chúa Trời rằng mình muốn thuộc về Ngài."
+   }
+  ],
+  "body_text": "“Hãy thâu trữ lúa mì vào kho ta.” — trích Ma-thi-ơ 13 Đây là phần cuối cùng của mùa gặt, và đó là phần vui nhất trong tất cả. Khi lúa mì tốt cuối cùng đã sẵn sàng, bác nông dân gom hết lại và mang vào kho lúa một cách an toàn. Và một khi đã ở bên trong, chẳng còn gì có thể làm hại nó nữa. Không mưa. Không sương giá. Không gió lạnh. Nó được an toàn, khô ráo và ấm áp, ngay đúng chỗ của nó. Chúa Giê-xu đã kể một câu chuyện giống hệt như vậy. Ngài nói rằng một ngày kia Đức Chúa Trời sẽ nhóm hết con dân của Ngài lại với nhau — những người đến từ mọi đất nước trên thế giới, người lớn và trẻ nhỏ, người trẻ và người già — và đưa họ về nhà an toàn để ở với Ngài. Giống như lúa mì được thâu vào kho. Ngôi nhà an toàn, vui vẻ và đời đời ấy được gọi là thiên đàng. Đó là nơi không còn khóc lóc và không còn buồn bã — chỉ có được ở với Đức Chúa Trời, và được an toàn, mãi mãi. Vì vậy chúng ta chẳng bao giờ cần phải sợ lúc cuộc đời này kết thúc. Đối với mọi người yêu mến Đức Chúa Trời, lúc kết thúc ấy chẳng phải là điều buồn chút nào. Nó giống như lúa mì cuối cùng được đưa vào kho. Đó là được về nhà. Con có muốn trở thành một phần trong mùa gặt của Đức Chúa Trời không? Con có thể mà! Con chỉ cần thưa với Ngài rằng con muốn thuộc về Ngài. Rồi một ngày kia, con sẽ được nhóm lại và đưa về nhà an toàn. Lạy Đức Chúa Trời yêu dấu, cảm ơn Ngài vì Ngài nhóm con dân của Ngài về nhà an toàn. Con muốn thuộc về Ngài. Xin giữ con ở gần Ngài, hôm nay và mãi mãi. A-men.",
+  "word_count": 339
+ }
+}
+]
