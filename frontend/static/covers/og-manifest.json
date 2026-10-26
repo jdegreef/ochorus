@@ -22447,6 +22447,17 @@
 				482
 			]
 		},
+		"the-city-of-god": {
+			"ground": "b153508efec76852aa7a95c0152d807cc8217e27e938a71a7f5ea6ce09d40fb0",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-everlasting-man": {
 			"ground": "7cd08728ce0c3411240e7980ae0c2a467bcf8b5776f9c54a9a8e914df0196893",
 			"style": "revival",

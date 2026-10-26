@@ -358,6 +358,11 @@
   "the-circumcision-of-the-heart": {
    "space-before-punct": 1
   },
+  "the-city-of-god": {
+   "orphan-close-quote": 3,
+   "space-before-punct": 10,
+   "word-fusion": 2
+  },
   "the-cloud-of-witnesses": {
    "space-before-punct": 12
   },
