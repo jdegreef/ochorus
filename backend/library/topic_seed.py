@@ -259,6 +259,7 @@ TOPICS = [
             "the-bruised-reed",
             "mortification-of-sin",
             "communion-with-god",
+            "the-glory-of-christ",
             "all-things-for-good",
             "ten-commandments",
             "a-body-of-divinity",

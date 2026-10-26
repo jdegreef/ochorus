@@ -852,6 +852,15 @@ BOOKS: list[BookEntry] = [
               cover_color="#2f4f6f",
               skip=("Title Page.", "Prefatory note.", "Analysis.", "Title."),
               keep=("i.vii.iii",)),
+    # Meditations and Discourses on the Glory of Christ (1684) and the second
+    # part published after Owen's death (1691), in Goold's edition of the Works
+    # (CCEL owen/glory). Goold's prefatory note and the 1691 publisher's
+    # preface to the second part are not Owen's.
+    BookEntry("the-glory-of-christ", "The Glory of Christ", "john-owen",
+              "ccel", "owen/glory",
+              subtitle="Meditations and Discourses on the Glory of Christ",
+              cover_color="#6b4e1f",
+              skip=("Title page.", "Prefatory note.", "Original preface.")),
     # Two early African-American spiritual autobiographies, keyed (not OCR'd) by
     # UNC's Documenting the American South. Both first published pre-1929, US
     # public domain. See `import_docsouth`. Amanda Smith's per-chapter titles are
