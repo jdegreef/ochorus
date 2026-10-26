@@ -15367,6 +15367,17 @@
 				482
 			]
 		},
+		"large-catechism": {
+			"ground": "d61d852e5ecd861a104941c12c7998f7637b6bfa0897250abacc1e7091e2f39d",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"lectures-to-my-students": {
 			"ground": "37427d61536e130bbc8758ffd215417b5fd83a18d2235b959f50e85cfb657284",
 			"style": "revival",

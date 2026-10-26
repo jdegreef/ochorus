@@ -486,6 +486,7 @@ TOPICS = [
         [
             "the-fundamental-doctrines-of-the-christian-faith",
             "enchiridion",
+            "large-catechism",
             "on-the-incarnation",
             "freedom-of-the-will",
             "bondage-of-the-will",
