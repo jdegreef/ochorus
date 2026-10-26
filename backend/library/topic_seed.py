@@ -332,6 +332,7 @@ TOPICS = [
         "and shepherds.",
         [
             "confessions",
+            "on-christian-doctrine",
             "enchiridion",
             "on-the-incarnation",
             "life-of-antony",
