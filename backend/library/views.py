@@ -2337,6 +2337,9 @@ class ScriptureGraphView(APIView):
             reference_label,
             verse_ids_for,
         )
+        from .scripture_graph import (
+            verse_text as graph_verse_text,
+        )
         from .search import fallback_snippet
 
         target = book_from_slug(book)
@@ -2354,6 +2357,10 @@ class ScriptureGraphView(APIView):
         floor = _scripture_floor(verse)
         if len(rows) < floor:
             raise Http404("Too few citations for a page.")
+        # And the text rule, as `qualifying_pages` applies it: no page for a
+        # book the bundled Bibles don't carry (the apocrypha).
+        if not graph_verse_text(ids[0]):
+            raise Http404("No Bible text for this reference.")
 
         # The TRUE number of citing chapters, taken before the cap. Reporting
         # len(passages) here would have said "40" for a passage 113 chapters
