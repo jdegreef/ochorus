@@ -20992,6 +20992,33 @@
 				515
 			]
 		},
+		"sw/men-of-prayer-2": {
+			"ground": "d3d5c0b35bb12de18b430b45115b564c561c2e87a3a4fc18808d949e1e3d5cf3",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[170, 308, 430, 384],
+					[177, 374, 423, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
 		"sw/men-who-moved-heaven": {
 			"ground": "1611dfa227f89fc19c77811c06ee397aa62cd7ba5d6555356edf30873056de8b",
 			"style": "originals",

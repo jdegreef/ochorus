@@ -1,0 +1,327 @@
+{
+  "kind": "book",
+  "slug": "men-of-prayer-2",
+  "language": "sw",
+  "job_issue": 5181,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "John 15:7",
+      "status": "self_rendered",
+      "block_index": 27
+    },
+    {
+      "reference": "Romans 8:26",
+      "status": "self_rendered",
+      "block_index": 28
+    },
+    {
+      "reference": "Ephesians 6:18",
+      "status": "mined",
+      "source_file": "watchman-nee-a-life.sw.json",
+      "block_index": 29
+    },
+    {
+      "reference": "Ephesians 6:18",
+      "status": "mined",
+      "source_file": "watchman-nee-a-life.sw.json",
+      "block_index": 30
+    },
+    {
+      "reference": "Isaiah 45:22",
+      "status": "mined",
+      "source_file": "talks-to-the-farmer.sw.json",
+      "block_index": 45
+    },
+    {
+      "reference": "Jeremiah 33:3",
+      "status": "mined",
+      "source_file": "men-and-women-who-gave-everything-2.sw.json",
+      "block_index": 55
+    },
+    {
+      "reference": "Hebrews 4:16",
+      "status": "self_rendered",
+      "block_index": 56
+    },
+    {
+      "reference": "Matthew 21:22",
+      "status": "mined",
+      "source_file": "divine-healing.sw.json",
+      "block_index": 57
+    },
+    {
+      "reference": "2 Samuel 7:25",
+      "status": "self_rendered",
+      "block_index": 62
+    },
+    {
+      "reference": "2 Samuel 7:25",
+      "status": "self_rendered",
+      "block_index": 66
+    },
+    {
+      "reference": "Genesis 1:31",
+      "status": "self_rendered",
+      "block_index": 69
+    },
+    {
+      "reference": "Romans 8:26",
+      "status": "self_rendered",
+      "block_index": 81
+    },
+    {
+      "reference": "1 John 5:14",
+      "status": "mined",
+      "source_file": "watchman-nee-a-life.sw.json",
+      "block_index": 82
+    },
+    {
+      "reference": "1 John 5:15",
+      "status": "self_rendered",
+      "block_index": 82
+    },
+    {
+      "reference": "Ephesians 6:18",
+      "status": "mined",
+      "source_file": "watchman-nee-a-life.sw.json",
+      "block_index": 83
+    },
+    {
+      "reference": "Romans 10:17",
+      "status": "self_rendered",
+      "block_index": 106
+    },
+    {
+      "reference": "Acts 1:8",
+      "status": "mined",
+      "source_file": "men-and-women-who-gave-everything-2.sw.json",
+      "block_index": 107
+    },
+    {
+      "reference": "Matthew 9:37-38",
+      "status": "self_rendered",
+      "block_index": 108
+    },
+    {
+      "reference": "Romans 10:17",
+      "status": "mined",
+      "source_file": "he-holds-my-tomorrows.sw.json",
+      "block_index": 117
+    },
+    {
+      "reference": "James 5:16",
+      "status": "mined",
+      "source_file": "women-who-moved-heaven-2.sw.json",
+      "block_index": 133
+    },
+    {
+      "reference": "Romans 8:26",
+      "status": "self_rendered",
+      "block_index": 134
+    },
+    {
+      "reference": "1 John 5:14",
+      "status": "mined",
+      "source_file": "watchman-nee-a-life.sw.json",
+      "block_index": 135
+    },
+    {
+      "reference": "Luke 18:1",
+      "status": "mined",
+      "source_file": "days-of-heaven-upon-earth.sw.json",
+      "block_index": 159
+    },
+    {
+      "reference": "Ephesians 6:18",
+      "status": "mined",
+      "source_file": "watchman-nee-a-life.sw.json",
+      "block_index": 160
+    },
+    {
+      "reference": "John 15:16",
+      "status": "self_rendered",
+      "block_index": 161
+    },
+    {
+      "reference": "Isaiah 44:3",
+      "status": "self_rendered",
+      "block_index": 188
+    },
+    {
+      "reference": "2 Chronicles 7:14",
+      "status": "self_rendered",
+      "block_index": 189
+    },
+    {
+      "reference": "Philippians 4:6",
+      "status": "mined",
+      "source_file": "days-of-heaven-upon-earth.sw.json",
+      "block_index": 190
+    },
+    {
+      "reference": "Luke 11:13",
+      "status": "self_rendered",
+      "block_index": 214
+    },
+    {
+      "reference": "Isaiah 44:3",
+      "status": "self_rendered",
+      "block_index": 215
+    },
+    {
+      "reference": "Acts 2:17",
+      "status": "self_rendered",
+      "block_index": 216
+    },
+    {
+      "reference": "Isaiah 62:6-7",
+      "status": "self_rendered",
+      "block_index": 244
+    },
+    {
+      "reference": "Ezekiel 22:30",
+      "status": "self_rendered",
+      "block_index": 245
+    },
+    {
+      "reference": "Romans 8:26",
+      "status": "self_rendered",
+      "block_index": 246
+    },
+    {
+      "reference": "Romans 10:14",
+      "status": "self_rendered",
+      "block_index": 271
+    },
+    {
+      "reference": "Romans 10:14",
+      "status": "mined",
+      "source_file": "watchman-nee-a-life.sw.json",
+      "block_index": 272
+    },
+    {
+      "reference": "2 Timothy 4:2",
+      "status": "mined",
+      "source_file": "men-who-tended-the-flock-2.sw.json",
+      "block_index": 273
+    },
+    {
+      "reference": "John 3:16",
+      "status": "mined",
+      "source_file": "absolute-surrender.sw.json",
+      "block_index": 274
+    },
+    {
+      "reference": "Jeremiah 29:13",
+      "status": "mined",
+      "source_file": "ministry-of-intercession.sw.json",
+      "block_index": 300
+    },
+    {
+      "reference": "John 14:21",
+      "status": "mined",
+      "source_file": "the-christians-secret-of-a-happy-life-4.sw.json",
+      "block_index": 301
+    },
+    {
+      "reference": "John 14:21",
+      "status": "mined",
+      "source_file": "the-christians-secret-of-a-happy-life-4.sw.json",
+      "block_index": 302
+    },
+    {
+      "reference": "Isaiah 55:8-9",
+      "status": "self_rendered",
+      "block_index": 303
+    },
+    {
+      "reference": "Matthew 28:19-20",
+      "status": "self_rendered",
+      "block_index": 328
+    },
+    {
+      "reference": "Acts 1:8",
+      "status": "mined",
+      "source_file": "men-and-women-who-gave-everything-2.sw.json",
+      "block_index": 329
+    },
+    {
+      "reference": "1 John 5:14-15",
+      "status": "mined",
+      "source_file": "watchman-nee-a-life.sw.json",
+      "block_index": 330
+    },
+    {
+      "reference": "1 John 5:14",
+      "status": "mined",
+      "source_file": "watchman-nee-a-life.sw.json",
+      "block_index": 338
+    },
+    {
+      "reference": "2 Chronicles 7:14",
+      "status": "self_rendered",
+      "block_index": 339
+    },
+    {
+      "reference": "Mark 16:15",
+      "status": "self_rendered",
+      "block_index": 354
+    },
+    {
+      "reference": "John 10:27",
+      "status": "mined",
+      "source_file": "he-holds-my-tomorrows.sw.json",
+      "block_index": 355
+    },
+    {
+      "reference": "Acts 13:2",
+      "status": "self_rendered",
+      "block_index": 356
+    },
+    {
+      "reference": "Ephesians 6:17-18",
+      "status": "mined",
+      "source_file": "the-god-of-all-comfort.sw.json",
+      "block_index": 380
+    },
+    {
+      "reference": "Romans 8:34",
+      "status": "self_rendered",
+      "block_index": 381
+    },
+    {
+      "reference": "1 Timothy 2:1",
+      "status": "self_rendered",
+      "block_index": 382
+    },
+    {
+      "reference": "Matthew 6:6",
+      "status": "mined",
+      "source_file": "women-who-moved-heaven-2.sw.json",
+      "block_index": 407
+    },
+    {
+      "reference": "Philippians 4:6-7",
+      "status": "mined",
+      "source_file": "days-of-heaven-upon-earth.sw.json",
+      "block_index": 408
+    },
+    {
+      "reference": "Romans 8:26",
+      "status": "self_rendered",
+      "block_index": 409
+    },
+    {
+      "reference": "Romans 8:26",
+      "status": "self_rendered",
+      "block_index": 427
+    },
+    {
+      "reference": "Matthew 21:22",
+      "status": "mined",
+      "source_file": "divine-healing.sw.json",
+      "block_index": 467
+    }
+  ]
+}
