@@ -3309,6 +3309,17 @@
 				585
 			]
 		},
+		"ar/cheque-book": {
+			"ground": "9500848734e69d20a80fe4c12e3a9de57eb78f33cd0057282ccb3e5daeecbf7d",
+			"style": "revival",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"ar/clothed-with-strength-and-dignity": {
 			"ground": "db8850dce12ff5a187d3d3a94eae8a673f10347b142850b04ea6d07fa4ff7ef3",
 			"style": "originals",
