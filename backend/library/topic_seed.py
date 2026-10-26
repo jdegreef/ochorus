@@ -333,10 +333,10 @@ TOPICS = [
         "and shepherds.",
         [
             "confessions",
-            "the-city-of-god",
             "enchiridion",
             "on-the-trinity",
             "on-the-incarnation",
+            "the-city-of-god",
             "life-of-antony",
             "on-the-priesthood",
             "treatises-of-cyprian",
