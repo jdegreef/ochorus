@@ -757,6 +757,14 @@ BOOKS: list[BookEntry] = [
     BookEntry("enchiridion", "The Enchiridion", "augustine-of-hippo",
               "ccel", "schaff/npnf103", part="iv.ii",
               subtitle="On Faith, Hope, and Love", cover_color="#4a5d4a"),
+    # On the Trinity, in Arthur West Haddan's translation (1873, NPNF), from
+    # Schaff's npnf103 volume (part="iv.i"). One chapter per book; Shedd's
+    # introductory essay and Haddan's preface are the editors', not Augustine's.
+    # The fixture titles each book "Book I: …" from Schaff's summary of it.
+    BookEntry("on-the-trinity", "On the Trinity", "augustine-of-hippo",
+              "ccel", "schaff/npnf103", part="iv.i",
+              subtitle="Translated by Arthur West Haddan", cover_color="#4b4a6b",
+              group_parts=True, skip=("Introductory Essay.", "Translator’s Preface.")),
     # The Schaff sets publish a whole volume under one work path, so these three
     # are addressed by `part` — the work's section-stem prefix inside the
     # volume's TOC. See BookEntry.part for why there is no per-work URL to use
