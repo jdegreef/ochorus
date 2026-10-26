@@ -1,0 +1,23 @@
+{
+ "kind": "bio",
+ "slug": "pandita-ramabai",
+ "language": "fr",
+ "job_issue": 6246,
+ "references": [
+  {
+   "reference": "Malachi 3:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "1 Kings 19:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 33
+  }
+ ],
+ "note": [
+  "Scripture is Louis Segond (1910), pasted by script; rows come from the translator's report and each 'mined' phrase was re-checked byte for byte against the Bible text and this bio (an FAQ-only use has no block_index)."
+ ]
+}

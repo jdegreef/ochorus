@@ -577,6 +577,32 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "key-teachings"
+  ],
+  "language": "pt",
+  "title": "Os ensinamentos essenciais",
+  "description": "Guias breves e fiéis da Ochorus ao coração do ensino de um autor clássico: cada capítulo termina com perguntas e uma oração, e conduz o leitor aos próprios livros do autor.",
+  "created_at": "2026-10-25T00:00:00Z",
+  "updated_at": "2026-10-25T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "key-teachings"
+  ],
+  "language": "hi",
+  "title": "मुख्य शिक्षाएँ",
+  "description": "Ochorus की छोटी और विश्वसनीय मार्गदर्शिकाएँ, जो किसी एक क्लासिक लेखक की शिक्षा के मूल तक ले जाती हैं — हर अध्याय प्रश्नों और एक प्रार्थना के साथ समाप्त होता है, और पाठक को स्वयं लेखक की पुस्तकों की ओर ले जाता है।",
+  "created_at": "2026-10-25T00:00:00Z",
+  "updated_at": "2026-10-25T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "anchored"
   ],
   "language": "fr",
@@ -649,6 +675,19 @@
   "description": "Ebyokufumiitiriza eby’ennaku amakumi asatu eri abasomi ab’emyaka 9 okutuuka ku 12, ekitabo kimu oluvannyuma lw’ekirala: olunyiriri lwa Bayibuli, amakulu gaalwo, ekibuuzo eky’okulowoozaako, ekintu eky’okugezaako, n’essaala.",
   "created_at": "2026-10-23T00:00:00Z",
   "updated_at": "2026-10-23T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "rooted"
+  ],
+  "language": "pt",
+  "title": "Enraizados – 30 Dias com Deus para Jovens",
+  "description": "Devocionais de trinta dias para leitores de 9 a 12 anos, um livro de cada vez: um versículo, o que ele significa, uma pergunta para pensar, uma coisa para experimentar e uma oração.",
+  "created_at": "2026-10-24T00:00:00Z",
+  "updated_at": "2026-10-24T00:00:00Z"
  }
 },
 {

@@ -1,0 +1,190 @@
+{
+ "kind": "book",
+ "slug": "lord-teach-us-to-pray-2",
+ "language": "ko",
+ "job_issue": 6176,
+ "pull_request": null,
+ "note": [
+  "Scripture is 개역 (kor_old), pasted by script; the refrain “Lord, teach us to pray” is 「주여, 우리에게 기도를 가르쳐 주옵소서」, reworded from Luke 11:1 (개역). John 4:23-24 “in spirit and truth” is 개역’s 신령과 진정으로 in the verse and 영과 진리 in Murray’s explanation.",
+  "AI-translated (job #6176); prose in 합니다체, the reader never addressed as 당신. The English source has several slips (e.g. “you cannot glorify” for can, “insincerity” for in sincerity, “For thy is the kingdom”), translated by their evident sense. Awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Luke 11:1",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Luke 11:1",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Romans 4:20",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "John 4:23-24",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "John 4:22",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "John 4:23",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "John 4:24",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "John 4:21",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Galatians 4:6",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "John 1:33",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Acts 2:33",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "John 1:14",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "John 1:17",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "mined",
+   "block_index": 38,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Matthew 6:8",
+   "status": "self_rendered",
+   "block_index": 42
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Psalm 103:13",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "mined",
+   "block_index": 50,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Matthew 6:8",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "1 John 5:15",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Matthew 6:12",
+   "status": "mined",
+   "block_index": 67,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "Matthew 6:13",
+   "status": "self_rendered",
+   "block_index": 70
+  },
+  {
+   "reference": "Matthew 6:13",
+   "status": "self_rendered",
+   "block_index": 71
+  },
+  {
+   "reference": "Matthew 11:27",
+   "status": "mined",
+   "block_index": 74,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  },
+  {
+   "reference": "John 17:26",
+   "status": "mined",
+   "block_index": 74,
+   "source_file": "개역 (kor_old) — ebible mirror, public domain; backticks dropped, 침례→세례"
+  }
+ ]
+}

@@ -1110,6 +1110,15 @@ ORIGINAL_GROUND: dict[str, Original] = {
     # with the lamp held up and a short line of Delvers on the rope behind him;
     # faint step-slabs climb the left edge into blackness. Upper two-thirds
     # stays cavern-dark for the white title; the subject sits wholly below it.
+    # The Lamplighters of Gloamhaven, Book 4: the darkest hour before morning — Wren
+    # on an ash ridge low left with the lamp burning low, a carved-flame waystone, and
+    # behind, the black round Cinder Hill with the ruined Workshop against a thin dawn.
+    "the-hill-of-cinders": Original(
+        "66054d71012ea96e5d580ab21e4dbbb640696757b9b3c9fd6f60f5f5dedd31be",
+        "Book 4's own image, the fourth of the set: the dark just before morning. "
+        "Drawn as SVG and rendered with Chrome; generator "
+        "scripts/original_grounds/lamplighters_4.py reproduces it byte-for-byte.",
+    ),
     # The Lamplighters of Gloamhaven, Book 3: one small warm light against a huge cold
     # one — Wren on the end of a harbour wall, low left, with the lamp; across the
     # water, low right, the glowstone city of Vaelport in hard blue-white light.

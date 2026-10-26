@@ -6,8 +6,8 @@ import { apiFetch, ApiError } from './api';
  * Tap-a-reference: verse text for a Bible reference in the reading text.
  *
  * References are wrapped server-side in `<a class="scripture-ref" data-ref="…">`;
- * tapping one opens this popover, which fetches the verse text (public-domain
- * American Standard Version) from the Ochorus API. Missing/offline degrades to a
+ * tapping one opens this popover, which fetches the verse text (the CC0
+ * Open Word Bible) from the Ochorus API. Missing/offline degrades to a
  * gentle "couldn't load" state — the reader never breaks. Cached per session.
  */
 

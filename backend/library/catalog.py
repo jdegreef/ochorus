@@ -522,6 +522,25 @@ AUTHORS: dict[str, AuthorEntry] = {
             "First Bishop of Liverpool and a plain-spoken leader of Victorian "
             "evangelicals."
         ),
+    ),    "john-calvin": AuthorEntry(
+        slug="john-calvin",
+        name="John Calvin",
+        birth_year=1509,
+        death_year=1564,
+        bio=(
+            "French reformer and pastor of Geneva, whose Institutes shaped "
+            "Reformed theology."
+        ),
+    ),
+    "martin-luther": AuthorEntry(
+        slug="martin-luther",
+        name="Martin Luther",
+        birth_year=1483,
+        death_year=1546,
+        bio=(
+            "German monk and professor whose Ninety-Five Theses began the "
+            "Protestant Reformation."
+        ),
     ),
 }
 
@@ -902,6 +921,34 @@ BOOKS: list[BookEntry] = [
               "ccel", "watson/divinity",
               subtitle="Contained in Sermons upon the Westminster Assembly’s Catechism",
               cover_color="#3f4a2b"),
+    # Luther's reply to Erasmus (1525) in Henry Cole's translation of 1823, as CCEL
+    # carries it from the 1931 Atherton reprint. Atherton's own preface is 1931
+    # and left out; the rest is Cole's 1823 text (with Atherton's "slight
+    # alterations from Vaughan", whose translation is also 1823). Cole numbers
+    # the treatise in Sections, which CCEL sets as leaves under its parts.
+    BookEntry("bondage-of-the-will", "The Bondage of the Will", "martin-luther",
+              "ccel", "luther/bondage",
+              subtitle="Translated by Henry Cole",
+              cover_color="#4a3328", group_parts=True,
+              skip=("Preface by Henry Atherton",)),
+    # Calvin's Institutes (1559) in Henry Beveridge's translation (1845), from
+    # CCEL. Each leaf is one of Calvin's chapters, so the import is flat.
+    # corrections.py restores the Greek CCEL carries in a legacy font encoding.
+    BookEntry("institutes-of-the-christian-religion", "Institutes of the Christian Religion",
+              "john-calvin", "ccel", "calvin/institutes",
+              subtitle="Translated by Henry Beveridge",
+              cover_color="#2f3e57",
+              # John Murray's Introduction is from the 1949 Eerdmans reprint and
+              # still in copyright; the Printers' note (1599) and Thomas
+              # Norton's preface (1581) introduce Norton's translation, not this
+              # one; the tables are empty and the index of chapters repeats the
+              # contents.
+              skip=("Introduction", "The Printers to the Readers.",
+                    "The Original Translator’s Preface.",
+                    "Table I. Of Passages from the Holy Scriptures",
+                    "Table II. Of Hebrew Words Explained.",
+                    "Table III. Of Greek Words Explained.",
+                    "General Index of Chapters.")),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an

@@ -30,7 +30,6 @@
 	import { elementVisible, jumpToSection } from '$lib/scrollSpy.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import PlanCalendar from '$lib/components/PlanCalendar.svelte';
-	import PlanStartSheet from '$lib/components/PlanStartSheet.svelte';
 	import ReadBar from '$lib/components/ReadBar.svelte';
 	import { readJSON, writeJSON } from '$lib/persisted';
 
@@ -237,27 +236,24 @@
 	let jumpH = $state(0);
 	/** The day list as a list, or laid on real dates. The calendar is about the
 	 *  reader's today, so it exists only once mounted (the prerender is the list). */
-	const VIEW_KEY = 'ochorus:plan-view';
 	let view = $state<'list' | 'calendar'>('list');
+	const VIEW_KEY = 'ochorus:plan-view';
 	// The reader's last choice of view, as a device preference (grid/list on
 	// the shelves is the same idea); read on mount, so the prerender is the list.
+	// `?view=calendar` (the end of a plan day's "Add to my calendar") opens the
+	// calendar for this visit only, at the days, without changing that choice.
 	onMount(() => {
-		if (readJSON<string>(VIEW_KEY, 'list') === 'calendar') view = 'calendar';
+		if (new URLSearchParams(location.search).get('view') === 'calendar') {
+			view = 'calendar';
+			requestAnimationFrame(() => document.getElementById('plan-days-heading')?.scrollIntoView());
+		} else if (readJSON<string>(VIEW_KEY, 'list') === 'calendar') view = 'calendar';
 	});
-	// The first "Start the plan": start it, then ask how to be reminded about
-	// day 2 (PlanStartSheet) before opening day 1 — the one moment a reader has
-	// just said they mean to come back. A modified click (new tab) just starts.
-	let askReminder = $state(false);
-	function startPlan(e: MouseEvent) {
-		const first = !started;
+	// "Start the plan" starts it and opens day 1 — nothing in between. The
+	// reminder for day 2 is offered at the END of day 1 (PlanDayRemind signed
+	// in, ChapterEndAsk signed out), once the reader has read something: a sheet
+	// here asked about tomorrow before they had read a line (2026-10 UX audit).
+	function startPlan() {
 		planProgress.start(plan.slug);
-		if (!first || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-		e.preventDefault();
-		askReminder = true;
-	}
-	function showCalendar() {
-		setView('calendar');
-		requestAnimationFrame(() => document.getElementById('plan-days-heading')?.scrollIntoView({ behavior: 'smooth' }));
 	}
 
 	const setView = (v: 'list' | 'calendar') => {
@@ -698,14 +694,6 @@
 	onread={() => planProgress.start(plan.slug)}
 />
 
-
-<PlanStartSheet
-	bind:open={askReminder}
-	slug={plan.slug}
-	dayHref={dayHref(next ?? 1)}
-	onCalendar={showCalendar}
-/>
-
 <style>
 	/* A book's run of days: a card whose summary is the book (cover, span,
 	   progress) and whose body is its weeks. */
@@ -714,6 +702,11 @@
 		border: 1px solid var(--border);
 		border-radius: var(--radius-card);
 		background: var(--surface);
+	}
+	/* "Add to my calendar" (`?view=calendar`) lands on the days, clear of the
+	   app nav and the pinned chips too. */
+	#plan-days-heading {
+		scroll-margin-top: calc(var(--pinned-offset) + 0.5rem);
 	}
 	/* A book section lands clear of the app nav and the pinned chips. */
 	.plan-group {

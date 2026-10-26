@@ -300,6 +300,7 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'fire-against-the-dark': 'young',
 	'the-black-stair': 'young',
 	'the-glowstone-bargain': 'young',
+	'the-hill-of-cinders': 'young',
 	'hurlbuts-life-of-christ': 'young',
 	'rooted-1': 'young',
 	'rooted-2': 'young',

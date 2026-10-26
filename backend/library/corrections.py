@@ -51,6 +51,127 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "institutes-of-the-christian-religion": {
+        # CCEL titles each chapter "CHAPTER 3. - OF FAITH. THE DEFINITION OF IT. …":
+        # the title keeps Calvin's book and chapter and the heading's first
+        # clause (the whole heading still opens the chapter). Each book's
+        # Argument is titled with the book's subject.
+        "chapter_titles": {
+            1: "Prefatory Address to King Francis",
+            2: "Epistle to the Reader (1539)",
+            3: "Subject of the Present Work (1545)",
+            4: "Epistle to the Reader (1559)",
+            5: "Method and Arrangement of the Whole Work",
+            6: "Book 1 — Of the Knowledge of God the Creator",
+            7: "Book 1, Chapter 1 — The Knowledge of God and of Ourselves Mutually Connected",
+            8: "Book 1, Chapter 2 — What It Is to Know God",
+            9: "Book 1, Chapter 3 — The Knowledge of God Naturally Implanted in the Human Mind",
+            10: "Book 1, Chapter 4 — The Knowledge of God Stifled or Corrupted, Ignorantly or Maliciously",
+            11: "Book 1, Chapter 5 — The Knowledge of God Conspicuous in the Creation, and Continual Government of the World",
+            12: "Book 1, Chapter 6 — The Need of Scripture, as a Guide and Teacher, in Coming to God as a Creator",
+            13: "Book 1, Chapter 7 — The Testimony of the Spirit Necessary to Give Full Authority to Scripture",
+            14: "Book 1, Chapter 8 — The Credibility of Scripture Sufficiently Proved in So Far as Natural Reason Admits",
+            15: "Book 1, Chapter 9 — All the Principles of Piety Subverted by Fanatics, Who Substitute Revelations for Scripture",
+            16: "Book 1, Chapter 10 — In Scripture, the True God Opposed, Exclusively, to All the Gods of the Heathen",
+            17: "Book 1, Chapter 11 — Impiety of Attributing a Visible Form to God",
+            18: "Book 1, Chapter 12 — God Distinguished from Idols, That He May Be the Exclusive Object of Worship",
+            19: "Book 1, Chapter 13 — The Unity of the Divine Essence in Three Persons Taught, in Scripture, from the Foundation of the World",
+            20: "Book 1, Chapter 14 — In the Creation of the World, and All Things in It, the True God Distinguished by Certain Marks from Fictitious Gods",
+            21: "Book 1, Chapter 15 — State in Which Man Was Created",
+            22: "Book 1, Chapter 16 — The World, Created by God, Still Cherished and Protected by Him",
+            23: "Book 1, Chapter 17 — Use to Be Made of the Doctrine of Providence",
+            24: "Book 1, Chapter 18 — The Instrumentality of the Wicked Employed by God, While He Continues Free from Every Taint",
+            25: "Book 2 — Of the Knowledge of God the Redeemer, in Christ",
+            26: "Book 2, Chapter 1 — Through the Fall and Revolt of Adam, the Whole Human Race Made Accursed and Degenerate",
+            27: "Book 2, Chapter 2 — Man Now Deprived of Freedom of Will, and Miserably Enslaved",
+            28: "Book 2, Chapter 3 — Every Thing Proceeding from the Corrupt Nature of Man Damnable",
+            29: "Book 2, Chapter 4 — How God Works in the Hearts of Men",
+            30: "Book 2, Chapter 5 — The Arguments Usually Alleged in Support of Free Will Refuted",
+            31: "Book 2, Chapter 6 — Redemption for Man Lost to Be Sought in Christ",
+            32: "Book 2, Chapter 7 — The Law Given, Not to Retain a People for Itself, but to Keep Alive the Hope of Salvation in Christ Until His Advent",
+            33: "Book 2, Chapter 8 — Exposition of the Moral Law",
+            34: "Book 2, Chapter 9 — Christ, Though Known to the Jews Under the Law, Yet Only Manifested Under the Gospel",
+            35: "Book 2, Chapter 10 — The Resemblance Between the Old Testament and the New",
+            36: "Book 2, Chapter 11 — The Difference Between the Two Testaments",
+            37: "Book 2, Chapter 12 — Christ, to Perform the Office of Mediator, Behoved to Become Man",
+            38: "Book 2, Chapter 13 — Christ Clothed with the True Substance of Human Nature",
+            39: "Book 2, Chapter 14 — How Two Natures Constitute the Person of the Mediator",
+            40: "Book 2, Chapter 15 — Three Things Briefly to Be Regarded in Christ",
+            41: "Book 2, Chapter 16 — How Christ Performed the Office of Redeemer in Procuring Our Salvation",
+            42: "Book 2, Chapter 17 — Christ Rightly and Properly Said to Have Merited Grace and Salvation for Us",
+            43: "Book 3 — The Mode of Obtaining the Grace of Christ",
+            44: "Book 3, Chapter 1 — The Benefits of Christ Made Available to Us by the Secret Operation of the Spirit",
+            45: "Book 3, Chapter 2 — Of Faith",
+            46: "Book 3, Chapter 3 — Regeneration by Faith",
+            47: "Book 3, Chapter 4 — Penitence, as Explained in the Sophistical Jargon of the Schoolmen, Widely Different from the Purity Required by the Gospel",
+            48: "Book 3, Chapter 5 — Of the Modes of Supplementing Satisfaction",
+            49: "Book 3, Chapter 6 — The Life of a Christian Man",
+            50: "Book 3, Chapter 7 — A Summary of the Christian Life",
+            51: "Book 3, Chapter 8 — Of Bearing the Cross",
+            52: "Book 3, Chapter 9 — Of Meditating on the Future Life",
+            53: "Book 3, Chapter 10 — How to Use the Present Life, and the Comforts of It",
+            54: "Book 3, Chapter 11 — Of Justification by Faith",
+            55: "Book 3, Chapter 12 — Necessity of Contemplating the Judgment-seat of God, in Order to Be Seriously Convinced of the Doctrine of Gratuitous Justification",
+            56: "Book 3, Chapter 13 — Two Things to Be Observed in Gratuitous Justification",
+            57: "Book 3, Chapter 14 — The Beginning of Justification",
+            58: "Book 3, Chapter 15 — The Boasted Merit of Works Subversive Both of the Glory of God, in Bestowing Righteousness, and of the Certainty of Salvation",
+            59: "Book 3, Chapter 16 — Refutation of the Calumnies by Which It Is Attempted to Throw Odium on This Doctrine",
+            60: "Book 3, Chapter 17 — The Promises of the Law and the Gospel Reconciled",
+            61: "Book 3, Chapter 18 — The Righteousness of Works Improperly Inferred from Rewards",
+            62: "Book 3, Chapter 19 — Of Christian Liberty",
+            63: "Book 3, Chapter 20 — Of Prayer",
+            64: "Book 3, Chapter 21 — Of the Eternal Election, by Which God Has Predestinated Some to Salvation, and Others to Destruction",
+            65: "Book 3, Chapter 22 — This Doctrine Confirmed by Proofs from Scripture",
+            66: "Book 3, Chapter 23 — Refutation of the Calumnies by Which This Doctrine Is Always Unjustly Assailed",
+            67: "Book 3, Chapter 24 — Election Confirmed by the Calling of God",
+            68: "Book 3, Chapter 25 — Of the Last Resurrection",
+            69: "Book 4 — Of the Holy Catholic Church",
+            70: "Book 4, Chapter 1 — Of the True Church",
+            71: "Book 4, Chapter 2 — Comparison Between the False Church and the True",
+            72: "Book 4, Chapter 3 — Of the Teachers and Ministers of the Church",
+            73: "Book 4, Chapter 4 — Of the State of the Primitive Church, and the Mode of Government in Use Before the Papacy",
+            74: "Book 4, Chapter 5 — The Ancient Form of Government Utterly Corrupted by the Tyranny of the Papacy",
+            75: "Book 4, Chapter 6 — Of the Primacy of the Romish See",
+            76: "Book 4, Chapter 7 — Of the Beginning and Rise of the Romish Papacy, Till It Attained a Height by Which the Liberty of the Church Was Destroyed, and All True Rule Overthrown",
+            77: "Book 4, Chapter 8 — Of the Power of the Church in Articles of Faith",
+            78: "Book 4, Chapter 9 — Of Councils and Their Authority",
+            79: "Book 4, Chapter 10 — Of the Power of Making Laws",
+            80: "Book 4, Chapter 11 — Of the Jurisdiction of the Church, and the Abuses of It, as Exemplified in the Papacy",
+            81: "Book 4, Chapter 12 — Of the Discipline of the Church, and Its Principal Use in Censures and Excommunication",
+            82: "Book 4, Chapter 13 — Of Vows",
+            83: "Book 4, Chapter 14 — Of the Sacraments",
+            84: "Book 4, Chapter 15 — Of Baptism",
+            85: "Book 4, Chapter 16 — Pædobaptism",
+            86: "Book 4, Chapter 17 — Of the Lord’s Supper, and the Benefits Conferred by It",
+            87: "Book 4, Chapter 18 — Of the Popish Mass",
+            88: "Book 4, Chapter 19 — Of the Five Sacraments, Falsely So Called",
+            89: "Book 4, Chapter 20 — Of Civil Government",
+            90: "One Hundred Aphorisms: Book 1",
+            91: "One Hundred Aphorisms: Book 2",
+            92: "One Hundred Aphorisms: Book 3",
+            93: "One Hundred Aphorisms: Book 4",
+        },
+    },
+    "bondage-of-the-will": {
+        # Henry Cole's own divisions of the treatise (his Translator's Preface
+        # names them), not CCEL's topical part titles. His "Preface" — Luther's
+        # answer to Erasmus's preface, Sections I–XXVII — is four CCEL parts.
+        "chapter_titles": {
+            1: "Translator’s Preface",
+            2: "Introduction",
+            3: "Preface: Section I",
+            4: "Preface: Sections II–VI",
+            5: "Preface: Sections VII–VIII",
+            6: "Preface: Sections IX–XXVII",
+            7: "Exordium",
+            8: "Discussion: Part the First",
+            9: "Discussion: Part the Second",
+            10: "Discussion: Part the Third",
+            11: "Conclusion",
+            12: "Luther’s Judgment of Erasmus",
+            13: "Luther to Nicolas Armsdorff, Concerning Erasmus",
+        },
+    },
     "how-to-pray": {
         # CCEL's TOC misspells the last chapter "Chatper XII.", so clean_title
         # cannot strip the numbering and the reader would print it twice.
@@ -1475,6 +1596,20 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("<p>Passamos em seguida a obse", "<h3>O RESULTADO EM BÊNÇÃO.</h3>"),
             ("<p>Não é necessário deter-nos", "<h3>O CONTRASTE.</h3>"),
             ("<p>Não é necessário deter-nos", '<p><em>"Não são assim os ímpios."</em></p>'),
+            # uk
+            ("<p>Буває успіх, на якому немає", "<p>Роздуми над Першим псалмом.</p>"),
+            ("<p>Буває успіх, на якому немає", "<h3>ВСТУП.</h3>"),
+            ("<p>Дослівніше: о, благословенн", "<h3>ЗАПЕРЕЧНІ УМОВИ БЛАГОСЛОВЕННЯ</h3>"),
+            ("<p>Дослівніше: о, благословенн",
+             "<p><em>«Блаженний чоловік, що не ходить на раду безбожних».</em></p>"),
+            ("<p>Птахи одного пір’я збирають",
+             "<p><em>Не ступає слїдом за грішниками.</em></p>"),
+            ("<p>Збори злоріків — одна з осо",
+             "<p><em>«Анї засїдає на зборах злоріків».</em></p>"),
+            ("<p>Ми розглянули те, чого уник", "<h3>ПОЗИТИВНІ УМОВИ БЛАГОСЛОВЕННЯ.</h3>"),
+            ("<p>Далі розгляньмо дивовижні о", "<h3>ПЛІД БЛАГОСЛОВЕННЯ.</h3>"),
+            ("<p>Немає потреби довго зупинят", "<h3>ПРОТИЛЕЖНІСТЬ.</h3>"),
+            ("<p>Немає потреби довго зупинят", "<p><em>«Не так безбожні».</em></p>"),
         ],
     },
     "a-full-reward": {
@@ -5122,6 +5257,10 @@ BODY_CORRECTIONS.setdefault("how-to-bring-men-to-christ", {})["back_matter"] = [
     ("avant que Dieu puisse se servir d’eux.</p>",
      "<p>“<i>Few books of recent years are better adapted to instruct"),
     ("antes de que Dios pueda usarlos.</p>",
+     "<p>“<i>Few books of recent years are better adapted to instruct"),
+    ("Katonda alyoke abakozese.</p>",
+     "<p>“<i>Few books of recent years are better adapted to instruct"),
+    ("antes que Deus possa usá-los.</p>",
      "<p>“<i>Few books of recent years are better adapted to instruct"),
 ]
 # Two stanzas of verse lost at import (Gutenberg #73032). Every chapter heading
@@ -18631,4 +18770,46 @@ BODY_CORRECTIONS.setdefault("the-joy-of-the-lord", {}).setdefault("replacements"
 BODY_CORRECTIONS.setdefault("walking-with-god", {}).setdefault("replacements", []).extend([
     # OCR slip ('hears' for 'years')
     ("several hundred hears before", "several hundred years before"),
+])
+
+# Luther's Bondage of the Will (CCEL): each of Cole's Sections opens "Sect. II. —"
+# in the text itself, so CCEL's "Section II" subheading above it only repeats the
+# number (and mislabels two: CXL is headed "CXI", CXXIX has none). The headings
+# split over several tags at the top of the Translator's Preface and of the two
+# appendices restate their chapter titles.
+BODY_CORRECTIONS.setdefault("bondage-of-the-will", {}).setdefault("replacements", []).extend(
+    [(f"<h3>Section {n}</h3>", "") for n in (
+        "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII", "XXVIII", "XXIX", "XXX", "XXXI", "XXXII", "XXXIII", "XXXIV", "XXXV", "XXXVI", "XXXVII", "XXXVIII", "XXXIX", "XL", "XLI", "XLII", "XLIII", "XLIV", "XLV", "XLVI", "XLVII", "XLVIII", "XLIX", "L", "LI", "LII", "LIII", "LIV", "LV", "LVI", "LVII", "LVIII", "LIX", "LX", "LXI", "LXII", "LXIII", "LXIV", "LXV", "LXVI", "LXVII", "LXVIII", "LXIX", "LXX", "LXXI", "LXXII", "LXXIII", "LXXIV", "LXXV", "LXXVI", "LXXVII", "LXXVIII", "LXXIX", "LXXX", "LXXXI", "LXXXII", "LXXXIII", "LXXXIV", "LXXXV", "LXXXVI", "LXXXVII", "LXXXVIII", "LXXXIX", "XC", "XCI", "XCII", "XCIII", "XCIV", "XCV", "XCVI", "XCVII", "XCVIII", "XCIX", "C", "CI", "CII", "CIII", "CIV", "CV", "CVI", "CVII", "CVIII", "CIX", "CX", "CXI", "CXII", "CXIII", "CXIV", "CXV", "CXVI", "CXVII", "CXVIII", "CXIX", "CXX", "CXXI", "CXXII", "CXXIII", "CXXIV", "CXXV", "CXXVI", "CXXVII", "CXXVIII", "CXXX", "CXXXI", "CXXXII", "CXXXIII", "CXXXIV", "CXXXV", "CXXXVI", "CXXXVII", "CXXXVIII", "CXXXIX", "CXLI", "CXLII", "CXLIII", "CXLIV", "CXLV", "CXLVI", "CXLVII", "CXLVIII", "CXLIX", "CL", "CLI", "CLII", "CLIII", "CLIV", "CLV", "CLVI", "CLVII", "CLVIII", "CLIX", "CLX", "CLXI", "CLXII", "CLXIII", "CLXIV", "CLXV", "CLXVI", "CLXVII", "CLXVIII"
+    )]
+    + [
+        ("<h2>PREFACE</h2> <h4>BY</h4> <h3>THE TRANSLATOR.</h3> ", ""),
+        ("<h2>MARTIN LUTHER’S JUDGMENT</h2> <h3>OF</h3> ERASMUS OF ROTTERDAM. "
+         "<h3>TO A CERTAIN FRIEND.</h3> ", ""),
+        ("MARTIN LUTHER TO NICOLAS ARMSDOFF <h3>CONCERNING</h3> ERASMUS OF ROTTERDAM. ", ""),
+        ("<i>Grace and peace in Christ.</i> . </p>", "<i>Grace and peace in Christ.</i></p>"),
+    ]
+)
+
+# Calvin's Institutes (CCEL): Book 4, chapter 18's heading lost its number, and
+# a dozen Greek words reach CCEL in a legacy Greek-font encoding ("pavtho"" for
+# πάθος, where `"` is final sigma and `v` the acute), which reads as noise and
+# whose `"` the quote normaliser takes for a closing mark. Each is set back in
+# Greek: the terms as Calvin uses them (Book 2 ch. 2, 14, 16, 17) and, in Book 2
+# ch. 2, the Odyssey's "οἷον ἐπ’ ἦμαρ ἄγῃσι" (18.137) that CCEL garbles.
+BODY_CORRECTIONS.setdefault("institutes-of-the-christian-religion", {}).setdefault(
+    "replacements", []
+).extend([
+    ("<h3>CHAPTER </h3> ", ""),
+    ("viz. aujtexouvsion, as if", "viz. αὐτεξούσιον, as if"),
+    ("ejthelodou'lo\" (a voluntary slave)", "ἐθελόδουλος (a voluntary slave)"),
+    ("oJion ejp e\\ma\" a[geisi.", "οἷον ἐπ’ ἦμαρ ἄγῃσι."),
+    ("(ajkrasiva)", "(ἀκρασία)"),
+    ("(pavtho\")", "(πάθος)"),
+    ("(ajkolasiva)", "(ἀκολασία)"),
+    ("ijdiwmavtwn koinoniva", "ἰδιωμάτων κοινωνία"),
+    ("of ijdiwvmata, or properties", "of ἰδιώματα, or properties"),
+    ("ajpoluvtrwsi\", ajntivlutron, kai; iJlasthvrion,", "ἀπολύτρωσις, ἀντίλυτρον, καὶ ἱλαστήριον,"),
+    ("(aujtov\")", "(αὐτός)"),
+    ("flesh is oJmoouvsion, of", "flesh is ὁμοούσιον, of"),
+    ("and other \"passages to the same", "and other passages to the same"),
 ])

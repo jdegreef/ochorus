@@ -1,0 +1,175 @@
+{
+ "kind": "sermon",
+ "slug": "the-christian-pilgrim",
+ "language": "fr",
+ "job_issue": 6262,
+ "references": [
+  {
+   "reference": "Hebrews 11:13-14",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Hebrews 11:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Hebrews 11:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 1
+  },
+  {
+   "reference": "Genesis 23:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "Genesis 47:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "Psalm 39:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 3
+  },
+  {
+   "reference": "Hebrews 11:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 4
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 7
+  },
+  {
+   "reference": "1 Corinthians 7:29-31",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Romans 13:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 10
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Peter 2:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "Philippians 3:13-14",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Proverbs 4:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 15
+  },
+  {
+   "reference": "Job 14:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "Job 20:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "Job 7:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 18
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Romans 11:36",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 20
+  },
+  {
+   "reference": "Ecclesiastes 7:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "Revelation 14:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 24
+  },
+  {
+   "reference": "Revelation 7:16-17",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "1 Thessalonians 4:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 26
+  },
+  {
+   "reference": "1 Thessalonians 4:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 26
+  },
+  {
+   "reference": "Psalm 58:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 27
+  },
+  {
+   "reference": "2 Peter 1:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 30
+  },
+  {
+   "reference": "John 10:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 42
+  }
+ ],
+ "note": [
+  "Scripture authority is Louis Segond (1910, public domain), pasted by script from the ebible mirror fra_lsg (USFM; cross-references and Strong's word markers stripped).",
+  "Rows come from the translators' reports, and every 'mined' claim was re-verified: each quoted fragment must be a byte-exact substring of both this body and the Bible text; a claim that fails is recorded as self_rendered. Several verses are read by the speaker from a modern paraphrase or quoted loosely from memory; only the Bible's own words are presented as the Bible's, so those rows are self_rendered."
+ ]
+}

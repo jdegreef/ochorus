@@ -1004,7 +1004,7 @@ export const getSermon = async (slug: string, language = 'en', f?: Fetch) =>
  * after first paint and pushed "In brief" and the opening of the sermon down by
  * their own height (measured: CLS 0.07 on a desktop against a local API, and
  * 0.38 on a phone in dev — a real network only widens the gap). One cheap
- * local lookup per sermon page at build time (the ASV is in the API).
+ * local lookup per sermon page at build time (the bundled Bible text is in the API).
  *
  * It is decoration, so it may cost the page nothing it needs:
  *   - In the BUILD, a failure that is not a plain 404 switches the lookup off
@@ -1663,7 +1663,7 @@ export interface ScripturePage {
 	citing_count: number;
 	passages: CitingPassage[];
 	passages_shown: number;
-	/** Verse pages only: the ASV text of the verse. */
+	/** Verse pages only: the Bible text of the verse (Open Word Bible). */
 	text?: string;
 	/**
 	 * Chapter pages only: the verses the library actually treats, most-cited
@@ -1699,7 +1699,7 @@ export interface ScriptureBookPage {
 	books_count: number | null;
 	/** The book's chapter pages, in order, each with its own citing count. */
 	chapters: { chapter: number; citing_count: number }[];
-	/** Its most-quoted verse pages, with their ASV text. */
+	/** Its most-quoted verse pages, with their Bible text. */
 	verses: { chapter: number; verse: number; citing_count: number; text: string }[];
 	/** One excerpt from each of the top books, at its narrowest citation of
 	 *  this book; absent from an API predating it. */

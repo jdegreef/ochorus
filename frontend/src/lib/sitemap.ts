@@ -776,7 +776,7 @@ async function build(): Promise<SitemapData> {
 	// the advertised set (never growing it past what is built) keeps it green.
 	//
 	// The same move again for the thinnest CHAPTER-level pages: one below
-	// SCRIPTURE_SITEMAP_FLOOR citing passages is the ASV chapter (text found on
+	// SCRIPTURE_SITEMAP_FLOOR citing passages is the Bible chapter (text found on
 	// every Bible site) plus a handful of excerpts. They keep
 	// their URL, their links and their indexability; they are just not promised.
 	//

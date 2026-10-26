@@ -310,6 +310,8 @@ services:
         # parser and neither rebuilt the reader.
         - backend/library/scripture.py
         - backend/library/scripture_graph.py
+        # The bundled Open Word Bible text those two quote (scripts/build_owb_bible.py).
+        - backend/library/data/bible/**
         - backend/library/readability.py
         # Same shape: the excerpt on every book page is chosen at serialize time
         # by this module's rules, not stored anywhere. Widening APPARATUS or

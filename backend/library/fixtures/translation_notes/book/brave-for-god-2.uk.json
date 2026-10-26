@@ -1,0 +1,21 @@
+{
+ "kind": "book",
+ "slug": "brave-for-god-2",
+ "language": "uk",
+ "job_issue": 3600,
+ "references": [
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "source_file": "Kulish (ukr-kul) Bible text",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Samuel 2:30",
+   "status": "self_rendered",
+   "block_index": 30,
+   "why": "Reported speech (the note handed to Liddell), third person, rendered as prose; Kulish: «я прославлю тих, що мене будуть прославляти»."
+  }
+ ],
+ "note": "young-readers book. The only verbatim scripture is «Отче, відпусти їм» (Kulish Luke 23:34). Names follow the shipped uk corpus: Вільям Кері, Девід Лівінгстон, Мері Слессор, Фесто Ківенгере, Іді Амін, Джанані Лувум, Біллі Грем, Пандіта Рамабаї, «Мукті», маратхі, Коррі тен Бом, Бетсі; Ерік Лідделл has no shipped precedent. Carey's motto is rendered «Чекайте від Бога великого; беріться за велике для Бога»."
+}

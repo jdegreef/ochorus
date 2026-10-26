@@ -20,6 +20,13 @@
    "Single-book LAUNCH plan backed by the vi edition of humility-2 (queue job #6170; book title «Sự khiêm nhường»), shipped in the same PR so seed_plans does not publish a vi plan row with no prose. The title opens with the edition's own title so the plan card and the book agree. AI-drafted; awaiting native review."
   ]
  },
+ "waiting-on-god-trust": {
+  "description": "Mười tuần trong trường học của sự tin cậy. Andrew Murray dạy kỷ luật hằng ngày của việc trông đợi Đức Chúa Trời, F. B. Meyer mở ra bí quyết được Ngài dẫn dắt, và cuộc đời đức tin lạ lùng của George Müller cho thấy sự tin cậy ấy nhận được những gì.",
+  "note": [
+   "Job #6187 (waiting-on-god → vi) adds this prose because the book backs the plan. «Trông Đợi Đức Chúa Trời» is the shipped vi title of waiting-on-god (same job). The row cannot appear yet: the-secret-of-guidance and the-life-of-trust are not in Vietnamese; whichever lands last brings the card live, and its translator should check the title here against that edition."
+  ],
+  "title": "Trông Đợi Đức Chúa Trời: Một Đời Sống Tin Cậy"
+ },
  "growing-in-wisdom-18-days": {
   "title": "Lớn lên trong sự khôn ngoan qua 18 ngày",
   "description": "Cẩm nang của James DeGreef dành cho học sinh, sinh viên — mỗi ngày một bài đọc ngắn, trong mười tám ngày. Từ việc khám phá mục đích đời mình cho đến việc xây dựng một khải tượng cho tương lai, mỗi ngày kết hợp lời khuyên thiết thực với một câu Kinh Thánh, một suy ngẫm và một lời cầu nguyện.",

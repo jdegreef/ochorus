@@ -1,0 +1,17 @@
+{
+ "kind": "bio",
+ "slug": "festo-kivengere",
+ "language": "fr",
+ "job_issue": 6243,
+ "references": [
+  {
+   "reference": "Luke 23:34",
+   "status": "mined",
+   "source_file": "Louis Segond (1910) Bible text",
+   "block_index": 18
+  }
+ ],
+ "note": [
+  "Scripture is Louis Segond (1910), pasted by script; rows come from the translator's report and each 'mined' phrase was re-checked byte for byte against the Bible text and this bio (an FAQ-only use has no block_index)."
+ ]
+}

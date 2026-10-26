@@ -1,0 +1,109 @@
+{
+  "kind": "sermon",
+  "slug": "god-made-man-to-worship",
+  "language": "fr",
+  "job_issue": 6275,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Psalm 45:12",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 1
+    },
+    {
+      "reference": "John 4:24",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 1
+    },
+    {
+      "reference": "Psalm 45:12",
+      "status": "self_rendered",
+      "block_index": 4
+    },
+    {
+      "reference": "Psalm 45:12",
+      "status": "self_rendered",
+      "block_index": 6
+    },
+    {
+      "reference": "Matthew 4:10",
+      "status": "self_rendered",
+      "block_index": 7
+    },
+    {
+      "reference": "2 Thessalonians 1:10",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 8
+    },
+    {
+      "reference": "1 Corinthians 10:20",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 29
+    },
+    {
+      "reference": "1 Corinthians 10:21",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 29
+    },
+    {
+      "reference": "1 Corinthians 10:21",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 30
+    },
+    {
+      "reference": "John 4:24",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 87
+    },
+    {
+      "reference": "John 4:24",
+      "status": "self_rendered",
+      "block_index": 88
+    },
+    {
+      "reference": "John 4:24",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 112
+    },
+    {
+      "reference": "John 4:24",
+      "status": "self_rendered",
+      "block_index": 113
+    },
+    {
+      "reference": "John 8:24",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 130
+    },
+    {
+      "reference": "1 Chronicles 16:29",
+      "status": "mined",
+      "source_file": "Louis Segond (1910)",
+      "block_index": 140
+    },
+    {
+      "reference": "Genesis 3:9",
+      "status": "self_rendered",
+      "block_index": 7
+    },
+    {
+      "reference": "John 3:3",
+      "status": "self_rendered",
+      "block_index": 130
+    },
+    {
+      "reference": "Luke 13:3",
+      "status": "self_rendered",
+      "block_index": 131
+    }
+  ]
+}

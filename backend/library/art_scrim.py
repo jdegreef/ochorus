@@ -179,6 +179,7 @@ ART_SCRIM: dict[str, float] = {
     "the-christians-secret-of-a-happy-life-4": 0.45,
     "the-glowstone-bargain": 0.30,
     "the-god-of-all-comfort": 0.90,
+    "the-hill-of-cinders": 0.30,
     "the-imitation-of-christ": 0.75,
     "the-imitation-of-christ-teens": 0.30,
     "the-key-in-my-hand": 0.90,

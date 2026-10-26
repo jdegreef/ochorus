@@ -1,0 +1,123 @@
+{
+ "kind": "book",
+ "slug": "epistles-of-ignatius",
+ "language": "pt",
+ "job_issue": 5238,
+ "pull_request": null,
+ "note": [
+  "Scripture is the Bíblia Livre (porbrbsl; ebible mirror por_bpm). Ignatius alludes far more than he quotes, so nearly every row is self_rendered; Proverbs 18:17 in the letter to the Magnesians follows the Septuagint, which the Bíblia Livre does not match, and is rendered from Lightfoot’s English.",
+  "AI-translated (job #5238) in parallel chapters, then checked for one form per name (Inácio, Policarpo, Teóforo, esmirniotas…). The letters address their churches as vós and Polycarp as tu, for Lightfoot’s solemn register; the five life chapters are modern narrative. Awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Acts 11:26",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 18:2",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Hebrews 6:18",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "John 6:51",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "2 Timothy 4:6",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "James 4:6",
+   "status": "self_rendered",
+   "block_index": 77
+  },
+  {
+   "reference": "Matthew 12:33",
+   "status": "self_rendered",
+   "block_index": 96
+  },
+  {
+   "reference": "1 Corinthians 6:9-10",
+   "status": "self_rendered",
+   "block_index": 100
+  },
+  {
+   "reference": "1 Corinthians 1:20",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "1 Corinthians 1:18",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "Proverbs 18:17",
+   "status": "self_rendered",
+   "block_index": 133
+  },
+  {
+   "reference": "1 Corinthians 5:7",
+   "status": "self_rendered",
+   "block_index": 130
+  },
+  {
+   "reference": "John 8:29",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "Isaiah 52:5",
+   "status": "self_rendered",
+   "block_index": 156
+  },
+  {
+   "reference": "Matthew 15:13",
+   "status": "self_rendered",
+   "block_index": 160
+  },
+  {
+   "reference": "1 Corinthians 3:1-2",
+   "status": "self_rendered",
+   "block_index": 149
+  },
+  {
+   "reference": "Matthew 3:15",
+   "status": "self_rendered",
+   "block_index": 222
+  },
+  {
+   "reference": "Luke 24:39",
+   "status": "self_rendered",
+   "block_index": 226
+  },
+  {
+   "reference": "Matthew 19:12",
+   "status": "self_rendered",
+   "block_index": 232
+  },
+  {
+   "reference": "Matthew 10:16",
+   "status": "self_rendered",
+   "block_index": 254
+  },
+  {
+   "reference": "Ephesians 5:25",
+   "status": "self_rendered",
+   "block_index": 261
+  },
+  {
+   "reference": "Ephesians 6:14-17",
+   "status": "self_rendered",
+   "block_index": 264
+  }
+ ]
+}

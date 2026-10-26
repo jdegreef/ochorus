@@ -1,0 +1,841 @@
+{
+ "kind": "book",
+ "slug": "the-pursuit-of-god",
+ "language": "fr",
+ "job_issue": 6253,
+ "pull_request": null,
+ "note": [
+  "Scripture is Louis Segond 1910 (fra_lsg), pasted by script where Tozer quotes a verse (he quotes the KJV). Where Segond numbers a Psalm one higher (Ps 34:5/34:6, 42:1-2, 46:10, 57:5, 63:8) Tozer’s reference is kept or both are given; where Segond’s wording shifts his point (Jn 8:49, 8:54, 5:44 honour→gloire; Heb 12:22 tense; Rom 10:17) the verse is kept and flagged. Wisdom 1:7 is not in Segond and is rendered from the English.",
+  "AI-translated (job #6253) in parallel chapters, then reconciled for one form per term (la Présence, le voile, le moi, la Voix qui parle) and one typography; prayers address God as tu. Awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Exodus 33:18",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Romans 11:33",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Jeremiah 2:13",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "1 Kings 18:44",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "1 Kings 18:30-38",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Psalm 34:9",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Psalm 63:8",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "John 6:44",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Psalm 63:8",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Psalm 42:1-2",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Psalm 42:7",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "John 17:3",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "John 3:3",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Exodus 33:13",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Exodus 33:19-23",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Philippians 3:10",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Philippians 3:8",
+   "status": "mined",
+   "block_index": 34,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 11:25",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Numbers 18:20",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "Song of Songs 2:10",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Exodus 33:18",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "block_index": 47,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 16:24-25",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "Genesis 22:2",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Hebrews 11:18",
+   "status": "mined",
+   "block_index": 59,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Genesis 22:3",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Matthew 16:25",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Genesis 22:12",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Genesis 22:16-18",
+   "status": "mined",
+   "block_index": 61,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Corinthians 4:7",
+   "status": "mined",
+   "block_index": 67,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Isaiah 60:13",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Revelation 21:23",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Hebrews 10:19",
+   "status": "mined",
+   "block_index": 74,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Revelation 4:11",
+   "status": "mined",
+   "block_index": 77,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Kings 8:27",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "Genesis 3:8",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "Luke 5:8",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "Jude 1:6",
+   "status": "self_rendered",
+   "block_index": 80
+  },
+  {
+   "reference": "Luke 15:18",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "Hebrews 9:7",
+   "status": "self_rendered",
+   "block_index": 83
+  },
+  {
+   "reference": "Hebrews 10:20",
+   "status": "self_rendered",
+   "block_index": 83
+  },
+  {
+   "reference": "Hosea 4:6",
+   "status": "self_rendered",
+   "block_index": 88
+  },
+  {
+   "reference": "Acts 17:27",
+   "status": "self_rendered",
+   "block_index": 87
+  },
+  {
+   "reference": "Psalm 45:9",
+   "status": "self_rendered",
+   "block_index": 90
+  },
+  {
+   "reference": "Psalm 42:2",
+   "status": "self_rendered",
+   "block_index": 91
+  },
+  {
+   "reference": "Revelation 7:9",
+   "status": "self_rendered",
+   "block_index": 96
+  },
+  {
+   "reference": "Song of Songs 2:14",
+   "status": "mined",
+   "block_index": 99,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Hebrews 10:20",
+   "status": "self_rendered",
+   "block_index": 99
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "self_rendered",
+   "block_index": 101
+  },
+  {
+   "reference": "1 Samuel 15:9",
+   "status": "self_rendered",
+   "block_index": 107
+  },
+  {
+   "reference": "Romans 6:4",
+   "status": "self_rendered",
+   "block_index": 109
+  },
+  {
+   "reference": "Matthew 27:51",
+   "status": "self_rendered",
+   "block_index": 109
+  },
+  {
+   "reference": "Hebrews 10:22",
+   "status": "self_rendered",
+   "block_index": 109
+  },
+  {
+   "reference": "Psalm 34:9",
+   "status": "self_rendered",
+   "block_index": 110
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered",
+   "block_index": 113
+  },
+  {
+   "reference": "Psalm 34:9",
+   "status": "self_rendered",
+   "block_index": 115
+  },
+  {
+   "reference": "Psalm 45:9",
+   "status": "self_rendered",
+   "block_index": 115
+  },
+  {
+   "reference": "John 10:27",
+   "status": "self_rendered",
+   "block_index": 115
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "mined",
+   "block_index": 115,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "mined",
+   "block_index": 134,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "John 14:1",
+   "status": "self_rendered",
+   "block_index": 134
+  },
+  {
+   "reference": "Hebrews 12:22-24",
+   "status": "mined",
+   "block_index": 136,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Hebrews 12:18",
+   "status": "self_rendered",
+   "block_index": 136
+  },
+  {
+   "reference": "Hebrews 12:19",
+   "status": "self_rendered",
+   "block_index": 136
+  },
+  {
+   "reference": "John 14:21-23",
+   "status": "self_rendered",
+   "block_index": 137
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "self_rendered",
+   "block_index": 137
+  },
+  {
+   "reference": "John 1:9",
+   "status": "self_rendered",
+   "block_index": 137
+  },
+  {
+   "reference": "Psalm 34:9",
+   "status": "self_rendered",
+   "block_index": 138
+  },
+  {
+   "reference": "Psalm 139:7",
+   "status": "mined",
+   "block_index": 139,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Genesis 1:1",
+   "status": "self_rendered",
+   "block_index": 146
+  },
+  {
+   "reference": "Psalm 139:8-10",
+   "status": "self_rendered",
+   "block_index": 139
+  },
+  {
+   "reference": "1 Kings 8:27",
+   "status": "self_rendered",
+   "block_index": 139
+  },
+  {
+   "reference": "Acts 17:27-28",
+   "status": "self_rendered",
+   "block_index": 139
+  },
+  {
+   "reference": "Deuteronomy 32:10",
+   "status": "self_rendered",
+   "block_index": 148
+  },
+  {
+   "reference": "Genesis 28:16",
+   "status": "self_rendered",
+   "block_index": 148
+  },
+  {
+   "reference": "Exodus 34:5",
+   "status": "mined",
+   "block_index": 150,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 27:8",
+   "status": "mined",
+   "block_index": 157,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ezekiel 37:3",
+   "status": "self_rendered",
+   "block_index": 161
+  },
+  {
+   "reference": "1 Timothy 4:7",
+   "status": "self_rendered",
+   "block_index": 168
+  },
+  {
+   "reference": "Acts 26:19",
+   "status": "self_rendered",
+   "block_index": 157
+  },
+  {
+   "reference": "John 1:1",
+   "status": "mined",
+   "block_index": 171,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 33:9",
+   "status": "self_rendered",
+   "block_index": 173
+  },
+  {
+   "reference": "John 6:63",
+   "status": "self_rendered",
+   "block_index": 174
+  },
+  {
+   "reference": "Psalm 33:6",
+   "status": "mined",
+   "block_index": 175,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 33:9",
+   "status": "mined",
+   "block_index": 175,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Hebrews 11:3",
+   "status": "self_rendered",
+   "block_index": 175
+  },
+  {
+   "reference": "Hebrews 4:12",
+   "status": "self_rendered",
+   "block_index": 176
+  },
+  {
+   "reference": "Genesis 1:9",
+   "status": "self_rendered",
+   "block_index": 176
+  },
+  {
+   "reference": "Psalm 90:3",
+   "status": "self_rendered",
+   "block_index": 177
+  },
+  {
+   "reference": "John 1:9",
+   "status": "mined",
+   "block_index": 178,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 2:15",
+   "status": "mined",
+   "block_index": 178,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "mined",
+   "block_index": 178,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Proverbs 8:1",
+   "status": "mined",
+   "block_index": 179,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Proverbs 8:2",
+   "status": "self_rendered",
+   "block_index": 179
+  },
+  {
+   "reference": "Proverbs 8:4",
+   "status": "mined",
+   "block_index": 179,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "John 12:29",
+   "status": "self_rendered",
+   "block_index": 181
+  },
+  {
+   "reference": "Colossians 1:20",
+   "status": "mined",
+   "block_index": 184,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 46:11",
+   "status": "self_rendered",
+   "block_index": 185
+  },
+  {
+   "reference": "Isaiah 40:8",
+   "status": "self_rendered",
+   "block_index": 189
+  },
+  {
+   "reference": "1 Samuel 3:10",
+   "status": "self_rendered",
+   "block_index": 191
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "block_index": 192,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "2 Peter 1:21",
+   "status": "self_rendered",
+   "block_index": 194
+  },
+  {
+   "reference": "Hebrews 11:6",
+   "status": "self_rendered",
+   "block_index": 195
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "self_rendered",
+   "block_index": 199
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "mined",
+   "block_index": 199,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Numbers 21:6",
+   "status": "mined",
+   "block_index": 201,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Numbers 21:8",
+   "status": "mined",
+   "block_index": 201,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Numbers 21:9",
+   "status": "mined",
+   "block_index": 201,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "John 3:14-15",
+   "status": "mined",
+   "block_index": 202,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 34:6",
+   "status": "mined",
+   "block_index": 204,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Psalm 123:1-2",
+   "status": "mined",
+   "block_index": 204,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 14:19",
+   "status": "self_rendered",
+   "block_index": 204
+  },
+  {
+   "reference": "John 1:29",
+   "status": "self_rendered",
+   "block_index": 206
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "self_rendered",
+   "block_index": 208
+  },
+  {
+   "reference": "Isaiah 14:13",
+   "status": "mined",
+   "block_index": 209,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Romans 10:6-8",
+   "status": "self_rendered",
+   "block_index": 210
+  },
+  {
+   "reference": "2 Chronicles 16:9",
+   "status": "self_rendered",
+   "block_index": 211
+  },
+  {
+   "reference": "Genesis 16:13",
+   "status": "self_rendered",
+   "block_index": 211
+  },
+  {
+   "reference": "John 17:3",
+   "status": "self_rendered",
+   "block_index": 214
+  },
+  {
+   "reference": "2 Corinthians 6:2",
+   "status": "self_rendered",
+   "block_index": 217
+  },
+  {
+   "reference": "2 Thessalonians 1:10",
+   "status": "self_rendered",
+   "block_index": 225
+  },
+  {
+   "reference": "Psalm 57:5",
+   "status": "self_rendered",
+   "block_index": 226
+  },
+  {
+   "reference": "Exodus 3:14",
+   "status": "self_rendered",
+   "block_index": 230
+  },
+  {
+   "reference": "Malachi 3:6",
+   "status": "self_rendered",
+   "block_index": 230
+  },
+  {
+   "reference": "Revelation 4:11",
+   "status": "mined",
+   "block_index": 233,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "John 8:34",
+   "status": "mined",
+   "block_index": 240,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "self_rendered",
+   "block_index": 240
+  },
+  {
+   "reference": "Judges 5:20",
+   "status": "self_rendered",
+   "block_index": 238
+  },
+  {
+   "reference": "1 Samuel 2:30",
+   "status": "self_rendered",
+   "block_index": 243
+  },
+  {
+   "reference": "John 12:26",
+   "status": "self_rendered",
+   "block_index": 243
+  },
+  {
+   "reference": "John 8:54",
+   "status": "mined",
+   "block_index": 246,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "John 8:49",
+   "status": "self_rendered",
+   "block_index": 246
+  },
+  {
+   "reference": "John 5:44",
+   "status": "mined",
+   "block_index": 247,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Ephesians 2:7",
+   "status": "self_rendered",
+   "block_index": 248
+  },
+  {
+   "reference": "John 3:30",
+   "status": "self_rendered",
+   "block_index": 251
+  },
+  {
+   "reference": "Matthew 21:9",
+   "status": "self_rendered",
+   "block_index": 251
+  },
+  {
+   "reference": "Matthew 5:5",
+   "status": "mined",
+   "block_index": 252,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Revelation 3:17",
+   "status": "self_rendered",
+   "block_index": 254
+  },
+  {
+   "reference": "Matthew 11:28-30",
+   "status": "mined",
+   "block_index": 257,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "Matthew 13:43",
+   "status": "self_rendered",
+   "block_index": 261
+  },
+  {
+   "reference": "Matthew 18:3",
+   "status": "self_rendered",
+   "block_index": 264
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 267,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "1 Corinthians 10:31",
+   "status": "mined",
+   "block_index": 269,
+   "source_file": "Louis Segond 1910 (fra_lsg) — ebible mirror, public domain"
+  },
+  {
+   "reference": "2 Corinthians 5:1",
+   "status": "self_rendered",
+   "block_index": 272
+  },
+  {
+   "reference": "John 8:29",
+   "status": "self_rendered",
+   "block_index": 276
+  },
+  {
+   "reference": "1 Corinthians 10:31",
+   "status": "self_rendered",
+   "block_index": 277
+  },
+  {
+   "reference": "Matthew 21:3",
+   "status": "self_rendered",
+   "block_index": 281
+  },
+  {
+   "reference": "Matthew 21:9",
+   "status": "self_rendered",
+   "block_index": 281
+  },
+  {
+   "reference": "1 Corinthians 7:20",
+   "status": "self_rendered",
+   "block_index": 294
+  },
+  {
+   "reference": "1 Peter 3:15",
+   "status": "self_rendered",
+   "block_index": 294
+  },
+  {
+   "reference": "Matthew 5:21-22",
+   "status": "self_rendered",
+   "block_index": 287
+  },
+  {
+   "reference": "John 4:21",
+   "status": "self_rendered",
+   "block_index": 287
+  },
+  {
+   "reference": "Isaiah 6:3",
+   "status": "self_rendered",
+   "block_index": 294
+  }
+ ]
+}

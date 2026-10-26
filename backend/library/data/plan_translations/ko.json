@@ -30,6 +30,21 @@
    "Single-book LAUNCH plan backed by the ko edition of humility-2 (queue job #6169; book title 『겸손』, the form the shipped ko bios already use), shipped in the same PR so seed_plans does not publish a ko plan row with no prose. 합니다체 imperative (읽으십시오), the ko house register. AI-drafted; awaiting native review."
   ]
  },
+ "waiting-on-god-trust": {
+  "description": "신뢰의 학교에서 보내는 열 주간. 앤드류 머리는 날마다 하나님을 기다리는 훈련을 가르치고, F. B. 마이어는 그분의 인도를 받는 비결을 열어 보이며, 조지 뮐러의 놀라운 믿음의 생애는 그러한 신뢰가 무엇을 받는지 보여 줍니다.",
+  "note": [
+   "Job #6186 (waiting-on-god → ko) adds this prose because the book backs the plan. «하나님을 기다림» is the shipped ko title of waiting-on-god (same job). The row cannot appear yet: the-secret-of-guidance and the-life-of-trust are not in Korean; whichever lands last brings the card live, and its translator should check the title here against that edition."
+  ],
+  "title": "하나님을 기다림: 신뢰의 삶"
+ },
+ "grace-for-every-sinner": {
+  "title": "하나님께 이르는 길: 모든 죄인을 위한 은혜",
+  "description": "가장 오래된 기쁜 소식과 함께하는 한 달. 회심하지 않은 자들을 향한 리처드 백스터의 간절한 부르심, 하나님께 이르는 길에 관한 D. L. 무디의 말씀, 그리고 찰스 스펄전의 『모든 것이 은혜라』 — 죄인이 어떻게 구원받는지, 그리고 그것을 어떻게 확신할 수 있는지에 대한 가장 쉬운 안내서입니다.",
+  "note": [
+   "Korean plan prose for grace-for-every-sinner, shipping with a-call-to-the-unconverted.ko (queue job #6239), the last of its three source books in Korean (『회심하지 않은 자들을 향한 부르심』, 『하나님께 이르는 길』, 『모든 것이 은혜라』); without it seed_plans would create the ko plan row with no prose.",
+   "The title opens with the shipped edition title 『하나님께 이르는 길』; book titles are the shipped Korean editions'. 합니다체, the reader never addressed as 당신."
+  ]
+ },
  "growing-in-wisdom-18-days": {
   "title": "18일 동안 지혜 안에서 자라기",
   "description": "제임스 드그리프가 학생들을 위해 쓴 안내서로, 18일 동안 하루에 짧은 글 하나씩 읽습니다. 자신의 목적을 발견하는 데서부터 미래를 향한 비전을 세우는 데까지, 날마다 실제적인 조언에 성경 말씀과 묵상과 기도가 함께합니다.",
