@@ -116,5 +116,12 @@
     "note": [
       "Queue job #3048. AI-drafted; awaiting native review. «amaanyi» echoes the shipped lg title of power-through-prayer («Amaanyi Agava mu Kusaba»). purpose-in-prayer and necessity-of-prayer have no lg edition yet, so seed_plans will not create the (praying-men, lg) row until both ship; their translators should check this prose against those titles."
     ]
+  },
+  "first-steps-for-teens": {
+    "title": "Okutandika: Okukkiriza eri Abavubuka",
+    "description": "Olugendo olusooka ne Yesu, eri abasomi abavubuka. Charles Spurgeon akusisinkana ku mulyango n'obuyambi obusingayo obwangu eri buli anoonya ekkubo erigenda eri Kristo; oluvannyuma emboozi ez'amazima ez'abasajja n'abakazi abaamuwaayo byonna ziraga obulamu obwo kye bufuuka — ebitabo bibiri ebimpi mu wiiki nga ssatu.",
+    "note": [
+      "Queue job #2852. AI-drafted; awaiting native review. Neither source book (around-the-wicket-gate, men-and-women-who-gave-everything-2) has an lg edition yet, so seed_plans will not create the (first-steps-for-teens, lg) row until both ship; their translators should check this prose against those titles."
+    ]
   }
 }
