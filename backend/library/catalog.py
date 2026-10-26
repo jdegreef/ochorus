@@ -367,6 +367,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "died on a forced march into exile."
         ),
     ),
+    "gregory-the-great": AuthorEntry(
+        slug="gregory-the-great",
+        name="Gregory the Great",
+        birth_year=540,
+        death_year=604,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Gregory the Great (c.540–604) was Prefect of Rome who renounced the city’s highest civil office to become a monk, and the reluctant pope who wrote the West’s most influential manual of pastoral ministry, the Pastoral Rule."
+        ),
+    ),
     "richard-sibbes": AuthorEntry(
         slug="richard-sibbes",
         name="Richard Sibbes",
@@ -399,6 +410,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "monastery outside Zwolle, copying manuscripts and teaching "
             "novices. For those young men he wrote The Imitation of Christ, "
             "after the Bible the most widely read Christian book ever written."
+        ),
+    ),
+    "teresa-of-avila": AuthorEntry(
+        slug="teresa-of-avila",
+        name="Teresa of Ávila",
+        birth_year=1515,
+        death_year=1582,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Teresa of Ávila (1515–1582) was a Spanish Carmelite nun, mystic and reformer who taught that prayer is “an intimate sharing between friends.” She founded the reformed Discalced Carmelites, wrote The Interior Castle, and in 1970 became the first woman named a Doctor of the Church."
         ),
     ),
     "e-m-bounds": AuthorEntry(
@@ -737,6 +759,15 @@ BOOKS: list[BookEntry] = [
     BookEntry("sermons-on-several-occasions", "Sermons on Several Occasions", "john-wesley",
               "ccel", "wesley/sermons",
               subtitle="Selected Standard Sermons", cover_color="#7a5c48"),
+    # The Stanbrook Benedictines' translation (1921, revised edition), public
+    # domain. group_parts: each Mansion's short chapters read as one chapter; the
+    # editor's introduction and his note before VI.iii are left out.
+    BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
+              "ccel", "teresa/castle2",
+              subtitle="Or the Mansions",
+              cover_color="#5e3d52", group_parts=True,
+              skip=("Title Page", "Note", "Introduction",
+                    "Introductory Note to Chapter III by the Editor")),
     BookEntry("the-imitation-of-christ", "The Imitation of Christ", "thomas-a-kempis",
               "ccel", "kempis/imitation",
               subtitle="Four Books of Counsel for the Inner Life",
@@ -750,6 +781,11 @@ BOOKS: list[BookEntry] = [
               "ccel", "augustine/confess",
               subtitle="Translated by Edward B. Pusey",
               cover_color="#5c4033", group_parts=True),
+    # Gregory the Great's Book of Pastoral Rule — James Barmby's NPNF
+    # translation (1895), public domain, extracted from npnf212 by its stem.
+    BookEntry("the-book-of-pastoral-rule", "The Book of Pastoral Rule", "gregory-the-great",
+              "ccel", "schaff/npnf212", part="iii.iv",
+              subtitle="Translated by James Barmby", cover_color="#4f4a2e"),
     # The Enchiridion (Handbook on Faith, Hope, and Love) — the NPNF public-
     # domain translation (J. F. Shaw), extracted from Schaff's npnf103 volume by
     # its section stem (part="iv.ii"); CCEL's standalone augustine/enchiridion is
@@ -757,6 +793,14 @@ BOOKS: list[BookEntry] = [
     BookEntry("enchiridion", "The Enchiridion", "augustine-of-hippo",
               "ccel", "schaff/npnf103", part="iv.ii",
               subtitle="On Faith, Hope, and Love", cover_color="#4a5d4a"),
+    # On the Trinity, in Arthur West Haddan's translation (1873, NPNF), from
+    # Schaff's npnf103 volume (part="iv.i"). One chapter per book; Shedd's
+    # introductory essay and Haddan's preface are the editors', not Augustine's.
+    # The fixture titles each book "Book I: …" from Schaff's summary of it.
+    BookEntry("on-the-trinity", "On the Trinity", "augustine-of-hippo",
+              "ccel", "schaff/npnf103", part="iv.i",
+              subtitle="Translated by Arthur West Haddan", cover_color="#4b4a6b",
+              group_parts=True, skip=("Introductory Essay.", "Translator’s Preface.")),
     # On Christian Doctrine in J. F. Shaw's translation, from Schaff's npnf102
     # volume (part="v"), one chapter per book. CCEL's standalone
     # augustine/doctrine has the same text but a broken TOC that scrambles the
@@ -862,6 +906,15 @@ BOOKS: list[BookEntry] = [
               cover_color="#2f4f6f",
               skip=("Title Page.", "Prefatory note.", "Analysis.", "Title."),
               keep=("i.vii.iii",)),
+    # Meditations and Discourses on the Glory of Christ (1684) and the second
+    # part published after Owen's death (1691), in Goold's edition of the Works
+    # (CCEL owen/glory). Goold's prefatory note and the 1691 publisher's
+    # preface to the second part are not Owen's.
+    BookEntry("the-glory-of-christ", "The Glory of Christ", "john-owen",
+              "ccel", "owen/glory",
+              subtitle="Meditations and Discourses on the Glory of Christ",
+              cover_color="#6b4e1f",
+              skip=("Title page.", "Prefatory note.", "Original preface.")),
     # Two early African-American spiritual autobiographies, keyed (not OCR'd) by
     # UNC's Documenting the American South. Both first published pre-1929, US
     # public domain. See `import_docsouth`. Amanda Smith's per-chapter titles are
@@ -941,6 +994,19 @@ BOOKS: list[BookEntry] = [
               subtitle="Translated by Henry Cole",
               cover_color="#4a3328", group_parts=True,
               skip=("Preface by Henry Atherton",)),
+    # The Ninety-five Theses and the three treatises of 1520 (To the Christian
+    # Nobility, Christian Liberty, the Babylonish Captivity) in Wace and
+    # Buchheim's translation (1883), from CCEL. The editors' two introductory
+    # essays and their advertisement are theirs, not Luther's. The fixture
+    # regroups CCEL's leaves by treatise ("To the Christian Nobility: The Three
+    # Walls …"), so a re-import must be regrouped the same way.
+    BookEntry("first-principles-of-the-reformation", "First Principles of the Reformation",
+              "martin-luther", "ccel", "luther/first_prin",
+              subtitle="The Ninety-five Theses and the Three Primary Works",
+              cover_color="#5a2e2e",
+              skip=("Title Page", "Advertisement", "Contents",
+                    "I. On the Primary Principles of Luther’ Life and Teaching.",
+                    "II. The Political Course of the Reformation in Germany (1517-1546.)")),
     # Calvin's Institutes (1559) in Henry Beveridge's translation (1845), from
     # CCEL. Each leaf is one of Calvin's chapters, so the import is flat.
     # corrections.py restores the Greek CCEL carries in a legacy font encoding.
