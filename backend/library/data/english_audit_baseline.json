@@ -173,6 +173,9 @@
   "justification-by-grace": {
    "orphan-close-quote": 1
   },
+  "large-catechism": {
+   "hyphen-space": 2
+  },
   "lectures-to-my-students": {
    "orphan-close-quote": 1,
    "space-before-punct": 4
