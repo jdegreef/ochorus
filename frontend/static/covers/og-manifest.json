@@ -991,7 +991,7 @@
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 0.5,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -2009,7 +2009,7 @@
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 0.4,
+			"scrim": 0.8,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -3741,7 +3741,7 @@
 			"script": "arabic",
 			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
 			"art": true,
-			"scrim": 0.4,
+			"scrim": 0.8,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -5135,7 +5135,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.5,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -5854,7 +5854,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.5,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -7194,7 +7194,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.4,
+			"scrim": 0.8,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -9384,7 +9384,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.5,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -10854,7 +10854,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.4,
+			"scrim": 0.8,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -12794,7 +12794,7 @@
 			"script": "devanagari",
 			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
 			"art": true,
-			"scrim": 0.4,
+			"scrim": 0.8,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -14961,7 +14961,7 @@
 			"script": "korean",
 			"fonts": "19bd8da7e60c9daa4806f39febbe0567904728fa70f2d6e5be98500e3b00b604",
 			"art": true,
-			"scrim": 0.5,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -15303,7 +15303,7 @@
 			"script": "korean",
 			"fonts": "b4d82701fbd1f559e16e719ffc801581ba3c2adc323743584f00d0a3057cab99",
 			"art": true,
-			"scrim": 0.4,
+			"scrim": 0.8,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -16427,7 +16427,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.4,
+			"scrim": 0.8,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -18211,7 +18211,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.5,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -18969,7 +18969,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.4,
+			"scrim": 0.8,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -20004,7 +20004,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.4,
+			"scrim": 0.8,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -21624,7 +21624,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.4,
+			"scrim": 0.8,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -23978,7 +23978,7 @@
 			"script": "cyrillic",
 			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
 			"art": true,
-			"scrim": 0.4,
+			"scrim": 0.8,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -24620,7 +24620,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.5,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -24944,7 +24944,7 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.4,
+			"scrim": 0.8,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
