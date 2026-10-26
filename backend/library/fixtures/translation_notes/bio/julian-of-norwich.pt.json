@@ -1,0 +1,23 @@
+{
+ "kind": "bio",
+ "slug": "julian-of-norwich",
+ "language": "pt",
+ "job_issue": 5692,
+ "references": [
+  {
+   "reference": "Matthew 23:37",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 26
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "source_file": "Bíblia Livre para o Mundo (porbrbsl) Bible text",
+   "block_index": 26
+  }
+ ],
+ "note": [
+  "Scripture is Bíblia Livre para o Mundo (porbrbsl), pasted by script; rows come from the translator's report and each 'mined' phrase was re-checked byte for byte against the Bible text and this bio (an FAQ-only use has no block_index)."
+ ]
+}
