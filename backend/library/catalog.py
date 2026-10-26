@@ -401,6 +401,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "after the Bible the most widely read Christian book ever written."
         ),
     ),
+    "teresa-of-avila": AuthorEntry(
+        slug="teresa-of-avila",
+        name="Teresa of Ávila",
+        birth_year=1515,
+        death_year=1582,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Teresa of Ávila (1515–1582) was a Spanish Carmelite nun, mystic and reformer who taught that prayer is “an intimate sharing between friends.” She founded the reformed Discalced Carmelites, wrote The Interior Castle, and in 1970 became the first woman named a Doctor of the Church."
+        ),
+    ),
     "e-m-bounds": AuthorEntry(
         slug="e-m-bounds",
         name="E. M. Bounds",
@@ -737,6 +748,15 @@ BOOKS: list[BookEntry] = [
     BookEntry("sermons-on-several-occasions", "Sermons on Several Occasions", "john-wesley",
               "ccel", "wesley/sermons",
               subtitle="Selected Standard Sermons", cover_color="#7a5c48"),
+    # The Stanbrook Benedictines' translation (1921, revised edition), public
+    # domain. group_parts: each Mansion's short chapters read as one chapter; the
+    # editor's introduction and his note before VI.iii are left out.
+    BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
+              "ccel", "teresa/castle2",
+              subtitle="Or the Mansions",
+              cover_color="#5e3d52", group_parts=True,
+              skip=("Title Page", "Note", "Introduction",
+                    "Introductory Note to Chapter III by the Editor")),
     BookEntry("the-imitation-of-christ", "The Imitation of Christ", "thomas-a-kempis",
               "ccel", "kempis/imitation",
               subtitle="Four Books of Counsel for the Inner Life",
