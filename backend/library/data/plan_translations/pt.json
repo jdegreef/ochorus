@@ -137,5 +137,12 @@
   "note": [
    "Queue job #5705. «A Cana Esmagada» (the-bruised-reed) and «Todas as Coisas para o Bem» (all-things-for-good) are live in pt; mortification-of-sin is not yet, so seed_plans will not create the (the-puritan-heart, pt) row until it lands. Its translator should check this prose against that edition's title. «cooperam para o bem» echoes the Bíblia Livre / common pt wording of Rm 8:28."
   ]
+ },
+ "family-devotions-boy-from-osogun": {
+  "title": "Devocionais em família: o menino de Osogun",
+  "description": "Doze noites de devocionais em família de cinco minutos com Samuel Ajayi Crowther, o menino iorubá vendido como escravo que cresceu e deu ao seu povo a Bíblia em sua própria língua. Leiam em voz alta um capítulo curto: o navio negreiro detido no mar, o dia em que ele reencontrou a mãe, o Pai-Nosso em iorubá para a Rainha e os escravos bondosos que o alimentaram quando ele era prisioneiro. Cada um termina com uma oração e três perguntas para conversarem juntos.",
+  "note": [
+   "Job #5697. AI-drafted ahead of the book; awaiting native review. samuel-ajayi-crowther-a-life-children is not yet in Portuguese, so seed_plans creates the (family-devotions-boy-from-osogun, pt) row only once it is published here; its pt book job never needs to write this shared file. The title follows the house pattern of «Devocionais em família: a jornada do peregrino»; Osogun and «iorubá» follow the pt corpus. Like the English, it describes the book rather than quoting its title."
+  ]
  }
 }
