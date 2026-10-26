@@ -284,6 +284,9 @@
    "hyphen-space": 1,
    "space-before-punct": 4
   },
+  "proslogium-monologium-cur-deus-homo": {
+   "orphan-close-quote": 1
+  },
   "provincial-letters": {
    "word-fusion": 1
   },

@@ -493,6 +493,7 @@ TOPICS = [
             "enchiridion",
             "large-catechism",
             "on-the-incarnation",
+            "proslogium-monologium-cur-deus-homo",
             "freedom-of-the-will",
             "bondage-of-the-will",
             "first-principles-of-the-reformation",
