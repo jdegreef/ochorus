@@ -20018,6 +20018,17 @@
 			"layout": "split/mauve",
 			"bar": 0
 		},
+		"small-catechism": {
+			"ground": "f6bf7b0566efe36f1e3c110601a95b33af1172aa55d0feed933f3c8ad1f1ee8e",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"sons-of-the-king-1": {
 			"ground": "e9ed389d5a9d68f1b85112c478d21182ed8d8fb27266e2992844da36e52a8231",
 			"style": "young",
