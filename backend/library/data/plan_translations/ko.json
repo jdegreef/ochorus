@@ -84,5 +84,21 @@
    "Single-book plan backed by the ko edition the-practice-of-the-presence-of-god-children (『하나님의 임재 연습 (어린이용)』); the card names Brother Lawrence, not the title. Ships with the Level 1 books batch (ko), which makes this plan's source books live in Korean; without this prose seed_plans would publish an English-titled card in Korean (the #819 defect) and PlanTranslationCoverageTests would fail.",
    "로렌스 형제 per the ko name table and the book (48 uses); 냄비/부엌/앙상한 나무 echo the ko children's edition's own wording. Title opens 「가정 예배: …」 (family devotions = 가정 예배, the standard Korean term), shared by all ko family-devotions cards. It PROMISES the prayer and three talk-about-it questions, as the English does; the ko children's editions in this batch ship study_questions (3 per chapter), so the promise holds."
   ]
+ },
+ "new-to-the-faith": {
+  "title": "새로 믿는 이들을 위하여",
+  "description": "그리스도와 함께 이제 막 걸음을 내딛는 모든 이를 위한 5주 반. 찰스 스펄전이 『좁은 문 앞에서』 여러분을 맞아 예수님을 신뢰하는 일에 대한 가장 쉬운 도움을 건네고, 이어서 새 신자들을 위해 글을 쓴 R. A. 토레이가 바르게 시작하는 법을 보여 줍니다. 구원의 확신, 성령, 교회, 성경, 기도, 그리고 증거하는 삶입니다. 그 사이사이 짧은 글들이 새 그리스도인이라면 누구나 묻는 질문에 답합니다. 복음이 무엇인지, 예수님께서 왜 죽으셨는지, 세례와 성찬이 무엇을 뜻하는지, 그리고 어떻게 계속 자라 갈 수 있는지를 말입니다.",
+  "note": [
+   "Curated plan backed by the ko editions around-the-wicket-gate (『좁은 문 앞에서』) and how-to-succeed-in-the-christian-life (『그리스도인의 삶에서 성공하는 법』); the card quotes only 『좁은 문 앞에서』, turning the English 'meets you at the wicket gate' into the book's own title (wicket gate = 좁은 문, the Korean Pilgrim's Progress form). Torrey's book is described, not named, as in the English. Ships with Level 1 books batch 2 (ko), which makes this plan's source books live in Korean; without this prose seed_plans would publish an English-titled card in Korean (the #819 defect) and PlanTranslationCoverageTests would fail.",
+   "Names per the ko name table (찰스 스펄전, R. A. 토레이). Lord's Supper = 성찬; baptism = 세례. 합니다체, the reader never addressed as 당신. AI-drafted; awaiting native review."
+  ]
+ },
+ "first-steps-for-teens": {
+  "title": "첫걸음: 십대를 위한 믿음",
+  "description": "십대 독자들을 위한, 예수님과 함께하는 첫걸음입니다. 찰스 스펄전이 『좁은 문 앞에서』 여러분을 맞아 그리스도께 이르는 길을 찾는 누구에게나 가장 쉬운 도움을 건네고, 이어서 그리스도께 모든 것을 드린 남녀들의 실제 이야기, 『모든 것을 드린 사람들』이 그 삶이 어떤 모습이 되는지 보여 줍니다. 약 3주 동안 읽는 짧은 책 두 권입니다.",
+  "note": [
+   "Backed by the ko editions around-the-wicket-gate (『좁은 문 앞에서』, new in this batch) and men-and-women-who-gave-everything-2 (『모든 것을 드린 사람들』, already shipped); the card quotes both titles exactly. Ships with Level 1 books batch 2 (ko), which makes this plan's source books live in Korean; without this prose seed_plans would publish an English-titled card in Korean (the #819 defect) and PlanTranslationCoverageTests would fail.",
+   "'Starting Out' = 첫걸음 (also the description's 'first walk'); 합니다체, the reader never addressed as 당신. AI-drafted; awaiting native review."
+  ]
  }
 }
