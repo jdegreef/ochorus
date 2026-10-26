@@ -487,6 +487,7 @@ TOPICS = [
             "the-fundamental-doctrines-of-the-christian-faith",
             "enchiridion",
             "on-the-incarnation",
+            "proslogium-monologium-cur-deus-homo",
             "freedom-of-the-will",
             "bondage-of-the-will",
             "institutes-of-the-christian-religion",

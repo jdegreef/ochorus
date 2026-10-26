@@ -17451,6 +17451,17 @@
 			"layout": "wash/ochre",
 			"bar": 0
 		},
+		"proslogium-monologium-cur-deus-homo": {
+			"ground": "79fc17ebc3cce7c42a6fcc50f8b0a8f3b508b8e6645b9d60a5dd0c821dbc76c3",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"provincial-letters": {
 			"ground": "e954e344f5e53eb45677c6482c0d21ef2d632a8bf519cb2a286acfe5a99389d6",
 			"style": "press",

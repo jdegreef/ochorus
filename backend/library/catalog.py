@@ -356,6 +356,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "and very largely settled how the church confesses Christ."
         ),
     ),
+    "anselm-of-canterbury": AuthorEntry(
+        slug="anselm-of-canterbury",
+        name="Anselm of Canterbury",
+        birth_year=1033,
+        death_year=1109,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Anselm of Canterbury (1033–1109) was a monk of Bec who became an unwilling archbishop and was exiled twice for refusing to treat the church's offices as the king's property."
+        ),
+    ),
     "john-chrysostom": AuthorEntry(
         slug="john-chrysostom",
         name="John Chrysostom",
@@ -757,6 +768,17 @@ BOOKS: list[BookEntry] = [
     BookEntry("enchiridion", "The Enchiridion", "augustine-of-hippo",
               "ccel", "schaff/npnf103", part="iv.ii",
               subtitle="On Faith, Hope, and Love", cover_color="#4a5d4a"),
+    # Anselm's three great works and the Gaunilo exchange in Sidney Norton
+    # Deane's translation (Open Court, 1903), from CCEL (anselm/basic_works).
+    # Deane's introduction (after Weber), criticisms and bibliography are left
+    # out. The fixture regroups CCEL's one-page chapters into readable ones.
+    BookEntry("proslogium-monologium-cur-deus-homo",
+              "Proslogium, Monologium and Cur Deus Homo", "anselm-of-canterbury",
+              "ccel", "anselm/basic_works",
+              subtitle="Translated by Sidney Norton Deane", cover_color="#3d4f5e",
+              skip=("Title Page", "Anselm's Philosophy (After Weber.)",
+                    "Criticisms of Anselm's Ontological Argument for the Being of God",
+                    "Bibliography")),
     # The Schaff sets publish a whole volume under one work path, so these three
     # are addressed by `part` — the work's section-stem prefix inside the
     # volume's TOC. See BookEntry.part for why there is no per-work URL to use
