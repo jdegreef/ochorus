@@ -23069,6 +23069,17 @@
 				551
 			]
 		},
+		"uk/cheque-book": {
+			"ground": "e9b5003fc8751f4d7771c0605df29a60c670fb8e7dfcb916353efe19e473ea9d",
+			"style": "revival",
+			"volume": null,
+			"script": "cyrillic",
+			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"uk/clothed-with-strength-and-dignity": {
 			"ground": "73c5d08a9d575054d8815b03d5a9d15c9a2bc371df277d91ff6569377a92c7bb",
 			"style": "originals",
