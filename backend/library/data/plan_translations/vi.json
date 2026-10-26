@@ -61,5 +61,26 @@
   "note": [
    "Single-book plan backed by the vi edition of the-practice-of-the-presence-of-god-children («Thực Hành Sự Hiện Diện Của Đức Chúa Trời (Cho thiếu nhi)»); ships with the Level 1 books batch (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card names no book title; “Thầy Lawrence”, “nói chuyện với Đức Chúa Trời”, the bare winter tree (“Cái cây giữa mùa đông”, ch. 2) and the pronoun “anh” for the young Lawrence all follow that edition."
   ]
+ },
+ "school-of-prayer": {
+  "title": "Nền tảng của sự cầu nguyện",
+  "description": "Bốn tuần đặt nền tảng cho sự cầu nguyện cùng ba người dẫn đường: Andrew Murray về cách chính Chúa dạy chúng ta cầu nguyện, D. L. Moody về sự cầu nguyện đắc thắng, và Hannah Buyinza về sự cầu nguyện như nhịp đập hằng ngày của đời sống Cơ Đốc.",
+  "note": [
+   "Three-book plan backed by the vi editions of lord-teach-us-to-pray-2 («Lạy Chúa, Xin Dạy Chúng Tôi Cầu Nguyện»), prevailing-prayer («Sự Cầu Nguyện Đắc Thắng», new this batch) and prayer-the-pulse-of-life («Cầu Nguyện – Nhịp Đập Của Sự Sống»). Ships with the Level 1 books batch 2 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card quotes no title verbatim but echoes them: “sự cầu nguyện đắc thắng” is the prevailing-prayer edition's wording and “nhịp đập” follows Buyinza's vi title. “Foundations” = nền tảng, sentence case as the shipped vi plan titles are."
+  ]
+ },
+ "new-to-the-faith": {
+  "title": "Mới tin Chúa",
+  "description": "Năm tuần rưỡi dành cho bất cứ ai vừa mới bắt đầu bước đi với Đấng Christ. Charles Spurgeon gặp bạn nơi cửa hẹp với sự giúp đỡ giản dị nhất để tin cậy Chúa Giê-xu; rồi R. A. Torrey, viết cho những người mới tin, chỉ cho bạn cách khởi đầu đúng đắn — sự bảo đảm về sự cứu rỗi, Đức Thánh Linh, Hội Thánh, Kinh Thánh, sự cầu nguyện và việc làm chứng. Những bài viết ngắn dọc đường giải đáp những câu hỏi mà mọi Cơ Đốc nhân mới đều thắc mắc: Phúc Âm là gì, vì sao Chúa Giê-xu chết, phép báp-têm và Tiệc Thánh có ý nghĩa gì, và làm thế nào để tiếp tục lớn lên.",
+  "note": [
+   "Plan backed by the vi editions of around-the-wicket-gate («Quanh Cửa Hẹp») and how-to-succeed-in-the-christian-life («Làm Thế Nào Để Thành Công Trong Đời Sống Cơ Đốc»), both new this batch, plus the vi articles. Ships with the Level 1 books batch 2 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card names authors, not book titles; “cửa hẹp” (wicket gate) follows Spurgeon's vi title, “khởi đầu đúng đắn” and “sự bảo đảm về sự cứu rỗi” are Torrey's vi chapter titles 1 and 3, and Phúc Âm / phép báp-têm / Tiệc Thánh match the vi articles' own headings."
+  ]
+ },
+ "first-steps-for-teens": {
+  "title": "Bước đầu: Đức tin dành cho tuổi thiếu niên",
+  "description": "Những bước đầu tiên đi cùng Chúa Giê-xu, dành cho bạn đọc tuổi thiếu niên. Charles Spurgeon gặp bạn nơi cửa hẹp với sự giúp đỡ giản dị nhất cho bất cứ ai đang tìm đường đến với Đấng Christ; rồi những câu chuyện có thật về những người nam và nữ đã hiến dâng tất cả cho Ngài cho thấy đời sống ấy sẽ trở nên thế nào — hai quyển sách ngắn trong khoảng ba tuần.",
+  "note": [
+   "Two-book plan backed by the vi editions of around-the-wicket-gate («Quanh Cửa Hẹp», new this batch) and men-and-women-who-gave-everything-2 («Những Người Nam Và Nữ Đã Hiến Dâng Tất Cả»). Ships with the Level 1 books batch 2 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card echoes the second title in lower case (“những người nam và nữ đã hiến dâng tất cả”) rather than quoting it; “teens” = thiếu niên, as the vi “(Cho thiếu niên)” edition suffix has it."
+  ]
  }
 }
