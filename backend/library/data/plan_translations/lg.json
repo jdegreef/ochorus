@@ -109,5 +109,12 @@
     "note": [
       "Queue job #3050. AI-drafted; awaiting native review. «olumuli olubetense» echoes Isaiah 42:3 / Matthew 12:20, and «ebintu byonna bikolera wamu olw'obulungi» Romans 8:28. None of the three source books (the-bruised-reed, mortification-of-sin, all-things-for-good) has an lg edition yet, so seed_plans will not create the (the-puritan-heart, lg) row until all three ship; their translators should check this prose against those titles."
     ]
+  },
+  "praying-men": {
+    "title": "Abasajja Abasaba: Essomero ly'Okusaba ne E. M. Bounds",
+    "description": "Wiiki musanvu mu kyokero ky'okwegayirira wamu n'omutume omukulu ow'okusaba. E. M. Bounds atandika n'obwetaavu bw'omubuulizi bwennyini obw'amaanyi, oluvannyuma n'annyonnyola ekigendererwa ekifuula okusaba okuwangula, n'obwetaavu obukufuula omulimu gwonna ogw'obulamu obw'Ekikristaayo.",
+    "note": [
+      "Queue job #3048. AI-drafted; awaiting native review. «amaanyi» echoes the shipped lg title of power-through-prayer («Amaanyi Agava mu Kusaba»). purpose-in-prayer and necessity-of-prayer have no lg edition yet, so seed_plans will not create the (praying-men, lg) row until both ship; their translators should check this prose against those titles."
+    ]
   }
 }
