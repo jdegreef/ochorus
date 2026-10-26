@@ -14881,6 +14881,17 @@
 				482
 			]
 		},
+		"ko/confessions": {
+			"ground": "53c9ba280c7756d03504703a9662309b98dbc6881a03b4c9e144f0fd6a031b5f",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "69fe3f37139d5baab754841b4775a89b7da68433a400c0d36acae0d2541e1bb9",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/rust",
+			"bar": 0
+		},
 		"ko/gleanings-among-the-sheaves": {
 			"ground": "d90914e34a383a2c53285d3437fc826135b791fcabd91908ea302e67f0cd4bcb",
 			"style": "revival",
