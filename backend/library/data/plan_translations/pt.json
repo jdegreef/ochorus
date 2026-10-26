@@ -130,5 +130,12 @@
   "note": [
    "Queue job #5680: «A Vida de Confiança» completes this plan in pt (with «Esperando em Deus» and «O Segredo da Orientação Divina», both already live), so seed_plans creates the (waiting-on-god-trust, pt) row on the deploy that ships this PR. Title opens with the shipped pt title of its first book."
   ]
+ },
+ "the-puritan-heart": {
+  "title": "O Coração Puritano",
+  "description": "Oito semanas com três mestres da vida interior. Richard Sibbes cuida da cana esmagada, John Owen trava guerra contra o pecado que ainda habita em nós, e Thomas Watson apoia toda a luta na promessa de que todas as coisas cooperam para o bem.",
+  "note": [
+   "Queue job #5705. «A Cana Esmagada» (the-bruised-reed) and «Todas as Coisas para o Bem» (all-things-for-good) are live in pt; mortification-of-sin is not yet, so seed_plans will not create the (the-puritan-heart, pt) row until it lands. Its translator should check this prose against that edition's title. «cooperam para o bem» echoes the Bíblia Livre / common pt wording of Rm 8:28."
+  ]
  }
 }
