@@ -22391,6 +22391,17 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"the-book-of-pastoral-rule": {
+			"ground": "27987e713c2c0c8e80efb2892a312e925d6da4a9e111b638eb630fdbc9e71178",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-bruised-reed": {
 			"ground": "b787f60e6baaa7ecc6924988197a601ff65c8217645d46bb8bb7e8c5c1335a5f",
 			"style": "press",

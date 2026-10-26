@@ -367,6 +367,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "died on a forced march into exile."
         ),
     ),
+    "gregory-the-great": AuthorEntry(
+        slug="gregory-the-great",
+        name="Gregory the Great",
+        birth_year=540,
+        death_year=604,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Gregory the Great (c.540–604) was Prefect of Rome who renounced the city’s highest civil office to become a monk, and the reluctant pope who wrote the West’s most influential manual of pastoral ministry, the Pastoral Rule."
+        ),
+    ),
     "richard-sibbes": AuthorEntry(
         slug="richard-sibbes",
         name="Richard Sibbes",
@@ -750,6 +761,11 @@ BOOKS: list[BookEntry] = [
               "ccel", "augustine/confess",
               subtitle="Translated by Edward B. Pusey",
               cover_color="#5c4033", group_parts=True),
+    # Gregory the Great's Book of Pastoral Rule — James Barmby's NPNF
+    # translation (1895), public domain, extracted from npnf212 by its stem.
+    BookEntry("the-book-of-pastoral-rule", "The Book of Pastoral Rule", "gregory-the-great",
+              "ccel", "schaff/npnf212", part="iii.iv",
+              subtitle="Translated by James Barmby", cover_color="#4f4a2e"),
     # The Enchiridion (Handbook on Faith, Hope, and Love) — the NPNF public-
     # domain translation (J. F. Shaw), extracted from Schaff's npnf103 volume by
     # its section stem (part="iv.ii"); CCEL's standalone augustine/enchiridion is
