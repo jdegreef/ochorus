@@ -694,6 +694,32 @@
  "model": "library.seriestranslation",
  "fields": {
   "series": [
+   "rooted"
+  ],
+  "language": "vi",
+  "title": "Bám Rễ – 30 Ngày Với Đức Chúa Trời Dành Cho Thiếu Nhi",
+  "description": "Sách tĩnh nguyện ba mươi ngày cho các em từ 9 đến 12 tuổi, mỗi lần một quyển: một câu Kinh Thánh, ý nghĩa của câu ấy, một câu hỏi để suy nghĩ, một việc để thực hành và một lời cầu nguyện.",
+  "created_at": "2026-10-26T00:00:00Z",
+  "updated_at": "2026-10-26T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "rooted"
+  ],
+  "language": "ko",
+  "title": "뿌리내림 – 어린이를 위한 하나님과 함께하는 30일",
+  "description": "9세에서 12세 독자를 위한 30일 묵상집으로, 한 권씩 읽습니다. 성경 구절 하나, 그 뜻, 생각해 볼 질문, 실천해 볼 일, 그리고 기도가 담겨 있습니다.",
+  "created_at": "2026-10-26T00:00:00Z",
+  "updated_at": "2026-10-26T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
    "brave-for-god"
   ],
   "language": "vi",
