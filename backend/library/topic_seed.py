@@ -334,6 +334,7 @@ TOPICS = [
         [
             "confessions",
             "enchiridion",
+            "on-the-trinity",
             "on-the-incarnation",
             "life-of-antony",
             "on-the-priesthood",

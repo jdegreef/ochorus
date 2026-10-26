@@ -231,6 +231,10 @@
   "on-the-priesthood": {
    "lost-paragraphing": 1
   },
+  "on-the-trinity": {
+   "lost-paragraphing": 1,
+   "orphan-close-quote": 2
+  },
   "our-daily-walk": {
    "hyphen-space": 1,
    "orphan-close-quote": 8,
