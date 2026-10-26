@@ -15757,6 +15757,17 @@
 				461
 			]
 		},
+		"lg/gleanings-among-the-sheaves": {
+			"ground": "615ec2097d96cb4400c7db7c737a88519afdc6fe40470d45c64bd33fcb734cc4",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"lg/godliness": {
 			"ground": "df110b27971ad38b8175630c9701c9997e462f053cb465193554865f1c798d17",
 			"style": "revival",
