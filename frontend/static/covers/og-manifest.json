@@ -15956,6 +15956,34 @@
 				482
 			]
 		},
+		"lg/men-who-moved-heaven": {
+			"ground": "4bf0f12c252109617f4e4400fa44825e0fbddbe26e15956bd08f6a643b7cb5c1",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[171, 275, 429, 351],
+					[98, 341, 502, 417],
+					[195, 407, 405, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
+		},
 		"lg/men-who-tended-the-flock-2": {
 			"ground": "a5fa3234992ba3df865c292a623e22cd6b14f0cd14e781ad2ed997778543caf3",
 			"style": "originals",
