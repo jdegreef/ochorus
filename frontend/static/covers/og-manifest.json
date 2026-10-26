@@ -19056,6 +19056,17 @@
 				503
 			]
 		},
+		"pt/the-life-of-trust": {
+			"ground": "d63f7e346155f39e6ea127964eb73edf3f15ad95fe5a06c09b53d1a6650f049d",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/oxblood",
+			"bar": 0
+		},
 		"pt/the-life-of-trust-children": {
 			"ground": "9d318d13ac7e7db06867b3abf42aa062c5657b3a6d8acee185bfbc4d13594a36",
 			"style": "revival",
