@@ -794,6 +794,13 @@ BOOKS: list[BookEntry] = [
               "ccel", "kempis/imitation",
               subtitle="Four Books of Counsel for the Inner Life",
               cover_color="#3d3a6e"),
+    # The City of God — Marcus Dods's translation (NPNF first series, vol. 2,
+    # 1887), public domain, extracted from npnf102 by its stem. group_parts:
+    # each of the twenty-two Books is a chapter, its short chapters subheads.
+    BookEntry("the-city-of-god", "The City of God", "augustine-of-hippo",
+              "ccel", "schaff/npnf102", part="iv", group_parts=True,
+              subtitle="Translated by Marcus Dods", cover_color="#5a3e2b",
+              skip=("Translator’s Preface",)),
     # CCEL's `augustine/confessions` is Outler's 1955 translation — still in
     # copyright, hosted there by permission. `augustine/confess` is Pusey's
     # 1838 translation, public domain. group_parts: the 278 leaf sections are
