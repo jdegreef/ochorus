@@ -158,5 +158,12 @@
   "note": [
    "Job #5704. AI-drafted; awaiting native review. rooted-1 and rooted-2 are in Portuguese; rooted-3 is not, so seed_plans creates the (rooted-three-months-books-1-3, pt) row only once it is published here. «Enraizados», «Plantados» and «Seguindo Jesus» and the phrase «da manjedoura ao túmulo vazio» follow the shipped pt editions (rooted-1.pt, rooted-2.pt); «Dando Fruto» for Book 3 (Growing Fruit) is translated here — align it with rooted-3.pt's subtitle when that ships."
   ]
+ },
+ "new-to-the-faith": {
+  "title": "Novo na Fé",
+  "description": "Cinco semanas e meia para quem está apenas começando com Cristo. Charles Spurgeon vem ao seu encontro em «Junto à Porta Estreita» com a ajuda mais simples que existe para confiar em Jesus; depois R. A. Torrey, escrevendo para novos crentes, mostra como começar bem — a certeza da salvação, o Espírito Santo, a igreja, a Bíblia, a oração e o testemunho. Artigos curtos ao longo do caminho respondem às perguntas que todo novo cristão faz: o que é o evangelho, por que Jesus morreu, o que significam o batismo e a Ceia do Senhor, e como continuar crescendo.",
+  "note": [
+   "Queue job #5698. AI-drafted; awaiting native review. «Junto à Porta Estreita» is the shipped pt title of around-the-wicket-gate. how-to-succeed-in-the-christian-life has no pt edition yet, so seed_plans will not create the (new-to-the-faith, pt) row until it ships; its translator should check this prose against that edition's title."
+  ]
  }
 }
