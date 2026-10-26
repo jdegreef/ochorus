@@ -352,9 +352,13 @@ def pages_for(refs: list[str]) -> dict[str, dict | None]:
         book = bible.Book(key // 1000)
         chapter = key % 1000
         verse = ids[0] % 1000 if len(ids) == 1 else None
-        if verse is not None and len(by_verse.get(ids[0], ())) >= VERSE_FLOOR:
+        # The text rule `qualifying_pages` applies: a book the bundled Bibles
+        # don't carry (the apocrypha) is cited but never built, so a link to it
+        # is a 404 — Gregory's Ecclesiasticus 32 failed a prerender that way.
+        verse_page = verse is not None and len(by_verse.get(ids[0], ())) >= VERSE_FLOOR
+        if verse_page and verse_text(ids[0]):
             out[ref] = {"book": book_slug(book), "chapter": chapter, "verse": verse}
-        elif len(by_chapter.get(key, ())) >= CHAPTER_FLOOR:
+        elif len(by_chapter.get(key, ())) >= CHAPTER_FLOOR and verse_text(key * 1000 + 1):
             out[ref] = {"book": book_slug(book), "chapter": chapter, "verse": None}
         else:
             out[ref] = None
