@@ -489,6 +489,7 @@ TOPICS = [
             "on-the-incarnation",
             "freedom-of-the-will",
             "bondage-of-the-will",
+            "first-principles-of-the-reformation",
             "institutes-of-the-christian-religion",
             "old-paths",
             "ten-commandments",

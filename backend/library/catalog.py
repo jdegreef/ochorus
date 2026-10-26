@@ -931,6 +931,19 @@ BOOKS: list[BookEntry] = [
               subtitle="Translated by Henry Cole",
               cover_color="#4a3328", group_parts=True,
               skip=("Preface by Henry Atherton",)),
+    # The Ninety-five Theses and the three treatises of 1520 (To the Christian
+    # Nobility, Christian Liberty, the Babylonish Captivity) in Wace and
+    # Buchheim's translation (1883), from CCEL. The editors' two introductory
+    # essays and their advertisement are theirs, not Luther's. The fixture
+    # regroups CCEL's leaves by treatise ("To the Christian Nobility: The Three
+    # Walls …"), so a re-import must be regrouped the same way.
+    BookEntry("first-principles-of-the-reformation", "First Principles of the Reformation",
+              "martin-luther", "ccel", "luther/first_prin",
+              subtitle="The Ninety-five Theses and the Three Primary Works",
+              cover_color="#5a2e2e",
+              skip=("Title Page", "Advertisement", "Contents",
+                    "I. On the Primary Principles of Luther’ Life and Teaching.",
+                    "II. The Political Course of the Reformation in Germany (1517-1546.)")),
     # Calvin's Institutes (1559) in Henry Beveridge's translation (1845), from
     # CCEL. Each leaf is one of Calvin's chapters, so the import is flat.
     # corrections.py restores the Greek CCEL carries in a legacy font encoding.
