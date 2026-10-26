@@ -21880,6 +21880,35 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"sw/tukutendereza": {
+			"ground": "69b9ee4f3a462c7bd83dfdba4079f5c5154175b6dbf3c68284db5c509a34d6b1",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[72, 314, 528, 390]
+				],
+				"subtitle": [
+					[71, 448, 529, 476]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				319,
+				476
+			]
+		},
 		"sw/union-and-communion": {
 			"ground": "17038fc6723938d8af560cc00cfe3f7f30e240388fbea5ec3eb04695cec0c2af",
 			"style": "revival",
