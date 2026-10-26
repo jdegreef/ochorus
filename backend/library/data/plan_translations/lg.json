@@ -102,5 +102,12 @@
     "note": [
       "Queue job #3053. AI-drafted; awaiting native review. «Olugendo lw'Omutambuze» quotes the shipped lg title of pilgrims-progress, and the plan title echoes it. around-the-wicket-gate and grace-abounding have no lg edition yet, so seed_plans will not create the (the-pilgrims-way, lg) row until both ship; their translators should check this prose against those titles."
     ]
+  },
+  "the-puritan-heart": {
+    "title": "Omutima gw'Abapuritani",
+    "description": "Wiiki munaana n'abayigiriza basatu ab'obulamu obw'omunda. Richard Sibbes asiba olumuli olubetense, John Owen alwanyisa ekibi ekikyabeera mu ffe, ne Thomas Watson ateeka olutalo lwonna ku kisuubizo nti ebintu byonna bikolera wamu olw'obulungi.",
+    "note": [
+      "Queue job #3050. AI-drafted; awaiting native review. «olumuli olubetense» echoes Isaiah 42:3 / Matthew 12:20, and «ebintu byonna bikolera wamu olw'obulungi» Romans 8:28. None of the three source books (the-bruised-reed, mortification-of-sin, all-things-for-good) has an lg edition yet, so seed_plans will not create the (the-puritan-heart, lg) row until all three ship; their translators should check this prose against those titles."
+    ]
   }
 }
