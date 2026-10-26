@@ -88,5 +88,12 @@
     "note": [
       "Job #3049. AI-drafted ahead of the books; awaiting native review. None of first-epistle-of-clement, epistles-of-ignatius or on-the-incarnation is in Luganda yet, so seed_plans creates the (voices-of-the-early-church, lg) row only once all three are published here; their lg book jobs never need to write this shared file. Place names follow the OLCB (Ruumi, Antiyokiya, Alegezanderiya; Acts 28:16, 11:26, 18:24); Athanasius and Ignatius follow the lg corpus. «On the Incarnation» is described, not quoted as a title — align it with the lg edition's title when that ships."
     ]
+  },
+  "send-the-fire": {
+    "title": "Weereza Omuliro: Okusabira Okuzuukusibwa",
+    "description": "Engeri okuzuukusibwa gye kujja, n'engeri y'okukusaba kukke. Charles Finney mu misomo gye ku ebyo okuzuukusibwa bye kwetaaga, R. A. Torrey ku kubatizibwa n'Omwoyo Omutukuvu okukuwa amaanyi, n'obubaka Katonda bwe yakozesa okukankanya New England mu biseera bya Jonathan Edwards.",
+    "note": [
+      "Job #3052. AI-drafted ahead of the books; awaiting native review. Only baptism-with-the-holy-spirit is in Luganda («Okubatizibwa n'Omwoyo Omutukuvu», whose wording the description follows); revival-lectures and selected-sermons-edwards are not, so seed_plans creates the (send-the-fire, lg) row only once both are published here. «okuzuukusibwa» for revival is the commoner of the two lg corpus terms (41× against 38× «okudda obuggya»); Finney, Jonathan Edwards and New England follow the lg corpus."
+    ]
   }
 }
