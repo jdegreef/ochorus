@@ -5231,6 +5231,8 @@ BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {})["back_matter
     ("verdadera religión! <i>Amén.</i></p>",
      "<p>Las frecuentes citas fechadas de los diarios de Brainerd"),    ("vraie religion ! <i>Amen.</i></p>",
      "<p>Les fréquentes citations datées des journaux de Brainerd"),
+    ("verdadeira religião! <i>Amém.</i></p>",
+     "<p>As frequentes citações datadas dos diários de Brainerd"),
 ]
 # Edwards signs the preface `<div class="c012">JONATHAN EDWARDS.</div>`, the
 # last block of ch1: the half-title after it is front matter. The old walk
