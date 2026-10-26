@@ -95,5 +95,12 @@
     "note": [
       "Job #3052. AI-drafted ahead of the books; awaiting native review. Only baptism-with-the-holy-spirit is in Luganda («Okubatizibwa n'Omwoyo Omutukuvu», whose wording the description follows); revival-lectures and selected-sermons-edwards are not, so seed_plans creates the (send-the-fire, lg) row only once both are published here. «okuzuukusibwa» for revival is the commoner of the two lg corpus terms (41× against 38× «okudda obuggya»); Finney, Jonathan Edwards and New England follow the lg corpus."
     ]
+  },
+  "the-pilgrims-way": {
+    "title": "Ekkubo ly'Omutambuze",
+    "description": "Ekkubo eriddayo ewaka, mu bitabo bisatu eby'edda. Charles Spurgeon asisinkana omunoonyi ku mulyango omufunda, olugero lwa John Bunyan olutaggwaawo — «Olugendo lw'Omutambuze» — lugoberera omutambuze olugendo lwonna okutuuka mu Kibuga eky'Omu Ggulu, n'obujulirwa bwa Bunyan bwennyini bulaga ekisa ekyayitirira eri asinga aboonoonyi bonna.",
+    "note": [
+      "Queue job #3053. AI-drafted; awaiting native review. «Olugendo lw'Omutambuze» quotes the shipped lg title of pilgrims-progress, and the plan title echoes it. around-the-wicket-gate and grace-abounding have no lg edition yet, so seed_plans will not create the (the-pilgrims-way, lg) row until both ship; their translators should check this prose against those titles."
+    ]
   }
 }
