@@ -123,5 +123,12 @@
    "Job #5696. AI-drafted ahead of the books; awaiting native review. brave-for-god and brave-for-god-2 are in pt; brave-for-god-3 and brave-for-god-4 are not yet, so seed_plans creates the (brave-for-god-24-true-stories, pt) row only once all four are published here. The series name follows the shipped pt editions («Corajosos por Deus», «Corajosos por Deus: Livro Dois»)."
   ],
   "title": "Corajosos por Deus: 24 Histórias Verdadeiras"
+ },
+ "waiting-on-god-trust": {
+  "title": "Esperando em Deus: uma vida de confiança",
+  "description": "Dez semanas na escola da confiança. Andrew Murray ensina a disciplina diária de esperar em Deus, F. B. Meyer revela o segredo de ser guiado por ele, e a assombrosa vida de fé de George Müller mostra o que essa confiança recebe.",
+  "note": [
+   "Queue job #5680: «A Vida de Confiança» completes this plan in pt (with «Esperando em Deus» and «O Segredo da Orientação Divina», both already live), so seed_plans creates the (waiting-on-god-trust, pt) row on the deploy that ships this PR. Title opens with the shipped pt title of its first book."
+  ]
  }
 }
