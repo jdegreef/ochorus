@@ -801,6 +801,16 @@ BOOKS: list[BookEntry] = [
               "ccel", "schaff/npnf103", part="iv.i",
               subtitle="Translated by Arthur West Haddan", cover_color="#4b4a6b",
               group_parts=True, skip=("Introductory Essay.", "Translator’s Preface.")),
+    # On Christian Doctrine in J. F. Shaw's translation, from Schaff's npnf102
+    # volume (part="v"), one chapter per book. CCEL's standalone
+    # augustine/doctrine has the same text but a broken TOC that scrambles the
+    # chapters. Schaff's introductory note and the contents are left out. Each
+    # book's "Argument" sits on its part page, which group_parts skips, so the
+    # fixture sets it in italics at the head of the book.
+    BookEntry("on-christian-doctrine", "On Christian Doctrine", "augustine-of-hippo",
+              "ccel", "schaff/npnf102", part="v",
+              subtitle="Translated by J. F. Shaw", cover_color="#5d4a2f", group_parts=True,
+              skip=("Introductory Note by the Editor", "Contents of Christian Doctrine")),
     # The Schaff sets publish a whole volume under one work path, so these three
     # are addressed by `part` — the work's section-stem prefix inside the
     # volume's TOC. See BookEntry.part for why there is no per-work URL to use

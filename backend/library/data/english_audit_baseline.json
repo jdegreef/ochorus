@@ -222,6 +222,10 @@
   "no-one-can-harm-the-man-who-does-not-injure-himself": {
    "lost-paragraphing": 1
   },
+  "on-christian-doctrine": {
+   "orphan-close-quote": 1,
+   "space-before-punct": 4
+  },
   "on-loving-god": {
    "lost-paragraphing": 2
   },
