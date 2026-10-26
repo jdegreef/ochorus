@@ -495,6 +495,7 @@ TOPICS = [
             "institutes-of-the-christian-religion",
             "old-paths",
             "ten-commandments",
+            "small-catechism",
             "a-body-of-divinity",
             "key-teachings-of-athanasius-of-alexandria",
             "key-teachings-of-r-a-torrey",
