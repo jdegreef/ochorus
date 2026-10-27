@@ -1038,6 +1038,17 @@
 			"layout": "split/navy",
 			"bar": 0.04
 		},
+		"am/evening-by-evening": {
+			"ground": "dfb96ee917dd4bbccd4e3a07eb6d4a5951c453519b80712812569f93abe86768",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"am/feasting-at-the-table": {
 			"ground": "2320144dca36ff8ca0519020b57ffc252176582b96a1fd30080983531126abb2",
 			"style": "lettered",
@@ -1469,6 +1480,36 @@
 			"middle": [
 				173,
 				379
+			]
+		},
+		"am/life-and-diary-of-david-brainerd": {
+			"ground": "f8edfafb7e08b0ccff727faf9bf69a5e671468ef37db86ee9a50c55a66308a0e",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[150, 102, 450, 131]
+				],
+				"title": [
+					[139, 287, 461, 350],
+					[110, 349, 490, 412]
+				],
+				"subtitle": [
+					[177, 478, 423, 506]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				288,
+				507
 			]
 		},
 		"am/life-experience-gospel-labours": {
