@@ -212,5 +212,12 @@
   "note": [
    "Queue job #3705: «ስለ ሃይማኖታዊ መነቃቃት የተሰጡ ትምህርቶች» completes this plan in am (with «በመንፈስ ቅዱስ መጠመቅ» and «የጆናታን ኤድዋርድስ የተመረጡ ስብከቶች», both already live), so seed_plans creates the (send-the-fire, am) row on the deploy that ships this PR. AI-drafted; awaiting native review."
   ]
+ },
+ "everything-for-christ": {
+  "title": "ሁሉን ለክርስቶስ፦ የፈሰሰ ሕይወት",
+  "description": "በፍጹም ልብ ራስን መስጠት ምን ያስከፍላል? ምንስ ፍሬ ያፈራል? የዴቪድ ብሬነርድ ልብን የሚመረምር የሚስዮናዊነት ማስታወሻ፥ ቀጥሎም ስለ ወንጌል ሲሉ ሁሉን የሰጡ ወንዶችና ሴቶች ታሪኮች — ጥሪውን በመለሱ ሕይወቶች የተነገረ ራስን የመቀደስ ጥሪ።",
+  "note": [
+   "Queue job #3711: «የዴቪድ ብሬነርድ ሕይወትና ማስታወሻ» completes this plan in am (with «ሁሉን የሰጡ ወንዶችና ሴቶች», already live), so seed_plans creates the (everything-for-christ, am) row on the deploy that ships this PR. AI-drafted; awaiting native review."
+  ]
  }
 }
