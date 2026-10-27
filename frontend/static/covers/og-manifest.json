@@ -1038,6 +1038,17 @@
 			"layout": "split/navy",
 			"bar": 0.04
 		},
+		"am/evening-by-evening": {
+			"ground": "dfb96ee917dd4bbccd4e3a07eb6d4a5951c453519b80712812569f93abe86768",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"am/feasting-at-the-table": {
 			"ground": "2320144dca36ff8ca0519020b57ffc252176582b96a1fd30080983531126abb2",
 			"style": "lettered",
