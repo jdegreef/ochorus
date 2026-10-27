@@ -15,10 +15,11 @@ is what makes the repair below possible:
   "Prayer 409"), bare page numbers and a few library stamps.
 * **A word-by-word vote.** `BASE_ID` is the witness whose text is kept: it
   keeps line-end hyphens and has the cleanest layout. Each chapter of every
-  other scan is aligned with it (difflib, on a punctuation-blind key), and a
-  word the base reads differently gives way when at least two of the other
-  three agree on another reading. Where the witnesses split two and two the
-  base stands.
+  other scan is aligned with it (difflib, on a punctuation-blind key). Two of
+  the scans were read by one newer OCR engine and share its misreadings, so a
+  base word gives way only when the other old-engine copy and a new-engine
+  scan agree on another reading — or when both new-engine scans do and theirs
+  is a far commoner word in the book (see `Vote`).
 * **OCR repairs from `data/what-the-bible-teaches/ocr_fixes.json`**: literal
   `(find, replace)` pairs per chapter, from a proofread of what the vote left.
   They are written against the stored (settled) text, so they are applied after
@@ -482,8 +483,7 @@ class Vote:
             elif i2 - i1 <= 3 and j2 - j1 <= 3:
                 self.spans.setdefault((i1, i2), {})[witness] = " ".join(other[j1:j2])
 
-    def _wins(self, support: set[str], mine: set[str], new: str, old: str,
-              freq: Counter) -> bool:
+    def _wins(self, support: set[str], new: str, old: str, freq: Counter) -> bool:
         engines = {ENGINE[w] for w in support}
         if engines == {"old", "new"}:
             return True
@@ -500,11 +500,12 @@ class Vote:
             for w, text in readings.items():
                 by.setdefault(_ci("".join(_key(t) for t in text.split())), set()).add(w)
             for joined, support in by.items():
-                if joined == mine or taken & set(range(i1, i2 + 1)):
+                # An insertion (i1 == i2) lands on the word at i1, so it
+                # reserves that word; a replacement reserves only its own.
+                span = set(range(i1, max(i2, i1 + 1)))
+                if joined == mine or taken & span:
                     continue
-                if not self._wins(support, set(), joined, mine, freq) and not (
-                    len(support) >= 2 and freq[joined] >= 4 * max(freq[mine], 1)
-                ):
+                if not self._wins(support, joined, mine, freq):
                     continue
                 if i2 > i1 and not joined and (
                     not _is_junk(self.base[i1:i2])
@@ -528,7 +529,7 @@ class Vote:
                     # paragraph break.
                     review.append(f"span across lines: {' '.join(self.base[i1:i2])!r} / {text!r}")
                     continue
-                taken.update(range(i1, i2 + 1))
+                taken.update(span)
         for i, readings in enumerate(self.single):
             if i in taken or not readings:
                 continue
@@ -539,7 +540,7 @@ class Vote:
             for word, support in by.items():
                 if not word or not key:
                     continue
-                if word == key or not self._wins(support, set(), word, key, freq):
+                if word == key or not self._wins(support, word, key, freq):
                     if word != key and len(support) >= 2:
                         review.append(f"kept: {self.base[i]!r} / {readings[min(support)]!r}")
                     continue
@@ -635,10 +636,16 @@ def voted_sections(base_text: str, others: list[tuple[str, str]], review: list[s
 
 # --- Markup ----------------------------------------------------------------
 
-_ROMANS = [
-    "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII",
-    "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII", "XXIII", "XXIV", "XXV",
-]
+def _to_roman(n: int) -> str:
+    out = ""
+    for value, digits in ((40, "XL"), (10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I")):
+        while n >= value:
+            out += digits
+            n -= value
+    return out
+
+
+_ROMANS = [_to_roman(n) for n in range(1, 50)]
 #: A section numeral as the scans read it: "I," "L" "U." "[>" "lY." "IIL" …
 _HEAD_NUM = re.compile(
     r"^;?((?:[IVXLlYUfHTF]{1,5}|Vra|1[1lI]|m|n)[.,*;]\*?|L|h|\[>|I\s?\*|I\s,|II)\s+(?=[A-Z\"'(])"
@@ -944,6 +951,7 @@ class Command(BaseCommand):
 
     def _text(self, item: str, cache: str | None) -> str:
         if cache:
+            Path(cache).mkdir(parents=True, exist_ok=True)
             path = Path(cache) / f"{item}.txt"
             if path.exists():
                 return path.read_text(encoding="utf-8")
@@ -952,15 +960,9 @@ class Command(BaseCommand):
             return text
         return fetch_text(item)
 
-    @transaction.atomic
     def handle(self, *args, **opts):
-        try:
-            author = Author.objects.get(slug=AUTHOR_SLUG)
-        except Author.DoesNotExist:
-            raise CommandError(
-                f"author {AUTHOR_SLUG!r} not in the DB — loaddata authors.json first."
-            ) from None
-
+        # Fetching and aligning the scans takes minutes; only the writes need
+        # the transaction.
         cache = opts.get("cache")
         base = self._text(BASE_ID, cache)
         others = [(w, self._text(w, cache)) for w in OTHER_IDS]
@@ -968,6 +970,16 @@ class Command(BaseCommand):
         sections = build_sections(base, others, review)
         if opts.get("review"):
             Path(opts["review"]).write_text("\n".join(review) + "\n", encoding="utf-8")
+        with transaction.atomic():
+            self._write(sections, len(review))
+
+    def _write(self, sections: list[str], open_questions: int) -> None:
+        try:
+            author = Author.objects.get(slug=AUTHOR_SLUG)
+        except Author.DoesNotExist:
+            raise CommandError(
+                f"author {AUTHOR_SLUG!r} not in the DB — loaddata authors.json first."
+            ) from None
 
         content = {
             "author": author,
@@ -1008,8 +1020,10 @@ class Command(BaseCommand):
             curled, _ = convert(body, outer_guillemets=False)
             assert_punctuation_only(body, curled, f"{SLUG} ch {order}")
             body = settled_chapter_body(SLUG, order, clean_fragment(curled))
-            body = apply_fixes(order, body, fixes)
-            body = settled_chapter_body(SLUG, order, arabic_book_numerals(body))
+            # The fixes may add markup (a head, a blockquote), so the result is
+            # sanitized again before it is stored.
+            body = clean_fragment(arabic_book_numerals(apply_fixes(order, body, fixes)))
+            body = settled_chapter_body(SLUG, order, body)
             wc = word_count(body)
             if wc < 300:
                 raise CommandError(f"ch {order} ({title!r}): only {wc} words — aborted.")
@@ -1022,5 +1036,5 @@ class Command(BaseCommand):
         verb = "Created" if was_created else "Rebuilt"
         self.stdout.write(self.style.SUCCESS(
             f"{verb} {TITLE!r} — {book.chapter_count} chapters, {total} words "
-            f"({len(review)} open questions from the vote)"
+            f"({open_questions} open questions from the vote)"
         ))
