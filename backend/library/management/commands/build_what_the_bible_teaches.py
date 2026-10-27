@@ -659,6 +659,14 @@ _LABEL = re.compile(
     r"^((?:Preliminary\s+)?Note(?:\s+[\dilI]{1,2})?|Question|Answer|Summary)"
     r"\s*(?:[.:]\s*—|[.:;])\s*", re.I
 )
+#: The print numbers books with an old-style figure ("1 Cor.", like "2 Cor.")
+#: that the scans read as a capital I.
+BOOK_NUMERAL = re.compile(
+    r"(?<![\w.])(I{1,3}) (?=(?:Cor|Jno|John|Pet|Thess|Tim|Sam|Kings|Kg|Chron)\.?,? ?\d)"
+)
+#: 1890s typesetting spaces a stop off its word ("robes ?", "him ;"); the
+#: corpus sets them closed up.
+SPACED_STOP = re.compile(r"(?<=[\w.\"'”’)\]]) +([;:!?])")
 _TERMINAL = ('.', '?', '!', '"', ')', ':', ';', "'")
 
 
@@ -785,6 +793,7 @@ def render(lines: list[str], hyphenated: set[str], review: list[str]) -> str:
     for b in blocks(text_lines):
         b, letter = _reletter(b, letter, review)
         b = _close_quotes(b, review)
+        b = SPACED_STOP.sub(r"\1", b)
         if _is_head(b):
             close_quote()
             got = _HEAD_NUM.match(b).group(1)
@@ -894,6 +903,12 @@ def build_sections(base_text: str, others: list[tuple[str, str]],
     return [render(lines, hyph, review) for lines in voted]
 
 
+def arabic_book_numerals(html: str) -> str:
+    """"I Cor." → "1 Cor." (see BOOK_NUMERAL). Run after the OCR fixes, which
+    are written against the text as the scans read it."""
+    return BOOK_NUMERAL.sub(lambda m: f"{len(m.group(1))} ", html)
+
+
 def _fixes() -> dict[str, list[list[str]]]:
     path = _DATA / "ocr_fixes.json"
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
@@ -993,7 +1008,8 @@ class Command(BaseCommand):
             curled, _ = convert(body, outer_guillemets=False)
             assert_punctuation_only(body, curled, f"{SLUG} ch {order}")
             body = settled_chapter_body(SLUG, order, clean_fragment(curled))
-            body = settled_chapter_body(SLUG, order, apply_fixes(order, body, fixes))
+            body = apply_fixes(order, body, fixes)
+            body = settled_chapter_body(SLUG, order, arabic_book_numerals(body))
             wc = word_count(body)
             if wc < 300:
                 raise CommandError(f"ch {order} ({title!r}): only {wc} words — aborted.")
