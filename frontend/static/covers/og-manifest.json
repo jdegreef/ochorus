@@ -2486,6 +2486,17 @@
 			"layout": "box/teal",
 			"bar": 0
 		},
+		"am/the-fundamental-doctrines-of-the-christian-faith": {
+			"ground": "9aeba067bbf0ca33f15b281ab76f92081eb0c5010ea118820b78eae002823b60",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "diagonal/ochre",
+			"bar": 0
+		},
 		"am/the-god-of-all-comfort": {
 			"ground": "f045eb23d3fe9d56955f4a2925a7c8f120d3714bd89fda1c3f2c84abfc3a55f3",
 			"style": "devotional",
