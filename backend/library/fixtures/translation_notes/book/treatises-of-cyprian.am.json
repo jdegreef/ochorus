@@ -1,0 +1,4919 @@
+{
+ "kind": "book",
+ "slug": "treatises-of-cyprian",
+ "language": "am",
+ "job_issue": 3776,
+ "pull_request": null,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh); it carries no Old Testament or deuterocanon, so Cyprian's OT and Apocrypha quotations (most of the Testimonies) are self_rendered in the 1962 register.",
+  "The mirror lacks some verses or holds them under a neighbouring number (e.g. Matthew 5:44-45, 1 Corinthians 6:19-20, Titus 3:10-11, Acts 15:28-29, Romans 3:17-18); those quotations are self_rendered, and verses found under a neighbouring number were pasted from where they sit.",
+  "Cyprian quotes the Old Latin, which often differs from the 1962 text; where his reading differs (e.g. Luke 18:30 seven times), his sense is kept and the row is adapted or self_rendered.",
+  "AI-translated (job #3776) in 27 parallel units with one shared glossary; the 120 heads of the Testimonies keep one wording wherever they recur; quotes converted to « » per the Amharic book convention; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "John 15:14-15",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "John 21:17",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "John 20:21-23",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "John 10:30",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "1 John 5:7",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "John 19:23-24",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "John 10:16",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 John 2:19",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Mark 11:25",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "John 15:12",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "1 John 4:16",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Mark 12:29-31",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Mark 13:23",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Mark 7:9",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Luke 12:48",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Luke 14:11",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "John 14:27",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Acts 4:32",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Acts 1:14",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 18:8",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Luke 12:35-37",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "John 5:14",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "1 John 2:15-17",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "John 6:38",
+   "status": "mined",
+   "block_index": 35,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 John 2:6",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Isaiah 3:16-24",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Genesis 1:26",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "1 Corinthians 5:7-8",
+   "status": "mined",
+   "block_index": 44,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 5:36",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "Revelation 1:14",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "Matthew 7:13-14",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Matthew 13:8",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Genesis 3:16",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "Luke 20:34-36",
+   "status": "self_rendered",
+   "block_index": 50
+  },
+  {
+   "reference": "John 14:2",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "Matthew 19:12",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "1 Corinthians 15:47-49",
+   "status": "mined",
+   "block_index": 51,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Psalm 89:30-32",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Matthew 4:10",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Isaiah 2:8-9",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Exodus 22:20",
+   "status": "self_rendered",
+   "block_index": 60
+  },
+  {
+   "reference": "Isaiah 52:11",
+   "status": "self_rendered",
+   "block_index": 63
+  },
+  {
+   "reference": "Revelation 18:4",
+   "status": "mined",
+   "block_index": 63,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 19:21",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "1 Timothy 6:9-10",
+   "status": "mined",
+   "block_index": 65,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 18:29-30",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Luke 6:22-23",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Isaiah 3:12",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Revelation 3:19",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Leviticus 7:19-20",
+   "status": "self_rendered",
+   "block_index": 68
+  },
+  {
+   "reference": "1 Corinthians 10:21",
+   "status": "mined",
+   "block_index": 68,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 11:27",
+   "status": "mined",
+   "block_index": 68,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Revelation 2:5",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "Jeremiah 17:5",
+   "status": "self_rendered",
+   "block_index": 70
+  },
+  {
+   "reference": "Revelation 6:10",
+   "status": "self_rendered",
+   "block_index": 71
+  },
+  {
+   "reference": "Exodus 32:31-33",
+   "status": "self_rendered",
+   "block_index": 72
+  },
+  {
+   "reference": "Jeremiah 1:5",
+   "status": "self_rendered",
+   "block_index": 72
+  },
+  {
+   "reference": "Jeremiah 11:14",
+   "status": "self_rendered",
+   "block_index": 72
+  },
+  {
+   "reference": "Ezekiel 14:13-14",
+   "status": "self_rendered",
+   "block_index": 72
+  },
+  {
+   "reference": "Matthew 10:32-33",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Isaiah 42:24-25",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Isaiah 59:1-2",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Matthew 6:24",
+   "status": "self_rendered",
+   "block_index": 80
+  },
+  {
+   "reference": "Psalm 139:16",
+   "status": "self_rendered",
+   "block_index": 80
+  },
+  {
+   "reference": "1 Samuel 16:7",
+   "status": "self_rendered",
+   "block_index": 80
+  },
+  {
+   "reference": "Revelation 2:23",
+   "status": "self_rendered",
+   "block_index": 80
+  },
+  {
+   "reference": "Jeremiah 23:23-24",
+   "status": "self_rendered",
+   "block_index": 80
+  },
+  {
+   "reference": "Galatians 6:7",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "Luke 9:26",
+   "status": "self_rendered",
+   "block_index": 81
+  },
+  {
+   "reference": "Joel 2:12-13",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Leviticus 19:27",
+   "status": "self_rendered",
+   "block_index": 83
+  },
+  {
+   "reference": "Daniel 3:25",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "Daniel 9:4-7",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "Romans 11:8",
+   "status": "self_rendered",
+   "block_index": 86
+  },
+  {
+   "reference": "2 Thessalonians 2:10-12",
+   "status": "self_rendered",
+   "block_index": 86
+  },
+  {
+   "reference": "2 Timothy 2:17",
+   "status": "self_rendered",
+   "block_index": 87
+  },
+  {
+   "reference": "Isaiah 30:15",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "Ezekiel 18:32",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "Joel 2:13",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "John 4:23",
+   "status": "self_rendered",
+   "block_index": 92
+  },
+  {
+   "reference": "Mark 7:9",
+   "status": "self_rendered",
+   "block_index": 92
+  },
+  {
+   "reference": "John 16:23",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Jeremiah 23:23-24",
+   "status": "self_rendered",
+   "block_index": 94
+  },
+  {
+   "reference": "Proverbs 15:3",
+   "status": "self_rendered",
+   "block_index": 94
+  },
+  {
+   "reference": "Matthew 9:4",
+   "status": "self_rendered",
+   "block_index": 94
+  },
+  {
+   "reference": "Revelation 2:23",
+   "status": "self_rendered",
+   "block_index": 94
+  },
+  {
+   "reference": "1 Samuel 1:13",
+   "status": "self_rendered",
+   "block_index": 95
+  },
+  {
+   "reference": "Psalm 4:4",
+   "status": "self_rendered",
+   "block_index": 95
+  },
+  {
+   "reference": "Luke 18:10-14",
+   "status": "self_rendered",
+   "block_index": 96
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Matthew 6:9-13",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Daniel 3:51",
+   "status": "self_rendered",
+   "block_index": 99
+  },
+  {
+   "reference": "Acts 1:14",
+   "status": "self_rendered",
+   "block_index": 99
+  },
+  {
+   "reference": "Psalm 68:6",
+   "status": "self_rendered",
+   "block_index": 99
+  },
+  {
+   "reference": "Matthew 6:9",
+   "status": "self_rendered",
+   "block_index": 100
+  },
+  {
+   "reference": "John 1:11-12",
+   "status": "self_rendered",
+   "block_index": 100
+  },
+  {
+   "reference": "Deuteronomy 33:9",
+   "status": "self_rendered",
+   "block_index": 100
+  },
+  {
+   "reference": "Matthew 23:9",
+   "status": "mined",
+   "block_index": 100,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 8:22",
+   "status": "self_rendered",
+   "block_index": 100
+  },
+  {
+   "reference": "John 8:44",
+   "status": "self_rendered",
+   "block_index": 101
+  },
+  {
+   "reference": "Isaiah 1:2-4",
+   "status": "self_rendered",
+   "block_index": 101
+  },
+  {
+   "reference": "John 8:34-35",
+   "status": "self_rendered",
+   "block_index": 101
+  },
+  {
+   "reference": "1 Samuel 2:30",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "1 Corinthians 6:19-20",
+   "status": "self_rendered",
+   "block_index": 102
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered",
+   "block_index": 103
+  },
+  {
+   "reference": "Leviticus 11:44",
+   "status": "self_rendered",
+   "block_index": 103
+  },
+  {
+   "reference": "1 Peter 1:16",
+   "status": "self_rendered",
+   "block_index": 103
+  },
+  {
+   "reference": "1 Corinthians 6:9-11",
+   "status": "self_rendered",
+   "block_index": 103
+  },
+  {
+   "reference": "John 5:14",
+   "status": "self_rendered",
+   "block_index": 103
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "Matthew 25:34",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "Matthew 8:11-12",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "John 6:38",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "1 John 2:15-16",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "1 John 2:17",
+   "status": "self_rendered",
+   "block_index": 105
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "mined",
+   "block_index": 107,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Galatians 5:19-21",
+   "status": "self_rendered",
+   "block_index": 107
+  },
+  {
+   "reference": "Galatians 5:22-23",
+   "status": "self_rendered",
+   "block_index": 107
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "self_rendered",
+   "block_index": 109
+  },
+  {
+   "reference": "John 6:51",
+   "status": "mined",
+   "block_index": 109,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "John 6:53",
+   "status": "self_rendered",
+   "block_index": 109
+  },
+  {
+   "reference": "Luke 14:33",
+   "status": "self_rendered",
+   "block_index": 110
+  },
+  {
+   "reference": "Matthew 6:34",
+   "status": "mined",
+   "block_index": 110,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Timothy 6:7-10",
+   "status": "self_rendered",
+   "block_index": 110
+  },
+  {
+   "reference": "Luke 12:20",
+   "status": "self_rendered",
+   "block_index": 111
+  },
+  {
+   "reference": "Proverbs 10:3",
+   "status": "self_rendered",
+   "block_index": 112
+  },
+  {
+   "reference": "Psalm 37:25",
+   "status": "self_rendered",
+   "block_index": 112
+  },
+  {
+   "reference": "Matthew 6:31-33",
+   "status": "self_rendered",
+   "block_index": 112
+  },
+  {
+   "reference": "Matthew 6:12",
+   "status": "self_rendered",
+   "block_index": 113
+  },
+  {
+   "reference": "Matthew 18:32",
+   "status": "self_rendered",
+   "block_index": 113
+  },
+  {
+   "reference": "1 John 1:8-9",
+   "status": "self_rendered",
+   "block_index": 113
+  },
+  {
+   "reference": "Matthew 7:2",
+   "status": "self_rendered",
+   "block_index": 114
+  },
+  {
+   "reference": "Mark 11:25-26",
+   "status": "mined",
+   "block_index": 114,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 John 3:15",
+   "status": "self_rendered",
+   "block_index": 115
+  },
+  {
+   "reference": "Matthew 6:13",
+   "status": "self_rendered",
+   "block_index": 116
+  },
+  {
+   "reference": "2 Kings 24:10-11",
+   "status": "self_rendered",
+   "block_index": 116
+  },
+  {
+   "reference": "Daniel 1:1-2",
+   "status": "self_rendered",
+   "block_index": 116
+  },
+  {
+   "reference": "Isaiah 42:24-25",
+   "status": "self_rendered",
+   "block_index": 116
+  },
+  {
+   "reference": "1 Kings 11:14",
+   "status": "self_rendered",
+   "block_index": 116
+  },
+  {
+   "reference": "Job 1:12",
+   "status": "self_rendered",
+   "block_index": 117
+  },
+  {
+   "reference": "John 19:11",
+   "status": "self_rendered",
+   "block_index": 117
+  },
+  {
+   "reference": "Matthew 26:41",
+   "status": "self_rendered",
+   "block_index": 117
+  },
+  {
+   "reference": "Matthew 6:13",
+   "status": "self_rendered",
+   "block_index": 118
+  },
+  {
+   "reference": "Isaiah 10:22-23",
+   "status": "self_rendered",
+   "block_index": 119
+  },
+  {
+   "reference": "John 17:3",
+   "status": "self_rendered",
+   "block_index": 119
+  },
+  {
+   "reference": "Mark 12:29-31",
+   "status": "self_rendered",
+   "block_index": 119
+  },
+  {
+   "reference": "Matthew 22:40",
+   "status": "mined",
+   "block_index": 119,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 7:12",
+   "status": "mined",
+   "block_index": 119,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 5:16",
+   "status": "self_rendered",
+   "block_index": 120
+  },
+  {
+   "reference": "Luke 6:12",
+   "status": "self_rendered",
+   "block_index": 120
+  },
+  {
+   "reference": "Luke 22:31-32",
+   "status": "self_rendered",
+   "block_index": 121
+  },
+  {
+   "reference": "John 17:20-21",
+   "status": "self_rendered",
+   "block_index": 121
+  },
+  {
+   "reference": "Song of Songs 5:2",
+   "status": "self_rendered",
+   "block_index": 122
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "self_rendered",
+   "block_index": 122
+  },
+  {
+   "reference": "Acts 10:4",
+   "status": "self_rendered",
+   "block_index": 123
+  },
+  {
+   "reference": "Isaiah 58:6-9",
+   "status": "self_rendered",
+   "block_index": 124
+  },
+  {
+   "reference": "Philippians 4:18",
+   "status": "self_rendered",
+   "block_index": 124
+  },
+  {
+   "reference": "Psalm 5:2-3",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "Hosea 6:1",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "Psalm 118:22-24",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "Malachi 4:2",
+   "status": "self_rendered",
+   "block_index": 126
+  },
+  {
+   "reference": "Luke 2:37",
+   "status": "self_rendered",
+   "block_index": 127
+  },
+  {
+   "reference": "Proverbs 23:9",
+   "status": "self_rendered",
+   "block_index": 129
+  },
+  {
+   "reference": "Proverbs 26:4",
+   "status": "self_rendered",
+   "block_index": 129
+  },
+  {
+   "reference": "Matthew 7:6",
+   "status": "mined",
+   "block_index": 129,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Deuteronomy 6:13",
+   "status": "self_rendered",
+   "block_index": 134
+  },
+  {
+   "reference": "Exodus 20:3",
+   "status": "self_rendered",
+   "block_index": 134
+  },
+  {
+   "reference": "Jeremiah 25:6",
+   "status": "self_rendered",
+   "block_index": 134
+  },
+  {
+   "reference": "Haggai 1:9-11",
+   "status": "self_rendered",
+   "block_index": 134
+  },
+  {
+   "reference": "Amos 4:7-8",
+   "status": "self_rendered",
+   "block_index": 134
+  },
+  {
+   "reference": "Jeremiah 2:30",
+   "status": "self_rendered",
+   "block_index": 135
+  },
+  {
+   "reference": "Jeremiah 5:3",
+   "status": "self_rendered",
+   "block_index": 135
+  },
+  {
+   "reference": "Hosea 4:1-3",
+   "status": "self_rendered",
+   "block_index": 137
+  },
+  {
+   "reference": "Isaiah 59:1-2",
+   "status": "self_rendered",
+   "block_index": 139
+  },
+  {
+   "reference": "Exodus 22:20",
+   "status": "self_rendered",
+   "block_index": 144
+  },
+  {
+   "reference": "Isaiah 2:8-9",
+   "status": "self_rendered",
+   "block_index": 144
+  },
+  {
+   "reference": "Romans 12:19",
+   "status": "self_rendered",
+   "block_index": 145
+  },
+  {
+   "reference": "Proverbs 20:22",
+   "status": "self_rendered",
+   "block_index": 145
+  },
+  {
+   "reference": "Habakkuk 3:17-18",
+   "status": "self_rendered",
+   "block_index": 148
+  },
+  {
+   "reference": "Isaiah 13:6",
+   "status": "self_rendered",
+   "block_index": 150
+  },
+  {
+   "reference": "Malachi 4:1",
+   "status": "self_rendered",
+   "block_index": 150
+  },
+  {
+   "reference": "Ezekiel 9:5-6",
+   "status": "self_rendered",
+   "block_index": 150
+  },
+  {
+   "reference": "Ezekiel 9:4",
+   "status": "self_rendered",
+   "block_index": 150
+  },
+  {
+   "reference": "Exodus 12:13",
+   "status": "self_rendered",
+   "block_index": 150
+  },
+  {
+   "reference": "Amos 5:6",
+   "status": "self_rendered",
+   "block_index": 151
+  },
+  {
+   "reference": "John 17:3",
+   "status": "self_rendered",
+   "block_index": 151
+  },
+  {
+   "reference": "Isaiah 66:24",
+   "status": "self_rendered",
+   "block_index": 152
+  },
+  {
+   "reference": "Luke 21:31",
+   "status": "mined",
+   "block_index": 172,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Habakkuk 2:4",
+   "status": "self_rendered",
+   "block_index": 173
+  },
+  {
+   "reference": "Luke 2:29",
+   "status": "mined",
+   "block_index": 173,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 2:30",
+   "status": "self_rendered",
+   "block_index": 173
+  },
+  {
+   "reference": "John 16:20",
+   "status": "mined",
+   "block_index": 175,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "John 16:22",
+   "status": "mined",
+   "block_index": 175,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "John 14:28",
+   "status": "self_rendered",
+   "block_index": 177
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "self_rendered",
+   "block_index": 177
+  },
+  {
+   "reference": "1 Corinthians 15:53",
+   "status": "self_rendered",
+   "block_index": 178
+  },
+  {
+   "reference": "Job 1:21",
+   "status": "self_rendered",
+   "block_index": 180
+  },
+  {
+   "reference": "Job 2:10",
+   "status": "self_rendered",
+   "block_index": 180
+  },
+  {
+   "reference": "Job 1:8",
+   "status": "self_rendered",
+   "block_index": 180
+  },
+  {
+   "reference": "Numbers 17:10",
+   "status": "self_rendered",
+   "block_index": 181
+  },
+  {
+   "reference": "Psalm 51:17",
+   "status": "self_rendered",
+   "block_index": 181
+  },
+  {
+   "reference": "Deuteronomy 8:2-3",
+   "status": "self_rendered",
+   "block_index": 181
+  },
+  {
+   "reference": "Deuteronomy 13:3",
+   "status": "self_rendered",
+   "block_index": 181
+  },
+  {
+   "reference": "2 Corinthians 12:7-9",
+   "status": "self_rendered",
+   "block_index": 183
+  },
+  {
+   "reference": "Revelation 2:23",
+   "status": "mined",
+   "block_index": 187,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Thessalonians 4:13",
+   "status": "self_rendered",
+   "block_index": 191
+  },
+  {
+   "reference": "1 Thessalonians 4:14",
+   "status": "mined",
+   "block_index": 191,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "John 11:25-26",
+   "status": "self_rendered",
+   "block_index": 191
+  },
+  {
+   "reference": "Philippians 3:20-21",
+   "status": "self_rendered",
+   "block_index": 192
+  },
+  {
+   "reference": "John 17:24",
+   "status": "self_rendered",
+   "block_index": 192
+  },
+  {
+   "reference": "Genesis 5:24",
+   "status": "self_rendered",
+   "block_index": 193
+  },
+  {
+   "reference": "Psalm 84:1-2",
+   "status": "self_rendered",
+   "block_index": 193
+  },
+  {
+   "reference": "1 John 2:15-16",
+   "status": "self_rendered",
+   "block_index": 194
+  },
+  {
+   "reference": "1 John 2:17",
+   "status": "self_rendered",
+   "block_index": 194
+  },
+  {
+   "reference": "Luke 11:40-41",
+   "status": "self_rendered",
+   "block_index": 199
+  },
+  {
+   "reference": "Proverbs 20:9",
+   "status": "self_rendered",
+   "block_index": 200
+  },
+  {
+   "reference": "1 John 1:8",
+   "status": "mined",
+   "block_index": 200,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Isaiah 58:1",
+   "status": "self_rendered",
+   "block_index": 201
+  },
+  {
+   "reference": "Isaiah 58:7-9",
+   "status": "self_rendered",
+   "block_index": 201
+  },
+  {
+   "reference": "Proverbs 21:13",
+   "status": "self_rendered",
+   "block_index": 202
+  },
+  {
+   "reference": "Psalm 41:1",
+   "status": "self_rendered",
+   "block_index": 202
+  },
+  {
+   "reference": "Daniel 4:27",
+   "status": "self_rendered",
+   "block_index": 202
+  },
+  {
+   "reference": "Acts 9:40",
+   "status": "self_rendered",
+   "block_index": 203
+  },
+  {
+   "reference": "Luke 12:33",
+   "status": "self_rendered",
+   "block_index": 204
+  },
+  {
+   "reference": "Matthew 6:19-21",
+   "status": "self_rendered",
+   "block_index": 204
+  },
+  {
+   "reference": "Matthew 19:21",
+   "status": "self_rendered",
+   "block_index": 204
+  },
+  {
+   "reference": "Matthew 13:45-46",
+   "status": "mined",
+   "block_index": 204,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 19:8",
+   "status": "self_rendered",
+   "block_index": 205
+  },
+  {
+   "reference": "Luke 19:9",
+   "status": "self_rendered",
+   "block_index": 205
+  },
+  {
+   "reference": "Romans 4:3",
+   "status": "self_rendered",
+   "block_index": 205
+  },
+  {
+   "reference": "Luke 16:11-12",
+   "status": "mined",
+   "block_index": 205,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Proverbs 28:27",
+   "status": "self_rendered",
+   "block_index": 206
+  },
+  {
+   "reference": "2 Corinthians 9:10-11",
+   "status": "self_rendered",
+   "block_index": 206
+  },
+  {
+   "reference": "2 Corinthians 9:12",
+   "status": "mined",
+   "block_index": 206,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 6:31-33",
+   "status": "mined",
+   "block_index": 206,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Timothy 6:7-10",
+   "status": "mined",
+   "block_index": 207,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Proverbs 10:3",
+   "status": "self_rendered",
+   "block_index": 208
+  },
+  {
+   "reference": "Matthew 6:26",
+   "status": "mined",
+   "block_index": 208,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 16:14",
+   "status": "mined",
+   "block_index": 209,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 12:20",
+   "status": "self_rendered",
+   "block_index": 210
+  },
+  {
+   "reference": "Revelation 3:17-18",
+   "status": "mined",
+   "block_index": 211,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 21:3-4",
+   "status": "mined",
+   "block_index": 212,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Proverbs 19:17",
+   "status": "self_rendered",
+   "block_index": 212
+  },
+  {
+   "reference": "Matthew 10:37",
+   "status": "mined",
+   "block_index": 213,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Deuteronomy 33:9",
+   "status": "self_rendered",
+   "block_index": 213
+  },
+  {
+   "reference": "1 John 3:17",
+   "status": "mined",
+   "block_index": 213,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Kings 17:14",
+   "status": "self_rendered",
+   "block_index": 214
+  },
+  {
+   "reference": "Job 1:1-5",
+   "status": "self_rendered",
+   "block_index": 215
+  },
+  {
+   "reference": "Psalm 37:25-26",
+   "status": "self_rendered",
+   "block_index": 216
+  },
+  {
+   "reference": "Proverbs 20:7",
+   "status": "self_rendered",
+   "block_index": 216
+  },
+  {
+   "reference": "Matthew 25:31",
+   "status": "mined",
+   "block_index": 220,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Galatians 6:10",
+   "status": "self_rendered",
+   "block_index": 221
+  },
+  {
+   "reference": "Acts 4:32",
+   "status": "mined",
+   "block_index": 222,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 1:19",
+   "status": "self_rendered",
+   "block_index": 226
+  },
+  {
+   "reference": "Isaiah 29:14",
+   "status": "self_rendered",
+   "block_index": 226
+  },
+  {
+   "reference": "Colossians 2:8-9",
+   "status": "mined",
+   "block_index": 226,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 3:18",
+   "status": "mined",
+   "block_index": 226,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 3:19",
+   "status": "self_rendered",
+   "block_index": 226
+  },
+  {
+   "reference": "1 Corinthians 3:20",
+   "status": "self_rendered",
+   "block_index": 226
+  },
+  {
+   "reference": "Ezekiel 18:32",
+   "status": "self_rendered",
+   "block_index": 228
+  },
+  {
+   "reference": "Zechariah 1:3",
+   "status": "self_rendered",
+   "block_index": 228
+  },
+  {
+   "reference": "Malachi 3:7",
+   "status": "self_rendered",
+   "block_index": 228
+  },
+  {
+   "reference": "Joel 2:13",
+   "status": "self_rendered",
+   "block_index": 228
+  },
+  {
+   "reference": "Romans 2:4-6",
+   "status": "self_rendered",
+   "block_index": 228
+  },
+  {
+   "reference": "Matthew 5:43",
+   "status": "mined",
+   "block_index": 229,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 5:44-45",
+   "status": "self_rendered",
+   "block_index": 229
+  },
+  {
+   "reference": "Matthew 5:46",
+   "status": "self_rendered",
+   "block_index": 229
+  },
+  {
+   "reference": "Matthew 5:47-48",
+   "status": "mined",
+   "block_index": 229,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 John 2:6",
+   "status": "self_rendered",
+   "block_index": 233
+  },
+  {
+   "reference": "1 Peter 2:21",
+   "status": "self_rendered",
+   "block_index": 233
+  },
+  {
+   "reference": "1 Peter 2:22",
+   "status": "mined",
+   "block_index": 233,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Peter 2:23",
+   "status": "self_rendered",
+   "block_index": 233
+  },
+  {
+   "reference": "Genesis 3:17-19",
+   "status": "self_rendered",
+   "block_index": 235
+  },
+  {
+   "reference": "John 16:33",
+   "status": "mined",
+   "block_index": 236,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 24:13",
+   "status": "self_rendered",
+   "block_index": 237
+  },
+  {
+   "reference": "John 8:31-32",
+   "status": "self_rendered",
+   "block_index": 237
+  },
+  {
+   "reference": "Romans 8:24-25",
+   "status": "mined",
+   "block_index": 237,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Galatians 6:10",
+   "status": "self_rendered",
+   "block_index": 237
+  },
+  {
+   "reference": "Ezekiel 33:12",
+   "status": "self_rendered",
+   "block_index": 237
+  },
+  {
+   "reference": "Revelation 3:11",
+   "status": "self_rendered",
+   "block_index": 237
+  },
+  {
+   "reference": "1 Corinthians 13:4-7",
+   "status": "self_rendered",
+   "block_index": 239
+  },
+  {
+   "reference": "Ephesians 4:2-3",
+   "status": "self_rendered",
+   "block_index": 239
+  },
+  {
+   "reference": "Acts 7:60",
+   "status": "self_rendered",
+   "block_index": 240
+  },
+  {
+   "reference": "Ephesians 4:30-31",
+   "status": "mined",
+   "block_index": 240,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Zephaniah 3:8",
+   "status": "self_rendered",
+   "block_index": 245
+  },
+  {
+   "reference": "Revelation 22:10-12",
+   "status": "self_rendered",
+   "block_index": 245
+  },
+  {
+   "reference": "Revelation 6:9-11",
+   "status": "mined",
+   "block_index": 245,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Malachi 4:1",
+   "status": "self_rendered",
+   "block_index": 246
+  },
+  {
+   "reference": "Psalm 50:3-6",
+   "status": "self_rendered",
+   "block_index": 246
+  },
+  {
+   "reference": "Isaiah 66:15-16",
+   "status": "self_rendered",
+   "block_index": 246
+  },
+  {
+   "reference": "Isaiah 42:13-14",
+   "status": "self_rendered",
+   "block_index": 246
+  },
+  {
+   "reference": "Isaiah 53:7",
+   "status": "self_rendered",
+   "block_index": 247
+  },
+  {
+   "reference": "Philippians 2:9-10",
+   "status": "self_rendered",
+   "block_index": 248
+  },
+  {
+   "reference": "Revelation 22:9",
+   "status": "self_rendered",
+   "block_index": 248
+  },
+  {
+   "reference": "1 Peter 5:8",
+   "status": "mined",
+   "block_index": 250,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Psalm 37:1",
+   "status": "self_rendered",
+   "block_index": 256
+  },
+  {
+   "reference": "Psalm 37:12-13",
+   "status": "self_rendered",
+   "block_index": 256
+  },
+  {
+   "reference": "Romans 3:13",
+   "status": "self_rendered",
+   "block_index": 256
+  },
+  {
+   "reference": "Luke 9:48",
+   "status": "self_rendered",
+   "block_index": 258
+  },
+  {
+   "reference": "Romans 13:12-13",
+   "status": "self_rendered",
+   "block_index": 258
+  },
+  {
+   "reference": "1 John 3:15",
+   "status": "mined",
+   "block_index": 260,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 John 2:9",
+   "status": "self_rendered",
+   "block_index": 260
+  },
+  {
+   "reference": "1 John 2:11",
+   "status": "self_rendered",
+   "block_index": 260
+  },
+  {
+   "reference": "John 8:12",
+   "status": "self_rendered",
+   "block_index": 260
+  },
+  {
+   "reference": "1 Peter 2:21",
+   "status": "self_rendered",
+   "block_index": 260
+  },
+  {
+   "reference": "1 Corinthians 13:4",
+   "status": "self_rendered",
+   "block_index": 262
+  },
+  {
+   "reference": "1 Corinthians 3:1-3",
+   "status": "mined",
+   "block_index": 262,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 8:12-14",
+   "status": "mined",
+   "block_index": 263,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Colossians 3:1-4",
+   "status": "mined",
+   "block_index": 263,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 15:47-49",
+   "status": "self_rendered",
+   "block_index": 263
+  },
+  {
+   "reference": "1 Samuel 2:30",
+   "status": "self_rendered",
+   "block_index": 264
+  },
+  {
+   "reference": "Matthew 5:43",
+   "status": "mined",
+   "block_index": 264,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 5:44-45",
+   "status": "self_rendered",
+   "block_index": 264
+  },
+  {
+   "reference": "Isaiah 1:2",
+   "status": "self_rendered",
+   "block_index": 264
+  },
+  {
+   "reference": "Matthew 25:34",
+   "status": "self_rendered",
+   "block_index": 264
+  },
+  {
+   "reference": "Proverbs 16:9",
+   "status": "self_rendered",
+   "block_index": 266
+  },
+  {
+   "reference": "Psalm 115:4-8",
+   "status": "self_rendered",
+   "block_index": 290
+  },
+  {
+   "reference": "Exodus 20:4",
+   "status": "self_rendered",
+   "block_index": 290
+  },
+  {
+   "reference": "Luke 4:8",
+   "status": "self_rendered",
+   "block_index": 291
+  },
+  {
+   "reference": "Matthew 4:10",
+   "status": "self_rendered",
+   "block_index": 291
+  },
+  {
+   "reference": "Exodus 20:3",
+   "status": "self_rendered",
+   "block_index": 291
+  },
+  {
+   "reference": "Deuteronomy 32:39",
+   "status": "self_rendered",
+   "block_index": 291
+  },
+  {
+   "reference": "Revelation 14:6-7",
+   "status": "self_rendered",
+   "block_index": 291
+  },
+  {
+   "reference": "Mark 12:29-31",
+   "status": "self_rendered",
+   "block_index": 291
+  },
+  {
+   "reference": "Matthew 22:40",
+   "status": "self_rendered",
+   "block_index": 291
+  },
+  {
+   "reference": "John 17:3",
+   "status": "self_rendered",
+   "block_index": 291
+  },
+  {
+   "reference": "Exodus 22:20",
+   "status": "self_rendered",
+   "block_index": 293
+  },
+  {
+   "reference": "Deuteronomy 32:17",
+   "status": "self_rendered",
+   "block_index": 293
+  },
+  {
+   "reference": "Isaiah 2:8-9",
+   "status": "self_rendered",
+   "block_index": 293
+  },
+  {
+   "reference": "Isaiah 57:6",
+   "status": "self_rendered",
+   "block_index": 293
+  },
+  {
+   "reference": "Jeremiah 25:6",
+   "status": "self_rendered",
+   "block_index": 293
+  },
+  {
+   "reference": "Revelation 14:9-11",
+   "status": "self_rendered",
+   "block_index": 293
+  },
+  {
+   "reference": "Exodus 32:31-33",
+   "status": "self_rendered",
+   "block_index": 295
+  },
+  {
+   "reference": "Jeremiah 11:14",
+   "status": "self_rendered",
+   "block_index": 295
+  },
+  {
+   "reference": "Ezekiel 14:12-14",
+   "status": "self_rendered",
+   "block_index": 295
+  },
+  {
+   "reference": "1 Samuel 2:25",
+   "status": "self_rendered",
+   "block_index": 295
+  },
+  {
+   "reference": "Deuteronomy 13:6-10",
+   "status": "self_rendered",
+   "block_index": 297
+  },
+  {
+   "reference": "Deuteronomy 13:12-18",
+   "status": "self_rendered",
+   "block_index": 297
+  },
+  {
+   "reference": "Matthew 10:32-33",
+   "status": "self_rendered",
+   "block_index": 297
+  },
+  {
+   "reference": "2 Timothy 2:11-12",
+   "status": "self_rendered",
+   "block_index": 297
+  },
+  {
+   "reference": "1 John 2:23",
+   "status": "self_rendered",
+   "block_index": 297
+  },
+  {
+   "reference": "Matthew 10:28",
+   "status": "self_rendered",
+   "block_index": 297
+  },
+  {
+   "reference": "John 12:25",
+   "status": "self_rendered",
+   "block_index": 297
+  },
+  {
+   "reference": "Matthew 10:37-38",
+   "status": "self_rendered",
+   "block_index": 299
+  },
+  {
+   "reference": "Deuteronomy 33:9",
+   "status": "self_rendered",
+   "block_index": 299
+  },
+  {
+   "reference": "Romans 8:35-37",
+   "status": "self_rendered",
+   "block_index": 299
+  },
+  {
+   "reference": "1 Corinthians 6:19-20",
+   "status": "self_rendered",
+   "block_index": 299
+  },
+  {
+   "reference": "2 Corinthians 5:15",
+   "status": "self_rendered",
+   "block_index": 299
+  },
+  {
+   "reference": "Exodus 14:11-14",
+   "status": "self_rendered",
+   "block_index": 301
+  },
+  {
+   "reference": "Luke 9:62",
+   "status": "self_rendered",
+   "block_index": 301
+  },
+  {
+   "reference": "Luke 17:31",
+   "status": "self_rendered",
+   "block_index": 301
+  },
+  {
+   "reference": "Luke 14:33",
+   "status": "self_rendered",
+   "block_index": 301
+  },
+  {
+   "reference": "2 Chronicles 15:2",
+   "status": "self_rendered",
+   "block_index": 303
+  },
+  {
+   "reference": "Ezekiel 33:12",
+   "status": "self_rendered",
+   "block_index": 303
+  },
+  {
+   "reference": "Matthew 10:22",
+   "status": "self_rendered",
+   "block_index": 303
+  },
+  {
+   "reference": "John 8:31",
+   "status": "self_rendered",
+   "block_index": 303
+  },
+  {
+   "reference": "Luke 12:35-37",
+   "status": "self_rendered",
+   "block_index": 303
+  },
+  {
+   "reference": "1 Corinthians 9:24-25",
+   "status": "self_rendered",
+   "block_index": 303
+  },
+  {
+   "reference": "2 Timothy 2:4-5",
+   "status": "self_rendered",
+   "block_index": 303
+  },
+  {
+   "reference": "Romans 12:1-2",
+   "status": "self_rendered",
+   "block_index": 303
+  },
+  {
+   "reference": "Romans 8:16-17",
+   "status": "self_rendered",
+   "block_index": 303
+  },
+  {
+   "reference": "Revelation 3:11",
+   "status": "self_rendered",
+   "block_index": 303
+  },
+  {
+   "reference": "Exodus 17:11-14",
+   "status": "self_rendered",
+   "block_index": 303
+  },
+  {
+   "reference": "Deuteronomy 13:3",
+   "status": "self_rendered",
+   "block_index": 305
+  },
+  {
+   "reference": "Romans 5:2",
+   "status": "self_rendered",
+   "block_index": 305
+  },
+  {
+   "reference": "1 Peter 4:12-14",
+   "status": "self_rendered",
+   "block_index": 305
+  },
+  {
+   "reference": "1 John 4:4",
+   "status": "self_rendered",
+   "block_index": 307
+  },
+  {
+   "reference": "Psalm 118:6",
+   "status": "self_rendered",
+   "block_index": 307
+  },
+  {
+   "reference": "Psalm 20:7-8",
+   "status": "self_rendered",
+   "block_index": 307
+  },
+  {
+   "reference": "Psalm 27:3-4",
+   "status": "self_rendered",
+   "block_index": 307
+  },
+  {
+   "reference": "Exodus 1:12",
+   "status": "self_rendered",
+   "block_index": 307
+  },
+  {
+   "reference": "Revelation 2:10",
+   "status": "self_rendered",
+   "block_index": 307
+  },
+  {
+   "reference": "Isaiah 43:1-3",
+   "status": "self_rendered",
+   "block_index": 307
+  },
+  {
+   "reference": "Matthew 10:19-20",
+   "status": "self_rendered",
+   "block_index": 307
+  },
+  {
+   "reference": "Luke 21:14-15",
+   "status": "self_rendered",
+   "block_index": 307
+  },
+  {
+   "reference": "Exodus 4:11-12",
+   "status": "self_rendered",
+   "block_index": 307
+  },
+  {
+   "reference": "John 15:18-20",
+   "status": "self_rendered",
+   "block_index": 309
+  },
+  {
+   "reference": "John 16:2",
+   "status": "self_rendered",
+   "block_index": 309
+  },
+  {
+   "reference": "John 16:20",
+   "status": "self_rendered",
+   "block_index": 309
+  },
+  {
+   "reference": "John 16:33",
+   "status": "self_rendered",
+   "block_index": 309
+  },
+  {
+   "reference": "Matthew 24:4",
+   "status": "self_rendered",
+   "block_index": 309
+  },
+  {
+   "reference": "Daniel 3:16-18",
+   "status": "self_rendered",
+   "block_index": 309
+  },
+  {
+   "reference": "Matthew 23:9",
+   "status": "self_rendered",
+   "block_index": 309
+  },
+  {
+   "reference": "1 Corinthians 11:3",
+   "status": "self_rendered",
+   "block_index": 311
+  },
+  {
+   "reference": "Revelation 7:9-10",
+   "status": "mined",
+   "block_index": 311,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Revelation 7:13-15",
+   "status": "self_rendered",
+   "block_index": 311
+  },
+  {
+   "reference": "Psalm 116:15",
+   "status": "self_rendered",
+   "block_index": 312
+  },
+  {
+   "reference": "Psalm 126:5-6",
+   "status": "self_rendered",
+   "block_index": 312
+  },
+  {
+   "reference": "Psalm 119:1-2",
+   "status": "self_rendered",
+   "block_index": 312
+  },
+  {
+   "reference": "Matthew 5:10",
+   "status": "self_rendered",
+   "block_index": 312
+  },
+  {
+   "reference": "Luke 6:22-23",
+   "status": "self_rendered",
+   "block_index": 312
+  },
+  {
+   "reference": "Luke 9:24",
+   "status": "self_rendered",
+   "block_index": 312
+  },
+  {
+   "reference": "Luke 18:29-30",
+   "status": "self_rendered",
+   "block_index": 312
+  },
+  {
+   "reference": "Revelation 20:4",
+   "status": "self_rendered",
+   "block_index": 312
+  },
+  {
+   "reference": "Romans 8:18",
+   "status": "self_rendered",
+   "block_index": 314
+  },
+  {
+   "reference": "Exodus 32:1",
+   "status": "self_rendered",
+   "block_index": 348
+  },
+  {
+   "reference": "Exodus 32:31-33",
+   "status": "self_rendered",
+   "block_index": 348
+  },
+  {
+   "reference": "Deuteronomy 32:17",
+   "status": "self_rendered",
+   "block_index": 348
+  },
+  {
+   "reference": "Judges 2:12-13",
+   "status": "self_rendered",
+   "block_index": 348
+  },
+  {
+   "reference": "Judges 10:6",
+   "status": "self_rendered",
+   "block_index": 348
+  },
+  {
+   "reference": "Malachi 2:11-12",
+   "status": "self_rendered",
+   "block_index": 348
+  },
+  {
+   "reference": "Jeremiah 25:4-7",
+   "status": "self_rendered",
+   "block_index": 349
+  },
+  {
+   "reference": "1 Kings 19:10",
+   "status": "self_rendered",
+   "block_index": 349
+  },
+  {
+   "reference": "Nehemiah 9:26",
+   "status": "self_rendered",
+   "block_index": 349
+  },
+  {
+   "reference": "Isaiah 1:2-4",
+   "status": "self_rendered",
+   "block_index": 351
+  },
+  {
+   "reference": "Isaiah 6:9-10",
+   "status": "self_rendered",
+   "block_index": 351
+  },
+  {
+   "reference": "Jeremiah 2:13",
+   "status": "self_rendered",
+   "block_index": 351
+  },
+  {
+   "reference": "Jeremiah 6:10",
+   "status": "self_rendered",
+   "block_index": 351
+  },
+  {
+   "reference": "Jeremiah 8:7-9",
+   "status": "self_rendered",
+   "block_index": 351
+  },
+  {
+   "reference": "Proverbs 1:28-29",
+   "status": "self_rendered",
+   "block_index": 351
+  },
+  {
+   "reference": "Psalm 28:4-5",
+   "status": "self_rendered",
+   "block_index": 351
+  },
+  {
+   "reference": "Psalm 82:5",
+   "status": "self_rendered",
+   "block_index": 351
+  },
+  {
+   "reference": "John 1:11-12",
+   "status": "self_rendered",
+   "block_index": 351
+  },
+  {
+   "reference": "Isaiah 29:11-12",
+   "status": "self_rendered",
+   "block_index": 353
+  },
+  {
+   "reference": "Jeremiah 23:20",
+   "status": "self_rendered",
+   "block_index": 353
+  },
+  {
+   "reference": "Daniel 12:4",
+   "status": "self_rendered",
+   "block_index": 353
+  },
+  {
+   "reference": "1 Corinthians 10:1",
+   "status": "self_rendered",
+   "block_index": 353
+  },
+  {
+   "reference": "2 Corinthians 3:14-16",
+   "status": "self_rendered",
+   "block_index": 353
+  },
+  {
+   "reference": "Luke 24:44-47",
+   "status": "self_rendered",
+   "block_index": 353
+  },
+  {
+   "reference": "Isaiah 7:9",
+   "status": "self_rendered",
+   "block_index": 355
+  },
+  {
+   "reference": "John 8:24",
+   "status": "self_rendered",
+   "block_index": 355
+  },
+  {
+   "reference": "Habakkuk 2:4",
+   "status": "self_rendered",
+   "block_index": 355
+  },
+  {
+   "reference": "Genesis 15:6",
+   "status": "self_rendered",
+   "block_index": 355
+  },
+  {
+   "reference": "Galatians 3:6-9",
+   "status": "self_rendered",
+   "block_index": 355
+  },
+  {
+   "reference": "Isaiah 1:7-9",
+   "status": "self_rendered",
+   "block_index": 357
+  },
+  {
+   "reference": "Matthew 23:37-38",
+   "status": "self_rendered",
+   "block_index": 357
+  },
+  {
+   "reference": "Isaiah 2:5-6",
+   "status": "self_rendered",
+   "block_index": 359
+  },
+  {
+   "reference": "John 1:9-10",
+   "status": "self_rendered",
+   "block_index": 359
+  },
+  {
+   "reference": "John 3:18-19",
+   "status": "self_rendered",
+   "block_index": 359
+  },
+  {
+   "reference": "Jeremiah 4:3-4",
+   "status": "self_rendered",
+   "block_index": 361
+  },
+  {
+   "reference": "Deuteronomy 30:6",
+   "status": "self_rendered",
+   "block_index": 361
+  },
+  {
+   "reference": "Joshua 5:2",
+   "status": "self_rendered",
+   "block_index": 361
+  },
+  {
+   "reference": "Colossians 2:11",
+   "status": "self_rendered",
+   "block_index": 361
+  },
+  {
+   "reference": "Isaiah 8:16-17",
+   "status": "self_rendered",
+   "block_index": 363
+  },
+  {
+   "reference": "Matthew 11:13",
+   "status": "self_rendered",
+   "block_index": 363
+  },
+  {
+   "reference": "Micah 4:2-3",
+   "status": "self_rendered",
+   "block_index": 365
+  },
+  {
+   "reference": "Isaiah 2:3-4",
+   "status": "self_rendered",
+   "block_index": 365
+  },
+  {
+   "reference": "Matthew 17:5",
+   "status": "self_rendered",
+   "block_index": 365
+  },
+  {
+   "reference": "Jeremiah 31:31-34",
+   "status": "self_rendered",
+   "block_index": 367
+  },
+  {
+   "reference": "Isaiah 43:18-21",
+   "status": "self_rendered",
+   "block_index": 369
+  },
+  {
+   "reference": "Isaiah 48:21",
+   "status": "self_rendered",
+   "block_index": 369
+  },
+  {
+   "reference": "Matthew 3:11",
+   "status": "self_rendered",
+   "block_index": 369
+  },
+  {
+   "reference": "John 3:5-6",
+   "status": "self_rendered",
+   "block_index": 369
+  },
+  {
+   "reference": "Psalm 2:1-3",
+   "status": "self_rendered",
+   "block_index": 371
+  },
+  {
+   "reference": "Matthew 11:28-30",
+   "status": "self_rendered",
+   "block_index": 371
+  },
+  {
+   "reference": "Jeremiah 30:8-9",
+   "status": "self_rendered",
+   "block_index": 371
+  },
+  {
+   "reference": "Ezekiel 34:10",
+   "status": "self_rendered",
+   "block_index": 373
+  },
+  {
+   "reference": "Jeremiah 3:15",
+   "status": "self_rendered",
+   "block_index": 373
+  },
+  {
+   "reference": "Jeremiah 31:10-11",
+   "status": "self_rendered",
+   "block_index": 373
+  },
+  {
+   "reference": "2 Samuel 7:4-5",
+   "status": "self_rendered",
+   "block_index": 375
+  },
+  {
+   "reference": "Matthew 24:2",
+   "status": "self_rendered",
+   "block_index": 375
+  },
+  {
+   "reference": "Mark 14:58",
+   "status": "self_rendered",
+   "block_index": 375
+  },
+  {
+   "reference": "Isaiah 1:11-12",
+   "status": "self_rendered",
+   "block_index": 377
+  },
+  {
+   "reference": "Psalm 50:13-15",
+   "status": "self_rendered",
+   "block_index": 377
+  },
+  {
+   "reference": "Psalm 50:23",
+   "status": "self_rendered",
+   "block_index": 377
+  },
+  {
+   "reference": "Psalm 4:5",
+   "status": "self_rendered",
+   "block_index": 377
+  },
+  {
+   "reference": "Malachi 1:10-11",
+   "status": "self_rendered",
+   "block_index": 377
+  },
+  {
+   "reference": "Psalm 110:3-4",
+   "status": "self_rendered",
+   "block_index": 379
+  },
+  {
+   "reference": "1 Samuel 2:35-36",
+   "status": "self_rendered",
+   "block_index": 379
+  },
+  {
+   "reference": "Deuteronomy 18:17-19",
+   "status": "self_rendered",
+   "block_index": 381
+  },
+  {
+   "reference": "John 5:39-40",
+   "status": "self_rendered",
+   "block_index": 381
+  },
+  {
+   "reference": "John 5:45-47",
+   "status": "self_rendered",
+   "block_index": 381
+  },
+  {
+   "reference": "Genesis 25:23",
+   "status": "self_rendered",
+   "block_index": 383
+  },
+  {
+   "reference": "Hosea 2:23",
+   "status": "self_rendered",
+   "block_index": 383
+  },
+  {
+   "reference": "Isaiah 54:1-4",
+   "status": "self_rendered",
+   "block_index": 385
+  },
+  {
+   "reference": "1 Samuel 2:5",
+   "status": "self_rendered",
+   "block_index": 385
+  },
+  {
+   "reference": "Genesis 12:1-3",
+   "status": "self_rendered",
+   "block_index": 387
+  },
+  {
+   "reference": "Genesis 27:27-29",
+   "status": "self_rendered",
+   "block_index": 387
+  },
+  {
+   "reference": "Genesis 48:17-19",
+   "status": "self_rendered",
+   "block_index": 387
+  },
+  {
+   "reference": "Genesis 49:8-12",
+   "status": "self_rendered",
+   "block_index": 387
+  },
+  {
+   "reference": "Numbers 23:24",
+   "status": "self_rendered",
+   "block_index": 387
+  },
+  {
+   "reference": "Deuteronomy 28:13",
+   "status": "self_rendered",
+   "block_index": 387
+  },
+  {
+   "reference": "Jeremiah 6:17-18",
+   "status": "self_rendered",
+   "block_index": 387
+  },
+  {
+   "reference": "Psalm 18:43-44",
+   "status": "self_rendered",
+   "block_index": 387
+  },
+  {
+   "reference": "Jeremiah 1:5",
+   "status": "self_rendered",
+   "block_index": 387
+  },
+  {
+   "reference": "Isaiah 55:4",
+   "status": "self_rendered",
+   "block_index": 387
+  },
+  {
+   "reference": "Isaiah 55:5",
+   "status": "self_rendered",
+   "block_index": 387
+  },
+  {
+   "reference": "Isaiah 11:10",
+   "status": "self_rendered",
+   "block_index": 387
+  },
+  {
+   "reference": "Isaiah 9:1-2",
+   "status": "self_rendered",
+   "block_index": 387
+  },
+  {
+   "reference": "Isaiah 45:1-2",
+   "status": "self_rendered",
+   "block_index": 387
+  },
+  {
+   "reference": "Isaiah 66:18-19",
+   "status": "self_rendered",
+   "block_index": 387
+  },
+  {
+   "reference": "Isaiah 5:26",
+   "status": "self_rendered",
+   "block_index": 387
+  },
+  {
+   "reference": "Isaiah 52:15",
+   "status": "self_rendered",
+   "block_index": 387
+  },
+  {
+   "reference": "Isaiah 65:1",
+   "status": "self_rendered",
+   "block_index": 387
+  },
+  {
+   "reference": "Acts 13:46-47",
+   "status": "self_rendered",
+   "block_index": 387
+  },
+  {
+   "reference": "Isaiah 65:13-16",
+   "status": "self_rendered",
+   "block_index": 389
+  },
+  {
+   "reference": "Isaiah 5:26-27",
+   "status": "self_rendered",
+   "block_index": 389
+  },
+  {
+   "reference": "Isaiah 3:1",
+   "status": "self_rendered",
+   "block_index": 389
+  },
+  {
+   "reference": "Psalm 34:8-10",
+   "status": "self_rendered",
+   "block_index": 389
+  },
+  {
+   "reference": "John 6:35",
+   "status": "self_rendered",
+   "block_index": 389
+  },
+  {
+   "reference": "John 7:37-38",
+   "status": "self_rendered",
+   "block_index": 389
+  },
+  {
+   "reference": "John 6:53",
+   "status": "self_rendered",
+   "block_index": 389
+  },
+  {
+   "reference": "Matthew 8:11-12",
+   "status": "self_rendered",
+   "block_index": 391
+  },
+  {
+   "reference": "Isaiah 1:15-20",
+   "status": "self_rendered",
+   "block_index": 393
+  },
+  {
+   "reference": "Proverbs 8:22-31",
+   "status": "self_rendered",
+   "block_index": 431
+  },
+  {
+   "reference": "Psalm 89:27-33",
+   "status": "self_rendered",
+   "block_index": 431
+  },
+  {
+   "reference": "John 17:3-5",
+   "status": "self_rendered",
+   "block_index": 431
+  },
+  {
+   "reference": "Colossians 1:15",
+   "status": "self_rendered",
+   "block_index": 431
+  },
+  {
+   "reference": "Colossians 1:18",
+   "status": "self_rendered",
+   "block_index": 431
+  },
+  {
+   "reference": "Revelation 21:6",
+   "status": "self_rendered",
+   "block_index": 431
+  },
+  {
+   "reference": "1 Corinthians 1:22-24",
+   "status": "mined",
+   "block_index": 431,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Proverbs 9:1-5",
+   "status": "self_rendered",
+   "block_index": 432
+  },
+  {
+   "reference": "Psalm 45:1",
+   "status": "self_rendered",
+   "block_index": 434
+  },
+  {
+   "reference": "Psalm 33:6",
+   "status": "self_rendered",
+   "block_index": 434
+  },
+  {
+   "reference": "Isaiah 10:22-23",
+   "status": "self_rendered",
+   "block_index": 434
+  },
+  {
+   "reference": "Psalm 107:20",
+   "status": "self_rendered",
+   "block_index": 434
+  },
+  {
+   "reference": "John 1:1-5",
+   "status": "self_rendered",
+   "block_index": 434
+  },
+  {
+   "reference": "Revelation 19:11",
+   "status": "self_rendered",
+   "block_index": 434
+  },
+  {
+   "reference": "Isaiah 59:1-4",
+   "status": "self_rendered",
+   "block_index": 436
+  },
+  {
+   "reference": "Isaiah 53:1",
+   "status": "self_rendered",
+   "block_index": 436
+  },
+  {
+   "reference": "Isaiah 66:1-2",
+   "status": "self_rendered",
+   "block_index": 436
+  },
+  {
+   "reference": "Isaiah 26:11",
+   "status": "self_rendered",
+   "block_index": 436
+  },
+  {
+   "reference": "Isaiah 52:10",
+   "status": "self_rendered",
+   "block_index": 436
+  },
+  {
+   "reference": "Isaiah 41:15-20",
+   "status": "self_rendered",
+   "block_index": 436
+  },
+  {
+   "reference": "Genesis 22:11-12",
+   "status": "self_rendered",
+   "block_index": 438
+  },
+  {
+   "reference": "Genesis 31:11-13",
+   "status": "self_rendered",
+   "block_index": 438
+  },
+  {
+   "reference": "Exodus 13:21",
+   "status": "self_rendered",
+   "block_index": 438
+  },
+  {
+   "reference": "Exodus 14:19",
+   "status": "self_rendered",
+   "block_index": 438
+  },
+  {
+   "reference": "Exodus 23:20-21",
+   "status": "self_rendered",
+   "block_index": 438
+  },
+  {
+   "reference": "John 5:43",
+   "status": "self_rendered",
+   "block_index": 438
+  },
+  {
+   "reference": "Psalm 118:26",
+   "status": "self_rendered",
+   "block_index": 438
+  },
+  {
+   "reference": "Malachi 2:5-7",
+   "status": "self_rendered",
+   "block_index": 438
+  },
+  {
+   "reference": "Genesis 35:1",
+   "status": "self_rendered",
+   "block_index": 440
+  },
+  {
+   "reference": "Isaiah 45:14-16",
+   "status": "self_rendered",
+   "block_index": 440
+  },
+  {
+   "reference": "Isaiah 40:3-5",
+   "status": "self_rendered",
+   "block_index": 440
+  },
+  {
+   "reference": "Zechariah 10:11-12",
+   "status": "self_rendered",
+   "block_index": 440
+  },
+  {
+   "reference": "Hosea 11:9",
+   "status": "self_rendered",
+   "block_index": 440
+  },
+  {
+   "reference": "Psalm 45:6-7",
+   "status": "self_rendered",
+   "block_index": 440
+  },
+  {
+   "reference": "Psalm 46:10",
+   "status": "self_rendered",
+   "block_index": 440
+  },
+  {
+   "reference": "Psalm 82:5",
+   "status": "self_rendered",
+   "block_index": 440
+  },
+  {
+   "reference": "Psalm 68:4",
+   "status": "self_rendered",
+   "block_index": 440
+  },
+  {
+   "reference": "John 1:1",
+   "status": "self_rendered",
+   "block_index": 440
+  },
+  {
+   "reference": "John 20:27-29",
+   "status": "self_rendered",
+   "block_index": 440
+  },
+  {
+   "reference": "Romans 9:3-5",
+   "status": "self_rendered",
+   "block_index": 440
+  },
+  {
+   "reference": "Revelation 21:6-7",
+   "status": "self_rendered",
+   "block_index": 440
+  },
+  {
+   "reference": "Psalm 82:1",
+   "status": "self_rendered",
+   "block_index": 440
+  },
+  {
+   "reference": "Psalm 82:6-7",
+   "status": "self_rendered",
+   "block_index": 440
+  },
+  {
+   "reference": "John 10:34-38",
+   "status": "self_rendered",
+   "block_index": 440
+  },
+  {
+   "reference": "Matthew 1:23",
+   "status": "self_rendered",
+   "block_index": 440
+  },
+  {
+   "reference": "Isaiah 35:3-6",
+   "status": "self_rendered",
+   "block_index": 442
+  },
+  {
+   "reference": "Isaiah 63:9",
+   "status": "self_rendered",
+   "block_index": 442
+  },
+  {
+   "reference": "Isaiah 42:6-8",
+   "status": "self_rendered",
+   "block_index": 442
+  },
+  {
+   "reference": "Psalm 25:4-5",
+   "status": "self_rendered",
+   "block_index": 442
+  },
+  {
+   "reference": "John 8:12",
+   "status": "self_rendered",
+   "block_index": 442
+  },
+  {
+   "reference": "Matthew 1:20-21",
+   "status": "self_rendered",
+   "block_index": 442
+  },
+  {
+   "reference": "Luke 1:67-69",
+   "status": "self_rendered",
+   "block_index": 442
+  },
+  {
+   "reference": "Luke 2:10-11",
+   "status": "self_rendered",
+   "block_index": 442
+  },
+  {
+   "reference": "Psalm 2:7-8",
+   "status": "self_rendered",
+   "block_index": 444
+  },
+  {
+   "reference": "Luke 1:41-43",
+   "status": "self_rendered",
+   "block_index": 444
+  },
+  {
+   "reference": "Galatians 4:4",
+   "status": "self_rendered",
+   "block_index": 444
+  },
+  {
+   "reference": "1 John 4:2-3",
+   "status": "self_rendered",
+   "block_index": 444
+  },
+  {
+   "reference": "Isaiah 7:10-15",
+   "status": "self_rendered",
+   "block_index": 446
+  },
+  {
+   "reference": "Genesis 3:14-15",
+   "status": "self_rendered",
+   "block_index": 446
+  },
+  {
+   "reference": "Jeremiah 17:9",
+   "status": "self_rendered",
+   "block_index": 448
+  },
+  {
+   "reference": "Numbers 24:17",
+   "status": "self_rendered",
+   "block_index": 448
+  },
+  {
+   "reference": "Numbers 24:7-9",
+   "status": "self_rendered",
+   "block_index": 448
+  },
+  {
+   "reference": "Isaiah 61:1-2",
+   "status": "self_rendered",
+   "block_index": 448
+  },
+  {
+   "reference": "Luke 1:35",
+   "status": "self_rendered",
+   "block_index": 448
+  },
+  {
+   "reference": "1 Corinthians 15:47-49",
+   "status": "self_rendered",
+   "block_index": 448
+  },
+  {
+   "reference": "2 Samuel 7:4-16",
+   "status": "self_rendered",
+   "block_index": 450
+  },
+  {
+   "reference": "Isaiah 11:1-3",
+   "status": "self_rendered",
+   "block_index": 450
+  },
+  {
+   "reference": "Psalm 132:11",
+   "status": "self_rendered",
+   "block_index": 450
+  },
+  {
+   "reference": "Luke 1:30-33",
+   "status": "self_rendered",
+   "block_index": 450
+  },
+  {
+   "reference": "Revelation 5:1-5",
+   "status": "self_rendered",
+   "block_index": 450
+  },
+  {
+   "reference": "Micah 5:2",
+   "status": "self_rendered",
+   "block_index": 452
+  },
+  {
+   "reference": "Matthew 2:1-2",
+   "status": "self_rendered",
+   "block_index": 452
+  },
+  {
+   "reference": "Isaiah 53:1-7",
+   "status": "self_rendered",
+   "block_index": 454
+  },
+  {
+   "reference": "Isaiah 50:5-7",
+   "status": "self_rendered",
+   "block_index": 454
+  },
+  {
+   "reference": "Isaiah 42:2-4",
+   "status": "self_rendered",
+   "block_index": 454
+  },
+  {
+   "reference": "Psalm 22:6-8",
+   "status": "self_rendered",
+   "block_index": 454
+  },
+  {
+   "reference": "Psalm 22:15",
+   "status": "self_rendered",
+   "block_index": 454
+  },
+  {
+   "reference": "Zechariah 3:1-5",
+   "status": "self_rendered",
+   "block_index": 454
+  },
+  {
+   "reference": "Philippians 2:6-11",
+   "status": "self_rendered",
+   "block_index": 454
+  },
+  {
+   "reference": "John 1:29",
+   "status": "self_rendered",
+   "block_index": 458
+  },
+  {
+   "reference": "Acts 4:8-12",
+   "status": "self_rendered",
+   "block_index": 460
+  },
+  {
+   "reference": "Joel 2:15-16",
+   "status": "self_rendered",
+   "block_index": 466
+  },
+  {
+   "reference": "John 3:28-29",
+   "status": "self_rendered",
+   "block_index": 466
+  },
+  {
+   "reference": "John 1:26-27",
+   "status": "self_rendered",
+   "block_index": 466
+  },
+  {
+   "reference": "Luke 12:35-37",
+   "status": "self_rendered",
+   "block_index": 466
+  },
+  {
+   "reference": "John 3:14-15",
+   "status": "self_rendered",
+   "block_index": 468
+  },
+  {
+   "reference": "Amos 8:9-10",
+   "status": "self_rendered",
+   "block_index": 474
+  },
+  {
+   "reference": "John 10:18",
+   "status": "self_rendered",
+   "block_index": 476
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 482
+  },
+  {
+   "reference": "John 10:9",
+   "status": "self_rendered",
+   "block_index": 482
+  },
+  {
+   "reference": "John 3:36",
+   "status": "self_rendered",
+   "block_index": 482
+  },
+  {
+   "reference": "1 John 2:23",
+   "status": "self_rendered",
+   "block_index": 482
+  },
+  {
+   "reference": "John 5:22-23",
+   "status": "self_rendered",
+   "block_index": 484
+  },
+  {
+   "reference": "John 18:36-37",
+   "status": "self_rendered",
+   "block_index": 486
+  },
+  {
+   "reference": "Psalm 72:1-2",
+   "status": "self_rendered",
+   "block_index": 488
+  },
+  {
+   "reference": "Revelation 19:11-16",
+   "status": "self_rendered",
+   "block_index": 488
+  },
+  {
+   "reference": "Matthew 25:31",
+   "status": "self_rendered",
+   "block_index": 488
+  },
+  {
+   "reference": "Isaiah 58:1-9",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "Job 29:12-16",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "Proverbs 19:17",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "Proverbs 28:27",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "Proverbs 16:6",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "Proverbs 25:21-22",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "Proverbs 3:28",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "Proverbs 21:13",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "Proverbs 20:7",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "Psalm 37:25-26",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "Psalm 41:1",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "Psalm 112:9",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "Hosea 6:6",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "Matthew 5:6",
+   "status": "mined",
+   "block_index": 617,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 5:7",
+   "status": "mined",
+   "block_index": 617,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 6:20-21",
+   "status": "mined",
+   "block_index": 617,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 13:45-46",
+   "status": "mined",
+   "block_index": 617,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 10:42",
+   "status": "mined",
+   "block_index": 617,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 5:42",
+   "status": "mined",
+   "block_index": 617,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 19:17-21",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "Matthew 25:31",
+   "status": "mined",
+   "block_index": 617,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 12:33",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "Luke 11:40-41",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "Luke 19:8-9",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "2 Corinthians 8:14-15",
+   "status": "mined",
+   "block_index": 617,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "2 Corinthians 9:6-7",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "2 Corinthians 9:9",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "2 Corinthians 9:10-11",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "2 Corinthians 9:12",
+   "status": "mined",
+   "block_index": 617,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 John 3:17",
+   "status": "mined",
+   "block_index": 617,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 14:12-14",
+   "status": "self_rendered",
+   "block_index": 617
+  },
+  {
+   "reference": "2 Corinthians 8:12-13",
+   "status": "self_rendered",
+   "block_index": 618
+  },
+  {
+   "reference": "Malachi 2:10",
+   "status": "self_rendered",
+   "block_index": 620
+  },
+  {
+   "reference": "John 14:27",
+   "status": "self_rendered",
+   "block_index": 620
+  },
+  {
+   "reference": "John 15:12-13",
+   "status": "self_rendered",
+   "block_index": 620
+  },
+  {
+   "reference": "Matthew 5:9",
+   "status": "self_rendered",
+   "block_index": 620
+  },
+  {
+   "reference": "Matthew 18:19-20",
+   "status": "self_rendered",
+   "block_index": 620
+  },
+  {
+   "reference": "1 Corinthians 3:1-3",
+   "status": "self_rendered",
+   "block_index": 620
+  },
+  {
+   "reference": "1 Corinthians 13:2-8",
+   "status": "self_rendered",
+   "block_index": 620
+  },
+  {
+   "reference": "Galatians 5:14-15",
+   "status": "self_rendered",
+   "block_index": 620
+  },
+  {
+   "reference": "1 John 3:10",
+   "status": "self_rendered",
+   "block_index": 620
+  },
+  {
+   "reference": "1 John 4:20",
+   "status": "self_rendered",
+   "block_index": 620
+  },
+  {
+   "reference": "Acts 4:32",
+   "status": "self_rendered",
+   "block_index": 620
+  },
+  {
+   "reference": "Matthew 5:23-24",
+   "status": "self_rendered",
+   "block_index": 620
+  },
+  {
+   "reference": "1 John 4:16",
+   "status": "self_rendered",
+   "block_index": 620
+  },
+  {
+   "reference": "1 John 2:9",
+   "status": "self_rendered",
+   "block_index": 620
+  },
+  {
+   "reference": "John 3:27",
+   "status": "self_rendered",
+   "block_index": 622
+  },
+  {
+   "reference": "1 Corinthians 4:7",
+   "status": "self_rendered",
+   "block_index": 622
+  },
+  {
+   "reference": "1 Samuel 2:3",
+   "status": "self_rendered",
+   "block_index": 622
+  },
+  {
+   "reference": "1 Samuel 2:4",
+   "status": "self_rendered",
+   "block_index": 622
+  },
+  {
+   "reference": "Isaiah 66:1-2",
+   "status": "self_rendered",
+   "block_index": 624
+  },
+  {
+   "reference": "Matthew 5:5",
+   "status": "self_rendered",
+   "block_index": 624
+  },
+  {
+   "reference": "Luke 9:48",
+   "status": "self_rendered",
+   "block_index": 624
+  },
+  {
+   "reference": "Luke 14:11",
+   "status": "self_rendered",
+   "block_index": 624
+  },
+  {
+   "reference": "Romans 11:20-21",
+   "status": "self_rendered",
+   "block_index": 624
+  },
+  {
+   "reference": "Psalm 34:18",
+   "status": "self_rendered",
+   "block_index": 624
+  },
+  {
+   "reference": "Romans 13:7-8",
+   "status": "self_rendered",
+   "block_index": 624
+  },
+  {
+   "reference": "Matthew 23:6-8",
+   "status": "self_rendered",
+   "block_index": 624
+  },
+  {
+   "reference": "John 13:16-17",
+   "status": "self_rendered",
+   "block_index": 624
+  },
+  {
+   "reference": "Psalm 82:3",
+   "status": "self_rendered",
+   "block_index": 624
+  },
+  {
+   "reference": "Psalm 51:17",
+   "status": "self_rendered",
+   "block_index": 626
+  },
+  {
+   "reference": "Psalm 34:18-19",
+   "status": "self_rendered",
+   "block_index": 626
+  },
+  {
+   "reference": "Job 1:21-22",
+   "status": "self_rendered",
+   "block_index": 626
+  },
+  {
+   "reference": "Matthew 5:4",
+   "status": "self_rendered",
+   "block_index": 626
+  },
+  {
+   "reference": "John 16:33",
+   "status": "self_rendered",
+   "block_index": 626
+  },
+  {
+   "reference": "2 Corinthians 12:7-9",
+   "status": "self_rendered",
+   "block_index": 626
+  },
+  {
+   "reference": "Romans 5:2-5",
+   "status": "self_rendered",
+   "block_index": 626
+  },
+  {
+   "reference": "Matthew 7:13-14",
+   "status": "self_rendered",
+   "block_index": 626
+  },
+  {
+   "reference": "Proverbs 28:28",
+   "status": "self_rendered",
+   "block_index": 626
+  },
+  {
+   "reference": "Ephesians 4:30-31",
+   "status": "self_rendered",
+   "block_index": 628
+  },
+  {
+   "reference": "Proverbs 16:32",
+   "status": "self_rendered",
+   "block_index": 630
+  },
+  {
+   "reference": "Proverbs 12:16",
+   "status": "self_rendered",
+   "block_index": 630
+  },
+  {
+   "reference": "Ephesians 4:26-27",
+   "status": "self_rendered",
+   "block_index": 630
+  },
+  {
+   "reference": "Matthew 5:21-22",
+   "status": "self_rendered",
+   "block_index": 630
+  },
+  {
+   "reference": "Galatians 6:1-2",
+   "status": "self_rendered",
+   "block_index": 632
+  },
+  {
+   "reference": "Jeremiah 9:23-24",
+   "status": "self_rendered",
+   "block_index": 634
+  },
+  {
+   "reference": "Psalm 56:11",
+   "status": "self_rendered",
+   "block_index": 634
+  },
+  {
+   "reference": "Psalm 62:1",
+   "status": "self_rendered",
+   "block_index": 634
+  },
+  {
+   "reference": "Psalm 118:6",
+   "status": "self_rendered",
+   "block_index": 634
+  },
+  {
+   "reference": "Psalm 118:8-9",
+   "status": "self_rendered",
+   "block_index": 634
+  },
+  {
+   "reference": "Daniel 3:16-18",
+   "status": "self_rendered",
+   "block_index": 634
+  },
+  {
+   "reference": "Jeremiah 17:5",
+   "status": "self_rendered",
+   "block_index": 634
+  },
+  {
+   "reference": "Deuteronomy 6:13",
+   "status": "self_rendered",
+   "block_index": 634
+  },
+  {
+   "reference": "Romans 1:25-26",
+   "status": "self_rendered",
+   "block_index": 634
+  },
+  {
+   "reference": "1 John 4:4",
+   "status": "self_rendered",
+   "block_index": 634
+  },
+  {
+   "reference": "Isaiah 55:6-7",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "Ecclesiastes 1:14",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "Exodus 12:11",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "Matthew 6:31-33",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "Matthew 6:34",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "Luke 9:62",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "Matthew 6:26",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "Luke 12:35-37",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "Matthew 8:20",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "Luke 14:33",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "1 Corinthians 6:19-20",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "1 Corinthians 7:29-31",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "1 Corinthians 15:47-49",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "Philippians 2:21",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "Galatians 6:14",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "2 Timothy 2:4-5",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "Colossians 2:20",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "Colossians 3:1-4",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "Ephesians 4:22-24",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "1 Peter 2:11-12",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "1 John 2:6",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "1 John 2:15-17",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "1 Corinthians 5:7-8",
+   "status": "self_rendered",
+   "block_index": 636
+  },
+  {
+   "reference": "Matthew 5:33-37",
+   "status": "self_rendered",
+   "block_index": 638
+  },
+  {
+   "reference": "Exodus 20:7",
+   "status": "self_rendered",
+   "block_index": 638
+  },
+  {
+   "reference": "Exodus 22:28",
+   "status": "self_rendered",
+   "block_index": 640
+  },
+  {
+   "reference": "Psalm 34:12-13",
+   "status": "self_rendered",
+   "block_index": 640
+  },
+  {
+   "reference": "Leviticus 24:13-14",
+   "status": "self_rendered",
+   "block_index": 640
+  },
+  {
+   "reference": "Ephesians 4:29",
+   "status": "self_rendered",
+   "block_index": 640
+  },
+  {
+   "reference": "Romans 12:14",
+   "status": "self_rendered",
+   "block_index": 640
+  },
+  {
+   "reference": "Matthew 5:22",
+   "status": "self_rendered",
+   "block_index": 640
+  },
+  {
+   "reference": "Matthew 12:36-37",
+   "status": "self_rendered",
+   "block_index": 640
+  },
+  {
+   "reference": "Job 2:9-10",
+   "status": "self_rendered",
+   "block_index": 642
+  },
+  {
+   "reference": "Job 1:8",
+   "status": "self_rendered",
+   "block_index": 642
+  },
+  {
+   "reference": "Psalm 34:1",
+   "status": "self_rendered",
+   "block_index": 642
+  },
+  {
+   "reference": "Numbers 17:10",
+   "status": "self_rendered",
+   "block_index": 642
+  },
+  {
+   "reference": "Acts 16:25",
+   "status": "self_rendered",
+   "block_index": 642
+  },
+  {
+   "reference": "Philippians 2:14-15",
+   "status": "self_rendered",
+   "block_index": 642
+  },
+  {
+   "reference": "Genesis 22:1-2",
+   "status": "self_rendered",
+   "block_index": 644
+  },
+  {
+   "reference": "Deuteronomy 13:3",
+   "status": "self_rendered",
+   "block_index": 644
+  },
+  {
+   "reference": "Proverbs 14:25",
+   "status": "self_rendered",
+   "block_index": 646
+  },
+  {
+   "reference": "Psalm 116:15",
+   "status": "self_rendered",
+   "block_index": 646
+  },
+  {
+   "reference": "Psalm 126:5-6",
+   "status": "self_rendered",
+   "block_index": 646
+  },
+  {
+   "reference": "John 12:25",
+   "status": "self_rendered",
+   "block_index": 646
+  },
+  {
+   "reference": "Matthew 10:19-20",
+   "status": "self_rendered",
+   "block_index": 646
+  },
+  {
+   "reference": "John 16:2-3",
+   "status": "self_rendered",
+   "block_index": 646
+  },
+  {
+   "reference": "Matthew 5:10",
+   "status": "self_rendered",
+   "block_index": 646
+  },
+  {
+   "reference": "Matthew 10:28",
+   "status": "self_rendered",
+   "block_index": 646
+  },
+  {
+   "reference": "Matthew 10:32-33",
+   "status": "self_rendered",
+   "block_index": 646
+  },
+  {
+   "reference": "Luke 6:22-23",
+   "status": "self_rendered",
+   "block_index": 646
+  },
+  {
+   "reference": "Luke 18:29-30",
+   "status": "self_rendered",
+   "block_index": 646
+  },
+  {
+   "reference": "Revelation 6:9-11",
+   "status": "self_rendered",
+   "block_index": 646
+  },
+  {
+   "reference": "Revelation 7:9-10",
+   "status": "self_rendered",
+   "block_index": 646
+  },
+  {
+   "reference": "Revelation 2:7",
+   "status": "self_rendered",
+   "block_index": 646
+  },
+  {
+   "reference": "Revelation 2:10",
+   "status": "self_rendered",
+   "block_index": 646
+  },
+  {
+   "reference": "Revelation 16:15",
+   "status": "self_rendered",
+   "block_index": 646
+  },
+  {
+   "reference": "2 Timothy 4:6-8",
+   "status": "self_rendered",
+   "block_index": 646
+  },
+  {
+   "reference": "Romans 8:16-17",
+   "status": "self_rendered",
+   "block_index": 646
+  },
+  {
+   "reference": "Psalm 119:1-2",
+   "status": "self_rendered",
+   "block_index": 646
+  },
+  {
+   "reference": "Romans 8:18",
+   "status": "self_rendered",
+   "block_index": 648
+  },
+  {
+   "reference": "Deuteronomy 6:5",
+   "status": "self_rendered",
+   "block_index": 650
+  },
+  {
+   "reference": "Matthew 10:37-38",
+   "status": "self_rendered",
+   "block_index": 650
+  },
+  {
+   "reference": "Romans 8:35-37",
+   "status": "self_rendered",
+   "block_index": 650
+  },
+  {
+   "reference": "John 6:38",
+   "status": "self_rendered",
+   "block_index": 652
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "self_rendered",
+   "block_index": 652
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "self_rendered",
+   "block_index": 652
+  },
+  {
+   "reference": "Matthew 7:21",
+   "status": "self_rendered",
+   "block_index": 652
+  },
+  {
+   "reference": "Luke 12:47",
+   "status": "self_rendered",
+   "block_index": 652
+  },
+  {
+   "reference": "1 John 2:17",
+   "status": "self_rendered",
+   "block_index": 652
+  },
+  {
+   "reference": "Psalm 111:10",
+   "status": "self_rendered",
+   "block_index": 654
+  },
+  {
+   "reference": "Proverbs 28:14",
+   "status": "self_rendered",
+   "block_index": 654
+  },
+  {
+   "reference": "Isaiah 66:2",
+   "status": "self_rendered",
+   "block_index": 654
+  },
+  {
+   "reference": "Genesis 22:11-12",
+   "status": "self_rendered",
+   "block_index": 654
+  },
+  {
+   "reference": "Psalm 2:11",
+   "status": "self_rendered",
+   "block_index": 654
+  },
+  {
+   "reference": "Deuteronomy 4:10",
+   "status": "self_rendered",
+   "block_index": 654
+  },
+  {
+   "reference": "Jeremiah 31:31-34",
+   "status": "self_rendered",
+   "block_index": 654
+  },
+  {
+   "reference": "Revelation 11:16-18",
+   "status": "self_rendered",
+   "block_index": 654
+  },
+  {
+   "reference": "Revelation 14:6-7",
+   "status": "self_rendered",
+   "block_index": 654
+  },
+  {
+   "reference": "Revelation 15:2-4",
+   "status": "self_rendered",
+   "block_index": 654
+  },
+  {
+   "reference": "Daniel 13:1-3",
+   "status": "self_rendered",
+   "block_index": 654
+  },
+  {
+   "reference": "Daniel 3:37-41",
+   "status": "self_rendered",
+   "block_index": 654
+  },
+  {
+   "reference": "Daniel 6:23-27",
+   "status": "self_rendered",
+   "block_index": 654
+  },
+  {
+   "reference": "Micah 6:6-9",
+   "status": "self_rendered",
+   "block_index": 654
+  },
+  {
+   "reference": "Micah 7:14-18",
+   "status": "self_rendered",
+   "block_index": 654
+  },
+  {
+   "reference": "Nahum 1:5-7",
+   "status": "self_rendered",
+   "block_index": 654
+  },
+  {
+   "reference": "Haggai 1:12",
+   "status": "self_rendered",
+   "block_index": 654
+  },
+  {
+   "reference": "Malachi 2:5",
+   "status": "self_rendered",
+   "block_index": 654
+  },
+  {
+   "reference": "Psalm 34:9",
+   "status": "self_rendered",
+   "block_index": 654
+  },
+  {
+   "reference": "Psalm 19:9",
+   "status": "self_rendered",
+   "block_index": 654
+  },
+  {
+   "reference": "Luke 6:37",
+   "status": "self_rendered",
+   "block_index": 656
+  },
+  {
+   "reference": "Mark 11:25-26",
+   "status": "self_rendered",
+   "block_index": 658
+  },
+  {
+   "reference": "Mark 4:24",
+   "status": "self_rendered",
+   "block_index": 658
+  },
+  {
+   "reference": "John 14:6",
+   "status": "self_rendered",
+   "block_index": 662
+  },
+  {
+   "reference": "John 10:9",
+   "status": "self_rendered",
+   "block_index": 662
+  },
+  {
+   "reference": "John 3:5-6",
+   "status": "self_rendered",
+   "block_index": 664
+  },
+  {
+   "reference": "John 6:53",
+   "status": "self_rendered",
+   "block_index": 664
+  },
+  {
+   "reference": "John 5:14",
+   "status": "self_rendered",
+   "block_index": 667
+  },
+  {
+   "reference": "Mark 3:28-29",
+   "status": "self_rendered",
+   "block_index": 670
+  },
+  {
+   "reference": "Luke 21:17",
+   "status": "self_rendered",
+   "block_index": 672
+  },
+  {
+   "reference": "John 15:18-20",
+   "status": "self_rendered",
+   "block_index": 672
+  },
+  {
+   "reference": "Acts 5:3-4",
+   "status": "self_rendered",
+   "block_index": 674
+  },
+  {
+   "reference": "John 3:18-19",
+   "status": "self_rendered",
+   "block_index": 676
+  },
+  {
+   "reference": "Luke 20:34-38",
+   "status": "self_rendered",
+   "block_index": 667
+  },
+  {
+   "reference": "John 5:22-23",
+   "status": "self_rendered",
+   "block_index": 680
+  },
+  {
+   "reference": "John 13:14-15",
+   "status": "self_rendered",
+   "block_index": 692
+  },
+  {
+   "reference": "Matthew 6:3-4",
+   "status": "self_rendered",
+   "block_index": 694
+  },
+  {
+   "reference": "Matthew 6:2",
+   "status": "self_rendered",
+   "block_index": 694
+  },
+  {
+   "reference": "Ephesians 5:4",
+   "status": "self_rendered",
+   "block_index": 696
+  },
+  {
+   "reference": "Genesis 15:6",
+   "status": "self_rendered",
+   "block_index": 698
+  },
+  {
+   "reference": "Isaiah 7:9",
+   "status": "self_rendered",
+   "block_index": 698
+  },
+  {
+   "reference": "Matthew 14:31",
+   "status": "self_rendered",
+   "block_index": 698
+  },
+  {
+   "reference": "Matthew 17:20",
+   "status": "self_rendered",
+   "block_index": 698
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "self_rendered",
+   "block_index": 698
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "self_rendered",
+   "block_index": 698
+  },
+  {
+   "reference": "Habakkuk 2:4",
+   "status": "self_rendered",
+   "block_index": 698
+  },
+  {
+   "reference": "Acts 8:36-37",
+   "status": "self_rendered",
+   "block_index": 700
+  },
+  {
+   "reference": "1 Corinthians 6:1-2",
+   "status": "self_rendered",
+   "block_index": 702
+  },
+  {
+   "reference": "1 Corinthians 6:7-9",
+   "status": "self_rendered",
+   "block_index": 702
+  },
+  {
+   "reference": "Romans 8:24-25",
+   "status": "self_rendered",
+   "block_index": 704
+  },
+  {
+   "reference": "1 Corinthians 14:34-35",
+   "status": "self_rendered",
+   "block_index": 703
+  },
+  {
+   "reference": "1 Timothy 2:11-14",
+   "status": "self_rendered",
+   "block_index": 703
+  },
+  {
+   "reference": "Hosea 4:1-3",
+   "status": "self_rendered",
+   "block_index": 708
+  },
+  {
+   "reference": "Isaiah 59:1-4",
+   "status": "self_rendered",
+   "block_index": 708
+  },
+  {
+   "reference": "Zephaniah 1:2-3",
+   "status": "self_rendered",
+   "block_index": 708
+  },
+  {
+   "reference": "Ezekiel 18:7-8",
+   "status": "self_rendered",
+   "block_index": 710
+  },
+  {
+   "reference": "Deuteronomy 23:19",
+   "status": "self_rendered",
+   "block_index": 710
+  },
+  {
+   "reference": "Luke 6:32",
+   "status": "self_rendered",
+   "block_index": 712
+  },
+  {
+   "reference": "Matthew 5:44-45",
+   "status": "self_rendered",
+   "block_index": 712
+  },
+  {
+   "reference": "Proverbs 23:9",
+   "status": "self_rendered",
+   "block_index": 714
+  },
+  {
+   "reference": "Matthew 7:6",
+   "status": "self_rendered",
+   "block_index": 714
+  },
+  {
+   "reference": "Luke 17:7-10",
+   "status": "self_rendered",
+   "block_index": 716
+  },
+  {
+   "reference": "Deuteronomy 30:19",
+   "status": "self_rendered",
+   "block_index": 718
+  },
+  {
+   "reference": "Isaiah 1:19-20",
+   "status": "self_rendered",
+   "block_index": 718
+  },
+  {
+   "reference": "Luke 17:21",
+   "status": "self_rendered",
+   "block_index": 718
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "self_rendered",
+   "block_index": 703
+  },
+  {
+   "reference": "Proverbs 10:9",
+   "status": "self_rendered",
+   "block_index": 703
+  },
+  {
+   "reference": "Ecclesiastes 7:16",
+   "status": "self_rendered",
+   "block_index": 703
+  },
+  {
+   "reference": "Isaiah 5:21",
+   "status": "self_rendered",
+   "block_index": 703
+  },
+  {
+   "reference": "Romans 11:33-36",
+   "status": "self_rendered",
+   "block_index": 703
+  },
+  {
+   "reference": "2 Timothy 2:23-24",
+   "status": "self_rendered",
+   "block_index": 703
+  },
+  {
+   "reference": "Job 14:4-5",
+   "status": "self_rendered",
+   "block_index": 722
+  },
+  {
+   "reference": "1 John 1:8",
+   "status": "self_rendered",
+   "block_index": 722
+  },
+  {
+   "reference": "Galatians 1:10",
+   "status": "self_rendered",
+   "block_index": 724
+  },
+  {
+   "reference": "Proverbs 15:3",
+   "status": "self_rendered",
+   "block_index": 619
+  },
+  {
+   "reference": "Jeremiah 23:23-24",
+   "status": "self_rendered",
+   "block_index": 619
+  },
+  {
+   "reference": "1 Samuel 16:7",
+   "status": "self_rendered",
+   "block_index": 619
+  },
+  {
+   "reference": "Revelation 2:23",
+   "status": "self_rendered",
+   "block_index": 619
+  },
+  {
+   "reference": "2 Corinthians 5:10",
+   "status": "self_rendered",
+   "block_index": 619
+  },
+  {
+   "reference": "Malachi 3:3",
+   "status": "self_rendered",
+   "block_index": 728
+  },
+  {
+   "reference": "Matthew 5:26",
+   "status": "self_rendered",
+   "block_index": 728
+  },
+  {
+   "reference": "Genesis 3:17-19",
+   "status": "self_rendered",
+   "block_index": 730
+  },
+  {
+   "reference": "Genesis 5:24",
+   "status": "self_rendered",
+   "block_index": 730
+  },
+  {
+   "reference": "Isaiah 40:6-8",
+   "status": "self_rendered",
+   "block_index": 730
+  },
+  {
+   "reference": "Ezekiel 37:11-14",
+   "status": "self_rendered",
+   "block_index": 730
+  },
+  {
+   "reference": "1 Thessalonians 4:13-14",
+   "status": "self_rendered",
+   "block_index": 730
+  },
+  {
+   "reference": "1 Corinthians 15:36",
+   "status": "self_rendered",
+   "block_index": 730
+  },
+  {
+   "reference": "1 Corinthians 15:41-44",
+   "status": "self_rendered",
+   "block_index": 730
+  },
+  {
+   "reference": "1 Corinthians 15:53-55",
+   "status": "self_rendered",
+   "block_index": 730
+  },
+  {
+   "reference": "John 17:24",
+   "status": "self_rendered",
+   "block_index": 730
+  },
+  {
+   "reference": "Luke 2:29-30",
+   "status": "self_rendered",
+   "block_index": 730
+  },
+  {
+   "reference": "John 14:28",
+   "status": "self_rendered",
+   "block_index": 730
+  },
+  {
+   "reference": "Exodus 20:23",
+   "status": "self_rendered",
+   "block_index": 732
+  },
+  {
+   "reference": "Exodus 20:4",
+   "status": "self_rendered",
+   "block_index": 732
+  },
+  {
+   "reference": "Jeremiah 10:2-5",
+   "status": "self_rendered",
+   "block_index": 732
+  },
+  {
+   "reference": "Isaiah 46:1-2",
+   "status": "self_rendered",
+   "block_index": 732
+  },
+  {
+   "reference": "Isaiah 46:5-7",
+   "status": "self_rendered",
+   "block_index": 732
+  },
+  {
+   "reference": "Jeremiah 10:12-15",
+   "status": "self_rendered",
+   "block_index": 732
+  },
+  {
+   "reference": "Revelation 9:13-21",
+   "status": "self_rendered",
+   "block_index": 732
+  },
+  {
+   "reference": "Revelation 14:9-11",
+   "status": "self_rendered",
+   "block_index": 732
+  },
+  {
+   "reference": "Isaiah 22:13-14",
+   "status": "self_rendered",
+   "block_index": 734
+  },
+  {
+   "reference": "Exodus 32:6",
+   "status": "self_rendered",
+   "block_index": 734
+  },
+  {
+   "reference": "1 Corinthians 8:8",
+   "status": "self_rendered",
+   "block_index": 734
+  },
+  {
+   "reference": "1 Corinthians 11:33-34",
+   "status": "self_rendered",
+   "block_index": 734
+  },
+  {
+   "reference": "Romans 14:17",
+   "status": "self_rendered",
+   "block_index": 734
+  },
+  {
+   "reference": "John 4:32",
+   "status": "self_rendered",
+   "block_index": 734
+  },
+  {
+   "reference": "Ecclesiastes 5:10",
+   "status": "self_rendered",
+   "block_index": 736
+  },
+  {
+   "reference": "Proverbs 11:26",
+   "status": "self_rendered",
+   "block_index": 736
+  },
+  {
+   "reference": "Isaiah 5:8",
+   "status": "self_rendered",
+   "block_index": 736
+  },
+  {
+   "reference": "Zephaniah 1:13-14",
+   "status": "self_rendered",
+   "block_index": 736
+  },
+  {
+   "reference": "Luke 9:25",
+   "status": "self_rendered",
+   "block_index": 736
+  },
+  {
+   "reference": "Luke 12:20",
+   "status": "self_rendered",
+   "block_index": 736
+  },
+  {
+   "reference": "Luke 16:25",
+   "status": "self_rendered",
+   "block_index": 736
+  },
+  {
+   "reference": "Acts 3:6-7",
+   "status": "self_rendered",
+   "block_index": 736
+  },
+  {
+   "reference": "1 Timothy 6:7-10",
+   "status": "self_rendered",
+   "block_index": 736
+  },
+  {
+   "reference": "1 Corinthians 7:39-40",
+   "status": "self_rendered",
+   "block_index": 703
+  },
+  {
+   "reference": "1 Corinthians 6:15-17",
+   "status": "self_rendered",
+   "block_index": 703
+  },
+  {
+   "reference": "2 Corinthians 6:14",
+   "status": "self_rendered",
+   "block_index": 703
+  },
+  {
+   "reference": "1 Kings 11:4",
+   "status": "self_rendered",
+   "block_index": 703
+  },
+  {
+   "reference": "1 Corinthians 6:18-20",
+   "status": "self_rendered",
+   "block_index": 703
+  },
+  {
+   "reference": "Galatians 5:17",
+   "status": "self_rendered",
+   "block_index": 742
+  },
+  {
+   "reference": "1 Corinthians 6:9-11",
+   "status": "self_rendered",
+   "block_index": 703
+  },
+  {
+   "reference": "Jeremiah 3:15",
+   "status": "self_rendered",
+   "block_index": 746
+  },
+  {
+   "reference": "Proverbs 3:11-12",
+   "status": "self_rendered",
+   "block_index": 746
+  },
+  {
+   "reference": "Psalm 2:12",
+   "status": "self_rendered",
+   "block_index": 746
+  },
+  {
+   "reference": "2 Timothy 4:3-4",
+   "status": "self_rendered",
+   "block_index": 748
+  },
+  {
+   "reference": "2 Thessalonians 3:6",
+   "status": "self_rendered",
+   "block_index": 750
+  },
+  {
+   "reference": "1 Corinthians 1:17-24",
+   "status": "self_rendered",
+   "block_index": 703
+  },
+  {
+   "reference": "1 Corinthians 3:18-20",
+   "status": "self_rendered",
+   "block_index": 703
+  },
+  {
+   "reference": "Ephesians 6:1-3",
+   "status": "self_rendered",
+   "block_index": 697
+  },
+  {
+   "reference": "Ephesians 6:4",
+   "status": "self_rendered",
+   "block_index": 756
+  },
+  {
+   "reference": "Ephesians 6:5-6",
+   "status": "self_rendered",
+   "block_index": 697
+  },
+  {
+   "reference": "Ephesians 6:9",
+   "status": "self_rendered",
+   "block_index": 760
+  },
+  {
+   "reference": "1 Timothy 5:3",
+   "status": "self_rendered",
+   "block_index": 762
+  },
+  {
+   "reference": "1 Timothy 5:11-12",
+   "status": "self_rendered",
+   "block_index": 762
+  },
+  {
+   "reference": "1 Timothy 5:8",
+   "status": "self_rendered",
+   "block_index": 764
+  },
+  {
+   "reference": "Isaiah 58:7",
+   "status": "self_rendered",
+   "block_index": 764
+  },
+  {
+   "reference": "Matthew 10:25",
+   "status": "self_rendered",
+   "block_index": 764
+  },
+  {
+   "reference": "1 Timothy 5:19",
+   "status": "self_rendered",
+   "block_index": 764
+  },
+  {
+   "reference": "1 Timothy 5:20",
+   "status": "self_rendered",
+   "block_index": 768
+  },
+  {
+   "reference": "Titus 3:10-11",
+   "status": "self_rendered",
+   "block_index": 770
+  },
+  {
+   "reference": "1 John 2:19",
+   "status": "self_rendered",
+   "block_index": 770
+  },
+  {
+   "reference": "2 Timothy 2:17",
+   "status": "self_rendered",
+   "block_index": 770
+  },
+  {
+   "reference": "1 John 3:21-22",
+   "status": "self_rendered",
+   "block_index": 772
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "self_rendered",
+   "block_index": 772
+  },
+  {
+   "reference": "Psalm 24:3-4",
+   "status": "self_rendered",
+   "block_index": 772
+  },
+  {
+   "reference": "John 19:11",
+   "status": "self_rendered",
+   "block_index": 774
+  },
+  {
+   "reference": "1 Kings 11:14",
+   "status": "self_rendered",
+   "block_index": 774
+  },
+  {
+   "reference": "John 13:27",
+   "status": "self_rendered",
+   "block_index": 774
+  },
+  {
+   "reference": "Proverbs 21:1",
+   "status": "self_rendered",
+   "block_index": 774
+  },
+  {
+   "reference": "Leviticus 19:13",
+   "status": "self_rendered",
+   "block_index": 776
+  },
+  {
+   "reference": "Leviticus 19:26",
+   "status": "self_rendered",
+   "block_index": 778
+  },
+  {
+   "reference": "Leviticus 19:27",
+   "status": "self_rendered",
+   "block_index": 780
+  },
+  {
+   "reference": "Leviticus 19:27",
+   "status": "self_rendered",
+   "block_index": 782
+  },
+  {
+   "reference": "Leviticus 19:32",
+   "status": "self_rendered",
+   "block_index": 784
+  },
+  {
+   "reference": "Ecclesiastes 10:9",
+   "status": "self_rendered",
+   "block_index": 786
+  },
+  {
+   "reference": "Exodus 12:46",
+   "status": "self_rendered",
+   "block_index": 786
+  },
+  {
+   "reference": "Psalm 133:1",
+   "status": "self_rendered",
+   "block_index": 786
+  },
+  {
+   "reference": "Matthew 12:30",
+   "status": "self_rendered",
+   "block_index": 786
+  },
+  {
+   "reference": "1 Corinthians 1:10",
+   "status": "self_rendered",
+   "block_index": 786
+  },
+  {
+   "reference": "Psalm 68:6",
+   "status": "self_rendered",
+   "block_index": 786
+  },
+  {
+   "reference": "Matthew 10:16",
+   "status": "self_rendered",
+   "block_index": 788
+  },
+  {
+   "reference": "Matthew 5:13",
+   "status": "self_rendered",
+   "block_index": 788
+  },
+  {
+   "reference": "1 Thessalonians 4:6",
+   "status": "self_rendered",
+   "block_index": 790
+  },
+  {
+   "reference": "1 Thessalonians 5:2-3",
+   "status": "self_rendered",
+   "block_index": 792
+  },
+  {
+   "reference": "Acts 1:7",
+   "status": "self_rendered",
+   "block_index": 792
+  },
+  {
+   "reference": "1 Corinthians 7:10-11",
+   "status": "self_rendered",
+   "block_index": 794
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "self_rendered",
+   "block_index": 796
+  },
+  {
+   "reference": "1 Corinthians 10:23",
+   "status": "self_rendered",
+   "block_index": 798
+  },
+  {
+   "reference": "1 Corinthians 11:19",
+   "status": "self_rendered",
+   "block_index": 800
+  },
+  {
+   "reference": "Leviticus 7:20",
+   "status": "self_rendered",
+   "block_index": 802
+  },
+  {
+   "reference": "1 Corinthians 11:27",
+   "status": "self_rendered",
+   "block_index": 802
+  },
+  {
+   "reference": "Proverbs 24:15",
+   "status": "self_rendered",
+   "block_index": 804
+  },
+  {
+   "reference": "Psalm 18:25-26",
+   "status": "self_rendered",
+   "block_index": 804
+  },
+  {
+   "reference": "1 Corinthians 15:33",
+   "status": "self_rendered",
+   "block_index": 804
+  },
+  {
+   "reference": "1 Corinthians 4:20",
+   "status": "self_rendered",
+   "block_index": 806
+  },
+  {
+   "reference": "Romans 2:13",
+   "status": "self_rendered",
+   "block_index": 806
+  },
+  {
+   "reference": "Matthew 5:19",
+   "status": "self_rendered",
+   "block_index": 806
+  },
+  {
+   "reference": "Matthew 7:24-27",
+   "status": "self_rendered",
+   "block_index": 806
+  },
+  {
+   "reference": "Romans 3:8",
+   "status": "self_rendered",
+   "block_index": 810
+  },
+  {
+   "reference": "Romans 2:12",
+   "status": "self_rendered",
+   "block_index": 812
+  },
+  {
+   "reference": "Acts 8:20",
+   "status": "self_rendered",
+   "block_index": 814
+  },
+  {
+   "reference": "Matthew 10:8",
+   "status": "self_rendered",
+   "block_index": 814
+  },
+  {
+   "reference": "John 2:16",
+   "status": "self_rendered",
+   "block_index": 814
+  },
+  {
+   "reference": "Matthew 21:13",
+   "status": "self_rendered",
+   "block_index": 814
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "self_rendered",
+   "block_index": 814
+  },
+  {
+   "reference": "Revelation 21:6-7",
+   "status": "self_rendered",
+   "block_index": 814
+  },
+  {
+   "reference": "Exodus 19:18",
+   "status": "self_rendered",
+   "block_index": 816
+  },
+  {
+   "reference": "Acts 2:2-4",
+   "status": "self_rendered",
+   "block_index": 816
+  },
+  {
+   "reference": "Exodus 3:2",
+   "status": "self_rendered",
+   "block_index": 816
+  },
+  {
+   "reference": "Proverbs 9:7-8",
+   "status": "self_rendered",
+   "block_index": 818
+  },
+  {
+   "reference": "Proverbs 10:19",
+   "status": "self_rendered",
+   "block_index": 820
+  },
+  {
+   "reference": "Proverbs 12:22",
+   "status": "self_rendered",
+   "block_index": 822
+  },
+  {
+   "reference": "Proverbs 13:24",
+   "status": "self_rendered",
+   "block_index": 824
+  },
+  {
+   "reference": "Proverbs 23:13",
+   "status": "self_rendered",
+   "block_index": 824
+  },
+  {
+   "reference": "Proverbs 20:22",
+   "status": "self_rendered",
+   "block_index": 826
+  },
+  {
+   "reference": "Romans 12:19",
+   "status": "self_rendered",
+   "block_index": 826
+  },
+  {
+   "reference": "Zephaniah 3:8",
+   "status": "self_rendered",
+   "block_index": 826
+  },
+  {
+   "reference": "Proverbs 20:13",
+   "status": "self_rendered",
+   "block_index": 828
+  },
+  {
+   "reference": "Psalm 50:20",
+   "status": "self_rendered",
+   "block_index": 828
+  },
+  {
+   "reference": "Titus 3:2",
+   "status": "self_rendered",
+   "block_index": 828
+  },
+  {
+   "reference": "Proverbs 26:27",
+   "status": "self_rendered",
+   "block_index": 830
+  },
+  {
+   "reference": "Matthew 25:36",
+   "status": "self_rendered",
+   "block_index": 832
+  },
+  {
+   "reference": "Psalm 2:10",
+   "status": "self_rendered",
+   "block_index": 838
+  },
+  {
+   "reference": "Exodus 22:22-24",
+   "status": "self_rendered",
+   "block_index": 840
+  },
+  {
+   "reference": "Isaiah 1:17-18",
+   "status": "self_rendered",
+   "block_index": 840
+  },
+  {
+   "reference": "Job 29:12-13",
+   "status": "self_rendered",
+   "block_index": 840
+  },
+  {
+   "reference": "Psalm 68:5",
+   "status": "self_rendered",
+   "block_index": 840
+  },
+  {
+   "reference": "Psalm 6:5",
+   "status": "self_rendered",
+   "block_index": 842
+  },
+  {
+   "reference": "Psalm 30:9",
+   "status": "self_rendered",
+   "block_index": 842
+  },
+  {
+   "reference": "Ezekiel 33:11",
+   "status": "self_rendered",
+   "block_index": 842
+  },
+  {
+   "reference": "Jeremiah 8:4",
+   "status": "self_rendered",
+   "block_index": 842
+  },
+  {
+   "reference": "Isaiah 3:12",
+   "status": "self_rendered",
+   "block_index": 844
+  },
+  {
+   "reference": "Luke 7:47",
+   "status": "self_rendered",
+   "block_index": 846
+  },
+  {
+   "reference": "Ephesians 6:12-17",
+   "status": "self_rendered",
+   "block_index": 848
+  },
+  {
+   "reference": "Isaiah 14:16-17",
+   "status": "self_rendered",
+   "block_index": 850
+  },
+  {
+   "reference": "Psalm 2:1-3",
+   "status": "self_rendered",
+   "block_index": 852
+  },
+  {
+   "reference": "Matthew 11:28-30",
+   "status": "self_rendered",
+   "block_index": 852
+  },
+  {
+   "reference": "Acts 15:28-29",
+   "status": "self_rendered",
+   "block_index": 852
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "self_rendered",
+   "block_index": 854
+  },
+  {
+   "reference": "Psalm 1:2",
+   "status": "self_rendered",
+   "block_index": 854
+  }
+ ]
+}
