@@ -273,14 +273,20 @@ def _is_furniture(line: str, title: str) -> bool:
     # Teaches", "Prayer 409", "Prayer 41 1"); OCR sometimes loses the number,
     # so a short line that IS the book or chapter title is furniture too.
     numbered = bool(re.match(r"^\W*[\dIl]{1,3}[\d ]{0,3}\s+\D", s)
-                    or re.search(r"\D\s+[\d ]{1,4}\W*$", s))
+                    or re.search(r"\D\s+\d[\d ]{0,3}\W*$", s))
     if len(core.split()) > 14:
         return False
+    # An unnumbered line is a running head only if it reads like one: no
+    # closing stop (prose ends "…true faith." on a line of its own) and not
+    # much longer than the title ("The Ascension … is definitely" is prose).
+    prose_end = re.search(r"[.?!,;:\"'”)]\s*$", s)
     for head in (_BOOK_HEAD, _core(title)):
         if not head:
             continue
         r = _similar(core, head)
-        if r >= 0.85 or (numbered and r >= 0.6):
+        if numbered and r >= 0.6:
+            return True
+        if r >= 0.85 and not prose_end and len(core) <= len(head) + 4:
             return True
         # A running head may be the title's opening words only.
         if numbered and len(core) >= 6 and head.startswith(core):
