@@ -1096,6 +1096,17 @@
 				496
 			]
 		},
+		"am/freedom-of-the-will": {
+			"ground": "ca0b088531ce0f5a2cd9b36c67afc05a76827853beabec3fe572a2644529d696",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/slate",
+			"bar": 0
+		},
 		"am/gleanings-among-the-sheaves": {
 			"ground": "cfafa5fc46542ce19b864735e56443c918ecf220c3cb57b9286416e5bb66132d",
 			"style": "revival",
