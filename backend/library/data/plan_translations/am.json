@@ -198,5 +198,12 @@
    "AI-drafted; awaiting native review. pilgrims-progress.am (queue job #3714) completes this curated plan's three-book set in Amharic (around-the-wicket-gate.am and grace-abounding.am already ship), so seed_plans now creates the am row and PlanTranslationCoverageTests demands this prose; it ships in the same PR as the book.",
    "The card quotes the three shipped am book titles verbatim: around-the-wicket-gate «በጠባቧ በር አጠገብ» (which also carries the English 'at the wicket gate'), pilgrims-progress «የመንገደኛው ጉዞ», grace-abounding «ለኃጢአተኞች አለቃ የበዛ ጸጋ» (which carries 'the grace that abounded to the chief of sinners'). The title «የመንገደኛው መንገድ» echoes the pilgrims-progress title's «የመንገደኛው». Names as on the am book pages (ቻርልስ ስፐርጀን, ጆን ባንየን); «ሰማያዊቱ ከተማ» as in the am Bunyan editions."
   ]
+ },
+ "waiting-on-god-trust": {
+  "title": "እግዚአብሔርን መጠበቅ፦ የመታመን ሕይወት",
+  "description": "በመታመን ትምህርት ቤት ውስጥ አሥር ሳምንታት። አንድሩ መሪ እግዚአብሔርን የመጠበቅን የዕለት ልማድ ያስተምራል፤ ኤፍ. ቢ. ማየር በእርሱ የመመራትን ምሥጢር ይገልጣል፤ የጆርጅ ሙለር አስደናቂ የእምነት ሕይወትም እንዲህ ያለው መታመን የሚቀበለውን ያሳያል።",
+  "note": [
+   "Queue job #3708: «የመታመን ሕይወት» completes this plan in am (with «እግዚአብሔርን መጠበቅ» and «የመመራት ምሥጢር», both already live), so seed_plans creates the (waiting-on-god-trust, am) row on the deploy that ships this PR. Title opens with the shipped am title of its first book and closes with the third's. AI-drafted; awaiting native review."
+  ]
  }
 }

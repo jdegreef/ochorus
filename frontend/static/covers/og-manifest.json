@@ -2651,6 +2651,17 @@
 				481
 			]
 		},
+		"am/the-life-of-trust": {
+			"ground": "69cfcb43f2dbeb28ca08b4b06ea618e09b688d7e7c8dc73e90b37f4868ad0e96",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/oxblood",
+			"bar": 0
+		},
 		"am/the-life-of-trust-children": {
 			"ground": "161a5b516a528edf9e020af6fc2e7e75c0feb7f37b2b7e3ee3ae15f22b13cd12",
 			"style": "revival",
