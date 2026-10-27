@@ -1118,6 +1118,36 @@
 			"layout": "fade/slate",
 			"bar": 0
 		},
+		"am/george-muller-of-bristol": {
+			"ground": "77570ded4afb09daabe608c9486cd943649182020674c2c24ef38b9fd3683959",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[125, 102, 475, 131]
+				],
+				"title": [
+					[181, 303, 419, 379],
+					[154, 369, 446, 445]
+				],
+				"subtitle": [
+					[101, 520, 499, 541]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				253,
+				542
+			]
+		},
 		"am/gleanings-among-the-sheaves": {
 			"ground": "cfafa5fc46542ce19b864735e56443c918ecf220c3cb57b9286416e5bb66132d",
 			"style": "revival",
