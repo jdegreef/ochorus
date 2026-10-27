@@ -2808,6 +2808,17 @@
 			"layout": "wash/ochre",
 			"bar": 0
 		},
+		"am/till-he-come": {
+			"ground": "c16210794657aa0856085e1d8dfeeda6aa06315f07082a5c132069c9dc537e54",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0.04
+		},
 		"am/true-vine": {
 			"ground": "2287250c00d7070c14685a5591b74a48f314bedf2a288561463a236fbe5f907e",
 			"style": "devotional",
