@@ -1708,6 +1708,17 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"am/morning-by-morning": {
+			"ground": "90bfc5dc4d63ff3cf53f1f7685d055554c53a8724b0d13b4ae239e29f22da09c",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"am/mortification-of-sin": {
 			"ground": "4429392070f9d22d1349f9b23bfd584546958cf08f26b392ea8f58d2944c4d44",
 			"style": "press",
