@@ -5246,6 +5246,7 @@ BODY_CORRECTIONS["things-as-they-are"]["back_matter"] = [
     ("vous prierez davantage.</p>", "<br/><br/><br/><br/> LONDON: MORGAN AND SCOTT<br/>"),
     ("ustedes saben más, orarán más.</p>", "<br/><br/><br/><br/> LONDON: MORGAN AND SCOTT<br/>"),
     ("souberem mais, orarão mais.</p>", "<br/><br/><br/><br/> LONDON: MORGAN AND SCOTT<br/>"),
+    ("ብዙ እንደምትጸልዩ ያምናሉ።</p>", "<br/><br/><br/><br/> LONDON: MORGAN AND SCOTT<br/>"),
 ]
 # Gutenberg #65066 follows "…revival of true religion! Amen." with the ATS
 # donors' line and the transcriber's `tnotes` endnote. The note's heading was
