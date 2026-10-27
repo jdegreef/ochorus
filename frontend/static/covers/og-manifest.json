@@ -4550,15 +4550,34 @@
 			]
 		},
 		"bondage-of-the-will": {
-			"ground": "d001e38bf1c502322b95236cd0d0c76787f08312d4e1241341e43ede01c65096",
+			"ground": "27dc23b36376c85b4e124fb940e498f04c069f7a3c38a5f6756465cb773b443e",
 			"style": "press",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.65,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[157, 102, 443, 131]
+				],
+				"title": [
+					[139, 307, 461, 380],
+					[174, 367, 426, 440]
+				],
+				"subtitle": [
+					[130, 492, 470, 513]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				281,
+				513
+			]
 		},
 		"brave-for-god": {
 			"ground": "20c53172ca517970f584b2547b408aa333f33525846b6322c9b60b031a52dd9e",
@@ -8509,15 +8528,35 @@
 			]
 		},
 		"first-principles-of-the-reformation": {
-			"ground": "c71ede974de3fd03a1274a4f2dafb2ed611dac7afd71a01aad3bc63fb8d03140",
+			"ground": "6b269ecd707fc4abefdc42f950cad9f7f1a2aa189030de321516280b0ded8abb",
 			"style": "press",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.55,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[157, 102, 443, 131]
+				],
+				"title": [
+					[90, 297, 510, 370],
+					[103, 356, 497, 429]
+				],
+				"subtitle": [
+					[122, 482, 478, 503],
+					[134, 503, 466, 524]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
+			]
 		},
 		"foxes-book-of-martyrs": {
 			"ground": "81f2241d738b9deea1f9eb739167d3f3a224e5d9cccc4f486cdf38dd49e1ce5d",
@@ -13443,15 +13482,34 @@
 			]
 		},
 		"holiness": {
-			"ground": "1b8c92e20b7309040bbbb6f879b4bea9d71f3f2fd5a852a8012107e30a805a86",
+			"ground": "b29a57ee450237c38b2579e8f36454a772dff68c26630bdb3d18d3fd8aebe151",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.7,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[212, 102, 388, 131]
+				],
+				"title": [
+					[187, 327, 413, 403]
+				],
+				"subtitle": [
+					[145, 476, 455, 497],
+					[146, 497, 454, 518]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				276,
+				518
+			]
 		},
 		"holy-in-christ": {
 			"ground": "2f82e0cf564ba4d2deb2d538766e4d5013200e6d88ac62e831b48b8fa35a783f",
@@ -14849,15 +14907,34 @@
 			]
 		},
 		"knots-untied": {
-			"ground": "3cc77125de28acd7250475f01682d944dbfe9ad02c13a5af9b64196a1778c9e1",
+			"ground": "9669fd9490700c83ce0d7201d0a0e87d66cfd9c7a8b0eaa6dcec53e60f7a9987",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.7,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[212, 102, 388, 131]
+				],
+				"title": [
+					[131, 327, 469, 403]
+				],
+				"subtitle": [
+					[166, 476, 434, 497],
+					[118, 497, 482, 518]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				276,
+				518
+			]
 		},
 		"ko/a-call-to-the-unconverted": {
 			"ground": "c1352c78ff42925aa1d6e245ea0d003d0c9b4a0672ff0fe1f3de35502b031501",
@@ -15837,15 +15914,33 @@
 			]
 		},
 		"large-catechism": {
-			"ground": "d61d852e5ecd861a104941c12c7998f7637b6bfa0897250abacc1e7091e2f39d",
+			"ground": "f24c79ebc8f441a93dc064d063eda20d8ba063ad0b135b9e2efe18b3d98cc6c0",
 			"style": "press",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[157, 102, 443, 131]
+				],
+				"title": [
+					[44, 337, 556, 410]
+				],
+				"subtitle": [
+					[50, 463, 550, 484]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				311,
+				484
+			]
 		},
 		"lectures-to-my-students": {
 			"ground": "37427d61536e130bbc8758ffd215417b5fd83a18d2235b959f50e85cfb657284",
@@ -17564,25 +17659,44 @@
 			"bar": 0.05
 		},
 		"old-paths": {
-			"ground": "d86a670653d59b830e1d2507ba3cabc4158bef25594f3c98431f20b198d7e30a",
+			"ground": "cbd17fce7695e5e33f52f3d491a23f49ff4d6f9a0a4db8f60af73b8c94d3207d",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.75,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[212, 102, 388, 131]
+				],
+				"title": [
+					[174, 327, 426, 403]
+				],
+				"subtitle": [
+					[86, 476, 514, 497],
+					[70, 497, 530, 518]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				276,
+				518
+			]
 		},
 		"on-christian-doctrine": {
-			"ground": "3c11f74fd2e043dfe31acaa3151e22867d03e2a01ad95dda3a30f612c6a3d36d",
+			"ground": "27bb087eae72568afeb3a6bf3aae533e7ded9cb540d0c118fe31ac22b98ba021",
 			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
+			"art": true,
 			"scrim": 1,
-			"layout": "framed",
+			"layout": "rail/rust",
 			"bar": 0
 		},
 		"on-loving-god": {
@@ -17656,14 +17770,14 @@
 			]
 		},
 		"on-the-trinity": {
-			"ground": "0fae274f8b346cab48da5484e84bf44d025eb97c4eef93e7f3f3dfdfa7fe6222",
+			"ground": "c0b5da6b6bf09f0d7295e03e24c8f6605c40c05e1e94a2f31bad4f49288cb548",
 			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
+			"art": true,
 			"scrim": 1,
-			"layout": "framed",
+			"layout": "rail/rust",
 			"bar": 0
 		},
 		"orthodoxy": {
@@ -18004,15 +18118,34 @@
 			"bar": 0.04
 		},
 		"practical-religion": {
-			"ground": "09583c1e5e1913528e2f0043d76307267ba660a6b0be0aa5138671805cfb8470",
+			"ground": "8091db0efcfca2a4a7c3cad682c33c5d90689276b5a5e2e81d02c37d97526722",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.8,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[212, 102, 388, 131]
+				],
+				"title": [
+					[69, 327, 531, 403]
+				],
+				"subtitle": [
+					[132, 476, 468, 497],
+					[89, 497, 511, 518]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				276,
+				518
+			]
 		},
 		"prayer-and-praying-men": {
 			"ground": "908bbf1a6b4d414810ed49d0d2164df6edb094b0a882d3a5285c898d968e64fc",
@@ -20657,15 +20790,33 @@
 			"bar": 0
 		},
 		"small-catechism": {
-			"ground": "f6bf7b0566efe36f1e3c110601a95b33af1172aa55d0feed933f3c8ad1f1ee8e",
+			"ground": "7199cc67412be241f3a7d4403a9b830685cc09717da90cf34e08eb08708f06a4",
 			"style": "press",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.75,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[157, 102, 443, 131]
+				],
+				"title": [
+					[51, 337, 549, 410]
+				],
+				"subtitle": [
+					[80, 463, 520, 484]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				311,
+				484
+			]
 		},
 		"sons-of-the-king-1": {
 			"ground": "e9ed389d5a9d68f1b85112c478d21182ed8d8fb27266e2992844da36e52a8231",
@@ -23093,15 +23244,15 @@
 			]
 		},
 		"the-city-of-god": {
-			"ground": "b153508efec76852aa7a95c0152d807cc8217e27e938a71a7f5ea6ce09d40fb0",
+			"ground": "8859e79a789c1ee74b9ea7d93aaf577667c4d4c6004ca02d2a2d73d4335c1cf7",
 			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
+			"art": true,
 			"scrim": 1,
-			"layout": "framed",
-			"bar": 0
+			"layout": "rail/rust",
+			"bar": 0.1
 		},
 		"the-everlasting-man": {
 			"ground": "7cd08728ce0c3411240e7980ae0c2a467bcf8b5776f9c54a9a8e914df0196893",

@@ -967,6 +967,91 @@ CURATED: dict[str, Artwork] = {
         "landscape painter of her century, who also paints the ground of "
         "Richard Allen's life — two Black Methodist preachers of one generation.",
     ),
+    # ── Batch 26 · Luther, Ryle and Augustine (2026-10-27) ──────────────────
+    # Eleven of the last published plates. Luther gets his own country's
+    # Romantics (Friedrich, his pupil Heinrich, Dahl of Dresden, Leypold);
+    # Ryle the English country (Wilson, Gainsborough, Crome) and a haywain;
+    # and Augustine — railed, so the ground is seen beside the title, never
+    # under it — the classical world his City of God watched fall, and its sea.
+    "bondage-of-the-will": Artwork(
+        "met", 439333, "Julius von Leypold", "Wanderer in the Storm", "1835",
+        "A lone man bent into the gale on a field path — powerless against the "
+        "weather he walks in, which is Luther's whole case against Erasmus: the "
+        "will is not free to save itself.",
+        focus=0.7,
+    ),
+    "first-principles-of-the-reformation": Artwork(
+        "met", 439343, "Johan Christian Dahl", "Copenhagen Harbor by Moonlight",
+        "1846",
+        "The spires of a Lutheran city in the moonlight, the harbour still "
+        "astir: the Theses and the three treatises of 1520 are what such a city "
+        "was built on.",
+        focus=0.4,
+    ),
+    "large-catechism": Artwork(
+        "met", 438417, "Caspar David Friedrich", "Two Men Contemplating the Moon",
+        "ca. 1825–30",
+        "A master and his pupil stopped together on the path to look at the "
+        "same light — Friedrich painted himself with August Heinrich. The "
+        "Large Catechism is Luther teaching the teachers.",
+        focus=0.4,
+    ),
+    "small-catechism": Artwork(
+        "met", 439346, "August Heinrich", "At the Edge of the Forest", "ca. 1820",
+        "The pupil's own picture, beside his master's on the Large Catechism: "
+        "the plain edge of a wood and an open field, for the little book Luther "
+        "wrote for the head of every household to teach at home.",
+    ),
+    "holiness": Artwork(
+        "met", 437941, "Richard Wilson",
+        "Lake Nemi and Genzano from the Terrace of the Capuchin Monastery",
+        "ca. 1756–57",
+        "Two friars on a terrace above a still lake in clear light — the "
+        "pursuit Ryle calls \"the one thing needful\": \"follow holiness, "
+        "without which no man shall see the Lord.\"",
+    ),
+    "knots-untied": Artwork(
+        "met", 436057, "John Crome", "Hautbois Common, Norfolk",
+        "probably ca. 1810",
+        "Plain English ground under a broad sky, by the painter of plain "
+        "Norfolk: Ryle's plain statements on the disputed points, made in the "
+        "open.",
+    ),
+    "old-paths": Artwork(
+        "met", 436441, "Thomas Gainsborough", "Wooded Upland Landscape",
+        "probably 1783",
+        "\"Stand ye in the ways, and see, and ask for the old paths, where is "
+        "the good way, and walk therein\" (Jeremiah 6:16) — the old road "
+        "winding on through the English country to its church.",
+    ),
+    "practical-religion": Artwork(
+        "cma", 148215, "Worthington Whittredge", "Landscape with Haywain", "1861",
+        "Hay being got in from an open valley in Ryle's own decade: the daily "
+        "duties of professing Christians, done in the ordinary field.",
+        focus=0.3,
+    ),
+    "the-city-of-god": Artwork(
+        "cma", 150353, "John Martin", "Ruins of an Ancient City", "c. 1810–20",
+        "A temple's broken colonnade over a whole fallen city. Augustine wrote "
+        "after the sack of Rome to set the city that passes against the City "
+        "that remains.",
+        focus=0.1,
+    ),
+    "on-the-trinity": Artwork(
+        "cma", 151257, "Philipp Hackert", "View of the Gulf of Pozzuoli from Solfatara",
+        "1803",
+        "A southern shore and its wide bay. The old story has Augustine walking "
+        "the shore, pondering the Trinity, and finding a child trying to empty "
+        "the sea into a hole in the sand — sooner that, the child said, than this.",
+        focus=0.2,
+    ),
+    "on-christian-doctrine": Artwork(
+        "met", 437468, "Hubert Robert", "The Portico of a Country Mansion", "1773",
+        "A classical portico taken into daily use. On Christian Doctrine tells "
+        "the teacher to take the gold of Egypt — the learning of the pagan "
+        "world — and put it to the service of truth.",
+        focus=0.2,
+    ),
 }
 
 
