@@ -2700,6 +2700,17 @@
 				478
 			]
 		},
+		"am/the-reformed-pastor": {
+			"ground": "13e65894386bd249173a6a8b5e794866223c571cdc38ecbdadb6ba57611d173a",
+			"style": "press",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/rust",
+			"bar": 0.04
+		},
 		"am/the-secret-of-guidance": {
 			"ground": "078f5ac17594fbfa0486c73ccbf1473db2b087743666b5d8a2e9ed7f3d12b3aa",
 			"style": "devotional",
