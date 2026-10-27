@@ -1997,6 +1997,37 @@
 				507
 			]
 		},
+		"am/revival-lectures": {
+			"ground": "66f879e98aef31bcf92b35aaad605eb70f3de865c7faa495f6667492a8a0debb",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[126, 102, 474, 131]
+				],
+				"title": [
+					[122, 270, 478, 346],
+					[100, 336, 500, 412],
+					[170, 401, 430, 477]
+				],
+				"subtitle": [
+					[194, 553, 406, 574]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				220,
+				575
+			]
+		},
 		"am/rise-up-men-of-god-2": {
 			"ground": "e5b5c0da278c85832af62be30abb97f0adf85b326613637c025247d025d74093",
 			"style": "originals",

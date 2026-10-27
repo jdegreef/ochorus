@@ -205,5 +205,12 @@
   "note": [
    "Queue job #3708: «የመታመን ሕይወት» completes this plan in am (with «እግዚአብሔርን መጠበቅ» and «የመመራት ምሥጢር», both already live), so seed_plans creates the (waiting-on-god-trust, am) row on the deploy that ships this PR. Title opens with the shipped am title of its first book and closes with the third's. AI-drafted; awaiting native review."
   ]
+ },
+ "send-the-fire": {
+  "title": "እሳቱን ላክ፦ ስለ መነቃቃት መጸለይ",
+  "description": "መነቃቃት እንዴት እንደሚመጣ፥ በጸሎትስ እንዴት እንደሚወርድ። ቻርልስ ፊኒ ስለ መነቃቃት ሁኔታዎች የሰጣቸው ትምህርቶች፤ አር. ኤ. ቶሪ ኃይል ስለሚሰጠው በመንፈስ ቅዱስ መጠመቅ፤ እግዚአብሔርም በጆናታን ኤድዋርድስ ዘመን ኒው ኢንግላንድን ያናወጠባቸው ስብከቶች።",
+  "note": [
+   "Queue job #3705: «ስለ ሃይማኖታዊ መነቃቃት የተሰጡ ትምህርቶች» completes this plan in am (with «በመንፈስ ቅዱስ መጠመቅ» and «የጆናታን ኤድዋርድስ የተመረጡ ስብከቶች», both already live), so seed_plans creates the (send-the-fire, am) row on the deploy that ships this PR. AI-drafted; awaiting native review."
+  ]
  }
 }
