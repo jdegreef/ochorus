@@ -219,5 +219,12 @@
   "note": [
    "Queue job #3711: «የዴቪድ ብሬነርድ ሕይወትና ማስታወሻ» completes this plan in am (with «ሁሉን የሰጡ ወንዶችና ሴቶች», already live), so seed_plans creates the (everything-for-christ, am) row on the deploy that ships this PR. AI-drafted; awaiting native review."
   ]
+ },
+ "pursuit-of-holiness": {
+  "title": "ቅድስናን መከተል",
+  "description": "ፈጽሞ የጌታ ስለ መሆን የዘጠኝ ሳምንታት ንባብ። አንድሪው መሬይ ቅድስናችንን ከቅዱሱ ጋር ካለን አንድነት ጋር ያያይዘዋል፤ ዊልያም ሎው በየዕለቱ በእያንዳንዱ ተራ ሰዓት ለአምልኮታዊ ሕይወት ይጠራናል፤ ጆን ዌስሊም ክርስቲያናዊ ፍጽምና ምን እንደ ሆነና ምን እንዳልሆነ በግልጽ ያስረዳል።",
+  "note": [
+   "Queue job #3779: «ለአምልኮታዊና ለቅዱስ ሕይወት የቀረበ ከባድ ጥሪ» completes this plan in am (with «በክርስቶስ ቅዱሳን» and «ስለ ክርስቲያናዊ ፍጽምና ግልጽ ማብራሪያ», both already live), so seed_plans creates the (pursuit-of-holiness, am) row on the deploy that ships this PR. «ቅድስናን መከተል» echoes Hebrews 12:14 («ቅድስናንም ተከታተሉ»). AI-drafted; awaiting native review."
+  ]
  }
 }

@@ -359,6 +359,36 @@
 			"layout": "rail/teal",
 			"bar": 0
 		},
+		"am/a-serious-call": {
+			"ground": "f3757511480b8f36f8ce04a3a97510ce0bb588df10966109d363a71f7e3769ce",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[180, 102, 420, 131]
+				],
+				"title": [
+					[83, 287, 517, 350],
+					[50, 349, 550, 412]
+				],
+				"subtitle": [
+					[96, 478, 505, 506]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				288,
+				507
+			]
+		},
 		"am/a-short-and-easy-method-of-prayer": {
 			"ground": "4059820766820ef6fe060e632638063e549afcb4fabd403693dee0d44b014bd2",
 			"style": "devotional",
