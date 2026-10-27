@@ -42,16 +42,17 @@ existing `r-a-torrey` author. No `catalog.py` entry. Idempotent.
 
 from __future__ import annotations
 
-import json
 import re
 from collections import Counter
 from difflib import SequenceMatcher
+from html import escape
 from pathlib import Path
 
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
 from library import english_audit
+from library.archive_book import apply_fixes, load_fixes, similar
 from library.content_fixtures import book_sort_order
 from library.corrections import settled_chapter_body
 from library.ingest import clean_fragment, word_count
@@ -71,7 +72,7 @@ COVER_COLOR = "#3d4f6b"
 #: The witness whose text is kept; the others vote on its words.
 BASE_ID = "whatbibleteaches00torr"
 OTHER_IDS = (
-    "whatthebibletea00torruoft",
+    "whatthebibletea00torruoft",  # the other old-engine copy (OLD_ID)
     "whatbibleteaches0000rato_m3m7",
     "whatbibleteaches0000reub",
 )
@@ -160,8 +161,7 @@ QA = [
     },
 ]
 
-#: (Book number, the Book's heading) — printed on its own page before its
-#: first chapter.
+#: Each Book's heading, printed on its own page before its first chapter.
 BOOKS = [
     "What the Bible Teaches About God",
     "What the Bible Teaches About Jesus Christ",
@@ -229,7 +229,6 @@ CHAPTERS: list[tuple[int, str]] = [
     (6, "Our Duty Towards Satan and His Destiny"),
 ]
 
-_DATA = Path(__file__).resolve().parent / "data" / SLUG
 _WS = re.compile(r"\s+")
 #: A bare chapter marker on its own line. The scans misread the numeral every
 #: way ("CHAPTER VIL", "CHAPTERVIL", "CHAPTER f£", "CHAPTER II¥."), so the
@@ -240,14 +239,17 @@ _BARE_NUM = re.compile(r"^[\s\d.,*•'‘’\-]*$")
 #: A page number the old engine read as a letter ("i", "I") on a line alone.
 _LONE_MARK = re.compile(r"^\s*[iIl1|]\s*$")
 _STAMPS = ("LIBRARY", "UNIVERSITY", "TORONTO")
+_PREFACE = re.compile(r"^\s*PREFACE\.?\s*\d*\s*$")
+_CONTENTS = re.compile(r"^\s*TABLE\s+OF\s+CONTENTS")
+_INDEX = re.compile(r"^\s*INDEX\.?\s*$")
+_SECTION_HEAD = re.compile(r"^[IVXLU]{1,6}[.,]\s")
+_NUMBERED_START = re.compile(r"^\W*[\dIl]{1,3}[\d ]{0,3}\s+\D")
+_NUMBERED_END = re.compile(r"\D\s+\d[\d ]{0,3}\W*$")
+_PROSE_END = re.compile(r"[.?!,;:\"'”)]\s*$")
 
 
 def _core(text: str) -> str:
     return _WS.sub(" ", re.sub(r"[^A-Za-z ]", " ", text)).strip().lower()
-
-
-def _similar(a: str, b: str) -> float:
-    return SequenceMatcher(None, a, b, autojunk=False).ratio()
 
 
 def _is_caps(line: str) -> bool:
@@ -258,41 +260,55 @@ def _is_caps(line: str) -> bool:
 _BOOK_HEAD = "what the bible teaches"
 
 
-def _is_furniture(line: str, title: str) -> bool:
-    """A running head, page number or stamp — not text."""
-    s = line.strip()
-    if not s:
-        return False  # a blank line is layout: it may end a paragraph
-    if _BARE_NUM.match(s) or _LONE_MARK.match(s):
-        return True
-    if re.match(r"^[IVXLU]{1,6}[.,]\s", s):
-        return False  # a section head, though it may restate the title
-    core = _core(s)
-    if any(st.lower() in core for st in _STAMPS) and _is_caps(s):
-        return True
-    # A running head carries its page number at one end ("410 What the Bible
-    # Teaches", "Prayer 409", "Prayer 41 1"); OCR sometimes loses the number,
-    # so a short line that IS the book or chapter title is furniture too.
-    numbered = bool(re.match(r"^\W*[\dIl]{1,3}[\d ]{0,3}\s+\D", s)
-                    or re.search(r"\D\s+\d[\d ]{0,3}\W*$", s))
-    if len(core.split()) > 14:
-        return False
-    # An unnumbered line is a running head only if it reads like one: no
-    # closing stop (prose ends "…true faith." on a line of its own) and not
-    # much longer than the title ("The Ascension … is definitely" is prose).
-    prose_end = re.search(r"[.?!,;:\"'”)]\s*$", s)
-    for head in (_BOOK_HEAD, _core(title)):
-        if not head:
-            continue
-        r = _similar(core, head)
-        if numbered and r >= 0.6:
+class _Line:
+    """What _is_furniture needs to know about a line, whatever the title."""
+
+    def __init__(self, line: str):
+        self.s = line.strip()
+        self.core = _core(self.s)
+        # A running head carries its page number at one end ("410 What the
+        # Bible Teaches", "Prayer 409", "Prayer 41 1").
+        self.numbered = bool(_NUMBERED_START.match(self.s) or _NUMBERED_END.search(self.s))
+        # An unnumbered line is a running head only if it reads like one: no
+        # closing stop (prose ends "…true faith." on a line of its own).
+        self.prose_end = bool(_PROSE_END.search(self.s))
+
+    def verdict(self) -> bool | None:
+        """True/False when the title does not matter; None when it does."""
+        s = self.s
+        if not s:
+            return False  # a blank line is layout: it may end a paragraph
+        if _BARE_NUM.match(s) or _LONE_MARK.match(s):
             return True
-        if r >= 0.85 and not prose_end and len(core) <= len(head) + 4:
+        if _SECTION_HEAD.match(s):
+            return False  # a section head, though it may restate the title
+        if any(st.lower() in self.core for st in _STAMPS) and _is_caps(s):
+            return True
+        if len(self.core.split()) > 14:
+            return False
+        return None
+
+    def heads(self, head: str) -> bool:
+        """A running head of `head` (the book's title or a chapter's): OCR
+        sometimes loses the page number, so a short line that IS the title
+        counts too, but not one much longer than it ("The Ascension … is
+        definitely" is prose)."""
+        r = similar(self.core, head)
+        if self.numbered and r >= 0.6:
+            return True
+        if r >= 0.85 and not self.prose_end and len(self.core) <= len(head) + 4:
             return True
         # A running head may be the title's opening words only.
-        if numbered and len(core) >= 6 and head.startswith(core):
-            return True
-    return False
+        return self.numbered and len(self.core) >= 6 and head.startswith(self.core)
+
+
+def _is_furniture(line: str, title: str) -> bool:
+    """A running head, page number or stamp — not text."""
+    ln = _Line(line)
+    verdict = ln.verdict()
+    if verdict is not None:
+        return verdict
+    return ln.heads(_BOOK_HEAD) or ln.heads(_core(title))
 
 
 def _book_heading_at(line: str) -> bool:
@@ -300,25 +316,25 @@ def _book_heading_at(line: str) -> bool:
     if _BOOK_MARKER.match(line):
         return True
     core = _core(line)
-    return _is_caps(line) and any(
-        _similar(core, _core(b)[:len(core)]) >= 0.85 for b in BOOKS
-    ) and core.startswith("what")
+    return core.startswith("what") and _is_caps(line) and any(
+        similar(core, _core(b)[:len(core)]) >= 0.85 for b in BOOKS
+    )
 
 
 def split_witness(text: str) -> tuple[list[str], list[list[str]]]:
     """(Preface lines, [lines of each chapter]) from one scan's text."""
     lines = text.replace("\r", "").split("\n")
-    pre = next((i for i, ln in enumerate(lines)
-                if re.match(r"^\s*PREFACE\.?\s*\d*\s*$", ln)), None)
-    toc = next((i for i, ln in enumerate(lines)
-                if pre is not None and i > pre and re.match(r"^\s*TABLE\s+OF\s+CONTENTS", ln)), None)
-    if pre is None or toc is None:
+    pre = next((i for i, ln in enumerate(lines) if _PREFACE.match(ln)), None)
+    if pre is None:
+        raise CommandError("no Preface / Contents found")
+    toc = next((i for i in range(pre + 1, len(lines)) if _CONTENTS.match(lines[i])), None)
+    if toc is None:
         raise CommandError("no Preface / Contents found")
     marks = [i for i, ln in enumerate(lines) if i > toc and _MARKER.match(ln)]
     if len(marks) != len(CHAPTERS):
         raise CommandError(f"found {len(marks)} chapter markers, expected {len(CHAPTERS)}")
     end = next((i for i in range(marks[-1], len(lines))
-                if re.match(r"^\s*INDEX\.?\s*$", lines[i])), len(lines))
+                if _INDEX.match(lines[i])), len(lines))
     chapters = []
     for n, start in enumerate(marks):
         stop = marks[n + 1] if n + 1 < len(marks) else end
@@ -362,6 +378,8 @@ _REF_ONES = re.compile(r"(?<![A-Za-z])([0-9ilI]{1,3}):([0-9ilI]{1,3})(?![A-Za-z]
 #: those from the run of letters here re-aligns the vote and costs more than it
 #: saves, so the handful are set back in ocr_fixes.json.
 _PROOF_ONE = re.compile(r"^(\s*)\(([ilI]|i[il1]|1[il])\)")
+_ONE = str.maketrans({"i": "1", "l": "1", "I": "1"})
+_MALACHI = re.compile(r"\bMai\.(?=\s*\d)")
 
 
 def _normalize(line: str) -> str:
@@ -379,10 +397,7 @@ def _normalize(line: str) -> str:
     line = _REF_ONES.sub(ones, line)
     line = _PROOF_ONE.sub(lambda m: m.group(1) + "(" + m.group(2).translate(_ONE) + ")", line)
     # Malachi: "Mal." read as "Mai." by both old-engine copies.
-    return re.sub(r"\bMai\.(?=\s*\d)", "Mal.", line)
-
-
-_ONE = str.maketrans({"i": "1", "l": "1", "I": "1"})
+    return _MALACHI.sub("Mal.", line)
 
 
 def _key(token: str) -> str:
@@ -401,7 +416,7 @@ def tokenize(lines: list[str]) -> list[tuple[int, str]]:
     out: list[tuple[int, str]] = []
     for n, raw in enumerate(lines):
         toks = _TOKEN.findall(_normalize(raw))
-        if (out and toks and out[-1][1].endswith("-") and out[-1][0] < n
+        if (out and toks and out[-1][1].endswith("-")
                 and len(out[-1][1]) > 1 and out[-1][1][-2].isalpha() and toks[0][:1].islower()):
             out[-1] = (out[-1][0], out[-1][1] + "­" + toks[0])
             toks = toks[1:]
@@ -409,22 +424,22 @@ def tokenize(lines: list[str]) -> list[tuple[int, str]]:
     return out
 
 
-def _starts(base_chapters: list[list[str]], stream: list[str]) -> list[int | None]:
+def _positions(seq: list[str]) -> dict[tuple[str, ...], list[int]]:
+    """Every five-word run in `seq` → where it occurs."""
+    idx: dict[tuple[str, ...], list[int]] = {}
+    for i in range(len(seq) - 4):
+        idx.setdefault(tuple(seq[i:i + 5]), []).append(i)
+    return idx
+
+
+def _starts(base_chapters: list[list[str]], in_base: dict, stream: list[str]) -> list[int | None]:
     """Where each base chapter begins in another witness's token stream.
 
     Chapter openings repeat ("I. The fact that God is …"), so a first match
     runs ahead. Instead every five-word run in a chapter's opening that occurs
     once in the whole base AND once in the witness implies a start; the median
-    of those is taken."""
-    def counts(seq: list[str]) -> dict[tuple[str, ...], list[int]]:
-        idx: dict[tuple[str, ...], list[int]] = {}
-        for i in range(len(seq) - 4):
-            idx.setdefault(tuple(seq[i:i + 5]), []).append(i)
-        return idx
-
-    flat = [k for ch in base_chapters for k in ch]
-    in_base = counts(flat)
-    in_other = counts(stream)
+    of those is taken. `in_base` is `_positions` of the whole base."""
+    in_other = _positions(stream)
     starts: list[int | None] = []
     for keys in base_chapters:
         implied = sorted(
@@ -441,15 +456,25 @@ def _starts(base_chapters: list[list[str]], stream: list[str]) -> list[int | Non
 #: engine and share its misreadings — small capitals ("Lorp" for LORD,
 #: "Curist"), italics ("¢he", "Jrom") — so they are one family, not two votes.
 #: The base and the other Toronto copy were read by an older engine.
-ENGINE = {
-    "whatthebibletea00torruoft": "old",
-    "whatbibleteaches0000rato_m3m7": "new",
-    "whatbibleteaches0000reub": "new",
-}
+OLD_ID = "whatthebibletea00torruoft"
+NEW_IDS = frozenset({"whatbibleteaches0000rato_m3m7", "whatbibleteaches0000reub"})
+ENGINE = {OLD_ID: "old", **dict.fromkeys(NEW_IDS, "new")}
 
 
 def _ci(key: str) -> str:
     return key.lower()
+
+
+def _cross_engine(support: set[str]) -> bool:
+    return {ENGINE[w] for w in support} == {"old", "new"}
+
+
+def _group(readings: dict[str, str], keyfn) -> dict[str, set[str]]:
+    """Witnesses grouped by what they read (as `keyfn` normalizes it)."""
+    by: dict[str, set[str]] = {}
+    for w, text in readings.items():
+        by.setdefault(keyfn(text), set()).add(w)
+    return by
 
 
 def _is_junk(tokens: list[str]) -> bool:
@@ -487,10 +512,9 @@ class Vote:
                 self.spans.setdefault((i1, i2), {})[witness] = " ".join(other[j1:j2])
 
     def _wins(self, support: set[str], new: str, old: str, freq: Counter) -> bool:
-        engines = {ENGINE[w] for w in support}
-        if engines == {"old", "new"}:
+        if _cross_engine(support):
             return True
-        if support == {w for w, e in ENGINE.items() if e == "new"}:
+        if support == NEW_IDS:
             return freq[_ci(new)] >= 4 * max(freq[_ci(old)], 1)
         return False
 
@@ -499,9 +523,7 @@ class Vote:
         taken: set[int] = set()
         for (i1, i2), readings in sorted(self.spans.items()):
             mine = _ci("".join(self.keys[i1:i2]))
-            by: dict[str, set[str]] = {}
-            for w, text in readings.items():
-                by.setdefault(_ci("".join(_key(t) for t in text.split())), set()).add(w)
+            by = _group(readings, lambda text: _ci("".join(_key(t) for t in text.split())))
             for joined, support in by.items():
                 # An insertion (i1 == i2) lands on the word at i1, so it
                 # reserves that word; a replacement reserves only its own.
@@ -537,29 +559,22 @@ class Vote:
             if i in taken or not readings:
                 continue
             key = _ci(self.keys[i])
-            by: dict[str, set[str]] = {}
-            for w, tok in readings.items():
-                by.setdefault(_ci(_key(tok)), set()).add(w)
-            for word, support in by.items():
+            for word, support in _group(readings, lambda tok: _ci(_key(tok))).items():
                 if not word or not key:
                     continue
                 if word == key or not self._wins(support, word, key, freq):
                     if word != key and len(support) >= 2:
                         review.append(f"kept: {self.base[i]!r} / {readings[min(support)]!r}")
                     continue
-                donor = readings["whatthebibletea00torruoft"] if (
-                    "whatthebibletea00torruoft" in support) else readings[min(support)]
+                donor = readings[OLD_ID] if OLD_ID in support else readings[min(support)]
                 lead, _, trail = _split_core(out[i])
                 _, core, _ = _split_core(donor)
                 out[i] = lead + core + trail
                 break
             # Trailing stops ("Father," / "Father.") by the same rule.
-            stops: dict[str, set[str]] = {}
-            for w, tok in readings.items():
-                stops.setdefault(_trail(tok), set()).add(w)
             mine = _trail(out[i])
-            for stop, support in stops.items():
-                if stop != mine and {ENGINE[w] for w in support} == {"old", "new"}:
+            for stop, support in _group(readings, _trail).items():
+                if stop != mine and _cross_engine(support):
                     lead, core, trail = _split_core(out[i])
                     rest = re.sub(r"[.,;:!?]", "", trail)
                     out[i] = lead + core + stop + rest
@@ -575,11 +590,10 @@ def _trail(token: str) -> str:
 def _body_stream(text: str) -> list[str]:
     """A witness's tokens from its first chapter to the Index, page numbers out."""
     lines = text.replace("\r", "").split("\n")
-    toc = next(i for i, ln in enumerate(lines) if re.match(r"^\s*TABLE\s+OF\s+CONTENTS", ln))
+    toc = next(i for i, ln in enumerate(lines) if _CONTENTS.match(ln))
     first = next(i for i, ln in enumerate(lines) if i > toc and _MARKER.match(ln))
-    end = next((i for i in range(len(lines) - 1, first, -1)
-                if re.match(r"^\s*INDEX\.?\s*$", lines[i])), len(lines))
-    titles = [title for _, title in CHAPTERS]
+    end = next((i for i in range(len(lines) - 1, first, -1) if _INDEX.match(lines[i])), len(lines))
+    titles = [_core(title) for _, title in CHAPTERS]
     keep = [ln for ln in lines[first:end]
             if not _BARE_NUM.match(ln.strip()) and not _is_any_head(ln, titles)]
     return [t for _, t in tokenize(keep)]
@@ -587,18 +601,22 @@ def _body_stream(text: str) -> list[str]:
 
 def _is_any_head(line: str, titles: list[str]) -> bool:
     """A running head of any chapter (the other scans are not split by
-    chapter, so their heads are tested against every title)."""
+    chapter, so their heads are tested against every title; `titles` are
+    already `_core`d)."""
     s = line.strip()
     if len(s.split()) > 12 or not re.search(r"\d", s) or ":" in s:
         return False
-    return any(_is_furniture(s, t) for t in titles)
+    ln = _Line(s)
+    verdict = ln.verdict()
+    if verdict is not None:
+        return verdict
+    return ln.heads(_BOOK_HEAD) or any(ln.heads(t) for t in titles)
 
 
 def _preface_stream(text: str) -> list[str]:
     lines = text.replace("\r", "").split("\n")
-    pre = next(i for i, ln in enumerate(lines) if re.match(r"^\s*PREFACE\.?\s*\d*\s*$", ln))
-    toc = next(i for i, ln in enumerate(lines)
-               if i > pre and re.match(r"^\s*TABLE\s+OF\s+CONTENTS", ln))
+    pre = next(i for i, ln in enumerate(lines) if _PREFACE.match(ln))
+    toc = next(i for i in range(pre + 1, len(lines)) if _CONTENTS.match(lines[i]))
     return [t for _, t in tokenize([ln for ln in lines[pre + 1:toc]
                                     if not _BARE_NUM.match(ln.strip())])]
 
@@ -611,12 +629,13 @@ def voted_sections(base_text: str, others: list[tuple[str, str]], review: list[s
     base_keys = [[_key(t) for _, t in tk] for tk in toks]
     votes = [Vote([t for _, t in tk], [n for n, _ in tk]) for tk in toks]
     freq: Counter = Counter(_ci(k) for keys in base_keys for k in keys)
+    in_base = _positions([k for keys in base_keys[1:] for k in keys])
     for witness, text in others:
         votes[0].add(witness, _preface_stream(text))
         stream = _body_stream(text)
         freq.update(_ci(_key(t)) for t in stream)
         skeys = [_key(t) for t in stream]
-        starts = _starts(base_keys[1:], skeys)
+        starts = _starts(base_keys[1:], in_base, skeys)
         for c, s in enumerate(starts):
             if s is None:
                 review.append(f"ch {c + 1}: not found in a witness")
@@ -735,19 +754,22 @@ def _head_wraps(first: str, line: str) -> bool:
             and not _starts_block(line) and not _is_head_line(line))
 
 
+def _head_rest(text: str) -> str | None:
+    """The words after a section numeral, or None if `text` doesn't open on one."""
+    if not _HEAD_NUM.match(text) or _PROOF.match(text):
+        return None
+    return _HEAD_NUM.sub("", text)
+
+
 def _is_head_line(line: str) -> bool:
     """The first line of a section head: a numeral, then a capital, short."""
-    if not _HEAD_NUM.match(line) or _PROOF.match(line):
-        return False
-    rest = _HEAD_NUM.sub("", line)
-    return len(rest.split()) <= 12 and not re.search(r"[a-z]\.\s+[A-Z]", rest)
+    rest = _head_rest(line)
+    return rest is not None and len(rest.split()) <= 12 and not re.search(r"[a-z]\.\s+[A-Z]", rest)
 
 
 def _is_head(block: str) -> bool:
-    if not _HEAD_NUM.match(block) or _PROOF.match(block):
-        return False
-    rest = _HEAD_NUM.sub("", block)
-    return len(rest.split()) <= 24
+    rest = _head_rest(block)
+    return rest is not None and len(rest.split()) <= 24
 
 
 #: Section numerals as the scans misread them.
@@ -761,10 +783,14 @@ _NUMERAL_OCR = {
 }
 
 
+def _bare_numeral(got: str) -> str:
+    return re.sub(r"[.,*;\s]", "", got)
+
+
 def _numeral(got: str, prev: int) -> int:
     """The section's number: as read where it is a numeral (OCR variants
     mapped), else the next in sequence."""
-    clean = re.sub(r"[.,*;\s]", "", got).lstrip(";")
+    clean = _bare_numeral(got)
     clean = _NUMERAL_OCR.get(clean, clean)
     value = _ROMANS.index(clean) + 1 if clean in _ROMANS else None
     if value is not None and prev < value <= prev + 3:
@@ -790,8 +816,8 @@ def _settle_hyphen(token: str, hyphenated: set[str]) -> str:
     """A word broken at a line end: keep the hyphen only where the book also
     prints the word hyphenated mid-line ("first-born"), or for self-."""
     head, tail = token.split("­", 1)
-    whole = (head[:-1] + "-" + tail)
-    word = re.sub(r"[\W_]", "", whole.lower().replace("-", "#")).replace("#", "-")
+    whole = head + tail
+    word = re.sub(r"[^\w-]|_", "", whole.lower()).strip("-")
     if word in hyphenated or re.match(r"^\W*self-$", head.lower()):
         return whole
     return head[:-1] + tail
@@ -820,7 +846,7 @@ def render(lines: list[str], hyphenated: set[str], review: list[str]) -> str:
             close_quote()
             got = _HEAD_NUM.match(b).group(1)
             n = _numeral(got, n_head)
-            if _ROMANS[n - 1] != re.sub(r"[.,*;\s]", "", got):
+            if _ROMANS[n - 1] != _bare_numeral(got):
                 review.append(f"head {_ROMANS[n - 1]}: read {got!r} in {b[:50]!r}")
             n_head = n
             title = _HEAD_NUM.sub("", b).strip().rstrip(".,*").strip()
@@ -904,19 +930,22 @@ def _close_quotes(block: str, review: list[str]) -> str:
 
 
 def _esc(text: str) -> str:
-    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    return escape(text, quote=False)
 
 
 def hyphenated_words(texts: list[str]) -> set[str]:
-    """Words any scan prints hyphenated in mid-line ("first-born")."""
-    found: set[str] = set()
+    """Words the scans print hyphenated mid-line ("to-day", "loving-kindness")
+    at least as often as closed up ("firstborn" is mostly closed)."""
+    hyph: Counter = Counter()
+    closed: Counter = Counter()
     for text in texts:
         for line in text.split("\n"):
             for tok in line.split()[:-1]:
-                m = re.fullmatch(r"\W*([A-Za-z]+(?:-[A-Za-z]+)+)\W*", tok)
+                m = re.fullmatch(r"\W*([A-Za-z]+(?:-[A-Za-z]+)*)\W*", tok)
                 if m:
-                    found.add(m.group(1).lower())
-    return found
+                    word = m.group(1).lower()
+                    (hyph if "-" in word else closed)[word] += 1
+    return {w for w, n in hyph.items() if n >= closed[w.replace("-", "")]}
 
 
 def build_sections(base_text: str, others: list[tuple[str, str]],
@@ -931,28 +960,6 @@ def arabic_book_numerals(html: str) -> str:
     """"I Cor." → "1 Cor." (see BOOK_NUMERAL). Run after the OCR fixes, which
     are written against the text as the scans read it."""
     return BOOK_NUMERAL.sub(lambda m: f"{len(m.group(1))} ", html)
-
-
-def _fixes() -> dict[str, list[list[str]]]:
-    path = _DATA / "ocr_fixes.json"
-    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
-
-
-def apply_fixes(order: int, html: str, fixes: dict[str, list[list[str]]]) -> str:
-    """The data file's repairs for one chapter, each matching exactly once.
-    Written against the STORED text, so the caller settles before and after."""
-    for find, replace in fixes.get(str(order), []):
-        if html.count(find) != 1:
-            raise CommandError(
-                f"ch {order}: OCR fix {find!r} matches {html.count(find)} times, not once"
-            )
-        html = html.replace(find, replace)
-    return html
-
-
-def chapter_list() -> list[tuple[str, int]]:
-    """(title, Book number or 0) for the Preface and each chapter, in order."""
-    return [("Preface", 0), *((t, b) for b, t in CHAPTERS)]
 
 
 class Command(BaseCommand):
@@ -1022,14 +1029,15 @@ class Command(BaseCommand):
         )
         book.chapters.all().delete()
 
-        fixes = _fixes()
+        fixes = load_fixes(SLUG)
         known = {str(n) for n in range(1, len(sections) + 1)}
         if set(fixes) - known:
             raise CommandError(f"ocr_fixes.json names unknown chapters: {sorted(set(fixes) - known)}")
         total = 0
         last_book = 0
         for order, ((title, book_no), body) in enumerate(
-            zip(chapter_list(), sections, strict=True), start=1
+            zip([("Preface", 0), *((t, b) for b, t in CHAPTERS)], sections, strict=True),
+            start=1,
         ):
             if book_no and book_no != last_book:
                 body = f"<h2>Book {_ROMANS[book_no - 1]}: {BOOKS[book_no - 1]}</h2>" + body
