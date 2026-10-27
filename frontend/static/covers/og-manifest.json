@@ -1096,6 +1096,17 @@
 				496
 			]
 		},
+		"am/freedom-of-the-will": {
+			"ground": "82f141a4485ce9e3b7d0ca624dca78e0a80786f1a62824fb970f8d4c0d86530a",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/slate",
+			"bar": 0
+		},
 		"am/gleanings-among-the-sheaves": {
 			"ground": "cfafa5fc46542ce19b864735e56443c918ecf220c3cb57b9286416e5bb66132d",
 			"style": "revival",
@@ -2355,6 +2366,17 @@
 				313,
 				481
 			]
+		},
+		"am/spurgeon-on-prayer": {
+			"ground": "bdf7c0b358d02cb41fc2516efd1802a7a58cf6c2626c33a84068363fd3cd30f0",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
 		},
 		"am/stepping-stones-2": {
 			"ground": "f8d031b41f94fe7d118dd3885fe8c6f67920fc1bf261da72d4c47a07ab955f41",
