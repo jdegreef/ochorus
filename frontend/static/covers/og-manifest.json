@@ -2797,6 +2797,35 @@
 			"layout": "wash/ochre",
 			"bar": 0
 		},
+		"am/things-as-they-are": {
+			"ground": "7746b3cd8ce370fdb18a18a46c363ae3b7a4630cff190027124f877f20de295b",
+			"style": "devotional",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[144, 102, 456, 131]
+				],
+				"title": [
+					[142, 301, 458, 383]
+				],
+				"subtitle": [
+					[142, 460, 458, 488]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				306,
+				489
+			]
+		},
 		"am/thoughts-for-the-quiet-hour": {
 			"ground": "a80c6821de09c1671e16a85f508993d72c32b5cf1edefb3a18b1110be0e129ff",
 			"style": "revival",
