@@ -1,18 +1,16 @@
 <!doctype html>
-<html lang="%paraglide.lang%" dir="%paraglide.dir%">
+<html lang="%paraglide.lang%" dir="%paraglide.dir%" data-theme="light">
 	<head>
 		<meta charset="utf-8" />
 		<!-- viewport-fit=cover so env(safe-area-inset-*) resolves to the real inset on
 		     notched devices; without it the reader's fixed bottom bars sit in the
 		     home-indicator strip. -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-		<!-- Two media-scoped values so the browser chrome is right before any JS
-		     runs. A single static value could only match one theme, and it was
-		     the light one while the CSS default (bare :root) is lamplight — so a
-		     dark-theme first paint got a cream address bar. The boot script below
-		     collapses these to whatever theme actually applies. -->
-		<meta name="theme-color" media="(prefers-color-scheme: light)" content="#faf6ef" />
-		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#16130f" />
+		<!-- The default theme is light whatever the OS says (theme.svelte.ts
+		     DEFAULT_PREF), so the browser chrome before any JS runs is the light
+		     --bg. The boot script below repaints it for a reader who chose
+		     another theme or palette. -->
+		<meta name="theme-color" content="#faf6ef" />
 		<link rel="manifest" href="/manifest.json" />
 		<!-- Tab icon is the wordmark's own capital O, not the book-and-quill mark.
 		     The mark is hairline artwork: at 16px it collapses into an unreadable
@@ -26,9 +24,10 @@
 		     static ones here or they will collide with (and duplicate) those. -->
 		<script>
 			// Resolve the theme before hydration to avoid a flash. Mirrors
-			// $lib/theme.svelte.ts: 'system' follows the OS; 'paper' is legacy light.
+			// $lib/theme.svelte.ts: no choice = light (DEFAULT_PREF); 'system'
+			// follows the OS; 'paper' is legacy light.
 			try {
-				var pref = localStorage.getItem('theme') || 'system';
+				var pref = localStorage.getItem('theme') || 'light';
 				if (pref === 'paper') pref = 'light';
 				var applied =
 					pref === 'dark' || pref === 'sepia' || pref === 'light'
