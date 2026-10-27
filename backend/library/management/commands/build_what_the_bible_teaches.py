@@ -265,7 +265,7 @@ def _is_furniture(line: str, title: str) -> bool:
         return False  # a blank line is layout: it may end a paragraph
     if _BARE_NUM.match(s) or _LONE_MARK.match(s):
         return True
-    if re.match(r"^[IVXLU]{1,4}[.,]\s", s):
+    if re.match(r"^[IVXLU]{1,6}[.,]\s", s):
         return False  # a section head, though it may restate the title
     core = _core(s)
     if any(st.lower() in core for st in _STAMPS) and _is_caps(s):
@@ -358,6 +358,9 @@ _TOKEN = re.compile(r"—|[^\s—]+")
 #: cannot. In a chapter:verse pair those letters can only be ones.
 _REF_ONES = re.compile(r"(?<![A-Za-z])([0-9ilI]{1,3}):([0-9ilI]{1,3})(?![A-Za-z])")
 #: A numbered proof "(i)" at the head of its line is "(1)", for the same reason.
+#: It also turns the few real lettered (i)/(l) proofs into figures; deciding
+#: those from the run of letters here re-aligns the vote and costs more than it
+#: saves, so the handful are set back in ocr_fixes.json.
 _PROOF_ONE = re.compile(r"^(\s*)\(([ilI]|i[il1]|1[il])\)")
 
 
@@ -655,7 +658,7 @@ _VERSE = r"[0-9ilIgS]{1,3}:\s?[0-9ilIgS]{1,3}"
 #: A Scripture proof, set in small type: "(3) Matt. 20:28—"…", "Compare Heb.
 #: 9:22—"…", or a numbered section that opens on its proof ("I. Jno. 14:28—").
 _PROOF = re.compile(
-    rf"^(?:[({{]?[\w/\"<?>]{{1,3}}\)\s*|[IVXL]{{1,4}}\.\s+)?(?:\(?(?:Compare|Comp\.|Cf\.|See)\s+)?"
+    rf"^(?:[({{]?[\w/\"<?>]{{1,3}}\)\s*|[IVXL]{{1,6}}\.\s+)?(?:\(?(?:Compare|Comp\.|Cf\.|See)\s+)?"
     rf"{_BOOKS_ABBR}\s?{_VERSE}[^—]{{0,60}}—\s?\""
 )
 _ORDINAL = (r"(?:[A-Z]+(?:\s?-\s?[A-Z]+)?|GENERAL|SUMMARY)")
@@ -708,6 +711,11 @@ def blocks(lines: list[str]) -> list[str]:
                 in_head = False
             continue
         head = _is_head_line(s)
+        if in_head and buf and _head_wraps(buf[-1], s):
+            # The head runs on to a second printed line ("… in Prophets" /
+            # "and Apostles.").
+            buf.append(s)
+            continue
         if buf and (head or in_head or (_starts_block(s) and buf[-1].rstrip().endswith(_TERMINAL))):
             out.append(" ".join(buf))
             buf = []
@@ -718,6 +726,13 @@ def blocks(lines: list[str]) -> list[str]:
     if buf:
         out.append(" ".join(buf))
     return [_WS.sub(" ", b).strip() for b in out]
+
+
+def _head_wraps(first: str, line: str) -> bool:
+    """A head's first line that stops short, and a short line that ends it."""
+    return (not first.rstrip().endswith((".", "?", "!", ":", "*"))
+            and len(line.split()) <= 8 and line.rstrip().endswith((".", "?"))
+            and not _starts_block(line) and not _is_head_line(line))
 
 
 def _is_head_line(line: str) -> bool:
@@ -810,13 +825,15 @@ def render(lines: list[str], hyphenated: set[str], review: list[str]) -> str:
             n_head = n
             title = _HEAD_NUM.sub("", b).strip().rstrip(".,*").strip()
             html.append(f"<h3>{_ROMANS[n - 1]}. {_esc(title)}</h3>")
+            letter = ""  # a new section starts its own (a), (b), …
         elif _is_subhead(b):
             close_quote()
             num, _, rest = b.partition(" ")
             num = f"({num.strip('({)')})" if num.endswith(")") else num
             html.append(f"<h4>{num} {_esc(rest.rstrip('.').strip())}</h4>")
+            letter = ""
         elif _PROOF.match(b) or (b.startswith('"') and prev.endswith(":")):
-            m = re.match(r"^([IVXL]{1,4})\.\s+", b)
+            m = re.match(r"^([IVXL]{1,6})\.\s+", b)
             if m and _PROOF.match(b) and m.group(1) in _ROMANS:
                 # A numbered section that opens on its proof (Book II ch. 2).
                 n_head = _ROMANS.index(m.group(1)) + 1
