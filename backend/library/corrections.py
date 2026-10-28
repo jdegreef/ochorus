@@ -18846,6 +18846,96 @@ BODY_CORRECTIONS.setdefault("institutes-of-the-christian-religion", {}).setdefau
     ("flesh is oJmoouvsion, of", "flesh is ὁμοούσιον, of"),
     ("and other \"passages to the same", "and other passages to the same"),
 ])
+
+# Spurgeon, sermon batch 2 (CCEL). OCR and keying slips, each forced by
+# spelling, the KJV verse quoted, or the quote pairing (the orphan-close-quote
+# findings: an opening mark the transcription dropped). Love's Logic is the
+# noisiest text: "1" for "l", "ie" for "ic", "I" for "l".
+for _slug, _pairs in {
+    "prayer-the-forerunner-of-mercy": [
+        ("give us a blesssing", "give us a blessing"),
+        ("patriarchs still continued to prey;", "patriarchs still continued to pray;"),
+        ("the bond of inquity.”", "the bond of iniquity.”"),
+        ("God heareth not sinners, and the sacrifice of the wicked",
+         "God heareth not sinners, and “the sacrifice of the wicked"),
+    ],
+    "looking-unto-jesus": [
+        ("cock-crowing, or broadday, or", "cock-crowing, or broad day, or"),
+        ("by his ownliving power", "by his own living power"),
+        ("The only way in which are can see God", "The only way in which we can see God"),
+        ("“lama subbacthani,”", "“lama sabachthani,”"),
+    ],
+    "come-and-welcome": [
+        ("the diamonds of Galconda", "the diamonds of Golconda"),
+        ("It is the Shepherds dispensation.", "It is the Shepherd’s dispensation."),
+    ],
+    "the-blood-of-the-everlasting-covenant": [
+        ("and beloved , he dealeth", "and beloved, he dealeth"),
+        ("Now, the Armenian’s covenant", "Now, the Arminian’s covenant"),
+        ("according to the Armenian.", "according to the Arminian."),
+    ],
+    "loves-logic": [
+        ("I would all your attention", "I would call your attention"),
+        ("truly and sincereIy loves God", "truly and sincerely loves God"),
+        ("by sincere affection towards God.” “Ye must",
+         "by sincere affection towards God. “Ye must"),
+        ("Oh what an eneouraging truth", "Oh what an encouraging truth"),
+        ("room there is for soul-fllling love", "room there is for soul-filling love"),
+        ("the restored backs1ider", "the restored backslider"),
+        ("ye backs1iding children", "ye backsliding children"),
+        ("admirable nurses of ourn infant love", "admirable nurses of our infant love"),
+        ("in the bosom of his 1ove.", "in the bosom of his love."),
+        ("in the paths of righteousuess.", "in the paths of righteousness."),
+        ("our faith strenthens,", "our faith strengthens,"),
+        ("comfortable or unconmfortable,", "comfortable or uncomfortable,"),
+        ("the lion’s welp hath never", "the lion’s whelp hath never"),
+        ("answers to prayer whieh he grants", "answers to prayer which he grants"),
+        ("saith the Lord , for I am married", "saith the Lord, for I am married"),
+        ("we shall be affected with love lo him.", "we shall be affected with love to him."),
+        ("all you hove ever gathered", "all you have ever gathered"),
+        ("Yes, indeed, if be be a son.", "Yes, indeed, if he be a son."),
+    ],
+    "a-simple-sermon-for-seeking-souls": [
+        ("very easy to darken words without knowledge.”",
+         "very easy to “darken words without knowledge.”"),
+        ("and beautiful on the mountains are the feet",
+         "and “beautiful on the mountains are the feet"),
+    ],
+    "healing-for-the-wounded": [
+        ("but he feel himself <i>utterly", "but he feels himself <i>utterly"),
+    ],
+    "waiting-only-upon-god": [
+        ("wreaths of aramanth,", "wreaths of amaranth,"),
+    ],
+    "a-lecture-for-little-faith": [
+        ("<p>WE ARE BOUND to thank God", "<p>“WE ARE BOUND to thank God"),
+        ("<p>He that helped him bears him through,", "<p>“He that helped him bears him through,"),
+    ],
+    "prayer-answered-love-nourished": [
+        ("ANSWERS WHICH WE HAVE RECIEVED.", "ANSWERS WHICH WE HAVE RECEIVED."),
+        ("Unbelief, like Rabshekeh,", "Unbelief, like Rabshakeh,"),
+        ("Only look at yourrself:", "Only look at yourself:"),
+        ("dirty, ragged bite of paper", "dirty, ragged bits of paper"),
+    ],
+    "mr-fearing-comforted": [
+        ("<p>TT SEEMS AS if doubt", "<p>IT SEEMS AS if doubt"),
+        ("to speak of SPIRITIUAL THINGS.", "to speak of SPIRITUAL THINGS."),
+        ("the secood causes of your trouble", "the second causes of your trouble"),
+        ("and vou in your trouble now", "and you in your trouble now"),
+        ("open to theLord who stood", "open to the Lord who stood"),
+        ("As dust attends the chariotwheels", "As dust attends the chariot wheels"),
+    ],
+    "consolation-in-christ": [
+        ("“To thy Father’s bossom press’d,", "“To thy Father’s bosom press’d,"),
+        ("as though it were not ehough for him", "as though it were not enough for him"),
+        ("where God expressely says", "where God expressly says"),
+        ("the joys of frienship?", "the joys of friendship?"),
+        ("through his meditorial kingdom", "through his mediatorial kingdom"),
+        ("went out of younder door", "went out of yonder door"),
+    ],
+}.items():
+    BODY_CORRECTIONS.setdefault(_slug, {}).setdefault("replacements", []).extend(_pairs)
+
 # English-source slips logged by the Amharic translations of four books
 # (#3762, #3784, #3717, #3737). Each is an unambiguous OCR or typesetting slip;
 # wording the translators could only guess at ("aim"/"arm", "case"/"ease",

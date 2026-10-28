@@ -558,6 +558,50 @@ class FlatMarkerTitleTests(TestCase):
         self.assertFalse(self._flat(""))
 
 
+class CcelSermonTrailerTests(TestCase):
+    """The Pulpit's order-of-service notes after a sermon are not the sermon.
+
+    From about 1870 a CCEL Spurgeon page ends "PORTION OF SCRIPTURE READ BEFORE
+    SERMON—John 4:1-5." (sometimes with an exposition and "HYMNS FROM 'OUR OWN
+    HYMN BOOK'—…"), then an empty paragraph; *Love's Logic* shipped its reading
+    list as the last line. The anthology builders keep that line, so the strip
+    is the sermon importer's opt-in.
+    """
+
+    def _page(self, tail):
+        return (
+            '<div id="theText"><div class="book-content"><h1>Love\'s Logic</h1>'
+            "<p>A Sermon</p>"
+            '<p>“We love him.”—<a class="scripRef">1 John 4:19</a></p>'
+            "<p>THIS is a great doctrinal truth.</p>"
+            f"<p>God bless you. Amen.</p>{tail}</div></div>"
+        )
+
+    def _body(self, tail, strip=True):
+        from library.management.commands.import_sermons import extract
+
+        return extract(self._page(tail), strip_service_notes=strip)[0]
+
+    def test_trailing_service_notes_and_spacers_are_dropped(self):
+        body = self._body(
+            "<p>PORTION OF\u00a0SCRIPTURE READ BEFORE SERMON—John 4:1-5.</p>"
+            "<p>EXPOSITION BY C. H. SPURGEON: JOHN 4.</p><p>Verse 1. Jesus knew.</p>"
+            "<p>HYMNS FROM “OUR OWN HYMN BOOK”—34, 742.</p><p></p>"
+        )
+        self.assertTrue(body.endswith("<p>God bless you. Amen.</p>"), body)
+
+    def test_the_phrase_far_from_the_end_is_kept(self):
+        body = self._body(
+            "<p>PORTIONS OF SCRIPTURE READ BEFORE SERMON are no sermon.</p>"
+            + "<p>More of the sermon.</p>" * 6
+        )
+        self.assertIn("PORTIONS OF SCRIPTURE READ BEFORE SERMON are no sermon.", body)
+
+    def test_the_anthology_default_keeps_the_reading_line(self):
+        body = self._body("<p>PORTION OF SCRIPTURE READ BEFORE SERMON—John 4.</p>", strip=False)
+        self.assertIn("PORTION OF SCRIPTURE READ BEFORE SERMON", body)
+
+
 class CcelLeadingHeadingTests(TestCase):
     """CCEL chapters whose heading is set as consecutive one-line paragraphs.
 

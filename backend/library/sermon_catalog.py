@@ -1449,4 +1449,104 @@ SERMONS: list[SermonEntry] = [
         "sinning-and-repenting", "Sinning and Repenting", "a-b-simpson", "sermonindex",
         _SI + "ab-simpson/sinning-and-repenting/", scripture_ref="Judges 2:14-19",
     ),
+    # Spurgeon, batch 2 — the Pulpit as printed, with the Authorised Version he
+    # quoted. Most CCEL sermons from about 1862 on are a later digital text that
+    # modernised his Scripture ("all you that labor") and splits paragraphs at
+    # page breaks, so every pick was screened by KJV-archaism density first (see
+    # build_spirit_anthology). Sermons already gathered in Spurgeon on Prayer or
+    # Spurgeon on the Holy Spirit (The Throne of Grace, The Comforter, …) are
+    # left to those books. The Sin of Unbelief (No. 3) was read and dropped: it
+    # bids the hearer tell every Jew he meets that unbelief made him "murder
+    # Christ" and a homeless wanderer.
+    SermonEntry(
+        "a-faithful-friend",
+        "A Faithful Friend",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.xiv.html",
+    ),
+    SermonEntry(
+        "prayer-the-forerunner-of-mercy",
+        "Prayer—the Forerunner of Mercy",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.xxxii.html",
+    ),
+    SermonEntry(
+        "looking-unto-jesus",
+        "Looking Unto Jesus",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons04/sermons04.xxxi.html",
+    ),
+    SermonEntry(
+        "come-and-welcome",
+        "Come and Welcome",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons05/sermons05.liv.html",
+    ),
+    SermonEntry(
+        "the-blood-of-the-everlasting-covenant",
+        "The Blood of the Everlasting Covenant",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons05/sermons05.lii.html",
+    ),
+    SermonEntry(
+        "loves-logic",
+        "Love's Logic",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons17/sermons17.xli.html",
+    ),
+    SermonEntry(
+        "healing-for-the-wounded",
+        "Healing for the Wounded",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons01/sermons01.l.html",
+    ),
+    SermonEntry(
+        "a-simple-sermon-for-seeking-souls",
+        "A Simple Sermon for Seeking Souls",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.xxxiv.html",
+    ),
+    SermonEntry(
+        "waiting-only-upon-god",
+        "Waiting Only Upon God",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.xxxvii.html",
+    ),
+    SermonEntry(
+        "a-lecture-for-little-faith",
+        "A Lecture for Little-Faith",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons04/sermons04.xli.html",
+    ),
+    SermonEntry(
+        "prayer-answered-love-nourished",
+        "Prayer Answered, Love Nourished",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons05/sermons05.xvii.html",
+    ),
+    SermonEntry(
+        "mr-fearing-comforted",
+        "Mr. Fearing Comforted",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons05/sermons05.xxiii.html",
+    ),
+    SermonEntry(
+        "consolation-in-christ",
+        "Consolation in Christ",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons07/sermons07.i.html",
+    ),
 ]
