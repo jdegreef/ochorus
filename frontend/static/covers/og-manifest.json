@@ -2121,6 +2121,17 @@
 			"layout": "split/navy",
 			"bar": 0
 		},
+		"am/religious-affections": {
+			"ground": "5ce5e095227e62509c88bbc169df9296069dcd5e80ed1864255083df42f546ae",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/slate",
+			"bar": 0.035
+		},
 		"am/religious-experience-and-journal": {
 			"ground": "9812587ac39ea3ea738308c253604895b40fc1095e19d46ab18fbeeb9c179ad8",
 			"style": "enlightenment",

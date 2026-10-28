@@ -7915,6 +7915,32 @@ BODY_CORRECTIONS.setdefault("religious-affections", {}).setdefault("replacements
     ("Versículo 92, etc.;", "Versículo 23, etc.;"),
 ])
 
+# Found while translating to Amharic (job #3734): scan slips with one reading
+BODY_CORRECTIONS["religious-affections"]["replacements"].extend([
+    # [en] dropped "least" (the next sentence: the devil strikes unseen, from behind)
+    ("are commonly most exposed, where they are sensible of danger",
+     "are commonly most exposed, where they are least sensible of danger"),
+    # [en] OCR: frame→flame (a state of heart one is "awakened out of")
+    ("awakened out of a cold, lifeless flame", "awakened out of a cold, lifeless frame"),
+    # [en] a scan line dropped between "diverse from" and "saint" (Edwards, Part
+    # III, Sign 3)
+    ("as tasting is diverse from saint in the exercise",
+     "as tasting is diverse from any of the other senses; and that something is perceived "
+     "by a true saint in the exercise"),
+    ("these external symbols are representations", "these external symbols or representations"),
+    ("loses as possession of himself", "loses all possession of himself"),
+    ("the holiness of God's natures", "the holiness of God's nature"),
+    ("what it was determined it to think", "what it was that determined it to think"),
+    ("But yet the best of men may be, when the appearances",
+     "But yet the best of men may be deceived, when the appearances"),
+    # [en] Dan 1:7
+    ("Shadrach, Meshech, and Abednego", "Shadrach, Meshach, and Abednego"),
+    # [en] KJV wording: Job 1:10, Hab 3:16, Ps 36:1
+    ("Has not thou made a hedge", "Hast not thou made a hedge"),
+    ("rottenness enter into my bones", "rottenness entered into my bones"),
+    ("saith within thy heart, There is no fear", "saith within my heart, There is no fear"),
+])
+
 # Found while translating to French (2026-10-14): Jarena Lee's Religious
 # Experience and Journal — OCR slips and two wrong citations (en + es/am)
 BODY_CORRECTIONS.setdefault("religious-experience-and-journal", {}).setdefault("replacements", []).extend([
