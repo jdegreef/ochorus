@@ -510,6 +510,7 @@ TOPICS = [
             "key-teachings-of-c-s-lewis",
             "key-teachings-of-g-k-chesterton",
             "the-everlasting-man",
+            "what-the-bible-teaches",
         ],
     ),
     (

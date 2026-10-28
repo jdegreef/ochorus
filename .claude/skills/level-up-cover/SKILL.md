@@ -1,6 +1,6 @@
 ---
 name: level-up-cover
-description: Level up a flat plate-covered book to a CURATED painted ground — choose a public-domain artwork per book, run `paint_covers`, and ship one PR per author. Use when asked to "do the covers" for an author, replace generated colour-plate covers with real art, add a book to the CURATED tier, or continue the plate → art level-up (author-by-author; ~35 plates remain after Murray/Bounds/Nee/Spurgeon/Torrey). Encodes the sourcing method and the gotchas that bite each run; the command order lives in `backend/scripts/paint_covers.py`. This is a living playbook — append new failure modes as we find them.
+description: Level up a flat plate-covered book to a CURATED painted ground — choose a public-domain artwork per book, run `paint_covers`, and ship one PR per author. Use when asked to "do the covers" for an author, replace generated colour-plate covers with real art, add a book to the CURATED tier, or continue the plate → art level-up (author-by-author; ~15 published plates remain after Batch 26 — see "Done so far"). Encodes the sourcing method and the gotchas that bite each run; the command order lives in `backend/scripts/paint_covers.py`. This is a living playbook — append new failure modes as we find them.
 ---
 
 # Levelling up a plate cover to CURATED art
@@ -349,6 +349,19 @@ prerendered pages reference it.
   mid-tone, bright elements above the title or below the lowest subtitle, clear of
   the mark box.
 
+- **Wikimedia can refuse a cloud session's shared egress outright** (Batch 26,
+  2026-10-27): Commons/Wikidata `api.php` answered 429 for 25+ minutes straight, and
+  `build_curated_covers` re-verifies EVERY listed `wikidata` entry live on each run — so
+  one throttled item stops the whole `paint_covers` call at stage 2, and stage 4 then
+  refuses while any CURATED ground is missing. Source from Met/Cleveland in a cloud
+  session (no throttle seen), or land the Wikidata picks from a machine Wikimedia lets
+  through. SPARQL (`query.wikidata.org`) kept answering and is fine for *searching*.
+- **Playwright's browser build ≠ the container's** — `og:covers` dies "Executable doesn't
+  exist at …chromium_headless_shell-NNNN" in a cloud container whose pre-installed build
+  is older. Don't `npx playwright install` there: point a scratch
+  `PLAYWRIGHT_BROWSERS_PATH` at symlinks named for the wanted build
+  (`chromium_headless_shell-NNNN -> /opt/pw-browsers/chromium_headless_shell-MMMM`), then
+  run `paint_covers`'s remaining stages by hand (`covers:bars`, `og:covers`, tune, `og:covers`).
 - **`tune_art_scrim` re-tunes OTHER books whose ground has drifted.** It re-measures
   every `covers/art/*.jpg`, so a book whose committed value no longer matches its
   measurement changes too (seen 2026-10-13: `he-holds-my-tomorrows` 0.70→0.65), and the
@@ -554,6 +567,14 @@ Remaining (pre-Batch-19 note): the Puritan/English devotional group
 (Owen, Sibbes, Law, Edwards, Meyer, Guyon, Bounds straggler). Carmichael's
 `if` and all four Watchman-Nee titles are `is_published:false` — skip. Cyprian was
 on `feature/cyprian-treatises` — check first.
+Batch 26 (2026-10-27, Met + Cleveland): Luther ×4 (Leypold, Dahl, Friedrich, his pupil
+Heinrich), Ryle ×4 (R. Wilson, Crome, Gainsborough, Whittredge), Augustine ×3 on his rail
+(J. Martin, Hackert, H. Robert). Published plates still left after it (2026-10-27 census):
+Augustine's none; Owen ×2, Calvin's Institutes, Bunyan's Holy War, Baxter's Saints'
+Everlasting Rest, Teresa's Interior Castle, Watson's Body of Divinity, Anselm, Gregory's
+Pastoral Rule, Wheatley's Poems, Murray's Abide in Christ, Moody's Secret Power, Torrey's
+How to Pray, and the Original `faithful-with-little` (so the "no published book wears a
+plate" line below is no longer true).
 Originals (vector recipe, ORIGINAL_GROUND): Brave for God 1–4 #2877, growing-in-wisdom
 #2905, fire-against-the-dark #6060 (2026-10-13 — novel cover; subject + lamp glow kept
 bottom-LEFT, outside the centred subtitle/mark text, so no band fails; 0.30× floor).

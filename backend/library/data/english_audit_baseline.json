@@ -491,6 +491,9 @@
   "what-a-revival-of-religion-is": {
    "space-before-punct": 1
   },
+  "what-the-bible-teaches": {
+   "orphan-close-quote": 3
+  },
   "with-and-without-christ": {
    "space-before-punct": 6
   },

@@ -77,6 +77,12 @@
 		"year": "1863 or 1866",
 		"credit": "Samuel Bourne, “The Upper Himmalayahs. View on the New Road between India and China. Mt. Pangi with the Snowy Peaks of China in the Distance” (1863 or 1866). The Cleveland Museum of Art, CC0."
 	},
+	"bondage-of-the-will": {
+		"artist": "Julius von Leypold",
+		"title": "Wanderer in the Storm",
+		"year": "1835",
+		"credit": "Julius von Leypold, “Wanderer in the Storm” (1835). The Metropolitan Museum of Art, Open Access."
+	},
 	"cheque-book": {
 		"artist": "Joseph Anton Koch",
 		"title": "Heroic Landscape with Rainbow",
@@ -173,6 +179,12 @@
 		"year": "c. 1846–1847",
 		"credit": "Fitz Henry Lane, “Harbor of Boston, with the City in the Distance” (c. 1846–1847). The Cleveland Museum of Art, CC0."
 	},
+	"first-principles-of-the-reformation": {
+		"artist": "Johan Christian Dahl",
+		"title": "Copenhagen Harbor by Moonlight",
+		"year": "1846",
+		"credit": "Johan Christian Dahl, “Copenhagen Harbor by Moonlight” (1846). The Metropolitan Museum of Art, Open Access."
+	},
 	"foxes-book-of-martyrs": {
 		"artist": "Jacob van Ruisdael",
 		"title": "Landscape with the Ruins of the Castle of Egmond",
@@ -202,6 +214,12 @@
 		"title": "Wheat Fields",
 		"year": "ca. 1670",
 		"credit": "Jacob van Ruisdael, “Wheat Fields” (ca. 1670). The Metropolitan Museum of Art, Open Access."
+	},
+	"holiness": {
+		"artist": "Richard Wilson",
+		"title": "Lake Nemi and Genzano from the Terrace of the Capuchin Monastery",
+		"year": "ca. 1756–57",
+		"credit": "Richard Wilson, “Lake Nemi and Genzano from the Terrace of the Capuchin Monastery” (ca. 1756–57). The Metropolitan Museum of Art, Open Access."
 	},
 	"holy-in-christ": {
 		"artist": "Gustave Courbet",
@@ -256,6 +274,18 @@
 		"title": "On the Nile",
 		"year": "1871",
 		"credit": "Eugène Fromentin, “On the Nile” (1871). The Art Institute of Chicago, CC0."
+	},
+	"knots-untied": {
+		"artist": "John Crome",
+		"title": "Hautbois Common, Norfolk",
+		"year": "probably ca. 1810",
+		"credit": "John Crome, “Hautbois Common, Norfolk” (probably ca. 1810). The Metropolitan Museum of Art, Open Access."
+	},
+	"large-catechism": {
+		"artist": "Caspar David Friedrich",
+		"title": "Two Men Contemplating the Moon",
+		"year": "ca. 1825–30",
+		"credit": "Caspar David Friedrich, “Two Men Contemplating the Moon” (ca. 1825–30). The Metropolitan Museum of Art, Open Access."
 	},
 	"lectures-to-my-students": {
 		"artist": "Camille Pissarro",
@@ -341,6 +371,18 @@
 		"year": "1823",
 		"credit": "Johan Christian Dahl, “Two Men before a Waterfall at Sunset” (1823). The Metropolitan Museum of Art, Open Access."
 	},
+	"old-paths": {
+		"artist": "Thomas Gainsborough",
+		"title": "Wooded Upland Landscape",
+		"year": "probably 1783",
+		"credit": "Thomas Gainsborough, “Wooded Upland Landscape” (probably 1783). The Metropolitan Museum of Art, Open Access."
+	},
+	"on-christian-doctrine": {
+		"artist": "Hubert Robert",
+		"title": "The Portico of a Country Mansion",
+		"year": "1773",
+		"credit": "Hubert Robert, “The Portico of a Country Mansion” (1773). The Metropolitan Museum of Art, Open Access."
+	},
 	"on-loving-god": {
 		"artist": "Jean Baptiste Camille Corot",
 		"title": "The Pond at the Entrance of the Woods",
@@ -358,6 +400,12 @@
 		"title": "Interior of the Pantheon, Rome",
 		"year": "1747",
 		"credit": "Giovanni Paolo Panini, “Interior of the Pantheon, Rome” (1747). The Cleveland Museum of Art, CC0."
+	},
+	"on-the-trinity": {
+		"artist": "Philipp Hackert",
+		"title": "View of the Gulf of Pozzuoli from Solfatara",
+		"year": "1803",
+		"credit": "Philipp Hackert, “View of the Gulf of Pozzuoli from Solfatara” (1803). The Cleveland Museum of Art, CC0."
 	},
 	"our-daily-walk": {
 		"artist": "Jules Dupré",
@@ -418,6 +466,12 @@
 		"title": "Sahurs Meadows in Morning Sun",
 		"year": "1894",
 		"credit": "Alfred Sisley, “Sahurs Meadows in Morning Sun” (1894). The Metropolitan Museum of Art, Open Access."
+	},
+	"practical-religion": {
+		"artist": "Worthington Whittredge",
+		"title": "Landscape with Haywain",
+		"year": "1861",
+		"credit": "Worthington Whittredge, “Landscape with Haywain” (1861). The Cleveland Museum of Art, CC0."
 	},
 	"prayer-and-praying-men": {
 		"artist": "Philips Koninck",
@@ -515,6 +569,12 @@
 		"year": "1828",
 		"credit": "John Constable, “Branch Hill Pond, Hampstead” (1828). The Cleveland Museum of Art, CC0."
 	},
+	"small-catechism": {
+		"artist": "August Heinrich",
+		"title": "At the Edge of the Forest",
+		"year": "ca. 1820",
+		"credit": "August Heinrich, “At the Edge of the Forest” (ca. 1820). The Metropolitan Museum of Art, Open Access."
+	},
 	"spurgeon-on-prayer": {
 		"artist": "Joseph Mallord William Turner",
 		"title": "Valley of Aosta: Snowstorm, Avalanche, and Thunderstorm",
@@ -544,6 +604,12 @@
 		"title": "Marshland",
 		"year": "1860s-1870s",
 		"credit": "Jules Dupré, “Marshland” (1860s-1870s). The Cleveland Museum of Art, CC0."
+	},
+	"the-city-of-god": {
+		"artist": "John Martin",
+		"title": "Ruins of an Ancient City",
+		"year": "c. 1810–20",
+		"credit": "John Martin, “Ruins of an Ancient City” (c. 1810–20). The Cleveland Museum of Art, CC0."
 	},
 	"the-fourfold-gospel": {
 		"artist": "Roger Fenton",

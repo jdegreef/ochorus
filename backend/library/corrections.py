@@ -5262,6 +5262,8 @@ BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {})["back_matter
      "<p>Les fréquentes citations datées des journaux de Brainerd"),
     ("verdadeira religião! <i>Amém.</i></p>",
      "<p>As frequentes citações datadas dos diários de Brainerd"),
+    ("ይስጥ! <i>አሜን።</i></p>",
+     "<p>The frequent dated quotations from Brainerd’s diaries"),
 ]
 # Edwards signs the preface `<div class="c012">JONATHAN EDWARDS.</div>`, the
 # last block of ch1: the half-title after it is front matter. The old walk
@@ -18933,3 +18935,43 @@ for _slug, _pairs in {
     ],
 }.items():
     BODY_CORRECTIONS.setdefault(_slug, {}).setdefault("replacements", []).extend(_pairs)
+
+# English-source slips logged by the Amharic translations of four books
+# (#3762, #3784, #3717, #3737). Each is an unambiguous OCR or typesetting slip;
+# wording the translators could only guess at ("aim"/"arm", "case"/"ease",
+# "intrinsic"/"extrinsic") is reported on the PR, not changed here.
+BODY_CORRECTIONS.setdefault("spurgeon-on-prayer", {}).setdefault("replacements", []).extend([
+    ("as many uf us as", "as many of us as"),
+    ("reduced well-near to penury", "reduced well-nigh to penury"),
+    ("this morning, has thou?", "this morning, hast thou?"),
+    ("expect prayer to he heard", "expect prayer to be heard"),
+    ("jealousies and ambitious as men", "jealousies and ambitions as men"),
+    # Herbert's "The Bag": OCR word-splits
+    ("If you ha ve anything", "If you have anything"),
+    ("(I ha ve no bag", "(I have no bag"),
+    ("(Belie ve me)", "(Believe me)"),
+    # stray scan mark before the section numeral
+    ("<p>' III. Thirdly", "<p>III. Thirdly"),
+])
+BODY_CORRECTIONS.setdefault("evening-by-evening", {}).setdefault("replacements", []).extend([
+    ("and gladens the pious", "and gladdens the pious"),
+    ("Dispairing minds", "Despairing minds"),
+    ("I will not parlay with", "I will not parley with"),
+    ("the God-giving sight of faith", "the God-given sight of faith"),
+    ("thou are not as the sinner", "thou art not as the sinner"),
+    ("where thou has unveiled", "where thou hast unveiled"),
+    ("among couriers of a foreign", "among courtiers of a foreign"),
+    ("every title of Scripture", "every tittle of Scripture"),
+    ("by their false-hoods,", "by their falsehoods,"),
+    ("his ever lasting strength", "his everlasting strength"),
+])
+BODY_CORRECTIONS.setdefault("freedom-of-the-will", {}).setdefault("replacements", []).extend([
+    # Edwards' heading is "the Stoical doctrine of Fate" (the chapter title is
+    # fixed by migration 0206)
+    ("The Stoical Doctrine Of Faith, And", "The Stoical Doctrine Of Fate, And"),
+    ("introduce Mr. Hobbe’s doctrine", "introduce Mr. Hobbes’s doctrine"),
+])
+BODY_CORRECTIONS.setdefault("george-muller-of-bristol", {}).setdefault("replacements", []).extend([
+    # lost full stop before a new sentence
+    ("for God's intervention, As he came", "for God's intervention. As he came"),
+])
