@@ -18852,6 +18852,7 @@ BODY_CORRECTIONS.setdefault("institutes-of-the-christian-religion", {}).setdefau
 for _slug, _pairs in {
     "prayer-the-forerunner-of-mercy": [
         ("give us a blesssing", "give us a blessing"),
+        ("patriarchs still continued to prey;", "patriarchs still continued to pray;"),
         ("the bond of inquity.”", "the bond of iniquity.”"),
         ("God heareth not sinners, and the sacrifice of the wicked",
          "God heareth not sinners, and “the sacrifice of the wicked"),
@@ -18859,10 +18860,12 @@ for _slug, _pairs in {
     "looking-unto-jesus": [
         ("cock-crowing, or broadday, or", "cock-crowing, or broad day, or"),
         ("by his ownliving power", "by his own living power"),
+        ("The only way in which are can see God", "The only way in which we can see God"),
         ("“lama subbacthani,”", "“lama sabachthani,”"),
     ],
     "come-and-welcome": [
         ("the diamonds of Galconda", "the diamonds of Golconda"),
+        ("It is the Shepherds dispensation.", "It is the Shepherd’s dispensation."),
     ],
     "the-blood-of-the-everlasting-covenant": [
         ("and beloved , he dealeth", "and beloved, he dealeth"),

@@ -140,7 +140,10 @@ new text must not contain the old. Match the stored HTML, not the plain text:
 `he feel himself <i>utterly` needed its tag. Re-import, rewrite the fixtures,
 and confirm every pair applied (`old not in body and new in body`) and
 `settled_sermon_body(slug, body) == body`. Fix only what is unambiguous; period
-spellings ("bemean", "to-morrow", "Saviour") stay.
+spellings ("bemean", "to-morrow", "Saviour") stay, and so does the preacher's
+own slip (Spurgeon names Elijah's servant "Gehazi") — the text is his. A slip
+whose intended word isn't certain ("and shell on the strength of that promise")
+is left too, rather than guessed.
 
 ## 4. Summary + study questions ([[sermon-questions]])
 
