@@ -52,13 +52,17 @@ _DATE = re.compile(
 _HEAD_WINDOW = 20
 
 # The service notes the Pulpit printed after a sermon from about 1870 on:
-# "PORTION OF SCRIPTURE READ BEFORE SERMON—Psalm 63." and "HYMNS FROM 'OUR OWN
-# HYMN BOOK'—34, 742, 745." Order-of-service furniture, not the sermon; dropped
-# only as TRAILING paragraphs, so the phrase quoted mid-sermon is never touched.
+# "PORTION OF SCRIPTURE READ BEFORE SERMON—Psalm 63.", "EXPOSITION BY C. H.
+# SPURGEON: …", "HYMNS FROM 'OUR OWN HYMN BOOK'—34, 742, 745." Order-of-service
+# furniture, not the sermon. Only searched for in the last few paragraphs, so the
+# phrase quoted mid-sermon is never touched.
 _SERVICE_TRAILER = re.compile(
-    r"^(?:PORTIONS? OF SCRIPTURE READ BEFORE (?:THE )?SERMON|HYMNS FROM\W+OUR OWN HYMN)",
+    r"^(?:PORTIONS?\s+OF\s+SCRIPTURE\s+READ\s+BEFORE\s+(?:THE\s+)?SERMON"
+    r"|EXPOSITION\s+BY\s+C\.\s*H\.\s*SPURGEON"
+    r"|HYMNS?\s+FROM\W+OUR\s+OWN\s+HYMN)",
     re.I,
 )
+_TRAILER_WINDOW = 6
 
 # Sermon headings appear at whatever level the edition chose; see
 # extract_gutenberg_section.
@@ -173,13 +177,20 @@ def parse_preached_on(text: str) -> datetime.date | None:
         return None
 
 
-def extract(html: str) -> tuple[str, str, datetime.date | None]:
+def extract(
+    html: str, strip_service_notes: bool = False
+) -> tuple[str, str, datetime.date | None]:
     """Return (body_html, scripture_ref, preached_on) from a CCEL sermon page.
 
     Everything up to and including the scripture-quotation paragraph is the
     masthead; the quotation itself is kept as an opening blockquote. If no
     scripRef paragraph exists, the body starts after the last masthead-looking
     paragraph and scripture_ref is left empty.
+
+    ``strip_service_notes`` cuts the order-of-service notes printed after the
+    sermon (see ``_SERVICE_TRAILER``) and the empty paragraphs around them. The
+    sermon shelf wants that; the anthology builders keep the scripture-reading
+    line, as their books always have, so it is off by default.
     """
     s = soup(html)
     root = s.select_one("#theText .book-content") or s.select_one("#theText")
@@ -238,12 +249,25 @@ def extract(html: str) -> tuple[str, str, datetime.date | None]:
             if not t or re.match(r"^(A Sermon|\(No\.|Delivered|REV\.|At )", t, re.I):
                 boundary = i
     body_paras = paragraphs[boundary + 1 :]
-    while body_paras and (
-        not (last := body_paras[-1].get_text(" ", strip=True)) or _SERVICE_TRAILER.match(last)
-    ):
-        body_paras.pop()
+    if strip_service_notes:
+        body_paras = _without_service_notes(body_paras)
     body = clean_fragment(quote_html + "".join(str(p) for p in body_paras))
     return body, scripture_ref, preached_on
+
+
+def _without_service_notes(paras: list) -> list:
+    """Cut from the first order-of-service note in the closing paragraphs."""
+
+    def blank(p) -> bool:
+        return not p.get_text(strip=True) and p.find("img") is None
+
+    for i in range(max(len(paras) - _TRAILER_WINDOW, 0), len(paras)):
+        if _SERVICE_TRAILER.match(paras[i].get_text(" ", strip=True)):
+            paras = paras[:i]
+            break
+    while paras and blank(paras[-1]):
+        paras = paras[:-1]
+    return paras
 
 
 def extract_web_sermon(html: str, title: str, body_starts: str = "") -> str:
@@ -454,7 +478,9 @@ class Command(BaseCommand):
                 body = extract_sermonindex(fetch_web(entry.source_ref), entry.title)
                 scripture_ref, preached_on = "", None
             else:
-                body, scripture_ref, preached_on = extract(fetch(entry.source_ref))
+                body, scripture_ref, preached_on = extract(
+                    fetch(entry.source_ref), strip_service_notes=True
+                )
         except requests.RequestException as exc:
             self.stderr.write(self.style.ERROR(f"  fetch failed: {exc}"))
             return

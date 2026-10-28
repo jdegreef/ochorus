@@ -93,8 +93,12 @@ uv run python manage.py import_sermons <slug> <slug> …
 
 The importer fetches, strips the masthead, keeps the epigraph as a blockquote,
 parses ref + date (CCEL), drops trailing order-of-service notes ("PORTION OF
-SCRIPTURE READ BEFORE SERMON…", "HYMNS FROM 'OUR OWN HYMN BOOK'…"), applies
-`BODY_CORRECTIONS`, and prints `audit_english` findings per sermon.
+SCRIPTURE READ BEFORE SERMON…", an exposition, "HYMNS FROM 'OUR OWN HYMN
+BOOK'…" — `extract(…, strip_service_notes=True)`; the anthology builders call
+`extract` without it and keep the reading line), applies `BODY_CORRECTIONS`,
+and prints `audit_english` findings per sermon. Two sermons shipped before the
+strip (`consolation-in-the-furnace`, `order-and-argument-in-prayer`) still end
+on their reading line.
 
 Write the fixture files from the scratch DB — natural keys, the one byte-stable
 writer, and keep any summary/questions already in an existing file:
