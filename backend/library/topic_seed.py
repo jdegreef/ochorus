@@ -807,6 +807,9 @@ TOPIC_SERMONS = {
         "praying-church",
         "practical-prayer",
         "the-spirit-of-prayer-simpson",
+        "prayer-the-forerunner-of-mercy",
+        "prayer-answered-love-nourished",
+        "waiting-only-upon-god",
     ],
     "holy-spirit": [
         "filled-with-the-spirit",
@@ -864,6 +867,11 @@ TOPIC_SERMONS = {
         "the-practical-discipline-of-life",
         "grace-abounding",
         "more-than-conquerors",
+        "a-faithful-friend",
+        "healing-for-the-wounded",
+        "mr-fearing-comforted",
+        "consolation-in-christ",
+        "loves-logic",
     ],
     "revival-and-missions": [
         "compel-them-to-come-in",
@@ -892,6 +900,7 @@ TOPIC_SERMONS = {
         "jephthah-or-the-faith-that-leads-to-faithfulness",
         "words-for-discouraged-workers",
         "the-weapons-of-our-warfare",
+        "a-lecture-for-little-faith",
     ],
     "the-gospel-call": [
         "christ-crucified",
@@ -919,6 +928,9 @@ TOPIC_SERMONS = {
         "the-method-of-grace",
         "the-right-kind-of-faith",
         "the-sinners-friend",
+        "come-and-welcome",
+        "looking-unto-jesus",
+        "a-simple-sermon-for-seeking-souls",
     ],
     "the-way-of-holiness": [
         "aggressive-christianity",
@@ -944,6 +956,7 @@ TOPIC_SERMONS = {
         "the-triumph-of-the-resurrection",
         "our-kinsman-redeemer",
         "personal-responsibility",
+        "the-blood-of-the-everlasting-covenant",
     ],
     "soar-like-the-eagle": [
         "rest",

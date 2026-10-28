@@ -14,6 +14,10 @@
 			"content": "2f27e610a6786579791168ea07979e928b2fe11de630467d8eb981e329e5161d",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
+		"a-faithful-friend": {
+			"content": "9431ff524dcfb4080d2a1fa70469b429a9536eeef9e0e5ecfab082e66e2689ca",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
 		"a-full-reward": {
 			"content": "b1bbbd510083da27a80b0a0bfec3da060687bae85a5b490329814acfa7f40308",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
@@ -21,6 +25,10 @@
 		"a-good-soldier-of-jesus-christ": {
 			"content": "2cfa84b26f64678f0183c9d491af74877e39e9b12f40ac9dff0badacc6c3d086",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"a-lecture-for-little-faith": {
+			"content": "a75472a50cbe92ddf4126264f9344b984fe4fe9b75233f4861cf69f7cd760a10",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"a-living-hope-of-the-hereafter": {
 			"content": "100f9f43e3d07399520c640447a8e570e8f07fd09ae86fe5da9bb1439e99f4bb",
@@ -32,6 +40,10 @@
 		},
 		"a-ribband-of-blue": {
 			"content": "7e292b60cf125bdd256ab026b82fd847a98edb6367ae9357604baa9901db9141",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
+		"a-simple-sermon-for-seeking-souls": {
+			"content": "a06cbb2498bbe09766212fbb66ad26f05538887fdaf6886da5d26ec9d68797e0",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"a-true-and-a-false-faith": {
@@ -162,6 +174,10 @@
 			"content": "5fa5b95ccd585e5c356d9f6514e6051e2f792d2aacdcc12a33af554a0ff01ec1",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"come-and-welcome": {
+			"content": "8c4a77634a20e128603958fd80ba5bc6bfec1a8f3594aefe114717e8be7b46e4",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"come-thou-into-the-ark": {
 			"content": "525c7d21f1540b4dcdccbfd38f9da22664eb16205bf693582796093be81334bb",
 			"art": "326289b4e8044ad6d2e4f3440e919c83972c9734398d724848e421bac4015d3c"
@@ -189,6 +205,10 @@
 		"concerning-lowliness-of-mind": {
 			"content": "da808338f73525f47282fd2d589ab8df195e5f8ca63b7bbe2598e402f9cd636b",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"consolation-in-christ": {
+			"content": "df09746dae6da3511650b1f664d669c60f142c1f7943fa5a77657d57614c31fb",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"consolation-in-the-furnace": {
 			"content": "2a1f8e5ae5b099088ca7194e3d676df877820e01b842704906a2abde59c7fbc3",
@@ -334,6 +354,10 @@
 			"content": "2a8aa0a22702162b1d80840ff6ee1eb3be7f57767dc905e6445554eefe4e46ad",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"healing-for-the-wounded": {
+			"content": "5eff151ebeb493725410f1af55426fe9c1a97b06098bea11719b772e830b308c",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"hearts-set-on-pilgrimage": {
 			"content": "b51999ebed257d149fe6539b918b43e36bbb2c9331ed8bc7a6063cab4931a830",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
@@ -438,9 +462,17 @@
 			"content": "d4dba771c9095904f1d84419a94a006da4b7dd3ba221331477d98d120c7a9a23",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
+		"looking-unto-jesus": {
+			"content": "46d78ed8dc103eb5313c745e24b753b59836e3716242697b9f8fb7bcaaccb6a5",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"lord-remember-me": {
 			"content": "e8eecb3a942a4a000d55742dc87ee6d48bec09c37d1985eda292822eac03bf79",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"loves-logic": {
+			"content": "6791d2e1a50b59bcfddb4f3d337b49258a8ad68d826e1354b27032f8072ee4a0",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"marks-of-a-true-conversion": {
 			"content": "6d4ca1e84f469b14790f5167a4e369762dceab243b8674ade39d53e2c0d88c33",
@@ -453,6 +485,10 @@
 		"more-than-conquerors": {
 			"content": "f510c5bf83a361399c7da3bcc010a8bfea1a48195d733440d8d22a9e4569c229",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
+		"mr-fearing-comforted": {
+			"content": "5b43bc0454876551259433e77dd16ffd1568bc29642f5f3f5c886b8e25b9a743",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"naaman-the-syrian": {
 			"content": "c865b2279b0d86e24358c6044e5ef61726d16736af00018eac15cce691c7c2e6",
@@ -513,6 +549,14 @@
 		"practical-prayer": {
 			"content": "bf567fa4574275740900a7506add122ea54a7e9d821cdbd3bfbf66962b44a377",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"prayer-answered-love-nourished": {
+			"content": "11ccbbc145150abe1e22f68299be194dab53b5d26ed797edb9dc0b0e6aa9fd2c",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"prayer-the-forerunner-of-mercy": {
+			"content": "656d09dab56e3e5487fa1bdb82e8d0ced08c2db1923a778b6aa8c857149108b9",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"praying-church": {
 			"content": "74cc1a533d135d435ebe03321e4488ea999c854e15930a09f24eb4c3850146bb",
@@ -625,6 +669,10 @@
 		"the-baptism-of-fire": {
 			"content": "6bf65c150aadb8af76efb0ec887d45496775d12434ae8edc60e6efdcbf39438f",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"the-blood-of-the-everlasting-covenant": {
+			"content": "4db0cd0b5910f8079880c11babfe96a1bf99f7f1cd2646929e8c5dbb9f7a6657",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"the-boundless-sufficiency": {
 			"content": "b0c90a8ca5e5b053bb19cc0bd82d986c34a944676a971bc63d0ab6c05b7e6e61",
@@ -846,6 +894,10 @@
 			"content": "6e6c3a6892e99e06e1fa56bc5c1ea75450a5c0b128e9e629e2d711846a226bc0",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
+		"the-sin-of-unbelief": {
+			"content": "445e2d1d3cb118c944427963193ca51ac4de96ea6177549727ee335359228fda",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"the-sinners-friend": {
 			"content": "3fe438adcf4ed3a0cb382ee1a40c30b10ff33c936e0a1f12b649328124ffdca0",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
@@ -945,6 +997,10 @@
 		"unto-us-a-child-is-born": {
 			"content": "5c507e26fef37f05bc3359966bfdd954dae2ceca6a40bca168bac763d36bac99",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
+		"waiting-only-upon-god": {
+			"content": "273ac690063a4c82b4fa8804d5e8c089b8b44042fe9e03944739e1000265a79e",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"walking-with-god": {
 			"content": "9ac560f6a17d950de4f15943d9b20e622d87dc589f658baca3e528a5acec4772",

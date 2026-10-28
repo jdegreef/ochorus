@@ -51,6 +51,15 @@ _DATE = re.compile(
 # spacer <p>s push the quote as far down as index ~14. Scan generously.
 _HEAD_WINDOW = 20
 
+# The service notes the Pulpit printed after a sermon from about 1870 on:
+# "PORTION OF SCRIPTURE READ BEFORE SERMON—Psalm 63." and "HYMNS FROM 'OUR OWN
+# HYMN BOOK'—34, 742, 745." Order-of-service furniture, not the sermon; dropped
+# only as TRAILING paragraphs, so the phrase quoted mid-sermon is never touched.
+_SERVICE_TRAILER = re.compile(
+    r"^(?:PORTIONS? OF SCRIPTURE READ BEFORE (?:THE )?SERMON|HYMNS FROM\W+OUR OWN HYMN)",
+    re.I,
+)
+
 # Sermon headings appear at whatever level the edition chose; see
 # extract_gutenberg_section.
 _HEADINGS = ["h1", "h2", "h3", "h4"]
@@ -228,8 +237,12 @@ def extract(html: str) -> tuple[str, str, datetime.date | None]:
             t = p.get_text(" ", strip=True)
             if not t or re.match(r"^(A Sermon|\(No\.|Delivered|REV\.|At )", t, re.I):
                 boundary = i
-    body_parts = [str(p) for p in paragraphs[boundary + 1 :]]
-    body = clean_fragment(quote_html + "".join(body_parts))
+    body_paras = paragraphs[boundary + 1 :]
+    while body_paras and (
+        not (last := body_paras[-1].get_text(" ", strip=True)) or _SERVICE_TRAILER.match(last)
+    ):
+        body_paras.pop()
+    body = clean_fragment(quote_html + "".join(str(p) for p in body_paras))
     return body, scripture_ref, preached_on
 
 
