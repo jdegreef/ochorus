@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { assetSrcset, assetUrl } from '$lib/assetUrl';
 	import { coverGradient, coverSrcset, isArtCover, isPlateCover } from '$lib/coverArt';
-	import { isLongTitle } from '$lib/coverCardMarkup';
+	import { isLongTitle, titleFit } from '$lib/coverCardMarkup';
 	import { coverTitle } from '$lib/coverTitle';
 	import { coverLayoutFor, inkDarkFor, typeTopFor } from '$lib/coverLayouts';
 	import { groundBar } from '$lib/groundBars';
@@ -212,6 +212,7 @@
 			`style-${style}`,
 			script && `script-${script}`,
 			isLongTitle(setTitle) && 'long-title',
+			titleFit(setTitle),
 			isArt && typeTopFor(book.slug, layout) && 'type-top'
 		]}
 		{...blockDir}

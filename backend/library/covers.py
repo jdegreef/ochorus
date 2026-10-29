@@ -453,6 +453,20 @@ TYPE_TOP = frozenset({
     "key-teachings-of-george-macdonald",
     "key-teachings-of-g-k-chesterton",
     "key-teachings-of-elisabeth-elliot",
+    # Calm sky over a central subject (2026-10-29): see coverLayouts.TYPE_TOP.
+    "christ-the-healer",
+    "evangelization-of-the-world",
+    "ever-increasing-faith",
+    "first-principles-of-the-reformation",
+    "holiness",
+    "interior-castle",
+    "large-catechism",
+    "old-paths",
+    "practical-religion",
+    "religious-experience-and-journal",
+    "the-normal-christian-life",
+    "the-pursuit-of-god",
+    "things-as-they-are",
 })
 
 #: The brandmark's own columns (`BookCover`'s centred lockup). Only a TYPE_TOP
