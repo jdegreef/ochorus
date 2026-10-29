@@ -1052,6 +1052,93 @@ CURATED: dict[str, Artwork] = {
         "world — and put it to the service of truth.",
         focus=0.2,
     ),
+    # ── Batch 27 · the last painted plates (2026-10-29) ─────────────────────
+    # Fourteen singles and pairs: Owen, Torrey, Murray, Moody, Bunyan, Baxter,
+    # Watson, Calvin, Teresa, Anselm, Gregory and Phillis Wheatley. Met and
+    # Cleveland only — Wikimedia was refusing this session's requests (see the
+    # level-up-cover skill). Laid-out authors keep their layouts; each pick was
+    # judged on its composed twin.
+    "abide-in-christ": Artwork(
+        "cma", 173658, "Emilie Preyer", "Still Life with Fruit", "1873",
+        "\"I am the vine, ye are the branches: he that abideth in me, and I in "
+        "him, the same bringeth forth much fruit.\" Grapes on the vine leaf, "
+        "and the fruit: Murray's whole book is that verse. (Its wash fades the "
+        "upper half, so the fruit sits low; cropped clear of her signature.)",
+        focus=0.72,
+    ),
+    "secret-power": Artwork(
+        "met", 437078, "Achille-Etna Michallon", "Waterfall at Mont-Dore", "1818",
+        "Moody's secret of power is the Holy Spirit, given like water poured "
+        "out: a fall coming down out of the rock with its whole weight.",
+    ),
+    "how-to-pray": Artwork(
+        "cma", 159270, "Heinrich Hansen", "The Slotskirken of Christiansborg, Copenhagen",
+        "c. 1850s",
+        "\"Enter into thy closet, and when thou hast shut thy door, pray\": an "
+        "empty chapel in quiet light, the place set apart.",
+    ),
+    "what-the-bible-teaches": Artwork(
+        "met", 10154, "Albert Bierstadt", "The Rocky Mountains, Lander's Peak", "1863",
+        "Torrey's survey of every great doctrine of Scripture, given the whole "
+        "range at once: peak beyond peak, under one sky. The diagonal shows the "
+        "upper half, so the ground is chosen for its summits.",
+    ),
+    "the-holy-war": Artwork(
+        "met", 436553, "Goya", "A City on a Rock", "",
+        "A walled city on its rock, assailed from the air: Bunyan's Mansoul, "
+        "the town lost to Diabolus and taken again by Emmanuel.",
+    ),
+    "the-saints-everlasting-rest": Artwork(
+        "met", 435905, "Claude Lorrain (Claude Gellée)", "The Ford", "possibly 1636",
+        "Travellers and their herd crossing a still river in the evening light, "
+        "the day's road nearly done: \"there remaineth therefore a rest to the "
+        "people of God.\"",
+    ),
+    "a-body-of-divinity": Artwork(
+        "cma", 145450, "Emanuel de Witte", "Interior of a Church", "c. 1680",
+        "A whitewashed Reformed church, the hearers gathered: Watson's book is "
+        "the Westminster catechism preached, sermon by sermon, from such a pulpit.",
+    ),
+    "communion-with-god": Artwork(
+        "cma", 139815, "Thomas Doughty", "View of a Lake", "c. 1830s",
+        "A still lake under a quiet sky — Owen's communion with the Father, Son "
+        "and Spirit is fellowship in rest, not effort.",
+    ),
+    "the-glory-of-christ": Artwork(
+        "met", 436833, "Arkhyp Kuindzhi (Arkhip Ivanovich Kuindzhi)", "Red Sunset",
+        "1905–8",
+        "A low sun blazing under a dark cloud. Owen's last book, finished as he "
+        "was dying, is a meditation on the glory he expected soon to see.",
+    ),
+    "institutes-of-the-christian-religion": Artwork(
+        "cma", 141168, "Gustave Courbet", "Panoramic View of the Alps, Les Dents du Midi",
+        "1877",
+        "The Alps above the Lake of Geneva, Calvin's city, painted by Courbet in "
+        "his exile on its shore.",
+    ),
+    "interior-castle": Artwork(
+        "met", 437171, "Emanuel Murant", "The Old Castle", "",
+        "Teresa pictures the soul as a castle of many mansions, with God in the "
+        "innermost: an old castle standing in its own country.",
+        focus=0.1,
+    ),
+    "proslogium-monologium-cur-deus-homo": Artwork(
+        "met", 437189, "Pieter Neeffs the Younger", "Interior of a Gothic Church at Night",
+        "ca. 1660",
+        "A Gothic church by lamplight. Eadmer says the argument of the Proslogium "
+        "came to Anselm at Bec during the night office, after long sleepless search.",
+    ),
+    "the-book-of-pastoral-rule": Artwork(
+        "met", 437042, "Anton Mauve", "The Return to the Fold", "",
+        "A shepherd bringing his flock home: Gregory's rule is for those who "
+        "keep the flock, and the title says what kind of rule it is.",
+    ),
+    "poems-on-various-subjects": Artwork(
+        "cma", 106088, "Winslow Homer", "Early Morning After a Storm at Sea",
+        "1900–1903",
+        "The Atlantic she was carried across as a child — \"'Twas mercy brought "
+        "me from my Pagan land\" — in the first light after the storm.",
+    ),
 }
 
 
@@ -1252,6 +1339,14 @@ ORIGINAL_GROUND: dict[str, Original] = {
     "brave-for-god-4": Original(
         "a5c690a89c4784a4e108cf74d6cc6d857a2fffe7a855582d746777728d92c343",
         "Snowy mountains under cobalt: pines, a snowfield and a small red cabin.",
+    ),
+    "faithful-with-little": Original(
+        "90f3d2aba984ada532676e998b4cc1d431a9826a2789fb1e7d63e9393f647158",
+        "The widow's two small coins (Mark 12:42, in the book's introduction), "
+        "low in a pool of warm light on the deep green the book's plate wore: "
+        "the little that was faithfully given. Drawn by "
+        "scripts/original_grounds/faithful_with_little.py; the type is set from "
+        "the top, so the coins sit under the subtitle and over the mark.",
     ),
     "growing-in-wisdom": Original(
         "fe3a7ee388b67085b7aaceab5be296a9a50e20502cb234e5c8f6fc590f34c3b6",
