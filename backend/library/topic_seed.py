@@ -339,6 +339,7 @@ TOPICS = [
             "on-the-incarnation",
             "the-city-of-god",
             "life-of-antony",
+            "against-the-arians",
             "on-the-priesthood",
             "treatises-of-cyprian",
             "first-epistle-of-clement",
