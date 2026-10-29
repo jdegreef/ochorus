@@ -211,6 +211,7 @@ TOPICS = [
             "plain-account-christian-perfection",
             "godliness",
             "holiness",
+            "expository-thoughts-on-matthew",
             "practical-religion",
             "religious-affections",
             "key-teachings-of-jonathan-edwards",
