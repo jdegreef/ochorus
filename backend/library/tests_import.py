@@ -10,6 +10,7 @@ import fitz  # PyMuPDF
 from django.test import SimpleTestCase, TestCase, override_settings
 from rest_framework.test import APIClient
 
+from library import archive_ocr
 from library import upload_import as ui
 from library.catalog import AUTHORS, BOOKS
 from library.ingest import is_front_matter, upsert_book
@@ -2326,7 +2327,7 @@ class GutenbergBackMatterTests(SimpleTestCase):
                 self.assertFalse(is_front_matter(title))
 
 
-class ArchiveOcrTests(TestCase):
+class ArchiveOcrTests(SimpleTestCase):
     """`library.archive_ocr`: archive.org djvu text back into a sermon.
 
     Each case is a defect the 1844/1863/1864 scans actually carry.
@@ -2346,15 +2347,11 @@ class ArchiveOcrTests(TestCase):
     )
 
     def _clean(self, page, title=""):
-        from library import archive_ocr
-
         return archive_ocr.clean(
             archive_ocr.slice_sermon(page, "Now then we are", "To preside in", "SERMON IV."), title
         )
 
     def test_slice_skips_the_contents_entry_and_starts_at_the_verse(self):
-        from library import archive_ocr
-
         contents = "CONTENTS\n\n2 COR. v. 20. — Now then we are ambassadors ... 137\n\nSERMON IV.\n\n"
         out = archive_ocr.slice_sermon(contents + self.PAGE, "Now then we are", "To preside in", "SERMON IV.")
         self.assertTrue(out.startswith("2  COR."), out[:40])
@@ -2377,33 +2374,36 @@ class ArchiveOcrTests(TestCase):
         self.assertEqual(len(paras), 3)
 
     def test_a_real_compound_keeps_its_hyphen(self):
-        from library.archive_ocr import _join, library_vocabulary
-
-        self.assertEqual(_join("the sin-", "killers of", library_vocabulary()), "the sin-killers of")
+        self.assertEqual(archive_ocr._join("the sin-", "killers of"), "the sin-killers of")
 
     def test_quote_marks_seat_against_their_words(self):
-        from library.archive_ocr import _tidy
-
+        _tidy = archive_ocr._tidy
         self.assertEqual(_tidy('another " beatitude "in addition'), 'another "beatitude" in addition')
         self.assertEqual(_tidy('the dead.\'\' But'), 'the dead." But')
         # An odd count runs on from another paragraph; leave it alone.
         self.assertEqual(_tidy('"Not closed here'), '"Not closed here')
 
     def test_reconcile_takes_the_real_word_from_another_scan(self):
-        from library.archive_ocr import reconcile
-
+        reconcile = archive_ocr.reconcile
         primary = ["we are ambassadors for Christy as though God did beseech you"]
         other = ["we are ambassadors for Christ, as though God did beseech you"]
         self.assertEqual(reconcile(primary, [other]), ["we are ambassadors for Christ, as though God did beseech you"])
 
     def test_reconcile_mends_a_word_split_at_a_column_edge(self):
-        from library.archive_ocr import reconcile
-
+        reconcile = archive_ocr.reconcile
         primary = ["lying in the depths of ungo lliness and sin"]
         other = ["lying in the depths of ungodliness and sin"]
         self.assertEqual(reconcile(primary, [other]), ["lying in the depths of ungodliness and sin"])
 
     def test_reconcile_keeps_the_primary_where_both_readings_are_words(self):
-        from library.archive_ocr import reconcile
-
+        reconcile = archive_ocr.reconcile
         self.assertEqual(reconcile(["he said unto them"], [["be said unto them"]]), ["he said unto them"])
+
+    def test_sermon_paragraphs_splits_the_bible_text_from_the_sermon(self):
+        head, paras = archive_ocr.sermon_paragraphs(
+            [self.PAGE], "Now then we are", "To preside in", "SERMON IV."
+        )
+        self.assertTrue(head.startswith("2 COR. v. 20. — Now then"), head)
+        self.assertTrue(paras[0].startswith("To preside in"))
+        with self.assertRaises(archive_ocr.SliceError):
+            archive_ocr.sermon_paragraphs([self.PAGE], "Now then we are", "Nowhere here", "SERMON IV.")

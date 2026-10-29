@@ -32,6 +32,7 @@ from django.core.management.base import BaseCommand, CommandError
 from library import archive_ocr, english_audit
 from library.corrections import settled_sermon_body
 from library.ingest import QUOTES, clean_fragment, display_line, soup, word_count
+from library.management.commands.import_archive import fetch_text as fetch_archive_text
 from library.management.commands.import_gutenberg import content_root
 from library.management.commands.import_web import NAV_TARGET
 from library.management.commands.import_web import extract_page as extract_web_page
@@ -429,26 +430,20 @@ def extract_sermonindex(html: str, title: str = "") -> str:
     return clean_fragment(html_body)
 
 
+# Cached by identifier: a batch cuts several sermons from the same volume.
+fetch_scan = lru_cache(maxsize=8)(fetch_archive_text)
+
+
 def extract_archive_sermon(entry: SermonEntry) -> str:
-    """One sermon from an archive.org scan, cross-checked against other scans.
-
-    See ``library.archive_ocr``. The paragraphs before ``body_starts`` are the
-    Bible text and become the opening blockquote; footnotes follow the sermon.
-    """
-    def paras(identifier: str) -> list[str]:
-        ocr = archive_ocr.fetch_djvu(identifier)
-        return archive_ocr.clean(
-            archive_ocr.slice_sermon(ocr, entry.section, entry.body_starts, entry.section_end),
-            entry.title,
-        )
-
-    text = archive_ocr.reconcile(paras(entry.source_ref), [paras(a) for a in entry.alt_refs])
-    body_at = next(
-        i for i, p in enumerate(text) if p.casefold().startswith(entry.body_starts.casefold())
+    """One sermon from an archive.org scan, cross-checked against other scans
+    of the same edition (``library.archive_ocr``): its Bible text as the opening
+    blockquote, then the sermon, footnotes last."""
+    scans = [fetch_scan(i) for i in (entry.source_ref, *entry.alt_scans)]
+    head, paras = archive_ocr.sermon_paragraphs(
+        scans, entry.text_starts, entry.body_starts, entry.ends_before, entry.title
     )
-    head = " ".join(text[:body_at])
     blocks = [f"<blockquote>{escape(head)}</blockquote>"] if head else []
-    blocks += [f"<p>{escape(p)}</p>" for p in text[body_at:]]
+    blocks += [f"<p>{escape(p)}</p>" for p in paras]
     return clean_fragment("".join(blocks))
 
 

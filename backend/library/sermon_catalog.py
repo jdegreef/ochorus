@@ -35,19 +35,19 @@ class SermonEntry:
     # ccel/web/sermonindex: full URL of the page; gutenberg: ebook id;
     # archive: the archive.org identifier of the primary scan
     source_ref: str
-    # gutenberg: the heading text of the sermon, at any level; archive: the words
-    # its Bible text begins with (the slice starts there)
-    section: str = ""
+    section: str = ""  # gutenberg: the heading text of the sermon, at any level
     # gutenberg: the heading tag ("h1".."h4") to match, when `section` names
     # more than one heading (a volume titled after one of its studies).
     section_level: str = ""
     scripture_ref: str = ""  # override; parsed from the page when empty
     preached_on: str = ""  # ISO date override; parsed from the page when empty
     body_starts: str = ""  # web/archive: literal text the sermon's first paragraph starts with
-    # archive: the heading that follows the sermon (where the slice ends), and
-    # other scans of the same edition to cross-check the OCR against.
-    section_end: str = ""
-    alt_refs: tuple[str, ...] = ()
+    # archive (see library.archive_ocr): the words its Bible text begins with,
+    # the heading that follows the sermon, and other scans of the same edition
+    # to cross-check the OCR against.
+    text_starts: str = ""
+    ends_before: str = ""
+    alt_scans: tuple[str, ...] = ()
 
 
 # Authors that sermons may introduce before any of their books exist in the
@@ -1583,55 +1583,55 @@ SERMONS: list[SermonEntry] = [
     ),
     SermonEntry(
         "sinners-entreated-to-be-reconciled-to-god", "Sinners Entreated to Be Reconciled to God",
-        "samuel-davies", "archive", "sermonsdavies01daviiala", alt_refs=("sermons_01daviuoft",),
-        section="Now then we are ambassadors", body_starts="To preside in the solemnities",
-        section_end="SERMON IV.", scripture_ref="2 Corinthians 5:20",
+        "samuel-davies", "archive", "sermonsdavies01daviiala", alt_scans=("sermons_01daviuoft",),
+        text_starts="Now then we are ambassadors", body_starts="To preside in the solemnities",
+        ends_before="SERMON IV.", scripture_ref="2 Corinthians 5:20",
     ),
     SermonEntry(
         "making-light-of-christ", "The Nature and Danger of Making Light of Christ",
-        "samuel-davies", "archive", "sermonsdavies01daviiala", alt_refs=("sermons_01daviuoft",),
-        section="But they made light of it", body_starts="There is not one of us in this assembly",
-        section_end="SERMON VIII.", scripture_ref="Matthew 22:5",
+        "samuel-davies", "archive", "sermonsdavies01daviiala", alt_scans=("sermons_01daviuoft",),
+        text_starts="But they made light of it", body_starts="There is not one of us in this assembly",
+        ends_before="SERMON VIII.", scripture_ref="Matthew 22:5",
     ),
     SermonEntry(
         "the-compassion-of-christ-to-weak-believers", "The Compassion of Christ to Weak Believers",
-        "samuel-davies", "archive", "sermonsdavies01daviiala", alt_refs=("sermons_01daviuoft",),
-        section="A bruised reed shall he not break", body_starts="The Lord Jesus possesses all those virtues",
-        section_end="SERMON IX.", scripture_ref="Matthew 12:20",
+        "samuel-davies", "archive", "sermonsdavies01daviiala", alt_scans=("sermons_01daviuoft",),
+        text_starts="A bruised reed shall he not break", body_starts="The Lord Jesus possesses all those virtues",
+        ends_before="SERMON IX.", scripture_ref="Matthew 12:20",
     ),
     SermonEntry(
         "the-expulsive-power-of-a-new-affection", "The Expulsive Power of a New Affection",
-        "thomas-chalmers", "archive", "sermonsdiscourse02chal", alt_refs=("sermonsdiscoursesd02chal", "sermonsanddisco03chalgoog"),
-        section="neither the things that are in the world", body_starts="There are two ways",
-        section_end="SERMON III.", scripture_ref="1 John 2:15",
+        "thomas-chalmers", "archive", "sermonsdiscourse02chal", alt_scans=("sermonsdiscoursesd02chal", "sermonsanddisco03chalgoog"),
+        text_starts="neither the things that are in the world", body_starts="There are two ways",
+        ends_before="SERMON III.", scripture_ref="1 John 2:15",
     ),
     SermonEntry(
         "the-sure-warrant-of-a-believers-hope", "The Sure Warrant of a Believer's Hope",
-        "thomas-chalmers", "archive", "sermonsdiscourse02chal", alt_refs=("sermonsdiscoursesd02chal", "sermonsanddisco03chalgoog"),
-        section="we were reconciled to God by the death", body_starts="St. Paul, who, by the way",
-        section_end="SERMON IV.", scripture_ref="Romans 5:10",
+        "thomas-chalmers", "archive", "sermonsdiscourse02chal", alt_scans=("sermonsdiscoursesd02chal", "sermonsanddisco03chalgoog"),
+        text_starts="we were reconciled to God by the death", body_starts="St. Paul, who, by the way",
+        ends_before="SERMON IV.", scripture_ref="Romans 5:10",
     ),
     SermonEntry(
         "the-transitory-nature-of-visible-things", "The Transitory Nature of Visible Things",
-        "thomas-chalmers", "archive", "sermonsdiscourse02chal", alt_refs=("sermonsdiscoursesd02chal", "sermonsanddisco03chalgoog"),
-        section="are temporal", body_starts="The assertion that the things which are seen",
-        section_end="SERMON VI.", scripture_ref="2 Corinthians 4:18",
+        "thomas-chalmers", "archive", "sermonsdiscourse02chal", alt_scans=("sermonsdiscoursesd02chal", "sermonsanddisco03chalgoog"),
+        text_starts="are temporal", body_starts="The assertion that the things which are seen",
+        ends_before="SERMON VI.", scripture_ref="2 Corinthians 4:18",
     ),
     SermonEntry(
         "faith-in-an-unseen-christ", "Faith in an Unseen Christ", "horatius-bonar", "archive",
-        "familysermons00bona", section="Blessed are they that have not seen",
-        body_starts="Here is another", section_end="CONSECRATION BY BLOOD", scripture_ref="John 20:29",
+        "familysermons00bona", text_starts="Blessed are they that have not seen",
+        body_starts="Here is another", ends_before="CONSECRATION BY BLOOD", scripture_ref="John 20:29",
     ),
     SermonEntry(
         "a-present-saviour", "A Present Saviour", "horatius-bonar", "archive",
-        "familysermons00bona", section="And knew not that it was Jesus",
-        body_starts="When Jesus comes the second time", section_end="SERMON XXIX.",
+        "familysermons00bona", text_starts="And knew not that it was Jesus",
+        body_starts="When Jesus comes the second time", ends_before="SERMON XXIX.",
         scripture_ref="John 20:14",
     ),
     SermonEntry(
         "the-vain-wish", "The Vain Wish", "horatius-bonar", "archive",
-        "familysermons00bona", section="die the death of the righteous, and let my last end",
-        body_starts="We must not lose sight of the place", section_end="SERMON XLVIII.",
+        "familysermons00bona", text_starts="die the death of the righteous, and let my last end",
+        body_starts="We must not lose sight of the place", ends_before="SERMON XLVIII.",
         scripture_ref="Numbers 23:10",
     ),
 ]

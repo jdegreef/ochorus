@@ -129,7 +129,7 @@ the printed edition from archive.org. `library/archive_ocr.py` reads its
 `<id>_djvu.txt` OCR: it slices one sermon, drops running heads and page numbers,
 rejoins paragraphs split at a page turn, undoes line-end hyphens, sets footnotes
 after the sermon, seats straight quotes, and then **cross-checks other scans of
-the same edition** (`alt_refs`) word by word, keeping the real word wherever the
+the same edition** (`alt_scans`) word by word, keeping the real word wherever the
 scans disagree. Independent scans rarely misread the same word, so this removes
 most of the noise mechanically.
 
@@ -139,10 +139,10 @@ most of the noise mechanically.
   the rest as `alt_refs`. Davies 1864 had two scans of one printing, and
   Chalmers 1844 had three. With one scan only (Bonar's *Family Sermons*) the
   readers' slip list does all the work.
-- **Catalog fields:** `section` = the words the Bible text begins with (the slice
-  walks back to the top of that paragraph, so a phrase from mid-verse is fine);
-  `body_starts` = the sermon's first words, kept short because each scan misreads
-  different letters; `section_end` = the next sermon's heading. If the OCR garbles
+- **Catalog fields:** `text_starts` = the words the Bible text begins with (the
+  slice walks back to the top of that paragraph, so a phrase from mid-verse is
+  fine); `body_starts` = the sermon's first words, kept short because each scan
+  misreads different letters; `ends_before` = the next sermon's heading. If the OCR garbles
   that heading (Bonar's "SERMON XXVIT."), use the next sermon's title. Set
   `scripture_ref` yourself: the importer doesn't parse it from OCR.
 - **What survives the cross-check:** misreads shared by both scans, real-word
