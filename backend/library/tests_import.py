@@ -2407,3 +2407,31 @@ class ArchiveOcrTests(SimpleTestCase):
         self.assertTrue(paras[0].startswith("To preside in"))
         with self.assertRaises(archive_ocr.SliceError):
             archive_ocr.sermon_paragraphs([self.PAGE], "Now then we are", "Nowhere here", "SERMON IV.")
+
+    def test_a_clean_joined_word_is_not_split_by_another_scan(self):
+        self.assertEqual(
+            archive_ocr.reconcile(["he gave himself for us"], [["he gave him self for us"]]),
+            ["he gave himself for us"],
+        )
+
+    def test_a_paragraphs_first_word_is_cross_checked_too(self):
+        primary = ["Before this.", "Tlie Lord said unto them all."]
+        other = ["Before this.", "The Lord said unto them all."]
+        self.assertEqual(archive_ocr.reconcile(primary, [other])[1], "The Lord said unto them all.")
+
+    def test_a_ligature_does_not_shift_the_slice(self):
+        page = "ﬁrst ﬂock ﬁeld\n\n" + self.PAGE
+        out = archive_ocr.slice_sermon(page, "Now then we are", "To preside in", "SERMON IV.")
+        self.assertTrue(out.rstrip().endswith("translation."), out[-60:])
+
+    def test_an_asterism_is_not_a_footnote(self):
+        self.assertEqual(archive_ocr.clean("Text here.\n\n* * *\n\nMore text."), ["Text here.", "More text."])
+
+    def test_a_division_number_is_kept_and_a_folio_dropped(self):
+        self.assertEqual(archive_ocr.clean("II.\n\nThe second head.\n\n137\n\nxii"), ["II.", "The second head."])
+
+    def test_a_corrector_scan_that_misses_a_marker_is_left_out(self):
+        head, paras = archive_ocr.sermon_paragraphs(
+            [self.PAGE, "nothing of the sort"], "Now then we are", "To preside in", "SERMON IV."
+        )
+        self.assertTrue(paras[0].startswith("To preside in"))

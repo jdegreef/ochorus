@@ -36,8 +36,9 @@ from functools import lru_cache
 
 from library.english_audit import library_word_counts
 
-# A word must appear this often elsewhere in the library to count as real.
-MIN_REAL = 2
+# A word must appear this often elsewhere in the library to count as real. At 2,
+# misreads that leaked into the corpus twice ("tbe") passed for words.
+MIN_REAL = 3
 # How far after the Bible text the sermon's first words may start.
 _PAGE_CHARS = 3000
 
@@ -52,13 +53,18 @@ def sermon_paragraphs(
     """One sermon from one or more scans of its edition: (Bible text, paragraphs).
 
     `scans[0]` is the primary — pick the cleanest — and the rest only correct
-    it. The paragraphs before the one opening on `body_starts` are the Bible
+    it; a corrector whose OCR misreads one of the markers is left out rather than
+    failing the sermon. The paragraphs before the one opening on `body_starts` are the Bible
     text, joined into one string; the paragraphs from it on are the sermon, its
     footnotes last.
     """
-    primary, *others = (
-        clean(slice_sermon(s, text_starts, body_starts, ends_before), title) for s in scans
-    )
+    primary = clean(slice_sermon(scans[0], text_starts, body_starts, ends_before), title)
+    others = []
+    for scan in scans[1:]:
+        try:
+            others.append(clean(slice_sermon(scan, text_starts, body_starts, ends_before), title))
+        except SliceError:
+            continue  # this scan misread a marker; the others still correct the primary
     text = reconcile(primary, others)
     body = _norm(body_starts)
     at = next((i for i, p in enumerate(text) if _norm(p).startswith(body)), None)
@@ -74,17 +80,27 @@ def _norm(text: str) -> str:
     return _flatten(text)[0].strip()
 
 
-@lru_cache(maxsize=8)
-def _flatten(text: str) -> tuple[str, tuple[int, ...]]:
-    """`text` case-folded with whitespace runs collapsed, and each char's index.
+def _fold(ch: str) -> str:
+    """One char case-folded to ONE char, so `_flatten`'s index stays aligned.
 
-    Cached: a batch slices several sermons from the same 2 MB volume.
+    `casefold` expands some ("ﬁ" → "fi", "ß" → "ss"); those keep their case.
     """
+    folded = ch.casefold()
+    return folded if len(folded) == 1 else ch
+
+
+def _flatten(text: str) -> tuple[str, tuple[int, ...]]:
+    """`text` case-folded with whitespace runs collapsed, and each char's index."""
     chars, where = [], []
     for m in re.finditer(r"\s+|\S", text):
-        chars.append(" " if m[0].isspace() else m[0].casefold())
+        chars.append(" " if m[0].isspace() else _fold(m[0]))
         where.append(m.start())
     return "".join(chars), tuple(where)
+
+
+# Cached apart from `_norm`'s short strings, which would otherwise evict the
+# volumes: a batch slices several sermons from the same 2 MB scan.
+_flatten_volume = lru_cache(maxsize=4)(_flatten)
 
 
 def slice_sermon(text: str, text_starts: str, body_starts: str, ends_before: str) -> str:
@@ -98,7 +114,7 @@ def slice_sermon(text: str, text_starts: str, body_starts: str, ends_before: str
     whitespace-insensitively; keep `body_starts` short, since each scan
     misreads different letters.
     """
-    hay, where = _flatten(text)
+    hay, where = _flatten_volume(text)
     start, body = _norm(text_starts), _norm(body_starts)
     a = hay.find(start)
     while a >= 0:
@@ -127,14 +143,15 @@ def slice_sermon(text: str, text_starts: str, body_starts: str, ends_before: str
 # --- cleaning -----------------------------------------------------------------
 
 # A running head: a short line in capitals, perhaps with the page number, or a
-# bare page number. Body text in capitals is rare and never this short.
-_PAGE_NO = re.compile(r"^[\divxlcIVXLC]{1,5}\.?$")
+# bare page number (a roman folio has no stop; "II." on its own line is a
+# sermon's division and stays). Body text in capitals is rare and never this short.
+_PAGE_NO = re.compile(r"^(?:\d{1,4}|[ivxlc]{1,6}|[IVXLC]{1,6})$")
 # The bracketed tag a two-column edition sets in its running head: "[SERM."
 _SERM_TAG = re.compile(r"^\W{0,3}\w?SERM\W{0,3}$", re.I)
 # A footnote at the foot of a page: "* This is the most literal translation…".
 # It runs to the next blank line, and is set after the sermon (as Unspoken
 # Sermons sets MacDonald's), its mark left where the text refers to it.
-_FOOTNOTE = re.compile(r"^\s*[*†‡§]\s")
+_FOOTNOTE = re.compile(r"^\s*[*†‡§]\s+[A-Za-z\"“]")  # not an asterism "* * *"
 _TERMINAL = (".", "!", "?", ":", '"', "”", "’", "'", ")")
 
 
@@ -276,50 +293,50 @@ def _real(tok: str) -> bool:
 def _spans_agree(mine: list[str], theirs: list[str]) -> bool:
     """May `theirs` replace `mine`, a stretch the scans split differently?
 
-    Yes when the letters are the same and only the spacing differs ("ungo
-    lliness" / "ungodliness"), or when `mine` holds a non-word and `theirs`,
-    no longer by more than a word, holds none ("dnst its" / "dread its").
+    Only when `mine` holds a non-word and `theirs` holds none — so a clean
+    "himself" is never split into another scan's "him self" — and either the
+    letters are the same and only the spacing differs ("ungo lliness" /
+    "ungodliness"), or the stretches differ in length by a word at most ("dnst
+    its" / "dread its").
     """
-    if not theirs or not all(_real(t) for t in theirs):
+    if not theirs or all(_real(m) for m in mine) or not all(_real(t) for t in theirs):
         return False
-    if "".join(map(_core, mine)) == "".join(map(_core, theirs)):
-        return True
-    return abs(len(mine) - len(theirs)) <= 1 and not all(_real(m) for m in mine)
+    same_letters = "".join(map(_core, mine)) == "".join(map(_core, theirs))
+    return same_letters or abs(len(mine) - len(theirs)) <= 1
 
 
 def reconcile(primary: list[str], others: list[list[str]]) -> list[str]:
-    """Correct `primary`'s misread words from independent scans of the same page.
+    """Correct `primary`'s misread words from independent scans of the same text.
 
-    Each paragraph's words are aligned against the whole text of every other
-    scan. Where the scans disagree on a single word, the primary's reading
-    stands unless it is not a real word and another scan's is; then the other
-    scan's token is taken whole, punctuation and all ("Christy" → "Christ,").
-    Words are aligned on their letters, so a misread comma alone never moves
-    the alignment. Paragraph breaks are the primary's.
+    The whole sermon is aligned at once against each other scan, so a
+    paragraph's first and last words are cross-checked like the rest. Where the
+    scans disagree on a word, the primary's reading stands unless it is not a
+    real word and the other scan's is; then the other scan's token is taken
+    whole, punctuation and all ("Christy" → "Christ,"). Words are aligned on
+    their letters, so a misread comma alone never moves the alignment. A
+    stretch the scans split differently is replaced only inside one paragraph;
+    paragraph breaks are the primary's.
     """
-    alts = []  # (tokens, a matcher holding them as its fixed second sequence)
+    toks = [_TOKEN.findall(p) for p in primary]
+    # (paragraph, position) of every primary token, in reading order
+    index = [(n, k) for n, para in enumerate(toks) for k in range(len(para))]
     for other in others:
-        tokens = _TOKEN.findall(" ".join(other))
-        sm = difflib.SequenceMatcher(None, autojunk=False)
-        sm.set_seq2([_core(t) for t in tokens])
-        alts.append((tokens, sm))
-    out: list[str] = []
-    for para in primary:
-        toks = _TOKEN.findall(para)
-        for alt, sm in alts:
-            sm.set_seq1([_core(t) for t in toks])
-            fixes = []  # (i1, i2, replacement tokens), applied right to left
-            for op, i1, i2, j1, j2 in sm.get_opcodes():
-                if op != "replace":
-                    continue
-                mine, theirs = toks[i1:i2], alt[j1:j2]
-                if i2 - i1 == j2 - j1:
-                    for k, (m, t) in enumerate(zip(mine, theirs, strict=True)):
-                        if not _real(m) and _real(t):
-                            toks[i1 + k] = t
-                elif _spans_agree(mine, theirs):
-                    fixes.append((i1, i2, theirs))
-            for i1, i2, theirs in reversed(fixes):
-                toks[i1:i2] = theirs
-        out.append(" ".join(toks))
-    return out
+        alt = _TOKEN.findall(" ".join(other))
+        flat = [toks[n][k] for n, k in index]
+        sm = difflib.SequenceMatcher(None, [_core(t) for t in flat], [_core(t) for t in alt], autojunk=False)
+        spans = []  # (paragraph, first, last + 1, replacement), applied right to left
+        for op, i1, i2, j1, j2 in sm.get_opcodes():
+            if op != "replace":
+                continue
+            mine, theirs = flat[i1:i2], alt[j1:j2]
+            if i2 - i1 == j2 - j1:
+                for (n, k), m, t in zip(index[i1:i2], mine, theirs, strict=True):
+                    if not _real(m) and _real(t):
+                        toks[n][k] = t
+            elif index[i1][0] == index[i2 - 1][0] and _spans_agree(mine, theirs):
+                n = index[i1][0]
+                spans.append((n, index[i1][1], index[i2 - 1][1] + 1, theirs))
+        for n, k1, k2, theirs in reversed(spans):
+            toks[n][k1:k2] = theirs
+        index = [(n, k) for n, para in enumerate(toks) for k in range(len(para))]
+    return [" ".join(t) for t in toks]

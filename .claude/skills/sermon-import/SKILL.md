@@ -136,7 +136,7 @@ most of the noise mechanically.
 - **Pick scans by measurement.** Search archive.org for every copy of the
   edition, download each `_djvu.txt`, clean the same sermon from each, and count
   words the English library never uses. Take the cleanest as `source_ref` and
-  the rest as `alt_refs`. Davies 1864 had two scans of one printing, and
+  the rest as `alt_scans`. Davies 1864 had two scans of one printing, and
   Chalmers 1844 had three. With one scan only (Bonar's *Family Sermons*) the
   readers' slip list does all the work.
 - **Catalog fields:** `text_starts` = the words the Bible text begins with (the
