@@ -211,6 +211,12 @@ prerendered pages reference it.
   `COVER_STYLE_IDS` recipe also needs a non-`.title` rule OUTSIDE the
   container gate (`coverComposition.test.ts`) and must not give the subtitle a face.
 
+- **Rebasing a CSS change picks up STALE twins silently** (title fit, 2026-10-29). After a
+  `cover-type.css` change redraws every twin, a rebase over sibling PRs brings in THEIR new
+  twins, drawn with the old CSS — and the merged manifest's `css` digest is yours, so
+  `og:covers` calls them unchanged and nothing fails. After the rebase, delete every twin
+  `git diff --name-only <old-base> <new-base> -- 'frontend/static/covers/**/*.png'` lists,
+  re-run `og:covers`, the tuner and `og:covers` again, and re-copy `export_covers`.
 - **The `fonts` digest also moves with local `node_modules`** (a fontsource version
   differing from the last committer's), same symptom: every twin redrawn. Same cure —
   keep the manifest (its new `fonts` value, so the NEXT run doesn't repeat it) + your
