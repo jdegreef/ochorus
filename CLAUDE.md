@@ -54,8 +54,10 @@ See also `backend/CLAUDE.md` and `frontend/CLAUDE.md`.
 - A cover with WORDS in it serves one language. A wordless ground under
   `/covers/art/` serves them all, because `BookCover` draws the title over it per
   edition. So a translated edition never wears another edition's designed file —
-  the sixteen works in `DERIVED_GROUND` keep the English cover in English and
-  wear a crop of its photography everywhere else (`scripts/build_derived_grounds.py`).
+  the works in `DERIVED_GROUND` keep the English cover in English and wear a crop
+  of its photography everywhere else (`scripts/build_derived_grounds.py`) — except
+  `ENGLISH_ON_GROUND`, designed covers that survive only at thumbnail size, whose
+  English wears the crop with live type too (the file stays frozen as its source).
 
 ## Sourcing (be reasonable, not rigid)
 
