@@ -380,6 +380,10 @@
   "the-cloud-of-witnesses": {
    "space-before-punct": 12
   },
+  "the-death-of-death-in-the-death-of-christ": {
+   "lost-paragraphing": 2,
+   "word-fusion": 1
+  },
   "the-dying-thief": {
    "word-fusion": 1
   },

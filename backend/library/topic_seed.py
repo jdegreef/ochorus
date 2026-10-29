@@ -497,6 +497,7 @@ TOPICS = [
             "proslogium-monologium-cur-deus-homo",
             "freedom-of-the-will",
             "bondage-of-the-will",
+            "the-death-of-death-in-the-death-of-christ",
             "first-principles-of-the-reformation",
             "institutes-of-the-christian-religion",
             "old-paths",
