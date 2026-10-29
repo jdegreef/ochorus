@@ -944,6 +944,16 @@ BOOKS: list[BookEntry] = [
               subtitle="Meditations and Discourses on the Glory of Christ",
               cover_color="#6b4e1f",
               skip=("Title page.", "Prefatory note.", "Original preface.")),
+    # The Grace and Duty of Being Spiritually Minded (1681), Goold's Works
+    # vol. 7, from CCEL. Goold's prefatory note and analysis are left out; the
+    # fixture gives each chapter a short title and sets Owen's full heading in
+    # italics as its argument.
+    BookEntry("the-grace-and-duty-of-being-spiritually-minded",
+              "The Grace and Duty of Being Spiritually Minded", "john-owen",
+              "ccel", "owen/spirituallyminded",
+              subtitle="Declared and Practically Improved",
+              cover_color="#2f4a4a",
+              skip=("Title page.", "Prefatory note.", "Analysis.", "Title.")),
     # Two early African-American spiritual autobiographies, keyed (not OCR'd) by
     # UNC's Documenting the American South. Both first published pre-1929, US
     # public domain. See `import_docsouth`. Amanda Smith's per-chapter titles are

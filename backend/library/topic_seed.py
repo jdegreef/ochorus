@@ -410,6 +410,7 @@ TOPICS = [
             "key-teachings-of-jeanne-guyon",
             "key-teachings-of-a-w-tozer",
             "the-pursuit-of-god",
+            "the-grace-and-duty-of-being-spiritually-minded",
             "revelations-of-divine-love",
             "key-teachings-of-george-macdonald",
             "the-practice-of-the-presence-of-god",
