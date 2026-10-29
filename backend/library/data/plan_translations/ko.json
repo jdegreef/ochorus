@@ -100,5 +100,21 @@
    "Backed by the ko editions around-the-wicket-gate (『좁은 문 앞에서』, new in this batch) and men-and-women-who-gave-everything-2 (『모든 것을 드린 사람들』, already shipped); the card quotes both titles exactly. Ships with Level 1 books batch 2 (ko), which makes this plan's source books live in Korean; without this prose seed_plans would publish an English-titled card in Korean (the #819 defect) and PlanTranslationCoverageTests would fail.",
    "'Starting Out' = 첫걸음 (also the description's 'first walk'); 합니다체, the reader never addressed as 당신. AI-drafted; awaiting native review."
   ]
+ },
+ "praying-men": {
+  "title": "기도의 사람들: E. M. 바운즈와 함께하는 기도 학교",
+  "description": "위대한 기도의 사도와 함께 중보기도의 용광로 속에서 보내는 7주. E. M. 바운즈는 설교자 자신에게 필요한 능력에서 시작하여, 기도를 이기게 하는 목적을 펼쳐 보이고, 기도를 그리스도인의 삶의 전부로 만드는 필요성을 보여 줍니다.",
+  "note": [
+   "Curated plan backed by the ko editions power-through-prayer (『기도의 능력』, shipped), purpose-in-prayer (『기도의 목적』, new in this batch) and necessity-of-prayer (『기도의 필요성』, shipped). Ships with Level 1 books batch 3 (ko), which makes this plan's source books live in Korean; without this prose seed_plans would publish an English-titled card in Korean (the #819 defect) and PlanTranslationCoverageTests would fail.",
+   "The card quotes no title in 『』 (the English names none), but its three movements echo the edition titles: 능력, 목적, 필요성. 'School of Prayer' rendered 기도 학교, as in the school-of-prayer plans; 'the whole business' rendered 삶의 전부. Name per the ko name table (E. M. 바운즈); 중보기도 = intercession per the glossary."
+  ]
+ },
+ "the-puritan-heart": {
+  "title": "청교도의 마음",
+  "description": "내면의 삶에 통달한 세 대가와 함께하는 8주. 리처드 십스는 상한 갈대를 싸매 주고, 존 오웬은 여전히 우리 안에 거하는 죄와 맞서 싸우며, 토머스 왓슨은 모든 것이 합력하여 선을 이룬다는 약속 위에 그 모든 싸움을 내려놓습니다.",
+  "note": [
+   "Curated plan backed by the ko editions the-bruised-reed (『상한 갈대』), mortification-of-sin (『신자 안에 있는 죄 죽이기』) and all-things-for-good (『모든 것이 합력하여 선을 이룬다』), all new in this batch. Ships with Level 1 books batch 3 (ko), which makes this plan's source books live in Korean; without this prose seed_plans would publish an English-titled card in Korean (the #819 defect) and PlanTranslationCoverageTests would fail.",
+   "The card quotes no title in 『』 (the English names none), but echoes 『상한 갈대』 and 『모든 것이 합력하여 선을 이룬다』 word for word (both from 개역 이사야 42:3 / 로마서 8:28); 'the sin that still dwells within' is paraphrased (여전히 우리 안에 거하는 죄, 로마서 7:17) rather than echoing the Owen title. Names per the ko name table (리처드 십스, 존 오웬, 토머스 왓슨); Puritan = 청교도."
+  ]
  }
 }
