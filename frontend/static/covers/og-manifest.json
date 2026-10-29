@@ -13761,6 +13761,17 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"homilies-on-romans": {
+			"ground": "2214ece4cfa81d3b0f3e9777cbb48fdd66c70c55b5c74e7a267e68fea5cfcaba",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"how-i-became-a-christian": {
 			"ground": "2f3811737640e4bec22e0567f7aaff0fc1ea1dff6882e15aa970edef0912d497",
 			"style": "revival",
