@@ -15212,6 +15212,17 @@
 			"layout": "box/rust",
 			"bar": 0
 		},
+		"ko/a-retrospect": {
+			"ground": "dc0b111003c52427d82593fb243aa8a4513ccf8cd41e1ab58cafbffa8d4264a7",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "f647c1f70f76cc4716d26b296a803564369f3ef2fe6efb90c21d83530c070253",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0
+		},
 		"ko/a-retrospect-children": {
 			"ground": "48b145904c9cbe156f884c26d4c7d500e1d4d2f0f74bd1df497576054cd48d05",
 			"style": "revival",
@@ -15243,6 +15254,17 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "band/oxblood",
+			"bar": 0
+		},
+		"ko/all-things-for-good": {
+			"ground": "7206579a2d5372275a94ca12d0dbcd845e7f821563bc32a0a632c8cc3a3d4297",
+			"style": "press",
+			"volume": null,
+			"script": "korean",
+			"fonts": "099bcbc747b78f6fc3083929801cd1a68a34d383622304f1686be177448deec5",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/oxblood",
 			"bar": 0
 		},
 		"ko/amanda-smith-autobiography-children": {
@@ -15727,6 +15749,36 @@
 				449
 			]
 		},
+		"ko/mortification-of-sin": {
+			"ground": "3f29fb6c263f732220d1dd196604f6c111f17db18900b32a62cc336d63164678",
+			"style": "press",
+			"volume": null,
+			"script": "korean",
+			"fonts": "70c9f2129f52577fd4e51cc3c0ba391d72e0644069c5a925e0ff06abb5855983",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[150, 305, 450, 378],
+					[150, 365, 450, 438]
+				],
+				"subtitle": [
+					[146, 493, 454, 514]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				279,
+				515
+			]
+		},
 		"ko/necessity-of-prayer": {
 			"ground": "6408386dc50fc804202572db7af94cafc66ff39fdf3132976ac9fb5f8f28b5c2",
 			"style": "devotional",
@@ -15849,6 +15901,17 @@
 			"layout": "wash/ochre",
 			"bar": 0
 		},
+		"ko/purpose-in-prayer": {
+			"ground": "937f9b9447796ac8142b0000e0d1fb38bc6a0f0f3472125720723888964b4ef9",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "9b797d4018ca97d23d259cc8f35ac32c3a0361edebb97c0b3bcbe231590d4279",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0
+		},
 		"ko/rooted-1": {
 			"ground": "a87b6f52780c7283557703a1f0b9c9751f7be8e07128313aef1846a11c0a5667",
 			"style": "young",
@@ -15932,6 +15995,35 @@
 			"scrim": 1,
 			"layout": "band/oxblood",
 			"bar": 0
+		},
+		"ko/the-bruised-reed": {
+			"ground": "f961292f90fb97e39dc369cccc14c9d75ef0aa44a53b33aab370375e3e01189a",
+			"style": "press",
+			"volume": null,
+			"script": "korean",
+			"fonts": "3297f9a5533bc7bfaa143c8eb85fcb53d6adb6887a607ea4819ce35f641560e1",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[153, 102, 447, 131]
+				],
+				"title": [
+					[184, 335, 416, 408]
+				],
+				"subtitle": [
+					[237, 464, 363, 485]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				309,
+				486
+			]
 		},
 		"ko/the-inner-chamber": {
 			"ground": "c7de56895f8b293758df95f953d4a9baf38e7d8d46692e615ab0c57bc08f7c63",
@@ -25204,6 +25296,17 @@
 			"layout": "wash/indigo",
 			"bar": 0.11
 		},
+		"vi/a-retrospect": {
+			"ground": "b5be54d822cb3a6c0bb246b9c27f3d51cb88bb698ec4c9f75adfd0c1540ddf56",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0
+		},
 		"vi/a-retrospect-children": {
 			"ground": "df775fbc4055fd7c05c97b0621a3fa179a72e0151221060599f5f72c74234f54",
 			"style": "revival",
@@ -25224,6 +25327,17 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "band/oxblood",
+			"bar": 0
+		},
+		"vi/all-things-for-good": {
+			"ground": "5601b0ae310f59647235d4e2be93d1681238d9cc1d0c7fd9e1641f23ec074ceb",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/oxblood",
 			"bar": 0
 		},
 		"vi/amanda-smith-autobiography-children": {
@@ -25687,6 +25801,37 @@
 				482
 			]
 		},
+		"vi/mortification-of-sin": {
+			"ground": "0273f7ac0f13a95097eedcdfaad530a0b04a2f449559d5c104e33d5546c6507e",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[151, 277, 449, 350],
+					[145, 337, 455, 410],
+					[92, 396, 508, 469]
+				],
+				"subtitle": [
+					[63, 521, 537, 542]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				251,
+				543
+			]
+		},
 		"vi/necessity-of-prayer": {
 			"ground": "ee9ba2c74cce0711b8d4415b233291995f2e965bafc32bfb2fa02a42c6dd0645",
 			"style": "devotional",
@@ -25810,6 +25955,17 @@
 			"layout": "wash/ochre",
 			"bar": 0
 		},
+		"vi/purpose-in-prayer": {
+			"ground": "58ff9c211f7eaed32f367b5c37c8a4745a34653d7b229e49df135ffa9562feca",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0
+		},
 		"vi/rooted-1": {
 			"ground": "9a7095085e59d96d8053fc17a2e478fb164443b57e1f9c77ec455455c4e668eb",
 			"style": "young",
@@ -25895,6 +26051,35 @@
 			"scrim": 1,
 			"layout": "band/oxblood",
 			"bar": 0
+		},
+		"vi/the-bruised-reed": {
+			"ground": "a4799c092856e7608157865b379e5df2c99670ebadad3918aa38400f61911b77",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[153, 102, 447, 131]
+				],
+				"title": [
+					[108, 337, 492, 410]
+				],
+				"subtitle": [
+					[144, 463, 456, 484]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				311,
+				484
+			]
 		},
 		"vi/the-inner-chamber": {
 			"ground": "3a51ca755979800f18d12469a158f97a5cd432a0d75f78f18e9279e4f4276bc7",
