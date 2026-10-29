@@ -79,6 +79,7 @@ from library.designed_covers import (
     DERIVED_GROUND,
     DESIGNED,
     DESIGNED_BY_SLUG,
+    ENGLISH_ON_GROUND,
     digest,
 )
 from library.ingest import (
@@ -1960,7 +1961,8 @@ class CoverAssetTests(SimpleTestCase):
         — that edition is a coloured slab again while its siblings carry the
         photograph. And if the ENGLISH row were ever repointed at the ground, the
         work would silently lose the hand-made cover this whole tier was built to
-        preserve.
+        preserve — unless it is in `ENGLISH_ON_GROUND`, the deliberate list of
+        designed covers too small to keep, whose English wears the ground too.
         """
         # `test_cover_files_exist` would also catch a missing ground, but only
         # once a row points at it. This catches the state in between — added to
@@ -1980,10 +1982,12 @@ class CoverAssetTests(SimpleTestCase):
             if slug not in DERIVED_GROUND:
                 continue
             # The Modern English edition is English too, so it keeps the
-            # designed file rather than the wordless ground.
+            # designed file rather than the wordless ground — unless the work
+            # is in ENGLISH_ON_GROUND, whose designed file survives only at
+            # thumbnail size and whose English wears the ground too.
             expected = (
                 DESIGNED_BY_SLUG[slug]
-                if is_english_edition(f["language"])
+                if is_english_edition(f["language"]) and slug not in ENGLISH_ON_GROUND
                 else art_url(slug)[0]
             )
             if _cover(f) != expected:
@@ -1991,7 +1995,8 @@ class CoverAssetTests(SimpleTestCase):
         self.assertEqual(
             wrong, [],
             "a derived-ground work wearing the wrong cover — English wears the "
-            "designed file, every other language wears /covers/art/<slug>.jpg "
+            "designed file (the ground, for ENGLISH_ON_GROUND), every other "
+            "language wears /covers/art/<slug>.jpg "
             "(run `uv run python scripts/localize_covers.py`)",
         )
 

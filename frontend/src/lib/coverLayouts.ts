@@ -188,7 +188,16 @@ export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
 	'religious-experience-and-journal': null,
 	'the-normal-christian-life': null,
 	'the-pursuit-of-god': null,
-	'things-as-they-are': null
+	'things-as-they-are': null,
+	// Photographs from designed covers, worn in English since 2026-10-29
+	// (designed_covers.ENGLISH_ON_GROUND): framed like the designed covers they
+	// came from — the author's wash, band or diagonal fades or crops a photograph.
+	'humility-2': null,
+	'jesus-himself-2': null,
+	'lord-teach-us-to-pray-2': null,
+	'talks-to-the-farmer': null,
+	'the-masters-indwelling': null,
+	'the-person-and-work-of-the-holy-spirit': null
 };
 
 /**
