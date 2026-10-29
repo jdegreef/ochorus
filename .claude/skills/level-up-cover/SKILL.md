@@ -1,6 +1,6 @@
 ---
 name: level-up-cover
-description: Level up a flat plate-covered book to a CURATED painted ground — choose a public-domain artwork per book, run `paint_covers`, and ship one PR per author. Use when asked to "do the covers" for an author, replace generated colour-plate covers with real art, add a book to the CURATED tier, or continue the plate → art level-up (author-by-author; ~15 published plates remain after Batch 26 — see "Done so far"). Encodes the sourcing method and the gotchas that bite each run; the command order lives in `backend/scripts/paint_covers.py`. This is a living playbook — append new failure modes as we find them.
+description: Level up a flat plate-covered book to a CURATED painted ground — choose a public-domain artwork per book, run `paint_covers`, and ship one PR per author. Use when asked to "do the covers" for an author, replace generated colour-plate covers with real art, add a book to the CURATED tier, or continue the plate → art level-up (after Batch 27 the only published plate left is the Original `faithful-with-little` — see "Done so far"). Encodes the sourcing method and the gotchas that bite each run; the command order lives in `backend/scripts/paint_covers.py`. This is a living playbook — append new failure modes as we find them.
 ---
 
 # Levelling up a plate cover to CURATED art
@@ -569,12 +569,13 @@ Remaining (pre-Batch-19 note): the Puritan/English devotional group
 on `feature/cyprian-treatises` — check first.
 Batch 26 (2026-10-27, Met + Cleveland): Luther ×4 (Leypold, Dahl, Friedrich, his pupil
 Heinrich), Ryle ×4 (R. Wilson, Crome, Gainsborough, Whittredge), Augustine ×3 on his rail
-(J. Martin, Hackert, H. Robert). Published plates still left after it (2026-10-27 census):
-Augustine's none; Owen ×2, Calvin's Institutes, Bunyan's Holy War, Baxter's Saints'
-Everlasting Rest, Teresa's Interior Castle, Watson's Body of Divinity, Anselm, Gregory's
-Pastoral Rule, Wheatley's Poems, Murray's Abide in Christ, Moody's Secret Power, Torrey's
-How to Pray, and the Original `faithful-with-little` (so the "no published book wears a
-plate" line below is no longer true).
+(J. Martin, Hackert, H. Robert). Batch 27 (2026-10-29, Met + Cleveland) took the last
+fourteen painted plates: Owen ×2, Torrey ×2, Murray, Moody, Bunyan, Baxter, Watson, Calvin,
+Teresa, Anselm, Gregory, Wheatley. The ONE published plate left is the Original
+`faithful-with-little` (5 langs), which needs a drawn ORIGINAL_GROUND, not a painting.
+A diagonal (Torrey) shows only the UPPER third of the ground — pick for the sky or
+summits (Bierstadt), not for a subject at the foot. And check a still life's corners
+for the painter's signature: Preyer's sat bottom-right until `focus` cropped it off.
 Originals (vector recipe, ORIGINAL_GROUND): Brave for God 1–4 #2877, growing-in-wisdom
 #2905, fire-against-the-dark #6060 (2026-10-13 — novel cover; subject + lamp glow kept
 bottom-LEFT, outside the centred subtitle/mark text, so no band fails; 0.30× floor).

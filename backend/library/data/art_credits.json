@@ -1,4 +1,10 @@
 {
+	"a-body-of-divinity": {
+		"artist": "Emanuel de Witte",
+		"title": "Interior of a Church",
+		"year": "c. 1680",
+		"credit": "Emanuel de Witte, “Interior of a Church” (c. 1680). The Cleveland Museum of Art, CC0."
+	},
 	"a-brand-plucked-from-the-fire": {
 		"artist": "George Inness",
 		"title": "Sunny Autumn Day",
@@ -28,6 +34,12 @@
 		"title": "In the Forest",
 		"year": "1841",
 		"credit": "Célestin François Nanteuil, “In the Forest” (1841). The Cleveland Museum of Art, CC0."
+	},
+	"abide-in-christ": {
+		"artist": "Emilie Preyer",
+		"title": "Still Life with Fruit",
+		"year": "1873",
+		"credit": "Emilie Preyer, “Still Life with Fruit” (1873). The Cleveland Museum of Art, CC0."
 	},
 	"absolute-surrender": {
 		"artist": "Vincent van Gogh",
@@ -100,6 +112,12 @@
 		"title": "The Road to Market",
 		"year": "1858–59",
 		"credit": "Constant Troyon, “The Road to Market” (1858–59). The Art Institute of Chicago, CC0."
+	},
+	"communion-with-god": {
+		"artist": "Thomas Doughty",
+		"title": "View of a Lake",
+		"year": "c. 1830s",
+		"credit": "Thomas Doughty, “View of a Lake” (c. 1830s). The Cleveland Museum of Art, CC0."
 	},
 	"confessions": {
 		"artist": "Théodore Géricault",
@@ -239,6 +257,12 @@
 		"year": "1865",
 		"credit": "Gustave Courbet, “The Fishing Boat” (1865). The Metropolitan Museum of Art, Open Access."
 	},
+	"how-to-pray": {
+		"artist": "Heinrich Hansen",
+		"title": "The Slotskirken of Christiansborg, Copenhagen",
+		"year": "c. 1850s",
+		"credit": "Heinrich Hansen, “The Slotskirken of Christiansborg, Copenhagen” (c. 1850s). The Cleveland Museum of Art, CC0."
+	},
 	"how-to-succeed-in-the-christian-life": {
 		"artist": "Auguste Renoir",
 		"title": "A Road in Louveciennes",
@@ -250,6 +274,18 @@
 		"title": "Morning",
 		"year": "1760",
 		"credit": "Claude Joseph Vernet, “Morning” (1760). The Art Institute of Chicago, CC0."
+	},
+	"institutes-of-the-christian-religion": {
+		"artist": "Gustave Courbet",
+		"title": "Panoramic View of the Alps, Les Dents du Midi",
+		"year": "1877",
+		"credit": "Gustave Courbet, “Panoramic View of the Alps, Les Dents du Midi” (1877). The Cleveland Museum of Art, CC0."
+	},
+	"interior-castle": {
+		"artist": "Emanuel Murant",
+		"title": "The Old Castle",
+		"year": "",
+		"credit": "Emanuel Murant, “The Old Castle” (). The Metropolitan Museum of Art, Open Access."
 	},
 	"john-hyde-a-life": {
 		"artist": "George Inness",
@@ -443,6 +479,12 @@
 		"year": "1864",
 		"credit": "George Inness, “Harvest Time” (1864). The Cleveland Museum of Art, CC0."
 	},
+	"poems-on-various-subjects": {
+		"artist": "Winslow Homer",
+		"title": "Early Morning After a Storm at Sea",
+		"year": "1900–1903",
+		"credit": "Winslow Homer, “Early Morning After a Storm at Sea” (1900–1903). The Cleveland Museum of Art, CC0."
+	},
 	"possibilities-of-prayer": {
 		"artist": "Antoine-Claude Ponthus-Cinier",
 		"title": "Châteauvieux-sur-Suran",
@@ -490,6 +532,12 @@
 		"title": "Twilight in the Cedars at Darien, Connecticut",
 		"year": "1872",
 		"credit": "John Frederick Kensett, “Twilight in the Cedars at Darien, Connecticut” (1872). The Metropolitan Museum of Art, Open Access."
+	},
+	"proslogium-monologium-cur-deus-homo": {
+		"artist": "Pieter Neeffs the Younger",
+		"title": "Interior of a Gothic Church at Night",
+		"year": "ca. 1660",
+		"credit": "Pieter Neeffs the Younger, “Interior of a Gothic Church at Night” (ca. 1660). The Metropolitan Museum of Art, Open Access."
 	},
 	"provincial-letters": {
 		"artist": "Jean-François Rafaëlli",
@@ -545,6 +593,12 @@
 		"year": "1868",
 		"credit": "François-Louis Français, “Gathering Olives at Tivoli” (1868). The Metropolitan Museum of Art, Open Access."
 	},
+	"secret-power": {
+		"artist": "Achille-Etna Michallon",
+		"title": "Waterfall at Mont-Dore",
+		"year": "1818",
+		"credit": "Achille-Etna Michallon, “Waterfall at Mont-Dore” (1818). The Metropolitan Museum of Art, Open Access."
+	},
 	"selected-sermons-edwards": {
 		"artist": "Jasper F. Cropsey",
 		"title": "The Clove - A Storm Scene in the Catskill Mountains",
@@ -599,6 +653,12 @@
 		"year": "ca. 1866",
 		"credit": "John Ruskin, “The Valley of Lauterbrunnen, Switzerland” (ca. 1866). The Metropolitan Museum of Art, Open Access."
 	},
+	"the-book-of-pastoral-rule": {
+		"artist": "Anton Mauve",
+		"title": "The Return to the Fold",
+		"year": "",
+		"credit": "Anton Mauve, “The Return to the Fold” (). The Metropolitan Museum of Art, Open Access."
+	},
 	"the-bruised-reed": {
 		"artist": "Jules Dupré",
 		"title": "Marshland",
@@ -623,11 +683,23 @@
 		"year": "1748",
 		"credit": "Canaletto (Giovanni Antonio Canal), “Warwick Castle” (1748). The Metropolitan Museum of Art, Open Access."
 	},
+	"the-glory-of-christ": {
+		"artist": "Arkhyp Kuindzhi (Arkhip Ivanovich Kuindzhi)",
+		"title": "Red Sunset",
+		"year": "1905–8",
+		"credit": "Arkhyp Kuindzhi (Arkhip Ivanovich Kuindzhi), “Red Sunset” (1905–8). The Metropolitan Museum of Art, Open Access."
+	},
 	"the-gospel-of-healing": {
 		"artist": "Charles François Daubigny",
 		"title": "Sunset on the River Oise",
 		"year": "1866",
 		"credit": "Charles François Daubigny, “Sunset on the River Oise” (1866). The Cleveland Museum of Art, CC0."
+	},
+	"the-holy-war": {
+		"artist": "Goya",
+		"title": "A City on a Rock",
+		"year": "",
+		"credit": "Goya, “A City on a Rock” (). The Metropolitan Museum of Art, Open Access."
 	},
 	"the-imitation-of-christ": {
 		"artist": "Jakob Alt",
@@ -670,6 +742,12 @@
 		"title": "A Turn in the Road",
 		"year": "1873",
 		"credit": "Alfred Sisley, “A Turn in the Road” (1873). The Art Institute of Chicago, CC0."
+	},
+	"the-saints-everlasting-rest": {
+		"artist": "Claude Lorrain (Claude Gellée)",
+		"title": "The Ford",
+		"year": "possibly 1636",
+		"credit": "Claude Lorrain (Claude Gellée), “The Ford” (possibly 1636). The Metropolitan Museum of Art, Open Access."
 	},
 	"the-soul-winner": {
 		"artist": "Léon Augustin Lhermitte",
@@ -736,6 +814,12 @@
 		"title": "Wood Interior",
 		"year": "c. 1910",
 		"credit": "Emil Carlsen, “Wood Interior” (c. 1910). The Cleveland Museum of Art, CC0."
+	},
+	"what-the-bible-teaches": {
+		"artist": "Albert Bierstadt",
+		"title": "The Rocky Mountains, Lander's Peak",
+		"year": "1863",
+		"credit": "Albert Bierstadt, “The Rocky Mountains, Lander's Peak” (1863). The Metropolitan Museum of Art, Open Access."
 	},
 	"with-and-without-christ": {
 		"artist": "Edward Lear",
