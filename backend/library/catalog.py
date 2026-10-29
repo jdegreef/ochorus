@@ -875,6 +875,15 @@ BOOKS: list[BookEntry] = [
               "ccel", "schaff/npnf204", part="vii.ii",
               subtitle="Translated by Archibald Robertson",
               cover_color="#2f5d62", summary_titles=True),
+    # Athanasius's four Discourses Against the Arians in Newman's translation,
+    # revised by Archibald Robertson (NPNF second series, vol. 4, 1892), from
+    # npnf204 by its stem. The editor's introduction and excursuses are left
+    # out; the fixture titles each chapter by its Discourse and its argument.
+    BookEntry("against-the-arians", "Against the Arians", "athanasius-of-alexandria",
+              "ccel", "schaff/npnf204", part="xxi.ii",
+              subtitle="Four Discourses", cover_color="#3e4a5e",
+              skip=("Excursus B. On §22 (Note 3).",
+                    "Excursus C. Introductory to the Fourth Discourse against the Arians.")),
     BookEntry("life-of-antony", "The Life of Antony", "athanasius-of-alexandria",
               "ccel", "schaff/npnf204", part="xvi.ii",
               subtitle="The Life That Began Christian Monasticism",
