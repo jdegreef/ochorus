@@ -60,6 +60,7 @@ ART_SCRIM: dict[str, float] = {
     "epistles-of-ignatius": 0.75,
     "evangelization-of-the-world": 0.85,
     "ever-increasing-faith": 0.70,
+    "faithful-with-little": 0.30,
     "feasting-at-the-table": 0.70,
     "finney-memoirs": 0.60,
     "fire-against-the-dark": 0.30,

@@ -1340,6 +1340,14 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "a5c690a89c4784a4e108cf74d6cc6d857a2fffe7a855582d746777728d92c343",
         "Snowy mountains under cobalt: pines, a snowfield and a small red cabin.",
     ),
+    "faithful-with-little": Original(
+        "90f3d2aba984ada532676e998b4cc1d431a9826a2789fb1e7d63e9393f647158",
+        "The widow's two small coins (Mark 12:42, in the book's introduction), "
+        "low in a pool of warm light on the deep green the book's plate wore: "
+        "the little that was faithfully given. Drawn by "
+        "scripts/original_grounds/faithful_with_little.py; the type is set from "
+        "the top, so the coins sit under the subtitle and over the mark.",
+    ),
     "growing-in-wisdom": Original(
         "fe3a7ee388b67085b7aaceab5be296a9a50e20502cb234e5c8f6fc590f34c3b6",
         "The Teens 'Editorial' system: a lone figure crests a dark ridge toward "
