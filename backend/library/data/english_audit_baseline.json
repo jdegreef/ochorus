@@ -147,6 +147,10 @@
    "space-before-punct": 4,
    "word-fusion": 1
   },
+  "homilies-on-matthew": {
+   "orphan-close-quote": 11,
+   "word-fusion": 1
+  },
   "homilies-on-romans": {
    "lost-paragraphing": 3,
    "orphan-close-quote": 3

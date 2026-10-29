@@ -344,6 +344,7 @@ TOPICS = [
             "on-the-priesthood",
             "homilies-on-romans",
             "treatises-of-cyprian",
+            "homilies-on-matthew",
             "first-epistle-of-clement",
             "epistles-of-ignatius",
             "key-teachings-of-augustine-of-hippo",

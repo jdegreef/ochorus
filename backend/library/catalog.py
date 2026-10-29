@@ -839,6 +839,16 @@ BOOKS: list[BookEntry] = [
     BookEntry("enchiridion", "The Enchiridion", "augustine-of-hippo",
               "ccel", "schaff/npnf103", part="iv.ii",
               subtitle="On Faith, Hope, and Love", cover_color="#4a5d4a"),
+    # Chrysostom's ninety Homilies on Matthew, in the Oxford Library of the
+    # Fathers translation revised by M. B. Riddle (NPNF first series, vol. 10,
+    # 1888), from npnf110 by its stem. The editors' preface and introductory
+    # essay are left out; the fixture titles each homily by its text.
+    BookEntry("homilies-on-matthew", "Homilies on Matthew", "john-chrysostom",
+              "ccel", "schaff/npnf110", part="iii",
+              subtitle="Homilies on the Gospel of St. Matthew", cover_color="#4e3d2c",
+              skip=("Title Page.", "Preface to the Oxford Edition.", "Introductory Essay.",
+                    "Introduction.", "The Place of Chrysostom in the History of Exegesis.",
+                    "Extent and Character of Chrysostom's Exegetical Labors.")),
     # On the Trinity, in Arthur West Haddan's translation (1873, NPNF), from
     # Schaff's npnf103 volume (part="iv.i"). One chapter per book; Shedd's
     # introductory essay and Haddan's preface are the editors', not Augustine's.
