@@ -767,6 +767,13 @@ BOOKS: list[BookEntry] = [
     BookEntry("plain-account-christian-perfection", "A Plain Account of Christian Perfection",
               "john-wesley", "ccel", "wesley/perfection",
               subtitle="As Believed and Taught by John Wesley", cover_color="#58786a"),
+    # Wesley's Journal in Percy Livingstone Parker's abridgment (New York:
+    # Revell, 1903), from CCEL (part="vi": Parker's note, the introduction,
+    # appreciation and sketch are left out). group_parts: one chapter per
+    # Parker chapter, his headings as subheads.
+    BookEntry("the-journal-of-john-wesley", "The Journal of John Wesley", "john-wesley",
+              "ccel", "wesley/journal", part="vi", group_parts=True,
+              subtitle="Abridged by Percy Livingstone Parker", cover_color="#3b4a3a"),
     BookEntry("sermons-on-several-occasions", "Sermons on Several Occasions", "john-wesley",
               "ccel", "wesley/sermons",
               subtitle="Selected Standard Sermons", cover_color="#7a5c48"),

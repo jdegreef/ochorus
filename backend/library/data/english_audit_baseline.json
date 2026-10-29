@@ -429,6 +429,11 @@
    "run-together": 4,
    "space-before-punct": 1
   },
+  "the-journal-of-john-wesley": {
+   "hyphen-space": 1,
+   "orphan-close-quote": 2,
+   "word-fusion": 1
+  },
   "the-joy-of-the-lord": {
    "space-before-punct": 1
   },

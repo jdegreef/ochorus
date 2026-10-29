@@ -480,6 +480,7 @@ TOPICS = [
         [
             "sermons-on-several-occasions",
             "plain-account-christian-perfection",
+            "the-journal-of-john-wesley",
             "susanna-wesley-clarke",
             "selected-sermons-whitefield",
             "godliness",
