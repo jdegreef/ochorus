@@ -8576,6 +8576,17 @@
 				519
 			]
 		},
+		"expository-thoughts-on-matthew": {
+			"ground": "716ea464f43e380c4d7f8955d6db98ec720045ff78249c26cca78f25caa47ff6",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"faithful-with-little": {
 			"ground": "30861e05049a1fa229238d5065610a9d101a780fe7f90f0ae67fcb5164a41169",
 			"style": "originals",

@@ -1001,6 +1001,13 @@ BOOKS: list[BookEntry] = [
     BookEntry("holiness", "Holiness", "j-c-ryle", "ccel", "ryle/holiness",
               subtitle="Its Nature, Hindrances, Difficulties, and Roots",
               cover_color="#6b2d3a"),
+    # The first volume of Ryle's Expository Thoughts on the Gospels (1856),
+    # from CCEL. group_parts: one chapter per chapter of Matthew, its passages
+    # as subheads.
+    BookEntry("expository-thoughts-on-matthew", "Expository Thoughts on Matthew", "j-c-ryle",
+              "ccel", "ryle/matthew", group_parts=True,
+              subtitle="For Family and Private Use", cover_color="#4b3a2b",
+              skip=("Title Page",)),
     # Thomas Watson's A Body of Divinity (1692), sermons on the Westminster
     # Shorter Catechism, with the memoir C. H. Spurgeon compiled for his
     # edition (CCEL). Its companions, The Ten Commandments and The Lord's
