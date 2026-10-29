@@ -1,6 +1,6 @@
 ---
 name: level-up-cover
-description: Level up a flat plate-covered book to a CURATED painted ground — choose a public-domain artwork per book, run `paint_covers`, and ship one PR per author. Use when asked to "do the covers" for an author, replace generated colour-plate covers with real art, add a book to the CURATED tier, or continue the plate → art level-up (after Batch 27 the only published plate left is the Original `faithful-with-little` — see "Done so far"). Encodes the sourcing method and the gotchas that bite each run; the command order lives in `backend/scripts/paint_covers.py`. This is a living playbook — append new failure modes as we find them.
+description: Level up a flat plate-covered book to a CURATED painted ground — choose a public-domain artwork per book, run `paint_covers`, and ship one PR per author. Use when asked to "do the covers" for an author, replace generated colour-plate covers with real art, add a book to the CURATED tier, or continue the plate → art level-up (every published book is now painted — see "Done so far"; new books and unpublished plates still use this). Encodes the sourcing method and the gotchas that bite each run; the command order lives in `backend/scripts/paint_covers.py`. This is a living playbook — append new failure modes as we find them.
 ---
 
 # Levelling up a plate cover to CURATED art
@@ -571,8 +571,10 @@ Batch 26 (2026-10-27, Met + Cleveland): Luther ×4 (Leypold, Dahl, Friedrich, hi
 Heinrich), Ryle ×4 (R. Wilson, Crome, Gainsborough, Whittredge), Augustine ×3 on his rail
 (J. Martin, Hackert, H. Robert). Batch 27 (2026-10-29, Met + Cleveland) took the last
 fourteen painted plates: Owen ×2, Torrey ×2, Murray, Moody, Bunyan, Baxter, Watson, Calvin,
-Teresa, Anselm, Gregory, Wheatley. The ONE published plate left is the Original
-`faithful-with-little` (5 langs), which needs a drawn ORIGINAL_GROUND, not a painting.
+Teresa, Anselm, Gregory, Wheatley. The Original `faithful-with-little` (5 langs) then got
+a drawn ORIGINAL_GROUND (the widow's two coins; `original_grounds/faithful_with_little.py`),
+so NO published book wears a plate. In a cloud container (root), headless Chromium needs
+`--no-sandbox`: point `CHROME` at a scratch wrapper that adds it, never edit the script.
 A diagonal (Torrey) shows only the UPPER third of the ground — pick for the sky or
 summits (Bierstadt), not for a subject at the foot. And check a still life's corners
 for the painter's signature: Preyer's sat bottom-right until `focus` cropped it off.

@@ -6283,15 +6283,33 @@
 			"bar": 0
 		},
 		"es/faithful-with-little": {
-			"ground": "b67864056ba8a92dcbc527fd052c2adbfbf9dc0797af94701ebb913c879d8cc0",
+			"ground": "c244f341c4fa3abe7abb198181113584a0bab7b8996517985d9af3b9e2de4ab2",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[90, 314, 510, 390]
+				],
+				"subtitle": [
+					[61, 448, 539, 476]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				319,
+				476
+			]
 		},
 		"es/feasting-at-the-table": {
 			"ground": "ca3f76b4cb6f73df54f65066da267dc24df12fb2daf0abf371049c92a4841e82",
@@ -8596,15 +8614,34 @@
 			]
 		},
 		"faithful-with-little": {
-			"ground": "30861e05049a1fa229238d5065610a9d101a780fe7f90f0ae67fcb5164a41169",
+			"ground": "bfa5c09bb224b297b257cff42faa6222474c0b0eba4016c9eaf100d1737cf1be",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[180, 281, 420, 357],
+					[145, 347, 455, 423]
+				],
+				"subtitle": [
+					[98, 481, 502, 509]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				286,
+				509
+			]
 		},
 		"finney-memoirs": {
 			"ground": "7e00273a41f573d20d8202b37b0c6d82affbd4512032520c4db8d486e297af71",
@@ -9858,15 +9895,34 @@
 			]
 		},
 		"fr/faithful-with-little": {
-			"ground": "8fa8c6e470eb7b498e0e972df18512394853d043516e6203c3e5f4cc0e4aa760",
+			"ground": "b848a2dbaee1e0b404feb6d4599411af75dac9664f31a4c6ef9e1ebc82e5f9b2",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[83, 281, 517, 357],
+					[90, 347, 510, 423]
+				],
+				"subtitle": [
+					[93, 481, 507, 509]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				286,
+				509
+			]
 		},
 		"fr/feasting-at-the-table": {
 			"ground": "6e0eeb78b81466700d36d3c4bd910186a8ac00efbe55b57b93792ce7912394ad",
@@ -18916,15 +18972,33 @@
 			]
 		},
 		"pt/faithful-with-little": {
-			"ground": "b304ae9f126101122efbebe8bce2e3047460d3649129c04c226d9b5f916f2389",
+			"ground": "401d441747f399d494b3573f6cbf70ef94e40651bb307d243596a25419e25c3d",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[103, 314, 497, 390]
+				],
+				"subtitle": [
+					[79, 448, 521, 476]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				319,
+				476
+			]
 		},
 		"pt/feasting-at-the-table": {
 			"ground": "6dda8fede6c88612a0558cfba72899da0e536239b5309f39e64faf84eb830672",
@@ -21703,15 +21777,35 @@
 			]
 		},
 		"sw/faithful-with-little": {
-			"ground": "1024ee4018b1d2e5be14680b41e3b008c6630196b37e6ae718247cb7fc912388",
+			"ground": "b3d07b3dd5b1bd09ee784dca0c03643c42510446c05cdd264b64bda9d6af502b",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[126, 247, 474, 323],
+					[79, 314, 521, 390],
+					[180, 380, 420, 456]
+				],
+				"subtitle": [
+					[107, 514, 493, 542]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				252,
+				542
+			]
 		},
 		"sw/feasting-at-the-table": {
 			"ground": "0a9538b84989b2136d659baeb822f7b87cdaa94c95d542f020400bd6c94abb70",
