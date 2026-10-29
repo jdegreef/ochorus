@@ -557,6 +557,7 @@ TOPICS = [
             "mortification-of-sin",
             "religious-affections",
             "purity-of-heart",
+            "of-temptation",
             "plain-account-christian-perfection",
             "holy-in-christ",
             "way-into-holiest",

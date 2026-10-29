@@ -17811,6 +17811,17 @@
 			"layout": "split/navy",
 			"bar": 0.05
 		},
+		"of-temptation": {
+			"ground": "2c3608c4ca745586a661ea7727526382f1da07f36f5191785daa94ae66b30ade",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"old-paths": {
 			"ground": "cbd17fce7695e5e33f52f3d491a23f49ff4d6f9a0a4db8f60af73b8c94d3207d",
 			"style": "revival",
