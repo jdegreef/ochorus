@@ -155,6 +155,9 @@
   "if": {
    "space-before-punct": 5
   },
+  "indwelling-sin-in-believers": {
+   "lost-paragraphing": 1
+  },
   "institutes-of-the-christian-religion": {
    "orphan-close-quote": 1,
    "space-before-punct": 5,
