@@ -351,12 +351,13 @@
 .cover-type.type-top .middle {
 	margin: 7cqw 0 auto;
 }
-/* And one title size for the set, a step under the imprint's own, so every
-   volume's title holds to three lines above the tree — Edwards' ran to four at
-   the imprint size and put the subtitle on the crown. Doubled class to outrank
-   `.style-*` recipes; `.long-title` (later in the file, same weight) still
-   steps a genuinely long title down past this. */
-.cover-type.type-top.type-top .title {
+/* And one title size for the Key Teachings set (the imprint's style), a step
+   under the imprint's own, so every volume's title holds to three lines above
+   the tree — Edwards' ran to four at the imprint size and put the subtitle on
+   the crown. Three classes to outrank `.style-*` recipes; `.long-title` (later
+   in the file, same weight) still steps a genuinely long title down past this.
+   Any other TYPE_TOP book keeps its own recipe's size. */
+.cover-type.type-top.style-originals .title {
 	font-size: 8.6cqw;
 }
 
@@ -1483,4 +1484,21 @@
    settles ties, and the container query adds no specificity. */
 .cover-type.long-title.long-title .title {
 	font-size: 8cqw;
+}
+
+/* A SHORT title set up from its recipe's size (`titleFit`, coverCardMarkup.ts):
+   "Holiness" no longer sits at the size "The Saints' Everlasting Rest" needs,
+   lost in a field of painting. `zoom` rather than a font-size, so each recipe's
+   and script's own size is what grows, and the box still fits the frame (the
+   title wraps inside it). Framed paintings only: a layout sizes its own type,
+   and the imprint's, the young readers' and the lettered recipes are already
+   set large on purpose. */
+.cover-plate.over-art:not(.has-layout) .cover-type.fit-short:not(.style-originals, .style-young, .style-lettered) .title {
+	zoom: 1.45;
+}
+.cover-plate.over-art:not(.has-layout) .cover-type.fit-mid:not(.style-originals, .style-young, .style-lettered) .title {
+	zoom: 1.28;
+}
+.cover-plate.over-art:not(.has-layout) .cover-type.fit-roomy:not(.style-originals, .style-young, .style-lettered) .title {
+	zoom: 1.08;
 }

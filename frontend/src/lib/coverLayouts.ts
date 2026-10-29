@@ -173,7 +173,22 @@ export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
 	'the-practice-of-the-presence-of-god-teens': null,
 	'the-pursuit-of-god-teens': null,
 	'the-secret-of-guidance-teens': null,
-	'the-way-to-god-teens': null
+	'the-way-to-god-teens': null,
+	// TYPE_TOP paintings (2026-10-29): held framed, so their type is set from
+	// the top, whatever layout their author may wear later.
+	'christ-the-healer': null,
+	'evangelization-of-the-world': null,
+	'ever-increasing-faith': null,
+	'first-principles-of-the-reformation': null,
+	'holiness': null,
+	'interior-castle': null,
+	'large-catechism': null,
+	'old-paths': null,
+	'practical-religion': null,
+	'religious-experience-and-journal': null,
+	'the-normal-christian-life': null,
+	'the-pursuit-of-god': null,
+	'things-as-they-are': null
 };
 
 /**
@@ -225,7 +240,23 @@ export const TYPE_TOP: ReadonlySet<string> = new Set([
 	'key-teachings-of-c-s-lewis',
 	'key-teachings-of-george-macdonald',
 	'key-teachings-of-g-k-chesterton',
-	'key-teachings-of-elisabeth-elliot'
+	'key-teachings-of-elisabeth-elliot',
+	// Paintings whose subject stands in the middle of the cover and whose sky
+	// above it is calm: set from the top, the title leaves the subject clear
+	// (measured, then judged on the composed cover, 2026-10-29).
+	'christ-the-healer',
+	'evangelization-of-the-world',
+	'ever-increasing-faith',
+	'first-principles-of-the-reformation',
+	'holiness',
+	'interior-castle',
+	'large-catechism',
+	'old-paths',
+	'practical-religion',
+	'religious-experience-and-journal',
+	'the-normal-christian-life',
+	'the-pursuit-of-god',
+	'things-as-they-are'
 ]);
 
 /**
