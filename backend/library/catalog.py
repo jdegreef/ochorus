@@ -944,6 +944,14 @@ BOOKS: list[BookEntry] = [
               subtitle="Meditations and Discourses on the Glory of Christ",
               cover_color="#6b4e1f",
               skip=("Title page.", "Prefatory note.", "Original preface.")),
+    # Goold's edition (Works, vol. 10, 1852). His prefatory note and analysis
+    # are left out; the fixture groups the chapters by Owen's four books.
+    BookEntry("the-death-of-death-in-the-death-of-christ",
+              "The Death of Death in the Death of Christ", "john-owen",
+              "ccel", "owen/deathofdeath",
+              subtitle="A Treatise of the Redemption and Reconciliation That Is in the Blood of Christ",
+              cover_color="#5b2a2a",
+              skip=("Title page.", "Prefatory note.", "Analysis.", "Title.")),
     # Two early African-American spiritual autobiographies, keyed (not OCR'd) by
     # UNC's Documenting the American South. Both first published pre-1929, US
     # public domain. See `import_docsouth`. Amanda Smith's per-chapter titles are
