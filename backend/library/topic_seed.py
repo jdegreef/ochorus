@@ -499,6 +499,7 @@ TOPICS = [
             "bondage-of-the-will",
             "first-principles-of-the-reformation",
             "institutes-of-the-christian-religion",
+            "commentary-on-romans",
             "old-paths",
             "ten-commandments",
             "small-catechism",
