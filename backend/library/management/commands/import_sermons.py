@@ -24,11 +24,12 @@ import datetime
 import re
 import time
 from functools import lru_cache
+from html import escape
 
 import requests
 from django.core.management.base import BaseCommand, CommandError
 
-from library import english_audit
+from library import archive_ocr, english_audit
 from library.corrections import settled_sermon_body
 from library.ingest import QUOTES, clean_fragment, display_line, soup, word_count
 from library.management.commands.import_gutenberg import content_root
@@ -428,6 +429,29 @@ def extract_sermonindex(html: str, title: str = "") -> str:
     return clean_fragment(html_body)
 
 
+def extract_archive_sermon(entry: SermonEntry) -> str:
+    """One sermon from an archive.org scan, cross-checked against other scans.
+
+    See ``library.archive_ocr``. The paragraphs before ``body_starts`` are the
+    Bible text and become the opening blockquote; footnotes follow the sermon.
+    """
+    def paras(identifier: str) -> list[str]:
+        ocr = archive_ocr.fetch_djvu(identifier)
+        return archive_ocr.clean(
+            archive_ocr.slice_sermon(ocr, entry.section, entry.body_starts, entry.section_end),
+            entry.title,
+        )
+
+    text = archive_ocr.reconcile(paras(entry.source_ref), [paras(a) for a in entry.alt_refs])
+    body_at = next(
+        i for i, p in enumerate(text) if p.casefold().startswith(entry.body_starts.casefold())
+    )
+    head = " ".join(text[:body_at])
+    blocks = [f"<blockquote>{escape(head)}</blockquote>"] if head else []
+    blocks += [f"<p>{escape(p)}</p>" for p in text[body_at:]]
+    return clean_fragment("".join(blocks))
+
+
 class Command(BaseCommand):
     help = "Import sermons from CCEL, Gutenberg, the web, and SermonIndex."
 
@@ -474,6 +498,9 @@ class Command(BaseCommand):
                     fetch_web(entry.source_ref), entry.title, entry.body_starts
                 )
                 scripture_ref, preached_on = "", None
+            elif entry.source == "archive":
+                body = extract_archive_sermon(entry)
+                scripture_ref, preached_on = "", None
             elif entry.source == "sermonindex":
                 body = extract_sermonindex(fetch_web(entry.source_ref), entry.title)
                 scripture_ref, preached_on = "", None
@@ -484,7 +511,7 @@ class Command(BaseCommand):
         except requests.RequestException as exc:
             self.stderr.write(self.style.ERROR(f"  fetch failed: {exc}"))
             return
-        except AmbiguousSectionError as exc:
+        except (AmbiguousSectionError, archive_ocr.SliceError) as exc:
             self.stderr.write(self.style.ERROR(f"  {exc}"))
             return
         if word_count(body) < 300:
@@ -504,11 +531,12 @@ class Command(BaseCommand):
         if entry.preached_on:
             preached_on = datetime.date.fromisoformat(entry.preached_on)
 
-        source_url = (
-            f"https://www.gutenberg.org/ebooks/{entry.source_ref}"
-            if entry.source == "gutenberg"
-            else entry.source_ref
-        )
+        if entry.source == "gutenberg":
+            source_url = f"https://www.gutenberg.org/ebooks/{entry.source_ref}"
+        elif entry.source == "archive":
+            source_url = f"https://archive.org/details/{entry.source_ref}"
+        else:
+            source_url = entry.source_ref
         fields = {
             "author": self._author(entry),
             "title": entry.title,

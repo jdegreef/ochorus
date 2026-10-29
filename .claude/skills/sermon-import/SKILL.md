@@ -121,6 +121,61 @@ for s in Sermon.objects.all():
     p.write_text(render_rows(rows))
 ```
 
+### archive.org scans (`source="archive"`)
+
+For a preacher whose only clean-looking copies online are modernised rewrites
+(Samuel Davies), or who isn't on CCEL or Gutenberg at all (Chalmers, Bonar), take
+the printed edition from archive.org. `library/archive_ocr.py` reads its
+`<id>_djvu.txt` OCR: it slices one sermon, drops running heads and page numbers,
+rejoins paragraphs split at a page turn, undoes line-end hyphens, sets footnotes
+after the sermon, seats straight quotes, and then **cross-checks other scans of
+the same edition** (`alt_refs`) word by word, keeping the real word wherever the
+scans disagree. Independent scans rarely misread the same word, so this removes
+most of the noise mechanically.
+
+- **Pick scans by measurement.** Search archive.org for every copy of the
+  edition, download each `_djvu.txt`, clean the same sermon from each, and count
+  words the English library never uses. Take the cleanest as `source_ref` and
+  the rest as `alt_refs`. Davies 1864 had two scans of one printing, and
+  Chalmers 1844 had three. With one scan only (Bonar's *Family Sermons*) the
+  readers' slip list does all the work.
+- **Catalog fields:** `section` = the words the Bible text begins with (the slice
+  walks back to the top of that paragraph, so a phrase from mid-verse is fine);
+  `body_starts` = the sermon's first words, kept short because each scan misreads
+  different letters; `section_end` = the next sermon's heading. If the OCR garbles
+  that heading (Bonar's "SERMON XXVIT."), use the next sermon's title. Set
+  `scripture_ref` yourself: the importer doesn't parse it from OCR.
+- **What survives the cross-check:** misreads shared by both scans, real-word
+  errors ("be" for "he"), and, at a two-column edge, whole clauses (Chalmers's
+  *Sure Warrant*: "Think of the a of that moving principle"). When the primary
+  scan is damaged in one passage, take that passage from another scan's
+  `_djvu.txt` by hand. Greek in footnotes never survives OCR, so restore it from
+  the verse cited.
+- **Expect ~20 slips per 1,000 words even after cross-checking**, more with a
+  single scan. Ask the readers (step 4) for a slip LIST, `{slug: [[wrong,
+  right], ...]}`, each wrong string unique in the plain text. Then map each
+  pair into HTML space (escape `&<>`, turn `\n\n` into `</p><p>`) and check the
+  whole list applies once and idempotently before writing it to
+  `BODY_CORRECTIONS`.
+- **Write pairs against the RAW import, not the settled fixture.** The
+  line-break hyphen rule in `apply_body_corrections` runs after the declared
+  pairs, so a pair written against settled "believing-it" never matches the raw
+  "believing- it". It then matches on the second pass, and the idempotence check
+  (`settled_sermon_body(slug, body) == body`) catches exactly that.
+
+### A preacher new to the library
+
+Add the author's row to `authors.json` (it's `json.dumps(indent=2,
+ensure_ascii=False)` plus a newline, not `render_rows`). Give it `slug`, `name`,
+a short factual `bio`, a `tagline` of 100 characters or fewer
+(`TaglineTests`), years, and `same_as` with the Wikipedia URL
+(`test_every_author_is_either_identified_or_deliberately_not`). The long
+`bio_html` is the [[write-biography]] skill's job. The portrait is a
+Commons/Wikipedia lead image saved to `frontend/static/portraits/<slug>.jpg`
+(~361px wide) plus `backend/scripts/build_portrait_assets.py`. Wikimedia's APIs
+rate-limit cloud containers (HTTP 429), so if they refuse, ship the author
+without a portrait and say so.
+
 ## 3. Repair the English ([[english-qa]])
 
 The audit only sees some defect classes. Run all four passes:

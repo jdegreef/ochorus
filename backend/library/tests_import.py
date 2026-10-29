@@ -2324,3 +2324,86 @@ class GutenbergBackMatterTests(SimpleTestCase):
         for title in ("The Transcriber of the Law", "Transcriber's Notebook"):
             with self.subTest(title=title):
                 self.assertFalse(is_front_matter(title))
+
+
+class ArchiveOcrTests(TestCase):
+    """`library.archive_ocr`: archive.org djvu text back into a sermon.
+
+    Each case is a defect the 1844/1863/1864 scans actually carry.
+    """
+
+    PAGE = (
+        "SERMON  III. \n\n"
+        "SINNERS    ENTREATED    TO    BE    RECONCILED    TO    GOD. \n\n"
+        "2  COR.  v.  20. — Now  then  we  are  ambassadors  for  Christ, \n"
+        "as  though  God  did  beseech  you  by  us. \n\n"
+        "To  preside  in  the  solemnities  of  public  worship,  this  is  a  pro- \n"
+        "vince  of  the  most  tremendous  importance ;  and  every  man \n\n"
+        "SINNERS    ENTREATED   TO    BE    RECONCILED    TO    GOD.     137 \n\n"
+        "must  tremble  at  the  thought  ?* \n"
+        "* This  is  the  most  literal  translation. \n\n"
+        "SERMON  IV. \n"
+    )
+
+    def _clean(self, page, title=""):
+        from library import archive_ocr
+
+        return archive_ocr.clean(
+            archive_ocr.slice_sermon(page, "Now then we are", "To preside in", "SERMON IV."), title
+        )
+
+    def test_slice_skips_the_contents_entry_and_starts_at_the_verse(self):
+        from library import archive_ocr
+
+        contents = "CONTENTS\n\n2 COR. v. 20. — Now then we are ambassadors ... 137\n\nSERMON IV.\n\n"
+        out = archive_ocr.slice_sermon(contents + self.PAGE, "Now then we are", "To preside in", "SERMON IV.")
+        self.assertTrue(out.startswith("2  COR."), out[:40])
+        self.assertNotIn("CONTENTS", out)
+
+    def test_page_furniture_goes_and_the_split_paragraph_rejoins(self):
+        paras = self._clean(self.PAGE)
+        self.assertEqual(paras[0], "2 COR. v. 20. — Now then we are ambassadors for Christ, as though God did beseech you by us.")
+        # "pro- / vince" rejoined; " ;" closed up; the running head and page number
+        # between "every man" and "must tremble" gone, and the paragraph whole.
+        self.assertEqual(
+            paras[1],
+            "To preside in the solemnities of public worship, this is a province of the most "
+            "tremendous importance; and every man must tremble at the thought?*",
+        )
+
+    def test_a_footnote_leaves_the_text_and_follows_it(self):
+        paras = self._clean(self.PAGE)
+        self.assertEqual(paras[-1], "* This is the most literal translation.")
+        self.assertEqual(len(paras), 3)
+
+    def test_a_real_compound_keeps_its_hyphen(self):
+        from library.archive_ocr import _join, library_vocabulary
+
+        self.assertEqual(_join("the sin-", "killers of", library_vocabulary()), "the sin-killers of")
+
+    def test_quote_marks_seat_against_their_words(self):
+        from library.archive_ocr import _tidy
+
+        self.assertEqual(_tidy('another " beatitude "in addition'), 'another "beatitude" in addition')
+        self.assertEqual(_tidy('the dead.\'\' But'), 'the dead." But')
+        # An odd count runs on from another paragraph; leave it alone.
+        self.assertEqual(_tidy('"Not closed here'), '"Not closed here')
+
+    def test_reconcile_takes_the_real_word_from_another_scan(self):
+        from library.archive_ocr import reconcile
+
+        primary = ["we are ambassadors for Christy as though God did beseech you"]
+        other = ["we are ambassadors for Christ, as though God did beseech you"]
+        self.assertEqual(reconcile(primary, [other]), ["we are ambassadors for Christ, as though God did beseech you"])
+
+    def test_reconcile_mends_a_word_split_at_a_column_edge(self):
+        from library.archive_ocr import reconcile
+
+        primary = ["lying in the depths of ungo lliness and sin"]
+        other = ["lying in the depths of ungodliness and sin"]
+        self.assertEqual(reconcile(primary, [other]), ["lying in the depths of ungodliness and sin"])
+
+    def test_reconcile_keeps_the_primary_where_both_readings_are_words(self):
+        from library.archive_ocr import reconcile
+
+        self.assertEqual(reconcile(["he said unto them"], [["be said unto them"]]), ["he said unto them"])

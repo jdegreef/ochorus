@@ -839,6 +839,7 @@ TOPIC_SERMONS = {
         "how-to-abide",
         "spiritual-growth",
         "from-strength-to-strength",
+        "the-expulsive-power-of-a-new-affection",
     ],
     "grace-and-comfort": [
         "free-grace",
@@ -873,6 +874,10 @@ TOPIC_SERMONS = {
         "mr-fearing-comforted",
         "consolation-in-christ",
         "loves-logic",
+        "victory-over-death",
+        "the-compassion-of-christ-to-weak-believers",
+        "the-sure-warrant-of-a-believers-hope",
+        "a-present-saviour",
     ],
     "revival-and-missions": [
         "compel-them-to-come-in",
@@ -902,6 +907,7 @@ TOPIC_SERMONS = {
         "words-for-discouraged-workers",
         "the-weapons-of-our-warfare",
         "a-lecture-for-little-faith",
+        "faith-in-an-unseen-christ",
     ],
     "the-gospel-call": [
         "christ-crucified",
@@ -932,6 +938,11 @@ TOPIC_SERMONS = {
         "come-and-welcome",
         "looking-unto-jesus",
         "a-simple-sermon-for-seeking-souls",
+        "the-prodigal-and-his-brother",
+        "sinners-entreated-to-be-reconciled-to-god",
+        "making-light-of-christ",
+        "the-transitory-nature-of-visible-things",
+        "the-vain-wish",
     ],
     "the-way-of-holiness": [
         "aggressive-christianity",
@@ -943,6 +954,8 @@ TOPIC_SERMONS = {
         "bochim-or-the-cause-of-spiritual-failure",
         "the-sin-of-murmuring",
         "sinning-and-repenting",
+        "the-power-of-sorrow",
+        "the-expulsive-power-of-a-new-affection",
     ],
     "christ-and-the-cross": [
         "behold-the-lamb-of-god",
