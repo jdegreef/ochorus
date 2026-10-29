@@ -935,6 +935,14 @@ BOOKS: list[BookEntry] = [
               cover_color="#2f4f6f",
               skip=("Title Page.", "Prefatory note.", "Analysis.", "Title."),
               keep=("i.vii.iii",)),
+    # Indwelling Sin (1667), Goold's Works vol. 6, from CCEL. Goold's prefatory
+    # note is left out; the fixture gives each chapter a short title and sets
+    # Owen's full heading in italics as its argument.
+    BookEntry("indwelling-sin-in-believers", "Indwelling Sin in Believers", "john-owen",
+              "ccel", "owen/indwellingsin",
+              subtitle="The Nature, Power, Deceit, and Prevalency of the Remainders of Indwelling Sin",
+              cover_color="#3e3a2a",
+              skip=("Title page.", "Prefatory note.", "Title.")),
     # Meditations and Discourses on the Glory of Christ (1684) and the second
     # part published after Owen's death (1691), in Goold's edition of the Works
     # (CCEL owen/glory). Goold's prefatory note and the 1691 publisher's

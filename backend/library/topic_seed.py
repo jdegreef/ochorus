@@ -555,6 +555,7 @@ TOPICS = [
         "affections set in order, and the way into the holiest.",
         [
             "mortification-of-sin",
+            "indwelling-sin-in-believers",
             "religious-affections",
             "purity-of-heart",
             "plain-account-christian-perfection",
