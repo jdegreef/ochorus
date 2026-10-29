@@ -850,6 +850,15 @@ BOOKS: list[BookEntry] = [
               "ccel", "schaff/npnf109", part="iv",
               subtitle="Six Books on the Pastoral Office",
               cover_color="#6b4a2f"),
+    # Chrysostom's Homilies on Romans, in the Oxford Library of the Fathers
+    # translation revised by George B. Stevens (NPNF first series, vol. 11,
+    # 1889), extracted from npnf111 by its stem. The editor's preface is left
+    # out; the fixture writes each homily's text reference out in full.
+    BookEntry("homilies-on-romans", "Homilies on Romans", "john-chrysostom",
+              "ccel", "schaff/npnf111", part="vii",
+              subtitle="Homilies on the Epistle of St. Paul to the Romans",
+              cover_color="#5a4a2e",
+              skip=("Preface to Homilies on Romans.",)),
     # summary_titles: Schaff heads each section with a precis of its argument
     # rather than a title — 57 of them here, averaging 232 characters.
     BookEntry("on-the-incarnation", "On the Incarnation", "athanasius-of-alexandria",

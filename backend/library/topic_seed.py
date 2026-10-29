@@ -340,6 +340,7 @@ TOPICS = [
             "the-city-of-god",
             "life-of-antony",
             "on-the-priesthood",
+            "homilies-on-romans",
             "treatises-of-cyprian",
             "first-epistle-of-clement",
             "epistles-of-ignatius",
