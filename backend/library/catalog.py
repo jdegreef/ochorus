@@ -850,6 +850,16 @@ BOOKS: list[BookEntry] = [
               "ccel", "schaff/npnf109", part="iv",
               subtitle="Six Books on the Pastoral Office",
               cover_color="#6b4a2f"),
+    # Chrysostom's ninety Homilies on Matthew, in the Oxford Library of the
+    # Fathers translation revised by M. B. Riddle (NPNF first series, vol. 10,
+    # 1888), from npnf110 by its stem. The editors' preface and introductory
+    # essay are left out; the fixture titles each homily by its text.
+    BookEntry("homilies-on-matthew", "Homilies on Matthew", "john-chrysostom",
+              "ccel", "schaff/npnf110", part="iii",
+              subtitle="Homilies on the Gospel of St. Matthew", cover_color="#4e3d2c",
+              skip=("Title Page.", "Preface to the Oxford Edition.", "Introductory Essay.",
+                    "Introduction.", "The Place of Chrysostom in the History of Exegesis.",
+                    "Extent and Character of Chrysostom's Exegetical Labors.")),
     # summary_titles: Schaff heads each section with a precis of its argument
     # rather than a title — 57 of them here, averaging 232 characters.
     BookEntry("on-the-incarnation", "On the Incarnation", "athanasius-of-alexandria",

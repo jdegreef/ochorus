@@ -341,6 +341,7 @@ TOPICS = [
             "life-of-antony",
             "on-the-priesthood",
             "treatises-of-cyprian",
+            "homilies-on-matthew",
             "first-epistle-of-clement",
             "epistles-of-ignatius",
             "key-teachings-of-augustine-of-hippo",

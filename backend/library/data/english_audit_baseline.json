@@ -138,6 +138,10 @@
    "space-before-punct": 4,
    "word-fusion": 1
   },
+  "homilies-on-matthew": {
+   "orphan-close-quote": 11,
+   "word-fusion": 1
+  },
   "homily-on-the-paralytic": {
    "lost-paragraphing": 1
   },
