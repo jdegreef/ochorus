@@ -794,6 +794,16 @@ BOOKS: list[BookEntry] = [
               "ccel", "kempis/imitation",
               subtitle="Four Books of Counsel for the Inner Life",
               cover_color="#3d3a6e"),
+    # The Grace and Duty of Being Spiritually Minded (1681), Goold's Works
+    # vol. 7, from CCEL. Goold's prefatory note and analysis are left out; the
+    # fixture gives each chapter a short title and sets Owen's full heading in
+    # italics as its argument.
+    BookEntry("the-grace-and-duty-of-being-spiritually-minded",
+              "The Grace and Duty of Being Spiritually Minded", "john-owen",
+              "ccel", "owen/spirituallyminded",
+              subtitle="Declared and Practically Improved",
+              cover_color="#2f4a4a",
+              skip=("Title page.", "Prefatory note.", "Analysis.", "Title.")),
     # The City of God — Marcus Dods's translation (NPNF first series, vol. 2,
     # 1887), public domain, extracted from npnf102 by its stem. group_parts:
     # each of the twenty-two Books is a chapter, its short chapters subheads.

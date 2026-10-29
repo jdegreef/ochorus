@@ -23844,6 +23844,17 @@
 			"layout": "box/teal",
 			"bar": 0
 		},
+		"the-grace-and-duty-of-being-spiritually-minded": {
+			"ground": "95a48a2ec3e1bc5adfc18fd924cd19b43cea1da9290848346091f1e86034227e",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-hill-of-cinders": {
 			"ground": "1b87e2acc9c78522bae9bc276402bd011fef1cd9d0ddf3aa725574c68e3f1b22",
 			"style": "young",
