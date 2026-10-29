@@ -501,6 +501,7 @@ TOPICS = [
             "the-death-of-death-in-the-death-of-christ",
             "first-principles-of-the-reformation",
             "institutes-of-the-christian-religion",
+            "commentary-on-romans",
             "old-paths",
             "ten-commandments",
             "small-catechism",

@@ -5076,6 +5076,17 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"commentary-on-romans": {
+			"ground": "6744123ffc75b78ba61734a203b7b66a3b12c0777ea363405d129ec59f0890ed",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"communion-with-god": {
 			"ground": "60d351cad508bb4677cd0a3b52f0e97a5d7cf9af43c4e1894cc9aec9c3b506f4",
 			"style": "press",

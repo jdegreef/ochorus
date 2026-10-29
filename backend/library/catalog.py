@@ -1088,6 +1088,14 @@ BOOKS: list[BookEntry] = [
                     "Table II. Of Hebrew Words Explained.",
                     "Table III. Of Greek Words Explained.",
                     "General Index of Chapters.")),
+    # Calvin's Commentary on Romans in John Owen's translation (Calvin
+    # Translation Society, 1849), from CCEL. group_parts: one chapter per
+    # chapter of Romans, its passages as subheads. Owen's preface and his new
+    # translation of the epistle are the translator's, not Calvin's.
+    BookEntry("commentary-on-romans", "Commentary on Romans", "john-calvin",
+              "ccel", "calvin/calcom38", group_parts=True,
+              subtitle="Translated by John Owen", cover_color="#4a3b2a",
+              skip=("Translator's Preface", "Translation of Romans")),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an
