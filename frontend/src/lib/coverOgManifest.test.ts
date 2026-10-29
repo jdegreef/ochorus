@@ -204,6 +204,10 @@ describe('the og twins were drawn in the style the table names now', () => {
 		expect(half, 'run `cd frontend && npm run og:covers`').toEqual([]);
 	});
 
+	// The first test to call `needTwins()` pays for reading every book fixture,
+	// and that read grows with the library: it sat at ~4.9s locally against
+	// vitest's 5s default and timed out on loaded CI runners. A content PR
+	// should not be able to fail this gate by adding one more book.
 	it('covers every edition that needs a twin, and none that does not', () => {
 		const recorded = new Set(Object.keys(manifest()));
 		const wanted = new Set(needTwins().map((b) => b.key));
@@ -217,7 +221,7 @@ describe('the og twins were drawn in the style the table names now', () => {
 			'a twin for an edition that no longer needs one — it has designed artwork ' +
 				'now, or it is gone. Re-run `npm run og:covers` and delete the orphan png.'
 		).toEqual([]);
-	});
+	}, 30_000);
 
 	it('gives every translated edition a card of its own', () => {
 		// The gate above would pass on a library that had no translations at all.
