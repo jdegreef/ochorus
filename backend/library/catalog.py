@@ -925,6 +925,14 @@ BOOKS: list[BookEntry] = [
               "john-owen", "ccel", "owen/mort",
               subtitle="On Killing Sin by the Spirit",
               cover_color="#5b2333"),
+    # Of Temptation (1658), Goold's Works vol. 6, from CCEL. Goold's prefatory
+    # note is left out; CCEL titles the chapters "Chapter I." only, so the
+    # fixture gives each a title from its own argument.
+    BookEntry("of-temptation", "Of Temptation", "john-owen",
+              "ccel", "owen/temptation",
+              subtitle="The Nature and Power of It; the Danger of Entering into It; and the Means of Preventing That Danger",
+              cover_color="#4a2f3a",
+              skip=("Title page.", "Prefatory note.")),
     # Of Communion with God the Father, Son, and Holy Ghost (1657), in Goold's
     # edition of the Works (CCEL owen/communion). part="i" leaves out the
     # separate Vindication that follows it; Goold's prefatory note and analysis
