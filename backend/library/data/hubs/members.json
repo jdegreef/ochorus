@@ -19,6 +19,7 @@
         "augustine-of-hippo",
         "john-cassian",
         "gregory-the-great",
+        "cyril-of-jerusalem",
         "boethius"
       ]
     },
@@ -33,7 +34,10 @@
         "teresa-of-avila",
         "brother-lawrence",
         "jeanne-guyon",
-        "william-law"
+        "william-law",
+        "francis-de-sales",
+        "catherine-of-siena",
+        "ignatius-of-loyola"
       ]
     },
     {
@@ -239,7 +243,9 @@
         "gladys-aylward",
         "derek-prince",
         "john-stott",
-        "helen-roseveare"
+        "helen-roseveare",
+        "jeremy-taylor",
+        "philip-doddridge"
       ]
     },
     {
@@ -251,7 +257,8 @@
         "david-livingstone",
         "george-macdonald",
         "alexander-maclaren",
-        "mary-slessor"
+        "mary-slessor",
+        "henry-scougal"
       ]
     },
     {
@@ -276,6 +283,8 @@
         "anselm-of-canterbury",
         "teresa-of-avila",
         "corrie-ten-boom",
+        "catherine-of-siena",
+        "ignatius-of-loyola",
         "boethius"
       ]
     },
@@ -288,7 +297,8 @@
         "john-calvin",
         "brother-lawrence",
         "blaise-pascal",
-        "jeanne-guyon"
+        "jeanne-guyon",
+        "francis-de-sales"
       ]
     },
     {
@@ -404,7 +414,8 @@
         "dora-yu",
         "mary-stone",
         "sadhu-sundar-singh",
-        "watchman-nee"
+        "watchman-nee",
+        "cyril-of-jerusalem"
       ]
     }
   ]
