@@ -116,5 +116,13 @@
    "Curated plan backed by the ko editions the-bruised-reed (『상한 갈대』), mortification-of-sin (『신자 안에 있는 죄 죽이기』) and all-things-for-good (『모든 것이 합력하여 선을 이룬다』), all new in this batch. Ships with Level 1 books batch 3 (ko), which makes this plan's source books live in Korean; without this prose seed_plans would publish an English-titled card in Korean (the #819 defect) and PlanTranslationCoverageTests would fail.",
    "The card quotes no title in 『』 (the English names none), but echoes 『상한 갈대』 and 『모든 것이 합력하여 선을 이룬다』 word for word (both from 개역 이사야 42:3 / 로마서 8:28); 'the sin that still dwells within' is paraphrased (여전히 우리 안에 거하는 죄, 로마서 7:17) rather than echoing the Owen title. Names per the ko name table (리처드 십스, 존 오웬, 토머스 왓슨); Puritan = 청교도."
   ]
+ },
+ "faith-in-the-fire": {
+  "title": "모든 위로의 하나님: 불 속의 믿음",
+  "description": "기도조차 하기 힘든 날들을 위하여. 한나 휘톨 스미스는 모든 위로의 하나님에 대해, 개러스 에번스는 우리의 내일을 붙드시는 분을 신뢰하는 일에 대해 들려줍니다. 삶이 불확실할 때 흔들림 없는 평안 속으로 걸어 들어가는 5주의 여정입니다.",
+  "note": [
+   "Curated plan backed by the ko editions the-god-of-all-comfort (『모든 위로의 하나님』, new in this batch) and he-holds-my-tomorrows (『나의 내일을 붙드시는 분』, already shipped). Ships with Level 1 books batch 4 (ko), which makes the last source book live in Korean; without this prose seed_plans would publish an English-titled card in Korean (the #819 defect) and PlanTranslationCoverageTests would fail.",
+   "The title opens with the shipped edition title 『모든 위로의 하나님』 (개역 고린도후서 1:3). The card quotes no title in 『』 (the English names none) but echoes 『모든 위로의 하나님』 word for word and 『나의 내일을 붙드시는 분』 as 우리의 내일을 붙드시는 분 (the English says 'our tomorrows'). Names per the ko name table / shipped corpus (한나 휘톨 스미스, 개러스 에번스). 합니다체, the reader never addressed as 당신."
+  ]
  }
 }
