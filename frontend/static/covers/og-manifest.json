@@ -14485,6 +14485,17 @@
 				444
 			]
 		},
+		"holy-dying": {
+			"ground": "441b5963f84b205c32637ac389cc9b927a38d3a66968f9f84dd8f2815575b888",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"holy-in-christ": {
 			"ground": "2f82e0cf564ba4d2deb2d538766e4d5013200e6d88ac62e831b48b8fa35a783f",
 			"style": "devotional",

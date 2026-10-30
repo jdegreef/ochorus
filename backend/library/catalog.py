@@ -912,6 +912,10 @@ BOOKS: list[BookEntry] = [
     # Jeremy Taylor's Holy Living (1650), public domain, from CCEL. The
     # edition's nineteenth-century "Sketch of the Life and Times" is the
     # editor's, not Taylor's, so it is left out.
+    # Jeremy Taylor's Holy Dying (1651), the companion to Holy Living, public
+    # domain, from CCEL: the dedication and one chapter per Section.
+    BookEntry("holy-dying", "The Rule and Exercises of Holy Dying", "jeremy-taylor",
+              "ccel", "taylor/holy_dying", cover_color="#2f3a4a"),
     BookEntry("holy-living", "The Rule and Exercises of Holy Living", "jeremy-taylor",
               "ccel", "taylor/holy_living", cover_color="#3d4a5c",
               skip=("A Sketch of the Life and Times of Bishop Taylor.",),
