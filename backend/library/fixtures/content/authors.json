@@ -7815,5 +7815,81 @@
         }
       ]
     }
+  },
+  {
+    "model": "library.author",
+    "fields": {
+      "slug": "samuel-davies",
+      "name": "Samuel Davies",
+      "bio": "Samuel Davies (1723–1761) was the leading Presbyterian preacher of the Great Awakening in colonial Virginia. From Hanover County he won legal toleration for dissenters, taught enslaved Africans to read, and wrote hymns. In 1759 he succeeded Jonathan Edwards as president of the College of New Jersey, and died there two years later, aged thirty-seven.",
+      "tagline": "Great Awakening preacher in Virginia, and president of the College of New Jersey.",
+      "bio_html": "",
+      "photo_url": "",
+      "birth_year": 1723,
+      "death_year": 1761,
+      "original_language": "en",
+      "is_imprint": false,
+      "created_at": "2026-10-29T12:00:00Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Samuel_Davies"
+      ]
+    }
+  },
+  {
+    "model": "library.author",
+    "fields": {
+      "slug": "thomas-chalmers",
+      "name": "Thomas Chalmers",
+      "bio": "Thomas Chalmers (1780–1847) was the most celebrated Scottish preacher of his age. Converted while minister of Kilmany, he drew crowds to the Tron and St John's churches in Glasgow, where he also ran a famous experiment in parish care of the poor. A professor at St Andrews and Edinburgh, he led the Disruption of 1843 and was the first Moderator of the Free Church of Scotland.",
+      "tagline": "Glasgow preacher, parish reformer, and first Moderator of the Free Church of Scotland.",
+      "bio_html": "",
+      "photo_url": "",
+      "birth_year": 1780,
+      "death_year": 1847,
+      "original_language": "en",
+      "is_imprint": false,
+      "created_at": "2026-10-29T12:01:00Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Thomas_Chalmers"
+      ]
+    }
+  },
+  {
+    "model": "library.author",
+    "fields": {
+      "slug": "horatius-bonar",
+      "name": "Horatius Bonar",
+      "bio": "Horatius Bonar (1808–1889) was a Scottish minister and hymn writer. For nearly thirty years he served the Free Church congregation at Kelso, then the Chalmers Memorial Church in Edinburgh. He wrote some six hundred hymns, among them \"I heard the voice of Jesus say\", and gospel books such as God's Way of Peace, and in 1883 he was Moderator of the Free Church General Assembly.",
+      "tagline": "Scottish Free Church minister at Kelso and Edinburgh, and writer of hundreds of hymns.",
+      "bio_html": "",
+      "photo_url": "",
+      "birth_year": 1808,
+      "death_year": 1889,
+      "original_language": "en",
+      "is_imprint": false,
+      "created_at": "2026-10-29T12:02:00Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Horatius_Bonar"
+      ]
+    }
+  },
+  {
+    "model": "library.author",
+    "fields": {
+      "slug": "frederick-w-robertson",
+      "name": "Frederick W. Robertson",
+      "bio": "Frederick William Robertson (1816–1853) was an Anglican preacher whose six years at Trinity Chapel, Brighton, made him one of the most widely read preachers of the Victorian age. He published almost nothing in his lifetime; his sermons were printed after his early death, from his own notes and his hearers' records, and went through edition after edition.",
+      "tagline": "Preacher of Trinity Chapel, Brighton, whose sermons were read across the Victorian world.",
+      "bio_html": "",
+      "photo_url": "",
+      "birth_year": 1816,
+      "death_year": 1853,
+      "original_language": "en",
+      "is_imprint": false,
+      "created_at": "2026-10-29T12:03:00Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Frederick_William_Robertson"
+      ]
+    }
   }
 ]
