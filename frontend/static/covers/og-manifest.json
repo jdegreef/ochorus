@@ -26141,6 +26141,17 @@
 			"layout": "band/oxblood",
 			"bar": 0.04
 		},
+		"treatise-on-the-love-of-god": {
+			"ground": "f50d7a7f53f524c32e0a2308ce67fe4d44049482576751b2a557bb3ab224e5f4",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"treatises-of-cyprian": {
 			"ground": "c0a59ea980fd1818dce50697ff35bbe3a1a17027c070fc685fd0ae4e641114f1",
 			"style": "inscriptional",
