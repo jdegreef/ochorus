@@ -67,7 +67,14 @@ _LEAP = 2024
 
 
 def _text(el) -> str:
-    return " ".join(el.get_text().split())
+    # A <br> is a line break in a poem (The Diary of an Old Soul); get_text()
+    # would run "…to song" and "Some far-off day" together.
+    parts = (
+        " " if getattr(node, "name", None) == "br" else node
+        for node in el.descendants
+        if isinstance(node, str) or getattr(node, "name", None) == "br"
+    )
+    return " ".join("".join(parts).split())
 
 
 def _marker_day(el, tag: str) -> int | None:
@@ -95,6 +102,9 @@ class Entry:
     start: int
     #: One past the entry's last block.
     end: int
+    #: The first block the day page shows: past the marker, and past the
+    #: heading too when there is one (the page sets it as its own title).
+    body_start: int
     label: str
     heading: str
     excerpt: str
@@ -133,19 +143,22 @@ def month_entries(body_html: str, marker: str, blocks: list | None = None) -> li
     entries = []
     for n, (start, day) in enumerate(starts):
         end = starts[n + 1][0] if n + 1 < len(starts) else len(blocks)
-        rest = [el for el in blocks[start + 1 : end] if _text(el)]
+        rest = [(i, el) for i, el in enumerate(blocks[start + 1 : end], start + 1) if _text(el)]
         heading = ""
-        if rest and _is_heading(rest[0]):
-            heading = _tidy_heading(_text(rest[0]))
+        body_start = start + 1
+        if rest and _is_heading(rest[0][1]):
+            heading = _tidy_heading(_text(rest[0][1]))
+            body_start = rest[0][0] + 1
             rest = rest[1:]
         entries.append(
             Entry(
                 day=day,
                 start=start,
                 end=end,
+                body_start=body_start,
                 label=_text(blocks[start]),
                 heading=heading,
-                excerpt=_excerpt(_text(rest[0])) if rest else "",
+                excerpt=_excerpt(_text(rest[0][1])) if rest else "",
             )
         )
     return entries
@@ -229,8 +242,9 @@ def entry_payload(month: int, entry: Entry, requested: tuple[int, int], slug: st
 
 
 def entry_html(entry: Entry, blocks: list) -> str:
-    """The entry's own blocks, marker excluded (the page heads it itself)."""
-    return "".join(str(el) for el in blocks[entry.start + 1 : entry.end])
+    """The entry's own blocks, its date line and heading excluded (the page
+    heads it with both itself)."""
+    return "".join(str(el) for el in blocks[entry.body_start : entry.end])
 
 
 def neighbours(month: int, day: int) -> tuple[str, str]:

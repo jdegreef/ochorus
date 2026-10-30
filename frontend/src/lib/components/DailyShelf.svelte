@@ -64,8 +64,10 @@
 					<span class="w-14 shrink-0" aria-hidden="true"><BookCover book={r.book} rounded="rounded-sm" /></span>
 					<span class="min-w-0">
 						<span class="eyebrow block truncate text-accent" dir="auto">{r.book.title}</span>
-						<span class="title mt-1 block text-h3" dir="auto">{r.heading || r.label}</span>
-						{#if r.excerpt}
+						<!-- The day's own title where the book gives one, else its verse:
+						     the date is the shelf's, so a card never repeats it. -->
+						<span class="title mt-1 line-clamp-3 text-h3" dir="auto">{r.heading || r.excerpt || r.label}</span>
+						{#if r.heading && r.excerpt}
 							<span class="mt-1 line-clamp-3 text-small text-muted" dir="auto">{r.excerpt}</span>
 						{/if}
 						<span class="mt-2 block text-small text-muted">{r.book.author.name}</span>

@@ -84,6 +84,16 @@ class ParsingTests(SimpleTestCase):
         self.assertEqual((first.label, first.heading), ("Jan. 1", "The Bible's First Promise"))
         self.assertEqual(first.excerpt, '"And I will put enmity." Gen. 3:15')
 
+    def test_the_day_page_body_leaves_out_the_heading(self):
+        body = "<p>Jan. 1</p> <h3>A PROMISE</h3> <p>Verse.</p><p>Jan. 2</p>"
+        entry = month_entries(body, "p")[0]
+        blocks = daily_readings._blocks(body)
+        self.assertEqual(daily_readings.entry_html(entry, blocks), "<p>Verse.</p>")
+
+    def test_a_poems_line_breaks_are_spaces(self):
+        body = "<h3>January 1</h3><p>Lord, what I once had done<br/>Had I been true</p>"
+        self.assertEqual(month_entries(body, "h3")[0].excerpt, "Lord, what I once had done Had I been true")
+
     def test_a_bold_title_line_is_the_heading(self):
         body = "<h3>January 1</h3><p><b>MAKING A FRESH START</b></p><p>We can all start afresh!</p>"
         entry = month_entries(body, "h3")[0]

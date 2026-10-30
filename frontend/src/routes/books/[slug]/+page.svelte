@@ -71,6 +71,14 @@
 	$effect(() => {
 		record = getProgressRecord(book.slug);
 	});
+	// A dated devotional's read card names today, not its January chapter —
+	// the reader's local date, so only once in the browser (the page is
+	// prerendered; the build would bake the day it ran).
+	let todayLabel = $state('');
+	$effect(() => {
+		if (book.daily)
+			todayLabel = new Date().toLocaleDateString(book.language, { day: 'numeric', month: 'long' });
+	});
 	const inEdition = (order: number) => book.chapters.some((c) => c.order === order);
 	const furthest = $derived(record ? furthestOf(record) : null);
 	// The other chapter worth a link beside Continue: the one last opened, when
@@ -713,7 +721,9 @@
 									class="px-1.5 opacity-50">·</span
 								><span class="text-muted">{t('book.noAccount')}</span>
 							</p>
-							{#if book.chapters[0]}
+							{#if todayLabel}
+								<p class="read-card-title">{todayLabel}</p>
+							{:else if book.chapters[0]}
 								<p class="read-card-title" dir="auto">
 									{chapterNameIn(firstOrder, book.chapters[0].title, book.title)}
 								</p>
