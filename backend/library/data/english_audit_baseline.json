@@ -102,6 +102,10 @@
   "ever-increasing-faith": {
    "orphan-close-quote": 2
   },
+  "exhortation-to-the-heathen": {
+   "space-before-punct": 5,
+   "word-fusion": 1
+  },
   "expository-thoughts-on-matthew": {
    "orphan-close-quote": 13
   },

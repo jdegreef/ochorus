@@ -533,6 +533,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Gregory of Nazianzus (c."
         ),
     ),
+    "clement-of-alexandria": AuthorEntry(
+        slug="clement-of-alexandria",
+        name="Clement of Alexandria",
+        birth_year=150,
+        death_year=215,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Clement of Alexandria (c. 150–c. 215) was a convert from paganism who studied under Pantaenus and taught the faith in Alexandria until the persecution of 202 drove him away."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -985,6 +996,12 @@ BOOKS: list[BookEntry] = [
                     "The Last Farewell in the Presence of the One Hundred and Fifty Bishops.",
                     "Funeral Oration on the Great S. Basil, Bishop of Cæsarea in Cappadocia.",
                     "The Second Oration on Easter.")),
+    # Clement of Alexandria's Exhortation to the Heathen (c. 195) — William
+    # Wilson's ANF translation (1885), public domain, extracted from anf02 by
+    # its stem.
+    BookEntry("exhortation-to-the-heathen", "Exhortation to the Heathen", "clement-of-alexandria",
+              "ccel", "schaff/anf02", part="vi.ii",
+              subtitle="Translated by William Wilson", cover_color="#5c4a2a"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

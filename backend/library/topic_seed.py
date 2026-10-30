@@ -354,6 +354,7 @@ TOPICS = [
             "treatises-of-cyprian",
             "homilies-on-matthew",
             "first-epistle-of-clement",
+            "exhortation-to-the-heathen",
             "epistles-of-ignatius",
             "key-teachings-of-augustine-of-hippo",
             "key-teachings-of-athanasius-of-alexandria",
