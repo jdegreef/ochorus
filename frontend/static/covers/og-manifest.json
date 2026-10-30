@@ -1978,6 +1978,36 @@
 				460
 			]
 		},
+		"am/our-daily-walk": {
+			"ground": "c3e4d05ed98b916cd68c1e31613f9e851e8a52d553ba571fb29cce617cb92d40",
+			"style": "devotional",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[197, 102, 403, 131]
+				],
+				"title": [
+					[85, 242, 515, 347],
+					[191, 335, 409, 440]
+				],
+				"subtitle": [
+					[166, 516, 434, 544]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				249,
+				545
+			]
+		},
 		"am/pandita-ramabai-a-life-children": {
 			"ground": "a3316cb4acab065341d6452f7096f1965791866eea24a12e27958c0f93c2a224",
 			"style": "young",
@@ -14365,6 +14395,17 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"holy-living": {
+			"ground": "02b7ef39662515c217dfdbae14e37bf36c20fc4052088899be9b19aff3004634",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"homilies-on-matthew": {
 			"ground": "f3d88de9d79d0788f736c141bb6dc64c2c7eba577f5d78ebe9b4756d16032659",
 			"style": "inscriptional",
@@ -14615,6 +14656,17 @@
 				173,
 				362
 			]
+		},
+		"introduction-to-the-devout-life": {
+			"ground": "6f9550e47e04b538c9f10645be5690b055f020cccbe63ed0df6f074a1d695697",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"jesus-himself-2": {
 			"ground": "2cee13a25049b2035c262c0efaaec0ecbb8e30a357b00080e14eab93fe5c235a",
@@ -16260,6 +16312,33 @@
 				477
 			]
 		},
+		"ko/ever-increasing-faith": {
+			"ground": "b5f8b14e5843f64653eede08c63d2ad9a1b0cd40c9388fd7851885a39ce9fdf3",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "963754407853e24b6833f52e7a25daa7fd0402482f96165e3c80232d7e03d178",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[96, 102, 504, 131]
+				],
+				"title": [
+					[130, 221, 470, 331],
+					[170, 316, 430, 426]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				476
+			]
+		},
 		"ko/gleanings-among-the-sheaves": {
 			"ground": "d90914e34a383a2c53285d3437fc826135b791fcabd91908ea302e67f0cd4bcb",
 			"style": "revival",
@@ -16296,6 +16375,17 @@
 				294,
 				501
 			]
+		},
+		"ko/grace-abounding": {
+			"ground": "0b3168bf79dc27563179b18597c20767c07c639568bbaa90ef11068ec72d7407",
+			"style": "press",
+			"volume": null,
+			"script": "korean",
+			"fonts": "e7099195ea4f1619a13d2694f981de6a6e8203cf12cb13a196db87806bb92ec7",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
 		},
 		"ko/growing-in-wisdom": {
 			"ground": "3697d1a1cd1b6b10de486d6c3446dc9149d1d2ec2eb4d9702eeb88287cf6c69b",
@@ -16661,6 +16751,36 @@
 			"layout": "split/navy",
 			"bar": 0
 		},
+		"ko/religious-experience-and-journal": {
+			"ground": "60f997bc2e03b3cf983902867bc2adb98898dd45e0f216745b0ae1c06077417d",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "korean",
+			"fonts": "95f26b3f951a918fd07e7b3a416882b468f3a7d109566370d07a5baa8c08c8bc",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[195, 102, 405, 131]
+				],
+				"title": [
+					[183, 172, 417, 263],
+					[147, 262, 453, 353]
+				],
+				"subtitle": [
+					[119, 421, 481, 449]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				449
+			]
+		},
 		"ko/rooted-1": {
 			"ground": "a87b6f52780c7283557703a1f0b9c9751f7be8e07128313aef1846a11c0a5667",
 			"style": "young",
@@ -16772,6 +16892,63 @@
 			"middle": [
 				296,
 				499
+			]
+		},
+		"ko/the-god-of-all-comfort": {
+			"ground": "aa309a6434caa648fd1df0c69fa6c326c148f876b8c6cc5b368d13c8fbdba141",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[79, 102, 521, 131]
+				],
+				"title": [
+					[135, 268, 465, 373],
+					[135, 360, 465, 465]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
+		},
+		"ko/the-imitation-of-christ": {
+			"ground": "71eee575c9620c34ae56e335104233f970a85b2dfba0094bc911aa6f953f0b01",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "099bcbc747b78f6fc3083929801cd1a68a34d383622304f1686be177448deec5",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[139, 102, 461, 131]
+				],
+				"title": [
+					[123, 229, 477, 348],
+					[114, 333, 486, 452]
+				],
+				"subtitle": [
+					[159, 530, 441, 558]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				237,
+				558
 			]
 		},
 		"ko/the-inner-chamber": {
@@ -25071,6 +25248,17 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"the-dialogue-of-catherine-of-siena": {
+			"ground": "27c31a61010f46ddbbf277c580d489af3c0e5554afb59a5762ae9c6d4314fb42",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-everlasting-man": {
 			"ground": "7cd08728ce0c3411240e7980ae0c2a467bcf8b5776f9c54a9a8e914df0196893",
 			"style": "revival",
@@ -25350,6 +25538,17 @@
 				439
 			]
 		},
+		"the-life-of-god-in-the-soul-of-man": {
+			"ground": "2d17585e59124ae6276f99e9fb721615f039ce6d6b11185e7f6938013b8a61f4",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-life-of-trust": {
 			"ground": "89b1f3246a70f85e0a65425b7f842156ca97ed3ab1257e1dadc9ec7c710205b6",
 			"style": "revival",
@@ -25604,6 +25803,17 @@
 			"scrim": 1,
 			"layout": "box/rust",
 			"bar": 0.04
+		},
+		"the-rise-and-progress-of-religion-in-the-soul": {
+			"ground": "cb6042bb60d366f6ac5e6358a0943beab82b44228702f8672510140f81211cf9",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"the-saint-and-his-saviour": {
 			"ground": "ecbb592e7c3c8e50f18b610eaa8798e56b6cf6804a3afd9096bc7a81293ad071",
@@ -27220,6 +27430,33 @@
 				533
 			]
 		},
+		"vi/ever-increasing-faith": {
+			"ground": "45e309e9851899dc1c56b226e15fa22d047d5b0031719a19acd47ca23c9c0a9c",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[96, 102, 504, 131]
+				],
+				"title": [
+					[126, 223, 474, 299],
+					[110, 289, 490, 365]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				417
+			]
+		},
 		"vi/gleanings-among-the-sheaves": {
 			"ground": "955352464308dc8ab46c9dfe3e99dbca83b851b245b15813cda9d9384337962f",
 			"style": "revival",
@@ -27229,6 +27466,17 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "band/oxblood",
+			"bar": 0
+		},
+		"vi/grace-abounding": {
+			"ground": "c4678112e1d05163c2ade2f96ff6d0251b8ac71f363e463f7c0063b75c69107f",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
 			"bar": 0
 		},
 		"vi/growing-in-wisdom": {
@@ -27602,6 +27850,36 @@
 			"layout": "split/navy",
 			"bar": 0
 		},
+		"vi/religious-experience-and-journal": {
+			"ground": "9d09e9586cac3a05d5abd25aae1a4c6e60fb62bdb1f6b07811989cfc92305f75",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[195, 102, 405, 131]
+				],
+				"title": [
+					[68, 172, 532, 235],
+					[92, 234, 508, 297]
+				],
+				"subtitle": [
+					[94, 361, 506, 389]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				389
+			]
+		},
 		"vi/rooted-1": {
 			"ground": "9a7095085e59d96d8053fc17a2e478fb164443b57e1f9c77ec455455c4e668eb",
 			"style": "young",
@@ -27715,6 +27993,63 @@
 			"middle": [
 				303,
 				492
+			]
+		},
+		"vi/the-god-of-all-comfort": {
+			"ground": "af85149cce752a220b9a74ee27966f50c1dfef7eb8e23d8afe17d7f0e9569400",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[79, 102, 521, 131]
+				],
+				"title": [
+					[108, 290, 492, 372],
+					[61, 362, 539, 444]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				295,
+				500
+			]
+		},
+		"vi/the-imitation-of-christ": {
+			"ground": "c8ceda78cc21bc7dc42e904be829b505b203e99b5a417801d55969e400a342f4",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[139, 102, 461, 131]
+				],
+				"title": [
+					[143, 259, 457, 347],
+					[131, 337, 469, 425]
+				],
+				"subtitle": [
+					[82, 501, 518, 529]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				265,
+				529
 			]
 		},
 		"vi/the-inner-chamber": {

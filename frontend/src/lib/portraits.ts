@@ -47,6 +47,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'c-t-studd': '50% 0%', // full-length cricket photo; head high at ~10% of a 0.54 plate
 	'catherine-booth': '50% 0%',
 	'catherine-ferguson': '50% 0%', // Lossing 1855 engraving (from an 1850 daguerreotype); face at ~25% of a 0.75 plate
+	'catherine-of-siena': '50% 0%', // Tiepolo oil (c. 1746), oval plate; face at ~30% of a 0.78 plate
 	'charles-finney': '50% 0%',
 	'charles-h-spurgeon': '50% 0%',
 	'charles-s-price': '50% 30%', // 1920s–30s studio portrait; near-square, so nearly inert
@@ -68,6 +69,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'f-f-bosworth': '50% 0%', // small studio bust; face at ~30% of a 0.85 plate
 	'fanny-jackson-coppin': '50% 9%', // 1913 frontispiece (Reminiscences); face at ~36% of a 0.75 plate
 	'festo-kivengere': '50% 10%', // bishop photo; face at ~37% of a 0.70 plate
+	'francis-de-sales': '50% 0%', // Bussy-Rabutin portrait, cropped to the bust; face at ~33% of a 0.80 plate
 	'frederick-brotherton-meyer': '50% 0%',
 	'g-k-chesterton': '50% 10%', // E. H. Mills photo; face at ~28% of a 0.78 plate
 	'gareth-evans': '50% 45%', // square source
@@ -80,6 +82,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'hannah-whitall-smith': '50% 0%',
 	'harriet-tubman': '50% 0%', // H. Seymour Squyer c.1885 (NPG), cropped to the upper figure; face high at ~25%
 	'helen-roseveare': '50% 8%', // 2003 bust photo; face at ~36% of a 0.82 plate
+	'henry-scougal': '50% 0%', // University of Aberdeen oil; face at ~32% of a 0.84 plate
 	'hudson-taylor': '50% 20%',
 	'ignatius-of-antioch': '50% 0%', // fresco: head at ~17% of a 0.72 plate
 	'isaac-watts': '50% 20%', // NPG portrait cropped to a bust; near-square, so nearly inert
@@ -87,6 +90,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'janani-luwum': '50% 50%', // square close-up — the crop takes the whole photo
 	'jarena-lee': '50% 0%', // 1849 lithograph: seated figure, face at ~18% of a 0.73 plate
 	'jeanne-guyon': '50% 58%',
+	'jeremy-taylor': '50% 0%', // Eddis copy of the Bodleian oil; face at ~22% of a 0.80 plate
 	'jesse-lyman-hurlbut': '50% 30%', // c. 1895 bust photo; near-square, so nearly inert
 	'jim-elliot': '50% 38%', // Ochorus scene (beside the Piper on the sandbar), figure from behind, no face
 	'joe-church': '50% 30%', // cropped from a photo with his wife Decie; near-square
@@ -122,6 +126,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'monica-of-hippo': '50% 0%', // Gozzoli fresco, tall niche; head high at ~18% of a 0.42 plate
 	'pandita-ramabai': '50% 20%', // bust photo; face at ~30% of a 0.73 plate
 	'pastor-hsi': '50% 0%', // engraved plate, cropped to the upper figure; face high at ~15%
+	'philip-doddridge': '50% 0%', // Vertue engraving after Soldi (1751), cropped to the oval; face at ~38% of a 0.88 plate
 	'phillis-wheatley': '50% 0%', // 1773 Poems frontispiece, cropped to the head; face at ~30%
 	'r-a-torrey': '50% 10%',
 	'rees-howells': '50% 10%', // bust photo; face at ~32% of a 0.84 plate

@@ -183,6 +183,9 @@
    "space-before-punct": 5,
    "stray-parens": 1
   },
+  "introduction-to-the-devout-life": {
+   "lost-paragraphing": 1
+  },
   "jesus-himself-2": {
    "space-before-punct": 2
   },
@@ -410,6 +413,9 @@
    "lost-paragraphing": 2,
    "word-fusion": 1
   },
+  "the-dialogue-of-catherine-of-siena": {
+   "lost-paragraphing": 30
+  },
   "the-dying-thief": {
    "word-fusion": 1
   },
@@ -447,6 +453,9 @@
   "the-joy-of-the-lord": {
    "space-before-punct": 1
   },
+  "the-life-of-god-in-the-soul-of-man": {
+   "orphan-close-quote": 1
+  },
   "the-masters-indwelling": {
    "orphan-close-quote": 2,
    "space-before-punct": 11
@@ -471,6 +480,9 @@
   },
   "the-practical-hope-of-the-lords-coming": {
    "space-before-punct": 2
+  },
+  "the-rise-and-progress-of-religion-in-the-soul": {
+   "orphan-close-quote": 1
   },
   "the-saint-and-his-saviour": {
    "orphan-close-quote": 1
