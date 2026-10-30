@@ -36,6 +36,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'arthur-t-pierson': '50% 10%', // 1886 engraving (Many Infallible Proofs); face at ~25% of a 0.77 plate
 	'athanasius-of-alexandria': '50% 0%', // icon: head at ~20% of a 0.69 plate
 	'augustine-of-hippo': '50% 0%',
+	'basil-of-caesarea': '50% 0%', // 11th-c. mosaic, Hagia Sophia, Kiev, cropped to the bust; head at ~25% of a 0.82 plate
 	'bernard-of-clairvaux': '50% 0%', // painting cropped to a bust; face at ~42%, near-square so nearly inert
 	'bill-bright': '50% 5%', // 1980 bust photo; face at ~34% of a 0.75 plate
 	'billy-graham': '50% 0%', // 1966 press photo; face high at ~23% of a 0.80 plate

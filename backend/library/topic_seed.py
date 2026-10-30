@@ -348,6 +348,7 @@ TOPICS = [
             "the-city-of-god",
             "life-of-antony",
             "against-the-arians",
+            "on-the-holy-spirit",
             "on-the-priesthood",
             "homilies-on-romans",
             "treatises-of-cyprian",

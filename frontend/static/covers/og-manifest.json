@@ -19260,6 +19260,17 @@
 				484
 			]
 		},
+		"on-the-holy-spirit": {
+			"ground": "1eec2062548c6bf4706646f4e042078052beda54546415f67e9273c4c00a6cea",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"on-the-incarnation": {
 			"ground": "256edd288ca5af1ca9bd7c1b4df6aae6fbeff421ab403ad41892505180c3d7fb",
 			"style": "inscriptional",

@@ -511,6 +511,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Boethius (c."
         ),
     ),
+    "basil-of-caesarea": AuthorEntry(
+        slug="basil-of-caesarea",
+        name="Basil of Caesarea",
+        birth_year=330,
+        death_year=379,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Basil of Caesarea (330–379) was the archbishop of Caesarea in Cappadocia remembered as Basil the Great, a founder of Eastern monastic life and one of the Cappadocian Fathers."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -930,6 +941,13 @@ BOOKS: list[BookEntry] = [
               cover_color="#3b3b52",
               skip=("A Note on the Translation", "Appendix", "Editorial Note",
                     "Chronological Table")),
+    # Basil the Great's On the Holy Spirit (375) — Blomfield Jackson's NPNF
+    # translation (1895), public domain, extracted from npnf208 by its stem.
+    # Jackson's preface is his own, so it is left out.
+    BookEntry("on-the-holy-spirit", "On the Holy Spirit", "basil-of-caesarea",
+              "ccel", "schaff/npnf208", part="vii",
+              subtitle="Translated by Blomfield Jackson", cover_color="#2e4a5a",
+              summary_titles=True, skip=("Preface.",)),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
