@@ -3,7 +3,7 @@
  "slug": "our-daily-walk",
  "language": "am",
  "job_issue": 3786,
- "pull_request": null,
+ "pull_request": 6790,
  "note": [
   "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh); it carries no Old Testament, so every OT quotation is self_rendered in the 1962 register.",
   "The mirror lumps some verse ranges under one marker (e.g. \"\\v 1-10\") but keeps only the last verse's text, so the earlier verses of such a range are absent; quotations of those verses are self_rendered.",
