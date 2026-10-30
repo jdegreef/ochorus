@@ -29,6 +29,7 @@ import html
 import io
 import json
 import logging
+import re
 import uuid
 import zipfile
 from dataclasses import dataclass, field
@@ -144,8 +145,8 @@ class ExportChapter:
     order: int
     title: str
     body: str  # well-formed XHTML fragment
-    # ``(question, answer)`` pairs a young-reader edition ends the chapter
-    # with (``Chapter.study_questions``); empty everywhere else.
+    # ``(question, answer)`` pairs the chapter ends with
+    # (``Chapter.study_questions``); empty when it has none.
     questions: tuple[tuple[str, str], ...] = ()
 
 
@@ -172,6 +173,9 @@ class Edition:
     # their `<img src>` was rewritten to ("illustrations/<slug>/<name>.jpg") —
     # the same path inside the EPUB's OEBPS/ and beside the print page.
     images: dict[str, Cover] = field(default_factory=dict)
+    # Whose voice the chapter questions speak in (``question_voice``), decided
+    # once per book rather than per chapter.
+    question_voice: str = "reflect"
 
     @property
     def identifier(self) -> str:
@@ -423,6 +427,7 @@ def build_edition(book: Book) -> Edition:
         bio=_bio_paragraphs(author_bio(book)),
         url=book_url(book),
         images=images,
+        question_voice=question_voice(book),
     )
 
 
@@ -430,27 +435,41 @@ def _e(text) -> str:
     return html.escape(str(text), quote=True)
 
 
-def _talk(ed: Edition, ch: ExportChapter) -> str:
-    """A chapter's questions and answers — or "".
+_TRAILING_PAREN = re.compile(r"\S\s*\([^()]+\)$")
 
-    The voice follows the reader's (``splitEdition`` / ``childrensReading``): a
-    teens edition and a children's one ask first and answer apart, under their
-    own headings; any other book reads like the sermon page, each answer
-    beneath its question.
+
+def question_voice(book: Book) -> str:
+    """Whose voice a book's chapter questions speak in: "teens", "young" or
+    "reflect" — the reader's own rule (``edition.ts``: ``splitEdition`` then
+    ``childrensReading``). An edition is a retelling only when BOTH its slug
+    suffix and a trailing "(…)" in its title (in any language) say so, so
+    Watts's Divine Songs for Children is not one; a book in a young readers'
+    series speaks to children too; any other book reads like the sermon page.
+    """
+    from .serializers import AUDIENCE_EDITION_SUFFIX
+
+    retold = bool(_TRAILING_PAREN.search(book.title.strip()))
+    if retold and book.slug.endswith(AUDIENCE_EDITION_SUFFIX["teens"]):
+        return "teens"
+    if (retold and book.slug.endswith(AUDIENCE_EDITION_SUFFIX["young_readers"])) or (
+        getattr(book.series, "audience", "") == "young_readers"
+    ):
+        return "young"
+    return "reflect"
+
+
+def _talk(ed: Edition, ch: ExportChapter) -> str:
+    """A chapter's questions and answers in the edition's voice — or "".
+    The children's and teens' voices ask first and answer apart, under their
+    own headings; "reflect" sets each answer beneath its question.
     """
     if not ch.questions:
         return ""
-    book, s = ed.book, ed.strings
-    if book.slug.endswith("-teens"):
-        voice = "teens"
-    elif (book.slug.endswith("-children") and book.title.endswith("(For Children)")) or (
-        getattr(book.series, "audience", "") == "young_readers"
-    ):
-        voice = "young"
-    else:
+    s, voice = ed.strings, ed.question_voice
+    if voice == "reflect":
         return (
             f'<div class="talk"><h2>{_e(s["questions_reflect"])}</h2><ol class="reflect">'
-            + "".join(f"<li><p>{_e(q)}</p><p class=\"answer\">{_e(a)}</p></li>" for q, a in ch.questions)
+            + "".join(f'<li><p>{_e(q)}</p><p class="answer">{_e(a)}</p></li>' for q, a in ch.questions)
             + "</ol></div>"
         )
     return (

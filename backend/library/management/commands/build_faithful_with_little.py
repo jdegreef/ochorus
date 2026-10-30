@@ -153,8 +153,14 @@ class Command(BaseCommand):
         # Each chapter's answered questions ("Questions for reflection"), kept
         # beside the manuscript as {order: [{question, answer}, ...]}.
         questions = json.loads((DATA_DIR / SLUG / "questions.json").read_text())
-        if sorted(questions, key=int) != [str(n) for n in range(1, len(chapters) + 1)]:
+        if set(questions) != {str(n) for n in range(1, len(chapters) + 1)}:
             raise CommandError("questions.json must hold every chapter's questions, and only those.")
+        for order, qa in questions.items():
+            if not (2 <= len(qa) <= 5) or any(
+                set(item) != {"question", "answer"} or not all(str(v).strip() for v in item.values())
+                for item in qa
+            ):
+                raise CommandError(f"questions.json chapter {order}: 2–5 {{question, answer}} pairs, none blank.")
         check_shape(chapters)
 
         content = {
