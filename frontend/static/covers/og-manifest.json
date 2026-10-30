@@ -14384,6 +14384,17 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"holy-living": {
+			"ground": "02b7ef39662515c217dfdbae14e37bf36c20fc4052088899be9b19aff3004634",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"homilies-on-matthew": {
 			"ground": "f3d88de9d79d0788f736c141bb6dc64c2c7eba577f5d78ebe9b4756d16032659",
 			"style": "inscriptional",

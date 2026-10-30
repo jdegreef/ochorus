@@ -88,6 +88,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'janani-luwum': '50% 50%', // square close-up — the crop takes the whole photo
 	'jarena-lee': '50% 0%', // 1849 lithograph: seated figure, face at ~18% of a 0.73 plate
 	'jeanne-guyon': '50% 58%',
+	'jeremy-taylor': '50% 0%', // Eddis copy of the Bodleian oil; face at ~22% of a 0.80 plate
 	'jesse-lyman-hurlbut': '50% 30%', // c. 1895 bust photo; near-square, so nearly inert
 	'jim-elliot': '50% 38%', // Ochorus scene (beside the Piper on the sandbar), figure from behind, no face
 	'joe-church': '50% 30%', // cropped from a photo with his wife Decie; near-square

@@ -445,6 +445,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Catherine of Siena (1347–1380) was an Italian mystic and Dominican laywoman who nursed the sick, counselled popes, and urged Gregory XI to return from Avignon to Rome."
         ),
     ),
+    "jeremy-taylor": AuthorEntry(
+        slug="jeremy-taylor",
+        name="Jeremy Taylor",
+        birth_year=1613,
+        death_year=1667,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Jeremy Taylor (1613–1667) was an English Anglican priest, Royalist chaplain and bishop, called the “Shakespeare of Divines” for his prose."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -813,6 +824,16 @@ BOOKS: list[BookEntry] = [
     BookEntry("the-dialogue-of-catherine-of-siena", "The Dialogue", "catherine-of-siena",
               "ccel", "catherine/dialog", subtitle="Translated by Algar Thorold",
               cover_color="#6b2d2d", skip=("INTRODUCTION",)),
+    # Jeremy Taylor's Holy Living (1650), public domain, from CCEL. The
+    # edition's nineteenth-century "Sketch of the Life and Times" is the
+    # editor's, not Taylor's, so it is left out.
+    BookEntry("holy-living", "The Rule and Exercises of Holy Living", "jeremy-taylor",
+              "ccel", "taylor/holy_living", cover_color="#3d4a5c",
+              skip=("A Sketch of the Life and Times of Bishop Taylor.",),
+              # Divider pages that carry prose: the dedication and Chapter I's
+              # introduction, Section III's opening, the introductions to
+              # Chapters III and IV, and Chapter IV's Section I on faith.
+              keep=("iii", "iii.iii", "v", "vi", "vi.vi")),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
