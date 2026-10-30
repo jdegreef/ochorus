@@ -47,6 +47,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'c-t-studd': '50% 0%', // full-length cricket photo; head high at ~10% of a 0.54 plate
 	'catherine-booth': '50% 0%',
 	'catherine-ferguson': '50% 0%', // Lossing 1855 engraving (from an 1850 daguerreotype); face at ~25% of a 0.75 plate
+	'catherine-of-siena': '50% 0%', // Tiepolo oil (c. 1746), oval plate; face at ~30% of a 0.78 plate
 	'charles-finney': '50% 0%',
 	'charles-h-spurgeon': '50% 0%',
 	'charles-s-price': '50% 30%', // 1920s–30s studio portrait; near-square, so nearly inert
@@ -67,6 +68,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'f-f-bosworth': '50% 0%', // small studio bust; face at ~30% of a 0.85 plate
 	'fanny-jackson-coppin': '50% 9%', // 1913 frontispiece (Reminiscences); face at ~36% of a 0.75 plate
 	'festo-kivengere': '50% 10%', // bishop photo; face at ~37% of a 0.70 plate
+	'francis-de-sales': '50% 0%', // Bussy-Rabutin portrait, cropped to the bust; face at ~33% of a 0.80 plate
 	'frederick-brotherton-meyer': '50% 0%',
 	'g-k-chesterton': '50% 10%', // E. H. Mills photo; face at ~28% of a 0.78 plate
 	'gareth-evans': '50% 45%', // square source

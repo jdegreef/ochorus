@@ -183,6 +183,9 @@
    "space-before-punct": 5,
    "stray-parens": 1
   },
+  "introduction-to-the-devout-life": {
+   "lost-paragraphing": 1
+  },
   "jesus-himself-2": {
    "space-before-punct": 2
   },
@@ -409,6 +412,9 @@
   "the-death-of-death-in-the-death-of-christ": {
    "lost-paragraphing": 2,
    "word-fusion": 1
+  },
+  "the-dialogue-of-catherine-of-siena": {
+   "lost-paragraphing": 30
   },
   "the-dying-thief": {
    "word-fusion": 1
