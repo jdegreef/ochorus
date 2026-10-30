@@ -467,6 +467,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Henry Scougal (1650–1678) was a Scottish minister and Professor of Divinity at King’s College, Aberdeen, who died of consumption at about twenty-eight."
         ),
     ),
+    "philip-doddridge": AuthorEntry(
+        slug="philip-doddridge",
+        name="Philip Doddridge",
+        birth_year=1702,
+        death_year=1751,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Philip Doddridge (1702–1751) was an English Congregationalist minister, tutor and hymn-writer who led a Dissenting academy at Northampton."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -849,6 +860,11 @@ BOOKS: list[BookEntry] = [
     # from CCEL.
     BookEntry("the-life-of-god-in-the-soul-of-man", "The Life of God in the Soul of Man",
               "henry-scougal", "ccel", "scougal/life", cover_color="#5a4a2f"),
+    # Philip Doddridge's Rise and Progress of Religion in the Soul (1745),
+    # public domain, from CCEL.
+    BookEntry("the-rise-and-progress-of-religion-in-the-soul",
+              "The Rise and Progress of Religion in the Soul", "philip-doddridge",
+              "ccel", "doddridge/rise", cover_color="#2f4f4f"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
