@@ -42,6 +42,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'billy-sunday': '50% 0%', // 1921 LoC studio bust; face at ~33% of a 0.70 plate — 0% is the highest the crop goes
 	'blaise-pascal': '50% 10%', // c. 1690 Versailles oil, cropped to a bust; face at ~35% of a 0.84 plate
 	'blasio-kigozi': '50% 19%', // Ochorus scene (preaching on the hillside), figure from behind, no face
+	'boethius': '50% 0%', // 12th-c. manuscript drawing, cropped to the seated figure; head at ~25% of a 0.93 plate
 	'brother-lawrence': '50% 8%', // Ochorus firelight illustration (imagined likeness); face at ~35% of a 0.75 plate
 	'c-s-lewis': '50% 0%', // 1957 dust-jacket photo (John S. Murray); head high — anything lower clips the crown
 	'c-t-studd': '50% 0%', // full-length cricket photo; head high at ~10% of a 0.54 plate

@@ -423,6 +423,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "after the Bible the most widely read Christian book ever written."
         ),
     ),
+    "boethius": AuthorEntry(
+        slug="boethius",
+        name="Boethius",
+        birth_year=480,
+        death_year=524,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Boethius (c."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -780,6 +791,14 @@ BOOKS: list[BookEntry] = [
     # The Stanbrook Benedictines' translation (1921, revised edition), public
     # domain. group_parts: each Mansion's short chapters read as one chapter; the
     # editor's introduction and his note before VI.iii are left out.
+    # Boethius' Consolation of Philosophy (524) — W. V. Cooper's translation
+    # (Dent, 1902), public domain, from CCEL. The editor's notes, appendix
+    # and chronology are left out.
+    BookEntry("the-consolation-of-philosophy", "The Consolation of Philosophy", "boethius",
+              "ccel", "boethius/consolation", subtitle="Translated by W. V. Cooper",
+              cover_color="#3b3b52",
+              skip=("A Note on the Translation", "Appendix", "Editorial Note",
+                    "Chronological Table")),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
