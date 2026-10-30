@@ -434,6 +434,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Francis de Sales (1567–1622) was a Savoyard priest and Bishop of Geneva, a see whose city he could never enter, remembered for his patience and gentleness."
         ),
     ),
+    "catherine-of-siena": AuthorEntry(
+        slug="catherine-of-siena",
+        name="Catherine of Siena",
+        birth_year=1347,
+        death_year=1380,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Catherine of Siena (1347–1380) was an Italian mystic and Dominican laywoman who nursed the sick, counselled popes, and urged Gregory XI to return from Avignon to Rome."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -796,6 +807,12 @@ BOOKS: list[BookEntry] = [
     BookEntry("introduction-to-the-devout-life", "Introduction to the Devout Life",
               "francis-de-sales", "ccel", "desales/devout_life",
               cover_color="#4a5d3a"),
+    # Catherine of Siena's Dialogue (1378) — Algar Thorold's translation, in
+    # its abridged edition of 1907, public domain. Thorold's introduction on
+    # her life and times is his essay, not her book, so it is left out.
+    BookEntry("the-dialogue-of-catherine-of-siena", "The Dialogue", "catherine-of-siena",
+              "ccel", "catherine/dialog", subtitle="Translated by Algar Thorold",
+              cover_color="#6b2d2d", skip=("INTRODUCTION",)),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

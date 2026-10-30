@@ -25226,6 +25226,17 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"the-dialogue-of-catherine-of-siena": {
+			"ground": "27c31a61010f46ddbbf277c580d489af3c0e5554afb59a5762ae9c6d4314fb42",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-everlasting-man": {
 			"ground": "7cd08728ce0c3411240e7980ae0c2a467bcf8b5776f9c54a9a8e914df0196893",
 			"style": "revival",

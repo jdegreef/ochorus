@@ -47,6 +47,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'c-t-studd': '50% 0%', // full-length cricket photo; head high at ~10% of a 0.54 plate
 	'catherine-booth': '50% 0%',
 	'catherine-ferguson': '50% 0%', // Lossing 1855 engraving (from an 1850 daguerreotype); face at ~25% of a 0.75 plate
+	'catherine-of-siena': '50% 0%', // Tiepolo oil (c. 1746), oval plate; face at ~30% of a 0.78 plate
 	'charles-finney': '50% 0%',
 	'charles-h-spurgeon': '50% 0%',
 	'charles-s-price': '50% 30%', // 1920s–30s studio portrait; near-square, so nearly inert

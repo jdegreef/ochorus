@@ -323,6 +323,7 @@ TOPICS = [
             "key-teachings-of-jeanne-guyon",
             "key-teachings-of-corrie-ten-boom",
             "revelations-of-divine-love",
+            "the-dialogue-of-catherine-of-siena",
             "key-teachings-of-elisabeth-elliot",
         ],
     ),
