@@ -54,6 +54,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'clement-of-rome': '50% 0%', // mosaic bust; face at ~28% of a 0.80 plate
 	'corrie-ten-boom': '50% 0%', // 1921 photo, hat; face at ~27% of a 0.63 plate
 	'cyprian-of-carthage': '50% 0%', // icon: bust, face at ~22%
+	'cyril-of-jerusalem': '50% 0%', // 14th-c. fresco icon, cropped to the figure; head at ~22% of a 0.80 plate
 	'david-brainerd': '50% 0%',
 	'david-livingstone': '50% 3%', // seated Annan photo; face high at ~25% of a 0.82 plate
 	'derek-prince': '50% 5%', // studio bust; face at ~29% of a 0.71 plate
