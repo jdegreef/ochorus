@@ -54,6 +54,8 @@ BOOK: dict[str, object] = {
     "title": "Faithful With Little",
     "subtitle": "Money, wisdom, and treasure that lasts",
     "cover_url": f"/covers/{SLUG}.svg",
+    # The PDF lives in the book-pdfs bucket (export_policy.PDF_STORAGE_URL).
+    "pdf_url": f"https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/{SLUG}.pdf?download={SLUG}.pdf",
     "cover_color": covers.ink_safe("#1f4a3c"),  # a deep ledger green
     "description": (
         "A short, readable guide to money for people who want to follow Jesus "
