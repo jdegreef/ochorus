@@ -1603,5 +1603,6 @@
   "daily_back_to_today": "Ddayo ku leero",
   "daily_in_context": "Soma mu kitabu",
   "daily_missing_day": "Ekitabo kino tekirina kisomebwa kya lunaku luno, kale kino kye kya lunaku olwasooka.",
-  "daily_choose_date": "Londa olunaku"
+  "daily_choose_date": "Londa olunaku",
+  "daily_none": "Tewannaba kubaawo bisomebwa bya buli lunaku mu lulimi luno."
 }

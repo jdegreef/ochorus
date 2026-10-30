@@ -1143,10 +1143,10 @@ class DailyReadingView(PublicContentCacheMixin, APIView):
             raise Http404("Not a dated book")
         language = _language(request)
         book = get_object_or_404(_book_shelf(language), slug=slug)
-        found = daily_readings.find_entry(book, *requested, daily_readings.content_version())
+        found = daily_readings.find_day(book, *requested, daily_readings.content_version())
         if found is None:
-            raise Http404("No dated entries in this edition")
-        month, entry = found
+            raise Http404("No entry on or shortly before this date")
+        month, entry, html = found
         # From the date ASKED, not the one shown: on 29 February in a 365-day
         # book (shown: the 28th) "next" is 1 March, not the 29th again.
         prev, nxt = daily_readings.neighbours(*requested)
@@ -1156,7 +1156,7 @@ class DailyReadingView(PublicContentCacheMixin, APIView):
                 "book": BookListSerializer(book, context=ctx).data,
                 **daily_readings.entry_payload(month, entry, requested, slug),
                 # Scripture linked on the one entry shown, not its whole month.
-                "html": _link_scripture(daily_readings.entry_html(book, month, entry)),
+                "html": _link_scripture(html),
                 "prev": prev,
                 "next": nxt,
             }

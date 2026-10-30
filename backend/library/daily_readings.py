@@ -25,11 +25,15 @@ days, so an import that breaks the shape fails the build rather than a reader.
 A date the book has no entry for — 29 February in a 365-day book, or one of
 the two days lost in the source (Our Daily Walk's 22 September, Thoughts for
 the Quiet Hour's 3 October) — resolves to the nearest entry BEFORE it, and the
-payload says which date it really is.
+payload says which date it really is. Never further back than a week: an
+edition missing whole months would otherwise offer June's reading as today's.
 
-A month's index is cached against the content version (the pair the public
-ETag keys on), so the home page's Today shelf reads no chapter body at all
-once each month has been seen.
+An edition's month indexes are cached against the content version (the pair
+the public ETag keys on) under ONE key per edition — the default cache is a
+300-entry LocMem, and a key per month (444) would cull everything else — so
+the home page's Today shelf reads no chapter body once a month has been seen.
+The day page re-reads its own month and serves the entry from that read, so a
+stale index can never slice the wrong blocks.
 """
 
 from __future__ import annotations
@@ -37,6 +41,7 @@ from __future__ import annotations
 import calendar
 import re
 from dataclasses import dataclass
+from datetime import date
 
 from bs4 import BeautifulSoup
 from django.core.cache import cache
@@ -70,6 +75,8 @@ _MARKER_MAX = 40
 _NUMBER = re.compile(r"(?<!\d)(\d{1,2})(?!\d)")
 _HEADING_MAX = 80
 _EXCERPT_MAX = 220
+#: How far back a missing date may resolve (see the module docstring).
+_FALLBACK_DAYS = 7
 #: Any leap year: the calendar every dated book is written against.
 _LEAP = 2024
 
@@ -130,9 +137,13 @@ def _tidy_heading(text: str) -> str:
 def _is_heading(el, text: str, spec: DatedBook) -> bool:
     if el.name in ("h2", "h3", "h4"):
         return True
-    if not spec.bold_titles or el.name != "p" or len(text) > _HEADING_MAX:
+    if not spec.bold_titles or el.name != "p" or not text or len(text) > _HEADING_MAX:
         return False
-    return "".join(_text(b) for b in el.find_all(("b", "strong"), recursive=False)) == text
+    # All of its words are bold, however many runs they are set in.
+    return all(
+        not s.strip() or s.find_parent(("b", "strong")) is not None
+        for s in el.find_all(string=True)
+    )
 
 
 def _excerpt(text: str) -> str:
@@ -207,28 +218,60 @@ def content_version() -> tuple[str, int]:
     return content_digest(), ContentRevision.current()
 
 
+def _index_key(book) -> str:
+    return f"daily-index:{book.pk}"
+
+
+def _store(book, version: tuple[str, int], month: int, entries: list[Entry]) -> None:
+    cached = cache.get(_index_key(book))
+    months = cached[1] if cached is not None and cached[0] == version else {}
+    cache.set(_index_key(book), (version, {**months, month: entries}), timeout=None)
+
+
 def month_index(book, month: int, version: tuple[str, int]) -> list[Entry]:
     """``month_entries`` for one month of ``book``, cached against ``version``."""
-    key = f"daily-month:{book.pk}:{month}"
-    cached = cache.get(key)
-    if cached is not None and cached[0] == version:
-        return cached[1]
+    cached = cache.get(_index_key(book))
+    if cached is not None and cached[0] == version and month in cached[1]:
+        return cached[1][month]
     entries = month_entries(blocks(month_body(book, month)), DATED_BOOKS[book.slug])
-    cache.set(key, (version, entries), timeout=None)
+    _store(book, version, month, entries)
     return entries
+
+
+def _days_back(month: int, day: int, to_month: int, to_day: int) -> int:
+    """Days from (to_month, to_day) forward to (month, day), round the year."""
+    return (date(_LEAP, month, day) - date(_LEAP, to_month, to_day)).days % 366
 
 
 def find_entry(book, month: int, day: int, version: tuple[str, int]) -> tuple[int, Entry] | None:
     """(month, entry) for the entry on (month, day) in ``book``, or the nearest
-    one before it — back across month chapters, round the year once. None when
-    the edition has no dated entries at all."""
-    for step in range(13):
-        m = (month - 1 - step) % 12 + 1
-        last = day if step == 0 else 31
+    one before it within ``_FALLBACK_DAYS`` — into the previous month (and
+    year) when the date is early in its own. None when there is none."""
+    for m in (month, 12 if month == 1 else month - 1):
+        last = day if m == month else 31
         before = [e for e in month_index(book, m, version) if e.day <= last]
         if before:
-            return m, before[-1]
+            entry = before[-1]
+            return (m, entry) if _days_back(month, day, m, entry.day) <= _FALLBACK_DAYS else None
     return None
+
+
+def find_day(book, month: int, day: int, version: tuple[str, int]) -> tuple[int, Entry, str] | None:
+    """For the day page: (month, entry, its stored HTML) from ONE fresh read of
+    the month, so the blocks served are the blocks the entry was found in. The
+    HTML leaves out the date line and heading (the page sets both itself); the
+    caller links its Scripture."""
+    found = find_entry(book, month, day, version)
+    if found is None:
+        return None
+    m, cached = found
+    els = blocks(month_body(book, m))
+    fresh = month_entries(els, DATED_BOOKS[book.slug])
+    _store(book, version, m, fresh)
+    entry = next((e for e in fresh if e.day == cached.day), None)
+    if entry is None:  # the cached index was stale; it is fresh now
+        return None
+    return m, entry, "".join(str(el) for el in els[entry.body_start : entry.end])
 
 
 def entry_payload(month: int, entry: Entry, requested: tuple[int, int], slug: str) -> dict:
@@ -241,13 +284,6 @@ def entry_payload(month: int, entry: Entry, requested: tuple[int, int], slug: st
         "chapter": chapter_order(slug, month),
         "paragraph": entry.start,
     }
-
-
-def entry_html(book, month: int, entry: Entry) -> str:
-    """The entry's own stored blocks, its date line and heading excluded (the
-    page heads it with both itself). Raw — the caller links its Scripture."""
-    els = blocks(month_body(book, month))
-    return "".join(str(el) for el in els[entry.body_start : entry.end])
 
 
 def neighbours(month: int, day: int) -> tuple[str, str]:

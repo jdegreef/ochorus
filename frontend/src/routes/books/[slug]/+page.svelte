@@ -75,12 +75,12 @@
 	// the reader's local date, so only once in the browser (the page is
 	// prerendered; the build would bake the day it ran).
 	let todayLabel = $state('');
+	// Reset for every book: the page instance is reused across client-side
+	// navigation, so an ordinary book must not inherit a devotional's date.
 	$effect(() => {
-		if (book.daily)
-			todayLabel = new Date().toLocaleDateString(contentLang(book.language), {
-				day: 'numeric',
-				month: 'long'
-			});
+		todayLabel = book.daily
+			? new Date().toLocaleDateString(contentLang(book.language), { day: 'numeric', month: 'long' })
+			: '';
 	});
 	const inEdition = (order: number) => book.chapters.some((c) => c.order === order);
 	const furthest = $derived(record ? furthestOf(record) : null);

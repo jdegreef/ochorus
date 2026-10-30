@@ -1603,5 +1603,6 @@
   "daily_back_to_today": "ወደ ዛሬ ተመለስ",
   "daily_in_context": "በመጽሐፉ ውስጥ አንብብ",
   "daily_missing_day": "ይህ መጽሐፍ ለዚህ ቀን ንባብ የለውም፤ ስለዚህ የቀደመው ቀን ንባብ ይኸውና።",
-  "daily_choose_date": "ቀን ምረጥ"
+  "daily_choose_date": "ቀን ምረጥ",
+  "daily_none": "በዚህ ቋንቋ እስካሁን ዕለታዊ ንባቦች የሉም።"
 }

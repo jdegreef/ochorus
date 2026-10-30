@@ -13,7 +13,6 @@ import calendar
 import json
 from pathlib import Path
 
-from django.core.cache import cache
 from django.test import SimpleTestCase, TestCase
 
 from . import daily_readings
@@ -108,6 +107,10 @@ class ParsingTests(SimpleTestCase):
         body = "<h3>January 1</h3><p><b>MAKING A FRESH START</b></p><p>We can all start afresh!</p>"
         entry = _entries(body, DATED_BOOKS["our-daily-walk"])[0]
         self.assertEqual((entry.heading, entry.excerpt), ("Making a Fresh Start", "We can all start afresh!"))
+        split = "<h3>January 1</h3><p><b>MAKING A</b> <b>FRESH START</b></p><p>Text.</p>"
+        self.assertEqual(_entries(split, DATED_BOOKS["our-daily-walk"])[0].heading, "Making a Fresh Start")
+        half = "<h3>January 1</h3><p><b>Lord,</b> keep me.</p>"
+        self.assertEqual(_entries(half, DATED_BOOKS["our-daily-walk"])[0].heading, "")
         # Only where the book sets its titles that way: elsewhere a bold line
         # is the day's text.
         self.assertEqual(_entries(body)[0].heading, "")
@@ -134,9 +137,6 @@ class DailyApiTests(TestCase):
     SHELF = "/api/library/daily/{}/?language={}"
 
     def setUp(self):
-        # Month indexes are cached by book pk, which a rolled-back test reuses.
-        cache.clear()
-        self.addCleanup(cache.clear)
         self.author = Author.objects.create(slug="a-b-simpson", name="A. B. Simpson")
 
     def book(self, slug="days-of-heaven-upon-earth", language="en", *, missing=frozenset({(2, 29)})):
@@ -176,6 +176,16 @@ class DailyApiTests(TestCase):
         self.book(missing={(1, 1), (2, 29)})
         data = self.client.get(self.DAY.format("days-of-heaven-upon-earth", "01-01", "en")).json()
         self.assertEqual((data["date"], data["chapter"]), ("12-31", 12))
+
+    def test_a_gap_longer_than_a_week_is_not_bridged(self):
+        self.book(missing={(10, d) for d in range(1, 32)})
+        res = self.client.get(self.DAY.format("days-of-heaven-upon-earth", "10-30", "en"))
+        self.assertEqual(res.status_code, 404)
+        # Early in the month the week reaches back into the last one.
+        data = self.client.get(self.DAY.format("days-of-heaven-upon-earth", "10-03", "en")).json()
+        self.assertEqual(data["date"], "09-30")
+        shelf = self.client.get(self.SHELF.format("10-30", "en")).json()
+        self.assertEqual(shelf["readings"], [])
 
     def test_not_found(self):
         self.book()

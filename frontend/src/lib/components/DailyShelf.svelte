@@ -25,6 +25,9 @@
 	let { embedded = false }: { embedded?: boolean } = $props();
 
 	let readings = $state<DailyEntry[]>([]);
+	// What the embedded page says instead of an empty column: null until the
+	// first answer, then whether it failed.
+	let failed = $state<boolean | null>(null);
 	let dateLabel = $state('');
 	let pickedFor = '';
 
@@ -37,8 +40,14 @@
 		pickedFor = key;
 		dateLabel = now.toLocaleDateString(getLang(), { weekday: 'long', day: 'numeric', month: 'long' });
 		getDailyShelf(key, getLang())
-			.then((r) => (readings = r.readings))
-			.catch(() => (readings = []));
+			.then((r) => {
+				readings = r.readings;
+				failed = false;
+			})
+			.catch(() => {
+				readings = [];
+				failed = true;
+			});
 	}
 
 	onMount(() => {
@@ -78,7 +87,9 @@
 	</ul>
 {/snippet}
 
-{#if readings.length}
+{#if embedded && !readings.length && failed !== null}
+	<p class="text-muted">{failed ? t('common.loadError') : t('daily.none')}</p>
+{:else if readings.length}
 	{#if embedded}
 		{@render cards()}
 	{:else}

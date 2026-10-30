@@ -1603,5 +1603,6 @@
   "daily_back_to_today": "Revenir à aujourd’hui",
   "daily_in_context": "Lire dans le livre",
   "daily_missing_day": "Ce livre n’a pas de lecture pour cette date ; voici celle de la veille.",
-  "daily_choose_date": "Choisir une date"
+  "daily_choose_date": "Choisir une date",
+  "daily_none": "Il n’y a pas encore de lectures quotidiennes dans cette langue."
 }
