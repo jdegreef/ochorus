@@ -31,6 +31,7 @@ from .models import (
     Topic,
     TopicBook,
 )
+from .daily_readings import DATED_BOOKS
 from .opening import opening_candidate_orders, opening_excerpt
 from .rights import is_public_domain
 from .scripture import EPIGRAPH_WINDOW, book_of, epigraph_reference
@@ -1783,6 +1784,12 @@ class BookDetailSerializer(BookListSerializer):
     # Whether a printable leader's guide exists for this edition
     # (library/leader_guides.py) — the book page links to /books/<slug>/guide.
     has_leader_guide = serializers.SerializerMethodField()
+    # A year-long devotional read by the calendar (library/daily_readings.py):
+    # the book page offers today's reading, /today/<slug>/.
+    daily = serializers.SerializerMethodField()
+
+    def get_daily(self, obj) -> bool:
+        return obj.slug in DATED_BOOKS
 
     def get_has_leader_guide(self, obj) -> bool:
         return guide_for(obj.slug, obj.language) is not None
@@ -1882,6 +1889,7 @@ class BookDetailSerializer(BookListSerializer):
             "featured_people", "author_quote_count", "guides", "series",
             "epub_url", "meta_description", "public_domain", "ages",
             "has_leader_guide",
+            "daily",
         ]
 
     def get_public_domain(self, obj) -> bool:

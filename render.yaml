@@ -575,6 +575,12 @@ services:
         source: /welcome
         destination: /200.html
       - type: rewrite
+        source: /today
+        destination: /200.html
+      - type: rewrite
+        source: /today/*
+        destination: /200.html
+      - type: rewrite
         source: /login
         destination: /200.html
       - type: rewrite
@@ -609,6 +615,12 @@ services:
         destination: /200.html
       - type: rewrite
         source: /:lang/welcome
+        destination: /200.html
+      - type: rewrite
+        source: /:lang/today
+        destination: /200.html
+      - type: rewrite
+        source: /:lang/today/*
         destination: /200.html
       - type: rewrite
         source: /:lang/login

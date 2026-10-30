@@ -56,6 +56,7 @@
   ],
   "reader_exempt": {
     "library/models.py": "Schema and queries. The prose is ROWS, shipped as fixtures; the only computed properties are chapter_count and is_live, both counts. Every commit here in the last 300 was an index or a query shape.",
+    "library/daily_readings.py": "Reads the dated devotionals' days off chapter bodies already shipped as fixtures; it holds slugs and a parser, no prose. Its only prerendered trace is the book page's `daily` flag, a slug-set lookup — the day pages and the Today shelf are client-rendered.",
     "library/fts.py": "Search vectors. Search is a runtime query against the API — no static page bakes a result.",
     "library/text.py": "HTML to plain text for Chapter.body_text, which feeds search rather than any rendered page.",
     "library/translation.py": "The translate pipeline. What it produces ships as fixture rows under library/fixtures/content, which is already a root.",
