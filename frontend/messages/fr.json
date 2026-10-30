@@ -1594,5 +1594,15 @@
   "together_counted": "Vous êtes compté dans les totaux du groupe",
   "together_count_stop": "Ne plus me compter",
   "together_count_me": "Me compter dans les totaux",
-  "together_count_sign_in_join": "Connectez-vous pour être compté dans les totaux du groupe"
+  "together_count_sign_in_join": "Connectez-vous pour être compté dans les totaux du groupe",
+  "daily_title": "Aujourd’hui dans les dévotionnels",
+  "daily_subtitle": "Une lecture pour chaque jour de l’année, tirée des dévotionnels classiques",
+  "daily_see_all": "Toutes les lectures du jour",
+  "daily_prev_day": "Jour précédent",
+  "daily_next_day": "Jour suivant",
+  "daily_back_to_today": "Revenir à aujourd’hui",
+  "daily_in_context": "Lire dans le livre",
+  "daily_missing_day": "Ce livre n’a pas de lecture pour cette date ; voici celle de la veille.",
+  "daily_choose_date": "Choisir une date",
+  "daily_none": "Il n’y a pas encore de lectures quotidiennes dans cette langue."
 }

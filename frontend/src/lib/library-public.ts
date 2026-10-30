@@ -352,6 +352,12 @@ export interface BookDetail extends BookSummary {
 	 * `getBookGuide`). Optional so an API running behind this build omits it.
 	 */
 	has_leader_guide?: boolean;
+	/**
+	 * A year-long devotional read by the calendar: the page offers today's
+	 * reading (/today/<slug>/ — `getDailyReading`). Optional so an API running
+	 * behind this build omits it.
+	 */
+	daily?: boolean;
 }
 
 /** An article surfaced on another page that links to it — a reader's guide on
@@ -1589,6 +1595,51 @@ export interface BookGuide {
 export const getBookGuide = (slug: string, language = 'en', f?: Fetch) =>
 	apiFetch<BookGuide>(
 		`/api/library/books/${slug}/guide/?language=${encodeURIComponent(language)}`,
+		{},
+		f
+	);
+
+/** One dated entry of a year-long devotional, as the Today shelf lists it.
+ *  Dates are `MM-DD`; `date` is the entry shown, `requested` the date asked
+ *  for — they differ when the book has no entry that day (29 February in a
+ *  365-day book), and the entry is then the nearest one before it. */
+export interface DailyEntry {
+	book: BookSummary;
+	date: string;
+	requested: string;
+	/** The book's own date line, in its language ("1 de enero", "Jan. 1"). */
+	label: string;
+	/** The entry's title, where the book gives one ("" otherwise). */
+	heading: string;
+	/** The opening line — usually the day's verse. */
+	excerpt: string;
+	/** Where the entry sits in the book: its month chapter and the reader's
+	 *  `?p=` index of its date line. */
+	chapter: number;
+	paragraph: number;
+}
+
+/** A whole day of one devotional, for the day page. */
+export interface DailyReading extends DailyEntry {
+	/** Server-sanitized entry body (date line excluded). */
+	html: string;
+	prev: string;
+	next: string;
+}
+
+/** `date` in exactly `language`: 404 for a book not read by the calendar, or
+ *  an edition this language doesn't publish. */
+export const getDailyReading = (slug: string, date: string, language = 'en', f?: Fetch) =>
+	apiFetch<DailyReading>(
+		`/api/library/books/${slug}/daily/${date}/?language=${encodeURIComponent(language)}`,
+		{},
+		f
+	);
+
+/** Every dated devotional this language publishes, at `date`. */
+export const getDailyShelf = (date: string, language = 'en', f?: Fetch) =>
+	apiFetch<{ readings: DailyEntry[] }>(
+		`/api/library/daily/${date}/?language=${encodeURIComponent(language)}`,
 		{},
 		f
 	);

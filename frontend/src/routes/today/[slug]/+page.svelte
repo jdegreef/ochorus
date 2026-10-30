@@ -1,0 +1,129 @@
+<script lang="ts">
+	import { goto } from '$app/navigation';
+	import type { DailyReading } from '$lib/library-public';
+	import { inputValue, isDateKey } from '$lib/dailyDate';
+	import { assetHtml } from '$lib/assetUrl';
+	import { i18n } from '$lib/i18n.svelte';
+	import { localizeHref } from '$lib/href';
+	import { contentLang } from '$lib/reading';
+	import { authorPath } from '$lib/originals';
+	import { bookChapterPath } from '$lib/reading-schema';
+	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
+	import BookCover from '$lib/components/BookCover.svelte';
+	import Arrow from '$lib/components/Arrow.svelte';
+
+	/**
+	 * One day of a year-long devotional: just that entry, not its whole month —
+	 * the verse and meditation under the book's own date line, with steps to
+	 * the day either side, back to today, and into the book at this point.
+	 * Client-rendered (see +page.ts); the book page's "Today's reading" leads
+	 * here.
+	 */
+	let { data }: { data: { reading: DailyReading; today: string } } = $props();
+	const t = i18n.t;
+	const r = $derived(data.reading);
+	const book = $derived(r.book);
+	const lang = $derived(contentLang(book.language));
+	const isToday = $derived(r.requested === data.today);
+	const bookHref = $derived(localizeHref(`/books/${book.slug}`));
+	/** The day page for `d`, or for today. */
+	const dayHref = (d?: string) => localizeHref(`/today/${book.slug}/${d ? `?d=${d}` : ''}`);
+	// The month chapter, opened at this day's date line (the reader's ?p=). The
+	// ORIGINAL edition on purpose, not `chapterPath`'s preferred one: the index
+	// is counted on the original body, and a Modern English month's blocks need
+	// not line up with it. Slashed before the query — the bare form is a 301.
+	const inBook = $derived(
+		localizeHref(`${bookChapterPath(book.slug, r.chapter, false)}/?p=${r.paragraph}`)
+	);
+
+	const crumbs = $derived([
+		{ name: t('common.home'), href: '/' },
+		{ name: t('nav.books'), href: '/books' },
+		{ name: book.title, href: `/books/${book.slug}` },
+		{ name: t('plans.todaysReading'), href: `/today/${book.slug}` }
+	]);
+
+	function pickDate(e: Event) {
+		// yyyy-MM-DD → MM-DD
+		const key = (e.currentTarget as HTMLInputElement).value.slice(5);
+		if (isDateKey(key)) goto(dayHref(key));
+	}
+</script>
+
+<svelte:head>
+	<title>{r.label} — {book.title} — Ochorus</title>
+	<!-- A different entry each day, drawn in the browser; the book page is the
+	     one a crawler should have. -->
+	<meta name="robots" content="noindex" />
+</svelte:head>
+
+<div class="page-col daily-day px-5 py-10">
+	<Breadcrumb items={crumbs} />
+
+	<header class="mt-5 flex items-start gap-5">
+		<a href={bookHref} class="w-16 shrink-0" aria-hidden="true" tabindex="-1">
+			<BookCover {book} rounded="rounded-sm" />
+		</a>
+		<div class="min-w-0">
+			<p class="eyebrow mb-1 text-accent">
+				{isToday ? t('plans.todaysReading') : book.title}
+			</p>
+			<h1 class="text-h1" {lang} dir="auto">{r.label}</h1>
+			<p class="mt-1 text-muted">
+				{#if isToday}<a href={bookHref} class="hover:text-accent hover:underline" {lang} dir="auto">{book.title}</a>{' · '}{/if}<a
+					href={localizeHref(authorPath(book.author.slug))}
+					class="hover:text-accent hover:underline">{book.author.name}</a
+				>
+			</p>
+		</div>
+	</header>
+
+	{#if r.date !== r.requested}
+		<p class="mt-6 rounded-card border border-border bg-surface-2 px-4 py-3 text-small text-muted">
+			{t('daily.missingDay')}
+		</p>
+	{/if}
+
+	<article class="mt-8" {lang} dir="auto">
+		{#if r.heading}<h2 class="text-h2 mb-4">{r.heading}</h2>{/if}
+		<!-- Server-sanitized chapter HTML: the entry's own blocks, sliced from the
+		     month chapter's served body (library/daily_readings). -->
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+		<div class="reading">{@html assetHtml(r.html)}</div>
+	</article>
+
+	<nav class="mt-10 border-t border-border pt-6" aria-label={t('daily.chooseDate')}>
+		<div class="flex flex-wrap items-center justify-between gap-3">
+			<a href={dayHref(r.prev)} class="btn btn-ghost btn-sm" rel="prev">
+				<Arrow back />
+				{t('daily.prevDay')}
+			</a>
+			{#if !isToday}
+				<a href={dayHref()} class="btn btn-primary btn-sm">{t('daily.backToToday')}</a>
+			{/if}
+			<a href={dayHref(r.next)} class="btn btn-ghost btn-sm" rel="next">
+				{t('daily.nextDay')}
+				<Arrow />
+			</a>
+		</div>
+		<div class="mt-5 flex flex-wrap items-center justify-between gap-3 text-small">
+			<a href={inBook} class="font-semibold text-accent">{t('daily.inContext')} <Arrow /></a>
+			<label class="flex items-center gap-2 text-muted">
+				{t('daily.chooseDate')}
+				<input
+					type="date"
+					class="rounded-md border border-border bg-surface px-2 py-1 text-text"
+					value={inputValue(r.requested, new Date())}
+					onchange={pickDate}
+				/>
+			</label>
+		</div>
+	</nav>
+</div>
+
+<style>
+	/* A reading column, not a page of cards: the measure the reader keeps. */
+	.daily-day {
+		max-width: 46rem;
+	}
+</style>

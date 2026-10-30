@@ -126,7 +126,7 @@ def _cap_first(s: str) -> str:
 _AFTER_DASH = re.compile(r"([—–]\s*)([a-z])")
 
 
-def _titlecase_caps(s: str) -> str:
+def titlecase_caps(s: str) -> str:
     """Title-case an ALL-CAPS heading, keeping connector words lowercase and
     preserving apostrophes ("CHRIST'S" -> "Christ's", not "Christ'S") and
     roman-numeral words ("PSALM CXIX" -> "Psalm CXIX")."""
@@ -241,7 +241,7 @@ def clean_title(raw: str) -> str:
     # ALL-CAPS heading -> Title Case. A bare roman numeral ("IV") is left alone
     # rather than mangled to "Iv"; roman-numeral words inside are preserved.
     if is_allcaps and not re.fullmatch(r"[IVXLCDM]+", t):
-        t = _titlecase_caps(t)
+        t = titlecase_caps(t)
     return _cap_first(t)
 
 
