@@ -423,6 +423,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "after the Bible the most widely read Christian book ever written."
         ),
     ),
+    "henry-scougal": AuthorEntry(
+        slug="henry-scougal",
+        name="Henry Scougal",
+        birth_year=1650,
+        death_year=1678,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Henry Scougal (1650–1678) was a Scottish minister and Professor of Divinity at King’s College, Aberdeen, who died of consumption at about twenty-eight."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -780,6 +791,10 @@ BOOKS: list[BookEntry] = [
     # The Stanbrook Benedictines' translation (1921, revised edition), public
     # domain. group_parts: each Mansion's short chapters read as one chapter; the
     # editor's introduction and his note before VI.iii are left out.
+    # Henry Scougal's Life of God in the Soul of Man (1677), public domain,
+    # from CCEL.
+    BookEntry("the-life-of-god-in-the-soul-of-man", "The Life of God in the Soul of Man",
+              "henry-scougal", "ccel", "scougal/life", cover_color="#5a4a2f"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

@@ -447,6 +447,9 @@
   "the-joy-of-the-lord": {
    "space-before-punct": 1
   },
+  "the-life-of-god-in-the-soul-of-man": {
+   "orphan-close-quote": 1
+  },
   "the-masters-indwelling": {
    "orphan-close-quote": 2,
    "space-before-punct": 11
