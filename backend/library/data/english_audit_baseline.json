@@ -150,6 +150,9 @@
    "space-before-punct": 4,
    "word-fusion": 1
   },
+  "holy-dying": {
+   "lost-paragraphing": 4
+  },
   "homilies-on-matthew": {
    "orphan-close-quote": 11,
    "word-fusion": 1

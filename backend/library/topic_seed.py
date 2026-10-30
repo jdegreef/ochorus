@@ -216,6 +216,7 @@ TOPICS = [
             "godliness",
             "holiness",
             "holy-living",
+            "holy-dying",
             "expository-thoughts-on-matthew",
             "practical-religion",
             "religious-affections",
