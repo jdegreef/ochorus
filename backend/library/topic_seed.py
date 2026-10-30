@@ -211,6 +211,7 @@ TOPICS = [
             "plain-account-christian-perfection",
             "godliness",
             "holiness",
+            "holy-living",
             "expository-thoughts-on-matthew",
             "practical-religion",
             "religious-affections",
