@@ -522,6 +522,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Basil of Caesarea (330–379) was the archbishop of Caesarea in Cappadocia remembered as Basil the Great, a founder of Eastern monastic life and one of the Cappadocian Fathers."
         ),
     ),
+    "gregory-of-nazianzus": AuthorEntry(
+        slug="gregory-of-nazianzus",
+        name="Gregory of Nazianzus",
+        birth_year=329,
+        death_year=390,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Gregory of Nazianzus (c."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -948,6 +959,32 @@ BOOKS: list[BookEntry] = [
               "ccel", "schaff/npnf208", part="vii",
               subtitle="Translated by Blomfield Jackson", cover_color="#2e4a5a",
               summary_titles=True, skip=("Preface.",)),
+    # Gregory of Nazianzus' five Theological Orations (380) — Browne and
+    # Swallow's NPNF translation (1894), public domain, extracted from
+    # npnf207's Select Orations. The volume's other orations, the editors'
+    # prolegomena and their introduction to these five are left out.
+    BookEntry("the-theological-orations", "The Theological Orations", "gregory-of-nazianzus",
+              "ccel", "schaff/npnf207", part="iii",
+              subtitle="Translated by Charles Gordon Browne and James Edward Swallow",
+              cover_color="#4b3a5c",
+              skip=("The Life.", "The Writings.", "Literature.",
+                    "On Easter and His Reluctance.",
+                    "In Defence of His Flight to Pontus, and His Return, After His Ordination "
+                    "to the Priesthood, with an Exposition of the Character of the Priestly Office.",
+                    "To Those Who Had Invited Him, and Not Come to Receive Him.",
+                    "Panegyric on His Brother S. Cæsarius.", "On his Sister Gorgonia.",
+                    "To His Father, When He Had Entrusted to Him the Care of the Church of Nazianzus.",
+                    "On His Father's Silence, Because of the Plague of Hail.",
+                    "On the Death of His Father.", "On the Great Athanasius, Bishop of Alexandria.",
+                    "Introduction to the 'Theological' Orations.",
+                    "Against The Arians, and Concerning Himself.", "On the Arrival of the Egyptians.",
+                    "On the Words of the Gospel, 'When Jesus Had Finished These Sayings,' "
+                    "Etc.--S. Matt. xix. 1.",
+                    "On the Theophany, or Birthday of Christ.", "Oration on the Holy Lights.",
+                    "The Oration on Holy Baptism.", "On Pentecost.",
+                    "The Last Farewell in the Presence of the One Hundred and Fifty Bishops.",
+                    "Funeral Oration on the Great S. Basil, Bishop of Cæsarea in Cappadocia.",
+                    "The Second Oration on Easter.")),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
