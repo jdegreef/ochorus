@@ -349,6 +349,7 @@ TOPICS = [
             "life-of-antony",
             "against-the-arians",
             "on-the-holy-spirit",
+            "the-hexaemeron",
             "on-the-priesthood",
             "homilies-on-romans",
             "treatises-of-cyprian",
