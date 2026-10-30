@@ -1705,7 +1705,12 @@ SERMONS: list[SermonEntry] = [
     # was: KJV-archaism density, no page-split damage, and text overlap with the
     # library (Comfort Proclaimed and The Christian's Heaviness are 10–13%
     # Gleanings among the Sheaves). Pages that end in a publisher's notice (The
-    # God of the Aged, Light at Evening Time) were passed over.
+    # God of the Aged, Light at Evening Time) were passed over. Read and dropped:
+    # The God of Peace, which closes on the Tabernacle building fund, and The
+    # Meek and Lowly One, whose opening illustration caricatures Islam as spread
+    # by "decapitation or impalement"; A Mighty Saviour, whose main proof paints a
+    # "South Sea Islander" as a cannibal "very little removed from the brute";
+    # and Love's Commendation, for an anecdote told in caricatured Black dialect.
     SermonEntry(
         "consolation-proportionate-to-spiritual-sufferings",
         "Consolation Proportionate to Spiritual Sufferings",
@@ -1721,32 +1726,11 @@ SERMONS: list[SermonEntry] = [
         _CCEL + "sermons01/sermons01.xxx.html",
     ),
     SermonEntry(
-        "the-god-of-peace",
-        "The God of Peace",
-        "charles-h-spurgeon",
-        "ccel",
-        _CCEL + "sermons01/sermons01.xlvi.html",
-    ),
-    SermonEntry(
         "salvation-to-the-uttermost",
         "Salvation to the Uttermost",
         "charles-h-spurgeon",
         "ccel",
         _CCEL + "sermons02/sermons02.xxx.html",
-    ),
-    SermonEntry(
-        "loves-commendation",
-        "Love's Commendation",
-        "charles-h-spurgeon",
-        "ccel",
-        _CCEL + "sermons02/sermons02.l.html",
-    ),
-    SermonEntry(
-        "a-mighty-saviour",
-        "A Mighty Saviour",
-        "charles-h-spurgeon",
-        "ccel",
-        _CCEL + "sermons03/sermons03.v.html",
     ),
     SermonEntry(
         "lovest-thou-me",
@@ -1791,17 +1775,31 @@ SERMONS: list[SermonEntry] = [
         _CCEL + "sermons04/sermons04.xlviii.html",
     ),
     SermonEntry(
-        "the-meek-and-lowly-one",
-        "The Meek and Lowly One",
-        "charles-h-spurgeon",
-        "ccel",
-        _CCEL + "sermons05/sermons05.xlii.html",
-    ),
-    SermonEntry(
         "spiritual-peace",
         "Spiritual Peace",
         "charles-h-spurgeon",
         "ccel",
         _CCEL + "sermons06/sermons06.xiv.html",
+    ),
+    SermonEntry(
+        "one-antidote-for-many-ills",
+        "One Antidote for Many Ills",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons05/sermons05.lix.html",
+    ),
+    SermonEntry(
+        "the-treasure-of-grace",
+        "The Treasure of Grace",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons06/sermons06.x.html",
+    ),
+    SermonEntry(
+        "thy-redeemer",
+        "Thy Redeemer",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.xlix.html",
     ),
 ]

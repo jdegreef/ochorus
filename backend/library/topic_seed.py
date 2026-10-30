@@ -917,9 +917,10 @@ TOPIC_SERMONS = {
         "a-present-saviour",
         "consolation-proportionate-to-spiritual-sufferings",
         "the-desire-of-the-soul-in-spiritual-darkness",
-        "the-god-of-peace",
         "heavenly-rest",
         "spiritual-peace",
+        "one-antidote-for-many-ills",
+        "the-treasure-of-grace",
     ],
     "revival-and-missions": [
         "compel-them-to-come-in",
@@ -994,7 +995,6 @@ TOPIC_SERMONS = {
         "the-vain-wish",
         "salvation-to-the-uttermost",
         "the-new-heart",
-        "the-meek-and-lowly-one",
     ],
     "the-way-of-holiness": [
         "aggressive-christianity",
@@ -1025,9 +1025,8 @@ TOPIC_SERMONS = {
         "our-kinsman-redeemer",
         "personal-responsibility",
         "the-blood-of-the-everlasting-covenant",
-        "loves-commendation",
-        "a-mighty-saviour",
         "christ-lifted-up",
+        "thy-redeemer",
     ],
     "soar-like-the-eagle": [
         "rest",
