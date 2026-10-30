@@ -533,6 +533,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Gregory of Nazianzus (c."
         ),
     ),
+    "justin-martyr": AuthorEntry(
+        slug="justin-martyr",
+        name="Justin Martyr",
+        birth_year=100,
+        death_year=165,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Justin Martyr (c. 100–165) was a Greek-speaking philosopher from Samaria who found in Christ the “true philosophy” after years in the schools."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1004,6 +1015,11 @@ BOOKS: list[BookEntry] = [
                     "The Last Farewell in the Presence of the One Hundred and Fifty Bishops.",
                     "Funeral Oration on the Great S. Basil, Bishop of Cæsarea in Cappadocia.",
                     "The Second Oration on Easter.")),
+    # Justin Martyr's First Apology (c. 155) — Marcus Dods and George Reith's
+    # ANF translation (1885), public domain, extracted from anf01 by its stem.
+    BookEntry("the-first-apology", "The First Apology", "justin-martyr",
+              "ccel", "schaff/anf01", part="viii.ii",
+              subtitle="Translated by Marcus Dods and George Reith", cover_color="#5a3e2b"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
