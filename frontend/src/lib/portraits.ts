@@ -81,6 +81,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'helen-roseveare': '50% 8%', // 2003 bust photo; face at ~36% of a 0.82 plate
 	'hudson-taylor': '50% 20%',
 	'ignatius-of-antioch': '50% 0%', // fresco: head at ~17% of a 0.72 plate
+	'ignatius-of-loyola': '50% 30%', // 16th-c. head-and-shoulders oil; face at ~45% of a 0.83 plate — 45% cut the crown
 	'isaac-watts': '50% 20%', // NPG portrait cropped to a bust; near-square, so nearly inert
 	'j-c-ryle': '50% 0%', // 1888 photograph: bust, face high at ~30% of a 0.70 plate
 	'janani-luwum': '50% 50%', // square close-up — the crop takes the whole photo

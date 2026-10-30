@@ -34,6 +34,7 @@ TOPICS = [
         "of prayer, from the secret place to prevailing intercession.",
         [
             "the-inner-chamber",
+            "the-spiritual-exercises",
             "spurgeon-on-prayer",
             "a-short-and-easy-method-of-prayer",
             "lord-teach-us-to-pray-2",
