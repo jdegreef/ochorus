@@ -517,6 +517,36 @@
 			"layout": "fade/oxblood",
 			"bar": 0
 		},
+		"am/amanda-smith-autobiography": {
+			"ground": "5058893d3312afb341e0b29823b4d78727366e00ae0a305e8a3c2822895d0bc1",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[100, 298, 500, 380],
+					[115, 369, 485, 451]
+				],
+				"subtitle": [
+					[81, 525, 519, 546]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				247,
+				547
+			]
+		},
 		"am/amanda-smith-autobiography-children": {
 			"ground": "c939c7980985ee774d953fd7da54804d312bb55c9b207931f1fd891149fb6339",
 			"style": "revival",
@@ -1115,6 +1145,36 @@
 			"middle": [
 				313,
 				481
+			]
+		},
+		"am/finney-memoirs": {
+			"ground": "86f7dab55c9004bb822d8b664e7e0016a5e2eab1171debe2bdfbc42424654f63",
+			"style": "revival",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[126, 102, 474, 131]
+				],
+				"title": [
+					[100, 298, 500, 380],
+					[79, 369, 521, 451]
+				],
+				"subtitle": [
+					[246, 525, 354, 546]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				247,
+				547
 			]
 		},
 		"am/first-epistle-of-clement": {
@@ -2570,6 +2630,36 @@
 			"layout": "fade/slate",
 			"bar": 0
 		},
+		"am/selected-sermons-whitefield": {
+			"ground": "924ca77061efdd6090d9db7a1982bd83efeb732823372b13a729e6a17a6bb805",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[104, 282, 496, 350],
+					[92, 349, 508, 417]
+				],
+				"subtitle": [
+					[208, 483, 392, 511]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				283,
+				512
+			]
+		},
 		"am/separation-and-service": {
 			"ground": "39d6e8ff1249d02fec49f9b301ceb480cc64d53635b0cee687e5dadd2698e990",
 			"style": "revival",
@@ -2579,6 +2669,17 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "rail/teal",
+			"bar": 0
+		},
+		"am/sermons-on-several-occasions": {
+			"ground": "53d0fb67f33bfa8a1c9a802520f6fb41bf252cbe06001aae2e5f100db35a67e5",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/mauve",
 			"bar": 0
 		},
 		"am/soar-like-the-eagle-3": {
@@ -14384,6 +14485,17 @@
 				444
 			]
 		},
+		"holy-dying": {
+			"ground": "441b5963f84b205c32637ac389cc9b927a38d3a66968f9f84dd8f2815575b888",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"holy-in-christ": {
 			"ground": "2f82e0cf564ba4d2deb2d538766e4d5013200e6d88ac62e831b48b8fa35a783f",
 			"style": "devotional",
@@ -25303,6 +25415,17 @@
 			"layout": "fade/rust",
 			"bar": 0.11
 		},
+		"the-first-apology": {
+			"ground": "0fbe195a28c0a17699bae61059ead2b3c367d3f279b1c15b005928e59916e59f",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-fourfold-gospel": {
 			"ground": "db69f96349627742c737be57da3e78156d0cbc57c92d6ab8efd4dc4b8662a828",
 			"style": "revival",
@@ -25427,6 +25550,17 @@
 		"the-grace-and-duty-of-being-spiritually-minded": {
 			"ground": "95a48a2ec3e1bc5adfc18fd924cd19b43cea1da9290848346091f1e86034227e",
 			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"the-hexaemeron": {
+			"ground": "0b3b65e381c973bf24b2f847d7051b95bb9747e21db6f64ea06419a0d9637f23",
+			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
@@ -26173,6 +26307,17 @@
 			"scrim": 1,
 			"layout": "band/oxblood",
 			"bar": 0.04
+		},
+		"treatise-on-the-love-of-god": {
+			"ground": "f50d7a7f53f524c32e0a2308ce67fe4d44049482576751b2a557bb3ab224e5f4",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"treatises-of-cyprian": {
 			"ground": "c0a59ea980fd1818dce50697ff35bbe3a1a17027c070fc685fd0ae4e641114f1",

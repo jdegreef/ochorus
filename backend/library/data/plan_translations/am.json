@@ -226,5 +226,12 @@
   "note": [
    "Queue job #3779: «ለአምልኮታዊና ለቅዱስ ሕይወት የቀረበ ከባድ ጥሪ» completes this plan in am (with «በክርስቶስ ቅዱሳን» and «ስለ ክርስቲያናዊ ፍጽምና ግልጽ ማብራሪያ», both already live), so seed_plans creates the (pursuit-of-holiness, am) row on the deploy that ships this PR. «ቅድስናን መከተል» echoes Hebrews 12:14 («ቅድስናንም ተከታተሉ»). AI-drafted; awaiting native review."
   ]
+ },
+ "women-of-faith": {
+  "title": "የእምነት ሴቶች",
+  "description": "ከሦስት ልዩ ሴቶች ጋር የሚደረግ ረዘም ያለ ጉዞ። ሃና ዊታል ስሚዝ የደስተኛ ሕይወትን ምሥጢር ትገልጣለች፤ የአማንዳ ቤሪ ስሚዝና የጁልያ ኤ. ጄ. ፉት የሕይወት ታሪኮች ደግሞ — በአሥራ ዘጠነኛው መቶ ክፍለ ዘመን ወንጌልን በዓለም ዙሪያ የሰበኩ ሁለት ጥቁር ሴቶች — ያንን ምሥጢር በታላቅ ዋጋ ሲኖር ያሳያሉ።",
+  "note": [
+   "AI-drafted; awaiting native review. Added with amanda-smith-autobiography.am («አማንዳ ስሚዝ፦ የሕይወት ታሪክ»), which completes the set — the-christians-secret-of-a-happy-life-4.am («የክርስቲያን የደስተኛ ሕይወት ምሥጢር») and a-brand-plucked-from-the-fire.am («ከእሳት የተነጠቀ ትንታግ») were already live — so seed_plans creates the (women-of-faith, am) row on the deploy that ships this PR."
+  ]
  }
 }
