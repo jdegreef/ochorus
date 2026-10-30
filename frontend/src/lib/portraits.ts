@@ -81,6 +81,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'hannah-whitall-smith': '50% 0%',
 	'harriet-tubman': '50% 0%', // H. Seymour Squyer c.1885 (NPG), cropped to the upper figure; face high at ~25%
 	'helen-roseveare': '50% 8%', // 2003 bust photo; face at ~36% of a 0.82 plate
+	'henry-scougal': '50% 0%', // University of Aberdeen oil; face at ~32% of a 0.84 plate
 	'hudson-taylor': '50% 20%',
 	'ignatius-of-antioch': '50% 0%', // fresco: head at ~17% of a 0.72 plate
 	'isaac-watts': '50% 20%', // NPG portrait cropped to a bust; near-square, so nearly inert

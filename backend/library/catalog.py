@@ -456,6 +456,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Jeremy Taylor (1613–1667) was an English Anglican priest, Royalist chaplain and bishop, called the “Shakespeare of Divines” for his prose."
         ),
     ),
+    "henry-scougal": AuthorEntry(
+        slug="henry-scougal",
+        name="Henry Scougal",
+        birth_year=1650,
+        death_year=1678,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Henry Scougal (1650–1678) was a Scottish minister and Professor of Divinity at King’s College, Aberdeen, who died of consumption at about twenty-eight."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -834,6 +845,10 @@ BOOKS: list[BookEntry] = [
               # introduction, Section III's opening, the introductions to
               # Chapters III and IV, and Chapter IV's Section I on faith.
               keep=("iii", "iii.iii", "v", "vi", "vi.vi")),
+    # Henry Scougal's Life of God in the Soul of Man (1677), public domain,
+    # from CCEL.
+    BookEntry("the-life-of-god-in-the-soul-of-man", "The Life of God in the Soul of Man",
+              "henry-scougal", "ccel", "scougal/life", cover_color="#5a4a2f"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
