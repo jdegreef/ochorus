@@ -821,6 +821,7 @@ TOPIC_SERMONS = {
         "prayer-the-forerunner-of-mercy",
         "prayer-answered-love-nourished",
         "waiting-only-upon-god",
+        "the-cry-for-revival",
     ],
     "holy-spirit": [
         "filled-with-the-spirit",
@@ -849,6 +850,7 @@ TOPIC_SERMONS = {
         "how-to-abide",
         "spiritual-growth",
         "from-strength-to-strength",
+        "thirsting-for-god",
     ],
     "grace-and-comfort": [
         "free-grace",
@@ -883,6 +885,10 @@ TOPIC_SERMONS = {
         "mr-fearing-comforted",
         "consolation-in-christ",
         "loves-logic",
+        "without-clouds",
+        "the-burden-bearing-god",
+        "let-us-have-peace",
+        "christs-peace",
     ],
     "revival-and-missions": [
         "compel-them-to-come-in",
@@ -894,6 +900,8 @@ TOPIC_SERMONS = {
         "how-to-have-a-personal-revival",
         "the-logic-of-missions",
         "partnership-with-god",
+        "true-wisdom",
+        "the-cry-for-revival",
     ],
     "faith-and-guidance": [
         "the-possibilities-of-faith",
@@ -942,6 +950,9 @@ TOPIC_SERMONS = {
         "come-and-welcome",
         "looking-unto-jesus",
         "a-simple-sermon-for-seeking-souls",
+        "to-whom",
+        "believers-not-ashamed",
+        "the-saviours-tears-over-the-lost",
     ],
     "the-way-of-holiness": [
         "aggressive-christianity",
@@ -953,6 +964,8 @@ TOPIC_SERMONS = {
         "bochim-or-the-cause-of-spiritual-failure",
         "the-sin-of-murmuring",
         "sinning-and-repenting",
+        "humility",
+        "victory",
     ],
     "christ-and-the-cross": [
         "behold-the-lamb-of-god",

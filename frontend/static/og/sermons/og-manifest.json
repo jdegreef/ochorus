@@ -102,6 +102,10 @@
 			"content": "2ff18541e46336ab7664685da67a3276c833ed130a299e46294f11c5d8d8455f",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
+		"believers-not-ashamed": {
+			"content": "36a878ffa20e7ca3d787f0c0a16935bc020c5dacf0f6d06bc3f7f44fbe6f29ac",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"blessed-adversity": {
 			"content": "a7f700f3b1b3c3a4c1001375e3d3f7c5cf96bd049902bbde9e1e15b81fb87fba",
 			"art": "c41905b54028084831d2cdc0c422dc0a994a0761d616899099a964aad9e1dbb6"
@@ -173,6 +177,10 @@
 		"christs-messages-to-the-church": {
 			"content": "5fa5b95ccd585e5c356d9f6514e6051e2f792d2aacdcc12a33af554a0ff01ec1",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"christs-peace": {
+			"content": "33d8ea2fc1c11bc3891512ebae8b40c8bcd48be5e031f25ac266987327fbba42",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"come-and-welcome": {
 			"content": "8c4a77634a20e128603958fd80ba5bc6bfec1a8f3594aefe114717e8be7b46e4",
@@ -414,6 +422,10 @@
 			"content": "597202b28773762b443936ab399172b78966bd57a4016a6152300c687627b025",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
+		"humility": {
+			"content": "bf0e9d176ade45df298f05e8e12347d7cb18a6254fee3871dd0edec105ed6949",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"i-am-crucified-with-christ": {
 			"content": "b170077ed12ebce00070bc6743cab2eb81a93ff2c92b2f33617eaefeaeb0acd7",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -453,6 +465,10 @@
 		"justification-by-grace": {
 			"content": "dee6874492ed668860c7765f137424405a467947a8190c5f285e50a871c5c2e1",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"let-us-have-peace": {
+			"content": "520fccad2c71f0a8c69b422ee355ad398eda213a0c27970cedb9846949b7f9a6",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"letter-to-one-seeking-the-holy-ghost": {
 			"content": "b2a36cc045082a24e6fe1857f62dc202532fc91eb125591785f9276ee127fc18",
@@ -682,6 +698,10 @@
 			"content": "b38d6f72d9d32c75579fba04b2fb36d86959ff3a24871dc49ca447517e870e6d",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"the-burden-bearing-god": {
+			"content": "80b8da5cec8171ae4f1d71ea35555e94cad3cb67b6704b0462e2e7cee177a9f5",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
 		"the-christian-pilgrim": {
 			"content": "7598424913d1762199433b1c69a099af641e66c0e1622ab90fd2f11d66da602e",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
@@ -705,6 +725,10 @@
 		"the-cross-is-a-radical-thing": {
 			"content": "641202d324e62f195b4618dbad3c15ce01d4a4e3a7f11107c72063b73a81935d",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"the-cry-for-revival": {
+			"content": "f111e581f891549f8e4f434f3f9e7a1301c7941547282050c6b59a4e4d821cbe",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"the-day-of-golden-opportunity": {
 			"content": "d19976afe8cf85e427367925a23608fe72af466203f3fdfaf264f034c9a2cda9",
@@ -874,6 +898,10 @@
 			"content": "f1921ca96eb2df304bc7410957458f45f3cb6f6c696ec4d6688cc5856bece7ae",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"the-saviours-tears-over-the-lost": {
+			"content": "ef14d566ff0da9d859381ae411d71e84048ba4c8484326ad64c7020c12eb389b",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"the-school-of-faith": {
 			"content": "db30ab543607b7a832272cec908ccffae86acbdf6216485a8068d42f3279661f",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
@@ -966,6 +994,10 @@
 			"content": "26213828544d813e96c7deb30318b008a9ae217db9be6bba71e7db0d243a0361",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
+		"thirsting-for-god": {
+			"content": "2f2c297ae2c67f1dabcbbd44bf7119fef75c4a12b741557c1ed6be93d8bed0dc",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"three-fires": {
 			"content": "784016f640283de353eb95de05680a3708889588652b50560c65bcfb36bc47ce",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -974,6 +1006,10 @@
 			"content": "029ebe316b856bc62a1dfdbb870de8aeb3f868ea923cef10c5f93433ad1d63d3",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
+		"to-whom": {
+			"content": "f3610a43d3d112a3737438e254301fa0df47e480fb3cac6d9fec9596a05bcccf",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"total-surrender": {
 			"content": "687300e1374ca0b91b9be365e2d55f98b8c79f69f44ef7591f37f81d37732beb",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
@@ -981,6 +1017,10 @@
 		"tribulation": {
 			"content": "460e1f2c2e1c2bc29819d06609db4d94f45f14686f8f7513c052a3a46484f19c",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
+		"true-wisdom": {
+			"content": "cd37e7f5dcd25f1d01004569b50a41657e80ff1a1491b3978658527b6dd5f75d",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"under-the-shepherds-care": {
 			"content": "f5778a677ea02ed83ded012214c72db8ffe9bf6680eda287649b54dd40b9b375",
@@ -993,6 +1033,10 @@
 		"unto-us-a-child-is-born": {
 			"content": "5c507e26fef37f05bc3359966bfdd954dae2ceca6a40bca168bac763d36bac99",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
+		"victory": {
+			"content": "bb6d4c3205e1fda702f8b7bd2f35a358f3eb313810218c2baf7938b3bb6a1484",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"waiting-only-upon-god": {
 			"content": "273ac690063a4c82b4fa8804d5e8c089b8b44042fe9e03944739e1000265a79e",
@@ -1033,6 +1077,10 @@
 		"why-is-god-a-stranger-in-the-land": {
 			"content": "272b9e7866483930649543a1fb11dc0275761012edccf461725c4d8ae8075a4f",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
+		"without-clouds": {
+			"content": "d67d1fa06e6d692ee377569052cd61982a21128ffe54d255e4179e21ec6727a4",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"witnessing-for-christ": {
 			"content": "ba0ec10ff35f8e703485822b786b2054e43f2c630b6034d4aa1cc92b86942a66",

@@ -62,6 +62,9 @@
   "christian-charity": {
    "orphan-close-quote": 1
   },
+  "christs-peace": {
+   "word-fusion": 1
+  },
   "come-thou-into-the-ark": {
    "space-before-punct": 2
   },
@@ -379,6 +382,9 @@
   },
   "the-boundless-sufficiency": {
    "space-before-punct": 2
+  },
+  "the-burden-bearing-god": {
+   "space-before-punct": 4
   },
   "the-christian-pilgrim": {
    "orphan-close-quote": 2
