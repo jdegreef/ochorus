@@ -89,6 +89,11 @@
   "david-livingstone-a-life": {
    "word-fusion": 1
   },
+  "dialogue-with-trypho": {
+   "anachronism": 1,
+   "lost-paragraphing": 48,
+   "orphan-close-quote": 1
+  },
   "divine-healing": {
    "orphan-close-quote": 3,
    "space-before-punct": 11
