@@ -5744,6 +5744,17 @@
 			"layout": "box/teal",
 			"bar": 0
 		},
+		"dialogue-with-trypho": {
+			"ground": "16bbd5f82367d3c8f8a65dbb6e13f7d3f016678204737b9ce642de88d936b7ff",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"diary-of-an-old-soul": {
 			"ground": "0df89225d1f77fef63c6f3df78a6ae2510abf5841c6b571f6417f47d2fbc2b2b",
 			"style": "revival",
@@ -9095,6 +9106,17 @@
 				173,
 				427
 			]
+		},
+		"exhortation-to-the-heathen": {
+			"ground": "934a95657e1a915ae6dd73c36235dbb36fb3b26b366b43b6c4c6053b6e688979",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"expository-thoughts-on-matthew": {
 			"ground": "716ea464f43e380c4d7f8955d6db98ec720045ff78249c26cca78f25caa47ff6",
@@ -14484,6 +14506,17 @@
 				173,
 				444
 			]
+		},
+		"holy-dying": {
+			"ground": "441b5963f84b205c32637ac389cc9b927a38d3a66968f9f84dd8f2815575b888",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"holy-in-christ": {
 			"ground": "2f82e0cf564ba4d2deb2d538766e4d5013200e6d88ac62e831b48b8fa35a783f",
@@ -25141,6 +25174,17 @@
 			"layout": "fade/oxblood",
 			"bar": 0
 		},
+		"the-apology-of-tertullian": {
+			"ground": "6901b260e05e1e39f3c3878ad5ceea73d4a3e525b4fed19de5302d92bcb83612",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-big-story": {
 			"ground": "96d49b04afc3f00fe739f4078febd9a07f3418543fb9f1c193f919bf02bccd94",
 			"style": "originals",
@@ -25382,6 +25426,17 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"the-epistles-of-cyprian": {
+			"ground": "a136b5a1cda1bed78826914d713ce3e68eb4503a885f3af4ace2f487e542ef89",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-everlasting-man": {
 			"ground": "7cd08728ce0c3411240e7980ae0c2a467bcf8b5776f9c54a9a8e914df0196893",
 			"style": "revival",
@@ -25392,6 +25447,17 @@
 			"scrim": 1,
 			"layout": "fade/rust",
 			"bar": 0.11
+		},
+		"the-first-apology": {
+			"ground": "0fbe195a28c0a17699bae61059ead2b3c367d3f279b1c15b005928e59916e59f",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"the-fourfold-gospel": {
 			"ground": "db69f96349627742c737be57da3e78156d0cbc57c92d6ab8efd4dc4b8662a828",
@@ -25517,6 +25583,28 @@
 		"the-grace-and-duty-of-being-spiritually-minded": {
 			"ground": "95a48a2ec3e1bc5adfc18fd924cd19b43cea1da9290848346091f1e86034227e",
 			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"the-great-catechism": {
+			"ground": "4f7c29ccdd99c3c13b9e6e65ce5b2825843bb5b5ef170b738814f3365ac56b02",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"the-hexaemeron": {
+			"ground": "0b3b65e381c973bf24b2f847d7051b95bb9747e21db6f64ea06419a0d9637f23",
+			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
@@ -26263,6 +26351,17 @@
 			"scrim": 1,
 			"layout": "band/oxblood",
 			"bar": 0.04
+		},
+		"treatise-on-the-love-of-god": {
+			"ground": "f50d7a7f53f524c32e0a2308ce67fe4d44049482576751b2a557bb3ab224e5f4",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"treatises-of-cyprian": {
 			"ground": "c0a59ea980fd1818dce50697ff35bbe3a1a17027c070fc685fd0ae4e641114f1",

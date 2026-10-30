@@ -533,6 +533,61 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Gregory of Nazianzus (c."
         ),
     ),
+    "cyprian-of-carthage": AuthorEntry(
+        slug="cyprian-of-carthage",
+        name="Cyprian of Carthage",
+        birth_year=200,
+        death_year=258,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Cyprian of Carthage (c. 200–258) was a celebrated North African rhetorician who was converted in middle age, gave away his fortune, and was made bishop within two years."
+        ),
+    ),
+    "justin-martyr": AuthorEntry(
+        slug="justin-martyr",
+        name="Justin Martyr",
+        birth_year=100,
+        death_year=165,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Justin Martyr (c. 100–165) was a Greek-speaking philosopher from Samaria who found in Christ the “true philosophy” after years in the schools."
+        ),
+    ),
+    "clement-of-alexandria": AuthorEntry(
+        slug="clement-of-alexandria",
+        name="Clement of Alexandria",
+        birth_year=150,
+        death_year=215,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Clement of Alexandria (c. 150–c. 215) was a convert from paganism who studied under Pantaenus and taught the faith in Alexandria until the persecution of 202 drove him away."
+        ),
+    ),
+    "gregory-of-nyssa": AuthorEntry(
+        slug="gregory-of-nyssa",
+        name="Gregory of Nyssa",
+        birth_year=335,
+        death_year=394,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Gregory of Nyssa (c. 335–c. 394) was bishop of Nyssa in Cappadocia and one of the three Cappadocian Fathers, with his brother Basil and Gregory of Nazianzus."
+        ),
+    ),
+    "tertullian": AuthorEntry(
+        slug="tertullian",
+        name="Tertullian",
+        birth_year=155,
+        death_year=220,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Tertullian (c. 155–c. 220) was a Christian writer of Carthage, the first to produce a large body of Christian work in Latin."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -892,6 +947,14 @@ BOOKS: list[BookEntry] = [
     # editor's introduction and his note before VI.iii are left out.
     # Francis de Sales' Introduction to the Devout Life (1609) — the public-
     # domain English translation on CCEL.
+    # Francis de Sales' Treatise on the Love of God (1616) — Henry Benedict
+    # Mackey's translation (1884), public domain, from CCEL, one chapter per
+    # Book. Mackey's introduction is the translator's, so it is left out.
+    BookEntry("treatise-on-the-love-of-god", "Treatise on the Love of God", "francis-de-sales",
+              "ccel", "desales/love", subtitle="Translated by Henry Benedict Mackey",
+              cover_color="#6b3a4a", group_parts=True,
+              skip=("Cover Page", "Frontispiece", "Translator's Introduction",
+                    "Table of Contents")),
     BookEntry("introduction-to-the-devout-life", "Introduction to the Devout Life",
               "francis-de-sales", "ccel", "desales/devout_life",
               cover_color="#4a5d3a"),
@@ -904,6 +967,10 @@ BOOKS: list[BookEntry] = [
     # Jeremy Taylor's Holy Living (1650), public domain, from CCEL. The
     # edition's nineteenth-century "Sketch of the Life and Times" is the
     # editor's, not Taylor's, so it is left out.
+    # Jeremy Taylor's Holy Dying (1651), the companion to Holy Living, public
+    # domain, from CCEL: the dedication and one chapter per Section.
+    BookEntry("holy-dying", "The Rule and Exercises of Holy Dying", "jeremy-taylor",
+              "ccel", "taylor/holy_dying", cover_color="#2f3a4a"),
     BookEntry("holy-living", "The Rule and Exercises of Holy Living", "jeremy-taylor",
               "ccel", "taylor/holy_living", cover_color="#3d4a5c",
               skip=("A Sketch of the Life and Times of Bishop Taylor.",),
@@ -955,6 +1022,13 @@ BOOKS: list[BookEntry] = [
     # Basil the Great's On the Holy Spirit (375) — Blomfield Jackson's NPNF
     # translation (1895), public domain, extracted from npnf208 by its stem.
     # Jackson's preface is his own, so it is left out.
+    # Basil the Great's Hexaemeron (c. 370), nine homilies on the six days of
+    # creation — Blomfield Jackson's NPNF translation (1895), public domain,
+    # extracted from npnf208 by its stem. Jackson's introduction is his own.
+    BookEntry("the-hexaemeron", "The Hexaemeron", "basil-of-caesarea",
+              "ccel", "schaff/npnf208", part="viii",
+              subtitle="Translated by Blomfield Jackson", cover_color="#3a5a3a",
+              skip=("Introduction.",)),
     BookEntry("on-the-holy-spirit", "On the Holy Spirit", "basil-of-caesarea",
               "ccel", "schaff/npnf208", part="vii",
               subtitle="Translated by Blomfield Jackson", cover_color="#2e4a5a",
@@ -985,6 +1059,40 @@ BOOKS: list[BookEntry] = [
                     "The Last Farewell in the Presence of the One Hundred and Fifty Bishops.",
                     "Funeral Oration on the Great S. Basil, Bishop of Cæsarea in Cappadocia.",
                     "The Second Oration on Easter.")),
+    # The Epistles of Cyprian (c. 248–258) — Robert Ernest Wallis's ANF
+    # translation (1886), public domain, extracted from anf05 by its stem:
+    # Cyprian's letters, with those written to him, in the ANF numbering.
+    BookEntry("the-epistles-of-cyprian", "The Epistles of Cyprian", "cyprian-of-carthage",
+              "ccel", "schaff/anf05", part="iv.iv",
+              subtitle="Translated by Robert Ernest Wallis", cover_color="#4a2e2e"),
+    # Justin Martyr's First Apology (c. 155) — Marcus Dods and George Reith's
+    # ANF translation (1885), public domain, extracted from anf01 by its stem.
+    BookEntry("the-first-apology", "The First Apology", "justin-martyr",
+              "ccel", "schaff/anf01", part="viii.ii",
+              subtitle="Translated by Marcus Dods and George Reith", cover_color="#5a3e2b"),
+    # Clement of Alexandria's Exhortation to the Heathen (c. 195) — William
+    # Wilson's ANF translation (1885), public domain, extracted from anf02 by
+    # its stem.
+    BookEntry("exhortation-to-the-heathen", "Exhortation to the Heathen", "clement-of-alexandria",
+              "ccel", "schaff/anf02", part="vi.ii",
+              subtitle="Translated by William Wilson", cover_color="#5c4a2a"),
+    # Gregory of Nyssa's Great Catechism (c. 385) — William Moore and Henry
+    # Austin Wilson's NPNF translation (1893), public domain, extracted from
+    # npnf205 by its stem.
+    BookEntry("the-great-catechism", "The Great Catechism", "gregory-of-nyssa",
+              "ccel", "schaff/npnf205", part="xi.ii",
+              subtitle="Translated by William Moore and Henry Austin Wilson",
+              cover_color="#3e3a5c", summary_titles=True),
+    # Tertullian's Apology (197) — S. Thelwall's ANF translation (1885),
+    # public domain, extracted from anf03 by its stem.
+    BookEntry("the-apology-of-tertullian", "The Apology", "tertullian",
+              "ccel", "schaff/anf03", part="iv.iii",
+              subtitle="Translated by S. Thelwall", cover_color="#5a2e2e"),
+    # Justin's Dialogue with Trypho (c. 160) — the same ANF translation,
+    # extracted from anf01 by its stem.
+    BookEntry("dialogue-with-trypho", "Dialogue with Trypho", "justin-martyr",
+              "ccel", "schaff/anf01", part="viii.iv",
+              subtitle="Translated by Marcus Dods and George Reith", cover_color="#3d4a5c"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

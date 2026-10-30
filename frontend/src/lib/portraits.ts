@@ -54,6 +54,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'charles-h-spurgeon': '50% 0%',
 	'charles-s-price': '50% 30%', // 1920s–30s studio portrait; near-square, so nearly inert
 	'christmas-evans': '50% 25%', // 1859 engraved frontispiece; face at ~40% of a 0.75 plate
+	'clement-of-alexandria': '50% 0%', // Thevet engraving (1584), cropped to the bust; head at ~25% of a 0.78 plate
 	'clement-of-rome': '50% 0%', // mosaic bust; face at ~28% of a 0.80 plate
 	'corrie-ten-boom': '50% 0%', // 1921 photo, hat; face at ~27% of a 0.63 plate
 	'cyprian-of-carthage': '50% 0%', // icon: bust, face at ~22%
@@ -81,6 +82,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'george-whitefield': '50% 0%',
 	'gladys-aylward': '50% 8%', // bust-cropped from a full-length photo; face at ~28% of a 0.74 plate
 	'gregory-of-nazianzus': '50% 0%', // Chora fresco, cropped to the bust; head at ~18% of a 0.80 plate
+	'gregory-of-nyssa': '50% 0%', // 14th-c. icon, cropped to the bust; head at ~20% of a 0.93 plate
 	'gregory-the-great': '50% 0%', // Goya painting, seated; face high at ~13% of a 0.57 plate
 	'hannah-whitall-smith': '50% 0%',
 	'harriet-tubman': '50% 0%', // H. Seymour Squyer c.1885 (NPG), cropped to the upper figure; face high at ~25%
@@ -115,6 +117,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'josephine-bakhita': '50% 21%', // studio photo cropped to a bust; face at ~39% of a 0.75 plate
 	'julia-foote': '50% 0%', // studio photo: standing figure, face at ~22% of a 0.62 plate
 	'julian-of-norwich': '50% 8%', // Ochorus firelight illustration (imagined likeness); face at ~35% of a 0.75 plate
+	'justin-martyr': '50% 0%', // Theophanes the Cretan icon (1545), cropped to the bust; head at ~20% of a 0.82 plate
 	'kanzo-uchimura': '50% 15%', // c.1912 photo; face at ~37% of a 0.75 plate
 	'kateri-tekakwitha': '50% 0%', // Chauchetière's c.1690s painting cropped to the upper figure; face high at ~28%
 	'krupabai-satthianadhan': '50% 0%', // The Sketch, 1895; face at ~30% of a 0.75 plate
@@ -146,6 +149,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'soonderbai-powar': '50% 0%', // 1900 plate (Dyer, Pandita Ramabai); oval vignette, face at ~33% of a 0.76 plate
 	'susanna-wesley': '50% 21%',
 	'teresa-of-avila': '50% 0%', // cropped to the bust; face at ~25% of a 0.58 plate
+	'tertullian': '50% 0%', // Thevet engraving (1584), cropped to the bust; head at ~22% of a 0.81 plate
 	'thomas-a-kempis': '50% 0%',
 	'thomas-watson': '50% 0%',
 	'timothy-keller': '50% 0%', // speaking pose; face high at ~19% of a 0.73 plate
