@@ -423,6 +423,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "after the Bible the most widely read Christian book ever written."
         ),
     ),
+    "philip-doddridge": AuthorEntry(
+        slug="philip-doddridge",
+        name="Philip Doddridge",
+        birth_year=1702,
+        death_year=1751,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Philip Doddridge (1702–1751) was an English Congregationalist minister, tutor and hymn-writer who led a Dissenting academy at Northampton."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -780,6 +791,11 @@ BOOKS: list[BookEntry] = [
     # The Stanbrook Benedictines' translation (1921, revised edition), public
     # domain. group_parts: each Mansion's short chapters read as one chapter; the
     # editor's introduction and his note before VI.iii are left out.
+    # Philip Doddridge's Rise and Progress of Religion in the Soul (1745),
+    # public domain, from CCEL.
+    BookEntry("the-rise-and-progress-of-religion-in-the-soul",
+              "The Rise and Progress of Religion in the Soul", "philip-doddridge",
+              "ccel", "doddridge/rise", cover_color="#2f4f4f"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

@@ -121,6 +121,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'monica-of-hippo': '50% 0%', // Gozzoli fresco, tall niche; head high at ~18% of a 0.42 plate
 	'pandita-ramabai': '50% 20%', // bust photo; face at ~30% of a 0.73 plate
 	'pastor-hsi': '50% 0%', // engraved plate, cropped to the upper figure; face high at ~15%
+	'philip-doddridge': '50% 0%', // Vertue engraving after Soldi (1751), cropped to the oval; face at ~38% of a 0.88 plate
 	'phillis-wheatley': '50% 0%', // 1773 Poems frontispiece, cropped to the head; face at ~30%
 	'r-a-torrey': '50% 10%',
 	'rees-howells': '50% 10%', // bust photo; face at ~32% of a 0.84 plate
