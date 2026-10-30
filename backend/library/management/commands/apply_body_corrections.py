@@ -69,8 +69,11 @@ class Command(BaseCommand):
         # Chapter.save() (which assigns it, un-deferring it so it IS written),
         # and the tsvector is refreshed by fts.refresh_chapter's own UPDATE.
         # (word_count is derived by the same save() but stays loaded: it is a
-        # 4-byte int, so deferring it would buy nothing.)
-        chapters = Chapter.objects.select_related("book").defer("body_text", "search_vector")
+        # 4-byte int, so deferring it would buy nothing.) The joined book's own
+        # vector too: select_related bypasses Book's manager-level defer.
+        chapters = Chapter.objects.select_related("book").defer(
+            "body_text", "search_vector", "book__search_vector"
+        )
         if not opts["all"]:
             chapters = chapters.alias(key_now=keyed_md5(version, "body_html")).exclude(
                 corrections_key=F("key_now")

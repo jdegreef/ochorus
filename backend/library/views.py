@@ -60,6 +60,7 @@ from .search import (
     PAGE_SIZE,
     SORTS,
     count_by_type,
+    memoized,
     page_by_type,
     parse_scope,
     scope_entry,
@@ -1532,8 +1533,19 @@ class SearchView(APIView):
                 page["results"] = [best, *[h for h in page["results"] if hit_key(h) != hit_key(best)]]
             return Response(page)
 
-        results = search_library(searched, language, scope)
-        counts, capped = count_by_type(searched, language, scope)
+        # Memoised as one unit: the counts describe the list, so they must come
+        # from the same moment. Logging below still runs per request — the
+        # popular-searches report counts readers, not computations.
+        results, counts, capped = memoized(
+            "merged",
+            lambda: (
+                search_library(searched, language, scope),
+                *count_by_type(searched, language, scope),
+            ),
+            searched,
+            language,
+            scope,
+        )
         if best:
             if all(hit_key(h) != hit_key(best) for h in results):
                 # Not one of the text matches: count it, so its group's total
@@ -1567,7 +1579,9 @@ class SearchView(APIView):
         # to a second empty page. Inside a scope, empty usually means "not
         # here", and the way out is to widen the search, not to respell it.
         if not results and not scope:
-            hint = suggest(q, language)
+            # `or ""`: the memo can't store None (it reads as a miss), and "no
+            # suggestion" is exactly the answer worth remembering for a miss.
+            hint = memoized("suggest", lambda: suggest(q, language) or "", q, language)
             if hint:
                 payload["suggestion"] = hint
         # Anonymous analytics (admin "what do readers search for / not find").
@@ -1607,8 +1621,18 @@ class SearchView(APIView):
             "type": kind,
             "sort": sort,
             "offset": offset,
-            "results": page_by_type(
-                q, language, kind, offset=offset, limit=limit, sort=sort, scope=scope
+            "results": memoized(
+                "page",
+                lambda: page_by_type(
+                    q, language, kind, offset=offset, limit=limit, sort=sort, scope=scope
+                ),
+                q,
+                language,
+                kind,
+                offset,
+                limit,
+                sort,
+                scope,
             ),
         }
 
