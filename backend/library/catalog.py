@@ -1088,6 +1088,11 @@ BOOKS: list[BookEntry] = [
     BookEntry("the-apology-of-tertullian", "The Apology", "tertullian",
               "ccel", "schaff/anf03", part="iv.iii",
               subtitle="Translated by S. Thelwall", cover_color="#5a2e2e"),
+    # Justin's Dialogue with Trypho (c. 160) — the same ANF translation,
+    # extracted from anf01 by its stem.
+    BookEntry("dialogue-with-trypho", "Dialogue with Trypho", "justin-martyr",
+              "ccel", "schaff/anf01", part="viii.iv",
+              subtitle="Translated by Marcus Dods and George Reith", cover_color="#3d4a5c"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
