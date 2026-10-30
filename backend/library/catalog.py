@@ -533,6 +533,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Gregory of Nazianzus (c."
         ),
     ),
+    "cyprian-of-carthage": AuthorEntry(
+        slug="cyprian-of-carthage",
+        name="Cyprian of Carthage",
+        birth_year=200,
+        death_year=258,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Cyprian of Carthage (c. 200–258) was a celebrated North African rhetorician who was converted in middle age, gave away his fortune, and was made bishop within two years."
+        ),
+    ),
     "justin-martyr": AuthorEntry(
         slug="justin-martyr",
         name="Justin Martyr",
@@ -1026,6 +1037,12 @@ BOOKS: list[BookEntry] = [
                     "The Last Farewell in the Presence of the One Hundred and Fifty Bishops.",
                     "Funeral Oration on the Great S. Basil, Bishop of Cæsarea in Cappadocia.",
                     "The Second Oration on Easter.")),
+    # The Epistles of Cyprian (c. 248–258) — Robert Ernest Wallis's ANF
+    # translation (1886), public domain, extracted from anf05 by its stem:
+    # Cyprian's letters, with those written to him, in the ANF numbering.
+    BookEntry("the-epistles-of-cyprian", "The Epistles of Cyprian", "cyprian-of-carthage",
+              "ccel", "schaff/anf05", part="iv.iv",
+              subtitle="Translated by Robert Ernest Wallis", cover_color="#4a2e2e"),
     # Justin Martyr's First Apology (c. 155) — Marcus Dods and George Reith's
     # ANF translation (1885), public domain, extracted from anf01 by its stem.
     BookEntry("the-first-apology", "The First Apology", "justin-martyr",
