@@ -872,6 +872,7 @@ TOPIC_SERMONS = {
         "from-strength-to-strength",
         "thirsting-for-god",
         "the-expulsive-power-of-a-new-affection",
+        "lovest-thou-me",
     ],
     "grace-and-comfort": [
         "free-grace",
@@ -914,6 +915,11 @@ TOPIC_SERMONS = {
         "the-compassion-of-christ-to-weak-believers",
         "the-sure-warrant-of-a-believers-hope",
         "a-present-saviour",
+        "consolation-proportionate-to-spiritual-sufferings",
+        "the-desire-of-the-soul-in-spiritual-darkness",
+        "the-god-of-peace",
+        "heavenly-rest",
+        "spiritual-peace",
     ],
     "revival-and-missions": [
         "compel-them-to-come-in",
@@ -946,6 +952,8 @@ TOPIC_SERMONS = {
         "the-weapons-of-our-warfare",
         "a-lecture-for-little-faith",
         "faith-in-an-unseen-christ",
+        "fear-not",
+        "as-thy-days-so-shall-thy-strength-be",
     ],
     "the-gospel-call": [
         "christ-crucified",
@@ -984,6 +992,9 @@ TOPIC_SERMONS = {
         "making-light-of-christ",
         "the-transitory-nature-of-visible-things",
         "the-vain-wish",
+        "salvation-to-the-uttermost",
+        "the-new-heart",
+        "the-meek-and-lowly-one",
     ],
     "the-way-of-holiness": [
         "aggressive-christianity",
@@ -1014,6 +1025,9 @@ TOPIC_SERMONS = {
         "our-kinsman-redeemer",
         "personal-responsibility",
         "the-blood-of-the-everlasting-covenant",
+        "loves-commendation",
+        "a-mighty-saviour",
+        "christ-lifted-up",
     ],
     "soar-like-the-eagle": [
         "rest",
