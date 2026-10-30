@@ -418,6 +418,7 @@ TOPICS = [
             "on-loving-god",
             "interior-castle",
             "introduction-to-the-devout-life",
+            "treatise-on-the-love-of-god",
             "confessions",
             "the-inner-chamber",
             "key-teachings-of-jeanne-guyon",

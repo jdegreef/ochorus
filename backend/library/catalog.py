@@ -892,6 +892,14 @@ BOOKS: list[BookEntry] = [
     # editor's introduction and his note before VI.iii are left out.
     # Francis de Sales' Introduction to the Devout Life (1609) — the public-
     # domain English translation on CCEL.
+    # Francis de Sales' Treatise on the Love of God (1616) — Henry Benedict
+    # Mackey's translation (1884), public domain, from CCEL, one chapter per
+    # Book. Mackey's introduction is the translator's, so it is left out.
+    BookEntry("treatise-on-the-love-of-god", "Treatise on the Love of God", "francis-de-sales",
+              "ccel", "desales/love", subtitle="Translated by Henry Benedict Mackey",
+              cover_color="#6b3a4a", group_parts=True,
+              skip=("Cover Page", "Frontispiece", "Translator's Introduction",
+                    "Table of Contents")),
     BookEntry("introduction-to-the-devout-life", "Introduction to the Devout Life",
               "francis-de-sales", "ccel", "desales/devout_life",
               cover_color="#4a5d3a"),
