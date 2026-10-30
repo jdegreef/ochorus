@@ -223,5 +223,12 @@
   "note": [
    "2026-10-14: AI-drafted; awaiting native review. Written with they-were-young-1.fr and they-were-young-2.fr (« Ils étaient jeunes – Livre 1 : Appelés » / « Livre 2 : Éprouvés »), which ship in this PR and complete the set, so seed_plans creates the (they-were-young-two-weeks, fr) row."
   ]
+ },
+ "faithful-with-little": {
+  "title": "Fidèle dans les petites choses : l’argent et le cœur",
+  "description": "Trois semaines avec ce que toute la Bible dit de l’argent, un court chapitre par jour. Tout appartient à Dieu ; le cœur derrière le portefeuille ; le travail honnête, la planification et les dettes ; donner comme Dieu ; et un trésor qui dure, avec John Wesley, George Müller, Charles Spurgeon et A. W. Tozer en chemin. Chaque jour se termine par un exercice à pratiquer, et les trente versets clés du livre offrent un mois de lecture en complément.",
+  "note": [
+   "The title quotes the shipped fr edition faithful-with-little.fr.json verbatim («Fidèle dans les petites choses»), and the five themes reuse its part and chapter titles («Tout appartient à Dieu», «Le cœur derrière le portefeuille», «Un trésor qui dure»), so the card and the book agree. Written with the plan (Ochorus Original, 2026-10)."
+  ]
  }
 }

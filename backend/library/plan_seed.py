@@ -332,6 +332,19 @@ CURATED_PLANS = [
         ],
     ),
     (
+        "faithful-with-little",
+        "Faithful With Little: Money and the Heart",
+        "Three weeks with what the whole Bible says about money, one short "
+        "chapter a day. God owns it all; the heart behind the wallet; honest "
+        "work, planning and debt; giving like God; and treasure that lasts, "
+        "with John Wesley, George Müller, Charles Spurgeon and A. W. Tozer "
+        "along the way. Each day ends with one thing to practise, and the "
+        "book's thirty key verses make a companion month of reading.",
+        [
+            chapters("faithful-with-little", 1, 22),  # Introduction … Conclusion; not the appendices
+        ],
+    ),
+    (
         "first-steps-for-teens",
         "Starting Out: Faith for Teens",
         "A first walk with Jesus, for teenage readers. Charles Spurgeon meets "
