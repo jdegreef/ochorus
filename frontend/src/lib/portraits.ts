@@ -115,6 +115,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'josephine-bakhita': '50% 21%', // studio photo cropped to a bust; face at ~39% of a 0.75 plate
 	'julia-foote': '50% 0%', // studio photo: standing figure, face at ~22% of a 0.62 plate
 	'julian-of-norwich': '50% 8%', // Ochorus firelight illustration (imagined likeness); face at ~35% of a 0.75 plate
+	'justin-martyr': '50% 0%', // Theophanes the Cretan icon (1545), cropped to the bust; head at ~20% of a 0.82 plate
 	'kanzo-uchimura': '50% 15%', // c.1912 photo; face at ~37% of a 0.75 plate
 	'kateri-tekakwitha': '50% 0%', // Chauchetière's c.1690s painting cropped to the upper figure; face high at ~28%
 	'krupabai-satthianadhan': '50% 0%', // The Sketch, 1895; face at ~30% of a 0.75 plate
