@@ -423,6 +423,50 @@ AUTHORS: dict[str, AuthorEntry] = {
             "after the Bible the most widely read Christian book ever written."
         ),
     ),
+    "francis-de-sales": AuthorEntry(
+        slug="francis-de-sales",
+        name="Francis de Sales",
+        birth_year=1567,
+        death_year=1622,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Francis de Sales (1567–1622) was a Savoyard priest and Bishop of Geneva, a see whose city he could never enter, remembered for his patience and gentleness."
+        ),
+    ),
+    "catherine-of-siena": AuthorEntry(
+        slug="catherine-of-siena",
+        name="Catherine of Siena",
+        birth_year=1347,
+        death_year=1380,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Catherine of Siena (1347–1380) was an Italian mystic and Dominican laywoman who nursed the sick, counselled popes, and urged Gregory XI to return from Avignon to Rome."
+        ),
+    ),
+    "jeremy-taylor": AuthorEntry(
+        slug="jeremy-taylor",
+        name="Jeremy Taylor",
+        birth_year=1613,
+        death_year=1667,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Jeremy Taylor (1613–1667) was an English Anglican priest, Royalist chaplain and bishop, called the “Shakespeare of Divines” for his prose."
+        ),
+    ),
+    "henry-scougal": AuthorEntry(
+        slug="henry-scougal",
+        name="Henry Scougal",
+        birth_year=1650,
+        death_year=1678,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Henry Scougal (1650–1678) was a Scottish minister and Professor of Divinity at King’s College, Aberdeen, who died of consumption at about twenty-eight."
+        ),
+    ),
     "philip-doddridge": AuthorEntry(
         slug="philip-doddridge",
         name="Philip Doddridge",
@@ -791,6 +835,31 @@ BOOKS: list[BookEntry] = [
     # The Stanbrook Benedictines' translation (1921, revised edition), public
     # domain. group_parts: each Mansion's short chapters read as one chapter; the
     # editor's introduction and his note before VI.iii are left out.
+    # Francis de Sales' Introduction to the Devout Life (1609) — the public-
+    # domain English translation on CCEL.
+    BookEntry("introduction-to-the-devout-life", "Introduction to the Devout Life",
+              "francis-de-sales", "ccel", "desales/devout_life",
+              cover_color="#4a5d3a"),
+    # Catherine of Siena's Dialogue (1378) — Algar Thorold's translation, in
+    # its abridged edition of 1907, public domain. Thorold's introduction on
+    # her life and times is his essay, not her book, so it is left out.
+    BookEntry("the-dialogue-of-catherine-of-siena", "The Dialogue", "catherine-of-siena",
+              "ccel", "catherine/dialog", subtitle="Translated by Algar Thorold",
+              cover_color="#6b2d2d", skip=("INTRODUCTION",)),
+    # Jeremy Taylor's Holy Living (1650), public domain, from CCEL. The
+    # edition's nineteenth-century "Sketch of the Life and Times" is the
+    # editor's, not Taylor's, so it is left out.
+    BookEntry("holy-living", "The Rule and Exercises of Holy Living", "jeremy-taylor",
+              "ccel", "taylor/holy_living", cover_color="#3d4a5c",
+              skip=("A Sketch of the Life and Times of Bishop Taylor.",),
+              # Divider pages that carry prose: the dedication and Chapter I's
+              # introduction, Section III's opening, the introductions to
+              # Chapters III and IV, and Chapter IV's Section I on faith.
+              keep=("iii", "iii.iii", "v", "vi", "vi.vi")),
+    # Henry Scougal's Life of God in the Soul of Man (1677), public domain,
+    # from CCEL.
+    BookEntry("the-life-of-god-in-the-soul-of-man", "The Life of God in the Soul of Man",
+              "henry-scougal", "ccel", "scougal/life", cover_color="#5a4a2f"),
     # Philip Doddridge's Rise and Progress of Religion in the Soul (1745),
     # public domain, from CCEL.
     BookEntry("the-rise-and-progress-of-religion-in-the-soul",
