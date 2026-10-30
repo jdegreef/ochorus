@@ -102,6 +102,10 @@
   "ever-increasing-faith": {
    "orphan-close-quote": 2
   },
+  "exhortation-to-the-heathen": {
+   "space-before-punct": 5,
+   "word-fusion": 1
+  },
   "expository-thoughts-on-matthew": {
    "orphan-close-quote": 13
   },
@@ -426,6 +430,10 @@
    "lost-paragraphing": 30
   },
   "the-dying-thief": {
+   "word-fusion": 1
+  },
+  "the-epistles-of-cyprian": {
+   "lost-paragraphing": 1,
    "word-fusion": 1
   },
   "the-everlasting-man": {
