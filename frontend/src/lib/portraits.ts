@@ -104,6 +104,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'john-chrysostom': '50% 0%', // mosaic: standing figure, head at ~11%
 	'john-foxe': '50% 20%', // 1587 portrait cropped to a bust; near-square
 	'john-g-lake': '50% 0%', // c.1900–05 profile bust; face at ~25% of a 0.62 plate
+	'john-henry-newman': '50% 15%', // 1887 photograph: the face sits high in a half-length
 	'john-hyde': '50% 20%', // studio bust; face at ~40% of a 0.86 plate
 	'john-milton': '50% 30%', // c. 1629 portrait; face at ~40% of a 0.80 plate
 	'john-newton': '50% 27%', // portrait; face at ~40% of a 0.72 plate

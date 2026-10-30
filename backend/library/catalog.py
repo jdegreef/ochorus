@@ -533,6 +533,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Gregory of Nazianzus (c."
         ),
     ),
+    "john-henry-newman": AuthorEntry(
+        slug="john-henry-newman",
+        name="John Henry Newman",
+        birth_year=1801,
+        death_year=1890,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "John Henry Newman (1801–1890) was an English priest, theologian and writer who led the Oxford Movement in the Church of England and in 1845 was received into the Catholic Church."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -985,6 +996,14 @@ BOOKS: list[BookEntry] = [
                     "The Last Farewell in the Presence of the One Hundred and Fifty Bishops.",
                     "Funeral Oration on the Great S. Basil, Bishop of Cæsarea in Cappadocia.",
                     "The Second Oration on Easter.")),
+    # Apologia Pro Vita Sua (1864, Gutenberg #19690): Newman's answer to Charles
+    # Kingsley, the history of his religious opinions up to his reception into
+    # the Catholic Church in 1845, with the 1864 Appendix answering each charge.
+    # Built from a reshaped copy of the PG HTML (one <h2> per Part and
+    # Appendix item; the editor's Introduction and the seven footnotes left out).
+    BookEntry("apologia-pro-vita-sua", "Apologia Pro Vita Sua", "john-henry-newman",
+              "gutenberg", "19690",
+              subtitle="Being a History of His Religious Opinions", cover_color="#5c3d2e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
