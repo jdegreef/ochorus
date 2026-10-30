@@ -1099,6 +1099,11 @@ BOOKS: list[BookEntry] = [
     BookEntry("the-apology-of-tertullian", "The Apology", "tertullian",
               "ccel", "schaff/anf03", part="iv.iii",
               subtitle="Translated by S. Thelwall", cover_color="#5a2e2e"),
+    # Justin's Dialogue with Trypho (c. 160) — the same ANF translation,
+    # extracted from anf01 by its stem.
+    BookEntry("dialogue-with-trypho", "Dialogue with Trypho", "justin-martyr",
+              "ccel", "schaff/anf01", part="viii.iv",
+              subtitle="Translated by Marcus Dods and George Reith", cover_color="#3d4a5c"),
     # Apologia Pro Vita Sua (1864, Gutenberg #19690): Newman's answer to Charles
     # Kingsley, the history of his religious opinions up to his reception into
     # the Catholic Church in 1845, with the 1864 Appendix answering each charge.
