@@ -500,6 +500,7 @@ TOPICS = [
             "enchiridion",
             "large-catechism",
             "on-the-incarnation",
+            "the-theological-orations",
             "proslogium-monologium-cur-deus-homo",
             "freedom-of-the-will",
             "bondage-of-the-will",
