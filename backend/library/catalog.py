@@ -478,6 +478,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Philip Doddridge (1702–1751) was an English Congregationalist minister, tutor and hymn-writer who led a Dissenting academy at Northampton."
         ),
     ),
+    "cyril-of-jerusalem": AuthorEntry(
+        slug="cyril-of-jerusalem",
+        name="Cyril of Jerusalem",
+        birth_year=313,
+        death_year=386,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Cyril of Jerusalem (313–386) was bishop of Jerusalem and the teacher behind the Catechetical Lectures, the only complete course of instruction for new Christians to survive from the early church."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -865,6 +876,19 @@ BOOKS: list[BookEntry] = [
     BookEntry("the-rise-and-progress-of-religion-in-the-soul",
               "The Rise and Progress of Religion in the Soul", "philip-doddridge",
               "ccel", "doddridge/rise", cover_color="#2f4f4f"),
+    # Cyril of Jerusalem's Catechetical Lectures (c. 350) — E. H. Gifford's
+    # NPNF translation (1894), public domain, extracted from npnf207 by its
+    # stem. Gifford's introduction is his own essay, so it is left out.
+    BookEntry("catechetical-lectures", "The Catechetical Lectures", "cyril-of-jerusalem",
+              "ccel", "schaff/npnf207", part="ii",
+              subtitle="Translated by Edwin Hamilton Gifford", cover_color="#4a3b2a",
+              skip=("Preface.", "Life of S. Cyril.", "Catechetical Instruction.",
+                    "Special Preparation for Baptism.", "Ceremonies of Baptism and Chrism.",
+                    "Eucharistic Rites.\xa0 Liturgy.", "Effects of Baptism and of Chrism.",
+                    "Eucharistic Doctrine.", "Place of S. Cyril's Lectures.",
+                    "The Time and Arrangement of S. Cyril's Lectures.",
+                    "The Creed of Jerusalem:\xa0 Doctrine of the Holy Trinity.",
+                    "S. Cyril's Writings.")),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

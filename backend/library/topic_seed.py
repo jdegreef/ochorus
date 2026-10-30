@@ -342,6 +342,7 @@ TOPICS = [
             "enchiridion",
             "on-the-trinity",
             "on-the-incarnation",
+            "catechetical-lectures",
             "the-city-of-god",
             "life-of-antony",
             "against-the-arians",
