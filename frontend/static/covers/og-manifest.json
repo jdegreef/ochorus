@@ -9096,6 +9096,17 @@
 				427
 			]
 		},
+		"exhortation-to-the-heathen": {
+			"ground": "934a95657e1a915ae6dd73c36235dbb36fb3b26b366b43b6c4c6053b6e688979",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"expository-thoughts-on-matthew": {
 			"ground": "716ea464f43e380c4d7f8955d6db98ec720045ff78249c26cca78f25caa47ff6",
 			"style": "revival",
@@ -25384,6 +25395,17 @@
 		},
 		"the-dialogue-of-catherine-of-siena": {
 			"ground": "27c31a61010f46ddbbf277c580d489af3c0e5554afb59a5762ae9c6d4314fb42",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"the-epistles-of-cyprian": {
+			"ground": "a136b5a1cda1bed78826914d713ce3e68eb4503a885f3af4ace2f487e542ef89",
 			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
