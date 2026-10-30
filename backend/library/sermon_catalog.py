@@ -1787,6 +1787,8 @@ SERMONS: list[SermonEntry] = [
         "charles-h-spurgeon",
         "ccel",
         _CCEL + "sermons05/sermons05.lix.html",
+        # The Pulpit prints "Psalm 80:10"; the words are verse 19.
+        scripture_ref="Psalm 80:19",
     ),
     SermonEntry(
         "the-treasure-of-grace",
