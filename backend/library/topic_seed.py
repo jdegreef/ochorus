@@ -355,6 +355,7 @@ TOPICS = [
             "homilies-on-matthew",
             "first-epistle-of-clement",
             "epistles-of-ignatius",
+            "the-first-apology",
             "key-teachings-of-augustine-of-hippo",
             "key-teachings-of-athanasius-of-alexandria",
             "key-teachings-of-ignatius-of-antioch",
