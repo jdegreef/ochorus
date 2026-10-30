@@ -533,6 +533,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Gregory of Nazianzus (c."
         ),
     ),
+    "tertullian": AuthorEntry(
+        slug="tertullian",
+        name="Tertullian",
+        birth_year=155,
+        death_year=220,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Tertullian (c. 155–c. 220) was a Christian writer of Carthage, the first to produce a large body of Christian work in Latin."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -985,6 +996,11 @@ BOOKS: list[BookEntry] = [
                     "The Last Farewell in the Presence of the One Hundred and Fifty Bishops.",
                     "Funeral Oration on the Great S. Basil, Bishop of Cæsarea in Cappadocia.",
                     "The Second Oration on Easter.")),
+    # Tertullian's Apology (197) — S. Thelwall's ANF translation (1885),
+    # public domain, extracted from anf03 by its stem.
+    BookEntry("the-apology-of-tertullian", "The Apology", "tertullian",
+              "ccel", "schaff/anf03", part="iv.iii",
+              subtitle="Translated by S. Thelwall", cover_color="#5a2e2e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

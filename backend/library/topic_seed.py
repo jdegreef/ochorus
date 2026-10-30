@@ -352,6 +352,7 @@ TOPICS = [
             "on-the-priesthood",
             "homilies-on-romans",
             "treatises-of-cyprian",
+            "the-apology-of-tertullian",
             "homilies-on-matthew",
             "first-epistle-of-clement",
             "epistles-of-ignatius",
