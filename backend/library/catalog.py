@@ -533,6 +533,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Gregory of Nazianzus (c."
         ),
     ),
+    "justin-martyr": AuthorEntry(
+        slug="justin-martyr",
+        name="Justin Martyr",
+        birth_year=100,
+        death_year=165,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Justin Martyr (c. 100–165) was a Greek-speaking philosopher from Samaria who found in Christ the “true philosophy” after years in the schools."
+        ),
+    ),
     "gregory-of-nyssa": AuthorEntry(
         slug="gregory-of-nyssa",
         name="Gregory of Nyssa",
@@ -903,6 +914,14 @@ BOOKS: list[BookEntry] = [
     # editor's introduction and his note before VI.iii are left out.
     # Francis de Sales' Introduction to the Devout Life (1609) — the public-
     # domain English translation on CCEL.
+    # Francis de Sales' Treatise on the Love of God (1616) — Henry Benedict
+    # Mackey's translation (1884), public domain, from CCEL, one chapter per
+    # Book. Mackey's introduction is the translator's, so it is left out.
+    BookEntry("treatise-on-the-love-of-god", "Treatise on the Love of God", "francis-de-sales",
+              "ccel", "desales/love", subtitle="Translated by Henry Benedict Mackey",
+              cover_color="#6b3a4a", group_parts=True,
+              skip=("Cover Page", "Frontispiece", "Translator's Introduction",
+                    "Table of Contents")),
     BookEntry("introduction-to-the-devout-life", "Introduction to the Devout Life",
               "francis-de-sales", "ccel", "desales/devout_life",
               cover_color="#4a5d3a"),
@@ -915,6 +934,10 @@ BOOKS: list[BookEntry] = [
     # Jeremy Taylor's Holy Living (1650), public domain, from CCEL. The
     # edition's nineteenth-century "Sketch of the Life and Times" is the
     # editor's, not Taylor's, so it is left out.
+    # Jeremy Taylor's Holy Dying (1651), the companion to Holy Living, public
+    # domain, from CCEL: the dedication and one chapter per Section.
+    BookEntry("holy-dying", "The Rule and Exercises of Holy Dying", "jeremy-taylor",
+              "ccel", "taylor/holy_dying", cover_color="#2f3a4a"),
     BookEntry("holy-living", "The Rule and Exercises of Holy Living", "jeremy-taylor",
               "ccel", "taylor/holy_living", cover_color="#3d4a5c",
               skip=("A Sketch of the Life and Times of Bishop Taylor.",),
@@ -966,6 +989,13 @@ BOOKS: list[BookEntry] = [
     # Basil the Great's On the Holy Spirit (375) — Blomfield Jackson's NPNF
     # translation (1895), public domain, extracted from npnf208 by its stem.
     # Jackson's preface is his own, so it is left out.
+    # Basil the Great's Hexaemeron (c. 370), nine homilies on the six days of
+    # creation — Blomfield Jackson's NPNF translation (1895), public domain,
+    # extracted from npnf208 by its stem. Jackson's introduction is his own.
+    BookEntry("the-hexaemeron", "The Hexaemeron", "basil-of-caesarea",
+              "ccel", "schaff/npnf208", part="viii",
+              subtitle="Translated by Blomfield Jackson", cover_color="#3a5a3a",
+              skip=("Introduction.",)),
     BookEntry("on-the-holy-spirit", "On the Holy Spirit", "basil-of-caesarea",
               "ccel", "schaff/npnf208", part="vii",
               subtitle="Translated by Blomfield Jackson", cover_color="#2e4a5a",
@@ -996,6 +1026,11 @@ BOOKS: list[BookEntry] = [
                     "The Last Farewell in the Presence of the One Hundred and Fifty Bishops.",
                     "Funeral Oration on the Great S. Basil, Bishop of Cæsarea in Cappadocia.",
                     "The Second Oration on Easter.")),
+    # Justin Martyr's First Apology (c. 155) — Marcus Dods and George Reith's
+    # ANF translation (1885), public domain, extracted from anf01 by its stem.
+    BookEntry("the-first-apology", "The First Apology", "justin-martyr",
+              "ccel", "schaff/anf01", part="viii.ii",
+              subtitle="Translated by Marcus Dods and George Reith", cover_color="#5a3e2b"),
     # Gregory of Nyssa's Great Catechism (c. 385) — William Moore and Henry
     # Austin Wilson's NPNF translation (1893), public domain, extracted from
     # npnf205 by its stem.
