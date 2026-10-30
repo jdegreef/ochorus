@@ -577,6 +577,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Gregory of Nyssa (c. 335–c. 394) was bishop of Nyssa in Cappadocia and one of the three Cappadocian Fathers, with his brother Basil and Gregory of Nazianzus."
         ),
     ),
+    "tertullian": AuthorEntry(
+        slug="tertullian",
+        name="Tertullian",
+        birth_year=155,
+        death_year=220,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Tertullian (c. 155–c. 220) was a Christian writer of Carthage, the first to produce a large body of Christian work in Latin."
+        ),
+    ),
     "john-henry-newman": AuthorEntry(
         slug="john-henry-newman",
         name="John Henry Newman",
@@ -1083,6 +1094,11 @@ BOOKS: list[BookEntry] = [
               "ccel", "schaff/npnf205", part="xi.ii",
               subtitle="Translated by William Moore and Henry Austin Wilson",
               cover_color="#3e3a5c", summary_titles=True),
+    # Tertullian's Apology (197) — S. Thelwall's ANF translation (1885),
+    # public domain, extracted from anf03 by its stem.
+    BookEntry("the-apology-of-tertullian", "The Apology", "tertullian",
+              "ccel", "schaff/anf03", part="iv.iii",
+              subtitle="Translated by S. Thelwall", cover_color="#5a2e2e"),
     # Apologia Pro Vita Sua (1864, Gutenberg #19690): Newman's answer to Charles
     # Kingsley, the history of his religious opinions up to his reception into
     # the Catholic Church in 1845, with the 1864 Appendix answering each charge.
