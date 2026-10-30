@@ -489,6 +489,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Cyril of Jerusalem (313–386) was bishop of Jerusalem and the teacher behind the Catechetical Lectures, the only complete course of instruction for new Christians to survive from the early church."
         ),
     ),
+    "ignatius-of-loyola": AuthorEntry(
+        slug="ignatius-of-loyola",
+        name="Ignatius of Loyola",
+        birth_year=1491,
+        death_year=1556,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Ignatius of Loyola (1491–1556) was a Basque soldier who, after a cannonball shattered his leg at Pamplona, turned to God and founded the Society of Jesus."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -889,6 +900,17 @@ BOOKS: list[BookEntry] = [
                     "The Time and Arrangement of S. Cyril's Lectures.",
                     "The Creed of Jerusalem:\xa0 Doctrine of the Holy Trinity.",
                     "S. Cyril's Writings.")),
+    # Ignatius of Loyola's Spiritual Exercises (1548) — Elder Mullan's
+    # translation from the Spanish Autograph (1914), public domain, from
+    # CCEL, one chapter per part (the Weeks, the Methods of Prayer, the
+    # Rules). Mullan's preface and notes, the Latin approbations and Paul
+    # III's bull are the edition's apparatus, so they are left out.
+    BookEntry("the-spiritual-exercises", "The Spiritual Exercises", "ignatius-of-loyola",
+              "ccel", "ignatius/exercises", subtitle="Translated by Elder Mullan",
+              cover_color="#5c3a2e", group_parts=True,
+              skip=("APPROBATION OF THE LATIN TEXTS", "VULGATE VERSION", "LITERAL VERSION",
+                    "PAUL III, POPE FOR A PERPETUAL REMEMBRANCE", "PREFACE", "CONTENTS",
+                    "GENERAL NOTE", "PRAYER")),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
