@@ -96,5 +96,12 @@
   "note": [
    "Three-book plan backed by the vi editions of the-bruised-reed («Cây Sậy Bị Giập»), mortification-of-sin («Về Việc Làm Chết Tội Lỗi Trong Người Tin») and all-things-for-good («Mọi Sự Hiệp Lại Làm Ích»), all new this batch. Ships with the Level 1 books batch 3 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card echoes the Sibbes and Watson titles in lower case (“cây sậy bị giập”, “mọi sự hiệp lại làm ích”, Cadman's Ê-sai 42:3 and Rô-ma 8:28 wording as those editions use it); Owen's title is paraphrased (“tranh chiến với tội lỗi vẫn còn ở trong lòng”) rather than quoted. Puritan = Thanh giáo per the vi conventions; “inner life” = đời sống bề trong."
   ]
+ },
+ "faith-in-the-fire": {
+  "title": "Đức Chúa Trời Ban Mọi Sự Yên Ủi: Đức tin trong lò lửa",
+  "description": "Dành cho những ngày khó cầu nguyện. Hannah Whitall Smith nói về Đức Chúa Trời ban mọi sự yên ủi, và Gareth Evans nói về sự tin cậy Đấng nắm giữ ngày mai của chúng ta — năm tuần bước vào sự bình an vững vàng khi cuộc sống đầy bất trắc.",
+  "note": [
+   "Two-book plan backed by the vi editions of the-god-of-all-comfort («Đức Chúa Trời Ban Mọi Sự Yên Ủi», new this batch) and he-holds-my-tomorrows («Đấng Nắm Giữ Ngày Mai Của Tôi», already shipped). Ships with the Level 1 books batch 4 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The title opens with the Smith edition's title verbatim (title case, as the edition spells it), then sentence case after the colon as the shipped vi plan titles are; “Đức Chúa Trời ban mọi sự yên ủi” is Cadman's 2 Cô-rinh-tô 1:3, the verse that titles the book. The description echoes Evans's title in lower case (“Đấng nắm giữ ngày mai của chúng ta”, “our tomorrows” as the English card has it) rather than quoting it. “In the fire” = trong lò lửa (Đa-ni-ên 3's furnace image, as ar «في الأتون»)."
+  ]
  }
 }
