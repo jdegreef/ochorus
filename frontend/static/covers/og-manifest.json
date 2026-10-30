@@ -1361,9 +1361,24 @@
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[177, 307, 423, 426]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
 		},
 		"am/hurlbuts-life-of-christ": {
 			"ground": "071104547cfa700c846cb996f438a4dd929c3282d23cfa31730e951d86751eb6",
@@ -1403,9 +1418,24 @@
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[106, 307, 494, 426]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
 		},
 		"am/john-hyde-a-life-children": {
 			"ground": "b28f0d7362700ebcf93140caeb1a3eda19305e6710f9862fb7eb09aa0f8e1607",
@@ -1662,9 +1692,25 @@
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0.11
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[71, 284, 529, 372],
+					[90, 361, 510, 449]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
 		},
 		"am/mary-slessor-a-life-children": {
 			"ground": "1c31c90c36eb855fb6b533a453d89156fe0a7b415f4725ed18fd4ea4bdf6d5b4",
@@ -2606,9 +2652,25 @@
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
-			"bar": 0
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[90, 321, 510, 403],
+					[186, 391, 414, 473]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				270,
+				525
+			]
 		},
 		"am/talks-to-the-farmer-children": {
 			"ground": "328af163781b14f92b1364e0e6205e0e2ebfc93e25caef31f05d715a175eacfb",
@@ -2922,9 +2984,25 @@
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[171, 268, 429, 373],
+					[63, 360, 537, 465]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
 		},
 		"am/the-person-and-work-of-the-holy-spirit": {
 			"ground": "657c38818f3004c89394f9b83dd2169fd576d49d0e1d2f119ca4f1b796c8f374",
@@ -2933,9 +3011,25 @@
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 1,
-			"layout": "diagonal/ochre",
-			"bar": 0
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[107, 321, 493, 403],
+					[139, 391, 461, 473]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				270,
+				525
+			]
 		},
 		"am/the-practice-of-the-presence-of-god-children": {
 			"ground": "4811fb42301c4aa749abec46628e1894de9a32f50d2fab291b8d45ed9445ae88",
@@ -3839,9 +3933,24 @@
 			"script": "arabic",
 			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[192, 308, 408, 426]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				300,
+				495
+			]
 		},
 		"ar/jesus-himself-2": {
 			"ground": "3d2db2c6df3eea5ab5a1dd1113e2adbae98a0afa1adc549e7cb869a8ca54b704",
@@ -3850,9 +3959,24 @@
 			"script": "arabic",
 			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[150, 308, 450, 426]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				300,
+				495
+			]
 		},
 		"ar/lord-teach-us-to-pray-2": {
 			"ground": "cdaf454558acbf725ad4de0f324c92d5adb966a5678c9424003b25be9df961f9",
@@ -3861,9 +3985,24 @@
 			"script": "arabic",
 			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0.11
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[77, 323, 523, 411]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"ar/men-and-women-who-gave-everything-2": {
 			"ground": "99b3ff7e6dc401abeaee314716602abc474dc00a2fe496844cd5baefcb120463",
@@ -4356,9 +4495,24 @@
 			"script": "arabic",
 			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
-			"bar": 0
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[96, 352, 504, 442]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				504
+			]
 		},
 		"ar/the-christians-secret-of-a-happy-life-4": {
 			"ground": "6162c6864a9d095720f7695166bc7fb204d1191a2af40338e15f2f9745ce8b21",
@@ -4459,9 +4613,24 @@
 			"script": "arabic",
 			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[150, 315, 450, 419]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				308,
+				487
+			]
 		},
 		"ar/the-person-and-work-of-the-holy-spirit": {
 			"ground": "3844a0168e4c7b85c75f603bed212951fa96dc3ed2e5ba8d9b36acf6c72797a7",
@@ -4470,9 +4639,25 @@
 			"script": "arabic",
 			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
 			"art": true,
-			"scrim": 1,
-			"layout": "diagonal/ochre",
-			"bar": 0
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[179, 301, 421, 391],
+					[160, 402, 440, 492]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				240,
+				555
+			]
 		},
 		"ar/the-secret-of-guidance": {
 			"ground": "2ed8745f175f68bee49d4f200a797d58cb36555e574afee3066ee061c3936144",
@@ -5080,6 +5265,34 @@
 			"middle": [
 				173,
 				399
+			]
+		},
+		"clothed-with-strength-and-dignity": {
+			"ground": "d7840f48419ec29855f5b1705fbc51ad383b5c22f22e3f649cce8b3800d01ff3",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[108, 275, 492, 351],
+					[167, 341, 433, 417],
+					[125, 407, 475, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
 			]
 		},
 		"come-ye-children": {
@@ -6632,9 +6845,24 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[112, 307, 488, 426]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
 		},
 		"es/hurlbuts-life-of-christ": {
 			"ground": "2a0c6de03ae3f08101e7076f6e160ee0d62bb7261450d02694a7ce2f3f4a91e5",
@@ -6675,9 +6903,24 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[99, 314, 501, 419]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				321,
+				474
+			]
 		},
 		"es/john-hyde-a-life-children": {
 			"ground": "d41a2c3b05514d34377b2688ba8d3349a7026851599ab6e3be4c2c1a2ebfd3ed",
@@ -7009,9 +7252,25 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0.11
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[214, 284, 386, 372],
+					[78, 361, 522, 449]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
 		},
 		"es/mary-slessor-a-life-children": {
 			"ground": "cde58c3afbeeddfd19e061014e88116ad61b866c38164b0009352e5e005c2a21",
@@ -7950,9 +8209,25 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
-			"bar": 0
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[159, 321, 441, 403],
+					[178, 391, 422, 473]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				270,
+				525
+			]
 		},
 		"es/talks-to-the-farmer-children": {
 			"ground": "508a85bc8b19c88b040015885be7a896fc803564551f7859909b5ce75930bd10",
@@ -8215,9 +8490,25 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[95, 290, 505, 372],
+					[156, 362, 444, 444]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				295,
+				500
+			]
 		},
 		"es/the-person-and-work-of-the-holy-spirit": {
 			"ground": "e807a73d1ad911ae8ad70695feb2c9ffc7651d91dedd1c73a7d112425c4d4446",
@@ -8226,9 +8517,26 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "diagonal/ochre",
-			"bar": 0
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[156, 293, 444, 369],
+					[137, 359, 463, 435],
+					[114, 424, 486, 500]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				243,
+				552
+			]
 		},
 		"es/the-practice-of-the-presence-of-god-children": {
 			"ground": "8b55809a8f50e10925e58c090d22841d8ac46a538bb9be5baa8b305412128e93",
@@ -8685,6 +8993,33 @@
 			"middle": [
 				286,
 				509
+			]
+		},
+		"feasting-at-the-table": {
+			"ground": "0aa045af83c25fc447f838309ca1195e4827a2475e457c9dc03d66411eb84329",
+			"style": "lettered",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[159, 302, 441, 408],
+					[190, 386, 410, 492]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				481
 			]
 		},
 		"finney-memoirs": {
@@ -10313,9 +10648,24 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[131, 314, 469, 419]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				321,
+				474
+			]
 		},
 		"fr/jesus-himself-2": {
 			"ground": "c383dfce70fc191f8ba4a0a7e1224979cb2e5d73a5714c124f05624c889c4661",
@@ -10324,9 +10674,24 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[61, 314, 539, 419]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				321,
+				474
+			]
 		},
 		"fr/john-hyde-a-life-children": {
 			"ground": "373dd14fe3a562c2df9a14861d9dc195daecd1a1b8332969ba63f0efda33e9da",
@@ -10644,9 +11009,25 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0.11
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[62, 290, 538, 372],
+					[152, 362, 448, 444]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				295,
+				500
+			]
 		},
 		"fr/mary-slessor-a-life-children": {
 			"ground": "71a1cb25630bf357ec5904d146578672310e3774ef677827f980ba3bf581836c",
@@ -11707,9 +12088,25 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
-			"bar": 0
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[164, 326, 436, 402],
+					[109, 391, 491, 467]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				519
+			]
 		},
 		"fr/talks-to-the-farmer-children": {
 			"ground": "c7a64a886612bbc63752808a29793e9a4c059feb4a5c950fee7288f495c9162e",
@@ -12027,9 +12424,25 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[59, 284, 541, 372],
+					[195, 361, 405, 449]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
 		},
 		"fr/the-person-and-work-of-the-holy-spirit": {
 			"ground": "55588bce4a2fc7c2c130a9e7b4fd321b53fe791edfaf991f544a24de8c94d4e2",
@@ -12038,9 +12451,26 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "diagonal/ochre",
-			"bar": 0
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[139, 293, 461, 369],
+					[132, 359, 468, 435],
+					[140, 424, 460, 500]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				243,
+				552
+			]
 		},
 		"fr/the-practice-of-the-presence-of-god": {
 			"ground": "f0b6d6ce741089911a956bf145ebd36f6cc879d82d37c28790a4e2941a69679c",
@@ -12658,6 +13088,32 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"godliness": {
+			"ground": "a591e6a9db70af45344228457a645609721986a8bbeb3851c64403c69b84b017",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[134, 102, 466, 131]
+				],
+				"title": [
+					[114, 342, 486, 452]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				294,
+				501
+			]
+		},
 		"grace-abounding": {
 			"ground": "b9a29734b5a2d4efd0ad4c60c44def4907123af14a7a74c0da07cc4a1c4d718a",
 			"style": "press",
@@ -12736,6 +13192,33 @@
 			"middle": [
 				286,
 				509
+			]
+		},
+		"he-holds-my-tomorrows": {
+			"ground": "bbb16476e010822ce5752094e5fe9d812e5aa93a8fb38fed7a1bf1dddce33b8d",
+			"style": "lettered",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[154, 302, 446, 408],
+					[159, 386, 441, 492]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				481
 			]
 		},
 		"heretics": {
@@ -13015,9 +13498,24 @@
 			"script": "devanagari",
 			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[216, 317, 384, 417]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				308,
+				487
+			]
 		},
 		"hi/jesus-himself-2": {
 			"ground": "d18587e048dface851f965577de75c9f60ddbd541364448486cac1396d08b34b",
@@ -13026,9 +13524,24 @@
 			"script": "devanagari",
 			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[187, 323, 413, 411]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
 		},
 		"hi/key-teachings-of-andrew-murray": {
 			"ground": "52b571b6b56c747efd72008822744bd5b7b621ebc52ce0e73b2edb6ff3abaaed",
@@ -13066,9 +13579,25 @@
 			"script": "devanagari",
 			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0.11
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[139, 292, 461, 361],
+					[189, 373, 411, 442]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				286,
+				509
+			]
 		},
 		"hi/men-and-women-who-gave-everything-2": {
 			"ground": "dc160e297099fb056bc9e44e5e63fa3f5d7fdc3ff9db7d7ef50c4eacac7e121e",
@@ -13479,9 +14008,24 @@
 			"script": "devanagari",
 			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
-			"bar": 0
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[113, 352, 487, 442]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				289,
+				506
+			]
 		},
 		"hi/the-fourfold-gospel": {
 			"ground": "888a8e7124236aa4159b9a7e7cde429eaf84a796378ff3f856c5ea3b2d774388",
@@ -13568,9 +14112,24 @@
 			"script": "devanagari",
 			"fonts": "47eb85659da52b30e4132c5c0566d91ae47b37db6f42b03aae1e08a6a15132cc",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[93, 330, 507, 404]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				323,
+				472
+			]
 		},
 		"hi/the-secret-of-guidance": {
 			"ground": "5962fc9d7b582cc0a99075a8626fc7cc1150417a5b2f701a3bce2c8c6252cce5",
@@ -13908,6 +14467,32 @@
 				515
 			]
 		},
+		"humility-2": {
+			"ground": "a93fddc9141aa93c2176d7edc9cb6c0874a9cc09ee8228a4a5b5630e6ab0a6c9",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[130, 307, 470, 426]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
+		},
 		"hurlbuts-life-of-christ": {
 			"ground": "3ab4867b67657e59874967d4faed29e1ff5cbaac62340537d1e151edd5280d16",
 			"style": "young",
@@ -14018,6 +14603,32 @@
 			"middle": [
 				173,
 				362
+			]
+		},
+		"jesus-himself-2": {
+			"ground": "2cee13a25049b2035c262c0efaaec0ecbb8e30a357b00080e14eab93fe5c235a",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[83, 314, 517, 419]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				321,
+				474
 			]
 		},
 		"john-hyde-a-life": {
@@ -15749,9 +16360,24 @@
 			"script": "korean",
 			"fonts": "0f43f4330a4d16de77031be642cbf9cc7786fa32bff66752c242b3368dd4b680",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[212, 307, 388, 426]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
 		},
 		"ko/jesus-himself-2": {
 			"ground": "d5edd2448772d1707fbb75bebfa89fb78203a89a506a794122822f9133b42e46",
@@ -15760,9 +16386,24 @@
 			"script": "korean",
 			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[69, 307, 531, 426]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
 		},
 		"ko/lord-teach-us-to-pray-2": {
 			"ground": "783e47b80ee6d44ef7b21b23a53a88817e53b4cf7e33200e88a71fa8ab397ca7",
@@ -15771,9 +16412,26 @@
 			"script": "korean",
 			"fonts": "8e69a9d97254088d30d2f6c88178d67db92bcf7eaaa4f775261bd6c7858c349d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0.11
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[120, 245, 480, 333],
+					[121, 322, 479, 410],
+					[128, 400, 472, 488]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				251,
+				544
+			]
 		},
 		"ko/men-and-women-who-gave-everything-2": {
 			"ground": "9153ead741e95a71656d43dff688f7d14af6ee7a38580927227d58d691e48e42",
@@ -16903,9 +17561,24 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[75, 314, 525, 419]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				321,
+				474
+			]
 		},
 		"lg/jesus-himself-2": {
 			"ground": "39373921bb43aa04f551a3779743d1c6bc2e7887c52b3f5e1dc4409da6d2981d",
@@ -16914,9 +17587,24 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[78, 314, 522, 419]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				321,
+				474
+			]
 		},
 		"lg/journal-of-an-expedition-up-the-niger": {
 			"ground": "67ab85819b93860e680824b23777e610ee1928d1bd297f39d51cc726a2e9fba8",
@@ -16958,9 +17646,25 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0.11
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[180, 290, 420, 372],
+					[55, 362, 545, 444]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				295,
+				500
+			]
 		},
 		"lg/men-and-women-who-gave-everything-2": {
 			"ground": "2726f68c10dfcfae70b3eef8237a23595dcd3b0408e85571f2f11329286d75a4",
@@ -17363,9 +18067,25 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
-			"bar": 0
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[159, 321, 441, 403],
+					[128, 391, 472, 473]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				270,
+				525
+			]
 		},
 		"lg/the-christians-secret-of-a-happy-life-4": {
 			"ground": "414336b18085313faee3f50c51424146496f07fd23d8a6a3c7e846364459ff57",
@@ -17503,9 +18223,25 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[93, 290, 507, 372],
+					[113, 362, 487, 444]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				295,
+				500
+			]
 		},
 		"lg/the-person-and-work-of-the-holy-spirit": {
 			"ground": "5da943eecf3d8e73301013c0868c069e327c48410bed6dfeeb050577875e9f73",
@@ -17514,9 +18250,26 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "diagonal/ochre",
-			"bar": 0
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[185, 293, 415, 369],
+					[100, 359, 500, 435],
+					[78, 424, 522, 500]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				243,
+				552
+			]
 		},
 		"lg/the-secret-of-guidance": {
 			"ground": "f6c5053e973bd775263547c50e2b86f28bb5e1a6a3782128ae55ce6efc5e5c80",
@@ -17865,6 +18618,33 @@
 				513
 			]
 		},
+		"lord-teach-us-to-pray-2": {
+			"ground": "fc403523b14e6b4ab8dd850c056604856b8a7bf38feaf549f6b1fc0dbc8817e6",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[138, 284, 462, 372],
+					[159, 361, 441, 449]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
+		},
 		"mary-slessor-a-life": {
 			"ground": "c39a49528400944d85f9ba9fa8dbb997c32bbd7a338b153f09e1f03cb5e1cd23",
 			"style": "house",
@@ -18009,6 +18789,114 @@
 			"middle": [
 				276,
 				519
+			]
+		},
+		"men-and-women-who-gave-everything-2": {
+			"ground": "83da8492ae7f6cf3af37225cdc9f20c86cfb4771a9a38041e0a4129a28a9b93c",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[172, 275, 428, 351],
+					[107, 341, 493, 417],
+					[53, 407, 547, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
+		},
+		"men-of-prayer-2": {
+			"ground": "87727a42d607aab8cdf46ce15f82f49e6108831bfb1b81f832c7d25035c8d61c",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[88, 341, 512, 417]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				346,
+				449
+			]
+		},
+		"men-who-moved-heaven": {
+			"ground": "ad3f60095f1f1327ed2160bc9d30c35fd9ddd87285d034d0ac7ed9abccee0d0d",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[157, 308, 443, 384],
+					[81, 374, 519, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
+		"men-who-tended-the-flock-2": {
+			"ground": "d8fcdfb04b1e3dcd52775d6ad63b7ec4c1200825e76e67d925f1592a5eb5e71e",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[157, 308, 443, 384],
+					[45, 374, 555, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
 			]
 		},
 		"ministry-of-intercession": {
@@ -19388,9 +20276,24 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[94, 307, 506, 426]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
 		},
 		"pt/jesus-himself-2": {
 			"ground": "ceb0f808a8a3b353fe77220c6f0c662bd9ceab75590179d0fad6199dc2fd9105",
@@ -19399,9 +20302,24 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[47, 314, 553, 419]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				321,
+				474
+			]
 		},
 		"pt/john-hyde-a-life-children": {
 			"ground": "61b9c913e7ce657c96c12b72e234b49f9a3f0cd0d415808f5ba2cc26f1a1eca1",
@@ -19499,9 +20417,25 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0.11
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[104, 290, 496, 372],
+					[170, 362, 430, 444]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				295,
+				500
+			]
 		},
 		"pt/mary-slessor-a-life-children": {
 			"ground": "5e99cf2c2900f3ba1213faf7b28c0d509f3df4c252c817f22191681e171e151c",
@@ -20117,9 +21051,25 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
-			"bar": 0
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[87, 321, 513, 403],
+					[147, 391, 453, 473]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				270,
+				525
+			]
 		},
 		"pt/talks-to-the-farmer-children": {
 			"ground": "1109076400b25cdd9e68b17ef205055e02ea9fc9c63895a754cf63a698e14935",
@@ -20371,9 +21321,25 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[130, 284, 470, 372],
+					[165, 361, 435, 449]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
 		},
 		"pt/the-person-and-work-of-the-holy-spirit": {
 			"ground": "64e1a13efcfd7bc334abcfd36b9329e8f6fe158ee8e98b52664f8364a0a50938",
@@ -20382,9 +21348,25 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "diagonal/ochre",
-			"bar": 0
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[92, 326, 508, 402],
+					[75, 391, 525, 467]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				519
+			]
 		},
 		"pt/the-practice-of-the-presence-of-god-children": {
 			"ground": "755e4fc46d876d8354b00cf18f816e2b1d034bc72ebf28dad4d8944fe03a3209",
@@ -20697,6 +21679,32 @@
 				523
 			]
 		},
+		"purity-of-heart": {
+			"ground": "6de19f947013288adb5e5db92256cfe670e7026f3a6b81230629dee5ffa4a735",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[157, 102, 443, 131]
+				],
+				"title": [
+					[52, 348, 548, 445]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				299,
+				496
+			]
+		},
 		"purpose-in-prayer": {
 			"ground": "cf1fe597f3e8784fd5a8e00decb46f098482a184d1fc56cb1d23cedd3e3684ee",
 			"style": "devotional",
@@ -20943,6 +21951,33 @@
 			"middle": [
 				254,
 				541
+			]
+		},
+		"rise-up-men-of-god-2": {
+			"ground": "5d2b3cb56e33955337db3ac664fa78ce9709146deda4a65a17b22605d17c251a",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[177, 308, 423, 384],
+					[131, 374, 469, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
 			]
 		},
 		"rooted-1": {
@@ -21335,6 +22370,32 @@
 				518
 			]
 		},
+		"soar-like-the-eagle-3": {
+			"ground": "9f3e840c1f6b469be3111b3b60836532376e77662b15c0fa8acb288f30d9eecc",
+			"style": "lettered",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[63, 344, 537, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				355,
+				439
+			]
+		},
 		"sons-of-the-king-1": {
 			"ground": "e9ed389d5a9d68f1b85112c478d21182ed8d8fb27266e2992844da36e52a8231",
 			"style": "young",
@@ -21400,6 +22461,32 @@
 			"scrim": 1,
 			"layout": "fade/rust",
 			"bar": 0.11
+		},
+		"stepping-stones-2": {
+			"ground": "76acb680d213fb8990fd6c9696cf2369399b6c465421619b9863d6c67a0ffd5d",
+			"style": "lettered",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[95, 344, 505, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				355,
+				439
+			]
 		},
 		"susanna-wesley-clarke": {
 			"ground": "6951faa8a60fc830729da35de67d522c9460432498c712a38726b10a132065c4",
@@ -22149,9 +23236,24 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[86, 314, 514, 419]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				321,
+				474
+			]
 		},
 		"sw/jesus-himself-2": {
 			"ground": "a2af1077321530afdd70bb825ce1e58de550525ccdd93dd343826ab76a7df1a2",
@@ -22160,9 +23262,24 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[42, 314, 558, 419]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				321,
+				474
+			]
 		},
 		"sw/john-hyde-a-life-children": {
 			"ground": "824982919da0ac8625927d483ccf863dba5e28a6bd7992726d54b44766934b9d",
@@ -22228,9 +23345,26 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0.11
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[201, 245, 399, 333],
+					[141, 322, 459, 410],
+					[182, 400, 418, 488]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				251,
+				544
+			]
 		},
 		"sw/mary-slessor-a-life-children": {
 			"ground": "b3a2bacbc219cb5e89b7a846043e9c7050ecd48b51644d3a27234f66a0bba460",
@@ -22849,9 +23983,25 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
-			"bar": 0
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[110, 321, 490, 403],
+					[132, 391, 468, 473]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				270,
+				525
+			]
 		},
 		"sw/talks-to-the-farmer-children": {
 			"ground": "362dbe72d25bfdf8106ed35e571578f621d26e926d4a9b1b2ee014d6e4ef669a",
@@ -23032,9 +24182,25 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[86, 290, 514, 372],
+					[157, 362, 443, 444]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				295,
+				500
+			]
 		},
 		"sw/the-person-and-work-of-the-holy-spirit": {
 			"ground": "50a12b7e721e694e7fafd724acd5382769653c42097240811d03a85120f6bb50",
@@ -23043,9 +24209,25 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "diagonal/ochre",
-			"bar": 0
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[97, 326, 503, 402],
+					[98, 391, 502, 467]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				519
+			]
 		},
 		"sw/the-practice-of-the-presence-of-god-children": {
 			"ground": "324ba20a9dafa2e09877041ab2f6035c8762c3fb30eba544392e429713979d55",
@@ -23346,6 +24528,33 @@
 			"middle": [
 				238,
 				556
+			]
+		},
+		"talks-to-the-farmer": {
+			"ground": "b6a54e3e197bb700f1287b79df80228007e82cba9cda80c9ab2fb10cff771ff5",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[189, 321, 411, 403],
+					[143, 391, 457, 473]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				270,
+				525
 			]
 		},
 		"tell-me-the-story-1": {
@@ -23801,6 +25010,34 @@
 				482
 			]
 		},
+		"the-christians-secret-of-a-happy-life-4": {
+			"ground": "72d5f8585f6346a1096f1eb7236838f0ce03e62daf09247af192fedb1e31aedd",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.45,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[79, 102, 521, 131]
+				],
+				"title": [
+					[105, 254, 495, 336],
+					[172, 326, 428, 408],
+					[158, 398, 442, 480]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				259,
+				536
+			]
+		},
 		"the-city-of-god": {
 			"ground": "8859e79a789c1ee74b9ea7d93aaf577667c4d4c6004ca02d2a2d73d4335c1cf7",
 			"style": "inscriptional",
@@ -23915,6 +25152,33 @@
 			"middle": [
 				245,
 				550
+			]
+		},
+		"the-god-of-all-comfort": {
+			"ground": "a8eb3acb1a86a3ee7088b36d4fb68ae2e80b432446f6e678971414de0a9c5cb0",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[79, 102, 521, 131]
+				],
+				"title": [
+					[142, 284, 458, 372],
+					[131, 361, 469, 449]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
 			]
 		},
 		"the-gospel-of-healing": {
@@ -24049,6 +25313,32 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"the-key-in-my-hand": {
+			"ground": "4fc3a1d997812a41e23457a73778a1acc60bfb1ea830dc77f7d20d323801d75d",
+			"style": "lettered",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[57, 344, 543, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				355,
+				439
+			]
+		},
 		"the-life-of-trust": {
 			"ground": "89b1f3246a70f85e0a65425b7f842156ca97ed3ab1257e1dadc9ec7c710205b6",
 			"style": "revival",
@@ -24059,6 +25349,33 @@
 			"scrim": 1,
 			"layout": "split/oxblood",
 			"bar": 0
+		},
+		"the-masters-indwelling": {
+			"ground": "2758f94ea09201f1dd1f197da2891e43242defc49a36bc4c69da5e6815bb6f97",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[125, 284, 475, 372],
+					[154, 361, 446, 449]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
 		},
 		"the-normal-christian-life": {
 			"ground": "8bb2cd5bfa77bd37b5401ec9e9a3ae51a47520480d88b0b122813c7ce593a0c7",
@@ -24085,6 +25402,34 @@
 			"middle": [
 				173,
 				335
+			]
+		},
+		"the-person-and-work-of-the-holy-spirit": {
+			"ground": "bea52b2bbcea5b9c340d70987b211df26801f69caf41300118bd403e8a0c95b6",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[152, 293, 448, 369],
+					[143, 359, 457, 435],
+					[111, 424, 489, 500]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				243,
+				552
 			]
 		},
 		"the-practice-of-the-presence-of-god": {
@@ -24309,6 +25654,33 @@
 			"scrim": 1,
 			"layout": "band/oxblood",
 			"bar": 0
+		},
+		"the-unselfishness-of-god": {
+			"ground": "bbd8e249362f95f77cd7dee6f05b8854cde88800e2d2c99a400f882073363bc0",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[79, 102, 521, 131]
+				],
+				"title": [
+					[52, 284, 548, 372],
+					[205, 361, 396, 449]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
 		},
 		"the-way-to-god": {
 			"ground": "b4d69b86a37935f6cd1406238b9a4059058a03a900550f56bb3263413d4b1056",
@@ -24856,9 +26228,24 @@
 			"script": "cyrillic",
 			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[99, 307, 501, 426]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
 		},
 		"uk/jesus-himself-2": {
 			"ground": "710c241435936b4738451cb91d3ac0cbb0311ad64850ba085c24205e1e856d4a",
@@ -24867,9 +26254,24 @@
 			"script": "cyrillic",
 			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[137, 307, 463, 426]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				315,
+				480
+			]
 		},
 		"uk/lord-teach-us-to-pray-2": {
 			"ground": "b0478ab35aa802a0bd01f1e16ea2025076ba0831159ea90e9e508c389803289b",
@@ -24878,9 +26280,25 @@
 			"script": "cyrillic",
 			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0.11
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[103, 290, 497, 372],
+					[124, 362, 476, 444]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				295,
+				500
+			]
 		},
 		"uk/men-and-women-who-gave-everything-2": {
 			"ground": "d7e1f724111b761fef365a4da807cf2d26ab458a0f5aea29b2334234a3e287d8",
@@ -25237,9 +26655,25 @@
 			"script": "cyrillic",
 			"fonts": "e3089deeccedcd1860a807b53254715a8568b71bdd0ee8ee1f72fb01c31a5656",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[127, 284, 473, 372],
+					[151, 361, 449, 449]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
 		},
 		"uk/the-secret-of-guidance": {
 			"ground": "14d0a0bed902850f5227c95108b074283c14e7e29099b858f67675249932de31",
@@ -25862,9 +27296,25 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[150, 268, 450, 373],
+					[171, 360, 429, 465]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				520
+			]
 		},
 		"vi/jesus-himself-2": {
 			"ground": "bec6fd95d0936e2f01d3b4aa16dddca5c850db83d48859c47749c3723f2b993f",
@@ -25873,9 +27323,25 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[130, 284, 470, 372],
+					[209, 361, 391, 449]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
 		},
 		"vi/lord-teach-us-to-pray-2": {
 			"ground": "fc0dfe4a216d1099f804bba9263ea684521a25f16a2e42b655e7b71aa420c2c6",
@@ -25884,9 +27350,26 @@
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "wash/sage",
-			"bar": 0.11
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[149, 102, 451, 131]
+				],
+				"title": [
+					[114, 254, 486, 336],
+					[104, 326, 496, 408],
+					[138, 398, 462, 480]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				259,
+				536
+			]
 		},
 		"vi/men-and-women-who-gave-everything-2": {
 			"ground": "b820c4fe0163bdf93df5abc2ce31cbeb3707cbb37e5e08665583d2d5646e44a1",
@@ -26578,6 +28061,33 @@
 			"middle": [
 				238,
 				556
+			]
+		},
+		"women-who-moved-heaven-2": {
+			"ground": "7127f5d3583158c6969431cd49c8e5815813935f74d798896623009d4c4f8dec",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[107, 308, 493, 384],
+					[81, 374, 519, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
 			]
 		}
 	}

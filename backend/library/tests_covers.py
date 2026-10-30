@@ -527,7 +527,8 @@ class CuratedArtTests(TestCase):
         with patch.dict(CURATED_GROUND, {"a-designed-work": art}, clear=True):
             for slug, shared, keeps in (
                 ("waiting-on-god", True, False),        # CURATED
-                ("humility-2", True, True),             # DERIVED_GROUND
+                ("the-secret-of-guidance", True, True),  # DERIVED_GROUND
+                ("humility-2", True, False),            # ENGLISH_ON_GROUND
                 ("a-designed-work", True, True),        # CURATED_GROUND
                 ("a-work-in-no-tier-at-all", False, False),
             ):
