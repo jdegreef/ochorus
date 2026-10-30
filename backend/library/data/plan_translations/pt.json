@@ -165,5 +165,12 @@
   "note": [
    "Queue job #5698. AI-drafted; awaiting native review. «Junto à Porta Estreita» is the shipped pt title of around-the-wicket-gate. how-to-succeed-in-the-christian-life has no pt edition yet, so seed_plans will not create the (new-to-the-faith, pt) row until it ships; its translator should check this prose against that edition's title."
   ]
+ },
+ "faithful-with-little": {
+  "title": "Fiel no pouco: o dinheiro e o coração",
+  "description": "Três semanas com o que a Bíblia inteira diz sobre o dinheiro, um capítulo curto por dia. Tudo pertence a Deus; o coração por trás da carteira; o trabalho honesto, o planejamento e as dívidas; dar como Deus dá; e um tesouro que dura, com John Wesley, George Müller, Charles Spurgeon e A. W. Tozer ao longo do caminho. Cada dia termina com algo para praticar, e os trinta versículos-chave do livro oferecem um mês de leitura como complemento.",
+  "note": [
+   "The title quotes the shipped pt edition («Fiel no pouco») verbatim; the themes reuse its titles («Tudo pertence a Deus», «O coração por trás da carteira», «Um tesouro que dura»). Written with the plan (2026-10)."
+  ]
  }
 }

@@ -206,5 +206,12 @@
     "note": [
       "Queue job #4866: «Enraizados – Libro 3» completes this plan in es, so the prose ships in the same PR. Book names are the shipped es subtitles' heads: «Plantados», «Seguir a Jesús», «Dar fruto»."
     ]
+  },
+  "faithful-with-little": {
+    "title": "Fiel en lo poco: el dinero y el corazón",
+    "description": "Tres semanas con lo que toda la Biblia dice sobre el dinero, un capítulo breve cada día. Todo le pertenece a Dios; el corazón detrás de la cartera; el trabajo honrado, la planificación y las deudas; dar como Dios da; y un tesoro que perdura, con John Wesley, George Müller, Charles Spurgeon y A. W. Tozer en el camino. Cada día termina con algo para practicar, y los treinta versículos clave del libro ofrecen un mes de lectura como complemento.",
+    "note": [
+      "The title quotes the shipped es edition («Fiel en lo poco») verbatim; the themes reuse its titles («Todo le pertenece a Dios», «El corazón detrás de la cartera», «Un tesoro que perdura»). Written with the plan (2026-10)."
+    ]
   }
 }
