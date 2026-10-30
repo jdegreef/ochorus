@@ -179,6 +179,7 @@ TOPICS = [
         "\u2014 the old paths, still good.",
         [
             "confessions",
+            "apologia-pro-vita-sua",
             "the-consolation-of-philosophy",
             "treatises-of-cyprian",
             "first-epistle-of-clement",
