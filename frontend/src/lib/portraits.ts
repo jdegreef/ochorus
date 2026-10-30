@@ -149,6 +149,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'soonderbai-powar': '50% 0%', // 1900 plate (Dyer, Pandita Ramabai); oval vignette, face at ~33% of a 0.76 plate
 	'susanna-wesley': '50% 21%',
 	'teresa-of-avila': '50% 0%', // cropped to the bust; face at ~25% of a 0.58 plate
+	'tertullian': '50% 0%', // Thevet engraving (1584), cropped to the bust; head at ~22% of a 0.81 plate
 	'thomas-a-kempis': '50% 0%',
 	'thomas-watson': '50% 0%',
 	'timothy-keller': '50% 0%', // speaking pose; face high at ~19% of a 0.73 plate
