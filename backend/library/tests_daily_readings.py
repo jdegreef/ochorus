@@ -13,12 +13,13 @@ import calendar
 import json
 from pathlib import Path
 
+from django.core.cache import cache
 from django.test import SimpleTestCase, TestCase
 
 from . import daily_readings
-from .daily_readings import DATED_BOOKS, month_entries, parse_date
+from .daily_readings import DATED_BOOKS, DatedBook, blocks, month_entries, parse_date
 from .models import Author, Book, Chapter
-from .scripture import annotate_references
+from .quote_blocks import served_block_texts
 
 BOOKS_DIR = Path(__file__).parent / "fixtures" / "content" / "books"
 
@@ -31,11 +32,16 @@ KNOWN_GAPS = {
 }
 
 
-def _month_body(days, marker="h3"):
-    return "".join(
-        f"<{marker}>January {d}</{marker}><p>Text for day {d}.</p><p>More {d}.</p>"
-        for d in days
-    )
+H3 = DatedBook()
+CHEQUE = DATED_BOOKS["cheque-book"]
+
+
+def _month_body(days):
+    return "".join(f"<h3>January {d}</h3><p>Text for day {d}.</p><p>More {d}.</p>" for d in days)
+
+
+def _entries(body, spec=H3):
+    return month_entries(blocks(body), spec)
 
 
 class FixtureGateTests(SimpleTestCase):
@@ -50,9 +56,13 @@ class FixtureGateTests(SimpleTestCase):
                     missing = set()
                     for month in range(1, 13):
                         body = bodies.get(daily_readings.chapter_order(slug, month), "")
-                        days = [e.day for e in month_entries(annotate_references(body), spec.marker)]
+                        els = blocks(body)
+                        # The index is taken on the stored body; the reader counts
+                        # the served one. Annotation must not add or drop a block.
+                        self.assertEqual(len(els), len(served_block_texts(body)), f"month {month}")
+                        days = [e.day for e in month_entries(els, spec)]
                         self.assertEqual(days, sorted(set(days)), f"month {month} out of order")
-                        last = calendar.monthrange(2024, month)[1]
+                        last = calendar.monthrange(daily_readings._LEAP, month)[1]
                         self.assertTrue(days and days[-1] <= last, f"month {month}: {days[-1:]}")
                         missing |= {(month, d) for d in range(1, last + 1)} - {
                             (month, d) for d in days
@@ -62,46 +72,49 @@ class FixtureGateTests(SimpleTestCase):
 
 class ParsingTests(SimpleTestCase):
     def test_entries_run_from_marker_to_marker(self):
-        entries = month_entries(_month_body([1, 2, 3]), "h3")
+        entries = _entries(_month_body([1, 2, 3]))
         self.assertEqual([(e.day, e.start, e.end) for e in entries], [(1, 0, 3), (2, 3, 6), (3, 6, 9)])
         self.assertEqual(entries[0].label, "January 1")
         self.assertEqual(entries[0].excerpt, "Text for day 1.")
 
     def test_a_heading_without_a_number_is_not_a_day(self):
         body = "<h3>Dedication</h3><p>Sweet friends.</p>" + _month_body([1])
-        self.assertEqual([e.day for e in month_entries(body, "h3")], [1])
+        self.assertEqual([e.day for e in _entries(body)], [1])
 
     def test_a_verse_reference_is_not_a_marker(self):
         body = "<h3>January 1</h3><p>x</p><h3>John 3:16</h3><p>y</p>"
-        self.assertEqual([e.end for e in month_entries(body, "h3")], [4])
+        self.assertEqual([e.end for e in _entries(body)], [4])
 
     def test_the_cheque_books_shape(self):
         body = (
             "<p>Jan. 1</p> <h3>THE BIBLE'S FIRST PROMISE</h3> <p>\"And I will put enmity.\" Gen. 3:15</p>"
             "<p>Jan. 2</p> <h3>FROM CONQUEST TO REST</h3> <p>Rest.</p>"
         )
-        first = month_entries(body, "p")[0]
+        first = _entries(body, CHEQUE)[0]
         self.assertEqual((first.label, first.heading), ("Jan. 1", "The Bible's First Promise"))
         self.assertEqual(first.excerpt, '"And I will put enmity." Gen. 3:15')
 
     def test_the_day_page_body_leaves_out_the_heading(self):
         body = "<p>Jan. 1</p> <h3>A PROMISE</h3> <p>Verse.</p><p>Jan. 2</p>"
-        entry = month_entries(body, "p")[0]
-        blocks = daily_readings._blocks(body)
-        self.assertEqual(daily_readings.entry_html(entry, blocks), "<p>Verse.</p>")
+        entry = _entries(body, CHEQUE)[0]
+        self.assertEqual(entry.body_start, 2)
+        self.assertEqual(str(blocks(body)[entry.body_start]), "<p>Verse.</p>")
 
     def test_a_poems_line_breaks_are_spaces(self):
         body = "<h3>January 1</h3><p>Lord, what I once had done<br/>Had I been true</p>"
-        self.assertEqual(month_entries(body, "h3")[0].excerpt, "Lord, what I once had done Had I been true")
+        self.assertEqual(_entries(body)[0].excerpt, "Lord, what I once had done Had I been true")
 
     def test_a_bold_title_line_is_the_heading(self):
         body = "<h3>January 1</h3><p><b>MAKING A FRESH START</b></p><p>We can all start afresh!</p>"
-        entry = month_entries(body, "h3")[0]
-        self.assertEqual((entry.heading, entry.excerpt), ("Making A Fresh Start", "We can all start afresh!"))
+        entry = _entries(body, DATED_BOOKS["our-daily-walk"])[0]
+        self.assertEqual((entry.heading, entry.excerpt), ("Making a Fresh Start", "We can all start afresh!"))
+        # Only where the book sets its titles that way: elsewhere a bold line
+        # is the day's text.
+        self.assertEqual(_entries(body)[0].heading, "")
 
     def test_an_uncased_script_is_left_alone(self):
-        body = "<h3>ጃንዋሪ 1</h3><p><b>እንደ ገና መጀመር</b></p><p>ሁላችንም</p>"
-        self.assertEqual(month_entries(body, "h3")[0].heading, "እንደ ገና መጀመር")
+        body = "<h3>ጃንዋሪ 1</h3><h4>እንደ ገና መጀመር</h4><p>ሁላችንም</p>"
+        self.assertEqual(_entries(body)[0].heading, "እንደ ገና መጀመር")
 
     def test_dates(self):
         self.assertEqual(parse_date("02-29"), (2, 29))
@@ -112,6 +125,8 @@ class ParsingTests(SimpleTestCase):
         self.assertEqual(daily_readings.neighbours(1, 1), ("12-31", "01-02"))
         self.assertEqual(daily_readings.neighbours(2, 28), ("02-27", "02-29"))
         self.assertEqual(daily_readings.neighbours(12, 31), ("12-30", "01-01"))
+        self.assertEqual(daily_readings.neighbours(12, 1), ("11-30", "12-02"))
+        self.assertEqual(daily_readings.neighbours(3, 1), ("02-29", "03-02"))
 
 
 class DailyApiTests(TestCase):
@@ -119,19 +134,22 @@ class DailyApiTests(TestCase):
     SHELF = "/api/library/daily/{}/?language={}"
 
     def setUp(self):
+        # Month indexes are cached by book pk, which a rolled-back test reuses.
+        cache.clear()
+        self.addCleanup(cache.clear)
         self.author = Author.objects.create(slug="a-b-simpson", name="A. B. Simpson")
 
-    def book(self, slug="days-of-heaven-upon-earth", language="en", *, february=range(1, 29)):
+    def book(self, slug="days-of-heaven-upon-earth", language="en", *, missing=frozenset({(2, 29)})):
         book = Book.objects.create(
             author=self.author, slug=slug, language=language, title=f"{slug} {language}"
         )
         for month in range(1, 13):
-            days = february if month == 2 else range(1, calendar.monthrange(2024, month)[1] + 1)
+            last = calendar.monthrange(daily_readings._LEAP, month)[1]
             Chapter.objects.create(
                 book=book,
                 order=daily_readings.chapter_order(slug, month),
                 title=calendar.month_name[month],
-                body_html=_month_body(days),
+                body_html=_month_body(d for d in range(1, last + 1) if (month, d) not in missing),
             )
         return book
 
@@ -154,6 +172,11 @@ class DailyApiTests(TestCase):
         # be the 29th again — a loop.
         self.assertEqual((data["prev"], data["next"]), ("02-28", "03-01"))
 
+    def test_the_walk_back_crosses_the_year(self):
+        self.book(missing={(1, 1), (2, 29)})
+        data = self.client.get(self.DAY.format("days-of-heaven-upon-earth", "01-01", "en")).json()
+        self.assertEqual((data["date"], data["chapter"]), ("12-31", 12))
+
     def test_not_found(self):
         self.book()
         cases = [
@@ -170,7 +193,6 @@ class DailyApiTests(TestCase):
         self.book("morning-by-morning")
         self.book("morning-by-morning", "es")
         data = self.client.get(self.SHELF.format("10-30", "en")).json()
-        self.assertEqual(data["date"], "10-30")
         slugs = sorted(r["book"]["slug"] for r in data["readings"])
         self.assertEqual(slugs, ["days-of-heaven-upon-earth", "morning-by-morning"])
         first = data["readings"][0]

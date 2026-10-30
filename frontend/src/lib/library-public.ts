@@ -1638,7 +1638,7 @@ export const getDailyReading = (slug: string, date: string, language = 'en', f?:
 
 /** Every dated devotional this language publishes, at `date`. */
 export const getDailyShelf = (date: string, language = 'en', f?: Fetch) =>
-	apiFetch<{ date: string; readings: DailyEntry[] }>(
+	apiFetch<{ readings: DailyEntry[] }>(
 		`/api/library/daily/${date}/?language=${encodeURIComponent(language)}`,
 		{},
 		f

@@ -25,10 +25,15 @@
 	const book = $derived(r.book);
 	const lang = $derived(contentLang(book.language));
 	const isToday = $derived(r.requested === data.today);
-	const dayHref = (d: string) => localizeHref(`/today/${book.slug}/?d=${d}`);
-	// The month chapter, opened at this day's date line (the reader's ?p=).
+	const bookHref = $derived(localizeHref(`/books/${book.slug}`));
+	/** The day page for `d`, or for today. */
+	const dayHref = (d?: string) => localizeHref(`/today/${book.slug}/${d ? `?d=${d}` : ''}`);
+	// The month chapter, opened at this day's date line (the reader's ?p=). The
+	// ORIGINAL edition on purpose, not `chapterPath`'s preferred one: the index
+	// is counted on the original body, and a Modern English month's blocks need
+	// not line up with it. Slashed before the query — the bare form is a 301.
 	const inBook = $derived(
-		localizeHref(`${bookChapterPath(book.slug, r.chapter, false)}?p=${r.paragraph}`)
+		localizeHref(`${bookChapterPath(book.slug, r.chapter, false)}/?p=${r.paragraph}`)
 	);
 
 	const crumbs = $derived([
@@ -56,7 +61,7 @@
 	<Breadcrumb items={crumbs} />
 
 	<header class="mt-5 flex items-start gap-5">
-		<a href={localizeHref(`/books/${book.slug}`)} class="w-16 shrink-0" aria-hidden="true" tabindex="-1">
+		<a href={bookHref} class="w-16 shrink-0" aria-hidden="true" tabindex="-1">
 			<BookCover {book} rounded="rounded-sm" />
 		</a>
 		<div class="min-w-0">
@@ -65,7 +70,7 @@
 			</p>
 			<h1 class="text-h1" {lang} dir="auto">{r.label}</h1>
 			<p class="mt-1 text-muted">
-				{#if isToday}<a href={localizeHref(`/books/${book.slug}`)} class="hover:text-accent hover:underline" {lang} dir="auto">{book.title}</a>{' · '}{/if}<a
+				{#if isToday}<a href={bookHref} class="hover:text-accent hover:underline" {lang} dir="auto">{book.title}</a>{' · '}{/if}<a
 					href={localizeHref(authorPath(book.author.slug))}
 					class="hover:text-accent hover:underline">{book.author.name}</a
 				>
@@ -94,7 +99,7 @@
 				{t('daily.prevDay')}
 			</a>
 			{#if !isToday}
-				<a href={localizeHref(`/today/${book.slug}/`)} class="btn btn-primary btn-sm">{t('daily.backToToday')}</a>
+				<a href={dayHref()} class="btn btn-primary btn-sm">{t('daily.backToToday')}</a>
 			{/if}
 			<a href={dayHref(r.next)} class="btn btn-ghost btn-sm" rel="next">
 				{t('daily.nextDay')}

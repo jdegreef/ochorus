@@ -1143,10 +1143,10 @@ class DailyReadingView(PublicContentCacheMixin, APIView):
             raise Http404("Not a dated book")
         language = _language(request)
         book = get_object_or_404(_book_shelf(language), slug=slug)
-        found = daily_readings.find_entry(book, *requested, served=_link_scripture)
+        found = daily_readings.find_entry(book, *requested, daily_readings.content_version())
         if found is None:
             raise Http404("No dated entries in this edition")
-        month, entry, blocks = found
+        month, entry = found
         # From the date ASKED, not the one shown: on 29 February in a 365-day
         # book (shown: the 28th) "next" is 1 March, not the 29th again.
         prev, nxt = daily_readings.neighbours(*requested)
@@ -1155,7 +1155,8 @@ class DailyReadingView(PublicContentCacheMixin, APIView):
             {
                 "book": BookListSerializer(book, context=ctx).data,
                 **daily_readings.entry_payload(month, entry, requested, slug),
-                "html": daily_readings.entry_html(entry, blocks),
+                # Scripture linked on the one entry shown, not its whole month.
+                "html": _link_scripture(daily_readings.entry_html(book, month, entry)),
                 "prev": prev,
                 "next": nxt,
             }
@@ -1168,27 +1169,22 @@ class DailyShelfView(PublicContentCacheMixin, APIView):
     No bodies: a card links into the day page."""
 
     def get(self, request, date):
-        from .scripture import annotate_references
-
         requested = _daily_date(date)
         language = _language(request)
-        books = list(
-            _book_shelf(language).filter(slug__in=list(daily_readings.DATED_BOOKS))
-        )
+        books = list(_book_shelf(language).filter(slug__in=daily_readings.DATED_BOOKS))
         ctx = {"request": request, "language": language, "book_topics": {}}
         cards = BookListSerializer(books, many=True, context=ctx).data
+        version = daily_readings.content_version()
         readings = []
         for book, card in zip(books, cards):
-            # Unlinked annotation: the same top-level blocks the reader counts,
-            # without resolving every reference's scripture page.
-            found = daily_readings.find_entry(book, *requested, served=annotate_references)
+            found = daily_readings.find_entry(book, *requested, version)
             if found is None:
                 continue
-            month, entry, _ = found
+            month, entry = found
             readings.append(
                 {"book": card, **daily_readings.entry_payload(month, entry, requested, book.slug)}
             )
-        return Response({"date": daily_readings.format_date(*requested), "readings": readings})
+        return Response({"readings": readings})
 
 
 #: A ladder rung's name for each audience's edition suffix.

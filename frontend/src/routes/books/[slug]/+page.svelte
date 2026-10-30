@@ -77,7 +77,10 @@
 	let todayLabel = $state('');
 	$effect(() => {
 		if (book.daily)
-			todayLabel = new Date().toLocaleDateString(book.language, { day: 'numeric', month: 'long' });
+			todayLabel = new Date().toLocaleDateString(contentLang(book.language), {
+				day: 'numeric',
+				month: 'long'
+			});
 	});
 	const inEdition = (order: number) => book.chapters.some((c) => c.order === order);
 	const furthest = $derived(record ? furthestOf(record) : null);

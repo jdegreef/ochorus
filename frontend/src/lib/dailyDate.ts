@@ -6,9 +6,11 @@
 // and the Today shelf are client-rendered for the same reason: a prerendered
 // "today" would freeze on the day the site last deployed.
 
+import { localToday } from './streak';
+
 /** `MM-DD` for `d` in the reader's own time zone. */
 export function dateKey(d: Date): string {
-	return `${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+	return localToday(d).slice(5);
 }
 
 /** Whether `s` is a real calendar `MM-DD` (29 February included — the
