@@ -903,6 +903,14 @@ BOOKS: list[BookEntry] = [
     # editor's introduction and his note before VI.iii are left out.
     # Francis de Sales' Introduction to the Devout Life (1609) — the public-
     # domain English translation on CCEL.
+    # Francis de Sales' Treatise on the Love of God (1616) — Henry Benedict
+    # Mackey's translation (1884), public domain, from CCEL, one chapter per
+    # Book. Mackey's introduction is the translator's, so it is left out.
+    BookEntry("treatise-on-the-love-of-god", "Treatise on the Love of God", "francis-de-sales",
+              "ccel", "desales/love", subtitle="Translated by Henry Benedict Mackey",
+              cover_color="#6b3a4a", group_parts=True,
+              skip=("Cover Page", "Frontispiece", "Translator's Introduction",
+                    "Table of Contents")),
     BookEntry("introduction-to-the-devout-life", "Introduction to the Devout Life",
               "francis-de-sales", "ccel", "desales/devout_life",
               cover_color="#4a5d3a"),
@@ -915,6 +923,10 @@ BOOKS: list[BookEntry] = [
     # Jeremy Taylor's Holy Living (1650), public domain, from CCEL. The
     # edition's nineteenth-century "Sketch of the Life and Times" is the
     # editor's, not Taylor's, so it is left out.
+    # Jeremy Taylor's Holy Dying (1651), the companion to Holy Living, public
+    # domain, from CCEL: the dedication and one chapter per Section.
+    BookEntry("holy-dying", "The Rule and Exercises of Holy Dying", "jeremy-taylor",
+              "ccel", "taylor/holy_dying", cover_color="#2f3a4a"),
     BookEntry("holy-living", "The Rule and Exercises of Holy Living", "jeremy-taylor",
               "ccel", "taylor/holy_living", cover_color="#3d4a5c",
               skip=("A Sketch of the Life and Times of Bishop Taylor.",),
@@ -966,6 +978,13 @@ BOOKS: list[BookEntry] = [
     # Basil the Great's On the Holy Spirit (375) — Blomfield Jackson's NPNF
     # translation (1895), public domain, extracted from npnf208 by its stem.
     # Jackson's preface is his own, so it is left out.
+    # Basil the Great's Hexaemeron (c. 370), nine homilies on the six days of
+    # creation — Blomfield Jackson's NPNF translation (1895), public domain,
+    # extracted from npnf208 by its stem. Jackson's introduction is his own.
+    BookEntry("the-hexaemeron", "The Hexaemeron", "basil-of-caesarea",
+              "ccel", "schaff/npnf208", part="viii",
+              subtitle="Translated by Blomfield Jackson", cover_color="#3a5a3a",
+              skip=("Introduction.",)),
     BookEntry("on-the-holy-spirit", "On the Holy Spirit", "basil-of-caesarea",
               "ccel", "schaff/npnf208", part="vii",
               subtitle="Translated by Blomfield Jackson", cover_color="#2e4a5a",
