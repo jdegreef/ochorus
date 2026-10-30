@@ -19002,6 +19002,91 @@ BODY_CORRECTIONS.setdefault("george-muller-of-bristol", {}).setdefault("replacem
     ("for God's intervention, As he came", "for God's intervention. As he came"),
 ])
 
+# Middle-tier sermon batch 1 (Moody, Ryle, Maclaren, M'Cheyne). Keying and OCR
+# slips, each forced by spelling, sense or the verse quoted; most were found by
+# the readers who wrote the study questions. To Whom? also carried a stray
+# footnote ("…Mary's, in the year 1880. It is now published…") mid-sentence. "PSALM xiii. 2" is CCEL's
+# misprint for Psalm 42:2, the verse Maclaren quotes.
+for _slug, _pairs in {
+    "victory": [
+        ('believeth that Jesus is the Son of God I"', 'believeth that Jesus is the Son of God?"'),
+        ('we shall" overcome the world."', 'we shall "overcome the world."'),
+        ('him that is" born of God"?', 'him that is "born of God"?'),
+        ('anything of" overcoming the world"?', 'anything of "overcoming the world"?'),
+        ('the masterly inactivity"', 'the "masterly inactivity"'),
+        ('saving religion Surely', 'saving religion. Surely'),
+        ('never be checked, mall these', 'never be checked,—all these'),
+        ('as a thing impossible, rote all such', 'as a thing impossible, to all such'),
+        ('very various, Not all', 'very various. Not all'),
+        ('overcoming the world?.', 'overcoming the world?'),
+        ('Them are wounds', 'There are wounds'),
+        ('"a morning without clouds" and tears It will', '"a morning without clouds" and tears. It will'),
+        ('something of \'inward and spiritual grace."', 'something of "inward and spiritual grace."'),
+    ],
+    "to-whom": [
+        ('a life begum in the soul', 'a life begun in the soul'),
+        ('cress-examine', 'cross-examine'),
+        ('deeper still And not', 'deeper still. And not'),
+        ('among them I suspect', 'among them. I suspect'),
+        ('Simon .Peter', 'Simon Peter'),
+        ('I cannot nosy speak', 'I cannot now speak'),
+        ("the deep mystery of Mary's, in the year 1880. It is now published with some omissions and alterations eating", 'the deep mystery of eating'),
+    ],
+    "without-clouds": [
+        ('persecution of Saul, retrials from his own servants', 'persecution of Saul, trials from his own servants'),
+        ("David's humbling cotillion", "David's humbling confession"),
+        ('true faith has blight eyes', 'true faith has bright eyes'),
+    ],
+    "thirsting-for-god": [
+        ('for the living God.’—PSALM xiii. 2.', 'for the living God.’—PSALM xlii. 2.'),
+        ('Though it may he quite true', 'Though it may be quite true'),
+    ],
+    "believers-not-ashamed": [
+        ('its marble baths . its theatres', 'its marble baths, its theatres'),
+        ('think ofturning back a river', 'think of turning back a river'),
+        ('cast in your lot mong us', 'cast in your lot among us'),
+        ('what Paul feelings were', "what Paul's feelings were"),
+        ('it seems foolish way to them', 'it seems a foolish way to them'),
+        ('1 do not know a faithful minister', 'I do not know a faithful minister'),
+        ('the unrighteousness man his thoughts', 'the unrighteous man his thoughts'),
+        ('(Isaiah 3 8:17)', '(Isaiah 38:17)'),
+        ("'1 will, be thou clean'", "'I will; be thou clean'"),
+        ("'1 am the way", "'I am the way"),
+        ('call not on they name', 'call not on thy name'),
+        ('O LORD), not unto us', 'O LORD, not unto us'),
+        ('he eaten up of worms', 'he was eaten up of worms'),
+    ],
+    "the-cry-for-revival": [
+        ('<p>The Thing Prayer For</p>', '<p>The Thing Prayed For</p>'),
+        ('so that Christ has often to unbraid them', 'so that Christ has often to upbraid them'),
+        ('needs more grace that at other times', 'needs more grace than at other times'),
+        ('in the time if the latter rain', 'in the time of the latter rain'),
+        ('I will water it ever moment', 'I will water it every moment'),
+        ('sink back again into the grace of a dead soul', 'sink back again into the grave of a dead soul'),
+        ('For whom revival comes:', 'From whom revival comes:'),
+        ('Our vineyard shall ne like', 'Our vineyard shall be like'),
+        ('(Isaiah 41:!7)', '(Isaiah 41:17)'),
+        ('Ministers are naturally hard-hearted', 'Ministers are naturally as hard-hearted'),
+        ('(Mark 6:14), so that Christ', '(Mark 16:14), so that Christ'),
+    ],
+    "christs-peace": [
+        ('I shall not be be moved', 'I shall not be moved'),
+        ('He Is our peace', 'He is our peace'),
+    ],
+    "true-wisdom": [
+        ('too sanctimonious and too religious Yet', 'too sanctimonious and too religious. Yet'),
+    ],
+    "let-us-have-peace": [
+        ('let up have peace', 'let us have peace'),
+    ],
+    "the-saviours-tears-over-the-lost": [
+        ('0 sinner, in the hour of death', 'O sinner, in the hour of death'),
+        ('it will bit like an adder', 'it will bite like an adder'),
+        ('(John 7:3 7)', '(John 7:37)'),
+    ],
+}.items():
+    BODY_CORRECTIONS.setdefault(_slug, {}).setdefault("replacements", []).extend(_pairs)
+
 # New-preacher sermon batch 1 (Davies, Chalmers, Bonar from archive.org OCR;
 # see library.archive_ocr). What the scan cross-check left: misreads the second
 # scan shared or could not outvote, words split at a column edge, false

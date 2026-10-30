@@ -1557,6 +1557,73 @@ SERMONS: list[SermonEntry] = [
         "ccel",
         _CCEL + "sermons07/sermons07.i.html",
     ),
+    # Middle tier, batch 1 — three each for M'Cheyne, Ryle, Maclaren and Moody,
+    # checked against their books for overlap (Maclaren has a fourth). Moody's two
+    # are from The Overcoming Life (PG 33015); two more were read and dropped —
+    # Wondrous Love's "The Blood" for the Jews' "honour of killing the Christian's
+    # God", and "Results of True Repentance" for a quoted illustration that makes
+    # Black skin the picture of sin; Ryle's are
+    # sermons he revised for The Upper Room (1888) — not "Let Any Man Come", which
+    # is Holiness ch. 18 again, nor "The Good Way" (a quarter is Old Paths ch. 15);
+    # M'Cheyne's are SermonIndex transcriptions of the 1840s printed text
+    # (KJV-dense, unlike its modernised Davies and Winslow pages).
+    SermonEntry(
+        "true-wisdom", "True Wisdom", "dwight-l-moody", "gutenberg", "33015",
+        section="TRUE WISDOM.",
+        scripture_ref="Daniel 12:3",
+    ),
+    SermonEntry(
+        "humility", "Humility", "dwight-l-moody", "gutenberg", "33015",
+        section="HUMILITY.",
+        scripture_ref="Matthew 11:29",
+    ),
+    SermonEntry(
+        "victory", "Victory", "j-c-ryle", "ccel",
+        "https://ccel.org/ccel/ryle/upper_room/upper_room.x.html",
+    ),
+    SermonEntry(
+        "to-whom", "To Whom?", "j-c-ryle", "ccel",
+        "https://ccel.org/ccel/ryle/upper_room/upper_room.xiii.html",
+    ),
+    SermonEntry(
+        "without-clouds", "Without Clouds", "j-c-ryle", "ccel",
+        "https://ccel.org/ccel/ryle/upper_room/upper_room.xvi.html",
+        scripture_ref="2 Samuel 23:4-5",
+    ),
+    SermonEntry(
+        "the-burden-bearing-god", "The Burden-Bearing God", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.iii.xi.html", scripture_ref="Psalm 68:19",
+    ),
+    SermonEntry(
+        "thirsting-for-god", "Thirsting for God", "alexander-maclaren", "ccel",
+        _MACLAREN + "psalms/psalms.ii.xxxii.html",
+        scripture_ref="Psalm 42:2",
+    ),
+    SermonEntry(
+        "let-us-have-peace", "Let Us Have Peace", "alexander-maclaren", "ccel",
+        _MACLAREN + "rom_cor/rom_cor.ii.ix.html",
+        scripture_ref="Romans 5:1",
+    ),
+    SermonEntry(
+        "christs-peace", "Christ's Peace", "alexander-maclaren", "ccel",
+        _MACLAREN + "john1/john1.ii.lxxvi.html", scripture_ref="John 14:27",
+    ),
+    SermonEntry(
+        "believers-not-ashamed", "Believers Not Ashamed", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/believers-not-ashamed/",
+        scripture_ref="Romans 1:15-17",
+    ),
+    SermonEntry(
+        "the-saviours-tears-over-the-lost", "The Saviour's Tears over the Lost",
+        "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/the-saviours-tears-over-the-lost/",
+        scripture_ref="Luke 19:41-42",
+    ),
+    SermonEntry(
+        "the-cry-for-revival", "The Cry for Revival", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/the-cry-for-revival/",
+        scripture_ref="Psalm 85:6",
+    ),
     # New preachers, batch 1. F. W. Robertson from Gutenberg; Samuel Davies,
     # Thomas Chalmers and Horatius Bonar from archive.org scans of the printed
     # editions, since the only clean-looking copies online are modernised

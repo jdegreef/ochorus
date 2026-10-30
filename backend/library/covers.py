@@ -56,7 +56,7 @@ from pathlib import Path
 # tables with no Django import between them and this, which is what lets the
 # predicates live beside `art_url` rather than in a command.
 from library.curated_art import CURATED, CURATED_GROUND, ORIGINAL_GROUND
-from library.designed_covers import DERIVED_GROUND
+from library.designed_covers import DERIVED_GROUND, ENGLISH_ON_GROUND
 from library.localization import is_english_edition
 
 # A plain module, imported for exactly that reason — see its docstring.
@@ -131,9 +131,11 @@ def keeps_english_designed(slug: str) -> bool:
 
     ``CURATED`` and ``ORIGINAL_GROUND`` are the tiers this is false for: those
     works have no designed cover, so every one of their languages — English
-    included — takes the shared picture.
+    included — takes the shared picture. So is ``ENGLISH_ON_GROUND``: designed
+    covers that survive only at thumbnail size, whose English edition wears
+    the ground with live type rather than soft baked-in words.
     """
-    return slug in DERIVED_GROUND or slug in CURATED_GROUND
+    return (slug in DERIVED_GROUND or slug in CURATED_GROUND) and slug not in ENGLISH_ON_GROUND
 
 
 def wears_designed_english(slug: str, language: str) -> bool:
@@ -453,6 +455,20 @@ TYPE_TOP = frozenset({
     "key-teachings-of-george-macdonald",
     "key-teachings-of-g-k-chesterton",
     "key-teachings-of-elisabeth-elliot",
+    # Calm sky over a central subject (2026-10-29): see coverLayouts.TYPE_TOP.
+    "christ-the-healer",
+    "evangelization-of-the-world",
+    "ever-increasing-faith",
+    "first-principles-of-the-reformation",
+    "holiness",
+    "interior-castle",
+    "large-catechism",
+    "old-paths",
+    "practical-religion",
+    "religious-experience-and-journal",
+    "the-normal-christian-life",
+    "the-pursuit-of-god",
+    "things-as-they-are",
 })
 
 #: The brandmark's own columns (`BookCover`'s centred lockup). Only a TYPE_TOP

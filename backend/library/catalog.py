@@ -767,6 +767,13 @@ BOOKS: list[BookEntry] = [
     BookEntry("plain-account-christian-perfection", "A Plain Account of Christian Perfection",
               "john-wesley", "ccel", "wesley/perfection",
               subtitle="As Believed and Taught by John Wesley", cover_color="#58786a"),
+    # Wesley's Journal in Percy Livingstone Parker's abridgment (New York:
+    # Revell, 1903), from CCEL (part="vi": Parker's note, the introduction,
+    # appreciation and sketch are left out). group_parts: one chapter per
+    # Parker chapter, his headings as subheads.
+    BookEntry("the-journal-of-john-wesley", "The Journal of John Wesley", "john-wesley",
+              "ccel", "wesley/journal", part="vi", group_parts=True,
+              subtitle="Abridged by Percy Livingstone Parker", cover_color="#3b4a3a"),
     BookEntry("sermons-on-several-occasions", "Sermons on Several Occasions", "john-wesley",
               "ccel", "wesley/sermons",
               subtitle="Selected Standard Sermons", cover_color="#7a5c48"),
@@ -794,6 +801,16 @@ BOOKS: list[BookEntry] = [
               "ccel", "kempis/imitation",
               subtitle="Four Books of Counsel for the Inner Life",
               cover_color="#3d3a6e"),
+    # The Grace and Duty of Being Spiritually Minded (1681), Goold's Works
+    # vol. 7, from CCEL. Goold's prefatory note and analysis are left out; the
+    # fixture gives each chapter a short title and sets Owen's full heading in
+    # italics as its argument.
+    BookEntry("the-grace-and-duty-of-being-spiritually-minded",
+              "The Grace and Duty of Being Spiritually Minded", "john-owen",
+              "ccel", "owen/spirituallyminded",
+              subtitle="Declared and Practically Improved",
+              cover_color="#2f4a4a",
+              skip=("Title page.", "Prefatory note.", "Analysis.", "Title.")),
     # The City of God — Marcus Dods's translation (NPNF first series, vol. 2,
     # 1887), public domain, extracted from npnf102 by its stem. group_parts:
     # each of the twenty-two Books is a chapter, its short chapters subheads.
@@ -822,6 +839,16 @@ BOOKS: list[BookEntry] = [
     BookEntry("enchiridion", "The Enchiridion", "augustine-of-hippo",
               "ccel", "schaff/npnf103", part="iv.ii",
               subtitle="On Faith, Hope, and Love", cover_color="#4a5d4a"),
+    # Chrysostom's ninety Homilies on Matthew, in the Oxford Library of the
+    # Fathers translation revised by M. B. Riddle (NPNF first series, vol. 10,
+    # 1888), from npnf110 by its stem. The editors' preface and introductory
+    # essay are left out; the fixture titles each homily by its text.
+    BookEntry("homilies-on-matthew", "Homilies on Matthew", "john-chrysostom",
+              "ccel", "schaff/npnf110", part="iii",
+              subtitle="Homilies on the Gospel of St. Matthew", cover_color="#4e3d2c",
+              skip=("Title Page.", "Preface to the Oxford Edition.", "Introductory Essay.",
+                    "Introduction.", "The Place of Chrysostom in the History of Exegesis.",
+                    "Extent and Character of Chrysostom's Exegetical Labors.")),
     # On the Trinity, in Arthur West Haddan's translation (1873, NPNF), from
     # Schaff's npnf103 volume (part="iv.i"). One chapter per book; Shedd's
     # introductory essay and Haddan's preface are the editors', not Augustine's.
@@ -850,12 +877,30 @@ BOOKS: list[BookEntry] = [
               "ccel", "schaff/npnf109", part="iv",
               subtitle="Six Books on the Pastoral Office",
               cover_color="#6b4a2f"),
+    # Chrysostom's Homilies on Romans, in the Oxford Library of the Fathers
+    # translation revised by George B. Stevens (NPNF first series, vol. 11,
+    # 1889), extracted from npnf111 by its stem. The editor's preface is left
+    # out; the fixture writes each homily's text reference out in full.
+    BookEntry("homilies-on-romans", "Homilies on Romans", "john-chrysostom",
+              "ccel", "schaff/npnf111", part="vii",
+              subtitle="Homilies on the Epistle of St. Paul to the Romans",
+              cover_color="#5a4a2e",
+              skip=("Preface to Homilies on Romans.",)),
     # summary_titles: Schaff heads each section with a precis of its argument
     # rather than a title — 57 of them here, averaging 232 characters.
     BookEntry("on-the-incarnation", "On the Incarnation", "athanasius-of-alexandria",
               "ccel", "schaff/npnf204", part="vii.ii",
               subtitle="Translated by Archibald Robertson",
               cover_color="#2f5d62", summary_titles=True),
+    # Athanasius's four Discourses Against the Arians in Newman's translation,
+    # revised by Archibald Robertson (NPNF second series, vol. 4, 1892), from
+    # npnf204 by its stem. The editor's introduction and excursuses are left
+    # out; the fixture titles each chapter by its Discourse and its argument.
+    BookEntry("against-the-arians", "Against the Arians", "athanasius-of-alexandria",
+              "ccel", "schaff/npnf204", part="xxi.ii",
+              subtitle="Four Discourses", cover_color="#3e4a5e",
+              skip=("Excursus B. On §22 (Note 3).",
+                    "Excursus C. Introductory to the Fourth Discourse against the Arians.")),
     BookEntry("life-of-antony", "The Life of Antony", "athanasius-of-alexandria",
               "ccel", "schaff/npnf204", part="xvi.ii",
               subtitle="The Life That Began Christian Monasticism",
@@ -925,6 +970,14 @@ BOOKS: list[BookEntry] = [
               "john-owen", "ccel", "owen/mort",
               subtitle="On Killing Sin by the Spirit",
               cover_color="#5b2333"),
+    # Of Temptation (1658), Goold's Works vol. 6, from CCEL. Goold's prefatory
+    # note is left out; CCEL titles the chapters "Chapter I." only, so the
+    # fixture gives each a title from its own argument.
+    BookEntry("of-temptation", "Of Temptation", "john-owen",
+              "ccel", "owen/temptation",
+              subtitle="The Nature and Power of It; the Danger of Entering into It; and the Means of Preventing That Danger",
+              cover_color="#4a2f3a",
+              skip=("Title page.", "Prefatory note.")),
     # Of Communion with God the Father, Son, and Holy Ghost (1657), in Goold's
     # edition of the Works (CCEL owen/communion). part="i" leaves out the
     # separate Vindication that follows it; Goold's prefatory note and analysis
@@ -935,6 +988,14 @@ BOOKS: list[BookEntry] = [
               cover_color="#2f4f6f",
               skip=("Title Page.", "Prefatory note.", "Analysis.", "Title."),
               keep=("i.vii.iii",)),
+    # Indwelling Sin (1667), Goold's Works vol. 6, from CCEL. Goold's prefatory
+    # note is left out; the fixture gives each chapter a short title and sets
+    # Owen's full heading in italics as its argument.
+    BookEntry("indwelling-sin-in-believers", "Indwelling Sin in Believers", "john-owen",
+              "ccel", "owen/indwellingsin",
+              subtitle="The Nature, Power, Deceit, and Prevalency of the Remainders of Indwelling Sin",
+              cover_color="#3e3a2a",
+              skip=("Title page.", "Prefatory note.", "Title.")),
     # Meditations and Discourses on the Glory of Christ (1684) and the second
     # part published after Owen's death (1691), in Goold's edition of the Works
     # (CCEL owen/glory). Goold's prefatory note and the 1691 publisher's
@@ -944,6 +1005,14 @@ BOOKS: list[BookEntry] = [
               subtitle="Meditations and Discourses on the Glory of Christ",
               cover_color="#6b4e1f",
               skip=("Title page.", "Prefatory note.", "Original preface.")),
+    # Goold's edition (Works, vol. 10, 1852). His prefatory note and analysis
+    # are left out; the fixture groups the chapters by Owen's four books.
+    BookEntry("the-death-of-death-in-the-death-of-christ",
+              "The Death of Death in the Death of Christ", "john-owen",
+              "ccel", "owen/deathofdeath",
+              subtitle="A Treatise of the Redemption and Reconciliation That Is in the Blood of Christ",
+              cover_color="#5b2a2a",
+              skip=("Title page.", "Prefatory note.", "Analysis.", "Title.")),
     # Two early African-American spiritual autobiographies, keyed (not OCR'd) by
     # UNC's Documenting the American South. Both first published pre-1929, US
     # public domain. See `import_docsouth`. Amanda Smith's per-chapter titles are
@@ -1001,6 +1070,13 @@ BOOKS: list[BookEntry] = [
     BookEntry("holiness", "Holiness", "j-c-ryle", "ccel", "ryle/holiness",
               subtitle="Its Nature, Hindrances, Difficulties, and Roots",
               cover_color="#6b2d3a"),
+    # The first volume of Ryle's Expository Thoughts on the Gospels (1856),
+    # from CCEL. group_parts: one chapter per chapter of Matthew, its passages
+    # as subheads.
+    BookEntry("expository-thoughts-on-matthew", "Expository Thoughts on Matthew", "j-c-ryle",
+              "ccel", "ryle/matthew", group_parts=True,
+              subtitle="For Family and Private Use", cover_color="#4b3a2b",
+              skip=("Title Page",)),
     # Thomas Watson's A Body of Divinity (1692), sermons on the Westminster
     # Shorter Catechism, with the memoir C. H. Spurgeon compiled for his
     # edition (CCEL). Its companions, The Ten Commandments and The Lord's
@@ -1054,6 +1130,14 @@ BOOKS: list[BookEntry] = [
                     "Table II. Of Hebrew Words Explained.",
                     "Table III. Of Greek Words Explained.",
                     "General Index of Chapters.")),
+    # Calvin's Commentary on Romans in John Owen's translation (Calvin
+    # Translation Society, 1849), from CCEL. group_parts: one chapter per
+    # chapter of Romans, its passages as subheads. Owen's preface and his new
+    # translation of the epistle are the translator's, not Calvin's.
+    BookEntry("commentary-on-romans", "Commentary on Romans", "john-calvin",
+              "ccel", "calvin/calcom38", group_parts=True,
+              subtitle="Translated by John Owen", cover_color="#4a3b2a",
+              skip=("Translator's Preface", "Translation of Romans")),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an

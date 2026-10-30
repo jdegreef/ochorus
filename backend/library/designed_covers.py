@@ -585,6 +585,53 @@ DESIGNED_BY_SLUG: dict[str, str] = {
 }
 
 
+#: Works whose ENGLISH edition wears its derived ground too, with its title set
+#: by ``BookCover``, instead of the designed cover (2026-10-29, at the founder's
+#: request to redo the low-resolution designed covers).
+#:
+#: These designed covers survive only at the thumbnail size the old WordPress
+#: site served (424x600 or 443x668), and no larger original exists anywhere the
+#: repo can reach: ochorus.com is this app now, and the history holds only the
+#: machine twins. At that size the words baked into the pixels are what read
+#: soft, on a phone first. The translations already wore the same photograph
+#: with live type, which is sharp at any size, so English now does too. The
+#: designed file is NOT retired: it stays registered and frozen above, as the
+#: source ``build_derived_grounds`` cuts the ground from, and replacing it with
+#: a real high-resolution original later is still the two-line diff (and
+#: dropping the work from this set puts English back on it).
+#:
+#: Left on their designed covers: ``baptism-with-the-holy-spirit`` and
+#: ``prayer-the-pulse-of-life`` (their designed file IS the English twin path,
+#: ``/covers/<slug>.png``), ``the-inner-chamber`` (no croppable picture; its
+#: ground is a museum painting, which would change the book, not sharpen it),
+#: ``the-secret-of-guidance`` (568x852, effectively full size), and the ten
+#: young-reader covers, which are 600x800 already.
+ENGLISH_ON_GROUND: frozenset[str] = frozenset({
+    "clothed-with-strength-and-dignity",
+    "feasting-at-the-table",
+    "godliness",
+    "he-holds-my-tomorrows",
+    "humility-2",
+    "jesus-himself-2",
+    "lord-teach-us-to-pray-2",
+    "men-and-women-who-gave-everything-2",
+    "men-of-prayer-2",
+    "men-who-moved-heaven",
+    "men-who-tended-the-flock-2",
+    "purity-of-heart",
+    "rise-up-men-of-god-2",
+    "soar-like-the-eagle-3",
+    "stepping-stones-2",
+    "talks-to-the-farmer",
+    "the-christians-secret-of-a-happy-life-4",
+    "the-god-of-all-comfort",
+    "the-key-in-my-hand",
+    "the-masters-indwelling",
+    "the-person-and-work-of-the-holy-spirit",
+    "the-unselfishness-of-god",
+    "women-who-moved-heaven-2",
+})
+
 def is_designed(cover_url: str) -> bool:
     """Is this URL a registered hand-made cover — one no tool may rewrite?
 

@@ -23,6 +23,9 @@
   "against-eutropius": {
    "lost-paragraphing": 1
   },
+  "against-the-arians": {
+   "lost-paragraphing": 21
+  },
   "all-things-for-good": {
    "orphan-close-quote": 2,
    "space-before-punct": 2
@@ -59,6 +62,9 @@
   "christian-charity": {
    "orphan-close-quote": 1
   },
+  "christs-peace": {
+   "word-fusion": 1
+  },
   "come-thou-into-the-ark": {
    "space-before-punct": 2
   },
@@ -69,6 +75,9 @@
   },
   "comfort-for-the-desponding": {
    "orphan-close-quote": 2
+  },
+  "commentary-on-romans": {
+   "orphan-close-quote": 1
   },
   "communion-with-god": {
    "orphan-close-quote": 1
@@ -92,6 +101,9 @@
   },
   "ever-increasing-faith": {
    "orphan-close-quote": 2
+  },
+  "expository-thoughts-on-matthew": {
+   "orphan-close-quote": 13
   },
   "faith-and-assurance": {
    "space-before-punct": 2
@@ -138,6 +150,14 @@
    "space-before-punct": 4,
    "word-fusion": 1
   },
+  "homilies-on-matthew": {
+   "orphan-close-quote": 11,
+   "word-fusion": 1
+  },
+  "homilies-on-romans": {
+   "lost-paragraphing": 3,
+   "orphan-close-quote": 3
+  },
   "homily-on-the-paralytic": {
    "lost-paragraphing": 1
   },
@@ -154,6 +174,9 @@
   },
   "if": {
    "space-before-punct": 5
+  },
+  "indwelling-sin-in-believers": {
+   "lost-paragraphing": 1
   },
   "institutes-of-the-christian-religion": {
    "orphan-close-quote": 1,
@@ -360,6 +383,9 @@
   "the-boundless-sufficiency": {
    "space-before-punct": 2
   },
+  "the-burden-bearing-god": {
+   "space-before-punct": 4
+  },
   "the-christian-pilgrim": {
    "orphan-close-quote": 2
   },
@@ -379,6 +405,10 @@
   },
   "the-cloud-of-witnesses": {
    "space-before-punct": 12
+  },
+  "the-death-of-death-in-the-death-of-christ": {
+   "lost-paragraphing": 2,
+   "word-fusion": 1
   },
   "the-dying-thief": {
    "word-fusion": 1
@@ -408,6 +438,11 @@
    "orphan-close-quote": 29,
    "run-together": 4,
    "space-before-punct": 1
+  },
+  "the-journal-of-john-wesley": {
+   "hyphen-space": 1,
+   "orphan-close-quote": 2,
+   "word-fusion": 1
   },
   "the-joy-of-the-lord": {
    "space-before-punct": 1

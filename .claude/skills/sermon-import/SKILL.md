@@ -49,6 +49,45 @@ sermons, batch 2 (18 → 31)"). Parallel sessions can each take an author.
           if r['model'] == 'library.chapter': print(f, '|', r['fields']['title'])
   ```
 
+- **Check the TEXT, not just the titles.** Authors reworked sermons into
+  books under new titles: Ryle's *Let Any Man Come* (The Upper Room) is
+  *Holiness* ch. 18 word for word, and a quarter of *The Good Way* is *Old
+  Paths* ch. 15. Index every 10-word run of the English library (books and
+  sermons) and measure each candidate against it; anything over a few percent
+  is the same text. Shared Scripture alone scores 0–2%.
+
+  ```python
+  # in a Django shell over the scratch DB: share of each new sermon's 10-grams
+  # that already occur somewhere in the English fixture
+  import json, glob, re, collections
+  from library.models import Sermon
+  N = 10
+  toks = lambda t: re.findall(r"[a-z]+", t.lower())
+  idx = collections.defaultdict(set)
+  for f in glob.glob('library/fixtures/content/books/*.en.json') + glob.glob('library/fixtures/content/sermons/*.en.json'):
+      for r in json.load(open(f)):
+          w = toks(r['fields'].get('body_text') or '')
+          for i in range(len(w) - N):
+              idx[' '.join(w[i:i + N])].add(f.split('/')[-1] + '#' + str(r['fields'].get('order', '')))
+  for s in Sermon.objects.all():
+      w = toks(s.body_text); grams = [' '.join(w[i:i + N]) for i in range(0, len(w) - N, N)]
+      hits = collections.Counter(l for g in grams for l in idx.get(g, ()) if not l.startswith(s.slug + '.'))
+      print(s.slug, [(l, round(100 * n / len(grams))) for l, n in hits.most_common(2)])
+  ```
+
+### SermonIndex: some authors' texts are modernised rewrites
+
+SermonIndex serves the printed text for some speakers (M'Cheyne, Simpson) and
+gracegems-style modernisations for others. Its Samuel Davies and Octavius
+Winslow pages score ~0 on the archaism density below, and Davies's *Sinners
+Entreated* opens on the NIV ("We are therefore Christ's ambassadors"), a
+copyrighted translation the preacher never used. Screen every SermonIndex
+speaker with the same density check before trusting it. Its Bonar pages are
+mostly short devotional excerpts (≤1,200 words). M'Cheyne lives at
+`/speakers/robert-murray-mcheyne/…`; the `m%27cheyne` URLs only redirect.
+SermonIndex also drops the sermon's Bible text, so set `scripture_ref` in the
+catalog.
+
 ### CCEL Spurgeon: take the printed text, not the modernised one
 
 CCEL's 63 Spurgeon volumes (`sermons01`…`sermons63`, ~3,540 sermons; each has a
@@ -82,6 +121,17 @@ Scratch SQLite DB (no Postgres needed):
 ```bash
 cd backend && uv sync && export DJANGO_DEBUG=true
 uv run python manage.py migrate -v0
+```
+
+The importer creates a missing author from `SERMON_AUTHORS`, which only lists
+three, so load the real author rows into the scratch DB first:
+
+```python
+import json
+from library.models import Author
+for r in json.load(open('library/fixtures/content/authors.json')):
+    f = r['fields']
+    Author.objects.get_or_create(slug=f['slug'], defaults={'name': f['name'], 'bio': f.get('bio', '')})
 ```
 
 Add `SermonEntry` rows at the END of `SERMONS` (`sort_order` is the list index)
@@ -194,7 +244,10 @@ The audit only sees some defect classes. Run all four passes:
    Mentone and bracketed notes all sit there.
 
 Repairs go in `BODY_CORRECTIONS` as `(old, new)` pairs (one block per batch at
-the end of `corrections.py`), each **unique in the body and idempotent** — the
+the end of `corrections.py`, a `{slug: [pairs]}` dict looped into
+`BODY_CORRECTIONS`). When you add a second round to that dict, merge it into the
+existing slug's list: a repeated key silently drops the first list (ruff
+`F601` catches it). Each pair must be **unique in the body and idempotent** — the
 new text must not contain the old. Match the stored HTML, not the plain text:
 `he feel himself <i>utterly` needed its tag. Re-import, rewrite the fixtures,
 and confirm every pair applied (`old not in body and new in body`) and
@@ -203,6 +256,13 @@ spellings ("bemean", "to-morrow", "Saviour") stay, and so does the preacher's
 own slip (Spurgeon names Elijah's servant "Gehazi") — the text is his. A slip
 whose intended word isn't certain ("and shell on the strength of that promise")
 is left too, rather than guessed.
+
+Have the question-writers (step 4) also report OCR slips, demeaning passages
+and occasion-bound endings: reading every word, they find what the scans
+miss. The middle-tier batch took ~45 slips from them, and two Moody sermons were dropped on
+their reports (*The Blood*: the Jews' "honour of killing the Christian's God";
+*Results of True Repentance*: a quoted illustration making Black skin the
+picture of sin).
 
 ## 4. Summary + study questions ([[sermon-questions]])
 
@@ -258,3 +318,6 @@ and the repairs. Run `/simplify` and `/code-review` if the importer changed.
 
 - 2026-10-28 — Spurgeon batch 2: 13 sermons from the printed 1855–1871 text
   (18 → 31). Added the trailer strip to `import_sermons.extract`.
+- 2026-10-29 — Middle tier batch 1: M'Cheyne ×3 (SermonIndex), Ryle ×3 (CCEL
+  *The Upper Room*), Maclaren ×4 (CCEL *Expositions*), Moody ×2 (PG 33015).
+  264 → 276.

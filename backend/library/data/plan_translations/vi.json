@@ -82,5 +82,19 @@
   "note": [
    "Two-book plan backed by the vi editions of around-the-wicket-gate («Quanh Cửa Hẹp», new this batch) and men-and-women-who-gave-everything-2 («Những Người Nam Và Nữ Đã Hiến Dâng Tất Cả»). Ships with the Level 1 books batch 2 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card echoes the second title in lower case (“những người nam và nữ đã hiến dâng tất cả”) rather than quoting it; “teens” = thiếu niên, as the vi “(Cho thiếu niên)” edition suffix has it."
   ]
+ },
+ "praying-men": {
+  "title": "Những người cầu nguyện: Trường cầu nguyện cùng E. M. Bounds",
+  "description": "Bảy tuần trong lò lửa của sự cầu thay cùng vị sứ đồ vĩ đại của sự cầu nguyện. E. M. Bounds bắt đầu từ chính nhu cầu quyền năng của nhà giảng đạo, rồi mở ra mục đích khiến sự cầu nguyện được đắc thắng, và sự cần thiết khiến cầu nguyện trở thành công việc trọn vẹn của đời sống Cơ Đốc nhân.",
+  "note": [
+   "Three-book plan backed by the vi editions of power-through-prayer («Quyền Năng Bởi Sự Cầu Nguyện»), purpose-in-prayer («Mục Đích Trong Sự Cầu Nguyện», new this batch) and necessity-of-prayer («Sự Cần Thiết Của Sự Cầu Nguyện»). Ships with the Level 1 books batch 3 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card quotes no title verbatim but echoes all three in lower case (“quyền năng”, “mục đích”, “sự cần thiết”); “preacher” = nhà giảng đạo and “prevail” = đắc thắng, the words the vi Bounds editions use. “School of prayer” = trường cầu nguyện, as in the shipped plan «31 ngày trong trường cầu nguyện»; sentence case as the shipped vi plan titles are."
+  ]
+ },
+ "the-puritan-heart": {
+  "title": "Tấm lòng Thanh giáo",
+  "description": "Tám tuần cùng ba bậc thầy của đời sống bề trong. Richard Sibbes băng bó cây sậy bị giập, John Owen tranh chiến với tội lỗi vẫn còn ở trong lòng, và Thomas Watson đặt trọn cuộc tranh chiến ấy trên lời hứa rằng mọi sự hiệp lại làm ích.",
+  "note": [
+   "Three-book plan backed by the vi editions of the-bruised-reed («Cây Sậy Bị Giập»), mortification-of-sin («Về Việc Làm Chết Tội Lỗi Trong Người Tin») and all-things-for-good («Mọi Sự Hiệp Lại Làm Ích»), all new this batch. Ships with the Level 1 books batch 3 (vi), so seed_plans does not publish an English-titled card in Vietnamese. AI-drafted; awaiting native review. The card echoes the Sibbes and Watson titles in lower case (“cây sậy bị giập”, “mọi sự hiệp lại làm ích”, Cadman's Ê-sai 42:3 and Rô-ma 8:28 wording as those editions use it); Owen's title is paraphrased (“tranh chiến với tội lỗi vẫn còn ở trong lòng”) rather than quoted. Puritan = Thanh giáo per the vi conventions; “inner life” = đời sống bề trong."
+  ]
  }
 }
