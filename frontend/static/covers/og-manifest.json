@@ -2641,6 +2641,17 @@
 			"layout": "rail/teal",
 			"bar": 0
 		},
+		"am/sermons-on-several-occasions": {
+			"ground": "53d0fb67f33bfa8a1c9a802520f6fb41bf252cbe06001aae2e5f100db35a67e5",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "ethiopic",
+			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/mauve",
+			"bar": 0
+		},
 		"am/soar-like-the-eagle-3": {
 			"ground": "270861ae4181eb81f1d9a95ec1f97ddaab48acd9f059db734b68b183a9f4e1b1",
 			"style": "lettered",
