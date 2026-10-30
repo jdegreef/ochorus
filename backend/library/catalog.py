@@ -423,6 +423,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "after the Bible the most widely read Christian book ever written."
         ),
     ),
+    "francis-de-sales": AuthorEntry(
+        slug="francis-de-sales",
+        name="Francis de Sales",
+        birth_year=1567,
+        death_year=1622,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Francis de Sales (1567–1622) was a Savoyard priest and Bishop of Geneva, a see whose city he could never enter, remembered for his patience and gentleness."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -780,6 +791,11 @@ BOOKS: list[BookEntry] = [
     # The Stanbrook Benedictines' translation (1921, revised edition), public
     # domain. group_parts: each Mansion's short chapters read as one chapter; the
     # editor's introduction and his note before VI.iii are left out.
+    # Francis de Sales' Introduction to the Devout Life (1609) — the public-
+    # domain English translation on CCEL.
+    BookEntry("introduction-to-the-devout-life", "Introduction to the Devout Life",
+              "francis-de-sales", "ccel", "desales/devout_life",
+              cover_color="#4a5d3a"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
