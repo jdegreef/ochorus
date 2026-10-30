@@ -533,6 +533,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Gregory of Nazianzus (c."
         ),
     ),
+    "gregory-of-nyssa": AuthorEntry(
+        slug="gregory-of-nyssa",
+        name="Gregory of Nyssa",
+        birth_year=335,
+        death_year=394,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Gregory of Nyssa (c. 335–c. 394) was bishop of Nyssa in Cappadocia and one of the three Cappadocian Fathers, with his brother Basil and Gregory of Nazianzus."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -985,6 +996,13 @@ BOOKS: list[BookEntry] = [
                     "The Last Farewell in the Presence of the One Hundred and Fifty Bishops.",
                     "Funeral Oration on the Great S. Basil, Bishop of Cæsarea in Cappadocia.",
                     "The Second Oration on Easter.")),
+    # Gregory of Nyssa's Great Catechism (c. 385) — William Moore and Henry
+    # Austin Wilson's NPNF translation (1893), public domain, extracted from
+    # npnf205 by its stem.
+    BookEntry("the-great-catechism", "The Great Catechism", "gregory-of-nyssa",
+              "ccel", "schaff/npnf205", part="xi.ii",
+              subtitle="Translated by William Moore and Henry Austin Wilson",
+              cover_color="#3e3a5c", summary_titles=True),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

@@ -81,6 +81,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'george-whitefield': '50% 0%',
 	'gladys-aylward': '50% 8%', // bust-cropped from a full-length photo; face at ~28% of a 0.74 plate
 	'gregory-of-nazianzus': '50% 0%', // Chora fresco, cropped to the bust; head at ~18% of a 0.80 plate
+	'gregory-of-nyssa': '50% 0%', // 14th-c. icon, cropped to the bust; head at ~20% of a 0.93 plate
 	'gregory-the-great': '50% 0%', // Goya painting, seated; face high at ~13% of a 0.57 plate
 	'hannah-whitall-smith': '50% 0%',
 	'harriet-tubman': '50% 0%', // H. Seymour Squyer c.1885 (NPG), cropped to the upper figure; face high at ~25%
