@@ -121,6 +121,7 @@ export const PALE_GROUNDS: ReadonlySet<string> = new Set([
 	'daughters-of-the-king-1',
 	'daughters-of-the-king-2',
 	'daughters-of-the-king-3',
+	'soar-like-the-eagle-3',
 	'sons-of-the-king-1',
 	'sons-of-the-king-2',
 	'sons-of-the-king-3',

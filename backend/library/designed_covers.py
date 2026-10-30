@@ -245,6 +245,13 @@ class Ground(NamedTuple):
     #: Lettering painted out before the crop (see ``Erase``), which is what
     #: lets a band reach past a subtitle or a URL instead of stopping at it.
     erase: tuple[Erase, ...] = ()
+    #: A pool of warm light laid over the finished ground, as (centre x,
+    #: centre y, radius x, radius y) in fractions of the plate and a strength
+    #: 0-1 at the centre, easing to nothing at the rim. For a ground set in
+    #: DARK ink (`covers.INK_DARK`): there is no scrim to lift the words off the
+    #: picture, so the picture is made light where they land instead — a sun
+    #: behind the title, spread far enough to pale the branches it reaches.
+    glow: tuple[float, float, float, float, float] | None = None
     #: The ``DESIGNED`` digest of the cover this ground was actually cut from.
     #:
     #: WHY A GROUND RECORDS ITS SOURCE. Replacing a hand-made cover is meant to
@@ -485,7 +492,7 @@ DERIVED_GROUND: dict[str, Ground] = {
     # it; the foot continues the haze under the mark. The sun sits where the
     # title goes, so its top end is brought down (`peak`).
     "soar-like-the-eagle-3": Ground(
-        0.217, 0.87, 0.07, 1.0, sky=0.4, foot=0.19, peak=240, erase=(
+        0.217, 0.87, 0.07, 1.0, sky=0.4, foot=0.19, glow=(0.5, 0.56, 0.7, 0.3, 0.65), erase=(
         Erase(0.33, 0.215, 0.66, 0.315),
         Erase(0.375, 0.325, 0.62, 0.435),
         Erase(0.19, 0.56, 0.79, 0.63),

@@ -1839,7 +1839,7 @@ class CoverAssetTests(SimpleTestCase):
         """
         from PIL import Image
 
-        from library.covers import DARK_INK, DARK_INK_BOXES, INK_DARK
+        from library.covers import DARK_INK, DARK_INK_BOXES, DARK_INK_BOXES_BY_SLUG, INK_DARK
 
         self.assertTrue(DARK_INK_BOXES, "covers.DARK_INK_BOXES is empty")
 
@@ -1857,7 +1857,7 @@ class CoverAssetTests(SimpleTestCase):
             path = art_dir / f"{slug}.jpg"
             self.assertTrue(path.exists(), f"{slug}: no ground at covers/art/")
             plate = Image.open(path).convert("RGB").resize((W, H), Image.LANCZOS)
-            for name, box, opacity, bar in DARK_INK_BOXES:
+            for name, box, opacity, bar in DARK_INK_BOXES_BY_SLUG.get(slug, DARK_INK_BOXES):
                 worst = 1e9
                 for px in plate.crop(box).getdata():
                     ink = tuple(round(d * opacity + c * (1 - opacity)) for d, c in zip(DARK_INK, px, strict=True))

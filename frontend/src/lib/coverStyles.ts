@@ -378,6 +378,11 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'amy-carmichael-a-life': 'house',
 	'david-livingstone-a-life': 'house',
 	'c-t-studd-a-life': 'house',
+	// One of Gareth Evans' books leaves his lettered face: set over the bright
+	// sun of its photograph in dark ink (`coverLayouts.INK_DARK`), the humanist
+	// old-style reads where the thin hand-lettering could not (founder's pick of
+	// ten proofs, 2026-10-30).
+	'soar-like-the-eagle-3': 'devotional',
 	'samuel-ajayi-crowther-a-life': 'house',
 	'pandita-ramabai-a-life': 'house',
 	'c-s-lewis-a-life': 'house',

@@ -286,7 +286,11 @@ export const INK_DARK: ReadonlySet<string> = new Set([
 	'daughters-of-the-king-3',
 	'sons-of-the-king-1',
 	'sons-of-the-king-2',
-	'sons-of-the-king-3'
+	'sons-of-the-king-3',
+	// A sunset photograph whose sun stands where the title goes: its ground is
+	// drawn with the sun at full strength and a glow over the words
+	// (`designed_covers.DERIVED_GROUND`), so the type reads dark against light.
+	'soar-like-the-eagle-3'
 ]);
 
 /** Is this painted book set in dark ink? Never under a layout. */
