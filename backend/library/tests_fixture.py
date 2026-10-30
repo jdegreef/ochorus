@@ -1839,7 +1839,12 @@ class CoverAssetTests(SimpleTestCase):
         """
         from PIL import Image
 
-        from library.covers import DARK_INK, DARK_INK_BOXES, DARK_INK_BOXES_BY_SLUG, INK_DARK
+        from library.covers import (
+            DARK_INK,
+            DARK_INK_BOXES,
+            DARK_INK_BOXES_BY_SLUG,
+            INK_DARK,
+        )
 
         self.assertTrue(DARK_INK_BOXES, "covers.DARK_INK_BOXES is empty")
 
