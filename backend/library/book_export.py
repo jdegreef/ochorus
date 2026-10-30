@@ -84,6 +84,9 @@ STRINGS = {
         "questions_teens": "Questions to think about",
         "answers_young": "Notes for grown-ups",
         "answers_teens": "One way to answer",
+        # Any other book's chapter questions, answered in the open beneath each
+        # one, as the reader shows them (messages sermon_questions_title).
+        "questions_reflect": "Questions for reflection",
         # The one-page biography after "About Ochorus", before the contents.
         "author_title": "About the Author",
         "full_bio": "Read the full biography at",
@@ -428,13 +431,28 @@ def _e(text) -> str:
 
 
 def _talk(ed: Edition, ch: ExportChapter) -> str:
-    """A young-reader chapter's questions and, apart, their answers — or "".
-    The teens editions' voice where the slug says teens, else the children's
-    (the reader picks the same way, ``splitEdition``)."""
+    """A chapter's questions and answers — or "".
+
+    The voice follows the reader's (``splitEdition`` / ``childrensReading``): a
+    teens edition and a children's one ask first and answer apart, under their
+    own headings; any other book reads like the sermon page, each answer
+    beneath its question.
+    """
     if not ch.questions:
         return ""
-    voice = "teens" if ed.book.slug.endswith("-teens") else "young"
-    s = ed.strings
+    book, s = ed.book, ed.strings
+    if book.slug.endswith("-teens"):
+        voice = "teens"
+    elif (book.slug.endswith("-children") and book.title.endswith("(For Children)")) or (
+        getattr(book.series, "audience", "") == "young_readers"
+    ):
+        voice = "young"
+    else:
+        return (
+            f'<div class="talk"><h2>{_e(s["questions_reflect"])}</h2><ol class="reflect">'
+            + "".join(f"<li><p>{_e(q)}</p><p class=\"answer\">{_e(a)}</p></li>" for q, a in ch.questions)
+            + "</ol></div>"
+        )
     return (
         f'<div class="talk"><h2>{_e(s[f"questions_{voice}"])}</h2><ol>'
         + "".join(f"<li>{_e(q)}</li>" for q, _ in ch.questions)
@@ -591,6 +609,8 @@ nav li { margin: 0.4em 0; }
 .talk li { margin-bottom: 0.4em; }
 .talk h3 { font-size: 1em; margin: 1.2em 0 0.5em; }
 .talk .answers { font-size: 0.9em; }
+.talk .reflect p { margin: 0 0 0.3em; }
+.talk .reflect .answer { font-size: 0.9em; }
 figure { margin: 1.5em 0; text-align: center; page-break-inside: avoid; }
 figure img { max-width: 100%; max-height: 90vh; height: auto; }
 figcaption { font-style: italic; font-size: 0.9em; margin-top: 0.5em; text-indent: 0; }
@@ -778,6 +798,8 @@ blockquote p { text-indent: 0; }
 .talk li { margin: 0 0 1.5mm; }
 .talk h3 { font-size: 10pt; margin: 4mm 0 2mm; break-after: avoid; }
 .talk .answers { font-size: 9.5pt; color: #333; }
+.talk .reflect p { margin: 0 0 1mm; text-indent: 0; }
+.talk .reflect .answer { font-size: 9.5pt; color: #333; }
 figure { margin: 5mm 0; text-align: center; break-inside: avoid; }
 figure img { max-width: 100%; max-height: 150mm; width: auto; height: auto; }
 figcaption { font-style: italic; font-size: 9.5pt; margin-top: 2mm; text-align: center; }

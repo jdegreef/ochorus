@@ -26,6 +26,8 @@ Fixture-driven: ``seed_books`` creates the book on the next deploy from
 
 from __future__ import annotations
 
+import json
+
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
@@ -147,6 +149,11 @@ class Command(BaseCommand):
             raise CommandError(f"author {AUTHOR_SLUG!r} not found — seed authors.json first.") from exc
 
         chapters = parse((DATA_DIR / SLUG / f"{SLUG}.md").read_text())
+        # Each chapter's answered questions ("Questions for reflection"), kept
+        # beside the manuscript as {order: [{question, answer}, ...]}.
+        questions = json.loads((DATA_DIR / SLUG / "questions.json").read_text())
+        if sorted(questions, key=int) != [str(n) for n in range(1, len(chapters) + 1)]:
+            raise CommandError("questions.json must hold every chapter's questions, and only those.")
         check_shape(chapters)
 
         content = {
@@ -175,7 +182,13 @@ class Command(BaseCommand):
             title, _ = convert(title, outer_guillemets=False)
             wc = word_count(body)
             total += wc
-            Chapter.objects.create(book=book, order=order, title=title, body_html=body)
+            Chapter.objects.create(
+                book=book,
+                order=order,
+                title=title,
+                body_html=body,
+                study_questions=questions[str(order)],
+            )
             self.stdout.write(f"  ch {order}: {title[:56]:56} {wc:>4} words")
 
         book.refresh_from_db()
