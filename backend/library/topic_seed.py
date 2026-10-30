@@ -517,6 +517,7 @@ TOPICS = [
             "large-catechism",
             "on-the-incarnation",
             "the-theological-orations",
+            "the-great-catechism",
             "proslogium-monologium-cur-deus-homo",
             "freedom-of-the-will",
             "bondage-of-the-will",
