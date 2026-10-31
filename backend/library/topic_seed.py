@@ -366,6 +366,7 @@ TOPICS = [
             "against-heresies",
             "church-history",
             "the-divine-institutes",
+            "the-octavius",
             "key-teachings-of-augustine-of-hippo",
             "key-teachings-of-athanasius-of-alexandria",
             "key-teachings-of-ignatius-of-antioch",

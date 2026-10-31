@@ -643,6 +643,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Lactantius (c. 250–c. 325) was a North African teacher of rhetoric, called by Diocletian to Nicomedia, who lost his career in the Great Persecution and turned his eloquence to defending the faith."
         ),
     ),
+    "minucius-felix": AuthorEntry(
+        slug="minucius-felix",
+        name="Minucius Felix",
+        birth_year=None,
+        death_year=None,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Minucius Felix (fl. c. 200) was a Roman advocate and convert who wrote the Octavius, one of the first Christian books in Latin."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1187,6 +1198,14 @@ BOOKS: list[BookEntry] = [
     BookEntry("the-divine-institutes", "The Divine Institutes", "lactantius",
               "ccel", "schaff/anf07", part="iii.ii", group_parts=True,
               subtitle="Translated by William Fletcher", cover_color="#2e4a5c"),
+    # The Octavius of Minucius Felix (c. 200–235) — Robert Ernest Wallis's ANF
+    # translation (1885), public domain, extracted from anf04 by its stem: a
+    # dialogue at Ostia between the pagan Caecilius and the Christian Octavius,
+    # in forty-one short chapters. Each is titled from the translator's
+    # "Argument" (summary_titles keeps its lead clause).
+    BookEntry("the-octavius", "The Octavius", "minucius-felix",
+              "ccel", "schaff/anf04", part="iv.iii", summary_titles=True,
+              subtitle="Translated by Robert Ernest Wallis", cover_color="#5c2e3e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

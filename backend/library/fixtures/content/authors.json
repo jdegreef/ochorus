@@ -9031,5 +9031,65 @@
         }
       ]
     }
+  },
+  {
+    "model": "library.author",
+    "fields": {
+      "slug": "minucius-felix",
+      "name": "Minucius Felix",
+      "bio": "Minucius Felix (fl. c. 200) was a Roman advocate and convert who wrote the Octavius, one of the first Christian books in Latin. Set on the beach at Ostia, it shows his friend Octavius answering a pagan’s charges against the Christians, and winning him to the faith.",
+      "bio_html": "<p>Some writers leave a life behind them; Minucius Felix left a single day. Nearly all we know of him comes from one short book about someone else: his friend Octavius, who had died by the time it was written. Minucius sat down to remember him, and what he remembered was a walk by the sea, a quarrel among friends, and a long argument that ended with all three of them going home glad. Out of that memory came the <em>Octavius</em>, one of the earliest and most graceful Christian books in Latin.</p> <h2>A lawyer of Rome</h2> <p>Jerome, writing in the late fourth century, calls him a notable advocate at Rome; Lactantius, earlier, had said more modestly that he was not unknown among the advocates of the city. The word both use is <em>causidicus</em>, literally a case-speaker: a courtroom pleader, not a learned jurist. The <em>Octavius</em> fits this. Minucius mentions in passing that the holidays of the courts at vintage-time had freed him from his cares, and the whole dialogue is shaped like a trial, with charges, a defence, and Minucius in the judge’s seat.</p> <p>He was a convert, one who in his own words “emerged from the abyss of darkness into the light of wisdom and truth,” and Caecilius reminds him that he had known both kinds of life and chosen one. Jerome knew of a second treatise under his name, now lost, which Wallis, his translator, thought probably wrongly ascribed. He is often thought to have had African roots, because the Latin Christian writing of his age was largely North African and because his pagan friend speaks of “our Cirtensian,” a man of Cirta in Numidia, as one of his own. It is a guess and no more. We do not know when he was born or when he died.</p> <h2>A walk by the sea at Ostia</h2> <p>The book opens in grief and turns at once to delight. Octavius had come to Rome on business and to visit, leaving at home his wife and his small children, whose half-uttered words Minucius calls “a language all the sweeter for the very imperfection of the faltering tongue.” After a day or two of catching up, in the mild weather of early autumn, they went down to Ostia, Rome’s port at the mouth of the Tiber, so that Minucius could take the sea-bathing. With them came Caecilius Natalis, Minucius’s constant companion, still a pagan.</p> <p>Minucius remembers Octavius as the other half of himself:</p> <blockquote><p>You would think that one mind had been shared between us two.</p><cite>— Minucius Felix, The Octavius, ch. 1</cite></blockquote> <p>As they walked toward the sea, Caecilius passed an image of Serapis, an Egyptian god, raised his hand to his mouth and kissed it, as common people did. Octavius rebuked not Caecilius but Minucius, for letting so close a friend give himself up to carved stones in broad daylight. They walked on along the shore, wetting their feet in the waves, and on the way back watched some boys skimming shells across the water, each wanting his to go furthest and leap most often. Everyone laughed except Caecilius, who stood apart, stung by the remark about Serapis, and asked for a proper debate. They sat down on the stone breakwater that ran out into the sea, with Minucius between them as arbiter, and Caecilius began.</p> <h2>The case against the Christians</h2> <p>Caecilius argues well. Nothing in human affairs is certain, he says, so it is wiser to keep the religion of one’s ancestors, which made Rome great, than to presume to know the mind of heaven. Then he turns on the Christians: an unlettered crowd of the lowest sort, meeting at night, “silent in public, but garrulous in corners,” without temples, altars or images, worshipping a God they cannot show. He repeats the common rumours: that they adore an ass’s head; that a novice is made to stab an infant hidden under meal, and the company drinks its blood; that at their feasts a dog tied to the lamp is made to knock it over so that in the darkness they may commit incest. He mocks their hope of resurrection and asks where their God is when they are poor and tortured.</p> <h2>What Octavius answered</h2> <p>Octavius answers point by point, with a friend’s patience. The poor and unschooled can reason as well as anyone, for wisdom is not given to wealth. The order of the heavens declares one Maker. The best philosophers had reached toward the same truth, so that one might think “either that Christians are now philosophers, or that philosophers were then already Christians.”</p> <p>The most striking pages are a confession. We were once the same as you, Octavius says; we believed these stories too, and when Christians were accused we would not even hear them, but pressed them under torture to deny the name, never to confess the crimes they were charged with. Against the charge of infant murder he answers that Christians may not even watch a killing, and will not eat the blood of animals. Against incest he sets their marriages to one wife, their sober meals, and their love for one another:</p> <blockquote><p>Thus we love one another, to your regret, with a mutual love, because we do not know how to hate.</p><cite>— Octavius, in Minucius Felix, The Octavius, ch. 31</cite></blockquote> <p>Why no temples? Because man himself is the image of God, and the whole world cannot contain him. Why so poor? Poverty is their glory, and suffering is not punishment but warfare. And the dead will rise as the trees bud again after winter:</p> <blockquote><p>We must wait also for the spring-time of the body.</p><cite>— Octavius, in Minucius Felix, The Octavius, ch. 34</cite></blockquote> <aside class=\"prayer\"><p>The <em>Octavius</em> gives a glimpse of how these Christians prayed. Octavius sees the sign of the cross “when a man adores God with a pure mind, with hands outstretched.” He speaks, too, of evil spirits driven from the afflicted “by the torments of our words and by the fires of our prayers,” calling on the only true God.</p></aside> <aside class=\"prayer\"><p>Their worship, Octavius insists, was a life before it was a rite. Among them, he says, “he who cultivates innocence supplicates God,” and he who snatches a man from danger offers the most acceptable sacrifice. And if they asked God for anything, it was not riches: “we desire rather innocency, we rather entreat for patience.”</p></aside> <p>When Octavius finished, they sat in silence. Then Caecilius broke out that he did not need a verdict: Octavius had conquered him, and he had conquered his own error. He yielded to God, keeping a few questions for tomorrow, since the sun was setting. “After these things we departed, glad and cheerful,” he writes: Caecilius because he had believed, Octavius because he had won, and Minucius because of both.</p> <h2>Which came first</h2> <p>The book’s date is still an open question. Many passages closely resemble Tertullian’s <em>Apology</em>, written about 198, and one writer must have borrowed from the other. If Minucius borrowed, he wrote in the early third century; if Tertullian did, the <em>Octavius</em> may date from about 166, under Marcus Aurelius. Scholars have argued both ways for generations, and the question is not settled. What is certain is that Cyprian of Carthage later borrowed from it. The book was almost lost: a single manuscript survives, in Paris, copied as the eighth book of Arnobius; only in 1560 did Franciscus Balduinus recognise its true author.</p> <h2>Why read the Octavius</h2> <p>The <em>Octavius</em> is not a book of theology. It never names Jesus Christ, is silent on the sacraments, and draws more on Cicero than on Scripture, because it was written for educated pagans who had heard only slanders. It sets out to show them, courteously and in Latin a later historian likened to the golden age of Roman prose, that Christians were neither monsters nor fools. It also shows ordinary Christians around the year 200 as they saw themselves: without temples, praying with open hands, refusing the games and the sacrificial meat, burying rather than burning their dead, and facing the courts without shame. Octavius sums it up in one plain line: “we do not speak great things, but we live them.”</p> <p>And it is a book about friendship. Minucius did not write a treatise; he wrote down how his dearest friend once won another friend to the faith, gently, on a beach, and how they all went home rejoicing. Of his own life, that is what he chose to leave us.</p>",
+      "photo_url": "",
+      "birth_year": null,
+      "death_year": null,
+      "original_language": "la",
+      "is_imprint": false,
+      "created_at": "2026-10-30T12:00:00Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/Marcus_Minucius_Felix"
+      ],
+      "faq": [
+        {
+          "q": "Who was Minucius Felix?",
+          "a": "Marcus Minucius Felix was a Christian advocate at Rome, probably writing around the year 200, and one of the earliest Christian authors in Latin. He is known for a single surviving book, the Octavius, a dialogue in which he acts as judge between a pagan and a Christian friend."
+        },
+        {
+          "q": "What do we know about his life?",
+          "a": "Very little. Jerome calls him a notable advocate at Rome, and Lactantius says he was not unknown among the city’s pleaders; nearly everything else comes from hints in the Octavius itself, which shows him to be a convert who had once shared his pagan friends’ beliefs. His dates of birth and death are unknown."
+        },
+        {
+          "q": "Was Minucius Felix from Africa?",
+          "a": "Possibly, but it is not known. Scholars have often guessed at African roots because early Latin Christian writing was largely North African and because the pagan Caecilius speaks of “our Cirtensian,” a man of Cirta in Numidia, as one of his own."
+        },
+        {
+          "q": "Who was Octavius?",
+          "a": "Octavius Januarius was Minucius’s closest friend, a Christian with a wife and small children who lived away from Rome, and who had died by the time the book was written. Minucius says one mind seemed to have been shared between the two of them."
+        },
+        {
+          "q": "Where and how does the Octavius take place?",
+          "a": "On an autumn holiday from the law courts, Minucius, Octavius and the pagan Caecilius Natalis walk along the shore at Ostia, Rome’s port. After Octavius rebukes Minucius for letting Caecilius kiss an image of Serapis, and while boys skim shells across the waves, Caecilius asks for a debate, and they sit on a breakwater with Minucius as arbiter."
+        },
+        {
+          "q": "What charges against Christians does Caecilius repeat?",
+          "a": "He calls them an unlettered, secretive crowd without temples or altars, and repeats the rumours of the day: that they worshipped an ass’s head, killed and ate an infant at their initiations, and committed incest at their night-time feasts. He also mocks their hope of resurrection and asks where their God is when they are poor and tortured."
+        },
+        {
+          "q": "How does Octavius answer those charges?",
+          "a": "He argues that the order of the world declares one God, that the best philosophers agreed, and that the pagan gods were once men. He admits that he too once believed the slanders, and answers that Christians will not even watch a killing, keep to one marriage, eat sober meals, and love one another because they do not know how to hate."
+        },
+        {
+          "q": "What does the Octavius show about Christian worship around 200?",
+          "a": "It describes Christians without temples or images, who held that man himself is God’s image, prayed with hands outstretched, drove out evil spirits by prayer, and counted a just and innocent life as their true sacrifice. They kept away from the games and sacrificial food, buried rather than burned their dead, and faced trial without shame."
+        },
+        {
+          "q": "Did Minucius Felix write before or after Tertullian’s Apology?",
+          "a": "No one knows for certain. Many passages closely match Tertullian’s Apology of about 198, so one borrowed from the other: if Minucius borrowed, he wrote in the early third century, and if Tertullian did, the Octavius may date from around 166. The question is still debated."
+        },
+        {
+          "q": "Why read the Octavius today?",
+          "a": "It is a short, courteous and beautifully written defence of the faith, aimed at educated pagans, that ends with the doubter won over and all three friends going home glad. It also gives a rare picture of how ordinary Christians around the year 200 lived, prayed and were seen by their neighbours."
+        }
+      ]
+    }
   }
 ]
