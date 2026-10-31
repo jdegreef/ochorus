@@ -665,6 +665,61 @@ AUTHORS: dict[str, AuthorEntry] = {
             "William Booth, born in 1829 in Nottingham, England, was the founder of The Salvation Army."
         ),
     ),
+    "polycarp": AuthorEntry(
+        slug="polycarp",
+        name="Polycarp of Smyrna",
+        birth_year=69,
+        death_year=155,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Polycarp of Smyrna (c. 69–c. 155) was bishop of Smyrna, remembered by tradition as a hearer of the apostle John."
+        ),
+    ),
+    "hermas": AuthorEntry(
+        slug="hermas",
+        name="Hermas",
+        birth_year=None,
+        death_year=None,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Hermas (fl. c. 140) was a Christian of Rome and a former slave who wrote The Shepherd, a book of visions, commandments and parables calling believers to repentance and an undivided heart."
+        ),
+    ),
+    "theophilus-of-antioch": AuthorEntry(
+        slug="theophilus-of-antioch",
+        name="Theophilus of Antioch",
+        birth_year=None,
+        death_year=183,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Theophilus of Antioch (died c. 183) was a second-century bishop of Antioch in Syria, a pagan who came to faith by reading the Hebrew prophets."
+        ),
+    ),
+    "hippolytus-of-rome": AuthorEntry(
+        slug="hippolytus-of-rome",
+        name="Hippolytus of Rome",
+        birth_year=170,
+        death_year=235,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Hippolytus of Rome (c. 170–c. 235) was a Greek-speaking presbyter and theologian of the Roman church whose clash with Bishops Zephyrinus and Callistus led later historians to call him the first antipope."
+        ),
+    ),
+    "jerome": AuthorEntry(
+        slug="jerome",
+        name="Jerome",
+        birth_year=342,
+        death_year=420,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Jerome (c. 342–420) was a Latin scholar, ascetic and Church Father who translated the Old Testament from the Hebrew and gave the West its Vulgate Bible."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1254,6 +1309,55 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Polycarp's Epistle to the Philippians (c. 110–140) and the Martyrdom of
+    # Polycarp (c. 155–160), the church of Smyrna's letter telling of his
+    # death — Roberts and Donaldson's ANF translation (1885), public domain,
+    # extracted from anf01 by its stem. group_parts: each work is a chapter,
+    # its short chapters subheads; the editors' introductory notes are left out.
+    BookEntry("epistle-and-martyrdom-of-polycarp", "The Epistle and Martyrdom of Polycarp",
+              "polycarp", "ccel", "schaff/anf01", part="iv", group_parts=True, keep=("iv.ii", "iv.iv"),
+              subtitle="Translated by Alexander Roberts and James Donaldson", cover_color="#5c4a3e"),
+    # The Shepherd of Hermas (c. 100–150) — F. Crombie's ANF translation (1885),
+    # public domain, extracted from anf02 by its stem: the five Visions, twelve
+    # Commandments and ten Similitudes, one chapter each. The editors'
+    # introductory note and Elucidations are left out.
+    BookEntry("the-shepherd-of-hermas", "The Shepherd of Hermas", "hermas",
+              "ccel", "schaff/anf02", part="ii",
+              subtitle="Translated by F. Crombie", cover_color="#3e5c3e"),
+    # Theophilus of Antioch's To Autolycus (c. 180) — Marcus Dods's ANF
+    # translation (1885), public domain, extracted from anf02 by its stem.
+    # group_parts: each of the three Books is a chapter, its short chapters
+    # subheads; the editors' introductory note is left out.
+    BookEntry("to-autolycus", "To Autolycus", "theophilus-of-antioch",
+              "ccel", "schaff/anf02", part="iv.ii", group_parts=True,
+              subtitle="Translated by Marcus Dods", cover_color="#5c3e4a"),
+    # Hippolytus's Refutation of All Heresies (c. 222–235) — J. H. MacMahon's
+    # ANF translation (1886), public domain, extracted from anf05 by its stem.
+    # group_parts: each surviving Book is a chapter (Books II and III are
+    # lost), its short chapters subheads.
+    BookEntry("refutation-of-all-heresies", "The Refutation of All Heresies", "hippolytus-of-rome",
+              "ccel", "schaff/anf05", part="iii.iii", group_parts=True,
+              subtitle="Translated by J. H. MacMahon", cover_color="#4a4a5c"),
+    # The Letters of St. Jerome (370–419) — W. H. Fremantle, G. Lewis and
+    # W. G. Martley's NPNF translation (1893), public domain, extracted from
+    # npnf206 by its stem: the letters in Vallarsi's numbering, including some
+    # written to Jerome, each with the translators' summary as its first lines.
+    BookEntry("letters-of-jerome", "The Letters of St. Jerome", "jerome",
+              "ccel", "schaff/npnf206", part="v",
+              subtitle="Translated by W. H. Fremantle", cover_color="#5c3e2e"),
+    # Clement of Alexandria's The Instructor (Paedagogus, c. 198) — William
+    # Wilson's ANF translation (1885), public domain, extracted from anf02 by
+    # its stem. group_parts: each of the three Books is a chapter, its short
+    # chapters subheads.
+    BookEntry("the-instructor", "The Instructor", "clement-of-alexandria",
+              "ccel", "schaff/anf02", part="vi.iii", group_parts=True,
+              subtitle="Translated by William Wilson", cover_color="#4a5c5c"),
+    # Tertullian's Against Marcion (c. 207–208) — Peter Holmes's ANF translation
+    # (1885), public domain, extracted from anf03 by its stem. group_parts: each
+    # of the five Books is a chapter, its short chapters subheads.
+    BookEntry("against-marcion", "Against Marcion", "tertullian",
+              "ccel", "schaff/anf03", part="v.iv", group_parts=True,
+              subtitle="Translated by Peter Holmes", cover_color="#5c2e2e"),
     # Augustine's Ten Homilies on the First Epistle of John (c. 407) — H. Browne's
     # translation as revised by Joseph H. Myers in NPNF (1888), public domain,
     # extracted from npnf107 by its stem: his prologue and the ten homilies.
