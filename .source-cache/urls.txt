@@ -1,7 +1,5 @@
-https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=Polycarp
-https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=Hermas_(writer)
-https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=Theophilus_of_Antioch
-https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=Hippolytus_of_Rome
-https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=Jerome
-https://en.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&format=json&redirects=1&titles=The_Shepherd_of_Hermas
-https://en.wikipedia.org/w/api.php?action=query&prop=pageimages|images&piprop=original|name&imlimit=40&format=json&redirects=1&titles=Polycarp|Hermas_(writer)|Theophilus_of_Antioch|Hippolytus_of_Rome|Jerome
+https://upload.wikimedia.org/wikipedia/commons/f/f1/Polycarp_of_Smyrna2.jpg
+https://upload.wikimedia.org/wikipedia/commons/1/16/Theophilus_Antiochenus.png
+https://upload.wikimedia.org/wikipedia/commons/3/3d/Statue_of_Saint_.Hippolytus_%28cropped%29.jpg
+https://upload.wikimedia.org/wikipedia/commons/5/5f/MatthiasStom-SaintJerome-Nantes.jpg
+https://commons.wikimedia.org/w/api.php?action=query&prop=imageinfo&iiprop=extmetadata|size&format=json&titles=File:Polycarp_of_Smyrna2.jpg|File:Theophilus_Antiochenus.png|File:Statue_of_Saint_.Hippolytus_(cropped).jpg|File:MatthiasStom-SaintJerome-Nantes.jpg
