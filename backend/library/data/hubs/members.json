@@ -31,7 +31,12 @@
         "origen-of-alexandria",
         "eusebius-of-caesarea",
         "lactantius",
-        "minucius-felix"
+        "minucius-felix",
+        "polycarp",
+        "hermas",
+        "theophilus-of-antioch",
+        "hippolytus-of-rome",
+        "jerome"
       ]
     },
     {
@@ -59,7 +64,8 @@
         "richard-baxter",
         "john-owen",
         "thomas-watson",
-        "john-bunyan"
+        "john-bunyan",
+        "john-flavel"
       ]
     },
     {
@@ -113,6 +119,8 @@
         "john-hyde",
         "martyn-lloyd-jones",
         "timothy-keller",
+        "samuel-rutherford",
+        "thomas-boston",
         "william-guthrie"
       ]
     },
@@ -126,7 +134,8 @@
         "erica-sabiti",
         "festo-kivengere",
         "john-stott",
-        "janani-luwum"
+        "janani-luwum",
+        "william-wilberforce"
       ]
     },
     {
@@ -258,7 +267,9 @@
         "helen-roseveare",
         "jeremy-taylor",
         "philip-doddridge",
-        "john-henry-newman"
+        "john-henry-newman",
+        "william-wilberforce",
+        "john-flavel"
       ]
     },
     {
@@ -272,6 +283,8 @@
         "alexander-maclaren",
         "mary-slessor",
         "henry-scougal",
+        "samuel-rutherford",
+        "thomas-boston",
         "william-guthrie"
       ]
     },
@@ -300,7 +313,10 @@
         "catherine-of-siena",
         "ignatius-of-loyola",
         "boethius",
-        "minucius-felix"
+        "minucius-felix",
+        "hermas",
+        "hippolytus-of-rome",
+        "jerome"
       ]
     },
     {
@@ -440,7 +456,9 @@
         "gregory-of-nazianzus",
         "justin-martyr",
         "gregory-of-nyssa",
-        "eusebius-of-caesarea"
+        "eusebius-of-caesarea",
+        "polycarp",
+        "theophilus-of-antioch"
       ]
     }
   ]

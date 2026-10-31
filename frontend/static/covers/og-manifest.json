@@ -88,6 +88,18 @@
 				476
 			]
 		},
+		"a-practical-view-of-christianity": {
+			"ground": "4627e6efa0ab1ab68ad36eb062a1e1f59ea59633042291456010f4c3241456f9",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"a-retrospect": {
 			"ground": "0521a9b4a137ca2637f39483ecad9d2d792f4e8fb817a1007ac2457678cace81",
 			"style": "revival",
@@ -248,6 +260,18 @@
 				300,
 				495
 			]
+		},
+		"against-marcion": {
+			"ground": "6dc97c5f94c2aa88587a37718325a5076dcd3d298b65c7b28372b329d2c05ae2",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
 		},
 		"against-the-arians": {
 			"ground": "b59b81a4c9403bea6a7f8334ea4914144f7c0440cd3fe4721878e810d4721663",
@@ -3964,6 +3988,18 @@
 				556
 			]
 		},
+		"ar/a-call-to-the-unconverted": {
+			"ground": "69719e51839779416974e4ecb99cac48b3228d82b638d4705479dce428e423a2",
+			"style": "press",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/rust",
+			"bar": 0,
+			"caps": false
+		},
 		"ar/absolute-surrender": {
 			"ground": "d74f9791b65faeced3a606d2fd13cc677a548e333097f93fc58ad95058699252",
 			"style": "devotional",
@@ -6317,6 +6353,18 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "rail/rust",
+			"bar": 0,
+			"caps": false
+		},
+		"epistle-and-martyrdom-of-polycarp": {
+			"ground": "addf2899cc33843bea493ccb3adfb976e46b4d9ee8b3137eee2b2c370800104a",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0,
 			"caps": false
 		},
@@ -15466,6 +15514,18 @@
 				486
 			]
 		},
+		"homilies-on-the-first-epistle-of-john": {
+			"ground": "4acc65defdc5e0bda7881ab9bbc3434b90117a4314a2a7576bc64f83208e4f15",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"how-i-became-a-christian": {
 			"ground": "2f3811737640e4bec22e0567f7aaff0fc1ea1dff6882e15aa970edef0912d497",
 			"style": "revival",
@@ -18629,6 +18689,30 @@
 				529
 			]
 		},
+		"letters-of-jerome": {
+			"ground": "15ba87245003619b2ba9703121c3554266fe29412db0d047bd2b92fb0ccb4cd8",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
+		"letters-of-samuel-rutherford": {
+			"ground": "665de975221941cefae0e03147c0c69a8b181c25dc0ea65f55196763b8394e96",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"lg/a-hidden-fire": {
 			"ground": "8adbe3250d672c22cc8f02868dd7f51cda30a78b80876639fd60d412ec35ff59",
 			"style": "originals",
@@ -21001,6 +21085,18 @@
 				303,
 				492
 			]
+		},
+		"parochial-and-plain-sermons-vii": {
+			"ground": "effd4d1319f0cb4434dc7b7c38ee96a50ad0129c2627d6ba45be0c8083ae122d",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
 		},
 		"pensees": {
 			"ground": "f1ca61540b0b59478d9834f26314d78e103c39844490a2d60e9b111ffcbfb830",
@@ -23664,6 +23760,18 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "split/navy",
+			"bar": 0,
+			"caps": false
+		},
+		"refutation-of-all-heresies": {
+			"ground": "c9f39e184f830d40652fbd3ac887237bf76eae71c79f89c4eddb75bf550b29ac",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0,
 			"caps": false
 		},
@@ -26454,6 +26562,18 @@
 				556
 			]
 		},
+		"table-talk": {
+			"ground": "9388a5d65596edbec4897d10bb1427ca2dbb3f1f814918487e2935a87939000b",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"talks-to-the-farmer": {
 			"ground": "b6a54e3e197bb700f1287b79df80228007e82cba9cda80c9ab2fb10cff771ff5",
 			"style": "revival",
@@ -27106,6 +27226,18 @@
 				472
 			]
 		},
+		"the-crook-in-the-lot": {
+			"ground": "4cf85edc40adf2971ab46d6f9502e363e26739f02abba0814ee2078e64e6ca57",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"the-death-of-death-in-the-death-of-christ": {
 			"ground": "8c3a549dfb025d0081510298f6f7dd4c30eb06a8f871a6c47b78068ac4737e61",
 			"style": "press",
@@ -27594,6 +27726,18 @@
 				515
 			]
 		},
+		"the-instructor": {
+			"ground": "1424ffb9b630c573bca497a3afc00921a61261d1ea79ae5dcdd88f1ae32d84ec",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"the-journal-of-john-wesley": {
 			"ground": "5253bd7628c87fe64161ff85735aadbd85f875ace25009791ca50d3c328ab09d",
 			"style": "enlightenment",
@@ -27700,6 +27844,18 @@
 				290,
 				505
 			]
+		},
+		"the-method-of-grace": {
+			"ground": "49e28c0e29b946d66925c3edbc3797c72c8e3cce5da2c1fac546a69cd2df4cf6",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
 		},
 		"the-normal-christian-life": {
 			"ground": "8bb2cd5bfa77bd37b5401ec9e9a3ae51a47520480d88b0b122813c7ce593a0c7",
@@ -28021,6 +28177,18 @@
 				280,
 				515
 			]
+		},
+		"the-shepherd-of-hermas": {
+			"ground": "d9c5138969274560d370e9124baa7f1f0b05376bfb012d062076e812376bc5c2",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
 		},
 		"the-soul-winner": {
 			"ground": "ac3ea4d7d155aeb3eada48b0c3bd4b2032dce7d24b5c3dc69e03f2087f99db61",
@@ -28349,6 +28517,18 @@
 			"scrim": 1,
 			"layout": "band/oxblood",
 			"bar": 0.04,
+			"caps": false
+		},
+		"to-autolycus": {
+			"ground": "b9089beaf8119b74024b63807efaf1dbd759b622b774185b0d471da6f08e18e9",
+			"style": "house",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
 			"caps": false
 		},
 		"treatise-on-the-love-of-god": {
