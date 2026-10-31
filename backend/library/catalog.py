@@ -1254,6 +1254,11 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # J. C. Ryle's The Upper Room (1888) — CCEL's ryle/upper_room: his
+    # collected sermons and addresses, "being a few truths for the times".
+    BookEntry("the-upper-room", "The Upper Room", "j-c-ryle",
+              "ccel", "ryle/upper_room", group_parts=True,
+              cover_color="#3a3e5a"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

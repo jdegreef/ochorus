@@ -223,6 +223,7 @@ TOPICS = [
             "holy-dying",
             "expository-thoughts-on-matthew",
             "practical-religion",
+            "the-upper-room",
             "religious-affections",
             "key-teachings-of-jonathan-edwards",
             "ten-commandments",
