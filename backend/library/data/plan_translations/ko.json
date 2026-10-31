@@ -124,5 +124,21 @@
    "Curated plan backed by the ko editions the-god-of-all-comfort (『모든 위로의 하나님』, new in this batch) and he-holds-my-tomorrows (『나의 내일을 붙드시는 분』, already shipped). Ships with Level 1 books batch 4 (ko), which makes the last source book live in Korean; without this prose seed_plans would publish an English-titled card in Korean (the #819 defect) and PlanTranslationCoverageTests would fail.",
    "The title opens with the shipped edition title 『모든 위로의 하나님』 (개역 고린도후서 1:3). The card quotes no title in 『』 (the English names none) but echoes 『모든 위로의 하나님』 word for word and 『나의 내일을 붙드시는 분』 as 우리의 내일을 붙드시는 분 (the English says 'our tomorrows'). Names per the ko name table / shipped corpus (한나 휘톨 스미스, 개러스 에번스). 합니다체, the reader never addressed as 당신."
   ]
+ },
+ "power-from-on-high": {
+  "title": "위로부터 오는 능력: 성령",
+  "description": "성령으로 충만한 삶에 대해 R. A. 토레이와 함께하는 4주. 먼저 『성령 세례』와 그것이 섬김을 위해 가져다주는 능력을 살피고, 이어서 모든 신자 안에 거하시는 성령의 인격과 사역을 더 깊이 공부합니다.",
+  "note": [
+   "Ships with Level 1 books batch 5 (the-person-and-work-of-the-holy-spirit.ko, title 『성령의 인격과 사역』); its other source, baptism-with-the-holy-spirit.ko (『성령 세례』), is already shipped, so this batch brings the card live.",
+   "The card quotes 『성령 세례』 by its shipped title and echoes 『성령의 인격과 사역』 word for word without brackets (the English names neither, but its phrases are the titles). 'Power from on High' = 위로부터 오는 능력 (누가복음 24:49 개역 '위로부터 능력으로 입혀질 때까지'). Name per the ko name table (R. A. 토레이); 거하다 = indwell per the glossary. AI-drafted; awaiting native review."
+  ]
+ },
+ "the-pilgrims-way": {
+  "title": "순례자의 길",
+  "description": "세 권의 고전과 함께 걷는 집으로 가는 길. 찰스 스펄전이 『좁은 문 앞에서』 구도자를 맞이하고, 존 번연의 불멸의 우화 『천로역정』이 순례자를 따라 천성까지 그 모든 길을 함께 가며, 번연 자신의 간증 『죄인 중의 괴수에게 넘치는 은혜』가 가장 큰 죄인에게까지 넘치도록 부어진 은혜를 보여 줍니다.",
+  "note": [
+   "Ships with Level 1 books batch 5 (pilgrims-progress.ko, title 『천로역정』); its other sources around-the-wicket-gate.ko (『좁은 문 앞에서』) and grace-abounding.ko (『죄인 중의 괴수에게 넘치는 은혜』) are already shipped, so this batch brings the card live.",
+   "The English names no titles, but the card quotes all three shipped ko titles in 『』, since 'the wicket gate' is rendered 좁은 문 in both the ko pilgrims-progress and the Spurgeon title (as in new-to-the-faith's 『좁은 문 앞에서』 여러분을 맞아). Celestial City = 천성, as in the ko pilgrims-progress edition and family-devotions-pilgrims-journey; 'chief of sinners' is carried by the title itself (죄인 중의 괴수, 디모데전서 1:15 개역), so the closing clause says 가장 큰 죄인 to avoid repeating it. Names per the ko name table (찰스 스펄전, 존 번연). AI-drafted; awaiting native review."
+  ]
  }
 }

@@ -16863,6 +16863,57 @@
 			"layout": "rail/indigo",
 			"bar": 0
 		},
+		"ko/orthodoxy": {
+			"ground": "7a0bd773803080ea25086db548eb4ac7e3081b656e74e814a922852579dd77ec",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "f647c1f70f76cc4716d26b296a803564369f3ef2fe6efb90c21d83530c070253",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/rust",
+			"bar": 0.11
+		},
+		"ko/pensees": {
+			"ground": "75e48bed8ad5d6652911436bd6cf9b2310bbac88fe6dd7ed536d6f02516a6b50",
+			"style": "press",
+			"volume": null,
+			"script": "korean",
+			"fonts": "3e767905ca930f3e020223192487b94f7452411203de311d017c3abdbc9a5222",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[220, 319, 380, 424]
+				],
+				"subtitle": [
+					[139, 477, 461, 498]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				296,
+				499
+			]
+		},
+		"ko/pilgrims-progress": {
+			"ground": "8bf95c0844cc87779920489c37cca0102016796e4a63bf7b9fe783c65dae7cf3",
+			"style": "press",
+			"volume": null,
+			"script": "korean",
+			"fonts": "1c91c3a6b1e977d0e665a9012905c07a2ae8ca6ed08fb85395df2ae62d60f8d0",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"ko/pilgrims-progress-children": {
 			"ground": "dc2bb790112c6e8492fd46e70ff52be72ec57f432201e1e5b1f740d559b919cf",
 			"style": "press",
@@ -17104,6 +17155,34 @@
 				499
 			]
 		},
+		"ko/the-christians-secret-of-a-happy-life-4": {
+			"ground": "017fc01162723e7c0dbde100bdac9f29a0da33bd0d393016b0e8f89725886b43",
+			"style": "devotional",
+			"volume": null,
+			"script": "korean",
+			"fonts": "e21783e5e4fb3127558d66a02554960bda977bcbbd9449cd6c92511d479b8d0b",
+			"art": true,
+			"scrim": 0.45,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[79, 102, 521, 131]
+				],
+				"title": [
+					[144, 222, 456, 327],
+					[135, 314, 465, 419],
+					[88, 407, 512, 512]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				229,
+				566
+			]
+		},
 		"ko/the-god-of-all-comfort": {
 			"ground": "aa309a6434caa648fd1df0c69fa6c326c148f876b8c6cc5b368d13c8fbdba141",
 			"style": "devotional",
@@ -17182,6 +17261,33 @@
 			"scrim": 1,
 			"layout": "split/oxblood",
 			"bar": 0
+		},
+		"ko/the-person-and-work-of-the-holy-spirit": {
+			"ground": "7f02940e22c9e916baef5ebdd08cc2e9331a043d01e079f4793e8112cacfd6ca",
+			"style": "revival",
+			"volume": null,
+			"script": "korean",
+			"fonts": "ee92bf4a8c67a5d9658d5488e151eb805e22b6e0e5dbf5cd3947921a33c735a7",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[150, 307, 450, 404],
+					[150, 390, 450, 487]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				257,
+				538
+			]
 		},
 		"ko/the-practice-of-the-presence-of-god": {
 			"ground": "3efccfb766784ea072fed45c8ad916ddef5e7ee0ec4ecbe0fcb7e7f5c1874747",
@@ -28149,6 +28255,58 @@
 			"layout": "rail/indigo",
 			"bar": 0
 		},
+		"vi/orthodoxy": {
+			"ground": "350962ea4556e078ff49f10473bb6cf67af601ab1bea36875f448768e7e76eda",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/rust",
+			"bar": 0.11
+		},
+		"vi/pensees": {
+			"ground": "c9003425b81506259703a757f4613f56df7c0e035019be04f0e96b56e8dea1db",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[110, 309, 490, 414]
+				],
+				"subtitle": [
+					[169, 465, 431, 486],
+					[161, 487, 439, 508]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				286,
+				509
+			]
+		},
+		"vi/pilgrims-progress": {
+			"ground": "f6be32b5a79162fd934474908d860b6602716427012908716c5526291c6e676e",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"vi/pilgrims-progress-children": {
 			"ground": "22bb13479dd350f0ccb5edd06b7912749d75f2bd75276b55ebd532b4e47af0d7",
 			"style": "press",
@@ -28393,6 +28551,34 @@
 				492
 			]
 		},
+		"vi/the-christians-secret-of-a-happy-life-4": {
+			"ground": "414c1dd754e8dffa88773117191cd341c9f340e6e95a10869e6a60939b02bff0",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.45,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[79, 102, 521, 131]
+				],
+				"title": [
+					[61, 254, 539, 336],
+					[97, 326, 503, 408],
+					[123, 398, 477, 480]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				259,
+				536
+			]
+		},
 		"vi/the-god-of-all-comfort": {
 			"ground": "af85149cce752a220b9a74ee27966f50c1dfef7eb8e23d8afe17d7f0e9569400",
 			"style": "devotional",
@@ -28471,6 +28657,34 @@
 			"scrim": 1,
 			"layout": "split/oxblood",
 			"bar": 0
+		},
+		"vi/the-person-and-work-of-the-holy-spirit": {
+			"ground": "d28e5ef55f9d1a39153f7ebd3cb5bd659798d16b79c4a3fe3037ab74892b3bcb",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[90, 293, 510, 369],
+					[136, 359, 464, 435],
+					[148, 424, 452, 500]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				243,
+				552
+			]
 		},
 		"vi/the-practice-of-the-presence-of-god": {
 			"ground": "acf580f7d70970e5e978d63ed62aaad9afb0f12ebf768c203c7028b586dbd828",
