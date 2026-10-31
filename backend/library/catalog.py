@@ -1254,6 +1254,11 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Jonathan Edwards's Treatise on Grace (published 1865 from his
+    # manuscripts) — CCEL's edwards/treatiseongrace: that saving grace differs
+    # from common grace in nature and kind, and is divine love itself.
+    BookEntry("treatise-on-grace", "Treatise on Grace", "jonathan-edwards",
+              "ccel", "edwards/treatiseongrace", cover_color="#4a3a2e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

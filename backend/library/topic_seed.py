@@ -578,6 +578,7 @@ TOPICS = [
         [
             "all-of-grace",
             "grace-abounding",
+            "treatise-on-grace",
             "the-way-to-god",
             "all-things-for-good",
             "key-teachings-of-charles-h-spurgeon",
