@@ -681,7 +681,7 @@ DARK_INK_BOXES_BY_SLUG = {
     "soar-like-the-eagle-3": (
         ("byline", (165, 104, 428, 130), AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
         ("title", (45, 265, 555, 446), 1.0, TITLE_MIN),
-        ("rule", (230, 435, 370, 500), 0.8, 3.0),
+        ("rule", (230, 435, 370, 508), 0.8, 3.0),
         ("subtitle", (78, 462, 526, 548), 0.90, AUTHOR_MIN_CONTRAST),
         ("mark", (230, 660, 370, 750), 0.95, 3.0),
     ),

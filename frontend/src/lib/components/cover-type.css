@@ -799,6 +799,12 @@
 		font-size: 10.45cqw;
 		letter-spacing: 0.005em;
 	}
+	/* A title in small capitals over its recipe (`coverStyles.TITLE_SMALL_CAPS`):
+	   the face's own small caps where it cuts them, given a little air. */
+	.cover-type.caps-small .title {
+		font-variant-caps: small-caps;
+		letter-spacing: 0.02em;
+	}
 	/* The Fell types, cut in the 1670s and used by the Oxford press — the metal
 	   Bunyan and Baxter were actually printed in. Deliberately irregular; that
 	   is the face, not a rendering fault. */
