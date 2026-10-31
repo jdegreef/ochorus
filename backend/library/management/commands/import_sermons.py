@@ -71,6 +71,9 @@ _TRAILER_WINDOW = 6
 _HEADINGS = ["h1", "h2", "h3", "h4"]
 
 
+_FOOTNOTE_MARK = re.compile(r"\[\d+\]")
+
+
 class AmbiguousSectionError(ValueError):
     """A Gutenberg `section` names several headings and no level picks one."""
 
@@ -155,17 +158,17 @@ def extract_gutenberg_section(
             continue
         parts.append(str(el))
 
-    parts = _drop_footnotes(parts)
     # A volume that heads each sermon with its number only ("SERMON VIII.",
     # Newman's *Parochial and Plain Sermons*, PG 24256) prints the title as the
-    # first paragraph; the page shows the catalog title already.
+    # first paragraph; the page shows the catalog title already. Its footnotes
+    # already follow the sermon, marks in place, as archive_ocr sets them; one
+    # hung on the title ("Religious Joy.[1]" … "[1] For Christmas Day.") stays
+    # at the foot, so the title line is matched without its mark.
     first = subtitles
-    if (
-        title
-        and first < len(parts)
-        and _norm_heading(re.sub(r"<[^>]+>", "", parts[first])) == _norm_heading(title)
-    ):
-        del parts[first]
+    if title and first < len(parts):
+        line = _FOOTNOTE_MARK.sub("", re.sub(r"<[^>]+>", "", parts[first]))
+        if _norm_heading(line) == _norm_heading(title):
+            del parts[first]
 
     # The first paragraph is usually the scripture epigraph in quotes — after
     # any display-line subtitle. Only those: a real heading in the source still
@@ -177,23 +180,6 @@ def extract_gutenberg_section(
             inner = re.sub(r"^<p[^>]*>|</p>$", "", parts[first].strip())
             parts[first] = f"<blockquote>{inner}</blockquote>"
     return clean_fragment("".join(parts))
-
-
-_FOOTNOTE = re.compile(r"^<p[^>]*>\s*\[\d+\]")
-_FOOTNOTE_MARK = re.compile(r"\[\d+\]")
-
-
-def _drop_footnotes(parts: list[str]) -> list[str]:
-    """Drop an edition's trailing ``[n] …`` footnote paragraphs and their
-    markers in the text. Newman's are verse references and the day a sermon was
-    preached — nothing a reader misses, and a bare "[3]" mid-sentence links
-    nowhere. Untouched when the sermon ends on no such run."""
-    end = len(parts)
-    while end and _FOOTNOTE.match(parts[end - 1]):
-        end -= 1
-    if end == len(parts):
-        return parts
-    return [_FOOTNOTE_MARK.sub("", p) for p in parts[:end]]
 
 
 def parse_preached_on(text: str) -> datetime.date | None:

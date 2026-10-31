@@ -26,6 +26,7 @@ from library.management.commands.import_sermons import (
     extract_entry,
 )
 from library.sermon_catalog import SERMONS
+from library.text import text_of
 
 
 class Command(BaseCommand):
@@ -46,27 +47,26 @@ class Command(BaseCommand):
         if not entries:
             self.stdout.write("Nothing to screen: every catalog entry is already imported.")
             return
-        self.stdout.write(f"Indexing the English library for overlap… ({len(entries)} to screen)")
-        index = sermon_screen.LibraryIndex()
-        taken = sermon_screen.taken_slugs()
-        fit = 0
-        for entry in entries:
-            time.sleep(DELAY)
+        # Fetch first: the overlap index is built from the candidates' own text.
+        fetched = []
+        for i, entry in enumerate(entries):
+            if i:
+                time.sleep(DELAY)
             try:
-                body, ref, date = extract_entry(entry)
+                fetched.append((entry, *extract_entry(entry)))
             except (requests.RequestException, AmbiguousSectionError, archive_ocr.SliceError) as exc:
                 self.stdout.write(self.style.ERROR(f"✗ {entry.slug}: {exc}"))
-                continue
-            imported = sermon_fixture_path(entry.slug, "en").exists()
-            r = sermon_screen.screen(
-                entry.slug, body, index, sermon_screen.collides(entry.slug, taken, imported)
-            )
-            arch, eth = r.archaisms
-            work, pct = r.overlap
+        if not fetched:
+            return
+        index = sermon_screen.LibraryIndex(text_of(body) for _, body, _, _ in fetched)
+        taken = sermon_screen.taken_slugs()
+        fit = 0
+        for entry, body, ref, date in fetched:
+            r = sermon_screen.screen(entry.slug, body, index, entry.slug in taken)
             line = (
                 f"{entry.slug} | {entry.scripture_ref or ref or '—'} {entry.preached_on or date or ''}"
-                f" | {r.words} words | arch {arch}, -eth {eth} | splits {r.splits}"
-                f" | overlap {pct}% {work} | …{r.ending}"
+                f" | {r.words} words | arch {r.archaisms}, -eth {r.eth} | splits {r.splits}"
+                f" | overlap {r.overlap_pct}% {r.overlap_work} | …{r.ending}"
             )
             if r.flags:
                 self.stdout.write(self.style.WARNING(f"⚠ {line}\n    flags: {', '.join(r.flags)}"))

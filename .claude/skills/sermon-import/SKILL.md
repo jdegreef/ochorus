@@ -84,7 +84,8 @@ sharing most of its wording (10-word runs over every English book and sermon),
 and the last words. Flags mark the traps below
 (`library/sermon_screen.py` says which batch fell into each one):
 `modernised?`, `page-splits`, `overlaps <work>`, `short`, `slug taken`,
-`ends on furniture`. Building the index takes about two minutes.
+`ends on furniture`. All candidates are fetched first, and the index records
+only the word runs they contain: 21 sermons screen in under 40 seconds.
 
 A flag is a question, not a verdict:
 
@@ -111,9 +112,11 @@ reserved", so take *Parochial and Plain Sermons* from Gutenberg (vol. VII is
 PG 24256, vol. VIII is PG 24284). Each sermon is headed "SERMON VIII." at
 `h2`, and the contents repeat it at `h4`, so set `section="SERMON VIII."` and
 `section_level="h2"`. The title is printed as the first paragraph;
-`extract_gutenberg_section` drops it when it matches the catalog title, along
-with the trailing `[n]` footnotes and their markers. Gutenberg gives no
-reference, so set `scripture_ref`.
+`extract_gutenberg_section` drops it when it matches the catalog title (a note
+mark on it, "Religious Joy.[1]", is ignored). The `[n]` notes stay at the foot
+with their marks, as `archive_ocr` sets footnotes. Some of them say when the
+sermon was preached ("For Christmas Day."). Gutenberg gives no reference, so set
+`scripture_ref`.
 
 ### SermonIndex: some authors' texts are modernised rewrites
 
@@ -372,7 +375,7 @@ and the repairs. Run `/simplify` and `/code-review` if the importer changed.
 - 2026-10-29 — Middle tier batch 1: M'Cheyne ×3 (SermonIndex), Ryle ×3 (CCEL
   *The Upper Room*), Maclaren ×4 (CCEL *Expositions*), Moody ×2 (PG 33015).
   264 → 276.
-- 2026-10-31 — Maclaren ×15 (CCEL *Expositions*) and Newman ×N (PG 24256 /
+- 2026-10-31 — Maclaren ×15 (CCEL *Expositions*) and Newman ×6 (PG 24256 /
   24284 *Parochial and Plain Sermons*, his first sermons on the shelf), screened
   with the new `screen_sermons` and the stricter tone rubric. *Healing for the
   Wounded* unpublished.

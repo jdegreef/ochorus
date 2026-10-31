@@ -10,6 +10,7 @@ from pathlib import Path
 from django.test import SimpleTestCase
 
 from library import sermon_screen
+from library.text import text_of
 
 PRINTED = (
     "<p>Come unto me, all ye that labour and are heavy laden, and I will give you rest. "
@@ -24,7 +25,7 @@ MODERNISED = (
 class SermonScreenTests(SimpleTestCase):
     def test_the_modernised_rewrite_reads_thin_on_archaisms(self):
         printed, modern = (
-            sermon_screen.archaism_density(sermon_screen.plain(t)) for t in (PRINTED, MODERNISED)
+            sermon_screen.archaism_density(text_of(t)) for t in (PRINTED, MODERNISED)
         )
         self.assertGreater(printed[0], sermon_screen.MODERN_ARCHAISMS)
         self.assertGreater(printed[1], sermon_screen.MODERN_ETH)
@@ -43,9 +44,11 @@ class SermonScreenTests(SimpleTestCase):
             (root / "sermons").mkdir()
             rows = [{"model": "library.chapter", "fields": {"body_text": text}}]
             (root / "books" / "holiness.en.json").write_text(json.dumps(rows))
-            index = sermon_screen.LibraryIndex(root)
+            other = "nothing like it at all here " * 20
+            index = sermon_screen.LibraryIndex([text, other], dirs=[root / "books", root / "sermons"])
             self.assertEqual(index.overlap(text, own_slug="let-any-man-come"), ("holiness", 100))
-            self.assertEqual(index.overlap("nothing like it at all here " * 20), ("", 0))
+            self.assertEqual(index.overlap(text, own_slug="holiness"), ("", 0))
+            self.assertEqual(index.overlap(other), ("", 0))
 
     def test_flags_name_each_failure(self):
         class Empty:
@@ -59,9 +62,3 @@ class SermonScreenTests(SimpleTestCase):
         self.assertIn("ends on furniture", flags)
         self.assertIn("short", flags)
         self.assertEqual(sermon_screen.screen("ok", PRINTED * 400, Empty()).flags, [])
-
-    def test_an_imported_sermons_own_rows_are_not_a_collision(self):
-        taken = {"books": {"holiness"}, "articles": set(), "sermons": {"rest"}}
-        self.assertFalse(sermon_screen.collides("rest", taken, imported=True))
-        self.assertTrue(sermon_screen.collides("rest", taken, imported=False))
-        self.assertTrue(sermon_screen.collides("holiness", taken, imported=True))

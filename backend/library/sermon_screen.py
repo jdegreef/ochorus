@@ -13,8 +13,8 @@ trap a batch fell into:
 * **The same text under another title.** Ryle's *Let Any Man Come* is
   *Holiness* ch. 18 word for word; a quarter of *The Good Way* is *Old Paths*
   ch. 15. Titles don't show it, so the candidate's wording is measured against
-  the whole English library (``LibraryIndex.overlap``). Shared Scripture alone
-  scores 0–2%.
+  the whole English library (``LibraryIndex``). Shared Scripture alone scores
+  0–2%.
 * **Furniture at the end.** A publisher's notice, an editor's bracketed note or
   the order of service the Pulpit printed after a sermon (``ending``).
 
@@ -27,15 +27,16 @@ from __future__ import annotations
 import collections
 import json
 import re
+from collections.abc import Iterable
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from library.content_fixtures import CONTENT_DIR
+from library.content_fixtures import ARTICLES_DIR, BOOKS_DIR, SERMONS_DIR
+from library.text import text_of, word_count
 
 _ARCHAISM = re.compile(r"\b(thee|thou|thy|thine|ye|hath|unto|doth|art|shalt|wilt)\b", re.I)
 _ETH = re.compile(r"\b\w+eth\b")
 _WORD = re.compile(r"[a-z]+")
-_TAG = re.compile(r"<[^>]+>")
 # A paragraph ending on a letter or comma, the next opening in lower case.
 _SPLIT = re.compile(r"[a-z,]\s*</p>\s*<p>\s*[a-z]")
 _FURNITURE = re.compile(
@@ -49,10 +50,7 @@ MODERN_ETH = 3
 OVERLAP_LIMIT = 5
 SHORT_WORDS = 1500
 NGRAM = 10
-
-
-def plain(body_html: str) -> str:
-    return _TAG.sub(" ", body_html)
+ENDING_CHARS = 90
 
 
 def archaism_density(text: str) -> tuple[int, int]:
@@ -68,31 +66,38 @@ def page_splits(body_html: str) -> int:
     return len(_SPLIT.findall(body_html))
 
 
-def ending(body_html: str, chars: int = 90) -> str:
-    return " ".join(plain(body_html).split())[-chars:]
+def _sampled_grams(text: str) -> list[str]:
+    """Every `NGRAM`-th run of `NGRAM` words: the sample a candidate is measured by."""
+    words = _WORD.findall(text.lower())
+    return [" ".join(words[i : i + NGRAM]) for i in range(0, len(words) - NGRAM + 1, NGRAM)]
 
 
 class LibraryIndex:
-    """Every `NGRAM`-word run of the English library, mapped to the works using it."""
+    """Which English books and sermons use each sampled run of some candidates.
 
-    def __init__(self, content_dir: Path = CONTENT_DIR):
-        self._grams: dict[str, set[str]] = collections.defaultdict(set)
-        for folder in ("books", "sermons"):
-            for path in sorted((content_dir / folder).glob("*.en.json")):
-                work = path.name[: -len(".en.json")]
+    Indexing every run of the library is ~21M strings and several GB, so only
+    the runs the candidates sample are recorded: the library is streamed once
+    and a window is joined only when its first word starts one of them.
+    """
+
+    def __init__(self, texts: Iterable[str], dirs: Iterable[Path] = (BOOKS_DIR, SERMONS_DIR)):
+        wanted = {g for text in texts for g in _sampled_grams(text)}
+        starts = {g.split(" ", 1)[0] for g in wanted}
+        self._works: dict[str, set[str]] = collections.defaultdict(set)
+        for folder in dirs:
+            for path in sorted(folder.glob("*.en.json")):
+                work = path.name.split(".")[0]
                 for row in json.loads(path.read_text(encoding="utf-8")):
                     words = _WORD.findall((row["fields"].get("body_text") or "").lower())
-                    for i in range(len(words) - NGRAM):
-                        self._grams[" ".join(words[i : i + NGRAM])].add(work)
+                    for i in range(len(words) - NGRAM + 1):
+                        if words[i] in starts and (g := " ".join(words[i : i + NGRAM])) in wanted:
+                            self._works[g].add(work)
 
     def overlap(self, text: str, own_slug: str = "") -> tuple[str, int]:
         """(the work sharing most of `text`'s wording, its share in percent)."""
-        words = _WORD.findall(text.lower())
-        grams = [" ".join(words[i : i + NGRAM]) for i in range(0, len(words) - NGRAM, NGRAM)]
-        if not grams:
-            return "", 0
+        grams = _sampled_grams(text)
         hits = collections.Counter(
-            work for g in grams for work in self._grams.get(g, ()) if work != own_slug
+            work for g in grams for work in self._works.get(g, ()) if work != own_slug
         )
         if not hits:
             return "", 0
@@ -100,50 +105,43 @@ class LibraryIndex:
         return work, round(100 * n / len(grams))
 
 
-def taken_slugs(content_dir: Path = CONTENT_DIR) -> dict[str, set[str]]:
-    """Slugs already in use, per folder, in any language."""
-    return {
-        folder: {path.name.split(".")[0] for path in (content_dir / folder).glob("*.json")}
-        for folder in ("books", "sermons", "articles")
-    }
-
-
-def collides(slug: str, taken: dict[str, set[str]], imported: bool) -> bool:
-    """Does another work already use `slug`? A sermon's own rows (and their
-    translations, which share its slug) are not a collision once it is imported."""
-    return slug in taken["books"] or slug in taken["articles"] or (
-        not imported and slug in taken["sermons"]
-    )
+def taken_slugs() -> set[str]:
+    """Slugs a book or article already uses, in any language. (A sermon's own
+    translations share its slug, so sermons are not counted.)"""
+    return {path.name.split(".")[0] for d in (BOOKS_DIR, ARTICLES_DIR) for path in d.glob("*.json")}
 
 
 @dataclass
 class Screen:
-    slug: str
     words: int
-    archaisms: tuple[int, int]
+    archaisms: int
+    eth: int
     splits: int
-    overlap: tuple[str, int]
+    overlap_work: str
+    overlap_pct: int
     ending: str
     flags: list[str] = field(default_factory=list)
 
 
 def screen(slug: str, body_html: str, index: LibraryIndex, slug_taken: bool = False) -> Screen:
-    text = plain(body_html)
+    text = text_of(body_html)
+    arch, eth = archaism_density(text)
+    work, pct = index.overlap(text, own_slug=slug)
     result = Screen(
-        slug=slug,
-        words=len(text.split()),
-        archaisms=archaism_density(text),
+        words=word_count(body_html),
+        archaisms=arch,
+        eth=eth,
         splits=page_splits(body_html),
-        overlap=index.overlap(text, own_slug=slug),
-        ending=ending(body_html),
+        overlap_work=work,
+        overlap_pct=pct,
+        ending=text[-ENDING_CHARS:],
     )
-    arch, eth = result.archaisms
     if arch < MODERN_ARCHAISMS and eth < MODERN_ETH:
         result.flags.append("modernised?")
     if result.splits:
         result.flags.append("page-splits")
-    if result.overlap[1] > OVERLAP_LIMIT:
-        result.flags.append(f"overlaps {result.overlap[0]}")
+    if pct > OVERLAP_LIMIT:
+        result.flags.append(f"overlaps {work}")
     if result.words < SHORT_WORDS:
         result.flags.append("short")
     if slug_taken:
