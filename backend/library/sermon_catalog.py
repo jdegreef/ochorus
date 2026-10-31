@@ -1701,4 +1701,107 @@ SERMONS: list[SermonEntry] = [
         body_starts="We must not lose sight of the place", ends_before="SERMON XLVIII.",
         scripture_ref="Numbers 23:10",
     ),
+    # Spurgeon, batch 3 — the Pulpit as printed (1855–1860), screened as batch 2
+    # was: KJV-archaism density, no page-split damage, and text overlap with the
+    # library (Comfort Proclaimed and The Christian's Heaviness are 10–13%
+    # Gleanings among the Sheaves). Pages that end in a publisher's notice (The
+    # God of the Aged, Light at Evening Time) were passed over. Read and dropped:
+    # The God of Peace, which closes on the Tabernacle building fund, and The
+    # Meek and Lowly One, whose opening illustration caricatures Islam as spread
+    # by "decapitation or impalement"; A Mighty Saviour, whose main proof paints a
+    # "South Sea Islander" as a cannibal "very little removed from the brute";
+    # and Love's Commendation, for an anecdote told in caricatured Black dialect.
+    SermonEntry(
+        "consolation-proportionate-to-spiritual-sufferings",
+        "Consolation Proportionate to Spiritual Sufferings",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons01/sermons01.xii.html",
+    ),
+    SermonEntry(
+        "the-desire-of-the-soul-in-spiritual-darkness",
+        "The Desire of the Soul in Spiritual Darkness",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons01/sermons01.xxx.html",
+    ),
+    SermonEntry(
+        "salvation-to-the-uttermost",
+        "Salvation to the Uttermost",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons02/sermons02.xxx.html",
+    ),
+    SermonEntry(
+        "lovest-thou-me",
+        "Lovest Thou Me?",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.xi.html",
+    ),
+    SermonEntry(
+        "heavenly-rest",
+        "Heavenly Rest",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.xxvii.html",
+    ),
+    SermonEntry(
+        "christ-lifted-up",
+        "Christ Lifted Up",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.xxxiii.html",
+    ),
+    SermonEntry(
+        "fear-not",
+        "Fear Not",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.xlviii.html",
+    ),
+    SermonEntry(
+        "as-thy-days-so-shall-thy-strength-be",
+        "As Thy Days, So Shall Thy Strength Be",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons04/sermons04.xlvi.html",
+    ),
+    SermonEntry(
+        "the-new-heart",
+        "The New Heart",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons04/sermons04.xlviii.html",
+    ),
+    SermonEntry(
+        "spiritual-peace",
+        "Spiritual Peace",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons06/sermons06.xiv.html",
+    ),
+    SermonEntry(
+        "one-antidote-for-many-ills",
+        "One Antidote for Many Ills",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons05/sermons05.lix.html",
+        # The Pulpit prints "Psalm 80:10"; the words are verse 19.
+        scripture_ref="Psalm 80:19",
+    ),
+    SermonEntry(
+        "the-treasure-of-grace",
+        "The Treasure of Grace",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons06/sermons06.x.html",
+    ),
+    SermonEntry(
+        "thy-redeemer",
+        "Thy Redeemer",
+        "charles-h-spurgeon",
+        "ccel",
+        _CCEL + "sermons03/sermons03.xlix.html",
+    ),
 ]

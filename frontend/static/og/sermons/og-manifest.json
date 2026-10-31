@@ -90,6 +90,10 @@
 			"content": "495feb62e5ac2d312b584661ecbe9a2cb1ef98268a3e686788835d1d75a6204d",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
+		"as-thy-days-so-shall-thy-strength-be": {
+			"content": "e7485370a7e8bfb9f5006cffdca3c23009fa6ad1c697624f98c134662af9cfd8",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
 		"assurance-of-salvation": {
 			"content": "328b41c7eb0d96f8516988dc95dd1610285a55bc88d9d12bd683e34aa1a18a1a",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
@@ -157,6 +161,10 @@
 		"christ-is-all": {
 			"content": "b18bc4122d6b3d94834f2e4088637a2c8763a335bb9de4e6783e5ecc4734a22d",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"christ-lifted-up": {
+			"content": "99e739fe9713c02e684d7a3faec19d2404f03a787f81d5e5c9774143162f15a6",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"christ-lives-in-me": {
 			"content": "359d6df89adb9f5ccf0e3b749dd120ae6f61cb32a87bdce41acc19e787fe03f3",
@@ -226,6 +234,10 @@
 			"content": "2a1f8e5ae5b099088ca7194e3d676df877820e01b842704906a2abde59c7fbc3",
 			"art": "ba3780b144eca2376ec3495cd7f7da52760b679831a1739d402b7022e777786e"
 		},
+		"consolation-proportionate-to-spiritual-sufferings": {
+			"content": "f59fe165f83f47d5bcacb851cb6872466fa299fe7520add4738f37abbc6b3415",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
 		"counterfeits": {
 			"content": "fe543ecdc6956203efc8b0027fea89a345b576782797e282263f93d828870831",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
@@ -276,6 +288,10 @@
 		},
 		"fall-and-recovery-of-man": {
 			"content": "67aa2a52a0d92f064decc26ee1da94b87555af50ecd68ea8fb4d14af85a3daa0",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
+		"fear-not": {
+			"content": "8dcb2024407530078dc3ea0caaf1fd2eb94040875089e2dc65b73976d64c99b0",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"filled-with-the-spirit": {
@@ -377,6 +393,10 @@
 		"hearts-set-on-pilgrimage": {
 			"content": "b51999ebed257d149fe6539b918b43e36bbb2c9331ed8bc7a6063cab4931a830",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"heavenly-rest": {
+			"content": "43157656c18ad080610aba5c05f20f0a8f174d4fa462ec2e412208b9088d635e",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"heroes-and-cowards": {
 			"content": "d6c35f87fdf609421985781de1296ebe66419d1cac690929167254ade475167b",
@@ -498,6 +518,10 @@
 			"content": "6791d2e1a50b59bcfddb4f3d337b49258a8ad68d826e1354b27032f8072ee4a0",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
+		"lovest-thou-me": {
+			"content": "a9cf34a1a2db787bf48f46928edd7955f45569fbc8ae4daef1507510c3ede9a1",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"making-light-of-christ": {
 			"content": "308a089a3b95a242edf63b0c5d339f72fbd58f7a711ba583bed1fe906d178c04",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
@@ -528,6 +552,10 @@
 		},
 		"of-christs-resurrection": {
 			"content": "56117ee288dba72941b20d9cc886d9a798deb99b0fcc2e10020a42335fc124a4",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"one-antidote-for-many-ills": {
+			"content": "149240d356e8c3cc009ab2d0a2b9f8627aaabba07c19695b8131dfb614fe1727",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"one-word-gospel": {
@@ -634,6 +662,10 @@
 			"content": "58df1306c97777612a7876d6d46913c2a3e45911cda27effbe2e093bc3d64642",
 			"art": "0f345face60601d5eacffb3454a5092fdaed4ff59a6888a1093c7302993eab45"
 		},
+		"salvation-to-the-uttermost": {
+			"content": "4379d9c0e44038a9fd2114f7b4aa166346964d7fd2deba2ef85fc44702f42efa",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"self-denial-versus-self-assertion": {
 			"content": "b0c3c3f4b51749543f1bf820ef5775dc6801671a5161a7e557bb6441c4a7e531",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
@@ -677,6 +709,10 @@
 		"spiritual-growth": {
 			"content": "56420cb853dbf1e1f76ece033e22559a4f314314231b78c766f8ac94ed05a5f9",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
+		"spiritual-peace": {
+			"content": "daf7643cf791880a23469565511bfcae5e9fc82beb9fc8d68a609ddd3138f510",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"sweet-comfort-for-feeble-saints": {
 			"content": "31822ce7059517b4cd9b2ee165884a4d1d19f0ba4f0ec0fe1fe2f472e9e735f8",
@@ -761,6 +797,10 @@
 		"the-demoniac-of-gadara": {
 			"content": "03e2676e666db7de7733d154e5942d8ff0be2a8fbe76c490b9979964ced590c4",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
+		"the-desire-of-the-soul-in-spiritual-darkness": {
+			"content": "1b08259c4e875d85cb7ff3733eb322ccd89ae89aec8dcdc7c1043882867531e0",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"the-drama-of-life-in-three-acts": {
 			"content": "c84929d9cbbafab2cb9c930b0619d9431ed3de346165db46a633b421b767c9d1",
@@ -873,6 +913,10 @@
 		"the-new-birth": {
 			"content": "194c411eb1a6cf68362c68f2522774e41ea76916346102de2c0ad7b80ccc8291",
 			"art": "5f019516e3a8727fc37b0814364d1151c28a8c0a1bcf3fd7910670c735ff4c03"
+		},
+		"the-new-heart": {
+			"content": "a73d35d0ef83b852cf5619ea283fee955d6fec20bd4a8fb6dd8f4586f7c1e73d",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"the-office-of-the-holy-spirit": {
 			"content": "d59152dbcd7631f26a5cbc9c1955885391bc48e5cfdd36663035ca4af03dcc94",
@@ -994,6 +1038,10 @@
 			"content": "30016dc68e65899975be5765c64f79cee076391d6f5900f76ab9ec5ab3e4cc0b",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
+		"the-treasure-of-grace": {
+			"content": "412e26cedeb9adf25d3207f08dac3ad7b3baecfbdc262d46aecf1f34dc385381",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"the-triumph-of-calvary": {
 			"content": "0ff214cacd5eadabe8cbce746a6aaa8ee0a86d67ab98a4cf1db6397a1acd970f",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
@@ -1049,6 +1097,10 @@
 		"three-great-days": {
 			"content": "029ebe316b856bc62a1dfdbb870de8aeb3f868ea923cef10c5f93433ad1d63d3",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"thy-redeemer": {
+			"content": "54a3a81c5fadafdf5bcabb04986dd646802b47778d70f3237142db0f6af12c3a",
+			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
 		"to-whom": {
 			"content": "f3610a43d3d112a3737438e254301fa0df47e480fb3cac6d9fec9596a05bcccf",
