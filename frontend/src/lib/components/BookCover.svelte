@@ -6,7 +6,7 @@
 	import { coverLayoutFor, inkDarkFor, typeTopFor } from '$lib/coverLayouts';
 	import { groundBar } from '$lib/groundBars';
 	import { scrimStrength } from '$lib/coverScrim';
-	import { coverStyleFor, scriptOf, volumeNumeral } from '$lib/coverStyles';
+	import { coverStyleFor, scriptOf, smallCapsFor, volumeNumeral } from '$lib/coverStyles';
 	import { contentLang } from '$lib/reading';
 	import { eraOf } from '$lib/eras';
 	// The cover's whole drawing, in the one file that also feeds the share-card
@@ -213,7 +213,8 @@
 			script && `script-${script}`,
 			isLongTitle(setTitle) && 'long-title',
 			titleFit(setTitle),
-			isArt && typeTopFor(book.slug, layout) && 'type-top'
+			isArt && typeTopFor(book.slug, layout) && 'type-top',
+			smallCapsFor(book.slug) && 'caps-small'
 		]}
 		{...blockDir}
 	>

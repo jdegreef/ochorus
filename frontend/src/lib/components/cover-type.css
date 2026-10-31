@@ -799,6 +799,12 @@
 		font-size: 10.45cqw;
 		letter-spacing: 0.005em;
 	}
+	/* A title in small capitals over its recipe (`coverStyles.TITLE_SMALL_CAPS`):
+	   the face's own small caps where it cuts them, given a little air. */
+	.cover-type.caps-small .title {
+		font-variant-caps: small-caps;
+		letter-spacing: 0.02em;
+	}
 	/* The Fell types, cut in the 1670s and used by the Oxford press — the metal
 	   Bunyan and Baxter were actually printed in. Deliberately irregular; that
 	   is the face, not a rendering fault. */
@@ -1074,6 +1080,11 @@
 .cover-plate.over-art.ink-dark .cover-type.style-young .rule {
 	background: radial-gradient(circle, rgb(35 26 36 / 0.75) 0 0.8cqw, transparent 0.9cqw) 0 50% /
 		3cqw 1.8cqw repeat-x;
+}
+/* The devotional quatrefoil is drawn white; on a pale ground it is darkened to
+   the ink's grey rather than redrawn, so the recipe keeps its one ornament. */
+.cover-plate.over-art.ink-dark .cover-type.style-devotional .rule {
+	filter: brightness(0.14);
 }
 
 /* ═══ LAYOUTS ═════════════════════════════════════════════════════════════════

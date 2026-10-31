@@ -228,16 +228,36 @@ def derived_ground(source: Path, cut: Ground):
 
     if bh >= H:
         y = (bh - H) // 2
-        return band.crop((0, y, W, y + H))
-
-    seam = H - bh
-    slice_h = max(8, int(bh * cut.sky))
-    ground = ImageOps.fit(
-        band.crop((0, 0, W, slice_h)), (W, H), Image.LANCZOS
-    ).filter(ImageFilter.GaussianBlur(radius=46))
-    # Feathered in rather than pasted: the join has to read as depth of field.
-    ground.paste(band, (0, seam), _feathered(bh, min(120, bh // 2), at_top=True))
+        ground = band.crop((0, y, W, y + H))
+    else:
+        seam = H - bh
+        slice_h = max(8, int(bh * cut.sky))
+        ground = ImageOps.fit(
+            band.crop((0, 0, W, slice_h)), (W, H), Image.LANCZOS
+        ).filter(ImageFilter.GaussianBlur(radius=46))
+        # Feathered in rather than pasted: the join has to read as depth of field.
+        ground.paste(band, (0, seam), _feathered(bh, min(120, bh // 2), at_top=True))
+    if cut.glow:
+        ground = _glowing(ground, *cut.glow)
     return ground
+
+
+#: The light `Ground.glow` lays down: the warm white of a low sun.
+_GLOW = (255, 248, 222)
+
+
+def _glowing(im, cx: float, cy: float, rx: float, ry: float, strength: float):
+    """`im` under an ellipse of `_GLOW`, `strength` at the centre, smoothstepped
+    to nothing at the rim, so it reads as the sun's own bloom and not a patch."""
+    w, h = im.size
+    mask = Image.new("L", (w, h))
+    px = mask.load()
+    for y in range(h):
+        dy = (y / h - cy) / ry
+        for x in range(w):
+            t = max(0.0, 1 - ((x / w - cx) / rx) ** 2 - dy * dy) ** 0.5
+            px[x, y] = round(255 * strength * t * t * (3 - 2 * t))
+    return Image.composite(Image.new("RGB", (w, h), _GLOW), im, mask)
 
 
 # `scrimmed` moved to `library.covers`: the fixture gate that measures every
