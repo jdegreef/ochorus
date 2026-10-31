@@ -360,6 +360,7 @@ TOPICS = [
             "treatises-of-cyprian",
             "the-epistles-of-cyprian",
             "the-apology-of-tertullian",
+            "against-marcion",
             "homilies-on-matthew",
             "first-epistle-of-clement",
             "exhortation-to-the-heathen",
