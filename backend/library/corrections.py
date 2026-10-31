@@ -20167,3 +20167,66 @@ for _slug, _pairs in {
     ],
 }.items():
     BODY_CORRECTIONS.setdefault(_slug, {}).setdefault("replacements", []).extend(_pairs)
+
+
+# Maclaren batch 3 and Newman's first sermons (2026-10-31): keying slips the
+# question-writers found reading every word, written against the raw import.
+# Newman's "Abram [Transcriber's note: Abraham?]" is Gutenberg's, not his.
+for _slug, _pairs in {
+    "the-secret-of-immortal-youth": [
+        ('Great tasks will be clashed down before you', 'Great tasks will be dashed down before you'),
+    ],
+    "the-writing-on-gods-hands": [
+        ('on the palms of My hands ‘—do Thou', 'on the palms of My hands’—do Thou'),
+    ],
+    "the-hiding-place": [
+        ('‘Wherefore has Thou made me and all men in vain?', '‘Wherefore hast Thou made me and all men in vain?'),
+    ],
+    "the-call-to-the-thirsty": [
+        ('The universal call, with is clear setting forth', 'The universal call, with its clear setting forth'),
+    ],
+    "the-shepherd-king-of-israel": [
+        ('lush herb-age all along', 'lush herbage all along'),
+        ('the sunbeams, like swords,’ are piercing', 'the sunbeams, ‘like swords,’ are piercing'),
+        ('Sweet silence broods there, The sheep feed', 'Sweet silence broods there. The sheep feed'),
+        ('Now it Is more than work', 'Now it is more than work'),
+        ('barren rock and gloomy rift, All behind is good.', 'barren rock and gloomy rift. All behind is good.'),
+        ('looks forward and says, ’Surely goodness', 'looks forward and says, ‘Surely goodness'),
+    ],
+    "the-encamping-angel": [
+        ('the man who ’scrabbled on the doors,’', 'the man who ‘scrabbled on the doors,’'),
+        ('the Angel of His face saved them,’ It is', 'the Angel of His face saved them.’ It is'),
+    ],
+    "looking-to-the-hills": [
+        ('II Further, notice the question of weakness.', 'II. Further, notice the question of weakness.'),
+    ],
+    "the-true-vine": [
+        ('—JOHN xv. 14.', '—JOHN xv. 1-4.'),
+        ('where for hundred of yards the pliant branches', 'where for hundreds of yards the pliant branches'),
+    ],
+    "sorrow-turned-into-joy": [
+        ('the Asiatic churches-the last recorded words of Jesus Christ-begins', 'the Asiatic churches—the last recorded words of Jesus Christ—begins'),
+    ],
+    "the-praying-christ": [
+        ('one of His disclples said unto Him', 'one of His disciples said unto Him'),
+        ('declares, I will put my trust in Him.’', 'declares, ‘I will put my trust in Him.’'),
+    ],
+    "temporal-advantages": [
+        ('I think it did; and if so; what reason', 'I think it did; and if so, what reason'),
+    ],
+    "divine-calls": [
+        ('"Abram [Transcriber\'s note: Abraham?] departed', '"Abram departed'),
+        # The edition marks a 14th note (Phil. ii. 12, 13) it never prints, and
+        # keys note 8's "ii." as "11.".
+        ('worketh in you[14]."', 'worketh in you."'),
+        ('<p>[8] Mark 11. 14.</p>', '<p>[8] Mark ii. 14.</p>'),
+    ],
+    "jeremiah-a-lesson-for-the-disappointed": [
+        ('O Lord, art not Thine eyes upon the truth?', 'O Lord, are not Thine eyes upon the truth?'),
+        ('<p>[256] Matt. v. 4.</p>', '<p>[25] Matt. v. 4.</p>'),
+    ],
+    "the-shepherd-of-our-souls": [
+        ('which the world knew not of. He preferred', 'which the world knew not of, He preferred'),
+    ],
+}.items():
+    BODY_CORRECTIONS.setdefault(_slug, {}).setdefault("replacements", []).extend(_pairs)
