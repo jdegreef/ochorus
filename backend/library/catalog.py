@@ -1254,6 +1254,13 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Clement of Alexandria's The Instructor (Paedagogus, c. 198) — William
+    # Wilson's ANF translation (1885), public domain, extracted from anf02 by
+    # its stem. group_parts: each of the three Books is a chapter, its short
+    # chapters subheads.
+    BookEntry("the-instructor", "The Instructor", "clement-of-alexandria",
+              "ccel", "schaff/anf02", part="vi.iii", group_parts=True,
+              subtitle="Translated by William Wilson", cover_color="#4a5c5c"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
