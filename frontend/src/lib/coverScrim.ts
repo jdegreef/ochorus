@@ -10,7 +10,7 @@
 // `CoverAssetTests` re-measures that against the artwork on disk.
 
 export const COVER_SCRIM: Record<string, number> = {
-	'a-brand-plucked-from-the-fire': 0.95,
+	'a-brand-plucked-from-the-fire': 0.90,
 	'a-hidden-fire': 0.70,
 	'a-serious-call': 0.65,
 	'a-short-and-easy-method-of-prayer': 0.80,
@@ -74,7 +74,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'institutes-of-the-christian-religion': 0.95,
 	'interior-castle': 0.30,
 	'jesus-himself-2': 0.65,
-	'john-hyde-a-life': 0.30,
+	'john-hyde-a-life': 0.65,
 	'john-hyde-a-life-children': 0.30,
 	'john-hyde-a-life-teens': 0.65,
 	'journal-of-an-expedition-up-the-niger': 0.70,

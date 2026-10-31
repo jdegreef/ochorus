@@ -15,13 +15,13 @@
 			"bar": 0
 		},
 		"a-brand-plucked-from-the-fire": {
-			"ground": "f3b7562829d74b0dcc42559133d13b3d1199aa6e9c9c915bcac80c2793d3484d",
+			"ground": "341b2ad764bb7ca080803916faa8d1e309c6350bb1de225d103a8c6830c0af2c",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -268,13 +268,13 @@
 			"bar": 0
 		},
 		"am/a-brand-plucked-from-the-fire": {
-			"ground": "3aa162aa52253473aa9d793cfcb701bcb8bc52c20c8fdd6bd52bbd214da2bcfe",
+			"ground": "c4892e10309a8dd5f2c3de7015a37bb276e3b5a465264ae6b876cbffc94a9b32",
 			"style": "revival",
 			"volume": null,
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -2139,7 +2139,7 @@
 			"bar": 0
 		},
 		"am/plain-account-christian-perfection": {
-			"ground": "2047626fed361251e2ca807bf78aefa4df9fce68159dfb0f7a7695c90c223918",
+			"ground": "e621d8295b9dbfd75417955ca0d2f54ab53ea9c61e844eaddea4b22583728a90",
 			"style": "enlightenment",
 			"volume": null,
 			"script": "ethiopic",
@@ -2147,7 +2147,7 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "split/mauve",
-			"bar": 0
+			"bar": 0.04
 		},
 		"am/possibilities-of-prayer": {
 			"ground": "a04e8cd424325a99f65f6f542fac93f7d63c05a7b2f878dd171153fc9d83b1c3",
@@ -5965,13 +5965,13 @@
 			]
 		},
 		"es/a-brand-plucked-from-the-fire": {
-			"ground": "bccc266f1594c96a3d8258f2fd087eb2db5484a8dd28bbb3cf593facbc427446",
+			"ground": "ba2db3f4aa68e8ec1b637c33b5c3f2d97083341c622369cdc584fe56406d14a2",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -7827,7 +7827,7 @@
 			"bar": 0
 		},
 		"es/plain-account-christian-perfection": {
-			"ground": "09e58a03f0c4c1032ecc22fe891e8013de01924d4d48aa8527446e65254878d7",
+			"ground": "d862343600200b6f04ba12830a4e8ed93d418ab5b8e696d75286ebba5235812c",
 			"style": "enlightenment",
 			"volume": null,
 			"script": "latin",
@@ -7835,7 +7835,7 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "split/mauve",
-			"bar": 0
+			"bar": 0.04
 		},
 		"es/possibilities-of-prayer": {
 			"ground": "8fe3b2647d6276f4fa3e94b217c2fc2f11df805a6a72b1510041949240019d9d",
@@ -9413,13 +9413,13 @@
 			]
 		},
 		"fr/a-brand-plucked-from-the-fire": {
-			"ground": "31d1f6e8e048daa14c4a185b6242a9644accb5265421d936eba5e43e0b2942a3",
+			"ground": "6ad5690cfcffefd88193c21a00b8740b230bb3eb8861b1889723cd6f5e6f9889",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.95,
+			"scrim": 0.9,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -11710,7 +11710,7 @@
 			"bar": 0
 		},
 		"fr/plain-account-christian-perfection": {
-			"ground": "02c9b11abb398e5b665e25d119f2d6cc0a08e4379f4cfe4ffe4b1ac1fb160611",
+			"ground": "daf76b29b04b46a2502755b25b169b58785cc56c1762b69bc153d0743df9df5b",
 			"style": "enlightenment",
 			"volume": null,
 			"script": "latin",
@@ -11718,7 +11718,7 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "split/mauve",
-			"bar": 0
+			"bar": 0.04
 		},
 		"fr/power-through-prayer": {
 			"ground": "071275bf69fa6542954e4e693d88f4fb5bed861087179716819d0408c65d3911",
@@ -14889,13 +14889,13 @@
 			]
 		},
 		"john-hyde-a-life": {
-			"ground": "49499e4fe5ba45d69f5751397a0ca062d2c8913bd693337d50819ff8610e14a6",
+			"ground": "2c81bb763e0403288863fcfdac79c82bb0de393d02831f7c7715e06823172a60",
 			"style": "house",
 			"volume": "2",
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.65,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -19806,7 +19806,7 @@
 			"bar": 0
 		},
 		"plain-account-christian-perfection": {
-			"ground": "b0305149824498ac9942e808a3f46943e1b89b229eb8259459407a9d03e2c3d4",
+			"ground": "a4cbd823aebec6aa00943c57985ecbc08c3e8dc7f9a16f6207fa04d58082a263",
 			"style": "enlightenment",
 			"volume": null,
 			"script": "latin",
@@ -19814,7 +19814,7 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "split/mauve",
-			"bar": 0
+			"bar": 0.04
 		},
 		"poems-on-various-subjects": {
 			"ground": "3eb05ba5dc1d3f9dbbba14498bb280b61808cf42e0f1a3e3155fb11e116a1032",
@@ -19867,7 +19867,7 @@
 			"bar": 0
 		},
 		"power-from-on-high-old-testament": {
-			"ground": "058214e7ea98c6f001c51233580cee8c276520495d78f7565b39bdf747376573",
+			"ground": "7c1ac456ecb7b7f52032a7cfca0ed15b7f2ff5824fe5b7de2422c28097ea4a66",
 			"style": "revival",
 			"volume": "1",
 			"script": "latin",
@@ -19875,7 +19875,7 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "box/teal",
-			"bar": 0
+			"bar": 0.07
 		},
 		"power-through-prayer": {
 			"ground": "a36c72e5986a60d4832a04bd8371181c6bfe960055ee11cfe775c158ce5be6e9",
