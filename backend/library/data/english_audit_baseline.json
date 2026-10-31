@@ -237,6 +237,10 @@
   "letters-and-minor-works": {
    "space-before-punct": 1
   },
+  "letters-of-samuel-rutherford": {
+   "lost-paragraphing": 1,
+   "word-fusion": 1
+  },
   "life-experience-gospel-labours": {
    "space-before-punct": 1
   },
@@ -256,8 +260,7 @@
    "space-before-punct": 1
   },
   "morning-by-morning": {
-   "space-before-punct": 1,
-   "word-fusion": 1
+   "space-before-punct": 1
   },
   "mortification-of-sin": {
    "space-before-punct": 1
@@ -586,7 +589,7 @@
    "space-before-punct": 9
   },
   "unspoken-sermons": {
-   "word-fusion": 2
+   "word-fusion": 1
   },
   "what-a-revival-of-religion-is": {
    "space-before-punct": 1
