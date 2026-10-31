@@ -1112,6 +1112,14 @@ BOOKS: list[BookEntry] = [
     BookEntry("apologia-pro-vita-sua", "Apologia Pro Vita Sua", "john-henry-newman",
               "gutenberg", "19690",
               subtitle="Being a History of His Religious Opinions", cover_color="#5c3d2e"),
+    # The Idea of a University (1852–1858, Gutenberg #24526) — Newman's
+    # nine Discourses on University Teaching and ten Lectures on University
+    # Subjects, with his Preface. Built from a reshaped copy of the PG HTML
+    # (one <h2> per Discourse or Lecture, his numbered sections kept as § marks;
+    # the contents, index and the two short notes to Part II left out).
+    BookEntry("the-idea-of-a-university", "The Idea of a University", "john-henry-newman",
+              "gutenberg", "24526",
+              subtitle="Defined and Illustrated", cover_color="#2e3e5c"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
