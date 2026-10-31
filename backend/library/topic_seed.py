@@ -181,6 +181,7 @@ TOPICS = [
         [
             "confessions",
             "apologia-pro-vita-sua",
+            "the-idea-of-a-university",
             "the-consolation-of-philosophy",
             "treatises-of-cyprian",
             "first-epistle-of-clement",

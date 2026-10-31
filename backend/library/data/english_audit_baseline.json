@@ -307,9 +307,6 @@
    "hyphen-space": 1,
    "word-fusion": 1
   },
-  "pensees": {
-   "word-fusion": 1
-  },
   "pilgrims-progress": {
    "run-together": 1,
    "space-before-punct": 2
@@ -338,9 +335,6 @@
   },
   "proslogium-monologium-cur-deus-homo": {
    "orphan-close-quote": 1
-  },
-  "provincial-letters": {
-   "word-fusion": 1
   },
   "purity-of-heart": {
    "orphan-close-quote": 1,
