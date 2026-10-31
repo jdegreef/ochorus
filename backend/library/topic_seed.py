@@ -363,6 +363,7 @@ TOPICS = [
             "epistles-of-ignatius",
             "the-first-apology",
             "dialogue-with-trypho",
+            "the-octavius",
             "key-teachings-of-augustine-of-hippo",
             "key-teachings-of-athanasius-of-alexandria",
             "key-teachings-of-ignatius-of-antioch",

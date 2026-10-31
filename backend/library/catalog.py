@@ -599,6 +599,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "John Henry Newman (1801–1890) was an English priest, theologian and writer who led the Oxford Movement in the Church of England and in 1845 was received into the Catholic Church."
         ),
     ),
+    "minucius-felix": AuthorEntry(
+        slug="minucius-felix",
+        name="Minucius Felix",
+        birth_year=None,
+        death_year=None,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Minucius Felix (fl. c. 200) was a Roman advocate and convert who wrote the Octavius, one of the first Christian books in Latin."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1112,6 +1123,14 @@ BOOKS: list[BookEntry] = [
     BookEntry("apologia-pro-vita-sua", "Apologia Pro Vita Sua", "john-henry-newman",
               "gutenberg", "19690",
               subtitle="Being a History of His Religious Opinions", cover_color="#5c3d2e"),
+    # The Octavius of Minucius Felix (c. 200–235) — Robert Ernest Wallis's ANF
+    # translation (1885), public domain, extracted from anf04 by its stem: a
+    # dialogue at Ostia between the pagan Caecilius and the Christian Octavius,
+    # in forty-one short chapters. Each is titled from the translator's
+    # "Argument" (summary_titles keeps its lead clause).
+    BookEntry("the-octavius", "The Octavius", "minucius-felix",
+              "ccel", "schaff/anf04", part="iv.iii", summary_titles=True,
+              subtitle="Translated by Robert Ernest Wallis", cover_color="#5c2e3e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
