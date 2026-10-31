@@ -1141,6 +1141,131 @@ CURATED: dict[str, Artwork] = {
         "The Atlantic she was carried across as a child — \"'Twas mercy brought "
         "me from my Pagan land\" — in the first light after the storm.",
     ),
+    # ── Batch 28 · the October imports (2026-10-31) ─────────────────────────
+    # Thirty books that arrived on plates in one day of imports: the Fathers
+    # (classical and Mediterranean ground), Owen, Taylor, Doddridge, Ryle and
+    # Newman (English and Low Countries), de Sales and Loyola (mountains), all
+    # under the three-per-painter gate. Met and Cleveland only.
+    "against-the-arians": Artwork(
+        "met", 438949, "Constantin Hansen", "Columns of the Temple of Neptune at Paestum", "1838",
+        "Doric columns still standing after two thousand years: Athanasius held the Nicene faith against the Arians when emperors, councils and exile were all against him.",
+    ),
+    "on-the-holy-spirit": Artwork(
+        "cma", 150968, "Albert Bierstadt", "Fir Trees and Storm Clouds", "c. 1870",
+        "Wind driving cloud over the mountain firs — pneuma, the Spirit whose deity Basil defended from his Cappadocian uplands.",
+    ),
+    "the-hexaemeron": Artwork(
+        "cma", 136270, "Asher B. Durand", "Forest Stream with Vista", "1872",
+        "Water, trees and light: the made world Basil walked his Lenten congregation through day by day in his sermons on the six days of creation.",
+    ),
+    "the-consolation-of-philosophy": Artwork(
+        "met", 437973, "François Marius Granet", "Ponte San Rocco and Waterfalls, Tivoli", "ca. 1810–20",
+        "An Italian gorge where a ruined bridge still spans the falls — what endures under Fortune's wheel, for the book Boethius wrote in prison awaiting death.",
+    ),
+    "the-dialogue-of-catherine-of-siena": Artwork(
+        "met", 438644, "Simon Denis", "View on the Quirinal Hill, Rome", "1800",
+        "Rome from its hill: Catherine laboured to bring the papacy back to Rome, and died there in 1380.",
+    ),
+    "exhortation-to-the-heathen": Artwork(
+        "met", 437326, "Nicolas Poussin", "Blind Orion Searching for the Rising Sun", "1658",
+        "A blind giant striding toward the sunrise: Clement of Alexandria calls the Greeks out of their myths toward the Logos, the true Light — and Poussin paints their own myth of a man seeking the dawn.",
+    ),
+    "the-epistles-of-cyprian": Artwork(
+        "cma", 152765, "Richard Parkes Bonington", "The Doge's Palace, Venice", "1826",
+        "Ships at a Mediterranean quay: from hiding during the Decian persecution Cyprian governed the church of Carthage by letter, and the letters went out by sea.",
+    ),
+    "catechetical-lectures": Artwork(
+        "met", 436241, "Jules Dupré", "Cows Crossing a Ford", "1836",
+        "A crossing through water: Cyril's lectures were given in Jerusalem to the candidates preparing for baptism at Easter.",
+    ),
+    "introduction-to-the-devout-life": Artwork(
+        "cma", 140343, "Narcisse Diaz de la Peña", "The Pyrenees, the Peak of the Midi de Bigorre", "1871–1872",
+        "Mountain country under open sky, for the bishop of the Savoy whose book takes devotion out of the cloister into every ordinary life.",
+    ),
+    "treatise-on-the-love-of-god": Artwork(
+        "cma", 150051, "Jean-Léon Gérôme", "Alpine Landscape:  The Handegg, Switzerland", "1850s",
+        "The high Alps of Francis de Sales' own Savoy, where the love of God is a long ascent.",
+    ),
+    "the-theological-orations": Artwork(
+        "cma", 84371, "Henri-Edmond Cross", "The Pink Cloud", "c. 1896",
+        "Dawn colour over a southern sea: Gregory of Nazianzus, theologian and poet, preached these five orations on the Trinity in Constantinople.",
+    ),
+    "the-great-catechism": Artwork(
+        "met", 438640, "Simon Denis", "Mountainous Landscape at Vicovaro", "ca. 1786–97",
+        "Hills under a high sky, ordered and whole: Gregory of Nyssa's handbook sets out the faith as one coherent account for those who teach it.",
+    ),
+    "the-life-of-god-in-the-soul-of-man": Artwork(
+        "met", 436830, "Philips Koninck", "A Panoramic Landscape with a Country Estate", "ca. 1649",
+        "A wide plain under a vast sky — Scougal's \"divine life\" is the soul opened to God, nothing narrower.",
+    ),
+    "the-spiritual-exercises": Artwork(
+        "cma", 143772, "Asher B. Durand", "Trees on a Rocky Hillside", "c. 1849",
+        "Trees rooted in rock: Ignatius kept his vigil at the crags of Montserrat before he wrote the Exercises.",
+    ),
+    "expository-thoughts-on-matthew": Artwork(
+        "met", 437179, "Patrick Nasmyth", "Near Penshurst, Kent", "1828",
+        "The English countryside of Ryle's own century, for plain expositions written to be read aloud at family prayers.",
+    ),
+    "holy-dying": Artwork(
+        "met", 437520, "Théodore Rousseau", "Sunset near Arbonne", "ca. 1860–65",
+        "The day going down in a blaze: Jeremy Taylor's Holy Dying teaches how to come to evening well.",
+    ),
+    "holy-living": Artwork(
+        "met", 437514, "Théodore Rousseau", "The Edge of the Woods at Monts-Girard, Fontainebleau Forest", "1852–54",
+        "The companion to Holy Dying, by the same painter: full daylight at the wood's edge, for the rule of a holy life.",
+    ),
+    "commentary-on-romans": Artwork(
+        "cma", 95284, "Narcisse Diaz de la Peña", "Path Near the Pond of Vipers, Fontainebleau Forest", "c. 1860s",
+        "A path through deep wood toward the light: Calvin's commentary walks Romans verse by verse, from ruin to grace.",
+    ),
+    "homilies-on-matthew": Artwork(
+        "cma", 146071, "Elihu Vedder", "Three Trees: Italy", "1871",
+        "Tall cypresses in a southern landscape, for the Golden Mouth of Antioch preaching through the first Gospel.",
+    ),
+    "homilies-on-romans": Artwork(
+        "met", 438953, "Carl Rottmann", "The Cemetery at Pronoia near Nauplia", "ca. 1841–47",
+        "Greek ground under a rainbow after storm — the covenant sign over the land of Chrysostom's own language, for his sermons on Romans.",
+    ),
+    "apologia-pro-vita-sua": Artwork(
+        "met", 436560, "Jan van Goyen", "River View with a Village Church", "",
+        "A church spire seen across the water: Newman's account of his journey from the Church of England to Rome.",
+    ),
+    "indwelling-sin-in-believers": Artwork(
+        "cma", 126243, "Julius Caesar Ibbetson", "A Storm Behind the Isle of Wight", "c.179(?)",
+        "A storm still breaking on an English coast: Owen on the sin that remains in believers and wars against them.",
+    ),
+    "of-temptation": Artwork(
+        "met", 436827, "Barend Cornelis Koekkoek", "Sunset on the Rhine", "1853",
+        "A castle keeping watch above the river at dusk: \"Watch and pray, that ye enter not into temptation\" — Owen's text.",
+    ),
+    "the-death-of-death-in-the-death-of-christ": Artwork(
+        "met", 437526, "Peter Paul Rubens", "A Forest at Dawn with a Deer Hunt", "ca. 1635",
+        "First light breaking through a dark wood: the death of Christ as the death of death.",
+    ),
+    "the-grace-and-duty-of-being-spiritually-minded": Artwork(
+        "cma", 173633, "William Trost Richards", "June Day", "1870",
+        "Light high in the summer trees: \"Set your affection on things above\" — Owen's call to a mind set on the Spirit.",
+    ),
+    "the-journal-of-john-wesley": Artwork(
+        "cma", 122340, "Aelbert Cuyp", "Travelers in Hilly Countryside", "c. 1650",
+        "A rider on a country road: Wesley rode some 250,000 miles in fifty years of preaching, and wrote the journal in the saddle's pauses.",
+    ),
+    "dialogue-with-trypho": Artwork(
+        "met", 437102, "Pieter de Molijn", "Landscape with a Cottage", "1629",
+        "A path over open dunes: Justin tells how, walking alone near the sea, he met the old man who turned him from philosophy to the prophets.",
+    ),
+    "the-first-apology": Artwork(
+        "cma", 151882, "Claude-Joseph Vernet", "The Waterfalls at Tivoli", "1737",
+        "The falls at Tivoli, on the emperors' doorstep: Justin's Apology was addressed to Antoninus Pius in Rome.",
+    ),
+    "the-apology-of-tertullian": Artwork(
+        "cma", 145309, "Pierre Henri de Valenciennes", "View of Rome", "c. 1782–84",
+        "Rome itself, the city Tertullian's Apology answered on behalf of the persecuted Christians.",
+    ),
+    "the-rise-and-progress-of-religion-in-the-soul": Artwork(
+        "met", 436193, "Narcisse-Virgile Diaz de la Peña", "The Edge of the Woods", "1872",
+        "A way out of the wood into the light: Doddridge's book follows the soul from awakening to maturity, step by step.",
+    ),
 }
 
 
