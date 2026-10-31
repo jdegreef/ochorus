@@ -68,6 +68,9 @@
   "christs-peace": {
    "word-fusion": 1
   },
+  "church-history": {
+   "orphan-close-quote": 3
+  },
   "come-thou-into-the-ark": {
    "space-before-punct": 2
   },
@@ -267,6 +270,9 @@
    "orphan-close-quote": 1,
    "space-before-punct": 4
   },
+  "on-first-principles": {
+   "orphan-close-quote": 2
+  },
   "on-loving-god": {
    "lost-paragraphing": 2
   },
@@ -441,6 +447,9 @@
   },
   "the-dialogue-of-catherine-of-siena": {
    "lost-paragraphing": 30
+  },
+  "the-divine-institutes": {
+   "word-fusion": 2
   },
   "the-dying-thief": {
    "word-fusion": 1
