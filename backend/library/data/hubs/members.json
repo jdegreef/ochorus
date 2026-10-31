@@ -28,7 +28,8 @@
         "gregory-of-nyssa",
         "tertullian",
         "irenaeus-of-lyons",
-        "origen-of-alexandria"
+        "origen-of-alexandria",
+        "eusebius-of-caesarea"
       ]
     },
     {
@@ -432,7 +433,8 @@
         "basil-of-caesarea",
         "gregory-of-nazianzus",
         "justin-martyr",
-        "gregory-of-nyssa"
+        "gregory-of-nyssa",
+        "eusebius-of-caesarea"
       ]
     }
   ]

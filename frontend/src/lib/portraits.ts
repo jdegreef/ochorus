@@ -68,6 +68,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'e-m-bounds': '50% 2%', // 1864 photograph; face at ~32% of a 0.72 plate
 	'elisabeth-elliot': '50% 20%', // Ochorus scene (writing by lamplight), figure from behind, no face
 	'erica-sabiti': '50% 20%', // bust in clerical cap; near-square
+	'eusebius-of-caesarea': '50% 10%', // Rabbula Gospels (586) figure cropped to the bust; face at ~22%
 	'evelyn-christenson': '50% 50%', // square source — the crop takes the whole photo
 	'f-f-bosworth': '50% 0%', // small studio bust; face at ~30% of a 0.85 plate
 	'fanny-jackson-coppin': '50% 9%', // 1913 frontispiece (Reminiscences); face at ~36% of a 0.75 plate

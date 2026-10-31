@@ -364,6 +364,7 @@ TOPICS = [
             "the-first-apology",
             "dialogue-with-trypho",
             "against-heresies",
+            "church-history",
             "key-teachings-of-augustine-of-hippo",
             "key-teachings-of-athanasius-of-alexandria",
             "key-teachings-of-ignatius-of-antioch",
