@@ -3964,6 +3964,18 @@
 				556
 			]
 		},
+		"ar/a-call-to-the-unconverted": {
+			"ground": "69719e51839779416974e4ecb99cac48b3228d82b638d4705479dce428e423a2",
+			"style": "press",
+			"volume": null,
+			"script": "arabic",
+			"fonts": "30dfb97701477b0ff2703638b7d140f82b199a8002d178b98461e18890ae97c7",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/rust",
+			"bar": 0,
+			"caps": false
+		},
 		"ar/absolute-surrender": {
 			"ground": "d74f9791b65faeced3a606d2fd13cc677a548e333097f93fc58ad95058699252",
 			"style": "devotional",
@@ -6317,6 +6329,18 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "rail/rust",
+			"bar": 0,
+			"caps": false
+		},
+		"epistle-and-martyrdom-of-polycarp": {
+			"ground": "addf2899cc33843bea493ccb3adfb976e46b4d9ee8b3137eee2b2c370800104a",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0,
 			"caps": false
 		},

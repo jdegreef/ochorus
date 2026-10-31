@@ -665,6 +665,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "William Booth, born in 1829 in Nottingham, England, was the founder of The Salvation Army."
         ),
     ),
+    "polycarp": AuthorEntry(
+        slug="polycarp",
+        name="Polycarp of Smyrna",
+        birth_year=69,
+        death_year=155,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Polycarp of Smyrna (c. 69–c. 155) was bishop of Smyrna, remembered by tradition as a hearer of the apostle John."
+        ),
+    ),
     "hermas": AuthorEntry(
         slug="hermas",
         name="Hermas",
@@ -1265,6 +1276,14 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Polycarp's Epistle to the Philippians (c. 110–140) and the Martyrdom of
+    # Polycarp (c. 155–160), the church of Smyrna's letter telling of his
+    # death — Roberts and Donaldson's ANF translation (1885), public domain,
+    # extracted from anf01 by its stem. group_parts: each work is a chapter,
+    # its short chapters subheads; the editors' introductory notes are left out.
+    BookEntry("epistle-and-martyrdom-of-polycarp", "The Epistle and Martyrdom of Polycarp",
+              "polycarp", "ccel", "schaff/anf01", part="iv", group_parts=True, keep=("iv.ii", "iv.iv"),
+              subtitle="Translated by Alexander Roberts and James Donaldson", cover_color="#5c4a3e"),
     # The Shepherd of Hermas (c. 100–150) — F. Crombie's ANF translation (1885),
     # public domain, extracted from anf02 by its stem: the five Visions, twelve
     # Commandments and ten Similitudes, one chapter each. The editors'

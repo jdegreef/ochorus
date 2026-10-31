@@ -100,6 +100,9 @@
    "lost-paragraphing": 48,
    "orphan-close-quote": 1
   },
+  "divine-calls": {
+   "space-before-punct": 2
+  },
   "divine-healing": {
    "orphan-close-quote": 3,
    "space-before-punct": 11
@@ -203,6 +206,9 @@
    "orphan-close-quote": 1,
    "space-before-punct": 5,
    "stray-parens": 1
+  },
+  "into-thy-hands": {
+   "space-before-punct": 6
   },
   "introduction-to-the-devout-life": {
    "lost-paragraphing": 1
@@ -346,6 +352,12 @@
   "reality-and-religion": {
    "space-before-punct": 2
   },
+  "rejoice-evermore": {
+   "space-before-punct": 2
+  },
+  "religion-pleasant-to-the-religious": {
+   "space-before-punct": 8
+  },
   "religious-affections": {
    "orphan-close-quote": 6,
    "welded-footnote": 75
@@ -379,6 +391,9 @@
   "soar-like-the-eagle-3": {
    "orphan-close-quote": 2
   },
+  "sorrow-turned-into-joy": {
+   "space-before-punct": 1
+  },
   "spurgeon-on-prayer": {
    "lost-paragraphing": 1,
    "orphan-close-quote": 4
@@ -394,6 +409,9 @@
   "susanna-wesley-clarke": {
    "hyphen-space": 1,
    "word-fusion": 1
+  },
+  "temporal-advantages": {
+   "space-before-punct": 2
   },
   "ten-commandments": {
    "orphan-close-quote": 1,
@@ -532,6 +550,9 @@
   "the-practical-hope-of-the-lords-coming": {
    "space-before-punct": 2
   },
+  "the-praying-christ": {
+   "space-before-punct": 1
+  },
   "the-rise-and-progress-of-religion-in-the-soul": {
    "orphan-close-quote": 1
   },
@@ -572,6 +593,9 @@
   "the-witness-of-the-spirit": {
    "orphan-close-quote": 1,
    "space-before-punct": 1
+  },
+  "the-writing-on-gods-hands": {
+   "space-before-punct": 2
   },
   "till-he-come": {
    "orphan-close-quote": 4,
