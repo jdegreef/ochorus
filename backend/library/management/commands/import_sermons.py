@@ -161,14 +161,17 @@ def extract_gutenberg_section(
     # A volume that heads each sermon with its number only ("SERMON VIII.",
     # Newman's *Parochial and Plain Sermons*, PG 24256) prints the title as the
     # first paragraph; the page shows the catalog title already. Its footnotes
-    # already follow the sermon, marks in place, as archive_ocr sets them; one
-    # hung on the title ("Religious Joy.[1]" … "[1] For Christmas Day.") stays
-    # at the foot, so the title line is matched without its mark.
+    # follow the sermon, marks in place, as archive_ocr sets them — except a
+    # note hung on the title ("Religious Joy.[1]" … "[1] For Christmas Day."),
+    # which would point at nothing once the title line goes, so it goes too.
     first = subtitles
-    if title and first < len(parts):
-        line = _FOOTNOTE_MARK.sub("", re.sub(r"<[^>]+>", "", parts[first]))
-        if _norm_heading(line) == _norm_heading(title):
+    if title and first < len(parts) and parts[first].startswith("<p"):
+        line = re.sub(r"<[^>]+>", "", parts[first])
+        if _norm_heading(_FOOTNOTE_MARK.sub("", line)) == _norm_heading(title):
             del parts[first]
+            for mark in _FOOTNOTE_MARK.findall(line):
+                note = re.compile(rf"^<p[^>]*>\s*{re.escape(mark)}")
+                parts = [part for part in parts if not note.match(part)]
 
     # The first paragraph is usually the scripture epigraph in quotes — after
     # any display-line subtitle. Only those: a real heading in the source still

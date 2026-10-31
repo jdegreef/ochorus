@@ -1058,9 +1058,10 @@ class GutenbergDisplayLineTests(SimpleTestCase):
     def test_a_numbered_sermon_loses_its_title_line_but_keeps_its_notes(self):
         """Newman's *Parochial and Plain Sermons* (PG 24256) heads each sermon
         "SERMON VIII." and prints the title as the first paragraph. The title
-        goes (the page shows the catalog's), even with a note mark on it, so the
-        text after it is the epigraph. The notes stay at the foot with their
-        marks, as archive_ocr sets them: one is when the sermon was preached."""
+        goes (the page shows the catalog's), so the text after it is the
+        epigraph. The notes stay at the foot with their marks, as archive_ocr
+        sets them — but the one marked on the title line would point at
+        nothing, so it goes with the title."""
         from library.management.commands.import_sermons import extract_gutenberg_section
 
         page = (
@@ -1072,7 +1073,7 @@ class GutenbergDisplayLineTests(SimpleTestCase):
         self.assertEqual(
             extract_gutenberg_section(page, "SERMON XVII.", "h2", "Religious Joy"),
             '<blockquote>"Fear not."—Luke ii. 10.</blockquote><p>Joy to the world[2] indeed.</p>'
-            "<p>[1] For Christmas Day.</p><p>[2] Ps. xcviii.</p>",
+            "<p>[2] Ps. xcviii.</p>",
         )
 
     def test_a_line_break_separates_heading_words(self):

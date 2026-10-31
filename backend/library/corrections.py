@@ -20216,9 +20216,14 @@ for _slug, _pairs in {
     ],
     "divine-calls": [
         ('"Abram [Transcriber\'s note: Abraham?] departed', '"Abram departed'),
+        # The edition marks a 14th note (Phil. ii. 12, 13) it never prints, and
+        # keys note 8's "ii." as "11.".
+        ('worketh in you[14]."', 'worketh in you."'),
+        ('<p>[8] Mark 11. 14.</p>', '<p>[8] Mark ii. 14.</p>'),
     ],
     "jeremiah-a-lesson-for-the-disappointed": [
         ('O Lord, art not Thine eyes upon the truth?', 'O Lord, are not Thine eyes upon the truth?'),
+        ('<p>[256] Matt. v. 4.</p>', '<p>[25] Matt. v. 4.</p>'),
     ],
     "the-shepherd-of-our-souls": [
         ('which the world knew not of. He preferred', 'which the world knew not of, He preferred'),

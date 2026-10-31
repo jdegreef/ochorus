@@ -29,10 +29,16 @@ class SermonScreenTests(SimpleTestCase):
         )
         self.assertGreater(printed[0], sermon_screen.MODERN_ARCHAISMS)
         self.assertGreater(printed[1], sermon_screen.MODERN_ETH)
+        self.assertLess(modern[0], sermon_screen.MODERN_ARCHAISMS)
         self.assertLess(modern[1], sermon_screen.MODERN_ETH)
 
+    def test_names_ordinals_and_nouns_are_not_eth_verbs(self):
+        text = "At Nazareth Seth gnashed his teeth beneath the twentieth sign; he cometh."
+        self.assertEqual(sermon_screen._ETH.findall(text), ["cometh"])
+
     def test_a_page_split_is_a_lower_case_paragraph_after_an_unfinished_one(self):
-        self.assertEqual(sermon_screen.page_splits("<p>It is not al- </p><p>ways so.</p>"), 0)
+        self.assertEqual(sermon_screen.page_splits("<p>It ends.</p><p>but goes on.</p>"), 0)
+        self.assertEqual(sermon_screen.page_splits("<p>It is not al- </p><p>ways so.</p>"), 1)
         self.assertEqual(sermon_screen.page_splits("<p>sorely put </p><p>to it and</p>"), 1)
         self.assertEqual(sermon_screen.page_splits("<p>Amen.</p><p>And then</p>"), 0)
 

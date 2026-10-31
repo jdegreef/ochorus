@@ -35,10 +35,12 @@ from library.content_fixtures import ARTICLES_DIR, BOOKS_DIR, SERMONS_DIR
 from library.text import text_of, word_count
 
 _ARCHAISM = re.compile(r"\b(thee|thou|thy|thine|ye|hath|unto|doth|art|shalt|wilt)\b", re.I)
-_ETH = re.compile(r"\b\w+eth\b")
+# Lower-case only (Nazareth, Seth), and not an ordinal (twentieth) or a noun.
+_ETH = re.compile(r"\b(?!(?:teeth|beneath)\b)[a-z]+(?<!ti)eth\b")
 _WORD = re.compile(r"[a-z]+")
-# A paragraph ending on a letter or comma, the next opening in lower case.
-_SPLIT = re.compile(r"[a-z,]\s*</p>\s*<p>\s*[a-z]")
+# A paragraph ending on a letter, comma or hyphen ("al- / ways"), the next
+# opening in lower case.
+_SPLIT = re.compile(r"[a-z,-]\s*</p>\s*<p>\s*[a-z]")
 _FURNITURE = re.compile(
     r"\]\s*$|PORTIONS? OF SCRIPTURE|OUR OWN HYMN|authori[sz]ed edition|LETTER FROM", re.I
 )
@@ -77,12 +79,12 @@ class LibraryIndex:
 
     Indexing every run of the library is ~21M strings and several GB, so only
     the runs the candidates sample are recorded: the library is streamed once
-    and a window is joined only when its first word starts one of them.
+    and a window is joined only when its first two words start one of them.
     """
 
     def __init__(self, texts: Iterable[str], dirs: Iterable[Path] = (BOOKS_DIR, SERMONS_DIR)):
         wanted = {g for text in texts for g in _sampled_grams(text)}
-        starts = {g.split(" ", 1)[0] for g in wanted}
+        starts = {tuple(g.split(" ", 2)[:2]) for g in wanted}
         self._works: dict[str, set[str]] = collections.defaultdict(set)
         for folder in dirs:
             for path in sorted(folder.glob("*.en.json")):
@@ -90,7 +92,9 @@ class LibraryIndex:
                 for row in json.loads(path.read_text(encoding="utf-8")):
                     words = _WORD.findall((row["fields"].get("body_text") or "").lower())
                     for i in range(len(words) - NGRAM + 1):
-                        if words[i] in starts and (g := " ".join(words[i : i + NGRAM])) in wanted:
+                        if (words[i], words[i + 1]) in starts and (
+                            g := " ".join(words[i : i + NGRAM])
+                        ) in wanted:
                             self._works[g].add(work)
 
     def overlap(self, text: str, own_slug: str = "") -> tuple[str, int]:
@@ -102,7 +106,8 @@ class LibraryIndex:
         if not hits:
             return "", 0
         work, n = hits.most_common(1)[0]
-        return work, round(100 * n / len(grams))
+        pct = round(100 * n / len(grams))
+        return (work, pct) if pct else ("", 0)
 
 
 def taken_slugs() -> set[str]:
