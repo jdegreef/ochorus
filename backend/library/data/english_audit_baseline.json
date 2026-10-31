@@ -68,6 +68,9 @@
   "christs-peace": {
    "word-fusion": 1
   },
+  "church-history": {
+   "orphan-close-quote": 3
+  },
   "come-thou-into-the-ark": {
    "space-before-punct": 2
   },
@@ -266,6 +269,9 @@
   "on-christian-doctrine": {
    "orphan-close-quote": 1,
    "space-before-punct": 4
+  },
+  "on-first-principles": {
+   "orphan-close-quote": 2
   },
   "on-loving-god": {
    "lost-paragraphing": 2
