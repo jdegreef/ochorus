@@ -37,6 +37,9 @@
   "are-you-forgiven": {
    "orphan-close-quote": 2
   },
+  "as-thy-days-so-shall-thy-strength-be": {
+   "word-fusion": 1
+  },
   "at-the-masters-feet": {
    "space-before-punct": 2
   },
@@ -280,11 +283,13 @@
    "lost-paragraphing": 1,
    "orphan-close-quote": 2
   },
+  "one-antidote-for-many-ills": {
+   "orphan-close-quote": 1
+  },
   "our-daily-walk": {
    "hyphen-space": 1,
    "orphan-close-quote": 8,
-   "space-before-punct": 7,
-   "word-fusion": 1
+   "space-before-punct": 7
   },
   "our-duty-to-israel": {
    "orphan-close-quote": 1
@@ -531,8 +536,7 @@
    "space-before-punct": 1
   },
   "the-secret-of-guidance": {
-   "space-before-punct": 12,
-   "word-fusion": 1
+   "space-before-punct": 12
   },
   "the-secret-of-tranquillity": {
    "space-before-punct": 2
