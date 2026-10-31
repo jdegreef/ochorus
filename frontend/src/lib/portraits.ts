@@ -99,6 +99,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'jarena-lee': '50% 0%', // 1849 lithograph: seated figure, face at ~18% of a 0.73 plate
 	'jeanne-guyon': '50% 58%',
 	'jeremy-taylor': '50% 0%', // Eddis copy of the Bodleian oil; face at ~22% of a 0.80 plate
+	'jerome': '50% 15%', // Stom painting (17th c.) cropped to the head; face at ~25%
 	'jesse-lyman-hurlbut': '50% 30%', // c. 1895 bust photo; near-square, so nearly inert
 	'jim-elliot': '50% 38%', // Ochorus scene (beside the Piper on the sandbar), figure from behind, no face
 	'joe-church': '50% 30%', // cropped from a photo with his wife Decie; near-square
@@ -141,6 +142,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'pastor-hsi': '50% 0%', // engraved plate, cropped to the upper figure; face high at ~15%
 	'philip-doddridge': '50% 0%', // Vertue engraving after Soldi (1751), cropped to the oval; face at ~38% of a 0.88 plate
 	'phillis-wheatley': '50% 0%', // 1773 Poems frontispiece, cropped to the head; face at ~30%
+	'polycarp': '50% 10%', // Orthodox fresco cropped to the bust; face at ~25% of a 0.97 crop
 	'r-a-torrey': '50% 10%',
 	'rees-howells': '50% 10%', // bust photo; face at ~32% of a 0.84 plate
 	'richard-allen': '50% 37%',
@@ -150,12 +152,14 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'sadhu-sundar-singh': '50% 2%', // 1922 Uppsala photo cropped to a bust; face at ~34% of a 0.75 plate
 	'samson-occom': '50% 0%', // 18th-c. portrait engraving (repr. 1899); face at ~34% of a 0.75 plate
 	'samuel-ajayi-crowther': '50% 45%',
+	'samuel-rutherford': '50% 21%', // St Andrews oil cropped to the bust, contrast lifted
 	'simeon-nsibambi': '50% 30%', // cropped from a photo with his wife Eva; near-square
 	'smith-wigglesworth': '50% 0%', // 1920 preaching photo cropped to a bust; face at ~25% of a 0.77 plate
 	'soonderbai-powar': '50% 0%', // 1900 plate (Dyer, Pandita Ramabai); oval vignette, face at ~33% of a 0.76 plate
 	'susanna-wesley': '50% 21%',
 	'teresa-of-avila': '50% 0%', // cropped to the bust; face at ~25% of a 0.58 plate
 	'tertullian': '50% 0%', // Thevet engraving (1584), cropped to the bust; head at ~22% of a 0.81 plate
+	'theophilus-of-antioch': '50% 15%', // Cave engraving (17th c.) cropped to the bust; face at ~25%
 	'thomas-a-kempis': '50% 0%',
 	'thomas-watson': '50% 0%',
 	'timothy-keller': '50% 0%', // speaking pose; face high at ~19% of a 0.73 plate
@@ -167,6 +171,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'william-j-seymour': '50% 0%', // 1910s photo cropped to a bust; face high at ~25% of a 0.75 plate
 	'william-law': '50% 16%', // cropped oval engraving; face at ~33% of a 0.58 plate
 	'william-nagenda': '50% 20%', // cropped from a photo with his wife Sala; near-square
+	'william-wilberforce': '50% 0%', // Hickel oil cropped to the half-length; face high in a 0.84 crop
 	'yona-kanamuzeyi': '50% 23%', // Ochorus scene (writing his diary by lamplight, head bowed), figure from behind, no face
 	'yosiya-kinuka': '50% 30%', // cropped from a photo of him riding a motorcycle; near-square
 	'zilpha-elaw': '50% 8%', // Ochorus firelight illustration (imagined likeness); face at ~35% of a 0.75 plate
