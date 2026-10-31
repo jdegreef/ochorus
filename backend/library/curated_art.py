@@ -521,11 +521,12 @@ CURATED: dict[str, Artwork] = {
         "country those sermons were first shouted into.",
     ),
     "plain-account-christian-perfection": Artwork(
-        "cma", 118116, "George Inness", "Harvest Time", "1864",
+        "met", 459108, "Camille Pissarro", "The Harvest, Pontoise (La Récolte, Pontoise)",
+        "1881",
         "Wesley's perfection is love grown to its full, not sinlessness seized — "
-        "the ripe field, not the forced bloom. Inness fills the light with a "
-        "harvest brought in and a spire standing in it.",
-        focus=0.45,
+        "the ripe field, not the forced bloom. Pissarro's harvest is being got in "
+        "by hand on a sunlit slope. (Was Inness's Harvest Time until 2026-10-30, "
+        "when Inness stood on seven covers against a cap of three.)",
     ),
     # ── Batch 10 · Hudson Taylor's plate books ─────────────────────────────
     # (Batch 9 is Wesley's, just above.) Taylor gave his life to inland China,
@@ -623,11 +624,11 @@ CURATED: dict[str, Artwork] = {
         "a meadow toward the sea — the itinerant's own view.",
     ),
     "a-brand-plucked-from-the-fire": Artwork(
-        "cma", 134072, "George Inness", "Sunny Autumn Day", "1892",
+        "cma", 173181, "William Hart", "Autumn Scene in the Adirondacks", "1877",
         "Julia Foote took her title from Zechariah 3:2 — a brand snatched out of "
-        "the burning. Inness fills the trees with autumn fire, alive and standing: "
-        "the rescue rather than the ruin.",
-        focus=0.4,
+        "the burning. Hart fills the ravine with autumn fire, alive and standing: "
+        "the rescue rather than the ruin. (Was Inness's Sunny Autumn Day until "
+        "2026-10-30.)",
     ),
     "life-experience-gospel-labours": Artwork(
         "cma", 171296, "Robert S. Duncanson", "Vale of Kashmir", "1867",
@@ -837,10 +838,10 @@ CURATED: dict[str, Artwork] = {
     # devotional scene, so Hyde's life wears its own image instead: the
     # people called him "the man who never sleeps".
     "john-hyde-a-life": Artwork(
-        "aic", 64754, "George Inness", "Moonrise", "1891",
-        "A lone man crossing a dark field as the moon comes up: the night "
+        "met", 788905, "Carl Gustav Carus", "Schloss Milkel in Moonlight", "ca. 1833–35",
+        "One window lit late in a dark house, the moon over the trees: the night "
         "watches of the missionary the Punjab called \"the man who never "
-        "sleeps\", painted the year before he sailed.",
+        "sleeps\". (Was Inness's Moonrise until 2026-10-30.)",
     ),
     # ── Batch 22 · Portraits of Courage, volume 3 ──────────────────────────
     # The founder's pick of five mockups (2026-09-29). Haarlem from the dunes,
@@ -914,10 +915,11 @@ CURATED: dict[str, Artwork] = {
     # Part I follows the Spirit through the Old Testament, whose first picture
     # is the Spirit moving on the face of the waters — so its ground is the sea.
     "power-from-on-high-old-testament": Artwork(
-        "aic", 68792, "George Inness", "A Marine", "c. 1874–75",
-        "\"The Spirit of God moved upon the face of the waters.\" Inness's dark "
-        "sea breaks in light along the rocks under a heavy sky — the deep the "
-        "Spirit brooded over before the first day.",
+        "met", 437979, "Ivan Konstantinovich Aivazovsky (Hovhannes Aivazian)",
+        "Ship by Moonlight", "",
+        "\"The Spirit of God moved upon the face of the waters.\" Aivazovsky's "
+        "night sea, lit from above — the deep the Spirit brooded over before the "
+        "first day. (Was Inness's A Marine until 2026-10-30.)",
     ),
     # ── The diverse-voices books (2026-10-13) ───────────────────────────────
     # Each to its own place, not one generic landscape: Sundar Singh's three
