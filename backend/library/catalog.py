@@ -665,6 +665,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "William Booth, born in 1829 in Nottingham, England, was the founder of The Salvation Army."
         ),
     ),
+    "jerome": AuthorEntry(
+        slug="jerome",
+        name="Jerome",
+        birth_year=342,
+        death_year=420,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Jerome (c. 342–420) was a Latin scholar, ascetic and Church Father who translated the Old Testament from the Hebrew and gave the West its Vulgate Bible."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1254,6 +1265,13 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # The Letters of St. Jerome (370–419) — W. H. Fremantle, G. Lewis and
+    # W. G. Martley's NPNF translation (1893), public domain, extracted from
+    # npnf206 by its stem: the letters in Vallarsi's numbering, including some
+    # written to Jerome, each with the translators' summary as its first lines.
+    BookEntry("letters-of-jerome", "The Letters of St. Jerome", "jerome",
+              "ccel", "schaff/npnf206", part="v",
+              subtitle="Translated by W. H. Fremantle", cover_color="#5c3e2e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
