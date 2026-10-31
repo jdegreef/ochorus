@@ -1254,6 +1254,11 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Thomas Watson's The Art of Divine Contentment (1653) — CCEL's
+    # watson/contentment: his treatise on Philippians 4:11, "I have learned, in
+    # whatsoever state I am, therewith to be content".
+    BookEntry("the-art-of-divine-contentment", "The Art of Divine Contentment", "thomas-watson",
+              "ccel", "watson/contentment", cover_color="#5a4a2e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
