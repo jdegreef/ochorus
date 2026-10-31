@@ -1914,11 +1914,10 @@ SERMONS: list[SermonEntry] = [
     # Batch 4 toward 400 (2026-11): warm sermons from authors already on the
     # shelf, screened with `screen_sermons` and read in full against the tone
     # rubric (sermon-import skill). John Newton, more of *Messiah* (the
-    # "Opposition to Messiah" sermons left out).
-    SermonEntry(
-        "the-great-shepherd", "The Great Shepherd", "john-newton", "ccel",
-        _NEWTON + "messiah1/messiah1.xv.html", scripture_ref="Isaiah 40:11",
-    ),
+    # "Opposition to Messiah" sermons left out). Read and dropped: *The Great
+    # Shepherd* (ends denouncing idle clergy, with Leo X's "lucrative fable"),
+    # *The Intercession of Christ* and *Death Swallowed Up in Victory* (close on
+    # damnation; the latter also attacks universalism).
     SermonEntry(
         "messiahs-easy-yoke", "Messiah's Easy Yoke", "john-newton", "ccel",
         _NEWTON + "messiah1/messiah1.xvii.html", scripture_ref="Matthew 11:29-30",
@@ -1935,55 +1934,39 @@ SERMONS: list[SermonEntry] = [
         "the-lord-is-risen-indeed", "The Lord Is Risen Indeed", "john-newton", "ccel",
         _NEWTON + "messiah2/messiah2.xvi.html", scripture_ref="1 Corinthians 15:20",
     ),
-    SermonEntry(
-        "the-intercession-of-christ", "The Intercession of Christ", "john-newton", "ccel",
-        _NEWTON + "messiah2/messiah2.xxiii.html", scripture_ref="Romans 8:34",
-    ),
-    SermonEntry(
-        "death-swallowed-up-in-victory", "Death Swallowed Up in Victory", "john-newton", "ccel",
-        _NEWTON + "messiah2/messiah2.xix.html", scripture_ref="1 Corinthians 15:54",
-    ),
     # Robert Murray M"Cheyne, from SermonIndex"s printed text (no Bible
     # reference there, so each is set here). *Children Called to Christ* is a
-    # 152-word poem there, not a sermon.
+    # 152-word poem there, not a sermon. Read and dropped for tone: *Melting the
+    # Betrayer* (a warning to unworthy communicants throughout) and *Faith's
+    # View of Christ* ("many of you are going to hell").
     SermonEntry(
         "adoption", "Adoption", "robert-murray-mcheyne", "sermonindex",
-        _SI + "robert-murray-mcheyne/adoption/",
+        _SI + "robert-murray-mcheyne/adoption/", scripture_ref="1 John 3:1",
     ),
     SermonEntry(
         "grieve-not-the-holy-spirit", "Grieve Not the Holy Spirit", "robert-murray-mcheyne", "sermonindex",
-        _SI + "robert-murray-mcheyne/grieve-not-the-holy-spirit/",
+        _SI + "robert-murray-mcheyne/grieve-not-the-holy-spirit/", scripture_ref="Ephesians 4:30",
     ),
     SermonEntry(
         "the-spirit-committed-to-god", "The Spirit Committed to God", "robert-murray-mcheyne", "sermonindex",
-        _SI + "robert-murray-mcheyne/the-spirit-commited-to-god/",
+        _SI + "robert-murray-mcheyne/the-spirit-commited-to-god/", scripture_ref="Psalm 31:5",
     ),
     SermonEntry(
         "the-lords-dealings-with-his-people", "The Lord's Dealings with His People", "robert-murray-mcheyne", "sermonindex",
-        _SI + "robert-murray-mcheyne/the-lords-dealings-with-his-people/",
-    ),
-    SermonEntry(
-        "melting-the-betrayer", "Melting the Betrayer", "robert-murray-mcheyne", "sermonindex",
-        _SI + "robert-murray-mcheyne/melting-the-betrayer/",
+        _SI + "robert-murray-mcheyne/the-lords-dealings-with-his-people/", scripture_ref="Isaiah 46:3-4",
     ),
     SermonEntry(
         "thanksgiving-obtains-the-spirit", "Thanksgiving Obtains the Spirit", "robert-murray-mcheyne", "sermonindex",
-        _SI + "robert-murray-mcheyne/thanksgiving-obtains-the-spirit/",
-    ),
-    SermonEntry(
-        "faiths-view-of-christ", "Faith's View of Christ", "robert-murray-mcheyne", "sermonindex",
-        _SI + "robert-murray-mcheyne/faiths-view-of-christ/",
+        _SI + "robert-murray-mcheyne/thanksgiving-obtains-the-spirit/", scripture_ref="2 Chronicles 5:13-14",
     ),
     # Horatius Bonar, more of *Family Sermons* (single scan; see archive_ocr).
     # Only sermons complete in one part: the volume prints several as pairs.
     # *Christ the Healer* is suffixed: A. B. Simpson's book holds the slug.
+    # *Nazareth and Its Good News* was dropped (grace "transformed into
+    # vengeance"; "the worst specimens of Israel").
     SermonEntry(
         "bethlehem-and-its-good-news", "Bethlehem and Its Good News", "horatius-bonar", "archive",
         "familysermons00bona", text_starts="The Word was made flesh", body_starts="There was nothing great about Bethlehem", ends_before="SERMON II.", scripture_ref="John 1:14",
-    ),
-    SermonEntry(
-        "nazareth-and-its-good-news", "Nazareth and Its Good News", "horatius-bonar", "archive",
-        "familysermons00bona", text_starts="acceptable year of the Lord", body_starts="It is as a", ends_before="THE MANIFESTED LIFE", scripture_ref="Luke 4:19",
     ),
     SermonEntry(
         "christ-the-healer-bonar", "Christ the Healer", "horatius-bonar", "archive",
@@ -2008,11 +1991,12 @@ SERMONS: list[SermonEntry] = [
     # Augustine, his first sermons on the shelf: *Sermons on Selected Lessons of
     # the New Testament* (NPNF 1st series vol. 6, R. G. MacMullen's 1888
     # translation, CCEL). Pastoral Gospel sermons only — those headed against
-    # the Donatists, Arians or Pelagians are left out.
-    SermonEntry(
-        "the-boat-in-the-storm", "The Boat in the Storm", "augustine-of-hippo", "ccel",
-        _NPNF106 + "npnf106.vii.xxvii.html", scripture_ref="Matthew 14:24",
-    ),
+    # the Donatists, Arians or Pelagians are left out, and four more were read
+    # and dropped: *The Boat in the Storm* (a section against docetic
+    # heretics), *Men Ought Always to Pray* and *Ask, and It Shall Be Given*
+    # (against the Pelagians; the latter closes on an alms appeal), and *The
+    # Friend at Midnight* (its last third answers pagan critics of the sack of
+    # Rome).
     SermonEntry(
         "peter-on-the-waves", "Peter on the Waves", "augustine-of-hippo", "ccel",
         _NPNF106 + "npnf106.vii.xxviii.html", scripture_ref="Matthew 14:25-31",
@@ -2022,19 +2006,7 @@ SERMONS: list[SermonEntry] = [
         _NPNF106 + "npnf106.vii.lv.html", scripture_ref="Luke 10:38-42",
     ),
     SermonEntry(
-        "the-friend-at-midnight", "The Friend at Midnight", "augustine-of-hippo", "ccel",
-        _NPNF106 + "npnf106.vii.lvii.html", scripture_ref="Luke 11:5-13",
-    ),
-    SermonEntry(
-        "men-ought-always-to-pray", "Men Ought Always to Pray", "augustine-of-hippo", "ccel",
-        _NPNF106 + "npnf106.vii.lxvii.html", scripture_ref="Luke 18:1",
-    ),
-    SermonEntry(
         "asking-in-christs-name", "Asking in Christ's Name", "augustine-of-hippo", "ccel",
         _NPNF106 + "npnf106.vii.xcvii.html", scripture_ref="John 16:24",
-    ),
-    SermonEntry(
-        "ask-and-it-shall-be-given", "Ask, and It Shall Be Given", "augustine-of-hippo", "ccel",
-        _NPNF106 + "npnf106.vii.xiii.html", scripture_ref="Matthew 7:7",
     ),
 ]
