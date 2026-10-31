@@ -665,6 +665,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "William Booth, born in 1829 in Nottingham, England, was the founder of The Salvation Army."
         ),
     ),
+    "theophilus-of-antioch": AuthorEntry(
+        slug="theophilus-of-antioch",
+        name="Theophilus of Antioch",
+        birth_year=None,
+        death_year=183,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Theophilus of Antioch (died c. 183) was a second-century bishop of Antioch in Syria, a pagan who came to faith by reading the Hebrew prophets."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1254,6 +1265,13 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Theophilus of Antioch's To Autolycus (c. 180) — Marcus Dods's ANF
+    # translation (1885), public domain, extracted from anf02 by its stem.
+    # group_parts: each of the three Books is a chapter, its short chapters
+    # subheads; the editors' introductory note is left out.
+    BookEntry("to-autolycus", "To Autolycus", "theophilus-of-antioch",
+              "ccel", "schaff/anf02", part="iv.ii", group_parts=True,
+              subtitle="Translated by Marcus Dods", cover_color="#5c3e4a"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
