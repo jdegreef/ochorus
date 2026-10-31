@@ -632,6 +632,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Eusebius of Caesarea (c. 260–339) was a bishop and scholar of Palestine, the pupil of the martyr Pamphilus and the father of church history."
         ),
     ),
+    "lactantius": AuthorEntry(
+        slug="lactantius",
+        name="Lactantius",
+        birth_year=250,
+        death_year=325,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Lactantius (c. 250–c. 325) was a North African teacher of rhetoric, called by Diocletian to Nicomedia, who lost his career in the Great Persecution and turned his eloquence to defending the faith."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1169,6 +1180,13 @@ BOOKS: list[BookEntry] = [
     BookEntry("church-history", "The Church History", "eusebius-of-caesarea",
               "ccel", "schaff/npnf201", part="iii", group_parts=True,
               subtitle="Translated by Arthur Cushman McGiffert", cover_color="#5c4a2e"),
+    # Lactantius's Divine Institutes (c. 303–311) — William Fletcher's ANF
+    # translation (1886), public domain, extracted from anf07 by its stem.
+    # group_parts: each of the seven Books is a chapter, its short chapters
+    # subheads. The Epitome that follows it in the volume is left out.
+    BookEntry("the-divine-institutes", "The Divine Institutes", "lactantius",
+              "ccel", "schaff/anf07", part="iii.ii", group_parts=True,
+              subtitle="Translated by William Fletcher", cover_color="#2e4a5c"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

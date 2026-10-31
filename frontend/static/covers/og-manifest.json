@@ -27063,6 +27063,18 @@
 				484
 			]
 		},
+		"the-divine-institutes": {
+			"ground": "7787a7dbf8b474b04f0ab9a8516a2c219b13dff46b69365373540dc28d549af1",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"the-epistles-of-cyprian": {
 			"ground": "f8836f911c61691cba45d9860c221868f6784d6d599ff8775bf17890fe8b5c49",
 			"style": "inscriptional",
