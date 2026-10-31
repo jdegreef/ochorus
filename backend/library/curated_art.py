@@ -1266,6 +1266,19 @@ CURATED: dict[str, Artwork] = {
         "met", 436193, "Narcisse-Virgile Diaz de la Peña", "The Edge of the Woods", "1872",
         "A way out of the wood into the light: Doddridge's book follows the soul from awakening to maturity, step by step.",
     ),
+    # ── Batch 29 · three Fathers imported 2026-10-31 ─────────────────────────
+    "against-heresies": Artwork(
+        "cma", 135173, "Paul Cezanne", "The Brook", "c. 1895–1900",
+        "A clear stream under green trees in southern France: Irenaeus, bishop of Lyon, answered the Gnostic systems with the one living tradition handed down from the apostles.",
+    ),
+    "on-first-principles": Artwork(
+        "met", 441379, "Peder Balke", "The North Cape by Moonlight", "1848",
+        "Light breaking through cloud over dark water — Origen's first principles begin from God, the Light by whom everything else is seen.",
+    ),
+    "church-history": Artwork(
+        "met", 437471, "Hubert Robert", "Aqueduct in Ruins", "",
+        "A Roman aqueduct still carrying the land's life after its empire passed: Eusebius tells how the church grew across that world, from the apostles to Constantine.",
+    ),
 }
 
 

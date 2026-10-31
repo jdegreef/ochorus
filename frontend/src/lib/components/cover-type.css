@@ -1513,3 +1513,21 @@
 .cover-plate.over-art:not(.has-layout) .cover-type.fit-roomy:not(.style-originals, .style-young, .style-lettered) .title {
 	zoom: 1.08;
 }
+
+/* ═══ THUMBNAIL ═══════════════════════════════════════════════════════════════
+   Below 110px wide — a list row (48px), an author's rail (64px), a small shelf
+   (96px) — the byline, subtitle, ornament and wordmark are each a few pixels
+   tall: they cannot be read and only crowd the one word that can. So a
+   thumbnail is the painting and its title, set a step larger. Every share card
+   and the downloads are drawn at 600px and never reach this rule. */
+@container (max-width: 110px) {
+	.cover-type .byline,
+	.cover-type .subtitle,
+	.cover-type .rule,
+	.cover-type .brandmark {
+		display: none;
+	}
+	.cover-type:not(.long-title) .title {
+		zoom: 1.25;
+	}
+}
