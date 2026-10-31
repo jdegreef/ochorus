@@ -110,11 +110,13 @@ class FixtureIdentifierTests(SimpleTestCase):
         chose to leave blank. Naming the exceptions means adding a writer
         WITHOUT an identifier is a decision someone has to make here.
         """
-        # Two house bylines, two living contributors, and a writer with no
-        # article to point at.
+        # Three house bylines (the Open Word Bible is the Scripture's translation
+        # imprint, a byline no person-identifier can name), two living
+        # contributors, and a writer with no article to point at.
         expected_blank = {
             "ochorus-originals",
             "james-degreef-and-ochorus",
+            "open-word-bible",
             "gareth-evans",
             "hannah-buyinza",
             "simeon-nsibambi",
