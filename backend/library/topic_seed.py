@@ -268,6 +268,7 @@ TOPICS = [
             "the-holy-war",
             "grace-abounding",
             "the-bruised-reed",
+            "the-method-of-grace",
             "mortification-of-sin",
             "communion-with-god",
             "the-glory-of-christ",

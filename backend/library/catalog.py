@@ -665,6 +665,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "William Booth, born in 1829 in Nottingham, England, was the founder of The Salvation Army."
         ),
     ),
+    "john-flavel": AuthorEntry(
+        slug="john-flavel",
+        name="John Flavel",
+        birth_year=1627,
+        death_year=1691,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "John Flavel (c. 1627–1691) was an English Puritan minister of Dartmouth in Devon, ejected in 1662 and long forced to preach in secret."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1254,6 +1265,14 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # John Flavel's The Method of Grace (1681) — CCEL's flavel/grace: the
+    # epistles dedicatory and to the reader and thirty-five sermons on how the
+    # Spirit applies Christ's redemption to the soul, each titled "Sermon N"
+    # with a short form of Flavel's own heading.
+    BookEntry("the-method-of-grace", "The Method of Grace", "john-flavel",
+              "ccel", "flavel/grace",
+              subtitle="In the Holy Spirit’s Applying to the Souls of Men the Eternal Redemption Contrived by the Father and Accomplished by the Son",
+              cover_color="#5c3e2e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

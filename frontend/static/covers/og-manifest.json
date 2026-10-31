@@ -27689,6 +27689,18 @@
 				505
 			]
 		},
+		"the-method-of-grace": {
+			"ground": "49e28c0e29b946d66925c3edbc3797c72c8e3cce5da2c1fac546a69cd2df4cf6",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"the-normal-christian-life": {
 			"ground": "8bb2cd5bfa77bd37b5401ec9e9a3ae51a47520480d88b0b122813c7ce593a0c7",
 			"style": "house",
