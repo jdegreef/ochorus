@@ -317,6 +317,7 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'the-princess-and-the-goblin': 'young',
 	'at-the-back-of-the-north-wind': 'young',
 	'the-practice-of-the-presence-of-god-children': 'young',
+	'talks-to-the-farmer-children': 'young',
 	'samuel-ajayi-crowther-a-life-children': 'young',
 	'mary-slessor-a-life-children': 'young',
 	'pandita-ramabai-a-life-children': 'young',

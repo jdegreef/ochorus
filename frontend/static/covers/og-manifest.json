@@ -2804,15 +2804,31 @@
 			]
 		},
 		"am/talks-to-the-farmer-children": {
-			"ground": "328af163781b14f92b1364e0e6205e0e2ebfc93e25caef31f05d715a175eacfb",
-			"style": "revival",
+			"ground": "bcc8c1533a055c33fa45aea1400ec0e1e1c73017f13dec10cc117a43efb7974e",
+			"style": "young",
 			"volume": null,
 			"script": "ethiopic",
 			"fonts": "28a73437892ee3037a66c463d5f61ba773713c3c632be0c4f56c6eeee942b058",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
-			"bar": 0
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[130, 310, 470, 385],
+					[108, 371, 492, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"am/talks-to-the-farmer-teens": {
 			"ground": "1037d0b5a13b37f556612057efeb1ebd8f6dc75186e5fe1bfeb21c93bca2b703",
@@ -8394,15 +8410,31 @@
 			]
 		},
 		"es/talks-to-the-farmer-children": {
-			"ground": "508a85bc8b19c88b040015885be7a896fc803564551f7859909b5ce75930bd10",
-			"style": "revival",
+			"ground": "ed397ac5bd3c75ab9cb02f11cacf6f243b8f78b7343c4b2cd462d63936609d79",
+			"style": "young",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
-			"bar": 0
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[54, 310, 546, 385],
+					[151, 371, 449, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"es/talks-to-the-farmer-teens": {
 			"ground": "d9f7ddefb97d78288c4de96cb52734706cb26c7e336bb6b3a4d12e1389689f3b",
@@ -12284,15 +12316,32 @@
 			]
 		},
 		"fr/talks-to-the-farmer-children": {
-			"ground": "c7a64a886612bbc63752808a29793e9a4c059feb4a5c950fee7288f495c9162e",
-			"style": "revival",
+			"ground": "c5adf17455c22218dcd577b8b9b2be82e6b0dd26ce7b0d56ebd123414e2f93ef",
+			"style": "young",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
-			"bar": 0
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[103, 280, 497, 355],
+					[100, 341, 500, 416],
+					[153, 402, 447, 477]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
+			]
 		},
 		"fr/talks-to-the-farmer-teens": {
 			"ground": "6d04e0737f0cc29178702b5c26255dfc65c693b0a8266a485bb2ccbe4ffb0b79",
@@ -17000,15 +17049,31 @@
 			]
 		},
 		"ko/talks-to-the-farmer-children": {
-			"ground": "6c33550d0708329bd9bc647ee430ff7ced1bea7faeda2c103d826bb4d07178a6",
-			"style": "revival",
+			"ground": "fcada31f4fa24f35f0df0ac372479115e5f2a85e31565608b19bfc1e6f36d35e",
+			"style": "young",
 			"volume": null,
 			"script": "korean",
 			"fonts": "ee92bf4a8c67a5d9658d5488e151eb805e22b6e0e5dbf5cd3947921a33c735a7",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
-			"bar": 0
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[84, 310, 516, 385],
+					[94, 371, 506, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
+			]
 		},
 		"ko/the-bruised-reed": {
 			"ground": "f961292f90fb97e39dc369cccc14c9d75ef0aa44a53b33aab370375e3e01189a",
@@ -21416,15 +21481,32 @@
 			]
 		},
 		"pt/talks-to-the-farmer-children": {
-			"ground": "1109076400b25cdd9e68b17ef205055e02ea9fc9c63895a754cf63a698e14935",
-			"style": "revival",
+			"ground": "a2365254e20e166dee33d818166e6681b67fad52f603d12ad48a4e599a0cf7e6",
+			"style": "young",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
-			"bar": 0
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[104, 280, 496, 355],
+					[162, 341, 438, 416],
+					[105, 402, 495, 477]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
+			]
 		},
 		"pt/talks-to-the-farmer-teens": {
 			"ground": "3a2b34b17f6710281b07da1748cafe1f08f4b33b8740c19eb0973f08343526f3",
@@ -24348,15 +24430,32 @@
 			]
 		},
 		"sw/talks-to-the-farmer-children": {
-			"ground": "362dbe72d25bfdf8106ed35e571578f621d26e926d4a9b1b2ee014d6e4ef669a",
-			"style": "revival",
+			"ground": "28b43a019610345e2b6e72d9cfed524f5a68adaf7e72f770c0f5e64a76131274",
+			"style": "young",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
-			"bar": 0
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[131, 280, 469, 355],
+					[151, 341, 449, 416],
+					[129, 402, 471, 477]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
+			]
 		},
 		"sw/talks-to-the-farmer-teens": {
 			"ground": "bf04365e9ba5d619927697ac58c5f8f42f5f0e21501e772f5cbb281f7755cb74",
@@ -24899,6 +24998,33 @@
 			"middle": [
 				270,
 				525
+			]
+		},
+		"talks-to-the-farmer-children": {
+			"ground": "b84a52188ad81b8a188803fbb1d81a64aac24dae049b7efd628199fff20314b8",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[52, 310, 548, 385],
+					[125, 371, 475, 446]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				317,
+				478
 			]
 		},
 		"tell-me-the-story-1": {
@@ -28211,15 +28337,32 @@
 			]
 		},
 		"vi/talks-to-the-farmer-children": {
-			"ground": "a9e06352ea5078890754a521c26b4663474ce8e3e3313ef1cfd8eb35f150b55a",
-			"style": "revival",
+			"ground": "f0144abc340df0f2982dac2736b3d4f12d58723e8c3fcf2b972c77772e02d293",
+			"style": "young",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
 			"art": true,
-			"scrim": 1,
-			"layout": "band/oxblood",
-			"bar": 0
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[97, 102, 503, 131]
+				],
+				"title": [
+					[151, 280, 449, 355],
+					[126, 341, 474, 416],
+					[113, 402, 487, 477]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
+			]
 		},
 		"vi/the-bruised-reed": {
 			"ground": "a4799c092856e7608157865b379e5df2c99670ebadad3918aa38400f61911b77",

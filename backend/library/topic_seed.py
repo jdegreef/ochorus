@@ -762,6 +762,7 @@ TOPICS = [
             "the-princess-and-the-goblin",
             "at-the-back-of-the-north-wind",
             "the-practice-of-the-presence-of-god-children",
+            "talks-to-the-farmer-children",
             "samuel-ajayi-crowther-a-life-children",
             "mary-slessor-a-life-children",
             "pandita-ramabai-a-life-children",
