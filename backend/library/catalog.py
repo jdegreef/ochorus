@@ -1254,6 +1254,12 @@ BOOKS: list[BookEntry] = [
     # "#" restored to "£"; the Appendix of documents left out).
     BookEntry("in-darkest-england-and-the-way-out", "In Darkest England and the Way Out",
               "william-booth", "gutenberg", "475", cover_color="#5c3e2e"),
+    # Tertullian's Against Marcion (c. 207–208) — Peter Holmes's ANF translation
+    # (1885), public domain, extracted from anf03 by its stem. group_parts: each
+    # of the five Books is a chapter, its short chapters subheads.
+    BookEntry("against-marcion", "Against Marcion", "tertullian",
+              "ccel", "schaff/anf03", part="v.iv", group_parts=True,
+              subtitle="Translated by Peter Holmes", cover_color="#5c2e2e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",

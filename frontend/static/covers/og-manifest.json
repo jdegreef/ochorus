@@ -249,6 +249,18 @@
 				495
 			]
 		},
+		"against-marcion": {
+			"ground": "6dc97c5f94c2aa88587a37718325a5076dcd3d298b65c7b28372b329d2c05ae2",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"against-the-arians": {
 			"ground": "b59b81a4c9403bea6a7f8334ea4914144f7c0440cd3fe4721878e810d4721663",
 			"style": "inscriptional",
