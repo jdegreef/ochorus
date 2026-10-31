@@ -1220,6 +1220,14 @@ BOOKS: list[BookEntry] = [
     BookEntry("tertullian-on-prayer", "On Prayer", "tertullian",
               "ccel", "schaff/anf03", part="vi.iv",
               subtitle="Translated by S. Thelwall", cover_color="#2e5c4a"),
+    # Gregory of Nyssa's On the Making of Man (379) — H. A. Wilson's NPNF
+    # translation (1893), public domain, extracted from npnf205 by its stem:
+    # the dedication to his brother Peter and thirty chapters completing
+    # Basil's Hexaemeron with the creation of man, under the translator's
+    # headings (summary_titles keeps each one's lead clause).
+    BookEntry("on-the-making-of-man", "On the Making of Man", "gregory-of-nyssa",
+              "ccel", "schaff/npnf205", part="x.ii.ii", summary_titles=True,
+              subtitle="Translated by H. A. Wilson", cover_color="#4a5c2e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
