@@ -362,6 +362,7 @@ TOPICS = [
             "the-apology-of-tertullian",
             "homilies-on-matthew",
             "first-epistle-of-clement",
+            "to-autolycus",
             "exhortation-to-the-heathen",
             "who-is-the-rich-man-that-shall-be-saved",
             "epistles-of-ignatius",
