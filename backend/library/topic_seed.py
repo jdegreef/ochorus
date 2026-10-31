@@ -181,6 +181,7 @@ TOPICS = [
         "\u2014 the old paths, still good.",
         [
             "confessions",
+            "parochial-and-plain-sermons-vii",
             "apologia-pro-vita-sua",
             "the-idea-of-a-university",
             "the-consolation-of-philosophy",
