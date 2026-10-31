@@ -218,16 +218,36 @@
 			]
 		},
 		"against-heresies": {
-			"ground": "595dd016db0ec8798066554c26e18dd151bb93032f9f01a90b769155a5582c85",
+			"ground": "c88800c83694865ba8e484d2f96c3fa3352fe692cfed46ff4987193cb5af72e2",
 			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.85,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[122, 102, 478, 131]
+				],
+				"title": [
+					[153, 289, 447, 368],
+					[145, 347, 455, 426]
+				],
+				"subtitle": [
+					[134, 453, 466, 474],
+					[127, 474, 473, 495]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				300,
+				495
+			]
 		},
 		"against-the-arians": {
 			"ground": "b59b81a4c9403bea6a7f8334ea4914144f7c0440cd3fe4721878e810d4721663",
@@ -5710,16 +5730,36 @@
 			]
 		},
 		"church-history": {
-			"ground": "7606af2eb6b8506bfede5fb26132a19605375c62754e1bd223b0fb9299ff807a",
+			"ground": "6faf7644e1eac458cb2a7965b03e550bc7f2635b11cd5826911afd6027dcf3b0",
 			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.75,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[91, 102, 509, 131]
+				],
+				"title": [
+					[106, 300, 494, 366],
+					[177, 349, 423, 415]
+				],
+				"subtitle": [
+					[156, 444, 444, 465],
+					[174, 465, 426, 486]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				309,
+				486
+			]
 		},
 		"clothed-with-strength-and-dignity": {
 			"ground": "d7840f48419ec29855f5b1705fbc51ad383b5c22f22e3f649cce8b3800d01ff3",
@@ -20601,16 +20641,35 @@
 			"caps": false
 		},
 		"on-first-principles": {
-			"ground": "1e5ce474bfbfb27581156e45f1d38a1608c119241570b64aa64317f94ae7e270",
+			"ground": "7044fd06323a4b2f4a705603458406c305f05d2cf128aa9012bfae5d9f085d18",
 			"style": "inscriptional",
 			"volume": null,
 			"script": "latin",
 			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.85,
 			"layout": "framed",
 			"bar": 0,
-			"caps": false
+			"caps": false,
+			"rows": {
+				"byline": [
+					[86, 102, 514, 131]
+				],
+				"title": [
+					[164, 311, 436, 377],
+					[136, 360, 464, 426]
+				],
+				"subtitle": [
+					[81, 454, 519, 475]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				320,
+				475
+			]
 		},
 		"on-loving-god": {
 			"ground": "49ca984558d07987a88f7e525dd92b2dedca9120fcd95d30f2b8adf4535d388e",
