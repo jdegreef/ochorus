@@ -599,6 +599,17 @@ AUTHORS: dict[str, AuthorEntry] = {
             "John Henry Newman (1801–1890) was an English priest, theologian and writer who led the Oxford Movement in the Church of England and in 1845 was received into the Catholic Church."
         ),
     ),
+    "eusebius-of-caesarea": AuthorEntry(
+        slug="eusebius-of-caesarea",
+        name="Eusebius of Caesarea",
+        birth_year=260,
+        death_year=339,
+        # The author page carries the full bio (authors.json); this stub is
+        # create-only and never overwrites it.
+        bio=(
+            "Eusebius of Caesarea (c. 260–339) was a bishop and scholar of Palestine, the pupil of the martyr Pamphilus and the father of church history."
+        ),
+    ),
     "teresa-of-avila": AuthorEntry(
         slug="teresa-of-avila",
         name="Teresa of Ávila",
@@ -1112,6 +1123,15 @@ BOOKS: list[BookEntry] = [
     BookEntry("apologia-pro-vita-sua", "Apologia Pro Vita Sua", "john-henry-newman",
               "gutenberg", "19690",
               subtitle="Being a History of His Religious Opinions", cover_color="#5c3d2e"),
+    # Eusebius's Church History (c. 325) — Arthur Cushman McGiffert's NPNF
+    # translation (1890), public domain, extracted from npnf201 by its stem.
+    # group_parts: each of the ten Books is a chapter, its short chapters
+    # subheads. McGiffert's prolegomena, the testimonies and his supplementary
+    # tables are left out; the Martyrs of Palestine, which ANF prints between
+    # Books VIII and IX, is kept as Eusebius's own appendix to Book VIII.
+    BookEntry("church-history", "The Church History", "eusebius-of-caesarea",
+              "ccel", "schaff/npnf201", part="iii", group_parts=True,
+              subtitle="Translated by Arthur Cushman McGiffert", cover_color="#5c4a2e"),
     BookEntry("interior-castle", "Interior Castle", "teresa-of-avila",
               "ccel", "teresa/castle2",
               subtitle="Or the Mansions",
