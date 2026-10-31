@@ -6320,6 +6320,18 @@
 			"bar": 0,
 			"caps": false
 		},
+		"epistle-and-martyrdom-of-polycarp": {
+			"ground": "addf2899cc33843bea493ccb3adfb976e46b4d9ee8b3137eee2b2c370800104a",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"fonts": "d6373ca0e307424d72284235cd8d516529267f14933d2d4d6d5f16c1e4ec659d",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"caps": false
+		},
 		"epistles-of-ignatius": {
 			"ground": "b259b71e9d1b30cebac05e16d3cd2658956c26a2174dbf900e8cf0667b9362e4",
 			"style": "inscriptional",
