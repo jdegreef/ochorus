@@ -68,6 +68,9 @@
   "christs-peace": {
    "word-fusion": 1
   },
+  "church-history": {
+   "orphan-close-quote": 3
+  },
   "come-thou-into-the-ark": {
    "space-before-punct": 2
   },
@@ -267,6 +270,9 @@
    "orphan-close-quote": 1,
    "space-before-punct": 4
   },
+  "on-first-principles": {
+   "orphan-close-quote": 2
+  },
   "on-loving-god": {
    "lost-paragraphing": 2
   },
@@ -445,6 +451,9 @@
   "the-dialogue-of-catherine-of-siena": {
    "lost-paragraphing": 30
   },
+  "the-divine-institutes": {
+   "word-fusion": 2
+  },
   "the-dying-thief": {
    "word-fusion": 1
   },
@@ -507,6 +516,9 @@
   },
   "the-normal-christian-life": {
    "orphan-close-quote": 2
+  },
+  "the-octavius": {
+   "lost-paragraphing": 26
   },
   "the-person-and-work-of-the-holy-spirit": {
    "orphan-close-quote": 4
@@ -584,6 +596,9 @@
   },
   "what-the-bible-teaches": {
    "orphan-close-quote": 3
+  },
+  "who-is-the-rich-man-that-shall-be-saved": {
+   "orphan-close-quote": 1
   },
   "with-and-without-christ": {
    "space-before-punct": 6

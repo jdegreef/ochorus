@@ -47,6 +47,12 @@
 		"year": "1889",
 		"credit": "Vincent van Gogh, “Cypresses” (1889). The Metropolitan Museum of Art, Open Access."
 	},
+	"against-heresies": {
+		"artist": "Paul Cezanne",
+		"title": "The Brook",
+		"year": "c. 1895–1900",
+		"credit": "Paul Cezanne, “The Brook” (c. 1895–1900). The Cleveland Museum of Art, CC0."
+	},
 	"against-the-arians": {
 		"artist": "Constantin Hansen",
 		"title": "Columns of the Temple of Neptune at Paestum",
@@ -124,6 +130,12 @@
 		"title": "Mountain Brook",
 		"year": "1863",
 		"credit": "Albert Bierstadt, “Mountain Brook” (1863). The Art Institute of Chicago, CC0."
+	},
+	"church-history": {
+		"artist": "Hubert Robert",
+		"title": "Aqueduct in Ruins",
+		"year": "",
+		"credit": "Hubert Robert, “Aqueduct in Ruins” (). The Metropolitan Museum of Art, Open Access."
 	},
 	"come-ye-children": {
 		"artist": "Constant Troyon",
@@ -502,6 +514,12 @@
 		"title": "The Portico of a Country Mansion",
 		"year": "1773",
 		"credit": "Hubert Robert, “The Portico of a Country Mansion” (1773). The Metropolitan Museum of Art, Open Access."
+	},
+	"on-first-principles": {
+		"artist": "Peder Balke",
+		"title": "The North Cape by Moonlight",
+		"year": "1848",
+		"credit": "Peder Balke, “The North Cape by Moonlight” (1848). The Metropolitan Museum of Art, Open Access."
 	},
 	"on-loving-god": {
 		"artist": "Jean Baptiste Camille Corot",
